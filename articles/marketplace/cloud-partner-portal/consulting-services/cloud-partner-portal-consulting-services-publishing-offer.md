@@ -5,16 +5,19 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 02/27/2020
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 1015734ac0da6b4641c0bf32049146e3820f4616
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ceef030d2c0176313cbce8f6817a89c06f134d3d
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278529"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745675"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Azure 和 Dynamics 365 咨询服务产品/服务
+
+>[!Important]
+>从 2020 年 3 月 30 日起，我们将开始将咨询服务优惠的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[咨询服务创建概述](https://aka.ms/AzureCreateConsultingService)中的说明来管理迁移的优惠。
 
 本文介绍了如何将咨询服务产品/服务发布到 Microsoft <a href="https://azuremarketplace.microsoft.com">Azure 市场</a>或 <a href="https://appsource.microsoft.com">AppSource</a>。 基于微软<a href="https://dynamics.microsoft.com">动态365、Power</a> <a href="https://powerbi.microsoft.com">BI</a>和<a href="https://powerapps.microsoft.com">电源应用</a>的解决方案可以列在AppSource上。 基于其他 Microsoft <a href="https://azure.microsoft.com/services">Azure 服务</a>的其他套餐可以在 Azure 市场中列出。
 

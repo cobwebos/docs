@@ -7,6 +7,8 @@
       href: what-is-application-management.md
     - name: 本地应用的应用程序代理是什么？
       href: what-is-application-proxy.md
+    - name: 常见的应用管理方案
+      href: common-scenarios.md
     - name: 什么是应用程序预配？
       href: /azure/active-directory/app-provisioning/user-provisioning?context=azure/active-directory/manage-apps/context/manage-apps-context
 - name: 快速入门
@@ -92,7 +94,7 @@
           href: application-proxy-high-availability-load-balancing.md
         - name: 比较远程访问解决方案
           href: application-proxy-migration.md
-- name: 操作方法指南
+- name: 操作指南
   expanded: true
   items:
     - name: 云应用和单一登录
@@ -165,7 +167,7 @@
               href: migrate-adfs-apps-to-azure.md
             - name: 使用 AD FS 应用程序活动报表（预览版）
               href: migrate-adfs-application-activity.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: 排查添加应用时出现的问题
               items:
@@ -261,7 +263,7 @@
                   href: application-proxy-configure-single-sign-on-with-kcd.md
                 - name: 密码保管
                   href: application-proxy-configure-single-sign-on-password-vaulting.md
-                - name: 标头
+                - name: 头文件
                   href: application-proxy-configure-single-sign-on-with-ping-access.md
                 - name: SAML SSO
                   href: application-proxy-configure-single-sign-on-on-premises-apps.md

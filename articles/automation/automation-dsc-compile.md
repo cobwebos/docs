@@ -3,14 +3,14 @@ title: 在 Azure Automation State Configuration 中编译配置
 description: 本文介绍如何编译 Azure 自动化的 Desired State Configuration (DSC) 配置。
 services: automation
 ms.subservice: dsc
-ms.date: 09/10/2018
+ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 48593920bdfcf743fceaeaeec891c0d5c4f2e108
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b366777cce4dd4212a2e3ec0cdcd180e0d7164f4
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80057639"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757175"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>在 Automation State Configuration 中编译 DSC 配置
 
@@ -27,7 +27,7 @@ ms.locfileid: "80057639"
   - 大规模使用节点和非节点数据
   - 显著的性能提升
 
-有关编译详细信息，请参阅[Azure 资源管理器模板所需的状态配置扩展](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template#details)。
+还可以将 Azure 资源管理器模板与 Azure 所需状态配置 （DSC） 扩展一起推送到 Azure VM。 Azure DSC 扩展使用 Azure VM 代理框架来传送、启用和报告 Azure VM 上运行的 DSC 配置。 有关使用 Azure 资源管理器模板的编译详细信息，请参阅[使用 Azure 资源管理器模板的所需状态配置扩展](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template#details)。 
 
 ## <a name="compiling-a-dsc-configuration-in-azure-state-configuration"></a>在 Azure 状态配置中编译 DSC 配置
 

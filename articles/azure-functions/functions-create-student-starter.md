@@ -3,15 +3,15 @@ title: 使用面向学生的 Azure 入门版创建函数
 description: 了解如何在面向学生的 Azure 入门版订阅中创建 Azure 函数
 Customer intent: As a student, I want to be able to create an HTTP triggered Function App within the Student Starter plan so that I can easily add APIs to any project.
 author: alexkarcher-msft
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 02/22/2019
 ms.author: alkarche
-ms.openlocfilehash: 189a0bc80ab2894b2888b496b3beb45249d859f6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
-ms.translationtype: HT
+ms.openlocfilehash: c7dd88bf0ead558a0c4951baf38543566d805caa
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75921133"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756473"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>使用面向学生的 Azure 入门版创建函数
 

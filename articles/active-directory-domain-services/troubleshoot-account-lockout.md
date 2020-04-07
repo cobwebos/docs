@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 04/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 2e274aa353f6c3e485ae10a6a67ee2940eb88b08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d2e22804c06f589c7990bf8f19319b897363a93
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246306"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743445"
 ---
 # <a name="troubleshoot-account-lockout-problems-with-an-azure-ad-domain-services-managed-domain"></a>解决 Azure AD 域服务托管域的帐户锁定问题
 
@@ -33,11 +33,11 @@ ms.locfileid: "80246306"
 
 ### <a name="fine-grained-password-policy"></a>严格的密码策略
 
-细粒度密码策略 （FGP） 允许您对域中的不同用户应用密码和帐户锁定策略的特定限制。 FGPP 仅影响在 Azure AD DS 中创建的用户。 从 Azure AD 同步到 Azure AD 托管域的云用户和域用户不受密码策略的影响。
+细粒度密码策略 （FGP） 允许您对域中的不同用户应用密码和帐户锁定策略的特定限制。 FGPP 仅影响 Azure AD DS 托管域中的用户。 从 Azure AD 同步到 Azure AD DS 托管域的云用户和域用户仅受 Azure AD DS 中的密码策略的影响。 其在 Azure AD 或本地目录中的帐户不受影响。
 
 策略通过 Azure AD DS 托管域中的组关联分发，所做的任何更改都应用于下一个用户登录。 更改策略不会解锁已锁定的用户帐户。
 
-有关细粒度密码策略的详细信息，请参阅[配置密码和帐户锁定策略][configure-fgpp]。
+有关细粒度密码策略的详细信息，以及直接在 Azure AD DS 中创建的用户与从 Azure AD 同步的用户之间的差异，请参阅[配置密码和帐户锁定策略][configure-fgpp]。
 
 ## <a name="common-account-lockout-reasons"></a>常见帐户锁定原因
 

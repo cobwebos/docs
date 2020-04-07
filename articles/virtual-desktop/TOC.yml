@@ -88,6 +88,10 @@
       href: app-attach.md
     - name: 使用 Microsoft Teams
       href: teams-on-wvd.md
+    - name: 设置 Azure 多重身份验证
+      href: set-up-mfa.md
+    - name: 安装语言包
+      href: language-packs.md
 - name: 概念
   items:
     - name: Windows 虚拟桌面环境
@@ -108,7 +112,7 @@
       href: windows-10-multisession-faq.md
     - name: 数据位置
       href: data-locations.md
-- name: 故障排除
+- name: 疑难解答
   items:
     - name: 故障排除概述、反馈和支持
       href: troubleshoot-set-up-overview.md

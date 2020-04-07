@@ -7,14 +7,14 @@ ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: 3bb7a62433993f1af26b1ce8bcb4ed258c34623c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e05920e495dd4aa14be6c849590a37a2bafa33f
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75973128"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757230"
 ---
 # <a name="prepay-for-azure-software-plans"></a>为 Azure 软件计划预付
 
@@ -38,6 +38,7 @@ ms.locfileid: "75973128"
 4. 选择一个范围。 范围可以包含一个订阅或多个订阅（共享范围）。
     - 单个订阅 - 计划折扣应用于订阅中的匹配使用情况。
     - 共享 - 计划折扣应用于计费上下文中任何订阅中的匹配实例。 对于企业客户，计费上下文是注册，包括注册中的所有订阅。 对于具有即用即付定价客户的单个计划，计费上下文是所有由帐户管理员创建的即用即付定价订阅的单个计划。
+    - 单个资源组 - 仅将预留折扣应用于所选资源组中的匹配资源。
 5. 选择产品以选择 VM 大小和映像类型。 折扣仅适用于所选的 VM 大小。
 6. 选择一年或三年期限。
 7. 选择数量，即可获取计费折扣的预付费 VM 实例数。

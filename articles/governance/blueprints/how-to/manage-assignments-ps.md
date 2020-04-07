@@ -3,12 +3,12 @@ title: 如何使用 PowerShell 管理分配
 description: 了解如何使用正式的 Azure 蓝图 PowerShell 模块 Az.Blueprint 管理蓝图分配。
 ms.date: 09/30/2019
 ms.topic: how-to
-ms.openlocfilehash: b16cf887ba8bfc51616839db5f4af87944ec686d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0868e5e207202511c1981a930870bfdc68a77a8f
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80247395"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677430"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>如何使用 PowerShell 管理分配
 
@@ -27,12 +27,12 @@ Azure 蓝图模块需要以下软件：
 
 ### <a name="install-the-module"></a>安装模块
 
-PowerShell 的蓝图模块是**Az.蓝图**。
+PowerShell 的 Azure 蓝图模块是**Az.蓝图**。
 
 1. 从管理 PowerShell 提示符运行以下命令****：
 
    ```azurepowershell-interactive
-   # Install the Blueprints module from PowerShell Gallery
+   # Install the Azure Blueprints module from PowerShell Gallery
    Install-Module -Name Az.Blueprint
    ```
 

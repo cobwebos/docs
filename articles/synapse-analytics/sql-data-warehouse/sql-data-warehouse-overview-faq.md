@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 9ce87bac6fbcc3833684dc540c542bc14c9b4955
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: dcefe6a6144c9a8f9c6ab7daf5b34b2d81a73c3f
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586525"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743002"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics（前称为 SQL 数据仓库）常见问题解答
 
@@ -35,7 +35,7 @@ A. 突触 SQL 池是指 Azure Synaps 通常可用的企业数据仓库功能。 
 
 Q. Azure Synapse 如何入门？
 
-A. 您可以开始使用 Azure[免费帐户](https://azure.microsoft.com/free/sql-data-warehouse/)或[联系销售人员了解更多信息](https://info.microsoft.com/ww-landing-azure-sql-data-warehouse-contactme.html)。 
+A. 您可以开始使用 Azure[免费帐户](https://azure.microsoft.com/free/sql-data-warehouse/)或[联系销售人员了解更多信息](https://info.microsoft.com/ww-landing-azure-sql-data-warehouse-contactme.html)。
 
 Q. Azure Synapse 提供哪些功能来确保数据安全性？
 
@@ -43,7 +43,8 @@ A. Azure Synapse 提供多种解决方案来保护数据，例如 TDE 和审核�
 
 Q. 从何处可以查明 Azure Synapse 符合哪些法律或企业标准？
 
-A. 请访问 [Microsoft 符合性](https://www.microsoft.com/trustcenter/compliance/complianceofferings)页面，查明产品（如 SOC 和 ISO）的各种符合性规定。 首先，按合规标题进行选择。 然后在页面右侧的 Microsoft 范围云服务部分中展开 Azure，以查看哪些服务符合 Azure Synapse 要求。
+A. 请访问 [Microsoft 符合性](https://www.microsoft.com/trustcenter/compliance/complianceofferings)页面，查明产品（如 SOC 和 ISO）的各种符合性规定。
+首先，按合规标题进行选择。 然后在页面右侧的 Microsoft 范围云服务部分中展开 Azure，以查看哪些服务符合 Azure Synapse 要求。
 
 Q. 是否可以连接 Power BI？
 
@@ -51,7 +52,7 @@ A.  能！ 尽管 Power BI 支持使用 Azure Synapse 进行直接查询，但�
 
 Q. 什么是 Synapse SQL 池容量限制？
 
-A. 请参阅当前[容量限制](sql-data-warehouse-service-capacity-limits.md)页。 
+A. 请参阅当前[容量限制](sql-data-warehouse-service-capacity-limits.md)页。
 
 Q. 为什么缩放/暂停/恢复会花费很长时间？
 
@@ -65,13 +66,13 @@ A. 如果有功能请求，请在 [UserVoice](https://feedback.azure.com/forums/
 
 Q. 该如何操作？
 
-A. 有关使用 Azure 突触进行开发的帮助，您可以在[我们的堆栈溢出](https://stackoverflow.com/questions/tagged/azure-sqldw)页上提问。 
+A. 有关使用 Azure 突触进行开发的帮助，您可以在[我们的堆栈溢出](https://stackoverflow.com/questions/tagged/azure-sqldw)页上提问。
 
 Q. 如何提交支持票证？
 
 A. 可通过 Azure 门户提交[支持票证](sql-data-warehouse-get-started-create-support-ticket.md)。
 
-## <a name="sql-languagefeature-support"></a>SQL 语言/功能支持 
+## <a name="sql-languagefeature-support"></a>SQL 语言/功能支持
 
 Q. 支持哪些数据类型？
 
@@ -85,7 +86,7 @@ A. 支持许多功能。 不支持的功能可以在[不支持的表功能](sql-
 
 Q. Synapse SQL 池是否支持 REST API？
 
-A. 是的。 大多数可用于 SQL 数据库的 REST 功能也可用于 Synapse SQL 池。 可以在 REST 文档页或 [MSDN](https://msdn.microsoft.com/library/azure/mt163685.aspx) 中找到 API 信息。
+A. 是的。 大多数可用于 SQL 数据库的 REST 功能也可用于 Synapse SQL 池。 您可以在 REST 文档页或[数据库中](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)找到 API 信息。
 
 ## <a name="loading"></a>加载
 
@@ -97,17 +98,17 @@ A. 可在[连接字符串](sql-data-warehouse-connection-strings.md)页面上找
 
 答：Orc、RC、Parquet 和平面分隔文本
 
-问：可以使用 PolyBase 连接到哪些数据源？ 
+问：可以使用 PolyBase 连接到哪些数据源？
 
 答[：Azure 数据湖存储](sql-data-warehouse-load-from-azure-data-lake-store.md)和[Azure 存储 Blob](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
 
-问：连接到 Azure 存储 Blob 或 ADLS 时，计算是否可以向下？ 
+问：连接到 Azure 存储 Blob 或 ADLS 时，计算是否可以向下？
 
-答：否，PolyBase 仅与存储组件交互。 
+答：否，PolyBase 仅与存储组件交互。
 
 问：能否连接到 HDI？
 
-答：HDI 可使用 ADLS 或 WASB 作为 HDFS 层。 如果具有 HDFS 层，则可以将数据加载到 Synapse SQL 池中。 但是，无法生成 HDI 实例的下推计算。 
+答：HDI 可使用 ADLS 或 WASB 作为 HDFS 层。 如果具有 HDFS 层，则可以将数据加载到 Synapse SQL 池中。 但是，无法生成 HDI 实例的下推计算。
 
 ## <a name="next-steps"></a>后续步骤
 

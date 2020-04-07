@@ -3,16 +3,16 @@ title: 使用 PowerShell 导入和导出蓝图
 description: 了解如何将蓝图定义用作代码。 使用导出和导入命令共享、源代码管理并管理它们。
 ms.date: 09/03/2019
 ms.topic: how-to
-ms.openlocfilehash: fc7b9818072665d79deaf8a456868943e8428730
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 98bd21aad944346a17d8bdce7fb74c0eb8be2ed7
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873193"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677138"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>使用 PowerShell 的导入和导出蓝图定义
 
-Azure 蓝图可以通过 Azure 门户完全管理。 随着组织在使用蓝图方面的进步，他们应该开始将蓝图定义视为托管代码。 这个概念通常被称为基础结构作为代码 （IaC）。 将蓝图定义视为代码提供了 Azure 门户提供的其他优势。 这些优势包括：
+Azure 蓝图可以通过 Azure 门户完全管理。 随着组织在 Azure 蓝图的使用方面取得进展，他们应该开始将蓝图定义视为托管代码。 这个概念通常被称为基础结构作为代码 （IaC）。 将蓝图定义视为代码提供了 Azure 门户提供的其他优势。 这些优势包括：
 
 - 共享蓝图定义
 - 备份蓝图定义

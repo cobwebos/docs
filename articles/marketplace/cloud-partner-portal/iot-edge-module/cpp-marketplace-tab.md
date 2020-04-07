@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 3ff65a637c1d3722e773ab27f051b3b5bc109a23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4290bad405ddab6d89cac5ef7bfd185247d41da1
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281725"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745115"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>IoT Edge 模块“市场”选项卡
+
+>[!Important]
+>从 2020 年 3 月 30 日开始，我们将开始将 IoT Edge 模块产品的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[创建 IoT Edge 模块产品/服务](https://aka.ms/AzureCreateIoT)中的说明进行操作，以管理迁移的优惠。
 
 在“新建套餐”页的“市场”选项卡中，可向潜在客户提供营销、销售和法律信息与协议，以及管理从市场生成的潜在顾客。******** 这个较长的窗体划分为四个部分：“概述”、“营销项目”、“潜在顾客管理”和“法律条款”。****************
 
@@ -32,7 +35,7 @@ ms.locfileid: "80281725"
 | **Title\***                 | 套餐的标题。 将在市场中突出显示。  最大长度为 50 个字符。 <!--ADD PICTURE IN ACTION-->|
 | **总结\***               | 套餐的简短摘要。 最大长度为 100 个字符。 <!--ADD PICTURE IN ACTION-->|
 | **长摘要\***          | 套餐的较长摘要（不过，其内容可与“摘要”相同）。****  最大长度为 256 个字符。 <!--ADD PICTURE IN ACTION-->|
-| **描述\***           | 套餐的说明。  最大长度为 3000 个字符，支持简单 HTML 格式。<br/> 必须在底部包含“最低硬件要求”段落。** 例如： <br/> <p><u>最低硬件要求：</u>Linux x64 和 arm32 OS，1 GB RAM，500 Mb 存储</p>
+| **说明\***           | 套餐的说明。  最大长度为 3000 个字符，支持简单 HTML 格式。<br/> 必须在底部包含“最低硬件要求”段落。** 例如： <br/> <p><u>最低硬件要求：</u>Linux x64 和 arm32 OS，1 GB RAM，500 Mb 存储</p>
 | **营销标识符\***  | 与此套餐关联的唯一 URL，通常包含组织名称和解决方案名称，最大长度为 50 个字符。  例如： <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
 | **预览订阅 ID** | 为预览版添加 1 到 100 个订阅标识符。 在套餐发布之后、上线之前，这些已加入允许列表的订阅将有权访问该套餐。 |
 | **有用链接**          | 可能最适合与该套餐关联的企业和技术类别的多项选择。  最多允许添加 10 个类别。 请务必至少添加一个文档链接，以及 [Azure IoT 设备目录](https://catalog.azureiotsolutions.com/)中兼容的 IoT Edge 设备的一个链接。 |
@@ -86,7 +89,7 @@ ms.locfileid: "80281725"
 |  ---------                |     ---------------                                                          |
 | *徽标*  | 参阅上面的屏幕截图，了解徽标的用法和使用位置。  |
 | **小\***                 | 40x40 像素 PNG 格式                                                     |
-| **中\***                | 90x90 像素 PNG 格式                                                     |
+| **中型\***                | 90x90 像素 PNG 格式                                                     |
 | **大\***                 | 115x115 像素 PNG 格式                                                  |
 | **宽\***                  | 255x115 像素 PNG 格式                                                   |
 | **主图**                  | 815x290 像素 PNG 格式  此徽标是可选的，但是，一旦上传主图，就无法将其删除。 |

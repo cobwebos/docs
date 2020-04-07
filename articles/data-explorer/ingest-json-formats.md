@@ -7,12 +7,12 @@ ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: d293b76e004d693813a074cb8551a86cb3c0bec2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcf6a0ccfc04890052f1a4bab19f97ee4e55f87a
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76772329"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756617"
 ---
 # <a name="ingest-json-formatted-sample-data-into-azure-data-explorer"></a>将 JSON 格式的示例数据引入 Azure 数据资源管理器
 
@@ -54,7 +54,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
 
 使用 Kusto 查询语言引入原始 JSON 格式的数据。
 
-1. 登录到[https://dataexplorer.azure.com](https://dataexplorer.azure.com)。
+1. 登录到 [https://dataexplorer.azure.com](https://dataexplorer.azure.com)。
 
 1. 选择“添加群集”****。
 
@@ -427,7 +427,7 @@ INGESTION_CLIENT.ingest_from_blob(
 1. 将数据引入 `RawEvents` 表中。
 
     ```Kusto
-    .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/array.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=RawEventMapping)
+    .ingest into table RawEvents h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/array.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=RawEventMapping)
     ```
 
 1. 检查 `Events` 表中的数据。

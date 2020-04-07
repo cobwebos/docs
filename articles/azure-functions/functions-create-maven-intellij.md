@@ -2,16 +2,16 @@
 title: 使用 Java 和 IntelliJ 创建 Azure 函数
 description: 了解如何使用 Java 和 IntelliJ 创建简单的 HTTP 触发式无服务器应用并将其发布到 Azure。
 author: jeffhollan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 7003dc19a7bfc405809de91534028aba8e0416c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 05074696ca2cc9d425269561523beb11eb18c4f3
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136844"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756441"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>使用 Java 和 IntelliJ 创建第一个 Azure 函数
 

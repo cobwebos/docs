@@ -3,12 +3,12 @@ title: 设计知识库 - QnA 制造商
 description: QnA Maker 知识库由一组问答 （QnA） 集和与每个 QnA 对关联的可选元数据组成。
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: cb71de0f6a3e372d8c1c1fede67ba0c0354532ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d24434d1343f4174cfbfeb3a30c36737b213168
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76844308"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756788"
 ---
 # <a name="question-and-answer-set-concepts"></a>问答集概念
 
@@ -33,7 +33,7 @@ ms.locfileid: "76844308"
 
 ## <a name="editorially-add-to-knowledge-base"></a>以编辑身份添加到知识库
 
-如果没有预先存在的内容来填充知识库，则可以在 QnA Maker 门户中以编辑方式添加 QnA 集。 在[此处](../How-To/edit-knowledge-base.md)了解如何更新知识库。
+如果没有预先存在的内容来填充知识库，则可以在 QnA Maker 门户中按编辑方式添加 QnA 对。 在[此处](../How-To/edit-knowledge-base.md)了解如何更新知识库。
 
 ## <a name="editing-your-knowledge-base-locally"></a>在本地编辑知识库
 

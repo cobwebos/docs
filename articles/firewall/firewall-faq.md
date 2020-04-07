@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 45276884d59ac8d1d876e2225ac02bb51c3f74fc
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 5ddbb58837fbda0f14a07186d5a3053055954454
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437726"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677448"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火墙常见问题解答
 
@@ -212,4 +212,8 @@ Set-AzFirewall -AzureFirewall $fw
 
 ## <a name="why-can-a-tcp-ping-and-similar-tools-successfully-connect-to-a-target-fqdn-even-when-no-rule-on-azure-firewall-allows-that-traffic"></a>为什么即使 Azure 防火墙上没有任何规则允许该流量，TCP ping 和类似工具也能成功连接到目标 FQDN？
 
-TCP ping 实际上未连接到目标 FQDN。 这是因为 Azure 防火墙的透明代理侦听端口 80/443 上的出站流量。 TCP ping 与防火墙建立连接，然后丢弃数据包并记录连接。 此行为没有任何安全影响。 但是，为了避免混淆，我们正在调查此行为的潜在更改。 
+TCP ping 实际上未连接到目标 FQDN。 这是因为 Azure 防火墙的透明代理侦听端口 80/443 上的出站流量。 TCP ping 与防火墙建立连接，然后丢弃数据包并记录连接。 此行为没有任何安全影响。 但是，为了避免混淆，我们正在调查此行为的潜在更改。
+
+## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>IP 组支持的 IP 地址数量是否有限制？
+
+是的。 有关详细信息，请参阅[Azure 订阅和服务限制、配额和约束](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)

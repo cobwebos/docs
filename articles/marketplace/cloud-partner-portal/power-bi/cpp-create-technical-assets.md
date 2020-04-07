@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: df0708ff964595181d00d8402f1162e0832c70eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0079c5a9409aafd4d6341ec9febb5115dc4023a1
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286364"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745403"
 ---
 # <a name="create-power-bi-app-offer-technical-assets"></a>创建 Power BI 应用产品/服务技术资产
+
+>[!Important]
+>从 2020 年 3 月 30 日开始，我们将开始将 Power BI 应用优惠的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[Power BI 应用创建概述](https://aka.ms/AzureCreatePBIServiceApp)中的说明进行操作，以管理迁移的优惠。
 
 需要为此产品/服务类型提供的主要技术资产为 Power BI 应用。 Power BI 应用是主数据集、报表或仪表板，以及可选的连接服务和嵌入数据集的集合。 它从之前称为[内容包](https://docs.microsoft.com/power-bi/service-organizational-content-pack-introduction)的资产类型演变而来。 有关开发此应用类型的详细信息，请参阅[什么是 Power BI 模板应用？](https://go.microsoft.com/fwlink/?linkid=2028636)。
 

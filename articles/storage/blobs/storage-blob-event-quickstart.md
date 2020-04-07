@@ -8,12 +8,12 @@ ms.date: 03/05/2020
 ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: 93a146e481e6bb8b9180012d8c569d45521b4450
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad5662a722db764d09c1ead528a98c09c1d3df7f
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79269310"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745525"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>快速入门：使用 Azure CLI 将存储事件路由到 Web 终结点
 
@@ -29,7 +29,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装和使用 CLI，则本文要求您运行最新版本的 Azure CLI（2.0.70 或更高版本）。 要查找版本，请运行 `az --version`。 如果需要安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+如果选择在本地安装和使用 CLI，则本文要求您运行最新版本的 Azure CLI（2.0.70 或更高版本）。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 如果不使用 Cloud Shell，则必须先使用 `az login` 登录。
 
@@ -93,7 +93,7 @@ storageid=$(az storage account show --name <storage_account_name> --resource-gro
 endpoint=https://$sitename.azurewebsites.net/api/updates
 
 az eventgrid event-subscription create \
-  --resource-id $storageid \
+  --source-resource-id $storageid \
   --name <event_subscription_name> \
   --endpoint $endpoint
 ```

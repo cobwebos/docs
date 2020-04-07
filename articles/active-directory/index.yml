@@ -12,12 +12,12 @@ metadata:
   ms.author: mtillman
   manager: daveba
   ms.date: 03/17/2020
-  ms.openlocfilehash: f26980f866a074bf6c3d2ce716687b18bbcb3249
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 325534bece8ca5dc85e84a286642b0f1d4f6cc51
+  ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "79497644"
+  ms.lasthandoff: 04/03/2020
+  ms.locfileid: "80631694"
 highlightedContent:
   items:
   - title: 什么是 Azure AD？
@@ -26,9 +26,9 @@ highlightedContent:
   - title: Azure AD 中的新增功能
     itemType: whats-new
     url: ./fundamentals/whats-new.md
-  - title: Azure AD 简化远程工作的 5 种方式
-    itemType: overview
-    url: https://techcommunity.microsoft.com/t5/azure-active-directory-identity/top-5-ways-your-azure-ad-can-help-you-enable-remote-work/ba-p/1144691
+  - title: 保护远程工作人员
+    itemType: get-started
+    url: https://docs.microsoft.com/enterprise-mobility-security/remote-work/
   - title: 向用户分配角色
     itemType: how-to-guide
     url: ./fundamentals/active-directory-users-assign-role-azure-portal.md

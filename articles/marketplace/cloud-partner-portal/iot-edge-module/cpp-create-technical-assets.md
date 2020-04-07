@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 304ea31f2a6f9820226a6ad0db8bfc803e6fdb94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd9cd9f3986ef1944d9f9119296af5512b352d1d
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80285208"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744316"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>准备 IoT Edge 模块技术资产
+
+>[!Important]
+>从 2020 年 3 月 30 日开始，我们将开始将 IoT Edge 模块产品的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[创建 IoT Edge 模块产品/服务](https://aka.ms/AzureIoTTechAsset)中的说明进行操作，以管理迁移的优惠。
 
 本文介绍在 Azure 市场中发布 IoT Edge 模块技术资产之前，这些资源需要满足的要求。
 
@@ -58,7 +61,7 @@ IoT Edge 模块必须支持以下平台选项之一。
     <p><u>Minimum hardware requirements:</u> Linux x64 and arm32  OS, 1GB of RAM, 500 Mb of storage</p>
   ```
 
-### <a name="configuration"></a>Configuration
+### <a name="configuration"></a>配置
 
 该模块还包括默认配置设置，尽量使部署到 IoT Edge 设备的过程变得简单直接。 容器还可以包含 IoT Edge 模块 SDK，以便与 edgeHub 和 IoT 中心通信。
 

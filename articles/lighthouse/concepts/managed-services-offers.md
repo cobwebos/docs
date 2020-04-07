@@ -1,28 +1,28 @@
 ---
-title: Azure 市场中的托管服务产品
-description: 服务提供商可借助托管服务产品向 Azure 市场中的客户销售资源管理服务。
-ms.date: 03/17/2020
+title: Azure 应用商店中的托管服务产品
+description: 托管服务提供允许服务提供商向 Azure 应用商店中的客户提供资源管理产品。
+ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2d6e39f753736c0582e9d91870a99b66ae41255b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a0670bd74971132dcf243736bdf882a00154a942
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500784"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672418"
 ---
-# <a name="managed-services-offers-in-azure-marketplace"></a>Azure 市场中的托管服务产品
+# <a name="managed-service-offers-in-azure-marketplace"></a>Azure 应用商店中的托管服务产品
 
-本文介绍 [Azure 市场](https://azuremarketplace.microsoft.com)中的“新托管服务产品”类型****。 托管服务产品通过 Azure 委派资源管理为客户提供资源管理服务。 你可以向所有潜在客户提供这些产品/服务，也可以仅向一个或多个特定客户提供这些产品/服务。 由于直接向客户收取与这些托管服务相关的成本，因此 Microsoft 不收取任何费用。
+本文介绍[Azure 应用商店](https://azuremarketplace.microsoft.com)中的**托管服务**产品/服务类型。 托管服务提供允许您通过使用[Azure 委派的资源管理](azure-delegated-resource-management.md)为客户提供资源管理服务。 您可以向所有潜在客户或仅向一个或多个特定客户提供这些优惠。 由于直接向客户收取与这些托管服务相关的成本，因此 Microsoft 不收取任何费用。
 
-## <a name="understand-managed-services-offers"></a>了解托管服务产品
+## <a name="understand-managed-service-offers"></a>了解托管服务提供
 
-托管服务产品简化了 Azure 委托资源管理的客户的管理过程。 客户在 Azure 市场中购买产品/服务时，他们将能够指定应加入哪些订阅和/或资源组。 请注意，必须先通过手动注册 **Microsoft.ManagedServices** 资源提供程序来对订阅进行加入授权。
+托管服务提供简化为 Azure 委派资源管理的入职客户流程。 客户在 Azure 市场中购买产品/服务时，他们将能够指定应加入哪些订阅和/或资源组。
 
-之后，你组织中的用户将能够根据你在[云合作伙伴门户](https://cloudpartner.azure.com/)中创建产品/服务时定义的访问权限，从你组织的租户中对这些资源执行管理任务。 这通过清单来完成，该清单指定将使用 Azure 委托资源管理访问客户资源的 Azure AD 用户、组和服务主体，以及定义其访问级别的角色。 通过向 Azure AD 组而不是单个用户或应用程序帐户分配权限，可以在访问要求发生更改时添加或删除单个用户。
+之后，根据您在[云合作伙伴门户](https://cloudpartner.azure.com/)中创建产品/服务时定义的访问权限，组织中的用户将能够从组织的租户中处理这些资源。 这通过清单来完成，该清单指定将使用 Azure 委托资源管理访问客户资源的 Azure AD 用户、组和服务主体，以及定义其访问级别的角色。 通过向 Azure AD 组而不是单个用户或应用程序帐户分配权限，可以在访问要求发生更改时添加或删除单个用户。
 
 ## <a name="public-and-private-offers"></a>公共和专用产品/服务
 
-每个托管服务产品/服务均包含一个或多个计划。 计划可以是私有的，也可以是公开的。 
+每个托管服务产品/服务均包含一个或多个计划。 计划可以是私有的，也可以是公开的。
 
 如果要将产品/服务限制为特定客户，可以发布专用计划。 执行此操作时，只能为你提供的特定订阅 ID 购买计划。 有关详细信息，请参阅[专用产品/服务](../../marketplace/private-offers.md)。
 
@@ -35,7 +35,7 @@ ms.locfileid: "79500784"
 
 ## <a name="publish-managed-service-offers"></a>发布托管服务产品
 
-要了解如何发布托管服务产品，请参阅[将托管服务产品发布到 Azure 市场](../how-to/publish-managed-services-offers.md)。 有关使用云合作伙伴门户发布到 Azure 市场的常规信息，请参阅 [Azure 市场和 AppSource 发布指南](../../marketplace/marketplace-publishers-guide.md)以及[管理 Azure 和 AppSource 市场产品/服务](../../marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers.md)。
+要了解如何发布托管服务产品，请参阅[将托管服务产品发布到 Azure 市场](../how-to/publish-managed-services-offers.md)。 有关使用云合作伙伴门户发布到 Azure 应用商店的一般信息，请参阅[Azure 应用商店和 AppSource 发布指南](../../marketplace/marketplace-publishers-guide.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

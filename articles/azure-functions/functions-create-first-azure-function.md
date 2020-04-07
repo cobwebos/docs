@@ -2,15 +2,15 @@
 title: 在 Azure 门户中创建第一个函数
 description: 了解如何使用 Azure 门户创建第一个可无服务器执行的 Azure Function。
 ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
-ms.topic: quickstart
-ms.date: 03/06/2020
+ms.topic: how-to
+ms.date: 03/26/2020
 ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: e7bb5e7b387c3ab1140a3fe475911bd0e428e2a5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
-ms.translationtype: HT
+ms.openlocfilehash: a96d2ede80b4c57e7b85048379a4bfb66cacfd52
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80057018"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754847"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>在 Azure 门户中创建第一个函数
 

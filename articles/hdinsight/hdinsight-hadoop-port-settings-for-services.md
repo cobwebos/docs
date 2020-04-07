@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: 67cafbb7934381cd4c2936d6e6dfe7fb19d70735
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/06/2020
+ms.openlocfilehash: fe2cb04f36026740dc54f4668d3c3188592bd8ae
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76314685"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754227"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight 上的 Apache Hadoop 服务所使用的端口
 
@@ -21,9 +21,9 @@ ms.locfileid: "76314685"
 
 ## <a name="public-ports-vs-non-public-ports"></a>公共端口与非公共端口
 
-基于 Linux 的 HDInsight 群集只在 Internet 上公开三个端口：22、23 和 443。 使用这些端口可以通过 SSH 安全访问群集，以及访问通过安全 HTTPS 协议公开的服务。
+基于 Linux 的 HDInsight 群集仅公开公开公开公开显示 Internet 上的三个端口：22、23 和 443。 这些端口使用通过安全 HTTPS 协议公开的 SSH 和服务来保护群集访问。
 
-在内部，HDInsight 由在 Azure 虚拟网络上运行的多个 Azure 虚拟机（群集内的节点）实现。 从虚拟网络内部可以访问不是通过 Internet 公开的端口。 例如，如果使用 SSH 连接到某个头节点，则可以从该头节点直接访问群集节点上运行的服务。
+HDInsight 由在 Azure 虚拟网络上运行的多个 Azure 虚拟机（群集节点）实现。 从虚拟网络内部可以访问不是通过 Internet 公开的端口。 如果通过 SSH 连接到头节点，则可以直接访问群集节点上运行的服务。
 
 > [!IMPORTANT]  
 > 如果尚未指定某个 Azure 虚拟网络作为 HDInsight 的配置选项，系统会自动创建一个 Azure 虚拟网络。 但无法将其他计算机（例如其他 Azure 虚拟机或客户端开发计算机）加入到此虚拟网络中。
@@ -32,9 +32,9 @@ ms.locfileid: "76314685"
 
 ## <a name="public-ports"></a>公共端口
 
-HDInsight 群集中的所有节点都位于 Azure 虚拟网络中，无法直接从 Internet 访问。 使用公共网关可以通过 Internet 访问以下端口（在所有 HDInsight 群集类型中很常见）。
+HDInsight 群集中的所有节点都位于 Azure 虚拟网络中。 无法直接从 Internet 访问节点。 使用公共网关可以通过 Internet 访问以下端口（在所有 HDInsight 群集类型中很常见）。
 
-| 服务 | 端口 | 协议 | 描述 |
+| 服务 | 端口 | 协议 | 说明 |
 | --- | --- | --- | --- |
 | sshd |22 |SSH |将客户端连接到主头节点上的 sshd。 有关详细信息，请参阅将[SSH 与 HDInsight 一起使用](hdinsight-hadoop-linux-use-ssh-unix.md)。 |
 | sshd |22 |SSH |将客户端连接到边缘节点上的 sshd。 有关详细信息，请参阅将[SSH 与 HDInsight 一起使用](hdinsight-hadoop-linux-use-ssh-unix.md)。 |
@@ -47,9 +47,9 @@ HDInsight 群集中的所有节点都位于 Azure 虚拟网络中，无法直接
 
 以下各项适用于特定的群集类型：
 
-| 服务 | 端口 | 协议 | 群集类型 | 描述 |
+| 服务 | 端口 | 协议 | 群集类型 | 说明 |
 | --- | --- | --- | --- | --- |
-| Stargate |443 |HTTPS |HBase |HBase REST API。 请参阅[开始使用 Apache HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
+| `Stargate` |443 |HTTPS |HBase |HBase REST API。 请参阅[开始使用 Apache HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
 | Livy |443 |HTTPS |Spark |Spark REST API。 请参阅[使用 Apache Livy 远程提交 Apache Spark 作业](spark/apache-spark-livy-rest-interface.md) |
 | Spark Thrift 服务器 |443 |HTTPS |Spark |用来提交 Hive 查询的 Spark Thrift 服务器。 请参阅[在 HDInsight 上将 Beeline 与 Apache Hive 配合使用](hadoop/apache-hadoop-use-hive-beeline.md) |
 | Storm |443 |HTTPS |Storm |Storm Web UI。 请参阅[在 HDInsight 上部署和管理 Apache Storm 拓扑](storm/apache-storm-deploy-monitor-topology-linux.md) |
@@ -85,22 +85,22 @@ HDInsight 群集中的所有节点都位于 Azure 虚拟网络中，无法直接
 
 ### <a name="hdfs-ports"></a>HDFS 端口
 
-| 服务 | Nodes | 端口 | 协议 | 描述 |
+| 服务 | Nodes | 端口 | 协议 | 说明 |
 | --- | --- | --- | --- | --- |
 | NameNode Web UI |头节点 |30070 |HTTPS |用于查看状态的 Web UI |
 | NameNode 元数据服务 |头节点 |8020 |IPC |文件系统元数据 |
-| DataNode |所有辅助角色节点 |30075 |HTTPS |用于查看状态、日志等信息的 Web UI |
+| DataNode |所有辅助角色节点 |30075 |HTTPS |Web UI 以查看状态、日志等。 |
 | DataNode |所有辅助角色节点 |30010 |&nbsp; |数据传输 |
 | DataNode |所有辅助角色节点 |30020 |IPC |元数据操作 |
 | 辅助 NameNode |头节点 |50090 |HTTP |NameNode 元数据检查点 |
 
 ### <a name="yarn-ports"></a>YARN 端口
 
-| 服务 | Nodes | 端口 | 协议 | 描述 |
+| 服务 | Nodes | 端口 | 协议 | 说明 |
 | --- | --- | --- | --- | --- |
 | Resource Manager Web UI |头节点 |8088 |HTTP |Resource Manager 的 Web UI |
 | Resource Manager Web UI |头节点 |8090 |HTTPS |Resource Manager 的 Web UI |
-| Resource Manager 管理界面 |头节点 |8141 |IPC |用于应用程序提交（Hive、Hive 服务器、Pig 等） |
+| Resource Manager 管理界面 |头节点 |8141 |IPC |对于应用程序提交（Hive、Hive 服务器、Pig 等）。 |
 | Resource Manager 计划程序 |头节点 |8030 |HTTP |管理界面 |
 | Resource Manager 应用程序界面 |头节点 |8050 |HTTP |应用程序管理器界面的地址 |
 | NodeManager |所有辅助角色节点 |30050 |&nbsp; |容器管理器的地址 |
@@ -110,20 +110,20 @@ HDInsight 群集中的所有节点都位于 Azure 虚拟网络中，无法直接
 
 ### <a name="hive-ports"></a>Hive 端口
 
-| 服务 | Nodes | 端口 | 协议 | 描述 |
+| 服务 | Nodes | 端口 | 协议 | 说明 |
 | --- | --- | --- | --- | --- |
 | HiveServer2 |头节点 |10001 |Thrift |用于连接到 Hive 的服务 (Thrift/JDBC) |
 | Hive 元存储 |头节点 |9083 |Thrift |用于连接到 Hive 元数据的服务 (Thrift/JDBC) |
 
 ### <a name="webhcat-ports"></a>WebHCat 端口
 
-| 服务 | Nodes | 端口 | 协议 | 描述 |
+| 服务 | Nodes | 端口 | 协议 | 说明 |
 | --- | --- | --- | --- | --- |
 | WebHCat 服务器 |头节点 |30111 |HTTP |位于 HCatalog 和其他 Hadoop 服务顶层的 Web API |
 
 ### <a name="mapreduce-ports"></a>MapReduce 端口
 
-| 服务 | Nodes | 端口 | 协议 | 描述 |
+| 服务 | Nodes | 端口 | 协议 | 说明 |
 | --- | --- | --- | --- | --- |
 | JobHistory |头节点 |19888 |HTTP |MapReduce JobHistory Web UI |
 | JobHistory |头节点 |10020 |&nbsp; |MapReduce JobHistory 服务器 |
@@ -131,21 +131,21 @@ HDInsight 群集中的所有节点都位于 Azure 虚拟网络中，无法直接
 
 ### <a name="oozie"></a>Oozie
 
-| 服务 | Nodes | 端口 | 协议 | 描述 |
+| 服务 | Nodes | 端口 | 协议 | 说明 |
 | --- | --- | --- | --- | --- |
 | Oozie 服务器 |头节点 |11000 |HTTP |Oozie 服务的 URL |
 | Oozie 服务器 |头节点 |11001 |HTTP |Oozie 管理端口 |
 
 ### <a name="ambari-metrics"></a>Ambari 指标
 
-| 服务 | Nodes | 端口 | 协议 | 描述 |
+| 服务 | Nodes | 端口 | 协议 | 说明 |
 | --- | --- | --- | --- | --- |
 | TimeLine（应用程序历史记录） |头节点 |6188 |HTTP |TimeLine 服务 Web UI |
 | TimeLine（应用程序历史记录） |头节点 |30200 |RPC |TimeLine 服务 Web UI |
 
 ### <a name="hbase-ports"></a>HBase 端口
 
-| 服务 | Nodes | 端口 | 协议 | 描述 |
+| 服务 | Nodes | 端口 | 协议 | 说明 |
 | --- | --- | --- | --- | --- |
 | HMaster |头节点 |16000 |&nbsp; |&nbsp; |
 | HMaster 信息 Web UI |头节点 |16010 |HTTP |HBase 主控 Web UI 的端口 |
@@ -154,7 +154,7 @@ HDInsight 群集中的所有节点都位于 Azure 虚拟网络中，无法直接
 
 ### <a name="kafka-ports"></a>Kafka 端口
 
-| 服务 | Nodes | 端口 | 协议 | 描述 |
+| 服务 | Nodes | 端口 | 协议 | 说明 |
 | --- | --- | --- | --- | --- |
 | 代理 |辅助角色节点 |9092 |[Kafka Wire Protocol](https://kafka.apache.org/protocol.html)（Kafka 线路协议） |用于客户端通信 |
 | &nbsp; |Zookeeper 节点 |2181 |&nbsp; |客户端用来连接 Zookeeper 的端口 |
@@ -162,7 +162,7 @@ HDInsight 群集中的所有节点都位于 Azure 虚拟网络中，无法直接
 
 ### <a name="spark-ports"></a>Spark 端口
 
-| 服务 | Nodes | 端口 | 协议 | URL 路径 | 描述 |
+| 服务 | Nodes | 端口 | 协议 | URL 路径 | 说明 |
 | --- | --- | --- | --- | --- | --- |
 | Spark Thrift 服务器 |头节点 |10002 |Thrift | &nbsp; | 用于连接到 Spark SQL 的服务 (Thrift/JDBC) |
 | Livy 服务器 | 头节点 | 8998 | HTTP | &nbsp; | 用于运行语句、作业和应用程序的服务 |

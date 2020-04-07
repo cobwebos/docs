@@ -5,22 +5,25 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: ee3501e7feec77c842f3784f6c2820af05637e6b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43bb34a80d8d62cfa2bde445b94fb97da25ccda3
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286381"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745477"
 ---
 # <a name="create-a-power-bi-app-offer"></a>创建 Power BI 应用产品/服务
+
+>[!Important]
+>从 2020 年 3 月 30 日开始，我们将开始将 Power BI 应用优惠的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[Power BI 应用创建概述](https://aka.ms/AzureCreatePBIServiceApp)中的说明进行操作，以管理迁移的优惠。
 
 本文列出了为 [AppSource](https://appsource.microsoft.com) 创建新的 Power BI 应用产品/服务时要遵循的步骤。 每个产品/服务在 AppSource 中都显示为其自己的实体。 在[云合作伙伴门户](https://cloudpartner.azure.com/)中创建新产品/服务时，需要为产品/服务提供四组资产。
 
 资产组如下表所述：
 
-|   资产组      | 描述                                                                         |
+|   资产组      | 说明                                                                         |
 | ----------------   | ----------------                                                                    |
 | 产品/服务设置     | 产品/服务的主要标识和名称。                                      |
 | 技术信息     | 用于在客户端的 Power BI 工作区中安装应用的安装程序 URL。 有关如何生成此 URL 的详细信息，请参阅 [Power BI 应用文档](https://go.microsoft.com/fwlink/?linkid=2028636)。 |

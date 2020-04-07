@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/06/2020
 ms.author: jgao
-ms.openlocfilehash: 3ef1c3d3fe0fd1ecad95e027b06ce14fd70d4d3f
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: aa49b313f0fb10175dc6c0003f1a919f61731269
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437882"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743309"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>在模板中使用部署脚本（预览）
 
@@ -33,6 +33,8 @@ ms.locfileid: "80437882"
 - 允许指定用于执行脚本的标识。 目前，仅支持[Azure 用户分配的托管标识](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。
 - 允许将命令行参数传递给脚本。
 - 可以指定脚本输出并将其传回部署。
+
+部署脚本资源仅在 Azure 容器实例可用的区域可用。  请参阅[Azure 区域中的 Azure 容器实例的资源可用性](../../container-instances/container-instances-region-availability.md)。
 
 > [!IMPORTANT]
 > 在同一资源组中会创建两个部署脚本资源（一个存储帐户和一个容器实例），用于执行脚本和进行故障排除。 当部署脚本执行处于终端状态时，脚本服务通常会删除这些资源。 在这些资源删除之前，这些资源会一直向你收费。 要了解更多信息，请参阅[清理部署脚本资源](#clean-up-deployment-script-resources)。
@@ -189,6 +191,8 @@ Write-Host "Press [ENTER] to continue ..."
 要查看示例，请[在此处](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json)选择 。
 
 外部脚本文件必须可访问。  要保护存储在 Azure 存储帐户中的脚本文件，请参阅[教程：Azure 资源管理器模板部署中的安全项目](./template-tutorial-secure-artifacts.md)。
+
+您有责任确保部署脚本引用的脚本（**主要脚本库**或**支持脚本Uri）的完整性**。  仅引用您信任的脚本。
 
 ## <a name="use-supporting-scripts"></a>使用支持脚本
 

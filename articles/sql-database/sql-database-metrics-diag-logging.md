@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 880072c9865e38e181869506e35968767fa95e8a
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.date: 04/06/2020
+ms.openlocfilehash: 9c9f069ad38c65aa0bbfdcde9eef3fed32585d9e
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387897"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756417"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-diagnostic-telemetry"></a>配置 Azure SQL 数据库诊断遥测的流式导出
 
@@ -126,7 +126,7 @@ ms.locfileid: "80387897"
 7. 选择弹性池诊断遥测的复选框：**基本**指标。
    ![为弹性池配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
 
-8. 选择“保存”。****
+8. 选择“保存”。 
 9. 此外，通过下一节中描述的步骤，为要监视的弹性池中的每个数据库配置诊断遥测流。
 
 > [!IMPORTANT]
@@ -155,7 +155,7 @@ ms.locfileid: "80387897"
 8. 对于高级的一分钟间隔监视体验，请选中“基本”指标对应的复选框。****
 
    ![为单一数据库、共用数据库或实例数据库配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
-9. 选择“保存”。****
+9. 选择“保存”。 
 10. 针对要监视的每个数据库重复上述步骤。
 
 > [!TIP]
@@ -191,7 +191,7 @@ ms.locfileid: "80387897"
 
    ![为托管实例配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
 
-8. 选择“保存”。****
+8. 选择“保存”。 
 9. 此外，请按照下一节中描述的步骤，为要监视的托管实例中每个实例数据库配置诊断遥测流。
 
 > [!IMPORTANT]
@@ -219,13 +219,13 @@ ms.locfileid: "80387897"
 5. 为流式诊断数据选择目标资源：**存档到存储帐户**、**流到事件中心**或**发送到日志分析**。
 6. 选择数据库诊断遥测的复选框 **：SQLInsights、****查询存储运行时统计信息**、**查询存储等待统计信息**和**错误**。
    ![为实例数据库配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
-7. 选择“保存”。****
+7. 选择“保存”。 
 8. 针对要监视的每个实例数据库重复上述步骤。
 
 > [!TIP]
 > 针对要监视的每个实例数据库重复上述步骤。
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -454,9 +454,15 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 |**指标**|**指标显示名称**|**说明**|
 |---|---|---|
-|tempdb_data_size| Tempdb 数据文件大小 (KB) |Tempdb 数据文件大小 (KB)。 不适用于数据仓库。 此指标可用于使用 vCore 购买模型的数据库，该模型具有 2 个 vCore 和更高版本，或者 200 个 DTU 和更高版本，适用于基于 DTU 的采购模型。 此指标当前不适用于超大规模数据库。|
-|tempdb_log_size| Tempdb 日志文件大小 (KB) |Tempdb 日志文件大小 (KB)。 不适用于数据仓库。 此指标可用于使用 vCore 购买模型的数据库，该模型具有 2 个 vCore 和更高版本，或者 200 个 DTU 和更高版本，适用于基于 DTU 的采购模型。 此指标当前不适用于超大规模数据库。|
-|tempdb_log_used_percent| Tempdb 日志已用百分比 |Tempdb 日志已用百分比。 不适用于数据仓库。 此指标可用于使用 vCore 购买模型的数据库，该模型具有 2 个 vCore 和更高版本，或者 200 个 DTU 和更高版本，适用于基于 DTU 的采购模型。 此指标当前不适用于超大规模数据库。|
+|sqlserver_process_core_percent<sup>1</sup>|SQL Server 进程核心百分比|SQL Server 进程的 CPU 使用率百分比，由操作系统测量。|
+|sqlserver_process_memory_percent<sup>1</sup> |SQL Server 进程内存百分比|SQL Server 进程的内存使用百分比，由操作系统测量。|
+|tempdb_data_size<sup>2</sup>| Tempdb 数据文件大小 (KB) |Tempdb 数据文件大小 (KB)。|
+|tempdb_log_size<sup>2</sup>| Tempdb 日志文件大小 (KB) |Tempdb 日志文件大小 (KB)。|
+|tempdb_log_used_percent<sup>2</sup>| Tempdb 日志已用百分比 |Tempdb 日志已用百分比。|
+
+<sup>1</sup>此指标可用于使用 vCore 购买模型的数据库，该模型具有 2 个 vCore 和更高版本，或者 200 DTU 和更高版本可用于基于 DTU 的采购模型。 
+
+<sup>2</sup>此指标可用于使用 vCore 购买模型的数据库，该模型具有 2 个 vCore 和更高版本，或者 200 DTU 和更高版本可用于基于 DTU 的采购模型。 此指标当前不适用于超大规模数据库或数据仓库。
 
 ### <a name="basic-logs"></a>基本日志
 
@@ -464,7 +470,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="resource-usage-stats-for-managed-instances"></a>托管实例的资源使用情况统计信息
 
-|properties|描述|
+|properties|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终是：Azure|
@@ -489,7 +495,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="query-store-runtime-statistics"></a>查询数据存储运行时统计信息
 
-|properties|描述|
+|properties|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终是：Azure |
@@ -540,7 +546,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="query-store-wait-statistics"></a>查询存储等待统计信息
 
-|properties|描述|
+|properties|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终是：Azure |
@@ -578,7 +584,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="errors-dataset"></a>错误数据集
 
-|properties|描述|
+|properties|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终是：Azure |
@@ -607,7 +613,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="database-wait-statistics-dataset"></a>数据库等待统计数据集
 
-|properties|描述|
+|properties|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终是：Azure |
@@ -636,7 +642,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="time-outs-dataset"></a>超时数据集
 
-|properties|描述|
+|properties|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终是：Azure |
@@ -659,7 +665,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="blockings-dataset"></a>阻塞数据集
 
-|properties|描述|
+|properties|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终是：Azure |
@@ -683,7 +689,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="deadlocks-dataset"></a>死锁数据集
 
-|properties|描述|
+|properties|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终是：Azure |
@@ -704,7 +710,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="automatic-tuning-dataset"></a>自动优化数据集
 
-|properties|描述|
+|properties|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终是：Azure |

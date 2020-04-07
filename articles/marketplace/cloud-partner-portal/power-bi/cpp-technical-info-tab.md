@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: ab84cc2f4910d1186e842758df7814ca5dd6464d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92bc172fd9a47d3b140e60a4083d65a2f532769a
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281640"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745570"
 ---
 # <a name="power-bi-apps-technical-info-tab"></a>Power BI 应用“技术信息”选项卡
+
+>[!Important]
+>从 2020 年 3 月 30 日开始，我们将开始将 Power BI 应用优惠的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[Power BI 应用创建概述](https://aka.ms/AzureCreatePBIServiceApp)中的说明进行操作，以管理迁移的优惠。
 
 在 **"新产品/服务**"页上，使用 **"技术信息**"选项卡提供 Power BI 安装程序包 URL 以及验证新产品/服务所需的其他信息。  对于初始版本，所有 Power BI 应用都是免费的，可从 AppSource 下载。 因此，您无法为此产品/服务类型定义库存单位 （SKU）。
 
@@ -25,7 +28,7 @@ ms.locfileid: "80281640"
 
 在"**技术信息**"选项卡上，完成下表中描述的字段。 字段标签末尾的星号 （*） 表示需要该字段。
 
-|        字段          |  描述                                                                 |
+|        字段          |  说明                                                                 |
 |    ---------------    |  ----------------------------------------------------------------------------|
 | **安装程序 URL\***     | 发布应用并将其提升为生产时，Power BI 将生成此 URL。  有关详细信息，请参阅在[Power BI 中发布具有仪表板和报表的应用](https://docs.microsoft.com/power-bi/service-create-distribute-apps)。  |
 |  **验证说明**  |  如果需要，请添加说明（最多 3，000 个字符），以帮助 Microsoft 验证团队配置、连接和测试你的应用。 包括可用于测试"连接数据"选项的典型配置设置、帐户、参数或其他信息。 此信息仅对验证团队可见，并且仅用于验证目的。  |

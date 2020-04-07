@@ -3,12 +3,12 @@ title: 管理知识库 - QnA 制造商
 description: QnA Maker 允许您通过提供对知识库设置和内容的访问来管理知识库。
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 57839125011016daed5f0b3d441a83e8db488198
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4eb07b30b10826c361f4f9b805b517e372fc5ea1
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80071140"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756800"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>创建知识库和管理设置
 
@@ -17,7 +17,7 @@ QnA Maker 允许您通过提供对知识库设置和数据源的访问来管理�
 ## <a name="prerequisites"></a>先决条件
 
 > [!div class="checklist"]
-> * 如果没有 Azure 订阅，请先[创建一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。"
+> * 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 > * 在 Azure 门户中创建的[QnA Maker 资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)。 请记住你在创建资源时选择的 Azure Active Directory ID、订阅、QnA 资源名称。
 
 ## <a name="create-a-knowledge-base"></a>创建知识库
@@ -40,7 +40,7 @@ QnA Maker 允许您通过提供对知识库设置和数据源的访问来管理�
 
 1. 在**步骤 4** 中，按照下表配置设置：
 
-    |设置|“值”|
+    |设置|值|
     |--|--|
     |**允许从 URL、.pdf 或 .docx 文件进行多轮提取。**|已选中|
     |**默认答案文本**| `Quickstart - default answer not found.`|
@@ -71,7 +71,7 @@ QnA Maker 允许您通过提供对知识库设置和数据源的访问来管理�
        |删除 URL|可以通过选择删除图标（垃圾桶）来删除现有 URL。|
        |刷新内容|如果希望知识库抓取现有 URL 的最新内容，请选中“刷新”**** 复选框。 这将使用最新的 URL 内容更新一次知识库。 这不是设置定期更新计划。|
        |添加文件|可以通过选择“管理知识库”**** 并选择“+ 添加文件”**** 将受支持的文件文档添加为知识库的一部分。|
-    |Import|您还可以通过选择 **"导入知识库"** 按钮导入任何现有知识库。 |
+    |导入|您还可以通过选择 **"导入知识库"** 按钮导入任何现有知识库。 |
     |更新|知识库的更新取决于在创建与知识库关联的 QnA Maker 服务时使用的**管理定价层**。 如有必要，还可以从 Azure 门户更新管理层。
 
   1. 完成对知识库的更改后，选择页面右上角的 **"保存"并训练**，以便保留更改。
@@ -107,5 +107,5 @@ QnA Maker 允许您通过提供对知识库设置和数据源的访问来管理�
 
 了解如何管理资源中所有知识库[的语言](language-knowledge-base.md)。
 
-* 编辑 QnA 集
+* 编辑 QnA 对
 * 管理 QnA 制造商使用的 Azure 资源

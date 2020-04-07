@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
 ms.date: 03/05/2020
-ms.openlocfilehash: 17a4652604c0faa804d24530869aac0848c972b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 530647c3d32b62f0cac250795ccce580b182fa92
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399150"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756602"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>管理和请求 Azure 资源的配额
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -60,7 +60,7 @@ ms.locfileid: "78399150"
 
 + 每个区域的群集数的默认限制为 200。 该数字在训练群集与计算实例（在配额消耗中被视为单节点群集）之间共享。 如果请求增加的配额超出此限制，请与 Azure 支持部门联系。
 
-+ 还有其他一些严格限制，不能超出这些限制。
++ 还有其他严格的限制，一旦命中，不能超过。
 
 | **资源** | **最大限度** |
 | --- | --- |

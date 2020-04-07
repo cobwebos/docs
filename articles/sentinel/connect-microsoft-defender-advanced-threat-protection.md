@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: yelevin
-ms.openlocfilehash: ee2c917d02a442ebabc0e1b40bc245982af794f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 831baabcc26130d9b2c730afd85f2ed4b3842690
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588206"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756355"
 ---
 # <a name="connect-alerts-from-microsoft-defender-advanced-threat-protection"></a>连接来自 Microsoft 防御者高级威胁防护的警报 
 
 
 > [!IMPORTANT]
-> 微软防御者高级威胁保护日志的引入目前处于公共预览版中。
+> 微软防御者高级威胁保护警报的引入目前处于公共预览版中。
 > 此功能在没有服务级别协议的情况下提供，不建议用于生产工作负载。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
  
 
-只需单击一下，即可将来自[Microsoft 防御者高级威胁防护](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)的警报流式传输到 Azure 哨兵中。 此连接使您能够将来自 Microsoft 防御器高级威胁保护的警报流式传输到 Azure Sentinel 中。 
+[Microsoft 防御者高级威胁保护](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)连接器允许您将来自 Microsoft 防御者高级威胁保护的警报流式传输到 Azure Sentinel 中。 这将使您能够更全面地分析整个组织的安全事件，并构建行动手册，以便有效和立即响应。
 
 ## <a name="prerequisites"></a>先决条件
 
-- 微软防御者高级威胁保护的有效许可证，如[验证许可预配中所述，并完成为 Microsoft 防御者高级威胁保护设置](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/licensing)。 
+- 您必须拥有 Microsoft 防御者高级威胁保护的有效许可证，如设置[Microsoft Defender ATP 部署](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/licensing)中所述。 
 - 您必须是 Azure Sentinel 租户上的管理员或安全管理员。
 
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 90adb3b973b6952d10ef89e4b40d0fc68489e224
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8701fe6857e95334a5e1d24bfe70feb130d5512c
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061097"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756024"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy 入门
 
@@ -21,7 +21,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 > [!NOTE]
 > AzCopy **V10** 是当前支持的 AzCopy 版本。
 >
-> 如果需要使用 AzCopy **v8.1**，请参阅本文的[使用旧版 AzCopy](#previous-version) 部分。
+> 如果需要使用早期版本的 AzCopy，请参阅本文[的"使用早期版本的 AzCopy"](#previous-version)部分。
 
 <a id="download-and-install-azcopy" />
 
@@ -74,7 +74,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 使用 Azure Active Directory 可以一次性提供凭据，而无需向每个命令追加 SAS 令牌。  
 
 > [!NOTE]
-> 在当前版本中，如果计划在存储帐户之间复制 Blob，则必须为每个源 URL 追加 SAS 令牌。 只能在目标 URL 中省略 SAS 令牌。 有关示例，请参阅[在存储帐户之间复制 Blob](storage-use-azcopy-blobs.md)。
+> 在当前版本中，如果你打算在存储帐户之间复制 Blob，必须向每个源 URL 追加一个 SAS 令牌。 只能在目标 URL 中省略 SAS 令牌。 有关示例，请参阅[在存储帐户之间复制 Blob](storage-use-azcopy-blobs.md)。
 
 所需的授权级别取决于是要上传文件，还是只下载文件。
 
@@ -308,11 +308,11 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 ## <a name="use-the-previous-version-of-azcopy"></a>使用旧版 AzCopy
 
-如果需要使用旧版 AzCopy (AzCopy v8.1)，请参阅以下链接之一：
+如果您需要使用早期版本的 AzCopy，请参阅以下任一链接：
 
 - [Windows 上的 AzCopy (v8)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy)
 
-- [Linux 上的 AzCopy (v8)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux)
+- [在 Linux 上使用 AzCopy （v7）](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux)
 
 ## <a name="configure-optimize-and-troubleshoot-azcopy"></a>对 AzCopy 进行配置、优化和故障排除
 

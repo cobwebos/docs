@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: cd0c74c8aa40b3e96716ef37aa27b08b5f6aece1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6acc1ffd197ddba4290ff7c0751b259d98a70927
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76547534"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754391"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>规划 Avere vFXT 系统
 
@@ -142,7 +142,7 @@ Avere vFXT for Azure 群集位于专用子网中，并且该群集没有公共 I
 
 访问选项包括：
 
-* 跳转主机 - 向专用网络中的一个单独 VM 分配一个公共 IP 地址，并使用它来创建到群集节点的 SSL 隧道。
+* 跳转主机 - 将公共 IP 地址分配给专用网络中的单独 VM，并用它来创建到群集节点的 TLS 隧道。
 
   > [!TIP]
   > 如果在群集控制器上设置公共 IP 地址，则可以使用它作为跳转主机。 有关详细信息，请阅读[群集控制器用作跳转主机](#cluster-controller-as-jump-host)。

@@ -18,6 +18,14 @@
       items:
         - name: Azure CDN 上的 Web 应用程序防火墙
           href: ./cdn/cdn-overview.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 应用程序网关
+      items:
+        - name: 部署 WAF v2 - ARM 模板
+          displayName: Resource Manager
+          href: ./ag/quick-create-template.md
 - name: 教程
   items:
     - name: 应用程序网关
@@ -66,7 +74,7 @@
           href: ./afds/waf-front-door-geo-filtering.md
         - name: 常见问题解答
           href: ./afds/waf-faq.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 应用程序网关
       items:
@@ -118,7 +126,7 @@
           href: ./afds/waf-front-door-tutorial-geo-filtering.md
         - name: 监视和日志记录
           href: ./afds/waf-front-door-monitor.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 应用程序网关
           items:

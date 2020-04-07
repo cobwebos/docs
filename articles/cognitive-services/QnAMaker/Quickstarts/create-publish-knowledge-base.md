@@ -3,12 +3,12 @@ title: 快速入门：创建、培训和发布知识库 - QnA 制造商
 description: 可以根据自己的内容（例如常见问题解答或产品手册）创建一个 QnA Maker 知识库 (KB)。 本文包含一个从简单的 FAQ 网页创建 QnA Maker 知识库以回答 QnA Maker 相关问题的示例。
 ms.topic: conceptual
 ms.date: 02/08/2020
-ms.openlocfilehash: b1f80006e2dc72b5b623f4c29c093c734dc1efea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a3cd4a66ae3a7148b517050c3d1a8c6c8e7a712
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79220574"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756820"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>快速入门：创建、培训和发布 QnA Maker 知识库
 
@@ -40,7 +40,7 @@ ms.locfileid: "79220574"
 
 1. 在**步骤 4** 中，按照下表配置设置：
 
-    |设置|“值”|
+    |设置|值|
     |--|--|
     |**允许从 URL、.pdf 或 .docx 文件进行多轮提取。**|已选中|
     |**默认答案文本**| `Quickstart - default answer not found.`|
@@ -135,7 +135,7 @@ ms.locfileid: "79220574"
 
 ## <a name="what-did-you-accomplish"></a>你完成了哪些操作？
 
-你创建了一个新的知识库、将一个公共 URL 添加到了知识库，添加了自己的 QnA 集，以及训练、测试和发布了知识库。
+您创建了一个新的知识库，向知识库添加了公共 URL，添加了您自己的 QnA 对、培训、测试和发布知识库。
 
 在发布知识库之后，你创建了一个机器人，并测试了该机器人。
 

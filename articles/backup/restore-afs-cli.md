@@ -3,12 +3,12 @@ title: 与 Azure CLI 还原 Azure 文件共享
 description: 了解如何使用 Azure CLI 在恢复服务保管库中还原备份的 Azure 文件共享
 ms.topic: conceptual
 ms.date: 01/16/2020
-ms.openlocfilehash: 63b2be2fe24c1274ed1581b7b849de578c978842
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 980044011e3417a2aff8447a939e02299923da38
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76931037"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757087"
 ---
 # <a name="restore-azure-file-shares-with-the-azure-cli"></a>与 Azure CLI 还原 Azure 文件共享
 
@@ -19,6 +19,9 @@ Azure CLI 提供了用于管理 Azure 资源的命令行体验。 它是构建�
 * 查看备份的 Azure 文件共享的还原点。
 * 还原完整的 Azure 文件共享。
 * 还原单个文件或文件夹。
+
+>[!NOTE]
+> Azure 备份现在支持使用 Azure CLI 将多个文件或文件夹还原到原始或备用位置。 请参阅[将多个文件或文件夹还原到本文档的原始或备用位置](#restore-multiple-files-or-folders-to-original-or-alternate-location)部分以了解更多信息。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -42,7 +45,7 @@ Azure CLI 提供了用于管理 Azure 资源的命令行体验。 它是构建�
 下面的示例获取*afs 帐户*存储帐户中*azure 文件*共享的恢复点列表。
 
 ```azurecli-interactive
-az backup recoverypoint list --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --backup-management-type azurestorage --item-name “AzureFileShare;azurefiles” --workload-type azurefileshare --out table
+az backup recoverypoint list --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --backup-management-type azurestorage --item-name "AzureFileShare;azurefiles" --workload-type azurefileshare --out table
 ```
 
 还可以通过使用容器和项的友好名称运行以前的 cmdlet，提供以下两个附加参数：
@@ -82,7 +85,7 @@ Name                Time                        Consistency
 下面的示例使用[az 备份还原还原-azure 文件共享](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefileshare)cmdlet，还原模式设置为*原始位置*，以还原原始位置中的*azure 文件*共享。 您可以使用恢复点 932883129628959823，在[Azure 文件共享的 Fetch 恢复点](#fetch-recovery-points-for-the-azure-file-share)中获取该恢复点：
 
 ```azurecli-interactive
-az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932887541532871865   --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode originallocation --resolve-conflict overwrite --out table
+az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932887541532871865   --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation --resolve-conflict overwrite --out table
 ```
 
 ```output
@@ -105,7 +108,7 @@ Name                                  ResourceGroup
 下面的示例使用[az 备份还原还原-azure 文件共享](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefileshare)与还原模式作为*备用位置*，以将*afs 帐户*存储帐户中的*azure 文件*共享还原到 afaccount1 存储帐户中的*azurefile1"* 文件共享。 *afaccount1*
 
 ```azurecli-interactive
-az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932883129628959823 --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --out table
+az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932883129628959823 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --out table
 ```
 
 ```output
@@ -138,7 +141,7 @@ babeb61c-d73d-4b91-9830-b8bfa83c349a  azurefiles
 以下示例还原*还原还原测试.txt*文件的原始位置 *：azurefile*文件共享。
 
 ```azurecli-interactive
-az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode originallocation  --source-file-type file --source-file-path "Restore/RestoreTest.txt" --resolve-conflict overwrite  --out table
+az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation  --source-file-type file --source-file-path "Restore/RestoreTest.txt" --resolve-conflict overwrite  --out table
 ```
 
 ```output
@@ -160,7 +163,7 @@ df4d9024-0dcb-4edc-bf8c-0a3d18a25319  azurefiles
 以下示例将最初存在于*azure 文件*共享中的*还原测试.txt*文件还原到备用位置：在*afaccount1*存储帐户中托管的*azurefile1*文件共享中的*还原数据*文件夹。
 
 ```azurecli-interactive
-az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --source-file-type file --source-file-path "Restore/RestoreTest.txt" --out table
+az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --source-file-type file --source-file-path "Restore/RestoreTest.txt" --out table
 ```
 
 ```output
@@ -170,6 +173,28 @@ df4d9024-0dcb-4edc-bf8c-0a3d18a25319  azurefiles
 ```
 
 输出中的**Name**属性对应于还原操作的备份服务创建的作业的名称。 要跟踪作业的状态，请使用[az 备份作业显示](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show)cmdlet。
+
+## <a name="restore-multiple-files-or-folders-to-original-or-alternate-location"></a>将多个文件或文件夹还原到原始或备用位置
+
+要对多个项目执行还原，请将**源文件路径**参数的值作为要还原的所有文件或文件夹**的空间分隔**路径传递。
+
+下面的示例还原*还原.txt*和*AFS 测试报告.docx*文件的原始位置。
+
+```azurecli-interactive
+az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932889937058317910 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation  --source-file-type file --source-file-path "Restore Test.txt" "AFS Testing Report.docx" --resolve-conflict overwrite  --out table
+```
+
+输出将如下所示：
+
+```output
+Name                                          ResourceGroup
+------------------------------------          ---------------
+649b0c14-4a94-4945-995a-19e2aace0305          azurefiles
+```
+
+输出中的**Name**属性对应于还原操作的备份服务创建的作业的名称。 要跟踪作业的状态，请使用[az 备份作业显示](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show)cmdlet。
+
+如果要将多个项目还原到备用位置，请使用上述命令，指定目标相关参数，如["将单个文件或文件夹还原到备用位置](#restore-individual-files-or-folders-to-an-alternate-location)部分"中所述。
 
 ## <a name="next-steps"></a>后续步骤
 

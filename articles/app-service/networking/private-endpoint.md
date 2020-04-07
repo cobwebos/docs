@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c2717b1f29af39c6fdc4602b11acba131d959f03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d139cfa50afa94621066995314737fac70bbafe
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79534382"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756276"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>为 Azure Web 应用使用专用终结点（预览）
 
@@ -25,7 +25,7 @@ ms.locfileid: "79534382"
 
 为 Web 应用使用专用终结点使您能够：
 
-- 通过配置服务终结点来保护 Web 应用，从而消除公共公开。
+- 通过配置专用终结点来保护 Web 应用，从而消除公共公开。
 - 使用 VPN 或 ExpressRoute 专用对等互连从连接到 VNet 的本地网络安全地连接到 Web 应用。
 
 如果只需要 VNet 和 Web 应用之间的安全连接，则服务终结点是最简单的解决方案。 如果需要通过 Azure 网关、区域对等 VNet 或全局对等 VNet 从本地访问 Web 应用，则私有终结点就是解决方案。  

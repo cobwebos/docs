@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 7292064a1df8aa9bfffcd9a19a03f7b332c0615e
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 1298d5fe1d7407e836f454c2130a913dde6f8eec
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632733"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755146"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Azure 上的 Linux Data Science Virtual Machine 中的数据科学
 
@@ -39,7 +39,7 @@ ms.locfileid: "80632733"
 [Spambase](https://archive.ics.uci.edu/ml/datasets/spambase) 数据集是一组相对较小的数据，仅包含 4,601 个示例。 该数据集的大小很适合演示 DSVM 的一些主要功能，因为它对资源的要求适中。
 
 > [!NOTE]
-> 本演练是使用 D2 v2 大小的 Linux DSVM (CentOS Edition) 创建的。 可以使用此大小的 DSVM 来执行本演练中所演示的过程。
+> 本演练是使用 D2 v2 大小 Linux DSVM（Ubuntu 18.04 版本）创建的。 可以使用此大小的 DSVM 来执行本演练中所演示的过程。
 
 如果需要更多存储空间，可以创建额外的磁盘，然后将它们附加到 DSVM。 这些磁盘使用 Azure 持久存储，这样即使是在服务器被重新调整大小或关闭的情况下，其数据仍会被保留。 若要添加磁盘并将其附加到 DSVM，请执行[将磁盘添加到 Linux VM](../../virtual-machines/linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 中的步骤。 添加磁盘的步骤会使用已安装在 DSVM 上的 Azure CLI。 可以完全从 DSVM 中执行这些步骤。 增加存储的另一个选项是使用[Azure 文件](../../storage/files/storage-how-to-use-files-linux.md)。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: d8e6f4b58cf17a7502e2c0d67e4fa67af7cdb3f5
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 25b8df0d8565686737b33aac16d4bf698ce43280
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632949"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757207"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 托管磁盘的服务器端加密
 
@@ -91,6 +91,9 @@ Azure 托管磁盘使用[信封加密](../../storage/common/storage-client-side-
 
     创建密钥保管库实例时，必须启用软删除和清除保护。 软删除可确保密钥保管库在给定保留期（默认为 90 天）保留已删除的密钥。 清除保护可确保在保留期结束之前不能永久删除已删除的密钥。 这些设置可保护您不因意外删除而丢失数据。 使用密钥保管库加密托管磁盘时，这些设置是必需的。
 
+    > [!IMPORTANT]
+    > 不要骆驼的情况下，如果这样做，在 Azure 门户中为资源分配其他磁盘时可能会遇到问题。
+    
     ```powershell
     $ResourceGroupName="yourResourceGroupName"
     $LocationName="westcentralus"

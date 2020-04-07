@@ -2,18 +2,18 @@
 title: 参考：数据科学 虚拟机映像弃用
 titleSuffix: Azure Data Science Virtual Machine
 description: 有关影响 Azure 数据科学虚拟机的弃用的详细信息
-author: gvashishtha
+author: lobrien
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.author: gopalv
-ms.date: 10/14/2019
+ms.author: laobri
+ms.date: 04/03/2020
 ms.topic: reference
-ms.openlocfilehash: 71ce8519dca6fa71340b1c34fe3a6891ccf5753f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6004ae0c1fd2fa25a07ab84776ab74789f6e7da9
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77525781"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754768"
 ---
 # <a name="reference-deprecation-of-dsvm-images"></a>参考：DSVM 映像的弃用
 
@@ -26,3 +26,7 @@ ms.locfileid: "77525781"
 1. 按照[此处](./provision-vm.md#create-your-dsvm)显示的说明，创建新的 Windows 2016 DSVM。
 1. 根据[这些说明](../../virtual-machines/windows/detach-disk.md)，将现有数据磁盘从 Windows 2012 映像中拆离。
 1. 根据[这些说明](../../virtual-machines/windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm)，将上一步骤中的磁盘附加到 Windows 2016 映像。
+
+## <a name="centos"></a>CentOS
+
+新用户应使用最新的 Ubuntu 或 Windows 映像。 CentOS 将继续可用于现有解决方案模板。

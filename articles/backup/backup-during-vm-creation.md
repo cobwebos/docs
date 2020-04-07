@@ -3,12 +3,12 @@ title: 在创建 Azure VM 时启用备份
 description: 介绍了如何在创建 Azure VM 时通过 Azure 备份启用备份。
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 0cfea6579791c4fd23c1b7acdfe722d57b5ec2fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7739109eb8bad88c9b723e67e13adc78c127499a
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247847"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672810"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>在创建 Azure VM 时启用备份
 
@@ -64,6 +64,8 @@ ms.locfileid: "79247847"
 5. 如果需要，可以通过修改策略来编辑 RG 的名称。 如果更改了名称模式，将在新 RG 中创建新的 RP。 但是，旧的 RP 仍将驻留在旧的 RG 中，并且不会移动，因为 RP 集合不支持资源移动。 最终，当点过期时，RP 会进行垃圾回收。
 ![修改策略时更改名称](./media/backup-during-vm-creation/modify-policy.png)
 6. 建议不要锁定为了供备份服务使用而创建的资源组。
+
+要使用 PowerShell 为虚拟机配置 Azure 备份资源组，请参阅[在快照保留期间创建 Azure 备份资源组](backup-azure-vms-automation.md#creating-azure-backup-resource-group-during-snapshot-retention)。
 
 ## <a name="start-a-backup-after-creating-the-vm"></a>在创建 VM 后启动备份
 

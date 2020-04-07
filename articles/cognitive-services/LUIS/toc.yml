@@ -193,10 +193,10 @@
       href: luis-how-to-publish-app.md
     - name: 管理应用
       items:
-        - name: 创作和运行时密钥
+        - name: Azure 资源
           displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription, authoring, endpoint, prediction'
           href: luis-how-to-azure-subscription.md
-        - name: 迁移到创作密钥
+        - name: 迁移到创作资源
           items:
             - name: 概述
               href: luis-migration-authoring.md

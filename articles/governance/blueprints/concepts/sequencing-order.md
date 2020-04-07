@@ -3,12 +3,12 @@ title: 了解部署排序顺序
 description: 了解蓝图项目在蓝图分配期间部署的默认顺序以及如何自定义部署顺序。
 ms.date: 08/22/2019
 ms.topic: conceptual
-ms.openlocfilehash: 51026862c989f15acf6d3e21702cfcfc8b2b27b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41b1b1ada5b7c6c919f227927001570332eeccbf
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74128824"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677562"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>了解 Azure 蓝图中的部署排序
 
@@ -42,7 +42,7 @@ JSON 示例中的有些变量需要用自己的值替换：
 
 ## <a name="customizing-the-sequencing-order"></a>自定义排序顺序
 
-在编写大型蓝图定义时，可能需要按特定顺序创建资源。 此方案的最常见使用模式是蓝图定义包含多个 Azure 资源管理器模板时。 蓝图通过允许定义排序顺序来处理此模式。
+在编写大型蓝图定义时，可能需要按特定顺序创建资源。 此方案的最常见使用模式是蓝图定义包含多个 Azure 资源管理器模板时。 Azure 蓝图通过允许定义排序顺序来处理此模式。
 
 排序是通过在 JSON 中定义 `dependsOn` 属性来实现的。 资源组和工件对象的蓝图定义支持此属性。 `dependsOn` 是在创建特定项目之前需要创建的项目名称的字符串数组。
 

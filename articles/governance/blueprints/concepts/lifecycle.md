@@ -3,17 +3,16 @@ title: 了解蓝图的生命周期
 description: 了解蓝图定义的生命周期以及每个阶段的详细信息，包括更新和删除蓝图分配。
 ms.date: 07/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4dd5cb7d085744377cf12998f14c994fb1dcd2d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46da42ec97f16af91ef8e41362a085d466bbb887
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74404590"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677373"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>了解 Azure 蓝图的生命周期
 
-与 Azure 中的众多资源一样，Azure 蓝图中的蓝图也有一个典型的自然生命周期。 这些蓝图会被创建、部署，并在不再需要或相关时被删除。
-蓝图支持标准的生命周期操作。 它将在这些操作的基础之上进行构建，以提供附加的状态级别，用于支持常见的持续集成和持续部署管道，供管理基础结构即代码（DevOps 中的一项关键要素）的组织使用。
+与 Azure 中的众多资源一样，Azure 蓝图中的蓝图也有一个典型的自然生命周期。 这些蓝图会被创建、部署，并在不再需要或相关时被删除。 Azure 蓝图支持标准生命周期操作。 它将在这些操作的基础之上进行构建，以提供附加的状态级别，用于支持常见的持续集成和持续部署管道，供管理基础结构即代码（DevOps 中的一项关键要素）的组织使用。
 
 为了让你完全了解蓝图及其各个阶段，我们将讲解标准生命周期：
 
@@ -61,7 +60,7 @@ ms.locfileid: "74404590"
 > [!NOTE]
 > 不能删除具有活动分配项的蓝图。 请先删除分配项，再删除要移除的版本。
 
-1. 在左侧窗格中，选择“所有服务”****。 搜索并选择“蓝图”****。
+1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”  。
 
 1. 从左侧的页面中选择**蓝图定义**，并使用筛选器选项查找要删除 的蓝图。 选择它以打开编辑页面。
 

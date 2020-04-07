@@ -75,6 +75,8 @@
           href: overview-security.md
         - name: 安全基线
           href: security-baseline.md
+        - name: 内置安全性
+          href: key-vault-security-controls.md
         - name: 安全体系
           href: key-vault-ovw-security-worlds.md
         - name: 保护密钥保管库
@@ -101,7 +103,7 @@
           href: create-certificate.md
         - name: 监视和管理证书创建
           href: create-certificate-scenarios.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 安全性
       items:

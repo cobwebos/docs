@@ -2,15 +2,15 @@
 title: 在 Azure 中创建由 Blob 存储触发的函数
 description: 使用 Azure Functions 创建由添加到 Azure Blob 存储的项调用的无服务器函数。
 ms.assetid: d6bff41c-a624-40c1-bbc7-80590df29ded
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 10/01/2018
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 65717e4373f64ae38a324fd19624f049dba9dfb1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
-ms.translationtype: HT
+ms.openlocfilehash: d3e90decad217afc1c8d9a43ef585fdfbeca5eb0
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75769296"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756544"
 ---
 # <a name="create-a-function-triggered-by-azure-blob-storage"></a>创建由 Azure Blob 存储触发的函数
 

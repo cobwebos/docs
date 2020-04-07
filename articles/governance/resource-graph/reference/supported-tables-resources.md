@@ -1,14 +1,14 @@
 ---
 title: 受支持的资源管理器资源类型
 description: 提供 Azure 资源图和更改历史记录支持的资源管理器资源类型的列表。
-ms.date: 03/23/2020
+ms.date: 04/06/2020
 ms.topic: reference
-ms.openlocfilehash: 64fd860090cc15cc6914ee926772146b98477edb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85cab92981568f5ea3770e1102c3480ae4f3e638
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130619"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677053"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure 资源图表和资源类型引用
 
@@ -188,6 +188,7 @@ Azure 资源图支持[Azure 资源管理器](../../../azure-resource-manager/man
 - 微软.eventhub/集群
 - 微软.eventhub/命名空间
 - 微软.实验/实验工作空间
+- 微软.falcon/命名空间
 - 微软.游戏/标题
 - 微软.基因组学/帐户
 - 微软.来宾配置/自动管理帐户
@@ -290,6 +291,7 @@ Azure 资源图支持[Azure 资源管理器](../../../azure-resource-manager/man
 - 微软.网络/网络实验配置文件
 - 微软.网络/网络意图策略
 - 微软.网络/网络接口
+- 微软.网络/网络管理器
 - 微软.网络/网络配置文件
 - 微软.网络/网络安全组
 - 微软.网络/网络虚拟设备
@@ -446,6 +448,7 @@ Azure 资源图支持[Azure 资源管理器](../../../azure-resource-manager/man
 - 万迪斯科.融合/融合组
 - 万迪斯科.融合/融合组/azure 区
 - 万迪斯科.融合/融合组/azure 区域/插件
+- 万迪斯科.融合/融合组/蜂巢复制规则
 - 万迪斯科.融合/融合组/管理前带
 - 万迪斯科.融合/融合组/上预带
 - 万迪斯科.融合/融合组/复制规则

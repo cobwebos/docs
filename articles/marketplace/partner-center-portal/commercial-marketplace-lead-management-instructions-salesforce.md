@@ -7,16 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: dsindona
-ms.openlocfilehash: 1720026b4beff941b02a60cd1c755a043d66bdb5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b59181f7c1b24a7bc00ab579bbe67a70f499c92
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281487"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755376"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>为 Salesforce 配置潜在顾客管理
 
-本文介绍如何设置 Salesforce 系统来处理市场产品/服务的销售线索。
+本文介绍如何设置 Salesforce 系统来处理来自商业市场产品/服务的销售线索。
+
+> [!Note]
+> 应用商店不支持预填充列表，例如 **"国家/地区"** 字段的值列表。 在继续之前，请确保没有设置任何列表。 或者，可以将[HTTPS 终结点](./commercial-marketplace-lead-management-instructions-https.md)或[Azure 表](./commercial-marketplace-lead-management-instructions-azure-table.md)配置为接收潜在顾客。
 
 ## <a name="set-up-your-salesforce-system"></a>设置销售队伍系统
 
@@ -26,14 +29,16 @@ ms.locfileid: "80281487"
     ![Salesforce 设置](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-1.png)
 
     1. 从"设置"页面，通过左侧导航导航到**平台工具->功能设置->营销->网络到潜在顾客**。
-    ![Salesforce Web-to-Lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
+
+        ![Salesforce Web-to-Lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
 
 3. 如果您使用的是 Salesforce 经典体验：
     1. 从 Salesforce 主页中选择 **"设置**"。
     ![Salesforce 经典设置](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-setup.png)
 
     1. 从"设置"页面，通过左侧导航导航到**生成->自定义>潜在顾客>Web 到潜在顾客**。
-    ![Salesforce 经典 Web 到领导](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
+
+        ![Salesforce 经典 Web 到领导](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
 
 其余的说明是相同的，无论您使用的 Salesforce 体验如何。
 
@@ -59,7 +64,7 @@ ms.locfileid: "80281487"
 
 1. 在"连接详细信息"弹出窗口上，选择 **"潜在顾客目标****"的 Salesforce，** 然后`oid`按照前面的步骤粘贴到 **"组织"标识符**字段，从 Web 到潜在顾客窗体。
 
-1. 选择“保存”。**** 
+1. 选择“保存”。  
 
     >[!Note]
     >您必须完成配置产品/服务的其余部分并发布它，然后才能收到产品/服务的潜在顾客。

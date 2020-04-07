@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 359fd7fc787db5710deca75dd562215d25ed9148
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 4fbb3e83692ec058c03b22654e82d4093fe3541d
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437487"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756563"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure 机器学习的企业安全性
 
@@ -44,7 +44,7 @@ ms.locfileid: "80437487"
 
 |身份验证方法|说明|Azure 容器实例|AKS|
 |---|---|---|---|
-|键|密钥是静态的，无需刷新。 可以手动重新生成密钥。|默认已禁用| 默认已启用|
+|密钥|密钥是静态的，无需刷新。 可以手动重新生成密钥。|默认已禁用| 默认已启用|
 |标记|令牌会在指定的时限后过期，需要刷新。| 不可用| 默认已禁用 |
 
 有关代码示例，请参阅[Web 服务身份验证部分](how-to-setup-authentication.md#web-service-authentication)。
@@ -134,7 +134,15 @@ Azure 机器学习依赖于其他 Azure 服务提供计算资源。 计算资源
 ### <a name="encryption-at-rest"></a>静态加密
 
 > [!IMPORTANT]
-> 如果您的工作区包含敏感数据，我们建议您在创建工作区时设置[hbi_workspace标志](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)。 这将控制 Microsoft 为诊断目的收集的数据量，并在 Microsoft 托管环境中启用其他加密。
+> 如果您的工作区包含敏感数据，我们建议您在创建工作区时设置[hbi_workspace标志](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)。 
+
+该`hbi_workspace`标志控制 Microsoft 为诊断目的收集的数据量，并在 Microsoft 托管环境中启用其他加密。 此外，它还支持以下功能：
+
+* 如果您尚未在该订阅中创建任何以前的群集，则开始加密 Amlcompute 群集中的本地暂存磁盘。 否则，您需要提高支持票证以启用对计算群集的暂存磁盘进行加密 
+* 在运行之间清理本地暂存磁盘
+* 使用密钥保管库将存储帐户、容器注册表和 SSH 帐户的凭据安全地从执行层传递到计算群集
+* 启用 IP 筛选，以确保 Azure 机器学习服务以外的任何外部服务无法调用基础批处理池
+
 
 有关 Azure 中静态加密的工作原理的详细信息，请参阅 [Azure 静态数据加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)。
 

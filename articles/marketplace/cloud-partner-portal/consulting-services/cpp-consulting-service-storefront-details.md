@@ -5,21 +5,24 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 7e1989ee5fcc428bc7d29c17432ded8dab24ecee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 22531c1080021c5e3724e5584b85bb58446fb1d3
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281691"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744129"
 ---
 # <a name="storefront-details-tab"></a>“店面详细信息”选项卡
+
+>[!Important]
+>从 2020 年 3 月 30 日起，我们将开始将咨询服务优惠的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[咨询服务创建概述](https://aka.ms/AzureCreateConsultingService)中的说明来管理迁移的优惠。
 
 本文介绍如何输入店面详细信息。 “店面详细信息”选项卡由以下部分组成：****
 
 -   **套餐详细信息**
--   **发布者信息**
+-   **发布服务器信息**
 -   **商品详细信息**
 -   **营销项目**
 

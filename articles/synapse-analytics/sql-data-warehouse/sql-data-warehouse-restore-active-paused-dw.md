@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e1d0c5cd850fa0dbacf104d3fcd72d83007df878
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 6fa8bd42eb067124ab6ea1db77e2f3d6fba79638
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632255"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745210"
 ---
 # <a name="restore-an-existing-sql-pool"></a>还原现有 SQL 池
 
@@ -28,12 +28,12 @@ ms.locfileid: "80632255"
 
 ## <a name="before-you-begin"></a>在开始之前
 
-1. 确保[安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。
+1. 确保[安装 Azure PowerShell](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 2. 有一个现有的还原点，需要从该点进行还原。 若要创建新的还原，请参阅[教程：新建用户定义的还原点](sql-data-warehouse-restore-points.md)。
 
 ## <a name="restore-an-existing-sql-pool-through-powershell"></a>通过 PowerShell 还原现有 SQL 池
 
-要从还原点还原现有 SQL 池，请使用[还原-AzSql 数据库](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)PowerShell cmdlet。
+要从还原点还原现有 SQL 池，请使用[还原-AzSql 数据库](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)PowerShell cmdlet。
 
 1. 打开 PowerShell。
 
@@ -45,7 +45,7 @@ ms.locfileid: "80632255"
 
 5. 使用 RestorePointCreationDate 选取所需的还原点。
 
-6. 使用[还原-AzSql数据库](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)PowerShell cmdlet 将 SQL 池还原到所需的还原点。
+6. 使用[还原-AzSql数据库](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)PowerShell cmdlet 将 SQL 池还原到所需的还原点。
         1. 要将 SQL 池还原到其他逻辑服务器，请确保指定其他逻辑服务器名称。  该逻辑服务器也可以位于另一资源组和区域中。
         2. 要还原到其他订阅，请使用"移动"按钮将逻辑服务器移动到其他订阅。
 

@@ -77,6 +77,8 @@
           href: troubleshoot-guide-critical-process-died.md
         - name: 关键服务失败
           href: troubleshoot-critical-service-failed-boot-error.md
+        - name: 应用本地用户和组策略时，VM 无响应
+          href: troubleshoot-vm-unresponsive-group-policy-local-users.md
         - name: 不是可启动磁盘
           href: troubleshoot-guide-not-bootable-disk.md
         - name: 重启循环
@@ -87,6 +89,8 @@
           href: troubleshoot-vm-boot-configure-update.md
         - name: VM 因 Windows 启动管理器而无法启动
           href: troubleshoot-guide-windows-boot-manager-menu.md
+        - name: 由于进行更新，VM 无响应
+          href: unresponsive-vm-apply-windows-update.md
 - name: 无法连接到 VM
   items:
     - name: RDP
@@ -261,7 +265,7 @@
       items:
         - name: 概述
           href: ../windows/disk-encryption-overview.md
-        - name: 故障排除
+        - name: 疑难解答
           href: ../windows/disk-encryption-troubleshooting.md
         - name: 常见问题解答
           href: ../windows/disk-encryption-faq.md
@@ -269,7 +273,7 @@
       items:
         - name: 概述
           href: ../linux/disk-encryption-overview.md
-        - name: 故障排除
+        - name: 疑难解答
           href: ../linux/disk-encryption-troubleshooting.md
         - name: 常见问题解答
           href: ../linux/disk-encryption-faq.md

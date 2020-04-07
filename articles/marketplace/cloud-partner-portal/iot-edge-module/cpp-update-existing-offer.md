@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: dceff3e320554edc972654aa49552bffbc4c9a13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 821007e40eaa91c98f157ee0b28fe01f37e3cbc9
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286483"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743958"
 ---
 # <a name="update-an-existing-iot-edge-module-offer"></a>更新现有的 IoT Edge 模块套餐
+
+>[!Important]
+>从 2020 年 3 月 30 日开始，我们将开始将 IoT Edge 模块产品的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[创建 IoT Edge 模块产品/服务](https://aka.ms/AzureCreateIoT)中的说明进行操作，以管理迁移的优惠。
 
 本文从不同的方面逐步讲解如何在[云合作伙伴门户](https://cloudpartner.azure.com/)中更新 IoT Edge 模块套餐，然后重新发布该套餐。
 

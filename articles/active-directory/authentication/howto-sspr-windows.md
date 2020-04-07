@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a8675756aeef1140dbebd94023d7f7fb4c7af99
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: d4f08161daf1d9c1a4431d9e3fba3ca741d88b16
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80652260"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743343"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>如何：从 Windows 登录屏幕启用密码重置
 
@@ -43,7 +43,7 @@ ms.locfileid: "80652260"
 - 组合使用下面三个特定的设置可能会导致此功能失效。
     - 交互式登录：不需要 CTRL_ALT_DEL = 已禁用
     - DisableLockScreenAppNotifications = 1 或 Enabled
-    - IsContentDeliveryPolicyEnforced = 1 或 True
+    - Windows SKU 不是主页版或专业版
 
 ## <a name="windows-10-password-reset"></a>Windows 10 密码重置
 

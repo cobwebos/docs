@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 6b44d9fd0bdd6e4b41013373472b5882a7ca1434
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73b1d93cc7f6325a5319b632aa7f827d9ee6303c
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286585"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745044"
 ---
 # <a name="iot-edge-module-offer-publishing-overview"></a>IoT Edge 模块套餐发布概述
+
+>[!Important]
+>从 2020 年 3 月 30 日开始，我们将开始将 IoT Edge 模块产品的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[创建 IoT Edge 模块产品/服务](https://aka.ms/AzureCreateIoT)中的说明进行操作，以管理迁移的优惠。
 
 <table> <tr> <td>本部分介绍如何将新的 Azure IoT Edge 模块产品/服务发布到 Microsoft <a href="https://azuremarketplace.microsoft.com">Azure 市场</a>。 IoT Edge 模块是可在 IoT Edge 设备上运行的与 Docker 兼容的容器。 Azure IoT Edge 模块是由 IoT Edge 托管的最小计算单位，可以包含 Azure 服务或自定义解决方案代码。 </td> <td><img src="./media/iotedge-icon1.png"  alt="Azure IoT Edge module icon" /></td> </tr> </table>
 

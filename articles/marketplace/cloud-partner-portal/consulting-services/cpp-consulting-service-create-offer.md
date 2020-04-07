@@ -5,16 +5,19 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: c2700339a7ac8342da0250227cff898c20e60118
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1298a6d277f072491d05945b272925a2aba52e02
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278546"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745654"
 ---
 # <a name="create-a-consulting-offer"></a>创建咨询优惠
+
+>[!Important]
+>从 2020 年 3 月 30 日起，我们将开始将咨询服务优惠的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[咨询服务创建概述](https://aka.ms/AzureCreateConsultingService)中的说明来管理迁移的优惠。
 
 本文介绍如何创建和发布咨询服务套餐。
 
@@ -34,5 +37,5 @@ ms.locfileid: "80278546"
 
 咨询服务套餐类型的“新建套餐”页提供一组选项卡和表单字段用于创建新的套餐****。 以下文章介绍了如何使用选项卡来为新套餐定义套餐设置和店面详细信息：
 
--   [定义优惠设置](./cpp-consulting-service-define-offer-settings.md)
--   [输入店面详细信息，以及是要在 Azure 市场还是 AppSource 中发布](./cpp-consulting-service-storefront-details.md)
+-    [定义优惠设置](./cpp-consulting-service-define-offer-settings.md)
+-    [输入店面详细信息，以及是要在 Azure 市场还是 AppSource 中发布](./cpp-consulting-service-storefront-details.md)

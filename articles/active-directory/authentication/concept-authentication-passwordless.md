@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07ba38a5d7e8e8a89ba122efb1734c1f13a94d48
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 402eaecbf03fd52fbb5e871fdd196da2bc9a3e1f
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80332190"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743534"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure 活动目录的无密码身份验证选项
 
@@ -97,7 +97,7 @@ FIDO2 安全密钥是一种不可仿冒标准的无密码身份验证方法，�
 8. Azure AD 使用 FIDO2 公钥验证已签名的 nonce。
 9. Azure AD 返回 PRT 以启用对本地资源的访问。
 
-虽然有许多密钥由 FIDO 联盟认证 FIDO2，但 Microsoft 需要供应商实施 FIDO2 客户端到身份验证器协议 （CTAP） 规范的一些可选扩展，以确保最大的安全性和最佳经验。
+虽然有许多密钥由 FIDO 联盟认证 FIDO2，但 Microsoft 需要供应商实施 FIDO2 客户端到身份验证器协议 （CTAP） 规范的一些可选扩展，以确保最大的安全性和最佳体验。
 
 安全密钥**必须**实现 FIDO2 CTAP 协议中的以下功能和扩展，才能与 Microsoft 兼容：
 
@@ -142,10 +142,10 @@ FIDO2 安全密钥是一种不可仿冒标准的无密码身份验证方法，�
 
 在选择 Microsoft 无密码技术时，需要考虑以下一些因素：
 
-||**适合商务的窗口**|**使用 Microsoft 身份验证器应用进行无密码登录**|**FIDO2 安全密钥**|
+||**Windows Hello for Business**|**使用 Microsoft 身份验证器应用进行无密码登录**|**FIDO2 安全密钥**|
 |:-|:-|:-|:-|
 |**先决条件**| Windows 10 版本 1809 或更高版本<br>Azure Active Directory| Microsoft Authenticator 应用<br>手机（iOS 和运行 Android 6.0 或以上 Android 的设备。|Windows 10 版本 1809 或更高版本<br>Azure Active Directory|
-|**模式**|Platform|软件|硬件|
+|**模式**|平台|软件|硬件|
 |**系统和设备**|具有内置可信平台模块 （TPM） 的 PC<br>PIN 和生物识别识别 |手机上的 PIN 和生物识别识别|兼容微软的 FIDO2 安全设备|
 |**用户体验**|使用 PIN 或生物识别（面部、虹膜或指纹）与 Windows 设备登录。<br>Windows Hello 身份验证绑定到设备;因此，Windows Hello 身份验证与设备相关联。用户需要设备和登录组件（如 PIN 或生物识别因子）来访问公司资源。|使用带有指纹扫描、面部或虹膜识别或 PIN 的手机登录。<br>用户通过电脑或手机登录工作或个人帐户。|使用 FIDO2 安全设备（生物识别、PIN 和 NFC）登录<br>用户可以基于组织控制访问设备，并根据 PIN、生物识别技术（如 USB 安全密钥和支持 NFC 的智能卡、密钥或可穿戴设备）进行身份验证。|
 |**已启用的方案**| Windows 设备的无密码体验。<br>适用于专用工作 PC，能够单次登录设备和应用程序。|使用手机的任何地方无密码解决方案。<br>适用于从任何设备访问 Web 上的工作或个人应用程序。|使用生物识别、PIN 和 NFC 的员工无密码体验。<br>适用于共享 PC 和移动电话不可行的选项（例如，对于服务台人员、公共信息亭或医院团队）|

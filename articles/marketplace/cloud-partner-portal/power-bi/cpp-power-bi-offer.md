@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: e0f8440686fc36d2cfcb493d97abaf44f81dd287
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab97fa33570ee59c918b2be776750644a7c8e3bd
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275911"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745415"
 ---
 # <a name="power-bi-app-offer"></a>Power BI 应用套餐
+
+>[!Important]
+>从 2020 年 3 月 30 日开始，我们将开始将 Power BI 应用优惠的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[Power BI 应用创建概述](https://aka.ms/AzurePBIAppCreationOverview)中的说明进行操作，以管理迁移的优惠。
 
 |              |                                |
 |--------------|--------------------------------|

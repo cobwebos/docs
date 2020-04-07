@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 3aa03871b4393b4c49d73d92a296add0cadc8312
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 7e05458214732a1835dd73b85dad871683ef5bbe
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633720"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743118"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure 突触分析发行说明
 
@@ -57,18 +57,18 @@ ms.locfileid: "80633720"
 
 | 服务改进 | 详细信息 |
 | --- | --- |
-|**工作负载管理门户指标（预览）**|随着今年 10 月发布的用于预览的[工作负载隔离](/azure/sql-data-warehouse/sql-data-warehouse-workload-isolation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，用户可以创建自己的[工作负载组](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，以高效管理系统资源并确保满足业务 SL。  作为 Azure Synapse 分析总体[工作负载管理](/azure/sql-data-warehouse/sql-data-warehouse-workload-management?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)增强功能的一部分，新的[工作负载管理监视指标](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)现已可用。</br> </br> 现在，通过以下指标监视工作负荷，可以更深入地洞察： </br> - 有效上限资源百分比  </br> - 有效最小资源百分比 </br> - 工作负载组活动查询 </br> - 按最大资源百分比分配工作负载组 </br> - 按系统百分比分配工作负载组 </br> - 工作负载组查询超时 </br> - 工作负载组排队查询 </br></br> 使用这些指标可以标识使用[不足的工作负载隔离](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#underutilized-workload-isolation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)配置[的工作负载组瓶颈](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#workload-group-bottleneck?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)或工作负载组。  这些指标可用于 Azure 门户，允许按工作负荷组拆分。  筛选您最喜爱的图形并将其固定到仪表板，以便快速访问见解。|
-|**门户监控指标**| 以下指标已添加到门户中，用于监视整个查询活动： </br> - 活动查询 </br> - 排队查询 </br> </br>这些指标与[监视资源利用率和查询活动文档中](/azure/sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)的现有指标一起描述。|
+|**工作负载管理门户指标（预览）**|随着今年 10 月发布的用于预览的[工作负载隔离](sql-data-warehouse-workload-isolation.md)，用户可以创建自己的[工作负载组](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，以高效管理系统资源并确保满足业务 SL。  作为 Azure Synapse 分析总体[工作负载管理](sql-data-warehouse-workload-management.md)增强功能的一部分，新的[工作负载管理监视指标](sql-data-warehouse-workload-management-portal-monitor.md)现已可用。</br> </br> 现在，通过以下指标监视工作负荷，可以更深入地洞察： </br> - 有效上限资源百分比  </br> - 有效最小资源百分比 </br> - 工作负载组活动查询 </br> - 按最大资源百分比分配工作负载组 </br> - 按系统百分比分配工作负载组 </br> - 工作负载组查询超时 </br> - 工作负载组排队查询 </br></br> 使用这些指标可以标识使用[不足的工作负载隔离](sql-data-warehouse-workload-management-portal-monitor.md#underutilized-workload-isolation)配置[的工作负载组瓶颈](sql-data-warehouse-workload-management-portal-monitor.md#workload-group-bottleneck)或工作负载组。  这些指标可用于 Azure 门户，允许按工作负荷组拆分。  筛选您最喜爱的图形并将其固定到仪表板，以便快速访问见解。|
+|**门户监控指标**| 以下指标已添加到门户中，用于监视整个查询活动： </br> - 活动查询 </br> - 排队查询 </br> </br>这些指标与[监视资源利用率和查询活动文档中](sql-data-warehouse-concept-resource-utilization-query-activity.md)的现有指标一起描述。|
 
 ## <a name="october-2019"></a>2019 年 10 月
 
 | 服务改进 | 详细信息 |
 | --- | --- |
 |**Copy（预览版）**|我们很高兴地宣布，现已推出简单灵活 COPY 语句的公共预览版用于数据引入。 现在，只需一条语句就能无缝引入数据并获得更高的灵活性，且无需分配高特权用户。 有关详细信息，请参阅 [COPY 命令文档](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。|
-|**工作负载隔离（预览版）**|为了在客户使其数据仓库大众化时为客户提供支持，我们宣布推出用于智能工作负载管理的新功能。 新的[工作负载隔离](/azure/sql-data-warehouse/sql-data-warehouse-workload-isolation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)功能使你能够管理异类工作负载的执行，同时提供灵活性以及对数据仓库资源的控制。 这会提高执行可预测性，并增强满足预定义 SLA 的能力。 </br>除了工作负载隔离外，现在还有其他选项可用于[工作负载分类](/azure/sql-data-warehouse/sql-data-warehouse-workload-classification?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。  除了登录分类以外，[创建工作负载分类器](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)语法还提供根据查询标签、会话上下文和时间对请求进行分类的功能。|
+|**工作负载隔离（预览版）**|为了在客户使其数据仓库大众化时为客户提供支持，我们宣布推出用于智能工作负载管理的新功能。 新的[工作负载隔离](sql-data-warehouse-workload-isolation.md)功能使你能够管理异类工作负载的执行，同时提供灵活性以及对数据仓库资源的控制。 这会提高执行可预测性，并增强满足预定义 SLA 的能力。 </br>除了工作负载隔离外，现在还有其他选项可用于[工作负载分类](sql-data-warehouse-workload-classification.md)。  除了登录分类以外，[创建工作负载分类器](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)语法还提供根据查询标签、会话上下文和时间对请求进行分类的功能。|
 |**预测（预览）**|您现在可以在数据仓库中对机器学习模型进行评分，从而避免需要大型和复杂的数据移动。 T-SQLPREDICT 函数依赖于开放式模型框架，并将数据和机器学习模型作为输入来生成预测。
 |**SSDT CI/CD （GA）**|今天，我们很高兴地宣布 SQL 分析 – SQL 服务器数据工具 （SSDT） 数据库项目[的最高请求功能](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247--in-preview-database-project-from-visual-studio-t)的通用性。 此版本包括支持具有 Visual Studio 2019 的 SSDT，以及与 Azure DevOps 的本机平台集成，为企业级部署提供内置的持续集成和部署 （CI/CD） 功能。 |
-|**具体化视图（正式版）**|具体化视图将保留视图定义查询返回的数据，并自动随着基础表中的数据更改而更新。 它可以提高复杂查询的性能（通常指使用联接和聚合的查询），同时还提供简单的维护操作。 有关详细信息，请参阅[使用具体化视图优化性能](/azure/sql-data-warehouse/performance-tuning-materialized-views?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。  安装 [SQL Server Management Studio 18.4 或更高版本](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)可以编写具体化视图的脚本。|
+|**具体化视图（正式版）**|具体化视图将保留视图定义查询返回的数据，并自动随着基础表中的数据更改而更新。 它可以提高复杂查询的性能（通常指使用联接和聚合的查询），同时还提供简单的维护操作。 有关详细信息，请参阅[使用具体化视图优化性能](performance-tuning-materialized-views.md)。  安装 [SQL Server Management Studio 18.4 或更高版本](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)可以编写具体化视图的脚本。|
 |**动态数据掩码（正式版）**|动态数据掩码 (DDM) 根据定义的掩码规则在查询结果中即时将数据仓库中的敏感数据模糊化，以防止有人未经授权访问这些数据。有关详细信息，请参阅 [SQL 数据库动态数据掩码](../../sql-database/sql-database-dynamic-data-masking-get-started.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。|
 |**读取提交的快照隔离（正式版）**|您可以使用 ALTER 数据库为用户数据库启用或禁用快照隔离。 若要避免对当前工作负荷产生影响，可以在数据库维护期间设置此选项，或等到该数据库没有其他活动的连接时设置此选项。 有关详细信息，请参阅[更改数据库集选项](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。|
 |**有序聚集列存储索引（正式版）**|若要存储和有效查询大量数据，列存储至关重要。 排序聚集列存储索引支持有效的段消除，从而进一步优化了查询执行。有关详细信息，请参阅[使用有序聚集列存储索引优化性能](performance-tuning-ordered-cci.md)。|

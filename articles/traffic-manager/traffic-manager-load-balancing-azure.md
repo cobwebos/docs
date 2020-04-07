@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: rohink
-ms.openlocfilehash: b77248813463f51d4bd2c5186e421aec43ffaf52
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cccd4a6b0b52608a6a17b73688e18f27088df5b0
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76939226"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757203"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>在 Azure 中使用负载均衡服务
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 Microsoft Azure 提供了多种服务，以便可以管理网络流量的分布和负载均衡方式。 可以单独使用这些服务，或者根据需要结合使用这些服务提供的方法来构建优化解决方案。
 
@@ -38,7 +38,7 @@ Microsoft Azure 提供了多种服务，以便可以管理网络流量的分布�
   * 多值路由 - 允许你在单个 DNS 响应中发送多个应用程序终结点的 IP 地址。
 
   客户端直接连接到由流量管理器返回的终结点。 当某个终结点运行不正常时，Azure 流量管理器可以检测到这种状态，然后将客户端重定向到另一个正常的实例。 若要详细了解此服务，请参阅 [Azure 流量管理器文档](traffic-manager-overview.md)。
-* **应用程序网关**提供应用程序交付控制器 （ADC） 作为服务，为您的应用程序提供各种第 7 层负载平衡功能。 客户可以用它将 CPU 密集型 SSL 终止卸载到应用程序网关，优化 Web 场工作效率。 其他第 7 层路由功能包括传入流量的轮循机制分布、基于 Cookie 的会话相关性、基于 URL 路径的路由，以及在单个应用程序网关后托管多个网站的功能。 可以将应用程序网关配置为面向 Internet 的网关、仅限内部访问的网关或二者合一的网关。 应用程序网关完全受 Azure 管理，可缩放且高度可用。 它提供丰富的诊断和日志记录功能以改进可管理性。
+* **应用程序网关**提供应用程序交付控制器 （ADC） 作为服务，为您的应用程序提供各种第 7 层负载平衡功能。 它允许客户通过将 CPU 密集型 TLS 端接卸载到应用程序网关来优化 Web 服务器场的工作效率。 其他第 7 层路由功能包括传入流量的轮循机制分布、基于 Cookie 的会话相关性、基于 URL 路径的路由，以及在单个应用程序网关后托管多个网站的功能。 可以将应用程序网关配置为面向 Internet 的网关、仅限内部访问的网关或二者合一的网关。 应用程序网关完全受 Azure 管理，可缩放且高度可用。 它提供丰富的诊断和日志记录功能以改进可管理性。
 * **负载均衡器**是 Azure SDN 堆栈的组成部分，为所有 UDP 和 TCP 协议提供高性能、低延迟的第 4 层负载平衡服务。 它管理入站和出站连接。 可以配置公共和内部负载均衡终结点，定义规则将入站连接映射到后端池目标，并在其中包含 TCP 和 HTTP 运行状况探测选项来管理服务的可用性。
 
 ## <a name="scenario"></a>方案
@@ -59,7 +59,7 @@ Microsoft Azure 提供了多种服务，以便可以管理网络流量的分布�
 ![负载均衡体系结构关系图](./media/traffic-manager-load-balancing-azure/scenario-diagram.png)
 
 > [!NOTE]
-> 此示例只是 Azure 提供的负载均衡服务的众多可能配置之一。 可以根据负载均衡需求混合搭配使用流量管理器、应用程序网关和负载均衡器。 例如，如果 SSL 卸载或第 7 层处理没有必要，负载均衡器可以替代应用程序网关。
+> 此示例只是 Azure 提供的负载均衡服务的众多可能配置之一。 可以根据负载均衡需求混合搭配使用流量管理器、应用程序网关和负载均衡器。 例如，如果不需要 TLS 卸载或第 7 层处理，则可以使用负载均衡器代替应用程序网关。
 
 ## <a name="setting-up-the-load-balancing-stack"></a>设置负载均衡堆栈
 

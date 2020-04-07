@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 89d437fe74d209e0dc04ffc590a1e32426b28732
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d52270e623a713d7188ac5ff907ebb82ada13283
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275860"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745609"
 ---
 # <a name="publish-a-power-bi-app-offer"></a>发布 Power BI 应用产品/服务
+
+>[!Important]
+>从 2020 年 3 月 30 日开始，我们将开始将 Power BI 应用优惠的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[Power BI 应用创建概述](https://aka.ms/AzureCreatePBIServiceApp)中的说明进行操作，以管理迁移的优惠。
 
 在云合作伙伴门户中定义产品/服务并创建关联的技术资产后，最后一步是提交发布产品/服务。 要启动此过程，请在 **"新优惠**"窗口的左侧窗格中，选择 **"发布**"。 有关详细信息，请参阅[发布 Azure 市场和 AppSource 产品/服务](../manage-offers/cpp-publish-offer.md)。
 
@@ -27,7 +30,7 @@ ms.locfileid: "80275860"
 
 下表描述了每个步骤，并提供其估计完成时间：
 
-|   发布步骤            |   时间     |   描述                                                                  |
+|   发布步骤            |   时间     |   说明                                                                  |
 | --------------------         |------------| ----------------                                                               |
 | 验证先决条件       | 15 分钟     | 验证套餐信息和套餐设置。                            |
 | 认证                | 1-7 天   | Power BI 认证团队分析您的产品/服务。 团队通过手动验证测试运行您的 Power BI 应用，通过提供的安装 URL 安装应用。 主验证作为应用认证过程的一部分执行（本文档后面所述）。         |

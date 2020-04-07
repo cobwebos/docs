@@ -3,12 +3,12 @@ title: 使用恢复服务保管库的诊断设置
 description: 本文介绍如何使用 Azure 备份服务的新旧诊断事件
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: e3919d120e5f741af6cd30dd27e5a1dfa2b06cf2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d10bedf3818559971eff12624152d0e797f6c3cc
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136933"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672785"
 ---
 # <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>使用恢复服务保管库的诊断设置
 
@@ -39,28 +39,60 @@ Azure 备份提供以下诊断事件，其中每个事件提供有关特定一�
 
 要将保管库诊断数据发送到洛杉矶：
 
-1.  导航到保管库，然后单击 **"诊断设置**"。 单击 **+ 添加诊断设置**。
-2.  为"诊断"设置指定名称。
-3.  选中"**发送到日志分析"** 复选框，然后选择日志分析工作区。
-4.  在切换中选择**特定于资源**，并检查以下六个事件 -**酷睿备份**、**附加Azure备份警报**、**附加Azure备份保护实例**、**附加Azure备份作业**、**附加Azure备份策略**和**附加Azure备份存储**。
-5.  单击"**保存**"。
+1.    导航到保管库，然后单击 **"诊断设置**"。 单击 **+ 添加诊断设置**。
+2.    为"诊断"设置指定名称。
+3.    选中"**发送到日志分析"** 复选框，然后选择日志分析工作区。
+4.    在切换中选择**特定于资源**，并检查以下六个事件 -**酷睿备份**、**附加Azure备份警报**、**附加Azure备份保护实例**、**附加Azure备份作业**、**附加Azure备份策略**和**附加Azure备份存储**。
+5.    单击"**保存**"。
 
 ![资源特定模式](./media/backup-azure-diagnostics-events/resource-specific-blade.png)
 
 数据流入 LA 工作区后，将为每个事件在工作区中创建专用表。 您可以直接查询这些表中的任何一个，并在必要时在这些表之间执行联接或联合。
 
 > [!IMPORTANT]
-> 上述六个事件，即核心 Azure 备份、附加 Azure 备份警报、附加 Azure 备份保护实例、附加Azure备份作业、附加Azure备份策略和附加Azure备份存储仅在资源特定**模式下支持。** **请注意，如果尝试在 Azure 诊断模式下发送这六个事件的数据，则不会将数据流向 LA 工作区。**
+> 上述六个事件，即核心 Azure 备份、附加 Azure 备份警报、AddonAzure 备份保护实例、附加Azure备份作业、附加Azure备份策略和附加Azure备份存储，**仅在**[备份报告中](https://docs.microsoft.com/azure/backup/configure-reports)的资源特定模式下支持。 **请注意，如果尝试在 Azure 诊断模式下发送这六个事件的数据，则备份报告中不会显示任何数据。**
 
 ## <a name="legacy-event"></a>旧事件
 
-在传统上，保管库的所有与备份相关诊断数据已包含在名为“AzureBackupReport”的单个事件中。 上述六个事件实质上是 AzureBackupReport 中包含的所有数据的分解。 
+传统上，保管库的所有与备份相关的诊断数据都包含在称为"AzureBackupReport"的单个事件中。 上述六个事件实质上是 AzureBackupReport 中包含的所有数据的分解。 
 
-目前，我们将继续支持 AzureBackupReport 事件，以进行向后兼容性，如果用户在此事件中存在自定义查询，例如自定义日志警报、自定义可视化等。但是，**我们建议尽早迁移到新事件**，因为这使数据更容易在日志查询中处理，从而提供更好的架构及其结构的可发现性，从而提高了引入延迟和查询时间的性能。 **对使用 Azure 诊断模式的支持最终将被淘汰，因此选择新事件可能有助于您避免以后的复杂迁移**。
+目前，我们将继续支持 AzureBackupReport 事件，以进行向后兼容性，如果用户在此事件中存在自定义查询，例如自定义日志警报、自定义可视化等。但是，**我们建议尽早迁移到[新事件](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#diagnostics-events-available-for-azure-backup-users)**，因为这使数据更容易在日志查询中处理，从而提供更好的架构及其结构的可发现性，从而提高了引入延迟和查询时间的性能。 
 
-使用 Azure 备份的内置策略为指定范围内的所有保管库添加新的诊断设置，包括 6 个新事件：[大规模配置保管库诊断设置](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
+**Azure 诊断模式下的旧事件最终将被弃用，因此选择新事件可能有助于您避免以后的复杂迁移**。 我们利用日志分析[的报告解决方案](https://docs.microsoft.com/azure/backup/configure-reports)也将停止支持来自旧事件的数据。
 
-在迁移所有自定义查询以使用新表中的数据之前，可以选择为 AzureBackupReport 和六个新事件创建单独的诊断设置。 下图显示了采用两项诊断设置的保管库示例。 第一项设置名为 **Setting1**，它以“Azure 诊断”模式将 AzureBackupReport 事件的数据发送到 LA 工作区。 第二项设置名为 **Setting2**，它以“特定于资源”模式将六个新 Azure 备份事件的数据发送到 LA 工作区。
+### <a name="steps-to-move-to-new-diagnostics-settings-to-log-analytics-workspace"></a>移动到新诊断设置的步骤（到日志分析工作区）
+
+1. 使用旧事件确定哪些保管库将数据发送到日志分析工作区，以及它们所属的订阅。 运行以下工作区以标识这些保管库和订阅：
+
+    ````Kusto
+    let RangeStart = startofday(ago(3d));
+    let VaultUnderAzureDiagnostics = (){
+        AzureDiagnostics
+        | where TimeGenerated >= RangeStart | where Category == "AzureBackupReport" and OperationName == "Vault" and SchemaVersion_s == "V2"
+        | summarize arg_max(TimeGenerated, *) by ResourceId    
+        | project ResourceId, Category};
+    let VaultUnderResourceSpecific = (){
+        CoreAzureBackup
+        | where TimeGenerated >= RangeStart | where OperationName == "Vault" 
+        | summarize arg_max(TimeGenerated, *) by ResourceId
+        | project ResourceId, Category};
+        // Some Workspaces will not have AzureDiagnostics Table, hence you need to use isFuzzy
+    let CombinedVaultTable = (){
+        CombinedTable | union isfuzzy = true 
+        (VaultUnderAzureDiagnostics() ),
+        (VaultUnderResourceSpecific() )
+        | distinct ResourceId, Category};
+    CombinedVaultTable | where Category == "AzureBackupReport"
+    | join kind = leftanti ( 
+    CombinedVaultTable | where Category == "CoreAzureBackup"
+    ) on ResourceId
+    | parse ResourceId with * "SUBSCRIPTIONS/" SubscriptionId:string "/RESOURCEGROUPS" * "MICROSOFT.RECOVERYSERVICES/VAULTS/" VaultName:string
+    | project ResourceId, SubscriptionId, VaultName
+    ````
+
+2. 使用 Azure 备份的[内置 Azure 策略](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)为指定范围内的所有保管库添加新的诊断设置。 此策略向没有诊断设置（或）仅具有旧诊断设置的保管库添加新的诊断设置。 此策略可以一次分配给整个订阅或资源组。 请注意，您需要对为其分配策略的每个订阅的"所有者"访问权限。
+
+您可以选择为 AzureBackupReport 和六个新事件设置单独的诊断设置，直到迁移了所有自定义查询以使用新表中的数据。 下图显示了采用两项诊断设置的保管库示例。 第一项设置名为 **Setting1**，它以“Azure 诊断”模式将 AzureBackupReport 事件的数据发送到 LA 工作区。 第二项设置名为 **Setting2**，它以“特定于资源”模式将六个新 Azure 备份事件的数据发送到 LA 工作区。
 
 ![两项设置](./media/backup-azure-diagnostics-events/two-settings-example.png)
 
