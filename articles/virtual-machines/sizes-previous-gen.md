@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: e5fe58891aa901509dc44d3b2465c794bd92b22d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f13ab3cd6ff765bc3b1bee8e8fad7e7273f6c7d
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476563"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673917"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>前几代虚拟机大小
 
@@ -66,6 +66,7 @@ ACU：210 - 250
 MBps = 每秒 10^6 字节，GiB = 1024^3 字节。
 
 <sup>1</sup> Fs 系列 VM 可能的最大磁盘吞吐量（IOPS 或 MBps）可能受限于附加磁盘的数量、大小和条带化。  有关详细信息，请参阅为[Windows](windows/premium-storage-performance.md)或[Linux](linux/premium-storage-performance.md)设计高性能。  
+
 
 ## <a name="nvv2-series"></a>NVv2 系列
 
@@ -341,9 +342,33 @@ ACU：180 - 240
 <sup>1</sup> 实例对于专用于单个客户的硬件独立。
 <br>
 
+# <a name="nv-series"></a>NV 系列
+**较新的尺寸推荐**： [NVv3 系列](nvv3-series.md)和[NVv4 系列](nvv4-series.md)
+
+NV 系列虚拟机采用 [NVIDIA Tesla M60 ](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU 和 NVIDIA GRID 技术，适用于桌面加速型应用程序和虚拟桌面，方便客户将其数据或模拟可视化。 用户可以在 NV 实例上直观显示其图形密集型工作流以获取高级图形功能，并可额外运行单精度工作负荷，例如编码和渲染。 NV 系列 VM 还由英特尔至强 E5-2690 v3 （Haswell） CPU 提供支持。
+
+NV 实例中的每个 GPU 都带有 GRID 许可证。 使用此许可证，可以灵活地将 NV 实例用作单个用户的虚拟工作站，或将 25 个并发用户都连接到用于虚拟应用程序方案的 VM。
+
+高级存储：不支持
+
+高级存储缓存：不支持
+
+实时迁移：不支持
+
+内存保留更新：不支持
+
+| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大 NIC 数 | 虚拟工作站 | 虚拟应用程序 |
+|---|---|---|---|---|---|---|---|---|---|
+| Standard_NV6  | 6  | 56  | 340  | 1 | 8  | 24 | 1 | 1 | 25  |
+| Standard_NV12 | 12 | 112 | 680  | 2 | 16 | 48 | 2 | 2 | 50  |
+| Standard_NV24 | 24 | 224 | 1440 | 4 | 32 | 64 | 4 | 4 | 100 |
+
+1 GPU = 半块 M60 卡。
+<br>
+
 ## <a name="other-sizes"></a>其他大小
 
-* [一般用途](sizes-general.md)
+* [常规用途](sizes-general.md)
 * [计算优化](sizes-compute.md)
 * [内存优化](sizes-memory.md)
 * [存储优化](sizes-storage.md)

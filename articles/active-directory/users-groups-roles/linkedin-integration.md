@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bf65f69d9dcaf6de2236c98b56b58ec7e021099
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54e3821d269d11397ec4f9f5833e33ac6b555abc
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74025409"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755118"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>在 Azure 活动目录中集成LinkedIn帐户连接
 
@@ -26,8 +26,9 @@ ms.locfileid: "74025409"
 
 > [!IMPORTANT]
 > LinkedIn帐户连接设置当前正在向 Azure AD 组织推出。 当它被推出到您的组织时，默认情况下将启用它。
-> 
+>
 > 异常：
+>
 > * 此设置不适用于使用以下软件的客户：美国政府版 Microsoft 云、德国 Microsoft 云或者在中国通过 21Vianet 运营的 Azure 和 Office 365。
 > * 对于在德国预配的租户，此设置默认为关闭。 请注意，此设置不适用于使用德国 Microsoft 云的客户。
 > * 对于在法国预配的租户，此设置默认为关闭。
@@ -40,7 +41,7 @@ ms.locfileid: "74025409"
 
 1. 使用 Azure [AD](https://aad.portal.azure.com/)组织的全局管理员的帐户登录到 Azure AD 管理中心。
 1. 选择“用户”****。
-1. 在“用户”**** 边栏选项卡中，选择“用户设置”****。
+1. 在 **"用户"** 页上，选择 **"用户设置**"。
 1. 在**LinkedIn帐户连接**下，允许用户连接其帐户以访问某些 Microsoft 应用中LinkedIn连接。 在用户同意连接其帐户之前，不会共享任何数据。
 
     * 选择 **"是**"可为组织中的所有用户启用该服务
@@ -55,6 +56,7 @@ ms.locfileid: "74025409"
 > 在用户同意连接其帐户之前，不会完全启用LinkedIn集成。 为用户启用帐户连接时，不会共享任何数据。
 
 ### <a name="assign-selected-users-with-a-group"></a>使用组分配选定的用户
+
 我们已替换了"选择"选项，该选项指定用户列表，并选择一组用户，以便您可以启用连接单个组（而不是许多单个用户）LinkedIn和 Microsoft 帐户的能力。 如果未为选定的单个用户启用LinkedIn帐户连接，则无需执行任何操作。 如果您以前为选定的单个用户启用了LinkedIn帐户连接，则应：
 
 1. 获取单个用户的当前列表
@@ -64,15 +66,11 @@ ms.locfileid: "74025409"
 > [!NOTE]
 > 即使您未将当前选定的单个用户移动到组，他们仍可以在 Microsoft 应用中看到LinkedIn信息。
 
-### <a name="get-the-current-list-of-selected-users"></a>获取所选用户的当前列表
+### <a name="move-currently-selected-users-to-a-group"></a>将当前选定的用户移动到组
 
+1. 创建为LinkedIn帐户连接选择的用户的 CSV 文件。
 1. 使用管理员帐户登录 Microsoft 365。
-1. 转到  https://linkedinselectedusermigration.azurewebsites.net/ 。 您将看到为LinkedIn帐户连接选择的用户列表。
-1. 将列表导出到 CSV 文件。
-
-### <a name="move-the-currently-selected-individual-users-to-a-group"></a>将当前选定的单个用户移动到组
-
-1. 启动 PowerShell
+1. 启动 PowerShell。
 1. 通过运行安装 Azure AD 模块`Install-Module AzureAD`
 1. 运行以下脚本：
 
@@ -98,8 +96,8 @@ ms.locfileid: "74025409"
   
    状态 | 效果
    ------ | ------
-   **启用** | Office 2016“选项”中的“在 Office 应用程序中显示领英功能”设置已启用。**** 组织中的用户可以在其 Office 2016 应用程序中使用LinkedIn功能。
-   **禁用** | Office 2016“选项”中的“在 Office 应用程序中显示领英功能”设置已禁用，最终用户不能更改此设置。**** 组织中的用户无法在其 Office 2016 应用程序中使用 LinkedIn 功能。
+   **已启用** | Office 2016“选项”中的“在 Office 应用程序中显示领英功能”设置已启用。**** 组织中的用户可以在其 Office 2016 应用程序中使用LinkedIn功能。
+   **已禁用** | Office 2016“选项”中的“在 Office 应用程序中显示领英功能”设置已禁用，最终用户不能更改此设置。**** 组织中的用户无法在其 Office 2016 应用程序中使用 LinkedIn 功能。
 
 此组策略只会影响本地计算机上的 Office 2016 应用。 如果用户在其 Office 2016 应用中禁用LinkedIn，他们仍然可以在 Office 365 中看到LinkedIn功能。
 

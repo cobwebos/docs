@@ -3,12 +3,12 @@ title: 模板函数 - 资源
 description: 介绍可在 Azure 资源管理器模板中使用的用于检索资源相关值的函数。
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 641602218aa19b790eb6e7feabdb7b46a520b590
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 23c0463649e748b35917c959a73536147e91f60b
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478273"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744991"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM 模板的资源函数
 
@@ -444,12 +444,12 @@ reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | resourceName 或 resourceIdentifier |是 |字符串 |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 引用以前部署的资源或资源的名称不明确时，请提供资源 ID。 |
-| apiVersion |否 |字符串 |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，请包含此参数。 通常情况下，格式为 **yyyy-mm-dd**。 有关资源的有效 API 版本，请参阅[模板引用](/azure/templates/)。 |
+| apiVersion |否 |字符串 |指定的资源的 API 版本。 **当资源未预配在同一模板中时，需要此参数。** 通常情况下，格式为 **yyyy-mm-dd**。 有关资源的有效 API 版本，请参阅[模板引用](/azure/templates/)。 |
 | 'Full' |否 |字符串 |一个值，指定是否要返回完整资源对象。 如果未指定 `'Full'`，仅返回资源的属性对象。 完整对象包括资源 ID 和位置等值。 |
 
 ### <a name="return-value"></a>返回值
 
-每种资源类型返回 reference 函数的不同属性。 该函数不返回单个预定义的格式。 同样，返回的值因是否指定了完整对象而有所不同。 若要查看资源类型的属性，请返回 outputs 节中的对象，如示例所示。
+每种资源类型返回 reference 函数的不同属性。 该函数不返回单个预定义的格式。 此外，返回的值因参数的值而异`'Full'`。 若要查看资源类型的属性，请返回 outputs 节中的对象，如示例所示。
 
 ### <a name="remarks"></a>备注
 
@@ -514,7 +514,7 @@ reference 函数只能用在资源定义的 properties 中以及模板或部署�
 "value": "[reference(parameters('storageAccountName'))]"
 ```
 
-引用没有部署在同一模板中的资源时，请提供资源 ID。
+引用未在同一模板中部署的资源时，请提供资源 ID 和`apiVersion`。
 
 ```json
 "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"

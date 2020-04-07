@@ -3,29 +3,29 @@ title: 响应 Azure Blob 存储事件 | Microsoft Docs
 description: 使用 Azure 事件网格订阅 Blob 存储事件。
 author: normesta
 ms.author: normesta
-ms.date: 01/30/2018
+ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
-ms.openlocfilehash: 5281dab8fd42326d88964614fd20a81621b5e9dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4dd6bab6198546dc5acab78ec59d92387328dbb
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79268491"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755002"
 ---
 # <a name="reacting-to-blob-storage-events"></a>响应 Blob 存储事件
 
-Azure 存储事件允许应用程序响应事件，例如 Blob 的创建和删除。 为此，它无需复杂的代码或高价低效的轮询服务。
+Azure 存储事件允许应用程序响应事件，例如 Blob 的创建和删除。 为此，它无需复杂的代码或高价低效的轮询服务。 最大好处是，使用多少就付多少费用。
 
-通过 [Azure 事件网格](https://azure.microsoft.com/services/event-grid/)向订阅者（如 Azure Functions 或 Azure 逻辑应用，甚至是你自己的 HTTP 侦听器）推送事件。 最大好处是，使用多少就付多少费用。
+Blob 存储事件使用[Azure 事件网格](https://azure.microsoft.com/services/event-grid/)推送到订阅者，如 Azure 函数、Azure 逻辑应用，甚至推送到您自己的 http 侦听器。 事件网格通过丰富的重试策略和死信向应用程序提供可靠的事件传递。
 
-Blob 存储将事件发送到事件网格，通过丰富的重试策略和死信向应用程序提供可靠的事件传递。
+请参阅[Blob 存储事件架构](../../event-grid/event-schema-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)文章以查看 Blob 存储支持的事件的完整列表。
 
 常见的 Blob 存储事件方案包括图像或视频处理、搜索索引或任何面向文件的工作流。 异步文件上传十分适合事件。 基于事件的体系结构对于鲜少更改，但要求立即响应的情况尤为有效。
 
-如果现在就要进行此尝试，请参阅下述快速入门文章中的任一篇：
+如果要尝试 Blob 存储事件，请参阅以下任何快速入门文章：
 
 |若要使用此工具：    |请参阅此文： |
 |--|-|
@@ -39,7 +39,7 @@ Blob 存储将事件发送到事件网格，通过丰富的重试策略和死信
 - [教程：使用事件网格自动调整上传图像大小](https://docs.microsoft.com/azure/event-grid/resize-images-on-storage-blob-upload-event?tabs=dotnet)
 
 >[!NOTE]
-> 只有种类为“StorageV2 (常规用途 v2)”和“BlobStorage”的存储帐户支持事件集成。******** “存储(常规用途 v1)”**** 不** 支持与事件网格集成。
+> 只有存储**V2（通用 v2）、****块 Blob 存储**和 Blob**存储**的存储帐户支持事件集成。 “存储(常规用途 v1)”**** 不** 支持与事件网格集成。
 
 ## <a name="the-event-model"></a>事件模型
 
@@ -98,6 +98,7 @@ Blob 存储事件使用者使用的格式：
 > * 同样，检查 eventType 是否为准备处理的项，并且不假定所接收的全部事件都是期望的类型。
 > * 由于消息可能会在一些延迟后到达，请使用 etag 字段来了解有关对象的信息是否仍然是最新的。 要了解如何使用 etag 字段，请参阅[在 Blob 存储中管理并发](https://docs.microsoft.com/azure/storage/common/storage-concurrency?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage)。 
 > * 由于消息可能无序到达，请使用序列器字段了解任何特定对象上事件的顺序。 序列器字段是一个字符串值，表示任何特定 Blob 名称的事件的逻辑序列。 可以使用标准字符串比较来了解同一 blob 名称上的两个事件的相对序列。
+> 存储事件保证至少一次传递到订阅者，这可确保输出所有消息。 但是，由于重试或订阅的可用性，偶尔会发生重复的消息。
 > * 使用 blobType 字段可了解 blob 中允许何种类型的操作，以及应当使用哪种客户端库类型来访问该 blob。 有效值为 `BlockBlob` 或 `PageBlob`。 
 > * 将 URL 字段与 `CloudBlockBlob` 和 `CloudAppendBlob` 构造函数配合使用，以访问 blob。
 > * 忽略不了解的字段。 此做法有助于适应将来可能添加的新功能。
@@ -109,4 +110,5 @@ Blob 存储事件使用者使用的格式：
 了解关于事件网格的详细信息，尝试一下 Blob 存储事件：
 
 - [关于事件网格](../../event-grid/overview.md)
+- [Blob 存储事件架构](../../event-grid/event-schema-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [将 Blob 存储事件路由到自定义 Web 终结点](storage-blob-event-quickstart.md)

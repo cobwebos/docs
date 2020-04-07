@@ -4,12 +4,12 @@ description: 了解有关 Azure Service Fabric 群集的安全性方案，以及
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 92d2c4d03075eaafce039f94b4f03c0791985b40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5912f98f6a1c82250a66ec4d9fe39f2f69b1cc8f
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258676"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80753793"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric 群集安全方案
 
@@ -74,7 +74,7 @@ Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 
 如果将 Service Fabric 群集部署在某个公共网络中，而该网络托管在 Azure 上，则对于客户端到节点型相互身份验证，建议如下：
 
 * 对客户端标识使用 Azure Active Directory
-* 对服务器标识使用证书，并对 http 通信进行 SSL 加密
+* 用于 http 通信的服务器标识和 TLS 加密的证书
 
 如果将 Service Fabric 群集部署在某个公共网络中，而该网络托管在 Azure 上，则对于节点到节点安全，建议使用群集证书对节点进行身份验证。
 
@@ -103,13 +103,13 @@ X.509 数字证书通常用于验证客户端与服务器。 它们还用于对�
 
 必须使用这些证书（一个主要证书，以及一个可选的辅助证书）来保护群集，并防止未经授权的访问。 这些证书提供了群集和服务器身份验证。
 
-群集身份验证在群集联合的情况下对节点间的通信进行身份验证。 只有可以使用此证书自我证明身份的节点才能加入群集。 服务器身份验证在管理客户端上对群集管理终结点进行身份验证，使管理客户端知道它正在与真正的群集而不是“中间人”通信。 此证书还通过 HTTPS 为 HTTPS 管理 API 和 Service Fabric Explorer 提供 SSL。 客户端或节点对节点进行身份验证时，一项初始检查是检查“使用者”字段中的公用名值****。 此公用名或某个证书的使用者可选名称 (SAN) 必须存在于允许的公用名列表中。
+群集身份验证在群集联合的情况下对节点间的通信进行身份验证。 只有可以使用此证书自我证明身份的节点才能加入群集。 服务器身份验证在管理客户端上对群集管理终结点进行身份验证，使管理客户端知道它正在与真正的群集而不是“中间人”通信。 此证书还为 HTTPS 管理 API 和 HTTPS 中的服务结构资源管理器提供 TLS。 客户端或节点对节点进行身份验证时，一项初始检查是检查“使用者”字段中的公用名值****。 此公用名或某个证书的使用者可选名称 (SAN) 必须存在于允许的公用名列表中。
 
 该证书必须满足以下要求：
 
 * 证书必须包含私钥。 这些证书通常使用扩展名 .pfx 或 .pem  
 * 必须为密钥交换创建证书，并且该证书可导出到个人信息交换 (.pfx) 文件。
-* **证书的使用者名称必须与用于访问 Service Fabric 群集的域匹配**。 只有满足此匹配，才能为群集的 HTTPS 管理终结点和 Service Fabric Explorer 提供 SSL。 无法从证书颁发机构 (CA) 处获取针对 *.cloudapp.azure.com 域的 SSL 证书。 必须获取群集的自定义域名。 从 CA 请求证书时，该证书的使用者名称必须与用于群集的自定义域名匹配。
+* **证书的使用者名称必须与用于访问 Service Fabric 群集的域匹配**。 此匹配是为群集的 HTTPS 管理终结点和服务结构资源管理器提供 TLS 所必需的。 您不能从 *.cloudapp.azure.com 域的证书颁发机构 （CA） 获取 TLS/SSL 证书。 必须获取群集的自定义域名。 从 CA 请求证书时，该证书的使用者名称必须与用于群集的自定义域名匹配。
 
 其他注意事项：
 

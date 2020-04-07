@@ -2,13 +2,13 @@
 title: 导入文档格式指南 - QnA 制造商
 description: 了解如何使用 URL 类型导入和创建 QnA 集。
 ms.topic: reference
-ms.date: 01/02/2020
-ms.openlocfilehash: 6a954f2fd607b70c6db256ab6dcc1dbcd7a5a473
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 1e006520ce5c61f2da3f425af2332b0d41cc3881
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651835"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754906"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>导入文档和 URL 的格式指南
 
@@ -20,6 +20,8 @@ ms.locfileid: "77651835"
 
 如果直接在知识库中添加或编辑内容，请使用**标记格式**创建丰富的文本内容或更改答案中已有的标记格式内容。 QnA Maker 支持大部分标记格式，为您的内容带来丰富的文本功能。 但是，客户端应用程序（如聊天机器人）可能不支持相同的标记格式集。 测试客户端应用程序的显示答案非常重要。
 
+查看[内容类型和示例](./Concepts/content-types.md#file-and-url-data-types)的完整列表。
+
 ## <a name="basic-document-formatting"></a>基本文档格式
 
 QnA Maker 根据视觉线索（如：
@@ -28,12 +30,6 @@ QnA Maker 根据视觉线索（如：
 * 字体样式
 * 编号
 * 颜色
-
-|文档示例|
-|--|
-||
-
-
 
 ## <a name="product-manuals"></a>产品手册
 
@@ -116,7 +112,8 @@ Answer2
 * 标题的第一个字符必须大写。
 * 不要用问号结束标题。 `?`
 
+**示例文档**：<br>[表面专业版（多cx）](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)<br>[康托索优势 （多 cx）](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.docx)<br>[康托索福利 （pdf）](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.pdf)
 
-|文档示例|
-|--|
-||
+## <a name="next-steps"></a>后续步骤
+
+查看[内容类型和示例](./Concepts/content-types.md#file-and-url-data-types)的完整列表

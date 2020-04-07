@@ -9,12 +9,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 9c1260bb1fab23ede2d1a96725c3086dc128fffc
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: 39747ac0a7133562bed526f44e30bf4a656127c0
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387642"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673609"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>使用 Azure SQL 数据库解决常见安全要求的剧本
 
@@ -236,7 +236,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
             - [ALTER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql)
             - [ALTER SERVER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql)
         1. 然后将权限分配给角色。 
-            - [授予](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) 
+            - [GRANT](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) 
     - 确保不要将用户分配到不必要的角色。
 
 - 在 Azure 资源管理器中：
@@ -735,7 +735,7 @@ DDoS 保护作为 Azure 平台的一部分自动启用。 它包括始终打开�
 **如何实现**：
 
 - 结合使用 SQL 审核和数据分类。 
-  - 在 [SQL 数据库审核](sql-database-auditing.md)日志中，可以专门跟踪对敏感数据的访问。 还可以查看访问的数据及其敏感性标签等信息。 有关详细信息，请参阅[审核对敏感数据的访问](sql-database-data-discovery-and-classification.md#subheading-3)。 
+  - 在 [SQL 数据库审核](sql-database-auditing.md)日志中，可以专门跟踪对敏感数据的访问。 还可以查看访问的数据及其敏感性标签等信息。 有关详细信息，请参阅[数据发现&对](sql-database-data-discovery-and-classification.md)[敏感数据的分类和审核访问](sql-database-data-discovery-and-classification.md#audit-sensitive-data)。 
 
 **最佳实践**：
 

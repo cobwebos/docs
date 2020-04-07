@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 5c95c50f5597eee51c66cc68273478b1b9f0e2df
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e8f63d63739f15d6d140b1eff510e6e006955b8
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286330"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744260"
 ---
 # <a name="power-bi-app-offer-prerequisites"></a>Power BI 应用套餐先决条件
+
+>[!Important]
+>从 2020 年 3 月 30 日开始，我们将开始将 Power BI 应用优惠的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[Power BI 应用创建概述](https://aka.ms/AzurePBIAppCreationOverview)中的说明进行操作，以管理迁移的优惠。
 
 本文提供了在将 Power BI 应用产品/服务发布到 AppSource 市场之前需要满足的技术性和业务需求。  如果尚未这样做，请查看[Office 365、动态 365、PowerApps 和 Power BI 产品发布指南](../../appsource-offer-publishing-guide.md)。
 

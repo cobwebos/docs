@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 86cc081ef47eb2ac2e8e0a49bc79e8973f34baf1
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: c2ac05cb2a6b3bd185d5e3a84df4f3d9a01c5bef
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633693"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743263"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Azure 突触分析中资源类的工作负载管理
 
@@ -162,13 +162,13 @@ WHERE  name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
 
 资源类是通过将用户分配到数据库角色来实现的。 当用户运行查询时，该查询将使用该用户的资源类来运行。 例如，如果某个用户是 staticrc10 数据库角色的成员，则其查询将使用较小的内存量来运行。 如果某个数据库用户是 xlargerc 或 staticrc80 数据库角色的成员，则其查询将使用较大的内存量来运行。
 
-若要提高用户的资源类，请使用 [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) 将用户添加到大型资源类的数据库角色。  以下代码将用户添加到 largerc 数据库角色。  每个请求获取 22% 的系统内存。
+若要提高用户的资源类，请使用 [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 将用户添加到大型资源类的数据库角色。  以下代码将用户添加到 largerc 数据库角色。  每个请求获取 22% 的系统内存。
 
 ```sql
 EXEC sp_addrolemember 'largerc', 'loaduser';
 ```
 
-若要降低资源类，可使用 [sp_droprolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql)。  如果“loaduser”不是成员或任何其他资源类，则会转到具有 3% 内存授予的默认 smallrc 资源类。  
+若要降低资源类，可使用 [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。  如果“loaduser”不是成员或任何其他资源类，则会转到具有 3% 内存授予的默认 smallrc 资源类。  
 
 ```sql
 EXEC sp_droprolemember 'largerc', 'loaduser';

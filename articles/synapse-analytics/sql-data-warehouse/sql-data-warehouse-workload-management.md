@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a6d46c2adf1d886f804a3a542a208558d7f935b9
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: dd867d4aa9a9ef5ed73e78a46826a8cd5239039b
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632386"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744232"
 ---
 # <a name="what-is-workload-management"></a>什么是工作负荷管理？
 
@@ -44,7 +44,7 @@ ms.locfileid: "80632386"
 
 Azure Synapse 中的突触 SQL 池工作负载管理由三个高级概念组成：[工作负载分类](sql-data-warehouse-workload-classification.md)、[工作负载重要性](sql-data-warehouse-workload-importance.md)和[工作负载隔离](sql-data-warehouse-workload-isolation.md)。  这些功能可让你更好地控制工作负荷如何利用系统资源。
 
-工作负荷分类的概念是指将请求分配到工作负荷组并设置重要性级别。  过去，这种分配是使用 [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class) 通过角色成员身份实现的。  现在可以通过[创建工作负荷分类器](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)来实现。  分类功能提供更丰富的一组选项（例如标签、会话和时间）来对请求进行分类。
+工作负荷分类的概念是指将请求分配到工作负荷组并设置重要性级别。  过去，这种分配是使用 [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class) 通过角色成员身份实现的。  现在可以通过[创建工作负荷分类器](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)来实现。  分类功能提供更丰富的一组选项（例如标签、会话和时间）来对请求进行分类。
 
 工作负荷重要性影响请求获取资源访问权限的顺序。  在繁忙的系统上，重要性较高的请求可以先访问资源。  重要性还可确保按顺序访问锁。
 

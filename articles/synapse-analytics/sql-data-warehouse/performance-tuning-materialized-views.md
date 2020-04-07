@@ -11,12 +11,12 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 28dbe66d27ac75bee2ceecd160ead3dea6538034
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 6e942130d9acf803665e52498ef6a4976cc9ade7
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633817"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743172"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>使用具体化视图优化性能
 
@@ -32,7 +32,7 @@ SQL 池支持标准和具体化视图。  两者都是使用 SELECT 表达式创
 
 具体化视图在 SQL 池中预先计算、存储和维护其数据，就像表一样。  每次使用具体化视图时都不需要重新计算。  正因如此，使用具体化视图中所有或一部分数据的查询可以获得更快的性能。  更有利的是，查询可以使用具体化视图而无需直接引用它，因此不需要更改应用程序代码。  
 
-对标准视图的大部分要求仍适用于具体化视图。 有关具体化视图语法和其他要求的详细信息，请参阅 [CREATE MATERIALIZED VIEW AS SELECT](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)。
+对标准视图的大部分要求仍适用于具体化视图。 有关具体化视图语法和其他要求的详细信息，请参阅[创建重要性视图作为选择](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 | 比较                     | 视图                                         | 具体化视图
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
@@ -58,8 +58,8 @@ SQL 池支持标准和具体化视图。  两者都是使用 SELECT 表达式创
 与其他数据仓库提供程序相比，在 Azure SQL 数据仓库中实现的具体化视图还提供以下附加优势：
 
 - 使用基表中的数据更改以同步方式自动刷新数据。 不需要任何用户操作。
-- 广泛的聚合函数支持。 请参阅 [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)。
-- 支持特定于查询的具体化视图建议。  请参阅 [EXPLAIN (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/explain-transact-sql?view=azure-sqldw-latest)。
+- 广泛的聚合函数支持。 请参阅 [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+- 支持特定于查询的具体化视图建议。  请参阅 [EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ## <a name="common-scenarios"></a>常见方案  
 

@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 692834903899448707200b24a955301e29e14f90
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 56c53b9e2388cc0594076a5ef35b072216aec20d
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478453"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672741"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>管理 VMware VM/物理服务器灾难恢复的配置服务器
 
@@ -45,7 +45,7 @@ ms.locfileid: "80478453"
 
 此外，还可以通过 CSPSConfigtool.exe 修改凭据。
 
-1. 登录配置服务器，并启动 CSPSConfigtool.exe
+1. 登录到配置服务器并启动 CSPSConfigtool.exe
 2. 选择要修改的帐户，单击“编辑”。****
 3. 输入修改后的凭据，单击“确定”****
 
@@ -93,6 +93,32 @@ ms.locfileid: "80478453"
 - 您可以将[其他适配器添加到 VM，](vmware-azure-deploy-configuration-server.md#add-an-additional-adapter)但在在保管库中注册配置服务器之前必须添加它。
 - 在保管库中注册配置服务器之后，若要添加适配器，请在 VM 属性中添加适配器。 然后，您需要在保管库中[重新注册](#reregister-a-configuration-server-in-the-same-vault)服务器。
 
+## <a name="how-to-renew-ssl-certificates"></a>如何续订 SSL 证书
+
+配置服务器具有内置 Web 服务器，用于协调所有受保护计算机上的移动代理、内置/横向扩展进程服务器以及连接到它的主目标服务器的活动。 Web 服务器使用 SSL 证书对客户端进行身份验证。 该证书在三年后到期，并可随时续订。
+
+### <a name="check-expiry"></a>检查有效期
+
+到期日期显示在“配置服务器运行状况”**** 下。 对于 2016 年 5 月之前的配置服务器部署，证书有效期设置为一年。 如果证书即将到期，将出现以下情况：
+
+- 如果离到期日期有两个月或不到两个月，服务将开始在门户中发送通知以及通过电子邮件发送（如果订阅了 Site Recovery 通知）。
+- 保管库资源页上将显示通知横幅。 若要了解详细信息，请选择横幅。
+- 如果看到了“立即升级”**** 按钮，则表示环境中有些组件尚未升级到 9.4.xxxx.x 或更高版本。 请在续订证书之前升级组件。 无法在旧版本中进行续订。
+
+### <a name="if-certificates-are-yet-to-expire"></a>如果证书尚未过期
+
+1. 要续订，在保管库中打开**站点恢复基础结构** > **配置服务器**。 选择所需的配置服务器。
+2. 确保所有受保护计算机上的所有组件横向扩展进程服务器、主目标服务器和移动代理处于最新版本且处于连接状态。
+3. 现在，选择**续订证书**。
+4. 请仔细按照此页面上的说明操作，然后单击"确定"以在选定的配置服务器上续订证书，该证书是关联的组件。
+
+### <a name="if-certificates-have-already-expired"></a>如果证书已过期
+
+1. 过期后，**无法从 Azure 门户续订**证书。 在继续操作之前，请确保所有受保护计算机上的所有组件横向扩展进程服务器、主目标服务器和移动代理都处于最新版本且处于连接状态。
+2. **仅当证书已过期时，才遵循此过程。** 登录到配置服务器，导航到 C 驱动器>程序数据>站点恢复>家庭> svsystems > bin 和执行"RenewCerts"执行器工具作为管理员。
+3. PowerShell 执行窗口弹出并触发证书续订。 此过程最长需要 15 分钟。 在完成续订之前，不要关闭窗口。
+
+:::image type="content" source="media/vmware-azure-manage-configuration-server/renew-certificates.png" alt-text="续订证书":::
 
 ## <a name="reregister-a-configuration-server-in-the-same-vault"></a>在同一保管库中重新注册配置服务器
 
@@ -112,7 +138,7 @@ ms.locfileid: "80478453"
    ```
 
     >[!NOTE]
-    >为了从配置服务器**拉取最新的证书**到横向扩展进程服务器执行*命令"\<安装驱动器_微软 Azure 站点恢复\代理_cdpcli.exe>" - 注册mt*
+    >为了从配置服务器**拉取最新的证书**到横向扩展进程服务器执行*命令"\<安装驱动器_微软 Azure 站点恢复\代理_cdpcli.exe>" - 寄存器mt*
 
 8. 最后，通过执行以下命令重启 obengine。
    ```
@@ -269,24 +295,6 @@ ProxyPassword="Password"
 2. 要将目录更改到 bin 文件夹，请执行命令 cd %ProgramData%\ASR\home\svsystems\bin****
 3. 要生成通行短语文件，请执行 genpassphrase.exe v > MobSvc.passphrase****。
 4. 你的通行短语将存储在 %ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase**** 中。
-
-## <a name="renew-tlsssl-certificates"></a>续订 TLS/SSL 证书
-
-配置服务器具有一个内置的 Web 服务器，该服务器协调连接到配置服务器的移动服务、进程服务器和主目标服务器的活动。 Web 服务器使用 TLS/SSL 证书对客户端进行身份验证。 该证书在三年后到期，并可随时续订。
-
-### <a name="check-expiry"></a>检查有效期
-
-对于 2016 年 5 月之前的配置服务器部署，证书有效期设置为一年。 如果证书即将到期，将出现以下情况：
-
-- 如果离到期日期有两个月或不到两个月，服务将开始在门户中发送通知以及通过电子邮件发送（如果订阅了 Site Recovery 通知）。
-- 保管库资源页上将显示通知横幅。 若要了解详细信息，请选择横幅。
-- 如果看到了“立即升级”**** 按钮，则表示环境中有些组件尚未升级到 9.4.xxxx.x 或更高版本。 请在续订证书之前升级组件。 无法在旧版本中进行续订。
-
-### <a name="renew-the-certificate"></a>续订证书
-
-1. 在保管库中，打开**站点恢复基础结构** > **配置服务器**。 选择所需的配置服务器。
-2. 到期日期显示在“配置服务器运行状况”**** 下。
-3. 选择“续订证书”****。
 
 ## <a name="refresh-configuration-server"></a>刷新配置服务器
 

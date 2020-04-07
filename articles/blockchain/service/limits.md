@@ -1,15 +1,15 @@
 ---
 title: Azure 区块链服务限制
 description: Azure 区块链服务中的服务和功能限制概述
-ms.date: 03/30/2020
+ms.date: 04/02/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
-ms.openlocfilehash: c728e617ac37795988cd596c7cb0c5025aac4ccf
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 71e1bebf10fa0142870d03977182472da1ad031f
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529574"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676518"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>Azure 区块链服务中的限制
 
@@ -35,7 +35,6 @@ Azure 区块链服务具有服务和功能限制，例如成员可以拥有的�
 每个节点可用于分类帐数据和日志的最大存储量为 1.8 TB。
 
 不支持减小分类帐和日志存储大小。
-
 ## <a name="consortium-limits"></a>联盟限制
 
 * **联盟和成员名称必须与**Azure 区块链服务中的其他联合体和成员名称是唯一的。
@@ -59,6 +58,12 @@ Azure 区块链服务具有服务和功能限制，例如成员可以拥有的�
 * **联合体中的所有成员必须使用相同的分类帐版本**
 
     有关 Azure 区块链服务中提供的修补、更新和分类帐版本的详细信息，请参阅[修补、更新和版本](ledger-versions.md)。
+
+## <a name="performance"></a>性能
+
+不要对每个事务提交使用*eth.估计*气体函数。 *eth.估计*函数占用大量内存。 多次调用函数可大大减少每秒的事务。
+
+如果可能，请使用保守的气体值提交交易，并尽量减少*eth.estimate 的使用*。
 
 ## <a name="next-steps"></a>后续步骤
 

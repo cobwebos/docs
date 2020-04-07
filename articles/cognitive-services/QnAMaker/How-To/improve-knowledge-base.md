@@ -2,13 +2,13 @@
 title: 改进知识库 - QnA Maker
 description: 通过积极学习提高知识库的质量。 审核、接受或拒绝，添加而不删除或更改现有问题。
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: 1eb0ed42f700c14350a5e4f1eff9b7592cbf8ef6
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.date: 04/06/2020
+ms.openlocfilehash: 7fafc23eaf21099ebb974da226d07c351fa19699
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474881"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756745"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>在知识库中接受主动学习建议的问题
 
@@ -33,7 +33,7 @@ ms.locfileid: "80474881"
 
 1. 每个 QnA 对都建议使用复选标记的新问题备选方案`✔`，以接受问题或拒绝`x`建议。 选中复选标记可以添加问题。
 
-    [![通过选择绿色复选标记或红色删除标记，选择或拒绝活动学习建议的问题备选方案。](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
+    [![通过选择绿色复选标记或红色删除标记，选择或拒绝活动学习建议的问题备选方案。](../media/improve-knowledge-base/accept-active-learning-suggestions-small.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
     您可以通过选择 **"添加所有**"或 **"拒绝**上下文工具栏中的所有建议"来添加或删除_所有建议_。
 

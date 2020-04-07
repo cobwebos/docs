@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 2/24/2020
 ms.subservice: alerts
-ms.openlocfilehash: fe1f1d2700619bfcac4512bb0e631262edf8401c
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 02424d7df24305d6642c364f12e3ed6e8674a01d
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398100"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677008"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 模板创建指标警报
 
@@ -563,7 +563,7 @@ az group deployment create \
 
 ## <a name="template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria"></a>用于监视多个条件的静态阈值指标警报的模板
 
-较新的指标警报支持根据多维指标发出警报，且支持多个标准。 可以使用以下模板创建根据维度指标发出的更高级指标警报规则，并指定多个标准。
+较新的指标警报支持多维指标警报，并支持定义多个条件（每个警报规则最多 5 个条件）。 可以使用以下模板创建根据维度指标发出的更高级指标警报规则，并指定多个标准。
 
 在包含多个条件的警报规则中使用维度时，请注意以下约束：
 - 在每个条件中，每个维度只能选择一个值。

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: a0547243ddf114d5c9f7034f182a5e76d8c3e016
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 872eec62e7a629d76533aa6c9906cbdb64c32236
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75369416"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745555"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>流分析开窗函数简介
 
@@ -35,7 +35,7 @@ ms.locfileid: "75369416"
 ![流分析跳跃窗口](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
 
 ## <a name="sliding-window"></a>滑动窗口
-不同于翻转或跳跃窗口，滑动开窗函数**只**在事件发生时生成输出。 每个窗口至少有一个事件，并且窗口持续根据 € (epsilon) 向前移动。 与跳跃窗口一样，事件可以属于多个滑动窗口。
+不同于翻转或跳跃窗口，滑动开窗函数**只**在事件发生时生成输出。 每个窗口将至少有一个事件，窗口通过 +（epsilon） 连续向前移动。 与跳跃窗口一样，事件可以属于多个滑动窗口。
 
 ![流分析滑动窗口](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 

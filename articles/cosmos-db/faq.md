@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 0c994caf094918b39204437b5194d81a64affc66
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 114c632d43dbb254222def2437fbffc22ec84688
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545661"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672464"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>有关 Azure Cosmos DB 中不同 API 的常见问题
 
@@ -638,9 +638,9 @@ g.V('mary').out('knows').executionProfile()
 
 上述配置文件的输出显示了获取顶点对象、边对象所花费的时间量，以及工作数据集的大小。 这与 Azure Cosmos DB 查询的标准成本度量相关。
 
-## <a name="cassandra-api"></a><a id="cassandra"></a> Cassandra API
+## <a name="cassandra-api"></a><a id="cassandra"></a>卡桑德拉 API
 
-### <a name="what-is-the-protocol-version-supported-by-azure-cosmso-db-cassandra-api-is-there-a-plan-to-support-other-protocols"></a>Azure Cosmso DB Cassandra API 支持哪个协议版本？ 是否打算支持其他协议？
+### <a name="what-is-the-protocol-version-supported-by-azure-cosmos-db-cassandra-api-is-there-a-plan-to-support-other-protocols"></a>Azure 宇宙 DB Cassandra API 支持的协议版本是什么？ 是否打算支持其他协议？
 
 Azure Cosmos DB 的 Apache Cassandra API 目前支持 CQL 版本 4。 如果有与支持其他协议相关的反馈，请通过 [UserVoice 反馈](https://feedback.azure.com/forums/263030-azure-cosmos-db)告知我们或者向 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 发送电子邮件。
 

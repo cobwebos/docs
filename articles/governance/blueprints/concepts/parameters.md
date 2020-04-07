@@ -3,12 +3,12 @@ title: 使用参数创建动态蓝图
 description: 了解静态和动态参数以及如何使用它们创建安全和动态蓝图。
 ms.date: 03/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: 68987b3e0f418721986003dc796f00ac1dd6dda1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 36735d71b746301819e5079aba1697b55fe5e183
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264708"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677586"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>通过参数创建动态蓝图
 
@@ -20,7 +20,7 @@ ms.locfileid: "79264708"
 > 对于两个不同的蓝图，包含具有相同名称的资源组不是问题。
 > 如果包含在蓝图中的资源组已存在，蓝图会继续在该资源组中创建相关项目。 这可能会产生冲突，因为订阅中不能存在具有相同名称和资源类型的两个资源。
 
-使用参数可以解决此问题。 使用蓝图可在分配到订阅期间定义每个项目属性的值。 通过参数还可以重复使用在一个订阅中创建资源组和其他资源的蓝图，且不会产生冲突。
+使用参数可以解决此问题。 Azure 蓝图允许您在分配到订阅期间定义项目的每个属性的值。 通过参数还可以重复使用在一个订阅中创建资源组和其他资源的蓝图，且不会产生冲突。
 
 ## <a name="blueprint-parameters"></a>蓝图参数
 
@@ -52,9 +52,9 @@ ms.locfileid: "79264708"
 
 #### <a name="setting-static-parameters-in-the-portal"></a>在门户中设置静态参数
 
-1. 在左侧窗格中，选择“所有服务”****。 搜索并选择“蓝图”****。
+1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”  。
 
-1. 从左侧的页面中选择**蓝图定义**。
+1. 从左侧页面中选择“蓝图定义”  。
 
 1. 单击现有蓝图，然后单击 **"编辑蓝图**"或单击"**创建蓝图"** 并填写 **"基础知识"** 选项卡上的信息。
 
@@ -169,9 +169,9 @@ ms.locfileid: "79264708"
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>在门户中设置动态参数
 
-1. 在左侧窗格中，选择“所有服务”****。 搜索并选择“蓝图”****。
+1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”  。
 
-1. 从左侧的页面中选择**蓝图定义**。
+1. 从左侧页面中选择“蓝图定义”  。
 
 1. 右键单击要分配的蓝图。 选择 **"分配蓝图**"或单击要分配的蓝图，然后单击"**分配蓝图"** 按钮。
 

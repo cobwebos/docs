@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: rohink
-ms.openlocfilehash: fcc9c5333b37c041342c2d20a53cf5d3908d1a26
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61aafbe8cb12e93d72f5efd01155f06fb3ec0c28
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76938560"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757260"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>流量管理器终结点监视
 
@@ -25,7 +25,7 @@ Azure 流量管理器包括内置的终结点监视和终结点自动故障转�
 
 若要配置终结点监视，必须在流量管理器配置文件中指定以下设置：
 
-* **协议**。 选择 HTTP、HTTPS 或 TCP，作为流量管理器用于探测终结点并检查其运行状况的协议。 HTTPS 监视并不验证 SSL 证书是否有效，它只检查是否有证书。
+* **协议**. 选择 HTTP、HTTPS 或 TCP，作为流量管理器用于探测终结点并检查其运行状况的协议。 HTTPS 监视不会验证 TLS/SSL 证书是否有效，它仅检查证书是否存在。
 * **端口**. 选择用于请求的端口。
 * **路径**。 此配置设置仅对需要指定路径设置的 HTTP 和 HTTPS 协议有效。 为 TCP 监视协议提供此设置会导致错误。 对于 HTTP 和 HTTPS 协议，指定监视功能要访问的网页或文件的相对路径和名称。 正斜杠 (/) 是相对路径的有效条目。 此值表示文件位于根目录中（默认设置）。
 * **自定义标头设置**：此配置设置用于将特定的 HTTP 标头添加到运行状况检查，以便流量管理器将该检查发送到配置文件中的终结点。 自定义标头可以在配置文件级别指定，使之适用于该配置文件中的所有终结点，以及/或者在终结点级别指定，使之仅适用于该终结点。 可以使用自定义标头进行运行状况检查，通过指定主机标头，将多租户环境中的终结点正确路由到目标。 也可使用此设置来添加唯一标头，以便标识源自流量管理器的 HTTP(S) 请求并对其进行不同的处理。 最多可以指定八个标头/值对（用逗号分隔）。 例如，“header1:value1,header2:value2”。 

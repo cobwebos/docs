@@ -4,12 +4,12 @@ description: 使用 Azure 门户从恢复点还原 Azure 虚拟机
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 4bb0a07db39f5f9953a1e41e55b8be28fcace71b
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 3c3c8a7bd47ae03a013ddfadffabaa16fd04412b
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668821"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677547"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 门户中还原 Azure VM 数据
 
@@ -23,7 +23,7 @@ Azure 备份提供多种方法用于还原 VM。
 --- | ---
 **创建新的 VM** | 从还原点快速创建并正常运行一个基本的 VM。<br/><br/> 可以为 VM 指定名称，选择要将其放入的资源组和虚拟网络 (VNet)，并为还原的 VM 指定存储帐户。 新 VM 必须在源 VM 所在的区域创建。
 **还原磁盘** | 还原某个 VM 磁盘，然后使用它来创建新的 VM。<br/><br/> Azure 备份提供一个模板来帮助你自定义和创建 VM。 <br/><br> 还原作业会生成一个模板，可以下载该模板，并使用它来指定自定义的 VM 设置和创建 VM。<br/><br/> 磁盘将复制到指定的资源组。<br/><br/> 或者，可将磁盘附加到现有 VM，或使用 PowerShell 创建新的 VM。<br/><br/> 若要自定义 VM、添加在备份时不存在的配置设置，或添加必须使用模板或 PowerShell 配置的设置，则此选项非常有用。
-**替换现有** | 可以还原某个磁盘，并使用它来替换现有 VM 上的磁盘。<br/><br/> 必须存在当前 VM。 如果已删除此选项，则无法使用此选项。<br/><br/> Azure 备份将在替换磁盘前创建现有 VM 的快照，并将其存储在指定的暂存位置中。 连接到该 VM 的现有磁盘将替换为所选的还原点。<br/><br/> 该快照将复制到保管库，并根据保留策略予以保留。 <br/><br/> 更换磁盘操作后，原始磁盘将保留在资源组中。 如果不需要原始磁盘，可以选择手动删除它们。 <br/><br/>未加密的托管 VM 支持替换现有。 非托管磁盘、[通用 VM](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource) 或[使用自定义映像创建的 VM](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) 不支持此选项。<br/><br/> 如果还原点中的磁盘数多于或少于当前 VM 中的磁盘数，则还原点中的磁盘数只反映 VM 配置。<br><br> 对于链接资源（如[用户分配的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)或[密钥保管库](https://docs.microsoft.com/azure/key-vault/key-vault-overview)），VM 不支持替换现有资源，因为在执行还原时，备份客户端应用对这些资源没有权限。<br/><br/>经典 VM 不受支持。
+**替换现有** | 可以还原某个磁盘，并使用它来替换现有 VM 上的磁盘。<br/><br/> 必须存在当前 VM。 如果已删除此选项，则无法使用此选项。<br/><br/> Azure 备份将在替换磁盘前创建现有 VM 的快照，并将其存储在指定的暂存位置中。 连接到该 VM 的现有磁盘将替换为所选的还原点。<br/><br/> 该快照将复制到保管库，并根据保留策略予以保留。 <br/><br/> 更换磁盘操作后，原始磁盘将保留在资源组中。 如果不需要原始磁盘，可以选择手动删除它们。 <br/><br/>支持替换现有未加密的托管 VM，包括[使用自定义映像创建的](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/)VM。 对于经典 VM，它不受支持。<br/><br/> 如果还原点中的磁盘数多于或少于当前 VM 中的磁盘数，则还原点中的磁盘数只反映 VM 配置。<br><br> 对于链接资源（如[用户分配的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)或[密钥保管库](https://docs.microsoft.com/azure/key-vault/key-vault-overview)），VM 不支持替换现有资源，因为在执行还原时，备份客户端应用对这些资源没有权限。
 **跨区域（次要区域）** | 跨区域还原可用于还原辅助区域中的 Azure VM，辅助区域是 Azure[配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#what-are-paired-regions)。<br><br> 如果备份是在辅助区域中完成的，则可以还原所选恢复点的所有 Azure VM。<br><br> 此功能可用于以下选项：<br> * [创建 VM](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#create-a-vm) <br> * [还原磁盘](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) <br><br> 我们目前不支持["替换现有磁盘"](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#replace-existing-disks)选项。<br><br> 权限<br> 备份管理员和应用程序管理员可以对辅助区域执行还原操作。
 
 > [!NOTE]
@@ -76,7 +76,7 @@ Azure 备份提供多种方法用于还原 VM。
 作为[还原选项](#restore-options)之一，你可以使用基本的设置从还原点快速创建 VM。
 
 1. 在**还原配置** > **创建新** > **还原类型**中，选择 **"创建虚拟机**"。
-2. 在“虚拟机名称”中，指定订阅中不存在的 VM****。
+2. 在**虚拟机名称**中，指定订阅中不存在的 VM。
 3. 在“资源组”中，为新 VM 选择现有资源组，或创建具有全局唯一名称的新资源组****。 如果分配的名称已存在，则 Azure 将为该组分配与 VM 相同的名称。
 4. 在“虚拟网络”中，选择将放置 VM 的 VNet****。 将显示与订阅关联的所有 VNet。 选择子网。 默认情况下选择第一个子网。
 5. 在“存储位置”中****，为该 VM 指定存储帐户。 [了解详细信息](#storage-accounts)。
@@ -101,7 +101,7 @@ Azure 备份提供多种方法用于还原 VM。
 
 4. 在“还原配置”中，选择“确定”********。 在“还原”中，单击“还原”以触发还原操作********。
 
-当虚拟机使用托管磁盘，而你选择“创建虚拟机”选项时，**** Azure 备份不使用指定的存储帐户。 在使用“还原磁盘”**** 和“即时还原”**** 时，存储帐户仅用于存储模板。 在指定的资源组中创建了托管磁盘。
+当虚拟机使用托管磁盘并选择"**创建虚拟机**"选项时，Azure 备份不使用指定的存储帐户。 在使用“还原磁盘”**** 和“即时还原”**** 时，存储帐户仅用于存储模板。 在指定的资源组中创建了托管磁盘。
 当虚拟机使用非托管磁盘时，它们会以 Blob 的形式还原到存储帐户。
 
 ### <a name="use-templates-to-customize-a-restored-vm"></a>使用模板自定义还原 VM

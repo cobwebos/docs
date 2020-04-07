@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: fe35dc4c22f3852934cde0d6f33084b56266d514
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e3c33bb7493f07d9fbf19710f21d0114e7abec8
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73807693"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757059"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL 数据库流量迁移到较新的网关
 
@@ -54,7 +54,7 @@ ms.locfileid: "73807693"
 
 我们建议您允许 TCP 端口 1433 上区域中的所有[Azure 数据库网关 IP 地址](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses)的出站流量到 IP 地址，端口范围为 11000-11999。 此建议适用于从本地连接的客户端，以及通过服务终结点连接的客户端。 有关端口范围的详细信息，请参阅[连接策略](sql-database-connectivity-architecture.md#connection-policy)。
 
-使用版本 4.0 以下的 Microsoft JDBC 驱动程序的应用程序建立的连接可能会失败证书验证。 Microsoft JDBC 的较低版本依赖于证书的主题字段中的通用名称 （CN）。 缓解是确保主机NameIn证书属性设置为 *.database.windows.net。 有关如何设置主机NameIn证书属性的详细信息，请参阅[使用 SSL 加密进行连接](/sql/connect/jdbc/connecting-with-ssl-encryption)。
+使用版本 4.0 以下的 Microsoft JDBC 驱动程序的应用程序建立的连接可能会失败证书验证。 Microsoft JDBC 的较低版本依赖于证书的主题字段中的通用名称 （CN）。 缓解是确保主机NameIn证书属性设置为 *.database.windows.net。 有关如何设置主机NameIn证书属性的详细信息，请参阅[使用加密进行连接](/sql/connect/jdbc/connecting-with-ssl-encryption)。
 
 如果上述缓解措施不起作用，请使用以下 URL 提交 SQL 数据库支持请求：https://aka.ms/getazuresupport
 

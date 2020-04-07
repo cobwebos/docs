@@ -1,14 +1,14 @@
 ---
 title: 跨租户管理体验
 description: Azure 委派资源管理可实现跨租户管理体验。
-ms.date: 03/12/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0e55923e688d1062adc5838a88e8d3202864282a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ac5d62fbf6b6ee418cd4b2f2b00dfc12e05f809
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218385"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754132"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
@@ -76,7 +76,7 @@ Azure PowerShell [Get-Az订阅 cmdlet](https://docs.microsoft.com/powershell/mod
 - 日志分析：查询来自多个租户中的远程客户工作区的数据
 - 通过 Webhook 在服务提供商租户中创建触发自动化（例如 Azure Automation Runbook 或 Azure Functions）的客户租户警报
 
-[Azure Policy](../../governance/policy/index.yml)：
+[Azure 策略](../../governance/policy/index.yml)：
 
 - 符合性快照显示委派订阅中分配的策略的详细信息
 - 在委派订阅中创建和编辑策略定义
@@ -84,7 +84,7 @@ Azure PowerShell [Get-Az订阅 cmdlet](https://docs.microsoft.com/powershell/mod
 - 客户将看到由服务提供商和自己创建的策略
 - 可以[修正 deployIfNotExists 或修改客户租户内的分配](../how-to/deploy-policy-remediation.md)
 
-[Azure Resource Graph](../../governance/resource-graph/index.yml)：
+[Azure 资源图](../../governance/resource-graph/index.yml)：
 
 - 现在，在返回的查询结果中包含租户 ID，以便确定订阅是属于客户租户还是服务提供商租户
 
@@ -105,7 +105,7 @@ Azure PowerShell [Get-Az订阅 cmdlet](https://docs.microsoft.com/powershell/mod
   - 通过自适应应用程序控制，确保服务器仅运行适当的应用程序和进程
   - 运用文件完整性监视 (FIM) 监视对重要文件和注册表项的更改
 
-[Azure Sentinel](../../sentinel/multiple-tenants-service-providers.md)：
+[Azure 哨兵](../../sentinel/multiple-tenants-service-providers.md)：
 
 - 管理[客户租户中的](../../sentinel/multiple-tenants-service-providers.md)Azure 哨兵资源
 - [跟踪跨多个客户租户的攻击并查看安全警报](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
@@ -141,6 +141,7 @@ Azure PowerShell [Get-Az订阅 cmdlet](https://docs.microsoft.com/powershell/mod
 - 角色分配必须使用基于角色的访问控制 (RBAC) [内置角色](../../role-based-access-control/built-in-roles.md)。 除了所有者或具有 [DataActions](../../role-based-access-control/role-definitions.md#dataactions) 权限的任何内置角色之外，Azure 委派资源管理当前支持其他所有内置角色。 仅在[向托管标识分配角色](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)时才支持使用用户访问管理员角色。  不支持自定义角色和[经典订阅管理员角色](../../role-based-access-control/classic-administrators.md)。
 - 虽然可以板载使用 Azure 数据块的订阅，但管理租户中的用户此时无法在委派的订阅上启动 Azure 数据块工作区。
 - 虽然可以为具有资源锁的 Azure 委托资源管理加入订阅和资源组，但这些锁不会阻止管理租户中的用户执行操作。 拒绝保护系统托管资源的分配（例如由 Azure 托管应用程序或 Azure 蓝图（系统分配的拒绝分配）创建的分配，会阻止管理租户中的用户对这些资源执行操作;因此，如果[拒绝任务](../../role-based-access-control/deny-assignments.md)分配，则会阻止管理租户中的用户对这些资源执行操作。但是，此时客户租户中的用户无法创建自己的拒绝分配（用户分配的拒绝分配）。
+- 管理租户中的用户将无法访问查看委派的客户订阅的计费信息，即使他们具有通常允许访问的内置角色。 这是因为对计费信息的访问需要当前仅支持同一租户中用户的其他步骤。
 
 ## <a name="next-steps"></a>后续步骤
 

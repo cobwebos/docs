@@ -4,12 +4,12 @@ description: 了解如何在 Azure 库伯奈斯服务 （AKS） 中定义自定�
 services: container-service
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: 30b7b6bae92221b268d40977f5b299e9b0b267b0
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 3780680c485aebf1ffc654d31c577821a9b96fff
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637828"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676508"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>使用用户定义的路由自定义群集出口（预览）
 
@@ -361,7 +361,7 @@ az aks update -g $RG -n $AKS_NAME --api-server-authorized-ip-ranges $CURRENT_IP/
 
 ```
 
- 使用 [az aks 获取凭据] [az-aks 获取凭据] 命令`kubectl`进行配置以连接到新创建的 Kubernetes 群集。 
+ 使用[az aks 获取凭据][az-aks-get-credentials]命令进行`kubectl`配置以连接到新创建的 Kubernetes 群集。 
 
  ```azure-cli
  az aks get-credentials -g $RG -n $AKS_NAME
@@ -542,3 +542,6 @@ az group delete -g $RG
 请参阅[Azure 网络 UDR 概述](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)。
 
 [了解如何创建、更改或删除路由表](https://docs.microsoft.com/azure/virtual-network/manage-route-table)。
+
+<!-- LINKS - internal -->
+[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials

@@ -17,8 +17,6 @@
       href: provision-vm.md
     - name: 创建 Ubuntu Data Science Virtual Machine
       href: dsvm-ubuntu-intro.md
-    - name: 创建 CentOS Data Science Virtual Machine
-      href: linux-dsvm-intro.md
     - name: 创建 Geo AI Data Science Virtual Machine
       href: provision-geo-ai-dsvm.md
 - name: 概念
@@ -41,7 +39,7 @@
       href: dsvm-enterprise-overview.md
 - name: 示例
   href: dsvm-samples-and-walkthroughs.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 使用 Windows Data Science Virtual Machine
       href: vm-do-ten-things.md
@@ -67,8 +65,6 @@
   items:
     - name: Ubuntu Data Science Virtual Machine
       href: reference-ubuntu-vm.md
-    - name: CentOS Data Science Virtual Machine
-      href: reference-centos-vm.md
     - name: 发行说明
       href: release-notes.md
     - name: 已知问题

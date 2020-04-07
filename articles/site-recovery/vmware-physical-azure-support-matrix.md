@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的 VMware/物理灾难恢复支持列表
 description: 汇总了使用 Azure Site Recovery 将 VMware VM 和物理服务器灾难恢复到 Azure 的支持。
 ms.topic: conceptual
 ms.date: 2/24/2020
-ms.openlocfilehash: b4cf19f4f74ba24951efb806a9f2e3d88fcad7bc
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: fbd5d87b219cbb482569dc5e45adc9c81181670c
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478429"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672439"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 
@@ -36,7 +36,7 @@ vSphere 主机 | 版本 6.7、6.5、6.0 或 5.5 | 建议 vSphere 主机和 vCent
 
 配置服务器是运行 Site Recovery 组件的本地计算机，这些组件包括配置服务器、进程服务器和主目标服务器。
 
-- 对于 VMware VM，请下载用于创建 VMware VM 的 OVF 模板来设置配置服务器。
+- 对于 VMware VM，您可以通过下载 OVF 模板来创建 VMware VM 来设置配置服务器。
 - 对于物理服务器，请手动设置配置服务器计算机。
 
 **组件** | **要求**
@@ -51,7 +51,7 @@ RAM | 16 GB
 [PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | 在配置服务器版本 [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) 或更高版本中不需要。
 Windows Server 角色 | 不要启用 Active Directory 域服务、Internet Information Services (IIS) 或 Hyper-V。
 组策略| - 阻止访问命令提示符。 <br/> - 阻止访问注册表编辑工具。 <br/> - 信任文件附件的逻辑。 <br/> - 打开脚本执行。 <br/> - [了解详细信息](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-IIS | 确保：<br/><br/> - 无预先存在的默认网站 <br/> - 启用[匿名身份验证](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) <br/> - 启用[快速CGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10))设置  <br/> - 端口 443 上没有预先存在的网站/应用侦听<br/>
+IIS | 确保：<br/><br/> - 没有预先存在的默认网站 <br/> - 启用[匿名身份验证](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br/> - 启用[快速CGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)设置  <br/> - 端口 443 上没有预先存在的网站/应用侦听<br/>
 NIC 类型 | VMXNET3（部署为 VMware VM 时）
 IP 地址类型 | Static
 端口 | 443，用于控制通道协调<br/>9443，用于数据传输
@@ -66,7 +66,8 @@ Site Recovery 支持复制在支持的计算机上运行的任何工作负荷。
 **组件** | **详细信息**
 --- | ---
 计算机设置 | 复制到 Azure 的计算机必须满足 [Azure 要求](#azure-vm-requirements)。
-计算机工作负载 | Site Recovery 支持复制在支持的计算机上运行的任何工作负荷。 [了解详细信息](site-recovery-workload.md)。
+计算机工作负载 | Site Recovery 支持复制在支持的计算机上运行的任何工作负荷。 [了解详细信息](https://aka.ms/asr_workload)。
+计算机名称 | 确保计算机的显示名称不属于[Azure 保留资源名称](https://docs.microsoft.com/azure/azure-resource-manager/templates/error-reserved-resource-name)<br/><br/> 逻辑卷名称不区分大小写。 确保设备上没有两个卷具有相同的名称。 例如：名称为"voLUME1"，"卷 1"的卷无法通过 Azure 站点恢复进行保护。
 Windows Server 2019 | 从[更新汇总 34](https://support.microsoft.com/help/4490016) 开始受支持（移动服务版本 9.22 和更高版本）。
 Windows Server 2016 64 位 | 支持服务器核心、带桌面体验的服务器。
 Windows Server 2012 R2/Windows Server 2012 | 支持。
@@ -118,16 +119,16 @@ Debian 8 | [9.29][9.29 UR] | 3.16.0-4-amd64 到 3.16.0-10-amd64、4.9.0-0.bpo.4-
 
 **释放** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | [9.32][9.32 UR] | 支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4 内核](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 至 4.12.14-6.34-azure  |
-SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | [9.31][9.31 UR] | 支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4 内核](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 至 4.12.14-6.29-azure  |
-SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | [9.30][9.30 UR] | 支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4 内核](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 至 4.12.14-6.26-azure  |
-SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | [9.29][9.29 UR] | 支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4 内核](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 到 4.12.14-6.23-azure  |
+SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | [9.28][9.28 UR] | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.118-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.117-default</br></br>SP3 4.4.73-5-default 到 4.4.180-94.100-default</br></br>SP3 4.4.138-4.7-azure 到 4.4.180-4.31-azure</br></br>SP4 4.12.14-94.41-default 到 4.12.14-95.29-default</br>SP4 4.12.14-6.3-azure 到 4.12.14-6.23-azure |
+SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | [9.27][9.27 UR] | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.115-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.114-default</br></br>SP3 4.4.73-5-default 到 4.4.180-94.97-default</br></br>SP3 4.4.138-4.7-azure 到 4.4.180-4.31-azure</br></br>SP4 4.12.14-94.41-default 到 4.12.14-95.19-default</br>SP4 4.12.14-6.3-azure 到 4.12.14-6.15-azure |
+SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | [9.26][9.26 UR] | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.110-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.109-default</br></br>SP3 4.4.73-5-default 到 4.4.178-94.91-default</br></br>SP3 4.4.138-4.7-azure 到 4.4.178-4.28-azure</br></br>SP4 4.12.14-94.41-default 到 4.12.14-95.16-default</br>SP4 4.12.14-6.3-azure 到 4.12.14-6.9-azure |
+SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | [9.25][9.25 UR] | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.104-default</br></br>SP3 4.4.73-5-default 到 4.4.176-94.88-default</br></br>SP3 4.4.138-4.7-azure 到 4.4.176-4.25-azure</br></br>SP4 4.12.14-94.41-default 到 4.12.14-95.13-default</br>SP4 4.12.14-6.3-azure 到 4.12.14-6.9-azure |
 
 ### <a name="suse-linux-enterprise-server-15-supported-kernel-versions"></a>SUSE Linux 企业服务器 15 支持内核版本
 
 **释放** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
-SUSE Linux 企业服务器 15 和 15 SP1 | 9.32 | 支持所有[股票 SUSE 15 和 15 内核](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_15)。</br></br> 4.12.14-5.5-azure 至 4.12.14-8.22-azure |
+SUSE Linux 企业服务器 15 和 15 SP1 | [9.32](https://support.microsoft.com/help/4550047/) | 支持所有[股票 SUSE 15 和 15 内核](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_15)。 </br></br> 4.12.14-5.5-azure 至 4.12.14-8.22-azure
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux 文件系统/来宾存储
 
@@ -138,8 +139,8 @@ SUSE Linux 企业服务器 15 和 15 SP1 | 9.32 | 支持所有[股票 SUSE 15 �
 半虚拟化存储设备 | 不支持半虚拟化驱动程序导出的设备。
 多队列块 IO 设备 | 不支持。
 具有 HP CCISS 存储控制器的物理服务器 | 不支持。
-设备/装入点命名约定 | 设备名称或装入点名称应是唯一的。<br/> 请确保两个设备/装入点的名称不仅仅是只区分大小写。 例如，不支持将同一 VM 的两个设备命名为 *device1* 和 *Device1*。
-目录 | 如果运行的移动服务版本低于 9.20（在[更新汇总 31](https://support.microsoft.com/help/4478871/) 中发布），则存在以下限制：<br/><br/> - 这些目录（如果设置为单独的分区/文件系统）必须位于源服务器上的同一 OS 磁盘：/ (root)、/boot、/usr、/usr/local、/var 和 /etc。</br> - /boot 目录应位于磁盘分区上，而不是位于 LVM 卷上。<br/><br/> 从版本 9.20 开始，这些限制不适用。
+设备/装入点命名约定 | 设备名称或装入点名称应是唯一的。<br/> 请确保两个设备/装入点的名称不仅仅是只区分大小写。 例如，不支持将同一 VM 的设备命名为*Device1*和设备*1。*
+目录 | 如果运行的移动服务版本低于 9.20（在[更新汇总 31](https://support.microsoft.com/help/4478871/) 中发布），则存在以下限制：<br/><br/> - 这些目录（如果设置为单独的分区/文件系统）必须位于源服务器上的同一 OS 磁盘：/ (root)、/boot、/usr、/usr/local、/var 和 /etc。</br> - /boot 目录应位于磁盘分区上，而不是位于 LVM 卷上。<br/><br/> 从版本 9.20 开始，这些限制不适用。 
 启动目录 | - 启动磁盘不能采用 GPT 分区格式。 这是一种 Azure 体系结构限制。 支持将 GPT 磁盘作为数据磁盘。<br/><br/> VM 上不支持多个启动磁盘<br/><br/> - 不支持跨多个磁盘的 LVM 卷上的 /boot。<br/> - 无法复制没有启动磁盘的计算机。
 可用空间要求| /root 分区上的 2 GB <br/><br/> 安装文件夹中的 250 MB
 XFSv5 | 支持 XFS 文件系统上的 XFSv5 功能，例如元数据校验和（从移动服务版本 9.10 开始）。<br/> 可使用 xfs_info 实用工具来检查分区的 XFS 超级块。 如果 `ftype` 设置为 1，则表示正在使用 XFSv5 功能。
@@ -231,7 +232,7 @@ ReFS | 出行服务版本 9.23 或更高版本支持可复原文件系统
 热存储| 否
 块 Blob | 否
 静态加密 (SSE)| 是
-静态加密 (CMK)| 是（通过 Powershell Az 3.3.0 模块开始）
+静态加密 (CMK)| 是（通过 PowerShell Az 3.3.0 模块开始）
 高级存储 | 是
 导入/导出服务 | 否
 VNet 的 Azure 存储防火墙 | 是的。<br/> 在目标存储/缓存存储帐户上配置（用于存储复制的数据）。

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 4a71f50a130bd9b22965d39fa942b47c70857a86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71aa937536f35c9af44adb5822ce7a2bb8f3a9eb
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79265033"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756002"
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Blob 存储的 Azure 事件网格事件架构
 
@@ -21,13 +21,13 @@ ms.locfileid: "79265033"
 有关示例脚本和教程的列表，请参阅[存储事件源](event-sources.md#storage)。
 
 >[!NOTE]
-> 只有种类为“StorageV2 (常规用途 v2)”和“BlobStorage”的存储帐户支持事件集成。******** “存储(常规用途 v1)”**** 不** 支持与事件网格集成。
+> 只有存储**V2（通用 v2）、****块 Blob 存储**和 Blob**存储**的存储帐户支持事件集成。 “存储(常规用途 v1)”**** 不** 支持与事件网格集成。
 
 ## <a name="list-of-events-for-blob-rest-apis"></a>Blob REST API 的事件列表
 
 当客户端通过调用 Blob REST API 创建、替换或删除 Blob 时，将触发这些事件。
 
- |事件名称 |描述|
+ |事件名称 |说明|
  |----------|-----------|
  |**Microsoft.Storage.BlobCreated** |创建或替换 Blob 时触发。 <br>具体而言，当客户端使用 Blob REST API 中可用的 `PutBlob`、`PutBlockList` 或 `CopyBlob` 操作时，将触发此事件。   |
  |**Microsoft.Storage.BlobDeleted** |删除 Blob 时触发。 <br>具体而言，当客户端调用 Blob REST API 中可用的 `DeleteBlob` 操作时，将触发此事件。 |
@@ -37,9 +37,9 @@ ms.locfileid: "79265033"
 
 ## <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Azure Data Lake Storage Gen 2 REST API 的事件列表
 
-如果在存储帐户上启用分层命名空间，并且客户端调用 Azure Data Lake Storage Gen2 REST API，则会触发这些事件。
+如果在存储帐户上启用分层命名空间，并且客户端调用 Azure Data Lake Storage Gen2 REST API，则会触发这些事件。 有关详细信息，请参阅[Azure 数据存储湖存储第 2 代](../storage/blobs/data-lake-storage-introduction.md)。
 
-|事件名称|描述|
+|事件名称|说明|
 |----------|-----------|
 |**Microsoft.Storage.BlobCreated** | 创建或替换 Blob 时触发。 <br>具体而言，当客户端使用 Azure Data Lake Storage Gen2 REST API 中提供的 `CreateFile` 和 `FlushWithClose` 操作时，会触发此事件。 |
 |**Microsoft.Storage.BlobDeleted** |删除 Blob 时触发。 <br>具体而言，当客户端调用 Azure Data Lake Storage Gen2 REST API 中提供的 `DeleteFile` 操作时，也会触发此事件。 |
@@ -89,7 +89,7 @@ ms.locfileid: "79265033"
 
 ### <a name="microsoftstorageblobcreated-event-data-lake-storage-gen2"></a>Microsoft.Storage.BlobCreated 事件 (Data Lake Storage Gen2)
 
-如果 Blob 存储帐户具有分层命名空间，则数据类似于前一示例，不过存在以下差异：
+如果 Blob 存储帐户具有分层命名空间，则数据看起来与上一个示例类似，但以下更改除外：
 
 * `dataVersion` 键设置为值 `2`。
 
@@ -154,7 +154,7 @@ ms.locfileid: "79265033"
 
 ### <a name="microsoftstorageblobdeleted-event-data-lake-storage-gen2"></a>Microsoft.Storage.BlobDeleted 事件 (Data Lake Storage Gen2)
 
-如果 Blob 存储帐户具有分层命名空间，则数据类似于前一示例，不过存在以下差异：
+如果 Blob 存储帐户具有分层命名空间，则数据看起来与上一个示例类似，但以下更改除外：
 
 * `dataVersion` 键设置为值 `2`。
 

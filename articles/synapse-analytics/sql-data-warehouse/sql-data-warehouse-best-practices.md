@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 0a2a49546a31f6d767b5e89348dc6b703278d877
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 4462bf0fc2057922340eb01cb8c786dbc63ce290
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633627"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745349"
 ---
 # <a name="best-practices-for-synapse-sql-pool-in-azure-synapse-analytics-formerly-sql-dw"></a>Azure 突触分析（以前的 SQL DW）中突触 SQL 池的最佳做法
 
@@ -36,7 +36,7 @@ SQL 池可以配置为自动检测和创建列上的统计信息。  优化工�
 > [!TIP]
 > 对涉及联接的列、WHERE 子句中使用的列、在 GROUP BY 中找到的列更新统计信息，可以获得最大效益。
 
-另请参阅[管理表统计信息](sql-data-warehouse-tables-statistics.md)、[创建统计信息](https://msdn.microsoft.com/library/ms188038.aspx)和[更新统计信息](https://msdn.microsoft.com/library/ms187348.aspx)。
+另请参阅[管理表统计信息](sql-data-warehouse-tables-statistics.md)、[创建统计信息](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)和[更新统计信息](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ## <a name="use-dmvs-to-monitor-and-optimize-your-queries"></a>使用 DMV 来监视和优化查询
 
@@ -44,7 +44,7 @@ SQL 池有多个可用于监视查询执行的 DMV。  使用 DMV 监视工作�
 
 若要在这些 DMV 中快速找到查询，可在查询中使用 LABEL 选项。
 
-另请参阅使用 DMV、LABEL、OPTION、sys.dm_exec_sessions、sys.dm_pdw_exec_requests、sys.dm_pdw_request_steps、sys.dm_pdw_sql_requests、sys.dm_pdw_dms_workers、DBCC [PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx)和[sys.dm_pdw_waits](https://msdn.microsoft.com/library/mt203893.aspx)[来监视您的工作负载](sql-data-warehouse-manage-monitor.md)。 [LABEL](sql-data-warehouse-develop-label.md) [OPTION](https://msdn.microsoft.com/library/ms190322.aspx) [sys.dm_exec_sessions]( https://msdn.microsoft.com/library/ms176013.aspx) [sys.dm_pdw_exec_requests](https://msdn.microsoft.com/library/mt203887.aspx) [sys.dm_pdw_request_steps](https://msdn.microsoft.com/library/mt203913.aspx) [sys.dm_pdw_sql_requests](https://msdn.microsoft.com/library/mt203889.aspx) [sys.dm_pdw_dms_workers](https://msdn.microsoft.com/library/mt203878.aspx)
+另请参阅使用 DMV、LABEL、OPTION、sys.dm_exec_sessions、sys.dm_pdw_exec_requests、sys.dm_pdw_request_steps、sys.dm_pdw_sql_requests、sys.dm_pdw_dms_workers、DBCC [PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)和[sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)[来监视您的工作负载](sql-data-warehouse-manage-monitor.md)。 [LABEL](sql-data-warehouse-develop-label.md) [OPTION](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [sys.dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="tune-query-performance-with-new-product-enhancements"></a>使用新的产品增强功能优化查询性能
 
@@ -58,7 +58,7 @@ SQL 池有多个可用于监视查询执行的 DMV。  使用 DMV 监视工作�
 
 但是，如果一整天都要加载数千或数百万个行，可能发现单个 INSERT 跟不上要求。  请开发自己的可写入文件的进程，并开发另一个进程定期处理并加载此文件。
 
-另请参阅[INSERT](https://msdn.microsoft.com/library/ms174335.aspx)。
+另请参阅[INSERT](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ## <a name="use-polybase-to-load-and-export-data-quickly"></a>使用 PolyBase 快速加载和导出数据
 
@@ -74,7 +74,7 @@ Azure 数据工厂还支持 PolyBase 加载，并且可以实现与 CTAS 类似�
 > [!NOTE]
 > 要在使用 gzip 文本文件时获得最大的吞吐量，请将文件分成 60 个以上的文件让加载有最大化的并行度。  若要更快的总吞吐量，请考虑并行加载数据。
 
-另请参阅[加载数据](design-elt-data-loading.md)、[使用 PolyBase 的指南](guidance-for-loading-data.md)[、SQL 池加载模式和策略](https://blogs.msdn.microsoft.com/sqlcat/20../../)、[使用 Azure 数据工厂加载数据]( ../../data-factory/load-azure-sql-data-warehouse.md)、使用 Azurehttps://msdn.microsoft.com/library/dn935026.aspx)[数据工厂移动数据](../../data-factory/transform-data-using-machine-learning.md)（和[创建表作为选择 （CTAS）。](sql-data-warehouse-develop-ctas.md)
+另请参阅[加载数据](design-elt-data-loading.md)、[使用 PolyBase 的指南](guidance-for-loading-data.md)[、SQL 池加载模式和策略](https://blogs.msdn.microsoft.com/sqlcat/20../../)、[使用 Azure 数据工厂加载数据]( ../../data-factory/load-azure-sql-data-warehouse.md)、[使用 Azure 数据工厂移动数据](../../data-factory/transform-data-using-machine-learning.md)、[创建外部文件格式](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)以及[创建表作为选择 （CTAS）。](sql-data-warehouse-develop-ctas.md)
 
 ## <a name="load-then-query-external-tables"></a>加载并查询外部表
 
@@ -97,7 +97,7 @@ Azure 数据工厂还支持 PolyBase 加载，并且可以实现与 CTAS 类似�
 
 有关选择分发列如何提高性能以及如何在 CREATE TABLE 语句的 WITH 子句中定义分布式表的详细信息，请参阅以下链接。
 
-另请参阅[表概述](sql-data-warehouse-tables-overview.md)、[表分布](sql-data-warehouse-tables-distribute.md)、[选择表分布](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/)、[创建表](https://msdn.microsoft.com/library/mt203953.aspx)、[创建表作为 SELECT](https://msdn.microsoft.com/library/mt204041.aspx)。
+另请参阅[表概述](sql-data-warehouse-tables-overview.md)、[表分布](sql-data-warehouse-tables-distribute.md)、[选择表分布](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/)、[创建表](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[创建表作为 SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ## <a name="do-not-over-partition"></a>不要过度分区
 
@@ -115,11 +115,11 @@ Azure 数据工厂还支持 PolyBase 加载，并且可以实现与 CTAS 类似�
 
 例如，如果预期 INSERT 需要 1 小时，可能的话，将 INSERT 分成 4 个部分，每个部分运行 15 分钟。  利用特殊的最小日志记录案例（如 CTAS、TRUNCATE、DROP TABLE 或插入空表）来降低回滚风险。  
 
-另一个消除回滚的作法是使用“仅元数据”操作（像是分区切换）进行数据管理。  例如，而不是执行 DELETE 语句来删除表中order_date在 2001 年 10 月的所有行，您可以每月对数据进行分区，然后用另一个表的空分区的数据切换出分区（请参阅[ALTER TABLE](https://msdn.microsoft.com/library/ms190273.aspx)示例）。  
+另一个消除回滚的作法是使用“仅元数据”操作（像是分区切换）进行数据管理。  例如，而不是执行 DELETE 语句来删除表中order_date在 2001 年 10 月的所有行，您可以每月对数据进行分区，然后用另一个表的空分区的数据切换出分区（请参阅[ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)示例）。  
 
 针对未分区的表，请考虑使用 CTAS 将想要保留的数据写入表中，而不是使用 DELETE。  如果 CTAS 需要的时间一样长，则较安全的操作，是在它具有极小事务记录的条件下运行它，且必要时可以快速地取消。
 
-另请参阅[了解事务](sql-data-warehouse-develop-transactions.md)、[优化事务](sql-data-warehouse-develop-best-practices-transactions.md)、[表分区](sql-data-warehouse-tables-partition.md)[、TRUNCATE 表](https://msdn.microsoft.com/library/ms177570.aspx)[、ALTER TABLE](https://msdn.microsoft.com/library/ms190273.aspx)和[创建表作为选择 （CTAS）。](sql-data-warehouse-develop-ctas.md)
+另请参阅[了解事务](sql-data-warehouse-develop-transactions.md)、[优化事务](sql-data-warehouse-develop-best-practices-transactions.md)、[表分区](sql-data-warehouse-tables-partition.md)[、TRUNCATE 表](/sql/t-sql/statements/truncate-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)[、ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)和[创建表作为选择 （CTAS）。](sql-data-warehouse-develop-ctas.md)
 
 ## <a name="reduce-query-result-sizes"></a>减小查询结果的大小
 
@@ -131,7 +131,7 @@ Azure 数据工厂还支持 PolyBase 加载，并且可以实现与 CTAS 类似�
 
 如果列中最长的值是 25 个字符，请将列定义为 VARCHAR(25)。  避免将所有字符列定义为较大的默认长度。  此外，将列定义为 VARCHAR（当它只需要这样的大小时）而非 NVARCHAR。
 
-另请参阅[表概述](sql-data-warehouse-tables-overview.md)、[表数据类型](sql-data-warehouse-tables-data-types.md)、[创建表](https://msdn.microsoft.com/library/mt203953.aspx)。
+另请参阅[表概述](sql-data-warehouse-tables-overview.md)、[表数据类型](sql-data-warehouse-tables-data-types.md)、[创建表](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ## <a name="use-temporary-heap-tables-for-transient-data"></a>对暂时性数据使用临时堆表
 
@@ -141,7 +141,7 @@ Azure 数据工厂还支持 PolyBase 加载，并且可以实现与 CTAS 类似�
 
 堆表在 CREATE TABLE 的 WITH 子句中定义。  如果使用临时表，请记得同时在该临时表上创建统计信息。
 
-另请参阅[临时表](sql-data-warehouse-tables-temporary.md)、[创建表](https://msdn.microsoft.com/library/mt203953.aspx)、[创建表作为选择](https://msdn.microsoft.com/library/mt204041.aspx)。
+另请参阅[临时表](sql-data-warehouse-tables-temporary.md)、[创建表](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[创建表作为选择](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ## <a name="optimize-clustered-columnstore-tables"></a>优化聚集列存储表
 
@@ -160,7 +160,7 @@ Azure 数据工厂还支持 PolyBase 加载，并且可以实现与 CTAS 类似�
 > [!TIP]
 > 查询列存储表时，如果只选择需要的列，查询运行将更快速。  
 
-另请参阅[表索引](sql-data-warehouse-tables-index.md)、[列存储索引指南](https://msdn.microsoft.com/library/gg492088.aspx)、[重新生成列存储索引](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)
+另请参阅[表索引](sql-data-warehouse-tables-index.md)、[列存储索引指南](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[重新生成列存储索引](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)
 
 ## <a name="use-larger-resource-class-to-improve-query-performance"></a>使用较大的资源类来改善查询性能
 
@@ -174,7 +174,7 @@ SQL 池使用资源组作为将内存分配给查询的一种方式。  默认�
 
 如果您注意到用户查询似乎具有长时间的延迟，则可能是您的用户正在较大的资源类中运行，并且正在占用许多并发槽，从而导致其他查询排队。  若要确认用户的查询是否被排入队列，请运行 `SELECT * FROM sys.dm_pdw_waits` 来看是否返回了任何行。
 
-另请参阅[资源类，了解工作负载管理](resource-classes-for-workload-management.md)[，sys.dm_pdw_waits](https://msdn.microsoft.com/library/mt203893.aspx)。
+另请参阅[资源类，了解工作负载管理](resource-classes-for-workload-management.md)[，sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ## <a name="other-resources"></a>其他资源
 

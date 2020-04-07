@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e5ad5f6f2f5be239af23ee4802cf09c388c93ae9
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: e170a789727fb0de36705895245cc638d30ee3d7
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632913"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745509"
 ---
 # <a name="best-practices-for-loading-data-using-synapse-sql-pool"></a>使用 Synapse SQL 池加载数据的最佳做法
 
@@ -104,7 +104,7 @@ PolyBase 无法加载具有 1，000，000 字节以上数据的行。 将数据�
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>使用 SqLBulkCopy API 或 bcp 时增加批处理大小
 
-使用 PolyBase 加载将提供 SQL 池的最高吞吐量。 如果无法使用 PolyBase 加载，并且必须使用[SqLBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx)或[bcp，](https://docs.microsoft.com/sql/tools/bcp-utility?view=sql-server-ver15)则应考虑增加批处理大小以提高吞吐量。
+使用 PolyBase 加载将提供 SQL 池的最高吞吐量。 如果无法使用 PolyBase 加载，并且必须使用[SqLBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)或[bcp，](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)则应考虑增加批处理大小以提高吞吐量。
 
 > [!TIP]
 > 100 K 到 1M 行之间的批处理大小是确定最佳批处理大小容量的建议基线。
@@ -120,7 +120,7 @@ PolyBase 无法加载具有 1，000，000 字节以上数据的行。 将数据�
 
 若要解决脏记录问题，请确保外部表和外部文件格式定义正确，并且外部数据符合这些定义。
 
-如果外部数据记录的子集是脏的，则可以选择使用["创建外部表"（Transact-SQL）](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15)中的拒绝选项来拒绝这些查询记录。
+如果外部数据记录的子集是脏的，则可以选择使用["创建外部表"（Transact-SQL）](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)中的拒绝选项来拒绝这些查询记录。
 
 ## <a name="inserting-data-into-a-production-table"></a>将数据插入生产表
 

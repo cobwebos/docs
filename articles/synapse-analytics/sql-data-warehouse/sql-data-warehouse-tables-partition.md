@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 4e19c20036d74752b75a668d6a37c46ef1b008e6
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 368276f75128c80b8df326a26acf26c841e9f68a
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583186"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742687"
 ---
 # <a name="partitioning-tables-in-synapse-sql-pool"></a>在 Synapse SQL 池中分区表
 
@@ -46,9 +46,9 @@ Synapse SQL 池中分区的主要好处是通过使用分区删除、切换和�
 
 ## <a name="syntax-differences-from-sql-server"></a>与 SQL Server 的语法差异
 
-Synapse SQL 池引入了一种定义比 SQL Server 更简单的分区的方法。 分区函数和方案在 Synapse SQL 池中不使用，因为它们在 SQL Server 中。 只需识别分区列和边界点。 尽管分区的语法可能与 SQL Server 稍有不同，但基本概念是相同的。 SQL Server 和 Synapse SQL 池支持每个表一个分区列，可以划分分区范围。 若要详细了解分区，请参阅[已分区表和已分区索引](/sql/relational-databases/partitions/partitioned-tables-and-indexes)。
+Synapse SQL 池引入了一种定义比 SQL Server 更简单的分区的方法。 分区函数和方案在 Synapse SQL 池中不使用，因为它们在 SQL Server 中。 只需识别分区列和边界点。 尽管分区的语法可能与 SQL Server 稍有不同，但基本概念是相同的。 SQL Server 和 Synapse SQL 池支持每个表一个分区列，可以划分分区范围。 若要详细了解分区，请参阅[已分区表和已分区索引](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
-下例使用 [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) 语句根据 OrderDateKey 列对 FactInternetSales 表进行分区：
+下例使用 [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 语句根据 OrderDateKey 列对 FactInternetSales 表进行分区：
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -78,8 +78,8 @@ WITH
 
 要将 SQL Server 分区定义迁移到 Synapse SQL 池，只需：
 
-- 消除 SQL Server [分区方案](/sql/t-sql/statements/create-partition-scheme-transact-sql)。
-- 将[分区函数](/sql/t-sql/statements/create-partition-function-transact-sql)定义添加到 CREATE TABLE。
+- 消除 SQL Server [分区方案](/sql/t-sql/statements/create-partition-scheme-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+- 将[分区函数](/sql/t-sql/statements/create-partition-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)定义添加到 CREATE TABLE。
 
 如果要从 SQL Server 实例迁移分区的表，则可使用以下 SQL 来算出每个分区中的行数。 请记住，如果在 Synapse SQL 池上使用相同的分区粒度，则每个分区的行数将减少 60 倍。  
 
@@ -119,7 +119,7 @@ GROUP BY    s.[name]
 
 ## <a name="partition-switching"></a>分区切换
 
-突触 SQL 池支持分区拆分、合并和切换。 这些函数每个都使用 [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql) 语句执行。
+突触 SQL 池支持分区拆分、合并和切换。 这些函数每个都使用 [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 语句执行。
 
 若要在两个表之间切换分区，必须确保分区对齐其各自的边界，并且表定义匹配。 由于检查约束不可用于强制实施表中的值范围，因此源表必须包含与目标表相同的分区边界。 如果那时分区边界不相同，则分区切换会失败，因为分区元数据不会同步。
 
@@ -344,4 +344,3 @@ ALTER TABLE dbo.FactInternetSales_NewSales SWITCH PARTITION 2 TO dbo.FactInterne
 ## <a name="next-steps"></a>后续步骤
 
 有关开发表的详细信息，请参阅[表概述](sql-data-warehouse-tables-overview.md)上的文章。
-

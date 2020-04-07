@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.author: memildin
-ms.openlocfilehash: 72f16463c7dfcd3d76db2d99e1805b0159261a55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5550f8feb2b93537bdcc508aa0da062681fe9aab
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77603700"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673869"
 ---
 # <a name="azure-security-policies-monitored-by-security-center"></a>安全中心监视的 Azure 安全策略
 
@@ -23,7 +23,7 @@ ms.locfileid: "77603700"
 
 要了解安全中心监视的内置策略，请参阅下表：
 
-[!INCLUDE [azure-policy-samples-policies-security-center](../../includes/azure-policy-samples-policies-security-center.md)]
+[!INCLUDE [azure-policy-samples-init-asc](../../includes/azure-policy-samples-init-asc.md)]
 
 ## <a name="built-in-policy-initiatives"></a>内置政策举措
 

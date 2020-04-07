@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 4b6d954d06f09bef5240bddc4860ddbc83513d69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82efa70b30e829cfedd0b1fa7a21fd06949aa6d5
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79220849"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744146"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 的语言和区域支持
 
@@ -35,18 +35,25 @@ LUIS 理解以下语言：
 | 美国英语 |`en-US` | ✔ | ✔  |✔|✔|
 | 阿拉伯语（预览版 - 现代标准阿拉伯语） |`ar-AR`|-|-|-|-|
 | *[中文](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
-| 荷兰语 |`nl-NL` |✔|  -   |-|✔|
+| 荷兰语 |`nl-NL` |✔|-|-|✔|
 | 法语（法国） |`fr-FR` |✔| ✔ |✔ |✔|
-| 法语（加拿大） |`fr-CA` |-|   -   |-|✔|
+| 法语（加拿大） |`fr-CA` |-|-|-|✔|
 | 德语 |`de-DE` |✔| ✔ |✔ |✔|
-| Hindi | `hi-IN`|-|-|-|-|
+| 古吉拉特语 | `gu-IN`|-|-|-|-|
+| Hindi | `hi-IN`|-|✔|-|-|
 | 意大利语 |`it-IT` |✔| ✔ |✔|✔|
 | *[日语](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|仅关键短语|
-| 韩语 |`ko-KR` |✔|   -   |-|仅关键短语|
-| 葡萄牙语（巴西） |`pt-BR` |✔| ✔ |✔ |并非所有亚区域性|
+| 朝鲜语 |`ko-KR` |✔|-|-|仅关键短语|
+| 马拉地语 | `mr-IN`|-|-|-|-|
+| 葡萄牙语(巴西) |`pt-BR` |✔| ✔ |✔ |并非所有亚区域性|
 | 西班牙语(西班牙) |`es-ES` |✔| ✔ |✔|✔|
-| 西班牙语（墨西哥）|`es-MX` |-|  -   |✔|✔|
-| 土耳其语 | `tr-TR` |✔|-|-|仅情绪|
+| 西班牙语（墨西哥）|`es-MX` |-|-|✔|✔|
+| 泰米尔语 | `ta-IN`|-|-|-|-|
+| 泰卢固语 | `te-IN`|-|-|-|-|
+| 土耳其语 | `tr-TR` |✔|✔|-|仅情绪|
+
+
+
 
 [预生成实体](luis-reference-prebuilt-entities.md)和[预生成域](luis-reference-prebuilt-domains.md)具有不同的语言支持。
 
@@ -77,31 +84,40 @@ LUIS 理解以下语言：
 ## <a name="tokenization"></a>词汇切分
 为了执行机器学习，LUIS 基于区域性将表述拆分成[词法单元](luis-glossary.md#token)。
 
-|语言|  每个空格或特殊字符 | 字符级|复合词|[已返回的令牌化实体](luis-concept-data-extraction.md#tokenized-entity-returned)
-|--|:--:|:--:|:--:|:--:|
-|阿拉伯语|||||
-|中文||✔||✔|
-|荷兰语|||✔|✔|
-|美国英语|✔ ||||
-|法语 (fr-FR)|✔||||
-|法语 (fr-CA)|✔||||
-|德语|||✔|✔|
-| Hindi |✔|-|-|-|-|
-|意大利语|✔||||
-|日语||||✔|
-|韩语||✔||✔|
-|葡萄牙语（巴西）|✔||||
-|西班牙语 (es-ES)|✔||||
-|西班牙语 (es-MX)|✔||||
+|语言|  每个空格或特殊字符 | 字符级|复合词
+|--|:--:|:--:|:--:|
+|阿拉伯语|✔|||
+|中文||✔||
+|荷兰语|✔||✔|
+|美国英语|✔ |||
+|法语 (fr-FR)|✔|||
+|法语 (fr-CA)|✔|||
+|德语|✔||✔|
+|古吉拉特语|✔|||
+|Hindi|✔|||
+|意大利语|✔|||
+|日语|||✔
+|朝鲜语||✔||
+|马拉地语|✔|||
+|葡萄牙语(巴西)|✔|||
+|西班牙语 (es-ES)|✔|||
+|西班牙语 (es-MX)|✔|||
+|泰米尔语|✔|||
+|泰卢固语|✔|||
+|土耳其语|✔|||
+
 
 ### <a name="custom-tokenizer-versions"></a>自定义 tokenizer 版本
 
 以下区域性具有自定义 tokenizer 版本：
 
-|环境|版本|目的|
+|culture|Version|目的|
 |--|--|--|
 |德语<br>`de-de`|1.0.0|通过使用基于机器学习的 tokenizer 将单词拆分，尝试将复合单词分解为它们的单个组件，从而对单词进行标记。<br>如果用户输入 `Ich fahre einen krankenwagen` 作为话语，它将转换为 `Ich fahre einen kranken wagen`。 允许将 `kranken` 和 `wagen` 分别标记为不同的实体。|
-|德语<br>`de-de`|1.0.2|通过基于空格拆分单词来标记单词。<br> 如果用户输入 `Ich fahre einen krankenwagen` 作为话语，则它仍然是单个标记。 因此 `krankenwagen` 标记为单个实体。 |
+|德语<br>`de-de`|1.0.2|通过基于空格拆分单词来标记单词。<br> 如果用户以话语身份`Ich fahre einen krankenwagen`输入，则它仍然是单个令牌。 因此 `krankenwagen` 标记为单个实体。 |
+|荷兰语<br>`de-de`|1.0.0|通过使用基于机器学习的 tokenizer 将单词拆分，尝试将复合单词分解为它们的单个组件，从而对单词进行标记。<br>如果用户输入 `Ik ga naar de kleuterschool` 作为话语，它将转换为 `Ik ga naar de kleuter school`。 允许将 `kleuter` 和 `school` 分别标记为不同的实体。|
+|荷兰语<br>`de-de`|1.0.1|通过基于空格拆分单词来标记单词。<br> 如果用户以话语身份`Ik ga naar de kleuterschool`输入，则它仍然是单个令牌。 因此 `kleuterschool` 标记为单个实体。 |
+
 
 ### <a name="migrating-between-tokenizer-versions"></a>在 tokenizer 版本之间迁移
 <!--

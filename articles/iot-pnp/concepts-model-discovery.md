@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 66da0321930ac38217a336380c9889963a433e67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 94e5e6fb826528aab1a358d44cb51bfcd6219032
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75531354"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673587"
 ---
 # <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>在 IoT 解决方案中实现 IoT 即插即用预览模型发现
 
@@ -46,7 +46,7 @@ IoT 解决方案分为两大类：专门构建的解决方案与一组已知的 
 
 您将获得将提前连接到解决方案的设备的功能模型和接口。 使用以下步骤准备解决方案：
 
-1. 将接口 JSON 文件存储在 Azure 中，以便解决方案可以读取它们。
+1. 将接口 JSON 文件存储在[模型存储库](./howto-manage-models.md)中，解决方案可以在其中读取这些文件。
 1. 基于预期的 IoT 即插即用功能模型和接口，在 IoT 解决方案中编写逻辑。
 1. 订阅来自解决方案使用的 IoT 中心的通知。
 

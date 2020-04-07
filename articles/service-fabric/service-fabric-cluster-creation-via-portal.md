@@ -3,12 +3,12 @@ title: 在 Azure 门户中创建 Service Fabric 群集
 description: 了解如何使用 Azure 门户和 Azure Key Vault 在 Azure 中设置安全的 Service Fabric 群集。
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: 0f384da75f09390e9b0988722b974e7e16d13e63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2de920ce9517e156934a636559a6fd6f5a71eb5
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258793"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754111"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>使用 Azure 门户在 Azure 中创建 Service Fabric 群集
 > [!div class="op_single_selector"]
@@ -36,13 +36,13 @@ ms.locfileid: "79258793"
 需要使用此证书来保护群集以及防止未经授权访问群集。 此证书通过多种方式保护群集：
 
 * **群集身份验证：** 验证群集联合的节点到节点通信。 只有可以使用此证书自我证明身份的节点才能加入群集。
-* **服务器身份验证：** 向管理客户端验证群集管理终结点，以便管理客户端知道正在与实际群集进行对话。 此证书还通过 HTTPS 为 HTTPS 管理 API 和 Service Fabric Explorer 提供 SSL。
+* **服务器身份验证：** 向管理客户端验证群集管理终结点，以便管理客户端知道正在与实际群集进行对话。 此证书还为 HTTPS 管理 API 和 HTTPS 中的服务结构资源管理器提供 TLS。
 
 为满足这些用途，该证书必须符合以下要求：
 
 * 证书必须包含私钥。
 * 必须为密钥交换创建证书，并且该证书可导出到个人信息交换 (.pfx) 文件。
-* 证书的主题**名称必须与**用于访问 Service Fabric 群集的域匹配。 只有符合此要求，才能为群集的 HTTPS 管理终结点和 Service Fabric Explorer 提供 SSL。 无法从证书颁发机构 (CA) 获取 `.cloudapp.azure.com` 域的 SSL 证书。 获取群集的自定义域名。 在从 CA 请求证书时，该证书的使用者名称必须与用于群集的自定义域名匹配。
+* 证书的主题**名称必须与**用于访问 Service Fabric 群集的域匹配。 这需要为群集的 HTTPS 管理终结点和服务结构资源管理器提供 TLS。 您不能从`.cloudapp.azure.com`域的证书颁发机构 （CA） 获取 TLS/SSL 证书。 获取群集的自定义域名。 在从 CA 请求证书时，该证书的使用者名称必须与用于群集的自定义域名匹配。
 
 #### <a name="client-authentication-certificates"></a>客户端身份验证证书
 其他客户端证书可对执行群集管理任务的管理员进行身份验证。 Service Fabric 有两个访问级别：**管理员**和**只读用户**。 至少应使用一个证书进行管理访问。 若要进行其他用户级别的访问，必须提供单独的证书。 有关访问角色的详细信息，请参阅[适用于 Service Fabric 客户端的基于角色的访问控制][service-fabric-cluster-security-roles]。
@@ -68,7 +68,7 @@ ms.locfileid: "79258793"
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>搜索 Service Fabric 群集资源
 
-登录到 Azure[门户][azure-portal]。
+登录 [Azure 门户][azure-portal]。
 单击“创建资源”以添加新的资源模板****。 在“**** 全部”下面的“**** 市场”中搜索 Service Fabric 群集模板。
 从列表中选择“**Service Fabric 群集**”。
 

@@ -12,12 +12,12 @@ ms.subservice: ''
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: b8e37a15f473e5777fe5412b785a0916bd78f095
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: f83ae9c8290a52381c8087b46da959d4723d7f4e
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655912"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745166"
 ---
 # <a name="getting-started-with-visual-studio-2019"></a>开始使用视觉工作室 2019
 
@@ -32,7 +32,7 @@ Visual Studio **2019** SQL Server Data Tools (SSDT) 是一个工具，可用于�
 
 ## <a name="install-visual-studio-2019"></a>安装 Visual Studio 2019
 
-请参阅[下载 Visual Studio 2019][] 以下载并安装 Visual Studio **16.3 及更高版本**。 在安装过程中，选择“数据存储和处理”工作负载。 Visual Studio 2019 不再需要单独安装 SSDT。
+请参阅[下载 Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) 以下载并安装 Visual Studio **16.3 及更高版本**。 在安装过程中，选择“数据存储和处理”工作负载。 Visual Studio 2019 不再需要单独安装 SSDT。
 
 ## <a name="unsupported-features-in-ssdt"></a>SSDT 中不支持的功能
 
@@ -43,18 +43,11 @@ Visual Studio **2019** SQL Server Data Tools (SSDT) 是一个工具，可用于�
 - [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [工作负载管理](sql-data-warehouse-workload-management.md)- 工作负载组和分类器
 - [行级安全性](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-  - 在此处提交支持票证[或投票以获得](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040057-ssdt-row-level-security)支持功能。
+  - 提交[支持票证或投票](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040057-ssdt-row-level-security)以获得支持功能。
 - [动态数据掩码](/sql/relational-databases/security/dynamic-data-masking?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#defining-a-dynamic-data-mask)
-  - 在此处提交支持票证[或投票以获得](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking)支持功能。
+   - 提交[支持票证或投票](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking)以获得支持功能。
 - [带约束的表](sql-data-warehouse-table-constraints.md#table-constraints)不受支持。 对于这些表对象，请将生成操作设为“无”。
 
 ## <a name="next-steps"></a>后续步骤
 
 现在，您已经拥有最新版本的 SSDT，就可以[连接到](sql-data-warehouse-query-visual-studio.md)SQL 池了。
-
-<!--Other-->
-
-[下载 Visual Studio 2019]: https://visualstudio.microsoft.com/downloads/
-[Installing Visual Studio]: https://msdn.microsoft.com/library/e2h7fzkw.aspx
-[SSDT Download]: https://msdn.microsoft.com/library/mt204009.aspx
-[UserVoice]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu

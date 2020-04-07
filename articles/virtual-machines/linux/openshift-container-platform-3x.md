@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/14/2019
+ms.date: 04/05/2020
 ms.author: haroldw
-ms.openlocfilehash: 615d9a3c5c359174ef15028e82044a85da0dd733
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fd1c381ecd2b7dba4c77a025cb0332ace4147bf
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75561280"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673663"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>在 Azure 中部署 OpenShift 容器平台 3.11
 
@@ -248,7 +248,7 @@ ms.locfileid: "75561280"
 
 ### <a name="azuredeployparametersjson-file-explained"></a>azure 部署。参数.json 文件解释
 
-| properties | 描述 | 有效选项 | 默认值 |
+| properties | 说明 | 有效选项 | 默认值 |
 |----------|-------------|---------------|---------------|
 | `_artifactsLocation`  | 项目 URL（json、脚本等） |  |  https：\//raw.githubusercontent.com/Microsoft/openshift-container-platform/master  |
 | `location` | 要将资源部署到 |  |  |
@@ -303,7 +303,7 @@ ms.locfileid: "75561280"
 | `masterClusterType` | 指定群集是使用专用节点还是公共主节点。 如果选择私有节点，主节点将不会通过公共 IP 向 Internet 公开。 相反，它将使用`masterPrivateClusterIp` | public <br> private | public |
 | `masterPrivateClusterIp` | 如果选择了专用主节点，则必须指定专用 IP 地址，供主节点的内部负载均衡器使用。 此静态 IP 必须位于主子网的 CIDR 块内，并且尚未使用。 如果选择了公共主节点，则不会使用此值，但仍必须指定 |  | 10.1.0.200 |
 | `routerClusterType` | 指定群集是使用专用节点还是公共红外线节点。 如果选择私有，则红外线节点不会通过公共 IP 向 Internet 公开。 相反，它将使用`routerPrivateClusterIp` | public <br> private | public |
-| `routerPrivateClusterIp` | 如果选择了专用红外线节点，则必须指定专用 IP 地址，供内部负载均衡器用于红外线节点。 此静态 IP 必须位于主子网的 CIDR 块内，并且尚未使用。 如果选择了公共红外线节点，则此值不会使用，但仍必须指定 |  | 10.2.0.200 |
+| `routerPrivateClusterIp` | 如果选择了专用红外线节点，则必须指定专用 IP 地址，供内部负载均衡器用于红外线节点。 此静态 IP 必须位于红外线网的 CIDR 块内，并且尚未使用。 如果选择了公共红外线节点，则此值不会使用，但仍必须指定 |  | 10.2.0.200 |
 | `routingCertType` | 将自定义证书用于路由域或默认自签名证书 - 按照**自定义证书**部分中的说明操作 | 自签名 <br> 自定义 | 自签名 |
 | `masterCertType` | 对主域或默认自签名证书使用自定义证书 - 按照**自定义证书**部分中的说明操作 | 自签名 <br> 自定义 | 自签名 |
 

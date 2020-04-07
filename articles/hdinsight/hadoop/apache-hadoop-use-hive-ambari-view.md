@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.openlocfilehash: 6c199a0dd75b89d9c9368e799c97a28b73758d06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/06/2020
+ms.openlocfilehash: 787d88d336abcf3b0ba9b14c3d3798850b665eca
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73097102"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745091"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>将 Apache Ambari Hive 视图与 HDInsight 中的 Apache Hadoop 配合使用
 
@@ -23,14 +23,13 @@ ms.locfileid: "73097102"
 
 ## <a name="prerequisites"></a>先决条件
 
-* HDInsight 上的 Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
-* Web 浏览器
+HDInsight 上的 Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
 
 ## <a name="run-a-hive-query"></a>运行 Hive 查询
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，选择群集。  有关说明，请参阅[列出和显示群集](../hdinsight-administer-use-portal-linux.md#showClusters)。 将在新的门户边栏选项卡中打开群集。
+1. 在 [Azure 门户](https://portal.azure.com/)中，选择群集。  有关说明，请参阅[列出和显示群集](../hdinsight-administer-use-portal-linux.md#showClusters)。 群集在新门户视图中打开。
 
-1. 从**群集仪表板**中，选择“Ambari 视图”****。 当提示进行身份验证时，请使用在创建群集时所提供的群集登录名（默认为 `admin`）帐户名称和密码。 或者，在浏览器`https://CLUSTERNAME.azurehdinsight.net/#/main/views`中导航到群集`CLUSTERNAME`的名称所在的位置。
+1. 从**群集仪表板**中，选择“Ambari 视图”****。 当提示进行身份验证时，请使用在创建群集时所提供的群集登录名（默认为 `admin`）帐户名称和密码。 您还可以在浏览器中导航`https://CLUSTERNAME.azurehdinsight.net/#/main/views`到群集的名称所在的`CLUSTERNAME`位置。
 
 1. 在视图列表中，选择“Hive 视图”____。
 
@@ -59,18 +58,15 @@ ms.locfileid: "73097102"
         GROUP BY t4;
     ```
 
-    这些语句将执行以下操作：
+    这些语句执行以下操作：
 
-   * `DROP TABLE`：删除表和数据文件（如果该表已存在）。
-
-   * `CREATE EXTERNAL TABLE`：在 Hive 中创建一个新的“外部”表。
-     外部表仅在 Hive 中存储表定义。 数据将保留在原始位置。
-
-   * `ROW FORMAT`：演示如何设置数据格式。 在此情况下，每个日志中的字段以空格分隔。
-
-   * `STORED AS TEXTFILE LOCATION`：显示数据的存储位置，并且数据已存储为文本。
-
-   * `SELECT`：选择 t4 列包含值 [ERROR] 的所有行的计数。
+    |语句 | 说明 |
+    |---|---|
+    |DROP TABLE|删除表和数据文件（如果该表已存在）。|
+    |CREATE EXTERNAL TABLE|在 Hive 中创建一个新的“外部”表。 外部表仅在 Hive 中存储表定义。 数据将保留在原始位置。|
+    |行格式|演示如何设置数据格式。 在此情况下，每个日志中的字段以空格分隔。|
+    |存储为文本文件位置|显示数据的存储位置，并且数据已存储为文本。|
+    |SELECT|选择 t4 列包含值 [ERROR] 的所有行的计数。|
 
    > [!IMPORTANT]  
    > 将“数据库”____ 选择保留为“默认”____。 本文档中的示例使用 HDInsight 附带的默认数据库。
@@ -131,7 +127,7 @@ ms.locfileid: "73097102"
 
 ![阿帕奇蜂巢视图 UDFs 选项卡显示](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
 
-将 UDF 添加到 Hive 视图后，“插入 UDF”按钮将显示在“查询编辑器”底部********。 选择此项会显示 Hive 视图中定义的 UDF 的下拉列表。 选择 UDF 会将 HiveQL 语句添加到查询以启用 UDF。
+**插入 udfs**按钮将显示在**查询编辑器**的底部。 此条目显示蜂巢视图中定义的 UdF 的下拉列表。 选择 UDF 会将 HiveQL 语句添加到查询以启用 UDF。
 
 例如，如果您已使用以下属性定义 UDF：
 
@@ -155,13 +151,13 @@ create temporary function myawesomeudf as 'com.myudfs.Awesome';
 有关如何在 HDInsight 中将 UDF 与 Hive 配合使用的详细信息，请参阅以下文章：
 
 * [在 HDInsight 中将 Python 与 Apache Hive 和 Apache Pig 配合使用](python-udf-hdinsight.md)
-* [如何将自定义 Apache Hive UDF 添加到 HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [将 Java UDF 与 HDInsight 中的 Apache Hive 配合使用](./apache-hadoop-hive-java-udf.md)
 
 ## <a name="hive-settings"></a>Hive 设置
 
 可以更改各种 Hive 设置，例如将 Hive 的执行引擎从 Tez（默认）更改为 MapReduce。
 
-## <a name="next-steps"></a><a id="nextsteps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 
 有关 HDInsight 中 Hive 的常规信息：
 

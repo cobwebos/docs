@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d5acc2b69ed521af4fd4777dc9f3496290078379
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 0d63f2c29bfdbdf320185647bd33ec30500ed874
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583272"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742703"
 ---
 # <a name="indexing-tables-in-synapse-sql-pool"></a>Synapse SQL 池中的索引表
 
@@ -24,9 +24,9 @@ ms.locfileid: "80583272"
 
 ## <a name="index-types"></a>索引类型
 
-Synapse SQL 池提供了多个索引选项，包括[群集列存储索引](/sql/relational-databases/indexes/columnstore-indexes-overview)、[群集索引和非群集索引](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)，以及也称为[堆](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)的非索引选项。  
+Synapse SQL 池提供了多个索引选项，包括[群集列存储索引](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[群集索引和非群集索引](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，以及也称为[堆](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)的非索引选项。  
 
-要创建具有索引的表，请参阅[创建表（合成 SQL 池）](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)文档。
+要创建具有索引的表，请参阅[创建表（合成 SQL 池）](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)文档。
 
 ## <a name="clustered-columnstore-indexes"></a>聚集列存储索引
 
@@ -230,7 +230,7 @@ EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 
 从步骤 1（例如 LoadUser）以用户身份登录，该步骤现在使用较高的资源类，并执行 ALTER INDEX 语句。 请确保此用户对重建索引的表拥有 ALTER 权限。 这些示例演示如何重新生成整个列存储索引或如何重建单个分区。 对于大型表，一次重建一个分区的索引比较合适。
 
-或者，可以使用[CTAS](sql-data-warehouse-develop-ctas.md)将表复制到新表，而不是重新生成索引。 哪种方法最合适？ 如果数据量很大，CTAS 的速度通常比 [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql) 要快。 对于少量的数据，ALTER INDEX 更容易使用，不需要换出表。
+或者，可以使用[CTAS](sql-data-warehouse-develop-ctas.md)将表复制到新表，而不是重新生成索引。 哪种方法最合适？ 如果数据量很大，CTAS 的速度通常比 [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 要快。 对于少量的数据，ALTER INDEX 更容易使用，不需要换出表。
 
 ```sql
 -- Rebuild the entire clustered index
@@ -252,7 +252,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-在 Synapse SQL 池中重建索引是脱机操作。  有关重建索引的详细信息，请参阅[列存储索引碎片整理](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)中的 ALTER INDEX REBUILD 部分和 [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql)。
+在 Synapse SQL 池中重建索引是脱机操作。  有关重建索引的详细信息，请参阅[列存储索引碎片整理](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)中的 ALTER INDEX REBUILD 部分和 [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>步骤 3：验证聚集列存储段质量是否已改善
 
@@ -260,7 +260,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 
 ## <a name="rebuilding-indexes-with-ctas-and-partition-switching"></a>使用 CTAS 和分区切换重建索引
 
-此示例使用 [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) 语句和分区切换重建表分区。
+此示例使用 [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 语句和分区切换重建表分区。
 
 ```sql
 -- Step 1: Select the partition of data and write it out to a new table using CTAS

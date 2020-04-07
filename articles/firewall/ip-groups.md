@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 04/06/2020
 ms.author: victorh
-ms.openlocfilehash: 74e5a427d62d5249ffe6b0426b62a3577e43462f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e0638cbccd5e3bc282dbdd7d3b5918e29081a12b
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444480"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757162"
 ---
 # <a name="ip-groups-preview-in-azure-firewall"></a>Azure 防火墙中的 IP 组（预览）
 
@@ -54,7 +54,7 @@ IP 组可以在 Azure 防火墙 DNAT、网络和应用程序规则中重复使�
 
 1. 要查看或编辑 IP 地址，请在左侧窗格的 **"设置"** 下选择**IP 地址**。
 2. 要添加单个或多个 IP 地址，请选择 **"添加 IP 地址**"。 这将打开"**拖动"或"浏览"** 页面进行上传，或者您可以手动输入地址。
-3.  选择编辑或删除 IP 地址右侧的省略号 （**...** 要编辑或删除多个 IP 地址，请选择框，然后选择顶部的 **"编辑**"或 **"删除**"。
+3.    选择编辑或删除 IP 地址右侧的省略号 （**...** 要编辑或删除多个 IP 地址，请选择框，然后选择顶部的 **"编辑**"或 **"删除**"。
 4. 最后，可以导出 CSV 文件格式的文件。
 
 > [!NOTE]
@@ -72,24 +72,47 @@ IP 组可以在 Azure 防火墙 DNAT、网络和应用程序规则中重复使�
 
 ## <a name="region-availability"></a>上市区域
 
-IP 组目前在以下区域可用：
+IP 组在所有公共云区域都可用。
 
-- 美国西部
-- 美国西部 2
-- 美国东部
-- 美国东部 2
-- 美国中部
-- 美国中北部
-- 美国中西部
-- 美国中南部
-- 加拿大中部
-- 北欧
-- 西欧
-- 法国中部
-- 英国南部
-- 澳大利亚东部
-- 澳大利亚中部
-- 澳大利亚东南部
+## <a name="ip-address-limits"></a>IP 地址限制
+
+对于 50 个或更少的 IP 组，每个防火墙实例最多可以有 5000 个单独的 IP 地址。 对于 51 到 100 个 IP 组，每个防火墙实例可以有 500 个单独的 IP 地址。
+
+### <a name="examples"></a>示例
+
+#### <a name="example-1-supported"></a>示例 1：受支持
+
+|IP 组  |• IP 地址  |表示法  |规则  |
+|---------|---------|---------|---------|
+|IPGroup1 |4096     |10.0.0.0/20  |Rule1|
+|IPGroup2     |3|196.0.0.0 - 196.0.0.2|Rule1|
+|IPGroup3     |1|1.2.3.4|Rule1|
+|     |**总计 4100**|         |         |
+|     |         |         |         |
+
+#### <a name="example-2-supported"></a>示例 2：受支持
+
+|IP 组  |• IP 地址  |表示法  |规则  |
+|---------|---------|---------|---------|
+|IPGroup1 |4096     |10.0.0.0/20  |Rule1|
+|IPGroup2     |4096|11.0.0.0/20|Rule1|
+|     |**总计 8192**|         |         |
+
+#### <a name="example-3-not-supported"></a>示例 3：不支持
+
+|IP 组  |• IP 地址  |表示法  |规则  |
+|---------|---------|---------|---------|
+|IPGroup1 |8192     |10.0.0.0/20, 11.0.0.0/20  |Rule1|
+|     |**总计 8192**|||
+
+#### <a name="example-4-supported"></a>示例 4：受支持
+
+|IP 组  |• IP 地址  |表示法  |规则  |
+|---------|---------|---------|---------|
+|IPGroup1 |4096     |10.0.0.0/20  |Rule1|
+|IPGroup2     |4096|11.0.0.0/20|Rule2|
+|     |**总计 8192**|         |         |
+
 
 ## <a name="related-azure-powershell-cmdlets"></a>相关 Azure 电源外壳 cmdlet
 

@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 49ae69263735d6ec35cd911a20100472b32c0b59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a989113c80cd8189cce9da959fe27509297f677a
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286551"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745687"
 ---
 # <a name="iot-edge-module-skus-tab"></a>IoT Edge 模块“SKU”选项卡
+
+>[!Important]
+>从 2020 年 3 月 30 日开始，我们将开始将 IoT Edge 模块产品的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[创建 IoT Edge 模块产品/服务](https://aka.ms/AzureCreateIoT)中的说明进行操作，以管理迁移的优惠。
 
 在“新建套餐”页的“SKU”选项卡中，可以创建一个或多个 SKU 并将其关联到新套餐。********  可以使用不同的 SKU 按功能集、计费模型或其他某种特征来区分解决方案。
 
@@ -51,7 +54,7 @@ ms.locfileid: "80286551"
 |  ---------       |     ---------------                                                          |
 | **Title\***        | 此 SKU 的标题。 最大长度为 50 个字符。 <br/> 它将显示在 Azure 门户中，并在部署模块时用作默认模块名称（不包含空格和特殊字符）。 请参阅下图了解此字段的确切显示位置。|
 | **总结\***      | 此 SKU 的简短摘要。 最大长度为 100 个字符。 **不是**套餐的摘要，而只是 SKU 的摘要。  此摘要将显示在 Azure 市场中。 请参阅下图了解此字段的确切显示位置。|
-| **描述\***  | 此 SKU 的简短说明。最大长度为 3000 个字符。 不是描述套餐，而只是描述此 SKU。 它将显示在 Azure 市场和 Azure 门户中。 在 Azure 门户中，它将追加到描述应用商店选项卡中定义的产品/服务的市场描述。 它可以与 SKU 摘要相同。 请参阅下图了解此字段的确切显示位置。|
+| **说明\***  | 此 SKU 的简短说明。最大长度为 3000 个字符。 不是描述套餐，而只是描述此 SKU。 它将显示在 Azure 市场和 Azure 门户中。 在 Azure 门户中，它将追加到描述应用商店选项卡中定义的产品/服务的市场描述。 它可以与 SKU 摘要相同。 请参阅下图了解此字段的确切显示位置。|
 | **隐藏此 SKU\*** | 保留默认设置，即“否”。**** |
 |  |  |
 
@@ -109,7 +112,7 @@ ms.locfileid: "80286551"
 | **资源组名称\***      | ACR 的资源组名称。|
 | **注册表名称\***  | ACR 注册表名称。 仅复制注册表名称，而不复制登录服务器名称（例如，不包含 `azurecr.io`。） |
 | **存储库名称\***  | 包含 IoT Edge 模块的 ACR 的存储库名称。 **注意：** 名称一经设置，以后不可更改。 请使用唯一的名称，确保帐户中不会出现其他同名的套餐。 |
-| **用户\*** | 与 ACR 关联的用户名（管理员用户名）。 |
+| **用户名\*** | 与 ACR 关联的用户名（管理员用户名）。 |
 | **密码\*** | 与 ACR 关联的密码。 |
 |    |  ***图像版本***   |
 | **图像标记或摘要\*** | 必须至少包含一个 `latest` 标记和一个版本标记（例如，从 `xx.xx.xx-` 开始，其中 xx 是一个数字）。 它们应是面向多个平台的[清单标记](https://github.com/estesp/manifest-tool)。 还必须添加清单标记引用的所有标记，使我们能够上传这些映像。 可以使用标记添加 IoT Edge 模块的多个版本。 所有清单标记（`latest` 除外）必须以 `X.Y-` 或 `X.Y.Z-` 开头，其中，X、Y、Z 为整数。 在[准备 IoT Edge 模块技术资产](./cpp-create-technical-assets.md)中详细了解标记和版本控制。 <br/> 例如，如果 `latest` 标记指向 `1.0.1-linux-x64`、`1.0.1-linux-arm32` 和 `1.0.1-windows-arm32`，则此处需要添加这 6 个标记。 |

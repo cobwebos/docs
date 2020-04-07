@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 6782d745bfced576fe06019b0d41af86c8c63ed4
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: b8f55b0693b7ffdf10516cfb19b67ccc5a94dc5a
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656273"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742911"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
@@ -144,7 +144,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 |Azure 中继（微软.中继/命名空间） | namespace |privatelink.servicebus.windows.net|
 |Azure 事件网格（微软.事件网格/主题）   | 主题 | 主题。[区域].私人链接.事件网格.azure.net|
 |Azure 事件网格（微软.事件网格/域） | 域 | 域。[区域].私人链接.事件网格.azure.net |
-|Azure WebApps（微软.网站/网站） | site | privatelink.azurewebsites.net |
+|Azure WebApps（微软.Web/网站）    | site | privatelink.azurewebsites.net |
 |Azure 机器学习（微软.机器学习服务/工作区）   | 工作区 | privatelink.api.azureml.ms |
  
 Azure 将在公共 DNS 中创建规范名称 DNS 记录 (CNAME)，以将解析重定向到建议的域名。 可以使用专用终结点的专用 IP 地址替代解析。 

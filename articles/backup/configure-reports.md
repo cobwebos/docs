@@ -3,12 +3,12 @@ title: 配置 Azure 备份报表
 description: 使用日志分析和 Azure 工作簿配置和查看 Azure 备份的报告
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 651d1383f0f292895ed95c91bafd5206d4f04c2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 497d70c1bcc577faa467720b959eb828e785a26a
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78161195"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672663"
 ---
 # <a name="configure-azure-backup-reports"></a>配置 Azure 备份报表
 
@@ -21,7 +21,7 @@ ms.locfileid: "78161195"
 * Azure VM、Azure VM 中的 SQL、Azure VM 中的 SAP HANA/ASE、Azure 备份代理 （MARS）、Azure 备份服务器 （MABS） 和系统中心 DPM 都支持备份报告。
 * 对于 DPM 工作负载，DPM 版本 5.1.363.0 及以上支持备份报告，以及代理版本 2.0.9127.0 及以上。
 * 对于 MABS 工作负载，MABS 版本 13.0.415.0 及以上支持备份报告，以及代理版本 2.0.9170.0 及以上。
-* 只要备份报告的数据发送到用户有权访问的日志分析 （LA） 工作区，就可以跨所有备份项目、保管库、订阅和区域查看备份报告。 
+* 只要备份报告的数据发送到用户有权访问的日志分析 （LA） 工作区，就可以跨所有备份项目、保管库、订阅和区域查看备份报告。 请注意，要查看一组保管库的报表，只需**让读者访问**保管库向其发送数据的 LA 工作区。 您**无需**访问各个保管库。
 * 如果您是 Azure[灯塔](https://docs.microsoft.com/azure/lighthouse/)用户，具有对客户订阅的委派访问权限，则可以使用 Azure 灯塔的这些报表查看所有租户的报表。
 * 日志备份作业的数据当前未显示在报表中。
 

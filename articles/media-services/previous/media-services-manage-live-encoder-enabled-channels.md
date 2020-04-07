@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: a32624c37cd8ca7fbef9e38ca61de9369791dd25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b0569907537f91f7e84b8156dffa0f313461f6e1
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162525"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677024"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>使用 Azure 媒体服务执行实时流式处理以创建多比特率流
 
@@ -71,7 +71,7 @@ ms.locfileid: "77162525"
 | 频道状态 | 门户 UI 指示器 | 是否计费？ |
 | --- | --- | --- |
 | 正在启动 |正在启动 |否（暂时状态） |
-| 正在运行 |准备就绪（没有正在运行的节目）<br/>或<br/>流式处理（至少有一个正在运行的节目） |YES |
+| 运行 |准备就绪（没有正在运行的节目）<br/>或<br/>流式处理（至少有一个正在运行的节目） |YES |
 | 正在停止 |正在停止 |否（暂时状态） |
 | 已停止 |已停止 |否 |
 
@@ -167,7 +167,7 @@ ms.locfileid: "77162525"
 
 创建频道后，可以获得引入 URL。 要获取这些 URL，通道不必处于 **"正在运行"** 状态。 准备好开始将数据推送到频道时，频道必须处于“正在运行”**** 状态。 在频道开始引入数据后，可以通过预览 URL 来预览流。
 
-可以选择通过 SSL 连接引入分片 MP4（平滑流）实时流。 要通过 SSL 进行摄取，请确保将摄取 URL 更新为 HTTPS。 目前，AMS 对自定义域不支持 SSL。  
+您可以选择通过 TLS 连接引入碎片 MP4（平滑流）实时流。 要通过 TLS 进行摄录，请确保将引入的 URL 更新为 HTTPS。 目前，AMS 不支持具有自定义域的 TLS。  
 
 ### <a name="allowed-ip-addresses"></a>允许的 IP 地址
 可以定义允许向此频道发布视频的 IP 地址。 允许的 IP 地址可以指定为单个 IP 地址（例如“10.0.0.1”）、使用一个 IP 地址和 CIDR 子网掩码的 IP 范围（例如“10.0.0.1/22”）或使用一个 IP 地址和点分十进制子网掩码的 IP 范围（例如“10.0.0.1(255.255.252.0)”）。
@@ -313,7 +313,7 @@ ms.locfileid: "77162525"
 | 频道状态 | 门户 UI 指示器 | 是否计费？ |
 | --- | --- | --- |
 | 正在启动 |正在启动 |否（暂时状态） |
-| 正在运行 |准备就绪（没有正在运行的节目）<br/>或<br/>流式处理（至少有一个正在运行的节目） |是 |
+| 运行 |准备就绪（没有正在运行的节目）<br/>或<br/>流式处理（至少有一个正在运行的节目） |是 |
 | 正在停止 |正在停止 |否（暂时状态） |
 | 已停止 |已停止 |否 |
 

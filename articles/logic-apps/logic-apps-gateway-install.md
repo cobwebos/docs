@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 12/05/2019
-ms.openlocfilehash: 797cd82327d68003d4e5f007d1f16e9534092ac0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2f8b9f207993c49201d03d3d1fed3c5800e8780
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79283987"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673820"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>为 Azure 逻辑应用安装本地数据网关
 
@@ -22,7 +22,7 @@ ms.locfileid: "79283987"
 * [微软电源应用本地数据网关](/powerapps/maker/canvas-apps/gateway-reference)
 * [Azure Analysis Services 本地数据网关](../analysis-services/analysis-services-gateway.md)
 
-本文介绍如何下载、安装和设置本地数据网关，以便可以从 Azure 逻辑应用访问本地数据源。 也可以在本主题稍后的[数据网关的工作原理](#gateway-cloud-service)中了解更多信息。 有关网关的详细信息，请参阅[什么是本地网关](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)？
+本文介绍如何下载、安装和设置本地数据网关，以便可以从 Azure 逻辑应用访问本地数据源。 也可以在本主题稍后的[数据网关的工作原理](#gateway-cloud-service)中了解更多信息。 有关网关的详细信息，请参阅[什么是本地网关](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)？ 要自动执行网关安装和管理任务，请访问 PowerShell 库，查看[DataGateway PowerShell cmdlet](https://www.powershellgallery.com/packages/DataGateway/3000.15.15)。
 
 <a name="requirements"></a>
 

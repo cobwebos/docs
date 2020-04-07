@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 01a05755fc18a85a95e9c1bec1c470d37af656d1
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 62cf1f369cbde372e82e7c3ffe26473f09668bc7
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632232"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742542"
 ---
 # <a name="data-warehouse-units-dwus"></a>数据仓库单位 (DWU)
 
@@ -24,9 +24,9 @@ ms.locfileid: "80632232"
 
 ## <a name="what-are-data-warehouse-units"></a>什么是数据仓库单位？
 
-[Synapse SQL 池](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse)表示正在预配的分析资源的集合。 分析资源定义为 CPU、内存和 IO 的组合。 
+[Synapse SQL 池](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse)表示正在预配的分析资源的集合。 分析资源定义为 CPU、内存和 IO 的组合。
 
-这三项资源捆绑到称为数据仓库单位 (DWU) 的计算规模单位中。 DWU 表示抽象、规范化的计算资源和性能度量值。 
+这三项资源捆绑到称为数据仓库单位 (DWU) 的计算规模单位中。 DWU 表示抽象、规范化的计算资源和性能度量值。
 
 更改服务级别会改变系统可用的 DWU 数量，从而调整系统的性能和成本。
 
@@ -72,7 +72,7 @@ CREATE DATABASE mySQLDW
 2. 在测试数据加载到系统中时，监视应用程序性能，将所选 DWU 数目与观测到的性能变化进行比较。
 3. 确认峰值活动周期的其他要求。 显示活动中重要峰值和谷值的工作负荷可能需要频繁缩放。
 
-SQL 池是一个横向扩展系统，它可以提供大量的计算和查询量大的数据。 
+SQL 池是一个横向扩展系统，它可以提供大量的计算和查询量大的数据。
 
 要查看其真正的缩放功能（尤其是针对较大的 DWU），建议在缩放的同时对数据集进行缩放，确保可向 CPU 提供足够的数据。 对于规模测试，建议至少使用 1 TB。
 
@@ -82,7 +82,7 @@ SQL 池是一个横向扩展系统，它可以提供大量的计算和查询量�
 
 ## <a name="permissions"></a>权限
 
-更改数据仓库单位需要 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql) 中所述的权限。
+更改数据仓库单位需要 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 中所述的权限。
 
 Azure 资源的内置角色（如 SQL DB 参与者和 SQL Server 参与者）可以更改 DWU 设置。
 
@@ -134,7 +134,7 @@ Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServi
 若要更改 DWU，请执行以下操作：
 
 1. 连接到与逻辑 SQL 数据库服务器关联的 master 数据库。
-2. 使用 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql) TSQL 语句。 以下示例将数据库 MySQLDW 的服务级别目标设置为 DW1000c。
+2. 使用 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) TSQL 语句。 以下示例将数据库 MySQLDW 的服务级别目标设置为 DW1000c。
 
 ```Sql
 ALTER DATABASE MySQLDW

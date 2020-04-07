@@ -3,18 +3,18 @@ title: 模板中的子资源
 description: 介绍如何在 Azure 资源管理器模板中设置子资源的名称和类型。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 6de2b476fe19a057a62e4a54963dd8fde0d11579
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3a69829e674925982c618807f49433a033d8c5f9
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77207887"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743835"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>设置子资源的名称和类型
 
 子资源是只存在于另一资源的上下文内的资源。 例如，如果没有[虚拟机](/azure/templates/microsoft.compute/2019-03-01/virtualmachines)，则[虚拟机扩展](/azure/templates/microsoft.compute/2019-03-01/virtualmachines/extensions)不能存在。 扩展资源是虚拟机的子项。
 
-在资源管理器模板中，可以在父资源内部或外部指定子资源。 以下示例显示子资源包括在父资源的资源属性中。
+在资源管理器模板中，可以在父资源内或父资源外部指定子资源。 以下示例显示子资源包括在父资源的资源属性中。
 
 ```json
 "resources": [

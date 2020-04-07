@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 695773da624bc8d4ccff09119d64fc43319ff488
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d11be1d971922095d4a1ace1c81c763134b4e58c
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246426"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743331"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>在 Azure 活动目录中规划和排除用户主体名称更改
 
@@ -58,11 +58,11 @@ Bsimon@contoso.com到Britta.Simon@contoso.com
 
    * Britta.Simon@contoso.com 到 Britta.Simon@contosolabs.com <br>
      或<br>
-    *   Britta.Simon@corp.contoso.com 到 Britta.Simon@labs.contoso.com 
+    * Britta.Simon@corp.contoso.com 到 Britta.Simon@labs.contoso.com 
 
 每次更新用户的主电子邮件地址时，更改用户的 UPN。 无论电子邮件更改的原因如何，必须始终更新 UPN 以匹配。
 
-在从活动目录到 Azure AD 的初始同步期间，确保用户的电子邮件与其 UPN 相同
+在从活动目录到 Azure AD 的初始同步期间，请确保用户的电子邮件与其 UPN 相同。
 
 ### <a name="upns-in-active-directory"></a>活动目录中的 UPN
 
@@ -108,7 +108,7 @@ username@labs.contoso.com.
 
 以下各节详细介绍了更改 UPN 时的潜在已知问题和解决方法。
 
-## <a name="user-provisioning-known-issues-and-workarounds"></a>用户预配已知问题和解决方法
+## <a name="apps-known-issues-and-workarounds"></a>应用已知问题和解决方法
 
 [软件即服务 （SaaS）](https://azure.microsoft.com/overview/what-is-saas/)和业务线 （LoB） 应用程序通常依靠 UPN 来查找用户并存储用户配置文件信息，包括角色。 首次使用["及时"预配](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)在用户首次登录应用时创建用户配置文件的应用程序可能会受到 UPN 更改的影响。
 
@@ -117,6 +117,7 @@ username@labs.contoso.com.
 
 **解决 方案**<br>
 [Azure AD 自动用户预配](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)允许您在支持的云应用程序中自动创建、维护和删除用户标识。 在应用程序上配置自动用户预配会自动更新应用程序中的 UPN。 将应用程序作为渐进式部署的一部分进行测试，以验证它们是否不受 UPN 更改的影响。
+如果您是开发人员，请考虑[向应用程序添加 SCIM 支持](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups)，以启用 Azure 活动目录的自动用户预配。 
 
 ## <a name="managed-devices-known-issues-and-workarounds"></a>托管设备已知问题和解决方法
 
@@ -142,7 +143,7 @@ username@labs.contoso.com.
 
 Windows 10 混合 Azure AD 联接的设备可能会遇到意外的重新启动和访问问题。
 
-如果用户在新 UPN 已同步到 Azure AD 之前登录到 Windows，或者继续使用现有的 Windows 会话，则如果配置了条件访问，则使用 Azure AD 进行身份验证的应用程序可能会遇到单一登录问题强制使用混合联接设备访问资源。 
+如果用户在新 UPN 已同步到 Azure AD 之前登录到 Windows，或者继续使用现有的 Windows 会话，则如果已配置为强制使用混合联接设备访问资源，则使用 Azure AD 进行身份验证的应用程序可能会遇到单一登录问题。 
 
 此外，将显示以下消息，强制在一分钟后重新启动。 
 
@@ -166,7 +167,7 @@ Windows 10 混合 Azure AD 联接的设备可能会遇到意外的重新启动�
 
 * 在 iOS 和 Android 设备上充当身份验证代理，为使用[代理身份验证](https://docs.microsoft.com/azure/active-directory/develop/brokered-auth)的应用程序提供单一登录
 
-* 设备注册（也称为工作区加入）到 Azure AD，这是其他功能（如 Intune 应用保护和设备注册/管理）的要求，
+* Azure AD 的设备注册（也称为工作区联接），这是其他功能（如 Intune 应用保护和设备注册/管理）的要求，
 
 * 电话登录，这需要 MFA 和设备注册。
 
@@ -174,15 +175,13 @@ Windows 10 混合 Azure AD 联接的设备可能会遇到意外的重新启动�
 
 Microsoft 身份验证器应用提供了带外验证选项。 [多因素身份验证 （MFA）](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)在登录期间不向用户发送自动电话呼叫或 SMS，而是将通知推送到用户的智能手机或平板电脑上的 Microsoft 身份验证器应用。 用户只需在应用中点击"批准"（或输入 PIN 或生物识别，然后点击"身份验证"即可完成其登录。
 
-更改用户的 UPN 时，移动设备可能会遇到以下问题：
-
 **已知问题** 
 
-旧的 UPN 仍显示在用户帐户上，可能不会收到通知。 [验证码](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-faq)继续工作。
+更改用户的 UPN 时，旧 UPN 仍显示在用户帐户上，可能不会收到通知。 [验证码](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-faq)继续工作。
 
 **解决 方案**
 
-如果收到通知，请指示用户关闭通知，打开身份验证器应用，点按"检查通知"选项并批准 MFA 提示。 在此之后，帐户上显示的 UPN 将更新。 请注意，更新的 UPN 可能会显示为新帐户，这是因为正在使用其他身份验证器功能。 有关详细信息，本文中还有其他已知问题。
+如果收到通知，请指示用户关闭通知，打开身份验证器应用，点按"检查通知"选项并批准 MFA 提示。 在此之后，帐户上显示的 UPN 将更新。 请注意，更新的 UPN 可能会显示为新帐户，这是因为正在使用其他身份验证器功能。 有关详细信息，请参阅本文中的其他已知问题。
 
 ### <a name="brokered-authentication"></a>代理身份验证
 

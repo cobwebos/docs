@@ -5,16 +5,19 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 1b00e177ed45762d10d0603b1d0a1fb2c1807416
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b2de4114e8a1b48de2ad64b783d15f56fef4fc30
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278495"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743749"
 ---
 # <a name="publish-a-consulting-service-offer"></a>发布咨询服务产品/服务
+
+>[!Important]
+>从 2020 年 3 月 30 日起，我们将开始将咨询服务优惠的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[咨询服务创建概述](https://aka.ms/AzureCreateConsultingService)中的说明来管理迁移的优惠。
 
 填写“套餐设置”、“店面详细信息”和“联系人”后，选择“发布”并提供电子邮件地址****************。 当 Microsoft 准备好发布套餐时，会向你发送一封电子邮件，可在其中预览该套餐上线之前的外观。 随时可以返回门户检查套餐的状态。
 
@@ -29,7 +32,7 @@ ms.locfileid: "80278495"
 如果有以下 CRM 系统之一，请选择 [Azure 表](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table)：  
 * [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo)
 * [Microsoft Dynamics CRM](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)
-* [销售队伍](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce)
+* [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce)
 
 ## <a name="next-steps"></a>后续步骤
 

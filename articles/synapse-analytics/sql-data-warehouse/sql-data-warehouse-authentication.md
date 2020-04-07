@@ -12,12 +12,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
-ms.openlocfilehash: d0a246b111e4ab27a9e595952bb029fa62fe976d
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: fcd9607cd630f41c67c655c2e8016254600b52e2
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633669"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745391"
 ---
 # <a name="authenticate-to-azure-synapse-analytics"></a>对 Azure 同步分析进行身份验证
 
@@ -76,7 +76,7 @@ Azure Active Directory 的优点包括：
 5. 在映射到 Azure AD 标识的数据库中创建包含的数据库用户
 6. 使用 Azure AD 标识连接到 SQL 池
 
-目前，Azure Active Directory 用户不会显示在 SSDT 对象资源管理器中。 解决方法是在 [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql??toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#azure-ad-features-and-limitations) 中查看这些用户。
+目前，Azure Active Directory 用户不会显示在 SSDT 对象资源管理器中。 解决方法是在 [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#azure-ad-features-and-limitations) 中查看这些用户。
 
 ### <a name="find-the-details"></a>查看详细信息
 

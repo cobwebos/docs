@@ -11,12 +11,12 @@ author: memildin
 manager: rkarlin
 ms.reviewer: vanto
 ms.date: 03/31/2019
-ms.openlocfilehash: 1f0e6694e596dc60264dfe0789a2f80090e0da3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aed0bcb79dedf057c5943cea9f4b4399b2f630cb
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79269128"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677470"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Azure SQL 数据库的高级数据安全
 
@@ -26,8 +26,8 @@ ms.locfileid: "79269128"
 
 高级数据安全性 (ADS) 提供一组高级 SQL 安全功能，包括数据发现和分类、漏洞评估和高级威胁防护。
 
-- [数据发现和分类](sql-database-data-discovery-and-classification.md)提供了内置于 Azure SQL 数据库的功能，用于发现、分类、标记和保护数据库中的敏感数据。 它可用于直观查看数据库分类状态，以及跟踪对数据库内和其边界外的敏感数据的访问。
-- [漏洞评估](sql-vulnerability-assessment.md)是一项易于配置的服务，可以发现、跟踪并帮助修正潜在的数据库漏洞。 它可直观查看安全状态，包括解决安全问题的可操作步骤，并可加强数据库的防御工事。
+- [数据发现&分类](sql-database-data-discovery-and-classification.md)提供了内置于 Azure SQL 数据库中的功能，用于发现、分类和标记&报告数据库中的敏感数据。 它可用于直观查看数据库分类状态，以及跟踪对数据库内和其边界外的敏感数据的访问。
+- [漏洞评估](sql-vulnerability-assessment.md)是一种易于配置的服务，可以发现、跟踪并帮助您修复潜在的数据库漏洞。 它可直观查看安全状态，包括解决安全问题的可操作步骤，并可加强数据库的防御工事。
 - [高级威胁防护](sql-database-threat-detection-overview.md)检测异常活动，指出尝试访问或利用数据库的行为异常且可能有害。 它不断监视数据库的可疑活动，并针对潜在漏洞、SQL 注入攻击和异常数据库访问模式提供即时的安全警报。 高级威胁防护警报提供可疑活动的详细信息，并建议如何调查和缓解威胁。
 
 一旦启用 SQL ADS，其包含的所有功能都会启用。 只需单击一次，即可为 SQL 数据库服务器或托管实例上的所有数据库启用 ADS。 需要属于 [SQL 安全管理器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) 角色、SQL 数据库管理员角色或 SQL Server 管理员角色才能启用或管理 ADS 设置。 
@@ -74,7 +74,7 @@ ADS 定价遵循 Azure 安全中心“标准”层级定价，其中每个受保
 
 ## <a name="next-steps"></a>后续步骤 
 
-- 详细了解[数据发现和分类](sql-database-data-discovery-and-classification.md) 
-- 详细了解[漏洞评估](sql-vulnerability-assessment.md) 
+- 了解有关[数据发现&分类](sql-database-data-discovery-and-classification.md) 
+- 了解有关[漏洞评估](sql-vulnerability-assessment.md)的更多 
 - 了解有关[高级威胁防护的更多](sql-database-threat-detection.md)
-- 了解有关[Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)详细信息
+- 了解有关[Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
