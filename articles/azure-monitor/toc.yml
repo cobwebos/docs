@@ -220,6 +220,8 @@
               href: app/api-custom-events-metrics.md
             - name: 排查 ASP.NET 问题
               href: app/asp-net-troubleshoot-no-data.md
+            - name: 删除 Application Insights
+              href: app/remove-application-insights.md
         - name: 无代码监视
           items:
             - name: Azure VM 和规模集
