@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 29d837446960b7535b26284efdfab7a1c59ea968
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fece1155d2f707f11dda9f3896bd8a08deff1557
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132500"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802377"
 ---
 # <a name="http-features"></a>HTTP 功能
 
@@ -45,13 +45,13 @@ Durable Functions 扩展自动将一组 HTTP API 添加到 Azure Functions 宿�
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **index.js**
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
 
-**函数.json**
+**function.json**
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
 
@@ -134,7 +134,7 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -198,7 +198,7 @@ public static async Task RunOrchestrator(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -232,7 +232,7 @@ module.exports = df.orchestrator(function*(context) {
 * 永远不会以持久性业务流程状态存储令牌。
 * 无需编写任何代码即可管理令牌获取。
 
-可以在[预编译的 C# RestartVMs 示例](https://github.com/Azure/azure-functions-durable-extension/blob/v2/samples/v2/precompiled/RestartVMs.cs)中找到更完整的示例。
+可以在[预编译的 C# RestartVMs 示例](https://github.com/Azure/azure-functions-durable-extension/blob/dev/samples/precompiled/RestartVMs.cs)中找到更完整的示例。
 
 托管标识并不局限于 Azure 资源管理。 可以使用托管标识来访问接受 Azure AD 持有者令牌的任何 API，包括 Microsoft 提供的 Azure 服务，以及合作伙伴提供的 Web 应用。 合作伙伴的 Web 应用甚至可以是其他函数应用。 有关支持使用 Azure AD 进行身份验证的 Microsoft Azure 服务的列表，请参阅[支持 Azure AD 身份验证的 Azure 服务](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
 

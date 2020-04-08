@@ -7,12 +7,12 @@ ms.date: 3/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
-ms.openlocfilehash: 04b145622a1a4237b576a1bb512b5f749f9c3823
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: da163e902d06bd98ac47a24256cb809cb222173b
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80133339"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804616"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>将 IoT Edge 上的 Azure Blob 存储模块部署到设备
 
@@ -32,7 +32,7 @@ Azure 门户引导你创建部署清单并将部署推送到 IoT Edge 设备。
 
 1. 登录到 Azure[门户](https://portal.azure.com)并导航到 IoT 中心。
 1. 从菜单中选择“IoT Edge”****。
-1. 在设备列表中单击目标设备的 ID。
+1. 单击设备列表中的目标设备的 ID。
 1. 选择**设置模块**。
 
 ### <a name="configure-a-deployment-manifest"></a>配置部署清单
@@ -88,16 +88,16 @@ Azure 门户引导你创建部署清单并将部署推送到 IoT Edge 设备。
 
    - 根据容器操作系统替换 `<storage mount>`。 提供[卷](https://docs.docker.com/storage/volumes/)的名称或 IoT Edge 设备上现有目录的绝对路径，其中 Blob 模块将存储其数据。 存储装载将你在设备上提供的位置映射到模块中设置的位置。
 
-     - 对于 Linux 容器，格式是*\<存储路径或卷>：/blobroot*。 例如：
-         - 使用 [volume mount](https://docs.docker.com/storage/volumes/): **my-volume:/blobroot**
-         - 使用[绑定装载](https://docs.docker.com/storage/bind-mounts/)：**/srv/containerdata:/blobroot**。 确保按步骤[为容器用户授予目录访问权限](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux)
-     - 对于 Windows 容器，格式是*\<存储路径或卷>：C：/BlobRoot*。 例如：
-         - 使用 [volume mount](https://docs.docker.com/storage/volumes/): **my-volume:C:/blobroot**。
-         - 使用[绑定装载](https://docs.docker.com/storage/bind-mounts/) **：C：/容器数据：C：/BlobRoot**。
+     - 对于 Linux 容器，格式是**\<存储路径或卷>：/blobroot**。 例如：
+         - 使用[卷安装](https://docs.docker.com/storage/volumes/)：`my-volume:/blobroot`
+         - 使用[绑定安装](https://docs.docker.com/storage/bind-mounts/) `/srv/containerdata:/blobroot`： 。 确保按步骤[为容器用户授予目录访问权限](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux)
+     - 对于 Windows 容器，格式是**\<存储路径或卷>：C：/BlobRoot**。 例如：
+         - 使用[卷安装](https://docs.docker.com/storage/volumes/) `my-volume:C:/BlobRoot`： 。
+         - 使用[绑定安装](https://docs.docker.com/storage/bind-mounts/) `C:/ContainerData:C:/BlobRoot`： 。
          - 您可以映射 SMB 网络位置，而不是使用本地驱动器，有关详细信息，请参阅[使用 SMB 共享作为本地存储](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)
 
      > [!IMPORTANT]
-     > 请不要更改存储装载值的后半部分，该部分指向模块中的特定位置。 对于 Linux 容器，存储装载应始终以 **:/blobroot** 结尾；对于 Windows 容器，应以 **:C:/BlobRoot** 结尾。
+     > 不要更改存储装载值的后半部分，该值指向 IoT Edge 模块上的 Blob 存储中的特定位置。 存储装载必须始终以 Linux 容器的 **：/blobroot**和 **：C：/BlobRoot**为 Windows 容器结束。
 
 5. 在“模块孪生设置”选项卡上，复制以下 JSON 并将其粘贴到框中****。
 
@@ -128,7 +128,7 @@ Azure 门户引导你创建部署清单并将部署推送到 IoT Edge 设备。
 
    有关在部署模块后配置 deviceToCloudUploadProperties 和 deviceAutoDeleteProperties 的信息，请参阅[编辑模块孪生](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin)。 若要详细了解所需属性，请参阅[定义或更新所需属性](module-composition.md#define-or-update-desired-properties)。
 
-6. 选择“添加”****。
+6. 选择 **添加** 。
 
 7. 选择 **"下一步"：要继续**到路线部分的路由。
 
@@ -157,13 +157,13 @@ Azure IoT Edge 在 Visual Studio Code 中提供模板，以帮助你开发边缘
 
 1. 选择 **"查看** > **命令调色板**"。
 
-1. 在命令调色板中，输入并运行命令**Azure IoT 边缘：新的 IoT 边缘解决方案**。
+1. 在“命令面板”中，输入并运行 Azure IoT Edge：**New IoT Edge solution** 命令。
 
    ![运行新的 IoT Edge 解决方案](./media/how-to-develop-csharp-module/new-solution.png)
 
    按命令面板中的提示创建解决方案。
 
-   | 字段 | “值” |
+   | 字段 | 值 |
    | ----- | ----- |
    | 选择文件夹 | 在适用于 Visual Studio Code 的开发计算机上选择用于创建解决方案文件的位置。 |
    | 提供解决方案名称 | 输入解决方案的描述性名称，或者接受默认的 **EdgeSolution**。 |
@@ -200,16 +200,16 @@ Azure IoT Edge 在 Visual Studio Code 中提供模板，以帮助你开发边缘
 
 1. 根据容器操作系统替换 `<storage mount>`。 提供[卷](https://docs.docker.com/storage/volumes/)的名称或 IoT Edge 设备上希望 blob 模块在其中存储其数据的目录绝对路径。 存储装载将你在设备上提供的位置映射到模块中设置的位置。  
 
-     - 对于 Linux 容器，格式是*\<存储路径或卷>：/blobroot*。 例如：
-         - 使用 [volume mount](https://docs.docker.com/storage/volumes/): **my-volume:/blobroot**
-         - 使用[绑定装载](https://docs.docker.com/storage/bind-mounts/)：**/srv/containerdata:/blobroot**。 确保按步骤[为容器用户授予目录访问权限](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux)
-     - 对于 Windows 容器，格式是*\<存储路径或卷>：C：/BlobRoot*。 例如：
-         - 使用 [volume mount](https://docs.docker.com/storage/volumes/): **my-volume:C:/blobroot**。
-         - 使用[绑定装载](https://docs.docker.com/storage/bind-mounts/) **：C：/容器数据：C：/BlobRoot**。
+     - 对于 Linux 容器，格式是**\<存储路径或卷>：/blobroot**。 例如：
+         - 使用[卷安装](https://docs.docker.com/storage/volumes/)：`my-volume:/blobroot`
+         - 使用[绑定安装](https://docs.docker.com/storage/bind-mounts/) `/srv/containerdata:/blobroot`： 。 确保按步骤[为容器用户授予目录访问权限](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux)
+     - 对于 Windows 容器，格式是**\<存储路径或卷>：C：/BlobRoot**。 例如：
+         - 使用[卷安装](https://docs.docker.com/storage/volumes/) `my-volume:C:/BlobRoot`： 。
+         - 使用[绑定安装](https://docs.docker.com/storage/bind-mounts/) `C:/ContainerData:C:/BlobRoot`： 。
          - 可以映射 SMB 网络位置，而不使用本地驱动器。有关详细信息，请参阅[使用 SMB 共享作为本地存储](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)
 
      > [!IMPORTANT]
-     > 请不要更改存储装载值的后半部分，该部分指向模块中的特定位置。 对于 Linux 容器，存储装载应始终以 **:/blobroot** 结尾；对于 Windows 容器，应以 **:C:/BlobRoot** 结尾。
+     > 不要更改存储装载值的后半部分，该值指向 IoT Edge 模块上的 Blob 存储中的特定位置。 存储装载必须始终以 Linux 容器的 **：/blobroot**和 **：C：/BlobRoot**为 Windows 容器结束。
 
 1. 通过将以下 JSON 添加到 *deployment.template.json* 文件，为模块配置 [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) 和 [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties)。 为每个属性配置适当的值并保存文件。 如果使用 IoT Edge 模拟器，请将这些属性的值设置为相关环境变量，可以在 [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) 和 [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) 的说明部分中找到这些值
 

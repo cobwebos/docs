@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 8b396b782c1254b3229aeeb8e51b61cc744d6318
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 300f44daeeea5e8a774575dabcb00686906bb5de
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190363"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804361"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>结合 Azure Active Directory 和 API 管理使用 OAuth 2.0 保护 API
 
@@ -137,7 +137,7 @@ ms.locfileid: "77190363"
 
 1. 如果使用 **v1** 终结点，请添加名为 **resource** 的主体参数。 使用后端应用的“应用程序 ID”作为此参数的值。**** 
 
-1. 如果使用 **v2** 终结点，请在“默认范围”字段中使用为后端应用创建的范围。****
+1. 如果使用 **v2** 终结点，请在“默认范围”字段中使用为后端应用创建的范围。**** 此外，请确保在[`accessTokenAcceptedVersion`](/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute)`2`[应用程序清单](/azure/active-directory/develop/reference-app-manifest)中将属性的值设置为 。
 
 1. 接下来，指定客户端凭据。 这是客户端应用的凭据。
 
@@ -147,7 +147,7 @@ ms.locfileid: "77190363"
 
 1. 紧接在客户端机密的后面，是授权代码授权类型的 **redirect_url**。 记下此 URL。
 
-1. 选择 **“创建”**。
+1. 选择“创建”  。
 
 1. 返回到客户端应用并选择“身份验证”****。
 
@@ -165,7 +165,7 @@ ms.locfileid: "77190363"
 
 4. 在“安全性”下，选择“OAuth 2.0”并选择前面配置的 OAuth 2.0 服务器。******** 
 
-5. 选择“保存”。****
+5. 选择“保存”。 
 
 ## <a name="successfully-call-the-api-from-the-developer-portal"></a>从开发人员门户成功调用 API
 

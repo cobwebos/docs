@@ -1,0 +1,12 @@
+- name: 转换模型
+  href: model-conversion.md
+- name: 将 Azure Blob 存储用于模型转换
+  href: blob-storage.md
+- name: 使用模型转换 REST API
+  href: conversion-rest-api.md
+- name: 配置模型转换
+  href: configure-model-conversion.md
+- name: 在模型转换期间替代材料
+  href: override-materials.md
+- name: 获取有关转换后的模型的信息
+  href: get-information.md

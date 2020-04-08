@@ -1,6 +1,6 @@
 - name: Azure 安全基准
   href: index.yml
-- name: 介绍
+- name: 简介
   href: introduction.md
 - name: 安全控制
   items:
@@ -40,6 +40,8 @@
       href: ../../container-registry/security-baseline.md
     - name: Cosmos DB 安全基线
       href: ../../cosmos-db/security-baseline.md
+    - name: 事件中心安全基线
+      href: ../../event-hubs/security-baseline.md
     - name: HDInsight 安全基线
       href: ../../hdinsight/security-baseline.md
     - name: Key Vault 安全基线

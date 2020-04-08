@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: 53f53976b20359afc45abe1b25ca60325b5d6a2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 63cf864a3f3b92728ad613ac45542bdbce2c9858
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75386164"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811338"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>如何创建和部署云服务
 Azure 门户提供两种创建和部署云服务的方法：*快速创建*和*自定义创建*。
@@ -42,13 +42,13 @@ Azure 门户提供两种创建和部署云服务的方法：*快速创建*和*�
 
 在导出服务包之前，三种云服务功能需要特殊的配置：
 
-* 如果要部署使用安全套接字层 (SSL) 进行数据加密的云服务，请[为应用程序配置](cloud-services-configure-ssl-certificate-portal.md#modify) SSL。
+* 如果要部署使用传输层安全 （TLS）（以前称为安全套接字层 （SSL） 的云服务进行数据加密，请为 TLS[配置应用程序](cloud-services-configure-ssl-certificate-portal.md#modify)。
 * 如果要配置与角色实例的远程桌面连接，请[为这些角色配置](cloud-services-role-enable-remote-desktop-new-portal.md)远程桌面。
 * 如果要为云服务配置详细监视，请为云服务启用 Azure 诊断。 *最少监视*（默认监视级别）使用从角色实例（虚拟机）的主机操作系统中收集到的性能计数器。 *详细监视*基于角色实例中的性能数据收集其他指标，以便更仔细地分析应用程序处理过程中出现的问题。 要了解如何启用 Azure 诊断，请参阅[在 Azure 中启用诊断](cloud-services-dotnet-diagnostics.md)。
 
 要使用 Web 角色或辅助角色创建云服务，必须[创建服务包](cloud-services-model-and-package.md#servicepackagecspkg)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 * 如果尚未安装 Azure SDK，请单击“**安装 Azure SDK**”以打开 [Azure 下载页](https://azure.microsoft.com/downloads/)，然后下载你选择用于开发代码的相应语言的 SDK。 （也可以稍后执行此操作。）
 * 如果任何角色实例需要证书，请创建这些证书。 云服务需要带有私钥的 .pfx 文件。 可在创建和部署云服务时将这些证书上传到 Azure。
 
@@ -70,7 +70,7 @@ Azure 门户提供两种创建和部署云服务的方法：*快速创建*和*�
 ## <a name="upload-a-certificate"></a>上传证书
 如果部署包已[配置为使用证书](cloud-services-configure-ssl-certificate-portal.md#modify)，现在就可以上传证书。
 
-1. 选择“证书”****，并在“添加证书”**** 窗格中，选择 SSL 证书 .pfx 文件，并提供证书的**密码**，
+1. 选择**证书**，在 **"添加证书**"窗格中，选择 TLS/SSL 证书 .pfx 文件，然后提供证书的**密码**，
 2. 单击“附加证书”****，然后在“添加证书”**** 窗格上单击“确定”****。
 3. 在“云服务”**** 窗格上单击“创建”****。 当部署达到“**就绪**”状态时，可以继续执行后续步骤。
 
@@ -90,7 +90,7 @@ Azure 门户提供两种创建和部署云服务的方法：*快速创建*和*�
 * [云服务的常规配置](cloud-services-how-to-configure-portal.md)。
 * 配置[自定义域名](cloud-services-custom-domain-name-portal.md)。
 * [管理云服务](cloud-services-how-to-manage-portal.md)。
-* 配置 [SSL 证书](cloud-services-configure-ssl-certificate-portal.md)。
+* 配置[TLS/SSL 证书](cloud-services-configure-ssl-certificate-portal.md)。
 
 
 

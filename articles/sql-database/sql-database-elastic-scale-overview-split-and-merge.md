@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 8b0db4a1e55b53165e40e176834d66b62926e24b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7eb1670ee911895bdba23921845b8795f4998af
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74421561"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811307"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>在扩展云数据库之间移动数据
 
@@ -62,7 +62,7 @@ ms.locfileid: "74421561"
 
 - **客户托管服务**
 
-  拆分/合并将作为客户托管服务交付。 必须在 Microsoft Azure 订阅中部署并托管该服务。 从 NuGet 下载的程序包将包含一个要使用特定部署信息完成的配置模板。 有关详细信息，请参阅[拆分 / 合并教程](sql-database-elastic-scale-configure-deploy-split-and-merge.md)。 Azure 订阅运行有该服务，可以控制和配置该服务的大多数安全设置。 默认模板包括配置 SSL 的选项、基于证书的客户端身份验证、存储凭据的加密、DoS 防护和 IP 限制。 可以在以下[拆分 / 合并安全配置](sql-database-elastic-scale-split-merge-security-configuration.md)文档中找到有关安全方面的详细信息。
+  拆分/合并将作为客户托管服务交付。 必须在 Microsoft Azure 订阅中部署并托管该服务。 从 NuGet 下载的程序包将包含一个要使用特定部署信息完成的配置模板。 有关详细信息，请参阅[拆分 / 合并教程](sql-database-elastic-scale-configure-deploy-split-and-merge.md)。 Azure 订阅运行有该服务，可以控制和配置该服务的大多数安全设置。 默认模板包括配置 TLS 的选项、基于证书的客户端身份验证、存储凭据的加密、DoS 防护和 IP 限制。 可以在以下[拆分 / 合并安全配置](sql-database-elastic-scale-split-merge-security-configuration.md)文档中找到有关安全方面的详细信息。
 
   默认部署的服务可与一个辅助角色和一个 Web 角色同时运行。 在 Azure 云服务中，每个角色都使用 A1 VM 大小。 虽然无法在部署程序包时修改这些设置，但是可以在运行的云服务中成功进行部署之后更改它们（通过 Azure 门户）。 请注意，出于技术方面的原因，不得为多个实例配置辅助角色。
 

@@ -6,21 +6,21 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/26/2020
-ms.openlocfilehash: 96a72541255ad0059abe5ad280f1728518dbf68c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 0fc067f0be4ac5d2b8fa7db9ad7999efe06625a0
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80234740"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804497"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>缩放 Azure HDInsight 群集
 
-HDInsight 提供弹性，可让你选择扩展和缩减群集中的工作节点数。 这种弹性允许你在若干小时后或者在周末收缩群集，或者在业务需求高峰期扩展群集。
+HDInsight 提供了弹性，提供了扩展和缩小群集中辅助节点数量的选项。 这种弹性允许您在下班后或周末收缩群集。 并在高峰业务需求期间扩展它。
 
-若要定期进行批处理，则可在该操作之前的几分钟纵向扩展 HDInsight 群集，使群集有足够的内存和 CPU 功率。 在完成处理并且用量再次下降后，可将 HDInsight 群集缩减为更少的工作节点。
+在定期批处理之前向上扩展群集，以便群集具有足够的资源。 处理完成后，使用量下降，将 HDInsight 群集缩减为更少的辅助节点。
 
-可以使用下述方法之一手动缩放群集，也可以使用[自动缩放](hdinsight-autoscale-clusters.md)选项，让系统根据 CPU、内存等指标自动进行纵向扩展和缩减。
+您可以使用下面概述的方法之一手动缩放群集。 您还可以使用[自动缩放](hdinsight-autoscale-clusters.md)选项来自动向上和向下扩展以响应某些指标。
 
 > [!NOTE]  
 > 只支持使用 HDInsight 3.1.3 或更高版本的群集。 如果不确定群集的版本，可以查看“属性”页。
@@ -29,12 +29,12 @@ HDInsight 提供弹性，可让你选择扩展和缩减群集中的工作节点�
 
 Microsoft 提供以下实用程序来缩放群集：
 
-|实用工具 | 描述|
+|实用工具 | 说明|
 |---|---|
-|[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -ClusterName \<群集名称> -TargetInstanceCount \<NewSize>|
-|[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -ClusterName \<群集名称> -TargetInstanceCount \<NewSize>|
-|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [az hdinsight 调整大小](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize)—\<资源组资源组\<> -- 名称群集名称\<> -- 工作节点计数 NewSize>|
-|[Azure 经典 CLI](hdinsight-administer-use-command-line.md)|azure hdinsight cluster resize \<clusterName> \<目标实例计数> |
+|[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[`Set-AzHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
+|[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[`Set-AzureRmHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
+|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) | [`az hdinsight resize`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) `--resource-group RESOURCEGROUP --name CLUSTERNAME --workernode-count NEWSIZE`|
+|[Azure 经典 CLI](hdinsight-administer-use-command-line.md)|`azure hdinsight cluster resize CLUSTERNAME NEWSIZE` |
 |[Azure 门户](https://portal.azure.com)|打开 HDInsight 群集的窗格，在左侧菜单中选择“群集大小”，然后在“群集大小”窗格中键入工作节点数并选择“保存”。****|  
 
 ![Azure 门户缩放群集选项](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
@@ -42,26 +42,26 @@ Microsoft 提供以下实用程序来缩放群集：
 使用以下任一方法可在几分钟之内扩展或缩放 HDInsight 群集。
 
 > [!IMPORTANT]  
-> * Azure 经典 CLI 已弃用，应仅与经典部署模型一起使用。 对于所有其他部署，请使用 Azure [CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)。  
+> * Azure 经典 CLI 已弃用，应仅与经典部署模型一起使用。 对于所有其他部署，请使用 Azure [CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)。
 > * PowerShell AzureRM 模块已弃用。  请尽可能使用 [Az 模块](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0)。
 
 ## <a name="impact-of-scaling-operations"></a>缩放操作的影响
 
-将节点**添加**到正在运行的 HDInsight 群集（纵向扩展）时，任何挂起的或正在运行的作业都不受影响。 在运行缩放过程时，可以安全提交新作业。 如果缩放操作出于任何原因而失败，系统会处理失败，让群集保持正常运行状态。
+当您**将节点添加到**正在运行的 HDInsight 群集（向上扩展）时，作业不会受到影响。 在运行缩放过程时，可以安全提交新作业。 如果缩放操作失败，故障将使群集处于功能状态。
 
-如果**删除**节点（纵向缩减），则当缩放操作完成时，任何挂起的或正在运行的作业将会失败。 该失败的原因是在缩放过程中某些服务重启。 此外还有这样一种风险：在手动缩放操作过程中，群集可能停滞在安全模式下。
+如果**删除**节点（缩小），则挂起或正在运行的作业将在缩放操作完成后失败。 此失败是由于缩放过程中某些服务重新启动。 在手动缩放操作期间，群集可能会卡在安全模式。
 
 对于 HDInsight 支持的每种类型的群集，更改数据节点数的影响有所不同：
 
 * Apache Hadoop
 
-    可以顺利地增加正在运行的 Hadoop 群集中的辅助节点数，而不会影响任何挂起或运行中的作业。 还可以在操作进行中提交新作业。 系统会正常处理失败的缩放操作，让群集始终保持正常运行状态。
+    您可以无缝地增加正在运行的 Hadoop 群集中的辅助节点数，而不会影响任何作业。 还可以在操作进行中提交新作业。 缩放操作中的故障得到正常处理。 群集始终处于功能状态。
 
-    减少数据节点数目以缩减 Hadoop 群集时，系统会重新启动群集中的某些服务。 此行为会导致所有正在运行和挂起的作业在缩放操作完成时失败。 但是，可以在操作完成后重新提交这些作业。
+    当 Hadoop 群集以较少的数据节点进行缩减时，某些服务将重新启动。 此行为会导致所有正在运行和挂起的作业在缩放操作完成时失败。 但是，可以在操作完成后重新提交这些作业。
 
 * Apache HBase
 
-    可以顺利地在 HBase 群集运行时对其添加或删除节点。 在完成缩放操作后的几分钟内，区域服务器就能自动平衡。 不过，也可以手动平衡区域服务器，方法是登录到群集的头节点，并在命令提示符窗口中运行以下命令：
+    您可以在 HBase 群集运行时无缝添加或删除节点。 在完成缩放操作后的几分钟内，区域服务器就能自动平衡。 但是，您可以手动平衡区域服务器。 登录到群集头节点并运行以下命令：
 
     ```bash
     pushd %HBASE_HOME%\bin
@@ -73,14 +73,14 @@ Microsoft 提供以下实用程序来缩放群集：
 
 * Apache Storm
 
-    可以顺利地在 Storm 群集运行时对其添加或删除数据节点。 但是，在缩放操作成功完成后，需要重新平衡拓扑。
+    您可以在 Storm 运行时无缝添加或删除数据节点。 但是，在成功完成缩放操作后，您需要重新平衡拓扑。
 
     可以使用两种方法来完成重新平衡操作：
 
   * Storm Web UI
   * 命令行界面 (CLI) 工具
 
-    有关详细信息，请参阅 [Apache Storm 文档](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。
+    有关详细信息，请参阅[阿帕奇风暴文档](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。
 
     HDInsight 群集上提供了 Storm Web UI：
 
@@ -110,15 +110,15 @@ Microsoft 提供以下实用程序来缩放群集：
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择群集。  有关说明，请参阅[列出和显示群集](./hdinsight-administer-use-portal-linux.md#showClusters)。 群集会在新的门户页中打开。
 2. 从主视图导航到**群集仪表板** > **Ambari 主页**。 输入群集凭据。
 3. 在 Ambari UI 的左侧菜单中的服务列表内选择“YARN”。****  
-4. 在“YARN”页中选择“快速链接”，将鼠标悬停在活动头节点上，然后选择“ResourceManager UI”。********
+4. 从 YARN 页面中，选择 **"快速链接"** 并将鼠标悬停在活动头节点上，然后选择**资源管理器 UI**。
 
     ![阿帕奇·安巴里快速链接资源管理器 UI](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
 
-可以使用 `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster` 直接访问 ResourceManager UI。
+您可以直接使用`https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster`访问资源管理器 UI。
 
 可以看到作业的列表及其当前状态。 在屏幕截图中，当前有一个作业正在运行：
 
-![ResourceManager UI 应用程序](./media/hdinsight-scaling-best-practices/resourcemanager-ui-applications.png)
+![资源管理器 UI 应用程序](./media/hdinsight-scaling-best-practices/resourcemanager-ui-applications.png)
 
 若要手动终止正在运行的应用程序，请通过 SSH shell 执行以下命令：
 
@@ -134,11 +134,11 @@ yarn application -kill "application_1499348398273_0003"
 
 ### <a name="getting-stuck-in-safe-mode"></a>停滞在安全模式下
 
-纵向缩减群集时，HDInsight 使用 Apache Ambari 管理接口先解除额外的工作器节点，以将其 HDFS 块复制到其他联机工作器节点。 然后，HDInsight 安全地纵向缩减群集。 HDFS 在缩放操作期间进入安全模式，在完成缩放后会退出此模式。 但在某些情况下，HDFS 会在缩放操作期间停滞在安全模式下，因为文件块复制数量不足。
+缩小群集时，HDInsight 使用 Apache Ambari 管理接口首先停用额外的辅助节点。 节点将其 HDFS 块复制到其他联机辅助节点。 然后，HDInsight 安全地纵向缩减群集。 HDFS 在缩放操作期间进入安全模式。 HDFS 应该在缩放完成后出来。 但在某些情况下，HDFS 会在缩放操作期间停滞在安全模式下，因为文件块复制数量不足。
 
 默认情况下，HDFS 配置的`dfs.replication`设置为 1，用于控制每个文件块可用的副本数。 文件块的每个副本存储在群集的不同节点上。
 
-HDFS 在检测到预期的块副本数不可用时，会进入安全模式，此时 Ambari 会生成警报。 如果 HDFS 进入安全模式进行缩放操作，但随后却因为检测不到进行复制所需的节点数目而无法退出安全模式，则群集可能会停滞在安全模式下。
+当预期的块副本数不可用时，HDFS 进入安全模式，Ambari 生成警报。 HDFS 可能进入缩放操作的安全模式。 如果未检测到复制所需的节点数，群集可能会卡在安全模式下。
 
 ### <a name="example-errors-when-safe-mode-is-turned-on"></a>启用安全模式时的错误示例
 
@@ -152,7 +152,7 @@ org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.s
 
 可以查看 `/var/log/hadoop/hdfs/` 文件夹中的名称节点日志，以了解缩放群集时群集进入安全模式的大致时间。 日志文件命名为 `Hadoop-hdfs-namenode-<active-headnode-name>.*`。
 
-上述错误的根本原因是 Hive 在运行查询时依赖于 HDFS 中的临时文件。 当 HDFS 进入安全模式时，Hive 无法运行查询，因为它无法写入 HDFS。 HDFS 中的临时文件位于已装入到各个工作节点 VM 的本地驱动器上，并且在其他工作节点之间至少复制成三个副本。
+根本原因是 Hive 在运行查询时依赖于 HDFS 中的临时文件。 当 HDFS 进入安全模式时，Hive 无法运行查询，因为它无法写入 HDFS。 HDFS 中的临时文件位于装载到单个辅助节点 VM 的本地驱动器中。 这些文件在三个副本的其他辅助节点之间复制，最小。
 
 ### <a name="how-to-prevent-hdinsight-from-getting-stuck-in-safe-mode"></a>如何防止 HDInsight 停滞在安全模式下
 
@@ -185,7 +185,8 @@ org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.s
     ```
 
 1. 停止 Hive 服务，并确保所有查询和作业都已完成。
-2. 列出在上面找到的 scratch 目录 `hdfs://mycluster/tmp/hive/` 的内容，看其是否包含任何文件：
+
+1. 列出在上面找到的 scratch 目录 `hdfs://mycluster/tmp/hive/` 的内容，看其是否包含任何文件：
 
     ```bash
     hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
@@ -203,7 +204,7 @@ org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.s
     -rw-r--r--   3 hive hdfs         26 2017-07-06 20:30 hdfs://mycluster/tmp/hive/hive/c108f1c2-453e-400f-ac3e-e3a9b0d22699/inuse.info
     ```
 
-3. 如果知道 Hive 已处理这些文件，则可以删除这些文件。 查看 Yarn ResourceManager UI 页，确保 Hive 中没有任何正在运行的查询。
+1. 如果知道 Hive 已处理这些文件，则可以删除这些文件。 通过在 Yarn 资源管理器 UI 页中查找，确保 Hive 没有任何查询运行。
 
     用于从 HDFS 中删除文件的示例命令行：
 
@@ -213,17 +214,17 @@ org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.s
 
 #### <a name="scale-hdinsight-to-three-or-more-worker-nodes"></a>缩减 HDInsight 时保持三个或更多个工作器节点
 
-如果群集在纵向缩减到三个以下的工作器节点时频繁停滞在安全模式下，且前面的步骤无效，则请保留至少三个工作器节点，这样可以完全避免群集进入安全模式。
+如果群集在向下扩展到少于三个辅助节点时经常陷入安全模式，则至少保留三个辅助节点。
 
-保留三个工作器节点的成本比纵向缩减到仅一个工作器节点的成本要高，但可防止群集停滞在安全模式下。
+拥有三个辅助节点比仅缩减到一个辅助节点的成本更高。 但是，此操作将防止群集陷入安全模式。
 
 ### <a name="scale-hdinsight-down-to-one-worker-node"></a>将 HDInsight 缩放到一个辅助节点
 
-即使群集缩减为 1 个节点，辅助节点 0 仍将存活。 辅助节点 0 永远不会停用。
+即使群集缩小到一个节点，辅助节点 0 仍将存活。 辅助节点 0 永远不会停用。
 
 #### <a name="run-the-command-to-leave-safe-mode"></a>运行命令来退出安全模式。
 
-最后一种做法是执行退出安全模式的命令。 如果确定 HDFS 进入安全模式的原因是 Hive 文件复制数量不足，则可执行以下命令退出安全模式：
+最后一种做法是执行退出安全模式的命令。 如果 HDFS 由于 Hive 文件复制不足而进入安全模式，请执行以下命令以离开安全模式：
 
 ```bash
 hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave

@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 185bb9d03bec042a5c8e9223616b40eba6629e36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 80481bc11933b0404079221f23b5054024f00acb
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247522"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811351"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>在 Azure 门户中管理云服务
 在 Azure 门户的“云服务”**** 区域中，可以：
@@ -123,7 +123,7 @@ ms.locfileid: "79247522"
 * [云服务的常规配置](cloud-services-how-to-configure-portal.md)。
 * 了解如何[部署云服务](cloud-services-how-to-create-deploy-portal.md)。
 * 配置[自定义域名](cloud-services-custom-domain-name-portal.md)。
-* 配置[SSL 证书](cloud-services-configure-ssl-certificate-portal.md)。
+* 配置[TLS/SSL 证书](cloud-services-configure-ssl-certificate-portal.md)。
 
 
 

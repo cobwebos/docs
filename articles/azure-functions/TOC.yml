@@ -22,8 +22,6 @@
           href: functions-create-your-first-function-visual-studio.md
         - name: 命令行
           href: functions-create-first-azure-function-azure-cli.md
-        - name: Maven/Gradle (Java)
-          href: functions-create-first-java-maven.md
     - name: 连接到存储
       items:
         - name: Visual Studio Code
@@ -32,8 +30,6 @@
           href: functions-add-output-binding-storage-queue-vs.md
         - name: 命令行
           href: functions-add-output-binding-storage-queue-cli.md
-        - name: Maven/Gradle (Java)
-          href: functions-add-output-binding-storage-queue-java.md
 - name: 教程
   items:
     - name: Functions 与逻辑应用
@@ -147,7 +143,7 @@
       href: ip-addresses.md
     - name: 自定义处理程序
       href: functions-custom-handlers.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 开发
       items:
@@ -175,10 +171,16 @@
                   href: create-visual-studio.md
                 - name: Visual Studio Code
                   href: create-visual-studio-code.md
+                - name: 使用 Gradle 的 Java
+                  href: functions-create-first-java-gradle.md
                 - name: 使用 Eclipse 的 Java
                   href: functions-create-maven-eclipse.md
                 - name: 使用 IntelliJ IDEA 的 Java
                   href: functions-create-maven-intellij.md
+                - name: 使用 Maven 的 Kotlin
+                  href: functions-create-first-kotlin-maven.md
+                - name: 使用 IntelliJ 的 Java
+                  href: functions-create-maven-kotlin-intellij.md
                 - name: Linux 应用服务计划
                   href: create-function-app-linux-app-service-plan.md
                 - name: Linux 消耗计划
@@ -205,6 +207,8 @@
               href: add-output-binding-storage-queue-vs-code.md
             - name: 存储 - Visual Studio
               href: add-output-binding-storage-queue-vs.md
+            - name: 存储 - Java/Gradle
+              href: functions-add-output-binding-storage-queue-java.md
         - name: 调试和测试
           items:
             - name: 测试函数
@@ -320,7 +324,7 @@
           href: functions-create-serverless-api.md
         - name: 管理本地资源
           href: functions-hybrid-powershell.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 排查存储问题
           href: functions-recover-storage-account.md

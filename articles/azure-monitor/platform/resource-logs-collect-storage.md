@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 843c179826b2064a1be24d3cee84b398987b4aed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 787640ef08ee91220f42065af155c372247f0136
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274211"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804599"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>将 Azure 资源日志存档到存储帐户
 Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日志和资源日志）提供 Azure 资源及其所依赖的 Azure 平台的详细诊断和审核信息。  本文介绍如何将平台日志收集到到 Azure 存储帐户，以便保留要存档的数据。
@@ -20,6 +20,8 @@ Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日�
 ## <a name="prerequisites"></a>先决条件
 需[创建 Azure 存储帐户](../../storage/common/storage-account-create.md)（如果还没有）。 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，存储帐户就不必位于发送日志的资源所在的订阅中。
 
+> [!IMPORTANT]
+> 要将数据发送到不可变存储，请设置存储帐户的不可变策略，如["设置"中所述，并管理 Blob 存储的不变性策略](../../storage/blobs/storage-blob-immutability-policies-manage.md)。 您必须遵循本文中的所有步骤，包括启用受保护的追加 Blob 写入。
 
 > [!IMPORTANT]
 > Azure Data Lake Storage Gen2 帐户目前不支持作为诊断设置的目标，即使它们可能在 Azure 门户中被列为有效选项。

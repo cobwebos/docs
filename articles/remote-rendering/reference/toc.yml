@@ -1,0 +1,12 @@
+- name: 模型格式的材料映射
+  href: material-mapping.md
+- name: 区域
+  href: regions.md
+- name: 网络要求
+  href: network-requirements.md
+- name: 限制
+  href: limits.md
+- name: arrClient 存储库 (GitHub)
+  href: 'https://dev.azure.com/arrClient/arrClient/_git/arrClient'
+- name: Azure 混合现实资源管理 REST API
+  href: 'https://docs.microsoft.com/rest/api/mixedreality/'

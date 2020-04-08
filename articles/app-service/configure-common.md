@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: ce0a170a629f347e2687a2e9f63fb3438fe2bd2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 18469c94b66acab27b58243e8d15eb924843319b
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280165"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811117"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>在 Azure 门户中配置应用服务应用
 
@@ -96,10 +96,11 @@ ms.locfileid: "79280165"
 
 在运行时，连接字符串可用作环境变量，其前缀为以下连接类型：
 
-* SQL Server：`SQLCONNSTR_`
-* MySQL：`MYSQLCONNSTR_`
-* SQL 数据库：`SQLAZURECONNSTR_`
+* SQLServer：`SQLCONNSTR_`  
+* MySQL：`MYSQLCONNSTR_` 
+* SQLAzure：`SQLAZURECONNSTR_` 
 * 自定义：`CUSTOMCONNSTR_`
+* 后数SQL：`POSTGRESQLCONNSTR_`  
 
 例如，可以使用环境变量 `MYSQLCONNSTR_connectionString1` 的形式访问名为 *connectionstring1* 的 MySql 连接字符串。 有关特定于语言堆栈的步骤，请参阅：
 
@@ -173,7 +174,7 @@ ms.locfileid: "79280165"
     - **托管管道版本**：IIS[管道模式]。 如果某个旧式应用需要旧版 IIS，请将此选项设置为“经典”。****
     - **HTTP 版本**： 设置为**2.0**以启用对[HTTPS/2](https://wikipedia.org/wiki/HTTP/2)协议的支持。
     > [!NOTE]
-    > 大多数新型浏览器仅支持通过 TLS 的 HTTP/2 协议，而非加密流量继续使用 HTTP/1.1。 为确保客户端浏览器通过 HTTP/2 连接到应用，请[在 Azure 应用服务中使用 SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
+    > 大多数新型浏览器仅支持通过 TLS 的 HTTP/2 协议，而非加密流量继续使用 HTTP/1.1。 为确保客户端浏览器使用 HTTP/2 连接到你的应用，请保护您的自定义 DNS 名称。 有关详细信息，请参阅在[Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
     - **ARR 关联**：在多实例部署中，确保客户端在会话的生命周期内路由到同一实例。 对于无状态应用程序，请将此选项设置为“关闭”。****
 - **调试**：为[ASP.NET、ASP.NET核心](/visualstudio/debugger/remote-debugging-azure)应用或[ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug)[Node.js](containers/configure-language-nodejs.md#debug-remotely)应用启用远程调试。 此选项在 48 小时后会自动关闭。
 - **传入的客户端证书**：要求在[相互身份验证](app-service-web-configure-tls-mutual-auth.md)中使用客户端证书。
@@ -248,7 +249,7 @@ ms.locfileid: "79280165"
 
 - [在 Azure 应用服务中配置自定义域名]
 - [设置 Azure 应用服务中的过渡环境]
-- [在 Azure 应用服务中使用 SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)
+- [使用 Azure 应用服务中的 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)
 - [启用诊断日志](troubleshoot-diagnostic-logs.md)
 - [在 Azure 应用服务中缩放应用]
 - [在 Azure 应用服务中监视基础知识]

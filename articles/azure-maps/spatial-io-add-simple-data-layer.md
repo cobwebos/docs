@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 7671d07a468a9f67a4851ec828fe18896d7a6c66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8862c33b7660b8130f692dc4beea89a7b6b5f5ad
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334279"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804480"
 ---
 # <a name="add-a-simple-data-layer"></a>添加简单的数据层
 
@@ -56,7 +56,7 @@ map.layers.add(layer);
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="使用简单数据层" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true"> 请参阅笔 在<a href='https://codepen.io'>CodePen</a>上按 Azure<a href='https://codepen.io/azuremaps'>@azuremaps</a>映射 （）<a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>使用简单数据图层</a>。
+<iframe height="500" style="width: 100%;" scrolling="no" title="使用简单数据层" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true"> 请参阅笔 在<a href='https://codepen.io'>CodePen</a>上按 Azure<a href='https://codepen.io/azuremaps'>@azuremaps</a>映射 （）<a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>使用简单数据图层</a>。
 </iframe>
 
 当出现以下情况时，简单数据层的真正功能就来了：

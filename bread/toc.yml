@@ -152,6 +152,9 @@
     - name: Azure 空间定位点
       tocHref: /azure/spatial-anchors/
       topicHref: /azure/spatial-anchors/
+    - name: Azure 远程渲染
+      tocHref: /azure/remote-rendering/
+      topicHref: /azure/remote-rendering/
     - name: 容器注册表
       tocHref: /azure/container-registry/
       topicHref: /azure/container-registry/

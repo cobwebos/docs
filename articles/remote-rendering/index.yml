@@ -1,0 +1,66 @@
+### YamlMime:Landing
+title: “Azure 远程渲染”文档
+summary: Azure 远程渲染 (ARR) 是一项服务，可用于在 HoloLens 2 等设备上实时渲染高度复杂的 3D 模型。 ARR 目前以公共预览版提供。
+metadata:
+  title: “Azure 远程渲染”文档
+  description: 了解如何使用 Azure 远程渲染 (ARR) 服务在 HoloLens 2 等设备上实时远程渲染高度复杂的 3D 模型并显示结果。
+  ms.service: azure-remote-rendering
+  ms.topic: landing-page
+  author: florianborn71
+  ms.author: flborn
+  ms.date: 03/26/2020
+  ms.openlocfilehash: a257b294c105ca153a57afe90db95a1bd1b753e8
+  ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 04/06/2020
+  ms.locfileid: "80678308"
+landingContent:
+- title: 关于 Azure 远程渲染
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 远程渲染？
+      url: overview/about.md
+    - text: 系统要求
+      url: overview/system-requirements.md
+    - text: 创建“Azure 远程渲染”帐户
+      url: how-tos/create-an-account.md
+- title: 了解重要概念以开始使用 Azure 远程渲染
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 配置身份验证
+      url: how-tos/authentication.md
+    - text: 远程渲染会话
+      url: concepts/sessions.md
+    - text: 实体
+      url: concepts/entities.md
+    - text: 组件
+      url: concepts/components.md
+    - text: 模型
+      url: concepts/models.md
+    - text: 转换模型
+      url: how-tos/conversion/model-conversion.md
+- title: 转换并渲染第一个模型
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 Unity 渲染模型
+      url: quickstarts/render-model.md
+    - text: 将 Unity 示例部署到 HoloLens
+      url: quickstarts/deploy-to-hololens.md
+    - text: 将 Unity 示例部署到桌面
+      url: quickstarts/deploy-to-desktop.md
+    - text: 转换用于渲染的模型
+      url: quickstarts/convert-model.md
+- title: 了解如何在 Unity 中构建自己的应用
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 从头开始设置 Unity 项目
+      url: tutorials/unity/project-setup.md
+    - text: 在 Unity 中使用远程实体
+      url: tutorials/unity/working-with-remote-entities.md
+    - text: 更改环境和材料
+      url: tutorials/unity/changing-environment-and-materials.md

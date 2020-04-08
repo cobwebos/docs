@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 75890efebc42b74c56fb95ed1803152b516588b9
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 55c6d374c8a3c308323c0d003726492477e33ff8
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385208"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811237"
 ---
 # <a name="develop-a-secure-web-app"></a>开发安全的 Web 应用
 
@@ -108,7 +108,7 @@ ms.locfileid: "80385208"
 
 ### <a name="network"></a>网络
 
-示例应用对流入和流出网络的传输中数据使用端到端 SSL 加密。 网关配置了自签名证书。
+示例应用对流入和流出网络的传输中数据使用端到端 TLS/SSL 加密。 网关配置了自签名证书。
 > [!IMPORTANT]
 > 此演示使用自签名证书。 在生产环境中，应从经过验证的证书颁发机构 （CA） 获取证书。
 
@@ -363,7 +363,7 @@ END;
 $$ LANGUAGE PLPGSQL;
 ```
 
-有关如何为 PostgreSQL 设置 SSL 和证书颁发机构 （CA） 验证的详细信息，请参阅[为 PostgreSQL 在 Azure 数据库中配置 SSL 连接](/azure/postgresql/concepts-ssl-connection-security)。
+有关如何为 PostgreSQL 设置 TLS 和证书颁发机构 （CA） 验证的详细信息，请参阅[为 PostgreSQL 在 Azure 数据库中配置 TLS 连接](/azure/postgresql/concepts-ssl-connection-security)。
 
 容器中包含根证书。 获取证书的步骤包括：
 
@@ -375,7 +375,7 @@ $$ LANGUAGE PLPGSQL;
    openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
    ```
 
-在此处配置[SSL 连接安全性](/azure/postgresql/concepts-ssl-connection-security)，请在此处阅读有关如何为 PostgreSQL 配置 SSL 安全性的更多内容。
+阅读有关如何为 PostgreSQL 配置 TLS 安全的更多内容，[在此处配置 TLS 连接安全性](/azure/postgresql/concepts-ssl-connection-security)。
 
 #### <a name="deploy-azure-web-apps-on-linux"></a>在 Linux 上部署 Azure Web 应用
 
@@ -920,7 +920,7 @@ Azure Sentinel 旨在收集数据、检测可能的威胁类型，并提供安�
 
       *添加应用程序网关诊断*
 
-   4. 在 **"诊断设置"** 页上，选择您创建的日志分析工作区，然后选择要收集的所有指标并将其发送到 Azure Sentinel。 选择“保存”。****
+   4. 在 **"诊断设置"** 页上，选择您创建的日志分析工作区，然后选择要收集的所有指标并将其发送到 Azure Sentinel。 选择“保存”。 
 
         ![Azure 哨兵连接器设置](./media/secure-web-app/sentinel-connector-settings.png)
 
@@ -991,5 +991,5 @@ PyLint 为这个项目提供了最大的价值。 它执行代码标准检查、
 以下文章可帮助您设计、开发和部署安全应用程序。
 
 - [设计](secure-design.md)
-- [发展](secure-develop.md)
+- [开发](secure-develop.md)
 - [部署](secure-deploy.md)

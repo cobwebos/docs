@@ -2,13 +2,13 @@
 title: 模板函数 - 资源
 description: 介绍可在 Azure 资源管理器模板中使用的用于检索资源相关值的函数。
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: 23c0463649e748b35917c959a73536147e91f60b
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.date: 04/06/2020
+ms.openlocfilehash: 90cee78c29c26c88d808cdef798e74a2184a5fcf
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744991"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804752"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM 模板的资源函数
 
@@ -496,7 +496,9 @@ reference 函数检索以前部署的资源或在当前模板中部署的资源�
 
 ### <a name="valid-uses"></a>有效使用
 
-reference 函数只能用在资源定义的 properties 中以及模板或部署的 outputs 节中。 与[属性迭代](copy-properties.md)一起使用时，可以使用 `input` 的 reference 函数，因为表达式已分配给资源属性。 不能将其与 `count` 一起使用，因为必须在解析 reference 函数之前确定计数。
+reference 函数只能用在资源定义的 properties 中以及模板或部署的 outputs 节中。 与[属性迭代](copy-properties.md)一起使用时，可以使用 `input` 的 reference 函数，因为表达式已分配给资源属性。
+
+不能使用引用函数在复制循环中设置`count`属性的值。 可以使用 设置循环中的其他属性。 count 属性的引用被阻止，因为在解决引用函数之前必须确定该属性。
 
 不能在[嵌套模板](linked-templates.md#nested-template)的输出中使用引用函数返回已在嵌套模板中部署的资源， 只能使用[链接模板](linked-templates.md#linked-template)。
 
@@ -896,7 +898,7 @@ resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
 | sameRGOutput | 字符串 | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | 字符串 | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |

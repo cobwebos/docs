@@ -1,18 +1,18 @@
 ---
 title: 导入支持的 URL 类型 - QnA 制造商
-description: 了解如何使用 URL 类型导入和创建 QnA 集。
+description: 了解如何使用 URL 类型导入和创建 QnA 对。
 ms.topic: reference
 ms.date: 01/02/2020
-ms.openlocfilehash: cf2a02f55d7c95ff9b3f0231ea07a783d18b73cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c6c6c7ba19fe7be54733f45997134fddb56a6ba0
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651824"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804310"
 ---
 # <a name="urls-supported-for-importing-documents"></a>导入文档支持的 URL
 
-了解如何使用 URL 类型导入和创建 QnA 集。
+了解如何使用 URL 类型导入和创建 QnA 对。
 
 ## <a name="faq-urls"></a>常见问题解答 URL
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: cfeff430e5313c8728582c4790c9aca9482d63aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c85d6078fce7fc8e5a5b5d8485517a8b262044a9
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79534910"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802325"
 ---
 # <a name="create-a-map"></a>创建地图
 
@@ -26,7 +26,7 @@ ms.locfileid: "79534910"
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="基本地图负载" src="//codepen.io/azuremaps/embed/rXdBXx/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="基本地图负载" src="//codepen.io/azuremaps/embed/rXdBXx/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 在<a href='https://codepen.io'>CodePen</a>上按 Azure<a href='https://codepen.io/azuremaps'>@azuremaps</a>映射 （） 查看笔<a href='https://codepen.io/azuremaps/pen/rXdBXx/'>基本地图加载</a>。
 </iframe>
 
@@ -39,7 +39,7 @@ ms.locfileid: "79534910"
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="渲染世界副本 = 假" src="//codepen.io/azuremaps/embed/eqMYpZ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="渲染世界副本 = 假" src="//codepen.io/azuremaps/embed/eqMYpZ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 在<a href='https://codepen.io'>CodePen</a>上，请参阅"按 Azure<a href='https://codepen.io/azuremaps'>@azuremaps</a>映射 （） 显示的笔<a href='https://codepen.io/azuremaps/pen/eqMYpZ/'>呈现世界副本 = false。</a>
 </iframe>
 
@@ -156,4 +156,4 @@ map.setCamera({
 > [将控件添加到地图](map-add-controls.md)
 
 > [!div class="nextstepaction"]
-> [代码示例](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [示例代码](https://docs.microsoft.com/samples/browse/?products=azure-maps)

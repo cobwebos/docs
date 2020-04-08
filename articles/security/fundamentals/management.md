@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
-ms.openlocfilehash: 45efaadf7d15fff290165fe831c45c0bc063db53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e50eb561bcbb924ea093722d6c61bbe51747b328
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73643801"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811267"
 ---
 # <a name="security-management-in-azure"></a>Azure 中的安全管理
 Azure 订阅者可从多种设备管理其云环境，这些设备包括管理工作站、开发人员电脑，甚至是具有任务特定权限的特权最终用户设备。 在某些情况下，管理功能通过基于 Web 的控制台（如[Azure 门户](https://azure.microsoft.com/features/azure-portal/)）执行。 有其他情况下，可以从本地系统通过虚拟专用网络 (VPN)、终端服务、客户端应用程序协议或 Azure 服务管理 API (SMAPI)（以编程方式）直接连接到 Azure。 此外，客户端终结点（例如平板电脑或智能手机）可以加入域或者受到隔离且不受管理。
@@ -119,7 +119,7 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 一般情况下，帮助保护用于云的管理员工作站的做法，与用于任何本地工作站的做法类似 — 例如，最小化生成和限制权限。 云管理的某些独特之处更类似于远程或带外企业管理。 这些特点包括使用和审核凭据、增强安全的远程访问以及威胁检测和响应。
 
 ### <a name="authentication"></a>身份验证
-可以使用 Azure 登录限制来限制用于访问管理工具的源 IP 地址和审核访问请求。 若要帮助 Azure 识别管理客户端（工作站和/或应用程序），可以同时配置 SMAPI（通过客户开发的工具，例如 Windows PowerShell cmdlet）和 Azure 门户，来要求除了 SSL 证书外，还必须安装客户端管理证书。 我们还建议管理员访问需要经过多重身份验证。
+可以使用 Azure 登录限制来限制用于访问管理工具的源 IP 地址和审核访问请求。 为了帮助 Azure 标识管理客户端（工作站和/或应用程序），可以配置 SMAPI（通过客户开发的工具（如 Windows PowerShell cmdlet）和 Azure 门户，以除 TLS/SSL 证书外，还需要安装客户端管理证书。 我们还建议管理员访问需要经过多重身份验证。
 
 部署到 Azure 的某些应用程序或服务可能将针对用户和管理员访问拥有自己的身份验证机制，而其他应用程序或服务则将充分利用 Azure AD。 根据是通过 Active Directory 联合身份验证服务 (AD FS)、使用目录同步还是仅在云中维护用户帐户来联合凭据，使用 [Microsoft 标识管理器](https://technet.microsoft.com/library/mt218776.aspx) （Azure AD 高级版中已随附）可帮助管理资源之间的标识生命周期。
 
@@ -180,7 +180,7 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 
 请务必注意，相比普通的台式机，USB 闪存驱动器更容易丢失。 使用 BitLocker 加密整个卷时，如果配合强密码，攻击者就更不可能使用驱动器映像来进行有害活动。 此外，如果丢失 USB 闪存驱动器，则吊销和 [颁发新管理证书](https://technet.microsoft.com/library/hh831574.aspx) 以及快速重置密码可以降低风险。 管理审核日志驻留在 Azure 而非客户端，进一步减少了丢失数据的可能性。
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 管理 Azure 中的应用程序和数据时，请注意以下附加指导原则。
 
 ### <a name="dos-and-donts"></a>准则
@@ -188,7 +188,7 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 
 | 禁止事项 | 要求事项 |
 | --- | --- |
-| 不要通过电子邮件发送用于管理员访问权限或其他密钥的凭据（例如 SSL 或管理证书） |用声音提供帐户名称和密码（但不要将它们存储在语音邮件中）以保持机密性、远程安装客户端/服务器证书（通过加密会话）、从受保护的网络共享下载，或通过可移动媒体手动分发。 |
+| 不要通过电子邮件发送凭据以获取管理员访问权限或其他机密（例如，TLS/SSL 或管理证书） |用声音提供帐户名称和密码（但不要将它们存储在语音邮件中）以保持机密性、远程安装客户端/服务器证书（通过加密会话）、从受保护的网络共享下载，或通过可移动媒体手动分发。 |
 | - | 主动管理管理证书生命周期。 |
 | 不要在应用程序存储中存储未加密或未哈希处理的帐户密码（例如在电子表格、SharePoint 站点或文件共享中）。 |创建安全管理策略和系统强化策略，并将它们应用到开发环境。 |
 | - | 使用 [Enhanced Mitigation Experience Toolkit 5.5](https://technet.microsoft.com/security/jj653751) 证书绑定规则，以确保能够正常访问 Azure SSL/TLS 站点。 |

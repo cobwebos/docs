@@ -8,18 +8,18 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: keli19
 author: likebupt
-ms.date: 02/24/2020
-ms.openlocfilehash: c8791e933882832dc7b0037c860a4c4e1e9a54c7
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.date: 04/06/2020
+ms.openlocfilehash: 721e5414fc4753cd5d58a17fc7ed51ea99868778
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80389029"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810353"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>使用 Azure 机器学习设计器重新训练模型（预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-在本操作操作者文章中，您将了解如何使用 Azure 机器学习设计器重新训练机器学习模型。 了解如何使用发布的管道自动执行机器学习工作流以进行重新训练。
+在本操作操作者文章中，您将了解如何使用 Azure 机器学习设计器重新训练机器学习模型。 您将使用已发布的管道来自动执行工作流并设置参数，以根据新数据训练模型。 
 
 在本文中，学习如何：
 
@@ -27,90 +27,92 @@ ms.locfileid: "80389029"
 > * 训练机器学习模型。
 > * 创建管道参数。
 > * 发布训练管道。
-> * 重新训练模型。
+> * 使用新参数重新训练模型。
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请创建[一个免费帐户](https://aka.ms/AMLFree)。
-* 具有企业版 SKU 的 Azure 机器学习工作区。
+* 使用企业 SKU 的 Azure 机器学习工作区。
+* 设计器可访问的数据集。 可以是下列选项之一：
+   * Azure 机器学习注册数据集
+    
+     **-或-**
+   * 存储在 Azure 机器学习数据存储中的数据文件。
+   
+有关使用设计器访问数据的信息，请参阅[如何将数据导入设计器](how-to-designer-import-data.md)。
 
-本文假定您具备在设计器中构建管道的基本知识。 有关设计器的引导式简介，请完成[教程](tutorial-designer-automobile-price-train-score.md)。 
+本文还假定您具备在设计器中构建管道的基本知识。 有关指导性介绍，请完成[教程](tutorial-designer-automobile-price-train-score.md)。 
 
 ### <a name="sample-pipeline"></a>示例管道
 
-本文中使用的管道是[示例 3：收入预测](how-to-designer-sample-classification-predict-income.md)中找到的管道的更改版本。 它使用[导入数据](algorithm-module-reference/import-data.md)模块而不是示例数据集来演示如何使用自己的数据训练模型。
+本文中使用的管道是[示例 3：收入预测](samples-designer.md#classification-samples)的更改版本。 管道使用[导入数据](algorithm-module-reference/import-data.md)模块而不是示例数据集来演示如何使用您自己的数据训练模型。
 
 ![屏幕截图，显示修改的示例管道，并带有突出显示导入数据模块的框](./media/how-to-retrain-designer/modified-sample-pipeline.png)
 
-## <a name="train-a-machine-learning-model"></a>训练机器学习模型
-
-若要重新训练模型，需要一个初始模型。 在本节中，您将了解如何使用设计器训练模型并访问保存的模型。
-
-1. 选择“导入数据”**** 模块。
-1. 在属性窗格中，指定数据源。
-
-   ![显示导入数据模块的示例配置的屏幕截图](./media/how-to-retrain-designer/import-data-settings.png)
-
-   在此示例中，数据存储在 [Azure 数据存储](how-to-access-data.md)中。 如果还没有数据存储，可以通过选择“新建数据存储”**** 来创建一个数据存储。
-
-1. 指定数据路径。 您还可以选择 **"浏览路径"** 以浏览到数据存储。 
-1. 在画布顶部选择 **"提交**"。
-    
-   > [!NOTE]
-   > 如果已为此管道草稿设置了默认计算，管道会自动运行。 否则，您可以按照设置窗格上的提示立即设置设置。
-
-### <a name="find-your-trained-model"></a>查找您训练的模型
-
-设计器会将所有管道输出（包括已训练的模型）保存到默认存储帐户中。 但是，您也可以直接在设计器中访问经过训练的模型：
-
-1. 等待管道完成运行。
-1. 选择**训练模型**模块。
-1. 在"设置"窗格中，选择 **"输出\日志**"。
-1. 选择 **"查看输出**"图标，然后按照弹出窗口中的说明查找已训练的模型。
-
-![显示如何下载训练的模型的屏幕截图](./media/how-to-retrain-designer/trained-model-view-output.png)
-
 ## <a name="create-a-pipeline-parameter"></a>创建管道参数
 
-将管道参数添加到运行时动态设置变量。 对于此管道，为训练数据路径添加参数，以便您可以在新数据集上重新训练模型。
+创建管道参数以在运行时动态设置变量。 在此示例中，您将训练数据路径从固定值更改为参数，以便可以根据不同数据重新训练模型。
 
 1. 选择“导入数据”**** 模块。
-1. 在“设置”窗格中，选择“路径”**** 字段上方的省略号。
-1. 选择“添加到管道参数”****。
+
+    > [!NOTE]
+    > 本示例使用导入数据模块访问已注册数据存储中的数据。 但是，如果使用替代数据访问模式，可以执行类似的步骤。
+
+1. 在画布右侧的模块详细信息窗格中，选择数据源。
+
+1. 输入数据的路径。 您还可以选择 **"浏览路径"** 来浏览文件树。 
+
+1. 鼠标悬停**路径**字段，然后选择显示的**路径**字段上方的椭圆。
+
+    ![演示如何创建管道参数的屏幕截图](media/how-to-retrain-designer/add-pipeline-parameter.png)
+
+1. 选择 **"添加到管道"参数**。
+
 1. 提供参数名称和默认值。
 
    > [!NOTE]
    > 您可以通过选择管道拔模标题旁边的 **"设置**齿轮"图标来检查和编辑管道参数。 
 
-![演示如何创建管道参数的屏幕截图](media/how-to-retrain-designer/add-pipeline-parameter.png)
+1. 选择“保存”。 
+
+1. 提交管道运行。
+
+## <a name="find-a-trained-model"></a>查找经过培训的模型
+
+设计器将所有管道输出（包括经过训练的模型）保存到默认工作区存储帐户。 您还可以直接在设计器中访问经过训练的模型：
+
+1. 等待管道完成运行。
+1. 选择**训练模型**模块。
+1. 在"模块详细信息"窗格中，在画布右侧选择 **"输出 + 日志**"。
+1. 您可以在**其他输出**中查找模型以及运行日志。
+1. 或者，选择 **"查看输出**"图标。 在此处，您可以按照对话框中的说明直接导航到数据存储。 
+
+![显示如何下载训练的模型的屏幕截图](./media/how-to-retrain-designer/trained-model-view-output.png)
 
 ## <a name="publish-a-training-pipeline"></a>发布训练管道
 
-发布管道后，系统会创建管道终结点。 通过管道终结点，可重复使用和管理管道，实现可重复性和自动化。 在此示例中，您已设置用于重新训练的管道。
+将管道发布到管道终结点，以便将来轻松重用管道。 管道终结点将创建一个 REST 终结点来调用将来的管道。 在此示例中，管道终结点允许您重用管道以重新训练不同数据的模型。
 
 1. 选择设计器画布上方的“发布”****。
 1. 选择或创建管道终结点。
 
    > [!NOTE]
-   > 可将多个管道发布到一个终结点。 终结点中的每个管道都会得到一个版本号，可以在调用管道终结点时指定该版本号。
+   > 可将多个管道发布到一个终结点。 给定终结点中的每个管道都会获得一个版本号，您可以在调用管道终结点时指定该版本号。
 
-1. 选择“发布”。
+1. 选择“发布”  。
 
 ## <a name="retrain-your-model"></a>重新训练模型
 
-现在，您已经发布了培训管道，您可以使用它使用新数据重新训练模型。 可以从 Azure 门户提交从管道终结点提交的运行，也可以以编程方式提交。
+现在，您已经发布了培训管道，您可以使用它重新训练模型的新数据。 可以从工作室工作区或以编程方式提交从管道终结点的运行。
 
 ### <a name="submit-runs-by-using-the-designer"></a>使用设计器提交运行
 
-通过以下步骤从设计器提交管道终结点运行：
+使用以下步骤提交从设计器运行的参数化管道终结点：
 
-1. 转到“终结点”**** 页。
-1. 选择“管道终结点”**** 选项卡。
-1. 选择管道终结点。
-1. 选择“已发布的管道”**** 选项卡。
-1. 选择要运行的管道。
-1. 选择“提交”****。
-1. 在设置对话框中，可以为输入数据路径值指定新值。 此值指向新数据集。
+1. 转到工作室工作区中的 **"终结点"** 页面。
+1. 选择 **"管道终结点**"选项卡。然后，选择管道终结点。
+1. 选择 **"已发布管道"** 选项卡。然后，选择要运行的管道版本。
+1. 选择“提交”。 
+1. 在"设置"对话框中，可以指定运行的参数值。 在此示例中，更新数据路径以使用非美国数据集训练模型。
 
 ![演示如何设置在设计器中运行的参数化管道的屏幕截图](./media/how-to-retrain-designer/published-pipeline-run.png)
 
@@ -122,4 +124,6 @@ ms.locfileid: "80389029"
 
 ## <a name="next-steps"></a>后续步骤
 
-按照[设计器教程](tutorial-designer-automobile-price-train-score.md)来训练和部署回归模型。
+在本文中，您学习了如何使用设计器创建参数化训练管道终结点。
+
+有关如何部署模型进行预测的完整演练，请参阅[设计器教程](tutorial-designer-automobile-price-train-score.md)以训练和部署回归模型。

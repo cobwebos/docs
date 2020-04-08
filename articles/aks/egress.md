@@ -1,15 +1,16 @@
 ---
-title: Azure Kubernetes 服务 (AKS) 中出口流量的静态 IP 地址
+title: 对出口流量使用静态 IP
+titleSuffix: Azure Kubernetes Service
 description: 了解如何创建和使用 Azure Kubernetes 服务 (AKS) 群集中出口流量的静态公共 IP 地址
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 5850f8dfc08ed80dfe5e5e13f49808c3fd9338c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 08a9682434605fffde73c835e7a9e9d6971d7ff0
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595750"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803376"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的出口流量使用静态公共 IP 地址
 
@@ -17,7 +18,7 @@ ms.locfileid: "77595750"
 
 本文介绍了如何创建和使用静态公共 IP 地址，以便用于 AKS 群集中的出口流量。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 

@@ -2,13 +2,13 @@
 title: 没有 800 计数限制的资源
 description: 列出可以在一个资源组中有 800 多个实例的 Azure 资源类型。
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: 735cad0bfa936c41f603e42bdb9be77a1562cc1f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 8644bec1a68acebff18cf83d17acb014784dc964
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76937936"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804769"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>没有每个资源组 800 个实例限制的资源
 
@@ -26,7 +26,6 @@ ms.locfileid: "76937936"
 * registrations
 * registrations/customerSubscriptions
 * registrations/products
-* verificationKeys
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
@@ -35,6 +34,9 @@ ms.locfileid: "76937936"
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 * disks
+* galleries
+* galleries/images
+* galleries/images/versions
 * images
 * snapshots
 * virtualMachines
@@ -67,6 +69,11 @@ ms.locfileid: "76937936"
 * serverGroups
 * servers
 * serversv2
+* 单服务器
+
+## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
+
+* 计划 - 默认情况下，限制为 800 个实例。 可以通过联系支持人员来提高该限制。
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>微软.企业知识图
 
@@ -90,7 +97,7 @@ ms.locfileid: "76937936"
 * softwareUpdateProfile
 * softwareUpdates
 
-## <a name="microsoftinsights"></a>Microsoft.Insights
+## <a name="microsoftinsights"></a>microsoft.insights
 
 * metricalerts
 

@@ -1,15 +1,16 @@
 ---
-title: 在 Azure Kubernetes 服务 (AKS) 中创建用于多个 Pod 的静态卷
+title: 手动创建 Azure 文件共享
+titleSuffix: Azure Kubernetes Service
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Azure 文件手动创建用于多个并发 Pod 的卷
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 084ab5cd6736c9148bcab1faf048d3d9081855d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 412b7158ea366eefb1c3e9c1d2586d54c316aa6c
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596396"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803443"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中通过 Azure 文件共享手动创建并使用卷
 
@@ -17,7 +18,7 @@ ms.locfileid: "77596396"
 
 有关 Kubernetes 卷的详细信息，请参阅 [AKS 中应用程序的存储选项][concepts-storage]。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
@@ -132,7 +133,7 @@ Volumes:
 
 ## <a name="mount-options"></a>装载选项
 
-对于 Kubernetes 版本 1.9.1 及更高版本，fileMode** 和 dirMode** 的默认值为 0755**。 如果使用 Kuberetes 版本为 1.8.5 或更高版本的群集并静态创建永久性卷对象，则需要在 PersistentVolume** 对象上指定装载选项。 以下示例设置 *0777*：
+对于 Kubernetes 版本 1.9.1 及更高版本，fileMode** 和 dirMode** 的默认值为 0755**。 如果使用具有 Kubernetes 版本 1.8.5 或更大且静态创建持久卷对象的群集，则需要在*PersistentVolume*对象上指定装载选项。 以下示例设置 *0777*：
 
 ```yaml
 apiVersion: v1

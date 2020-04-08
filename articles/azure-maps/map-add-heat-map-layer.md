@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 4a853871ef5f66881235e5a6ffec0886b81f5a92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 19765bd28f365cc6f6d5b06646896613dd3e3e87
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77208533"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804548"
 ---
 # <a name="add-a-heat-map-layer"></a>添加热度地图层
 
@@ -98,11 +98,11 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 
 使用`zoom`表达式缩放每个缩放级别的半径，以便每个数据点覆盖地图的相同物理区域。 此表达式使热图图层看起来更静态且一致。 地图的每个缩放级别垂直和水平的像素数是上一个缩放级别的两倍。 
 
-缩放半径，使其与每个缩放级别加倍，可创建在所有缩放级别上看起来一致的热图。 要应用此缩放，请使用`zoom`基 2`exponential interpolation`表达式，如以下示例所示。 缩放地图以查看热图如何与缩放级别一起缩放。
+缩放半径，使其与每个缩放级别加倍，可创建在所有缩放级别上看起来一致的热图。 要应用此缩放，请使用`zoom`基 2`exponential interpolation`表达式，将像素半径设置为最小缩放级别，并针对最大缩放级别的缩放半径（如以下示例所示）`2 * Math.pow(2, minZoom - maxZoom)`计算。 缩放地图以查看热图如何与缩放级别一起缩放。
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="一致的可缩放热图" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="一致的可缩放热图" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 在<a href='https://codepen.io'>CodePen</a>上，请参阅按 Azure<a href='https://codepen.io/azuremaps'>@azuremaps</a>地图 （） 提供的"笔<a href='https://codepen.io/azuremaps/pen/OGyMZr/'>一致可缩放热图</a>"。
 </iframe>
 

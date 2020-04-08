@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 04/07/2020
 ms.author: victorh
-ms.openlocfilehash: 550d9f4f5396b2165260e39cd28222b083dd6756
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f021eed959ef88a1ef3671e1d0ace8080710c92a
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279983"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810227"
 ---
 # <a name="azure-application-gateway-features"></a>Azure 应用程序网关功能
 
@@ -33,7 +33,7 @@ ms.locfileid: "79279983"
 - [重定向](#redirection)
 - [会话相关性](#session-affinity)
 - [Websocket 和 HTTP/2 流量](#websocket-and-http2-traffic)
-- [连接排水](#connection-draining)
+- [连接清空](#connection-draining)
 - [自定义错误页](#custom-error-pages)
 - [重写 HTTP 标头](#rewrite-http-headers)
 - [大小调整](#sizing)
@@ -160,6 +160,10 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 > [!NOTE]
 > 这些值是应用程序网关吞吐量的大约值。 实际吞吐量取决于平均页面大小、后端实例的位置、提供页面所需的处理时间等各种环境详细信息。 如需确切的性能数字，则应运行自己的测试。 提供的这些值仅适用于容量规划指南。
+
+## <a name="version-feature-comparison"></a>版本功能比较
+
+有关应用程序网关 v1-v2 功能比较，请参阅[自动缩放和区域冗余应用程序网关 v2](application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku)
 
 ## <a name="next-steps"></a>后续步骤
 

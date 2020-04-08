@@ -5,12 +5,12 @@ ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
 ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 357ea2cc598bca3e008a74f021895e1e45a3874f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2f6dd455024aba184cbb16b5b9c7cfffd032dc70
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300991"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811724"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>为 Azure 应用服务配置 TLS 相互身份验证
 
@@ -41,7 +41,7 @@ az webapp update --set clientCertEnabled=true --name <app_name> --resource-group
 
 ## <a name="access-client-certificate"></a>访问客户端证书
 
-在应用服务中，请求的 SSL 终端是在前端负载均衡器上发生的。 在[已启用客户端证书](#enable-client-certificates)的情况下将请求转发到应用代码时，应用服务会注入包含客户端证书的 `X-ARR-ClientCert` 请求标头。 应用服务不会对此客户端证书执行任何操作，而只会将它转发到你的应用。 应用代码负责验证客户端证书。
+在应用服务中，请求的 TLS 终止发生在前端负载均衡器处。 在[已启用客户端证书](#enable-client-certificates)的情况下将请求转发到应用代码时，应用服务会注入包含客户端证书的 `X-ARR-ClientCert` 请求标头。 应用服务不会对此客户端证书执行任何操作，而只会将它转发到你的应用。 应用代码负责验证客户端证书。
 
 对于 ASP.NET，可以通过 **HttpRequest.ClientCertificate** 属性提供客户端证书。
 

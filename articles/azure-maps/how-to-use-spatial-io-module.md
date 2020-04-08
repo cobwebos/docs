@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5bcfeebc1fcb96cfdf6ea802293eb4027f339815
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1de9dd9721700418b1aa9ba661fc070db1dbedcc
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335214"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804633"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>如何使用 Azure 地图空间 IO 模块
 
@@ -26,6 +26,13 @@ Azure 地图 Web SDK 提供**空间 IO 模块**，该模块使用 JavaScript 或
 - [利用高速XML和分隔文件读取器和编写器类](spatial-io-core-operations.md)。
 
 在本指南中，我们将了解如何在 Web 应用程序中集成和使用空间 IO 模块。
+
+此视频概述了 Azure 地图 Web SDK 中的空间 IO 模块。
+
+<br/>
+
+<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Easily-integrate-spatial-data-into-the-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0" title="轻松将空间数据集成到 Azure 地图中 - 微软频道 9 视频"></iframe>
+
 
 > [!WARNING]
 > 仅使用来自您信任的源的数据和服务，尤其是在从其他域引用数据和服务时。 空间 IO 模块确实采取措施将风险降至最低，但最安全的方法是不允许从应用程序开始任何淫人的数据。 

@@ -1,15 +1,16 @@
 ---
-title: 在 Azure Kubernetes 服务 (AKS) 中动态创建永久性卷并将其用于 Azure 磁盘
+title: 动态创建 Azure 磁盘卷
+titleSuffix: Azure Kubernetes Service
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Azure 磁盘动态创建永久性卷
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: f16a6134b1d2065668952ea11c0cab7398a3559a
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 0ed58ef86dcd93ff2bd5588c8479195443bc292d
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80617471"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803545"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中动态创建永久性卷并将其用于 Azure 磁盘
 

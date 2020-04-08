@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 34a70a4698b69881a06cfb7a7017fa0c30647197
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 81b7fb687bb6ef88d1ed436923d0e5ff7561c22b
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80047681"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803239"
 ---
 # <a name="api-management-transformation-policies"></a>API 管理转换策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](https://go.microsoft.com/fwlink/?LinkID=398186)。
@@ -69,13 +69,13 @@ ms.locfileid: "80047681"
 
 ### <a name="elements"></a>元素
 
-|“属性”|描述|必选|
+|名称|说明|必选|
 |----------|-----------------|--------------|
 |json-to-xml|根元素。|是|
 
 ### <a name="attributes"></a>特性
 
-|“属性”|描述|必选|默认|
+|名称|说明|必选|默认|
 |----------|-----------------|--------------|-------------|
 |apply|属性必须设置为以下值之一。<br /><br /> -   always - 始终应用转换。<br />-   content-type-json - 仅在响应的 Content-Type 标头指示存在 JSON 的情况下进行转换。|是|空值|
 |consider-accept-header|属性必须设置为以下值之一。<br /><br /> -   true - 如果在请求的 Accept 标头中请求了 XML，则应用转换。<br />-   false - 始终应用转换。|否|true|
@@ -113,13 +113,13 @@ ms.locfileid: "80047681"
 
 ### <a name="elements"></a>元素
 
-|“属性”|描述|必选|
+|名称|说明|必选|
 |----------|-----------------|--------------|
 |xml-to-json|根元素。|是|
 
 ### <a name="attributes"></a>特性
 
-|“属性”|描述|必选|默认|
+|名称|说明|必选|默认|
 |----------|-----------------|--------------|-------------|
 |kind|属性必须设置为以下值之一。<br /><br /> -   javascript-friendly - 转换后的 JSON 具有 JavaScript 开发人员熟知的形式。<br />-   direct - 转换后的 JSON 反映了原始 XML 文档的结构。|是|空值|
 |apply|属性必须设置为以下值之一。<br /><br /> -   always - 始终转换。<br />-   content-type-xml - 仅在响应的 Content-Type 标头指示存在 XML 的情况下进行转换。|是|空值|
@@ -149,13 +149,13 @@ ms.locfileid: "80047681"
 
 ### <a name="elements"></a>元素
 
-|“属性”|描述|必选|
+|名称|说明|必选|
 |----------|-----------------|--------------|
 |find-and-replace|根元素。|是|
 
 ### <a name="attributes"></a>特性
 
-|“属性”|描述|必选|默认|
+|名称|说明|必选|默认|
 |----------|-----------------|--------------|-------------|
 |从|要搜索的字符串。|是|空值|
 |to|替换字符串。 指定一个零长度的替换字符串，以便删除搜索字符串。|是|空值|
@@ -187,7 +187,7 @@ ms.locfileid: "80047681"
 
 ### <a name="elements"></a>元素
 
-|“属性”|描述|必选|
+|名称|说明|必选|
 |----------|-----------------|--------------|
 |redirect-content-urls|根元素。|是|
 
@@ -207,7 +207,7 @@ ms.locfileid: "80047681"
 <set-backend-service base-url="base URL of the backend service" />
 ```
 
-或
+or
 
 ```xml
 <set-backend-service backend-id="identifier of the backend entity specifying base URL of the backend service" />
@@ -260,13 +260,13 @@ ms.locfileid: "80047681"
 
 ### <a name="elements"></a>元素
 
-|“属性”|描述|必选|
+|名称|说明|必选|
 |----------|-----------------|--------------|
 |set-backend-service|根元素。|是|
 
 ### <a name="attributes"></a>特性
 
-|“属性”|描述|必选|默认|
+|名称|说明|必选|默认|
 |----------|-----------------|--------------|-------------|
 |base-url|新的后端服务基 URL。|必须存在 `base-url` 或 `backend-id` 中的一个。|空值|
 |backend-id|要路由到的后端标识符。 （后端实体通过 [API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) 和 [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) 进行管理。）|必须存在 `base-url` 或 `backend-id` 中的一个。|空值|
@@ -396,13 +396,13 @@ ms.locfileid: "80047681"
 
 ### <a name="elements"></a>元素
 
-|“属性”|描述|必选|
+|名称|说明|必选|
 |----------|-----------------|--------------|
 |set-body|根元素。 包含正文文本，或者包含会返回正文的表达式。|是|
 
 ### <a name="properties"></a>属性
 
-|“属性”|描述|必选|默认|
+|名称|说明|必选|默认|
 |----------|-----------------|--------------|-------------|
 |template|用于更改设置正文策略运行的模板模式。 目前唯一支持的值是：<br /><br />- Liquid - 设置正文策略会使用 Liquid 模板引擎 |否||
 
@@ -510,14 +510,14 @@ OriginalUrl.
 
 ### <a name="elements"></a>元素
 
-|“属性”|描述|必选|
+|名称|说明|必选|
 |----------|-----------------|--------------|
 |set-header|根元素。|是|
-|value|指定要设置的标头的值。 如需多个标头使用同一名称，可添加更多的 `value` 元素。|否|
+|值|指定要设置的标头的值。 如需多个标头使用同一名称，可添加更多的 `value` 元素。|否|
 
 ### <a name="properties"></a>属性
 
-|“属性”|描述|必选|默认|
+|名称|说明|必选|默认|
 |----------|-----------------|--------------|-------------|
 |exists-action|指定当标头已指定时要执行的操作。 此属性必须具有下列值之一。<br /><br /> -   override - 替换现有标头的值。<br />-   skip - 不替换现有标头值。<br />-   append - 将值追加到现有标头值。<br />-   delete - 从请求中删除标头。<br /><br /> 如果设置为 `override`，则登记多个同名的条目会导致根据所有条目（将多次列出）设置标头；结果中只会设置列出的值。|否|override|
 |name|指定要设置的标头的名称。|是|空值|
@@ -540,17 +540,12 @@ OriginalUrl.
 </set-query-parameter>
 ```
 
-### <a name="examples"></a>示例
-
 #### <a name="example"></a>示例
 
 ```xml
 
-<set-query-parameter>
-  <parameter name="api-key" exists-action="skip">
-    <value>12345678901</value>
-  </parameter>
-  <!-- for multiple parameters with the same name add additional value elements -->
+<set-query-parameter name="api-key" exists-action="skip">
+  <value>12345678901</value>
 </set-query-parameter>
 
 ```
@@ -570,14 +565,14 @@ OriginalUrl.
 
 ### <a name="elements"></a>元素
 
-|“属性”|描述|必选|
+|名称|说明|必选|
 |----------|-----------------|--------------|
 |set-query-parameter|根元素。|是|
-|value|指定要设置的查询参数的值。 如需多个查询参数使用同一名称，可添加更多的 `value` 元素。|是|
+|值|指定要设置的查询参数的值。 如需多个查询参数使用同一名称，可添加更多的 `value` 元素。|是|
 
 ### <a name="properties"></a>属性
 
-|“属性”|描述|必选|默认|
+|名称|说明|必选|默认|
 |----------|-----------------|--------------|-------------|
 |exists-action|指定当查询参数已指定时要执行的操作。 此属性必须具有下列值之一。<br /><br /> -   override - 替换现有参数的值。<br />-   skip - 不替换现有查询参数值。<br />-   append - 将值追加到现有查询参数值。<br />-   delete - 从请求中删除查询参数。<br /><br /> 如果设置为 `override`，则登记多个同名的条目会导致根据所有条目（将多次列出）设置查询参数；结果中只会设置列出的值。|否|override|
 |name|指定要设置的查询参数的名称。|是|空值|
@@ -649,7 +644,7 @@ OriginalUrl.
 
 ### <a name="elements"></a>元素
 
-|“属性”|描述|必选|
+|名称|说明|必选|
 |----------|-----------------|--------------|
 |rewrite-uri|根元素。|是|
 
@@ -718,7 +713,7 @@ OriginalUrl.
 
 ### <a name="elements"></a>元素
 
-|“属性”|描述|必选|
+|名称|说明|必选|
 |----------|-----------------|--------------|
 |xsl-transform|根元素。|是|
 |参数 (parameter)|用于定义在转换中使用的变量|否|

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 8a83c2f6ac7599ff37237834a85b7771cf4ee502
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc11c6932d625b119ad933f5d4d128b4355530c5
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243869"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804429"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>使用 Azure ExpressRoute 的 PowerApps 的应用服务环境网络配置详细信息
 
@@ -39,7 +39,7 @@ ms.locfileid: "79243869"
 
 * 与 Azure 管理平面终结点（Azure 经典部署模型和 Azure 资源管理器终结点）建立的出站网络连接。 与这些终结点建立的连接包括 management.core.windows.net 和 management.azure.com 域。 
 
-* 与 ocsp.msocsp.com、mscrl.microsoft.com 和 crl.microsoft.com 域建立的出站网络连接。 需要连接到这些域才能支持 SSL 功能。
+* 与 ocsp.msocsp.com、mscrl.microsoft.com 和 crl.microsoft.com 域建立的出站网络连接。 需要连接到这些域来支持 TLS 功能。
 
 * 虚拟网络的 DNS 配置必须能够解析本文中所述的所有终结点和域。 如果无法解析这些终结点，创建应用服务环境将会失败。 任何现有的应用服务环境将被标记为不正常。
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 741cbc82f2ed3ffffb553b146d981b4e35a273f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 630304bec17dd34befab4e5bd9f1cfdfb6505645
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68726683"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811426"
 ---
 # <a name="azure-customer-data-protection"></a>Azure 客户数据保护   
 默认情况下，拒绝 Microsoft 运营和支持人员访问客户数据。 授予对客户数据的访问权限后，需要经过领导批准，并仔细管理和记录访问活动。 访问控制要求由以下 Azure 安全策略制定：
@@ -45,7 +45,7 @@ Azure 按默认或者以客户选项的形式为客户提供可靠的数据安�
 - 客户与云。
 - Azure 系统和数据中心之间的内部通信。
 
-**加密**：作为确保数据保密性和完整性的最佳做法，客户可以部署存储中数据加密和传输中数据加密。 客户可以直截了当地将其 Azure 云服务配置为使用 SSL 保护来自 Internet 的通信，甚至是 Azure 托管 VM 之间的通信。
+**加密**：作为确保数据保密性和完整性的最佳做法，客户可以部署存储中数据加密和传输中数据加密。 客户将 Azure 云服务配置为使用 TLS 来保护 Internet 通信，甚至 Azure 托管的 VM 之间的通信，这非常简单。
 
 **数据冗余**：出现网络攻击或者数据中心遭到物理损坏时，Microsoft 可帮助确保数据受到保护。 客户可以选择：
 

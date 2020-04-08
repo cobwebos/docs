@@ -5,7 +5,6 @@
     - name: 什么是 Azure 防火墙？
       href: overview.md
 - name: 教程
-  expanded: true
   items:
     - name: 部署和配置
       href: tutorial-firewall-deploy-portal.md
@@ -15,6 +14,12 @@
       href: tutorial-firewall-dnat.md
     - name: 监视诊断日志
       href: tutorial-diagnostics.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 通过 IP 组进行部署
+      displayName: Resource Manager
+      href: quick-create-ipgroup-template.md
 - name: 示例
   items:
     - name: Azure PowerShell
@@ -45,7 +50,7 @@
       href: central-management.md
     - name: 远程工作支持
       href: remote-work-support.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 使用 Azure PowerShell 进行部署
       href: deploy-ps.md

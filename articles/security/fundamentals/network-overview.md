@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 2293618b0685fe71ae553a95797fe8bfe1fe968c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 496ee1bc97f6b72e09a62ae3491af7ccc7328583
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75749941"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811109"
 ---
 # <a name="azure-network-security-overview"></a>Azure 网络安全概述
 
@@ -160,7 +160,7 @@ Azure 网络支持以下安全远程访问方案：
 
 点到站点 VPN 连接允许你在用户和虚拟网络之间设置专用的安全连接。 建立 VPN 连接后，用户可通过 VPN 链接将 RDP 或 SSH 连接到虚拟网络上的任何虚拟机。 （这假定用户可以进行身份验证并授权。点到站点 VPN 支持：
 
-* 安全套接字隧道协议 (SSTP)，这是一种基于 SSL 的专属协议。 由于大多数防火墙都会打开 SSL 所用的 TCP 端口 443，因此 SSL VPN 解决方案可以穿透防火墙。 只有 Windows 设备支持 SSTP。 Azure 支持所有采用 SSTP 的 Windows 版本（Windows 7 和更高版本）。
+* 安全套接字隧道协议 (SSTP)，这是一种基于 SSL 的专属协议。 SSL VPN 解决方案可以穿透防火墙，因为大多数防火墙都打开 TCP 端口 443，TLS/SSL 使用。 只有 Windows 设备支持 SSTP。 Azure 支持所有采用 SSTP 的 Windows 版本（Windows 7 和更高版本）。
 
 * IKEv2 VPN，这是一种基于标准的 IPsec VPN 解决方案。 IKEv2 VPN 可用于从 Mac 设备进行连接（OSX 10.11 和更高版本）。
 
@@ -232,7 +232,7 @@ Azure 网络支持以下安全远程访问方案：
 Azure 应用程序网关为基于 Web 的服务提供了基于 HTTP 的负载均衡。 应用程序网关支持：
 
 * 基于 Cookie 的会话关联。 此功能可确保建立到负载均衡器后面的某个服务器的连接在客户端和服务器之间保持不变。 此操作确保了事务的稳定性。
-* SSL 卸载。 当客户端与负载均衡器连接时，会话使用 HTTPS (SSL) 协议进行加密。 但是，为了提高性能，可以使用 HTTP（未加密）协议在负载均衡器和该负载均衡器后面的 Web 服务器之间进行连接。 这称为“SSL 卸载”，因为负载均衡器后面的 Web 服务器不会遇到涉及加密的处理器开销。 因此 Web 服务器可更快地为请求提供服务。
+* TLS 卸载。 当客户端与负载均衡器连接时，该会话将使用 HTTPS （TLS） 协议进行加密。 但是，为了提高性能，可以使用 HTTP（未加密）协议在负载均衡器和该负载均衡器后面的 Web 服务器之间进行连接。 这称为"TLS 卸载"，因为负载均衡器后面的 Web 服务器不会遇到加密所涉及的处理器开销。 因此 Web 服务器可更快地为请求提供服务。
 * 基于 URL 的内容路由。 此功能可使负载均衡器决定在哪里转接基于目标 URL 的连接。 与基于 IP 地址做出负载均衡决策的解决方案相比，这提供了更多的灵活性。
 
 了解详细信息：
@@ -336,7 +336,7 @@ Microsoft 提供“基本”DDoS 防护作为 Azure 平台的一部分。**** �
 
 ## <a name="azure-front-door"></a>Azure Front Door
 
-使用 Azure Front Door 服务，你可以定义、管理和监视 Web 流量的全局路由。 它可以优化流量的路由以实现最佳性能和高可用性。 Azure Front Door 允许编写自定义 Web 应用程序防火墙 (WAF) 规则进行访问控制，以基于客户端 IP 地址、国家/地区代码和 http 参数来防范 HTTP/HTTPS 工作负荷遭到恶意利用。 此外，使用 Front Door 还可以创建速率限制规则来对付恶意的机器人流量，它包括 SSL 卸载和每 HTTP/HTTPS 请求以及应用程序层处理。
+使用 Azure Front Door 服务，你可以定义、管理和监视 Web 流量的全局路由。 它可以优化流量的路由以实现最佳性能和高可用性。 Azure Front Door 允许编写自定义 Web 应用程序防火墙 (WAF) 规则进行访问控制，以基于客户端 IP 地址、国家/地区代码和 http 参数来防范 HTTP/HTTPS 工作负荷遭到恶意利用。 此外，前门还使您能够创建速率限制规则来打击恶意机器人流量，它包括 TLS 卸载和每个 HTTP/HTTPS 请求、应用程序层处理。
 
 Front Door 平台本身由 Azure DDoS 防护基本版提供保护。 若要进一步提供保护，可在 VNET 中启用 Azure DDoS 防护标准版，并通过自动优化和缓解措施来防范资源遭到网络层 (TCP/UDP) 攻击。 Front Door 是第 7 层反向代理，它仅允许 Web 流量通过后端服务器，默认会阻止其他类型的流量。
 
@@ -391,7 +391,7 @@ Azure 安全中心帮助预防、检测和响应威胁，同时提高 Azure 资�
 
 * [虚拟网络 TAP](../../virtual-network/virtual-network-tap-overview.md)
 
-### <a name="logging"></a>Logging
+### <a name="logging"></a>日志记录
 
 对任何网络安全方案而言，网络级别的日志记录都是一项关键功能。 在 Azure 中，可以记录针对 NSG 获得的信息，以获取网络级别的日志记录信息。 使用 NSG 日志记录，可以从以下日志中获取信息：
 

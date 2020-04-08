@@ -3,12 +3,12 @@ title: 与其他应用集成 - QnA 制造商
 description: QnA Maker 集成到客户端应用程序（如聊天机器人）以及其他自然语言处理服务（如语言理解 （LUIS）） 中。
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 38b275aa2b8cf5768a2bc95634a7ff4892893eda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1edbfb6badfb73ce08a99709da0f8bfb61b7dc3
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300513"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804181"
 ---
 # <a name="design-knowledge-base-for-client-applications"></a>为客户应用程序设计知识库
 
@@ -24,7 +24,7 @@ QnA Maker 与会话客户端应用程序（如[微软机器人框架](https://de
 
 ## <a name="providing-multi-turn-conversations"></a>提供多转对话
 
-如果答案是多转 QnA 集的一部分，则自动程序客户端提供来自知识库中的最佳答案，并且可以提供后续提示。 [了解如何将](../how-to/multiturn-conversation.md)多转对话问题和答案集添加到您的知识库。
+如果答案是多转 QnA 对的一部分，则自动客户端提供来自知识库中的最佳答案，并提供后续提示。 [了解如何将](../how-to/multiturn-conversation.md)多转对话问题和答案集添加到您的知识库。
 
 ## <a name="natural-language-processing"></a>自然语言处理
 

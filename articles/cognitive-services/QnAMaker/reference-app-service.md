@@ -3,12 +3,12 @@ title: 服务配置 - QnA 制造商
 description: 了解如何配置资源以及在哪里配置资源。
 ms.topic: reference
 ms.date: 02/21/2020
-ms.openlocfilehash: 8ef6fecbfeb119d0c68ec5bc3bbc90ec449dbb7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3be32d1778604121c2acac88415cbfbc4bdbca3d
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651857"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804254"
 ---
 # <a name="service-configuration"></a>服务配置
 
@@ -27,8 +27,8 @@ QnA Maker 使用应用服务提供[生成应答 API](https://docs.microsoft.com/
 
 |资源|设置|
 |--|--|
-|Azure 搜索管理密钥|认知搜索 - 用于 QnA 集存储和 Ranker #1|
-|Azure 搜索名称|认知搜索 - 用于 QnA 集存储和 Ranker #1|
+|Azure 搜索管理密钥|认知搜索 - 用于 QnA 对存储和 Ranker #1|
+|Azure 搜索名称|认知搜索 - 用于 QnA 对存储和 Ranker #1|
 |默认答案|未找到匹配项时的应答文本|
 |用户AppInsightsAppId|聊天日志和遥测|
 |用户应用见解键|聊天日志和遥测|

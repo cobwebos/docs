@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a0de94cdce1d7f0e9da9d2844b300956ad6f6970
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 041fb8d881307b52fb170a11618f930debc522a4
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80330841"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803154"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中启用“使我保持登录状态 (KMSI)”
 
@@ -54,7 +54,7 @@ ms.locfileid: "80330841"
 
 ## <a name="add-the-metadata-to-the-self-asserted-technical-profile"></a>将元数据添加到自断言技术配置文件
 
-要将 KMSI 复选框添加到注册和登录页面，请将`setting.enableRememberMe`元数据设置为 false。 覆盖扩展文件中的自断言-本地帐户Signin-电子邮件技术配置文件。
+要将 KMSI 复选框添加到注册和登录页面，请将`setting.enableRememberMe`元数据设置为 true。 覆盖扩展文件中的自断言-本地帐户Signin-电子邮件技术配置文件。
 
 1. 找到 ClaimsProviders 元素。 如果该元素不存在，请添加该元素。
 1. 将以下声明提供程序添加到声明提供程序元素：

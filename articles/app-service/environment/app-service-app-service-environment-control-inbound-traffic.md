@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: aa43d44a691fa9151959e8817596bdfc9bba65f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 857b2b00aadced567bc8ac191cdd9908f7bea7a3
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74687394"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804395"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>如何控制应用服务环境的入站流量
 ## <a name="overview"></a>概述
@@ -31,10 +31,10 @@ ms.locfileid: "74687394"
 
 以下是应用服务环境使用的端口列表。 所有端口都是 **TCP**，除非另有明确的说明：
 
-* 454：Azure 基础结构用来通过 SSL 管理和维护应用服务环境的**必需端口**。  不要阻止发往此端口的流量。  此端口始终绑定到 ASE 的公共 VIP。
-* 455：Azure 基础结构用来通过 SSL 管理和维护应用服务环境的**必需端口**。  不要阻止发往此端口的流量。  此端口始终绑定到 ASE 的公共 VIP。
+* 454：Azure 基础结构用于通过 TLS 管理和维护应用服务环境**所需的端口**。  不要阻止发往此端口的流量。  此端口始终绑定到 ASE 的公共 VIP。
+* 455：Azure 基础结构用于通过 TLS 管理和维护应用服务环境**所需的端口**。  不要阻止发往此端口的流量。  此端口始终绑定到 ASE 的公共 VIP。
 * 80：用于将入站 HTTP 流量发往应用服务环境的应用服务计划中运行的应用的默认端口。  在启用 ILB 的 ASE 中，此端口绑定到 ASE 的 ILB 地址。
-* 443：用于将入站 SSL 流量发往应用服务环境的应用服务计划中运行的应用的默认端口。  在启用 ILB 的 ASE 中，此端口绑定到 ASE 的 ILB 地址。
+* 443：用于在应用服务环境中在应用服务计划中运行的应用的入站 TLS 流量的默认端口。  在启用 ILB 的 ASE 中，此端口绑定到 ASE 的 ILB 地址。
 * 21：FTP 的控制通道。  如果未使用 FTP，则可以安全地阻止此端口。  在启用 ILB 的 ASE 中，此端口可以绑定到 ASE 的 ILB 地址。
 * 990：FTPS 的控制通道。  如果未使用 FTPS，则可以安全地阻止此端口。  在启用 ILB 的 ASE 中，此端口可以绑定到 ASE 的 ILB 地址。
 * 10001-10020：FTP 的数据通道。  和控制通道一样，如果未使用 FTP，则可以放心地阻止这些端口。  在启用 ILB 的 ASE 中，此端口可以绑定到 ASE 的 ILB 地址。
@@ -62,7 +62,7 @@ ms.locfileid: "74687394"
 
 创建网络安全组后，将一个或多个网络安全规则添加到其中。  由于规则集会随时改变，因此建议对规则优先级使用单独的编号方案，以便陆续插入其他规则。
 
-以下示例显示的规则可显式授予 Azure 基础结构管理和维护应用服务环境所需的管理端口的访问权限。  请注意，所有管理流量都通过 SSL 传送并受客户端证书的保护，因此即使端口已打开，Azure 管理基础结构以外的任何实体也无法访问这些端口。
+以下示例显示的规则可显式授予 Azure 基础结构管理和维护应用服务环境所需的管理端口的访问权限。  请注意，所有管理流量都流经 TLS，并且由客户端证书保护，因此即使打开端口，Azure 管理基础结构以外的任何实体都无法访问这些流量。
 
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "ALLOW AzureMngmt" -Type Inbound -Priority 100 -Action Allow -SourceAddressPrefix 'INTERNET'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '454-455' -Protocol TCP
 

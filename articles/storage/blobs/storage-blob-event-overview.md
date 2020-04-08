@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
-ms.openlocfilehash: e4dd6bab6198546dc5acab78ec59d92387328dbb
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: d9c666fd6fcf020908b6fc5bdd639261853ad9c6
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755002"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811541"
 ---
 # <a name="reacting-to-blob-storage-events"></a>响应 Blob 存储事件
 
@@ -98,7 +98,7 @@ Blob 存储事件使用者使用的格式：
 > * 同样，检查 eventType 是否为准备处理的项，并且不假定所接收的全部事件都是期望的类型。
 > * 由于消息可能会在一些延迟后到达，请使用 etag 字段来了解有关对象的信息是否仍然是最新的。 要了解如何使用 etag 字段，请参阅[在 Blob 存储中管理并发](https://docs.microsoft.com/azure/storage/common/storage-concurrency?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage)。 
 > * 由于消息可能无序到达，请使用序列器字段了解任何特定对象上事件的顺序。 序列器字段是一个字符串值，表示任何特定 Blob 名称的事件的逻辑序列。 可以使用标准字符串比较来了解同一 blob 名称上的两个事件的相对序列。
-> 存储事件保证至少一次传递到订阅者，这可确保输出所有消息。 但是，由于重试或订阅的可用性，偶尔会发生重复的消息。
+> * 存储事件保证至少一次传递到订阅者，这可确保输出所有消息。 但是，由于重试或订阅的可用性，偶尔会发生重复的消息。 要了解有关邮件传递和重试的更多信息，请参阅[事件网格消息传递和重试](../../event-grid/delivery-and-retry.md)。
 > * 使用 blobType 字段可了解 blob 中允许何种类型的操作，以及应当使用哪种客户端库类型来访问该 blob。 有效值为 `BlockBlob` 或 `PageBlob`。 
 > * 将 URL 字段与 `CloudBlockBlob` 和 `CloudAppendBlob` 构造函数配合使用，以访问 blob。
 > * 忽略不了解的字段。 此做法有助于适应将来可能添加的新功能。

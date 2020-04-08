@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccf34b52e06e369fe4dd459ff9dfa2880596fb35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3d2117e913f292e92f37f31d2e123587c70a189
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481341"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803291"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>具有应用程序代理的本地应用程序的 SAML 单登录
 
@@ -74,14 +74,14 @@ ms.locfileid: "79481341"
 
 2. 在"**使用 SAML 设置单一登录"页中**，转到**基本 SAML 配置**标题并选择其**编辑**图标（铅笔）。 请确保在应用程序代理中配置**的外部 URL**填充在**标识符**、回复**URL**和**注销 URL**字段中。 应用程序代理正常工作需要这些 URL。 
 
-3. 编辑较早配置的**回复 URL，** 以便应用程序代理可以覆盖其域。 例如，如果您的外部**URL**和`https://contosotravel-f128.msappproxy.net`原始回复**URL**是`https://contosotravel.com/acs`，则需要将原始**回复 URL**更新到`https://contosotravel-f128.msappproxy.net/acs`。 
+3. 编辑较早配置的**回复 URL，** 以便其域可通过应用程序代理在互联网上覆盖。 例如，如果您的外部**URL**和`https://contosotravel-f128.msappproxy.net`原始回复**URL**是`https://contosotravel.com/acs`，则需要将原始**回复 URL**更新到`https://contosotravel-f128.msappproxy.net/acs`。
 
     ![输入基本的 SAML 配置数据](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 
 
 4. 选择更新的 **"回复 URL"** 旁边的复选框，将其标记为默认值。
 
-   * 如果已列出所需的**回复 URL，** 请将其**回复 URL**标记为默认值，并删除以前配置的回复**URL**。
+   * 将所需的 **"答复 URL"** 标记为默认后，还可以删除以前配置的使用内部 URL 的**回复 URL。**
 
    * 对于 SP 启动的流，请确保后端应用程序指定用于接收身份验证令牌的正确**回复 URL**或断言使用者服务 URL。
 
@@ -98,4 +98,4 @@ ms.locfileid: "79481341"
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure AD 应用程序代理如何提供单一登录？](application-proxy-single-sign-on.md)
-- [排查应用程序代理问题](application-proxy-troubleshoot.md)
+- [应用程序代理故障排除](application-proxy-troubleshoot.md)

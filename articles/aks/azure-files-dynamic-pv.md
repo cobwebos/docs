@@ -1,15 +1,16 @@
 ---
-title: 在 Azure Kubernetes 服务 (AKS) 中为多个 Pod 动态创建文件卷
+title: 动态创建 Azure 文件共享
+titleSuffix: Azure Kubernetes Service
 description: 了解如何使用 Azure 文件动态创建永久性卷，以便与 Azure Kubernetes 服务 (AKS) 中的多个并发 Pod 一起使用
 services: container-service
 ms.topic: article
 ms.date: 09/12/2019
-ms.openlocfilehash: 3628a9243d849cdb2f3143209dc239be5ac846b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 59b773cd4608187fedb24358eac57715e1c271ea
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297782"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803528"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中动态创建永久性卷并将其用于 Azure 文件
 
@@ -17,7 +18,7 @@ ms.locfileid: "80297782"
 
 有关 Kubernetes 卷的详细信息，请参阅 [AKS 中应用程序的存储选项][concepts-storage]。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 

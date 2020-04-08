@@ -1,17 +1,18 @@
 ---
-title: 创建可供 Azure Kubernetes 服务 (AKS) 的 Pod 使用的 NFS（网络文件系统）Ubuntu 服务器
+title: 创建 NFS Ubuntu Linux 服务器卷
+titleSuffix: Azure Kubernetes Service
 description: 了解如何手动创建可供 Azure Kubernetes 服务 (AKS) 中的 Pod 使用的 NFS Ubuntu Linux 服务器卷
 services: container-service
 author: ozboms
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
-ms.openlocfilehash: e5676710bc47557318f3e2adcf36ec0ed13d47de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7db3f806df88e5b23012e97ba5c2f14ca65b2508
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596617"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803460"
 ---
 # <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中手动创建和使用 NFS（网络文件系统）Linux 服务器卷
 基于容器的服务和应用程序往往需要在容器之间共享数据。 通常，会有各种 Pod 需要访问外部持久性卷上的相同信息。    
@@ -19,7 +20,7 @@ Azure 文件是一个选项，而在 Azure VM 上创建的 NFS 服务器是持�
 
 本文将介绍如何在 Ubuntu 虚拟机上创建 NFS 服务器。 另外，将介绍 AKS 容器如何访问此共享文件系统。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 本文假设你已有一个 AKS 群集。 如果需要 AKS 群集，请参阅[使用 Azure CLI][aks-quickstart-cli]或使用[Azure 门户的][aks-quickstart-portal]AKS 快速入门。
 
 AKS 群集需要驻留在 NFS 服务器所在的相同或对等互连的虚拟网络中。 该群集必须在现有的 VNET 中创建，该 VNET 可以是 VM 所在的同一 VNET。

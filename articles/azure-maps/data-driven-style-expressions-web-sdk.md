@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 3f15033095b02dd35c2d8d7bda60ca184df64c9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6009a655adcc26ebef31588eff2332a05f3a001
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475013"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804718"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>数据驱动的样式表达式（Web SDK）
 
@@ -41,7 +41,7 @@ ms.locfileid: "79475013"
 
 Azure 映射 Web SDK 支持多种类型的表达式。 表达式可以自行使用，也可以与其他表达式结合使用。
 
-| 表达式类型 | 描述 |
+| 表达式类型 | 说明 |
 |---------------------|-------------|
 | [聚合表达式](#aggregate-expression) | 定义通过一组数据处理的计算的表达式，`clusterProperties`可以与 选项一`DataSource`起使用。 |
 | [布尔表达式](#boolean-expressions) | 布尔表达式提供了一组用于评估布尔比较的布尔运算符表达式。 |
@@ -81,15 +81,15 @@ Azure 映射 Web SDK 支持多种类型的表达式。 表达式可以自行使�
 
 数据表达式提供对要素中属性数据的访问。 
 
-| 表达式 | 返回类型 | 描述 |
+| 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
 | `['at', number, array]` | 对象 (object) | 从数组中检索项。 |
 | `['geometry-type']` | 字符串 | 获取要素的几何类型：点、多点、线串、多行串、多边形、多面形。 |
-| `['get', string]` | value | 从当前要素的属性获取属性值。 如果请求的属性丢失，则返回 null。 |
-| `['get', string, object]` | value | 从提供的对象的属性获取属性值。 如果请求的属性丢失，则返回 null。 |
+| `['get', string]` | 值 | 从当前要素的属性获取属性值。 如果请求的属性丢失，则返回 null。 |
+| `['get', string, object]` | 值 | 从提供的对象的属性获取属性值。 如果请求的属性丢失，则返回 null。 |
 | `['has', string]` | boolean | 确定要素的属性是否具有指定的属性。 |
 | `['has', string, object]` | boolean | 确定对象的属性是否具有指定的属性。 |
-| `['id']` | value | 如果要素有该功能的 ID，则获取该功能的 ID。 |
+| `['id']` | 值 | 如果要素有该功能的 ID，则获取该功能的 ID。 |
 | `['length', string | array]` | 数字 | 获取字符串或数组的长度。 |
 | `['in', boolean | string | number, array]` | boolean | 确定数组中是否存在项 |
 | `['in', substring, string]` | boolean | 确定子字符串是否存在于字符串中 |
@@ -141,7 +141,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 数学表达式提供数学运算符，用于在表达式框架中执行数据驱动的计算。
 
-| 表达式 | 返回类型 | 描述 |
+| 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
 | `['+', number, number, …]` | 数字 | 计算指定数字的总和。 |
 | `['-', number]` | 数字 | 按指定数字减去 0。 |
@@ -196,7 +196,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 比较值时，将严格键入比较。 不同类型的值始终被视为不相等。 已知类型在分析时不同的情况被视为无效，并将生成分析错误。 
 
-| 表达式 | 返回类型 | 描述 |
+| 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
 | `['! ', boolean]` | boolean | 逻辑否定。 如果`true`输入为`false`，则返回`false`，如果输入为`true`。 |
 | `['!= ', value, value]` | boolean | 如果`true`输入值不相等，则返回，`false`否则。 |
@@ -399,7 +399,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 类型表达式提供了用于测试和转换不同数据类型（如字符串、数字和布尔值）的工具。
 
-| 表达式 | 返回类型 | 描述 |
+| 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | 数组\|对象 | 返回文本数组或对象值。 使用此表达式可防止将数组或对象计算为表达式。 当数组或对象需要由表达式返回时，这是必需的。 |
 | `['image', string]` | 字符串 | 检查是否将指定的图像 ID 加载到地图图像精灵中。 如果是，则返回 ID，否则返回 null。 |
@@ -435,7 +435,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 颜色表达式使创建和操作颜色值变得更加容易。
 
-| 表达式 | 返回类型 | 描述 |
+| 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
 | `['rgb', number, number, number]` | color | 从*红色*、*绿色*和*蓝色*分量创建颜色值，这些分量必须在`0``255`和 和 之间范围`1`，以及 的 alpha 分量。 如果任何组件的范围不大，则表达式是错误。 |
 | `['rgba', number, number, number, number]` | color | 从*红色*、*绿色*、*蓝色*分量创建颜色值，这些分量`0`必须在`255`和 之间范围，并在`0`和`1`的范围内创建 alpha 分量。 如果任何组件的范围不大，则表达式是错误。 |
@@ -463,7 +463,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 字符串运算符表达式对字符串执行转换操作，例如串联和转换大小写。 
 
-| 表达式 | 返回类型 | 描述 |
+| 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
 | `['concat', string, string, …]` | 字符串 | 将多个字符串串联在一起。 每个值都必须是一个字符串。 如果需要，`to-string`请使用类型表达式将其他值类型转换为字符串。 |
 | `['downcase', string]` | 字符串 | 将指定的字符串转换为小写。 |
@@ -837,7 +837,7 @@ map.imageSprite.add('wifi-icon', 'wifi.png').then(function () {
 
 **示例**
 
-默认情况下，热贴图图层中呈现的数据点的半径为所有缩放级别的固定像素半径。 放大地图时，数据聚合在一起，热图图层看起来不同。 表达式`zoom`可用于缩放每个缩放级别的半径，以便每个数据点覆盖地图的相同物理区域。 这将使热图图层看起来更静态且一致。 地图的每个缩放级别垂直和水平的像素数是上一个缩放级别的两倍。 缩放半径（使其与每个缩放级别加倍）将创建在所有缩放级别上看起来一致的热图。 可以使用具有表达式的`zoom``base 2 exponential interpolation`表达式完成，如下所示。 
+默认情况下，热贴图图层中呈现的数据点的半径为所有缩放级别的固定像素半径。 放大地图时，数据聚合在一起，热图图层看起来不同。 表达式`zoom`可用于缩放每个缩放级别的半径，以便每个数据点覆盖地图的相同物理区域。 这将使热图图层看起来更静态且一致。 地图的每个缩放级别垂直和水平的像素数是上一个缩放级别的两倍。 缩放半径（使其与每个缩放级别加倍）将创建在所有缩放级别上看起来一致的热图。 可以使用具有`zoom``base 2 exponential interpolation`表达式的表达式完成，为最小缩放级别设置像素半径，并针对最大缩放级别的缩放半径（如下所示）`2 * Math.pow(2, minZoom - maxZoom)`计算。
 
 ```javascript 
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
@@ -849,8 +849,8 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
         //For zoom level 1 set the radius to 2 pixels.
         10, 2,
 
-        //Between zoom level 1 and 19, exponentially scale the radius from 2 pixels to 10,000 pixels.
-        19, 10000
+        //Between zoom level 1 and 19, exponentially scale the radius from 2 pixels to 2 * Math.pow(2, 19 - 1) pixels (524,288 pixels).
+        19, 2 * Math.pow(2, 19 - 1)
     ]
 };
 ```
@@ -861,7 +861,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 变量绑定表达式将计算结果存储在变量中。 因此，计算结果可以在表达式的其他地方多次引用。 对于涉及许多计算的表达式，它是一种有用的优化。
 
-| 表达式 | 返回类型 | 描述 |
+| 表达式 | 返回类型 | 说明 |
 |--------------|---------------|--------------|
 | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"让我们"，<br/>&nbsp;&nbsp;&nbsp;&nbsp;名称1：字符串，<br/>&nbsp;&nbsp;&nbsp;&nbsp;值1：任何，<br/>&nbsp;&nbsp;&nbsp;&nbsp;名称2：字符串，<br/>&nbsp;&nbsp;&nbsp;&nbsp;值2：任何，<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;子表达式<br/>\] | | 将一个或多个值存储为变量，`var`供返回结果的子表达式中的表达式使用。 |
 | `['var', name: string]` | any | 引用使用`let`表达式创建的变量。 |

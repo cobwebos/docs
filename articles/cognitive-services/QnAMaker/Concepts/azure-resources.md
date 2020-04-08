@@ -3,12 +3,12 @@ title: Azure 资源 - QnA 制造商
 description: QnA Maker 使用多个 Azure 源，每个源具有不同的用途。 了解它们是如何单独使用的，您可以规划和选择正确的定价层，或知道何时更改定价层。 了解它们的组合使用方式，可以在问题发生时查找和修复问题。
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 8a5cc0f4889e31470514015035a92d230c40ed43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1bd491ecbd878cb7bb05a7eaa5712c75653f2cba
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284239"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804293"
 ---
 # <a name="azure-resources-for-qna-maker"></a>用于 QnA 制造商的 Azure 资源
 
@@ -48,13 +48,13 @@ QnA Maker 使用多个 Azure 源，每个源具有不同的用途。 了解它�
 | ---------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
 | 试验        | 免费 SKU             | 免费层   | 免费层    | 分别最多发布 2 KB、50 MB 大小  |
 | 开发/测试环境   | 标准 SKU         | Shared      | Basic        | 分别最多发布 14 KB、2 GB 大小    |
-| 生产环境 | 标准 SKU         | Basic       | Standard     | 分别最多发布 49 KB、25 GB 大小 |
+| 生产环境 | 标准 SKU         | Basic       | 标准     | 分别最多发布 49 KB、25 GB 大小 |
 
 ## <a name="when-to-change-a-pricing-tier"></a>何时更改定价层
 
 |升级|原因|
 |--|--|
-|[升级](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku)QnA 制造商管理 SKU|您希望在知识库中拥有更多 QnA 集或文档源。|
+|[升级](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku)QnA 制造商管理 SKU|您希望在知识库中有更多的 QnA 对或文档源。|
 |[升级](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service)应用服务 SKU 并检查认知搜索层并[创建认知搜索副本](../../../search/search-capacity-planning.md)|您的知识库需要从客户端应用（如聊天机器人）提供更多请求。|
 |[升级](../How-to/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service)Azure 认知搜索服务|你计划拥有许多知识库。|
 
@@ -95,8 +95,8 @@ Azure 门户创建窗口允许您创建 QnA Maker 资源，并为其他资源选
 
 [认知搜索](../../../search/index.yml)资源用于：
 
-* 存储 QnA 集
-* 在运行时提供 QnA 集的初始排名（排名#1）
+* 存储 QnA 对
+* 在运行时提供 QnA 对的初始排名（排名#1）
 
 #### <a name="index-usage"></a>索引使用情况
 
@@ -110,7 +110,7 @@ Azure 门户创建窗口允许您创建 QnA Maker 资源，并为其他资源选
 
 ### <a name="qna-maker-resource"></a>QnA Maker 资源
 
-QnA Maker 资源提供对创作和发布 API 以及基于 QnA 集的自然语言处理 （NLP）（排名#2）的访问。
+QnA Maker 资源提供对创作和发布 API 以及运行时 QnA 对的第二排名层 （NLP）（排名#2）的访问。
 
 第二个排名应用智能筛选器，其中可以包含元数据和后续提示。
 
@@ -162,7 +162,7 @@ QnA Maker 服务处理两种类型的密钥：创作与 App 服务中托管的�
 
 ![密钥管理](../media/qnamaker-how-to-key-management/key-management.png)
 
-|“属性”|位置|目的|
+|名称|位置|目的|
 |--|--|--|
 |创作密钥|[Azure 门户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|这些密钥用来访问 [QnA Maker 管理服务 API](https://go.microsoft.com/fwlink/?linkid=2092179)。 这些 API 允许您编辑知识库中的问题和答案，并发布您的知识库。 当您创建新的 QnA Maker 服务时，将创建这些密钥。<br><br>在 **"密钥**"页上的 **"认知服务**"资源上找到这些键。|
 |查询终结点键|[QnA Maker 门户](https://www.qnamaker.ai)|这些键用于查询已发布的知识库终结点，以获得用户问题的响应。 您通常在聊天机器人或连接到 QnA Maker 服务的客户端应用程序代码中使用此查询终结点。 这些密钥是在发布 QnA Maker 知识库时创建的。<br><br>在 **"服务设置"** 页中找到这些键。 从下拉菜单右上角的用户菜单中查找此页面。|

@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/17/2020
+ms.date: 04/07/2020
 ms.author: radeltch
-ms.openlocfilehash: 9d3d0ddbd1282827f17cd82228fcf0f3fba3a60f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 06ee1b6184e69ace68adcbfa36ad2384dc9fdd99
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471976"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811574"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 
@@ -365,6 +365,9 @@ o- / ...........................................................................
    </code></pre>
 
 1. **[A]** 为 HA 群集配置云网配置-azure
+
+   >[!NOTE]
+   > 通过运行**zypper 信息云-netconfig-azure**来检查包**云-netconfig-azure**的已安装版本。 如果环境中的版本为 1.3 或更高版本，则不再需要通过云网络插件禁止管理网络接口。 如果版本低于 1.3，我们建议您将包**云网配置-azure**更新为最新版本。  
 
    更改网络接口的配置文件，如下所示，以防止云网络插件删除虚拟 IP 地址（Pacemaker 必须控制 VIP 分配）。 有关详细信息，请参阅[SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633)。 
 

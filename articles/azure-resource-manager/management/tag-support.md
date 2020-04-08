@@ -2,13 +2,13 @@
 title: 资源的标记支持
 description: 显示支持标记的 Azure资源类型。 提供所有 Azure 服务的详细信息。
 ms.topic: conceptual
-ms.date: 02/26/2020
-ms.openlocfilehash: 6100c667c7df0b3e1740777565d260af9fa818a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: e012126995136bec15dc360be5e91007b6f69f09
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77657567"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802486"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 资源的标记支持
 本文介绍某一资源类型是否支持[标记](tag-resources.md)。 标记为“支持标记”**** 的列指示资源类型是否具有标记的属性。 标记为“在成本报表中标记”**** 的列指示该资源类型是否将标记传递给成本报表。 可以通过[成本管理成本分析](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options)和 [Azure 账单发票和每日使用情况数据](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)中的标记查看成本。
@@ -38,6 +38,7 @@ ms.locfileid: "77657567"
 > - [Microsoft.Billing](#microsoftbilling)
 > - [Microsoft.BingMaps](#microsoftbingmaps)
 > - [Microsoft.Blockchain](#microsoftblockchain)
+> - [微软.区块链令牌](#microsoftblockchaintokens)
 > - [Microsoft.Blueprint](#microsoftblueprint)
 > - [Microsoft.BotService](#microsoftbotservice)
 > - [Microsoft.Cache](#microsoftcache)
@@ -55,7 +56,6 @@ ms.locfileid: "77657567"
 > - [Microsoft.ContainerInstance](#microsoftcontainerinstance)
 > - [Microsoft.ContainerRegistry](#microsoftcontainerregistry)
 > - [Microsoft.ContainerService](#microsoftcontainerservice)
-> - [Microsoft.CortanaAnalytics](#microsoftcortanaanalytics)
 > - [Microsoft.CostManagement](#microsoftcostmanagement)
 > - [微软.客户锁定箱](#microsoftcustomerlockbox)
 > - [微软.自定义提供程序](#microsoftcustomproviders)
@@ -83,6 +83,7 @@ ms.locfileid: "77657567"
 > - [微软.企业知识图](#microsoftenterpriseknowledgegraph)
 > - [Microsoft.EventGrid](#microsofteventgrid)
 > - [Microsoft.EventHub](#microsofteventhub)
+> - [微软.法尔肯](#microsoftfalcon)
 > - [Microsoft.Features](#microsoftfeatures)
 > - [Microsoft.Gallery](#microsoftgallery)
 > - [Microsoft.Genomics](#microsoftgenomics)
@@ -99,11 +100,13 @@ ms.locfileid: "77657567"
 > - [Microsoft.IoTCentral](#microsoftiotcentral)
 > - [Microsoft.IoTSpaces](#microsoftiotspaces)
 > - [微软.钥匙库](#microsoftkeyvault)
+> - [微软.库伯内斯](#microsoftkubernetes)
 > - [Microsoft.Kusto](#microsoftkusto)
 > - [Microsoft.LabServices](#microsoftlabservices)
 > - [微软.逻辑](#microsoftlogic)
 > - [Microsoft.MachineLearning](#microsoftmachinelearning)
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
+> - [微软.维护](#microsoftmaintenance)
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
 > - [Microsoft.ManagedServices](#microsoftmanagedservices)
 > - [Microsoft.Management](#microsoftmanagement)
@@ -129,6 +132,7 @@ ms.locfileid: "77657567"
 > - [Microsoft.PowerBI](#microsoftpowerbi)
 > - [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated)
 > - [微软.项目巴比隆](#microsoftprojectbabylon)
+> - [微软.昆腾](#microsoftquantum)
 > - [微软.恢复服务](#microsoftrecoveryservices)
 > - [Microsoft.Relay](#microsoftrelay)
 > - [微软.远程应用程序](#microsoftremoteapp)
@@ -220,9 +224,7 @@ ms.locfileid: "77657567"
 > | alertsMetaData | 否 | 否 |
 > | alertsSummary | 否 | 否 |
 > | alertsSummaryList | 否 | 否 |
-> | 反馈 | 否 | 否 |
 > | smartDetectorAlertRules | 是 | 是 |
-> | smartDetectorRuntimeEnvironments | 否 | 否 |
 > | smartGroups | 否 | 否 |
 
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
@@ -331,7 +333,6 @@ ms.locfileid: "77657567"
 > | ------------- | ----------- | ----------- |
 > | 混合数据管理器 | 是 | 是 |
 > | 后实例 | 是 | 是 |
-> | sqlBigData 集群 | 是 | 是 |
 > | sqlInstances | 是 | 是 |
 > | sqlServer 注册 | 是 | 是 |
 > | sqlServer 注册 / sqlServer | 否 | 否 |
@@ -341,10 +342,10 @@ ms.locfileid: "77657567"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
+> | 云清单文件 | 否 | 否 |
 > | registrations | 是 | 是 |
 > | registrations / customerSubscriptions | 否 | 否 |
 > | registrations / products | 否 | 否 |
-> | verificationKeys | 否 | 否 |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
@@ -459,6 +460,17 @@ ms.locfileid: "77657567"
 > | 脐带成员 | 是 | 是 |
 > | 观察家 | 是 | 是 |
 
+## <a name="microsoftblockchaintokens"></a>微软.区块链令牌
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 支持标记 | 在成本报表中标记 |
+> | ------------- | ----------- | ----------- |
+> | 令牌服务 | 是 | 是 |
+> | 令牌服务 / 区块链网络 | 否 | 否 |
+> | 令牌服务/ 组 | 否 | 否 |
+> | 令牌服务 / 组 / 帐户 | 否 | 否 |
+> | 令牌服务/令牌模板 | 否 | 否 |
+
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
 
 > [!div class="mx-tableFixed"]
@@ -528,6 +540,7 @@ ms.locfileid: "77657567"
 > | 配置文件 | 是 | 是 |
 > | profiles/endpoints | 是 | 是 |
 > | profiles / endpoints / customdomains | 否 | 否 |
+> | 配置文件/终结点/原点组 | 否 | 否 |
 > | profiles / endpoints / origins | 否 | 否 |
 > | validateProbe | 否 | 否 |
 
@@ -648,9 +661,12 @@ ms.locfileid: "77657567"
 > | proximityPlacementGroups | 是 | 是 |
 > | restorePointCollections | 是 | 是 |
 > | restorePointCollections / restorePoints | 否 | 否 |
+> | sharedVMExtensions | 是 | 是 |
+> | 共享VM扩展/版本 | 否 | 否 |
 > | sharedVMImages | 是 | 是 |
 > | sharedVMImages / versions | 否 | 否 |
 > | snapshots | 是 | 是 |
+> | sshPublicKeys | 是 | 是 |
 > | virtualMachines | 是 | 是 |
 > | virtualMachines / extensions | 是 | 是 |
 > | virtualMachines / metricDefinitions | 否 | 否 |
@@ -701,6 +717,7 @@ ms.locfileid: "77657567"
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
 > | registries | 是 | 是 |
+> | 注册表/代理池 | 是 | 是 |
 > | registries / builds | 否 | 否 |
 > | registries / builds / cancel | 否 | 否 |
 > | registries / builds / getLogLink | 否 | 否 |
@@ -739,13 +756,6 @@ ms.locfileid: "77657567"
 > | containerServices | 是 | 是 |
 > | managedClusters | 是 | 是 |
 > | openShiftManagedClusters | 是 | 是 |
-
-## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
-
-> [!div class="mx-tableFixed"]
-> | 资源类型 | 支持标记 | 在成本报表中标记 |
-> | ------------- | ----------- | ----------- |
-> | accounts | 是 | 是 |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 
@@ -939,6 +949,7 @@ ms.locfileid: "77657567"
 > | servers / virtualNetworkRules | 否 | 否 |
 > | servers / waitStatistics | 否 | 否 |
 > | serversv2 | 是 | 是 |
+> | 单服务器 | 是 | 是 |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
 
@@ -1075,13 +1086,22 @@ ms.locfileid: "77657567"
 > | namespaces / eventhubs / consumergroups | 否 | 否 |
 > | namespaces / networkrulesets | 否 | 否 |
 
+## <a name="microsoftfalcon"></a>微软.法尔肯
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 支持标记 | 在成本报表中标记 |
+> | ------------- | ----------- | ----------- |
+> | namespaces | 是 | 是 |
+
 ## <a name="microsoftfeatures"></a>Microsoft.Features
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
+> | 功能提供程序 | 否 | 否 |
 > | features | 否 | 否 |
 > | providers | 否 | 否 |
+> | 订阅功能注册 | 否 | 否 |
 
 ## <a name="microsoftgallery"></a>Microsoft.Gallery
 
@@ -1216,6 +1236,13 @@ ms.locfileid: "77657567"
 > | vaults / eventGridFilters | 否 | 否 |
 > | vaults / secrets | 否 | 否 |
 
+## <a name="microsoftkubernetes"></a>微软.库伯内斯
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 支持标记 | 在成本报表中标记 |
+> | ------------- | ----------- | ----------- |
+> | 连接的集群 | 是 | 是 |
+
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
 > [!div class="mx-tableFixed"]
@@ -1227,6 +1254,7 @@ ms.locfileid: "77657567"
 > | clusters / databases / dataconnections | 否 | 否 |
 > | clusters / databases / eventhubconnections | 否 | 否 |
 > | 群集/数据库/委托分配 | 否 | 否 |
+> | 群集/数据连接 | 否 | 否 |
 > | 群集/主体分配 | 否 | 否 |
 > | clusters / sharedidentities | 否 | 否 |
 
@@ -1268,6 +1296,16 @@ ms.locfileid: "77657567"
 > | 工作区/计算 | 否 | 否 |
 > | 工作区/事件网格筛选器 | 否 | 否 |
 
+## <a name="microsoftmaintenance"></a>微软.维护
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 支持标记 | 在成本报表中标记 |
+> | ------------- | ----------- | ----------- |
+> | 应用更新 | 否 | 否 |
+> | 配置分配 | 否 | 否 |
+> | 维护配置 | 是 | 是 |
+> | 更新 | 否 | 否 |
+
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
 > [!div class="mx-tableFixed"]
@@ -1304,6 +1342,7 @@ ms.locfileid: "77657567"
 > | ------------- | ----------- | ----------- |
 > | accounts | 是 | 是 |
 > | 帐户/事件网格筛选器 | 否 | 否 |
+> | 帐户 / 私人地图集 | 是 | 是 |
 
 ## <a name="microsoftmarketplace"></a>Microsoft.Marketplace
 
@@ -1320,10 +1359,13 @@ ms.locfileid: "77657567"
 > | 报价类型 / 发布商 / 优惠 / 计划 / 配置 / 导入图像 | 否 | 否 |
 > | privategalleryitems | 否 | 否 |
 > | 专用存储客户端 | 否 | 否 |
+> | 私人商店 | 否 | 否 |
+> | 私人商店/优惠 | 否 | 否 |
 > | products | 否 | 否 |
 > | publishers | 否 | 否 |
 > | 出版商/优惠 | 否 | 否 |
 > | 出版商/ 优惠 / 修订 | 否 | 否 |
+> | register | 否 | 否 |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 
@@ -1390,7 +1432,6 @@ ms.locfileid: "77657567"
 > | 对象理解帐户 | 是 | 是 |
 > | 远程渲染帐户 | 是 | 是 |
 > | 空间锚定帐户 | 是 | 是 |
-> | 表面重建帐户 | 是 | 是 |
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
@@ -1398,6 +1439,7 @@ ms.locfileid: "77657567"
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
 > | 净应用账户 | 是 | 否 |
+> | 净应用账户/帐户备份 | 否 | 否 |
 > | 净应用账户/容量池 | 是 | 否 |
 > | 净应用账户 / 容量池 / 卷 | 是 | 否 |
 > | 净应用账户 / 容量池 / 卷 / 快照 | 否 | 否 |
@@ -1536,9 +1578,7 @@ ms.locfileid: "77657567"
 > | 工作区/数据导出 | 否 | 否 |
 > | workspaces / dataSources | 否 | 否 |
 > | workspaces / linkedServices | 否 | 否 |
-> | 工作区/专用端接Proxie | 否 | 否 |
-> | 工作区/专用端点连接 | 否 | 否 |
-> | 工作区/专用链接资源 | 否 | 否 |
+> | 工作区/链接的存储帐户 | 否 | 否 |
 > | workspaces / query | 否 | 否 |
 > | 工作区/作用域私人链接 Proxies | 否 | 否 |
 
@@ -1604,6 +1644,13 @@ ms.locfileid: "77657567"
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
 > | accounts | 是 | 是 |
+
+## <a name="microsoftquantum"></a>微软.昆腾
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 支持标记 | 在成本报表中标记 |
+> | ------------- | ----------- | ----------- |
+> | 工作区 | 是 | 是 |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
@@ -1726,6 +1773,10 @@ ms.locfileid: "77657567"
 > | regulatoryComplianceStandards | 否 | 否 |
 > | regulatoryComplianceStandards / regulatoryComplianceControls | 否 | 否 |
 > | regulatoryComplianceStandards / regulatoryComplianceControls / regulatoryComplianceAssessments | 否 | 否 |
+> | 安全分数控制定义 | 否 | 否 |
+> | 安全分数控制 | 否 | 否 |
+> | 安全分数 | 否 | 否 |
+> | 安全分数/安全分数控制 | 否 | 否 |
 > | securityContacts | 否 | 否 |
 > | securitySolutions | 否 | 否 |
 > | securitySolutionsReferenceData | 否 | 否 |
@@ -1998,6 +2049,7 @@ ms.locfileid: "77657567"
 > | 重命名 | 否 | 否 |
 > | SubscriptionDefinitions | 否 | 否 |
 > | SubscriptionOperations | 否 | 否 |
+> | subscriptions | 否 | 否 |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
@@ -2028,6 +2080,7 @@ ms.locfileid: "77657567"
 > | 供应商 | 否 | 否 |
 > | 供应商 / 斯克乌斯 | 否 | 否 |
 > | 供应商 / vnfs | 否 | 否 |
+> | 虚拟网络功能 | 否 | 否 |
 > | 文夫斯 | 是 | 是 |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
@@ -2055,6 +2108,7 @@ ms.locfileid: "77657567"
 > | 托管环境/事件网格筛选器 | 否 | 否 |
 > | hostingEnvironments / multiRolePools | 否 | 否 |
 > | hostingEnvironments / workerPools | 否 | 否 |
+> | 库贝环境 | 是 | 是 |
 > | publishingUsers | 否 | 否 |
 > | 建议 | 否 | 否 |
 > | resourceHealthMetadata | 否 | 否 |

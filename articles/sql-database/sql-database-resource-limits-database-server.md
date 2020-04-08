@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
-ms.openlocfilehash: 550c315023c0ae907c369778c81b16e137004bec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: afb30a17d7a1450f169402c18f41ce249415e89d
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067252"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804820"
 ---
 # <a name="sql-database-resource-limits-and-resource-governance"></a>SQL 数据库资源限制和资源治理
 
@@ -103,7 +103,7 @@ Azure SQL 数据库需要计算资源来实现核心服务功能，如高可用�
 
 除了使用资源调控器来管理 SQL Server 进程中的资源外，Azure SQL 数据库还使用 Windows[作业对象](https://docs.microsoft.com/windows/win32/procthread/job-objects)进行进程级资源治理，使用 Windows[文件服务器资源管理器 （FSRM）](https://docs.microsoft.com/windows-server/storage/fsrm/fsrm-overview)进行存储配额管理。
 
-Azure SQL 数据库资源治理本质上是分层的。 从上到下，使用操作系统资源治理机制和资源调控器在操作系统级别和存储卷级别实施限制，然后在资源池级别使用资源调控器，然后在使用工作负载组级别执行限制资源调控器。 当前数据库或弹性池有效的资源治理限制在[sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database)视图中显示。 
+Azure SQL 数据库资源治理本质上是分层的。 从上到下，使用操作系统资源治理机制和资源调控器在操作系统资源治理机制和资源调控器在操作系统级别和存储卷级别实施限制，然后在资源池级别使用资源调控器，然后在使用资源调控器在工作负载组级别实施限制。 当前数据库或弹性池有效的资源治理限制在[sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database)视图中显示。 
 
 ### <a name="data-io-governance"></a>数据 IO 治理
 
@@ -134,7 +134,7 @@ Azure SQL 数据库资源治理本质上是分层的。 从上到下，使用操
 
 在运行时实施的实际日志生成速率还可能受到反馈机制（暂时降低允许的日志速率，使系统保持稳定）的影响。 日志文件空间管理可避免遇到日志空间不间的情况，可用性组复制机制可以暂时降低总体系统限制。
 
-可通过以下 wait 类型（在 [sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV 中公开）查看日志速率调控器流量的形状：
+日志速率调速器流量整形通过以下等待类型（在[sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql)和[sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)视图中公开） 浮出水面）：
 
 | Wait 类型 | 说明 |
 | :--- | :--- |
@@ -143,6 +143,7 @@ Azure SQL 数据库资源治理本质上是分层的。 从上到下，使用操
 | INSTANCE_LOG_RATE_GOVERNOR | 实例级限制 |  
 | HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | 反馈控制。高级/业务关键型工作负荷中的可用性组物理复制不会保持 |  
 | HADR_THROTTLE_LOG_RATE_LOG_SIZE | 反馈控制。限制速率可以避免出现日志空间不足的情况 |
+| HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO | 异地复制反馈控制，限制日志速率，以避免高数据延迟和异地秒数不可用|
 |||
 
 当日志速率限制阻碍实现所需的可伸缩性时，请考虑以下选项：

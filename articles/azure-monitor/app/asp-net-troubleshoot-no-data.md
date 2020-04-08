@@ -3,12 +3,12 @@ title: 排查无数据问题 - 用于 .NET 的 Application Insights
 description: 在 Azure Application Insights 中看不到数据？ 试试这里。
 ms.topic: conceptual
 ms.date: 07/23/2018
-ms.openlocfilehash: 2627fde55f4177798d04aab02db169f3117d32dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34fc51f8f656ec0f630bd984ac1b28fbaa5e4dae
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665895"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802580"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>排除任何数据的故障排除 - .NET/.NET 核心的应用程序见解
 
@@ -241,12 +241,16 @@ PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-Applica
 可以根据需要修改以下参数：
 - **MaxCollectSec**。 设置此参数可防止 PerfView 无限期运行并影响服务器的性能。
 - **OnlyProviders**。 设置此参数可仅从 SDK 收集日志。 可以基于特定调查自定义此列表。 
-- **NoGui**。 设置此参数可收集不包含 Gui 的日志。
+- **NoGui**。 设置此参数以收集没有 GUI 的日志。
 
 
 有关详细信息，请参阅
 - [使用 PerfView 记录性能跟踪](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView)。
 - [Application Insights 事件源](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
+
+## <a name="how-to-remove-application-insights"></a>如何删除应用程序见解
+
+了解如何按照删除[文章中](../../azure-monitor/app/remove-application-insights.md)提供的步骤删除 Visual Studio 中的应用程序见解。
 
 ## <a name="still-not-working"></a>仍然无法解决问题...
 * [Application Insights 论坛](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)

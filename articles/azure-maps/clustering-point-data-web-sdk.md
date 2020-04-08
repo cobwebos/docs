@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: e65681aefc047ba540d4ad0d91ef6e4d2af5f3ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce2891201331ee1efd861d2f13cec78c0551b6ba
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190266"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804565"
 ---
 # <a name="clustering-point-data"></a>聚类点数据
 
@@ -48,7 +48,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 下面是`DataSource`类为群集提供的其他方法：
 
-| 方法 | 返回类型 | 描述 |
+| 方法 | 返回类型 | 说明 |
 |--------|-------------|-------------|
 | 获取群集子级（群集 ID：编号） | 承诺&lt;数组&lt;要素&lt;几何，任何&gt;\|形状&gt;&gt; | 在下一个缩放级别检索给定聚类的子级。 这些子级可以是形状和子聚类的组合。 子聚类是包含与 ClusteredProperties 匹配的属性的特征。 |
 | 获取群集扩展（群集 Id：编号） | Promise&lt;number&gt; | 计算聚类开始展开或分开的缩放级别。 |
@@ -62,7 +62,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="基本气泡层聚类" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="基本气泡层聚类" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 在<a href='https://codepen.io'>CodePen</a>上，请参阅按 Azure<a href='https://codepen.io/azuremaps'>@azuremaps</a>映射 （） 群集的笔<a href='https://codepen.io/azuremaps/pen/qvzRZY/'>基本气泡图层</a>。
 </iframe>
 
@@ -74,7 +74,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="聚类符号图层" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="聚类符号图层" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 在<a href='https://codepen.io'>CodePen</a>上按 Azure 地图<a href='https://codepen.io/azuremaps'>@azuremaps</a>（） 查看笔<a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>群集符号图层</a>。
 </iframe>
 
@@ -84,7 +84,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="聚类加权热图" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="聚类加权热图" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 在<a href='https://codepen.io'>CodePen</a>上按 Azure 地图<a href='https://codepen.io/azuremaps'>@azuremaps</a>（） 查看笔<a href='https://codepen.io/azuremaps/pen/VRJrgO/'>群集加权热图</a>。
 </iframe>
 
@@ -103,7 +103,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="群集获取群集扩展缩放" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="群集获取群集扩展缩放" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 请参阅在<a href='https://codepen.io'>CodePen</a>上通过 Azure 映射<a href='https://codepen.io/azuremaps'>@azuremaps</a>（）<a href='https://codepen.io/azuremaps/pen/moZWeV/'>获取群集扩展的笔群集扩展</a>。
 </iframe>
 
@@ -113,7 +113,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 <br/>
 
- <iframe height="500" style="width: 100%;" scrolling="no" title="群集区域凸壳" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+ <iframe height="500" style="width: 100%;" scrolling="no" title="群集区域凸壳" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 在<a href='https://codepen.io'>CodePen</a>上，请参阅按 Azure 映射<a href='https://codepen.io/azuremaps'>@azuremaps</a>（） 凸包的笔<a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>群集区域凸包</a>。
 </iframe>
 
@@ -123,7 +123,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 以下示例使用聚合表达式。 代码根据群集中每个数据点的实体类型属性计算计数。 当用户单击群集时，将显示一个弹出窗口，其中包含有关群集的其他信息。
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="群集聚合" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="群集聚合" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 在<a href='https://codepen.io'>CodePen</a>上按 Azure<a href='https://codepen.io/azuremaps'>@azuremaps</a>映射 （） 查看笔<a href='https://codepen.io/azuremaps/pen/jgYyRL/'>群集聚合</a>。
 </iframe>
 

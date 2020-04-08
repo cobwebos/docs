@@ -1,14 +1,14 @@
 ---
 title: 导入和导出数据参考 - QnA 制造商
-description: 了解如何使用 URL 类型导入和创建 QnA 集。
+description: 了解如何使用 URL 类型导入和创建 QnA 对。
 ms.topic: reference
 ms.date: 01/02/2020
-ms.openlocfilehash: 6560a43a6fbcf9fbd2ce021d782f00f916442bfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4a423ef9478cd39181c6440801f9fe954dc896c
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651846"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804237"
 ---
 # <a name="import-and-export-data-reference"></a>导入和导出数据引用
 

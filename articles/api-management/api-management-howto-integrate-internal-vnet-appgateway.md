@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: 2b8cf66afa1d8aa592d5755ebab70cd6ad2e75fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 733f4b74ca7643476586189b36f4e1d3e446968b
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79298043"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811168"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>在包含应用程序网关的内部 VNET 中集成 API 管理
 
@@ -64,7 +64,7 @@ ms.locfileid: "79298043"
 * **后端服务器池：** API 管理服务的内部虚拟 IP 地址。
 * **后端服务器池设置：** 每个池都有端口、协议和基于 Cookie 的关联等设置。 这些设置将应用到池中的所有服务器。
 * **前端端口：** 此端口是应用程序网关上打开的公共端口。 抵达此端口的流量将重定向到后端服务器之一。
-* **听众：** 侦听器具有前端端口、协议（Http 或 Https、这些值区分大小写）和 SSL 证书名称（如果配置 SSL 卸载）。
+* **听众：** 侦听器具有前端端口、协议（Http 或 Https、这些值区分大小写）和 TLS/SSL 证书名称（如果配置 TLS 卸载）。
 * **规则：** 规则将侦听器绑定到后端服务器池。
 * **自定义运行状况探测：** 默认情况下，应用程序网关使用基于 IP 地址的探测来判断 BackendAddressPool 中的哪些服务器处于活动状态。 API 管理服务只响应包含正确主机标头的请求，因此默认的探测会失败。 需要定义一个自定义运行状况探测，帮助应用程序网关确定服务处于活动状态，应该转发该请求。
 * **自定义域证书**：要从 Internet 访问 API 管理，需要创建从服务主机名到应用程序网关前端 DNS 名称的 CNAME 映射。 这可以确保发送到应用程序网关，并转发到 API 管理的主机名标头和证书是 APIM 可以识别为有效的对象。 在此示例中，我们将使用两个证书 - 用于后端和开发人员门户。  
@@ -271,7 +271,7 @@ $certPortal = New-AzApplicationGatewaySslCertificate -Name "cert02" -Certificate
 
 ### <a name="step-5"></a>步骤 5
 
-为应用程序网关创建 HTTP 侦听器。 为其分配要使用的前端 IP 配置、端口和 SSL 证书。
+为应用程序网关创建 HTTP 侦听器。 将前端 IP 配置、端口和 TLS/SSL 证书分配给它们。
 
 ```powershell
 $listener = New-AzApplicationGatewayHttpListener -Name "listener01" -Protocol "Https" -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01 -SslCertificate $cert -HostName $gatewayHostname -RequireServerNameIndication true
@@ -280,7 +280,7 @@ $portalListener = New-AzApplicationGatewayHttpListener -Name "listener02" -Proto
 
 ### <a name="step-6"></a>步骤 6
 
-为 API 管理服务的 `ContosoApi` 代理域断点创建自定义探测。 路径 `/status-0123456789abcdef` 是所有 API 管理服务中托管的默认运行状况终结点。 将 `api.contoso.net` 设置为自定义探测主机名，以便使用 SSL 证书保护它。
+为 API 管理服务的 `ContosoApi` 代理域断点创建自定义探测。 路径 `/status-0123456789abcdef` 是所有 API 管理服务中托管的默认运行状况终结点。 设置为`api.contoso.net`自定义探测主机名，以便使用 TLS/SSL 证书保护它。
 
 > [!NOTE]
 > 主机名 `contosoapi.azure-api.net` 是在公共 Azure 中创建名为 `contosoapi` 的服务时配置的默认代理主机名。
@@ -293,7 +293,7 @@ $apimPortalProbe = New-AzApplicationGatewayProbeConfig -Name "apimportalprobe" -
 
 ### <a name="step-7"></a>步骤 7
 
-上传要在已启用 SSL 的后端池资源上使用的证书。 该证书与你在上述步骤 4 中所提供的证书相同。
+上载要在启用 TLS 的后端池资源上使用的证书。 该证书与你在上述步骤 4 中所提供的证书相同。
 
 ```powershell
 $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name "whitelistcert1" -CertificateFile $gatewayCertCerPath

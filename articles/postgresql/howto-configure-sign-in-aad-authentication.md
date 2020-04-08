@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a9f12849525daeea69ece6e81077446f062e8889
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: f5588503825281f407ddbbc2c1c57cd94a9c7ee6
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384392"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804701"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>使用 Azure 活动目录使用 PostgreSQL 进行身份验证
 
@@ -24,7 +24,9 @@ ms.locfileid: "80384392"
 
 ## <a name="setting-the-azure-ad-admin-user"></a>设置 Azure AD 管理员用户
 
-只有 Azure AD 管理员用户可以创建/启用用户才能进行基于 Azure AD 的身份验证。 要创建和 Azure AD 管理员用户，请按照以下步骤操作
+只有 Azure AD 管理员用户可以创建/启用用户进行基于 Azure AD 的身份验证。 我们建议不要将 Azure AD 管理员用于常规数据库操作，因为它具有提升的用户权限（例如，创建 B）。
+
+要设置 Azure AD 管理员（可以使用用户或组），请按照以下步骤操作
 
 1. 在 Azure 门户中，选择要为 Azure AD 启用的 PostgreSQL 的 Azure 数据库实例。
 2. 在"设置"下，选择活动目录管理员：
@@ -37,36 +39,6 @@ ms.locfileid: "80384392"
 > 设置管理员时，新用户将添加到具有完全管理员权限的 PostgreSQL 服务器的 Azure 数据库中。 Azure 数据库中的 Azure Ad 管理员用户将具有 该角色`azure_ad_admin`。
 
 每个 PostgreSQL 服务器只能创建一个 Azure AD 管理员，而另一个服务器的选择将覆盖为服务器配置的现有 Azure AD 管理员。 您可以指定 Azure AD 组，而不是单个用户，以具有多个管理员。 请注意，您随后将使用组名称登录以进行管理。
-
-## <a name="creating-azure-ad-users-in-azure-database-for-postgresql"></a>在 Azure 数据库中为 PostgreSQL 创建 Azure AD 用户
-
-要将 Azure AD 用户添加到用于 PostgreSQL 数据库的 Azure 数据库，请在连接后执行以下步骤（请参阅后面有关如何连接的部分）：
-
-1. 首先，确保 Azure AD`<user>@yourtenant.onmicrosoft.com`用户是 Azure AD 租户中的有效用户。
-2. 以 Azure AD 管理员用户身份登录到 Azure 数据库以获取 PostgreSQL 实例。
-3. 在`<user>@yourtenant.onmicrosoft.com`Azure 数据库中为 PostgreSQL 创建角色。
-4. 成为`<user>@yourtenant.onmicrosoft.com`角色的成员azure_ad_user。 这只能提供给 Azure AD 用户。
-
-**例子：**
-
-```sql
-CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
-```
-
-> [!NOTE]
-> 通过 Azure AD 对用户进行身份验证不会授予用户访问 PostgreSQL 数据库 Azure 数据库中的对象的任何权限。 您必须手动授予用户所需的权限。
-
-## <a name="creating-azure-ad-groups-in-azure-database-for-postgresql"></a>在 Azure 数据库中为 PostgreSQL 创建 Azure AD 组
-
-要启用 Azure AD 组以访问数据库，请使用与用户相同的机制，而是指定组名称：
-
-**例子：**
-
-```sql
-CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;
-```
-
-登录时，组成员将使用其个人访问令牌，但使用指定为用户名的组名称进行签名。
 
 ## <a name="connecting-to-azure-database-for-postgresql-using-azure-ad"></a>使用 Azure AD 连接到 Azure 数据库以进行 PostgreSQL
 
@@ -167,6 +139,36 @@ psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgre
 ```
 
 现在，使用 Azure AD 身份验证对 PostgreSQL 服务器进行身份验证。
+
+## <a name="creating-azure-ad-users-in-azure-database-for-postgresql"></a>在 Azure 数据库中为 PostgreSQL 创建 Azure AD 用户
+
+要将 Azure AD 用户添加到用于 PostgreSQL 数据库的 Azure 数据库，请在连接后执行以下步骤（请参阅后面有关如何连接的部分）：
+
+1. 首先，确保 Azure AD`<user>@yourtenant.onmicrosoft.com`用户是 Azure AD 租户中的有效用户。
+2. 以 Azure AD 管理员用户身份登录到 Azure 数据库以获取 PostgreSQL 实例。
+3. 在`<user>@yourtenant.onmicrosoft.com`Azure 数据库中为 PostgreSQL 创建角色。
+4. 成为`<user>@yourtenant.onmicrosoft.com`角色的成员azure_ad_user。 这只能提供给 Azure AD 用户。
+
+**例子：**
+
+```sql
+CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
+```
+
+> [!NOTE]
+> 通过 Azure AD 对用户进行身份验证不会授予用户访问 PostgreSQL 数据库 Azure 数据库中的对象的任何权限。 您必须手动授予用户所需的权限。
+
+## <a name="creating-azure-ad-groups-in-azure-database-for-postgresql"></a>在 Azure 数据库中为 PostgreSQL 创建 Azure AD 组
+
+要启用 Azure AD 组以访问数据库，请使用与用户相同的机制，而是指定组名称：
+
+**例子：**
+
+```sql
+CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;
+```
+
+登录时，组成员将使用其个人访问令牌，但使用指定为用户名的组名称进行签名。
 
 ## <a name="token-validation"></a>令牌验证
 

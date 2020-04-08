@@ -3,12 +3,12 @@ title: 主动学习建议 - QnA 制造商
 description: 主动学习建议允许您根据用户提交向问答对推荐其他问题，从而提高知识库的质量。
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: af4f6b399bfd537b38ea741d03e59371ee81e588
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: edbe06b12fbb97473b28ccca968fd3e7d8366152
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80053143"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804203"
 ---
 # <a name="active-learning-suggestions"></a>主动学习建议
 
@@ -27,7 +27,7 @@ QnA Maker 通过隐式和显式反馈学习新的问题变体。
 
 ## <a name="how-active-learning-works"></a>主动学习的工作原理
 
-活动学习根据 QnA Maker 返回的前几个答案的分数触发。 如果匹配查询的 QnA 集之间的分数差异位于一个小范围内，则查询将被视为每个可能的 QnA 对的可能建议（作为备用问题）。 接受特定 QnA 对的建议问题后，其他对将拒绝该问题。 在接受建议后，您需要记住保存和训练。
+活动学习根据 QnA Maker 返回的前几个答案的分数触发。 如果匹配查询的 QnA 对之间的分数差异位于一个小范围内，则查询将被视为每个可能的 QnA 对的可能建议（作为备用问题）。 接受特定 QnA 对的建议问题后，其他对将拒绝该问题。 在接受建议后，您需要记住保存和训练。
 
 在终结点获得合理数量和类型的使用查询的情况下，主动学习可提供最佳建议。 当 5 个或更多类似的查询被群集时，每 30 分钟一次，QnA Maker 会向知识库设计人员建议基于用户的问题接受或拒绝。 所有建议通过相似度聚集在一起，并且根据最终用户的特定查询频率显示替代问题排名靠前的建议。
 

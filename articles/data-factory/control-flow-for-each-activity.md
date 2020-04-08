@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: b8f95f22553a3b4639b1aba6576ce844116ae20b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71528385563b29ce70edf396434be0174beac105
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73679876"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804837"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Azure 数据工厂中的 ForEach 活动
 ForEach 活动在管道中定义重复的控制流。 此活动用于循环访问集合，并在循环中执行指定的活动。 此活动的循环实现类似于采用编程语言的 Foreach 循环结构。
@@ -68,12 +68,12 @@ ForEach 活动在管道中定义重复的控制流。 此活动用于循环访�
 
 ## <a name="type-properties"></a>Type 属性
 
-properties | 描述 | 允许的值 | 必选
+properties | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
-name | For-Each 活动的名称。 | String | 是
-type | 必须设置为 **ForEach** | String | 是
+name | For-Each 活动的名称。 | 字符串 | 是
+type | 必须设置为 **ForEach** | 字符串 | 是
 isSequential | 指定是否应按顺序或并行执行循环。  一次最多可以并行执行 20 个循环迭代。 例如，如果你有 ForEach 活动，在 **isSequential** 设置为 False 的情况下循环访问含有 10 个不同源和接收器数据集的复制活动，所有副本都执行一次。 默认值为 False。 <br/><br/> 如果“isSequential”被设置为 False，则确保有运行多个可执行文件的正确配置。 否则，应谨慎使用此属性，以避免产生写入冲突。 有关详细信息，请参阅[并行执行](#parallel-execution)部分。 | Boolean | 不是。 默认值为 False。
-batchCount | 要用于控制并行执行数的批计数（当 isSequential 设为 false 时）。 | 整数（最大值为 50） | 不是。 默认值为 20。
+batchCount | 要用于控制并行执行数的批计数（当 isSequential 设为 false 时）。 这是高级并发限制，但 for-每个活动不会始终在此数字处执行 | 整数（最大值为 50） | 不是。 默认值为 20。
 Items | 返回要循环访问的 JSON 数组的表达式。 | 表达式（返回 JSON 数组） | 是
 活动 | 要执行的活动。 | 活动列表 | 是
 

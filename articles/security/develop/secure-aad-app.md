@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
 ms.author: terrylan
-ms.openlocfilehash: 11bf7c0ae05c2e52d59efb32be47ce6bd96fac4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 599c4a31840b47294b43c4c4d1f0200b17f04540
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76937985"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810547"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>为 Azure AD 应用开发安全应用
 ## <a name="overview"></a>概述
@@ -228,7 +228,7 @@ $cert = New-AzApplicationGatewaySSLCertificate -Name cert01 -CertificateFile "C:
 
 $listener = New-AzApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
 
-#Upload the certificate to be used on the SSL-enabled back-end pool resources
+#Upload the certificate to be used on the TLS/SSL-enabled back-end pool resources
 
 #$authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
 
@@ -246,7 +246,7 @@ $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basi
 
 $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 
-#Configure the SSL policy to be used on the application gateway
+#Configure the TLS/SSL policy to be used on the application gateway
 
 $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
 
@@ -361,7 +361,7 @@ Azure 磁盘加密利用 Windows 的 BitLocker 功能，为数据磁盘提供卷
 - Azure Active Directory 是 Microsoft 提供的多租户、基于云的目录和标识管理服务。 此解决方案的所有用户都在 Azure 活动目录中创建，包括访问 Azure WebApp 的用户。
 - Azure 基于角色的访问控制使管理员能够定义细粒度的访问权限，以仅授予用户执行作业所需的访问量。 无需向每个用户授予 Azure 资源的不受限权限，管理员可以只允许使用特定的操作来访问持卡人数据。 订阅访问仅限于订阅管理员。
 - Azure Active Directory Privileged Identity Management 使客户能够最大限度地减少有权访问持卡人数据等特定信息的用户数量。 管理员可以使用 Azure Active Directory Privileged Identity Management 来发现、限制和监视特权标识及其对资源的访问。 还可以根据需要，使用此功能来实施按需、实时的管理访问。
-- Azure 活动目录标识保护检测影响组织身份的潜在漏洞，配置自动响应，以检测到与组织标识相关的可疑操作，并调查可疑事件采取适当的措施来解决它们。
+- Azure 活动目录标识保护可检测影响组织身份的潜在漏洞，配置自动响应，以检测与组织标识相关的可疑操作，并调查可疑事件以采取适当的措施解决它们。
 ### <a name="secrets-management"></a>机密管理
 此解决方案使用 Azure Key Vault 管理密钥和机密。 Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 以下 Azure 密钥保管库功能可帮助客户保护和访问此类数据
    - 根据需要配置高级访问权限策略。
@@ -380,7 +380,7 @@ Azure 磁盘加密利用 Windows 的 BitLocker 功能，为数据磁盘提供卷
    - Azure 安全中心提供区分优先级的安全警报和事件，让客户更轻松地发现和解决潜在安全问题。 针对检测到的每种威胁生成威胁智能报告，帮助事件响应团队调查和解决威胁。
 ### <a name="azure-application-gateway"></a>Azure 应用程序网关 
    体系结构使用配置了 Web 应用程序防火墙并启用了 OWASP 规则集的应用程序网关，来降低安全漏洞风险。 其他功能包括
-   - 端到端 SSL。
+   - 端到端 TLS。
    - 禁用 TLS v1.0 和 v1.1。
    - 启用 TLSv1.2。
    - Web 应用程序防火墙（预防模式）。
@@ -545,7 +545,7 @@ Azure 创建一个默认策略，指定管理员需要双重身份验证才能�
          
    *添加应用程序网关诊断*
 
-   4. 在 **"诊断设置"** 页上，选择您创建的日志分析工作区，然后选择要收集的所有指标并将其发送到 Azure Sentinel。 选择“保存”。****
+   4. 在 **"诊断设置"** 页上，选择您创建的日志分析工作区，然后选择要收集的所有指标并将其发送到 Azure Sentinel。 选择“保存”。 
 
    ![Azure 哨兵连接器设置](./media/secure-aad-app/sentinel-connector-settings.png)
 
@@ -560,5 +560,5 @@ Azure 创建一个默认策略，指定管理员需要双重身份验证才能�
    以下文章可帮助您设计、开发和部署安全应用程序。
 
 - [设计](secure-design.md)
-- [发展](secure-develop.md)
+- [开发](secure-develop.md)
 - [部署](secure-deploy.md)

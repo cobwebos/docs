@@ -7,16 +7,18 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/29/2019
-ms.openlocfilehash: 6319d2d72df69cc9633bd2b2ff8e777c2a48966a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73df5b7f10e038b6894996eb83dec7b6914a4536
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270246"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803184"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>使用 Visual Studio 管理逻辑应用
 
 尽管可以在 [Azure 门户](https://portal.azure.com)中创建、编辑、管理和部署逻辑应用，但在需要将逻辑应用添加到源代码管理、发布不同的版本，以及为各种部署环境创建 [Azure 资源管理器](../azure-resource-manager/management/overview.md)模板时，也可以使用 Visual Studio。 使用 Visual Studio Cloud Explorer 可以查找和管理逻辑应用以及其他 Azure 资源。 例如，可以打开、下载、编辑、运行、禁用和启用已在 Azure 门户中部署的逻辑应用，以及查看其运行历史记录。 如果你还不太熟悉如何在 Visual Studio 中处理 Azure 逻辑应用，请参阅[如何使用 Visual Studio 创建逻辑应用](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)。
+
+您还可以在[Azure 门户中管理逻辑应用](manage-logic-apps-with-azure-portal.md)。
 
 > [!IMPORTANT]
 > 从 Visual Studio 部署或发布逻辑应用会覆盖该应用在 Azure 门户中的版本。 因此，若要在 Azure 门户进行更改并保存这些更改，请务必通过 Azure 门户[刷新 Visual Studio 中的逻辑应用](#refresh)，然后，便可以通过 Visual Studio 部署或发布该应用。
@@ -39,13 +41,13 @@ ms.locfileid: "79270246"
 
   * [Azure SDK（2.9.1 或更高版本）](https://azure.microsoft.com/downloads/)
 
-  * [Azure 电源外壳](https://github.com/Azure/azure-powershell#installation)
+  * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 
   * 适用于所需版本的 Visual Studio 扩展的最新 Azure 逻辑应用工具：
 
     * [视觉工作室 2019](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2019)
 
-    * [视觉工作室 2017](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2017)
+    * [Visual Studio 2017](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2017)
 
     * [Visual Studio 2015](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2015)
 
@@ -200,7 +202,7 @@ ms.locfileid: "79270246"
 
 * 在 Visual Studio 中的逻辑应用设计器工具栏上，选择“刷新”。****
 
-  -或-
+  \- 或 -
 
 * 在 Visual Studio Cloud Explorer 中打开逻辑应用的快捷菜单，选择“刷新”。****
 

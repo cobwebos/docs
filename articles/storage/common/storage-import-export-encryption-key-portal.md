@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: ca1327a547e8550e47ff37e4ba100fcbd2b7a79f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7077b5e94800d93833f259fefd0cd4c168ec867
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282454"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811439"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>在 Azure 密钥保管库中使用客户管理的密钥以进行导入/导出服务
 
@@ -103,7 +103,7 @@ Azure 导入/导出保护用于通过加密密钥锁定驱动器的 BitLocker �
 | CmkErrorAccess被吊销 | 应用了客户托管密钥，但密钥访问当前已吊销。 有关详细信息，请参阅如何[启用密钥访问](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy)。                                                      | 是，检查是否： <ol><li>密钥保管库在访问策略中仍具有 MSI。</li><li>访问策略提供获取、包装、取消包装的权限。</li><li>如果密钥保管库位于防火墙后面的 vNet 中，请检查是否启用了**允许 Microsoft 受信任服务**。</li></ol>                                                                                            |
 | CmkError 已禁用      | 应用了客户托管密钥，但该密钥已禁用。 有关详细信息，请参阅如何[启用密钥](https://docs.microsoft.com/rest/api/keyvault/vaults/createorupdate)。                                                                             | 是，通过启用密钥版本     |
 | CmkError 未找到      | 应用了客户托管密钥，但找不到该密钥。 <br>如果在保留期后删除和清除密钥，则无法恢复该密钥。 如果备份了密钥，则可以还原密钥以解决此问题。 | 否，密钥已被删除，并在保留期后被清除。 <br>是，只有当客户有密钥备份并还原密钥时。  |
-| CmkErrorVault 未找到 | 应用了客户托管密钥，但找不到与密钥关联的密钥保管库。<br>如果删除了密钥保管库，则无法恢复客户托管密钥。  如果将密钥保管库迁移到其他租户，请参阅在[订阅移动后更改密钥保管库租户 ID。](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix) |   否，如果客户已删除密钥保管库。<br> 是，如果密钥保管库进行了租户迁移，则执行以下操作之一： <ol><li>将密钥保管库移回旧租户。</li><li>设置标识 = 无，然后返回标识 = 系统分配，这将删除并重新创建标识</li></ol><br>注意：租户迁移案例是基于有限理解，需要测试和确认实际行为，可以稍后修改。 |
+| CmkErrorVault 未找到 | 应用了客户托管密钥，但找不到与密钥关联的密钥保管库。<br>如果删除了密钥保管库，则无法恢复客户托管密钥。  如果将密钥保管库迁移到其他租户，请参阅在[订阅移动后更改密钥保管库租户 ID。](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix) |   否，如果客户已删除密钥保管库。<br> 是，如果密钥保管库进行了租户迁移，则执行以下操作之一： <ol><li>将密钥保管库移回旧租户。</li><li>设置标识 = 无，然后返回标识 = 系统分配，这将删除并重新创建标识</li></ol>|
 
 ## <a name="next-steps"></a>后续步骤
 

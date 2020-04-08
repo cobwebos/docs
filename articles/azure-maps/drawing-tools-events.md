@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: cf9c79f608aa3ffd1137be41ff3348f62b890867
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8509af7829910bdda8bba3d63553e83626fe784
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198303"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804667"
 ---
 # <a name="drawing-tool-events"></a>绘图工具事件
 
 在地图上使用绘图工具时，当用户在地图上绘制时，对某些事件做出反应非常有用。 此表列出了`DrawingManager`类支持的所有事件。
 
-| 事件 | 描述 |
+| 事件 | 说明 |
 |-------|-------------|
 | `drawingchanged` | 当添加或更改形状中的任何坐标时触发。 | 
 | `drawingchanging` | 显示形状的任何预览坐标时触发。 例如，此事件将在拖动坐标时触发多次。 | 
@@ -31,7 +31,7 @@ ms.locfileid: "77198303"
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="绘图工具事件" src="https://codepen.io/azuremaps/embed/dyPMRWo?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="绘图工具事件" src="https://codepen.io/azuremaps/embed/dyPMRWo?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 在<a href='https://codepen.io'>CodePen</a>上按 Azure<a href='https://codepen.io/azuremaps'>@azuremaps</a>映射 （） 查看笔<a href='https://codepen.io/azuremaps/pen/dyPMRWo'>绘图工具事件</a>。
 </iframe>
 
@@ -59,7 +59,7 @@ ms.locfileid: "77198303"
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="在多边形区域中绘制和搜索" src="https://codepen.io/azuremaps/embed/eYmZGNv?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="在多边形区域中绘制和搜索" src="https://codepen.io/azuremaps/embed/eYmZGNv?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 在<a href='https://codepen.io'>CodePen</a>上，通过 Azure 地图 （）<a href='https://codepen.io/azuremaps'>@azuremaps</a>在<a href='https://codepen.io/azuremaps/pen/eYmZGNv'>多边形区域查看笔绘制和搜索</a>。
 </iframe>
 
@@ -71,7 +71,7 @@ ms.locfileid: "77198303"
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="测量工具" src="https://codepen.io/azuremaps/embed/RwNaZXe?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="测量工具" src="https://codepen.io/azuremaps/embed/RwNaZXe?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 在<a href='https://codepen.io'>CodePen</a>上按 Azure<a href='https://codepen.io/azuremaps'>@azuremaps</a>地图 （） 查看笔<a href='https://codepen.io/azuremaps/pen/RwNaZXe'>测量工具</a>。
 </iframe>
 

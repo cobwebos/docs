@@ -3,12 +3,12 @@ title: 从数据源导入 - QnA 制造商
 description: QnA Maker 知识库由一组问答 （QnA） 集和与每个 QnA 对关联的可选元数据组成。
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: e7772b2c76dfb92ced4d2c0d4b8dae97a59d1b83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f648e15be803159dadb3f8bd047b2f46885eec91
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79457815"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804276"
 ---
 # <a name="importing-from-data-sources"></a>从数据源导入
 
@@ -56,7 +56,7 @@ Chit 聊天 QnA 内容集以多种语言和会话样式作为完整的内容数�
 
 ## <a name="export-as-example"></a>导出为示例
 
-如果您不确定如何在`.tsv`文件中表示 QnA 集：
+如果您不确定如何在`.tsv`文件中表示 QnA 对：
 * 使用[GitHub 的此可下载示例](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Structured-multi-turn-format.xlsx?raw=true)
 * 或者在 QnA Maker 门户中创建集，保存，然后导出知识库，以了解如何表示集的示例。
 

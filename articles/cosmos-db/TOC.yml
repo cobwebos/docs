@@ -597,6 +597,8 @@
           items:
             - name: 弹性缩放
               href: manage-scale-cassandra.md
+            - name: 辅助索引
+              href: cassandra-secondary-index.md
         - name: 操作指南
           items:
             - name: 更改源
@@ -1012,12 +1014,12 @@
           href: ../private-link/create-private-endpoint-cosmosdb-portal.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: 配置跨源资源共享 (CORS)
           href: how-to-configure-cross-origin-resource-sharing.md
-        - name: 使用托管标识保护密钥
+        - name: 使用托管标识访问数据
           href: managed-identity-based-authentication.md
           displayName: 'msi, managed service identity, aad, azure active directory, identity'
-        - name: 使用 Azure AD 进行基于证书的身份验证
+        - name: 使用证书访问数据
           href: certificate-based-authentication.md
-        - name: 使用 Key Vault 保护密钥
+        - name: 使用 Azure Key Vault 访问数据
           href: access-secrets-from-keyvault.md
         - name: 将用户访问权限仅限于数据操作
           href: how-to-restrict-user-data.md

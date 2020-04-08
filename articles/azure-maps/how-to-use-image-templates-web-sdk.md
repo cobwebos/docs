@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: f3b1141ea3c3c8e33b8a2ae12c22b6962a90d32b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ee8e8ee4ca64de0390b6fa34e36fb4d06348a8ac
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198218"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804803"
 ---
 # <a name="how-to-use-image-templates"></a>如何使用图像模板
 
@@ -58,7 +58,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="带有内置图标模板的符号图层" src="//codepen.io/azuremaps/embed/VoQMPp/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="带有内置图标模板的符号图层" src="//codepen.io/azuremaps/embed/VoQMPp/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 在<a href='https://codepen.io'>CodePen</a>上，通过 Azure 地图 （）<a href='https://codepen.io/azuremaps'>@azuremaps</a>查看<a href='https://codepen.io/azuremaps/pen/VoQMPp/'>具有内置图标模板的笔符号图层</a>。
 </iframe>
 
@@ -70,7 +70,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="带内置图标模板的线图层" src="//codepen.io/azuremaps/embed/KOQvJe/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="带内置图标模板的线图层" src="//codepen.io/azuremaps/embed/KOQvJe/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 在<a href='https://codepen.io'>CodePen</a>上，通过 Azure 地图 （）<a href='https://codepen.io/azuremaps'>@azuremaps</a>查看<a href='https://codepen.io/azuremaps/pen/KOQvJe/'>具有内置图标模板的笔线图层</a>。
 </iframe>
 
@@ -85,7 +85,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="使用内置图标模板填充多边形" src="//codepen.io/azuremaps/embed/WVMEmz/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="使用内置图标模板填充多边形" src="//codepen.io/azuremaps/embed/WVMEmz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 在<a href='https://codepen.io'>CodePen</a>上，通过 Azure 映射 （）<a href='https://codepen.io/azuremaps'>@azuremaps</a>使用<a href='https://codepen.io/azuremaps/pen/WVMEmz/'>内置图标模板查看笔填充多边形</a>。
 </iframe>
 
@@ -100,7 +100,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="带有内置图标模板的 HTML 标记" src="//codepen.io/azuremaps/embed/EqQvzq/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="带有内置图标模板的 HTML 标记" src="//codepen.io/azuremaps/embed/EqQvzq/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 在<a href='https://codepen.io'>CodePen</a>上，通过 Azure 映射 （）<a href='https://codepen.io/azuremaps'>@azuremaps</a>查看<a href='https://codepen.io/azuremaps/pen/EqQvzq/'>具有内置图标模板的</a>笔 HTML 标记。
 </iframe>
 
@@ -108,7 +108,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 如果应用程序使用不同的图标使用同一图标，或者正在创建添加其他图像模板的模块，则可以轻松地从 Azure 地图 Web SDK 添加和检索这些图标。 在`atlas`命名空间上使用以下静态函数。
 
-| “属性” | 返回类型 | 描述 | 
+| 名称 | 返回类型 | 说明 | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | 将自定义 SVG 图像模板添加到地图集命名空间。 |
 |  `getImageTemplate(templateName: string, scale?: number)`| 字符串 | 按名称检索 SVG 模板。 |
@@ -116,7 +116,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 SVG 图像模板支持以下占位符值：
 
-| 占位符 | 描述 |
+| 占位符 | 说明 |
 |-|-|
 | `{color}` | 主颜色。 | 
 | `{secondaryColor}` | 辅助颜色。 | 
@@ -127,7 +127,7 @@ SVG 图像模板支持以下占位符值：
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="将自定义图标模板添加到地图集命名空间" src="//codepen.io/azuremaps/embed/NQyvEX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="将自定义图标模板添加到地图集命名空间" src="//codepen.io/azuremaps/embed/NQyvEX/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 请参阅在 CodePen 上按 Azure 地图 （）<a href='https://codepen.io/azuremaps'>@azuremaps</a><a href='https://codepen.io/azuremaps/pen/NQyvEX/'>向地图集添加自定义图标模板</a><a href='https://codepen.io'>的笔</a>。
 </iframe>
 

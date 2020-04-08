@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: b1f75a5f7a97907bf5b8bb460ff2df420d053f9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e764e6a474b9843d43f9e8af9cf3b6a8ddf37189
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75386793"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811646"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>为 Azure 云服务配置自定义域名
 创建云服务时，Azure 会将其分配给 **cloudapp.net** 的子域。 例如，如果云服务名为“contoso”，则用户能够在 URL（如 `http://contoso.cloudapp.net`）上访问应用程序。 Azure 还会将分配一个虚拟 IP 地址。
@@ -30,7 +30,7 @@ ms.locfileid: "75386793"
 <p/>
 
 > [!TIP]
-> 快速入门 - 使用全新的 Azure [操作实例指南](https://support.microsoft.com/kb/2990804)！  它可使自定义域名快速地与 Azure 云服务或 Azure 网站相关联，并确保通信安全 (SSL)。
+> 快速入门 - 使用全新的 Azure [操作实例指南](https://support.microsoft.com/kb/2990804)！  它使将自定义域名关联并保护与 Azure 云服务或 Azure 网站的通信 （TLS） 成为一个快照。
 > 
 > 
 
@@ -128,7 +128,7 @@ CNAME 记录将*特定*域（如**contoso.com**或**\.www contoso.com）** 映�
 * [如何将 CDN 内容映射到自定义域](../cdn/cdn-map-content-to-custom-domain.md)
 * [云服务的常规配置](cloud-services-how-to-configure-portal.md)。
 * 了解如何[部署云服务](cloud-services-how-to-create-deploy-portal.md)。
-* 配置 [SSL 证书](cloud-services-configure-ssl-certificate-portal.md)。
+* 配置[TLS/SSL 证书](cloud-services-configure-ssl-certificate-portal.md)。
 
 [Expose Your Application on a Custom Domain]: #access-app
 [Add a CNAME Record for Your Custom Domain]: #add-cname

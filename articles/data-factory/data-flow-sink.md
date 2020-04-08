@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: a0b9d424c1995fba075c05ffe5058e297d764775
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8941c097fbb2d05c3a28be87d216b7a2679ebc68
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531254"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804888"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>映射数据流的接收器转换
 
@@ -30,7 +30,7 @@ ms.locfileid: "79531254"
 * [Azure 数据存储湖存储第 1 代](connector-azure-data-lake-store.md#mapping-data-flow-properties)（JSON、Avro、文本、镶木地板）
 * [Azure 数据存储第 2 代](connector-azure-data-lake-storage.md#mapping-data-flow-properties)（JSON、Avro、文本、镶木地板）
 * [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties)
-* [Azure SQL 数据库](connector-azure-sql-database.md#mapping-data-flow-properties)
+* [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties)
 * [Azure 宇宙DB](connector-azure-cosmos-db.md#mapping-data-flow-properties)
 
 特定于这些连接器的**设置位于"设置"** 选项卡中。有关这些设置的信息位于连接器文档中。 
@@ -39,7 +39,9 @@ Azure 数据工厂可以访问[90 多个本机连接器](connector-overview.md)�
 
 ## <a name="sink-settings"></a>接收器设置
 
-添加接收器后，通过 **"接收器"** 选项卡进行配置。在这里，您可以选择或创建接收器写入的数据集 
+添加接收器后，通过 **"接收器"** 选项卡进行配置。在这里，您可以选取或创建接收器写入的数据集。 下面是一个视频，解释文本分隔文件类型的许多不同的 Sink 选项：
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tf7T]
 
 ![接收器设置](media/data-flow/sink-settings.png "水槽设置")
 

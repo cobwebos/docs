@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 8244a0f164c8578bf9f79e4b66beb529b6a15f67
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: f31c084be2fb017c0db521328e4ccdff9dd2aa25
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586015"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810469"
 ---
-# <a name="planning-and-operations-guide"></a>规划和运营指南
+# <a name="planning-and-operations-guide"></a>规划和操作指南
 本指南面向计划使用 Azure 安全中心的信息技术 （IT） 专业人员、IT 架构师、信息安全分析师和云管理员。
 
 
@@ -25,7 +25,7 @@ ms.locfileid: "80586015"
 * 安全角色和访问控制
 * 安全策略和建议
 * 数据收集和存储
-* 持续使用的非 Azure 资源
+* 载入非 Azure 资源
 * 持续安全监视
 * 事件响应
 

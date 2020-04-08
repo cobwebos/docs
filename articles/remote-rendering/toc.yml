@@ -1,0 +1,20 @@
+- name: “Azure 远程渲染”文档
+  href: index.yml
+- name: 概述
+  expanded: true
+  href: overview/toc.yml
+- name: 快速入门
+  expanded: true
+  href: quickstarts/toc.yml
+- name: 教程
+  href: tutorials/toc.yml
+- name: 示例
+  href: samples/toc.yml
+- name: 概念
+  href: concepts/toc.yml
+- name: 操作指南
+  href: how-tos/toc.yml
+- name: 参考
+  href: reference/toc.yml
+- name: 资源
+  href: resources/toc.yml

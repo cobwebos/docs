@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 50dbca0b3a761b72134eaa6cfed57e231be4ef13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6f61de23ab4b637cfb5b8ee365ddea9764bf515
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74421029"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810205"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>部署拆分/合并服务以在分片数据库之间移动数据
 
@@ -38,7 +38,7 @@ ms.locfileid: "74421029"
 
 ## <a name="prerequisites"></a>先决条件
 
-1. 创建将用作拆分/合并状态数据库的 Azure SQL DB。 转到[Azure 门户](https://portal.azure.com)。 创建新的 **SQL** 数据库。 为数据库指定一个名称，并创建一个新的管理员和密码。 确保记录该名称和密码以供日后使用。
+1. 创建将用作拆分/合并状态数据库的 Azure SQL DB。 转到 [Azure 门户](https://portal.azure.com)。 创建新的 **SQL** 数据库。 为数据库指定一个名称，并创建一个新的管理员和密码。 确保记录该名称和密码以供日后使用。
 
 1. 确保 Azure SQL DB 服务器允许 Azure 服务与其连接。 在门户上的“防火墙设置”**** 中，确保“允许访问 Azure 服务”**** 设置设为“打开”****。 单击“保存”图标。
 
@@ -107,7 +107,7 @@ ms.locfileid: "74421029"
 
 ### <a name="upload-the-pfx-file-to-the-cloud-service"></a>将 PFX 文件上传到云服务
 
-1. 转到[Azure 门户](https://portal.azure.com)。
+1. 转到 [Azure 门户](https://portal.azure.com)。
 2. 选择“云服务”****。
 3. 选择之前为拆分/合并服务创建的云服务。
 4. 单击顶部菜单上的“证书”****。
@@ -150,7 +150,7 @@ ms.locfileid: "74421029"
 
 ## <a name="troubleshoot-the-deployment"></a>排查部署问题
 
-如果 Web 角色无法联机，可能是安全配置出了问题。 检查 SSL 是否按照上面的描述进行了配置。
+如果 Web 角色无法联机，可能是安全配置出了问题。 检查 TLS/SSL 是否按照上述配置。
 
 如果辅助角色无法联机，但是 Web 角色已成功，很可能是在连接到之前创建的状态数据库时出现了问题。
 
@@ -254,7 +254,7 @@ ms.locfileid: "74421029"
     -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
-5. 执行*ExecuteSampleSplitMerge.ps1*脚本以执行拆分操作（将第一个分片上一半的数据移动到第二个分片），然后执行合并操作（将数据移回第一个分片）。 如果已配置 SSL 并且已将 http 终结点保留为禁用，请确保改为使用 https:// 终结点。
+5. 执行*ExecuteSampleSplitMerge.ps1*脚本以执行拆分操作（将第一个分片上一半的数据移动到第二个分片），然后执行合并操作（将数据移回第一个分片）。 如果配置 TLS 并禁用 http 终结点，请确保改用https://终结点。
 
    示例命令行：
 
@@ -333,7 +333,7 @@ ms.locfileid: "74421029"
 
    `Invoke-WebRequest : The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.`
 
-此错误表示 SSL 证书未正确配置。 请按照“与 Web 浏览器连接”部分中的说明进行操作。
+此错误表示未正确配置 TLS/SSL 证书。 请按照“与 Web 浏览器连接”部分中的说明进行操作。
 
 如果无法提交请求，可能会看到:
 

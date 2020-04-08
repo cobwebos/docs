@@ -1,15 +1,16 @@
 ---
-title: 在 Azure Kubernetes 服务中使用 RBAC 和 Azure AD 控制群集资源
+title: 对群集使用 Azure AD 和 RBAC
+titleSuffix: Azure Kubernetes Service
 description: 了解如何使用 Azure Active Directory 组成员身份在 Azure Kubernetes 服务 (AKS) 中通过基于角色的访问控制 (RBAC) 来限制对群集资源的访问
 services: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.openlocfilehash: 456b6dcdd590b48e06c830db85b726d4bebb69e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad195085c049776bf0db418c57f2c72830f1adff
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596515"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803563"
 ---
 # <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes 服务中使用基于角色的访问控制和 Azure Active Directory 标识来控制对群集资源的访问
 
@@ -17,11 +18,11 @@ ms.locfileid: "77596515"
 
 本文介绍如何使用 Azure AD 组成员身份在 AKS 群集中通过 Kubernetes RBAC 来控制对命名空间和群集资源的访问。 将在 Azure AD 中创建示例组和用户，然后在 AKS 群集中创建角色和角色绑定，以授予创建和查看资源的相应权限。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 本文假设已有一个启用了 Azure AD 集成的现有 AKS 群集。 如需 AKS 群集，请参阅[将 Azure Active Directory 与 AKS 集成][azure-ad-aks-cli]。
 
-需要安装并配置 Azure CLI 2.0.61 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
+需要安装并配置 Azure CLI 2.0.61 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
 ## <a name="create-demo-groups-in-azure-ad"></a>在 Azure AD 中创建演示组
 

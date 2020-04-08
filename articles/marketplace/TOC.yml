@@ -173,7 +173,7 @@
         - name: Azure 应用程序产品/服务
           href: ./cloud-partner-portal/azure-applications/cpp-azure-app-offer.md
           items:
-            - name: 必备条件
+            - name: 先决条件
               href: ./cloud-partner-portal/azure-applications/cpp-prerequisites.md
             - name: 创建 Azure 应用程序套餐
               href: ./cloud-partner-portal/azure-applications/cpp-create-offer.md
@@ -199,7 +199,7 @@
         - name: 咨询服务
           href: ./cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md
           items:
-            - name: 必备条件
+            - name: 先决条件
               href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-prerequisites.md
             - name: 创建咨询服务套餐
               href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-create-offer.md
@@ -213,7 +213,7 @@
         - name: 容器套餐
           href: ./cloud-partner-portal/containers/cpp-containers-offer.md
           items:
-            - name: 必备条件
+            - name: 先决条件
               href: ./cloud-partner-portal/containers/cpp-prerequisites.md
             - name: 创建容器套餐
               href: ./cloud-partner-portal/containers/cpp-create-offer.md
@@ -250,7 +250,7 @@
         - name: Dynamics 365 for Customer Engagement 产品/服务
           href: ./cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer.md
           items:
-            - name: 必备条件
+            - name: 先决条件
               href: ./cloud-partner-portal/dyn365ce/cpp-prerequisites.md
             - name: 创建客户参与套餐
               href: ./cloud-partner-portal/dyn365ce/cpp-create-offer.md
@@ -272,7 +272,7 @@
         - name: Dynamics 365 for Operations 套餐
           href: ./cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md
           items:
-            - name: 必备条件
+            - name: 先决条件
               href: ./cloud-partner-portal-orig/pre-requisites.md
             - name: 如何发布
               href: ./cloud-partner-portal-orig/manage-dynamics-365-for-operations.md
@@ -289,7 +289,7 @@
         - name: IoT Edge 模块套餐
           href: ./cloud-partner-portal/iot-edge-module/cpp-offer-process-parts.md
           items:
-            - name: 必备条件
+            - name: 先决条件
               href: ./cloud-partner-portal/iot-edge-module/cpp-prerequisites.md
             - name: 创建 IoT Edge 模块套餐
               href: ./cloud-partner-portal/iot-edge-module/cpp-create-offer.md
@@ -311,7 +311,7 @@
         - name: Power BI 应用套餐
           href: ./cloud-partner-portal/power-bi/cpp-power-bi-offer.md
           items:
-            - name: 必备条件
+            - name: 先决条件
               href: ./cloud-partner-portal/power-bi/cpp-prerequisites.md
             - name: 创建 Power BI 应用套餐
               href: ./cloud-partner-portal/power-bi/cpp-create-offer.md
@@ -335,7 +335,7 @@
         - name: 虚拟机套餐
           href: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
           items:
-            - name: 必备条件
+            - name: 先决条件
               href: ./cloud-partner-portal/virtual-machine/cpp-prerequisites.md
             - name: 创建 VM 套餐
               href: ./cloud-partner-portal/virtual-machine/cpp-create-offer.md
@@ -399,7 +399,7 @@
       items:
         - name: 概述
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md
-        - name: 必备条件
+        - name: 先决条件
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-prerequisites.md
         - name: 注意事项
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-considerations.md
@@ -407,9 +407,9 @@
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-concurrency-control.md
         - name: 检索产品/服务
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-offers.md
-        - name: 检索特定套餐
+        - name: 检索特定产品/服务
           href: ./cloud-partner-portal-orig//cloud-partner-portal-api-retrieve-specific-offer.md
-        - name: 添加或修改套餐
+        - name: 添加或修改产品/服务
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-creating-offer.md
         - name: 检索产品/服务状态
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-offer-status.md
@@ -443,7 +443,7 @@
           href: ./partner-center-portal/company-work-accounts.md
         - name: 将帐户从 CPP 迁移到合作伙伴中心
           href: ./partner-center-portal/account-migration-from-cpp-to-pc.md
-    - name: 创建新套餐
+    - name: 创建新产品/服务
       items:
         - name: Azure 应用程序产品/服务
           items:
@@ -453,6 +453,12 @@
               href: ./partner-center-portal/azure-apps-review-feedback.md
             - name: 用于载入的 API
               href: ./partner-center-portal/azure-app-apis.md
+        - name: 咨询服务
+          items:
+            - name: 先决条件
+              href: ./partner-center-portal/consulting-service-prerequisites.md
+            - name: 创建咨询服务产品
+              href: ./partner-center-portal/create-consulting-service-offer.md
         - name: Dynamics 365 产品/服务
           items:
             - name: 创建 Dynamics 365 for Customer Engagement & PowerApps 产品/服务
@@ -461,6 +467,22 @@
               href: ./partner-center-portal/create-new-operations-offer.md
             - name: Dynamics 365 Business Central 产品/服务
               href: ./partner-center-portal/create-new-business-central-offer.md
+        - name: IoT Edge 模块产品/服务
+          items:
+            - name: 准备 IoT Edge 模块技术资产
+              href: ./partner-center-portal/create-iot-edge-module-asset.md
+            - name: 创建 IoT Edge 模块产品/服务
+              href: ./partner-center-portal/azure-iot-edge-module-creation.md
+        - name: 托管服务产品
+          items:
+            - name: 创建托管服务产品
+              href: ./partner-center-portal/create-new-managed-service-offer.md
+        - name: Power BI 应用产品/服务
+          items:
+            - name: 发布概述
+              href: ./partner-center-portal/create-power-bi-app-overview.md
+            - name: 创建 Power BI 应用产品/服务
+              href: ./partner-center-portal/create-power-bi-app-offer.md
         - name: SaaS 产品/服务
           items:
             - name: SaaS 产品/服务创建清单
