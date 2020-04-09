@@ -85,7 +85,7 @@
           href: deployment-tutorial-pipeline.md
     - name: 高级模板
       items:
-        - name: 利用模板参考
+        - name: 使用模板参考
           href: template-tutorial-use-template-reference.md
         - name: 创建多个实例
           displayName: 'iteration,copy'
@@ -291,6 +291,8 @@
           href: template-functions-array.md
         - name: 比较函数
           href: template-functions-comparison.md
+        - name: 日期函数
+          href: template-functions-date.md
         - name: 部署函数
           href: template-functions-deployment.md
         - name: 逻辑函数

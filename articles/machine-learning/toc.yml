@@ -15,24 +15,27 @@
 - name: 教程
   expanded: true
   items:
-    - name: 工作室和设计器
+    - name: 工作室
       items:
         - name: 设计器（拖放）
           items:
-            - name: 设计器：1. 训练回归模型
+            - name: 1. 训练回归模型
               displayName: studio
               href: tutorial-designer-automobile-price-train-score.md
-            - name: 设计器：2. 部署该模型
+            - name: 2. 部署该模型
               displayName: studio
               href: tutorial-designer-automobile-price-deploy.md
         - name: 自动化 ML (UI)
           items:
-            - name: 创建自动化 ML 试验
+            - name: 创建自动化机器学习试验
               displayName: 'automl, automated, auto ml, portal, ui'
               href: tutorial-first-experiment-automated-ml.md
-            - name: 使用自动 ML 预测需求（自行车共享数据）
+            - name: 预测需求（自行车共享数据）
               displayName: 'automl, automated, auto ml, portal, ui'
               href: tutorial-automated-ml-forecast.md
+        - name: 标记图像数据
+          displayName: 'tag, tagging, images'
+          href: tutorial-labeling.md
     - name: Python SDK
       items:
         - name: 创建首个 ML 试验
@@ -78,14 +81,14 @@
     - name: Jupyter Notebook
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
-    - name: Azure 开放数据集
-      href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
     - name: 设计器数据集
       href: sample-designer-datasets.md
+    - name: 设计器示例管道
+      href: samples-designer.md
     - name: 端到端 MLOps 示例
       href: 'https://github.com/microsoft/MLOps'
-    - name: 设计器管道
-      href: samples-designer.md
+    - name: 开放数据集（公共）
+      href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: 概念
   items:
     - name: 工作区
@@ -118,7 +121,7 @@
     - name: 自动化机器学习
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
-    - name: 管理 ML 缺陷
+    - name: 过度拟合与不均衡的数据
       displayName: 'automl, auto ml, risks'
       href: concept-manage-ml-pitfalls.md
     - name: 计算实例
@@ -351,6 +354,8 @@
       items:
         - name: 创建 ML 管道 (Python)
           href: how-to-create-your-first-pipeline.md
+        - name: 将数据移入 ML 管道和在 ML 管道之间移动数据的步骤 (Python)
+          href: how-to-move-data-in-out-of-pipelines.md
         - name: 计划管道 (Python)
           href: how-to-schedule-pipelines.md
         - name: 触发管道

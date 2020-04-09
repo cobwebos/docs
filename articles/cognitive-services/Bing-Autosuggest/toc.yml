@@ -26,15 +26,13 @@
           href: quickstarts/ruby.md
     - name: 客户端库
       items:
-        - name: 'C#'
-          href: quickstarts/csharp-sdk.md
-        - name: Go
-          href: quickstarts/go-sdk.md
+        - name: 必应自动建议客户端库
+          href: ./quickstarts/client-libraries.md
 - name: 教程
   items:
     - name: 单页 Web 应用
       href: tutorials/autosuggest.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 从 v5 升级到 v7
       href: bing-autosuggest-upgrade-guide-v5-to-v7.md

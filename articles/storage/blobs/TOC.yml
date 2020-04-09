@@ -4,6 +4,8 @@
   items:
     - name: 什么是 Azure Blob 存储？
       href: storage-blobs-overview.md
+    - name: 比较核心存储服务
+      href: ../common/storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   expanded: true
 - name: Blob 存储
   items:

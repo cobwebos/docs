@@ -113,6 +113,8 @@
       items:
         - name: 什么是文本转语音？
           href: text-to-speech.md
+        - name: “文本转语音”基本知识
+          href: text-to-speech-basics.md
     - name: 快速入门
       items:
         - name: 将语音合成到扬声器

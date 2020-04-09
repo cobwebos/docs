@@ -3,12 +3,12 @@ title: 使用 Jenkins 和 Azure CLI 将应用部署到 Azure Spring Cloud
 description: 了解如何使用持续集成和部署管道中的 Azure CLI 将微服务部署到 Azure Spring Cloud 服务
 ms.topic: tutorial
 ms.date: 01/07/2020
-ms.openlocfilehash: 67ad97bb762ed302ef52c404d47c5755ea4b245b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bc48eecc9e73b95fd9112d645135409c24369e10
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75732850"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810219"
 ---
 # <a name="tutorial-deploy-apps-to-azure-spring-cloud-using-jenkins-and-the-azure-cli"></a>教程：使用 Jenkins 和 Azure CLI 将应用部署到 Azure Spring Cloud
 
@@ -28,7 +28,7 @@ ms.locfileid: "75732850"
 >[!Note]
 > Azure Spring Cloud 目前以公共预览版的形式提供。 使用公共预览版产品/服务，客户可以在产品/服务正式发布之前体验新功能。  公共预览功能和服务并非供生产使用。  有关预览期间支持的详细信息，请参阅[常见问题解答](https://azure.microsoft.com/support/faq/)或提交[支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。
 
-[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+- **Azure 订阅**：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 * 一个 GitHub 帐户。 如果没有 GitHub 帐户，请在开始前创建一个[免费帐户](https://github.com/)。
 
@@ -141,7 +141,7 @@ ms.locfileid: "75732850"
 
 ### <a name="add-your-azure-service-principal-credential-in-jenkins-credential-store"></a>在 Jenkins 凭据存储中添加 Azure 服务主体凭据
 
-1. 部署到 Azure 需要 Azure 服务主体。 有关详细信息，请参阅“部署到 Azure 应用服务”教程中的 [创建服务主体](https://docs.microsoft.com/azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service#create-service-principal)部分。 `az ad sp create-for-rbac` 的输出如下所示：
+1. 部署到 Azure 需要 Azure 服务主体。 有关详细信息，请参阅“部署到 Azure 应用服务”教程中的 [创建服务主体](https://docs.microsoft.com/azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service#create-service-principal)部分。  `az ad sp create-for-rbac` 的输出如下所示：
 
     ```
     {

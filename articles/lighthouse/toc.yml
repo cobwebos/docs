@@ -33,12 +33,12 @@
     - name: 企业应用场景中的 Azure Lighthouse
       displayName: 'corporation, IT, consolidate'
       href: ./concepts/enterprise.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 将客户载入到 Azure 委派资源管理
       displayName: resource management
       href: ./how-to/onboard-customer.md
-    - name: 将托管服务产品发布到 Azure 市场
+    - name: 向 Azure 市场发布托管服务产品
       displayName: 'managed services offer, azure marketplace, publish, marketplace'
       href: ./how-to/publish-managed-services-offers.md
     - name: 查看和管理客户

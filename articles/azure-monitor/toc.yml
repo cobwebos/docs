@@ -161,8 +161,13 @@
         - name: 基于代码的监视
           items:
             - name: ASP.NET Core
-              displayname: 'Core, .NET Core, services.add, dotnetcore, c#, csharp'
-              href: app/asp-net-core.md
+              items:
+                - name: ASP.NET Core 应用监视
+                  displayname: 'Core, .NET Core, services.add, dotnetcore, c#, csharp'
+                  href: app/asp-net-core.md
+                - name: ILogger
+                  displayname: 'ilogger, logging, log'
+                  href: app/ilogger.md
             - name: ASP.NET
               displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
               href: app/asp-net.md
@@ -172,9 +177,6 @@
             - name: .NET 控制台
               displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
               href: app/console.md
-            - name: ILogger
-              displayname: 'ilogger, logging, log'
-              href: app/ilogger.md
             - name: Java
               items:
                 - name: Web 应用
@@ -224,6 +226,8 @@
               href: app/remove-application-insights.md
         - name: 无代码监视
           items:
+            - name: 任何环境 - Java（预览版）
+              href: app/java-in-process-agent.md
             - name: Azure VM 和规模集
               href: app/azure-vm-vmss-apps.md
             - name: Azure 应用服务

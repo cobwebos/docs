@@ -480,6 +480,8 @@
       items:
         - name: 更改源概述
           href: change-feed.md
+        - name: 更改源设计模式
+          href: change-feed-design-patterns.md
         - name: 读取更改源
           href: read-change-feed.md
         - name: 更改源处理器
@@ -1033,6 +1035,8 @@
       items:
         - name: 监视 Cosmos DB
           href: monitor-cosmos-db.md
+        - name: 监视服务器端延迟
+          href: monitor-server-side-latency.md
         - name: 使用诊断日志进行监视
           href: cosmosdb-monitor-resource-logs.md
         - name: 审核控制平面日志
@@ -1155,7 +1159,7 @@
     - name: 查询备忘单
       href: query-cheat-sheet.md
     - name: SQL 演练
-      href: 'https://aka.ms/cosmos-db-playground'
+      href: 'https://www.documentdb.com/sql/demo'
     - name: 常见问题解答
       href: faq.md
     - name: 白皮书

@@ -45,11 +45,13 @@
       href: concept-reporting-api.md
     - name: Azure Monitor 中的 Azure AD 日志
       href: concept-activity-logs-azure-monitor.md
-- name: 操作方法指南
+- name: 操作指南
   expanded: true
   items:
     - name: 报表
       items:
+        - name: 管理 Azure AD 中的非活动用户帐户
+          href: howto-manage-inactive-user-accounts.md
         - name: 查找活动报表
           href: howto-find-activity-reports.md
         - name: 排查用户登录错误
@@ -74,7 +76,7 @@
           href: howto-integrate-activity-logs-with-splunk.md
         - name: 将活动日志与 SumoLogic 集成
           href: howto-integrate-activity-logs-with-sumologic.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 缺少审核数据
           href: troubleshoot-missing-audit-data.md
