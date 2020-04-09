@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: dapine
-ms.openlocfilehash: 81c77b2f6ae0c4f8497716c168a937657ceb57dd
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: d14760147e202491546982254aa8288bc0184eef
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78383930"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80658292"
 ---
 本快速入门介绍如何使用适用于 Linux 的语音设备 SDK 来生成支持语音的产品，或将其用作[对话听录](../conversation-transcription-service.md)设备。 目前，只有 [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) 受支持。
 
@@ -99,7 +99,7 @@ ms.locfileid: "78383930"
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.10.0</version>
+             <version>1.11.0</version>
         </dependency>
     </dependencies>
    ```

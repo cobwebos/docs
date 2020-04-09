@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/15/2019
 ms.topic: tutorial
-ms.openlocfilehash: 6acb68b7bbaa54db2e4143a42e43aede2caed35f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 332d7e4cae3b65d794d48d208b54db3809b78a8f
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75420707"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632368"
 ---
 # <a name="tutorial-send-an-email-from-an-azure-automation-runbook"></a>教程：从 Azure 自动化 runbook 发送电子邮件
 
@@ -149,7 +149,7 @@ Set-AzKeyVaultAccessPolicy -VaultName $VaultName -ServicePrincipalName $appID -P
 
 7. 选择“发布”  以保存并发布 Runbook。
 
-若要验证 runbook 是否成功执行，可以按[测试 runbook](manage-runbooks.md#test-a-runbook) 或[启动 runbook](start-runbooks.md) 下的步骤操作。
+若要验证 runbook 是否成功执行，可以按[测试 runbook](manage-runbooks.md#testing-a-runbook) 或[启动 runbook](start-runbooks.md) 下的步骤操作。
 如果一开始看不到测试电子邮件，请检查 **Junk** 和 **Spam** 文件夹。
 
 ## <a name="clean-up"></a>清理

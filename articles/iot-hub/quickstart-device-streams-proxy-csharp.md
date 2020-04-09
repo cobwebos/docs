@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: c8ef6a87e839e6d8dfb296e7b24f3d0d95843d1c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 97551ac63066f7064c16a001d9ce1f6bc31465ec
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78675466"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586589"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>快速入门：使用 C# 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案（预览）
 
@@ -30,7 +30,7 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 
 下图演示了本示例中的设备本地和服务本地代理应用程序如何在 SSH 客户端与 SSH 守护程序进程之间实现端到端的连接。 此处假设守护程序在设备本地代理应用程序所在的同一台设备上运行。
 
-![本地代理应用程序设置](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.svg)
+![本地代理应用程序设置](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.png)
 
 1. 服务本地代理应用程序连接到 IoT 中心，并向目标设备发起设备流。
 
@@ -45,7 +45,7 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
