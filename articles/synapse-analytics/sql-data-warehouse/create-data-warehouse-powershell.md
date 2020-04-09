@@ -11,12 +11,12 @@ ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 45982c0761fecdb456dba5dc4a5d604972b9c3e5
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 57564e9dffd6022e1e4fe464b4b26a5bb8eb318b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349318"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631327"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建并查询 Synapse SQL 池
 
@@ -33,24 +33,23 @@ ms.locfileid: "80349318"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
+使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
 
 ```powershell
 Connect-AzAccount
 ```
 
-若要查看正在使用的订阅，请运行 [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription)。
+若要查看正在使用的订阅，请运行 [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 ```powershell
 Get-AzSubscription
 ```
 
-如果需要使用与默认订阅不同的订阅，请运行 [Set-AzContext](/powershell/module/az.accounts/set-azcontext)。
+如果需要使用与默认订阅不同的订阅，请运行 [Set-AzContext](/powershell/module/az.accounts/set-azcontext?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 ```powershell
 Set-AzContext -SubscriptionName "MySubscription"
 ```
-
 
 ## <a name="create-variables"></a>创建变量
 
@@ -75,7 +74,7 @@ $databasename = "mySampleDataWarehouse"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令创建 [Azure 资源组](../../azure-resource-manager/management/overview.md)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 以下示例在 `westeurope` 位置创建名为 `myResourceGroup` 的资源组。
+使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 命令创建 [Azure 资源组](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 以下示例在 `westeurope` 位置创建名为 `myResourceGroup` 的资源组。
 
 ```powershell
 New-AzResourceGroup -Name $resourcegroupname -Location $location
@@ -83,7 +82,7 @@ New-AzResourceGroup -Name $resourcegroupname -Location $location
 
 ## <a name="create-a-logical-server"></a>创建逻辑服务器
 
-使用 [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) 命令创建 [Azure SQL 逻辑服务器](../../sql-database/sql-database-logical-servers.md)。 逻辑服务器包含一组作为组管理的数据库。 以下示例使用管理员用户名 `ServerAdmin` 和密码 `ChangeYourAdminPassword1` 在资源组中创建随机命名的服务器。 根据需要替换这些预定义的值。
+使用 [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 命令创建 [Azure SQL 逻辑服务器](../../sql-database/sql-database-logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 逻辑服务器包含一组作为组管理的数据库。 以下示例使用管理员用户名 `ServerAdmin` 和密码 `ChangeYourAdminPassword1` 在资源组中创建随机命名的服务器。 根据需要替换这些预定义的值。
 
 ```powershell
 New-AzSqlServer -ResourceGroupName $resourcegroupname `
@@ -94,7 +93,7 @@ New-AzSqlServer -ResourceGroupName $resourcegroupname `
 
 ## <a name="configure-a-server-firewall-rule"></a>配置服务器防火墙规则
 
-使用 [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) 命令创建 [Azure SQL 服务器级防火墙规则](../../sql-database/sql-database-firewall-configure.md)。 服务器级防火墙规则允许外部应用程序（例如 SQL Server Management Studio 或 SQLCMD 实用程序）通过 SQL 池服务防火墙连接到 SQL 池。 
+使用 [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 命令创建 [Azure SQL 服务器级防火墙规则](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 服务器级防火墙规则允许外部应用程序（例如 SQL Server Management Studio 或 SQLCMD 实用程序）通过 SQL 池服务防火墙连接到 SQL 池。
 
 在以下示例中，防火墙仅对其他 Azure 资源开放。 要启用外部连接，请将 IP 地址更改为适合你环境的地址。 若要开放所有 IP 地址，请使用 0.0.0.0 作为起始 IP 地址，使用 255.255.255.255 作为结束地址。
 
@@ -108,9 +107,9 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 > SQL 终结点通过端口 1433 进行通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 如果是这样，则将无法连接到 Azure SQL 服务器，除非 IT 部门开放了端口 1433。
 >
 
-
 ## <a name="create-a-sql-pool"></a>创建 SQL 池
-以下示例使用以前定义的变量创建 SQL 池。  它将服务目标指定为 DW100c，这是针对 SQL 池的低成本起点。 
+
+以下示例使用以前定义的变量创建 SQL 池。  它将服务目标指定为 DW100c，这是针对 SQL 池的低成本起点。
 
 ```Powershell
 New-AzSqlDatabase `
@@ -133,15 +132,14 @@ New-AzSqlDatabase `
 
 可选参数有：
 
-- **CollationName**：在不指定的情况下，默认排序规则是 SQL_Latin1_General_CP1_CI_AS。 在数据库上不能更改排序规则。
-- **MaxSizeBytes**：数据库的默认最大大小为 240TB。 最大大小限制行存储数据。 列数据的存储不受限制。
+* **CollationName**：在不指定的情况下，默认排序规则是 SQL_Latin1_General_CP1_CI_AS。 在数据库上不能更改排序规则。
+* **MaxSizeBytes**：数据库的默认最大大小为 240TB。 最大大小限制行存储数据。 列数据的存储不受限制。
 
-有关参数选项的详细信息，请参阅 [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)。
-
+有关参数选项的详细信息，请参阅 [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-本系列中的其他快速入门教程是在本快速入门的基础上制作的。 
+本系列中的其他快速入门教程是在本快速入门的基础上制作的。
 
 > [!TIP]
 > 如何打算继续学习后续快速入门教程，请不要清除本快速入门中创建的资源。 如果不打算继续，请在 Azure 门户中执行以下步骤，删除本快速入门创建的所有资源。

@@ -2,19 +2,19 @@
 title: 快速入门：识别存储在 Blob 存储中的语音 - 语音服务
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 01/13/2020
-ms.author: dapine
-ms.openlocfilehash: 95ff115cfc2cc70deabf66d984bb02991239c2a7
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: cb5b14bd5585c85947ef0dafeae1fb41cb8a4a5c
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75931962"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887444"
 ---
 需要替换以下值：
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dec8f8065114b89dfa7bcaceee3f26855953dde2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3c38900d4ded3d2ee08245674bda90d96226c1eb
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74081775"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396561"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-administrator-console"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Netskope 管理员控制台的集成
 
@@ -82,7 +82,7 @@ ms.locfileid: "74081775"
 
 1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`Netskope_<OrgKey>`
+    a. 在“标识符”  文本框中，使用以下模式键入 URL：`<OrgKey>`
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<tenant_host_name>/saml/acs`
 

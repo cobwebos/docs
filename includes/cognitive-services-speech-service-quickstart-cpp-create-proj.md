@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 1287eb5de1391f40c4409d5d10522d8979ae4207
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 72e9334b4df58b1b90288cb7363a7d94bb531661
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78383912"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80658629"
 ---
 若要创建 Visual Studio 项目以用于 C++ 桌面开发，需要设置 Visual Studio 开发选项，创建项目，选择目标体系结构，然后安装语音 SDK。
 
@@ -77,4 +77,4 @@ ms.locfileid: "78383912"
 
 1. 在“预览更改”  对话框中，选择“确定”  。
 
-1. 在“接受许可证”  对话框中，查看许可证，然后选择“我接受”  。 包安装开始，安装完成后，“输出”  窗格将显示类似于以下文本的消息：`Successfully installed 'Microsoft.CognitiveServices.Speech 1.10.0' to helloworld`。
+1. 在“接受许可证”  对话框中，查看许可证，然后选择“我接受”  。 包安装开始，安装完成后，“输出”  窗格将显示类似于以下文本的消息：`Successfully installed 'Microsoft.CognitiveServices.Speech 1.11.0' to helloworld`。

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 12e5dba0339b6092564e5d35c1a6250b0c47f50f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 94b65b4e7947bc02b1fdaae90c8f774ec216e7bb
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "72755002"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981879"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>Azure Cosmos DB 的 API for MongoDB（3.2 版本）：支持的功能和语法
 
@@ -77,7 +77,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 ## <a name="aggregation-pipelinea"></a>聚合管道</a>
 
-在公共预览版中，Cosmos DB 支持 MongoDB 3.2 的聚合管道。 请参阅 [Azure 博客](https://aka.ms/mongodb-aggregation)，了解有关如何载入到公共预览版的说明。
+在公共预览版中，Cosmos DB 支持 MongoDB 3.2 的聚合管道。 请参阅 [Azure 博客](https://azure.microsoft.com/blog/azure-cosmosdb-extends-support-for-mongodb-aggregation-pipeline-unique-indexes-and-more/)，了解有关如何载入到公共预览版的说明。
 
 ### <a name="aggregation-commands"></a>聚合命令
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: af303928490d2570fa9430bd4b9d30c4a49df304
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 91cf594e74d91b8b4df2108d23459016fa843700
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78675488"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586601"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>快速入门：使用 C 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案（预览）
 
@@ -33,7 +33,7 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 * [使用 C# 代理通过 IoT 中心设备流实现 SSH/RDP 方案](./quickstart-device-streams-proxy-csharp.md)
 * [使用 NodeJS 代理通过 IoT 中心设备流实现 SSH/RDP 方案](./quickstart-device-streams-proxy-nodejs.md)。
 
-![本地代理设置](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.svg)
+![本地代理设置](./media/quickstart-device-streams-proxy-c/device-stream-proxy-diagram.png)
 
 1. 服务本地代理连接到 IoT 中心，并启动发往目标设备的设备流。
 
@@ -48,7 +48,7 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 

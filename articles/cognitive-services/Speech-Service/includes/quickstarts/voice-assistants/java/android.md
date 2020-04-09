@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 03/20/2020
+ms.date: 04/04/2020
 ms.author: travisw
-ms.openlocfilehash: 24030a568dd4df7f3e0888e2bda8f1335e52ba38
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 8a1dd07fd567f41c2b406aabccd0421b5a6983af
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80241792"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671346"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -23,7 +23,7 @@ ms.locfileid: "80241792"
 
 > [!div class="checklist"]
 > * [创建 Azure 语音资源](~/articles/cognitive-services/speech-service/get-started.md)
-> * [设置开发环境并创建空项目](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=android)
+> * [设置开发环境并创建空项目](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=android&pivots=programming-language-java)
 > * 创建连接到 [Direct Line 语音通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)的机器人
 > * 请确保你有权访问麦克风，以便进行音频捕获
 

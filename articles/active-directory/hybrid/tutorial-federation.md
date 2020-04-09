@@ -14,12 +14,12 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a123a85d653415f7b067e0c144c90ed79f2d081
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: e3a17eb7fdde6840ce04fb0cbce13ec3f1a121e0
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80330998"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673702"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>教程：将单个 AD 林环境联合到云中
 
@@ -145,7 +145,7 @@ $ForestMode = "WinThreshold"
 $LogPath = "c:\windows\NTDS"
 $SysVolPath = "c:\windows\SYSVOL"
 $featureLogPath = "c:\poshlog\featurelog.txt" 
-$Password = "Pass1w0rd"
+$Password = ConvertTo-SecureString "Passw0rd" -AsPlainText -Force
 
 #Install AD DS, DNS and GPMC 
 start-job -Name addFeature -ScriptBlock { 

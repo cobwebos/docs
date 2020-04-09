@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: c9447d356cff792d9a70e33cc2a5e35898d8982b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a0c80f18e9cd09b765804aaddbd178b4b3e32a9d
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80131894"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984446"
 ---
 # <a name="quickstart-create-arm-templates-by-using-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建 ARM 模板
 
@@ -132,11 +132,13 @@ ms.locfileid: "80131894"
 4. 在 Cloud Shell 中运行以下命令。 选择用于显示 PowerShell 代码或 CLI 代码的选项卡。
 
     # <a name="cli"></a>[CLI](#tab/CLI)
+
     ```azurecli
-    echo "Enter the Resource Group name:" &&
-    read resourceGroupName &&
+    echo "Enter a project name that is used to generate resource group name:" &&
+    read projectName &&
     echo "Enter the location (i.e. centralus):" &&
     read location &&
+    resourceGroupName="${projectName}rg" &&
     az group create --name $resourceGroupName --location "$location" &&
     az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json"
     ```
@@ -144,8 +146,9 @@ ms.locfileid: "80131894"
     # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ```azurepowershell
-    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
     $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+    $resourceGroupName = "${projectName}rg"
 
     New-AzResourceGroup -Name $resourceGroupName -Location "$location"
     New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json"
@@ -172,6 +175,7 @@ ms.locfileid: "80131894"
 5. 运行以下 CLI 或 PowerShell 命令，列出新建的存储帐户：
 
     # <a name="cli"></a>[CLI](#tab/CLI)
+
     ```azurecli
     echo "Enter the Resource Group name:" &&
     read resourceGroupName &&

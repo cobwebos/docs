@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 5d5b2509b212172758fa867d9f27b829f43aeeaa
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 685d6970b0e88032fe503bf97a139c0b8c0f8a73
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349113"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631349"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建并查询 Synapse SQL 池
 
@@ -29,7 +29,7 @@ ms.locfileid: "80349113"
    > [!NOTE]
    > 在 Azure Synapse 中创建 SQL 池可能会产生新的可计费服务。 有关详细信息，请参阅 [Azure Synapse Analytics 定价](https://azure.microsoft.com/pricing/details/synapse-analytics/)。
 
-2. 下载并安装最新版本的 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。
+2. 下载并安装最新版本的 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -37,7 +37,7 @@ ms.locfileid: "80349113"
 
 ## <a name="create-a-sql-pool"></a>创建 SQL 池
 
-数据仓库是使用 Azure Synapse Analytics 中的 SQL 池创建的。 SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创建的。 数据库在 [Azure 资源组](../../azure-resource-manager/management/overview.md)和 [Azure SQL 逻辑服务器](../../sql-database/sql-database-servers.md)中创建。
+数据仓库是使用 Azure Synapse Analytics 中的 SQL 池创建的。 SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创建的。 数据库在 [Azure 资源组](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)和 [Azure SQL 逻辑服务器](../../sql-database/sql-database-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)中创建。
 
 按照这些步骤创建包含 **AdventureWorksDW** 示例数据的 SQL 池。
 
@@ -54,9 +54,9 @@ ms.locfileid: "80349113"
    | 设置 | 建议的值 | 说明 |
    | :------ | :-------------- | :---------- |
    | **订阅** | 订阅 | 有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.com/Subscriptions)。 |
-   | **资源组** | myResourceGroup | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
-   | **SQL 池名称** | 任何全局唯一的名称（例如 *mySampleDataWarehouse*） | 如需有效的数据库名称，请参阅 [Database Identifiers](/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 请注意，SQL 池是一种数据库。 |
-   | **Server** | 任何全局唯一名称 | 选择现有的服务器，或者选择“新建”创建新的服务器名称。  如需有效的服务器名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
+   | **资源组** | myResourceGroup | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)（命名规则和限制）。 |
+   | **SQL 池名称** | 任何全局唯一的名称（例如 *mySampleDataWarehouse*） | 如需有效的数据库名称，请参阅 [Database Identifiers](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)（数据库标识符）。 请注意，SQL 池是一种数据库。 |
+   | **Server** | 任何全局唯一名称 | 选择现有的服务器，或者选择“新建”创建新的服务器名称。  如需有效的服务器名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)（命名规则和限制）。 |
 
    ![创建数据仓库 - 基本详细信息](./media/create-data-warehouse-portal/create-sql-pool-basics.png)
 
@@ -78,7 +78,7 @@ ms.locfileid: "80349113"
 
 ## <a name="create-a-server-level-firewall-rule"></a>创建服务器级防火墙规则
 
-Azure Synapse 服务将在服务器级别创建防火墙。 此防火墙会阻止外部应用程序和工具连接到服务器或服务器上的任何数据库。 要启用连接，可以添加防火墙规则，为特定 IP 地址启用连接。 按照以下步骤为客户端的 IP 地址创建[服务器级防火墙规则](../../sql-database/sql-database-firewall-configure.md)。
+Azure Synapse 服务将在服务器级别创建防火墙。 此防火墙会阻止外部应用程序和工具连接到服务器或服务器上的任何数据库。 要启用连接，可以添加防火墙规则，为特定 IP 地址启用连接。 按照以下步骤为客户端的 IP 地址创建[服务器级防火墙规则](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 > [!NOTE]
 > Azure Synapse 通过端口 1433 进行通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 如果是这样，则无法连接到 Azure SQL 数据库服务器，除非 IT 部门打开了端口 1433。
@@ -124,7 +124,7 @@ Azure Synapse 服务将在服务器级别创建防火墙。 此防火墙会阻�
 
 ## <a name="connect-to-the-server-as-server-admin"></a>以服务器管理员的身份连接到服务器
 
-本部分使用 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) 来建立与 Azure SQL Server 的连接。
+本部分使用 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) 来建立与 Azure SQL Server 的连接。
 
 1. 打开 SQL Server Management Studio。
 
@@ -141,11 +141,11 @@ Azure Synapse 服务将在服务器级别创建防火墙。 此防火墙会阻�
 
    ![连接到服务器](./media/create-data-warehouse-portal/connect-to-server-ssms.png)
 
-3. 选择“连接”  。 对象资源管理器窗口在 SSMS 中打开。 
+3. 选择“连接”  。 对象资源管理器窗口在 SSMS 中打开。
 
 4. 在“对象资源管理器”中，展开“数据库”  。 然后展开“mySampleDatabase”  ，查看新数据库中的对象。
 
-   ![数据库对象](./media/create-data-warehouse-portal/connected-ssms.png) 
+   ![数据库对象](./media/create-data-warehouse-portal/connected-ssms.png)
 
 ## <a name="run-some-queries"></a>运行一些查询
 
@@ -163,7 +163,7 @@ SQL 数据仓库使用 T-SQL 作为查询语言。 打开一个查询窗口并�
 
    ![查询数据库](./media/create-data-warehouse-portal/query-databases.png)
 
-4. 若要查看某些数据，请使用以下命令查看姓氏为 Adams 家中有三个孩子的客户数。 结果列出六个客户。 
+4. 若要查看某些数据，请使用以下命令查看姓氏为 Adams 家中有三个孩子的客户数。 结果列出六个客户。
 
     ```sql
     SELECT LastName, FirstName FROM dbo.dimCustomer
@@ -196,4 +196,4 @@ SQL 数据仓库使用 T-SQL 作为查询语言。 打开一个查询窗口并�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解如何将数据加载到 SQL 池中，请阅读[将数据加载到 SQL 池](load-data-from-azure-blob-storage-using-polybase.md)一文。 
+若要详细了解如何将数据加载到 SQL 池中，请阅读[将数据加载到 SQL 池](load-data-from-azure-blob-storage-using-polybase.md)一文。

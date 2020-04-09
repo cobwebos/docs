@@ -2,25 +2,22 @@
 title: 登录/登出用户并调用 Microsoft Graph (Android) - Microsoft 标识平台 | Azure
 description: 从 Microsoft 标识平台 (Android) 获取访问令牌并调用需要访问令牌的 Microsoft Graph 或 API
 services: active-directory
-documentationcenter: dev-center-name
 author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/26/2019
 ms.author: hahamil
-ms.reviwer: brandwe
+ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a5333d5a8f0972dac80efe6c641c515102a2d714
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5c8bd5accefceee042601c3cf7d71f5e9131e04e
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77917928"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80880816"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>教程：从 Android 应用程序将用户登录并调用 Microsoft Graph 
 

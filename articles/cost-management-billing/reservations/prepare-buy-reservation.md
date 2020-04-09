@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/07/2020
 ms.author: banders
-ms.openlocfilehash: 3a45a04786bb9976a42269191c8b24282905f96f
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 1f44b0a0e2278bfcfbbf7cde1a3605fe334eaa3f
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80436972"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886511"
 ---
 # <a name="buy-a-reservation"></a>购买预留项
 
@@ -43,8 +43,6 @@ Azure 预留项可帮助你节省资金，因为它可以承诺许多 Azure 资�
 1. 范围限定为资源组的预留项
 2. 单一范围的预留项
 3. 共享范围的预留项
-
-根据预留项的限定范围，单个资源组可从多个预留项获得预留折扣。
 
 始终可在购买预留项后更新范围。 为此，请转到该预留项，单击“配置”，然后重新设置预留范围。  重新设置预留范围不属于商业交易。 预留条款不会有变化。 有关更新范围的详细信息，请参阅[在购买预留项后更新范围](manage-reserved-vm-instance.md#change-the-reservation-scope)。
 

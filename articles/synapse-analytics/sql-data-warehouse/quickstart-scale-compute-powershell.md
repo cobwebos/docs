@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c7ec8db212a24f1f23f393e4cb0e7f4150605a56
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e3038617c6270acf9af295c910e9fd5c7dae2043
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350794"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633780"
 ---
 # <a name="quickstart-scale-compute-for-synapse-sql-pool-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 缩放 Synapse SQL 池的计算
 
-可以使用 Azure PowerShell 缩放 Synapse SQL 池（数据仓库）的计算。 [横向扩展计算](sql-data-warehouse-manage-compute-overview.md)以提高性能或按比例缩减计算以节约成本。 
+可以使用 Azure PowerShell 缩放 Synapse SQL 池（数据仓库）的计算。 [横向扩展计算](sql-data-warehouse-manage-compute-overview.md)以提高性能或按比例缩减计算以节约成本。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
@@ -32,19 +32,19 @@ ms.locfileid: "80350794"
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
-使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
+使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
 
 ```powershell
 Connect-AzAccount
 ```
 
-若要查看正在使用的订阅，请运行 [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription)。
+若要查看正在使用的订阅，请运行 [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 ```powershell
 Get-AzSubscription
 ```
 
-如果需要使用与默认订阅不同的订阅，请运行 [Set-AzContext](/powershell/module/az.accounts/set-azcontext)。
+如果需要使用与默认订阅不同的订阅，请运行 [Set-AzContext](/powershell/module/az.accounts/set-azcontext?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 ```powershell
 Set-AzContext -SubscriptionName "MySubscription"
@@ -69,7 +69,7 @@ Set-AzContext -SubscriptionName "MySubscription"
 
 在 SQL 池中，可以通过调整数据仓库单位来增加或减少计算资源。 [创建和 Connect - 门户](create-data-warehouse-portal.md)创建 **mySampleDataWarehouse** 并初始化 400 DWU。 以下步骤调整为 DWU **mySampleDataWarehouse**。
 
-若要更改数据仓库单位，请使用 [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell cmdlet。 以下示例将数据库 **mySampleDataWarehouse**（托管在服务器 **sqlpoolservername** 上的资源组 **resourcegroupname** 中）的数据仓库单位设置为 DW300c。
+若要更改数据仓库单位，请使用 [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell cmdlet。 以下示例将数据库 **mySampleDataWarehouse**（托管在服务器 **sqlpoolservername** 上的资源组 **resourcegroupname** 中）的数据仓库单位设置为 DW300c。
 
 ```Powershell
 Set-AzSqlDatabase -ResourceGroupName "resourcegroupname" -DatabaseName "mySampleDataWarehouse" -ServerName "sqlpoolservername" -RequestedServiceObjectiveName "DW300c"
@@ -77,7 +77,7 @@ Set-AzSqlDatabase -ResourceGroupName "resourcegroupname" -DatabaseName "mySample
 
 ## <a name="check-data-warehouse-state"></a>检查数据仓库状态
 
-若要查看数据仓库的当前状态，使用 [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) PowerShell cmdlet。 此 cmdlet 将显示资源组 **resourcegroupname** 和服务器 **sqlpoolservername.database.windows.net** 中 **mySampleDataWarehouse** 数据库的状态。
+若要查看数据仓库的当前状态，使用 [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell cmdlet。 此 cmdlet 将显示资源组 **resourcegroupname** 和服务器 **sqlpoolservername.database.windows.net** 中 **mySampleDataWarehouse** 数据库的状态。
 
 ```powershell
 $database = Get-AzSqlDatabase -ResourceGroupName resourcegroupname -ServerName sqlpoolservername -DatabaseName mySampleDataWarehouse
@@ -120,6 +120,7 @@ $database | Select-Object DatabaseName,Status
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
 现已了解如何缩放 SQL 池的计算。 若要详细了解 SQL 池，请继续阅读有关加载数据的教程。
 
 > [!div class="nextstepaction"]

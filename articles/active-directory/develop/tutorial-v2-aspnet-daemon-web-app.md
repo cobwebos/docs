@@ -2,26 +2,21 @@
 title: 生成使用 Microsoft 标识平台终结点的多租户守护程序
 description: 本教程介绍如何从 Windows 桌面 (WPF) 应用程序调用受 Azure Active Directory 保护的 ASP.NET Web API。 WPF 客户端对用户进行身份验证、请求访问令牌并调用 Web API。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 635b12cc2ffc4d318eaaa74fffc17e4ce4d58c0b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a4d7030f7a58a6252c6e596fc2c248163694a1e8
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79129950"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80880867"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>教程：生成使用 Microsoft 标识平台终结点的多租户守护程序
 
