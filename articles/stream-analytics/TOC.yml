@@ -39,6 +39,8 @@
       href: streaming-technologies.md
     - name: 选择作业开发工具
       href: feature-comparison.md
+    - name: 本地开发
+      href: develop-locally.md
     - name: 作业的输入类型
       items:
         - name: 输入概述
@@ -205,7 +207,7 @@
           href: visual-studio-code-explore-jobs.md
         - name: JobConfig.json 字段
           href: job-config-json.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 输入
           href: stream-analytics-troubleshoot-input.md
@@ -244,7 +246,7 @@
             - name: 聚合函数概述
               href: /stream-analytics-query/aggregate-functions-azure-stream-analytics
               maintainContext: true
-            - name: 平均值
+            - name: AVG
               href: /stream-analytics-query/avg-azure-stream-analytics
               maintainContext: true
             - name: COUNT
@@ -259,7 +261,7 @@
             - name: MAX
               href: /stream-analytics-query/max-azure-stream-analytics
               maintainContext: true
-            - name: 最小值
+            - name: MIN
               href: /stream-analytics-query/min-azure-stream-analytics
               maintainContext: true
             - name: Percentile_Cont
@@ -357,10 +359,10 @@
             - name: DAY
               href: /stream-analytics-query/day-azure-stream-analytics
               maintainContext: true
-            - name: 月
+            - name: MONTH
               href: /stream-analytics-query/month-azure-stream-analytics
               maintainContext: true
-            - name: 年
+            - name: YEAR
               href: /stream-analytics-query/year-azure-stream-analytics
               maintainContext: true
         - name: 地理空间函数
