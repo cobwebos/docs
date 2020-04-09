@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: e975708eddad9b9b4a07b49e1f753d604d77ff94
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 159b38962fe91cedfc8d313bef943dbc74e9974e
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80047577"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520252"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>在 Azure 中创建静态 HTML Web 应用
 
@@ -51,7 +51,7 @@ cd html-docs-hello-world
 ```
 
 ```azurecli
-az webapp up --location westeurope --name <app_name> --html
+az webapp up --location westeurope --name <app_name> 
 ```
 
 `az webapp up` 命令执行以下操作：
