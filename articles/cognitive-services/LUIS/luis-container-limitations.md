@@ -3,19 +3,19 @@ title: 容器限制 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 支持的 LUIS 容器语言。
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.author: dapine
-ms.openlocfilehash: bd8a7a63113bcf4e972ab08655aa58b35ddff03d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 7fe773b35c5aba31b2fea66bd2be7b2745eac3ee
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73507854"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879235"
 ---
 # <a name="language-understanding-luis-container-limitations"></a>语言理解 （LUIS） 容器限制
 
@@ -55,8 +55,8 @@ LUIS 容器支持 LUIS 正确[支持的语言](luis-language-support.md#language
 | 德语 |`de-DE` | ✔️ | ✔️ | ✔️ | ✔️ |
 | Hindi | `hi-IN`| ❌ | ❌ | ❌ | ❌ |
 | 意大利语 |`it-IT` | ✔️ | ✔️ | ✔️ | ✔️ |
-| 韩语 |`ko-KR` | ✔️ | ❌ | ❌ | 仅*键短语* |
-| 葡萄牙语（巴西） |`pt-BR` | ✔️ | ✔️ | ✔️ | 并非所有亚区域性 |
+| 朝鲜语 |`ko-KR` | ✔️ | ❌ | ❌ | 仅*键短语* |
+| 葡萄牙语(巴西) |`pt-BR` | ✔️ | ✔️ | ✔️ | 并非所有亚区域性 |
 | 西班牙语(西班牙) |`es-ES` | ✔️ | ✔️ |✔️|✔️|
 | 西班牙语（墨西哥）|`es-MX` | ❌ | ❌ |✔️|✔️|
 | 土耳其语 | `tr-TR` |✔️| ❌ | ❌ | 仅*情绪* |

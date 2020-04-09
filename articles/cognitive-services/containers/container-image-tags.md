@@ -3,18 +3,18 @@ title: 认知服务容器映像标记
 titleSuffix: Azure Cognitive Services
 description: 所有认知服务容器映像标记的完整列表。
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: reference
-ms.date: 03/09/2020
-ms.author: dapine
-ms.openlocfilehash: eed2223dbfeee307b552cdd010530f27c379f5fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 786fde90e1bcf47e08857c26235a27862c5b3d75
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219441"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878759"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Azure 认知服务容器映像标记
 

@@ -2,19 +2,19 @@
 title: 如何为表单识别器配置容器
 titleSuffix: Azure Cognitive Services
 description: 了解如何将表单识别器容器配置为分析表单和表数据。
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.author: dapine
-ms.openlocfilehash: 5439ec0c0aab5b8c127b651147e4b25d27c58390
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: bc48c0ba23e73adec312adfeeb1fcd57dba6ceec
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75379617"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879150"
 ---
 # <a name="configure-form-recognizer-containers"></a>配置表单识别器容器
 
@@ -48,9 +48,9 @@ ms.locfileid: "75379617"
 
 可以在 Azure 门户的“表单识别器概览”的“终结点”下找到此设置。********
 
-|必选| “属性” | 数据类型 | 描述 |
+|必选| 名称 | 数据类型 | 说明 |
 |--|------|-----------|-------------|
-|是| `Billing` | String | 计费终结点 URI。 有关获取计费 URI 的详细信息，请参阅[收集所需的参数](form-recognizer-container-howto.md#gathering-required-parameters)。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](../cognitive-services-custom-subdomains.md)。 |
+|是| `Billing` | 字符串 | 计费终结点 URI。 有关获取计费 URI 的详细信息，请参阅[收集所需的参数](form-recognizer-container-howto.md#gathering-required-parameters)。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](../cognitive-services-custom-subdomains.md)。 |
 
 ## <a name="eula-setting"></a>Eula 设置
 
@@ -77,10 +77,10 @@ ms.locfileid: "75379617"
 
 主机确切语法的安装位置因主机操作系统不同而异。 另外，由于 Docker 服务帐户权限与主机装载位置权限之间有冲突，因此可能无法访问[主计算机](form-recognizer-container-howto.md#the-host-computer)的装载位置。
 
-|可选| “属性” | 数据类型 | 描述 |
+|可选| 名称 | 数据类型 | 说明 |
 |-------|------|-----------|-------------|
-|必选| `Input` | String | 输入装入点的目标。 默认值为 `/input`。    <br><br>示例：<br>`--mount type=bind,src=c:\input,target=/input`|
-|必选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。  <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
+|必选| `Input` | 字符串 | 输入装入点的目标。 默认值为 `/input`。    <br><br>示例：<br>`--mount type=bind,src=c:\input,target=/input`|
+|必选| `Output` | 字符串 | 输出装入点的目标。 默认值为 `/output`。  <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Docker 运行命令示例
 
@@ -91,7 +91,7 @@ ms.locfileid: "75379617"
 
 将下表中的 {_argument_name_} 替换为为你自己的值：
 
-| 占位符 | “值” |
+| 占位符 | 值 |
 |-------------|-------|
 | **[FORM_RECOGNIZER_API_KEY]** | 用于启动容器的密钥。 可以从 Azure 门户的“表单识别器密钥”页获取它。 |
 | **[FORM_RECOGNIZER_ENDPOINT_URI]** | 可以从 Azure 门户的“表单识别器概览”页获取计费终结点 URI 值。|

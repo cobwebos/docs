@@ -3,19 +3,19 @@ title: 在 Azure 容器实例上部署 LUIS 容器
 titleSuffix: Azure Cognitive Services
 description: 将 LUIS 容器部署到 Azure 容器实例，并在 Web 浏览器中对其进行测试。
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.author: dapine
-ms.openlocfilehash: f1a0a08351a03e46d6c3a1e82b68ecea6e36c015
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.date: 04/07/2020
+ms.author: aahi
+ms.openlocfilehash: 08af17106846a0f5f7a0ccc2b01da1b2e15c1143
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757246"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879188"
 ---
 # <a name="deploy-the-language-understanding-luis-container-to-azure-container-instances"></a>将语言理解 (LUIS) 容器部署到 Azure 容器实例
 

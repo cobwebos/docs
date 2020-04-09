@@ -3,20 +3,20 @@ title: 配置容器 - 面
 titleSuffix: Azure Cognitive Services
 description: 使用  命令参数配置人脸`docker run`容器运行时环境。 有必需和可选设置。
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.author: dapine
-ms.openlocfilehash: 3c78c9eb85c3a8be236be5c3a24bd877db204b6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 2f608843e27b79d02697df8e2a7f2aba6695e10a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76167979"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878419"
 ---
 # <a name="configure-face-docker-containers"></a>配置人脸 Docker 容器
 
@@ -51,9 +51,9 @@ ms.locfileid: "76167979"
 
 请记住将_面_路由添加到终结点 URI，如示例所示。 
 
-|必选| “属性” | 数据类型 | 描述 |
+|必选| 名称 | 数据类型 | 说明 |
 |--|------|-----------|-------------|
-|是| `Billing` | String | 计费终结点 URI。 有关获取计费 URI 的详细信息，请参阅[收集所需的参数](face-how-to-install-containers.md#gathering-required-parameters)。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](../cognitive-services-custom-subdomains.md)。 |
+|是| `Billing` | 字符串 | 计费终结点 URI。 有关获取计费 URI 的详细信息，请参阅[收集所需的参数](face-how-to-install-containers.md#gathering-required-parameters)。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](../cognitive-services-custom-subdomains.md)。 |
 
 <!-- specific to face only -->
 
@@ -61,7 +61,7 @@ ms.locfileid: "76167979"
 
 `CloudAI` 部分中的配置设置提供容器特有的容器特定选项。 `CloudAI` 部分中的人脸容器支持以下设置和对象
 
-| “属性” | 数据类型 | 描述 |
+| 名称 | 数据类型 | 说明 |
 |------|-----------|-------------|
 | `Storage` | Object | 人脸容器使用的存储方案。 有关 `Storage` 对象的存储方案和关联设置的详细信息，请参阅[存储方案设置](#storage-scenario-settings) |
 
@@ -80,11 +80,11 @@ ms.locfileid: "76167979"
 
 存储方案和关联的配置设置由 `Storage` 对象在 `CloudAI` 配置部分下进行管理。 `Storage` 对象中提供了以下配置设置：
 
-| “属性” | 数据类型 | 描述 |
+| 名称 | 数据类型 | 说明 |
 |------|-----------|-------------|
-| `StorageScenario` | String | 容器支持的存储方案。 可用值如下<br/>`Memory` - 默认值。 容器使用非持久、非分布式的内存中存储，用于单节点的临时使用情况。 如果停止或删除容器，则该容器的存储将被销毁。<br/>`Azure` - 容器使用 Azure 资源进行存储。 如果停止或删除容器，则会保留该容器的存储。|
-| `ConnectionStringOfAzureStorage` | String | 容器使用的 Azure 存储资源的连接字符串。<br/>仅当为 `StorageScenario` 配置设置指定了 `Azure` 时，才应用此设置。 |
-| `ConnectionStringOfCosmosMongo` | String | 容器使用的 Azure Cosmos DB 资源的 MongoDB 连接字符串。<br/>仅当为 `StorageScenario` 配置设置指定了 `Azure` 时，才应用此设置。 |
+| `StorageScenario` | 字符串 | 容器支持的存储方案。 可用值如下<br/>`Memory` - 默认值。 容器使用非持久、非分布式的内存中存储，用于单节点的临时使用情况。 如果停止或删除容器，则该容器的存储将被销毁。<br/>`Azure` - 容器使用 Azure 资源进行存储。 如果停止或删除容器，则会保留该容器的存储。|
+| `ConnectionStringOfAzureStorage` | 字符串 | 容器使用的 Azure 存储资源的连接字符串。<br/>仅当为 `StorageScenario` 配置设置指定了 `Azure` 时，才应用此设置。 |
+| `ConnectionStringOfCosmosMongo` | 字符串 | 容器使用的 Azure Cosmos DB 资源的 MongoDB 连接字符串。<br/>仅当为 `StorageScenario` 配置设置指定了 `Azure` 时，才应用此设置。 |
 
 例如，以下命令指定 Azure 存储方案，并为用于存储人脸容器数据的 Azure 存储和 Cosmos DB 资源提供示例连接字符串。
 
@@ -122,10 +122,10 @@ ms.locfileid: "76167979"
 
 主机确切语法的安装位置因主机操作系统不同而异。 另外，由于 Docker 服务帐户使用的权限与主机装载位置权限之间有冲突，因此可能无法访问[主计算机](face-how-to-install-containers.md#the-host-computer)的装载位置。 
 
-|可选| “属性” | 数据类型 | 描述 |
+|可选| 名称 | 数据类型 | 说明 |
 |-------|------|-----------|-------------|
-|不允许| `Input` | String | 人脸容器不使用此项。|
-|可选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
+|不允许| `Input` | 字符串 | 人脸容器不使用此项。|
+|可选| `Output` | 字符串 | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Docker 运行命令示例 
 
@@ -136,7 +136,7 @@ ms.locfileid: "76167979"
 
 将 {_argument_name_} 替换为为你自己的值：
 
-| 占位符 | “值” | 格式或示例 |
+| 占位符 | 值 | 格式或示例 |
 |-------------|-------|---|
 | **[API_KEY]** | “Azure `Face` 密钥”页上的 `Face` 资源的终结点密钥。 | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
 | **{ENDPOINT_URI}** | Azure `Face`“概览”页面上提供了账单终结点值。| 有关显式示例，请参阅[收集所需参数](face-how-to-install-containers.md#gathering-required-parameters)。 |

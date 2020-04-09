@@ -3,19 +3,19 @@ title: 安装语音容器 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 安装和运行语音容器。 语音转文本可将音频流实时听录为应用程序、工具或设备可以使用或显示的文本。 文本转语音可将输入文本转换为类似人类的合成语音。
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/10/2020
-ms.author: dapine
-ms.openlocfilehash: 2beee81bc365d00e59a62cacabacc5f5d6b62a42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 2caae4fecdf13a1833f23cf9423cf3ded67f6f72
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79474775"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878999"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>安装和运行语音服务容器（预览）
 
@@ -73,7 +73,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 下表描述了每个语音容器的最小和建议的资源分配。
 
-# <a name="speech-to-text"></a>[语音到文本](#tab/stt)
+# <a name="speech-to-text"></a>[语音转文本](#tab/stt)
 
 | 容器 | 最小值 | 建议 |
 |-----------|---------|-------------|
@@ -110,7 +110,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 语音的容器映像可在以下容器注册表中提供。
 
-# <a name="speech-to-text"></a>[语音到文本](#tab/stt)
+# <a name="speech-to-text"></a>[语音转文本](#tab/stt)
 
 | 容器 | 存储库 |
 |-----------|------------|
@@ -140,7 +140,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 ### <a name="docker-pull-for-the-speech-containers"></a>语音容器的 Docker 拉
 
-# <a name="speech-to-text"></a>[语音到文本](#tab/stt)
+# <a name="speech-to-text"></a>[语音转文本](#tab/stt)
 
 #### <a name="docker-pull-for-the-speech-to-text-container"></a>语音到文本容器的 Docker 拉拔
 
@@ -240,7 +240,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-text
 
 使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行容器。 有关如何获取 `{Endpoint_URI}` 和 `{API_Key}` 值的详细信息，请参阅[收集所需的参数](#gathering-required-parameters)。 命令的其他[示例](speech-container-configuration.md#example-docker-run-commands)`docker run`也可用。
 
-# <a name="speech-to-text"></a>[语音到文本](#tab/stt)
+# <a name="speech-to-text"></a>[语音转文本](#tab/stt)
 
 要运行 *"语音到文本"* 容器，请执行以下`docker run`命令。
 
@@ -428,7 +428,7 @@ ApiKey={API_KEY}
 本文已介绍语音容器的概念，及其下载、安装和运行工作流。 综上所述：
 
 * 语音为 Docker 提供了四个 Linux 容器，封装了各种功能：
-  * *语音到文本*
+  * *语音转文本*
   * *自定义语音到文本*
   * *文本转语音*
   * *自定义文本到语音*

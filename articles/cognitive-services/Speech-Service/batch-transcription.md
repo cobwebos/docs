@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: fb39f1ec83416ee8ab2a33b514971110db0c0b17
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 1f88df186526c2f9903337bb3331940be0989c3d
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668840"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892455"
 ---
 # <a name="what-is-batch-transcription"></a>什么是批次转录？
 
@@ -129,7 +129,7 @@ Batch 听录 API 支持以下格式：
       `AddSentiment`
    :::column-end:::
    :::column span="2":::
-      指定是否应将情绪分析应用于陈述。 接受的值是`true`启用和`false`（默认值）来禁用它。
+      指定是否应将情绪分析应用于陈述。 接受的值是`true`启用和`false`（默认值）来禁用它。 有关详细信息[，请参阅情绪分析](#sentiment-analysis)。
 :::row-end:::
 :::row:::
    :::column span="1":::
@@ -218,12 +218,41 @@ Batch 听录 API 支持以下格式：
 
 结果包含以下形式：
 
-| Form        | 内容                                                                                                                                                  |
-|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Lexical`   | 识别的实际单词。                                                                                                                             |
-| `ITN`       | 已识别文本的反向文本规范化形式。 已应用缩写（“doctor smith”缩写为“dr smith”）、电话号码和其他转换。 |
-| `MaskedITN` | 应用了亵渎内容屏蔽的 ITN 形式。                                                                                                             |
-| `Display`   | 已识别文本的显示形式。 包括添加的标点符号和大小写。                                                             |
+:::row:::
+   :::column span="1":::
+      **Form**
+   :::column-end:::
+   :::column span="2":::
+      **内容**
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `Lexical`
+   :::column-end:::
+   :::column span="2":::
+      识别的实际单词。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `ITN`
+   :::column-end:::
+   :::column span="2":::
+      已识别文本的反向文本规范化形式。 已应用缩写（“doctor smith”缩写为“dr smith”）、电话号码和其他转换。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `MaskedITN`
+   :::column-end:::
+   :::column span="2":::
+      应用了亵渎内容屏蔽的 ITN 形式。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `Display`
+   :::column-end:::
+   :::column span="2":::
+      已识别文本的显示形式。 包括添加的标点符号和大小写。
+:::row-end:::
 
 ## <a name="speaker-separation-diarization"></a>讲述人分离（分割聚类）
 
@@ -260,6 +289,10 @@ Batch 听录 API 支持以下格式：
 - 了解客户对某个产品或服务喜欢和不喜欢的方面
 
 情绪根据词法形式按音频段评分。 该音频段内的整个文本用于计算情绪。 不会计算整个听录的聚合情绪。 目前情绪分析仅适用于英语。
+
+> [!NOTE]
+> 我们建议改用 Microsoft 文本分析 API。 它提供了超越情绪分析的更高级的功能，如关键短语提取、自动语言检测等。 您可以在[文本分析文档中](https://azure.microsoft.com/services/cognitive-services/text-analytics/)找到信息和示例。
+>
 
 下面是 JSON 输出示例：
 

@@ -3,19 +3,19 @@ title: 安装语音容器
 titleSuffix: Azure Cognitive Services
 description: 详细介绍了文本转语音 Helm 图配置选项。
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 08/22/2019
-ms.author: dapine
-ms.openlocfilehash: c87132c3ae41dec82e3493f9a0ee2397455ff881
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 22168974ab8b285413b4fa6e947c05f65a73ae12
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "69971340"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874326"
 ---
 ### <a name="text-to-speech-sub-chart-chartstexttospeech"></a>文本转语音（子图：charts/textToSpeech）
 

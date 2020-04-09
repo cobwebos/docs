@@ -3,19 +3,19 @@ title: 将计算机视觉容器与库伯奈斯和赫尔姆一起使用
 titleSuffix: Azure Cognitive Services
 description: 将计算机视觉容器部署到 Azure 容器实例，并在 Web 浏览器中测试它。
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.author: dapine
-ms.openlocfilehash: 126060875c09d70b8680447d78b7cf6ccdd782af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 9aac374de5af748eafbe4c22e5fc89f64e483c2a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79458012"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877961"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>将计算机视觉容器与库伯奈斯和赫尔姆一起使用
 

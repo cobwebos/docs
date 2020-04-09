@@ -3,12 +3,12 @@ title: Azure 资源 - QnA 制造商
 description: QnA Maker 使用多个 Azure 源，每个源具有不同的用途。 了解它们是如何单独使用的，您可以规划和选择正确的定价层，或知道何时更改定价层。 了解它们的组合使用方式，可以在问题发生时查找和修复问题。
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 1bd491ecbd878cb7bb05a7eaa5712c75653f2cba
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 581029d2372f7a2ef704dcf02f266b66440aa246
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804293"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873899"
 ---
 # <a name="azure-resources-for-qna-maker"></a>用于 QnA 制造商的 Azure 资源
 
@@ -49,6 +49,16 @@ QnA Maker 使用多个 Azure 源，每个源具有不同的用途。 了解它�
 | 试验        | 免费 SKU             | 免费层   | 免费层    | 分别最多发布 2 KB、50 MB 大小  |
 | 开发/测试环境   | 标准 SKU         | Shared      | Basic        | 分别最多发布 14 KB、2 GB 大小    |
 | 生产环境 | 标准 SKU         | Basic       | 标准     | 分别最多发布 49 KB、25 GB 大小 |
+
+## <a name="recommended-settings"></a>推荐的设置
+
+|目标 QPS | 应用服务 | Azure 认知搜索 |
+| -------------------- | ----------- | ------------ |
+| 3             | S1，1 个实例   | S1，1 个实例    |
+| 50         | S3，10 个实例       | S1， 12 实例         |
+| 80         | S3，10 个实例      |  S3， 12 实例  |
+| 100         | P3V2，10 个实例  | S3，12 个实例，3 个分区   |
+| 200 到 250         | P3V2，20 个实例 | S3，12 个实例，3 个分区    |
 
 ## <a name="when-to-change-a-pricing-tier"></a>何时更改定价层
 

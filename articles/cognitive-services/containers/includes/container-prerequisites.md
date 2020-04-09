@@ -1,19 +1,19 @@
 ---
 title: 容器先决条件
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 description: 容器的常见先决条件
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 7/5/2019
-ms.author: dapine
-ms.openlocfilehash: f37fc1bf33074f74c58f10091f836992cd0c13f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 6ed5892090dbcb77a0fefba28e044780c019a7f7
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73522391"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879187"
 ---
 ## <a name="prerequisites"></a>先决条件
 

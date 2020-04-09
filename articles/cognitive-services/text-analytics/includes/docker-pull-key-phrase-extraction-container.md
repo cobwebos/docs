@@ -3,18 +3,18 @@ title: 键短语提取容器的 Docker 拉拔
 titleSuffix: Azure Cognitive Services
 description: 键短语提取容器的 Docker 拉取命令
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/12/2019
-ms.author: dapine
-ms.openlocfilehash: 59313528e4beb343f9ac1103d3f9f2faae5dfc16
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: db5d0cfecde32d3dd6afe181d67a6ce6c0826eda
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "70966751"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876961"
 ---
 #### <a name="docker-pull-for-the-key-phrase-extraction-container"></a>键短语提取容器的 Docker 拉拔
 

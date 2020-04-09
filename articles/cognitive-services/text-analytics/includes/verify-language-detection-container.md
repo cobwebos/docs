@@ -3,18 +3,18 @@ title: 验证语言检测容器实例
 titleSuffix: Azure Cognitive Services
 description: 了解如何验证语言检测容器实例。
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/12/2019
-ms.author: dapine
-ms.openlocfilehash: f4e0770bc052044a408f2c4088f2bd5ead225aa3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: dc52586550f89ddae147d79458584331ed984eea
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "70968548"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876390"
 ---
 ### <a name="verify-the-language-detection-container-instance"></a>验证语言检测容器实例
 

@@ -3,20 +3,20 @@ title: 配置容器 - 计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 本文介绍如何在计算机视觉中为"识别文本"容器配置所需的设置和可选设置。
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.author: dapine
+ms.date: 04/01/2020
+ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: ddbee3695c2a7ef7cb63c48cccacbd2d53a8c1a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3be302019c712c13bd29d7ed3781151a1648e847
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73718992"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879303"
 ---
 # <a name="configure-computer-vision-docker-containers"></a>配置计算机视觉 Docker 容器
 
@@ -51,9 +51,9 @@ ms.locfileid: "73718992"
 
 请记住将`vision/v1.0`路由添加到终结点 URI，如下表所示。 
 
-|必选| “属性” | 数据类型 | 描述 |
+|必选| 名称 | 数据类型 | 说明 |
 |--|------|-----------|-------------|
-|是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
+|是| `Billing` | 字符串 | 账单终结点 URI<br><br>示例：<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 
 ## <a name="eula-setting"></a>Eula 设置
 
@@ -79,10 +79,10 @@ ms.locfileid: "73718992"
 
 主机确切语法的安装位置因主机操作系统不同而异。 另外，由于 Docker 服务帐户使用的权限与主机装载位置权限之间有冲突，因此可能无法访问[主计算机](computer-vision-how-to-install-containers.md#the-host-computer)的装载位置。 
 
-|可选| “属性” | 数据类型 | 描述 |
+|可选| 名称 | 数据类型 | 说明 |
 |-------|------|-----------|-------------|
-|不允许| `Input` | String | “计算机视觉”容器不使用此项。|
-|可选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
+|不允许| `Input` | 字符串 | “计算机视觉”容器不使用此项。|
+|可选| `Output` | 字符串 | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Docker 运行命令示例
 
@@ -93,7 +93,7 @@ ms.locfileid: "73718992"
 
 将 {_argument_name_} 替换为为你自己的值：
 
-| 占位符 | “值” | 格式或示例 |
+| 占位符 | 值 | 格式或示例 |
 |-------------|-------|---|
 | **[API_KEY]** | “Azure `Computer Vision` 密钥”页上的 `Computer Vision` 资源的终结点密钥。 | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
 | **{ENDPOINT_URI}** | Azure `Computer Vision`“概览”页面上提供了账单终结点值。| 有关显式示例，请参阅[收集所需参数](computer-vision-how-to-install-containers.md#gathering-required-parameters)。 |

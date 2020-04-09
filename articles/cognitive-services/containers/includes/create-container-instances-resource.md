@@ -3,18 +3,18 @@ title: 容器支持
 titleSuffix: Azure Cognitive Services
 description: 了解如何创建 Azure 容器实例资源。
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/21/2019
-ms.author: dapine
-ms.openlocfilehash: 18f4edf5cc63a448779423cc1b302130b4b80724
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 09957461fd92114d1181a570550ee1a189edd8ea
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75692575"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876391"
 ---
 ## <a name="create-an-azure-container-instance-resource"></a>创建 Azure 容器实例资源
 
@@ -22,7 +22,7 @@ ms.locfileid: "75692575"
 
 2. 在“基本信息”选项卡中输入以下详细信息：****
 
-    |设置|“值”|
+    |设置|值|
     |--|--|
     |订阅|选择订阅。|
     |资源组|选择可用的资源组，或者创建一个新的，例如 `cognitive-services`。|
@@ -35,13 +35,13 @@ ms.locfileid: "75692575"
 
 3. 在“网络”选项卡上，输入以下详细信息：****
 
-    |设置|“值”|
+    |设置|值|
     |--|--|
     |端口|将 TCP 端口设置为 `5000`。 在端口 5000 上公开此容器。|
 
 4. 在“高级”选项卡上，**** 输入所需的**环境变量**作为 Azure 容器实例资源的容器计费设置：
 
-    | 键 | “值” |
+    | 密钥 | 值 |
     |--|--|
     |`apikey`|从资源的“键”页复制。**** 它是一个由 32 个字母数字组成的字符串（不包含空格或短划线），即 `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`。|
     |`billing`|从资源的“概览”页复制。****|

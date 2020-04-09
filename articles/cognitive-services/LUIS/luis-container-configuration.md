@@ -3,20 +3,20 @@ title: Docker 容器设置 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 使用 `docker run` 命令参数配置 LUIS 容器运行时环境。 LUIS 有几个必需的设置以及一些可选设置。
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.author: dapine
-ms.openlocfilehash: a30fcd0ec7e53c78876596baf787639e81c638db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 48a9856c58a815eabcc0b105efcd548e66ddd552
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73795011"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874205"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>配置语言理解 Docker 容器 
 
@@ -34,7 +34,7 @@ ms.locfileid: "73795011"
 |是|[Eula](#eula-setting)| 表示已接受容器的许可条款。|
 |否|[Fluentd](#fluentd-settings)|将日志和（可选）指标数据写入 Fluentd 服务器。|
 |否|[Http Proxy](#http-proxy-credentials-settings)|配置 HTTP 代理以发出出站请求。|
-|否|[Logging](#logging-settings)|为容器提供 ASP.NET Core 日志记录支持。 |
+|否|[日志记录](#logging-settings)|为容器提供 ASP.NET Core 日志记录支持。 |
 |是|[Mounts](#mount-settings)|从主计算机读取数据并将其写入到容器，以及从容器读回数据并将其写回到主计算机。|
 
 > [!IMPORTANT]
@@ -64,7 +64,7 @@ ms.locfileid: "73795011"
 * Azure 门户：**认知服务**概述，标记为`Endpoint`
 * LUIS 门户：作为终结点 URI 的一部分的**键和终结点设置**页。
 
-| 必选 | “属性” | 数据类型 | 描述 |
+| 必选 | 名称 | 数据类型 | 说明 |
 |----------|------|-----------|-------------|
 | 是      | `Billing` | 字符串 | 计费终结点 URI。 有关获取计费 URI 的详细信息，请参阅[收集所需的参数](luis-container-howto.md#gathering-required-parameters)。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](../cognitive-services-custom-subdomains.md)。 |
 
@@ -94,10 +94,10 @@ LUIS 容器不使用输入或输出装载来存储训练或服务数据。
 
 下表描述了支持的设置。
 
-|必选| “属性” | 数据类型 | 描述 |
+|必选| 名称 | 数据类型 | 说明 |
 |-------|------|-----------|-------------|
-|是| `Input` | String | 输入装入点的目标。 默认值为 `/input`。 这是 LUIS 包文件的位置。 <br><br>示例：<br>`--mount type=bind,src=c:\input,target=/input`|
-|否| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括 LUIS 查询日志和容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
+|是| `Input` | 字符串 | 输入装入点的目标。 默认值为 `/input`。 这是 LUIS 包文件的位置。 <br><br>示例：<br>`--mount type=bind,src=c:\input,target=/input`|
+|否| `Output` | 字符串 | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括 LUIS 查询日志和容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Docker 运行命令示例
 
@@ -109,7 +109,7 @@ LUIS 容器不使用输入或输出装载来存储训练或服务数据。
 
 将 {_argument_name_} 替换为为你自己的值：
 
-| 占位符 | “值” | 格式或示例 |
+| 占位符 | 值 | 格式或示例 |
 |-------------|-------|---|
 | **[API_KEY]** | “Azure `LUIS` 密钥”页上的 `LUIS` 资源的终结点密钥。 | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
 | **{ENDPOINT_URI}** | Azure `LUIS`“概览”页面上提供了账单终结点值。| 有关显式示例，请参阅[收集所需参数](luis-container-howto.md#gathering-required-parameters)。 |

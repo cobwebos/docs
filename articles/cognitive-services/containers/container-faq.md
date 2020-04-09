@@ -3,18 +3,18 @@ title: 认知服务容器常见问题解答 (FAQ)
 titleSuffix: Azure Cognitive Services
 description: 常见问题及其解答。
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 11/11/2019
-ms.author: dapine
-ms.openlocfilehash: 33b99d50db4384c7de818a7dd0bb8492c86bef97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 8aae650065e8de11ccdc55a8a056c379a219fcb4
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73961896"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876500"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure 认知服务容器常见问题解答 (FAQ)
 
@@ -27,9 +27,9 @@ ms.locfileid: "73961896"
 > [!div class="checklist"]
 > * [异常检测器][ad-containers]
 > * [计算机视觉][cv-containers]
-> * [脸][fa-containers]
+> * [人脸][fa-containers]
 > * [表单识别器][fr-containers]
-> * [语言理解（LUIS）][lu-containers]
+> * [语言理解 (LUIS)][lu-containers]
 > * [语音服务 API][sp-containers]
 > * [文本分析][ta-containers]
 
@@ -109,9 +109,9 @@ ms.locfileid: "73961896"
 
 * [异常检测器][ad-containers-billing]
 * [计算机视觉][cv-containers-billing]
-* [脸][fa-containers-billing]
+* [人脸][fa-containers-billing]
 * [表单识别器][fr-containers-billing]
-* [语言理解（LUIS）][lu-containers-billing]
+* [语言理解 (LUIS)][lu-containers-billing]
 * [语音服务 API][sp-containers-billing]
 * [文本分析][ta-containers-billing]
 
@@ -120,7 +120,7 @@ ms.locfileid: "73961896"
  
 **问：当前集装箱支持保修是什么？**
 
-**答：** 预览没有保修。 在正式宣布推出容器的正式版 (GA) 后，将实施 Microsoft 面向企业软件的标准担保。
+**答：** 预览没有保修。 当容器正式宣布为通用 （GA） 时，微软的企业软件标准保修将适用。
  
 **问：当互联网连接丢失时，认知服务容器会发生什么情况？**
 
@@ -136,9 +136,9 @@ ms.locfileid: "73961896"
 
 * [异常检测器][ad-containers-recommendations]
 * [计算机视觉][cv-containers-recommendations]
-* [脸][fa-containers-recommendations]
+* [人脸][fa-containers-recommendations]
 * [表单识别器][fr-containers-recommendations]
-* [语言理解（LUIS）][lu-containers-recommendations]
+* [语言理解 (LUIS)][lu-containers-recommendations]
 * [语音服务 API][sp-containers-recommendations]
 * [文本分析][ta-containers-recommendations]
  

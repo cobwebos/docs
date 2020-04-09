@@ -3,19 +3,19 @@ title: 配置语音容器
 titleSuffix: Azure Cognitive Services
 description: 语音服务为每个容器提供一个通用配置框架，以便您可以轻松配置和管理容器的存储、日志记录和遥测以及安全设置。
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.author: dapine
-ms.openlocfilehash: dd5a531e4a979cba9c2a766c7774762a0427ad02
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 5c74aa48b18661236eb55278d1e5a05215b2432c
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79037330"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877569"
 ---
 # <a name="configure-speech-service-containers"></a>配置语音服务容器
 
@@ -50,9 +50,9 @@ ms.locfileid: "79037330"
 
 - Azure 门户：**语音**概述，标记为`Endpoint`
 
-| 必选 | “属性” | 数据类型 | 描述 |
+| 必选 | 名称 | 数据类型 | 说明 |
 | -------- | ---- | --------- | ----------- |
-| 是 | `Billing` | String | 计费终结点 URI。 有关获取计费 URI 的详细信息，请参阅[收集所需的参数](speech-container-howto.md#gathering-required-parameters)。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](../cognitive-services-custom-subdomains.md)。 |
+| 是 | `Billing` | 字符串 | 计费终结点 URI。 有关获取计费 URI 的详细信息，请参阅[收集所需的参数](speech-container-howto.md#gathering-required-parameters)。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](../cognitive-services-custom-subdomains.md)。 |
 
 ## <a name="eula-setting"></a>Eula 设置
 
@@ -78,10 +78,10 @@ ms.locfileid: "79037330"
 
 主机确切语法的安装位置因主机操作系统不同而异。 此外，由于 Docker 服务帐户使用的权限与主机装载位置权限之间的冲突，[主机](speech-container-howto.md#the-host-computer)的装载位置可能无法访问。
 
-| 可选 | “属性” | 数据类型 | 描述 |
+| 可选 | 名称 | 数据类型 | 说明 |
 | -------- | ---- | --------- | ----------- |
-| 不允许 | `Input` | String | 标准语音容器不使用它。 自定义语音容器使用[卷装载](#volume-mount-settings)。                                                                                    |
-| 可选 | `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output` |
+| 不允许 | `Input` | 字符串 | 标准语音容器不使用它。 自定义语音容器使用[卷装载](#volume-mount-settings)。                                                                                    |
+| 可选 | `Output` | 字符串 | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output` |
 
 ## <a name="volume-mount-settings"></a>卷安装设置
 
@@ -115,7 +115,7 @@ ms.locfileid: "79037330"
 
 将 {_argument_name_} 替换为为你自己的值：
 
-| 占位符 | “值” | 格式或示例 |
+| 占位符 | 值 | 格式或示例 |
 | ----------- | ----- | ----------------- |
 | **[API_KEY]** | “Azure `Speech` 密钥”页上的 `Speech` 资源的终结点密钥。   | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`                                                                                  |
 | **{ENDPOINT_URI}** | Azure `Speech`“概览”页面上提供了账单终结点值。 | 有关显式示例，请参阅[收集所需参数](speech-container-howto.md#gathering-required-parameters)。 |
@@ -130,7 +130,7 @@ ms.locfileid: "79037330"
 
 以下 Docker 示例适用于语音容器。
 
-## <a name="speech-to-text"></a>[语音到文本](#tab/stt)
+## <a name="speech-to-text"></a>[语音转文本](#tab/stt)
 
 ### <a name="basic-example-for-speech-to-text"></a>语音到文本的基本示例
 

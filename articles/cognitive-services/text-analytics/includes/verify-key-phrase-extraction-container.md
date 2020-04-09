@@ -3,18 +3,18 @@ title: 验证关键短语提取容器实例
 titleSuffix: Azure Cognitive Services
 description: 了解如何验证关键短语提取容器实例。
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/12/2019
-ms.author: dapine
-ms.openlocfilehash: 1e2001c1f4cb2da195a3dcd0ca8fe198de8dd264
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 5c177517ec18d7526b1cc09da74e35cb5434766d
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "70968549"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876388"
 ---
 ### <a name="verify-the-key-phrase-extraction-container-instance"></a>验证关键短语提取容器实例
 
