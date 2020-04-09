@@ -2,13 +2,13 @@
 title: 模板函数 - 字符串
 description: 介绍可在 Azure 资源管理器模板中用来处理字符串的函数。
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: 070133c3db538e5df76644b62c25ced916adc4af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/08/2020
+ms.openlocfilehash: c0517375b273384f263e8ba421995d4afb6c193b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156270"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982408"
 ---
 # <a name="string-functions-for-arm-templates"></a>ARM 模板的字符串函数
 
@@ -22,7 +22,7 @@ ms.locfileid: "80156270"
 * [dataUri](#datauri)
 * [dataUriToString](#datauritostring)
 * [空](#empty)
-* [endsWith](#endswith)
+* [结束与](#endswith)
 * [第一](#first)
 * [格式](#format)
 * [Guid](#guid)
@@ -32,11 +32,11 @@ ms.locfileid: "80156270"
 * [length](#length)
 * [新吉德](#newguid)
 * [垫左](#padleft)
-* [replace](#replace)
+* [取代](#replace)
 * [跳](#skip)
 * [分裂](#split)
 * [开始与](#startswith)
-* [字符串](#string)
+* [string](#string)
 * [子](#substring)
 * [采取](#take)
 * [到下](#tolower)
@@ -46,7 +46,6 @@ ms.locfileid: "80156270"
 * [Uri](#uri)
 * [uriComponent](#uricomponent)
 * [uriComponentToString](#uricomponenttostring)
-* [utcNow](#utcnow)
 
 ## <a name="base64"></a>base64
 
@@ -107,10 +106,10 @@ ms.locfileid: "80156270"
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
-| base64Output | String | b25lLCB0d28sIHRocmVl |
-| toStringOutput | String | one, two, three |
+| base64Output | 字符串 | b25lLCB0d28sIHRocmVl |
+| toStringOutput | 字符串 | one, two, three |
 | toJsonOutput | Object | {"one": "a", "two": "b"} |
 
 ## <a name="base64tojson"></a>base64ToJson
@@ -172,10 +171,10 @@ ms.locfileid: "80156270"
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
-| base64Output | String | b25lLCB0d28sIHRocmVl |
-| toStringOutput | String | one, two, three |
+| base64Output | 字符串 | b25lLCB0d28sIHRocmVl |
+| toStringOutput | 字符串 | one, two, three |
 | toJsonOutput | Object | {"one": "a", "two": "b"} |
 
 ## <a name="base64tostring"></a>base64ToString
@@ -237,10 +236,10 @@ ms.locfileid: "80156270"
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
-| base64Output | String | b25lLCB0d28sIHRocmVl |
-| toStringOutput | String | one, two, three |
+| base64Output | 字符串 | b25lLCB0d28sIHRocmVl |
+| toStringOutput | 字符串 | one, two, three |
 | toJsonOutput | Object | {"one": "a", "two": "b"} |
 
 ## <a name="concat"></a>concat
@@ -288,9 +287,9 @@ ms.locfileid: "80156270"
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
-| concatOutput | String | prefix-5yj4yjf5mbg72 |
+| concatOutput | 字符串 | prefix-5yj4yjf5mbg72 |
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-array.json)演示如何组合两个数组。
 
@@ -329,7 +328,7 @@ ms.locfileid: "80156270"
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
 | return | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
@@ -405,7 +404,7 @@ ms.locfileid: "80156270"
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
 | stringFalse | Bool | False |
@@ -464,10 +463,10 @@ ms.locfileid: "80156270"
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
-| dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
-| toStringOutput | String | Hello, World! |
+| dataUriOutput | 字符串 | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | 字符串 | Hello, World! |
 
 ## <a name="datauritostring"></a>dataUriToString
 
@@ -519,10 +518,10 @@ ms.locfileid: "80156270"
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
-| dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
-| toStringOutput | String | Hello, World! |
+| dataUriOutput | 字符串 | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | 字符串 | Hello, World! |
 
 ## <a name="empty"></a>empty
 
@@ -583,7 +582,7 @@ ms.locfileid: "80156270"
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | True |
 | objectEmpty | Bool | True |
@@ -646,7 +645,7 @@ ms.locfileid: "80156270"
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
 | startsTrue | Bool | True |
 | startsCapTrue | Bool | True |
@@ -702,10 +701,10 @@ ms.locfileid: "80156270"
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
-| arrayOutput | String | one |
-| stringOutput | String | O |
+| arrayOutput | 字符串 | one |
+| stringOutput | 字符串 | O |
 
 ## <a name="format"></a>format
 
@@ -760,9 +759,9 @@ ms.locfileid: "80156270"
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
-| formatTest | String | Hello, User。 格式化号码： 8，175，133 |
+| formatTest | 字符串 | Hello, User。 格式化号码： 8，175，133 |
 
 ## <a name="guid"></a>guid
 
@@ -888,7 +887,7 @@ ms.locfileid: "80156270"
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
 | firstT | Int | 0 |
 | lastT | Int | 3 |
@@ -943,10 +942,10 @@ ms.locfileid: "80156270"
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
-| arrayOutput | String | three |
-| stringOutput | String | e |
+| arrayOutput | 字符串 | three |
+| stringOutput | 字符串 | e |
 
 ## <a name="lastindexof"></a>lastIndexOf
 
@@ -1001,7 +1000,7 @@ ms.locfileid: "80156270"
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
 | firstT | Int | 0 |
 | lastT | Int | 3 |
@@ -1079,7 +1078,7 @@ ms.locfileid: "80156270"
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
 | arrayLength | Int | 3 |
 | stringLength | Int | 13 |
@@ -1096,6 +1095,8 @@ ms.locfileid: "80156270"
 只能在表达式中对参数的默认值使用此函数。 在模板中的其他任何位置使用此函数都会返回错误。 不允许在模板的其他部分使用该函数，因为每次调用该函数，都会返回不同的值。 使用相同的参数部署同一模板不能可靠地生成相同的结果。
 
 newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。 每次结合相同的参数调用 guid 都会返回相同的标识符。 需要为特定的环境可靠地生成相同的 GUID 时，请使用 guid。 如果每次需要不同的标识符（例如，将资源部署到测试环境），请使用 newGuid。
+
+new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生成全局唯一标识符。
 
 如果[使用相应的选项来重新部署以前已成功的部署](rollback-on-error.md)，而以前的部署包含一个使用 newGuid 的参数，则不会重新评估该参数， 而是在回滚部署中自动重复使用以前部署中的参数值。
 
@@ -1134,7 +1135,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 上述示例的输出根据每个部署的不同而异，但类似于：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
 | guidOutput | 字符串 | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
 
@@ -1177,7 +1178,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 上述示例的输出根据每个部署的不同而异，但类似于：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
 | nameOutput | 字符串 | storagenziwvyru7uxie |
 
@@ -1228,9 +1229,9 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
-| stringOutput | String | 0000000123 |
+| stringOutput | 字符串 | 0000000123 |
 
 ## <a name="replace"></a>replace
 
@@ -1280,10 +1281,10 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
-| firstOutput | String | 1231231234 |
-| secondOutput | String | 123-123-xxxx |
+| firstOutput | 字符串 | 1231231234 |
+| secondOutput | 字符串 | 123-123-xxxx |
 
 ## <a name="skip"></a>skip
 
@@ -1348,10 +1349,10 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["three"] |
-| stringOutput | String | two three |
+| stringOutput | 字符串 | two three |
 
 ## <a name="split"></a>split
 
@@ -1407,7 +1408,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
 | firstOutput | Array | ["one", "two", "three"] |
 | secondOutput | Array | ["one", "two", "three"] |
@@ -1469,7 +1470,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
 | startsTrue | Bool | True |
 | startsCapTrue | Bool | True |
@@ -1543,11 +1544,11 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
-| objectOutput | String | {"valueA":10,"valueB":"Example Text"} |
-| arrayOutput | String | ["a","b","c"] |
-| intOutput | String | 5 |
+| objectOutput | 字符串 | {"valueA":10,"valueB":"Example Text"} |
+| arrayOutput | 字符串 | ["a","b","c"] |
+| intOutput | 字符串 | 5 |
 
 ## <a name="substring"></a>substring
 
@@ -1606,9 +1607,9 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
-| substringOutput | String | two |
+| substringOutput | 字符串 | two |
 
 ## <a name="take"></a>take
 
@@ -1673,10 +1674,10 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["one", "two"] |
-| stringOutput | String | on |
+| stringOutput | 字符串 | on |
 
 ## <a name="tolower"></a>toLower
 
@@ -1724,10 +1725,10 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
-| toLowerOutput | String | one two three |
-| toUpperOutput | String | ONE TWO THREE |
+| toLowerOutput | 字符串 | one two three |
+| toUpperOutput | 字符串 | ONE TWO THREE |
 
 ## <a name="toupper"></a>toUpper
 
@@ -1775,10 +1776,10 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
-| toLowerOutput | String | one two three |
-| toUpperOutput | String | ONE TWO THREE |
+| toLowerOutput | 字符串 | one two three |
+| toUpperOutput | 字符串 | ONE TWO THREE |
 
 ## <a name="trim"></a>trim
 
@@ -1822,9 +1823,9 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
-| return | String | one two three |
+| return | 字符串 | one two three |
 
 ## <a name="uniquestring"></a>uniqueString
 
@@ -1876,7 +1877,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
     ...
 ```
 
-如果每次部署模板都需要创建新的唯一名称并且不希望更新资源，可以结合 uniqueString 使用 [utcNow](#utcnow) 函数。 可以在测试环境中使用此方法。 有关示例，请参阅 [utcNow](#utcnow)。
+如果每次部署模板都需要创建新的唯一名称并且不希望更新资源，可以结合 uniqueString 使用 [utcNow](template-functions-date.md#utcnow) 函数。 可以在测试环境中使用此方法。 有关示例，请参阅 [utcNow](template-functions-date.md#utcnow)。
 
 ### <a name="return-value"></a>返回值
 
@@ -1923,7 +1924,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
    * 如果 **baseUri** 根本没有斜杠（除了前面的“/”之外），则结果就是 **baseUri** 后跟 **relativeUri**。
 
-   * 如果 **baseUri** 包含一些斜杠，但不是以斜杠结尾，则从 **baseUri** 中删除从最后一个斜杠开始的所有内容，结果是 **baseUri** 后跟 **relativeUri**。
+   * 如果**baseUri**有一些斜杠，但没有以斜杠结尾，则从最后一个斜杠开始的所有内容都将从**基 Uri**中删除，结果是**baseUri**后跟**相对 Uri**。
      
 下面是一些示例：
 
@@ -1978,11 +1979,11 @@ uri('http://contoso.org/firstpath/azuredeploy.json/', 'myscript.sh') -> http://c
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
-| uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
-| componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
-| toStringOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
+| uriOutput | 字符串 | `http://contoso.com/resources/nested/azuredeploy.json` |
+| componentOutput | 字符串 | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
+| toStringOutput | 字符串 | `http://contoso.com/resources/nested/azuredeploy.json` |
 
 ## <a name="uricomponent"></a>uriComponent
 
@@ -2033,11 +2034,11 @@ URI 编码值的字符串。
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
-| uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
-| componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
-| toStringOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
+| uriOutput | 字符串 | `http://contoso.com/resources/nested/azuredeploy.json` |
+| componentOutput | 字符串 | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
+| toStringOutput | 字符串 | `http://contoso.com/resources/nested/azuredeploy.json` |
 
 ## <a name="uricomponenttostring"></a>uriComponentToString
 
@@ -2088,120 +2089,11 @@ URI 编码值的解码字符串。
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | “值” |
 | ---- | ---- | ----- |
-| uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
-| componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
-| toStringOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
-
-## <a name="utcnow"></a>utcNow
-
-`utcNow(format)`
-
-以指定的格式返回当前的 (UTC) 日期时间值。 如果未提供格式，则使用 ISO 8601 (yyyyMMddTHHmmssZ) 格式。 **此函数只能在参数的默认值中使用。**
-
-### <a name="parameters"></a>参数
-
-| 参数 | 必选 | 类型 | 说明 |
-|:--- |:--- |:--- |:--- |
-| format |否 |字符串 |要转换为字符串的 URI 编码值。 使用[标准格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
-
-### <a name="remarks"></a>备注
-
-只能在表达式中对参数的默认值使用此函数。 在模板中的其他任何位置使用此函数都会返回错误。 不允许在模板的其他部分使用该函数，因为每次调用该函数，都会返回不同的值。 使用相同的参数部署同一模板不能可靠地生成相同的结果。
-
-如果[使用相应的选项来重新部署以前已成功的部署](rollback-on-error.md)，而以前的部署包含一个使用 utcNow 的参数，则不会重新评估该参数， 而是在回滚部署中自动重复使用以前部署中的参数值。
-
-重新部署依赖于 utcNow 函数提供默认值的模板时请保持谨慎。 如果重新部署且不提供参数的值，则会重新评估该函数。 若要更新现有的资源而不是新建资源，请传入以前部署中的参数值。
-
-### <a name="return-value"></a>返回值
-
-当前的 UTC 日期时间值。
-
-### <a name="examples"></a>示例
-
-以下示例模板演示日期时间值的不同格式。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "utcValue": {
-            "type": "string",
-            "defaultValue": "[utcNow()]"
-        },
-        "utcShortValue": {
-            "type": "string",
-            "defaultValue": "[utcNow('d')]"
-        },
-        "utcCustomValue": {
-            "type": "string",
-            "defaultValue": "[utcNow('M d')]"
-        }
-    },
-    "resources": [
-    ],
-    "outputs": {
-        "utcOutput": {
-            "type": "string",
-            "value": "[parameters('utcValue')]"
-        },
-        "utcShortOutput": {
-            "type": "string",
-            "value": "[parameters('utcShortValue')]"
-        },
-        "utcCustomOutput": {
-            "type": "string",
-            "value": "[parameters('utcCustomValue')]"
-        }
-    }
-}
-```
-
-上述示例的输出根据每个部署的不同而异，但类似于：
-
-| “属性” | 类型 | “值” |
-| ---- | ---- | ----- |
-| utcOutput | 字符串 | 20190305T175318Z |
-| utcShortOutput | 字符串 | 03/05/2019 |
-| utcCustomOutput | 字符串 | 3 5 |
-
-以下示例演示在设置标记值时如何使用函数中的值。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "utcShort": {
-            "type": "string",
-            "defaultValue": "[utcNow('d')]"
-        },
-        "rgName": {
-            "type": "string"
-        }
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Resources/resourceGroups",
-            "apiVersion": "2018-05-01",
-            "name": "[parameters('rgName')]",
-            "location": "westeurope",
-            "tags":{
-                "createdDate": "[parameters('utcShort')]"
-            },
-            "properties":{}
-        }
-    ],
-    "outputs": {
-        "utcShort": {
-            "type": "string",
-            "value": "[parameters('utcShort')]"
-        }
-    }
-}
-```
+| uriOutput | 字符串 | `http://contoso.com/resources/nested/azuredeploy.json` |
+| componentOutput | 字符串 | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
+| toStringOutput | 字符串 | `http://contoso.com/resources/nested/azuredeploy.json` |
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 Azure 资源管理器模板中各部分的说明，请参阅[创作 Azure 资源管理器模板](template-syntax.md)。

@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: cf51d418a008d332bfcea01a7a9dc1a265116e29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adf512fc521ef553f0bbd6ef6dd8ee19e398b37b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75442168"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982697"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>使用图批量执行程序 .NET 库在 Azure Cosmos DB Gremlin API 中执行批量操作
 
 本教程说明了如何使用 Azure Cosmos DB 的批量执行程序 .NET 库将图对象导入 Azure Cosmos DB Gremlin API 容器并对其进行更新。 此过程使用[批量执行程序库](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview)中的 Graph 类以编程方式创建顶点和边缘对象，然后按网络请求插入多个这样的对象。 可以通过批量执行程序库来配置此行为，以便优化对数据库和本地内存资源的使用。
 
-与向数据库发送 Gremlin 查询以便在数据库中逐个地对命令进行评估和执行相反，使用批量执行程序库会要求在本地创建和验证对象。 创建对象后，即可通过库将图形对象按顺序发送到数据库服务。 使用此方法时，数据引入速度最多可以提高到 100 倍，因此此方法特别适合初始数据迁移或定期数据移动操作。 有关详细信息，请访问 [Azure Cosmos DB 图批量执行程序示例应用程序](https://aka.ms/graph-bulkexecutor-sample)的 GitHub 页。
+与向数据库发送 Gremlin 查询以便在数据库中逐个地对命令进行评估和执行相反，使用批量执行程序库会要求在本地创建和验证对象。 创建对象后，即可通过库将图形对象按顺序发送到数据库服务。 使用此方法时，数据引入速度最多可以提高到 100 倍，因此此方法特别适合初始数据迁移或定期数据移动操作。 有关详细信息，请访问 [Azure Cosmos DB 图批量执行程序示例应用程序](https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started)的 GitHub 页。
 
 ## <a name="bulk-operations-with-graph-data"></a>对图形数据执行的批量操作
 
@@ -120,7 +120,7 @@ e.AddProperty("customProperty", "value");
 * Git。 有关详细信息，请查看[“Git 下载”页](https://git-scm.com/downloads)。
 
 ### <a name="clone-the-sample-application"></a>克隆示例应用程序
-在本教程中，我们将使用 GitHub 中托管的 [Azure Cosmos DB 图批量执行程序示例](https://aka.ms/graph-bulkexecutor-sample)来完成入门步骤。 此应用程序包含一个 .NET 解决方案，该解决方案随机生成顶点和边缘对象，然后执行批量插入，以便将内容插入指定的图形数据库帐户中。 若要获取应用程序，请运行下面的 `git clone` 命令：
+在本教程中，我们将使用 GitHub 中托管的 [Azure Cosmos DB 图批量执行程序示例](https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started)来完成入门步骤。 此应用程序包含一个 .NET 解决方案，该解决方案随机生成顶点和边缘对象，然后执行批量插入，以便将内容插入指定的图形数据库帐户中。 若要获取应用程序，请运行下面的 `git clone` 命令：
 
 ```bash
 git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started.git
@@ -128,7 +128,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 
 此存储库包含的 GraphBulkExecutor 示例包含以下文件：
 
-文件|描述
+文件|说明
 ---|---
 `App.config`|在这里指定特定于应用程序和数据库的参数。 在连接到目标数据库和集合之前，应先修改此文件。
 `Program.cs`| 此文件包含在创建 `DocumentClient` 集合、处理清理和发送批量执行程序请求背后的逻辑。
@@ -136,7 +136,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 
 在 `App.config` 文件中，以下项是可以提供的配置值：
 
-设置|描述
+设置|说明
 ---|---
 `EndPointUrl`|这是 **.NET SDK 终结点**，位于 Azure Cosmos DB Gremlin API 数据库帐户的“概览”边栏选项卡中。 此项的格式为 `https://your-graph-database-account.documents.azure.com:443/`
 `AuthorizationKey`|这是在 Azure Cosmos DB 帐户下列出的主密钥或辅助密钥。 详细了解如何[确保对 Azure Cosmos DB 数据的安全访问](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#master-keys)

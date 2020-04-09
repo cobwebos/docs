@@ -1,5 +1,5 @@
 ---
-title: 了解 Azure Active Directory 应用清单 | Microsoft Docs
+title: 了解 Azure 活动目录应用清单
 description: 详细介绍 Azure Active Directory 应用清单，该清单表示 Azure AD 租户中的应用程序标识配置，并方便实现 OAuth 授权、许可体验和其他功能。
 services: active-directory
 author: rwike77
@@ -12,12 +12,12 @@ ms.date: 03/23/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 6d9a4af5ee814282589959fcf840c1061358ca18
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 487559aaf632a30b7efcda490f92a90d4f59b8f5
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80383933"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883468"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory 应用清单
 
@@ -32,7 +32,7 @@ ms.locfileid: "80383933"
 
 若要配置应用程序清单，请执行以下操作：
 
-1. 转到[Azure 门户](https://portal.azure.com)。 搜索并选择 **Azure Active Directory** 服务。
+1. 转到 [Azure 门户](https://portal.azure.com)。 搜索并选择 **Azure Active Directory** 服务。
 1. 选择**应用注册**。
 1. 选择要配置的应用。
 1. 在应用的“概览”页中，选择“清单”部分。******** 此时会打开一个基于 Web 的清单编辑器，可在其中编辑门户中的清单。 （可选）可以选择“下载”以在本地编辑清单，然后使用“上传”将清单重新应用于应用程序。********
@@ -43,7 +43,7 @@ ms.locfileid: "80383933"
 
 ### <a name="accesstokenacceptedversion-attribute"></a>访问令牌接受版本属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | 访问令牌接受版本 | 可为 Null 的 Int32 |
 
@@ -63,7 +63,7 @@ ms.locfileid: "80383933"
 
 ### <a name="addins-attribute"></a>添加项属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | addIns | 集合 |
 
@@ -88,7 +88,7 @@ ms.locfileid: "80383933"
 
 ### <a name="allowpublicclient-attribute"></a>允许公共客户端属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | 允许公共客户端 | Boolean |
 
@@ -102,7 +102,7 @@ ms.locfileid: "80383933"
 
 ### <a name="availabletoothertenants-attribute"></a>可供其他租户属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | availableToOtherTenants | Boolean |
 
@@ -113,9 +113,9 @@ ms.locfileid: "80383933"
 
 ### <a name="appid-attribute"></a>appId 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
-| appId | String |
+| appId | 字符串 |
 
 指定由 Azure AD 分配给应用的应用唯一标识符。
 
@@ -127,7 +127,7 @@ ms.locfileid: "80383933"
 
 ### <a name="approles-attribute"></a>应用角色属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | appRoles | 集合 |
 
@@ -152,9 +152,9 @@ ms.locfileid: "80383933"
 
 ### <a name="displayname-attribute"></a>显示名称属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
-| displayName | String |
+| displayName | 字符串 |
 
 应用的显示名称。
 
@@ -163,17 +163,17 @@ ms.locfileid: "80383933"
 
 ### <a name="errorurl-attribute"></a>错误Url属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
-| errorUrl | String |
+| errorUrl | 字符串 |
 
 不支持。
 
 ### <a name="groupmembershipclaims-attribute"></a>组成员要求属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
-|groupMembershipClaims | String |
+|groupMembershipClaims | 字符串 |
 
 配置应用所需的用户访问令牌或 OAuth 2.0 访问令牌中颁发的 `groups` 声明。 要设置此属性，请使用以下有效字符串值之一：
 
@@ -189,9 +189,9 @@ ms.locfileid: "80383933"
 
 ### <a name="homepage-attribute"></a>主页属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
-| homepage |String |
+| homepage |字符串 |
 
 应用程序主页的 URL。
 
@@ -200,9 +200,9 @@ ms.locfileid: "80383933"
 
 ### <a name="objectid-attribute"></a>对象 Id 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
-|objectId | String |
+|objectId | 字符串 |
 
 应用在目录中的唯一标识符。
 
@@ -216,9 +216,9 @@ ms.locfileid: "80383933"
 
 ### <a name="optionalclaims-attribute"></a>可选索赔属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
-| optionalClaims | String |
+| optionalClaims | 字符串 |
 
 此特定应用的安全令牌服务在令牌中返回的可选声明。
 
@@ -232,9 +232,9 @@ ms.locfileid: "80383933"
 
 ### <a name="id-attribute"></a>id 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
-| id | String |
+| id | 字符串 |
 
 应用在目录中的唯一标识符。 此 ID 不是用于在任何协议事务中标识应用的标识符。 用于引用目录查询中的对象。
 
@@ -246,7 +246,7 @@ ms.locfileid: "80383933"
 
 ### <a name="identifieruris-attribute"></a>标识符 Uris 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | identifierUris | String Array |
 
@@ -260,9 +260,9 @@ ms.locfileid: "80383933"
 
 ### <a name="informationalurls-attribute"></a>信息Urls属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
-| 信息 Url | String |
+| 信息 Url | 字符串 |
 
 指定应用服务条款和隐私声明的链接。 服务条款和隐私声明通过用户同意体验展示给用户。 有关详细信息，请参阅[如何：为已注册的 Azure AD 应用添加服务条款和隐私声明](howto-add-terms-of-service-privacy-statement.md)。
 
@@ -279,7 +279,7 @@ ms.locfileid: "80383933"
 
 ### <a name="keycredentials-attribute"></a>键凭据属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | keyCredentials | 集合 |
 
@@ -303,7 +303,7 @@ ms.locfileid: "80383933"
 
 ### <a name="knownclientapplications-attribute"></a>已知客户端应用程序属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | knownClientApplications | String Array |
 
@@ -317,9 +317,9 @@ ms.locfileid: "80383933"
 
 ### <a name="logourl-attribute"></a>logoUrl 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
-| 标志Url | String |
+| 标志Url | 字符串 |
 
 只读值，指向已在门户中上传的徽标的 CDN URL。
 
@@ -331,9 +331,9 @@ ms.locfileid: "80383933"
 
 ### <a name="logouturl-attribute"></a>注销Url属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
-| logoutUrl | String |
+| logoutUrl | 字符串 |
 
 用于注销应用的 URL。
 
@@ -345,9 +345,9 @@ ms.locfileid: "80383933"
 
 ### <a name="name-attribute"></a>名称属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
-| name | String |
+| name | 字符串 |
 
 应用的显示名称。
 
@@ -359,7 +359,7 @@ ms.locfileid: "80383933"
 
 ### <a name="oauth2allowimplicitflow-attribute"></a>oauth2Allow隐式流属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | oauth2AllowImplicitFlow | Boolean |
 
@@ -373,7 +373,7 @@ ms.locfileid: "80383933"
 
 ### <a name="oauth2allowidtokenimplicitflow-attribute"></a>oauth2AllowIdToken隐式流属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | oauth2AllowIdToken隐式流 | Boolean |
 
@@ -387,7 +387,7 @@ ms.locfileid: "80383933"
 
 ### <a name="oauth2permissions-attribute"></a>oauth2权限属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | oauth2Permissions | 集合 |
 
@@ -412,7 +412,7 @@ ms.locfileid: "80383933"
 
 ### <a name="oauth2requiredpostresponse-attribute"></a>oauth2必需的后响应属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | oauth2RequiredPostResponse | Boolean |
 
@@ -426,9 +426,9 @@ ms.locfileid: "80383933"
 
 ### <a name="parentalcontrolsettings-attribute"></a>家长控制设置属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
-| 家长控制设置 | String |
+| 家长控制设置 | 字符串 |
 
 - `countriesBlockedForMinors` 指定禁止未成年人使用该应用的国家/地区。
 - `legalAgeGroupRule` 指定适用于应用用户的法定年龄组规则。 可设置为 `Allow`、`RequireConsentForPrivacyServices`、`RequireConsentForMinors`、`RequireConsentForKids` 或 `BlockMinors`。  
@@ -444,7 +444,7 @@ ms.locfileid: "80383933"
 
 ### <a name="passwordcredentials-attribute"></a>密码凭据属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | passwordCredentials | 集合 |
 
@@ -466,7 +466,7 @@ ms.locfileid: "80383933"
 
 ### <a name="preauthorizedapplications-attribute"></a>预授权应用程序属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | 预授权应用程序 | 集合 |
 
@@ -487,7 +487,7 @@ ms.locfileid: "80383933"
 
 ### <a name="publicclient-attribute"></a>公共客户端属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | publicClient | Boolean|
 
@@ -497,9 +497,9 @@ ms.locfileid: "80383933"
 
 ### <a name="publisherdomain-attribute"></a>发布者域属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
-| 发布者域 | String |
+| 发布者域 | 字符串 |
 
 应用程序的已验证发布者域。 只读。
 
@@ -511,7 +511,7 @@ ms.locfileid: "80383933"
 
 ### <a name="replyurls-attribute"></a>回复 Urls 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | replyUrls | 字符串数组 |
 
@@ -521,7 +521,7 @@ ms.locfileid: "80383933"
 
 ### <a name="replyurlswithtype-attribute"></a>回复Urls与类型属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | 回复 Urls 与类型 | 集合 |
 
@@ -545,7 +545,7 @@ ms.locfileid: "80383933"
 
 ### <a name="requiredresourceaccess-attribute"></a>所需的资源访问属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | requiredResourceAccess | 集合 |
 
@@ -572,9 +572,9 @@ ms.locfileid: "80383933"
 
 ### <a name="samlmetadataurl-attribute"></a>samlMetadataUrl 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
-| samlMetadataUrl | String |
+| samlMetadataUrl | 字符串 |
 
 应用的 SAML 元数据 URL。
 
@@ -586,9 +586,9 @@ ms.locfileid: "80383933"
 
 ### <a name="signinurl-attribute"></a>符号 InUrl 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
-| 符号 InUrl | String |
+| 符号 InUrl | 字符串 |
 
 指定应用主页的 URL。
 
@@ -600,9 +600,9 @@ ms.locfileid: "80383933"
 
 ### <a name="signinaudience-attribute"></a>符号属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
-| 符号在观众 | String |
+| 符号在观众 | 字符串 |
 
 指定当前应用程序支持哪些 Microsoft 帐户。 支持的值为：
 - `AzureADMyOrg`- 在组织的 Azure AD 租户中具有 Microsoft 工作或学校帐户的用户（例如，单个租户）
@@ -618,7 +618,7 @@ ms.locfileid: "80383933"
 
 ### <a name="tags-attribute"></a>标记属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | 标记 | String Array  |
 

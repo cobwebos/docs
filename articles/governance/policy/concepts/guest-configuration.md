@@ -3,12 +3,12 @@ title: 了解如何审核虚拟机的内容
 description: 了解 Azure Policy 如何使用来宾配置代理审核虚拟机内部的设置。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: cc2ba11f75da5f993b99c90e5d0cc1030003203e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 889e99e94b2c81a6654fcbe7851e93c40163a0c6
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257250"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985314"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
@@ -18,7 +18,7 @@ ms.locfileid: "80257250"
 - 应用程序配置或状态
 - 环境设置
 
-目前，Azure Policy 来宾配置仅审核计算机中的设置。 它不应用配置。
+此时，大多数 Azure 策略来宾配置策略仅审核计算机内的设置。 它们不应用配置。 例外情况是[下面引用](#applying-configurations-using-guest-configuration)的一个内置策略。
 
 ## <a name="extension-and-client"></a>扩展和客户端
 
@@ -62,28 +62,26 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 |操作系统|验证工具|说明|
 |-|-|-|
 |Windows|[Windows PowerShell Desired State Configuration ](/powershell/scripting/dsc/overview/overview) v2| |
-|Linux|[Chef InSpec](https://www.chef.io/inspec/)| Ruby 和 Python 由来宾配置扩展安装。 |
+|Linux|[Chef InSpec](https://www.chef.io/inspec/)| 如果 Ruby 和 Python 不在计算机上，则它们由来宾配置扩展安装。 |
 
 ### <a name="validation-frequency"></a>验证频率
 
-来宾配置客户端每 5 分钟检查一次新内容。 在收到来宾分配后，将按 15 分钟的时间间隔检查设置。 在审核完成后，结果会立即发送到来宾配置资源提供程序。 当策略[评估触发器](../how-to/get-compliance-data.md#evaluation-triggers)执行时，会将计算机状态写入到来宾配置资源提供程序。 此项更新会导致 Azure Policy 评估 Azure 资源管理器属性。 按需 Azure Policy 评估从 Guest Configuration 资源提供程序检索最新值。 但是，它不会触发对计算机中的配置执行新的审核。
+来宾配置客户端每 5 分钟检查一次新内容。 收到来宾分配后，该配置的设置将每隔 15 分钟重新检查。
+审核完成后，结果将发送给来宾配置资源提供程序。 当策略[评估触发器](../how-to/get-compliance-data.md#evaluation-triggers)执行时，会将计算机状态写入到来宾配置资源提供程序。 此项更新会导致 Azure Policy 评估 Azure 资源管理器属性。 按需 Azure Policy 评估从 Guest Configuration 资源提供程序检索最新值。 但是，它不会触发对计算机中的配置执行新的审核。
 
 ## <a name="supported-client-types"></a>支持的客户端类型
 
 下表显示了 Azure 映像上支持的操作系统列表：
 
-|发布者|“属性”|版本|
+|发布者|名称|版本|
 |-|-|-|
 |Canonical|Ubuntu Server|14.04、16.04、18.04|
 |Credativ|Debian|8、9|
 |Microsoft|Windows Server|2012 Datacenter、2012 R2 Datacenter、2016 Datacenter、2019 Datacenter|
 |Microsoft|Windows 客户端|Windows 10|
-|OpenLogic|CentOS|7.3、7.4、7.5|
-|Red Hat|Red Hat Enterprise Linux|7.4, 7.5, 7.6|
+|OpenLogic|CentOS|7.3, 7.4, 7.5, 7.6, 7.7|
+|Red Hat|Red Hat Enterprise Linux|7.4, 7.5, 7.6, 7.7|
 |Suse|SLES|12 SP3|
-
-> [!IMPORTANT]
-> Guest Configuration 可以审核运行受支持 OS 的节点。 若要审核使用自定义映像的虚拟机，需要复制 **DeployIfNotExists** 定义，并修改 **If** 节以包含你的映像属性。
 
 ### <a name="unsupported-client-types"></a>不支持的客户端类型
 
@@ -140,10 +138,6 @@ Azure Policy 的最新功能可以配置计算机内部的设置。 定义“在
 
 Guest Configuration 策略目前仅支持为每台计算机分配相同的来宾分配，即使策略分配使用不同的参数，也是如此。
 
-## <a name="built-in-resource-modules"></a>内置资源模块
-
-安装 Guest Configuration 扩展时，“GuestConfiguration”PowerShell 模块将包含在最新版本的 DSC 资源模块中。 可以使用模块页 [GuestConfiguration](https://www.powershellgallery.com/packages/GuestConfiguration/) 中的“手动下载”链接从 PowerShell 库下载此模块。 可将“.nupkg”文件格式重命名为“.zip”，以便于解压缩和查看。
-
 ## <a name="client-log-files"></a>客户端日志文件
 
 Guest Configuration 扩展将日志文件写入以下位置：
@@ -193,7 +187,7 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 
 - 查看[Azure 策略示例](../samples/index.md)中的示例。
 - 查看 [Azure Policy 定义结构](definition-structure.md)。
-- 回顾[了解政策效果](effects.md)。
+- 查看[了解策略效果](effects.md)。
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
 - 了解如何[获取合规性数据](../how-to/get-compliance-data.md)。
 - 了解如何[修复不合规资源](../how-to/remediate-resources.md)。

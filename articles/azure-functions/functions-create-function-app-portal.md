@@ -1,15 +1,15 @@
 ---
-title: 从 Azure 门户创建函数应用
+title: 通过 Azure 门户创建 Function App
 description: 通过门户在 Azure 中创建新的函数应用。
 ms.topic: how-to
 ms.date: 08/29/2019
 ms.custom: mvc
-ms.openlocfilehash: 6c17dc28d7eea4897759c1c832fdb1aba7f1e445
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 001b4e4f0ea7fbacd232b2a87abfe353f34919bd
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756530"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985008"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>通过 Azure 门户创建 Function App
 
@@ -36,7 +36,7 @@ Azure 函数有三种不同的服务计划：消耗计划、高级计划和专�
 >[!NOTE]
 >使用消耗托管计划时，函数代码和绑定配置文件存储在主存储帐户的 Azure 文件存储中。 删除主存储帐户时，此内容将随之删除且无法恢复。
 
-要了解有关存储帐户类型详细信息，请参阅[介绍 Azure 存储服务](../storage/common/storage-introduction.md#azure-storage-services)。 
+要了解有关存储帐户类型详细信息，请参阅[介绍 Azure 存储服务](../storage/common/storage-introduction.md#core-storage-services)。 
 
 ## <a name="next-steps"></a>后续步骤
 

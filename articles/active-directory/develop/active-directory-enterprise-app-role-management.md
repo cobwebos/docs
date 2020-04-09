@@ -5,7 +5,6 @@ description: 了解如何在 Azure Active Directory 中为企业应用程序配�
 services: active-directory
 author: jeevansd
 manager: CelesteDG
-ms.assetid: eb2b3741-3cde-45c8-b639-a636f3df3b74
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
@@ -13,12 +12,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: a70abd1cddb866037926bbbc881682d50599366b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8db27819b7eef6cdf05ea3f6645ae930ebc4ef58
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76699251"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884743"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序配置 SAML 令牌中颁发的角色声明
 
@@ -57,9 +56,9 @@ ms.locfileid: "76699251"
 
 6. 在另一个窗口中打开[Microsoft 图形资源管理器](https://developer.microsoft.com/graph/graph-explorer)，并采取以下步骤：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 使用租户的全局管理员或共同管理员凭据登录到 Graph 浏览器站点。
+    a. 使用租户的全局管理员或共同管理员凭据登录到 Graph 浏览器站点。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 需要足够的权限才能创建角色。 选择“修改权限”以获取权限。****
+    b. 需要足够的权限才能创建角色。 选择“修改权限”以获取权限。****
 
       ![“修改权限”按钮](./media/active-directory-enterprise-app-role-management/graph-explorer-new9.png)
 
@@ -70,9 +69,9 @@ ms.locfileid: "76699251"
     > [!Note]
     > 在此方案中，“云应用管理员”和“应用管理员”角色将无法工作，因为我们需要可目录读写的全局管理员权限。
 
-    d.单击“下一步”。 接受许可。 此时会再次登录到系统。
+    d. 接受许可。 此时会再次登录到系统。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 将版本更改为“beta”****，然后使用以下查询从租户中提取服务主体列表：
+    e. 将版本更改为“beta”****，然后使用以下查询从租户中提取服务主体列表：
 
      `https://graph.microsoft.com/beta/servicePrincipals`
 
@@ -158,11 +157,11 @@ ms.locfileid: "76699251"
     >[!NOTE]
     >如果角色声明值为空，则 Azure AD 将不会在令牌中发送此值，并且根据设计默认此值。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击 **"编辑**"图标可打开**用户属性&声明**对话框。
+    a. 单击 **"编辑**"图标可打开**用户属性&声明**对话框。
 
       ![“添加属性”按钮](./media/active-directory-enterprise-app-role-management/editattribute.png)
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在 **"管理用户声明"** 对话框中，通过单击"**添加新声明**"来添加 SAML 令牌属性。
+    b. 在 **"管理用户声明"** 对话框中，通过单击"**添加新声明**"来添加 SAML 令牌属性。
 
       ![“添加属性”按钮](./media/active-directory-enterprise-app-role-management/tutorial_attribute_04.png)
 
@@ -170,11 +169,11 @@ ms.locfileid: "76699251"
 
     c. 在“名称”框中，根据需要键入属性名称。**** 此示例中使用**角色名称**作为声明名称。
 
-    d.单击“下一步”。 将“命名空间”框留空****。
+    d. 将“命名空间”框留空****。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 在“源属性”**** 列表中，键入为该行显示的属性值。
+    e. 在“源属性”**** 列表中，键入为该行显示的属性值。
 
-    f. 选择“保存”。****
+    f. 选择“保存”。 
 
 10. 若要在标识提供者启动的单一登录中测试应用程序，请登录到[访问面板](https://myapps.microsoft.com)，然后选择应用程序磁贴。 在 SAML 令牌中，应该会看到具有所提供的声明名称的用户的所有已分配角色。
 
@@ -208,13 +207,13 @@ ms.locfileid: "76699251"
 
     ![“PATCH”的请求正文，突出显示了“description”和“displayname”](./media/active-directory-enterprise-app-role-management/graph-explorer-patchupdate.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 将方法从“GET”更改为“PATCH”********。
+    a. 将方法从“GET”更改为“PATCH”********。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 复制现有角色，并将其粘贴到“请求正文”下****。
+    b. 复制现有角色，并将其粘贴到“请求正文”下****。
 
     c. 根据需要更新角色的值，具体说来就是更新角色说明、角色值或角色显示名称。
 
-    d.单击“下一步”。 更新所有要求的角色后，选择“运行查询”****。
+    d. 更新所有要求的角色后，选择“运行查询”****。
 
 ## <a name="delete-an-existing-role"></a>删除现有角色
 
@@ -246,13 +245,13 @@ ms.locfileid: "76699251"
 
     ![“PATCH”的请求正文，IsEnabled 设置为 false](./media/active-directory-enterprise-app-role-management/graph-explorer-new8.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 将方法从“GET”更改为“PATCH”********。
+    a. 将方法从“GET”更改为“PATCH”********。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 从应用程序中复制现有角色，并将其粘贴到“请求正文”下****。
+    b. 从应用程序中复制现有角色，并将其粘贴到“请求正文”下****。
 
     c. 将想要删除的角色的“IsEnabled”值设置为“false”。********
 
-    d.单击“下一步”。 选择“运行查询”。****
+    d. 选择“运行查询”。****
 
     > [!NOTE]
     > 确保拥有 msiam_access 角色且 ID 在生成的角色中匹配。

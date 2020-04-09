@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: jgao
-ms.openlocfilehash: aa49b313f0fb10175dc6c0003f1a919f61731269
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: f84707adfa406011989c8f9bfdf1e8d9270698a6
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743309"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984787"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>在模板中使用部署脚本（预览）
 
@@ -313,7 +313,7 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
 部署脚本执行是一种幂等操作。 如果未更改任何部署脚本资源属性（包括内联脚本），则在重新部署模板时不会执行该脚本。 部署脚本服务将模板中的资源名称与同一资源组中的现有资源进行比较。 如果要多次执行同一部署脚本，有两个选项：
 
-- 更改部署脚本资源的名称。 例如，使用[utcNow](./template-functions-string.md#utcnow)模板函数作为资源名称或资源名称的一部分。 更改资源名称将创建新的部署脚本资源。 它有利于保留脚本执行历史记录。
+- 更改部署脚本资源的名称。 例如，使用[utcNow](./template-functions-date.md#utcnow)模板函数作为资源名称或资源名称的一部分。 更改资源名称将创建新的部署脚本资源。 它有利于保留脚本执行历史记录。
 
     > [!NOTE]
     > utcNow 函数只能在参数的默认值中使用。

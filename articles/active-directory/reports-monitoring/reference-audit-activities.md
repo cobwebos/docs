@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 843f12d14120a7becdc1e8b15bfcc65948602c44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 86a0e0b3c64554e00a5ba7734af28dc136df643f
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74007753"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891503"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD 审核活动参考
 
@@ -256,17 +256,17 @@ Azure AD 中的报告体系结构由以下部分组成：
 |目录管理|获取租户信息|
 |目录管理|获取租户允许的功能|
 |目录管理|获取 tenantDomains|
-|键|获取租户的类型|
-|键|验证是否已启用 B2C 功能|
-|键|验证是否已启用功能|
-|键|将合作伙伴添加到公司|
-|键|添加未验证的域|
-|键|添加已验证的域|
-|键|创建公司|
-|键|创建公司设置|
-|键|删除公司设置|
-|键|降级合作伙伴|
-|键|目录已删除|
+|密钥|获取租户的类型|
+|密钥|验证是否已启用 B2C 功能|
+|密钥|验证是否已启用功能|
+|密钥|将合作伙伴添加到公司|
+|密钥|添加未验证的域|
+|密钥|添加已验证的域|
+|密钥|创建公司|
+|密钥|创建公司设置|
+|密钥|删除公司设置|
+|密钥|降级合作伙伴|
+|密钥|目录已删除|
 |其他|目录已永久删除|
 |其他|目录已计划删除|
 |资源|将公司提升为合作伙伴|
@@ -370,8 +370,8 @@ Azure AD 中的报告体系结构由以下部分组成：
 |应用程序管理|编辑使用条款|
 |应用程序管理|发布使用条款|
 |应用程序管理|取消发布使用条款|
-|应用程序管理|添加应用程序 SSL 证书|
-|应用程序管理|删除 SSL 绑定|
+|应用程序管理|添加应用程序 TLS/SSL 证书|
+|应用程序管理|删除 TLS 绑定|
 |应用程序管理|注册连接器|
 |应用程序管理|AdminPolicyDatas-RemoveResources|
 |应用程序管理|AdminPolicyDatas-SetResources|

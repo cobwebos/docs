@@ -6,12 +6,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: c2f384370c3ceaf24164e4a27adc05b1a1e1ddf7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 83575aa7f9b63615f453e00bd06b00a5540b9a9e
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294967"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892251"
 ---
 # <a name="what-is-distributed-tracing"></a>什么是分布式跟踪？
 
@@ -27,17 +27,17 @@ Azure Monitor 还提供[应用程序映射](https://docs.microsoft.com/azure/app
 
 ## <a name="how-to-enable-distributed-tracing"></a>如何启用分布式跟踪
 
-在应用程序中跨服务启用分布式跟踪很简单，只需根据实现服务时采用的语言为每个服务添加适当的 SDK 或库即可。
+在应用程序中跨服务启用分布式跟踪非常简单，只需根据服务所实现的语言向每个服务添加适当的代理、SDK 或库即可。
 
-## <a name="enabling-via-application-insights-sdks"></a>通过 Application Insights SDK 启用
+## <a name="enabling-via-application-insights-through-auto-instrumentation-or-sdks"></a>通过自动检测或 SDK 通过应用程序洞察实现
 
-适用于 .NET、.NET Core、Java、Node.js 和 JavaScript 的 Application Insights SDK 都以原生方式支持分布式跟踪。 每个 Application Insights SDK 的安装和配置说明见下：
+.NET、.NET 核心、Java、Node.js 和 JavaScript 的应用程序见解代理和/或 SDK 都支持本机分布式跟踪。 每个 Application Insights SDK 的安装和配置说明见下：
 
 * [.NET](https://docs.microsoft.com/azure/application-insights/quick-monitor-portal)
 * [.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-dotnetcore-quick-start)
-* [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
+* [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
 * [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
-* [Javascript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
+* [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
 * [Python](opencensus-python.md)
 
 安装并配置适当的 Application Insights SDK 以后，系统就会通过 SDK 依赖项自动收集器自动收集常用框架、库和技术的跟踪信息。 [依赖项自动收集文档](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)中提供支持的技术的完整列表。

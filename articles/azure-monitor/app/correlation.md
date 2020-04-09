@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 06897fffda490cdfcbb2a9cf6f55c7945e8afda0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c68b83726371d346019d18d0b066173f93196e6d
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276122"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982049"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -63,7 +63,7 @@ Application Insights 正在过渡到 [W3C Trace-Context](https://w3c.github.io/t
 
 最新版本 Application Insights SDK 支持 Trace-Context 协议，但你可能需要选择启用此协议。 （将保持与 Application Insights SDK 支持的旧关联协议的后向兼容性。）
 
-[关联 HTTP 协议（也称为 Request-Id）](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)即将弃用。 此协议定义两个标头：
+[关联 HTTP 协议（也称为 Request-Id）](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)即将弃用。 此协议定义两个标头：
 
 - `Request-Id`：携带呼叫的全球唯一 ID。
 - `Correlation-Context`：携带分布式跟踪属性的名称值对集合。
@@ -202,13 +202,13 @@ public void ConfigureServices(IServiceCollection services)
 
 [OpenTracing 数据模型规范](https://opentracing.io/)和 Application Insights 数据模型按以下方式映射：
 
-| Application Insights                  | OpenTracing                                       |
-|------------------------------------   |-------------------------------------------------  |
-| `Request`, `PageView`                 | 带 `span.kind = server` 的 `Span`                  |
-| `Dependency`                          | 带 `span.kind = client` 的 `Span`                  |
-| `Request` 和 `Dependency` 的 `Id`    | `SpanId`                                          |
-| `Operation_Id`                        | `TraceId`                                         |
-| `Operation_ParentId`                  | `ChildOf` 类型的 `Reference`（父级范围）   |
+| Application Insights                   | OpenTracing                                        |
+|------------------------------------    |-------------------------------------------------    |
+| `Request`, `PageView`                  | 带 `span.kind = server` 的 `Span`                    |
+| `Dependency`                           | 带 `span.kind = client` 的 `Span`                    |
+| `Request` 和 `Dependency` 的 `Id`     | `SpanId`                                            |
+| `Operation_Id`                         | `TraceId`                                           |
+| `Operation_ParentId`                   | `ChildOf` 类型的 `Reference`（父级范围）     |
 
 有关详细信息，请参阅 [Application Insights 遥测数据模型](../../azure-monitor/app/data-model.md)。
 
@@ -320,19 +320,12 @@ ASP.NET Core 2.0 支持提取 HTTP 标头和启动新的活动。
 从版本 2.4.0-beta1 开始，Application Insights SDK 使用 `DiagnosticSource` 和 `Activity` 收集遥测数据并将其与当前活动相关联。
 
 <a name="java-correlation"></a>
-## <a name="telemetry-correlation-in-the-java-sdk"></a>Java SDK 中的遥测关联
+## <a name="telemetry-correlation-in-the-java"></a>Java 中的遥测相关性
 
-[适用于 Java 的 Application Insights SDK](../../azure-monitor/app/java-get-started.md) 2.0.0 或更高版本支持自动关联遥测。 对于所有在请求范围内发出的遥测（例如跟踪、异常、自定义事件），它会自动填充 `operation_id`。 对于通过 HTTP 进行的服务到服务调用，它还会传播关联标头（如前所述），前提是 [Java SDK 代理](../../azure-monitor/app/java-agent.md)已配置。
+[应用程序见解 Java 代理](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)以及[Java SDK](../../azure-monitor/app/java-get-started.md)版本 2.0.0 或更高版本支持遥测的自动关联。 对于所有在请求范围内发出的遥测（例如跟踪、异常、自定义事件），它会自动填充 `operation_id`。 对于通过 HTTP 进行的服务到服务调用，它还会传播关联标头（如前所述），前提是 [Java SDK 代理](../../azure-monitor/app/java-agent.md)已配置。
 
 > [!NOTE]
-> 只有通过 Apache HttpClient 进行的调用才能使用关联功能。 Spring RestTemplate 和 Feign 实际上都可以与 Apache HttpClient 配合使用。
-
-目前不支持跨消息传送技术（例如，Kafka、RabbitMQ 和 Azure 服务总线）自动进行上下文传播。 可以使用 `trackDependency` 和 `trackRequest` 方法手动为此类方案编写代码。 在这些方法中，依赖项遥测表示生成者排队的消息。 请求表示使用者正在处理的消息。 在这种情况下，`operation_id` 和 `operation_parentId` 都应在消息的属性中传播。
-
-### <a name="telemetry-correlation-in-asynchronous-java-applications"></a>异步 Java 应用程序中的遥测关联
-
-若要了解如何在异步 Spring Boot 应用程序中关联遥测，请参阅[异步 Java 应用程序中的分布式跟踪](https://github.com/Microsoft/ApplicationInsights-Java/wiki/Distributed-Tracing-in-Asynchronous-Java-Applications)。 此文提供了有关检测 Spring 的 [ThreadPoolTaskExecutor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskExecutor.html) 和 [ThreadPoolTaskScheduler](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskScheduler.html) 的指导。
-
+> 应用程序见解 Java 代理自动收集 JMS、卡夫卡、Netty/Webflux 等的请求和依赖项。 对于 Java SDK，仅支持通过 Apache HttpClient 进行的呼叫，用于相关功能。 SDK 不支持跨消息传递技术（如 Kafka、RabbitMQ 和 Azure 服务总线）进行自动上下文传播。 
 
 <a name="java-role-name"></a>
 ## <a name="role-name"></a>角色名称

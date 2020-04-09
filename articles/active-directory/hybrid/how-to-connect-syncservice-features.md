@@ -16,12 +16,12 @@ ms.date: 06/25/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5486a8d8bd4c295f49e0ab847daf45d0fcab47ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3f6b698922440c6e3e9b488cca93ca8d98d9c59
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300530"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983069"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect 同步服务功能
 
@@ -89,12 +89,14 @@ Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 
 ## <a name="synchronize-userprincipalname-updates"></a>同步 userPrincipalName 更新
 
-在过去，除非以下两个条件都成立，否则会阻止在本地使用同步服务对 UserPrincipalName 属性进行更新：
+从历史上看，使用本地同步服务的 UserTheName 属性的更新已被阻止，除非这两个条件都为 true：
 
 * 用户受管理（非联合）。
 * 没有为用户分配许可证。
 
-有关详细信息，请参阅 [Office 365、Azure 或 Intune 中的用户名与本地 UPN 或备用登录 ID 不匹配](https://support.microsoft.com/kb/2523192)。
+> [!NOTE]
+> 从 2019 年 3 月起，允许对联合用户帐户进行同步 UPN 更改。
+> 
 
 启用此功能允许同步引擎在用户主体名称在本地更改并使用密码哈希同步或传递身份验证时更新用户主体名称。
 

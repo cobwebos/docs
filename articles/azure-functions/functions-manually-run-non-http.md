@@ -2,15 +2,15 @@
 title: 手动运行非 HTTP 触发的 Azure Functions
 description: 通过 HTTP 请求运行非 HTTP 触发的 Azure Functions
 author: craigshoemaker
-ms.topic: tutorial
+ms.topic: article
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: 4ce7b8590e4718585fe841921466e049dc204928
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
-ms.translationtype: HT
+ms.openlocfilehash: 6571482d738549d2708fd8ab23eaf8c9f6fb1f70
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75769126"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892353"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>手动运行非 HTTP 触发的函数
 

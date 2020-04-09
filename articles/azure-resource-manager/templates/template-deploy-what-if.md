@@ -3,29 +3,68 @@ title: 模板部署 what-if（预览版）
 description: 在部署 Azure 资源管理器模板之前确定资源将会发生的更改。
 author: mumian
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 04/06/2020
 ms.author: jgao
-ms.openlocfilehash: bc42585204e5cc2c3ece5293a3934fd22fe8507b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e0d0d572e08961b585a93e66e400b8c2e54bf7f
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156440"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886834"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM 模板部署操作（预览）
 
 在部署 Azure 资源管理器 （ARM） 模板之前，可能需要预览将发生的更改。 Azure 资源管理器提供 what-if（假设）操作，让你在部署模板时了解资源发生的更改。 what-if 操作不会对现有资源进行任何更改， 而是预测在部署指定的模板时发生的更改。
 
 > [!NOTE]
-> what-if 操作目前以预览版提供。 若要使用它，必须[注册预览版](https://aka.ms/armtemplatepreviews)。 在预览版中，结果有时可能会显示资源将发生更改，但实际上并不会发生更改。 我们正在努力减少这些问题，但需要大家的帮助。 请在 上[https://aka.ms/whatifissues](https://aka.ms/whatifissues)报告这些问题。
+> what-if 操作目前以预览版提供。 在预览版中，结果有时可能会显示资源将发生更改，但实际上并不会发生更改。 我们正在努力减少这些问题，但需要大家的帮助。 请在 上[https://aka.ms/whatifissues](https://aka.ms/whatifissues)报告这些问题。
 
 您可以将"如果"操作与 PowerShell 命令或 REST API 操作一起使用。
+
+## <a name="install-powershell-module"></a>安装 PowerShell 模块
+
+要在 PowerShell 中使用"如果"，请从 PowerShell 库中安装 Az.Resources 模块的预览版本。
+
+### <a name="uninstall-alpha-version"></a>卸载 Alpha 版本
+
+如果以前安装了假设模块的 Alpha 版本，请卸载该模块。 Alpha 版本仅适用于注册早期预览的用户。 如果未安装该预览版，则可以跳过此部分。
+
+1. 以管理员身份运行 PowerShell
+1. 检查已安装的 Az.Resources 模块版本。
+
+   ```powershell
+   Get-InstalledModule -Name Az.Resources -AllVersions | select Name,Version
+   ```
+
+1. 如果您有一个安装的版本，其版本号为**格式 2.x.x-alpha，** 请卸载该版本。
+
+   ```powershell
+   Uninstall-Module Az.Resources -RequiredVersion 2.0.1-alpha5 -AllowPrerelease
+   ```
+
+1. 取消注册用于安装预览的假设存储库。
+
+   ```powershell
+   Unregister-PSRepository -Name WhatIfRepository
+   ```
+
+### <a name="install-preview-version"></a>安装预览版本
+
+要安装预览模块，请使用：
+
+```powershell
+Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
+```
+
+您已准备好使用"如果"
+
+## <a name="see-results"></a>查看结果
 
 在 PowerShell 中，输出包括颜色编码的结果，可帮助您查看不同类型的更改。
 
 ![资源管理器模板部署 what-if 操作 fullresourcepayloads 和更改类型](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
 
-文本为：
+文本输出为：
 
 ```powershell
 Resource and property changes are indicated with these symbols:
@@ -72,11 +111,8 @@ Resource changes: 1 to modify.
 
 前面的命令返回可以手动检查的文本摘要。 要获取可以以编程方式检查更改的对象，请使用：
 
-* `$results = Get-AzResourceGroupDeploymentWhatIf`资源组部署
-* `$results = Get-AzSubscriptionDeploymentWhatIf`或`$results = Get-AzDeploymentWhatIf`用于订阅级别部署
-
-> [!NOTE]
-> 在版本 2.0.1-alpha5 发布之前，您使用了`New-AzDeploymentWhatIf`该命令。 此命令已替换为`Get-AzDeploymentWhatIf`、`Get-AzResourceGroupDeploymentWhatIf`和`Get-AzSubscriptionDeploymentWhatIf`命令。 如果您使用了早期版本，则需要更新该语法。 该`-ScopeType`参数已被删除。
+* `$results = Get-AzResourceGroupDeploymentWhatIfResult`资源组部署
+* `$results = Get-AzSubscriptionDeploymentWhatIfResult`或`$results = Get-AzDeploymentWhatIfResult`用于订阅级别部署
 
 ### <a name="azure-rest-api"></a>Azure REST API
 
@@ -214,7 +250,7 @@ Resource changes: 1 to modify.
 
 请注意，输出顶部的颜色用于指示更改类型。
 
-在输出的底部，它显示标记所有者已被删除。 地址前缀从 10.0.0.0/16 更改为 10.0.0.0/15。 名为子网001的子网已被删除。 请记住，此更改实际上未部署。 您将看到部署模板时将发生的更改的预览。
+在输出的底部，它显示标记所有者已被删除。 地址前缀从 10.0.0.0/16 更改为 10.0.0.0/15。 名为子网001的子网已被删除。 请记住，这些更改实际上未部署。 您将看到部署模板时将发生的更改的预览。
 
 列出为已删除的某些属性实际上不会更改。 当属性不在模板中时，它们可能被错误地报告为已删除，但在部署过程中会自动设置为默认值。 此结果在 what-if 响应中被视为“干扰信息”。 最终部署的资源将具有为属性设置的值。 当 what-if 操作成熟时，将从结果中筛选出这些属性。
 
@@ -223,7 +259,7 @@ Resource changes: 1 to modify.
 现在，让我们通过将命令设置为变量来以编程方式评估假设结果。
 
 ```azurepowershell
-$results = Get-AzResourceGroupDeploymentWhatIf `
+$results = Get-AzResourceGroupDeploymentWhatIfResult `
   -ResourceGroupName ExampleGroup `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json"
 ```

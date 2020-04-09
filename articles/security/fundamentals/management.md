@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/31/2019
+ms.date: 04/08/2020
 ms.author: terrylan
-ms.openlocfilehash: e50eb561bcbb924ea093722d6c61bbe51747b328
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: e1223560c5d7b19bf9da4c7c16a56c4741e582a0
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811267"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981301"
 ---
 # <a name="security-management-in-azure"></a>Azure 中的安全管理
 Azure 订阅者可从多种设备管理其云环境，这些设备包括管理工作站、开发人员电脑，甚至是具有任务特定权限的特权最终用户设备。 在某些情况下，管理功能通过基于 Web 的控制台（如[Azure 门户](https://azure.microsoft.com/features/azure-portal/)）执行。 有其他情况下，可以从本地系统通过虚拟专用网络 (VPN)、终端服务、客户端应用程序协议或 Azure 服务管理 API (SMAPI)（以编程方式）直接连接到 Azure。 此外，客户端终结点（例如平板电脑或智能手机）可以加入域或者受到隔离且不受管理。
@@ -138,16 +138,13 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 ## <a name="client-configuration"></a>客户端配置
 对于强化的工作站，我们提供三种主要配置。 这三者之间最大的差异在于成本、可用性和可访问性，但它们提供的所有选项都有类似的安全设置文件。 下表简要分析了各种配置的优点与风险。 （请注意，“企业电脑”指的是将为所有域用户（无论角色为何）部署的标准台式机配置）。
 
-| Configuration | 优点 | 缺点 |
+| 配置 | 优点 | 缺点 |
 | --- | --- | --- |
 | 独立的强化工作站 |受到严格控制的工作站 |增加专用台式机的成本 |
 | - | 降低应用程序被利用的风险 |增加管理工作 |
 | - | 明确的职责分离 | - |
 | 将企业电脑用作虚拟机 |降低硬件成本 | - |
 | - | 角色和应用程序隔离 | - |
-| Windows To Go 与 BitLocker 驱动器加密 |与大部分电脑兼容 |资产跟踪 |
-| - | 成本效益和可移植性 | - |
-| - | 隔离的管理环境 |- |
 
 必须将强化的工作站用作主机而不是来宾，且主机操作系统与硬件之间没有任何组件。 遵循“干净源原则”（也称为“安全来源”）意味着主机应该是最可靠的。 否则，强化的工作站（来宾）在其托管所在的系统上容易受到攻击。
 
@@ -171,16 +168,7 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 
 企业电脑虚拟机会在受保护的空间内运行，并提供用户应用程序。 主机仍是“干净源”，并且会在根操作系统中强制实施严格的网络策略（例如，阻止来自虚拟机的 RDP 访问）。
 
-### <a name="windows-to-go"></a>Windows To Go
-需要独立的强化工作站的另一个替代方式是使用 [Windows To Go](https://technet.microsoft.com/library/hh831833.aspx) 驱动器，此功能支持客户端 USB 启动功能。 Windows To Go 可让用户将兼容的电脑启动到从加密 U 盘运行的隔离系统映像。 由于映像可以完全由企业 IT 团队负责管理、有严格的安全策略、最小的 OS 生成和 TPM 支持，因此 Windows To Go 可以提升对远程管理终结点的控制度。
-
-在下图中，可移动映像是已加入域的系统，它已预配置为仅连接到 Azure、需要多重身份验证并阻止所有非管理流量。 如果用户将同一台电脑启动到标准企业映像，并尝试访问 Azure 管理工具的 RD 网关，会话会被阻止。 Windows To Go 将成为根级操作系统，并且不需要可能更容易遭受外部攻击的其他层（主机操作系统、虚拟机监控程序、虚拟机）。
-
-![](./media/management/hardened-workstation-using-windows-to-go-on-a-usb-flash-drive.png)
-
-请务必注意，相比普通的台式机，USB 闪存驱动器更容易丢失。 使用 BitLocker 加密整个卷时，如果配合强密码，攻击者就更不可能使用驱动器映像来进行有害活动。 此外，如果丢失 USB 闪存驱动器，则吊销和 [颁发新管理证书](https://technet.microsoft.com/library/hh831574.aspx) 以及快速重置密码可以降低风险。 管理审核日志驻留在 Azure 而非客户端，进一步减少了丢失数据的可能性。
-
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 管理 Azure 中的应用程序和数据时，请注意以下附加指导原则。
 
 ### <a name="dos-and-donts"></a>准则
@@ -215,7 +203,7 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 * 组策略。 创建一个全局管理策略，该策略将应用到任何用于管理的域工作站（并阻止来自其他所有用途的访问），以及在这些工作站上进行身份验证的用户帐户。
 * 安全性增强的预配。 保护基线强化工作站映像以防遭到篡改。 使用加密和隔离等安全措施来存储映像、虚拟机和脚本，并限制访问（也许可以使用可审核的签入/签出过程）。
 * 修补。 维护一致的生成（或针对开发、操作和其他管理任务使用不同的映像）、定期扫描更改和恶意代码、让生成保持最新状态，并且只在需要时才激活计算机。
-* 加密。 确保管理工作站装有 TPM 以便能够更安全地启用 [加密文件系统](https://technet.microsoft.com/library/cc700811.aspx) (EFS) 和 BitLocker。 如果使用 Windows To Go，请只配合 BitLocker 使用加密的 USB 密钥。
+* 加密。 确保管理工作站装有 TPM 以便能够更安全地启用 [加密文件系统](https://technet.microsoft.com/library/cc700811.aspx) (EFS) 和 BitLocker。
 * 监管。 使用 AD DS GPO 来控制所有管理员的 Windows 接口，例如文件共享。 将管理工作站纳入审核、监视和日志记录过程中。 跟踪所有管理员和开发人员的访问和使用活动。
 
 ## <a name="summary"></a>总结

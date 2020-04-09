@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 1bcf06056dd7fdaf22716409f53d86da7321b94d
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: f4fb5fba78cdea7996d006d34b2f07f3ac5e58fa
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745587"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981284"
 ---
 # <a name="power-bi-app-storefront-details-tab"></a>电源 BI 应用应用商店详细信息选项卡
 
 >[!Important]
->从 2020 年 3 月 30 日开始，我们将开始将 Power BI 应用优惠的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[Power BI 应用创建概述](https://aka.ms/AzureCreatePBIServiceApp)中的说明进行操作，以管理迁移的优惠。
+>从 2020 年 4 月 13 日起，我们将开始将 Power BI 应用优惠的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[Power BI 应用创建概述](https://aka.ms/AzureCreatePBIServiceApp)中的说明进行操作，以管理迁移的优惠。
 
 在 **"新优惠**"页上，使用 **"网店详细信息"** 选项卡为您的潜在客户提供营销、销售和法律信息。 在此选项卡上，还可以为 Azure 应用商店生成的潜在顾客设置管理。 这一长形式分为六个部分：**报价详情**、**上市详情**、**营销工件**、**法律**、**客户支持**和**潜在客户管理**。  字段标签末尾的星号 （*） 表示需要该字段。
 

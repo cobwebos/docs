@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 51985c5fa4b2296e43c0a062d0af84a1bb51e89c
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: cc4e267c6912b8938db1ba5497a27f9c0026bd79
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397757"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887327"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>通过及时访问保护管理端口
 
@@ -72,9 +72,9 @@ ms.locfileid: "80397757"
             - **允许的源 IP 地址** - 批准某个请求时，此端口允许的 IP 范围。
             - **最大请求时间** - 可以打开特定端口的最大时间范围。
 
-     1. 单击“确定”。
+     1. 单击 **“确定”** 。
 
-1. 单击“保存”  。
+1. 单击“ **保存**”。
 
 > [!NOTE]
 >如果为 VM 启用 JIT VM 访问，Azure 安全中心将在与所选端口关联的网络安全组和 Azure 防火墙中为该端口创建“拒绝所有入站流量”规则。 如果为所选端口创建了其他规则，则现有规则优先于新的"拒绝所有入站流量"规则。 如果所选端口上没有现有规则，则新的"拒绝所有入站流量"规则将在网络安全组和 Azure 防火墙中占据最高优先级。
@@ -211,7 +211,7 @@ ms.locfileid: "80397757"
 
 1.    分配变量，保存 VM 的实时 VM 访问策略：
 
-        $JitPolicy = （*id="/订阅/订阅 ID/资源组/资源组/资源组/提供商/微软.计算/虚拟机/VMNAME"端口=（{编号=22;       协议*\";       允许的Source地址前缀\（""）;*       最大请求访问持续时间="PT3H"*，[数字=3389;       协议*\";       允许的Source地址前缀\（""）;*       最大请求访问持续时间="PT3H"*））
+        $JitPolicy = （*id="/订阅/订阅 ID/资源组/资源组/资源组/提供商/微软.计算/虚拟机/VMNAME"端口=（{编号=22;       协议\";\*       允许的Source地址前缀\（""）;\*       最大请求访问持续时间="PT3H"*，[数字=3389;       协议\";\*       允许的Source地址前缀\（""）;\*       最大请求访问持续时间="PT3H"*））
 
 2.    将 VM 实时 VM 访问策略插入数组：
     

@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 9/23/2019
 ms.author: dsindona
-ms.openlocfilehash: 348633ffc91bc25a226b05743a18d2c87533a01d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2895944dea6417949488076186135680523e19db
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280637"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874936"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure 合作伙伴和客户使用情况归因
 
@@ -186,7 +186,7 @@ GUID 是由 32 位十六进制数字组成的唯一参考编号。 若要创建�
 
 1. 若要注册多个 GUID，请再次选择“添加跟踪 GUID”。**** 页面上会显示其他框。
 
-1. 选择“保存”。****
+1. 选择“保存”。 
 
 
 ## <a name="verify-the-guid-deployment"></a>验证 GUID 部署
@@ -232,7 +232,7 @@ foreach ($deployment in $deployments){
 
 ## <a name="report"></a>报表
 
-您可以在合作伙伴中心分析仪表板中找到客户使用情况归因的报告。 ([https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)). 要查看报表，您必须使用合作伙伴中心凭据才能登录。 如果遇到报告或登录的任何问题，请按照"获取支持"部分中的说明创建支持请求。
+您可以在合作伙伴中心仪表板 （）[https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)中找到客户使用情况归因的报告。 要查看报表，您必须使用合作伙伴中心凭据才能登录。 如果遇到报告或登录的任何问题，请按照"获取支持"部分中的说明创建支持请求。
 
 在合作伙伴关联类型下拉列表中选择"跟踪模板"以查看报表。
 
@@ -267,7 +267,7 @@ foreach ($deployment in $deployments){
 1. 选择问题的“类别”：****
 
    - 对于使用情况关联的问题，请选择“其他”。****
-   - 对于访问 Azure 市场 CPP 时出现的问题，请选择“访问问题”。****
+   - 对于 Azure 应用商店的访问问题，请选择 **"访问问题**"。
 
      ![选择问题类别](media/marketplace-publishers-guide/lu-article-incident.png)
 
@@ -288,7 +288,7 @@ foreach ($deployment in $deployments){
 
 ### <a name="how-to-submit-a-technical-consultation-request"></a>如何提交技术咨询请求
 
-1. 访问[https://aka.ms/TechnicalJourney](https://aka.ms/TechnicalJourney).
+1. 请访问 [https://aka.ms/TechnicalJourney](https://aka.ms/TechnicalJourney)。
 1. 选择云基础架构和管理，将打开一个新页面，供您查看技术之旅。
 1. 在"部署服务"下，单击"提交请求"按钮
 1. 使用您的 MSA （MPN 帐户） 或 AAD（合作伙伴仪表板帐户）登录;根据您的登录凭据，将打开联机请求表单：
@@ -303,7 +303,7 @@ foreach ($deployment in $deployments){
 
 Microsoft 合作伙伴技术顾问将与您联系，以设置呼叫范围，以满足您的需求范围。
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题解答
 
 **向模板添加 GUID 有何好处？**
 
@@ -315,7 +315,7 @@ Microsoft 为合作伙伴提供客户部署其解决方案的视图，以及对�
 
 **我是否可以跟踪通过非 Microsoft 存储库（如 GitHub）部署的模板？**
 
-是，只要部署模板时存在 GUID，就会跟踪使用情况。 合作伙伴必须在 CPP 中具有配置文件，以注册用于在 Azure 应用商店外部部署的 GUID。
+是，只要部署模板时存在 GUID，就会跟踪使用情况。 合作伙伴必须在合作伙伴中心的商业市场注册中具有配置文件，以注册用于在 Azure 应用商店外部署的 GUID。
 
 **客户是否也会收到报告？**
 

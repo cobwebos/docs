@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9fc45ead65a29f2e7567133b5af4667bdb7c79ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8973412b2d6575d524874ba05b34af7661655e19
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154978"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981063"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Active Directory 身份验证库 (ADAL) 客户端的错误处理最佳做法
 
@@ -51,7 +51,7 @@ AcquireTokenSilent 在保证最终用户不会看到用户界面 (UI) 的情况�
 
 从根本上说，存在两种 AcquireTokenSilent 错误情况：
 
-| 案例 | 描述 |
+| 案例 | 说明 |
 |------|-------------|
 | **情况 1**：通过交互式登录可解决错误 | 对于因缺少有效令牌而导致的错误，执行交互式请求是必要的。 具体而言，缓存查找和无效/过期的刷新令牌必须通过 AcquireToken 调用才能解决。<br><br>在这些情况下，需提示最终用户进行登录。 应用程序可以选择是在最终用户交互（如点击登录按钮）后立即执行交互式请求，还是稍后执行。 这一选择取决于应用程序所需的行为。<br><br>请参阅下一节中的代码，了解此特定情况及其诊断错误。|
 | **情况 2**：通过交互式登录无法解决错误 | 对于网络和瞬间/临时错误或其他故障，执行交互式 AcquireToken 请求不能解决问题。 不必要的交互式登录提示也会使最终用户受挫。 对于大多数 AcquireTokenSilent 失败错误，ADAL 会自动尝试重试一次。<br><br>客户端应用程序也可稍后尝试重试，但重试的时间和方式取决于应用程序的行为和所需的最终用户体验。 例如，应用程序可以在几分钟后执行 AcquireTokenSilent 重试，或者在响应某一最终用户操作时执行。 立即重试会导致应用程序中止，不应尝试这种方式。<br><br>后续重试失败并出现相同的错误，这并不意味着客户端应使用 AcquireToken 进行交互式请求，因为该方法不能解决错误。<br><br>请参阅下一节中的代码，了解此特定情况及其诊断错误。 |
@@ -543,7 +543,7 @@ adb logcat > "C:\logmsg\logfile.txt";
 
 #### <a name="operating-system-errors"></a>操作系统错误
 
-用户使用 Web 视图和身份验证功能时，登录期间可能会出现 iOS 错误。 这可能是由 SSL 错误、超时或网络错误等情况引起的：
+用户使用 Web 视图和身份验证功能时，登录期间可能会出现 iOS 错误。 这可能是由 TLS 错误、超时或网络错误等条件引起的：
 
 - 对于权利共享，不能永久登录且缓存显示为空。 通过将以下代码行添加到密钥链可解决该问题：`[[ADAuthenticationSettings sharedInstance] setSharedCacheKeychainGroup:nil];`
 - 对于 NsUrlDomain 错误集，需根据应用逻辑更改操作。 有关可处理的特定实例，请参阅 [NSURLErrorDomain 参考文档](https://developer.apple.com/documentation/foundation/nsurlerrordomain#declarations)。

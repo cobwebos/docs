@@ -3,12 +3,12 @@ title: Azure Application Insights SDK 中的筛选和预处理 | Microsoft Docs
 description: 为 SDK 编写遥测处理器和遥测初始值设定项，以在将遥测发送到 Application Insights 门户之前筛选属性或将其添加到数据。
 ms.topic: conceptual
 ms.date: 11/23/2016
-ms.openlocfilehash: 53b6ecc51961feba35d571eab3115c8e7ccf9964
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 8f2064f73821a017046cbb552a8dcf592ce13267
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366300"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983752"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK 中的筛选和预处理遥测 | Microsoft Azure
 
@@ -21,7 +21,7 @@ ms.locfileid: "80366300"
 
 开始之前：
 
-* 为您的应用程序安装适当的 SDK：ASP.NET、ASP.NET[核心](asp-net-core.md)、[非 HTTP/辅助 .NET/.NET](worker-service.md)核心[、Java](../../azure-monitor/app/java-get-started.md)或[JavaScript](javascript.md) [ASP.NET](asp-net.md)
+* 为应用程序安装适当的[SDK：ASP.NET、ASP.NET](asp-net.md)[核心](asp-net-core.md)、非[HTTP/辅助 .NET/.NET 核心](worker-service.md)或[JavaScript](javascript.md)
 
 <a name="filtering"></a>
 
@@ -203,7 +203,7 @@ public void Process(ITelemetry item)
    ```JS
    var filteringFunction = (envelope) => {
      if (envelope.data.someField === 'tobefilteredout') {
-        return false;
+         return false;
      }
   
      return true;
@@ -307,28 +307,8 @@ protected void Application_Start()
     services.AddSingleton<ITelemetryInitializer, MyTelemetryInitializer>();
 }
 ```
-
-### <a name="java-telemetry-initializers"></a>Java 遥测初始值设定项
-
-[Java SDK 文档](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.telemetryinitializer?view=azure-java-stable)
-
-```Java
-public interface TelemetryInitializer
-{ /** Initializes properties of the specified object. * @param telemetry The {@link com.microsoft.applicationinsights.telemetry.Telemetry} to initialize. */
-
-void initialize(Telemetry telemetry); }
-```
-
-然后在 applicationinsights.xml 文件中注册自定义初始值设定项。
-
-```xml
-<Add type="mypackage.MyConfigurableContextInitializer">
-    <Param name="some_config_property" value="some_value" />
-</Add>
-```
-
 ### <a name="javascript-telemetry-initializers"></a>JavaScript 遥测初始值设定项
-*Javascript*
+*JavaScript*
 
 在从门户获取的初始化代码后立即插入遥测初始值设定项：
 

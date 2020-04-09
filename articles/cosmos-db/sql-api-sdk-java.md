@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: sngun
-ms.openlocfilehash: 514982727509788918c159e07f8061962df32336
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e57029e53365fbf99054e2d926296ccca3360663
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77558922"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983596"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>用于 SQL API 的 Azure Cosmos DB Java SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ SQL API Java SDK 支持同步操作。 如需异步支持，请使用 [SQL API A
 |**参与 SDK**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
 |**入门**|[Java SDK 入门](sql-api-java-get-started.md)|
 |**Web 应用教程**|[使用 Azure Cosmos DB 进行 Web 应用程序开发](sql-api-java-application.md)|
-|受支持的最小运行时****|[Java 开发工具包 （JDK） 7+](https://aka.ms/azure-jdks)|
+|受支持的最小运行时****|[Java 开发工具包 （JDK） 7+](/java/azure/jdk/?view=azure-java-stable)|
 
 ## <a name="release-notes"></a>发行说明
 
@@ -131,7 +131,7 @@ SQL API Java SDK 支持同步操作。 如需异步支持，请使用 [SQL API A
 
 ### <a name="1150"></a><a name="1.15.0"/>1.15.0
 * 改进了 Json 序列化性能。
-* 此 SDK 版本需要最新版本的 Azure Cosmos DB 模拟器（可从 https://aka.ms/cosmosdb-emulator 下载）。
+* 此 SDK 版本需要最新版本的[Azure Cosmos DB 仿真器](https://aka.ms/cosmosdb-emulator)。
 
 ### <a name="1140"></a><a name="1.14.0"/>1.14.0
 * 对 Microsoft 友元库进行了内部更改。
@@ -317,7 +317,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 | 0.9.1-prelease |2014 年 12 月 19 日 |2016 年 2 月 29 日 |
 | 0.9.0-prelease |2014 年 12 月 10 日 |2016 年 2 月 29 日 |
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题解答
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>请参阅

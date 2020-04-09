@@ -233,6 +233,24 @@
         - name: 容器限制
           href: luis-container-limitations.md
           displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+    - name: 相关服务
+      items:
+        - name: Azure 机器人服务
+          href: 'https://dev.botframework.com/'
+        - name: 'Bot Builder 4.x SDK C#'
+          href: 'https://github.com/Microsoft/botbuilder-dotnet'
+        - name: QnA maker
+          href: 'https://qnamaker.ai/'
+        - name: 必应语音 API
+          href: 'https://azure.microsoft.com/services/cognitive-services/speech/'
+        - name: 必应拼写检查 API
+          href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
+        - name: 文本分析
+          href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
+        - name: 识别器 - 文本
+          href: 'https://github.com/Microsoft/Recognizers-Text'
+        - name: 智能展台
+          href: 'https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk'
 - name: 参考
   items:
     - name: 开发人员参考
@@ -370,24 +388,6 @@
       href: reference-pattern-syntax.md
     - name: 情绪
       href: luis-reference-prebuilt-sentiment.md
-- name: 相关内容
-  items:
-    - name: Azure 机器人服务
-      href: 'https://dev.botframework.com/'
-    - name: 'Bot Builder 4.x SDK C#'
-      href: 'https://github.com/Microsoft/botbuilder-dotnet'
-    - name: QnA maker
-      href: 'https://qnamaker.ai/'
-    - name: 必应语音 API
-      href: 'https://azure.microsoft.com/services/cognitive-services/speech/'
-    - name: 必应拼写检查 API
-      href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
-    - name: 文本分析
-      href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
-    - name: 识别器 - 文本
-      href: 'https://github.com/Microsoft/Recognizers-Text'
-    - name: 智能展台
-      href: 'https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk'
 - name: 资源
   items:
     - name: 代码示例

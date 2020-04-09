@@ -5,12 +5,12 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 03/24/2020
-ms.openlocfilehash: 1ca4b70139ed5e0a136f6f5f2b0382b8c1688983
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.openlocfilehash: 27abdfe28e2594c98778b51532fbd22f95bfa3ac
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80389403"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984702"
 ---
 # <a name="integrate-azure-ad-in-azure-kubernetes-service-preview"></a>在 Azure 库伯奈斯服务中集成 Azure AD（预览版）
 
@@ -29,7 +29,7 @@ Azure AD 与 AKS v2 集成旨在简化 Azure AD 与 AKS v1 体验的集成，其
 > - [AKS 支持策略](support-policies.md)
 > - [Azure 支持常见问题](faq.md)
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 您必须安装以下资源：
 
@@ -49,11 +49,10 @@ az extension update --name aks-preview
 az extension list
 ```
 
-要安装 kubectl，请使用以下
+要安装 kubectl，请使用以下操作：
+
 ```azurecli
-curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.18.0-beta.2/bin/linux/amd64/kubectl"
-chmod +x ./kubectl
-sudo mv ./kubectl /usr/local/bin/kubectl
+sudo az aks install-cli
 kubectl version --client
 ```
 
@@ -99,7 +98,7 @@ az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad
 创建组并添加自己作为成员（和其他人）后，可以使用以下命令使用 Azure AD 组更新群集
 
 ```azurecli-interactive
-az aks update -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-group-object-ids <id1,id2>] [--aad-tenant-id <id>]
+az aks update -g MyResourceGroup -n MyManagedCluster [--aad-admin-group-object-ids <id1,id2>] [--aad-tenant-id <id>]
 ```
 或者，如果首先创建组并添加成员，则可以使用以下命令在创建时间启用 Azure AD 组，
 

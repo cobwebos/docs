@@ -2,24 +2,21 @@
 title: 将用于登录用户的 Web 应用移到生产环境 - Microsoft 标识平台 | Azure
 description: 了解如何构建用于登录用户的 Web 应用（移到生产环境）
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 6c486e59f32afd09a9934ae2298172ccb4ee2414
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c5fd444c55a20441325088912a07eb051219b84
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76768109"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80881462"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>在用户中签名的 Web 应用：移动到生产
 
@@ -41,7 +38,7 @@ ms.locfileid: "76768109"
 Web 应用登录用户后，它就可以代表已登录用户调用 Web API。 从 Web 应用调用 Web API 是以下方案的目标：
 
 > [!div class="nextstepaction"]
-> [调用 Web API 的 Web 应用](scenario-web-app-call-api-overview.md)
+> [用于调用 Web API 的 Web 应用](scenario-web-app-call-api-overview.md)
 
 ## <a name="deep-dive-aspnet-core-web-app-tutorial"></a>深度潜水：ASP.NET核心网络应用程序教程
 

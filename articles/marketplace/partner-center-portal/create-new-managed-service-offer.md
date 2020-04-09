@@ -7,15 +7,18 @@ manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/30/2020
-ms.openlocfilehash: 3d7015d5e1c3b67b271e89b5653f56415bfb722e
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.date: 04/08/2020
+ms.openlocfilehash: de6e08534722deccb8be11248dd8af3ca2e66739
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674197"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983206"
 ---
 # <a name="create-a-new-managed-service-offer"></a>创建新的托管服务产品/服务
+
+> [!IMPORTANT]
+> 我们将托管服务产品的管理从云合作伙伴门户转移到合作伙伴中心。 在迁移产品/服务之前，请按照[向 Azure 应用商店发布托管服务产品/服务以](../../lighthouse/how-to/publish-managed-services-offers.md)管理产品/服务的说明进行操作。
 
 托管服务提供了启用[Azure 灯塔](../../lighthouse/overview.md)方案的帮助。 当客户接受托管服务产品/服务时，他们将能够将资源用于 Azure[委派的资源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)。
 
@@ -26,7 +29,7 @@ ms.locfileid: "80674197"
 >[!Note]
 > 产品/服务发布后，只有在重新发布后，才会在系统和商店前面更新对合作伙伴中心中提供的优惠进行编辑。 请确保在进行更改后提交要发布的要约。
 
-## <a name="create-a-new-offer"></a>创建新套餐
+## <a name="create-a-new-offer"></a>创建新产品/服务
 
 选择 **"+ 新产品/服务**"按钮，然后选择 **"托管服务**"菜单项。 将显示"**新建产品/服务**"对话框。
 

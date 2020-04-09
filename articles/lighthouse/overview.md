@@ -3,12 +3,12 @@ title: 什么是 Azure Lighthouse？
 description: 借助 Azure Lighthouse，服务提供商可为其客户提供自动化程度更高且更高效的规模级托管服务。
 ms.date: 11/11/2019
 ms.topic: overview
-ms.openlocfilehash: 0bec1f5b727ca3ecd604d2654358ca9a5507abe4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1d4d33238f30c2a579c6a0da6a39238207db4f4a
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75646188"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982780"
 ---
 # <a name="what-is-azure-lighthouse"></a>什么是 Azure Lighthouse？
 
@@ -32,7 +32,7 @@ Azure Lighthouse 提供了多种方法来协助客户简化参与和管理：
 
 - **Azure 委派资源管理**：无需切换上下文和控制平面即可从自己的租户中安全地管理客户的 Azure 资源。 有关详细信息，请参阅 [Azure 委托资源管理](concepts/azure-delegated-resource-management.md)。
 - **新 Azure 门户体验**：在 [Azure 门户](https://portal.azure.com)中的新“我的客户”页面中查看跨租户信息  。 使用相应的“服务提供商”边栏选项卡，你的客户可以查看和管理服务提供商访问  。 有关详细信息，请参阅[查看和管理客户](./how-to/view-manage-customers.md)和[查看和管理服务提供商](how-to/view-manage-service-providers.md)。
-- **Azure 资源管理器模板**：执行管理任务更加容易，包括载入 Azure 委托资源管理的客户。 有关详细信息，请参阅我们的[存储库示例](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates)和[将客户载入到 Azure 委派的资源管理](how-to/onboard-customer.md)。
+- **Azure 资源管理器模板**：执行管理任务更加容易，包括载入 Azure 委托资源管理的客户。 有关详细信息，请参阅我们的[存储库示例](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates)和[将客户载入到 Azure 委派的资源管理](how-to/onboard-customer.md)。
 - **Azure 市场中的托管服务产品**：通过私有或公共产品/服务向客户提供服务，并让他们自动载入 Azure 委派的资源管理，作为使用 Azure 资源管理器模板进行载入的替代方案。 有关详情，请参阅 [Azure 市场中的托管服务产品](concepts/managed-services-offers.md)。
 - **Azure 托管应用程序**：打包和交付便于客户在自己的订阅中部署和使用的应用程序。 该应用程序部署到可从租户访问的资源组中，以便在整个 Azure Lighthouse 体验中管理该服务。 有关详细信息，请参阅 [Azure 托管应用程序概述](../azure-resource-manager/managed-applications/overview.md)。
 

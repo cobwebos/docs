@@ -1,15 +1,16 @@
 ---
-title: RDP 进入 Azure 库伯奈斯服务 （AKS） 群集 Windows 服务器节点
+title: RDP 到 AKS Windows 服务器节点
+titleSuffix: Azure Kubernetes Service
 description: 了解如何使用 Azure Kubernetes 服务 （AKS） 群集 Windows 服务器节点创建 RDP 连接，以便执行故障排除和维护任务。
 services: container-service
 ms.topic: article
 ms.date: 06/04/2019
-ms.openlocfilehash: 897504aa9902d0feaf4245c719d3a4a3c6fd2241
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 140d59894b38c7f07f16b0ac3cf99316c201d120
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77594475"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886783"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>使用 RDP 连接到 Azure 库伯奈斯服务 （AKS） 群集 Windows 服务器节点，以便进行维护或故障排除
 
@@ -19,7 +20,7 @@ Windows 服务器节点支持当前处于 AKS 中的预览版。
 
 本文介绍如何使用 AKS 节点的专用 IP 地址创建 RDP 连接。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 本文假定您具有具有 Windows 服务器节点的现有 AKS 群集。 如果需要 AKS 群集，请参阅有关[使用 Azure CLI 使用 Windows 容器创建 AKS 群集][aks-windows-cli]的文章。 您需要要排除故障的 Windows 服务器节点的 Windows 管理员用户名和密码。 您还需要一个RDP客户端，如[微软远程桌面][rdp-mac]。
 

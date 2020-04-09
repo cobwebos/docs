@@ -10,13 +10,13 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
-ms.date: 03/10/2020
-ms.openlocfilehash: 6302a7d6ffe7218d339121ec98a624f8e98356f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/13/2020
+ms.openlocfilehash: 3fe5a58046776d00ce68189cf724a995380869eb
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065592"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887280"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
 
@@ -62,11 +62,14 @@ ms.locfileid: "80065592"
 
    ![创建集成运行时](media/create-self-hosted-integration-runtime/new-integration-runtime.png)
 
-1. 在“集成运行时安装”窗口中，选择“执行数据移动并将活动分发到外部计算”，然后选择“继续”。************
+1. 在 **"集成运行时设置"** 页上，选择**Azure、自托管**，然后选择"**继续**"。 
+
+1. 在以下页面上，选择 **"自托管**"以创建自托管 IR，然后选择"**继续**"。
+   ![创建自托管 IR](media/create-self-hosted-integration-runtime/new-selfhosted-ir.png)
 
 1. 输入 IR 的名称，然后选择“创建”****。
 
-1. 选择“选项 1”下的链接，在计算机上打开快速安装。**** 或者遵循“选项 2”下的步骤进行手动安装。**** 以下说明基于手动安装：
+1. 在**集成运行时设置**页上，选择**选项 1**下的链接以打开计算机上的快速设置。 或者遵循“选项 2”下的步骤进行手动安装。**** 以下说明基于手动安装：
 
    ![集成运行时安装](media/create-self-hosted-integration-runtime/integration-runtime-setting-up.png)
 
@@ -102,7 +105,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 下面是应用程序参数和属性的详细信息： 
 
-| properties                                                    | 描述                                                  | 必选 |
+| Property                                                    | 说明                                                  | 必选 |
 | ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
 | **注册新节点**"`<AuthenticationKey>`"                     | 使用指定的身份验证密钥注册自承载集成运行时节点。 | 否       |
 | **注册新节点**"`<AuthenticationKey>`" "`<NodeName>`"      | 使用指定的身份验证密钥和节点名称注册自承载集成运行时节点。 | 否       |
@@ -357,7 +360,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 1. 打开“Microsoft Integration Runtime Configuration Manager”。****
 1. 选择“设置”选项卡。****
 1. 在“HTTP 代理”下，选择“更改”链接打开“设置 HTTP 代理”对话框。************
-1. 选择“下一步”。 此时会出现警告，询问是否允许保存代理设置和重启集成运行时主机服务。
+1. 选择“**下一页**”。 此时会出现警告，询问是否允许保存代理设置和重启集成运行时主机服务。
 
 可以使用 Configuration Manager 工具查看和更新 HTTP 代理。
 

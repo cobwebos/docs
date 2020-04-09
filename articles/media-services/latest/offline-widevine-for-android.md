@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2019
+ms.date: 04/07/2020
 ms.author: willzhan
-ms.openlocfilehash: 64cd93acc78f4cb5b7ebc4266e7359aec662890c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 94edec8261d9916b7575fb247e1698273f244130
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295425"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887191"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>离线宽文流为Android与媒体服务v3
 
@@ -153,65 +153,13 @@ Android 5.0 Lollipop 或更高版本中不会出现此问题，因为 Android 5.
     - 证书必须具备受信任的 CA，自签名开发证书无法使用
     - 该证书必须具备与 Web 服务器或网关的 DNS 名称匹配的 CN
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="faqs"></a>常见问题解答
 
-### <a name="question"></a>问题
-
-如何为某些客户端/用户传送永久许可证（允许脱机）并为其他人传送非永久许可证（禁用脱机）？ 是否必须复制内容并使用单独的内容密钥？
-
-### <a name="answer"></a>Answer
-由于媒体服务 v3 允许资产具有多个 StreamingLocator。 你可以有
-
-1.    一个带有 license_type =“持久性”的 ContentKeyPolicy，带有声明“持久性”的 ContentKeyPolicyRestriction 及其 StreamingLocator；
-2.    另一个带有 license_type=“非持久性”的 ContentKeyPolicy，带有声明“非持久性”的 ContentKeyPolicyRestriction 及其 StreamingLocator。
-3.    两个 StreamingLocator 具有不同的 ContentKey。
-
-根据自定义 STS 的业务逻辑，在 JWT 令牌中发出不同的声明。 使用该令牌，只能获得相应的许可证，并且只能播放相应的 URL。
-
-### <a name="question"></a>问题
-
-对于 Widevine 安全级别，Google 的"宽德文 DRM 架构概述"文档定义了三个不同的安全级别。 但是，在 [Widevine 许可证模板上的 Azure 媒体服务文档](widevine-license-template-overview.md)中，概述了五种不同的安全级别。 这两组不同安全级别之间的关系或映射是什么？
-
-### <a name="answer"></a>Answer
-
-Google 的"威文 DRM 架构审查"文档定义了以下三个安全级别：
-
-1.  安全级别 1：所有内容处理、加密和控制操作均在受信任的执行环境 (TEE) 中进行。 在某些实现模型中，可在不同的芯片中执行安全处理。
-2.  安全级别 2：在 TEE 中执行加密（但不是视频处理）：已解密的缓冲区返回到应用程序域，并通过单独的视频硬件或软件进行处理。 但是，在级别 2，加密信息仍仅在 TEE 中处理。
-3.  安全级别 3：设备上没有 TEE。 可采取相应措施来保护主机操作系统中的加密信息和已解密内容。 级别 3 实现还包括硬件加密引擎，但只能增强性能，而不能增强安全性。
-
-同时，在 [Widevine 许可证模板上的 Azure 媒体服务文档](widevine-license-template-overview.md)中，content_key_specs 的 security_level 属性可以具有以下五个不同的值（播放的客户端稳定性要求）：
-
-1.  需要基于软件的白盒加密。
-2.  需要软件加密和模糊处理解码器。
-3.  密钥材料和加密操作必须在硬件支持的 TEE 中执行。
-4.  内容加密和解码必须在硬件支持的 TEE 中执行。
-5.  加密、解码与媒体（压缩和未压缩）的所有处理必须在硬件支持的 TEE 中处理。
-
-这两种安全级别均由 Google Widevine 定义。 不同之处是其使用情况级别：体系结构级别或 API 级别。 Widevine API 中使用了这五种安全级别。 ontent_key_specs 对象包含 security_level，该对象被反序列化，并通过 Azure 媒体服务 Widevine 许可证服务传递给 Widevine 全球传送服务。 下表显示两组安全级别之间的映射。
-
-| **Widevine 体系结构中定义的安全级别** |**Widevine API 中使用的安全级别**|
-|---|---| 
-| **安全级别 1：** 所有内容处理、加密和控制都在受信任的执行环境 （TEE） 中执行。 在某些实现模型中，可在不同的芯片中执行安全处理。|**security_level=5**：加密、解码与媒体（压缩和未压缩）的所有处理必须在硬件支持的 TEE 中处理。<br/><br/>**security_level=4**：内容加密和解码必须在硬件支持的 TEE 中执行。|
-**安全级别 2**：在 TEE 中执行加密（但不是视频处理）：已解密的缓冲区返回到应用程序域，并通过单独的视频硬件或软件进行处理。 但是，在级别 2，加密信息仍仅在 TEE 中处理。| **security_level=3**：密钥材料和加密操作必须在硬件支持的 TEE 中执行。 |
-| **安全级别 3**：设备上没有 TEE。 可采取相应措施来保护主机操作系统中的加密信息和已解密内容。 级别 3 实现还包括硬件加密引擎，但只能增强性能，而不能增强安全性。 | **security_level=2**：软件加密和模糊解码器是必需的。<br/><br/>**security_level=1**：需要基于软件的白盒加密。|
-
-### <a name="question"></a>问题
-
-为什么下载内容需要很长时间？
-
-### <a name="answer"></a>Answer
-
-可通过两种方法提高下载速度：
-
-1.  启用 CDN，使最终用户更容易命中内容下载的 CDN，而不是源/流式处理终结点。 如果用户命中流式处理终结点，会动态打包和加密每个 HLS 段或 DASH 片段。 即使每个段/片段的延迟时间都只有几毫秒，如果视频时间长达一个小时，累积延迟可能会很长，从而导致下载时间变长。
-2.  让最终用户能够选择性地下载视频质量层和音轨，而不是所有内容。 对于脱机模式，无需下载所有的质量层。 可通过两种方式实现此目的：
-    1.  客户端控制：播放器应用自动选择要下载的视频质量层和音轨，或由用户选择；
-    2.  服务控制：可使用 Azure 媒体服务中的动态清单功能创建（全局）筛选器，将 HLS 播放列表或 DASH MPD 限制为单个视频质量层和所选音轨。 然后，向最终用户呈现的下载 URL 会包括此筛选器。
+有关详细信息，请参阅[Widevine 常见问题解答](frequently-asked-questions.md#widevine-streaming-for-android)。
 
 ## <a name="additional-notes"></a>附加说明
 
-* Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
+Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
 ## <a name="summary"></a>总结
 

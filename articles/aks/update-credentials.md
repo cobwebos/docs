@@ -1,15 +1,16 @@
 ---
-title: 为 Azure Kubernetes 服务 (AKS) 群集重置凭据
+title: 重置群集的凭据
+titleSuffix: Azure Kubernetes Service
 description: 了解如何更新或重置 Azure 库伯奈斯服务 （AKS） 群集的服务主体或 AAD 应用程序凭据
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: b7d652be3733cb130a3973909de59489047efe0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0203321af32bcc2ae70b726737b85870d08be86f
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475538"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886749"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>更新或轮换 Azure 库伯内斯服务 （AKS） 的凭据
 
@@ -17,7 +18,7 @@ ms.locfileid: "79475538"
 
 您可能还必须将[AKS 群集与 Azure 活动目录集成][aad-integration]，并将其用作群集的身份验证提供程序。 在这种情况下，您将为群集、AAD 服务器应用和 AAD 客户端应用再创建 2 个标识，您也可以重置这些凭据。 
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 需要安装并配置 Azure CLI 2.0.65 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 

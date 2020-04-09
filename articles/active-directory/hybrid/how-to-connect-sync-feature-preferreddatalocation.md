@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a71c5328c6fa85f85db4bd7e6103f6470b86d99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 723411191d0990583d039a0fc9651437480807b4
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258322"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983256"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect 同步：为 Office 365 资源配置首选数据位置
 本主题的目的是引导您了解如何在 Azure 活动目录 （Azure AD） 连接同步中为首选数据位置配置属性。当某人在 Office 365 中使用多地理功能时，可以使用此属性指定用户的 Office 365 数据的地理位置。 （术语*区域*和*地域*可以互换使用。）
@@ -51,6 +51,7 @@ Office 365 中支持多地域的区域包括：
 | 日本 | JPN |
 | 韩国 | KOR |
 | 南非 | ZAF |
+| 瑞士 | 车 |
 | 阿拉伯联合酋长国 | ARE |
 | United Kingdom | GBR |
 | United States | NAM |
@@ -141,11 +142,11 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 
     | 特性 | “值” | 详细信息 |
     | --- | --- | --- |
-    | “属性” | *提供名称* | 例如“In from AD – User preferredDataLocation” |
-    | 描述 | *提供自定义说明* |  |
+    | 名称 | *提供名称* | 例如“In from AD – User preferredDataLocation” |
+    | 说明 | *提供自定义说明* |  |
     | 连接的系统 | *选取本地 Active Directory 连接器* |  |
     | 连接的系统对象类型 | **用户** |  |
-    | Metaverse 对象类型 | **人** |  |
+    | Metaverse 对象类型 | **人员** |  |
     | 链接类型 | **联接** |  |
     | 优先级 | *选择介于 1 和 99 之间的数字* | 1-99 是为自定义同步规则保留的值。 请不要选择已被其他同步规则使用的值。 |
 
@@ -170,17 +171,17 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 
     | 特性 | “值” | 详细信息 |
     | ----- | ------ | --- |
-    | “属性” | *提供名称* | 例如，“Out to Azure AD – User preferredDataLocation” |
-    | 描述 | *提供说明* ||
+    | 名称 | *提供名称* | 例如，“Out to Azure AD – User preferredDataLocation” |
+    | 说明 | *提供说明* ||
     | 连接的系统 | *选择 Azure AD 连接器* ||
     | 连接的系统对象类型 | **用户** ||
-    | Metaverse 对象类型 | **人** ||
+    | Metaverse 对象类型 | **人员** ||
     | 链接类型 | **联接** ||
     | 优先级 | *选择介于 1 和 99 之间的数字* | 1-99 是为自定义同步规则保留的值。 请不要选择已被其他同步规则使用的值。 |
 
 5. 转到 **"范围"筛选器**选项卡，并添加包含两个子句的单个范围筛选器组：
 
-    | 特性 | 运算符 | “值” |
+    | 特性 | 操作员 | “值” |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | 用户 |
     | cloudMastered | NOTEQUAL | True |
@@ -231,10 +232,10 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
    1. 右键单击“Azure AD 连接器”，并选择“搜索连接器空间”。********
    2. 在“搜索连接器空间”**** 对话框中：
 
-        a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 将“范围”设置为“挂起的导出”。********<br>
-        b.保留“数据库类型”设置，即设置为“共享”。 选择所有三个复选框，包括“添加”、“修改”和“删除”。****<br>
+        a. 将“范围”设置为“挂起的导出”。********<br>
+        b. 选择所有三个复选框，包括“添加”、“修改”和“删除”。****<br>
         c. 若要查看包含要导出的更改的对象列表，请选择“搜索”。**** 若要检查给定对象的更改，请双击该对象。<br>
-        d.单击“下一步”。 验证更改是否符合需要。
+        d. 验证更改是否符合需要。
 
 6. 在 Azure **AD 连接器**上运行**导出**
 

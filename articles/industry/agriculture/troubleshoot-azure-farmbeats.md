@@ -5,16 +5,19 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 2270ee7c850c528bd24fa2e58c2b1684acfc24d6
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 74522502f5405b56a3a604f20a695de83ef3c3a5
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585292"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886477"
 ---
 # <a name="troubleshoot"></a>疑难解答
 
 本文提供了常见 Azure 农场节拍问题的解决方案。 如需其他帮助，请联系我们[的支持论坛](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats)或发送电子邮件至farmbeatssupport@microsoft.com。
+
+> [!NOTE]
+  > 如果您在 4 月安装了 FarmBeats，并且作业因空错误消息而失败，则由于所有资源都用于紧急、医疗和其他关键需求，您的安装可能尚未分配任何批处理配额。 您需要请求将 VM 分配给批处理帐户。
 
 ## <a name="install-issues"></a>安装问题
 
@@ -198,7 +201,7 @@ ms.locfileid: "80585292"
 
   **更新哨兵用户名**
 
-    1. 登录到[Azure 门户](https://portal.azure.com)。
+    1. 登录到 [Azure 门户](https://portal.azure.com)。
     2. 在 **"搜索"** 框中，搜索服务器场节拍 Datahub 资源组。
     3. 选择存储帐户存储* >**容器** > **批处理准备文件** > **to_vm** > **配置.ini**
     4. 选择**编辑**
@@ -206,7 +209,7 @@ ms.locfileid: "80585292"
 
   **更新哨兵密码**
 
-    1. 登录到[Azure 门户](https://portal.azure.com)。
+    1. 登录到 [Azure 门户](https://portal.azure.com)。
     2. 在 **"搜索"** 框中，搜索服务器场节拍 Datahub 资源组。
     3. 选择密钥库 *
     4. 在"设置"下选择访问策略

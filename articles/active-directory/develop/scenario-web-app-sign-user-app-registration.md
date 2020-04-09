@@ -2,24 +2,21 @@
 title: 注册用于登录用户的 Web 应用 - Microsoft 标识平台 | Azure
 description: 了解如何注册用于登录用户的 Web 应用
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f2513b1fee022199f040ba0dcf83110c0b3b1365
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d2eb5356b1abc54508fd6bf8d35fd9fc39d02ec
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76701563"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80881573"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>登录用户的 Web 应用：应用注册
 
@@ -58,7 +55,7 @@ ms.locfileid: "76701563"
    1. 对于“回复 URL”，请添加“Web”类型的 **https://localhost:44321/signin-oidc**。********
    1. 在 **"高级设置**"部分中，将**注销** **https://localhost:44321/signout-oidc**URL 设置为 。
    1. 在“隐式授权”下，选择“ID 令牌”。********
-   1. 选择“保存”。****
+   1. 选择“保存”。 
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -69,7 +66,7 @@ ms.locfileid: "76701563"
 1. 选择“注册”**** 以创建应用程序。
 1. 选择“身份验证”菜单。****
 1. 在 **"高级设置** | **"隐式授予**部分中，选择**ID 令牌**。 本示例需要启用[隐式授权流](v2-oauth2-implicit-grant-flow.md)才能将用户登录。
-1. 选择“保存”。****
+1. 选择“保存”。 
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -92,7 +89,7 @@ ms.locfileid: "76701563"
 
    1. 输入密钥说明。
    1. 选择密钥持续时间“1 年”。****
-   1. 选择“添加”****。
+   1. 选择 **添加** 。
    1. 显示密钥值后，请将其复制供稍后使用。 此值不会再次显示，也无法通过任何其他方式检索。
 
 # <a name="python"></a>[Python](#tab/python)
@@ -108,7 +105,7 @@ ms.locfileid: "76701563"
 
    1. 输入密钥说明。
    1. 选择密钥持续时间“1 年”。****
-   1. 选择“添加”****。
+   1. 选择 **添加** 。
    1. 显示密钥值后，请将其复制。 稍后需要用到此信息。
 ---
 

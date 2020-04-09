@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: b9b66c379714c2f4fa2421876fda3bdb500ce6c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db9e86706ecd4e5b2526e1d801dda45ed6b345c6
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250402"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887242"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>监视 Azure 宇宙数据库
 当依赖于 Azure 资源的关键应用程序和业务流程时，需要监视这些资源的可用性、性能和操作。 本文介绍了 Azure Cosmos 数据库生成的监视数据，以及如何使用 Azure 监视器的功能来分析和警报此数据。
@@ -38,7 +38,7 @@ Azure Cosmos DB 使用[Azure 监视器](../azure-monitor/overview.md)创建监�
 
 ## <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>查看 Azure 宇宙 DB 的操作级别指标
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 1. 在左侧导航栏中选择“监视”，然后选择“指标”。********
 
@@ -48,7 +48,7 @@ Azure Cosmos DB 使用[Azure 监视器](../azure-monitor/overview.md)创建监�
 
    ![选择 Cosmos DB 帐户以查看指标](./media/monitor-cosmos-db/select-cosmosdb-account.png)
 
-1. 接下来，可以从可用指标列表中选择一个指标。 可以选择特定于请求单位、存储、延迟、可用性、Cassandra 等的指标。 要详细了解此列表中的所有可用指标，请参阅[按类别的指标](monitor-cosmos-db-reference.md)。 在此示例中，让我们选择**请求单位**，**选择 avg**作为聚合值。
+1. 接下来，可以从可用指标列表中选择一个指标。 可以选择特定于请求单位、存储、延迟、可用性、Cassandra 等的指标。 要详细了解此列表中的所有可用指标，请参阅[按类别的指标](monitor-cosmos-db-reference.md)。 在此示例中，让我们选择“请求单位”和“平均”作为聚合值。********
 
    除这些详细信息外，还可以选择指标的“时间范围”和“时间粒度”。******** 可以查看过去最长 30 天的指标。  应用筛选器后，系统会根据该筛选器显示图表。 可以查看所选时间段内每分钟消耗的平均请求单位数。  
 
@@ -63,10 +63,6 @@ Azure Cosmos DB 使用[Azure 监视器](../azure-monitor/overview.md)创建监�
 可以使用“应用拆分”选项将指标分组。**** 例如，可按操作类型将请求单位分组，并一次性查看所有操作的图表，如下图所示：
 
 ![添加“应用拆分”筛选器](./media/monitor-cosmos-db/apply-metrics-splitting.png)
-
-下面是查看特定数据库、容器或操作的服务器端延迟指标的另一个示例：
-
-![服务器端延迟指标](./media/monitor-cosmos-db/serverside-latency-metric.png)
 
 ## <a name="monitoring-data-collected-from-azure-cosmos-db"></a>监视从 Azure 宇宙数据库收集的数据
 
@@ -92,7 +88,7 @@ Azure Cosmos DB 提供了用于处理指标的自定义体验。 有关使用此
 ## <a name="analyzing-log-data"></a>分析日志数据
 Azure 监视器日志中的数据存储在每个表具有其自己的唯一属性集的表中。 Azure Cosmos DB 将数据存储在下表中。
 
-| 表 | 描述 |
+| 表 | 说明 |
 |:---|:---|
 | AzureDiagnostics | 多个服务用于存储资源日志的通用表。 Azure Cosmos DB 的资源日志可以使用`MICROSOFT.DOCUMENTDB`标识。   |
 | AzureActivity    | 存储活动日志中所有记录的常见表。 

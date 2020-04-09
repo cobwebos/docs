@@ -1,15 +1,16 @@
 ---
-title: 在 Azure Kubernetes 服务 (AKS) 中使用网络策略保护 Pod
+title: 使用网络策略保护 Pod 流量
+titleSuffix: Azure Kubernetes Service
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Kubernetes 网络策略保护流入和流出 Pod 的流量
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 37b6ebd1c8b147db0a9cead4678a0b2bb4ed234d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01ba9e7353b6783d1b4fd1649291a64405fd9382
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473602"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886681"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用网络策略保护 Pod 之间的流量
 
@@ -17,7 +18,7 @@ ms.locfileid: "79473602"
 
 本文介绍如何安装网络策略引擎，并创建 Kubernetes 网络策略来控制 AKS 中 Pod 之间的流量流动方式。 应该只对 AKS 中基于 Linux 的节点和 Pod 使用网络策略。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 需要安装并配置 Azure CLI 2.0.61 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
@@ -54,9 +55,9 @@ Azure 提供两种方式来实现网络策略。 可以在创建 AKS 群集时�
 | 支持的平台                      | Linux                      | Linux                       |
 | 支持的网络选项             | Azure CNI                  | Azure CNI 和 kubenet       |
 | 符合 Kubernetes 规范 | 支持的所有策略类型 |  支持的所有策略类型 |
-| 其他功能                      | 无                       | 扩展的策略模型，包括全局网络策略、全局网络集和主机终结点。 有关使用 `calicoctl` CLI 管理这些扩展功能的详细信息，请参阅 [calicoctl 用户参考][calicoctl]。 |
+| 其他功能                      | None                       | 扩展的策略模型，包括全局网络策略、全局网络集和主机终结点。 有关使用 `calicoctl` CLI 管理这些扩展功能的详细信息，请参阅 [calicoctl 用户参考][calicoctl]。 |
 | 支持                                  | 由 Azure 支持部门和工程团队提供支持 | 由 Azure 社区提供支持。 有关其他付费支持的详细信息，请参阅 [Project Calico 支持选项][calico-support]。 |
-| Logging                                  | 在 IPTables 中添加/删除的规则将记录到每个主机上的 */var/log/azure-npm.log* 下。 | 有关详细信息，请参阅 [Calico 组件日志][calico-logs] |
+| 日志记录                                  | 在 IPTables 中添加/删除的规则将记录到每个主机上的 */var/log/azure-npm.log* 下。 | 有关详细信息，请参阅 [Calico 组件日志][calico-logs] |
 
 ## <a name="create-an-aks-cluster-and-enable-network-policy"></a>创建 AKS 群集并启用网络策略
 

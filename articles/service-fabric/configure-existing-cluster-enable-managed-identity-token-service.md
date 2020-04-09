@@ -4,12 +4,12 @@ description: 下面了解如何在现有 Azure 服务结构群集中启用托管
 ms.topic: article
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: cb6e4ab00afd80cba41881e46296f7046a905919
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 396978546b301884087c4ea51e242258d64a6b0b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76934948"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983800"
 ---
 # <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster-preview"></a>在现有服务交换矩阵群集中配置托管标识支持（预览）
 
@@ -40,7 +40,7 @@ ms.locfileid: "76934948"
 ]
 ```
 
-若要让更改生效，还需更改升级策略，指定在升级进展到群集时，在每个节点上以强制方式重启 Service Fabric 运行时。 此重启确保新启用的系统服务在每个节点上启动并运行。 在下面的代码片段中，`forceRestart` 是基本设置；请对余下设置使用现有值。  
+若要让更改生效，还需更改升级策略，指定在升级进展到群集时，在每个节点上以强制方式重启 Service Fabric 运行时。 此重启确保新启用的系统服务在每个节点上启动并运行。 在下面的代码段中`forceRestart`，是启用重新启动的基本设置。 对于其余参数，请使用下面描述的值或使用为群集资源指定的现有自定义值。 通过在服务交换矩阵资源或resources.azure.com上选择"交换矩阵升级"选项，可以从 Azure 门户查看结构升级策略的自定义设置（"升级说明"）。 升级策略（"升级描述"）的默认选项无法从电源壳或resources.azure.com查看。 有关详细信息，请参阅[群集升级策略](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet)。  
 
 ```json
 "upgradeDescription": {

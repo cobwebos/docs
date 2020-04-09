@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: ceb6de6556968385d88ac799c11bdb6393072864
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 151aadadb5674f7f144d42b1f9d5115501ed381d
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76513110"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887225"
 ---
 # <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>使用媒体服务 v3 进行适用于 Windows 10 的 PlayReady 脱机流式处理
 
@@ -121,10 +121,6 @@ private async void LoadUri_Click(object sender, RoutedEventArgs e)
 * 内容可以托管在 Azure 媒体服务或 Azure 存储中，用于渐进式下载；
 * PlayReady 许可证交付可以来自 Azure 媒体服务或其他位置；
 * 已准备好的平滑流式处理内容仍然可以通过 DASH 用作联机流式处理或作为 DRM 使用 PlayReady 进行平滑处理。
-
-## <a name="additional-notes"></a>附加说明
-
-* Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
 ## <a name="next-steps"></a>后续步骤
 

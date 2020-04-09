@@ -13,19 +13,17 @@ ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 961444e15ae1c45db1fc7423a6ac3cc96cc7b3fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89c4fa536994ecc8cecb50c907d43df2110be7df
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75768004"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982593"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>使用 Azure Active Directory 组管理应用和资源访问
 通过 Azure Active Directory (Azure AD) 可以使用组来管理基于云的应用、本地应用和资源。 您的资源可以是 Azure AD 组织的一部分，例如通过 Azure AD 中的角色管理对象的权限，也可以是组织外部的权限，例如"软件即服务 "（SaaS） 应用、Azure 服务、SharePoint 站点和本地资源。
 
 >[!NOTE]
->要使用 Azure Active Directory，需要一个 Azure 帐户。 如果没有帐户，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。
->
 > 在 Azure 门户中，可以看到一些组，其成员身份和组详细信息无法在门户中进行管理：
 >
 > - 从本地 Active Directory 同步的组只能在本地 Active Directory 中进行管理。

@@ -3,16 +3,16 @@ title: 资源命名限制
 description: 显示命名 Azure 资源的规则和限制。
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 580b7efd26d5729baf236b59452f63483c003e44
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: f6203f987654b33b32da72bfec030a9d0ab69df8
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366218"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981522"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure 资源的命名规则和限制
 
-本文总结了 Azure 资源的命名规则和限制。 有关如何命名资源的建议，请参阅["就绪：建议命名和标记约定](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)"。
+本文总结了 Azure 资源的命名规则和限制。 有关如何命名资源的建议，请参阅[建议命名和标记约定](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)。
 
 除非在有效字符列中明确注明，否则资源名称不区分大小写。
 

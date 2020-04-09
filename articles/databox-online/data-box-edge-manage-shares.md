@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: b25409c63806e203bd841b0373543b7cc2b96d9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4877b136f197f226f142f5ad5eb4035c63c07d7a
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79212946"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887004"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-edge"></a>使用 Azure 门户管理 Azure Data Box Edge 上的共享
 
@@ -29,11 +29,11 @@ ms.locfileid: "79212946"
 在本文中，学习如何：
 
 > [!div class="checklist"]
+>
 > * 添加共享
 > * 删除共享
 > * 刷新共享
 > * 同步存储密钥
-
 
 ## <a name="add-a-share"></a>添加共享
 
@@ -57,14 +57,14 @@ ms.locfileid: "79212946"
    > 如果要将其与 Azure 堆栈边缘或数据盒网关设备一起使用，请确保使用的 Azure 存储帐户上未设置不变性策略。 有关详细信息，请参阅[设置和管理 blob 存储的不变性策略](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)。
 
 6. 此步骤取决于你是创建 SMB 共享还是 NFS 共享。
-    - **如果创建 SMB 共享** - 在“所有特权本地用户”字段中，选择“新建”或“使用现有”。************ 如果创建新的本地用户，请提供**用户名**、**密码**和确认密码。 这样就会为本地用户分配权限。 在此处分配权限以后，即可使用文件资源管理器修改这些权限。
+   - **如果创建 SMB 共享** - 在“所有特权本地用户”字段中，选择“新建”或“使用现有”。************ 如果创建新的本地用户，请提供**用户名**、**密码**和确认密码。 这样就会为本地用户分配权限。 在此处分配权限以后，即可使用文件资源管理器修改这些权限。
 
-        ![添加 SMB 共享](media/data-box-edge-manage-shares/add-smb-share.png)
+      ![添加 SMB 共享](media/data-box-edge-manage-shares/add-smb-share.png)
 
         如果针对此共享数据勾选“仅允许读取操作”，则可以指定只读用户。
-    - **如果创建 NFS 共享** - 需要提供能够访问共享的**受允许客户端的 IP 地址**。
+   - **如果创建 NFS 共享** - 需要提供能够访问共享的**受允许客户端的 IP 地址**。
 
-        ![添加 NFS 共享](media/data-box-edge-manage-shares/add-nfs-share.png)
+      ![添加 NFS 共享](media/data-box-edge-manage-shares/add-nfs-share.png)
 
 7. 若要轻松地从 Edge 计算模块访问共享，请使用本地装入点。 选择“将共享与 Edge 计算配合使用”，这样就会在创建共享后自动装载共享。**** 选择此选项后，Edge 模块也可将计算与本地装入点配合使用。
 
@@ -74,7 +74,7 @@ ms.locfileid: "79212946"
 
 1. 在 Azure 门户中，转到自己的 Data Box Edge 资源，然后转到“网关”>“共享”。**** 在命令栏上选择“+ 添加共享”****。
 
-    ![选择“添加共享”](media/data-box-edge-manage-shares/add-local-share-1.png)
+   ![选择“添加共享”](media/data-box-edge-manage-shares/add-local-share-1.png)
 
 2. 在“添加共享”中指定共享设置。**** 提供共享的唯一名称。
     
@@ -88,42 +88,41 @@ ms.locfileid: "79212946"
 
 6. 在“所有特权本地用户”字段中，选择“新建”或“使用现有项”。************
 
-7. 选择 **“创建”**。 
+7. 选择“创建”  。 
 
-    ![创建本地共享](media/data-box-edge-manage-shares/add-local-share-2.png)
+   ![创建本地共享](media/data-box-edge-manage-shares/add-local-share-2.png)
 
     此时会显示一条通知，指出正在创建共享。 使用指定的设置创建共享后，“共享”**** 边栏选项卡会更新以反映新共享。
 
-    ![查看更新的“共享”边栏选项卡](media/data-box-edge-manage-shares/add-local-share-3.png)
+   ![查看更新的“共享”边栏选项卡](media/data-box-edge-manage-shares/add-local-share-3.png)
     
     选择该共享，以查看其 Edge 计算模块的本地装入点。
 
-    ![查看本地共享详细信息](media/data-box-edge-manage-shares/add-local-share-4.png)
+   ![查看本地共享详细信息](media/data-box-edge-manage-shares/add-local-share-4.png)
 
 ## <a name="mount-a-share"></a>装载共享
 
 如果先创建了某个共享，然后再在 Data Box Edge 设备上配置计算，则需装载该共享。 通过以下步骤装载共享。
 
-
 1. 在 Azure 门户中，转到自己的 Data Box Edge 资源，然后转到“网关”>“共享”。**** 从共享列表中选择要装载的共享。 “用于计算”列会将所选共享的状态显示为“已禁用”。********
 
-    ![选择共享](media/data-box-edge-manage-shares/select-share-mount.png)
+   ![选择共享](media/data-box-edge-manage-shares/select-share-mount.png)
 
 2. 选择“装载”****。
 
-    ![选择装载](media/data-box-edge-manage-shares/select-mount.png)
+   ![选择装载](media/data-box-edge-manage-shares/select-mount.png)
 
 3. 出现确认提示时，选择“是”****。 此时会装载共享。
 
-    ![确认装载](media/data-box-edge-manage-shares/confirm-mount.png)
+   ![确认装载](media/data-box-edge-manage-shares/confirm-mount.png)
 
 4. 装载共享以后，转到共享列表。 此时会看到“用于计算”列将共享状态显示为“已启用”。********
 
-    ![装载的共享](media/data-box-edge-manage-shares/share-mounted.png)
+   ![装载的共享](media/data-box-edge-manage-shares/share-mounted.png)
 
 5. 再次选择共享，查看该共享的本地装入点。 Edge 计算模块使用共享的这个本地装入点。
 
-    ![共享的本地装入点](media/data-box-edge-manage-shares/share-mountpoint.png)
+   ![共享的本地装入点](media/data-box-edge-manage-shares/share-mountpoint.png)
 
 ## <a name="unmount-a-share"></a>卸载共享
 
@@ -131,19 +130,19 @@ ms.locfileid: "79212946"
 
 1. 在 Azure 门户中，转到自己的 Data Box Edge 资源，然后转到“网关”>“共享”。****
 
-    ![选择共享](media/data-box-edge-manage-shares/select-share-unmount.png)
+   ![选择共享](media/data-box-edge-manage-shares/select-share-unmount.png)
 
 2. 从共享列表中选择要卸载的共享。 需确保卸载的共享不被任何模块使用。 如果共享被某个模块使用，则相应模块会出问题。 选择“卸载”****。
 
-    ![选择卸载](media/data-box-edge-manage-shares/select-unmount.png)
+   ![选择卸载](media/data-box-edge-manage-shares/select-unmount.png)
 
 3. 出现确认提示时，选择“是”****。 此时会卸载共享。
 
-    ![确认卸载](media/data-box-edge-manage-shares/confirm-unmount.png)
+   ![确认卸载](media/data-box-edge-manage-shares/confirm-unmount.png)
 
 4. 卸载共享以后，转到共享列表。 此时会看到“用于计算”列将共享状态显示为“已禁用”。********
 
-    ![卸载的共享](media/data-box-edge-manage-shares/share-unmounted.png)
+   ![卸载的共享](media/data-box-edge-manage-shares/share-unmounted.png)
 
 ## <a name="delete-a-share"></a>删除共享
 
@@ -151,49 +150,48 @@ ms.locfileid: "79212946"
 
 1. 在共享列表中，选择并单击要删除的共享。
 
-    ![选择共享](media/data-box-edge-manage-shares/delete-share-1.png)
+   ![选择共享](media/data-box-edge-manage-shares/delete-share-1.png)
 
 2. 单击“删除”****。
 
-    ![单击“删除”](media/data-box-edge-manage-shares/delete-share-2.png)
+   ![单击“删除”](media/data-box-edge-manage-shares/delete-share-2.png)
 
 3. 当系统提示你进行确认时，单击 **“是”**。
 
-    ![确认删除](media/data-box-edge-manage-shares/delete-share-3.png)
+   ![确认删除](media/data-box-edge-manage-shares/delete-share-3.png)
 
 共享列表将会更新，以反映删除后的结果。
-
 
 ## <a name="refresh-shares"></a>刷新共享
 
 使用刷新功能可以刷新共享的内容。 刷新共享时，将启动搜索，以查找自上次刷新以来添加到云中的所有 Azure 对象，包括 Blob 和文件。 然后，将下载这些附加文件以刷新设备上的共享内容。
 
 > [!IMPORTANT]
+>
 > - 无法刷新本地共享。
 > - 权限和访问控制列表 (ACL) 不会通过刷新操作保存。 
 
 在 Azure 门户中执行以下步骤，以刷新共享。
 
-1.   在 Azure 门户中转到“共享”。**** 选择并单击要刷新的共享。
+1. 在 Azure 门户中转到“共享”。**** 选择并单击要刷新的共享。
 
-    ![选择共享](media/data-box-edge-manage-shares/refresh-share-1.png)
+   ![选择共享](media/data-box-edge-manage-shares/refresh-share-1.png)
 
-2.   单击“刷新”。**** 
+2. 单击“刷新”。****
 
-    ![单击“刷新”](media/data-box-edge-manage-shares/refresh-share-2.png)
+   ![单击“刷新”](media/data-box-edge-manage-shares/refresh-share-2.png)
  
-3.   当系统提示你进行确认时，单击 **“是”**。 此时会启动一个作业来刷新本地共享的内容。
+3. 当系统提示你进行确认时，单击 **“是”**。 此时会启动一个作业来刷新本地共享的内容。
 
-    ![确认刷新](media/data-box-edge-manage-shares/refresh-share-3.png)
- 
-4.   刷新正在进行时，上下文菜单中的刷新选项会灰显。 单击作业通知以查看刷新作业的状态。
+   ![确认刷新](media/data-box-edge-manage-shares/refresh-share-3.png)
 
-5.   刷新所需的时间取决于 Azure 容器中的文件数以及设备上的文件数。 成功完成刷新后，共享时间戳将会更新。 即使刷新已部分失败，刷新操作也被视为成功，并时间戳会更新。 刷新错误日志也会更新。
+4. 刷新正在进行时，上下文菜单中的刷新选项会灰显。 单击作业通知以查看刷新作业的状态。
 
-    ![更新的时间戳](media/data-box-edge-manage-shares/refresh-share-4.png)
+5. 刷新所需的时间取决于 Azure 容器中的文件数以及设备上的文件数。 成功完成刷新后，共享时间戳将会更新。 即使刷新已部分失败，刷新操作也被视为成功，并时间戳会更新。 刷新错误日志也会更新。
+
+   ![更新的时间戳](media/data-box-edge-manage-shares/refresh-share-4.png)
  
 失败时会引发警报。 警报中详细描述了原因，以及问题的建议解决方法。 警报中还会提供某个文件的链接，该文件包含失败的完整摘要，其中指出了无法更新或删除哪些文件。
-
 
 ## <a name="sync-storage-keys"></a>同步存储密钥
 
@@ -213,7 +211,6 @@ ms.locfileid: "79212946"
 
 >[!NOTE]
 > 只需针对给定的存储帐户执行此操作一次。 对于与同一存储帐户关联的所有共享，无需重复此操作。
-
 
 ## <a name="next-steps"></a>后续步骤
 

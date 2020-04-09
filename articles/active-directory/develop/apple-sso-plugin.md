@@ -1,5 +1,5 @@
 ---
-title: 适用于 Apple 设备的微软企业 SSO 插件
+title: 适用于 Apple 设备的 Microsoft 企业 SSO 插件
 titleSuffix: Microsoft identity platform | Azure
 description: 了解适用于 iOS 和 macOS 设备的 Microsoft Azure 活动目录 SSO 插件。
 services: active-directory
@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 7233a0bba5cf30eab018bfa744a7322303300604
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: a6af1a78582ebf62aed82bad8fa06cac37f511ea
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80550313"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982576"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>适用于 Apple 设备的微软企业 SSO 插件（预览版）
 
@@ -27,7 +27,7 @@ ms.locfileid: "80550313"
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-*适用于 Apple 设备的 Microsoft 企业 SSO 插件*为支持 Apple[企业单一登录](https://developer.apple.com/documentation/authenticationservices)功能的所有应用程序的活动目录帐户提供单一登录 （SSO）。 微软与苹果密切合作，开发此插件，以提高应用程序的可用性，同时提供苹果和微软所能提供的最佳保护。
+*适用于 Apple 设备的 Microsoft 企业 SSO 插件*为 Azure 活动目录 （Azure AD） 帐户提供单个登录 （SSO） 功能，适用于支持 Apple[企业单一登录](https://developer.apple.com/documentation/authenticationservices)功能的所有应用程序。 微软与苹果密切合作，开发此插件，以提高应用程序的可用性，同时提供苹果和微软所能提供的最佳保护。
 
 在此公共预览版本中，企业 SSO 插件仅适用于 iOS 设备，并在某些 Microsoft 应用程序中分发。
 
@@ -37,7 +37,7 @@ ms.locfileid: "80550313"
 
 适用于 Apple 设备的 Microsoft 企业 SSO 插件具有以下优点：
 
-- 为支持 Apple 的企业单一登录功能的所有应用程序为活动目录帐户提供 SSO。
+- 为支持 Apple 企业单一登录功能的所有应用程序的 Azure AD 帐户提供 SSO。
 - 在 Microsoft 身份验证器中自动交付，并且可以通过任何移动设备管理 （MDM） 解决方案启用。
 
 ## <a name="requirements"></a>要求

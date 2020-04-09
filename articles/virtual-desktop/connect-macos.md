@@ -5,15 +5,15 @@ services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 04/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 673c20355e9ad4abf2c8318b3eb2ebbcc36ed8fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ac3ee8d44d68f5c7929c2f93f1a1182c7f6083b
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79128243"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891248"
 ---
 # <a name="connect-with-the-macos-client"></a>使用 macOS 客户端进行连接
 
@@ -31,11 +31,11 @@ ms.locfileid: "79128243"
 
 要订阅源：
 
-1. 在主页上选择 **"添加源"** 以连接到服务并检索资源。
+1. 在主页上选择 **"添加工作区**"以连接到服务并检索资源。
 2. 输入“源 URL”。 该项可以是 URL 或电子邮件地址：
    - 如果您使用 URL，请使用管理员为您提供的 URL。 通常，URL 是<https://rdweb.wvd.microsoft.com>。
    - 要使用电子邮件，请输入您的电子邮件地址。 如果管理员以这种方式配置了服务器，则告诉客户端搜索与您的电子邮件地址关联的 URL。
-3. 选择 **"订阅**"。
+3. 选择 **添加** 。
 4. 出现提示时，请使用用户帐户登录。
 
 登录后，应看到可用资源的列表。

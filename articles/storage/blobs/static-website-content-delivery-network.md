@@ -6,13 +6,13 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
-ms.date: 01/22/2020
-ms.openlocfilehash: 8eeff5187d27cb75b9e55eba8311dede8970bc4a
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.date: 04/07/2020
+ms.openlocfilehash: 4516e9f48174a0f1f5201c46cf114badf13d99d6
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435218"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878795"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>将静态网站与 Azure CDN 集成
 
@@ -26,19 +26,17 @@ ms.locfileid: "80435218"
 
 1. 在 Azure 门户中找到存储帐户并显示帐户概览。
 
-2. 在“Blob 服务”菜单下选择“Azure CDN”，以便配置 Azure CDN。********
+1. 在**Blob 服务**菜单下，选择**Azure CDN**以打开**Azure CDN**页面：
 
-    “Azure CDN”页面随即显示。****
+    ![创建 CDN 终结点](media/storage-blob-static-website-custom-domain/cdn-storage-new.png)
 
-    ![创建 CDN 终结点](../../cdn/media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-creation.png)
+1. 在**CDN 配置文件**部分中，指定是创建新 CDN 配置文件还是使用现有 CDN 配置文件。 CDN 配置文件是共享定价层和提供程序的 CDN 终结点的集合。 然后输入订阅中唯一的 CDN 的名称。
 
-3. 在“CDN 配置文件”部分，指定新的或现有的 CDN 配置文件。**** 
+1. 指定 CDN 终结点的定价层。 要了解有关定价的更多信息，请参阅[内容交付网络定价](https://azure.microsoft.com/pricing/details/cdn/)。 有关每个层可用的功能的详细信息，请参阅比较 Azure [CDN 产品功能](../../cdn/cdn-features.md)。
 
-4. 指定 CDN 终结点的定价层。 要了解有关定价的更多信息，请参阅[内容交付网络定价](https://azure.microsoft.com/pricing/details/cdn/)。 有关每个层可用的功能的详细信息，请参阅比较 Azure [CDN 产品功能](../../cdn/cdn-features.md)。
+1. 在“CDN 终结点名称”字段中，指定 CDN 终结点的名称。**** CDN 终结点必须在 Azure 中是唯一的，并提供终结点 URL 的第一部分。 该窗体验证终结点名称是否唯一。
 
-5. 在“CDN 终结点名称”字段中，指定 CDN 终结点的名称。**** CDN 终结点必须在 Azure 中独一无二。
-
-6. 在“源主机名”字段中指定静态网站终结点。**** 
+1. 在 **"原点"主机名**字段中指定静态网站终结点。 
 
    若要查找静态网站终结点，请导航到存储帐户的“静态网站”设置。****  复制主终结点并将其粘贴到 CDN 配置中。
 
@@ -49,15 +47,15 @@ ms.locfileid: "80435218"
 
    ![显示 CDN 终结点配置示例的屏幕截图](media/storage-blob-static-website-custom-domain/add-cdn-endpoint.png)
 
-7. 选择 **"创建**"，然后等待其传播。 创建终结点之后，它会出现在终结点列表中。
+1. 选择 **"创建**"，然后等待 CDN 进行预配。 创建终结点之后，它会出现在终结点列表中。 （如果窗体中有任何错误，则该字段旁边会显示一个感叹号。
 
-8. 若要验证 CDN 终结点是否已正确配置，请单击该终结点，导航到其设置。 在存储帐户的 CDN 概览中找到终结点主机名，导航到终结点，如下图所示。 CDN 终结点的格式将类似于 `https://staticwebsitesamples.azureedge.net`。
+1. 若要验证 CDN 终结点是否已正确配置，请单击该终结点，导航到其设置。 在存储帐户的 CDN 概览中找到终结点主机名，导航到终结点，如下图所示。 CDN 终结点的格式将类似于 `https://staticwebsitesamples.azureedge.net`。
 
     ![显示 CDN 终结点概览的屏幕截图](media/storage-blob-static-website-custom-domain/verify-cdn-endpoint.png)
 
-9. CDN 终结点传播完成后，导航到 CDN 终结点就会显示以前上传到静态网站的 index.html 文件的内容。
+1. 预配 CDN 终结点后，导航到 CDN 终结点将显示您以前上载到静态网站的 index.html 文件的内容。
 
-10. 若要查看 CDN 终结点的源设置，请导航到 CDN 终结点的“设置”部分下的“源”。******** 此时会看到“源类型”字段设置为“自定义源”，“源主机名”字段显示静态网站终结点。**********
+1. 若要查看 CDN 终结点的源设置，请导航到 CDN 终结点的“设置”部分下的“源”。******** 此时会看到“源类型”字段设置为“自定义源”，“源主机名”字段显示静态网站终结点。**********
 
     ![显示 CDN 终结点的源设置的屏幕截图](media/storage-blob-static-website-custom-domain/verify-cdn-origin.png)
 

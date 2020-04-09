@@ -5,7 +5,6 @@ description: 了解如何为 Azure AD 中的企业应用程序自定义 SAML 令
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: f1daad62-ac8a-44cd-ac76-e97455e47803
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
@@ -14,12 +13,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 52779b7ffea0f33676426f145a700c7181cf0bf1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 87a9632ec2433b8698e3ae3761ba733aa6bc63a5
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79263083"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885678"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序自定义 SAML 令牌中发出的声明
 
@@ -55,7 +54,7 @@ ms.locfileid: "79263083"
 
 从 **"选择名称标识符"格式**下拉下拉列表，您可以选择以下选项之一。
 
-| 名称 ID 格式 | 描述 |
+| 名称 ID 格式 | 说明 |
 |---------------|-------------|
 | **默认** | Azure AD 将使用默认源格式。 |
 | **持续** | Azure AD 将使用"持久"作为 NameID 格式。 |
@@ -69,7 +68,7 @@ ms.locfileid: "79263083"
 
 为 `NameIdentifier`（或 NameID）声明选择所需的源。 可以从以下选项中选择。
 
-| “属性” | 描述 |
+| 名称 | 说明 |
 |------|-------------|
 | 电子邮件 | 用户的电子邮件地址 |
 | userprincipalName | 用户的主名 （UPN） |
@@ -99,7 +98,7 @@ ms.locfileid: "79263083"
 
 您还可以使用声明转换函数。
 
-| 函数 | 描述 |
+| 函数 | 说明 |
 |----------|-------------|
 | **ExtractMailPrefix()** | 从电子邮件地址或用户主体名称中删除域后缀。 这只会提取传递用户名的第一部分（例如，“joe_smith”而不是 joe_smith@contoso.com）。 |
 | **加入（）** | 将属性与已验证的域联接。 如果所选用户标识符值具有域，则将提取用户名以追加所选的已验证域。 例如，如果选择电子邮件 (joe_smith@contoso.com) 作为用户标识符值，并选择 contoso.onmicrosoft.com 作为已验证的域，则将生成 joe_smith@contoso.onmicrosoft.com。 |
@@ -126,7 +125,7 @@ ms.locfileid: "79263083"
 
 您可以使用以下函数转换声明。
 
-| 函数 | 描述 |
+| 函数 | 说明 |
 |----------|-------------|
 | **ExtractMailPrefix()** | 从电子邮件地址或用户主体名称中删除域后缀。 这只会提取传递用户名的第一部分（例如，“joe_smith”而不是 joe_smith@contoso.com）。 |
 | **加入（）** | 通过联接两个属性创建新值。 或者，您可以在两个属性之间使用分隔符。 对于 NameID 声明转换，联接仅限于已验证的域。 如果所选用户标识符值具有域，则将提取用户名以追加所选的已验证域。 例如，如果选择电子邮件 (joe_smith@contoso.com) 作为用户标识符值，并选择 contoso.onmicrosoft.com 作为已验证的域，则将生成 joe_smith@contoso.onmicrosoft.com。 |

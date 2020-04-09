@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 064a7b8adaec6f47a153743b58f4e1caf50db723
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 38116efc9e87eca8e2514a0a84045a69b8d42326
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80681501"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887038"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>使用模型转换 REST API
 
@@ -77,7 +77,7 @@ Azure 远程呈现帐户需要按照有关如何[链接存储帐户](../create-a
 
 | 终结点 | 方法 |
 |-----------|:-----------|
-| /v1/帐户/**帐户 ID**/转换/创建共享访问签名 | POST |
+| /v1/帐户/**帐户 ID**/转化/创建共享访问签名 | POST |
 
 返回在 JSON 文档中包装的持续转换的 ID。 字段名称为"转换 ID"。
 
@@ -128,5 +128,5 @@ Azure 远程呈现帐户需要按照有关如何[链接存储帐户](../create-a
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure Blob 存储进行模型转换](blob-storage.md)
+- [将 Azure Blob 存储用于模型转换](blob-storage.md)
 - [模型转换](model-conversion.md)

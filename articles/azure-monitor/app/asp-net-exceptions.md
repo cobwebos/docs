@@ -3,12 +3,12 @@ title: 使用 Azure Application Insights 诊断故障和异常
 description: 从 ASP.NET 应用中捕获异常以及请求遥测。
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: ccfcb354e27d36f40810b114a1729cf6addf8fb6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f24f09e7d2ef0a3e5f3a8f6546a9115118473ab
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294690"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892336"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>使用 Application Insights 诊断 Web 应用中的异常
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 可报告实时 Web 应用中的异常。 可以将失败的请求与异常关联到客户端和服务器上的其他事件，从而快速诊断原因。
@@ -19,7 +19,7 @@ ms.locfileid: "80294690"
   * Azure VM 和 Azure 虚拟机缩放集 IIS 托管应用：添加[应用程序监视扩展](../../azure-monitor/app/azure-vm-vmss-apps.md)
   * 在应用代码中安装 [Application Insights SDK](../../azure-monitor/app/asp-net.md)，或者
   * 在 IIS Web 服务器上运行 [Application Insights 代理](../../azure-monitor/app/monitor-performance-live-website-now.md)，或者
-  * Java Web 应用：安装 [Java 代理](../../azure-monitor/app/java-agent.md)
+  * Java Web 应用程序：启用[Java 代理](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
 * 在网页中安装 [JavaScript 代码片段](../../azure-monitor/app/javascript.md)可以捕获浏览器异常。
 * 在某些应用程序框架中或者使用某些设置时，需要执行一些额外的步骤来捕获异常：
   * [Web 窗体](#web-forms)

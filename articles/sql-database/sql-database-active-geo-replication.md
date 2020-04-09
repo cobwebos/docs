@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 04/06/2020
-ms.openlocfilehash: 1f339d987d67047f5857679b440e93e6c3730059
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: cc9d129894cefaf2fab853d2099d754d68238e5f
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80810450"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887344"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>创建并使用活动异地复制
 
@@ -113,14 +113,11 @@ ms.locfileid: "80810450"
 
 ## <a name="configuring-secondary-database"></a>配置辅助数据库
 
-主数据库和辅助数据库都需要有相同的服务层级。 另外，强烈建议创建与主数据库具有相同计算大小（DTU 或 vCore）的辅助数据库。 如果主数据库遇到繁重的写入工作负载，则计算大小较低的辅助数据库可能无法跟上它。 这将导致辅助数据库的重做延迟，并且可能不可用辅助数据库。 如果需要强制故障转移，滞后于主数据库的辅助数据库也面临大量数据丢失的风险。 为了减轻这些风险，活动异地复制将限制主日志速率（如有必要），以便其辅助数据库赶上。 
+主数据库和辅助数据库都需要有相同的服务层级。 另外，强烈建议创建与主数据库具有相同计算大小（DTU 或 vCore）的辅助数据库。 如果主数据库遇到繁重的写入工作负载，则计算大小较低的辅助数据库可能无法跟上它。 这将导致辅助数据库的重做延迟，并且可能不可用辅助数据库。 为了减轻这些风险，活动异地复制将限制主的事务日志速率（如有必要），以便其辅助数据库赶上。 
 
-二次配置不平衡的另一个后果是，故障转移后，由于新主服务器的计算能力不足，应用程序性能可能会受到影响。 在这种情况下，有必要将数据库服务目标扩展到必要的级别，这可能需要大量时间和计算资源，并且需要在扩展过程结束时[进行高可用性](sql-database-high-availability.md)故障转移。
+辅助配置不平衡的另一个后果是，在故障转移后，应用程序性能可能会因新主服务器的计算能力不足而受到影响。 在这种情况下，有必要将数据库服务目标扩展到必要的级别，这可能需要大量时间和计算资源，并且需要在扩展过程结束时[进行高可用性](sql-database-high-availability.md)故障转移。
 
-> [!IMPORTANT]
-> 除非辅助数据库配置与主数据库相同或更高的计算大小，否则无法保证已发布的 5 秒 RPO SLA。 
-
-如果决定创建计算大小较低的辅助数据库，Azure 门户中的日志 IO 百分比图表提供了一种估计辅助数据库的最小计算大小的好方法，该次表是维持复制负载所必需的。 例如，如果主数据库为 P6 （1000 DTU），其日志写入百分比为 50%，则辅助数据库至少需要 P4 （500 DTU）。 若要检索历史日志 IO 数据，请使用[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)视图。 若要检索具有更高粒度、更好地反映日志速率中短期峰值的最近日志写入数据，请使用[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)视图。 
+如果决定创建计算大小较低的辅助数据库，Azure 门户中的日志 IO 百分比图表提供了一种估计辅助数据库的最小计算大小的好方法，该次表是维持复制负载所必需的。 例如，如果主数据库为 P6 （1000 DTU），其日志写入百分比为 50%，则辅助数据库至少需要 P4 （500 DTU）。 若要检索历史日志 IO 数据，请使用[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)视图。 若要检索具有更高粒度、更好地反映日志速率中短期峰值的最近日志写入数据，请使用[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)视图。
 
 主数据库上的事务日志速率限制由于辅助数据库的计算大小较低，使用HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO等待类型报告，该等待类型在[sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql)和[sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)数据库视图中可见。 
 

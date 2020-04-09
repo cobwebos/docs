@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: 3e8cd2f1e594cd6a60296b2df135f275641df313
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3738da806ff36cdb7e8d561b88a457a5264eb76
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77086984"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886919"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>为应用程序网关创建 Web 应用程序防火墙策略
 
@@ -24,6 +24,8 @@ ms.locfileid: "77086984"
 
    > [!NOTE]
    > 每个站点和每个 URI 的 WAF 策略均为公共预览版。 这意味着此功能受 Microsoft 补充使用条款的约束。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+   > [!NOTE]
+   > 一旦防火墙策略与 WAF 相关联，必须始终有与该 WAF 关联的策略。 您可以覆盖该策略，但不支持将策略与 WAF 完全取消关联。 
 
 所有新的 Web 应用程序防火墙的 WAF 设置（自定义规则、托管 rulset 配置、排除等）都位于 WAF 策略中。 如果您有现有的 WAF，这些设置可能仍然存在于 WAF 配置中。有关如何移动到新的 WAF 策略的步骤，请参阅本文后面的[WAF 配置迁移到 WAF 策略](#migrate)。 
 
@@ -34,7 +36,7 @@ ms.locfileid: "77086984"
 1. 在门户的左上角，选择 **"创建资源**"。 搜索**WAF**，选择**Web 应用程序防火墙**，然后选择 **"创建**"。
 2. 在**创建 WAF 策略**页"**基础知识"** 选项卡上，输入或选择以下信息，接受其余设置的默认值，然后选择 **"查看 + 创建**：
 
-   |设置  |“值”  |
+   |设置  |值  |
    |---------|---------|
    |政策     |区域 WAF（应用程序网关）|
    |订阅     |选择订阅名称|
@@ -42,7 +44,7 @@ ms.locfileid: "77086984"
    |策略名称     |为 WAF 策略键入唯一名称。|
 3. 在 **"关联"** 选项卡上，输入以下设置之一，然后选择 **"添加**：
 
-   |设置  |“值”  |
+   |设置  |值  |
    |---------|---------|
    |关联应用程序网关     |选择应用程序网关配置文件名称。|
    |助理监听器     |选择应用程序网关侦听器的名称，然后选择 **"添加**"。|

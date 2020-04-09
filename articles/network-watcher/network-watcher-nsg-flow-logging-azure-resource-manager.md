@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/26/2020
 ms.author: damendo
-ms.openlocfilehash: 35d185a625a81a259c366a45999769ecf76c6a7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 104311904b99cadbbc8c0267a98f2709443608ea
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77538152"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891452"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>从 Azure 资源管理器模板配置 NSG 流日志
 
 > [!div class="op_single_selector"]
 > - [Azure 门户](network-watcher-nsg-flow-logging-portal.md)
-> - [电源外壳](network-watcher-nsg-flow-logging-powershell.md)
+> - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
 > - [Azure 资源管理器](network-watcher-nsg-flow-logging-azure-resource-manager.md)
@@ -169,6 +169,8 @@ New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatc
 
 有几种方法可以检查部署是否成功。 您的 PowerShell 控制台应将"预配状态"显示为"成功"。 此外，您还可以访问[NSG 流日志门户页面](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)以确认您的更改。 如果部署出现问题，请查看[Azure 资源管理器中常见的 Azure 部署错误故障排除](https://docs.microsoft.com/azure/azure-resource-manager/templates/common-deployment-errors)。
 
+## <a name="deleting-your-resource"></a>删除资源
+Azure 通过"完成"部署模式启用资源删除。 要删除流日志资源，请在"完成"模式下指定部署，而不包括要删除的资源。 阅读有关["完成部署模式"的更多内容](https://docs.microsoft.com/azure/azure-resource-manager/templates/deployment-modes#complete-mode)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -2,20 +2,22 @@
 title: 收集和分析资源日志
 description: 了解如何从 Azure 容器实例中的容器组将资源日志和事件数据发送到 Azure Monitor 日志
 ms.topic: article
-ms.date: 01/08/2020
+ms.date: 04/07/2020
 ms.author: danlep
-ms.openlocfilehash: 304e98fff386911b878877d2f03d489d0eef5dd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd21a511641d5ea027c18bedb4dce47749110bcb
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75770537"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892387"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>使用 Azure Monitor 日志进行容器组和实例日志记录
 
 Log Analytics 工作区提供了一个集中的位置，用于存储和查询来自 Azure 资源、本地资源以及其他云中的资源的日志数据。 Azure 容器实例提供内置支持，支持将日志和事件数据发送到 Azure Monitor 日志。
 
-若要将容器组日志和事件数据发送到 Azure Monitor 日志，请在创建容器组时指定现有 Log Analytics 工作区 ID 和工作区密钥。 以下部分介绍如何创建启用了日志记录的容器组以及如何查询日志。
+要将容器组日志和事件数据发送到 Azure 监视器日志，请在配置容器组时指定现有的日志分析工作区 ID 和工作区密钥。 
+
+以下部分介绍如何创建启用了日志记录的容器组以及如何查询日志。 还可以使用工作区 ID 和工作区密钥[更新容器组](container-instances-update.md)以启用日志记录。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -26,7 +28,7 @@ Log Analytics 工作区提供了一个集中的位置，用于存储和查询来
 
 若要在容器实例中启用日志记录，需具备以下条件：
 
-* [日志分析工作区](../azure-monitor/learn/quick-create-workspace.md)
+* [Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)
 * [Azure CLI](/cli/azure/install-azure-cli)（或 [Cloud Shell](/azure/cloud-shell/overview)）
 
 ## <a name="get-log-analytics-credentials"></a>获取 Log Analytics 凭据

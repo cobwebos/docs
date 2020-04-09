@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/27/2020
-ms.openlocfilehash: 26ed33e967aff1714d2a6fb174eab623e71534c2
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.date: 04/08/2020
+ms.openlocfilehash: 5bb5d5dd5110f176b59a99f6a3aa223184158da5
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80382726"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982304"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>为 VM 启用 Azure 监视器概述
 
@@ -60,7 +60,7 @@ ms.locfileid: "80382726"
 
 如果没有日志分析工作区，则可以使用以下资源之一创建一个工作区：
 * [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
-* [电源外壳](../../azure-monitor/learn/quick-create-workspace-posh.md)
+* [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
 * [Azure 门户](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure 资源管理器](../../azure-monitor/platform/template-workspace-configuration.md)
 
@@ -165,7 +165,7 @@ ms.locfileid: "80382726"
 
 下表描述了映射功能在混合环境中支持的连接源。
 
-| 连接的源 | 支持 | 描述 |
+| 连接的源 | 支持 | 说明 |
 |:--|:--|:--|
 | Windows 代理 | 是 | 除[适用于 Windows 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)以外，Windows 代理还需要依赖项代理。 有关详细信息，请参阅[支持的操作系统](#supported-operating-systems)。 |
 | Linux 代理 | 是 | 除[适用于 Linux 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)以外，Linux 代理还需要依赖项代理。 有关详细信息，请参阅[支持的操作系统](#supported-operating-systems)。 |
@@ -173,10 +173,10 @@ ms.locfileid: "80382726"
 
 可从以下位置下载依赖项代理：
 
-| 文件 | OS | 版本 | SHA-256 |
+| 文件 | (OS) | Version | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.2.9060 | B7725B6B205CF8C336D9AAD87956336C816412740E9D6499BCACB6F862AE3896  |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.2.9060 | C6995A67A7782AEC312647D74A99C3C823F68F5FFA490FD4BB6006A2FF2941B0 |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.3.9380 | 40763BD0A5B60707DF3F9E7BCC17D917F5CE99F2F5A4633D8B733F3BE143921  |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.3.9380 | BB41BB59BDD293968F02A9EF821F9639406AA1BDF1F67925DB9EE00D54AA7F0b |
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 
@@ -188,7 +188,7 @@ ms.locfileid: "80382726"
 
 使用下表中所述的方法之一启用用于 VM 的 Azure Monitor：
 
-| 部署状态 | 方法 | 描述 |
+| 部署状态 | 方法 | 说明 |
 |------------------|--------|-------------|
 | 单个 Azure VM 或虚拟机规模集 | [从 VM 启用](vminsights-enable-single-vm.md) | 您可以通过直接从 VM 或虚拟机规模集中选择**见解**来启用单个 Azure VM。 |
 | 多个 Azure VM 或虚拟机规模集 | [通过 Azure Policy 启用](vminsights-enable-at-scale-policy.md) | 可以使用 Azure Policy 和可用的策略定义来启用多个 Azure VM。 |

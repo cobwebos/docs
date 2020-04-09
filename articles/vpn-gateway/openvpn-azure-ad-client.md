@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/28/2020
+ms.date: 04/07/2020
 ms.author: alzam
-ms.openlocfilehash: 9250464e3d28bdac20840aa9f69cfac707f73b30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7bc28a03476e773325d14808e1c7ac99103b2d5d
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371484"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879439"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>为 P2S OpenVPN 协议连接配置 VPN 客户端：Azure AD 身份验证
 
@@ -154,7 +154,7 @@ ms.locfileid: "80371484"
 
     ![诊断](./media/openvpn-azure-ad-client/diagnose/diagnose4.jpg)
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题解答
 
 ### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>如何将 DNS 后缀添加到 VPN 客户端？
 
@@ -230,6 +230,16 @@ ms.locfileid: "80371484"
 </clientconfig>
 </azvpnprofile>
 ```
+
+### <a name="can-i-import-the-profile-from-a-command-line-prompt"></a>是否可以从命令行提示符导入配置文件？
+
+通过将下载的**azurevpnconfig.xml**文件放在 **%userprofile%_AppData_Local_包_Microsoft.AzureVpn_8wekyb3d8bbwe_LocalState**文件夹并运行以下命令，可以从命令行提示符导入配置文件：
+
+```
+azurevpn -i azurevpnconfig.xml 
+```
+强制导入也使用 **-f**开关
+
 
 ## <a name="next-steps"></a>后续步骤
 

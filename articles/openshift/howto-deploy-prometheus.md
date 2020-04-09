@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 红帽 OpenShift 群集中部署独立的 Prometheus 实例 |微软文档
+title: 在 Azure 红帽开放移位群集中部署 Prometheus 实例
 description: 在 Azure 红帽 OpenShift 群集中创建 Prometheus 实例，以监视应用程序的指标。
 author: makdaam
 ms.author: b-lejaku
@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/17/2019
 keywords: 普罗米图斯， aro， 开班， 指标， 红帽子
-ms.openlocfilehash: f81a993caa31578e689fb3a90108f3cf0ca81fc2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f22df587f51af735e0ea663e53f6eef14d60692
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69875127"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886882"
 ---
 # <a name="deploy-a-standalone-prometheus-instance-in-an-azure-red-hat-openshift-cluster"></a>在 Azure 红帽开放Shift 群集中部署独立的 Prometheus 实例
 

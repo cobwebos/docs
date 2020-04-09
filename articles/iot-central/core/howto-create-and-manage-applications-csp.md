@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 5d876d7db13ce73603f212ec11544cb2f680bf46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02481d5dcbaba15c9b17a27348207d9af64f3355
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158174"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982032"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>从 CSP 门户创建和管理 Azure IoT Central 应用程序
 
@@ -33,7 +33,7 @@ Azure IoT Central 将列为可用于管理的服务。 选择页面上的 Azure 
 
 ![创建适用于 CSP 的管理器](media/howto-create-and-manage-applications-csp/image3.png)
 
-若要创建 Azure IoT Central 应用程序，请在左侧菜单中选择“生成”****。 选择其中一个行业模板，或选择 **"旧版应用程序**"从头开始创建应用程序。 这将加载“应用程序创建”页。 必须完成此页上的所有字段，然后选择“创建”。**** 你将找到有关以下每个字段的详细信息。
+若要创建 Azure IoT Central 应用程序，请在左侧菜单中选择“生成”****。 选择一个行业模板，或选择“自定义应用”**** 从头开始创建应用程序。 这将加载“应用程序创建”页。 必须完成此页上的所有字段，然后选择“创建”。**** 你将找到有关以下每个字段的详细信息。
 
 ![适用于 CSP 的“创建应用程序”页](media/howto-create-and-manage-applications-csp/image4.png)
 

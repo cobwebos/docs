@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 49d2d3d3e8829198a57aaf2feb40e89f105667bd
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: d2cc4133e52e7cab812413d23948da6ac2660e77
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804854"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884862"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>排查 Azure 到 Azure VM 网络连接性问题
 
@@ -18,8 +18,8 @@ ms.locfileid: "80804854"
 
 若要 Site Recovery 复制正常运行，需要从 VM 到特定 URL 或 IP 范围的出站连接。 如果 VM 位于防火墙后或使用网络安全组 (NSG) 规则来控制出站连接，则可能会遇到以下问题之一。
 
-| **URL** | **详细信息** |
-| --- | --- |
+| 代码 | 详细信息 |
+|---|---|
 | `*.blob.core.windows.net` | 必需，以便从 VM 将数据写入到源区域中的缓存存储帐户。 如果您知道 VM 的所有缓存存储帐户，则可以使用特定存储帐户 URL 的允许列表。 例如，`cache1.blob.core.windows.net`而不是`cache2.blob.core.windows.net``*.blob.core.windows.net`。 |
 | `login.microsoftonline.com` | 必需，用于向 Site Recovery 服务 URL 进行授权和身份验证。 |
 | `*.hypervrecoverymanager.windowsazure.com` | 必需，以便从 VM 进行 Site Recovery 服务通信。 如果您的防火墙代理支持 IP，则可以使用相应的_站点恢复 IP。_ |
@@ -82,7 +82,7 @@ ms.locfileid: "80804854"
 
 1. 为与目标位置对应的站点恢复 IP 创建 HTTPS 端口 443 出站规则：
 
-   | **位置** | **Site Recovery IP 地址** |  **Site Recovery 监视 IP 地址** |
+   | 位置 | Site Recovery IP 地址 | Site Recovery 监视 IP 地址 |
    | --- | --- | --- |
    | 美国中部 | 40.69.144.231 | 52.165.34.144 |
 
@@ -102,7 +102,7 @@ ms.locfileid: "80804854"
 
 1. 为与源位置对应的站点恢复 IP 创建 HTTPS 端口 443 出站规则：
 
-   |**位置** | **Site Recovery IP 地址** |  **Site Recovery 监视 IP 地址** |
+   | 位置 | Site Recovery IP 地址 | Site Recovery 监视 IP 地址 |
    | --- | --- | --- |
    | 美国东部 | 13.82.88.226 | 104.45.147.24 |
 
@@ -138,7 +138,8 @@ Azure Site Recovery 需要根据区域访问 [Site Recovery IP 范围](azure-to-
    Port=567
    ```
 
-1. Azure 站点恢复移动服务代理仅支持**未经身份验证的代理**。
+> [!NOTE]
+> Azure 站点恢复移动服务代理仅支持**未经身份验证的代理**。
 
 ### <a name="fix-the-problem"></a>解决问题
 
@@ -146,4 +147,4 @@ Azure Site Recovery 需要根据区域访问 [Site Recovery IP 范围](azure-to-
 
 ## <a name="next-steps"></a>后续步骤
 
-[复制 Azure 虚拟机](site-recovery-replicate-azure-to-azure.md)
+[将 Azure VM 复制到另一个 Azure 区域](azure-to-azure-how-to-enable-replication.md)
