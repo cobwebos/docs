@@ -2,26 +2,22 @@
 title: ADAL 应用与 MSAL 应用 (iOS/macOS) 之间的 SSO - Microsoft 标识平台 | Azure
 description: ''
 services: active-directory
-documentationcenter: dev-center-name
 author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 2fbb6e837ae898daf4bc78d5cccc75660463e8a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a8a1667ba1ca2a99c053c6941e3ba778299fd53
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77085423"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80880744"
 ---
 # <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>如何：在 macOS 和 iOS 上的 ADAL 和 MSAL 应用程序之间的 SSO
 
@@ -52,8 +48,8 @@ MSAL 和 ADAL 使用不同的帐户标识符。 ADAL 使用 UPN 作为主要帐�
 | 帐户标识符                | MSAL                                                         | ADAL 2.7.x      | 旧版 ADAL（ADAL 2.7.x 以前的版本） |
 | --------------------------------- | ------------------------------------------------------------ | --------------- | ------------------------------ |
 | 可显示的标识符            | `username`                                                   | `userId`        | `userId`                       |
-| 不可显示的唯一标识符 | `identifier`                                                 | `homeAccountId` | 空值                            |
-| 没有任何已知的帐户 ID               | 通过 `allAccounts:` 中的 `MSALPublicClientApplication` API 查询所有帐户 | 空值             | 空值                            |
+| 不可显示的唯一标识符 | `identifier`                                                 | `homeAccountId` | 不可用                            |
+| 没有任何已知的帐户 ID               | 通过 `allAccounts:` 中的 `MSALPublicClientApplication` API 查询所有帐户 | 不可用             | 不可用                            |
 
 这是提供这些标识符的 `MSALAccount` 接口：
 

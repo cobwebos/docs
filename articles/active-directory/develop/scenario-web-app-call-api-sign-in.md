@@ -2,24 +2,21 @@
 title: 注销时从令牌缓存中删除帐户 - Microsoft 标识平台 | Azure
 description: 了解如何在注销时从令牌缓存中删除帐户
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: ea18538662dc63876a50f52e9e6a8b3fffb3b35a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 934b756329065c466f21fca1480247065bdea28b
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76758864"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80881606"
 ---
 # <a name="a-web-app-that-calls-web-apis-remove-accounts-from-the-token-cache-on-global-sign-out"></a>调用 Web API 的 Web 应用：从全局注销的令牌缓存中删除帐户
 

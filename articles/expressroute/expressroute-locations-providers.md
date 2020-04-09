@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 04/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: ce9f5730575b4ab68e293c78ea40d8deb1d2c89c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0b8c8a0baba5a80c6a383e6f8f14e29b482dbc82
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278734"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878606"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -95,7 +95,7 @@ ExpressRoute 位置（有时称为对等位置或 Meet-me 位置）是 Microsoft
 | **迪拜** | [PCCS](https://www.pacificcontrols.net/cloudservices/index.html) | 3 | 阿拉伯联合酋长国北部 | 不适用 | 埃泰萨尔特 阿联酋 |
 | **迪拜2** | [杜德梅纳](http://datamena.com/solutions/data-centre) | 3 | 阿拉伯联合酋长国北部 | 不适用 | 杜戈梅纳， 兆港， 奥兰治， 奥里克斯康 |
 | **都柏林** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | 1 | 北欧 | 10G， 100G | 科尔特， eir， Equinix， euNetworks， 互通， 兆端口 |
-| **法兰克福** | [锡龙 FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | 德国中西部 | 10G， 100G | 世纪链接云连接， 科尔特， DE-CIX， GEANT， 互连， 兆端口， 橙色， 泰利亚运营商 |
+| **法兰克福** | [锡龙 FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | 德国中西部 | 10G， 100G | 世纪链接云连接， 科尔特， DE-CIX， Equinix， GEANT， 互连， 兆港， 橙色， 泰利亚运营商 |
 | **日内瓦** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | 瑞士西部 | 10G， 100G | Equinix、Megaport |
 | **香港特别行政区** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | 东亚 | 不适用 | 亚里卡网络、英国电信、世纪通云连接、首席电信、中国电信全球、Equinix、InterCloud、Megaport、NTT通信、奥兰治、电讯盈科全球有限公司、塔塔通信、泰利亚运营商、Verizon |
 | **香港2** | [MEGA-i](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | 不适用 | 10G | |

@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 605974e76c3ca878784129f7c9827a78d0642da6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 420aa52293da14a0dfe8fbdfe681440ee4309e6b
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471585"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878589"
 ---
 # <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Front Door 如何匹配请求与传递规则
 
-建立连接并进行 SSL 握手后，当请求到达 Front Door 环境时，Front Door 所做的第一件事就是从所有配置中确定哪个特定的传递规则与请求匹配，然后执行已定义的操作。 以下文档介绍了 Front Door 如何确定在处理 HTTP 请求时要使用的路由配置。
+建立连接并执行 TLS 握手后，当请求落在前门环境上时，前门首先做的一件事就是从所有配置中确定要匹配请求的特定路由规则，然后执行定义的操作。 以下文档介绍了 Front Door 如何确定在处理 HTTP 请求时要使用的路由配置。
 
 ## <a name="structure-of-a-front-door-route-configuration"></a>Front Door 路由配置结构
 Front Door 传递规则配置由两个主要部分组成：“左侧”和“右侧”。 我们将传入的请求与路由的左侧相匹配，而右侧则定义我们处理请求的方式。

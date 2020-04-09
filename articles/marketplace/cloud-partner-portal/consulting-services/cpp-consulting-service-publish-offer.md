@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: b2de4114e8a1b48de2ad64b783d15f56fef4fc30
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 3a06bae941c75e43a0e4ea2b66cc420e7a2467c3
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743749"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985076"
 ---
 # <a name="publish-a-consulting-service-offer"></a>发布咨询服务产品/服务
 
 >[!Important]
->从 2020 年 3 月 30 日起，我们将开始将咨询服务优惠的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[咨询服务创建概述](https://aka.ms/AzureCreateConsultingService)中的说明来管理迁移的优惠。
+>从 2020 年 4 月 13 日起，我们将开始将您的咨询服务优惠的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[咨询服务创建概述](https://aka.ms/AzureCreateConsultingService)中的说明来管理迁移的优惠。
 
 填写“套餐设置”、“店面详细信息”和“联系人”后，选择“发布”并提供电子邮件地址****************。 当 Microsoft 准备好发布套餐时，会向你发送一封电子邮件，可在其中预览该套餐上线之前的外观。 随时可以返回门户检查套餐的状态。
 

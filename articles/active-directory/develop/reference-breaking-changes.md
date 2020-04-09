@@ -1,28 +1,23 @@
 ---
-title: Azure Active Directory 中断性变更引用 |Microsoft Docs
+title: Azure 活动目录中断更改引用
 description: 了解对可能会影响应用程序的 Azure AD 协议所做的更改。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 68517c83-1279-4cc7-a7c1-c7ccc3dbe146
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 1248063c1b4c1b1e124ff671797450dd5c1b8727
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 52ede7d66bd657b5002272e34673b4b01c9ab1aa
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80050176"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883451"
 ---
 # <a name="whats-new-for-authentication"></a>身份验证的新增功能 
 

@@ -4,12 +4,12 @@ description: 如何配置 Azure 区块链服务事务节点
 ms.date: 11/20/2019
 ms.topic: article
 ms.reviewer: janders
-ms.openlocfilehash: 4a9a4f660dd171e65b600ec4cd66714ca476b091
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8fa18496d0c1aa59beb55569e731967d5ebea427
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79252254"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876923"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>配置 Azure 区块链服务事务节点
 
@@ -17,7 +17,7 @@ ms.locfileid: "79252254"
 
 要查看默认事务节点详细信息：
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 导航到你的 Azure 区块链服务成员。 选择**事务节点**。
 
     ![选择默认事务节点](./media/configure-transaction-nodes/nodes.png)
@@ -35,12 +35,12 @@ ms.locfileid: "79252254"
 
     ![添加事务节点](./media/configure-transaction-nodes/add-node.png)
 
-    | 设置 | 描述 |
+    | 设置 | 说明 |
     |---------|-------------|
-    | “属性” | 事务节点名称。 该名称用于创建事务节点终结点的 DNS 地址。 例如，`newnode-myblockchainmember.blockchain.azure.com` 。 创建节点名称后，无法更改节点名称。 |
+    | 名称 | 事务节点名称。 该名称用于创建事务节点终结点的 DNS 地址。 例如，`newnode-myblockchainmember.blockchain.azure.com` 。 创建节点名称后，无法更改节点名称。 |
     | 密码 | 设置强密码。 使用密码使用基本身份验证访问事务节点终结点。
 
-1. 选择 **“创建”**。
+1. 选择“创建”  。
 
     预配新的事务节点大约需要 10 分钟时间。 其他事务节点会产生成本。 有关成本的详细信息，请参阅[Azure 定价](https://aka.ms/ABSPricing)。
 
@@ -54,7 +54,7 @@ ms.locfileid: "79252254"
 
     ![终结点](./media/configure-transaction-nodes/endpoints.png)
 
-事务节点终结点是安全的，需要身份验证。 您可以使用 Azure AD 身份验证、HTTPS 基本身份验证以及通过 HTTPS 或 Web套接字通过 SSL 访问密钥连接到事务终结点。
+事务节点终结点是安全的，需要身份验证。 您可以使用 Azure AD 身份验证、HTTPS 基本身份验证以及通过 HTTPS 或 Web套接字通过 TLS 访问密钥连接到事务终结点。
 
 ### <a name="azure-active-directory-access-control"></a>Azure 活动目录访问控制
 

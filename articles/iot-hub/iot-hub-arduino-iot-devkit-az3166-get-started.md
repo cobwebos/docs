@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 5d6ba2bd52d8f4af4244e8ce1babeb7bc9d37fe4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 326b79e1aca6fa82b3275249401c755428a8b71d
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235675"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878555"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>将 IoT DevKit AZ3166 连接到 Azure IoT 中心
 
@@ -82,7 +82,13 @@ ms.locfileid: "80235675"
     ```
 
    > [!NOTE]
-   > 如果运行 `device-identity` 时出现错误，请安装[适用于 Azure CLI 的 Azure IOT 扩展](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md)以了解更多详细信息。
+   > 如果运行`device-identity`错误，请安装 Azure [CLI 的 Azure IoT 扩展。](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md)
+   > 运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IoT 扩展将特定于 IoT 中心、IoT 边缘和 IoT 设备配置服务 （DPS） 的命令添加到 Azure CLI。
+   > 
+   > ```azurecli-interactive
+   > az extension add --name azure-iot
+   >  ```
+   >
   
 1. 在 Azure 云外壳中运行以下命令，以获取刚刚注册的_设备的设备连接字符串_：
 

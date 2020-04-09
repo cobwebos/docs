@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 01/09/2020
-ms.openlocfilehash: 8c261a010a1e8f4d1be9b3883510eb38c37a15ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1b70aaef49cc2b993c873509dc935d71069efa2
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80296870"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985909"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>在 Python 中启动、监视和取消训练运行
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -264,16 +264,41 @@ with exp.start_logging() as parent_run:
 
 ### <a name="submit-child-runs"></a>提交子运行
 
-也可以从父运行提交子运行。 这样，便可以创建父子运行的层次结构，每个层次结构在按通用父运行 ID 连接的不同计算目标上运行。
+也可以从父运行提交子运行。 这允许您创建父级和子运行层次结构。 
 
-使用 ['submit_child()'](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-config--tags-none----kwargs-) 方法从父运行内部提交子运行。 若要在父运行脚本中执行此操作，请获取运行上下文，并使用上下文实例的 ``submit_child`` 方法提交子运行。
+您可能希望您的子运行使用与父运行不同的运行配置。 例如，您可能对父级使用功能较弱的基于 CPU 的配置，同时对子级使用基于 GPU 的配置。 另一个共同的愿望是传递每个孩子不同的参数和数据。 要自定义子运行，请将`RunConfiguration`对象传递给子项的`ScriptRunConfig`构造函数。 此代码示例，该示例是父`ScriptRunConfig`对象的脚本的一部分：
+
+- 创建`RunConfiguration`检索命名计算资源`"gpu-compute"`
+- 在要传递给子`ScriptRunConfig`对象的不同参数值上进行转一
+- 使用自定义计算资源和参数创建并提交新的子运行
+- 阻止，直到所有子级运行完成
 
 ```python
-## In parent run script
-parent_run = Run.get_context()
-child_run_config = ScriptRunConfig(source_directory='.', script='child_script.py')
-parent_run.submit_child(child_run_config)
+# parent.py
+# This script controls the launching of child scripts
+from azureml.core import Run, ScriptRunConfig, RunConfiguration
+
+run_config_for_aml_compute = RunConfiguration()
+run_config_for_aml_compute.target = "gpu-compute"
+run_config_for_aml_compute.environment.docker.enabled = True 
+
+run = Run.get_context()
+
+child_args = ['Apple', 'Banana', 'Orange']
+for arg in child_args: 
+    run.log('Status', f'Launching {arg}')
+    child_config = ScriptRunConfig(source_directory=".", script='child.py', arguments=['--fruit', arg], run_config = run_config_for_aml_compute)
+    # Starts the run asynchronously
+    run.submit_child(child_config)
+
+# Experiment will "complete" successfully at this point. 
+# Instead of returning immediately, block until child runs complete
+
+for child in run.get_children():
+    child.wait_for_completion()
 ```
+
+要有效地创建具有相同配置、参数和输入的许多子级运行，请使用 方法[`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-)。 由于每次创建操作都会造成网络调用，因此，创建一批运行比逐个创建更为高效。
 
 在子运行内部，可以查看父运行 ID：
 

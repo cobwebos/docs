@@ -3,24 +3,21 @@ title: 配置调用 Web API 的移动应用 |蔚蓝
 titleSuffix: Microsoft identity platform
 description: 了解如何构建调用 Web API 的移动应用（应用的代码配置）
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: fc25f13d0b0b8a264dcd47a5fdebb0533e93fb55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 06475b53acf6c9161888e29723feab9cdc4336d5
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77132487"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80882720"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>配置调用 Web API 的移动应用
 
@@ -30,7 +27,7 @@ ms.locfileid: "77132487"
 
 以下 Microsoft 身份验证库 （MSAL） 类型支持移动应用。
 
-MSAL | 描述
+MSAL | 说明
 ------------ | ----------
 ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 用于开发便携式应用程序。 MSAL.NET支持以下构建移动应用程序的平台：通用 Windows 平台 （UWP）、Xamarin.iOS 和 Xamarin.Android。
 ![MSAL.iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL.iOS | 用于使用目标 C 或 Swift 开发本机 iOS 应用程序。

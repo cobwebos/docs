@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: b587fa31f1aa42e8dbd5a9d2430c0117891f2091
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 49510b26e0b2a9c69dd65faf0f343e86d1a068db
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239788"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878895"
 ---
 # <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>针对来自 VPN 网关的诊断日志事件设置警报
 
@@ -26,7 +26,7 @@ Azure 中提供以下日志：
 |TunnelDiagnosticLog | 包含隧道状态更改事件。 在适用的情况下，隧道连接/断开连接事件将汇总有关状态更改的原因 |
 |RouteDiagnosticLog | 记录网关上的静态路由和 BGP 事件发生的更改 |
 |IKEDiagnosticLog | 记录网关上的 IKE 控制消息和事件 |
-|P2SDiagnosticLog | 记录网关上的点到站点控制消息和事件 |
+|P2SDiagnosticLog | 在网关上记录点对点控制消息和事件。 仅 IKEv2 连接提供连接源信息 |
 
 ## <a name="set-up-alerts-in-the-azure-portal"></a><a name="setup"></a>在 Azure 门户中设置警报
 

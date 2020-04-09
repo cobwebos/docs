@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: db886006ff5b9adf3de0932951f6cce4958e8ebd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 06225e284000d7f10f575be08cd683488abec339
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158123"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985484"
 ---
 # <a name="create-and-manage-multiple-dashboards"></a>创建和管理多个仪表板
 
-**仪表板**是首次导航到应用程序时加载的页面。 应用程序中的**生成器**为所有用户定义默认的应用程序仪表板。 可将此默认仪表板替换为你自己的个性化应用程序仪表板。 可以创建多个仪表板用于显示不同的数据，并可以切换这些仪表板。 
+**仪表板**是首次导航到应用程序时加载的页面。 应用程序中的**生成器**为所有用户定义默认的应用程序仪表板。 您还可以另外创建自己的个性化应用程序仪表板。 可以创建多个仪表板用于显示不同的数据，并可以切换这些仪表板。
 
 应用程序的**管理员**还可以创建最多 10 个应用程序级别的仪表板并将其与应用程序的其他用户共享。 只有**管理员**能够创建、编辑和删除应用程序级别的仪表板。 
 

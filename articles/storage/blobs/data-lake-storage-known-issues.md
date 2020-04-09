@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 4f8fae6580272ed53b8d440ba3e74c6a1ed1e61a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f69f17dc9d0cab2491a2c7f37b5bd082cc96b2d6
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061512"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985416"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
 
@@ -25,7 +25,7 @@ ms.locfileid: "80061512"
 
 ## <a name="supported-azure-service-integrations"></a>支持的 Azure 服务集成
 
-Data Lake Storage gen2 支持多个可用于引入数据、执行分析和创建可视化表示形式的 Azure 服务。 有关受支持的 Azure 服务的列表，请参阅[支持 Azure 数据存储湖存储 Gen2 的 Azure 服务](data-lake-storage-supported-azure-services.md)。
+Azure 数据存储库 Gen2 支持多个 Azure 服务，可用于引入数据、执行分析和创建可视化表示。 有关受支持的 Azure 服务的列表，请参阅[支持 Azure 数据存储湖存储 Gen2 的 Azure 服务](data-lake-storage-supported-azure-services.md)。
 
 请参阅[支持 Azure 数据存储第 2 代](data-lake-storage-supported-azure-services.md)的 Azure 服务。
 
@@ -41,7 +41,7 @@ Blob API 和 Data Lake Storage Gen2 API 可以对相同的数据执行操作。
 
 本部分介绍使用 Blob API 和 Data Lake Storage Gen2 API 对相同的数据执行操作时存在的问题和限制。
 
-* 不能同时使用 Blob API 和 Data Lake Storage API 向文件的同一实例写入数据。 如果使用 Data Lake Storage Gen2 API 向某个文件写入数据，则在调用[获取块列表](https://docs.microsoft.com/rest/api/storageservices/get-block-list) Blob API 时，该文件的块将不可见。 覆盖某个文件时，可以使用 Data Lake Storage Gen2 API 或 Blob API。 这不会影响文件属性。
+* 不能同时使用 Blob API 和数据存储 API 写入文件的同一实例。 如果使用 Data Lake Storage Gen2 API 向某个文件写入数据，则在调用[获取块列表](https://docs.microsoft.com/rest/api/storageservices/get-block-list) Blob API 时，该文件的块将不可见。 覆盖某个文件时，可以使用 Data Lake Storage Gen2 API 或 Blob API。 这不会影响文件属性。
 
 * 如果在使用[列出 Blob](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 操作时不指定分隔符，则结果会包含目录和 Blob。 如果选择使用分隔符，请只使用正斜杠 (`/`)。 这是唯一支持的分隔符。
 
@@ -112,11 +112,8 @@ Blob API 和 Data Lake Storage Gen2 API 可以对相同的数据执行操作。
 
 如果已授予对容器的[匿名读取访问权限](storage-manage-access-to-resources.md)，则 ACL 对该容器或该容器中的文件没有影响。
 
-## <a name="windows-azure-storage-blob-wasb-driver"></a>Windows Azure 存储 Blob （WASB） 驱动程序
+## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-adls-gen2"></a>Windows Azure 存储 Blob （WASB） 驱动程序（ADLS Gen2 不支持）
 
-目前，与使用 WASB 驱动程序以及具有分层命名空间的帐户相关的几个问题。 我们建议您在工作负荷中使用[Azure Blob 文件系统 （ABFS）](data-lake-storage-abfs-driver.md)驱动程序。 
+目前，WASB 驱动程序（设计为仅使用 Blob API）在一些常见方案中遇到问题，即当它是启用命名空间的存储帐户的客户端时。 请注意，多协议访问 （MPA） 也不会缓解这些问题。 
 
-
-
-
-
+目前（而且很可能是可预见的未来），我们不会支持使用 WASB 驱动程序作为客户端的客户访问启用命名空间的存储帐户。 相反，我们建议您选择在 Hadoop 环境中使用[Azure Blob 文件系统 （ABFS）](data-lake-storage-abfs-driver.md)驱动程序。 如果您尝试迁移出具有早于 Hadoop 分支 3 版本的本地 Hadoop 环境，请打开 Azure 支持票证，以便我们可以在您和您的组织前进的正确路径上与您联系。

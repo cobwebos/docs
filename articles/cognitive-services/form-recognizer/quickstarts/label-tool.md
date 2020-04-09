@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 301b68d0dfaeef6d5cfdd4d7a5a504794ac877f4
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 0cfe58ab0d161019d5f53d9135c65db7beff2bb4
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205810"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397996"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用示例标记工具通过标签来训练表单识别器模型
 
@@ -35,6 +35,10 @@ ms.locfileid: "78205810"
 ## <a name="set-up-the-sample-labeling-tool"></a>设置示例标记工具
 
 你将使用 Docker 引擎来运行示例标记工具。 请按以下步骤设置 Docker 容器。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。
+
+> [!TIP]
+> OCR 窗体标签工具也可用作 GitHub 上的开源项目。 该工具是使用 React + Redux 生成并采用 TypeScript 编写的 web 应用程序。 若要了解详细信息或参与，请参阅 [OCR 窗体标记工具](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md#run-as-web-application)。
+
 1. 首先，在主计算机上安装 Docker。 本指南介绍如何将本地计算机用作主机。 若要在 Azure 中使用 Docker 托管服务，请参阅[部署示例标记工具](../deploy-label-tool.md)操作指南。 
 
    主计算机必须满足以下硬件要求：
@@ -46,7 +50,7 @@ ms.locfileid: "78205810"
    按照适用于所用操作系统的说明在计算机上安装 Docker： 
    * [Windows](https://docs.docker.com/docker-for-windows/)
    * [macOS](https://docs.docker.com/docker-for-mac/)
-   * [Linux](https://docs.docker.com/install/)。
+   * [Linux](https://docs.docker.com/install/)
 
 1. 通过 `docker pull` 命令获取示例标记工具容器。
     ```
@@ -185,6 +189,7 @@ ms.locfileid: "78205810"
 若要恢复项目，首先需要创建到同一 blob 存储容器的连接。 为此，请重复上述步骤。 然后，转到应用程序设置页（齿轮图标），查看项目的安全令牌是否存在。 如果没有，请添加一个新的安全令牌，并复制上一步中的令牌名称和密钥。 然后单击“保存设置”。 
 
 ### <a name="resume-a-project"></a>恢复项目
+
 最后，转到主页（房子图标），然后单击“打开云项目”。 然后选择 blob 存储连接，并选择项目的 .vott 文件  。 应用程序将加载项目的设置，因为它具有安全令牌。
 
 ## <a name="next-steps"></a>后续步骤

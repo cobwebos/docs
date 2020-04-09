@@ -9,17 +9,17 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 0a744c2de320ddad2e7959cae7b62d7990879953
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 100be6a4376883a4f2a91b1efd172242c1d19e19
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898574"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878385"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Azure 计划程序的概念、术语和实体
 
 > [!IMPORTANT]
-> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)正在替换[正在停用](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)正在替换[正在停用](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 计划程序。 要继续处理在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
 >
 > 计划程序在 Azure 门户中不再可用，但[REST API](/rest/api/scheduler)和[Azure 计划程序 PowerShell cmdlet](scheduler-powershell-reference.md)此时仍然可用，以便您可以管理作业和作业集合。
 
@@ -27,9 +27,9 @@ ms.locfileid: "78898574"
 
 Azure 计划程序 REST API 公开并使用以下主要实体或资源：
 
-| 实体 | 描述 |
+| 实体 | 说明 |
 |--------|-------------|
-| **工作** | 通过用于执行的简单或复杂策略定义单个定期操作。 操作可以包括 HTTP、存储队列、服务总线队列或服务总线主题请求。 | 
+| **作业** | 通过用于执行的简单或复杂策略定义单个定期操作。 操作可以包括 HTTP、存储队列、服务总线队列或服务总线主题请求。 | 
 | **作业集合** | 包含一组作业，并且维护集合内各作业共享的设置、配额和限制。 作为 Azure 订阅所有者，你可以创建作业集合，并根据使用情况或应用程序边界将作业分组。 作业集合具有以下特性： <p>- 限制在一个区域。 <br>- 可以强制执行配额，以便限制集合中所有作业的使用。 <br>- 配额包括 MaxJobs 和 MaxRecurrence. | 
 | **工作历史记录** | 描述作业执行的详细信息，例如状态和任何响应详细信息。 |
 ||| 
@@ -66,7 +66,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 Azure 计划程序支持多个作业类型： 
 
-* 当你拥有现有服务或工作负载的终结点时的 HTTP 作业（包括支持 SSL 的 HTTPS 作业）
+* HTTP 作业（包括支持 TLS 的 HTTPS 作业），用于现有服务或工作负载的终结点
 * 针对使用存储队列的工作负载的存储队列作业，例如将消息发布到存储队列
 * 针对使用服务总线队列的工作负载的服务总线队列作业
 * 针对使用服务总线主题的工作负载的服务总线主题作业
@@ -82,7 +82,7 @@ Azure 计划程序支持多个作业类型：
 
 作业还包括系统提供的数据，例如，作业的下一次计划运行时间。 作业的代码定义是一个 JavaScript 对象表示法 (JSON) 格式的对象，包括以下元素：
 
-| 元素 | 必选 | 描述 | 
+| 元素 | 必选 | 说明 | 
 |---------|----------|-------------| 
 | [**开始时间**](#start-time) | 否 | 作业的开始时间，时区偏移量为 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601) | 
 | [**行动**](#action) | 是 | 主操作的详细信息，可以包含 errorAction**** 对象 | 
@@ -246,7 +246,7 @@ Azure 计划程序支持多个作业类型：
 },
 ```
 
-| properties | 必选 | “值” | 描述 | 
+| properties | 必选 | “值” | 说明 | 
 |----------|----------|-------|-------------| 
 | **频率** | 是，使用 recurrence**** 时 | Minute、Hour、Day、Week、Month、Year | 两次作业之间的时间单位 | 
 | **区间** | 否 | 1 - 1000（包含） | 一个正整数，根据频率**** 确定两次作业之间的时间单位数 | 
@@ -276,7 +276,7 @@ Azure 计划程序支持多个作业类型：
 },
 ```
 
-| properties | 必选 | “值” | 描述 | 
+| properties | 必选 | “值” | 说明 | 
 |----------|----------|-------|-------------| 
 | **retryType** | 是 | **Fixed****None** | 确定是否指定重试策略（固定****）或（无****）。 | 
 | **retryInterval** | 否 | PT30S | 指定每次重试尝试之间的间隔和频率（[ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)）。 最小值为 15 秒，最大值为 18 个月。 | 

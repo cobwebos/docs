@@ -11,18 +11,18 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/04/2019
+ms.date: 03/16/2020
 ms.author: rogirdh
-ms.openlocfilehash: 6ab41182d59f8c96edfca4854aad5f9a13f53436
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 101cfc9edce8f4df1ad2388c08a5bd9702dffe68
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74806603"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878215"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure 上的 Oracle 应用程序和解决方案概述
 
-本文介绍了使用 Azure 基础结构运行 Oracle 解决方案的功能。 另请参阅 Azure 应用商店中可用[Oracle VM 映像](oracle-vm-solutions.md)的详细介绍，以及将[Azure 与 Oracle 云基础结构 （OCI） 互连的](oracle-oci-overview.md)预览功能。
+本文介绍了使用 Azure 基础结构运行 Oracle 解决方案的功能。 另请参阅 Azure 应用商店中可用[Oracle VM 映像](oracle-vm-solutions.md)的详细介绍，以及将 Azure 与 Oracle[云基础结构 （OCI） 互连](oracle-oci-overview.md)的功能。
 
 ## <a name="oracle-databases-on-azure-infrastructure"></a>Azure 基础结构上的 Oracle 数据库
 
@@ -58,7 +58,7 @@ ms.locfileid: "74806603"
 
 * 使用 Oracle RMAN 备份 Oracle 数据库，并选择性地使用[Azure Blob Fuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux)装载[高度红的 Azure Blob 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-redundancy)，并将 RMAN 备份写入该帐户，以增加恢复能力。
 
-## <a name="integration-of-azure-with-oci-preview"></a>将 Azure 与 OCI 集成（预览版）
+## <a name="integration-of-azure-with-oci"></a>将 Azure 与 OCI 集成
 
 在 Azure 基础结构中运行 Oracle 应用程序，连接到 Oracle 云基础结构 （OCI） 中的后端数据库。 此解决方案使用以下功能： 
 
@@ -67,7 +67,10 @@ ms.locfileid: "74806603"
 
 ### <a name="deploy-oracle-applications-on-azure"></a>在 Azure 上部署 Oracle 应用程序
 
-使用 Terraform 模板设置 Azure 基础结构，并安装经过验证和支持的 Oracle 应用程序以在跨云配置中运行：
+使用 Terraform 模板设置 Azure 基础结构并安装 Oracle 应用程序。 
+
+> [!IMPORTANT]
+> 在 2020 年 5 月之前，Oracle 将在 Azure/Oracle 云互连解决方案中验证这些应用程序在 Azure 中运行。
 
 * 电子商务套件
 * JD Edwards EnterpriseOne

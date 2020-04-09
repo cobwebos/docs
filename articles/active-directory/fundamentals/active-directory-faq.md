@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb0b5e37843413667e51112f52e6a69534e3425
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f4a961e601949689db89f8819f0a1fe1c5a7b3a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77063622"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875786"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>有关 Azure Active Directory 的常见问题
 Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决方案，涉及到标识、访问管理和安全的方方面面。
@@ -27,16 +27,17 @@ Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决�
 
 
 ## <a name="access-azure-and-azure-active-directory"></a>访问 Azure 和 Azure Active Directory
-**问：尝试在 Azure 门户中访问 Azure AD 时，为何出现“找不到订阅”错误？**
+**问：为什么在尝试在 Azure 门户中访问 Azure AD 时，会获得"未找到订阅"？**
 
-**答：** 若要访问 Azure 门户，每个用户都需要 Azure 订阅的权限。 如果您有付费 Office 365 或 Azure AD 订阅[https://aka.ms/accessAAD](https://aka.ms/accessAAD)，则转到一次性激活步骤。 否则需激活免费型 [Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)或某个付费型订阅。
+**答：** 若要访问 Azure 门户，每个用户都需要 Azure 订阅的权限。 如果没有付费 Office 365 或 Azure AD 订阅，则需要激活免费的 Azure[帐户](https://azure.microsoft.com/free/
+)或付费订阅。
 
 有关详细信息，请参阅：
 
 * [Azure 订阅与 Azure Active Directory 的关联方式](active-directory-how-subscriptions-associated-directory.md)
 
 ---
-**问：Azure AD、Office 365 与 Azure 之间有哪种关系？**
+**问：Azure AD、Office 365 和 Azure 之间的关系是什么？**
 
 **答：** Azure AD 为所有 Web 服务提供通用的标识和访问功能。 不管使用的是 Office 365、Microsoft Azure、Intune 还是其他服务，都是在使用 Azure AD 为上述所有服务启用登录和访问管理。
 
@@ -138,9 +139,9 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 
 我们使用更复杂的策略来锁定帐户。  这基于请求的 IP 和输入的密码。 锁定的持续时间也会根据存在攻击的可能性而延长。  
 
-**问：某些（通用）密码会被拒绝并且显示消息“此密码已使用了许多次”，这是否是指当前 Active Directory 中使用的密码？**
+**问：某些（常见）密码被拒绝，邮件"此密码已多次使用"，这是否是指当前活动目录中使用的密码？**
 
-这指的是全局通用的密码，例如“Password”和“123456”的任何变体。
+这是指全局通用的密码，例如"密码"和"123456"的任何变体。
 
 **问：B2C 租户中就会阻止来自可疑来源（僵尸网络、Tor 终结点）的登录请求还是需要使用基本或高级版租户才能阻止？**
 
@@ -157,7 +158,7 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 ---
 **问：如果 Azure AD 市场中没有我需要的应用程序怎么办？**
 
-**答：** 使用 Azure AD Premium，可以添加和配置所需的任何应用程序。 可以根据应用程序的功能和喜好来配置 SSO 和自动预配。  
+**答：** 使用 Azure AD Premium，可以添加和配置所需的任何应用程序。 根据应用程序的功能和首选项，您可以配置 SSO 和自动预配。  
 
 有关详细信息，请参阅：
 
@@ -188,7 +189,7 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 * [Azure AD 中应用程序的单一登录](../manage-apps/what-is-single-sign-on.md)
 
 ---
-**问：是否可以添加本地运行的应用程序？**
+**问：是否可以添加在本地运行的应用程序？**
 
 **答：** Azure AD 应用程序代理可让你轻松安全地访问所选的本地 Web 应用程序。 可以像访问 Azure AD 中的软件即服务 (SaaS) 应用一样访问这些应用程序。 不需要设置 VPN 或更改网络基础结构。  
 
@@ -199,7 +200,7 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 
 **答：** 使用 Azure AD 条件访问，可以为每个应用程序分配唯一的访问策略。 可以在策略中要求用户始终进行多重身份验证，或者在未连接到本地网络时才进行。  
 
-有关详细信息，请参阅[保护对 Office 365 和其他连接到 Azure Active Directory 的应用的访问](../active-directory-conditional-access-azure-portal.md)。
+有关详细信息，请参阅[保护对 Office 365 和其他连接到 Azure Active Directory 的应用的访问](../conditional-access/overview.md)。
 
 ---
 **问：SaaS 应用的自动用户预配是什么？**
@@ -211,4 +212,4 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 ---
 **问：是否可以通过 Azure AD 设置安全的 LDAP 连接？**
 
-**答：** 不。 Azure AD 不支持轻量级目录访问协议 （LDAP） 协议或直接安全 LDAP。 但是，可以通过 Azure 网络在 Azure AD 租户上启用 Azure AD 域服务 （Azure AD DS） 实例，并正确配置网络安全组，以实现 LDAP 连接。 有关详细信息，请参阅 https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap。
+**答：** 不。 Azure AD 不支持轻量级目录访问协议 （LDAP） 协议或直接安全 LDAP。 但是，可以通过 Azure 网络在 Azure AD 租户上启用 Azure AD 域服务 （Azure AD DS） 实例，并正确配置网络安全组，以实现 LDAP 连接。 有关详细信息，请参阅为[Azure 活动目录域服务托管域配置安全 LDAP](../../active-directory-domain-services/tutorial-configure-ldaps.md)

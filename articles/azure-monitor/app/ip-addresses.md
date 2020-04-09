@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 12/19/2019
-ms.openlocfilehash: 74d696c19ac2a2d0d367f5a018fde8cd3a0eedb2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 454138f8e0d92935126f446455810a444b0a053a
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535198"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984140"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights 和 Log Analytics 使用的 IP 地址
 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 服务使用许多 IP 地址。 如果要监视的应用托管在防火墙后面，可能需要知道这些 IP 地址。
@@ -43,17 +43,19 @@ ms.locfileid: "79535198"
 
 | 目的 | 代码 | IP | 端口 |
 | --- | --- | --- | --- |
-| Configuration |`management.core.windows.net` | |`443` |
-| Configuration |`management.azure.com` | |`443` |
-| Configuration |`login.windows.net` | |`443` |
-| Configuration |`login.microsoftonline.com` | |`443` |
-| Configuration |`secure.aadcdn.microsoftonline-p.com` | |`443` |
-| Configuration |`auth.gfx.ms` | |`443` |
-| Configuration |`login.live.com` | |`443` |
+| 配置 |`management.core.windows.net` | |`443` |
+| 配置 |`management.azure.com` | |`443` |
+| 配置 |`login.windows.net` | |`443` |
+| 配置 |`login.microsoftonline.com` | |`443` |
+| 配置 |`secure.aadcdn.microsoftonline-p.com` | |`443` |
+| 配置 |`auth.gfx.ms` | |`443` |
+| 配置 |`login.live.com` | |`443` |
 | 安装 | `globalcdn.nuget.org`, `packages.nuget.org` ,`api.nuget.org/v3/index.json` `nuget.org`, `api.nuget.org`, `dc.services.vsallin.net` | |`443` |
 
 ## <a name="availability-tests"></a>可用性测试
 这是用于运行[可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)的地址列表。 如果想要对应用运行 Web 测试，但 Web 服务器局限于为特定的客户端提供服务，则必须允许来自可用性测试服务器的传入流量。
+
+### <a name="service-tag"></a>服务标记
 
 如果使用 Azure 网络安全组，只需添加**入站端口规则**，即可选择**服务标记**作为**源****服务标记**，从而允许来自应用程序见解可用性测试的流量**ApplicationInsightsAvailability**。
 
@@ -64,6 +66,11 @@ ms.locfileid: "79535198"
 >![添加入站安全规则选项卡](./media/ip-addresses/add-inbound-security-rule2.png)
 
 为来自这些地址的传入流量打开端口 80 (http) 和 443 (https)（IP 地址按位置进行分组）：
+
+### <a name="addresses-grouped-by-location"></a>按位置分组的地址
+
+> [!NOTE]
+> 这些地址使用无类域间路由 （CIDR） 表示法列出。 这意味着类似`51.144.56.112/28`这样的条目等效于 16 个 IP，以`51.144.56.112`开头和`51.144.56.127`结尾。
 
 ```
 Australia East

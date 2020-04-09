@@ -2,24 +2,21 @@
 title: 配置调用 Web API 的 Web 应用 - Microsoft 标识平台 | Azure
 description: 了解如何配置调用 Web API 的 Web 应用的代码
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 374b215a737efbe3d421b6dc49af01303ec54473
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b0f60e13ca4bc5115f9a49885c3c659ad1147fcc
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76759154"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80881887"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>调用 Web API 的 Web 应用：代码配置
 
@@ -34,7 +31,7 @@ ms.locfileid: "76759154"
 
 Microsoft 身份验证库 (MSAL) 中的以下库支持 Web 应用的授权代码流：
 
-| MSAL 库 | 描述 |
+| MSAL 库 | 说明 |
 |--------------|-------------|
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 支持 .NET Framework 和 .NET Core 平台。 不支持通用 Windows 平台 (UWP)、Xamarin.iOS 和 Xamarin.Android，因为这些平台用于生成公共客户端应用程序。 |
 | ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> 适用于 Python 的 MSAL | 支持 Python Web 应用程序。 |

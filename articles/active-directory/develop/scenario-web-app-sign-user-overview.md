@@ -2,24 +2,21 @@
 title: 从 Web 应用登录用户 - 微软身份平台 |蔚蓝
 description: 了解如何构建用于登录用户的 Web 应用（概述）
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 403f589702fd7142f0515a3b6f19ee1b9bbb6420
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 65d254cec5735c54e19f5adfde57fb6aed776a2c
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76701546"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80881479"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>方案：在用户中签名的 Web 应用
 

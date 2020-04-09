@@ -7,18 +7,18 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7e96f9484c103ebe75e21705b94cf35b9e16c54f
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: b51f7a8b62d7131b7bbfc77101e60fab22e1f148
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529340"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985790"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM 上的 Azure 磁盘加密方案
 
-Azure 磁盘加密使用 BitLocker 外部密钥保护器来为 Azure 虚拟机 (VM) 的 OS 和数据磁盘提供卷加密，并与 Azure Key Vault 集成，帮助你控制和管理磁盘加密密钥与机密。 有关该服务的概述，请参阅[适用于 Windows VM 的 Azure 磁盘加密](disk-encryption-overview.md)。
+适用于 Windows 虚拟机 （VM） 的 Azure 磁盘加密使用 Windows 的 Bitlocker 功能来提供 WindOS 磁盘和数据磁盘的完整磁盘加密。 此外，当 VolumeType 参数为"全部"时，它提供临时资源磁盘的加密。
 
-有多种磁盘加密方案，具体步骤因方案而异。 以下部分更详细介绍了适用于 Windows VM 的方案。
+Azure 磁盘加密[与 Azure 密钥保管库集成](disk-encryption-key-vault.md)，可帮助您控制和管理磁盘加密密钥和机密。 有关该服务的概述，请参阅[适用于 Windows VM 的 Azure 磁盘加密](disk-encryption-overview.md)。
 
 只能对具有[支持的 VM 大小和操作系统](disk-encryption-overview.md#supported-vms-and-operating-systems)的虚拟机应用磁盘加密。 还必须满足以下先决条件：
 
@@ -39,9 +39,6 @@ Azure 磁盘加密使用 BitLocker 外部密钥保护器来为 Azure 虚拟机 (
 
 ## <a name="enable-encryption-on-an-existing-or-running-windows-vm"></a>在现有或正在运行的 Windows VM 上启用加密
 在此方案中，可以使用资源管理器模板、PowerShell cmdlet 或 CLI 命令启用加密。 如果需要虚拟机扩展的架构信息，请参阅[适用于 Windows 扩展的 Azure 磁盘加密](../extensions/azure-disk-enc-windows.md)一文。
-
-## <a name="enable-encryption-on-existing-or-running-iaas-windows-vms"></a>在现有或正在运行的 IaaS Windows VM 上启用加密
-可以使用模板、PowerShell cmdlet 或 CLI 命令启用加密。 如果需要虚拟机扩展的架构信息，请参阅[适用于 Windows 扩展的 Azure 磁盘加密](../extensions/azure-disk-enc-windows.md)一文。
 
 ### <a name="enable-encryption-on-existing-or-running-vms-with-azure-powershell"></a>使用 Azure PowerShell 在现有或正在运行的 VM 上启用加密 
 使用 [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) cmdlet 在 Azure 中运行的 IaaS 虚拟机上启用加密。 
@@ -131,7 +128,7 @@ Azure 磁盘加密使用 BitLocker 外部密钥保护器来为 Azure 虚拟机 (
 
 下表列出了现有或正在运行的 VM 的资源管理器模板参数：
 
-| 参数 | 说明 |
+| 参数 | 描述 |
 | --- | --- |
 | vmName | 运行加密操作的 VM 的名称。 |
 | KeyVaultName | BitLocker 密钥应上传到的 Key Vault 的名称。 可使用 cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` 或 Azure CLI 命令 `az keyvault list --resource-group "MyKeyVaultResourceGroup"` 获取该名称|

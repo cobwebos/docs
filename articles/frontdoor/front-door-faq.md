@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 1cfee9749bf2eb30799efb05ac875843bcde6651
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0fe5d245d629c731a47ca5441afd2a3388a22de4
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372619"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878011"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure 前门的常见问题
 
@@ -34,7 +34,7 @@ Azure 前门是应用程序交付网络 （ADN） 作为服务，为您的应用
 
 ### <a name="what-features-does-azure-front-door-support"></a>Azure 前门支持哪些功能？
 
-Azure 前门支持动态站点加速 （DSA）、SSL 卸载和端到端 SSL、Web 应用程序防火墙、基于 Cookie 的会话关联性、基于 URL 路径的路由、免费证书和多个域管理等。 有关支持功能的完整列表，请参阅[Azure 前门概述](front-door-overview.md)。
+Azure 前门支持动态站点加速 （DSA）、TLS/SSL 卸载和端到端 TLS、Web 应用程序防火墙、基于 Cookie 的会话关联性、基于 URL 路径的路由、免费证书和多个域管理等。 有关支持功能的完整列表，请参阅[Azure 前门概述](front-door-overview.md)。
 
 ### <a name="what-is-the-difference-between-azure-front-door-and-azure-application-gateway"></a>Azure 前门和 Azure 应用程序网关之间的区别是什么？
 
@@ -46,7 +46,7 @@ Azure 前门支持动态站点加速 （DSA）、SSL 卸载和端到端 SSL、We
 
 - 前门只能在全局级别执行基于路径的负载平衡，但如果希望在虚拟网络 （VNET） 内进一步加载流量，则应使用应用程序网关。
 - 由于前门在 VM/容器级别不工作，因此无法执行连接耗尽。 但是，应用程序网关允许您执行连接耗尽。 
-- 借助 AFD 背后的应用程序网关，可以实现 100% SSL 卸载，并且仅路由其虚拟网络 （VNET） 中的 HTTP 请求。
+- 借助 AFD 背后的应用程序网关，可以实现 100% TLS/SSL 卸载，并且仅路由其虚拟网络 （VNET） 中的 HTTP 请求。
 - 前门和应用程序网关都支持会话相关性。 虽然前门可以将后续流量从用户会话定向到给定区域中的同一群集或后端，但应用程序网关可以将流量定向到群集中的同一服务器。  
 
 ### <a name="can-we-deploy-azure-load-balancer-behind-front-door"></a>我们可以在前门后面部署 Azure 负载平衡器吗？
@@ -118,12 +118,12 @@ Azure 前门是一种全局分布的多租户服务。 因此，前门的基础�
 
 新的前门创建或对现有前门的任何更新大约需要 3 到 5 分钟进行全局部署。 这意味着在大约 3 到 5 分钟内，您的前门配置将部署到我们全球的所有持久性有机污染物中。
 
-注意 - 自定义 SSL 证书更新大约需要 30 分钟才能全局部署。
+注意 - 自定义 TLS/SSL 证书更新大约需要 30 分钟才能全局部署。
 
 对路由或后端池等的任何更新都是无缝的，将导致零停机时间（如果新配置正确）。 证书更新也是原子的，不会导致任何中断，除非从"AFD 托管"切换到"使用您自己的证书"，反之亦然。
 
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 
 ### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>Azure 前门负载能否在虚拟网络中平衡或路由流量？
 
@@ -139,7 +139,7 @@ Azure 前门 （AFD） 需要公共 IP 或公开解析的 DNS 名称来路由流
 
 Azure 前门是一个全球分布的多租户平台，具有巨大的容量，可满足应用程序的可扩展性需求。 前门从 Microsoft 全球网络的边缘交付，提供全局负载平衡功能，允许您跨区域或不同云故障接管整个应用程序，甚至单个微服务。
 
-## <a name="ssl-configuration"></a>SSL 配置
+## <a name="tls-configuration"></a>TLS 配置
 
 ### <a name="what-tls-versions-are-supported-by-azure-front-door"></a>Azure 前门支持哪些 TLS 版本？
 
@@ -150,12 +150,12 @@ Azure 前门是一个全球分布的多租户平台，具有巨大的容量，�
 ### <a name="what-certificates-are-supported-on-azure-front-door"></a>Azure 前门支持哪些证书？
 
 要启用 HTTPS 协议，以便在前门自定义域上安全地传递内容，可以选择使用由 Azure 前门管理的证书或使用自己的证书。
-前门托管选项通过 Digicert 提供标准 SSL 证书，并存储在前门的钥匙库中。 如果选择使用自己的证书，则可以从受支持的 CA 上载证书，也可以是标准 SSL、扩展验证证书，甚至是通配符证书。 不支持自签名证书。 [了解如何为自定义域启用 HTTPS。](https://aka.ms/FrontDoorCustomDomainHTTPS)
+前门托管选项通过 Digicert 提供标准的 TLS/SSL 证书，并存储在前门的钥匙库中。 如果选择使用自己的证书，则可以从受支持的 CA 上载证书，也可以是标准 TLS、扩展验证证书，甚至是通配符证书。 不支持自签名证书。 [了解如何为自定义域启用 HTTPS。](https://aka.ms/FrontDoorCustomDomainHTTPS)
 
 ### <a name="does-front-door-support-autorotation-of-certificates"></a>前门是否支持证书的自动旋转？
 
 对于前门托管证书选项，证书由前门自动旋转。 如果您使用的是前门托管证书，并且看到证书到期日期少于 60 天，则提交支持票证。
-</br>对于您自己的自定义 SSL 证书，不支持自动旋转。 与首次为给定自定义域设置前门类似，您需要将前门指向密钥保管库中的右证书版本，并确保前门的服务主体仍有权访问密钥保管库。 前门此更新的证书推出操作是原子的，不会造成任何生产影响，前提是证书的主题名称或 SAN 不会更改。
+</br>对于您自己的自定义 TLS/SSL 证书，不支持自动旋转。 与首次为给定自定义域设置前门类似，您需要将前门指向密钥保管库中的右证书版本，并确保前门的服务主体仍有权访问密钥保管库。 前门此更新的证书推出操作是原子的，不会造成任何生产影响，前提是证书的主题名称或 SAN 不会更改。
 
 ### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door"></a>Azure 前门支持的当前密码套件有哪些？
 
@@ -182,13 +182,13 @@ Azure 前门是一个全球分布的多租户平台，具有巨大的容量，�
 - TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
 - TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
 
-### <a name="can-i-configure-ssl-policy-to-control-ssl-protocol-versions"></a>是否可以配置 SSL 策略来控制 SSL 协议版本？
+### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>我可以配置 TLS 策略来控制 TLS 协议版本吗？
 
 您可以通过 Azure 门户或[Azure REST API](https://docs.microsoft.com/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion)在自定义域 HTTPS 设置中配置 Azure 前门中的最低 TLS 版本。 目前，您可以选择 1.0 和 1.2。
 
 ### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>是否可以将前门配置为仅支持特定密码套件？
 
-否，不支持为特定密码套件配置前门。 但是，您可以从证书颁发机构（例如威瑞信、委托或 Digicert）获取您自己的自定义 SSL 证书，并在生成证书时在证书上标记特定的密码套件。 
+否，不支持为特定密码套件配置前门。 但是，您可以从证书颁发机构（例如威瑞信、委托或 Digicert）获取您自己的自定义 TLS/SSL 证书，并在生成证书时在证书上标记特定的密码套件。 
 
 ### <a name="does-front-door-support-ocsp-stapling"></a>前门是否支持 OCSP 卡带？
 
@@ -196,20 +196,20 @@ Azure 前门是一个全球分布的多租户平台，具有巨大的容量，�
 
 ### <a name="does-azure-front-door-also-support-re-encryption-of-traffic-to-the-backend"></a>Azure 前门是否还支持对后端的流量进行重新加密？
 
-是的，Azure 前门支持 SSL 卸载，以及端到端 SSL，这将重新加密到后端的流量。 事实上，由于与后端的连接通过公共 IP 进行，因此建议您配置前门以使用 HTTPS 作为转发协议。
+是的，Azure 前门支持 TLS/SSL 卸载，以及端到端 TLS，后者重新加密到后端的流量。 事实上，由于与后端的连接通过公共 IP 进行，因此建议您配置前门以使用 HTTPS 作为转发协议。
 
 ### <a name="does-front-door-support-self-signed-certificates-on-the-backend-for-https-connection"></a>前门是否支持 HTTPS 连接后端上的自签名证书？
 
 否，前门不支持自签名证书，并且限制同时适用于：
 
 1. **后端**：当您将流量转发为 HTTPS 或 HTTPS 运行状况探测或从源填充缓存以启用缓存的路由规则时，不能使用自签名证书。
-2. **前端**：在使用自己的自定义 SSL 证书在自定义域上启用 HTTPS 时，不能使用自签名证书。
+2. **前端**：在使用自己的自定义 TLS/SSL 证书在自定义域上启用 HTTPS 时，不能使用自签名证书。
 
 ### <a name="why-is-https-traffic-to-my-backend-failing"></a>为什么到后端的 HTTPS 流量失败？
 
 对于成功连接到后端的 HTTPS 连接，无论是用于运行状况探测还是用于转发请求，HTTPS 流量可能失败的原因可能有两个：
 
-1. **证书主题名称不匹配**：对于 HTTPS 连接，前门希望后端提供具有与后端主机名匹配的主题名称的有效 CA 的证书。 例如，如果后端主机名设置为，`myapp-centralus.contosonews.net`并且后端在 SSL 握手期间呈现的证书既没有`myapp-centralus.contosonews.net`，也`*myapp-centralus*.contosonews.net`未在主题名称中，则前门将拒绝连接并导致错误。 
+1. **证书主题名称不匹配**：对于 HTTPS 连接，前门希望后端提供具有与后端主机名匹配的主题名称的有效 CA 的证书。 例如，如果后端主机名设置为，`myapp-centralus.contosonews.net`并且后端在 TLS 握手期间呈现的证书既没有`myapp-centralus.contosonews.net`，也`*myapp-centralus*.contosonews.net`未在主题名称中，则前门将拒绝连接并导致错误。 
     1. **解决方案**：虽然从合规性角度来看不建议这样做，但您可以通过禁用前门的证书主题名称检查来解决此错误。 这在 Azure 门户中的"设置"下和 API 中的后端池设置下存在。
 2. **来自无效 CA 的后端托管证书**：只有[来自有效 CA](/azure/frontdoor/front-door-troubleshoot-allowed-ca)的证书才能在前门的后端使用。 不允许来自内部 C 或自签名证书的证书。
 

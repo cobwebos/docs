@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: cshoe
-ms.openlocfilehash: dd74fd5c38e5a8800d2092afc1db1b412b126861
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54010269e5b61ebf28a29dd3165c4310f3472817
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77649902"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878198"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>使用 Github Actions 进行持续交付
 
@@ -25,7 +25,7 @@ ms.locfileid: "77649902"
 | 部分 | 任务 |
 | ------- | ----- |
 | **身份验证** | <ol><li>定义服务主体。</li><li>下载发布配置文件。</li><li>创建 GitHub 机密。</li></ol>|
-| **建立** | <ol><li>设置环境。</li><li>生成函数应用。</li></ol> |
+| **生成** | <ol><li>设置环境。</li><li>生成函数应用。</li></ol> |
 | **部署** | <ol><li>部署函数应用。</li></ol>|
 
 > [!NOTE]
@@ -69,13 +69,13 @@ GitHub 现在可以针对 Azure 中的函数应用进行身份验证了。
 
 设置环境是使用特定于语言的发布设置操作完成的。
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 以下示例显示了使用 `actions/setup-node` 操作设置环境的工作流部分：
 
 ```yaml
     - name: 'Login via Azure CLI'
-      uses: Azure/actions/login@master
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Setup Node 10.x
@@ -90,7 +90,7 @@ GitHub 现在可以针对 Azure 中的函数应用进行身份验证了。
 
 ```yaml
     - name: 'Login via Azure CLI'
-      uses: Azure/actions/login@master
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Setup Python 3.6
@@ -105,7 +105,7 @@ GitHub 现在可以针对 Azure 中的函数应用进行身份验证了。
 
 ```yaml
     - name: 'Login via Azure CLI'
-      uses: Azure/actions/login@master
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Setup Dotnet 2.2.300
@@ -120,7 +120,7 @@ GitHub 现在可以针对 Azure 中的函数应用进行身份验证了。
 
 ```yaml
     - name: 'Login via Azure CLI'
-      uses: Azure/actions/login@master
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Setup Java 1.8.x
@@ -138,7 +138,7 @@ GitHub 现在可以针对 Azure 中的函数应用进行身份验证了。
 
 以下示例显示了生成函数应用的工作流部分，该部分是特定于语言的：
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```yaml
     - name: 'Run npm'

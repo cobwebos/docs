@@ -1,24 +1,19 @@
 ---
-title: 使用 Azure Migrate 服务器评估来评估要迁移到 Azure 的 VMware VM
-description: 介绍如何使用 Azure Migrate 评估要迁移到 Azure 的本地 VMware VM。
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
+title: 评估 VMware VM 以便迁移到 Azure
+description: 介绍如何使用 Azure Migrate 服务器评估工具评估要迁移到 Azure 的本地 VMware VM。
 ms.topic: tutorial
-ms.date: 11/19/2019
-ms.author: hamusa
-ms.openlocfilehash: 7f161afe13bad8c548806d4b4ceb9372dc511cc3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 03/23/2019
+ms.openlocfilehash: 944b7c12a353a29a172576974261eece63ebf668
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223284"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548748"
 ---
 # <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>使用 Azure Migrate 服务器评估来评估 VMware VM
 
-本文介绍如何使用 Azure Migrate 中的服务器评估工具来评估本地 VMware 虚拟机 (VM)。
+本文介绍如何使用 [Azure Migrate:服务器评估](migrate-services-overview.md#azure-migrate-server-assessment-tool)工具来评估本地 VMware 虚拟机 (VM)。
 
-[Azure Migrate](migrate-services-overview.md) 在一个中心位置提供多种工具，帮助你发现、评估应用、基础结构和工作负荷并将其迁移到 Microsoft Azure。 该中心包含 Azure Migrate 工具，以及 Microsoft 合作伙伴提供的独立软件供应商 (ISV) 产品/服务。
 
 本教程是演示如何评估 VMware VM 以及将其迁移到 Azure 的教程系列中的第二篇文章。 在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
@@ -35,17 +30,11 @@ ms.locfileid: "79223284"
 
 ## <a name="prerequisites"></a>先决条件
 
-[完成第一个教程](tutorial-prepare-vmware.md)（本系列）。 否则，本教程中的说明不适用。
-
-下面是在第一篇教程中应已完成的操作：
-
-- 为 Azure Migrate [设置 Azure 权限](tutorial-prepare-vmware.md#prepare-azure)。
-- [准备 VMware](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment) 以进行评估：
-   - [验证](migrate-support-matrix-vmware.md#vmware-requirements) VMware 设置。
-   - 在 VMware 中设置使用 OVA 模板创建 VMware VM 所需的权限。
-   - 设置[用于 VM 发现的帐户](migrate-support-matrix-vmware.md#vmware-requirements)。 
-   - 使[所需端口](migrate-support-matrix-vmware.md#port-access)可用。
-   - 了解访问 Azure [所需的 URL](migrate-replication-appliance.md#url-access)。
+- [完成第一个教程](tutorial-prepare-vmware.md)（本系列）。 否则，本教程中的说明不适用。
+- 下面是在第一篇教程中应已完成的操作：
+    - [准备 Azure](tutorial-prepare-vmware.md#prepare-azure) 以便使用 Azure Migrate。
+    - [准备 VMware 以进行评估](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment)。 这包括检查 VMware 设置、设置供 Azure Migrate 用来访问 vCenter Server 的帐户。
+    - [验证](tutorial-prepare-vmware.md#verify-appliance-settings-for-assessment)部署用于 VMware 评估的 Azure Migrate 设备所需的内容。
 
 ## <a name="set-up-an-azure-migrate-project"></a>设置 Azure Migrate 项目
 
@@ -74,17 +63,15 @@ ms.locfileid: "79223284"
 1. 在“查看 + 添加工具”中查看设置，然后选择“添加工具”。  
 1. 等待几分钟，让 Azure Migrate 项目部署完成。 随后将转到项目页。 如果未看到该项目，可以从 Azure Migrate 仪表板中的“服务器”访问它。 
 
-## <a name="set-up-the-appliance-vm"></a>设置设备 VM
+## <a name="set-up-the-azure-migrate-appliance"></a>设置 Azure Migrate 设备
 
-Azure Migrate 服务器评估运行一个轻型 VMware VM 设备。 此设备执行 VM 发现，并收集 VM 元数据和性能数据。
+Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执行 VM 发现并将 VM 元数据和性能数据发送到 Azure Migrate。
+- 可以使用已下载的 OVA 模板在 VMware VM 上设置设备。 或者，可以使用 PowerShell 安装程序脚本在 VM 或物理计算机上设置设备。
+- 本教程使用 OVA 模板。 若要使用脚本设置设备，请查看[此文](deploy-appliance-script.md)。
 
-若要设置该设备，请执行以下操作：
+创建设备后，请检查它是否可以连接到 Azure Migrate:服务器评估，首次配置该设备，并将其注册到 Azure Migrate 项目。
 
-- 下载 OVA 模板文件，并将其导入 vCenter Server。
-- 创建设备，并检查它是否可以连接到 Azure Migrate 服务器评估。
-- 完成设备的首次配置，并将其注册到 Azure Migrate 项目。
 
-可为单个 Azure Migrate 项目设置多个设备。 在所有设备上，服务器评估支持发现多达 35,000 个 VM。 在每个设备上，它可以发现最多 10,000 个服务器。
 
 ### <a name="download-the-ova-template"></a>下载 OVA 模板
 
@@ -134,7 +121,10 @@ SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 
 ### <a name="configure-the-appliance"></a>配置设备
 
-使用以下步骤设置设备：
+首次设置设备。
+
+> [!NOTE]
+> 如果使用 [PowerShell 脚本](deploy-appliance-script.md)而不是下载的 OVA 设置设备，则此过程中的前两个步骤不相关。
 
 1. 在 vSphere 客户端控制台中右键单击“VM”，然后选择“打开控制台”  。
 1. 提供设备的语言、时区和密码。
@@ -164,77 +154,30 @@ SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 1. 指定设备的名称。 该名称应是字母数字，长度为 14 个或更少的字符。
 1. 选择“注册”  。
 
+
 ## <a name="start-continuous-discovery"></a>启动持续发现
 
 设备需连接 vCenter Server，以发现 VM 的配置和性能数据。
 
 ### <a name="specify-vcenter-server-details"></a>指定 vCenter Server 详细信息
 1. 在“指定 vCenter Server 详细信息”中，指定 vCenter Server 实例的名称 (FQDN) 或 IP 地址。  可以保留默认端口，或指定 vCenter Server 侦听的自定义端口。
-1. 在“用户名”和“密码”中，指定设备用来发现 vCenter 服务器实例上的 VM 的 vCenter Server 帐户凭据   。 
+2. 在“用户名”和“密码”中，指定设备用来发现 vCenter 服务器实例上的 VM 的 vCenter Server 帐户凭据   。 
 
-   请确保该帐户拥有[所需的发现权限](migrate-support-matrix-vmware.md#vmware-requirements)。 可以通过限制对 vCenter 帐户的访问，来[限定发现范围](tutorial-assess-vmware.md#set-the-scope-of-discovery)。
-1. 选择“验证连接”，确保设备可以连接到 vCenter Server。 
+    - 你应该已在[上一教程](tutorial-prepare-vmware.md#set-up-an-account-for-assessment)中设置具有所需权限的帐户。
+    - 如果要将发现范围限定于特定的 VMware 对象（vCenter Server 数据中心、群集、群集文件夹、主机、主机文件夹或单个 VM），请参阅[此文](set-discovery-scope.md)中的说明，以限制 Azure Migrate 所使用的帐户。
 
-### <a name="specify-vm-credentials"></a>指定 VM 凭据
-若要发现应用程序、角色和功能并可视化 VM 的依赖关系，可以提供用于访问 VMware VM 的 VM 凭据。 可以分别为 Windows VM 和 Linux VM 添加一个凭据。 [详细了解](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)必需访问权限。
+3. 选择“验证连接”，确保设备可以连接到 vCenter Server。 
+4. 在“发现 VM 上的应用程序和依赖项”中，可以选择单击“添加凭据”，并指定与凭据相关的操作系统以及用户名和密码这两项凭据。   然后单击“添加”  。
 
-> [!NOTE]
-> 此输入为可选，但需要它才能发现应用程序和可视化无代理依赖关系。
+    - 如果已创建用于[应用程序发现功能](how-to-discover-applications.md)或[无代理依赖项分析功能](how-to-create-group-machine-dependencies-agentless.md)的帐户，则可选择在此处添加凭据。
+    - 如果不使用这些功能，则可跳过此设置。
+    - 查看[应用发现](migrate-support-matrix-vmware.md#application-discovery)或[无代理分析](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements)所需的凭据。
 
-1. 在“发现 VM 上的应用程序和依赖关系”中，选择“添加凭据”   。
-1. 针对“操作系统”进行选择。 
-1. 提供凭据的易记名称。
-1. 在“用户名”和“密码”中，指定在 VM 上至少具有来宾访问权限的帐户   。
-1. 选择 **添加** 。
+5. **保存并启动发现**，即可启动 VM 发现。
 
-指定 vCenter Server 实例和 VM 凭据（可选）后，选择“保存并开始发现”，开始发现本地环境  。
-
-大约 15 分钟后，已发现的 VM 的元数据将显示在门户中。 发现已安装的应用程序、角色和功能需要一些时间， 具体时间取决于待发现的 VM 数量。 如果是 500 个 VM，Azure Migrate 门户大约需要 1 小时才会显示应用程序清单。
-
-### <a name="set-the-scope-of-discovery"></a>设置发现范围
-
-可以通过限制用于发现的 vCenter 帐户的访问权限，来限定发现范围。 可将范围设置为 vCenter Server 数据中心、群集、群集文件夹、主机、主机文件夹或单个 VM。
-
-若要设置范围，请执行以下过程。
-
-#### <a name="1-create-a-vcenter-user-account"></a>1.创建 vCenter 用户帐户
-1.  以 vCenter Server 管理员身份登录到 vSphere Web 客户端。
-1.  选择“管理”   >   “SSO 用户和组”，然后选择“用户”选项卡。 
-1.  选择“新建用户”图标。 
-1.  填写所需的信息以创建新用户，然后选择“确定”。 
-
-#### <a name="2-define-a-new-role-with-required-permission"></a>2.定义具有所需权限的新角色
-此过程是进行无代理服务器迁移所需的。
-1.  以 vCenter Server 管理员身份登录到 vSphere Web 客户端。
-1.  浏览到“管理” > “角色管理器”。  
-1.  从下拉菜单中选择 vCenter Server 实例。
-1.  选择“创建角色”。 
-1.  输入新角色的名称（例如 <em>Azure_Migrate</em>）。
-1.  将[权限](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)分配到新定义的角色。
-1.  选择“确定”  。
-
-#### <a name="3-assign-permissions-on-vcenter-objects"></a>3.在 vCenter 对象上分配权限
-
-可通过两种方法在 vCenter 的库存对象上将权限分配给已为其分配了角色的 vCenter 用户帐户。
-
-对于“服务器评估”，必须将“只读”角色应用到所有父对象（在其中托管要发现的 VM）的 vCenter 用户帐户。  将包括层次结构中一直到数据中心的所有父对象：主机、主机文件夹、群集、群集文件夹。 这些权限将传播到层次结构中的子对象。
-
-同样，对于“服务器迁移”，必须为所有父对象（在其中托管要迁移的 VM）的 vCenter 用户帐户应用具有[权限](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)的用户定义角色。 可以将此角色命名为  <em>Azure _Migrate</em>。
-
-![分配权限](./media/tutorial-assess-vmware/assign-perms.png)
-
-替代方法是在数据中心级别分配用户帐户和角色，再将其传播到子对象。 然后，对于不想要发现/迁移的每个对象（例如 VM），为帐户提供“无访问权限”角色。  
-
-此备用配置很繁琐。 它会意外公开访问控制，因为系统会自动为每个新建的子对象授予从父对象继承的访问权限。 因此，建议使用第一种方法。
-
-> [!NOTE]
-> 目前，如果在 vCenter VM 文件夹级别授予 vCenter 帐户的访问权限，则服务器评估无法发现 VM。 若要按 VM 文件夹来限定发现范围，可通过以下过程来实现。 这样可确保在 VM 级别为 vCenter 帐户分配只读访问权限。
->
-> 1. 针对 VM 文件夹中你要将发现范围限定到的所有 VM 分配只读权限。
-> 1. 对托管 VM 的所有父对象授予只读访问权限。 将会包括层次结构中的所有父对象（主机、主机文件夹、群集、群集文件夹），一直到数据中心。 不需将权限传播到所有子对象。
-> 1. 选择数据中心作为“收集范围”即可使用凭据进行发现。  设置的基于角色的访问控制可确保相应的 vCenter 用户仅有权访问特定于租户的 VM。
->
-> 请注意，支持主机文件夹和群集文件夹。
+发现的工作原理如下：
+- 大约 15 分钟后，已发现 VM 的元数据会显示在门户中。
+- 发现已安装的应用程序、角色和功能需要一些时间， 具体时间取决于待发现的 VM 数量。 如果是 500 个 VM，Azure Migrate 门户大约需要一小时才会显示应用程序清单。
 
 ### <a name="verify-vms-in-the-portal"></a>在门户中验证 VM
 

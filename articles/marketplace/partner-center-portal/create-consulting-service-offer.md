@@ -6,20 +6,22 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/26/2020
-ms.openlocfilehash: ce8df36d3417417a5f70a5385aa94d9c8c7ff0cc
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.date: 04/06/2020
+ms.openlocfilehash: f1354ce824bc4e57ab55846c714d4a0a73a46966
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674275"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873814"
 ---
-# <a name="consulting-service-creation-overview"></a>咨询服务创建概述
+# <a name="create-a-consulting-service-offer"></a>创建咨询服务产品
 
 > [!IMPORTANT]
 > 我们将您的咨询服务服务服务从云合作伙伴门户迁移到合作伙伴中心。 在迁移产品/服务之前，请按照 Azure[和 Dynamics 365 云合作伙伴门户咨询服务产品提供](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer)的说明进行管理产品/服务。
 
-本文介绍如何将咨询服务产品发布到[Azure 应用商店](https://azuremarketplace.microsoft.com/)或[AppSource](https://appsource.microsoft.com/)。 列出基于微软[动态365](https://dynamics.microsoft.com/)和AppSource上的电源平台的咨询服务优惠。 在 Azure 应用商店中基于 Microsoft Azure 列出咨询服务产品/
+本文介绍如何将咨询服务产品发布到[Azure 应用商店](https://azuremarketplace.microsoft.com/)或[AppSource](https://appsource.microsoft.com/)。 基于微软[动态365](https://dynamics.microsoft.com/)和AppSource上的电源平台提供咨询服务。 基于 Azure 应用商店上的 Microsoft Azure 的咨询服务产品。
+
+要在 Azure 应用商店或 AppSource 咨询服务中创建咨询服务产品，您必须首先[在合作伙伴中心中拥有发布者帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)，并且必须在商业市场计划中注册您的帐户。 在创建产品/服务之前，请查看[咨询服务先决条件中的先决条件](https://docs.microsoft.com/azure/marketplace/partner-center-portal/consulting-service-prerequisites)。
 
 ## <a name="publishing-benefits"></a>发布的好处
 
@@ -30,58 +32,7 @@ ms.locfileid: "80674275"
 - 从这些市场获得高质量的潜在客户。
 - 让 Microsoft 现场和电话销售团队推广您的服务
 
-## <a name="requirements"></a>要求
-
-### <a name="business-requirements"></a>业务要求
-
-对于选择 Azure 作为主要产品的产品/服务，您的产品/服务必须列出至少以下完全获得的能力之一：
-
-- 应用程序开发
-- 应用程序集成
-- Application Lifecycle Management
-- 云平台
-- 数据分析
-- 数据中心
-- 数据平台
-- DevOps
-
-对于选择以下选项之一作为主要产品的优惠，您必须满足列出的相应资格要求，或对服务产品相关的主要产品提供共同销售产品。
-
-**客户互动应用程序**
-
-- **适用于**： 动态 365 销售， 动态 365 营销， 动态 365 客户服务， 动态 365 现场服务， 动态 365 人力资源
-
-- **标准**：必须在[云业务应用程序能力](https://partner.microsoft.com/membership/cloud-business-applications-competency)中获得金牌或银牌认证，以便获得客户参与选项。
-
-**财务和运营应用程序**
-
-- **适用于**： 动态 365 财务， 动态 365 运营， 动态 365 商务， 动态 365 人力资源， 动态 365 项目服务自动化
-
-- **标准**：必须在[云业务应用程序能力](https://partner.microsoft.com/membership/cloud-business-applications-competency)中获得统一操作选项的金或银认证。
-
-**Dynamics 365 Customer Insights**
-
-- **标准**： 必须至少有一个动态[365 客户洞察](https://dynamics.microsoft.com/ai/customer-insights/)的在生产中成功实施，至少五个度量和五个细分市场。
-
-**动态 365 商务中心**
-
-- **标准**：必须是[企业资源规划能力](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)中的金或银认证，并至少为三个客户提供服务，或在 Microsoft AppSource 中发布了业务中心应用程序。
-
-**Power BI**
-
-- **条件**： 必须列在[Power BI 合作伙伴展示。](https://powerbi.microsoft.com/partner-showcase/)
-
-**Power Apps**
-
-- **标准**： 必须有资格享受[电源应用合作伙伴](https://aka.ms/PowerAppsPartner)计划的高级福利。
-
-有关满足这些先决条件的详细信息，请参阅[咨询服务先决条件](consulting-service-prerequisites.md)。
-
-### <a name="logistical-requirements"></a>后勤需求
-
-要在 Azure 应用商店或 AppSource 咨询服务中创建咨询服务产品，您必须首先[在合作伙伴中心中拥有发布者帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)，并且必须在商业市场计划中注册您的帐户。
-
-## <a name="create-a-new-consulting-service-offer-in-partner-center"></a>在合作伙伴中心创建新的咨询服务产品
+## <a name="create-a-new-offer"></a>创建新产品/服务
 
 满足上述要求后，请按照以下步骤创建咨询服务产品。
 
@@ -153,7 +104,7 @@ ms.locfileid: "80674275"
 1. 如果选择了**Azure**的主要产品，请选择最多三个**解决方案区域**。 这些功能使 Azure 应用商店中的客户更容易找到您的产品/服务。 如果未&#39;未选择 Azure，请跳过此步骤。
 2. 如果选择了 Azure_以外的_主要产品，请选择最多三个**适用产品**。 这些使 AppSource 中的客户更容易找到您的产品/服务。 有关详细信息，请参阅[Microsoft AppSource 咨询服务列表指南](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409)（PDF）。
 3. 最多选择您优惠适用于的六**个行业**。 这将使客户更容易找到您的产品/服务。
-4. 将贵公司获得的三**项能力**添加到您的咨询服务产品列表中。 除了 Azure 专家 MSP&#39;和 Azure 网络 MSP&#39;， 至少需要一项能力。
+4. 将贵公司获得的三**项能力**添加到咨询服务产品列表中。 除了 Azure 专家 MSP&#39;和 Azure 网络 MSP&#39;， 至少需要一项能力。
 
 选择 **"保存"草稿**，然后再继续下一节"优惠列表"。
 

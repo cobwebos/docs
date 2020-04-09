@@ -6,12 +6,12 @@ ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: a305914c5c870543e16c515880955693c2634044
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: e49fafc2889b98d013d77471f8177fd85a307cc8
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239176"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754890"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>教程：在 ARM 模板部署中集成 Azure Key Vault
 
@@ -107,7 +107,7 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-1. 选择“打开”以打开该文件。  方案与以下教程中使用的方案相同[教程：创建包含依赖资源的 ARM 模板](./template-tutorial-create-templates-with-dependent-resources.md)。
+1. 选择“打开”以打开该文件。  方案与以下教程中使用的方案相同[：创建包含依赖资源的 ARM 模板](./template-tutorial-create-templates-with-dependent-resources.md)。
    该模板定义五个资源：
 
    * `Microsoft.Storage/storageAccounts` 列中的一个值匹配。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)。
@@ -198,7 +198,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已从 Azure 密钥保管库检索了一个密钥。 你然后使用模板部署中的密钥。 若要了解如何创建链接模板，请参阅：
+在本教程中，你已从 Azure 密钥保管库检索了一个密钥。 你然后使用模板部署中的密钥。 若要了解如何使用虚拟机扩展执行部署后任务，请参阅：
 
 > [!div class="nextstepaction"]
-> [创建链接模板](./template-tutorial-create-linked-templates.md)
+> [部署虚拟机扩展](./template-tutorial-deploy-vm-extensions.md)

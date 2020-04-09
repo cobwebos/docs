@@ -4,12 +4,12 @@ description: Azure 区块链服务数据访问和安全概念
 ms.date: 11/22/2019
 ms.topic: conceptual
 ms.reviewer: janders
-ms.openlocfilehash: 06bf4e0fa4037b07505a4f816fc7af56c14576d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 989d9f2afad30517a85185878d694c0b6640e987
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75982231"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879592"
 ---
 # <a name="azure-blockchain-service-security"></a>Azure 区块链服务安全性
 
@@ -27,7 +27,7 @@ Azure 区块链服务资源在专用虚拟网络中隔离。 每个事务和验�
 
 ## <a name="authentication"></a>身份验证
 
-事务可以通过 RPC 终结点发送到区块链节点。 客户端使用反向代理服务器与事务节点通信，该服务器处理用户身份验证并通过 SSL 加密数据。
+事务可以通过 RPC 终结点发送到区块链节点。 客户端使用反向代理服务器与事务节点通信，该服务器处理用户身份验证并加密通过 TLS 的数据。
 
 ![身份验证图](./media/data-security/authentication.png)
 

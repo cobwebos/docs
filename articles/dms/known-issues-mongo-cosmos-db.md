@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 194da036260a78b27748dfc7f755212ab4f30b1e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae5d5f2d282c546f5172ca1c8cb0e420d3b6e96b
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78256033"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878045"
 ---
 # <a name="known-issuesmigration-limitations-with-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>从蒙戈DB迁移到 Azure Cosmos DB 的 MongoDB API 时已知的问题/迁移限制
 
@@ -45,7 +45,7 @@ ms.locfileid: "78256033"
 
 | 原因         | 解决方法 |
 | ------------- | ------------- |
-| 您尝试从不支持的 MongoDB 版本迁移到 Azure 宇宙 DB。 | 随着 MongoDB 的新版本发布，将测试它们以确保与 Azure 数据库迁移服务的兼容性，并且该服务将定期更新以接受最新版本。 如果迫切需要迁移，则可以将数据库/集合导出到 Azure 存储以及源到生成的转储的点。 在存储资源管理器中的 blob 容器上创建 SAS，然后将具有容器 SAS 信息的 URL 用作源详细信息连接字符串。<br><br> |
+| 您尝试从不支持的 MongoDB 版本迁移到 Azure 宇宙 DB。 | 随着 MongoDB 的新版本发布，将测试它们以确保与 Azure 数据库迁移服务的兼容性，并且该服务将定期更新以接受最新版本。 如果迫切需要迁移，则可以将数据库/集合导出到 Azure 存储，然后将源指向生成的转储。 在存储资源管理器中的 blob 容器上创建 SAS，然后将具有容器 SAS 信息的 URL 用作源详细信息连接字符串。<br><br> |
 
 ## <a name="next-steps"></a>后续步骤
 

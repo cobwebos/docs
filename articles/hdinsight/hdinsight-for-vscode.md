@@ -1,24 +1,24 @@
 ---
 title: 适用于 Visual Studio Code 的 Azure HDInsight
-description: 了解如何使用适用于 Visual Studio Code 的 Spark 和 Hive 工具 (Azure HDInsight) 来创建、提交查询和脚本。
+description: 了解如何将火花&蜂巢工具 （Azure HDInsight） 用于可视化工作室代码。 使用这些工具创建和提交查询和脚本。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.openlocfilehash: 9a81868d678b4c0277e904e879c73185a378bf70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/07/2020
+ms.openlocfilehash: de433d85c2f04a7140fbcb918730218ac3a05e54
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75435687"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878623"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>使用适用于 Visual Studio Code 的 Spark 和 Hive 工具
 
-了解如何使用适用于 Visual Studio Code 的 Spark 和 Hive 工具，为 Apache Spark 创建和提交 Apache Hive 批处理作业、交互式 Hive 查询和 PySpark 脚本。 本文首先介绍如何在 Visual Studio Code 中安装 Spark 和 Hive 工具，然后演练如何向 Spark 和 Hive 工具提交作业。  
+了解如何使用 Apache Spark &蜂巢工具进行可视化工作室代码。 使用这些工具为 Apache Spark 创建和提交 Apache Hive 批处理作业、交互式 Hive 查询和 PySpark 脚本。 首先，我们将介绍如何在可视化工作室代码中安装 Spark & Hive 工具。 然后，我们将演练如何向 Spark & Hive Tools 提交作业。  
 
-Spark & Hive Tools 可以安装在 Visual Studio Code 支持的平台上，包括 Windows、Linux 和 macOS。 注意针对不同平台的以下先决条件。
+Spark & Hive 工具可以安装在视觉工作室代码支持的平台上。 注意针对不同平台的以下先决条件。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -70,13 +70,13 @@ Spark & Hive Tools 可以安装在 Visual Studio Code 支持的平台上，包�
 
 ## <a name="connect-to-an-azure-account"></a>连接到 Azure 帐户
 
-将脚本从 Visual Studio Code 提交到群集之前，必须连接到 Azure 帐户，或链接群集（使用 Apache Ambari 用户名和密码凭据或已加入域的帐户）。 遵循以下步骤连接到 Azure：
+必须先连接到 Azure 帐户或链接群集，然后才能从 Visual Studio Code 向群集提交脚本。 使用 Apache Ambari 用户名和密码凭据或加入域的帐户。 遵循以下步骤连接到 Azure：
 
 1. 从菜单栏中导航到 **"查看** > **命令调色板..."，** 然后输入**Azure：登录**：
 
     ![适用于 Visual Studio Code 的 Spark 和 Hive 工具登录](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
 
-2. 按照登录说明登录到 Azure。 连接后，Visual Studio Code 窗口底部的状态栏上会显示 Azure 帐户名称。  
+2. 按照登录说明登录到 Azure。 连接后，Azure 帐户名称将显示在可视化工作室代码窗口底部的状态栏上。  
 
 ## <a name="link-a-cluster"></a>链接群集
 
@@ -260,7 +260,7 @@ Spark & Hive Tools 可以安装在 Visual Studio Code 支持的平台上，包�
 
 ## <a name="apache-livy-configuration"></a>Apache Livy 配置
 
-支持 [Apache Livy](https://livy.incubator.apache.org/) 配置。 可在工作空间文件夹中的 **.VSCode\settings.json** 内配置 Apache Livy。 目前，Livy 配置仅支持 Python 脚本。 有关更多详细信息，请参阅 [Livy README](https://github.com/cloudera/livy/blob/master/README.rst )。
+支持 [Apache Livy](https://livy.incubator.apache.org/) 配置。 可在工作空间文件夹中的 **.VSCode\settings.json** 内配置 Apache Livy。 目前，Livy 配置仅支持 Python 脚本。 有关详细信息，请参阅[利维·里德梅](https://github.com/cloudera/livy/blob/master/README.rst )。
 
 <a id="triggerlivyconf"></a>**如何触发利维配置**
 
@@ -269,7 +269,7 @@ Spark & Hive Tools 可以安装在 Visual Studio Code 支持的平台上，包�
 2. 在 **"搜索设置"** 框中，输入**HDInsight 作业提交：Livy Conf**。  
 3. 选择“在 settings.json 中编辑”以获取相关搜索结果****。
 
-方法 2 提交文件，并注意到 .vscode 文件夹会自动添加到工作文件夹中。 可以通过选择“.vscode\settings.json”来查看 Livy 配置。****
+方法 2 提交文件，并注意到`.vscode`该文件夹将自动添加到工作文件夹中。 可以通过选择“.vscode\settings.json”来查看 Livy 配置。****
 
 + 项目设置：
 
@@ -283,33 +283,33 @@ Spark & Hive Tools 可以安装在 Visual Studio Code 支持的平台上，包�
     **POST /批量**请求正文
 
     | name | description | type |
-    | :- | :- | :- |
+    | --- | --- | --- |
     | 文件 | 包含要执行的应用程序的文件 | Path（必需） |
-    | proxyUser | 运行作业时要模拟的用户 | String |
-    | className | 应用程序 Java/Spark 主类 | String |
+    | proxyUser | 运行作业时要模拟的用户 | 字符串 |
+    | className | 应用程序 Java/Spark 主类 | 字符串 |
     | args | 应用程序的命令行参数 | 字符串列表 |
     | jars | 此会话中要使用的 Jar | 字符串列表 | 
     | pyFiles | 将在本次会话中使用的 Python 文件 | 字符串列表 |
     | files | 此会话中要使用的文件 | 字符串列表 |
-    | driverMemory | 用于驱动程序进程的内存量 | String |
+    | driverMemory | 用于驱动程序进程的内存量 | 字符串 |
     | driverCores | 用于驱动程序进程的内核数 | Int |
-    | executorMemory | 每个执行程序进程使用的内存量 | String |
+    | executorMemory | 每个执行程序进程使用的内存量 | 字符串 |
     | executorCores | 每个执行程序使用的内核数 | Int |
     | numExecutors | 为此会话启动的执行程序数 | Int |
     | archives | 将在本次会话中使用的存档 | 字符串列表 |
-    | queue | 要提交到的 YARN 队列的名称| String |
-    | name | 此会话的名称 | String |
+    | queue | 要提交到的 YARN 队列的名称| 字符串 |
+    | name | 此会话的名称 | 字符串 |
     | conf | Spark 配置属性 | key=val 的映射 |
 
     响应正文 已创建的批处理对象。
 
     | name | description | type |
-    | :- | :- | :- |
-    | id | 会话 ID | Int |
-    | appId | 此会话的应用程序 ID | String |
+    | --- | ---| --- |
+    | ID | 会话 ID | Int |
+    | appId | 此会话的应用程序 ID | 字符串 |
     | appInfo | 详细的应用程序信息 | key=val 的映射 |
     | log | 日志行 | 字符串列表 |
-    | state |批处理状态 | String |
+    | state |批处理状态 | 字符串 |
 
     > [!NOTE]
     > 提交脚本时，分配的 Livy 配置将显示在输出窗格中。
@@ -340,8 +340,8 @@ Spark & Hive Tools 可以安装在 Visual Studio Code 支持的平台上，包�
 
 - “消息”面板
    1. 当表中的行数大于 100 时，您将看到以下消息："前 100 行将显示为 Hive 表。
-   2. 当表中的行数小于或等于 100 时，您将看到一条消息："为 Hive 表显示 60 行。
-   3. 当表中没有内容时，您将看到以下消息："为 Hive 表显示 0 行。
+   2. 当表中的行数小于或等于 100 时，您将看到以下消息："为 Hive 表显示 60 行。
+   3. 当表中没有内容时，您将看到以下消息：""`0 rows are displayed for Hive table.`
 
         >[!NOTE]
         >
@@ -364,7 +364,7 @@ Spark & Hive Tools 可以安装在 Visual Studio Code 支持的平台上，包�
 
 ## <a name="reader-only-role"></a>仅限读取者角色
 
-具有群集“仅限读取者”角色的用户不再可以将作业提交到 HDInsight 群集，也不可以查看 Hive 数据库。 需在 [Azure 门户](https://ms.portal.azure.com/)中联系群集管理员将你的角色升级到 [**HDInsight 群集操作员**](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-granular-access-cluster-configurations#add-the-hdinsight-cluster-operator-role-assignment-to-a-user)。 如果你有有效的 Ambari 凭据，可遵循以下指导手动链接群集。
+为群集分配仅读者角色的用户无法将作业提交到 HDInsight 群集，也不能查看 Hive 数据库。 需在 [Azure 门户](https://ms.portal.azure.com/)中联系群集管理员将你的角色升级到 [**HDInsight 群集操作员**](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-granular-access-cluster-configurations#add-the-hdinsight-cluster-operator-role-assignment-to-a-user)。 如果你有有效的 Ambari 凭据，可遵循以下指导手动链接群集。
 
 ### <a name="browse-the-hdinsight-cluster"></a>浏览 HDInsight 群集  
 
@@ -393,11 +393,11 @@ Spark & Hive Tools 可以安装在 Visual Studio Code 支持的平台上，包�
 
 ### <a name="browse-a-data-lake-storage-gen2-account"></a>浏览 Data Lake Storage Gen2 帐户
 
-选择 Azure HDInsight 资源管理器展开 Data Lake Storage Gen2 帐户时，如果你的 Azure 帐户对 Gen2 存储没有访问权限，系统会提示你输入存储访问密钥。 验证访问密钥后，Data Lake Storage Gen2 帐户将自动展开。
+选择 Azure HDInsight 资源管理器以扩展数据湖存储 Gen2 帐户。 如果 Azure 帐户无法访问 Gen2 存储，系统将提示您输入存储访问密钥。 验证访问密钥后，Data Lake Storage Gen2 帐户将自动展开。
 
 ### <a name="submit-jobs-to-an-hdinsight-cluster-with-data-lake-storage-gen2"></a>将作业提交到使用 Data Lake Storage Gen2 的 HDInsight 群集
 
-将作业提交到使用 Data Lake Storage Gen2 的 HDInsight 群集时，如果你的 Azure 帐户对 Gen2 存储没有写入访问权限，系统会提示你输入存储访问密钥。 验证访问密钥后，作业将成功提交。
+使用数据湖存储 Gen2 将作业提交到 HDInsight 群集。 如果 Azure 帐户对 Gen2 存储没有写入访问权限，系统将提示您输入存储访问密钥。 验证访问密钥后，作业将成功提交。
 
 ![适用于 Visual Studio Code 的 Spark 和 Hive 工具 - 访问密钥](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-accesskey.png)
 

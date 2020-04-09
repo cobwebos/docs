@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: c1e740fbfa4bf1e8a77a2d9d6060ab39dba7ae7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0938fbe94cb0d1e6dae3dcb84950a11f90dd9db8
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256206"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878147"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>什么是 SQL 数据库实例池（预览）？
 
@@ -59,7 +59,7 @@ ms.locfileid: "79256206"
 
 ## <a name="architecture-of-instance-pools"></a>实例池的体系结构
 
-实例池具有与常规托管实例（*单个实例*）类似的体系结构。 为了支持 [Azure 虚拟网络 （VNet）](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) 中的部署，并为客户提供隔离和安全，实例池还依赖于 [虚拟群集](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)。 虚拟群集表示部署在客户虚拟网络子网内的专用隔离虚拟机集。
+实例池具有与常规托管实例（*单个实例*）类似的体系结构。 为了支持 [Azure 虚拟网络 （VNet）](../virtual-network/virtual-network-for-azure-services.md) 中的部署，并为客户提供隔离和安全，实例池还依赖于 [虚拟群集](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)。 虚拟群集表示部署在客户虚拟网络子网内的专用隔离虚拟机集。
 
 这两种部署模型之间的主要区别是实例池允许在同一虚拟机节点上进行多个 SQL Server 进程部署，该部署使用[Windows 作业对象](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects)进行资源管理，而单个实例始终单独在虚拟机节点上。
 

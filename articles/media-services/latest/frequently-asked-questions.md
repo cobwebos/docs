@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 04/07/2020
 ms.author: juliako
-ms.openlocfilehash: 11123ee04dd02a60dff0b88e2e6e85fcd613a7d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a4f4bd6eaa07907dd672abe068b515b5127adac9
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80068011"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886817"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>媒体服务 v3 常见问题解答
 
@@ -166,6 +166,112 @@ ms.locfileid: "80068011"
 ### <a name="where-did-client-side-storage-encryption-go"></a>客户端存储加密在哪里进行？
 
 现在建议使用服务器端存储加密（在默认情况下为打开状态）。 有关详细信息，请参阅[静态数据的 Azure 存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)。
+
+## <a name="offline-streaming"></a>离线流式处理
+
+### <a name="fairplay-streaming-for-ios"></a>iOS 的公平播放流式处理
+
+以下常见问题为 iOS 的脱机 FairPlay 流提供故障排除帮助：
+
+#### <a name="why-does-only-audio-play-but-not-video-during-offline-mode"></a>为什么在脱机模式期间只播放音频而不播放视频？
+
+此行为似乎是示例应用专门设计的。 当在脱机模式下存在备用音轨（HLS 就是这种情况），iOS 10 和 iOS 11 默认为备用音轨。要补偿 FPS 脱机模式的此行为，请从流中删除备用音轨。 若要在媒体服务中完成此操作，请添加动态清单筛选器“audio-only=false”。 换言之，HLS URL 将以 .ism/manifest(format=m3u8-aapl,audio-only=false) 结尾。 
+
+#### <a name="why-does-it-still-play-audio-only-without-video-during-offline-mode-after-i-add-audio-onlyfalse"></a>为什么添加 audio-only=false 之后，在脱机模式期间仍只播放音频而不播放视频？
+
+根据内容分发网络 (CDN) 缓存键的设计，可能会缓存该内容。 请清除缓存。
+
+#### <a name="is-fps-offline-mode-also-supported-on-ios-11-in-addition-to-ios-10"></a>除 iOS 10 之外，iOS 11 是否也支持 FPS 脱机模式？
+
+是的。 iOS 10 和 iOS 11 支持 FPS 脱机模式。
+
+#### <a name="why-cant-i-find-the-document-offline-playback-with-fairplay-streaming-and-http-live-streaming-in-the-fps-server-sdk"></a>为什么在 FPS Server SDK 中，无法使用 FairPlay Streaming 和 HTTP Live Streaming 找到文档“脱机播放”？
+
+从 FPS Server SDK 版本 4 开始，此文档已合并到“FairPlay Streaming 编程指南”。
+
+#### <a name="what-is-the-downloadedoffline-file-structure-on-ios-devices"></a>iOS 设备上的已下载/脱机文件结构是什么？
+
+iOS 设备上的已下载文件结构如下屏幕截图所示。 `_keys` 文件夹存储已下载的 FPS 许可证，每个许可证服务主机一个存储文件。 `.movpkg` 文件夹存储音频和视频内容。 第一个文件夹（文件名以破折号加数字结尾）包含视频内容。 数值是“PeakBandwidth”视频呈现形式。 第二个文件夹（文件名以破折号加 0 结尾）包含音频内容。 第三个文件夹（文件名为“Data”）包含 FPS 内容的主播放列表。 最后，boot.xml 提供 `.movpkg` 文件夹内容的完整说明。 
+
+![脱机 FairPlay iOS 示例应用文件结构](media/offline-fairplay-for-ios/offline-fairplay-file-structure.png)
+
+示例 boot.xml 文件：
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<HLSMoviePackage xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://apple.com/IMG/Schemas/HLSMoviePackage" xsi:schemaLocation="http://apple.com/IMG/Schemas/HLSMoviePackage /System/Library/Schemas/HLSMoviePackage.xsd">
+  <Version>1.0</Version>
+  <HLSMoviePackageType>PersistedStore</HLSMoviePackageType>
+  <Streams>
+    <Stream ID="1-4DTFY3A3VDRCNZ53YZ3RJ2NPG2AJHNBD-0" Path="1-4DTFY3A3VDRCNZ53YZ3RJ2NPG2AJHNBD-0" NetworkURL="https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/QualityLevels(127000)/Manifest(aac_eng_2_127,format=m3u8-aapl)">
+      <Complete>YES</Complete>
+    </Stream>
+    <Stream ID="0-HC6H5GWC5IU62P4VHE7NWNGO2SZGPKUJ-310656" Path="0-HC6H5GWC5IU62P4VHE7NWNGO2SZGPKUJ-310656" NetworkURL="https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/QualityLevels(161000)/Manifest(video,format=m3u8-aapl)">
+      <Complete>YES</Complete>
+    </Stream>
+  </Streams>
+  <MasterPlaylist>
+    <NetworkURL>https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/manifest(format=m3u8-aapl,audio-only=false)</NetworkURL>
+  </MasterPlaylist>
+  <DataItems Directory="Data">
+    <DataItem>
+      <ID>CB50F631-8227-477A-BCEC-365BBF12BCC0</ID>
+      <Category>Playlist</Category>
+      <Name>master.m3u8</Name>
+      <DataPath>Playlist-master.m3u8-CB50F631-8227-477A-BCEC-365BBF12BCC0.data</DataPath>
+      <Role>Master</Role>
+    </DataItem>
+  </DataItems>
+</HLSMoviePackage>
+```
+
+### <a name="widevine-streaming-for-android"></a>适用于安卓的宽文流
+
+#### <a name="how-can-i-deliver-persistent-licenses-offline-enabled-for-some-clientsusers-and-non-persistent-licenses-offline-disabled-for-others-do-i-have-to-duplicate-the-content-and-use-separate-content-key"></a>如何为某些客户端/用户传送永久许可证（允许脱机）并为其他人传送非永久许可证（禁用脱机）？ 是否必须复制内容并使用单独的内容密钥？
+
+由于媒体服务 v3 允许资产具有多个 StreamingLocator。 你可以有
+
+* 一个带有 license_type =“持久性”的 ContentKeyPolicy，带有声明“持久性”的 ContentKeyPolicyRestriction 及其 StreamingLocator；
+* 另一个带有 license_type=“非持久性”的 ContentKeyPolicy，带有声明“非持久性”的 ContentKeyPolicyRestriction 及其 StreamingLocator。
+* 两个 StreamingLocator 具有不同的 ContentKey。
+
+根据自定义 STS 的业务逻辑，在 JWT 令牌中发出不同的声明。 使用该令牌，只能获得相应的许可证，并且只能播放相应的 URL。
+
+#### <a name="what-is-the-mapping-between-the-widevine-and-media-services-drm-security-levels"></a>Widevine 和媒体服务 DRM 安全级别之间的映射是什么？
+
+谷歌的"威文DRM架构概述"定义了三个不同的安全级别。 但是，在 [Widevine 许可证模板上的 Azure 媒体服务文档](widevine-license-template-overview.md)中，概述了五种不同的安全级别。 本节介绍安全级别如何映射。
+
+Google 的"威文 DRM 架构审查"文档定义了以下三个安全级别：
+
+* 安全级别 1：所有内容处理、加密和控制操作均在受信任的执行环境 (TEE) 中进行。 在某些实现模型中，可在不同的芯片中执行安全处理。
+* 安全级别 2：在 TEE 中执行加密（但不是视频处理）：已解密的缓冲区返回到应用程序域，并通过单独的视频硬件或软件进行处理。 但是，在级别 2，加密信息仍仅在 TEE 中处理。
+* 安全级别 3：设备上没有 TEE。 可采取相应措施来保护主机操作系统中的加密信息和已解密内容。 级别 3 实现还包括硬件加密引擎，但只能增强性能，而不能增强安全性。
+
+同时，在 [Widevine 许可证模板上的 Azure 媒体服务文档](widevine-license-template-overview.md)中，content_key_specs 的 security_level 属性可以具有以下五个不同的值（播放的客户端稳定性要求）：
+
+* 需要基于软件的白盒加密。
+* 需要软件加密和模糊处理解码器。
+* 密钥材料和加密操作必须在硬件支持的 TEE 中执行。
+* 内容加密和解码必须在硬件支持的 TEE 中执行。
+* 加密、解码与媒体（压缩和未压缩）的所有处理必须在硬件支持的 TEE 中处理。
+
+这两种安全级别均由 Google Widevine 定义。 不同之处是其使用情况级别：体系结构级别或 API 级别。 Widevine API 中使用了这五种安全级别。 ontent_key_specs 对象包含 security_level，该对象被反序列化，并通过 Azure 媒体服务 Widevine 许可证服务传递给 Widevine 全球传送服务。 下表显示两组安全级别之间的映射。
+
+| **Widevine 体系结构中定义的安全级别** |**Widevine API 中使用的安全级别**|
+|---|---| 
+| **安全级别 1：** 所有内容处理、加密和控制都在受信任的执行环境 （TEE） 中执行。 在某些实现模型中，可在不同的芯片中执行安全处理。|**security_level=5**：加密、解码与媒体（压缩和未压缩）的所有处理必须在硬件支持的 TEE 中处理。<br/><br/>**security_level=4**：内容加密和解码必须在硬件支持的 TEE 中执行。|
+**安全级别 2**：在 TEE 中执行加密（但不是视频处理）：已解密的缓冲区返回到应用程序域，并通过单独的视频硬件或软件进行处理。 但是，在级别 2，加密信息仍仅在 TEE 中处理。| **security_level=3**：密钥材料和加密操作必须在硬件支持的 TEE 中执行。 |
+| **安全级别 3**：设备上没有 TEE。 可采取相应措施来保护主机操作系统中的加密信息和已解密内容。 级别 3 实现还包括硬件加密引擎，但只能增强性能，而不能增强安全性。 | **security_level=2**：软件加密和模糊解码器是必需的。<br/><br/>**security_level=1**：需要基于软件的白盒加密。|
+
+#### <a name="why-does-content-download-take-so-long"></a>为什么下载内容需要很长时间？
+
+可通过两种方法提高下载速度：
+
+* 启用 CDN，使最终用户更容易命中内容下载的 CDN，而不是源/流式处理终结点。 如果用户命中流式处理终结点，会动态打包和加密每个 HLS 段或 DASH 片段。 即使每个段/片段的延迟时间都只有几毫秒，如果视频时间长达一个小时，累积延迟可能会很长，从而导致下载时间变长。
+* 让最终用户能够选择性地下载视频质量层和音轨，而不是所有内容。 对于脱机模式，无需下载所有的质量层。 可通过两种方式实现此目的：
+
+   * 客户端控制：播放器应用自动选择要下载的视频质量层和音轨，或由用户选择；
+   * 服务控制：可使用 Azure 媒体服务中的动态清单功能创建（全局）筛选器，将 HLS 播放列表或 DASH MPD 限制为单个视频质量层和所选音轨。 然后，向最终用户呈现的下载 URL 会包括此筛选器。
 
 ## <a name="next-steps"></a>后续步骤
 

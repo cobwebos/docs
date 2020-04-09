@@ -2,13 +2,13 @@
 title: 模板函数
 description: 介绍在 Azure 资源管理器模板中检索值、处理字符串和数字以及检索部署信息时所用的函数。
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 1d2789e59c091b4e6c39be48b83fe610a592abe1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: fbd82f89ed9a97a3f376a9ed6eaa8ae3760759ff
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156253"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982372"
 ---
 # <a name="arm-template-functions"></a>ARM 模板功能
 
@@ -52,7 +52,7 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 * [最后](template-functions-array.md#last)
 * [length](template-functions-array.md#length)
 * [分钟](template-functions-array.md#min)
-* [max](template-functions-array.md#max)
+* [麦克斯](template-functions-array.md#max)
 * [范围](template-functions-array.md#range)
 * [跳](template-functions-array.md#skip)
 * [采取](template-functions-array.md#take)
@@ -77,6 +77,13 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 <a id="deployment" aria-hidden="true" />
 <a id="parameters" aria-hidden="true" />
 <a id="variables" aria-hidden="true" />
+
+## <a name="date-functions"></a>日期函数
+
+资源管理器提供以下函数，用于处理日期。
+
+* [日期时间添加](template-functions-date.md#datetimeadd)
+* [utcNow](template-functions-date.md#utcnow)
 
 ## <a name="deployment-value-functions"></a>部署值函数
 
@@ -124,7 +131,7 @@ Resource Manager 提供以下用于处理整数的函数：
 * [浮动](template-functions-numeric.md#float)
 * [Int](template-functions-numeric.md#int)
 * [分钟](template-functions-numeric.md#min)
-* [max](template-functions-numeric.md#max)
+* [麦克斯](template-functions-numeric.md#max)
 * [国防部](template-functions-numeric.md#mod)
 * [mul](template-functions-numeric.md#mul)
 * [子](template-functions-numeric.md#sub)
@@ -200,7 +207,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 * [dataUri](template-functions-string.md#datauri)
 * [dataUriToString](template-functions-string.md#datauritostring)
 * [空](template-functions-string.md#empty)
-* [endsWith](template-functions-string.md#endswith)
+* [结束与](template-functions-string.md#endswith)
 * [第一](template-functions-string.md#first)
 * [格式](template-functions-string.md#format)
 * [Guid](template-functions-string.md#guid)
@@ -210,11 +217,11 @@ Resource Manager 提供以下用于处理字符串的函数：
 * [length](template-functions-string.md#length)
 * [新吉德](template-functions-string.md#newguid)
 * [垫左](template-functions-string.md#padleft)
-* [replace](template-functions-string.md#replace)
+* [取代](template-functions-string.md#replace)
 * [跳](template-functions-string.md#skip)
 * [分裂](template-functions-string.md#split)
 * [开始与](template-functions-string.md#startswith)
-* [字符串](template-functions-string.md#string)
+* [string](template-functions-string.md#string)
 * [子](template-functions-string.md#substring)
 * [采取](template-functions-string.md#take)
 * [到下](template-functions-string.md#tolower)
@@ -224,7 +231,6 @@ Resource Manager 提供以下用于处理字符串的函数：
 * [Uri](template-functions-string.md#uri)
 * [uriComponent](template-functions-string.md#uricomponent)
 * [uriComponentToString](template-functions-string.md#uricomponenttostring)
-* [utcNow](template-functions-string.md#utcnow)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 04/07/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fe3a63e119fed6825982b9de13bc78cb7da5415
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0aafb971ca1ce812a68045f7d0c0c2ab7f532133
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481392"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877382"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>使用现有的本地代理服务器
 
@@ -27,6 +27,7 @@ ms.locfileid: "79481392"
 
 * 将连接器配置为绕过本地出站代理。
 * 将连接器配置为使用出站代理来访问 Azure AD 应用程序代理。
+* 使用连接器和后端应用程序之间的代理进行配置。
 
 有关连接器工作原理的详细信息，请参阅[了解 Azure AD 应用程序代理连接器](application-proxy-connectors.md)。
 
@@ -137,6 +138,23 @@ OS 组件尝试通过针对 wpad.domainsuffix 执行 DNS 查找来查找代理�
 #### <a name="tls-inspection"></a>TLS 检查
 
 不要对连接器流量使用 TLS 检查，因为它会导致连接器流量出现问题。 连接器使用证书对应用程序代理服务进行身份验证，并且该证书可能会在 TLS 检查期间丢失。
+
+## <a name="configure-using-a-proxy-between-the-connector-and-backend-application"></a>使用连接器和后端应用程序之间的代理进行配置
+在某些环境中，对后端应用程序的通信使用转发代理可能是一项特殊要求。
+要启用此功能，请按照以下步骤操作：
+
+### <a name="step-1-add-the-required-registry-value-to-the-server"></a>步骤 1：向服务器添加所需的注册表值
+1. 要启用使用默认代理，请在"HKEY_LOCAL_MACHINE_软件_微软_微软`UseDefaultProxyForBackendRequests = 1`AAD 应用程序代理连接器"中向连接器配置注册表项添加以下注册表值 （DWORD）。
+
+### <a name="step-2-configure-the-proxy-server-manually-using-netsh-command"></a>第 2 步：使用 netsh 命令手动配置代理服务器
+1.  启用组策略，使每台计算机设置代理。 这见于：计算机配置\策略\管理模板\Windows组件_Internet 资源管理器。 这需要设置，而不是将此策略设置为每个用户。
+2.  在`gpupdate /force`服务器上运行或重新启动服务器，以确保它使用更新的组策略设置。
+3.  启动具有管理权限的提升命令提示符并`control inetcpl.cpl`输入 。
+4.  配置所需的代理设置。 
+
+这些设置使连接器使用相同的转发代理来与 Azure 和后端应用程序通信。 如果 Azure 通信的连接器不需要转发代理或其他转发代理，则可以通过修改文件应用程序代理连接器服务.exe.config 来设置，如绕过出站代理或使用出站代理服务器部分所述。
+
+连接器更新程序服务也将使用计算机代理。 可以通过修改文件应用程序代理连接器更新服务.exe.config 来更改此行为。
 
 ## <a name="troubleshoot-connector-proxy-problems-and-service-connectivity-issues"></a>排查连接器代理问题和服务连接问题
 

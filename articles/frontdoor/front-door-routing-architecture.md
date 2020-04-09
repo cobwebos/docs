@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: fd1f06bcb92ea97e0e9e9a6eefeac957031575a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a088e52f742f96a13ba61969c2d7a6697c96b145
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471551"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879286"
 ---
 # <a name="routing-architecture-overview"></a>路由体系结构概述
 
@@ -35,7 +35,7 @@ Azure 前门在收到客户端请求时，即应答它们（如果启用了缓�
 [拆分 TCP](https://en.wikipedia.org/wiki/Performance-enhancing_proxy) 是一种用于减少延迟和 TCP 问题的技术，其原理是将会产生较长往返时间的连接拆分成较小片段。  通过将 Front Door 环境设置在较接近最终用户的位置并在 Front Door 环境内部终止 TCP 连接，可将一个产生较长往返时间 (RTT) 的 TCP 连接（到应用程序后端）拆分为两个 TCP 连接。 最终用户和前门环境之间的短连接意味着通过三次短途往返而不是三次长途旅行建立连接，从而节省延迟。  Front Door 环境和后端之间的长连接可预先建立并可跨多个最终用户调用重复使用，同样节省了 TCP 连接时间。  如果建立的是 SSL/TLS（传输层安全性）连接，效果将倍增，因为会通过更多往返行程来确保连接的安全性。
 
 ## <a name="processing-request-to-match-a-routing-rule"></a>处理请求时将其与路由规则进行匹配
-建立连接并执行 SSL 握手之后，当请求进入 Front Door 环境时，首先要做的是匹配路由规则。 此匹配基本上是指根据 Front Door 中的所有配置确定将请求与哪个特定路由规则进行匹配。 阅读和详细了解 Front Door 如何执行[路由匹配](front-door-route-matching.md)。
+建立连接并执行 TLS 握手后，当请求落在前门环境上时，匹配路由规则是第一步。 此匹配基本上是指根据 Front Door 中的所有配置确定将请求与哪个特定路由规则进行匹配。 阅读和详细了解 Front Door 如何执行[路由匹配](front-door-route-matching.md)。
 
 ## <a name="identifying-available-backends-in-the-backend-pool-for-the-routing-rule"></a>确定后端池中可用于路由规则的后端
 Front Door 基于传入的请求找到路由规则的匹配项后，如果没有缓存，则下一步是提取与匹配的路由关联的后端池的运行状况探测状态。 阅读和详细了解 Front Door 如何使用[运行状况探测](front-door-health-probes.md)监视后端运行状况。

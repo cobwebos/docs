@@ -3,25 +3,21 @@ title: 受保护的 Web API 应用注册 | Azure
 titleSuffix: Microsoft identity platform
 description: 了解构建受保护 Web API 的方法以及注册应用所需的信息。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2d9e5d051f101288b8528b47fa88b4783a040950
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2cdf3ff45a400d4b8d0b2605bf7ddc364aff1fe6
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79262498"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80882380"
 ---
 # <a name="protected-web-api-app-registration"></a>受保护的 Web API：应用注册
 
@@ -151,7 +147,7 @@ Web API 将检查应用角色。 此角色是软件开发人员公开应用程�
    >
    > 但是，如上一节所述，Web API 始终可以验证应用程序是否具有正确的角色，该角色由租户管理员授权。API 通过验证访问令牌具有角色声明以及此声明的值是否正确来执行此验证。 在上述 JSON 示例中，值为 `access_as_application`。
 
-1. 选择“保存”。****
+1. 选择“保存”。 
 
 ## <a name="next-steps"></a>后续步骤
 

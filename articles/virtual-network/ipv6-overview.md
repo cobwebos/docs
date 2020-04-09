@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 887f9e100a60561271a4c15777e7131ea1f1f722
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 312e9db594983f85372285bdff415a2d5dc76ed3
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631435"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984004"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Azure 虚拟网络 IPv6 是什么？
 
@@ -73,7 +73,7 @@ Azure VNET IPv6 是一个基础功能集，可让客户在 Azure 中托管双堆
 
 ## <a name="limitations"></a>限制
 当前的 Azure 虚拟网络 IPv6 版本存在以下限制：
-- Azure 虚拟网络的 IPv6 在所有全局 Azure 商业区域中都使用所有部署方法可用。  美国政府云中的部署暂时仅限于 ARM （JSON） 模板、命令行接口 （CLI） 和 Powershell。  美国政府云门户中的 IPv6 支持将很快可用。  
+- Azure 虚拟网络的 IPv6 在所有全局 Azure 商业区域中都使用所有部署方法可用。  美国政府云中的部署暂时仅限于 ARM （JSON） 模板、命令行接口 （CLI） 和 Powershell。  美国政府云门户中的 IPv6 支持将很快提供。  
 - 在启用了 IPv6 的 VNET 中，ExpressRoute 网关可用于仅 IPv4 流量。  对 IPv6 流量的支持已在我们的路线图中。   
 - VPN 网关不能在启用 IPv6 的 VNET 中使用，直接使用或与"使用远程网关"对等。
 - Azure 平台（AKS 等）不支持容器的 IPv6 通信。  

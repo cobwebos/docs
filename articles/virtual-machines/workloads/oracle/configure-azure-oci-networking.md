@@ -11,21 +11,26 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/02/2019
+ms.date: 03/16/2020
 ms.author: rogirdh
-ms.openlocfilehash: 0e2e16ccc04ff6df80597d646a00c40551e4cfd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd0b8a50d25cd8d1a66a8eb98e54ec231aa2c62f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302043"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878708"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>设置 Azure 和 Oracle 云基础结构之间的直接互连  
 
-为了创建[集成的多云体验](oracle-oci-overview.md)（预览），微软和甲骨文通过[ExpressRoute](../../../expressroute/expressroute-introduction.md)和[FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm)在 Azure 和 Oracle 云基础架构 （OCI） 之间提供直接互连。 通过 ExpressRoute 和 FastConnect 互连，客户可以体验低延迟、高吞吐量、两个云之间的私人直接连接。
+为了创造[集成的多云体验](oracle-oci-overview.md)，微软和甲骨文通过[ExpressRoute](../../../expressroute/expressroute-introduction.md)和[FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm)在Azure和甲骨文云基础设施（OCI）之间提供直接互连。 通过 ExpressRoute 和 FastConnect 互连，客户可以体验低延迟、高吞吐量、两个云之间的私人直接连接。
 
 > [!IMPORTANT]
-> Microsoft Azure 和 OCI 之间的连接处于预览阶段。 要在 Azure 和 OCI 之间建立低延迟连接，必须首先为此功能启用 Azure 订阅。 您必须通过填写此简短[调查表单](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)来注册预览版。 注册订阅后，你会收到电子邮件。 只有在收到确认电子邮件后，才能使用该功能。 您也可以联系 Microsoft 代表以启用此预览。 对预览功能的访问取决于可用性，并受 Microsoft 自行决定的限制。 调查的完成并不能保证访问。 此预览版在没有服务级别协议的情况下提供，不应用于生产工作负载。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息，请参阅 Microsoft Azure 预览[的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
+> 在 2020 年 5 月之前，Oracle 将在 Azure/Oracle 云互连解决方案中验证这些应用程序在 Azure 中运行。
+> * 电子商务套件
+> * JD Edwards EnterpriseOne
+> * PeopleSoft
+> * 甲骨文零售应用程序
+> * 甲骨文海龙财务管理
 
 下图显示了互连的高级概述：
 
@@ -36,8 +41,6 @@ ms.locfileid: "78302043"
 * 要在 Azure 和 OCI 之间建立连接，必须具有活动 Azure 订阅和活动 OCI 租约。
 
 * 仅当 Azure ExpressRoute 对等互连位置靠近或与 OCI FastConnect 位于同一对等位置时，才可能连接。 请参阅[区域可用性](oracle-oci-overview.md#region-availability)。
-
-* 必须为此预览功能启用 Azure 订阅。
 
 ## <a name="configure-direct-connectivity-between-expressroute-and-fastconnect"></a>配置快速路由和快速连接之间的直接连接
 
@@ -63,7 +66,7 @@ ms.locfileid: "78302043"
     * 在**提供程序服务密钥**中，粘贴 ExpressRoute 服务密钥。
     * 使用上一步中划分的第一个 /30 专用 IP 地址空间，用于**主 BGP IP 地址**，使用辅助**BGP IP**地址的第二 /30 专用 IP 地址空间。
         * 将 Oracle BGP IP 地址（主和辅助）的两个范围的第一个可使用地址和第二个地址分配给客户 BGP IP 地址（从快速连接的角度来看）。 第一个可使用的 IP 地址是 /30 地址空间中的第二个 IP 地址（第一个 IP 地址由 Microsoft 保留）。
-    * 单击 **“创建”**。
+    * 单击“创建”。 
 1. 使用路由表，通过动态路由网关完成将 FastConnect 连接到 Oracle 租户下的虚拟云网络。
 1. 导航到 Azure，并确保已预配 ExpressRoute 电路的**提供程序状态**更改为**预配**，并且已预配**Azure 私有**类型的对等互连。 这是以下步骤的先决条件。
 

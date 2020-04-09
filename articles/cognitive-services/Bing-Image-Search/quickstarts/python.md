@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用 REST API 和 Python 搜索图像 - 必应图像搜索
+title: 快速入门：使用必应图像搜索 REST API 和 Python 搜索图像
 titleSuffix: Azure Cognitive Services
 description: 使用本快速入门，通过 Python 将图像搜索请求发送到必应图像搜索 REST API，并接收 JSON 响应。
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 12/06/2019
+ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: f3d00688feb0f9d42e80cdbb51753483e53c388d
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 6287b9b8e6129fd62a896e5ac1fcca29febbf01a
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930727"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478540"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>快速入门：使用必应图像搜索 REST API 和 Python 搜索图像
 

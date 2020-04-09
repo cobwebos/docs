@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 181f43e060e3b4b41babeee375365a97e1d224aa
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 03f79535b3a62fbb4d0309ae86a142bd842cc308
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411272"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982882"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>用于 SQL API 的 Azure Cosmos DB Node.js SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -234,7 +234,7 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 * 构建重组。 允许在生成时拉取 SDK 版本。
 
 ### <a name=""></a><a name="2.1.0"/>2.1.0</a>
-#### <a name="new-features"></a>新功能
+#### <a name="new-features"></a>新增功能
 * 添加了更改源支持（#196）
 * 添加了用于索引的多多边形数据类型（#191）
 * 将"键"属性添加到构造函数作为主密钥 （#202） 的别名
@@ -295,14 +295,14 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 
 ### <a name=""></a><a name="1.14.0"/>1.14.0</a>
 * 添加了对会话一致性的支持。
-* 此 SDK 版本需要最新版本的 Azure Cosmos DB 模拟器（可从 https://aka.ms/cosmosdb-emulator 下载）。
+* 此 SDK 版本需要最新版本的[Azure Cosmos DB 仿真器](https://aka.ms/cosmosdb-emulator)。
 
 ### <a name=""></a><a name="1.13.0"/>1.13.0</a>
 * 防拆分跨分区查询。
 * 添加对带有前导和尾随斜杠（和对应测试）的资源链接的支持。
 
 ### <a name=""></a><a name="1.12.2"/>1.12.2</a>
-*   npm 文档已修复。
+*    npm 文档已修复。
 
 ### <a name=""></a><a name="1.12.1"/>1.12.1</a>
 * 修复了 executeStoredProcedure 中的一个 bug，其中涉及的文档具有特殊 Unicode 字符（LS、PS）。
@@ -356,7 +356,7 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 * 修复了 hashPartitionResolver resolveForRead()：当没有提供分区键时，抛出异常，而不是返回所有已注册链接的列表。
 
 ### <a name=""></a><a name="1.5.4"/>1.5.4</a>
-* 修复问题 [#100](https://github.com/Azure/azure-documentdb-node/issues/100) - 专用 HTTPS 代理：避免因 Azure Cosmos DB 用途而修改全局代理。 对所有 lib 的请求均使用专用代理。
+* 修复问题 [#100](https://github.com/Azure/azure-documentdb-node/issues/100) - 专用 HTTPS 代理：避免因 Azure Cosmos DB 用途而修改全局代理。 对所有 lib 的请求使用专用代理。
 
 ### <a name=""></a><a name="1.5.3"/>1.5.3</a>
 * 修复了问题 [#81](https://github.com/Azure/azure-documentdb-node/issues/81) - 正确处理媒体 ID 中的短划线。

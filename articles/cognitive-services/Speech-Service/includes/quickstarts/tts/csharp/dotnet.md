@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 08/27/2019
+ms.date: 04/04/2020
 ms.author: yinhew
-ms.openlocfilehash: b615ba8085650e9aa686fb4a229d9752c4f6e2ce
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: de3a81a66275b4f58ef0427c410046f2694471b1
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925648"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671303"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -23,7 +23,7 @@ ms.locfileid: "78925648"
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=dotnet)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
 
 ## <a name="add-sample-code"></a>添加示例代码
 

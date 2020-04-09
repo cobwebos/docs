@@ -1,27 +1,24 @@
 ---
-title: 将多租户应用添加到 Azure AD 应用程序库 |微软文档
+title: 将多租户应用添加到 Azure AD 应用程序库
 description: 说明如何在 Azure AD 应用程序库中列出自定义开发的多租户应用程序。
 services: active-directory
 documentationCenter: na
 author: rwike77
 manager: CelesteDG
-ms.assetid: 92c1651a-675d-42c8-b337-f78e7dbcc40d
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
-ms.openlocfilehash: be660ad42c1336d479f1793b20d2994682db1225
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 90f4d22ba782fd71460595f69a52e70be87a3047
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76702753"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883247"
 ---
 # <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>将多租户应用程序添加到 Azure AD 应用程序库
 

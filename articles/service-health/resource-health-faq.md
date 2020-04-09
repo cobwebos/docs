@@ -3,12 +3,12 @@ title: Azure 资源运行状况常见问题解答
 description: Azure 资源运行状况概述
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 5a15ded1c279e700fb71e5ea7aa866e5afc29f8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7459a29dca01dc186d75b4545f89068569975607
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75912781"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985025"
 ---
 # <a name="azure-resource-health-faq"></a>Azure 资源运行状况常见问题解答
 获取 Azure 资源运行状况常见问题的解答。
@@ -37,7 +37,7 @@ ms.locfileid: "75912781"
 ## <a name="how-can-i-get-help-for-a-resource-that-is-unavailable"></a>如果资源不可用，如何获取帮助？
 可以从资源运行状况边栏选项卡提交支持请求。 当资源因平台事件而不可用时，提交请求不需与 Microsoft 达成的支持协议。
 
-## <a name="does-resource-health-differentiate-between-unavailability-cased-by-platform-problems-versus-something-i-did"></a>资源运行状况是否会对平台问题导致的不可用与我的操作导致的不可用进行区分？
+## <a name="does-resource-health-differentiate-between-unavailability-caused-by-platform-problems-versus-something-i-did"></a>资源运行状况是否区分了平台问题引起的不可用情况和我所做的一些内容？
 是的，当资源不可用时，资源运行状况会将根本原因归为以下类别之一： 
 -   用户启动的操作
 -   计划内事件 

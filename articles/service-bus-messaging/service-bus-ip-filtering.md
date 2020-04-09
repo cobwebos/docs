@@ -11,17 +11,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: a20882de34cb306b767959e21327180ff284e658
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 24591c20ed707d9541eece0698ecd6e6b5ddee35
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475937"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878181"
 ---
 # <a name="configure-ip-firewall-rules-for-azure-service-bus"></a>为 Azure 服务总线配置 IP 防火墙规则
 默认情况下，只要请求附带有效的身份验证和授权，服务总线命名空间即可从 Internet 访问。 使用 IP 防火墙，您可以进一步将其限制为[CIDR（无类域间路由）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)表示法中的一组 IPv4 地址或 IPv4 地址范围。
 
 此功能在 Azure 服务总线应仅从某些已知站点访问的情况下非常有用。 防火墙规则使您能够配置规则以接受来自特定 IPv4 地址的流量。 例如，如果将服务总线与 Azure[快速路由][express-route]一起使用 ，则可以创建**防火墙规则**，仅允许来自本地基础结构 IP 地址或公司 NAT 网关地址的流量。 
+
+> [!IMPORTANT]
+> 防火墙和虚拟网络仅在服务总线的**高级**层中受支持。 如果升级到**首选层**不是一个选项，我们建议您保持共享访问签名 （SAS） 令牌的安全，并仅与授权用户共享。 有关 SAS 身份验证的信息，请参阅[身份验证和授权](service-bus-authentication-and-authorization.md#shared-access-signature)。
 
 ## <a name="ip-firewall-rules"></a>IP 防火墙规则
 IP 防火墙规则在服务总线命名空间级别应用。 因此，这些规则适用于通过任何受支持协议从客户端发出的所有连接。 如果某 IP 地址与服务总线命名空间上的允许 IP 规则不匹配，则将拒绝来自该地址的任何连接尝试并将其标记为“未经授权”。 响应不会提及 IP 规则。 IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决定了将执行接受操作还是执行拒绝操作。
@@ -44,8 +47,6 @@ IP 防火墙规则在服务总线命名空间级别应用。 因此，这些规�
 ## <a name="use-resource-manager-template"></a>使用 Resource Manager 模板
 本节具有创建虚拟网络和防火墙规则的示例 Azure 资源管理器模板。
 
-> [!IMPORTANT]
-> 防火墙和虚拟网络仅在服务总线的**高级**层中受支持。
 
 以下资源管理器模板支持向现有服务总线命名空间添加虚拟网络规则。
 

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: sukishen
-ms.openlocfilehash: e05aa6e8f656001eb9eb2a3717dde6c16f030e33
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d086484ece6faf95dccffb1e29da8a0e906b1da4
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80337153"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985620"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>使用 Azure 虚拟 WAN 和安全集线器与中国互连
 
@@ -54,7 +54,7 @@ ms.locfileid: "80337153"
 | --- | --- |
 | MPLS/IPVPN网络 |电讯盈科，中国电信全球 |
 |SDWAN| 电讯盈科，中国电信全球|
-| 专用互联网接入 | 电讯盈科、香港电讯、中国美孚、电讯盈科 |
+| 专用互联网接入 | 电讯盈科、香港电讯、中国美孚|
 
 通过您的提供商，您可以商定以下两种解决方案中的哪一种可用于访问 Microsoft 全球主干：
 

@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 555fb39836054be05102f4c28167d72016805639
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 241d90981ed9ba54d253e6c22c00f9e5a9197863
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481494"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884879"
 ---
 # <a name="how-provisioning-works"></a>预配工作原理
 
@@ -67,7 +67,7 @@ Azure AD 用户对象和每个 SaaS 应用的用户对象之间有一组预先�
 
 对于从 Azure AD 到 SaaS 应用程序的出站预配，依赖[用户或组分配](../manage-apps/assign-user-or-group-access-portal.md)是确定哪些用户处于预配范围内的最常见方法。 由于用户分配也用于启用单一登录，因此相同的方法可用于管理访问和预配。 基于分配的范围范围不适用于入站预配方案，如工作日和成功因素。
 
-* **组。** 使用 Azure AD 高级许可证计划，可以使用组分配对 SaaS 应用程序的访问权限。 然后，当预配范围设置为**仅同步分配的用户和组**时，Azure AD 预配服务将根据用户是否为分配给应用程序的组的成员预配或取消预配。 除非应用程序支持组对象，否则不会预配组对象本身。
+* **组。** 使用 Azure AD 高级许可证计划，可以使用组分配对 SaaS 应用程序的访问权限。 然后，当预配范围设置为**仅同步分配的用户和组**时，Azure AD 预配服务将根据用户是否为分配给应用程序的组的成员预配或取消预配。 除非应用程序支持组对象，否则不会预配组对象本身。 确保分配给应用程序的组将属性"安全启用"设置为"False"。
 
 * **动态组。** Azure AD 用户预配服务可以在[动态组中](../users-groups-roles/groups-create-rule.md)读取和预配用户。 请记住以下注意事项和建议：
 

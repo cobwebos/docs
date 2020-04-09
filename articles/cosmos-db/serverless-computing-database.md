@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 70545020899b69508a4cedb0fd7cf5495c847104
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 079c246f87bb8294f3c7ad6dea3391f5c67ba0ad
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462439"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985246"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>使用 Azure Cosmos DB 和 Azure Functions 的无服务器数据库计算
 
@@ -110,7 +110,7 @@ Azure Cosmos DB 和 Azure Functions 支持采用以下方式集成数据库和�
 
 在 Azure 门户和 Visual Studio 2019 中可以本机集成 Azure Cosmos DB 和 Azure Functions。
 
-* 可在 Azure Functions 门户中创建触发器。 有关快速入门说明，请参阅[在 Azure 门户中创建适用于 Cosmos DB 的 Azure Functions 触发器](https://aka.ms/cosmosdbtriggerportalfunc)。
+* 可在 Azure Functions 门户中创建触发器。 有关快速入门说明，请参阅[在 Azure 门户中创建适用于 Cosmos DB 的 Azure Functions 触发器](../azure-functions/functions-create-cosmos-db-triggered-function.md)。
 * 在 Azure Cosmos DB 门户中，可将适用于 Cosmos DB 的 Azure Functions 触发器添加到同一资源组中的现有 Azure 函数应用。
 * 在 Visual Studio 2019 中，可以使用 [Azure Functions 工具](../azure-functions/functions-develop-vs.md)创建触发器：
 
@@ -146,6 +146,6 @@ Azure Functions 的优点：
 
 现在让我们真正连接 Azure Cosmos DB 和 Azure Functions： 
 
-* [在 Azure 门户中创建适用于 Cosmos DB 的 Azure Functions 触发器](https://aka.ms/cosmosdbtriggerportalfunc)
-* [使用 Azure Cosmos DB 输入绑定创建 Azure Functions HTTP 触发器](https://aka.ms/cosmosdbinputbind)
+* [在 Azure 门户中创建适用于 Cosmos DB 的 Azure Functions 触发器](../azure-functions/functions-create-cosmos-db-triggered-function.md)
+* [使用 Azure Cosmos DB 输入绑定创建 Azure Functions HTTP 触发器](../azure-functions/functions-bindings-cosmosdb.md?tabs=csharp)
 * [Azure Cosmos DB 绑定和触发器](../azure-functions/functions-bindings-cosmosdb-v2.md)

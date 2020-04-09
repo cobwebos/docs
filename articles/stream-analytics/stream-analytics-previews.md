@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.openlocfilehash: 3e99263f6bf472c256e1747b8567249bbd62a445
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c265665be26dcc6868ea9a303b0c12c52dfe05b
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78969618"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878300"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure 流分析预览功能
 
@@ -47,9 +47,9 @@ ms.locfileid: "78969618"
 可以在 Visual Studio Code 中创建 Azure 流分析作业。 请参阅我们的 [VS Code 入门教程](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code)。
 
 
-### <a name="integration-with-azure-machine-learning"></a>与 Azure 机器学习集成
+### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>通过 Azure 机器学习管理的自定义 ML 模型提供实时高性能评分
 
-可使用机器学习 (ML) 函数缩放流分析作业。 若要详细了解如何在流分析作业中使用 ML 函数，请访问[使用 Azure 机器学习函数缩放流分析作业](stream-analytics-scale-with-machine-learning-functions.md)。 查看[使用 Azure 流分析和 Azure 机器学习执行情绪分析](stream-analytics-machine-learning-integration-tutorial.md)的实际方案。
+Azure 流分析利用预先训练的自定义机器学习模型来支持高性能实时评分，这些模型通过 Azure 机器学习进行管理，在 Azure Kubernetes 服务 (AKS) 或 Azure 容器实例 (ACI) 中进行托管，不需编写代码。 [注册](https://aka.ms/asapreview1)预览
 
 
 ### <a name="live-data-testing-in-visual-studio"></a>Visual Studio 中的实时数据测试
@@ -64,10 +64,6 @@ ms.locfileid: "78969618"
 ## <a name="other-previews"></a>其他预览版功能
 
 以下功能也可根据要求在预览版中使用。
-
-### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>通过 Azure 机器学习管理的自定义 ML 模型提供实时高性能评分
-
-Azure 流分析利用预先训练的自定义机器学习模型来支持高性能实时评分，这些模型通过 Azure 机器学习进行管理，在 Azure Kubernetes 服务 (AKS) 或 Azure 容器实例 (ACI) 中进行托管，不需编写代码。 [注册](https://aka.ms/asapreview1)预览
 
 ### <a name="support-for-azure-stack"></a>支持 Azure Stack
 此功能在 Azure IoT Edge 运行时上启用，可利用自定义 Azure Stack 功能，例如对在 Azure Stack 上运行的本地输入和输出的本机支持（例如，事件中心、IoT 中心、Blob 存储）。 利用这一新的集成，可以构建混合体系结构，可以在数据生成位置附近分析数据，从而降低延迟并最大限度地提高见解。

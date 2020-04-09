@@ -3,26 +3,21 @@ title: 排除 TLS/SSL 问题（MSAL iOS/macOS） |蔚蓝
 titleSuffix: Microsoft identity platform
 description: 了解如何使用带有 MSAL 的 TLS/SSL 证书解决各种问题。目标 C 库。
 services: active-directory
-documentationcenter: ''
 author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: marsma
-ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 42bd016a9d0882cc97eaa800235226b2de9569a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1507231c3ab395319d5ce95ec06dbb592c324aa6
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369401"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80881071"
 ---
 # <a name="how-to-troubleshoot-msal-for-ios-and-macos-tlsssl-issues"></a>如何：针对 iOS 和 macOS TLS/SSL 问题排除 MSAL 故障
 

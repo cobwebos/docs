@@ -11,30 +11,30 @@ ms.service: virtual-machines
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/04/2019
+ms.date: 03/16/2020
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: e1249913300be532cc6514f1478bbc6f4183c001
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5d5ebda850163989e6ef1af94ec623d2d758f07
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300547"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878283"
 ---
-# <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>集成微软 Azure 和 Oracle 云基础架构的 Oracle 应用程序解决方案（预览版）
+# <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>集成微软 Azure 和 Oracle 云基础架构的 Oracle 应用程序解决方案
 
 Microsoft 和 Oracle 已合作提供低延迟、高吞吐量的跨云连接，使您能够充分利用这两种云。 
 
 使用此跨云连接，可以分区多层应用程序，以在 Oracle 云基础结构 （OCI） 以及 Microsoft Azure 上的应用程序和其他层上运行数据库层。 体验类似于在单个云中运行整个解决方案堆栈。 
-
-> [!IMPORTANT]
-> 此跨云功能当前处于预览状态，并且[适用限制](#region-availability)。 要在 Azure 和 OCI 之间建立低延迟连接，必须首先为此功能启用 Azure 订阅。 您必须通过填写此简短[调查表单](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)来注册预览版。 注册订阅后，你会收到电子邮件。 只有在收到确认电子邮件后，才能使用该功能。 您也可以联系 Microsoft 代表以启用此预览。 对预览功能的访问取决于可用性，并受 Microsoft 自行决定的限制。 调查的完成并不能保证访问。 此预览版在没有服务级别协议的情况下提供，不应用于生产工作负载。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息，请参阅 Microsoft Azure 预览[的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
 
 如果您有兴趣完全在 Azure 基础结构上部署 Oracle 解决方案，请参阅[Oracle VM 映像及其在 Microsoft Azure 上的部署](oracle-vm-solutions.md)。
 
 ## <a name="scenario-overview"></a>方案概述
 
 跨云连接为您提供了在 Azure 虚拟机上运行 Oracle 行业领先的应用程序和您自己的自定义应用程序的解决方案，同时享受 OCI 中托管数据库服务的优势。 
+
+> [!IMPORTANT]
+> 在 2020 年 5 月之前，Oracle 将在 Azure/Oracle 云互连解决方案中验证这些应用程序在 Azure 中运行。
 
 可在跨云配置中运行的应用程序包括：
 

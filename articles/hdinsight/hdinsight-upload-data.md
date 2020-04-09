@@ -1,23 +1,23 @@
 ---
 title: 在 HDInsight 中上传 Apache Hadoop 作业的数据
-description: 了解如何使用 Azure 经典 CLI、Azure 存储资源管理器、Azure PowerShell、Hadoop 命令行或 Sqoop 在 HDInsight 中上传和访问 Apache Hadoop 作业的数据。
+description: 了解如何上传和访问 HDInsight 中的 Apache Hadoop 作业的数据。 使用 Azure 经典 CLI、Azure 存储资源管理器、Azure PowerShell、Hadoop 命令行或 Sqoop。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdiseo17may2017
 ms.topic: conceptual
-ms.date: 10/29/2019
-ms.openlocfilehash: 7eb1f7e1ce02a30f84cb520438f60fcbcfa3a965
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdiseo17may2017
+ms.date: 04/07/2020
+ms.openlocfilehash: c862633245e75613f9e4f9956486f872b96239f8
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73100135"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875004"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>在 HDInsight 中上传 Apache Hadoop 作业的数据
 
-Azure HDInsight 提供一个基于 Azure 存储和 Azure Data Lake Storage（Gen1 和 Gen2）的功能完备的 Hadoop 分布式文件系统 (HDFS)。 Azure 存储以及 Data Lake Storage Gen1 和 Data Lake Storage Gen2 设计为一个 HDFS 扩展，为客户提供无缝体验。 它们通过启用 Hadoop 生态系统中的整套组件以直接操作其管理的数据。 Azure 存储、Data Lake Storage Gen1 和 Data lake Storage Gen2 是独特的文件系统，并且已针对数据的存储和计算进行了优化。 有关使用 Azure 存储的好处的信息，请参阅[将 Azure 存储与 HDInsight 一起使用](hdinsight-hadoop-use-blob-storage.md)，[将数据存储湖存储 Gen1 与 HDInsight 一起使用](hdinsight-hadoop-use-data-lake-store.md)，并将[数据存储 Gen2 与 HDInsight 一起使用](hdinsight-hadoop-use-data-lake-storage-gen2.md)。
+HDInsight 通过 Azure 存储和 Azure 数据湖存储提供 Hadoop 分布式文件系统 （HDFS）。 此存储包括第 1 代和第 2 代。 Azure 存储和数据存储湖存储第 1 代和第 2 代设计为 HDFS 扩展。 它们使 Hadoop 环境中的完整组件集能够直接基于其管理的数据进行操作。 Azure 存储、数据存储第 1 代和第 2 代是不同的文件系统。 系统经过优化，可存储数据并计算该数据。 若要了解使用 Azure 存储的优点，请参阅[将 Azure 存储与 HDInsight 配合使用](hdinsight-hadoop-use-blob-storage.md)。 另请参阅，[使用数据湖存储第 1 代与 HDInsight](hdinsight-hadoop-use-data-lake-store.md)， 并使用[数据存储湖存储 Gen2 与 HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,18 +39,18 @@ Microsoft 提供以下实用工具用于操作 Azure 存储：
 | --- |:---:|:---:|:---:|
 | [Azure 门户](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
 | [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
-| [Azure 电源外壳](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
+| [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
 | [阿兹比贝](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
-| [Hadoop 命令](#commandline) |✔ |✔ |✔ |
+| [Hadoop 命令](#hadoop-command-line) |✔ |✔ |✔ |
 
 > [!NOTE]  
 > Hadoop 命令仅在 HDInsight 群集上可用。 使用该命令只能将数据从本地文件系统载入 Azure 存储。  
 
-## <a name="hadoop-command-line"></a><a id="commandline"></a>Hadoop 命令行
+## <a name="hadoop-command-line"></a>Hadoop 命令行
 
 仅当数据已存在于群集头节点中时，才可以使用 Hadoop 命令行将数据存储到 Azure 存储 Blob。
 
-若要使用 Hadoop 命令，必须先通过 [SSH 或 PuTTY](hdinsight-hadoop-linux-use-ssh-unix.md) 连接到头节点。
+要使用 Hadoop 命令，必须首先使用[SSH 或 PuTTY](hdinsight-hadoop-linux-use-ssh-unix.md)连接到头节点。
 
 连接之后，可以使用以下语法将文件上传到存储。
 
@@ -58,20 +58,20 @@ Microsoft 提供以下实用工具用于操作 Azure 存储：
 hadoop fs -copyFromLocal <localFilePath> <storageFilePath>
 ```
 
-例如： `hadoop fs -copyFromLocal data.txt /example/data/data.txt`
+例如，`hadoop fs -copyFromLocal data.txt /example/data/data.txt`
 
 由于 HDInsight 的默认文件系统在 Azure 存储中，因此 /example/data/data.txt 实际是在 Azure 存储中。 也可以将该文件表示为：
 
     wasbs:///example/data/data.txt
 
-或
+or
 
     wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
 
 有关处理文件的其他 Hadoop 命令的列表，请参阅[https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
 > [!WARNING]  
-> 在 Apache HBase 群集上，写入数据为 256 KB 时会使用默认块大小。 虽然在使用 HBase Api 或 REST API 时可良好运行，但使用 `hadoop` 或 `hdfs dfs` 命令编写大于 ~12 GB 的数据会导致错误。 有关详细信息，请参阅本文的[在 Blob 上编写时的存储异常](#storageexception)部分。
+> 在 Apache HBase 群集上，写入数据为 256 KB 时会使用默认块大小。 虽然在使用 HBase Api 或 REST API 时可良好运行，但使用 `hadoop` 或 `hdfs dfs` 命令编写大于 ~12 GB 的数据会导致错误。 有关详细信息，请参阅本文的[在 Blob 上编写时的存储异常](#storage-exception-for-write-on-blob)部分。
 
 ## <a name="graphical-clients"></a>图形客户端
 
@@ -80,8 +80,8 @@ hadoop fs -copyFromLocal <localFilePath> <storageFilePath>
 | 客户端 | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
 | [用于 HDInsight 的 Microsoft Visual Studio 工具](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources) |✔ |✔ |✔ |
-| [Azure 存储资源管理器](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |✔ |✔ |✔ |
-| [Cerulea](https://www.cerebrata.com/products/cerulean/features/azure-storage) | | |✔ |
+| [Azure 存储浏览器](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |✔ |✔ |✔ |
+| [`Cerulea`](https://www.cerebrata.com/products/cerulean/features/azure-storage) | | |✔ |
 | [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) | | |✔ |
 | [适用于 Microsoft Azure 的 CloudBerry Explorer](https://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
 | [Cyberduck](https://cyberduck.io/) | |✔ |✔ |
@@ -94,7 +94,7 @@ hadoop fs -copyFromLocal <localFilePath> <storageFilePath>
 
 ### <a name="azure-data-factory"></a>Azure 数据工厂
 
-Azure 数据工厂服务是完全托管的服务，可将数据存储、数据处理及数据移动服务组合成有效、可缩放且可靠的数据生产管道。
+Azure 数据工厂服务是一种完全托管的服务，用于将数据组合：将存储、处理和移动服务组合到简化、适应性强和可靠的数据生产管道中。
 
 |存储类型|文档|
 |----|----|
@@ -102,9 +102,9 @@ Azure 数据工厂服务是完全托管的服务，可将数据存储、数据�
 |Azure Data Lake Storage Gen1|[使用 Azure 数据工厂向/从 Azure Data Lake Storage Gen1 复制数据](../data-factory/connector-azure-data-lake-store.md)|
 |Azure Data Lake Storage Gen2 |[使用 Azure 数据工厂将数据加载到 Azure Data Lake Storage Gen2 中](../data-factory/load-azure-data-lake-storage-gen2.md)|
 
-### <a name="apache-sqoop"></a><a id="sqoop"></a>Apache Sqoop
+### <a name="apache-sqoop"></a>Apache Sqoop
 
-Sqoop 是一种为在 Hadoop 和关系数据库之间传输数据而设计的工具。 可以使用此工具将数据从关系数据库管理系统 (RDBMS)（如 SQL Server、MySQL 或 Oracle）中导入到 Hadoop 分布式文件系统 (HDFS)，在 Hadoop 中使用 MapReduce 或 Hive 转换数据，然后回过来将数据导出到 RDBMS。
+Sqoop 是一种为在 Hadoop 和关系数据库之间传输数据而设计的工具。 使用它从关系数据库管理系统 （RDBMS） 导入数据，例如 SQL Server、MySQL 或 Oracle。 然后进入 Hadoop 分布式文件系统 （HDFS）。 使用 MapReduce 或 Hive 转换 Hadoop 中的数据，然后将数据导出回 RDBMS。
 
 有关详细信息，请参阅[将 Sqoop 与 HDInsight 配合使用](hadoop/hdinsight-use-sqoop.md)。
 
@@ -123,9 +123,9 @@ Sqoop 是一种为在 Hadoop 和关系数据库之间传输数据而设计的工
 
 ## <a name="troubleshooting"></a>疑难解答
 
-### <a name="storage-exception-for-write-on-blob"></a><a id="storageexception"></a>在 Blob 上编写时的存储异常
+### <a name="storage-exception-for-write-on-blob"></a>在 Blob 上编写时的存储异常
 
-**症状**：使用 `hadoop` 或 `hdfs dfs` 命令在 HBase 群集上编写大于或等于 ~12 GB 的文件时，可能会遇到以下错误：
+**症状**： 当`hadoop`使用`hdfs dfs`或 命令在 HBase 群集上写入 +12 GB 或更大的文件时，可能会遇到以下错误：
 
     ERROR azure.NativeAzureFileSystem: Encountered Storage Exception for write on Blob : example/test_large_file.bin._COPYING_ Exception details: null Error Code : RequestBodyTooLarge
     copyFromLocal: java.io.IOException
@@ -149,7 +149,7 @@ Sqoop 是一种为在 Hadoop 和关系数据库之间传输数据而设计的工
 
 **原因**：写入 Azure 存储时，HDInsight 群集上的 HBase 默认为 256 KB 的块大小。 尽管这对 HBase API 或 REST API 来说可良好运行，但使用 `hadoop` 或 `hdfs dfs` 命令行实用工具时则会导致错误。
 
-**解决方法**：使用 `fs.azure.write.request.size` 指定更大的块大小。 可以通过 `-D` 参数在每次使用时执行此操作。 以下命令是将此参数用于 `hadoop` 命令的示例：
+**解决方法**：使用 `fs.azure.write.request.size` 指定更大的块大小。 您可以使用 参数在每次使用的基础上`-D`执行此修改。 以下命令是将此参数用于 `hadoop` 命令的示例：
 
 ```bash
 hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file.bin /example/data
@@ -157,11 +157,9 @@ hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file
 
 还可使用 Apache Ambari 以全局方式增加 `fs.azure.write.request.size` 的值。 可使用以下步骤在 Ambari Web UI 中更改该值：
 
-1. 在浏览器中，转到群集的 Ambari Web UI。 这是`https://CLUSTERNAME.azurehdinsight.net`，群集`CLUSTERNAME`的名称在哪里。
-
-    出现提示时，输入群集的管理员名称和密码。
+1. 在浏览器中，转到群集的 Ambari Web UI。 URL 是`https://CLUSTERNAME.azurehdinsight.net`，`CLUSTERNAME`群集的名称位于此位置。 出现提示时，输入群集的管理员名称和密码。
 2. 在屏幕左侧选择“HDFS”****，并选择“配置”**** 选项卡。
-3. 在“筛选...”**** 字段中输入 `fs.azure.write.request.size`。 这会在页面中间显示字段和当前值。
+3. 在“筛选...”**** 字段中输入 `fs.azure.write.request.size`。
 4. 将值从 262144 (256 KB) 更改为新的值。 例如，4194304 (4 MB)。
 
     ![通过 Ambari Web UI 更改值的图像](./media/hdinsight-upload-data/hbase-change-block-write-size.png)
@@ -170,9 +168,9 @@ hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，已了解如何将数据导入 HDInsight，请阅读以下文章了解如何执行分析：
+现在，您已经了解如何将数据输入 HDInsight，请阅读以下文章以了解分析：
 
 * [开始使用 Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [以编程方式提交 Apache Hadoop 作业](hadoop/submit-apache-hadoop-jobs-programmatically.md)
 * [将 Apache Hive 和 HDInsight 配合使用](hadoop/hdinsight-use-hive.md)
-* [将 Apache Pig 和 HDInsight 配合使用](hadoop/hdinsight-use-pig.md)
+* [将 Apache Pig 和 HDInsight 配合使用](./use-pig.md)

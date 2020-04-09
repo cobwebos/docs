@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 7b5569738721038beadc78d94c81393803b6d36a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa0cf5d698bc2186928e0db19be173ec725485e8
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79250980"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985926"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>媒体服务功能的跨数据中心方案和可用性
 
@@ -111,7 +111,7 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 3. 预览实时流。
 4. 通过常用流式处理协议（例如 MPEG DASH、Smooth、HLS）将内容直接传送给客户，或传送到内容分发网络 (CDN) 进行进一步分发。
 
-    -或-
+    \- 或 -
 
     记录和存储引入的内容，以便稍后进行流式处理（视频点播）。
 
@@ -169,7 +169,7 @@ AMS 客户可以缩放其 AMS 帐户中的流式处理终结点、媒体处理�
 
 #### <a name="availability"></a>可用性
 
-若要确定数据中心是否提供媒体服务，请浏览到 https://azure.microsoft.com/status/，并滚动到 MEDIA 表。
+使用[按区域的 Azure 产品](https://azure.microsoft.com/global-infrastructure/services/?products=media-services&regions=all)来确定媒体服务在特定数据中心中是否可用。
 
 ### <a name="streaming-endpoints"></a>流式处理终结点 
 
@@ -177,10 +177,10 @@ AMS 客户可以缩放其 AMS 帐户中的流式处理终结点、媒体处理�
 
 #### <a name="availability"></a>可用性
 
-|“属性”|状态|数据中心
+|名称|状态|数据中心
 |---|---|---|
-|Standard|GA|All|
-|Premium|GA|All|
+|标准|GA|全部|
+|Premium|GA|全部|
 
 ### <a name="live-encoding"></a>实时编码
 
@@ -196,7 +196,7 @@ AMS 提供两个按需编码器：**** Media Encoder Standard 和 **** Media Enc
 
 |媒体处理器名称|状态|数据中心
 |---|---|---|
-|媒体编码器标准版|GA|All|
+|媒体编码器标准版|GA|全部|
 |媒体编码器高级工作流|GA|除中国以外|
 
 ### <a name="analytics-media-processors"></a>分析媒体处理器
@@ -210,12 +210,12 @@ AMS 提供两个按需编码器：**** Media Encoder Standard 和 **** Media Enc
 
 |媒体处理器名称|状态|数据中心
 |---|---|---|
-|Azure 媒体面部检测器|预览|All|
-|Azure 媒体索引器|GA|All|
-|Azure Media Motion Detector|预览|All|
-|Azure 媒体 OCR|预览|All|
-|Azure 媒体修订|GA|All|
-|Azure 媒体视频缩略图|预览|All|
+|Azure 媒体面部检测器|预览|全部|
+|Azure 媒体索引器|GA|全部|
+|Azure Media Motion Detector|预览|全部|
+|Azure 媒体 OCR|预览|全部|
+|Azure 媒体修订|GA|全部|
+|Azure 媒体视频缩略图|预览|全部|
 
 ### <a name="protection"></a>保护
 
@@ -225,10 +225,10 @@ AMS 提供两个按需编码器：**** Media Encoder Standard 和 **** Media Enc
 
 |加密|状态|数据中心|
 |---|---|---| 
-|存储|GA|All|
-|AES-128 密钥|GA|All|
-|Fairplay|GA|All|
-|PlayReady|GA|All|
+|存储|GA|全部|
+|AES-128 密钥|GA|全部|
+|Fairplay|GA|全部|
+|PlayReady|GA|全部|
 |Widevine|GA|德国、美国联邦政府和中国除外。
 
 ### <a name="reserved-units-rus"></a>预留单位 (RU)
@@ -251,7 +251,7 @@ AMS 提供两个按需编码器：**** Media Encoder Standard 和 **** Media Enc
 
 |RU 类型名称|状态|数据中心
 |---|---|---|
-|S1|GA|All|
+|S1|GA|全部|
 |S2|GA|巴西南部和印度西部除外|
 |S3|GA|印度西部除外|
 

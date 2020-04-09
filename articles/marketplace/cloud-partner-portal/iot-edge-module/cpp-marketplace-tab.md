@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 4290bad405ddab6d89cac5ef7bfd185247d41da1
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: df51a408cc47908a240ceb66bf510fe3df3ce87f
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745115"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983392"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>IoT Edge 模块“市场”选项卡
 
 >[!Important]
->从 2020 年 3 月 30 日开始，我们将开始将 IoT Edge 模块产品的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[创建 IoT Edge 模块产品/服务](https://aka.ms/AzureCreateIoT)中的说明进行操作，以管理迁移的优惠。
+>从 2020 年 4 月 13 日起，我们将开始将 IoT Edge 模块产品的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[创建 IoT Edge 模块产品/服务](https://aka.ms/AzureCreateIoT)中的说明进行操作，以管理迁移的优惠。
 
 在“新建套餐”页的“市场”选项卡中，可向潜在客户提供营销、销售和法律信息与协议，以及管理从市场生成的潜在顾客。******** 这个较长的窗体划分为四个部分：“概述”、“营销项目”、“潜在顾客管理”和“法律条款”。****************
 
@@ -98,7 +98,7 @@ ms.locfileid: "80745115"
 | **映像**                 | 屏幕截图图像，533x324 像素 PNG 格式                               |
 | *视频*  | 视频显示在产品详细信息页上。 它们能够十分直观地展示 IoT Edge 模块的作用及其工作原理。 |
 | **名称**                  | 名称或标题。 最大长度为 100 个字符。                             |
-| **链接**                  | 视频 URL，托管在 YouTube 或 Vimeo 中                                        |
+| **链接**。                  | 视频 URL，托管在 YouTube 或 Vimeo 中                                        |
 | **缩略图**             | 533x324 像素 PNG 格式                                                     |
 |  |  |
 

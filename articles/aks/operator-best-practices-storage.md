@@ -5,12 +5,12 @@ description: 了解有关 Azure Kubernetes 服务 (AKS) 中的存储、数据加
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 90abf2e36fd46c707904d87f00362091fe931743
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 843b775f7761af7cd40140c9bf34768d63eb5a50
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668101"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877892"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的存储和备份的最佳做法
 
@@ -40,7 +40,7 @@ ms.locfileid: "80668101"
 
 为 AKS 中的卷提供的两种主要存储类型由 Azure 磁盘或 Azure 文件支持。 为了提高安全性，两种类型的存储都默认使用 Azure 存储服务加密 (SSE) 来加密静态数据。 目前无法使用 AKS 节点级别的 Azure 磁盘加密对磁盘进行加密。
 
-Azure 文件目前在标准性能层中可用。 Azure 磁盘在标准和高级性能层可用：
+Azure 文件和 Azure 磁盘在标准性能和高级性能层中都可用：
 
 - *高级*磁盘由高性能固态硬盘 (SSD) 支持。 建议为所有生产工作负载使用高级磁盘。
 - *标准*磁盘由常规旋转磁盘 (HDD) 支持，适用于存档或不经常访问的数据。

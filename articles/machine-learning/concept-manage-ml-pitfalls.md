@@ -1,5 +1,5 @@
 ---
-title: 通过自动化机器学习管理常见的 ML 模型陷阱。
+title: 使用 AutoML 避免过度拟合&不平衡的数据
 titleSuffix: Azure Machine Learning
 description: 使用 Azure 机器学习的自动机器学习解决方案识别和管理 ML 模型的常见缺陷。
 services: machine-learning
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
-ms.date: 03/27/2020
-ms.openlocfilehash: e0bc1aa48dfb40ea146fa79fdfd57da841ca1404
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.date: 04/09/2020
+ms.openlocfilehash: 76f920ad6aae68defb567a7a6623d1ffd488af5f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385527"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874851"
 ---
-# <a name="manage-ml-pitfalls-with-automated-machine-learning"></a>通过自动机器学习管理 ML 陷阱
+# <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>通过自动机器学习防止数据过度拟合和不平衡
 
 在构建机器学习模型时，过度拟合和不平衡的数据是常见的陷阱。 默认情况下，Azure 机器学习的自动机器学习提供图表和指标，以帮助您识别这些风险，并实现最佳实践来帮助缓解这些风险。 
 
@@ -71,7 +71,7 @@ ms.locfileid: "80385527"
 交叉验证 (CV) 是提取整个训练数据的多个子集，并针对每个子集训练模型的过程。 其思路是，某个模型可能比较“幸运”，在预测一个子集时具有很高的准确度，但使用许多子集时，模型无法每次都实现这种高准确度。 执行 CV 时，需要提供一个验证维持数据集，指定 CV 折数（子集数），然后，自动化 ML 将训练模型并优化超参数，以尽量减少验证集的错误。 可能有一个 CV 折过度拟合，但如果使用许多的折，则可以减少最终模型过度拟合的可能性。 缺点是 CV 会导致训练时间变得更长，从而增大成本，因为模型不是训练一次，而是针对 *n* 个 CV 子集中的每个子集训练一次。 
 
 > [!NOTE]
-> 默认不会启用交叉验证；必须在自动化 ML 设置中进行配置。 但是，在配置交叉验证并提供验证数据集后，该过程将为您自动执行。 请参阅 
+> 默认不会启用交叉验证；必须在自动化 ML 设置中进行配置。 但是，在配置交叉验证并提供验证数据集后，该过程将为您自动执行。 查看 
 
 <a name="imbalance"></a>
 
@@ -83,7 +83,7 @@ ms.locfileid: "80385527"
 
 此外，自动化 ML 运行会自动生成以下图表，以帮助你了解模型分类的正确性，并识别可能受到不平衡数据影响的模型。
 
-图表| 描述
+图表| 说明
 ---|---
 [混淆矩阵](how-to-understand-automated-ml.md#confusion-matrix)| 根据数据的实际标签评估正确分类的标签。 
 [精准率-召回率](how-to-understand-automated-ml.md#precision-recall-chart)| 根据发现的数据标签实例比评估正确的标签比 

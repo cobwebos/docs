@@ -3,12 +3,12 @@ title: 大规模监视委派资源
 description: 了解如何跨要管理的客户租户以可扩展的方式有效地使用 Azure 监视器日志。
 ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 217df3c55ab54b6569bae8cacb338764ecb7125d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a600cec524c9f715ada9da09dea35f3baa98151
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77122891"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985195"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>大规模监视委派资源
 
@@ -28,7 +28,7 @@ ms.locfileid: "77122891"
 
 创建日志分析工作区后，可以跨客户层次结构部署 Azure[策略](../../governance/policy/index.yml)，以便将诊断数据发送到每个租户中的相应工作区。 您部署的确切策略可能因要监视的资源类型而异。
 
-要了解有关创建策略的更多信息，请参阅[教程：创建和管理策略以强制实施合规性](../../governance/policy/tutorials/create-and-manage.md)。 此[社区工具](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/tools/azure-diagnostics-policy-generator)提供一个脚本，可帮助您创建策略来监视您选择的特定资源类型。
+要了解有关创建策略的更多信息，请参阅[教程：创建和管理策略以强制实施合规性](../../governance/policy/tutorials/create-and-manage.md)。 此[社区工具](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/azure-diagnostics-policy-generator)提供一个脚本，可帮助您创建策略来监视您选择的特定资源类型。
 
 确定要部署哪些策略后，可以[大规模将它们部署到委派的订阅](policy-at-scale.md)。
 

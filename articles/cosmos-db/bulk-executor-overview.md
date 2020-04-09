@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 9d335bcf6daf0b38e7a68ca2d40894dd64c93e40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: af17f9c2ef7eea5eb531327d4df13d5885a49b7e
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75442154"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985586"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB 批量执行程序库概述
  
@@ -51,4 +51,4 @@ Azure Cosmos DB 是一种快速且灵活的全局分布式数据库服务，旨�
 * 通过尝试在[.NET](bulk-executor-dot-net.md)和[Java](bulk-executor-java.md)中使用批量执行者库的示例应用程序，了解更多信息。  
 * 在 [.NET](sql-api-sdk-bulk-executor-dot-net.md) 和 [Java](sql-api-sdk-bulk-executor-java.md) 中查看批量执行程序 SDK 信息和发行说明。
 * 批量执行器库集成到 Cosmos DB Spark 连接器中，有关详细信息，请参阅[Azure Cosmos DB Spark 连接器](spark-connector.md)一文。  
-* 批量执行程序库也已集成到新版 [Azure Cosmos DB 连接器](https://aka.ms/bulkexecutor-adf-v2)中，可供 Azure 数据工厂复制数据。
+* 批量执行程序库也已集成到新版 [Azure Cosmos DB 连接器](../data-factory/connector-azure-cosmos-db.md)中，可供 Azure 数据工厂复制数据。

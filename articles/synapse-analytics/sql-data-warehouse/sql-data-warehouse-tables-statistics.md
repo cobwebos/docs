@@ -11,12 +11,12 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5fae2bba0acc4ab462c91f7272694d032fc6ceaa
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 6f2af87cf5cef1b5a80bc16d962fba579b4ff309
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742665"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985858"
 ---
 # <a name="table-statistics-in-synapse-sql-pool"></a>Synapse SQL 池中的表统计信息
 
@@ -146,11 +146,11 @@ WHERE
 
 ## <a name="implementing-statistics-management"></a>实施统计信息管理
 
-扩展数据加载过程通常是个不错的想法，可确保在加载结束时更新统计信息。
+通常最好扩展数据加载过程，以确保在加载结束时更新统计信息，以避免/最小化并发查询之间的阻塞或资源争用。  
 
 当表更改其大小和/或其值分布时，数据加载最为频繁。 数据加载是实现某些管理过程的逻辑位置。
 
-下面提供了有关在加载过程中更新统计信息的一些指导原则：
+更新统计信息提供了以下指导原则：
 
 - 确保加载的每个表至少包含一个更新的统计信息对象。 这会在统计信息更新过程中更新表大小（行计数和页计数）信息。
 - 将重点放在参与 JOIN、GROUP BY、ORDER BY 和 DISTINCT 子句的列上。

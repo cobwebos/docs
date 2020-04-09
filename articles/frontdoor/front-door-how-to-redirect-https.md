@@ -7,22 +7,22 @@ ms.service: frontdoor
 ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: b7385ef27cd17705f2c86b6f57d4780511b6935c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1b8c033a3ec230d60c30f6168de8ce013a80ac6
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246851"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877994"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>使用 Azure 门户创建具有 HTTP 到 HTTPS 重定向的前门
 
-可以使用 Azure 门户创建具有 SSL 终止证书[的前门](front-door-overview.md)。 路由规则用于将 HTTP 流量重定向到 HTTPS。
+可以使用 Azure 门户创建具有 TLS 终止证书[的前门](front-door-overview.md)。 路由规则用于将 HTTP 流量重定向到 HTTPS。
 
 在本文中，学习如何：
 
 > [!div class="checklist"]
 > * 使用现有的 Web 应用资源创建前门
-> * 使用 SSL 证书添加自定义域 
+> * 使用 TLS/SSL 证书添加自定义域 
 > * 设置在自定义域上重定向 HTTPS
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -87,7 +87,7 @@ ms.locfileid: "80246851"
 ### <a name="enable-https-on-your-custom-domain"></a>在自定义域上启用 HTTPS
 
 1. 单击已添加的自定义域，并在 **"自定义域 HTTPS"** 部分下将状态更改为 **"已启用**"。
-2. 您可以将**证书管理类型**设置为_前门管理_，以便由前门维护、管理和自动旋转免费证书。 您还可以选择使用与 Azure 密钥保管库一起存储的自定义 SSL 证书。 本教程假定使用前门托管证书。
+2. 您可以将**证书管理类型**设置为_前门管理_，以便由前门维护、管理和自动旋转免费证书。 您还可以选择使用与 Azure 密钥保管库一起存储的自定义 TLS/SSL 证书。 本教程假定使用前门托管证书。
 ![为自定义域启用 HTTPS](./media/front-door-url-redirect/front-door-custom-domain-https.png)
 
 3. 单击 **"更新"** 以保存所选内容，然后单击"**保存**"。

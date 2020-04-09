@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 04/01/2020
-ms.openlocfilehash: 0ab9297e772a3b75a077da1c2ae74e5058b2731f
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: d2598dfe9d7972dcb764abf4a1239613a1e8417a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657197"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879167"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 Liquid 模板执行高级 JSON 转换
 
@@ -33,7 +33,7 @@ ms.locfileid: "80657197"
 
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>为集成帐户创建 Liquid 模板或映射
 
-1. 对于此示例，请创建此步骤中所述的示例 Liquid 模板。 在液体模板中，您可以使用[液体过滤器](https://shopify.github.io/liquid/basics/introduction/#filters)，使用[DotLiquid](https://dotliquidmarkup.org/)和 C# 命名约定。
+1. 对于此示例，请创建此步骤中所述的示例 Liquid 模板。 在液体模板中，您可以使用[液体过滤器](https://shopify.github.io/liquid/basics/introduction/#filters)，使用[DotLiquid](https://github.com/dotliquid/dotliquid)和 C# 命名约定。
 
    > [!NOTE]
    > 确保筛选器名称在模板中使用*句子套管*。 否则，筛选器将无法工作。 此外，地图有[文件大小限制](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)。
@@ -71,7 +71,7 @@ ms.locfileid: "80657197"
 
 1. 在 **"地图"** 窗格中，选择 **"添加**"并为地图提供以下详细信息：
 
-   | properties | 值 | 说明 | 
+   | Property | “值” | 说明 | 
    |----------|-------|-------------|
    | **名称** | `JsonToJsonTemplate` | 映射的名称，在此示例中为“JsonToJsonTemplate” | 
    | **映射类型** | **liquid** | 你的映射的类型。 对于 JSON 到 JSON 转换，必须选择“liquid”****。 | 
