@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: 69627c961d9224a124fda09f40901f837d627281
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/07/2020
+ms.openlocfilehash: 4ede8833fdbdbd57654e6c02147f53e58a17b1de
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272638"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886987"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight 群集的容量规划
 
-在部署 HDInsight 群集之前，应确定所需的性能和规模，为所需的群集容量做好规划。 这种规划有助于优化可用性与成本。 部署后无法更改某些群集容量决策。 如果性能参数发生更改，可以拆除群集，然后重新创建，而不会丢失存储的数据。
+在部署 HDInsight 群集之前，通过确定所需的性能和规模来规划预期的群集容量。 这种规划有助于优化可用性与成本。 部署后无法更改某些群集容量决策。 如果性能参数发生更改，可以拆除群集，然后重新创建，而不会丢失存储的数据。
 
 容量规划期间要提出的重要问题包括：
 
@@ -41,13 +41,13 @@ Azure 区域确定群集的物理预配位置。 为了将读写延迟最小化�
 
 ### <a name="location-of-existing-data"></a>现有数据的位置
 
-如果已有一个包含数据的存储帐户或 Data Lake Storage，并想要将此存储用作群集的默认存储，则必须在与此存储相同的位置部署群集。
+如果要使用现有存储帐户或数据湖存储作为群集的默认存储，则必须将群集部署在同一位置。
 
 ### <a name="storage-size"></a>存储大小
 
-部署 HDInsight 群集之后，可以附加更多 Azure 存储帐户，或访问其他 Data Lake Storage。 所有存储帐户必须与群集位于同一位置。 Data Lake Storage 可以位于不同的位置，不过，这可能会造成某种程度的数据读/写延迟。
+在已部署的群集上，可以附加其他 Azure 存储帐户或访问其他数据湖存储。 所有存储帐户必须与群集位于同一位置。 数据湖存储可能位于其他位置，但距离遥远可能会带来一些延迟。
 
-Azure 存储具有某些[容量限制](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)，而 Data Lake Storage Gen1 几乎不受限制。
+Azure 存储有一些[容量限制](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)，而数据存储第 1 代几乎是无限的。
 
 群集可以访问不同存储帐户的组合。 典型示例包括：
 
@@ -60,27 +60,27 @@ Azure 存储具有某些[容量限制](../azure-resource-manager/management/azur
 
 ## <a name="choose-a-cluster-type"></a>选择群集类型
 
-群集类型确定 HDInsight 群集配置为运行的工作负荷，例如 [Apache Hadoop](https://hadoop.apache.org/)、[Apache Storm](https://storm.apache.org/)、[Apache Kafka](https://kafka.apache.org/) 或 [Apache Spark](https://spark.apache.org/)。 有关可用群集类型的详细说明，请参阅 [Azure HDInsight 简介](hdinsight-overview.md#cluster-types-in-hdinsight)。 每个群集类型具有一个特定的部署拓扑，该拓扑附带大小和节点数方面的要求。
+群集类型确定 HDInsight 群集配置为运行的工作负载。 类型包括[阿帕奇哈多普](./hadoop/apache-hadoop-introduction.md)，[阿帕奇风暴](./storm/apache-storm-overview.md)，[阿帕奇卡夫卡](./kafka/apache-kafka-introduction.md)，或[阿帕奇火花](./spark/apache-spark-overview.md)。 有关可用群集类型的详细说明，请参阅 [Azure HDInsight 简介](hdinsight-overview.md#cluster-types-in-hdinsight)。 每个群集类型具有一个特定的部署拓扑，该拓扑附带大小和节点数方面的要求。
 
 ## <a name="choose-the-vm-size-and-type"></a>选择 VM 大小和类型
 
 每个群集类型具有一组节点类型，每个节点类型在 VM 大小和类型方面提供特定的选项。
 
-若要确定应用程序的最佳群集大小，可以建立群集容量基准，并根据指示增加大小。 例如，可以使用模拟工作负荷或“canary 查询”。** 使用模拟工作负荷时，可在不同大小的群集上运行预期的工作负荷，并逐渐增加大小，直到达到所需的性能。 可在其他生产查询中定期插入 canary 查询，以显示群集是否具有足够的资源。
+若要确定应用程序的最佳群集大小，可以建立群集容量基准，并根据指示增加大小。 例如，可以使用模拟工作负荷或“canary 查询”。** 在不同的大小群集上运行模拟工作负载。 逐渐增加大小，直到达到预期性能。 可在其他生产查询中定期插入 canary 查询，以显示群集是否具有足够的资源。
 
 有关如何为工作负荷选择正确的 VM 系列的详细信息，请参阅[为群集选择正确的 VM 大小](hdinsight-selecting-vm-size.md)。
 
 ## <a name="choose-the-cluster-scale"></a>选择群集规模
 
-群集的规模由其 VM 节点数量决定。 对于所有群集类型，有具有特定比例的节点类型，以及支持横向扩展的节点类型。例如，群集可能只需要三个[Apache ZooKeeper](https://zookeeper.apache.org/)节点或两个头节点。 对于以分布方式执行数据处理的工作节点，可以通过添加更多的工作节点来享受横向扩展的好处。
+群集的规模由其 VM 节点数量决定。 对于所有群集类型，有具有特定比例的节点类型，以及支持横向扩展的节点类型。例如，群集可能只需要三个[Apache ZooKeeper](https://zookeeper.apache.org/)节点或两个头节点。 以分布式方式进行数据处理的工作节点受益于其他辅助角色节点。
 
-根据群集类型，增加工作节点数目可以添加更多的计算容量（例如更多的核心），但同时也可能会增大整个群集为所处理数据的内存中存储提供支持所需的内存总量。 在 VM 大小和类型的选择上，适当的群集规模通常是使用模拟工作负荷或 canary 查询凭经验选择出来的。
+根据群集类型，增加辅助节点的数量会增加额外的计算容量（如更多内核）。 更多的节点将增加整个群集所需的总内存，以支持正在处理的数据的内存中存储。 与选择 VM 大小和类型一样，通常根据经验选择正确的群集比例。 使用模拟工作负载或金丝雀查询。
 
-可以扩展群集来满足峰值负载需求，然后在不再需要这些额外的节点时缩减群集。 [自动缩放功能](hdinsight-autoscale-clusters.md)允许您根据预先确定的指标和时间自动缩放群集。 有关手动扩展群集的详细信息，请参阅[缩放 HDInsight 群集](hdinsight-scaling-best-practices.md)。
+您可以横向扩展群集以满足峰值负载需求。 然后，当不再需要这些额外的节点时，将其缩减为缩减。 [自动缩放功能](hdinsight-autoscale-clusters.md)允许您根据预先确定的指标和时间自动缩放群集。 有关手动扩展群集的详细信息，请参阅[缩放 HDInsight 群集](hdinsight-scaling-best-practices.md)。
 
 ### <a name="cluster-lifecycle"></a>群集生命周期
 
-在群集的生存期内会产生费用。 如果只是需要在特定的时间启动并运行群集，可以使用 [Azure 数据工厂创建按需群集](hdinsight-hadoop-create-linux-clusters-adf.md)。 还可以创建 PowerShell 脚本用于预配和删除群集，然后使用 [Azure 自动化](https://azure.microsoft.com/services/automation/)计划这些脚本。
+群集的生存期需要付费。 如果只有特定时间需要群集，[请使用 Azure 数据工厂创建按需群集](hdinsight-hadoop-create-linux-clusters-adf.md)。 还可以创建 PowerShell 脚本用于预配和删除群集，然后使用 [Azure 自动化](https://azure.microsoft.com/services/automation/)计划这些脚本。
 
 > [!NOTE]  
 > 删除某个群集时，也会一并删除其默认 Hive 元存储。 若要保留元存储供下一次重新创建群集时使用，可以使用 Azure 数据库或 [Apache Oozie](https://oozie.apache.org/) 等外部元数据存储。
@@ -88,23 +88,23 @@ Azure 存储具有某些[容量限制](../azure-resource-manager/management/azur
 
 ### <a name="isolate-cluster-job-errors"></a>查明群集作业错误
 
-有时，多节点群集上多个映射和化简组件的并行执行可能导致出错。 为了帮助查明问题，可以通过在单工作器节点群集上运行多个并发作业来尝试执行分布式测试，然后延伸这种方法，在包含多个节点的群集上并发运行多个作业。 若要在 Azure 中创建单节点 HDInsight 群集，请在门户中预配新群集时，使用“自定义(大小、设置、应用)”** 选项，并使用值 1 作为**群集大小**部分中的*工作器节点数*。
+有时，由于并行执行多个映射并减少多节点群集上的组件，可能会发生错误。 为了帮助隔离问题，请尝试分布式测试。 在单个辅助节点群集上运行并发多个作业。 然后展开此方法，在包含多个节点的群集上同时运行多个作业。 要在 Azure 中创建单节点 HDInsight 群集*`Custom(size, settings, apps)`*，在门户中预配新群集时，请使用 选项，并在**群集大小**部分中对*辅助节点数*使用值 1。
 
 ## <a name="quotas"></a>配额
 
-确定目标群集 VM 大小、规模和类型之后，请检查订阅的当前配额容量限制。 达到配额限制时，可能无法部署新群集，或通过添加更多工作节点来横向扩展现有群集。 唯一存在配额限制的是每个订阅的区域级别的 CPU 核心配额。 例如，订阅可能会在美国东部区域有 30 个核心的限制。 
+确定目标群集 VM 大小、规模和类型之后，请检查订阅的当前配额容量限制。 达到配额限制时，无法部署新群集。 或者通过添加更多辅助节点来扩展现有群集。 唯一存在配额限制的是每个订阅的区域级别的 CPU 核心配额。 例如，订阅可能会在美国东部区域有 30 个核心的限制。
 
 要检查可用的内核，请执行以下步骤：
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
-2. 导航到 HDInsight 群集的 **"概述"** 页面。 
-3. 在左侧菜单上，单击 **"配额限制**"。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
+2. 导航到 HDInsight 群集的 **"概述"** 页面。
+3. 在左侧菜单上，选择 **"配额限制**"。
 
    该页显示正在使用的内核数、可用内核数和总内核数。
 
 如果需要请求增加配额，请执行以下操作：
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 1. 选择页面左下方的“帮助 + 支持”****。
 1. 选择 **"新建支持请求**"。
 1. 在“新建支持请求”页面的“基本信息”选项卡下，选择以下选项********：
@@ -125,9 +125,9 @@ Azure 存储具有某些[容量限制](../azure-resource-manager/management/azur
 
 可以[联系支持部门来请求提高配额](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)。
 
-但是，存在一些固定的配额限制，例如，单个 Azure 订阅最多只能有 10,000 个核心。 有关这些限制的详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。
+有一些固定的配额限制。 例如，单个 Azure 订阅最多只能有 10，000 个内核。 有关这些限制的详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用 Apache Hadoop、Spark、Kafka 等在 HDInsight 中设置群集](hdinsight-hadoop-provision-linux-clusters.md)：了解如何使用 Apache Hadoop、Spark、Kafka、交互式 Hive、HBase、ML Services 或 Storm 在 HDInsight 中设置和配置群集。
+* [使用 Apache Hadoop、Spark、Kafka 等在 HDInsight 中设置群集](hdinsight-hadoop-provision-linux-clusters.md)：了解如何在 HDInsight 中设置和配置群集。
 * [监视群集性能](hdinsight-key-scenarios-to-monitor.md)：了解要在 HDInsight 群集中监视的、可能会影响群集容量的关键情况。

@@ -5,27 +5,25 @@ services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: ''
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/30/2020
+ms.date: 04/07/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/28/2020
-ms.openlocfilehash: 87309e20efd9d6f8bd1a659451e5a603e6b95bc8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4da96df50e961f4291029a37e883fdcf88c6c87f
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76908522"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885746"
 ---
 # <a name="transport-layer-security-tls"></a>传输层安全 (TLS) (Transport Layer Security) (TLS)
 
-为确保更高的安全级别，通知中心将在 2020 年 4 月 30 日禁用对 TLS 版本 1.0 和 1.1 的支持。 这些较旧的协议提供弱加密，并且容易受到 BEAST 和 POODLE 攻击。 部署到运行 Android 版本 5 或更高版本或 iOS 版本 5 或更高版本的设备的应用程序不受此更改的影响，因为这些操作系统支持 TLS 1.2，并且客户端和服务器将协商最高相互支持的版本连接时的协议。
+为确保更高的安全级别，通知中心将在 2020 年 5 月 31 日（从 2020 年 4 月 30 日起延长）禁用对 TLS 版本 1.0 和 1.1 的支持。 这些较旧的协议提供弱加密，并且容易受到 BEAST 和 POODLE 攻击。 部署到运行 Android 版本 5 或更高版本或 iOS 版本 5 或更高版本的设备的应用程序不受此更改的影响，因为这些操作系统支持 TLS 1.2，客户端和服务器将在连接时协商协议的最高相互支持版本。
 
 我们建议您查看使用 Azure 通知中心的所有应用程序，以确保它们使用支持 TLS 1.2 的最适用的库和 TLS 堆栈。
 

@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 24d62ac04cd70832e7c092b903b6936836a866e9
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 35ef732111ff0b75bba7397f7cc22b3ff08c00d5
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745628"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985093"
 ---
 # <a name="consulting-service-prerequisites"></a>咨询服务先决条件
 
 >[!Important]
->从 2020 年 3 月 30 日起，我们将开始将咨询服务优惠的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[咨询服务创建概述](https://aka.ms/AzureCreateConsultingService)中的说明来管理迁移的优惠。
+>从 2020 年 4 月 13 日起，我们将开始将您的咨询服务优惠的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[咨询服务创建概述](https://aka.ms/AzureCreateConsultingService)中的说明来管理迁移的优惠。
 
 在[Azure 应用商店和 AppSource 咨询服务](../../consulting-services.md)中查看此产品/服务类型的说明和要求。  以下特定咨询服务类型具有其他要求：
 

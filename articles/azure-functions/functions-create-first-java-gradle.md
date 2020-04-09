@@ -4,19 +4,20 @@ description: 使用 Java 和 Gradle 创建 HTTP 触发的函数并将其发布�
 author: KarlErickson
 ms.author: karler
 ms.topic: how-to
-ms.date: 08/10/2018
-ms.openlocfilehash: 1a24569a89755a33a80b7f884b803bd36f38ca3f
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.date: 04/08/2020
+ms.openlocfilehash: 5e18e035bd237fd489b715986e58d7ede726348d
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757122"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886596"
 ---
-# <a name="quickstart-use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>快速入门：使用 Java 和 Gradle 创建函数并将其发布到 Azure
+# <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>使用 Java 和 Gradle 创建函数并将其发布到 Azure
 
 本文介绍如何使用 Gradle 命令行工具将 Java 函数项目构建并发布到 Azure 函数。 完成后，函数代码会在 Azure 的[无服务器托管计划](functions-scale.md#consumption-plan)中运行，并由 HTTP 请求触发。 
 
-您还可以使用[Maven 原型](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)从命令行构建和发布 Java 函数项目。
+> [!NOTE]
+> 如果Gradle不是您喜欢的开发工具，请查看我们类似的教程，使用[Maven，IntelliJIDEA](/azure/java/intellij/azure-toolkit-for-intellij-quickstart-functions)和[VS代码](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)Javadever。 [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)
 
 ## <a name="prerequisites"></a>先决条件
 

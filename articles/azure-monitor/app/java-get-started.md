@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: efa498ba600a664beab4b9a49eae2b2c3f1c8397
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2355cb7ab995cab3060c7a94c9e7ea344bd9e92b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298313"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984634"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>快速入门：在 Java Web 项目中开始应用应用程序见解
 
@@ -25,7 +25,7 @@ Application Insights 是面向 Web 开发人员的可扩展分析服务，可帮
 
 ## <a name="get-an-application-insights-instrumentation-key"></a>获取 Application Insights 检测密钥
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 在 Azure 门户中，创建 Application Insights 资源。 将应用程序类型设置为 Java Web 应用程序。
 
 3. 查找新资源的检测密钥。 稍后需要将此密钥粘贴到代码项目中。
@@ -223,7 +223,7 @@ Application Insights Web 筛选器会自动收集未经处理的异常和请求�
 
 Application Insights Java SDK 现支持 [W3C 分布式跟踪](https://w3c.github.io/trace-context/)。
 
-有关[关联](correlation.md#telemetry-correlation-in-the-java-sdk)的文章中进一步解释了传入的 SDK 配置。
+有关[关联](correlation.md)的文章中进一步解释了传入的 SDK 配置。
 
 [AI-Agent.xml](java-agent.md) 文件中定义了传出 SDK 配置。
 
@@ -258,7 +258,7 @@ Application Insights Java SDK 现支持 [W3C 分布式跟踪](https://w3c.github
 * `displayName` – Application Insights 门户中显示的名称。
 * `objectName` – JMX 对象名称。
 * `attribute` – 提取的 JMX 对象名称属性
-* `type` （可选）- JMX 对象的属性类型：
+* `type`（可选） - JMX 对象的属性类型：
   * 默认值：简单类型，例如 int 或 long。
   * `composite`：性能计数器数据采用“Attribute.Data”格式
   * `tabular`：性能计数器数据采用表行格式

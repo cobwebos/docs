@@ -2,27 +2,22 @@
 title: 微软身份平台& SAML 承载断言流 |蔚蓝
 description: 了解如何在不提示用户输入凭据的情况下，使用 SAML 持有者断言流从 Microsoft Graph 提取数据。
 services: active-directory
-documentationcenter: ''
 author: umeshbarapatre
 manager: CelesteDG
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 16f30473ded5f1de5dc94c1cff9da96165b1a01c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1cd79b1f9e4cd3afadee250da0c184c0c5b8ac07
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76700203"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886171"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft 标识平台和 OAuth 2.0 SAML 持有者断言流
 当客户端需要使用现有的信任关系时，你可以通过 OAuth 2.0 SAML 持有者断言流使用 SAML 断言请求 OAuth 访问令牌。 应用到 SAML 断言的签名提供已授权应用的身份验证。 SAML 断言是标识提供者颁发的 XML 安全令牌，由服务提供者使用。 出于安全相关的目的，该服务提供者依赖于其内容来识别断言的使用者。

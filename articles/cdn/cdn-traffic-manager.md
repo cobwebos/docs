@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: de91f61385942db077bc98721eabe9f3f0b8624c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d44e53520481e4ada5c2f16f0c56a4a6a724ec1
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74083004"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892472"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>使用 Azure 流量管理器跨多个 Azure CDN 终结点设置故障转移
 
@@ -60,13 +60,13 @@ ms.locfileid: "74083004"
 
 1. 转到自定义域提供商（例如 GoDaddy）的网站，并创建两个 DNS CNAME 条目。 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于第一个 CNAME 条目，请将具有 cdnverify 子域的自定义域映射到 CDN 终结点。 将自定义域注册到在步骤 2 中添加到流量管理器的 CDN 终结点时，需要使用此条目。
+    a. 对于第一个 CNAME 条目，请将具有 cdnverify 子域的自定义域映射到 CDN 终结点。 将自定义域注册到在步骤 2 中添加到流量管理器的 CDN 终结点时，需要使用此条目。
 
       例如： 
 
       `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101akamai.azureedge.net`  
 
-    b.保留“数据库类型”设置，即设置为“共享”。 对于第二个 CNAME 条目，请将没有 cdnverify 子域的自定义域映射到 CDN 终结点。 此条目将自定义域映射到流量管理器。 
+    b. 对于第二个 CNAME 条目，请将没有 cdnverify 子域的自定义域映射到 CDN 终结点。 此条目将自定义域映射到流量管理器。 
 
       例如： 
       
@@ -82,7 +82,7 @@ ms.locfileid: "74083004"
     Azure CDN 使用 *cdnverify* 子域来验证 DNS 映射，以完成此注册过程。 有关详细信息，请参阅[创建 CNAME DNS 记录](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record)。 此步骤使 Azure CDN 能够识别自定义域，以便对其请求做出响应。
     
     > [!NOTE]
-    > 要从 Akamai 配置文件在**Azure CDN**上启用 SSL，必须直接将自定义域命名为终结点。 尚未支持启用 SSL 的 cdn 验证。 
+    > 要从 Akamai 配置文件在**Azure CDN**上启用 TLS，必须直接将自定义域命名为终结点。 尚未支持启用 TLS 的 cdn 验证。 
     >
 
 3.  返回自定义域提供商的网站，并更新创建的第一个 DNS 映射，以便将自定义域映射到第二个 CDN 终结点。

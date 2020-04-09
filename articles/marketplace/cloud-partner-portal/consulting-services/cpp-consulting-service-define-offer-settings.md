@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 7b2c9d136a32e54ce5b5db8f6ce9ba8cd63a4f3c
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 6a3c168d0bd13e7c335841ac4016f18464cd50d5
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745646"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985110"
 ---
 # <a name="offer-settings-tab"></a>“产品/服务设置”选项卡
 
 >[!Important]
->从 2020 年 3 月 30 日起，我们将开始将咨询服务优惠的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[咨询服务创建概述](https://aka.ms/AzureCreateConsultingService)中的说明来管理迁移的优惠。
+>从 2020 年 4 月 13 日起，我们将开始将您的咨询服务优惠的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[咨询服务创建概述](https://aka.ms/AzureCreateConsultingService)中的说明来管理迁移的优惠。
 
 在“新建产品/服务”**** 屏幕中，第一个步骤是创建产品/服务标识。 套餐标识由三个部分组成：“套餐 ID”、“发布者 ID”和“名称”。************ 以下各部分将介绍其中的每个组成部分。
 

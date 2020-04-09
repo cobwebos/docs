@@ -2,25 +2,21 @@
 title: 配置调用 Web API 的守护程序应用 - Microsoft 标识平台 | Azure
 description: 了解如何为调用 Web API 的守护程序应用程序配置代码（应用配置）
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: fc441ef64f98ace04b7b847c03d575215656f9db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bb2cc90e586f71bb7c90efd62ba3705cd9223bc5
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77611833"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885491"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>调用 Web API 的守护程序应用 - 代码配置
 
@@ -30,7 +26,7 @@ ms.locfileid: "77611833"
 
 以下 Microsoft 库支持守护程序应用：
 
-  MSAL 库 | 描述
+  MSAL 库 | 说明
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 支持使用 .NET Framework 和 .NET Core 平台构建守护程序应用程序。 （不支持 UWP、Xamarin.iOS 和 Xamarin.Android，因为这些平台用于生成公共客户端应用程序。）
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Python 中支持守护程序应用程序。
@@ -243,7 +239,7 @@ ConfidentialClientApplication cca =
                 .build();
 ```
 
-或
+or
 
 ```Java
 PrivateKey key = getPrivateKey(); /* RSA private key to sign the assertion */

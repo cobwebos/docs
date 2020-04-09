@@ -1,15 +1,16 @@
 ---
-title: 将静态 IP 地址和 DNS 标签与 Azure 库伯奈斯服务 （AKS） 负载均衡器一起使用
+title: 将静态 IP 与负载均衡器一起使用
+titleSuffix: Azure Kubernetes Service
 description: 了解如何创建静态 IP 地址并将其用于 Azure Kubernetes 服务 (AKS) 负载均衡器。
 services: container-service
 ms.topic: article
 ms.date: 03/09/2020
-ms.openlocfilehash: 6c219976db21fb05ea1ad313b4effdf95906f986
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5051232f29ad51d9fee893a4a660fc81f6e60d77
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80047954"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886732"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>将静态公共 IP 地址和 DNS 标签与 Azure 库伯奈斯服务 （AKS） 负载均衡器一起使用
 
@@ -17,7 +18,7 @@ ms.locfileid: "80047954"
 
 本文介绍如何创建静态公共 IP 地址并将其分配给 Kubernetes 服务。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 

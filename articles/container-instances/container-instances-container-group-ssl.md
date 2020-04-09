@@ -1,36 +1,36 @@
 ---
-title: 使用侧车容器启用 SSL
+title: 使用侧车容器启用 TLS
 description: 通过在侧车容器中运行 Nginx，为在 Azure 容器实例中运行的容器组创建 SSL 或 TLS 终结点
 ms.topic: article
 ms.date: 02/14/2020
-ms.openlocfilehash: 43b39c7c13d6d5e52aae2ce1706e4880ab27d225
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9ea9367219db694b89d6bf4a1e52efb373c71c4
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294947"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984600"
 ---
-# <a name="enable-an-ssl-endpoint-in-a-sidecar-container"></a>在侧车容器中启用 SSL 终结点
+# <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>在侧车容器中启用 TLS 终结点
 
-本文介绍如何使用一个应用程序容器以及一个运行 SSL 提供程序的挎斗容器创建[容器组](container-instances-container-groups.md)。 使用单独的 SSL 终结点设置容器组，可为应用程序启用 SSL 连接，而无需更改应用程序代码。
+本文演示如何使用应用程序容器和运行 TLS/SSL 提供程序的侧车容器创建[容器组](container-instances-container-groups.md)。 通过设置具有单独 TLS 终结点的容器组，无需更改应用程序代码即可为应用程序启用 TLS 连接。
 
 设置由两个容器组成的示例容器组：
 * 一个运行简单 Web 应用且使用公共 Microsoft [aci-helloworld](https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld) 映像的应用程序容器。 
-* 一个运行公共 [Nginx](https://hub.docker.com/_/nginx) 映像且配置为使用 SSL 的挎斗容器。 
+* 运行公共[Nginx](https://hub.docker.com/_/nginx)映像的侧车容器，配置为使用 TLS。 
 
 在此示例中，容器组仅使用其公共 IP 地址公开 Nginx 的端口 443。 Nginx 将 HTTPS 请求路由到伴侣 Web 应用，后者在内部侦听端口 80。 可以改编侦听其他端口的容器应用示例。 
 
-有关在容器组中启用 SSL 的其他方法，请参阅[后续步骤](#next-steps)。
+有关在容器组中启用 TLS 的其他方法，请参阅[后续步骤](#next-steps)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-可以使用 Azure Cloud Shell 或 Azure CLI 的本地安装完成本文的内容。 如果想要在本地使用它，建议使用 2.0.55 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+可以使用 Azure Cloud Shell 或 Azure CLI 的本地安装完成本文的内容。 如果想要在本地使用它，建议使用 2.0.55 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-self-signed-certificate"></a>创建自签名证书
 
-若要将 Nginx 设置为 SSL 提供程序，需要一个 SSL 证书。 本文介绍如何创建和设置自签名的 SSL 证书。 对于生产方案，应从证书颁发机构获取证书。
+要将 Nginx 设置为 TLS 提供程序，您需要 TLS/SSL 证书。 本文演示如何创建和设置自签名 TLS/SSL 证书。 对于生产方案，应从证书颁发机构获取证书。
 
-要创建自签名 SSL 证书，请使用 Azure 云外壳和许多 Linux 发行版中可用的[OpenSSL](https://www.openssl.org/)工具，或在操作系统中使用可比较的客户端工具。
+要创建自签名 TLS/SSL 证书，请使用 Azure 云外壳和许多 Linux 发行版中可用的[OpenSSL](https://www.openssl.org/)工具，或在操作系统中使用类似的客户端工具。
 
 首先在本地工作目录中创建证书请求（.csr 文件）：
 
@@ -48,11 +48,11 @@ openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt
 
 现在，该目录中应会出现三个文件：证书请求 (`ssl.csr`)、私钥 (`ssl.key`) 和自签名证书 (`ssl.crt`)。 在后续步骤中将使用 `ssl.key` 和 `ssl.crt`。
 
-## <a name="configure-nginx-to-use-ssl"></a>将 Nginx 配置为使用 SSL
+## <a name="configure-nginx-to-use-tls"></a>将 Nginx 配置为使用 TLS
 
 ### <a name="create-nginx-configuration-file"></a>创建 Nginx 配置文件
 
-在本部分，你将为 Nginx 创建配置文件以使用 SSL。 首先将以下文本复制到名为`nginx.conf`的新文件中。 在 Azure 云外壳中，可以使用可视化工作室代码在工作目录中创建文件：
+在本节中，您可以为 Nginx 创建一个配置文件以使用 TLS。 首先将以下文本复制到名为`nginx.conf`的新文件中。 在 Azure 云外壳中，可以使用可视化工作室代码在工作目录中创建文件：
 
 ```console
 code nginx.conf
@@ -93,7 +93,7 @@ http {
         ssl_ciphers                ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:ECDHE-RSA-RC4-SHA:ECDHE-ECDSA-RC4-SHA:AES128:AES256:RC4-SHA:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!3DES:!MD5:!PSK;
         ssl_prefer_server_ciphers  on;
 
-        # Optimize SSL by caching session parameters for 10 minutes. This cuts down on the number of expensive SSL handshakes.
+        # Optimize TLS/SSL by caching session parameters for 10 minutes. This cuts down on the number of expensive TLS/SSL handshakes.
         # The handshake is the most CPU-intensive operation, and by default it is re-negotiated on every new/parallel connection.
         # By enabling a cache (of type "shared between all Nginx workers"), we tell the client to re-use the already negotiated state.
         # Further optimization can be achieved by raising keepalive_timeout, but that shouldn't be done unless you serve primarily HTTPS.
@@ -124,7 +124,7 @@ http {
 
 ### <a name="base64-encode-secrets-and-configuration-file"></a>对机密和配置文件进行 Base64 编码
 
-对 Nginx 配置文件、SSL 证书和 SSL 密钥进行 Base64 编码。 在下一部分，你将在用于部署容器组的 YAML 文件中输入编码的内容。
+Base64 编码 Nginx 配置文件、TLS/SSL 证书和 TLS 密钥。 在下一部分，你将在用于部署容器组的 YAML 文件中输入编码的内容。
 
 ```console
 cat nginx.conf | base64 > base64-nginx.conf
@@ -221,7 +221,7 @@ Name          ResourceGroup    Status    Image                                  
 app-with-ssl  myresourcegroup  Running   nginx, mcr.microsoft.com/azuredocs/aci-helloworld        52.157.22.76:443     Public     1.0 core/1.5 gb  Linux     westus
 ```
 
-## <a name="verify-ssl-connection"></a>验证 SSL 连接
+## <a name="verify-tls-connection"></a>验证 TLS 连接
 
 使用浏览器导航到容器组的公共 IP 地址。 此示例中显示的 IP 地址为`52.157.22.76`，因此 URL**https://52.157.22.76**为 。 由于 Nginx 服务器配置，您必须使用 HTTPS 查看正在运行的应用程序。 尝试通过 HTTP 连接失败。
 
@@ -234,11 +234,11 @@ app-with-ssl  myresourcegroup  Running   nginx, mcr.microsoft.com/azuredocs/aci-
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何设置 Nginx 容器，以便与容器组中运行的 Web 应用建立 SSL 连接。 对于侦听端口 80 以外的端口的应用，可以改编此示例。 还可以更新 Nginx 配置文件来自动重定向端口 80 (HTTP) 上的服务器连接，以使用 HTTPS。
+本文介绍如何设置 Nginx 容器，以启用与容器组中运行的 Web 应用的 TLS 连接。 对于侦听端口 80 以外的端口的应用，可以改编此示例。 还可以更新 Nginx 配置文件来自动重定向端口 80 (HTTP) 上的服务器连接，以使用 HTTPS。
 
-尽管本文在挎斗中使用 Nginx，但你可以使用另一个 SSL 提供程序，例如 [Caddy](https://caddyserver.com/)。
+虽然本文在侧车中使用 Nginx，但您可以使用其他 TLS 提供程序（如[Caddy](https://caddyserver.com/)）。
 
-如果在[Azure 虚拟网络中](container-instances-vnet.md)部署容器组，则可以考虑为后端容器实例启用 SSL 终结点的其他选项，包括：
+如果在[Azure 虚拟网络中](container-instances-vnet.md)部署容器组，则可以考虑为后端容器实例启用 TLS 终结点的其他选项，包括：
 
 * [Azure 函数代理](../azure-functions/functions-proxies.md)
 * [Azure API 管理](../api-management/api-management-key-concepts.md)

@@ -1,10 +1,9 @@
 ---
-title: Azure Active Directory 图形 API | Microsoft 文档
+title: Azure Active Directory 图形 API
 description: 有关 Azure AD Graph API 的概述和快速入门指南，其中允许通过 REST API 终结点以编程方式访问 Azure AD。
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 5471ad74-20b3-44df-a2b5-43cde2c0a045
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
@@ -13,12 +12,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: dkershaw, sureshja
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 9515238449b3ece79815c9b3c616bd715b3b3400
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 73cdac1a372b42df5a8f52ea09f04ecc40031698
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80476541"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885712"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory 图形 API
 

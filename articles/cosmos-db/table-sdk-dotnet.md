@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: 5a5305ffd388d2573d250d93131c1fed236008b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9356ab0aec375a046a8f200838df296b2cf74bce
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76771618"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984974"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB 表 .NET API：下载和发行说明
 
@@ -26,7 +26,7 @@ ms.locfileid: "76771618"
 
 |   |   |
 |---|---|
-|**SDK 下载**|[NuGet](https://aka.ms/acdbtablenuget)|
+|**SDK 下载**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)|
 |**快速入门**|[Azure Cosmos DB: Build an app with .NET and the Table API](create-table-dotnet.md)（Azure Cosmos DB：使用 .NET 和表 API 生成应用）|
 |**教程**|[Azure Cosmos DB：在 .NET 中使用表 API 进行开发](tutorial-develop-table-dotnet.md)|
 |**当前受支持的框架**|[Microsoft .NET Framework 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
@@ -118,7 +118,7 @@ Unable to resolve dependency 'Microsoft.Azure.Storage.Common'. Source(s) used: '
     
 * 使用首选 NuGet 包管理工具先安装 Microsoft.Azure.Storage.Common NuGet 包，再安装 Microsoft.Azure.CosmosDB.Table。
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题解答
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
