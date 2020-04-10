@@ -547,6 +547,8 @@
       href: sovereign-clouds.md
     - name: 定价和限制
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
     - name: 合规性
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 加密
