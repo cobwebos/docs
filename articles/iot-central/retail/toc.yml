@@ -3,50 +3,50 @@
 - name: 概述
   items:
     - name: 使用 Azure IoT Central 生成零售解决方案
-      href: overview-iot-central-retail-pnp.md
+      href: overview-iot-central-retail.md
 - name: 教程
   items:
     - name: 存储内分析签出
       items:
         - name: 1 - 创建零售应用程序
-          href: tutorial-in-store-analytics-create-app-pnp.md
+          href: tutorial-in-store-analytics-create-app.md
         - name: 2- 自定义操作员仪表板
-          href: tutorial-in-store-analytics-customize-dashboard-pnp.md
+          href: tutorial-in-store-analytics-customize-dashboard.md
         - name: 3 - 导出数据并直观呈现见解
-          href: tutorial-in-store-analytics-export-data-visualize-insights-pnp.md
+          href: tutorial-in-store-analytics-export-data-visualize-insights.md
     - name: 智能库存管理
       items:
         - name: 创建智能库存管理应用程序
-          href: tutorial-iot-central-smart-inventory-management-pnp.md
+          href: tutorial-iot-central-smart-inventory-management.md
     - name: 互联物流
       items:
         - name: 创建互联物流应用程序
-          href: tutorial-iot-central-connected-logistics-pnp.md
+          href: tutorial-iot-central-connected-logistics.md
     - name: 数字分发中心
       items:
         - name: 创建数字分发中心应用程序
-          href: tutorial-iot-central-digital-distribution-center-pnp.md
+          href: tutorial-iot-central-digital-distribution-center.md
     - name: 微履行中心
       items:
         - name: 创建微履行中心应用程序
-          href: tutorial-micro-fulfillment-center-pnp.md
+          href: tutorial-micro-fulfillment-center.md
 - name: 概念
   items:
     - name: 互联物流应用模板体系结构
-      href: architecture-connected-logistics-pnp.md
+      href: architecture-connected-logistics.md
     - name: 数字分发中心应用模板体系结构
-      href: architecture-digital-distribution-center-pnp.md
+      href: architecture-digital-distribution-center.md
     - name: 智能库存管理应用模板体系结构
-      href: architecture-smart-inventory-management-pnp.md
+      href: architecture-smart-inventory-management.md
     - name: 存储分析体系结构
       href: store-analytics-architecture.md
     - name: 微履行中心应用模板体系结构
-      href: architecture-micro-fulfillment-center-pnp.md
+      href: architecture-micro-fulfillment-center.md
     - name: 连接
       href: ../core/concepts-get-connected.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: 什么是应用程序模板？
       href: ../core/concepts-app-templates.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 连接设备
       items:
@@ -127,7 +127,7 @@
         - name: IoT 解决方案加速器
           href: /azure/iot-accelerators
         - name: IoT 即插即用
-          href: /azure/iot-pnp
+          href: /azure/iot
         - name: Azure Maps
           href: /azure/azure-maps
         - name: 时序见解

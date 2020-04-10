@@ -12,7 +12,7 @@
     - name: 1. 创建新应用程序
       href: quick-deploy-iot-central.md
     - name: 2. 添加模拟设备
-      href: quick-create-pnp-device.md
+      href: quick-create-simulated-device.md
     - name: 3. 配置管理规则和操作
       href: quick-configure-rules.md
     - name: 4. 监视设备

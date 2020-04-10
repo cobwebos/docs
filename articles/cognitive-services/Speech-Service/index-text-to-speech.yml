@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: 文本到语音文档
+title: 文本转语音文档
 summary: 语音服务中的文本转语音可让应用程序、工具或设备将文本转换为类似于人类的合成语音。
 metadata:
   title: 文本到语音文档 - 教程，API 参考 - Azure 认知服务 |微软文档
@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 4aa2cb134bc47841da2964f4f83898875098e6c4
-  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+  ms.openlocfilehash: e9fb4f1b26dd8c5a958f8321f8c6fd0def605c93
+  ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
   ms.translationtype: MT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/28/2020
-  ms.locfileid: "80052804"
+  ms.lasthandoff: 04/09/2020
+  ms.locfileid: "80991341"
 landingContent:
 - title: 关于文本到语音
   linkLists:
@@ -24,13 +24,15 @@ landingContent:
     links:
     - text: 什么是文本转语音？
       url: text-to-speech.md
+    - text: 语音合成基础知识
+      url: text-to-speech-basics.md
   - linkListType: quickstart
     links:
     - text: 将语音合成到扬声器
       url: quickstarts/text-to-speech.md
     - text: 将语音合成到音频文件
       url: quickstarts/text-to-speech-audio-file.md
-    - text: 使用长格式音频合成语音
+    - text: 将语音合成为长格式音频
       url: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
 - title: 使用文本到语音进行开发
   linkLists:
@@ -58,7 +60,7 @@ landingContent:
       url: language-support.md#standard-voices
     - text: 神经语音支持
       url: language-support.md#neural-voices
-    - text: SSML 拼音集
+    - text: SSML 语音集
       url: speech-ssml-phonetic-sets.md
     - text: 文本到语音转换定价
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
