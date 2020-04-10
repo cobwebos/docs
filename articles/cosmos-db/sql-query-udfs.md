@@ -1,27 +1,38 @@
 ---
 title: Azure Cosmos DB 中的用户定义函数 (UDF)
 description: 了解 Azure Cosmos DB 中的用户定义函数。
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/31/2019
-ms.author: mjbrown
-ms.openlocfilehash: b67202da7293ef55cfe3390ca676f7944da80fba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/09/2020
+ms.author: tisande
+ms.openlocfilehash: 455f44fb365152b75a3811563b646c6243f686db
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69614331"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011117"
 ---
 # <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Azure Cosmos DB 中的用户定义函数 (UDF)
 
 SQL API 支持用户定义函数 (UDF)。 使用标量 UDF，可以传入零个或多个参数，并返回单个参数结果。 API 会检查每个参数 JSON 值是否合法。  
 
-API 扩展了 SQL 语法，支持使用 UDF 的自定义应用程序逻辑。 可将 UDF 注册到 SQL API，然后在 SQL 查询中引用它们。 事实上，UDF 经过精心设计，可从查询调用。 作为一种定理，UDF 不能像其他 JavaScript 类型（例如存储过程和触发器）一样访问上下文对象。 查询是只读的，可以在主要或次要副本上运行。 与其他 JavaScript 类型不同，UDF 只能在次要副本上运行。
+## <a name="udf-use-cases"></a>UDF 用例
 
-以下示例在 Cosmos 数据库中的某个项容器下注册一个 UDF。 该示例创建了名为 `REGEX_MATCH` 的 UDF。 它接受两个 JSON 字符串值：`input` 和 `pattern`，并使用 JavaScript 的 `string.match()` 函数检查第一个值是否与第二个值中指定的模式相匹配。
+API 扩展了 SQL 语法，支持使用 UDF 的自定义应用程序逻辑。 可将 UDF 注册到 SQL API，然后在 SQL 查询中引用它们。 与存储过程和触发器不同，UDF 是只读的。
+
+使用 UF，可以扩展 Azure Cosmos DB 的查询语言。 UF 是在查询投影中表达复杂业务逻辑的好方法。
+
+但是，我们建议在：
+
+- Azure Cosmos DB 中已存在等效[的系统函数](sql-query-system-functions.md)。 系统功能将始终使用比等效 UDF 更少的 RU。
+- UDF 是查询子句中`WHERE`的唯一筛选器。 UDF 不使用索引，因此评估 UDF 需要加载文档。 将使用索引的其他筛选器谓词与 UDF 结合在`WHERE`子句中，将减少 UDF 处理的文档数。
+
+如果在查询中必须多次使用相同的 UDF，则应在[子查询](sql-query-subquery.md#evaluate-once-and-reference-many-times)中引用 UDF，从而允许您使用 JOIN 表达式计算 UDF 一次，但多次引用它。
 
 ## <a name="examples"></a>示例
+
+以下示例在 Cosmos 数据库中的某个项容器下注册一个 UDF。 该示例创建了名为 `REGEX_MATCH` 的 UDF。 它接受两个 JSON 字符串值：`input` 和 `pattern`，并使用 JavaScript 的 `string.match()` 函数检查第一个值是否与第二个值中指定的模式相匹配。
 
 ```javascript
        UserDefinedFunction regexMatchUdf = new UserDefinedFunction
@@ -129,5 +140,5 @@ API 扩展了 SQL 语法，支持使用 UDF 的自定义应用程序逻辑。 �
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure 宇宙 DB 简介](introduction.md)
-- [系统功能](sql-query-system-functions.md)
-- [集 料](sql-query-aggregates.md)
+- [系统函数](sql-query-system-functions.md)
+- [聚合](sql-query-aggregates.md)

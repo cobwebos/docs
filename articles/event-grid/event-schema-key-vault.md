@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 17404388b2b6c3fee1c6ab666f7233a66817f642
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe186e2ba8f3cafeb4d186066ba65ae036302f70
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74082868"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010505"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-key-vault-preview"></a>Azure Key Vault 的 Azure 事件网格事件架构（预览版）
 
@@ -22,16 +22,16 @@ ms.locfileid: "74082868"
 
 Azure Key Vault 帐户生成以下事件类型：
 
-| 事件全名 | 事件显示名称 | 描述 |
+| 事件全名 | 事件显示名称 | 说明 |
 | ---------- | ----------- |---|
 | Microsoft.KeyVault.CertificateNewVersionCreated | 创建的证书新版本 | 创建新证书或新证书版本时触发。 |
-| Microsoft.KeyVault.CertificateNearExpiry | 证书即将过期 | 当前版本的证书即将过期时触发。 （默认值为到期日期前的 30 天。） |
+| Microsoft.KeyVault.CertificateNearExpiry | 证书即将过期 | 当前版本的证书即将过期时触发。 （事件在到期日期前 30 天触发。 |
 | Microsoft.KeyVault.CertificateExpired | 证书已过期 | 证书过期时触发。 |
 | Microsoft.KeyVault.KeyNewVersionCreated | 创建的密钥新版本 | 创建新密钥或新密钥版本时触发。 |
-| Microsoft.KeyVault.KeyNearExpiry | 密钥即将过期 | 当前版本的密钥即将过期时触发。 （默认值为到期日期前的 30 天。） |
+| Microsoft.KeyVault.KeyNearExpiry | 密钥即将过期 | 当前版本的密钥即将过期时触发。 （事件在到期日期前 30 天触发。 |
 | Microsoft.KeyVault.KeyExpired | 密钥已过期 | 密钥过期时触发。 |
 | Microsoft.KeyVault.SecretNewVersionCreated | 创建的机密新版本 | 创建新机密或新机密版本时触发。 |
-| Microsoft.KeyVault.SecretNearExpiry | 机密即将过期 | 当前版本的机密即将过期时触发。 （默认值为到期日期前的 30 天。） |
+| Microsoft.KeyVault.SecretNearExpiry | 机密即将过期 | 当前版本的机密即将过期时触发。 （事件在到期日期前 30 天触发。 |
 | Microsoft.KeyVault.SecretExpired | 机密已过期 | 机密过期时触发。 |
 
 ## <a name="event-examples"></a>事件示例
@@ -65,7 +65,7 @@ Azure Key Vault 帐户生成以下事件类型：
 
 事件具有以下顶级数据：
 
-| properties | 类型 | 说明 |
+| Property | 类型 | 说明 |
 | ---------- | ----------- |---|
 | id | 字符串 | 触发了此事件的对象的 ID |
 | vaultName | 字符串 | 触发了此事件的对象的密钥保管库名称 |

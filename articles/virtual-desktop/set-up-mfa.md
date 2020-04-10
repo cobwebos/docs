@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0b3c47e1bbe5efdc5ee303305e52a785a49d0c00
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: b470f9278bdca94d1fe98c64b11b070fb36cb075
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586868"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998479"
 ---
 # <a name="set-up-azure-multi-factor-authentication"></a>设置 Azure 多重身份验证
 
@@ -32,7 +32,7 @@ Windows 虚拟桌面的 Windows 客户端是将 Windows 虚拟桌面与本地计
   - Azure 活动目录高级 P1 或 P2
   - 企业移动性 + 安全 E3 或 E5
 - 将用户分配为组成员的 Azure 活动目录组。
-- 为所有用户启用 Azure MFA。 有关如何执行此操作的详细信息，请参阅[如何要求用户进行两步验证](/active-directory/authentication/howto-mfa-userstates)。
+- 为所有用户启用 Azure MFA。 有关如何执行此操作的详细信息，请参阅[如何要求用户进行两步验证](../active-directory/authentication/howto-mfa-userstates.md#view-the-status-for-a-user)。
 
 >[!NOTE]
 >以下设置也适用于[Windows 虚拟桌面 Web 客户端](https://rdweb.wvd.microsoft.com/webclient/index.html)。

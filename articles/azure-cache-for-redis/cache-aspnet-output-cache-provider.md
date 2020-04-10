@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.openlocfilehash: af003f1f0422c2351bcdf9b0c0010e38785c0344
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1d8189068278b46e3ec3ea66875d79bb91e5e16
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530319"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010199"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>Azure Redis 缓存的 ASP.NET 输出缓存提供程序
 
@@ -51,12 +51,12 @@ Redis 输出缓存提供程序 NuGet 包依赖于 StackExchange.Redis.StrongName
 
 在 Microsoft Azure 门户中使用缓存边栏选项卡中的值配置属性，并根据需要配置其他值。 有关访问缓存属性的说明，请参阅[配置 Azure Redis 缓存设置](cache-configure.md#configure-azure-cache-for-redis-settings)。
 
-| 特性 | 类型 | 默认 | 描述 |
+| 特性 | 类型 | 默认 | 说明 |
 | --------- | ---- | ------- | ----------- |
 | *主机* | 字符串 | "localhost" | Redis 服务器 IP 地址或主机名 |
-| *港口* | 正整数 | 6379（非 SSL）<br/>6380 (SSL) | Redis 服务器端口 |
+| *港口* | 正整数 | 6379 （非 TLS/SSL）<br/>6380 （TLS/SSL） | Redis 服务器端口 |
 | *访问密钥* | 字符串 | "" | 启用 Redis 授权时的 Redis 服务器密码。 该值默认为空字符串，即，会话状态提供程序在连接到 Redis 服务器时不使用任何密码。 **如果 Redis 服务器位于 Azure Redis 缓存等可公开访问的网络中，请务必启用 Redis 授权以提高安全性，并提供安全密码。** |
-| *Ssl* | boolean | **false** | 是否通过 SSL 连接到 Redis 服务器。 此值默认为 **false**，因为 Redis 不能现成地支持 SSL。 **如果使用现成支持 SSL 的 Azure Redis 缓存，请务必将此属性设置为 true，以提高安全性。**<br/><br/>默认情况下，将为新缓存禁用非 SSL 端口。 为此设置指定**true**以使用 SSL 端口。 有关启用非 SSL 端口的详细信息，请参阅[配置缓存](cache-configure.md)主题中的[访问端口](cache-configure.md#access-ports)部分。 |
+| *Ssl* | boolean | **false** | 是否通过 TLS 连接到 Redis 服务器。 默认情况下，此值**为 false，** 因为 Redis 不支持开箱即用的 TLS。 **如果使用现成支持 SSL 的 Azure Redis 缓存，请务必将此属性设置为 true，以提高安全性。**<br/><br/>默认情况下，新缓存将禁用非 TLS 端口。 为此设置指定**true**以使用 TLS 端口。 有关启用非 TLS 端口的详细信息，请参阅["配置缓存](cache-configure.md)"主题中的["访问端口](cache-configure.md#access-ports)"部分。 |
 | *databaseIdNumber* | 正整数 | 0 | 只能通过 web.config 或 AppSettings 指定此属性。**<br/><br/>指定要使用的 Redis 数据库。 |
 | *connectionTimeoutInMilliseconds* | 正整数 | 由 StackExchange.Redis 提供 | 用于在创建 StackExchange.Redis.ConnectionMultiplexer 时设置 *ConnectTimeout*。 |
 | *operationTimeoutInMilliseconds* | 正整数 | 由 StackExchange.Redis 提供 | 用于在创建 StackExchange.Redis.ConnectionMultiplexer 时设置 *SyncTimeout*。 |

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: 52629b8e2e190cc041116e6f65488480712baf01
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ad5bb26959916f60973a8c0274e17eee03aa7a1
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929794"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991460"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>将本地 SSIS 工作负荷迁移到 ADF 中的 SSIS
 
@@ -63,7 +63,7 @@ DMA 当前支持对自 **DMA 版本 5.0** 以来存储在**文件系统**、**�
 | **包存储类型** |如何批量迁移 SSIS 包|如何批量迁移 SSIS 作业|
 |-|-|-|
 |SSISDB|[迁移 **SSISDB**](scenario-ssis-migration-ssisdb-mi.md)|[将 SSIS 作业迁移到 Azure SQL 数据库托管实例代理](scenario-ssis-migration-ssisdb-mi.md#ssis-jobs-to-azure-sql-database-managed-instance-agent)|
-|文件系统|通过 dtinstall/dtutil/手动复制将其重新部署到文件共享/Azure 文件，或将其保留在文件系统中，以通过 VNet/自承载 IR 进行访问。 有关详细信息，请参阅 [dtutil 实用工具](https://docs.microsoft.com/sql/integration-services/dtutil-utility)。|通过脚本/SSMS/ADF 门户将其转换为 ADF 管道/活动/触发器。 有关详细信息，请参阅 [SSMS 计划功能](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)。|
+|文件系统|通过 dtinstall/dtutil/手动复制将其重新部署到文件共享/Azure 文件，或将其保留在文件系统中，以通过 VNet/自承载 IR 进行访问。 有关详细信息，请参阅 [dtutil 实用工具](https://docs.microsoft.com/sql/integration-services/dtutil-utility)。|<li> 使用 SSMS 中的 [SSIS 作业迁移向导]进行迁移。（how-to-migrate-ssis-job-ssms.md） <li>通过脚本/SSMS/ADF 门户将其转换为 ADF 管道/活动/触发器。 有关详细信息，请参阅 [SSMS 计划功能](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)。|
 |SQL Server (MSDB)|通过 SSMS/dtutil 将其导出到文件系统/文件共享/Azure 文件。 有关详细信息，请参阅[导出 SSIS 包](https://docs.microsoft.com/sql/integration-services/import-and-export-packages-ssis-service)。|通过脚本/SSMS/ADF 门户将其转换为 ADF 管道/活动/触发器。 有关详细信息，请参阅 [SSMS 计划功能](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)。|
 |包存储区|通过 SSMS/dtutil 将其导出到文件系统/文件共享/Azure 文件，或通过 dtinstall/dtutil/手动复制将其重新部署到文件共享/Azure 文件，或将其保留在文件系统中，以通过 VNet/自承载 IR 进行访问。 有关详细信息，请参阅“dtutil 实用工具”。 有关详细信息，请参阅 [dtutil 实用工具](https://docs.microsoft.com/sql/integration-services/dtutil-utility)。|通过脚本/SSMS/ADF 门户将其转换为 ADF 管道/活动/触发器。 有关详细信息，请参阅 [SSMS 计划功能](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)。|
 
@@ -72,7 +72,7 @@ DMA 当前支持对自 **DMA 版本 5.0** 以来存储在**文件系统**、**�
 | **包存储类型** |如何批量迁移 SSIS 包|如何批量迁移作业|
 |-|-|-|
 |SSISDB|通过 SSDT/SSMS 重新部署到 Azure-SSISDB。 有关详细信息，请参阅[在 Azure 中部署 SSIS 包](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-deploy-run-monitor-tutorial)。|通过脚本/SSMS/ADF 门户将其转换为 ADF 管道/活动/触发器。 有关详细信息，请参阅 [SSMS 计划功能](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)。|
-|文件系统|通过 dtinstall/dtutil/手动复制将其重新部署到文件共享/Azure 文件，或将其保留在文件系统中，以通过 VNet/自承载 IR 进行访问。 有关详细信息，请参阅 [dtutil 实用工具](https://docs.microsoft.com/sql/integration-services/dtutil-utility)。|通过脚本/SSMS/ADF 门户将其转换为 ADF 管道/活动/触发器。 有关详细信息，请参阅 [SSMS 计划功能](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)。|
+|文件系统|通过 dtinstall/dtutil/手动复制将其重新部署到文件共享/Azure 文件，或将其保留在文件系统中，以通过 VNet/自承载 IR 进行访问。 有关详细信息，请参阅 [dtutil 实用工具](https://docs.microsoft.com/sql/integration-services/dtutil-utility)。|<li> 使用 SSMS 中的 [SSIS 作业迁移向导]进行迁移。（how-to-migrate-ssis-job-ssms.md） <li> 通过脚本/SSMS/ADF 门户将其转换为 ADF 管道/活动/触发器。 有关详细信息，请参阅 [SSMS 计划功能](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)。|
 |SQL Server (MSDB)|通过 SSMS/dtutil 将其导出到文件系统/文件共享/Azure 文件。 有关详细信息，请参阅[导出 SSIS 包](https://docs.microsoft.com/sql/integration-services/import-and-export-packages-ssis-service)。|通过脚本/SSMS/ADF 门户将其转换为 ADF 管道/活动/触发器。 有关详细信息，请参阅 [SSMS 计划功能](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)。|
 |包存储区|通过 SSMS/dtutil 将其导出到文件系统/文件共享/Azure 文件，或通过 dtinstall/dtutil/手动复制将其重新部署到文件共享/Azure 文件，或将其保留在文件系统中，以通过 VNet/自承载 IR 进行访问。 有关详细信息，请参阅“dtutil 实用工具”。 有关详细信息，请参阅 [dtutil 实用工具](https://docs.microsoft.com/sql/integration-services/dtutil-utility)。|通过脚本/SSMS/ADF 门户将其转换为 ADF 管道/活动/触发器。 有关详细信息，请参阅 [SSMS 计划功能](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)。|
 

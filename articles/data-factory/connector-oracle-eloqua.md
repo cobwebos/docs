@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.openlocfilehash: deb5c87073a8963fc052d90f0f7c494cc0644f51
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: abb323bbdb2d49f46fea83e1c881f1ef6a4efff7
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927559"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990797"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Oracle Eloqua 复制数据
 
@@ -46,15 +46,15 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 Oracle Eloqua 链接服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Eloqua** | 是 |
 | endpoint | Eloqua 服务器的终结点。 Eloqua 支持多个数据中心，用于确定终结点、使用凭据登录 https://login.eloqua.com，然后通过 `xxx.xxx.eloqua.com` 模式从重定向 URL 复制“基 URL”**** 部分。 | 是 |
 | username | Eloqua 帐户的站点名称和用户名采用以下格式：`SiteName\Username`，例如 `Eloqua\Alice`。  | 是 |
 | password | 用户名所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
-| useHostVerification | 指定通过 SSL 连接时是否需要服务器证书中的主机名匹配服务器的主机名。 默认值为 true。  | 否 |
-| usePeerVerification | 指定通过 SSL 连接时是否要验证服务器的标识。 默认值为 true。  | 否 |
+| useHostVerification | 指定在通过 TLS 连接时，是否要求服务器证书中的主机名与服务器的主机名匹配。 默认值为 true。  | 否 |
+| usePeerVerification | 指定在通过 TLS 连接时是否验证服务器的标识。 默认值为 true。  | 否 |
 
 **例子：**
 
@@ -81,7 +81,7 @@ Oracle Eloqua 链接服务支持以下属性：
 
 要从 Oracle Eloqua 复制数据，请将数据集的 type 属性设置为“EloquaObject”****。 支持以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的类型属性必须设置为 **：EloquaObject** | 是 |
 | tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
@@ -111,7 +111,7 @@ Oracle Eloqua 链接服务支持以下属性：
 
 要从 Oracle Eloqua 复制数据，请将复制活动中的源类型设置为“EloquaSource”****。 复制活动**源**部分支持以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：EloquaSource**** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Accounts"`。 | 否（如果指定了数据集中的“tableName”） |

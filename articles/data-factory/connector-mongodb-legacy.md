@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.openlocfilehash: 0bdd8d454b979250b57cf657d347309b99a86ede
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 31588f9657a883e9c4a5600d2d164125a5f68edf
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75892554"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991937"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>使用 Azure 数据工厂从 MongoDB 复制数据
 
@@ -55,7 +55,7 @@ ms.locfileid: "75892554"
 
 MongoDB 链接的服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type |type 属性必须设置为：**MongoDb** |是 |
 | server |MongoDB 服务器的 IP 地址或主机名。 |是 |
@@ -65,7 +65,7 @@ MongoDB 链接的服务支持以下属性：
 | username |用于访问 MongoDB 的用户帐户。 |是（如果使用基本身份验证）。 |
 | password |用户密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是（如果使用基本身份验证）。 |
 | authSource |要用于检查身份验证凭据的 MongoDB 数据库名称。 |不是。 对于基本身份验证，默认使用管理员帐户和使用 databaseName 属性指定的数据库。 |
-| enableSsl | 指定是否使用 SSL 加密到服务器的连接。 默认值是 False。  | 否 |
+| enableSsl | 指定与服务器的连接是否使用 TLS 进行加密。 默认值是 False。  | 否 |
 | allowSelfSignedServerCert | 指定是否允许来自服务器的自签名证书。 默认值是 False。  | 否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
@@ -98,7 +98,7 @@ MongoDB 链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集和链接服务](concepts-datasets-linked-services.md)。 MongoDB 数据集支持以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**MongoDbCollection** | 是 |
 | collectionName |MongoDB 数据库中集合的名称。 |是 |
@@ -129,7 +129,7 @@ MongoDB 链接的服务支持以下属性：
 
 复制活动**源**部分支持以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：**MongoDbSource** | 是 |
 | query |使用自定义 SQL-92 查询读取数据。 例如：从 MyTable 中选择 *。 |否（如果指定了数据集中的“collectionName”） |
@@ -185,10 +185,10 @@ Azure 数据工厂服务使用集合中**最新的 100 个文档**从 MongoDB �
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
-| ObjectID |String |
-| String |String |
+| ObjectID |字符串 |
+| 字符串 |字符串 |
 | UUID |Guid |
-| Object |重新标准化为平展列，以“_”作为嵌套分隔符 |
+| 对象 |重新标准化为平展列，以“_”作为嵌套分隔符 |
 
 > [!NOTE]
 > 要了解对使用虚拟表的数组的支持，请参阅[支持使用虚拟表的复杂类型](#support-for-complex-types-using-virtual-tables)一节。

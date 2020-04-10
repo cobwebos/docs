@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 9ef8d6a8d97b2f2c2cff62c629219efb43077c77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb0e20a96bebec22dff99d89c6be0a6d294c80a1
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75754131"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992141"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 HubSpot 复制数据
 
@@ -47,7 +47,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 HubSpot 链接服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Hubspot** | 是 |
 | clientId | 与 HubSpot 应用程序关联的客户端 ID。 了解如何[在此处](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot)在 HubSpot 中创建应用。 | 是 |
@@ -55,8 +55,8 @@ HubSpot 链接服务支持以下属性：
 | accessToken | 最初进行 OAuth 集成身份验证时获得的访问令牌。 了解如何获取访问令牌与您的客户端 ID 和[机密从这里。](https://developers.hubspot.com/docs/methods/oauth2/get-access-and-refresh-tokens) 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | refreshToken | 最初进行 OAuth 集成身份验证时获得的刷新令牌。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
-| useHostVerification | 指定通过 SSL 连接时是否需要服务器证书中的主机名匹配服务器的主机名。 默认值为 true。  | 否 |
-| usePeerVerification | 指定通过 SSL 连接时是否要验证服务器的标识。 默认值为 true。  | 否 |
+| useHostVerification | 指定在通过 TLS 连接时，是否要求服务器证书中的主机名与服务器的主机名匹配。 默认值为 true。  | 否 |
+| usePeerVerification | 指定在通过 TLS 连接时是否验证服务器的标识。 默认值为 true。  | 否 |
 
 **例子：**
 
@@ -90,7 +90,7 @@ HubSpot 链接服务支持以下属性：
 
 要从 HubSpot 复制数据，请将数据集的 type 属性设置为“HubspotObject”****。 支持以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的类型属性必须设置为：**中心点对象** | 是 |
 | tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
@@ -120,7 +120,7 @@ HubSpot 链接服务支持以下属性：
 
 要从 HubSpot 复制数据，请将复制活动中的源类型设置为“HubspotSource”****。 复制活动**源**部分支持以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：**HubspotSource** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Companies where Company_Id = xxx"`。 | 否（如果指定了数据集中的“tableName”） |

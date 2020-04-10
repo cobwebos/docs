@@ -3,27 +3,23 @@ title: Application Insights 的版本批注 | Microsoft 文档
 description: 为 Application Insights 中的指标资源管理器图表添加部署或版本标记。
 ms.topic: conceptual
 ms.date: 07/01/2019
-ms.openlocfilehash: e0e2a106b276110e13b3c68889e4d1d349ba73a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ad773ca6a7102ac718d43dfbbf6a4f834e681a0
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77666507"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010695"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>为 Application Insights 中的指标图表添加批注
 
-[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)图表上的批注显示将新版本部署到了何处，或者显示其他重要事件。 使用批注可让轻松查看更改是否对应用程序的性能产生了任何影响。 [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/tasks/) 生成系统可自动创建批注。 也可以通过 PowerShell 创建批注，用于标记所要处理的任何事件。
-
-> [!NOTE]
-> 本文反映了已弃用的**经典指标体验**。 批注目前仅在经典体验和**[工作簿](../../azure-monitor/app/usage-workbooks.md)** 中可用。 若要详细了解当前的指标体验，请参阅 [Azure 指标资源管理器的高级功能](../../azure-monitor/platform/metrics-charts.md)。
-
-![批注的示例](./media/annotations/0-example.png)
+注释显示部署新生成或其他重大事件的位置。 使用批注可让轻松查看更改是否对应用程序的性能产生了任何影响。 [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/tasks/) 生成系统可自动创建批注。 也可以通过 PowerShell 创建批注，用于标记所要处理的任何事件。
 
 ## <a name="release-annotations-with-azure-pipelines-build"></a>Azure Pipelines 生成中的版本批注
 
 版本批注是 Azure DevOps 的基于云的 Azure Pipelines 服务功能。
 
 ### <a name="install-the-annotations-extension-one-time"></a>安装批注扩展（一次性操作）
+
 若要创建版本批注，必须安装 Visual Studio Marketplace 中提供的多个 Azure DevOps 扩展中的一个。
 
 1. 登录到 [Azure DevOps](https://azure.microsoft.com/services/devops/) 项目。
@@ -74,11 +70,26 @@ ms.locfileid: "77666507"
 1. 在“发布模板”主窗口中选择“保存”以保存模板。****
 
 ## <a name="view-annotations"></a>查看批注
-现在，每当使用发布模板部署新版本时，就会将批注发送到 Application Insights。 批注显示在“指标资源管理器”中的图表上。****
 
-选择任一批注标记（浅灰色箭头）可打开有关该版本的详细信息，包括请求者、源控制分支、发布管道和环境。
 
-![选择版本批注标记。](./media/annotations/8-release.png)
+   > [!NOTE]
+   > 发布注释当前不在"应用程序见解的指标"窗格中提供
+
+现在，每当使用发布模板部署新版本时，就会将批注发送到 Application Insights。 注释可以在以下位置查看：
+
+使用窗格，您还可以手动创建发布注释：
+
+![条形图的屏幕截图，显示用户访问量，持续数小时。 发布注释在图表上方显示为绿色复选标记，指示发布发生的瞬间](./media/annotations/usage-pane.png)
+
+在任何基于日志的工作簿查询中，可视化效果显示沿 x 轴的时间。
+
+![工作簿窗格的屏幕截图，显示注释，包含基于时间序列日志的查询](./media/annotations/workbooks-annotations.png)
+
+要在工作簿中启用批注，请转到 **"高级设置"** 并选择 **"显示批注**"。
+
+![带有单词的高级设置菜单的屏幕截图显示注释突出显示，设置旁边有复选标记以启用它。](./media/annotations/workbook-show-annotations.png)
+
+选择任何注释标记以打开有关发布的详细信息，包括请求器、源代码管理分支、发布管道和环境。
 
 ## <a name="create-custom-annotations-from-powershell"></a>通过 PowerShell 创建自定义批注
 可以使用 GitHub 中的 [CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) PowerShell 脚本，通过所需的任何流程创建批注，而无需使用 Azure DevOps。 

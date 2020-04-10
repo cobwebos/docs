@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 1ca439d1a82e3cdbe2cc0274cf63653d39048057
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a05d955be88f68b3c0db1f4a29b3f6e1155aa0d
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79532546"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992175"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 HTTP 终结点复制数据
 
@@ -64,11 +64,11 @@ ms.locfileid: "79532546"
 
 HTTP 链接的服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | **类型**属性必须设置为**HttpServer**。 | 是 |
 | url | Web 服务器的基 URL。 | 是 |
-| enableServerCertificateValidation | 指定连接到 HTTP 终结点时，是否启用服务器 SSL 证书验证。 HTTPS 服务器使用自签名证书时，将此属性设置为 false****。 | 否<br /> （默认值为**true）** |
+| enableServerCertificateValidation | 指定在连接到 HTTP 终结点时是否启用服务器 TLS/SSL 证书验证。 HTTPS 服务器使用自签名证书时，将此属性设置为 false****。 | 否<br /> （默认值为**true）** |
 | authenticationType | 指定身份验证类型。 允许的值为：Anonymous、Basic、Digest、Windows 和 ClientCertificate********************。 <br><br> 有关这些身份验证类型的更多属性和 JSON 示例，请参阅此表格下面的部分。 | 是 |
 | connectVia | 用于连接到数据存储的 [ Integration Runtime](concepts-integration-runtime.md)。 从[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
@@ -76,7 +76,7 @@ HTTP 链接的服务支持以下属性：
 
 将 authenticationType 属性设置为 Basic、Digest 或 Windows****************。 除了前面部分所述的通用属性，还指定以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | userName | 用于访问 HTTP 终结点的用户名。 | 是 |
 | password | 用户（userName 值）的密码****。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中****。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 是 |
@@ -109,7 +109,7 @@ HTTP 链接的服务支持以下属性：
 
 若要使用 ClientCertificate 身份验证，将 authenticationType 属性设置为ClientCertificate********。 除了前面部分所述的通用属性，还指定以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | embeddedCertData | Base64 编码的证书数据。 | 指定是 embeddedCertData，还是 certThumbprint********。 |
 | certThumbprint | 自承载集成运行时计算机的证书存储中所安装证书的指纹。 仅当在 connectVia 属性中指定自承载类型的 Integration Runtime 时适用****。 | 指定是 embeddedCertData，还是 certThumbprint********。 |
@@ -174,7 +174,7 @@ HTTP 链接的服务支持以下属性：
 
 基于格式的数据集中 `location` 设置下的 HTTP 支持以下属性：
 
-| properties    | 描述                                                  | 必选 |
+| Property    | 说明                                                  | 必选 |
 | ----------- | ------------------------------------------------------------ | -------- |
 | type        | 数据集中 `location` 下的 type 属性必须设置为 **HttpServerLocation**。 | 是      |
 | relativeUrl | 包含数据的资源的相对 URL。 HTTP 连接器从以下组合 URL 复制数据：`[URL specified in linked service][relative URL specified in dataset]`。   | 否       |
@@ -220,7 +220,7 @@ HTTP 链接的服务支持以下属性：
 
 基于格式的复制源中 `storeSettings` 设置下的 HTTP 支持以下属性：
 
-| properties                 | 描述                                                  | 必选 |
+| Property                 | 说明                                                  | 必选 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | 下`storeSettings`的类型属性必须设置为**HttpReadSettings**。 | 是      |
 | requestMethod            | HTTP 方法。 <br>允许的值为 Get（默认值）和 Post********。 | 否       |
@@ -281,7 +281,7 @@ HTTP 链接的服务支持以下属性：
 
 ### <a name="legacy-dataset-model"></a>旧数据集模型
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集**的类型**属性必须设置为**HttpFile**。 | 是 |
 | relativeUrl | 包含数据的资源的相对 URL。 未指定此属性时，仅使用链接服务定义中指定的 URL。 | 否 |
@@ -335,7 +335,7 @@ HTTP 链接的服务支持以下属性：
 
 ### <a name="legacy-copy-activity-source-model"></a>旧复制活动源模型
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源**的类型**属性必须设置为**HttpSource**。 | 是 |
 | httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）****。 该值是获取响应而不是读取响应数据的超时。 默认值为 00:01:40****。  | 否 |

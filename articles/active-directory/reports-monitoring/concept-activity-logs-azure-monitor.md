@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/22/2019
+ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46e29fff3308f35b16dbff2f9cead82abc222a5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 595c87d2b8182c9044baeb2662e34871d9e52c52
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266541"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991239"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure 监视中的 Azure AD 活动日志
 
@@ -179,7 +179,7 @@ ms.locfileid: "79266541"
 
 **问: 目前支持哪些 SIEM 工具？** 
 
-**答**: 目前，[Splunk](tutorial-integrate-activity-logs-with-splunk.md)、QRadar 和 [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory) 支持 Azure Monitor。 若要详细了解连接器的工作方式，请参阅[将 Azure 监视数据流式传输到事件中心供外部工具使用](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)。
+**A** **A**： 目前，Azure 监视器由[Splunk、IBM](tutorial-integrate-activity-logs-with-splunk.md)QRadar、[相扑逻辑](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory)[、ArcSight、LogRhythm](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-arcsight)和Logz.io支持。 若要详细了解连接器的工作方式，请参阅[将 Azure 监视数据流式传输到事件中心供外部工具使用](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)。
 
 ---
 

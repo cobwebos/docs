@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: d4288b901a0e6e132e32f8391d108e79861fc331
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a6baf8b4609382be4a5a31d12cac581da2c17de6
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79371029"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011661"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>创建和管理 Azure 数据库的专用链接，用于 PostgreSQL - 使用 CLI 创建单个服务器
 
@@ -118,7 +118,7 @@ az resource show --ids $networkInterfaceId --api-version 2019-04-01 -o json
  
 #Create DNS records 
 az network private-dns record-set a create --name myserver --zone-name privatelink.postgres.database.azure.com --resource-group myResourceGroup  
-az network private-dns record-set a add-record --record-set-name myserver --zone-name privatelink.postgres.database.windows.net --resource-group myResourceGroup -a <Private IP Address>
+az network private-dns record-set a add-record --record-set-name myserver --zone-name privatelink.postgres.database.azure.com --resource-group myResourceGroup -a <Private IP Address>
 ```
 
 > [!NOTE] 
@@ -130,22 +130,22 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 1. 在门户的搜索栏中，输入 *myVm*。
 
-1. 选择“连接”按钮。**** 选择“连接”按钮后，“连接到虚拟机”随即打开********。
+1. 选择“连接”按钮。  选择“连接”按钮后，“连接到虚拟机”随即打开   。
 
-1. 选择**下载 RDP 文件**。 Azure 会创建远程桌面协议 (*.rdp*) 文件，并将其下载到计算机。
+1. 选择“下载 RDP 文件”  。 Azure 会创建远程桌面协议 ( *.rdp*) 文件，并将其下载到计算机。
 
-1. 打开 downloaded.rdp** 文件。
+1. 打开 downloaded.rdp  文件。
 
-    1. 出现提示时，选择“连接”****。
+    1. 出现提示时，选择“连接”  。
 
     1. 输入在创建 VM 时指定的用户名和密码。
 
         > [!NOTE]
-        > 您可能需要选择**更多选项** > **"使用其他帐户**"来指定创建 VM 时输入的凭据。
+        > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据   。
 
-1. 选择“确定”。
+1. 选择“确定”  。
 
-1. 你可能会在登录过程中收到证书警告。 如果收到证书警告，请选择“确定”或“继续”********。
+1. 你可能会在登录过程中收到证书警告。 如果收到证书警告，请选择“确定”或“继续”   。
 
 1. VM 桌面出现后，将其最小化以返回到本地桌面。  
 
@@ -168,7 +168,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 4. 在 **"新建连接**"中，输入或选择此信息：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
     | 服务器类型| 选择**PostgreSQL**。|
     | 服务器名称| 选择*mydemopostgresserver.privatelink.postgres.database.azure.com* |

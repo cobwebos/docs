@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 25cef95e2d01012506148f03be45104e455e1fcd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8083efe833ec80290713fc14d9cb89acd8263fa2
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530268"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010896"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Azure Redis 缓存的 ASP.NET 会话状态提供程序
 
@@ -82,10 +82,10 @@ Redis 会话状态提供程序 NuGet 包依赖于 StackExchange.Redis.StrongName
 在 Microsoft Azure 门户中使用缓存边栏选项卡中的值配置属性，并根据需要配置其他值。 有关访问缓存属性的说明，请参阅[配置 Azure Redis 缓存设置](cache-configure.md#configure-azure-cache-for-redis-settings)。
 
 * **host** - 指定缓存终结点。
-* **port** - 使用非 SSL 端口或 SSL 端口，具体取决于 SSL 设置。
+* **端口**– 使用非 TLS/SSL 端口或 TLS/SSL 端口，具体取决于 TLS 设置。
 * **accessKey** - 使用缓存的主密钥或辅助密钥。
-* **ssl** - 如果要使用 SSL 保护缓存/客户端通信，则为 true；否则为 false。 请务必指定正确的端口。
-  * 默认情况下，将为新缓存禁用非 SSL 端口。 为此设置指定 true 可使用 SSL 端口。 有关启用非 SSL 端口的详细信息，请参阅[配置缓存](cache-configure.md)主题中的[访问端口](cache-configure.md#access-ports)部分。
+* **ssl** = 如果要使用 TLS 保护缓存/客户端通信，则为 true;否则是虚假的。 请务必指定正确的端口。
+  * 默认情况下，新缓存将禁用非 TLS 端口。 为此设置指定 true 以使用 TLS 端口。 有关启用非 TLS 端口的详细信息，请参阅["配置缓存](cache-configure.md)"主题中的["访问端口](cache-configure.md#access-ports)"部分。
 * **throwOnError** - 如果希望在失败时引发异常，则为 true；如果希望操作以静默方式失败，则为 false。 可以通过检查静态 Microsoft.Web.Redis.RedisSessionStateProvider.LastException 属性来检查失败。 默认值为 true。
 * **retryTimeoutInMilliseconds** - 会在此时间间隔内重试失败的操作，以毫秒为单位指定。 首次重试在 20 毫秒后进行，然后重试每隔一秒进行，直到 retryTimeoutInMilliseconds 间隔到期。 在此时间间隔过后，将立即重试操作最后一次。 如果操作仍失败，则会将异常返回给调用方，具体取决于 throwOnError 设置。 默认值为 0，这意味着不重试。
 * **databaseId** - 指定要用于缓存输出数据的数据库。 如果未指定，则使用默认值 0。

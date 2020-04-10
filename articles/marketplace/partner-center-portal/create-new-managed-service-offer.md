@@ -8,17 +8,17 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: de6e08534722deccb8be11248dd8af3ca2e66739
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 6baf5d77b70fa6e2717b492163826f27d80fbb88
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983206"
+ms.locfileid: "80991614"
 ---
 # <a name="create-a-new-managed-service-offer"></a>创建新的托管服务产品/服务
 
 > [!IMPORTANT]
-> 我们将托管服务产品的管理从云合作伙伴门户转移到合作伙伴中心。 在迁移产品/服务之前，请按照[向 Azure 应用商店发布托管服务产品/服务以](../../lighthouse/how-to/publish-managed-services-offers.md)管理产品/服务的说明进行操作。
+> 我们将托管服务产品的管理从云合作伙伴门户迁移到合作伙伴中心。 在迁移产品/服务之前，请按照[向 Azure 应用商店发布托管服务产品/服务以](../../lighthouse/how-to/publish-managed-services-offers.md)在云合作伙伴门户中管理产品/服务的说明进行操作。
 
 托管服务提供了启用[Azure 灯塔](../../lighthouse/overview.md)方案的帮助。 当客户接受托管服务产品/服务时，他们将能够将资源用于 Azure[委派的资源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)。
 
@@ -74,7 +74,7 @@ ms.locfileid: "80983206"
 > [!NOTE]
 > 报价列表内容（如说明、文档、屏幕截图、使用条款等）不需要以英文表示，只要要约说明以短语开头，"此应用程序仅以 [非英语语言]提供。 提供*有用的链接 URL*以提供产品/服务列表内容中所用语言以外的语言提供内容也是可接受的。
 
-### <a name="name"></a>名称
+### <a name="name"></a>“属性”
 
 您在此处输入的名称将作为产品/服务列表的标题显示给客户。 此字段预填充了创建产品/服务时为 **"产品/服务"别名**输入的文本，但您可以更改此值。 此名称可以注册商标（您可以包括商标或版权符号）。 名称不能超过 50 个字符，不能包含任何表情符号。
 

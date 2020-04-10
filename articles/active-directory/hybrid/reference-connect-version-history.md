@@ -12,12 +12,12 @@ ms.date: 04/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60dca30496aa17ad7add00ca4eca914cb58fddd7
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 5d2e3f8da4a05feedb8c1ab585fabcc74edbc71a
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655986"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998749"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发布历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -48,6 +48,13 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 >
 >请参阅[此文](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)，详细了解如何将 Azure AD Connect 升级到最新版本。
 
+## <a name="15200"></a>1.5.20.0
+
+### <a name="release-status"></a>版本状态
+04/09/2020： 发布供下载
+
+### <a name="fixed-issues"></a>修复的问题
+如果启用了组筛选功能并使用 mS-DS-一致性 Guid 作为源锚点，则此修补程序生成修复了内部版本 1.5.18.0 的问题。
 
 ## <a name="15180"></a>1.5.18.0
 
@@ -521,7 +528,7 @@ Azure AD Connect 版本 1.1.654.0（以及更高版本）中已添加了一项�
 *   删除特定对象上的所有 ACE，特定于 SELF 的 ACE 除外。 当涉及到 SELF 时，我们希望保持默认权限不变。
 *   分配以下特定权限：
 
-类型     | 名称                          | 访问               | 应用于
+类型     | “属性”                          | 访问               | 应用于
 ---------|-------------------------------|----------------------|--------------|
 Allow    | SYSTEM                        | 完全控制         | 此对象  |
 Allow    | 企业管理员             | 完全控制         | 此对象  |

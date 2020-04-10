@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 2cfe405c6de5b78a003db68053c0a6034c3b241b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2bf3452e3489c8b4c9664b2ffb58e4a001f8846b
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930849"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991801"
 ---
 # <a name="copy-data-from-paypal-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 PayPal 复制数据
 
@@ -46,15 +46,15 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 PayPal 链接服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**PayPal** | 是 |
 | host | PayPal 实例的 URL。 （即，api.sandbox.paypal.com）  | 是 |
 | clientId | 与 PayPal 应用程序关联的客户端 ID。  | 是 |
 | clientSecret | 与 PayPal 应用程序关联的客户端密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
-| useHostVerification | 指定通过 SSL 连接时是否需要服务器证书中的主机名匹配服务器的主机名。 默认值为 true。  | 否 |
-| usePeerVerification | 指定通过 SSL 连接时是否要验证服务器的标识。 默认值为 true。  | 否 |
+| useHostVerification | 指定在通过 TLS 连接时，是否要求服务器证书中的主机名与服务器的主机名匹配。 默认值为 true。  | 否 |
+| usePeerVerification | 指定在通过 TLS 连接时是否验证服务器的标识。 默认值为 true。  | 否 |
 
 **例子：**
 
@@ -81,7 +81,7 @@ PayPal 链接服务支持以下属性：
 
 要从 PayPal 复制数据，请将数据集的 type 属性设置为“PayPalObject”****。 支持以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的类型属性必须设置为 **：PayPalObject** | 是 |
 | tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
@@ -111,7 +111,7 @@ PayPal 链接服务支持以下属性：
 
 要从 PayPal 复制数据，请将复制活动中的源类型设置为“PayPalSource”****。 复制活动**源**部分支持以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：PayPalSource**** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Payment_Experience"`。 | 否（如果指定了数据集中的“tableName”） |

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/02/2020
 ms.author: jingwang
-ms.openlocfilehash: b215531fdc1a1bb07b33c427623d5cd4f5f8219a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc81e66e609400c6558f00ee957ccaee715bd7fa
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252484"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991631"
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 FTP 服务器复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -56,13 +56,13 @@ FTP 连接器支持在被动模式下运行的 FTP 服务器。 不支持活动�
 
 FTP 链接服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 类型属性必须设置为 **：FtpServer**。 | 是 |
 | host | 指定 FTP 服务器的名称或 IP 地址。 | 是 |
 | port | 指定 FTP 服务器侦听的端口。<br/>允许的值是：整数，默认值是 21****。 | 否 |
 | enableSsl | 指定是否通过 SSL/TLS 通道使用 FTP。<br/>允许的值是：true****（默认）、false****。 | 否 |
-| enableServerCertificateValidation | 指定在通过 SSL/TLS 通道使用 FTP 时，是否启用服务器 SSL 证书验证。<br/>允许的值是：true****（默认）、false****。 | 否 |
+| enableServerCertificateValidation | 指定在 SSL/TLS 通道上使用 FTP 时是否启用服务器 TLS/SSL 证书验证。<br/>允许的值是：true****（默认）、false****。 | 否 |
 | authenticationType | 指定身份验证类型。<br/>允许的值是：Basic****、Anonymous**** | 是 |
 | userName | 指定有权访问 FTP 服务器的用户。 | 否 |
 | password | 指定用户 (userName) 的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
@@ -128,7 +128,7 @@ FTP 链接服务支持以下属性：
 
 基于格式的数据集中 `location` 设置下的 FTP 支持以下属性：
 
-| properties   | 描述                                                  | 必选 |
+| Property   | 说明                                                  | 必选 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 数据集中 `location` 下的 type 属性必须设置为 **FtpServerLocation**。 | 是      |
 | folderPath | 文件夹的路径。 如果要使用通配符筛选文件夹，请跳过此设置并在活动源设置中指定。 | 否       |
@@ -170,7 +170,7 @@ FTP 链接服务支持以下属性：
 
 基于格式的复制源中 `storeSettings` 设置下的 FTP 支持以下属性：
 
-| properties                 | 描述                                                  | 必选                                      |
+| Property                 | 说明                                                  | 必选                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | 下`storeSettings`的类型属性必须设置为**FtpReadSettings**。 | 是                                           |
 | recursive                | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 请注意，当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。 允许的值**为 true（** 默认值）和**false**。 | 否                                            |
@@ -250,7 +250,7 @@ FTP 链接服务支持以下属性：
 
 ### <a name="legacy-dataset-model"></a>旧数据集模型
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：FileShare**** |是 |
 | folderPath | 文件夹路径。 支持通配符筛选器，允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名中包含通配符或此转义字符，请使用 `^` 进行转义。 <br/><br/>示例：“rootfolder/subfolder/”，请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 |是 |
@@ -295,7 +295,7 @@ FTP 链接服务支持以下属性：
 
 ### <a name="legacy-copy-activity-source-model"></a>旧复制活动源模型
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：FileSystemSource**** |是 |
 | recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制/创建空的文件夹/子文件夹。<br/>允许的值是 **：true（** 默认 **），false** | 否 |

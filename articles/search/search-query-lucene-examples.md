@@ -9,12 +9,12 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 745be21c2a7a09a09fdbbfd57a305d09a4fac3ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c54f864b5bd562fdc0a84b2903198704032b360
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72793435"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998488"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>使用“完整的”Lucene 搜索语法（Azure 认知搜索中的高级查询）
 
@@ -86,7 +86,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 出于简洁目的，该查询仅针对 business_title 字段并指定仅返回职位**。 **searchFields** 参数将查询执行限制为 business_title 字段，**select** 指定响应中包含的字段。
 
-### <a name="partial-query-string"></a>部分查询字符串
+### <a name="search-expression"></a>搜索表达式
 
 ```http
 &search=*&searchFields=business_title&$select=business_title
@@ -119,7 +119,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 完整 Lucene 语法支持将单个搜索表达式的范围限定为特定的字段。 此示例搜索其中带有字词 senior 而非 junior 的 business title（职务）。
 
-### <a name="partial-query-string"></a>部分查询字符串
+### <a name="search-expression"></a>搜索表达式
 
 ```http
 $select=business_title&search=business_title:(senior NOT junior)
@@ -156,7 +156,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 完整 Lucene 语法还支持模糊搜索，能对构造相似的术语进行匹配。 若要执行模糊搜索，请在单个字词的末尾追加“`~`”波形符，后跟指定编辑距离的可选参数（介于 0 到 2 之间的值）。 例如，`blue~` 或 `blue~1` 会返回 blue、blues 和 glue。
 
-### <a name="partial-query-string"></a>部分查询字符串
+### <a name="search-expression"></a>搜索表达式
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:asosiate~
@@ -186,7 +186,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 ## <a name="example-4-proximity-search"></a>示例 4：邻近搜索
 邻近搜索用于搜索文档中彼此邻近的术语。 在短语末尾插入波形符“~”，后跟创建邻近边界的词数。 例如“酒店机场”~5 将查找文档中彼此之间 5 个字以内的术语“酒店”和“机场”。
 
-### <a name="partial-query-string"></a>部分查询字符串
+### <a name="search-expression"></a>搜索表达式
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
@@ -239,7 +239,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 正则表达式搜索基于正斜杠“/”之间的内容查找匹配项，如在 [RegExp 类](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)中所记录的那样。
 
-### <a name="partial-query-string"></a>部分查询字符串
+### <a name="search-expression"></a>搜索表达式
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
@@ -262,7 +262,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 ## <a name="example-7-wildcard-search"></a>示例 7：通配符搜索
 可将通常可识别的语法用于多个 (\*) 或单个 (?) 字符通配符搜索。 请注意，Lucene 查询分析器支持将这些符号与单个术语一起使用，但不能与短语一起使用。
 
-### <a name="partial-query-string"></a>部分查询字符串
+### <a name="search-expression"></a>搜索表达式
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:prog*

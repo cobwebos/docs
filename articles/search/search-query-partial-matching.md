@@ -8,20 +8,20 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 7f001a0d443e4ec668aedaabb7505884163bf37e
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: faafc1e12f0703c38b4e602700b1e775bf13a061
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666789"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998333"
 ---
-# <a name="partial-term-search-and-patterns-with-special-characters---azure-cognitive-search-wildcard-regex-patterns"></a>具有特殊字符的部分术语搜索和模式 - Azure 认知搜索（通配符、正则表达式、模式）
+# <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>具有特殊字符的部分术语搜索和模式（通配符、正则表达式、模式）
 
 *部分术语搜索*是指由术语片段组成的查询，例如字符串的第一个、最后一个或内部部分。 *模式*可能是片段的组合，有时具有特殊字符（如破折号或斜杠）是查询的一部分。 常见用例包括查询电话号码、URL、人员或产品代码或复合词的某些部分。
 
 如果索引没有模式匹配所需的格式的字词，则部分搜索可能会有问题。 在索引的文本分析阶段，使用默认标准分析器，将丢弃特殊字符，将复合字符串和复合字符串拆分，导致找不到匹配时模式查询失败。 例如，电话号码`+1 (425) 703-6214`（令牌化为`"1"`，、、）`"425"``"703"``"6214"`不会显示在`"3-62"`查询中，因为索引中实际上不存在该内容。 
 
-解决方案是调用保留完整字符串（如有必要）包括空格和特殊字符的分析器，以便您可以支持部分术语和模式。 为完整字符串创建附加字段，以及使用内容保留分析器，是解决方案的基础。
+解决方案是调用保留完整字符串（如有必要）包括空格和特殊字符的分析器，以便可以匹配部分术语和模式。 为完整字符串创建附加字段，以及使用内容保留分析器，是解决方案的基础。
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Azure 认知搜索中的部分搜索是什么
 
@@ -64,7 +64,7 @@ ms.locfileid: "80666789"
   "type": "Edm.String",
   "retrievable": true,
   "searchable": true,
-  "analyzer": "my_customanalyzer"
+  "analyzer": "my_custom_analyzer"
 },
 ```
 

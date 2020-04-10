@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/25/2019
-ms.openlocfilehash: aa996ae14276ecf246104d8778fbb6b723448e04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a76150756d87b5f2c1b73b8755500e63cdfe05c9
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931725"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991733"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory"></a>使用 Azure 数据工厂从 Salesforce Marketing Cloud 复制数据
 
@@ -47,14 +47,14 @@ Salesforce Marketing Cloud 连接器支持 OAuth 2 身份验证。 它在 [Sales
 
 Salesforce Marketing Cloud 链接的服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 类型属性必须设置为：SalesforceMarketingCloud****。 | 是 |
 | clientId | 与 Salesforce Marketing Cloud 应用程序关联的客户端 ID。  | 是 |
 | clientSecret | 与 Salesforce Marketing Cloud 应用程序关联的客户端密码。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许 ADF 复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
-| useHostVerification | 指定通过 SSL 连接时是否需要服务器证书中的主机名匹配服务器的主机名。 默认值为 true。  | 否 |
-| usePeerVerification | 指定通过 SSL 连接时是否要验证服务器的标识。 默认值为 true。  | 否 |
+| useHostVerification | 指定在通过 TLS 连接时，是否要求服务器证书中的主机名与服务器的主机名匹配。 默认值为 true。  | 否 |
+| usePeerVerification | 指定在通过 TLS 连接时是否验证服务器的标识。 默认值为 true。  | 否 |
 
 **例子：**
 
@@ -84,7 +84,7 @@ Salesforce Marketing Cloud 链接的服务支持以下属性：
 
 要从 Salesforce Marketing Cloud 复制数据，请将数据集的 type 属性设置为 SalesforceMarketingCloudObject****。 支持以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的类型属性必须设置为 **：Salesforce营销云对象** | 是 |
 | tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
@@ -114,7 +114,7 @@ Salesforce Marketing Cloud 链接的服务支持以下属性：
 
 要从 Salesforce Marketing Cloud 复制数据，请将复制活动中的源类型设置为 SalesforceMarketingCloudSource****。 复制活动**源**部分支持以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：SalesforceMarketingCloudSource**** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |

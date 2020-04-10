@@ -7,16 +7,16 @@ manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 03/11/2020
+ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 85457b62c905cb30ca22264eff1b6c677473f9b9
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: ce2fe66888893d82debcc412bb16752914d8a190
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745302"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011100"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>监视 Azure 突触分析中的资源利用率和查询活动
 
@@ -33,8 +33,8 @@ Azure Synapse 分析在 Azure 门户中提供了丰富的监视体验，以显�
 | 内存百分比       | 数据仓库所有节点的内存利用率 (SQL Server) | 平均，最小，最大值   |
 | 活动查询          | 在系统上执行的活动查询数             | SUM              |
 | 排队查询          | 等待开始执行的排队查询数          | SUM              |
-| 成功的连接数  | 数据的成功连接数                 | 总和，计数       |
-| 失败的连接数      | 数据仓库的失败连接数           | 总和，计数       |
+| 成功的连接数  | 针对数据库的成功连接（登录次数） | 总和，计数       |
+| 失败的连接数      | 针对数据库的失败连接（登录次数） | 总和，计数       |
 | 被防火墙阻止     | 登录数据仓库受阻次数     | 总和，计数       |
 | DWU 限制               | 数据仓库的服务级别目标                | 平均，最小，最大值    |
 | DWU 百分比          | CPU 百分比与数据 IO 百分比之间的最大值        | 平均，最小，最大值    |
@@ -42,7 +42,7 @@ Azure Synapse 分析在 Azure 门户中提供了丰富的监视体验，以显�
 | 缓存命中百分比    | (缓存命中数/缓存未命中数) * 100，其中，缓存命中数是在本地 SSD 缓存中所有列存储段的总命中数，缓存未命中数是所有节点上本地 SSD 缓存中列存储段的未命中数之和 | 平均，最小，最大值    |
 | 缓存使用百分比   | (已用缓存/缓存容量) * 100，其中，已用缓存是所有节点上的本地 SSD 缓存中所有字节之和，缓存容量是所有节点上的本地 SSD 缓存存储容量之和 | 平均，最小，最大值    |
 | 本地 tempdb 百分比 | 所有计算节点上的本地 tempdb 利用率 - 每五分钟发出一次值 | 平均，最小，最大值    |
-| 数据存储大小 （GB） | 加载到数据库中的数据的总大小。 这包括驻留在 CCI 和非 CCI 表中的数据，其中非 CCI 表的大小由数据库文件总大小衡量 | SUM |
+| 数据存储大小 （GB） | 数据库总计大小。 这包括已使用、保留和未分配的空间。 保留未分配的空间供数据库优化查询和加载性能。 | SUM |
 | 灾难恢复大小 （GB） | 每 24 小时进行一次的地理备份的总大小 | SUM |
 | 快照存储大小 （GB） | 为提供数据库还原点而拍摄的快照的总大小。 这包括自动快照和用户定义的快照。 | SUM |
 

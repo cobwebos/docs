@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
-ms.openlocfilehash: 20a5c4befaa30383c54ac9536a3fd26dce3db4d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: fasttrack-edit
+ms.openlocfilehash: d7d0699718642a7eb9f85b2e8a86623092c34365
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80059988"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010556"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 虚拟网络中资源的名称解析
 
@@ -185,8 +186,7 @@ DNS 转发还可用于在虚拟网络之间进行 DNS 解析，可以通过本�
 * 禁止从 Internet 进行访问，减少外部代理带来的威胁。
 
 > [!NOTE]
-> 为获得最佳性能，在将 Azure VM 用作 DNS 服务器时，应禁用 IPv6。 [公共 IP 地址](virtual-network-public-ip-address.md) 应分配给每个 DNS 服务器 VM。 
-> 
+> 为获得最佳性能，在将 Azure VM 用作 DNS 服务器时，应禁用 IPv6。
 
 ### <a name="web-apps"></a>Web 应用
 假设你需要执行从使用应用服务生成的、已链接到某个虚拟网络的 Web 应用到同一虚拟网络中的 VM 的名称解析。 除了设置具有 DNS 转发程序（可向 Azure 转发查询）的自定义 DNS 服务器（虚拟 IP 为 168.63.129.16）以外，还需要执行以下步骤：

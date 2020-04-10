@@ -1,19 +1,19 @@
 ---
 title: 将应用程序部署到 Azure 虚拟机缩放集
 description: 了解如何将应用程序部署到规模集中的 Linux 和 Windows 虚拟机实例
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.assetid: f8892199-f2e2-4b82-988a-28ca8a7fd1eb
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: cynthn
-ms.openlocfilehash: 6bc319ea50da4ff6a654b2c9ab09bbe218695533
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: e157db79f1835a8ca891dd360a99e3319565d1d4
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278107"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011457"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>在虚拟机规模集上部署应用程序
 
@@ -26,15 +26,15 @@ ms.locfileid: "76278107"
 若要减少配置管理和预配 VM 的时间，可以创建自定义 VM 映像，使其在规模集中预配实例后立即准备好运行应用程序。 若要深入了解如何通过规模集创建和使用自定义 VM 映像，请参阅以下教程：
 
 - [Azure CLI](tutorial-use-custom-image-cli.md)
-- [Azure 电源外壳](tutorial-use-custom-image-powershell.md)
+- [Azure PowerShell](tutorial-use-custom-image-powershell.md)
 
 
 ## <a name="install-an-app-with-the-custom-script-extension"></a><a name="already-provisioned"></a>使用自定义脚本扩展安装应用
 自定义脚本扩展在 Azure VM 上下载和执行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或 GitHub 下载脚本，或者在扩展运行时将脚本提供给 Azure 门户。 若要详细了解如何使用自定义脚本扩展安装应用，请参阅以下教程：
 
 - [Azure CLI](tutorial-install-apps-cli.md)
-- [Azure 电源外壳](tutorial-install-apps-powershell.md)
-- [Azure Resource Manager 模板](tutorial-install-apps-template.md)
+- [Azure PowerShell](tutorial-install-apps-powershell.md)
+- [Azure 资源管理器模板](tutorial-install-apps-template.md)
 
 
 ## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>使用 PowerShell DSC 将应用安装到 Windows VM

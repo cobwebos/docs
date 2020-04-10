@@ -3,13 +3,13 @@ title: 在 Azure 库伯奈斯服务 （AKS） 中使用窗格安全策略
 description: 了解如何在 Azure 库伯奈斯服务 （AKS） 中使用 PodSecurity 策略来控制 pod 准入
 services: container-service
 ms.topic: article
-ms.date: 04/17/2019
-ms.openlocfilehash: 74177136a7a61186ab1d273b57dbfce550a18ecf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/08/2020
+ms.openlocfilehash: 9e3a17e4775150247ef7924dffec68cc86a0bcac
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77914528"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998355"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>预览 - 使用 Azure 库伯奈斯服务 （AKS） 中的窗格安全策略保护群集
 
@@ -103,17 +103,17 @@ NAME         PRIV    CAPS   SELINUX    RUNASUSER          FSGROUP     SUPGROUP  
 privileged   true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *     configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
 ```
 
-*特权*pod 安全策略应用于 AKS 群集中的任何经过身份验证的用户。 此分配由群集角色和群集角色绑定控制。 使用[kubectl 获取群集角色绑定][kubectl-get]命令并搜索*默认：特权：* 绑定：
+*特权*pod 安全策略应用于 AKS 群集中的任何经过身份验证的用户。 此分配由群集角色和群集角色绑定控制。 使用[kubectl 获取角色绑定][kubectl-get]命令并搜索*默认：特权：* 在*kube 系统*命名空间中的绑定：
 
 ```console
-kubectl get clusterrolebindings default:privileged -o yaml
+kubectl get rolebindings default:privileged -n kube-system -o yaml
 ```
 
 如下压缩输出所示 *，psp：受限*群集角色分配给任何*系统：经过身份验证*的用户。 此功能提供基本级别的限制，而无需定义您自己的策略。
 
 ```
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
+kind: RoleBinding
 metadata:
   [...]
   name: default:privileged
@@ -125,7 +125,7 @@ roleRef:
 subjects:
 - apiGroup: rbac.authorization.k8s.io
   kind: Group
-  name: system:authenticated
+  name: system:masters
 ```
 
 在开始创建自己的 pod 安全策略之前，了解这些默认策略如何与用户请求交互以计划 pod 非常重要。 在接下来的几节中，让我们安排一些窗格，以查看这些默认策略的运行情况。
@@ -195,7 +195,7 @@ kubectl-nonadminuser apply -f nginx-privileged.yaml
 ```console
 $ kubectl-nonadminuser apply -f nginx-privileged.yaml
 
-Error from server (Forbidden): error when creating "nginx-privileged.yaml": pods "nginx-privileged" is forbidden: unable to validate against any pod security policy: [spec.containers[0].securityContext.privileged: Invalid value: true: Privileged containers are not allowed]
+Error from server (Forbidden): error when creating "nginx-privileged.yaml": pods "nginx-privileged" is forbidden: unable to validate against any pod security policy: []
 ```
 
 pod 未达到计划阶段，因此在继续之前没有要删除的资源。
@@ -223,44 +223,15 @@ spec:
 kubectl-nonadminuser apply -f nginx-unprivileged.yaml
 ```
 
-库伯内斯调度程序接受 pod 请求。 但是，如果您查看使用`kubectl get pods`的 Pod 的状态，则存在错误：
+无法计划 Pod，如以下示例输出所示：
 
 ```console
-$ kubectl-nonadminuser get pods
+$ kubectl-nonadminuser apply -f nginx-unprivileged.yaml
 
-NAME                 READY   STATUS                       RESTARTS   AGE
-nginx-unprivileged   0/1     CreateContainerConfigError   0          26s
+Error from server (Forbidden): error when creating "nginx-unprivileged.yaml": pods "nginx-unprivileged" is forbidden: unable to validate against any pod security policy: []
 ```
 
-使用[kubectl 描述窗格][kubectl-describe]命令查看窗格的事件。 下面的压缩示例显示容器和映像需要根权限，即使我们没有请求它们：
-
-```console
-$ kubectl-nonadminuser describe pod nginx-unprivileged
-
-Name:               nginx-unprivileged
-Namespace:          psp-aks
-Priority:           0
-PriorityClassName:  <none>
-Node:               aks-agentpool-34777077-0/10.240.0.4
-Start Time:         Thu, 28 Mar 2019 22:05:04 +0000
-[...]
-Events:
-  Type     Reason     Age                     From                               Message
-  ----     ------     ----                    ----                               -------
-  Normal   Scheduled  7m14s                   default-scheduler                  Successfully assigned psp-aks/nginx-unprivileged to aks-agentpool-34777077-0
-  Warning  Failed     5m2s (x12 over 7m13s)   kubelet, aks-agentpool-34777077-0  Error: container has runAsNonRoot and image will run as root
-  Normal   Pulled     2m10s (x25 over 7m13s)  kubelet, aks-agentpool-34777077-0  Container image "nginx:1.14.2" already present on machine
-```
-
-即使我们没有请求任何特权访问，NGINX 的容器映像也需要为端口*80*创建绑定。 要绑定端口*1024*及以下，需要*根*用户。 当 pod 尝试启动时，*受限*的 pod 安全策略会拒绝此请求。
-
-此示例显示 AKS 创建的默认 pod 安全策略有效，并限制用户可以执行的操作。 了解这些默认策略的行为非常重要，因为您可能不希望拒绝基本的 NGINX pod。
-
-在继续执行下一步之前，请使用[kubectl 删除窗格][kubectl-delete]命令删除此测试窗格：
-
-```console
-kubectl-nonadminuser delete -f nginx-unprivileged.yaml
-```
+pod 未达到计划阶段，因此在继续之前没有要删除的资源。
 
 ## <a name="test-creation-of-a-pod-with-a-specific-user-context"></a>测试使用特定用户上下文的 pod 的创建
 
@@ -287,61 +258,15 @@ spec:
 kubectl-nonadminuser apply -f nginx-unprivileged-nonroot.yaml
 ```
 
-库伯内斯调度程序接受 pod 请求。 但是，如果您查看使用`kubectl get pods`的 Pod 的状态，则存在与前面的示例不同的错误：
+无法计划 Pod，如以下示例输出所示：
 
 ```console
-$ kubectl-nonadminuser get pods
+$ kubectl-nonadminuser apply -f nginx-unprivileged-nonroot.yaml
 
-NAME                         READY   STATUS              RESTARTS   AGE
-nginx-unprivileged-nonroot   0/1     CrashLoopBackOff    1          3s
+Error from server (Forbidden): error when creating "nginx-unprivileged-nonroot.yaml": pods "nginx-unprivileged-nonroot" is forbidden: unable to validate against any pod security policy: []
 ```
 
-使用[kubectl 描述窗格][kubectl-describe]命令查看窗格的事件。 以下压缩示例显示了 pod 事件：
-
-```console
-$ kubectl-nonadminuser describe pods nginx-unprivileged
-
-Name:               nginx-unprivileged
-Namespace:          psp-aks
-Priority:           0
-PriorityClassName:  <none>
-Node:               aks-agentpool-34777077-0/10.240.0.4
-Start Time:         Thu, 28 Mar 2019 22:05:04 +0000
-[...]
-Events:
-  Type     Reason     Age                   From                               Message
-  ----     ------     ----                  ----                               -------
-  Normal   Scheduled  2m14s                 default-scheduler                  Successfully assigned psp-aks/nginx-unprivileged-nonroot to aks-agentpool-34777077-0
-  Normal   Pulled     118s (x3 over 2m13s)  kubelet, aks-agentpool-34777077-0  Container image "nginx:1.14.2" already present on machine
-  Normal   Created    118s (x3 over 2m13s)  kubelet, aks-agentpool-34777077-0  Created container
-  Normal   Started    118s (x3 over 2m12s)  kubelet, aks-agentpool-34777077-0  Started container
-  Warning  BackOff    105s (x5 over 2m11s)  kubelet, aks-agentpool-34777077-0  Back-off restarting failed container
-```
-
-这些事件表示容器已创建并启动。 对于为什么该窗格处于失败状态，目前还没有什么明显之处。 让我们使用[kubectl 日志][kubectl-logs]命令查看 pod 日志：
-
-```console
-kubectl-nonadminuser logs nginx-unprivileged-nonroot --previous
-```
-
-以下示例日志输出指示在 NGINX 配置本身中，当服务尝试启动时存在权限错误。 此错误再次由需要绑定到端口 80 引起。 尽管 pod 规范定义了常规用户帐户，但在 OS 级别中，此用户帐户不足以使 NGINX 服务启动并绑定到受限端口。
-
-```console
-$ kubectl-nonadminuser logs nginx-unprivileged-nonroot --previous
-
-2019/03/28 22:38:29 [warn] 1#1: the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /etc/nginx/nginx.conf:2
-nginx: [warn] the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /etc/nginx/nginx.conf:2
-2019/03/28 22:38:29 [emerg] 1#1: mkdir() "/var/cache/nginx/client_temp" failed (13: Permission denied)
-nginx: [emerg] mkdir() "/var/cache/nginx/client_temp" failed (13: Permission denied)
-```
-
-同样，了解默认 pod 安全策略的行为也很重要。 此错误有点难以跟踪，而且您可能不希望一个基本的 NGINX pod 被拒绝。
-
-在继续执行下一步之前，请使用[kubectl 删除窗格][kubectl-delete]命令删除此测试窗格：
-
-```console
-kubectl-nonadminuser delete -f nginx-unprivileged-nonroot.yaml
-```
+pod 未达到计划阶段，因此在继续之前没有要删除的资源。
 
 ## <a name="create-a-custom-pod-security-policy"></a>创建自定义 pod 安全策略
 
@@ -383,7 +308,7 @@ $ kubectl get psp
 
 NAME                  PRIV    CAPS   SELINUX    RUNASUSER          FSGROUP     SUPGROUP    READONLYROOTFS   VOLUMES
 privileged            true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *
-psp-deny-privileged   false          RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *          configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
+psp-deny-privileged   false          RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *          
 ```
 
 ## <a name="allow-user-account-to-use-the-custom-pod-security-policy"></a>允许用户帐户使用自定义 pod 安全策略

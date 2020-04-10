@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.openlocfilehash: a48e69f19db88c7823365964c2fe9c0629a078bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd2da798cae92a7e47bd879b69dd108618463402
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75412671"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010760"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>如何将 Redis 命令行工具与 Azure Redis 缓存配合使用
 
@@ -38,9 +38,9 @@ redis-cli.exe 是一种常用的命令行工具，可作为客户端与 Azure Re
 
 ## <a name="enable-access-for-redis-cliexe"></a>为 redis-cli.exe 启用访问权限
 
-使用 Azure Redis 缓存时，默认情况下仅启用 SSL 端口 (6380)。 `redis-cli.exe` 命令行工具不支持 SSL。 可通过两种配置方式使用该命令行工具：
+使用 Redis 的 Azure 缓存时，默认情况下仅启用 TLS 端口 （6380）。 命令`redis-cli.exe`行工具不支持 TLS。 可通过两种配置方式使用该命令行工具：
 
-1. [启用非 SSL 端口 （6379）](cache-configure.md#access-ports) - **不建议使用此配置**，因为在此配置中，访问密钥通过 TCP 以明文形式发送。 这种更改可能会影响对缓存的访问。 仅当访问测试缓存时才考虑选择此配置。
+1. [启用非 TLS 端口 （6379）](cache-configure.md#access-ports) - **不建议使用此配置**，因为在此配置中，访问密钥通过 TCP 以明文形式发送。 这种更改可能会影响对缓存的访问。 仅当访问测试缓存时才考虑选择此配置。
 
 2. 下载并安装 [stunnel](https://www.stunnel.org/downloads.html)。
 
@@ -74,7 +74,7 @@ redis-cli.exe -p 6380 -a YourAccessKey
 
 ![在 stunnel 中运行 redis-cli](media/cache-how-to-redis-cli-tool/cache-redis-cli-stunnel.png)
 
-如果将测试缓存与不安全的非 SSL 端口一起使用，请运行 `redis-cli.exe` 并传递主机名、端口和访问密钥（主要或次要），以连接到测试缓存**********。
+如果使用具有**不安全**非 TLS 端口的测试缓存，请`redis-cli.exe`运行并传递*主机名*、*端口*和*访问密钥*（主或辅助）以连接到测试缓存。
 
 ```
 redis-cli.exe -h yourcachename.redis.cache.windows.net -p 6379 -a YourAccessKey

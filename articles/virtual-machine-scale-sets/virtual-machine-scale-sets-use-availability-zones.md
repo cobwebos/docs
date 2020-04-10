@@ -1,20 +1,20 @@
 ---
 title: 创建使用可用性区域的 Azure 缩放集
 description: 了解如何创建使用可用性区域的 Azure 虚拟机规模集以增加冗余防止中断
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.author: cynthn
-ms.openlocfilehash: 11695eb889a10dc689b00399a37382a3b9772eae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: c8795f46e47b2ab43898f6f436b9ee6026a22fa7
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76274409"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011559"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>创建使用可用性区域的虚拟机规模集
 
@@ -60,7 +60,7 @@ ms.locfileid: "76274409"
 
 - [Azure 门户](#use-the-azure-portal)
 - Azure CLI
-- [Azure 电源外壳](#use-azure-powershell)
+- [Azure PowerShell](#use-azure-powershell)
 - [Azure 资源管理器模板](#use-azure-resource-manager-templates)
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户

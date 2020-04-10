@@ -13,12 +13,12 @@ ms.date: 04/12/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: a0a2c5fc971c3f1f3283d95c5617bdf1e88a6a58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fbd700c787a844fa7538ed198f76ed5c06af2c28
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77084040"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010148"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>使用 MSAL.js 初始化客户端应用程序
 本文介绍如何使用用户代理应用程序的实例初始化适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js)。 该用户代理应用程序是某种形式的公共客户端应用程序，其中的客户端代码在 Web 浏览器等用户代理中执行。 这些客户端不存储机密，因为浏览器上下文可公开访问。 若要详细了解客户端应用程序类型和应用程序配置选项，请阅读[概述](msal-client-applications.md)。
@@ -35,7 +35,7 @@ ms.locfileid: "77084040"
 
 在单纯的 JavaScript/Typescript 应用程序中，可按如下所示使用 MSAL.js。 通过使用配置对象实例化 `UserAgentApplication` 来初始化 MSAL 身份验证上下文。 初始化 MSAL.js 所需的最小配置是应用程序的客户端 ID，您应该从应用程序注册门户获取该配置。
 
-对于使用重定向流的身份验证方法（`loginRedirect` 和 `acquireTokenRedirect`），需要通过 `handleRedirectCallback()` 方法显式注册一个返回成功或错误结果的回调。 之所以需要这样做，是因为重定向流不会像弹出窗口体验中的方法那样返回约定。
+对于在 MSAL.js`loginRedirect` 1.2.x 或更早版本中具有重定向流 （和`acquireTokenRedirect`） 的身份验证方法，您需要显式注册回调以通过`handleRedirectCallback()`方法进行成功或错误。 之所以需要这样做，是因为重定向流不会像弹出窗口体验中的方法那样返回约定。 这在 MSAL.js 版本 1.3.0 中成为可选版本。
 
 ```javascript
 // Configuration object constructed

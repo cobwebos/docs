@@ -1,5 +1,5 @@
 ---
-title: Azure Automation State Configuration 入门
+title: 开始使用 Azure 自动化状态配置
 description: Azure Automation State Configuration (DSC) 中最常见任务的说明和示例
 services: automation
 ms.service: automation
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9fce9a769dd6d88c9926913d22716666284938c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c33fbed6c547897847c79cc1260d2bdc9ec6b17
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74850952"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010318"
 ---
-# <a name="getting-started-with-azure-automation-state-configuration"></a>Azure Automation State Configuration 入门
+# <a name="get-started-with-azure-automation-state-configuration"></a>开始使用 Azure 自动化状态配置
 
 本文说明如何使用 Azure Automation State Configuration 执行最常见的任务，例如创建、导入、编译配置，加入要管理的计算机和查看报告。 有关 Azure Automation State Configuration 的概述，请参阅 [Azure Automation State Configuration 概述](automation-dsc-overview.md)。 有关 Desired State Configuration (DSC) 文档，请参阅 [Windows PowerShell Desired State Configuration 概述](/powershell/scripting/dsc/overview/overview)。
 
@@ -67,7 +67,7 @@ ms.locfileid: "74850952"
 
 接下来，会将配置导入自动化帐户。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在左侧，单击“所有资源”****，并单击自动化帐户的名称。
 1. 在“自动化帐户”页上的“配置管理”下，选择“State configuration (DSC)”。************
 1. 在“State configuration (DSC)”页上，依次单击“配置”选项卡、“+ 添加”。************
@@ -75,13 +75,13 @@ ms.locfileid: "74850952"
 
    ![**导入配置**边栏选项卡的屏幕截图](./media/automation-dsc-getting-started/AddConfig.png)
 
-1. 单击“确定”。
+1. 单击“确定”。 
 
 ## <a name="viewing-a-configuration-in-azure-automation"></a>查看 Azure 自动化中的配置
 
 在导入配置以后，即可在 Azure 门户中查看该配置。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在左侧，单击“所有资源”****，并单击自动化帐户的名称。
 1. 在 **"自动化帐户**"页上，选择**配置管理**下的**状态配置 （DSC）。**
 1. 在“State configuration (DSC)”页上单击“配置”选项卡，然后单击“TestConfig”（这是在前一过程中导入的配置的名称）。************
@@ -96,7 +96,7 @@ ms.locfileid: "74850952"
 在将所需状态应用到某个节点之前，必须将定义该状态的 DSC 配置编译成一个或多个节点配置（MOF 文档），然后放置在自动化 DSC 拉取服务器上。 如需在 Azure Automation State Configuration 中进行配置编译的更详细说明，请参阅[在 Azure Automation State Configuration 中编译配置](automation-dsc-compile.md)。
 有关编译配置的详细信息，请参阅 [DSC 配置](/powershell/scripting/dsc/configurations/configurations)。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在左侧，单击“所有资源”****，并单击自动化帐户的名称。
 1. 在“自动化帐户”页上的“配置管理”下，单击“State configuration (DSC)”。************
 1. 在“State configuration (DSC)”页上单击“配置”选项卡，然后单击“TestConfig”（前面导入的配置的名称）。************
@@ -111,7 +111,7 @@ ms.locfileid: "74850952"
 
 开始编译后，即可在“配置”页面的“编译作业”磁贴中查看该作业********。 “编译作业”**** 磁贴显示当前正在运行的、已完成的以及失败的作业。 打开编译作业页面时，会显示有关该作业的信息，包括遇到的任何错误或警告、在配置中使用的输入参数以及编译日志。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在左侧，单击“所有资源”****，并单击自动化帐户的名称。
 1. 在“自动化帐户”页上的“配置管理”下，单击“State configuration (DSC)”。************
 1. 在“State configuration (DSC)”页上单击“配置”选项卡，然后单击“TestConfig”（前面导入的配置的名称）。************
@@ -125,7 +125,7 @@ ms.locfileid: "74850952"
 
 成功完成编译作业以后，会创建一个或多个新的节点配置。 节点配置是一个 MOF 文档，该文档部署到拉取服务器上，可供一个或多个节点拉取和应用。 可以在“State Configuration (DSC)”**** 页中查看自动化帐户中的节点配置。 节点配置的名称格式为 *ConfigurationName*.*NodeName*。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在左侧，单击“所有资源”****，并单击自动化帐户的名称。
 1. 在“自动化帐户”边栏选项卡上的“配置管理”下，单击“State configuration (DSC)”。************
 1. 在“State configuration (DSC)”页上，单击“编译的配置”选项卡。********
@@ -138,7 +138,7 @@ ms.locfileid: "74850952"
 
 ### <a name="to-onboard-an-azure-resource-manager-vm-for-management-by-azure-automation-state-configuration"></a>加入由 Azure Automation State Configuration 管理的 Azure 资源管理器 VM
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在左侧，单击“所有资源”****，并单击自动化帐户的名称。
 1. 在“自动化帐户”边栏选项卡上的“配置管理”下，单击“State configuration (DSC)”。************
 1. 在“State Configuration (DSC)”页上的“节点”选项卡中，单击“+ 添加”。************
@@ -164,7 +164,7 @@ Azure 将启动登记 VM 的过程。 完成后，VM 会显示在自动化帐户
 
 在“State Configuration (DSC)”页上的“节点”选项卡中，可以查看已在自动化帐户中加入管理的所有计算机的列表********。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在左侧，单击“所有资源”****，并单击自动化帐户的名称。
 1. 在“自动化帐户”边栏选项卡上的“配置管理”下，单击“State configuration (DSC)”。************
 1. 在“State Configuration (DSC)”页上，单击“节点”选项卡。********
@@ -173,7 +173,7 @@ Azure 将启动登记 VM 的过程。 完成后，VM 会显示在自动化帐户
 
 每当 Azure Automation State Configuration 在托管节点上执行一致性检查时，该节点会将状态报告发送回拉取服务器。 可以在该节点的页上查看这些报告。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在左侧，单击“所有资源”****，并单击自动化帐户的名称。
 1. 在“自动化帐户”边栏选项卡上的“配置管理”下，单击“State configuration (DSC)”。************
 1. 在**状态配置 （DSC）** 页上，单击 **"节点"** 选项卡。在这里，您可以看到配置状态的概述和每个节点的详细信息。
@@ -203,7 +203,7 @@ Azure 将启动登记 VM 的过程。 完成后，VM 会显示在自动化帐户
 
 为节点分配配置时，可以让其使用不同于初始配置的节点配置。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在左侧，单击“所有资源”****，并单击自动化帐户的名称。
 1. 在“自动化帐户”边栏选项卡上的“配置管理”下，单击“State configuration (DSC)”。************
 1. 在“State Configuration (DSC)”页上，单击“节点”选项卡。********
@@ -220,7 +220,7 @@ Azure 将启动登记 VM 的过程。 完成后，VM 会显示在自动化帐户
 
 如果不想让某个节点继续受 Azure Automation DSC 管理，则可注销该节点。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在左侧，单击“所有资源”****，并单击自动化帐户的名称。
 1. 在“自动化帐户”边栏选项卡上的“配置管理”下，单击“State configuration (DSC)”。************
 1. 在“State Configuration (DSC)”页上，单击“节点”选项卡。********

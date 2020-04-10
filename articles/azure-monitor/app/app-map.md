@@ -4,12 +4,12 @@ description: 使用应用程序映射监视复杂的应用程序拓扑
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 0823dd5d880c778f9b7a231ac14f1cbba1940927
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 7c5c9173704535b1e34ffde5867bd512e3e02ed8
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657392"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80989521"
 ---
 # <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
 
@@ -155,7 +155,25 @@ ASP.NET Web 应用程序的另一种方法是在代码中（例如在 Global.asp
 
 # <a name="java"></a>[Java](#tab/java)
 
-从 Application Insights Java SDK 2.5.0 开始，可以通过将 `<RoleName>` 添加到 `ApplicationInsights.xml` 文件来指定云角色名称，例如
+**Java 代理**
+
+对于[Java 代理 3.0，](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)云角色名称的设置如下：
+
+```json
+{
+  "instrumentationSettings": {
+    "preview": {
+      "roleName": "my cloud role name"
+    }
+  }
+}
+```
+
+您还可以使用环境变量```APPLICATIONINSIGHTS_ROLE_NAME```设置云角色名称。
+
+**Java SDK**
+
+如果使用 SDK，从应用程序见解 Java SDK 2.5.0 开始，可以通过添加到`<RoleName>`文件`ApplicationInsights.xml`来指定云角色名称，例如。
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>

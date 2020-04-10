@@ -5,12 +5,12 @@ author: markfussell
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: mfussell
-ms.openlocfilehash: 876980bd6a59bace9ab4e490358964d19fa52c7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56df6e28940eb15597a3d6bccca3f85e5f690f89
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77586081"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991648"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>有关 Azure Service Fabric 应用程序设计的最佳做法
 
@@ -58,8 +58,8 @@ ms.locfileid: "77586081"
 ## <a name="how-to-work-with-reliable-services"></a>如何使用 Reliable Services
 使用 Service Fabric Reliable Services 可以轻松创建无状态和有状态服务。 有关详细信息，请参阅 [Reliable Services 简介](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-introduction)。
 - 始终遵循 `RunAsync()` 方法（对于无状态和有状态服务）和 `ChangeRole()` 方法（对于有状态服务）中的[取消标记](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-lifecycle#stateful-service-primary-swaps)。 否则，Service Fabric 不知道是否可以关闭你的服务。 例如，如果你不遵循取消标记，可能会导致应用程序升级时间大幅延长。
--   及时打开和关闭[通信侦听器](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication)并遵循取消标记。
--   切勿将同步代码和异步代码混合使用。 例如，不要在异步调用中使用 `.GetAwaiter().GetResult()`。 在整个调用堆栈中始终使用异步调用。**
+-    及时打开和关闭[通信侦听器](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication)并遵循取消标记。
+-    切勿将同步代码和异步代码混合使用。 例如，不要在异步调用中使用 `.GetAwaiter().GetResult()`。 在整个调用堆栈中始终使用异步调用。**
 
 ## <a name="how-to-work-with-reliable-actors"></a>如何使用 Reliable Actors
 使用 Service Fabric Reliable Actors 可以轻松创建有状态的虚拟执行组件。 有关详细信息，请参阅 [Reliable Actors 简介](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-introduction)。
@@ -68,8 +68,8 @@ ms.locfileid: "77586081"
 - 使执行组件状态[尽可能细粒度](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-state-management#best-practices)。
 - 管理[执行组件的生命周期](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-state-management#best-practices)。 如果你不再使用执行组件，请将其删除。 使用[易失性状态提供程序](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-state-management#state-persistence-and-replication)时，删除不需要的执行组件尤为重要，因为所有状态存储在内存中。
 - 最好是将执行组件用作独立的对象，因为它们采用[基于轮次的并发](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-introduction#concurrency)。 不要创建多执行组件同步方法调用（每个调用很有可能会成为独立的网络调用）的图或创建循环执行组件请求， 这会对性能和规模造成显著影响。
-- 不要将同步代码与异步代码混合。 始终使用异步代码，以防止出现性能问题。
-- 不要在演员中打长时间的电话。 长时间运行的调用会阻止对同一执行组件发出其他调用，因为执行组件采用基于轮次的并发。
+- 不要将同步代码和异步代码混合使用。 始终使用异步代码，以防止出现性能问题。
+- 不在在执行组件中发出长时间运行的调用。 长时间运行的调用会阻止对同一执行组件发出其他调用，因为执行组件采用基于轮次的并发。
 - 如果使用 [Service Fabric 远程处理](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication-remoting)来与其他服务通信，并且你正在创建 `ServiceProxyFactory`，请在[执行组件服务](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-using)级别而不是执行组件级别创建工厂。**
 
 
@@ -77,7 +77,7 @@ ms.locfileid: "77586081"
 在服务调用中添加[应用程序日志记录](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-app)时应该面面俱到。 日志记录有助于诊断服务相互调用的方案。 例如，如果 A 调用 B，B 调用 C，C 调用 D，则调用可能会在任何一个位置失败。 如果没有足够的日志，将难以诊断。 如果服务记录的日志过多（因为调用量很大），请确保至少记录错误和警告。
 
 ## <a name="iot-and-messaging-applications"></a>IoT 和消息传送应用程序
-从 [Azure IoT 中心](https://docs.microsoft.com/azure/iot-hub/)或 [Azure 事件中心](https://docs.microsoft.com/azure/event-hubs/)读取消息时，请使用 [ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/ServiceFabricProcessor)。 ServiceFabricProcessor 与 Service Fabric Reliable Services 集成，可保留从事件中心分区读取消息的状态，并通过 `IEventProcessor::ProcessEventsAsync()` 方法将新消息推送到服务。
+从 [Azure IoT 中心](https://docs.microsoft.com/azure/iot-hub/)或 [Azure 事件中心](https://docs.microsoft.com/azure/event-hubs/)读取消息时，请使用 [ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/ServiceFabricProcessor)。 ServiceFabricProcessor 与 Service Fabric Reliable Services 集成，可保留从事件中心分区读取消息的状态，并通过 `IEventProcessor::ProcessEventsAsync()` 方法将新消息推送到服务。
 
 
 ## <a name="design-guidance-on-azure"></a>Azure 的设计指南

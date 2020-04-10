@@ -6,17 +6,19 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 12/9/2019
-ms.openlocfilehash: 1dd782092ce91f7b71a3a2a6f2ed1646ee39a7e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/08/2020
+ms.openlocfilehash: 196d917d31eb08af80587bba30d9f7e67bf8cbea
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75444539"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991699"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>在映射数据流中生成表达式
 
 在映射数据流时，许多转换属性作为表达式输入。 这些表达式由列值、参数、函数、运算符和文本组成，这些列值在运行时计算为 Spark 数据类型。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tkur]
 
 ## <a name="open-expression-builder"></a>打开表达式生成器
 

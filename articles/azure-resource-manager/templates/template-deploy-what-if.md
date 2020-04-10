@@ -3,14 +3,14 @@ title: 模板部署 what-if（预览版）
 description: 在部署 Azure 资源管理器模板之前确定资源将会发生的更改。
 author: mumian
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 04/09/2020
 ms.author: jgao
-ms.openlocfilehash: 9e0d0d572e08961b585a93e66e400b8c2e54bf7f
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: b8e94d0b4f364e2873dfc21792a67f11c33483bf
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886834"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010182"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM 模板部署操作（预览）
 
@@ -24,6 +24,14 @@ ms.locfileid: "80886834"
 ## <a name="install-powershell-module"></a>安装 PowerShell 模块
 
 要在 PowerShell 中使用"如果"，请从 PowerShell 库中安装 Az.Resources 模块的预览版本。
+
+### <a name="install-preview-version"></a>安装预览版本
+
+要安装预览模块，请使用：
+
+```powershell
+Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
+```
 
 ### <a name="uninstall-alpha-version"></a>卸载 Alpha 版本
 
@@ -47,14 +55,6 @@ ms.locfileid: "80886834"
    ```powershell
    Unregister-PSRepository -Name WhatIfRepository
    ```
-
-### <a name="install-preview-version"></a>安装预览版本
-
-要安装预览模块，请使用：
-
-```powershell
-Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
-```
 
 您已准备好使用"如果"
 
