@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
-ms.openlocfilehash: 761c464730096eba36bc7c04227745cf362e5cc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a0e5b0c18264e1f7a98e81bcdfd56a7159235da
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278033"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010913"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>如何为高级 Azure Redis 缓存配置 Redis 群集功能
 Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和功能（包括群集、暂留和虚拟网络支持等高级层功能）的选择上具有灵活性。 本文介绍如何配置高级 Azure Redis 缓存实例中的群集功能。
@@ -125,7 +125,7 @@ Redis 群集协议要求每个客户端以群集模式直接连接到每个分�
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>我可以直接连接到缓存的各个分片吗？
 群集协议要求客户端进行正确的分片连接。 因此客户端应该为你正确地执行此操作。 话虽如此，但每个分片都是由主/副缓存对组成的，该缓存对统称为缓存实例。 可以在 GitHub 上通过 Redis 存储库的[不稳定](https://redis.io/download)分支使用 redis-cli 实用程序连接到这些缓存实例。 使用 `-c` 开关启动后，此版本可实现基本的支持。 有关详细信息，请参阅在[Redis 群集教程](https://redis.io/topics/cluster-tutorial)[https://redis.io](https://redis.io)中[播放群集](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster)。
 
-对于非 ssl，请使用以下命令。
+对于非 TLS，请使用以下命令。
 
     Redis-cli.exe –h <<cachename>> -p 13000 (to connect to instance 0)
     Redis-cli.exe –h <<cachename>> -p 13001 (to connect to instance 1)
@@ -133,7 +133,7 @@ Redis 群集协议要求每个客户端以群集模式直接连接到每个分�
     ...
     Redis-cli.exe –h <<cachename>> -p 1300N (to connect to instance N)
 
-对于 ssl，请将 `1300N` 替换为 `1500N`。
+对于 TLS，`1300N`替换为`1500N`。
 
 ### <a name="can-i-configure-clustering-for-a-previously-created-cache"></a>我可以为以前创建的缓存配置群集功能吗？
 是的。 首先，请确保缓存为高级缓存，如果不是，则进行缩放。 接下来，应该能够看到群集配置选项，包括用于启用群集的选项。 可以在创建缓存或首次启用群集功能后更改群集大小。

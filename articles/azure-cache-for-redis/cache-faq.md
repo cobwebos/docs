@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: ddf7999153e9d9722e627d148b116750fe3aaecf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ba292850c057284fff265c8a77386d21374942a
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278709"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010216"
 ---
 # <a name="azure-cache-for-redis-faq"></a>用于 Redis 的 Azure 缓存常见问题解答
 了解 Azure Redis 缓存的常见问题、模式和最佳做法。
@@ -54,7 +54,7 @@ ms.locfileid: "79278709"
 * [什么是 Redis 数据库？](#what-are-redis-databases)
 
 ## <a name="security-faqs"></a>安全常见问题
-* [何时应启用非 SSL 端口来连接 Redis？](#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis)
+* [何时应启用用于连接到 Redis 的非 TLS/SSL 端口？](#when-should-i-enable-the-non-tlsssl-port-for-connecting-to-redis)
 
 ## <a name="production-faqs"></a>生产常见问题
 * [生产最佳做法有哪些？](#what-are-some-production-best-practices)
@@ -112,7 +112,7 @@ Azure Redis 缓存基于热门开源软件 [Redis](https://redis.io/)。 这使�
 <a name="cache-performance"></a>
 
 ### <a name="azure-cache-for-redis-performance"></a>Azure Redis 缓存性能
-下表显示了在 IaaS VM 中使用 `redis-benchmark.exe` 针对 Redis 终结点的 Azure 缓存测试各种大小的标准缓存和高级缓存时，所观测到的最大带宽值。 对于 SSL 吞吐量，将 redis 基准用于 stunnel 以连接到 Azure Redis 缓存终结点。
+下表显示了在 IaaS VM 中使用 `redis-benchmark.exe` 针对 Redis 终结点的 Azure 缓存测试各种大小的标准缓存和高级缓存时，所观测到的最大带宽值。 对于 TLS 吞吐量，Redis 基准测试与 stunnel 一起使用，以连接到 Redis 终结点的 Azure 缓存。
 
 >[!NOTE] 
 >这些值是没有保证的，并且不存在针对这些数字的 SLA，但它们反映了典型的情况。 应该对自己的应用程序进行负载测试，以确定适合应用程序的缓存大小。
@@ -177,7 +177,7 @@ Azure Redis 缓存的定价在[此处](https://azure.microsoft.com/pricing/detai
 ### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>StackExchange.Redis 配置选项有什么作用？
 StackExchange.Redis 有很多选项。 本部分介绍一些常用设置。 有关 StackExchange.Redis 选项的详细详细，请参阅 [StackExchange.Redis configuration](https://stackexchange.github.io/StackExchange.Redis/Configuration)（StackExchange.Redis 配置）。
 
-| 配置选项 | 描述 | 建议 |
+| 配置选项 | 说明 | 建议 |
 | --- | --- | --- |
 | AbortOnConnectFail |如果设置为 true，则发生网络故障后不会重新建立连接。 |设置为 false，让 StackExchange.Redis 自动重新连接。 |
 | ConnectRetry |初始连接期间重试连接的次数。 |请参阅下面的注释寻求指导。 |
@@ -244,7 +244,7 @@ Azure Redis 缓存没有本地模拟器，但可以在本地计算机上从 [Red
 * `redis-cli -h <Azure Cache for Redis name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> Redis 命令行工具不适用于 SSL 端口，但你可以按照[如何将 Redis 命令行工具与 Azure Redis 缓存配合使用](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool)一文中的说明，使用 `stunnel` 等实用程序将工具安全地连接到 SSL 端口。
+> Redis 命令行工具不适用于 TLS 端口，但您可以使用实用程序，例如`stunnel`，通过按照["如何使用 Redis 命令行工具与 Azure 缓存用于 Redis"](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool)一文中的说明来安全地将工具连接到 TLS 端口。
 >
 >
 
@@ -281,15 +281,15 @@ Redis 数据库就是同一 Redis 实例中的数据的逻辑隔离。 缓存内
 
 <a name="cache-ssl"></a>
 
-### <a name="when-should-i-enable-the-non-ssl-port-for-connecting-to-redis"></a>何时应启用非 SSL 端口来连接 Redis？
-Redis 服务器本身不支持 SSL，但 Azure Redis 缓存可提供此支持。 如果要连接到 Azure Redis 缓存并且客户端支持 SSL（如 StackExchange.Redis），则应使用 SSL。
+### <a name="when-should-i-enable-the-non-tlsssl-port-for-connecting-to-redis"></a>何时应启用用于连接到 Redis 的非 TLS/SSL 端口？
+Redis 服务器不支持 TLS，但 Redis 的 Azure 缓存支持 TLS。 如果要连接到 Redis 的 Azure 缓存，并且客户端支持 TLS，如 StackExchange.Redis，则应使用 TLS。
 
 >[!NOTE]
->默认情况下，为新的 Azure Redis 缓存实例禁用了非 SSL 端口。 如果客户端不支持 SSL，则必须根据[在 Azure Redis 缓存中配置缓存](cache-configure.md)一文中的[访问端口](cache-configure.md#access-ports)部分中的说明启用非 SSL 端口。
+>默认情况下，对于 Redis 实例的新 Azure 缓存，将禁用非 TLS 端口。 如果客户端不支持 TLS，则必须按照["为 Redis 的 Azure 缓存配置缓存](cache-configure.md)"的["访问端口](cache-configure.md#access-ports)"部分中的指示启用非 TLS 端口。
 >
 >
 
-`redis-cli` 等 Redis 工具对 SSL 端口不起作用，但是，可以[根据适用于 Redis 预览版的 ASP.NET 会话状态提供程序通告](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)中的说明，使用 `stunnel` 等实用程序安全地将这些工具连接到 SSL。
+Redis 工具（`redis-cli`如不适用于 TLS 端口），但您可以使用实用程序，例如`stunnel`，通过按照["宣布ASP.NET会话状态提供商的 Redis 预览版本博客文章](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)"中的说明，安全地将工具连接到 TLS 端口。
 
 有关下载 Redis 工具的说明，请参阅[如何运行 Redis 命令？](#cache-commands)部分。
 
@@ -312,7 +312,7 @@ Redis 服务器本身不支持 SSL，但 Azure Redis 缓存可提供此支持。
 * 开发系统以便处理[由于修补和故障转移](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md)引起的连接故障。
 
 #### <a name="performance-testing"></a>性能测试
-* 使用 `redis-benchmark.exe` 启动以在编写性能测试前感受可能的吞吐量。 因为 `redis-benchmark` 不支持 SSL，因此，在运行测试之前必须[通过 Azure 门户启用非 SSL 端口](cache-configure.md#access-ports)。 例如，请参阅[如何制定基准和测试缓存的性能？](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+* 使用 `redis-benchmark.exe` 启动以在编写性能测试前感受可能的吞吐量。 由于`redis-benchmark`不支持 TLS，因此在运行测试之前，必须通过[Azure 门户启用非 TLS 端口](cache-configure.md#access-ports)。 例如，请参阅[如何制定基准和测试缓存的性能？](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 * 用于测试的客户端 VM 应与 Azure Redis 缓存实例位于同一区域。
 * 建议为客户端使用 Dv2 VM 系列，因为它们具有更好的硬件，应当可以提供最佳的结果。
 * 请确保选择的客户端 VM 至少与正在测试的缓存拥有相同的计算和带宽容量。

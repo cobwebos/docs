@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 8f5065a0f4a2a96a747a45f64e00e86f7990bfb8
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 3a16a8263c80852127ca61db3c666ebf0f7f1e4c
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437797"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011695"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure SQL 数据库中复制和转换数据
 
@@ -58,7 +58,7 @@ ms.locfileid: "80437797"
 
 Azure SQL 数据库链接服务支持以下属性：
 
-| properties | 说明 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | **类型**属性必须设置为**AzureSqlDatabase**。 | 是 |
 | connectionString | 指定连接到**连接String**属性的 Azure SQL 数据库实例所需的信息。 <br/>还可以将密码或服务主体密钥放在 Azure Key Vault 中。 如果使用 SQL 身份验证，请从连接字符串中提取 `password` 配置。 有关详细信息，请参阅表格后面的 JSON 示例，以及[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 | 是 |
@@ -219,7 +219,7 @@ Azure SQL 数据库链接服务支持以下属性：
 
 Azure SQL 数据库数据集支持以下属性：
 
-| properties | 说明 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集**的类型**属性必须设置为**AzureSqlTable**。 | 是 |
 | 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
@@ -255,7 +255,7 @@ Azure SQL 数据库数据集支持以下属性：
 
 若要从 Azure SQL 数据库复制数据，复制活动的 **source** 节需要支持以下属性：
 
-| properties | 说明 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **AzureSqlSource**。 为了向后兼容，仍然支持“SqlSource”类型。 | 是 |
 | sqlReaderQuery | 此属性使用自定义 SQL 查询来读取数据。 示例为 `select * from MyTable`。 | 否 |
@@ -362,7 +362,7 @@ GO
 
 将数据复制到 Azure SQL 数据库时，复制活动的 **sink** 节支持以下属性：
 
-| properties | 说明 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 **type** 属性必须设置为 **AzureSqlSink**。 为了向后兼容，仍然支持“SqlSink”类型。 | 是 |
 | writeBatchSize | 每批要插入到 SQL 表中的行数。**<br/> 允许的值为 **integer**（行数）。 默认情况下，Azure 数据工厂会根据行大小动态确定适当的批大小。 | 否 |
@@ -493,7 +493,7 @@ BEGIN
 END
 ```
 
-**选项 2：** 您还可以选择[在复制活动中调用存储过程](#invoke-a-stored-procedure-from-a-sql-sink)。 此方法针对源表中的每个行运行，而不是在复制活动中使用批量插入作为默认方法，因此它不适用于大规模更新插入。
+**选项 2：** 您还可以选择[在复制活动中调用存储过程](#invoke-a-stored-procedure-from-a-sql-sink)。 此方法在源表中运行每个批处理（由`writeBatchSize`属性控制），而不是在复制活动中使用批量插入作为默认方法。
 
 ### <a name="overwrite-the-entire-table"></a>覆盖整个表
 
@@ -508,10 +508,7 @@ END
 
 ## <a name="invoke-a-stored-procedure-from-a-sql-sink"></a><a name="invoke-a-stored-procedure-from-a-sql-sink"></a> 调用 SQL 接收器的存储过程
 
-将数据复制到 Azure SQL 数据库时，还可通过其他参数配置并调用某个用户指定的存储过程。 存储过程功能利用了[表值参数](https://msdn.microsoft.com/library/bb675163.aspx)。
-
-> [!TIP]
-> 调用存储过程时，会逐行处理数据，而不使用批量操作，我们不建议将批量操作用于大规模复制。 在[有关将数据载入 Azure SQL 数据库的最佳做法](#best-practice-for-loading-data-into-azure-sql-database)中了解详细信息。
+将数据复制到 Azure SQL 数据库时，还可以配置和调用用户指定的存储过程，并在源表的每一批上使用其他参数。 存储过程功能利用了[表值参数](https://msdn.microsoft.com/library/bb675163.aspx)。
 
 当内置复制机制无法使用时，还可使用存储过程。 例如，在将源数据最终插入目标表之前应用额外的处理。 额外处理的示例包括合并列、查找其他值以及将数据插入多个表。
 
@@ -620,21 +617,21 @@ END
 | Datetime |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| Decimal |Decimal |
+| 十进制 |十进制 |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
 | image |Byte[] |
 | int |Int32 |
-| money |Decimal |
+| money |十进制 |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |Decimal |
+| numeric |十进制 |
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Decimal |
+| smallmoney |十进制 |
 | sql_variant |对象 |
 | text |String, Char[] |
 | time |TimeSpan |

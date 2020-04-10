@@ -4,22 +4,20 @@ description: 了解如何基于隔离、连接性和位置需求来计划虚拟�
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 3a4a9aea-7608-4d2e-bb3c-40de2e537200
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/16/2018
+ms.date: 04/08/2020
 ms.author: kumud
-ms.openlocfilehash: 6e066d28afc4b0959b15284378cde682fbc05615
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95dd7be118e869aed02bb55918ab0cefa0d05d03
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190466"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998870"
 ---
 # <a name="plan-virtual-networks"></a>计划虚拟网络
 
@@ -37,7 +35,7 @@ ms.locfileid: "77190466"
 - 是否有数据驻留、主权、符合性或复原能力需求？ 如果有，选择符合需求的区域至关重要。 有关详细信息，请参阅[Azure 地域](https://azure.microsoft.com/global-infrastructure/geographies/)。
 - 是否需要在部署资源的相同 Azure 区域内跨 Azure 可用性区域提供复原能力？ 可将资源（如虚拟机 (VM)）部署到相同虚拟网络中的不同可用性区域。 但并非所有 Azure 区域都支持可用性区域。 若要详细了解可用性区域和支持它们的区域，请参阅[可用性区域](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
-## <a name="subscriptions"></a>Subscriptions
+## <a name="subscriptions"></a>订阅
 
 可根据需要在每个订阅中部署尽可能多的虚拟网络，直至达到[上限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)。 例如，一些组织的不同部门有不同的订阅。 有关订阅的详细信息和注意事项，请参阅[订阅监管](/azure/cloud-adoption-framework/reference/migration-with-enterprise-scaffold#define-your-hierarchy)。
 

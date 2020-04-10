@@ -11,13 +11,13 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/14/2018
-ms.openlocfilehash: 92f7d25a9c19409b220b6a71fba87da91e51a415
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/09/2020
+ms.openlocfilehash: 532258cecd823e10057ddc3536cd24071e444581
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74928498"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992056"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>针对 Azure SQL 数据库异地复制和故障转移配置 Azure-SSIS Integration Runtime
 
@@ -35,7 +35,7 @@ ms.locfileid: "74928498"
 
 - Azure-SSIS IR 指向故障转移组的读写侦听器终结点。
 
-  和
+  AND
 
 - SQL 数据库服务器“未”** 配置虚拟网络服务终结点规则。
 
@@ -51,11 +51,11 @@ ms.locfileid: "74928498"
 
 - Azure-SSIS IR 指向故障转移组的主服务器终结点。 发生故障转移时，此终结点更改。
 
-  或
+  OR
 
 - Azure SQL 数据库服务器配置了虚拟网络服务终结点规则。
 
-  或
+  OR
 
 - 数据库服务器是配置有虚拟网络的 SQL 数据库托管实例。
 
@@ -112,9 +112,11 @@ ms.locfileid: "74928498"
 
 ### <a name="steps"></a>步骤
 
-遵循以下步骤停止 Azure-SSIS IR，切换到新区域，然后再次启动该 IR。
+按照以下步骤将 Azure-SSIS IR 移动到新区域。
+> [!NOTE]
+> 第 3 步（创建 IR）需要通过 PowerShell 完成。 Azure 门户将报告一个错误，指出 SSISDB 已存在。
 
-1. 执行存储过程以使 SSISDB 附加到**\<new_data_factory_name\>** 或**\<new_integration_runtime_name\>**。
+1. 执行存储过程以更新 SSISDB 中的元数据，以**\<接受\>来自new_data_factory_name**和**\<new_integration_runtime_name\>** 的连接。
    
   ```SQL
     EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'

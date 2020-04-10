@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 1d6fa75beabdc36750525310008add9594562228
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 951f24ad06014f6d95f10c91e1bad8e99bbbc736
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887106"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991767"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>通过指标、警报和资源运行状况进行标准负载均衡器诊断
 
@@ -86,6 +86,7 @@ Azure 标准负载均衡器支持多维指标的易于配置的警报。 为特�
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>常见诊断场景和建议的视图
 
 #### <a name="is-the-data-path-up-and-available-for-my-load-balancer-vip"></a>数据路径是否已启动并适用于我的负载均衡器 VIP？
+<details><summary>展开</summary>
 
 VIP 可用性指标描述区域中用于计算 VM 所在主机的数据路径的运行状况。 此指标反映了 Azure 基础结构的运行状况。 使用此指标可以：
 - 监视服务的外部可用性
@@ -113,9 +114,11 @@ VIP 可用性探测会出于原因而失败：
 可以[结合使用“数据路径可用性”指标和运行状况探测状态](#vipavailabilityandhealthprobes)进行诊断。
 
 在大多数情况下，可以使用“平均值”作为聚合。****
+</details>
 
 #### <a name="are-the-back-end-instances-for-my-vip-responding-to-probes"></a>VIP 的后端实例是否正在响应探测？
-
+<details>
+  <summary>展开</summary>
 运行状况探测状态指标描述在配置负载均衡器的运行状况探测时，由你配置的应用程序部署的运行状况。 负载均衡器使用运行状况探测的状态来确定要将新流量发送到何处。 运行状况探测源自某个 Azure 基础结构地址，并会显示在 VM 的来宾 OS 中。
 
 若要获取标准负载均衡器资源的运行状况探测状态，请执行以下操作：
@@ -127,9 +130,11 @@ VIP 可用性探测会出于原因而失败：
 - 网络安全组、VM 的来宾 OS 防火墙或应用层筛选器不允许你的探测。
 
 在大多数情况下，可以使用“平均值”作为聚合。****
+</details>
 
 #### <a name="how-do-i-check-my-outbound-connection-statistics"></a>如何检查出站连接统计信息？ 
-
+<details>
+  <summary>展开</summary>
 “SNAT 连接”指标描述适用于[出站流](https://aka.ms/lboutbound)的成功和失败连接的数量。
 
 如果失败连接数量大于零，则表示 SNAT 端口已耗尽。 必须进一步调查，确定失败的可能原因。 SNAT 端口耗尽的表现形式是无法建立[出站流](https://aka.ms/lboutbound)。 请查看有关出站连接的文章，以了解相关的场景和运行机制，并了解如何缓解并尽量避免 SNAT 端口耗尽的情况。 
@@ -141,10 +146,12 @@ VIP 可用性探测会出于原因而失败：
 ![SNAT 连接](./media/load-balancer-standard-diagnostics/LBMetrics-SNATConnection.png)
 
 *图：负载均衡器 SNAT 连接计数*
+</details>
 
 
 #### <a name="how-do-i-check-my-snat-port-usage-and-allocation"></a>如何检查我的 SNAT 端口使用情况和分配？
-
+<details>
+  <summary>展开</summary>
 SNAT 使用情况指标指示 Internet 源与后端 VM 或虚拟机规模集之间建立的唯一流数，该流位于负载均衡器后面且没有公共 IP 地址。 通过与 SNAT 分配指标进行比较，可以确定服务是否遇到或面临 SNAT 耗尽和导致出站流故障的风险。 
 
 如果您的指标指示[出站流](https://aka.ms/lboutbound)失败的风险，请参阅本文并采取措施来缓解这种情况，以确保服务运行状况。
@@ -166,9 +173,11 @@ SNAT 使用情况指标指示 Internet 源与后端 VM 或虚拟机规模集之�
 ![后端实例的 SNAT 使用情况](./media/load-balancer-standard-diagnostics/snat-usage-split.png)
 
 *图：每个后端实例的 TCP SNAT 端口使用情况*
+</details>
 
 #### <a name="how-do-i-check-inboundoutbound-connection-attempts-for-my-service"></a>如何检查服务的入站/出站连接尝试？
-
+<details>
+  <summary>展开</summary>
 “SYN 数据包”指标描述收到或发送的、与特定前端关联的 TCP SYN 数据包数量（适用于[出站流](https://aka.ms/lboutbound)）。 可以使用此指标了解对服务发起的 TCP 连接尝试。
 
 在大多数方案中使用**Total**作为聚合。
@@ -176,10 +185,12 @@ SNAT 使用情况指标指示 Internet 源与后端 VM 或虚拟机规模集之�
 ![SYN 连接](./media/load-balancer-standard-diagnostics/LBMetrics-SYNCount.png)
 
 *图：负载均衡器 SYN 计数*
+</details>
 
 
 #### <a name="how-do-i-check-my-network-bandwidth-consumption"></a>如何检查网络带宽消耗？ 
-
+<details>
+  <summary>展开</summary>
 字节和数据包计数器指标描述服务发送或收到的字节和数据包数量，根据前端显示信息。
 
 在大多数方案中使用**Total**作为聚合。
@@ -193,9 +204,11 @@ SNAT 使用情况指标指示 Internet 源与后端 VM 或虚拟机规模集之�
 ![字节计数](./media/load-balancer-standard-diagnostics/LBMetrics-ByteCount.png)
 
 *图：负载均衡器字节计数*
+</details>
 
 #### <a name="how-do-i-diagnose-my-load-balancer-deployment"></a><a name = "vipavailabilityandhealthprobes"></a>如何诊断负载均衡器部署？
-
+<details>
+  <summary>展开</summary>
 在单个图表中结合使用 VIP 可用性和运行状况探测指标可以识别查找和解决问题的位置。 可以确定 Azure 是否正常工作，并据此最终确定配置或应用程序是否为问题的根本原因。
 
 可以使用运行状况探测指标来了解 Azure 如何根据提供的配置查看部署的运行状况。 在监视或确定原因时，查看运行状况探测始终是合理的第一个动作。
@@ -211,6 +224,7 @@ SNAT 使用情况指标指示 Internet 源与后端 VM 或虚拟机规模集之�
 - 图表开头紫色轨迹所示的运行状况探测状态（DIP 可用性）为 0%。 绿色圆圈突出显示了运行状况探测状态（DIP 可用性）变为正常的位置，以及客户部署可以接受新流量的位置。
 
 客户可以使用该图表来自行排查部署问题，而无需猜测或询问支持部门是否发生了其他问题。 此服务之所以不可用，是因为配置不当或应用程序故障导致运行状况探测失败。
+</details>
 
 ## <a name="resource-health-status"></a><a name = "ResourceHealth"></a>资源运行状况
 

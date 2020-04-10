@@ -3,12 +3,12 @@ title: 了解如何审核虚拟机的内容
 description: 了解 Azure Policy 如何使用来宾配置代理审核虚拟机内部的设置。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 889e99e94b2c81a6654fcbe7851e93c40163a0c6
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 9e8486af2a9b7ab9e18b8c16f08e51759d1123d7
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985314"
+ms.locfileid: "80998844"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
@@ -73,7 +73,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 下表显示了 Azure 映像上支持的操作系统列表：
 
-|发布者|名称|版本|
+|发布者|“属性”|版本|
 |-|-|-|
 |Canonical|Ubuntu Server|14.04、16.04、18.04|
 |Credativ|Debian|8、9|
@@ -91,6 +91,13 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 若要与 Azure 中的 Guest Configuration 资源提供程序通信，计算机需要对端口 **443** 上的 Azure 数据中心拥有出站访问权限。 如果在 Azure 中使用不允许出站流量的专用虚拟网络，请使用[网络安全组](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)规则配置例外。
 [服务标签](../../../virtual-network/service-tags-overview.md)"来宾和混合管理"可用于引用来宾配置服务。
+
+## <a name="azure-managed-identity-requirements"></a>Azure 托管标识要求
+
+将扩展添加到虚拟机的**DeployIfNotExists**策略还启用系统分配的托管标识（如果不存在）。
+
+> [!WARNING]
+> 避免在启用系统分配托管标识的策略范围内为虚拟机启用用户分配的托管标识。 用户分配的标识将被替换，并且计算机可能会无响应。
 
 ## <a name="guest-configuration-definition-requirements"></a>来宾配置定义要求
 

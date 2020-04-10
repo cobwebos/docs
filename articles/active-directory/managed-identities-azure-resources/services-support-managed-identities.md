@@ -4,18 +4,18 @@ description: 支持 Azure 资源托管标识和 Azure AD 身份验证的服务�
 services: active-directory
 author: MarkusVi
 ms.author: markvi
-ms.date: 04/03/2020
+ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c7a65df100cd58561ce12ac2ae01281eebd419a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 45a248300cd61a0e57b9f35c8905d7c335069a27
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656050"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991273"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -109,7 +109,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 请参阅以下列表来配置 Azure 逻辑应用的托管标识（在可用的区域中）：
 
 - [Azure 门户](/azure/logic-apps/create-managed-service-identity#enable-system-assigned-identity-in-azure-portal)
-- [Azure 资源管理器模板](/azure/app-service/overview-managed-identity)
+- [Azure 资源管理器模板](https://docs.microsoft.com/azure/logic-apps/logic-apps-azure-resource-manager-templates-overview)
 
 ### <a name="azure-data-factory-v2"></a>Azure 数据工厂 V2
 
@@ -270,6 +270,9 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | Azure Government | `https://*.asazure.usgovcloudapi.net` | ![可用][check] |
 | Azure 德国 | `https://*.asazure.cloudapi.de` | ![可用][check] |
 | Azure 中国世纪互联 | `https://*.asazure.chinacloudapi.cn` | ![可用][check] |
+
+> [!Note]
+> 微软 Power BI 还[支持托管标识](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)。
 
 
 [check]: media/services-support-managed-identities/check.png "可用"

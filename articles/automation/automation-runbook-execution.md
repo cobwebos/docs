@@ -5,24 +5,24 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: c8968eb72b29b004d94e25433da65d3262287147
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1907eb7cde482927ee8e6b0a2522158f05c1808f
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367136"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010930"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>在 Azure 自动化中执行 Runbook
 
 Runbook 基于其中定义的逻辑执行。 如果 Runbook 中断，则 Runbook 将在开始时重启。 此行为要求您编写支持在发生暂时性问题时重新启动的 Runbook。
 
-在 Azure 自动化中启动 Runbook 将创建作业。 作业是 Runbook 的单个执行实例。 每个作业都可以通过连接到 Azure 订阅来访问 Azure 资源。 仅当可从公共云访问这些资源时，作业才能访问数据中心中的资源。
+在 Azure 自动化中启动 Runbook 将创建一个作业，该作业是 Runbook 的单个执行实例。 每个作业都可以通过连接到 Azure 订阅来访问 Azure 资源。 仅当可从公共云访问这些资源时，作业才能访问数据中心中的资源。
 
 Azure 自动化分配一个辅助角色在 Runbook 执行期间运行每个作业。 尽管辅助角色由多个 Azure 帐户共享，但不同自动化帐户中的作业是相互独立的。 您无法控制工作请求的服务。
 
 在 Azure 门户中查看 Runbook 列表时，它会显示每个 Runbook 已启动的每个作业的状态。 Azure 自动化最多存储作业日志 30 天。 
 
-下图显示了[PowerShell Runbook、](automation-runbook-types.md#powershell-runbooks)[图形运行簿](automation-runbook-types.md#graphical-runbooks)和[PowerShell 工作流运行簿](automation-runbook-types.md#powershell-workflow-runbooks)的运行簿作业的生命周期。
+下图显示了[PowerShell Runbook、](automation-runbook-types.md#powershell-runbooks)[图形运行簿](automation-runbook-types.md#graphical-runbooks)和[PowerShell 工作流运行簿](automation-runbook-types.md#powershell-workflow-runbooks)的运行日志作业的生命周期。
 
 ![作业状态 - PowerShell 工作流](./media/automation-runbook-execution/job-statuses.png)
 
@@ -222,7 +222,7 @@ PowerShell 作业从在 Azure 沙盒中运行的 Runbook 开始，可能无法�
 
 下表描述了作业可能的状态。
 
-| 状态 | 描述 |
+| 状态 | 说明 |
 |:--- |:--- |
 | 已完成 |作业已成功完成。 |
 | 失败 |图形或 PowerShell 工作流运行簿编译失败。 PowerShell 脚本运行簿无法启动或作业有异常。 请参阅[Azure 自动化运行簿类型](automation-runbook-types.md)。|
@@ -230,7 +230,7 @@ PowerShell 作业从在 Azure 沙盒中运行的 Runbook 开始，可能无法�
 | 已排队 |作业正在等待自动化辅助角色上的资源可用，以便可以启动它。 |
 | 正在启动 |作业已分配给辅助角色，并且系统正在将它启动。 |
 | 正在恢复 |系统正在恢复已暂停的作业。 |
-| 正在运行 |作业正在运行。 |
+| 运行 |作业正在运行。 |
 | 正在运行，正在等待资源 |作业已卸载，因为它已达到公平份额限制。 片刻之后，它将从其上一个检查点恢复。 |
 | 已停止 |作业在完成之前已被用户停止。 |
 | 正在停止 |系统正在停止作业。 |

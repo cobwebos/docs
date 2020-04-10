@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/29/2018
 ms.author: jinzh
 ms.custom: include file
-ms.openlocfilehash: 1ce91aede9328237aef8e5d5b7d74a3b72f10d50
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: cbf43f60a438c740c087ddd2344c982da09da634
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887417"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "81007864"
 ---
 下表显示了 Azure 地图 S0 定价层的使用限制。 使用限制取决于定价层。 
 
@@ -26,6 +26,7 @@ ms.locfileid: "80887417"
 
 | 资源                              | 限制 |
 |---------------------------------------|:---------------------:|
-| 数据的最大大小 |   1 GB  |
+| 数据的最大大小 |   50 MB  |
+
 
 有关 Azure 地图定价层的详细信息，请参阅[Azure 地图定价](https://azure.microsoft.com/pricing/details/azure-maps/)。

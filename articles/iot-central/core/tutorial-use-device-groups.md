@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: 758ac037fcd224d02f62239b3408b41b50390147
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 58fc71ab05c34e8acd252e7a1984c55996d1b3a7
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77167237"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80999040"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry"></a>教程：使用设备组分析设备遥测
 
@@ -29,7 +29,7 @@ ms.locfileid: "77167237"
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，应完成[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)和[将模拟设备添加到 IoT Central 应用程序](./quick-create-pnp-device.md)快速入门，以创建要使用的 MXChip IoT DevKit 设备模板****。
+在开始之前，应完成[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)和[将模拟设备添加到 IoT Central 应用程序](./quick-create-simulated-device.md)快速入门，以创建要使用的 MXChip IoT DevKit 设备模板****。
 
 ## <a name="create-simulated-devices"></a>创建模拟设备
 

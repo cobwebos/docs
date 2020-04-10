@@ -1,21 +1,21 @@
 ---
 title: 向 Azure 应用商店发布托管服务产品/服务
-description: 了解如何发布将客户载入到 Azure 委派资源管理的托管服务产品。
+description: 了解如何发布托管服务产品，将客户主板到 Azure 委派的资源管理。
 ms.date: 04/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4791b1d2ae233b0cc7aad33dd5b15b6ea94b2018
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 247f711188fa10de19cece27f164fdfa71612d1b
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984548"
+ms.locfileid: "80991903"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>向 Azure 应用商店发布托管服务产品/服务
 
 > [!IMPORTANT]
-> 从 2020 年 4 月 14 日起，我们将开始将托管服务优惠的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[创建新托管服务产品/服务产品/服务/服务中的](../../marketplace/partner-center-portal/create-new-managed-service-offer.md)说明进行管理迁移的优惠。
+> 从 2020 年 4 月 13 日起，我们将开始将托管服务优惠的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[创建新托管服务产品/服务产品/服务的说明](../../marketplace/partner-center-portal/create-new-managed-service-offer.md)进行操作，以管理迁移的优惠。
 
-在本文中，您将了解如何使用[云合作伙伴门户](https://cloudpartner.azure.com/)将公共或私有托管服务产品发布到 Azure[应用商店](https://azuremarketplace.microsoft.com)。 然后，购买产品/服务的客户将能够将订阅和资源组用于[Azure 委派的资源管理](../concepts/azure-delegated-resource-management.md)。
+在本文中，您将了解如何使用[云合作伙伴门户](https://cloudpartner.azure.com/)向[Azure 应用商店](https://azuremarketplace.microsoft.com)发布公共或私有托管服务产品/ 然后，购买产品/服务的客户将能够将订阅和资源组用于[Azure 委派的资源管理](../concepts/azure-delegated-resource-management.md)。
 
 ## <a name="publishing-requirements"></a>发布要求
 
@@ -28,7 +28,7 @@ ms.locfileid: "80984548"
 > [!NOTE]
 > 如果不想将产品/服务发布到 Azure 市场，可使用 Azure 资源管理器模板手动载入客户。 有关详细信息，请参阅[将客户载入到 Azure 委派资源管理](onboard-customer.md)。
 
-与将其他任何类型的产品/服务发布到 Azure 市场相比，发布托管服务产品的过程很类似。 要了解常规发布过程，请参阅[Azure 应用商店和 AppSource 发布指南](../../marketplace/marketplace-publishers-guide.md)。 还应查看[商业市场认证策略](https://docs.microsoft.com/legal/marketplace/certification-policies)，特别是[托管服务](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)部分。
+发布托管服务产品/服务产品/服务类似于向 Azure 应用商店发布任何其他类型的产品/服务。 要了解常规发布过程，请参阅[Azure 应用商店和 AppSource 发布指南](../../marketplace/marketplace-publishers-guide.md)。 还应查看[商业市场认证策略](https://docs.microsoft.com/legal/marketplace/certification-policies)，特别是[托管服务](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)部分。
 
 客户添加产品/服务后，他们将能够委派一个或多个订阅或资源组，然后这些订阅或资源组将[注册用于 Azure 委派的资源管理](#the-customer-onboarding-process)。
 

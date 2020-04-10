@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 883dbc95ee77d03aee4c3231c6ab8c03f9f7f6e4
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: 02213feb507e9a032a50241fddf31714b9dfd7ee
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387829"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011051"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>在运行 Windows 的 N 系列 VM 上安装 AMD GPU 驱动程序
 
@@ -29,7 +29,7 @@ ms.locfileid: "80387829"
 
 ## <a name="supported-operating-systems-and-drivers"></a>支持的操作系统和驱动程序
 
-| OS | 驱动程序 |
+| (OS) | 驱动程序 |
 | -------- |------------- |
 | Windows 10 EVD - 生成 1903 <br/><br/>Windows 10 - 生成 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20.Q1.1](https://download.microsoft.com/download/3/8/9/3893407b-e8aa-4079-8592-735d7dd1c19a/Radeon-Pro-Software-for-Enterprise-GA.exe) （.exe） |
 
@@ -40,7 +40,7 @@ ms.locfileid: "80387829"
 
 2. 如果您是 NVv4 预览客户，请停止 VM 并等待它移动到"已停止（已转移）"状态。
 
-3. 请启动 VM 并下载最新的[AMD 清理实用程序](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe)。 通过运行"amdcleanup 实用程序-x64.exe"卸载现有驱动程序。 请不要使用与前一个驱动程序一起安装的任何 exititng 清理实用程序。  
+3. 请启动 VM 并下载最新的[AMD 清理实用程序](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe)。 通过运行"amdcleanup 实用程序-x64.exe"卸载现有驱动程序。 请不要使用与前一个驱动程序一起安装的任何现有清理实用程序。  
 
 4. 下载并安装最新的驱动程序。
 
@@ -52,6 +52,12 @@ ms.locfileid: "80387829"
 <br />
 ![GPU 驱动程序属性](./media/n-series-amd-driver-setup/device-manager.png)
 
-您可以使用 dxdiag 验证 GPU 显示属性，包括视频 RAM。 下面的示例显示了 Azure NVv4 VM 上的 Radeon 本能 MI25 卡的第 1/8 个分区。
+您可以使用 dxdiag 验证 GPU 显示属性，包括视频 RAM。 下面的示例显示了 Azure NVv4 VM 上的 Radeon 本能 MI25 卡的 1/2 分区。
 <br />
-![GPU 驱动程序属性](./media/n-series-amd-driver-setup/dxdiag.png)
+![GPU 驱动程序属性](./media/n-series-amd-driver-setup/dxdiag-output.png)
+
+如果您正在运行 Windows 10 版本 1903 或更高版本，则 dxdiag 将不会在"显示"选项卡中显示任何信息。请使用底部的"保存所有信息"选项，输出文件将显示与 AMD MI25 GPU 相关的信息。
+
+![GPU 驱动程序属性](./media/n-series-amd-driver-setup/dxdiag-details.png)
+
+

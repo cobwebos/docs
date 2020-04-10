@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 04/09/2020
 ms.author: sstein
-ms.openlocfilehash: 9fa93af72c2869efd7b6d2f1e8b96b0e667f8b16
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.openlocfilehash: b677fd7fe2b14e1c42443478a887ddfa2481dfbf
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80607539"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011440"
 ---
 # <a name="sql-database-release-notes"></a>SQL 数据库发行说明
 
@@ -22,12 +22,11 @@ ms.locfileid: "80607539"
 
 ## <a name="features-in-public-preview"></a>处于公共预览版的功能
 
-### <a name="single-database"></a>[单一数据库](#tab/single-database)
+### <a name="single-database"></a>[单个数据库](#tab/single-database)
 
 | Feature | 详细信息 |
 | ---| --- |
 | 全新 Fsv2 系列和 M 系列硬件系列| 有关详细信息，请参阅[硬件代](sql-database-service-tiers-vcore.md#hardware-generations)。|
-| [Azure 专用链接](https://azure.microsoft.com/updates/private-link-now-available-in-preview/)| 专用链接通过保留 Azure 网络上的数据来简化网络体系结构并保护 Azure 中的终结点之间的连接，从而消除了对 Internet 的暴露。 专用链接还使您能够在 Azure 上创建和呈现自己的服务。 |
 | 通过单一数据库和弹性池加速的数据库恢复 | 有关信息，请参阅[加速的数据库恢复](sql-database-accelerated-database-recovery.md)。|
 |非重复近似计数|有关信息，请参阅[估计非重复计数](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing)。|
 |行存储上的批处理模式（在兼容性级别 150 下）|有关信息，请参阅[行存储上的批处理模式](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore)。|

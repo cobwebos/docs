@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 12/12/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 8f71c039aa6666cec1b871a158d84a6f5a2a107c
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: c88f5a4dd4f2997ce01b1f6a3ae192c62f530e76
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666809"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011408"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2. 向标识分配访问权限
 
-要使用基于标识的身份验证访问 Azure 文件资源，标识（用户、组或服务主体）必须在共享级别具有必要的权限。 此过程类似于指定 Windows 共享权限，其中指定特定用户对文件共享的访问类型。 一般建议是使用共享级别权限对团队或组进行高级访问管理，然后利用 NTFS 权限在目录/文件级别进行精细访问控制。 本部分中的指导演示如何将文件共享的读取、写入或删除权限分配给标识。 
+要使用基于标识的身份验证访问 Azure 文件资源，标识（用户、组或服务主体）必须在共享级别具有必要的权限。 此过程类似于指定 Windows 共享权限，其中指定特定用户对文件共享的访问类型。 本部分中的指导演示如何将文件共享的读取、写入或删除权限分配给标识。 
 
 我们引入了三个 Azure 内置角色，用于向用户授予共享级权限：
 
@@ -32,6 +32,8 @@ ms.locfileid: "80666809"
 
 > [!NOTE]
 > 如果计划使用 AD 进行身份验证，请记住将 AD 凭据同步到 Azure AD。 从 AD 到 Azure AD 的密码哈希同步是可选的。 共享级别权限将授予从 AD 同步的 Azure AD 标识。
+
+一般建议是，对表示一组用户和身份的 AD 组使用高级别访问管理共享级别权限，然后利用 NTFS 权限在目录/文件级别进行精细访问控制。 
 
 #### <a name="azure-portal"></a>Azure 门户
 要将 RBAC 角色分配给 Azure AD 标识，请使用[Azure 门户](https://portal.azure.com)，请按照以下步骤操作：

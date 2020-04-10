@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
-ms.date: 08/06/2019
-ms.openlocfilehash: 8139ed8f4f4799a963a051eed96dd87c4ac38aec
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 04/09/2020
+ms.openlocfilehash: 3252ecb030234e4c5543c07dfb4fc702f850a73e
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981420"
+ms.locfileid: "80998987"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>弹性池有助于管理和缩放多个 Azure SQL 数据库
 
@@ -110,9 +110,9 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 - 池中所有数据库使用的最大资源（最大 DTU 数或最大 vCore 数，具体取决于所选的资源模型）。
 - 池中所有数据库使用的最大存储字节。
 
-有关每个资源模型提供的服务层级，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)或[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
+有关每个资源模型的可用服务层和限制，请参阅基于[DTU 的采购模型](sql-database-service-tiers-dtu.md)或基于[vCore 的采购模型](sql-database-service-tiers-vcore.md)。
 
-在无法使用工具的情况下，以下分步步骤可以帮助你评估池是否比单一数据库更具成本效益：
+以下步骤可以帮助您估计池是否比单个数据库更具成本效益：
 
 1. 通过如下方式来估算池所需的 eDTU 或 vCore：
 
@@ -126,6 +126,10 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 3. 对于基于 DTU 的购买模型，请取步骤 1 和步骤 2 中 eDTU 估算值中较大的那个。 对于基于 vCore 的购买模型，请取步骤 1 中的 vCore 估算值。
 4. 请参阅 [SQL 数据库定价页](https://azure.microsoft.com/pricing/details/sql-database/)，找到大于步骤 3 中估算值的最小池大小。
 5. 将步骤 5 的池价格与使用单一数据库适当计算大小的价格相比较。
+
+> [!IMPORTANT]
+> 如果池中的数据库数接近受支持的最大数量，请确保考虑[密集弹性池中的资源管理](sql-database-elastic-pool-resource-management.md)。
+> 
 
 ## <a name="using-other-sql-database-features-with-elastic-pools"></a>将其他 SQL 数据库功能与弹性池一起使用
 
@@ -218,7 +222,7 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
 - [达克斯科/CSI](https://customers.microsoft.com/story/726277-csi-daxko-partner-professional-service-azure)    
 
-   Daxko/CSI 使用具有 Azure SQL 数据库的弹性池来加速其开发周期并增强其客户服务和性能。   
+   Daxko/CSI 使用具有 Azure SQL 数据库的弹性池来加速其开发周期并增强其客户服务和性能。    
 
 ## <a name="next-steps"></a>后续步骤
 

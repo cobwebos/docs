@@ -11,18 +11,21 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/08/2020
-ms.openlocfilehash: 929b9548661fe48fe90a55f0cacef234c3078cda
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: a061df302680488377c3006dcef57b818a101d67
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887259"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011525"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Data Lake Storage Gen2 中复制和转换数据
 
 Azure Data Lake Storage Gen2 (ADLS Gen2) 是一组专用于大数据分析的功能，内置于 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)中。 它可使用文件系统和对象存储范例与数据进行交互。
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Azure 数据存储第 2 代复制数据，以及使用数据流转换 Azure 数据湖存储 Gen2 中的数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
+
+>[!TIP]
+>对于数据湖或数据仓库迁移方案，请从[使用 Azure 数据工厂将数据从数据湖或数据仓库迁移到 Azure](data-migration-guidance-overview.md)中了解详细信息。
 
 ## <a name="supported-capabilities"></a>支持的功能
 

@@ -17,12 +17,12 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12abfc0d345c937ae886f9bfacfb8ce30227cc45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fd3580ca03fa49d428904c6da78fdf9cda202c7
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399307"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991256"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>访问 Azure Active Directory 报告 API 的先决条件
 
@@ -33,9 +33,10 @@ ms.locfileid: "78399307"
 若要准备访问报告 API，需要执行以下操作：
 
 1. [分配角色](#assign-roles)
-2. [注册应用程序](#register-an-application)
-3. [授予权限](#grant-permissions)
-4. [收集配置设置](#gather-configuration-settings)
+2. [许可证要求](#license-requirements)
+3. [注册应用程序](#register-an-application)
+4. [授予权限](#grant-permissions)
+5. [收集配置设置](#gather-configuration-settings)
 
 ## <a name="assign-roles"></a>分配角色
 
@@ -46,6 +47,10 @@ ms.locfileid: "78399307"
 - 安全管理员
 
 - 全局管理员角色
+
+## <a name="license-requirements"></a>许可证要求
+
+为了访问租户的登录报告，Azure AD 租户必须具有关联的 Azure AD 高级许可证。 Azure AD 高级 P1（或以上）许可证需要访问任何 Azure AD 租户的登录报告。 或者，如果目录类型是 Azure AD B2C，则登录报告可通过 API 访问，而无需任何其他许可证要求。 
 
 
 ## <a name="register-an-application"></a>注册应用程序
@@ -76,13 +81,13 @@ ms.locfileid: "78399307"
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”**** 文本框中，键入 `Reporting API application`。
+    a. 在“名称”**** 文本框中，键入 `Reporting API application`。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 对于“支持的帐户类型”设置，请选择“仅限此组织中的帐户”。********
+    b. 对于“支持的帐户类型”设置，请选择“仅限此组织中的帐户”。********
 
     c. 在“重定向 URL”**** 中，选择“Web”文本框****，然后键入 `https://localhost`。
 
-    d.单击“下一步”。 选择“注册”****。 
+    d. 选择“注册”  。 
 
 
 ## <a name="grant-permissions"></a>授予权限 
@@ -179,13 +184,13 @@ ms.locfileid: "78399307"
 
 5. 在“添加客户端机密”页上，添加以下内容：****
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“说明”**** 文本框中，键入 `Reporting API`。
+    a. 在“说明”**** 文本框中，键入 `Reporting API`。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 选择“2 年内”作为“过期时间”。********
+    b. 选择“2 年内”作为“过期时间”。********
 
-    c. 单击“保存”。****
+    c. 单击“ **保存**”。
 
-    d.单击“下一步”。 复制密钥值。
+    d. 复制密钥值。
 
 ## <a name="troubleshoot-errors-in-the-reporting-api"></a>排查报告 API 中的错误
 

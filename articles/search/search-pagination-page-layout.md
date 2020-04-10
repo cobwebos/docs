@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: df80668f5e4a31d6247e9e9806e3de0667fd9036
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 451e83fa6ab547536a4cfd85304930e749a8247f
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656014"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998396"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中使用搜索结果
 
@@ -94,7 +94,11 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
 
 点击突出显示是指应用于结果匹配术语的文本格式（如粗体或黄色突出显示），便于发现匹配项。 [查询请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)上提供了命中突出显示说明。 The search engine encloses the matching term in tags, `highlightPreTag` and `highlightPostTag`, and your code handles the response (for example, applying a bold font).
 
-格式应用于整个术语查询。 在下面的示例中，在"描述"字段中找到的术语"沙"，"沙子"，"海滩"，"海滩"被标记为突出显示。 对部分术语（如模糊搜索或通配符搜索）的查询（如导致引擎中查询扩展）不能使用命中突出显示。
+格式应用于整个术语查询。 在下面的示例中，在"描述"字段中找到的术语"沙"，"沙子"，"海滩"，"海滩"被标记为突出显示。 触发引擎中查询扩展的查询（如模糊搜索和通配符搜索）对命中突出显示的支持有限。
+
+```http
+GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2019-05-06 
+```
 
 ```http
 POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 

@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/08/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 5b532908df4b8dd58177b7e128f4e55aa96458e6
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: d03b053f2aa5de4a6f7874dbf4e6ccb3a305a964
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409958"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992073"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>通过 Azure Monitor 日志管理使用情况和成本
 
@@ -88,6 +88,9 @@ Azure 在 [Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-ma
 在 2018 年 4 月 2 日之前在其中具有日志分析工作区或应用程序见解资源的订阅，或链接到 2019 年 2 月 1 日之前启动的企业协议，将继续有权访问使用旧版定价层：**免费**、**独立（每 GB）** 和**每个节点 （OMS）。**  对于“免费”定价层中的工作区，其每日数据引入量限制为 500 MB（由 Azure 安全中心收集的安全数据类型除外），并且其数据保留期限制为 7 天。 “免费”定价层仅用于评估目的。 独立或每个节点定价层中的工作区具有 30 到 730 天的用户可配置保留期。
 
 每个节点定价层收费每个受监视的 VM（节点）在一小时的粒度。 对于每个受监视的节点，工作区每天分配 500 MB 的数据，这些数据不计费。 此分配在工作区级别聚合。 聚合每日数据分配上方引入的数据按 GB 计费为数据超额。 请注意，如果您的帐单上，如果工作区位于"每个节点"定价层中，则服务将为日志分析使用情况的**见解和分析**。 
+
+> [!TIP]
+> 如果您的工作区有权访问 **"每个节点"** 定价层，但您想知道在即用即付层中是否成本更低，则可以使用[下面的查询](#evaluating-the-legacy-per-node-pricing-tier)轻松获取建议。 
 
 在 2016 年 4 月之前创建的工作区还可以访问**标准**和**高级**定价层，这些层的数据保留期是固定的，分别为 30 天和 365 天。 无法在**标准**或**高级**定价层中创建新的工作区，并且如果将工作区移出这些层，则无法将其移回。 
 
@@ -434,6 +437,49 @@ union
        | extend lowComputer = tolower(Computer) | summarize by lowComputer, ComputerEnvironment
  ) on lowComputer
  | summarize count() by ComputerEnvironment | sort by ComputerEnvironment asc
+```
+
+## <a name="evaluating-the-legacy-per-node-pricing-tier"></a>评估每个节点的旧版定价层
+
+客户通常难以评估在该层或当前**即付**即用或**容量预留**层中有权访问旧**节点**定价层的工作区是否更好。  这包括了解"每个节点"定价层中每个受监视节点的固定成本与其包含的数据分配 500 MB/节点/天之间的权衡，以及只需支付即用即付 （每 GB） 层中引入数据的费用。 
+
+为了便于进行此评估，可以使用以下查询根据工作区的使用模式对最佳定价层提出建议。  此查询查看过去 7 天内引入工作区的受监视节点和数据，并每天评估哪个定价层是最佳的。 要使用查询，您需要通过设置为`workspaceHasSecurityCenter``true`或`false`指定工作区是否使用 Azure 安全中心，然后（可选）更新组织接收的"每个节点"和"每 GB"价格。 
+
+```kusto
+// Set these paramaters before running query
+let workspaceHasSecurityCenter = true;  // Specify if the workspace has Azure Security Center
+let PerNodePrice = 15.; // Enter your price per node / month 
+let PerGBPrice = 2.30; // Enter your price per GB 
+// ---------------------------------------
+let SecurityDataTypes=dynamic(["SecurityAlert", "SecurityBaseline", "SecurityBaselineSummary", "SecurityDetection", "SecurityEvent", "WindowsFirewall", "MaliciousIPCommunication", "LinuxAuditLog", "SysmonEvent", "ProtectionStatus", "WindowsEvent", "Update", "UpdateSummary"]);
+union withsource = tt * 
+| where TimeGenerated >= startofday(now(-7d)) and TimeGenerated < startofday(now())
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize nodesPerHour = dcount(computerName) by bin(TimeGenerated, 1h)  
+| summarize nodesPerDay = sum(nodesPerHour)/24.  by day=bin(TimeGenerated, 1d)  
+| join (
+    Usage 
+    | where TimeGenerated > ago(8d)
+    | where StartTime >= startofday(now(-7d)) and EndTime < startofday(now())
+    | where IsBillable == true
+    | extend NonSecurityData = iff(DataType !in (SecurityDataTypes), Quantity, 0.)
+    | extend SecurityData = iff(DataType in (SecurityDataTypes), Quantity, 0.)
+    | summarize DataGB=sum(Quantity)/1000., NonSecurityDataGB=sum(NonSecurityData)/1000., SecurityDataGB=sum(SecurityData)/1000. by day=bin(StartTime, 1d)  
+) on day
+| extend AvgGbPerNode =  NonSecurityDataGB / nodesPerDay
+| extend PerGBDailyCost = iff(workspaceHasSecurityCenter,
+             (NonSecurityDataGB + max_of(SecurityDataGB - 0.5*nodesPerDay, 0.)) * PerGBPrice,
+             DataGB * PerGBPrice)
+| extend OverageGB = iff(workspaceHasSecurityCenter, 
+             max_of(DataGB - 1.0*nodesPerDay, 0.), 
+             max_of(DataGB - 0.5*nodesPerDay, 0.))
+| extend PerNodeDailyCost = nodesPerDay * PerNodePrice / 31. + OverageGB * PerGBPrice
+| extend Recommendation = iff(PerNodeDailyCost < PerGBDailyCost, "Per Node tier", 
+             iff(NonSecurityDataGB > 85., "Capacity Reservation tier", "Pay-as-you-go (Per GB) tier"))
+| project day, nodesPerDay, NonSecurityDataGB, SecurityDataGB, OverageGB, AvgGbPerNode, PerGBDailyCost, PerNodeDailyCost, Recommendation | sort by day asc
+| project day, Recommendation // Comment this line to see details
+| sort by day asc
 ```
 
 ## <a name="create-an-alert-when-data-collection-is-high"></a>当数据收集量过高时创建警报

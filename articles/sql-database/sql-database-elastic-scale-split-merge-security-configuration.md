@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: a916645f153f73a98e7fc5d4046bdf557e8acf2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5ea0fd252d1792d4c40cc6d7869f4ba57edc1ad
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73823528"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011355"
 ---
 # <a name="split-merge-security-configuration"></a>拆分/合并安全配置
 
@@ -26,7 +26,7 @@ ms.locfileid: "73823528"
 
 通过两种方式配置证书。 
 
-1. [配置 SSL 证书](#to-configure-the-ssl-certificate)
+1. [配置 TLS/SSL 证书](#to-configure-the-tlsssl-certificate)
 2. [配置客户端证书](#to-configure-client-certificates) 
 
 ## <a name="to-obtain-certificates"></a>获取证书
@@ -49,26 +49,26 @@ ms.locfileid: "73823528"
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
 * 从 [Windows 8.1：下载工具包和工具](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)获取 WDK
 
-## <a name="to-configure-the-ssl-certificate"></a>配置 SSL 证书
+## <a name="to-configure-the-tlsssl-certificate"></a>配置 TLS/SSL 证书
 
-若要对通信进行加密并对服务器进行身份验证，需要使用 SSL 证书。 从下面的三个方案中选择最适合的方案，并执行其所有步骤：
+需要 TLS/SSL 证书来加密通信和对服务器进行身份验证。 从下面的三个方案中选择最适合的方案，并执行其所有步骤：
 
 ### <a name="create-a-new-self-signed-certificate"></a>创建新的自签名证书
 
 1. [创建自签名证书](#create-a-self-signed-certificate)
-2. [为自签名 SSL 证书创建 PFX 文件](#create-pfx-file-for-self-signed-ssl-certificate)
-3. [将 SSL 证书上传到云服务](#upload-ssl-certificate-to-cloud-service)
-4. [在服务配置文件中更新 SSL 证书](#update-ssl-certificate-in-service-configuration-file)
-5. [导入 SSL 证书颁发机构](#import-ssl-certification-authority)
+2. [为自签名 TLS/SSL 证书创建 PFX 文件](#create-pfx-file-for-self-signed-tlsssl-certificate)
+3. [将 TLS/SSL 证书上载到云服务](#upload-tlsssl-certificate-to-cloud-service)
+4. [更新服务配置文件中的 TLS/SSL 证书](#update-tlsssl-certificate-in-service-configuration-file)
+5. [进口 TLS/SSL 认证机构](#import-tlsssl-certification-authority)
 
 ### <a name="to-use-an-existing-certificate-from-the-certificate-store"></a>使用证书存储中的现有证书
-1. [从证书存储中导出 SSL 证书](#export-ssl-certificate-from-certificate-store)
-2. [将 SSL 证书上传到云服务](#upload-ssl-certificate-to-cloud-service)
-3. [在服务配置文件中更新 SSL 证书](#update-ssl-certificate-in-service-configuration-file)
+1. [从证书存储导出 TLS/SSL 证书](#export-tlsssl-certificate-from-certificate-store)
+2. [将 TLS/SSL 证书上载到云服务](#upload-tlsssl-certificate-to-cloud-service)
+3. [更新服务配置文件中的 TLS/SSL 证书](#update-tlsssl-certificate-in-service-configuration-file)
 
 ### <a name="to-use-an-existing-certificate-in-a-pfx-file"></a>在 PFX 文件中使用现有证书
-1. [将 SSL 证书上传到云服务](#upload-ssl-certificate-to-cloud-service)
-2. [在服务配置文件中更新 SSL 证书](#update-ssl-certificate-in-service-configuration-file)
+1. [将 TLS/SSL 证书上载到云服务](#upload-tlsssl-certificate-to-cloud-service)
+2. [更新服务配置文件中的 TLS/SSL 证书](#update-tlsssl-certificate-in-service-configuration-file)
 
 ## <a name="to-configure-client-certificates"></a>配置客户端证书
 若要对服务请求进行身份验证，需要使用客户端证书。 从下面的三个方案中选择最适合的方案，并执行其所有步骤：
@@ -102,7 +102,7 @@ ms.locfileid: "73823528"
 
 ### <a name="use-a-new-self-signed-certificate"></a>使用新的自签名证书
 1. [创建自签名证书](#create-a-self-signed-certificate)
-2. [为自签名加密证书创建 PFX 文件](#create-pfx-file-for-self-signed-ssl-certificate)
+2. [为自签名加密证书创建 PFX 文件](#create-pfx-file-for-self-signed-tlsssl-certificate)
 3. [将加密证书上传到云服务](#upload-encryption-certificate-to-cloud-service)
 4. [在服务配置文件中更新加密证书](#update-encryption-certificate-in-service-configuration-file)
 
@@ -186,7 +186,7 @@ ms.locfileid: "73823528"
 ## <a name="operations-for-configuring-service-certificates"></a>用于配置服务证书的操作
 本主题仅供参考。 请遵循以下部分中概括的配置步骤：
 
-* 配置 SSL 证书
+* 配置 TLS/SSL 证书
 * 配置客户端证书
 
 ## <a name="create-a-self-signed-certificate"></a>创建自签名证书
@@ -204,7 +204,7 @@ ms.locfileid: "73823528"
 * -n，带有服务 URL。 通配符 ("CN=*.cloudapp.net") 和替代名称 ("CN=myservice1.cloudapp.net, CN=myservice2.cloudapp.net") 均受支持。
 * -e，带有证书过期日期创建强密码并在提示时指定它。
 
-## <a name="create-pfx-file-for-self-signed-ssl-certificate"></a>为自签名 SSL 证书创建 PFX 文件
+## <a name="create-pfx-file-for-self-signed-tlsssl-certificate"></a>为自签名 TLS/SSL 证书创建 PFX 文件
 执行：
 
         pvk2pfx -pvk MySSL.pvk -spc MySSL.cer
@@ -214,24 +214,24 @@ ms.locfileid: "73823528"
 * 是，导出私钥
 * 导出所有扩展属性
 
-## <a name="export-ssl-certificate-from-certificate-store"></a>从证书存储中导出 SSL 证书
+## <a name="export-tlsssl-certificate-from-certificate-store"></a>从证书存储导出 TLS/SSL 证书
 * 查找证书
 * 依次单击“操作”->“所有任务”->“导出...”
 * 使用以下选项将证书导出到 .PFX 文件中：
   * 是，导出私钥
   * 包括证书路径中的所有证书（如果可能）*导出所有扩展属性
 
-## <a name="upload-ssl-certificate-to-cloud-service"></a>将 SSL 证书上传到云服务
-使用带有 SSL 密钥对的现有或生成的 .PFX 文件上传证书：
+## <a name="upload-tlsssl-certificate-to-cloud-service"></a>将 TLS/SSL 证书上载到云服务
+将证书上载到现有或生成的 。带有 TLS 密钥对的 PFX 文件：
 
 * 输入用于保护私钥信息的密码
 
-## <a name="update-ssl-certificate-in-service-configuration-file"></a>在服务配置文件中更新 SSL 证书
+## <a name="update-tlsssl-certificate-in-service-configuration-file"></a>更新服务配置文件中的 TLS/SSL 证书
 在服务配置文件中，使用已上传到云服务的证书指纹更新以下设置的指纹值：
 
     <Certificate name="SSL" thumbprint="" thumbprintAlgorithm="sha1" />
 
-## <a name="import-ssl-certification-authority"></a>导入 SSL 证书颁发机构
+## <a name="import-tlsssl-certification-authority"></a>导入 TLS/SSL 认证机构
 在将与该服务通信的所有帐户/计算机中，按照以下步骤进行操作：
 
 * 在 Windows 资源管理器中，双击 .CER 文件
@@ -248,7 +248,7 @@ ms.locfileid: "73823528"
 <Setting name="SetupWebserverForClientCertificates" value="false" />
 ```
 
-然后，复制与 CA 证书设置中 SSL 证书相同的指纹：
+然后，在 CA 证书设置中复制与 TLS/SSL 证书相同的指纹：
 
 ```xml
 <Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
@@ -411,7 +411,7 @@ ms.locfileid: "73823528"
 ```
 
 ## <a name="common-certificate-operations"></a>公用证书操作
-* 配置 SSL 证书
+* 配置 TLS/SSL 证书
 * 配置客户端证书
 
 ## <a name="find-certificate"></a>查找证书
@@ -420,10 +420,10 @@ ms.locfileid: "73823528"
 1. 运行 mmc.exe。
 2. “文件”->“添加/删除管理单元...”
 3. 选择“证书”****。
-4. 单击 **“添加”**。
+4. 单击 **添加**。
 5. 选择证书存储位置。
-6. 单击“完成”****。
-7. 单击“确定”。
+6. 单击“完成”  。
+7. 单击“确定”。 
 8. 展开“证书”****。
 9. 展开证书存储节点。
 10. 展开证书子节点。
@@ -432,18 +432,18 @@ ms.locfileid: "73823528"
 ## <a name="export-certificate"></a>导出证书
 在**证书导出向导**中：
 
-1. 单击“下一步”****。
+1. 单击“下一步”。 
 2. 选择“是”****，并选择“导出私钥”****。
-3. 单击“下一步”****。
+3. 单击“下一步”。 
 4. 选择所需的输出文件格式。
 5. 选中所需的选项。
 6. 选中“密码”****。
 7. 输入强密码并进行确认。
-8. 单击“下一步”****。
+8. 单击“下一步”。 
 9. 在证书的存储位置键入或浏览文件名（使用 .PFX 扩展名）。
-10. 单击“下一步”****。
-11. 单击“完成”****。
-12. 单击“确定”。
+10. 单击“下一步”。 
+11. 单击“完成”  。
+12. 单击“确定”。 
 
 ## <a name="import-certificate"></a>导入证书
 在证书导入向导中：
@@ -452,7 +452,7 @@ ms.locfileid: "73823528"
    
    * 如果只有在当前用户下运行的进程将访问该服务，请选择“当前用户”****
    * 如果此计算机中的其他进程将访问该服务，请选择“本地计算机”****
-2. 单击“下一步”****。
+2. 单击“下一步”。 
 3. 如果要从文件中导入，请确认文件路径。
 4. 如果要导入 .PFX 文件，请执行以下操作：
    1. 输入用于保护私钥的密码
@@ -460,7 +460,7 @@ ms.locfileid: "73823528"
 5. 选择“将证书放入以下存储”
 6. 单击“浏览”****。
 7. 选择所需的存储。
-8. 单击“完成”****。
+8. 单击“完成”  。
    
    * 如果已选中“受信任的根证书颁发机构”存储，请单击“是”****。
 9. 在所有对话框窗口上单击“确定”****。
@@ -477,7 +477,7 @@ ms.locfileid: "73823528"
 7. 完成操作后，从列表中的新条目复制证书指纹。
 
 ## <a name="other-security-considerations"></a>其他安全注意事项
-使用 HTTPS 终结点时，本文档中介绍的 SSL 设置将对服务及其客户端之间的通信进行加密。 这一点很重要，因为该通信中包含了数据库访问凭据以及其他可能的敏感信息。 但是，请注意，该服务会将内部状态（包括凭据）保存在其内部表中，该表位于在 Microsoft Azure 订阅中为元数据存储提供的 Microsoft Azure SQL 数据库中。 在服务配置文件（.CSCFG 文件）中，该数据库已定义为以下设置的一部分： 
+本文档中描述的 TLS 设置在使用 HTTPS 终结点时加密服务与其客户端之间的通信。 这一点很重要，因为该通信中包含了数据库访问凭据以及其他可能的敏感信息。 但是，请注意，该服务会将内部状态（包括凭据）保存在其内部表中，该表位于在 Microsoft Azure 订阅中为元数据存储提供的 Microsoft Azure SQL 数据库中。 在服务配置文件（.CSCFG 文件）中，该数据库已定义为以下设置的一部分： 
 
 ```xml
 <Setting name="ElasticScaleMetadata" value="Server=…" />

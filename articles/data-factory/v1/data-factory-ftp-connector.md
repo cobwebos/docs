@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 55c8bf2210eb0990a91aeff1f90e4af4db2c22ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eeeb122d240d8c3eae4ebe1650f67cf0e4b9dac6
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79281400"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992039"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 FTP 服务器移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -62,7 +62,7 @@ ms.locfileid: "79281400"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表描述了特定于 FTP 链接服务的 JSON 元素。
 
-| properties | 描述 | 必选 | 默认 |
+| Property | 说明 | 必选 | 默认 |
 | --- | --- | --- | --- |
 | type |将此类型设置为 FtpServer。 |是 |&nbsp; |
 | host |指定 FTP 服务器的名称或 IP 地址。 |是 |&nbsp; |
@@ -73,7 +73,7 @@ ms.locfileid: "79281400"
 | gatewayName |指定数据管理网关中用于连接到本地 FTP 服务器的网关名称。 |否 |&nbsp; |
 | port |指定 FTP 服务器侦听的端口。 |否 |21 |
 | enableSsl |指定是否通过 SSL/TLS 通道使用 FTP。 |否 |true |
-| enableServerCertificateValidation |指定在通过 SSL/TLS 通道使用 FTP 时，是否启用服务器 SSL 证书验证。 |否 |true |
+| enableServerCertificateValidation |指定在 SSL/TLS 通道上使用 FTP 时是否启用服务器 TLS/SSL 证书验证。 |否 |true |
 
 >[!NOTE]
 >FTP 连接器支持在不使用加密或使用显式 SSL/TLS 加密的情况下访问 FTP 服务器；不支持隐式 SSL/TLS 加密。
@@ -152,7 +152,7 @@ ms.locfileid: "79281400"
 
 每个数据集类型的 **typeProperties** 节都不同。 它提供特定于数据集类型的信息。 **FileShare** 类型的数据集的 **typeProperties** 部分具有以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 | --- | --- | --- |
 | folderPath |文件夹的子路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅“链接服务和数据集定义示例”。<br/><br/>可将此属性与 **partitionBy** 组合在一起，基于切片开始和结束的日期时间构成文件夹路径。 |是 |
 | fileName |指定 **folderPath** 中的文件的名称（如果你想要引用该文件夹中的特定文件）。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 **fileName**，生成文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt`（示例：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt） |否 |
@@ -203,7 +203,7 @@ ms.locfileid: "79281400"
 
 在复制活动中，如果源的类型为 **FileSystemSource**，则 **typeProperties** 部分将具有以下属性：
 
-| properties | 描述 | 允许的值 | 必选 |
+| Property | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | recursive |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True、False（默认值） |否 |
 

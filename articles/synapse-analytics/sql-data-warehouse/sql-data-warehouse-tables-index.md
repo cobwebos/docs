@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 0d63f2c29bfdbdf320185647bd33ec30500ed874
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 8cb4af8faccb68c455928c0d3c5405ef2d3e70df
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742703"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011015"
 ---
 # <a name="indexing-tables-in-synapse-sql-pool"></a>Synapse SQL 池中的索引表
 
@@ -52,9 +52,9 @@ WITH ( CLUSTERED COLUMNSTORE INDEX );
 
 ## <a name="heap-tables"></a>堆表
 
-当您暂时将数据在 Synapse SQL 池中登录时，您可能会发现使用堆表可以更快地完成整个过程。 这是因为堆的加载速度比索引表还要快，在某些情况下，可以从缓存执行后续读取。  如果加载数据只是在做运行更多转换之前的预备，将表载入堆表会远快于将数据载入聚集列存储表。 此外，将数据载入[临时表](sql-data-warehouse-tables-temporary.md)也比将表载入永久存储更快速。  
+当您暂时将数据在 Synapse SQL 池中登录时，您可能会发现使用堆表可以更快地完成整个过程。 这是因为堆的加载速度比索引表还要快，在某些情况下，可以从缓存执行后续读取。  如果加载数据只是在做运行更多转换之前的预备，将表载入堆表会远快于将数据载入聚集列存储表。 此外，将数据载入[临时表](sql-data-warehouse-tables-temporary.md)也比将表载入永久存储更快速。  加载数据后，可以在表中创建索引，以加快查询性能。  
 
-对于包含少于 6000 万行的小型查找表，堆表通常比较适合。  超过 6000 万行后，聚集列存储表开始达到最佳压缩性能。
+超过 6000 万行后，聚集列存储表开始达到最佳压缩性能。  对于少于 6000 万行的小型查找表，请考虑使用 HEAP 或群集索引来提高查询性能。 
 
 若要创建堆表，只需在 WITH 子句中指定 HEAP：
 

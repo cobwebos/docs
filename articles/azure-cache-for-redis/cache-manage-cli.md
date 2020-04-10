@@ -6,16 +6,16 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: e2b1ed693ea57e3414d465a57a5ba2b1203f67c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f71476d7d41ae45d2f1014ed1b257870622487e6
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79277981"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010828"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>如何使用 Azure 经典 CLI 创建和管理 Azure Redis 缓存
 > [!div class="op_single_selector"]
-> * [电源外壳](cache-how-to-manage-redis-cache-powershell.md)
+> * [PowerShell](cache-how-to-manage-redis-cache-powershell.md)
 > * [Azure 经典 CLI](cache-manage-cli.md)
 >
 
@@ -36,14 +36,14 @@ Azure 经典 CLI 是从任何平台管理 Azure 基础结构的好办法。 本�
 ## <a name="azure-cache-for-redis-properties"></a>Azure Redis 缓存属性
 在创建和更新 Azure Redis 缓存实例时使用以下属性。
 
-| properties | 开关 | 描述 |
+| Property | 开关 | 说明 |
 | --- | --- | --- |
 | name |-n, --name |Azure Redis 缓存的名称。 |
 | 资源组 |-g, --resource-group |资源的名称。 |
 | location |-l, --location |要创建缓存的位置。 |
 | 大小 |-z, --size |Azure Redis 缓存的大小。 有效的值: [C0、C1、C2、C3、C4、C5、C6、P1、P2、P3、P4] |
 | sku |-x, --sku |Redis SKU。 应为以下值之一：[Basic、Standard、Premium] |
-| EnableNonSslPort |-e, --enable-non-ssl-port |Azure Redis 缓存的 EnableNonSslPort 属性。 如果要为缓存启用非 SSL 端口，请添加此标志 |
+| EnableNonSslPort |-e, --enable-non-ssl-port |Azure Redis 缓存的 EnableNonSslPort 属性。 如果要为缓存启用非 TLS/SSL 端口，请添加此标志 |
 | Redis 配置 |-c, --redis-configuration |Redis 配置。 在此处输入配置键和值的 JSON 格式字符串。 格式："{"":"","":""}" |
 | Redis 配置 |-f, --redis-configuration-file |Redis 配置。 在此处输入包含配置键和值的文件的路径。 文件输入项的格式：{"":"","":""} |
 | 分片计数 |-r, --shard-count |要在启用群集的高级群集缓存上创建的分片数。 |
@@ -108,7 +108,7 @@ Azure 经典 CLI 是从任何平台管理 Azure 基础结构的好办法。 本�
     help:      -l, --location <location>                                Location to create cache.
     help:      -z, --size <size>                                        Size of the Azure Cache for Redis. Valid values: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4]
     help:      -x, --sku <sku>                                          Redis SKU. Should be one of : [Basic, Standard, Premium]
-    help:      -e, --enable-non-ssl-port                                EnableNonSslPort property of the Azure Cache for Redis. Add this flag if you want to enable the Non SSL Port for your cache
+    help:      -e, --enable-non-ssl-port                                EnableNonSslPort property of the Azure Cache for Redis. Add this flag if you want to enable the non-TLS/SSL Port for your cache
     help:      -c, --redis-configuration <redis-configuration>          Redis Configuration. Enter a JSON formatted string of configuration keys and values here. Format:"{"<key1>":"<value1>","<key2>":"<value2>"}"
     help:      -f, --redis-configuration-file <redisConfigurationFile>  Redis Configuration. Enter the path of a file containing configuration keys and values here. Format for the file entry: {"<key1>":"<value1>","<key2>":"<value2>"}
     help:      -r, --shard-count <shard-count>                          Number of Shards to create on a Premium Cluster Cache

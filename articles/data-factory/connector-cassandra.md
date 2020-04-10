@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 9339fff820c0a0d915258ce3a0bc5371242ad50d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6aac3f1bb29ccfab0de4cb0a807ca0831a62af7e
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75892827"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991546"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>使用 Azure 数据工厂从 Cassandra 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -58,7 +58,7 @@ ms.locfileid: "75892827"
 
 Cassandra 链接的服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type |type 属性必须设置为：**Cassandra** |是 |
 | host |Cassandra 服务器的一个或多个 IP 地址或主机名。<br/>指定以逗号分隔的 IP 地址或主机名列表，以同时连接到所有服务器。 |是 |
@@ -69,7 +69,7 @@ Cassandra 链接的服务支持以下属性：
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 >[!NOTE]
->当前不支持使用 SSL 连接到 Cassandra。
+>当前不支持使用 TLS 连接到卡桑德拉。
 
 **例子：**
 
@@ -101,7 +101,7 @@ Cassandra 链接的服务支持以下属性：
 
 要从 Cassandra 复制数据，请将数据集的 type 属性设置为“CassandraTable”****。 支持以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**CassandraTable** | 是 |
 | keyspace |Cassandra 数据库中密钥空间或架构的名称。 |否（如果指定了“CassandraSource”的“query”） |
@@ -136,7 +136,7 @@ Cassandra 链接的服务支持以下属性：
 
 要从 Cassandra 复制数据，请将复制活动中的源类型设置为“CassandraSource”****。 复制活动**源**部分支持以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：**CassandraSource** | 是 |
 | query |使用自定义查询读取数据。 SQL-92 查询或 CQL 查询。 请参阅 [CQL reference](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)（CQL 参考）。 <br/><br/>使用 SQL 查询时，请指定 keyspace name.table name 来表示要查询的表****。 |否（如果指定了数据集中的“tableName”和“keyspace”）。 |
@@ -180,21 +180,21 @@ Cassandra 链接的服务支持以下属性：
 
 | Cassandra 数据类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
-| ASCII |String |
+| ASCII |字符串 |
 | BIGINT |Int64 |
 | BLOB |Byte[] |
 | BOOLEAN |Boolean |
-| DECIMAL |Decimal |
+| DECIMAL |十进制 |
 | DOUBLE |Double |
 | FLOAT |Single |
-| INET |String |
+| INET |字符串 |
 | INT |Int32 |
-| TEXT |String |
+| TEXT |字符串 |
 | TIMESTAMP |DateTime |
 | TIMEUUID |Guid |
 | UUID |Guid |
-| VARCHAR |String |
-| VARINT |Decimal |
+| VARCHAR |字符串 |
+| VARINT |十进制 |
 
 > [!NOTE]
 > 对于集合类型（映射、集、列表等），请参阅[通过虚拟表使用 Cassandra 集合类型](#work-with-collections-using-virtual-table)部分。
@@ -217,7 +217,7 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 Cassandra 数据库
 
 例如，下面的“ExampleTable”是一个 Cassandra 数据库表，其中包含名为“pk_int”的整数主键列、文本列命名值、列表列、映射列和名为“StringSet”的集列。
 
-| pk_int | “值” | 列出 | 映射 | StringSet |
+| pk_int | 值 | 列出 | 映射 | StringSet |
 | --- | --- | --- | --- | --- |
 | 1 |“示例值 1” |["1", "2", "3"] |{"S1": "a", "S2": "b"} |{"A", "B", "C"} |
 | 3 |“示例值 3” |["100", "101", "102", "105"] |{"S1": "t"} |{"A", "E"} |
@@ -226,7 +226,7 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 Cassandra 数据库
 
 第一个虚拟表是名为“ExampleTable”的基表，如下表所示： 
 
-| pk_int | “值” |
+| pk_int | 值 |
 | --- | --- |
 | 1 |“示例值 1” |
 | 3 |“示例值 3” |

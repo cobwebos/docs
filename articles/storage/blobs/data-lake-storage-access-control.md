@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 192e46fd7f86b6053eaf658fa65e3c6cdfa3a4e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93c21656a768ae458572e0b4917412c8103b2f2d
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528602"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992209"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的访问控制
 
@@ -54,7 +54,7 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 可将安全主体关联到文件和目录的访问级别。 这些关联在访问控制列表 (ACL) 中捕获。** 存储帐户中的每个文件和目录都有一个访问控制列表。
 
 > [!NOTE]
-> ACL 仅适用于同一租户中的安全主体。 不能将来宾用户与访问级别相关联。  
+> ACL 仅适用于同一租户中的安全主体。 
 
 如果在存储帐户级别将角色分配到某个安全主体，则可以使用访问控制列表授予该安全主体对特定文件和目录的提升访问权限。
 

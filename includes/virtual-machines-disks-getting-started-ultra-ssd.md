@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/14/2019
+ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0d081a8cec088f4743bd0dc7d3cc37a9fade61d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dfb094bc9f84e7129a3e1c733a054c5f6cd96372
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80117144"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008616"
 ---
 Azure 超级磁盘为 Azure IaaS 虚拟机 （VM） 提供高吞吐量、高 IOPS 和一致的低延迟磁盘存储。 此新产品提供出类拔萃的性能，其可用性级别与我们的现有磁盘产品相同。 超磁盘的一个主要好处是能够动态更改 SSD 的性能以及您的工作负载，而无需重新启动 VM。 超级磁盘适用于 SAP HANA、顶层数据库等数据密集型工作负荷，以及事务密集型工作负荷。
 
@@ -23,9 +23,11 @@ Azure 超级磁盘为 Azure IaaS 虚拟机 （VM） 提供高吞吐量、高 IOP
 
 ## <a name="determine-vm-size-and-region-availability"></a>确定 VM 大小和地区可用性
 
+### <a name="vms-using-availability-zones"></a>使用可用性区域的 VM
+
 要利用超磁盘，您需要确定您位于哪个可用性区域。 并不是每个区域都支持每个 VM 大小与超磁盘。 要确定区域、区域和 VM 大小是否支持超磁盘，请运行以下任一命令，请确保首先替换**区域****、vmSize**和**订阅**值：
 
-CLI：
+#### <a name="cli"></a>CLI
 
 ```azurecli
 $subscription = "<yourSubID>"
@@ -37,7 +39,7 @@ $vmSize = "<yourVMSize>"
 az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].locationInfo[0].zoneDetails[0].Name" --subscription $subscription
 ```
 
-PowerShell：
+#### <a name="powershell"></a>PowerShell
 
 ```powershell
 $region = "southeastasia"
@@ -49,7 +51,7 @@ $vmSize = "Standard_E64s_v3"
 
 保留 **"区域"** 值，它表示可用性区域，您需要它才能部署 Ultra 磁盘。
 
-|ResourceType  |“属性”  |位置  |区域  |限制  |功能  |“值”  |
+|ResourceType  |“属性”  |位置  |区域  |限制  |功能  |值  |
 |---------|---------|---------|---------|---------|---------|---------|
 |disks     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
@@ -57,6 +59,55 @@ $vmSize = "Standard_E64s_v3"
 > 如果命令没有响应，则所选区域中的超磁盘不支持所选 VM 大小。
 
 现在，您已经了解了要部署到哪个区域，请按照本文中的部署步骤部署附加超磁盘的 VM 或将超磁盘附加到现有 VM。
+
+### <a name="vms-with-no-redundancy-options"></a>没有冗余选项的 VM
+
+目前，部署在美国西部部署的超磁盘必须没有任何冗余选项。 但是，并非所有支持超磁盘的磁盘大小都位于此区域。 要确定美国西部的哪些磁盘支持超磁盘，可以使用以下代码段之一。 请确保首先替换 和`vmSize``subscription`值：
+
+```azurecli
+$subscription = "<yourSubID>"
+$region = "westus"
+# example value is Standard_E64s_v3
+$vmSize = "<yourVMSize>"
+
+az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].capabilities" --subscription $subscription
+```
+
+```azurepowershell
+$region = "westus"
+$vmSize = "Standard_E64s_v3"
+(Get-AzComputeResourceSku | where {$_.Locations.Contains($region) -and ($_.Name -eq $vmSize) })[0].Capabilities
+```
+
+响应将类似于以下形式，`UltraSSDAvailable   True`指示 VM 大小是否支持此区域中的超磁盘。
+
+```
+Name                                         Value
+----                                         -----
+MaxResourceVolumeMB                          884736
+OSVhdSizeMB                                  1047552
+vCPUs                                        64
+HyperVGenerations                            V1,V2
+MemoryGB                                     432
+MaxDataDiskCount                             32
+LowPriorityCapable                           True
+PremiumIO                                    True
+VMDeploymentTypes                            IaaS
+vCPUsAvailable                               64
+ACUs                                         160
+vCPUsPerCore                                 2
+CombinedTempDiskAndCachedIOPS                128000
+CombinedTempDiskAndCachedReadBytesPerSecond  1073741824
+CombinedTempDiskAndCachedWriteBytesPerSecond 1073741824
+CachedDiskBytes                              1717986918400
+UncachedDiskIOPS                             80000
+UncachedDiskBytesPerSecond                   1258291200
+EphemeralOSDiskSupported                     True
+AcceleratedNetworkingEnabled                 True
+RdmaEnabled                                  False
+MaxNetworkInterfaces                         8
+UltraSSDAvailable                            True
+```
 
 ## <a name="deploy-an-ultra-disk-using-azure-resource-manager"></a>使用 Azure 资源管理器部署超磁盘
 
@@ -109,7 +160,7 @@ $vmSize = "Standard_E64s_v3"
 
 ![超选项-是启用.png](media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png)
 
-- 选择“保存”。****
+- 选择“保存”。 
 - 选择 **"添加数据磁盘**"，然后在**名称**选择"**创建磁盘**"的下拉下列表中选择。
 
 ![创建和附加-新超磁盘.png](media/virtual-machines-disks-getting-started-ultra-ssd/create-and-attach-new-ultra-disk.png)
@@ -135,7 +186,7 @@ $vmSize = "Standard_E64s_v3"
 ![选择超磁盘到修改.png](media/virtual-machines-disks-getting-started-ultra-ssd/selecting-ultra-disk-to-modify.png)
 
 - 选择 **"配置**"，然后进行修改。
-- 选择“保存”。****
+- 选择“保存”。 
 
 ![配置超磁盘性能和大小.](media/virtual-machines-disks-getting-started-ultra-ssd/configuring-ultra-disk-performance-and-size.png)
 
@@ -149,6 +200,18 @@ $vmSize = "Standard_E64s_v3"
 
 ```azurecli-interactive
 az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --size Standard_D4s_v3 --location $location
+```
+
+### <a name="enable-ultra-disk-compatibility-on-an-existing-vm"></a>在现有 VM 上启用超磁盘兼容性
+
+如果您的 VM 满足[GA 范围和限制](#ga-scope-and-limitations)中概述的要求，并且位于[帐户的相应区域](#determine-vm-size-and-region-availability)中，则可以在 VM 上启用超磁盘兼容性。
+
+要启用超磁盘兼容性，必须停止 VM。 停止 VM 后，可以启用兼容性、附加超磁盘，然后重新启动 VM：
+
+```azurecli
+az vm deallocate -n $vmName -g $rgName
+az vm update -n $vmName -g $rgName --ultra-ssd-enabled true
+az vm start -n $vmName -g $rgName
 ```
 
 ### <a name="create-an-ultra-disk-using-cli"></a>使用 CLI 创建超磁盘
@@ -214,9 +277,22 @@ New-AzVm `
     -Name $vmName `
     -Location "eastus2" `
     -Image "Win2016Datacenter" `
-    -EnableUltraSSD `
+    -EnableUltraSSD $true `
     -size "Standard_D4s_v3" `
     -zone $zone
+```
+
+### <a name="enable-ultra-disk-compatibility-on-an-existing-vm"></a>在现有 VM 上启用超磁盘兼容性
+
+如果您的 VM 满足[GA 范围和限制](#ga-scope-and-limitations)中概述的要求，并且位于[帐户的相应区域](#determine-vm-size-and-region-availability)中，则可以在 VM 上启用超磁盘兼容性。
+
+要启用超磁盘兼容性，必须停止 VM。 停止 VM 后，可以启用兼容性、附加超磁盘，然后重新启动 VM：
+
+```azurepowershell
+#stop the VM
+$vm1 = Get-AzureRMVM -name $vmName -ResourceGroupName $rgName
+Update-AzureRmVM -ResourceGroupName $rgName -VM $vm1 -UltraSSDEnabled 1
+#start the VM
 ```
 
 ### <a name="create-an-ultra-disk-using-powershell"></a>使用 PowerShell 创建超磁盘
@@ -265,7 +341,3 @@ Ultra 磁盘具有独特的功能，允许您调整其性能，以下命令是�
 $diskupdateconfig = New-AzDiskUpdateConfig -DiskMBpsReadWrite 2000
 Update-AzDisk -ResourceGroupName $resourceGroup -DiskName $diskName -DiskUpdate $diskupdateconfig
 ```
-
-## <a name="next-steps"></a>后续步骤
-
-如果要尝试新的磁盘类型[请求访问使用此调查](https://aka.ms/UltraDiskSignup)。

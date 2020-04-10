@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: 查找有关 Azure 开发空间的一些常见问题的解答
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: e7b4620faa01aa9f6d46c34bafb1c623c338beb7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f3ac6ec3c3ddbe8ff508befba2eb4a8423e66f07
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240505"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998735"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>有关 Azure 开发空间的常见问题
 
@@ -81,6 +81,14 @@ ms.locfileid: "80240505"
 
 目前，Azure 开发人员空间不支持在启用 Azure 开发空间的 AKS 群集上使用[pod 托管标识][aks-pod-managed-id]。 如果安装了 pod 托管标识，并希望卸载它，则可以在[卸载说明][aks-pod-managed-id-uninstall]中找到更多详细信息。
 
+## <a name="can-i-use-azure-dev-spaces-with-multiple-microservices-in-an-application"></a>是否可以将 Azure 开发人员空间与应用程序中的多个微服务一起使用？
+
+可以，可以在具有多个微服务的应用程序中使用 Azure 开发人员空间，但必须在其根目录上准备和运行各个微服务。 Azure 开发空间 CLI、Azure 开发空间 VS 代码扩展和可视化工作室 Azure 开发工作负荷期望*azds.yaml*文件位于微服务的根目录，以便运行和调试。 有关单个应用程序中多个微服务的示例，请参阅[自行车共享示例应用程序][bike-sharing]。
+
+在可视化工作室代码中，可以在[单个工作区中打开单独的项目][vs-code-multi-root-workspaces]，并通过 Azure 开发空间单独调试这些项目。 每个项目都必须是自包含的，并为 Azure 开发空间做好准备。
+
+在可视化工作室中，可以配置 .NET 核心解决方案，以便通过 Azure 开发空间进行调试。
+
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled
 [aks-auth-range-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
@@ -89,6 +97,7 @@ ms.locfileid: "80240505"
 [aks-pod-managed-id]: ../aks/developer-best-practices-pod-security.md#use-pod-managed-identities
 [aks-pod-managed-id-uninstall]: https://github.com/Azure/aad-pod-identity#uninstall-notes
 [aks-restrict-egress-traffic]: ../aks/limit-egress-traffic.md
+[bike-sharing]: https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp
 [dev-spaces-prep]: how-dev-spaces-works-prep.md
 [dev-spaces-routing]: how-dev-spaces-works-routing.md#how-routing-works
 [ingress-nginx]: how-to/ingress-https-nginx.md#configure-a-custom-nginx-ingress-controller
@@ -97,4 +106,5 @@ ms.locfileid: "80240505"
 [ingress-https-traefik]: how-to/ingress-https-traefik.md#configure-the-traefik-ingress-controller-to-use-https
 [quickstart-cli]: quickstart-cli.md
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
+[vs-code-multi-root-workspaces]: https://code.visualstudio.com/docs/editor/multi-root-workspaces
 [windows-containers]: how-to/run-dev-spaces-windows-containers.md

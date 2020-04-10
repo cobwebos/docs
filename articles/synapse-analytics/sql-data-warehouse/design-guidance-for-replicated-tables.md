@@ -11,12 +11,12 @@ ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 128b4203d34b99df8363ef19783baa4a7b608aa5
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 654aeddbb305124ea00a883dbef9d8b5ad585a36
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631315"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990780"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-sql-analytics"></a>用于在 SQL 分析中使用复制表的设计指南
 
@@ -124,7 +124,7 @@ WHERE d.FiscalYear = 2004
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>修改复制表的性能注意事项
 
-SQL Analytics 通过维护表的主版本实现复制的表。 它将主版本复制到每个计算节点上的某个分发数据库。 当发生更改时，SQL Analytics 首先更新主表。 然后需要在每个计算节点上重新生成表。 重新生成复制表包括将表复制到每个计算节点，然后生成索引。  例如，DW400 上的复制表有 5 份数据副本。  每个计算节点上均存在主控副本和完整副本。  所有数据均存储在分发数据库中。 SQL Analytics 使用此模型支持更快的数据修改语句和灵活的缩放操作。
+SQL Analytics 通过维护表的主版本实现复制的表。 它将主版本复制到每个计算节点上的第一个分发数据库。 当发生更改时，SQL Analytics 首先更新主版本，然后重新生成每个计算节点上的表。 重新生成复制表包括将表复制到每个计算节点，然后生成索引。  例如，DW2000c 上的复制表具有 5 个数据副本。  每个计算节点上均存在主控副本和完整副本。  所有数据均存储在分发数据库中。 SQL Analytics 使用此模型支持更快的数据修改语句和灵活的缩放操作。
 
 执行以下操作后需要重新生成：
 

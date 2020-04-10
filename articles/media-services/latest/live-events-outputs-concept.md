@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/08/2020
 ms.author: juliako
-ms.openlocfilehash: 8a00f7c0ec76510cc521966acf98b7250e723697
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 8eca95f9fca47fca4d54bacbab35f3a0ffc3ba31
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985892"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010573"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>媒体服务中的实时事件和实时输出
 
@@ -111,7 +111,7 @@ ms.locfileid: "80985892"
 
 * 虚 URL
 
-    对于使用硬件广播编码器且不希望在启动实时事件时重新配置其编码器的大型媒体广播者来说，虚模式是首选。 他们需要不随时间而改变的预测性引入 URL。
+    对于使用硬件广播编码器且不希望在启动实时事件时重新配置其编码器的大型媒体广播者来说，虚模式是首选。 这些广播公司想要一个预测性引入 URL，不会随时间而变化。
     
     > [!NOTE]
     > 在 Azure 门户中，虚荣人 URL 名为"*持久输入 URL"。*

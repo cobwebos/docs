@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/02/2019
-ms.openlocfilehash: 65e51258b3a24b14b5171968645e88420e92dd5a
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.date: 04/09/2020
+ms.openlocfilehash: 44efd0d402d6cb9f1ee44c583c88140121ca3001
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421074"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011610"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP 表复制数据
 
@@ -72,7 +72,7 @@ ms.locfileid: "80421074"
 
 SAP BW Open Hub 链接服务支持以下属性：
 
-| properties | 说明 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | `type` | `type` 属性必须设置为 `SapTable`。 | 是 |
 | `server` | SAP 实例所在的服务器的名称。<br/>用于连接到 SAP 应用程序服务器。 | 否 |
@@ -82,7 +82,7 @@ SAP BW Open Hub 链接服务支持以下属性：
 | `systemId` | 表所在的 SAP 系统的 ID。<br/>用于连接到 SAP 消息服务器。 | 否 |
 | `logonGroup` | SAP 系统的登录组。<br/>用于连接到 SAP 消息服务器。 | 否 |
 | `clientId` | SAP 系统中客户端的 ID。<br/>允许值：表示为字符串的三位小数。 | 是 |
-| `language` | SAP 系统使用的语言。<br/>默认值为 `EN`。| 否 |
+| `language` | SAP 系统使用的语言。<br/>默认值是 `EN`。| 否 |
 | `userName` | 有权访问 SAP 服务器的用户名。 | 是 |
 | `password` | 用户的密码。 使用 `SecureString` 类型标记此字段可以安全地将其存储在数据工厂中，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | `sncMode` | 用于访问表所在的 SAP 服务器的 SNC 激活指示符。<br/>若要使用 SNC 连接到 SAP 服务器，可以使用此属性。<br/>允许的值为 `0`（关闭，默认值）或 `1`（打开）。 | 否 |
@@ -180,7 +180,7 @@ SAP BW Open Hub 链接服务支持以下属性：
 
 支持使用以下属性从/向 SAP BW Open Hub 链接服务复制数据。
 
-| properties | 说明 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | `type` | `type` 属性必须设置为 `SapTableResource`。 | 是 |
 | `tableName` | 要从中复制数据的 SAP 表的名称。 | 是 |
@@ -212,7 +212,7 @@ SAP BW Open Hub 链接服务支持以下属性：
 
 支持使用以下属性从 SAP 表复制数据：
 
-| properties                         | 说明                                                  | 必选 |
+| Property                         | 说明                                                  | 必选 |
 | :------------------------------- | :----------------------------------------------------------- | :------- |
 | `type`                             | `type` 属性必须设置为 `SapTableSource`。         | 是      |
 | `rowCount`                         | 要检索的行数。                              | 否       |
@@ -242,6 +242,7 @@ SAP BW Open Hub 链接服务支持以下属性：
 | `LE` | 小于或等于 |
 | `GT` | 大于 |
 | `GE` | 大于或等于 |
+| `IN` | 例如 `TABCLASS IN ('TRANSP', 'INTTAB')` |
 | `LIKE` | 例如 `LIKE 'Emma%'` |
 
 ### <a name="example"></a>示例

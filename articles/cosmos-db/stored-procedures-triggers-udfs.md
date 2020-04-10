@@ -1,18 +1,18 @@
 ---
 title: 在 Azure Cosmos DB 中使用存储过程、触发器和 UDF
 description: 本文介绍 Azure Cosmos DB 中存储过程、触发器和用户定义的函数的概念。
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.author: mjbrown
+ms.date: 04/09/2020
+ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 23a14e7590eca6f63c92acdf6336ffaef8b54381
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 13256377b8a8aaebf59196df57eef67d3b960cb8
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065898"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010539"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>存储过程、触发器和用户定义的函数
 
@@ -83,14 +83,14 @@ Azure Cosmos DB 提供可以通过对 Azure Cosmos 项执行操作来调用的�
 
 ### <a name="post-triggers"></a>后触发器
 
-与预触发器类似，触发器后也与 Azure Cosmos 项上的操作相关联，它们不需要任何输入参数。 它们在*操作*完成后运行，并有权访问发送到客户端的响应消息。 有关示例，请参阅[如何编写触发器](how-to-write-stored-procedures-triggers-udfs.md#triggers)一文。
+类似于前触发器，后触发器也与针对 Azure Cosmos 项执行的操作相关联，但它们不需要任何输入参数。 它们在*操作*完成后运行，并有权访问发送到客户端的响应消息。 有关示例，请参阅[如何编写触发器](how-to-write-stored-procedures-triggers-udfs.md#triggers)一文。
 
 > [!NOTE]
 > 注册的触发器不会在出现相应的操作（创建/删除/替换/更新）时自动运行。 必须在执行这些操作时显式调用它们。 若要了解详细信息，请参阅[如何运行触发器](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers)一文。
 
 ## <a name="user-defined-functions"></a><a id="udfs"></a>用户定义的函数
 
-使用用户定义的函数 (UDF) 可以轻松扩展 SQL API 查询语言语法和实现自定义业务逻辑。 只能在查询中调用 UDF。 UDF 对上下文对象没有访问权限，旨在用作仅限计算的 JavaScript。 因此，UDF 可以在次要副本上运行。 有关示例，请参阅[如何编写用户定义的函数](how-to-write-stored-procedures-triggers-udfs.md#udfs)一文。
+[用户定义的函数](sql-query-udfs.md)（UF） 用于扩展 SQL API 查询语言语法并轻松实现自定义业务逻辑。 只能在查询中调用 UDF。 UDF 对上下文对象没有访问权限，旨在用作仅限计算的 JavaScript。 因此，UDF 可以在次要副本上运行。 有关示例，请参阅[如何编写用户定义的函数](how-to-write-stored-procedures-triggers-udfs.md#udfs)一文。
 
 ## <a name="javascript-language-integrated-query-api"></a><a id="jsqueryapi"></a>JavaScript 语言集成式查询 API
 

@@ -1,22 +1,22 @@
 ---
-title: Azure Application Insights 代理 API 参考
+title: Azure 应用程序见解代理禁用检测引擎
 description: Application Insights 代理 API 参考。 Disable-InstrumentationEngine。 无需重新部署网站即可监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: dafa12db95a10df467bf0d042cfd9395720648b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c52d429b527c437db5bb8aaf7e3cc1f1c52af57
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671369"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998369"
 ---
 # <a name="application-insights-agent-api-disable-instrumentationengine"></a>应用程序见解代理 API：禁用检测引擎
 
 本文介绍属于 [Az.ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)的 cmdlet。
 
-## <a name="description"></a>描述
+## <a name="description"></a>说明
 通过删除一些注册表项来禁用检测引擎。
 重启 IIS 以使这些更改生效。
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 3e0dd6e0bb81aef340dc83288e6e5c0af0bf11c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ca913a4c197e04e20c962c4a4a7a1e479a3cdf92
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75867369"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990882"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 REST 终结点复制数据
 
@@ -56,11 +56,11 @@ ms.locfileid: "75867369"
 
 REST 链接服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **RestService******。 | 是 |
 | url | REST 服务的基 URL。 | 是 |
-| enableServerCertificateValidation | 连接到终结点时是否要验证服务器端 SSL 证书。 | 否<br /> （默认值为**true）** |
+| enableServerCertificateValidation | 在连接到终结点时是否验证服务器端 TLS/SSL 证书。 | 否<br /> （默认值为**true）** |
 | authenticationType | 用于连接到 REST 服务的身份验证类型。 允许的值为 **Anonymous**、**Basic**、**AadServicePrincipal** 和 **ManagedServiceIdentity**。 有关其他属性和示例，请参阅下面的相应部分。 | 是 |
 | connectVia | 用于连接到数据存储的 [ Integration Runtime](concepts-integration-runtime.md)。 从[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则此属性使用默认 Azure Integration Runtime。 |否 |
 
@@ -68,7 +68,7 @@ REST 链接服务支持以下属性：
 
 将 **authenticationType** 属性设置为 **Basic**。 除了前面部分所述的通用属性，还指定以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | userName | 用于访问 REST 终结点的用户名。 | 是 |
 | password | 用户（userName 值）的密码****。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中****。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 是 |
@@ -101,7 +101,7 @@ REST 链接服务支持以下属性：
 
 将 **authenticationType** 属性设置为 **AadServicePrincipal**。 除了前面部分所述的通用属性，还指定以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | servicePrincipalId | 指定 Azure Active Directory 应用程序的客户端 ID。 | 是 |
 | servicePrincipalKey | 指定 Azure Active Directory 应用程序的密钥。 将此字段标记为**SecureString，** 以将其安全地存储在数据工厂中，或[引用存储在 Azure 密钥保管库中的机密](store-credentials-in-key-vault.md)。 | 是 |
@@ -138,7 +138,7 @@ REST 链接服务支持以下属性：
 
 将 **authenticationType** 属性设置为 **ManagedServiceIdentity**。 除了前面部分所述的通用属性，还指定以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | aadResourceId | 指定请求授权的 AAD 资源，例如 `https://management.core.windows.net`。| 是 |
 
@@ -170,7 +170,7 @@ REST 链接服务支持以下属性：
 
 若要从 REST 复制数据，支持以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 **type** 属性必须设置为 **RestResource**。 | 是 |
 | relativeUrl | 包含数据的资源的相对 URL。 未指定此属性时，仅使用链接服务定义中指定的 URL。 HTTP 连接器从以下组合 URL 复制数据：`[URL specified in linked service]/[relative URL specified in dataset]`。 | 否 |
@@ -206,7 +206,7 @@ REST 链接服务支持以下属性：
 
 复制活动**源**部分支持以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **RestSource**。 | 是 |
 | requestMethod | HTTP 方法。 允许的值为 Get（默认值）和 Post********。 | 否 |
@@ -308,7 +308,7 @@ REST 链接服务支持以下属性：
 
 分页规则中**支持的键**：
 
-| 键 | 描述 |
+| 密钥 | 说明 |
 |:--- |:--- |
 | AbsoluteUrl | 指示用于发出下一个请求的 URL。 它可以是**绝对 URL 或相对 URL**。 |
 | QueryParameters.*request_query_parameter* 或 QueryParameters['request_query_parameter'] | “request_query_parameter”由用户定义，引用下一个 HTTP 请求 URL 中的一个查询参数名称。 |
@@ -316,7 +316,7 @@ REST 链接服务支持以下属性：
 
 分页规则中**支持的值**：
 
-| “值” | 描述 |
+| 值 | 描述 |
 |:--- |:--- |
 | Headers.*response_header* 或 Headers['response_header'] | “response_header”由用户定义，引用当前 HTTP 响应中的一个标头名称，其值用于发出下一个请求。 |
 | 以“$”（表示响应正文的根）开头的 JSONPath 表达式 | 响应正文应只包含一个 JSON 对象。 JSONPath 表达式应返回单个基元值，该值用于发出下一个请求。 |
@@ -406,18 +406,18 @@ Facebook 图形 API 返回采用以下结构的响应，在此情况下，下一
 
 5. 选择**Web**活动。 在 **"设置"中**，指定相应的**URL、****方法**、**标题**和**正文**，以便从要从中复制数据的服务的登录 API 中检索 OAuth 承载令牌。 模板中的占位符显示 Azure 活动目录 （AAD） OAuth 的示例。 注意 AAD 身份验证由 REST 连接器本机支持，这里只是 OAuth 流的示例。 
 
-    | properties | 描述 |
+    | Property | 说明 |
     |:--- |:--- |:--- |
     | 代码 |指定要从中检索 OAuth 承载令牌的 URL。 在样品中，它https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |. 
     | 方法 | HTTP 方法。 允许的值是 **"过帐"** 和"**获取**"。 | 
-    | 标头 | 标头是用户定义的，它引用 HTTP 请求中的一个标头名称。 | 
+    | 头文件 | 标头是用户定义的，它引用 HTTP 请求中的一个标头名称。 | 
     | Body | HTTP 请求的正文。 | 
 
     ![管道](media/solution-template-copy-from-rest-or-http-using-oauth/web-settings.png)
 
 6. 在 **"复制数据**活动"中，选择 *"源*"选项卡，您可以看到从上一步中检索的无记名令牌 （access_token） 将作为"其他标头下**的授权"** 传递给复制数据活动。 在启动管道运行之前，确认以下属性的设置。
 
-    | properties | 描述 |
+    | Property | 说明 |
     |:--- |:--- |:--- | 
     | 请求方法 | HTTP 方法。 允许的值为 Get（默认值）和 Post********。 | 
     | 其他标头 | 附加的 HTTP 请求标头。| 

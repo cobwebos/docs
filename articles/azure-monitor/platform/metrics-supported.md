@@ -7,19 +7,25 @@ ms.topic: reference
 ms.date: 04/06/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 846e8da889e3913c4a8eaab7808495bbd8afad29
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 80e38893d764f35511793d8b31f596dcbf16dd42
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754658"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991886"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor 支持的指标
 
 > [!NOTE]
 > 此列表大部分是从 Azure 监视器指标 REST API 自动生成的。 通过 Github 对此列表所做的任何修改都可以在没有警告的情况下写入。 有关如何进行永久更新的详细信息，请与本文的作者联系。
 
-Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指标图表、通过 REST API 访问指标，或者使用 PowerShell 或 CLI 查询指标。 下面是目前可在 Azure Monitor 的指标管道中使用的完整指标列表。 其他指标可在门户或旧版 API 中使用。 下面的此列表仅包含可以通过合并的 Azure Monitor 指标管道使用的指标。 指标按命名空间组织。 有关属于它们的服务和命名空间的列表，请参阅[Azure 服务的资源提供程序](../../azure-resource-manager/management/azure-services-resource-providers.md)。 要以编程方式查询和访问这些指标，请使用[2018-01-01 api 版本](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
+Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指标图表、通过 REST API 访问指标，或者使用 PowerShell 或 CLI 查询指标。 
+
+本文是 Azure 监视器的整合指标管道当前可用的所有平台（即自动收集）指标的完整列表。 该列表上次更新于 2020 年 3 月 27 日。 在此日期之后更改或添加的指标可能不会显示在下面。 要以编程方式查询和访问指标列表，请使用[2018-01-01 api 版本](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
+
+其他指标可在门户或旧版 API 中使用。 此处**未**列出在 Azure 虚拟机、服务交换矩阵和云服务中运行的来宾操作系统（来宾操作系统）的指标。 这些必须通过运行在操作系统或作为操作系统的一个或多个代理进行收集。 您可以使用当前处于公共预览的[自定义指标](metrics-custom-overview.md)API 将代理指标发送到平台指标数据库。 然后，您可以绘制图表、警报，并以其他方式使用来宾 os 指标（如平台指标）。 有关详细信息，请参阅[监视代理概述](agents-overview.md)。    
+
+指标按命名空间组织。 有关属于它们的服务和命名空间的列表，请参阅[Azure 服务的资源提供程序](../../azure-resource-manager/management/azure-services-resource-providers.md)。 
 
 > [!NOTE]
 > 当前不支持通过诊断设置发送多维指标。 多维指标将按平展后的单维指标导出，并跨维值聚合。
@@ -1408,12 +1414,12 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |排队运行|排队运行|Count|总计|为此工作区排队的运行数|Scenario,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
 |已启动的运行数|已启动的运行数|Count|总计|为此工作区启动的运行数|Scenario,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
 |开始运行|开始运行|Count|总计|为此工作区启动的运行数|Scenario,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
-|错误|错误|Count|总计|此工作区中的运行错误数|方案|
-|警告|警告|Count|总计|此工作区中的运行警告数|方案|
-|成功的模型注册数|成功的模型注册数|Count|总计|此工作区中成功的模型注册数|方案|
+|错误|错误|Count|总计|此工作区中的运行错误数|场景|
+|警告|警告|Count|总计|此工作区中的运行警告数|场景|
+|成功的模型注册数|成功的模型注册数|Count|总计|此工作区中成功的模型注册数|场景|
 |失败的模型注册数|失败的模型注册数|Count|总计|此工作区中失败的模型注册数|Scenario,StatusCode|
-|已启动的模型部署数|已启动的模型部署数|Count|总计|此工作区中已启动的模型部署数|方案|
-|成功的模型部署数|成功的模型部署数|Count|总计|此工作区中成功的模型部署数|方案|
+|已启动的模型部署数|已启动的模型部署数|Count|总计|此工作区中已启动的模型部署数|场景|
+|成功的模型部署数|成功的模型部署数|Count|总计|此工作区中成功的模型部署数|场景|
 |失败的模型部署数|失败的模型部署数|Count|总计|此工作区中失败的模型部署数|Scenario,StatusCode|
 |节点总数|节点总数|Count|平均值|节点总数。 此总数包括一些活动节点、空闲节点、不可用的节点、占用的节点和正在退出的节点|Scenario,ClusterName|
 |活动节点数|活动节点数|Count|平均值|活动节点数。 这些节点是正在运行作业的节点。|Scenario,ClusterName|

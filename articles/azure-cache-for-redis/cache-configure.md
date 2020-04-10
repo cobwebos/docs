@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: f10be8efcd2d8e838b4b5f62310eb405f6ed0158
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3f0de52782694e6cbc8fdb6b55d545191dbbb350
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278735"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010301"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>如何配置 Azure Redis 缓存
 本主题介绍可用于 Azure Redis 缓存实例的配置。 本主题还介绍了适用于 Azure Redis 缓存实例的默认 Redis 服务器配置。
@@ -39,13 +39,13 @@ ms.locfileid: "79278735"
     * [访问密钥](#access-keys)
     * [高级设置](#advanced-settings)
     * [Azure Redis 缓存顾问](#azure-cache-for-redis-advisor)
-    * [规模](#scale)
+    * [缩放](#scale)
     * [群集大小](#cluster-size)
     * [数据持久性](#redis-data-persistence)
     * [计划更新](#schedule-updates)
     * [异地复制](#geo-replication)
     * [虚拟网络](#virtual-network)
-    * [Firewall](#firewall)
+    * [防火墙](#firewall)
     * [属性](#properties)
     * [锁](#locks)
     * [自动化脚本](#automation-script)
@@ -91,13 +91,13 @@ ms.locfileid: "79278735"
 * [访问密钥](#access-keys)
 * [高级设置](#advanced-settings)
 * [Azure Redis 缓存顾问](#azure-cache-for-redis-advisor)
-* [规模](#scale)
+* [缩放](#scale)
 * [群集大小](#cluster-size)
 * [数据持久性](#redis-data-persistence)
 * [计划更新](#schedule-updates)
 * [异地复制](#geo-replication)
 * [虚拟网络](#virtual-network)
-* [Firewall](#firewall)
+* [防火墙](#firewall)
 * [属性](#properties)
 * [锁](#locks)
 * [自动化脚本](#automation-script)
@@ -117,10 +117,10 @@ ms.locfileid: "79278735"
 * [密钥空间通知（高级设置）](#keyspace-notifications-advanced-settings)
 
 #### <a name="access-ports"></a>访问端口
-默认情况下，为新缓存禁用非 SSL 访问。 要启用非 SSL 端口，请对“高级设置”**** 边栏选项卡中的“仅允许通过 SSL 访问”**** 单击“否”****，并单击“保存”****。
+默认情况下，新缓存将禁用非 TLS/SSL 访问。 要启用非 TLS 端口，请单击 **"仅通过"****高级设置**"边栏选项卡上的 SSL 允许访问的"**否**"，然后单击"**保存**"。
 
 > [!NOTE]
-> 对 Azure Cache for Redis 的 SSL 访问目前支持 TLS 1.0、1.1 和 1.2，但 1.0 和 1.1 版本即将停用。  有关更多详细信息，请阅读我们的[“删除 TLS 1.0 和 1.1”页](cache-remove-tls-10-11.md)。
+> TLS 对 Redis Azure 缓存的访问支持 TLS 1.0、1.1 和 1.2，但版本 1.0 和 1.1 即将停用。  有关更多详细信息，请阅读我们的[“删除 TLS 1.0 和 1.1”页](cache-remove-tls-10-11.md)。
 
 ![Azure Redis 缓存访问端口](./media/cache-configure/redis-cache-access-ports.png)
 
@@ -386,7 +386,7 @@ Redis 密钥空间通知是在“高级设置”**** 边栏选项卡上配置的
 >
 >
 
-| 设置 | 默认值 | 描述 |
+| 设置 | 默认值 | 说明 |
 | --- | --- | --- |
 | `databases` |16 |默认的数据库数为 16，但可以根据定价层配置不同数目。<sup>1</sup> 默认数据库是 DB 0，可以基于每个连接使用 `connection.GetDatabase(dbid)`（其中 `dbid` 是介于 `0` 和 `databases - 1` 之间的数字）选择其他数据库。 |
 | `maxclients` |取决于定价层<sup>2</sup> |该值是同一时间内允许的最大已连接客户端数。 一旦达到该限制，Redis 会在关闭所有新连接的同时返回“达到客户端最大数量”的错误。 |
@@ -455,7 +455,7 @@ Redis 密钥空间通知是在“高级设置”**** 边栏选项卡上配置的
 > * DEBUG
 > * 迁移
 > * SAVE
-> * 关机
+> * SHUTDOWN
 > * SLAVEOF
 > * CLUSTER - 群集写命令已禁用，但允许使用只读群集命令。
 >

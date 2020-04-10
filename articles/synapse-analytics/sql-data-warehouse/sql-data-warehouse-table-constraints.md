@@ -11,12 +11,12 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 881e4f0110e3c0f35301e2ae6be40f2510f42539
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: f97163d02836442430037e18439bcf0724046332
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583499"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990763"
 ---
 # <a name="primary-key-foreign-key-and-unique-key-in-synapse-sql-pool"></a>Synapse SQL 池中的主键、外键和唯一键
 
@@ -28,7 +28,10 @@ ms.locfileid: "80583499"
 - 仅当同时使用 NONCLUSTERED 和 NOT ENFORCED 时才支持 PRIMARY KEY。    
 - 仅在使用 NOT ENFORCED 时才支持 UNIQUE 约束。
 
+有关语法，请检查["更改表"](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql)和["创建表](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)"。 
+
 Synapse SQL 池中不支持外键约束。  
+
 
 ## <a name="remarks"></a>备注
 

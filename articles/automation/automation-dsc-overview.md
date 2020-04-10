@@ -1,6 +1,6 @@
 ---
-title: Azure Automation State Configuration 概述
-description: 对 Azure Automation State Configuration (DSC) 及其术语和已知问题的概述
+title: 状态配置概述
+description: Azure 自动化状态配置 （DSC）、其术语和已知问题的概述
 keywords: powershell dsc, 所需状态配置, powershell dsc azure
 services: automation
 ms.service: automation
@@ -10,14 +10,14 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 46cf0d6a12ffbc836db7bd79c0f2738a94e23085
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02e540c9ac2654be97ff247749d1ed18573cfc24
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283185"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010250"
 ---
-# <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration 概述
+# <a name="state-configuration-overview"></a>状态配置概述
 
 Azure 自动化状态配置是一种 Azure 服务，允许您编写、管理和编译 PowerShell 所需的状态配置 （DSC）[配置](/powershell/scripting/dsc/configurations/configurations)。 该服务还导入[DSC 资源](/powershell/scripting/dsc/resources/resources)，并将配置分配给目标节点，所有这些节点都在云中。
 
@@ -93,7 +93,7 @@ Windows 版本 1809 及更高版本中提供了适用于 DSC 代理的代理支�
 
 如果为特定的区域定义了自动化帐户，则可以限制与该区域数据中心之间的通信。 下表提供了每个区域的 DNS 记录：
 
-| **地区** | **DNS 记录** |
+| **区域** | **DNS 记录** |
 | --- | --- |
 | 美国中西部 | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
 | 美国中南部 |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
