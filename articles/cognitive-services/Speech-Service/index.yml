@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: dapine
-  ms.openlocfilehash: 0f0b9aa0109b7e63bffcbd330dbef3276821698e
-  ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+  ms.openlocfilehash: 43bd0afd1f3d40c144003b2c2cadfdcb885989a9
+  ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/06/2020
-  ms.locfileid: "80743924"
+  ms.lasthandoff: 04/09/2020
+  ms.locfileid: "80991307"
 highlightedContent:
   items:
   - title: 什么是语音服务？
@@ -52,14 +52,14 @@ conceptualContent:
   - title: 文本转语音
     links:
     - itemType: quickstart
+      text: 语音合成基础知识
+      url: text-to-speech-basics.md
+    - itemType: quickstart
       text: 将语音合成到扬声器
       url: quickstarts/text-to-speech.md
     - itemType: quickstart
       text: 将语音合成到音频文件
       url: quickstarts/text-to-speech-audio-file.md
-    - itemType: quickstart
-      text: 为应用自定义语音合成
-      url: how-to-custom-voice.md
     footerLink:
       text: 查看详细信息
       url: index-text-to-speech.yml
