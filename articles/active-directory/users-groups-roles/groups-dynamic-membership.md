@@ -1,5 +1,5 @@
 ---
-title: 动态组成员身份规则 - Azure AD |微软文档
+title: 动态填充的组成员身份的规则 - Azure AD |微软文档
 description: 如何创建成员资格规则以自动填充组和规则引用。
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da983f87977de922ec547c3ade2972dfb4d69363
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6f8237ac13744e56baa8551f8cced12b2785a48
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79253073"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114737"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中的动态组成员资格规则
 
@@ -68,9 +68,9 @@ user.department -eq "Sales"
 
 使用用户或设备自动填充组的成员资格规则是一个二进制表达式，会生成 true 或 false 结果。 一个简单的规则包含三个部分：
 
-- properties
-- 运算符
-- “值”
+- Property
+- 操作员
+- 值
 
 表达式中各部分的顺序对于避免语法错误至关重要。
 
@@ -79,7 +79,7 @@ user.department -eq "Sales"
 有三种类型的属性可用于构建成员资格规则。
 
 - Boolean
-- String
+- 字符串
 - 字符串集合
 
 以下是可用于创建单个表达式的用户属性。
@@ -135,7 +135,7 @@ user.department -eq "Sales"
 
 下表列出了单个表达式支持的所有运算符及其语法。 运算符可以带或不带连字符 (-) 前缀。
 
-| 运算符 | 语法 |
+| 操作员 | 语法 |
 | --- | --- |
 | 不等于 |-ne |
 | 等于 |-eq |
@@ -326,7 +326,7 @@ user.objectId -ne null
 如果希望组排除来宾用户，并且仅包括租户的成员，则可以使用以下语法：
 
 ```
-(user.objectId -ne null) -and (user.userType -eq “Member”)
+(user.objectId -ne null) -and (user.userType -eq "Member")
 ```
 
 ### <a name="create-an-all-devices-rule"></a>创建“所有设备”规则

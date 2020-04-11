@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/16/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 765decb8c65254d63ef5267cbc496d2320f58f6e
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: c6455930f88d02e11cb0c45d29594ae40eaad9e3
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991920"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113290"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 文件同步代理发行说明
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Windows Server 安装可转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上提供的任意协议（包括 SMB、NFS 和 FTPS）以本地方式访问数据， 并且可以根据需要在世界各地设置多个缓存。
@@ -25,7 +25,7 @@ ms.locfileid: "80991920"
 
 | 里程碑 | 代理版本号 | 发布日期 | 状态 |
 |----|----------------------|--------------|------------------|
-| V10 版本 - [KB4522359](https://support.microsoft.com/en-us/help/4522409/azure-file-sync-agent-v10-release-march-2020)| 10.0.0.0 | 2020年4月9日 | 支持 |
+| V10 版本 - [KB4522359](https://support.microsoft.com/en-us/help/4522409/azure-file-sync-agent-v10-release-march-2020)| 10.0.0.0 | 2020年4月9日 | 飞行中 |
 | 2019 年 12 月更新汇总 - [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 2019 年 12 月 12 日 | 支持 |
 | V9 版本 - [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2019 年 12 月 2 日 | 支持 |
 | V8 版本 - [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 2019 年 10 月 8 日 | 支持 |
@@ -68,7 +68,6 @@ ms.locfileid: "80991920"
  
 - 各种性能和可靠性改进
     - 如果在存储帐户上配置了虚拟网络 （VNET） 和防火墙规则，则 Azure 文件共享上的更改检测可能会失败。
-    - 不再对同步可自由访问控制列表 （DACL） 的 2KB 安全描述符限制。  
     - 减少与召回相关的内存消耗。 
     - 使用[调用-Azstorage 同步更改检测](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection)cmdlet 时提高了性能。
     - 其他杂项可靠性改进。 

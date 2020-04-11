@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 03/12/2020
+ms.date: 04/09/2020
 ms.author: kgremban
-ms.openlocfilehash: 80ce962ac6977fcce2455c8e2ef29af448a44075
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61b382f1c286209a12d0be39a81e6817806d3251
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80133145"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113462"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>在 Windows 上安装 Azure IoT Edge 运行时
 
@@ -80,7 +80,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 
    * [Azure 门户](how-to-register-device.md#register-in-the-azure-portal)
    * [Azure CLI](how-to-register-device.md#register-with-the-azure-cli)
-   * [视觉工作室代码](how-to-register-device.md#register-with-visual-studio-code)
+   * [Visual Studio Code](how-to-register-device.md#register-with-visual-studio-code)
 
 2. 以管理员身份运行 PowerShell。
 
@@ -139,33 +139,45 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 
 ## <a name="offline-or-specific-version-installation"></a>脱机或特定版本安装
 
-在安装过程中，将下载两个文件：
+在安装过程中下载三个文件：
 
-* Microsoft Azure IoT Edge cab，其中包含 IoT Edge 安全守护程序 (iotedged)、Moby 容器引擎和 Moby CLI。
-* 可视C++可再发行包 （VC 运行时） MSI
+* 包含安装说明的 PowerShell 脚本
+* Microsoft Azure IoT 边缘驾驶室，其中包含 IoT 边缘安全守护程序（ioedge）、Moby 容器引擎和 Moby CLI
+* 可视C++可再分发包 （VC 运行时） 安装程序
 
-如果设备在安装期间处于脱机状态，或者要安装特定版本的 IoT Edge，则可以提前将其中一个或两个文件下载到设备。 安装时，将安装脚本指向包含下载文件的目录。 安装程序首先检查该目录，然后仅下载未找到的组件。 如果所有文件都可脱机使用，则无需连接到 Internet 连接即可安装。
+如果设备在安装期间处于脱机状态，或者要安装特定版本的 IoT Edge，则可以提前将这些文件下载到设备。 安装时，将安装脚本指向包含下载文件的目录。 安装程序首先检查该目录，然后仅下载未找到的组件。 如果所有文件都可脱机使用，则无需连接到 Internet 连接即可安装。
 
-有关最新的 IoT Edge 安装文件以及旧版本，请参阅 [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)。
+您还可以使用脱机安装路径参数来更新 IoT Edge。 有关详细信息，请参阅[更新 IoT Edge 安全守护程序和运行时](how-to-update-iot-edge.md)。
 
-若要使用脱机组件进行安装，请使用 `-OfflineInstallationPath` 参数作为 Deploy-IoTEdge 命令的一部分，并提供文件目录的绝对路径。 例如，
+1. 有关最新的 IoT Edge 安装文件以及旧版本，请参阅 [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)。
 
-```powershell
-. {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-Deploy-IoTEdge -OfflineInstallationPath C:\Downloads\iotedgeoffline
-```
+2. 查找要安装的版本，并从发行说明的 **"资产**"部分下载以下文件到 IoT 设备：
 
->[!NOTE]
->该`-OfflineInstallationPath`参数在提供的目录中查找名为**Microsoft-Azure-IoTEdge.cab**的文件。 从 IoT Edge 版本 1.0.9-rc4 开始，有两个 .cab 文件可供使用，一个用于 AMD64 设备，一个用于 ARM32。 下载设备的正确文件，然后重命名该文件以删除体系结构后缀。
+   * 物联网安全守护程序.ps1
+   * 来自版本 1.0.9 或较新的 Microsoft-Azure-IoTEdge-amd64.cab，或版本 1.0.8 及更高版本的 Microsoft-Azure-IoTEdge.cab。
 
-该`Deploy-IoTEdge`命令安装 IoT Edge 组件，然后需要继续执行`Initialize-IoTEdge`命令以为其 IoT 中心设备 ID 和连接预配设备。 直接运行该命令并提供来自 IoT 中心的连接字符串，或者使用上一节中的链接之一了解如何使用设备预配服务自动预配设备。
+   Microsoft-Azure-IotEdge-arm32.cab 也从 1.0.9 开始提供，仅用于测试目的。 Windows ARM32 设备上当前不支持 IoT 边缘。
 
-```powershell
-. {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-Initialize-IoTEdge
-```
+   使用与使用的 .cab 文件相同的版本中的 PowerShell 脚本非常重要，因为功能会更改以支持每个版本中的功能。
 
-您还可以使用脱机安装路径参数与更新 IoTEdge 命令一起。
+3. 如果下载的 .cab 文件上具有体系结构后缀，请将该文件重命名为仅**Microsoft-Azure-IoTEdge.cab**。
+
+4. 或者，下载适用于 Visual C++可再分发的安装程序。 例如，PowerShell 脚本使用此版本[：vc_redist.x64.exe](https://download.microsoft.com/download/0/6/4/064F84EA-D1DB-4EAA-9A5C-CC2F0FF6A638/vc_redist.x64.exe)。 将安装程序与 IoT 边缘文件保存在 IoT 设备上的同一文件夹中。
+
+5. 要使用脱机组件进行安装，[请点点源](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing)PowerShell 脚本的本地副本。 然后，`-OfflineInstallationPath`将 参数用作命令的一`Deploy-IoTEdge`部分，并提供文件目录的绝对路径。 例如，
+
+   ```powershell
+   . <path>\IoTEdgeSecurityDaemon.ps1
+   Deploy-IoTEdge -OfflineInstallationPath <path>
+   ```
+
+   部署命令将使用提供的本地文件目录中找到的任何组件。 如果缺少 .cab 文件或 Visual C++安装程序，它将尝试下载它们。
+
+6. 运行该`Initialize-IoTEdge`命令以在 IoT 中心中预配设备标识。 提供用于手动预配的设备连接字符串，或者选择上一个[自动预配](#option-2-install-and-automatically-provision)部分中描述的方法之一。
+
+   如果设备在运行`Deploy-IoTEdge`后重新启动，则在运行`Initialize-IoTEdge`之前再次点点源 PowerShell 脚本。
+
+有关脱机安装选项的详细信息，请跳过以了解[所有安装参数](#all-installation-parameters)。
 
 ## <a name="verify-successful-installation"></a>验证是否成功安装
 
@@ -258,7 +270,7 @@ Deploy-IoTEdge 命令下载并部署 IoT Edge 安全守护程序及其依赖项�
 | **代理** | 代理 URL | 如果设备需要通过代理服务器来连接 Internet，请包含此参数。 有关详细信息，请参阅[将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)。 |
 | **OfflineInstallationPath** | 目录路径 | 如果包含此参数，则安装程序将在列出的目录中检查安装时所需的 IoT Edge cab 和 VC 运行时 MSI 文件。 系统会下载该目录中不存在的任何文件。 如果这两个文件在该目录中存在，则无需建立 Internet 连接即可安装 IoT Edge。 还可以通过此参数来使用特定的版本。 |
 | **InvokeWebRequestParameters** | 参数和值的哈希表 | 在安装期间，会发出多个 Web 请求。 请使用此字段来设置这些 Web 请求的参数。 此参数可用于配置代理服务器的凭据。 有关详细信息，请参阅[将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)。 |
-| **RestartIfNeeded** | none | 此标志可让部署脚本在无提示的情况下根据需要重启计算机。 |
+| **RestartIfNeeded** | 无 | 此标志可让部署脚本在无提示的情况下根据需要重启计算机。 |
 
 ### <a name="initialize-iotedge"></a>Initialize-IoTEdge
 
@@ -288,14 +300,14 @@ Initialize-IoTEdge 命令使用设备连接字符串和操作详细信息配置 
 | **代理** | 代理 URL | 如果设备需要通过代理服务器来连接 Internet，请包含此参数。 有关详细信息，请参阅[将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)。 |
 | **InvokeWebRequestParameters** | 参数和值的哈希表 | 在安装期间，会发出多个 Web 请求。 请使用此字段来设置这些 Web 请求的参数。 此参数可用于配置代理服务器的凭据。 有关详细信息，请参阅[将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)。 |
 | **OfflineInstallationPath** | 目录路径 | 如果包含此参数，则安装程序将在列出的目录中检查安装时所需的 IoT Edge cab 和 VC 运行时 MSI 文件。 系统会下载该目录中不存在的任何文件。 如果这两个文件在该目录中存在，则无需建立 Internet 连接即可安装 IoT Edge。 还可以通过此参数来使用特定的版本。 |
-| **RestartIfNeeded** | none | 此标志可让部署脚本在无提示的情况下根据需要重启计算机。 |
+| **RestartIfNeeded** | 无 | 此标志可让部署脚本在无提示的情况下根据需要重启计算机。 |
 
 ### <a name="uninstall-iotedge"></a>Uninstall-IoTEdge
 
 | 参数 | 接受的值 | 注释 |
 | --------- | --------------- | -------- |
-| **力** | none | 在上次尝试卸载失败时，此标志会强制卸载。
-| **RestartIfNeeded** | none | 此标志可让卸载脚本在无提示的情况下根据需要重启计算机。 |
+| **力** | 无 | 在上次尝试卸载失败时，此标志会强制卸载。
+| **RestartIfNeeded** | 无 | 此标志可让卸载脚本在无提示的情况下根据需要重启计算机。 |
 
 ## <a name="next-steps"></a>后续步骤
 

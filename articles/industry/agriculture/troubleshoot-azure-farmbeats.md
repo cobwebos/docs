@@ -5,19 +5,19 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 74522502f5405b56a3a604f20a695de83ef3c3a5
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: a40c64910260a2d63a529d25e1089fb618fcec1b
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886477"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113492"
 ---
 # <a name="troubleshoot"></a>疑难解答
 
 本文提供了常见 Azure 农场节拍问题的解决方案。 如需其他帮助，请联系我们[的支持论坛](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats)或发送电子邮件至farmbeatssupport@microsoft.com。
 
 > [!NOTE]
-  > 如果您在 4 月安装了 FarmBeats，并且作业因空错误消息而失败，则由于所有资源都用于紧急、医疗和其他关键需求，您的安装可能尚未分配任何批处理配额。 您需要请求将 VM 分配给批处理帐户。
+  > 如果您在 4 月安装了 FarmBeats，并且作业因出现空错误消息而失败，则您的安装可能尚未分配任何批处理配额，以优先支持关键健康和安全组织。 有关详细信息，请参阅[此处](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/)。 您需要请求将 VM 分配给 Batch 帐户才能成功运行作业。
 
 ## <a name="install-issues"></a>安装问题
 
@@ -45,7 +45,9 @@ ms.locfileid: "80886477"
 - 按照以下步骤附加部署失败的日志文件：
 
     1. 导航到 Azure 门户中的**资源组**。
+
     2. 在左侧的 **"设置"** 部分下选择 **"部署**"。
+
     3. 对于显示 **"失败"** 的每个部署，请选择"通过详细信息"并下载部署详细信息。 将此文件附加到邮件。
 
 ## <a name="sensor-telemetry"></a>传感器遥测

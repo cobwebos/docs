@@ -10,21 +10,18 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 02/28/2020
-ms.openlocfilehash: c8864e00be9f491d87478c253286070b9334a26e
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 095561f02fdeff6688b78d69cc1becc4ee0f8901
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80383185"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115212"
 ---
 # <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？
 
 自动化机器学习也称为自动化 ML，是将机器学习模型开发过程中耗时的反复性任务自动化的过程。 数据科学家、分析师和开发人员可以使用它来生成高度可缩放、高效且高产能的 ML 模型，同时保证模型的质量。 自动化 ML 基于 [Microsoft Research 部门](https://arxiv.org/abs/1705.05355)的突破性技术。
 
 传统的机器学习模型开发是资源密集型的，需要具备丰富的领域知识，并需要花费大量的时间来生成和比较数十个模型。 使用自动化机器学习可以缩减生成生产就绪型 ML 模型所需的时间，同时使工作变得更轻松、更高效。
-
- 
-
 
 ## <a name="when-to-use-automated-ml"></a>何时使用自动化 ML
 
@@ -87,7 +84,7 @@ ms.locfileid: "80383185"
 
 在每个自动化机器学习试验中，数据将自动缩放或规范化，以帮助确保算法的良好性能。  在模型训练过程中，将对每个模型应用以下缩放或规范化技术之一。
 
-|缩放和规范化| 描述 |
+|缩放和规范化| 说明 |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | 通过删除平均值并缩放到单位差异来标准化特征  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | 通过缩放每个要素，按该列的最小和最大值来转换要素  |
@@ -139,9 +136,13 @@ ms.locfileid: "80383185"
 
 请参阅[操作指南](how-to-configure-auto-train.md#ensemble)来了解如何在自动化机器学习中更改默认系综设置。
 
-## <a name="use-with-onnx-in-c-apps"></a>与 C# 应用中的 ONNX 配合使用
+## <a name="use-with-onnx"></a>与 ONNX 一起使用
 
-借助 Azure 机器学习，可以使用自动化 ML 来生成 Python 模型并将其转换为 ONNX 格式。 ONNX 运行时支持 C#，因此，可以在 C# 应用中使用自动生成的模型，而无需重新编写代码，同时可避免 REST 终结点造成的任何网络延迟。 在[此 Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) 中查看此流的示例。
+借助 Azure 机器学习，可以使用自动化 ML 来生成 Python 模型并将其转换为 ONNX 格式。 模型采用 ONNX 格式后，可在各种平台和设备上运行。 了解有关使用[ONNX 加速 ML 模型](concept-onnx.md)的更多信息。
+
+了解如何转换到ONNX格式[在这个Jupyter笔记本示例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)。 了解[ONNX 中支持哪些算法](how-to-configure-auto-train.md#select-your-experiment-type)。
+
+ONNX 运行时还支持 C#，因此您可以使用在 C# 应用中自动构建的模型，而无需重新编码或 REST 终结点引入的任何网络延迟。 了解有关使用[ONNX 运行时 C# API 推断 ONNX 模型](https://github.com/Microsoft/onnxruntime/blob/master/docs/CSharp_API.md)的更多信息。 
 
 ## <a name="automated-ml-in-azure-machine-learning"></a>Azure 机器学习中的自动 ML
 
@@ -151,7 +152,7 @@ Azure 机器学习提供了两种使用自动 ML 的体验
 
 * 对于有限/无代码体验客户，Azure 机器学习工作室[https://ml.azure.com](https://ml.azure.com/)  
 
-下面总结了每种经验中支持的高级别自动 ML 功能。
+下面总结了每个体验中支持的高级自动 ML 功能。
 
 <a name="parity"></a>
 

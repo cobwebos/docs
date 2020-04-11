@@ -9,12 +9,12 @@ ms.date: 01/21/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 77ad8579f31ce900a67e2ba3ddc53a5b034b6d42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7120ba2cf71c9af5373b830d04d0b67952922887
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79454663"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113505"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
@@ -252,7 +252,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
    > IP 网络规则对源自与存储帐户相同的 Azure 区域的请求不起作用。 请使用[虚拟网络规则](#grant-access-from-a-virtual-network)来允许相同区域的请求。
 
   > [!NOTE]
-  > 在存储帐户所在的同一区域中部署的服务将使用专用 Azure IP 地址进行通信。 因此，无法根据特定 Azure 服务的公共入站 IP 地址范围来限制这些服务的访问。
+  > 在存储帐户所在的同一区域中部署的服务将使用专用 Azure IP 地址进行通信。 因此，不能基于特定 Azure 服务的公共出站 IP 地址范围限制对特定 Azure 服务的访问。
 
 仅支持使用 IPV4 地址配置存储防火墙规则。
 
@@ -356,7 +356,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 > [!IMPORTANT]
 > 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则网络规则不会有任何效果****。
 
-## <a name="exceptions"></a>异常
+## <a name="exceptions"></a>例外
 
 在大多数情况下，网络规则有助于为应用程序与数据之间的连接创建安全环境。 不过，某些应用程序依赖于无法通过虚拟网络或 IP 地址规则单独隔离的 Azure 服务。 但是，必须授予此类服务访问存储的权限，才能完全实现应用程序的功能。 在这种情况下，可以使用“允许受信任的 Microsoft 服务...”设置来允许此类服务访问数据、日志或分析。******
 
@@ -372,30 +372,30 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 | 服务                  | 资源提供程序名称     | 允许的操作                 |
 |:------------------------ |:-------------------------- |:---------------------------------- |
-| Azure 备份             | Microsoft.RecoveryServices | 在 IAAS 虚拟机中运行非托管磁盘的备份和还原。 （不是托管磁盘的必需操作）。 [了解详情](/azure/backup/backup-introduction-to-azure-backup)。 |
-| Azure Data Box           | Microsoft.DataBox          | 使用数据框将数据导入 Azure。 [了解详情](/azure/databox/data-box-overview)。 |
-| Azure 开发测试实验室       | Microsoft.DevTestLab       | 自定义映像创建和项目安装。 [了解详情](/azure/devtest-lab/devtest-lab-overview)。 |
+| Azure 备份             | Microsoft.RecoveryServices | 在 IAAS 虚拟机中运行非托管磁盘的备份和还原。 （不是托管磁盘的必需操作）。 [了解详细信息](/azure/backup/backup-introduction-to-azure-backup)。 |
+| Azure Data Box           | Microsoft.DataBox          | 使用数据框将数据导入 Azure。 [了解详细信息](/azure/databox/data-box-overview)。 |
+| Azure 开发测试实验室       | Microsoft.DevTestLab       | 自定义映像创建和项目安装。 [了解详细信息](/azure/devtest-lab/devtest-lab-overview)。 |
 | Azure 事件网格         | Microsoft.EventGrid        | 启用 Blob 存储事件发布并允许事件网格发布到存储队列。 了解有关 [blob 存储事件](/azure/event-grid/event-sources)和[发布到队列](/azure/event-grid/event-handlers)的信息。 |
 | Azure 事件中心         | Microsoft.EventHub         | 使用事件中心捕获功能存档数据。 [了解更多](/azure/event-hubs/event-hubs-capture-overview)。 |
-| Azure 文件同步          | Microsoft.StorageSync      | 使您能够将上置文件服务器转换为 Azure 文件共享的缓存。 允许多站点同步、快速灾难恢复和云端备份。 [了解详细信息](../files/storage-sync-files-planning.md) |
-| Azure HDInsight          | Microsoft.HDInsight        | 为新的 HDInsight 群集预配默认文件系统的初始内容。 [了解详情](/azure/hdinsight/hdinsight-hadoop-use-blob-storage)。 |
-| Azure 导入导出      | Microsoft.ImportExport     | 允许使用导入/导出服务将数据导入 Azure 以及从 Azure 导出数据。 [了解详情](/azure/storage/common/storage-import-export-service)。  |
-| Azure Monitor            | Microsoft.Insights         | 允许将监视数据写入安全存储帐户，包括资源诊断日志、Azure Active Directory 登录和审核日志，以及 Microsoft Intune 日志。 [了解详情](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。 |
-| Azure 网络         | Microsoft.Network          | 存储和分析网络流量日志。 [了解详情](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)。 |
-| Azure Site Recovery      | Microsoft.SiteRecovery     | 使用启用了防火墙的缓存、源或目标存储帐户时，请启用复制，以实现 Azure IaaS 虚拟机的灾难恢复。  [了解详情](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。 |
+| Azure 文件同步          | Microsoft.StorageSync      | 使您能够将上置文件服务器转换为 Azure 文件共享的缓存。 允许多站点同步、快速灾难恢复和云端备份。 [了解更多信息](../files/storage-sync-files-planning.md) |
+| Azure HDInsight          | Microsoft.HDInsight        | 为新的 HDInsight 群集预配默认文件系统的初始内容。 [了解详细信息](/azure/hdinsight/hdinsight-hadoop-use-blob-storage)。 |
+| Azure 导入导出      | Microsoft.ImportExport     | 允许使用导入/导出服务将数据导入 Azure 以及从 Azure 导出数据。 [了解详细信息](/azure/storage/common/storage-import-export-service)。  |
+| Azure Monitor            | Microsoft.Insights         | 允许将监视数据写入安全存储帐户，包括资源诊断日志、Azure Active Directory 登录和审核日志，以及 Microsoft Intune 日志。 [了解详细信息](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。 |
+| Azure 网络         | Microsoft.Network          | 存储和分析网络流量日志。 [了解详细信息](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)。 |
+| Azure Site Recovery      | Microsoft.SiteRecovery     | 使用启用了防火墙的缓存、源或目标存储帐户时，请启用复制，以实现 Azure IaaS 虚拟机的灾难恢复。  [了解详细信息](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。 |
 
 如果已显式[将 RBAC 角色分配](storage-auth-aad.md#assign-rbac-roles-for-access-rights)到以下服务的特定实例的[系统分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)，则“允许受信任的 Microsoft 服务...”设置也允许该资源实例访问存储帐户。**** 在这种情况下，该实例的访问权限范围对应于分配到托管标识的 RBAC 角色。
 
-| 服务                        | 资源提供程序名称                 | 目的            |
+| 服务                        | 资源提供程序名称                 | 目标            |
 | :----------------------------- | :------------------------------------- | :----------------- |
 | Azure 认知搜索         | Microsoft.Search/searchServices        | 使认知搜索服务能够访问存储帐户以进行索引、处理和查询。 |
 | Azure 容器注册表任务 | Microsoft.ContainerRegistry/registries | ACR 任务可以在构建容器映像时访问存储帐户。 |
 | Azure 数据工厂             | Microsoft.DataFactory/factories        | 用于通过 ADF 运行时访问存储帐户。 |
 | Azure Data Share               | Microsoft.DataShare/accounts           | 允许通过数据共享访问存储帐户。 |
-| Azure 逻辑应用               | Microsoft.Logic/workflows              | 使逻辑应用能够访问存储帐户。 [了解详情](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity)。 |
-| Azure 机器学习服务 | Microsoft.MachineLearningServices      | 授权的 Azure 机器学习工作区将实验输出、模型和日志写入 Blob 存储并读取数据。 [了解详情](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace)。 | 
-| Azure SQL 数据仓库       | Microsoft.Sql                          | 用于通过 PolyBase 从特定 SQL 数据库实例导入和导出数据。 [了解详情](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
-| Azure 流分析         | Microsoft.StreamAnalytics             | 用于将流式处理作业中的数据写入 Blob 存储。 此功能目前处于预览状态。 [了解详情](/azure/stream-analytics/blob-output-managed-identity)。 |
+| Azure 逻辑应用               | Microsoft.Logic/workflows              | 使逻辑应用能够访问存储帐户。 [了解详细信息](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity)。 |
+| Azure 机器学习服务 | Microsoft.MachineLearningServices      | 授权的 Azure 机器学习工作区将实验输出、模型和日志写入 Blob 存储并读取数据。 [了解详细信息](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace)。 | 
+| Azure SQL 数据仓库       | Microsoft.Sql                          | 用于通过 PolyBase 从特定 SQL 数据库实例导入和导出数据。 [了解详细信息](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
+| Azure 流分析         | Microsoft.StreamAnalytics             | 用于将流式处理作业中的数据写入 Blob 存储。 此功能目前处于预览状态。 [了解详细信息](/azure/stream-analytics/blob-output-managed-identity)。 |
 | Azure Synapse Analytics        | Microsoft.Synapse/workspaces          | 允许从 Synapse Analytics 访问 Azure 存储中的数据。 |
 
 

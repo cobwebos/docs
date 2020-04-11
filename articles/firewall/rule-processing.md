@@ -5,28 +5,30 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 03/10/2020
+ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: d3f8e52b4582c9467ae3ec61ee984771b801fe4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93677b3e473ab825665fed5590ac345a8cfcc300
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264773"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113433"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Azure 防火墙规则处理逻辑
-您可以在 Azure 防火墙上配置 NAT 规则、网络规则和应用程序规则。 规则是根据规则类型进行处理的。 
+您可以在 Azure 防火墙上配置 NAT 规则、网络规则和应用程序规则。 规则集合按优先级顺序按照规则类型进行处理，将数字从 100 个降为 65，000 个。 规则集合名称只能有字母、数字、下划线、句点或连字符。 它必须以字母或数字开头，以字母、数字或下划线结尾。 最大名称长度为 80 个字符。
+
+最好最初以 100 个增量（100、200、300 等）空间设置规则集合优先级编号，以便在需要时有空间添加更多规则集合。
 
 > [!NOTE]
 > 如果启用基于威胁智能的筛选，则这些规则是最高优先级，并且始终首先处理。 威胁智能筛选可能会在处理任何配置的规则之前拒绝流量。 有关详细信息，请参阅[Azure 防火墙威胁基于智能的筛选](threat-intel.md)。
 
-## <a name="outbound"></a>出站
+## <a name="outbound-connectivity"></a>出站连接
 
 ### <a name="network-rules-and-applications-rules"></a>网络规则和应用程序规则
 
 如果配置网络规则和应用程序规则，则网络规则在应用程序规则之前按优先级顺序应用。 规则将终止。 因此，如果在网络规则中找到匹配项，则不会处理其他规则。  如果没有网络规则匹配，并且协议是 HTTP、HTTPS 或 MSSQL，则应用程序规则按优先级顺序计算数据包。 如果仍未找到匹配项，则根据[基础结构规则集合](infrastructure-fqdns.md)对数据包进行评估。 如果仍然没有匹配项，则默认情况下会拒绝该数据包。
 
-## <a name="inbound"></a>入站
+## <a name="inbound-connectivity"></a>入站连接
 
 ### <a name="nat-rules"></a>NAT 规则
 

@@ -8,12 +8,12 @@ ms.date: 4/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: dd24631f8e6b4f3f87438bf22654016dd7699950
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 6bc74e82dd04e5845e95bdec5c841d0264dd1d3e
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618305"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115087"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>准备在生产环境中部署 IoT Edge 解决方案
 
@@ -134,25 +134,28 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
   * 管理对容器注册表的访问
   * 使用标记管理版本
 
-### <a name="manage-access-to-your-container-registry-with-a-service-principal"></a>使用服务主体管理对容器注册表的访问
+### <a name="manage-access-to-your-container-registry"></a>管理对容器注册表的访问
 
 在将模块部署到生产 IoT Edge 设备之前，请务必控制对容器注册表的访问，使外部用户无法访问容器映像或对其进行更改。 使用专用（而不是公共）容器注册表来管理容器映像。
 
-教程和其他文档会指导你在 IoT Edge 设备上使用开发计算机上所用的相同容器注册表凭据。 这些说明旨在帮助你更轻松地设置测试和开发环境，在生产方案中请勿遵照这些说明。 Azure 容器注册表建议在应用程序或服务以自动或其他无人值守的方式（无头）提取容器映像时[使用服务主体进行身份验证](../container-registry/container-registry-auth-service-principal.md)，就像 IoT Edge 设备那样。
+教程和其他文档会指导你在 IoT Edge 设备上使用开发计算机上所用的相同容器注册表凭据。 这些说明旨在帮助你更轻松地设置测试和开发环境，在生产方案中请勿遵照这些说明。
 
-要创建服务主体，请运行[创建服务主体](../container-registry/container-registry-auth-aci.md#create-a-service-principal)中所述的两个脚本。 这些脚本执行以下任务：
+要获得对注册表的更安全访问，您可以选择[身份验证选项](../container-registry/container-registry-authentication.md)。 常用和推荐的身份验证是使用 Active Directory 服务主体，该主体非常适合应用程序或服务以自动或其他无人值守（无头）方式拉取容器映像，就像 IoT Edge 设备那样。
+
+要创建服务主体，请运行[创建服务主体](../container-registry/container-registry-auth-service-principal.md#create-a-service-principal)中所述的两个脚本。 这些脚本执行以下任务：
 
 * 第一个脚本创建服务主体。 它输出服务主体 ID 和服务主体密码。 将这些值安全地存储在记录中。
 
-* 第二个脚本创建角色分配以授予服务主体，如果需要，可以随后运行。 我们建议为`role`参数应用**acrPull**用户角色。 有关角色列表，请参阅[Azure 容器注册表角色和权限](../container-registry/container-registry-roles.md)
+* 第二个脚本创建角色分配以授予服务主体，如果需要，可以随后运行。 我们建议为`role`参数应用**acrPull**用户角色。 有关角色列表，请参阅[Azure 容器注册表角色和权限](../container-registry/container-registry-roles.md)。
 
-要使用服务主体进行身份验证，请提供从第一个脚本获取的服务主体 ID 和密码。
+要使用服务主体进行身份验证，请提供从第一个脚本获取的服务主体 ID 和密码。 在部署清单中指定这些凭据。
 
 * 对于用户名或客户端 ID，请指定服务主体 ID。
 
 * 对于密码或客户端机密，请指定服务主体密码。
 
-有关使用 Azure CLI 启动容器实例的示例，请参阅[使用服务主体进行身份验证](../container-registry/container-registry-auth-aci.md#authenticate-using-the-service-principal)。
+> [!NOTE]
+> 实现增强的安全身份验证后，禁用**管理员用户**设置，以便默认用户名/密码访问不再可用。 在 Azure 门户中的容器注册表中，从 **"设置"** 下的左侧窗格菜单中，选择 **"访问键**"。
 
 ### <a name="use-tags-to-manage-versions"></a>使用标记管理版本
 

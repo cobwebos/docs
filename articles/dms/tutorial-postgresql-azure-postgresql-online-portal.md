@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 03/25/2020
-ms.openlocfilehash: 4985c492c8ca71da87cf1a519ebc658c203d3952
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/11/2020
+ms.openlocfilehash: e01cc1c07d720c4743a03b5001e640f8b851dd5c
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246970"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114008"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-portal"></a>教程：通过 Azure 门户使用 DMS 将 PostgreSQL 迁移到 Azure 数据库以联机
 
@@ -45,7 +45,7 @@ ms.locfileid: "80246970"
 
 * 下载并安装[PostgreSQL 社区版本](https://www.postgresql.org/download/)9.4、9.5、9.6 或 10。 源 PostgreSQL 服务器版本必须为 9.4、9.5、9.6、10 或 11。 有关详细信息，请参阅[支持的 PostgreSQL 数据库版本](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions)一文。
 
-    另外，本地 PostgreSQL 版本必须与 Azure Database for PostgreSQL 版本相符。 例如，PostgreSQL 9.6 只能迁移到 PostgreSQL 9.6、10 或 11 的 Azure 数据库，但不能迁移到 PostgreSQL 9.5 的 Azure 数据库。
+    另请注意，PostgreSQL 版本的目标 Azure 数据库必须等于或晚于本地 PostgreSQL 版本。 例如，PostgreSQL 9.6 可以迁移到 PostgreSQL 9.6、10 或 11 的 Azure 数据库，但不能迁移到 PostgreSQL 9.5 的 Azure 数据库。
 
 * [为 PostgreSQL 服务器创建 Azure 数据库](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)，或[为后格雷SQL-超大规模（Citus）服务器创建 Azure 数据库](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)。
 * 通过使用 Azure 资源管理器部署模型为 Azure 数据库迁移服务创建 Microsoft Azure 虚拟网络，该模型通过使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)提供到本地源服务器的站点到站点的连接。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
@@ -228,7 +228,7 @@ ms.locfileid: "80246970"
 
     ![“添加源详细信息”屏幕](media/tutorial-postgresql-to-azure-postgresql-online-portal/dms-add-source-details.png)
 
-2. 选择“保存”。****
+2. 选择“保存”。 
 
 ## <a name="specify-target-details"></a>指定目标详细信息
 

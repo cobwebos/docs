@@ -1,27 +1,27 @@
 ---
-title: 添加建议和自动完成搜索框
+title: 在搜索框中添加自动完成和建议
 titleSuffix: Azure Cognitive Search
-description: 通过创建建议器和构建请求在 Azure 认知搜索中启用自动提示查询操作，以便在搜索框中填充已完成的字词。
+description: 通过创建建议器并编写使用已完成的字词或短语自动完成搜索框的请求，在 Azure 认知搜索中启用"即用即用即搜索"查询操作。 您还可以返回建议的匹配项。
 manager: nitinme
-author: mrcarter8
-ms.author: mcarter
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
-ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 64c4e65ca7b69c7d61c706b48591ac19be3bfcf5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
-ms.translationtype: HT
+ms.topic: conceptual
+ms.date: 04/10/2020
+ms.openlocfilehash: d6c1819366fede0b1e81e43bc92ed56af93b39fd
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72792527"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114962"
 ---
 # <a name="add-suggestions-or-autocomplete-to-your-azure-cognitive-search-application"></a>将建议或自动完成添加到 Azure 认知搜索应用程序
 
 本文介绍如何使用[建议](https://docs.microsoft.com/rest/api/searchservice/suggestions)和[自动完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete)功能生成一个功能强大的，支持“一边键入，一边搜索”行为的搜索框。
 
-+ “建议”是键入时生成的建议结果，其中的每条建议是索引中的与当前键入内容相匹配的单个结果。  
++ *建议*在键入时生成搜索结果，其中每个建议都是单个结果，或者索引中的搜索文档与您到目前为止键入的内容相匹配。 
 
-+ “自动完成”是指“完成”用户当前键入的单词或短语。  它不会返回结果，而是完成某个查询，然后你可以执行该查询来返回结果。 与建议一样，系统会根据索引中的匹配项预测查询中已完成的单词或短语。 服务不会提供返回索引中零个结果的查询。
++ *通过*"整理"单词或短语自动完成生成查询。 它不会返回结果，而是完成某个查询，然后你可以执行该查询来返回结果。 与建议一样，系统会根据索引中的匹配项预测查询中已完成的单词或短语。 服务不会提供返回索引中零个结果的查询。
 
 可以下载并运行 **DotNetHowToAutocomplete** 中的示例代码来评估这些功能。 示例代码针对使用 [NYCJobs 演示数据](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)填充的预生成索引。 NYCJobs 索引包含一个[建议器构造](index-add-suggesters.md)，必须通过该构造来使用建议或自动完成。 可以使用托管在沙盒服务中的已准备好的索引，或者使用 NYCJobs 示例解决方案中的数据加载器[填充自己的索引](#configure-app)。 
 
@@ -36,11 +36,11 @@ ms.locfileid: "72792527"
 > * 在 C# 中，可在 HomeController.cs 中定义建议和自动完成操作
 > * 在 JavaScript 中，可直接调用 REST API 来提供相同的功能
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 Azure 认知搜索服务对于本练习是可选的，因为本解决方案使用一个托管已准备好的 NYCJobs 演示索引的实时沙盒服务。 若要在自己的搜索服务中运行此示例，请参阅[配置 NYC 作业索引](#configure-app)中的说明。
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)（版本不限）。 示例代码和说明已在免费社区版上进行了测试。
+* [视觉工作室 2017，](https://visualstudio.microsoft.com/downloads/)任何版本. 示例代码和说明已在免费社区版上进行了测试。
 
 * 下载 [DotNetHowToAutoComplete 示例](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)。
 
@@ -315,7 +315,7 @@ var autocompleteUri = "https://" + searchServiceName + ".search.windows.net/inde
 接下来，请尝试将建议和自动完成功能集成到搜索体验。 以下参考文章可提供帮助。
 
 > [!div class="nextstepaction"]
-> [自动完成 REST API](https://docs.microsoft.com/rest/api/searchservice/autocomplete)
-> [建议 REST API](https://docs.microsoft.com/rest/api/searchservice/suggestions)
-> [“创建索引”REST API 中的分面索引属性](https://docs.microsoft.com/rest/api/searchservice/create-index)
+> [在](https://docs.microsoft.com/rest/api/searchservice/autocomplete)
+> 创建索引 REST API 上自动完成 REST API[建议 REST API](https://docs.microsoft.com/rest/api/searchservice/suggestions)
+> [分面索引属性](https://docs.microsoft.com/rest/api/searchservice/create-index)
 

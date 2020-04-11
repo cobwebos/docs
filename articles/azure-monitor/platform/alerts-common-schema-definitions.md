@@ -1,16 +1,16 @@
 ---
-title: Azure Monitor 的通用警报架构定义
+title: Azure 监视器中的警报架构定义
 description: 了解 Azure Monitor 的通用警报架构定义
 author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: fda2aa905577c19e5a90772ac87c6788198c2d0b
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 62b2738324f4c728cd4b5959c04c93649c156afb
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80672902"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114446"
 ---
 # <a name="common-alert-schema-definitions"></a>常见警报架构定义
 
@@ -75,7 +75,7 @@ ms.locfileid: "80672902"
 |:---|:---|
 | alertId | 用于唯一标识警报实例的 GUID。 |
 | alertRule | 已生成警报实例的警报规则的名称。 |
-| 严重性 | 警报的严重性。 可能的值：Sev0、Sev1、Sev2、Sev3 或 Sev4。 |
+| Severity | 警报的严重性。 可能的值：Sev0、Sev1、Sev2、Sev3 或 Sev4。 |
 | signalType | 标识在其上定义了警报规则的信号。 可能的值：指标、日志或活动日志。 |
 | monitorCondition | 警报触发时，警报的监视器条件设置为 **"已触发**"。 当导致警报触发的基本条件清除时，监视器条件设置为 **"已解决**"。   |
 | monitoringService | 已生成警报的监视服务或解决方案。 警报上下文的字段由监视服务规定。 |

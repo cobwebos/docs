@@ -14,12 +14,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: 4b36f456f70eb79cff1f615c7c136b8fe4b1b3d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 22826c32dc2aee0e580ec0b2a05c7eb8f08b7570
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78226706"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115311"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>常规用途虚拟机大小
 
@@ -32,7 +32,7 @@ ms.locfileid: "78226706"
 
 - [B 系列可突发](sizes-b-series-burstable.md)VM 非常适合不需要 CPU 持续完全性能的工作负载，如 Web 服务器、小型数据库以及开发和测试环境。 这些工作负荷通常具有可突增的性能要求。 B 系列使这些客户能够购买具有高性价比基线性能的 VM 大小，允许 VM 实例在 VM 使用的性能小于其基线性能时积累积分。 如果 VM 已累积了积分，则 VM 可以在应用程序需要更高的 CPU 性能时突增到 VM 的基线之上，使用最多达到 100% 的 vCPU。
 
-- [Dav4 和 Dasv4 系列](dav4-dasv4-series.md)采用 AMD 的 2.35Ghz EPYC<sup>TM</sup> 7452 处理器，采用多线程配置，将高达 256 MB L3 缓存的 8 GB L3 缓存专用于每 8 个内核中，增加了客户运行通用工作负载的选项。 Dav4 系列和 Dasv4 系列具有与 D & Dsv3 系列相同的内存和磁盘配置。
+- [Dav4 和 Dasv4 系列](dav4-dasv4-series.md)采用 AMD 的 2.35Ghz EPYC<sup>TM</sup> 7452 处理器，采用多线程配置，将高达 256 MB L3 缓存的 8 MB 的 L3 缓存专用到每 8 个内核中，增加了客户运行通用工作负载的选项。 Dav4 系列和 Dasv4 系列具有与 D & Dsv3 系列相同的内存和磁盘配置。
 
 - [DCv2 系列](dcv2-series.md)可帮助保护数据和代码在公共云中处理时的机密性和完整性。 这些机器由最新一代英特尔 XEON E-2288G 处理器支持，配备新GX技术。 借助英特尔涡轮提升技术，这些机器可高达 5.0GHz。 DCv2 系列实例使客户能够构建基于安全区的安全应用程序，以便在代码和数据使用时保护其代码和数据。
 

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: tisande
-ms.openlocfilehash: ecfa98241f74aac43a827b645a6ed877624d643d
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 38e262abefe5444c1fe7586810f4b971cc7baf6c
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437810"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114152"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB's API for MongoDB 中的更改流
 
@@ -26,13 +26,14 @@ ms.locfileid: "80437810"
 使用更改流时，以下限制适用：
 
 * 输出文档中尚不支持 `operationType` 和 `updateDescription` 属性。
-* 目前支持 `insert`、`update` 和 `replace` 操作类型。 尚不支持删除操作或其他事件。
+* 目前支持 `insert`、`update` 和 `replace` 操作类型。 
+* 尚不支持删除操作或其他事件。
 
 由于存在这些限制，需要按前面示例中所示指定 $match 阶段、$project 阶段和 fullDocument 选项。
 
 与 Azure Cosmos DB 的 SQL API 中的更改源不同，没有单独的[更改馈送处理器库](change-feed-processor.md)来使用更改流或需要租约容器。 当前不支持[Azure 函数触发器](change-feed-functions.md)来处理更改流。
 
-## <a name="error-handling"></a>错误处理
+## <a name="error-handling"></a>错误处理。
 
 使用更改流时，支持以下错误代码和消息：
 

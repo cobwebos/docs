@@ -3,12 +3,12 @@ title: 容器和服务的资源调控
 description: Azure Service Fabric 允许指定在容器内部或外部运行的服务的资源限制。
 ms.topic: conceptual
 ms.date: 8/9/2017
-ms.openlocfilehash: 85520876d7f0c89450b572d28dee6cb66ed2231d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11ca6e29829d911717a829b3e4dee0a190856a52
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75772374"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115149"
 ---
 # <a name="resource-governance"></a>资源调控
 
@@ -31,7 +31,8 @@ ms.locfileid: "75772374"
 * 群集可根据这两个指标进行[碎片整理](service-fabric-cluster-resource-manager-defragmentation-metrics.md)。
 * [描述群集](service-fabric-cluster-resource-manager-cluster-description.md)时，可为这两个指标设置缓冲容量。
 
-这些指标不支持[动态负载报告](service-fabric-cluster-resource-manager-metrics.md)，在创建时即定义了这些指标的负载。
+> [!NOTE]
+> 这些指标不支持[动态负载报告](service-fabric-cluster-resource-manager-metrics.md);这些指标的负载在创建时定义。
 
 ## <a name="resource-governance-mechanism"></a>资源治理机制
 

@@ -5,12 +5,12 @@ author: harahma
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
-ms.openlocfilehash: 69c7edb08693937aad5a658e0b22b00cd2a81647
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82bc5068be651b05eb24efa3b05e46c1e7c1e24d
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282388"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115036"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric 托管模型
 本文概述 Azure Service Fabric 提供的应用程序托管模型，并介绍**共享进程**模型和**独占进程**模型之间的差异。 本文介绍已部署的应用程序在 Service Fabric 节点上的外观，以及服务和服务主机进程的副本（或实例）之间的关系。
@@ -168,6 +168,10 @@ Service Fabric 将[来宾可执行文件][a2]和[容器][a3]应用程序视为�
 
 
 在上面的示例中，你可能会想，如果“MyCodePackageA”同时注册“MyServiceTypeA”和“MyServiceTypeB”并且没有“MyCodePackageB”，那么将不会运行冗余的 *CodePackage*。 这是对的，但此应用程序模型不适用于独占进程托管模型。 如果目的是将每个副本放入其自己的专用进程，则不需要从同一个 *CodePackage* 注册两个 *ServiceType*。 只需将每个 *ServiceType* 放入其自身的 *ServicePackage* 即可。
+
+### <a name="reliable-services-and-actor-forking-subprocesses"></a>Reliable Services 和 Reliable Actors 创建分支子进程
+
+Service Fabric 不支持 Reliable Services，因此也不支持 Reliable Actors 创建分支子进程。 这里举例说明其不受支持的原因：[CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) 不能用于注册不受支持的子过程，并且取消令牌仅发送到已注册过程；若子过程在父过程收到取消令牌后未关闭，会导致各种问题，例如升级失败。
 
 ## <a name="next-steps"></a>后续步骤
 [打包应用程序][a4]并准备好进行部署。

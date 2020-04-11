@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: a4ab59ab5b988b54333c419ced7fa852da531eaa
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 8ef791759a33d08aaff068b0dd2634e5f21bb1b6
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984327"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114989"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>适用于 Windows 虚拟机的 Azure 磁盘加密常见问题解答
 
@@ -64,7 +64,7 @@ Azure 磁盘加密使用客户管理的密钥为 OS 磁盘、数据磁盘和临�
 
 - 如果要求包括加密上述所有加密和端到端加密，请使用 Azure 磁盘加密。 
 - 如果要求包括仅使用客户管理的密钥加密静态数据，则使用[服务器端加密与客户管理的密钥一起使用](disk-encryption.md)。 不能使用客户托管密钥对磁盘进行 Azure 磁盘加密和存储服务器端加密。
-* 如果您使用的是[Windows 不受支持的方案](disk-encryption-windows.md#unsupported-scenarios)，请考虑[使用客户管理的密钥进行服务器端加密](disk-encryption.md)。 
+- 如果使用在[Windows 不受支持方案中](disk-encryption-windows.md#unsupported-scenarios)调用的方案，请考虑[使用客户管理的密钥进行服务器端加密](disk-encryption.md)。 
 - 如果组织的策略允许您使用 Azure 管理的密钥加密静态内容，则无需执行任何操作 - 默认情况下对内容进行加密。 对于托管磁盘，默认情况下，使用平台管理的密钥对存储内的内容进行加密。 密钥由 Azure 存储服务管理。 
 
 ## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>如何轮换机密或加密密钥？

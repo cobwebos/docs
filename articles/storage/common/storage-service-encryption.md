@@ -4,17 +4,17 @@ description: Azure 存储在将数据保存到云之前会自动对其进行加�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/12/2020
+ms.date: 04/10/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f8f6f40f8ce8297b3cbfe6b3afcbf10df4db6572
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f112a4523bc5af9ecae57e93dfb90795d3fe9c50
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409824"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113278"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>静态数据的 Azure 存储加密
 
@@ -34,7 +34,7 @@ Azure 存储中的数据使用 256 位[AES 加密](https://en.wikipedia.org/wiki
 
 ## <a name="about-encryption-key-management"></a>关于加密密钥管理
 
-默认情况下，存储帐户中的数据使用 Microsoft 管理的密钥进行加密。 您可以依赖 Microsoft 管理的密钥来加密数据，也可以使用自己的密钥管理加密。 如果你选择使用自己的密钥来管理加密，则可以采用两种做法：
+新存储帐户中的数据使用 Microsoft 管理的密钥进行加密。 您可以依赖 Microsoft 管理的密钥来加密数据，也可以使用自己的密钥管理加密。 如果你选择使用自己的密钥来管理加密，则可以采用两种做法：
 
 - 您可以使用 Azure 密钥保管库指定*客户管理的密钥*，用于加密和解密 Blob 存储和 Azure 文件中的数据。<sup>1，2</sup>有关客户管理的密钥的详细信息，请参阅使用[Azure 密钥保管库使用客户管理的密钥来管理 Azure 存储加密](encryption-customer-managed-keys.md)。
 - 可以在 Blob 存储操作中指定客户提供的密钥。** 对 Blob 存储发出读取或写入请求的客户端可以在请求中包含加密密钥，以便精细控制 Blob 数据的加密和解密方式。 有关客户提供密钥的详细信息，请参阅[在请求 Blob 存储时提供加密密钥（预览）。](encryption-customer-provided-keys.md)
@@ -44,11 +44,10 @@ Azure 存储中的数据使用 256 位[AES 加密](https://en.wikipedia.org/wiki
 |                                        |    Microsoft 管理的密钥                             |    客户管理的密钥                                                                                                                        |    客户提供的密钥                                                          |
 |----------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 |    加密/解密操作    |    Azure                                              |    Azure                                                                                                                                        |    Azure                                                                         |
-|    支持的 Azure 存储服务    |    All                                                |    Blob 存储，Azure 文件<sup>1，2</sup>                                                                                                               |    Blob 存储                                                                  |
+|    支持的 Azure 存储服务    |    全部                                                |    Blob 存储，Azure 文件<sup>1，2</sup>                                                                                                               |    Blob 存储                                                                  |
 |    密钥存储                         |    Microsoft 密钥存储    |    Azure Key Vault                                                                                                                              |    Azure Key Vault 或任何其他密钥存储                                                                 |
 |    密钥轮换责任         |    Microsoft                                          |    客户                                                                                                                                     |    客户                                                                      |
-|    密钥使用情况                           |    Microsoft                                          |    Azure 门户、存储资源提供程序 REST API、Azure 存储管理库、PowerShell、CLI        |    Azure 存储 REST API（Blob 存储）、Azure 存储客户端库    |
-|    密钥访问权限                          |    仅限 Microsoft                                     |    Microsoft、客户                                                                                                                    |    仅限客户                                                                 |
+|    密钥控制                          |    Microsoft                                     |    客户                                                                                                                    |    客户                                                                 |
 
 <sup>1</sup>有关创建支持使用具有队列存储的客户托管密钥的帐户的信息，请参阅[创建一个帐户，该帐户支持队列的客户托管密钥](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)。<br />
 <sup>2</sup>有关创建支持将客户管理的密钥与表存储一起使用的帐户的信息，请参阅[创建一个帐户，该帐户支持表的客户托管密钥](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)。

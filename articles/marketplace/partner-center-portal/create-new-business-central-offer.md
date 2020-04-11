@@ -1,22 +1,22 @@
 ---
-title: 在商业市场创建新的动态 365 商业中心产品
-description: 如何使用 Microsoft 合作伙伴中心上的商业市场门户创建新的 Dynamics 365 商业中心产品/服务，用于在 Azure 应用商店、AppSource 或通过云解决方案提供商 （CSP） 计划上市或销售。
+title: 在微软商业市场创建新的 Dynamics 365 商业中心产品
+description: 如何创建新的 Dynamics 365 商业中心产品/服务，用于在 Azure 应用商店、Microsoft AppSource 中列出或销售，或者使用 Microsoft 合作伙伴中心的商业市场门户通过云解决方案提供商 （CSP） 计划进行上市或销售。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 908d0fb9d494ec048e6b254f91ec1faf56b47c90
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.date: 04/09/2020
+ms.openlocfilehash: 9bb1059087bdf8fc4eb852be7a995febc3336713
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529402"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115287"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>创建新的 Dynamics 365 商业中心产品/服务
 
-本主题介绍如何创建新的 Dynamics 365 业务中心产品/服务。 [Microsoft Dynamics 365 商业中心](https://dynamics.microsoft.com/business-central)是一个企业资源规划 （ERP） 系统，可处理各种业务流程，包括财务、运营、供应链、CRM 以及项目管理和电子商务。 高级软件包还支持经典部署模型和制造。 Dynamics 365 商务中心的所有优惠都必须经过我们的认证流程。
+本文介绍如何创建新的 Dynamics 365 业务中心产品/ [Microsoft Dynamics 365 商业中心](https://dynamics.microsoft.com/business-central)是一个企业资源规划 （ERP） 系统，可处理各种业务流程，包括财务、运营、供应链、CRM 以及项目管理和电子商务。 高级软件包还支持经典部署模型和制造。 Dynamics 365 商务中心的所有优惠都必须经过我们的认证流程。
 
 要开始创建 Dynamics 365 商业中心产品/服务，请确保首先[创建合作伙伴中心帐户](./create-account.md)并打开[商业市场仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)，并选择 **"概述"** 页。
 
@@ -25,7 +25,7 @@ ms.locfileid: "80529402"
 >[!Note]
 > 产品/服务发布后，只有在重新发布后，才会在系统和商店前面更新对合作伙伴中心中提供的优惠进行编辑。 请确保在进行更改后提交要发布的要约。
 
-## <a name="create-a-new-offer"></a>创建新套餐
+## <a name="create-a-new-offer"></a>创建新产品/服务
 
 选择 **+ 新优惠**按钮，然后选择**Dynamics 365 商业中心**菜单项。 将显示"**新建产品/服务**"对话框。
 
@@ -113,16 +113,14 @@ ms.locfileid: "80529402"
 
 ## <a name="offer-listing"></a>优惠列表
 
-"产品/服务"列表页显示您的优惠将在其中列出的语言。 目前，**英语（美国）** 是唯一可用的选项。
-
-您需要为每个语言/市场定义市场详细信息（报价名称、说明、图像等）。 选择语言/市场名称以提供此信息。
+"产品/服务"列表页是定义产品/服务的详细信息（如名称、说明、图像等）的位置。
 
 > [!NOTE]
-> 报价列表内容（如说明、文档、屏幕截图、使用条款等）不需要以英文表示，只要要约说明以短语开头，"此应用程序仅以 [非英语语言]提供。 提供*有用的链接 URL*以提供产品/服务列表内容中所用语言以外的语言提供内容也是可接受的。
+> 您只能提供一种语言的优惠列表详细信息。 它不需要是英文的，只要报价说明以短语开头，"此应用程序仅以[非英语]提供。 提供*帮助链接 URL*以提供产品/服务列表内容中所用语言以外的语言也是可以接受的。
 
-### <a name="name"></a>名称
+### <a name="name"></a>“属性”
 
-您在此处输入的名称将作为产品/服务列表的标题显示给客户。 此字段预填充了创建产品/服务时为 **"产品/服务"别名**输入的文本，但您可以更改此值。 此名称可以注册商标（您可以包括商标或版权符号）。 名称不能超过 50 个字符，不能包含任何表情符号。
+您在此处输入的名称将作为产品/服务列表的标题显示给客户。 此字段预填充了创建**产品/服务时为"产品/服务"别名**输入的文本，但您可以更改此值。 此名称可以注册商标（您可以包括商标或版权符号）。 名称不能超过 50 个字符，不能包含任何表情符号。
 
 ### <a name="short-description"></a>简短说明
 
@@ -169,23 +167,23 @@ ms.locfileid: "80529402"
 
 如果您想让客户知道你的应用适用于特定产品，请在此处输入最多三个产品名称。
 
-### <a name="support-urls"></a>支持 URL
+### <a name="helpprivacy-urls"></a>帮助/隐私 URL
 
 本部分允许您提供链接，帮助客户更好地了解您的产品/服务。
 
 #### <a name="help-link"></a>帮助链接
 
-输入客户可以详细了解您的优惠的 URL。
+输入客户可以详细了解您的优惠的 URL。 **您的帮助链接**不能与您的**支持 URL**相同（如下所述）。
 
-#### <a name="privacy-policy-url"></a>隐私策略 URL
+#### <a name="privacy-policy-link"></a>隐私政策链接
 
 输入组织隐私政策的 URL。 您有责任确保您的应用符合隐私法律和法规，并提供有效的隐私政策。
 
-### <a name="contacts"></a>联系人
+### <a name="contact-information"></a>联系信息
 
 在本节中，您必须提供**支持联系人**和**工程联系人**的姓名、电子邮件和电话号码。 此信息不会向客户显示，但可供 Microsoft 使用，并且可能会提供给 CSP 合作伙伴。
 
-在 **"支持"联系人**部分中，还必须提供**支持 URL，** 其中 CSP 合作伙伴可以找到对您的产品/服务的支持。
+在 **"支持"联系人**部分中，还必须提供**支持 URL，** 其中 CSP 合作伙伴可以找到对您的产品/服务的支持。 您的支持 URL 不能与您的**帮助链接**相同。
 
 ### <a name="supporting-documents"></a>证明文件
 
@@ -193,15 +191,7 @@ ms.locfileid: "80529402"
 
 ### <a name="marketplace-images"></a>市场映像
 
-在本节中，您可以提供向客户展示产品/服务时将使用的徽标和图像。 所有图像必须采用 .png 格式。
-
-#### <a name="store-logos"></a>应用商店徽标
-
-提供两种尺寸的产品徽标：**小 （48 x 48）** **和大 （216 x 216）。**
-
-#### <a name="hero"></a>英雄
-
-英雄形象是可选的。 如果提供一个，它必须测量 815 x 290 像素。
+在本节中，您可以提供向客户展示产品/服务时将使用的徽标和图像。 所有图像必须采用 .png 格式。 上传您的优惠徽标有两种尺寸：**小 （48 x 48）** **和大 （216 x 216）**。
 
 #### <a name="screenshots"></a>屏幕截图
 
@@ -350,7 +340,11 @@ Microsoft 可以通过托管和维护使用此类测试驱动器的服务预配�
 
 ### <a name="test-drive-marketplace-listings"></a>试驾市场列表
 
-**"测试驱动器**"选项卡下的 **"应用商店列表**"选项显示您的试驾可用的语言。 目前**英语（美国）** 是唯一可用的地点。 选择语言名称以输入描述试驾体验的信息。
+"**测试驱动器**"选项卡下的 **"应用商店列表**"选项是定义试驾体验详细信息的位置。
+
+> [!NOTE]
+> 您只能以一种语言提供试驾列表详细信息。 它不需要是英文的，只要报价说明以短语开头，"此应用程序仅以[非英语]提供。 也可以提供*帮助链接 URL*以测试驱动器列表内容中使用的语言以外的语言提供内容。
+
 
 - **说明**（必需）：描述您的试驾、演示的内容、供用户试验的目标、要浏览的功能以及任何相关信息，以帮助用户确定是否获取您的产品/服务。 此字段中最多可输入 3，000 个字符的文本。 
 

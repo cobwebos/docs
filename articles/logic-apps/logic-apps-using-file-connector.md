@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: 2a00405a2100c3e565ca4f8ea4149540a5199b43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab17137f162b893b54942d870b07a36f87d1b71d
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651400"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115078"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>使用 Azure 逻辑应用连接到本地文件系统
 
@@ -65,11 +65,11 @@ ms.locfileid: "77651400"
 
    ![创建连接](media/logic-apps-using-file-connector/file-system-connection.png)
 
-   | properties | 必选 | “值” | 描述 |
+   | properties | 必选 | 值 | 说明 |
    | -------- | -------- | ----- | ----------- |
    | **连接名称** | 是 | <*连接名称*> | 连接使用的名称 |
    | **根文件夹** | 是 | <*根文件夹名称*> | 文件系统的根文件夹，例如，如果安装了本地数据网关，比如安装了本地数据网关的计算机上的本地文件夹，或者计算机可以访问的网络共享文件夹。 <p>例如： `\\PublicShare\\DropboxFiles` <p>根文件夹是主要的父文件夹，用作所有与文件有关的操作的相对路径。 |
-   | **身份验证类型** | 否 | <*auth 型*> | 文件系统使用的身份验证类型，例如 **Windows** |
+   | **身份验证类型** | 否 | <*auth 型*> | 文件系统使用的身份验证类型 **：Windows** |
    | **用户** | 是 | <*domain*>域\\*username*用户名<> | 拥有文件系统的计算机用户名 |
    | **密码** | 是 | <*您的密码*> | 拥有文件系统的计算机密码 |
    | **gateway** | 是 | <*已安装网关名称*> | 以前安装的网关的名称 |

@@ -17,12 +17,12 @@ ms.date: 11/04/2019
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6e0c697f9ab9796feade9b4d5c2a64794f3980b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 30cc8be6ad9ebffcad58c5b2412ae15ff3f26fa5
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73612798"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113321"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>在 Azure 活动目录门户中预配报表（预览）
 
@@ -85,43 +85,24 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 选择列表视图中的某个项可获得更详细的信息。
 
-![详细信息](./media/concept-provisioning-logs/steps.png "“筛选器”")
+![详细信息](./media/concept-provisioning-logs/steps.png "筛选器")
 
 
 ## <a name="filter-provisioning-activities"></a>筛选器预配活动
 
-要将报告的数据缩小到适合您的水平，可以使用以下默认字段筛选预配数据。 请注意，筛选器中的值会根据您的租户动态填充。 例如，如果租户中没有任何创建事件，则创建时没有筛选器选项。
+您可以筛选预配数据。 某些筛选器值会根据您的租户动态填充。 例如，如果租户中没有任何创建事件，则创建时没有筛选器选项。
+在默认视图中，您可以选择以下筛选器：
 
 - 标识
-- 操作
-- 源系统
-- 目标系统
-- 状态
 - Date
+- 状态
+- 操作
 
 
-![筛选器](./media/concept-provisioning-logs/filter.png "“筛选器”")
+![筛选器](./media/concept-provisioning-logs/default-filter.png "筛选器")
 
 通过 **"标识"** 筛选器，您可以指定您关心的名称或标识。 此标识可以是用户、组、角色或其他对象。 您可以按对象的名称或 ID 进行搜索。 ID 因方案而异。 例如，将对象从 Azure AD 预配到 SalesForce 时，源 ID 是 Azure AD 中用户的对象 ID，而 TargetID 是 Salesforce 中用户的 ID。 从工作日预配到活动目录时，源 ID 是工作日员工 ID。 请注意，用户的姓名可能并不总是存在于"标识"列中。 始终有一个 ID。 
 
-"**源系统**"筛选器使您能够指定从何处预配标识。 例如，将对象从 Azure AD 预配到 ServiceNow 时，源系统是 Azure AD。 
-
-目标**系统**筛选器使您能够指定标识预配到的位置。 例如，将对象从 Azure AD 预配到 ServiceNow 时，目标系统是 ServiceNow。 
-
-使用“状态”**** 筛选器，可以选择：
-
-- All
-- Success
-- 失败
-- 已跳过
-
-"**操作"** 筛选器允许您筛选：
-
-- 创建 
-- 更新
-- 删除
-- 禁用
-- 其他
 
 “日期”筛选器用于定义已返回数据的时间范围。****  
 可能的值包括：
@@ -135,7 +116,35 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 选择自定义时间范围时，可以配置开始日期和结束日期。
 
 
-除了默认字段之外，在选中时，还可以在筛选器中包括以下字段：
+使用“状态”**** 筛选器，可以选择：
+
+- 全部
+- Success
+- 失败
+- 已跳过
+
+
+
+"**操作"** 筛选器允许您筛选：
+
+- 创建 
+- 更新
+- 删除
+- 禁用
+- 其他
+
+此外，除了默认视图的筛选器，还可以设置以下筛选器：
+
+- 作业 ID
+- 循环 ID
+- 更改 ID
+- 源 ID
+- 目标 ID
+- 应用程序
+
+
+![选取字段](./media/concept-provisioning-logs/add-filter.png "选取字段")
+
 
 - **作业 ID** - 与已为其启用预配的每个应用程序相关联的唯一作业 ID。   
 
@@ -144,8 +153,13 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 - **更改 ID** - 预配事件的唯一标识符。 您可以共享此 ID 以支持查找预配事件。   
 
 
+- **源系统**- 使您能够指定从何处预配标识。 例如，将对象从 Azure AD 预配到 ServiceNow 时，源系统是 Azure AD。 
 
-  
+- **目标系统**- 使您能够指定标识预配到的位置。 例如，将对象从 Azure AD 预配到 ServiceNow 时，目标系统是 ServiceNow。 
+
+- **应用程序**- 使您能够仅显示具有包含特定字符串的显示名称的应用程序的记录。
+
+ 
 
 ## <a name="provisioning-details"></a>预配详细信息 
 
@@ -176,7 +190,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 
 
-![筛选器](./media/concept-provisioning-logs/steps.png "“筛选器”")
+![筛选器](./media/concept-provisioning-logs/steps.png "筛选器")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>故障排除和建议
@@ -210,7 +224,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 使用下表更好地了解如何解决在预配日志中可能发现的错误。 对于缺少的任何错误代码，请使用此页面底部的链接提供反馈。 
 
-|错误代码|描述|
+|错误代码|说明|
 |---|---|
 |冲突，进入冲突|更正 Azure AD 或应用程序中的冲突属性值，或者如果冲突用户帐户应匹配并接管，则查看匹配的属性配置。 有关配置匹配属性的详细信息，请查看以下[文档](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)。|
 |TooManyRequests|目标应用拒绝此更新用户尝试，因为它超载并接收了太多请求。 没什么可做的。 此尝试将自动停用。 微软也被告知此问题。|

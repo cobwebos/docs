@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 03e1d4aa74d2f71ab2f32ac55f4ad3d46f672f5c
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 18de50473e3dd6ca8ddda9575a247e00530032e8
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618541"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115421"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>使用 Python 配置自动化 ML 试验
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,24 +43,27 @@ ms.locfileid: "80618541"
 
 在自动化和优化过程中，自动化机器学习支持以下算法。 用户不需要指定算法。
 
+> [!NOTE]
+> 如果您计划将自动 ML 创建的模型导出到[ONNX 模型](concept-onnx.md)，则只有使用 * 指示的算法才能转换为 ONNX 格式。 了解有关[将模型转换为 ONNX](concept-automated-ml.md#use-with-onnx)的更多信息。 <br> <br> 另请注意，ONNX 目前仅支持分类和回归任务。 
+
 分类 | 回归 | 时序预测
 |-- |-- |--
-[逻辑回归](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)| [弹性网络](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)| [弹性网络](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
-[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
-[渐进提升](https://scikit-learn.org/stable/modules/ensemble.html#classification)|[渐进提升](https://scikit-learn.org/stable/modules/ensemble.html#regression)|[渐进提升](https://scikit-learn.org/stable/modules/ensemble.html#regression)
-[决策树](https://scikit-learn.org/stable/modules/tree.html#decision-trees)|[决策树](https://scikit-learn.org/stable/modules/tree.html#regression)|[决策树](https://scikit-learn.org/stable/modules/tree.html#regression)
-[K 近邻](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K 近邻](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K 近邻](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
-[线性 SVC](https://scikit-learn.org/stable/modules/svm.html#classification)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
-[支持向量分类 (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)|[随机梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)|[随机梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
-[随机林](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[随机林](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[随机林](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
-[极端随机树](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[极端随机树](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[极端随机树](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
-[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)|[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)| [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
-[DNN 分类器](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[深度神经网络回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [深度神经网络回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
-[DNN 线性分类器](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[线性回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[线性回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
-[朴素贝叶斯](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|[快速线性回归量](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[Auto-ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
-[随机梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|[在线梯度下降回归量](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
+[逻辑回归](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)* | [弹性网](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)* | [弹性网络](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
+[轻型 GBM](https://lightgbm.readthedocs.io/en/latest/index.html)* |[轻型 GBM](https://lightgbm.readthedocs.io/en/latest/index.html)*|[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
+[渐变提升](https://scikit-learn.org/stable/modules/ensemble.html#classification)* |[渐变提升](https://scikit-learn.org/stable/modules/ensemble.html#regression)* |[渐进提升](https://scikit-learn.org/stable/modules/ensemble.html#regression)
+[决策树](https://scikit-learn.org/stable/modules/tree.html#decision-trees)* |[决策树](https://scikit-learn.org/stable/modules/tree.html#regression)* |[决策树](https://scikit-learn.org/stable/modules/tree.html#regression)
+[K 最近邻](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K 最近邻](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K 近邻](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
+[线性 SVC](https://scikit-learn.org/stable/modules/svm.html#classification)* |[拉尔斯·拉索](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)* |[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
+[支持矢量分类 （SVC）](https://scikit-learn.org/stable/modules/svm.html#classification)* |[随机梯度下降 （SGD）](https://scikit-learn.org/stable/modules/sgd.html#regression)* |[随机梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
+[随机林](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[随机林](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[随机林](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
+[极随机的树](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[极随机的树](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[极端随机树](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
+[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
+[DNN 分类器](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier) |[深度神经网络回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [深度神经网络回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
+[DNN 线性分类器](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[线性回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor) |[线性回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
+[天真的贝叶斯](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[快速线性回归量](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[Auto-ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[随机梯度下降 （SGD）](https://scikit-learn.org/stable/modules/sgd.html#sgd)* |[在线梯度下降回归量](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
 |[平均感知器分类器](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)||ForecastTCN
-|[线性 SVM 分类器](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)||
+|[线性 SVM 分类器](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)* ||
 
 使用 `AutoMLConfig` 构造函数中的 `task` 参数来指定试验类型。
 
@@ -196,7 +199,7 @@ automl_config = AutoMLConfig(task = "classification")
 
 配置试验时，可以启用高级设置 `featurization`。 下表显示了[`AutoMLConfig`类](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)中用于执行的已接受设置。
 
-|技术化配置 | 描述 |
+|技术化配置 | 说明 |
 | ------------- | ------------- |
 |`"featurization":`&nbsp;`'FeaturizationConfig'`| 指示应使用自定义的壮举步骤。 [了解如何自定义壮举](how-to-configure-auto-train.md#customize-feature-engineering)。|
 |`"featurization": 'off'`| 指示不应自动执行壮举步骤。|
@@ -250,7 +253,7 @@ automl_config = AutoMLConfig(task = 'forecasting',
 有多个默认参数可在 `AutoMLConfig` 对象中作为 `kwargs` 提供，以更改默认堆栈集成行为。
 
 * `stack_meta_learner_type`：元学习者是训练在单个异构模型输出上的模型。 默认的元学习器为 `LogisticRegression`（如果启用了交叉验证，则为 `LogisticRegressionCV`）和 `ElasticNet`（如果启用了交叉验证，则为 `ElasticNetCV`），前者用于分类任务，后者用于回归/预测任务。 此参数可以是下列字符串之一：`LogisticRegression`、`LogisticRegressionCV`、`LightGBMClassifier`、`ElasticNet`、`ElasticNetCV`、`LightGBMRegressor` 或 `LinearRegression`。
-* `stack_meta_learner_train_percentage`：指定为训练元学习器而保留的训练集的比例（选择训练的训练和验证类型时）。 默认值为 `0.2`。
+* `stack_meta_learner_train_percentage`：指定为训练元学习器而保留的训练集的比例（选择训练的训练和验证类型时）。 默认值是 `0.2`。
 * `stack_meta_learner_kwargs`：要传递给元学习器的初始值设定项的可选参数。 这些参数和参数类型反映相应模型构造函数的参数和参数类型，并转发给模型构造函数。
 
 以下代码演示在 `AutoMLConfig` 对象中指定自定义集成行为的示例。

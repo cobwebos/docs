@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 03/13/2020
-ms.openlocfilehash: 4d845514965a8d60c636902660ce838926cbf3c9
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.openlocfilehash: ca4bf1b0043a2c73851eab48ff8b9b6b7a987b72
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80607620"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115294"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虚拟网络中保护 Azure ML 试验和推理作业
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,6 +43,11 @@ Azure 机器学习依赖于其他 Azure 服务提供计算资源。 计算资源
 + 预先存在一个要与计算资源配合使用的虚拟网络和子网。
 
 ## <a name="use-a-storage-account-for-your-workspace"></a>对工作区使用存储帐户
+
+> [!WARNING]
+> 如果数据科学家使用 Azure 机器学习设计器，则在虚拟网络内从存储帐户可视化数据时，他们将收到错误。 以下文本是它们收到的错误：
+>
+> __错误：无法分析此数据集。这可能是因为您的数据存储在虚拟网络后面，或者您的数据不支持配置文件。__
 
 要在虚拟网络中对工作区使用 Azure 存储帐户，请使用以下步骤：
 

@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: 17d0e678008c76da32f20562aa795e83e49c80e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9515058bc78a2d56dc1734c046dac5d5b04f68d9
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77064965"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113163"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>全局传输网络体系结构和虚拟 WAN
 
@@ -47,7 +47,7 @@ Azure 虚拟 WAN 通过在 VNet、分支站点、SaaS 和 PaaS 应用程序以�
 
 通过在具有最多分支（分支、VNet、用户）的区域创建单个虚拟 WAN 中心，然后将其他区域中的分支连接到中心，可以建立虚拟广域网。 当企业足迹主要位于具有几个远程分支的一个区域时，这是一个不错的选择。  
   
-## <a name="hub-to-hub-connectivity"></a><a name="hubtohub"></a>集线器到集线器连接
+## <a name="hub-to-hub-connectivity-preview"></a><a name="hubtohub"></a>集线器到集线器连接（预览）
 
 企业云占用空间可以跨越多个云区域，最好（延迟）从最接近其物理站点和用户的区域访问云。 全球交通网络架构的关键原则之一是在所有云和本地网络端点之间实现跨区域连接。 这意味着，从连接到一个区域中的云的分支的流量可以使用[Azure Global Network](https://azure.microsoft.com/global-infrastructure/global-network/)启用的集线器到集线器连接到达另一个分支或不同区域中的 VNet。
 

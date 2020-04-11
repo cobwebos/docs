@@ -1,17 +1,17 @@
 ---
-title: 通过更新逻辑应用和 Runbook 来准备 Azure Monitor 经典警报迁移
+title: 更新逻辑应用&警报迁移的 Runbook
 description: 了解如何修改 Webhook、逻辑应用和 Runbook，以准备自愿性迁移。
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 9219e105acb98424939030af76b526d475585619
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f31fcc07bed0287c2f86ca4fe52bf02a2a1d2a71
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665586"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114413"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>准备逻辑应用和 Runbook 以迁移经典警报规则
 
@@ -156,7 +156,7 @@ else {
 
 [我们的大部分与经典警报集成的合作伙伴](https://docs.microsoft.com/azure/azure-monitor/platform/partners)已能够支持通过其集成处理新型指标警报。 能够处理新指标警报的已知集成包括：
 
-- [寻呼员](https://www.pagerduty.com/docs/guides/azure-integration-guide/)
+- [PagerDuty](https://www.pagerduty.com/docs/guides/azure-integration-guide/)
 - [OpsGenie](https://docs.opsgenie.com/docs/microsoft-azure-integration)
 - [Signl4](https://www.signl4.com/blog/mobile-alert-notifications-azure-monitor/)
 

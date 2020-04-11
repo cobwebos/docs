@@ -5,12 +5,12 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 03/24/2020
-ms.openlocfilehash: 27abdfe28e2594c98778b51532fbd22f95bfa3ac
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: b121830192a2b88185bbbbc9a92934e51b32a61c
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984702"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114647"
 ---
 # <a name="integrate-azure-ad-in-azure-kubernetes-service-preview"></a>在 Azure 库伯奈斯服务中集成 Azure AD（预览版）
 
@@ -29,7 +29,7 @@ Azure AD 与 AKS v2 集成旨在简化 Azure AD 与 AKS v1 体验的集成，其
 > - [AKS 支持策略](support-policies.md)
 > - [Azure 支持常见问题](faq.md)
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 您必须安装以下资源：
 
@@ -98,12 +98,12 @@ az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad
 创建组并添加自己作为成员（和其他人）后，可以使用以下命令使用 Azure AD 组更新群集
 
 ```azurecli-interactive
-az aks update -g MyResourceGroup -n MyManagedCluster [--aad-admin-group-object-ids <id1,id2>] [--aad-tenant-id <id>]
+az aks update -g MyResourceGroup -n MyManagedCluster [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
 ```
 或者，如果首先创建组并添加成员，则可以使用以下命令在创建时间启用 Azure AD 组，
 
 ```azurecli-interactive
-az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-group-object-ids <id1,id2>] [--aad-tenant-id <id>]
+az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
 ```
 
 成功创建 Azure AD v2 群集在响应正文中具有以下部分

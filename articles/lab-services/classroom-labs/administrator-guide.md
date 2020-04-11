@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 8608aaab7bb8b6d10e67f27678c17f20a6c243da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ce7ef15f0bf13182e4799fb640e83136d0d4695
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370853"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115025"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure 实验室服务 - 管理员指南
 管理大学云资源的信息技术 （IT） 管理员通常负责为其学校设置实验室帐户。 设置实验室帐户后，管理员或教育工作者将创建实验室帐户中包含的教室实验室。 本文提供了所涉及的 Azure 资源的高级概述以及创建这些资源的指导。
@@ -156,6 +156,9 @@ ms.locfileid: "80370853"
        
     当**没有**VNet 对等和[实验室创建者可以选择实验室位置](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location)时，实验室创建者可以选择的位置将基于可用容量。
 
+> [!NOTE]
+> 为了帮助确保区域有足够的 VM 容量，请务必首先通过实验室帐户或创建实验室时请求容量。
+
 常规规则是将资源的区域设置为最接近其用户的区域。 对于课堂实验室，这意味着创建离学生最近的教室实验室。 对于学生遍布世界各地的在线课程，您需要使用最佳判断力创建位于中心位置的教室实验室。 或者，根据学生区域将班级拆分为多个教室实验室。
 
 ### <a name="shared-image-gallery"></a>共享映像库
@@ -169,7 +172,7 @@ ms.locfileid: "80370853"
 | ---- | ----- | ------ | ------------- |
 | 小型| <ul><li>双核</li><li>3.5 GB 内存</li> | [Standard_A2_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | 此大小最适合命令行、打开 Web 浏览器、低流量 Web 服务器、中小型数据库。 |
 | 中型 | <ul><li>4 核心</li><li>7 GB 内存</li> | [Standard_A4_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | 此大小最适合关系数据库、内存缓存和分析。 |
-| 中等（嵌套虚拟化） | <ul><li>4 核心</li><li>16 GB 内存</li></ul> | [Standard_DC4s_v2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | 此大小最适合关系数据库、内存缓存和分析。  此大小还支持嵌套虚拟化。 |
+| 中等（嵌套虚拟化） | <ul><li>4 核心</li><li>16 GB 内存</li></ul> | [Standard_D4s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | 此大小最适合关系数据库、内存缓存和分析。  此大小还支持嵌套虚拟化。 |
 | 大型 | <ul><li>8 核</li><li>32 GB 内存</li></ul>  | [Standard_DC8_v2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | 此大小最适合需要更快 CPU、更好的本地磁盘性能、大型数据库和大型内存缓存的应用程序。  此大小还支持嵌套虚拟化。 |
 | 小型 GPU（可视化） | <ul><li>6 核心</li><li>56 GB 内存</li>  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | 此大小最适合使用 OpenGL 和 DirectX 等框架进行远程可视化、流式传输、游戏和编码。 |
 | 小型 GPU（计算） | <ul><li>6 核心</li><li>56 GB 内存</li></ul>  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |此尺寸最适合计算机密集型应用，如人工智能和深度学习。 |

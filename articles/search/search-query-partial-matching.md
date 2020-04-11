@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/02/2020
-ms.openlocfilehash: faafc1e12f0703c38b4e602700b1e775bf13a061
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.date: 04/09/2020
+ms.openlocfilehash: db60a864ff29ff9eccdcfbdc0bd63587375d4bbd
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998333"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114968"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>具有特殊字符的部分术语搜索和模式（通配符、正则表达式、模式）
 
-*部分术语搜索*是指由术语片段组成的查询，例如字符串的第一个、最后一个或内部部分。 *模式*可能是片段的组合，有时具有特殊字符（如破折号或斜杠）是查询的一部分。 常见用例包括查询电话号码、URL、人员或产品代码或复合词的某些部分。
+*部分术语搜索*是指由术语片段组成的查询，其中您可能只有术语的开头、中间或结尾（有时称为前缀、内缀或后缀查询），而不是整个术语片段。 *模式*可能是片段的组合，通常具有特殊字符，如作为查询字符串的一部分的斜杠或斜杠。 常见用例包括查询电话号码、URL、人员或产品代码或复合词的某些部分。
 
-如果索引没有模式匹配所需的格式的字词，则部分搜索可能会有问题。 在索引的文本分析阶段，使用默认标准分析器，将丢弃特殊字符，将复合字符串和复合字符串拆分，导致找不到匹配时模式查询失败。 例如，电话号码`+1 (425) 703-6214`（令牌化为`"1"`，、、）`"425"``"703"``"6214"`不会显示在`"3-62"`查询中，因为索引中实际上不存在该内容。 
+如果索引没有预期格式的术语，则部分和模式搜索可能会有问题。 在索引的[词法分析阶段](search-lucene-query-architecture.md#stage-2-lexical-analysis)（假设默认标准分析器），将丢弃特殊字符，拆分复合字符串和复合字符串，删除空白;当找不到匹配项时，所有这些都可能导致模式查询失败。 例如，电话号码`+1 (425) 703-6214`（令牌化为`"1"`，、、）`"425"``"703"``"6214"`不会显示在`"3-62"`查询中，因为索引中实际上不存在该内容。 
 
 解决方案是调用保留完整字符串（如有必要）包括空格和特殊字符的分析器，以便可以匹配部分术语和模式。 为完整字符串创建附加字段，以及使用内容保留分析器，是解决方案的基础。
 
@@ -27,21 +27,21 @@ ms.locfileid: "80998333"
 
 在 Azure 认知搜索中，部分搜索和模式以以下形式提供：
 
-+ [前缀搜索](query-simple-syntax.md#prefix-search)，`search=cap*`如 ，匹配"Cap'n Jack 的海滨旅馆"或"Gacc 资本"。 您可以使用简单的查询语法进行前缀搜索。
++ [前缀搜索](query-simple-syntax.md#prefix-search)，`search=cap*`如 ，匹配"Cap'n Jack 的海滨旅馆"或"Gacc 资本"。 您可以使用简单的查询语法或完整的 Lucene 查询语法进行前缀搜索。
 
-+ [通配符搜索](query-lucene-syntax.md#bkmk_wildcard)或用于搜索嵌入字符串的模式或部分（包括后缀）的[正则表达式](query-lucene-syntax.md#bkmk_regex)。 通配符和正则表达式需要完整的 Lucene 语法。 
++ [通配符搜索](query-lucene-syntax.md#bkmk_wildcard)或用于搜索嵌入字符串的模式或部分的[正则表达式](query-lucene-syntax.md#bkmk_regex)。 通配符和正则表达式需要完整的 Lucene 语法。 后缀和索引查询被表述为正则表达式。
 
-  部分术语搜索的一些示例包括以下内容。 对于后缀查询，给定术语"字母数字"，您将使用通配符搜索 （）`search=/.*numeric.*/`来查找匹配项。 对于包含字符（如 URL 片段）的部分术语，可能需要添加转义字符。 在 JSON 中，`/`向前斜杠用向后斜杠`\`转出。 因此，URL`search=/.*microsoft.com\/azure\/.*/`片段的语法"microsoft.com/azure/"。
+  部分术语搜索的一些示例包括以下内容。 对于后缀查询，给定术语"字母数字"，您将使用通配符搜索 （）`search=/.*numeric.*/`来查找匹配项。 对于包含内部字符（如 URL 片段）的部分术语，可能需要添加转义字符。 在 JSON 中，`/`向前斜杠用向后斜杠`\`转出。 因此，URL`search=/.*microsoft.com\/azure\/.*/`片段的语法"microsoft.com/azure/"。
 
 如前所述，上述所有要求索引包含有利于模式匹配的格式的字符串，而标准分析器未提供这种格式。 通过按照本文中的步骤，可以确保存在支持这些方案所需的内容。
 
-## <a name="solving-partial-search-problems"></a>解决部分搜索问题
+## <a name="solving-partialpattern-search-problems"></a>解决部分/模式搜索问题
 
-当您需要搜索模式或特殊字符时，可以使用在更简单的标记规则下操作的自定义分析器覆盖默认分析器，保留整个字符串。 退后一步，该方法如下所示：
+当您需要搜索片段、模式或特殊字符时，可以使用在更简单的标记规则下操作的自定义分析器覆盖默认分析器，保留整个字符串。 退后一步，该方法如下所示：
 
 + 定义一个字段以存储字符串的完整版本（假定您需要分析和非分析文本）
-+ 选择预定义的分析器或定义自定义分析器以输出完整字符串
-+ 将分析器分配给字段
++ 选择预定义的分析器或定义自定义分析器以输出未分析的完整字符串
++ 将自定义分析器分配给字段
 + 生成和测试索引
 
 > [!TIP]
@@ -222,6 +222,10 @@ ms.locfileid: "80998333"
 + [测试分析器](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)是在[选择分析器](#choose-an-analyzer)中引入的。 使用各种分析器测试索引中的某些字符串，以了解术语如何标记化。
 
 + [搜索文档](https://docs.microsoft.com/rest/api/searchservice/search-documents)解释了如何使用[简单的语法](query-simple-syntax.md)或通配符和正则表达式[使用完整的 Lucene 语法](query-lucene-syntax.md)构造查询请求。
+
+  对于部分术语查询（如查询"3-6214"以在"+1 （425） 703-6214"上查找匹配项，可以使用简单的语法： `search=3-6214&queryType=simple`。
+
+  对于内缀和后缀查询（如查询"num"或"数字以查找"字母数字"上的匹配项），请使用完整的 Lucene 语法和正则表达式：`search=/.*num.*/&queryType=full`
 
 ## <a name="tips-and-best-practices"></a>提示和最佳实践
 

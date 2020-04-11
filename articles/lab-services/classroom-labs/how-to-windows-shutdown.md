@@ -10,12 +10,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 3/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 39ff4f42457451dfa4aae90b281d6b163c56b4cd
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 7b839df5940ab26e5c1a99a1bda1fbd2545f8cc4
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80522233"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113119"
 ---
 # <a name="guide-to-controlling-windows-shutdown-behavior"></a>控制 Windows 关机行为指南
 
@@ -58,7 +58,7 @@ Windows 提供**本地组策略**设置，可用于设置时间限制，以便�
 
 ```powershell
 # The MaxIdleTime is in milliseconds; by default, this script sets MaxIdleTime to 15 minutes.
-$maxIdleTime = 15 * 60 * 90
+$maxIdleTime = 15 * 60 * 1000
 
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" -Name "MaxIdleTime" -Value $maxIdleTime -Force
 ```
@@ -79,6 +79,9 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Se
     ![空闲会话限制](../media/how-to-windows-shutdown/edit-idle-time-limit.png)
 
 1. 最后，要将此行为与**断开连接设置上的自动关机**相结合，应按照操作方法文章中的步骤：[在断开连接时启用 VM 的自动关闭](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)。
+
+> [!WARNING]
+> 使用 PowerShell 直接或手动使用组策略编辑器配置此设置后，必须首先重新启动 VM，使设置生效。  此外，如果使用注册表配置设置，组策略编辑器并不总是刷新以反映对注册表设置的更改;因此，如果使用注册表配置设置，则组策略编辑器不会始终刷新以反映对注册表设置的更改。但是，注册表设置仍按预期生效，在指定的时间长度空闲时，您将看到 RDP 会话断开连接。
 
 ## <a name="remove-windows-shutdown-command-from-start-menu"></a>从"开始"菜单中删除 Windows 关机命令
 

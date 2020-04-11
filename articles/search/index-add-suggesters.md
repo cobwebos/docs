@@ -1,54 +1,50 @@
 ---
-title: 将自动提示查询添加到索引
+title: 创建建议器
 titleSuffix: Azure Cognitive Search
 description: 通过创建建议器并构建调用自动完成或自动建议的查询字词的请求，在 Azure 认知搜索中启用自动提示查询操作。
 manager: nitinme
-author: Brjohnstmsft
-ms.author: brjohnst
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: a312068d5c8c574e7b069263cf37e3b855810e4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/10/2020
+ms.openlocfilehash: a6c4051a5b3d557f9ac2927a62492425e7636c0d
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72790107"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113473"
 ---
-# <a name="add-suggesters-to-an-index-for-typeahead-in-azure-cognitive-search"></a>将建议器添加到 Azure 认知搜索中的自动提示索引
+# <a name="create-a-suggester-to-enable-autocomplete-and-suggestions-in-azure-cognitive-search"></a>创建建议程序以在 Azure 认知搜索中启用自动完成和建议
 
-在 Azure 认知搜索中，“一边键入，一边搜索”或自动提示功能基于添加到[搜索索引](search-what-is-an-index.md)的**建议器**构造。 该构造是你要对其启用自动提示的一个或多个字段的列表。
+在 Azure 认知搜索中，“一边键入，一边搜索”或自动提示功能基于添加到[搜索索引](search-what-is-an-index.md)的**建议器**构造。 建议程序支持两个"即用即用"搜索变体：*自动完成*，它完成要键入的术语或短语，以及返回匹配文档的简短列表*的建议*。  
 
-建议器支持两种自动提示变体：自动完成 - 完成你正在键入的字词或短语；建议 - 返回匹配文档的简短列表。****  
-
-以下屏幕截图取自[在 C# 中创建第一个应用](tutorial-csharp-type-ahead-and-suggestions.md)示例，其中演示了自动提示。 自动完成功能将预测用户可能会在搜索框中键入的内容。 实际输入为“tw”，自动完成功能补充了“in”，因此预测的搜索词为“twin”。 建议内容在下拉列表中可视化。 对于建议，可以显示文档中最恰当地描述了结果的任何部分。 在本示例中，建议内容是酒店名称。 
+以下屏幕截图（来自[C# 示例中的第一个应用](tutorial-csharp-type-ahead-and-suggestions.md)）说明了这两种体验。 自动完成预测用户可能键入的内容，以"in"作为潜在搜索词完成"tw"。 建议是实际搜索结果，每个搜索结果表示匹配的文档。 对于建议，可以显示文档中最恰当地描述了结果的任何部分。 在此示例中，建议由酒店名称字段表示。
 
 ![自动完成和建议查询的直观比较](./media/index-add-suggesters/hotel-app-suggestions-autocomplete.png "自动完成和建议查询的直观比较")
 
 有一个索引和查询组件可在 Azure 认知搜索中实现这些行为。 
 
-+ 在索引中，将建议器添加到索引。 可以使用门户、[REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) 或 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet)。 本文的余下内容重点介绍如何创建建议器。 
++ 在索引中，将建议器添加到索引。 可以使用门户、[REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) 或 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet)。 本文的余下内容重点介绍如何创建建议器。
 
 + 在查询请求中，调用[下面列出的 API](#how-to-use-a-suggester) 之一。
 
 可按字段启用“一边键入，一边搜索”支持。 若要获得屏幕截图中所示的类似体验，可以在同一搜索解决方案中实现这两种自动提示行为。 这两个请求针对特定索引的文档集合，在用户提供至少包含三个字符的输入字符串后，将返回响应。**
 
+## <a name="what-is-a-suggester"></a>什么是建议者？
+
+建议程序是一种数据结构，通过存储用于在部分查询上匹配的前缀，支持按类型搜索行为。 与标记化术语类似，前缀存储在倒置索引中，对于建议器字段集合中指定的每个字段一个。
+
+创建前缀时，建议器有自己的分析链，类似于用于全文搜索的分析链。 但是，与全文搜索中的分析不同，建议器只能使用预定义的分析器（标准 Lucene、[语言分析器](index-add-language-analyzers.md)或[预定义分析器列表中的其他分析器](index-add-custom-analyzers.md#predefined-analyzers-reference)）。 [自定义分析器](index-add-custom-analyzers.md)和配置是特别不允许的，以避免产生不良结果的随机配置。
+
+> [!NOTE]
+> 如果需要解决分析器约束，请使用两个单独的字段来访问同一内容。 这样，就可以在其中一个字段中使用建议器，并使用自定义分析器配置来设置其他字段。
+
 ## <a name="create-a-suggester"></a>创建建议器
 
 虽然建议器有多个属性，但它主要是你要为其启用自动提示体验的字段集合。 例如，旅行应用可能需要针对目的地、城市和旅游胜地启用提前键入。 因此，所有三个字段都会进入字段集合中。
 
-若要创建建议器，请将一个建议器添加到索引架构。 一个索引只能包含一个建议器（具体而言，建议器集合中只能有一个建议器）。 
+若要创建建议器，请将一个建议器添加到索引架构。 一个索引只能包含一个建议器（具体而言，建议器集合中只能有一个建议器）。
 
 ### <a name="when-to-create-a-suggester"></a>何时创建建议器
 
@@ -79,7 +75,6 @@ ms.locfileid: "72790107"
   }
   ```
 
-
 ### <a name="create-using-the-net-sdk"></a>使用 .NET SDK 创建
 
 在 C# 中定义[建议器对象](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet)。 `Suggesters` 是一个集合，但它只能采用一个项。 
@@ -105,18 +100,11 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 
 ### <a name="property-reference"></a>属性参考
 
-|properties      |描述      |
+|Property      |说明      |
 |--------------|-----------------|
 |`name`        |建议器的名称。|
 |`searchMode`  |用于搜索候选短语的策略。 当前唯一受支持的模式是 `analyzingInfixMatching`，此模式在句子开头或中间执行短语的灵活匹配。|
 |`sourceFields`|作为建议内容源的一个或多个字段的列表。 字段的类型必须是 `Edm.String` 和 `Collection(Edm.String)`。 如果在字段中指定某个分析器，该分析器必须是[此列表](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet)中指定的分析器（而不是自定义分析器）。<p/>作为最佳做法，请仅指定有助于生成预期相应响应的字段，无论该响应是搜索栏还是下拉列表中的已完成字符串。<p/>酒店名称就是一很好的候选项，因为它很精确。 说明和注释等详细字段过于密集。 同样，类别和标记等重复性字段的效率较低。 在示例中，我们仍然包含了“category”来演示可以包含多个字段。 |
-
-### <a name="analyzer-restrictions-for-sourcefields-in-a-suggester"></a>建议器中 sourceFields 的分析器限制
-
-Azure 认知搜索将分析字段内容，以支持对单个字词进行查询。 建议器除了需要完整的术语外，还需要为前缀编制索引，这需要对源字段进行额外的分析。 自定义分析器配置可以组合任何不同的 tokenizer 和筛选器，其方式常常使生成建议所需的前缀变得不可能。 因此，Azure 认知搜索会阻止将具有自定义分析器的字段包含在建议器中。
-
-> [!NOTE] 
->  如果需要解决上述限制，请对相同的内容使用两个不同的字段。 这样，就可以在其中一个字段中使用建议器，并使用自定义分析器配置来设置其他字段。
 
 <a name="how-to-use-a-suggester"></a>
 

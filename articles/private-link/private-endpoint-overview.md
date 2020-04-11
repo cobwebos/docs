@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: b8f55b0693b7ffdf10516cfb19b67ccc5a94dc5a
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: d10b6c52310da3d799a7fe78c83284960318f82e
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742911"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115247"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
@@ -22,9 +22,9 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
  专用终结点指定以下属性： 
 
 
-|properties  |说明 |
+|Property  |说明 |
 |---------|---------|
-|名称    |    资源组中的唯一名称。      |
+|“属性”    |    资源组中的唯一名称。      |
 |子网    |  虚拟网络中要部署和分配专用 IP 地址的子网。 有关子网要求，请参阅本文中的“限制”部分。         |
 |专用链接资源    |   用于通过可用类型列表中的资源 ID 或别名建立连接的专用链接资源。 将为发送到此资源的所有流量生成唯一的网络标识符。       |
 |目标子资源   |      要连接的子资源。 每个专用链接资源类型具有不同的选项，可根据偏好做出选择。    |
@@ -53,7 +53,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 |专用链接资源名称  |资源类型   |子资源  |
 |---------|---------|---------|
 |**专用链接服务**（你自己的服务）   |  Microsoft.Network/privateLinkServices       | empty |
-|**Azure SQL Database** | Microsoft.Sql/servers    |  Sql Server (sqlServer)        |
+|**Azure SQL 数据库** | Microsoft.Sql/servers    |  Sql Server (sqlServer)        |
 |**Azure Synapse Analytics** | Microsoft.Sql/servers    |  Sql Server (sqlServer)        | 
 |**Azure 存储**  | Microsoft.Storage/storageAccounts    |  Blob（blob、blob_secondary）<BR> 表（table、table_secondary）<BR> 队列（queue、queue_secondary）<BR> 文件（file、file_secondary）<BR> Web（web、web_secondary）        |
 |**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  Blob（blob、blob_secondary）<BR> Data Lake File System Gen2（dfs、dfs_secondary）       |
@@ -113,7 +113,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 > [!IMPORTANT]
 > 不建议替代正在用于解析公共终结点的区域。 在不 DNS 转发到公共 DNS 的情况下，与资源的连接无法正确解析。 若要避免出现问题，请创建不同的域名，或对以下每个服务采用建议的名称。 
  
-对于 Azure 服务，请根据下表中所述使用建议的区域名称：
+对于 Azure 服务，请使用下表中所述的区域名称：
 
 |专用链接资源类型   |子资源  |区域名称  |
 |---------|---------|---------|
