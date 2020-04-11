@@ -145,8 +145,6 @@
               href: service-fabric-containers-overview.md
             - name: Docker Compose（预览）
               href: service-fabric-docker-compose.md
-            - name: 资源调控
-              href: service-fabric-resource-governance.md
         - name: Reliable Services
           items:
             - name: Reliable Services 概述
@@ -193,6 +191,8 @@
               href: service-fabric-reliable-actors-notes-on-actor-type-serialization.md
         - name: 来宾可执行文件
           href: service-fabric-guest-executables-introduction.md
+        - name: 资源调控
+          href: service-fabric-resource-governance.md
     - name: 应用程序和服务
       items:
         - name: 应用程序模型
@@ -408,8 +408,6 @@
           items:
             - name: Docker Compose（预览）
               href: service-fabric-docker-compose.md
-            - name: 容器和服务的资源调控
-              href: service-fabric-resource-governance.md
             - name: 卷和日志记录驱动程序
               href: service-fabric-containers-volume-logging-drivers.md
             - name: 查看容器日志
