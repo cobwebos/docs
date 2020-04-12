@@ -190,7 +190,7 @@
       href: pricing-concepts.md
     - name: 命名规则
       href: naming-rules.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 作者
       items:
@@ -236,7 +236,7 @@
           href: connector-azure-database-for-postgresql.md
         - name: Azure 文件存储
           href: connector-azure-file-storage.md
-        - name: Azure SQL 数据库
+        - name: Azure SQL Database
           href: connector-azure-sql-database.md
         - name: Azure SQL 数据库托管实例
           href: connector-azure-sql-database-managed-instance.md
@@ -489,7 +489,7 @@
       items:
         - name: 转换概述
           href: data-flow-transformation-overview.md
-        - name: Aggregate
+        - name: 聚合
           href: data-flow-aggregate.md
         - name: 更改行
           href: data-flow-alter-row.md
@@ -499,11 +499,11 @@
           href: data-flow-derived-column.md
         - name: Exists
           href: data-flow-exists.md
-        - name: “筛选器”
+        - name: 筛选器
           href: data-flow-filter.md
         - name: 平展
           href: data-flow-flatten.md
-        - name: Join
+        - name: 联接
           href: data-flow-join.md
         - name: 查找
           href: data-flow-lookup.md
@@ -607,6 +607,8 @@
           href: configure-bcdr-azure-ssis-integration-runtime.md
         - name: 使用弹性数据库作业清理 SSISDB 日志
           href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
+        - name: 通过 SSMS 迁移 SSIS 作业
+          href: how-to-migrate-ssis-job-ssms.md
     - name: 创建触发器
       items:
         - name: 创建基于事件的触发器

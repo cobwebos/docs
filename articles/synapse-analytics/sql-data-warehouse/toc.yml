@@ -31,12 +31,10 @@
           href: create-data-warehouse-portal.md
         - name: PowerShell
           href: create-data-warehouse-powershell.md
-    - name: 暂停和恢复
+    - name: 加载数据
       items:
-        - name: 门户
-          href: pause-and-resume-compute-portal.md
-        - name: PowerShell
-          href: pause-and-resume-compute-powershell.md
+        - name: COPY 语句
+          href: quickstart-bulk-load-copy-tsql.md
     - name: 缩放
       items:
         - name: 门户
@@ -55,6 +53,12 @@
           items:
             - name: T-SQL
               href: quickstart-configure-workload-isolation-tsql.md
+    - name: 暂停和恢复
+      items:
+        - name: 门户
+          href: pause-and-resume-compute-portal.md
+        - name: PowerShell
+          href: pause-and-resume-compute-powershell.md
 - name: 概念
   items:
     - name: 安全性
@@ -183,7 +187,7 @@
               href: sql-data-warehouse-tables-index.md
             - name: 标识
               href: sql-data-warehouse-tables-identity.md
-            - name: “度量值组”
+            - name: 分区
               href: sql-data-warehouse-tables-partition.md
             - name: 复制表
               href: design-guidance-for-replicated-tables.md
@@ -245,7 +249,7 @@
           href: backup-and-restore.md
         - name: 建议
           href: sql-data-warehouse-concept-recommendations.md
-        - name: 故障排除
+        - name: 疑难解答
           href: sql-data-warehouse-troubleshoot.md
     - name: 维护计划
       href: maintenance-scheduling.md
@@ -253,7 +257,7 @@
       items:
         - name: 概述
           href: sql-data-warehouse-overview-integrate.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 安全
       items:
@@ -355,7 +359,7 @@
           items:
             - name: 使用 Power BI 进行可视化
               href: sql-data-warehouse-get-started-visualize-with-power-bi.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 连接
           href: sql-data-warehouse-troubleshoot-connectivity.md

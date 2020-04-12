@@ -114,12 +114,6 @@
               href: index-add-language-analyzers.md
             - name: 添加自定义分析器
               href: index-add-custom-analyzers.md
-        - name: 提前键入
-          items:
-            - name: 创建建议器
-              href: index-add-suggesters.md
-            - name: 添加建议或自动完成
-              href: search-autocomplete-tutorial.md
         - name: 同义词
           items:
             - name: 添加同义词
@@ -230,6 +224,14 @@
           href: search-query-lucene-examples.md
         - name: 部分词和特殊字符
           href: search-query-partial-matching.md
+        - name: 模糊搜索
+          href: search-query-fuzzy.md
+        - name: 自动完成“键入时搜索”
+          items:
+            - name: 创建建议器
+              href: index-add-suggesters.md
+            - name: 添加建议或自动完成
+              href: search-autocomplete-tutorial.md
         - name: 从 Power Apps 查询
           href: search-howto-powerapps.md
         - name: 语法参考

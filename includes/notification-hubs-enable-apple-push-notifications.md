@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/10/2020
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: bf2596f5a8e287799285f97f3d1be9f3fe10f644
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a9e8574ea2d7222871c7f065383e6c0c62057dd3
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77123207"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "81007826"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>生成证书签名请求文件
 
@@ -74,11 +74,21 @@ Apple Push Notification 服务 (APNs) 使用证书对推送通知进行身份验
 
 4. 在“Certificates, Identifiers & Profiles”（证书、标识符和配置文件）  页的“Identifiers”（标识符）  下，找到你刚刚创建的应用 ID 行项，并选择其所在的行以显示“Edit your App ID Configuration”（编辑应用 ID 配置）  屏幕。
 
-5. 向下滚动到选中的“Push Notifications”（推送通知）  选项，然后选择“Configure”（配置）  以创建证书。
+## <a name="creating-a-certificate-for-notification-hubs"></a>为通知中心创建证书
+必须有证书才能使通知中心与 APNS  配合工作。 可通过以下两种方式之一实现此目的：
+
+1. 创建可以直接上传到通知中心的 .p12  。  
+2. 创建可用于[基于令牌的身份验证](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-http2-token-authentification)的 .p8  （较新的方法  ）。
+
+如[基于令牌 (HTTP/2) 的 APNS 身份验证](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-http2-token-authentification)中所述，较新的方法（与使用证书相比）有很多好处。 不过，下面为这两种方法都提供了步骤。 
+
+### <a name="option-1-creating-a-p12-push-certificate-that-can-be-uploaded-directly-to-notification-hub"></a>选项 1：创建可以直接上传到通知中心的 .p12 推送证书
+
+1. 向下滚动到选中的“Push Notifications”（推送通知）  选项，然后选择“Configure”（配置）  以创建证书。
 
     ![编辑应用 ID 页](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-edit-appid.png)
 
-6. 此时将显示“Apple Push Notification service SSL Certificates”（Apple 推送通知服务 SSL 证书）  窗口。 选择“Development SSL Certificate”（开发 SSL 证书）  部分下的“Create Certificate”（创建证书）  按钮。
+2. 此时将显示“Apple Push Notification service SSL Certificates”（Apple 推送通知服务 SSL 证书）  窗口。 选择“Development SSL Certificate”（开发 SSL 证书）  部分下的“Create Certificate”（创建证书）  按钮。
 
     ![“为应用 ID 创建证书”按钮](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-create-cert.png)
 
@@ -87,9 +97,9 @@ Apple Push Notification 服务 (APNs) 使用证书对推送通知进行身份验
     > [!NOTE]
     > 本教程使用开发证书。 注册生产证书时使用相同的过程。 只需确保在发送通知时使用相同的证书类型。
 
-1. 选择“Choose File”（选择文件），浏览到在第一个任务中保存 CSR 文件的位置，然后双击证书名以加载该证书。  然后选择“继续”。 
+3. 选择“Choose File”（选择文件），浏览到在第一个任务中保存 CSR 文件的位置，然后双击证书名以加载该证书。  然后选择“继续”。 
 
-1. 当门户创建证书后，请选择“Download”（下载）按钮。  保存证书，并记住保存证书的位置。
+4. 当门户创建证书后，请选择“Download”（下载）按钮。  保存证书，并记住保存证书的位置。
 
     ![已生成证书的下载页](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-download-cert.png)
 
@@ -100,14 +110,14 @@ Apple Push Notification 服务 (APNs) 使用证书对推送通知进行身份验
     > [!NOTE]
     > 默认情况下，下载的开发证书名为 **aps_development.cer**。
 
-1. 双击下载的推送证书 **aps_development.cer**。 此操作将在密钥链中安装新证书，如下图所示：
+5. 双击下载的推送证书 **aps_development.cer**。 此操作将在密钥链中安装新证书，如下图所示：
 
     ![Keychain Access 证书列表，显示了新证书](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-in-keychain.png)
 
     > [!NOTE]
     > 证书中的名称可能会不同，但会以 **Apple Development iOS Push Services** 作为前缀。
 
-1. 在 Keychain Access 中，右键单击在“Certificates”（证书）类别中创建的新推送证书。  选择“Export”（导出），为文件命名，选择“.p12”格式，并选择“Save”（保存）。   
+6. 在 Keychain Access 中，右键单击在“Certificates”（证书）类别中创建的新推送证书。  选择“Export”（导出），为文件命名，选择“.p12”格式，并选择“Save”（保存）。   
 
     ![将证书作为 p12 格式导出](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-export-cert-p12.png)
 
@@ -115,6 +125,45 @@ Apple Push Notification 服务 (APNs) 使用证书对推送通知进行身份验
 
     > [!NOTE]
     > 你的 .p12 文件名和位置可能不同于本教程中所示的名称和位置。
+
+### <a name="option-2-creating-a-p8-certificate-that-can-be-used-for-token-based-authentication"></a>选项 2：创建可用于基于令牌的身份验证的 .p8 证书
+
+1. 请记下以下详细信息：
+
+    - 应用 ID 前缀  （这是团队 ID  ）
+    - 捆绑包 ID 
+    
+2. 返回到“证书、标识符和配置文件”  ，单击“密钥”  。
+
+   > [!NOTE]
+   > 如果已为 APNS  配置了密钥，则可以重复使用在创建后立即下载的 .p8 证书。 如果是这样，则可以忽略步骤 3  到步骤 5  。
+
+3. 单击 **+** 按钮（或“创建密钥”  按钮）以创建新密钥。
+4. 提供合适的“密钥名称”  值，选中“Apple 推送通知服务(APNs)”  选项，然后单击“继续”  ，接下来在下一个屏幕上单击“注册”  。
+5. 单击“下载”  ，然后将 .p8  文件（前缀为 AuthKey_  ）移动到安全的本地目录，然后单击“完成”  。
+
+   > [!NOTE] 
+   > 请确保将 .p8 文件保存在安全的地方（并保存备份）。 密钥在下载后无法重新下载，因为服务器副本已删除。
+  
+6. 在“密钥”  上，单击刚创建的密钥（如果已选择使用现有密钥，则改为单击现有密钥）。
+7. 记下“密钥 ID”值。 
+8. 在所选的合适应用程序（如 [**Visual Studio Code**](https://code.visualstudio.com)）中打开 .p8 证书，然后记下密钥值。 这是“-----BEGIN PRIVATE KEY-----”  和“-----END PRIVATE KEY-----”  之间的值。
+
+    ```
+    -----BEGIN PRIVATE KEY-----
+    <key_value>
+    -----END PRIVATE KEY-----
+    ```
+
+    > [!NOTE]
+    > 这是稍后将用于配置通知中心的令牌值   。 
+
+完成这些步骤后，你应具有稍后要在[使用 APNs 信息配置通知中心](#configure-your-notification-hub-with-apns-information)中使用的以下信息：
+
+- 团队 ID  （请参阅步骤 1）
+- 捆绑包 ID  （请参阅步骤 1）
+- 密钥 ID  （请参阅步骤 7）
+- 令牌值  ，即 .p8 密钥值（请参阅步骤 8）
 
 ## <a name="create-a-provisioning-profile-for-the-app"></a>为应用程序创建配置文件
 
@@ -153,13 +202,18 @@ Apple Push Notification 服务 (APNs) 使用证书对推送通知进行身份验
 
 ## <a name="create-a-notification-hub"></a>创建通知中心
 
-在本部分，我们创建一个通知中心，并使用以前创建的 .p12 推送证书配置 APNs 身份验证。 如果想要使用已创建的通知中心，可以跳到步骤 5。
+在本部分将创建一个通知中心，并使用 .p12 推送证书或基于令牌的身份验证来配置 APNs 身份验证。 如果想要使用已创建的通知中心，可以跳到步骤 5。
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](notification-hubs-portal-create-new-hub.md)]
 
 ## <a name="configure-your-notification-hub-with-apns-information"></a>使用 APNs 信息配置通知中心
 
-1. 在“通知服务”下选择“Apple (APNS)”。  
+在“Notification Services”  下，选择“Apple (APNS)”  ，然后根据以前在[为通知中心创建证书](#creating-a-certificate-for-notification-hubs)部分中选择的方法，执行相应的步骤。  
+
+> [!NOTE]
+> 仅当希望将推送通知发送给已从应用商店购买应用的用户时，才应当对“应用程序模式”使用“生产”。  
+
+### <a name="option-1-using-a-p12-push-certificate"></a>选项 1：使用 .p12 推送证书
 
 1. 选择“证书”。 
 
@@ -169,10 +223,23 @@ Apple Push Notification 服务 (APNs) 使用证书对推送通知进行身份验
 
 1. 如果需要，请指定正确的密码。
 
-1. 选择“沙盒”  模式。 仅当希望将推送通知发送给从应用商店购买应用的用户时，才应使用“生产”模式。 
+1. 选择“沙盒”  模式。
 
     ![在 Azure 门户中配置 APNs 证书](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-apple-config-cert.png)
 
 1. 选择“保存”。 
+
+### <a name="option-2-using-token-based-authentication"></a>选项 2：使用基于令牌的身份验证
+
+1. 选择“令牌”  。
+1. 输入前面获取的以下值：
+
+    - 密钥 ID 
+    - 捆绑包 ID 
+    - 团队 ID 
+    - 令牌  
+
+1. 选择“沙盒” 
+1. 选择“保存”。  
 
 现在已使用 APNs 配置通知中心。 此外还有了用于注册应用和发送推送通知的连接字符串。
