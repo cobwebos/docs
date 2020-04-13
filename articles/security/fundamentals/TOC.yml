@@ -85,9 +85,9 @@
     - name: 数据库安全
       items:
         - name: 概述
-          href: database-security-overview.md
+          href: ../../sql-database/sql-database-security-overview.md
         - name: 最佳做法
-          href: database-best-practices.md
+          href: ../../sql-database/sql-database-security-best-practice.md
         - name: 安全清单
           href: database-security-checklist.md
     - name: 存储安全指南
@@ -115,6 +115,8 @@
       href: log-audit.md
     - name: 安全管理和监视
       href: management-monitoring-overview.md
+    - name: 增强远程管理
+      href: management.md
     - name: 运营安全
       items:
         - name: 概述

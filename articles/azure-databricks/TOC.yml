@@ -32,7 +32,7 @@
     - name: Azure Databricks 概念
       href: /azure/databricks/getting-started/concepts
       maintainContext: true
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 语言指南
       items:
@@ -1007,6 +1007,40 @@
         - name: 安全概述
           href: /azure/databricks/security/index
           maintainContext: true
+        - name: 访问控制
+          items:
+            - name: 访问控制概述
+              href: /azure/databricks/security/access-control/index
+              maintainContext: true
+            - name: 工作区访问控制
+              href: /azure/databricks/security/access-control/workspace-acl
+              maintainContext: true
+            - name: 群集访问控制
+              href: /azure/databricks/security/access-control/cluster-acl
+              maintainContext: true
+            - name: 池访问控制
+              href: /azure/databricks/security/access-control/pool-acl
+              maintainContext: true
+            - name: 作业访问控制
+              href: /azure/databricks/security/access-control/job-acl
+              maintainContext: true
+            - name: 表访问控制
+              items:
+                - name: 表访问控制概述
+                  href: /azure/databricks/security/access-control/table-acls/index
+                  maintainContext: true
+                - name: 为群集启用表访问控制
+                  href: /azure/databricks/security/access-control/table-acls/table-acl
+                  maintainContext: true
+                - name: 数据对象特权
+                  href: /azure/databricks/security/access-control/table-acls/object-privileges
+                  maintainContext: true
+            - name: 机密访问控制
+              href: /azure/databricks/security/access-control/secret-acl
+              maintainContext: true
+        - name: 使用 Azure Active Directory 凭据向 Azure Data Lake Storage 进行身份验证
+          href: /azure/databricks/security/credential-passthrough/adls-passthrough
+          maintainContext: true
         - name: 机密
           items:
             - name: 使用机密确保数据安全
@@ -1018,9 +1052,6 @@
             - name: 机密
               href: /azure/databricks/security/secrets/secrets
               maintainContext: true
-            - name: 机密访问控制
-              href: /azure/databricks/security/secrets/secret-acl
-              maintainContext: true
             - name: 机密编修
               href: /azure/databricks/security/secrets/redaction
               maintainContext: true
@@ -1028,11 +1059,11 @@
               href: /azure/databricks/security/secrets/example-secret-workflow
               maintainContext: true
         - name: 加密群集工作器节点之间的流量
-          href: /azure/databricks/security/encrypt-otw
+          href: /azure/databricks/security/encryption/encrypt-otw
         - name: 为笔记本启用客户管理的密钥
-          href: /azure/databricks/security/customer-managed-key-notebook
+          href: /azure/databricks/security/keys/customer-managed-key-notebook
         - name: 为 DBFS 启用客户管理的密钥
-          href: /azure/databricks/security/customer-managed-keys-dbfs
+          href: /azure/databricks/security/keys/customer-managed-keys-dbfs
     - name: 管理
       items:
         - name: 管理概述
@@ -1080,28 +1111,20 @@
             - name: 访问控制概述
               href: /azure/databricks/administration-guide/access-control/index
               maintainContext: true
-            - name: 群集访问控制
+            - name: 启用工作区访问控制
+              href: /azure/databricks/administration-guide/access-control/workspace-acl
+              maintainContext: true
+            - name: 启用群集访问控制
               href: /azure/databricks/administration-guide/access-control/cluster-acl
               maintainContext: true
-            - name: 池访问控制
+            - name: 启用池访问控制
               href: /azure/databricks/administration-guide/access-control/pool-acl
               maintainContext: true
-            - name: 作业访问控制
+            - name: 启用作业访问控制
               href: /azure/databricks/administration-guide/access-control/jobs-acl
               maintainContext: true
-            - name: 表访问控制
-              items:
-                - name: 表访问控制概述
-                  href: /azure/databricks/administration-guide/access-control/table-acls/index
-                  maintainContext: true
-                - name: 启用表访问控制
-                  href: /azure/databricks/administration-guide/access-control/table-acls/table-acl
-                  maintainContext: true
-                - name: 设置对数据对象的特权
-                  href: /azure/databricks/administration-guide/access-control/table-acls/object-privileges
-                  maintainContext: true
-            - name: 工作区访问控制
-              href: /azure/databricks/administration-guide/access-control/workspace-acl
+            - name: 启用表访问控制
+              href: /azure/databricks/administration-guide/access-control/table-acl
               maintainContext: true
             - name: 启用基于令牌的身份验证
               href: /azure/databricks/administration-guide/access-control/tokens
@@ -1688,6 +1711,9 @@
           items:
             - name: 平台发行说明
               href: /azure/databricks/release-notes/product/index
+              maintainContext: true
+            - name: 2020 年 4 月
+              href: /azure/databricks/release-notes/product/2020/april
               maintainContext: true
             - name: 2020 年 3 月
               href: /azure/databricks/release-notes/product/2020/march

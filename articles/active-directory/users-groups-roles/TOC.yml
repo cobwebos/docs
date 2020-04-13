@@ -33,7 +33,7 @@
       href: /azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: 使用组管理访问权限
       href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
-- name: 操作方法指南
+- name: 操作指南
   expanded: true
   items:
     - name: 管理用户
@@ -124,6 +124,8 @@
               href: groups-create-rule.md
             - name: 动态组规则语法
               href: groups-dynamic-membership.md
+            - name: 验证成员身份规则
+              href: groups-dynamic-rule-validation.md
             - name: 更改组成员身份类型
               href: groups-change-type.md
     - name: 分配许可证
@@ -190,7 +192,7 @@
           href: linkedin-integration.md
         - name: 领英数据共享
           href: linkedin-user-consent.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 获取 Azure AD 支持
           href: /azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto?context=azure/active-directory/users-groups-roles/context/ugr-context

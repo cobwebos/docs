@@ -61,14 +61,18 @@
           href: stream-analytics-sql-output-perf.md
         - name: Blob 自定义路径模式
           href: stream-analytics-custom-path-patterns-blob-storage-output.md
-    - name: 用户定义的函数
+    - name: 使用函数扩展查询
       items:
-        - name: 机器学习 UDF
-          href: machine-learning-udf.md
-        - name: 'C# UDF'
-          href: stream-analytics-edge-csharp-udf-methods.md
+        - name: 函数概述
+          href: functions-overview.md
         - name: JavaScript UDF
           href: stream-analytics-javascript-user-defined-functions.md
+        - name: JavaScript UDA
+          href: stream-analytics-javascript-user-defined-aggregates.md
+        - name: 'C# UDF'
+          href: stream-analytics-edge-csharp-udf-methods.md
+        - name: 机器学习 UDF
+          href: machine-learning-udf.md
     - name: 优化流分析作业
       items:
         - name: 了解和调整流式处理单元
@@ -140,8 +144,6 @@
           href: stream-analytics-edge.md
         - name: 收费站传感器数据分析
           href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
-        - name: 运行 JavaScript UDA
-          href: stream-analytics-javascript-user-defined-aggregates.md
         - name: 高频交易
           href: stream-analytics-high-frequency-trading.md
         - name: 处理 IoT 流数据
