@@ -3,7 +3,7 @@ title: Azure 中 Windows VM 的计划事件
 description: Windows 虚拟机上使用 Azure 元数据服务的计划事件。
 services: virtual-machines-windows, virtual-machines-linux, cloud-services
 documentationcenter: ''
-author: ericrad
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
-ms.author: ericrad
-ms.openlocfilehash: 2b3aa5d50822863e3aa46fcf9970e0b3e67a6f69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: c1e9ef8de65912c4f33e17ee2bb2175c76e7ea07
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78944471"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258672"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure 元数据服务：适用于 Windows VM 的计划事件
 
@@ -63,12 +63,12 @@ Azure 元数据服务使用可从 VM 内访问的 REST 终结点公开有关正�
 ### <a name="version-and-region-availability"></a>版本和区域可用性
 计划事件服务受版本控制。 版本是必需的，当前版本为 `2019-01-01`。
 
-| 版本 | 发布类型 | 区域 | 发行说明 | 
+| Version | 发布类型 | 区域 | 发行说明 | 
 | - | - | - | - |
-| 2019-01-01 | 正式版 | All | <li> 添加了对虚拟机规模集事件类型"终止"的支持 |
-| 2017-11-01 | 正式版 | All | <li> 添加了对 Spot VM 逐出事件类型"抢占"的支持<br> | 
-| 2017-08-01 | 正式版 | All | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
-| 2017-03-01 | 预览 | All |<li>初始版本 |
+| 2019-01-01 | 正式版 | 全部 | <li> 添加了对虚拟机规模集事件类型"终止"的支持 |
+| 2017-11-01 | 正式版 | 全部 | <li> 添加了对 Spot VM 逐出事件类型"抢占"的支持<br> | 
+| 2017-08-01 | 正式版 | 全部 | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
+| 2017-03-01 | 预览 | 全部 |<li>初始版本 |
 
 > [!NOTE] 
 > 支持的计划事件的早期预览版发布 {最新} 为 api-version。 此格式不再受支持，并且会在未来被弃用。
@@ -85,7 +85,7 @@ Azure 元数据服务使用可从 VM 内访问的 REST 终结点公开有关正�
 
 ## <a name="using-the-api"></a>使用 API
 
-### <a name="headers"></a>标头
+### <a name="headers"></a>头文件
 查询元数据服务时，必须提供标头 `Metadata:true`，以确保不会意外将请求重定向。 `Metadata:true` 标头对于所有预定事件请求是必需的。 不在请求中包含标头会导致元数据服务发出的“错误的请求”响应。
 
 ### <a name="query-for-events"></a>查询事件
@@ -116,7 +116,7 @@ curl http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 -H @
 DocumentIncarnation 是一个 ETag，它提供了一种简单的方法来检查自上次查询以来事件有效负载是否已更改。
 
 ### <a name="event-properties"></a>事件属性
-|properties  |  描述 |
+|Property  |  说明 |
 | - | - |
 | EventId | 此事件的全局唯一标识符。 <br><br> 示例： <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | EventType | 此事件造成的影响。 <br><br> 值： <br><ul><li> `Freeze`：虚拟机计划暂停几秒钟。 CPU 和网络连接可能会暂停，但对内存或打开的文件没有影响。 <li>`Reboot`：计划重启虚拟机（非永久性内存丢失）。 <li>`Redeploy`：计划将虚拟机移到另一节点（临时磁盘丢失）。 <li>`Preempt`：正在删除 Spot 虚拟机（临时磁盘丢失）。 <li> `Terminate`：计划删除虚拟机。 |

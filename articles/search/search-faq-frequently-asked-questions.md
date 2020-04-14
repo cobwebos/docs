@@ -7,33 +7,23 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: fee74cb6ec5acd5fa0f171eab9769a833f04ad66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/10/2020
+ms.openlocfilehash: d7ba62c795e23e41a1947def77300ffe5d2cc010
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72792912"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262445"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Azure 认知搜索 - 常见问题解答 (FAQ)
 
  查找与 Azure 认知搜索有关的概念、代码和方案的常见问题的解答。
 
-## <a name="platform"></a>Platform
+## <a name="platform"></a>平台
 
 ### <a name="how-is-azure-cognitive-search-different-from-full-text-search-in-my-dbms"></a>Azure 认知搜索与 DBMS 中的全文搜索有何不同？
 
 Azure 认知搜索支持多个数据源、[针对多种语言的语言分析](https://docs.microsoft.com/rest/api/searchservice/language-support)、[对有趣和异常数据输入的自定义分析](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)、通过[评分配置文件](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)控制搜索优先级，以及自动提示、搜索词突出显示和分面导航等用户体验功能。 它还包含其他功能，如同义词和丰富的查询语法，但通常来说，这些不属于区别性功能。
-
-### <a name="what-is-the-difference-between-azure-cognitive-search-and-elasticsearch"></a>Azure 认知搜索和 Elasticsearch 有何不同？
-
-比较搜索技术时，客户经常询问 Azure 认知搜索与 Elasticsearch 的具体对比信息。 如果客户为搜索应用程序项目选择 Azure 认知搜索而非 Elasticsearch，通常是因为我们让关键任务变得更加简单，或他们需要与其他 Microsoft 技术的内部集成：
-
-+ Azure 认知搜索是完全托管的云服务，提供充足冗余时（2 份副本用于读取访问，3 份副本用于读写访问），拥有 99.9% 的服务级别协议 (SLA)。
-+ Microsoft 的[自然语言处理器](https://docs.microsoft.com/rest/api/searchservice/language-support)提供领先的语言分析。  
-+ [Azure 认知搜索索引器](search-indexer-overview.md)可以爬网各种 Azure 数据源，以便进行初始索引和增量索引。
-+ 如果需要对查询或索引卷的波动快速响应，可使用 Azure 门户中的[滑块控制](search-manage.md#scale-up-or-down)，或运行 [PowerShell 脚本](search-manage-powershell.md)直接绕过分片管理。  
-+ [计分和优化功能](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)提供搜索引擎无法单独提供的影响搜索优先级评分的方法。
 
 ### <a name="can-i-pause-azure-cognitive-search-service-and-stop-billing"></a>能否暂停 Azure 认知搜索服务并停止计费？
 
@@ -91,7 +81,7 @@ Azure 门户目前不提供内置的索引提取、快照或备份/还原功能�
 
 默认情况下，根据[匹配术语的统计属性](search-lucene-query-architecture.md#stage-4-scoring)对搜索结果打分，在结果集中从高到低排序。 但某些查询类型（通配符、前缀、正则表达式）始终会给文档总评分贡献一个常数分数。 这是设计的行为。 Azure 认知搜索设置一个常量评分后，便可以在结果中包含通过查询扩展找到的匹配项，且不会影响排名。
 
-例如，假设在通配符搜索中输入“tour*”，会产生匹配结果“tours”、“tourettes”和“tourmaline”。 由于这些结果的性质，我们无法合理推断出哪些字词的相关性高于其他字词。 因此，在为通配符、前缀和正则表达式类型的查询结果评分时，我们会忽略字词频率。 建立在不完整输入上的搜索结果获得一个常数分数，以避免可能的意外匹配偏差。
+例如，假设通配符搜索中的"tour+"输入在"旅游"、"旅游"和"Tourmaline"上生成匹配项。 由于这些结果的性质，我们无法合理推断出哪些字词的相关性高于其他字词。 因此，在为通配符、前缀和正则表达式类型的查询结果评分时，我们会忽略字词频率。 建立在不完整输入上的搜索结果获得一个常数分数，以避免可能的意外匹配偏差。
 
 ## <a name="design-patterns"></a>设计模式
 
@@ -103,8 +93,8 @@ Azure 门户目前不提供内置的索引提取、快照或备份/还原功能�
 
 问题是否与缺少功能相关？ 请在 [User Voice 网站](https://feedback.azure.com/forums/263029-azure-search)上请求该功能。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
  [堆栈溢出：Azure 认知搜索](https://stackoverflow.com/questions/tagged/azure-search)   
  [Azure 认知搜索中全文搜索的工作原理](search-lucene-query-architecture.md)  
- [什么是 Azure 认知搜索？](search-what-is-azure-search.md)
+ [Azure 认知搜索是什么？](search-what-is-azure-search.md)

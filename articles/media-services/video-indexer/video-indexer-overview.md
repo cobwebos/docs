@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/02/2020
+ms.date: 04/12/2020
 ms.author: juliako
-ms.openlocfilehash: efd8386f464bfdf2ac27d3be07e6572dc27952e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9bea9e375e00d6fc0f6c33aa1bcc766773db2059
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78163584"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269935"
 ---
 # <a name="what-is-video-indexer"></a>什么是视频索引器？
 
@@ -70,9 +70,9 @@ ms.locfileid: "78163584"
 
 ### <a name="audio-insights"></a>音频见解
 
-* **自动语言检测**：自动识别主导性的讲述语言。 支持的语言包括英语、西班牙语、法语、德语、意大利语、中文（简体）、日语、俄语和巴西葡萄牙语。 如果无法自信地识别语言，视频索引器假定口语为英语。 有关详细信息，请参阅[语言标识模型](language-identification-model.md)。
+* **音频转录**：以 12 种语言将语音转换为文本并允许扩展。 支持的语言包括英语、西班牙语、法语、德语、意大利语、汉语、日语、阿拉伯语、俄语、巴西葡萄牙语、印地语和韩语。
+* **自动语言检测**：自动识别主导性的讲述语言。 支持的语言包括英语、西班牙语、法语、德语、意大利语、汉语、日语、俄语和巴西葡萄牙语。 如果无法自信地识别语言，视频索引器假定口语为英语。 有关详细信息，请参阅[语言标识模型](language-identification-model.md)。
 * **多语言语音识别和转录**（预览）：自动识别音频不同段中的口语。 它将要转录的每个介质文件段，然后将转录合并回一个统一转录。 有关详细信息，请参阅[自动识别和转录多语言内容](multi-language-identification-transcription.md)。
-* **音频转录**：以 12 种语言将语音转换为文本并允许扩展。 支持的语言包括英语、西班牙语、法语、德语、意大利语、中文（简体）、日语、阿拉伯语、俄语、巴西葡萄牙语、印地语和韩语。
 * **隐藏式字幕**：以三种格式创建隐藏式字幕：VTT、TTML 和 SRT。
 * **两个通道处理**：自动检测单独的脚本并合并到单个时间线。
 * **降噪**：清除电话音频或嘈杂的录音（基于 Skype 滤波器）。

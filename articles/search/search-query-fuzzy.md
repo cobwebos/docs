@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 95f6befa7e97984ad64a3ffb2a9b91d343945cbb
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 32ad34bcfb42bf8fc45ba7fdb7fba5e797ee6106
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "81000656"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262428"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>模糊搜索以更正拼写错误和拼写错误
 
@@ -71,7 +71,7 @@ Azure 认知搜索支持模糊搜索，这是一种查询类型，用于补偿�
 > [!NOTE]
 > 在查询处理过程中，模糊查询不经过[词法分析](search-lucene-query-architecture.md#stage-2-lexical-analysis)。 查询输入直接添加到查询树中并展开以创建术语图。 执行的唯一转换是较低的套管。
 
-## <a name="how-to-test-fuzzy-search"></a>如何测试模糊搜索
+## <a name="testing-fuzzy-search"></a>测试模糊搜索
 
 对于简单的测试，我们建议[搜索资源管理器](search-explorer.md)或[Postman](search-get-started-postman.md)在查询表达式上迭代。 这两种工具都是交互式的，这意味着您可以快速单步执行术语的多个变体，并评估返回的响应。
 
@@ -120,7 +120,7 @@ Azure 认知搜索支持模糊搜索，这是一种查询类型，用于补偿�
 
 此扩展示例的要点是说明命中突出显示可能带来的不明确结果的清晰度。 在所有情况下，将返回同一文档。 如果您依赖文档 ID 来验证匹配，则可能错过了从"特殊"到"SQL"的转变。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 + [Azure 认知搜索中全文搜索的工作原理（查询分析体系结构）](search-lucene-query-architecture.md)
 + [搜索资源管理器](search-explorer.md)
