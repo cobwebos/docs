@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 2b200692610302bb135982e5419dcda36d5cfe60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ccfaa57b8e8fdea325bed908ffe8815b09d0d15
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271156"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257787"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 协议与 IoT 中心通信
 
@@ -25,7 +25,7 @@ IoT 中心不是功能完备的 MQTT 中转站，并未支持 MQTT v3.1.1 标准
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-所有通过 IoT 中心进行的设备通信都必须使用 TLS/SSL 来保护。 因此，IoT 中心不支持通过端口 1883 进行的不安全的连接。
+所有通过 IoT 中心进行的设备通信都必须使用 TLS/SSL 来保护。 因此，IoT 中心不支持通过端口 1883 进行不安全的连接。
 
 ## <a name="connecting-to-iot-hub"></a>连接到 IoT 中心
 
@@ -118,7 +118,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
   有关如何生成 SAS 令牌的详细信息，请参阅[使用 IoT 中心安全令牌](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)的设备部分。
 
-  测试时，也可以使用跨平台[适用于 Visual Studio Code 的 Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)或 [Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) 工具快速生成可以复制并粘贴到自己的代码中的 SAS 令牌：
+  测试时，还可以使用跨平台[Azure IoT 工具进行可视化工作室代码](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)或 CLI 扩展命令[az iot 中心生成 sas-token](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)来快速生成 SAS 令牌，以便复制并粘贴到您自己的代码中：
 
 ### <a name="for-azure-iot-tools"></a>对于 Azure IoT 工具
 
@@ -129,16 +129,6 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 3. 设置“到期时间”****，然后按 Enter。
   
 4. 将创建 SAS 令牌并将其复制到剪贴板。
-
-### <a name="for-device-explorer"></a>对于 Device Explorer
-
-1. 转到**设备资源管理器**中的 **"管理**"选项卡。
-
-2. 单击“**SAS 令牌**”（右上角）。
-
-3. 在 **SASTokenForm** 上，从 **DeviceID** 下拉列表中选择设备。 设置 **TTL**。
-
-4. 单击“**生成**”创建令牌。
 
    所生成的 SAS 令牌具有以下结构：
 
@@ -339,7 +329,7 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 可能的状态代码为：
 
-|状态 | 描述 |
+|状态 | 说明 |
 | ----- | ----------- |
 | 200 | Success |
 | 429 | 请求过多（受限），如 [IoT 中心限制](iot-hub-devguide-quotas-throttling.md)中所述 |
@@ -359,7 +349,7 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 3. 然后，服务发送一个响应消息，其中包含 `$iothub/twin/res/{status}/?$rid={request id}` 主题上报告的属性集合的新 ETag 值。 此响应消息使用与**请求相同的请求 ID。**
 
-请求消息正文包含 JSON 文档，该文档包含已报告属性的新值。 JSON 文档中的每个成员都会在设备克隆文档中更新或添加相应成员。 如果某个成员设置为 `null`，则会从包含方对象中删除该成员。 例如：
+请求消息正文包含 JSON 文档，该文档包含已报告属性的新值。 JSON 文档中的每个成员都会更新或添加设备孪生文档中的相应成员。 如果某个成员设置为 `null`，则会从包含方对象中删除该成员。 例如：
 
 ```json
 {
@@ -370,7 +360,7 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 可能的状态代码为：
 
-|状态 | 描述 |
+|状态 | 说明 |
 | ----- | ----------- |
 | 204 | 成功（不返回任何内容） |
 | 400 | 错误的请求。 格式不正确的 JSON |

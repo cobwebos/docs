@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 7c25455e28e57ff40664a69718a2e406b52b7632
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4362d0875ac2c20fc6963d404f86898a12387dad
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75834291"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260915"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>如何在 Azure API 管理策略中使用命名值
 
@@ -38,7 +38,7 @@ API 管理策略是一项强大的系统功能，允许 Azure 门户通过配置
 
 | “属性”       | “值”                      | 机密 | Tags          |
 | ---------- | -------------------------- | ------ | ------------- |
-| “值”      | 42                         | False  | vital-numbers |
+| 值      | 42                         | False  | vital-numbers |
 | 凭据 | ••••••••••••••••••••••     | True   | security      |
 | 表达式 | @(DateTime.Now.ToString()) | False  |               |
 
@@ -55,11 +55,11 @@ API 管理策略是一项强大的系统功能，允许 Azure 门户通过配置
 
     “名称”和“值”是必需值。 如果值为机密，请选中“这是机密”复选框。__ 输入一个或多个用于组织命名值的可选标记，并单击“保存”。
 
-4. 单击 **“创建”**。
+4. 单击“创建”。 
 
 创建命名值后，可以通过单击该值对其进行编辑。 如果更改了命名值的名称，则会自动更新引用了该命名值的策略，让其使用新名称。
 
-若要了解如何使用 REST API 编辑命名值，请参阅[使用 REST API 编辑命名值](/rest/api/apimanagement/2019-01-01/property?patch)。
+若要了解如何使用 REST API 编辑命名值，请参阅[使用 REST API 编辑命名值](/rest/api/apimanagement/2019-12-01/property?patch)。
 
 ## <a name="to-delete-a-named-value"></a>删除命名值
 
@@ -68,7 +68,7 @@ API 管理策略是一项强大的系统功能，允许 Azure 门户通过配置
 > [!IMPORTANT]
 > 如果有策略引用了该命名值，则无法成功地将它删除，除非将它从所有使用它的策略中删除。
 
-若要了解如何使用 REST API 删除命名值，请参阅[使用 REST API 删除命名值](/rest/api/apimanagement/2019-01-01/property/delete)。
+若要了解如何使用 REST API 删除命名值，请参阅[使用 REST API 删除命名值](/rest/api/apimanagement/2019-12-01/property/delete)。
 
 ## <a name="to-search-and-filter-named-values"></a>搜索和筛选命名值
 

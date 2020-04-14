@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: b41b68725b6747cbada13a9acc321724b3f89d67
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 5034dafa015054e9e9d0804088f345929815b974
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77118573"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397937"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>教程：生成使用 Azure 认知服务的 Flask 应用
 
@@ -239,7 +239,7 @@ def about():
    flask run
    ```
 
-4. 打开浏览器并导航到提供的 URL。 应会看到单页应用。 按 **Ctrl + C** 终止该应用。
+4. 打开浏览器并导航到提供的 URL。 应会看到单页应用。 请按 **Ctrl + C** 终止该应用。
 
 ## <a name="translate-text"></a>翻译文本
 
@@ -780,7 +780,7 @@ flask run
        <option value="(zh-TW, Yating, Apollo)">Chinese (Taiwan)| Female | Yaiting, Apollo</option>
        <option value="(zh-TW, Zhiwei, Apollo)">Chinese (Taiwan) | Male | Zhiwei, Apollo</option>
        <option value="(hr-HR, Matej)">Croatian | Male | Matej</option>
-       <option value="(en-US, Jessa24kRUS)">English (US) | Female | Jessa24kRUS</option>
+       <option value="(en-US, AriaRUS)">English (US) | Female | AriaRUS</option>
        <option value="(en-US, Guy24kRUS)">English (US) | Male | Guy24kRUS</option>
        <option value="(en-IE, Sean)">English (IE) | Male | Sean</option>
        <option value="(fr-FR, Julie, Apollo)">French | Female | Julie, Apollo</option>

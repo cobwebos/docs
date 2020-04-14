@@ -3,12 +3,12 @@ title: 更新群集以使用证书通用名称
 description: 了解如何将 Service Fabric 群集从使用证书指纹切换为使用证书公用名称。
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 66c49ccb7b7633d0eff392b676bb381118eb64a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1926b0501766eb0a5fe086ceada0c9bf45e3dcf6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75610193"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272621"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>将群集从证书指纹更改为公用名称
 两个证书不能具有相同的指纹，具有相同的指纹会使群集证书滚动更新或管理变得困难。 但是，多个证书可以具有相同的公用名称或使用者。  将已部署的群集从使用证书指纹切换为使用证书公用名称会使证书管理更加简单。 本文介绍了如何将正在运行的 Service Fabric 群集更新为使用证书公用名称而非证书指纹。
@@ -20,12 +20,12 @@ ms.locfileid: "75610193"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-a-certificate"></a>获取证书
-首先，从[证书颁发机构 (CA)](https://wikipedia.org/wiki/Certificate_authority) 获取证书。  证书的公用名称应当是群集的主机名。  例如，“myclustername.southcentralus.cloudapp.azure.com”。  
+首先，从[证书颁发机构 (CA)](https://wikipedia.org/wiki/Certificate_authority) 获取证书。  证书的公用名称应该是你拥有的自定义域，并从域注册机构购买。 例如，“azureservicefabricbestpractices.com”；非 Microsoft 员工无法为 MS 域预配证书，因此不能将 LB 或流量管理器的 DNS 名称用作证书的公用名称，如果要使自定义域可在 Azure 中解析，则需要预配 [Azure DNS 区域](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)。 如果希望门户反映群集的自定义域别名，还需要将自己的自定义域声明为群集的“managementEndpoint”。
 
 对于测试用途，可以从免费或开放的证书颁发机构获取由 CA 签名的证书。
 
 > [!NOTE]
-> 不支持自签名证书，包括在 Azure 门户中部署 Service Fabric 群集时生成的证书。
+> 不支持自签名证书，包括在 Azure 门户中部署 Service Fabric 群集时生成的证书。 
 
 ## <a name="upload-the-certificate-and-install-it-in-the-scale-set"></a>上传证书并将其安装在规模集中
 在 Azure 中，Service Fabric 群集部署在虚拟机规模集上。  将证书上传到密钥保管库，然后将其安装在运行群集的虚拟机规模集上。

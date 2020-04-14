@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 6d3952c38703d8102a45c4117e3c59e3fa464957
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 50ea56a8c743636f9fdd9105e5b07a868e71d3d0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275809"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262921"
 ---
-# <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>如何在合作伙伴中心管理商业市场帐户
+# <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>如何在合作伙伴中心管理您的商业市场帐户
 
 [创建合作伙伴中心帐户](./create-account.md)后，您可以使用[商业市场仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)管理您的帐户和优惠。
 
@@ -67,7 +67,7 @@ ms.locfileid: "80275809"
 付款帐户是从销售中汇到收益的银行帐户。 此银行帐户必须位于您注册合作伙伴中心帐户的同一国家/地区。
 
 要设置您的支出帐户，您需要**关联您的 Microsoft 帐户**：
-1. 转到合作伙伴中心[中的"商业市场概述"页面](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)。
+1. 转到合作伙伴中心[中的商业市场概述页面](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)。
 2. 在"配置文件"部分下，选择 **"关联您的 Microsoft 帐户**"。
 3. 出现提示后，请使用 Microsoft 帐户 （MSA） 登录。 此帐户不能已与其他合作伙伴中心帐户关联。
 4. 要完成支出帐户的设置，请完全注销合作伙伴中心，然后使用 Microsoft 帐户（而不是您的工作帐户）重新登录。
@@ -114,7 +114,7 @@ ms.locfileid: "80275809"
 
 ### <a name="devices"></a>设备
 
-设备管理设置仅适用于 UWP 发布。 [了解详情](https://docs.microsoft.com/windows/uwp/publish/manage-account-settings-and-profile#additional-settings-and-info)。
+设备管理设置仅适用于 UWP 发布。 [了解详细信息](https://docs.microsoft.com/windows/uwp/publish/manage-account-settings-and-profile#additional-settings-and-info)。
 
 ### <a name="tracking-guids"></a>跟踪 GUID
 
@@ -126,8 +126,8 @@ ms.locfileid: "80275809"
 
 如果使用模板部署产品并且产品在 Azure 市场和 GitHub 中都提供，则可以创建并注册 2 个不同的 GUID：
 
-*   Azure 市场中的产品 A
-*   GitHub 中的产品 A
+*    Azure 市场中的产品 A
+*    GitHub 中的产品 A
 
 报告根据合作伙伴值（Microsoft 合作伙伴 ID）和 GUID 来完成。 您还可以在更精细的级别跟踪 GUID，以便与产品/服务中的每个计划保持一致。
 
@@ -170,7 +170,7 @@ ms.locfileid: "80275809"
 •如果选择要添加到合作伙伴中心帐户的多个用户，则必须为其分配相同的角色或自定义权限集。 要添加具有不同角色/权限的多个用户，请为每个角色或自定义权限集重复这些步骤。
 3. 完成选择用户后，单击"**添加选定的**"。
 4. 在**角色**部分中，为选定的用户指定角色或自定义权限。
-5. 选择“保存”。****
+5. 选择“保存”。 
 
 #### <a name="create-new-users"></a>创建新用户
 
@@ -182,7 +182,7 @@ ms.locfileid: "80275809"
 1. 如果选中此框**以使此用户成为全局管理员**，则需要提供**密码恢复电子邮件**，以便用户在必要时恢复其密码。
 1. 在 **"组成员身份**"部分中，选择要新用户所属的任何组。
 1. 在**角色**部分中，为用户指定角色或自定义权限。
-1. 选择“保存”。****
+1. 选择“保存”。 
 
 在合作伙伴中心创建新用户还将在您登录的工作帐户（Azure AD 租户）中为该用户创建一个帐户。 更改合作伙伴中心中的用户名将在组织的工作帐户（Azure AD 租户）中进行相同的更改。
 
@@ -193,7 +193,7 @@ ms.locfileid: "80275809"
 1. 转到**用户**（在 **"帐户设置**"下），选择 **"添加用户**"，然后选择**通过电子邮件邀请用户**。
 2. 输入一个或多个电子邮件地址（最多十个），用逗号或分号隔开。
 3. 在**角色**部分中，为用户指定角色或自定义权限。
-4. 选择“保存”。****
+4. 选择“保存”。 
 
 您邀请的用户将获得加入合作伙伴中心帐户的电子邮件邀请。 将在工作帐户（Azure AD 租户）中创建新的来宾用户帐户。 每个用户需要接受邀请才能访问帐户。
 
@@ -227,7 +227,7 @@ ms.locfileid: "80275809"
 如果选择要添加到合作伙伴中心帐户的多个组，则必须为其分配相同的角色或自定义权限集。 要添加具有不同角色/权限的多个组，请为每个角色或一组自定义权限重复这些步骤。
 3. 完成选择组后，单击"**添加所选**"。
 4. 在**角色**部分中，为选定的组指定角色或自定义权限。 组的所有成员将能够访问您的合作伙伴中心帐户，您向该组申请的权限，而不考虑与其个人帐户关联的角色和权限。
-5. 选择“保存”。****
+5. 选择“保存”。 
 
 添加现有组时，该组成员的每个用户将能够访问您的合作伙伴中心帐户，并具有与该组分配的角色关联的权限。
 
@@ -241,7 +241,7 @@ ms.locfileid: "80275809"
 4. 为组指定角色或自定义权限。 无论与个人帐户关联的角色/权限如何，组所有成员都可以使用您在此处申请的权限访问您的合作伙伴中心帐户。
 5. 从显示的列表中为新组选择用户。 你可以使用搜索框来搜索特定用户。
 6. 完成选择用户后，请单击**添加选定项**将其添加到新组中。
-7. 选择“保存”。****
+7. 选择“保存”。 
 
 请注意，此新组也将在组织的工作帐户（Azure AD 租户）中创建，而不仅仅是在合作伙伴中心帐户中。
 
@@ -261,7 +261,7 @@ ms.locfileid: "80275809"
 2. 从出现的列表中选择一个或多个 Azure AD 应用程序。 你可以使用搜索框来搜索特定的 Azure AD 应用程序。 如果选择要添加到合作伙伴中心帐户的多个 Azure AD 应用程序，则必须为其分配相同的角色或自定义权限集。 要添加具有不同角色/权限的多个 Azure AD 应用程序，请为每个角色或一组自定义权限重复这些步骤。
 3. 选择完 Azure AD 应用程序后，单击"**添加选定的**"。
 4. 在**角色**部分中，为选定的 Azure AD 应用程序指定角色或自定义权限。
-5. 选择“保存”。****
+5. 选择“保存”。 
 
 #### <a name="add-new-azure-ad-applications"></a>添加新的 Azure AD 应用程序
 
@@ -272,7 +272,7 @@ ms.locfileid: "80275809"
 3. 输入新 Azure AD 应用程序的**回复 URL。** 这是用户可以登录并使用 Azure AD 应用程序的 URL（有时也称为“应用 URL”或“登录 URL”）。 **回复 URL**不能超过 256 个字符，且在你目录中必须是唯一的。
 4. 输入新 Azure AD**应用程序的应用 ID URI。** 这是 Azure AD 应用程序的逻辑标识符，在将单个登录请求发送到 Azure AD 时显示。 请注意，对于目录中的每个 Azure AD 应用程序，**应用 ID URI**必须是唯一的。 此 ID 不能超过 256 个字符。 有关应用 ID URI 的详细信息，请参阅[将应用程序与 Azure 活动目录集成](https://docs.microsoft.com/azure/active-directory/develop/quickstart-modify-supported-accounts#change-the-application-registration-to-support-different-accounts)。
 5. 在**角色**部分中，为 Azure AD 应用程序指定角色或自定义权限。
-6. 选择“保存”。****
+6. 选择“保存”。 
 
 添加或创建 Azure AD 应用程序后，可以返回到**用户**部分，然后选择应用程序名称查看应用程序的设置，包括租户 ID、客户端 ID、回复 URL 和应用 ID URI。
 
@@ -308,7 +308,7 @@ ms.locfileid: "80275809"
 
 ## <a name="manage-tenants"></a>管理租户
 
-Azure 活动目录 （AD） 租户（在本文档中也称为"工作帐户"）是您在 Azure 门户中设置的组织的表示形式，可帮助您为内部管理 Microsoft 云服务的特定实例和外部用户。 如果您的组织订阅了 Microsoft 云服务（如 Azure、Microsoft Intune 或 Office 365），则为您建立了 Azure AD 租户。
+Azure 活动目录 （AD） 租户（在本文档中也称为"工作帐户"）是您在 Azure 门户中设置的组织的表示形式，可帮助您为内部和外部用户管理 Microsoft 云服务的特定实例。 如果您的组织订阅了 Microsoft 云服务（如 Azure、Microsoft Intune 或 Office 365），则为您建立了 Azure AD 租户。
 
 您可以设置多个租户以与合作伙伴中心一起使用。 在合作伙伴中心帐户中具有**Manager**角色的任何用户都可以选择从帐户中添加和删除 Azure AD 租户。  
 

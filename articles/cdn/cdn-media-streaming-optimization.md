@@ -3,7 +3,7 @@ title: 通过 Azure CDN 进行媒体流式处理优化
 description: 优化流媒体文件，以实现顺畅交付
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2018
-ms.author: magattus
-ms.openlocfilehash: c6ed546735058e330368151adb0df7323f943050
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 2931dffaaab2d06b2c06f03770a66d78d6466787
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593666"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260454"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>通过 Azure CDN 进行媒体流式处理优化 
  
@@ -87,7 +87,7 @@ ms.locfileid: "67593666"
 |   | 常规 Web 传送 | 常规媒体流式处理 | 点播视频媒体流式处理  
 --- | --- | --- | ---
 缓存：正 <br> HTTP 200、203、300、 <br> 301、302 和 410 | 7 天 |365 天 | 365 天   
-缓存：负 <br> HTTP 204、305、404 <br> 和 405 | 无 | 1 秒 | 1 秒
+缓存：负 <br> HTTP 204、305、404 <br> 和 405 | None | 1 秒 | 1 秒
  
 ### <a name="deal-with-origin-failure"></a>处理源故障  
 

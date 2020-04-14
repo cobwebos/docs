@@ -7,20 +7,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/4/2019
 ms.author: dsindona
-ms.openlocfilehash: ae5c691375d52bc7da7a877f5b2e0c2ca52cc87e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a142ce3c082f6f9a53287885ba347fc78f77718
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288455"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262020"
 ---
-# <a name="microsoft-commercial-marketplace-faqs"></a>微软商业市场常见问题解答
+# <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft 商业市场常见问题解答
 
-回答有关 Azure 应用商店和 Microsoft AppSource 的常见问题的解答。
+回答有关商业市场的常见问题的解答。
 
 ## <a name="faq-for-customers"></a>面向客户的常见问题解答
 
-### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>您需要了解的 Azure 应用商店和微软应用程序源
+### <a name="what-you-need-to-know-about-the-commercial-marketplace"></a>您需要了解的商业市场
 
 **什么是 Azure 市场？**
 
@@ -168,11 +168,11 @@ Azure 应用（解决方案模板和托管应用）：**
 
 **商业市场购买支持哪些付款方式？**
 
-客户可以使用信用卡从 Azure 应用商店和 Microsoft AppSource 购买产品。 如果您有现有的 Azure 订阅，则从 Azure 应用商店购买将使用在帐户上配置的付款方式，并在同一发票上显示为单独的行项目。 某些产品/服务会消耗 Azure 货币承诺，但大多数商业市场购买不会减少企业协议承诺，尽管 Azure 基础结构消耗将。
+客户可以使用信用卡从商业市场购买产品。 如果您有现有的 Azure 订阅，则从 Azure 应用商店购买将使用在帐户上配置的付款方式，并在同一发票上显示为单独的行项目。 某些产品/服务会消耗 Azure 货币承诺，但大多数商业市场购买不会减少企业协议承诺，尽管 Azure 基础结构消耗将。
 
 **我能对 Azure 市场套餐应用我帐户上的 Azure 订阅额度或货币承诺资金吗？**
 
-特定 Azure 市场套餐可使用 Azure 订阅额度或货币承诺资金。 有关参与此计划的产品的完整列表，请参阅 [Azure 货币承诺](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)。 这些套餐不包括 BYOL 或 BYOS 选项。 所有其他 Azure 应用商店产品/服务不能使用 Azure 订阅积分或货币承诺：例如免费一个月试用积分、每月 MSDN 积分、Azure 促销积分、货币承诺余额以及从中提供的任何其他免费积分蔚蓝。
+特定 Azure 市场套餐可使用 Azure 订阅额度或货币承诺资金。 有关参与此计划的产品的完整列表，请参阅 [Azure 货币承诺](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)。 这些套餐不包括 BYOL 或 BYOS 选项。 所有其他 Azure 应用商店产品/服务不能使用 Azure 订阅积分或货币承诺：例如免费一个月试用积分、每月 MSDN 积分、Azure 促销的信用额度、货币承诺余额以及 Azure 提供的任何其他免费信用额度。
 
 **批量许可折扣是否适用于 Azure 市场购买内容？**
 
@@ -258,12 +258,12 @@ MOSP - [Microsoft 在线订阅计划](https://azure.microsoft.com/support/legal/
 
 **退款和计划变更政策因网店而异吗？**
 
-否，业务策略在整个 Azure 应用商店和 Microsoft AppSource 中是一致的。 如果云解决方案提供计划中的合作伙伴转售，合作伙伴可能会为其客户实施不同的策略。
+不，整个商业市场的业务政策是一致的。 如果云解决方案提供计划中的合作伙伴转售，合作伙伴可能会为其客户实施不同的策略。
 
 
 ## <a name="faq-for-publishers"></a>面向发布者的常见问题解答
 
-### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>您需要了解的 Azure 应用商店和微软应用程序源
+### <a name="what-you-need-to-know-about-the-commercial-marketplace"></a>您需要了解的商业市场
 
 **什么是 Azure 市场？**
 
@@ -347,7 +347,7 @@ Microsoft 需要使用开发人员中心帐户代表发布者向客户计收“�
 
 **发布者可在哪些国家/地区销售 Azure 市场？**
 
-位于以下国家/地区的发布商目前可以在 Azure 应用商店中销售：阿富汗、 阿尔巴尼亚、阿尔及利亚、安哥拉、安提瓜和巴布达、阿根廷、亚美尼亚、澳大利亚、奥地利、阿塞拜疆、巴林、孟加拉国、白俄罗斯、比利时、贝宁、玻利维亚、波斯尼亚和黑塞哥维那、博茨瓦纳、巴西、保加利亚、布基纳法索、布隆迪、柬埔寨、喀麦隆、加拿大、中非共和国、乍得、智利、哥伦比亚、科摩罗、刚果、刚果（金）、哥斯达黎加、科特迪瓦、克罗地亚、塞浦路斯、捷克共和国、丹麦、多米尼加、多米尼加共和国、 厄瓜多尔、埃及、萨尔瓦多、厄立特里亚、爱沙尼亚、埃塞俄比亚、斐济群岛、芬兰、法国、格鲁吉亚、德国、加纳、希腊、危地马拉、几内亚、海地、洪都拉斯、香港特别行政区、匈牙利、冰岛、印度、印度尼西亚、伊拉克、爱尔兰、以色列、意大利、牙买加、日本、约旦、哈萨克斯坦、肯尼亚、韩国（韩国）、科威特、老挝、拉脱维亚、黎巴嫩、利比里亚、列支敦士登、立陶宛、卢森堡、马达加斯加、马拉维、马来西亚、马里、马耳他、毛里求斯、墨西哥摩洛哥、莫桑比克、尼泊尔、 荷兰、新西兰、尼加拉瓜、尼日尔、尼日利亚、挪威、阿曼、巴基斯坦、巴拿马、巴拉圭、秘鲁、菲律宾、波兰、葡萄牙、卡塔尔、罗马尼亚、俄罗斯、卢旺达、沙特阿拉伯、塞内加尔、塞尔维亚、塞拉利昂、新加坡、斯洛伐克、斯洛文尼亚、索马里、南非、西班牙、斯里兰卡、瑞典、瑞士、塔吉克斯坦、坦桑尼亚、泰国、东帝汶、多哥、汤加、特立尼达和多巴哥、突尼斯、土耳其、土库曼斯坦、乌干达、乌克兰、阿拉伯联合酋长国国家、乌拉圭、乌兹别克斯坦、委内瑞拉、越南、赞比亚和津巴布韦。
+位于以下国家/地区的发布商目前可以在 Azure 应用商店中销售：阿富汗、阿尔巴尼亚、阿尔及利亚、 安哥拉、安提瓜和巴布达、阿根廷、亚美尼亚、澳大利亚、奥地利、阿塞拜疆、巴林、孟加拉国、白俄罗斯、比利时、贝宁、玻利维亚、波斯尼亚和黑塞哥维那、博茨瓦纳、巴西、保加利亚、布基纳法索、布隆迪、柬埔寨、喀麦隆、加拿大、中非共和国、乍得、智利、哥伦比亚、科摩罗、刚果、刚果（金）、哥斯达黎加、科特迪瓦、克罗地亚、塞浦路斯、捷克共和国、丹麦、多米尼克、多米尼加共和国、厄瓜多尔、埃及、萨尔瓦多 埃塞俄比亚、斐济群岛、芬兰、法国、格鲁吉亚、德国、加纳、希腊、危地马拉、几内亚、海地、洪都拉斯、香港特别行政区、匈牙利、冰岛、印度、印度尼西亚、伊拉克、爱尔兰、以色列、意大利、牙买加、日本、约旦、哈萨克斯坦、肯尼亚、韩国（南）、科威特、老挝、拉脱维亚、黎巴嫩、利比里亚、列支敦士登、立陶宛、卢森堡、马达加斯加、马拉维、马来西亚、马里、马耳他、毛里求斯、墨西哥、摩纳哥、蒙古、黑山、摩洛哥、莫桑比克、尼泊尔、荷兰、新西兰、尼加拉瓜、尼日尔、尼日利亚、挪威、阿曼、 巴基斯坦、巴拿马、巴拉圭、秘鲁、菲律宾、波兰、葡萄牙、卡塔尔、罗马尼亚、俄罗斯、卢旺达、沙特阿拉伯、塞内加尔、塞尔维亚、塞拉利昂、新加坡、斯洛伐克、斯洛文尼亚、索马里、南非、西班牙、斯里兰卡、瑞典、瑞士、塔吉克斯坦、坦桑尼亚、泰国、东帝汶、多哥、汤加、特立尼达和多巴哥、突尼斯、土耳其、土库曼斯坦、乌干达、乌克兰、阿拉伯联合酋长国、联合王国、美国、乌拉圭、乌兹别克斯坦、委内瑞拉、越南
 
 **如何从 Azure 市场中删除商品？**
 
@@ -372,8 +372,8 @@ Microsoft 需要使用开发人员中心帐户代表发布者向客户计收“�
 
 *O365 应用：*
 
-1.  <https://sellerdashboard.microsoft.com>使用开发帐户登录。
-1.  撤回外接程序。
+1.    <https://sellerdashboard.microsoft.com>使用开发帐户登录。
+1.    撤回外接程序。
 
     > [!NOTE]
     > 应用在 90 天后从现有列表中消失。
@@ -422,7 +422,7 @@ Azure 市场目前不支持对虚拟机按节点计费。 发布者仍可根据 
 
 **有关发布或报价管理的问题，我应联系谁？**
 
-有关常见问题的最新资源和文档，请访问 [Azure 市场发布者指南](marketplace-publishers-guide.md)。 此外，您还可以[在合作伙伴中心使用 Microsoft 支持](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)登录票证。
+有关常见问题的最新资源和文档，请访问[商业市场发布者指南](marketplace-publishers-guide.md)。 此外，您还可以[在合作伙伴中心使用 Microsoft 支持](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)登录票证。
 
 ### <a name="azure-marketplace-for-publishers"></a>发布商的 Azure 应用商店
 
@@ -432,7 +432,7 @@ Azure 市场目前不支持对虚拟机按节点计费。 发布者仍可根据 
 
     ![选择区域](media/marketplace-publishers-guide/FAQ-choose-geo.png)
 
-1.  将弹出一个列表，所有可用的国家/地区将销售到。  单击要使此 SKU 可用的每个国家/地区旁边的复选框。 单击“确定”。
+1.  将弹出一个列表，所有可用的国家/地区将销售到。  单击要使此 SKU 可用的每个国家/地区旁边的复选框。 单击“确定”。 
 
     ![选择国家/地区列表](media/marketplace-publishers-guide/FAQ-select-countries.png)
 
@@ -473,7 +473,7 @@ Azure 应用商店支持由客户的帐单地址定义的 141 个从购买地。
 
 ## <a name="next-steps"></a>后续步骤
 
-访问[Azure 应用商店和 AppSource 发布者指南](/azure/marketplace/marketplace-publishers-guide)页面。
+访问[商业市场发布者指南](/azure/marketplace/marketplace-publishers-guide)页面。
 
 
 [Azure 门户]: https://portal.azure.com

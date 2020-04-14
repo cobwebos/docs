@@ -1,16 +1,17 @@
 ---
-title: 快速入门 - 在门户中创建 Azure Kubernetes 服务 (AKS) 群集
+title: 在门户中创建 AKS 群集
+titleSuffix: Azure Kubernetes Service
 description: 了解如何使用 Azure 门户快速创建 Kubernetes 群集、部署应用程序，以及监视 Azure Kubernetes 服务 (AKS) 中的性能。
 services: container-service
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: f4885bea686267ce0397e9ca6f3e2c0ac8640971
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e91e5e2701b02ab4c705cd80117dfc7689c7d054
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215565"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668452"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Kubernetes 服务 (AKS) 群集
 

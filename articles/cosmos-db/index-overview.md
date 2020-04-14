@@ -4,14 +4,14 @@ description: 了解 Azure Cosmos DB 中索引的工作原理，Azure Cosmos DB �
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 04/13/2020
 ms.author: thweiss
-ms.openlocfilehash: 65186262095560d7ae54d32b218d1c01f1fb921d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 684799ee12715c789910accf80aa5b4afec763d4
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873618"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273233"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 中的索引 - 概述
 
@@ -82,7 +82,7 @@ Azure Cosmos DB 目前支持三种类型的索引。
 
    数组元素上的相等匹配
    ```sql
-    SELECT * FROM c WHERE ARRAY_CONTAINS(c.tags, "tag1”)
+    SELECT * FROM c WHERE ARRAY_CONTAINS(c.tags, "tag1")
     ```
 
 - 范围查询：
@@ -164,11 +164,11 @@ Azure Cosmos DB 目前支持三种类型的索引。
  SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
 ```
 
-只要一个筛选器谓词使用索引类型之一，查询引擎就会在扫描其余内容之前先对其进行评估。 例如，如果你有一个 SQL 查询，如 `SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
+只要一个筛选器谓词使用索引类型之一，查询引擎将首先在扫描其余内容之前对其进行计算。 例如，如果你有一个 SQL 查询，如 `SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
 
 * 上面的查询将首先使用索引筛选 firstName = "Andrew" 的条目。 然后，它通过后续管道传递所有 firstName = "Andrew" 条目，以评估 CONTAINS 筛选器谓词。
 
-* 通过使用不使用索引（例如 CONTAINS）的函数时，可以通过添加使用索引的其他筛选器谓词来加快查询并避免完整的容器扫描。 筛选子句的顺序并不重要。 查询引擎将找出哪些谓词更具选择性，并相应地运行查询。
+* 当使用不使用索引的函数（例如 CONTAINS）时，可以通过添加使用索引的新筛选器谓词来加快查询速度并避免完整的容器扫描。 筛选子句的顺序并不重要。 查询引擎将找出哪些谓词更具选择性，并相应地运行查询。
 
 
 ## <a name="querying-with-indexes"></a>使用索引进行查询

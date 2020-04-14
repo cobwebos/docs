@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 76ab92285cace284c187109ca48c6634777ebbc0
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: ea4bfadd55935712a292355dc25fb778b1523c75
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398318"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261843"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure 事件中心的功能和术语
 
@@ -45,7 +45,7 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 
 可以通过 AMQP 1.0、Kafka 1.0（和更高版本）或 HTTPS 发布事件。 服务总线提供了[客户端库和类](event-hubs-dotnet-framework-api-overview.md)，这些库和类用于从 .NET 客户端将事件发布到事件中心。 对于其他运行时和平台，可以使用任何 AMQP 1.0 客户端，例如 [Apache Qpid](https://qpid.apache.org/)。 可以逐个或者批量发送事件。 单个发布（事件数据实例）限制为 1 MB，不管它是单个事件还是事件批。 发布大于此限制的事件将导致出错。 发布者最好不知道事件中心内的分区，并且仅指定*分区键*（在下一节中介绍），或者通过 SAS 令牌指定其标识。
 
-是要使用 AMQP 还 HTTPS 根据具体的使用方案而定。 AMQP 除了需要使用传输级别安全 (TLS) 或 SSL/TLS 以外，还需要建立持久的双向套接字。 AMQP 在初始化会话时的网络成本更高，而 HTTPS 则每次请求都需要额外的 SSL 开销。 对于需要频繁进行发布的发布者来说，AMQP 的性能更高。
+是要使用 AMQP 还 HTTPS 根据具体的使用方案而定。 AMQP 除了需要使用传输级别安全 (TLS) 或 SSL/TLS 以外，还需要建立持久的双向套接字。 AMQP 在初始化会话时具有更高的网络成本，但是 HTTPS 为每个请求需要额外的 TLS 开销。 对于需要频繁进行发布的发布者来说，AMQP 的性能更高。
 
 ![事件中心](./media/event-hubs-features/partition_keys.png)
 

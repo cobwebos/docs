@@ -3,7 +3,7 @@ title: Azure 虚拟机上的 Oracle 解决方案 |微软文档
 description: 了解 Microsoft Azure 上支持的 Oracle 虚拟机映像的配置和限制。
 services: virtual-machines-linux
 documentationcenter: ''
-author: romitgirdhar
+author: mimckitt
 manager: gwallace
 tags: azure-resource-management
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/23/2019
-ms.author: rogirdh
-ms.custom: seodec18
-ms.openlocfilehash: 3abc09f8c82442e3b24a9edf6ef4fb42f19dfde8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 0a2374a4c3526b77a25f9fa8faa94c9cb0d4c4ea
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74806943"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263227"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle VM 映像及其在 Microsoft Azure 上的部署
 
@@ -128,10 +128,10 @@ Oracle 实际应用程序群集 （Oracle RAC） 旨在缓解本地多节点群�
 
 如需相关信息，请参阅位于 <https://support.oracle.com> 的知识库文章 **860340.1**。
 
-* **动态群集和负载均衡限制。** 假设您想在 Oracle WebLogic Server 中使用动态群集，并通过 Azure 中的单个公共负载平衡终结点公开它。 只要对每个托管服务器（不是动态分配从范围）使用固定端口号（而不是动态分配），并且启动的托管服务器不会超过管理员正在跟踪的计算机，就可以执行此操作。 也就是说，每个虚拟机不超过一台托管服务器）。 如果您的配置导致启动的 Oracle WebLogic 服务器多于虚拟机（即多个 Oracle WebLogic Server 实例共享同一虚拟机），则对于多个实例而言，要绑定到给定端口号的 Oracle WebLogic 服务器。 该虚拟机上的其他计算机失败。
+* **动态群集和负载均衡限制。** 假设您想在 Oracle WebLogic Server 中使用动态群集，并通过 Azure 中的单个公共负载平衡终结点公开它。 只要对每个托管服务器（不是动态分配从范围）使用固定端口号（而不是动态分配），并且启动的托管服务器不会超过管理员正在跟踪的计算机，就可以执行此操作。 也就是说，每个虚拟机不超过一台托管服务器）。 如果您的配置导致启动的 Oracle WebLogic 服务器多于虚拟机（即多个 Oracle WebLogic Server 实例共享同一虚拟机），则 Oracle WebLogic 服务器的这些实例中不可能绑定到给定端口号。 该虚拟机上的其他计算机失败。
 
    如果将管理服务器配置为自动向其托管服务器分配唯一端口号，则负载均衡将不可能，因为 Azure 不支持从单个公用端口映射到多个专用端口，而这是此配置所必需的。
-* **虚拟机上的 Oracle WebLogic 服务器的多个实例。** 根据部署的要求，如果虚拟机足够大，则可以考虑在同一虚拟机上运行 Oracle WebLogic Server 的多个实例。 例如，在包含两个内核的中型虚拟机上，您可以选择运行 Oracle WebLogic Server 的两个实例。 但是，我们仍建议您避免在体系结构中引入单点故障，如果您只使用一台运行 Oracle WebLogic Server 多个实例的虚拟机，则就是这种情况。 使用至少两个虚拟机可能是一种更好的方法，然后每个虚拟机可以运行 Oracle WebLogic Server 的多个实例。 Oracle WebLogic 服务器的每个实例可能仍属于同一群集。 但是，当前无法使用 Azure 来负载平衡由同一虚拟机中的此类 Oracle WebLogic Server 部署公开的终结点，因为 Azure 负载均衡器要求负载平衡服务器在唯一的虚拟机之间分配虚拟机。
+* **虚拟机上的 Oracle WebLogic 服务器的多个实例。** 根据部署的要求，如果虚拟机足够大，则可以考虑在同一虚拟机上运行 Oracle WebLogic Server 的多个实例。 例如，在包含两个内核的中型虚拟机上，您可以选择运行 Oracle WebLogic Server 的两个实例。 但是，我们仍建议您避免在体系结构中引入单点故障，如果您只使用一台运行 Oracle WebLogic Server 多个实例的虚拟机，则就是这种情况。 使用至少两个虚拟机可能是一种更好的方法，然后每个虚拟机可以运行 Oracle WebLogic Server 的多个实例。 Oracle WebLogic 服务器的每个实例可能仍属于同一群集。 但是，当前无法使用 Azure 来负载平衡由同一虚拟机中的此类 Oracle WebLogic Server 部署公开的终结点，因为 Azure 负载均衡器要求负载平衡服务器在唯一虚拟机之间分配。
 
 ## <a name="oracle-jdk-virtual-machine-images"></a>Oracle JDK 虚拟机映像
 * **JDK 6 和 7 最新更新。** 尽管建议使用最新公开支持的 Java 版本（当前为 Java 8），但 Azure 还提供 JDK 6 和 7 的映像。 这适用于尚未准备好升级到 JDK 8 的旧版应用程序。 虽然对旧版 JDK 映像的更新不再提供给公众，但是鉴于 Microsoft 与 Oracle 的合作关系，由 Azure 提供的 JDK 6 和 7 的映像将包含最近的非公开更新，该更新通常由 Oracle 只向一组 Oracle 支持的选定客户提供。 随着时间推移，将使用 JDK 6 和 7 的更新版本提供 JDK 映像的新版本。

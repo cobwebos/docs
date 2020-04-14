@@ -3,7 +3,7 @@ title: 使用 PowerShell 管理 Azure CDN | Microsoft Docs
 description: 了解如何使用 Azure PowerShell cmdlet 来管理 Azure CDN。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: fb6f57a5-6e26-4847-8fd9-b51fb05a79eb
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2019
-ms.author: magattus
-ms.openlocfilehash: 476779eff41cb9ce1c0a9c79430813ce9a39e91f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 22602a1ea64e3dbca34d0c366cf6aa0dc6f35662
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74286659"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260541"
 ---
 # <a name="manage-azure-cdn-with-powershell"></a>使用 PowerShell 管理 Azure CDN
 PowerShell 提供了一种最灵活的方法来管理 Azure CDN 配置文件和终结点。  可以使用 PowerShell 以交互方式或通过编写脚本来自动执行管理任务。  本教程演示了使用 PowerShell 可以完成的几个最常见的任务来管理 Azure CDN 配置文件和终结点。

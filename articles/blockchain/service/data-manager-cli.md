@@ -4,12 +4,12 @@ description: 使用 Azure CLI 创建和管理 Azure 区块链服务的区块链�
 ms.date: 03/30/2020
 ms.topic: article
 ms.reviewer: ravastra
-ms.openlocfilehash: 5ceca96f760ab62ca7f3df9ad26139b9b4a3e5be
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: e490803fabeed7d6234bd6984acbfb9f5270e0c0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529589"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254404"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>使用 Azure CLI 配置区块链数据管理器
 
@@ -40,7 +40,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用“[az group create](https://docs.microsoft.com/cli/azure/group)”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 下面的示例在*东部*位置创建名为*myResourceGroup*的资源组：
+使用“[az group create](https://docs.microsoft.com/cli/azure/group)”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
 
 ```azurecli-interactive
 az group create --name myRG --location eastus
@@ -48,7 +48,7 @@ az group create --name myRG --location eastus
 
 ## <a name="create-instance"></a>创建实例
 
-区块链数据管理器实例监视 Azure 区块链服务事务节点。 实例从事务节点捕获所有原始块和原始事务数据。
+区块链数据管理器实例监视 Azure 区块链服务事务节点。 实例从事务节点捕获所有原始块和原始事务数据。 区块链数据管理器发布**RawBlock 和交易Msg**消息，该消息是从 Web3.eth [getBlock](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#getblock)返回的信息集，获取[交易](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#gettransaction)查询。
 
 ``` azurecli
 az resource create \
@@ -79,7 +79,7 @@ JSON 配置示例，用于**在美国东部**区域创建区块链管理器实�
 }
 ```
 
-| 元素 | 说明 |
+| 元素 | 描述 |
 |---------|-------------|
 | location | 创建观察程序资源的区域 |
 | properties | 创建观察程序资源时要设置的属性 |
@@ -147,7 +147,7 @@ az resource create \
 }
 ```
 
-| 元素 | 说明 |
+| 元素 | 描述 |
 |---------|-------------|
 | location | 创建输入资源的区域。 |
 | 输入类型 | Azure 区块链服务成员的分类帐类型。 目前，**支持以图姆**。 |
@@ -219,7 +219,7 @@ az resource create \
 }
 ```
 
-| 元素 | 说明 |
+| 元素 | 描述 |
 |---------|-------------|
 | location | 创建输出资源的区域。 |
 | 输出类型 | 输出类型。 目前，**事件网格**受支持。 |
@@ -301,7 +301,7 @@ az resource create \
 }
 ```
 
-| 元素 | 说明 |
+| 元素 | 描述 |
 |---------|-------------|
 | location | 创建应用程序资源的区域。 |
 | 工件类型 | 应用程序类型。 目前，**支持以天智能合约**。 |
@@ -396,7 +396,7 @@ az resource delete \
                    --resource-type Microsoft.Blockchain/watchers
 ```
 
-| 参数 | 说明 |
+| 参数 | 描述 |
 |-----------|-------------|
 | resource-group | 要删除的观察程序的资源组名称。 |
 | name | 要删除的观察程序的名称。 |

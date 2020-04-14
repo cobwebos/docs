@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: dsindona
-ms.openlocfilehash: db2300ae827677f8902e420b136acec3da694c8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0453117ee2984e0b8ebee60145353584a02a359a
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280008"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270122"
 ---
 # <a name="container-publishing-prerequisites"></a>容器发布先决条件
+
+> [!IMPORTANT]
+> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 容器产品的管理移动到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照["创建 Azure 容器产品/服务](https://aka.ms/CreateContainerOffer)"中的说明进行操作，以管理迁移的优惠。
 
 本文介绍在 Azure 市场上发布容器产品/服务的先决条件。  如果您尚未这样做，您应该查看[容器提供发布指南](../../marketplace-containers.md)。
 

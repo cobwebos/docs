@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/09/2019
+ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: b076c642f72e45f58be61d67e887e11b6ccb0aba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2897fe2e0cc8aeb929b0a33f5cdaba9c60f2a244
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74975850"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261578"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>录制语音样本用于创建自定义语音
 
@@ -32,7 +32,7 @@ ms.locfileid: "74975850"
 
 自定义语音录制项目有 4 个基本角色：
 
-角色|目的
+角色|目标
 -|-
 配音员        |其语音将构成自定义语音的基础。
 录音工程师  |监督录音的技术方面并操作录音设备。
@@ -104,7 +104,7 @@ ms.locfileid: "74975850"
 
 幸运的是，可完全避免这些问题。 有很多文本源无需许可或权限即可使用。
 
-|文本源|描述|
+|文本源|说明|
 |-|-|
 |[CMU Arctic corpus](http://festvox.org/cmu_arctic/)|约 1100 个句子，选自专用于语音合成项目的无版权作品。 首先使用这类句子是很可取的。|
 |作品不再<br>受版权保护|通常是 1923 年之前出版的作品。 在英语方面，[Project Gutenberg](https://www.gutenberg.org/)（古腾堡计划）提供了数以万计的此类作品。 你可能想要关注较新的作品，因为语言将更接近现代英语。|

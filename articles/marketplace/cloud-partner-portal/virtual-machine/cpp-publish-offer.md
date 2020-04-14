@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: dsindona
-ms.openlocfilehash: c35f721131b997dcfdb0f23a91a39329168b757c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bb875a5c4ab1b898b64fe22140414e5d5b7830b8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277338"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273777"
 ---
 # <a name="publish-a-virtual-machine-offer"></a>发布虚拟机产品/服务
+
+> [!IMPORTANT]
+> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 虚拟机产品的管理移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照创建 Azure[虚拟机产品/服务](https://aka.ms/CreateAzureVMoffer)中的说明进行操作，以管理迁移的优惠。
 
  在门户中定义产品/服务并创建关联的技术资产后，最后一个步骤是提交产品/服务进行发布。 下图描述了进行“推出”的发布过程的主要步骤：
 

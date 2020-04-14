@@ -3,8 +3,8 @@ title: Azure 串行控制台主动 GRUB 配置*微软文档
 description: 跨各种分发配置 GRUB，允许在 Azure 虚拟机中访问单个用户和恢复模式。
 services: virtual-machines-linux
 documentationcenter: ''
-author: vilibert
-manager: spogge
+author: mimckitt
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/10/2019
-ms.author: vilibert
-ms.openlocfilehash: a154ab4742f0d0d7acae0376bcf894bc2b62b4cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 573bd0797e63fc512e59b0e0882c718e4569111c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74186924"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262887"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>主动确保您能够访问 GRUB 和 sysrq，可以节省大量停机时间
 
@@ -98,7 +98,7 @@ ms.locfileid: "74186924"
 默认情况下，sysrq 密钥在某些较新的 Linux 发行版上启用，尽管在另一些版本上，它可能配置为仅接受某些 SysRq 函数的值。
 在较旧的发行版上，它可能被完全禁用。
 
-SysRq 功能可用于直接从 Azure 串行控制台重新启动崩溃或挂起的 VM，这也有助于获得对 GRUB 菜单的访问，或者从其他门户窗口重新启动 VM 或 ssh 会话可能会断开当前控制台连接因此，即将到期的 GRUB 超时，用于显示 GRUB 菜单。
+SysRq 功能可用于直接从 Azure 串行控制台重新启动崩溃或挂起的 VM，这也有助于获得对 GRUB 菜单的访问，或者从其他门户窗口重新启动 VM 或 ssh 会话可能会放弃当前控制台连接，从而过期的 GRUB 超时，用于显示 GRUB 菜单。
 必须将 VM 配置为接受内核参数的值 1，该值启用 sysrq 或 128 的所有功能，这允许重新启动/关闭电源
 
 

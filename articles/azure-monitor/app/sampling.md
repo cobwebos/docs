@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: fc9db23f7733f97ca207e834d4543fbdb1b9db5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e888e0606b7a9bcd9a7a94c28455d705c5f1bec
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275823"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255475"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -22,7 +22,7 @@ ms.locfileid: "79275823"
 
 * 有三种不同类型的采样：自适应采样、固定速率采样和引入采样。
 * 默认情况下，在所有最新版本的应用程序见解ASP.NET和ASP.NET核心软件开发工具包 （SDK） 中启用自适应采样。 它也被 Azure[函数](https://docs.microsoft.com/azure/azure-functions/functions-overview)使用。
-* 适用于ASP.NET、ASP.NET核心、Java 和 Python 的应用程序见解 SDK 的最新版本中提供了固定利率采样。
+* 最新版本的应用程序见解 SDK 可用于ASP.NET、ASP.NET核心、Java（代理和 SDK）和 Python。
 * 引入采样适用于应用程序见解服务终结点。 仅当没有其他采样有效时，它才适用。 如果 SDK 对遥测进行采样，则禁用引入采样。
 * 对于 Web 应用程序，如果记录自定义事件，并且需要确保一组事件保留或丢弃在一起，则事件必须具有相同的`OperationId`值。
 * 如果要编写分析查询，应[考虑采样](../../azure-monitor/log-query/aggregations.md)。 特别是，应使用 `summarize sum(itemCount)`，而不是仅对记录进行计数。
@@ -306,7 +306,29 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 ### <a name="configuring-fixed-rate-sampling-for-java-applications"></a>为 Java 应用程序配置固定速率采样
 
-默认情况下，Java SDK 中未启用采样。 目前它仅支持固定速率采样。 Java SDK 不支持自适应采样。
+默认情况下，Java 代理和 SDK 中未启用采样。 目前它仅支持固定速率采样。 Java 不支持自适应采样。
+
+#### <a name="configuring-java-agent"></a>配置 Java 代理
+
+1. 下载[应用程序见解-代理-3.0.0-PREVIEW.2.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.2/applicationinsights-agent-3.0.0-PREVIEW.2.jar)
+
+1. 要启用采样，请向文件`ApplicationInsights.json`添加以下内容：
+
+```json
+{
+  "instrumentationSettings": {
+    "preview": {
+      "sampling": {
+        "fixedRate": {
+          "percentage": 10 //this is just an example that shows you how to enable only only 10% of transaction 
+        }
+      }
+    }
+  }
+}
+```
+
+#### <a name="configuring-java-sdk"></a>配置 Java SDK
 
 1. 使用最新的[应用程序见解 Java SDK](../../azure-monitor/app/java-get-started.md)下载和配置您的 Web 应用程序。
 
@@ -534,7 +556,7 @@ union requests,dependencies,pageViews,browserTimings,exceptions,traces
 
 * 如果 SDK 未执行采样，则对于过于特定量的任何遥测，自动运行引入采样。 例如，如果您使用的是旧版本的ASP.NET SDK 或 Java SDK，则此配置将起作用。
 * 如果使用当前ASP.NET或ASP.NET核心 SDK（托管在 Azure 或您自己的服务器上），则默认情况下可以获取自适应采样，但可以切换到如上所述的固定速率。 使用固定速率采样，浏览器 SDK 会自动同步到示例相关的事件。 
-* 如果使用当前的 Java SDK，则可以配置为`ApplicationInsights.xml`打开固定利率采样。 默认情况下，采样处于关闭状态。 通过固定速率采样，浏览器 SDK 和服务器会自动同步到示例相关事件。
+* 如果使用当前 Java 代理，则可以配置`ApplicationInsights.json`（对于 Java SDK，配置`ApplicationInsights.xml`）以打开固定利率采样。 默认情况下，采样处于关闭状态。 通过固定速率采样，浏览器 SDK 和服务器会自动同步到示例相关事件。
 
 *有些罕见的事件我总是想看。如何通过采样模块？*
 

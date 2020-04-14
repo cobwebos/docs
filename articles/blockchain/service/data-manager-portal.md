@@ -4,12 +4,12 @@ description: 使用 Azure 门户创建和管理 Azure 区块链服务的区块�
 ms.date: 03/30/2020
 ms.topic: article
 ms.reviewer: ravastra
-ms.openlocfilehash: beacef0660a253c90afb507618e8a1742f0c9d2d
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 08f5a4a807087afce13dd4a6e96c0e9dd0a36103
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529604"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260592"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>使用 Azure 门户配置区块链数据管理器
 
@@ -28,7 +28,7 @@ ms.locfileid: "80529604"
 
 ## <a name="create-instance"></a>创建实例
 
-区块链数据管理器实例连接并监控 Azure 区块链服务事务节点。 只有有权访问事务节点的用户才能创建连接。 实例从事务节点捕获所有原始块和原始事务数据。
+区块链数据管理器实例连接并监控 Azure 区块链服务事务节点。 只有有权访问事务节点的用户才能创建连接。 实例从事务节点捕获所有原始块和原始事务数据。 区块链数据管理器发布**RawBlock 和交易Msg**消息，该消息是从 Web3.eth [getBlock](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#getblock)返回的信息集，获取[交易](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#gettransaction)查询。
 
 出站连接将区块链数据发送到 Azure 事件网格。 创建实例时，可以配置单个出站连接。 区块链数据管理器支持对任意给定的区块链数据管理器实例使用多个事件网格主题出站连接。 可将区块链数据发送到一个或多个目标。 要添加其他目标，只需向实例添加其他出站连接。
 

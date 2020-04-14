@@ -2,17 +2,17 @@
 title: 来自 Verizon 高级规则的 Azure CDN 引擎匹配条件 |微软文档
 description: 来自 Verizon 高级版中 Azure 内容交付网络的参考文档会管理引擎匹配条件。
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: magattus
-ms.openlocfilehash: 1660dca34b2f128ef5889145fcdeed0d2523b9bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: e2361590118668f2cdf22c4a29534b16790b90e4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593207"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253435"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>来自 Verizon 高级规则的 Azure CDN 规则引擎匹配条件
 
@@ -30,7 +30,7 @@ ms.locfileid: "67593207"
 
 “始终”匹配条件向所有请求应用默认的一组功能。
 
-“属性” | 目的
+名称 | 目的
 -----|--------
 [始终](#always) | 向所有请求应用默认的一组功能。
 
@@ -38,7 +38,7 @@ ms.locfileid: "67593207"
 
 “设备”匹配条件用于根据属性标识来自移动设备的请求。  
 
-“属性” | 目的
+名称 | 目的
 -----|--------
 [设备](#device) | 根据设备属性标识来自移动设备的请求。
 
@@ -46,7 +46,7 @@ ms.locfileid: "67593207"
 
 “位置”匹配条件根据请求者的位置标识请求。
 
-“属性” | 目的
+名称 | 目的
 -----|--------
 [AS 编号](#as-number) | 标识源自特定网络的请求。
 [国家](#country) | 标识源自指定国家/地区的请求。
@@ -55,7 +55,7 @@ ms.locfileid: "67593207"
 
 “源”匹配条件标识指向内容分发网络存储或客户源服务器的请求。
 
-“属性” | 目的
+名称 | 目的
 -----|--------
 [CDN 源](#cdn-origin) | 标识对存储在内容分发网络存储中的内容的请求。
 [客户源](#customer-origin) | 标识存储在特定客户源服务器上的内容的请求。
@@ -64,7 +64,7 @@ ms.locfileid: "67593207"
 
 “请求”匹配条件根据属性标识请求。
 
-“属性” | 目的
+名称 | 目的
 -----|--------
 [客户端 IP 地址](#client-ip-address) | 标识源自特定 IP 地址的请求。
 [Cookie 参数](#cookie-parameter) | 查看与每个针对指定值的请求关联的 Cookie。
@@ -81,7 +81,7 @@ ms.locfileid: "67593207"
 
 “URL”匹配条件根据 URL 标识请求。
 
-“属性” | 目的
+名称 | 目的
 -----|--------
 [URL 路径目录](#url-path-directory) | 按相对路径标识请求。
 [URL 路径扩展名](#url-path-extension) | 按文件扩展名标识请求。
@@ -345,13 +345,13 @@ WURFL 功能引用描述移动设备的类别。 选定的功能确定用于识�
 > [!NOTE]
 > “修改客户端请求标头”**** 和“修改客户端响应标头”**** 功能支持以下变量。
 
-功能 | 变量 | 描述 | 示例值
+功能 | 变量 | 说明 | 示例值
 -----------|----------|-------------|----------------
 品牌名称 | %{wurfl_cap_brand_name} | 一个字符串，表示设备的品牌名称。 | Samsung
 设备 OS | %{wurfl_cap_device_os} | 一个字符串，表示设备上安装的操作系统。 | IOS
 设备 OS 版本 | %{wurfl_cap_device_os_version} | 一个字符串，表示设备上安装的操作系统的版本号。 | 1.0.1
 双方向 | %{wurfl_cap_dual_orientation} | 一个布尔值，表示设备是否支持双方向。 | true
-HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移动设备针对 HTML 内容的首选文档类型定义 (DTD)。 | none<br/>xhtml_basic<br/>html5
+HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移动设备针对 HTML 内容的首选文档类型定义 (DTD)。 | 无<br/>xhtml_basic<br/>html5
 图像内联 | %{wurfl_cap_image_inlining} | 一个布尔值，表示设备是否支持 Base64 编码图像。 | false
 是 Android | %{wurfl_vcap_is_android} | 一个布尔值，表示设备是否使用 Android OS。 | true
 是 IOS | %{wurfl_vcap_is_ios} | 一个布尔值，表示设备是否使用 iOS。 | false
@@ -829,7 +829,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
 下表中的示例配置假设当某个请求与指定的 URL 模式匹配时满足此匹配条件：
 
-“值”                   | 相对于    | 结果 
+值                   | 相对于    | 结果 
 ------------------------|----------------|-------
 \*/test.html \*/test.php  | 根或源 | 针对任何文件夹中名为“test.html”或“test.php”的资产发出的请求匹配此模式。
 /80ABCD/origin/text/*   | Root           | 当请求的资产满足以下条件时匹配此模式： <br />- 该资产必须位于名为“origin”的客户来源位置。 <br />- 相对路径必须以名为“text”的文件夹开头。 即，请求的资产可以位于“text”文件夹中，或者位于该文件夹的某个递归子文件夹中。
@@ -984,7 +984,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
     
 - 某些字符需要 URL 编码。 使用百分比符号对以下字符进行 URL 编码：
 
-   字符 | URL 编码 | “值”
+   字符 | URL 编码 | 值
    ----------|--------------|------
    Space     | %20          | \%20
    &         | %25          | \%25
@@ -995,7 +995,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
    例如：
 
-   “值” | 解释为 
+   值 | 解释为 
    ------|---------------
    \\+    | +
    \\\\+   | \\+
@@ -1053,7 +1053,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
 以下示例演示此选项在特定场合下的工作方式：
 
- “属性”                 | 描述
+ 名称                 | 说明
  ---------------------|------------
 user=joe              | 当所请求 URL 的查询字符串为“?user=joe”时匹配此模式。
 \*用户*\*\*选择退出*\* | 当 CDN URL 查询包含 user 或 optout 参数时匹配此模式。

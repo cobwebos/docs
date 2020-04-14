@@ -3,7 +3,7 @@ title: Azure VM 大小 - 通用 |微软文档
 description: 列出 Azure 中虚拟机可用的不同通用大小。 列出有关此系列中大小的数据 CPU、数据磁盘和 NIC 的数量以及存储吞吐量和网络带宽的信息。
 services: virtual-machines
 documentationcenter: ''
-author: jonbeck7
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
-ms.author: jonbeck
-ms.openlocfilehash: 22826c32dc2aee0e580ec0b2a05c7eb8f08b7570
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.author: mimckitt
+ms.openlocfilehash: fc263eb6fbe6c6402aaf529229bb7025f070b8d9
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115311"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269663"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>常规用途虚拟机大小
 

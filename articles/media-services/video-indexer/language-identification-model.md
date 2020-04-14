@@ -8,18 +8,22 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/12/2019
+ms.date: 04/12/2020
 ms.author: ellbe
-ms.openlocfilehash: 7a2e03b8dacbf6c3ff20e02c804804b671e86d97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba1521581316d559eb4e67bafba0061c31cc666b
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76513875"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272944"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>使用语言识别模型自动识别口语
 
-视频索引器支持自动语言识别 （LID），这是从音频自动识别口语内容以及发送媒体文件以主要标识语言转录的过程。 目前，LID 支持英语、西班牙语、法语、德语、意大利语、中文（简体）、日语、俄语和葡萄牙语（巴西语）。 
+视频索引器支持自动语言识别 （LID），这是从音频自动识别口语内容以及发送媒体文件以主要标识语言转录的过程。 
+
+目前，LID 支持：英语、西班牙语、法语、德语、意大利语、普通话、日语、俄语和葡萄牙语（巴西）。 
+
+请务必查看下面的["指南和限制"](#guidelines-and-limitations)部分。
 
 ## <a name="choosing-auto-language-identification-on-indexing"></a>在索引时选择自动语言标识
 
@@ -49,7 +53,10 @@ ms.locfileid: "76513875"
 
 ## <a name="guidelines-and-limitations"></a>指导原则和限制
 
-* 支持的语言包括英语、西班牙语、法语、德语、意大利语、中文（简体）、日语、俄语和巴西葡萄牙语。
+* 自动语言识别 （LID） 支持以下语言： 
+
+    英语、西班牙语、法语、德语、意大利语、普通话、日语、俄语和葡萄牙语（巴西语）。
+* 尽管视频索引器支持阿拉伯语（现代标准和 Levantine）、印地语和韩语，但 LID 中不支持这些语言。
 * 如果音频包含上面支持列表以外的语言，则结果是意外的。
 * 如果视频索引器无法以足够高的置信度 （）`>0.6`标识语言），则回退语言为英语。
 * 当前不支持具有混合语言音频的文件。 如果音频包含混合语言，则结果为意外。 

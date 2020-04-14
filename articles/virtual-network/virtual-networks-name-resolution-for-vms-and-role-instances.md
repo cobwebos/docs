@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d7d0699718642a7eb9f85b2e8a86623092c34365
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 9ea63192732184ff7a13ff1465a5b393a282f9d2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010556"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262190"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 虚拟网络中资源的名称解析
 
@@ -88,6 +88,7 @@ Azure 提供的名称解析包括以下功能：
 * 对表单\[vmname.internal.cloudapp.net\]的 FQDN 的向前查找将解析为分配给虚拟机的 IP 地址。
 * 如果虚拟网络作为注册虚拟网络链接到[Azure DNS 专用区域](../dns/private-dns-overview.md)，则反向 DNS 查询将返回两条记录。 一条记录将写形式\[vmname\]。[priednszonename] 和其他将的形式\[vmname\].internal.cloudapp.net
 * 反向 DNS 查找的范围限定为给定的虚拟网络，即使它被对等到其他虚拟网络也是如此。 对位于对等虚拟网络中的虚拟机的 IP 地址的反向 DNS 查询 （PTR 查询） 将返回 NXDOMAIN。
+* 如果要关闭虚拟网络中的反向 DNS 功能，可以通过使用[Azure DNS 专用区域](../dns/private-dns-overview.md)创建反向查找区域并将此区域链接到虚拟网络来执行此操作。 例如，如果虚拟网络的 IP 地址空间为 10.20.0.0/16，则可以创建一个空专用 DNS 区域 20.10.in-addr.arpa 并将其链接到虚拟网络。 将区域链接到虚拟网络时，应禁用链接上的自动注册。 此区域将覆盖虚拟网络的默认反向查找区域，由于此区域为空，您将获得用于反向 DNS 查询的 NXDOMAIN。 有关如何创建专用 DNS 区域并将其链接到虚拟网络的详细信息，请参阅我们的[快速入门指南](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal)。
 
 > [!NOTE]
 > 如果希望反向 DNS 查找跨越虚拟网络，则可以创建反向查找区域 （addr.arpa） Azure DNS[专用区域](../dns/private-dns-overview.md)并将其链接到多个虚拟网络。 但是，您必须手动管理虚拟机的反向 DNS 记录。

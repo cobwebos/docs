@@ -1,5 +1,5 @@
 ---
-title: 本地和远程运行的模型可解释性
+title: 解释机器学习模型和预测
 titleSuffix: Azure Machine Learning
 description: 了解使用 Azure 机器学习 SDK 时如何获取解释，以了解机器学习模型如何确定特征重要性并做出预测。
 services: machine-learning
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
-ms.date: 04/02/2020
-ms.openlocfilehash: 1ff42149ccb629a0a7094e6dfede422d4dd7f61f
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.date: 04/12/2020
+ms.openlocfilehash: c1282ed16c9e3b92e7d5ec3f9969bee6fc3d917f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632032"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257192"
 ---
-# <a name="model-interpretability-for-local-and-remote-runs"></a>本地和远程运行的模型可解释性
+# <a name="explain-machine-learning-models-and-predictions"></a>解释机器学习模型和预测
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -30,7 +30,6 @@ ms.locfileid: "80632032"
 
 * 解释 Azure 中整个模型和单个预测的行为。
 
- 
 * 使用可视化仪表板与模型说明进行交互。
 
 * 在模型旁边部署评分解释器，以观察推断过程中的说明。
@@ -86,7 +85,7 @@ ms.locfileid: "80632032"
                                  classes=classes)
     ```
 
-    或
+    or
 
     ```python
 
@@ -112,7 +111,7 @@ ms.locfileid: "80632032"
                                classes=classes)
     ```
 
-    或
+    or
 
     ```python
     from interpret.ext.blackbox import PFIExplainer

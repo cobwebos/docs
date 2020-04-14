@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 04/08/2020
-ms.openlocfilehash: 5b99e2f31d82630e2adc138c11485201a617af81
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.date: 04/12/2020
+ms.openlocfilehash: dbd217c7135172c52a5ec7459930977960c452aa
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892319"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260849"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure 监视器客户管理的关键配置 
 
@@ -95,8 +95,7 @@ UI 当前不支持该过程，并且通过 REST API 执行预配过程。
 例如：
 
 ```rst
-GET
-https://management.azure.com/subscriptions/<subscriptionId>/resourcegroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>?api-version=2015-11-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
 Authorization: Bearer eyJ0eXAiO....
 ```
 
@@ -106,8 +105,8 @@ Authorization: Bearer eyJ0eXAiO....
 
 1. 使用[应用注册](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens)方法。
 2. 在 Azure 门户中
-    1. 在"开发人员工具 （F12） 中导航到 Azure 门户
-    1. 在"批处理 api 版本"实例之一的"请求标头"下查找授权字符串。 它看起来像："授权：承载\<令牌"。\> 
+    1. 在"开发人员工具"（F12）中导航到 Azure 门户
+    1. 在"批处理 api 版本"实例之一的"请求标头"下查找授权字符串。 它看起来像："授权：持有人eyJ0eXAIO..."..." 
     1. 根据以下示例复制并将其添加到 API 调用中。
 3. 导航到 Azure REST 文档站点。 按任何 API 上的"试用"并复制承载令牌。
 
@@ -115,29 +114,52 @@ Authorization: Bearer eyJ0eXAiO....
 
 此配置过程中的某些操作以异步方式运行，因为它们无法快速完成。 异步操作的响应最初返回 HTTP 状态代码 200 （OK） 和具有*Azure-Async操作*属性的标头，当接受时：
 ```json
-"Azure-AsyncOperation": "https://management.azure.com/subscriptions/ subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2015-11-01-preview"
+"Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-03-01-preview"
 ```
 
 可以通过向*Azure-Async操作*标头值发送 GET 请求来检查异步操作的状态：
 ```rst
-GET "https://management.azure.com/subscriptions/ subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2015-11-01-preview
+GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 ```
 
-来自操作的响应正文包含有关操作的信息，"*状态"* 属性指示其状态。 此配置过程中的异步操作及其状态为：
+响应包含有关操作及其*状态的信息*。 它可以是以下项之一：
 
-**创建*群集*资源**
-* 预配帐户 -- ADX 群集正在预配中 
-* 成功 -- ADX 群集预配已完成
+操作正在进行中
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "InProgress", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+}
+```
 
-**向密钥保管库授予权限**
-* 更新 -- 密钥标识符详细信息更新正在进行中
-* 成功 -- 更新已完成
+操作已完成
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "Succeeded", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+    "endTime": "2017-01-06T20:56:56.002812+00:00",
+}
+```
 
-**关联日志分析工作区**
-* 链接 -- 工作区关联到群集正在进行中
-* 成功 - 关联已完成
-
+操作失败
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "Failed", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+    "endTime": "2017-01-06T20:56:56.002812+00:00",
+    "error" : { 
+        "code": "error-code",  
+        "message": "error-message" 
+    }
+}
+```
 
 ### <a name="subscription-whitelisting"></a>订阅白名单
 
@@ -149,6 +171,8 @@ CMK 功能是一种早期访问功能。 计划创建*群集*资源的订阅必�
 ### <a name="storing-encryption-key-kek"></a>存储加密密钥 （KEK）
 
 创建或使用已必须生成的 Azure 密钥保管库，或导入用于数据加密的密钥。 Azure 密钥保管库必须配置为可恢复，以保护密钥和对 Azure 监视器中数据的访问。 您可以在密钥保管库中的属性下验证此配置，应启用*软删除*和*清除保护*。
+
+![软删除和清除保护设置](media/customer-managed-keys/soft-purge-protection.png)
 
 这些设置可通过 CLI 和 PowerShell 获得：
 - [软删除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
@@ -189,11 +213,10 @@ Content-type: application/json
 
 **响应**
 
-200 OK 和标头时接受。
->[!Important]
-> 在功能的早期访问期间，ADX 群集是手动预配的。 虽然需要预配不足的 ADX 群集一段时间才能完成，但您可以通过两种方式检查预配状态：
-> 1. 从响应复制*Azure-Async 操作*URL 值，并将其用于[异步操作](#asynchronous-operations-and-status-check)中的操作状态检查
-> 2. 在*群集*资源上发送 GET 请求，并查看*预配状态*值。 它是*预配时预配帐户*，完成后*已成功*预配帐户。
+200 确定和标头。
+在功能的早期访问期间，ADX 群集是手动预配的。 虽然需要预配不足的 ADX 群集一段时间才能完成，但您可以通过两种方式检查预配状态：
+1. 从响应复制 Azure-Async 操作 URL 值，然后按照[异步操作状态检查](#asynchronous-operations-and-status-check)。
+2. 在*群集*资源上发送 GET 请求，并查看*预配状态*值。 它是*预配时预配帐户*，完成后*已成功*预配帐户。
 
 ### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Azure 监视器数据存储 （ADX 群集） 预配
 
@@ -205,7 +228,7 @@ Authorization: Bearer <token>
 ```
 
 > [!IMPORTANT]
-> 复制并保存响应，因为您将在后续步骤中需要其详细信息
+> 复制并保存响应，因为您将在接下来的步骤中需要详细信息。
 
 **响应**
 
@@ -260,11 +283,11 @@ Authorization: Bearer <token>
 
 此资源管理器请求是异步操作。
 
->[!Warning]
+> [!Warning]
 > 您必须在*群集*资源更新中提供一个完整的正文，其中包括*标识**、sKU、KeyVault**属性*和*位置*。 缺少*KeyVault属性*详细信息将从*群集*资源中删除密钥标识符，并导致[密钥吊销](#cmk-kek-revocation)。
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -290,11 +313,10 @@ Content-type: application/json
 
 **响应**
 
-200 OK 和标头时接受。
->[!Important]
-> 完成密钥标识符的传播需要几分钟时间。 您可以通过两种方式检查预配状态：
-> 1. 从响应复制*Azure-Async 操作*URL 值，并将其用于[异步操作](#asynchronous-operations-and-status-check)中的操作状态检查
-> 2. 在*群集*资源上发送 GET 请求，并查看*KeyVault 属性属性*。 最近更新的密钥标识符详细信息应在响应中返回。
+200 确定和标头。
+完成密钥标识符的传播需要几分钟时间。 您可以通过两种方式检查预配状态：
+1. 从响应复制 Azure-Async 操作 URL 值，然后按照[异步操作状态检查](#asynchronous-operations-and-status-check)。
+2. 在*群集*资源上发送 GET 请求，并查看*KeyVault 属性属性*。 最近更新的密钥标识符详细信息应在响应中返回。
 
 完成密钥标识符更新后，对*群集*资源上的 GET 请求的响应应如下所示：
 
@@ -330,8 +352,6 @@ Content-type: application/json
 ### <a name="workspace-association-to-cluster-resource"></a>工作区关联到*群集*资源
 对于应用见解 CMK 配置，请按照此步骤的附录内容操作。
 
-此资源管理器请求是异步操作。
-
 执行此操作（包括以下操作）需要对工作区和*群集*资源具有"写入"权限：
 
 - 在工作区中：微软.操作见解/工作空间/写入
@@ -345,7 +365,7 @@ Content-type: application/json
 此资源管理器请求是异步操作。
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2019-08-01-preview 
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview 
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -358,15 +378,13 @@ Content-type: application/json
 
 **响应**
 
-200 OK 和标头时接受。
->[!Important]
-> 操作时间可达 90 分钟。 引入工作区的数据仅在工作区关联成功后使用托管密钥进行加密存储。
-> 要检查工作区关联状态，请从响应中复制*Azure-Async操作*URL 值，并将其用于[异步操作](# asynchronous-operations-and-status-check)中的操作状态检查
-
-您可以通过向工作区发送 GET 请求来检查与工作区关联的*群集*资源[- 获取](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get)并观察响应。 *群集资源 Id*上指示*群集*资源 ID。
+200 确定和标头。
+引入后的数据在关联操作后使用托管密钥进行加密存储，这可能需要长达 90 分钟才能完成。 您可以通过两种方式检查工作区关联状态：
+1. 从响应复制 Azure-Async 操作 URL 值，然后按照[异步操作状态检查](#asynchronous-operations-and-status-check)。
+2. 发送[工作区 – 获取](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get)请求并观察响应，关联的工作区将在"功能"下具有群集 ResourceId。
 
 ```rest
-GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
 ```
 
 **响应**
@@ -455,7 +473,7 @@ CMK 的轮换需要使用 Azure 密钥保管库中的新密钥版本显式更新
 - 获取资源组的所有*群集*资源：
 
   ```rst
-  GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2019-08-01-preview
+  GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
   Authorization: Bearer <token>
   ```
     
@@ -492,7 +510,7 @@ CMK 的轮换需要使用 Azure 密钥保管库中的新密钥版本显式更新
 - 获取订阅的所有*群集*资源：
 
   ```rst
-  GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2019-08-01-preview
+  GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
   Authorization: Bearer <token>
   ```
     
@@ -503,8 +521,7 @@ CMK 的轮换需要使用 Azure 密钥保管库中的新密钥版本显式更新
 - 删除*群集*资源 -- 执行软删除操作，以便在 14 天内恢复群集资源、数据和相关工作区，无论删除是意外的还是有意的。 群集*资源*名称在软删除期间保持保留状态，无法创建具有该名称的新群集。 在软删除期间之后 *，群集资源和*数据不可恢复。 关联的工作区从*群集*资源取消关联，新数据被引入到共享存储和使用 Microsoft 密钥进行加密。
 
   ```rst
-  DELETE
-  https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
   Authorization: Bearer <token>
   ```
 
@@ -540,8 +557,10 @@ CMK 的轮换需要使用 Azure 密钥保管库中的新密钥版本显式更新
 
 **创建**
 
+此资源管理器请求是异步操作。
+
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -562,10 +581,10 @@ Content-type: application/json
 
 **响应**
 
-202 已接受。 这是异步操作的标准资源管理器响应。
-
->[!Important]
-> 完成不足 ADX 群集的预配需要几分钟时间。 在*群集*资源上执行 GET REST API 调用并查看预配状态值时，可以验证*预配状态*。 它是*预配时预配帐户*，完成后为"成功"。
+200 确定和标头。
+在功能的早期访问期间，ADX 群集是手动预配的。 虽然需要预配不足的 ADX 群集一段时间才能完成，但您可以通过两种方式检查预配状态：
+1. 从响应复制 Azure-Async 操作 URL 值，然后按照[异步操作状态检查](#asynchronous-operations-and-status-check)。
+2. 在*群集*资源上发送 GET 请求，并查看*预配状态*值。 它是*预配时预配帐户*，完成后*已成功*预配帐户。
 
 ### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>使用组件将组件关联到*群集*资源[- 创建或更新](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate)API
 
@@ -579,7 +598,7 @@ Content-type: application/json
 > 要验证 ADX 群集是否预配，请执行*群集*资源获取 REST API 并检查*预配状态*值是否*成功*。
 
 ```rst
-GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 ```
 
@@ -614,7 +633,7 @@ Authorization: Bearer <token>
 ```
 
 > [!IMPORTANT]
-> 复制并保留"原则 id"值，因为在接下来的步骤中您将需要它。
+> 复制并保留响应，因为在接下来的步骤中您将需要它。
 
 **关联组件**
 

@@ -7,20 +7,23 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: dc106ecf40367172f28c0f339bbcce8bddb50a34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 09e82b9905104df9b1902b0f64f6cfdf812aabb8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278069"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273998"
 ---
 # <a name="create-certificates-for-azure-key-vault"></a>创建 Azure Key Vault 证书
 
+> [!IMPORTANT]
+> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 虚拟机产品的管理移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[Azure VM 映像认证](https://aks.ms/CertifyVMimage)中的说明来管理迁移的优惠。
+
 本文介绍如何预配自签名证书，建立 Windows 远程管理 (WinRM) 到 Azure 托管虚拟机 (VM) 的连接需要使用这些证书。 此过程包括三个步骤：
 
-1.  创建安全证书。 
-2.  创建 Azure Key Vault 来存储此证书。 
-3.  将证书存储到此 Key Vault 中。 
+1.    创建安全证书。 
+2.    创建 Azure Key Vault 来存储此证书。 
+3.    将证书存储到此 Key Vault 中。 
 
 为完成此工作，可以使用新的或现有的 Azure 资源组。  以下说明使用了前一种方法。
 

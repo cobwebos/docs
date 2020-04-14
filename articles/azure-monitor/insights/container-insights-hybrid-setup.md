@@ -3,12 +3,12 @@ title: 使用 Azure 监视器配置用于容器的混合库伯奈斯群集 |微�
 description: 本文介绍如何为容器配置 Azure 监视器，以监视托管在 Azure 堆栈或其他环境中的 Kubernetes 群集。
 ms.topic: conceptual
 ms.date: 01/24/2020
-ms.openlocfilehash: 6d03716b988b1139e01d41120f48ea9a9bf34be1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a973e7e500906ebe833ec4cc6fd2fa8ee79c19e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198048"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255424"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>使用 Azure 监视器为容器配置混合库伯奈斯群集
 
@@ -36,7 +36,7 @@ ms.locfileid: "77198048"
     |------|---------|   
     |*.ods.opinsights.azure.com |端口 443 |  
     |*.oms.opinsights.azure.com |端口 443 |  
-    |* .blob.core.windows.net |端口 443 |  
+    |\* .blob.core.windows.net |端口 443 |  
     |*.dc.services.visualstudio.com |端口 443 |
 
 * 容器化代理要求 Kubelet 的`cAdvisor secure port: 10250``unsecure port :10255`或要在群集中的所有节点上打开，以收集性能指标。 如果 Kubelet 的 cAdvisor 尚未配置，我们建议您在 Kubelet 的 cAdvisor 上进行配置`secure port: 10250`。
@@ -228,7 +228,7 @@ ms.locfileid: "77198048"
        az login
        az account set --subscription "Subscription Name"
        # execute deployment command to add container insights solution to the specified Log Analytics workspace
-       az group deployment create --resource-group <resource group of log analytics workspace> --template-file ./containerSolution.json --parameters @./containerSolutionParams.json
+       az deployment group create --resource-group <resource group of log analytics workspace> --name <deployment name> --template-file  ./containerSolution.json --parameters @./containerSolutionParams.json
        ```
 
        配置更改可能需要几分钟才能完成。 完成后，系统会显示包含结果的消息，如下所示：
@@ -279,7 +279,7 @@ ms.locfileid: "77198048"
 >[!NOTE]
 >从代理到在 Azure 日志分析工作区中提交，引入延迟大约需要 5 到 10 分钟。 群集的状态显示值 **"无数据**"或 **"未知"，** 直到 Azure 监视器中所有必需的监视数据都可用。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 如果在尝试为混合 Kubernetes 群集启用监视时遇到错误，请复制 PowerShell 脚本[TroubleshootError_nonAzureK8s.ps1](https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/Troubleshoot/TroubleshootError_nonAzureK8s.ps1)并将其保存到计算机上的文件夹中。 此脚本用于帮助检测和修复遇到的问题。 它旨在检测和尝试更正的问题如下：
 

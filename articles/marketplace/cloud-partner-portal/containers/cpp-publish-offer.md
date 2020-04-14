@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: dsindona
-ms.openlocfilehash: c612d2234e6c3c4e93c3c984242bb283ed85c27f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8003bf1cb7905d5decf8a6267ea397f1b2c01222
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80279974"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270156"
 ---
 # <a name="publish-container-offer"></a>发布容器产品/服务
+
+> [!IMPORTANT]
+> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 容器产品的管理移动到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照["创建 Azure 容器产品/服务](https://aka.ms/CreateContainerOffer)"中的说明进行操作，以管理迁移的优惠。
 
  使用“新建产品/服务”**** 页创建新产品/服务后，可以发布该产品/服务。 选择“发布”启动发布过程。****
 

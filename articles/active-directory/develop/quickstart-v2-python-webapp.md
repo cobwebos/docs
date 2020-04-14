@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 34f0fb57b4432a8153f2cbaa8cb60edbb9a6f494
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0affae56ef6998efe4bb370287ff3688f83f3878
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78271083"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873950"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>快速入门：向 Python Web 应用添加 Microsoft 登录功能
 
@@ -41,8 +41,7 @@ ms.locfileid: "78271083"
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 >
-> 1. 访问 [Azure 门户 - 应用注册](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)。
-> 1. 选择“新注册”。 
+> 1. 访问 [Azure 门户 - 应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonQuickstartPage/sourceType/docs)。
 > 1. 输入应用程序的名称并选择“注册”  。
 > 1. 遵照说明下载内容，系统会自动配置新应用程序。
 >
@@ -59,8 +58,11 @@ ms.locfileid: "78271083"
 > 1. “注册应用程序”页出现后，请输入应用程序的注册信息： 
 >      - 在“名称”  部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `python-webapp`。
 >      - 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。  
->      - 在“重定向 URI”部分的下拉列表中，选择“Web”平台，然后将值设置为 `http://localhost:5000/getAToken`。  
->      - 选择“注册”  。 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用   。
+>      - 选择“注册”  。
+>      - 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用   。
+> 1. 从菜单选择“身份验证”，然后添加以下信息  ：
+>    - 添加 **Web** 平台配置。 添加 `http://localhost:5000/getAToken` 作为“重定向 URI”。 
+>    - 选择“保存”。 
 > 1. 在左侧菜单中选择“证书和机密”，然后在“客户端机密”部分单击“新建客户端机密”：   
 >
 >      - 键入（实例应用机密）的密钥说明。
@@ -99,13 +101,17 @@ ms.locfileid: "78271083"
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
 > [下载代码示例](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
 
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > `Enter_the_Supported_Account_Info_Here`
+
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-the-application"></a>步骤 3：配置应用程序
-> 
+>
 > 1. 将 zip 文件提取到更靠近根文件夹的本地文件夹（例如，**C:\Azure-Samples**）
 > 1. 如果使用集成开发环境，请在偏好的 IDE 中打开示例（可选）。
 > 1. 打开 **app_config.py** 文件，该文件可以在根文件夹中找到，并替换为以下代码片段：
-> 
+>
 > ```python
 > CLIENT_ID = "Enter_the_Application_Id_here"
 > CLIENT_SECRET = "Enter_the_Client_Secret_Here"

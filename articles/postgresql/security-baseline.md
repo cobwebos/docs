@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f83cee2fb1435252f34d1a64f531b5befef66ffb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4034759dc4f20649c15236b057e348966d72409e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289688"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261154"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>后 SQL 单服务器 Azure 数据库的 Azure 安全基线
 
@@ -134,7 +134,7 @@ PostgreSQL 单一服务器 Azure 数据库的 Azure 安全基线包含一些建�
 
 如何配置和管理 Azure 策略：https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-用于网络的 Azure 策略示例：https://docs.microsoft.com/azure/governance/policy/samples/#network
+用于网络的 Azure 策略示例：https://docs.microsoft.com/azure/governance/policy/samples/
 
 如何创建 Azure 蓝图：https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
@@ -908,7 +908,7 @@ Azure 存储库文档：https://docs.microsoft.com/azure/devops/repos/index?view
 
 **指南**： 后格雷SQL 服务器的 Azure 数据库支持 Azure 活动目录身份验证（预览版）以访问数据库。  为 PostgreSQL 服务器创建 Azure 数据库时，可以为管理员用户提供凭据。 此管理员可用于创建其他数据库用户。  
 
-对于在 Azure 应用服务上运行的 Azure 虚拟机或 Web 应用程序，用于访问 PostgreSQL 服务器的 Azure 数据库，请使用 Azure 密钥保管库的托管服务标识来存储和检索 Azure 数据库的凭据，后格雷SQL服务器。 确保启用密钥保管库软删除。
+对于在 Azure 应用服务上运行的 Azure 虚拟机或 Web 应用程序，用于访问 PostgreSQL 服务器的 Azure 数据库，请使用 Azure 密钥保管库的托管服务标识来存储和检索 PostgreSQL 服务器的 Azure 数据库凭据。 确保启用密钥保管库软删除。
 
 使用托管标识在 Azure 活动目录 （AD） 中为 Azure 服务提供自动托管标识。 托管标识允许您对支持 Azure AD 身份验证的任何服务（包括密钥保管库）进行身份验证，而无需在代码中进行任何凭据。
 

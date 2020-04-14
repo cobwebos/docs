@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/10/2020
-ms.openlocfilehash: 8a7dfd7c690d79d8430f7c33a25b38949dbd06c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 31a5195038ef25acadc08e2acbedf8471b25833c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79086329"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261408"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>使用托管标识对 Azure 流分析作业进行身份验证，以为 BI 提供支持
 
@@ -160,7 +160,7 @@ Azure 资源管理器允许您完全自动部署流分析作业。 可以使用 
 ### <a name="use-the-power-bi-ui"></a>使用电源 BI UI
 
    > [!Note]
-   > 要使用 UI 将流分析作业添加到 Power BI 工作区，还必须在 Power BI 管理门户中的**开发人员设置**中启用服务主体访问。 有关详细信息[，请参阅使用服务主体入门](https://docs.microsoft.com/power-bi/developer/embed-service-principal#get-started-with-a-service-principal)。
+   > 要使用 UI 将流分析作业添加到 Power BI 工作区，还必须在 Power BI 管理门户中的**开发人员设置**中启用服务主体访问。 有关详细信息[，请参阅使用服务主体入门](https://docs.microsoft.com/power-bi/developer/embed-service-principal)。
 
 1. 导航到工作区的访问设置。 有关详细信息，请参阅本文：[授予对工作区的访问权限](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces#give-access-to-your-workspace)。
 

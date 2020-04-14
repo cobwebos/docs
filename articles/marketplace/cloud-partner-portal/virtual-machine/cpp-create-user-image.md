@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 49db8c6717cd26886c3b49f8c99fdd2b08e8713d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6bbee7f53cb9a61b72bdbbd941a3a0401f5b913b
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278001"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273947"
 ---
 # <a name="create-a-user-vm-image"></a>创建用户 VM 映像
+
+> [!IMPORTANT]
+> 从 2020 年 4 月 13 日开始，我们将开始向合作伙伴中心移动 Azure 虚拟机产品/ 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照创建 Azure[虚拟机技术资产](https://aka.ms/AzureVMTechAsset)中的说明进行操作，以管理迁移的优惠。
 
 本文介绍了从通用化 VHD 创建非托管映像所需的两个常规步骤。  将提供参考资料来指导你完成每个步骤：捕获映像并通用化该映像。
 

@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2020
+ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: a2d0b9bdfba1b96ad42e45d54faf106b2361e29d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7cdc9f9a4503c786065b6d514f61fe17eae4ce5e
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76264775"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270904"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>在 Azure 开发人员测试实验室中配置实验室和计算虚拟机的自动关机
 
@@ -28,7 +28,7 @@ ms.locfileid: "76264775"
 ## <a name="configure-autoshutdown-for-lab-vms-devtest-labs"></a>为实验室 VM 配置自动关机（开发人员测试实验室）
 借助 Azure 开发测试实验室，可通过管理每个实验室的策略（设置）来控制成本并尽量减少实验中的浪费。 本文介绍如何为实验室帐户配置自动关闭策略，并为实验室帐户中的实验室配置自动关闭设置。 若要了解如何设置每个实验室策略，请参阅[在 Azure 开发测试实验室中定义实验室策略](devtest-lab-set-lab-policy.md)。  
 
-### <a name="set-auto-shut-down-policy-for-a-lab"></a>为实验室设置自动关闭策略
+### <a name="set-auto-shutdown-policy-for-a-lab"></a>为实验室设置自动关闭策略
 实验室所有者可针对实验室中的所有 VM 配置关机计划。 这样可以节省成本，因为未使用（空闲）的计算机不会运行。 可以集中针对所有实验室 VM 实施关机策略，省得实验室用户付出精力针对每个计算机设置计划。 使用此功能可以针对实验室计划设置策略，一开始不为实验室用户提供任何控制权，逐渐为他们提供完全控制权。 实验室所有者可通过以下步骤配置此策略：
 
 1. 在实验室的主页上，选择“配置和策略”。****
@@ -42,7 +42,7 @@ ms.locfileid: "76264775"
 
 若要查看（和更改）实验室策略，请按以下步骤操作：
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 选择**所有服务**，然后从列表中选择**DevTest 实验室**。
 3. 从实验室列表，选择所需的实验室。   
 4. 选择“配置和策略”。****
@@ -54,7 +54,7 @@ ms.locfileid: "76264775"
 6. 选择“开启”**** 启用此策略，选择“关闭”**** 禁用此策略。
 7. 如果启用此策略，请指定要关闭当前实验室中所有 VM 的时间（和时区）。
 8. 指定 **"是**"或 **"否**"选项，用于在指定自动关闭时间前 30 分钟发送通知的选项。 如果选择“是”，请输入 Webhook URL 终结点或电子邮件地址，指定要将通知发布或发送到的位置****。 用户会收到通知，其中提供了延迟关闭的选项。 有关详细信息，请参阅[通知](#notifications)部分。 
-9. 选择“保存”。****
+9. 选择“保存”。 
 
     默认情况下，一旦启用，此策略会应用到当前实验室中所有 VM。 要从特定 VM 中删除此设置，请打开 VM 的管理窗格并更改其**自动关机**设置。
     
@@ -102,7 +102,7 @@ ms.locfileid: "76264775"
     ![新逻辑应用菜单](./media/devtest-lab-auto-shutdown/new-logic-app.png)
 2. 在**逻辑应用 - 创建**页面上，按照以下步骤操作： 
     1. 输入逻辑应用**的名称**。
-    2. 选择 Azure**订阅**。
+    2. 选择 **Azure 订阅**。
     3. 创建新的资源组****，或选择现有资源组。 
     4. 选择逻辑应用**的位置**。 
 
@@ -191,13 +191,34 @@ ms.locfileid: "76264775"
 
 ## <a name="configure-autoshutdown-for-compute-vms"></a>为计算 VM 配置自动关机
 
-1. 在 **"虚拟机"** 页上，选择左侧菜单上的 **"自动关闭**"。 
+1. 在 **"虚拟机**"页上，在"**操作"** 部分的左侧菜单中选择 **"自动关闭**"。 
 2. 在 **"自动关闭"** 页上，选择 **"打开**"以启用此策略，**然后选择"关闭**"以禁用它。
 3. 如果启用此策略，请指定应关闭 VM**的时间**（和**时区**）。
 4. 指定 **"是**"或 **"否**"选项，用于在指定自动关闭时间前 30 分钟发送通知的选项。 如果选择“是”，请输入 Webhook URL 终结点或电子邮件地址，指定要将通知发布或发送到的位置****。 用户会收到通知，其中提供了延迟关闭的选项。 有关详细信息，请参阅[通知](#notifications)部分。 
-9. 选择“保存”。****
+9. 选择“保存”。 
 
     ![为计算 VM 配置自动关机](./media/devtest-lab-auto-shutdown/comnpute-auto-shutdown.png)
+
+### <a name="view-activity-logs-for-auto-shutdown-updates"></a>查看自动关闭更新的活动日志
+更新自动关机设置时，您将看到在 VM 的活动日志中记录的活动。 
+
+1. 在[Azure 门户](https://portal.azure.com)中，导航到 VM 的主页。
+2. 从左侧菜单中选择**活动日志**。 
+3. 从筛选器中删除**资源：从筛选器中删除 mycomputevm。**
+3. 确认在活动日志中看到 **"添加或修改计划**"操作。 如果看不到它，请等待一段时间并刷新活动日志。
+
+    ![活动日志条目](./media/devtest-lab-auto-shutdown/activity-log-entry.png)
+4. 选择 **"添加或修改计划**"操作以查看 **"摘要**"页上的以下信息：
+
+    - 操作名称（添加或修改计划）
+    - 更新自动关闭设置的日期和时间。
+    - 更新设置的用户的电子邮件地址。 
+
+        ![活动日志条目摘要](./media/devtest-lab-auto-shutdown/activity-log-entry-summary.png)
+5. 切换到"**添加或修改计划"** 页中的"**更改历史记录"** 选项卡，您将看到该设置的更改历史记录。 在下面的示例中，关闭时间从 2020 年 4 月 10 日下午 7 点更改为下午 6 点，时间为美国东部时间 15：18：47。 并且，设置在美国东部时间 15：25：09 被禁用。 
+
+    ![活动日志 - 更改历史记录](./media/devtest-lab-auto-shutdown/activity-log-entry-change-history.png)
+6. 要查看有关操作的更多详细信息，请切换到 **"添加或修改计划"** 页中的**JSON**选项卡。
 
 ## <a name="next-steps"></a>后续步骤
 要了解如何设置所有策略，请参阅在[Azure 开发人员测试实验室中定义实验室策略](devtest-lab-set-lab-policy.md)。

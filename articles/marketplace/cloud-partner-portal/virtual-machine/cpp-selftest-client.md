@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: dsindona
-ms.openlocfilehash: fb568400cb60f108303909353bfa703e98ab6157
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: af42476f9d04f7f2bfc275c731b02aa5a9b8ecf6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286415"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273148"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>创建用来预验证 Azure 虚拟机映像的自测试客户端
+
+> [!IMPORTANT]
+> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 虚拟机产品的管理移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[Azure VM 映像认证](https://aks.ms/CertifyVMimage)中的说明来管理迁移的优惠。
 
 本文可用作创建使用自测试 API 的客户端服务的指南。 可使用自测试 API 来预验证虚拟机 (VM)，以确保其满足最新的 Azure 市场发布要求。 此客户端服务使你可以在提交 Microsoft 认证的产品/服务之前测试 VM。
 
@@ -62,13 +65,13 @@ Request body:    The Request body parameters should use the following JSON forma
 下表描述了 API 各字段。
 
 
-|      字段         |    描述    |
+|      字段         |    说明    |
 |  ---------------   |  ---------------  |
 |  授权     |  "承载 xxx-xxx-xxx-xxxxxx"字符串包含 Azure 活动目录 （AD） 客户端令牌，可以使用 PowerShell 创建。          |
 |  DNSName           |  要测试的 VM 的 DNS 名称    |
 |  用户              |  用于登录到 VM 的用户名         |
 |  密码          |  用于登录到 VM 的密码          |
-|  OS                |  VM 的操作系统：`Linux` 或 `Windows`          |
+|  (OS)                |  VM 的操作系统：`Linux` 或 `Windows`          |
 |  PortNo            |  用于连接到 VM 的开放端口号。 通常，对于 Linux，端口号为 `22`，对于 Windows，端口号为 `5986`。          |
 |  |  |
 
@@ -219,7 +222,7 @@ https://isvapp.azurewebsites.net/selftest-vm
 
 使用以下步骤选择要在其中创建应用程序的 Azure AD 租户。
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 在顶部菜单栏上，选择你的帐户，然后在“目录”列表下，选择要在其中注册应用程序的 Active Directory 域服务租户。 也可选择“目录 + 订阅”图标以查看全局订阅筛选器****。 以下屏幕截图显示了此筛选器的示例。
 
    ![选择订阅筛选器](./media/stclient-subscription-filter.png)
@@ -249,7 +252,7 @@ https://isvapp.azurewebsites.net/selftest-vm
    - **应用程序类型**- 选择**Web 应用/API**
    - **登录 URL** - 键入"https：\//isvapp.azurewebsites.net/selftest-vm"
 
-4. 选择 **“创建”**。
+4. 选择“创建”  。
 5. 在“应用注册”或“已注册的应用”下，复制“应用程序 ID”************。
 
    ![获取应用程序 ID](./media/stclient-app-id.png)
@@ -269,13 +272,13 @@ https://isvapp.azurewebsites.net/selftest-vm
     ![为应用启用 API 访问权限](./media/stclient-enable-api-access.png)
 
 14. 单击“选择”。
-15. 选择 **"完成**"。
+15. 选择“完成”  。
 16. 在“设置”下，选择“属性”********。
-17. 在“属性”下，向下滚动到“多租户”********。 选择 **“是”**。
+17. 在“属性”下，向下滚动到“多租户”********。 请选择“是”。 
 
     ![为应用配置多租户](./media/stclient-yes-multitenant.png)
 
-18. 选择“保存”。****
+18. 选择“保存”。 
 19. 在“设置”下，选择“密钥”********。
 20. 选择密钥“说明”文本框，创建密钥****。 配置以下字段：
 

@@ -2,15 +2,15 @@
 title: 教程 - 从 Azure 门户导出模板
 description: 了解如何使用导出的模板完成模板开发。
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 95d54a0661f0a0cebdbfc225074be0ce0d83a5cc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f95efbaedc2718c968062c47427ab7765756bde7
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79368887"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408552"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>教程：从 Azure 门户使用导出的模板
 
@@ -97,6 +97,8 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
+若要运行此部署命令，必须具有 Azure CLI 的 [最新版本](/cli/azure/install-azure-cli)。
+
 ```azurecli
 az deployment group create \
   --name addappserviceplan \
@@ -106,6 +108,9 @@ az deployment group create \
 ```
 
 ---
+
+> [!NOTE]
+> 如果部署失败，请将 **debug** 开关和部署命令配合使用来显示调试日志。  还可以使用 **verbose** 开关来显示完整的调试日志。
 
 ## <a name="verify-deployment"></a>验证部署
 

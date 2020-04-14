@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 6d0f035d77e74f157b793b9edf3ab5d3494096d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 302ba8d550f5e91efe12c620d766550958d3bf68
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288642"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256393"
 ---
 # <a name="concurrency-control"></a>并发控制
+
+> [!NOTE]
+> 云合作伙伴门户 API 与合作伙伴中心集成，在您的产品/服务迁移到合作伙伴中心后将继续工作。 集成引入了小更改。 查看[云合作伙伴门户 API 参考](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)中列出的更改，以确保代码在迁移到合作伙伴中心后继续工作。
 
 对云合作伙伴门户发布 API 的每个调用都必须显式指定要使用哪个并发控制策略。 如果未提供 **If-Match** 标头，则会导致 HTTP 400 错误响应。 我们提供了两种并发控制策略。
 

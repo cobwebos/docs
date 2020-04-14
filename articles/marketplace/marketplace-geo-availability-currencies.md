@@ -1,22 +1,22 @@
 ---
 title: 地理可用性和货币支持 |蔚蓝
-description: Azure 应用商店和应用程序源中的地理可用性
+description: 商业市场的地理可用性
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.author: dsindona
-ms.openlocfilehash: 79965180d897b91afc1fb1a27e777e385108d2c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82c3ed79bbcc566a91f9f249ec2df747bbc01cac
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288421"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262003"
 ---
 # <a name="geographic-availability-and-currency-support"></a>地理可用性和货币支持
 
-Azure 应用商店和 AppSource 产品可以在客户帐单地址定义的 141 个地理位置购买，并且事务可以以 17 种货币完成。 下表列出了每个支持的地理位置[、ISO 3166 两位数字 alpha 代码](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)和分配的货币。
+商业市场产品可以在 141 个地理位置购买，由客户的帐单地址定义，交易可以以 17 种货币完成。 下表列出了每个支持的地理位置[、ISO 3166 两位数字 alpha 代码](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)和分配的货币。
 
 |   国家/地区名称               |   ISO-2   |   货币   |
 |-------------------------------------|-----------|--------------|
@@ -48,7 +48,7 @@ Azure 应用商店和 AppSource 产品可以在客户帐单地址定义的 141 �
 | 佛得角                          | CV        | USD          |
 | 开曼群岛                      | KY        | USD          |
 | 智利                               | CL        | USD          |
-| 中国\**                            | CN        | 空值          |
+| 中国\**                            | CN        | 不可用          |
 | 哥伦比亚                            | CO        | USD          |
 | 哥斯达黎加                          | CR        | USD          |
 | 科特迪瓦                       | CI        | USD          |

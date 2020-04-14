@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: ff5f7a80e2dcedb1795bae14ee9140c2842303a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 373fc2829e599d0989b59c6386757c8f5f3e1d66
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76984510"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81251718"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure 时序见解 API 的身份验证和授权
 
@@ -70,7 +70,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
    [![在“选择用户”对话框中查找应用程序](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png#lightbox)
 
-1. 选择角色。 选择“读取者”以查询数据，或选择“参与者”以查询数据和更改参考数据。******** 选择“确定”。
+1. 选择角色。 选择“读取者”以查询数据，或选择“参与者”以查询数据和更改参考数据。******** 选择“确定”  。
 
    [![在"选择用户角色"对话框中选择读者或参与者](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png#lightbox)
 
@@ -104,7 +104,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
 ### <a name="authentication"></a>身份验证
 
-若要对[时序见解 REST API](https://docs.microsoft.com/rest/api/time-series-insights/) 执行经过身份验证的查询，必须使用所选的 REST 客户端（Postman、JavaScript、C#）在[授权标头](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate)中传递有效的 OAuth 2.0 持有者令牌。 
+若要对[时序见解 REST API](https://docs.microsoft.com/rest/api/time-series-insights/) 执行经过身份验证的查询，必须使用所选的 REST 客户端（Postman、JavaScript、C#）在[授权标头](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate)中传递有效的 OAuth 2.0 持有者令牌。 
 
 > [!TIP]
 > 阅读托管的 Azure 时间序列见解[客户端 SDK 示例可视化效果](https://tsiclientsample.azurewebsites.net/)，了解如何使用[JavaScript 客户端 SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)以及图表和图表以编程方式使用时序见解 API 进行身份验证。
@@ -113,7 +113,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
 必需的请求标头如下所述。
 
-| 必需的请求标头 | 描述 |
+| 必需的请求标头 | 说明 |
 | --- | --- |
 | 授权 | 若要使用时序见解进行身份验证，必须在“授权”标头中传递有效的 OAuth 2.0 持有者令牌****。 | 
 
@@ -124,7 +124,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
 可选请求标头如下所述。
 
-| 可选请求标头 | 描述 |
+| 可选请求标头 | 说明 |
 | --- | --- |
 | Content-type | 仅支持 `application/json`。 |
 | x-ms-client-request-id | 客户端请求 ID。 服务记录此值。 允许服务跨服务跟踪操作。 |
@@ -133,7 +133,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
 可选但建议的响应标头如下所述。
 
-| 响应标头 | 描述 |
+| 响应标头 | 说明 |
 | --- | --- |
 | Content-type | 仅支持 `application/json`。 |
 | x-ms-request-id | 服务器生成的请求 ID。 可用于与 Microsoft 联系以调查请求。 |
@@ -154,9 +154,9 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
 可选 URL 查询字符串参数包括为 HTTP 请求执行时间设置超时。
 
-| 可选查询参数 | 描述 | 版本 |
+| 可选查询参数 | 说明 | Version |
 | --- |  --- | --- |
-| `timeout=<timeout>` | 用于执行 HTTP 请求的服务器端超时。 仅适用于[获取环境事件](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api)和[获取环境聚合](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) API。 超时值应采用 ISO 8601 持续时间格式（例如 `"PT20S"`），并且应在 `1-30 s` 范围内。 默认值为 `30 s`。 | GA |
+| `timeout=<timeout>` | 用于执行 HTTP 请求的服务器端超时。 仅适用于[获取环境事件](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api)和[获取环境聚合](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) API。 超时值应采用 ISO 8601 持续时间格式（例如 `"PT20S"`），并且应在 `1-30 s` 范围内。 默认值是 `30 s`。 | GA |
 | `storeType=<storeType>` | 对于启用 Warm 存储的预览版环境，可以在 `WarmStore` 或 `ColdStore` 上执行查询。 查询中的此参数定义应在哪个存储中执行查询。 如果未定义，将对 Cold 存储执行查询。 若要查询 Warm 存储，需要将 storeType 设置为 `WarmStore`****。 如果未定义，将针对 Cold 存储执行查询。 | 预览 |
 
 ## <a name="next-steps"></a>后续步骤

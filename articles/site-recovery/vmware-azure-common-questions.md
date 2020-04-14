@@ -3,12 +3,12 @@ title: 有关使用 Azure Site Recovery 进行 VMware 灾难恢复的常见问�
 description: 获取使用 Azure Site Recovery 将本地 VMware VM 灾难恢复到 Azure 时出现的常见问题的解答。
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ae16138ae44262f53a8f9948d6287f0acf621244
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d551cef7037c0b6d7286cbb4b70d8f7a8f7f5cae
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240023"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259504"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>有关 VMware 到 Azure 的复制的常见问题
 
@@ -96,7 +96,7 @@ Site Recovery 已通过 ISO 27001:2013、27018、HIPAA 和 DPA 认证， 目前�
 在要复制的每个 VM 上，使用以下多种方法之一安装该服务：
 
 - [推送安装](vmware-physical-mobility-service-overview.md#push-installation)
-- 从 UI 或 PowerShell [手动安装](vmware-physical-mobility-service-overview.md#install-mobility-agent-through-ui)
+- 从 UI 或 PowerShell [手动安装](vmware-physical-mobility-service-overview.md#install-the-mobility-service-using-ui)
 - 使用部署工具（如[配置管理器](vmware-azure-mobility-install-configuration-mgr.md)）进行部署
 
 ## <a name="managed-disks"></a>托管磁盘
@@ -198,7 +198,7 @@ Site Recovery 遵循 N-4 支持模型。 [详细了解](https://aka.ms/asr_suppo
 
 ## <a name="do-i-need-to-reboot-source-machines-for-each-upgrade"></a>每次升级后是否都需要重新启动源计算机？
 
-建议每次升级后重新启动，但不一定非要这样做。 [了解详情](https://aka.ms/asr_vmware_upgrades)。
+建议每次升级后重新启动，但不一定非要这样做。 [了解详细信息](https://aka.ms/asr_vmware_upgrades)。
 
 ## <a name="configuration-server"></a>配置服务器
 
@@ -326,7 +326,7 @@ Site Recovery 遵循 N-4 支持模型。 [详细了解](https://aka.ms/asr_suppo
 
 ### <a name="how-do-i-access-azure-vms-after-failover"></a>故障转移后如何访问 Azure VM？
 
-故障转移后，可以通过安全的 Internet 连接、站点到站点 VPN 或 Azure ExpressRoute 来访问 Azure VM。 若要进行连接，必须做好一些准备工作。 [了解详情](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)。
+故障转移后，可以通过安全的 Internet 连接、站点到站点 VPN 或 Azure ExpressRoute 来访问 Azure VM。 若要进行连接，必须做好一些准备工作。 [了解详细信息](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)。
 
 ### <a name="is-failed-over-data-resilient"></a>故障转移的数据是否有复原能力？
 
@@ -338,7 +338,7 @@ Azure 具有复原能力。 Site Recovery 能够根据 Azure 服务级别协议 
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>是否可以故障回复到不同位置？
 
-是的。 故障转移到 Azure 后，如果原始位置不可用，可以故障回复到不同的位置。 [了解详情](concepts-types-of-failback.md#alternate-location-recovery-alr)。
+是的。 故障转移到 Azure 后，如果原始位置不可用，可以故障回复到不同的位置。 [了解详细信息](concepts-types-of-failback.md#alternate-location-recovery-alr)。
 
 ### <a name="why-do-i-need-a-vpn-or-expressroute-with-private-peering-to-fail-back"></a>为何需要配合专用对等互连使用 VPN 或 ExpressRoute 进行故障回复？
 
@@ -349,13 +349,13 @@ Azure 具有复原能力。 Site Recovery 能够根据 Azure 服务级别协议 
 
 ### <a name="can-i-set-up-replication-with-scripting"></a>是否可以使用脚本设置复制？
 
-是的。 可以使用 Rest API、PowerShell 或 Azure SDK 将 Site Recovery 工作流自动化。 [了解详情](vmware-azure-disaster-recovery-powershell.md)。
+是的。 可以使用 Rest API、PowerShell 或 Azure SDK 将 Site Recovery 工作流自动化。 [了解详细信息](vmware-azure-disaster-recovery-powershell.md)。
 
 ## <a name="performance-and-capacity"></a>性能和容量
 
 ### <a name="can-i-throttle-replication-bandwidth"></a>是否可以限制复制带宽？
 
-是的。 [了解详情](site-recovery-plan-capacity-vmware.md)。
+是的。 [了解详细信息](site-recovery-plan-capacity-vmware.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

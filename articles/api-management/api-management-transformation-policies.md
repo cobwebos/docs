@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 81b7fb687bb6ef88d1ed436923d0e5ff7561c22b
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 27bb6abb7ae8eae46bc4dea3708270ecb4b731a6
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80803239"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260898"
 ---
 # <a name="api-management-transformation-policies"></a>API 管理转换策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](https://go.microsoft.com/fwlink/?LinkID=398186)。
@@ -77,7 +77,7 @@ ms.locfileid: "80803239"
 
 |名称|说明|必选|默认|
 |----------|-----------------|--------------|-------------|
-|apply|属性必须设置为以下值之一。<br /><br /> -   always - 始终应用转换。<br />-   content-type-json - 仅在响应的 Content-Type 标头指示存在 JSON 的情况下进行转换。|是|空值|
+|apply|属性必须设置为以下值之一。<br /><br /> -   always - 始终应用转换。<br />-   content-type-json - 仅在响应的 Content-Type 标头指示存在 JSON 的情况下进行转换。|是|不可用|
 |consider-accept-header|属性必须设置为以下值之一。<br /><br /> -   true - 如果在请求的 Accept 标头中请求了 XML，则应用转换。<br />-   false - 始终应用转换。|否|true|
 |parse-date|设为 `false` 时，转换时则只是简单地复制日期值|否|true|
 
@@ -121,8 +121,8 @@ ms.locfileid: "80803239"
 
 |名称|说明|必选|默认|
 |----------|-----------------|--------------|-------------|
-|kind|属性必须设置为以下值之一。<br /><br /> -   javascript-friendly - 转换后的 JSON 具有 JavaScript 开发人员熟知的形式。<br />-   direct - 转换后的 JSON 反映了原始 XML 文档的结构。|是|空值|
-|apply|属性必须设置为以下值之一。<br /><br /> -   always - 始终转换。<br />-   content-type-xml - 仅在响应的 Content-Type 标头指示存在 XML 的情况下进行转换。|是|空值|
+|kind|属性必须设置为以下值之一。<br /><br /> -   javascript-friendly - 转换后的 JSON 具有 JavaScript 开发人员熟知的形式。<br />-   direct - 转换后的 JSON 反映了原始 XML 文档的结构。|是|不可用|
+|apply|属性必须设置为以下值之一。<br /><br /> -   always - 始终转换。<br />-   content-type-xml - 仅在响应的 Content-Type 标头指示存在 XML 的情况下进行转换。|是|不可用|
 |consider-accept-header|属性必须设置为以下值之一。<br /><br /> -   true - 如果在请求的 Accept 标头中请求了 JSON，则应用转换。<br />-   false - 始终应用转换。|否|true|
 
 ### <a name="usage"></a>使用情况
@@ -157,8 +157,8 @@ ms.locfileid: "80803239"
 
 |名称|说明|必选|默认|
 |----------|-----------------|--------------|-------------|
-|从|要搜索的字符串。|是|空值|
-|to|替换字符串。 指定一个零长度的替换字符串，以便删除搜索字符串。|是|空值|
+|从|要搜索的字符串。|是|不可用|
+|to|替换字符串。 指定一个零长度的替换字符串，以便删除搜索字符串。|是|不可用|
 
 ### <a name="usage"></a>使用情况
  此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
@@ -214,7 +214,7 @@ or
 ```
 
 > [!NOTE]
-> 后端实体可以通过管理 [API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) 和[PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) 进行管理。
+> 后端实体可以通过管理 [API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend) 和[PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) 进行管理。
 
 ### <a name="example"></a>示例
 
@@ -268,13 +268,13 @@ or
 
 |名称|说明|必选|默认|
 |----------|-----------------|--------------|-------------|
-|base-url|新的后端服务基 URL。|必须存在 `base-url` 或 `backend-id` 中的一个。|空值|
-|backend-id|要路由到的后端标识符。 （后端实体通过 [API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) 和 [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) 进行管理。）|必须存在 `base-url` 或 `backend-id` 中的一个。|空值|
-|sf-partition-key|只有在后端为 Service Fabric 服务且使用“backend-id”指定时才适用。 用于从名称解析服务中解析特定分区。|否|空值|
-|sf-replica-type|只有在后端为 Service Fabric 服务且使用“backend-id”指定时才适用。 控制请求是否应转到分区的主要副本或次要副本。 |否|空值|
-|sf-resolve-condition|只有在后端为 Service Fabric 服务时才适用。 确定对 Service Fabric 后端的调用是否针对新解析重复进行的条件。|否|空值|
-|sf-service-instance-name|只有在后端为 Service Fabric 服务时才适用。 允许在运行时更改服务实例。 |否|空值|
-|sf-listener-name|只有在后端为 Service Fabric 服务且使用“backend-id”指定时才适用。 使用 Service Fabric Reliable Services 可在服务中创建多个侦听器。 当后端可靠服务具有多个侦听器时，此属性用于选择特定侦听器。 如果未指定此属性，API 管理将尝试使用没有名称的侦听器。 没有名称的侦听器对于只有一个侦听器的 Reliable Services 来说是非常典型的。 |否|空值|
+|base-url|新的后端服务基 URL。|必须存在 `base-url` 或 `backend-id` 中的一个。|不可用|
+|backend-id|要路由到的后端标识符。 （后端实体通过 [API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend) 和 [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) 进行管理。）|必须存在 `base-url` 或 `backend-id` 中的一个。|不可用|
+|sf-partition-key|只有在后端为 Service Fabric 服务且使用“backend-id”指定时才适用。 用于从名称解析服务中解析特定分区。|否|不可用|
+|sf-replica-type|只有在后端为 Service Fabric 服务且使用“backend-id”指定时才适用。 控制请求是否应转到分区的主要副本或次要副本。 |否|不可用|
+|sf-resolve-condition|只有在后端为 Service Fabric 服务时才适用。 确定对 Service Fabric 后端的调用是否针对新解析重复进行的条件。|否|不可用|
+|sf-service-instance-name|只有在后端为 Service Fabric 服务时才适用。 允许在运行时更改服务实例。 |否|不可用|
+|sf-listener-name|只有在后端为 Service Fabric 服务且使用“backend-id”指定时才适用。 使用 Service Fabric Reliable Services 可在服务中创建多个侦听器。 当后端可靠服务具有多个侦听器时，此属性用于选择特定侦听器。 如果未指定此属性，API 管理将尝试使用没有名称的侦听器。 没有名称的侦听器对于只有一个侦听器的 Reliable Services 来说是非常典型的。 |否|不可用|
 
 ### <a name="usage"></a>使用情况
  此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
@@ -513,14 +513,14 @@ OriginalUrl.
 |名称|说明|必选|
 |----------|-----------------|--------------|
 |set-header|根元素。|是|
-|值|指定要设置的标头的值。 如需多个标头使用同一名称，可添加更多的 `value` 元素。|否|
+|value|指定要设置的标头的值。 如需多个标头使用同一名称，可添加更多的 `value` 元素。|否|
 
 ### <a name="properties"></a>属性
 
 |名称|说明|必选|默认|
 |----------|-----------------|--------------|-------------|
 |exists-action|指定当标头已指定时要执行的操作。 此属性必须具有下列值之一。<br /><br /> -   override - 替换现有标头的值。<br />-   skip - 不替换现有标头值。<br />-   append - 将值追加到现有标头值。<br />-   delete - 从请求中删除标头。<br /><br /> 如果设置为 `override`，则登记多个同名的条目会导致根据所有条目（将多次列出）设置标头；结果中只会设置列出的值。|否|override|
-|name|指定要设置的标头的名称。|是|空值|
+|name|指定要设置的标头的名称。|是|不可用|
 
 ### <a name="usage"></a>使用情况
  此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
@@ -568,14 +568,14 @@ OriginalUrl.
 |名称|说明|必选|
 |----------|-----------------|--------------|
 |set-query-parameter|根元素。|是|
-|值|指定要设置的查询参数的值。 如需多个查询参数使用同一名称，可添加更多的 `value` 元素。|是|
+|value|指定要设置的查询参数的值。 如需多个查询参数使用同一名称，可添加更多的 `value` 元素。|是|
 
 ### <a name="properties"></a>属性
 
 |名称|说明|必选|默认|
 |----------|-----------------|--------------|-------------|
 |exists-action|指定当查询参数已指定时要执行的操作。 此属性必须具有下列值之一。<br /><br /> -   override - 替换现有参数的值。<br />-   skip - 不替换现有查询参数值。<br />-   append - 将值追加到现有查询参数值。<br />-   delete - 从请求中删除查询参数。<br /><br /> 如果设置为 `override`，则登记多个同名的条目会导致根据所有条目（将多次列出）设置查询参数；结果中只会设置列出的值。|否|override|
-|name|指定要设置的查询参数的名称。|是|空值|
+|name|指定要设置的查询参数的名称。|是|不可用|
 
 ### <a name="usage"></a>使用情况
  此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
@@ -652,7 +652,7 @@ OriginalUrl.
 
 |特性|描述|必选|默认|
 |---------------|-----------------|--------------|-------------|
-|template|包含任何查询字符串参数的实际 Web 服务 URL。 使用表达式时，整个值必须是一个表达式。|是|空值|
+|template|包含任何查询字符串参数的实际 Web 服务 URL。 使用表达式时，整个值必须是一个表达式。|是|不可用|
 |copy-unmatched-params|指定是否将原始 URL 模板中不存在的传入请求中的查询参数添加到重新编写模板定义的 URL|否|true|
 
 ### <a name="usage"></a>使用情况
@@ -716,7 +716,7 @@ OriginalUrl.
 |名称|说明|必选|
 |----------|-----------------|--------------|
 |xsl-transform|根元素。|是|
-|参数 (parameter)|用于定义在转换中使用的变量|否|
+|parameter|用于定义在转换中使用的变量|否|
 |xsl:stylesheet|根样式表元素。 在其中定义的所有元素和属性都遵循标准的 [XSLT 规范](https://www.w3.org/TR/xslt)|是|
 
 ### <a name="usage"></a>使用情况

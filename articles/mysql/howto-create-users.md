@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/2/2020
-ms.openlocfilehash: 99b614de87c666d1cb1fb8a34eaafadf6fa82849
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: f8c020da72e9cdf8777a3eefac266e97e4a312bd
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632549"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263465"
 ---
 # <a name="create-users-in-azure-database-for-mysql-server"></a>在 Azure Database for MySQL 服务器中创建用户
 
@@ -92,4 +92,4 @@ ms.locfileid: "80632549"
 
 打开防火墙以允许连接到新用户计算机的 IP 地址：通过 [Azure CLI](howto-manage-firewall-using-cli.md) 或 [使用 Azure 门户创建和管理 Azure Database for MySQL 防火墙规则](howto-manage-firewall-using-portal.md)。
 
-有关用户帐户管理的详细信息，请参阅 MySQL 产品文档，了解[用户帐户管理](https://dev.mysql.com/doc/refman/5.7/en/user-account-management.html)、[GRANT 语法](https://dev.mysql.com/doc/refman/5.7/en/grant.html)和[权限](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html)。
+有关用户帐户管理的详细信息，请参阅 MySQL 产品文档，了解[用户帐户管理](https://dev.mysql.com/doc/refman/5.7/en/access-control.html)、[GRANT 语法](https://dev.mysql.com/doc/refman/5.7/en/grant.html)和[权限](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html)。

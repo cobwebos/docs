@@ -1,7 +1,7 @@
 ---
 title: 垂直缩放 Azure 虚拟机缩放集
 description: 如何使用 Azure 自动化垂直缩放虚拟机以响应监视警报
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: 16b17421-6b8f-483e-8a84-26327c44e9d3
 ms.service: virtual-machine-scale-sets
@@ -9,13 +9,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
 ms.topic: conceptual
 ms.date: 04/18/2019
-ms.author: manayar
-ms.openlocfilehash: fa1dda2907e8400491c8d18897bb41fb9cff49fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: c28c50ef78f67daa6adc4022d8feb559f5c1c1f0
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76274437"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273352"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>使用虚拟机规模集垂直自动缩放
 

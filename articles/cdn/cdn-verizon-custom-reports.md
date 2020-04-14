@@ -3,7 +3,7 @@ title: Verizon 中的自定义报表 | Microsoft Docs
 description: 可以通过下列报告查看 CDN 的使用模式：带宽报告、已传输数据报告、命中数报告、缓存状态报告、缓存命中率报告、已传输 IPV4/IPV6 数据报告。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2017
-ms.author: magattus
-ms.openlocfilehash: 15f17ac6556c4ff731372dc7f738d0f58bdc3e31
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 737803f5b7fcddb07787afbb48354b4ca922e9ed
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593295"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259742"
 ---
 # <a name="custom-reports-from-verizon"></a>Verizon 中的自定义报表
 
@@ -68,7 +68,7 @@ ms.locfileid: "67593295"
 
 ## <a name="edge-cnames-custom-report-fields"></a>边缘 CNAME 自定义报表字段
 
-| 字段                     | 描述   |
+| 字段                     | 说明   |
 |---------------------------|---------------|
 | 2xx                       | 为导致 2xx HTTP 状态代码（例如，200 正常）的边缘 CNAME 指示请求总数或数据传输总量 (MB)。 |
 | 3xx                       | 为导致 3xx HTTP 状态代码（例如，302 已找到 或 304 未修改）的边缘 CNAME 指示请求总数或数据传输总量 (MB)。 |
@@ -77,12 +77,12 @@ ms.locfileid: "67593295"
 | 缓存命中率 %               | 指示直接从缓存提供到请求者的可缓存请求百分比。 |
 | 缓存命中数                | 为导致缓存命中（例如，TCP_EXPIRED_HIT、TCP_HIT 或 TCP_PARTIAL_HIT）的边缘 CNAME 指示请求总数或数据传输总量 (MB)。 当发现请求内容的缓存版本时，将发生缓存命中。 |
 | 已传输数据 (MB)     | 指示从边缘服务器向边缘 CNAME 的 HTTP 客户端（Web浏览器）传输的数据总量 (MB)。 通过将 HTTP 响应标头添加到响应正文来计算数据的传输量。 因此，向每个资产传输的数据量大于其实际文件大小。 |
-| 描述               | 通过其主机名标识边缘 CNAME |
+| 说明               | 通过其主机名标识边缘 CNAME |
 | 命中数                      | 指示边缘 CNAME 的请求总数 |
 | 未命中数                    | 为导致缓存失误（例如，TCP_CLIENT_REFRESH_MISS、TCP_EXPIRED_MISS 或 TCP_MISS）的边缘 CNAME 指示请求总数或数据传输总量 (MB)。 当请求内容未在接受请求的边缘服务器上缓存时，将发生缓存失误。 | 
 | 无缓存                  | 为导致 CONFIG_NOCACHE 缓存状态代码的边缘 CNAME 指示请求总数或数据传输总量 (MB)。  |
 | 其他                     | 为已指示导致 HTTP 状态代码（超出 2xx - 5xx 范围）的边缘 CNAME 指示请求总数或数据传输总量 (MB)。 |
-| Platform                  | 指示处理边缘 CNAME 流量的平台。 |
+| 平台                  | 指示处理边缘 CNAME 流量的平台。 |
 | 未分配               | 为未记录缓存状态代码或 HTTP 状态代码信息的边缘 CNAME 指示请求总数或数据传输总量 (MB)。  |
 | 不可缓存               | 为导致 UNCACHEABLE 缓存状态代码的边缘 CNAME 指示请求总数或数据传输总量 (MB)。  |
 

@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: dsindona
-ms.openlocfilehash: 2014a775edd4e24f5d302d863d0b69d83009b8a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99d2bc95c1dd837bfc3bcabcead28777b7e6f746
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277984"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273930"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>创建与 Azure 兼容的 VHD
+
+> [!IMPORTANT]
+> 从 2020 年 4 月 13 日开始，我们将开始向合作伙伴中心移动 Azure 虚拟机产品/ 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照创建 Azure[虚拟机技术资产](https://aka.ms/AzureVMTechAsset)中的说明进行操作，以管理迁移的优惠。
 
 本文详细介绍为 Azure 市场中的虚拟机 (VM) 套餐创建虚拟硬盘 (VHD) 所要执行的步骤。  此外，还包含各项操作的最佳做法，例如，使用远程桌面协议 (RDP)、选择 VM 大小、安装最新的 Windows 更新，以及通用化 VHD 映像。  以下部分侧重于基于 Windows 的 VHD；有关创建基于 Linux 的 VHD 的详细信息，请参阅 [Azure 认可的 Linux 分发版](../../../virtual-machines/linux/endorsed-distros.md)。 
 
@@ -26,9 +29,9 @@ ms.locfileid: "80277984"
 用于 VM 映像的操作系统 VHD 必须基于 Azure 批准的基本映像（包含 Windows Server 或 SQL Server）。
 若要开始，请基于 Microsoft Azure 门户中的以下映像创建 VM：
 
--   Windows Server（[2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016)、[2012 R2 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)、[2012 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)、[2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)）
--   [SQL 服务器 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) （企业， 标准， Web）
--   [SQL 服务器 2012 SP2（](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance)企业、标准、Web）
+-    Windows Server（[2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016)、[2012 R2 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)、[2012 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)、[2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)）
+-    [SQL 服务器 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) （企业， 标准， Web）
+-    [SQL 服务器 2012 SP2（](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance)企业、标准、Web）
 
 > [!TIP]
 > 如果使用最新 Azure 门户或 PowerShell，则在 2014 年 9 月 8 日及以后发布的 Windows Server 映像已得到批准。

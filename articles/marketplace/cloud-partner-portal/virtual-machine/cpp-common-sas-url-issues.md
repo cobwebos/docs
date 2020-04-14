@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/27/2018
 ms.author: dsindona
-ms.openlocfilehash: 47702959474a352a8e13710ec850f789dee4d517
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c575389538230218e1e6e4f172ebcfbee8ee51dc
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278155"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273454"
 ---
 # <a name="common-sas-url-issues-and-fixes"></a>常见的 SAS URL 问题和修复
+
+> [!IMPORTANT]
+> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 虚拟机产品的管理移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[常见 SAS URL 问题和修补程序](https://aka.ms/AzureSAS_URL_FAQ)中的说明进行操作，以管理迁移的优惠。
 
 下表列出了使用共享访问签名（它们用来标识和共享解决方案的已上传 VHD）时遇到的一些常见问题以及建议的解决方法。
 

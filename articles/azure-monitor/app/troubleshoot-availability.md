@@ -1,19 +1,19 @@
 ---
-title: 排查 Azure Application Insights 可用性测试问题 | Microsoft Docs
+title: 排除 Azure 应用程序见解可用性测试的故障
 description: 排查 Azure Application Insights 中的 Web 测试问题。 当网站不可用或响应速度缓慢时接收警报。
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: f135aa6c0a4a55f8a42fd858572cc811e25b27c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 94b00a36445b0f4284caba218f6416db726611eb
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671097"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255441"
 ---
-# <a name="troubleshooting"></a>疑难解答
+# <a name="troubleshooting"></a>故障排除
 
 本文将有助于排查使用可用性监视时可能出现的常见问题。
 
@@ -41,7 +41,7 @@ ms.locfileid: "77671097"
 
 |症状/错误消息| 可能的原因| 可能的解决方法 |
 |----|---------|-----|
-|服务器违反了协议。 节=ResponseHeader 详细信息=CR 必须后跟 LF | 检测到格式不正确的标头时，会发生这种情况。 具体来说，某些标头可能没有使用 CRLF 来指示行尾，这违反了 HTTP 规范。 Application Insights 强制实施此 HTTP 规范，并使用格式错误的标头导致响应失败。| a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 请与网站主机提供商/CDN 提供商联系以修复故障服务器。 <br> b.保留“数据库类型”设置，即设置为“共享”。 如果失败的请求是资源（例如，样式文件、图像、脚本），则可以考虑禁止分析依赖请求。 请记住，如果执行此操作，你将无法监视这些文件的可用性。
+|服务器违反了协议。 节=ResponseHeader 详细信息=CR 必须后跟 LF | 检测到格式不正确的标头时，会发生这种情况。 具体来说，某些标头可能没有使用 CRLF 来指示行尾，这违反了 HTTP 规范。 Application Insights 强制实施此 HTTP 规范，并使用格式错误的标头导致响应失败。| a. 请与网站主机提供商/CDN 提供商联系以修复故障服务器。 <br> b. 如果失败的请求是资源（例如，样式文件、图像、脚本），则可以考虑禁止分析依赖请求。 请记住，如果执行此操作，你将无法监视这些文件的可用性。
 
 > [!NOTE]
 > 在 HTTP 标头验证比较宽松的浏览器上，URL 可能不会失败。 有关该问题的详细说明，请参阅此博客文章：http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  

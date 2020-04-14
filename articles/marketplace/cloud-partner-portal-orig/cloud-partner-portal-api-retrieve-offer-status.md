@@ -5,35 +5,36 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 2f5211716145d6c05bbfb0132c4a6ba2f9cceabe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9cf6ca27101a08ff58f32dcd31413256762490a2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280501"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255902"
 ---
-<a name="retrieve-offer-status"></a>检索产品/服务状态 
-=====================
+# <a name="retrieve-offer-status"></a>检索产品/服务状态
+
+> [!NOTE]
+> 云合作伙伴门户 API 与合作伙伴中心集成，在您的产品/服务迁移到合作伙伴中心后将继续工作。 集成引入了小更改。 查看[云合作伙伴门户 API 参考](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)中列出的更改，以确保代码在迁移到合作伙伴中心后继续工作。
 
 检索产品/服务的当前状态。
 
   `GET  https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/status?api-version=2017-10-31`
 
-<a name="uri-parameters"></a>URI 参数
---------------
+## <a name="uri-parameters"></a>URI 参数
 
 |  **名称**       |   **说明**                            |  **数据类型** |
 |  -------------  |  ------------------------------------------  |  ------------  |
-|  publisherId    | 发布者标识符，例如 `Contoso`  |     String     |
-|  offerId        | 唯一标识产品/服务的 GUID      |     String     |
+|  publisherId    | 发布者标识符，例如 `Contoso`  |     字符串     |
+|  offerId        | 唯一标识产品/服务的 GUID      |     字符串     |
 |  api-version    | API 的最新版本                        |     Date       |
 |  |  |
 
 
-<a name="header"></a>标头
-------
+## <a name="header"></a>标头
+
 
 |  “属性”           |  “值”               |
 |  -------------  | -------------------  |
@@ -41,9 +42,8 @@ ms.locfileid: "80280501"
 |  授权  | `Bearer YOUR_TOKEN`  |
 |  |  |
 
+## <a name="body-example"></a>正文示例
 
-<a name="body-example"></a>正文示例
-------------
 
 ### <a name="response"></a>响应
 
@@ -115,8 +115,7 @@ ms.locfileid: "80280501"
       ],
       "previewLinks": [],
       liveLinks": [],
-      "notificationEmails": "jdoe@contoso.com"
-  } 
+  }
 ```
 
 
@@ -136,9 +135,8 @@ ms.locfileid: "80280501"
 |  processPercentage    | 步骤的完成百分比                                                              |
 |  previewLinks         | *当前未实现*                                                                    |
 |  liveLinks            | *当前未实现*                                                                    |
-|  notificationEmails   | 逗号分隔的电子邮件地址列表，用于通知操作进度        |
+|  notificationEmails   | 已弃用的优惠迁移到合作伙伴中心。 迁移优惠的通知电子邮件将发送到"帐户设置"中的"卖家联系信息"下指定的电子邮件。<br><br>对于非迁移优惠，将通知操作进度的电子邮件地址的逗号分隔列表        |
 |  |  |
-
 
 ### <a name="response-status-codes"></a>响应状态代码
 
@@ -149,7 +147,6 @@ ms.locfileid: "80280501"
 |  404     | `Not found` - 指定的实体不存在。                                                |
 |  |  |
 
-
 ### <a name="offer-status"></a>产品/服务状态
 
 |  **名称**                    |    **说明**                                       |
@@ -157,12 +154,11 @@ ms.locfileid: "80280501"
 |  NeverPublished              | 产品/服务从未发布过。                          |
 |  NotStarted                  | 产品/服务是新的，且未启动。                            |
 |  WaitingForPublisherReview   | 产品/服务正在等待发布者批准。                 |
-|  正在运行                     | 正在处理产品/服务提交。                     |
+|  运行                     | 正在处理产品/服务提交。                     |
 |  已成功                   | 产品/服务提交已完成处理。               |
 |  已取消                    | 产品/服务提交已取消。                           |
 |  失败                      | 产品/服务提交失败。                                 |
 |  |  |
-
 
 ### <a name="step-status"></a>步骤状态
 

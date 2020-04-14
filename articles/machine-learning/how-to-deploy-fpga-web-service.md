@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8cb6cf49e302122849dc2402bcff008e72e15608
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 870f7b0ab0f1d7b247435cdbb74e21801b3b052a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472352"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257175"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>什么是现场可编程门阵列 (FPGA) 以及如何部署
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ FPGA 包含一组可编程的逻辑块以及由可反复配置的互连组成的
 
 ![Azure 机器学习 FPGA 比较示意图](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
 
-|处理器||描述|
+|处理器||说明|
 |---|:-------:|------|
 |特定于应用程序的集成电路|ASIC|自定义电路（例如 Google 的 TensorFlow 处理器单元 (TPU)）的效率最高。 它们不能根据需求的变化重新配置。|
 |现场可编程门阵列|FPGA|FPGA（例如 Azure 上提供的那些）提供接近于 ASIC 的性能。 它们也是灵活的，并且可以在一段时间后重新配置以实现新逻辑。|
@@ -51,7 +51,7 @@ Microsoft Azure 是世界上在 FPGA 中的最大云投资。 使用这种支持
 Azure 上的 FPGA 支持：
 
 + 图像分类和识别方案
-+ TensorFlow 部署
++ TensorFlow 部署（需要 Tensorflow 1.x）
 + Intel FPGA 硬件
 
 当前提供了以下 DNN 模型：
@@ -115,9 +115,8 @@ Azure FPGA 与 Azure 机器学习集成。 Microsoft 使用 FPGA 进行 DNN 评�
 - 用于硬件加速模型的 Python SDK：
 
     ```bash
-    pip install --upgrade azureml-accel-models
+    pip install --upgrade azureml-accel-models[cpu]
     ```
-
 
 ## <a name="1-create-and-containerize-models"></a>1. 创建模型并将其容器化
 

@@ -10,22 +10,22 @@ ms.subservice: ''
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 9898addfa840752e27de8716d2185e767aac809b
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 0ffa33811957af95fc10396ffecef0b3de7959fe
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350091"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633020"
 ---
 # <a name="source-control-integration-for-sql-pool"></a>SQL 池的源代码管理集成
 
-本教程概述了如何将 SQL Server Data tools (SSDT) 数据库项目与源代码管理集成。  源代码管理集成是使用 Azure Synapse Analytics 中的 SQL 池资源构建持续集成和部署管道的第一步。 
+本教程概述了如何将 SQL Server Data tools (SSDT) 数据库项目与源代码管理集成。  源代码管理集成是使用 Azure Synapse Analytics 中的 SQL 池资源构建持续集成和部署管道的第一步。
 
 ## <a name="before-you-begin"></a>开始之前
 
 - 注册一个 [Azure DevOps 组织](https://azure.microsoft.com/services/devops/)
-- 完成[创建和连接](https://docs.microsoft.com/azure/sql-data-warehouse/create-data-warehouse-portal)教程
--  [安装 Visual Studio 2019](https://visualstudio.microsoft.com/vs/older-downloads/) 
+- 完成[创建和连接](create-data-warehouse-portal.md)教程
+- [安装 Visual Studio 2019](https://visualstudio.microsoft.com/vs/older-downloads/)
 
 ## <a name="set-up-and-connect-to-azure-devops"></a>设置并连接到 Azure DevOps
 
@@ -53,7 +53,7 @@ ms.locfileid: "80350091"
 
    ![导入项目](./media/sql-data-warehouse-source-control-integration/6-import-new-project.png "导入项目")  
 
-3. 在 Visual Studio 的团队资源管理器中，将所有更改提交到本地 Git 存储库 
+3. 在 Visual Studio 的团队资源管理器中，将所有更改提交到本地 Git 存储库
 
    ![提交](./media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Commit")  
 

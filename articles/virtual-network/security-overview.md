@@ -13,28 +13,27 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 8f3497f113981ae563023750ad8979c88c640f5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 968cc9ed9d938bb04d1243102855c134147ddf3b
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80123336"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269867"
 ---
 # <a name="network-security-groups"></a>网络安全组
 <a name="network-security-groups"></a>
 
-可以使用网络安全组来筛选 Azure 虚拟网络中出入 Azure 资源的网络流量。 网络安全组包含安全规则，这些规则可允许或拒绝多种 Azure 资源的入站和出站网络流量。 若要了解哪些 Azure 资源可以部署到虚拟网络中并与网络安全组关联，请参阅 [Azure 服务的虚拟网络集成](virtual-network-for-azure-services.md)。 可以为每项规则指定源和目标、端口以及协议。
+可以使用 Azure 网络安全组筛选 Azure 虚拟网络中的 Azure 资源中的网络流量。 网络安全组包含[安全规则](#security-rules)，这些规则可允许或拒绝多种 Azure 资源的入站和出站网络流量。 可以为每项规则指定源和目标、端口以及协议。
+本文介绍网络安全组规则的属性、应用的[默认安全规则](#default-security-rules)以及可以修改以创建[增强安全规则的规则属性](#augmented-security-rules)。
 
-本文介绍网络安全组概念，目的是让你提高其使用效率。 如果从未创建过网络安全组，可以先完成一个快速[教程](tutorial-filter-network-traffic.md)，获取一些创建经验。 如果已熟悉网络安全组，需要对其进行管理，请参阅[管理网络安全组](manage-network-security-group.md)。 如果有通信问题，需要对网络安全组进行故障排除，请参阅[诊断虚拟机网络流量筛选器问题](diagnose-network-traffic-filter-problem.md)。 可以通过[网络安全组流日志](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)来分析网络流量，这些流量流入和流出的资源组都有关联的网络安全组。
-
-## <a name="security-rules"></a>安全规则
+## <a name="security-rules"></a><a name="security-rules"></a>安全规则
 
 一个网络安全组包含零个或者不超过 Azure 订阅[限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)的任意数量的规则。 每个规则指定以下属性：
 
-|properties  |说明  |
+|Property  |说明  |
 |---------|---------|
-|“属性”|网络安全组中的唯一名称。|
-|优先度 | 介于 100 和 4096 之间的数字。 规则按优先顺序进行处理。先处理编号较小的规则，因为编号越小，优先级越高。 一旦流量与某个规则匹配，处理即会停止。 因此，不会处理优先级较低（编号较大）的、其属性与高优先级规则相同的所有规则。|
+|名称|网络安全组中的唯一名称。|
+|Priority | 介于 100 和 4096 之间的数字。 规则按优先顺序进行处理。先处理编号较小的规则，因为编号越小，优先级越高。 一旦流量与某个规则匹配，处理即会停止。 因此，不会处理优先级较低（编号较大）的、其属性与高优先级规则相同的所有规则。|
 |源或目标| 可以是任何值，也可以是单个 IP 地址、无类别域际路由 (CIDR) 块（例如 10.0.0.0/24）、[服务标记](service-tags-overview.md)或[应用程序安全组](#application-security-groups)。 如果为 Azure 资源指定一个地址，请指定分配给该资源的专用 IP 地址。 在 Azure 针对入站流量将公共 IP 地址转换为专用 IP 地址后，系统会处理网络安全组，然后由 Azure 针对出站流量将专用 IP 地址转换为公共 IP 地址。 详细了解 Azure [IP 地址](virtual-network-ip-addresses-overview-arm.md)。 指定范围、服务标记或应用程序安全组可以减少创建的安全规则数。 在一个规则中指定多个单独的 IP 地址和范围（不能指定多个服务标记或应用程序组）的功能称为[扩充式安全规则](#augmented-security-rules)。 只能在通过资源管理器部署模型创建的网络安全组中创建扩充式安全规则。 在通过经典部署模型创建的网络安全组中，不能指定多个 IP 地址和 IP 地址范围。 详细了解 [Azure 部署模型](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。|
 |协议     | TCP、UDP、ICMP 或 Any。|
 |方向| 该规则是应用到入站还是出站流量。|
@@ -46,7 +45,7 @@ ms.locfileid: "80123336"
 
 在网络安全组中创建的安全规则存在数量限制。 有关详细信息，请参阅 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 
-### <a name="default-security-rules"></a>默认安全规则
+### <a name="default-security-rules"></a><a name="default-security-rules"></a>默认安全规则
 
 Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
@@ -54,19 +53,19 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 ##### <a name="allowvnetinbound"></a>AllowVNetInBound
 
-|优先度|源|源端口|目标|目标端口|协议|访问|
+|Priority|源|源端口|目标|目标端口|协议|访问|
 |---|---|---|---|---|---|---|
 |65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|Any|Allow|
 
 ##### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
-|优先度|源|源端口|目标|目标端口|协议|访问|
+|Priority|源|源端口|目标|目标端口|协议|访问|
 |---|---|---|---|---|---|---|
 |65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|Any|Allow|
 
 ##### <a name="denyallinbound"></a>DenyAllInbound
 
-|优先度|源|源端口|目标|目标端口|协议|访问|
+|Priority|源|源端口|目标|目标端口|协议|访问|
 |---|---|---|---|---|---|---|
 |65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|Any|拒绝|
 
@@ -74,19 +73,19 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 ##### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
-|优先度|源|源端口| 目标 | 目标端口 | 协议 | 访问 |
+|Priority|源|源端口| 目标 | 目标端口 | 协议 | 访问 |
 |---|---|---|---|---|---|---|
 | 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | Any | Allow |
 
 ##### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
-|优先度|源|源端口| 目标 | 目标端口 | 协议 | 访问 |
+|Priority|源|源端口| 目标 | 目标端口 | 协议 | 访问 |
 |---|---|---|---|---|---|---|
 | 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | Any | Allow |
 
 ##### <a name="denyalloutbound"></a>DenyAllOutBound
 
-|优先度|源|源端口| 目标 | 目标端口 | 协议 | 访问 |
+|Priority|源|源端口| 目标 | 目标端口 | 协议 | 访问 |
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Any | 拒绝 |
 
@@ -94,7 +93,7 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
  
 不能删除默认规则，但可以通过创建更高优先级的规则来替代默认规则。
 
-### <a name="augmented-security-rules"></a>扩充式安全规则
+### <a name="augmented-security-rules"></a><a name="augmented-security-rules"></a>增强安全规则
 
 扩充式安全规则简化了虚拟网络的安全定义，可让我们以更少的规则定义更大、更复杂的网络安全策略。 可将多个端口和多个显式 IP 地址和范围合并成一个易于理解的安全规则。 可在规则的源、目标和端口字段中使用扩充式规则。 若要简化安全规则定义的维护，可将扩充式安全规则与[服务标记](service-tags-overview.md)或[应用程序安全组](#application-security-groups)合并。 可在规则中指定的地址、范围和端口的数量存在限制。 有关详细信息，请参阅 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 
@@ -170,4 +169,8 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 ## <a name="next-steps"></a>后续步骤
 
-* 连接如何[创建网络安全组](tutorial-filter-network-traffic.md)。
+* 要了解哪些 Azure 资源可以部署到虚拟网络并使其具有关联的网络安全组，请参阅[Azure 服务的虚拟网络集成](virtual-network-for-azure-services.md)
+* 如果从未创建过网络安全组，可以先完成一个快速[教程](tutorial-filter-network-traffic.md)，获取一些创建经验。 
+* 如果已熟悉网络安全组，需要对其进行管理，请参阅[管理网络安全组](manage-network-security-group.md)。 
+* 如果有通信问题，需要对网络安全组进行故障排除，请参阅[诊断虚拟机网络流量筛选器问题](diagnose-network-traffic-filter-problem.md)。 
+* 了解如何启用[网络安全组流日志](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)来分析进出具有关联网络安全组的资源的网络流量。

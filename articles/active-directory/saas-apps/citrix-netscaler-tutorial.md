@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/13/2019
+ms.date: 03/27/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 785242a2cf51571a6d13b2b4691d33e46369bf94
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6771060f05a03c82879738dc5e8caccb67e55abc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75977911"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478000"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-kerberos-based-authentication"></a>教程：Azure Active Directory 单一登录与 Citrix NetScaler（基于 Kerberos 的身份验证）集成
 
@@ -31,7 +30,7 @@ ms.locfileid: "75977911"
 * 让用户使用其 Azure AD 帐户自动登录到 Citrix NetScaler。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -50,7 +49,9 @@ ms.locfileid: "75977911"
 
 * [用于 Citrix NetScaler 的基于 Kerberos 的身份验证](#publish-the-web-server)
 
-* [用于 Citrix NetScaler 的基于标头的身份验证](header-citrix-netscaler-tutorial.md#publish-the-web-server)
+* [Citrix NetScaler 的基于标头的身份验证](header-citrix-netscaler-tutorial.md#publish-the-web-server)
+
+* 配置 Citrix NetScaler 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="add-citrix-netscaler-from-the-gallery"></a>从库中添加 Citrix NetScaler
 
@@ -102,7 +103,7 @@ ms.locfileid: "75977911"
 
     1. 在“标识符”  文本框中，输入采用以下模式的 URL：`https://<Your FQDN>`
 
-    1. 在“回复 URL”  文本框中，输入采用以下模式的 URL：`https://<Your FQDN>/CitrixAuthService/AuthService.asmx`
+    1. 在“回复 URL”  文本框中，输入采用以下模式的 URL：`http(s)://<Your FQDN>.of.vserver/cgi/samlauth`
 
 1. 若要在 SP 发起的模式下配置应用程序，请选择“设置其他 URL”并完成以下步骤：  
 
@@ -218,7 +219,7 @@ ms.locfileid: "75977911"
 
 ### <a name="bind-the-certificate"></a>绑定证书
 
-若要将此服务发布为 SSL，请绑定服务器证书，然后测试应用程序：
+若要将此服务发布为 TLS，请绑定服务器证书，然后测试应用程序：
 
 1. 在“证书”下，选择“无服务器证书”。  
 
@@ -456,10 +457,14 @@ ms.locfileid: "75977911"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [通过 Azure AD 试用 Citrix NetScaler](https://aad.portal.azure.com/)
 
 - [为基于标头的身份验证配置 Citrix NetScaler 单一登录](header-citrix-netscaler-tutorial.md)
+
+- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [如何通过高级可见性和控制保护 Citrix NetScaler](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -5,17 +5,20 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: b96dcfa6a140d5c16208fd8183003a7462b1aa56
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 487e66b39bc63363497cb3497d32158efd0c6c8a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280433"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255883"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>虚拟机套餐的定价
 ==================================
+
+> [!NOTE]
+> 云合作伙伴门户 API 与合作伙伴中心集成，在您的产品/服务迁移到合作伙伴中心后将继续工作。 集成引入了小更改。 查看[云合作伙伴门户 API 参考](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)中列出的更改，以确保代码在迁移到合作伙伴中心后继续工作。
 
 指定虚拟机套餐定价的方法有三种：自定义核心定价、按核心定价和电子表格定价。
 
@@ -111,7 +114,7 @@ VM 发布商于 2019 年 7 月 2 日收到新 Azure 虚拟机大小（基于内�
 
 下表显示了可以为自定义核心定价指定的不同区域及其对应的货币代码。
 
-| **地区** | **名称**             | **货币代码** |
+| **区域** | **名称**             | **货币代码** |
 |------------|----------------------|-------------------|
 | DZ         | 阿尔及利亚              | DZD               |
 | AR         | 阿根廷            | ARS               |

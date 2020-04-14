@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: dsindona
-ms.openlocfilehash: 9c0b4ca6e9a26f13d1539845ca9fb43f31a1a9dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd9f98d42efcb35dbab4f3c0a06c5a11360e36b6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281708"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270343"
 ---
 # <a name="containers"></a>容器
+
+> [!IMPORTANT]
+> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 容器产品的管理移动到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照["创建 Azure 容器产品/服务](https://aka.ms/CreateContainerOffer)"中的说明进行操作，以管理迁移的优惠。
 
 <table> <tr> <td>本部分介绍了如何将容器映像发布到 <a href="https://azuremarketplace.microsoft.com">Azure 市场</a>。  
 容器产品/服务类型支持预配为 <a href="https://docs.microsoft.com/azure/aks/index">Azure Kubernetes 服务</a>实例或 <a href="https://docs.microsoft.com/azure/container-instances/container-instances-overview">Azure 容器实例</a>并托管在 <a href="https://docs.microsoft.com/azure/container-registry">Azure 容器注册表</a>存储库中的 Docker 容器映像。 </td> <td><img src="./media/container-icon.png"  alt="Azure container icon" /></td> </tr> </table>

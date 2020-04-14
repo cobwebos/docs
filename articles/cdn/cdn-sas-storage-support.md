@@ -3,7 +3,7 @@ title: 将 Azure CDN 与 SAS 一起使用 | Microsoft Docs
 description: Azure CDN 支持使用共享访问签名 (SAS) 授予受限制的私有存储容器访问权限。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
-ms.author: magattus
-ms.openlocfilehash: e7a170eaf74531cf4bd8c28aafaa5873f2459d0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: c2580aa4ee22996c1bf0fe5c86064a6543450071
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69982419"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260167"
 ---
 # <a name="using-azure-cdn-with-sas"></a>将 Azure CDN 与 SAS 一起使用
 
@@ -133,7 +133,7 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
 
 由于 SAS 参数对 Azure CDN 不可见，因此，Azure CDN 无法根据这些参数更改其交付行为。 定义的参数限制仅适用于 Azure CDN 对源服务器发出的请求，不适用于从客户端到 Azure CDN 的请求。 在设置 SAS 参数时务必要考虑到此区别。 如果需要这些高级功能并且正在使用[选项 3](#option-3-using-cdn-security-token-authentication-with-a-rewrite-rule)，请对 Azure CDN 安全令牌设置适当的限制。
 
-| SAS 参数名称 | 描述 |
+| SAS 参数名称 | 说明 |
 | --- | --- |
 | 开始 | Azure CDN 可以开始访问 blob 文件的时间。 由于存在时钟偏差 （当时钟信号在不同时间到达不同组件时），因此，如果希望资产立即可用，请选择一个提早 15 分钟的时间。 |
 | 结束 | Azure CDN 不可再访问 blob 文件的时间。 之前缓存在 Azure CDN 上的文件仍可访问。 若要控制文件到期时间，请在 Azure CDN 安全令牌上设置适当的到期时间或清除资产。 |

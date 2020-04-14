@@ -3,8 +3,8 @@ title: 在 Azure 中扩展 Windows VM 的操作系统驱动器
 description: 在 Resource Manager 部署模型中，使用 Azure Powershell 增加虚拟机的 OS 驱动器大小。
 services: virtual-machines-windows
 documentationcenter: ''
-author: kirpasingh
-manager: roshar
+author: mimckitt
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: d9edfd9f-482f-4c0b-956c-0d2c2c30026c
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
-ms.author: kirpas
+ms.author: mimckitt
 ms.subservice: disks
-ms.openlocfilehash: c76f57d15cd4cbdad5ded3b7545aab4d57272a50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 208438b5bc600fa09584ca34c72b1981d9eda399
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74033502"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261391"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>如何扩展虚拟机的 OS 驱动器
 

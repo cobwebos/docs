@@ -2,17 +2,17 @@
 title: Azure CDN 的条件表达式 - Verizon 高级规则引擎
 description: 来自 Verizon 高级版中 Azure CDN 的参考文档会管理引擎匹配条件和功能。
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: magattus
-ms.openlocfilehash: d28bda28894477845c2a050666b3b4dd332b7d50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 25b3c1a011e39adea651a6daa1d4ab9aa3a9d186
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74082975"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253503"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-conditional-expressions"></a>来自 Verizon 高级规则的 Azure CDN 引擎条件表达式
 
@@ -20,7 +20,7 @@ ms.locfileid: "74082975"
 
 规则的第一部分是条件表达式。
 
-条件表达式 | 描述
+条件表达式 | 说明
 -----------------------|-------------
 IF | IF 表达式始终是规则中第一个声明的一部分。 与其他所有条件表达式一样，这个 IF 声明必须与匹配项关联。 如果未定义其他条件表达式，则此匹配确定在将一组要素应用于请求之前必须满足的条件。
 AND IF | AND IF 表达式仅可添加在以下类型的条件表达式之后：IF、AND IF。 它指示初始 IF 语句必须满足其他条件。

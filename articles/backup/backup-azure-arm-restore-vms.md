@@ -4,12 +4,12 @@ description: 使用 Azure 门户从恢复点还原 Azure 虚拟机
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 3c3c8a7bd47ae03a013ddfadffabaa16fd04412b
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: b9cdb187aa3b8750bead8e81ad6d0ee50dcb3d6c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677547"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254914"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 门户中还原 Azure VM 数据
 
@@ -28,8 +28,6 @@ Azure 备份提供多种方法用于还原 VM。
 
 > [!NOTE]
 > 还可以恢复 Azure VM 上的特定文件和文件夹。 [了解详细信息](backup-azure-restore-files-from-vm.md)。
->
-> 如果运行[最新版本](backup-instant-restore-capability.md)的适用于 Azure VM 的 Azure 备份（称为“即时还原”），则快照最长将保留 7 天；在将备份数据发送到保管库之前，可以从快照还原 VM。 若要从过去 7 天的备份还原 VM，更快的做法是从快照而不是从保管库还原。
 
 ## <a name="storage-accounts"></a>存储帐户
 
@@ -192,7 +190,7 @@ Azure 备份提供多种方法用于还原 VM。
 **裸机还原** | Azure VM 与本地虚拟机监控程序之间的主要差别是 Azure 中不提供 VM 控制台。 某些方案（如使用裸机恢复 (BMR) 类型备份进行恢复）需要控制台。 但是，通过保管库进行 VM 还原完全取代了 BMR。
 **还原采用特殊网络配置的 VM** | 特殊网络配置包括使用内部或外部负载均衡、使用多个 NIC 或多个保留 IP 地址的 VM。 可使用[还原磁盘选项](#restore-disks)还原这些 VM。 此选项将 VHD 的副本复制到指定的存储帐户中，然后您可以根据您的配置创建具有[内部](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)或[外部](/azure/load-balancer/quickstart-create-standard-load-balancer-powershell)负载均衡器、[多个 NICS](../virtual-machines/windows/multiple-nics.md)或[多个保留 IP 地址的](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)VM。
 **NIC/子网上的网络安全组 （NSG）** | Azure VM 备份支持在 VNet、子网和 NIC 级别备份和还原 NSG 信息。
-**区域固定的 VM** | Azure Backup 支持备份和还原区域固定的 VM。 [了解详细信息](https://azure.microsoft.com/global-infrastructure/availability-zones/)
+**区域固定的 VM** | Azure Backup 支持备份和还原区域固定的 VM。 [了解更多信息](https://azure.microsoft.com/global-infrastructure/availability-zones/)
 
 ## <a name="track-the-restore-operation"></a>跟踪还原操作
 

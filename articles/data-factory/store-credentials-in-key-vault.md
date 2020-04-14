@@ -8,14 +8,14 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 04/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 1418205843fefc76db4e73832736b308d0cc79a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6720a018cdc3fff95192b0956b3d1040be263ab2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76122604"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261837"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>在 Azure Key Vault 中存储凭据
 
@@ -32,7 +32,7 @@ ms.locfileid: "76122604"
 若要引用 Azure Key Vault 中存储的凭据，需要：
 
 1. 通过复制与工厂一起生成的"托管标识对象 ID"的值来**检索数据出厂管理标识**。 如果使用 ADF 创作 UI，托管标识对象 ID 将显示在 Azure 密钥保管库链接服务创建窗口中;如果使用 ADF 创作 UI，则托管标识对象 ID 将显示在 Azure 密钥保管库链接的服务创建窗口中。还可以从 Azure 门户检索它，请参阅[检索数据工厂托管标识](data-factory-service-identity.md#retrieve-managed-identity)。
-2. **向托管标识授予对 Azure Key Vault 的访问权限。** 在密钥保管库 -> 访问策略 -> 添加新 -> 搜索此托管标识以授予"**获取**权限"权限。 它允许此指定的工厂访问密钥保管库中的机密。
+2. **向托管标识授予对 Azure Key Vault 的访问权限。** 在密钥保管库 -> 访问策略 ->添加访问策略中，搜索此托管标识以在"机密权限下拉"中授予**获取**权限。 它允许此指定的工厂访问密钥保管库中的机密。
 3. **创建指向 Azure 密钥保管库的链接服务。** 请参阅 [Azure Key Vault 链接服务](#azure-key-vault-linked-service)。
 4. **创建数据存储链接服务，其中引用存储在密钥保管库中的相应机密。** 请参阅[引用密钥保管库中存储的机密](#reference-secret-stored-in-key-vault)。
 
@@ -40,20 +40,20 @@ ms.locfileid: "76122604"
 
 Azure Key Vault 链接服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**AzureKeyVault**。 | 是 |
 | baseUrl | 指定 Azure Key Vault URL。 | 是 |
 
 **使用创作 UI：**
 
-单击**连接** -> **链接服务** -> **+ 新**->搜索"Azure 密钥保管库"：
+选择**连接** -> **链接服务** -> **New**。 在"新建链接服务"中，搜索并选择"Azure 密钥保管库"：
 
-![搜索 AKV](media/store-credentials-in-key-vault/search-akv.png)
+![搜索 Azure 密钥保管库](media/store-credentials-in-key-vault/search-akv.png)
 
 选择凭证所在的已预配的 Azure Key Vault。 可执行“测试连接”操作，确保 AKV 连接有效****。 
 
-![配置 AKV](media/store-credentials-in-key-vault/configure-akv.png)
+![配置 Azure Key Vault](media/store-credentials-in-key-vault/configure-akv.png)
 
 **JSON 示例：**
 
@@ -73,7 +73,7 @@ Azure Key Vault 链接服务支持以下属性：
 
 在引用密钥保管库机密的链接服务中配置字段时，支持以下属性：
 
-| properties | 描述 | 必选 |
+| Property | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 字段的 type 属性必须设置为：**AzureKeyVaultSecret**。 | 是 |
 | secretName | Azure Key Vault 中机密的名称。 | 是 |
@@ -87,7 +87,7 @@ Azure Key Vault 链接服务支持以下属性：
 >[!TIP]
 >对于在链接服务（如 SQL Server、Blob 存储等）中使用连接字符串的连接器，可以选择仅存储机密字段（例如 AKV 中的密码），或将整个连接字符串存储在 AKV 中。 可以在 UI 上找到这两个选项。
 
-![配置 AKV 机密](media/store-credentials-in-key-vault/configure-akv-secret.png)
+![配置 Azure 密钥保管库密钥](media/store-credentials-in-key-vault/configure-akv-secret.png)
 
 **JSON 示例：（请参阅“密码”部分）**
 

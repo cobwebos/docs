@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/17/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: f779781eee81bf85f6420e5bae6b0feb62680b8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f1d23f11cf73680a8861c9f1ac6cbd40ad497a4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064174"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257328"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure 机器学习的工作原理：体系结构和概念
 
@@ -27,7 +27,7 @@ ms.locfileid: "80064174"
 
 机器学习模型工作流通常遵循以下顺序：
 
-1. **火车**
+1. **定型**
     + 在**Python、R**或视觉**R**设计器中开发机器学习培训脚本。
     + 创建和配置**计算目标**。
     + **将脚本提交**到配置的计算目标，以便在该环境中运行。 在培训期间，脚本可以从**数据存储**读取或写入。 训练期间生成的日志和输出将保存为**工作区**中的**运行**，并在**实验**下分组。
@@ -62,7 +62,7 @@ ms.locfileid: "80064174"
             * [运行配置](#run-configurations)
             * [快照](#snapshots)
             * [Git 跟踪](#github-tracking-and-integration)
-            * [Logging](#logging)
+            * [日志记录](#logging)
     * [ML 管道](#ml-pipelines)
     * [模型](#models)
         * [环境](#environments)
@@ -127,7 +127,7 @@ Azure 机器学习记录所有运行并在实验中存储以下信息：
 
 有关详细信息，请参阅 [Azure 机器学习的 Git 集成](concept-train-model-git-integration.md)。
 
-### <a name="logging"></a>Logging
+### <a name="logging"></a>日志记录
 
 开发解决方案时，请在 Python 脚本中使用 Azure 机器学习 Python SDK 记录任意指标。 运行后，查询指标以确定运行是否生成了要部署的模型。
 
@@ -139,7 +139,7 @@ Azure 机器学习记录所有运行并在实验中存储以下信息：
 
 有关机器学习管道与此服务的详细信息，请参阅[管道和 Azure 机器学习](concept-ml-pipelines.md)。
 
-### <a name="models"></a>Models
+### <a name="models"></a>模型
 
 简单地说，模型是一段接受输入并生成输出的代码。 创建机器学习模型将涉及选择算法、为其提供数据以及优化超参数。 培训是一个迭代过程，将生成经过培训的模型，它会封装模型在培训过程中学到的内容。
 
@@ -187,7 +187,7 @@ Azure ML 环境用于指定在为数据准备、模型训练和模型服务创�
 * [使用估算器训练 ML 模型](how-to-train-ml-models.md)。
 * [使用 Azure 机器学习大规模训练 Pytorch 深度学习模型](how-to-train-pytorch.md)
 * [使用 Azure 机器学习大规模训练并注册 TensorFlow 模型](how-to-train-tensorflow.md)
-* [使用 Azure 机器学习大规模训练并注册 Chainer 模型](how-to-train-chainer.md)
+* [使用 Azure 机器学习大规模训练并注册 Chainer 模型](how-to-train-ml-models.md)
 
 ### <a name="endpoints"></a>终结点
 

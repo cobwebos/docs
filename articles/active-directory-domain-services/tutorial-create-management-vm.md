@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 63c5f068adab58c901acf5fd26261d57e1183f0d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 09fcf88c6dfe90380f387c6d72c751634f5b1606
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79481511"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475731"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>教程：创建一个管理 VM 用于配置和管理 Azure Active Directory 域服务托管域
 
@@ -29,7 +29,7 @@ Azure Active Directory 域服务 (AD DS) 提供与 Windows Server Active Directo
 > * 在 Windows Server VM 上安装 Active Directory 管理工具
 > * 使用 Active Directory 管理中心执行常见任务
 
-如果你没有 Azure 订阅，可以在开始之前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果还没有 Azure 订阅，可以在开始前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -89,7 +89,6 @@ Azure AD DS 托管域处于锁定状态，因此你不拥有在该域上执行�
 
     ![在 Azure 门户中使用 Bastion 连接到 Windows 虚拟机](./media/join-windows-vm/connect-to-vm.png)
 
-    还可[创建和使用 Azure Bastion 主机（目前为预览版）][azure-bastion]，以便仅允许在 Azure 门户中通过 TLS 进行访问。
 1. 输入 VM 的凭据，然后选择“连接”  。
 
    ![在 Azure 门户中通过 Bastion 主机进行连接](./media/join-windows-vm/connect-to-bastion.png)
