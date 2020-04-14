@@ -2,19 +2,19 @@
 title: Azure CDN 的标准规则引擎引用 |微软文档
 description: Azure 内容交付网络 （Azure CDN） 的标准规则引擎中匹配条件和操作的参考文档。
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
-ms.author: magattus
-ms.openlocfilehash: aa401150ee7a0f02e809ad702b8247e18081c8a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 6d4fa4451c3db3d6f2a506eabd5676d18b0219f4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74171566"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259895"
 ---
-# <a name="standard-rules-engine-reference-for-azure-cdn"></a>Azure CDN 的标准规则引擎引用
+# <a name="standard-rules-engine-reference-for-azure-cdn"></a>Azure CDN 的标准规则引擎参考
 
 在 Azure 内容交付网络 （Azure CDN）[的标准规则引擎](cdn-standard-rules-engine.md)中，规则由一个或多个匹配条件和操作组成。 本文详细介绍了 Azure CDN 的标准规则引擎中可用的匹配条件和功能。
 

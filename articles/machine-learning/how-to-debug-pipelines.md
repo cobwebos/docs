@@ -1,7 +1,7 @@
 ---
-title: 对机器学习管道进行调试和故障排除
+title: 调试&排除 ML 管道故障
 titleSuffix: Azure Machine Learning
-description: 在适用于 Python 的 Azure 机器学习 SDK 中对机器学习管道进行调试和故障排除。 了解开发管道时的常见陷阱，以及有助于在远程执行之前和期间调试脚本的提示。 了解如何使用 Visual Studio 代码以交互方式调试机器学习管道。
+description: 在 Python 中调试 Azure 机器学习管道。 了解开发管道时的常见陷阱，以及有助于在远程执行之前和期间调试脚本的提示。 了解如何使用 Visual Studio 代码以交互方式调试机器学习管道。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.openlocfilehash: b68efbb64e9634ade001373e8cd9d61355bf786f
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.openlocfilehash: 9c2e00ed14a45c6df7cf72845db2ecd069381ca5
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80388978"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257197"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>对机器学习管道进行调试和故障排除
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

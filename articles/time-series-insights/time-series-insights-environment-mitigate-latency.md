@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 245a0b18187ff1c1b226e94b03374f2c071e51c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2812b535c7aef7987db7106bfa6b07e15a1b61c7
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76314821"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263380"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>监视并缩减限制，以减少 Azure 时序见解中的延迟
 
@@ -30,7 +30,7 @@ ms.locfileid: "76314821"
 - 添加包含超出所分配入口速率（时序见解需要追赶）的旧数据的事件源。
 - 将较多事件源添加到一个环境中，导致其他事件出现激增（可能超过环境容量）。
 - 将大量历史事件推送到一个事件源，导致延迟（时序见解需要追赶）。
-- 将引用数据和遥测结合，导致事件大小较大。 从限制的角度看，数据包大小为 32 KB 的入口数据包视为 32 个事件，每个事件大小为 1 KB。 允许的最大事件大小为 32 KB；大于 32 KB 的数据包会被截断。
+- 将引用数据和遥测结合，导致事件大小较大。 允许的最大数据包大小为 32 KB;大于 32 KB 的数据包将被截断。
 
 ## <a name="video"></a>视频
 
@@ -56,7 +56,7 @@ ms.locfileid: "76314821"
 
    在此处，可以使用以下一些条件配置警报：
 
-   |指标  |描述  |
+   |指标  |说明  |
    |---------|---------|
    |入口收到的字节数****     | 从事件源读取的原始字节数。 原始计数通常包括属性名称和值。  |  
    |入口收到的无效消息数****     | 从所有 Azure 事件中心或 Azure IoT 中心事件源读取的无效消息的计数。      |
@@ -66,7 +66,7 @@ ms.locfileid: "76314821"
    |**入口接收消息时滞**   |  消息在事件源中排队的时间与消息在入口中处理之间的时间差（以秒为单位）。      |
    |**入口接收的消息计数延迟**   |  上次排队的消息在事件源分区中的序列号与在入口中进行处理的消息的序列号之间的差异。      |
 
-   选择 **"完成**"。
+   选择“完成”  。
 
 1. 配置所需的信号逻辑后，直观地查看所选的警报规则。
 

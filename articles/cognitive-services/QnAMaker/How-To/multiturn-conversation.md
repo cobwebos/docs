@@ -2,13 +2,13 @@
 title: 多转对话 - QnA 制造商
 description: 使用提示和上下文管理自动程序从一个问题到另一个问题的多个转弯（称为多转）。 多转折是进行反复对话的能力，其中前一个问题的上下文会影响下一个问题和答案。
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: abdde09fbb1f6b066772366c5cea933824cb5864
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/13/2020
+ms.openlocfilehash: 8ef244e1b6baf480189bb90ea5ff53138a6f377a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79220618"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261459"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>使用跟进提示创建多个轮次的对话
 
@@ -108,7 +108,7 @@ ms.locfileid: "79220618"
 1. 在"**应答**"列中"**注销"** 行中，选择 **"添加后续提示**"。
 1. 在 **"后续"提示**弹出窗口中的字段中，输入以下值：
 
-    |字段|“值”|
+    |字段|值|
     |--|--|
     |显示文本|输入**关闭设备**。 这是要在后续提示中显示的自定义文本。|
     |仅上下文| 选中此复选框。 仅当问题指定上下文时，才会返回答案。|
@@ -145,7 +145,7 @@ ms.locfileid: "79220618"
 1. 在"**回答**"列中，选择 **"添加后续提示**"。
 1. 在**后续提示 （PREVIEW）** 下，通过输入以下值创建新的后续提示：
 
-    |字段|“值”|
+    |字段|值|
     |--|--|
     |显示文本|*创建 Windows 帐户*。 要在后续提示中显示的自定义文本。|
     |仅上下文|选中此复选框。 仅当问题指定上下文时，才会返回此答案。|
@@ -171,13 +171,13 @@ ms.locfileid: "79220618"
 
 1. 添加后续提示后，在顶部导航栏中选择 **"保存"和"训练**"。
 
-## <a name="enable-multi-turn-during-testing-of-follow-up-prompts"></a>在后续提示测试期间启用多转
+<a name="enable-multi-turn-during-testing-of-follow-up-prompts"></a>
 
-在 **"测试"** 窗格中使用后续提示测试问题时，请选择 **"启用多转**"，然后输入问题。 响应包括后续提示。
+## <a name="view-multi-turn-during-testing-of-follow-up-prompts"></a>在后续提示测试期间查看多转
+
+在 **"测试"** 窗格中使用后续提示测试问题时，响应包括后续提示。
 
 ![响应包括后续提示](../media/conversational-context/test-pane-with-question-having-follow-up-prompts.png)
-
-如果不启用多转，将返回答案，但不会返回后续提示。
 
 ## <a name="a-json-request-to-return-an-initial-answer-and-follow-up-prompts"></a>JSON 请求返回初始答案和后续提示
 
@@ -313,7 +313,7 @@ QnA Maker _GenerateAnswer_ JSON 响应包括`context``answers`对象中第一项
             "questions": [
                 "Meet Surface Pro 4"
             ],
-            "answer": "**Meet Surface Pro 4**\n\nGet acquainted with the features built in to your Surface Pro 4. \n\nHere’s a quick overview of Surface Pro 4 features: \n\n\n\n\n\n\n\nPower button \n\n\n\n\n\nPress the power button to turn your Surface Pro 4 on. You can also use the power button to put it to sleep and wake it when you’re ready to start working again. \n\n\n\n\n\n\n\nTouchscreen \n\n\n\n\n\nUse the 12.3” display, with its 3:2 aspect ratio and 2736 x 1824 resolution, to watch HD movies, browse the web, and use your favorite apps. \n\nThe new Surface G5 touch processor provides up to twice the touch accuracy of Surface Pro 3 and lets you use your fingers to select items, zoom in, and move things around. For more info, see Surface touchscreen on Surface.com. \n\n\n\n\n\n\n\nSurface Pen \n\n\n\n\n\nEnjoy a natural writing experience with a pen that feels like an actual pen. Use Surface Pen to launch Cortana in Windows or open OneNote and quickly jot down notes or take screenshots. \n\nSee Using Surface Pen (Surface Pro 4 version) on Surface.com for more info. \n\n\n\n\n\n\n\nKickstand \n\n\n\n\n\nFlip out the kickstand and work or play comfortably at your desk, on the couch, or while giving a hands-free presentation. \n\n\n\n\n\n\n\nWi-Fi and Bluetooth® \n\n\n\n\n\nSurface Pro 4 supports standard Wi-Fi protocols (802.11a/b/g/n/ac) and Bluetooth 4.0. Connect to a wireless network and use Bluetooth devices like mice, printers, and headsets. \n\nFor more info, see Add a Bluetooth device and Connect Surface to a wireless network on Surface.com. \n\n\n\n\n\n\n\nCameras \n\n\n\n\n\nSurface Pro 4 has two cameras for taking photos and recording video: an 8-megapixel rear-facing camera with autofocus and a 5-megapixel, high-resolution, front-facing camera. Both cameras record video in 1080p, with a 16:9 aspect ratio. Privacy lights are located on the right side of both cameras. \n\nSurface Pro 4 also has an infrared (IR) face-detection camera so you can sign in to Windows without typing a password. For more info, see Windows Hello on Surface.com. \n\nFor more camera info, see Take photos and videos with Surface and Using autofocus on Surface 3, Surface Pro 4, and Surface Book on Surface.com. \n\n\n\n\n\n\n\nMicrophones \n\n\n\n\n\nSurface Pro 4 has both a front and a back microphone. Use the front microphone for calls and recordings. Its noise-canceling feature is optimized for use with Skype and Cortana. \n\n\n\n\n\n\n\nStereo speakers \n\n\n\n\n\nStereo front speakers provide an immersive music and movie playback experience. To learn more, see Surface sound, volume, and audio accessories on Surface.com. \n\n\n\n\n",
+            "answer": "**Meet Surface Pro 4**\n\nGet acquainted with the features built in to your Surface Pro 4. \n\nHere's a quick overview of Surface Pro 4 features: \n\n\n\n\n\n\n\nPower button \n\n\n\n\n\nPress the power button to turn your Surface Pro 4 on. You can also use the power button to put it to sleep and wake it when you're ready to start working again. \n\n\n\n\n\n\n\nTouchscreen \n\n\n\n\n\nUse the 12.3" display, with its 3:2 aspect ratio and 2736 x 1824 resolution, to watch HD movies, browse the web, and use your favorite apps. \n\nThe new Surface G5 touch processor provides up to twice the touch accuracy of Surface Pro 3 and lets you use your fingers to select items, zoom in, and move things around. For more info, see Surface touchscreen on Surface.com. \n\n\n\n\n\n\n\nSurface Pen \n\n\n\n\n\nEnjoy a natural writing experience with a pen that feels like an actual pen. Use Surface Pen to launch Cortana in Windows or open OneNote and quickly jot down notes or take screenshots. \n\nSee Using Surface Pen (Surface Pro 4 version) on Surface.com for more info. \n\n\n\n\n\n\n\nKickstand \n\n\n\n\n\nFlip out the kickstand and work or play comfortably at your desk, on the couch, or while giving a hands-free presentation. \n\n\n\n\n\n\n\nWi-Fi and Bluetooth&reg; \n\n\n\n\n\nSurface Pro 4 supports standard Wi-Fi protocols (802.11a/b/g/n/ac) and Bluetooth 4.0. Connect to a wireless network and use Bluetooth devices like mice, printers, and headsets. \n\nFor more info, see Add a Bluetooth device and Connect Surface to a wireless network on Surface.com. \n\n\n\n\n\n\n\nCameras \n\n\n\n\n\nSurface Pro 4 has two cameras for taking photos and recording video: an 8-megapixel rear-facing camera with autofocus and a 5-megapixel, high-resolution, front-facing camera. Both cameras record video in 1080p, with a 16:9 aspect ratio. Privacy lights are located on the right side of both cameras. \n\nSurface Pro 4 also has an infrared (IR) face-detection camera so you can sign in to Windows without typing a password. For more info, see Windows Hello on Surface.com. \n\nFor more camera info, see Take photos and videos with Surface and Using autofocus on Surface 3, Surface Pro 4, and Surface Book on Surface.com. \n\n\n\n\n\n\n\nMicrophones \n\n\n\n\n\nSurface Pro 4 has both a front and a back microphone. Use the front microphone for calls and recordings. Its noise-canceling feature is optimized for use with Skype and Cortana. \n\n\n\n\n\n\n\nStereo speakers \n\n\n\n\n\nStereo front speakers provide an immersive music and movie playback experience. To learn more, see Surface sound, volume, and audio accessories on Surface.com. \n\n\n\n\n",
             "score": 21.92,
             "id": 3,
             "source": "product-manual.pdf",

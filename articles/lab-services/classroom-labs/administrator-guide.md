@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 7ce7ef15f0bf13182e4799fb640e83136d0d4695
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 55e319ba8aecb9205c00dda4a400e37f7c010649
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115025"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257770"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure 实验室服务 - 管理员指南
 管理大学云资源的信息技术 （IT） 管理员通常负责为其学校设置实验室帐户。 设置实验室帐户后，管理员或教育工作者将创建实验室帐户中包含的教室实验室。 本文提供了所涉及的 Azure 资源的高级概述以及创建这些资源的指导。
@@ -59,7 +59,7 @@ ms.locfileid: "81115025"
     
     设置实验室帐户时，将设置适用于实验室帐户下*所有*教室实验室的策略，例如：
     - 具有教室实验室可以访问的共享资源的 Azure 虚拟网络。 例如，您可能有一组需要访问虚拟网络中的共享数据集的教室实验室。
-    - 教室实验室可用于创建 VM 的虚拟机 （VM） 映像。 例如，您可能有一组教室实验室需要访问用于 Linux 应用商店映像[的数据科学 VM。](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) 
+    - 教室实验室可用于创建 VM 的虚拟机 （VM） 映像。 例如，您可能有一组教室实验室需要访问用于 Linux 应用商店映像[的数据科学 VM。](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) 
     
     如果您有具有彼此独特策略要求的教室实验室，则创建单独的实验室帐户以单独管理这些教室实验室可能是有益的。
 

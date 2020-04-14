@@ -1,6 +1,6 @@
 ---
-title: 在 Microsoft 应用商店和 Azure 应用商店中确定发布选项
-description: 本文介绍了尝试了解如何将应用发布到 Microsoft AppSource 和 Azure 应用商店的资格条件和发布要求合作伙伴。
+title: 确定您在商业市场中的发布选项
+description: 本文介绍了试图了解如何将应用发布到商业市场的资格标准和发布要求合作伙伴。
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: dsindona
 ms.service: marketplace
@@ -8,18 +8,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: dsindona
-ms.openlocfilehash: 4c41fcbb8766feb68db7d60d591e914a6ba0aea2
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 84d5c351f3997fe5430ea1ce517c2dca13203c03
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349538"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261680"
 ---
 # <a name="determine-your-publishing-option"></a>确定发布选项
 
 您为产品/服务选择的发布选项与资格要求和商业市场 GTM 权益直接相关。 更重要的是，选择发布选项和产品/服务类型定义了用户如何与您的商业市场产品/服务进行交互。
 
-要配置产品/服务，您需要了解以下关键商业市场概念：发布选项、产品类型和配置，以及控制产品/服务在商业市场中呈现的方式和位置的操作调用店面。
+要配置产品/服务，您需要了解以下关键的商业市场概念：发布选项、产品类型和配置，以及控制产品/服务在商业市场网店中呈现的方式和位置的操作要求。
 
 ![微软商业市场店面和出版选项](./media/marketplace-publishers-guide/storefronts_options_table.png)
 

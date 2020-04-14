@@ -1,5 +1,5 @@
 ---
-title: 在商业应用商店中创建新的 Azure 应用产品/服务
+title: 在商业市场创建新的 Azure 应用产品/服务
 description: 如何使用 Microsoft 合作伙伴中心的商业应用商店门户创建新的 Azure 应用产品/服务，用于在 Azure 应用商店、AppSource 或通过云解决方案提供商 （CSP） 计划进行上市或销售。
 author: dsindona
 ms.author: dsindona
@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 0ff1bbd976273a7d0cbfb22effebdf45c84d2f41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 260193b3c71e29a32e0589f50864ffcca2e9a67c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277233"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262258"
 ---
 # <a name="create-an-azure-application-offer"></a>创建 Azure 应用程序产品/服务
 
@@ -69,7 +69,7 @@ Azure[应用商店的视频构建解决方案模板和托管应用程序](https:
 * 示例：
 
     * [Azure CLI](https://docs.microsoft.com/azure/managed-applications/cli-samples)
-    * [Azure 电源外壳](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
+    * [Azure PowerShell](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
     * [托管应用程序解决方案](https://docs.microsoft.com/azure/managed-applications/sample-projects)
 
 ### <a name="fundamentals-in-technical-knowledge"></a>技术知识基础知识
@@ -88,12 +88,12 @@ Azure[应用商店的视频构建解决方案模板和托管应用程序](https:
 
 选择以下一种或两种脚本环境来帮助管理 Azure 应用程序：
 
-* [Azure 电源外壳](https://docs.microsoft.com/powershell/azure/overview)
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
 * [Azure CLI](https://docs.microsoft.com/cli/azure)
 
 我们建议将以下工具添加到开发环境：
 
-* [Azure 存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+* [Azure 存储浏览器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 * 包含以下扩展的 [Visual Studio Code](https://code.visualstudio.com/)：
     * 扩展：[Azure 资源管理器工具](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     * 扩展：[Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -103,12 +103,12 @@ Azure[应用商店的视频构建解决方案模板和托管应用程序](https:
 
 ## <a name="create-an-azure-application-offer"></a>创建 Azure 应用程序产品/服务
 
-在创建 Azure 应用程序产品/服务之前，必须先[创建合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)并打开["商业市场"仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)，并选中 **"概览**"选项卡。
+在创建 Azure 应用程序产品/服务之前，必须先[创建合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)并打开[商业市场仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)，并选中 **"概述**"选项卡。
 
 >[!Note]
 >发布产品/服务后，只有在重新发布后，才会在系统和网店中更新对合作伙伴中心中提供的报价进行编辑。  请确保您在进行更改后提交要发布的要约。
 
-### <a name="create-a-new-offer"></a>创建新套餐
+### <a name="create-a-new-offer"></a>创建新产品/服务
 
 选择 **" 新增产品/服务**"按钮，然后选择**Azure 应用程序**菜单项。 将显示"**新建产品/服务**"对话框。
 
@@ -168,7 +168,7 @@ Azure[应用商店的视频构建解决方案模板和托管应用程序](https:
 > [!NOTE]
 > 报价列表内容（如说明、文档、屏幕截图、使用条款等）不需要以英文表示，只要要约说明以短语开头，"此应用程序仅以 [非英语语言]提供。 提供*有用的链接 URL*以提供产品/服务列表内容中所用语言以外的语言提供内容也是可接受的。
 
-### <a name="name"></a>“属性”
+### <a name="name"></a>名称
 
 您在此处输入的名称将作为产品/服务列表的标题显示给客户。 此字段预填充了创建产品/服务时为 **"产品/服务"别名**输入的文本，但您可以更改此值。 此名称可以注册商标（您可以包括商标或版权符号）。 名称不能超过 50 个字符，不能包含任何表情符号。
 
@@ -180,7 +180,7 @@ Azure[应用商店的视频构建解决方案模板和托管应用程序](https:
 
 提供更久的报价说明（最多 256 个字符）。 该说明可用于市场搜索结果。
 
-### <a name="description"></a>描述
+### <a name="description"></a>说明
 
 提供更久的报价说明（最多 3，000 个字符）。 此描述将显示在市场列表概述中的客户。 包括您的产品/服务的价值主张、主要优势、类别和/或行业协会、应用内购买机会以及任何必需的披露。 
 
@@ -308,7 +308,7 @@ Azure 政府服务处理受某些政府法规和要求约束的数据，例如 F
 
 **"计划列表**"选项卡显示特定于计划的列表信息，这些信息可以不同于同一报价的不同计划。
 
-### <a name="name"></a>“属性”
+### <a name="name"></a>名称
 
 根据创建计划时分配的计划的名称进行预填充。  此名称将显示为市场上显示的此"软件计划"的标题。  可能最多包含 100 个字符。
 
@@ -316,7 +316,7 @@ Azure 政府服务处理受某些政府法规和要求约束的数据，例如 F
 
 提供软件计划的简短摘要。  可能最多包含 100 个字符。
 
-### <a name="description"></a>描述
+### <a name="description"></a>说明
 
 此说明是一个解释是什么让此软件计划独一无二以及您产品/服务中其他软件计划的任何差异的机会。 可能包含多达 2，000 个字符。
 

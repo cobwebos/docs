@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 22efb5e94049b975780c6f6ea69aa94a71cc9992
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f06480767b697dca8fe41e484c02aefc58f040bf
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279008"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261323"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>创建独立的 Azure 自动化帐户
 
@@ -34,7 +34,7 @@ ms.locfileid: "79279008"
 * 要创建自动化帐户，必须将 Azure AD 用户帐户添加到具有与 Microsoft 所有者角色等值的权限的角色 **。自动化**资源。 有关详细信息，请参阅[Azure 自动化 中的基于角色的访问控制](automation-role-based-access-control.md)。
 * 在 Azure 门户中，在**Azure 活动目录** > **管理** > **用户设置**下 ，如果**应用注册**设置为 **"是**"，则 Azure AD 租户中的非管理员用户可以[注册活动目录应用程序](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions)。 如果“应用注册”**** 设置为“否”****，则执行此操作的用户必须是 Azure AD 中的全局管理员。
 
-如果在被添加到订阅的全局管理员/共同管理员角色之前不是订阅的 Active Directory 实例的成员，则将作为来宾添加到 Active Directory。 在这种情况下，“添加自动化帐户”**** 页中会显示此消息：“你无权创建”。
+如果在被添加到订阅的全局管理员/共同管理员角色之前不是订阅的 Active Directory 实例的成员，则将作为来宾添加到 Active Directory。 在这种情况下，您可以在 **"添加自动化帐户"** 页上看到此消息："您没有创建权限。
 
 如果已将某用户添加到全局管理员/共同管理员角色，则可先将其从订阅的 Active Directory 实例中删除，然后将其重新添加到 Active Directory 中的完整用户角色。
 
@@ -84,7 +84,7 @@ ms.locfileid: "79279008"
 
 成功创建自动化帐户后，系统会自动创建几个资源。 创建后，如果不想保留这些 runbook，可以放心地将其删除。 运行方式帐户可用于对 runbook 中的帐户进行身份验证，除非创建其他运行方式帐户或不需要它们，否则应将其保留。 下表汇总了运行方式帐户的资源。
 
-| 资源 | 描述 |
+| 资源 | 说明 |
 | --- | --- |
 | AzureAutomationTutorial Runbook |一个示例图形 Runbook，演示如何使用运行方式帐户进行身份验证。 该 Runbook 获取所有资源管理器资源。 |
 | AzureAutomationTutorialScript Runbook |一个示例 PowerShell Runbook，演示如何使用运行方式帐户进行身份验证。 该 Runbook 获取所有资源管理器资源。 |
@@ -92,7 +92,7 @@ ms.locfileid: "79279008"
 | AzureRunAsCertificate |在创建自动化帐户时自动创建的，或针对现有帐户使用 PowerShell 脚本创建的证书资产。 使用该证书可向 Azure 进行身份验证，以便通过 Runbook 管理 Azure 资源管理器资源。 此证书有一年的有效期。 |
 | AzureRunAsConnection |在创建自动化帐户时自动创建的，或针对现有帐户使用 PowerShell 脚本创建的连接资产。 |
 
-## <a name="classic-run-as-accounts"></a>经典运行方式帐户
+## <a name="create-a-classic-run-as-account"></a>创建经典运行身份帐户
 
 默认情况下，创建 Azure 自动化帐户时，将不再创建经典运行方式帐户。 如果仍需要经典运行方式帐户，请执行以下步骤。
 

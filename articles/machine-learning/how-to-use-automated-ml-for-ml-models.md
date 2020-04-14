@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 03/10/2020
-ms.openlocfilehash: aa85e80f1a90191a0a34a6962437c27a9d57ef65
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 0d6fa02578814c4c5d034be05cbc63093d70603b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547555"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257222"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>使用 Azure 机器学习创建、查看和部署自动化机器学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -74,7 +74,7 @@ ms.locfileid: "80547555"
         列标题| 指示如何处理数据集的标头（如果有）。
         跳过行 | 指示要跳过数据集中的多少行（如果有）。
     
-        选择“下一步”。
+        选择“**下一页**”。
 
     1. “架构”窗体是基于“设置和预览”窗体中所做的选择智能填充的。******** 在此处，请配置每个列的数据类型，检查列名称，并选择“不包含”哪些列进行试验。**** 
             
@@ -82,7 +82,7 @@ ms.locfileid: "80547555"
 
     1. “确认详细信息”窗体是前面在“基本信息”与“设置和预览”窗体中填充的信息的摘要。************ 您还可以选择使用启用分析的计算为数据集创建数据配置文件。 详细了解[数据分析](#profile)。
 
-        选择“下一步”。
+        选择“**下一页**”。
 1. 新建的数据集出现后，请将其选中。 还可以查看数据集和样本统计信息的预览。 
 
 1. 在“配置运行”窗体中，输入唯一的试验名称。****
@@ -104,7 +104,7 @@ ms.locfileid: "80547555"
     >[!NOTE]
     > 计算名称将会指示选择/创建的计算是否已启用分析。** （有关更多详细信息，请参阅[数据分析](#profile)部分）。
 
-    选择“下一步”。
+    选择“**下一页**”。
 
 1. 在“任务类型和设置”窗体中选择任务类型：分类、回归或预测。**** 有关详细信息，请参阅[如何定义任务类型](how-to-define-task-type.md)。
 
@@ -155,7 +155,6 @@ Variance| 此列数据与其平均值之间的分散程度度量。
 倾斜| 此列数据与正态分布之间的差异程度度量。
 峰度| 此列数据与正态分布相比的落后程度度量。
 
-
 <a name="featurization"></a>
 
 ## <a name="advanced-featurization-options"></a>高级壮举选项
@@ -164,12 +163,15 @@ Variance| 此列数据与其平均值之间的分散程度度量。
 
 ### <a name="preprocessing"></a>预处理
 
+> [!NOTE]
+> 如果您计划将自动 ML 创建的模型导出到[ONNX 型号](concept-onnx.md)，则仅支持 ONNX 格式中带有 * 的奇才化选项。 了解有关[将模型转换为 ONNX](concept-automated-ml.md#use-with-onnx)的更多信息。 
+
 |预处理步骤| 说明 |
 | ------------- | ------------- |
-|删除较大的基数或者无差异的特征|从训练集和验证集中删除这些特征，包括所有值都缺失的特征、在所有行中具有相同值的特征，或基数极高的特征（例如，哈希、ID 或 GUID）。|
-|估算缺失值|对于数字特征，将在列中插补平均值。<br/><br/>对于分类特征，将插补最常用值。|
-|生成其他特征|对于 DateTime 功能：年、月、日、星期一、一年中的一天、季度、一年中的一周、小时、分钟、秒。<br/><br/>对于文本功能：基于单格、双克和三字符克的术语频率。|
-|转换和扩充 |唯一值较少的数字特征将转换为分类特征。<br/><br/>对于低基数分类特征，将执行独热 (one-hot) 编码；对于高基数特征，将执行独热哈希编码。|
+|删除高基数或无方差特征* |从训练集和验证集中删除这些特征，包括所有值都缺失的特征、在所有行中具有相同值的特征，或基数极高的特征（例如，哈希、ID 或 GUID）。|
+|已归名缺失值* |对于数字特征，将在列中插补平均值。<br/><br/>对于分类特征，将插补最常用值。|
+|生成其他功能* |对于 DateTime 功能：年、月、日、星期一、一年中的一天、季度、一年中的一周、小时、分钟、秒。<br/><br/>对于文本功能：基于单格、双克和三字符克的术语频率。|
+|转换和编码 ||唯一值较少的数字特征将转换为分类特征。<br/><br/>对于低基数分类特征，将执行独热 (one-hot) 编码；对于高基数特征，将执行独热哈希编码。|
 |单词嵌入|使用预先训练的模型将文本标记的向量转换为句子向量的文本特征化器。 每个单词在文档中的嵌入向量聚合在一起以生成文档要素矢量。|
 |目标编码|对于分类特征，将每个类别映射到回归问题的平均目标值，并映射到分类问题的每个类的类概率。 应用基于频率的加权和 k 折交叉验证，以减少稀疏数据类别导致的映射过度拟合与干扰。|
 |文本目标编码|对于文本输入，将使用带有词袋的堆叠线性模型来生成每个类的概率。|
@@ -178,19 +180,13 @@ Variance| 此列数据与其平均值之间的分散程度度量。
 
 ### <a name="data-guardrails"></a>数据护栏
 
-启用自动壮举或将验证设置为自动验证时，将应用数据保护程序。数据保护栏可帮助您识别数据的潜在问题（例如缺少值、类不平衡），并帮助采取纠正措施以改进结果。 有许多最佳实践可用，可以应用，以实现可靠的结果。 用户可以在自动 ML 运行**的数据护栏**选项卡中查看演播室中的数据护栏，或者在使用 Python SDK```show_output=True```提交实验时设置数据护栏。 下表描述了当前支持的数据护栏，以及用户在提交实验时可能会遇到的关联状态。
+启用自动壮举或将验证设置为自动验证时，将应用数据保护程序。数据保护栏可帮助您识别数据的潜在问题（例如缺少值、类不平衡），并帮助采取纠正措施以改进结果。 
 
-护栏|状态|触发&nbsp;条件&nbsp;
----|---|---
-缺少归因要素值 |**Passed** <br><br><br> **完成**| 在训练数据中未检测到缺少的要素值。 了解有关[缺少值归因](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options)的更多信息。 <br><br> 在训练数据中检测到缺少特征值并归为
-高基数特征处理 |**Passed** <br><br><br> **完成**| 对输入进行了分析，未检测到高基数特征。 了解有关[高基数特征检测](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options)的更多详细信息。 <br><br> 在输入中检测到高基数特征并处理。
-验证拆分处理 |**完成**| *验证配置设置为"自动"，训练数据包含**少于**20，000 行。* <br> 通过交叉验证验证了训练模型的每个迭代。 了解有关[验证数据的更多详细信息。](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data) <br><br> *验证配置设置为"自动"，训练数据包含 20，000**多**行。* <br> 输入数据已拆分为训练数据集和验证数据集，用于验证模型。
-类平衡检测 |**Passed** <br><br><br><br> **提醒** | 您的输入已分析，所有课程在培训数据中处于平衡。 如果每个类在数据集中具有良好的表示形式（以样本的数量和比率来衡量），则数据集被视为平衡数据集。 <br><br><br> 在输入中检测到不平衡类。 要修复模型偏差，修复平衡问题。 了解有关[不平衡数据的更多。](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml#imbalance)
-内存问题检测 |**Passed** <br><br><br><br> **完成** |<br> 分析了选定的[视界、滞后、滚动窗口]值，未检测到潜在的内存不足问题。 了解有关时间序列[预测配置](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment)的更多信息。 <br><br><br>已分析选定的[视界、延迟、滚动窗口]值，并可能导致实验内存不足。 已关闭延迟或滚动窗口配置。
-频率检测 |**Passed** <br><br><br><br> **完成** |<br> 分析了时间序列，所有数据点与检测到的频率对齐。 <br> <br> 分析了时间序列，并检测到与检测到的频率不一致的数据点。 这些数据点从数据集中删除。 详细了解[时间序列预测的数据准备。](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data)
+用户可以在自动 ML 运行**的数据护栏**选项卡中查看演播室中的数据护栏，或者在使用 Python SDK```show_output=True```提交实验时设置数据护栏。 
 
 #### <a name="data-guardrail-states"></a>数据保护轨状态
-数据保护栏将显示三种状态之一："通过"，"完成"或"警报"。
+
+数据保护栏将显示三种状态之一：**已通过**、**完成**或**警报**。
 
 状态| 说明
 ----|----
@@ -198,7 +194,19 @@ Passed| 未检测到数据问题，也不需要用户操作。
 完成| 更改已应用于您的数据。 我们鼓励用户查看自动 ML 采取的纠正措施，以确保更改与预期结果保持一致。 
 提醒| 检测到无法补救的数据问题。 我们鼓励用户修改和修复该问题。 
 
-自动 ML 的早期版本显示第四种状态："已修复"。 较新的实验将不会显示此状态，所有显示"固定"状态的护栏现在都将显示"完成"。   
+>[!NOTE]
+> 早期版本的自动 ML 实验显示第四种状态：**固定**。 较新的实验将不会显示此状态，并且显示 **"固定**"状态的所有护栏现在都将显示 **"完成**"。   
+
+下表描述了当前支持的数据护栏，以及用户在提交实验时可能会遇到的关联状态。
+
+护栏|状态|触发&nbsp;条件&nbsp;
+---|---|---
+缺少归因要素值 |**Passed** <br><br><br> **完成**| 在训练数据中未检测到缺少的要素值。 了解有关[缺少值归因](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options)的更多信息。 <br><br> 在训练数据中检测到缺少特征值并归为
+高基数特征处理 |**Passed** <br><br><br> **完成**| 对输入进行了分析，未检测到高基数特征。 了解有关[高基数特征检测](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options)的更多详细信息。 <br><br> 在输入中检测到高基数特征并处理。
+验证拆分处理 |**完成**| *验证配置设置为"自动"，训练数据包含**少于**20，000 行。* <br> 通过交叉验证验证了训练模型的每个迭代。 了解有关[验证数据的更多详细信息。](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data) <br><br> *验证配置设置为"自动"，训练数据包含 20，000**多**行。* <br> 输入数据已拆分为训练数据集和验证数据集，用于验证模型。
+类平衡检测 |**Passed** <br><br><br><br> **提醒** | 您的输入已分析，所有课程在培训数据中处于平衡。 如果每个类在数据集中具有良好的表示形式（以样本的数量和比率来衡量），则数据集被视为平衡数据集。 <br><br><br> 在输入中检测到不平衡类。 要修复模型偏差，修复平衡问题。 了解有关[不平衡数据的更多。](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data)
+内存问题检测 |**Passed** <br><br><br><br> **完成** |<br> 分析了选定的[视界、滞后、滚动窗口]值，未检测到潜在的内存不足问题。 了解有关时间序列[预测配置](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment)的更多信息。 <br><br><br>已分析选定的[视界、延迟、滚动窗口]值，并可能导致实验内存不足。 已关闭延迟或滚动窗口配置。
+频率检测 |**Passed** <br><br><br><br> **完成** |<br> 分析了时间序列，所有数据点与检测到的频率对齐。 <br> <br> 分析了时间序列，并检测到与检测到的频率不一致的数据点。 这些数据点从数据集中删除。 详细了解[时间序列预测的数据准备。](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data)
 
 ## <a name="run-experiment-and-view-results"></a>运行试验并查看结果
 
@@ -246,7 +254,7 @@ Passed| 未检测到数据问题，也不需要用户操作。
 
     “高级”菜单提供默认部署功能，例如[数据收集](how-to-enable-app-insights.md)和资源利用率设置。** 若要替代这些默认设置，请在此菜单中替代。
 
-1. 选择“部署”****。 完成部署可能需要大约 20 分钟。
+1. 选择“部署”。  完成部署可能需要大约 20 分钟。
 
 现在，你已获得一个正常运行的、可以生成预测结果的 Web 服务！ 您可以通过从[Power BI 内置的 Azure 机器学习支持](how-to-consume-web-service.md#consume-the-service-from-power-bi)中查询服务来测试预测。
 

@@ -9,38 +9,38 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.custom: include file
-ms.openlocfilehash: f097479b67a7b48eca4a2710db3bd7eed6ddc982
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11469d992e0f5669cd3fc1e3864627dd0b8ae23d
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77013746"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263331"
 ---
 下面总结了正式版中的主要限制。
 
 ### <a name="sku-ingress-rates-and-capacities"></a>SKU 入口速率和容量
 
-S1 和 S2 SKU 入口速率和容量可在配置新的时序见解环境时提供灵活性。
+S1 和 S2 SKU 入口速率和容量可在配置新的时序见解环境时提供灵活性。 您的 SKU 容量指示您每天的入侵率，具体取决于存储的事件数或字节数，以先到者为准。 请注意，入口是*每分钟*测量的，并使用令牌存储桶算法应用**限制**。 入口以 1 KB 块为单位进行测量。 例如，0.8 KB 的实际事件将测量为一个事件，2.6 KB 事件计为三个事件。
 
 | S1 SKU 容量 | 入口速率 | 最大存储容量
 | --- | --- | --- |
-| 1 | 1 GB（1 百万个事件） | 每月 30 GB（3 千万个事件） |
-| 10 | 10 GB（1 千万个事件） | 每月 300 GB（3 亿个事件） |
+| 1 | 每天 1 GB（100 万次事件） | 每月 30 GB（3 千万个事件） |
+| 10 | 每天 10 GB（1000 万次事件） | 每月 300 GB（3 亿个事件） |
 
 | S2 SKU 容量 | 入口速率 | 最大存储容量
 | --- | --- | --- |
-| 1 | 10 GB（1 千万个事件） | 每月 300 GB（3 亿个事件） |
-| 10 | 100 GB（1 亿个事件） | 每月 3 TB（30 亿个事件） |
+| 1 | 每天 10 GB（1000 万次事件） | 每月 300 GB（3 亿个事件） |
+| 10 | 每天 100 GB（1 亿个事件） | 每月 3 TB（30 亿个事件） |
 
 > [!NOTE]
 > 容量呈线性增长，因此容量为 2 的 S1 SKU 每日入口速率支持 2 GB（2 百万）的事件，每月支持 60 GB（6 千万）的事件。
 
 S2 SKU 环境每月支持更多的事件，并具有显著更高的入口容量。
 
-| SKU  | 每月事件计数  | 每月事件大小  | 每分钟事件计数 | 每分钟事件大小  |
+| SKU  | 每月事件计数  | 每分钟事件计数 | 每分钟事件大小  |
 |---------|---------|---------|---------|---------|
-| S1     |   3000 万     |  30 GB     |  720    |  720 KB   |
- |S2     |   3 亿    |   300 GB   | 7,200   | 7,200 KB  |
+| S1     |   3000 万   |  720    |  720 KB   |
+ |S2     |   3 亿   | 7,200   | 7,200 KB  |
 
 ### <a name="property-limits"></a>属性限制
 

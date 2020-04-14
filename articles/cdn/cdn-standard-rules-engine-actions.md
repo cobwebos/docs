@@ -2,17 +2,17 @@
 title: Azure CDN 的标准规则引擎中的操作 |微软文档
 description: Azure 内容交付网络 （Azure CDN） 的标准规则引擎中操作的参考文档。
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
-ms.author: magattus
-ms.openlocfilehash: 53280bc90f629d93ff8a045c80f34a73970b43f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 29138b4fc6716ae5361cc4d7f97ceba41b90c2da
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74171632"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259946"
 ---
 # <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Azure CDN 的标准规则引擎中的操作
 
@@ -30,7 +30,7 @@ ms.locfileid: "74171632"
 
 #### <a name="required-fields"></a>Required fields
 
-缓存行为 |  描述              
+缓存行为 |  说明              
 ---------------|----------------
 旁路缓存 | 选择此选项且规则匹配时，不会缓存内容。
 替代 | 选择此选项且规则匹配时，从原点返回的 TTL 值将被用操作中指定的值覆盖。
@@ -48,7 +48,7 @@ Int | Int | Int | Int
 
 #### <a name="required-fields"></a>Required fields
 
-行为 | 描述
+行为 | 说明
 ---------|------------
 包括 | 选择此选项且规则匹配时，在生成缓存键时包括参数中指定的查询字符串。 
 缓存每个唯一的 URL | 选择此选项且规则匹配时，每个唯一 URL 都有自己的缓存密钥。 
@@ -61,11 +61,11 @@ Int | Int | Int | Int
 
 #### <a name="required-fields"></a>Required fields
 
-操作 | HTTP 标头名称 | “值”
+操作 | HTTP 标头名称 | 值
 -------|------------------|------
-附加 | 选择此选项且规则匹配时，**标题名称**中指定的标头将添加到具有指定值的请求中。 如果标头已存在，则该值将追加到现有值。 | String
-Overwrite | 选择此选项且规则匹配时，**标题名称**中指定的标头将添加到具有指定值的请求中。 如果标头已存在，则指定的值将覆盖现有值。 | String
-删除 | 选择此选项后，规则匹配，并且规则中指定的标头存在，标头将从请求中删除。 | String
+附加 | 选择此选项且规则匹配时，**标题名称**中指定的标头将添加到具有指定值的请求中。 如果标头已存在，则该值将追加到现有值。 | 字符串
+Overwrite | 选择此选项且规则匹配时，**标题名称**中指定的标头将添加到具有指定值的请求中。 如果标头已存在，则指定的值将覆盖现有值。 | 字符串
+删除 | 选择此选项后，规则匹配，并且规则中指定的标头存在，标头将从请求中删除。 | 字符串
 
 ### <a name="modify-response-header"></a>修改响应标头
 
@@ -73,11 +73,11 @@ Overwrite | 选择此选项且规则匹配时，**标题名称**中指定的标�
 
 #### <a name="required-fields"></a>Required fields
 
-操作 | HTTP 标头名称 | “值”
+操作 | HTTP 标头名称 | 值
 -------|------------------|------
-附加 | 选择此选项且规则匹配时，使用指定的**值**将标题**名称**中指定的标头添加到响应中。 如果标头已存在，则**将值**追加到现有值。 | String
-Overwrite | 选择此选项且规则匹配时，使用指定的**值**将标题**名称**中指定的标头添加到响应中。 如果标头已存在，**则"值**"将覆盖现有值。 | String
-删除 | 选择此选项后，规则匹配，并且规则中指定的标头存在，标头将从响应中删除。 | String
+附加 | 选择此选项且规则匹配时，使用指定的**值**将标题**名称**中指定的标头添加到响应中。 如果标头已存在，则**将值**追加到现有值。 | 字符串
+Overwrite | 选择此选项且规则匹配时，使用指定的**值**将标题**名称**中指定的标头添加到响应中。 如果标头已存在，**则"值**"将覆盖现有值。 | 字符串
+删除 | 选择此选项后，规则匹配，并且规则中指定的标头存在，标头将从响应中删除。 | 字符串
 
 ### <a name="url-redirect"></a>URL 重定向
 
@@ -85,7 +85,7 @@ Overwrite | 选择此选项且规则匹配时，使用指定的**值**将标题*
 
 #### <a name="required-fields"></a>Required fields
 
-字段 | 描述 
+字段 | 说明 
 ------|------------
 类型 | 选择要返回到请求器的响应类型：找到 （302）、移动 （301）、临时重定向 （307） 和永久重定向 （308）。
 协议 | 匹配请求，HTTP，HTTPS。
@@ -102,7 +102,7 @@ Overwrite | 选择此选项且规则匹配时，使用指定的**值**将标题*
 
 #### <a name="required-fields"></a>Required fields
 
-字段 | 描述 
+字段 | 说明 
 ------|------------
 源模式 | 定义要替换的 URL 路径中的源模式。 目前，源模式使用基于前缀的匹配。 要匹配所有 URL 路径，请使用正向斜**/** 杠 （ ） 作为源模式值。
 目标 | 定义要在重写中使用的目标路径。 目标路径覆盖源模式。
