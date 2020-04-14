@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: how-to
-ms.date: 02/10/2020
+ms.date: 04/13/2020
 ms.author: dapine
-ms.openlocfilehash: 51fe6cea80e097f34432ab8dc7293c758bd8d720
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e55030144bcabbf192b4095a5a2e6ed565cedf83
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77119806"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258595"
 ---
 # <a name="get-the-list-of-text-to-speech-voices-using-python"></a>使用 Python 获取“文本转语音”语音的列表
 
@@ -26,7 +26,7 @@ ms.locfileid: "77119806"
 ## <a name="prerequisites"></a>先决条件
 
 * Python 2.7.x 或 3.x
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download) 或你喜欢用的文本编辑器
+* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">视觉工作室<span class="docon docon-navigate-external x-hidden-focus"></span></a>，<a href="https://code.visualstudio.com/download" target="_blank">视觉工作室<span class="docon docon-navigate-external x-hidden-focus"></span>代码</a>， 或您最喜爱的文本编辑器
 * 语音服务的 Azure 订阅密钥
 
 ## <a name="create-a-project-and-import-required-modules"></a>创建一个项目并导入必需的模块
@@ -132,7 +132,7 @@ python get-voices.py
 > [!div class="nextstepaction"]
 > [浏览 GitHub 上的 Python 示例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/Python)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [文本到语音 API 参考](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
 * [创建自定义语音字体](how-to-customize-voice-font.md)

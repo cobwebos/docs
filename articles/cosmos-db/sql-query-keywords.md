@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB 的 SQL 关键字
 description: 了解 Azure Cosmos DB 的 SQL 关键字。
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/17/2020
-ms.author: mjbrown
-ms.openlocfilehash: f2da2695ec20eac9dd2636104d3314427e60d541
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/10/2020
+ms.author: tisande
+ms.openlocfilehash: 069548b9b69ef6f7f6bde85ede830d97f3d312db
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79498536"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261561"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB 中的关键字
 
@@ -166,6 +166,6 @@ TOP 关键字以未定义的顺序返回前 `N` 个查询结果。 最佳做法�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [开始](sql-query-getting-started.md)
+- [入门](sql-query-getting-started.md)
 - [联接](sql-query-join.md)
 - [子查询](sql-query-subquery.md)

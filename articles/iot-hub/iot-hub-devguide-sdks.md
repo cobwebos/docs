@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 419a71acbca59c00bd0ffecf39d5d1ff38833b08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be5fae45ee513dddf002995ce9c37c6b6565f50c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284585"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258382"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>了解和使用 Azure IoT 中心 SDK
 
@@ -45,7 +45,7 @@ Microsoft Azure IoT 设备 SDK 包含的代码可帮助构建连接到 Azure IoT
 
 适用于 .NET 的 Azure IoT 中心设备 SDK： 
 
-* 从[Nuget](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/)下载 。  命名空间是 Microsoft.Azure.Devices.Clients，其中包含 IoT 中心设备客户端（DeviceClient、ModuleClient）。
+* 从[NuGet 下载](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/)。  命名空间是 Microsoft.Azure.Devices.Clients，其中包含 IoT 中心设备客户端（DeviceClient、ModuleClient）。
 * [源代码](https://github.com/Azure/azure-iot-sdk-csharp)
 * [API 参考](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices?view=azure-dotnet)
 * [模块参考](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)
@@ -93,7 +93,7 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 
 适用于 .NET 的 Azure IoT 中心服务 SDK：
 
-* 从[Nuget](https://www.nuget.org/packages/Microsoft.Azure.Devices/)下载 。  命名空间是 Microsoft.Azure.Devices，其中包含 IoT 中心服务客户端（RegistryManager、ServiceClients）。
+* 从[NuGet 下载](https://www.nuget.org/packages/Microsoft.Azure.Devices/)。  命名空间是 Microsoft.Azure.Devices，其中包含 IoT 中心服务客户端（RegistryManager、ServiceClients）。
 * [源代码](https://github.com/Azure/azure-iot-sdk-csharp)
 * [API 参考](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices)
 
@@ -116,7 +116,7 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 
 适用于 C 的 Azure IoT 中心服务 SDK： 
 
-* 通过 [apt-get、MBED、Arduino IDE 或 Nuget](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md) 下载
+* 从[贴切获取、MBED、Arduino IDE 或 NuGet 下载](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md)
 * [源代码](https://github.com/Azure/azure-iot-sdk-c)
 
 适用于 iOS 的 Azure IoT 中心服务 SDK： 
@@ -157,7 +157,7 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 
 适用于 Python 的 Azure 预配设备和服务 SDK：
 
-* [源代码](https://github.com/Azure/azure-iot-device)
+* [源代码](https://github.com/Azure/azure-iot-sdk-python)
 * 通过 pip 下载[设备 SDK](https://pypi.org/project/azure-iot-device/) 和[服务 SDK](https://pypi.org/project/azure-iothub-provisioningserviceclient/)
 
 ## <a name="next-steps"></a>后续步骤

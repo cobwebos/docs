@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 5f9ad827fa947e645f7eb4850f90a73c61a45cd3
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 00e966dbee6c1993256a94d734bcc6261aea00af
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637108"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258417"
 ---
 # <a name="azure-cognitive-services-support-and-feedback-options"></a>Azure 认知服务支持和反馈选项
 
@@ -59,10 +59,7 @@ ms.locfileid: "80637108"
 
 如果找不到"堆栈溢出"上的搜索框问题的答案，请提交一个新问题。 Stack Overflow 是开发相关问题的首选渠道。 堆栈溢出社区成员和 Microsoft 团队成员直接参与帮助您解决问题。
 
- 表述问题时，请使用以下标记之一：
-
- - [Microsoft 认知](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
- - [Azure 认知服务](https://stackoverflow.com/questions/tagged/azure-cognitive-services)
+[在此处](https://go.microsoft.com/fwlink/?linkid=2126464)发布问题。 为您的问题使用适当的标记，因此我们一定会看到问题。
 
 > [!TIP]
 > Stack Overflow 中的以下文帖包含有关如何提交问题和添加源代码的提示。 遵循以下准则有助于提高社区成员快速评估和响应问题的可能性：

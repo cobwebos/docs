@@ -5,20 +5,23 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 6a0131cf94759fc529a52ea33d5392a60c5ef30c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33359883df86091120295b93618a13476e428d2f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281589"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262487"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>使用 HTTPS 终结点配置潜在顾客管理
 
-如果合作伙伴中心中没有明确支持客户关系管理 （CRM） 系统以接收 Azure 应用商店和 AppSource 潜在顾客，则可以使用 MS Flow 中的 HTTPS 终结点来处理这些潜在顾客。 使用 HTTPS 终结点，这些潜在顾客可以作为电子邮件通知发送，也可以写入 MS Flow 支持的客户关系管理 （CRM） 系统。 本文中的说明将引导您完成使用 Microsoft Flow 创建新流的基本过程，这将生成将输入到潜在顾客管理> **HTTPS 终结点 URL**字段的发布门户中的 HTTP POST URL。 此外，还包括有关如何使用名为[Postman](https://www.getpostman.com/downloads/)的工具测试您的流程的说明，该工具可以在线找到。
+>[!Note]
+>这些说明中使用的电源自动连接器需要付费订阅电源自动化。 请按照本文档中的说明说明说明说明。
 
-## <a name="create-a-flow-using-microsoft-flow"></a>使用 Microsoft Flow 创建流
+如果合作伙伴中心中没有明确支持客户关系管理 （CRM） 系统以接收 Azure 应用商店和 AppSource 潜在顾客，则可以使用 Power 自动中的 HTTPS 终结点来处理这些潜在顾客。 使用 HTTPS 终结点，这些潜在顾客可以作为电子邮件通知发送，也可以写入 Power 自动支持的客户关系管理 （CRM） 系统。 本文中的说明将引导您完成使用 Power 自动功能创建新流的基本过程，这将生成将输入到潜在顾客管理> **HTTPS 终结点 URL**字段的发布门户中的 HTTP POST URL。 此外，还包括有关如何使用名为[Postman](https://www.getpostman.com/downloads/)的工具测试您的流程的说明，该工具可以在线找到。
+
+## <a name="create-a-flow-using-power-automate"></a>使用电源自动功能创建流
 
 1. 打开[流](https://flow.microsoft.com/)网页。 选择 **"登录**"，或者如果您还没有帐户，请选择 **"免费注册**"以创建一个免费的流帐户。
 
@@ -168,7 +171,7 @@ ms.locfileid: "80281589"
 
    ![测试我的流](./media/commercial-marketplace-lead-management-instructions-https/test-my-flow.png)
 
-4. 从您在 MS Flow 中创建的流中粘贴 HTTP POST URL，其中显示*输入请求 URL*。
+4. 从您在电源自动功能中创建的流中粘贴 HTTP POST URL，其中显示*输入请求 URL*。
 
    ![粘贴 HTTP POST URL](./media/commercial-marketplace-lead-management-instructions-https/paste-http-post-url.png)
 
@@ -202,7 +205,10 @@ ms.locfileid: "80281589"
 1. 导航到产品 **/服务"产品/服务"设置**页面。
 2. 在"潜在顾客管理"部分下选择 **"连接**"。
 3. 在"连接详细信息"弹出窗口上，为**潜在顾客目标**选择**HTTPS 终结点**，然后从通过按照前面的步骤创建的流粘贴到**HTTPS 终结点 URL**字段中的 HTTP POST URL 中。
-4. 选择“保存”。**** 
+4. **联系电子邮件**- 为公司中应接收新潜在顾客的电子邮件通知的人员提供电子邮件。 您可以通过用分号分隔它们来提供多封电子邮件。
+5. 选择“确定”  。
+
+要确保已成功连接到潜在顾客目标，请单击验证按钮。 如果成功，您将在潜在顾客目标中具有测试潜在顾客。
 
 >[!Note] 
 >您必须完成配置产品/服务的其余部分并发布它，然后才能收到产品/服务的潜在顾客。
@@ -213,5 +219,5 @@ ms.locfileid: "80281589"
 
 ![连接详细信息](./media/commercial-marketplace-lead-management-instructions-https/connection-details.png)
 
-![连接详细信息](./media/commercial-marketplace-lead-management-instructions-https/connection-details-1.png)
+![连接详细信息](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
 

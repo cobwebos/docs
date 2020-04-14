@@ -8,57 +8,63 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: d6c1819366fede0b1e81e43bc92ed56af93b39fd
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 8b64a583c11e794c30e1de12eb66941874a25462
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81114962"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262208"
 ---
 # <a name="add-suggestions-or-autocomplete-to-your-azure-cognitive-search-application"></a>将建议或自动完成添加到 Azure 认知搜索应用程序
 
-本文介绍如何使用[建议](https://docs.microsoft.com/rest/api/searchservice/suggestions)和[自动完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete)功能生成一个功能强大的，支持“一边键入，一边搜索”行为的搜索框。
+此示例演示了支持"按类型搜索"行为的搜索框。 有两个功能，可以一起使用，也可以单独使用：
 
 + *建议*在键入时生成搜索结果，其中每个建议都是单个结果，或者索引中的搜索文档与您到目前为止键入的内容相匹配。 
 
 + *通过*"整理"单词或短语自动完成生成查询。 它不会返回结果，而是完成某个查询，然后你可以执行该查询来返回结果。 与建议一样，系统会根据索引中的匹配项预测查询中已完成的单词或短语。 服务不会提供返回索引中零个结果的查询。
 
-可以下载并运行 **DotNetHowToAutocomplete** 中的示例代码来评估这些功能。 示例代码针对使用 [NYCJobs 演示数据](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)填充的预生成索引。 NYCJobs 索引包含一个[建议器构造](index-add-suggesters.md)，必须通过该构造来使用建议或自动完成。 可以使用托管在沙盒服务中的已准备好的索引，或者使用 NYCJobs 示例解决方案中的数据加载器[填充自己的索引](#configure-app)。 
+示例代码在 C# 和 JavaScript 语言版本中演示建议和自动完成。 
 
-**DotNetHowToAutocomplete** 示例演示了 C# 和 JavaScript 语言版本的建议和自动完成。 C# 开发人员可以逐步运行一个使用 [Azure 认知搜索 .NET SDK](https://aka.ms/search-sdk) 的基于 ASP.NET MVC 的应用程序。 在 HomeController.cs 文件中可以找到发出自动完成和建议的查询调用的逻辑。 JavaScript 开发人员可在 IndexJavaScript.cshtml 中找到等效的查询逻辑，该文件包含对 [Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/) 的直接调用。 
+C# 开发人员可以逐步运行一个使用 [Azure 认知搜索 .NET SDK](https://aka.ms/search-sdk) 的基于 ASP.NET MVC 的应用程序。 在 HomeController.cs 文件中可以找到发出自动完成和建议的查询调用的逻辑。 
+
+JavaScript 开发人员可在 IndexJavaScript.cshtml 中找到等效的查询逻辑，该文件包含对 [Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/) 的直接调用。 
 
 对于这两个语言版本，前端用户体验基于 [jQuery UI](https://jqueryui.com/autocomplete/) 和 [XDSoft](https://xdsoft.net/jqplugins/autocomplete/) 库。 我们将使用这些库来生成支持建议和自动完成的搜索框。 在搜索框中收集的输入将与建议和自动完成操作（例如，在 HomeController.cs 或 IndexJavaScript.cshtml 中定义的建议和操作）配对。
 
-本练习将引导你完成以下任务：
-
-> [!div class="checklist"]
-> * 以 JavaScript 实现一个搜索输入框，并针对建议的匹配项或自动完成字词发出请求
-> * 在 C# 中，可在 HomeController.cs 中定义建议和自动完成操作
-> * 在 JavaScript 中，可直接调用 REST API 来提供相同的功能
-
 ## <a name="prerequisites"></a>先决条件
 
-Azure 认知搜索服务对于本练习是可选的，因为本解决方案使用一个托管已准备好的 NYCJobs 演示索引的实时沙盒服务。 若要在自己的搜索服务中运行此示例，请参阅[配置 NYC 作业索引](#configure-app)中的说明。
++ [Visual Studio](https://visualstudio.microsoft.com/downloads/)
 
-* [视觉工作室 2017，](https://visualstudio.microsoft.com/downloads/)任何版本. 示例代码和说明已在免费社区版上进行了测试。
+Azure 认知搜索服务是本练习的可选服务，因为解决方案使用托管服务和 NYCJobs 演示索引。 如果要在自己的搜索服务上生成此索引，请参阅[创建 NYC 作业索引](#configure-app)以查找说明。 否则，您可以使用现有服务和索引支持 JavaScript 客户端应用。
 
-* 下载 [DotNetHowToAutoComplete 示例](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)。
+<!-- The sample is comprehensive, covering suggestions, autocomplete, faceted navigation, and client-side caching. Review the readme and comments for a full description of what the sample offers. -->
 
-该示例非常全面，涵盖了建议、自动完成、分面导航和客户端缓存。 请查看自述文件和注释，以获取该示例提供的功能的完整说明。
+## <a name="download-files"></a>下载文件
+
+C# 和 JavaScript 开发人员的示例代码都可以在**Azure 示例/搜索点网络启动**的 GitHub 存储库的[DotNetToToAutoComplete 文件夹中](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)找到。
+
+该示例针对现有的演示搜索服务和预构建索引填充[了 NYCJobs 演示数据](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)。 NYCJobs 索引包含一个[建议器构造](index-add-suggesters.md)，必须通过该构造来使用建议或自动完成。
 
 ## <a name="run-the-sample"></a>运行示例
 
-1. 在 Visual Studio 中打开 **AutocompleteTutorial.sln**。 该解决方案包含一个与 NYC 作业演示索引连接的 ASP.NET MVC 项目。
+1. 在 Visual Studio 中打开 **AutocompleteTutorial.sln**。 该解决方案包含一个与现有搜索服务和索引连接ASP.NET MVC 项目。
 
-2. 按 F5 运行该项目，并在所选的浏览器中加载页面。
+1. 更新 NuGet 包：
+
+   1. 在解决方案资源管理器中，右键单击**DotNetTotoAutocomplete 并**选择 **"管理 NuGet 包**"。  
+   1. 选择 **"更新**"选项卡，选择所有包，然后单击 **"更新**"。 接受任何许可协议。 更新所有包可能需要多个传递。
+
+1. 按 F5 以运行项目并在浏览器中加载页面。
 
 顶部显示了一个用于选择 C# 或 JavaScript 的选项。 C# 选项从浏览器调用 HomeController，并使用 Azure 认知搜索 .NET SDK 检索结果。 
 
 JavaScript 选项直接从浏览器调用 Azure 认知搜索 REST API。 一般情况下，此选项的性能明显要好得多，因为它会使控制器与流保持隔离。 可以根据自己的需求和语言偏好选择适当的选项。 页面中提供了几个自动完成示例，为每个选项提供了一些指导。 每个示例包含了一些可供尝试的建议示例文本。  
 
+![示例启动页](media/search-autocomplete-tutorial/startup-page.png "本地主机中的启动页示例")
+
 请尝试在每个搜索框中键入几个字母，以查看结果。
 
-## <a name="search-box"></a>搜索框
+## <a name="query-inputs"></a>查询输入
 
 对于 C# 和 JavaScript 版本，搜索框实现是完全相同的。 
 
@@ -229,7 +235,7 @@ Autocomplete 函数采用搜索字词输入。 该方法创建 [AutoCompletePara
 
 ## <a name="javascript-example"></a>JavaScript 示例
 
-自动完成和建议的 Javascript 实现使用 URI 作为源指定索引与操作，以此调用 REST API。 
+自动完成和建议的 JavaScript 实现调用 REST API，使用 URI 作为源来指定索引和操作。 
 
 若要查看 JavaScript 实现，请打开 **IndexJavaScript.cshtml**。 请注意，jQuery UI Autocomplete 函数还用于搜索框，它会收集搜索字词输入，并对 Azure 认知搜索发出异步调用，以检索建议的匹配项或已完成的字词。 
 
@@ -287,7 +293,7 @@ var autocompleteUri = "https://" + searchServiceName + ".search.windows.net/inde
 
 <a name="configure-app"></a>
 
-## <a name="configure-nycjobs-to-run-on-your-service"></a>将 NYCJobs 配置为在你的服务中运行
+## <a name="create-an-nycjobs-index"></a>创建 NYC 作业索引
 
 到目前为止，你一直在使用托管的 NYCJobs 演示索引。 若要全面深入到所有代码（包括索引），请遵照这些说明在你自己的搜索服务中创建并加载索引。
 
@@ -318,4 +324,3 @@ var autocompleteUri = "https://" + searchServiceName + ".search.windows.net/inde
 > [在](https://docs.microsoft.com/rest/api/searchservice/autocomplete)
 > 创建索引 REST API 上自动完成 REST API[建议 REST API](https://docs.microsoft.com/rest/api/searchservice/suggestions)
 > [分面索引属性](https://docs.microsoft.com/rest/api/searchservice/create-index)
-

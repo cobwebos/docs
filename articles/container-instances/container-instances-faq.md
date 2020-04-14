@@ -3,13 +3,13 @@ title: 常见问题
 description: 有关 Azure 容器实例服务的常见问题解答
 author: dkkapur
 ms.topic: article
-ms.date: 01/07/2020
-ms.openlocfilehash: 4a3fb4c1818d86f7fe2913790fd9e573c630cbfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/10/2020
+ms.openlocfilehash: 8730dcb24af61730d7f93ea37a53cf87435eb9f9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247171"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261612"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>有关 Azure 容器实例的常见问题解答
 
@@ -43,9 +43,9 @@ ms.locfileid: "79247171"
 
 #### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 和客户端基础映像（预览版）
 
-* [纳米服务器](https://hub.docker.com/_/microsoft-windows-nanoserver) `1809`： ，`10.0.17763.x`
-* [Windows 服务器核心](https://hub.docker.com/_/microsoft-windows-servercore)`ltsc2019` `1809`： ， ，`10.0.17763.x`
-* [窗口](https://hub.docker.com/_/microsoft-windows) `1809`： ，`10.0.17763.x` 
+* [纳米服务器](https://hub.docker.com/_/microsoft-windows-nanoserver) `1809`：`10.0.17763.914`或更早
+* [Windows 服务器核心](https://hub.docker.com/_/microsoft-windows-servercore)： `ltsc2019`、 、`1809`或`10.0.17763.914`更早
+* [窗口](https://hub.docker.com/_/microsoft-windows) `1809`：`10.0.17763.914`或更早
 
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>应在容器中使用哪个 .NET 或 .NET Core 映像层？ 
 

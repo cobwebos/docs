@@ -4,14 +4,14 @@ description: 了解 Azure Cosmos DB 的 GROUP BY 子句。
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 04/10/2020
 ms.author: tisande
-ms.openlocfilehash: e41e81457421bfe27e3c0313fc06e39e6df4cdce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a3cbbafc066747b62f79934f2cd12301aa1ba17
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73819109"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261595"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 GROUP BY 子句
 
@@ -31,7 +31,7 @@ GROUP BY 子句按照一个或多个指定属性的值来拆分查询的结果�
         | <scalar_expression_list>, <scalar_expression>
 ```  
 
-## <a name="arguments"></a>自变量
+## <a name="arguments"></a>参数
 
 - `<scalar_expression_list>`
 
@@ -52,6 +52,12 @@ GROUP BY 子句按照一个或多个指定属性的值来拆分查询的结果�
 - 别名属性或别名系统函数（在 SELECT 子句中，别名仍然是允许的）
 - 子查询
 - 聚合系统函数（在 SELECT 子句中，仍然允许这些函数）
+
+不支持具有聚合系统函数的查询和具有 子`GROUP BY`查询的查询。 例如，不支持以下查询：
+
+```sql
+SELECT COUNT(UniqueLastNames) FROM (SELECT AVG(f.age) FROM f GROUP BY f.lastName) AS UniqueLastNames
+```
 
 ## <a name="examples"></a>示例
 
@@ -173,6 +179,6 @@ GROUP BY ARRAY_CONTAINS(f.tags, {name: 'orange'}), f.version BETWEEN 0 AND 2
 
 ## <a name="next-steps"></a>后续步骤
 
-- [开始](sql-query-getting-started.md)
+- [入门](sql-query-getting-started.md)
 - [选择子句](sql-query-select.md)
 - [聚合函数](sql-query-aggregates.md)

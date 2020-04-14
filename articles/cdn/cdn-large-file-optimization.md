@@ -3,7 +3,7 @@ title: 通过 Azure CDN 优化大型文件下载
 description: 本文介绍如何优化大型文件下载。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2018
-ms.author: magattus
-ms.openlocfilehash: 4fe72985a799595908a0ff6bceb1a73dca823c8f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 28b3c4faf62bcd9f9495810927ece03e2dadc1fc
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593786"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260524"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>通过 Azure CDN 优化大型文件下载
 
@@ -111,7 +111,7 @@ CDN 会在收到区块后进行缓存。 无需在 CDN 缓存上缓存整个文�
 |    | 常规 Web | 大型文件优化 
 --- | --- | --- 
 缓存：正 <br> HTTP 200、203、300、 <br> 301、302 和 410 | 7 天 |1 天  
-缓存：负 <br> HTTP 204、305、404 <br> 和 405 | 无 | 1 秒 
+缓存：负 <br> HTTP 204、305、404 <br> 和 405 | None | 1 秒 
 
 ### <a name="deal-with-origin-failure"></a>处理源故障
 

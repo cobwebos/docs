@@ -3,7 +3,7 @@ title: 在 Azure 虚拟机上部署 Oracle 应用的体系结构 |微软文档
 description: 在具有 Azure 或 Oracle 云基础架构 （OCI） 中的数据库的 Microsoft Azure 虚拟机上部署 Oracle 应用程序的应用程序体系结构，包括电子商务套件、JD Edwards EnterpriseOne 和 PeopleSoft。
 services: virtual-machines-linux
 documentationcenter: ''
-author: romitgirdhar
+author: mimckitt
 manager: gwallace
 tags: ''
 ms.service: virtual-machines
@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/18/2019
-ms.author: rogirdh
+ms.author: mimckitt
 ms.custom: ''
-ms.openlocfilehash: b183a4d4922c89f60ccb19b3e3e978216f33cc9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 20e751b322d06ac176ee5c634d92e0efe874baac
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70100084"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263295"
 ---
 # <a name="architectures-to-deploy-oracle-applications-on-azure"></a>在 Azure 上部署 Oracle 应用程序的体系结构
 

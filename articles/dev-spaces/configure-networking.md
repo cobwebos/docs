@@ -5,12 +5,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 description: 描述在 Azure 库伯奈斯服务中运行 Azure 开发空间的网络要求
 keywords: Azure 开发空间、开发空间、Docker、库伯奈斯、Azure、AKS、Azure 库伯奈斯服务、容器、CNI、kubenet、SDN、网络
-ms.openlocfilehash: 82d046aa36fe9caf6337aa7f58ca0db525062283
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e344576caf276ae7cb5fe00395c84810a4e7d32
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240575"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262037"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>为不同网络拓扑中的 Azure 开发空间配置网络
 
@@ -20,15 +20,15 @@ Azure 开发空间在具有默认网络配置的 Azure 库伯奈斯服务 （AKS
 
 ## <a name="virtual-network-or-subnet-configurations"></a>虚拟网络或子网配置
 
-AKS 群集可能具有不同的虚拟网络或子网配置，以限制 AKS 群集的入口或出口流量。 例如，群集可能落后于防火墙（如 Azure 防火墙），或者您可以使用网络安全组或自定义角色来限制网络流量。
+AKS 群集可能具有不同的虚拟网络或子网配置，以限制 AKS 群集的入口或出口流量。 例如，群集可能落后于防火墙（如 Azure 防火墙），或者您可以使用网络安全组或自定义角色来限制网络流量。 您可以在[GitHub 上的 Azure 开发人员空间示例存储库][sample-repo]中找到一个示例网络配置。
 
-Azure 开发空间对*入口和出口*网络流量以及*仅入口*流量有某些要求。 如果在 AKS 群集上使用 Azure 开发人员空间，其虚拟网络或子网配置限制 AKS 群集的流量，则必须仅遵循以下入口和入口和出口流量要求，以便 Azure 开发空间功能正常。
+Azure 开发空间对*入口和出口*网络流量以及*仅入口*流量有某些要求。 如果在 AKS 群集上使用 Azure 开发人员空间，其虚拟网络或子网配置限制 AKS 群集的流量，则必须仅遵循以下入口和入口流量要求，以便 Azure 开发空间正常运行。
 
 ### <a name="ingress-and-egress-network-traffic-requirements"></a>入口和出口网络流量要求
 
 Azure 开发空间需要以下 FQDN 的入口和出口流量：
 
-| FQDN                       | 端口       | 用途      |
+| FQDN                       | 端口       | 使用      |
 |----------------------------|------------|----------|
 | cloudflare.docker.com      | HTTPS：443 | 为 Azure 开发空间提取 Docker 映像 |
 | gcr.io                     | HTTPS：443 | 为 Azure 开发空间拉舵映像 |
@@ -76,7 +76,7 @@ Azure 开发空间可以选择公开在 AKS 上运行的服务的终结点。 �
 要配置终结点选项，在群集上启用 Azure 开发空间时，请使用 *-e*或 *--终结点*。 例如：
 
 > [!NOTE]
-> 终结点选项要求您运行 Azure CLI 版本 2.2.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+> 终结点选项要求您运行 Azure CLI 版本 2.2.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 ```azurecli
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS -e private
@@ -109,4 +109,5 @@ Azure 开发空间使用客户端工具（如 Azure 开发空间 CLI 扩展、�
 [endpoint-options]: #using-different-endpoint-options
 [traefik-ingress]: how-to/ingress-https-traefik.md
 [nginx-ingress]: how-to/ingress-https-nginx.md
+[sample-repo]: https://github.com/Azure/dev-spaces/tree/master/advanced%20networking
 [team-quickstart]: quickstart-team-development.md

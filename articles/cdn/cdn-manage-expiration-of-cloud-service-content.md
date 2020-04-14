@@ -3,7 +3,7 @@ title: 管理 Azure CDN 中 Web 内容的过期问题 | Microsoft Docs
 description: 了解如何管理 Azure CDN 中 Azure Web 应用/云服务、ASP.NET 或 IIS 内容的过期问题。
 services: cdn
 documentationcenter: .NET
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: bef53fcc-bb13-4002-9324-9edee9da8288
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
-ms.author: magattus
-ms.openlocfilehash: a701c332659181081184906a73826b7137d8c49c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 4598e6cee6ffbaaeb2a99727842fcd17fe0046c7
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593714"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260558"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>在 Azure CDN 中管理 Web 内容的到期时间
 > [!div class="op_single_selector"]
@@ -66,21 +66,21 @@ ms.locfileid: "67593714"
 
    此全局缓存规则设置为期一小时的缓存持续时间，并会影响发送到终结点的所有请求。 它会替代由终结点指定的源服务器发送的所有 `Cache-Control` 或 `Expires` HTTP 标头。   
 
-1. 选择“保存”。****
+1. 选择“保存”。 
 
 **使用自定义缓存规则设置 Web 服务器文件的 Cache-Control 标头：**
 
 1. 在“自定义缓存规则”**** 下，创建两个匹配条件：
 
-     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于第一个匹配条件，将“匹配条件”**** 设置为“路径”****，对于“匹配值”输入 `/webfolder1/*`。**** 将“缓存行为”**** 设置为“替代”****，并在“小时”**** 框中输入 4。
+     a. 对于第一个匹配条件，将“匹配条件”**** 设置为“路径”****，对于“匹配值”输入 `/webfolder1/*`。**** 将“缓存行为”**** 设置为“替代”****，并在“小时”**** 框中输入 4。
 
-     b.保留“数据库类型”设置，即设置为“共享”。 对于第二个匹配条件，将“匹配条件”**** 设置为“路径”****，对于“匹配值”输入 `/webfolder1/file1.txt`。**** 将“缓存行为”**** 设置为“替代”****，并在“小时”**** 框中输入 2。
+     b. 对于第二个匹配条件，将“匹配条件”**** 设置为“路径”****，对于“匹配值”输入 `/webfolder1/file1.txt`。**** 将“缓存行为”**** 设置为“替代”****，并在“小时”**** 框中输入 2。
 
     ![CDN 自定义缓存规则示例](./media/cdn-manage-expiration-of-cloud-service-content/cdn-custom-caching-rules-example.png)
 
     第一个自定义缓存规则为终结点指定的源服务器上的 `/webfolder1` 文件夹中的所有文件设置为期四小时的缓存持续时间。 第二个规则仅替代 `file1.txt` 文件的第一个规则，并且为它设置为期两小时的缓存持续时间。
 
-1. 选择“保存”。****
+1. 选择“保存”。 
 
 
 ## <a name="setting-cache-control-headers-by-using-configuration-files"></a>使用配置文件设置 Cache-Control 标头

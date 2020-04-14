@@ -2,7 +2,7 @@
 title: Azure 上的 Oracle 数据库的参考体系结构 |微软文档
 description: 引用用于在 Microsoft Azure 虚拟机上运行 Oracle 数据库企业版数据库的体系结构。
 services: virtual-machines-linux
-author: romitgirdhar
+author: mimckitt
 manager: gwallace
 tags: ''
 ms.service: virtual-machines
@@ -10,14 +10,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2019
-ms.author: rogirdh
+ms.author: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 235482f5d44877e5c4e47aed4d7eaf2baea5c3fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1dc677ded1e13a64c082d49140fa0de69c0ed9d4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75560328"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263261"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 上的 Oracle 数据库企业版的参考体系结构
 
@@ -177,7 +177,7 @@ Oracle 数据防护可用于使用系统管理、用户定义和复合分片方�
 
 ![使用可用性区域与数据保护代理 - FSFO 进行 Oracle 数据库分片处理](./media/oracle-reference-architecture/oracledb_dg_sh_az.png)
 
-虽然系统管理的分片是最容易配置和管理的，但用户定义的分片或复合分片非常适合数据和应用程序是地理分布的情况，或者需要控制复制的情况每个分片。 
+虽然系统管理的分片是最容易配置和管理的，但用户定义的分片或复合分片非常适合数据和应用程序是地理分布的情况，或者需要控制每个分片的复制的情况。 
 
 在前面的体系结构中，复合分片用于地理分布数据并水平横向横向横向扩展应用程序层。 复合分片是系统管理和用户定义的分片的组合，因此提供了这两种方法的好处。 在前面的方案中，数据首先分片跨多个分片空间分隔的区域。 然后，数据通过在分片空间中的多个分片上的一致哈希进一步分区。 每个分片空间包含多个分片组。 每个分片组有多个分片，是复制的"单元"，在这种情况下。 每个分片组都包含分片空间中的所有数据。 分片组 A1 和 B1 是主分片组，而分片组 A2 和 B2 是备用。 您可以选择将单个分片作为复制单元，而不是分片组。
 

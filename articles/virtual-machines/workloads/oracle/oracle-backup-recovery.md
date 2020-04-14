@@ -4,7 +4,7 @@ description: 了解怎样在 Azure 环境中备份和恢复 Oracle Database 12c 
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
-manager: gwallace
+manager: mimckitt
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogirdh
-ms.openlocfilehash: bae7e53a316fa6ca3158639cc551a0a3de5cb952
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 9e2fcc9533c183a356b19c369777e1319ca7f9ae
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536915"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263193"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上备份和恢复 Oracle Database 12c 数据库
 
@@ -286,11 +286,11 @@ ms.locfileid: "79536915"
 
     ![恢复服务保管库“备份”页](./media/oracle-backup-recovery/recovery_service_04.png)
 
-5.  在“备份目标”边栏选项卡上，使用默认值“Azure”和“虚拟机”************。 单击“确定”。
+5.  在“备份目标”边栏选项卡上，使用默认值“Azure”和“虚拟机”************。 单击“确定”。 
 
     ![恢复服务保管库“详细信息”页](./media/oracle-backup-recovery/recovery_service_05.png)
 
-6.  对于“备份策略”，使用“DefaultPolicy”或选择“创建新策略”************。 单击“确定”。
+6.  对于“备份策略”，使用“DefaultPolicy”或选择“创建新策略”************。 单击“确定”。 
 
     ![恢复服务保管库“备份策略详细信息”页](./media/oracle-backup-recovery/recovery_service_06.png)
 

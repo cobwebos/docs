@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 12aeea8393a00d7d2662c826f847265bdbdc0119
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 48a83fad3395f6ecf06fb1f1ba95aa1b06a53431
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75442714"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259130"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>如何将 Azure API 管理与 Azure Application Insights 集成
 
@@ -37,7 +37,7 @@ Azure API 管理可以轻松地与 Azure Application Insights 集成（一个可
 2. 单击 **" 添加**"。  
     ![App Insights 创建](media/api-management-howto-app-insights/apim-app-insights-instance-2.png)  
 3. 填写窗体。 选择“常规”作为“应用程序类型”。********
-4. 单击 **“创建”**。
+4. 单击“创建”。 
 
 ## <a name="create-a-connection-between-azure-application-insights-and-azure-api-management-service-instance"></a>在 Azure Application Insights 与 Azure API 管理服务实例之间创建连接
 
@@ -46,12 +46,12 @@ Azure API 管理可以轻松地与 Azure Application Insights 集成（一个可
 3. 单击 **" 添加**"。  
     ![App Insights 记录器](media/api-management-howto-app-insights/apim-app-insights-logger-1.png)  
 4. 选择前面创建的 **Application Insights** 实例并提供简短说明。
-5. 单击 **“创建”**。
+5. 单击“创建”。 
 6. 你刚刚创建了一个具有检测密钥的 Azure Application Insights 记录器。 该记录器现在应已显示在列表中。  
     ![App Insights 记录器](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
 
 > [!NOTE]
-> 在后台，将在 API 管理实例中创建了一个 [Logger](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger/createorupdate) 实体，其中包含 Application Insights 实例的检测密钥。
+> 在后台，将在 API 管理实例中创建了一个 [Logger](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate) 实体，其中包含 Application Insights 实例的检测密钥。
 
 ## <a name="enable-application-insights-logging-for-your-api"></a>为 API 启用 Application Insights 日志记录
 
@@ -64,15 +64,15 @@ Azure API 管理可以轻松地与 Azure Application Insights 集成（一个可
 6. 选中“启用”框。****
 7. 在“目标”下拉列表中选择附加的记录器。****
 8. 输入 **100** 作为“采样率”，并勾选“始终记录错误”复选框。********
-9. 单击“保存”。****
+9. 单击“ **保存**”。
 
 > [!WARNING]
 > 重写“正文的第一个字节”字段中的默认值“0”可能会显著降低 API 的性能********。
 
 > [!NOTE]
-> 在后台，将在 API 级别创建一个名为“applicationinsights”的 [Diagnostic](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/diagnostic/createorupdate) 实体。
+> 在后台，将在 API 级别创建一个名为“applicationinsights”的 [Diagnostic](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/diagnostic/createorupdate) 实体。
 
-| 设置名称                        | 值类型                        | 描述                                                                                                                                                                                                                                                                                                                                      |
+| 设置名                        | 值类型                        | 说明                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 启用                              | boolean                           | 指定是否要启用此 API 的日志记录。                                                                                                                                                                                                                                                                                                |
 | 目标                         | Azure Application Insights 记录器 | 指定要使用的 Azure Application Insights 记录器                                                                                                                                                                                                                                                                                           |

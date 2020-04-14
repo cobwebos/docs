@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/02/2019
-ms.openlocfilehash: c9c69bb475c943003f78a69df1142653c3d5249e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c6a3ac701442fb30e471bcc2c8f317e3988980f7
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288370"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261969"
 ---
 # <a name="microsoft-commercial-marketplace-roadmap"></a>微软商业市场路线图
 
@@ -29,7 +29,7 @@ ms.locfileid: "80288370"
 
 * [市场 + CSP 更新博客](https://aka.ms/marketplacemarchupdateblog)
 * [将产品发布到 CSP 通道 （ISV）](https://aka.ms/publishtocsp)
-* [转售市场产品 （CSP）](hhttps://aka.ms/marketplaceincsp)
+* [转售市场产品 （CSP）](https://aka.ms/marketplaceincsp)
 * [标准合同](https://aka.ms/standardcontract)
 * [SaaS 履行 API](https://aka.ms/saasapiv2)
 * [市场地理和货币](https://aka.ms/marketplacegeos)

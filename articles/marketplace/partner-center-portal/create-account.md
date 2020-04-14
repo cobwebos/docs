@@ -7,16 +7,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 03/10/2020
-ms.openlocfilehash: 82caf46905c0b76deae524d8b172d70b436361d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c635d285f83e8e9c4c5547a9ee983686c507819
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281351"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261731"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>在合作伙伴中心创建商业市场帐户
 
-要将优惠发布到[Azure 应用商店](https://azuremarketplace.microsoft.com/)或[AppSource，](https://appsource.microsoft.com/)您需要在合作伙伴中心的商业应用商店程序中创建帐户。 在本文中，我们将介绍如何创建合作伙伴中心帐户以及如何向商业市场计划添加新发布商。
+要将优惠发布到[Azure 应用商店](https://azuremarketplace.microsoft.com/)或[Microsoft AppSource，](https://appsource.microsoft.com/)您需要在合作伙伴中心的商业市场程序中创建一个帐户。 在本文中，我们将介绍如何创建合作伙伴中心帐户以及如何向商业市场计划添加新发布商。
 
 >[!IMPORTANT]
 >如果您在[云合作伙伴门户 （CPP）](https://cloudpartner.azure.com)中具有已移动到合作伙伴中心的帐户，则无需创建新帐户。 有关详细信息[，请参阅从 CPP 移动的发布者](#publishers-moving-from-cpp)。
@@ -75,7 +75,7 @@ ms.locfileid: "80281351"
 
 注册后，您将进入"商业市场概述"页面。 **商业市场**显示在左侧导航栏中。 如果选择 **"设置** > **合作伙伴设置** > **程序"，** 您将看到商业市场已列为已注册市场。
 
-感谢您在合作伙伴中心创建商业市场帐户！ 有关帮助，请参阅[商业市场概述](./commercial-marketplace-overview.md)。 有关添加发布商的帮助，请参阅[将新发布商添加到商业市场计划](#add-new-publishers-to-the-commercial-marketplace-program)。
+感谢您在合作伙伴中心创建商业市场帐户！ 有关帮助，请参阅[商业市场概述](./commercial-marketplace-overview.md)。 有关添加发布商的帮助，请参阅[向商业市场添加新发布商](#add-new-publishers-to-the-commercial-marketplace-program)。
 
 ## <a name="create-an-account-using-existing-microsoft-partner-center-enrollments"></a>使用现有的 Microsoft 合作伙伴中心注册创建帐户
 
@@ -119,7 +119,7 @@ ms.locfileid: "80281351"
 
 注册后，您将进入"商业市场概述"页面。 **商业市场**显示在左侧导航栏中。 如果选择 **"设置** > **合作伙伴设置** > **程序"，** 您将看到商业市场已列为已注册市场。
 
-感谢您在合作伙伴中心创建帐户！ 有关帮助，请参阅[商业市场概述](./commercial-marketplace-overview.md)。 有关添加发布商的帮助，请参阅[将新发布商添加到商业市场计划](#add-new-publishers-to-the-commercial-marketplace-program)。
+感谢您在合作伙伴中心创建帐户！ 有关帮助，请参阅[商业市场概述](./commercial-marketplace-overview.md)。 有关添加发布商的帮助，请参阅[向商业市场添加新发布商](#add-new-publishers-to-the-commercial-marketplace-program)。
 
 ### <a name="enrolled-in-a-developer-program"></a>注册了开发人员计划
 
@@ -143,7 +143,7 @@ ms.locfileid: "80281351"
 
 注册后，您将进入"商业市场概述"页面。 **商业市场**显示在左侧导航栏中。 如果选择 **"设置** > **开发人员设置** > **程序"，** 您将看到商业市场已列为已注册市场。
 
-感谢您在合作伙伴中心创建帐户！ 有关帮助，请参阅[商业市场概述](./commercial-marketplace-overview.md)。 有关添加发布商的帮助，请参阅[将新发布商添加到商业市场计划](#add-new-publishers-to-the-commercial-marketplace-program)。
+感谢您在合作伙伴中心创建帐户！ 有关帮助，请参阅[商业市场概述](./commercial-marketplace-overview.md)。 有关添加发布商的帮助，请参阅[向商业市场添加新发布商](#add-new-publishers-to-the-commercial-marketplace-program)。
 
 ## <a name="publishers-moving-from-cpp"></a>从 CPP 转移的发布者
 
@@ -170,7 +170,7 @@ ms.locfileid: "80281351"
 4. 选择要关联到发布者的 MPN ID。
 5. 更新窗体上的**发布者详细信息**。
 
-   1. **发布者名称**：将在 Azure 应用商店或 AppSource 中随产品/服务一起显示的名称。
+   1. **发布者名称**：将在商业市场随产品/服务显示在其中的名称。
    1. **发布者 ID**：合作伙伴中心用于唯一标识发布者标识符。 此字段的默认值映射到系统中现有的唯一且唯`PublisherID`一的，无法重复使用，因此需要更新此字段。
    1. **联系信息**：必要时更新联系信息。
 

@@ -1,0 +1,312 @@
+---
+author: IEvangelist
+ms.service: cognitive-services
+ms.topic: include
+ms.date: 04/13/2020
+ms.author: dapine
+ms.openlocfilehash: cd7a8c0104a903f49c5ce8ae1e1a561d53c0fbf5
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81266632"
+---
+## <a name="prerequisites"></a>先决条件
+
+本文假定您具有 Azure 帐户和语音服务订阅。 如果您没有帐户和订阅，[请免费试用语音服务](../../../get-started.md)。
+
+## <a name="install-the-speech-sdk"></a>安装语音 SDK
+
+在可以执行任何操作之前，您需要安装语音 SDK。 根据您的平台，请按照语音 SDK 文章的<a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">"获取语音<span class="docon docon-navigate-external x-hidden-focus"></span>SDK"</a>部分下的说明进行操作。
+
+## <a name="import-dependencies"></a>导入依赖项
+
+要运行本文中的示例，请在 python 代码`import`文件的顶部包括以下语句。
+
+```python
+import os
+import azure.cognitiveservices.speech as speechsdk
+```
+
+## <a name="sensitive-data-and-environment-variables"></a>敏感数据和环境变量
+
+本文中的示例源代码取决于用于存储敏感数据的环境变量，例如语音资源订阅密钥和地区。 python 代码文件包含从主机环境变量（即`SPEECH__SUBSCRIPTION__KEY`和`SPEECH__SERVICE__REGION`） 分配的两个值。 这两个变量都位于全局作用域中，因此可在代码文件的函数定义中访问它们。 有关环境变量的详细信息，请参阅[环境变量和应用程序配置](../../../../cognitive-services-security.md#environment-variables-and-application-configuration)。
+
+```python
+speech_key, service_region = os.environ['SPEECH__SUBSCRIPTION__KEY'], os.environ['SPEECH__SERVICE__REGION']
+```
+
+## <a name="create-a-speech-translation-configuration"></a>创建语音翻译配置
+
+要使用语音 SDK 调用语音服务，您需要创建 一个[`SpeechTranslationConfig`][config]。 此类包括有关订阅的信息，例如密钥和相关区域、终结点、主机或授权令牌。
+
+> [!TIP]
+> 无论您执行语音识别、语音合成、翻译还是意图识别，您始终都会创建配置。
+
+有几种方法可以初始化 ： [`SpeechTranslationConfig`][config]
+
+* 使用订阅：在密钥和相关区域中传递。
+* 使用终结点：在语音服务终结点中传递。 密钥或授权令牌是可选的。
+* 与主机：在主机地址中传递。 密钥或授权令牌是可选的。
+* 使用授权令牌：在授权令牌和相关区域中传递。
+
+让我们来看看如何使用键和地区创建 。 [`SpeechTranslationConfig`][config] 请参阅[区域支持](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk)页以查找区域标识符。
+
+```python
+from_language, to_language = 'en-US', 'de'
+
+def translate_speech_to_text():
+    translation_config = speechsdk.translation.SpeechTranslationConfig(
+            subscription=speech_key, region=service_region)
+```
+
+## <a name="change-source-language"></a>更改源语言
+
+语音转换的一个常见任务是指定输入（或源）语言。 让我们来看看如何将输入语言更改为意大利语。 在代码中，与实例交互[`SpeechTranslationConfig`][config]，将分配给属性`speech_recognition_language`。
+
+```python
+def translate_speech_to_text():
+    translation_config = speechsdk.translation.SpeechTranslationConfig(
+            subscription=speech_key, region=service_region)
+
+    # Source (input) language
+    translation_config.speech_recognition_language = from_language
+```
+
+属性[`speech_recognition_language`][recognitionlang]需要语言区域设置格式字符串。 您可以在受支持[区域设置/语言](../../../language-support.md)列表中的 **"区域设置"** 列中提供任何值。
+
+## <a name="add-translation-language"></a>添加翻译语言
+
+语音转换的另一个常见任务是指定目标翻译语言，至少需要一种，但支持多个语言。 在以下代码段中，法语和德语作为翻译语言的目标。
+
+```python
+def translate_speech_to_text():
+    translation_config = speechsdk.translation.SpeechTranslationConfig(
+            subscription=speech_key, region=service_region)
+
+    translation_config.speech_recognition_language = "it-IT"
+
+    # Translate to languages. See, https://aka.ms/speech/sttt-languages
+    translation_config.add_target_language("fr")
+    translation_config.add_target_language("de")
+```
+
+每次调用[`add_target_language`][addlang]时，都会指定一种新的目标翻译语言。 换句话说，当从源语言中识别语音时，每个目标翻译都可以作为结果翻译操作的一部分。
+
+## <a name="initialize-a-translation-recognizer"></a>初始化翻译识别器
+
+创建 后，下一[`SpeechTranslationConfig`][config]步是初始化 。 [`TranslationRecognizer`][recognizer] 初始化 时[`TranslationRecognizer`][recognizer]，需要传递 您的`translation_config`。 配置对象提供语音服务验证请求所需的凭据。
+
+如果您使用设备的默认麦克风识别语音，则[`TranslationRecognizer`][recognizer]如下所示：
+
+```python
+def translate_speech_to_text():
+    translation_config = speechsdk.translation.SpeechTranslationConfig(
+            subscription=speech_key, region=service_region)
+
+    translation_config.speech_recognition_language = from_language
+    translation_config.add_target_language(to_language)
+
+    recognizer = speechsdk.translation.TranslationRecognizer(
+            translation_config=translation_config)
+```
+
+如果要指定音频输入设备，则需要在初始化 时[`AudioConfig`][audioconfig]`audio_config`[`TranslationRecognizer`][recognizer]创建 并提供 参数。
+
+> [!TIP]
+> [了解如何获取音频输入设备的设备 ID。](../../../how-to-select-audio-input-devices.md)
+
+首先，您将引用对象`AudioConfig`如下：
+
+```python
+def translate_speech_to_text():
+    translation_config = speechsdk.translation.SpeechTranslationConfig(
+            subscription=speech_key, region=service_region)
+
+    translation_config.speech_recognition_language = from_language
+    for lang in to_languages:
+        translation_config.add_target_language(lang)
+
+    audio_config = speechsdk.audio.AudioConfig(use_default_microphone=True)
+    recognizer = speechsdk.translation.TranslationRecognizer(
+            translation_config=translation_config, audio_config=audio_config)
+```
+
+如果要提供音频文件而不是使用麦克风，仍需要提供`audioConfig`。 但是，当您创建 一[`AudioConfig`][audioconfig]个 时，而不是`use_default_microphone=True`使用 调用 调用，`filename="path-to-file.wav"`您将调用`filename`并提供参数。
+
+```python
+def translate_speech_to_text():
+    translation_config = speechsdk.translation.SpeechTranslationConfig(
+            subscription=speech_key, region=service_region)
+
+    translation_config.speech_recognition_language = from_language
+    for lang in to_languages:
+        translation_config.add_target_language(lang)
+
+    audio_config = speechsdk.audio.AudioConfig(filename="path-to-file.wav")
+    recognizer = speechsdk.translation.TranslationRecognizer(
+            translation_config=translation_config, audio_config=audio_config)
+```
+
+## <a name="translate-speech"></a>翻译语音
+
+要翻译语音，语音 SDK 依赖于麦克风或音频文件输入。 语音识别在语音转换之前发生。 所有对象都初始化后，调用识别一次函数并获取结果。
+
+```python
+import os
+import azure.cognitiveservices.speech as speechsdk
+
+speech_key, service_region = os.environ['SPEECH__SERVICE__KEY'], os.environ['SPEECH__SERVICE__REGION']
+from_language, to_languages = 'en-US', 'de'
+
+def translate_speech_to_text():
+    translation_config = speechsdk.translation.SpeechTranslationConfig(
+            subscription=speech_key, region=service_region)
+
+    translation_config.speech_recognition_language = from_language
+    translation_config.add_target_language(to_language)
+
+    recognizer = speechsdk.translation.TranslationRecognizer(
+            translation_config=translation_config)
+    
+    print('Say something...')
+    result = recognizer.recognize_once()
+    print(get_result_text(reason=result.reason, result=result))
+
+def get_result_text(reason, result):
+    reason_format = {
+        speechsdk.ResultReason.TranslatedSpeech:
+            f'RECOGNIZED "{from_language}": {result.text}\n' +
+            f'TRANSLATED into "{to_language}"": {result.translations[to_language]}',
+        speechsdk.ResultReason.RecognizedSpeech: f'Recognized: "{result.text}"',
+        speechsdk.ResultReason.NoMatch: f'No speech could be recognized: {result.no_match_details}',
+        speechsdk.ResultReason.Canceled: f'Speech Recognition canceled: {result.cancellation_details}'
+    }
+    return reason_format.get(reason, 'Unable to recognize speech')
+
+translate_speech_to_text()
+```
+
+有关语音到文本的详细信息，请参阅[语音识别的基础知识](../../../speech-to-text-basics.md)。
+
+## <a name="synthesize-translations"></a>合成翻译
+
+在语音识别和翻译成功后，结果包含字典中的所有翻译。 字典[`translations`][translations]键是目标翻译语言，值是翻译文本。 可识别的语音可以翻译，然后以不同的语言（语音到语音）合成。
+
+### <a name="event-based-synthesis"></a>基于事件的合成
+
+对象`TranslationRecognizer`公开事件`Synthesizing`。 该事件多次触发，并提供从转换识别结果中检索合成音频的机制。 如果要翻译成多种语言，请参阅[手动合成](#manual-synthesis)。 通过分配 分配 和[`voice_name`][voicename]为`Synthesizing`事件提供事件处理程序来指定合成语音，获取音频。 下面的示例将翻译的音频保存为 *.wav*文件。
+
+> [!IMPORTANT]
+> 基于事件的合成仅适用于单个翻译，**不**添加多个目标翻译语言。 此外，[`voice_name`][voicename]应与目标翻译语言的语言相同，例如;`"de"`可以映射到`"de-DE-Hedda"`。
+
+```python
+import os
+import azure.cognitiveservices.speech as speechsdk
+
+speech_key, service_region = os.environ['SPEECH__SERVICE__KEY'], os.environ['SPEECH__SERVICE__REGION']
+from_language, to_language = 'en-US', 'de'
+
+def translate_speech_to_text():
+    translation_config = speechsdk.translation.SpeechTranslationConfig(
+            subscription=speech_key, region=service_region)
+
+    translation_config.speech_recognition_language = from_language
+    translation_config.add_target_language(to_language)
+
+    # See: https://aka.ms/speech/sdkregion#standard-and-neural-voices
+    translation_config.voice_name = "de-DE-Hedda"
+
+    recognizer = speechsdk.translation.TranslationRecognizer(
+            translation_config=translation_config)
+
+    def synthesis_callback(evt):
+        size = len(evt.result.audio)
+        print(f'Audio synthesized: {size} byte(s) {"(COMPLETED)" if size == 0 else ""}')
+
+        if size > 0:
+            file = open('translation.wav', 'wb+')
+            file.write(evt.result.audio)
+            file.close()
+
+    recognizer.synthesizing.connect(synthesis_callback)
+
+    print(f'Say something in "{from_language}" and we\'ll translate into "{to_language}".')
+
+    result = recognizer.recognize_once()
+    print(get_result_text(reason=result.reason, result=result))
+
+def get_result_text(reason, result):
+    reason_format = {
+        speechsdk.ResultReason.TranslatedSpeech:
+            f'Recognized "{from_language}": {result.text}\n' +
+            f'Translated into "{to_language}"": {result.translations[to_language]}',
+        speechsdk.ResultReason.RecognizedSpeech: f'Recognized: "{result.text}"',
+        speechsdk.ResultReason.NoMatch: f'No speech could be recognized: {result.no_match_details}',
+        speechsdk.ResultReason.Canceled: f'Speech Recognition canceled: {result.cancellation_details}'
+    }
+    return reason_format.get(reason, 'Unable to recognize speech')
+
+translate_speech_to_text()
+```
+
+### <a name="manual-synthesis"></a>手动合成
+
+该[`translations`][translations]词典可用于从翻译文本中合成音频。 迭代每个翻译，并综合翻译。 创建`SpeechSynthesizer`实例时，`SpeechConfig`对象需要将其[`speech_synthesis_voice_name`][speechsynthesisvoicename]属性设置为所需的语音。 下面的示例转换为五种语言，然后每个翻译都合成到相应的神经语言中的音频文件。
+
+```python
+import os
+import azure.cognitiveservices.speech as speechsdk
+
+speech_key, service_region = os.environ['SPEECH__SERVICE__KEY'], os.environ['SPEECH__SERVICE__REGION']
+from_language, to_languages = 'en-US', [ 'de', 'en', 'it', 'pt', 'zh-Hans' ]
+
+def translate_speech_to_text():
+    translation_config = speechsdk.translation.SpeechTranslationConfig(
+            subscription=speech_key, region=service_region)
+
+    translation_config.speech_recognition_language = from_language
+    for lang in to_languages:
+        translation_config.add_target_language(lang)
+
+    recognizer = speechsdk.translation.TranslationRecognizer(
+            translation_config=translation_config)
+    
+    print('Say something...')
+    result = recognizer.recognize_once()
+    synthesize_translations(result=result)
+
+def synthesize_translations(result):
+    language_to_voice_map = {
+        "de": "de-DE-KatjaNeural",
+        "en": "en-US-AriaNeural",
+        "it": "it-IT-ElsaNeural",
+        "pt": "pt-BR-FranciscaNeural",
+        "zh-Hans": "zh-CN-XiaoxiaoNeural"
+    }
+    print(f'Recognized: "{result.text}"')
+
+    for language in result.translations:
+        translation = result.translations[language]
+        print(f'Translated into "{language}": {translation}')
+
+        speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
+        speech_config.speech_synthesis_voice_name = language_to_voice_map.get(language)
+        
+        audio_config = speechsdk.audio.AudioOutputConfig(filename=f'{language}-translation.wav')
+        speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=audio_config)
+        speech_synthesizer.speak_text_async(translation).get()
+
+translate_speech_to_text()
+```
+
+有关语音合成的详细信息，请参阅[语音合成的基础知识](../../../text-to-speech-basics.md)。
+
+[config]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.translation.speechtranslationconfig?view=azure-python
+[audioconfig]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig?view=azure-python
+[recognizer]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.translation.translationrecognizer?view=azure-python
+[recognitionlang]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python
+[addlang]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.translation.speechtranslationconfig?view=azure-python#add-target-language-language--str-
+[translations]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.translation.translationrecognitionresult?view=azure-python#translations
+[voicename]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.translation.speechtranslationconfig?view=azure-python#voice-name
+[speechsynthesisvoicename]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#speech-synthesis-voice-name

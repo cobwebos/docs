@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: f9758678708338a284a35b45f7f9dd43b9a9017c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e74d7dcf8764d167e0080c9d7cca5573bd69ef1d
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335958"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260983"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
 
@@ -55,7 +55,7 @@ ms.locfileid: "80335958"
 
 ### <a name="create-an-azure-active-directory-application"></a>创建 Azure Active Directory 应用程序
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 使用包含 API 管理服务实例的订阅导航到 Azure Active Directory 中的“应用注册”选项卡（Azure Active Directory > 管理/应用注册）。********
 
     > [!NOTE]
@@ -68,7 +68,7 @@ ms.locfileid: "80335958"
 4. 输入应用程序的名称。
 5. 对于应用程序类型，选择“本机”。****
 6. 输入占位符 URL，例如，为“重定向 URI”**** 输入 `http://resources`，因为它是必填字段，但以后不使用该值。 单击此复选框保存应用程序。
-7. 单击 **“创建”**。
+7. 单击“创建”。 
 
 ### <a name="add-an-application"></a>添加应用程序
 
@@ -131,7 +131,7 @@ namespace GetTokenResourceManagerRequests
 
 ## <a name="calling-the-backup-and-restore-operations"></a>调用备份和还原操作
 
-REST API 为 [Api 管理服务 - 备份](/rest/api/apimanagement/2019-01-01/apimanagementservice/backup)和 [Api 管理服务 - 还原](/rest/api/apimanagement/2019-01-01/apimanagementservice/restore)。
+REST API 为 [Api 管理服务 - 备份](/rest/api/apimanagement/2019-12-01/apimanagementservice/backup)和 [Api 管理服务 - 还原](/rest/api/apimanagement/2019-12-01/apimanagementservice/restore)。
 
 在调用以下部分中所述的“备份和还原”操作之前，为 REST 调用设置授权请求标头。
 

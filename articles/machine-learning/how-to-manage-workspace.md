@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: f38b0895b0d6eddcf63c082d3df205f4d9de9d50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b4b64bcca57e1dc98cdba10626597532ae1461c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297062"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269716"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>在 Azure 门户中创建并管理 Azure 机器学习工作区
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "80297062"
 
 ## <a name="create-a-workspace"></a>创建工作区
 
-必须有 Azure 订阅，才能创建工作区。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+必须有 Azure 订阅，才能创建工作区。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
 1. 使用 Azure 订阅的凭据登录到 [Azure 门户](https://portal.azure.com/)。 
 
@@ -40,18 +40,18 @@ ms.locfileid: "80297062"
 
 1. 提供以下信息来配置新工作区：
 
-   字段|描述 
+   字段|说明 
    ---|---
    工作区名称 |输入用于标识工作区的唯一名称。 本示例使用 docs-ws****。 名称在整个资源组中必须唯一。 使用易于记忆且区别于其他人所创建工作区的名称。 工作区名称不区分大小写。
    订阅 |选择要使用的 Azure 订阅。
    资源组 | 使用订阅中的现有资源组，或者输入一个名称以创建新的资源组。 资源组保存 Azure 解决方案的相关资源。 本示例使用 docs-aml****。 
    位置 | 选择离你的用户和数据资源最近的位置来创建工作区。
-   工作区版本 | 选择“基本”**** 或“企业”****。  此工作区版本决定了要访问的功能和定价。 详细了解[基本版和企业版产品/服务](overview-what-is-azure-ml.md#sku)。 
+   工作区版本 | 选择“基本”**** 或“企业”****。  此工作区版本确定您将有权访问和定价的功能。 详细了解[基本版和企业版产品/服务](overview-what-is-azure-ml.md#sku)。 
 
     ![配置工作区](./media/how-to-manage-workspace/select-edition.png)
 
 1. 完成配置工作区后，选择 **"审阅 + 创建**"。
-2. 查看设置并进行任何其他更改或更正。 当您对设置感到满意时，选择"**创建**"。
+2. 查看设置并进行任何其他更改或更正。 当您对设置满意时，选择 **"创建**"。
 
    > [!Warning] 
    > 在云中创建工作区可能需要几分钟时间。
@@ -90,6 +90,8 @@ ms.locfileid: "80297062"
 
 ## <a name="find-a-workspace"></a><a name="view"></a>查找工作区
 
+1. 登录 [Azure 门户](https://portal.azure.com/)。
+
 1. 在顶部搜索字段中，键入“机器学习”。****  
 
 1. 选择“机器学习”****。
@@ -102,15 +104,15 @@ ms.locfileid: "80297062"
 
 ## <a name="delete-a-workspace"></a>创建工作区
 
-单击要删除的工作区顶部的“删除”按钮。
+在[Azure 门户](https://portal.azure.com/)中，选择要删除的工作区顶部的 **"删除**"。
 
-  ![“删除”按钮](./media/how-to-manage-workspace/delete-workspace.png)
+:::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="删除工作区":::
 
 ## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 ### <a name="resource-provider-errors"></a>资源提供程序错误
 

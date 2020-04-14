@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: dsindona
-ms.openlocfilehash: 71b3ec4bf505c333e5eca170e1f5e808ab51f41a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1116bd03cf0ef734b74b387ff8f3cff74b29b215
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280059"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270309"
 ---
 # <a name="prepare-your-container-technical-assets"></a>准备容器技术资产
+
+> [!IMPORTANT]
+> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 容器产品的管理移动到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照["准备 Azure 容器技术资产"](https://aka.ms/CreateContainerTechAssets)中的说明进行操作，以管理迁移的优惠。
 
 本文介绍了在 Azure 市场中配置容器产品/服务的步骤和要求。
 
@@ -28,26 +31,26 @@ ms.locfileid: "80280059"
  
 除了解决方案领域以外，工程团队还应该了解以下 Microsoft 技术：
 
--   基本了解 [Azure 服务](https://azure.microsoft.com/services/) 
--   如何[设计和架构 Azure 应用程序](https://azure.microsoft.com/solutions/architecture/)
--   [Azure 虚拟机](https://azure.microsoft.com/services/virtual-machines/)[、Azure 存储](https://azure.microsoft.com/services/?filter=storage)和 Azure[网络](https://azure.microsoft.com/services/?filter=networking)的工作知识
--   [Azure 资源管理器](https://azure.microsoft.com/features/resource-manager/)的实践知识
--   [JSON](https://www.json.org/)的工作知识
+-    基本了解 [Azure 服务](https://azure.microsoft.com/services/) 
+-    如何[设计和架构 Azure 应用程序](https://azure.microsoft.com/solutions/architecture/)
+-    [Azure 虚拟机](https://azure.microsoft.com/services/virtual-machines/)[、Azure 存储](https://azure.microsoft.com/services/?filter=storage)和 Azure[网络](https://azure.microsoft.com/services/?filter=networking)的工作知识
+-    [Azure 资源管理器](https://azure.microsoft.com/features/resource-manager/)的实践知识
+-    [JSON](https://www.json.org/)的工作知识
 
 ## <a name="suggested-tools"></a>建议的工具
 
 选择以下一种或两种脚本环境来帮助管理容器映像：
 
--   [Azure 电源外壳](https://docs.microsoft.com/powershell/azure/overview)
--   [Azure CLI](https://docs.microsoft.com/cli/azure)
+-    [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+-    [Azure CLI](https://docs.microsoft.com/cli/azure)
 
 此外，我们建议将以下工具添加到开发环境：
 
--   [Azure 存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
--   [视觉工作室代码](https://code.visualstudio.com/)
-    *   扩展：[Azure 资源管理器工具](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-    *   扩展：[Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-    *   扩展：[Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+-    [Azure 存储浏览器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+-    [Visual Studio Code](https://code.visualstudio.com/)
+    *    扩展：[Azure 资源管理器工具](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    *    扩展：[Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+    *    扩展：[Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
 我们还建议在 [Azure 开发人员工具](https://azure.microsoft.com/tools/)页中查看可用的工具；如果使用的是 Visual Studio，请在 [Visual Studio 市场](https://marketplace.visualstudio.com/)中查看。
 

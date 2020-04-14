@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: 7237bb7e0538ba1a9b6333ccb6589efe657a247d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f91ee5654b4add37d3cce4f875be1f9c2b398ab9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74423962"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259487"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>解决 VMware VM 和物理服务器的复制问题
 
@@ -30,7 +30,7 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
 
 ## <a name="step-2-troubleshoot-connectivity-and-replication-issues"></a>第 2 步：解决连接和复制问题
 
-初始和进行中的复制失败往往是源服务器与进程服务器或者进程服务器与 Azure 之间的连接问题造成的。 
+初始和进行中的复制失败往往是源服务器与进程服务器或者进程服务器与 Azure 之间的连接问题造成的。
 
 若要解决这些问题，请[排查连接和复制问题](vmware-physical-azure-troubleshoot-process-server.md#check-connectivity-and-replication)。
 
@@ -96,7 +96,7 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
 4. 在源计算机上，检查位于以下位置的日志以查看错误详细信息：
 
        C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
-    
+
 ### <a name="process-server-with-no-heartbeat-error-806"></a>进程服务器无检测信号 [错误 806]
 如果进程服务器 (PS) 未发出检测信号，请检查：
 1. PS VM 已启动并正在运行
@@ -116,7 +116,7 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
 2. 使用拥有管理员特权的帐户登录到主目标 VM。
     - 确认 svagents 服务正在运行。 如果它正在运行，请重启服务
     - 检查位于以下位置的日志以查看错误详细信息：
-        
+
           C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
 3. 要向配置服务器注册主目标，请导航到文件夹 **%PROGRAMDATA%\ASR\代理**，并在命令提示符上运行以下内容：
    ```
@@ -132,38 +132,38 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
 
 ## <a name="error-id-78144---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>错误 ID 78144 - 在过去“XXX”分钟内没有可供 VM 使用的应用一致性恢复点
 
-移动代理[9.23](vmware-physical-mobility-service-overview.md#from-923-version-onwards) & [9.27](site-recovery-whats-new.md#update-rollup-39)版本进行了增强，以处理 VSS 安装失败行为。 确保您处于最新版本上，以了解有关 VSS 故障故障排除的最佳指南。
+移动代理[9.23](vmware-physical-mobility-service-overview.md#mobility-service-agent-version-923-and-higher) & [9.27](site-recovery-whats-new.md#update-rollup-39)版本进行了增强，以处理 VSS 安装失败行为。 确保您处于最新版本上，以了解有关 VSS 故障故障排除的最佳指南。
 
 下面列出了其中的一些最常见
 
-#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>原因 1：SQL 服务器 2008/2008 R2 中的已知问题 
+#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>原因 1：SQL 服务器 2008/2008 R2 中的已知问题
 **如何修复**：SQL 服务器 2008/2008 R2 存在已知问题。 请参阅此知识库文章：[托管 SQL Server 2008 R2 的服务器的 Azure Site Recovery 代理或其他非组件 VSS 备份失败](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)
 
-#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>原因 2：Azure 站点恢复作业在承载具有AUTO_CLOSE GB 的任何版本的 SQL Server 实例的服务器上失败 
-**如何修复**：请参阅 Kb[文章](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) 
+#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>原因 2：Azure 站点恢复作业在承载具有AUTO_CLOSE GB 的任何版本的 SQL Server 实例的服务器上失败
+**如何修复**：请参阅 Kb[文章](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser)
 
 
 #### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>原因 3：SQL Server 2016 和 2017 中的已知问题
-**如何修复**：请参阅 Kb[文章](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) 
+**如何修复**：请参阅 Kb[文章](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component)
 
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>更多 VSS 相关问题原因：
 
 若要进一步排查问题，请查看源计算机上的文件，获取故障的具体错误代码：
-    
+
     C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log
 
 如何在文件中查找错误？
 在编辑器中打开 vacp.log 文件，搜索字符串“vacpError”
-        
+
     Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|
 
 在上面的示例中，**2147754994** 是介绍故障情况的错误代码，如下所示
 
-#### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS 编写器未安装 - 错误 2147221164 
+#### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS 编写器未安装 - 错误 2147221164
 
 *如何修复*：要生成应用程序一致性标记，Azure 站点恢复使用 Microsoft 卷卷卷影副本服务 （VSS）。 它安装适用于其操作的 VSS 提供程序，以便拍摄应用一致性快照。 此 VSS 提供程序作为服务安装。 如果 VSS 提供程序服务未安装，则应用程序一致性快照创建会失败，并出现 ID 为 0x80040154 的错误“类未注册”。 </br>
-请参阅[有关 VSS 编写器安装故障排除的文章](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures) 
+请参阅[有关 VSS 编写器安装故障排除的文章](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures)
 
 #### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS 编写器已禁用 - 错误 2147943458
 
@@ -178,12 +178,13 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
 
 ####  <a name="vss-provider-not_registered---error-2147754756"></a>VSS 提供程序未注册 - 错误 2147754756
 
-**如何修复**：要生成应用程序一致性标记，Azure 站点恢复使用 Microsoft 卷卷卷影副本服务 （VSS）。 检查 Azure Site Recovery VSS 提供程序服务是否已安装。 </br>
+**如何修复**：要生成应用程序一致性标记，Azure 站点恢复使用 Microsoft 卷卷卷影副本服务 （VSS）。
+检查 Azure Site Recovery VSS 提供程序服务是否已安装。 </br>
 
 - 使用以下命令重试提供程序安装：
 - 卸载现有提供程序：C：\程序文件 （x86）\微软 Azure 站点恢复\代理\InMageVSSProvider_Uninstall.cmd
 - 重新安装：C：\程序文件 （x86）\微软 Azure 站点恢复\代理\InMageVSSProvider_Install.cmd
- 
+
 确认 VSS 提供程序服务的启动类型是否设置为“自动”。****
     - 重启以下服务：
         - VSS 服务
