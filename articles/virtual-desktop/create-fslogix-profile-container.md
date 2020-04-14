@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/25/2019
+ms.date: 04/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 272188b50fe59435031a4a2fb9c252f3f358bb6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 149fb5818ee360c7333997655ea9eb8d7ded346c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535725"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270887"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>使用 Azure NetApp 文件为主机池创建 FSLogix 配置文件容器
 
@@ -45,7 +45,7 @@ ms.locfileid: "79535725"
 
 要开始，您需要设置 Azure NetApp 文件帐户。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。 确保您的帐户具有参与者或管理员权限。
+1. 登录 [Azure 门户](https://portal.azure.com)。 确保您的帐户具有参与者或管理员权限。
 
 2. 选择搜索栏右侧的**Azure 云外壳图标**以打开 Azure 云外壳。
 
@@ -118,9 +118,6 @@ ms.locfileid: "79535725"
     - 对于**用户名**，输入具有执行域联接权限的帐户的名称。
     - 对于**密码**，输入帐户的密码。
 
-  >[!NOTE]
-  >最佳做法是确认您在[加入活动目录连接](create-fslogix-profile-container.md#join-an-active-directory-connection)中创建的计算机帐户已出现在**您的计算机**或**企业的相关 OU**下的域控制器中。
-
 ## <a name="create-a-new-volume"></a>创建新卷
 
 接下来，您需要创建新卷。
@@ -167,7 +164,7 @@ ms.locfileid: "79535725"
 
 5. 选中**我同意许可条款和条件**旁边的复选框。
 
-6. 选择**安装**。
+6. 选择“安装”  。
 
 7. 导航到**\\C：程序\\文件\\FSLogix 应用**以确认已安装的代理。
 

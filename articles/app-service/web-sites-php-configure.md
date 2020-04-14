@@ -5,27 +5,29 @@ author: msangapu-msft
 ms.assetid: 95c4072b-8570-496b-9c48-ee21a223fb60
 ms.devlang: php
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 04/13/2020
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c73fb55e485d0c92d27eac2ac197a81337b9d5e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 208f4f7b4c2d8562d5237a40f52e4774ea5c5606
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77016793"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272468"
 ---
 # <a name="configure-php-in-azure-app-service"></a>在 Azure 应用服务中配置 PHP
 
 ## <a name="introduction"></a>介绍
 
-本指南演示如何执行以下操作：在 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)中配置 Web 应用、移动后端和 API 应用的内置 PHP 运行时，提供自定义 PHP 运行时，并启用扩展。 若要使用应用服务，请注册[免费试用版]。 要充分利用本指南，应先在应用服务中创建一个 PHP 应用。
+本指南介绍如何在[Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)中为 Web 应用和 API 应用配置内置 PHP 运行时、提供自定义 PHP 运行时以及启用扩展。 若要使用应用服务，请注册[免费试用版]。 要充分利用本指南，应先在应用服务中创建一个 PHP 应用。
 
 ## <a name="how-to-change-the-built-in-php-version"></a>如何：更改内置 PHP 版本
 
-默认情况下，将安装 PHP 5.6 并且在创建应用服务应用时立即可用。 查看可用发行版、其默认配置以及已启用的扩展的最佳方式是部署一个调用 [phpinfo()] 函数的脚本。
+创建 Web 应用时，您可以选择将配置的 PHP 版本。 有关当前支持版本的最新信息，请参阅[应用服务上的 PHP。](https://github.com/Azure/app-service-linux-docs/blob/master/Runtime_Support/php_support.md)
 
-PHP 7.0 和 PHP 7.2 也可用，但它们在默认情况下不启用。 若要更新 PHP 版本，请使用下列方法之一：
+要检查应用的现有运行时版本，可以部署调用[phpinfo（）]函数的脚本。
+
+若要更新 PHP 版本，请使用下列方法之一：
 
 ### <a name="azure-portal"></a>Azure 门户
 
@@ -49,7 +51,7 @@ PHP 7.0 和 PHP 7.2 也可用，但它们在默认情况下不启用。 若要�
 
 2. 设置应用的 PHP 版本。
 
-        az webapp config set --php-version {5.6 | 7.0 | 7.1 | 7.2} --name {app-name} --resource-group {resource-group-name}
+        az webapp config set --php-version {5.6 | 7.2 | 7.3} --name {app-name} --resource-group {resource-group-name}
 
 3. 现已设置 PHP 版本。 可以确认以下设置：
 
@@ -79,7 +81,7 @@ PHP 7.0 和 PHP 7.2 也可用，但它们在默认情况下不启用。 若要�
 
 1. 向应用添加一个键为 `PHP_INI_SCAN_DIR` 且值为 `d:\home\site\ini` 的应用设置
 1. 使用 Kudu 控制器 (http://&lt;site-name&gt;.scm.azurewebsite.net) 在 `d:\home\site\ini` 目录中创建一个 `settings.ini` 文件。
-1. 使用会在 `php.ini` 文件中使用的语法，将配置设置添加到 `settings.ini` 文件。 例如，如果希望将 `curl.cainfo` 设置指向 `*.crt` 文件并将“wincache.maxfilesize”设置为 512K，则 `settings.ini` 文件应包含以下文本：
+1. 使用会在 `php.ini` 文件中使用的语法，将配置设置添加到 `settings.ini` 文件。 例如，如果要将`curl.cainfo`设置指向`*.crt`文件并将"wincache.maxfilesize"设置设置为 512 K，则`settings.ini`文件将包含以下文本：
 
         ; Example Settings
         curl.cainfo="%ProgramFiles(x86)%\Git\bin\curl-ca-bundle.crt"

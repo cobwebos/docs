@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 89bdd209315445519c35f3ef2c2f1ad2555106ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/13/2020
+ms.openlocfilehash: 1e67637d36eaba55e4c6baaf6f775fc7b79fcd14
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531390"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270583"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>从 Azure 门户配置和访问慢查询日志
 
@@ -23,7 +23,7 @@ ms.locfileid: "79531390"
 ## <a name="configure-logging"></a>配置日志记录
 配置慢查询日志的访问权限。 
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 2. 选择 Azure Database for MariaDB 服务器。
 
@@ -32,11 +32,15 @@ ms.locfileid: "79531390"
 
 4. 若要查看服务器参数，请选择“单击此处以启用日志并配置日志参数”****。
 
-5. 更改需要调整的参数，包括将“slow_query_log”**** 转换为“ON”****。 在此会话中所做的更改都突出显示为紫色。 
+5. 将**slow_query_log**转向**ON**。
 
-   更改参数之后，请选择“保存”。**** 也可以放弃所做的更改。
+6. 选择将日志输出到使用**log_output**的位置。 要将日志发送到本地存储和 Azure 监视器诊断日志，请选择"**文件**"。 
 
-   ![“服务器参数”选项的屏幕截图](./media/howto-configure-server-logs-portal/3-save-discard.png)
+7. 更改所需的任何其他参数。 
+
+8. 选择“保存”。  
+
+   :::image type="content" source="./media/howto-configure-server-logs-portal/3-save-discard.png" alt-text="慢速查询日志参数的屏幕截图和保存。":::
 
 在“服务器参数”**** 页上，可以通过关闭该页来返回到日志列表。
 

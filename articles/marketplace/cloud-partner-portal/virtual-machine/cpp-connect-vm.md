@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: 2b7eb6d321a64835254b684c8faeedc53645dffe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f2652a98aa081b62ba80951212ef3a3de513593
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278052"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272655"
 ---
 # <a name="connect-to-your-azure-based-virtual-machine"></a>连接到基于 Azure 的虚拟机
+
+> [!IMPORTANT]
+> 从 2020 年 4 月 13 日开始，我们将开始向合作伙伴中心移动 Azure 虚拟机产品/ 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照创建 Azure[虚拟机技术资产](https://aka.ms/AzureVMTechAsset)中的说明进行操作，以管理迁移的优惠。
 
 本文介绍如何连接并登录到 Azure 创建的虚拟机 (VM)。  成功连接后，可以使用 VM，就像您本地登录到其主机服务器一样。 
 
@@ -32,7 +35,7 @@ ms.locfileid: "80278052"
 
 要连接基于 Linux 的 VM，您需要一个安全的 shell 协议 （SSH） 客户端。  本文使用免费的 [PuTTY](https://www.ssh.com/ssh/putty/) SHH 终端。
 
-1. 转到[Azure 门户](https://ms.portal.azure.com)。 搜索并选择**虚拟机**。 
+1. 转到 [Azure 门户](https://ms.portal.azure.com)。 搜索并选择**虚拟机**。 
 2. 选择要连接到的 VM。  
 3. 如果 VM 尚未运行，则**启动**它。
 4. 单击 VM 的名称打开其“概述”页。****

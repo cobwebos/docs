@@ -6,12 +6,12 @@ ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/25/2019
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 2dcf1bef27b5d9e1a740f136361b756f59293b00
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7c03e2b5e8c035b53b874a8e7751283fdbe3d516
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80046760"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811282"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure"></a>教程：在 Azure 中构建 PHP 和 MySQL 应用
 
@@ -267,9 +267,9 @@ MYSQL_SSL=true
 > 若要保护 MySQL 连接信息，此文件已从 Git 存储库（请参阅存储库根路径中的 .gitignore  排除。 以后介绍如何将应用服务中的环境变量配置为连接到 Azure Database for MySQL 中的数据库。 有了环境变量，便不需要应用服务中的 .env  文件。
 >
 
-### <a name="configure-ssl-certificate"></a>配置 SSL 证书
+### <a name="configure-tlsssl-certificate"></a>配置 TLS/SSL 证书
 
-默认情况下，用于 MySQL 的 Azure 数据库强制执行来自客户端的 SSL 连接。 若要连接到 Azure 中的 MySQL 数据库，必须使用 [Azure Database for MySQL 提供的 _.pem_ 证书](../mysql/howto-configure-ssl.md)。
+默认情况下，Azure Database for MySQL 强制执行来自客户端的 TLS 连接。 若要连接到 Azure 中的 MySQL 数据库，必须使用 [Azure Database for MySQL 提供的 _.pem_ 证书](../mysql/howto-configure-ssl.md)。
 
 打开 _config/database.php_，将 `sslmode` 和 `options` 参数添加到 `connections.mysql`，如以下代码所示。
 

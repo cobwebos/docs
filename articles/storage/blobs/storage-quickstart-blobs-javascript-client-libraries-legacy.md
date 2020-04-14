@@ -9,12 +9,12 @@ ms.author: mhopkins
 ms.date: 01/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: da5db7d956b1ba8aa1ac245b77fe0d4cb31909c1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5219af0ec343a6e7f87a07e4a7280ac5f4e85cd3
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061462"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619113"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -90,7 +90,7 @@ az storage account generate-sas \
 生成 SAS 后，复制返回值并将其保存到某个位置，以便在后续步骤中使用。 如果使用 Azure CLI 以外的方法生成了 SAS，则需要删除初始的 `?`（如果存在）。 此字符是已在 URL 模板中提供的 URL 分隔符，本主题稍后用到 SAS 的步骤都会使用它。
 
 > [!IMPORTANT]
-> 在生产中，请始终使用 SSL 来传递 SAS 令牌。 另外，SAS 令牌应该在服务器上生成并发送到 HTML 页面，以便将其传递回 Azure Blob 存储。 一种可以考虑的方法是使用无服务器函数来生成 SAS 令牌。 Azure 门户包括的函数模板具有通过 JavaScript 函数生成 SAS 的功能。
+> 在生产环境中，请始终使用 TLS 来传递 SAS 令牌。 另外，SAS 令牌应该在服务器上生成并发送到 HTML 页面，以便将其传递回 Azure Blob 存储。 一种可以考虑的方法是使用无服务器函数来生成 SAS 令牌。 Azure 门户包括的函数模板具有通过 JavaScript 函数生成 SAS 的功能。
 
 ## <a name="implement-the-html-page"></a>实现 HTML 页
 

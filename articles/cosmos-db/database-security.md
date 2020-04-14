@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mjbrown
-ms.openlocfilehash: c92f045f2c8d4443d596697596363bda3d0df975
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 8a0ef4c5abcd4c4137a878adf6a7fff9e80c2764
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985280"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273505"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 安全性 - 概述
 
@@ -66,8 +66,8 @@ ms.locfileid: "80985280"
 |全局复制|Azure Cosmos DB 提供全面的全局分发。只需单击一个按钮，就能将数据复制到 Azure 的任何一个全球数据中心。 全局复制可以实现全局缩放，以较低的延迟访问全球各地的数据。<br><br>从安全的上下文来看，全局复制可确保数据受到保护，防范区域性故障。<br><br>在[全球分布数据](distribute-data-globally.md)中了解详细信息。|
 |区域性故障转移|如果已将数据复制到多个数据中心，当区域数据中心脱机时，Azure Cosmos DB 会自动滚动切换操作。 可以使用数据复制到的区域创建故障转移区域的优先级列表。 <br><br>在 [Azure Cosmos DB 中的区域故障转移](high-availability.md)中了解详细信息。|
 |本地复制|即使是在单个数据中心内，Azure Cosmos DB 也会自动复制数据来实现高可用性，并允许选择[一致性级别](consistency-levels.md)。 此复制可保证为所有单区域帐户和具有松散一致性的所有多区域帐户提供 99.99% 的[可用性 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db)，为所有多区域数据库帐户提供 99.999% 的读取可用性。|
-|自动联机备份|Azure Cosmos 数据库定期备份并存储在异地冗余的存储中。 <br><br>在 [Azure Cosmos DB 的自动联机备份和还原](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)中了解详细信息。|
-|还原已删除的数据|可以使用自动联机备份来恢复大约 30 天内意外删除的数据。 <br><br>使用[Azure Cosmos DB 在自动联机备份和还原](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)中了解更多信息|
+|自动联机备份|Azure Cosmos 数据库定期备份并存储在异地冗余的存储中。 <br><br>在 [Azure Cosmos DB 的自动联机备份和还原](online-backup-and-restore.md)中了解详细信息。|
+|还原已删除的数据|可以使用自动联机备份来恢复大约 30 天内意外删除的数据。 <br><br>使用[Azure Cosmos DB 在自动联机备份和还原](online-backup-and-restore.md)中了解更多信息|
 |保护和隔离敏感数据|“新增功能”中列出的区域中的所有数据现已处于静态加密状态。<br><br>可将个人数据和其他机密数据隔离到特定的容器，并限制为只能由特定的用户进行读写或只读访问。|
 |监视攻击|使用[审核日志和活动日志](logging.md)，可以监视帐户中的正常和异常活动。 可以查看针对资源执行了哪些操作、操作是谁发起的、操作是何时发生的、操作的状态等，如此表后面的屏幕截图所示。|
 |响应攻击|联系 Azure 支持部门举报潜在的攻击行为后，将启动由 5 个步骤构成的事件响应过程。 该 5 步骤过程的目的是在检测到问题并启动调查后，尽快将服务安全性和操作恢复正常。<br><br>在[云中的 Microsoft Azure 安全响应](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)中了解详细信息。|

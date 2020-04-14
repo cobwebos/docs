@@ -2,21 +2,21 @@
 title: 教程 - 添加模板函数
 description: 将模板函数添加到 Azure 资源管理器模板以构造值。
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 1db391f42aeb4fdf80baf001150f845daef3bf4f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: e4984b286bf031b66272919a487d09a90f972ce0
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773228"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410973"
 ---
-# <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>教程：将模板函数添加到资源管理器模板
+# <a name="tutorial-add-template-functions-to-your-arm-template"></a>教程：将模板函数添加到 ARM 模板
 
-本教程介绍如何将[模板函数](template-functions.md)添加到模板。 我们使用函数来动态构造值。 除了这些系统提供的模板函数，还可以创建[用户定义的函数](./template-user-defined-functions.md)。 完成本教程需要 **7 分钟**。
+本教程介绍如何向 Azure 资源管理器 (ARM) 模板添加[模板函数](template-functions.md)。 我们使用函数来动态构造值。 除了这些系统提供的模板函数，还可以创建[用户定义的函数](./template-user-defined-functions.md)。 完成本教程需要 **7 分钟**。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 建议完成[有关参数的教程](template-tutorial-add-parameters.md)，但这不是必需的。
 
@@ -48,7 +48,7 @@ ms.locfileid: "76773228"
 
 如果尚未创建资源组，请参阅[创建资源组](template-tutorial-create-first-template.md#create-resource-group)。 此示例假设已根据[第一篇教程](template-tutorial-create-first-template.md#deploy-template)中所述，将 **templateFile** 变量设置为模板文件的路径。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -58,10 +58,12 @@ New-AzResourceGroupDeployment `
   -storageName "{new-unique-name}"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要运行此部署命令，必须具有 Azure CLI 的 [最新版本](/cli/azure/install-azure-cli)。
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addlocationparameter \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -69,6 +71,9 @@ az group deployment create \
 ```
 
 ---
+
+> [!NOTE]
+> 如果部署失败，请将 **debug** 开关和部署命令配合使用来显示调试日志。  还可以使用 **verbose** 开关来显示完整的调试日志。
 
 ## <a name="verify-deployment"></a>验证部署
 

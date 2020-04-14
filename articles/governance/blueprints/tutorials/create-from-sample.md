@@ -3,18 +3,18 @@ title: 教程：从蓝图示例到新环境
 description: 在本教程，你将使用蓝图示例创建蓝图定义，用于设置两个资源组并为每个资源组配置角色分配。
 ms.date: 03/25/2020
 ms.topic: tutorial
-ms.openlocfilehash: c4230282223b0a64f6254448fe069bf8f7ab9a15
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 79928822b41dfe0583afbeaf2f5f1a4a87dd3202
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80282012"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677094"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>教程：基于蓝图示例创建环境
 
 示例蓝图示范了 Azure 蓝图的功能。 每个示例蓝图附带具体的意图或目的，但其本身无法创建完整的环境。 每个示例蓝图旨在用作探索 Azure 蓝图的起点，其中带有包含的项目、设计和参数的各种组合。
 
-以下教程使用“采用 RBAC 的资源组”蓝图示例来展示蓝图服务的各个方面。  本文包括以下步骤：
+以下教程使用“采用 RBAC 的资源组”蓝图示例来展示 Azure 蓝图服务的各个方面。  本文包括以下步骤：
 
 > [!div class="checklist"]
 > - 基于示例创建新的蓝图定义

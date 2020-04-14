@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/03/2018
 ms.author: memildin
-ms.openlocfilehash: 4b40b7c6f755eb2107a09b1b881ea33fa2187f29
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0b28de7af16053093cd0108224188cdd615fce55
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73686333"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435521"
 ---
-# <a name="tutorial-protect-your-resources-with-azure-security-center"></a>教程：使用 Azure 安装中心来保护资源
+# <a name="tutorial-protect-your-resources-with-azure-security-center"></a>教程：使用 Azure 安全中心来保护资源
 安全中心使用访问控制和应用程序控制来阻止恶意活动，限制威胁所造成的危害。 可以通过实时 (JIT) 虚拟机 (VM) 访问拒绝对 VM 的永久性访问，减少自己遭受攻击的可能性。 仅在需要的情况下，才提供对 VM 的受控且经过审核的访问权限。 自适应应用程序控制可以对哪些应用程序能够在 VM 上运行进行控制，从而强化 VM 对抗恶意软件的能力。 安全中心使用机器学习来分析在 VM 中运行的进程，帮助你运用此智能来应用允许列表规则。
 
 本教程介绍如何执行下列操作：
@@ -30,7 +30,7 @@ ms.locfileid: "73686333"
 > * 配置实时 VM 访问策略
 > * 配置应用程序控制策略
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 若要逐步执行本教程中介绍的功能，你必须位于安全中心的“标准”定价层。 可以免费试用安全中心标准版。 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。 快速入门教程“[将 Azure 订阅载入到安全中心标准版](security-center-get-started.md)”详细介绍了如何升级到标准版。
 
 ## <a name="manage-vm-access"></a>管理 VM 访问权限
@@ -77,7 +77,7 @@ JIT VM 访问可以用来锁定发往 Azure VM 的入站流量，降低遭受攻
    “资源组”部分包含三个选项卡： 
 
    - **已配置**：所含 VM 已配置了应用程序控制的资源组的列表。
-   - **已建议**：建议对其实施应用程序控制的资源组的列表。
+   - **建议**：建议对其实施应用程序控制的资源组的列表。
    - **无建议**：所含 VM 没有任何应用程序控制建议的资源组的列表。 例如，其上的应用程序始终变化，尚未达到稳定状态的 VM。
 
 2. 选择“已建议”选项卡会出现一个列表，其中包含的资源组带有应用程序控制建议  。
@@ -110,7 +110,7 @@ JIT VM 访问可以用来锁定发往 Azure VM 的入站流量，降低遭受攻
 4. 选择“保存”。 
 
 >[!NOTE]
-> 禁用自动设置不会从已预配代理的 Azure VM 中删除 Microsoft Monitoring Agent。 禁用自动设置会限制对资源的安全监视。
+> 禁用自动预配不会从已预配代理的 Azure VM 中删除 Log Analytics 代理。 禁用自动设置会限制对资源的安全监视。
 >
 
 ## <a name="next-steps"></a>后续步骤

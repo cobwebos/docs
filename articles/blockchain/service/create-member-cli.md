@@ -1,15 +1,15 @@
 ---
 title: 创建 Azure 区块链服务成员 - Azure CLI
 description: 使用 Azure CLI 创建区块链联盟的 Azure 区块链服务成员。
-ms.date: 03/12/2020
+ms.date: 03/30/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
-ms.openlocfilehash: 0a3cf3d7c7f3dc0b8ece6fd6a466e42ae970b61c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 322b1884726b6dfe322560032ed1b8a98c600154
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79214740"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529622"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>快速入门：通过 Azure CLI 创建 Azure 区块链服务区块链成员
 
@@ -58,7 +58,7 @@ az resource create \
 | password  | 成员的默认事务节点的密码。 连接到区块链成员的默认事务节点公共终结点时，请使用密码进行基本身份验证。
 | **consortium** | 要加入或创建的联盟的名称。 有关联盟的详细信息，请参阅 [Azure 区块链服务联盟](consortium.md)。
 | **consortiumAccountPassword** | 联盟帐户密码也称为成员帐户密码。 成员帐户密码用于加密为你的成员创建的 Ethereum 帐户的私钥。 你使用成员帐户和成员帐户密码进行联盟管理。
-| **skuName** | 层类型。 对于标准层，请使用 S0，对于基本层，请使用 B0。 使用“基本”  层进行开发、测试和概念证明。 使用“标准”  层进行生产级部署。
+| **skuName** | 层类型。 对于标准层，请使用 S0，对于基本层，请使用 B0。 使用“基本”  层进行开发、测试和概念证明。 使用“标准”  层进行生产级部署。 如果使用区块链数据管理器或发送大量专用事务，还应使用“标准”  层。 不支持在创建成员后在“基本”定价层和“标准”定价层之间进行切换。
 
 创建区块链成员和支持资源需要大约 10 分钟。
 

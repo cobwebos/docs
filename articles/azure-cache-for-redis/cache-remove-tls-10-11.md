@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 0d28469820f63f63089d9b91d57ccd7fe75c8b95
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 809fbe85a9783777d5dbef86357bd5a386bd6f81
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348657"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261216"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>删除与 Azure Cache for Redis 配合使用的 TLS 1.0 和 1.1
 
@@ -34,7 +34,7 @@ ms.locfileid: "80348657"
 | 云               | 阶段 1 开始日期 | 阶段 2 开始日期      |
 |---------------------|--------------------|-------------------------|
 | Azure（公有云）      |  2020 年 1 月 13 日  | 2020年5月11日（扩展） |
-| Azure Government     |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
+| Azure Government    |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
 | Azure 德国       |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
 | Azure 中国         |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
 
@@ -51,7 +51,7 @@ ms.locfileid: "80348657"
 在 .NET Framework 4.5.2 或更低版本上，Redis .NET 客户端默认使用最低的 TLS 版本；在 .NET Framework 4.6 或更高版本上，则使用最新的 TLS 版本。 如果使用较低版本的 .NET Framework，可以手动启用 TLS 1.2：
 
 * **堆栈交换.Redis：** 在`ssl=true`连接`sslprotocols=tls12`字符串中设置和。
-* **服务堆栈.Redis：** 按照[服务堆栈.Redis 说明](https://github.com/ServiceStack/ServiceStack.Redis/pull/247)操作。
+* **服务堆栈.Redis：** 按照[服务堆栈.Redis](https://github.com/ServiceStack/ServiceStack.Redis#servicestackredis-ssl-support)说明操作，至少需要服务堆栈.Redis v5.6。
 
 ### <a name="net-core"></a>.NET Core
 

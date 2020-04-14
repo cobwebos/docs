@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: 433f8fa36f17f7cb145261273586a684658acda5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f22d5b2140e42f5f4b8ef5787d22b4be399c7e8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280464"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272519"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
 ## <a name="overview"></a>概述
@@ -23,7 +23,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 >
 >
 
-|类型|Platform|位置|描述|
+|类型|平台|位置|描述|
 |-|-|-|-|
 | 应用程序日志记录 | Windows、Linux | 应用服务文件系统和/或 Azure 存储 Blob | 记录应用程序代码生成的消息。 这些消息可能由所选的 Web 框架生成，或者由应用程序代码使用你的语言的标准日志记录模式直接生成。 每条消息被分配为以下类别之一：**严重**、**错误**、**警告**、**信息**、**调试**和**跟踪**。 启用应用程序日志记录时，可以通过设置严重性级别来选择日志记录的详细程度。|
 | Web 服务器日志记录| Windows | 应用服务文件系统或 Azure 存储 Blob| 采用 [W3C 扩展日志文件格式](/windows/desktop/Http/w3c-logging)的原始 HTTP 请求数据。 每条日志消息包含 HTTP 方法、资源 URI、客户端 IP、客户端端口、用户代理、响应代码等数据。 |
@@ -59,7 +59,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 
 | 级别 | 包含的类别 |
 |-|-|
-|**禁用** | 无 |
+|**已禁用** | None |
 |**错误** | “错误”、“严重” |
 |**警告** | “警告”、“错误”、“严重”|
 |**信息** | “信息”、“警告”、“错误”、“严重”|
@@ -163,7 +163,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 对于 Windows 应用，该 ZIP 文件包含应用服务文件系统中 *D:\Home\LogFiles* 目录的内容。 其结构如下：
 
-| 日志类型 | 目录 | 描述 |
+| 日志类型 | 目录 | 说明 |
 |-|-|-|
 | **应用程序日志** |*/LogFiles/Application/* | 包含一个或多个文本文件。 日志消息的格式取决于所用的日志记录提供程序。 |
 | **失败的请求跟踪** | */LogFiles/W3SVC#########/* | 包含 XML 文件和一个 XSL 文件。 可以在浏览器中查看带格式的 XML 文件。 |
@@ -182,13 +182,13 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 下表显示了支持的日志类型和说明： 
 
-| 日志类型 | Windows 支持 | Linux（Docker）支持 | 描述 |
+| 日志类型 | Windows 支持 | Linux（Docker）支持 | 说明 |
 |-|-|-|
 | AppServiceConsoleLogs | TBA | 是 | 标准输出和标准错误 |
 | AppServiceHTTPLogs | 是 | 是 | Web 服务器日志 |
 | AppServiceEnvironmentPlatformLogs | 是 | 是 | 应用服务环境：缩放、配置更改和状态日志|
 | AppServiceAuditLogs | 是 | 是 | 通过 FTP 和 Kudu 进行的登录活动 |
-| AppServiceFileAuditLogs | TBA | 是 | 通过 FTP 和 Kudu 进行的文件更改 |
+| AppServiceFileAuditLogs | 是 | TBD | 通过 FTP 和 Kudu 进行的文件更改 |
 | AppServiceAppLogs | TBA | Java SE & 汤姆卡特 | 应用程序日志 |
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> 后续步骤

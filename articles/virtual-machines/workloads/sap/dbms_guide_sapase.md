@@ -12,19 +12,19 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/21/2020
+ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 007e8d87c670376ad334c1c4e58fd93995930b78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 25d911869c95baba6ac9db3b893292e702e9c0e9
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616239"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273199"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 SAP ASE Azure 虚拟机 DBMS 部署
 
-本文档介绍在 Azure IaaS 中部署 SAP 时要考虑的多个不同领域。 在阅读本文档之前，应已经阅读了[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)文档以及 [Azure 文档上的 SAP 工作负荷](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)中的其他指南。 本文档介绍在 Linux 和 Windows 操作系统上运行的 SAP ASE。 Azure 上受支持的最低版本是 SAP ASE 16.0 修补程序级别 2。  建议部署最新版本的 SAP 和最新的修补程序级别。  建议至少使用 SAP ASE 16.3 修补程序级别 7。  SAP 的最新版本可在[目标 ASE 16.0 发布计划和 CR 列表信息](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information)中找到。
+本文档介绍在 Azure IaaS 中部署 SAP 时要考虑的多个不同领域。 在阅读本文档之前，应已经阅读了[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)文档以及 [Azure 文档上的 SAP 工作负荷](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)中的其他指南。 本文档介绍在 Linux 和 Windows 操作系统上运行的 SAP ASE。 Azure 上受支持的最低版本是 SAP ASE 16.0.02（版本 16 支持包 2）。 建议部署最新版本的 SAP 和最新的修补程序级别。  建议至少 SAP ASE 16.0.03.07（版本 16 支持包 3 修补程序级别 7）。  SAP 的最新版本可在[目标 ASE 16.0 发布计划和 CR 列表信息](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information)中找到。
 
 除了在以下位置的 SAP 产品可用性矩阵中，请参阅有关 SAP 应用程序或安装介质位置的发布支持的其他信息：
 
@@ -80,11 +80,11 @@ SAP ASE 将数据按顺序写入磁盘存储设备，除非另有配置。 这�
 
 数据库大小介于 50 GB 和 250 GB 的小型 SAP ASE 数据库服务器（如 SAP 解决方案管理器）的配置示例可能类似于
 
-| Configuration | Windows | Linux | 注释 |
+| 配置 | Windows | Linux | 注释 |
 | --- | --- | --- | --- |
 | VM 类型 | E4s_v3 （4 vCPU/32 GB 内存） | E4s_v3 （4 vCPU/32 GB 内存） | --- |
 | 加速网络 | 启用 | 启用 | ---|
-| SAP ASE 版本 | 16.3 PL 7 或更高 | 16.3 PL 7 或更高 | --- |
+| SAP ASE 版本 | 16.0.03.07 或更高版本 | 16.0.03.07 或更高版本 | --- |
 | 数据设备 * | 4 | 4 | ---|
 | 日志设备 * | 1 | 1 | --- |
 | 温度设备 * | 1 | 1 | 更多用于 SAP BW 工作负载 |
@@ -101,11 +101,11 @@ SAP ASE 将数据按顺序写入磁盘存储设备，除非另有配置。 这�
 
 数据库大小介于 250 GB 和 750 GB 的中型 SAP ASE 数据库服务器（如较小的 SAP 业务套件系统）的配置示例可能类似于
 
-| Configuration | Windows | Linux | 注释 |
+| 配置 | Windows | Linux | 注释 |
 | --- | --- | --- | --- |
 | VM 类型 | E16s_v3 （16 vCPU/128 GB 内存） | E16s_v3 （16 vCPU/128 GB 内存） | --- |
 | 加速网络 | 启用 | 启用 | ---|
-| SAP ASE 版本 | 16.3 PL 7 或更高 | 16.3 PL 7 或更高 | --- |
+| SAP ASE 版本 | 16.0.03.07 或更高版本 | 16.0.03.07 或更高版本 | --- |
 | 数据设备 * | 8 | 8 | ---|
 | 日志设备 * | 1 | 1 | --- |
 | 温度设备 * | 1 | 1 | 更多用于 SAP BW 工作负载 |
@@ -121,11 +121,11 @@ SAP ASE 将数据按顺序写入磁盘存储设备，除非另有配置。 这�
 
 数据库大小介于 750 GB 和 2000 GB 的小型 SAP ASE 数据库服务器（如较大的 SAP 业务套件系统）的配置示例可能类似于
 
-| Configuration | Windows | Linux | 注释 |
+| 配置 | Windows | Linux | 注释 |
 | --- | --- | --- | --- |
 | VM 类型 | E64s_v3 （64 vCPU/432 GB 内存） | E64s_v3 （64 vCPU/432 GB 内存） | --- |
 | 加速网络 | 启用 | 启用 | ---|
-| SAP ASE 版本 | 16.3 PL 7 或更高 | 16.3 PL 7 或更高 | --- |
+| SAP ASE 版本 | 16.0.03.07 或更高版本 | 16.0.03.07 或更高版本 | --- |
 | 数据设备 * | 16 | 16 | ---|
 | 日志设备 * | 1 | 1 | --- |
 | 温度设备 * | 1 | 1 | 更多用于 SAP BW 工作负载 |
@@ -142,11 +142,11 @@ SAP ASE 将数据按顺序写入磁盘存储设备，除非另有配置。 这�
 
 数据库大小为 2 TB+的小型 SAP ASE 数据库服务器（如全球使用的较大 SAP 业务套件系统）的配置示例可能类似于
 
-| Configuration | Windows | Linux | 注释 |
+| 配置 | Windows | Linux | 注释 |
 | --- | --- | --- | --- |
 | VM 类型 | M 系列（1.0 至 4.0 TB RAM）  | M 系列（1.0 至 4.0 TB RAM） | --- |
 | 加速网络 | 启用 | 启用 | ---|
-| SAP ASE 版本 | 16.3 PL 7 或更高 | 16.3 PL 7 或更高 | --- |
+| SAP ASE 版本 | 16.0.03.07 或更高版本 | 16.0.03.07 或更高版本 | --- |
 | 数据设备 * | 32 | 32 | ---|
 | 日志设备 * | 1 | 1 | --- |
 | 温度设备 * | 1 | 1 | 更多用于 SAP BW 工作负载 |
@@ -203,7 +203,7 @@ SAP 软件预配管理器 （SWPM） 提供了在安装期间加密数据库的�
 
 ## <a name="sap-ase-on-azure-deployment-checklist"></a>Azure 部署检查表上的 SAP ASE
  
-- 部署 SAP ASE 16.3 PL7 或更高版本
+- 部署 SAP ASE 16.0.03.07 或更高版本
 - 更新到故障管理器和 SAPHostAgent 的最新版本和修补程序
 - 部署在最新的认证操作系统上，如 Windows 2019、Suse 15.1 或 Redhat 7.6 或更高版本
 - 使用 SAP 认证 VM – 建议使用高内存 Azure VM SKU，如Es_v3或 x 大型系统 M 系列 VM SKU
@@ -277,7 +277,7 @@ SAP 软件预配管理器 （SWPM） 提供了在安装期间加密数据库的�
 
 
 ## <a name="useful-links-notes--whitepapers-for-sap-ase"></a>SAP ASE 的有用链接、说明&白皮书
-[Sybase ASE 16.3 PL7 文档](https://help.sap.com/viewer/product/SAP_ASE/16.0.3.7/en-US)的起始页提供了指向各种文档的链接，其中的文档包括：
+[SAP ASE 16.0.03.07 文档](https://help.sap.com/viewer/product/SAP_ASE/16.0.3.7/en-US)的起始页提供了指向文档中的文档的各种文档的链接：
 
 - SAP ASE 学习之旅 - 管理&监控
 - SAP ASE 学习之旅 - 安装&升级
@@ -303,11 +303,11 @@ SAP 软件预配管理器 （SWPM） 提供了在安装期间加密数据库的�
 其他信息发布于 
 
 - [SAP 自适应服务器企业上的 SAP 应用程序](https://community.sap.com/topics/applications-on-ase)
-- [Sybase信息中心](http://infocenter.sybase.com/help/index.jsp) 
+- [SAP ASE 信息中心](http://infocenter.sybase.com/help/index.jsp) 
+- [SAP ASE 始终打开，具有第 3 个 DR 节点设置](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)
 
 每月新闻稿通过 SAP[支持说明发布#2381575](https://launchpad.support.sap.com/#/notes/2381575) 
 
-[Sybase ASE 始终打开，带有第 3 个 DR 节点设置](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199) 
 
 ## <a name="next-steps"></a>后续步骤
 查看 Azure[上的 SAP 工作负荷文章：规划和部署检查表](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)

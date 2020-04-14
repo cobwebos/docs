@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: 850ab0ee89ee167886d8747a0c721bb643529e14
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ac6d72cbb69796851e58098138d51bb0988be4ec
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80052076"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520978"
 ---
 # <a name="what-is-personalizer"></a>什么是个性化体验创建服务？
 
@@ -59,7 +59,7 @@ Azure 个性化体验创建服务是基于云的 API 服务，有助于客户端
 
 每次以实时方式显示内容时，就会调用个性化体验创建服务的**排名** [API](https://go.microsoft.com/fwlink/?linkid=2092082)。  这称为“事件”  ，使用“事件 ID”  来标注。
 
-个性化体验创建服务的**奖励** [API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) 可以实时调用，也可以延迟，以便更好地适应基础结构。 根据业务需要确定奖励分数。 该分数可以是单个值（例如，1 表示“好”，0 表示“差”），也可以是你根据业务目标和指标创建的算法所生成的某个数字。
+个性化体验创建服务的**奖励** [API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) 可以实时调用，也可以延迟，以便更好地适应基础结构。 根据业务需要确定奖励分数。 奖励分介于 0 到 1 之间。 该分数可以是单个值（例如，1 表示“好”，0 表示“差”），也可以是你根据业务目标和指标创建的算法所生成的某个数字。
 
 ## <a name="personalizer-content-requirements"></a>个性化体验创建服务内容要求
 

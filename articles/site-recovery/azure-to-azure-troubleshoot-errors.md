@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: 0882eaa8b54966c7a804cf78a3928771b238e056
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 243fea8fae071368a91bf482190442f15c372fc1
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80884998"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271295"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>排查 Azure 到 Azure VM 复制错误
 
-本文介绍如何排查在 Azure Site Recovery 中将 Azure 虚拟机 (VM) 从一个区域复制和恢复到另一个区域期间出现的常见错误。 有关受支持的配置的详细信息，请参阅[复制 Azure VM 支持矩阵](azure-to-azure-support-matrix.md)。
+本文介绍如何在 Azure 虚拟机 （VM） 从一个区域复制和恢复期间解决 Azure 站点恢复中的常见错误。 有关受支持的配置的详细信息，请参阅[复制 Azure VM 支持矩阵](azure-to-azure-support-matrix.md)。
 
 ## <a name="azure-resource-quota-issues-error-code-150097"></a>Azure 资源配额问题（错误代码 150097）
 
@@ -169,11 +169,11 @@ Site Recovery configuration failed.
    -rw-r--r-- 1 root root 1774 Jan  8 09:52 b204d74a.0
    ```
 
-## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Site Recovery URL 或 IP 范围的出站连接（错误代码 151037 或 151072）
+## <a name="outbound-urls-or-ip-ranges-error-code-151037-or-151072"></a>出站 URL 或 IP 范围（错误代码 151037 或 151072）
 
 要使站点恢复复制正常工作，需要 VM 与特定 URL 的出站连接。 如果 VM 位于防火墙后或使用网络安全组 (NSG) 规则来控制出站连接，则可能会遇到以下问题之一。 尽管我们继续支持通过 URL 进行出站访问，但不再支持使用允许的 IP 范围列表。
 
-### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195"></a>问题 1：未能向 Site Recovery 注册 Azure 虚拟机 (151195)
+### <a name="issue-1-failed-to-register-azure-vm-with-site-recovery-151195"></a>问题 1：未能将 Azure VM 注册到站点恢复 （151195）
 
 #### <a name="possible-causes"></a>可能的原因
 
@@ -216,7 +216,7 @@ Azure 站点恢复需要访问 Office 365 IP 范围进行身份验证。
 
 如果使用 Azure 网络安全组 （NSG） 规则/防火墙代理来控制 VM 上的出站网络连接，请确保使用服务标记。 我们不再支持使用通过 NSG 的 IP 地址允许列表进行 Azure 站点恢复。
 
-### <a name="issue-4-azure-to-azure-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>问题 4：当网络流量通过本地代理服务器 （151072） 时，Azure 到 Azure 复制失败
+### <a name="issue-4-replication-fails-when-network-traffic-uses-on-premises-proxy-server-151072"></a>问题 4：当网络流量使用本地代理服务器 （151072） 时，复制失败
 
 #### <a name="possible-cause"></a>可能的原因
 
@@ -245,7 +245,7 @@ Azure 站点恢复需要访问 Office 365 IP 范围进行身份验证。
 
 要指定[所需的 URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls)或所需的[IP 范围](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)，请按照[Azure 到 Azure 复制中的"关于网络"中的](azure-to-azure-about-networking.md)指南进行操作。
 
-## <a name="disk-not-found-in-the-machine-error-code-150039"></a>在计算机中找不到磁盘（错误代码 150039）
+## <a name="disk-not-found-in-vm-error-code-150039"></a>在 VM 中找不到磁盘（错误代码 150039）
 
 必须初始化附加到 VM 的新磁盘。 如果未找到磁盘，将显示以下消息：
 
@@ -267,7 +267,7 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 
 如果问题持续出现，请联系支持人员。
 
-## <a name="one-or-more-disks-are-available-for-protection-error-code-153039"></a>一个或多个磁盘可用于保护（错误代码 153039）
+## <a name="multiple-disks-available-for-protection-error-code-153039"></a>多个磁盘可用于保护（错误代码 153039）
 
 ### <a name="possible-causes"></a>可能的原因
 
@@ -292,7 +292,7 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 
    :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png" alt-text="关闭新磁盘警告。":::
 
-## <a name="remove-the-virtual-machine-from-the-vault-completed-with-information-error-code-150225"></a>已完成从保管库删除虚拟机的操作，但出现错误信息（错误代码 150225）
+## <a name="vm-removed-from-vault-completed-with-information-error-code-150225"></a>从库中删除的 VM 已提供信息（错误代码 150225）
 
 当站点恢复保护虚拟机时，它会在源虚拟机上创建链接。 去除保护或禁用复制时，Site Recovery 会在完成清理作业的过程中删除这些链接。 如果虚拟机存在资源锁，清理作业将会完成但会显示一些信息。 该信息指出，虚拟机已从恢复服务保管库中删除，但某些过期链接无法从源计算机中清理。
 
@@ -317,7 +317,7 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 1. 运行脚本，_清理-陈旧-配置-Azure-VM.ps1_。 将**订阅 ID、VM****资源组**和**VM 名称**作为参数提供。
 1. 如果系统提示您使用 Azure 凭据，请提供它们。 然后验证该脚本是否正常运行，而不会出现任何失败。
 
-## <a name="replication-cant-be-enabled-because-of-stale-resource-links-on-the-vm-error-code-150226"></a>由于 VM 上存在过时的资源链接，无法启用复制（错误代码 150226）
+## <a name="replication-not-enabled-on-vm-with-stale-resources-error-code-150226"></a>在具有陈旧资源的 VM 上未启用复制（错误代码 150226）
 
 ### <a name="possible-causes"></a>可能的原因
 
@@ -342,9 +342,9 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 1. 运行脚本，_清理-陈旧-配置-Azure-VM.ps1_。 将**订阅 ID、VM****资源组**和**VM 名称**作为参数提供。
 1. 如果系统提示您使用 Azure 凭据，请提供它们。 然后验证该脚本是否正常运行，而不会出现任何失败。
 
-## <a name="unable-to-see-the-azure-vm-or-resource-group-for-the-selection-in-the-enable-replication-job"></a>无法在启用复制作业中查看所选内容的 Azure VM 或资源组
+## <a name="cant-select-vm-or-resource-group-in-enable-replication-job"></a>无法在启用复制作业中选择 VM 或资源组
 
-### <a name="issue-1-the-resource-group-and-source-virtual-machine-are-in-different-locations"></a>问题 1：资源组和源虚拟机位于不同位置
+### <a name="issue-1-the-resource-group-and-source-vm-are-in-different-locations"></a>问题 1：资源组和源 VM 位于不同位置
 
 Site Recovery 当前要求源区域资源组和虚拟机应位于同一位置。 否则，当您尝试应用保护时，您将无法找到虚拟机或资源组。
 
@@ -375,7 +375,7 @@ Site Recovery 当前要求源区域资源组和虚拟机应位于同一位置。
 1. 运行脚本，_清理-陈旧-配置-Azure-VM.ps1_。 将**订阅 ID、VM****资源组**和**VM 名称**作为参数提供。
 1. 如果系统提示您使用 Azure 凭据，请提供它们。 然后验证该脚本是否正常运行，而不会出现任何失败。
 
-## <a name="unable-to-select-a-virtual-machine-for-protection"></a>无法选择虚拟机进行保护
+## <a name="unable-to-select-a-vm-for-protection"></a>无法选择 VM 进行保护
 
 ### <a name="possible-cause"></a>可能的原因
 
@@ -385,7 +385,7 @@ Site Recovery 当前要求源区域资源组和虚拟机应位于同一位置。
 
 转到**虚拟机** > **设置** > **扩展，** 并检查任何处于失败状态的扩展。 卸载所有失败的扩展，然后重试保护虚拟机。
 
-## <a name="the-vms-provisioning-state-isnt-valid-error-code-150019"></a>VM 的预配状态无效（错误代码 150019）
+## <a name="vm-provisioning-state-isnt-valid-error-code-150019"></a>VM 预配状态无效（错误代码 150019）
 
 若要在 VM 上启用复制，预配状态必须是“成功”。**** 遵循以下步骤检查预配状态：
 
@@ -400,15 +400,15 @@ Site Recovery 当前要求源区域资源组和虚拟机应位于同一位置。
 - 如果**预配状态****失败**，请与支持人员联系以进行故障排除。
 - 如果**预配状态****正在更新**，则可能正在部署另一个扩展。 检查 VM 上是否有任何正在进行的操作，等待它们完成，然后重试失败的站点恢复作业以启用复制。
 
-## <a name="unable-to-select-target-vm-network-selection-tab-is-unavailable"></a>无法选择目标 VM（网络选择选项卡不可用）
+## <a name="unable-to-select-target-vm"></a>无法选择目标 VM
 
-### <a name="issue-1-your-vm-is-attached-to-a-network-thats-already-mapped-to-a-target-network"></a>问题 1：您的 VM 已连接到已映射到目标网络的网络
+### <a name="issue-1-vm-is-attached-to-a-network-thats-already-mapped-to-a-target-network"></a>问题 1：VM 连接到已映射到目标网络的网络
 
 如果源 VM 是虚拟网络的一部分，并且来自同一虚拟网络的另一个 VM 已与目标资源组中的网络映射，则默认情况下网络选择下拉列表框不可用（显示为灰色）。
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png" alt-text="网络选择列表不可用。":::
 
-### <a name="issue-2-you-previously-protected-the-vm-by-using-site-recovery-and-then-you-disabled-the-replication"></a>问题 2：您以前使用站点恢复保护 VM，然后禁用复制
+### <a name="issue-2-you-previously-protected-the-vm-and-then-you-disabled-the-replication"></a>问题 2：您以前保护 VM，然后禁用复制
 
 禁用 VM 复制不会删除网络映射。 必须从保护 VM 的恢复服务保管库中删除映射。 转到**恢复服务保管库** > **站点恢复基础结构** > **网络映射**。
 
@@ -420,9 +420,9 @@ Site Recovery 当前要求源区域资源组和虚拟机应位于同一位置。
 
 更改网络映射会影响使用同一网络映射的所有受保护 VM。
 
-## <a name="com-or-volume-shadow-copy-service-error-error-code-151025"></a>COM+ 或卷影影复制服务错误（错误代码 151025）
+## <a name="com-or-vss-error-code-151025"></a>COM+ 或 VSS（错误代码 151025）
 
-发生此错误时，将显示以下消息：
+当出现 COM+ 或卷影影复制服务 （VSS） 错误时，将显示以下消息：
 
 ```Output
 Site Recovery extension failed to install.
@@ -458,7 +458,7 @@ Protection couldn't be enabled for the virtual machine as it has <DiskName> with
 
 确保磁盘大小在支持的大小范围内，然后重试该操作。
 
-## <a name="protection-wasnt-enabled-because-the-grub-configuration-includes-the-device-name-instead-of-the-uuid-error-code-151126"></a>未启用保护，因为 GRUB 配置包括设备名称而不是 UUID（错误代码 151126）
+## <a name="protection-not-enabled-when-grub-uses-device-name-error-code-151126"></a>当 GRUB 使用设备名称时未启用保护（错误代码 151126）
 
 ### <a name="possible-causes"></a>可能的原因
 
@@ -493,7 +493,7 @@ Linux 大统一引导加载程序 （GRUB） 配置文件 _（/boot/grub/menu.ls
 
 1. 重试保护。
 
-## <a name="enable-protection-failed-because-the-device-mentioned-in-the-grub-configuration-doesnt-exist-error-code-151124"></a>由于 GRUB 配置中所述的设备不存在，启用保护失败（错误代码 151124）
+## <a name="protection-failed-because-grub-device-doesnt-exist-error-code-151124"></a>保护失败，因为 GRUB 设备不存在（错误代码 151124）
 
 ### <a name="possible-cause"></a>可能的原因
 
@@ -517,7 +517,7 @@ GRUB配置文件 _（/boot/grub/menu.lst_， _/引导/grub/grub.cfg，_ _/引导
 
 如果 LVM 设备不存在，请创建该设备，或者从 GRUB 配置文件中删除该设备对应的参数。 然后重试启用保护。
 
-## <a name="a-site-recovery-mobility-service-update-finished-with-warnings-error-code-151083"></a>站点恢复移动服务更新已完成警告（错误代码 151083）
+## <a name="mobility-service-update-finished-with-warnings-error-code-151083"></a>移动服务更新已完成警告（错误代码 151083）
 
 站点恢复移动性服务具有许多组件，其中一个组件称为筛选器驱动程序。 筛选器驱动程序只有在系统重启期间才会加载到系统内存中。 每当移动服务更新包含筛选器驱动程序更改时，计算机都会更新，但仍会看到一条警告，指出某些修补程序需要重新启动。 之所以出现该警告，是因为仅当已加载新的筛选器驱动程序（只会在重启期间发生）时，筛选器驱动程序修复措施才会生效。
 
@@ -526,7 +526,9 @@ GRUB配置文件 _（/boot/grub/menu.lst_， _/引导/grub/grub.cfg，_ _/引导
 >
 > 除了筛选器驱动程序之外，移动服务更新中任何其他增强和修复的好处都生效，无需重新启动。
 
-## <a name="protection-couldnt-be-enabled-because-the-replica-managed-disk-already-exists-without-expected-tags-in-the-target-resource-group-error-code-150161"></a>由于副本托管磁盘已存在，但目标资源组中不包含预期的标记，因此无法启用保护（错误代码 150161）
+## <a name="protection-not-enabled-if-replica-managed-disk-exists"></a>如果存在副本托管磁盘，则未启用保护
+
+当复制副本托管磁盘在目标资源组中已存在，没有预期标记时，将发生此错误。
 
 ### <a name="possible-cause"></a>可能的原因
 

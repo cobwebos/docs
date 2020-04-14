@@ -6,12 +6,12 @@ ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: a40ff50dcb0934cbf1ea5222675bd75948ac1d03
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9b0154889544e0054e309cc5f43851b73b4396b4
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223964"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754689"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>教程：配置群集的网络设置
 
@@ -76,7 +76,7 @@ FXT Edge Filer 群集使用 X.509 证书执行以下功能：
 
 如果需要将证书上传到群集，请使用“群集” > “证书”设置页面   。 有关详细信息，请参阅群集配置指南中的[群集 > 证书](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_certificates.html)页面。
 
-要加密群集管理通信，请使用“群集” > “常规设置”设置页面，选择用于管理 SSL 的证书   。
+要加密群集管理通信，请使用“群集” > “常规设置”设置页面，选择用于管理 TLS 的证书   。
 
 > [!Note] 
 > 云服务访问密钥使用“云凭据”配置页面进行保存  。 上文的[添加 Core Filer](fxt-add-storage.md#add-a-core-filer) 部分显示了示例；有关详细信息，请参阅群集配置指南中的[云凭据](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_credentials.html)部分。 

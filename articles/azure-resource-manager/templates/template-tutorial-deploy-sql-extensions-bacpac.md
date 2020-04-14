@@ -5,16 +5,16 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8e65ebbfa0971bf2156165b55ca18eee3cc74bc9
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 83108c056035b16d26343d82c721b275ebcad0c5
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239276"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754324"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>教程：使用 ARM 模板导入 SQL BACPAC 文件
 
-了解如何使用 Azure SQL 数据库扩展，以通过 Azure 资源管理器 (ARM) 模板导入 BACPAC 文件。 部署项目包括主模板文件以及完成部署所需的任何文件。 BACPAC 文件是一个项目。 
+了解如何使用 Azure SQL 数据库扩展，以通过 Azure 资源管理器 (ARM) 模板导入 BACPAC 文件。 部署项目包括主模板文件以及完成部署所需的任何文件。 BACPAC 文件是一个项目。
 
 在本教程中，你将创建一个模板来部署 Azure SQL Server、SQL 数据库并导入 BACPAC 文件。 要了解如何使用 ARM 模板来部署 Azure 虚拟机扩展，请参阅[教程：使用 ARM 模板部署虚拟机扩展](./template-tutorial-deploy-vm-extensions.md)。
 
@@ -255,7 +255,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你部署了 SQL Server、SQL 数据库并导入了 BACPAC 文件。 BACPAC 文件存储在 Azure 存储帐户中。 得到该 URL 的任何人都可以访问该文件。 要了解如何保护 BACPAC 文件（项目），请参阅：
+在本教程中，你部署了 SQL Server、SQL 数据库并导入了 BACPAC 文件。 若要了解如何排查模板部署问题，请参阅：
 
 > [!div class="nextstepaction"]
-> [保护项目](./template-tutorial-secure-artifacts.md)
+> [排查 ARM 模板部署问题](./template-tutorial-troubleshoot.md)

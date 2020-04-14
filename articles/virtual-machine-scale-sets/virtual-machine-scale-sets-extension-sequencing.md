@@ -1,18 +1,18 @@
 ---
 title: 将扩展排序与 Azure 虚拟机缩放集一起使用
 description: 了解如何在虚拟机规模集上部署多个扩展时对扩展预配进行排序。
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.author: manayar
-ms.openlocfilehash: cde3fb8b56d8509a45bde00dde55e3c69d015b8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 737040699dd62d722b9a9ad4d8915ccb270c2d06
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278050"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273743"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>在虚拟机规模集中对扩展预配进行排序
 Azure 虚拟机扩展提供部署后配置和管理、监视、安全性等功能。 生产部署通常结合使用为 VM 实例配置的多个扩展来实现所需效果。

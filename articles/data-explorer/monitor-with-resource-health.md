@@ -7,12 +7,12 @@ ms.reviewer: prvavill
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 9b8b1b40e972d7719ef2cf495ed12cb4ed3478fd
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: ee42f45d8c96e908061142b5a8e6b2e5cee21993
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80479365"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262054"
 ---
 # <a name="monitor-azure-data-explorer-using-resource-health-preview"></a>使用资源运行状况监视 Azure 数据资源管理器（预览）
 
@@ -44,7 +44,7 @@ Azure 数据资源管理器[的资源运行状况](/azure/service-health/resourc
 
 ### <a name="unavailable"></a>不可用
 
-运行状况为 **"不可用**"表示 Azure 数据资源管理器资源存在持续问题，导致它无法用于查询和引入。 例如，Azure 数据资源管理器资源中的节点可能意外重新启动。 如果 Azure 数据资源管理器资源长时间处于此状态，请与[支持]()人员 联系 。
+运行状况为 **"不可用**"表示 Azure 数据资源管理器资源存在持续问题，导致它无法用于查询和引入。 例如，Azure 数据资源管理器资源中的节点可能意外重新启动。 如果 Azure 数据资源管理器资源长时间处于此状态，请与支持人员联系。
 
 ![不可用](media/monitor-with-resource-health/unavailable.png)
 

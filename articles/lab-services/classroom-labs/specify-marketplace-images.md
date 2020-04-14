@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
+ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: ad56041f853d030e3a286610fe4872bffecaee12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a64dee6da521764a38fc60bee06545f6a561c297
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444662"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257686"
 ---
 # <a name="specify-marketplace-images-available-to-lab-creators"></a>指定可供实验室创建者使用的市场映像
 作为实验室帐户所有者，你可以指定可供实验室创建者用来在实验室帐户中创建实验室的市场映像。 
@@ -50,6 +50,19 @@ ms.locfileid: "77444662"
 要启用禁用的图像，请选择 **...（省略）** 在最后一列中，选择 **"启用图像**"。 或者，选择图像名称前的复选框，然后选择工具栏上的 **"启用选定的图像**"。 
 
 要同时禁用多个图像，请在图像名称之前选择复选框，然后选择工具栏上的 **"启用选定图像**"。 
+
+## <a name="enable-images-at-the-time-of-lab-creation"></a>在实验室创建时启用图像
+您可以在实验室创建时启用更多图像： 
+
+1. 使用**实验室帐户所有者**凭据登录到[Azure 实验室服务网站](https://labs.azure.com)
+2. 选择默认虚拟机映像或向下箭头。 
+3. 选择 **"启用更多图像"选项**。 
+
+    ![启用更多图像选项](../media/specify-marketplace-images/enable-more-images-menu.png)
+4. 按照上一节的说明启用您选择的图像。 
+5. 您可能需要关闭 **"新建"实验室**窗口并重新打开它才能查看在上一步骤中选择的图像。 
+
+
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章：

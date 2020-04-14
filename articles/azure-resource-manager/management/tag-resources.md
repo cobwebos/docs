@@ -2,13 +2,13 @@
 title: 为逻辑组织标记资源、资源组和订阅
 description: 演示如何应用标记来整理 Azure 资源以便进行计费和管理。
 ms.topic: conceptual
-ms.date: 04/01/2020
-ms.openlocfilehash: 44759db59ef7e7556c8fbfca3bbc58ef84796198
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.date: 04/10/2020
+ms.openlocfilehash: 2f437682a2ac415ce8478b09a44bff044bd9511b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010794"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255118"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>使用标记组织 Azure 资源和管理层次结构
 

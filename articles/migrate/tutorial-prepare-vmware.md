@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 准备评估/迁移 VMware VM。
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: aecc82ff4403c044fae95eb9b7c8c7561fcb82b6
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2e8aa72300c840832168138015e0a01ab054f954
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336667"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619424"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>准备 VMware VM 以进行评估和迁移到 Azure
 
@@ -36,7 +36,7 @@ ms.locfileid: "80336667"
 
 **任务** | **详细信息** 
 --- | --- 
-**创建 Azure Migrate 项目** | Azure 帐户需要有“参与者”或“所有者”权限才能创建项目。 
+**创建 Azure Migrate 项目** | Azure 帐户需要“参与者”或“所有者”权限才能创建项目。 
 **注册资源提供程序** | Azure Migrate 使用轻型 Azure Migrate 设备，通过“Azure Migrate: 服务器评估”来发现和评估 VMware VM，并将这些 VM 迁移到 Azure。<br/><br/> 在设备注册过程中，资源提供程序会注册到在设备中选择的订阅。 [了解详细信息](migrate-appliance-architecture.md#appliance-registration)。<br/><br/> 需要订阅的“参与者”或“所有者”角色才能注册资源提供程序。
 **创建 Azure AD 应用** | 注册设备时，Azure Migrate 将创建 Azure Active Directory (Azure AD) 应用。 <br/><br/> - 第一个应用用于设备上运行的代理与其各自在 Azure 上运行的服务之间的通信。<br/><br/> - 第二个应用专门用于访问在用户的订阅中创建的 KeyVault，以便进行无代理 VMware VM 迁移。 [了解详细信息](migrate-appliance-architecture.md#appliance-registration)。<br/><br/> 你需要具有创建 Azure AD 应用的权限（在“应用程序开发人员”角色中提供）。
 **创建 Key Vault** | 若要使用无代理迁移来迁移 VMware VM，Azure Migrate 需要创建一个 Key Vault，用于管理订阅中复制存储帐户的访问密钥。<br/><br/> 若要创建保管库，需要对 Azure Migrate 项目所在的资源组拥有角色分配权限。

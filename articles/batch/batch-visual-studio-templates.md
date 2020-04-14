@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: a71dbd1b38ff58ccf1eb7a4d50daad5b24922e2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e42917237f3b114881655d88a017c2c4366612b3
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022743"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254557"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>使用 Visual Studio 项目模板快速启动 Batch 解决方案
 
@@ -190,7 +190,7 @@ Split() 实现具有以下项的访问权限：
 
 使用作业管理器模板实现的作业管理器任务返回三个可能的退出代码：
 
-| 代码 | 描述 |
+| 代码 | 说明 |
 | --- | --- |
 | 0 |作业管理器成功完成。 作业拆分器代码已运行完成，并且所有任务都已添加到作业中。 |
 | 1 |作业管理器任务失败，程序的“预期”部分有异常。 异常已转换成 JobManagerException 与诊断信息，如有可能，还提供可解决失败的建议。 |
@@ -368,7 +368,7 @@ Run() 实现具有以下项的访问权限：
 
 使用任务处理器模板实现的任务处理器任务返回三个可能的退出代码：
 
-| 代码 | 描述 |
+| 代码 | 说明 |
 | --- | --- |
 | [Process.ExitCode][process_exitcode] |任务处理器已运行完成。 请注意，这并不表示调用的程序已成功，只表示任务处理器已成功调用程序并运行任何后处理，而没有异常。 退出代码的含义取决于所调用的程序，一般而言，退出代码 0 表示程序已成功，任何其他退出代码表示程序失败。 |
 | 1 |任务处理器任务失败，程序的“预期”部分有异常。 异常已转换成 `TaskProcessorException` 与诊断信息，如有可能，还提供可解决失败的建议。 |
@@ -444,7 +444,7 @@ parameters.json 的资源文件，如果找到，则将它加载为参数字典�
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
 [process_exitcode]: https://msdn.microsoft.com/library/system.diagnostics.process.exitcode.aspx
 [vs_gallery]: https://visualstudiogallery.msdn.microsoft.com/
-[vs_gallery_templates]: https://go.microsoft.com/fwlink/?linkid=820714
+[vs_gallery_templates]: https://github.com/Azure/batch-extension-templates
 [vs_find_use_ext]: https://msdn.microsoft.com/library/dd293638.aspx
 
 [diagram01]: ./media/batch-visual-studio-templates/diagram01.png

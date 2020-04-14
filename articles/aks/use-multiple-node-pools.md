@@ -4,23 +4,23 @@ description: 了解如何为 Azure Kubernetes 服务 (AKS) 中的群集创建和
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 26fd541552ee203216af5a08d948644d82061191
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: f948c115b86abc532a121c68fa7a148ff15caae9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984906"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259079"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的群集创建和管理多个节点池
 
-在 Azure Kubernetes 服务 (AKS) 中，采用相同配置的节点分组成节点池。** 这些节点池包含运行应用程序的底层 VM。 创建 AKS 群集时定义节点的初始数量及其大小 （SKU），该群集将创建*默认节点池*。 若要支持具有不同计算或存储需求的应用程序，可以创建额外的节点池。 例如，使用这些额外节点池可为计算密集型应用程序提供 GPU，或访问高性能 SSD 存储。
+在 Azure Kubernetes 服务 (AKS) 中，采用相同配置的节点分组成节点池。** 这些节点池包含运行应用程序的底层 VM。 创建 AKS 群集时定义节点的初始数量及其大小 （SKU），该群集将创建[系统节点池][use-system-pool]。 要支持具有不同计算或存储需求的应用程序，您可以创建其他用户*节点池*。 系统节点池主要用于托管关键系统 pod（如 CoreDNS 和隧道前）。 用户节点池的主要目的是托管应用程序窗格。 但是，如果您希望在 AKS 群集中只具有一个池，则可以在系统节点池上安排应用程序窗格。 用户节点池是放置特定于应用程序的窗格的位置。 例如，使用这些附加用户节点池为计算密集型应用程序提供 GPU，或访问高性能 SSD 存储。
 
 > [!NOTE]
 > 利用此功能可以更好地控制如何创建和管理多个节点池。 因此，需要使用单独的命令来执行创建/更新/删除操作。 以前，通过 `az aks create` 或 `az aks update` 执行的群集操作使用 managedCluster API，并且只能通过这些操作更改控制平面和单个节点池。 此功能通过 agentPool API 为代理池公开单独的操作集，并要求使用 `az aks nodepool` 命令集对单个节点池执行操作。
 
 本文介绍如何在 AKS 群集中创建和管理多个节点池。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 您需要 Azure CLI 版本 2.2.0 或更高版本安装和配置。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
@@ -29,7 +29,8 @@ ms.locfileid: "80984906"
 创建和管理支持多个节点池的 AKS 群集时存在以下限制：
 
 * 请参阅[Azure 库伯奈斯服务 （AKS） 中的配额、虚拟机大小限制和地区可用性][quotas-skus-regions]。
-* 默认情况下，无法删除系统节点池，而无法删除第一个节点池。
+* 您可以删除系统节点池，前提是您有另一个系统节点池要将其置于 AKS 群集中的位置。
+* 系统池必须至少包含一个节点，并且用户节点池可能包含零个或多个节点。
 * AKS 群集必须通过标准 SKU 负载均衡器来使用多个节点池，而基本 SKU 负载均衡器并不支持该功能。
 * AKS 群集必须对节点使用虚拟机规模集。
 * 节点池的名称只能包含小写字母数字字符，且必须以小写字母开头。 Linux 节点池的名称长度必须为 1 到 12 个字符；Windows 节点池的名称长度必须为 1 到 6 个字符。
@@ -37,6 +38,9 @@ ms.locfileid: "80984906"
 * 在创建群集的过程中创建多个节点池时，节点池使用的所有 Kubernetes 版本都必须与已为控制平面设置的版本相匹配。 这可以在已使用每节点池操作预配了群集后更新。
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
+
+> [!Important]
+> 如果在生产环境中为 AKS 群集运行单个系统节点池，我们建议您为节点池至少使用三个节点。
 
 若要开始，请创建包含单个节点池的 AKS 群集。 下面的示例使用[az 组创建][az-group-create]命令在*东部*区域创建名为*myResourceGroup*的资源组。 然后使用 [az AKS create][az-aks-create] 命令创建名为 *myAKSCluster* 的 AKS 群集。 *1.15.7* *的 --kubernetes 版本*用于演示如何在以下步骤中更新节点池。 可以指定任何[支持的 Kubernetes 版本][supported-versions]。
 
@@ -753,6 +757,8 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>后续步骤
 
+了解有关[系统节点池][use-system-pool]的信息。
+
 本文已介绍如何在 AKS 群集中创建和管理多个节点池。 有关如何跨节点池控制 pod 的详细信息，请参阅[有关 AKS 中的高级计划程序功能的最佳做法][operator-best-practices-advanced-scheduler]。
 
 要创建和使用 Windows 服务器容器节点池，请参阅[在 AKS 中创建 Windows 服务器容器][aks-windows]。
@@ -788,3 +794,4 @@ az group delete --name myResourceGroup --yes --no-wait
 [tag-limitation]: ../azure-resource-manager/resource-group-using-tags.md
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [vm-sizes]: ../virtual-machines/linux/sizes.md
+[use-system-pool]: use-system-pools.md

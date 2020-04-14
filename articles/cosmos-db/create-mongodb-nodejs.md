@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 7e3e9e6c76d67db03ea812a4832e98f4449c9aba
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: de4a9324cd1cfaccec6dcca6a8dfc057d37275c0
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77061652"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619238"
 ---
 # <a name="quickstart-migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>快速入门：将现有的 MongoDB Node.js Web 应用迁移到 Azure Cosmos DB 
 
@@ -230,7 +230,7 @@ Cosmos 数据库中存储的数据可用于在 Azure 门户中查看和查询。
 ```
 
 > [!NOTE] 
-> `ssl=true` 选项很重要，因为 [Cosmos DB 需要 SSL](connect-mongodb-account.md#connection-string-requirements)。 
+> 由于 Cosmos DB 的要求，`ssl=true` 选项很重要。 有关详细信息，请参阅[连接字符串要求](connect-mongodb-account.md#connection-string-requirements)。
 >
 >
 

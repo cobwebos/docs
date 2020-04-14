@@ -5,16 +5,16 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: ce576d9825819770486197a6c39425adf6ac3208
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 05b166b2ec46900d9e3972025efb581d9619ec6a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275894"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252590"
 ---
-# <a name="customer-leads-from-your-marketplace-offer"></a>市场套餐中的客户线索
+# <a name="customer-leads-from-your-marketplace-offer"></a>来自市场产品/服务的客户线索
 
 潜在顾客是有兴趣的客户，或从[Azure 应用商店](https://azuremarketplace.microsoft.com)或[AppSource](https://appsource.microsoft.com)部署您的产品/服务。 产品/服务发布到市场后，您将收到客户潜在客户。 本文将解释：
 
@@ -133,7 +133,7 @@ Azure Blob 潜在顾客目标不再受支持，因此您缺少产品/服务生�
 
 ### <a name="i-received-an-email-from-marketplace-why-cant-i-find-the-lead-in-my-crm"></a>我收到了来自市场的电子邮件，为什么找不到 CRM 中的潜在顾客？
 
-最终用户的电子邮件域可能来自 .edu。 出于隐私原因，我们不会从 .edu 域传递 PII 数据。 通过aka.ms/marketplacepublishersupport提交支持票证。
+最终用户的电子邮件域可能来自 .edu。 出于隐私原因，我们不会从 .edu 域传递私人身份信息。 通过aka.ms/marketplacepublishersupport提交支持票证。
 
 ### <a name="i-have-configured-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>我已经将 Azure 表配置为我的潜在顾客目标，如何查看潜在顾客？
 
@@ -149,13 +149,17 @@ Azure Blob 潜在顾客目标不再受支持，因此您缺少产品/服务生�
 
 ### <a name="there-was-an-issue-with-my-lead-destination-and-i-missed-some-leads-can-i-have-them-sent-to-me-in-an-email"></a>潜在顾客目标存在问题，我丢失了一些潜在顾客。 可通过电子邮件将他们发送给我吗？
 
-由于 PII（个人标识信息）政策，我们无法通过不安全的电子邮件共享潜在顾客信息。
+由于私人可识别信息政策，我们无法通过不安全的电子邮件共享潜在顾客信息。
 
 ### <a name="i-have-configured-azure-table-as-my-lead-destination-how-much-will-it-cost"></a>我已经将 Azure 表配置为我的潜在顾客目标，它将花费多少？
 
 潜在顾客常规数据较低（几乎所有发布者都 <1 GB）。 费用将取决于收到的潜在顾客数量，如果一个月收到 1,000 个潜在顾客，则费用约为 50 美分。 有关存储定价的详细信息，请参阅[存储定价](https://azure.microsoft.com/pricing/details/storage/)。
 
 如果您的问题仍未得到解答，请通过aka.ms/marketplacepublishersupport联系支持人员，然后选择 **"产品/服务创建"+****您的产品/服务类型**和 **"潜在客户管理配置"。** 
+
+### <a name="i-am-receiving-email-notifications-when-new-customer-leads-are-received-how-can-i-configure-who-to-receive-these-emails"></a>收到新客户线索时，我收到电子邮件通知。 如何配置接收这些电子邮件的人员？
+
+在合作伙伴中心访问您的优惠，并导航到**产品/服务设置**页面 ->**潜在顾客管理** -> **编辑**。 更新 **"联系人电子邮件**"字段下的电子邮件地址。
 
 ## <a name="next-steps"></a>后续步骤
 

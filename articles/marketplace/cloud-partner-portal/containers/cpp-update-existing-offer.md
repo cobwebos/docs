@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: dsindona
-ms.openlocfilehash: 74f97b082c07e17a59a1615c4b1245434c497ab5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 650ef45e56184b67efba67810580d9d6e763a4d0
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80279940"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271261"
 ---
 # <a name="update-an-existing-container-offer"></a>更新现有的容器组
+
+> [!IMPORTANT]
+> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 容器产品的管理移动到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照["创建 Azure 容器产品/服务](https://aka.ms/CreateContainerOffer)"中的说明进行操作，以管理迁移的优惠。
 
 本文分步介绍了在[云合作伙伴门户](https://cloudpartner.azure.com/)中更新容器产品/服务的各个方面。
 

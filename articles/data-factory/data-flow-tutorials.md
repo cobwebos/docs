@@ -6,12 +6,12 @@ ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 03/24/2020
-ms.openlocfilehash: cc0feff48e7da35535e30c6741994f48750d931a
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.openlocfilehash: a4f9d48934bcb08147de4c6487629d552c252282
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80293500"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668705"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>映射数据流视频教程
 
@@ -92,6 +92,8 @@ ms.locfileid: "80293500"
 [在数据湖中对文件进行分区](https://youtu.be/VNWv-MvLQ_0)
 
 [数据仓库加载模式](https://www.youtube.com/watch?v=7mLqwtmeQFg)
+
+[Data lake file output options](https://www.youtube.com/watch?v=NAPSbjvSQA8)（Data Lake 文件输出选项）
 
 ## <a name="optimizing-mapping-data-flows"></a>优化映射数据流
 

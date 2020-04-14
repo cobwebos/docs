@@ -1,5 +1,5 @@
 ---
-title: Azure 安全中心中的威胁保护
+title: Azure 安全中心的威胁防护
 description: 本主题介绍受 Azure 安全中心威胁保护功能保护的资源
 services: security-center
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 395f4b5481fcf2028d6bfe736e58c3174a0c80b2
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: fdf22e4d981549b876a14aed2b0a1d7e0c76e40e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435349"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263448"
 ---
-# <a name="threat-protection-in-azure-security-center"></a>Azure 安全中心中的威胁保护
+# <a name="threat-protection-in-azure-security-center"></a>Azure 安全中心的威胁防护
 
 当安全中心检测到环境的任何区域中的威胁时，它会生成警报。 这些警报描述受影响资源的详细信息、建议的补救步骤，在某些情况下还描述了在响应中触发逻辑应用的选项。
 
@@ -159,19 +159,20 @@ Azure SQL 数据库和 SQL 的高级威胁防护是[高级 SQL 安全功能的�
 
 
 
-
 ## <a name="threat-protection-for-azure-storage"></a>Azure 存储的威胁保护<a name="azure-storage"></a>
 
-> [!NOTE]
-> 此服务在美国政府云中可用，但没有其他主权或 Azure 政府云区域。
+高级存储威胁保护可检测访问或利用存储帐户的异常且可能有害的尝试。 此保护层允许您解决威胁，而无需您成为安全专家，并帮助您管理安全监控系统。
 
-高级存储威胁保护（目前仅适用于 Blob 存储）可检测访问或利用存储帐户的异常和潜在有害尝试。 此保护层允许您解决威胁，而无需您成为安全专家，并帮助您管理安全监控系统。
+Azure 存储的高级威胁保护目前仅适用于 Blob[存储](https://azure.microsoft.com/services/storage/blobs/)。 
+
+此服务在所有公共云和美国政府云中都可用，但没有其他主权或 Azure 政府云区域。
+
+有关定价详细信息（包括 30 天免费试用版），请参阅[Azure 安全中心定价页面](https://azure.microsoft.com/pricing/details/security-center/)。
 
 有关详细信息，请参阅：
 
 * [如何为 Azure 存储启用高级威胁防护](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
 * [Azure 存储的威胁保护警报列表](alerts-reference.md#alerts-azurestorage)
-
 
 > [!TIP]
 > 您可以按照[本博客文章](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)中的说明来模拟 Azure 存储警报。

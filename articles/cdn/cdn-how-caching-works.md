@@ -3,7 +3,7 @@ title: 缓存工作原理 | Microsoft Docs
 description: 缓存即在本地存储数据的过程，以便将来可以更快地访问数据请求。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: magattus
-ms.openlocfilehash: 92d93fbf9fa2f8df15acb62802d7ac53db836dc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: d0c438aee7f56e96feb7167fad718fd9519a9f76
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593848"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253707"
 ---
 # <a name="how-caching-works"></a>缓存工作原理
 
@@ -127,7 +127,7 @@ Azure CDN 支持以下 HTTP 缓存指令标头，它们定义了缓存持续时�
 |    | Microsoft：常规 Web 分发 | Verizon：常规 Web 分发 | Verizon：DSA | Akamai：常规 Web 分发 | Akamai：DSA | Akamai：大型文件下载 | Akamai：常规或 VOD 媒体流式处理 |
 |------------------------|--------|-------|------|--------|------|-------|--------|
 | **荣誉起源**       | 是    | 是   | 否   | 是    | 否   | 是   | 是    |
-| **CDN 缓存持续时间** | 2 天 |7 天 | 无 | 7 天 | 无 | 1 天 | 1 年 |
+| **CDN 缓存持续时间** | 2 天 |7 天 | None | 7 天 | None | 1 天 | 1 年 |
 
 **优先处理源**：指定是否优先处理支持的缓存指令标头（如果它们存在于源服务器的 HTTP 响应中）。
 

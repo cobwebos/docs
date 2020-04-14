@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 3b73c329c3db54ba78db15ced8e919af4d4a45d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0d6d69b82e80ff9bc33e49302cf59766b9c2e8d4
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79249732"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270819"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure 的 Windows 虚拟机上运行的 SQL Server 常见问题解答
 
@@ -53,9 +53,17 @@ ms.locfileid: "79249732"
 
    是的，使用 PowerShell。 有关使用 PowerShell 部署 SQL Server VM 的详细信息，请参阅[如何使用 Azure PowerShell 预配 SQL Server 虚拟机](virtual-machines-windows-ps-sql-create.md)。
 
-1. **是否可以创建 SQL Server VM 的通用 Azure SQL Server 应用商店映像，并用它来部署 VM？**
+1. **如何在 Azure VM 上通用 SQL 服务器并使用它来部署新的 VM？**
 
-   是，但随后您必须[将每个 SQL Server VM 注册到 SQL Server VM 资源提供程序](virtual-machines-windows-sql-register-with-resource-provider.md)，以便在门户中管理 SQL Server VM，以及利用自动修补和自动备份等功能。 在资源提供程序注册时，还需要为每个 SQL Server VM 指定许可证类型。 
+   您可以部署 Windows Server VM（未在其上安装任何 SQL Server），并使用[SQL sysprep](/sql/database-engine/install-windows/install-sql-server-using-sysprep?view=sql-server-ver15)过程将 Azure VM（Windows） 上的 SQL Server 与 SQL Server 安装介质进行通用化。 拥有[软件保证](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3)的客户可以从[批量许可中心](https://www.microsoft.com/Licensing/servicecenter/default.aspx)获得其安装介质。 没有软件保证的客户可以使用具有所需版本的应用商店 SQL Server VM 映像中的设置媒体。
+
+   或者，使用 Azure 应用商店中的 SQL Server 映像之一在 Azure VM 上通用 SQL Server。 请注意，在创建自己的映像之前，必须在源映像中删除以下注册表项。 否则可能会导致 SQL Server 设置引导文件夹和/或 SQL IaaS 扩展处于失败状态。
+
+   注册表密钥路径：  
+   `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\SysPrepExternal\Specialize`
+
+   > [!NOTE]
+   > 我们建议将所有 SQL Server Azure VM（包括从自定义通用映像部署的 VM）[注册到 SQL VM 追索提供商](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-register-with-resource-provider?tabs=azure-cli%2Cbash)，以满足合规性要求，并利用可选功能（如自动修补和自动备份）。 它还允许您为每个 SQL Server VM[指定许可证类型](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-ahb?tabs=azure-portal)。
 
 1. **是否可以使用我自己的 VHD 来部署 SQL Server VM？**
 
@@ -117,13 +125,13 @@ ms.locfileid: "79249732"
    被动 SQL Server 实例不会为客户端提供 SQL Server 数据，也不会运行活动的 SQL Server 工作负荷。 它只用于与主服务器同步，或者使被动数据库保持热备用状态。 如果它提供数据（例如向运行活动 SQL Server 工作负荷的客户端报告）或执行产品术语中指定的任何工作以外的任何工作，则它必须是付费许可的 SQL Server 实例。 辅助实例允许以下活动：数据库一致性检查或 CheckDB、完整备份、事务日志备份和监视资源使用情况数据。 您还可以在 90 天内同时运行主灾难恢复实例，进行短暂的灾难恢复测试。
    
 
-1. **哪些方案可以利用"厌恶者恢复 （DR）"好处？**
+1. **哪些方案可以利用灾难恢复 （DR） 优势？**
 
    [许可指南](https://aka.ms/sql2019licenseguide)提供了可以使用灾难恢复收益的方案。 有关详细信息，请参阅您的产品条款并与您的许可联系人或客户经理联系。
 
 1. **哪些订阅支持灾难恢复 （DR） 权益？**
 
-   提供软件保障等价订阅权限作为固定权益的综合计划支持 DR 权益。 这包括。 但不限于开放值 （OV）、开放价值订阅 （OVS）、企业协议 （EA）、企业订阅协议 （EAS） 以及服务器和云注册 （SCE）。 有关详细信息，请参阅[产品条款](https://www.microsoft.com/licensing/product-licensing/products)并与您的许可联系人或 acocunt 经理联系。 
+   提供软件保障等价订阅权限作为固定权益的综合计划支持 DR 权益。 这包括。 但不限于开放值 （OV）、开放价值订阅 （OVS）、企业协议 （EA）、企业订阅协议 （EAS） 以及服务器和云注册 （SCE）。 有关详细信息，请参阅[产品条款](https://www.microsoft.com/licensing/product-licensing/products)并与您的许可联系人或客户经理联系。 
 
    
  ## <a name="resource-provider"></a>资源提供程序

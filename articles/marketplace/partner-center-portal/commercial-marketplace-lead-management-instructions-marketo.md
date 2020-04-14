@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 35d57d117f6308863965ffd789c0e28bedd0f301
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 04eae529efcf9509d8cd43a7629bb0b76b593cd0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281504"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252408"
 ---
 # <a name="configure-lead-management-in-marketo"></a>在 Marketo 中配置潜在顾客管理
 
@@ -76,3 +76,9 @@ ms.locfileid: "80281504"
     >[!Note]
     >您必须完成配置产品/服务的其余部分并发布它，然后才能收到产品/服务的潜在顾客。 
 
+5. **联系电子邮件**- 为公司中应接收新潜在顾客的电子邮件通知的人员提供电子邮件。 您可以通过用分号分隔它们来提供多封电子邮件。
+6. 选择“确定”  。
+
+要确保已成功连接到潜在顾客目标，请单击验证按钮。 如果成功，您将在潜在顾客目标中具有测试潜在顾客。
+
+![连接详细信息](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-connection-details.png)

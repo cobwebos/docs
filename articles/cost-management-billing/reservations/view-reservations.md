@@ -5,77 +5,53 @@ author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/31/2020
 ms.author: banders
-ms.openlocfilehash: 5c9d9074e4b8d0d9e36417daee4d58c1d9b28b64
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0635c21ee30a40344281f31c8f9aedf9d74a1284
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199239"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633850"
 ---
-# <a name="view-azure-reservations-in-the-azure-portal"></a>在 Azure 门户中查看 Azure 预留
+# <a name="view-azure-reservations"></a>查看 Azure 预留项
 
-根据你的订阅类型和权限，有多种方法可用来查看 Azure 预留。
+可以在 Azure 门户中查看和管理购买的预留项。   
 
-## <a name="view-purchased-reservations"></a>查看购买的预留
+## <a name="permissions-to-view-a-reservation"></a>预留项的查看权限
 
-默认情况下，在购买预留时，你和帐户管理员可以查看预留。 你和帐户管理员自动获得预留订单和预留的“所有者”角色。 若要允许其他人查看预留，必须将其添加为预留订单或预留的“所有者”或“读者”。  
+若要查看或管理预留项，需要对其拥有读取者或所有者权限。 默认情况下，当你购买某个预留项时，你和帐户管理员自动获得预留订单和该预留项的“所有者”角色。 若要允许其他人查看预留，必须将其添加为预留订单或预留的“所有者”或“读者”。   将某人添加到提供用于计收预留费用的订阅不会自动将此人添加到预留项。 
 
 有关详细信息，请参阅[添加或更改可以管理预留的用户](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)。
 
-若要以所有者或读者身份查看预留，请执行以下操作：
+## <a name="view-reservation-and-utilization-in-azure-portal"></a>在 Azure 门户中查看预留和利用率
+
+若要以所有者或读取者身份查看预留，请执行以下操作
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 搜索“预留”  。
-    ![显示 Azure 门户搜索的屏幕截图](./media/view-reservations/portal-reservation-search.png)  
-3. 该列表显示你对其具有“所有者”或“读者”角色的所有预留。 每个预留显示最后已知的利用率百分比。  
-    ![显示预留列表的示例](./media/view-reservations/view-reservations.png)
-4. 选择一个预留并查看过去五天的利用率趋势。  
-    ![显示预留利用率趋势的示例](./media/view-reservations/reservation-utilization.png)
-5. 还可以使用预留实例使用情况 API 和 [Microsoft Azure 使用见解 Power BI 内容包](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)获取[预留利用率](/power-bi/service-connect-to-azure-consumption-insights)。
+2. 转到[预留项](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)。
+3. 该列表将显示你对其具有“所有者”或“读者”角色的所有预留项。 每个预留显示最后已知的利用率百分比。
+4. 单击利用率百分比查看使用历史记录和详细信息。 请查看以下视频中的详细信息。
+   > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4sYwk] 
 
-如果需要更改某个预留的范围，拆分某个预留，或者更改谁可以管理预留，请参阅[管理 Azure 预留](manage-reserved-vm-instance.md)。
+## <a name="get-reservations-and-utilization-using-apis-powershell-cli"></a>使用 API、PowerShell、CLI 获取预留项和利用率
 
-## <a name="view-reservation-transactions-for-enterprise-enrollments"></a>查看企业合约的预留交易
+使用以下资源获取所有预留项的列表
+- [API：预留订单 - 列表](/rest/api/reserved-vm-instances/reservationorder/list)
+- [PowerShell：预留订单 - 列表](/powershell/module/azurerm.reservations/get-azurermreservationorder)
+- [CLI：预留订单 - 列表](/cli/azure/reservations/reservation-order#az-reservations-reservation-order-list)
 
- 如果你有合作伙伴主导的企业注册，请访问 EA 门户中的“报表”来查看预留。  对于其他企业合约，可以在 EA 门户和 Azure 门户中查看预留。 只有 EA 管理员可以查看预留交易。
+还可以使用预留实例使用情况 API 获取[预留项利用率](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)。 
 
-若要在 Azure 门户中查看预留交易，请执行以下操作：
+## <a name="see-reservations-and-utilization-in-power-bi"></a>在 Power BI 中查看预留项和利用率
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 搜索“成本管理 + 计费”。 
-
-    ![显示了 Azure 门户搜索的屏幕截图](./media/view-reservations/portal-cm-billing-search.png)
-
-1. 选择“预留交易”。 
-1. 若要筛选结果，请选择“时间范围”、“类型”或“说明”。   
-1. 选择“应用”。 
-
-    ![显示预留交易结果的屏幕截图](./media/view-reservations/portal-billing-reservation-transaction-results.png)
-
-若要使用 API 获取数据，请参阅[获取企业客户的预留实例交易费用](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges)。
+Power BI 用户可使用两个选项
+- 内容包：预留项购买和利用率数据在 [Consumption Insights Power BI 内容包](/power-bi/desktop-connect-azure-cost-management)中提供。 可使用此内容包创建所需的报表。 
+- 成本管理应用：使用[成本管理应用](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp)获取可以进一步自定义的预创建报表。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 Azure 预留的详细信息，请参阅以下文章：
-
-- [什么是 Azure 预留？](save-compute-costs-reservations.md)
-- [管理 Azure 预留](manage-reserved-vm-instance.md)
-
-购买服务计划：
-
-- [为 Cosmos DB 预留容量预付费](../../cosmos-db/cosmos-db-reserved-capacity.md)
-- [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../../sql-database/sql-database-reserved-capacity.md)
-- [通过 Azure 虚拟机预留实例为虚拟机预付费](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
-
-购买软件计划：
-
-- [通过 Azure 预留为 Red Hat 软件计划预付费](../../virtual-machines/linux/prepay-rhel-software-charges.md)
-- [通过 Azure 预留为 SUSE 软件计划预付费](../../virtual-machines/linux/prepay-suse-software-charges.md)
-
-了解使用情况：
-
+- [管理 Azure 预留项](manage-reserved-vm-instance.md)。
 - [了解即用即付订阅的预留使用情况](understand-reserved-instance-usage.md)
 - [了解企业合约的预留使用情况](understand-reserved-instance-usage-ea.md)
 - [了解 CSP 订阅的预留使用情况](https://docs.microsoft.com/partner-center/azure-reservations)

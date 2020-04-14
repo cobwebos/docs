@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 3e0c56ed669ecda5a130dcf9df103bc8a19faf06
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3334a19b1ba0e3949ab2670c5d2f70d3bcd02fe8
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80057430"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983904"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>使用强制隧道配置应用服务环境
 
@@ -60,7 +60,7 @@ ASE 具有许多外部依赖项，详见[应用服务环境网络体系结构][n
 将 ASE 子网配置为忽略 BGP 路由：
 
 * 创建 UDR 并将其分配到 ASE 子网（如果没有 UDR）。
-* 在 Azure 门户中，打开分配到 ASE 子网的路由表的 UI。  选择“配置”。  将 BGP 路由传播设置为“已禁用”。  单击“保存”。 [创建路由表][routetable]文档介绍了如何关闭此设置。
+* 在 Azure 门户中，打开分配到 ASE 子网的路由表的 UI。  选择“配置”。  将“虚拟网关路由传播”设置为“禁用”。  单击“保存”。 [创建路由表][routetable]文档介绍了如何关闭此设置。
 
 将 ASE 子网配置为忽略所有 BGP 路由后，应用将不再能够访问本地资源。 若要让用于访问本地资源，请编辑分配到 ASE 子网的 UDR，并添加本地地址范围的路由。 “下一跃点类型”应设置为“虚拟网络网关”。 
 

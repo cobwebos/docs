@@ -4,12 +4,12 @@ description: 本教程介绍如何使用 PowerShell 升级 Azure 托管的 Servi
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 2fb08d7aba3e35fb6147b75bbcee35b46873b5f6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a21de9d76a010b01da95b050a521178d8808bbdf
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78252729"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756072"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>教程：升级 Azure 中 Service Fabric 群集的运行时
 
@@ -37,7 +37,7 @@ ms.locfileid: "78252729"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始学习本教程之前：
 
@@ -75,7 +75,7 @@ Get-AzServiceFabricCluster | Select-Object Name, ClusterCodeVersion
 
 ## <a name="upgrade-the-runtime"></a>升级运行时
 
-在 **cmdlet 中使用在上一部分获取的**ClusterCodeVersion`Get-ServiceFabricRuntimeUpgradeVersion` 值来发现可升级到的版本。 只能在已连接到 Internet 的计算机上运行此 cmdlet。 例如，如果想要查看可从版本 `5.7.198.9494` 升级到哪些运行时版本，请使用以下命令：
+在 `Get-ServiceFabricRuntimeUpgradeVersion` cmdlet 中使用在上一部分获取的 **ClusterCodeVersion** 值来发现可升级到的版本。 只能在已连接到 Internet 的计算机上运行此 cmdlet。 例如，如果想要查看可从版本 `5.7.198.9494` 升级到哪些运行时版本，请使用以下命令：
 
 ```powershell
 Get-ServiceFabricRuntimeUpgradeVersion -BaseVersion "5.7.198.9494"
@@ -95,7 +95,7 @@ Set-AzServiceFabricUpgradeType -ResourceGroupName SFCLUSTERTUTORIALGROUP `
 
 可以使用 PowerShell 或 Azure Service Fabric CLI (sfctl) 监视升级状态。
 
-首先，请使用在本教程第一部分中创建的 SSL 证书连接到群集。 使用 `Connect-ServiceFabricCluster` cmdlet 或 `sfctl cluster upgrade-status`。
+首先，请使用在本教程第一部分中创建的 TLS/SSL 证书连接到群集。 使用 `Connect-ServiceFabricCluster` cmdlet 或 `sfctl cluster upgrade-status`。
 
 ```powershell
 $endpoint = "<mycluster>.southcentralus.cloudapp.azure.com:19000"

@@ -3,7 +3,7 @@ title: 创建 Azure CDN 终结点 | Microsoft Docs
 description: 本文介绍如何创建新的 Azure 内容分发网络 (CDN) 终结点（包括高级设置）。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.service: azure-cdn
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: afd9599dd1e396dea6975c397688e4b97371fd6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a130a433c68d0d5cc8c26eae4b81ff264eb0ca2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593939"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254009"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>创建 Azure CDN 终结点
 本文介绍现有 CDN 配置文件中用于创建 [Azure 内容分发网络 (CDN)](cdn-overview.md) 终结点的所有设置。 创建配置文件和终结点以后，即可将内容交付给客户。 有关如何创建配置文件和终结点的快速入门，请参阅[快速入门：创建 Azure CDN 配置文件和终结点](cdn-create-new-endpoint.md)。

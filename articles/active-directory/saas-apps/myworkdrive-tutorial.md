@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.author: jeedes
-ms.openlocfilehash: c733873a5545bb01f03abd8178ed2f371e2dd3aa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 60fdd9b0a8fb272da885df97e39804a98e48de67
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74074085"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478865"
 ---
 # <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>教程：将 MyWorkDrive 与 Azure Active Directory 集成
 
@@ -92,7 +92,7 @@ ms.locfileid: "74074085"
     > 
     > 登录 URL：`https://yourserver.yourdomain.com/Account/Login-saml`
     > 
-    > 如果不确定如何设置自己的主机名和 SSL 证书，请联系 [MyWorkDrive 支持团队](mailto:support@myworkdrive.com)获取这些值。
+    > 如果不确定如何设置自己的主机名和 TLS/SSL 证书，请联系 [MyWorkDrive 支持团队](mailto:support@myworkdrive.com)获取这些值。
 
 1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，将“应用联合元数据 URL”复制到剪贴板    。
 

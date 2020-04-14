@@ -2,21 +2,21 @@
 title: 教程 - 使用参数文件部署模板
 description: 使用参数文件，其中包含的值可用于部署 Azure 资源管理器模板。
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6a12d92c0cfb9d86ebf4c335c351944997f79b4e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: b91041b96a3819dbace3898d92226f0351f0f973
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773148"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411520"
 ---
-# <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>教程：使用参数文件部署资源管理器模板
+# <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>教程：使用参数文件部 ARM 模板
 
-本教程介绍如何使用[参数文件](parameter-files.md)存储在部署过程中传递的值。 在以前的教程中，我们通过部署命令使用了内联参数。 此方法适用于测试模板，但在自动进行部署时，为环境传递一组值可能会更容易。 参数文件可以方便你针对特定的环境将参数值打包。 在本教程中，我们将针对开发和生产环境创建参数文件。 完成该过程需要大约 **12 分钟**。
+本教程介绍如何使用[参数文件](parameter-files.md)存储在部署过程中传递的值。 在以前的教程中，我们通过部署命令使用了内联参数。 此方法适用于测试 Azure 资源管理器 (ARM) 模板，但是当自动执行部署时，可以更容易地为环境传递一组值。 参数文件可以方便你针对特定的环境将参数值打包。 在本教程中，我们将针对开发和生产环境创建参数文件。 完成该过程需要大约 **12 分钟**。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 建议完成[有关标记的教程](template-tutorial-add-tags.md)，但这不是必需的。
 
@@ -54,10 +54,10 @@ ms.locfileid: "76773148"
 
 首先，我们部署到开发环境。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-$templateFile = "{provide-the-path-to-the-template-file}"
+$templateFile = "{path-to-the-template-file}"
 $parameterFile="{path-to-azuredeploy.parameters.dev.json}"
 New-AzResourceGroup `
   -Name myResourceGroupDev `
@@ -69,25 +69,28 @@ New-AzResourceGroupDeployment `
   -TemplateParameterFile $parameterFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要运行此部署命令，必须具有 Azure CLI 的 [最新版本](/cli/azure/install-azure-cli)。
 
 ```azurecli
-templateFile="{provide-the-path-to-the-template-file}"
+templateFile="{path-to-the-template-file}"
+devParameterFile="{path-to-azuredeploy.parameters.dev.json}"
 az group create \
   --name myResourceGroupDev \
   --location "East US"
-az group deployment create \
+az deployment group create \
   --name devenvironment \
   --resource-group myResourceGroupDev \
   --template-file $templateFile \
-  --parameters azuredeploy.parameters.dev.json
+  --parameters $devParameterFile
 ```
 
 ---
 
 现在，我们部署到生产环境。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $parameterFile="{path-to-azuredeploy.parameters.prod.json}"
@@ -101,20 +104,24 @@ New-AzResourceGroupDeployment `
   -TemplateParameterFile $parameterFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
+prodParameterFile="{path-to-azuredeploy.parameters.prod.json}"
 az group create \
   --name myResourceGroupProd \
   --location "West US"
-az group deployment create \
+az deployment group create \
   --name prodenvironment \
   --resource-group myResourceGroupProd \
   --template-file $templateFile \
-  --parameters azuredeploy.parameters.prod.json
+  --parameters $prodParameterFile
 ```
 
 ---
+
+> [!NOTE]
+> 如果部署失败，请将 **debug** 开关和部署命令配合使用来显示调试日志。  还可以使用 **verbose** 开关来显示完整的调试日志。
 
 ## <a name="verify-deployment"></a>验证部署
 
@@ -136,7 +143,7 @@ az group deployment create \
 
 恭喜！你已完成本简介，知道如何将模板部署到 Azure 了。 如果你有任何意见和建议，请在反馈部分告知我们。 谢谢！
 
-你现在可以学习有关模板的更高级概念了。 下一教程会更详细地探讨如何根据模板参考文档来定义要部署的资源。
+下一个教程系列将详细介绍如何部署模板。
 
 > [!div class="nextstepaction"]
-> [利用模板参考](template-tutorial-create-encrypted-storage-accounts.md)
+> [部署本地模板](./deployment-tutorial-local-template.md)

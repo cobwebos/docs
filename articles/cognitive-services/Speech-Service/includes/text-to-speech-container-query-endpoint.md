@@ -8,14 +8,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 6fe07da1e658efa8150c8cafb95bc5719c780aff
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: b2a621a23a81e4fb4f47e7c99d780211973e30a0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879001"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81274940"
 ---
-该容器提供[基于 REST 的终结点 API。](../rest-text-to-speech.md) 有许多可用于平台、框架和语言变体[的示例源代码项目](https://azure.microsoft.com/resources/samples/cognitive-speech-tts/)。
+该容器提供[基于 REST 的终结点 API。](../rest-text-to-speech.md) 有许多可用于平台、框架和语言变体[的示例源代码项目](https://github.com/Azure-Samples/Cognitive-Speech-TTS)。
 
 使用 *"标准文本到语音转换"* 容器时，应依赖于下载的图像标记的区域设置和语音。 例如，如果您下载了标记，`latest`则默认区域设置是`en-US`和`JessaRUS`语音。 然后`{VOICE_NAME}`，论点将是[`en-US-JessaRUS`](../language-support.md#standard-voices)。 请参阅下面的示例 SSML：
 

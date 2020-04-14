@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/05/2019
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 64c900e01496dad0d5f6a96d8d790ae0c2a8c95a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 408fb2c40e645d9a8b10f1e04d282e134c5489a1
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78927391"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80501696"
 ---
 可以在数据资源管理器中使用查询来检索和筛选数据。
 
-1. 在数据资源管理器的“项”选项卡顶部，  查看默认查询 `SELECT * FROM c`。 此查询按 ID 顺序检索并显示集合中的所有文档。 
+1. 在数据资源管理器的“项”选项卡顶部，  查看默认查询 `SELECT * FROM c`。 此查询检索并显示容器中按 ID 排序的所有文档。 
    
    ![数据资源管理器中的默认查询是“SELECT * FROM c”](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-query.png)
    

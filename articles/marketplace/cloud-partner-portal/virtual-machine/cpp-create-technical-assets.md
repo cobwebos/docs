@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: dsindona
-ms.openlocfilehash: 57f56a341cfc3db6a5f0664503809e6ab6cf3d3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a62af1d8d751d36150c236280077cde8f6547385
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278018"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273964"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>为虚拟机套餐创建技术资产
+
+> [!IMPORTANT]
+> 从 2020 年 4 月 13 日开始，我们将开始向合作伙伴中心移动 Azure 虚拟机产品/ 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照创建 Azure[虚拟机技术资产](https://aka.ms/AzureVMTechAsset)中的说明进行操作，以管理迁移的优惠。
 
 本部分引导你为 Azure 市场虚拟机 (VM) 套餐创建并配置技术资产。  VM 包含两个组件：解决方案虚拟硬盘 (VHD)，以及可选的关联数据磁盘。  
 
@@ -35,26 +38,26 @@ ms.locfileid: "80278018"
 ## <a name="fundamental-technical-knowledge"></a>基础技术知识
 
 设计、构建和测试这些资产需要时间，需要对 Azure 平台和用于构建产品/服务的技术进行技术知识。 除了解决方案领域之外，您的工程团队还应了解以下 Microsoft 技术： 
--   基本了解 [Azure 服务](https://azure.microsoft.com/services/) 
--   如何[设计和架构 Azure 应用程序](https://azure.microsoft.com/solutions/architecture/)
--   [Azure 虚拟机](https://azure.microsoft.com/services/virtual-machines/)[、Azure 存储](https://azure.microsoft.com/services/?filter=storage)和 Azure[网络](https://azure.microsoft.com/services/?filter=networking)的工作知识
--   [Azure 资源管理器](https://azure.microsoft.com/features/resource-manager/)的实践知识
--   [JSON](https://www.json.org/)的工作知识
+-    基本了解 [Azure 服务](https://azure.microsoft.com/services/) 
+-    如何[设计和架构 Azure 应用程序](https://azure.microsoft.com/solutions/architecture/)
+-    [Azure 虚拟机](https://azure.microsoft.com/services/virtual-machines/)[、Azure 存储](https://azure.microsoft.com/services/?filter=storage)和 Azure[网络](https://azure.microsoft.com/services/?filter=networking)的工作知识
+-    [Azure 资源管理器](https://azure.microsoft.com/features/resource-manager/)的实践知识
+-    [JSON](https://www.json.org/)的工作知识
 
 
 ## <a name="suggested-tools"></a>建议的工具 
 
 选择以下一种或两种脚本环境来帮助管理 VHD 和 VM：
--   [Azure 电源外壳](https://docs.microsoft.com/powershell/azure/overview)
--   [Azure CLI](https://docs.microsoft.com/cli/azure)
+-    [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+-    [Azure CLI](https://docs.microsoft.com/cli/azure)
 
 此外，我们建议将以下工具添加到开发环境： 
 
--   [Azure 存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
--   [视觉工作室代码](https://code.visualstudio.com/)
-    *   扩展：[Azure 资源管理器工具](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-    *   扩展：[Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-    *   扩展：[Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+-    [Azure 存储浏览器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+-    [Visual Studio Code](https://code.visualstudio.com/)
+    *    扩展：[Azure 资源管理器工具](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    *    扩展：[Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+    *    扩展：[Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
 我们还建议在 [Azure 开发人员工具](https://azure.microsoft.com/tools/)页中查看可用的工具；如果使用的是 Visual Studio，请在 [Visual Studio 市场](https://marketplace.visualstudio.com/)中查看。
 

@@ -2,17 +2,17 @@
 title: Azure CDN 规则引擎参考 | Microsoft 文档
 description: Azure CDN 规则引擎匹配条件和功能的参考文档。
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: magattus
-ms.openlocfilehash: aab93204c850223756f28a56ea550f912e28e0d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: bda817712faf1f54287e880dc62ef2b08273ff42
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69996755"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253384"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>来自 Verizon 高级规则引擎引用的 Azure CDN
 
@@ -57,13 +57,13 @@ ms.locfileid: "69996755"
 % | 百分比符号用于指示 URL 编码（例如 `%20`）。
 \* | 星号是通配符，代表一个或多个字符。
 Space | 空格字符表示某个匹配条件可以由指定的值或模式满足。
-'值' | 一个单引号没有特殊含义， 但是，可以使用一组单引号来指示应将其中的值视为文本值。 可以通过以下方式使用单引号：<br><br/>- 使用单引号时，只要指定的值与比较值的任何部分匹配，即表示满足匹配条件。  例如，`'ma'` 与以下任何字符串都匹配： <br/><br/>/business/**ma**rathon/asset.htm<br/>**ma**p.gif<br/>/business/template.**ma**p<br /><br />- 使用单引号时，可以将特殊字符指定为文本字符。 例如，可以通过将空格字符括在一组单引号中（即 `' '` 或 `'sample value'`）来指定文本空格字符。<br/>- 使用单引号时，可以指定空值。 通过指定一组单引号（即 ''）来指定空值。<br /><br/>**重要说明：**<br/>- 如果指定的值不包含通配符，则会自动将其视为文本值，这意味着不需要指定一组单引号。<br/>- 如果反斜杠不对此表中的其他字符进行转义操作，则会忽略在一组单引号中指定的反斜杠。<br/>- 要将特殊字符指定为文本字符，另一种方式是使用反斜杠（即 `\`）对其进行转义操作。
+'值' | 一个单引号没有特殊含义， 但是，可以使用一组单引号来指示应将其中的值视为文本值。 它具有以下用途：<br><br/>- 使用单引号时，只要指定的值与比较值的任何部分匹配，即表示满足匹配条件。  例如，`'ma'` 与以下任何字符串都匹配： <br/><br/>/business/**ma**rathon/asset.htm<br/>**ma**p.gif<br/>/business/template.**ma**p<br /><br />- 使用单引号时，可以将特殊字符指定为文本字符。 例如，可以通过将空格字符括在一组单引号中（即 `' '` 或 `'sample value'`）来指定文本空格字符。<br/>- 使用单引号时，可以指定空值。 通过指定一组单引号（即 ''）来指定空值。<br /><br/>**重要说明：**<br/>- 如果指定的值不包含通配符，则会自动将其视为文本值，这意味着不需要指定一组单引号。<br/>- 如果反斜杠不对此表中的其他字符进行转义操作，则会忽略在一组单引号中指定的反斜杠。<br/>- 要将特殊字符指定为文本字符，另一种方式是使用反斜杠（即 `\`）对其进行转义操作。
 
 ### <a name="regular-expressions"></a>正则表达式
 
 正则表达式定义要在文本值中对其进行搜索的模式。 正则表达式表示法定义各种符号的具体含义。 下表说明了支持正则表达式的匹配条件和功能如何处理特殊字符。
 
-特殊字符 | 描述
+特殊字符 | 说明
 ------------------|------------
 \ | 反斜杠会对其后的字符进行转义操作，这会导致系统将该字符视为文本值，而不会采用其正则表达式含义。 例如，以下语法会对星号进行转义：`\*`
 % | 百分比符号的含义取决于其使用情况。<br/><br/> `%{HTTPVariable}`：此语法标识 HTTP 变量。<br/>`%{HTTPVariable%Pattern}`：此语法使用百分比符号来标识 HTTP 变量并将其用作分隔符。<br />`\%`：对百分比符号进行转义操作以后，即可将其用作文本值，或者用于指示 URL 编码（例如 `\%20`）。

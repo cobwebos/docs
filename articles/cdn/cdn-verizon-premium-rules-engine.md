@@ -2,17 +2,17 @@
 title: 使用 Azure CDN 覆盖 HTTP 行为 - Verizon 高级规则引擎
 description: 规则引擎允许您自定义 Azure CDN 从 Verizon 高级版处理 HTTP 请求的方式，例如阻止某些类型的内容的传递、定义缓存策略和修改 HTTP 标头。
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: magattus
-ms.openlocfilehash: aa0606eafb8fe4c517b0c18e0137058a120115ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 2e5e4265f30631f8e68d8f9e7156ea578ae85e7a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74082954"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253469"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>使用 Verizon 高级规则引擎中的 Azure CDN 覆盖 HTTP 行为
 
@@ -93,7 +93,7 @@ Azure CDN 规则引擎允许你自定义处理 HTTP 请求的方式。 例如，
    >
    >
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [Azure CDN 概述](cdn-overview.md)
 - [规则引擎参考](cdn-verizon-premium-rules-engine-reference.md)

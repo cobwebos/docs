@@ -3,7 +3,7 @@ title: Azure CDN 规则引擎的 HTTP 变量 | Microsoft Docs
 description: HTTP 变量可用于检索 HTTP 请求和响应元数据。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
-ms.author: magattus
-ms.openlocfilehash: 53ad0c516547e17801bd57c2fd6b0d1704383797
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: b9ced5d4a81effcd73e0243d09bb83ed0fe7667c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593818"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253690"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN 规则引擎的 HTTP 变量
 HTTP 变量提供各种检索 HTTP 请求和响应元数据的方法。 随后可使用此元数据动态更改请求或响应。 以下规则引擎功能对 HTTP 变量的使用具有一定的限制：
@@ -34,11 +34,11 @@ HTTP 变量提供各种检索 HTTP 请求和响应元数据的方法。 随后�
 下表介绍了受支持的 HTTP 变量。 如果某个特定请求无法使用 GEO 元数据（例如邮政编码），则会返回空值。
 
 
-| “属性” | 变量 | 描述 | 示例值 |
+| 名称 | 变量 | 说明 | 示例值 |
 | ---- | -------- | ----------- | ------------ |
 | ASN（申请者） | %{geo_asnum} | 指示申请者的 AS 号码。 <br /><br />**已弃用：**%{virt_dst_asnum}。 <br />此变量已被弃用，以支持 %{geo_asnum}。 虽然规则使用此已被弃用的变量后仍然有效，但还是应更新规则，以使用新变量。 | AS15133 |
 | 市/县（申请者） | %{geo_city} | 指示申请者所在的市/县。 | Los Angeles |
-| 洲（申请者） | %{geo_continent} | 指示申请者所在的大洲（缩写形式） <br />有效值是： <br />AF：非洲<br />AS：亚洲<br />EU：欧洲<br />NA：北美洲<br />OC：大洋洲<br />SA：南美洲<br /><br />**已弃用：**%{virt_dst_continent}。 <br />此变量已被弃用，以支持 %{geo_continent}。 <br />虽然规则使用此已被弃用的变量后仍然有效，但还是应更新规则，以使用新变量。| 空值 |
+| 洲（申请者） | %{geo_continent} | 指示申请者所在的大洲（缩写形式） <br />有效值是： <br />AF：非洲<br />AS：亚洲<br />EU：欧洲<br />NA：北美洲<br />OC：大洋洲<br />SA：南美洲<br /><br />**已弃用：**%{virt_dst_continent}。 <br />此变量已被弃用，以支持 %{geo_continent}。 <br />虽然规则使用此已被弃用的变量后仍然有效，但还是应更新规则，以使用新变量。| 不可用 |
 | Cookie 值 | %{cookie_Cookie} | 返回的值对应于由 Cookie 术语标识的 cookie 项。 | 示例用法： <br />%{cookie__utma}<br /><br />示例值：<br />111662281.2.10.1222100123 |
 | 国家/地区（申请者） | %{geo_country} | 指示申请者所在的国家/地区（用国家/地区代码表示） <br />**已弃用：**%{virt_dst_country}。 <br /><br />此变量已被弃用，以支持 %{geo_country}。 虽然规则使用此已被弃用的变量后仍然有效，但还是应更新规则，以使用新变量。 | 美国 |
 | 指定的市场区域（申请者） | %{geo_dma_code} |表示申请者所在的媒体市场（用地区代码表示）。 <br /><br />此字段仅适用于源自美国国内的请求。| 745 |
@@ -92,7 +92,7 @@ HTTP 变量名仅支持字母字符和下划线。 请将不支持的字符转�
 
 下表描述了这些分隔符。
 
-| 分隔符 | 描述 |
+| 分隔符 | 说明 |
 | --------- | ----------- |
 | := | 指示变量为以下情况时将向其分配默认值： <br />- 缺失 <br />- 设置为 NULL。 |
 | :+ | 指示变量已分配有一个值时将向其分配默认值。 |
@@ -107,7 +107,7 @@ HTTP 变量名仅支持字母字符和下划线。 请将不支持的字符转�
 | ,, | 将与 HTTP 变量关联的值中的指定字符的所有实例转换为小写。 |
 | ^^ | 将与 HTTP 变量关联的值中的指定字符的所有实例转换为大写。 |
 
-## <a name="exceptions"></a>异常
+## <a name="exceptions"></a>例外
 下表描述了指定文本未被视为 HTTP 变量的情况。
 
 | 条件 | 说明 | 示例 |
@@ -125,7 +125,7 @@ HTTP 变量名仅支持字母字符和下划线。 请将不支持的字符转�
 
 下表介绍了如何定义默认值。
 
-| 条件 | 语法 | 示例 | 描述 |
+| 条件 | 语法 | 示例 | 说明 |
 | --------- | ------ | --------| ----------- |
 | 当满足以下任何条件时，可将标头设置为默认值： <br /><br />- 缺少标头 <br /><br />- 标头值设置为 NULL。| %{Variable:=Value} | %[http_referrer：[未指定] | 仅当引用器标头丢失或设置为 NULL 时，才会将其设置为*未指定*。 如果已设置，则无需执行任何操作。 |
 | 如果标头未设置，请将其设置为默认值。 | %{Variable=Value} | %[http_referrer[未指定] | 仅当缺少引用器标头时，才会将其设置为*未指定*。 如果已设置，则无需执行任何操作。 |

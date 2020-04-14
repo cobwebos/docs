@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: dsindona
-ms.openlocfilehash: 5263d24c411ef8de4187c2fd750013374d779f04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f13e4066137e0d76612040d9f6e5ff3d0aa399c8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277933"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273892"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>从 VHD 部署 VM
+
+> [!IMPORTANT]
+> 从 2020 年 4 月 13 日开始，我们将开始向合作伙伴中心移动 Azure 虚拟机产品/ 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照创建 Azure[虚拟机技术资产](https://aka.ms/AzureVMTechAsset)中的说明进行操作，以管理迁移的优惠。
 
 本部分介绍如何从 Azure 部署的虚拟硬盘 (VHD) 部署虚拟机 (VM)。  其中列出了所需的工具，以及如何使用这些工具创建用户 VM 映像，然后使用 PowerShell 脚本将其部署到 Azure。
 

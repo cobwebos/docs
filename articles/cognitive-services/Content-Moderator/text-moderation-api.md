@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 5a07f0749b59efc96b67df3ad5ed2fbf353be614
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41e88dd5a08de485f770559959843ba3b54e590f
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74538845"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81274004"
 ---
 # <a name="learn-text-moderation-concepts"></a>了解文本审查概念
 
-使用内容审查器的计算机辅助文本审查和[人工评审](Review-Tool-User-Guide/human-in-the-loop.md)功能来审核文本内容。
+使用内容审阅者的计算机辅助文本审阅和[人工审阅](Review-Tool-User-Guide/human-in-the-loop.md)功能来调节文本内容。
 
 可根据策略和阈值阻止、批准或审核内容。 用它来增强对合作伙伴、员工和消费者生成文本内容的环境的人工审核。 这些环境包括聊天室、讨论区、聊天机器人、电子商务目录和文档。 
 
@@ -51,20 +51,20 @@ ms.locfileid: "74538845"
 
 ## <a name="classification"></a>分类
 
-内容审查器的机器辅助**文本分类功能**仅支持**英语**，可帮助检测可能不需要的内容。 根据上下文，可能会将标记的内容评估为不合适。 它传达了每个类别的可能性，并可能建议进行人工审核。 该功能使用训练的模型来识别可能的辱骂、贬损或歧视性语言。 要评审的内容包括俚语、缩写词、冒犯性言语，以及有意拼错的单词。 
+内容审阅者的计算机辅助**文本分类功能****仅支持英语**，有助于检测可能不需要的内容。 根据上下文，可能会将标记的内容评估为不合适。 它传达了每个类别的可能性，并可能建议进行人工审核。 该功能使用训练的模型来识别可能的辱骂、贬损或歧视性语言。 要评审的内容包括俚语、缩写词、冒犯性言语，以及有意拼错的单词。 
 
 以下 JSON 摘录内容显示了示例输出：
 
     "Classification": {
         "ReviewRecommended": true,
         "Category1": {
-            "Score": 1.5113095059859916E-06
+              "Score": 1.5113095059859916E-06
             },
         "Category2": {
-            "Score": 0.12747249007225037
+              "Score": 0.12747249007225037
             },
         "Category3": {
-            "Score": 0.98799997568130493
+              "Score": 0.98799997568130493
         }
     }
 
@@ -84,77 +84,48 @@ ms.locfileid: "74538845"
 - 美国邮寄地址
 - IP 地址
 - 美国电话号码
-- 英国电话号码
-- 社会安全号码 (SSN)
 
 以下示例显示了示例响应：
 
 ```json
-"PII":{ 
-  "Email":[ 
-    { 
-      "Detected":"abcdef@abcd.com",
-      "SubType":"Regular",
-      "Text":"abcdef@abcd.com",
-      "Index":32
-    }
+"pii":{
+  "email":[
+      {
+        "detected":"abcdef@abcd.com",
+        "sub_type":"Regular",
+        "text":"abcdef@abcd.com",
+        "index":32
+      }
   ],
-  "IPA":[ 
-    { 
-      "SubType":"IPV4",
-      "Text":"255.255.255.255",
-      "Index":72
-    }
+  "ssn":[
+
   ],
-  "Phone":[ 
-    { 
-      "CountryCode":"US",
-      "Text":"4255550111",
-      "Index":56
-    },
-    { 
-      "CountryCode":"US",
-      "Text":"425 555 0111",
-      "Index":212
-    },
-    { 
-      "CountryCode":"UK",
-      "Text":"+123 456 7890",
-      "Index":208
-    },
-    { 
-      "CountryCode":"UK",
-      "Text":"0234 567 8901",
-      "Index":228
-    },
-    { 
-      "CountryCode":"UK",
-      "Text":"0456 789 0123",
-      "Index":245
-    }
+  "ipa":[
+      {
+        "sub_type":"IPV4",
+        "text":"255.255.255.255",
+        "index":72
+      }
   ],
-  "Address":[ 
-    { 
-      "Text":"1234 Main Boulevard, Panapolis WA 96555",
-      "Index":89
-    }
+  "phone":[
+      {
+        "country_code":"US",
+        "text":"6657789887",
+        "index":56
+      }
   ],
-  "SSN":[ 
-    { 
-      "Text":"999999999",
-      "Index":56
-    },
-    { 
-      "Text":"999-99-9999",
-      "Index":267
-    }
+  "address":[
+      {
+        "text":"1 Microsoft Way, Redmond, WA 98052",
+        "index":89
+      }
   ]
 }
 ```
 
 ## <a name="auto-correction"></a>自动更正
 
-假设输入文本为（“lzay”和“f0x”是有意拼错的）：
+假设输入文本为（"lzay"和"f0x"是有意的）：
 
     The qu!ck brown f0x jumps over the lzay dog.
 

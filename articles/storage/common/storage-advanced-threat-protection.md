@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 195f4b5057c0e2d644ab44cc4c32e97c8662d36d
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 4219bb471b92e7ddae72c50403f635498c90080d
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422795"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81251684"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>为 Azure 存储配置高级威胁保护
 
@@ -23,10 +23,16 @@ Azure 存储的高级威胁保护提供了额外的安全智能层，用于检�
 
 当活动异常发生时，将触发安全警报。 这些安全警报与 Azure[安全中心](https://azure.microsoft.com/services/security-center/)集成，并且也通过电子邮件发送给订阅管理员，其中详细介绍了可疑活动，并就如何调查和修复威胁提出了建议。
 
-> [!NOTE]
-> Azure 存储的高级威胁保护目前仅适用于 Blob 存储。 此服务在美国政府云中可用，但没有其他主权或 Azure 政府云区域。 有关定价详细信息（包括 30 天免费试用版），请参阅[Azure 安全中心定价页面](https://azure.microsoft.com/pricing/details/security-center/)。
+服务引入读取、写入和删除到 Blob 存储的请求以进行威胁检测的诊断日志。 要调查来自高级威胁防护的警报，可以使用存储分析日志记录查看相关的存储活动。 有关详细信息，请参阅在[Azure 门户中](storage-monitor-storage-account.md#configure-logging)**配置日志记录**。
 
-Azure 存储的高级威胁保护可引入读取、写入和删除到 Blob 存储的请求以检测威胁的诊断日志。 要调查来自高级威胁防护的警报，可以使用存储分析日志记录查看相关的存储活动。 有关详细信息，请参阅在[Azure 门户中](storage-monitor-storage-account.md#configure-logging)**配置日志记录**。
+## <a name="availability"></a>可用性
+
+Azure 存储的高级威胁保护目前仅适用于 Blob[存储](https://azure.microsoft.com/services/storage/blobs/)。 
+
+此服务在所有公共云和美国政府云中都可用，但没有其他主权或 Azure 政府云区域。
+
+有关定价详细信息（包括 30 天免费试用版），请参阅[Azure 安全中心定价页面](https://azure.microsoft.com/pricing/details/security-center/)。
+
 
 ## <a name="set-up-advanced-threat-protection"></a>设置高级威胁防护
 
@@ -56,7 +62,7 @@ Azure 存储的高级威胁保护可引入读取、写入和删除到 Blob 存�
 1. 在"**按资源类型选择定价层"** 部分中，在 **"存储帐户**"行中，单击"**已启用**"或 **"已禁用**"。
 
     ![在安全中心启用 ATP](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
-1. 单击“保存”  。
+1. 单击“ **保存**”。
 
 ### <a name="template"></a>[模板](#tab/template)
 

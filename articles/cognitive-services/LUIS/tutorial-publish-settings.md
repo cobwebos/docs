@@ -1,22 +1,14 @@
 ---
 title: 教程：发布设置 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 本教程介绍如何更改发布设置以改善预测。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/13/2019
-ms.author: diberry
-ms.openlocfilehash: 2df32c20bebf4243f383a0cccd8f037721533602
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/01/2020
+ms.openlocfilehash: 19913d16ecb1457ad4edb93ea34e4b96a590aca0
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75890385"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545777"
 ---
 # <a name="tutorial--add-sentiment-analysis-as-a-publishing-setting"></a>教程：将情绪分析添加为发布设置
 
@@ -67,11 +59,11 @@ ms.locfileid: "75890385"
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. 转到地址中 URL 的末尾并输入以下话语：
+1. 转到地址栏中 URL 的末尾，将 _YOUR_QUERY_HERE_ 替换为：
 
     `Deliver 2 of the best cheese pizzas ever!!!`
 
-    最后一个查询字符串参数为 `query`，表示陈述**查询**。 此陈述不同于标记的任何陈述，因此，它非常适合用于测试，测试结果应返回包含所提取的情绪分析的 `OrderPizza` 意向。
+    此陈述不同于标记的任何陈述，因此，它非常适合用于测试，测试结果应返回包含所提取的情绪分析的 `OrderPizza` 意向。
 
     ```json
     {
@@ -122,9 +114,7 @@ ms.locfileid: "75890385"
 
     情绪分析结果是积极的，评分为 86%。
 
-## <a name="clean-up-resources"></a>清理资源
-
-[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
 
 ## <a name="related-information"></a>相关信息
 

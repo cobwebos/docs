@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 8af6b3a451d20bcc9cab3fa4adb9643f82b85e49
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b3e35b6d19905e3c5262dfea3e52511510c9ffe
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288812"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252709"
 ---
 # <a name="configure-lead-management-for-dynamics-365-for-customer-engagement"></a>为客户参与度配置 Dynamics 365 的潜在客户管理
 
@@ -78,7 +78,7 @@ ms.locfileid: "80288812"
 4. 输入应用程序名称的名称。 提供有意义的应用程序名称。
 5. 在"支持帐户类型"下，选择**任何组织目录中的帐户**。
 6. 在重定向 URI 下，选择**Web**并提供 URI（如`https://contosoapp1/auth`）。 
-7. 选择“注册”****。
+7. 选择“注册”  。
 
     ![注册应用程序](./media/commercial-marketplace-lead-management-instructions-dynamics/register-an-application.png)
 
@@ -180,6 +180,7 @@ ms.locfileid: "80288812"
     ![连接详细信息 - 潜在顾客目标](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-lead-destination.png)
 
 4. 提供**Dynamics 365 实例 URL，** 如`https://contoso.crm4.dynamics.com`。
+
 5. 选择**身份验证**、Azure 活动目录或 Office 365 的方法。 
 6. 如果选择 Azure 活动目录，请提供**应用程序（客户端）ID（** 例如`23456052-aaaa-bbbb-8662-1234df56788f`： ），**目录 ID（** 示例：）`12345678-8af1-4asf-1234-12234d01db47`和**客户端密钥**（示例： `1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=`）。
 
@@ -188,6 +189,13 @@ ms.locfileid: "80288812"
 7. 如果选择 Office 365，请提供**用户名**（示例：）`contoso@contoso.onmicrosoft.com`和密码（示例： `P@ssw0rd`）。
 
     ![连接详细信息 - 用户名](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-authentication.png)
+
+8. **联系电子邮件**- 为公司中应接收新潜在顾客的电子邮件通知的人员提供电子邮件。 您可以通过用分号分隔它们来提供多封电子邮件。
+9. 选择“确定”  。
+
+要确保已成功连接到潜在顾客目标，请单击验证按钮。 如果成功，您将在潜在顾客目标中具有测试潜在顾客。
+
+![潜在顾客管理 - 连接详细信息存储帐户](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-connection-details.png)
 
 >[!Note]
 >您必须完成配置产品/服务的其余部分并发布它，然后才能收到产品/服务的潜在顾客。

@@ -3,17 +3,17 @@ title: 使用 Azure 成本管理优化云投资
 description: 本文有助于最大程度利用云投资、减少成本以及对资金使用情况进行评估。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/24/2020
+ms.date: 04/07/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 4941c1be8fd20dfa88e3ac36bfa30af77a2b1be1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8df98514545a2670ea18a2b4b131a097244d7b46
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80157205"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874579"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>如何通过 Azure 成本管理优化云投资
 
@@ -36,6 +36,10 @@ ms.locfileid: "80157205"
 ### <a name="key-principles"></a>关键原则
 
 使用下面所述的原则，确保组织在云成本管理方面取得成功。
+
+若要了解详细信息，请观看 [Cost Management setting up for success](https://www.youtube.com/watch?v=dVuwITdSAZ4)（通过成本管理设置来确保成功）视频。 若要观看其他视频，请访问[成本管理 YouTube 频道](https://www.youtube.com/c/AzureCostManagement)。
+
+>[!VIDEO https://www.youtube.com/embed/dVuwITdSAZ4]
 
 #### <a name="planning"></a>规划
 
@@ -125,7 +129,7 @@ Azure Migrate 服务可以评估本地数据中心中的组织当前工作负载
 
 组织资源时考虑成本。 在创建订阅和资源组时，考虑各团队所负责的相关成本。 请确保在报告中考虑组织要求。 订阅和资源组提供了组织和归因组织支出的良好存储桶。 标记是归因成本的好方法。 可将标记用作筛选器。 也可在分析数据和调查成本时，将其作为分组依据。 企业协议客户还可以创建部门并将订阅放置在部门下。 Azure 中的基于成本的组织有助于组织的相关人员对减少团队支出负责。
 
-请观看视频[如何使用 Azure 成本管理查看标记策略](https://www.youtube.com/watch?v=nHQYcYGKuyw)，了解在组织中强制实施可缩放资源标记时可用的工具。
+请观看视频[如何使用 Azure 成本管理查看标记策略](https://www.youtube.com/watch?v=nHQYcYGKuyw)，了解在组织中强制实施可缩放资源标记时可用的工具。 若要观看其他视频，请访问[成本管理 YouTube 频道](https://www.youtube.com/c/AzureCostManagement)。
 
 >[!VIDEO https://www.youtube.com/embed/nHQYcYGKuyw]
 

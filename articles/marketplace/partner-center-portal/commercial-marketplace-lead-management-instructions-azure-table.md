@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: f511a60b533d6d1e0b1ae8847d0ee0fb6be3500c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a36c411b9ababc42adb51d82a316df4252c01e24
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288829"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81251923"
 ---
 # <a name="configure-lead-management-using-an-azure-table"></a>使用 Azure 表配置潜在顾客管理
 
@@ -66,12 +66,12 @@ ms.locfileid: "80288829"
 
    ![我的流 = 计划 - 从空白*](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-scheduled-from-blank.png)
 
-5.  在 *"生成"下的计划流*窗口上 *，每个*选择"1"为间隔，"小时"频率。 此外，如果您愿意，请为流指定一个名称。 选择 **“创建”**。
+5.    在 *"生成"下的计划流*窗口上 *，每个*选择"1"为间隔，"小时"频率。 此外，如果您愿意，请为流指定一个名称。 选择“创建”  。
 
-    >[!Note]
-    >尽管此示例使用 1 小时间隔，但您可以选择最适合业务需求的间隔和频率。
+>[!Note]
+>尽管此示例使用 1 小时间隔，但您可以选择最适合业务需求的间隔和频率。
 
-    ![生成计划流。](./media/commercial-marketplace-lead-management-instructions-azure-table/build-scheduled-flow.png)
+![生成计划流。](./media/commercial-marketplace-lead-management-instructions-azure-table/build-scheduled-flow.png)
 
 6. 选择 **= 新步骤**。
 7. 在"*选择操作*窗口"搜索"过去时间"，然后选择"在操作下**获取过去时间**"。
@@ -92,23 +92,17 @@ ms.locfileid: "80288829"
 
 9. 在"获取过去时间"步骤后，选择 **"新建步骤**"，然后在 *"选择操作*"窗口中搜索"获取实体"。
 10. 在 **"操作"** 下，选择**获取实体（Azure 表存储）。**
-11. 在**Azure 表存储**窗口中，提供以下字段的信息，然后选择"**创建**：
+11.    在**Azure 表存储**窗口中，提供以下字段的信息，然后选择"**创建**：
+* *连接名称*- 为在此流和 Azure 表之间建立的连接提供有意义的名称。
+* *存储帐户名称*- 提供 Azure 表的存储帐户的名称。 您可以在存储帐户的访问**密钥**页中找到此项。
+* *共享存储密钥*- 为 Azure 表的存储帐户提供密钥值。 您可以在存储帐户的访问**密钥**页中找到此项。
+    ![Azure 表存储。](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
 
-    * *连接名称*- 为在此流和 Azure 表之间建立的连接提供有意义的名称。
-    * *存储帐户名称*- 提供 Azure 表的存储帐户的名称。 您可以在存储帐户的访问**密钥**页中找到此项。
-    * *共享存储密钥*- 为 Azure 表的存储帐户提供密钥值。 您可以在存储帐户的访问**密钥**页中找到此项。
+单击"创建"后，您将看到 *"获取实体"* 窗口。 此处选择 **"显示高级选项**"并提供以下字段的信息：
+* *表*- 选择 Azure 表存储的名称（从有关如何配置 Azure 表的说明的第 6 步）。 下一个屏幕截图显示为此示例选择"市场潜在顾客"表时的提示。
+    ![Azure 表获取实体。](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
-        ![Azure 表存储。](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
-
-    单击"创建"后，您将看到 *"获取实体"* 窗口。 此处选择 **"显示高级选项**"并提供以下字段的信息：
-
-       * *表*- 选择 Azure 表存储的名称（从有关如何配置 Azure 表的说明的第 6 步）。 下一个屏幕截图显示为此示例选择"市场潜在顾客"表时的提示。
-
-            ![Azure 表获取实体。](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
-
-        * *筛选器查询*- 选择此字段并将此函数粘贴到字段中：`Timestamp gt datetime'@{body('Get_past_time')}'`
-
-            ![Azure 表获取实体 - 筛选资源。](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
+* *筛选器查询*- 选择此字段并将此函数粘贴到字段中：Azure`Timestamp gt datetime'@{body('Get_past_time')}'`![表获取实体 - 筛选器查询。](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
 
 12. 现在，您已完成与 Azure 表的连接设置，请选择 **"新建步骤**"以添加条件以扫描 Azure 表以创建新的潜在顾客。 
 
@@ -178,7 +172,10 @@ ms.locfileid: "80288829"
 1. 导航到产品 **/服务"产品/服务"设置**页面。
 2. 在"潜在顾客管理"部分下选择 **"连接**"。
 3. 在"连接详细信息"弹出窗口上，选择**潜在顾客目标的** **Azure 表**，然后按照前面的步骤粘贴到**存储帐户连接字符串**字段，从创建的 Azure 存储帐户的连接字符串中粘贴。
-4. 选择“保存”。**** 
+4. **联系电子邮件**- 为公司中应接收新潜在顾客的电子邮件通知的人员提供电子邮件。 您可以通过用分号分隔它们来提供多封电子邮件。
+5. 选择 **"确定**"。
+
+要确保已成功连接到潜在顾客目标，请单击验证按钮。 如果成功，您将在潜在顾客目标中具有测试潜在顾客。
 
 >[!Note]
 >您必须完成配置产品/服务的其余部分并发布它，然后才能收到产品/服务的潜在顾客。

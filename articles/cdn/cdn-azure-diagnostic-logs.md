@@ -3,7 +3,7 @@ title: Azure 诊断日志 | Microsoft Docs
 description: 客户可为 Azure CDN 启用日志分析。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
-ms.author: magattus
-ms.openlocfilehash: 86696ed6715b4e43a9d02232c013eb64feb61f67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 35d028a38e6ac19f270abcc8708a532b3749eb39
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67594206"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254795"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 诊断日志
 
@@ -27,7 +27,7 @@ ms.locfileid: "67594206"
 
  - Azure 存储帐户
  - Azure 事件中心
- - [日志分析工作区](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
+ - [Log Analytics 工作区](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
  
 此功能在所有定价层的 CDN 终结点上提供。 
 
@@ -51,7 +51,7 @@ ms.locfileid: "67594206"
 
 遵循以下步骤使用 CDN 核心分析启用日志记录：
 
-登录到 Azure[门户](https://portal.azure.com)。 如果还没有为工作流启用 CDN，请在继续操作之前[创建 Azure CDN 配置文件和终结点](cdn-create-new-endpoint.md)。
+登录 [Azure 门户](https://portal.azure.com)。 如果还没有为工作流启用 CDN，请在继续操作之前[创建 Azure CDN 配置文件和终结点](cdn-create-new-endpoint.md)。
 
 1. 在 Azure 门户中，导航到“CDN 配置文件”。****
 
@@ -189,7 +189,7 @@ ms.locfileid: "67594206"
 
 字段说明：****
 
-|“值”|描述|
+|值|说明|
 |-------|---------|
 |订阅 ID    |Azure 订阅的 ID，采用 GUID 格式。|
 |资源组名称 |CDN 资源所属资源组的名称。|
@@ -323,7 +323,7 @@ Microsoft 当前仅提供核心分析日志，其中包含一些显示 HTTP 响�
 下表显示了 **Microsoft 推出的 Azure CDN 标准版**、**Akamai 推出的 Azure CDN 标准版**和 **Verizon 推出的 Azure CDN 标准/高级版**的核心分析日志中提供的一系列指标。 并非所有提供商提供的所有指标都可用，尽管这种差异很小。 此表还显示了某提供商的给定指标是否可用。 这些指标仅适用于在其上拥有流量的 CDN 终结点。
 
 
-|指标                     | 描述 | Microsoft | Verizon | Akamai |
+|指标                     | 说明 | Microsoft | Verizon | Akamai |
 |---------------------------|-------------|-----------|---------|--------|
 | RequestCountTotal         | 在此期间请求命中的总次数。 | 是 | 是 |是 |
 | RequestCountHttpStatus2xx | 导致 2xx HTTP 代码（例如 200 和 202）的所有请求的计数。 | 是 | 是 |是 |

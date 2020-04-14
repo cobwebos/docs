@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: dsindona
-ms.openlocfilehash: d2a18d0fee4352cd88e4c64ab99a7dfc1b08ed75
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 25d678ad7b8c2b786239b294de873bc1d98fa5cb
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280076"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270326"
 ---
 # <a name="create-a-new-container-offer-with-the-cloud-partner-portal"></a>使用云合作伙伴门户创建新的容器产品/服务
+
+> [!IMPORTANT]
+> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 容器产品的管理移动到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照["创建 Azure 容器产品/服务](https://aka.ms/CreateContainerOffer)"中的说明进行操作，以管理迁移的优惠。
 
 本文介绍如何为 Azure 市场创建和发布容器产品/服务条目。 每个套餐在 Azure 市场中都显示为其自身的实体并且与一个或多个 SKU 相关联。  容器产品/服务由以下资产组和支持服务组成：
 

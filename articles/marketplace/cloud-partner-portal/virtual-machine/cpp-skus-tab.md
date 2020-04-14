@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
-ms.openlocfilehash: 49f1de5128325b2884ea76b010727be45f1b195d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a8dbadf959107e733a94216c8a01495e6ebf5039
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288880"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273114"
 ---
 # <a name="virtual-machine-skus-tab"></a>虚拟机“SKU”选项卡
+
+> [!IMPORTANT]
+> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 虚拟机产品的管理移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照创建 Azure[虚拟机产品/服务](https://aka.ms/CreateAzureVMoffer)中的说明进行操作，以管理迁移的优惠。
 
 在“新建套餐”页的“SKU”选项卡中，可以创建一个或多个 SKU 并将其关联到新套餐。********  不同的 SKU 可按功能集、VM 映像类型、吞吐量或可伸缩性、计费模型或其他某种特征来区分解决方案。
 
@@ -37,14 +40,14 @@ ms.locfileid: "80288880"
 
 <!-- TD: I took a new screenshot, and the fields differ somewhat from description in the VM Pub Guide.  Needs review. -->
 
-|  **字段**       |     **说明**                                                          |
+|  **领域**       |     **说明**                                                          |
 |  ---------       |     ---------------                                                          |
 |  *SKU 设置*   |    |
 | **SKU ID\***       | 此 SKU 的标识符。  此名称最多包含 50 个字符，包括小写字母数字字符或短划线 (-)，但不能以短划线结尾。  套餐一经发布，便不可修改。  |
 |  *SKU 详细信息*   |  |
 | **Title\***        | 套餐在市场中的友好显示名称。 最大长度为 50 个字符。 |
 | **总结\***      | 套餐在市场中显示的简短说明。 最大长度为 100 个字符。 |
-| **描述\***  | 更详细地介绍套餐的说明文本。  <!-- TD: max len/guidance? 3k characters -->  |
+| **说明\***  | 更详细地介绍套餐的说明文本。  <!-- TD: max len/guidance? 3k characters -->  |
 | **隐藏此 SKU\*** | 指示是否应在市场中向客户显示该 SKU。  如果只想通过解决方案模板提供此 SKU，而不允许单独购买，则可以隐藏此 SKU。  对于初始测试、临时性或季节性的套餐，此选项也可以提供方便。 |
 | **云可用性\*** | 确定要在哪个云上提供该 SKU。  默认值为 Azure 公有云。  Microsoft Azure 政府版是一个政府社区云，允许美国联邦、州、地方或部落政府及其认证的合作伙伴进行受控的访问。  有关政府云的详细信息，请参阅[欢迎使用 Azure 政府版](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)。 |
 | **这是私人 SKU 吗？\*** | 指示该 SKU 是专用还是公共 SKU。 默认值为“否”（即公共 SKU）****。  有关详细信息，请参阅[公共和专用 SKU](../../cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)。 |

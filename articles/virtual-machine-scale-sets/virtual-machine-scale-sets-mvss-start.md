@@ -1,19 +1,19 @@
 ---
 title: 了解虚拟机规模集模板
 description: 了解如何通过几个简单的步骤为 Azure 虚拟机规模集创建基本规模集模板。
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 04/26/2019
-ms.author: manayar
-ms.openlocfilehash: 24db9b2d39771c481a8c43e2b55f12cef381b4d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 9c6a30a5f08b33adfa515973962236516f34fbf3
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76271903"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273386"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>了解虚拟机规模集模板
 [Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process)是部署成组的相关资源的好办法。 本系列教程演示如何创建基本规模集模板，以及如何修改此模板以满足各种场景。 所有示例都来自此 [GitHub 存储库](https://github.com/gatneil/mvss)。

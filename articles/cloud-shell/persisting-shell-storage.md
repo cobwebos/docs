@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: d4d59642f638e7b1221c35a4bb281923571d5066
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 37005a722d4a1962b4f6e1ddb8bb1c7a1229d28a
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297587"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273284"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>在 Azure Cloud Shell 中持久保存文件
 Cloud Shell 利用 Azure 文件存储在会话之间持久保存文件。 初始启动时，Cloud Shell 会提示关联新的或现有的文件共享，以便在会话之间持久保存文件。
@@ -50,7 +50,7 @@ Cloud Shell 利用 Azure 文件存储在会话之间持久保存文件。 初始
 出现存储设置的提示时，选择“显示高级设置”查看其他选项****。 填充的存储选项针对本地冗余存储 (LRS)、异地冗余存储 (GRS) 和区域冗余存储 (ZRS) 帐户进行筛选。 
 
 > [!NOTE]
-> 建议使用 GRS 或 ZRS 存储帐户以提高后备文件共享的复原能力。 选择哪种类型的冗余取决于你的目标和价格首选项。 [详细了解 Azure 存储帐户的复制选项](https://docs.microsoft.com/azure/storage/common/storage-redundancy)。
+> 建议使用 GRS 或 ZRS 存储帐户以提高后备文件共享的复原能力。 选择哪种类型的冗余取决于你的目标和价格首选项。 [详细了解 Azure 存储帐户的复制选项](../storage/common/storage-redundancy.md)。
 
 ![资源组设置](media/persisting-shell-storage/advanced-storage.png)
 
@@ -103,7 +103,7 @@ Cloud Shell 通过以下两种方法持久保存文件：
 ### <a name="list-clouddrive"></a>列出 `clouddrive`
 若要查明哪些文件共享已装载为 `clouddrive`，请运行 `df` 命令。 
 
-clouddrive 的文件路径会在 URL 中显示存储帐户名称和文件共享。 例如： `//storageaccountname.file.core.windows.net/filesharename`
+clouddrive 的文件路径会在 URL 中显示存储帐户名称和文件共享。 例如，`//storageaccountname.file.core.windows.net/filesharename`
 
 ```
 justin@Azure:~$ df
@@ -169,5 +169,5 @@ clouddrive mount -s mySubscription -g myRG -n storageAccountName -f fileShareNam
 
 ## <a name="next-steps"></a>后续步骤
 [Cloud Shell 快速入门](quickstart.md) <br>
-[了解 Microsoft Azure 文件存储](https://docs.microsoft.com/azure/storage/storage-introduction) <br>
+[了解 Microsoft Azure 文件存储](../storage/files/storage-files-introduction.md) <br>
 [了解存储标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>

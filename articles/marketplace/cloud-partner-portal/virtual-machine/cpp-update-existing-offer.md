@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: dsindona
-ms.openlocfilehash: fe1397d7ad00a2eb6e9fe04d8bfa50e49839fe34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a15ccb1de2a9ce0072d032e624ead3b4d730763b
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288778"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273046"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>更新 Azure 市场中的现有 VM 套餐
+
+> [!IMPORTANT]
+> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 虚拟机产品的管理移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照创建 Azure[虚拟机产品/服务](https://aka.ms/CreateAzureVMoffer)中的说明进行操作，以管理迁移的优惠。
 
 本文从不同的方面指导你在[云合作伙伴门户](https://cloudpartner.azure.com/)中更新虚拟机 (VM) 套餐，然后重新发布该套餐。 
 
@@ -128,7 +131,7 @@ ms.locfileid: "80288778"
 
 4.  如果在 1x1 GUI 中设置了定价，可以直接在该 UI 中更改价格。 如果通过导入/导出电子表格设置了定价，则只能通过导入/导出功能降低价格。
 
-3.  单击“保存”。****
+3.  单击“ **保存**”。
 
 4.  单击“发布”，启动发布更改的工作流。****
 

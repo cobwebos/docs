@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: b782477fd29b34eda70813fc2aff29157f02acb3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ecd0ffd76650efff3a4c9f877522cba6f28d080
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275940"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271108"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -27,6 +27,8 @@ ms.locfileid: "79275940"
 [Azure Application Insights][start] 的定价采用**即用即付**模型，该模型基于数据引入量，有时还基于长期数据保留策略。 每个 Application Insights 资源作为独立服务计费，并在 Azure 订阅的帐单中产生相应费用。 数据量的衡量标准是 Application Insights 从用户应用程序收到的未压缩 JSON 数据包的大小。 使用[实时指标流](../../azure-monitor/app/live-stream.md)不会根据数据量收费。
 
 [多步骤 Web 测试](../../azure-monitor/app/availability-multistep.md)会额外收费。 多步骤 Web 测试是指执行一系列操作的 Web 测试。 单页“ping 测试”不单独计费**。 进行 ping 测试和多步测试时发送的遥测数据与应用发送的其他遥测数据计费方式相同。
+
+[启用自定义指标维度警报](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation)的应用程序见解选项也会产生额外的成本，因为这可能导致创建其他预聚合指标。 [了解更多]有关应用程序见解中的基于日志和预聚合指标以及 Azure 监视器自定义指标的[定价](https://azure.microsoft.com/pricing/details/monitor/)。
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>估算应用程序的管理成本
 
@@ -176,7 +178,7 @@ Azure 在 [Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-ma
 
 ### <a name="create-alerts-for-the-daily-cap"></a>为每日上限创建警报
 
-当引入的数据卷达到警告级别或每日上限级别时，应用程序见解每日上限在 Azure 活动 kog 中创建事件。  您可以[根据这些活动日志事件创建警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#create-with-the-azure-portal)。 这些事件的信号名称为：
+当引入的数据卷达到警告级别或每日上限级别时，应用程序见解每日上限会在 Azure 活动日志中创建事件。  您可以[根据这些活动日志事件创建警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#create-with-the-azure-portal)。 这些事件的信号名称为：
 
 * 应用程序见解组件每日上限警告阈值达到
 
@@ -216,7 +218,7 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 
 ![调整每日遥测数据量上限](./media/pricing/pricing-005.png)
 
-也可以`retentionInDays`[使用 参数以编程方式设置](powershell.md#set-the-data-retention)保留。 此外，如果将数据保留期设置为 30 天，则可以使用 `immediatePurgeDataOn30Days` 参数对旧数据触发立即清除，这对于合规性相关的方案可能很有用。 此清除功能仅通过 Azure 资源管理器公开，使用时应十分小心。 可以使用 Azure 资源管理器配置数据卷上限的每日重置时间以`dailyQuotaResetTime`设置参数。
+也可以`retentionInDays`[使用 参数以编程方式设置](powershell.md#set-the-data-retention)保留。 降低保留率后，删除最旧数据之前有几天宽限期。 如果将数据保留设置为 30 天，则可以使用`immediatePurgeDataOn30Days`参数立即触发旧数据清除，这对于与合规性相关的方案可能很有用。 此清除功能仅通过 Azure 资源管理器公开，使用时应十分小心。 可以使用 Azure 资源管理器配置数据卷上限的每日重置时间以`dailyQuotaResetTime`设置参数。
 
 ## <a name="data-transfer-charges-using-application-insights"></a>使用 Application Insights 时的数据传输费
 
@@ -228,7 +230,7 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 
 ## <a name="disable-daily-cap-e-mails"></a>禁用每日上限电子邮件
 
-若要禁用每日容量上限电子邮件，请在“使用情况和预估成本”窗格中 Application Insights 资源的“配置”部分下，选择“每日上限”************。 有一些在达到上限时以及达到可调整的警告等级时发送电子邮件的设置。 如果要禁用与每日容量上限相关的所有电子邮件，请取消选中这两个框。
+若要禁用每日容量上限电子邮件，请在“使用情况和预估成本”窗格中 Application Insights 资源的“配置”部分下，选择“每日上限”************。 有一些在达到上限时以及达到可调整的警告等级时发送电子邮件的设置。 如果要禁用所有每日上限与音量相关的电子邮件，请取消选中这两个框。
 
 ## <a name="legacy-enterprise-per-node-pricing-tier"></a>旧的企业（按节点）定价层
 
@@ -268,7 +270,7 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 
 ### <a name="examples-of-how-to-determine-distinct-node-count"></a>演示如何确定不同节点计数的示例
 
-| 方案                               | 每日节点计数总数 |
+| 场景                               | 每日节点计数总数 |
 |:---------------------------------------|:----------------:|
 | 1 个应用程序使用 3 个 Azure 应用服务实例和 1 个虚拟服务器 | 4 |
 | 3 个应用程序正运行在 2 个 VM 上，这些应用程序的 Application Insights 资源属于同一订阅，并且位于“按节点”层中 | 2 | 

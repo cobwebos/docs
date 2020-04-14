@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/02/2018
 ms.author: dsindona
-ms.openlocfilehash: 8ae1dcbeff6e14e6f1f7cd44ae3a0a68bd379b56
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: 988121effb35949cce442ba9458789105e88feec
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387336"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273437"
 ---
 # <a name="common-issues-during-vhd-creation-faq"></a>创建 VHD 期间出现的常见问题 (FAQ)
+
+> [!IMPORTANT]
+> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 虚拟机产品的管理移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[创建 VHD 常见问题解答](https://aka.ms/VHDcreationIssues)中的说明进行操作，以管理迁移的优惠。
 
 以下常见问题解答 (FAQ) 涵盖了在为 VM 套餐创建虚拟硬盘 (VHD) 和虚拟机 (VM) 期间遇到的常见问题。 
 

@@ -2,15 +2,15 @@
 title: 教程 - 使用快速启动模板
 description: 了解如何使用 Azure 快速入门模板来完成模板开发。
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 1e110bb4711490f53da7628f608f150a2bc3186c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4b82e02ecc009e587b89d1fd151fd13f75a4bcf8
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79368870"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408506"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>教程：使用 Azure 快速入门模板
 
@@ -77,6 +77,8 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
+若要运行此部署命令，必须具有 Azure CLI 的 [最新版本](/cli/azure/install-azure-cli)。
+
 ```azurecli
 az deployment group create \
   --name addwebapp \
@@ -86,6 +88,9 @@ az deployment group create \
 ```
 
 ---
+
+> [!NOTE]
+> 如果部署失败，请将 **debug** 开关和部署命令配合使用来显示调试日志。  还可以使用 **verbose** 开关来显示完整的调试日志。
 
 ## <a name="clean-up-resources"></a>清理资源
 

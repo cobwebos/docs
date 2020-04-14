@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: 9eab035d494892671a2451866311ca06599ec030
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 598e361949b000724645c841910b1682a7bbb1a3
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73953722"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258450"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>将 MXChip IoT DevKit 连接到 Azure IoT 远程监视解决方案加速器
 
@@ -120,7 +120,7 @@ DevKit 将重新启动并开始运行代码。
 
 ## <a name="change-device-id"></a>更改设备 ID
 
-如果希望在代码中将硬编码的 **AZ3166** 更改为自定义的设备 ID，请修改[远程监视示例](https://github.com/Microsoft/devkit-sdk/blob/master/AZ3166/src/libraries/AzureIoT/examples/RemoteMonitoring/RemoteMonitoring.ino#L23)中显示的代码行。
+如果希望在代码中将硬编码的 **AZ3166** 更改为自定义的设备 ID，请修改[远程监视示例](../iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2.md)中显示的代码行。
 
 ## <a name="problems-and-feedback"></a>问题和反馈
 

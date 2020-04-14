@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 18de50473e3dd6ca8ddda9575a247e00530032e8
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 11f52df683b7a85a8ad5163bbede33d786897452
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115421"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257260"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>使用 Python 配置自动化 ML 试验
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -197,7 +197,7 @@ automl_config = AutoMLConfig(task = "classification")
 
 在每个自动化机器学习试验中，数据会[自动进行缩放和规范化](concept-automated-ml.md#preprocess)，以帮助灵敏应对对不同规模功能的特定算法**。  但是，您还可以启用其他任务化，例如缺少值归因、编码和转换。 [详细了解包含哪些特征化](how-to-use-automated-ml-for-ml-models.md#featurization)。
 
-配置试验时，可以启用高级设置 `featurization`。 下表显示了[`AutoMLConfig`类](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)中用于执行的已接受设置。
+配置试验时，可以启用高级设置 `featurization`。 下表显示了[AutoMLConfig 类](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)中用于进行壮举的接受设置。
 
 |技术化配置 | 说明 |
 | ------------- | ------------- |

@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: dsindona
-ms.openlocfilehash: 7c799c4a56ee5fc2074e4d644bdbcbc6d2b1ca5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b2a4bb107309894a7180e0a4585cdba6f04d1bee
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288744"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273029"
 ---
 # <a name="windows-remote-management-over-https"></a>基于 HTTPS 的 Windows 远程管理
+
+> [!IMPORTANT]
+> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 虚拟机产品的管理移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照创建 Azure[虚拟机产品/服务](https://aka.ms/CreateAzureVMoffer)中的说明进行操作，以管理迁移的优惠。
 
 本节介绍如何配置 Azure 托管的基于 Windows 的 VM，以便可以使用 PowerShell 对其进行远程管理和部署。  要启用 PowerShell 远程处理，目标 VM 必须公开 Windows 远程管理 (WinRM) HTTPS 终结点。  有关 PowerShell 远程处理的详细信息，请参阅[运行远程命令](https://docs.microsoft.com/powershell/scripting/learn/remoting/running-remote-commands)。  有关 WinRM 的详细信息，请参阅 [Windows 远程管理](https://docs.microsoft.com/windows/desktop/WinRM/portal)。
 

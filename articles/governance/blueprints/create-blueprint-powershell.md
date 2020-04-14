@@ -3,12 +3,12 @@ title: 快速入门：使用 PowerShell 创建蓝图
 description: 本快速入门中通过 PowerShell 使用 Azure 蓝图创建、定义和部署项目。
 ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 8b418fa2b5244c42b8597bbbe7ed4773133d03a8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 53fcf53bdcc3b5fcd1c6ec07a7d8ab45b39955b6
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75436631"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676590"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>快速入门：使用 PowerShell 定义和分配 Azure 蓝图
 
@@ -377,7 +377,7 @@ Publish-AzBlueprint -Blueprint $blueprint -Version '{BlueprintVersion}'
      **用户分配的托管标识**可以位于任何订阅和资源组中，只要分配蓝图的用户有权访问它即可。
 
      > [!IMPORTANT]
-     > 蓝图不管理用户分配的托管标识。 用户负责分配足够的角色和权限，否则蓝图分配会失败。
+     > Azure 蓝图不管理用户分配的托管标识。 用户负责分配足够的角色和权限，否则蓝图分配会失败。
 
 ## <a name="clean-up-resources"></a>清理资源
 

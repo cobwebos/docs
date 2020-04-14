@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: 0ef7e5d869ab2d7e085cbf861bfc32e57b1fad4b
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: e0e98b87cf3612bf01f90f806ea64ef06d08c60a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80408494"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255322"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor 监视哪些内容？
 本文介绍了 Azure 监视器监视的不同应用程序和服务。 
@@ -31,7 +31,7 @@ Insights 在 Azure Monitor 中为特定的应用程序和服务提供了自定�
 | [网络 Azure 监视器（预览版）](insights/network-insights-overview.md) | 为所有网络资源提供运行状况和指标的全面视图。 高级搜索功能可帮助您识别资源依赖项，通过搜索网站名称，启用标识托管网站的资源等方案。 |
 [用于资源组的 Azure Monitor（预览版）](insights/resource-group-insights.md) |  对单个资源遇到的任何问题进行会审和诊断，同时提供资源组整体运行状况和性能的上下文。 |
 | [用于存储的 Azure 监视器（预览）](insights/storage-insights-overview.md) | 通过提供 Azure 存储服务性能、容量和可用性的统一视图，全面监视 Azure 存储帐户。 |
-| [虚拟机的 Azure 监视器（预览版）](insights/container-insights-overview.md) | 大规模监视 Azure 虚拟机 （VM） 和虚拟机缩放集。 它分析 Windows 和 Linux VM 的性能和运行状况，并监视它们的进程及其对其他资源和外部进程的依赖关系。 |
+| [虚拟机的 Azure 监视器](insights/container-insights-overview.md) | 大规模监视 Azure 虚拟机 （VM） 和虚拟机缩放集。 它分析 Windows 和 Linux VM 的性能和运行状况，并监视它们的进程及其对其他资源和外部进程的依赖关系。 |
 
 ### <a name="core-solutions"></a>核心解决方案
 
@@ -181,8 +181,8 @@ Insights 在 Azure Monitor 中为特定的应用程序和服务提供了自定�
 | [密钥保管库分析](insights/azure-key-vault.md) | 分析 Azure 密钥保管库审核事件日志。 |
 | [Microsoft Intune](https://docs.microsoft.com/intune/) | 创建诊断设置以将日志发送到 Azure 监视器。 请参阅[在 Intune（预览）中将日志数据发送到存储、事件中心或日志分析](https://docs.microsoft.com/intune/fundamentals/review-logs-using-azure-monitor)。  |
 | 网络  | [网络性能监视器](insights/network-performance-monitor.md)- 监控与服务和应用程序终结点的网络连接和性能。<br>[Azure 应用程序网关](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor)- 分析 Azure 应用程序网关的日志和指标。<br>[流量分析](/azure/network-watcher/traffic-analytics)- 分析网络观察程序网络安全组 （NSG） 流日志，以便深入了解 Azure 云中的流量流。 |
-| [办公室 365](insights/solution-office-365.md) | 监视 Office 365 环境。 更新的版本，可通过 Azure Sentinel 提供改进的载入服务。 |
-| [SQL 分析](insights/azure-sql.md) | 大规模监视 Azure SQL 数据库、弹性池和托管实例的性能，并跨多个订阅。 |
+| [Office 365](insights/solution-office-365.md) | 监视 Office 365 环境。 更新的版本，可通过 Azure Sentinel 提供改进的载入服务。 |
+| [SQL Analytics](insights/azure-sql.md) | 大规模监视 Azure SQL 数据库、弹性池和托管实例的性能，并跨多个订阅。 |
 | [Surface Hub](insights/surface-hubs.md) | 跟踪曲面集线器设备的运行状况和使用。 |
 | [System Center Operations Manager](https://docs.microsoft.com/system-center/scom) | 通过将管理组连接到 Azure 监视器，从操作管理器代理收集数据。 请参阅[将操作管理器连接到 Azure 监视器](platform/om-agents.md)<br> 使用[运营经理评估](insights/scom-assessment.md)解决方案评估系统中心运营经理管理团队的风险和运行状况。 |
 | [微软团队会议室](https://docs.microsoft.com/microsoftteams/room-systems/azure-monitor-deploy) | 微软团队会议室设备的集成端到端管理。 |

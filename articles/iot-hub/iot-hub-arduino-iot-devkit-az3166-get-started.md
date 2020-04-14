@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 326b79e1aca6fa82b3275249401c755428a8b71d
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 631a20c7bf73aa2af363fdc0019ef24cccc58f9e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878555"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258586"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>将 IoT DevKit AZ3166 连接到 Azure IoT 中心
 
@@ -327,6 +327,17 @@ DevKit 将重新启动并开始运行代码。
 * MXChip IoT DevKit 上的 LED 灯闪烁。
 
 ![串行监视器输出](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/result-serial-output.png)
+
+> [!NOTE]
+> 在测试期间，您可能会遇到 LED 指示灯未闪烁、Azure 门户不显示来自设备的传入数据的错误，但设备 OLED 屏幕将显示为 **"正在运行..."** 要解决此问题，在 Azure 门户中，转到 IoT 中心中的设备并向设备发送消息。 如果在 VS Code 中的串行监视器中看到以下响应，则可能是在路由器级别阻止来自设备的直接通信。 检查为连接设备配置的防火墙和路由器规则。 此外，请确保出站端口 1833 处于打开状态。
+> 
+> 错误： mqtt_client.c （ln 454）： 错误： 打开到终结点的连接失败  
+> 信息： >>>连接状态：已断开连接  
+> 错误： tlsio_mbedtls.c （ln 604）： 基础 IO 打开失败  
+> 错误： mqtt_client.c （ln 1042）： 错误： io_open失败  
+> 错误： iothubtransport_mqtt_common.c （ln 2283）： 无法连接到地址atcsliothub.azure-devices.net。  
+> 信息： >>>重新连接。  
+> 信息： IoThub 版本： 1.3.6  
 
 ### <a name="view-the-telemetry-received-by-azure-iot-hub"></a>查看 Azure IoT 中心收到的遥测数据
 

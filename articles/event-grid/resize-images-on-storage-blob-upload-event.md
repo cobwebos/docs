@@ -9,15 +9,15 @@ ms.service: event-grid
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/06/2020
+ms.date: 04/01/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: d01d749300c6ad07e498c75c9487b554810e68cd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 868c7e3956f20837b3774c0958842a7835579a04
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79454068"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607502"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>教程：使用事件网格自动调整上传图像的大小
 
@@ -213,7 +213,7 @@ az functionapp deployment source config --name $functionapp \
     | **资源** | 你的 Blob 存储帐户 | 使用你创建 Blob 存储帐户。 |
     | 事件类型  | 已创建 blob | 除“已创建 Blob”以外，取消选中所有其他类型  。 只有 `Microsoft.Storage.BlobCreated` 的事件类型传递给函数。 |
     | **终结点类型** | 自动生成 | 预定义为 **Azure Function**。 |
-    | **终结点** | 自动生成 | 使用为你生成的终结点 URL。 |
+    | **终结点** | 自动生成 | 函数的名称。 在本例中，它是 **Thumbnail**。 |
 
 4. 切换到“筛选器”  选项卡，然后执行以下操作：
     1. 选择“启用主题筛选”  选项。

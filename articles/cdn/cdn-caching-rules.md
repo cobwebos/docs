@@ -3,7 +3,7 @@ title: 使用缓存规则控制 Azure CDN 缓存行为 | Microsoft Docs
 description: 可以使用 CDN 缓存规则全局性地和根据条件（例如 URL 路径和文件扩展名）设置或修改默认的缓存过期行为。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.service: azure-cdn
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
-ms.author: magattus
-ms.openlocfilehash: ddd7dc7e1245c2a77e866a454bf6bfa3c1f16f88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 874ec75fb9173b6cee50bf8880510464fa13e9d2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74278140"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254234"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>使用缓存规则控制 Azure CDN 缓存行为
 
@@ -113,7 +113,7 @@ Azure 内容分发网络 (CDN) 提供了两种方法来控制文件的缓存方�
 > - 对于“Verizon 提供的 Azure CDN 标准版”**** 配置文件，传播通常在 10 分钟内完成。  
 >
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [缓存工作原理](cdn-how-caching-works.md)
 - [教程：设置 Azure CDN 缓存规则](cdn-caching-rules-tutorial.md)

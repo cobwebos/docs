@@ -6,17 +6,17 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/21/2019
+ms.date: 04/12/2020
 author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
-ms.openlocfilehash: a5540eea91937319a6ac947b50698ccaa8b25847
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 006d4fa9ed09170a423e796e893b817e079e861b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931704"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261919"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>使用支持 Azure 的 dtexec 实用工具运行 SQL Server Integration Services 包
 本文介绍支持 Azure 的 dtexec (AzureDTExec) 命令提示符实用工具。 此实用工具用于在 Azure 数据工厂中的 Azure-SSIS Integration Runtime (IR) 上运行 SQL Server Integration Services (SSIS) 包。
@@ -46,19 +46,19 @@ AzureDTExec 将包作为数据工厂管道中的“执行 SSIS 包”活动运�
 - **应用程序 Id**：输入使用在数据工厂中生成管道的正确权限创建的 Azure AD 应用的唯一标识符。 有关详细信息，请参阅[通过 Azure 门户创建 Azure AD 应用和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
 - **身份验证密钥**：输入 Azure AD 应用的身份验证密钥。
 - **租户 Id**：输入 Azure AD 租户的唯一标识符，在该标识符下创建 Azure AD 应用。
-- **订阅 Id**：输入 Azure 订阅的唯一标识符，根据该标识符创建数据工厂。
-- **资源组**：输入在其中创建数据工厂的 Azure 资源组的名称。
 - **数据工厂**：输入数据工厂的名称，其中根据调用 AzureDTExec 时提供的选项值生成具有执行 SSIS 包活动的唯一管道。
 - **IRName**： 在数据工厂中输入 Azure-SSIS IR 的名称，在调用 AzureDTExec 时，在其通用命名约定 （UNC） 路径中指定的包将在该名称上运行。
-- **包 AccessDomain**： 输入域凭据以访问您在调用 AzureTExec 时指定的 UNC 路径中的包。
-- **包访问用户名**：输入用户名凭据以访问您在调用 AzureDTExec 时指定的 UNC 路径中的包。
-- **包访问密码**：输入密码凭据以访问调用 AzureDTExec 时指定的 UNC 路径中的包。
-- **LogPath**： 输入日志文件夹的 UNC 路径，其中将 Azure-SSIS IR 上的包执行中的日志文件写入该路径。
-- **日志级别**：输入 Azure-SSIS IR 上包执行的预定义**null、****基本**、**详细**或**性能**选项的选定日志记录范围。
-- **LogAccessDomain**： 在写入日志文件时输入域凭据以访问其 UNC 路径中的日志文件夹，这在指定**LogPath**且**LogLevel**不**为 null**时是必需的。
-- **LogAccessUserName：** 在写入日志文件时输入用户名凭据以访问其 UNC 路径中的日志文件夹，这在指定**LogPath**且**LogLevel**不为**null**时是必需的。
-- **LogAccess密码**：在写入日志文件时输入密码凭据以访问其 UNC 路径中的日志文件夹，这在指定**LogPath**且**LogLevel**不**为 null**时是必需的。
 - **管道名称HashStrLen：** 输入从调用 AzureDTExec 时提供的选项值生成的哈希字符串的长度。 这些字符串用于构成在 Azure-SSIS IR 上运行包的数据工厂管道的唯一名称。 32 个字符的长度通常已足够。
+- **资源组**：输入在其中创建数据工厂的 Azure 资源组的名称。
+- **订阅 Id**：输入 Azure 订阅的唯一标识符，根据该标识符创建数据工厂。
+- **LogAccessDomain**： 在写入日志文件时输入域凭据以访问其 UNC 路径中的日志文件夹，这在指定**LogPath**且**LogLevel**不**为 null**时是必需的。
+- **LogAccess密码**：在写入日志文件时输入密码凭据以访问其 UNC 路径中的日志文件夹，这在指定**LogPath**且**LogLevel**不**为 null**时是必需的。
+- **LogAccessUserName：** 在写入日志文件时输入用户名凭据以访问其 UNC 路径中的日志文件夹，这在指定**LogPath**且**LogLevel**不为**null**时是必需的。
+- **日志级别**：输入 Azure-SSIS IR 上包执行的预定义**null、****基本**、**详细**或**性能**选项的选定日志记录范围。
+- **LogPath**： 输入日志文件夹的 UNC 路径，其中将 Azure-SSIS IR 上的包执行中的日志文件写入该路径。
+- **包 AccessDomain**： 输入域凭据以访问您在调用 AzureTExec 时指定的 UNC 路径中的包。
+- **包访问密码**：输入密码凭据以访问调用 AzureDTExec 时指定的 UNC 路径中的包。
+- **包访问用户名**：输入用户名凭据以访问您在调用 AzureDTExec 时指定的 UNC 路径中的包。
 
 若要将包和日志文件存储在本地的文件系统或文件共享中，请将 Azure-SSIS IR 加入到与本地网络连接的虚拟网络，使 IR 能够提取包并写入日志文件。 有关详细信息，请参阅[将 Azure-SSIS IR 加入虚拟网络](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。
 
@@ -92,7 +92,7 @@ AzureDTExec 将包作为数据工厂管道中的“执行 SSIS 包”活动运�
 
 ## <a name="next-steps"></a>后续步骤
 
-调用 AzureDTExec 且生成并运行包含“执行 SSIS 包”活动的独特管道之后，可以在数据工厂门户中监视这些管道。 有关详细信息，请参阅[将 SSIS 包作为数据工厂活动运行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)。
+在调用 AzureDTExec 时生成并运行具有其中执行 SSIS 包活动的唯一管道后，可以在数据工厂门户上监视它们。 如果要使用数据工厂协调/计划数据工厂触发器，也可以为其分配数据工厂触发器。 有关详细信息，请参阅[将 SSIS 包作为数据工厂活动运行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)。
 
 > [!WARNING]
 > 生成的管道预期仅由 AzureDTExec 使用。 其属性或参数将来可能会更改，因此请不要对其进行修改，或将其重复用于任何其他目的。 进行修改可能会破坏 AzureDTExec。 如果发生这种情况，请删除管道。 下一次调用 AzureDTExec 时，它会生成新的管道。

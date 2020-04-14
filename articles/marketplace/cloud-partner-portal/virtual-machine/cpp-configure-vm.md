@@ -7,17 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: b0ed430098203c5c1a0d00eb7bf17da1be0000cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f20beced7d977668d12c06375ceb8a2554c6d335
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278086"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273420"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>配置 Azure 托管的 VM
 
-本文介绍如何调整、更新和通用化 Azure 中托管的虚拟机 (VM)。  必须执行这些步骤才能准备好要从 Azure 市场部署的 VM。
+> [!IMPORTANT]
+> 从 2020 年 4 月 13 日开始，我们将开始向合作伙伴中心移动 Azure 虚拟机产品/ 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照创建 Azure[虚拟机技术资产](https://aka.ms/AzureVMTechAsset)中的说明进行操作，以管理迁移的优惠。
 
+本文介绍如何调整、更新和通用化 Azure 中托管的虚拟机 (VM)。  必须执行这些步骤才能准备好要从 Azure 市场部署的 VM。
 
 ## <a name="sizing-the-vhds"></a>调整 VHD 大小
 

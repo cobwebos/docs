@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 04/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 972bb2a804057037deedb448674abafcc175b21f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85910ee5467ecc9f4fe3c1a8bc13110b6f218e5c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76314804"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272706"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>规划 Azure 时序见解正式版环境
 
@@ -30,7 +30,7 @@ ms.locfileid: "76314804"
 
 ## <a name="best-practices"></a>最佳做法
 
-若要开始使用 Azure 时序见解，最好是知道每分钟想要推送的数据量以及需要存储数据的时间。  
+要开始使用 Azure 时间序列见解，最好知道您希望按分钟推送多少数据以及存储数据所需的时间。  
 
 有关两个时间序列见解 SKU 的容量和保留的详细信息，请阅读[时序见解定价](https://azure.microsoft.com/pricing/details/time-series-insights/)。
 
@@ -55,7 +55,7 @@ Azure 时序见解具有两种模式：
 * 一种模式针对最新数据进行了优化。 它强制执行**清除旧数据**的策略，使实例可以使用最新数据。 此模式默认已启用。 
 * 其他模式将优化数据，使其保持低于配置的保留限制。 **暂停入口**可防止在选择新数据时进入该数据，因为**存储限制超出行为**。
 
-可在 Azure 门户的环境配置页中调整保留期并在这两种模式之间切换。
+您可以在 Azure 门户中的环境配置页上的两种模式之间调整保留和切换。
 
 > [!IMPORTANT]
 > 可在 Azure 时序见解 GA 环境中配置最长 400 天的数据保留。
@@ -79,9 +79,7 @@ Azure 时序见解具有两种模式：
 
 ### <a name="environment-planning"></a>环境规划
 
-在规划时序见解环境时，需要重点考虑的第二个方面是流入容量。 流入容量是每分钟分配量的一个衍生属性。
-
-从限制的角度看，大小达到 32 KB 的流入数据包被视为 32 个事件，每个事件的大小为 1 KB。 允许的最大事件为 32 KB。 大于 32 KB 的数据包将被截断。
+在规划时序见解环境时，需要重点考虑的第二个方面是流入容量。 每日入口存储和事件容量按每分钟 1 KB 块为单位进行测量。 允许的最大数据包大小为 32 KB。 大于 32 KB 的数据包将被截断。
 
 可以在单一环境中，将 S1 或 S2 SKU 的容量增加到 10 个单位。 无法从 S1 环境迁移到 S2 环境。 无法从 S2 环境迁移到 S1 环境。
 

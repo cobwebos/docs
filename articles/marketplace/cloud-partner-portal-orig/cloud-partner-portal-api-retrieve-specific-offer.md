@@ -5,17 +5,20 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: a83b664bb770a88f3c4c13a672655e736a46ca75
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2182ed2377a392f55af2c1f723be325bd518349
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280450"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255901"
 ---
 <a name="retrieve-a-specific-offer"></a>检索特定产品/服务
 =========================
+
+> [!NOTE]
+> 云合作伙伴门户 API 与合作伙伴中心集成，在您的产品/服务迁移到合作伙伴中心后将继续工作。 集成引入了小更改。 查看[云合作伙伴门户 API 参考](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)中列出的更改，以确保代码在迁移到合作伙伴中心后继续工作。
 
 检索发布者命名空间中指定的产品/服务。  
 
@@ -40,10 +43,10 @@ ms.locfileid: "80280450"
 
 | **名称**    | **说明**                                                                          | **数据类型** |
 |-------------|------------------------------------------------------------------------------------------|---------------|
-| publisherId | publisherId。 例如，Contoso                                                        | String        |
-| offerId     | 唯一标识产品/服务的 Guid。                                                 | String        |
+| publisherId | publisherId。 例如，Contoso                                                        | 字符串        |
+| offerId     | 唯一标识产品/服务的 Guid。                                                 | 字符串        |
 | 版本     | 所检索的产品/服务的版本。 默认情况下，将检索最新的产品/服务版本。 | Integer       |
-| slotId      | 要从中检索产品/服务的槽，可以是以下值之一：      <br/>  - `Draft`（默认值）检索当前处于草稿状态的产品/服务版本。  <br/>  -  `Preview` 检索当前处于预览状态的产品/服务版本。     <br/>  -  `Production` 检索当前处于生产状态的产品/服务版本。          |      枚举 |
+| slotId      | 要从中检索产品/服务的槽，可以是以下值之一：      <br/>  - `Draft`（默认值）检索当前处于草稿状态的产品/服务版本。  <br/>  -  `Preview` 检索当前处于预览状态的产品/服务版本。     <br/>  -  `Production` 检索当前处于生产状态的产品/服务版本。          |      enum |
 | api-version | API 的最新版本                                                                    | Date          |
 |  |  |  |
 
@@ -198,7 +201,7 @@ ms.locfileid: "80280450"
 |  NeverPublished             | 产品/服务从未发布过。               |
 |  NotStarted                 | 产品/服务是新的，但未启动。              |
 |  WaitingForPublisherReview  | 产品/服务正在等待发布者批准。      |
-|  正在运行                    | 正在处理产品/服务提交。          |
+|  运行                    | 正在处理产品/服务提交。          |
 |  已成功                  | 产品/服务提交已完成处理。    |
 |  已取消                   | 产品/服务提交已取消。                |
 |  失败                     | 产品/服务提交失败。                      |

@@ -6,12 +6,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: lcozzens
-ms.openlocfilehash: d8582dfc796fe3e87b8bdc5be763dddfb5d0176b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b3579d12981e2b0add916a280bac7b4f9392d8ba
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80245406"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803137"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>快速入门：将功能标志添加到 ASP.NET Core 应用
 
@@ -126,13 +126,13 @@ ms.locfileid: "80245406"
 
     可以使用应用程序配置 API 访问此机密。 在所有支持的平台上，冒号 (:) 可以在应用程序配置 API 的配置名称中使用。 请参阅[按环境进行的配置](https://docs.microsoft.com/aspnet/core/fundamentals/configuration)。
 
-1. 通过调用 `config.AddAzureAppConfiguration()` 方法，更新 `CreateWebHostBuilder` 方法以使用应用配置。
-    
+1. 在 Program.cs 中更新 `CreateWebHostBuilder` 方法，以便通过调用 `config.AddAzureAppConfiguration()` 方法使用应用程序配置  。
+
     > [!IMPORTANT]
     > `CreateHostBuilder` 替换 .NET Core 3.0 中的 `CreateWebHostBuilder`。  根据环境选择正确的语法。
 
     #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
-    
+
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         WebHost.CreateDefaultBuilder(args)
@@ -148,7 +148,7 @@ ms.locfileid: "80245406"
     ```
 
     #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
-    
+
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
@@ -188,12 +188,12 @@ ms.locfileid: "80245406"
         services.AddControllersWithViews();
         services.AddFeatureManagement();
     }
-    ```
+
     ---
 
-1. 更新 `Configure` 方法以添加中间件，以允许在 ASP.NET Core Web 应用继续接收请求的同时定期刷新功能标志值。
-    
-    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
+1. Update the `Configure` method to add a middleware to allow the feature flag values to be refreshed at a recurring interval while the ASP.NET Core web app continues to receive requests.
+
+    #### [.NET Core 2.x](#tab/core2x)
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {

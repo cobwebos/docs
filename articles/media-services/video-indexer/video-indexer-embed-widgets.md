@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: 6ed5c509cf310b743e4ef52f411dfa34e5db09c1
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 5134a262397676aa9b59de9b0c6de61c26d21523
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411613"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262904"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>在应用中嵌入视频索引器小部件
 
@@ -33,7 +33,7 @@ ms.locfileid: "80411613"
 |---|---|---|
 |`widgets` | 用逗号分隔的字符串 | 允许您控制要呈现的见解。<br/>示例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords`仅呈现人和关键字 UI 见解。<br/>可用选项：人物、动画人物、关键字、标签、情感、情感、主题、关键帧、脚本、ocr、扬声器、场景和命名实体。|
 |`controls`|用逗号分隔的字符串|允许您控制要呈现的控件。<br/>示例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download`仅呈现搜索选项和下载按钮。<br/>可用选项：搜索、下载、预设、语言。|
-|`language`|短语言代码（语言名称）|控制见解语言。<br/>示例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>或 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
+|`language`|短语言代码（语言名称）|控制见解语言。<br/>示例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>或 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
 |`locale` | 短语言代码 | 控制 UI 的语言。 默认值为 `en`。 <br/>示例：`locale=de`。|
 |`tab` | 默认选择选项卡 | 控制默认情况下呈现的 **"见解"** 选项卡。 <br/>示例：`tab=timeline`在选择 **"时间轴"** 选项卡时呈现见解。|
 
@@ -265,7 +265,7 @@ iframe 窗口的标题也可自定义，只需为 iframe URL 提供 `&title=<You
 
 ## <a name="code-samples"></a>代码示例
 
-请参阅包含视频索引器 API 和小工具示例[的代码示例](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Widgets)回购：
+请参阅包含视频索引器 API 和小工具示例[的代码示例](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Embedding%20widgets)回购：
 
 | 文件/文件夹                       | 说明                                |
 |-----------------------------------|--------------------------------------------|

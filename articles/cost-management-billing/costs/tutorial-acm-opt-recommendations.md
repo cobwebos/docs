@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: de558ddad37e1621c633d26fff51d1506c237577
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 030ae5dcac85a88309b317be1edfab11d0da051a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80155913"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878453"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>教程：根据建议优化成本
 
 Azure 成本管理与 Azure 顾问相结合，可以提供成本优化建议。 Azure 顾问通过识别闲置和未充分利用的资源来优化和提高效率。 本教程通过一个示例逐步讲解如何识别未充分利用的 Azure 资源，并采取措施来降低成本。
 
-请观看视频[在 Azure 成本管理中优化云投资](https://www.youtube.com/watch?v=cSNPoAb-TNc)，详细了解如何使用顾问来优化成本。
+请观看视频[在 Azure 成本管理中优化云投资](https://www.youtube.com/watch?v=cSNPoAb-TNc)，详细了解如何使用顾问来优化成本。 若要观看其他视频，请访问[成本管理 YouTube 频道](https://www.youtube.com/c/AzureCostManagement)。
 
 >[!VIDEO https://www.youtube.com/embed/cSNPoAb-TNc]
 

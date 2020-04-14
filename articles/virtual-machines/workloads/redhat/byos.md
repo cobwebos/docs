@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 825d26307f2b462d51b143b88127e229508f2f25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ab578b4b688c02c9150dfb23fce53fbb82df405
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264591"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273165"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>红帽企业 Linux 在 Azure 中自带订阅的黄金映像
 
@@ -120,7 +120,7 @@ ms.locfileid: "79264591"
 1. SSH 进入您的 VM，并验证您拥有无权限映像。 要执行此步骤，运行`sudo yum repolist`。 对于 RHEL 8，请使用`sudo dnf repolist`。 输出要求您使用订阅管理器将 VM 注册到红帽。
 
 >[!NOTE]
->在 RHEL `dnf` 8`yum`上，可互换。 有关详细信息，请参阅[RHEL 8 管理指南](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/installing-software-with-yum_configuring-basic-system-settings)。
+>在 RHEL `dnf` 8`yum`上，可互换。 有关详细信息，请参阅[RHEL 8 管理指南](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/packaging_and_distributing_software/index)。
 
 ## <a name="use-the-red-hat-gold-images-from-powershell"></a>使用强力壳牌的红帽金像
 
@@ -214,6 +214,7 @@ ms.locfileid: "79264591"
 
 ## <a name="next-steps"></a>后续步骤
 
+- 有关红帽云访问的更多详细信息，请参阅[红帽公共云文档](https://access.redhat.com/public-cloud)
 - 有关云访问的分步指南和程序详细信息，请参阅[红帽云访问文档](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)。
 - 要了解有关红帽更新基础结构的详细信息，请参阅[Azure 红帽更新基础结构](./redhat-rhui.md)。
 - 要了解有关 Azure 中的所有红帽映像，请参阅[文档页](./redhat-images.md)。

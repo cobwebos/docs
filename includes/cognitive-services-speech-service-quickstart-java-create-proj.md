@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: a542e02c51bf2ce9b3b13bc50a39584ce079ec72
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: e0bc7eeff276d44f3cd23e30eb54c9bd1ca94efd
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78330816"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80659291"
 ---
 1. 启动 Eclipse。
 
@@ -19,7 +19,7 @@ ms.locfileid: "78330816"
 
 1. 片刻之后，Eclipse IDE 的主窗口将会显示。 关闭**欢迎**屏幕（如果存在）。
 
-1. 从 Eclipse 菜单栏上，通过选择“文件” **“新建”** “项目”创建一个新项目。 >    >  
+1. 从 Eclipse 菜单栏上，通过选择“文件” > “新建” > “项目”创建一个新项目。   
 
 1. 将显示“新建项目”对话框  。 选择“Java 项目”  ，然后选择“下一步”  。
 
@@ -31,7 +31,7 @@ ms.locfileid: "78330816"
 
 1. 如果出现了“打开关联的透视图?”窗口，请选择“打开透视图”。  
 
-1. 在**包资源管理器**中，右键单击 **quickstart** 项目。 从上下文菜单中选择“配置” **“转换为 Maven 项目”。**  >  
+1. 在**包资源管理器**中，右键单击 **quickstart** 项目。 从上下文菜单中选择“配置” > “转换为 Maven 项目”。  
 
    ![包资源管理器的屏幕截图](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-04-convert-to-maven-project.png)
 
@@ -45,7 +45,7 @@ ms.locfileid: "78330816"
 
      [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#repositories)]
 
-   * 此外，还添加一个 `dependencies` 元素（使用语音 SDK 版本 1.10.0 作为依赖项）：
+   * 此外，还添加一个 `dependencies` 元素（使用语音 SDK 版本 1.11.0 作为依赖项）：
 
      [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#dependencies)]
 

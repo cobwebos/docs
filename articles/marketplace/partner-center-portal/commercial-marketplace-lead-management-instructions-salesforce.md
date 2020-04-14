@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 9b59181f7c1b24a7bc00ab579bbe67a70f499c92
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 087cdafe8b819e4929e1608ed7e00be2c1169414
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755376"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262971"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>为 Salesforce 配置潜在顾客管理
 
@@ -64,11 +64,15 @@ ms.locfileid: "80755376"
 
 1. 在"连接详细信息"弹出窗口上，选择 **"潜在顾客目标****"的 Salesforce，** 然后`oid`按照前面的步骤粘贴到 **"组织"标识符**字段，从 Web 到潜在顾客窗体。
 
-1. 选择“保存”。  
+1. **联系电子邮件**- 为公司中应接收新潜在顾客的电子邮件通知的人员提供电子邮件。 您可以通过用分号分隔它们来提供多封电子邮件。
 
-    >[!Note]
-    >您必须完成配置产品/服务的其余部分并发布它，然后才能收到产品/服务的潜在顾客。
+1. 选择 **"确定**"。
 
-    ![连接详细信息 - 选择潜在顾客目标](./media/commercial-marketplace-lead-management-instructions-salesforce/choose-lead-destination.png)
+要确保已成功连接到潜在顾客目标，请单击验证按钮。 如果成功，您将在潜在顾客目标中具有测试潜在顾客。
 
-    ![连接详细信息 - 选择潜在顾客目标](./media/commercial-marketplace-lead-management-instructions-salesforce/connection-details.png)
+>[!Note]
+>您必须完成配置产品/服务的其余部分并发布它，然后才能收到产品/服务的潜在顾客。
+
+![连接详细信息 - 选择潜在顾客目标](./media/commercial-marketplace-lead-management-instructions-salesforce/choose-lead-destination.png)
+
+![连接详细信息 - 选择潜在顾客目标](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-connection-details.png)

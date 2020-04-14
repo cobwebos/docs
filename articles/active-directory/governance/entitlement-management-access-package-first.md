@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
-ms.date: 10/22/2019
+ms.date: 03/30/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd4feeb83acc3842874e7a2e4bbd32dacabcc00d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c2d31ef46dfba31a8f217f68e8d5f98b67d58da5
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75422655"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410589"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>教程：在 Azure AD 权利管理中创建第一个访问包
 
@@ -84,79 +84,83 @@ ms.locfileid: "75422655"
 
 1. 在 Azure 门户的左侧导航栏中，单击“Azure Active Directory”。 
 
-1. 在左侧菜单中，单击“标识监管”。 
+2. 在左侧菜单中，单击“标识监管”。 
 
-1. 在左侧菜单中，单击“访问包”。   如果看到“访问被拒绝”，请确认目录中是否存在 Azure AD Premium P2 许可证  。
+3. 在左侧菜单中，单击“访问包”。   如果看到“访问被拒绝”，请确认目录中是否存在 Azure AD Premium P2 许可证  。
 
-1. 单击“新建访问包”。 
+4. 单击“新建访问包”。 
 
     ![Azure 门户中的权利管理](./media/entitlement-management-shared/access-packages-list.png)
 
-1. 在“基本信息”选项卡上，键入名称“市场营销活动”访问包和说明“访问活动的资源”    。
+5. 在“基本信息”选项卡上，键入名称“市场营销活动”访问包和说明“访问活动的资源”    。
 
-1. 将“目录”下拉列表保留设置为“常规”。  
+6. 将“目录”下拉列表保留设置为“常规”。  
 
     ![新建访问包 -“基本信息”选项卡](./media/entitlement-management-access-package-first/basics.png)
 
-1. 单击“下一步”打开“资源角色”选项卡。  
+7. 单击“下一步”打开“资源角色”选项卡。  
 
     在此选项卡上，选择要包含在访问包中的资源和资源角色。
 
-1. 单击“组和团队”  。
+8. 单击“组和团队”  。
 
-1. 在“选择组”窗格中，找到并选择之前创建的“市场营销资源”组  。
+9. 在“选择组”窗格中，找到并选择之前创建的“市场营销资源”组  。
 
     默认情况下，会看到“常规”目录内部和外部的组。  选择“常规”目录外部的组时，该组将添加到“常规”目录。  
 
     ![新建访问包 -“资源角色”选项卡](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
 
-1. 单击“选择”将该组添加到列表中。 
+10. 单击“选择”将该组添加到列表中。 
 
-1. 在“角色”下拉列表中，选择“成员”。  
+11. 在“角色”下拉列表中，选择“成员”。  
 
     ![新建访问包 -“资源角色”选项卡](./media/entitlement-management-access-package-first/resource-roles.png)
 
-1. 单击“下一步”，打开“请求”选项卡   。
+    >[!NOTE]
+    > 使用[动态组](../users-groups-roles/groups-create-rule.md)时，不会看到除所有者外的任何其他可用角色。 这是设计的结果。
+    > ![方案概述](./media/entitlement-management-access-package-first/dynamic-group-warning.png)
+
+12. 单击“下一步”，打开“请求”选项卡   。
 
     在此选项卡上，你将创建请求策略。 策略定义有关访问某个访问包的规则或准则。  请创建一个使资源目录中的特定用户能够请求此访问包的策略。
 
-1. 在“可以请求访问的用户”部分，单击“你目录中的用户”，再单击“特定用户和组”    。
+13. 在“可以请求访问的用户”部分，单击“你目录中的用户”，再单击“特定用户和组”    。
 
     ![新建访问包 -“请求”选项卡](./media/entitlement-management-access-package-first/requests.png)
 
-1. 单击“添加用户和组”  。
+14. 单击“添加用户和组”  。
 
-1. 在“选择用户和组”窗格中，选择前面创建的“Requestor1”用户  。
+15. 在“选择用户和组”窗格中，选择前面创建的“Requestor1”用户  。
 
     ![新建访问包 -“请求”选项卡 - 选择用户和组](./media/entitlement-management-access-package-first/requests-select-users-groups.png)
 
-1. 单击“选择”  。
+16. 单击“选择”  。
 
-1. 向下滚动到“批准”和“启用请求”部分   。
+17. 向下滚动到“批准”和“启用请求”部分   。
 
-1. 请将“需要批准”设置为“否”   。
+18. 请将“需要批准”设置为“否”   。
 
-1. 对于“启用请求”，单击“是”，使此访问包在创建后立即获得请求   。
+19. 对于“启用请求”，单击“是”，使此访问包在创建后立即获得请求   。
 
     ![新建访问包 -“请求”选项卡 - 批准和启用请求](./media/entitlement-management-access-package-first/requests-approval-enable.png)
 
-1. 单击“下一步”，打开“生命周期”选项卡   。
+20. 单击“下一步”，打开“生命周期”选项卡   。
 
-1. 在“过期时间”部分，将“访问包分配过期时间”设置为“天数”    。
+21. 在“过期时间”部分，将“访问包分配过期时间”设置为“天数”    。
 
-1. 请将“分配过期时间”设置为 30 天   。
+22. 请将“分配过期时间”设置为 30 天   。
 
     ![新建访问包 -“生命周期”选项卡](./media/entitlement-management-access-package-first/lifecycle.png)
 
-1. 单击“下一步”打开“查看 + 创建”选项卡。  
+23. 单击“下一步”打开“查看 + 创建”选项卡。  
 
     ![新建访问包 -“查看 + 创建”选项卡](./media/entitlement-management-access-package-first/review-create.png)
 
     几分钟后，应会看到一条通知指出已成功创建访问包。
 
-1. 在“市场营销活动”访问包的左侧菜单中，单击“概述”  。
+24. 在“市场营销活动”访问包的左侧菜单中，单击“概述”  。
 
-1. 复制“我的访问权限门户链接”。 
+25. 复制“我的访问权限门户链接”。 
 
     在下一步骤中将要使用此链接。
 

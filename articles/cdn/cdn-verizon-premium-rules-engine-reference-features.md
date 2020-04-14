@@ -2,17 +2,17 @@
 title: 来自 Verizon 高级规则引擎功能的 Azure CDN |微软文档
 description: 来自 Verizon 高级规则引擎功能的 Azure CDN 参考文档。
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: magattus
-ms.openlocfilehash: 9177ac544c83305ae95ad681d3dc9f84ac64ea36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 373e7838327d11b1b54278ee0c16c6e6ae554b0b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247574"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253486"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>来自 Verizon 高级规则引擎功能的 Azure CDN
 
@@ -24,7 +24,7 @@ ms.locfileid: "79247574"
 
 以下功能旨在控制对内容的访问。
 
-“属性” | 目的
+名称 | 目的
 -----|--------
 [拒绝访问 (403)](#deny-access-403) | 通过“403 禁止访问”响应确定是否拒绝了所有请求。
 [令牌身份验证](#token-auth) | 确定是否会向请求应用基于令牌的身份验证。
@@ -36,7 +36,7 @@ ms.locfileid: "79247574"
 
 这些功能旨在自定义内容的缓存时间和方式。
 
-“属性” | 目的
+名称 | 目的
 -----|--------
 [带宽参数](#bandwidth-parameters) | 确定是否会启用带宽限制参数（例如 ec_rate 和 ec_prebuf）。
 [带宽限制](#bandwidth-throttling) | 限制接入点 (POP) 提供的响应的带宽。
@@ -66,7 +66,7 @@ ms.locfileid: "79247574"
 
 此功能用于在规则中提供附加信息。
 
-“属性” | 目的
+名称 | 目的
 -----|--------
 [备注](#comment) | 允许在规则中添加注释。
 
@@ -74,7 +74,7 @@ ms.locfileid: "79247574"
 
 以下功能旨在添加、修改或删除请求或响应中的标头。
 
-“属性” | 目的
+名称 | 目的
 -----|--------
 [Age 响应标头](#age-response-header) | 确定是否在发送给请求者的响应中包括 Age 响应标头。
 [调试缓存响应标头](#debug-cache-response-headers) | 确定是否在响应中包括 X-EC-Debug 响应标头，用于说明所请求资产的缓存策略。
@@ -86,7 +86,7 @@ ms.locfileid: "79247574"
 
 这些功能旨在自定义存储在原始日志文件中的数据。
 
-“属性” | 目的
+名称 | 目的
 -----|--------
 [自定义日志字段 1](#custom-log-field-1) | 确定分配给原始日志文件中自定义日志字段的格式和内容。
 [日志查询字符串](#log-query-string) | 确定是否将查询字符串和 URL 一起存储在访问日志中。
@@ -140,7 +140,7 @@ If the desired site does not appear in the list, then you should edit its config
 
 以下功能旨在控制 CDN 与源服务器的通信方式。
 
-“属性” | 目的
+名称 | 目的
 -----|--------
 [最大 Keep-Alive 请求数](#maximum-keep-alive-requests) | 定义 Keep-Alive 连接在关闭前的最大请求数。
 [代理特殊标头](#proxy-special-headers) | 定义一组特定于 CDN 的请求标头，这些标头将从 POP 转发给源服务器。
@@ -149,7 +149,7 @@ If the desired site does not appear in the list, then you should edit its config
 
 以下功能为高级用户提供高级功能。
 
-“属性” | 目的
+名称 | 目的
 -----|--------
 [可缓存的 HTTP 方法](#cacheable-http-methods) | 确定一组可以在我们的网络上缓存的其他 HTTP 方法。
 [可缓存请求正文大小](#cacheable-request-body-size) | 定义的阈值用于确定 POST 响应是否可以缓存。
@@ -159,7 +159,7 @@ If the desired site does not appear in the list, then you should edit its config
 
 以下功能允许将请求重定向到其他 URL 或者将其重写。
 
-“属性” | 目的
+名称 | 目的
 -----|--------
 [遵循重定向](#follow-redirects) | 确定是否可以将请求重定向到在客户源服务器返回的 Location 标头中定义的主机名。
 [URL 重定向](#url-redirect) | 通过 Location 标头重定向请求。
@@ -173,7 +173,7 @@ If the desired site does not appear in the list, then you should edit its config
 
 **目的**：确定是否会在发送给请求者的响应中包括 Age 响应标头。
 
-“值”|结果
+值|结果
 --|--
 已启用 | 将在发送给请求者的响应中包括 Age 响应标头。
 已禁用 | 将在发送给请求者的响应中排除 Age 响应标头。
@@ -192,7 +192,7 @@ If the desired site does not appear in the list, then you should edit its config
 
 带宽限制参数决定了客户端请求的数据传输速率是否受自定义速率限制。
 
-“值”|结果
+值|结果
 --|--
 已启用|允许 POP 遵循带宽限制请求。
 已禁用|导致 POP 忽略带宽限制参数。 请求的内容将正常提供（即没有带宽限制）。
@@ -211,7 +211,7 @@ If the desired site does not appear in the list, then you should edit its config
 
 若要正确设置带宽限制，下面的两个选项都必须定义。
 
-选项|描述
+选项|说明
 --|--
 每秒千字节数|将此选项设置为可以用来提供响应的最大带宽 (Kb/s)。
 预缓存秒数|将此选项设置为在限制带宽之前 POP 要等待的秒数。 在此时间段内不限制带宽，目的是防止媒体播放器因带宽限制而出现中断或缓冲问题。
@@ -228,7 +228,7 @@ If the desired site does not appear in the list, then you should edit its config
 
 **目的：** 确定请求是否应绕过缓存。
 
-“值”|结果
+值|结果
 --|--
 已启用|导致所有请求被转到源服务器，即使此前已在 POP 上缓存了内容。
 已禁用|导致 POP 根据响应标头中定义的缓存策略缓存资产。
@@ -296,7 +296,7 @@ If the desired site does not appear in the list, then you should edit its config
 
 要实现此类配置，最简单的方式是将“外部最大有效期”和“Cache-Control 标头处理”功能置于同一语句中。
 
-“值”|结果
+值|结果
 --|--
 Overwrite|确保会执行以下操作：<br/> - 覆盖源服务器生成的 `Cache-Control` 标头。 <br/>- 向响应添加“外部最大有效期”功能生成的 `Cache-Control` 标头。
 传递|确保不向响应添加“外部最大有效期”功能生成的 `Cache-Control` 标头。 <br/> 如果源服务器生成 `Cache-Control` 标头，该标头会传递给最终用户。 <br/> 如果源服务器不生成 `Cache-Control` 标头，则此选项可能会导致响应标头不包含 `Cache-Control` 标头。
@@ -397,7 +397,7 @@ cache-key 是一个相对路径，用于确定缓存的资产。 换言之，服
 
 同时定义以下两个选项即可配置此功能：
 
-选项|描述
+选项|说明
 --|--
 原始路径| 定义要重新写入其 cache-key 的请求类型的相对路径。 可以先选择基础源路径，然后定义一个正则表达式模式，从而定义相对路径。
 新建路径|定义新 cache-key 的相对路径。 可以先选择基础源路径，然后定义一个正则表达式模式，从而定义相对路径。 此相对路径可以通过[使用 HTTP 变量](cdn-http-variables.md)进行动态构造。
@@ -441,7 +441,7 @@ This feature is not available for the ADN platform. The typical traffic on this 
 
 保留 HTTP Large 平台的默认配置，因为这样会减少客户源服务器的负载，提高客户下载内容的速度。
 
-“值”|结果
+值|结果
 --|--
 已启用|还原默认行为。 默认行为是强制 POP 启动对源服务器中资产的后台获取。 然后，资产将位于 POP 的本地缓存中。
 已禁用|防止 POP 执行资产的后台获取操作。 结果是，下次从该区域请求此资产时，会导致 POP 从客户源服务器请求此资产。
@@ -482,7 +482,7 @@ This feature is not available for the ADN platform. The typical traffic on this 
 
 文件格式可以通过其 Internet 媒体类型（例如 Content-Type）指定。 Internet 媒体类型是独立于平台的元数据，服务器可以利用它来确定特定资产的文件格式。 下面提供了常见 Internet 媒体类型的列表。
 
-Internet 媒体类型|描述
+Internet 媒体类型|说明
 --|--
 text/plain|纯文本文件
 text/html| HTML 文件
@@ -551,7 +551,7 @@ application/javascript|Javascript
 
 X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
-“值”|结果
+值|结果
 -|-
 已启用|请求调试缓存响应标头时，会返回包括 X-EC-Debug 标头的响应。
 已禁用|X-EC-Debug 响应标头将不包括在响应中。
@@ -612,7 +612,7 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 **目的**：通过“403 禁止访问”响应确定是否拒绝了所有请求。
 
-“值” | 结果
+值 | 结果
 ------|-------
 已启用| 导致系统发送“403 禁止访问”响应，拒绝满足匹配条件的所有请求。
 已禁用| 还原默认行为。 默认行为是允许源服务器确定将返回的响应类型。
@@ -634,7 +634,7 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 要实现此类配置，最简单的方式是将“外部最大有效期”和“Expires 标头处理”功能置于同一语句中。
 
-“值”|结果
+值|结果
 --|--
 Overwrite|确保会执行以下操作：<br/>- 覆盖源服务器生成的 `Expires` 标头。<br/>- 向响应添加“外部最大有效期”功能生成的 `Expires` 标头。
 传递|确保不向响应添加“外部最大有效期”功能生成的 `Expires` 标头。 <br/> 如果源服务器生成 `Expires` 标头，该标头会传递给最终用户。 <br/>如果源服务器不生成 `Expires` 标头，则此选项可能会导致响应标头不包含 `Expires` 标头。
@@ -678,7 +678,7 @@ Overwrite|确保会执行以下操作：<br/>- 覆盖源服务器生成的 `Expi
 
 - 只能将请求重定向到与同一平台相对应的边缘 CNAME。
 
-“值”|结果
+值|结果
 -|-
 已启用|可以重定向请求。
 已禁用|不会重定向请求。
@@ -758,7 +758,7 @@ Overwrite|确保会执行以下操作：<br/>- 覆盖源服务器生成的 `Expi
 
 当 HTTP 客户端在 HTTP 请求中发送 `Cache-Control: no-cache` 和/或 `Pragma: no-cache` 标头时，就会出现 no-cache 请求。
 
-“值”|结果
+值|结果
 --|--
 已启用|允许将 HTTP 客户端的 no-cache 请求转发给源服务器，然后源服务器就会将响应标头和正文通过 POP 返回给 HTTP 客户端。
 已禁用|还原默认行为。 默认行为是为了防止系统将 no-cache 请求转发到源服务器。
@@ -825,7 +825,7 @@ Overwrite|确保会执行以下操作：<br/>- 覆盖源服务器生成的 `Expi
 
 默认情况下，当 POP 无法满足指定的 byte-range 请求时，以及当 If-Range 请求标头字段未被指定时，会返回此状态代码。
 
-“值”|结果
+值|结果
 -|-
 已启用|防止 POP 使用“416 无法满足请求的范围”状态代码响应无效的 byte-range 请求。 服务器会改为交付请求的资产并为客户端返回“200 正常”。
 已禁用|还原默认行为。 默认行为是遵循“416 无法满足请求的范围”状态代码。
@@ -891,7 +891,7 @@ Overwrite|确保会执行以下操作：<br/>- 覆盖源服务器生成的 `Expi
 
 **目的：** 确定是否会将查询字符串和 URL 一起存储在访问日志中。
 
-“值”|结果
+值|结果
 -|-
 已启用|在访问日志中记录 URL 时，允许存储查询字符串。 如果 URL 中不含查询字符串，则此选项无效。
 已禁用|还原默认行为。 默认行为是将 URL 记录到访问日志中时忽略查询字符串。
@@ -1017,7 +1017,7 @@ Overwrite|响应标头值将设置为指定的值。|**响应标头值（客户�
 
 然后，可以使用这个部分缓存履行对该内容的新请求，直到所请求的内容完全缓存。
 
-“值”|结果
+值|结果
 -|-
 已启用|请求可以生成部分缓存的内容。
 已禁用|请求只能生成所请求内容的完全缓存版本。
@@ -1081,7 +1081,7 @@ Overwrite|响应标头值将设置为指定的值。|**响应标头值（客户�
 
 有效值是：
 
-“值”|结果
+值|结果
 --|--
 已启用|导致 POP 重新获取源服务器的资产。
 已禁用|还原默认行为。 默认行为是在收到请求后提供有效的缓存资产。
@@ -1148,7 +1148,7 @@ Overwrite|响应标头值将设置为指定的值。|**响应标头值（客户�
 
 **目的：** 确定在缓存重新验证时出错或者在从客户源服务器检索请求内容时出错的情况下，是否交付到期的缓存内容。
 
-“值”|结果
+值|结果
 -|-
 已启用|如果在连接到源服务器的过程中发生错误，则会向请求者提供过时的内容。
 已禁用|源服务器的错误将转发给请求者。
@@ -1192,7 +1192,7 @@ Overwrite|响应标头值将设置为指定的值。|**响应标头值（客户�
 
 除了 URL 重写功能之外，此功能优先于大多数功能。
 
-“值” | 结果
+值 | 结果
 ------|---------
 已启用 | 通过基于令牌的身份验证保护请求的内容。 只遵循客户端发出的提供了有效令牌且符合其要求的请求。 FTP 事务不进行基于令牌的身份验证。
 已禁用| 还原默认行为。 默认行为是允许基于令牌的身份验证配置，以便确定是否要对请求进行保护。
@@ -1213,7 +1213,7 @@ Overwrite|响应标头值将设置为指定的值。|**响应标头值（客户�
 
 下表列出了可用的响应代码。
 
-响应代码|响应名称|描述
+响应代码|响应名称|说明
 -------------|-------------|--------
 301|已永久移动|此状态代码将未经授权的用户重定向到在 Location 标头中指定的 URL。
 302|已找到|此状态代码将未经授权的用户重定向到在 Location 标头中指定的 URL。 此状态代码是执行重定向操作的行业标准方法。
@@ -1270,7 +1270,7 @@ WWW-Authenticate 标头仅适用于 401 响应代码。
 
 有效值是：
 
-“值”|结果
+值|结果
 ---|----
 已启用|导致 POP 在比较基于令牌的身份验证参数的 URL 时忽略大小写。
 已禁用|还原默认行为。 默认行为是在针对令牌身份验证进行 URL 比较时区分大小写。
@@ -1293,7 +1293,7 @@ WWW-Authenticate 标头仅适用于 401 响应代码。
 - 无法将“值”选项设置为“ec_token”。
 - 确保“值”选项中定义的名称只包含有效的 URL 字符。
 
-“值”|结果
+值|结果
 ----|----
 已启用|“值”选项所定义的查询字符串参数名称应该用于定义令牌。
 已禁用|可将令牌指定为请求 URL 中未定义的查询字符串参数。
@@ -1312,7 +1312,7 @@ WWW-Authenticate 标头仅适用于 401 响应代码。
 
 此功能的配置需要设置以下选项：
 
-选项|描述
+选项|说明
 -|-
 代码|选择会返回给请求者的响应代码。
 源和模式| 这些设置定义的请求 URI 模式用于标识可重定向请求的类型。 只会重定向其 URL 同时满足下述两个条件的请求： <br/> <br/> **源（或内容访问点）：** 选择用于标识源服务器的相对路径。 该路径是 _/XXXX/_ 部分和终结点名称。 <br/><br/> **源（模式）：** 必须定义一个可通过相对路径标识请求的模式。 此正则表达式模式必须定义一个路径，该路径直接开始于以前选择的内容访问点（见上）之后。 <br/> - 确保上面定义的请求 URI 条件（即源和模式）不与为此功能定义的任何匹配条件冲突。 <br/> - 指定模式；如果使用空白值作为模式，则匹配所有字符串。
@@ -1358,7 +1358,7 @@ WWW-Authenticate 标头仅适用于 401 响应代码。
 
 - 此功能的配置需要设置以下选项：
 
-选项|描述
+选项|说明
 -|-
  源和模式 | 这些设置定义的请求 URI 模式用于标识可重写请求的类型。 只会重写其 URL 同时满足下述两个条件的请求： <br/><br/>  - **源（或内容访问点）：** 选择标识源服务器的相对路径。 该路径是 _/XXXX/_ 部分和终结点名称。 <br/><br/> - **源（模式）：** 必须定义一个可通过相对路径标识请求的模式。 此正则表达式模式必须定义一个路径，该路径直接开始于以前选择的内容访问点（见上）之后。 <br/> 确认上面定义的请求 URI 条件（即源和模式）不与为此功能定义的任何匹配条件冲突。 指定模式；如果使用空白值作为模式，则匹配所有字符串。
  目标  |定义要通过其将上述请求重写的相对 URL： <br/>    1. 选择标识源服务器的内容访问点。 <br/>    2. 使用： <br/>        - 正则表达式模式 <br/>        - [HTTP 变量](cdn-http-variables.md) <br/> <br/> 使用 $_n_ 将源模式中捕获的值替换到目标模式中，其中 _n_ 用于按捕获顺序来标识值。 例如，$1 代表按源模式捕获的第一个值，而 $2 则代表第二个值。

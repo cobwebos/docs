@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 0a705ad81925491fe054d846143472c6e4432b69
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 521d5d8d587b39cf573dedc37ea9f6fd53646e66
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77561896"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410954"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>在 Azure DevOps 中通过 Azure Cosmos DB 模拟器生成任务设置 CI/CD 管道
 
@@ -138,7 +138,7 @@ namespace todo.Tests
 }
 ```
 
-导航到 Visual Studio 测试任务中的“执行选项”。 在“设置文件”选项中，指定测试使用  **.runsettings** 文件进行配置。 在“替代测试运行参数”选项中，添加 **。** `-endpoint $(CosmosDbEmulator.Endpoint)` 这样做会将测试任务配置为引用模拟器生成任务的终结点，而不是在 **.runsettings** 文件中定义的终结点。  
+导航到 Visual Studio 测试任务中的“执行选项”。 在“设置文件”选项中，指定测试使用  **.runsettings** 文件进行配置。 在“替代测试运行参数”选项中，添加 `-endpoint $(CosmosDbEmulator.Endpoint)`。  这样做会将测试任务配置为引用模拟器生成任务的终结点，而不是在 **.runsettings** 文件中定义的终结点。  
 
 ![使用模拟器生成任务终结点替代终结点变量](./media/tutorial-setup-ci-cd/addExtension_5.png)
 
@@ -178,4 +178,4 @@ namespace todo.Tests
 
 若要详细了解如何将模拟器用于本地开发和测试，请参阅[将 Azure Cosmos DB 模拟器用于本地开发和测试](https://docs.microsoft.com/azure/cosmos-db/local-emulator)。
 
-若要导出模拟器 SSL 证书，请参阅[导出 Azure Cosmos DB 模拟器证书供 Java、Python 和 Node.js 使用](https://docs.microsoft.com/azure/cosmos-db/local-emulator-export-ssl-certificates)
+若要导出模拟器 TLS/SSL 证书，请参阅[导出 Azure Cosmos DB 模拟器证书以便与 Java、Python 和 Node.js 配合使用](https://docs.microsoft.com/azure/cosmos-db/local-emulator-export-ssl-certificates)

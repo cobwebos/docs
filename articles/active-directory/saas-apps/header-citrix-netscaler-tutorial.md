@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87f1c884edf6841b65495cd31ed4c7d6e63aedd9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 07ea6824975d0cb3f4b909db41188c490bbba6d2
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75977932"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477952"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-header-based-authentication"></a>教程：Azure Active Directory 单一登录与 Citrix NetScaler 的集成（基于标头的身份验证）
 
@@ -244,7 +244,7 @@ ms.locfileid: "75977932"
 
 ### <a name="bind-the-certificate"></a>绑定证书
 
-若要将此服务发布为 SSL，请绑定服务器证书，然后测试应用程序：
+若要将此服务发布为 TLS，请绑定服务器证书，然后测试应用程序：
 
 1. 在“证书”下，选择“无服务器证书”。  
 

@@ -3,12 +3,12 @@ title: 备份文件和文件夹 - 常见问题
 description: 解决与使用 Azure 备份对文件和文件夹进行备份相关的常见问题。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 55819ce7ec5196812d935a21c096c132144d78af
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 6e9f265672ff15e40444a46a3e440e73a0051a5b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421309"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254744"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>与对文件和文件夹进行备份相关的常见问题
 
@@ -22,7 +22,7 @@ ms.locfileid: "80421309"
 
 ### <a name="how-long-are-vault-credentials-valid"></a>保管库凭据的有效期是多长时间？
 
-保管库凭据会在 48 小时后过期。 如果凭据文件过期，请重新从 Azure 门户下载该文件。
+保管库凭据将在 10 天后过期。 如果凭据文件过期，请重新从 Azure 门户下载该文件。
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>可以从哪些驱动器备份文件和文件夹？
 
@@ -185,7 +185,6 @@ Azure 备份代理需要密码（您在注册期间提供）才能在还原期�
 | --- | --- | --- |
 | Lost |可用 |您可以在另一台计算机上安装和注册 MARS 代理，其密码与注册原始计算机时提供的相同密码相同。 选择 **"恢复选项** > **""其他位置**以执行还原。 有关详细信息，请参阅[本文](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine)。
 | Lost |Lost |无法恢复数据或数据不可用 |
-
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>如果取消正在进行的还原作业，会发生什么情况？
 

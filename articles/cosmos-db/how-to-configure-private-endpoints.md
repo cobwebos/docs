@@ -4,14 +4,14 @@ description: 了解如何设置 Azure 专用链接，以便使用虚拟网络中
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 04/13/2020
 ms.author: thweiss
-ms.openlocfilehash: 9a6a1560e169c51256c198868dc7293a020189f4
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 4b49d2aa61587d0156755bdd5c47b3eeb90090a5
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421424"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270683"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>为 Azure 宇宙帐户配置 Azure 专用链接
 
@@ -40,15 +40,15 @@ ms.locfileid: "80421424"
 
     | 设置 | 值 |
     | ------- | ----- |
-    | **项目详情** | |
+    | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
     | 资源组 | 选一个择资源组。|
     | **实例详细信息** |  |
     | 名称 | 输入专用终结点的任何名称。 如果获取此名称，请创建唯一的名称。 |
     |区域| 选择要部署专用链接的区域。 在虚拟网络所在的同一位置创建专用终结点。|
     |||
-1. 选择 **"下一步"：资源**。
-1. 在“创建专用终结点 - 资源”中，输入或选择以下信息：****
+1. 在完成时选择“下一步:  资源”。
+1. 在“创建专用终结点 - 资源”中，输入或选择以下信息： 
 
     | 设置 | 值 |
     | ------- | ----- |
@@ -59,7 +59,7 @@ ms.locfileid: "80421424"
     |目标子资源 |选择要映射的 Azure 宇宙 DB API 类型。 这默认为 SQL、MongoDB 和 Cassandra API 的一个选项。 对于 Gremlin 和表 API，您还可以选择**Sql，** 因为这些 API 与 SQL API 可互操作。 |
     |||
 
-1. 选择 **"下一步"：配置**。
+1. 在完成时选择“下一步:  配置”。
 1. 在 **"创建专用终结点 - 配置**"中，输入或选择此信息：
 
     | 设置 | 值 |
@@ -68,12 +68,12 @@ ms.locfileid: "80421424"
     | 虚拟网络| 选择虚拟网络。 |
     | 子网 | 选择子网。 |
     |**专用 DNS 集成**||
-    |与专用 DNS 区域集成 |选择 **“是”**。 <br><br/> 要与专用终结点私下连接，您需要 DNS 记录。 我们建议您将专用终结点与专用 DNS 区域集成。 您还可以使用自己的 DNS 服务器或使用虚拟机上的主机文件创建 DNS 记录。 |
+    |与专用 DNS 区域集成 |请选择“是”。  <br><br/> 要与专用终结点私下连接，您需要 DNS 记录。 我们建议您将专用终结点与专用 DNS 区域集成。 您还可以使用自己的 DNS 服务器或使用虚拟机上的主机文件创建 DNS 记录。 |
     |专用 DNS 区域 |选择**privatelink.documents.azure.com**。 <br><br/> 将自动确定专用 DNS 区域。 不能使用 Azure 门户来更改它。|
     |||
 
-1. 选择 **"审阅" = 创建**。 在 **"审核 + 创建"** 页上，Azure 验证配置。
-1. 当您看到**验证传递**的消息时，选择 **"创建**"。
+1. 选择“查看 + 创建”  。 在 **"审核 + 创建"** 页上，Azure 验证配置。
+1. 看到“验证通过”消息时，选择“创建”   。
 
 在 Azure 门户中批准 Azure Cosmos 帐户的专用链接后，"**防火墙"和"虚拟网络**"窗格中的 **"所有网络"** 选项不可用。
 
@@ -624,6 +624,10 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 * 如果配置公共流量或服务终结点并创建专用终结点，则不同类型的传入流量将由相应类型的防火墙规则授权。
 
 * 如果不配置任何公共流量或服务终结点，并且创建专用终结点，则 Azure Cosmos 帐户只能通过专用终结点访问。 如果不配置公共流量或服务终结点，则在所有已批准的专用终结点被拒绝或删除后，帐户将对整个网络开放。
+
+## <a name="blocking-public-network-access-during-account-creation"></a>在创建帐户期间阻止公共网络访问
+
+如上一节所述，除非设置了特定的防火墙规则，否则添加专用终结点可使 Azure Cosmos 帐户只能通过专用终结点访问。 这意味着在创建 Azure Cosmos 帐户后和在添加私有终结点之前，可以从公共流量中到达该帐户。 为了确保在创建专用终结点之前禁用公共网络访问，可以在帐户创建`publicNetworkAccess``Disabled`期间将标志设置为。 有关如何使用此标志的示例，请参阅[此 Azure 资源管理器模板](https://azure.microsoft.com/resources/templates/101-cosmosdb-private-endpoint/)。
 
 ## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>添加或删除区域时更新专用终结点
 

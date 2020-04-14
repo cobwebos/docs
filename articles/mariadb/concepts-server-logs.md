@@ -5,35 +5,21 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 2c07e5eeedd2e4f42ec7b165bf161e142421df58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/13/2020
+ms.openlocfilehash: ffd4ab463080001dbab5b0ed9ece69c4b5f91382
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79527888"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272077"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的慢查询日志
 在 Azure Database for MariaDB 中，慢查询日志可供用户使用。 不支持访问事务日志。 可以使用慢查询日志来查明性能瓶颈以进行故障排除。
 
 有关慢查询日志的详细信息，请参阅[慢查询日志](https://mariadb.com/kb/en/library/slow-query-log-overview/)的 MariaDB 文档。
 
-## <a name="access-slow-query-logs"></a>访问慢查询日志
-可以使用 Azure 门户和 Azure CLI 列出和下载 Azure Database for MariaDB 慢查询日志。
-
-在 Azure 门户中，选择 Azure Database for MariaDB 服务器。 在“监视”标题下，选择“服务器日志”页面。********
-
-有关 Azure CLI 的详细信息，请参阅[使用 Azure CLI 配置和访问服务器日志](howto-configure-server-logs-cli.md)。
-
-同样，你可使用诊断日志，通过管道将日志传送到 Azure Monitor。 有关详细信息，请参阅[下文](concepts-server-logs.md#diagnostic-logs)。
-
-## <a name="log-retention"></a>日志保留期
-日志从其创建时开始算起，最多可保留七天。 如果可用日志的总大小超过了 7 GB，则会删除最旧的文件，直到有空间可用。
-
-日志每 24 小时或每 7 GB 轮换一次（以先达到的条件为准）。
-
 ## <a name="configure-slow-query-logging"></a>配置慢查询日志记录
-默认情况下，慢查询日志被禁用。 若要启用它，请将 slow_query_log 设置为 ON。
+默认情况下，慢查询日志被禁用。 若要启用它，请将 `slow_query_log` 设置为 ON。 这可以使用 Azure 门户或 Azure CLI 启用。 
 
 可以调整的其他参数包括：
 
@@ -48,6 +34,21 @@ ms.locfileid: "79527888"
 > 如果计划在较长一段时间内记录慢速查询，建议将 `log_output` 设置为“None”。 如果设置为“File”，则这些日志将写入到本地服务器存储，并且可能会影响 MariaDB 性能。 
 
 有关慢查询日志参数的完整说明，请参阅 MariaDB [慢查询日志文档](https://mariadb.com/kb/en/library/slow-query-log-overview/)。
+
+## <a name="access-slow-query-logs"></a>访问慢查询日志
+在 MariaDB 的 Azure 数据库中访问慢速查询日志有两个选项：本地服务器存储或 Azure 监视器诊断日志。 这是使用 参数设置`log_output`的。
+
+对于本地服务器存储，可以使用 Azure 门户或 Azure CLI 列出和下载慢速查询日志。 在 Azure 门户中，在 Azure 门户中导航到服务器。 在“监视”标题下，选择“服务器日志”页面。******** 有关 Azure CLI 的详细信息，请参阅[使用 Azure CLI 配置和访问服务器日志](howto-configure-server-logs-cli.md)。 
+
+Azure 监视器诊断日志允许您将慢速查询日志管道到 Azure 监视器日志（日志分析）、Azure 存储或事件中心。 有关详细信息，请参阅[下文](concepts-server-logs.md#diagnostic-logs)。
+
+## <a name="local-server-storage-log-retention"></a>本地服务器存储日志保留
+当登录到服务器的本地存储时，日志在创建后最多有 7 天可用。 如果可用日志的总大小超过了 7 GB，则会删除最旧的文件，直到有空间可用。
+
+日志每 24 小时或每 7 GB 轮换一次（以先达到的条件为准）。
+
+> [!Note]
+> 上述日志保留不适用于使用 Azure 监视器诊断日志进行管道的日志。 您可以更改要发送到的数据接收器的保留期（例如。 Azure 存储）。
 
 ## <a name="diagnostic-logs"></a>诊断日志
 Azure Database for MariaDB 集成了 Azure Monitor 诊断日志。 在 MariaDB 服务器上启用慢查询日志后，可以选择将它们发送到 Azure Monitor 日志、事件中心或 Azure 存储。 若要详细了解如何启用诊断日志，请参阅[诊断日志文档](../azure-monitor/platform/platform-logs-overview.md)中的操作说明部分。
@@ -81,6 +82,9 @@ Azure Database for MariaDB 集成了 Azure Monitor 诊断日志。 在 MariaDB �
 | `server_id_s` | 服务器 ID |
 | `thread_id_s` | 线程 ID |
 | `\_ResourceId` | 资源 URI |
+
+> [!Note]
+> 对于 `sql_text`，如果日志超过 2048 个字符，则会截断日志。
 
 ## <a name="analyze-logs-in-azure-monitor-logs"></a>分析 Azure Monitor 日志中的日志
 

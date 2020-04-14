@@ -1,21 +1,15 @@
 ---
-title: 快速入门：用于 Python 的语音 SDK 平台设置 - 语音服务
-titleSuffix: Azure Cognitive Services
-description: 根据本指南可设置配合使用 Python 和语音服务 SDK 的平台。
-services: cognitive-services
-author: markamos
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/09/2019
-ms.author: erhopf
-ms.openlocfilehash: 458a6940ce214ef1931a2cc9ee95f2cb5ca16779
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/04/2020
+ms.author: dapine
+ms.openlocfilehash: 327000173b4c5c378f60c76eb1a24bd155901671
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925745"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666916"
 ---
 本指南介绍如何安装用于 Python 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。 如果只是需要包名称以便自行开始，请运行 `pip install azure-cognitiveservices-speech`。
 
@@ -26,7 +20,7 @@ ms.locfileid: "78925745"
 - Python 语音 SDK 包适用于以下操作系统：
   - Windows：x64 和 x86
   - Mac：macOS X 10.12 或更高版本
-  - Linux：基于 x64 的 Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8
+  - Linux：基于 x64 的 Ubuntu 16.04/18.04、Debian 9、RHEL 7/8、CentOS 7/8
 
 ## <a name="prerequisites"></a>先决条件
 

@@ -4,18 +4,21 @@ description: 了解如何在 Azure 库伯奈斯服务 （AKS） 中创建和管�
 services: container-service
 ms.topic: article
 ms.date: 04/06/2020
-ms.openlocfilehash: ef5400f19f68fd2da45776d220e17777f58e46e6
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: b567d9e618877463e1e659f368d35fbb787a4ef2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986312"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259062"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>在 Azure 库伯奈斯服务 （AKS） 中管理系统节点池
 
-在 Azure Kubernetes 服务 (AKS) 中，采用相同配置的节点分组成节点池。** 节点池包含运行应用程序的基础 VM。 系统节点池和用户节点池是 AKS 群集的两种不同的节点池模式。 系统节点池承载基本系统服务，如 CoreDNS。 用户节点池是放置特定于应用程序的窗格的位置。 每个 AKS 群集必须至少包含一个至少具有一个节点的系统节点池。 如果为 AKS 群集运行单个系统节点池，我们建议您为节点池至少使用三个节点。 
+在 Azure Kubernetes 服务 (AKS) 中，采用相同配置的节点分组成节点池。** 节点池包含运行应用程序的基础 VM。 系统节点池和用户节点池是 AKS 群集的两种不同的节点池模式。 系统节点池主要用于托管关键系统 pod（如 CoreDNS 和隧道前）。 用户节点池的主要目的是托管应用程序窗格。 但是，如果您希望在 AKS 群集中只具有一个池，则可以在系统节点池上安排应用程序窗格。 每个 AKS 群集必须至少包含一个至少具有一个节点的系统节点池。 
 
-## <a name="before-you-begin"></a>在开始之前
+> [!Important]
+> 如果在生产环境中为 AKS 群集运行单个系统节点池，我们建议您为节点池至少使用三个节点。
+
+## <a name="before-you-begin"></a>开始之前
 
 * 您需要 Azure CLI 版本 2.3.1 或更高版本安装和配置。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 

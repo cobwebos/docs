@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 63f49946b14b003348758a5ae7ebadd7a4acf383
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0d08caf5444216666e7296b830f0af6af606dd4f
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277662"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273828"
 ---
 # <a name="key-vault-deployment-template"></a>Key Vault 部署模板
+
+> [!IMPORTANT]
+> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 虚拟机产品的管理移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[Azure VM 映像认证](https://aks.ms/CertifyVMimage)中的说明来管理迁移的优惠。
 
 以下 Azure 资源管理器模板定义了一个新的 Azure Key Vault 实例。  它在[创建 Key Vault 证书](cpp-create-key-vault-cert.md)一文中使用。 
 

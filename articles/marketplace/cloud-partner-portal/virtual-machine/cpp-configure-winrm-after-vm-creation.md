@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: dsindona
-ms.openlocfilehash: 673fe1f31f6a8602225e7cde3bf1eb4c3b28b8a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b80325594eedb87293c31de3236bb4690eb89e05
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278138"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273012"
 ---
 # <a name="configure-winrm-after-virtual-machine-creation"></a>在创建虚拟机后配置 WinRM
+
+> [!IMPORTANT]
+> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 虚拟机产品的管理移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照创建 Azure[虚拟机产品/服务](https://aka.ms/CreateAzureVMoffer)中的说明进行操作，以管理迁移的优惠。
 
 本文介绍了如何配置现有 Azure 托管虚拟机 (VM) 以启用基于 HTTPS 的 WinRM。  此配置仅适用于基于 Windows 的 VM，并且需要完成下面的两步过程：
 
@@ -26,8 +29,8 @@ ms.locfileid: "80278138"
 
 WINRM 超过 HTTPS 协议使用端口 5986，默认情况下，在 Azure 应用商店上提供的预先配置的 Windows VM 上不会启用端口 5986。 若要启用此协议，请使用以下步骤通过 [Azure 门户](https://portal.azure.com)向网络安全组 (NSG) 中添加一个新规则。  有关 NSG 的详细信息，请参阅[安全组](https://docs.microsoft.com/azure/virtual-network/security-overview)。
 
-1.  导航到刀片**虚拟机>**   < *vm 名称*>  **> 设置/网络**。
-2.  单击 NSG 名称（在此示例中为 **testvm11002**）以显示其属性：
+1. 导航到刀片**虚拟机>**   < *vm 名称*>  **> 设置/网络**。
+2. 单击 NSG 名称（在此示例中为 **testvm11002**）以显示其属性：
 
     ![网络安全组属性](./media/nsg-properties.png)
  

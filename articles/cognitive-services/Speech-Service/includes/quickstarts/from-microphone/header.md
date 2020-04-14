@@ -1,21 +1,15 @@
 ---
-title: 快速入门：从麦克风中识别语音 - 语音服务
-titleSuffix: Azure Cognitive Services
-description: TBD
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 11/20/2019
-ms.author: erhopf
-ms.openlocfilehash: ab51fe0323ea23c16cb52aa7a0570f8d51d40b2f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/02/2020
+ms.author: dapine
+ms.openlocfilehash: 3775690802c89805ccf9df1ee6d6717a8818213f
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75468509"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80659099"
 ---
 本快速入门介绍如何使用[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) 以交互方式识别来自麦克风输入的语音，以及从捕获的音频中获取听录文本。 可轻松地将此功能集成到应用或设备中，用于执行对话听录等常见识别任务。 它还可用于更加复杂的集成，例如配合使用 Bot Framework 和语音 SDK 来生成语音助手。
 

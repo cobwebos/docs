@@ -5,16 +5,16 @@ services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: mblythe
-ms.date: 01/29/2020
+ms.date: 04/10/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: c5bba7296a05cfbb72698a991ece1ef298689bd1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 399c64c88e78079432fcf7c09dafd199da83358b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76900660"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255041"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>在防火墙或代理服务器上将 Azure 门户 URL 加入安全列表
 
@@ -80,13 +80,3 @@ Azure 门户的安全列表的 URL 终结点特定于部署组织时所在的 Az
 > 发往这些终结点的流量使用标准的 TCP 端口：80 (HTTP) 和 443 (HTTPS)。
 >
 >
-## <a name="next-steps"></a>后续步骤
-
-需要将 IP 地址加入安全列表？ 下载适合你的云的 Microsoft Azure 数据中心 IP 范围的列表：
-
-* [全球](https://www.microsoft.com/download/details.aspx?id=56519)
-* [美国政府](https://www.microsoft.com/download/details.aspx?id=57063)
-* [德国](https://www.microsoft.com/download/details.aspx?id=57064)
-* [中国](https://www.microsoft.com/download/details.aspx?id=57062)
-
-其他 Microsoft 服务使用其他 URL 和 IP 地址进行连接。 若要优化 Microsoft 365 服务的网络连接，请参阅[为 Office 365 设置网络](/office365/enterprise/set-up-network-for-office-365)。

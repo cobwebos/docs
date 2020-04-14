@@ -3,7 +3,7 @@ title: 如何从 Twilio (.NET) 发起电话呼叫 | Microsoft Docs
 description: 了解如何在 Azure 中使用 Twilio API 服务发起电话呼叫和发送短信。 采用 .NET 编写的代码示例。
 services: ''
 documentationcenter: .net
-author: georgewallace
+author: mimckitt
 editor: ''
 ms.assetid: 789185ad-69dc-4e9e-a936-42e0a25315c8
 ms.service: cloud-services
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/04/2016
-ms.author: gwallace
-ms.openlocfilehash: 27b4f3cdd8f622a97cfc0853f79bb77d76673dcf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: df1f5e1c21c28fa8c1fcdef6b2278fb92014a3b1
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69636142"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272553"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>如何在 Azure 的 Web 角色中使用 Twilio 发起电话呼叫
 本指南演示如何使用 Twilio 从 Azure 中托管的网页发起呼叫。 生成的应用程序提示用户使用给定的号码和消息进行呼叫，如下面的屏幕截图中所示。
@@ -38,7 +38,7 @@ ms.locfileid: "69636142"
 
 1. 在 Visual Studio 中打开解决方案。
 2. 右键单击“引用”****。
-3. 单击“管理 NuGet 包”。****
+3. 单击 **"管理 NuGet 包**"。
 4. 单击“联机”。****
 5. 在联机搜索框中，键入 *twilio*。
 6. 单击 Twilio 程序包对应的“安装”。****
@@ -157,7 +157,7 @@ namespace WebRole1
 * 在 上阅读 Twilio[https://www.twilio.com/docs/security][twilio_docs_security]安全准则。
 * 了解有关 Twilio 的更多[https://www.twilio.com/docs][twilio_docs]，在 。
 
-## <a name="see-also"></a><a name="seealso"></a>请参阅
+## <a name="see-also"></a><a name="seealso"></a>另请参阅
 * [如何在 Azure 中使用 Twilio 实现语音和短信功能](twilio-dotnet-how-to-use-for-voice-sms.md)
 
 [twilio_console]: https://www.twilio.com/console

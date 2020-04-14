@@ -4,12 +4,12 @@ description: 本教程介绍如何通过使用 PowerShell 将 Windows Service Fa
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 086379e788966b300f988e06ec42c94b880b8281
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2d170057a85a8e223fa9d1bc2bfc17e0c284afcd
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75551703"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756034"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>教程：将运行 Windows 的 Service Fabric 群集部署到 Azure 虚拟网络
 
@@ -156,7 +156,7 @@ ms.locfileid: "75551703"
 ## <a name="set-up-azure-active-directory-client-authentication"></a>设置 Azure Active Directory 客户端身份验证
 如果将 Service Fabric 群集部署在某个公共网络中，而该网络托管在 Azure 上，则对于客户端到节点型相互身份验证，建议如下：
 * 对客户端标识使用 Azure Active Directory。
-* 对服务器标识使用证书，并对 HTTP 通信进行 SSL 加密。
+* 对服务器标识使用证书，并对 HTTP 通信使用 TLS 加密。
 
 必须在[创建群集](#createvaultandcert)之前设置 Azure Active Directory (Azure AD)，以便针对 Service Fabric 群集对客户端进行身份验证。 通过 Azure AD，组织（称为租户）可管理用户对应用程序的访问。 
 

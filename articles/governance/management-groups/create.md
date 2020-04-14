@@ -3,12 +3,12 @@ title: 创建管理组以组织资源 - Azure 治理
 description: 了解如何使用门户、Azure PowerShell 和 Azure CLI 创建 Azure 管理组以管理多个资源。
 ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: d9bb2e82404c0188094298f40da3346ee132eec3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a06679432d795b5b7854af8dc66b468841978e9c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75436531"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273182"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>创建用来组织和管理资源的管理组
 
@@ -20,7 +20,7 @@ ms.locfileid: "75436531"
 
 租户中的任何 Azure AD 用户可以创建管理组，而无需分配给该用户的管理组写入权限。  此新管理组将是根管理组的子组，创建者将获得"所有者"角色分配。 管理组服务允许此功能，因此在根级别不需要角色分配。 创建根管理组时，没有用户有权访问该组。  为了避免找到 Azure AD 全局管理员开始使用管理组的障碍，我们允许在根级别创建初始管理组。      
 
-可以使用门户、PowerShell 或 Azure CLI 创建管理组。 目前无法使用资源管理器模板创建管理组。
+可以使用门户、[资源管理器模板](../../azure-resource-manager/templates/deploy-to-tenant.md#create-management-group)、PowerShell 或 Azure CLI 创建管理组。
 
 ### <a name="create-in-portal"></a>在门户中创建
 
@@ -43,7 +43,7 @@ ms.locfileid: "75436531"
 
    ![用于创建新管理组的“选项”窗格](./media/create_context_menu.png)  
 
-1. 选择“保存”。****
+1. 选择“保存”。 
 
 ### <a name="create-in-powershell"></a>在 PowerShell 中创建
 

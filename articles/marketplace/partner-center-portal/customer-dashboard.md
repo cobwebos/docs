@@ -1,18 +1,18 @@
 ---
 title: 合作伙伴中心商业市场分析中的客户仪表板
-description: 了解如何使用商业应用商店分析中的客户仪表板访问有关客户的信息，包括增长趋势。
+description: 了解如何在商业市场分析中使用客户仪表板访问有关客户的信息，包括增长趋势。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 7fe56a81bc82f9d49cf9f81b30986882b6d13cfe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a8379ed883311d219bb6eeb56bd4424dfb470bc9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286109"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81251633"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>商业市场分析中的客户仪表板
 
@@ -108,10 +108,10 @@ ms.locfileid: "80286109"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关合作伙伴中心商业市场中可用的分析报告的概述，请参阅[合作伙伴中心商业市场的分析](./analytics.md)。
+- 有关合作伙伴中心商业市场中可用的分析报告的概述，请参阅[合作伙伴中心中商业市场的分析](./analytics.md)。
 - 有关汇总产品/服务市场活动的汇总数据的图表、趋势和值，请参阅[商业市场分析中的摘要仪表板](./summary-dashboard.md)。
 - 有关您的订单以图形和可下载格式的信息，请参阅[商业市场分析中的订单仪表板](./orders-dashboard.md)。
-- 有关虚拟机 （VM） 提供使用情况和按流量计费指标，请参阅[商业应用商店分析中的使用情况仪表板](./usage-dashboard.md)。
-- 有关过去 30 天的下载请求列表，请参阅[商业应用商店分析中的下载仪表板](./downloads-dashboard.md)。
-- 要查看 Azure 应用商店和 AppSource 上产品/服务的客户反馈的合并视图，请参阅[商业应用商店分析中的评级和审核仪表板](./ratings-reviews.md)。
+- 有关虚拟机 （VM） 提供使用情况和按流量计费指标，请参阅[商业市场分析中的使用情况仪表板](./usage-dashboard.md)。
+- 有关过去 30 天的下载请求列表，请参阅[商业市场分析中的下载仪表板](./downloads-dashboard.md)。
+- 要查看 Azure 应用商店和 AppSource 上产品/服务的客户反馈的合并视图，请参阅[商业市场分析中的评级和审核仪表板](./ratings-reviews.md)。
 - 有关商业市场分析和数据术语综合词典的常见问题，请参阅[商业市场分析的常见问题和术语](./faq-terminology.md)。

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/20/2020
+ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: cc937589b2fc4f394b44cf6890a352d770751d15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46c53c99c12ade986ab913bf013b652a931a4d22
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79502036"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257736"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>管理 Azure 实验室服务中的教室实验室 
 本文介绍如何创建和删除教室实验室。 它还说明如何查看实验室帐户中的所有教室实验室。 
@@ -37,8 +37,10 @@ ms.locfileid: "79502036"
     1. 指定实验室的**名称**。 
     2. 选择类所需的**虚拟机的大小**。 有关可用大小的列表，请参阅 VM[大小](#vm-sizes)部分。 
     3. 选择要用于课堂实验室的**虚拟机映像**。 如果选择 Linux 映像，可以看到一个用来为该映像启用远程桌面连接的选项。 有关详细信息，请参阅[启用适用于 Linux 的远程桌面连接](how-to-enable-remote-desktop-linux.md)。
+
+        如果您使用实验室帐户所有者凭据登录，您将看到一个选项，用于为实验室启用更多图像。 有关详细信息，请参阅[在实验室创建时启用图像](specify-marketplace-images.md#enable-images-at-the-time-of-lab-creation)。
     4. 查看页面上显示**的每小时总价**。 
-    6. 选择“保存”。****
+    6. 选择“保存”。 
 
         ![“新建实验室”窗口](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 
@@ -97,7 +99,7 @@ ms.locfileid: "79502036"
 
 ### <a name="vm-sizes"></a>VM 大小  
 
-| 大小 | 核心数 | RAM | 描述 | 
+| 大小 | 核心数 | RAM | 说明 | 
 | ---- | ----- | --- | ----------- | 
 | 小型 | 2 | 3.5 GB | 此大小最适合命令行、打开 Web 浏览器、低流量 Web 服务器、中小型数据库。 |
 | 中型 | 4 | 7 GB | 此大小最适合关系数据库、内存缓存和分析 | 

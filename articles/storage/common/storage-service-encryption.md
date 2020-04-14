@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f112a4523bc5af9ecae57e93dfb90795d3fe9c50
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: ff9191c0994d4e26da69e1c4ceaf7ef6c93e9960
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113278"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253146"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>静态数据的 Azure 存储加密
 
@@ -45,7 +45,7 @@ Azure 存储中的数据使用 256 位[AES 加密](https://en.wikipedia.org/wiki
 |----------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 |    加密/解密操作    |    Azure                                              |    Azure                                                                                                                                        |    Azure                                                                         |
 |    支持的 Azure 存储服务    |    全部                                                |    Blob 存储，Azure 文件<sup>1，2</sup>                                                                                                               |    Blob 存储                                                                  |
-|    密钥存储                         |    Microsoft 密钥存储    |    Azure Key Vault                                                                                                                              |    Azure Key Vault 或任何其他密钥存储                                                                 |
+|    密钥存储                         |    Microsoft 密钥存储    |    Azure Key Vault                                                                                                                              |    客户自己的密钥存储                                                                 |
 |    密钥轮换责任         |    Microsoft                                          |    客户                                                                                                                                     |    客户                                                                      |
 |    密钥控制                          |    Microsoft                                     |    客户                                                                                                                    |    客户                                                                 |
 

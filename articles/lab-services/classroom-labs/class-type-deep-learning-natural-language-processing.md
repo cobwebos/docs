@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 49ef78ac5a7d58d86583d91bf072f0f3131796fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 889d0d1e98f5c9947588011774d02e54f05edca1
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80109389"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257753"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>使用 Azure 实验室服务设置专注于自然语言处理中的深度学习的实验室
 本文介绍如何使用 Azure 实验室服务设置侧重于自然语言处理 （NLP） 深度学习的实验室。 自然语言处理 (NLP) 是某种形式的人工智能 (AI)，可在计算机中实现翻译、语音识别和其他语言理解功能。  
@@ -39,7 +39,7 @@ ms.locfileid: "80109389"
 | 实验室设置 | 值/说明 | 
 | ------------ | ------------------ |
 | 虚拟机 （VM） 大小 | 小型 GPU（计算）。 此大小最适合计算密集型和网络密集型应用，如人工智能和深度学习。 |
-| VM 映像 | [用于 Linux （Ubuntu） 的数据科学虚拟机](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu)。 此图像为机器学习和数据科学提供了深度学习框架和工具。 要查看此映像上已安装工具的完整列表，请参阅以下文章[：DSVM 上包含哪些内容？](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm) |
+| VM 映像 | [用于 Linux （Ubuntu） 的数据科学虚拟机](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。 此图像为机器学习和数据科学提供了深度学习框架和工具。 要查看此映像上已安装工具的完整列表，请参阅以下文章[：DSVM 上包含哪些内容？](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm) |
 | 启用远程桌面连接 | 启用。 <p>启用此设置将允许教师和学生使用远程桌面 （RDP） 连接到虚拟机 （VM）。</p><p>**重要提示**：RDP 已在用于 Linux 映像的数据科学虚拟机上安装和配置。 因此，教师/学生可以通过 RDP 连接到 VM，而无需执行任何其他步骤。 此外，如果您需要连接到图形桌面，此映像已在虚拟机上安装[了 X2Go 服务器](https://wiki.x2go.org/doku.php/doc:newtox2go)。 学生必须在其本地计算机上安装 X2Go 客户端，并且必须使用客户端进行连接。 有关详细信息，请参阅以下指南： <ul><li>[如何访问适用于 Linux 的数据科学虚拟机](../../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)</li><li>[连接到模板 VM 以安装 RDP 和 GUI 包](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm)</li></ul></p>   |
 
 用于 Linux 映像的数据科学虚拟机提供了此类课程所需的必要深度学习框架和工具。 因此，在模板计算机创建后，无需进一步自定义它。 它可以发布供学生使用。 选择模板页上的 **"发布"** 按钮，将模板发布到实验室。  

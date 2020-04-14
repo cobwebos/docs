@@ -2,21 +2,21 @@
 title: 教程 - 将标记添加到模板中的资源
 description: 将标记添加到在 Azure 资源管理器模板中部署的资源。 可以通过标记对资源进行逻辑组织。
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d7853d388b9159328a515818697ba9ddd5b95637
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 3e0deb53e57cd29cbfce4c37f2d6c6729f15bebd
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773183"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411706"
 ---
-# <a name="tutorial-add-tags-in-your-resource-manager-template"></a>教程：在资源管理器模板中添加标记
+# <a name="tutorial-add-tags-in-your-arm-template"></a>教程：在 ARM 模板中添加标记
 
-本教程介绍如何将标记添加到模板中的资源。 可以通过[标记](../management/tag-resources.md)对资源进行逻辑组织。 标记值显示在成本报告中。 完成本教程需要 **8 分钟**。
+本教程介绍如何将标记添加到 Azure 资源管理器 (ARM) 模板中的资源。 可以通过[标记](../management/tag-resources.md)对资源进行逻辑组织。 标记值显示在成本报告中。 完成本教程需要 **8 分钟**。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 建议完成[有关快速入门模板的教程](template-tutorial-quickstart-template.md)，但这不是必需的。
 
@@ -44,7 +44,7 @@ ms.locfileid: "76773183"
 
 如果尚未创建资源组，请参阅[创建资源组](template-tutorial-create-first-template.md#create-resource-group)。 此示例假设已根据[第一篇教程](template-tutorial-create-first-template.md#deploy-template)中所述，将 **templateFile** 变量设置为模板文件的路径。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -56,10 +56,12 @@ New-AzResourceGroupDeployment `
   -webAppName demoapp
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要运行此部署命令，必须具有 Azure CLI 的 [最新版本](/cli/azure/install-azure-cli)。
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addtags \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -67,6 +69,9 @@ az group deployment create \
 ```
 
 ---
+
+> [!NOTE]
+> 如果部署失败，请将 **debug** 开关和部署命令配合使用来显示调试日志。  还可以使用 **verbose** 开关来显示完整的调试日志。
 
 ## <a name="verify-deployment"></a>验证部署
 

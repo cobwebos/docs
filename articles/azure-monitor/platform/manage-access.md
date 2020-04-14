@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/22/2019
-ms.openlocfilehash: 1e559309b8e8d9768ca2f79dabfb01ec6086a961
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.date: 04/10/2019
+ms.openlocfilehash: b8d7f995997b828c2323b3e6934b97354c2f8c8b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348719"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255237"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>管理对 Azure Monitor 中的日志数据和工作区的访问
 
@@ -132,7 +132,7 @@ Azure 有两个适用于 Log Analytics 工作区的内置用户角色：
 
 Log Analytics 读者角色包括以下 Azure 操作：
 
-| 类型    | 权限 | 描述 |
+| 类型    | 权限 | 说明 |
 | ------- | ---------- | ----------- |
 | 操作 | `*/read`   | 能够查看所有 Azure 资源和资源配置。 包括查看： <br> 虚拟机扩展状态 <br> Azure 诊断在资源上的配置 <br> 所有资源的所有属性和设置。 <br> 对于工作区，它允许使用完全不受限制的权限来读取工作区设置，并对数据执行查询。 请参阅上述更细化的选项。 |
 | 操作 | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | 已弃用，无需将其分配给用户。 |
@@ -160,7 +160,7 @@ Log Analytics 读者角色包括以下 Azure 操作：
 
 Log Analytics 参与者角色包括以下 Azure 操作：
 
-| 权限 | 描述 |
+| 权限 | 说明 |
 | ---------- | ----------- |
 | `*/read`     | 能够查看所有资源和资源配置。 包括查看： <br> 虚拟机扩展状态 <br> Azure 诊断在资源上的配置 <br> 所有资源的所有属性和设置。 <br> 对于工作区，它允许使用完全不受限制的权限来读取工作区设置，并对数据执行查询。 请参阅上述更细化的选项。 |
 | `Microsoft.Automation/automationAccounts/*` | 能够创建和配置 Azure 自动化帐户，包括添加和编辑 runbook |
@@ -187,7 +187,7 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 
 当用户使用资源上下文访问权限查询工作区中的日志时，他们对资源拥有以下权限：
 
-| 权限 | 描述 |
+| 权限 | 说明 |
 | ---------- | ----------- |
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>示例：<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | 可以查看资源的所有日志数据。  |
 | `Microsoft.Insights/diagnosticSettings/write` | 可配置诊断设置以允许设置此资源的日志。 |
@@ -273,7 +273,7 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 
  自定义日志是基于自定义日志和 HTTP 数据收集器 API 等数据源创建的。 识别日志类型的最简单方法是查看[日志架构中的自定义日志](../log-query/get-started-portal.md#understand-the-schema)下所列的表。
 
- 您当前无法授予对单个自定义日志的访问权限，但可以授予对所有自定义日志的访问权限。 若要创建一个有权访问所有自定义日志的角色，请使用以下操作创建自定义角色：
+ 不能授予对单个自定义日志的访问权限，但可以授予对所有自定义日志的访问权限。 若要创建一个有权访问所有自定义日志的角色，请使用以下操作创建自定义角色：
 
 ```
 "Actions":  [
@@ -282,6 +282,9 @@ Log Analytics 参与者角色包括以下 Azure 操作：
     "Microsoft.OperationalInsights/workspaces/query/Tables.Custom/read"
 ],
 ```
+管理对自定义日志的访问的另一种方法是将它们分配给 Azure 资源并使用资源上下文范例管理访问。 要使用此方法，您必须通过在通过[HTTP 数据收集器 API](data-collector-api.md)将数据引入到日志分析时，通过在[x-ms-AzureResourceId](data-collector-api.md#request-headers)标头中指定资源 ID 来包括资源 ID。 资源 ID 必须有效，并且具有访问规则。 引入日志后，具有对资源的读取访问权限者可以访问这些日志，此处对此进行了说明。
+
+有时，自定义日志来自不直接与特定资源关联的源。 在这种情况下，创建一个资源组只是为了管理对这些日志的访问。 资源组不产生任何成本，但会为您提供有效的资源 ID 来控制对自定义日志的访问。 例如，如果特定防火墙正在发送自定义日志，请创建名为"MyFireWallLogs"的资源组，并确保 API 请求包含"MyFireWallLogs"的资源 ID。 然后，只有被授予 MyFireWallLogs 访问权限的用户或具有完整工作区访问权限的用户才能访问防火墙日志记录。          
 
 ### <a name="considerations"></a>注意事项
 

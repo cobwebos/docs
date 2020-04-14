@@ -2,19 +2,19 @@
 title: 将规模集模板转换为使用托管磁盘
 description: 将 Azure 资源管理器虚拟机缩放集模板转换为托管磁盘规模集模板。
 keywords: 虚拟机规模集
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: bc8c377a-8c3f-45b8-8b2d-acc2d6d0b1e8
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 5/18/2017
-ms.author: manayar
-ms.openlocfilehash: 4ab5c48c6673a2353c70fe808d09aa15675e0424
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 79fafa8344312294f6df107b88c9b7c571af1969
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278131"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270649"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>将规模集模板转换为托管磁盘规模集模板
 

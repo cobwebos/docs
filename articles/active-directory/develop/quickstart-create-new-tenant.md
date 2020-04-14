@@ -1,10 +1,9 @@
 ---
-title: 创建 Azure Active Directory 租户 | Microsoft Docs
+title: 创建一个 Azure Active Directory 租户
 description: 了解如何创建用于注册和生成应用程序的 Azure AD 租户。
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 1f4b24eb-ab4d-4baa-a717-2a0e5b8d27cd
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
@@ -13,12 +12,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 1d2140ca0064e2eb6b12726bcee7bf5362de8fbe
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0e2247e94b20846f19c2ed26c96a5dc53972e770
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79408277"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883807"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>快速入门：设置租户
 

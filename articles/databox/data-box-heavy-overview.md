@@ -9,12 +9,12 @@ ms.subservice: heavy
 ms.topic: overview
 ms.date: 08/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 362b7457538a16d389c3cc40fc44da19b073c0b0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 2f1f01a8cfa25c222848e7cc5c86dc3532eba348
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "70142916"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437775"
 ---
 # <a name="what-is-azure-data-box-heavy"></a>什么是 Azure Data Box Heavy？
 
@@ -116,7 +116,7 @@ Data Box Heavy 可以根据部署服务的区域、设备的发货国家/地区�
 
 按照以下步骤注册 Data Box Heavy：
 
-1. 登录到 Azure 门户： https://portal.azure.com 。
+1. [登录到 Azure 门户](https://portal.azure.com)。
 2. 单击“+ 创建资源”，创建新的资源  。 搜索“Azure Data Box”  。 选择“Azure Data Box”服务  。
 3. 单击“创建”。 
 4. 选择要用于 Data Box Heavy 的订阅。 选择要部署 Data Box Heavy 资源的区域。 在“Data Box Heavy”选项中，单击“注册”   。

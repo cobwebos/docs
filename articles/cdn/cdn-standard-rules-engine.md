@@ -2,17 +2,17 @@
 title: 使用规则引擎在标准 Azure CDN 中强制实施 HTTPS |微软文档
 description: 使用 Microsoft 标准 Azure 内容交付网络 （Azure CDN） 的规则引擎自定义 Azure CDN 处理 HTTP 请求的方式，包括阻止某些类型的内容的传递、定义缓存策略和修改 HTTP 标头。 在本文中，了解如何创建规则以将用户重定向到 HTTPS。
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
-ms.author: magattus
-ms.openlocfilehash: 724861305d7a25db409072200ac2bc3bd83f0682
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 91a442573139bf4fdd09978290bf2380c8bcb97e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74171575"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259913"
 ---
 # <a name="set-up-the-standard-rules-engine-for-azure-cdn"></a>为 Azure CDN 设置标准规则引擎
 

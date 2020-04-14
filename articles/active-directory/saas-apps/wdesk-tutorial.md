@@ -12,14 +12,14 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 04/02/2020
 ms.author: jeedes
-ms.openlocfilehash: a4cfcf20fc7a6a3532f65c3e797da6c876844d2c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 349a9920adc0d9353ee8e8e821f54bc2ea2f2616
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76985486"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666993"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wdesk"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Wdesk 集成
 
@@ -181,6 +181,10 @@ ms.locfileid: "76985486"
 
     ![配置单一登录](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
 
+1. 在“SAML 用户 ID 设置”下，勾选“SAML 用户 ID 为 Wdesk 用户名”。  
+
+    ![配置单一登录](./media/wdesk-tutorial/wdesk-username.png)
+
 4. 在“常规设置”下，选中“启用 SAML 单一登录”   ：
 
     ![配置单一登录](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig3.png)
@@ -223,7 +227,7 @@ ms.locfileid: "76985486"
    
     ![创建 Azure AD 测试用户](./media/wdesk-tutorial/createuser1.png)  
 
-5. 在“用户”文本框中输入用户的用户名（例如 brittasimon@contoso.com），然后单击“继续”按钮。  
+5. 在“用户”文本框中输入用户的用户名（例如 b.simon@contoso.com），然后单击“继续”按钮。  
 
     ![创建 Azure AD 测试用户](./media/wdesk-tutorial/createuser3.png)
 
@@ -231,9 +235,9 @@ ms.locfileid: "76985486"
   
     ![创建 Azure AD 测试用户](./media/wdesk-tutorial/createuser4.png)
  
-    a. 在“电子邮件”文本框中输入用户的电子邮件，例如 brittasimon@contoso.com。 
+    a. 在“电子邮件”文本框中输入用户的电子邮件，例如 b.simon@contoso.com。 
 
-    b. 在“名字”文本框中，输入用户的名字，如 Britta   。
+    b. 在“名字”文本框中，输入用户的名字，例如 B   。
 
     c. 在“姓氏”文本框中，输入用户的名字，如 Simon   。
 

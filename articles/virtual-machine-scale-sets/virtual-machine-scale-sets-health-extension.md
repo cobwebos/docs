@@ -1,18 +1,18 @@
 ---
 title: 将应用程序运行状况扩展与 Azure 虚拟机缩放集一起使用
 description: 了解如何使用应用程序运行状况扩展监视部署在虚拟机规模集上的应用程序的运行状况。
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.author: manayar
-ms.openlocfilehash: 37d93b04e6755512eac6c2a168bd2a04f8ac298f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: cb5f1d48bb1a95db004d9da553e19a35071c73b0
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76275878"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273726"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>配合使用虚拟机规模集和应用程序运行状况扩展
 监视应用程序的运行状况是管理和升级部署的重要信号。 Azure 虚拟机规模集支持[滚动升级](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)（包括[自动 OS-image 升级](virtual-machine-scale-sets-automatic-upgrade.md)），其依赖对各实例的运行状况监视来升级部署。
@@ -55,7 +55,7 @@ ms.locfileid: "76275878"
 
 ### <a name="property-values"></a>属性值
 
-| “属性” | 值/示例 | 数据类型
+| 名称 | 值/示例 | 数据类型
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
 | 发布者 | `Microsoft.ManagedServices` | 字符串 |
@@ -64,7 +64,7 @@ ms.locfileid: "76275878"
 
 ### <a name="settings"></a>设置
 
-| “属性” | 值/示例 | 数据类型
+| 名称 | 值/示例 | 数据类型
 | ---- | ---- | ----
 | protocol | `http` 或 `tcp` | 字符串 |
 | port | 协议为 `http` 时为可选，协议为 `tcp` 时为必需 | int |

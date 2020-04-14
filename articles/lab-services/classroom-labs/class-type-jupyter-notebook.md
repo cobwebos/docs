@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: 371c2186d44469a22b138255fb513761a9be4437
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 222f5647248d27c3bdfabd0feaeb66dd9f543652
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478217"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257719"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>设置实验室，使用 Python 和 Jupyter 笔记本教授数据科学
 
@@ -26,7 +26,7 @@ ms.locfileid: "80478217"
 
 ## <a name="lab-configuration"></a>实验室配置
 
-要设置此实验，需要 Azure 订阅和实验室帐户才能开始。 如果没有 Azure 订阅，请先创建[一个免费帐户](https://azure.microsoft.com/free/)。" 获取 Azure 订阅后，可以在 Azure 实验室服务中创建新的实验室帐户。 有关创建新实验室帐户的详细信息，请参阅[设置实验室帐户的教程](tutorial-setup-lab-account.md)。  您还可以使用现有的实验室帐户。
+要设置此实验，需要 Azure 订阅和实验室帐户才能开始。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。 获取 Azure 订阅后，可以在 Azure 实验室服务中创建新的实验室帐户。 有关创建新实验室帐户的详细信息，请参阅[设置实验室帐户的教程](tutorial-setup-lab-account.md)。  您还可以使用现有的实验室帐户。
 
 ### <a name="lab-account-settings"></a>实验室帐户设置
 
@@ -37,7 +37,7 @@ ms.locfileid: "80478217"
 | 市场映像 | 启用[数据科学虚拟机 - Windows 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019)映像，以便在实验室帐户中使用。 |
 
 >[!TIP]
->本文将重点介绍使用 Windows Server 操作系统的模板计算机。  还可以使用 Azure 应用商店中[针对 Linux （Ubuntu） 映像的数据科学虚拟机](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu)设置包含 Python 和 Jupyter 笔记本的数据科学类。
+>本文将重点介绍使用 Windows Server 操作系统的模板计算机。  还可以使用 Azure 应用商店中[针对 Linux （Ubuntu） 映像的数据科学虚拟机](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)设置包含 Python 和 Jupyter 笔记本的数据科学类。
 
 ### <a name="lab-settings"></a>实验室设置
 

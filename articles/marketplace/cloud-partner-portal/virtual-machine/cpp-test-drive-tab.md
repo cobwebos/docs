@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
-ms.openlocfilehash: d4fc8762e25825b21637b16b751d57a0dcbf369e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 22538047adc17a40438359e11bff7fd20e43bcc6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288795"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273080"
 ---
 # <a name="virtual-machine-test-drive-tab"></a>虚拟机“体验版”选项卡
+
+> [!IMPORTANT]
+> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 虚拟机产品的管理移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照创建 Azure[虚拟机产品/服务](https://aka.ms/CreateAzureVMoffer)中的说明进行操作，以管理迁移的优惠。
 
 在“新建套餐”页的“体验版”选项卡中，可以通过标准化的方案，以动手实践、自我引导的方式向潜在客户演示产品的关键功能和优势。********  体验版是支持体验版的套餐类型的一项可选功能。  体验版需要支持性的资产才能正常实现。  有关详细信息，请参阅 [Azure 市场体验版](https://azure.microsoft.com/blog/azure-marketplace-test-drive/)一文。  <!--TD: Replace with migrated version of Test Drive article! -->
 
@@ -28,10 +31,10 @@ ms.locfileid: "80288795"
 下表描述了这些字段的用途和内容。  必填字段用星号 (*) 表示。
 
 
-|    字段                  |       描述                                                            |
+|    字段                  |       说明                                                            |
 |  ---------                |     ---------------                                                          |
 |  *详细信息*   |  |
-| **描述\***           | 提供体验版方案的概述。 预配体验版时，会向用户显示此文本。 若要提供带格式的内容，可在此字段中输入基本 HTML 内容。  |
+| **说明\***           | 提供体验版方案的概述。 预配体验版时，会向用户显示此文本。 若要提供带格式的内容，可在此字段中输入基本 HTML 内容。  |
 | **用户手册\***           | 上传详细的用户手册 (.pdf)，以帮助体验版用户了解如何使用你的解决方案。  |
 | **体验版演示视频** | 上传用于展示解决方案的视频。  如果选择此选项，必须提供视频的名称和 URL（托管在 YouTube 或 Vimeo 中），以及视频的缩略图（533x324 像素）。 |
 | *技术配置* |  |

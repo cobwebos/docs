@@ -8,12 +8,12 @@ ms.date: 01/24/2020
 ms.topic: overview
 ms.service: cost-management-billing
 ms.custom: ''
-ms.openlocfilehash: 3314d00651fc5e0473d84710803671f2ad45f005
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2f96208ff3f9664d82bfc1d9ddf9bc5b9aec37c3
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79474520"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879082"
 ---
 # <a name="what-is-azure-cost-management-and-billing"></a>什么是 Azure 成本管理和计费？
 
@@ -67,7 +67,7 @@ Azure 门户当前支持以下类型的计费帐户：
 ## <a name="understand-azure-cost-management"></a>了解 Azure 成本管理
 成本管理是有效计划和控制业务所涉及成本的过程。 成本管理任务通常由财务、管理和应用等多个团队执行。 Azure 成本管理 + 计费可以帮助组织在计划时考虑成本。 此外，它还有助于有效地分析成本并采取措施来优化云支出。 若要详细了解如何作为组织来处理成本管理，请参阅 [Azure 成本管理最佳做法](./costs/cost-mgt-best-practices.md)一文。
 
-观看 [Azure 成本管理概述视频](https://www.youtube.com/watch?v=el4yN5cHsJ0)来快速了解 Azure 成本管理如何帮助你在 Azure 中节省金钱。
+观看 [Azure 成本管理概述视频](https://www.youtube.com/watch?v=el4yN5cHsJ0)来快速了解 Azure 成本管理如何帮助你在 Azure 中节省金钱。 若要观看其他视频，请访问[成本管理 YouTube 频道](https://www.youtube.com/c/AzureCostManagement)。
 
 >[!VIDEO https://www.youtube.com/embed/el4yN5cHsJ0]
 
@@ -93,7 +93,7 @@ Azure 门户当前支持以下类型的计费帐户：
 
 [Cloudyn](./cloudyn/overview.md) 是与成本管理相关的 Azure 服务，将在 2020 年底弃用。 在可能的情况下，我们会将现有的 Cloudyn 功能直接集成到 Azure 门户中。 暂时不会登记任何新客户，但对 Cloudyn 的支持将保持到该产品完全被弃用为止。
  
-请观看 [Azure 成本管理和 Cloudyn 视频](https://www.youtube.com/watch?v=15DzKPMBRxM)来详细了解是要根据业务需求使用 Azure 成本管理还是 Cloudyn。
+请观看 [Azure 成本管理和 Cloudyn 视频](https://www.youtube.com/watch?v=15DzKPMBRxM)来详细了解是要根据业务需求使用 Azure 成本管理还是 Cloudyn。 若要观看其他视频，请访问[成本管理 YouTube 频道](https://www.youtube.com/c/AzureCostManagement)。
  
 >[!VIDEO https://www.youtube.com/embed/15DzKPMBRxM]
 

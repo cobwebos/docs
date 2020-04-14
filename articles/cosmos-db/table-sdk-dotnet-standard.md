@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: 48fd85e27feb3d0c7f7f722dbbd502be55684385
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f7c6829d858e36b55f079f8ee03e431f67995e66
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76771596"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272570"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB 表 .NET Standard API：下载和发行说明
 > [!div class="op_single_selector"]
@@ -41,6 +41,9 @@ ms.locfileid: "76771596"
 
 ## <a name="release-notes-for-100-series"></a>1.0.0 系列的发行说明
 1.0.0 系列依赖于[Microsoft.Azure.DocumentDB.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)。
+
+### <a name="107"></a><a name="1.0.7"/>1.0.7
+* 通过将表 SDK 默认跟踪级别设置为 SourceLevels.off，可通过应用选择，从而提高性能。
 
 ### <a name="105"></a><a name="1.0.5"/>1.0.5
 * 在表客户端配置下引入新的配置，以使用休息执行器与 Cosmos DB 表 API 进行通信
@@ -88,12 +91,12 @@ Microsoft 至少会在停用 SDK 前提前 12 个月**** 发出通知，以便�
 这个跨平台.NET标准库[微软.Azure.Cosmos.表](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)将取代.NET框架库[微软.Azure.CosmosDB.表](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)。
 
 ### <a name="200-series"></a>2.0.0 系列
-| 版本 | 发布日期 | 停用日期 |
+| Version | 发布日期 | 停用日期 |
 | --- | --- | --- |
 | [2.0.0-preview](#2.0.0-preview) |奥客 22， 2019 |--- |
 
 ### <a name="100-series"></a>1.0.0 系列
-| 版本 | 发布日期 | 停用日期 |
+| Version | 发布日期 | 停用日期 |
 | --- | --- | --- |
 | [1.0.5](#1.0.5) |2019 年 9 月 13 日 |--- |
 | [1.0.5 预览版](#1.0.5-preview) |奥客 20， 2019 |--- |
@@ -108,9 +111,9 @@ Microsoft 至少会在停用 SDK 前提前 12 个月**** 发出通知，以便�
 | [0.9.1 预览](#0.9.1-preview) |2018 年 10 月 18 日 |--- |
 
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题解答
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 若要了解有关 Azure Cosmos DB 表 API 的详细信息，请参阅 [Azure Cosmos DB 表 API 简介](table-introduction.md)。

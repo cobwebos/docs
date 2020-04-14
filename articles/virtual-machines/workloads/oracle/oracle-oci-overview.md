@@ -3,7 +3,7 @@ title: 将微软 Azure 与 Oracle 云基础架构集成 |微软文档
 description: 了解将在 Microsoft Azure 上运行的 Oracle 应用与 Oracle 云基础架构 （OCI） 中的数据库集成的解决方案。
 services: virtual-machines-linux
 documentationcenter: ''
-author: romitgirdhar
+author: mimckitt
 manager: gwallace
 tags: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/16/2020
-ms.author: rogirdh
+ms.author: mimckitt
 ms.custom: ''
-ms.openlocfilehash: b5d5ebda850163989e6ef1af94ec623d2d758f07
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 178fb805f4bfc0762ce7e4a320752e5afa00cef5
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878283"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271856"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>集成微软 Azure 和 Oracle 云基础架构的 Oracle 应用程序解决方案
 
@@ -55,6 +55,7 @@ Microsoft 和 Oracle 已合作提供低延迟、高吞吐量的跨云连接，�
 * Azure UK 南部（英国南部）& OCI 伦敦（英国南部）
 * Azure 加拿大中部（加拿大中部）& OCI 多伦多（加拿大东南部）
 * Azure 西欧（西欧） & OCI 阿姆斯特丹 （荷兰西北部）
+* Azure 日本东部（日本东部） & OCI 东京 （日本东部）
 
 ## <a name="networking"></a>网络
 

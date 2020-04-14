@@ -4,12 +4,12 @@ description: 本教程介绍如何使用 Kestrel 向 ASP.NET Core 前端 Web 服
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 077c2ab67efa51542baa3048eb678fa22b0bc2eb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0e8b79a88fc173674caa0ca65e394e21d58d5f2f
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222724"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756095"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>教程：使用 Kestrel 向 ASP.NET Core Web API 前端服务添加 HTTPS 终结点
 
@@ -20,7 +20,7 @@ ms.locfileid: "79222724"
 > [!div class="checklist"]
 > * 在服务中定义一个 HTTPS 终结点
 > * 将 Kestrel 配置为使用 HTTPS
-> * 在远程群集节点上安装 SSL 证书
+> * 在远程群集节点上安装 TLS/SSL 证书
 > * 允许 NETWORK SERVICE 访问证书的私钥
 > * 在 Azure 负载均衡器中打开端口 443
 > * 将应用程序部署到远程群集
@@ -36,7 +36,7 @@ ms.locfileid: "79222724"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始学习本教程之前：
 
@@ -176,7 +176,7 @@ private X509Certificate2 GetHttpsCertificateFromStore()
 
 ## <a name="give-network-service-access-to-the-certificates-private-key"></a>允许 NETWORK SERVICE 访问证书的私钥
 
-在前面的步骤中，已在开发计算机上将证书导入 `Cert:\LocalMachine\My` 存储。  现在，显式允许运行服务（默认为 NETWORK SERVICE）的帐户访问证书的私钥。 可以手动执行此步骤（使用 certlm.msc 工具），但最好是在服务清单的 [SetupEntryPoint](service-fabric-run-script-at-service-startup.md) 中**配置启动脚本**，以便自动运行 PowerShell 脚本。
+在前面的步骤中，已在开发计算机上将证书导入 `Cert:\LocalMachine\My` 存储。  现在，显式允许运行服务（默认为 NETWORK SERVICE）的帐户访问证书的私钥。 可以手动执行此步骤（使用 certlm.msc 工具），但最好是在服务清单的 **SetupEntryPoint** 中[配置启动脚本](service-fabric-run-script-at-service-startup.md)，以便自动运行 PowerShell 脚本。
 
 ### <a name="configure-the-service-setup-entry-point"></a>配置服务安装程序入口点
 
@@ -221,7 +221,7 @@ private X509Certificate2 GetHttpsCertificateFromStore()
 
 ### <a name="add-the-batch-and-powershell-setup-scripts"></a>添加批处理和 PowerShell 设置脚本
 
-若要从 **SetupEntryPoint** 点运行 PowerShell，可以在指向 PowerShell 文件的批处理文件中运行 PowerShell.exe。 首先，添加服务项目的批处理文件。  在“解决方案资源管理器”中，右键单击“VotingWeb”，选择“添加” **“新建项”，然后添加名为“Setup.bat”的新文件。**  ->   编辑 *Setup.bat* 文件，添加以下命令：
+若要从 **SetupEntryPoint** 点运行 PowerShell，可以在指向 PowerShell 文件的批处理文件中运行 PowerShell.exe。 首先，添加服务项目的批处理文件。  在“解决方案资源管理器”中，右键单击“VotingWeb”，选择“添加”->“新建项”，然后添加名为“Setup.bat”的新文件。     编辑 *Setup.bat* 文件，添加以下命令：
 
 ```bat
 powershell.exe -ExecutionPolicy Bypass -Command ".\SetCertAccess.ps1"
@@ -231,7 +231,7 @@ powershell.exe -ExecutionPolicy Bypass -Command ".\SetCertAccess.ps1"
 
 ![设置文件属性][image1]
 
-在“解决方案资源管理器”中，右键单击“VotingWeb”，选择“添加” **“新建项”，然后添加名为“SetCertAccess.ps1”的新文件。**  ->   编辑 *SetCertAccess.ps1* 文件，添加以下脚本：
+在“解决方案资源管理器”中，右键单击“VotingWeb”，选择“添加”->“新建项”，然后添加名为“SetCertAccess.ps1”的新文件。     编辑 *SetCertAccess.ps1* 文件，添加以下脚本：
 
 ```powershell
 $subject="mytestcert"
@@ -396,7 +396,7 @@ $slb | Set-AzLoadBalancer
 > [!div class="checklist"]
 > * 在服务中定义一个 HTTPS 终结点
 > * 将 Kestrel 配置为使用 HTTPS
-> * 在远程群集节点上安装 SSL 证书
+> * 在远程群集节点上安装 TLS/SSL 证书
 > * 允许 NETWORK SERVICE 访问证书的私钥
 > * 在 Azure 负载均衡器中打开端口 443
 > * 将应用程序部署到远程群集
