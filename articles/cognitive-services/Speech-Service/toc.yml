@@ -214,6 +214,8 @@
       items:
         - name: 什么是语音翻译？
           href: speech-translation.md
+        - name: 语音翻译基础知识
+          href: speech-translation-basics.md
     - name: 快速入门
       items:
         - name: 将语音翻译为文本
