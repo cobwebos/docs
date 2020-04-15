@@ -31,9 +31,6 @@
     - name: 管理标记治理
       displayName: 'modify, append, effects'
       href: ./tutorials/govern-tags.md
-    - name: 动手实验室 - 探索 Azure Policy
-      displayName: 'create, policy, training, learn'
-      href: 'https://handsonlabs.microsoft.com/handsonlabs/SelfPacedLabs?storyId=story://content-private/content/sp-azuregovernance/1-azpolicy/a-policy'
 - name: 示例
   items:
     - name: 索引

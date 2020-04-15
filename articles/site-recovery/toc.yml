@@ -241,7 +241,7 @@
               href: vmware-azure-set-up-replication.md
             - name: 部署移动服务
               items:
-                - name: 移动服务概述和安装
+                - name: 关于移动服务安装
                   href: vmware-physical-mobility-service-overview.md
                 - name: 准备推送安装
                   href: vmware-azure-install-mobility-service.md
@@ -455,7 +455,7 @@
       href: monitor-log-analytics.md
     - name: 监视进程服务器
       href: vmware-physical-azure-monitor-process-server.md
-- name: 故障排除
+- name: 疑难解答
   items:
     - name: 排查 Azure VM 问题
       items:
