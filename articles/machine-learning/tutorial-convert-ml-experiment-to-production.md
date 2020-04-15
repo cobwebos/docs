@@ -7,12 +7,12 @@ ms.author: brysmith
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 03/13/2020
-ms.openlocfilehash: f40c2b5f7134458b3f8cb492652bebf14388634c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e3c9b16ae3d2b06ec19ecd29d15762a065c0c1ae
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79477130"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521437"
 ---
 # <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>教程：将机器学习试验代码转换为生产代码
 
@@ -21,7 +21,6 @@ ms.locfileid: "79477130"
 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
->
 > * 清理不必要的代码
 > * 将 Jupyter Notebook 代码重构为函数
 > * 为相关任务创建 Python 脚本
@@ -30,7 +29,7 @@ ms.locfileid: "79477130"
 ## <a name="prerequisites"></a>先决条件
 
 - 生成 [MLOpsPython 模板](https://github.com/microsoft/MLOpsPython/generate)并使用 `experimentation/Diabetes Ridge Regression Training.ipynb` 和 `experimentation/Diabetes Ridge Regression Scoring.ipynb` 笔记本。 从试验代码转换为生产代码时，这些笔记本将用作示例。 可在 [https://github.com/microsoft/MLOpsPython/tree/master/experimentation](https://github.com/microsoft/MLOpsPython/tree/master/experimentation) 找到这些笔记本。
-- 安装 nbconvert。 请仅按照[安装](https://nbconvert.readthedocs.io/en/latest/install.html)页上的“安装 nbconvert”部分中的安装说明进行操作。 
+- 安装 `nbconvert`。 请仅按照[安装](https://nbconvert.readthedocs.io/en/latest/install.html)页上的“安装 nbconvert”部分中的安装说明进行操作。 
 
 ## <a name="remove-all-nonessential-code"></a>删除所有不必要的代码
 
@@ -42,21 +41,34 @@ from sklearn.linear_model import Ridge
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 import joblib
+import pandas as pd
 
-X, y = load_diabetes(return_X_y=True)
+sample_data = load_diabetes()
+
+df = pd.DataFrame(
+    data=sample_data.data,
+    columns=sample_data.feature_names)
+df['Y'] = sample_data.target
+
+X = df.drop('Y', axis=1).values
+y = df['Y'].values
 
 X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.2, random_state=0)
+    X, y, test_size=0.2, random_state=0)
 data = {"train": {"X": X_train, "y": y_train},
         "test": {"X": X_test, "y": y_test}}
 
-alpha = 0.5
+args = {
+    "alpha": 0.5
+}
 
-reg = Ridge(alpha=alpha)
+reg_model = Ridge(**args)
 reg.fit(data["train"]["X"], data["train"]["y"])
 
-preds = reg.predict(data["test"]["X"])
-print("mse", mean_squared_error(preds, data["test"]["y"]))
+preds = reg_model.predict(data["test"]["X"])
+mse = mean_squared_error(preds, y_test)
+metrics = {"mse": mse}
+print(metrics)
 
 model_name = "sklearn_regression_model.pkl"
 joblib.dump(value=reg, filename=model_name)
@@ -73,56 +85,105 @@ joblib.dump(value=reg, filename=model_name)
 
 在 `experimentation/Diabetes Ridge Regression Training.ipynb` 中完成以下步骤：
 
-1. 创建名为 `train_model` 的函数，该函数采用 `data` 和 `alpha` 参数并返回一个模型。
-1. 将标题“基于训练集训练模型”和“基于验证集验证模型”下的代码复制到 `train_model` 函数中。
+1. 创建名为 `split_data` 的函数，以将数据帧拆分为测试数据和训练数据。 该函数应采用数据帧 `df` 作为参数，并返回包含键 `train` 和 `test` 的字典。
 
-`train_model` 函数应类似于以下代码：
+    将“Split Data into Training and Validation Sets”标题下的代码移到 `split_data` 函数中，并修改该函数以返回 `data` 对象。 
 
-```python
-def train_model(data, alpha):
-    reg = Ridge(alpha=alpha)
-    reg.fit(data["train"]["X"], data["train"]["y"])
-    preds = reg.predict(data["test"]["X"])
-    print("mse", mean_squared_error(
-        preds, data["test"]["y"]))
-    return reg
-```
+1. 创建名为 `train_model` 的函数，该函数采用 `data` 和 `args` 参数并返回已训练的模型。
 
-创建 `train_model` 函数后，将标题“基于训练集训练模型”和“基于验证集验证模型”下的代码替换为以下语句：
+    将“Training Model on Training Set”标题下的代码移到 `train_model` 函数中，并修改该函数以返回 `reg_model` 对象。  删除 `args` 字典，值将来自 `args` 参数。
+
+1. 创建名为 `get_model_metrics` 的函数（该函数采用参数 `reg_model` 和 `data`），评估模型，然后返回已训练模型的指标字典。
+
+    将“Validate Model on Validation Set”标题下的代码移到 `get_model_metrics` 函数中，并修改该函数以返回 `metrics` 对象。 
+
+这三个函数应如下所示：
 
 ```python
-reg = train_model(data, alpha)
-```
-
-上述语句调用传递 `data` 和 `alpha` 参数的 `train_model` 函数并返回模型。
-
-在 `experimentation/Diabetes Ridge Regression Training.ipynb` 中完成以下步骤：
-
-1. 创建名为 `main` 的新函数，该函数不采用任何参数，且不返回任何内容。
-1. 将标题“加载数据”、“将数据拆分为训练集和验证集”和“保存模型”下的代码复制到 `main` 函数中。
-1. 将新建的 `train_model` 调用复制到 `main` 函数中。
-
-`main` 函数应类似于以下代码：
-
-```python
-def main():
-
-    model_name = "sklearn_regression_model.pkl"
-    alpha = 0.5
-
-    X, y = load_diabetes(return_X_y=True)
+# Split the dataframe into test and train data
+def split_data(df):
+    X = df.drop('Y', axis=1).values
+    y = df['Y'].values
 
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=0)
     data = {"train": {"X": X_train, "y": y_train},
             "test": {"X": X_test, "y": y_test}}
+    return data
 
-    reg = train_model(data, alpha)
+
+# Train the model, return the model
+def train_model(data, args):
+    reg_model = Ridge(**args)
+    reg_model.fit(data["train"]["X"], data["train"]["y"])
+    return reg_model
+
+
+# Evaluate the metrics for the model
+def get_model_metrics(reg_model, data):
+    preds = reg_model.predict(data["test"]["X"])
+    mse = mean_squared_error(preds, data["test"]["y"])
+    metrics = {"mse": mse}
+    return metrics
+```
+
+仍在 `experimentation/Diabetes Ridge Regression Training.ipynb` 中，完成以下步骤：
+
+1. 创建名为 `main` 的新函数，该函数不采用任何参数，且不返回任何内容。
+1. 将“Load Data”标题下的代码移到 `main` 函数中。
+1. 将新编写的函数的调用添加到 `main` 函数中：
+    ```python
+    # Split Data into Training and Validation Sets
+    data = split_data(df)
+    ```
+
+    ```python
+    # Train Model on Training Set
+    args = {
+        "alpha": 0.5
+    }
+    reg = train_model(data, args)
+    ```
+
+    ```python
+    # Validate Model on Validation Set
+    metrics = get_model_metrics(reg, data)
+    ```
+1. 将“Save Model”标题下的代码移到 `main` 函数中。
+
+`main` 函数应类似于以下代码：
+
+```python
+def main():
+    # Load Data
+    sample_data = load_diabetes()
+
+    df = pd.DataFrame(
+        data=sample_data.data,
+        columns=sample_data.feature_names)
+    df['Y'] = sample_data.target
+
+    # Split Data into Training and Validation Sets
+    data = split_data(df)
+
+    # Train Model on Training Set
+    args = {
+        "alpha": 0.5
+    }
+    reg = train_model(data, args)
+
+    # Validate Model on Validation Set
+    metrics = get_model_metrics(reg, data)
+
+    # Save Model
+    model_name = "sklearn_regression_model.pkl"
 
     joblib.dump(value=reg, filename=model_name)
 ```
 
-创建 `main` 函数后，将标题“加载数据”、“将数据拆分为训练集和验证集”和“保存模型”下的代码以及新建的 `train_model` 调用替换为以下语句：
+到此阶段，除了第一个单元中的 import 语句之外，笔记本中不应存在不在函数中的代码。
+
+添加一个调用 `main` 函数的语句。
 
 ```python
 main()
@@ -135,30 +196,60 @@ from sklearn.datasets import load_diabetes
 from sklearn.linear_model import Ridge
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
+import pandas as pd
 import joblib
 
 
-def train_model(data, alpha):
-    reg = Ridge(alpha=alpha)
-    reg.fit(data["train"]["X"], data["train"]["y"])
-    preds = reg.predict(data["test"]["X"])
-    print("mse", mean_squared_error(
-        preds, data["test"]["y"]))
-    return reg
-
-def main():
-
-    model_name = "sklearn_regression_model.pkl"
-    alpha = 0.5
-
-    X, y = load_diabetes(return_X_y=True)
+# Split the dataframe into test and train data
+def split_data(df):
+    X = df.drop('Y', axis=1).values
+    y = df['Y'].values
 
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=0)
     data = {"train": {"X": X_train, "y": y_train},
             "test": {"X": X_test, "y": y_test}}
+    return data
 
-    reg = train_model(data, alpha)
+
+# Train the model, return the model
+def train_model(data, args):
+    reg_model = Ridge(**args)
+    reg_model.fit(data["train"]["X"], data["train"]["y"])
+    return reg_model
+
+
+# Evaluate the metrics for the model
+def get_model_metrics(reg_model, data):
+    preds = reg_model.predict(data["test"]["X"])
+    mse = mean_squared_error(preds, data["test"]["y"])
+    metrics = {"mse": mse}
+    return metrics
+
+
+def main():
+    # Load Data
+    sample_data = load_diabetes()
+
+    df = pd.DataFrame(
+        data=sample_data.data,
+        columns=sample_data.feature_names)
+    df['Y'] = sample_data.target
+
+    # Split Data into Training and Validation Sets
+    data = split_data(df)
+
+    # Train Model on Training Set
+    args = {
+        "alpha": 0.5
+    }
+    reg = train_model(data, args)
+
+    # Validate Model on Validation Set
+    metrics = get_model_metrics(reg, data)
+
+    # Save Model
+    model_name = "sklearn_regression_model.pkl"
 
     joblib.dump(value=reg, filename=model_name)
 
@@ -170,7 +261,7 @@ main()
 在 `experimentation/Diabetes Ridge Regression Scoring.ipynb` 中完成以下步骤：
 
 1. 创建名为 `init` 的新函数，该函数不采用任何参数，且不返回任何内容。
-1. 将“加载模型”标题下的代码复制到 `init` 函数中。
+1. 将“Load Model”标题下的代码复制到 `init` 函数中。
 
 `init` 函数应类似于以下代码：
 
@@ -181,7 +272,7 @@ def init():
     model = joblib.load(model_path)
 ```
 
-创建 `init` 函数后，将标题“加载模型”下的所有代码替换为单个 `init` 调用，如下所示：
+创建 `init` 函数后，将“Load Model”标题下的所有代码替换为单个 `init` 调用，如下所示：
 
 ```python
 init()
@@ -195,7 +286,7 @@ init()
     {"result": result.tolist()}
     ```
 
-1. 将“准备数据”和“评分数据”标题下的代码复制到 `run` 函数中。
+1. 将“Prepare Data”和“Score Data”标题下的代码复制到 `run` 函数中。
 
     `run` 函数应类似于以下代码（请记得删除设置变量 `raw_data` 和 `request_headers` 的语句，稍后在调用 `run` 函数时将使用这些变量）：
 
@@ -208,7 +299,7 @@ init()
         return {"result": result.tolist()}
     ```
 
-创建 `run` 函数后，将“准备数据”和“评分数据”标题下的所有代码替换为以下代码：
+创建 `run` 函数后，将“Prepare Data”和“Score Data”标题下的所有代码替换为以下代码：
 
 ```python
 raw_data = '{"data":[[1,2,3,4,5,6,7,8,9,10],[10,9,8,7,6,5,4,3,2,1]]}'
@@ -255,59 +346,101 @@ print("Test result: ", prediction)
 
 ### <a name="create-python-file-for-the-diabetes-ridge-regression-training-notebook"></a>为“糖尿病岭回归训练”笔记本创建 Python 文件
 
-在命令提示符下运行以下使用 nbconvert 包和 `experimentation/Diabetes Ridge Regression Training.ipynb` 路径的语句，将笔记本转换为可执行脚本：
+在命令提示符下运行以下使用 `nbconvert` 包和 `experimentation/Diabetes Ridge Regression Training.ipynb` 路径的语句，将笔记本转换为可执行脚本：
 
 ```
 jupyter nbconvert -- to script "Diabetes Ridge Regression Training.ipynb" –output train
 ```
 
-将笔记本转换为 `train.py` 后，删除所有注释。 `train.py` 文件应类似于以下代码：
+将笔记本转换为 `train.py` 后，删除任何不需要的注释。 将位于文件末尾的 `main()` 调用替换为如以下代码所示的条件调用：
+
+```python
+if __name__ == '__main__':
+    main()
+```
+
+`train.py` 文件应类似于以下代码：
 
 ```python
 from sklearn.datasets import load_diabetes
 from sklearn.linear_model import Ridge
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
+import pandas as pd
 import joblib
 
 
-def train_model(data, alpha):
-    reg = Ridge(alpha=alpha)
-    reg.fit(data["train"]["X"], data["train"]["y"])
-    preds = reg.predict(data["test"]["X"])
-    print("mse", mean_squared_error(
-        preds, data["test"]["y"]))
-    return reg
-
-def main():
-    model_name = "sklearn_regression_model.pkl"
-    alpha = 0.5
-
-    X, y = load_diabetes(return_X_y=True)
+# Split the dataframe into test and train data
+def split_data(df):
+    X = df.drop('Y', axis=1).values
+    y = df['Y'].values
 
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=0)
     data = {"train": {"X": X_train, "y": y_train},
             "test": {"X": X_test, "y": y_test}}
+    return data
 
-    reg = train_model(data, alpha)
+
+# Train the model, return the model
+def train_model(data, args):
+    reg_model = Ridge(**args)
+    reg_model.fit(data["train"]["X"], data["train"]["y"])
+    return reg_model
+
+
+# Evaluate the metrics for the model
+def get_model_metrics(reg_model, data):
+    preds = reg_model.predict(data["test"]["X"])
+    mse = mean_squared_error(preds, data["test"]["y"])
+    metrics = {"mse": mse}
+    return metrics
+
+
+def main():
+    # Load Data
+    sample_data = load_diabetes()
+
+    df = pd.DataFrame(
+        data=sample_data.data,
+        columns=sample_data.feature_names)
+    df['Y'] = sample_data.target
+
+    # Split Data into Training and Validation Sets
+    data = split_data(df)
+
+    # Train Model on Training Set
+    args = {
+        "alpha": 0.5
+    }
+    reg = train_model(data, args)
+
+    # Validate Model on Validation Set
+    metrics = get_model_metrics(reg, data)
+
+    # Save Model
+    model_name = "sklearn_regression_model.pkl"
 
     joblib.dump(value=reg, filename=model_name)
 
-main()
+if __name__ == '__main__':
+    main()
 ```
 
-MLOpsPython 存储库的 `diabetes_regression/training` 目录中的 `train.py` 文件支持命令行参数（即 `build_id`、`model_name` 和 `alpha`）。 可将命令行参数支持添加到 `train.py` 文件，以支持动态模型名称和 `alpha` 值，但不添加此项支持也能使代码成功执行。
+现在，可以在终端中运行 `python train.py` 来调用 `train.py`。
+还可以从其他文件调用 `train.py` 中的函数。
+
+位于 MLOpsPython 存储库的 `diabetes_regression/training` 目录中的 `train_aml.py` 文件将调用在 Azure 机器学习试验运行上下文中的 `train.py` 中定义的函数。 还可以在单元测试中调用这些函数，本指南稍后将提供相关介绍。
 
 ### <a name="create-python-file-for-the-diabetes-ridge-regression-scoring-notebook"></a>为“糖尿病岭回归评分”笔记本创建 Python 文件
 
-在命令提示符下运行以下使用 nbconvert 包和 `experimentation/Diabetes Ridge Regression Scoring.ipynb` 路径的语句，将笔记本转换为可执行脚本：
+在命令提示符下运行使用 `nbconvert` 包和 `experimentation/Diabetes Ridge Regression Scoring.ipynb` 路径的以下语句，将笔记本转换为可执行脚本：
 
 ```
 jupyter nbconvert -- to script "Diabetes Ridge Regression Scoring.ipynb" –output score
 ```
 
-将笔记本转换为 `score.py` 后，删除所有注释。 `score.py` 文件应类似于以下代码：
+将笔记本转换为 `score.py` 后，删除任何不需要的注释。 `score.py` 文件应类似于以下代码：
 
 ```python
 import json
@@ -334,7 +467,7 @@ prediction = run(test_row, request_header)
 print("Test result: ", prediction)
 ```
 
-需要修改 `train_model` 函数来实例化全局变量模型，使该变量在整个脚本中可见。 在 `init` 函数的开头添加以下语句：
+`model` 变量需是全局性的，以便在整个脚本中可见。 在 `init` 函数的开头添加以下语句：
 
 ```python
 global model
@@ -354,9 +487,9 @@ def init():
 
 ## <a name="create-unit-tests-for-each-python-file"></a>为每个 Python 文件创建单元测试
 
-第四步，需要为每个 Python 文件创建单元测试，使代码更可靠且更易于维护。 在本部分，你将为 `train.py` 中的某个函数创建单元测试。
+第四步，为 Python 函数创建单元测试。 单元测试可以避免代码遇到功能回归问题，并使其更易于维护。 在本部分中，你将为 `train.py` 中的函数创建单元测试。
 
-`train.py` 包含两个函数：`train_model` 和 `main`。 每个函数都需要一个单元测试，但在本教程中，我们只使用 Pytest 框架为 `train_model` 函数创建一个单元测试。 Pytest 不是仅有的一个 Python 单元测试框架，但它是最常用的框架之一。 有关详细信息，请访问 [Pytest](https://pytest.org)。
+`train.py` 包含多个函数，但在本教程中，我们只使用 Pytest 框架为 `train_model` 函数创建一个单元测试。 Pytest 不是仅有的一个 Python 单元测试框架，但它是最常用的框架之一。 有关详细信息，请访问 [Pytest](https://pytest.org)。
 
 单元测试通常包含三个主要操作：
 
@@ -364,71 +497,31 @@ def init():
 - 处理对象
 - 断言预期结果
 
-传递 `data` 和 `alpha` 值时，通常需要断言 `train_model`。 预期结果是应调用 `Ridge.train` 和 `Ridge.predict` 函数。 由于机器学习训练方法的运行速度通常不快，因此我们将模拟调用 `Ridge.train`。 由于 `Ridge.train` 的返回值是模拟对象，因此我们还将模拟 `Ridge.predict`。 结合通过模拟和 Pytest 框架调用的 `Ridge.train` 和 `Ridge.predict` 函数的预期结果测试传递 `data` 和 `alpha` 值的 `train_model` 单元测试应类似于以下代码：
+单元测试将调用 `train_model` 并使用某些硬编码的数据和参数，它验证 `train_model` 的运行方式是否符合预期，其验证方法是使用生成的已训练模型进行预测，并将预测结果与预期值进行比较。
 
 ```python
-import pytest
+import numpy as np
 from code.training.train import train_model
 
-class TestTrain:
 
-    @staticmethod
-    def test_train_model(mocker):
-        # Arrange
-        test_data = {"train": {"X": [[1, 2, 3]], "y": [0]},
-                     "test": {"X": [[4, 5, 6]], "y": [0]}}
-        test_alpha = 0.5
-        mock_ridge_fit = mocker.patch('Ridge.fit')
-        mock_ridge_predict = mocker.patch('Ridge.predict')
+def test_train_model():
+    # Arrange
+    X_train = np.array([1, 2, 3, 4, 5, 6]).reshape(-1, 1)
+    y_train = np.array([10, 9, 8, 8, 6, 5])
+    data = {"train": {"X": X_train, "y": y_train}}
 
-        # Act
-        train_model(test_data, test_alpha)
+    # Act
+    reg_model = train_model(data, {"alpha": 1.2})
 
-        # Assert
-        mock_ridge_fit.assert_called()
-        mock_ridge_predict.assert_called()
+    # Assert
+    preds = reg_model.predict([[1], [2]])
+    np.testing.assert_almost_equal(preds, [9.93939393939394, 9.03030303030303])
 ```
-
-## <a name="use-your-own-model-with-mlopspython-code-template"></a>将自己的模型与 MLOpsPython 代码模板配合使用
-
-如果你前面一直在遵循本指南中的步骤，则现在已获得一组与 MLOpsPython 存储库中提供的训练/评分/测试脚本相关联的脚本。  根据前面所述的结构，下面逐步说明了需要执行哪些操作，才能对你自己的机器学习项目使用这些文件：
-
-1. 按照 MLOpsPython [入门](https://github.com/microsoft/MLOpsPython/blob/master/docs/getting_started.md)指南进行操作
-2. 按照 MLOpsPython [启动说明](https://github.com/microsoft/MLOpsPython/blob/master/bootstrap/README.md)创建项目起点
-3. 替换训练代码
-4. 替换评分代码
-5. 更新评估代码
-
-### <a name="follow-the-getting-started-guide"></a>遵循入门指南
-必须按[入门](https://github.com/microsoft/MLOpsPython/blob/master/docs/getting_started.md)指南操作才能让支持的基础结构和管道执行 MLOpsPython。
-
-### <a name="follow-the-bootstrap-instructions"></a>按照启动说明进行操作
-
-[从 MLOpsPython 存储库启动](https://github.com/microsoft/MLOpsPython/blob/master/bootstrap/README.md)指南将帮助你快速为项目准备存储库。
-
-**注意：** 由于启动脚本会将 diabetes_regression 文件夹重命名为所选的项目名称，因此，在涉及路径时我们会以 `[project name]` 形式引用项目。
-
-### <a name="replace-training-code"></a>替换训练代码
-
-要使解决方案能够与你自己的代码配合工作，需要替换用于训练模型的代码，并删除或替换相应的单元测试。 具体而言，需要执行以下步骤：
-
-1. 替换 `[project name]/training/train.py`。 此脚本在本地或 Azure 机器学习计算中训练模型。
-1. 删除或替换 `[project name]/training/test_train.py` 中的训练单元测试
-
-### <a name="replace-score-code"></a>替换评分代码
-
-要使模型能够提供实时推理功能，需要替换评分代码。 MLOpsPython 模板使用评分代码来部署模型，以针对 ACI、AKS 或 Web 应用执行实时评分。 若要保留评分，请替换 `[project name]/scoring/score.py`。
-
-### <a name="update-evaluation-code"></a>更新评估代码
-
-MLOpsPython 模板使用 evaluate_model 脚本根据均方根误差来比较最近已训练模型的性能和当前生产模型的性能。 如果最近已训练模型的性能优于当前生产模型，则管道将继续运行。 否则，管道将被取消。 若要保留评估，请将 `[project name]/evaluate/evaluate_model.py` 中 `mse` 的所有实例替换为所需的指标。
-
-若要消除评估，请将 `.pipelines/[project name]-variables-template.yml` 中的 DevOps 管道变量 `RUN_EVALUATION` 设置为 `false`。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何从试验代码转换为生产代码后，请使用以下链接来了解如何监视试验运行以及作为 Web 服务部署的模型：
+现在，你已了解了如何从试验代码转换为生产代码，接下来请参阅以下链接来了解详细信息和后续步骤：
 
-> [!div class="nextstepaction"]
-> [监视 Azure 机器学习试验运行和指标](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments)
-> [监视机器学习 Web 服务终结点并从中收集数据](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)
++ [MLOpsPython](https://github.com/microsoft/MLOpsPython/blob/master/docs/custom_model.md)：构建一个 CI/CD 管道，以使用 Azure Pipelines 和 Azure 机器学习来训练、评估和部署自己的模型
++ [监视 Azure ML 试验运行和指标](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments)
++ [监视 ML Web 服务终结点并从中收集数据](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)

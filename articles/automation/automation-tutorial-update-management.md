@@ -4,14 +4,14 @@ description: 本文概述了如何使用 Azure 自动化更改管理来管理 Az
 services: automation
 ms.subservice: update-management
 ms.topic: tutorial
-ms.date: 01/21/2020
+ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 3922f8a2478f00c632b6daf294f23c7b5ad8c261
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 888dc99162551482afc715f1a793614d2c866384
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310129"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677035"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>管理 Azure VM 的更新和修补程序
 
@@ -22,59 +22,31 @@ ms.locfileid: "76310129"
 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
-> * 载入用于更新管理的 VM
 > * 查看更新评估
 > * 配置警报
 > * 计划更新部署
 > * 查看部署结果
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要：
 
-* Azure 订阅。 如果还没有帐户，可以[激活 VIsual Studio 订户的每月 Azure 额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或者注册一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* [Azure 自动化帐户](automation-offering-get-started.md)，用于保存观察程序、操作 Runbook 和观察程序任务。
+* 为一个或多个 VM 启用了[更新管理](automation-update-management.md)解决方案。
 * 要载入的[虚拟机](../virtual-machines/windows/quick-create-portal.md)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
 通过 https://portal.azure.com 登录到 Azure 门户。
 
-## <a name="enable-update-management"></a>启用更新管理
-
-就本教程来说，首先请在 VM 上启用更新管理：
-
-1. 在 [Azure 门户](https://portal.azure.com)菜单中，选择“虚拟机”，或在“主页”页上搜索并选择“虚拟机”    。
-1. 选择要启用更新管理的 VM。
-1. 在 VM 页的“操作”  下选择“更新管理”  。 “启用更新管理”窗格随即打开。 
-
-执行验证，确定是否为该 VM 启用了更新管理。 此验证包括检查 Log Analytics 工作区和链接的自动化帐户，以及是否在工作区中启用了更新管理解决方案。
-
-[Log Analytics](../azure-monitor/platform/data-platform-logs.md) 工作区用于收集由功能和服务（如更新管理）生成的数据。 工作区提供了一个位置来查看和分析来自多个数据源的数据。
-
-验证过程还会检查 VM 是否预配了 Log Analytics 代理和自动化混合 Runbook 辅助角色。 此代理用于与 Azure 自动化通信并获取关于更新状态的信息。 代理要求打开端口 443 以便与 Azure 自动化服务进行通信以及下载更新。
-
-如果在载入过程中发现缺少下列任何先决条件，则会自动添加这些条件：
-
-* [Log Analytics](../azure-monitor/platform/data-platform-logs.md) 工作区
-* [自动化帐户](./automation-offering-get-started.md)
-* [混合 Runbook 辅助角色](./automation-hybrid-runbook-worker.md)（在 VM 上启用）
-
-在“更新管理”下，设置要使用的位置、Log Analytics 工作区和自动化帐户。  然后选择“启用”。  如果这些选项不可用，则意味着已经为 VM 启用了其他自动化解决方案。 在这种情况下，必须使用同一工作区和自动化帐户。
-
-![“启用更新管理解决方案”窗口](./media/automation-tutorial-update-management/manageupdates-update-enable.png)
-
-启用解决方案最多可能需要几分钟时间。 在此期间，请勿关闭浏览器窗口。 启用该解决方案后，VM 中缺少的更新信息会流向 Azure Monitor 日志。 这些数据需花费 30 分钟到 6 小时的时间才能用于分析。
-
 ## <a name="view-update-assessment"></a>查看更新评估
 
-启用“更新管理”后，“更新管理”窗格随即打开。  如果发现缺少任何更新，则会在“缺少的更新”选项卡上显示缺少的更新列表  。
+启用“更新管理”后，“更新管理”页随即打开  。 如果发现缺少任何更新，则会在“缺少的更新”选项卡上显示缺少的更新列表  。
 
 在“信息链接”下选择更新链接即可打开更新的支持文章  。 可以了解有关更新的重要信息。
 
 ![查看更新状态](./media/automation-tutorial-update-management/manageupdates-view-status-win.png)
 
-单击更新的其他位置会打开所选更新的“日志搜索”窗格。  日志搜索的查询是为该特定更新预定义的。 可以修改此查询或创建自己的查询，以便查看环境中已部署更新或缺失更新的详细信息。
+单击更新的其他位置会打开所选更新的“日志搜索”窗格。  日志搜索的查询是为该特定更新预定义的。 你可以修改此查询或创建自己的查询，以便查看环境中已部署或缺失的更新的详细信息。
 
 ![查看更新状态](./media/automation-tutorial-update-management/logsearch.png)
 
@@ -84,18 +56,18 @@ ms.locfileid: "76310129"
 
 ### <a name="alert-conditions"></a>警报条件
 
-在自动化帐户的“监视”下，转到“警报”，然后单击“+ 新建警报规则”    。
+在自动化帐户中，转到“监视”下的“警报”，然后单击“新建警报规则”    。
 
-自动化帐户已被选为资源。 如果要更改它，可以单击“选择”，然后在“选择资源”页上，在“按资源类型筛选”下拉列表中选择“自动化帐户”     。 选择你的自动化帐户，然后选择“完成”。 
+你的自动化帐户已被选为资源。 若要更改自动化帐户，请单击“选择”  。 在“选择资源”页上，从“按资源类型筛选”下拉菜单中选择“自动化帐户”    。 选择你的自动化帐户，然后单击“完成”。 
 
-单击“添加条件”以选择适合更新部署的信号  。 下表显示了更新部署的两个可用信号的详细信息：
+单击“添加条件”以选择适合更新部署的信号  。 下表显示了两个可用信号的详细信息。
 
 |信号名称|维度|说明|
 |---|---|---|
-|**汇总更新部署运行**|- 更新部署名称</br>- 状态|此信号用于提醒更新部署的总体状态。|
-|**汇总更新部署计算机运行**|- 更新部署名称</br>- 状态</br>- 目标计算机</br>- 更新部署运行 ID|此信号用于提醒针对特定计算机的更新部署的状态|
+|`Total Update Deployment Runs`|- 更新部署名称<br>- 状态|此信号针对更新部署的总体状态发出警报。|
+|`Total Update Deployment Machine Runs`|- 更新部署名称</br>- 状态</br>- 目标计算机</br>- 更新部署运行 ID|此信号针对特定计算机的更新部署状态发出警报。|
 
-对于维度值，请从列表中选择一个有效的值。 如果要查找的值不在列表中，请单击维度旁边的“\+”符号，然后输入自定义名称  。 随后即可选择要查找的值。 如果想要从维度中选择所有值，请单击“选择 \*”按钮  。 如果未选择维度的值，评估期间将忽略该维度。
+对于维度，请从列表中选择一个有效值。 如果所需的值不在列表中，请单击维度旁边的 **\+** 符号，并键入自定义名称。 然后选择要查找的值。 若要为某个维度选择所有值，请单击“选择 \*”按钮  。 如果没有为某个维度选择值，更新管理将忽略该维度。
 
 ![配置信号逻辑](./media/automation-tutorial-update-management/signal-logic.png)
 
@@ -107,27 +79,26 @@ ms.locfileid: "76310129"
 
 ![配置信号逻辑](./media/automation-tutorial-update-management/define-alert-details.png)
 
-在“操作组”下，选择“新建”   。 操作组是可以在多个警报中使用的一组操作。 这些操作可能包括但不限于电子邮件通知、Runbook、Webhook 以及其他操作。 若要了解有关操作组的详细信息，请参阅[创建和管理操作组](../azure-monitor/platform/action-groups.md)。
+在“操作组”下，选择“新建”   。 操作组是可以在多个警报中使用的一组操作。 这些操作可能包括电子邮件通知、Runbook、Webhook 等等。 若要了解有关操作组的详细信息，请参阅[创建和管理操作组](../azure-monitor/platform/action-groups.md)。
 
-在“操作组名称”框中输入警报的名称和一个短名称。  使用此组发送通知时，短名称用来代替完整的操作组名称。
+在“操作组名称”字段中，为警报输入一个名称和一个短名称。  使用指定的组发送通知时，更新管理将使用短名称而非使用完整的操作组名称。
 
-在“操作”下输入操作的名称，例如“电子邮件通知”。   在“操作类型”下，选择“电子邮件/短信/推送/语音”。   在“详细信息”  下，选择“编辑详细信息”。 
+在“操作”下，为操作输入一个名称，例如“电子邮件通知”。   对于“操作类型”，请选择“电子邮件/短信/推送/语音”。   对于“详细信息”，请选择“编辑详细信息”。  
 
 在“电子邮件/短信/推送/语音”  窗格中，输入一个名称。 选中“电子邮件”  复选框，然后输入有效的电子邮件地址。
 
 ![配置电子邮件操作组](./media/automation-tutorial-update-management/configure-email-action-group.png)
 
-在“电子邮件/短信/推送/语音”  窗格中，选择“确定”。  在“添加操作组”  窗格中，选择“确定”。 
+在“电子邮件/短信/推送/语音”窗格中，单击“确定”。   在“添加操作组”窗格中，单击“确定”。  
 
-若要自定义警报电子邮件的主题，请在“创建规则”下的“自定义操作”下选择“电子邮件主题”。    完成后，请选择“创建警报规则”。  此警报会指出更新部署成功的时间以及哪些计算机是该更新部署运行的一部分。
+若要自定义警报电子邮件的主题，请在“创建规则”下的“自定义操作”下选择“电子邮件主题”。    完成后，请选择“创建警报规则”。  此警报会指出更新部署成功的时间以及哪些计算机是更新部署运行的一部分。
 
 ## <a name="schedule-an-update-deployment"></a>计划更新部署
 
-接下来，请计划一个遵循发布时间和服务窗口的部署，以便安装更新。 可选择在部署中包括哪种更新类型。 例如，可包括关键或安全更新，排除更新汇总。
+接下来，请计划一个遵循发布时间和服务窗口的部署，以便安装更新。 你可以选择要在部署中包括的更新类型。 例如，可包括关键或安全更新，排除更新汇总。
 
 >[!NOTE]
->计划某个更新部署时，它会创建链接到 **Patch-MicrosoftOMSComputers** runbook 的[计划](shared-resources/schedules.md)资源，以便在目标计算机上处理更新部署。 如果在创建部署后通过 Azure 门户或 PowerShell 删除计划资源，则会破坏计划的更新部署，在你尝试通过门户重新配置它时出现错误。 只能通过删除相应的部署计划来删除计划资源。  
->
+>计划某个更新部署会创建链接到 Patch-MicrosoftOMSComputers Runbook 的[计划](shared-resources/schedules.md)资源，该 Runbook 处理目标计算机上的更新部署。  如果在创建部署后通过 Azure 门户或 PowerShell 删除了该计划资源，该删除操作会破坏计划的更新部署，在你尝试通过门户重新配置该计划资源时会出现错误。 只能通过删除相应的部署计划来删除计划资源。  
 
 若要为 VM 计划新的更新部署，请转到“更新管理”，然后选择“计划更新部署”   。
 
@@ -137,89 +108,89 @@ ms.locfileid: "76310129"
 
 * **操作系统**：选择更新部署的目标 OS。
 
-* **要更新的组（预览）** ：定义基于一组订阅、资源组、位置和标记的查询，生成要在部署中包含的 Azure VM 动态组。 有关详细信息，请参阅[动态组](automation-update-management-groups.md)
+* **要更新的组（预览）** ：定义一个查询，其中组合了订阅、资源组、位置和标记，以便生成要包含在部署中的 Azure VM 动态组。 有关详细信息，请参阅[动态组](automation-update-management-groups.md)。
 
-* **要更新的计算机**：选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示   。 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md)
+* **要更新的计算机**：选择已保存的搜索、已导入的组或者从下拉菜单中选择“计算机”并选择各个计算机。  如果选择“计算机”，则每个计算机的就绪状态将显示在“更新代理准备情况”列中   。 若要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md)。
 
-* **更新分类**：选择可用于更新部署中包含的每个产品的受支持更新分类。 对于本教程，请保留所有选定的类型。
+* **更新分类**：对于每个产品，请取消选择所有受支持的更新分类，但要包含在更新部署中的分类除外。 对于本教程，请为所有产品保留选中所有类型。
 
   分类类型：
 
    |OS  |类型  |
    |---------|---------|
-   |Windows     | 关键更新</br>安全更新</br>更新汇总</br>功能包</br>服务包</br>定义更新</br>工具</br>更新        |
+   |Windows     | 关键更新</br>安全更新</br>更新汇总</br>功能包</br>服务包</br>定义更新</br>工具</br>更新<br>驱动程序        |
    |Linux     | 关键和安全更新</br>其他更新       |
 
    有关分类类型的说明，请参阅[更新分类](automation-view-update-assessments.md#update-classifications)。
 
-* **要包含/排除的更新** - 这会打开“包含/排除”页  。 要包含或排除的更新位于单独的选项卡上。
+* **要包含/排除的更新** - 打开“包含/排除”页。 要包含或排除的更新位于单独的选项卡上，其中指定了对应的知识库文章 ID 号。 指定一个或多个 ID 号时，需要删除或取消选中更新部署中的所有分类。 这可以确保在指定更新 ID 时，不会将任何其他更新包含在你的更新包中。
 
 > [!NOTE]
-> 请务必注意，排除项会替代包含项。 例如，如果定义 `*` 的排除规则，全部排除后将不会安装任何修补程序或包。 已排除的修补程序仍显示为在计算机中缺少。 对于 Linux 计算机，如果包含包且已排除相关包，将不会安装此包。
+> 请务必注意，排除项会替代包含项。 例如，如果定义了 `*` 排除规则，则更新管理不会安装任何修补程序或包，因为已将它们全部排除。 已排除的修补程序仍显示为在计算机中缺少。 对于 Linux 计算机，如果包含一个具有依赖包的包，而该依赖包已被排除，则更新管理不会安装主包。
 
 > [!NOTE]
-> 你不能指定已被取代的更新包含在更新部署中。
+> 无法指定已在更新部署中由包含的包取代的更新。
 >
 
 * **计划设置**：打开“计划设置”窗格  。 默认开始时间为晚于当前时间 30 分钟。 可以将开始时间设置为 10 分钟之后的任何将来时间。
 
-   还可以指定部署是否只发生一次，或者设置一个定期计划。 在“重复”下选择“一次”。   保留默认值“1 天”，然后选择“确定”。  这样会设置定期计划。
+   还可以指定部署是否只发生一次，或者设置一个定期计划。 在“重复”下选择“一次”。   保留默认值（1 天），然后单击“确定”。  这些条目将设置重复计划。
 
 * **前脚本 + 后脚本**：选择要在部署前和部署后运行的脚本。 若要了解详细信息，请参阅[管理前脚本和后脚本](pre-post-scripts.md)。
 
-* **维护时段(分钟)** ：保留默认值。 维护时段控制允许安装更新的时间。 指定维护时段时，请考虑以下详细信息。
+* **维护时段(分钟)** ：保留默认值。 维护时段控制允许安装更新的时间。 指定维护时段时，请考虑以下详细信息：
 
-  * 维护时段控制尝试安装的更新数量。
+  * 维护时段控制安装的更新数量。
   * 如果维护时段即将结束，更新管理不会停止安装新的更新。
   * 如果超出了维护时段，更新管理不会终止正在进行的更新。
-  * 如果超过 Windows 上的维护时段，通常是因为 Service Pack 更新需要很长时间才能安装。
+  * 如果超出了 Windows 上的维护时段，通常是因为服务包更新需要很长时间才能安装。
 
   > [!NOTE]
   > 若要避免在 Ubuntu 上的维护时段外应用更新，请重新配置无人参与升级包，禁用自动更新。 有关如何配置此包的信息，请参阅 [Ubuntu Server 指南中的自动更新主题](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)。
 
-* **重启选项**:此设置确定应如何处理重启。 可用选项包括：
-  * 需要时重新启动(默认)
-  * 永远重启
-  * 永不重启
-  * 仅重启 - 不安装更新
+* **重新启动选项**:用于指定重新启动的处理选项。 提供了以下选项：
+  * 必要时重新启动（默认）
+  * 始终重新启动
+  * 永不重新启动
+  * 仅重新启动 - 不安装更新
 
 > [!NOTE]
-> 如果**重新启动控制**设置为“从不重新启动”  ，则[用于管理重新启动的注册表项](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart)下列出的注册表项可能导致重新启动事件。
+> 如果“重新启动选项”设置为“永不重新启动”，则[用于管理重启的注册表项](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart)下列出的注册表项可能会导致重新启动事件   。
 
-配置完计划以后，选择“创建”  。
+配置完计划后，单击“创建”  。
 
 ![更新“计划设置”窗格](./media/automation-tutorial-update-management/manageupdates-schedule-win.png)
 
-此时会回到状态仪表板。 选择“计划性更新部署”即可显示所创建的部署计划。 
+此时会回到状态仪表板。 选择“计划的更新部署”以显示刚刚创建的部署计划。 
 
 > [!NOTE]
-> 更新管理支持部署第一方更新和预下载的修补程序。 这需要在修补的系统上进行更改，请参阅[第一方和预下载支持](automation-configure-windows-update.md)以了解如何在系统上配置这些设置。
+> 更新管理支持部署第一方更新和预先下载修补程序。 要实现此项支持，需要在要修补的系统上进行更改。 请参阅[第一方和预先下载支持](automation-configure-windows-update.md)，了解如何在系统上配置这些设置。
 
-此外，能够以编程方式创建**更新部署**。 若要了解如何使用 REST API 创建**更新部署**，请参阅[软件更新配置 - 创建](/rest/api/automation/softwareupdateconfigurations/create)。 此外，还有一个示例 Runbook，可用于创建每周**更新部署**。 若要了解有关此 Runbook 的详细信息，请参阅[为资源组中的一个或多个 VM 创建每周更新部署](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1)。
+还能够以编程方式创建更新部署。 若要了解如何使用 REST API 创建更新部署，请参阅[软件更新配置 - 创建](/rest/api/automation/softwareupdateconfigurations/create)。 还可以使用一个示例 Runbook 来创建每周更新部署。 若要了解有关此 Runbook 的详细信息，请参阅[为资源组中的一个或多个 VM 创建每周更新部署](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1)。
 
 ## <a name="view-results-of-an-update-deployment"></a>查看更新部署结果
 
-在计划的部署开始后，可以在“更新管理”  下的“更新部署”  选项卡上查看该部署的状态。 部署当前正在运行时，其状态为“正在进行”。  部署完成以后，如果成功，则状态更改为“成功”。  当部署中有一个或多个更新失败时，状态为“部分失败”  。
+在计划的部署开始后，可以在“更新管理”  下的“更新部署”  选项卡上查看该部署的状态。 部署当前正在运行时，其状态为“正在进行”。  部署成功完成后，状态将更改为“成功”。  如果部署中有一个或多个更新失败，状态将是“部分失败”  。
 
-选择已完成的更新部署，查看该更新部署的仪表板。
+选择已完成的更新部署以查看其仪表板。
 
 ![特定部署的更新部署状态仪表板](./media/automation-tutorial-update-management/manageupdates-view-results.png)
 
 “更新结果”  下的摘要提供了 VM 上更新和部署结果的总数。 右侧的表显示了每个更新的细目以及安装结果。
 
-以下列表显示可用值：
+可用值有：
 
-* **未尝试**：由于定义的维护时段时长不足，因而未安装更新。
+* **未尝试**：根据定义的维护时段持续时间，可用时间不足，因此未安装该更新。
 * **成功**：更新成功。
 * **失败**：更新失败。
 
- 若要查看部署创建的所有日志条目，请选择“所有日志”。
+选择“所有日志”来查看部署创建的所有日志条目  。
 
 选择“输出”  ，查看负责管理目标 VM 更新部署的 Runbook 的作业流。
 
  若要查看有关部署中错误的详细信息，请选择“错误”。
 
-在更新部署成功后，会发送类似于以下示例的电子邮件来通知部署成功：
+更新部署成功后，你会收到如下所示的确认电子邮件：
 
 ![配置电子邮件操作组](./media/automation-tutorial-update-management/email-notification.png)
 
@@ -237,5 +208,4 @@ ms.locfileid: "76310129"
 继续阅读更新管理解决方案的概述。
 
 > [!div class="nextstepaction"]
-> [更新管理解决方案](../operations-management-suite/oms-solution-update-management.md?toc=%2fazure%2fautomation%2ftoc.json)
-
+> [更新管理解决方案](automation-update-management.md)
