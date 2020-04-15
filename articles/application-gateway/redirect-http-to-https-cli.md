@@ -1,23 +1,23 @@
 ---
 title: 使用 CLI 进行 HTTP 到 HTTPS 重定向
 titleSuffix: Azure Application Gateway
-description: 了解如何使用 Azure CLI 创建应用程序网关并为 SSL 终端添加证书。
+description: 了解如何使用 Azure CLI 创建应用程序网关和添加 TLS 终止证书。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: victorh
-ms.openlocfilehash: 41b2fb754f1d6ead3a7475ca146ab99758aa8134
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6bf8f3b7bfb446db78f0c97a246977fec6cd54cb
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78246871"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312145"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>使用 Azure CLI 创建支持 HTTP 到 HTTPS 重定向的应用程序网关
 
-可以通过 Azure CLI 使用 SSL 终端的证书创建[应用程序网关](overview.md)。 路由规则用于将 HTTP 流量重定向到应用程序网关中的 HTTPS 端口。 在此示例中，还会为包含两个虚拟机实例的应用程序网关的后端池创建一个[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。
+可以使用 Azure CLI 创建具有 TLS/SSL 终止证书[的应用程序网关](overview.md)。 路由规则用于将 HTTP 流量重定向到应用程序网关中的 HTTPS 端口。 在此示例中，还会为包含两个虚拟机实例的应用程序网关的后端池创建一个[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。
 
 在本文中，学习如何：
 
@@ -32,7 +32,7 @@ ms.locfileid: "78246871"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 要查找版本，请运行 `az --version`。 如果需要安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-self-signed-certificate"></a>创建自签名证书
 

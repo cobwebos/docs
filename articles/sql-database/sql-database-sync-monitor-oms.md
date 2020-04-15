@@ -7,16 +7,16 @@ ms.subservice: data-movement
 ms.custom: data sync
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: stevestein
+ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 0ed0bd3544fff89c8230267e3d6d8826c5ae3c7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f5980f74b24cd972d43e9b05d4a5d623e6e3d2f
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74114618"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383689"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>使用 Azure Monitor 日志监视 SQL 数据同步 
 
@@ -85,7 +85,7 @@ ms.locfileid: "74114618"
 
 4.  **** 在“Runbook 文件”下，使用给定的 `DataSyncLogPowerShellRunbook` 文件。 将****“Runbook 类型”设置为 `PowerShell`。 为 runbook 提供一个名称。
 
-5.  选择 **“创建”**。 现在你拥有了一个 runbook。
+5.  选择“创建”  。 现在你拥有了一个 runbook。
 
 6.  在 Azure 自动化帐户下，请选择“共享资源”下的****“变量”选项卡。
 
@@ -123,7 +123,7 @@ ms.locfileid: "74114618"
 
 5.  **** 将“定期”设置为“重复执行”，并设置所需间隔。 在此处、脚本和 Azure 监视器日志中使用相同的间隔。
 
-6.  选择 **“创建”**。
+6.  选择“创建”  。
 
 ### <a name="check-the-automation"></a>检查自动化
 
@@ -149,7 +149,7 @@ ms.locfileid: "74114618"
 
 5.  在“操作”下，将“电子邮件通知”设置为“是”********。 输入所需的电子邮件收件人。
 
-6.  单击“保存”。**** 现在，当错误发生时，指定的收件人就会收到电子邮件通知。
+6.  单击“ **保存**”。 现在，当错误发生时，指定的收件人就会收到电子邮件通知。
 
 ## <a name="create-an-azure-monitor-view-for-monitoring"></a>创建用于监视的 Azure 监视器视图
 

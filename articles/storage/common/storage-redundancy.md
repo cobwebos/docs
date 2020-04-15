@@ -10,12 +10,12 @@ ms.date: 02/25/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 7ae5f59a1bd96362d5466b2f6363185ba168d942
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1961797f37a760fe3a31dc8aa3830889965b69b5
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255257"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81379937"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 存储冗余
 
@@ -145,7 +145,7 @@ Microsoft 继续在其他 Azure 区域中启用 GZRS 和 RA-GZRS。 定期查看
 
 下表显示了数据在给定方案中的持久性和可用程度，具体取决于存储帐户有效的冗余类型：
 
-| 方案                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS（预览版）                              |
+| 场景                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS（预览版）                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
 | 数据中心内的节点不可用                                                                 | 是                             | 是                              | 是                                  | 是                                  |
 | 整个数据中心（区域性或非区域性）不可用                                           | 否                              | 是                              | 是                                  | 是                                  |

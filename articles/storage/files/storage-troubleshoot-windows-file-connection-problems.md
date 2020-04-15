@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 3237fe7d87ad058f255d1c77cb6d814bcd1c292e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: b4e1ef4fbc3ade38b55fc06f8e4e9a119938581b
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262241"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383905"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>在 Windows 中排查 Azure 文件问题
 
@@ -324,6 +324,30 @@ net use 命令会将正斜杠 (/) 解释为命令行选项。 如果用户帐户
 目前，您可以考虑使用适用于以下规则的新域 DNS 名称重新部署 AAD DS：
 - 名称不能以数字字符开头。
 - 名称必须长 3 到 63 个字符。
+
+## <a name="unable-to-mount-azure-files-with-ad-credentials"></a>无法将 Azure 文件装载为 AD 凭据 
+
+### <a name="self-diagnostics-steps"></a>自诊断步骤
+首先，请确保已执行所有四个步骤[来启用 Azure 文件 AD 身份验证](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable)。
+
+其次，尝试[使用存储帐户密钥安装 Azure 文件共享](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows)。 如果装载失败，请下载[AzFile诊断.ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)来帮助验证客户端运行环境，检测导致 Azure 文件访问失败的不兼容客户端配置，提供有关自我修复的规范性指导，并收集诊断跟踪。
+
+第三，您可以运行调试-AzStorageAccountAuth cmdlet，以便使用登录的 AD 用户对 AD 配置执行一组基本检查。 此 cmdlet 支持[AzFilesHybrid v0.1.2+ 版本](https://github.com/Azure-Samples/azure-files-samples/releases)。 您需要使用在目标存储帐户上具有所有者权限的 AD 用户运行此 cmdlet。  
+```PowerShell
+$ResourceGroupName = "<resource-group-name-here>"
+$StorageAccountName = "<storage-account-name-here>"
+
+Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
+```
+cmdlet 按顺序执行以下检查，并提供故障指南：
+1. 检查端口445连接：检查端口 445 是否打开以进行 SMB 连接
+2. 选中域：验证客户端计算机是否已加入 AD
+3. CheckADObject：确认登录用户在 AD 域中具有存储帐户与存储帐户关联的有效表示形式
+4. 检查GetKerberos票务：尝试获取 Kerberos 票证以连接到存储帐户 
+5. CheckADObjectPasswordIs正确：确保表示存储帐户的 AD 标识上配置的密码与存储帐户 kerb 密钥的密码匹配
+6. 检查 SidHasAadUser：检查登录的 AD 用户是否同步到 Azure AD
+
+我们正在积极扩展此诊断 cmdlet，以提供更好的故障排除指导。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)，以快速解决问题。

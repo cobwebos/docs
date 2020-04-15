@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 03/10/2020
 ms.author: lahugh
-ms.openlocfilehash: cb05a8c42c5710182f81d4bc1c76b78abe59c882
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e0257f8a32d05f49dd67195f22d387319358ef2
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79470497"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314134"
 ---
 # <a name="h-series"></a>H 系列
 
@@ -28,14 +28,14 @@ ACU：290-300
 
 内存保留更新：不支持
 
-| 大小 | vCPU | 处理器 | 内存 (GB) | 内存带宽 GB/s | 基本 CPU 频率 （GHz） | 全核频率（GHz，峰值） | 单核频率（GHz，峰值） | RDMA 性能（Gb/s） | MPI 支持 | 临时存储 （GB） | 最大数据磁盘数 | 最大以太网 NIC |
-| --- | --- |--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_H8   | 8  | 英特尔强盛 E5 2667 v3 | 56 | 40 | 3.2 | 3.3 | 3.6 | - | 英特尔 5.x， MS-MPI | 1000 | 32 | 2 |
-| Standard_H16  | 16 | 英特尔强盛 E5 2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 | - | 英特尔 5.x， MS-MPI | 2000 | 64 | 4 |
-| Standard_H8m  | 8  | 英特尔强盛 E5 2667 v3 | 112 | 40 | 3.2 | 3.3 | 3.6 | - | 英特尔 5.x， MS-MPI | 1000 | 32 | 2 |
-| Standard_H16m | 16 | 英特尔强盛 E5 2667 v3 | 224 | 80 | 3.2 | 3.3 | 3.6 | - | 英特尔 5.x， MS-MPI | 2000 | 64 | 4 |
-| Standard_H16r <sup>1</sup>  | 16 | 英特尔强盛 E5 2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 | 56 | 英特尔 5.x， MS-MPI | 2000 | 64 | 4 |
-| Standard_H16mr <sup>1</sup> | 16 | 英特尔强盛 E5 2667 v3 | 224 | 80 | 3.2 | 3.3 | 3.6 | 56 | 英特尔 5.x， MS-MPI | 2000 | 64 | 4 |
+| 大小 | vCPU | 处理器 | 内存 (GB) | 内存带宽 GB/s | 基本 CPU 频率 （GHz） | 全核频率（GHz，峰值） | 单核频率（GHz，峰值） | RDMA 性能（Gb/s） | MPI 支持 | 临时存储 （GB） | 最大数据磁盘数 | 磁盘最大吞吐量：IOPS | 最大以太网 NIC |
+| --- | --- |--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Standard_H8   | 8  | 英特尔强盛 E5 2667 v3 | 56 | 40 | 3.2 | 3.3 | 3.6 | - | 英特尔 5.x， MS-MPI | 1000 | 32 | 32 x 500 | 2 |
+| Standard_H16  | 16 | 英特尔强盛 E5 2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 | - | 英特尔 5.x， MS-MPI | 2000 | 64 | 64 x 500 | 4 |
+| Standard_H8m  | 8  | 英特尔强盛 E5 2667 v3 | 112 | 40 | 3.2 | 3.3 | 3.6 | - | 英特尔 5.x， MS-MPI | 1000 | 32 | 32 x 500 | 2 |
+| Standard_H16m | 16 | 英特尔强盛 E5 2667 v3 | 224 | 80 | 3.2 | 3.3 | 3.6 | - | 英特尔 5.x， MS-MPI | 2000 | 64 | 64 x 500 | 4 |
+| Standard_H16r <sup>1</sup>  | 16 | 英特尔强盛 E5 2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 | 56 | 英特尔 5.x， MS-MPI | 2000 | 64 | 64 x 500 | 4 |
+| Standard_H16mr <sup>1</sup> | 16 | 英特尔强盛 E5 2667 v3 | 224 | 80 | 3.2 | 3.3 | 3.6 | 56 | 英特尔 5.x， MS-MPI | 2000 | 64 | 64 x 500 | 4 |
 
 <sup>1</sup>对于 MPI 应用程序，FDR InfiniBand 网络启用专用 RDMA 后端网络。
 
@@ -89,7 +89,7 @@ Azure 应用商店有许多支持 RDMA 连接的 Linux 发行版：
 
 ## <a name="other-sizes"></a>其他大小
 
-- [一般用途](sizes-general.md)
+- [常规用途](sizes-general.md)
 - [内存优化](sizes-memory.md)
 - [存储优化](sizes-storage.md)
 - [GPU 优化](sizes-gpu.md)

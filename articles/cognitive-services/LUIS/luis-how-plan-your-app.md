@@ -1,22 +1,14 @@
 ---
 title: 规划应用 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 概述相关应用意向和实体，然后在语言理解智能服务 (LUIS) 中创建应用程序计划。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/20/2019
-ms.author: diberry
-ms.openlocfilehash: 6a155f4c43da03ccdc40d289742918973aa6da7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: dfed27a05973a2ea2e9a97eaa1c233b847b33d87
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74326775"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382311"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>使用主题域和数据提取规划 LUIS 应用架构
 
@@ -44,7 +36,7 @@ LUIS 应用以主题域为中心。 例如，可能有一个用于预订门票�
 
 ## <a name="create-example-utterances-for-each-intent"></a>为每个意向创建示例陈述
 
-首先，避免为每个意向创建太多言语。 确定了意向后，为每个意向创建 15 到 30 个示例言语。 每个言语应不同于前面提供的言语。 良好的言语样本包括总体字数统计、选词、动词时态和标点。
+首先，避免为每个意向创建太多言语。 确定了意向后，为每个意向创建 15 到 30 个示例言语。 每个言语应不同于前面提供的言语。 话语中的多种内容包括总字数、单词选择、动词时态和[标点符号](luis-reference-application-settings.md#punctuation-normalization)。
 
 有关详细信息，请参阅[了解适用于 LUIS 应用的言语](luis-concept-utterance.md)。
 

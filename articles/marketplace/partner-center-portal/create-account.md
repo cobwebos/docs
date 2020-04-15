@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
-ms.date: 03/10/2020
-ms.openlocfilehash: 4c635d285f83e8e9c4c5547a9ee983686c507819
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.date: 04/14/2020
+ms.openlocfilehash: d62d05cdbda86af3c3a38757877624e87f6d1719
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261731"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383760"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>在合作伙伴中心创建商业市场帐户
 
@@ -100,7 +100,7 @@ ms.locfileid: "81261731"
 
 如果您已注册 Microsoft 合作伙伴网络，请使用此部分直接从合作伙伴中心创建您的帐户。
 
-使用 Microsoft 合作伙伴网络帐户登录[合作伙伴中心](https://partner.microsoft.com/)，以便将公司的工作电子邮件帐户域链接到新的合作伙伴中心帐户。 通过关联这些帐户，您的公司员工可以使用其工作帐户用户名和密码登录合作伙伴中心。
+使用 Microsoft 合作伙伴网络帐户登录[合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)，以便将公司的工作电子邮件帐户域链接到新的合作伙伴中心帐户。 通过关联这些帐户，您的公司员工可以使用其工作帐户用户名和密码登录合作伙伴中心。
 
 >[!NOTE]
 >要检查您的公司是否已具有合作伙伴中心工作帐户、如何创建新的工作帐户，以及如何设置多个工作帐户以与合作伙伴中心一起使用，请访问[您的公司工作帐户和合作伙伴中心](./company-work-accounts.md)。
@@ -130,7 +130,7 @@ ms.locfileid: "81261731"
 >
 >个人帐户是为独立工作的单个开发人员。 公司帐户适用于组织和企业。 公司帐户允许您使用附加功能提交应用。 在您注册后，我们需要对公司帐户进行更大的验证，以确认您已获得为公司设置帐户的授权。 此验证需要几天到几周时间，通常还会致电你的公司。 这两种类型的帐户都允许您提交应用、加载项和服务。 有关详细信息，请参阅 [帐户类型、位置和费用](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees)。
 
-使用 Microsoft[合作伙伴中心帐户登录合作伙伴中心](https://partner.microsoft.com/)，以在同一帐户下注册商业市场计划。 通过使用同一帐户注册商业市场，您可以在合作伙伴中心的左侧导航菜单中查看现有计划注册和商业市场。
+使用 Microsoft[合作伙伴中心帐户登录合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)，以在同一帐户下注册商业市场计划。 通过使用同一帐户注册商业市场，您可以在合作伙伴中心的左侧导航菜单中查看现有计划注册和商业市场。
 
 登录后，请使用以下步骤完成帐户设置：
 

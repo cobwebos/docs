@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cfec30e56b0fd523896cbc1a7e84e92f639075a8
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 15a4c9b16b102310fd02f8db3a4fb93cff84882b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879048"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314072"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>在 Windows 虚拟桌面上使用 Microsoft 团队
 
@@ -67,3 +67,7 @@ ms.locfileid: "80879048"
 
       > [!NOTE]
       > 如果安装具有 MSI 设置 ALLUSER_1 的团队，将自动更新将被禁用。 我们建议您确保每月至少更新一次 Teams。
+      
+### <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>为主机池自定义远程桌面协议属性
+自定义主机池的远程桌面协议 （RDP） 属性（如多监视器体验、启用麦克风和音频重定向）可让您根据用户的需求为用户提供最佳体验。 您可以使用**Set-RdsHostPool** cmdlet 中的 **-CustomRdp属性**参数自定义 Windows 虚拟桌面中的 RDP 属性。
+有关受支持属性及其默认值的完整列表，请参阅[支持的 RDP 文件设置](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context)。

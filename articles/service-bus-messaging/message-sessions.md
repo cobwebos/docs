@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 4df6396d156c3fe1b75e3cac3d3f4aad7f23553a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e22641e9d4f9959c26cd2043ea2acd7e260e0f0
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77660659"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314041"
 ---
 # <a name="message-sessions"></a>消息会话
 使用 Microsoft Azure 服务总线会话，能够以连贯有序的方式处理一系列无限多的相关消息。 会话可用于先出、先出 （FIFO） 和请求-响应模式。 本文演示如何在使用服务总线时使用会话来实现这些模式。 
@@ -68,7 +68,7 @@ ms.locfileid: "77660659"
 
 ### <a name="message-session-state"></a>消息会话状态
 
-在大规模高可用性云系统中处理工作流时，与特定会话关联的工作流处理程序必须能够从意外故障中恢复，并可以从工作开始的地方。
+在大规模高可用性云系统中处理工作流时，与特定会话关联的工作流处理程序必须能够从意外故障中恢复，并且可以从工作开始地的不同进程或计算机上恢复部分已完成的工作。
 
 借助会话状态工具，可以在中转站内为消息会话添加应用程序定义的注释。这样一来，当会话被新处理程序获取时，相对于此会话的已记录处理状态就会立即可用。
 
@@ -78,7 +78,7 @@ ms.locfileid: "77660659"
 
 会话状态保持，只要它未清除（返回**null），** 即使会话中的所有消息都已使用。
 
-可以使用 Java API 中的 SessionBrowser**** 方法、[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) 上的 [GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) 以及 .NET 客户端中的 [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient)，枚举队列或订阅中的所有现有会话。
+可以使用 Java API 中的**会话浏览器**方法以及 .NET 框架客户端中的[队列客户端](/dotnet/api/microsoft.servicebus.messaging.queueclient)和[订阅客户端](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient)上的[GetMessage 会话](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions)来枚举队列或订阅中的所有现有会话。
 
 队列或订阅中保留的会话状态计入相应实体的存储配额。 因此，当应用程序完成会话时，建议应用程序清理保留的状态，以杜绝外部管理成本。
 
@@ -86,7 +86,7 @@ ms.locfileid: "77660659"
 
 在会话上下文中，每条消息的传递计数的定义与在没有会话的情况下的定义略有不同。 下面的表总结了传递计数何时递增。
 
-| 方案 | 消息的传递计数是否递增 |
+| 场景 | 消息的传递计数是否递增 |
 |----------|---------------------------------------------|
 | 接受会话，但会话锁已过期（由于超时） | 是 |
 | 会话被接受，会话中的消息未完成（即使它们已锁定），会话已关闭 | 否 |

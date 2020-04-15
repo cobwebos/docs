@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 04/13/2020
 ms.author: v-umha
-ms.openlocfilehash: fbda28ce588aad5f6bc0d89de60069c4220fa523
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: d64735e683ba1133e7d381a68611d204c4068026
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81266170"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313069"
 ---
 # <a name="disaster-recovery-for-farmbeats"></a>服务器场灾难恢复
 
@@ -34,7 +34,7 @@ FarmBeats 将数据存储在三个 Azure 第一方服务中，即**Azure 存储*
 
 ## <a name="restore-service-from-online-backup"></a>从联机备份恢复服务
 
-您可以启动故障转移并恢复存储的数据，其中每个数据存储用于服务器场Beats部署。 恢复 Azure 存储和 Cosmos DB 的数据后，在 Azure 配对区域中创建另一个服务器场Beats部署，然后使用以下步骤配置新部署以使用还原的数据存储（即 Azure 存储和 Cosmos DB）中的数据：
+您可以启动故障转移并恢复存储的数据，这些数据存储用于 FarmBeats 部署。 恢复 Azure 存储和 Cosmos DB 的数据后，在 Azure 配对区域中创建另一个服务器场Beats部署，然后使用以下步骤配置新部署以使用还原的数据存储（即 Azure 存储和 Cosmos DB）中的数据：
 
 1. [配置 Cosmos DB](#configure-cosmos-db)
 2. [配置存储帐户](#configure-storage-account)
@@ -45,18 +45,18 @@ FarmBeats 将数据存储在三个 Azure 第一方服务中，即**Azure 存储*
 复制还原的 Cosmos DB 的访问密钥并更新新的 FarmBeats Datahub 密钥保管库。
 
 
-  ![灾难恢复](./media/disaster-recovery-for-farmbeats/keyvault-secrets.png)
+  ![灾难恢复](./media/disaster-recovery-for-farmbeats/key-vault-secrets.png)
 
 > [!NOTE]
 > 复制还原的 Cosmos DB 的 URL 并在新的服务器场节拍 Datahub 应用服务配置中更新它。 您现在可以在新的服务器场节拍部署中删除 Cosmos DB 帐户。
 
-  ![灾难恢复](./media/disaster-recovery-for-farmbeats/northeu-ehub-api-configuration.png)
+  ![灾难恢复](./media/disaster-recovery-for-farmbeats/configuration.png)
 
 ### <a name="configure-storage-account"></a>配置存储帐户
 
 复制还原的存储帐户的访问密钥，并在新的 FarmBeats Datahub 密钥保管库中更新它。
 
-![灾难恢复](./media/disaster-recovery-for-farmbeats/keyvault-7udqm-secrets.png)
+![灾难恢复](./media/disaster-recovery-for-farmbeats/key-vault-7-secrets.png)
 
 >[!NOTE]
 > 确保在新的服务器场节拍批处理 VM 配置文件中更新存储帐户名称。

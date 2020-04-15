@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/15/2018
 ms.author: victorh
-ms.openlocfilehash: c7c27f00b9f8b4fdcd8f735f842edb8f66803c6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c0c0ab84e60335f58ac075459b95cfabb9135ac
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278003"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311961"
 ---
 # <a name="renew-application-gateway-certificates"></a>续订应用程序网关证书
 
-在某些时候，如果为 SSL 加密配置了应用程序网关，则需要续订证书。
+在某个时候，如果您为 TLS/SSL 加密配置了应用程序网关，则需要续订证书。
 
 可以使用 Azure 门户、Azure PowerShell 或 Azure CLI 续订与侦听器关联的证书：
 
@@ -62,4 +62,4 @@ az network application-gateway ssl-cert update \
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何通过 Azure 应用程序网关来配置 SSL 卸载，请参阅[配置 SSL 卸载](application-gateway-ssl-portal.md)
+要了解如何使用 Azure 应用程序网关配置 TLS 卸载，请参阅[配置 TLS 卸载](application-gateway-ssl-portal.md)

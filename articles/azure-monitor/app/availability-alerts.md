@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: e0c1a93ef663762bec199abc5aa7eabbc821168d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5af6aec2267384c37f664522d075bf26c632e7e9
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77654947"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382886"
 ---
 # <a name="availability-alerts"></a>可用性警报
 
@@ -33,6 +33,9 @@ ms.locfileid: "77654947"
 2. 设置所需的严重性级别、规则说明，最重要的是设置具有要用于此警报规则的通知首选项的操作组。
 
    ![保存后编辑](./media/availability-alerts/set-action-group.png)
+
+> [!NOTE]
+> 通过此体验创建的可用性警报基于状态。 这意味着，当满足警报条件时，当检测到站点不可用时，将生成单个警报。 如果下次评估警报条件时站点仍然关闭，这不会生成新的警报。 因此，如果您的网站关闭了一个小时，并且您设置了电子邮件警报，则只有在网站关闭时才会收到一封电子邮件，并在网站备份时收到后续电子邮件。 您不会收到连续警报，提醒您该网站仍然不可用。
 
 ### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>当 Y 个位置中有 X 个报告失败时发出警报
 

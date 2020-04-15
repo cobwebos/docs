@@ -8,12 +8,12 @@ ms.custom: vs-azure
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: feacd463a10bae66dc8fa88a99b9ea60f399e9ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 75e1f5fbfa41ac310d2a737dcfe28199715a094b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74684176"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312879"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>使用 Visual Studio 开发和部署 WebJobs - Azure 应用服务
 
@@ -52,7 +52,7 @@ ms.locfileid: "74684176"
 
 1. [将项目发布到 Azure](#deploy-to-azure-app-service)（如果尚未这样做）。
 
-1. **在“解决方案资源管理器”** 中，右键单击该项目并选择“发布”****。
+1. **在“解决方案资源管理器”** 中，右键单击该项目并选择“发布”  。
 
 1. 在“发布”选项卡中选择“设置”。******** 
 
@@ -225,16 +225,16 @@ WebJobs 使用的 CRON 计划表达式与 Azure Functions 中的计时器触发�
 
 [!INCLUDE [webjobs-cron-timezone-note](../../includes/webjobs-cron-timezone-note.md)]
 
-### <a name="settingjob-reference"></a>setting.job 参考
+### <a name="settingsjob-reference"></a>设置.作业引用
 
 WebJobs 支持以下设置：
 
-| **设置** | **类型**  | **说明** |
+| **设置** | **Type**  | **说明** |
 | ----------- | --------- | --------------- |
-| `is_in_place` | All | 允许作业在原地运行，而无需首先将其复制到临时文件夹。 有关详细信息，请参阅 [WebJobs 工作目录](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory)。 |
+| `is_in_place` | 全部 | 允许作业在原地运行，而无需首先将其复制到临时文件夹。 有关详细信息，请参阅 [WebJobs 工作目录](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory)。 |
 | `is_singleton` | 连续 | 仅当横向扩展时，仅在单个实例上运行 Web 作业。要了解更多信息，请参阅[将连续作业设置为单例](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton)。 |
 | `schedule` | 触发 | 根据基于 CRON 的计划运行 WebJob。 有关详细信息，请参阅[计时器触发器参考文章](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)。 |
-| `stopping_wait_time`| All | 允许控制关闭行为。 有关详细信息，请参阅[正常关闭](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown)。 |
+| `stopping_wait_time`| 全部 | 允许控制关闭行为。 有关详细信息，请参阅[正常关闭](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown)。 |
 
 ## <a name="next-steps"></a>后续步骤
 

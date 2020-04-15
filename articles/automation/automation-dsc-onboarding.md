@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: 554a4c64700bb189b4b9f085bd7c259312a36b4b
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: c718b9a66b378044618c8c52eec3a1a498ace83c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80410931"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383207"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>加入 Azure Automation State Configuration 管理的计算机
 
@@ -39,6 +39,9 @@ Azure Automation State Configuration 可用于管理各种不同的计算机：
 > 如果已安装的 Azure VM 所需状态配置扩展版本大于 2.70，则包含使用 Azure 自动化状态配置管理 Azure VM 不收取额外费用。 有关详细信息，请参阅[**自动化定价页**](https://azure.microsoft.com/pricing/details/automation/)。
 
 本文的以下各节概述了如何将上面列出的计算机板载到 Azure 自动化状态配置。
+
+>[!NOTE]
+>本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az 模块安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于自动化帐户，可以使用["如何更新 Azure 自动化 中的 Azure PowerShell"模块](automation-update-azure-modules.md)将模块更新到最新版本。
 
 ## <a name="onboarding-azure-vms"></a>载入 Azure VM
 
@@ -280,15 +283,15 @@ Azure 自动化状态配置允许您使用 Azure 门户、Azure 资源管理器�
 如果 PowerShell DSC LCM 默认值与您的用例匹配，并且您希望将计算机从 Azure 自动化状态配置中拉出并报告，则可以更简单地使用 Azure 自动化 cmdlet 生成所需的 DSC 元配置。
 
 1. 在本地环境中的计算机上以管理员身份打开 PowerShell 控制台或 VSCode。
-2. 使用 `Connect-AzAccount` 连接到 Azure 资源管理器
+2. 使用[连接-AzAccount](https://docs.microsoft.com/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0)连接到 Azure 资源管理器。
 3. 从要在其中设置节点的自动化帐户下载要上载的计算机的 PowerShell DSC 元配置。
 
    ```powershell
    # Define the parameters for Get-AzAutomationDscOnboardingMetaconfig using PowerShell Splatting
    $Params = @{
-       ResourceGroupName = 'ContosoResources'; # The name of the Resource Group that contains your Azure Automation Account
-       AutomationAccountName = 'ContosoAutomation'; # The name of the Azure Automation Account where you want a node on-boarded to
-       ComputerName = @('web01', 'web02', 'sql01'); # The names of the computers that the meta configuration will be generated for
+       ResourceGroupName = 'ContosoResources'; # The name of the Resource Group that contains your Azure Automation account
+       AutomationAccountName = 'ContosoAutomation'; # The name of the Azure Automation account where you want a node on-boarded to
+       ComputerName = @('web01', 'web02', 'sql01'); # The names of the computers that the metaconfiguration will be generated for
        OutputFolder = "$env:UserProfile\Desktop\";
    }
    # Use PowerShell splatting to pass parameters to the Azure Automation cmdlet being invoked
@@ -296,7 +299,7 @@ Azure 自动化状态配置允许您使用 Azure 门户、Azure 资源管理器�
    Get-AzAutomationDscOnboardingMetaconfig @Params
    ```
 
-1. 现在应该有一个名为**DscMetaConfigs 的**文件夹，其中包含用于已上载计算机的 PowerShell DSC 元配置（作为管理员）。
+1. 现在，您应该有一个**DscMetaConfigs**文件夹，其中包含用于已上载计算机的 PowerShell DSC 元配置（作为管理员）。
 
     ```powershell
     Set-DscLocalConfigurationManager -Path $env:UserProfile\Desktop\DscMetaConfigs
@@ -325,7 +328,7 @@ Azure 自动化状态配置允许您使用 Azure 门户、Azure 资源管理器�
 
 - **对 DSC LCM 值的更改。** 您可能需要更改在节点初始注册期间设置的[PowerShell DSC LCM 值](/powershell/scripting/dsc/managing-nodes/metaConfig4)，例如。 `ConfigurationMode` 目前，您只能通过重新注册来更改这些 DSC 代理值。 一个例外是分配给节点的节点配置值。 您可以在 Azure 自动化 DSC 中直接更改此更改。
 
-您可以使用本文档中描述的任何载入方法，以最初注册节点的方式重新注册节点。 重新注册节点之前，不需要从 Azure Automation State Configuration 中注销节点。
+您可以使用本文档中描述的任何载入方法重新注册节点，就像最初注册节点一样。 重新注册节点之前，不需要从 Azure Automation State Configuration 中注销节点。
 
 ## <a name="troubleshooting-azure-virtual-machine-onboarding"></a>排查 Azure 虚拟机登记问题
 
@@ -347,6 +350,7 @@ Azure Automation State Configuration 可让你轻松加入 Azure Windows VM 以�
 
 - 要开始，请参阅[开始使用 Azure 自动化状态配置](automation-dsc-getting-started.md)。
 - 要了解如何编译 DSC 配置以便将它们分配给目标节点，请参阅[在 Azure 自动化状态配置中编译配置](automation-dsc-compile.md)。
-- 有关 PowerShell cmdlet 引用，请参阅[Azure 自动化状态配置 cmdlet](/powershell/module/az.automation#automation)。
+- 有关 PowerShell cmdlet 引用，请参阅[Az.自动化](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)。
 - 有关定价信息，请参阅[Azure 自动化状态配置定价](https://azure.microsoft.com/pricing/details/automation/)。
 - 有关在连续部署管道中使用 Azure 自动化状态配置的示例，请参阅[使用示例：使用 Azure 自动化状态配置对虚拟机的连续部署和巧克力](automation-dsc-cd-chocolatey.md)。

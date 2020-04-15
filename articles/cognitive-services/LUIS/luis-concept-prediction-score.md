@@ -1,28 +1,20 @@
 ---
 title: 预测评分 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 预测分数表示 LUIS API 服务基于用户话语对于预测结果的置信度。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/10/2019
-ms.author: diberry
-ms.openlocfilehash: b360bc82b80e834492b524acc5c4535b0409eda1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 709a34f0a278d8a17267c7544583798d54167dad
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74280825"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382366"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>预测评分指示意向和实体的预测准确性
 
 预测分数表示 LUIS 对用户话语预测结果的置信度。
 
-预测分数在零 (0) 到一 (1) 之间。 例如，一个置信度很高的 LUIS 分数可以是 0.99。 置信度低的分数可以是 0.01。 
+预测分数在零 (0) 到一 (1) 之间。 例如，一个置信度很高的 LUIS 分数可以是 0.99。 置信度低的分数可以是 0.01。
 
 |分数值|置信度|
 |--|--|
@@ -33,11 +25,11 @@ ms.locfileid: "74280825"
 
 ## <a name="top-scoring-intent"></a>得分最高的意向
 
-每个话语预测都会返回一个评分最高的意向。 此预测是对预测分数的数值比较。 
+每个话语预测都会返回一个评分最高的意向。 此预测是对预测分数的数值比较。
 
 ## <a name="proximity-of-scores-to-each-other"></a>分数彼此接近
 
-最高 2 个分数的差距可能很小。 LUIS 不会指明这种分差，只会返回最高分数。  
+最高 2 个分数的差距可能很小。 LUIS 不会指明这种分差，只会返回最高分数。
 
 ## <a name="return-prediction-score-for-all-intents"></a>返回所有意向的预测分数
 
@@ -74,9 +66,11 @@ ms.locfileid: "74280825"
 |--|--|
 |9.910309E-07|.0000009910309|
 
-## <a name="punctuation"></a>标点
+<a name="punctuation"></a>
 
-[详细了解](luis-concept-utterance.md#punctuation-marks)如何使用或忽略标点符号。 
+## <a name="application-settings"></a>应用程序设置
+
+使用[应用程序设置](luis-reference-application-settings.md)控制音调符号和标点符号如何影响预测分数。
 
 ## <a name="next-steps"></a>后续步骤
 

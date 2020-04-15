@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: mimckitt
-ms.openlocfilehash: 7e6b8ea702d28fcd2747115710a8b1a8ec2bb1b2
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 9f048c7d89da0ab75c321cd8e3932ea97c7ed09c
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270513"
+ms.locfileid: "81310013"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集的网络
 
@@ -69,6 +69,14 @@ az vmss create \
 
 >[!NOTE]
 > 创建比例集后，无法为负载均衡器的运行状况探测使用的负载平衡规则修改后端端口。 要更改端口，可以通过更新 Azure 虚拟机缩放集、更新端口然后再次配置运行状况探测来删除运行状况探测。 
+
+有关负载均衡器和虚拟机扩展集的详细信息，请参阅 Azure[中的虚拟网络和虚拟机](../../articles/virtual-machines/windows/network-overview.md)。
+
+以下方法可用于部署具有现有 Azure 负载均衡器的虚拟机规模集。
+
+* [使用 Azure 门户使用现有 Azure 负载均衡器配置虚拟机规模集](../../articles/load-balancer/configure-vm-scale-set-portal.md)。
+* [使用 Azure PowerShell 使用现有的 Azure 负载均衡器配置虚拟机规模集](../../articles/load-balancer/configure-vm-scale-set-powershell.md)。
+* [使用 Azure CLI 配置具有现有 Azure 负载均衡器的虚拟机规模集](../../articles/load-balancer/configure-vm-scale-set-cli.md)。
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>创建引用应用程序网关的规模集
 若要创建使用应用程序网关的规模集，请在规模集的 ipConfigurations 节中引用应用程序网关的后端地址池，如此 ARM 模板配置所示：

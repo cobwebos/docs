@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 97aa446636ea3131246a06f69f74b5868abff608
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: ca892b5f360f523ee2b5ff875dfb0707136a5ab5
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668644"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383443"
 ---
 # <a name="connect-to-azure-storage-services"></a>连接到 Azure 存储服务
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -73,7 +73,7 @@ ms.locfileid: "80668644"
 创建工作区时，会将 Azure blob 容器和 Azure 文件共享自动注册到工作区。 它们分别名为 `workspaceblobstore` 和 `workspacefilestore`。 `workspaceblobstore`用于存储工作区工件和机器学习实验日志。 `workspacefilestore`用于存储通过[计算实例](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#accessing-files)授权的笔记本和 R 脚本。 `workspaceblobstore` 容器设置为默认数据存储。
 
 > [!IMPORTANT]
-> 在设计器主页中打开示例时，Azure 机器学习设计器（预览版）将自动创建名为**azureml_globaldatasets**的数据存储。 此数据存储仅包含示例数据集。 **请不要**使用此数据存储进行任何机密数据访问！
+> 在设计器主页中打开示例时，Azure 机器学习设计器（预览版）将自动创建名为**azureml_globaldatasets**的数据存储。 此数据存储仅包含示例数据集。 **请不要**使用此数据存储进行任何机密数据访问。
 > ![自动创建设计器示例数据集的数据存储](media/how-to-access-data/datastore-designer-sample.png)
 
 <a name="access"></a>
@@ -94,7 +94,7 @@ ms.locfileid: "80668644"
 您可以在 Azure`register()`[门户](https://portal.azure.com)上找到填充方法所需的信息。
 在左窗格中选择“存储帐户”****，并选择要注册的存储帐户。 “概述”**** 页提供了帐户名称、容器和文件共享名称等信息。 
 
-* 有关身份验证项目（如帐户密钥或 SAS 令牌），请在“设置”**** 窗格中转到“帐户密钥”****。 
+* 对于身份验证项（如帐户密钥或 SAS 令牌），转到 **"设置"** 窗格上的 **"访问密钥**"。 
 
 * 对于服务主体项目（如租户 ID 和客户端 ID），请转到**应用注册**并选择要使用的应用。 其相应的 **"概述"** 页将包含这些项目。
 
@@ -107,13 +107,13 @@ ms.locfileid: "80668644"
 
 要将 Azure Blob 容器注册为数据存储，[`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-)请使用 。
 
-以下代码会创建 `blob_datastore_name` 数据存储并将其注册到 `ws` 工作区。 此数据存储使用提供的帐户密钥访问 `my-account-name` 存储帐户中的 `my-container-name` blob 容器。
+以下代码会创建 `blob_datastore_name` 数据存储并将其注册到 `ws` 工作区。 此数据存储通过使用提供的帐户访问`my-container-name`密钥访问存储帐户`my-account-name`上的 Blob 容器。
 
 ```Python
 blob_datastore_name='azblobsdk' # Name of the datastore to workspace
 container_name=os.getenv("BLOB_CONTAINER", "<my-container-name>") # Name of Azure blob container
 account_name=os.getenv("BLOB_ACCOUNTNAME", "<my-account-name>") # Storage account name
-account_key=os.getenv("BLOB_ACCOUNT_KEY", "<my-account-key>") # Storage account key
+account_key=os.getenv("BLOB_ACCOUNT_KEY", "<my-account-key>") # Storage account access key
 
 blob_datastore = Datastore.register_azure_blob_container(workspace=ws, 
                                                          datastore_name=blob_datastore_name, 
@@ -126,13 +126,13 @@ blob_datastore = Datastore.register_azure_blob_container(workspace=ws,
 
 要将 Azure 文件共享注册为数据存储，请使用[`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-)。 
 
-以下代码会创建 `file_datastore_name` 数据存储并将其注册到 `ws` 工作区。 此数据存储使用提供的帐户密钥访问 `my-account-name` 存储帐户中的 `my-fileshare-name` 文件共享。
+以下代码会创建 `file_datastore_name` 数据存储并将其注册到 `ws` 工作区。 此数据存储通过使用提供的帐户访问`my-fileshare-name`密钥访问存储帐户`my-account-name`上的文件共享。
 
 ```Python
 file_datastore_name='azfilesharesdk' # Name of the datastore to workspace
 file_share_name=os.getenv("FILE_SHARE_CONTAINER", "<my-fileshare-name>") # Name of Azure file share container
 account_name=os.getenv("FILE_SHARE_ACCOUNTNAME", "<my-account-name>") # Storage account name
-account_key=os.getenv("FILE_SHARE_ACCOUNT_KEY", "<my-account-key>") # Storage account key
+account_key=os.getenv("FILE_SHARE_ACCOUNT_KEY", "<my-account-key>") # Storage account access key
 
 file_datastore = Datastore.register_azure_file_share(workspace=ws,
                                                      datastore_name=file_datastore_name, 
@@ -181,7 +181,7 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
   
 可以使用 [Azure 门户](https://portal.azure.com)找到必要的信息来填充该表单。 在左窗格中选择“存储帐户”****，并选择要注册的存储帐户。 “概述”**** 页提供了帐户名称、容器和文件共享名称等信息。 
 
-* 有关身份验证项目（如帐户密钥或 SAS 令牌），请在“设置”**** 窗格中转到“帐户密钥”****。 
+* 对于身份验证项（如帐户密钥或 SAS 令牌），转到 **"设置"** 窗格上的 **"访问密钥**"。 
 
 * 对于服务主体项目（如租户 ID 和客户端 ID），请转到**应用注册**并选择要使用的应用。 其相应的 **"概述"** 页将包含这些项目。 
 
@@ -268,7 +268,7 @@ run_config.source_directory_data_store = "workspaceblobstore"
 
 Azure 机器学习提供多种方法来使用模型进行评分。 其中一些方法不提供对数据存储的访问权限。 使用下表了解允许在评分期间访问数据存储的方法：
 
-| 方法 | 数据存储访问 | 说明 |
+| 方法 | 数据存储访问 | 描述 |
 | ----- | :-----: | ----- |
 | [成批预测](how-to-use-parallel-run-step.md) | ✔ | 以异步方式对大量数据进行预测。 |
 | [Web 服务](how-to-deploy-and-where.md) | &nbsp; | 将模型部署为 Web 服务。 |

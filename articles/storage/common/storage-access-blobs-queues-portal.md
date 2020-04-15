@@ -6,26 +6,28 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/10/2020
+ms.date: 04/14/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 602be49ef0c60274f1cd016c4f8e870cf033ec7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e556e21238db5de7dddce13ea912dae30723fe8c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75866897"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383684"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>使用 Azure 门户访问 Blob 或队列数据
 
 使用 [Azure 门户](https://portal.azure.com)访问 Blob 或队列数据时，门户会在后台对 Azure 存储发出请求。 可以使用 Azure AD 帐户或存储帐户访问密钥对 Azure 存储请求进行授权。 门户会指示使用的是哪种方法，如果你有相应的权限，则门户还允许在这两种方法之间切换。  
 
+还可以指定如何在 Azure 门户中授权单个 Blob 上载操作。 默认情况下，门户使用已使用的方法来授权 Blob 上载操作，但您可以选择在上载 Blob 时更改此设置。
+
 ## <a name="permissions-needed-to-access-blob-or-queue-data"></a>访问 Blob 或队列数据所需的权限
 
 根据你要如何授权访问 Azure 门户中的 Blob 或队列数据，你将需要特定权限。 在大多数情况下，这些权限是通过基于角色的访问控制 (RBAC) 提供的。 有关 RBAC 的详细信息，请参阅[什么是基于角色的访问控制 (RBAC)？](../../role-based-access-control/overview.md)。
 
-### <a name="account-access-key"></a>帐户访问密钥
+### <a name="use-the-account-access-key"></a>使用帐户访问密钥
 
 若要使用帐户访问密钥访问 Blob 和队列数据，必须拥有某种 RBAC 角色，此角色包含 RBAC 操作 **Microsoft.Storage/storageAccounts/listkeys/action**。 此 RBAC 角色可为内置角色，也可为自定义角色。 支持 **Microsoft.Storage/storageAccounts/listkeys/action** 的内置角色包括：
 
@@ -36,9 +38,9 @@ ms.locfileid: "75866897"
 尝试在 Azure 门户中访问 Blob 或队列数据时，门户首先会检查你是否拥有一个包含 **Microsoft.Storage/storageAccounts/listkeys/action** 的角色。 如果你拥有包含此操作的角色，则门户将使用帐户密钥来访问 Blob 和队列数据。 如果你不拥有包含此操作的角色，则门户会尝试使用你的 Azure AD 帐户访问数据。
 
 > [!NOTE]
-> 经典订阅管理员角色“服务管理员”和“共同管理员”具有 Azure 资源管理器[所有者](../../role-based-access-control/built-in-roles.md#owner)角色的等效权限。 “所有者”角色包含所有操作，其中包括 **Microsoft.Storage/storageAccounts/listkeys/action**，因此，拥有其中一种管理角色的用户也可以使用帐户密钥访问 Blob 和队列数据。**** 有关详细信息，请参阅[经典订阅管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)。
+> 经典订阅管理员角色“服务管理员”和“共同管理员”具有 Azure 资源管理器[所有者](../../role-based-access-control/built-in-roles.md#owner)角色的等效权限。 “所有者”角色包含所有操作，其中包括 **Microsoft.Storage/storageAccounts/listkeys/action**，因此，拥有其中一种管理角色的用户也可以使用帐户密钥访问 Blob 和队列数据。**** 有关详细信息，请参阅[经典订阅管理员角色、Azure RBAC 角色和 Azure AD 管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)。
 
-### <a name="azure-ad-account"></a>Azure AD 帐户
+### <a name="use-your-azure-ad-account"></a>使用 Azure AD 帐户
 
 若要使用 Azure AD 帐户从 Azure 门户访问 Blob 或队列数据，必须符合以下条件：
 
@@ -54,7 +56,7 @@ ms.locfileid: "75866897"
 - [存储 Blob 数据读取器](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader)：Blob 的只读权限。
 - [存储队列数据参与者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)：队列的读取/写入/删除权限。
 - [存储队列数据读取器](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader)：队列的只读权限。
-    
+
 自定义角色能够支持内置角色所提供的相同权限的不同组合。 有关创建自定义 RBAC 角色的详细信息，请参阅 [Azure 资源的自定义角色](../../role-based-access-control/custom-roles.md)和[了解 Azure 资源的角色定义](../../role-based-access-control/role-definitions.md)。
 
 不支持使用经典订阅管理员角色列出队列。 若要列出队列，用户必须拥有 Azure 资源管理器“读取者”角色、“存储队列数据读取者”角色或“存储队列数据参与者”角色。************
@@ -74,7 +76,7 @@ ms.locfileid: "75866897"
 
 本部分中的示例演示如何访问容器及其 Blob，但访问队列及其消息或列出队列时，门户会显示相同的消息。
 
-### <a name="account-access-key"></a>帐户访问密钥
+### <a name="authenticate-with-the-account-access-key"></a>使用帐户访问密钥进行身份验证
 
 如果使用帐户访问密钥进行身份验证，则会在门户中看到“访问密钥”已指定为身份验证方法：****
 
@@ -86,7 +88,7 @@ ms.locfileid: "75866897"
 
 请注意，如果你的 Azure AD 帐户缺少 Blob 查看权限，则列表中不会显示任何 Blob。 单击“切换为访问密钥”链接，以再次使用访问密钥进行身份验证。****
 
-### <a name="azure-ad-account"></a>Azure AD 帐户
+### <a name="authenticate-with-your-azure-ad-account"></a>使用 Azure AD 帐户进行身份验证
 
 如果使用 Azure AD 帐户进行身份验证，则会在门户中看到“Azure AD 用户帐户”已指定为身份验证方法：****
 
@@ -97,6 +99,19 @@ ms.locfileid: "75866897"
 ![无权访问帐户密钥时显示的错误](media/storage-access-blobs-queues-portal/auth-error-access-key.png)
 
 请注意，如果你无权访问帐户密钥，则列表中不会显示任何 Blob。 单击“切换为 Azure AD 用户帐户”链接，以再次使用 Azure AD 帐户进行身份验证。****
+
+## <a name="specify-how-to-authorize-a-blob-upload-operation"></a>指定如何授权 Blob 上载操作
+
+从 Azure 门户上载 Blob 时，可以指定是使用帐户访问密钥还是使用 Azure AD 凭据对此操作进行身份验证和授权。 默认情况下，门户使用当前身份验证方法，如[确定当前身份验证方法](#determine-the-current-authentication-method)所示。
+
+要指定如何授权 Blob 上载操作，请按照以下步骤操作：
+
+1. 在 Azure 门户中，导航到要上载 Blob 的容器。
+1. 选择“上载”**** 按钮。
+1. 展开 **"高级"** 部分以显示 blob 的高级属性。
+1. 在 **"身份验证类型"** 字段中，指示是使用 Azure AD 帐户还是使用帐户访问密钥授权上载操作，如下图所示：
+
+    :::image type="content" source="media/storage-access-blobs-queues-portal/auth-blob-upload.png" alt-text="显示如何在 Blob 上载时更改授权方法的屏幕截图":::
 
 ## <a name="next-steps"></a>后续步骤
 

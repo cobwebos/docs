@@ -9,15 +9,15 @@ ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/12/2019
-ms.author: ryanwi
+ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: cf268bef4401026084b26002c24730bc2a92e003
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: d83e336c73d9288b97a0564472caa497ab64b4b1
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886188"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309238"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft 标识平台和 OpenID Connect 协议
 
@@ -104,7 +104,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > 单击下面的链接可执行此请求。 登录后，浏览器将重定向到 `https://localhost/myapp/`，且地址栏中有一个 ID 令牌。 请注意，此请求使用 `response_mode=fragment`（仅用于演示）。 建议使用 `response_mode=form_post`。
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
-| 参数 | 条件 | 说明 |
+| 参数 | 条件 | 描述 |
 | --- | --- | --- |
 | `tenant` | 必选 | 可以使用请求路径中的 `{tenant}` 值来控制哪些用户可以登录到该应用程序。 允许的值为 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参见[协议基础知识](active-directory-v2-protocols.md#endpoints)。 |
 | `client_id` | 必选 | [Azure 门户和应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验**的应用程序（客户端）ID**分配给应用。 |
@@ -134,7 +134,7 @@ Content-Type: application/x-www-form-urlencoded
 id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 ```
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 | --- | --- |
 | `id_token` | 应用请求的 ID 令牌。 可以使用 `id_token` 参数验证用户身份，并开始与该用户的会话。 有关 ID 令牌及其内容的详细信息，[`id_tokens`请参阅引用](id-tokens.md)。 |
 | `state` | 如果请求中包含 `state` 参数，响应中应该出现相同的值。 应用程序应该验证请求和响应中的状态值是否完全相同。 |
@@ -151,7 +151,7 @@ Content-Type: application/x-www-form-urlencoded
 error=access_denied&error_description=the+user+canceled+the+authentication
 ```
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 | --- | --- |
 | `error` | 可用于分类发生的错误类型和响应错误的错误代码字符串。 |
 | `error_description` | 可帮助用户识别身份验证错误根本原因的特定错误消息。 |
@@ -160,7 +160,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 下表描述了可在错误响应的 `error` 参数中返回的错误代码：
 
-| 错误代码 | 说明 | 客户端操作 |
+| 错误代码 | 描述 | 客户端操作 |
 | --- | --- | --- |
 | `invalid_request` | 协议错误，例如缺少必需的参数。 |修复并重新提交请求。 这是通常在初始测试期间捕获的开发错误。 |
 | `unauthorized_client` | 客户端应用程序无法请求授权代码。 |客户端应用程序未注册到 Azure AD 中或者未添加到用户的 Azure AD 租户时，通常会出现这种情况。 应用程序可以提示用户，说明如何安装该应用程序并将其添加到 Azure AD。 |
@@ -195,7 +195,7 @@ GET https://login.microsoftonline.com/common/oauth2/v2.0/logout?
 post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 ```
 
-| 参数 | 条件 | 说明 |
+| 参数 | 条件 | 描述 |
 | ----------------------- | ------------------------------- | ------------ |
 | `post_logout_redirect_uri` | 建议 | 成功注销后，用户重定向到的 URL。如果未包含参数，则会向用户显示由 Microsoft 标识平台终结点生成的泛型消息。 此 URL 必须与在应用注册门户中为应用程序注册的重定向 URI 之一匹配。 |
 

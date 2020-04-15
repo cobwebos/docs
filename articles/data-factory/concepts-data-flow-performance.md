@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 03/11/2020
-ms.openlocfilehash: 4baf7974bdb0a5efe4cb556e820e9d13aeac5d8a
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.date: 04/14/2020
+ms.openlocfilehash: 18f8b0732e4af0229ff225d9c3b423e27bf342a8
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409845"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382802"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>映射数据流性能和调优指南
 
@@ -31,13 +31,13 @@ ms.locfileid: "80409845"
 
  您可以使用此信息来估计数据流针对不同大小的数据源的性能。 有关详细信息，请参阅[监视映射数据流](concepts-data-flow-monitoring.md)。
 
-![数据流监视](media/data-flow/mon003.png "数据流监视器 3")
+![数据流监控](media/data-flow/mon003.png "数据流监视器 3")
 
  对于管道调试运行，暖群集需要大约一分钟的群集设置时间。 如果要初始化默认 Azure 集成运行时，则启动时间可能需要大约 5 分钟。
 
 ## <a name="increasing-compute-size-in-azure-integration-runtime"></a>在 Azure 集成运行时增加计算大小
 
-具有更多内核的集成运行时会增加 Spark 计算环境中的节点数，并提供更多的处理能力来读取、写入和转换数据。
+具有更多内核的集成运行时会增加 Spark 计算环境中的节点数，并提供更多的处理能力来读取、写入和转换数据。 ADF 数据流利用 Spark 进行计算引擎。 Spark 环境非常适合内存优化的资源。
 * 如果希望处理速率高于输入速率，请尝试**计算优化**群集。
 * 如果要在内存中缓存更多数据，请尝试**内存优化**群集。 与计算优化相比，经过优化的内存每个核心的价格点更高，但可能会导致更快的转换速度。
 
@@ -49,7 +49,11 @@ ms.locfileid: "80409845"
 
 默认情况下，打开调试将使用为每个数据工厂自动创建的默认 Azure 集成运行时。 此默认 Azure IR 设置为八个内核，4 个为驱动程序节点，4 个设置为辅助节点，使用常规计算属性。 使用较大数据进行测试时，可以通过创建具有较大配置的 Azure IR 来增加调试群集的大小，并在打开调试时选择此新的 Azure IR。 这将指示 ADF 使用此 Azure IR 进行数据预览和管道调试，并处理数据流。
 
-## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>优化 Azure SQL 数据库和 Azure SQL 数据仓库
+### <a name="decrease-cluster-compute-start-up-time-with-ttl"></a>使用 TTL 减少群集计算启动时间
+
+数据流属性下的 Azure IR 中有一个属性，该属性允许您为工厂建立群集计算资源池。 使用此池，您可以按顺序提交数据流活动以执行。 建立池后，每个后续作业将需要 1-2 分钟，按需 Spark 群集执行作业。 资源池的初始设置大约需要 6 分钟。 指定您希望在生存时间 （TTL） 设置中维护资源池的时间量。
+
+## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse-synapse"></a>优化 Azure SQL 数据库和 Azure SQL 数据仓库突触
 
 ### <a name="partitioning-on-source"></a>在源上分区
 

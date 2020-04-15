@@ -4,12 +4,12 @@ description: 本文逐步讲解如何基于指标监视 Azure 自动化 Runbook
 services: automation
 ms.date: 11/01/2018
 ms.topic: article
-ms.openlocfilehash: 9bd028157b33817898ef69f9e47cb8b5d9b8f381
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f288029bb35fe4e3c71db37a1de265edbcd913b1
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75367087"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310541"
 ---
 # <a name="monitoring-runbooks-with-metric-alerts"></a>使用指标警报监视 Runbook
 
@@ -23,7 +23,7 @@ ms.locfileid: "75367087"
 
 使用警报可以定义一个要监视的条件，以及在满足该条件时要执行的操作。
 
-在 Azure 门户中，导航到你的自动化帐户。 在“监视”下，选择“警报”并单击“+ 新建警报规则”。************ 目标的范围已定义为你的自动化帐户。
+在 Azure 门户中，导航到自动化帐户。 在“监视”下，选择“警报”并单击“+ 新建警报规则”。************ 目标范围已定义到您的自动化帐户。
 
 ### <a name="configure-alert-criteria"></a>配置警报条件
 
@@ -77,7 +77,7 @@ ms.locfileid: "75367087"
 
 ## <a name="next-steps"></a>后续步骤
 
-请继续学习以下文章，了解将警报集成到自动化帐户的其他方法。
+继续关注以下文章，了解可以将警报集成到自动化帐户的其他方法。
 
 > [!div class="nextstepaction"]
 > [使用警报触发 Azure 自动化 Runbook](automation-create-alert-triggered-runbook.md)

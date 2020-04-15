@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: b19052b8a71b582b47308c41d170f50352d643e2
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 314445275f99898913bd91eb8abc2a5acdab098a
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618361"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381024"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>教程：为自动用户预配配置闪烁
 
@@ -68,7 +68,7 @@ Azure 活动目录使用称为*分配*的概念来确定哪些用户应接收对
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用程序”，并选择“所有应用程序”。********
+2. 转到**企业应用程序**，然后选择 **"所有应用程序**"。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -113,7 +113,7 @@ Azure 活动目录使用称为*分配*的概念来确定哪些用户应接收对
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“保存”  。
+7. 单击“ **保存**”。
 
 8. 在 **"映射"** 部分下，选择 **"将 Azure 活动目录用户同步到闪烁**"。
 
@@ -121,7 +121,7 @@ Azure 活动目录使用称为*分配*的概念来确定哪些用户应接收对
 
 9. 在**属性映射**部分中查看从 Azure AD 同步到闪烁的用户属性。 选择为 **"匹配属性"** 的属性用于匹配 Blink 中的用户帐户以进行更新操作。 选择“保存”按钮以提交任何更改****。
 
-    ![闪烁用户属性](media/blink-provisioning-tutorial/User_attributes.png)
+    ![闪烁用户属性](media/blink-provisioning-tutorial/user-attributes.png)
 
 10. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 

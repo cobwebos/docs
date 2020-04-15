@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/24/2020
-ms.openlocfilehash: 4265f6050b237cb40afeddfc228ade9be06be039
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.date: 04/14/2020
+ms.openlocfilehash: 098aeaa06a26c57744402722aa3eacc51ea85fb7
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396778"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382860"
 ---
 # <a name="collect-and-analyze-azure-activity-log-in-azure-monitor"></a>在 Azure 监视器中收集和分析 Azure 活动日志
 [Azure 活动日志](platform-logs-overview.md)是一种方便用户深入了解 Azure 中发生的订阅级别事件的[平台日志](platform-logs-overview.md)。 虽然可以在 Azure 门户中查看活动日志，但应将其配置为发送到日志分析工作区以启用 Azure 监视器的其他功能。 本文介绍如何执行此配置以及如何将活动日志发送到 Azure 存储和事件中心。
@@ -25,7 +25,8 @@ ms.locfileid: "80396778"
 - 存储活动日志条目超过 90 天。
 - 将多个 Azure 订阅和租户的日志条目合并到一个位置，以便一起分析。
 
-
+> [!IMPORTANT]
+> 跨租户收集日志需要[Azure 灯塔](/azure/lighthouse)。
 
 ## <a name="collecting-activity-log"></a>收集活动日志
 活动日志将自动收集，以便[在 Azure 门户中查看](activity-log-view.md)。 要在日志分析工作区中收集它或将其发送 Azure 存储或事件中心，请创建[一个诊断设置](diagnostic-settings.md)。 这是资源日志使用的方法，使其对所有[平台日志](platform-logs-overview.md)保持一致。  

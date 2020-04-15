@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 9398820c88120400d97fbaf8cb0da100c2bdbf81
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 82c516eeac6d3e88ca7b6ac1c97ebb638ba27979
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261748"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383914"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>有关 Azure 文件的常见问题解答 (FAQ)
 [Azure 文件](storage-files-introduction.md)在云端提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)进行访问。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
@@ -199,16 +199,6 @@ ms.locfileid: "81261748"
 
     否，不支持来自 Linux VM 的身份验证。
 
-* <a id="ad-multiple-forest"></a>
-**Azure 文件 AD 身份验证是否支持使用多个林与 AD 环境集成？**    
-
-    Azure 文件 AD 身份验证仅与存储帐户注册的 AD 域服务的林集成。 要支持来自其他 AD 林的身份验证，您的环境必须正确配置林信任。 Azure 文件注册到 AD 域服务的方式与常规文件服务器大致相同，在 AD 中创建标识（计算机或服务登录帐户）以进行身份验证。 唯一的区别是，存储帐户的已注册的 SPN 以与域后缀不匹配的"file.core.windows.net"结尾。 请咨询域管理员，了解是否需要对 DNS 路由策略进行任何更新，才能由于不同的域后缀而启用多个林身份验证。
-
-* <a id=""></a>
-**哪些区域可用于 Azure 文件 AD 身份验证（预览）？**
-
-    有关详细信息，请参阅[AD 区域可用性](storage-files-identity-auth-active-directory-enable.md#regional-availability)。
-
 * <a id="ad-aad-smb-afs"></a>
 **是否可以在 Azure 文件同步管理的文件共享上利用 Azure 文件 Azure 文件 AD DS 身份验证或活动目录 （AD） 身份验证（预览）？**
 
@@ -218,7 +208,7 @@ ms.locfileid: "81261748"
 **如何检查我的存储帐户和 AD 域信息是否启用了 AD 身份验证？**
 
     您可以参考[此处](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account)提供的说明，以验证存储帐户上是否启用了 Azure 文件 AD 身份验证并检索 AD 域信息。
-    
+
 * <a id="encryption-at-rest"></a>
 **如何确保已静态加密 Azure 件共享？**  
 
@@ -243,6 +233,37 @@ ms.locfileid: "81261748"
 **Azure 文件支持哪些数据符合性策略？**  
 
    Azure 文件所依据的存储体系结构与 Azure 存储中的其他存储服务使用的相同。 Azure 文件实施的数据符合性策略也与其他 Azure 存储服务使用的相同。 有关 Azure 存储数据符合性的详细信息，可参阅 [Azure 存储符合性产品/服务](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)和转到 [Microsoft 信任中心](https://microsoft.com/trustcenter/default.aspx)。
+   
+### <a name="ad-authentication"></a>AD 身份验证
+* <a id=""></a>
+**Azure 文件 Azure AD 身份验证是否支持 Linux VM？**
+
+    否，不支持来自 Linux VM 的身份验证。
+
+* <a id="ad-multiple-forest"></a>
+**Azure 文件 AD 身份验证是否支持使用多个林与 AD 环境集成？**    
+
+    Azure 文件 AD 身份验证仅与存储帐户注册的 AD 域服务的林集成。 要支持来自其他 AD 林的身份验证，您的环境必须正确配置林信任。 Azure 文件注册到 AD 域服务的方式与常规文件服务器大致相同，在 AD 中创建标识（计算机或服务登录帐户）以进行身份验证。 唯一的区别是，存储帐户的已注册的 SPN 以与域后缀不匹配的"file.core.windows.net"结尾。 请咨询域管理员，了解是否需要对 DNS 路由策略进行任何更新，才能由于不同的域后缀而启用多个林身份验证。
+
+* <a id=""></a>
+**哪些区域可用于 Azure 文件 AD 身份验证（预览）？**
+
+    有关详细信息，请参阅[AD 区域可用性](storage-files-identity-auth-active-directory-enable.md#regional-availability)。
+
+* <a id="ad-aad-smb-afs"></a>
+**是否可以在 Azure 文件同步管理的文件共享上利用 Azure 文件活动目录 （AD） 身份验证（预览）？**
+
+    可以，您可以在 Azure 文件同步管理的文件共享上启用 AD 身份验证。对本地文件服务器上的目录/文件 NTFS ACL 的更改将分层到 Azure 文件，反之亦然。
+
+* <a id="ad-aad-smb-files"></a>
+**如何检查我的存储帐户和 AD 域信息是否启用了 AD 身份验证？**
+
+    您可以参考[此处](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account)提供的说明，以验证存储帐户上是否启用了 Azure 文件 AD 身份验证并检索 AD 域信息。
+
+* <a id="ad-aad-smb-files"></a>
+**在 AD 中创建计算机帐户或服务登录帐户以表示我的存储帐户是否有任何区别？**
+
+    创建[计算机帐户](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory)（默认）[或服务登录帐户](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts)与身份验证如何使用 Azure 文件没有区别。 您可以自行选择如何在 AD 环境中将存储帐户表示为标识。 在联接-AzStorage 帐户"cmdlet"中设置的默认域帐户类型是计算机帐户。 但是，在 AD 环境中配置的密码过期期限对于计算机或服务登录帐户可能不同，您需要考虑在[AD 中更新存储帐户标识的密码](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#5-update-ad-account-password)。
 
 ## <a name="on-premises-access"></a>本地访问
 
@@ -393,7 +414,7 @@ ms.locfileid: "81261748"
 **如何将 Azure 文件与 IBM MQ 配合使用？**  
     IBM 已发布相关文档，帮助 IBM MQ 客户通过 IBM 服务配置 Azure 文件。 有关更多信息，请参阅[如何通过 Microsoft Azure 文件服务设置 IBM MQ 多实例队列管理器](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [在 Windows 中排查 Azure 文件问题](storage-troubleshoot-windows-file-connection-problems.md)
 * [在 Linux 中排查 Azure 文件问题](storage-troubleshoot-linux-file-connection-problems.md)
 * [对 Azure 文件同步进行故障排除](storage-sync-files-troubleshoot.md)

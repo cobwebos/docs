@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.author: ryanwi
+ms.date: 04/13/2020
+ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4847bddcbcfbc27502965efa221a3707fa453457
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: bc635addc2a5cd7d3c698f6885bec0399e28743a
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885661"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309655"
 ---
 # <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>Microsoft 标识平台上的 OAuth 2.0 和 OpenID Connect 协议
 
@@ -58,7 +58,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 
 其中 `{tenant}` 可以接受以下四个不同值之一：
 
-| “值” | 说明 |
+| “值” | 描述 |
 | --- | --- |
 | `common` | 允许用户使用个人 Microsoft 帐户和工作/学校帐户从 Azure AD 登录应用程序。 |
 | `organizations` | 仅允许用户使用工作/学校帐户从 Azure AD 登录应用程序。 |

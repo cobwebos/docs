@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: 了解如何在启用和使用 Azure 开发人员空间时排除故障并解决常见问题
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: c12dfd385962d8dd7de8239a0d4ecd46746499c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9fcf14bf42fc843a126fea269038087ee7fb0c6c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239769"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382047"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure 开发空间故障排除
 
@@ -95,7 +95,7 @@ azure-cli                         2.0.60 *
 
 ### <a name="error-unable-to-reach-kube-apiserver"></a>错误"无法访问库贝-apiserver"
 
-当 Azure 开发人员空间无法连接到 AKS 群集的 API 服务器时，您可能会看到此错误。 
+当 Azure 开发人员空间无法连接到 AKS 群集的 API 服务器时，您可能会看到此错误。
 
 如果对 AKS 群集 API 服务器的访问被锁定，或者如果您为 AKS 群集启用了[API 服务器授权的 IP 地址范围](../aks/api-server-authorized-ip-ranges.md)，则还必须[创建](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled)或[更新](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges)群集，[以允许基于区域的其他范围](https://github.com/Azure/dev-spaces/tree/master/public-ips)。
 
@@ -270,7 +270,114 @@ Service cannot be started.
 * 右键单击*分支缓存*并选择*属性*。
 * 单击“停止”**。
 * 或者，您可以通过将 *"启动"类型*设置为 *"已禁用*"来禁用它。
-* 单击“确定”。
+* 单击“确定”。 
+
+### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>错误"未找到为 pod 找到 Azure 分配标识：在分配状态下的 azds/azds-webhook-部署-ID"\<\>
+
+在安装了[托管标识](../aks/use-managed-identity.md)和[pod 托管标识](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities)的 AKS 群集上运行具有 Azure 开发人员空间的服务时，该过程可能会在*图表安装*步骤后挂起。 如果检查*azds*名称空间中的*阿兹-注入器-webhook，* 您可能会看到此错误。
+
+群集上运行的 Azure 开发人员空间服务利用群集的托管标识与群集外部的 Azure 开发空间后端服务进行交谈。 安装 Pod 托管标识后，在群集的节点上配置网络规则，以将托管标识凭据的所有调用重定向到[群集上安装的节点托管标识 （NMI） 守护进程](https://github.com/Azure/aad-pod-identity#node-managed-identity)。 此 NMI 守护进程集标识调用窗格，并确保已正确标记 pod 以访问请求的托管标识。 Azure 开发人员空间无法检测群集是否安装了 Pod 托管标识，并且无法执行必要的配置以允许 Azure 开发人员空间服务访问群集的托管标识。 由于 Azure 开发人员空间服务尚未配置为访问群集的托管标识，因此 NMI 守护进程将不允许它们获取托管标识的 AAD 令牌，并且无法与 Azure 开发人员空间后端服务通信。
+
+要解决此问题，请对*阿兹德-注入器-webhook*应用[AzurePodIdentityException，](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md)并更新 Azure 开发人员空间检测的窗格以访问托管标识。
+
+创建名为*webhookException.yaml*的文件并复制以下 YAML 定义：
+
+```yaml
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzurePodIdentityException
+metadata:
+  name: azds-infrastructure-exception
+  namespace: azds
+spec:
+  PodLabels:
+    azds.io/uses-cluster-identity: "true"
+```
+
+上述文件为*azds-injector-webhook*创建一个*AzurePod 身份异常*对象。 要部署此对象，请使用`kubectl`：
+
+```cmd
+kubectl apply -f webhookException.yaml
+```
+
+要更新 Azure 开发人员空间检测的窗格以访问托管标识，请更新以下 YAML 定义中的*命名空间*，并`kubectl`用于为每个开发空间应用它。
+
+```yaml
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzurePodIdentityException
+metadata:
+  name: azds-infrastructure-exception
+  namespace: myNamespace
+spec:
+  PodLabels:
+    azds.io/instrumented: "true"
+```
+
+或者，您可以创建*Azure 标识*和*Azure 标识绑定*对象，并更新在 Azure 开发人员空间检测的空间中运行的工作负载的窗格标签，以访问 AKS 群集创建的托管标识。
+
+要列出托管标识的详细信息，请为 AKS 群集运行以下命令：
+
+```azurecli
+az aks show -g <resourcegroup> -n <cluster> -o json --query "{clientId: identityProfile.kubeletidentity.clientId, resourceId: identityProfile.kubeletidentity.resourceId}"
+```
+
+上述命令输出托管标识的*客户端 Id*和资源*Id。* 例如：
+
+```json
+{
+  "clientId": "<clientId>",
+  "resourceId": "/subscriptions/<subid>/resourcegroups/<resourcegroup>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<name>"
+}
+```
+
+要创建*Azure 标识*对象，请创建名为*群集标识.yaml*的文件，并使用与上一命令中的托管标识的详细信息更新的以下 YAML 定义：
+
+```yaml
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzureIdentity
+metadata:
+  name: my-cluster-mi
+spec:
+  type: 0
+  ResourceID: /subscriptions/<subid>/resourcegroups/<resourcegroup>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<name>
+  ClientID: <clientId>
+```
+
+要创建*Azure 标识绑定*对象，请创建名为*群集标识绑定.yaml*的文件，并使用以下 YAML 定义：
+
+```yaml
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzureIdentityBinding
+metadata:
+  name: my-cluster-mi-binding
+spec:
+  AzureIdentity: my-cluster-mi
+  Selector: my-label-value
+```
+
+要部署*Azure 标识*和*Azure 标识绑定*对象，请使用 ： `kubectl`
+
+```cmd
+kubectl apply -f clusteridentity.yaml
+kubectl apply -f clusteridentitybinding.yaml
+```
+
+部署 Azure*标识*和*Azure 标识绑定*对象后，具有*adapodid 绑定：我的标签值*标签的任何工作负荷都可以访问群集的托管标识。 添加此标签并重新部署在任何开发空间中运行的所有工作负载。 例如：
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sample
+        aadpodidbinding: my-label-value
+    spec:
+      [...]
+```
 
 ## <a name="common-issues-using-visual-studio-and-visual-studio-code-with-azure-dev-spaces"></a>使用具有 Azure 开发空间的可视化工作室和可视化工作室代码的常见问题
 
@@ -397,7 +504,7 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
     * 对于*角色*，请选择 *"参与者*"或"*所有者*"。
     * 对于“分配访问权限至”，选择“Azure AD 用户、组或服务主体”****。
     * 对于 *"选择*"，搜索要授予权限的用户。
-1. 单击“保存”。**
+1. 单击“ *保存*”。
 
 ### <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>对与 Dev Spaces 服务关联的公用 URL 进行 DNS 名称解析失败
 
@@ -477,7 +584,7 @@ kubectl -n my-namespace delete pod --all
 
 要在限制群集节点出口流量的 AKS 群集上启用 Azure 开发空间，必须允许以下 FQDN：
 
-| FQDN                                    | 端口      | 用途      |
+| FQDN                                    | 端口      | 使用      |
 |-----------------------------------------|-----------|----------|
 | cloudflare.docker.com | HTTPS：443 | 拉 linux 高山和其他 Azure 开发人员空间映像 |
 | gcr.io | HTTP：443 | 拉舵/牵引器图像|

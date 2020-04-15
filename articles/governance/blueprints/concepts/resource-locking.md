@@ -3,12 +3,12 @@ title: 了解资源锁定
 description: 了解 Azure 蓝图中的锁定选项，以在分配蓝图时保护资源。
 ms.date: 03/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9c4e2f4c6fd8f5fb574002217ca71d1e7d130ff7
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 94ed8efd0d6c654cba129dfc69fbfe5add7a0824
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80676756"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383596"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>了解 Azure 蓝图中的资源锁定
 
@@ -24,7 +24,7 @@ ms.locfileid: "80676756"
 
 蓝图分配中工件创建的资源有四种状态：**未锁定**、**只读**、**无法编辑/删除**或**无法删除**。 每种项目类型都可以处于“未锁定”**** 状态。 下表可以用于确定资源的状态：
 
-|“模式”|项目资源类型|状态|说明|
+|“模式”|项目资源类型|状态|描述|
 |-|-|-|-|
 |不锁定|*|未锁定|资源不受 Azure 蓝图的保护。 此状态也用于从蓝图分配外部添加到“只读”**** 或“不要删除”**** 资源组项目的资源。|
 |只读|资源组|无法编辑/删除|资源组是只读的，资源组上的标记无法修改。 可以从此资源组添加、移动、更改或删除“未锁定”**** 资源。|
@@ -103,7 +103,7 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 
 如果蓝图分配选择了“只读”**** 或“不要删除”**** 选项，则会在分配期间将 RBAC [拒绝分配](../../../role-based-access-control/deny-assignments.md)拒绝操作应用于项目资源。 该拒绝操作由蓝图分配的托管标识添加，并且只能通过同一托管标识从项目资源中删除。 此安全措施强制实施锁定机制，并防止在 Azure 蓝图之外删除蓝图锁。
 
-![蓝图拒绝资源组分配](../media/resource-locking/blueprint-deny-assignment.png)
+:::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="蓝图拒绝资源组分配" border="false":::
 
 每个模式的[拒绝分配属性](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties)如下所示：
 

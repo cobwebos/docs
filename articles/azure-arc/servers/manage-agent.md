@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/01/2020
+ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8bcf59ee863bb2fd2a3213480372ad215c2fc00d
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 5ad2127b4cb9da3ca83aa04bd1885908a88dba62
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528589"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81308973"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>管理和维护连接的计算机代理
 
@@ -113,6 +113,78 @@ Windows 和 Linux 的 Azure 连接计算机代理可以手动或自动升级到�
 
 [zypper](https://en.opensuse.org/Portal:Zypper)命令的操作（如包的安装和删除）将记录在日志文件中`/var/log/zypper.log`。 
 
+## <a name="about-the-azcmagent-tool"></a>关于阿兹cmagent工具
+
+Azcmagent 工具 （Azcmagent.exe） 用于在安装过程中为服务器（预览）连接的计算机代理配置 Azure Arc，或在安装后修改代理的初始配置。 Azcmagent.exe 提供命令行参数以自定义代理并查看其状态：
+
+* **连接**- 将计算机连接到 Azure 弧线
+
+* **断开连接**- 断开计算机与 Azure 弧的连接
+
+* **重新连接**- 将断开连接的计算机重新连接到 Azure 弧
+
+* **显示**- 查看代理状态及其配置属性（资源组名称、订阅 ID、版本等），这些属性在解决代理问题时会有所帮助。
+
+* **-h 或 -- 帮助**- 显示可用的命令行参数
+
+    例如，要查看 **"重新连接**"参数的详细帮助，请键入`azcmagent reconnect -h`。 
+
+* **-v 或 - 详细**- 启用详细日志记录
+
+您可以在交互登录时手动执行**连接**、**断开连接**和**重新连接**，或者使用用于将多个代理或 Microsoft 标识平台[访问令牌](../../active-directory/develop/access-tokens.md)的同一服务主体自动执行。 如果未使用服务主体将计算机注册到 Azure Arc 服务器（预览），请参阅以下[文章](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)以创建服务主体。
+
+### <a name="connect"></a>连接
+
+此参数指定 Azure 资源管理器中代表在 Azure 中创建计算机的资源。 资源位于指定的订阅和资源组中，有关计算机的数据存储在`--location`设置指定的 Azure 区域中。 如果未指定，默认资源名称是此计算机的主机名。
+
+然后，在本地下载并存储与机器的系统分配标识对应的证书。 完成此步骤后，Azure 连接的计算机元数据服务和来宾配置代理将开始与服务器的 Azure Arc 同步（预览）。
+
+要使用服务主体进行连接，请运行以下命令：
+
+`azcmagent connect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID> --subscription-id <subscriptionID> --resource-group <ResourceGroupName> --location <resourceLocation>`
+
+要使用访问令牌进行连接，请运行以下命令：
+
+`azcmagent connect --access-token <> --subscription-id <subscriptionID> --resource-group <ResourceGroupName> --location <resourceLocation>`
+
+要使用提升的登录凭据（交互式）进行连接，请运行以下命令：
+
+`azcmagent connect --tenant-id <TenantID> --subscription-id <subscriptionID> --resource-group <ResourceGroupName> --location <resourceLocation>`
+
+### <a name="disconnect"></a>断开连接
+
+此参数指定 Azure 资源管理器中表示在 Azure 中删除计算机的资源。 它不会从计算机中删除代理，这必须作为单独的步骤完成。 断开计算机后，如果要将其重新注册到服务器 Azure Arc（预览），请使用`azcmagent connect`，以便在 Azure 中为其创建新资源。
+
+要使用服务主体断开连接，请运行以下命令：
+
+`azcmagent disconnect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID>`
+
+要使用访问令牌断开连接，请运行以下命令：
+
+`azcmagent disconnect --access-token <accessToken>`
+
+要断开与提升的登录凭据（交互式）的连接，请运行以下命令：
+
+`azcmagent disconnect --tenant-id <tenantID>`
+
+### <a name="reconnect"></a>重新连接
+
+此参数将已注册或连接的计算机与服务器 Azure Arc 重新连接（预览）。 如果机器已关闭至少 45 天，其证书过期，则可能需要这样做。 此参数使用提供的身份验证选项来检索对应于表示此计算机的 Azure 资源管理器资源的新凭据。
+
+此命令需要比[Azure 连接的计算机载入](overview.md#required-permissions)角色更高的权限。
+
+要使用服务主体重新连接，请运行以下命令：
+
+`azcmagent reconnect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID>`
+
+要使用访问令牌重新连接，请运行以下命令：
+
+`azcmagent reconnect --access-token <accessToken>`
+
+要重新连接已提升的登录凭据（交互式），请运行以下命令：
+
+`azcmagent reconnect --tenant-id <tenantID>`
+
 ## <a name="remove-the-agent"></a>删除代理
 
 执行以下方法之一，从计算机卸载 Windows 或 Linux 连接的计算机代理。 删除代理不会将计算机与 Arc 注销为服务器（预览），这是当您不再需要在 Azure 中管理计算机时执行的单独过程。
@@ -184,7 +256,7 @@ Windows 和 Linux 的 Azure 连接计算机代理可以手动或自动升级到�
 
 ## <a name="unregister-machine"></a>取消注册计算机
 
-如果计划停止使用 Azure 中的支持服务管理计算机，请执行以下步骤，将计算机与 Arc 注销以用于服务器（预览）。 您可以在从机器中删除已连接的计算机代理之前或之后执行这些步骤。
+如果计划停止使用 Azure 中的支持服务管理计算机，请执行以下步骤，将计算机与 Arc 注销以用于服务器（预览）。 您可以在从计算机中删除已连接的计算机代理之前或之后执行这些步骤。
 
 1. 转到 [Azure 门户](https://aka.ms/hybridmachineportal)并打开 Azure Arc for servers（预览版）。
 

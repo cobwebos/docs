@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 085933f9a74ee37779ce63ce499d89ea53a9f7d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 767d87efcf94d720159dcf3b9dc42981ec957ef0
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198933"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381397"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 中的 Apache Hadoop 群集的可用性和可靠性
 
@@ -33,7 +33,7 @@ HDInsight 群集中的节点是使用 Azure 虚拟机实现的。 以下部分�
 
 为确保 Hadoop 服务的高可用性，HDInsight 提供了两个头节点。 这两个头节点同时处于活动状态并在 HDInsight 群集中运行。 某些服务，例如 Apache HDFS 或 Apache Hadoop YARN，在任何给定的时间仅能在其中一个头节点上处于“活动”状态。 HiveServer2 或 Hive MetaStore 等其他服务同时在这两个头节点上处于活动状态。
 
-要获取群集中不同节点类型的主机名，请使用[Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes)。
+要获取群集中不同节点类型的主机名，请使用[Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes)。
 
 > [!IMPORTANT]  
 > 请勿将数字值与某个节点是主节点还是辅助节点相关联。 使用数字值是为了为每个节点提供唯一名称。

@@ -3,12 +3,12 @@ title: 在 Linux 上设置开发环境
 description: 在 Linux 上安装运行时和 SDK 并创建本地开发群集。 完成此设置后，便可以开始生成应用程序。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 572b1509f45a7f5bf2c63619809f01d17c3493d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1048e1ccf6b9bc921daa3014ab8003fd53473461
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258429"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309114"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上准备开发环境
 > [!div class="op_single_selector"]
@@ -20,7 +20,7 @@ ms.locfileid: "79258429"
 
 若要在 Linux 开发计算机上部署和运行 [Azure Service Fabric 应用程序](service-fabric-application-model.md)，请安装运行时和常用 SDK。 还可以安装用于 Java 和 .NET Core 开发的可选 SDK。 
 
-本文中的步骤假设你在 Linux 上进行本地安装，或者使用 Service Fabric OneBox 容器映像 `microsoft/service-fabric-onebox`。
+本文中的步骤假设你在 Linux 上进行本地安装，或者使用 Service Fabric OneBox 容器映像 `mcr.microsoft.com/service-fabric/onebox:latest`。
 
 不支持在适用于 Linux 的 Windows 子系统上安装 Service Fabric 运行时和 SDK。 可以使用受支持的 Azure Service Fabric 命令行接口 (CLI) 来管理托管在云中或本地其他位置的 Service Fabric 实体。 有关如何安装 CLI 的信息，请参阅[设置 Service Fabric CLI](./service-fabric-cli.md)。
 
@@ -267,7 +267,7 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
 
 3. 在“使用”框中，输入 **https://dl.microsoft.com/eclipse**。****
 
-4. 选择“添加”****。
+4. 选择 **添加** 。
 
     ![“可用软件”页][sf-eclipse-plugin]
 

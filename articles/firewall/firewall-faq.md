@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: af66da115e228efe39e4cd5dda3c494b71428676
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: ea94e452b463fffc1800e09fa1302abacdf015cc
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113556"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383074"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火墙常见问题解答
 
@@ -72,9 +72,9 @@ Web 应用程序防火墙 (WAF) 是应用程序网关的一项功能，可在出
 
 Azure 防火墙服务为网络安全组功能提供了补充。 两者共同提供了更好的“深层防御”网络安全性。 网络安全组提供分布式网络层流量过滤，以限制每个订阅中虚拟网络内资源的流量。 Azure 防火墙是一个服务形式的完全有状态的集中式网络防火墙，可跨不同的订阅和虚拟网络提供网络和应用程序级别的保护。
 
-## <a name="are-network-security-groups-nsgs-supported-on-the-azure-firewall-subnet"></a>Azure 防火墙子网上是否支持网络安全组 (NSG)？
+## <a name="are-network-security-groups-nsgs-supported-on-the-azurefirewallsubnet"></a>Azure 防火墙子网支持网络安全组 （NSG）吗？
 
-Azure 防火墙是具有多个保护层的托管服务，这些层包括使用 NIC 级 NSG（不可查看）进行的平台保护。  不需要在 Azure 防火墙子网中配置子网级 NSG，为确保服务不会中断，将禁用此类 NSG。
+Azure 防火墙是具有多个保护层的托管服务，这些层包括使用 NIC 级 NSG（不可查看）进行的平台保护。  Azure 防火墙子网不需要子网级别 NSG，并且已禁用以确保没有服务中断。
 
 ## <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>如何使用服务终结点设置 Azure 防火墙？
 

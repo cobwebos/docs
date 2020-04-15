@@ -3,12 +3,12 @@ title: 支持 Azure 迁移中的 VMware 迁移
 description: 了解在 Azure 迁移中对 VMware VM 迁移的支持。
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 9d8dc4dadc975a0fb69ea207f6062b72231460ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf9cc471eef31edd513358a97d2ece17015ba781
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79269505"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313996"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 迁移的支持矩阵
 
@@ -31,7 +31,7 @@ ms.locfileid: "79269505"
 
 ## <a name="agentless-vmware-servers"></a>无代理 VMware 服务器
 
-**Vmware** | **详细信息**
+**VMware** | **详细信息**
 --- | ---
 **VMware vCenter 服务器** | 版本 5.5、6.0、6.5 或 6.7。
 **VMware vSphere ESXI 主机** | 版本 5.5、6.0、6.5 或 6.7。
@@ -47,7 +47,7 @@ ms.locfileid: "79269505"
 **Azure 所需的更改** | 某些 VM 可能需要经过更改才能在 Azure 中运行。 Azure 迁移会自动为以下操作系统进行这些更改：<br/> - 红帽企业 Linux 6.5+，7.0*<br/> - CentOS 6.5°， 7.0°</br> - SUSE Linux 企业服务器 12 SP1*<br/> - 乌本图 14.04LTS， 16.04LTS， 18.04LTS<br/> - Debian 7， 8<br/><br/> 对于其他操作系统，您需要在迁移之前手动进行调整。 相关文章包含有关如何执行此操作的说明。
 **Linux 启动** | 如果 /boot 位于专用分区上，则应驻留在操作系统磁盘上，并且不应跨多个磁盘分布。<br/> 如果 /boot 是根 （/） 分区的一部分，则'/' 分区应位于 OS 磁盘上，而不是跨其他磁盘。
 **UEFI 启动** | 迁移不支持具有 UEFI 启动的 VM。
-**磁盘大小** | 2 TB OS 磁盘;4 TB 的数据磁盘。
+**磁盘大小** | 2 TB OS 磁盘;8 TB 的数据磁盘。
 **磁盘限制** |  每个 VM 最多 60 个磁盘。
 **加密磁盘/卷** | 迁移不支持具有加密磁盘/卷的 VM。
 **共享磁盘群集** | 不支持。
@@ -150,7 +150,7 @@ VM | 在 VM 上运行的移动服务与端口 HTTPS 443 入站上的本地复制
 FC 磁盘 | 不支持。 | 如果不支持，检查会失败。
 BitLocker | 不支持。 | 为计算机启用复制之前，必须先禁用 BitLocker。
 VM 名称 | 1 到 63 个字符。<br/> 限制为字母、数字和连字符。<br/><br/> 计算机名称必须以字母或数字开头和结尾。 |  请在 Site Recovery 中的计算机属性中更新该值。
-迁移后连接 - Windows | 要在迁移后连接到运行 Windows 的 Azure VM，请执行：<br/> - 在迁移在本地 VM 上启用 RDP 之前。 确保为**公共**配置文件添加了 TCP 和 UDP 规则，并且所有配置文件都允许在 Windows**防火墙** > **允许应用**中使用 RDP。<br/> 对于站点到站点 VPN 访问，请在**Windows 防火墙** -> **允许的应用和功能**中启用 RDP。 **Domain and Private** 此外，请检查操作系统的 SAN 策略是否设置为**OnlineAll**。 [了解详情](prepare-for-migration.md)。 |
+迁移后连接 - Windows | 要在迁移后连接到运行 Windows 的 Azure VM，请执行：<br/> - 在迁移在本地 VM 上启用 RDP 之前。 确保为**公共**配置文件添加了 TCP 和 UDP 规则，并且所有配置文件都允许在 Windows**防火墙** > **允许应用**中使用 RDP。<br/> 对于站点到站点 VPN 访问，请在**Windows 防火墙** -> **允许的应用和功能**中启用 RDP。 **Domain and Private** 此外，请检查操作系统的 SAN 策略是否设置为**OnlineAll**。 [了解详细信息](prepare-for-migration.md)。 |
 迁移后连接 -Linux | 要使用 SSH 在迁移后连接到 Azure VM，<br/> 在迁移之前，在本地计算机上，检查安全外壳服务是否设置为"开始"，并且防火墙规则是否允许 SSH 连接。<br/> 故障转移后，在 Azure VM 上，允许传入连接到 SSH 端口，用于通过 VM 故障的网络安全组规则以及连接到它的 Azure 子网。 此外，为 VM 添加公共 IP 地址。 |  
 
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0b8c8a0baba5a80c6a383e6f8f14e29b482dbc82
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 0133322eab9a554cf28c0a90fbadf9afe6fbcd64
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878606"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314265"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -137,7 +137,7 @@ ExpressRoute 位置（有时称为对等位置或 Meet-me 位置）是 Microsoft
 | **东京** | [Equinix TY4](https://www.equinix.com/locations/asia-colocation/japan-colocation/tokyo-data-centers/ty4/) | 2 | 日本东部 | 10G， 100G | Aryaka网络， AT&T NetBond， BBIX， 英国电信， 世纪链接云连接， 科尔特， Equinix， 互联网倡议日本公司 - IIJ， 兆港， NTT通信， NTT EAST， 奥兰治， 软银， Verizon |
 | **东京2** | [在东京](https://www.attokyo.com/) | 2 | 日本东部 | 10G， 100G | 在东京 |
 | **多伦多** | [科洛尼克斯TOR1](https://www.cologix.com/data-centers/toronto/tor1/) | 1 | 加拿大中部 | 10G， 100G | AT&T NetBond、贝尔加拿大、世纪链接云连接、科洛尼克斯、Equinix、IX 到达兆港、泰鲁斯、威瑞森、扎约 |
-| **温哥华** | [科洛尼克斯范1](https://www.cologix.com/data-centers/vancouver/van1/) | 1 | 不适用 | 10G， 100G | |
+| **温哥华** | [科洛尼克斯范1](https://www.cologix.com/data-centers/vancouver/van1/) | 1 | Cologix | 10G， 100G | |
 | **华盛顿** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | 1 | 美国东部，美国东部 2 | 10G， 100G | 阿里亚卡网络， AT&T NetBond， 英国电信， 世纪链接云连接， 科洛尼克斯， 科尔特， 康卡斯特， 核心网站， Equinix， Internet2， InterCloud， IX 覆盖， 3 级通信， 兆端口， 中子网络， NTT通信， 橙色， 包布，SES， 冲刺， 塔塔通信， 泰利亚运营商， Verizon， Zayo |
 | **华盛顿特区 2** | [核心网站雷斯顿](https://www.coresite.com/data-centers/locations/northern-virginia-washington-dc/reston-campus) | 1 | 美国东部，美国东部 2 | 10G， 100G | 世纪链接云连接， 核心网站， Intelsat， 维亚盛， 扎约 | 
 | **苏黎世** | [联交 ZUR2](https://www.interxion.com/Locations/zurich/) | 1 | 瑞士北部 | 10G， 100G | 云间， 国际， 兆港， 瑞士 |

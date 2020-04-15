@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 96f3825288846e86771ef3907eb4da4e58630df3
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 2a6165cf2739482805d712ddffb5c6a9f5ebabf8
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475174"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312037"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>将 Azure 应用程序网关和 Web 应用程序防火墙从 v1 迁移到 v2
 
@@ -36,7 +36,7 @@ ms.locfileid: "80475174"
 
 * 新的 v2 网关使用新的公共和专用 IP 地址。 无法将与现有 v1 网关关联的 IP 地址无缝移动到 v2。 但是，可将现有的（未分配的）公共或专用 IP 地址分配到新的 v2 网关。
 * 必须为 v1 网关所在的虚拟网络中的另一个子网提供 IP 地址空间。 该脚本无法在已有 v1 网关的任何现有子网中创建 v2 网关。 但是，如果现有子网已包含 v2 网关，只要该子网具有足够的 IP 地址空间，它就仍可正常运行。
-* 若要迁移 SSL 配置，必须指定 v1 网关中使用的所有 SSL 证书。
+* 要迁移 TLS/SSL 配置，必须指定 v1 网关中使用的所有 TLS/SSL 证书。
 * 如果 V1 网关启用了 FIPS 模式，则不会将其迁移到新的 v2 网关。 v2 不支持 FIPS 模式。
 * v2 不支持 IPv6，因此不会迁移启用了 IPv6 的 v1 网关。 如果运行该脚本，它可能不会完成。
 * 如果 v1 网关只有专用 IP 地址，该脚本将为新的 v2 网关创建一个公共 IP 地址和一个专用 IP 地址。 v2 网关目前不支持仅指定专用 IP 地址。
@@ -101,7 +101,7 @@ ms.locfileid: "80475174"
 
    * **子网地址范围： [String]： 必需**- 这是您为包含新 v2 网关的新子网分配（或想要分配）的 IP 地址空间。 必须以 CIDR 表示法指定此参数。 例如：10.0.0.0/24。 无需提前创建此子网。 如果此子网不存在，脚本将会创建它。
    * **应用名称： [字符串]： 可选**。 这是指定用作新 Standard_v2 或 WAF_v2 网关的名称的字符串。 如果未提供此参数，则会使用现有 v1 网关的名称并在其后追加后缀 *_v2*。
-   * **ssl 证书： [PS应用程序网关Ssl证书]： 可选**。  创建的 PSApplicationGatewaySslCertificate 对象的逗号分隔列表，表示 v1 网关中必须上传到新 v2 网关的 SSL 证书。 对于为 Standard v1 或 WAF v1 网关配置的每个 SSL 证书，可按如下所示通过 `New-AzApplicationGatewaySslCertificate` 命令创建新的 PSApplicationGatewaySslCertificate 对象。 需要 SSL 证书文件的路径和密码。
+   * **ssl 证书： [PS应用程序网关Ssl证书]： 可选**。  您必须将创建以表示 v1 网关的 TLS/SSL 证书的 PSApplicationGatewaySsl 证书对象的逗号分隔列表上载到新的 v2 网关。 对于为标准 v1 或 WAF v1 网关配置的每个 TLS/SSL 证书，您可以通过此处显示的命令创建新的`New-AzApplicationGatewaySslCertificate`PSApplicationGatewaySsl证书对象。 您需要 TLS/SSL 证书文件和密码的路径。
 
      如果您没有为 v1 网关或 WAF 配置 HTTPS 侦听器，则此参数仅可选。 如果至少安装了一个 HTTPS 侦听器，则必须指定此参数。
 

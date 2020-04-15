@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9f33dc9528d5f7043dda2c6fad207a9a51347a2b
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 8e0b874e0ce56d7b4ed9fce15b2d88503d6c49b7
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631480"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309146"
 ---
 # <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>解决 Azure 自动化所需状态配置 （DSC） 的问题
 
@@ -114,6 +114,8 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 ### <a name="cause"></a>原因
 
 此问题是由证书损坏或过期引起的。  有关详细信息，请参阅[证书过期和重新注册](../automation-dsc-onboarding.md#re-registering-a-node)。
+
+此问题也可能由不允许访问 ***.azure-automation.net**的代理配置引起。 有关详细信息，请参阅[专用网络的配置](../automation-dsc-overview.md#network-planning)。 
 
 ### <a name="resolution"></a>解决方法
 

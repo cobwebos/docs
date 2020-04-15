@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6ce55b83f5547534e44d689adccdd952abc025d5
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 3145c7db064432e443aae5dcd503905b865ffe46
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010947"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383254"
 ---
 # <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>在 Azure 自动化状态配置中编译 DSC 配置
 
@@ -29,6 +29,9 @@ ms.locfileid: "81010947"
 
 还可以将 Azure 资源管理器模板与 Azure 所需状态配置 （DSC） 扩展一起推送到 Azure VM。 Azure DSC 扩展使用 Azure VM 代理框架来传送、启用和报告 Azure VM 上运行的 DSC 配置。 有关使用 Azure 资源管理器模板的编译详细信息，请参阅[使用 Azure 资源管理器模板的所需状态配置扩展](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template#details)。 
 
+>[!NOTE]
+>本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az 模块安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于自动化帐户，可以使用["如何更新 Azure 自动化 中的 Azure PowerShell"模块](automation-update-azure-modules.md)将模块更新到最新版本。
+
 ## <a name="compiling-a-dsc-configuration-in-azure-state-configuration"></a>在 Azure 状态配置中编译 DSC 配置
 
 ### <a name="portal"></a>门户
@@ -41,13 +44,13 @@ ms.locfileid: "81010947"
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-您可以使用[启动-Az自动化编译作业](/powershell/module/az.automation/start-azautomationdsccompilationjob)开始使用 Windows PowerShell 编译。 以下示例代码开始编译称为示例配置的 DSC 配置。
+您可以使用[启动-Az自动化编译作业](/powershell/module/az.automation/start-azautomationdsccompilationjob)开始使用 Windows PowerShell 编译。 以下示例代码开始编译称为**示例配置**的 DSC 配置。
 
 ```powershell
 Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
 ```
 
-**启动-AzAutomationDsc编译作业**返回可用于跟踪作业状态的编译作业对象。 然后，您可以使用此编译作业对象与[Get-AzAutomationDsc 编译作业](/powershell/module/az.automation/get-azautomationdsccompilationjob)来确定编译作业的状态，[然后获取-AzAutomationD编译作业输出](/powershell/module/az.automation/get-azautomationdscconfiguration)以查看其流（输出）。 以下示例开始编译 SampleConfig 配置，等待它完成，然后显示其流。
+`Start-AzAutomationDscCompilationJob`返回可用于跟踪作业状态的编译作业对象。 然后，您可以使用此编译作业对象与[Get-AzAutomationDsc 编译作业](/powershell/module/az.automation/get-azautomationdsccompilationjob)来确定编译作业的状态，[然后获取-AzAutomationD编译作业输出](/powershell/module/az.automation/get-azautomationdscconfiguration)以查看其流（输出）。 以下示例开始编译 SampleConfig 配置，等待它完成，然后显示其流。
 
 ```powershell
 $CompilationJob = Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
@@ -65,7 +68,7 @@ $CompilationJob | Get-AzAutomationDscCompilationJobOutput –Stream Any
 
 DSC 配置中的参数声明（包括参数类型和属性）的工作方式与 Azure 自动化 Runbook 中相同。 若要了解有关 Runbook 参数的详细信息，请参阅 [Starting a runbook in Azure Automation](automation-starting-a-runbook.md)（在 Azure 自动化中启动 Runbook）。
 
-以下示例使用名为 *FeatureName* 和 *IsPresent* 的两个参数来确定在编译期间生成的 ParametersExample.sample 节点配置中的属性值。
+下面的示例使用`FeatureName`和`IsPresent`参数来确定在编译期间生成的**参数示例**节点配置中的属性值。
 
 ```powershell
 Configuration ParametersExample
@@ -116,7 +119,7 @@ $Parameters = @{
 Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'ParametersExample' -Parameters $Parameters
 ```
 
-若要了解如何将 PSCredentials 作为参数传递，请参阅下面的[凭据资产](#credential-assets)。
+有关将对象作为`PSCredential`参数传递的信息，请参阅[凭据资产](#credential-assets)。
 
 ### <a name="compile-configurations-containing-composite-resources-in-azure-automation"></a>编译包含 Azure 自动化中复合资源的配置
 
@@ -132,7 +135,7 @@ Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -Automa
 > [!NOTE]
 > 在 Azure 自动化状态配置中编译时，可以在 Azure PowerShell 中使用配置数据，但不能在 Azure 门户中使用**配置数据**。
 
-以下示例 DSC 配置通过 $ConfigurationData 和 $AllNodes 关键字来使用 **ConfigurationData**。 对于此示例，您还需要[xWeb 管理模块](https://www.powershellgallery.com/packages/xWebAdministration/)。
+下面的示例 DSC 配置通过 和`$ConfigurationData``$AllNodes`关键字使用**配置数据**。 对于此示例，您还需要[xWeb 管理模块](https://www.powershellgallery.com/packages/xWebAdministration/)。
 
 ```powershell
 Configuration ConfigurationDataSample
@@ -153,7 +156,7 @@ Configuration ConfigurationDataSample
 }
 ```
 
-可以使用 Windows PowerShell 编译上述 DSC 配置。 以下脚本将两个节点配置添加到 Azure 自动化状态配置拉取服务：配置数据示例.MyVM1 和配置数据示例.MyVM3。
+可以使用 Windows PowerShell 编译上述 DSC 配置。 以下脚本将两个节点配置添加到 Azure 自动化状态配置拉取服务：**配置数据示例.MyVM1**和**配置数据示例.MyVM3**。
 
 ```powershell
 $ConfigData = @{
@@ -191,11 +194,11 @@ Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -Automa
 
 #### <a name="credential-assets"></a>凭据资产
 
-Azure 自动化中的 DSC 配置可以使用**获取自动化 PS凭据**cmdlet 引用自动化凭据资产。 如果配置具有指定**PS凭据**对象的参数，请使用**获取自动化PS凭据**，通过将 Azure 自动化凭据资产的字符串名称传递给 cmdlet 来检索凭据。 然后，将该对象用于需要**PSCredential**对象的参数。 在后台将检索具有该名称的 Azure 自动化凭据资产并将其传递给配置。 下面的示例显示了此方案在操作中。
+Azure 自动化中的 DSC 配置可以使用 `Get-AutomationPSCredential` cmdlet 引用自动化凭据资产。 如果配置具有指定`PSCredential`对象的参数，请使用`Get-AutomationPSCredential`将 Azure 自动化凭据资产的字符串名称传递给 cmdlet 来检索凭据。 然后，将该对象用于需要该`PSCredential`对象的参数。 在后台将检索具有该名称的 Azure 自动化凭据资产并将其传递给配置。 下面的示例显示了此方案在操作中。
 
 要在节点配置（MOF 配置文档）中保持凭据的安全，需要在节点配置 MOF 文件中为凭据加密。 目前，您必须授予 PowerShell DSC 在节点配置 MOF 生成期间以纯文本输出凭据的权限。 PowerShell DSC 不知道 Azure 自动化在生成整个 MOF 文件后通过编译作业对其进行加密。
 
-可告知 PowerShell DSC，使用配置数据在生成的节点配置 MOF 中以纯文本形式输出凭据是可行的。 您应该`PSDscAllowPlainTextPassword = $true`通过**配置数据来**传递 DSC 配置中显示的每个节点块名称并使用凭据。
+您可以告诉 PowerShell DSC，可以使用配置数据在生成的节点配置 MOF 中以纯文本输出凭据。 您应该`PSDscAllowPlainTextPassword = $true`通过**配置数据来**传递 DSC 配置中显示的每个节点块名称并使用凭据。
 
 以下示例演示使用自动化凭据资产的 DSC 配置。
 
@@ -217,7 +220,7 @@ Configuration CredentialSample
 }
 ```
 
-可以使用 PowerShell 编译上述 DSC 配置。 以下 PowerShell 代码将两个节点配置添加到 Azure 自动化状态配置拉取服务器：凭据示例.MyVM1 和凭据示例.MyVM2。
+可以使用 PowerShell 编译上述 DSC 配置。 以下 PowerShell 代码将两个节点配置添加到 Azure 自动化状态配置拉取服务器：**凭据示例.MyVM1**和**凭据示例.MyVM2**。
 
 ```powershell
 $ConfigData = @{
@@ -239,16 +242,16 @@ Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -Automa
 ```
 
 > [!NOTE]
-> 编译完成后，您可能会收到错误消息"'Microsoft.PowerShell.Management'"模块未导入，因为"Microsoft.PowerShell.管理"的卡入式已导入。 可以放心忽略此消息。
+> 编译完成后，您可能会收到错误消息`The 'Microsoft.PowerShell.Management' module was not imported because the 'Microsoft.PowerShell.Management' snap-in was already imported.`您可以安全地忽略此消息。
 
 ## <a name="compiling-your-dsc-configuration-in-windows-powershell"></a>在 Windows PowerShell 中编译 DSC 配置
 
-还可以导入已在 Azure 外部编译的节点配置 (MOF)。 导入包括来自开发人员工作站或服务（如[Azure DevOps）](https://dev.azure.com)的编译。 这种方法具有多种优点，包括性能和可靠性。
+您还可以导入在 Azure 外部编译的节点配置（MOF 文件）。 导入包括来自开发人员工作站或服务（如[Azure DevOps）](https://dev.azure.com)的编译。 这种方法具有多种优点，包括性能和可靠性。
 
 在 Windows PowerShell 中编译还提供了签署配置内容的选项。 DSC 代理在托管节点上本地验证已签名的节点配置。 验证可确保应用于节点的配置来自授权源。
 
 > [!NOTE]
-> 节点配置文件不得大于 1 MB，以便将其导入 Azure 自动化。
+> 节点配置文件必须大于 1 MB，以便 Azure 自动化导入它。
 
 有关节点配置签名的详细信息，请参阅[WMF 5.1 中的改进 - 如何对配置和模块进行签名](/powershell/scripting/wmf/whats-new/dsc-improvements#dsc-module-and-configuration-signing-validations)。
 
@@ -260,7 +263,7 @@ Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -Automa
 ### <a name="import-a-node-configuration-in-the-azure-portal"></a>在 Azure 门户中导入节点配置
 
 1. 在“自动化帐户”中的“配置管理”下，单击“State Configuration (DSC)”。********
-1. 在"状态配置 （DSC）"页上，单击"**配置"** 选项卡，然后单击 **"添加**"。
+1. 在"状态配置 （DSC）"页上，单击"**配置"** 选项卡，然后单击"**添加**"。
 1. 在"导入"页上，单击 **"节点配置文件"** 文本框旁边的文件夹图标，以浏览本地计算机上的节点配置文件 （MOF）。
 
    ![浏览本地文件](./media/automation-dsc-compile/import-browse.png)
@@ -280,6 +283,7 @@ Import-AzAutomationDscNodeConfiguration -AutomationAccountName 'MyAutomationAcco
 
 - 要开始，请参阅[开始使用 Azure 自动化状态配置](automation-dsc-getting-started.md)。
 - 要了解如何编译 DSC 配置以便将它们分配给目标节点，请参阅[在 Azure 自动化状态配置中编译配置](automation-dsc-compile.md)。
-- 有关 PowerShell cmdlet 引用，请参阅[Azure 自动化状态配置 cmdlet](/powershell/module/az.automation)。
+- 有关 PowerShell cmdlet 引用，请参阅[Az.自动化](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)。
 - 有关定价信息，请参阅[Azure 自动化状态配置定价](https://azure.microsoft.com/pricing/details/automation/)。
 - 要查看在连续部署管道中使用 Azure 自动化状态配置的示例，请参阅[使用 Azure 自动化状态配置和巧克力 连续部署到虚拟机](automation-dsc-cd-chocolatey.md)。

@@ -1,5 +1,5 @@
 ---
-title: 了解 C 的代理本地配置的 Azure 安全中心 |微软文档
+title: 安全代理本地配置 （C）
 description: 了解用于 C 的代理本地配置的 Azure 安全中心。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,26 +15,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 2725a824da26dafcbc215e4c302ec38ad4b5a699
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd344b9bebb69af210c482f46af6b2dd7edf7816
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68600535"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311709"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>了解 LocalConfiguration.json 文件 - C 代理
 
 IoT 安全代理的 Azure 安全中心使用本地配置文件中的配置。
 安全代理在代理启动时读取配置一次。
 本地配置文件中的配置包含身份验证配置和其他代理相关配置。
-该文件包含 JSON 表示法中的"键值"对中的配置，并在安装代理时填充配置。 
+该文件包含 JSON 表示法中的"键值"对中的配置，并在安装代理时填充配置。
 
 默认情况下，该文件位于：/var/ASCIoTAgent/本地配置.json
 
-重新启动代理时，将更改配置文件。 
+重新启动代理时，将更改配置文件。
 
 ## <a name="security-agent-configurations-for-c"></a>C 的安全代理配置
-| 配置名称 | 可能值 | 详细信息 | 
+
+| 配置名称 | 可能值 | 详细信息 |
 |:-----------|:---------------|:--------|
 | AgentId | GUID | 代理唯一标识符 |
 | 触发事件间隔 | ISO8601 字符串 | 触发事件集合的计划程序间隔 |
@@ -48,11 +49,12 @@ IoT 安全代理的 Azure 安全中心使用本地配置文件中的配置。
 | DPS | JsonObject | DPS 相关配置 |
 | IDScope | 字符串 | DPS 的 ID 范围 |
 | RegistrationId | 字符串  | DPS 设备注册 ID |
-| Logging | JsonObject | 代理记录器相关配置 |
+| 日志记录 | JsonObject | 代理记录器相关配置 |
 | 系统记录最小严重性 | 0 <= 数字 <= 4 | 等于且高于此严重性的日志消息将记录到 /var/log/syslog（0 是最低严重性） |
 | 诊断事件最小严重性 | 0 <= 数字 <= 4 | 等于且高于此严重性的日志消息将作为诊断事件发送（0 是最低严重性） |
 
 ## <a name="security-agent-configurations-code-example"></a>安全代理配置代码示例
+
 ```JSON
 {
     "Configuration" : {
@@ -79,6 +81,7 @@ IoT 安全代理的 Azure 安全中心使用本地配置文件中的配置。
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
 - 阅读 Azure 安全中心，了解 IoT 服务[概述](overview.md)
 - 了解有关 IoT[体系结构](architecture.md)的 Azure 安全中心
 - 启用适用于 IoT[服务的](quickstart-onboard-iot-hub.md)Azure 安全中心

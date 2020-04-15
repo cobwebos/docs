@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 04/14/2020
 ms.author: sstein
-ms.openlocfilehash: b677fd7fe2b14e1c42443478a887ddfa2481dfbf
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 7d922aa0727ad28054d050a29039951d3f04985f
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011440"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383376"
 ---
 # <a name="sql-database-release-notes"></a>SQL 数据库发行说明
 
@@ -49,6 +49,7 @@ ms.locfileid: "81011440"
 | <a href="https://aka.ms/managed-instance-aadlogins">实例级 Azure AD 服务器主体（登录名）</a> | 使用 <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a> 语句创建服务器级登录名。 |
 | [事务复制](sql-database-managed-instance-transactional-replication.md) | 将表中的更改复制到托管实例、单一数据库或 SQL Server 实例上放置的其他数据库中，或者在其他托管实例或 SQL Server 实例中的某些行发生更改时更新表。 有关信息，请参阅[在 Azure SQL 数据库托管实例数据库中配置复制](replication-with-sql-database-managed-instance.md)。 |
 | 威胁检测 |有关信息，请参阅[在 Azure SQL 数据库托管实例中配置威胁检测](sql-database-managed-instance-threat-detection.md)。|
+| 长期备份保留 | 有关详细信息，请参阅[在 Azure SQL 数据库托管实例中配置长期备份保留](sql-database-managed-instance-long-term-backup-retention-configure.md)。 | 
 
 ---
 
@@ -167,7 +168,7 @@ SQL Server/托管实例[不允许用户删除不为空的文件](/sql/relational
 ### <a name="impersonification-of-azure-ad-login-types-is-not-supported"></a>不支持模拟 Azure AD 登录类型
 
 不支持使用以下 AAD 主体的 `EXECUTE AS USER` 或 `EXECUTE AS LOGIN` 进行模拟：
--   带别名的 AAD 的用户。 在这种情况下，将返回以下错误：`15517`。
+-    带别名的 AAD 的用户。 在这种情况下，将返回以下错误：`15517`。
 - 基于 AAD 应用程序或服务主体的 AAD 登录名和用户。 在这种情况下，将返回以下错误：`15517` 和 `15406`。
 
 ### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>sp_send_db_mail 中不支持 @query 参数
@@ -198,7 +199,7 @@ SQL Server Data Tools 不完全支持 Azure Active Directory 登录名和用户�
 
 每个“常规用途”托管实例都为 Azure 高级磁盘空间保留了最多 35 TB 存储空间。 每个数据库文件放置在单独的物理磁盘上。 磁盘大小可以为 128 GB、256 GB、512 GB、1 TB 或 4 TB。 磁盘上未使用的空间不收费，但 Azure 高级磁盘大小总计不能超过 35 TB。 在某些情况下，由于内部碎片，总共不需要 8 TB 的托管实例可能会超过 35 TB 的 Azure 存储大小限制。
 
-例如，“常规用途”托管实例可将一个大小为 1.2 TB 的大文件放在 4 TB 的磁盘上。 它还可以将 248 个文件（每个大小为 1 GB）放在单独的 128 GB 磁盘上。 在此示例中：
+例如，“常规用途”托管实例可将一个大小为 1.2 TB 的大文件放在 4 TB 的磁盘上。 它还可以将 248 个文件（每个大小为 1 GB）放在单独的 128 GB 磁盘上。 在本示例中：
 
 - 分配的磁盘存储总大小为 1 x 4 TB + 248 x 128 GB = 35 TB。
 - 实例上的数据库的总预留空间为 1 x 1.2 TB + 248 x 1 GB = 1.4 TB。

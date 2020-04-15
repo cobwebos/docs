@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 4/3/2020
-ms.openlocfilehash: 07f29a01ae0128ba0a35504dea54ba1ae2dde944
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 6a1d2f6079280002c868702a6547c8fd359a7c21
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657065"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310126"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL 数据库无服务器
 
@@ -138,6 +138,8 @@ Azure SQL 数据库无服务器计算层是适用于单一数据库的计算层�
 |SQL 数据同步|按照可配置的时间表或手动执行中心和成员数据库之间的同步|
 |修改特定的数据库元数据|添加新的数据库标记。<br>更改最大 vCore 数、最小 vCore 数或自动暂停延迟。|
 |SQL Server Management Studio (SSMS)|使用早于 18.1 的 SSMS 版本并为服务器中的任何数据库打开新的查询窗口，将恢复同一服务器中任何自动暂停的数据库。 如果使用 SSMS 版本 18.1 或更高版本，则不会发生此行为。|
+
+执行上述任何操作的监视、管理或其他解决方案将触发自动恢复。
 
 在部署某些需要数据库联机的服务更新期间，也会触发自动恢复。
 
@@ -279,7 +281,7 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 下表列出了用于监视无服务器数据库应用包和用户池的资源使用情况的指标：
 
-|实体|指标|说明|单位|
+|实体|指标|描述|单位|
 |---|---|---|---|
 |应用包|app_cpu_percent|应用使用的 vCore 数相对于应用允许的最大 vCore 数的百分比。|百分比|
 |应用包|app_cpu_billed|报告期内收取的应用计算费用。 在此期间支付的金额是此指标和 vCore 单位价格的乘积。 <br><br>此指标的值是通过将每秒使用的最大 CPU 和内存使用量按时间进行汇总来得到的。 如果使用的量小于按照最小 vCore 数和最小内存量预配的最小量，则按照预配的最小量进行计费。为了比较 CPU 与内存以进行计费，可通过将内存量 (GB) 按照每个 vCore 3 GB 进行重新缩放，将内存归一化为以 vCore 数为单位。|vCore 秒|

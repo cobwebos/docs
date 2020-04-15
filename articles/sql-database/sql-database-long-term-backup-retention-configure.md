@@ -1,6 +1,6 @@
 ---
-title: 管理长期备份保留
-description: 了解如何在 SQL Azure 存储中存储自动备份，以及如何还原它们
+title: 单个数据库：管理长期备份保留
+description: 了解如何使用 Azure 门户和 PowerShell 在 Azure 存储中存储 Azure SQL 数据库单数据库单数据库或池数据库的自动备份（长达 10 年）
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 08/21/2019
-ms.openlocfilehash: a560f4f1399792a7b150b37c3c048ccc0079b98d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 2564fd0ffd980dae4ca1835f4211fee0a0cf040c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74420791"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380923"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>管理 Azure SQL 数据库长期备份保留
 

@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: 1b807908c9fb54ecf15de6d44a04760659196a31
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb1af86e04c0b4ba0b59398161fa111fd8065042
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75980974"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310049"
 ---
 # <a name="diagnostic-logs-for-azure-web-application-firewall"></a>Azure Web 应用程序防火墙的诊断日志
 
@@ -101,7 +101,7 @@ ms.locfileid: "75980974"
 |receivedBytes     | 接收的数据包大小（以字节为单位）。        |
 |sentBytes| 发送的数据包大小（以字节为单位）。|
 |timeTaken| 处理请求并发送其响应所需的时长（以毫秒为单位）。 这是计算从应用程序网关接收到 HTTP 请求的第一个字节到响应发送操作完成这两个时间点之间的时间间隔。 请务必注意，所用时间字段通常包含请求和响应数据包通过网络传输的时间。 |
-|sslEnabled| 与后端池的通信是否使用 SSL。 有效值为打开和关闭。|
+|sslEnabled| 与后端池的通信是否使用 TLS/SSL。 有效值为打开和关闭。|
 |host| 向后端服务器发送请求时所用的主机名。 如果正在重写后端主机名，则此名称将反映该主机名。|
 |originalHost| 应用程序网关从客户端接收请求时所用的主机名。|
 ```json
@@ -144,9 +144,9 @@ ms.locfileid: "75980974"
 |receivedBytes     | 接收的数据包大小（以字节为单位）。        |
 |sentBytes| 发送的数据包大小（以字节为单位）。|
 |timeTaken| 处理请求并发送其响应所需的时长（以毫秒为单位）。 这是计算从应用程序网关接收到 HTTP 请求的第一个字节到响应发送操作完成这两个时间点之间的时间间隔。 请务必注意，所用时间字段通常包含请求和响应数据包通过网络传输的时间。 |
-|sslEnabled| 与后端池的通信是否使用 SSL。 有效值为打开和关闭。|
-|sslCipher| 用于 SSL 通信的密码套件（如果已启用 SSL）。|
-|sslProtocol| 使用的 SSL 协议（如果已启用 SSL）。|
+|sslEnabled| 与后端池的通信是否使用 TLS。 有效值为打开和关闭。|
+|sslCipher| 用于 TLS 通信的密码套件（如果启用了 TLS）。|
+|sslProtocol| 正在使用的 TLS 协议（如果启用了 TLS）。|
 |serverRouted| 应用程序网关将请求路由到的后端服务器。|
 |serverStatus| 后端服务器的 HTTP 状态代码。|
 |serverResponseLatency| 后端服务器的响应延迟。|

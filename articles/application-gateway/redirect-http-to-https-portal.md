@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 51c191a7815bb64243e2324e150c00c2dcb7ec4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd33d23a506bd86b9651af3d4c3bbca01673a7a4
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76705320"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312095"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>使用 Azure 门户创建支持 HTTP 到 HTTPS 重定向的应用程序网关
 
-可以通过 Azure 门户使用 SSL 终端的证书创建[应用程序网关](overview.md)。 路由规则用于将 HTTP 流量重定向到应用程序网关中的 HTTPS 端口。 在此示例中，还会为包含两个虚拟机实例的应用程序网关的后端池创建一个[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。
+可以使用 Azure 门户创建具有 TLS 终止证书[的应用程序网关](overview.md)。 路由规则用于将 HTTP 流量重定向到应用程序网关中的 HTTPS 端口。 在此示例中，还会为包含两个虚拟机实例的应用程序网关的后端池创建一个[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。
 
 在本文中，学习如何：
 
@@ -67,7 +67,7 @@ Export-PfxCertificate `
 
 若要在创建的资源之间实现通信，需要设置虚拟网络。 在本示例中创建了两个子网：一个用于应用程序网关，另一个用于后端服务器。 可以在创建应用程序网关的同时创建虚拟网络。
 
-1. 登录到 中的[https://portal.azure.com](https://portal.azure.com)Azure 门户。
+1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 2. 单击 Azure 门户左上角的“创建资源”****。
 3. 选择“网络”****，然后在“特色”列表中选择“应用程序网关”****。
 4. 输入应用程序网关的以下值：
@@ -126,7 +126,7 @@ Export-PfxCertificate `
 6. 对于“重定向目标”****，选择“侦听器”****。
 7. 确保“目标侦听器”**** 设置为“appGatewayHttpListener”****。
 8. 对于“包含查询字符串”**** 和“包含路径”****，请选择“是”**。
-9. 选择“添加”****。
+9. 选择 **添加** 。
 
 ## <a name="create-a-virtual-machine-scale-set"></a>创建虚拟机规模集
 
@@ -146,7 +146,7 @@ Export-PfxCertificate `
 12. 在“联网”**** 下，确保“选择负载均衡选项”**** 设置为“应用程序网关”****。
 13. 确保“应用程序网关”**** 设置为 myAppGateway****。
 14. 确保“子网”**** 设置为 myBackendSubnet****。
-15. 选择 **“创建”**。
+15. 选择“创建”  。
 
 ### <a name="associate-the-scale-set-with-the-proper-backend-pool"></a>将规模集与正确的后端池关联
 
@@ -157,13 +157,13 @@ Export-PfxCertificate `
 3. 选择“后端池”****。
 4. 选择“myAppGatewaymyvmss”****。
 5. 选择“从后端池中删除所有目标”****。
-6. 选择“保存”。****
+6. 选择“保存”。 
 7. 此过程完成之后，选择“myAppGatewaymyvmss”**** 后端池，选择“删除”****，然后选择“确定”**** 以确认。
 8. 选择**应用程序网关后端池**。
 9. 在“目标”**** 下，选择“VMSS”****。
 10. 在“VMSS”**** 下，选择“myvmss”****。
 11. 在“网络接口配置”**** 下，选择“myvmssNic”****。
-12. 选择“保存”。****
+12. 选择“保存”。 
 
 ### <a name="upgrade-the-scale-set"></a>升级规模集
 

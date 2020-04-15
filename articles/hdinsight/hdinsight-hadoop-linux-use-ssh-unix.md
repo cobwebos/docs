@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: 31e85876d60ae6fcd8f3b29633506d698a323acb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a53037b5f6c43de0e08bb1c5143f27d14600ca62
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272430"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381423"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>使用 SSH 连接到 HDInsight (Apache Hadoop)
 
@@ -49,7 +49,7 @@ Linux、Unix 和 macOS 系统提供 `ssh` 和 `scp` 命令。 `ssh` 客户端通
 
 * [Azure 云外壳](../cloud-shell/quickstart.md)。 云外壳在浏览器中提供了一个 Bash 环境。
 
-* [Git](https://git-scm.com/).
+* [Git](https://git-scm.com/)。
 
 还有多个图形 SSH 客户端，例如 [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/) 和 [MobaXterm](https://mobaxterm.mobatek.net/)。 尽管可以使用这些客户端连接到 HDInsight，但连接的过程与使用 `ssh` 实用工具时不同。 有关详细信息，请参阅您正在使用的图形客户端的文档。
 
@@ -108,7 +108,7 @@ SSH 密钥使用[公钥加密](https://en.wikipedia.org/wiki/Public-key_cryptogr
 | --------------- | ---------------- |
 | Azure 门户 | 默认情况下，SSH 用户帐户的密码与群集登录帐户的密码相同。 若要使用不同的密码，请取消选中“对 SSH 使用群集登录密码”____，然后在“SSH 密码”____ 字段中输入密码。</br>![创建 HDInsight 群集时的 SSH 密码对话框](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-password.png)|
 | Azure PowerShell | 使用 [New-AzHdinsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) cmdlet 的 `--SshCredential` 参数，并传递包含 SSH 用户帐户名和密码的 `PSCredential` 对象。 |
-| Azure CLI | 使用 [az hdinsight create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) 命令的 `--sshPassword` 参数，并提供密码值。 |
+| Azure CLI | 使用 [az hdinsight create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) 命令的 `--ssh-password` 参数，并提供密码值。 |
 | Resource Manager 模板 | 有关在模板中使用密码的示例，请参阅 [Deploy HDInsight on Linux with SSH password](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/)（使用 SSH 密码在 Linux 上部署 HDInsight）。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-password/azuredeploy.json) 文件中的 `linuxOperatingSystemProfile` 元素用于在创建群集时向 Azure 传递 SSH 帐户名和密码。|
 
 ### <a name="change-the-ssh-password"></a>更改 SSH 密码
@@ -178,7 +178,7 @@ sudo service sshd restart
     ssh sshuser@wn0-myhdi
     ```
 
-    若要检索节点名称列表，请参阅[使用 Apache Ambari REST API 管理 HDInsight](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes) 文档。
+    若要检索节点名称列表，请参阅[使用 Apache Ambari REST API 管理 HDInsight](hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes) 文档。
 
 如果 SSH 帐户使用某个__密码__进行了保护，请在连接时输入该密码。
 

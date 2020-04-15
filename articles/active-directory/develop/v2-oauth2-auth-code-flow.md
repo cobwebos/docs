@@ -9,15 +9,15 @@ ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.author: ryanwi
+ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0f39ef8b334d142665944566f982f0bf7c4eb67b
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 5241089ff3cc7826216fcadd6fd94116ee4a2c89
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886307"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309436"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft 标识平台和 OAuth 2.0 授权代码流
 
@@ -56,7 +56,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > 单击下面的链接以执行此请求！ 登录之后，浏览器应重定向至地址栏中具有 `code` 的 `https://localhost/myapp/`。
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
-| 参数    | 必需/可选 | 说明 |
+| 参数    | 必需/可选 | 描述 |
 |--------------|-------------|--------------|
 | `tenant`    | 必填    | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 允许的值为 `common`、`organizations`、`consumers` 和租户标识符。 有关更多详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。  |
 | `client_id`   | 必填    | [Azure 门户和应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验**的应用程序（客户端）ID**分配给应用。  |
@@ -109,7 +109,7 @@ error=access_denied
 
 下表描述了可在错误响应的 `error` 参数中返回的各个错误代码。
 
-| 错误代码  | 说明    | 客户端操作   |
+| 错误代码  | 描述    | 客户端操作   |
 |-------------|----------------|-----------------|
 | `invalid_request` | 协议错误，例如，缺少必需的参数。 | 修复并重新提交请求。 这通常是在初始测试期间捕获的开发错误。 |
 | `unauthorized_client` | 不允许客户端应用程序请求授权代码。 | 客户端应用程序未注册到 Azure AD 中或者未添加到用户的 Azure AD 租户时，通常会出现此错误。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。 |
@@ -143,7 +143,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > [!TIP]
 > 尝试在 Postman 中执行此请求！ （不要忘记更换`code`）[尝试在邮递员中运行此请求![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
-| 参数  | 必需/可选 | 说明     |
+| 参数  | 必需/可选 | 描述     |
 |------------|-------------------|----------------|
 | `tenant`   | 必填   | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 允许的值为 `common`、`organizations`、`consumers` 和租户标识符。 有关更多详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。  |
 | `client_id` | 必填  | Azure 门户的应用程序（客户端）ID = 分配给应用[的应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。 |
@@ -206,7 +206,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 ### <a name="error-codes-for-token-endpoint-errors"></a>令牌终结点错误的错误代码
 
-| 错误代码         | 说明        | 客户端操作    |
+| 错误代码         | 描述        | 客户端操作    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | 协议错误，例如，缺少必需的参数。 | 修复并重新提交请求。   |
 | `invalid_grant`    | 授权代码或 PKCE 代码验证程序无效或已过期。 | 尝试向 `/authorize` 终结点发送新请求，并验证 code_verifier 参数是否正确。  |

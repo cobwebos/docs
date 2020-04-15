@@ -1,5 +1,5 @@
 ---
-title: Azure AD 直通身份验证 - 快速入门 | Microsoft 文档
+title: Azure AD 直通身份验证 - 快速入门 |微软文档
 description: 本文介绍如何开始使用 Azure Active Directory (Azure AD) 直通身份验证。
 services: active-directory
 keywords: Azure AD Connect 传递身份验证, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录
@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/15/2019
+ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fc45033cdf1bdaa6d4ecd6ab58cc7f90ff9c1ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b84e972584562be741919c7dccb6bdfe1bdea628
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80331420"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312853"
 ---
-# <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory 直通身份验证：快速入门
+# <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure 活动目录传递身份验证：快速入门
 
 ## <a name="deploy-azure-ad-pass-through-authentication"></a>部署 Azure AD 直通身份验证
 
@@ -61,14 +61,19 @@ ms.locfileid: "80331420"
 
      | 端口号 | 用途 |
      | --- | --- |
-     | **80** | 在验证 TLS/SSL 证书时下载证书吊销列表 （CRL） |
+     | **80** | 下载证书吊销列表 (CRL) 的同时验证 TLS/SSL 证书 |
      | **443** | 处理与服务的所有出站通信 |
      | **8080**（可选） | 如果端口 443 不可用，身份验证代理每隔十分钟通过端口 8080 报告其状态。 此状态显示在 Azure AD 门户上。 用户登录不会使用端口 8080__。 |
      
      如果防火墙根据原始用户强制实施规则，请打开这些端口以允许来自作为网络服务运行的 Windows 服务的流量。
-   - 如果您的防火墙或代理允许 DNS 白名单，则将连接到**\*.msappproxy.net**和**\*.servicebus.windows.net。** 否则，请允许访问每周更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
+   - 如果您的防火墙或代理允许 DNS 白名单，请向**\*.msappproxy.net**和**\*.servicebus.windows.net**添加连接。 否则，请允许访问每周更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
    - 身份验证代理首次注册需要访问 login.windows.net **** 和 login.microsoftonline.net****。 另外，还请为这些 URL 打开防火墙。
    - 为了进行验证证书，请取消阻止以下 URL：**mscrl.microsoft.com:80**、**crl.microsoft.com:80**、**ocsp.msocsp.com:80** 和 **www\.microsoft.com:80**。 由于这些 URL 与其他 Microsoft 产品一起用于证书验证，因此可能已取消阻止这些 URL。
+
+### <a name="azure-government-cloud-prerequisite"></a>Azure 政府云先决条件
+在通过 Azure AD 连接步骤 2 启用直通身份验证之前，请从 Azure 门户下载最新版本的 PTA 代理。  您需要确保代理是**x.x.xxx.x**或更高版本的代理。  要验证代理，请参阅[升级身份验证代理](how-to-connect-pta-upgrade-preview-authentication-agents.md)
+
+下载代理的最新版本后，继续执行以下说明，通过 Azure AD 连接配置直通身份验证。
 
 ## <a name="step-2-enable-the-feature"></a>步骤 2：启用功能
 
@@ -114,8 +119,8 @@ ms.locfileid: "80331420"
 安装多个直通身份验证代理可确保身份验证代理之间的高可用性，但不是确定性负载平衡。 要确定租户需要多少身份验证代理，请考虑您希望在租户上看到的登录请求的峰值和平均负载。 作为基准，单一身份验证代理可在标准的 4 核 CPU、16 GB RAM 服务器上每秒处理 300 到 400 个身份验证。
 
 若要估算网络流量，请使用以下大小调整指南：
-- 每个请求的有效负载大小为 (0.5K + 1K * num_of_agents) 个字节，即 Azure AD 至身份验证代理间的数据。 此处，“num_of_agents”表示在租户上注册的身份验证代理的数量。
-- 每个响应的有效负载大小为 1K 字节，即身份验证代理至 Azure AD 间的数据。
+- 每个请求的有效负载大小为 （0.5K = 1K = num_of_agents） 字节，即从 Azure AD 到身份验证代理的数据。 此处，“num_of_agents”表示在租户上注册的身份验证代理的数量。
+- 每个响应的有效负载大小为 1K 字节，即从身份验证代理到 Azure AD 的数据。
 
 对于大多数客户，三个身份验证代理总共足以实现高可用性和容量。 应在域控制器附近安装身份验证代理以改善登录延迟。
 

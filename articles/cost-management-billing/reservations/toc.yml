@@ -5,7 +5,7 @@
   items:
     - name: 什么是 Azure 预留项？
       href: save-compute-costs-reservations.md
-- name: 操作方法指南
+- name: 操作指南
   expanded: true
   items:
     - name: 确定要购买的内容
@@ -25,7 +25,7 @@
         - name: Databricks
           href: prepay-databricks-reserved-capacity.md
         - name: 数据资源管理器
-          href: ../../data-explorer/pricing-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+          href: /azure/data-explorer/pricing-reserved-capacity?toc=/azure/cost-management-billing/reservations/toc.json
         - name: 磁盘存储
           href: ../../virtual-machines/linux/disks-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: 专用主机

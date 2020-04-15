@@ -1,5 +1,5 @@
 ---
-title: 安装和部署 IoT Azure 安全中心的 Linux C++ 代理指南*微软文档
+title: 安装&部署 Linux C# 代理
 description: 了解如何在 32 位和 64 位 Linux 上安装 IoT 代理的 Azure 安全中心。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,34 +15,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2019
 ms.author: mlottner
-ms.openlocfilehash: b675198756ff7bc0791d49fee3649717e3e4da7f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40c6ea91fd84a0f088ed770cd7c4c3ea7b8b1c91
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75367410"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311148"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>为 Linux 部署适用于 IoT 的 Azure 安全中心基于 C# 的安全代理
 
-
 本指南介绍了如何在 Linux 上安装和部署基于 IoT C# 的安全代理的 Azure 安全中心。
 
-本指南介绍如何： 
+本指南介绍如何：
+
 > [!div class="checklist"]
 > * 安装
 > * 验证部署
 > * 卸载代理
-> * 疑难解答 
+> * 疑难解答
 
 ## <a name="prerequisites"></a>先决条件
 
 有关其他平台和代理风格，请参阅[选择正确的安全代理](how-to-deploy-agent.md)。
 
-1. 若要部署安全代理，需要在安装计算机上拥有本地管理员权限。 
+1. 若要部署安全代理，需要在安装计算机上拥有本地管理员权限。
 
 1. 为设备[创建安全模块](quickstart-create-security-twin.md)。
 
-## <a name="installation"></a>安装 
+## <a name="installation"></a>安装
 
 要部署安全代理，请使用以下步骤：
 
@@ -50,14 +50,14 @@ ms.locfileid: "75367410"
 
 1. 提取包的内容并导航到 _/安装_文件夹。
 
-1. 运行 `chmod +x InstallSecurityAgent.sh`，将运行权限添加到 **InstallSecurityAgent 脚本** 
+1. 运行 `chmod +x InstallSecurityAgent.sh`，将运行权限添加到 **InstallSecurityAgent 脚本**
 
-1. 接下来，使用**根权限**运行以下命令 ： 
+1. 接下来，使用**根权限**运行以下命令 ：
 
    ```
    ./InstallSecurityAgent.sh -i -aui <authentication identity>  -aum <authentication method> -f <file path> -hn <host name>  -di <device id> -cl <certificate location kind>
    ```
-   
+
    有关身份验证参数的详细信息，请参阅[如何配置身份验证](concept-security-agent-authentication-methods.md)。
 
 此脚本可执行以下操作：
@@ -72,23 +72,22 @@ ms.locfileid: "75367410"
 
 - 使用提供的身份验证参数配置代理。
 
-
 如需更多帮助，请结合 -help 参数运行该脚本：`./InstallSecurityAgent.sh --help`
 
 ### <a name="uninstall-the-agent"></a>卸载代理
 
-若要卸载代理，请结合 -u 参数运行该脚本：`./InstallSecurityAgent.sh -u`。 
+若要卸载代理，请结合 -u 参数运行该脚本：`./InstallSecurityAgent.sh -u`。
 
 > [!NOTE]
 > 卸载时，不会删除在安装过程中安装的任何缺失的必备组件。
 
-## <a name="troubleshooting"></a>疑难解答  
+## <a name="troubleshooting"></a>疑难解答
 
 1. 运行以下命令来检查部署状态：
 
     `systemctl status ASCIoTAgent.service`
 
-2. 启用日志记录。  
+1. 启用日志记录。
    如果代理无法启动，请启用日志记录以获取更多信息。
 
    通过以下方式启用日志记录：
@@ -97,15 +96,16 @@ ms.locfileid: "75367410"
 
         `vi /var/ASCIoTAgent/General.config`
 
-   1. 编辑以下值： 
+   1. 编辑以下值：
 
       ```
       <add key="logLevel" value="Debug"/>
       <add key="fileLogLevel" value="Debug"/>
-      <add key="diagnosticVerbosityLevel" value="Some" /> 
+      <add key="diagnosticVerbosityLevel" value="Some" />
       <add key="logFilePath" value="IotAgentLog.log"/>
       ```
-       **logFilePath** 值是可以配置的。 
+
+       **logFilePath** 值是可以配置的。
 
        > [!NOTE]
        > 建议在故障排除操作完成后关闭日志记录功能。**** 让日志记录保持启用状态会增加日志文件大小和数据使用量。****
@@ -114,11 +114,11 @@ ms.locfileid: "75367410"
 
        `systemctl restart ASCIoTAgent.service`
 
-   1. 查看日志文件，了解有关故障的详细信息。  
+   1. 查看日志文件，了解有关故障的详细信息。
 
        日志文件位置为：`/var/ASCIoTAgent/IotAgentLog.log`
 
-       根据你在步骤 2 中为 **logFilePath** 选择的名称，更改文件位置路径。 
+       根据你在步骤 2 中为 **logFilePath** 选择的名称，更改文件位置路径。
 
 ## <a name="next-steps"></a>后续步骤
 

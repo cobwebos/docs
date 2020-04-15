@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: victorh
-ms.openlocfilehash: 4cd2969f9a56c96af2b2c6db216f6829a080260c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7feb0f00c5431048d19d4ad6cb3860f6eb8ed052
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371278"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312707"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自动缩放和区域冗余应用程序网关 v2 
 
@@ -26,16 +26,16 @@ ms.locfileid: "80371278"
   仅当 Azure 区域可用时，区域冗余才可用。 在其他区域中，支持所有其他功能。 有关详细信息，请参阅[Azure 中有哪些可用性区域？](../availability-zones/az-overview.md#services-support-by-region)
 - **静态 VIP**： 应用程序网关 v2 SKU 专门支持静态 VIP 类型。 这可以确保与应用程序网关关联的 VIP 在部署的整个生命周期内不会更改，即使发生重启。  v1 中没有静态 VIP，因此必须使用应用程序网关 URL（而不是 IP 地址）通过应用程序网关将域名路由到应用服务。
 - **标头重写**：应用程序网关允许您使用 v2 SKU 添加、删除或更新 HTTP 请求和响应标头。 有关详细信息，请参阅[重写应用程序网关的 HTTP 标头](rewrite-http-headers.md)。
-- **密钥保管库集成**：应用程序网关 v2 支持与连接到启用 HTTPS 的侦听器的服务器证书的密钥保管库集成。 有关详细信息，请参阅[使用密钥保管库证书实现 SSL 终止](key-vault-certs.md)。
+- **密钥保管库集成**：应用程序网关 v2 支持与连接到启用 HTTPS 的侦听器的服务器证书的密钥保管库集成。 有关详细信息，请参阅[使用密钥保管库证书的 TLS 终止](key-vault-certs.md)。
 - **Azure 库伯内斯服务入口控制器**：应用程序网关 v2 入口控制器允许将 Azure 应用程序网关用作称为 AKS 群集的 Azure 库伯奈服务 （AKS） 的入口。 有关详细信息，请参阅[什么是应用程序网关入口控制器？](ingress-controller-overview.md)
-- **性能增强**： 与标准/WAF SKU 相比，v2 SKU 可提供多达 5 倍的 SSL 卸载性能。
+- **性能增强**： 与标准/WAF SKU 相比，v2 SKU 可提供高达 5 倍的 TLS 卸载性能。
 - **更快的部署和更新速度** v2 SKU 的部署和更新速度比 Standard/WAF SKU 更快。 这还包括了 WAF 配置更改。
 
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
 
 ## <a name="supported-regions"></a>支持的区域
 
-sKU Standard_v2 和 WAF_v2 SKU 在以下区域提供：美国中北部、美国中南部、美国西部、美国西部 2、美国东部、美国东部、美国中部、北欧、西欧、东南亚、法国中部、英国西部、日本东部、日本西部、澳大利亚东部，澳大利亚东南部，巴西南部，加拿大中部，加拿大东部，东亚，韩国中部，韩国南部，英国南部，印度中部，西印度，南印度。
+SKU Standard_v2 和 WAF_v2 SKU 在以下区域可用：美国中北部、美国中南部、美国西部、美国西部 2、美国东部、美国东部、美国中部、北欧、西欧、东南亚、法国中部、英国西部、日本东部、日本西部、澳大利亚东部、澳大利亚东南部、巴西南部、加拿大中部、加拿大东部、东亚、韩国中部、韩国，英国南部，印度中部，西印度，南印度。
 
 ## <a name="pricing"></a>定价
 
@@ -77,7 +77,7 @@ sKU Standard_v2 和 WAF_v2 SKU 在以下区域提供：美国中北部、美国�
 
 **示例 2**
 
-应用程序网关standard_v2预配一个月，最小实例为零，在此期间，它收到 25 个新的 SSL 连接/秒，平均数据传输为 8.88-Mbps。 假设连接是短暂的，您的价格将是：
+应用程序网关standard_v2预配一个月，最小实例为零，在此期间，它接收 25 个新的 TLS 连接/秒，平均数据传输为 8.88-Mbps。 假设连接是短暂的，您的价格将是：
 
 固定价格 = 744（小时） = $0.20 = $148.8
 
@@ -105,7 +105,7 @@ sKU Standard_v2 和 WAF_v2 SKU 在以下区域提供：美国中北部、美国�
 
 **示例 4**
 
-应用程序网关standard_v2预配一个月，至少有五个实例，但这次平均有 125 mbps 数据传输，每秒 25 个 SSL 连接。 假设没有流量和连接是短暂的，您的价格将是：
+应用程序网关standard_v2预配一个月，至少有五个实例，但这次平均有 125 mbps 数据传输，每秒 25 个 TLS 连接。 假设没有流量和连接是短暂的，您的价格将是：
 
 固定价格 = 744（小时） = $0.20 = $148.8
 
@@ -117,7 +117,7 @@ sKU Standard_v2 和 WAF_v2 SKU 在以下区域提供：美国中北部、美国�
 
 **示例 5**
 
-应用程序网关WAF_v2预配一个月。 在此期间，它接收 25 个新的 SSL 连接/秒，平均 8.88 Mbps 数据传输，每秒执行 80 个请求。 假设连接是短期的，并且应用程序的计算单位计算支持每个计算单位 10 RPS，则您的价格将是：
+应用程序网关WAF_v2预配一个月。 在此期间，它接收 25 个新的 TLS 连接/秒，平均 8.88 Mbps 数据传输，每秒执行 80 个请求。 假设连接是短期的，并且应用程序的计算单位计算支持每个计算单位 10 RPS，则您的价格将是：
 
 固定价格 = 744（小时） = $0.36 = $267.84
 
@@ -152,8 +152,8 @@ sKU Standard_v2 和 WAF_v2 SKU 在以下区域提供：美国中北部、美国�
 | 流量重定向                               | &#x2713; | &#x2713; |
 | Web 应用程序防火墙 (WAF)                    | &#x2713; | &#x2713; |
 | WAF 自定义规则                                  |          | &#x2713; |
-| 安全套接字层 (SSL) 终止            | &#x2713; | &#x2713; |
-| 端到端 SSL 加密                         | &#x2713; | &#x2713; |
+| 传输层安全 （TLS）/安全套接字层 （SSL） 端接            | &#x2713; | &#x2713; |
+| 端到端 TLS 加密                         | &#x2713; | &#x2713; |
 | 会话相关性                                  | &#x2713; | &#x2713; |
 | 自定义错误页                                | &#x2713; | &#x2713; |
 | WebSocket 支持                                 | &#x2713; | &#x2713; |
@@ -167,7 +167,7 @@ sKU Standard_v2 和 WAF_v2 SKU 在以下区域提供：美国中北部、美国�
 
 |差异|详细信息|
 |--|--|
-|身份验证证书|不支持。<br>有关详细信息，请参阅[使用应用程序网关的端到端 SSL 概述](ssl-overview.md#end-to-end-ssl-with-the-v2-sku)。|
+|身份验证证书|不支持。<br>有关详细信息，请参阅[使用应用程序网关的端到端 TLS 概述](ssl-overview.md#end-to-end-tls-with-the-v2-sku)。|
 |在同一子网上混合使用 Standard_v2 和标准应用程序网关|不支持|
 |应用程序网关子网上的用户定义路由 （UDR）|支持（特定方案）。 在预览中。<br> 有关受支持方案的详细信息，请参阅[应用程序网关配置概述](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)。|
 |入站端口范围的 NSG| 对于 Standard_v2 SKU，为 - 65200 到 65535<br>对于标准 SKU，为 - 65503 到 65534<br>有关详细信息，请参阅[常见问题](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet)。|

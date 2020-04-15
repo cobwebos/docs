@@ -1,5 +1,5 @@
 ---
-title: 用于 IoT Linux 安全代理故障排除指南的 Azure 安全中心。微软文档
+title: 故障排除安全代理启动 （Linux）
 description: 使用 Azure 安全中心为 Linux 的 IoT 安全代理进行故障排除。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 7f3bd4be3ef927f73643146a457bc551ef86a450
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 935a99dd34b0a4e3d4970e8d91f9332d2bc1489a
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68600561"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310571"
 ---
 # <a name="security-agent-troubleshoot-guide-linux"></a>安全代理故障排除指南 (Linux)
 
@@ -29,56 +29,70 @@ ms.locfileid: "68600561"
 安装后立即启动 IoT 代理的 Azure 安全中心。 代理启动过程包括读取本地配置、连接到 Azure IoT 中心以及检索远程孪生配置。 这些步骤中的任何一个失败都可能导致安全代理失败。
 
 在此故障排除指南中，您将了解如何：
+
 > [!div class="checklist"]
 > * 验证安全代理是否正在运行
 > * 获取安全代理错误
-> * 了解并修复安全代理错误 
+> * 了解并修复安全代理错误
 
 ## <a name="validate-if-the-security-agent-is-running"></a>验证安全代理是否正在运行
 
-1. 要验证安全代理是否正在运行，请在安装代理后等待几分钟并运行以下命令。 
+1. 要验证安全代理是否正在运行，请在安装代理后等待几分钟并运行以下命令。
      <br>
 
     **C 代理**
+
     ```bash
     grep "ASC for IoT Agent initialized" /var/log/syslog
     ```
+
     **C# 代理**
+
     ```bash
     grep "Agent is initialized!" /var/log/syslog
     ```
-2. 如果命令返回空行，则安全代理无法成功启动。    
 
-## <a name="force-stop-the-security-agent"></a>强制停止安全代理 
+1. 如果命令返回空行，则安全代理无法成功启动。
+
+## <a name="force-stop-the-security-agent"></a>强制停止安全代理
+
 如果安全代理无法启动，请使用以下命令停止代理，然后继续到下面的错误表：
 
 ```bash
 systemctl stop ASCIoTAgent.service
 ```
+
 ## <a name="get-security-agent-errors"></a>获取安全代理错误
+
 1. 通过运行以下命令检索安全代理错误：
+
     ```bash
     grep ASCIoTAgent /var/log/syslog
     ```
-2. 获取安全代理错误命令检索由 IoT 代理的 Azure 安全中心创建的所有日志。 使用下表了解错误并采取正确的方法进行补救。 
+
+1. 获取安全代理错误命令检索由 IoT 代理的 Azure 安全中心创建的所有日志。 使用下表了解错误并采取正确的方法进行补救。
 
 > [!Note]
-> 错误日志按时间顺序显示。 请务必记下每个错误的时间戳，以帮助进行补救。 
+> 错误日志按时间顺序显示。 请务必记下每个错误的时间戳，以帮助进行补救。
 
 ## <a name="restart-the-agent"></a>重新启动代理
 
-1. 查找和修复安全代理错误后，请尝试通过运行以下命令重新启动代理。 
+1. 查找和修复安全代理错误后，请尝试通过运行以下命令重新启动代理。
+
     ```bash
     systemctl restart ASCIoTAgent.service
     ```
-1. 如果代理继续失败启动过程，请重复上一个进程以检索停止并检索错误。 
+
+1. 如果代理继续失败启动过程，请重复上一个进程以检索停止并检索错误。
 
 ## <a name="understand-security-agent-errors"></a>了解安全代理错误
 
-大多数安全代理错误以以下格式显示： 
+大多数安全代理错误以以下格式显示：
+
 ```
 Azure Security Center for IoT agent encountered an error! Error in: {Error Code}, reason: {Error sub code}, extra details: {error specific details}
 ```
+
 | 错误代码 | 错误子代码 | 错误详细信息 | 修复 C | 修复 C# |
 |:-----------|:---------------|:--------|:------------|:------------|
 | 本地配置 | 缺少配置 | 本地配置文件中缺少配置。 错误消息应说明缺少哪个密钥。 | 将缺少的密钥添加到 /var/Local配置.json 文件，有关详细信息，请参阅[cs 本地配置引用](azure-iot-security-local-configuration-c.md)。| 将缺少的键添加到 General.config 文件，有关详细信息，请参阅[c#本地配置引用](azure-iot-security-local-configuration-csharp.md)。 |
@@ -95,14 +109,17 @@ Azure Security Center for IoT agent encountered an error! Error in: {Error Code}
 |
 
 ## <a name="restart-the-agent"></a>重新启动代理
+
 1. 查找和修复安全代理错误后，通过运行以下命令重新启动代理：
 
     ```bash
     systemctl restart ASCIoTAgent.service
     ```
-2. 如果需要，请重复前面的进程以强制停止代理，并在代理继续失败的启动过程时检索错误。 
+
+1. 如果需要，请重复前面的进程以强制停止代理，并在代理继续失败的启动过程时检索错误。
 
 ## <a name="next-steps"></a>后续步骤
+
 - 阅读 Azure 安全中心，了解 IoT 服务[概述](overview.md)
 - 了解有关 IoT[体系结构](architecture.md)的 Azure 安全中心
 - 启用适用于 IoT[服务的](quickstart-onboard-iot-hub.md)Azure 安全中心

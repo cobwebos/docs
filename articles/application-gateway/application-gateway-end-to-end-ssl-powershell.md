@@ -1,50 +1,50 @@
 ---
-title: 通过 Azure 应用程序网关配置端到端 SSL
-description: 本文介绍如何使用 PowerShell 通过 Azure 应用程序网关配置端到端 SSL
+title: 使用 Azure 应用程序网关配置端到端 TLS
+description: 本文介绍如何使用 PowerShell 使用 Azure 应用程序网关配置端到端 TLS
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: 7ba273cddb6cf41872c4db1c34560c104b992787
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 481cbda1d35f7d630dabca00fd01677f542447c2
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72286464"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312497"
 ---
-# <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>使用 PowerShell 通过应用程序网关配置端到端 SSL
+# <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>使用与 PowerShell 一起使用应用程序网关来配置端到端 TLS
 
 ## <a name="overview"></a>概述
 
-Azure 应用程序网关支持对流量进行端到端加密。 应用程序网关终止应用程序网关上的 SSL 连接。 网关随后将路由规则应用于流量、重新加密数据包，并根据定义的路由规则将数据包转发到适当的后端服务器。 来自 Web 服务器的任何响应都会经历相同的过程返回最终用户。
+Azure 应用程序网关支持对流量进行端到端加密。 应用程序网关在应用程序网关终止 TLS/SSL 连接。 网关随后将路由规则应用于流量、重新加密数据包，并根据定义的路由规则将数据包转发到适当的后端服务器。 来自 Web 服务器的任何响应都会经历相同的过程返回最终用户。
 
-应用程序网关支持定义自定义 SSL 选项。 除支持定义要使用的密码套件和优先级顺序外，它还支持禁用以下协议版本：TLSv1.0、TLSv1.1 和 TLSv1.2************。 若要详细了解可配置的 SSL 选项，请参阅 [SSL 策略概述](application-gateway-SSL-policy-overview.md)。
+应用程序网关支持定义自定义 TLS 选项。 除支持定义要使用的密码套件和优先级顺序外，它还支持禁用以下协议版本：TLSv1.0、TLSv1.1 和 TLSv1.2************。 要了解有关可配置 TLS 选项的详细信息，请参阅[TLS 策略概述](application-gateway-SSL-policy-overview.md)。
 
 > [!NOTE]
 > SSL 2.0 和 SSL 3.0 默认处于禁用状态且无法启用。 这些版本被视为不安全的版本，不能用于应用程序网关。
 
 ![方案图像][scenario]
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 
-在此方案中，可学习如何通过 PowerShell 使用端到端 SSL 创建应用程序网关。
+在此方案中，您将了解如何使用 PowerShell 的端到端 TLS 来创建应用程序网关。
 
 此方案将：
 
 * 创建名为**appgw-rg**的资源组。
 * 创建一个名为**appgwvnet**的虚拟网络，地址空间为**10.0.0.0/16**。
 * 创建两个子网，称为**appgwsubnet**和**appsubnet**。
-* 创建支持端到端 SSL 加密且限制 SSL 协议版本和密码套件的小型应用程序网关。
+* 创建支持端到端 TLS 加密的小型应用程序网关，以限制 TLS 协议版本和密码套件。
 
 ## <a name="before-you-begin"></a>开始之前
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-若要对应用程序网关配置端到端 SSL，需要网关证书和后端服务器证书。 网关证书用于根据 SSL 协议规范派生对称密钥。 然后使用对称密钥加密和解密发送到网关的流量。 网关证书需要采用个人信息交换 (PFX) 格式。 此文件格式适用于导出私钥，后者是应用程序网关对流量进行加解密所必需的。
+要使用应用程序网关配置端到端 TLS，网关需要证书，后端服务器需要证书。 网关证书用于根据 TLS 协议规范派生对称密钥。 然后使用对称密钥加密和解密发送到网关的流量。 网关证书需要采用个人信息交换 (PFX) 格式。 此文件格式适用于导出私钥，后者是应用程序网关对流量进行加解密所必需的。
 
-对于端到端 SSL 加密，应用程序网关必须显式允许后端。 将后端服务器的公用证书上传到应用程序网关。 添加证书后，可确保应用程序网关仅与已知后端实例通信。 从而进一步保护端到端通信。
+对于端到端 TLS 加密，应用程序网关必须显式允许后端。 将后端服务器的公用证书上传到应用程序网关。 添加证书后，可确保应用程序网关仅与已知后端实例通信。 从而进一步保护端到端通信。
 
 配置过程在以下部分中介绍。
 
@@ -154,20 +154,20 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
    ```
 
    > [!NOTE]
-   > 此示例配置用于 SSL 连接的证书。 该证书需采用 .pfx 格式，并且密码长度必须为 4 到 12 个字符。
+   > 此示例配置用于 TLS 连接的证书。 该证书需采用 .pfx 格式，并且密码长度必须为 4 到 12 个字符。
 
-6. 创建应用程序网关的 HTTP 侦听器。 分配要使用的前端 IP 配置、端口和 SSL 证书。
+6. 创建应用程序网关的 HTTP 侦听器。 分配要使用的前端 IP 配置、端口和 TLS/SSL 证书。
 
    ```powershell
    $listener = New-AzApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
    ```
 
-7. 上传要在已启用 SSL 的后端池资源上使用的证书。
+7. 上传要在启用 TLS 的后端池资源上使用的证书。
 
    > [!NOTE]
-   > 默认探测从后端的 IP 地址上的*默认* SSL 绑定获取公钥，并将其收到的公钥值与用户在此处提供的公钥值进行比较。 
+   > 默认探测器从后端 IP 地址上的*默认*TLS 绑定获取公钥，并将它收到的公钥值与您在此处提供的公钥值进行比较。 
    > 
-   > 如果正在后端使用主机头和服务器名称指示 (SNI)，则检索到的公钥可能不是流量预期流向的站点。 如有疑问，请访问后端服务器上的 https://127.0.0.1/，确认用于默认 SSL 绑定的证书**。 本部分使用该请求中的公钥。 如果对 HTTPS 绑定使用主机头和 SNI，但未从后端服务器的 https://127.0.0.1/ 手动浏览器请求收到响应和证书，则必须在其上设置默认 SSL 绑定。 如果不这样做，探测会失败，后端不会列入允许名单。
+   > 如果正在后端使用主机头和服务器名称指示 (SNI)，则检索到的公钥可能不是流量预期流向的站点。 如果您有疑问，请访问https://127.0.0.1/后端服务器以确认哪个证书用于*默认*TLS 绑定。 本部分使用该请求中的公钥。 如果您在 HTTPS 绑定上使用主机标头和 SNI，并且未收到从手动浏览器请求到https://127.0.0.1/后端服务器上的响应和证书，则必须在它们上设置默认 TLS 绑定。 如果不这样做，探测会失败，后端不会列入允许名单。
 
    ```powershell
    $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
@@ -176,7 +176,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
    > [!NOTE]
    > 在上一步中提供的证书应该是后端中存在的 .pfx 证书的公钥。 以索赔、证据和推理 (CER) 格式导出后端服务器上安装的证书（不是根证书），将其用在此步骤。 此步骤会将后端加入应用程序网关的允许列表。
 
-   如果使用的是应用程序网关 v2 SKU，则创建受信任的根证书而不是身份验证证书。 有关详细信息，请参阅[应用程序网关的端到端 SSL 概述](ssl-overview.md#end-to-end-ssl-with-the-v2-sku)：
+   如果使用的是应用程序网关 v2 SKU，则创建受信任的根证书而不是身份验证证书。 有关详细信息，请参阅[使用应用程序网关的端到端 TLS 概述](ssl-overview.md#end-to-end-tls-with-the-v2-sku)：
 
    ```powershell
    $trustedRootCert01 = New-AzApplicationGatewayTrustedRootCertificate -Name "test1" -CertificateFile  <path to root cert file>
@@ -209,7 +209,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
     > [!NOTE]
     > 进行测试时，可以选择 1 作为实例计数。 必须知道的是，2 以下的实例计数不受 SLA 支持，因此不建议使用。 小型网关用于开发/测试，不用于生产。
 
-11. 配置要在应用程序网关上使用的 SSL 策略。 应用程序网关支持设置 SSL 协议最低版本的功能。
+11. 配置要在应用程序网关上使用的 TLS 策略。 应用程序网关支持为 TLS 协议版本设置最小版本的能力。
 
     以下值是可以定义的协议版本的列表：
 
@@ -247,7 +247,7 @@ $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -Resou
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
    
-2. 从 .cer 文件中添加新的证书资源，该文件包含证书的公钥，也可以是添加到侦听器中用于在应用程序网关上终止 SSL 的同一证书。
+2. 从 .cer 文件添加新的证书资源，该文件包含证书的公钥，也可以与添加到侦听器以在应用程序网关进行 TLS 终止的证书相同。
 
    ```powershell
    Add-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name 'NewCert' -CertificateFile "appgw_NewCert.cer" 
@@ -300,9 +300,9 @@ $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -Resou
    ```
 
    
-## <a name="limit-ssl-protocol-versions-on-an-existing-application-gateway"></a>限制现有应用程序网关上的 SSL 协议版本
+## <a name="limit-tls-protocol-versions-on-an-existing-application-gateway"></a>限制现有应用程序网关上的 TLS 协议版本
 
-上述步骤指导创建具有端到端 SSL 并禁用特定 SSL 协议版本的应用程序。 以下示例禁用现有应用程序网关上的特定 SSL 策略。
+前面的步骤通过创建具有端到端 TLS 的应用程序并禁用某些 TLS 协议版本来完成。 以下示例禁用现有应用程序网关上的某些 TLS 策略。
 
 1. 检索要更新的应用程序网关。
 
@@ -310,14 +310,14 @@ $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -Resou
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. 定义 SSL 策略。 在下面的示例中 **，TLSv1.0**和**TLSv1.1**被禁用，密码套件**TLS ECDHE\_\_ECDSA\_\_\_\_\_与 AES 128 GCM SHA256、** 带有**\_\_\_\_AES\_256\_\_GCM SHA384 的 TLSEECDSA**和带有**\_AES\_128\_GCM\_SHA256 的 TLS\_RSA\_** 是唯一允许的。
+2. 定义 TLS 策略。 在下面的示例中 **，TLSv1.0**和**TLSv1.1**被禁用，密码套件**TLS ECDHE\_\_ECDSA\_\_\_\_\_与 AES 128 GCM SHA256、** 带有**\_\_\_\_AES\_256\_\_GCM SHA384 的 TLSEECDSA**和带有**\_AES\_128\_GCM\_SHA256 的 TLS\_RSA\_** 是唯一允许的。
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
 
    ```
 
-3. 最后，更新网关。 最后一步耗时较长。 完成后，应用程序网关上即已配置端到端 SSL。
+3. 最后，更新网关。 最后一步耗时较长。 完成后，在应用程序网关上配置端到端 TLS。
 
    ```powershell
    $gw | Set-AzApplicationGateway

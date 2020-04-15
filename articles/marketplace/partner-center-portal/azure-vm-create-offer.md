@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: 706a8c554dafbf792471729929d6e6484dfa35ae
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 12dd17045715a24d1e5151b30a5e7706b0e58717
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81266079"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383798"
 ---
 # <a name="create-an-azure-virtual-machine-offer"></a>创建 Azure 虚拟机产品/服务
 
@@ -116,9 +116,9 @@ ms.locfileid: "81266079"
 
 此页面允许您定义用于在市场对产品/服务进行分组的类别和行业、应用版本和支持您的产品/服务的法律合同。
 
-### <a name="category"></a>类别
+### <a name="categories"></a>类别
 
-选择至少一个，最多选择三个类别。 这些类别用于将产品/服务放置在相应的市场搜索区域。 在产品/服务说明中，说明您的优惠如何支持这些类别。 虚拟机产品/服务显示在 Azure 应用商店中的 **"计算**"类别下。
+选择至少 1 个类别，最多选择五个类别。 这些类别用于将产品/服务放置在相应的市场搜索区域。 在产品/服务说明中，说明您的优惠如何支持这些类别。 虚拟机产品/服务显示在 Azure 应用商店中的 **"计算**"类别下。
 
 ### <a name="legal"></a>合法
 
@@ -192,7 +192,7 @@ ms.locfileid: "81266079"
 
 提供更久的报价说明。 这最多可达 256 个字符，并且用于市场搜索结果。
 
-#### <a name="description"></a>说明
+#### <a name="description"></a>描述
 
 提供您的优惠的详细描述，最多 3，000 个字符。 这在商业市场列表概述中向客户显示。
 
@@ -234,7 +234,6 @@ ms.locfileid: "81266079"
 
 - Azure 全球支持网站
 - Azure 政府支持网站
-- 等等
 
 ### <a name="partner-support-contact"></a>合作伙伴支持联系人
 
@@ -389,6 +388,8 @@ Azure 政府服务处理受某些政府法规和要求约束的数据。 例如�
 
 如果您已为计划设定价格（美元），并添加其他市场位置，则新市场的价格将根据当前汇率计算。 在出版之前，务必查看每个市场的价格。 保存更改后，使用 **"导出价格 （xlsx）"** 链接查看价格。
 
+删除市场时，使用活动部署的客户将无法创建新部署或扩展其现有部署。 现有部署不会受到影响。
+
 #### <a name="pricing"></a>定价
 
 **许可证模型**– 选择**基于使用情况的每月计费计划**，以配置此计划的定价，或**自带许可证**，让客户使用此计划及其现有许可证。
@@ -421,7 +422,7 @@ Azure 政府服务处理受某些政府法规和要求约束的数据。 例如�
 
 #### <a name="hide-plan"></a>隐藏计划
 
-如果虚拟机仅打算通过其他解决方案模板或托管应用程序间接使用，请选择此框以发布虚拟机或提供，但会直接隐藏虚拟机的客户搜索和浏览虚拟机。
+如果虚拟机仅打算通过其他解决方案模板或托管应用程序间接使用，请选择此框以发布虚拟机，但直接从客户搜索和浏览虚拟机时将其隐藏。
 
 > [!NOTE]
 > 隐藏计划不支持预览链接。
@@ -430,7 +431,7 @@ Azure 政府服务处理受某些政府法规和要求约束的数据。 例如�
 
 ### <a name="technical-configuration"></a>技术配置
 
-提供与此计划关联的图像和其他技术属性。
+提供与此计划关联的图像和其他技术属性。 有关详细信息，请参阅[创建 Azure VM 技术资产](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets)。
 
 > [!NOTE]
 > 如果您使用此计划重用 **"计划设置**"选项卡上其他计划的包，则不显示此选项卡。
@@ -459,7 +460,7 @@ Azure 政府服务处理受某些政府法规和要求约束的数据。 例如�
 
 #### <a name="vm-images"></a>VM 映像
 
-为虚拟机映像提供磁盘版本和 SAS URI。 为每个 VM 映像添加最多 16 个数据磁盘。 在给定提交中，每个计划仅提供一个新映像版本。 发布图像后，无法对其进行编辑，但可以将其删除。 删除版本将阻止用户部署已删除版本的新实例。
+为虚拟机映像提供磁盘版本和 SAS URI。 为每个 VM 映像添加最多 16 个数据磁盘。 在给定提交中，每个计划仅提供一个新映像版本。 发布图像后，无法对其进行编辑，但可以将其删除。 删除版本将阻止新用户和现有用户部署已删除版本的新实例。
 
 - **光盘版本**是您提供的图像的版本。
 - **SAS URI**是 Azure 存储中存储操作系统 VHD 的位置。

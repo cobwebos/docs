@@ -708,6 +708,8 @@
               href: sql-database-managed-instance-configure-vm.md
             - name: 点到站点连接
               href: sql-database-managed-instance-configure-p2s.md
+            - name: 长期备份保留
+              href: sql-database-managed-instance-long-term-backup-retention-configure.md
         - name: 加载数据
           items:
             - name: 还原数据库备份

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cb5aca128679b21072a2a3daa503dc43a8e2885
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 26656b6dafd91d47c05c2d1f923e53f4ba790cf8
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78942894"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309913"
 ---
 # <a name="combined-security-information-registration-preview"></a>组合安全信息注册（预览）
 
@@ -139,7 +139,7 @@ Azure AD 组合安全信息注册目前不适用于 Azure 美国政府、Azure �
 
 ## <a name="next-steps"></a>后续步骤
 
-[强制用户重新注册身份验证方法](howto-mfa-userdevicesettings.md#manage-authentication-methods)
+[强制用户重新注册身份验证方法](howto-mfa-userdevicesettings.md#manage-user-authentication-options)
 
 [在租户中启用合并注册](howto-registration-mfa-sspr-combined.md)
 

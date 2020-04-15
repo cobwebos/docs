@@ -1,24 +1,25 @@
 ---
 title: 创建管理组以组织资源 - Azure 治理
 description: 了解如何使用门户、Azure PowerShell 和 Azure CLI 创建 Azure 管理组以管理多个资源。
-ms.date: 12/18/2019
+ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: a06679432d795b5b7854af8dc66b468841978e9c
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 34815089367512c4aa54f148c118a669625d0ea3
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273182"
+ms.locfileid: "81381586"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>创建用来组织和管理资源的管理组
 
 管理组是一些容器，可以帮助跨多个订阅管理访问权限、策略和符合性。 可以创建这些容器来构建可以与 [Azure Policy](../policy/overview.md) 和 [Azure 基于角色的访问控制](../../role-based-access-control/overview.md)配合使用的有效且高效的层次结构。 若要详细了解管理组，请参阅[使用 Azure 管理组整理资源](overview.md)。
 
-在目录中创建的第一个管理组可能需要最多 15 分钟才能完成。 一些进程会首次运行以在 Azure 中为目录设置管理组服务。 在进程完成后将显示通知。 有关详细信息，请参阅[管理组的初始设置](./overview.md#initial-setup-of-management-groups)。 
+在目录中创建的第一个管理组可能需要最多 15 分钟才能完成。 一些进程会首次运行以在 Azure 中为目录设置管理组服务。 在进程完成后将显示通知。 有关详细信息，请参阅[管理组的初始设置](./overview.md#initial-setup-of-management-groups)。
 
 ## <a name="create-a-management-group"></a>创建管理组
 
-租户中的任何 Azure AD 用户可以创建管理组，而无需分配给该用户的管理组写入权限。  此新管理组将是根管理组的子组，创建者将获得"所有者"角色分配。 管理组服务允许此功能，因此在根级别不需要角色分配。 创建根管理组时，没有用户有权访问该组。  为了避免找到 Azure AD 全局管理员开始使用管理组的障碍，我们允许在根级别创建初始管理组。      
+租户中的任何 Azure AD 用户可以创建管理组，而无需分配给该用户的管理组写入权限。 此新管理组将是根管理组的子组，创建者将获得"所有者"角色分配。 管理组服务允许此功能，因此在根级别不需要角色分配。 创建根管理组时，没有用户有权访问该组。 为了避免找到 Azure AD 全局管理员开始使用管理组的障碍，我们允许在根目录创建初始管理组  
+水平。
 
 可以使用门户、[资源管理器模板](../../azure-resource-manager/templates/deploy-to-tenant.md#create-management-group)、PowerShell 或 Azure CLI 创建管理组。
 
@@ -34,14 +35,15 @@ ms.locfileid: "81273182"
 
 1. 选择“+ 添加管理组”。****
 
-   ![管理组操作页](./media/main.png)
+   :::image type="content" source="./media/main.png" alt-text="管理组操作页" border="false":::
 
 1. 填写管理组 ID 字段。
 
    - ****“管理组 ID”是用来在此管理组上提交命令的目录唯一标识符。 此标识符一旦创建便无法再编辑，因为它用来在整个 Azure 系统中标识这个组。 [根管理组](overview.md#root-management-group-for-each-directory)是自动创建的，其 ID 为 Azure Active Directory ID。 对于所有其他管理组，请分配唯一的 ID。
-   - 显示名称字段是在 Azure 门户中显示的名称。 创建管理组时，单独的显示名称是一个可选字段，并且可以随时更改。  
+   - 显示名称字段是在 Azure 门户中显示的名称。 创建管理组时，单独的显示名称是可选字段，可在任何  
+     。
 
-   ![用于创建新管理组的“选项”窗格](./media/create_context_menu.png)  
+   :::image type="content" source="./media/create_context_menu.png" alt-text="用于创建新管理组的“选项”窗格" border="false":::
 
 1. 选择“保存”。 
 
@@ -94,8 +96,8 @@ az account management-group create --name ContosoSubGroup --parent Contoso
 
 若要了解有关管理组的详细信息，请参阅：
 
-- [创建用于整理 Azure 资源的管理组](create.md)
-- [如何更改、删除或管理管理组](manage.md)
+- [创建用于整理 Azure 资源的管理组](./create.md)
+- [如何更改、删除或管理管理组](./manage.md)
 - [在 Azure PowerShell 资源模块中查看管理组](/powershell/module/az.resources#resources)
 - [在 REST API 中查看管理组](/rest/api/resources/managementgroups)
 - [在 Azure CLI 中查看管理组](/cli/azure/account/management-group)

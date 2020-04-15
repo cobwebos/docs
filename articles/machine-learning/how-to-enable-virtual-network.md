@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 03/13/2020
-ms.openlocfilehash: ea65956a73874b717ecab25d83ed25b59f2ada55
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: f70c24c91e048270696b244bb9775cb24f0ef30d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257243"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383478"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虚拟网络中保护 Azure ML 试验和推理作业
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -484,6 +484,21 @@ az rest --method put --uri https://management.azure.com"/subscriptions/<subscrip
 > 当前，在现有群集上执行__附加__操作时，无法配置负载均衡器。 必须首先附加群集，然后执行更新操作以更改负载均衡器。
 
 有关将内部负载均衡器与 AKS 一起使用的详细信息，请参阅[使用 Azure Kubernetes 服务使用内部负载均衡器](/azure/aks/internal-lb)。
+
+## <a name="use-azure-container-instances-aci"></a>使用 Azure 容器实例 （ACI）
+
+部署模型时动态创建 Azure 容器实例。 要使 Azure 机器学习能够在虚拟网络内创建 ACI，必须为部署使用的子网启用__子网委派__。
+
+要在虚拟网络中使用 ACI 到工作区，请使用以下步骤：
+
+1. 要在虚拟网络上启用子网委派，请使用["添加或删除子网委派](../virtual-network/manage-subnet-delegation.md)"文章中的信息。 您可以在创建虚拟网络时启用委派，也可以将其添加到现有网络。
+
+    > [!IMPORTANT]
+    > 启用委派时，用作`Microsoft.ContainerInstance/containerGroups`__委托子网以服务__值。
+
+2. 使用[AciWebservice.deploy_configuration（）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-)部署模型，使用`vnet_name``subnet_name`和 参数。 将这些参数设置为启用委派的虚拟网络名称和子网。
+
+
 
 ## <a name="use-azure-firewall"></a>使用 Azure 防火墙
 

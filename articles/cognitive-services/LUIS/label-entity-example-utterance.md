@@ -1,21 +1,14 @@
 ---
 title: 标记实体示例言语
-titleSuffix: Azure Cognitive Services
 description: 了解如何使用 LUIS 门户的意向详细信息页中的示例言语中的子组件标记机器学习的实体。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/16/2019
-ms.author: diberry
-ms.openlocfilehash: 5499e8362e1107a18b997a6a485e11343c328d0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: ea5fbea902c9694d9a8a6a8a5bffcf5e7234bbbd
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898372"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382402"
 ---
 # <a name="label-machine-learned-entity-in-an-example-utterance"></a>在示例言语中标记机器学习的实体
 
@@ -87,6 +80,10 @@ ms.locfileid: "78898372"
 1. 在实体调色板打开后，从实体列表中选择实体。
 1. 转到“实体检查器”****，选择现有角色或创建新角色。
 1. 在示例言语文本中，使用实体角色标记文本。
+
+## <a name="labeling-for-punctuation"></a>标点符号的标签
+
+您无需为标点符号添加标签。 使用[应用程序设置](luis-reference-application-settings.md)控制标点符号是否影响陈述预测。
 
 ## <a name="unlabel-entities"></a>取消标记实体
 

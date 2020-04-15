@@ -1,19 +1,19 @@
 ---
-title: 使用 Amazon Web Services 配置身份验证
+title: 使用 Amazon Web 服务验证 Azure 自动化运行簿
 description: 本文介绍如何创建和验证 Azure 自动化管理的 AWS 资源中的 Runbook 的 AWS 凭据。
 keywords: AWS 身份验证, 配置 AWS
 services: automation
 ms.subservice: process-automation
 ms.date: 04/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 891db5d17ddde681f75845fdca6c9252c5b32b86
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 02ff9cedfbeaa36b2fafc84637ea3141b223a064
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520822"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310482"
 ---
-# <a name="authenticate-runbooks-with-amazon-web-services"></a>使用 Amazon Web Services 进行 Runbook 身份验证
+# <a name="authenticate-azure-automation-runbooks-with-amazon-web-services"></a>使用 Amazon Web 服务验证 Azure 自动化运行簿
 
 使用 Amazon Web Services (AWS) 中的资源自动处理常见任务可以通过 Azure 中的自动化 Runbook 完成。 可以使用自动化 Runbook 自动处理 AWS 中的许多任务，就如使用 Azure 中的资源可以执行的任务一样。 只需要两个事项：
 

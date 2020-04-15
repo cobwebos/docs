@@ -1,5 +1,5 @@
 ---
-title: 适用于 IoT 的 Azure 安全中心的可自定义安全警报指南*微软文档
+title: 可自定义的安全警报
 description: 使用 Azure 安全中心了解可自定义的安全警报和建议进行补救的 IoT 功能和服务。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -14,24 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 32d79267559480de8ec91e5e66196bfd57e01cf1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3b39d70c60a4c9701d0a8bafde17b241fe01cc46
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78299567"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311638"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>用于 IoT 安全警报的 Azure 安全中心
 
 IoT Azure 安全中心使用高级分析和威胁情报持续分析 IoT 解决方案，以提醒您注意恶意活动。
 
-我们鼓励您根据您对预期设备行为的了解创建自定义警报，以确保警报在独特的组织部署和环境中成为潜在危害的最有效指标。 
+我们鼓励您根据您对预期设备行为的了解创建自定义警报，以确保警报在独特的组织部署和环境中成为潜在危害的最有效指标。
 
 以下 IoT 警报 Azure 安全中心列表由您根据预期的 IoT 中心和/或设备行为进行定义。 有关如何自定义每个警报的更多详细信息，请参阅[创建自定义警报](quickstart-create-custom-alerts.md)。
 
-## <a name="iot-hub-alerts-available-for-customization"></a>IoT 中心警报可用于自定义 
-
-
+## <a name="iot-hub-alerts-available-for-customization"></a>IoT 中心警报可用于自定义
 
 | 严重性 | 警报名称 | 数据源 | 描述 | 建议的补救措施|
 |---|---|---|---|---|
@@ -51,7 +49,7 @@ IoT Azure 安全中心使用高级分析和威胁情报持续分析 IoT 解决�
 | 低      | 自定义警报 - 未授权的操作数目超出了允许的范围  | IoT 中心     | 特定时间范围内的未授权操作数量超出了当前配置的允许范围。|
 |
 
-## <a name="agent-alerts-available-for-customization"></a>可用于自定义的代理警报 
+## <a name="agent-alerts-available-for-customization"></a>可用于自定义的代理警报
 
 | 严重性 | 警报名称 | 数据源 | 描述 | 建议的补救措施|
 |---|---|---|---|---|

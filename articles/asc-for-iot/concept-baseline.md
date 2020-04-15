@@ -1,5 +1,5 @@
 ---
-title: 了解 IoT 基线的 Azure 安全中心*微软文档
+title: 基线和自定义检查
 description: 了解 IoT 基线的 Azure 安全中心的概念。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2019
 ms.author: mlottner
-ms.openlocfilehash: ce5a0625a16c5a02d03ee74f894c585820414fa4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c52a3e55e3801eaaac885b9a3c364283f74906ba
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72176613"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311657"
 ---
 # <a name="azure-security-center-for-iot-baseline-and-custom-checks"></a>用于 IoT 基线和自定义检查的 Azure 安全中心
 
@@ -28,11 +28,11 @@ ms.locfileid: "72176613"
 
 ## <a name="baseline"></a>基线
 
-基线为每个设备建立标准行为，并更容易确定异常行为或偏离预期规范。  
+基线为每个设备建立标准行为，并更容易确定异常行为或偏离预期规范。
 
 ## <a name="baseline-custom-checks"></a>基线自定义检查
 
-基线自定义检查使用设备的**模块标识孪生**为每个设备基线建立自定义检查列表。 
+基线自定义检查使用设备的**模块标识孪生**为每个设备基线建立自定义检查列表。
 
 ## <a name="setting-baseline-properties"></a>设置基线属性
 
@@ -64,7 +64,7 @@ ms.locfileid: "72176613"
 
 ## <a name="baseline-custom-check-properties"></a>基线自定义检查属性
 
-| “属性”| 状态 | 有效值| 默认值| 描述 |
+| 名称| 状态 | 有效值| 默认值| 描述 |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |基线自定义检查启用|必需： 真 |有效值：**布尔** |默认值：**假** |发送高优先级消息之前的最大时间间隔。|
 |基线自定义检查文件路径 |必需： 真|有效值：**字符串**， **null** |默认值 **：null** |基线 xml 配置的完整路径|

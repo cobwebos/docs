@@ -9,15 +9,15 @@ ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.author: ryanwi
+ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a03f8cb412b6d6ae95165331ae836bdfde5d670d
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: c6113490cf7d754a9e45638e4a0bfa588f1942ca
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886290"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309422"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft 标识平台和 OAuth 2.0 客户端凭据流
 
@@ -110,7 +110,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&state=12345&redirect_uri=http://localhost/myapp/permissions
 ```
 
-| 参数 | 条件 | 说明 |
+| 参数 | 条件 | 描述 |
 | --- | --- | --- |
 | `tenant` | 必选 | 要向其请求权限的目录租户。 这可采用 GUID 或友好名称格式。 如果不知道用户属于哪个租户并想让他们登录到任一租户，请使用 `common`。 |
 | `client_id` | 必选 | [Azure 门户和应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验**的应用程序（客户端）ID**分配给应用。 |
@@ -127,7 +127,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
 ```
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 | --- | --- |
 | `tenant` | 向应用程序授予所请求权限的目录租户（采用 GUID 格式）。 |
 | `state` | 同样随令牌响应返回的请求中所包含的值。 它可以是用户想要的任何内容的字符串。 该状态用于对发出身份验证请求出现之前，有关用户在应用中的状态的信息（例如前面所在的页面或视图）编码。 |
@@ -141,7 +141,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 GET http://localhost/myapp/permissions?error=permission_denied&error_description=The+admin+canceled+the+request
 ```
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 | --- | --- |
 | `error` | 可用于分类错误类型，并响应错误的错误代码字符串。 |
 | `error_description` | 可帮助用户识别错误根本原因的特定错误消息。 |
@@ -173,7 +173,7 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token'
 ```
 
-| 参数 | 条件 | 说明 |
+| 参数 | 条件 | 描述 |
 | --- | --- | --- |
 | `tenant` | 必选 | 应用程序计划对其进行操作的目录租户，采用 GUID 或域名格式。 |
 | `client_id` | 必选 | 分配给应用的应用程序 ID。 可以在注册应用的门户中找到此信息。 |
@@ -195,7 +195,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 &grant_type=client_credentials
 ```
 
-| 参数 | 条件 | 说明 |
+| 参数 | 条件 | 描述 |
 | --- | --- | --- |
 | `tenant` | 必选 | 应用程序计划对其进行操作的目录租户，采用 GUID 或域名格式。 |
 | `client_id` | 必选 |分配给应用的应用程序（客户端）ID。 |
@@ -218,7 +218,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 }
 ```
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 | --- | --- |
 | `access_token` | 请求的访问令牌。 应用可以使用此令牌验证受保护的资源，例如验证 Web API。 |
 | `token_type` | 指示令牌类型值。 Microsoft 标识平台支持的唯一类型是 `bearer`。 |
@@ -241,7 +241,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 }
 ```
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 | --- | --- |
 | `error` | 可用于分类发生的错误类型和响应错误的错误代码字符串。 |
 | `error_description` | 可帮助用户识别身份验证错误根本原因的特定错误消息。 |
@@ -272,7 +272,7 @@ curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbG...." 'https://graph
 
 阅读 Microsoft 身份验证库中的[客户端凭据概述文档](https://aka.ms/msal-net-client-credentials)
 
-| 示例 | 平台 |说明 |
+| 示例 | 平台 |描述 |
 |--------|----------|------------|
 |[active-directory-dotnetcore-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) | .NET Core 2.1 控制台 | 一个简单的 .NET Core 应用程序，该应用程序显示某个租户的用户在使用应用程序的标识查询 Microsoft Graph，而不是代表用户来查询。 该示例还演示了使用证书进行身份验证的变体。 |
 |[active-directory-dotnet-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)|ASP.NET MVC | 一个 Web 应用程序，该应用程序使用应用程序的标识来同步 Microsoft Graph 的数据，而不是代表用户来同步。 |

@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: c7b38ad40977e1042032210d3a82a73ff6169adc
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: b458537c7cf8a254cd188c565ab1925afa202369
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411060"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312657"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>应用程序网关的后端运行状况和诊断日志
 
@@ -158,7 +158,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 只有在每个应用程序网关实例上启用了访问日志，才会生成此日志，如上述步骤所示。 数据存储在启用日志记录时指定的存储帐户中。 应用程序网关的每次访问均以 JSON 格式记录下来，如下面 v1 示例所示：
 
-|值  |说明  |
+|“值”  |描述  |
 |---------|---------|
 |instanceId     | 为请求服务的应用程序网关实例。        |
 |clientIP     | 请求的初始 IP。        |
@@ -172,7 +172,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |receivedBytes     | 接收的数据包大小（以字节为单位）。        |
 |sentBytes| 发送的数据包大小（以字节为单位）。|
 |timeTaken| 处理请求并发送其响应所需的时长（以毫秒为单位）。 这是计算从应用程序网关接收到 HTTP 请求的第一个字节到响应发送操作完成这两个时间点之间的时间间隔。 请务必注意，所用时间字段通常包含请求和响应数据包通过网络传输的时间。 |
-|sslEnabled| 与后端池的通信是否使用 SSL。 有效值为打开和关闭。|
+|sslEnabled| 与后端池的通信是否使用 TLS/SSL。 有效值为打开和关闭。|
 |host| 向后端服务器发送请求时所用的主机名。 如果正在重写后端主机名，则此名称将反映该主机名。|
 |originalHost| 应用程序网关从客户端接收请求时所用的主机名。|
 ```json
@@ -202,7 +202,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 ```
 对于应用程序网关和 WAF v2，日志显示了一些详细信息：
 
-|值  |说明  |
+|“值”  |描述  |
 |---------|---------|
 |instanceId     | 为请求服务的应用程序网关实例。        |
 |clientIP     | 请求的初始 IP。        |
@@ -215,9 +215,9 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |receivedBytes     | 接收的数据包大小（以字节为单位）。        |
 |sentBytes| 发送的数据包大小（以字节为单位）。|
 |timeTaken| 处理请求并发送其响应所需的时长（以**秒**为单位）。 这是计算从应用程序网关接收到 HTTP 请求的第一个字节到响应发送操作完成这两个时间点之间的时间间隔。 请务必注意，所用时间字段通常包含请求和响应数据包通过网络传输的时间。 |
-|sslEnabled| 与后端池的通信是否使用 SSL。 有效值为打开和关闭。|
-|sslCipher| 用于 SSL 通信的密码套件（如果已启用 SSL）。|
-|sslProtocol| 使用的 SSL/TLS 协议（如果已启用 SSL）。|
+|sslEnabled| 与后端池的通信是否使用 TLS。 有效值为打开和关闭。|
+|sslCipher| 用于 TLS 通信的密码套件（如果启用了 TLS）。|
+|sslProtocol| 正在使用的 SSL/TLS 协议（如果启用了 TLS）。|
 |serverRouted| 应用程序网关将请求路由到的后端服务器。|
 |serverStatus| 后端服务器的 HTTP 状态代码。|
 |serverResponseLatency| 后端服务器的响应延迟。|
@@ -256,7 +256,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 只有在每个应用程序网关实例上启用了性能日志，才会生成此日志，如上述步骤所示。 数据存储在启用日志记录时指定的存储帐户中。 每隔 1 分钟生成性能日志数据。 性能日志数据仅适用于 v1 SKU。 对于 v2 SKU，请对性能数据使用[指标](application-gateway-metrics.md)。 将记录以下数据：
 
 
-|值  |说明  |
+|“值”  |描述  |
 |---------|---------|
 |instanceId     |  正在为其生成性能数据的应用程序网关实例。 对于多实例应用程序网关，每个实例有一行性能数据。        |
 |healthyHostCount     | 后端池中运行正常的主机数。        |
@@ -293,7 +293,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 只有为每个应用程序网关启用了防火墙日志，才会生成此日志，如上述步骤所示。 此日志还需在应用程序网关上配置 Web 应用程序防火墙。 数据存储在启用日志记录时指定的存储帐户中。 将记录以下数据：
 
 
-|值  |说明  |
+|“值”  |描述  |
 |---------|---------|
 |instanceId     | 正在为其生成防火墙数据的应用程序网关实例。 对于多实例应用程序网关，每个实例有一行性能数据。         |
 |clientIp     |   请求的初始 IP。      |

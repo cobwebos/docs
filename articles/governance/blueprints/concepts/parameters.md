@@ -1,14 +1,14 @@
 ---
 title: 使用参数创建动态蓝图
 description: 了解静态和动态参数以及如何使用它们创建安全和动态蓝图。
-ms.date: 03/12/2019
+ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 36735d71b746301819e5079aba1697b55fe5e183
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: ed596db2050ac788c2d98c63cb7314de473b5f4e
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677586"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383617"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>通过参数创建动态蓝图
 
@@ -28,8 +28,7 @@ ms.locfileid: "80677586"
 
 ### <a name="using-securestring-and-secureobject-parameters"></a>使用 secureString 和 secureObject 参数
 
-虽然资源管理器模板项目支持“secureString”和“secureObject”类型的参数，但 Azure 蓝图要求每个参数与 Azure Key Vault 连接__********。
-此安全措施可防止将机密与蓝图一起存储的不安全做法，并有利于采用安全模式。 Azure 蓝图支持此安全措施，它可以检测是否在资源管理器模板项目中包含了任一安全参数。__ 然后，该服务会在分配期间提示输入每个检测到的安全参数的以下 Key Vault 属性：
+虽然资源管理器模板项目支持“secureString”和“secureObject”类型的参数，但 Azure 蓝图要求每个参数与 Azure Key Vault 连接__********。 此安全措施可防止将机密与蓝图一起存储的不安全做法，并有利于采用安全模式。 Azure 蓝图支持此安全措施，它可以检测是否在资源管理器模板项目中包含了任一安全参数。__ 然后，该服务会在分配期间提示输入每个检测到的安全参数的以下 Key Vault 属性：
 
 - Key Vault 资源 ID
 - Key Vault 机密名称
@@ -62,11 +61,11 @@ ms.locfileid: "80677586"
 
 1. 添加到蓝图中的项目（具有参数选项）会在“参数”列中显示“填充了 X 个参数，共 Y 个参数”********。 单击项目行，编辑项目参数。
 
-   ![蓝图定义的蓝图参数](../media/parameters/parameter-column.png)
+   :::image type="content" source="../media/parameters/parameter-column.png" alt-text="蓝图定义的蓝图参数" border="false":::
 
 1. “编辑项目”页会显示适用于所单击项目的值选项****。 项目上的每个参数具有标题、值框和复选框。 将框设置为未选中状态，使其称为“静态参数”****。 在以下示例中，只有“位置”是“静态参数”，因为它处于未选中状态，同时“资源组名称”已选中__****__。
 
-   ![蓝图工件上的静态参数蓝图](../media/parameters/static-parameter.png)
+   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="蓝图工件上的静态参数蓝图" border="false":::
 
 #### <a name="setting-static-parameters-from-rest-api"></a>从 REST API 设置静态参数
 
@@ -177,7 +176,7 @@ ms.locfileid: "80677586"
 
 1. 在 **"分配蓝图"** 页上，查找 **"工件"参数**部分。 具有至少一个“动态参数”的每个项目会显示项目和配置选项****。 分配蓝图前，请向参数提供所需值。 在以下示例中，“名称”是“动态参数”，必须对其定义以完成蓝图分配__****。
 
-   ![蓝图分配期间的蓝图动态参数](../media/parameters/dynamic-parameter.png)
+   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="蓝图分配期间的蓝图动态参数" border="false":::
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>从 REST API 设置动态参数
 

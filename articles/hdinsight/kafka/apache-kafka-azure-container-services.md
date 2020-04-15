@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: 6abb4f632535f1bda7e9f337f111ba372a624f2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55373f71c78b6d45b9c78c52dea61a37b89b4a00
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239620"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383045"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>将 Azure Kubernetes 服务与 Apache Kafka on HDInsight 配合使用
 
@@ -77,7 +77,7 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
 
 1. 对某些属性使用以下准则创建网络：
 
-    |properties | “值” |
+    |Property | “值” |
     |---|---|
     |地址空间|您必须使用的地址空间不与 AKS 群集网络使用的地址空间重叠。|
     |位置|使用 AKS 群集所用的相同虚拟网络__位置__。|
@@ -90,7 +90,7 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
 
 1. 选择“+ 添加”，然后使用以下值填充表单：____
 
-    |properties |“值” |
+    |Property |“值” |
     |---|---|
     |从\<此 VN> 到远程虚拟网络的对等互连的名称|输入此对等互连配置的唯一名称。|
     |虚拟网络|选择**AKS 群集**的虚拟网络。|
@@ -163,7 +163,7 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
     * `var topic = 'mytopic'`：将 `mytopic` 替换为此应用程序使用的 Kafka 主题名称。
     * `var brokerHost = '176.16.0.13:9092`：将 `176.16.0.13` 替换为群集的某个代理主机的内部 IP 地址。
 
-        若要查找群集中代理主机（工作节点）的内部 IP 地址，请参阅 [Apache Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-internal-ip-address-of-cluster-nodes) 文档。 选择域名以 `wn` 开头的某个条目的 IP 地址。
+        若要查找群集中代理主机（工作节点）的内部 IP 地址，请参阅 [Apache Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#get-the-internal-ip-address-of-cluster-nodes) 文档。 选择域名以 `wn` 开头的某个条目的 IP 地址。
 
 4. 在 `src` 目录中，通过命令行安装依赖项并使用 Docker 生成用于部署的映像：
 

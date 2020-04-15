@@ -1,5 +1,5 @@
 ---
-title: 了解 IoT 边缘 IoT 安全模块的 Azure 安全中心*微软文档
+title: IoT 边缘的安全模块
 description: 了解 IoT 边缘 IoT 安全模块的 Azure 安全中心的体系结构和功能。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 148c68234a937efde554ef00a6014cdc1a350f34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0eb68f517c4c5b04dd4f92dd1a804dcf5ad24362
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71315895"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310626"
 ---
 # <a name="azure-iot-edge-security-module"></a>Azure IoT 边缘安全模块
 
@@ -36,7 +36,7 @@ IoT 模块的 Azure 安全中心会收集、聚合和分析来自操作系统和
 适用于 IoT 边缘的 IoT 安全模块的 Azure 安全中心提供以下功能：
 
 - 从基础操作系统 （Linux） 和 IoT 边缘容器系统收集原始安全事件。
-  
+
   请参阅[Azure 安全中心进行 IoT 代理配置](how-to-agent-configuration.md)，了解有关可用安全数据收集器的更多信息。
 
 - IoT 边缘部署清单的分析。
@@ -52,7 +52,7 @@ IoT 边缘 IoT 安全模块的 Azure 安全中心在 IoT 边缘下的特权模�
 
 ## <a name="module-supported-platforms"></a>模块支持的平台
 
-IoT 边缘 IoT 安全模块的 Azure 安全中心目前仅适用于 Linux。 
+IoT 边缘 IoT 安全模块的 Azure 安全中心目前仅适用于 Linux。
 
 ## <a name="next-steps"></a>后续步骤
 
