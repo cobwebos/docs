@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 1fef24f4065ca6fc749f35a07143487e049ee6ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f720a94d3467ce15ea5d58a8ece6de2a669f6258
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74075273"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312584"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>使用适用于 Azure 资源管理器的 PowerShell 创建 Azure 应用程序网关的自定义探测
 
@@ -91,7 +91,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -
 |---|---|
 | 网关 IP 配置**** | 应用程序网关的 IP 配置。|
 | **后端池** | 由 IP 地址、FQDN 或 NIC 组成的池，这些池成员供托管 Web 应用程序的应用程序服务器使用|
-| **健康探头** | 用于监视后端池成员运行状况的自定义探测|
+| **运行状况探测** | 用于监视后端池成员运行状况的自定义探测|
 | **HTTP 设置** | 端口、协议、基于 cookie 的相关性、探测和超时等一系列设置。  这些设置决定将流量路由到后端池成员的方式|
 | 前端端口**** | 应用程序网关在该端口上侦听流量|
 | **侦听器** | 协议、前端 IP 配置和前端端口的组合。 侦听器用于侦听传入请求。
@@ -197,5 +197,5 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>后续步骤
 
-通过访问了解如何配置 SSL 卸载：[配置 SSL 卸载](application-gateway-ssl-arm.md)
+通过访问了解如何配置 TLS 卸载：[配置 TLS 卸载](application-gateway-ssl-arm.md)
 

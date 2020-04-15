@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/25/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6482040f0d50f08f04ea87384a99af556f694075
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 913bc16f7408acebb0e65359e8845ce0f6a3a2f4
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478791"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314252"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -74,7 +74,7 @@ ExpressRoute 位置（有时称为对等位置或 Meet-me 位置）是 Microsoft
 
 ### <a name="global-commercial-azure"></a>全球商业 Azure
 
-| **服务提供商** | **Microsoft Azure** | **办公室 365**  | **位置** |
+| **服务提供商** | **Microsoft Azure** | **Office 365**  | **位置** |
 | --- | --- | --- | --- |
 | **[AARNet](https://www.aarnet.edu.au/network-and-services/connectivity-services/azure-expressroute)** |支持 |支持 |墨尔本、悉尼 |
 | **[艾尔特尔](https://www.airtel.in/business/#/)** | 支持 | 支持 | 金奈 2、孟买 2 |
@@ -94,7 +94,7 @@ ExpressRoute 位置（有时称为对等位置或 Meet-me 位置）是 Microsoft
 | **中国移动国际** |支持 |支持 | 新加坡 |
 | **China Telecom Global** |支持 |支持 |香港特别行政区 |
 | **中国联通全球** |支持 |支持 | 新加坡 2 |
-| **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |支持 |支持 |芝加哥、达拉斯、蒙特利尔、多伦多、华盛顿特区 |
+| **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |支持 |支持 |芝加哥、达拉斯、蒙特利尔、多伦多、温哥华、华盛顿特区 |
 | **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |支持 |支持 |阿姆斯特丹，阿姆斯特丹2，芝加哥，都柏林，法兰克福，伦敦，伦敦2，纽波特，纽约，大阪，巴黎，硅谷，硅谷2，新加坡2，东京，华盛顿特区 |
 | **[Comcast](https://business.comcast.com/landingpage/microsoft-azure)** |支持 |支持 |芝加哥、硅谷、华盛顿特区 |
 | **[CoreSite](https://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |支持 |支持 |芝加哥、丹佛、洛杉矶、纽约、硅谷、硅谷2、华盛顿特区、华盛顿特区2 |
@@ -174,7 +174,7 @@ Azure 国家云彼此隔离，与全局商业 Azure 隔离。 一个 Azure 云�
 
 ### <a name="us-government-cloud"></a>美国政府云
 
-| **服务提供商** | **Microsoft Azure** | **办公室 365** | **位置** |
+| **服务提供商** | **Microsoft Azure** | **Office 365** | **位置** |
 | --- | --- | --- | --- |
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |支持 |支持 |芝加哥， 凤凰城， 硅谷， 华盛顿特区 |
 | **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |支持 |支持 |纽约， 凤凰城， 圣安东尼奥， 华盛顿特区 |
@@ -185,7 +185,7 @@ Azure 国家云彼此隔离，与全局商业 Azure 隔离。 一个 Azure 云�
 
 ### <a name="china"></a>中国
 
-| **服务提供商** | **Microsoft Azure** | **办公室 365** | **位置** |
+| **服务提供商** | **Microsoft Azure** | **Office 365** | **位置** |
 | --- | --- | --- | --- |
 | **中国电信** |支持 |不支持 |北京， 北京2， 上海， 上海2 |
 | **中国联通** | 支持 | 不支持 | 北京 2 |
@@ -195,7 +195,7 @@ Azure 国家云彼此隔离，与全局商业 Azure 隔离。 一个 Azure 云�
 
 ### <a name="germany"></a>德国
 
-| **服务提供商** | **Microsoft Azure** | **办公室 365** | **位置** |
+| **服务提供商** | **Microsoft Azure** | **Office 365** | **位置** |
 | --- | --- | --- | --- |
 | **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |支持 |不支持 |法兰克福 |
 | **[埃基尼克斯](https://www.equinix.com/partners/microsoft-azure/)** |支持 |不支持 |法兰克福 |

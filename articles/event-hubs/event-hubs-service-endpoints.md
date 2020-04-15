@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 11/26/2019
 ms.author: shvija
-ms.openlocfilehash: 6de51c23bd6358a6f54fe3baf9e9b256047d4ab5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: abd7940551f7a8182364475b0cf50b60afb5e1b7
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064889"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313796"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>将虚拟网络服务终结点与 Azure 事件中心配合使用
 
@@ -25,6 +25,22 @@ ms.locfileid: "80064889"
 一旦配置为至少绑定到一个虚拟网络子网服务终结点，相应的事件中心命名空间将不再接受来自虚拟网络中的经过授权的子网的流量。 从虚拟网络的角度来看，通过将事件中心命名空间绑定到服务终结点，可配置从虚拟网络子网到消息传递服务的独立网络隧道。 
 
 然后，绑定到子网的工作负荷与相应的事件中心命名空间之间将存在专用和独立的关系，消息传递服务终结点的可观察网络地址位于公共 IP 范围内对此没有影响。 此行为有一个例外。 默认情况下，启用服务终结点可在[IP](event-hubs-ip-filtering.md)防火墙`denyall`中启用与虚拟网络关联的规则。 您可以在 IP 防火墙中添加特定的 IP 地址，以启用对事件中心公共终结点的访问。 
+
+>[!WARNING]
+> 实现虚拟网络集成可以防止其他 Azure 服务与事件中心进行交互。
+>
+> 实现虚拟网络时，受信任的 Microsoft 服务不受支持。
+>
+> 不适用于虚拟网络常见 Azure 方案（请注意，该列表内容并不详尽）****-
+> - Azure 流分析
+> - 与 Azure 事件网格的集成
+> - Azure IoT 中心路由
+> - Azure IoT Device Explorer
+>
+> 以下 Microsoft 服务需要位于虚拟网络上
+> - Azure Web 应用
+> - Azure Functions
+
 
 > [!IMPORTANT]
 > 事件中心的标准**** 和专用**** 层支持虚拟网络。 **基本**层不支持它。

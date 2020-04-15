@@ -5,12 +5,12 @@ author: suhuruli
 ms.topic: conceptual
 ms.date: 11/17/2017
 ms.author: suhuruli
-ms.openlocfilehash: f2ca1566358fad45f6ec2860fcca96b887c54adb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e278bcedc48226a59f258ad7d7064fa224737496
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76722571"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81308988"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>在 Mac OS X 上设置开发环境
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Servic
 2. 在新目录中创建名为 `Dockerfile` 的文件，以生成 Service Fabric 映像：
 
     ```Dockerfile
-    FROM microsoft/service-fabric-onebox
+    FROM mcr.microsoft.com/service-fabric/onebox:latest
     WORKDIR /home/ClusterDeployer
     RUN ./setup.sh
     #Generate the local
@@ -98,7 +98,7 @@ Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Servic
     >
     >如果应用程序正在侦听特定端口，则必须使用附加的 `-p` 标记指定这些端口。 例如，如果应用程序正在侦听端口 8080，请添加下面的 `-p` 标记：
     >
-    >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox`
+    >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest`
     >
 
 5. 群集需要一小段时间来启动。 运行时，可以使用以下命令查看日志，也可以跳转到仪表板以查看群集运行状况[http://localhost:19080](http://localhost:19080)：
@@ -197,7 +197,7 @@ Azure Service Fabric 为适用于 Java IDE 的 Eclipse Neon（或更高版本）
 最后一步是使用与主机共享的路径实例化该容器。 该插件需要此类实例化才能与 Mac 上的 Docker 容器配合使用。 例如：
 
 ```bash
-docker run -itd -p 19080:19080 -v /Users/sayantan/work/workspaces/mySFWorkspace:/tmp/mySFWorkspace --name sfonebox microsoft/service-fabric-onebox
+docker run -itd -p 19080:19080 -v /Users/sayantan/work/workspaces/mySFWorkspace:/tmp/mySFWorkspace --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest
 ```
 
 这些属性定义如下：

@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 04/07/2020
+ms.date: 04/14/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e097173712693754baab99912301c98ee336f64f
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: bfe8aa088538663ac3e64f5913ff031e6160b045
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80877909"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382644"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -228,12 +228,11 @@ In | 有权执行的操作
 
 ### <a name="global-reader"></a>[全球阅读器](#global-reader-permissions)
 
-充当此角色的用户可以跨 Microsoft 365 服务读取设置和管理信息，但无法执行管理操作。 全局读取者是对应于全局管理员的只读角色。 满足规划、审核或调查目的时，请分配全局读取者，而不要分配全局管理员。 将全局读取者与其他受限管理员角色（例如 Exchange 管理员）结合使用可以更轻松地完成工作，且无需分配全局管理员角色。 全局读取者可使用 Microsoft 365 管理中心、Exchange 管理中心、Teams 管理中心、安全中心、合规中心、Azure AD 管理中心和设备管理管理中心。
+充当此角色的用户可以跨 Microsoft 365 服务读取设置和管理信息，但无法执行管理操作。 全局读取者是对应于全局管理员的只读角色。 满足规划、审核或调查目的时，请分配全局读取者，而不要分配全局管理员。 将全局读取者与其他受限管理员角色（例如 Exchange 管理员）结合使用可以更轻松地完成工作，且无需分配全局管理员角色。 全球阅读器与 Microsoft 365 管理中心、交换管理中心、SharePoint 管理中心、团队管理中心、安全中心、合规性中心、Azure AD 管理中心和设备管理管理中心合作。
 
 > [!NOTE]
 > 全局读取者角色目前存在一些限制 -
 >
->- SharePoint 管理中心 - SharePoint 管理中心不支持全局读取者角色。 [Microsoft 365 管理中心](https://admin.microsoft.com/Adminportal/Home#/homepage)内“管理中心”的左下窗格不会显示“SharePoint”。
 >- [OneDrive 管理中心](https://admin.onedrive.com/) - OneDrive 管理中心不支持全局读取者角色。
 >- [Azure AD 门户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) - 全局读取者无法读取企业应用的预配模式。
 >- [M365 管理中心](https://admin.microsoft.com/Adminportal/Home#/homepage) - 全局读取者无法读取客户密码箱请求。 在 M365 管理中心左窗格中的“支持”下，看不到“客户密码箱请求”选项卡。********

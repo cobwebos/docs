@@ -1,18 +1,18 @@
 ---
-title: 在商业市场创建新的 SaaS 产品/服务
-description: 如何通过 Microsoft 合作伙伴中心的商业应用商店门户创建新的软件即服务 （SaaS） 产品，用于在 Azure 应用商店、AppSource 或通过云解决方案提供商 （CSP） 计划进行上市或销售。
+title: 为微软商业市场创建新的 SaaS 产品
+description: 如何通过 Microsoft 合作伙伴中心中的 Microsoft 商业市场计划创建新的软件即服务 （SaaS） 产品，用于在 Microsoft AppSource、Azure 应用商店中或通过云解决方案提供商 （CSP） 计划进行上市或销售。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 02/28/2020
-ms.openlocfilehash: 3f2201db4b78ba61ba15608a676a8b9f8f5e612a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/13/2020
+ms.openlocfilehash: 45559978f710549088d75d0f0706b798ebad3821
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286194"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314087"
 ---
 # <a name="create-a-new-saas-offer"></a>创建新的 SaaS 套餐
 
@@ -43,7 +43,7 @@ ms.locfileid: "80286194"
 
 <br>示例：测试优惠 1&#8482;
 
-选择 **“创建”**。  为此产品/服务创建**产品/服务概述**页面。  
+选择“创建”  。  为此产品/服务创建**产品/服务概述**页面。  
 
 <!---
 ![Offer overview on Partner Center](./media/commercial-marketplace-offer-overview.png)
@@ -82,6 +82,7 @@ ms.locfileid: "80286194"
 - 有关更广泛的要求，请参阅[SaaS 产品发布指南](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)。
 
 #### <a name="saas-pricing-and-billing-options"></a>SaaS 定价和计费选项
+
 在发布者 Azure 订阅中运行 SaaS 解决方案后，客户支付的许可费包括部署软件的基础结构的成本。 Azure 基础结构使用情况将直接管理和计费给合作伙伴。 客户将无法看到实际的基础结构使用费。 发布者应将 Azure 基础结构使用费捆绑到其软件许可证定价中。 
 
 SaaS 根据固定费用、每个用户或使用按流量计费服务的消耗费提供每月或年度计费支持。 微软的商业市场以代理模式运作，即出版商设定价格，微软向客户收费，微软在扣缴代理费的同时向出版商支付收入。
@@ -109,16 +110,19 @@ SaaS 根据固定费用、每个用户或使用按流量计费服务的消耗费
 
 - **您希望潜在客户如何与此上市产品进行交互？**
 
-##### <a name="get-it-now-free"></a>立即获取（免费）
+#### <a name="get-it-now-free"></a>立即获取（免费）
+
 通过提供有效的 URL（以*http*或*https*开头），通过一[键身份验证，可以使用 Azure 活动目录 （Azure AD）](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials)获得试用版，从而向客户免费列出您的产品/服务。  例如： `https://contoso.com/saas-app`
 
-##### <a name="free-trial-listing"></a>免费试用（列表）
+#### <a name="free-trial-listing"></a>免费试用（列表）
+
 通过提供有效的 URL（从*http*或*https*开头），向客户列出您的优惠，通过[一键身份验证，可以使用 Azure 活动目录 （Azure AD）](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials)获得试用版。  例如：`https://contoso.com/trial/saas-app`。 免费试用版产品列表的优惠由您的服务创建、管理和配置，并且没有由 Microsoft 管理的订阅。
 
 > [!NOTE]
 > 应用程序将通过试用链接收到的令牌只能用于通过 Azure AD 获取用户信息，以自动在应用中创建帐户。 使用此令牌进行身份验证不支持 Microsoft 帐户 （MSA）。
 
-##### <a name="contact-me"></a>与我联系
+#### <a name="contact-me"></a>与我联系
+
 通过连接客户关系管理 （CRM） 系统收集客户联系信息。 将请求客户共享其信息的权限。 这些客户详细信息以及找到产品/服务的产品/服务的产品/地区的产品/服务名称、ID 和市场源将发送到您配置的 CRM 系统。 有关配置 CRM 的详细信息，请参阅[连接潜在顾客管理](#connect-lead-management)。
 
 ## <a name="example-marketplace-offer-listing"></a>市场套餐商品示例
@@ -127,16 +131,16 @@ SaaS 根据固定费用、每个用户或使用按流量计费服务的消耗费
 
 ## <a name="enable-a-test-drive"></a>启用体验版
 
-试驾是向潜在客户展示您的报价的绝佳方式，为他们提供"购买前试用"选项，从而提高转化率并生成高素质潜在客户。 [了解有关测试驱动器的更多详细信息。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
+试驾是向潜在客户展示您的报价的绝佳方式，为他们提供"购买前试用"选项，从而提高转化率并生成高素质潜在客户。 要了解更多信息，请参阅[允许您的客户测试您的产品/服务](./test-drive.md)。
 
 - **启用试驾**（复选框）
 
 通过启用试驾，系统将要求您配置一个演示环境，以便客户在固定时间内试用您的产品/服务。 
 
-#### <a name="test-drive-resources"></a>试驾资源
-- [试驾技术最佳实践](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [试驾营销最佳实践](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
-- [试驾概述一个寻呼机](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
+### <a name="test-drive-resources"></a>试驾资源
+
+- [试驾营销最佳实践](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)- [试驾技术最佳实践](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [试驾概述（PDF 下载）](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
 
 ## <a name="connect-lead-management"></a>连接潜在客户管理
 
@@ -299,7 +303,7 @@ SaaS 根据固定费用、每个用户或使用按流量计费服务的消耗费
 
 - **定义预览受众：每行添加单个 AAD/MSA 帐户电子邮件以及可选说明。**
 
-手动添加 10 （10） 个电子邮件地址，如果上传 CSV 文件，则最多添加 10 （20 个）电子邮件地址，用于现有 Microsoft 帐户 （MSA） 或 Azure 活动目录帐户，以帮助在实时发布之前验证您的产品/服务。 通过添加这些帐户，您将定义一个受众，该受众将允许在产品/服务发布到市场之前预览访问产品/服务。 如果您的优惠已是实时的，您仍然可以定义预览受众以测试产品/服务的任何更改或更新。
+手动添加 10 个电子邮件地址，如果上载 CSV 文件，则最多添加 20 个，用于现有 Microsoft 帐户 （MSA） 或 Azure 活动目录帐户，以帮助在实时发布之前验证您的产品/服务。 通过添加这些帐户，您将定义一个受众，该受众将允许在产品/服务发布到市场之前预览访问产品/服务。 如果您的优惠已是实时的，您仍然可以定义预览受众以测试产品/服务的任何更改或更新。
 
 > [!NOTE]
 > 预览观众与私人观众不同。 预览受众在市场现场发布_之前_，可以访问您的优惠。 您还可以选择创建计划，使其仅对私人受众可用。 在 **"计划列表**"选项卡中，您可以使用"**这是一个私人计划**"复选框定义专用访问群体。 然后，您可以使用 Azure 租户 ID 定义最多 20，000 个客户的专用受众。
@@ -359,12 +363,12 @@ SaaS 根据固定费用、每个用户或使用按流量计费服务的消耗费
 >[!Note]
 >如果客户选择在没有免费试用的情况下转换为计划，转换将发生，但免费试用将立即丢失。  此外，一旦客户开始为计划付费，他们就不能再在同一订阅上获得免费试用，即使他们转换为支持免费试用的 SKU 也是如此。
 
-对于优惠中的每个计划，均可配置免费试用版。 只需导航到每个产品/服务的定价和可用性，然后选中此框即可进行一个月的试用。
+对于优惠中的每个计划，均可配置免费试用版。 导航到每个产品/服务的定价和可用性，然后选中此框以允许为期一个月的试用。
 
 ![一个月免费试用复选框](./media/free-trial-enable.png)
 
 >[!Note]
->一旦您的可交易优惠发布免费试用，则无法为该计划禁用。 确保此设置对于第一个发布是正确的，以避免重新创建计划。
+>一旦您的可交易优惠发布免费试用版，则无法为该计划禁用该优惠。 确保此设置对于第一个发布是正确的，以避免重新创建计划。
 
 要获取有关当前参与免费试用的客户订阅的信息，请使用新的 API 属性，该`isFreeTrial`属性将标记为真或假。 有关详细信息，请参阅[SaaS 获取订阅 API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription)。
 
@@ -377,7 +381,7 @@ SaaS 根据固定费用、每个用户或使用按流量计费服务的消耗费
 
 每个计划必须至少在一个市场可用。 选择您希望提供此计划的任何市场位置的复选框。 包含用于选择"免税"国家/地区的搜索框和按钮，其中 Microsoft 代表您汇出销售和使用税，以帮助。
 
-如果您已为计划设定价格（美元），并添加其他市场位置，则新市场的价格将根据当前汇率计算。 在发布之前，您应该始终查看每个市场的价格。 在保存更改后，可以使用"出口价格 （xlsx）"链接查看定价。
+如果您已为计划设定价格（美元），并添加其他市场位置，则新市场的价格将根据当前汇率计算。 在发布之前，请查看每个市场的价格。 在保存更改后，可以使用"出口价格 （xlsx）"链接查看定价。
 
 #### <a name="pricing"></a>定价
 
@@ -418,7 +422,7 @@ SaaS 根据固定费用、每个用户或使用按流量计费服务的消耗费
 
 分配有权访问此私人计划的访问群体。 使用租户 ID 分配访问权限，并选择包括所分配的每个租户 ID 的说明。 最多可以添加 10 个租户 ID，如果导入 .csv 电子表格文件，最多可以添加 20，000 个客户租户 ID。
 
-租户是组织的表示形式，ID 表示为 GUID（全局唯一标识符，用于标识资源的 128 位整数）。 它是 Azure AD 专用实例，组织或应用开发人员与 Microsoft 建立关系时（例如注册 Azure、Microsoft Intune 或 Microsoft 365）会收到该实例。 每个 Azure AD 租户都是独特的，独立于其他 Azure AD 租户。 要检查租户，请使用要用于管理应用程序的帐户登录 Azure 门户。 如果你有一个租户，则会自动登录到该租户，并且帐户名的正下方会显示租户名称。 将鼠标指针悬停在 Azure 门户右上角的帐户名上，可以查看你的姓名、电子邮件、目录/租户 ID (GUID) 以及域。 如果帐户与多个租户相关联，则可以选择帐户名打开一个菜单，并在其中切换租户。 每个租户都有自己的唯一租户 ID。 您还可以使用域名 URL 在 ：[https://www.whatismytenantid.com](https://www.whatismytenantid.com)查找组织的租户 ID。
+租户是组织的表示形式，ID 表示为 GUID（全局唯一标识符，用于标识资源的 128 位整数）。 它是组织或应用开发人员在组织或应用开发人员与 Microsoft 建立关系时（例如，注册 Azure、微软 Intune 或 Microsoft 365 时）接收的 Azure AD 专用实例。 每个 Azure AD 租户都是独特的，独立于其他 Azure AD 租户。 要检查租户，请使用要用于管理应用程序的帐户登录 Azure 门户。 如果你有一个租户，则会自动登录到该租户，并且帐户名的正下方会显示租户名称。 将鼠标指针悬停在 Azure 门户右上角的帐户名上，可以查看你的姓名、电子邮件、目录/租户 ID (GUID) 以及域。 如果帐户与多个租户相关联，则可以选择帐户名打开一个菜单，并在其中切换租户。 每个租户都有自己的唯一租户 ID。 您还可以使用域名 URL 在 ：[https://www.whatismytenantid.com](https://www.whatismytenantid.com)查找组织的租户 ID。
 
 虽然 SaaS 提供使用租户 ID 来定义专用受众，但其他产品/服务类型可能使用 Azure 订阅 ID（也表示为 GUID）。
 
@@ -429,19 +433,15 @@ SaaS 根据固定费用、每个用户或使用按流量计费服务的消耗费
 
 ![带有注释的市场计划列表示例](./media/marketplace-plan.svg)
 
-## <a name="test-drive"></a>体验版
-
-[!INCLUDE [Test drive content](./includes/commercial-marketplace-test-drive.md)]
-
 ## <a name="cloud-solution-provider-csp-reseller-audience"></a>云解决方案提供商 （CSP） 经销商受众
 
 选择在 CSP 计划中提供您的产品/服务，云解决方案提供商能够将您的产品作为捆绑解决方案的一部分向客户销售。 有关详细信息，请参阅[云解决方案提供商](https://go.microsoft.com/fwlink/?linkid=2111109)。
 
 ## <a name="publish"></a>发布
 
-完成产品/服务的所有必需部分后，选择门户右上角的**发布**。 您将被重定向到 **"审阅"和"发布**"页。
+完成产品/服务的所有必需部分后，选择门户右上角的**发布**。 您将被重定向到 **"审阅"和"发布"** 页。
 
-#### <a name="submit-offer-to-preview"></a>提交优惠以预览
+### <a name="submit-offer-to-preview"></a>提交优惠以预览
 
 如果这是您第一次发布此产品/服务，您可以：
 

@@ -11,19 +11,19 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1a026cc241eb372e15f2600e52ec53a46efb1024
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 75020b0dd58a80f989bd03eb92031d904ebf4c82
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81256002"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313686"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure 同步分析商业智能合作伙伴
 
 要使用 Azure Synapse 中的 Synapse SQL 池创建完整的数据仓库解决方案，可以从各种行业领先的工具中进行选择。  本文重点介绍 Microsoft 合作伙伴公司，这些合作伙伴具有支持 Azure SQL 数据仓库的官方商业智能 （BI） 解决方案。
 
 ## <a name="our-business-intelligence-partners"></a>我们的商业智能合作伙伴
-| Partner | 说明 | 网站/产品链接 |
+| Partner | 描述 | 网站/产品链接 |
 | ------- | ----------- | -------------------- |
 | ![Birst](./media/sql-data-warehouse-partner-business-intelligence/birst_logo.png) |**Birst**<br>Birst 通过共享公共分析结构顶部的交织虚拟化 BI 实例网络连接整个组织|[产品页](https://www.birst.com/)<br>[Azure 市场](https://azure.microsoft.com/marketplace/partners/birst/birst/)<br> |
 | ![ClearStory Data](./media/sql-data-warehouse-partner-business-intelligence/clearstory_data_logo.png) |**清晰故事数据（持续业务洞察）**<br>ClearStory 数据支持跨 Synapse SQL 池中存储的不同数据进行快速周期分析。 ClearStory 集成的基于 Spark 的平台和分析应用程序可加快数据访问和不同数据集的协调。 它们可实现快速协作的探索，支持业务用户自力更生，获得快速见解。 |[产品页](https://www.clearstorydata.com/product/continuous-insights/)<br> |
@@ -38,6 +38,7 @@ ms.locfileid: "81256002"
 | ![SiSense](./media/sql-data-warehouse-partner-business-intelligence/sisense_logo.png) |**SiSense**<br>SiSense 是全方位的商业智能软件，提供企业分析和可视化数据所必备的工具：高性能分析数据库、联接多个源、简易数据提取 (ETL) 和基于 Web 的数据可视化。 立即使用 SiSense BI 和 Analytics 开始分析及可视化大型数据集。 |[产品页](https://www.sisense.com/product/)<br> |
 | ![Tableau](./media/sql-data-warehouse-partner-business-intelligence/tableau_sparkle_logo.png) |**Tableau**<br>Tableau 的自助服务分析可帮助任何人查看和理解其数据，包括从平面文件到数据库的多种数据。 Tableau 具有 Synapse SQL 池的本机优化连接器，支持实时数据和内存分析。 |[产品页](https://www.tableau.com/)<br> [Azure 市场](https://azure.microsoft.com/marketplace/partners/tableau/tableau-server/)<br>|
 | ![Targit](./media/sql-data-warehouse-partner-business-intelligence/targit_logo.png) |**塔吉特（决策套件）**<br>Targit Decision Suite 提供 BI 和分析平台，以单个且一致的解决方案提供实时仪表板、自助分析、方便使用的报告、令人赞叹的移动功能和简单的数据发现技术。 Targit 为企业带来了行动的勇气。 |[产品页](https://www.targit.com/targit-decision-suite/analytics)<br> [Azure 市场](https://azure.microsoft.com/marketplace/partners/targit/targit-decision-suite/)<br> |
+| ![思想点](./media/sql-data-warehouse-partner-business-intelligence/thoughtspot-logo.png) |**思想点**<br>全球最具创新力的企业使用 InsightsSpot 增强组织中的每个人的能力，从 C-Suite 高管到一线员工，能够快速发现数据驱动的见解。 借助 InsightsSpot，商务人士可以键入简单的搜索，以立即分析数十亿行数据，并利用人工智能获得信任的相关见解，作为他们可能没有想到的数千个问题的答案。 思想Spot足够简单，可供任何业务人员使用，但功能强大，即使在不牺牲速度、安全性或治理的情况下也能处理最大、最复杂的企业数据。 这就是为什么像沃尔玛、7-11、英国电信、戴姆勒、埃克森美孚、Hulu、加拿大皇家银行、西部银行和全国建筑协会这样的客户转向思想Spot来转变他们的决策文化，而分析公司Gartner在2020年魔力象限中被评为"思想Spot"。"。 通过让洞察成为每个对话和每个决策的一部分，思想Spot正在重新构想数据在创建一个更加事实驱动的世界中的作用。 |[产品页](https://www.thoughtspot.com)<br>|
 | ![Yellowfin](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_logo.png) |**Yellowfin**<br>黄鳍是 BARC 临时报告和仪表板的最高评级云 BI 供应商;BI 调查。 连接到 Synapse SQL 池，然后创建和共享漂亮的报表和仪表板，并具有屡获殊荣的协作 BI 和位置智能功能。 |[产品页](https://www.yellowfinbi.com/)<br> [Azure 市场](https://azure.microsoft.com/marketplace/partners/yellowfin/yellowfin-for-azure-byol/) |
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->

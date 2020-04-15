@@ -3,12 +3,12 @@ title: 如何为 Windows 创建来宾配置策略
 description: 了解如何为 Windows 创建 Azure 策略来宾配置策略。
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 24069ff6518c4244026378e48216d4568fffeb8a
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: deb51cf502d26dc994bf74ef3cb0c728f624afde
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365475"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313978"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>如何为 Windows 创建来宾配置策略
 
@@ -73,7 +73,11 @@ Guest Configuration 资源模块需要以下软件：
 
 ### <a name="how-guest-configuration-modules-differ-from-windows-powershell-dsc-modules"></a>来宾配置模块与 Windows PowerShell DSC 模块有何不同
 
-当 Guest Configuration 审核某个计算机时，它首先会运行 `Test-TargetResource` 来确定该计算机是否处于正常状态。 该函数返回的布尔值确定来宾分配的 Azure 资源管理器状态是合规还是不合规。 接下来，提供程序将`Get-TargetResource`运行以返回每个设置的当前状态，以便提供有关计算机不符合原因的详细信息，或确认当前状态是否合规。
+当来宾配置审核计算机时：
+
+1. 代理首先运行`Test-TargetResource`以确定配置是否处于正确状态。
+1. 该函数返回的布尔值确定来宾分配的 Azure 资源管理器状态是合规还是不合规。
+1. 提供程序运行`Get-TargetResource`以返回每个设置的当前状态，以便提供有关计算机不符合原因的详细信息以及确认当前状态是否合规。
 
 ### <a name="get-targetresource-requirements"></a>Get-TargetResource 要求
 
@@ -102,6 +106,25 @@ return @{
     reasons = $reasons
 }
 ```
+
+"原因"属性也必须作为嵌入类添加到资源的架构 MOF 中。
+
+```mof
+[ClassVersion("1.0.0.0")] 
+class Reason
+{
+    [Read] String Phrase;
+    [Read] String Code;
+};
+
+[ClassVersion("1.0.0.0"), FriendlyName("ResourceName")]
+class ResourceName : OMI_BaseResource
+{
+    [Key, Description("Example description")] String Example;
+    [Read, EmbeddedInstance("Reason")] String Reasons[];
+};
+```
+
 ### <a name="configuration-requirements"></a>配置要求
 
 自定义配置的名称必须在所有位置保持一致。 内容包的 .zip 文件的名称、MOF 文件中的配置名称以及资源管理器模板中的来宾分配名称必须相同。
@@ -134,7 +157,7 @@ PowerShell cmdlet 可帮助创建包。
 
 ## <a name="step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows"></a>逐步创建 Windows 的自定义来宾配置审核策略
 
-创建 DSC 配置。 下面的 PowerShell 脚本示例创建名为**AuditBitLocker**的配置，导入**PsDscResources**资源模块`Service`，并使用资源对正在运行的服务进行审核。 配置脚本可以从 Windows 或 macOS 计算机执行。
+创建 DSC 配置以审核设置。 下面的 PowerShell 脚本示例创建名为**AuditBitLocker**的配置，导入**PsDscResources**资源模块`Service`，并使用资源对正在运行的服务进行审核。 配置脚本可以从 Windows 或 macOS 计算机执行。
 
 ```powershell
 # Define the DSC configuration and import GuestConfiguration
@@ -160,7 +183,7 @@ AuditBitLocker -out ./Config
 
 编译 MOF 后，必须将支持文件打包在一起。 Guest Configuration 使用已完成的包来创建 Azure Policy 定义。
 
-可以使用 `New-GuestConfigurationPackage` cmdlet 创建该包。 创建 Windows`New-GuestConfigurationPackage`内容时的 cmdlet 参数：
+可以使用 `New-GuestConfigurationPackage` cmdlet 创建该包。 配置所需的模块必须在 中`$Env:PSModulePath`可用。 创建 Windows`New-GuestConfigurationPackage`内容时的 cmdlet 参数：
 
 - **名称**：来宾配置包名称。
 - **配置**：编译 DSC 配置文档完整路径。
@@ -176,7 +199,7 @@ New-GuestConfigurationPackage `
 
 创建配置包后，但在将其发布到 Azure 之前，可以从工作站或 CI/CD 环境中测试该包。 Guest 配置 cmdlet`Test-GuestConfigurationPackage`在开发环境中包括与 Azure 计算机中使用的代理相同的代理。 使用此解决方案，您可以在本地执行集成测试，然后再发布到计费的云环境。
 
-由于代理实际上是在评估本地环境，因此在大多数情况下，您需要在计划审核的同一操作系统平台上运行 Test-cmdlet。
+由于代理实际上是在评估本地环境，因此在大多数情况下，您需要在计划审核的同一操作系统平台上运行 Test-cmdlet。 测试将仅使用内容包中包含的模块。
 
 `Test-GuestConfigurationPackage` cmdlet 的参数：
 

@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 48d98d6fef896f9288be88824a62fa1c8179217f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7155a3fa9481ef5f2da62d85d4a932ad5e8e8ab1
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276889"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382527"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
 
@@ -33,7 +33,7 @@ Azure Functions 部署通常包括以下资源：
 | [应用程序见解](../azure-monitor/app/app-insights-overview.md)组件 | 可选    | [微软.Insights/组件](/azure/templates/microsoft.insights/components)         |   |
 | [托管计划](./functions-scale.md)                                             | 可选<sup>1</sup>    | [微软.Web/服务器农场](/azure/templates/microsoft.web/serverfarms)                 |   |
 
-<sup>1</sup>仅当选择在[高级计划](./functions-premium-plan.md)（预览版）或[应用服务计划](../app-service/overview-hosting-plans.md)上运行函数应用时，才需要托管计划。
+<sup>1</sup>仅当选择在[高级计划](./functions-premium-plan.md)或[应用服务计划](../app-service/overview-hosting-plans.md)上运行函数应用时，才需要托管计划。
 
 > [!TIP]
 > 虽然不是必需的，但强烈建议您为应用配置应用程序见解。
@@ -111,7 +111,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 托管计划的定义是变化的，并且可能是下列项之一：
 * [消耗计划](#consumption)（默认值）
-* [高级计划](#premium)（预览版）
+* [高级计划](#premium)
 * [应用服务计划](#app-service-plan)
 
 ### <a name="function-app"></a>函数应用
@@ -137,7 +137,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 函数应用必须包括以下应用程序设置：
 
-| 设置名称                 | 描述                                                                               | 示例值                        |
+| 设置名                 | 描述                                                                               | 示例值                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | 函数运行时用于内部队列的存储帐户的连接字符串 | 请参阅[存储帐户](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | Azure Functions 运行时的版本                                                | `~2`                                  |
@@ -647,7 +647,7 @@ Linux 应用程序还应包括`linuxFxVersion`下`siteConfig`的属性。 如果
 
 可以使用以下任意方法部署模板：
 
-* [电源外壳](../azure-resource-manager/templates/deploy-powershell.md)
+* [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
 * [Azure 门户](../azure-resource-manager/templates/deploy-portal.md)
 * [REST API](../azure-resource-manager/templates/deploy-rest.md)

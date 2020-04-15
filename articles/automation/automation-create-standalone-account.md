@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: f06480767b697dca8fe41e484c02aefc58f040bf
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 3a885f071c89ff6d9bb79d908b19c9451b4ed735
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261323"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383309"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>创建独立的 Azure 自动化帐户
 
@@ -64,7 +64,7 @@ ms.locfileid: "81261323"
    >
    > ![添加自动化帐户警报](media/automation-create-standalone-account/create-account-without-perms.png)
 
-1. 在“添加自动化帐户”窗格的“名称”框中，输入新自动化帐户的名称。******** 此名称选定后即不可更改。 *自动化帐户名称对于每个区域和资源组是唯一的。已删除的自动化帐户的名称可能不会立即可用。*
+1. 在“添加自动化帐户”窗格的“名称”框中，输入新自动化帐户的名称。******** 此名称选定后即不可更改。 *每个区域和资源组的自动化帐户名称都是唯一的。已删除的自动化帐户的名称可能无法立即可用。*
 1. 如果有多个订阅，请在“订阅”框中为新帐户指定一个订阅****。
 1. 对于“资源组”，请输入或选择新的或现有的资源组。****
 1. 对于“位置”，请选择一个 Azure 数据中心位置。****
@@ -92,11 +92,11 @@ ms.locfileid: "81261323"
 | AzureRunAsCertificate |在创建自动化帐户时自动创建的，或针对现有帐户使用 PowerShell 脚本创建的证书资产。 使用该证书可向 Azure 进行身份验证，以便通过 Runbook 管理 Azure 资源管理器资源。 此证书有一年的有效期。 |
 | AzureRunAsConnection |在创建自动化帐户时自动创建的，或针对现有帐户使用 PowerShell 脚本创建的连接资产。 |
 
-## <a name="create-a-classic-run-as-account"></a>创建经典运行身份帐户
+## <a name="create-a-classic-run-as-account"></a>创建经典运行作为帐户
 
-默认情况下，创建 Azure 自动化帐户时，将不再创建经典运行方式帐户。 如果仍需要经典运行方式帐户，请执行以下步骤。
+默认情况下，在创建 Azure 自动化帐户时，将不再创建"经典运行为帐户"。 如果您仍然需要经典运行作为帐户：
 
-1. 在“自动化帐户”页的“帐户设置”下，选择“运行方式帐户”************。
+1. 从您的自动化帐户中，选择"**在帐户设置**下**以帐户身份运行**"。
 2. 选择“Azure 经典运行方式帐户”****。
 3. 单击“创建”****，以继续创建经典运行方式帐户。
 
@@ -105,5 +105,6 @@ ms.locfileid: "81261323"
 * 要了解有关图形创作的更多信息，请参阅[Azure 自动化 中的图形创作](automation-graphical-authoring-intro.md)。
 * 要开始使用 PowerShell 运行簿，请参阅[我的第一个 PowerShell 运行簿](automation-first-runbook-textual-powershell.md)。
 * 若要开始使用 PowerShell 工作流 Runbook，请参阅 [我的第一个 PowerShell 工作流 Runbook](automation-first-runbook-textual.md)。
-* 要开始使用 Python2 运行簿，请参阅[我的第一个 Python2 运行簿](automation-first-runbook-textual-python2.md)。
-
+* 要开始使用 Python 2 运行簿，请参阅[我的第一个 Python2 运行簿](automation-first-runbook-textual-python2.md)。
+* 有关 PowerShell cmdlet 引用，请参阅[Az.自动化](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)。

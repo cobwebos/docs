@@ -8,18 +8,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 01/30/2020
 ms.author: victorh
-ms.openlocfilehash: f56929e14aef34f675139782328ed5c559df12c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 809274aba35e9607aeacf7c6483ec3d10f899667
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198592"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312370"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>使用内部负载均衡器 (ILB) 终结点配置应用程序网关
 
 可以在 Azure 应用程序网关上配置面向 Internet 的 VIP 或不向 Internet 公开的内部终结点。 内部终结点使用前端（也称为内部负载均衡器 (ILB) 终结点）的专用 IP 地址。**
 
-对于不向 Internet 公开的内部业务线应用程序，使用前端专用 IP 地址配置网关的做法非常有效。 对于位于不向 Internet 公开的安全边界内的多层应用程序中的服务和层也很有用，但仍需要执行循环负载分散、会话粘性或安全套接字层 (SSL) 终止。
+对于不向 Internet 公开的内部业务线应用程序，使用前端专用 IP 地址配置网关的做法非常有效。 它还适用于多层应用程序中的服务和层，这些应用程序处于安全边界内，这些边界未向 Internet 公开，但仍需要循环负载分发、会话粘性或传输层安全 （TLS），以前称为安全套接字层 （SSL））终止。
 
 本文引导你完成在 Azure 门户中使用前端专用 IP 地址配置应用程序网关的步骤。
 
@@ -59,7 +59,7 @@ Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创�
 10. 选择“添加后端池”。****
 11. 对于“名称”，请键入 *appGatewayBackendPool*。****
 12. 对于“添加没有目标的后端池”，请选择“是”。******** 稍后将添加目标。
-13. 选择“添加”****。
+13. 选择 **添加** 。
 14. 选择“下一步: 配置”。****
 15. 在“路由规则”下，选择“添加规则”。********
 16. 对于“规则名称”，请键入 *Rrule-01*。****
@@ -89,7 +89,7 @@ Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创�
 
 ### <a name="create-a-virtual-machine"></a>创建虚拟机
 
-1. 选择“创建资源”。****
+1. 选择“创建资源”。 
 2. 依次选择“计算”、“虚拟机”。********
 4. 输入虚拟机的以下值：
    - 对于“资源组”，请选择“myResourceGroupAG”。******

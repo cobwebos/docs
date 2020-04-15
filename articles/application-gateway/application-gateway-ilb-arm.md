@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 9fbde84c499ba5b086ce812de63602c626b416b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 406dcdb419dba2e8044a173f4c05028abbaba3da
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74179334"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312423"
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>创建具有内部负载均衡器 (ILB) 的应用程序网关
 
-可以配置使用面向 Internet 的 VIP 或不向 Internet 公开的内部终结点（也称为内部负载均衡器 (ILB) 终结点）的 Azure 应用程序网关。 配置使用 ILB 的网关适用于不向 Internet 公开的内部业务线应用程序。 对于位于不向 Internet 公开的安全边界内的多层应用程序中的服务和层也很有用，但仍需要执行循环负载分散、会话粘性或安全套接字层 (SSL) 终止。
+可以配置使用面向 Internet 的 VIP 或不向 Internet 公开的内部终结点（也称为内部负载均衡器 (ILB) 终结点）的 Azure 应用程序网关。 配置使用 ILB 的网关适用于不向 Internet 公开的内部业务线应用程序。 它还适用于多层应用程序中的服务和层，这些应用程序位于未向 Internet 公开但仍需要循环负载分发、会话粘性或传输层安全 （TLS）（以前称为安全套接字层 （SSL））终止的安全边界中。
 
 本文介绍了配置具有 ILB 的应用程序网关的步骤。
 

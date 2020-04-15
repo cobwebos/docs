@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.author: ryanwi
+ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 173f632a6baed0179b7b4facd2962f9c9764af47
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 828bdab26684b29d664ea42d0b36f475c7872a80
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886324"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309465"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft 标识平台和 OAuth 2.0 资源所有者密码凭据
 
@@ -64,7 +64,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &grant_type=password
 ```
 
-| 参数 | 条件 | 说明 |
+| 参数 | 条件 | 描述 |
 | --- | --- | --- |
 | `tenant` | 必选 | 一个目录租户，用户需登录到其中。 这可采用 GUID 或友好名称格式。 此参数不能设置为 `common` 或 `consumers`，但可以设置为 `organizations`。 |
 | `client_id` | 必选 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给应用的应用程序（客户端）ID。 | 
@@ -90,7 +90,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 }
 ```
 
-| 参数 | 格式 | 说明 |
+| 参数 | 格式 | 描述 |
 | --------- | ------ | ----------- |
 | `token_type` | 字符串 | 始终设置为 `Bearer`。 |
 | `scope` | 空格分隔的字符串 | 如果返回了访问令牌，则此参数会列出该访问令牌的有效范围。 |
@@ -105,7 +105,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 如果用户未提供正确的用户名或密码，或者客户端未收到请求的许可，则身份验证会失败。
 
-| 错误 | 说明 | 客户端操作 |
+| 错误 | 描述 | 客户端操作 |
 |------ | ----------- | -------------|
 | `invalid_grant` | 身份验证失败 | 凭据不正确，或者客户端没有所请求范围的许可。 如果没有授予范围，则会返回 `consent_required` 错误。 如果发生这种情况，客户端应通过 Webview 或浏览器向用户发送交互式提示。 |
 | `invalid_request` | 请求的构造方式不正确 | 授予类型在 `/common` 或 `/consumers` 身份验证上下文中不受支持。  请改用 `/organizations` 或租户 ID。 |

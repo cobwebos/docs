@@ -1,5 +1,5 @@
 ---
-title: 了解 Azure 安全中心，用于 IoT 安全代理本地配置文件，用于 C# |微软文档
+title: 安全代理本地配置 （C#）
 description: 详细了解适用于 IoT 安全服务的 Azure 安全中心、C# 的安全代理本地配置文件。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,15 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 0172ada68ffa652fb0c301c89238beca4f4ce2f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adf0d72763e0cb1892d64c68a6dce05abbf6f582
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74664180"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311664"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>了解本地配置文件 （C# 代理）
-
 
 IoT 安全代理的 Azure 安全中心使用本地配置文件中的配置。
 
@@ -35,18 +34,21 @@ C# 安全代理使用多个配置文件：
 - **身份验证.config** - 身份验证相关配置（包括身份验证详细信息）。
 - **安全 Iot 接口.配置**- IoT 相关配置。
 
-配置文件包含默认配置。 身份验证配置在代理安装期间填充，并在重新启动代理时对配置文件进行更改。 
+配置文件包含默认配置。 身份验证配置在代理安装期间填充，并在重新启动代理时对配置文件进行更改。
 
 ## <a name="configuration-file-location"></a>配置文件位置
+
 对于 Linux：
+
 - 操作系统配置文件位于`/var/ASCIoTAgent`中。
 
 对于 Windows：
-- 操作系统配置文件位于安全代理的目录中。 
+
+- 操作系统配置文件位于安全代理的目录中。
 
 ### <a name="generalconfig-configurations"></a>常规.配置配置
 
-| 配置名称 | 可能值 | 详细信息 | 
+| 配置名称 | 可能值 | 详细信息 |
 |:-----------|:---------------|:--------|
 | 代理 Id | GUID | 代理唯一标识符 |
 | 读取远程配置超时 | TimeSpan | 从 IoT 中心获取远程配置的时间段。 如果代理无法在指定时间内获取配置，则操作将超时。|
@@ -61,6 +63,7 @@ C# 安全代理使用多个配置文件：
 | 默认事件优先级 | "高"，"低"，"关" | 默认事件优先级。 |
 
 ### <a name="generalconfig-example"></a>常规.config 示例
+
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <General>
@@ -80,7 +83,7 @@ C# 安全代理使用多个配置文件：
 
 ### <a name="authenticationconfig"></a>身份验证. 配置
 
-| 配置名称 | 可能值 | 详细信息 | 
+| 配置名称 | 可能值 | 详细信息 |
 |:-----------|:---------------|:--------|
 | moduleName | 字符串 | 安全模块标识的名称。 此名称必须与设备中的模块标识名称对应。 |
 | deviceId | 字符串 | 设备的 ID（在 Azure IoT 中心注册）。 || 计划时间间隔 | 时间跨度字符串 | 内部计划程序间隔。 |
@@ -94,6 +97,7 @@ C# 安全代理使用多个配置文件：
 |
 
 ### <a name="authenticationconfig-example"></a>身份验证.config 示例
+
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <Authentication>
@@ -108,14 +112,16 @@ C# 安全代理使用多个配置文件：
   <add key="registrationId" value="d1"/>
 </Authentication>
 ```
+
 ### <a name="securityiotinterfaceconfig"></a>安全Iot接口.配置
 
-| 配置名称 | 可能值 | 详细信息 | 
+| 配置名称 | 可能值 | 详细信息 |
 |:-----------|:---------------|:--------|
 | transportType | "安普克""Mqtt" | IoT 集线器传输类型。 |
 |
 
 ### <a name="securityiotinterfaceconfig-example"></a>安全Iot接口.config示例
+
 ```XML
 <ExternalInterface>
   <add key="facadeType"  value="Microsoft.Azure.Security.IoT.Agent.Common.SecurityIoTHubInterface, Security.Common" />
@@ -124,6 +130,7 @@ C# 安全代理使用多个配置文件：
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
 - 阅读 Azure 安全中心，了解 IoT 服务[概述](overview.md)
 - 了解有关 IoT[体系结构](architecture.md)的 Azure 安全中心
 - 启用适用于 IoT[服务的](quickstart-onboard-iot-hub.md)Azure 安全中心

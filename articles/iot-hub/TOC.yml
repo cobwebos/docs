@@ -85,8 +85,6 @@
   items:
     - name: TLS 支持
       href: iot-hub-tls-support.md
-    - name: TLS 1.0 和 1.1 弃用
-      href: iot-hub-tls-deprecating-1-0-and-1-1.md
     - name: 虚拟网络支持
       href: virtual-network-support.md
     - name: 消息扩充概述
@@ -444,6 +442,8 @@
           href: iot-hub-operations-monitoring.md
         - name: 迁移到诊断设置
           href: iot-hub-migrate-to-diagnostics-settings.md
+        - name: TLS 1.0 和 1.1 弃用
+          href: iot-hub-tls-deprecating-1-0-and-1-1.md
 - name: 资源
   items:
     - name: 支持和帮助选项

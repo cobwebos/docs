@@ -98,7 +98,7 @@
           href: concepts-data-in-replication.md
         - name: 只读副本
           href: concepts-read-replicas.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 管理服务器
       items:
@@ -156,6 +156,8 @@
           items:
             - name: Azure 门户
               href: howto-configure-audit-logs-portal.md
+            - name: Azure CLI
+              href: howto-configure-audit-logs-cli.md
     - name: 监视
       items:
         - name: 针对指标创建警报
@@ -168,7 +170,7 @@
           href: howto-read-replicas-portal.md
         - name: 使用 Azure CLI、REST API 创建只读副本
           href: howto-read-replicas-cli.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 排查连接错误
           href: howto-troubleshoot-common-connection-issues.md

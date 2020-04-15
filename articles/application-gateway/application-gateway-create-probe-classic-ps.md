@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: e01a1cad98ded9d7ce8683b6adf38b5d53959774
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ba3e9ae7b5075d1f5457cb2960423ad1c737e94
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75966802"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312554"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>使用 PowerShell 创建 Azure 应用程序网关（经典）的自定义探测
 
@@ -140,10 +140,10 @@ Get-AzureApplicationGateway AppGwTest
 
 配置参数为：
 
-|参数|描述|
+|参数|说明|
 |---|---|
 |**名称** |自定义探测的引用名称。 |
-| **协议** | 使用的协议（可能的值为 HTTP 或 HTTPS）。|
+| 协议  | 使用的协议（可能的值为 HTTP 或 HTTPS）。|
 | Host**** 和 Path**** | 应用程序网关为了确定实例运行状况而调用的完整 URL 路径。 例如，如果网站为 http:\//contoso.com/，则可以为“http:\//contoso.com/path/custompath.htm”配置自定义探测，使探测检查能够获得成功的 HTTP 响应。|
 | **区间** | 配置探测检查间隔，以秒为单位。|
 | **超时** | 定义 HTTP 响应检查的探测超时。|
@@ -200,7 +200,7 @@ Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile
 
 ## <a name="next-steps"></a>后续步骤
 
-如果要配置安全套接字层 (SSL) 卸载，请参阅[配置应用程序网关以进行 SSL 卸载](application-gateway-ssl.md)。
+如果要配置传输层安全 （TLS），以前称为安全套接字层 （SSL） 卸载，请参阅[为 TLS 卸载配置应用程序网关](application-gateway-ssl.md)。
 
 如果想要将应用程序网关配置为与内部负载均衡器配合使用，请参阅 [Create an application gateway with an internal Load Balancer (ILB)](application-gateway-ilb.md)（创建具有内部负载均衡器 (ILB) 的应用程序网关）。
 

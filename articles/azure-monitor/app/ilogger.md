@@ -4,12 +4,12 @@ description: 有关将 Azure Application Insights ILogger 提供程序与 ASP.NE
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0f40c1c1a8ee7f20c769a62e9746da43face4cc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33effe9cfec6d766d573617ff03b58564e5b34d1
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80276370"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313663"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>.NET Core ILogger 日志的 ApplicationInsightsLoggerProvider
 
@@ -213,7 +213,7 @@ public class Startup
 - 在 ASP.NET Core（2.0 和更高版本）中，[启用日志记录提供程序](https://github.com/aspnet/Announcements/issues/255)的建议方式是在 **Program.cs** 本身中的 ILoggingBuilder 上使用扩展方法。
 
 > [!Note]
-> 新提供程序适用于面向 NETSTANDARD2.0 或更高版本的应用程序。 如果应用程序面向较低的 .NET Core 版本（例如 .NET Core 1.1）或者面向 .NET Framework，请继续使用旧提供程序。
+> 新提供程序适用于面向 NETSTANDARD2.0 或更高版本的应用程序。 从[Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)版本 2.14.0 开始，新的提供程序也可用于针对 .NET Framework NET461 或更高版本的应用程序。 如果应用程序的目标是较旧的 .NET Core 版本（如 .NET Core 1.1，或者它针对的 .NET 框架低于 NET46），请继续使用旧提供程序。
 
 ## <a name="console-application"></a>控制台应用程序
 

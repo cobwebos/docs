@@ -7,16 +7,16 @@ ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: stevestein
+ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: ee929fa227cb105b73bc929c13a768aabef37ce3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2b72d52463164c2a059fce316cc11a63aad62e7c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75771677"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380947"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>SQL 数据同步最佳做法 
 
@@ -193,7 +193,7 @@ SQL 数据同步自动预配的限制如下：
 
 在某些情况下，向客户端代理取消注册数据库可能会导致同步失败。
 
-#### <a name="scenario"></a>方案
+#### <a name="scenario"></a>场景
 
 1. 使用 SQL 数据库实例和本地 SQL Server 数据库创建与本地代理 1 关联的同步组 A。
 2. 向本地代理 2（此代理不与任何同步组关联）注册同一本地数据库。

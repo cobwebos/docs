@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: f2133524f57576c4646de9d4bf7f37b573a77e6d
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 6f7f319d2ebb4cd39933addf04f249df02d7819f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80813724"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314094"
 ---
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -40,7 +40,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 使用 [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) Azure CLI 命令、[New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) Azure Powershell 命令、[Azure 门户](https://portal.azure.com)或[资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)创建 Key Vault。
 
 >[!WARNING]
-> 为了确保加密机密不会跨越区域边界，Azure 磁盘加密要求密钥保管库和 VM 在同一区域和同一订阅中位于同一位置。 在要加密的 VM 所在的同一区域中创建并使用 Key Vault。 
+> 密钥保管库和 VM 必须位于同一订阅中。 此外，为了确保加密机密不会跨越区域边界，Azure 磁盘加密要求密钥保管库和 VM 在同一区域中位于同一位置。 创建和使用与要加密的 VM 位于同一订阅和区域中的密钥保管库。 
 
 每个密钥保管库必须具有唯一的名称。 在以下示例中，将 <your-unique-keyvault-name> 替换为密钥保管库的名称。
 

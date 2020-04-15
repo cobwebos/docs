@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/13/2019
-ms.openlocfilehash: 1a4ae0701174278203023c156a86aad8feb1ca4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/14/2020
+ms.openlocfilehash: d68f7dc6368c2b3de7f26f2946c5fb47237a820d
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240620"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313930"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure 存储共享访问签名来限制访问 HDInsight 中的数据
 
@@ -27,8 +27,6 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。
-
 * SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](./hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 * 一个现有的[存储容器](../storage/blobs/storage-quickstart-blobs-portal.md)。  
@@ -41,7 +39,7 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
 * 如果使用 C#，Visual Studio 的版本必须是 2013 或更高。
 
-* 存储帐户的 [URI 方案](./hdinsight-hadoop-linux-information.md#URI-and-scheme)。 对于 Azure 存储，这将是 `wasb://`，对于 Azure Data Lake Storage Gen2，这将是 `abfs://`，对于 Azure Data Lake Storage Gen1，这将是 `adl://`。 如果为 Azure 存储启用安全传输，则 URI 将为 `wasbs://`。 另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
+* 存储帐户的 [URI 方案](./hdinsight-hadoop-linux-information.md#URI-and-scheme)。 此方案适用于`wasb://`Azure 存储、Azure`abfs://`数据湖存储第 2`adl://`代或 Azure 数据湖存储第 1 代。 如果为 Azure 存储启用安全传输，则 URI 将为 `wasbs://`。 另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
 
 * 共享访问签名要添加到的现有 HDInsight 群集。 如果没有，则可以使用 Azure PowerShell 创建群集，并在创建群集期间添加共享访问签名。
 
@@ -56,11 +54,11 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
 共享访问签名有两种形式：
 
-* 即席：针对该 SAS 的开始时间、到期时间和权限全都在 SAS URI 上指定。
+* `Ad hoc`：SAS 的开始时间、到期时间和权限都指定在 SAS URI 上。
 
-* 存储访问策略：存储访问策略在资源容器（例如 Blob 容器）中定义。 可以使用策略管理一个或多个共享访问签名的约束。 在将某一 SAS 与一个存储访问策略相关联时，该 SAS 将继承对该存储访问策略定义的约束：开始时间、到期时间和权限。
+* `Stored access policy`：存储的访问策略在资源容器（如 blob 容器）上定义。 可以使用策略管理一个或多个共享访问签名的约束。 在将某一 SAS 与一个存储访问策略相关联时，该 SAS 将继承对该存储访问策略定义的约束：开始时间、到期时间和权限。
 
-这两种形式之间的差异对于一个关键情形而言十分重要：吊销。 一个 SAS 就是一个 URL，因此，获取该 SAS 的任何人都可以使用它，而与是谁请求它以便开始的无关。 如果某一 SAS 是公开发布的，则世界上的任何人都可以使用它。 在发生以下四种情况之一前分发的 SAS 是有效的：
+这两种形式之间的差异对于一个关键情形而言十分重要：吊销。 SAS 是一个 URL，因此任何获得 SAS 的人都可以使用它。 谁要求它开始并不重要。 如果某一 SAS 是公开发布的，则世界上的任何人都可以使用它。 在发生以下四种情况之一前分发的 SAS 是有效的：
 
 1. 达到了对该 SAS 指定的到期时间。
 
@@ -82,7 +80,7 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
 ## <a name="create-a-stored-policy-and-sas"></a>创建存储策略和 SAS
 
-保存每个方法结束时生成的 SAS 令牌。 令牌如下所示：
+保存每个方法结束时生成的 SAS 令牌。 令牌将类似于以下输出：
 
 ```output
 ?sv=2018-03-28&sr=c&si=myPolicyPS&sig=NAxefF%2BrR2ubjZtyUtuAvLQgt%2FJIN5aHJMj6OsDwyy4%3D
@@ -205,7 +203,7 @@ Set-AzStorageblobcontent `
 
 如果收到错误消息 `ImportError: No module named azure.storage`，可能需要执行 `pip install --upgrade azure-storage`。
 
-### <a name="using-c"></a>使用 C#
+### <a name="using-c"></a>使用 C\#
 
 1. 在 Visual Studio 中打开解决方案。
 
@@ -213,21 +211,20 @@ Set-AzStorageblobcontent `
 
 3. 选择“设置”****，并添加以下条目的值：
 
-   * StorageConnectionString：想要为其创建存储策略和 SAS 的存储帐户的连接字符串。 格式应为 `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey`，其中 `myaccount` 是存储帐户名称，`mykey` 是存储帐户密钥。
-
-   * ContainerName：想要限制访问的存储帐户中的容器。
-
-   * SASPolicyName：要创建的存储策略所用的名称。
-
-   * FileToUpload：上传到容器的文件的路径。
+    |Item |描述 |
+    |---|---|
+    |StorageConnectionString|想要为其创建存储策略和 SAS 的存储帐户的连接字符串。 格式应为 `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey`，其中 `myaccount` 是存储帐户名称，`mykey` 是存储帐户密钥。|
+    |ContainerName|存储帐户中你要限制对其的访问的容器。|
+    |SAS策略名称|要创建的存储策略所用的名称。|
+    |文件上传|上传到容器的文件的路径。|
 
 4. 运行该项目。 保存 SAS 策略令牌、存储帐户名称和容器名称。 将存储帐户与 HDInsight 群集关联时，将使用这些值。
 
 ## <a name="use-the-sas-with-hdinsight"></a>配合 HDInsight 使用 SAS
 
-创建 HDInsight 群集时，必须指定主存储帐户，可以选择性地指定其他存储帐户。 这两种添加存储的方法都需要对所用存储帐户和容器拥有完全访问权限。
+创建 HDInsight 群集时，必须指定主存储帐户。 您还可以指定其他存储帐户。 这两种添加存储的方法都需要对所用存储帐户和容器拥有完全访问权限。
 
-要使用共享访问签名来限制对容器的访问，请将一个自定义条目添加到群集的 **core-site** 配置中。 可以在创建群集期间使用 PowerShell 添加该条目，或者在创建群集之后使用 Ambari 添加该条目。
+使用共享访问签名限制容器访问。 向群集**的核心站点**配置添加自定义条目。 可以在创建群集期间使用 PowerShell 添加该条目，或者在创建群集之后使用 Ambari 添加该条目。
 
 ### <a name="create-a-cluster-that-uses-the-sas"></a>创建使用 SAS 的群集
 

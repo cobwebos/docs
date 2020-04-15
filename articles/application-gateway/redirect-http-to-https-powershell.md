@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: ca742483bc8977327003ee18e9716ef9c43ebfe3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d905be7c4a922a1a7eb3d1318be28da896e8a7e9
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77251713"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312006"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>使用 Azure PowerShell 创建支持 HTTP 到 HTTPS 重定向的应用程序网关
 
-可以通过 Azure PowerShell 使用 SSL 终端的证书创建[应用程序网关](overview.md)。 路由规则用于将 HTTP 流量重定向到应用程序网关中的 HTTPS 端口。 在此示例中，还会为包含两个虚拟机实例的应用程序网关的后端池创建一个[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。 
+可以使用 Azure PowerShell 创建具有 TLS/SSL 终止证书[的应用程序网关](overview.md)。 路由规则用于将 HTTP 流量重定向到应用程序网关中的 HTTPS 端口。 在此示例中，还会为包含两个虚拟机实例的应用程序网关的后端池创建一个[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。 
 
 在本文中，学习如何：
 

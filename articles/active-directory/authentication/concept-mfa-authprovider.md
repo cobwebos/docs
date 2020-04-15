@@ -11,21 +11,21 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a275e5ab394b54960a2340848152741762b28f8c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf50a8f58978a010fe3d8228ace8579fcf52eb38
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78269380"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309904"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>何时使用 Azure 多重身份验证提供程序
+
+> [!IMPORTANT]
+> 自 2018 年 9 月 1 日起，可能无法再创建新的身份验证提供程序。 现有身份验证提供程序可以继续使用和更新，但迁移不再可能。 多重身份验证将继续以 Azure AD Premium 许可证中的功能的形式提供。
 
 双重验证对于具有 Azure Active Directory 和 Office 365 用户的全局管理员默认可用。 但是，如果想充分利用[高级功能](howto-mfa-mfasettings.md)，则应购买完整版的 Azure 多重身份验证 (MFA)。
 
 使用 Azure 多重身份验证提供程序以便利用 Azure 多重身份验证为**没有许可证的用户**提供的功能。
-
-> [!NOTE]
-> 自 2018 年 9 月 1 日起，可能无法再创建新的身份验证提供程序。 现有身份验证提供程序可以继续使用和更新，但迁移不再可能。 多重身份验证将继续以 Azure AD Premium 许可证中的功能的形式提供。
 
 ## <a name="caveats-related-to-the-azure-mfa-sdk"></a>与 Azure MFA SDK 相关的注意事项
 

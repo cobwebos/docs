@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 04/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 373fc2829e599d0989b59c6386757c8f5f3e1d66
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: beefad41a270233336bb9134268c98341e81a7cd
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81251718"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380802"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure 时序见解 API 的身份验证和授权
 
@@ -113,7 +113,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
 必需的请求标头如下所述。
 
-| 必需的请求标头 | 说明 |
+| 必需的请求标头 | 描述 |
 | --- | --- |
 | 授权 | 若要使用时序见解进行身份验证，必须在“授权”标头中传递有效的 OAuth 2.0 持有者令牌****。 | 
 
@@ -124,7 +124,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
 可选请求标头如下所述。
 
-| 可选请求标头 | 说明 |
+| 可选请求标头 | 描述 |
 | --- | --- |
 | Content-type | 仅支持 `application/json`。 |
 | x-ms-client-request-id | 客户端请求 ID。 服务记录此值。 允许服务跨服务跟踪操作。 |
@@ -133,7 +133,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
 可选但建议的响应标头如下所述。
 
-| 响应标头 | 说明 |
+| 响应标头 | 描述 |
 | --- | --- |
 | Content-type | 仅支持 `application/json`。 |
 | x-ms-request-id | 服务器生成的请求 ID。 可用于与 Microsoft 联系以调查请求。 |
@@ -154,7 +154,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
 可选 URL 查询字符串参数包括为 HTTP 请求执行时间设置超时。
 
-| 可选查询参数 | 说明 | Version |
+| 可选查询参数 | 描述 | 版本 |
 | --- |  --- | --- |
 | `timeout=<timeout>` | 用于执行 HTTP 请求的服务器端超时。 仅适用于[获取环境事件](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api)和[获取环境聚合](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) API。 超时值应采用 ISO 8601 持续时间格式（例如 `"PT20S"`），并且应在 `1-30 s` 范围内。 默认值是 `30 s`。 | GA |
 | `storeType=<storeType>` | 对于启用 Warm 存储的预览版环境，可以在 `WarmStore` 或 `ColdStore` 上执行查询。 查询中的此参数定义应在哪个存储中执行查询。 如果未定义，将对 Cold 存储执行查询。 若要查询 Warm 存储，需要将 storeType 设置为 `WarmStore`****。 如果未定义，将针对 Cold 存储执行查询。 | 预览 |

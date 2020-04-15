@@ -7,20 +7,23 @@ manager: craigg
 ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 11/4/2019
+ms.date: 04/14/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8cee874106598c7d81b923d7dd32ba91902d9326
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 5d73ba8f21fe7731fb751d42a8497ff8e1ebba7d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745188"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383627"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>将资源类转换为工作负荷组
 
 工作负荷组提供用于隔离和遏制系统资源的机制。  此外，工作负荷组允许针对其中运行的请求设置执行规则。  使用查询超时执行规则可以取消失控的查询，而无需用户的干预。  本文介绍如何根据现有的资源类创建一个采用类似配置的工作负荷组。  此外，将添加一个可选的查询超时规则。
+
+> [!NOTE]
+> 有关同时使用工作负载组和资源类的指导，请参阅[工作负载分类](sql-data-warehouse-workload-classification.md)概念文档中[的"使用分类器"部分的混合资源类分配](sql-data-warehouse-workload-classification.md#mixing-resource-class-assignments-with-classifiers)。
 
 ## <a name="understanding-the-existing-resource-class-configuration"></a>了解现有的资源类配置
 
@@ -86,4 +89,6 @@ SELECT request_id, [label], classifier_name, group_name, command
 ## <a name="next-steps"></a>后续步骤
 
 - [工作负载隔离](sql-data-warehouse-workload-isolation.md)
-- [如何创建工作负载组链接](quickstart-configure-workload-isolation-tsql.md)
+- [如何创建工作负载组](quickstart-configure-workload-isolation-tsql.md)
+- [CREATE WORKLOAD CLASSIFIER (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?&view=azure-sqldw-latest)
+- [CREATE WORKLOAD GROUP (Transact-SQL)](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)

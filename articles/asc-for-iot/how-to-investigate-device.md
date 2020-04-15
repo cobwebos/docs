@@ -1,5 +1,5 @@
 ---
-title: 用于物联网设备的 Azure 安全中心调查指南*微软文档
+title: 调查可疑设备
 description: 如何指导如何使用 IoT Azure 安全中心使用日志分析调查可疑的 IoT 设备。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,23 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 8d2fe8d63c7ece6f3b3426d8fc5a3454a61826f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f333f28dc0e02e8d010f5521f298d0f0b031dbf2
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68596249"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311032"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>调查可疑的 IoT 设备
 
-Azure IoT 服务警报安全中心在怀疑 IoT 设备参与可疑活动或存在设备受到威胁的迹象时提供明确指示。 
+Azure IoT 服务警报安全中心在怀疑 IoT 设备参与可疑活动或存在设备受到威胁的迹象时提供明确指示。
 
-在本指南中，使用提供的调查建议来帮助确定组织的潜在风险，决定如何修复，并发现防止将来发生类似攻击的最佳方式。  
+在本指南中，使用提供的调查建议来帮助确定组织的潜在风险，决定如何修复，并发现防止将来发生类似攻击的最佳方式。
 
 > [!div class="checklist"]
 > * 查找设备数据
 > * 使用 kql 查询进行调查
-
 
 ## <a name="how-can-i-access-my-data"></a>如何访问我的数据？
 
@@ -39,15 +38,15 @@ Azure IoT 服务警报安全中心在怀疑 IoT 设备参与可疑活动或存�
 
 要查找用于数据存储的日志分析工作区，请执行以下操作：
 
-1. 打开 IoT 中心， 
+1. 打开 IoT 中心，
 1. 在 **"安全"** 下，单击 **"概述**"，然后选择 **"设置**"。
-1. 更改 Log Analytics 工作区配置详细信息。 
-1. 单击“保存”。**** 
+1. 更改 Log Analytics 工作区配置详细信息。
+1. 单击“ **保存**”。
 
 根据配置执行以下操作，以访问 Log Analytics 工作区中存储的数据：
 
-1. 选择并单击 IoT 中心中的 IoT 警报 Azure 安全中心。 
-1. 单击“进一步调查”。**** 
+1. 选择并单击 IoT 中心中的 IoT 警报 Azure 安全中心。
+1. 单击“进一步调查”。****
 1. 选择“若要查看哪些设备生成了此警报，请单击此处并查看 DeviceId 列”。****
 
 ## <a name="investigation-steps-for-suspicious-iot-devices"></a>可疑 IoT 设备的调查步骤
@@ -70,7 +69,7 @@ Azure IoT 服务警报安全中心在怀疑 IoT 设备参与可疑活动或存�
 
 ### <a name="users-with-access"></a>具有访问权限的用户
 
-若要确定哪些用户有权访问此设备，请使用以下 kql 查询： 
+若要确定哪些用户有权访问此设备，请使用以下 kql 查询：
 
  ```
   let device = "YOUR_DEVICE_ID";
@@ -85,13 +84,14 @@ Azure IoT 服务警报安全中心在怀疑 IoT 设备参与可疑活动或存�
      UserName=extractjson("$.UserName", EventDetails, typeof(string))
   | summarize FirstObserved=min(TimestampLocal) by GroupNames, UserName
  ```
-使用此数据来确定： 
+使用此数据来确定：
+
 - 哪些用户有权访问该设备？
 - 具有访问权限的用户具有预期的权限级别吗？
 
 ### <a name="open-ports"></a>打开端口
 
-要了解设备中的哪些端口当前正在使用或使用，请使用以下 kql 查询： 
+要了解设备中的哪些端口当前正在使用或使用，请使用以下 kql 查询：
 
  ```
   let device = "YOUR_DEVICE_ID";
@@ -112,14 +112,15 @@ Azure IoT 服务警报安全中心在怀疑 IoT 设备参与可疑活动或存�
  ```
 
 使用此数据来确定：
+
 - 哪些侦听套接字当前在设备上处于活动状态？
 - 是否应允许当前处于活动状态的侦听套接字？
 - 是否有任何可疑的远程地址连接到设备？
 
 ### <a name="user-logins"></a>用户登录
 
-要查找登录到设备的用户，请使用以下 kql 查询： 
- 
+要查找登录到设备的用户，请使用以下 kql 查询：
+
  ```
   let device = "YOUR_DEVICE_ID";
   let hub = "YOUR_HUB_NAME";
@@ -143,13 +144,14 @@ Azure IoT 服务警报安全中心在怀疑 IoT 设备参与可疑活动或存�
  ```
 
 使用查询结果来确定：
+
 - 哪些用户登录到了设备？
 - 登录的用户应该登录吗？
 - 登录的用户是从预期还是意外的 IP 地址连接的？
-  
+
 ### <a name="process-list"></a>流程列表
 
-要了解流程列表是否按预期，请使用以下 kql 查询： 
+要了解流程列表是否按预期，请使用以下 kql 查询：
 
  ```
   let device = "YOUR_DEVICE_ID";
@@ -186,4 +188,4 @@ Azure IoT 服务警报安全中心在怀疑 IoT 设备参与可疑活动或存�
 
 ## <a name="next-steps"></a>后续步骤
 
-调查设备并更好地了解风险后，可能需要考虑[配置自定义警报](quickstart-create-custom-alerts.md)，以改善 IoT 解决方案的安全态势。 如果没有设备代理，请考虑[部署安全代理](how-to-deploy-agent.md)或[更改现有设备代理的配置](how-to-agent-configuration.md)，以改善结果。 
+调查设备并更好地了解风险后，可能需要考虑[配置自定义警报](quickstart-create-custom-alerts.md)，以改善 IoT 解决方案的安全态势。 如果没有设备代理，请考虑[部署安全代理](how-to-deploy-agent.md)或[更改现有设备代理的配置](how-to-agent-configuration.md)，以改善结果。

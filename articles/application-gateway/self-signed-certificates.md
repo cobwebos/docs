@@ -8,18 +8,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 0547f254a64cecc7072ee9ff79eb50204b34bc17
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 5ceefb076b63df942cfff202946f6b82050bbab9
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548867"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311940"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>使用自定义根 CA 生成 Azure 应用程序网关自签名证书
 
-应用程序网关 v2 SKU 引入了允许后端服务器的受信任根证书。 这样，就无需像在 v1 SKU 中那样使用身份验证证书。 该根证书是来自后端证书服务器的 Base-64 编码的 X.509(.CER) 格式根证书。** 它可以识别颁发服务器证书的根证书颁发机构 (CA)，然后，服务器证书可用于 SSL 通信。
+应用程序网关 v2 SKU 引入了允许后端服务器的受信任根证书。 这样，就无需像在 v1 SKU 中那样使用身份验证证书。 该根证书是来自后端证书服务器的 Base-64 编码的 X.509(.CER) 格式根证书。** 它标识颁发服务器证书的根证书颁发机构 （CA），然后服务器证书用于 TLS/SSL 通信。
 
-如果网站由知名 CA（例如 GoDaddy 或 DigiCert）签名，则应用程序网关默认信任网站的证书。 在这种情况下，您不需要显式上载根证书。 有关详细信息，请参阅 [SSL 终止和应用程序网关的端到端 SSL 概述](ssl-overview.md)。 但是，如果你有一个开发/测试环境，但不想要购买由已验证的 CA 签名的证书，可以创建自己的自定义 CA，然后使用该 CA 创建自签名证书。 
+如果网站由知名 CA（例如 GoDaddy 或 DigiCert）签名，则应用程序网关默认信任网站的证书。 在这种情况下，您不需要显式上载根证书。 有关详细信息，请参阅[使用应用程序网关 的 TLS 终止和端到端 TLS 概述](ssl-overview.md)。 但是，如果你有一个开发/测试环境，但不想要购买由已验证的 CA 签名的证书，可以创建自己的自定义 CA，然后使用该 CA 创建自签名证书。 
 
 > [!NOTE]
 > 自签名证书默认不受信任，并且可能难以维护。 另外，它们可能使用过时的哈希，以及不够可靠的加密套件。 为了提高安全性，请购买由知名证书颁发机构签名的证书。
@@ -125,15 +125,15 @@ CSR 是请求证书时向 CA 提供的公钥。 CA 将针对此特定请求颁�
    - fabrikam.crt
    - fabrikam.key
 
-## <a name="configure-the-certificate-in-your-web-servers-ssl-settings"></a>在 Web 服务器的 SSL 设置中配置证书
+## <a name="configure-the-certificate-in-your-web-servers-tls-settings"></a>在 Web 服务器的 TLS 设置中配置证书
 
-在 Web 服务器中，使用 fabrikam.crt 和 fabrikam.key 文件配置 SSL。 如果 Web 服务器无法获取两个文件，则可以使用 OpenSSL 命令将它们合并到单个 .pem 或 .pfx 文件中。
+在 Web 服务器中，使用 fabrikam.crt 和 fabrikam.key 文件配置 TLS。 如果 Web 服务器无法获取两个文件，则可以使用 OpenSSL 命令将它们合并到单个 .pem 或 .pfx 文件中。
 
 ### <a name="iis"></a>IIS
 
 有关如何在 IIS 上导入证书并将其上载为服务器证书的说明，请参阅[操作操作：在 Windows Server 2003 中的 Web 服务器上安装导入的证书](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server)。
 
-有关 SSL 绑定说明，请参阅[如何在 IIS 7 上设置 SSL](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)。
+有关 TLS 绑定说明，请参阅[如何在 IIS 7 上设置 SSL。](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)
 
 ### <a name="apache"></a>Apache
 
@@ -151,9 +151,9 @@ CSR 是请求证书时向 CA 提供的公钥。 CA 将针对此特定请求颁�
 
 ### <a name="nginx"></a>NGINX
 
-以下配置是使用 SSL 配置的 [NGINX 服务器块](https://nginx.org/docs/http/configuring_https_servers.html)示例：
+以下配置是具有 TLS 配置的[NGINX 服务器块](https://nginx.org/docs/http/configuring_https_servers.html)的示例：
 
-![使用 SSL 的 NGINX](media/self-signed-certificates/nginx-ssl.png)
+![带 TLS 的 NGINX](media/self-signed-certificates/nginx-ssl.png)
 
 ## <a name="access-the-server-to-verify-the-configuration"></a>访问服务器以验证配置
 
@@ -232,7 +232,7 @@ $probe = Get-AzApplicationGatewayProbeConfig `
 
 ## Add the configuration to the HTTP Setting and don't forget to set the "hostname" field
 ## to the domain name of the server certificate as this will be set as the SNI header and
-## will be used to verify the backend server's certificate. Note that SSL handshake will
+## will be used to verify the backend server's certificate. Note that TLS handshake will
 ## fail otherwise and might lead to backend servers being deemed as Unhealthy by the probes
 
 Add-AzApplicationGatewayBackendHttpSettings `
@@ -272,5 +272,5 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解应用程序网关中的 SSL\TLS，请参阅[应用程序网关的 SSL 终止和端到端 SSL 概述](ssl-overview.md)。
+要了解有关应用程序网关中的 SSL_TLS 的详细信息，请参阅[TLS 终止概述以及使用应用程序网关端到端 TLS](ssl-overview.md)的 TLS 概述。
 

@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.author: ryanwi
+ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 8b2489a5e6a4481ffa2bd9df0ccf6b082e3f6956
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 9186f633b773a243a84692c30ddc2c2261fb69ba
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886273"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309407"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft 标识平台和 OAuth 2.0 设备权限授予流
 
@@ -54,7 +54,7 @@ scope=user.read%20openid%20profile
 
 ```
 
-| 参数 | 条件 | 说明 |
+| 参数 | 条件 | 描述 |
 | --- | --- | --- |
 | `tenant` | 必选 | 可以是 /公共、/消费者或 /组织。  它也可以是要以 GUID 或友好名称格式向其请求权限的目录租户。  |
 | `client_id` | 必选 | [Azure 门户和应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验**的应用程序（客户端）ID**分配给应用。 |
@@ -64,7 +64,7 @@ scope=user.read%20openid%20profile
 
 成功响应是一个 JSON 对象，其中包含允许用户登录所需的信息。  
 
-| 参数 | 格式 | 说明 |
+| 参数 | 格式 | 描述 |
 | ---              | --- | --- |
 |`device_code`     | 字符串 | 一个长字符串，用于验证客户端与授权服务器之间的会话。 客户端使用此参数从授权服务器请求访问令牌。 |
 |`user_code`       | 字符串 | 向用户显示的短字符串，用于标识辅助设备上的会话。|
@@ -93,7 +93,7 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 ```
 
-| 参数 | 必选 | 说明|
+| 参数 | 必选 | 描述|
 | -------- | -------- | ---------- |
 | `tenant`  | 必选 | 初始请求中使用的同一租户或租户别名。 | 
 | `grant_type` | 必选 | 必须是 `urn:ietf:params:oauth:grant-type:device_code`|
@@ -104,7 +104,7 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 
 由于设备代码流是一个轮询协议，因此，客户端必须预料到在用户完成身份验证之前会收到错误。  
 
-| 错误 | 说明 | 客户端操作 |
+| 错误 | 描述 | 客户端操作 |
 | ------ | ----------- | -------------|
 | `authorization_pending` | 用户尚未完成身份验证，但未取消流。 | 在至少 `interval` 秒之后重复请求。 |
 | `authorization_declined` | 最终用户拒绝了授权请求。| 停止轮询，并恢复到未经过身份验证状态。  |
@@ -126,7 +126,7 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 }
 ```
 
-| 参数 | 格式 | 说明 |
+| 参数 | 格式 | 描述 |
 | --------- | ------ | ----------- |
 | `token_type` | 字符串| 始终为“Bearer”。 |
 | `scope` | 空格分隔的字符串 | 如果返回了访问令牌，则会列出该访问令牌的有效范围。 |

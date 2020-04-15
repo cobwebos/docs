@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 9d32b66b7e3ab27012ee671ba8d70735dce73884
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: f09f5010c18f5ea064b02f0fbbae107bf473e1f8
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/14/2020
-ms.locfileid: "81274271"
+ms.locfileid: "81313670"
 ---
 # <a name="how-to-manually-fix-servicenow-sync-problems"></a>如何手动修复 ServiceNow 同步问题
 
-Azure 监视器可以连接到第三方 IT 服务管理 （ITSM） 提供程序。 ServiceNow 是这些提供商之一。 
+Azure 监视器可以连接到第三方 IT 服务管理 （ITSM） 提供程序。 ServiceNow 是这些提供商之一。
 
 出于安全原因，您可能需要刷新用于与 ServiceNow 连接的身份验证令牌。
-使用以下同步过程重新激活连接并刷新令牌： 
+使用以下同步过程重新激活连接并刷新令牌：
 
 
 1. 在顶部搜索横幅中搜索解决方案，然后选择相关解决方案

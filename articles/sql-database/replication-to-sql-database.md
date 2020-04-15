@@ -7,16 +7,16 @@ ms.subservice: data-movement
 ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: stevestein
+ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: f718bc17b987926f4324635f096d5983acdb63fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f28269b067ee98d69a97799911fd2d84a7f91e34
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256466"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381149"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>复制到 SQL 数据库的单一数据库和共用数据库
 
@@ -108,13 +108,13 @@ Azure SQL 数据库订阅不支持以下选项：
 
 创建发布和推送订阅。 有关详细信息，请参阅：
   
-- [创建发布](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
+- [创建出版物](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [创建推送订阅](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)，方法是将 Azure SQL 数据库服务器名称用作订阅服务器（例如 N'azuresqldbdns.database.windows.net'****），将 Azure SQL 数据库名称用作目标数据库（例如 AdventureWorks****）。  
 
 ## <a name="see-also"></a>另请参阅  
 
 - [事务复制](sql-database-managed-instance-transactional-replication.md)
-- [创建发布](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
+- [创建出版物](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [创建推送订阅](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
 - [复制类型](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
 - [监视（复制）](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)

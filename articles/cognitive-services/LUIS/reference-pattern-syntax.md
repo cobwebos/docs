@@ -1,25 +1,19 @@
 ---
 title: 模式语法参考 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 创建实体，以便从语言理解 (LUIS) 应用的用户话语中提取关键数据。 提取的数据由客户端应用程序使用。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 12/09/2019
+ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: 696f4bdc22bed01a4b5be8bff63ade482a8dbe0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cc24667f43dfedc032f52c40fc5f8fe5c80bad70
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219727"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382143"
 ---
 # <a name="pattern-syntax"></a>模式语法
 
-模式语法是一个话语模板。 该模板应包含要匹配的字词和实体，还要包含希望忽略的字词和标点。 它不是一个正则表达式****。
+模式语法是一个话语模板。 模板应包含要匹配的单词和实体以及要忽略的单词和[标点符号](luis-reference-application-settings.md#punctuation-normalization)。 它不是一个正则表达式****。
 
 > [!CAUTION]
 > 模式仅包括机器学习实体父项，而不包括子组件。
@@ -33,7 +27,7 @@ ms.locfileid: "79219727"
 |实体| {} - 大括号|2|窗体 {entity-name} 在哪里？|
 |可选|[] - 方括号<BR><BR>可选和分组的任何组合的嵌套级别都限制为 3 |2|问号是可选的 [?]|
 |分组|() - 括号|2|是 (a \| b)|
-|或| \| - 竖线（管道）<br><br>一个组中的竖线限制为 2 |-|窗体 ({form-name-short} &#x7c; {form-name-long} &#x7c; {form-number}) 在哪里|
+|or| \| - 竖线（管道）<br><br>一个组中的竖线限制为 2 |-|窗体 ({form-name-short} &#x7c; {form-name-long} &#x7c; {form-number}) 在哪里|
 |话语的开头和/或结尾|^ - 脱字号|-|^开始话语<br>话语完成^<br>^将整句话语与 {number} 实体进行严格的文本匹配^|
 
 ## <a name="nesting-syntax-in-patterns"></a>模式中的嵌套语法

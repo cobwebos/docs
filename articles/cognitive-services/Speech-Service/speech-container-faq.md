@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 04/14/2020
 ms.author: aahi
-ms.openlocfilehash: 4d597b872cf31a823f314d9f3c67c9f45201c542
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 17582244aef173da6ac700c980f7bd7fb0fec307
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81258467"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383085"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>语音服务容器常见问题 （FAQ）
 
@@ -379,7 +379,7 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 <b>如何获取非批处理 API 来处理 15&lt;秒长的音频？</b>
 </summary>
 
-**答案：** 这是交互式模式。 如果您使用听写或对话，则不是问题。
+**答：**`RecognizeOnce()`在交互式模式下，只能处理长达 15 秒的音频，因为该模式适用于语音命令，其中语音预期较短。 如果使用`StartContinuousRecognition()`听写或对话，则没有 15 秒的限制。
 
 
 <br>

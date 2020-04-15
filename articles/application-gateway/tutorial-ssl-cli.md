@@ -1,6 +1,6 @@
 ---
-title: 使用 CLI - Azure 应用程序网关进行 SSL 终止
-description: 了解如何使用 Azure CLI 创建应用程序网关并为 SSL 终端添加证书。
+title: 使用 CLI - Azure 应用程序网关终止 TLS
+description: 了解如何使用 Azure CLI 创建应用程序网关和添加 TLS 终止证书。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: c297a7d34e8b85420329abaca0e15029ce207861
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6cd8cca65762de3da6a0e69e93c8d79bbe498dde
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78246618"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311974"
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>通过 Azure CLI 使用 SSL 终端创建应用程序网关
+# <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>使用 Azure CLI 创建具有 TLS 终止的应用程序网关
 
-可以使用 Azure CLI 创建具有[SSL 终止](ssl-overview.md)证书[的应用程序网关](overview.md)。 对于后端服务器，可以使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。 在此示例中，规模集包含两个添加到应用程序网关的默认后端池的虚拟机实例。
+可以使用 Azure CLI 创建具有[TLS 终止](ssl-overview.md)证书[的应用程序网关](overview.md)。 对于后端服务器，可以使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。 在此示例中，规模集包含两个添加到应用程序网关的默认后端池的虚拟机实例。
 
 在本文中，学习如何：
 
@@ -33,7 +33,7 @@ ms.locfileid: "78246618"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-根据本文的要求，如果选择在本地安装并使用 CLI，则需要运行 Azure CLI 2.0.4 或更高版本。 要查找版本，请运行 `az --version`。 如果需要安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+根据本文的要求，如果选择在本地安装并使用 CLI，则需要运行 Azure CLI 2.0.4 或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-self-signed-certificate"></a>创建自签名证书
 

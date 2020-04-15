@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2c33fbed6c547897847c79cc1260d2bdc9ec6b17
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: eb285d15814f1105462c414541657d43b5371d98
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010318"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383241"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>开始使用 Azure 自动化状态配置
 
@@ -59,7 +59,7 @@ ms.locfileid: "81010318"
         }
     }
     ```
-1. 将文件另存为 `TestConfig.ps1`。
+1. 将文件另存为**TestConfig.ps1**。
 
 此配置调用每个节点块中的一个资源（[WindowsFeature 资源](/powershell/scripting/dsc/reference/resources/windows/windowsfeatureresource)），以确保存在（或不存在）**Web-Server** 功能。
 
@@ -105,7 +105,7 @@ ms.locfileid: "81010318"
    ![“TestConfig 配置”页的屏幕截图，其中突出显示“编译”按钮](./media/automation-dsc-getting-started/CompileConfig.png)
 
 > [!NOTE]
-> 在 Azure 自动化中编译配置时，会自动将任何创建的节点配置 MOF 部署到拉取服务器。
+> 在 Azure 自动化中编译配置时，它会自动将任何创建的节点配置 MOF 文件部署到拉取服务器。
 
 ## <a name="viewing-a-compilation-job"></a>查看编译作业
 
@@ -123,7 +123,7 @@ ms.locfileid: "81010318"
 
 ## <a name="viewing-node-configurations"></a>查看节点配置
 
-成功完成编译作业以后，会创建一个或多个新的节点配置。 节点配置是一个 MOF 文档，该文档部署到拉取服务器上，可供一个或多个节点拉取和应用。 可以在“State Configuration (DSC)”**** 页中查看自动化帐户中的节点配置。 节点配置的名称格式为 *ConfigurationName*.*NodeName*。
+成功完成编译作业以后，会创建一个或多个新的节点配置。 节点配置是一个 MOF 文档，该文档部署到拉取服务器上，可供一个或多个节点拉取和应用。 您可以在**状态配置 （DSC）** 页上查看自动化帐户中的节点配置。 节点配置具有窗体`ConfigurationName.NodeName`的名称。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在左侧，单击“所有资源”****，并单击自动化帐户的名称。
@@ -134,7 +134,7 @@ ms.locfileid: "81010318"
 
 ## <a name="onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration"></a>加入使用 Azure Automation State Configuration 管理的 Azure VM
 
-可以使用 Azure 自动化状态配置来管理 Azure VM（包括经典 VM 和资源管理器 VM）、本地 VM、Linux 计算机、AWS VM，以及本地物理机。 本文介绍如何仅登记 Azure 资源管理器 VM。 有关加入其他类型的计算机的信息，请参阅[加入由 Azure 自动化状态配置管理的计算机](automation-dsc-onboarding.md)。
+可以使用 Azure 自动化状态配置来管理 Azure VM（经典 VM 和资源管理器）、本地 VM、Linux 计算机、AWS VM 和本地物理计算机。 本文介绍如何仅登记 Azure 资源管理器 VM。 有关加入其他类型的计算机的信息，请参阅[加入由 Azure 自动化状态配置管理的计算机](automation-dsc-onboarding.md)。
 
 ### <a name="to-onboard-an-azure-resource-manager-vm-for-management-by-azure-automation-state-configuration"></a>加入由 Azure Automation State Configuration 管理的 Azure 资源管理器 VM
 

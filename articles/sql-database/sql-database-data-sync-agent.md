@@ -7,16 +7,16 @@ ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: stevestein
+ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 6d0a728401ac9f0156cc8fa913ce486bb577c6dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 39471ebded6280e7d394ee69c2d732b779c9ea50
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73825175"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380909"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Azure SQL 数据同步的 Data Sync Agent
 
@@ -147,10 +147,10 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 - **解决方法**。 将代理的密码更新为当前服务器密码：
 
   1. 找到 SQL 数据同步客户端代理服务。  
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择“开始”****。  
-    b.保留“数据库类型”设置，即设置为“共享”。 在搜索框中输入 **services.msc**。  
+    a. 选择“开始”****。  
+    b. 在搜索框中输入 **services.msc**。  
     c. 在搜索结果中，选择“服务”。****  
-    d.单击“下一步”。 在“服务”**** 窗口中，滚动到 **SQL Data Sync Agent** 所对应的条目。  
+    d. 在“服务”**** 窗口中，滚动到 **SQL Data Sync Agent** 所对应的条目。  
   1. 右键单击“SQL Data Sync Agent”并选择“停止”。********
   1. 右键单击“SQL Data Sync Agent”并选择“属性”。********
   1. 在“SQL Data Sync Agent 属性”中，选择“登录”选项卡。********
@@ -193,7 +193,7 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
   1. 打开 SqlAzureDataSyncAgent 应用程序。
   1. 选择“提交代理密钥”****。
   1. 在提供的空白处粘贴剪贴板中的密钥。
-  1. 选择“确定”。
+  1. 选择“确定”  。
   1. 关闭程序。
 
 ### <a name="the-client-agent-cant-be-deleted-from-the-portal-if-its-associated-on-premises-database-is-unreachable"></a><a name="agent-delete"></a>如果与客户端代理关联的本地数据库不可访问，则无法从门户删除该客户端代理
@@ -213,8 +213,8 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 
   1. 退出应用。  
   1. 打开组件服务面板。  
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在任务栏上的搜索框中输入 **services.msc**。  
-    b.保留“数据库类型”设置，即设置为“共享”。 在搜索结果中，双击“服务”。****  
+    a. 在任务栏上的搜索框中输入 **services.msc**。  
+    b. 在搜索结果中，双击“服务”。****  
   1. 停止“SQL 数据同步”**** 服务。
   1. 重新启动**SQL 数据同步**服务。  
   1. 重新打开应用。

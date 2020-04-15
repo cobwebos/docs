@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: victorh
-ms.openlocfilehash: 7107f45253c4f13b3378489726bf5034e104fa30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ed7bbbf55956d655115b94c8ac46432b3e36c49b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "62095976"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312635"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>使用 Azure CLI 创建应用程序网关
 
-Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。 应用程序网关具有以下应用程序传递功能：HTTP 负载均衡、基于 Cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测，以及多站点支持。
+Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。 应用程序网关具有以下应用程序交付功能：HTTP 负载平衡、基于 Cookie 的会话关联和传输层安全 （TLS），以前称为安全套接字层 （SSL）、卸载、自定义运行状况探测器以及对多站点的支持。
 
 ## <a name="prerequisite-install-the-azure-cli"></a>先决条件：安装 Azure CLI
 
@@ -25,7 +25,7 @@ Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之�
 > [!NOTE]
 > 如果没有 Azure 帐户，则需要注册一个。 可以[在此处注册免费试用帐户](../active-directory/fundamentals/sign-up-organization.md)。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 
 在此方案中，将学习如何使用 Azure 门户创建应用程序网关。
 
@@ -135,7 +135,7 @@ azure network application-gateway create \
 
 访问[创建自定义运行状况探测](application-gateway-create-probe-portal.md)，了解如何创建自定义运行状况探测
 
-访问[配置 SSL 卸载](application-gateway-ssl-arm.md)，了解如何配置 SSL 卸载并从 Web 服务器中剥离开销较高的 SSL 解密
+了解如何通过访问[配置 TLS 卸载](application-gateway-ssl-arm.md)来配置 TLS 卸载，并将昂贵的 TLS 解密从 Web 服务器中删除
 
 <!--Image references-->
 

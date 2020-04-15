@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/03/2020
-ms.openlocfilehash: 0cadf3930008868fe223e6e1024a2d14d17d8131
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: e53164d1e25f8a8d0a14d21c0544d95cf912fe9f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657122"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313967"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>使用外部元数据存储 - Azure HDInsight
 
@@ -63,7 +63,7 @@ HDInsight 还支持自定义元存储，建议对生产群集使用此项：
 
 在为 HDInsight 群集设置自定义 Hive 元存储之前，创建或拥有现有的 Azure SQL 数据库。  有关详细信息，请参阅[快速入门：在 Azure SQL DB 中创建单个数据库](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal)。
 
-配置 Azure SQL 数据库防火墙规则以允许 Azure 服务和资源访问服务器。 通过选择 **"设置服务器防火墙"** 在 Azure 门户中启用此选项。 然后选择 **"在下面打开****允许 Azure 服务和资源访问 Azure** SQL 数据库服务器或数据库的此服务器"。 有关详细信息，请参阅[创建和管理 IP 防火墙规则](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
+创建群集时，HDInsight 服务需要连接到外部元存储并验证凭据。 配置 Azure SQL 数据库防火墙规则以允许 Azure 服务和资源访问服务器。 通过选择 **"设置服务器防火墙"** 在 Azure 门户中启用此选项。 然后选择 **"拒绝公共网络访问**"下**为"否****"，在**"允许 Azure 服务和资源"下选择"允许**Azure 服务和资源访问 Azure** SQL 数据库服务器或数据库的此服务器。 有关详细信息，请参阅[创建和管理 IP 防火墙规则](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
 
 ![“设置服务器防火墙”按钮](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
 

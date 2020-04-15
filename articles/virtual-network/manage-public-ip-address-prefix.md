@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: anavin
-ms.openlocfilehash: 26d8ee34c735cab8f1033a9aad897ec0b1bed524
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f0c2d9757f3652b0f83b8c36d89c855f7a92fdd
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65952685"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383868"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>创建、更改或删除公共 IP 地址前缀
 
@@ -41,7 +41,7 @@ ms.locfileid: "65952685"
 ## <a name="create-a-public-ip-address-prefix"></a>创建公共 IP 地址前缀
 
 1. 在门户左上角的顶部选择“+ 创建资源”****。
-2. 在“在市场中搜索”** 框中输入“公共 IP 地址前缀”**。 当“公共 IP 地址前缀”**** 出现在搜索结果中时，请选择它。
+2. 在 *"搜索市场"* 框中输入*公共 ip 前缀*。 当“公共 IP 地址前缀”**** 出现在搜索结果中时，请选择它。
 3. 在“公共 IP 地址前缀”**** 下，选择“创建”****。
 4. 在“创建公共 IP 地址前缀”**** 下为以下设置输入或选择值，然后选择“创建”****：
 
@@ -49,13 +49,13 @@ ms.locfileid: "65952685"
    |---|---|---|
    |订阅|是|必须与要将公共 IP 地址关联到的资源位于同一[订阅](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)中。|
    |资源组|是|可与要将公共 IP 地址关联到的资源位于相同或不同的[资源组](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)中。|
-   |“属性”|是|该名称在所选的资源组中必须唯一。|
+   |名称|是|该名称在所选的资源组中必须唯一。|
    |区域|是|必须位于与公共 IP 地址相同的[区域](https://azure.microsoft.com/regions)，你将从该范围分配地址。|
    |前缀大小|是| 所需的前缀大小。 /28 或 16 个 IP 地址为默认值。
 
 **命令**
 
-|工具|命令|
+|工具|Command|
 |---|---|
 |CLI|[az network public-ip prefix create](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create)|
 |PowerShell|[New-AzPublicIpPrefix](/powershell/module/az.network/new-azpublicipprefix)|
@@ -70,13 +70,13 @@ ms.locfileid: "65952685"
 
    |设置|必需？|详细信息|
    |---|---|---|
-   |“属性”|是|公共 IP 地址的名称在所选的资源组中必须唯一。|
+   |名称|是|公共 IP 地址的名称在所选的资源组中必须唯一。|
    |空闲超时（分钟）|否|不依赖于客户端发送 keep-alive 消息，将 TCP 或 HTTP 连接保持打开的分钟数。 |
    |DNS 名称标签|否|必须在创建该名称的 Azure 区域（跨所有订阅和所有客户）中保持唯一。 Azure 会在其 DNS 中自动注册该名称和 IP 地址，使你能够连接到使用该名称的资源。 Azure 会将“location.cloudapp.azure.com”**（其中 location 是所选的位置）此类默认子网追加到提供的名称后面，以创建完全限定的 DNS 名称。有关详细信息，请参阅[将 Azure DNS 与 Azure 公共 IP 地址配合使用](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address)。|
 
 或者，可以使用下面的 CLI 和 PS 命令以及 -public-ip-prefix (CLI)和 -PublicIpPrefix (PS) 参数来创建公共 IP 地址资源。 
 
-|工具|命令|
+|工具|Command|
 |---|---|
 |CLI|[az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)|
 |PowerShell|[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress?view=azps-2.0.0)|
@@ -91,7 +91,7 @@ ms.locfileid: "65952685"
 
 **命令**
 
-|工具|命令|
+|工具|Command|
 |---|---|
 |CLI|[az network public-ip prefix list](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-list) 用于列出公共 IP 地址；[az network public-ip prefix show](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show) 用于显示设置；[az network public-ip prefix update](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-update) 用于更新；[az network public-ip prefix delete](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-delete) 用于删除|
 |PowerShell|[Get-AzPublicIpPrefix](/powershell/module/az.network/get-azpublicipprefix) 用于检索公共 IP 地址对象并查看其设置；[Set-AzPublicIpPrefix](/powershell/module/az.network/set-azpublicipprefix) 用于更新设置；[Remove-AzPublicIpPrefix](/powershell/module/az.network/remove-azpublicipprefix) 用于删除|
@@ -100,7 +100,7 @@ ms.locfileid: "65952685"
 
 若要在公共 IP 地址前缀上执行任务，必须将你的帐户分配给[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或分配有下表中所列适当操作的[自定义](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)角色：
 
-| 操作                                                            | “属性”                                                           |
+| 操作                                                            | 名称                                                           |
 | ---------                                                         | -------------                                                  |
 | Microsoft.Network/publicIPPrefixes/read                           | 读取公共 IP 地址前缀                                |
 | Microsoft.Network/publicIPPrefixes/write                          | 创建或更新公共 IP 地址前缀                    |

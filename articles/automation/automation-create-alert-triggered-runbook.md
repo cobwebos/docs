@@ -5,16 +5,19 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: df28116c588ed77f02c78a42a85feb91ca339e7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d5eb330cd6e5d02432298a5b58e84ae7d24ee7e
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75366694"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383321"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>使用警报触发 Azure 自动化 Runbook
 
 可以使用 [Azure Monitor](../azure-monitor/overview.md?toc=%2fazure%2fautomation%2ftoc.json) 来监视 Azure 中大多数服务的基本级别指标和日志。 可以使用[操作组](../azure-monitor/platform/action-groups.md?toc=%2fazure%2fautomation%2ftoc.json)或经典警报调用 Azure 自动化 Runbook，以便基于警报自动执行任务。 本文介绍如何使用警报来配置和运行 Runbook。
+
+>[!NOTE]
+>本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az 模块安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于自动化帐户，可以使用["如何更新 Azure 自动化 中的 Azure PowerShell"模块](automation-update-azure-modules.md)将模块更新到最新版本。
 
 ## <a name="alert-types"></a>警报类型
 
@@ -45,14 +48,14 @@ ms.locfileid: "75366694"
 
 此示例使用来自 VM 的警报。 它从有效负载中检索 VM 数据，然后使用该信息停止运行 VM。 必须在运行该 Runbook 的自动化帐户中建立连接。 使用警报触发 Runbook 时，检查触发的 Runbook 中的警报状态非常重要。 每次警报更改状态时，都会触发 Runbook。 警报具有多个状态，最常见的两个状态是 `Activated` 和 `Resolved`。 在 Runbook 逻辑中检查此状态，以确保 Runbook 不会运行多次。 本文中的示例仅演示了如何查找 `Activated` 警报。
 
-该 Runbook 使用 **AzureRunAsConnection** [运行方式帐户](automation-create-runas-account.md)在 Azure 中进行身份验证，以便对 VM 执行管理操作。
+Runbook 使用`AzureRunAsConnection`["运行为"帐户](automation-create-runas-account.md)使用 Azure 进行身份验证，以便对 VM 执行管理操作。
 
 使用此示例可以创建名为 **Stop-AzureVmInResponsetoVMAlert** 的 Runbook。 可以修改此 PowerShell 脚本，并将其用于许多不同的资源。
 
 1. 转到 Azure 自动化帐户。
 2. 在“过程自动化”下，选择“Runbook”。********
 3. 在 Runbook 列表的顶部选择“+ 创建 Runbook”。****
-4. 在“添加 Runbook”页上，**** 输入 **Stop-AzureVmInResponsetoVMAlert** 作为 Runbook 名称。 对于 runbook 类型，选择“PowerShell”****。 然后选择“创建”****。  
+4. 在“添加 Runbook”页上，**** 输入 **Stop-AzureVmInResponsetoVMAlert** 作为 Runbook 名称。 对于 runbook 类型，选择“PowerShell”****。 然后，选择 **"创建**"。  
 5. 将以下 PowerShell 示例复制到“编辑”页中。****
 
     ```powershell-interactive
@@ -139,13 +142,13 @@ ms.locfileid: "75366694"
                     throw "Could not retrieve connection asset: $ConnectionAssetName. Check that this asset exists in the Automation account."
                 }
                 Write-Verbose "Authenticating to Azure with service principal." -Verbose
-                Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Write-Verbose
+                Add-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Write-Verbose
                 Write-Verbose "Setting subscription to work against: $SubId" -Verbose
-                Set-AzureRmContext -SubscriptionId $SubId -ErrorAction Stop | Write-Verbose
+                Set-AzContext -SubscriptionId $SubId -ErrorAction Stop | Write-Verbose
 
                 # Stop the Resource Manager VM
                 Write-Verbose "Stopping the VM - $ResourceName - in resource group - $ResourceGroupName -" -Verbose
-                Stop-AzureRmVM -Name $ResourceName -ResourceGroupName $ResourceGroupName -Force
+                Stop-AzVM -Name $ResourceName -ResourceGroupName $ResourceGroupName -Force
                 # [OutputType(PSAzureOperationResponse")]
             }
             else {
@@ -170,7 +173,7 @@ ms.locfileid: "75366694"
 
 警报使用操作组，后者是警报触发的操作的集合。 Runbook 只是操作组包含的诸多操作之一。
 
-1. 在自动化帐户的“监视”下选择“警报”。********
+1. 在自动化帐户中，选择 **"监视**下的**警报**"。
 1. 选择“+ 新建警报规则”。****
 1. 在“资源”下单击“选择”********。 在“选择资源”**** 页上选择要对其发出警报的 VM，然后单击“完成”。****
 1. 在“条件”下单击“添加条件”。******** 选择要使用的信号（例如“CPU 百分比”），然后单击“完成”。********
@@ -195,3 +198,5 @@ ms.locfileid: "75366694"
 * 有关以不同方式启动 Runbook 的详细信息，请参阅[启动 Runbook](automation-starting-a-runbook.md)。
 * 要了解如何创建活动日志警报，请参阅[创建活动日志警报](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)。
 * 若要了解如何创建准实时警报，请参阅[在 Azure 门户中创建警报规则](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json)。
+* 有关 PowerShell cmdlet 引用，请参阅[Az.自动化](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)。

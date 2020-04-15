@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3202c2fbfedfce0b0b52be94b1e0d165a6e72546
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 992075378737552e890bd2d6fed3c519e6c62aa7
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481307"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312950"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>应用程序代理连接器和应用程序的高可用性和负载平衡
 
@@ -40,16 +40,12 @@ ms.locfileid: "79481307"
 1. 客户端设备上的用户尝试访问通过应用程序代理发布的本地应用程序。
 2. 请求通过 Azure 负载均衡器来确定哪个应用程序代理服务实例应接受该请求。 每个区域都有数十个实例可用于接受请求。 此方法有助于跨服务实例均匀分配流量。
 3. 请求发送到[服务总线](https://docs.microsoft.com/azure/service-bus-messaging/)。
-4. 维修总线检查连接以前是否使用了连接器组中的现有连接器。 如果是这样，它将重用连接。 如果尚未将连接器与连接配对，它将随机选择可用连接器以向其发出信号。 然后，连接器从服务总线接收请求。
-
+4. 维修总线信号到可用的连接器。 然后，连接器从服务总线接收请求。
    - 在步骤 2 中，请求转到不同的应用程序代理服务实例，因此更有可能使用不同的连接器进行连接。 因此，连接器在组中几乎均匀使用。
-
-   - 仅当连接断开或出现 10 分钟的空闲时间时，才会重新建立连接。 例如，当计算机或连接器服务重新启动或网络中断时，连接可能会中断。
-
 5. 连接器将请求传递到应用程序的后端服务器。 然后，应用程序将响应发送回连接器。
 6. 连接器通过打开到请求来自的服务实例的出站连接来完成响应。 然后，此连接立即关闭。 默认情况下，每个连接器限制为 200 个并发出站连接。
 7. 然后，响应从服务实例传回客户端。
-8. 来自同一连接的后续请求重复上述步骤，直到此连接断开或空闲 10 分钟。
+8. 来自同一连接的后续请求重复上述步骤。
 
 应用程序通常具有许多资源，并在加载时打开多个连接。 每个连接都经过上述步骤，以分配给服务实例，如果连接以前尚未与连接器配对，请选择新的可用连接器。
 

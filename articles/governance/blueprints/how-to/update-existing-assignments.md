@@ -1,14 +1,14 @@
 ---
 title: 从门户更新现有分配
 description: 了解从 Azure 蓝图中的门户更新现有蓝图分配的机制。
-ms.date: 11/21/2019
+ms.date: 04/15/2020
 ms.topic: how-to
-ms.openlocfilehash: 2c1a24399d8fa1529665bfa60d1b889a84a29a60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a00a8bcc10b37af576777e3816a794225a3832f7
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264656"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381791"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>如何更新现有蓝图分配
 
@@ -20,24 +20,24 @@ ms.locfileid: "79264656"
 
 ## <a name="updating-assignments"></a>更新分配
 
-1. 在左侧窗格中，选择“所有服务”****。 搜索并选择“蓝图”****。
+1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”  。
 
-1. 从左侧的页面选择 **"已分配的蓝图**"。
+1. 从左侧页面选择“分配的蓝图”  。
 
 1. 在蓝图列表中，左键单击蓝图分配。 然后单击 **"更新分配"** 按钮或右键单击蓝图分配并选择 **"更新分配**"。
 
-   ![更新现有蓝图分配](../media/update-existing-assignments/update-assignment.png)
+   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="更新现有蓝图分配" border="false":::
 
 1. "**分配蓝图"** 页将预先加载原始分配中的所有值。
    可以更改“蓝图定义版本”****、“锁定分配”**** 状态，以及蓝图定义上存在的任何动态参数。 完成更改时，单击“分配”****。
 
 1. 在更新后的分配详细信息页上，查看新状态。 在此示例中，我们向分配添加了“锁定”****。
 
-   ![更新了现有蓝图分配 - 锁定模式已更改](../media/update-existing-assignments/updated-assignment.png)
+   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="更新了现有蓝图分配 - 锁定模式已更改" border="false":::
 
 1. 使用下拉列表浏览有关其他**分配操作**的详细信息。 **托管资源**表按选定的分配操作更新。
 
-   ![蓝图分配的分配操作](../media/update-existing-assignments/assignment-operations.png)
+   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="蓝图分配的分配操作" border="false":::
 
 ## <a name="rules-for-updating-assignments"></a>更新分配规则
 

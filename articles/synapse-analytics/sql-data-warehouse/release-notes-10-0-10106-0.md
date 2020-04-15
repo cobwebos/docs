@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 7e05458214732a1835dd73b85dad871683ef5bbe
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: acfca3f41cc8bf69572843c3f035a67e8df9e0fe
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743118"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313613"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure 突触分析发行说明
 
@@ -40,18 +40,13 @@ ms.locfileid: "80743118"
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
 
-## <a name="march-2020"></a>2020 年 3 月
-
-| 服务改进                                         | 详细信息                                                      |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **[可视化工作室 16.6 预览 2](/visualstudio/releases/2019/release-notes-preview) - SQL 服务器数据工具 （SSDT）** | 此版本包括以下改进和修复： </br> </br> - 解决了更改具体视图 （MV） 引用的表导致生成 MV 不支持的"更改视图"语句的问题<br/><br/> - 实现更改，以确保在数据库或项目中存在行级安全对象时，架构比较操作不会失败。 SSDT 当前不支持行级安全对象。  <br/><br/> - SQL Server 对象资源管理器超时阈值已提高，以避免在数据库中列出大量对象时超时<br/><br/> - 优化 SQL Server 对象资源管理器检索数据库对象列表的方式，以减少在填充对象资源管理器时的不稳定性并提高性能 |
-
-## <a name="february-2020"></a>2020 年 2 月
+## <a name="april-2020"></a>2020 年 4 月
 
 | 服务改进 | 详细信息 |
 | --- | --- |
 |**数据库兼容性级别（预览）**| 使用此版本，用户现在可以设置数据库的兼容性级别，以获取 Synapse SQL 引擎的特定版本的 Transact-SQL 语言和查询处理行为。 有关详细信息，请参阅[sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [并更改数据库范围配置](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。|
 |**Sp_describe_undeclared_parameters**| 允许用户查看有关 Transact-SQL 批处理中未声明参数的元数据。 有关详细信息，请参阅[sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。|
+|**[可视化工作室 16.6 预览 2](/visualstudio/releases/2019/release-notes-preview) - SQL 服务器数据工具 （SSDT）** | 此版本包括以下 SSDT 的改进和修复： </br> </br> - 解决了更改具体视图 （MV） 引用的表导致生成 MV 不支持的"更改视图"语句的问题<br/><br/> - 实现更改，以确保在数据库或项目中存在行级安全对象时，架构比较操作不会失败。 SSDT 当前不支持行级安全对象。  <br/><br/> - SQL Server 对象资源管理器超时阈值已提高，以避免在数据库中列出大量对象时超时<br/><br/> - 优化 SQL Server 对象资源管理器检索数据库对象列表的方式，以减少在填充对象资源管理器时的不稳定性并提高性能 |
 
 ## <a name="january-2020"></a>2020 年 1 月
 
@@ -89,9 +84,9 @@ ms.locfileid: "80743118"
 
 | 服务改进 | 详细信息 |
 | --- | --- |
-|**具体化视图（预览版）**|具体化视图将保留视图定义查询返回的数据，并自动随着基础表中的数据更改而更新。 它可以提高复杂查询的性能（通常指使用联接和聚合的查询），同时还提供简单的维护操作。 有关详细信息，请参见: </br> - [在"转换-SQL&#41;&#40;选择时创建具体化视图](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)</br> - [更改具体化视图&#40;转算-SQL&#41;](/sql/t-sql/statements/alter-materialized-view-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) </br> - [突触 SQL 中支持的 T-SQL 语句](sql-data-warehouse-reference-tsql-statements.md)|
+|**具体化视图（预览版）**|具体化视图将保留视图定义查询返回的数据，并自动随着基础表中的数据更改而更新。 它可以提高复杂查询的性能（通常指使用联接和聚合的查询），同时还提供简单的维护操作。 有关详细信息，请参阅： </br> - [在"转换-SQL&#41;&#40;选择时创建具体化视图](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)</br> - [更改具体化视图&#40;转算-SQL&#41;](/sql/t-sql/statements/alter-materialized-view-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) </br> - [突触 SQL 中支持的 T-SQL 语句](sql-data-warehouse-reference-tsql-statements.md)|
 |**其他 T-SQL 支持**|Synapse SQL 的 T-SQL 语言表面积已扩展，以包括对以下方面的支持： </br> - [时区（转算-SQL）](/sql/t-sql/queries/at-time-zone-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)</br> - [STRING_AGG（转算-SQL）](/sql/t-sql/functions/string-agg-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
-|**结果集缓存（预览版）**|添加了 DBCC 命令以管理之前公布的结果集缓存。 有关详细信息，请参见: </br> - [dbCC DROPRESULTCACHE&#40;转算-SQL&#41;](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  </br> - [DBCC 显示，&#40;转算-SQL&#41;](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) </br></br> 另请参阅 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 中新的 result_set_cache 列，该列显示执行的查询何时使用结果集缓存。|
+|**结果集缓存（预览版）**|添加了 DBCC 命令以管理之前公布的结果集缓存。 有关详细信息，请参阅： </br> - [dbCC DROPRESULTCACHE&#40;转算-SQL&#41;](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  </br> - [DBCC 显示，&#40;转算-SQL&#41;](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) </br></br> 另请参阅 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 中新的 result_set_cache 列，该列显示执行的查询何时使用结果集缓存。|
 |**排序聚集列存储索引（预览版）**|新列 column_store_order_ordinal 已添加到 [sys.index_columns](/sql/relational-databases/system-catalog-views/sys-index-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，以标识已排序聚集列存储索引中列的顺序。|
 
 ## <a name="may-2019"></a>2019 年 5 月
@@ -102,8 +97,8 @@ ms.locfileid: "80743118"
 |**工作负荷重要性现已推出正式版**|工作负荷管理分类和重要性可以影响查询的运行顺序。 有关工作负荷重要性的详细信息，请参阅文档中的[分类](sql-data-warehouse-workload-classification.md)和[重要性](sql-data-warehouse-workload-importance.md)概述文章。 另请查看[创建工作负荷分类器](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)文档。<br/><br/>请参阅以下视频中的操作中的工作负载重要性：<br/> -[工作负载管理概念](https://www.youtube.com/embed/QcCRBAhoXpM)<br/> -[工作负载管理方案](https://www.youtube.com/embed/_2rLMljOjw8)|
 |**其他 T-SQL 支持**|Synapse SQL 的 T-SQL 语言表面积已扩展，以包括对以下方面的支持： </br> - [修剪](/sql/t-sql/functions/trim-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
 |**JSON 函数**|业务分析人员现在可以使用熟悉的 T-SQL 语言使用以下新的 JSON 函数查询和操作格式化为 JSON 数据的文档：</br> - [伊斯伊森](/sql/t-sql/functions/isjson-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)</br> - [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)</br> -  [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)</br> -  [JSON_MODIFY](/sql/t-sql/functions/json-modify-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)</br> - [迪维森](/sql/t-sql/functions/openjson-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
-|**结果集缓存（预览版）**|使用结果集缓存可以立即获得查询响应，同时减少业务分析师和报告用户获得见解所需的时间。 有关详细信息，请参见:</br> - [交流数据库（转算-SQL）](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)</br> - [ALTER DATABASE SET 选项 (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)</br> - [设置结果设置缓存（转算-SQL）](/sql/t-sql/statements/set-result-set-caching-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)</br> - [SET 语句 (Transact-SQL)](/sql/t-sql/statements/set-statements-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)</br> - [系统数据库（转用-SQL）](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
-|**排序聚集列存储索引（预览版）**|若要存储和有效查询大量数据，列存储至关重要。 对于每个表，列存储会将传入的数据划分为行组，行组的每个列构成了磁盘上的一个段。  排序聚集列存储索引支持有效的段消除，从而进一步优化了查询执行。有关详细信息，请参见:</br> -  [创建表](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)</br> -  [创建列列表存储索引 （转算 SQL）](/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。|
+|**结果集缓存（预览版）**|使用结果集缓存可以立即获得查询响应，同时减少业务分析师和报告用户获得见解所需的时间。 有关详细信息，请参阅：</br> - [交流数据库（转算-SQL）](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)</br> - [ALTER DATABASE SET 选项 (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)</br> - [设置结果设置缓存（转算-SQL）](/sql/t-sql/statements/set-result-set-caching-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)</br> - [SET 语句 (Transact-SQL)](/sql/t-sql/statements/set-statements-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)</br> - [系统数据库（转用-SQL）](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
+|**排序聚集列存储索引（预览版）**|若要存储和有效查询大量数据，列存储至关重要。 对于每个表，列存储会将传入的数据划分为行组，行组的每个列构成了磁盘上的一个段。  排序聚集列存储索引支持有效的段消除，从而进一步优化了查询执行。有关详细信息，请参阅：</br> -  [创建表](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)</br> -  [创建列列表存储索引 （转算 SQL）](/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。|
 
 ## <a name="march-2019"></a>2019 年 3 月
 
@@ -138,7 +133,7 @@ ms.locfileid: "80743118"
 
 | 文档改进 | 详细信息 |
 | --- | --- |
-|none | |
+|无 | |
 | | |
 
 ## <a name="december-2018"></a>2018 年 12 月

@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 11/27/2019
+ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c5d0efe8e662544dc69356c6b17dd7eca6f3a50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 75b127f8429650d46af9f171ed7ff03692f1499e
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74786446"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81379904"
 ---
 # <a name="azure-ad-pass-through-authentication-agent-version-release-history"></a>Azure AD 直通身份验证代理：版本发布历史记录 
  
@@ -27,6 +27,14 @@ ms.locfileid: "74786446"
 
 - [使用 Azure AD 直通身份验证的用户登录](how-to-connect-pta.md) 
 - [Azure AD 直通身份验证代理安装](how-to-connect-pta-quick-start.md) 
+
+## <a name="1517420"></a>1.5.1742.0
+### <a name="release-status"></a>发布状态： 
+04/09/2020： 发布供下载
+
+### <a name="new-features-and-improvements"></a>新增功能和改进
+
+- 添加了在安装时定位云环境的支持。 可以将捆绑包固定到给定的云环境。
 
 
 
