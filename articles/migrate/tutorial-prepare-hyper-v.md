@@ -2,20 +2,19 @@
 title: 使用 Azure Migrate 准备 Hyper-V VM 以进行评估/迁移
 description: 了解如何使用 Azure Migrate 准备评估/迁移 Hyper-V VM。
 ms.topic: tutorial
-ms.date: 01/01/2020
+ms.date: 03/31/2020
 ms.custom: mvc
-ms.openlocfilehash: 1d327f558806e0205540c183c56b92ba31e33cb7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d14ae4282afb610d025d08419a69c6d10c2f1d08
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77031214"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436226"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>准备评估 Hyper-V VM 并将其迁移到 Azure
 
-本文介绍如何使用 [Azure Migrate](migrate-services-overview.md) 准备好要评估并迁移到 Azure 的本地 Hyper-V VM。
+本文介绍如何准备使用 Azure Migrate:Server Assessment(migrate-services-overview.md#azure-migrate-server-assessment-tool) 评估本地 Hyper-V VM，以及如何使用 [Azure Migrate:Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) 迁移 Hyper-V VM。
 
-[Azure Migrate](migrate-overview.md) 在一个中心位置提供多种工具，帮助你发现、评估应用、基础结构和工作负荷并将其迁移到 Microsoft Azure。 该中心包含 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 的产品/服务。
 
 本教程是介绍如何评估 Hyper-V VM 以及将其迁移到 Azure 的教程系列中的第一篇文章。 在本教程中，你将了解如何执行以下操作：
 
@@ -39,10 +38,11 @@ ms.locfileid: "77031214"
 
 需要为 Azure Migrate 部署设置权限。
 
-**任务** | **权限**
---- | ---
-**创建 Azure Migrate 项目** | Azure 帐户需要创建项目的权限。
-**注册 Azure Migrate 设备** | Azure Migrate 使用轻型 Azure Migrate 设备通过 Azure Migrate 服务器评估来发现并评估 Hyper-V VM。 此设备发现 VM，并将 VM 元数据和性能数据发送到 Azure Migrate。<br/><br/>在设备注册过程中，以下资源提供程序将注册到在设备中选择的订阅：Microsoft.OffAzure、Microsoft.Migrate 和 Microsoft.KeyVault。 通过注册资源提供程序来配置订阅，以供资源提供程序使用。 需要订阅的“参与者”或“所有者”角色才能注册资源提供程序。<br/><br/> 在载入过程中，Azure Migrate 将创建一个 Azure Active Directory (Azure AD) 应用：<br/> AAD 应用用于在代理（在设备上运行）与其各自在 Azure 上运行的服务之间通信（身份验证和授权）。 此应用无权对任何资源进行 ARM 调用，也没有 RBAC 访问权限。
+**任务** | **详细信息** 
+--- | --- 
+**创建 Azure Migrate 项目** | Azure 帐户需要“参与者”或“所有者”权限才能创建项目。 | 
+**注册资源提供程序** | Azure Migrate 使用轻型 Azure Migrate 设备通过 Azure Migrate 服务器评估来发现并评估 Hyper-V VM。<br/><br/> 在设备注册过程中，资源提供程序会注册到在设备中选择的订阅。 [了解详细信息](migrate-appliance-architecture.md#appliance-registration)。<br/><br/> 需要订阅的“参与者”或“所有者”角色才能注册资源提供程序。
+**创建 Azure AD 应用** | 注册设备时，Azure Migrate 会创建一个 Azure Active Directory (Azure AD) 应用，用于设备上运行的代理与其在 Azure 上运行的各自服务之间的通信。 [了解详细信息](migrate-appliance-architecture.md#appliance-registration)。<br/><br/> 你需要具有创建 Azure AD 应用的权限（在“应用程序开发人员”角色中提供）。
 
 
 
@@ -73,7 +73,7 @@ ms.locfileid: "77031214"
 
 租户/全局管理员可按如下所述授予权限：
 
-1. 在 Azure AD 中，租户/全局管理员应导航到“Azure Active Directory” **“用户”** “用户设置” >    >   。
+1. 在 Azure AD 中，租户/全局管理员应导航到“Azure Active Directory” > “用户” > “用户设置”    。
 2. 管理员应将“应用注册”设置为“是”   。
 
     ![Azure AD 权限](./media/tutorial-prepare-hyper-v/aad.png)
@@ -90,14 +90,14 @@ ms.locfileid: "77031214"
 
 ## <a name="prepare-hyper-v-for-assessment"></a>准备 Hyper-V 以进行评估
 
-可以手动或使用配置脚本为 VM 评估准备 Hyper-V。 下面是需要使用脚本或[手动](#prepare-hyper-v-manually)准备的内容。
-
+可以手动或使用配置脚本为 VM 评估准备 Hyper-V。 准备步骤如下所示：
 - [验证](migrate-support-matrix-hyper-v.md#hyper-v-host-requirements) Hyper-V 主机设置，并确保在 Hyper-V 主机上打开了[所需的端口](migrate-support-matrix-hyper-v.md#port-access)。
 - 在每台主机上设置 PowerShell 远程控制，使 Azure Migrate 设备能够通过 WinRM 连接在主机上运行 PowerShell 命令。
 - 如果 VM 磁盘位于远程 SMB 共享上，则委派凭据。
 - 在 Hyper-V 主机上设置供设备用来发现 VM 的帐户。
-- 在要发现和评估的每个 VM 上，启用 Hyper-V Integration Services。
+- 在要发现和评估的每个 VM 上，设置 Hyper-V Integration Services。 启用 Integration Services 时的默认设置已足够用于 Azure Migrate。
 
+    ![启用 Integration Services](./media/tutorial-prepare-hyper-v/integrated-services.png)
 
 
 ## <a name="prepare-with-a-script"></a>使用脚本准备
@@ -113,7 +113,7 @@ ms.locfileid: "77031214"
 - 检查主机是否正在运行受支持的 Hyper-V 版本，并检查 Hyper-V 角色。
 - 启用 WinRM 服务，并在主机上打开端口 5985 (HTTP) 和 5986 (HTTPS)（收集元数据时需要使用这些端口）。
 - 在主机上启用 PowerShell 远程控制。
-- 检查主机管理的所有 VM 上是否已启用 Hyper-V 集成服务。
+- 检查主机管理的所有 VM 上是否已启用 Hyper-V Integration Services。
 - 根据需要在主机上启用 CredSSP。
 
 按如下所示运行脚本：
@@ -130,7 +130,7 @@ ms.locfileid: "77031214"
     SHA256
     ```
 
-4.  验证脚本完整性后，在每台 Hyper-V 主机上结合以下 PowerShell 命令运行该脚本：
+4.    验证脚本完整性后，在每台 Hyper-V 主机上结合以下 PowerShell 命令运行该脚本：
     ```
     PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1
     ```
@@ -145,7 +145,7 @@ ms.locfileid: "77031214"
 | **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2 |
 
 
-## <a name="prepare-hyper-v-manually"></a>手动准备 Hyper-V
+## <a name="prepare-manually"></a>手动准备
 
 按照本部分中的过程手动准备 Hyper-V，而不是使用脚本。
 

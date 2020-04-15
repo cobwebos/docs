@@ -2,21 +2,21 @@
 title: 教程 - 将输出添加到模板
 description: 将输出添加到 Azure 资源管理器模板以简化语法。
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 381f9f54a95b6d457aa65c7e8ef6abe49fe9eeea
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 2ee1a2c7037bde68b7858b57a03c78bd2016ff1c
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765734"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743548"
 ---
-# <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>教程：将输出添加到资源管理器模板
+# <a name="tutorial-add-outputs-to-your-arm-template"></a>教程：将输出添加到 ARM 模板
 
-本教程介绍如何从模板返回值。 需要已部署资源提供的值时，请使用输出。 完成本教程需要 **7 分钟**。
+本教程介绍如何从 Azure 资源管理器 (ARM) 模板返回值。 需要已部署资源提供的值时，请使用输出。 完成本教程需要 **7 分钟**。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 建议完成[有关变量的教程](template-tutorial-add-variables.md)，但这不是必需的。
 
@@ -52,7 +52,7 @@ ms.locfileid: "76765734"
 
 如果尚未创建资源组，请参阅[创建资源组](template-tutorial-create-first-template.md#create-resource-group)。 此示例假设已根据[第一篇教程](template-tutorial-create-first-template.md#deploy-template)中所述，将 **templateFile** 变量设置为模板文件的路径。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -63,10 +63,12 @@ New-AzResourceGroupDeployment `
   -storageSKU Standard_LRS
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要运行此部署命令，必须具有 Azure CLI 的 [最新版本](/cli/azure/install-azure-cli)。
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addoutputs \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -75,7 +77,7 @@ az group deployment create \
 
 ---
 
-在部署命令的输出中，将会看到如下所示的对象：
+在部署命令的输出中，将会看到类似于以下示例的对象，但前提是输出采用 JSON 格式：
 
 ```json
 {
@@ -87,6 +89,9 @@ az group deployment create \
     "file": "https://storeluktbfkpjjrkm.file.core.windows.net/"
 }
 ```
+
+> [!NOTE]
+> 如果部署失败，请将 **debug** 开关和部署命令配合使用来显示调试日志。  还可以使用 **verbose** 开关来显示完整的调试日志。
 
 ## <a name="review-your-work"></a>回顾所做的工作
 

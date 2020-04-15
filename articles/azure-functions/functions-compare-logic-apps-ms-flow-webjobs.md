@@ -1,25 +1,21 @@
 ---
 title: Azure 中的集成和自动化平台选项
-description: 比较针对集成任务进行了优化的各种 Microsoft 云服务：Microsoft Flow、逻辑应用、Functions 和 WebJobs。
+description: 比较针对集成任务进行了优化的各种 Microsoft 云服务：Power Automate、逻辑应用、Functions 和 WebJobs。
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: bd9f3bfe1578b632707382cfe422f19514e7ce48
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 40293056a73fd88e9ad6b3922aebfe0ba71f07dd
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290045"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878130"
 ---
-> [!NOTE]
-> Microsoft Flow 现在为 Power Automate。 有关详细信息，请参阅此[博客](https://aka.ms/flow-now-pa)。
-> 
-> 此内容将在未来几天进行更新，以反映品牌更改。
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>在 Azure 中选择合适的集成和自动化服务
 
 本文比较了以下 Microsoft 云服务：
 
-* [Microsoft Flow](https://flow.microsoft.com/)
+* [Microsoft Power Automate](https://flow.microsoft.com/)（以前称 Microsoft Flow）
 * [Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps/)
 * [Azure Functions](https://azure.microsoft.com/services/functions/)
 * [Azure 应用服务 WebJobs](../app-service/webjobs-create.md)
@@ -28,23 +24,23 @@ ms.locfileid: "79290045"
 
 若要查找 Azure Functions 与其他 Azure 计算选项之间的更一般比较，请参阅[选择 Azure 计算服务的标准](/azure/architecture/guide/technology-choices/compute-comparison)和[为微服务选择 Azure 计算选项](/azure/architecture/microservices/design/compute-options)。
 
-## <a name="compare-microsoft-flow-and-azure-logic-apps"></a>比较 Microsoft Flow 和 Azure 逻辑应用
+## <a name="compare-microsoft-power-automate-and-azure-logic-apps"></a>比较 Microsoft Power Automate 和 Azure 逻辑应用
 
-Microsoft Flow 和逻辑应用都是可以创建工作流的“设计器优先”  集成服务。 这两种服务都与各种 SaaS 和企业应用程序相集成。 
+Power Automate 和逻辑应用都是可以创建工作流的“设计器优先”  集成服务。 这两种服务都与各种 SaaS 和企业应用程序相集成。 
 
-Microsoft Flow 构建在逻辑应用的基础之上。 它们有相同的工作流设计器和相同的[连接器](../connectors/apis-list.md)。 
+Power Automate 基于逻辑应用而构建。 它们有相同的工作流设计器和相同的[连接器](../connectors/apis-list.md)。 
 
-借助 Microsoft Flow，任何办公室工作人员都可以执行简单的集成（例如，对 SharePoint 文档库的审批过程），无需求助开发人员或 IT 部门。 逻辑应用还可以实现需要企业级 DevOps 和安全做法的高级集成（例如 B2B 流程）。 对于业务工作流，其典型特征就是复杂性会随时间增长而增加。 相应地，可以先从流开始，然后根据需要将其转换到逻辑应用。
+借助 Power Automate，任何办公室工作人员都可以执行简单的集成（例如，对 SharePoint 文档库的审批过程），无需求助开发人员或 IT 部门。 逻辑应用还可以实现需要企业级 DevOps 和安全做法的高级集成（例如 B2B 流程）。 对于业务工作流，其典型特征就是复杂性会随时间增长而增加。 相应地，可以先从流开始，然后根据需要将其转换到逻辑应用。
 
-下表可帮助你确定 Microsoft Flow 或逻辑应用是否最适合特定的集成：
+下表可帮助你确定 Power Automate 或逻辑应用是否最适合某一特定的集成：
 
-|  | Microsoft Flow | 逻辑应用 |
+|  | Power Automate | 逻辑应用 |
 | --- | --- | --- |
 | **用户** |办公人员、企业用户、SharePoint 管理员 |Pro 集成人员和开发人员、IT 专业人员 |
 | **方案** |自助服务 |高级集成 |
 | **设计工具** |浏览器内和移动应用、仅 UI |浏览器和 [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md)、[代码视图](../logic-apps/logic-apps-author-definitions.md)可用 |
 | **应用程序生命周期管理 (ALM)** |在非生产环境中进行设计和测试，并在准备就绪后投放到生产 |Azure DevOps：[Azure 资源管理器](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md)中的源代码管理、测试、支持、自动化和可管理性 |
-| **管理员体验** |管理 Microsoft Flow 环境和数据丢失防护 (DLP) 策略，跟踪许可：[Microsoft Flow 管理中心](https://admin.flow.microsoft.com) |管理资源组、连接、访问管理和日志记录：[Azure 门户](https://portal.azure.com) |
+| **管理员体验** |管理 Power Automate 环境和数据丢失防护 (DLP) 策略，跟踪许可：[管理中心](https://admin.flow.microsoft.com) |管理资源组、连接、访问管理和日志记录：[Azure 门户](https://portal.azure.com) |
 | **安全性** |Office 365 安全与合规审核日志、DLP、针对敏感数据的[静态加密](https://wikipedia.org/wiki/Data_at_rest#Encryption) |Azure 的安全保证：[Azure 安全性](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)、[Azure 安全中心](https://azure.microsoft.com/services/security-center/)、[审核日志](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>比较 Azure Functions 和 Azure 逻辑应用
@@ -107,25 +103,25 @@ Azure Functions 是在 WebJobs SDK 上构建的，因此共享许多相同的事
 
 <a name="together"></a>
 
-## <a name="microsoft-flow-logic-apps-functions-and-webjobs-together"></a>Microsoft Flow、逻辑应用、Functions 和 WebJobs 相结合
+## <a name="power-automate-logic-apps-functions-and-webjobs-together"></a>Power Automate、逻辑应用、Functions 和 WebJobs 一起
 
 并非只能选择其中的一种服务。 这些服务可相互集成，也可与外部服务配合工作。
 
 流可以调用逻辑应用。 逻辑应用可以调用函数，而函数也可以调用逻辑应用。 请参阅相关文档，例如，[创建与 Azure 逻辑应用集成的函数](functions-twitter-email.md)。
 
-随着时间的推移，Microsoft Flow、逻辑应用和 Functions 之间的集成将不断改进。 可以在某服务中构建一些项，并将其用于其他服务。
+随着时间的推移，Power Automate、逻辑应用和 Functions 之间的集成会不断改进。 可以在某服务中构建一些项，并将其用于其他服务。
 
 可使用以下链接获取有关集成服务的详细信息：
 
 * [利用 Azure Functions 和 Azure 应用服务实现集成方案，来自 Christopher Anderson](https://www.biztalk360.com/integrate-2016-resources/leveraging-azure-functions-azure-app-service-integration-scenarios/)
 * [集成简化，来自 Charles Lamanna](https://www.biztalk360.com/integrate-2016-resources/integrations-made-simple/)
 * [逻辑应用网上直播](https://aka.ms/logicappslive)
-* [Microsoft Flow 常见问题解答](/power-automate/frequently-asked-questions)
+* [Power Automate 常见问题](/power-automate/frequently-asked-questions)
 
 ## <a name="next-steps"></a>后续步骤
 
 开始创建第一个流、逻辑应用、函数应用。 选择以下任一链接：
 
-* [开始使用 Microsoft Flow](/power-automate/getting-started)
+* [Power Automate 入门](/power-automate/getting-started)
 * [创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [创建第一个 Azure 函数](functions-create-first-azure-function.md)

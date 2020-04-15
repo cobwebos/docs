@@ -7,20 +7,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/15/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 14b3292a08e9bb0a60710053cd0b7ffc9d0db115
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1bd5248e0a6a6c7c569c85e8c1af3e30f8b7f9e4
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223074"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474239"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>教程：创建和配置 Azure Active Directory 域服务实例
 
 Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active Directory 完全兼容的托管域服务，例如域加入、组策略、LDAP、Kerberos/NTLM 身份验证。 使用这些域服务就无需自行部署、管理和修补域控制器。 Azure AD DS 与现有的 Azure AD 租户集成。 这种集成可让用户使用其企业凭据登录，而你可以使用现有的组和用户帐户来保护对资源的访问。
 
-可以[使用默认配置选项创建托管域][tutorial-create-instance-advanced]以实现联网和同步，也可以手动定义这些设置。 本教程介绍如何使用 Azure 门户通过默认选项创建和配置 Azure AD DS 实例。
+可以[使用默认配置选项创建托管域][tutorial-create-instance-advanced]以实现联网和同步，也可以手动定义这些设置。 本教程介绍如何通过 Azure 门户使用默认选项创建和配置 Azure AD DS 实例。
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -29,7 +29,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 > * 创建 Azure AD DS 实例
 > * 启用密码哈希同步
 
-如果你没有 Azure 订阅，可以在开始之前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果还没有 Azure 订阅，可以在开始前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -89,7 +89,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 1. 输入托管域的 **DNS 域名**，并注意前面所述的问题。
 1. 选择应在其中创建托管域的 Azure“位置”  。 如果选择支持可用性区域的区域，则 Azure AD DS 资源会跨区域分布以实现额外的冗余。
 
-    可用性区域是 Azure 区域中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的区域中必须至少有三个单独的区域。
+    可用性区域是 Azure 区域中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的地区中都必须至少有三个单独的区域。
 
     对于要跨区域分布 Azure AD DS，无需进行任何配置。 Azure 平台会自动处理资源的区域分配。 若要查看区域可用性的详细信息，请参阅[Azure 中的可用性区域是什么？][availability-zones]
 
@@ -104,8 +104,8 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 若要快速创建 Azure AD DS 托管域，可以选择“查看 + 创建”以接受其他默认的配置选项。  选择此创建选项时，会配置以下默认设置：
 
-* 创建名为 *aadds-vnet* 的虚拟网络，该网络使用的 IP 地址范围为 *10.0.1.0/24*。
-* 创建名为 *aadds-vnet* 的子网，该子网使用的 IP 地址范围为 *10.0.1.0/24*。
+* 创建名为 *aadds-vnet* 的虚拟网络，该网络使用的 IP 地址范围为 *10.0.2.0/24*。
+* 创建名为 *aadds-vnet* 的子网，该子网使用的 IP 地址范围为 *10.0.2.0/24*。
 * 将所有用户从 Azure AD 同步到 Azure AD DS 托管域。 
 
 选择“查看 + 创建”以接受这些默认的配置选项。 
@@ -136,7 +136,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 1. 托管域的“概述”选项卡显示了一些“必需的配置步骤”。   第一个配置步骤是更新虚拟网络的 DNS 服务器设置。 正确配置 DNS 设置后，不再会显示此步骤。
 
-    列出的地址是在虚拟网络中使用的域控制器。 在本示例中，这些地址为 *10.0.1.4* 和 *10.0.1.5*。 稍后可在“属性”选项卡上找到这些 IP 地址。 
+    列出的地址是在虚拟网络中使用的域控制器。 在本示例中，这些地址为 *10.0.2.4* 和 *10.0.2.5*。 稍后可在“属性”选项卡上找到这些 IP 地址。 
 
     ![使用 Azure AD 域服务 IP 地址配置虚拟网络的 DNS 设置](./media/tutorial-create-instance/configure-dns.png)
 

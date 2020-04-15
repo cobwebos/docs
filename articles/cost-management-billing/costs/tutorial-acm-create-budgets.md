@@ -3,17 +3,17 @@ title: 教程 - 创建和管理 Azure 预算
 description: 本教程介绍如何对所使用的 Azure 服务进行成本计划和核算。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/24/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: f7c1ac65026fd366be1003842ff70a78b9082339
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 82094fadf7b11d97b0e9e74d9ba897baed16ee01
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80155930"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874273"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教程：创建和管理 Azure 预算
 
@@ -25,7 +25,7 @@ ms.locfileid: "80155930"
 
 本教程中的示例演示了如何针对 Azure 企业协议 (EA) 订阅创建和编辑预算。
 
-请观看[通过 Azure 门户将预算应用于订阅](https://www.youtube.com/watch?v=UrkHiUx19Po)视频，了解如何在 Azure 中创建预算来监视支出。
+请观看[通过 Azure 门户将预算应用于订阅](https://www.youtube.com/watch?v=UrkHiUx19Po)视频，了解如何在 Azure 中创建预算来监视支出。 若要观看其他视频，请访问[成本管理 YouTube 频道](https://www.youtube.com/c/AzureCostManagement)。
 
 >[!VIDEO https://www.youtube.com/embed/UrkHiUx19Po]
 
@@ -38,11 +38,32 @@ ms.locfileid: "80155930"
 
 ## <a name="prerequisites"></a>先决条件
 
-各种 Azure 帐户类型都支持预算。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。 若要查看预算，你至少需要对 Azure 帐户具有读取访问权限。
+以下 Azure 帐户类型和范围都支持预算：
+
+- Azure 基于角色的访问控制范围
+    - 管理组
+    - 订阅
+- 企业协议范围
+    - 计费帐户
+    - 部门
+    - 注册帐户
+- 个人协议
+    - 计费帐户
+- Microsoft 客户协议范围
+    - 计费帐户
+    - 计费配置文件
+    - 发票科目
+    - 客户
+- AWS 范围
+    - 外部帐户
+    - 外部订阅
+
+
+若要查看预算，你至少需要对 Azure 帐户具有读取访问权限。
 
 如果你有新订阅，则无法立即创建预算或使用其他成本管理功能。 最多可能需要 48 小时才能使用所有成本管理功能。
 
-对于 Azure EA 订阅，必须拥有读取访问权限才能查看预算。 若要创建和管理预算，必须具有参与者权限。 可以为 EA 订阅和资源组创建单独的预算。 但是，不能为 EA 计费帐户创建预算。
+对于 Azure EA 订阅，必须拥有读取访问权限才能查看预算。 若要创建和管理预算，必须具有参与者权限。
 
 每个订阅支持以下 Azure 权限或范围，以便按用户和组进行预算。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
 
@@ -58,7 +79,7 @@ ms.locfileid: "80155930"
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>在 Azure 门户中创建预算
 
-可以按月、按季或按年创建 Azure 订阅预算。 Azure 门户中的导航内容决定了你是为订阅还是为管理组创建预算。
+可以按月、按季或按年创建 Azure 订阅预算。
 
 若要创建或查看预算，请在 Azure 门户中打开所需的范围，然后在菜单中选择“预算”  。 例如，导航到“订阅”，从列表中选择订阅，然后在菜单中选择“预算”   。 在“预算”中，请使用“范围”  框切换到另一范围，如某个管理组。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
 
@@ -110,15 +131,11 @@ ms.locfileid: "80155930"
 
 在为订阅或资源组范围创建或编辑预算时，可以将其配置为调用操作组。 达到预算阈值时，操作组可以执行各种不同的操作。 目前只支持将操作组用于订阅和资源组范围。 有关操作组的详细信息，请参阅[在 Azure 门户中创建和管理操作组](../../azure-monitor/platform/action-groups.md)。 若要详细了解如何将基于预算的自动化与操作组配合使用，请参阅[使用 Azure 预算管理成本](../manage/cost-management-budget-scenario.md)。
 
-
-
 若要创建或更新操作组，请在创建或编辑预算时选择“管理操作组”  。
 
 ![示例，介绍如何创建预算以显示“管理操作组”](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
 
-
 接下来，选择“添加操作组”  并创建操作组。
-
 
 ![“添加操作组”框的图像](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
 

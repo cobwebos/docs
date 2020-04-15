@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 03/01/2020
-ms.openlocfilehash: d39cf8745c6f53cb11bb12561fd452325fe52ac6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f6723992ac3335e6abdd78f2008130dfe136f7df
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79296942"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873882"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>创建数据标记项目并导出标签 
 
@@ -20,14 +20,14 @@ ms.locfileid: "79296942"
 
 在机器学习项目中标记大量的数据通常让人感到头疼。 包含计算机视觉组件的项目（例如图像分类或对象检测）通常需要为数千个图像提供标签。
  
-[Azure 机器学习](https://ml.azure.com/)提供一个中心位置用于创建、管理和监视标记项目。 使用机器学习可以协调数据、标签和团队成员，以有效地管理标记任务。 机器学习支持多标签或多类图像分类，以及带边界框的对象标识。
+可以通过 [Azure 机器学习](https://ml.azure.com/)集中创建、管理和监视标记项目（公共预览版）。 使用机器学习可以协调数据、标签和团队成员，以有效地管理标记任务。 机器学习支持多标签或多类图像分类，以及带边界框的对象标识。
 
 机器学习可跟踪进度，并维护未完成标记任务的队列。 标记程序不需要 Azure 帐户即可参与此过程。 在他们使用你的 Microsoft 帐户或 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) 完成身份验证后，他们就可以根据可用的时间执行或多或少的标记操作。
 
 可以启动和停止项目，添加和删除标记人员与团队，以及监视标记进度。 可以使用 COCO 格式导出已标记的数据，或将其导出为 Azure 机器学习数据集。
 
 > [!Important]
-> 目前仅支持图像分类和对象识别标记项目。 此外，数据图像必须在 Azure Blob 数据存储中提供。 （如果没有现有的数据存储，可以在创建项目过程中上传图像。） 
+> 目前仅支持图像分类和对象识别标记项目。 此外，数据图像必须在 Azure Blob 数据存储中提供。 （如果没有现有的数据存储，可以在创建项目过程中上传图像。）
 
 本文将指导如何进行以下操作：
 
@@ -41,6 +41,7 @@ ms.locfileid: "79296942"
 
 ## <a name="prerequisites"></a>先决条件
 
+
 * 本地文件或 Azure Blob 存储中要标记的数据。
 * 要应用的一组标签。
 * 标记说明。
@@ -51,11 +52,12 @@ ms.locfileid: "79296942"
 
 标记项目是通过 Azure 机器学习管理的。 可以使用“标记项目”页来管理项目和人员。  一个项目分配有一个或多个团队，一个团队分配有一个或多个人员。
 
-如果数据已在 Azure Blob 存储中，在创建标记项目之前，应以数据存储的形式提供这些数据。 有关详细信息，请参阅[创建和注册数据存储](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores)。
+如果数据已在 Azure Blob 存储中，在创建标记项目之前，应以数据存储的形式提供这些数据。 有关如何使用数据存储的示例，请参阅[教程：创建第一个图像分类标记项目](tutorial-labeling.md)。
 
 若要创建项目，请选择“添加项目”。  为项目指定适当的名称，然后选择“标记任务类型”。 
 
 ![标记项目创建向导](./media/how-to-create-labeling-projects/labeling-creation-wizard.png)
+
 
 * 若要将一组类中的单个类应用到某个图像，请为项目选择“多类图像分类”。  
 * 若要将一组类中的一个或多个标签应用到某个图像，请为项目选择“多标签图像分类”。   例如，可以使用“狗”和“白天”标记狗的照片。  
@@ -168,9 +170,9 @@ ms.locfileid: "79296942"
 
 ## <a name="manage-teams-and-people"></a>管理团队和人员
 
-默认情况下，创建的每个标记项目都有一个新团队，而你是其中的成员。 但是，也可以在项目之间共享团队。 项目可以有多个团队。 若要创建团队，请在“团队”页上选择“添加团队”。  
+默认情况下，创建的每个标记项目都有一个新团队，而你是其中的成员。 但是，也可以在项目之间共享团队。 项目可以有多个团队。 若要创建团队，请在“团队”页上选择“添加团队”。   
 
-可以在“人员”页上管理人员。  按电子邮件地址添加和删除人员。 每个标记程序必须通过你的 Microsoft 帐户或 Azure Active Directory（如果使用）完成身份验证。  
+可以在“标记工具”页上管理人员。  按电子邮件地址添加和删除人员。 每个标记程序必须通过你的 Microsoft 帐户或 Azure Active Directory（如果使用）完成身份验证。  
 
 添加人员后，可将该人员分配到一个或多个团队：转到“团队”页，选择团队，然后选择“分配人员”或“删除人员”。   
 
@@ -216,5 +218,6 @@ COCO 文件是在 Azure 机器学习工作区的默认 Blob 存储中创建的�
 
 ## <a name="next-steps"></a>后续步骤
 
+* [教程：创建第一个图像分类标记项目](tutorial-labeling.md)。
 * 标记图像以进行[图像分类或对象检测](how-to-label-images.md)
 * 详细了解 [Azure 机器学习和机器学习工作室（经典）](compare-azure-ml-to-studio-classic.md)

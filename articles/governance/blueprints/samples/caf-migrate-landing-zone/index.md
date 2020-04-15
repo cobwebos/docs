@@ -1,14 +1,14 @@
 ---
 title: CAF 迁移登陆区域蓝图示例概述
 description: 适用于 Azure 的云采用框架 (CAF) 迁移登陆区域蓝图示例的概述和体系结构。
-ms.date: 08/20/2019
+ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 08171a39c83ea6822243d7239882a19b053f213e
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: d0328a590d86677e098504a7498a696697fc38c8
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "74545498"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383551"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>适用于 Azure 的 Microsoft 云采用框架迁移登陆区域蓝图示例概述
 
@@ -20,7 +20,7 @@ ms.locfileid: "74545498"
 
 CAF 迁移登陆区域蓝图示例在 Azure 中部署基础结构资源，这些资源可供组织用来准备订阅，以便将虚拟机迁移到其中。 它还可帮助将管理云资产所需的治理控制实施到位。 此示例将部署并强制实施资源、策略和模板，从而使组织能够自信地开始使用 Azure。
 
-![CAF 迁移登陆区域，图像说明了作为 CAF 指南的一部分安装用于初始登陆区域的内容 ](../../media/caf-blueprints/caf-migration-landing-zone-architecture.png)
+:::image type="content" source="../../media/caf-blueprints/caf-migration-landing-zone-architecture.png" alt-text="CAF 迁移登陆区域，图像说明了作为 CAF 指南的一部分为初始登陆区域安装的内容" border="false":::
 
 此环境包括多项 Azure 服务，这些服务用于根据 ISO 27001 标准提供安全的、全面受监视的、面向企业的治理。 此环境包括：
 

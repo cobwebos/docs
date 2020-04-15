@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: f6817c1ec308e75a4af88825d46848b504775e19
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a7ab79fe7ccfbf6d292b6ba7be58026955a06516
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223034"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519307"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>教程：使用高级配置选项创建和配置 Azure Active Directory 域服务实例
 
@@ -30,7 +30,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 > * 将管理用户添加到域管理
 > * 启用密码哈希同步
 
-如果你没有 Azure 订阅，可以在开始之前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果还没有 Azure 订阅，可以在开始前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -90,7 +90,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 1. 输入托管域的 **DNS 域名**，并注意前面所述的问题。
 1. 选择应在其中创建托管域的 Azure“位置”  。 如果选择支持可用性区域的区域，则 Azure AD DS 资源会跨区域分布以实现额外的冗余。
 
-    可用性区域是 Azure 区域中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的区域中必须至少有三个单独的区域。
+    可用性区域是 Azure 区域中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的地区中都必须至少有三个单独的区域。
 
     对于要跨区域分布 Azure AD DS，无需进行任何配置。 Azure 平台会自动处理资源的区域分配。 若要查看区域可用性的详细信息，请参阅[Azure 中的可用性区域是什么？][availability-zones]
 

@@ -3,12 +3,12 @@ title: ISO 27001 ASE/SQL 工作负荷蓝图示例概述
 description: ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例的概述和体系结构。
 ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: d77029b93b1e77bdba85c5dd5608cbdc5d6543a5
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 9957ab1bef5b65fc90b5a357bd56d6f0013ea690
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "75920773"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381738"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例的概述
 
@@ -24,7 +24,7 @@ ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例为 [ISO 27001
 
 ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例部署一个基于平台即服务的 Web 环境。 该环境可以用来托管多个遵循 ISO 27001 标准的 Web 应用程序、Web API 和 SQL 数据库实例。 此蓝图示例依赖于 [ISO 27001 共享服务](../iso27001-shared/index.md)蓝图示例。
 
-![ISO 27001 ASE/SQL 工作负荷蓝图示例设计](../../media/sample-iso27001-ase-sql-workload/iso27001-ase-sql-workload-blueprint-sample-design.png)
+:::image type="content" source="../../media/sample-iso27001-ase-sql-workload/iso27001-ase-sql-workload-blueprint-sample-design.png" alt-text="ISO 27001 ASE/SQL 工作负荷蓝图示例设计" border="false":::
 
 此环境包括多项 Azure 服务，这些服务用于根据 ISO 27001 标准提供安全的、全面受监视的、面向企业的工作负荷基础结构。 此环境包括：
 

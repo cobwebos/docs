@@ -12,12 +12,12 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 03/12/2020
-ms.openlocfilehash: 5847ef3033d257faef4831785b8abd864d54e835
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c072161db7a477b7973571a18d4f686b1b9c6202
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79209611"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985671"
 ---
 # <a name="quickstart-use-the-azure-portals-query-editor-to-query-a-sql-database"></a>快速入门：使用 Azure 门户的查询编辑器查询 SQL 数据库
 
@@ -175,7 +175,7 @@ ms.locfileid: "79209611"
 
 * 查询编辑器使用端口 443 和 1443 进行通信。 确保已在这些端口上启用出站 HTTPS 流量。 还需要将出站 IP 地址添加到服务器的允许防火墙规则中，以访问你的数据库和数据仓库。
 
-* 查询编辑器使用专用链接，无需将客户端 IP 地址添加到 SQL 数据库防火墙中
+* 如果有“专用链接”连接，则可使用查询编辑器而无需将客户端 IP 地址添加到 SQL 数据库防火墙中
 
 * 按 **F5** 刷新查询编辑器页，任何正在处理的查询都将丢失。
 

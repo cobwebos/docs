@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/26/2020
+ms.date: 03/30/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1497b757d77d12cb5b963953224fa8929e987853
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 4af7dc5d55e451e4f6873df42e2b740fd1e5cd56
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385299"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891622"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-anyconnect"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cisco AnyConnect 集成
 
@@ -96,6 +96,9 @@ ms.locfileid: "80385299"
 1. 在“设置 Cisco AnyConnect”部分，根据要求复制相应的 URL。 
 
     ![复制配置 URL](common/copy-configuration-urls.png)
+
+> [!NOTE]
+> 如果要载入服务器的多个 TGT，则需从库中添加 Cisco AnyConnect 应用程序的多个实例。 还可以选择在 Azure AD 中为所有这些应用程序实例上传你自己的证书。 这样就可以对应用程序使用同一证书，但可以为每个应用程序配置不同的标识符和回复 URL。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 

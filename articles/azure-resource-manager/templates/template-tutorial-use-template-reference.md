@@ -1,19 +1,19 @@
 ---
-title: 利用模板参考
-description: 利用 Azure 资源管理器模板参考来创建模板。
+title: 使用模板参考
+description: 使用 Azure 资源管理器模板参考来创建模板。
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: b742982121a20a2b057eba4211584b0386dde411
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b713d508a5e28291778d3727c15e12972eea3a77
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80373173"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878473"
 ---
-# <a name="tutorial-utilize-the-arm-template-reference"></a>教程：利用 ARM 模板参考
+# <a name="tutorial-utilize-the-resource-manager-template-reference"></a>教程：利用资源管理器模板参考
 
 了解如何查找模板架构信息，以及如何使用该信息创建 Azure 资源管理器 (ARM) 模板。
 
@@ -65,9 +65,13 @@ ms.locfileid: "80373173"
     * **resources**：指定已在资源组中部署或更新的资源类型。
     * **outputs**：指定部署后返回的值。
 
-1. 展开“resources”  。 已定义 `Microsoft.Storage/storageAccounts` 资源。
+1. 展开“resources”  。 已定义 `Microsoft.Storage/storageAccounts` 资源。 SKU 名称使用参数值。  此参数称为 **storageAccountType**。
 
     ![资源管理器模板存储帐户定义](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resource.png)
+
+1. 展开 **parameters** 即可查看 **storageAccountType** 是如何定义的。 此参数有四个允许的值。 需找到其他允许的值，然后修改参数定义。
+
+    ![资源管理器模板存储帐户资源 SKU](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resources-skus-old.png)
 
 ## <a name="find-the-template-reference"></a>查找模板参考
 
@@ -84,7 +88,7 @@ ms.locfileid: "80373173"
 
     ![资源管理器模板参考存储帐户类别版本](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-types-versions.png)
 
-1. 选择最新版的 **storageAccount** 资源类型。  撰写本文时，最新版为 **2019-06-01**。
+1. 选择最新版的 **storageAccount** 资源类型。 撰写本文时，最新版为 **2019-06-01**。 请确保此版本与模板中用于存储帐户资源的版本相匹配。 如果更新 API 版本，请验证资源定义是否与模板参考匹配。
 
 1. 此页列出了 storageAccount 资源类型的详细信息。  例如，它列出了允许用于 **Sku** 对象的值。 Sku 比你之前打开的快速入门模板中列出的更多。 可以自定义快速入门模板，使之包含所有可用的存储类型。
 
@@ -98,7 +102,21 @@ ms.locfileid: "80373173"
 
 ## <a name="deploy-the-template"></a>部署模板
 
-有关部署过程，请参阅 Visual Studio Code 快速入门中的[部署模板](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template)部分。 部署模板时，请使用新添加的值指定 **storageAccountType** 参数，例如 **Premium_ZRS**。 如果使用原始快速入门模板，部署会失败，因为 **Premium_ZRS** 不是允许的值。
+有关部署过程，请参阅 Visual Studio Code 快速入门中的[部署模板](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template)部分。 部署模板时，请使用新添加的值指定 **storageAccountType** 参数，例如 **Premium_ZRS**。 如果使用原始快速入门模板，部署会失败，因为 **Premium_ZRS** 不是允许的值。  若要传递参数值，请将以下开关添加到部署命令：
+
+# <a name="cli"></a>[CLI](#tab/CLI)
+
+```azurecli
+--parameters storageAccountType='Premium_ZRS'
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell
+-storageAccountType "Premium_ZRS"
+```
+
+---
 
 ## <a name="clean-up-resources"></a>清理资源
 

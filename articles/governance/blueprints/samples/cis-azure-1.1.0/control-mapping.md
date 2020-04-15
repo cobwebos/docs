@@ -3,12 +3,12 @@ title: CIS Microsoft Azure Foundations Benchmark 蓝图示例控件
 description: CIS Microsoft Azure Foundations Benchmark 蓝图示例到 Azure Policy 的建议映射。
 ms.date: 11/04/2019
 ms.topic: sample
-ms.openlocfilehash: 34d38f34dcd4233706f9b4578bc2dc2a644e4c2c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ea61ae4ea05b34c785485cbb5fd39c8a772565e3
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74707428"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656964"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure Foundations Benchmark 蓝图示例的建议映射
 
@@ -245,7 +245,7 @@ ms.locfileid: "74707428"
 
 ## <a name="411-ensure-enforce-ssl-connection-is-set-to-enabled-for-mysql-database-server"></a>4.11 确保 MySQL 数据库服务器的“强制 SSL 连接”设置为“已启用”
 
-此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保 MySQL 数据库服务器强制 SSL 连接。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保 MySQL 数据库服务器强制执行 TLS/SSL 连接。
 
 - 应为 MySQL 数据库服务器启用“强制 SSL 连接”
 
@@ -257,7 +257,7 @@ ms.locfileid: "74707428"
 
 ## <a name="413-ensure-enforce-ssl-connection-is-set-to-enabled-for-postgresql-database-server"></a>4.13 确保 PostgreSQL 数据库服务器的“强制 SSL 连接”设置为“已启用”
 
-此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保 PostgreSQL 数据库服务器强制 SSL 连接。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保 PostgreSQL 数据库服务器强制执行 TLS/SSL 连接。
 
 - 应为 PostgreSQL 数据库服务器启用“强制 SSL 连接”
 

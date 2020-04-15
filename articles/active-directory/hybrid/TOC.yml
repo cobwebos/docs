@@ -336,6 +336,8 @@
       href: reference-connect-faq.md
     - name: Azure AD Connect Health 常见问题
       href: reference-connect-health-faq.md
+    - name: 针对 Azure 政府的混合标识注意事项
+      href: reference-connect-government-cloud.md
     - name: Azure AD Connect 用户隐私
       href: reference-connect-user-privacy.md
     - name: Azure AD Connect Health 用户隐私

@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: e16166c741b99c1af5b36f2c7ccd25b01f7544ba
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 3bc095d8949f177ccb6c4cc111ba4b272027904e
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77108993"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756699"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>快速入门：使用成批的问题和预期的解答测试知识库
 
@@ -149,7 +149,7 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
     |Charge your Surface Pro 4|
     |Check the battery level|
 
-    两个 QnA 集已设置元数据。
+    两个 QnA 对已设置元数据。
 
     > [!TIP]
     > 若要查看每个集的元数据和 QnA ID，请导出知识库。 选择“设置”页，然后选择以 `.xls` 文件形式“导出”。   找到此下载的文件，使用 Excel 将其打开，查看其中的元数据和 ID。
@@ -169,7 +169,7 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
 
 以下过程假设方案是处理聊天日志
 
-1. 创建新的批量测试文件，使之包括可选数据 `batch-test-data-2.tsv`。 添加来自原始批量测试输入文件中的 6 行，然后添加每行的元数据、top 和 QnA 集 ID。
+1. 创建新的批量测试文件，使之包括可选数据 `batch-test-data-2.tsv`。 添加来自原始批量测试输入文件中的 6 行，然后为每行添加元数据、top 值和 QnA 对 ID。
 
     若要模拟按照知识库检查聊天日志中的新文本这一自动化过程，请将每个列的元数据设置为同一值：`topic:power`。
 

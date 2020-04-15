@@ -4,12 +4,12 @@ ms.service: service-bus
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
-ms.openlocfilehash: 16ce537a54fc77fc0f72b859d6d193501d86c1fc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: aec13c6beb8dbfcdd5f38e7f96b86bf03e42fa37
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "67173183"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80986632"
 ---
 ## <a name="create-a-ruby-application"></a>创建 Ruby 应用程序
 有关说明，请参阅[在 Azure 上创建 Ruby 应用程序](../articles/virtual-machines/linux/classic/ruby-rails-web-app.md)。
@@ -42,3 +42,14 @@ sb_host = "https://#{Azure.sb_namespace}.servicebus.windows.net"
 ```
 
 将命名空间值设置为创建的值，而不是整个 URL 的值。 例如，使用 **"yourexamplenamespace"** ，而不是 "yourexamplenamespace.servicebus.windows.net"。
+
+使用多个命名空间时，可以在创建 `SharedAccessSigner` 对象时将密钥及其名称传递到构造函数
+
+```ruby
+sb_namespace = '<your azure service bus namespace>'
+sb_sas_key_name = '<your azure service bus access keyname>'
+sb_sas_key = '<your azure service bus access key>'
+
+signer = Azure::ServiceBus::Auth::SharedAccessSigner.new(sb_sas_key_name, sb_sas_key)
+sb_host = "https://#{sb_namespace}.servicebus.windows.net"
+```

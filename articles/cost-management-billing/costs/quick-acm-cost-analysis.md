@@ -3,17 +3,17 @@ title: 快速入门 - 通过成本分析了解 Azure 成本
 description: 本快速入门可帮助你通过成本分析了解和分析 Azure 组织成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/24/2020
+ms.date: 04/07/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 53e1ef2f5e4faecd3ab2dee1350f3e9087df8e9d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e63e3ef999db7053609fb098cd2b7583143a2937
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80155947"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874494"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>快速入门：通过成本分析了解和分析成本
 
@@ -45,7 +45,7 @@ ms.locfileid: "80155947"
 
 所选的范围将用于整个成本管理，以提供数据整合和控制对成本信息的访问。 使用范围时，不要多选它们。 而应先选择一个汇总了其他范围的较大范围，然后筛选出所需的嵌套范围。 了解此方法很重要，因为某些用户可能无法访问单个涵盖多个嵌套范围的父范围。
 
-请观看视频[如何在 Azure 门户中使用成本管理](https://www.youtube.com/watch?v=mfxysF-kTFA)来详细了解成本分析的用法。
+请观看视频[如何在 Azure 门户中使用成本管理](https://www.youtube.com/watch?v=mfxysF-kTFA)来详细了解成本分析的用法。 若要观看其他视频，请访问[成本管理 YouTube 频道](https://www.youtube.com/c/AzureCostManagement)。
 
 >[!VIDEO https://www.youtube.com/embed/mfxysF-kTFA]
 
@@ -145,6 +145,10 @@ ms.locfileid: "80155947"
 
 ## <a name="understanding-grouping-and-filtering-options"></a>了解分组和筛选选项
 
+成本分析有很多分组和筛选选项。 若要观看有关分组和筛选选项的视频，请观看 [Cost Management reporting by dimensions and tags](https://www.youtube.com/watch?v=2Vx7V17zbmk)（按维度和标记生成的成本管理报表）视频。 若要观看其他视频，请访问[成本管理 YouTube 频道](https://www.youtube.com/c/AzureCostManagement)。
+
+>[!VIDEO https://www.youtube.com/embed/2Vx7V17zbmk]
+
 下表列出了一些最常见的分组和筛选选项以及使用它们的时机。
 
 | properties | 何时使用 | 说明 |
@@ -178,7 +182,7 @@ ms.locfileid: "80155947"
 
 保存自定义视图并将其与他人共享，方法是将成本分析固定到 Azure 门户仪表板或复制成本分析的链接。
 
-请观看视频[在 Azure 成本管理中共享和保存视图](https://www.youtube.com/watch?v=kQkXXj-SmvQ)，来详细了解如何使用门户在整个组织中分享成本知识。
+请观看视频[在 Azure 成本管理中共享和保存视图](https://www.youtube.com/watch?v=kQkXXj-SmvQ)，来详细了解如何使用门户在整个组织中分享成本知识。 若要观看其他视频，请访问[成本管理 YouTube 频道](https://www.youtube.com/c/AzureCostManagement)。
 
 >[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
 

@@ -1,28 +1,28 @@
 ---
-title: 使用 SSL 绑定保护自定义 DNS
+title: 使用 TLS/SSL 绑定保护自定义 DNS
 description: 通过证书创建 TLS/SSL 绑定，以便保护对自定义域进行的 HTTPS 访问。 通过强制实施 HTTPS 或 TLS 1.2 提高网站的安全性。
 tags: buy-ssl-certificates
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 263b4e76d334aab82f6bbac9aa268a50f4dd3784
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9792181379bfa6f9e0337bf14208fe853c16b745
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223834"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811746"
 ---
-# <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>在 Azure 应用服务中使用 SSL 绑定保护自定义 DNS 名称
+# <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称
 
-本文介绍如何通过创建证书绑定来确保[应用服务应用](app-service-web-tutorial-custom-domain.md)或[函数应用](https://docs.microsoft.com/azure/app-service/)中[自定义域](https://docs.microsoft.com/azure/azure-functions/)的安全。 完成后，可访问自定义 DNS 名称（例如，`https://`）的 `https://www.contoso.com` 终结点处的应用服务应用。 
+本文介绍如何通过创建证书绑定来确保[应用服务应用](https://docs.microsoft.com/azure/app-service/)或[函数应用](https://docs.microsoft.com/azure/azure-functions/)中[自定义域](app-service-web-tutorial-custom-domain.md)的安全。 完成后，可访问自定义 DNS 名称（例如，`https://www.contoso.com`）的 `https://` 终结点处的应用服务应用。 
 
-![包含自定义 SSL 证书的 Web 应用](./media/configure-ssl-bindings/app-with-custom-ssl.png)
+![带有自定义 TLS/SSL 证书的 Web 应用](./media/configure-ssl-bindings/app-with-custom-ssl.png)
 
 使用证书来确保[自定义域](app-service-web-tutorial-custom-domain.md)的安全涉及两个步骤：
 
-- [将专用证书添加到应用服务](configure-ssl-certificate.md)，以满足所有 [SSL 绑定要求](configure-ssl-certificate.md#private-certificate-requirements)。
--  创建相应自定义域的 SSL 绑定。 本文介绍第二步。
+- [将专用证书添加到应用服务](configure-ssl-certificate.md)，以满足所有[专用证书要求](configure-ssl-certificate.md#private-certificate-requirements)。
+-  创建相应自定义域的 TLS 绑定。 本文介绍第二步。
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -33,7 +33,7 @@ ms.locfileid: "79223834"
 > * 强制实施 TLS 1.1/1.2
 > * 使用脚本自动完成 TLS 管理
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 按照本操作方法指南操作：
 
@@ -52,12 +52,12 @@ ms.locfileid: "79223834"
 
 请执行以下步骤：
 
-在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用程序服务” **“** app-name>” >  **\<** 。
+在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用程序服务” > “\<app-name>”   。
 
 在应用的左侧导航窗格中，通过以下方式启动“TLS/SSL 绑定”对话框  ：
 
-- 选择“自定义域” **“添加绑定”**  >  
-- 选择“TLS/SSL 设置” **“添加 TLS/SSL 绑定”**  >  
+- 选择“自定义域” > “添加绑定”  
+- 选择“TLS/SSL 设置” > “添加 TLS/SSL 绑定”  
 
 ![为域添加绑定](./media/configure-ssl-bindings/secure-domain-launch.png)
 
@@ -77,17 +77,17 @@ ms.locfileid: "79223834"
 
 ### <a name="create-binding"></a>创建绑定
 
-使用下表帮助在“TLS/SSL 绑定”对话框中配置 SSL 绑定，然后单击“添加绑定”   。
+根据下表的要求在“TLS/SSL 绑定”对话框中配置 TLS 绑定，然后单击“添加绑定”   。
 
 | 设置 | 说明 |
 |-|-|
-| 自定义域 | 要添加 SSL 绑定的域名。 |
+| 自定义域 | 要为其添加 TLS/SSL 绑定的域名。 |
 | 私有证书指纹 | 要绑定的证书。 |
-| TLS/SSL 类型 | <ul><li>**SNI SSL[ - 可添加多个 SNI SSL 绑定](https://en.wikipedia.org/wiki/Server_Name_Indication)** 。 选择此选项可以使用多个 SSL 证书来保护同一 IP 地址上的多个域。 大多数新式浏览器（包括 Internet Explorer、Chrome、Firefox 和 Opera）都支持 SNI（有关详细信息，请参阅[服务器名称指示](https://wikipedia.org/wiki/Server_Name_Indication)）。</li><li>**IP SSL** - 只能添加一个 IP SSL 绑定。 选择此选项只能使用一个 SSL 证书来保护专用公共 IP 地址。 配置绑定后，请按照[重新映射 IP SSL 的 A 记录](#remap-a-record-for-ip-ssl)中的步骤进行操作。<br/>仅生产或隔离层中支持 IP SSL。 </li></ul> |
+| TLS/SSL 类型 | <ul><li>[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication) - 可添加多个 SNI SSL 绑定  。 选择此选项可以使用多个 TLS/SSL 证书来保护同一 IP 地址上的多个域。 大多数新式浏览器（包括 Internet Explorer、Chrome、Firefox 和 Opera）都支持 SNI（有关详细信息，请参阅[服务器名称指示](https://wikipedia.org/wiki/Server_Name_Indication)）。</li><li>**IP SSL** - 只能添加一个 IP SSL 绑定。 选择此选项只能使用一个 TLS/SSL 证书来保护专用公共 IP 地址。 配置绑定后，请按照[重新映射 IP SSL 的 A 记录](#remap-a-record-for-ip-ssl)中的步骤进行操作。<br/>仅生产或隔离层中支持 IP SSL。 </li></ul> |
 
-操作完成之后，自定义域的 SSL 状态将更改为“安全”  。
+操作完成之后，自定义域的 TLS/SSL 状态会更改为“安全”  。
 
-![SSL 绑定成功](./media/configure-ssl-bindings/secure-domain-finished.png)
+![TLS/SSL 绑定成功](./media/configure-ssl-bindings/secure-domain-finished.png)
 
 > [!NOTE]
 > “自定义域”中的状态为“安全”意味着已使用证书保护该域，但应用服务并未检查该证书是自签名证书还是已过期证书，这可能也会导致浏览器异常，例如显示错误或警告。  
@@ -147,9 +147,9 @@ ms.locfileid: "79223834"
 
 该操作完成后，你的应用将拒绝使用更低 TLS 版本的所有连接。
 
-## <a name="handle-ssl-termination"></a>处理 SSL 终止
+## <a name="handle-tls-termination"></a>处理 TLS 终止
 
-在应用服务中，[SSL 终止](https://wikipedia.org/wiki/TLS_termination_proxy)在网络负载均衡器上发生，因此，所有 HTTPS 请求将以未加密的 HTTP 请求形式访问你的应用。 如果应用逻辑需要检查用户请求是否已加密，可以检查 `X-Forwarded-Proto` 标头。
+在应用服务中，[TLS 终止](https://wikipedia.org/wiki/TLS_termination_proxy)在网络负载均衡器上发生，因此，所有 HTTPS 请求将以未加密的 HTTP 请求形式访问你的应用。 如果应用逻辑需要检查用户请求是否已加密，可以检查 `X-Forwarded-Proto` 标头。
 
 特定于语言的配置指南，如 [Linux Node.js 配置](containers/configure-language-nodejs.md#detect-https-session)指南，介绍如何在应用程序代码中检测 HTTPS 会话。
 
@@ -157,13 +157,13 @@ ms.locfileid: "79223834"
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>更多资源
 
-* [在应用程序代码中使用 SSL 证书](configure-ssl-certificate-in-code.md)
+* [在 Azure 应用服务中通过代码使用 TLS/SSL 证书](configure-ssl-certificate-in-code.md)
 * [常见问题解答：应用服务证书](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

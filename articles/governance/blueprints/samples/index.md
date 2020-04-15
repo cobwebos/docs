@@ -3,12 +3,12 @@ title: 蓝图示例的索引
 description: 用于通过 Azure 蓝图部署环境、策略和云采用框架基础的符合性和标准示例的索引。
 ms.date: 02/26/2020
 ms.topic: sample
-ms.openlocfilehash: 703c383f41cd833fb47ca489682258158f9fe179
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 745b16f8aff8fe003ec65449cdf3dc0d629ba6ff
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "78196818"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383527"
 ---
 # <a name="azure-blueprints-samples"></a>Azure 蓝图示例
 
@@ -38,7 +38,7 @@ ms.locfileid: "78196818"
 
 ## <a name="samples-strategy"></a>示例策略
 
-![蓝图示例策略](../media/blueprint-samples-strategy.png)
+:::image type="content" source="../media/blueprint-samples-strategy.png" alt-text="蓝图示例策略" border="false":::
 
 CAF 基础和 CAF 迁移登陆区域蓝图假定客户正在准备一个现有的干净单一订阅，以便将本地资产和工作负荷迁移到 Azure。
 （图中的区域 A 和 B）。  

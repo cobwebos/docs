@@ -3,16 +3,16 @@ title: 排查 Azure EA 门户访问问题
 description: 本文介绍 Azure EA 门户中 Azure 企业协议 (EA) 可能会发生的一些常见问题。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/03/2020
+ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 3bf1c10e28ef9e3e4008968c9dbaef576bccdb5f
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: ee8363a76db93f0c2bd4734151e3d250de5402fc
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411553"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586200"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>排查 Azure EA 门户访问问题
 
@@ -112,7 +112,7 @@ Azure EA 门户中的激活电子邮件从 *waep@microsoft.com* 发送。 如果
 
 ### <a name="why-is-my-account-stuck-in-pending-status"></a>为什么我的帐户始终为挂起状态？
 
-首次向合约添加新的帐户所有者 (AO) 时，这些帐户所有者将始终显示为“挂起”状态。 AO 收到激活欢迎电子邮件时，可以登录以激活其帐户。 登录会将帐户的状态从“挂起”更新为“可用”。
+首次向合约添加新的帐户所有者 (AO) 时，这些帐户所有者的状态将始终显示为“挂起”。 AO 收到激活欢迎电子邮件时，可以登录以激活其帐户。 登录会将帐户的状态从“挂起”更新为“可用”。
 
 ### <a name="i-received-an-error-when-signing-in-to-azure-ea-portal"></a>我在登录到 Azure EA 门户时收到错误
 
@@ -125,7 +125,7 @@ Azure EA 门户中的激活电子邮件从 *waep@microsoft.com* 发送。 如果
     - 转到“你的信息”>“管理登录电子邮件帐户或电话号码”。
     - 按照屏幕上的提示验证备用电子邮件地址，获取一个用于访问敏感信息的代码。
     - 输入安全代码。
-    - 如果希望以后设置两步身份验证，请选择“稍后设置”。
+    - 如果希望以后设置双重身份验证，请选择“稍后设置”。
     - 你将在“管理帐户别名”页看到你拥有的帐户别名。 仔细检查主别名是否是用来登录 Azure EA 门户的别名。 如果不是，可以将其设置为主别名，也可以改为使用 EA 门户的主别名。
 
 如果上述故障排除步骤失败，请在 [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) 提交请求并提供信息，例如以下信息：
@@ -147,7 +147,7 @@ Azure EA 门户中的激活电子邮件从 *waep@microsoft.com* 发送。 如果
 
 **Microsoft 帐户**：已与 [https://signup.live.com](https://signup.live.com) 上的 Live ID 关联的帐户。
 
-**工作/学校帐户：** 仅适用于已设置与云联合的 Active Directory 且所有帐户都在一个租户上的公司。 如果公司的内部 Active Directory 与云联合，则可以使用工作或学校帐户这种身份验证类型来添加用户。
+**工作/学校帐户：** 仅适用于已设置与云联合的 Active Directory 且所有帐户都在一个租户上的公司。 如果公司的内部 Active Directory 与云联合，则可以使用工作或学校帐户授权类型添加用户。
 
   从 2016 年 9 月起，Microsoft 不再允许将工作或学校电子邮件地址注册为 Microsoft 帐户。 有关更多详细信息，请参阅以下材料： [https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/](https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/)。
 

@@ -4,12 +4,12 @@ description: 了解如何部署链接模板
 ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 70a09315b0947f41e7602e630460cb3e674a7bf8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 177a994450b6ffe5489a8c95c3b484521fd9b77b
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80081796"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672922"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>教程：部署链接模板
 
@@ -91,6 +91,9 @@ Write-Host "Press [ENTER] to continue ..."
 
 如果尚未创建资源组，请参阅[创建资源组](./deployment-tutorial-local-template.md#create-resource-group)。
 
+> [!NOTE]
+> 在下面的 Azure CLI 代码中，日期参数 -d 在 macOS 中将会是无效参数。 因此，macOS 用户若要在 macOS 的终端中将当前时间增加 2 小时，则应使用 -v+2H。
+
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
@@ -163,7 +166,7 @@ az deployment group create \
 
 ## <a name="clean-up-resources"></a>清理资源
 
-通过删除资源组来清理部署的资源。
+通过删除资源组来清理你部署的资源。
 
 1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
 2. 在“按名称筛选”字段中输入资源组名称。 

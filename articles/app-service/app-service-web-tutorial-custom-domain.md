@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/06/2019
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 2e62062fabfbb7c320bbeaf473979ccef96b0ba3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: adc9b60ce1c31076a91ec44b9656752b464e024d
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80047215"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811788"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教程：将现有的自定义 DNS 名称映射到 Azure 应用服务
 
@@ -151,7 +151,7 @@ ms.locfileid: "80047215"
 ![已添加 CNAME 记录](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
 > [!NOTE]
-> 自定义域的“不安全”  标签意味着该域还没有绑定到 SSL 证书，浏览器对自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 若要添加 SSL 绑定，请参阅[在 Azure 应用服务中使用 SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
+> 自定义域的“不安全”  标签意味着该域还没有绑定到 TLS/SSL 证书，浏览器对自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 若要添加 TLS 绑定，请参阅[在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
 
 如果之前错过了某个步骤或者在某个位置的输入不正确，则会在页面的底部看到验证错误。
 
@@ -235,7 +235,7 @@ ms.locfileid: "80047215"
 ![已添加 A 记录](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
 > [!NOTE]
-> 自定义域的“不安全”  标签意味着该域还没有绑定到 SSL 证书，浏览器对自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 若要添加 SSL 绑定，请参阅[在 Azure 应用服务中使用 SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
+> 自定义域的“不安全”  标签意味着该域还没有绑定到 TLS/SSL 证书，浏览器对自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 若要添加 TLS 绑定，请参阅[在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
 
 如果之前错过了某个步骤或者在某个位置的输入不正确，则会在页面的底部看到验证错误。
 
@@ -290,7 +290,7 @@ ms.locfileid: "80047215"
 ![已添加 CNAME 记录](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 
 > [!NOTE]
-> 自定义域的 **Note Secure** 标签意味着该域还没有绑定到 SSL 证书，浏览器对自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 若要添加 SSL 绑定，请参阅[在 Azure 应用服务中使用 SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
+> 自定义域的“不安全”  标签意味着该域还没有绑定到 TLS/SSL 证书，浏览器对自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 若要添加 TLS 绑定，请参阅[在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
 
 ## <a name="test-in-browser"></a>在浏览器中测试
 
@@ -366,7 +366,7 @@ Set-AzWebApp `
 > * 将默认 URL 重定向到自定义目录
 > * 使用脚本自动执行域映射
 
-转到下一教程，了解如何将自定义 SSL 证书绑定到 Web 应用。
+转到下一教程，了解如何将自定义 TLS/SSL 证书绑定到 Web 应用。
 
 > [!div class="nextstepaction"]
-> [在 Azure 应用服务中使用 SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)
+> [在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)

@@ -7,16 +7,16 @@ ms.service: bastion
 ms.topic: overview
 ms.date: 01/31/2020
 ms.author: cherylmc
-ms.openlocfilehash: e995cba1c2ba06333d7bee507182693002cf4bbf
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 299a69675eed1ba958c6d13cf447407450df2abb
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76989479"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411100"
 ---
 # <a name="what-is-azure-bastion"></a>什么是 Azure Bastion？
 
-Azure Bastion 服务是的一种新型的完全托管平台 PaaS 服务，可在虚拟网络中进行预配。 可通过 SSL 直接在 Azure 门户中实现与虚拟机之间的安全、无缝 RDP/SSH 连接。 在你通过 Azure Bastion 连接时，你的虚拟机无需公共 IP 地址。
+Azure Bastion 服务是的一种新型的完全托管平台 PaaS 服务，可在虚拟网络中进行预配。 可通过 TLS 直接在 Azure 门户中实现与虚拟机之间的安全无缝的 RDP/SSH 连接。 在你通过 Azure Bastion 连接时，你的虚拟机无需公共 IP 地址。
 
 Bastion 为预配它的虚拟网络中的所有 VM 提供安全的 RDP 和 SSH 连接。 使用 Azure Bastion 可防止虚拟机向外部公开 RDP/SSH 端口，同时仍然使用 RDP/SSH 提供安全访问。 使用 Azure Bastion，可直接从 Azure 门户连接到虚拟机。 无需额外的客户端、代理或软件。
 
@@ -41,7 +41,7 @@ RDP 和 SSH 是连接 Azure 中运行的工作负载的基本方法。 不要通
 提供以下功能：
 
 * 在 Azure 门户中直接使用 RDP 和 SSH 连接  ：可以通过单击无缝体验直接在 Azure 门户中进行 RDP 和 SSH 会话。
-* 通过 SSL 和防火墙遍历进行 RDP/SSH 远程会话  ：Azure Bastion 使用基于 HTML5 的 Web 客户端，该客户端自动流式传输到本地设备，使你通过端口 443 上的 SSL 进行 RDP/SSH 会话，支持安全遍历公司防火墙。
+* 穿越防火墙，通过 TLS 进行 RDP/SSH 远程会话  ：Azure Bastion 使用基于 HTML5 的 Web 客户端，该客户端自动流式传输到本地设备，使你可以安全穿越公司防火墙，在端口 443 上通过 TLS 进行 RDP/SSH 会话。
 * Azure VM 无需公共 IP  ：Azure Bastion 使用 VM 上的专用 IP 打开与 Azure 虚拟机的 RDP/SSH 连接。 虚拟机无需公共 IP。
 * 轻松管理 NSG  ：Azure Bastion 是 Azure 提供的完全托管平台 PaaS 服务，其内部进行了加固，以提供安全的 RDP/SSH 连接。 无需在 Azure Bastion 子网上应用任何 NSG。 由于 Azure Bastion 通过专用 IP 连接到虚拟机，所以可将 NSG 配置为仅允许来自 Azure Bastion 的 RDP/SSH。 这样消除了每次需要安全地连接到虚拟机时管理 NSG 的麻烦。
 * 端口扫描防护  ：因为无需将虚拟机公开到公共 Internet，因此可防止 VM 受到虚拟网络外部的恶意用户的端口扫描。

@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/23/2019
+ms.date: 01/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f6684df42971b91975f6a7f5aeded9326cef3f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d2324343a31c3f3930975eea47659d023b9bbb94
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72969709"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667564"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-paylocity"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Paylocity 集成
 
@@ -45,6 +44,8 @@ ms.locfileid: "72969709"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Paylocity 支持 SP 和 IDP 发起的 SSO 
+
+* 配置 Paylocity 后，就可以强制实施会话控制，从而实时保护组织的敏感数据，使其免遭外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)。
 
 ## <a name="adding-paylocity-from-the-gallery"></a>从库中添加 Paylocity
 
@@ -82,11 +83,9 @@ ms.locfileid: "72969709"
 
 1. 在“基本 SAML 配置”部分中，用户不必执行任何步骤，因为该应用已经与 Azure 预先集成  。
 
-    ![Paylocity 域和 URL 单一登录信息](common/preintegrated.png)
-
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，键入 URL：`https://access.paylocity.com/` 
+    在“登录 URL”文本框中，键入 URL：`https://access.paylocity.com/`
 
 1. 单击“ **保存**”。
 
@@ -98,13 +97,24 @@ ms.locfileid: "72969709"
 
     | 名称 |  源属性|
     | ---------------| --------------- |
-    | PartnerID | <"PartnerID"> |
-    | PaylocityUser | <"PaylocityUser"> |
-    | PaylocityEntity | <"PaylocityEntity"> |
+    | PartnerID | `P8000010` |
+    | PaylocityUser | `user.mail`|
+    | PaylocityEntity | < `PaylocityEntity` > |
+
+    > [!NOTE]
+    > PaylocityEntity 是 Paylocity 公司 ID。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
+
+1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分，单击“编辑”图标。   
+
+    ![SAML 签名证书编辑](./media/paylocity-tutorial/edit-samlassertion.png)
+
+1. 对于“签名选项”，请选择“签名 SAML 响应和断言”，然后单击“保存”   。 
+
+    ![SAML 签名证书编辑](./media/paylocity-tutorial/saml-assertion.png)
 
 1. 在“设置 Paylocity”部分，根据要求复制相应 URL  。
 
@@ -163,3 +173,7 @@ ms.locfileid: "72969709"
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [使用 Azure AD 试用 Paylocity](https://aad.portal.azure.com/)
+
+* [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+* [如何通过高级可见性和控制保护 Paylocity](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

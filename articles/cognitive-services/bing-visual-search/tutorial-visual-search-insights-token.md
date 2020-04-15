@@ -1,25 +1,25 @@
 ---
-title: 使用 ImageInsightsToken 在前面的搜索结果中查找类似的图像 - 必应视觉搜索
+title: 使用图像见解令牌和必应视觉搜索 API 在前面的搜索结果中查找类似的图像
 titleSuffix: Azure Cognitive Services
-description: 使用必应视觉搜索 SDK 获取由 ImageInsightsToken 指定的图像的 URL。
+description: 使用必应视觉搜索客户端库获取前面搜索结果中的图像的 URL。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 11/29/2019
+ms.date: 03/31/2020
 ms.author: aahi
-ms.openlocfilehash: dff96b19f40c2d897b6a018a4c46cec60f8aa201
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: ad24a8a194a11c3fd5f7f77ea8c52197d5438edc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689306"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477922"
 ---
-# <a name="find-similar-images-from-previous-searches-using-imageinsightstoken"></a>使用 ImageInsightsToken 在前面的搜索结果中查找类似的图像
+# <a name="tutorial-find-similar-images-from-previous-searches-using-an-image-insights-token"></a>教程：使用图像见解令牌在前面的搜索结果中查找类似的图像
 
-可以使用视觉搜索 SDK 从以前返回 `ImageInsightsToken` 的搜索中查找联机图像。 此应用程序获取 `ImageInsightsToken` 并在后续搜索中使用该令牌。 然后，它将 `ImageInsightsToken` 发送到必应，并返回包含必应搜索 URL 以及以联机方式找到的类似图像的 URL 的结果。
+可以使用视觉搜索客户端库从以前返回 `ImageInsightsToken` 的搜索结果中以联机方式查找图像。 此应用程序获取 `ImageInsightsToken` 并在后续搜索中使用该令牌。 然后，它将 `ImageInsightsToken` 发送到必应，并返回包含必应搜索 URL 以及以联机方式找到的类似图像的 URL 的结果。
 
 在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchInsightsTokens.cs) 上可以找到此教程的完整源代码，以及附加的错误处理方法和注释。
 
@@ -36,9 +36,9 @@ ms.locfileid: "74689306"
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
-## <a name="get-the-imageinsightstoken-from-the-bing-image-search-sdk"></a>从必应图像搜索 SDK 获取 ImageInsightsToken
+## <a name="get-the-imageinsightstoken-from-the-bing-image-search-client-library"></a>从必应图像搜索客户端库获取 ImageInsightsToken
 
-此应用程序使用的 `ImageInsightsToken` 是通过[必应图像搜索 SDK](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart) 获得的。 在新的 C# 控制台应用程序中创建一个客户端，以便使用 `ImageSearchClient()` 来调用 API。 然后，将 `SearchAsync()` 与查询配合使用：
+此应用程序使用一个通过[必应图像搜索客户端库](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart)获得的 `ImageInsightsToken`。 在新的 C# 控制台应用程序中创建一个客户端，以便使用 `ImageSearchClient()` 来调用 API。 然后，将 `SearchAsync()` 与查询配合使用：
 
 ```csharp
 var client = new ImageSearchClient(new Microsoft.Azure.CognitiveServices.Search.ImageSearch.ApiKeyServiceClientCredentials(subKey));
@@ -136,8 +136,8 @@ if (visualSearchResults.Tags.Count > 0)
 |ImageById -> WebSearchUrl    |         |
 |RelatedSearches -> WebSearchUrl:    |         |
 |DocumentLevelSuggestions -> WebSearchUrl:     |         |
-|TopicResults -> WebSearchUrl    | https:\//www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=BcQifmzdKFyyBusjLxxgO42kzq1Geh7RucVVqvH-900&v=1&r=https%3a%2f%2fwww.bing.com%2fdiscover%2fcanadian%2brocky&p=DevEx,5823.1       |
-|ImageResults -> WebSearchUrl    |  https:\//www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=PV9GzMFOI0AHZp2gKeWJ8DcveSDRE3fP2jHDKMpJSU8&v=1&r=https%3a%2f%2fwww.bing.com%2fimages%2fsearch%3fq%3doutdoor&p=DevEx,5831.1       |
+|TopicResults -> WebSearchUrl    | https:\//www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=BcQifmzdKFyyBusjLxxgO42kzq1Geh7RucVVqvH-900&v=1&r=https%3a%2f%2f www.bing.com%2fdiscover%2fcanadian%2brocky&p=DevEx,5823.1       |
+|ImageResults -> WebSearchUrl    |  https:\//www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=PV9GzMFOI0AHZp2gKeWJ8DcveSDRE3fP2jHDKMpJSU8&v=1&r=https%3a%2f%2f www.bing.com%2fimages%2fsearch%3fq%3doutdoor&p=DevEx,5831.1       |
 
 如上所述，`TopicResults` 和 `ImageResults` 类型包含相关图像的查询。 URL 链接到必应搜索结果。
 

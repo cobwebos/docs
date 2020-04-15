@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: aa90655ecb14abe38ec8fdfc6c18e7d292abbef3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c8f259d2d4df46470a042c3f65ac1b8e1f66b1dd
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222364"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546024"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>教程：训练第一个 ML 模型
 
@@ -28,7 +28,7 @@ ms.locfileid: "79222364"
 > [!div class="checklist"]
 > * 连接工作区并创建试验
 > * 加载数据并训练 scikit-learn 模型
-> * 在门户中查看训练结果
+> * 在工作室中查看训练结果
 > * 检索最佳模型
 
 ## <a name="prerequisites"></a>先决条件
@@ -124,32 +124,33 @@ for alpha in alphas:
 
 1. 对于 `alphas` 数组中的每个 alpha 超参数值，在试验中创建一个新的运行。 记录 alpha 值以区分不同的运行。
 1. 在每个运行中，实例化、训练一个岭回归模型并使用它来运行预测。 计算实际值与预测值的均方根误差，然后将结果记录到该运行。 此时，该运行中已附加 alpha 值和 rmse 准确度的元数据。
-1. 接下来，序列化每个运行的模型并将其上传到运行。 这样，你便可以从门户中的运行下载模型文件。
+1. 接下来，序列化每个运行的模型并将其上传到运行。 这样便可从工作室中的运行下载模型文件。
 1. 每次迭代结束时，通过调用 `run.complete()` 完成运行。
 
-完成训练后，调用 `experiment` 变量提取门户中的试验的链接。
+完成训练后，调用 `experiment` 变量可提取工作室中的试验的链接。
 
 ```python
 experiment
 ```
 
-<table style="width:100%"><tr><th>名称</th><th>工作区</th><th>报告页</th><th>文档页</th></tr><tr><td>diabetes-experiment</td><td>your-workspace-name</td><td>Azure 门户的链接</td><td>文档链接</td></tr></table>
+<table style="width:100%"><tr><th>名称</th><th>工作区</th><th>报告页</th><th>文档页</th></tr><tr><td>diabetes-experiment</td><td>your-workspace-name</td><td>Azure 机器学习工作室链接</td><td>文档链接</td></tr></table>
 
-## <a name="view-training-results-in-portal"></a>在门户中查看训练结果
+## <a name="view-training-results-in-studio"></a>在工作室中查看训练结果
 
-单击“链接到 Azure 门户”  将你带到主试验页。 在此处可以查看试验中的每个运行。 所有自定义记录的值（在本例中为 `alpha_value` 和 `rmse`）将成为每个运行的字段，并且可在试验页顶部的图表和磁贴中使用。 若要将记录的指标添加到图表或磁贴，请将鼠标悬停在该图表或磁贴上，单击编辑按钮，然后找到自定义记录的指标。
+单击“Azure 机器学习工作室链接”  可转到试验主页。 在此处可以查看试验中的每个运行。 所有自定义记录的值（在本例中为 `alpha_value` 和 `rmse`）将成为每个运行的字段，并且可在试验页顶部的图表和磁贴中使用。 若要将记录的指标添加到图表或磁贴，请将鼠标悬停在该图表或磁贴上，单击编辑按钮，然后找到自定义记录的指标。
 
 对包含数百甚至数千个独立运行的模型进行大规模训练时，在此页中可以轻松查看训练的每个模型，具体而言，可以查看模型的训练方式，以及独特的指标在不同时间的变化。
 
-![门户中的试验主页](./media/tutorial-1st-experiment-sdk-train/experiment-main.png)
+:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/experiment-main.png" alt-text="工作室中的试验主页。":::
 
-单击 `RUN NUMBER` 列中的运行编号链接会转到每个运行的页面。 默认选项卡“详细信息”显示有关每个运行的详细信息。  导航到“输出”选项卡可以看到在每次训练迭代期间上传到运行的模型的 `.pkl` 文件。  在此处可以下载模型文件，而无需手动重新训练。
 
-![门户中的运行详细信息页](./media/tutorial-1st-experiment-sdk-train/model-download.png)
+选择 `RUN NUMBER` 列中的运行编号链接可查看单个运行的页面。 默认选项卡“详细信息”显示有关每个运行的详细信息。  导航到“输出 + 日志”选项卡可看到在每次训练迭代期间上传到运行的模型的 `.pkl` 文件。  在此处可以下载模型文件，而无需手动重新训练。
+
+:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/model-download.png" alt-text="工作室中的运行详细信息页。":::
 
 ## <a name="get-the-best-model"></a>获取最佳模型
 
-除了能够从门户中的试验下载模型文件以外，还能以编程方式下载这些文件。 以下代码循环访问试验中的每个运行，并访问记录的运行指标和运行详细信息（包含 run_id）。 这会跟踪最佳运行，在本例中，该运行是均方根误差最低的运行。
+除了能够从工作室中的试验下载模型文件以外，还能够以编程方式下载这些文件。 以下代码循环访问试验中的每个运行，并访问记录的运行指标和运行详细信息（包含 run_id）。 这会跟踪最佳运行，在本例中，该运行是均方根误差最低的运行。
 
 ```python
 minimum_rmse_runid = None
@@ -214,7 +215,7 @@ best_run.download_file(name="model_alpha_0.1.pkl")
 > [!div class="checklist"]
 > * 已连接工作区并创建试验
 > * 已加载数据并训练 scikit-learn 模型
-> * 已在门户中查看训练结果并已检索模型
+> * 已在工作室中查看训练结果并已检索模型
 
 使用 Azure 机器学习来[部署模型](tutorial-deploy-models-with-aml.md)。
 了解如何开发[自动化机器学习](tutorial-auto-train-models.md)试验。

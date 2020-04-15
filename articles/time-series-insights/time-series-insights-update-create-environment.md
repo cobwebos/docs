@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 02/20/2020
+ms.date: 04/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: af15a7366fd07cecb376ff76ad383f784202a887
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3ccb9c7aff6eb59c4883bc3218e205fb7877e86e
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77526802"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618374"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>教程：设置 Azure 时序见解预览环境
 
@@ -30,7 +30,6 @@ ms.locfileid: "77526802"
 > * 运行解决方案加速器示例，以将数据流式传输到 Azure 时序见解预览版环境。
 > * 对数据进行基本的分析。
 > * 定义时序模型类型和层次结构，并将其与实例相关联。
-> * 使用 Power BI 连接器并在 Power BI 中实现数据的可视化。
 
 >[!TIP]
 > [IoT 解决方案加速器](https://www.azureiotsolutions.com/Accelerators)提供企业级的预配置解决方案，可用于加速自定义 IoT 解决方案的开发。
@@ -359,3 +358,8 @@ ms.locfileid: "77526802"
 
 > [!div class="nextstepaction"]
 > [Azure 时序见解预览数据模型](./time-series-insights-update-tsm.md)
+
+详细了解如何将环境连接到 Power BI
+
+> [!div class="nextstepaction"]
+> [在 Power BI 中可视化来自时序见解的数据](./how-to-connect-power-bi.md)

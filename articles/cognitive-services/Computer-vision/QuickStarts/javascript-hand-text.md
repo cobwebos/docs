@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 03/26/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8c3f5dae62aef6c8e8ec1eeaeb712ebff67397c9
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: cca5680d307874a565dec47f643bf9320192c270
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77566176"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656104"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-javascript"></a>快速入门：使用计算机视觉 2.0 和 2.1 REST API 和 JavaScript 提取印刷体文本和手写文本
 
@@ -45,7 +45,7 @@ ms.locfileid: "77566176"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services)。
 
-必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费的试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。 然后，为密钥和服务终结点字符串[创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别名为 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`。
+必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费的试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。 将订阅密钥和终结点 URL 保存到临时位置。
 
 ## <a name="create-and-run-the-sample"></a>创建并运行示例
 
@@ -53,12 +53,12 @@ ms.locfileid: "77566176"
 
 要创建和运行示例，请执行以下步骤：
 
-1. 将以下代码复制到文本编辑器中。
+1. 创建一个名为 _get-text.html_ 的文件，在文本编辑器中打开它，然后将以下代码复制到其中。
 1. （可选）将 `inputImage` 控件的 `value` 属性的值替换为要从中提取文本的另一图像的 URL。
-1. 将代码保存为以 `.html` 为扩展名的文件。 例如，`get-text.html` 。
 1. 打开一个浏览器窗口。
 1. 在浏览器中，将文件拖放到浏览器窗口。
-1. 在浏览器中显示网页时，选择“读取图像”按钮  。
+1. 当网页显示在浏览器中时，请将订阅密钥和终结点 URL 粘贴到相应的输入框中。
+1.  选择“读取图像”按钮。
 
 ```html
 <!DOCTYPE html>
@@ -75,9 +75,8 @@ ms.locfileid: "77566176"
         // *** Update or verify the following values. ***
         // **********************************************
 
-        let subscriptionKey = process.env['COMPUTER_VISION_SUBSCRIPTION_KEY'];
-        let endpoint = process.env['COMPUTER_VISION_ENDPOINT']
-        if (!subscriptionKey) { throw new Error('Set your environment variables for your subscription key and endpoint.'); }
+        var subscriptionKey = document.getElementById("subscriptionKey").value;
+        var endpoint = document.getElementById("endpointUrl").value;
         
         var uriBase = endpoint + "vision/v2.1/read/core/asyncBatchAnalyze";
 
@@ -170,6 +169,13 @@ ms.locfileid: "77566176"
 <h1>Read text from image:</h1>
 Enter the URL to an image of text, then click
 the <strong>Read image</strong> button.
+<br><br>
+Subscription key: 
+<input type="text" name="subscriptionKey" id="subscriptionKey"
+    value="" /> 
+Endpoint URL:
+<input type="text" name="endpointUrl" id="endpointUrl"
+    value="" />
 <br><br>
 Image to read:
 <input type="text" name="inputImage" id="inputImage"

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b067b18985905b226287f9dd10ad4b937fab6df1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6f0a782309edc33a8a5ce661652922494ead2ec0
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76767968"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667308"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Azure FarmBeats（预览版）概述
 
@@ -33,15 +33,33 @@ Azure FarmBeats 预览版的功能包括：
 ## <a name="datahub"></a>数据中心
 
 Azure FarmBeats 数据中心一个 API 层，可以跨提供商对各种农业数据集进行聚合、规范化和语境化。 可以使用 Azure FarmBeats 获取以下内容：
-- 三个传感器提供商（**Davis Instruments**、[Teralytic](https://www.davisinstruments.com/product/enviromonitor-gateway/)、[Pessl Instruments](https://teralytic.com/)）提供的[传感器数据](https://metos.at/)
-- 欧洲空间代理商的 **Sentinel-2** 卫星任务提供的[卫星影像](https://sentinel.esa.int/web/sentinel/home)
-- 三家无人机图像提供商（**senseFly**、[SlantRange](https://www.sensefly.com/)、[DJI](https://slantrange.com/)）提供的[无人机图像](https://dji.com/)
+- 三个传感器提供商（[Davis Instruments](https://www.davisinstruments.com/product/enviromonitor-gateway/)、[Teralytic](https://teralytic.com/)、[Pessl Instruments](https://metos.at/)）提供的**传感器数据**
+- 欧洲空间代理商的 [Sentinel-2](https://sentinel.esa.int/web/sentinel/home) 卫星任务提供的**卫星影像**
+- 三家无人机图像提供商（[senseFly](https://www.sensefly.com/)、[SlantRange](https://slantrange.com/)、[DJI](https://dji.com/)）提供的**无人机图像**
 
 数据中心被设计为可扩展的 API 平台。 我们将与更多提供商合作以与 Azure FarmBeats 集成，因此在构建解决方案时你拥有更多选择。
 
 ## <a name="accelerator"></a>加速器
 
 Azure FarmBeats 加速器是一个基于数据中心的示例 Web 应用程序。 此加速器可快速启动用户界面和模型开发。 Azure FarmBeats 加速器使用 Azure FarmBeats 的 API。 它将引入的传感器数据直观显示为图表，将输出建模为地图。 例如，可以使用加速器快速创建农场，并轻松获取该农场的植被覆盖指数图或传感器放置图。
+
+## <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
+
+管理员可以使用预定义角色之一定义适用于 Azure FarmBeats 的访问规则。 角色决定了用户有权访问哪些应用程序区域以及可执行哪些操作。 Azure FarmBeats 中有两种角色 - 分别适用于用户和合作伙伴。
+
+### <a name="user-roles"></a>用户角色
+
+[管理员可以根据以下两个用户角色添加和管理用户](manage-users-in-azure-farmbeats.md)，并定义其访问级别：“管理员”角色和“只读”角色。
+
+### <a name="partner-roles"></a>合作伙伴角色
+
+管理员可以将多个合作伙伴作为数据提供者添加到 Azure FarmBeats。 下面总结了 FarmBeats 中提供的合作伙伴角色及其权限：
+
+| 合作伙伴类型    |   操作  | 范围 |
+| ---- | -------- | -------- |
+| 传感器合作伙伴  |   创建、读取、更新 <br/> <br/> 读取、更新 | DeviceModel、Device、SensorModel、Sensor <br/> <br/> ExtendedType |
+| 图像合作伙伴  |   创建、读取、更新 <br/> <br/> 读取、更新 <br/> <br/> 读取 | Scene、SceneFile <br/> <br/> ExtendedType <br/> <br/> Farm |
+| 天气合作伙伴* <br/> <br/>  （* 即将推出） |   创建、读取、更新 <br/> <br/> 读取、更新 <br/> <br/> 读取 | WeatherDataModel、WeatherDataLocation、JobType <br/> <br/> ExtendedType <br/> <br/> Farm |
 
 ## <a name="resources"></a>资源
 

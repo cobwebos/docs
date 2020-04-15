@@ -1,15 +1,15 @@
 ---
 title: Azure 区块链服务概述
 description: Azure 区块链服务概述
-ms.date: 03/12/2020
+ms.date: 03/30/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: b9f5deb501fb93327fa5d5cfcfd5bb583ed6135e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 821bac0da13209e5126f5bab109aa0895ade840a
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79205073"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529142"
 ---
 # <a name="what-is-azure-blockchain-service"></a>什么是 Azure 区块链服务？
 
@@ -19,7 +19,7 @@ Azure 区块链服务是一项完全托管的账本服务，使用户能够在 A
 * 内置联盟管理
 * 使用常用的开发工具开发智能合同
 
-Azure 区块链服务旨在支持多种账本协议。 当前，该服务使用 [IBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) 共识机制为 Ethereum [Quorum](https://www.goquorum.com/) 账本提供支持。
+Azure 区块链服务旨在支持多种账本协议。 当前，该服务使用[伊斯坦布尔拜占庭容错 (IBFT)](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) 共识机制为 Ethereum [Quorum](https://www.goquorum.com/) 账本提供支持。
 
 这些功能几乎都不需要进行任何管理，并且都是在不另外收费的情况下提供的。 可以专注于应用开发和业务逻辑，而不是分配时间和资源来管理虚拟机和基础结构。 此外，可以继续开发应用程序，使用自己选择的开放源代码工具和平台即可交付解决方案，而无需学习新技能。
 
@@ -33,7 +33,7 @@ Azure 区块链服务提供两种服务层：“基本”和“标准”   。 �
 
 ![定价层](./media/overview/pricing-tiers.png)
 
-除了提供两个验证器节点之外，标准层还为每个事务和验证器节点提供了 2 个 vCore，而基本层提供 1 个 vCore 配置   。  通过为事务和验证器节点提供 2 个 vCore，1 个 vCore 可以专用于 Quorum 账本，而另 1 个 vCore 可以用于其他与基础结构相关的服务，从而确保生产区块链工作负载的性能达到最优。 有关定价详细信息的更多信息，请参阅 [Azure 区块链服务定价](https://azure.microsoft.com/pricing/details/blockchain-service)。
+除了提供两个验证器节点之外，“标准层”还为每个事务和验证器节点提供了 2 个 vCore，而“基本”层提供 1 个 vCore 配置   。   通过为事务和验证器节点提供 2 个 vCore，1 个 vCore 可以专用于 Quorum 账本，而另 1 个 vCore 可以用于其他与基础结构相关的服务，从而确保生产区块链工作负载的性能达到最优。 有关定价详细信息的更多信息，请参阅 [Azure 区块链服务定价](https://azure.microsoft.com/pricing/details/blockchain-service)。
 
 ### <a name="security-and-maintenance"></a>安全性和维护
 

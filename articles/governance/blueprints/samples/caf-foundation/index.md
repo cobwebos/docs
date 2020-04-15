@@ -1,14 +1,14 @@
 ---
 title: CAF 基础蓝图示例概述
 description: 适用于 Azure 的云采用框架 (CAF) 基础蓝图示例的概述和体系结构。
-ms.date: 08/20/2019
+ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 79b47127b81caf148054f4223e5fa7ad9fbf86fe
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: a5616667ae909b63f406e399a23bdf568089bf52
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "75562555"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383575"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>适用于 Azure 的 Microsoft 云采用框架基础蓝图示例概述
 
@@ -18,7 +18,7 @@ ms.locfileid: "75562555"
 
 CAF 基础蓝图示例在 Azure 中部署建议的基础结构资源，这些资源可供组织用来将管理其云资产所需的基础控制实施到位。 此示例将部署并强制实施资源、策略和模板，从而使组织能够自信地开始使用 Azure。
 
-![CAF 基础，图像说明了作为 CAF 指南的一部分安装（以便为开始使用 Azure 创建基础）的内容](../../media/caf-blueprints/caf-foundation-architecture.png)
+:::image type="content" source="../../media/caf-blueprints/caf-foundation-architecture.png" alt-text="CAF 基础，图像说明了作为 CAF 指南的一部分安装（以便为开始使用 Azure 创建基础）的内容" border="false":::
 
 此实现纳入多项 Azure 服务，这些服务用于提供安全的、全面受监视的、面向企业的基础。 此环境包括：
 

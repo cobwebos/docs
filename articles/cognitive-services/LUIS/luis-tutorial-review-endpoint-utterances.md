@@ -1,22 +1,15 @@
 ---
 title: 教程：审核终结点话语 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 在本教程中，通过验证或更正通过 LUIS HTTP 终结点收到的 LUIS 不确定的话语来改进应用预测。 某些陈述可能需要针对意向进行验证，而另一些陈述可能需要针对实体进行验证。
 services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 06f51ca83449b39861e7565cc9accc29efbece3f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/01/2020
+ms.openlocfilehash: 307c18d3326cb1a64b884463a571985a015834ed
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76843967"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548727"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>教程：通过查看终结点话语来修复不确定的预测
 本教程介绍如何通过验证或更正 LUIS 不确定的、通过 LUIS HTTPS 终结点收到的言语来改进应用预测。 在日常的计划性 LUIS 维护过程中，应该评审终结点言语。
@@ -46,15 +39,11 @@ ms.locfileid: "76843967"
 
 1.  下载并保存[应用 JSON 文件](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true)。
 
-1. 在 [LUIS 预览版门户](https://preview.luis.ai)上，将该 .json 文件导入到新应用中。
+[!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
-1. 在“管理”  部分的“版本”  选项卡上，克隆版本并将其命名为 `review`。
+## <a name="train-the-app-to-apply-the-entity-changes-to-the-app"></a>训练应用以将实体更改应用于应用
 
-    > [!TIP]
-    > 在修改应用之前，最佳做法是克隆到新版本。 完成针对某个版本的操作后，将该版本导出为 .json 或 .lu 文件，然后将文件签入源代码管理系统中。
-
-
-1. 若要训练应用，请选择“训练”  。
+[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>发布应用以从 HTTP 终结点访问它
 
@@ -66,7 +55,7 @@ ms.locfileid: "76843967"
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. 使用终结点添加以下言语。
+1. 转到地址栏中 URL 的末尾，将 _YOUR_QUERY_HERE_ 替换为下表中的言语。 对于每个言语，请提交言语并获取结果。 然后，将结尾的言语替换为下一个言语。
 
     |终结点言语|已调整意向|
     |--|--|
@@ -110,9 +99,9 @@ ms.locfileid: "76843967"
 
 若要验证适当调整的示例言语是否已改进应用的预测，请尝试使用一个与已更正的言语接近的言语。
 
-1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. 将光标定位到地址中 URL 的末尾，并输入 `Are there any natural language processing jobs in my department right now?`。 最后一个查询字符串参数为 `q`，表示陈述**查询**。
+1. 转到地址栏中 URL 的末尾，将 _YOUR_QUERY_HERE_ 替换为 `Are there any natural language processing jobs in my department right now?`。
 
    ```json
     {

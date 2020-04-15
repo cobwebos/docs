@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 51375c13d842bda2450a83e1bbc48b741adba39b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 987228c5cf0f5231006726718684528a777e92fd
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80057444"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804463"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>为应用服务环境配置 Web 应用程序防火墙 (WAF)
 ## <a name="overview"></a>概述
@@ -71,7 +71,7 @@ Barracuda WAF 使用 TCP 端口 8000 通过其管理门户进行配置。 如果
 ![管理添加服务][ManagementAddServices]
 
 > [!NOTE]
-> 根据应用程序的配置方式与应用服务环境中正在使用的功能，需要转发非 80 和 443 TCP 端口的流量（例如，如果为应用服务应用设置了 IP SSL）。 有关应用服务环境中使用的网络端口的列表，请参阅[控制入站流量文档](app-service-app-service-environment-control-inbound-traffic.md)中的“网络端口”部分。
+> 根据应用程序的配置方式与应用服务环境中正在使用的功能，需要转发非 80 和 443 TCP 端口的流量（例如，如果为应用服务应用设置了 IP TLS）。 有关应用服务环境中使用的网络端口的列表，请参阅[控制入站流量文档](app-service-app-service-environment-control-inbound-traffic.md)中的“网络端口”部分。
 > 
 > 
 

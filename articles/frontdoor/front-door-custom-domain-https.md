@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: fae4206e555c85fe0555ce1c4366cd57dd386f1e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: efe2c96c619aaf92efc5b4abf76b6b89c96ebd37
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79471823"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878028"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>教程：在 Front Door 自定义域中配置 HTTPS
 
@@ -37,7 +37,7 @@ ms.locfileid: "79471823"
 > [!div class="checklist"]
 > - 在自定义域上启用 HTTPS 协议。
 > - 使用 AFD 托管的证书 
-> - 使用自己的证书，即，自定义 SSL 证书
+> - 使用自己的证书，即，自定义 TLS/SSL 证书
 > - 验证域
 > - 在自定义域上禁用 HTTPS 协议
 
@@ -48,9 +48,9 @@ ms.locfileid: "79471823"
 
 在完成本教程中的步骤之前，必须先创建一个 Front Door 并至少载入一个自定义域。 有关详细信息，请参阅[教程：将自定义域添加到 Front Door](front-door-custom-domain.md)。
 
-## <a name="ssl-certificates"></a>SSL 证书数
+## <a name="tlsssl-certificates"></a>TLS/SSL 证书
 
-若要启用 HTTPS 协议以在 Front Door 自定义域上安全传送内容，必须使用 SSL 证书。 可以选择是使用由 Azure Front Door 托管的证书还是使用自己的证书。
+若要启用 HTTPS 协议以在 Front Door 自定义域上安全传送内容，必须使用 TLS/SSL 证书。 可以选择是使用由 Azure Front Door 托管的证书还是使用自己的证书。
 
 
 ### <a name="option-1-default-use-a-certificate-managed-by-front-door"></a>选项 1（默认）：使用 Front Door 托管的证书
@@ -72,7 +72,7 @@ ms.locfileid: "79471823"
 
 ### <a name="option-2-use-your-own-certificate"></a>选项 2：使用自己的证书
 
-可以使用自己的证书启用 HTTPS 功能。 此过程通过与 Azure Key Vault 的集成完成，后者允许你安全地存储证书。 Azure Front Door 使用此安全机制来获得你的证书，并且需要一些额外的步骤。 创建 SSL 证书时，必须使用允许的证书颁发机构 (CA) 创建。 否则，如果使用不允许的 CA，你的请求将被拒绝。 有关允许的 CA 的列表，请参阅[允许在 Azure Front Door 上启用自定义 HTTPS 的证书颁发机构](front-door-troubleshoot-allowed-ca.md)。
+可以使用自己的证书启用 HTTPS 功能。 此过程通过与 Azure Key Vault 的集成完成，后者允许你安全地存储证书。 Azure Front Door 使用此安全机制来获得你的证书，并且需要一些额外的步骤。 创建 TLS/SSL 证书时，必须使用允许的证书颁发机构 (CA) 创建。 否则，如果使用不允许的 CA，你的请求将被拒绝。 有关允许的 CA 的列表，请参阅[允许在 Azure Front Door 上启用自定义 HTTPS 的证书颁发机构](front-door-troubleshoot-allowed-ca.md)。
 
 #### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>准备 Azure Key Vault 帐户和证书
  
@@ -84,7 +84,7 @@ ms.locfileid: "79471823"
 2. Azure Key Vault 证书：如果已有证书，可以将其直接上传到 Azure Key Vault 帐户，或者，可以直接通过 Azure Key Vault，从 Azure Key Vault 集成的合作伙伴 CA 之一创建新的证书。 将证书上传为**证书**对象，而不是**机密**。
 
 > [!NOTE]
-> 对于你自己的 SSL 证书，Front Door 不支持带有 EC 加密算法的证书。
+> 对于你自己的 TLS/SSL 证书，Front Door 不支持带有 EC 加密算法的证书。
 
 #### <a name="register-azure-front-door"></a>注册 Azure Front Door
 
@@ -260,7 +260,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 4. 使用 SAN 证书是否没有使用专用证书安全？ 
     
-    SAN 证书遵循与专用证书相同的加密和安全标准。 所有颁发的 SSL 证书都使用 SHA-256 来增强服务器安全性。
+    SAN 证书遵循与专用证书相同的加密和安全标准。 所有颁发的 TLS/SSL 证书都使用 SHA-256 来增强服务器安全性。
 
 5. 我是否需要通过我的 DNS 提供商获得证书颁发机构授权记录？ 
 

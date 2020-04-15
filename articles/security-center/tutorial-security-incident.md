@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: 49e2af8fd2d71e1e5103f5337d5c7104c2904322
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 971b93422e2b3f2053e0c5564c7ba924a631d810
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74559186"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585773"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>教程：响应安全事件
 安全中心使用高级分析和威胁智能来持续分析混合云工作负荷，在存在恶意活动时发出警报。 另外，你可以将其他安全产品和服务中的警报集成到安全中心，并根据自己的指示器或智能源创建自定义警报。 生成警报后，需采取快速行动进行调查和修正。 在本教程中，您将学习如何执行以下操作：
@@ -29,9 +29,9 @@ ms.locfileid: "74559186"
 > * 通过深入调查确定安全事件的根本原因和范围
 > * 搜索有助于调查的安全数据
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 若要逐步执行本教程中介绍的功能，你必须位于安全中心的“标准”定价层。 可以免费试用安全中心标准版。 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。 快速入门教程“[将 Azure 订阅载入到安全中心标准版](security-center-get-started.md)”详细介绍了如何升级到标准版。
 
 ## <a name="scenario"></a>场景
@@ -114,7 +114,7 @@ Sam 是安全分析师，其职责包括：
 4. 选择“保存”。 
 
 >[!NOTE]
-> 禁用自动设置不会从已预配代理的 Azure VM 中删除 Microsoft Monitoring Agent。 禁用自动设置会限制对资源的安全监视。
+> 禁用自动预配不会从已预配代理的 Azure VM 中删除 Log Analytics 代理。 禁用自动设置会限制对资源的安全监视。
 >
 
 ## <a name="next-steps"></a>后续步骤
@@ -124,8 +124,3 @@ Sam 是安全分析师，其职责包括：
 > * 安全事件，其中聚合了某个资源的相关警报
 > * 调查图，以图形方式表示与某个安全警报或事件相关的实体
 > * 搜索功能，用于查找系统受损的更多证据
-
-若要详细了解安全中心的调查功能，请参阅：
-
-> [!div class="nextstepaction"]
-> [调查事件和警报](security-center-investigation.md)

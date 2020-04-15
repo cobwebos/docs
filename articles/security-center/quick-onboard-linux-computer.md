@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: memildin
-ms.openlocfilehash: 9f49b858a23d0a1f58505d9f9971a31e8c9167e9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3b7181550fd76f158ec04e9779f4301bd74484e1
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73664501"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435980"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>快速入门：将 Linux 计算机载入到安全中心
-加入 Azure 订阅之后，可以通过预配代理为在 Azure 外部（例如，在本地或在其他云中）运行的 Linux 资源启用安全中心。 该代理称为 Microsoft Monitoring Agent (MMA)，但它也称为 OMS 代理。
+加入 Azure 订阅之后，可以通过预配代理为在 Azure 外部（例如，在本地或在其他云中）运行的 Linux 资源启用安全中心。 该代理称为 Log Analytics 代理，但也称 OMS 代理。
 
 本快速入门展示了如何在 Linux 计算机上安装该代理。
 

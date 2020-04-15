@@ -1,26 +1,18 @@
 ---
 title: 教程：具有角色的上下文数据 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 基于上下文查找相关的数据。 例如，对于从一个建筑物和办公室到另一个建筑物和办公室的物理移动，源位置和目标位置是相关的。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: cd646ef061a0be06a9b1a56b72a4f35d9796aa63
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 03/30/2020
+ms.openlocfilehash: fdb463896e531619ea7ebe7c384729763dc84138
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75447885"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475821"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>教程：从陈述中提取上下文相关的数据
 
-在本教程中，基于上下文查找相关的数据片段。 例如，从一个城市转移到另一个城市的原位置和目的地。 可能同时需要这两个数据片段，并且它们彼此相关。
+在本教程中，基于上下文查找相关的数据片段。 例如，从一个城市到另一个城市的转移所涉及的原位置和目标位置。 可能同时需要这两个数据片段，并且它们彼此相关。
 
 角色可与任何预生成的或自定义的实体类型配合使用，并可在示例言语和模式中使用。
 
@@ -49,24 +41,26 @@ ms.locfileid: "75447885"
 
 ## <a name="create-a-new-app"></a>创建新应用
 
-1. 使用 URL [https://preview.luis.ai](https://preview.luis.ai) 登录到预览版 LUIS 门户。
+1. 登录到 [LUIS **预览版**门户](https://preview.luis.ai)。
 
-1. 选择“创建新应用”，输入名称 `HumanResources`，保留默认的区域性“英语”。   将说明保留为空。
-
-1. 选择“完成”  。
+1. 选择“+ 新建对话应用”，输入名称 `HumanResources`，保留默认的区域性设置（“英语”）。   将说明和预测资源留空。 选择“完成”  。
 
 ## <a name="create-an-intent-to-move-employees-between-cities"></a>创建在城市之间移动员工的意向
 
+意向用于根据用户的意图（根据自然语言文本确定）对用户言语进行分类。
+
+要对言语进行分类，意向需要使用应根据该意向分类的用户言语的示例。
+
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-1. 选择“创建新意向”  。
+1. 选择“+ 新建”。 
 
 1. 在弹出对话框中输入 `MoveEmployeeToCity`，然后选择“完成”。 
 
     > [!div class="mx-imgBorder"]
     > ![“创建新意向”对话框的屏幕截图](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
 
-1. 将示例陈述添加到意向。
+1. 将多个示例言语添加到你预期用户会请求的此意向。
 
     |示例陈述|
     |--|
@@ -85,24 +79,29 @@ ms.locfileid: "75447885"
 
 ## <a name="add-prebuilt-entity-geographyv2"></a>添加预生成实体 geographyV2
 
-预生成实体 geographyV2 提取位置信息，包括城市名称。 由于言语中有两个城市名称在上下文中彼此相关，因此请使用角色来提取该上下文。
+预生成实体 **geographyV2** 会提取位置信息，包括城市名称。 由于言语中有两个城市名称在上下文中彼此相关，因此请使用角色来提取该上下文。
 
 1. 在左侧导航栏中选择“实体”  。
 
-1. 选择“添加预生成实体”，然后在搜索栏中选择 `geo` 来筛选预生成实体。 
+1. 选择“+ 添加预生成实体”，然后在搜索栏中输入 `geo` 来筛选预生成实体。 
 
     > [!div class="mx-imgBorder"]
     > ![将 geographyV2 预生成实体添加到应用](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
 
 1. 选中该复选框，然后选择“完成”。 
+
+## <a name="add-roles-to-prebuilt-entity"></a>将角色添加到预生成实体
+
 1. 在“实体”列表中，选择“geographyV2”打开新实体。  
-1. 添加两个角色：`Origin` 和 `Destination`。
+1. 若要添加角色，请选择 **+** 并添加以下两个角色：`Origin` 和 `Destination`。
 
     > [!div class="mx-imgBorder"]
     > ![将角色添加到预生成实体](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 
+## <a name="label-entity-roles-in-example-utterances"></a>在示例言语中标记实体角色
+
 1. 在左侧导航栏中选择“意向”，然后选择“MoveEmployeeToCity”意向。   请注意，城市名称标有预生成实体 **geographyV2**。
-1. 在上下文工具栏中，选择“实体调色板”  。
+1. 在上下文工具栏中，选择带铅笔图标  的“实体调色板”  。
 
     > [!div class="mx-imgBorder"]
     > ![从内容工具栏选择实体调色板](media/tutorial-entity-roles/intent-detail-context-toolbar-select-entity-palette.png)
@@ -122,18 +121,21 @@ ms.locfileid: "75447885"
 
 ## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>训练应用，以便可以测试对意向所做的更改
 
-[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+若要训练应用，请选择“训练”  。 训练会将更改（如新实体和已标记的言语）应用于活动模型。
 
-## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>发布应用，以便可以从终结点查询已训练的模型
+## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>发布应用以从 HTTP 终结点访问它
 
-[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
+
 
 ## <a name="get-intent-and-entity-prediction-from-endpoint"></a>从终结点获取意向和实体预测结果
 
-1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
 
-1. 将光标定位到地址栏中 URL 的末尾，并输入 `Please move Carl Chamerlin from Tampa to Portland`。 最后一个查询字符串参数为 `q`，表示陈述**查询**。 此话语不同于标记的任何话语，因此，它非常适用于测试，测试结果应返回提取了实体的 `MoveEmployee` 意向。
+1. 转到地址栏中 URL 的末尾，将 _YOUR_QUERY_HERE_ 替换为 `Please move Carl Chamerlin from Tampa to Portland`。
+
+此话语不同于标记的任何话语，因此，它非常适用于测试，测试结果应返回提取了实体的 `MoveEmployee` 意向。
 
     ```json
     {
@@ -171,11 +173,9 @@ ms.locfileid: "75447885"
     }
     ```
 
-    预测了正确的意向，并且实体数组在对应的 **entities** 属性中同时具有来源和目标角色。
+    The correct intent is predicted and the entities array has both the origin and destination roles in the corresponding **entities** property.
 
-## <a name="clean-up-resources"></a>清理资源
-
-[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
 
 ## <a name="related-information"></a>相关信息
 

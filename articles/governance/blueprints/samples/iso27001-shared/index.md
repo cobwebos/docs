@@ -1,14 +1,14 @@
 ---
 title: ISO 27001 共享服务蓝图示例概述
 description: ISO 27001 共享服务蓝图示例的概述和体系结构。 此蓝图示例可帮助客户评估特定 ISO 27001 控制要求。
-ms.date: 01/13/2020
+ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 0b6a250ebac2744adca813219225388841f1776f
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 9b0b49582023ee5c68fea0f21b70290a102a038a
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "75922545"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381571"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共享服务蓝图示例的概述
 
@@ -21,7 +21,7 @@ ISO 27001 共享服务蓝图示例提供了一组符合标准的基础结构模�
 ISO 27001 共享服务蓝图示例在 Azure 中部署一个基础结构，该基础结构可供组织用来基于虚拟数据中心 (VDC) 方法托管多个工作负荷。
 VDC 是一套行之有效的参考体系结构、自动化工具和参与模型，由 Microsoft 用于其最大的企业客户。 共享服务蓝图示例基于下面所示的完全原生 Azure VDC 环境。
 
-![ISO 27001 共享服务蓝图示例设计](../../media/sample-iso27001-shared/iso27001-shared-services-blueprint-sample-design.png)
+:::image type="content" source="../../media/sample-iso27001-shared/iso27001-shared-services-blueprint-sample-design.png" alt-text="ISO 27001 共享服务蓝图示例设计" border="false":::
 
 此环境包括多项 Azure 服务，这些服务用于根据 ISO 27001 标准提供安全的、全面受监视的、面向企业的共享服务基础结构。 此环境包括：
 

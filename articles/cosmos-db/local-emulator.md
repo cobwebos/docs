@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: 287933de6403d680c5aa5b6c78df49abe5f2ac56
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9650bb3214c22926427717569f718ca0426ed729
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222124"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618750"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>使用 Azure Cosmos 模拟器进行本地开发和测试
 
@@ -99,7 +99,7 @@ Account key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZ
 > [!NOTE]
 > 如果是使用 /Key 选项启动的模拟器，请使用所生成的密钥而不是 `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`。 有关 /Key 选项的详细信息，请参阅[命令行工具参考](#command-line)。
 
-与 Azure Cosmos DB 一样，Azure Cosmos 模拟器仅支持采用 SSL 的安全通信。
+与 Azure Cosmos DB 一样，Azure Cosmos 模拟器仅支持采用 TLS 的安全通信。
 
 ## <a name="running-on-a-local-network"></a>在本地网络上运行
 
@@ -149,7 +149,7 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 ### <a name="cassandra-api"></a>Cassandra API
 
-使用“/EnableCassandraEndpoint”在管理员命令提示符处启动模拟器。 或者，也可设置环境变量 `AZURE_COSMOS_EMULATOR_CASSANDRA_ENDPOINT=true`。
+在管理员命令提示符处使用“/EnableCassandraEndpoint”启动模拟器。 或者，也可设置环境变量 `AZURE_COSMOS_EMULATOR_CASSANDRA_ENDPOINT=true`。
 
 * [安装 Python 2.7](https://www.python.org/downloads/release/python-2716/)
 
@@ -179,11 +179,11 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 ### <a name="gremlin-api"></a>Gremlin API
 
-使用“/EnableGremlinEndpoint”在管理员命令提示符处启动模拟器。 或者，也可设置环境变量 `AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true`
+在管理员命令提示符处使用“/EnableGremlinEndpoint”启动模拟器。 或者，也可设置环境变量 `AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true`
 
 * [安装 apache-tinkerpop-gremlin-console-3.3.4](https://archive.apache.org/dist/tinkerpop/3.3.4)。
 
-* 在模拟器的数据资源管理器中，创建数据库“db1”和集合“coll1”，并选择“/name”作为分区键
+* 在模拟器的数据资源管理器中创建数据库“db1”和集合“coll1”，并选择“/name”作为分区键
 
 * 在常规命令提示符窗口中运行以下命令：
 
@@ -215,17 +215,17 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
   :> g.V()
   ```
 
-## <a name="export-the-ssl-certificate"></a>导出 SSL 证书
+## <a name="export-the-tlsssl-certificate"></a>导出 TLS/SSL 证书
 
 .NET 语言和运行时使用 Windows 证书存储来安全地连接到 Azure Cosmos DB 本地模拟器。 其他语言有自己管理和使用证书方法。 Java 使用自己的[证书存储](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html)，而 Python 使用[套接字包装器](https://docs.python.org/2/library/ssl.html)。
 
 为了获得用于语言和运行时（未与 Windows 证书存储集成）的证书，需要通过 Windows 证书管理器将其导出。 可通过运行 certlm.msc 进行启动，也可按照[导出 Azure Cosmos 模拟器证书](./local-emulator-export-ssl-certificates.md)中的分步说明进行操作。 证书管理器开始运行后，打开个人证书（如下所示），并将友好名称为“DocumentDBEmulatorCertificate”的证书导出为 BASE-64 编码的 X.509 (.cer) 文件。
 
-![Azure Cosmos DB 本地模拟器 SSL 证书](./media/local-emulator/database-local-emulator-ssl_certificate.png)
+![Azure Cosmos DB 本地模拟器 TLS/SSL 证书](./media/local-emulator/database-local-emulator-ssl_certificate.png)
 
 可按照[将证书添加到 Java CA 证书存储](https://docs.microsoft.com/azure/java-add-certificate-ca-store)中的说明，将 X.509 证书导入 Java 证书存储。 证书导入证书存储后，SQL 和 MongoDB 的 Azure Cosmos DB API 的客户端就能连接到 Azure Cosmos 模拟器。
 
-从 Python 和 Node.js SDK 连接到模拟器时，将禁用 SSL 验证。
+从 Python 和 Node.js SDK 连接到模拟器时，会禁用 TLS 验证。
 
 ## <a name="command-line-tool-reference"></a><a id="command-line"></a>命令行工具参考
 从安装位置中，可以使用命令行启动和停止模拟器、配置选项和执行其他操作。
@@ -260,8 +260,8 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 | StopTraces     | 停止使用 LOGMAN 收集调试跟踪日志。 | Microsoft.Azure.Cosmos.Emulator.exe /StopTraces  | |
 | StartWprTraces  |  开始使用 Windows 性能记录工具收集调试跟踪日志。 | Microsoft.Azure.Cosmos.Emulator.exe /StartWprTraces | |
 | StopWprTraces     | 停止使用 Windows 性能记录工具收集调试跟踪日志。 | Microsoft.Azure.Cosmos.Emulator.exe /StopWprTraces  | |
-|FailOnSslCertificateNameMismatch | 默认情况下，如果证书的 SAN 不包含模拟器主机的域名、本机 IPv4 地址、“localhost”和“127.0.0.1”，则模拟器会重新生成自签名的 SSL 证书。 启用此选项后，模拟器在启动时会失败。 之后，你应使用 /GenCert 选项来创建和安装新的自签名 SSL 证书。 | Microsoft.Azure.Cosmos.Emulator.exe /FailOnSslCertificateNameMismatch  | |
-| GenCert | 生成并安装新的自签名 SSL 证书。 选择性地包含用于通过网络访问模拟器的其他 DNS 名称的列表（以逗号分隔）。 | Microsoft.Azure.Cosmos.Emulator.exe /GenCert=\<dns-names\> |\<dns-names\>：其他 dns 名称的逗号分隔列表（可选）  |
+|FailOnSslCertificateNameMismatch | 默认情况下，模拟器会重新生成自签名的 TLS/SSL 证书（如果证书的 SAN 不包含模拟器主机的域名、本地 IPv4 地址、“localhost”和“127.0.0.1”）。 启用此选项后，模拟器在启动时会失败。 然后，你应使用 /GenCert 选项来创建并安装新的自签名 TLS/SSL 证书。 | Microsoft.Azure.Cosmos.Emulator.exe /FailOnSslCertificateNameMismatch  | |
+| GenCert | 生成并安装新的自签名 TLS/SSL 证书。 选择性地包含用于通过网络访问模拟器的其他 DNS 名称的列表（以逗号分隔）。 | Microsoft.Azure.Cosmos.Emulator.exe /GenCert=\<dns-names\> |\<dns-names\>：其他 dns 名称的逗号分隔列表（可选）  |
 | DirectPorts |指定用于直接连接的端口。 默认值为 10251、10252、10253、10254。 | Microsoft.Azure.Cosmos.Emulator.exe /DirectPorts:\<directports\> | \<directports\>：以逗号分隔的 4 个端口的列表 |
 | 密钥 |模拟器的授权密钥。 密钥必须是 64 字节向量的 base 64 编码。 | Microsoft.Azure.Cosmos.Emulator.exe /Key:\<key\> | \<key\>：密钥必须是 64 字节向量的 base 64 编码|
 | EnableRateLimiting | 指定已启用请求速率限制行为。 |Microsoft.Azure.Cosmos.Emulator.exe /EnableRateLimiting | |
@@ -398,7 +398,7 @@ powershell .\importcert.ps1
 Starting interactive shell
 ```
 
-现在，在客户端中使用来自响应的终结点和主密钥，并将 SSL 证书导入到主机中。 若要导入 SSL 证书，请从管理员命令提示符执行以下操作：
+现在，在客户端中使用来自响应的终结点和主密钥，并将 TLS/SSL 证书导入到主机中。 若要导入 TLS/SSL 证书，请从管理员命令提示符处执行以下操作：
 
 通过命令行：
 
@@ -445,7 +445,7 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 
 如果在 Linux 中工作，则 .NET 依赖于 OpenSSL 来执行验证：
 
-1. [使用 PFX 格式导出证书](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate)（当选择导出私钥时，PFX 可用）。 
+1. [使用 PFX 格式导出证书](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-tlsssl-certificate)（当选择导出私钥时，PFX 可用）。 
 
 1. 将该 PFX 文件复制到 Linux 环境。
 
@@ -471,7 +471,7 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 
 如果在 Mac 中工作，请使用以下步骤：
 
-1. [使用 PFX 格式导出证书](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate)（当选择导出私钥时，PFX 可用）。
+1. [使用 PFX 格式导出证书](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-tlsssl-certificate)（当选择导出私钥时，PFX 可用）。
 
 1. 将该 PFX 文件复制到 Mac 环境。
 
@@ -485,7 +485,7 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 
 完成这些步骤后，当连接到通过 `/AllowNetworkAccess` 公开的 IP 地址时，你的环境将信任模拟器使用的证书。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 使用以下提示来帮助解决使用 Azure Cosmos 模拟器时遇到的问题：
 
@@ -527,7 +527,7 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已了解了如何使用本地模拟器进行免费的本地开发。 现在可以继续学习下一教程，了解如何导出模拟器 SSL 证书。
+在本教程中，你已了解了如何使用本地模拟器进行免费的本地开发。 现在可以继续学习下一教程，了解如何导出模拟器 TLS/SSL 证书。
 
 > [!div class="nextstepaction"]
 > [导出 Azure Cosmos 模拟器证书](local-emulator-export-ssl-certificates.md)

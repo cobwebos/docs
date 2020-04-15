@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2020
 ms.author: allensu
-ms.openlocfilehash: 4b34d4208d8686cdac3f8164d2cf7efb2d881346
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 50fc8b9cefe88a80f3f954ce363139b6a4a38589
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79409892"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548385"
 ---
 # <a name="what-is-virtual-network-nat"></a>什么是虚拟网络 NAT？
 
@@ -40,11 +40,11 @@ ms.locfileid: "79409892"
 
 ## <a name="static-ip-addresses-for-outbound-only"></a>用于仅限出站连接的静态 IP 地址
 
-可为使用 NAT 的每个子网定义出站连接。  同一虚拟网络中的多个子网可以使用不同的 NAT。 可以通过指定要使用的 [NAT 网关资源](./nat-gateway-resource.md)来配置子网。 任何虚拟机实例中的所有 UDP 和 TCP 出站流都会使用 NAT。 
+可为使用 NAT 的每个子网定义出站连接。  同一虚拟网络中的多个子网可以使用不同的 NAT。 可以通过指定要使用的 NAT 网关资源来配置子网。 任何虚拟机实例中的所有 UDP 和 TCP 出站流都会使用 NAT。 
 
-NAT 与标准 SKU [公共 IP 地址资源](./virtual-network-ip-addresses-overview-arm.md#standard)、[公共 IP 前缀资源](./public-ip-address-prefix.md)或两者的组合相兼容。  可以直接使用公共 IP 前缀，或者在多个 NAT 网关资源之间分配前缀的公共 IP 地址。 NAT 会将所有流量梳理到前缀的 IP 地址范围。  在部署中将任何 IP 加入允许列表的过程现在都很简单。
+NAT 与标准 SKU 公共 IP 地址资源、公共 IP 前缀资源或两者的组合相兼容。  可以直接使用公共 IP 前缀，或者在多个 NAT 网关资源之间分配前缀的公共 IP 地址。 NAT 会将所有流量梳理到前缀的 IP 地址范围。  在部署中将任何 IP 加入允许列表的过程现在都很简单。
 
-NAT 会自动处理子网的所有出站流量，而无需完成任何客户配置。  不需要指定用户定义的路由。 NAT 优先于其他[出站方案](../load-balancer/load-balancer-outbound-connections.md)，可替代子网的默认 Internet 目标。
+NAT 会自动处理子网的所有出站流量，而无需完成任何客户配置。  不需要指定用户定义的路由。 NAT 优先于其他出站方案，可替代子网的默认 Internet 目标。
 
 ## <a name="on-demand-snat-with-multiple-ip-addresses-for-scale"></a>使用具有多个 IP 地址的按需 SNAT 进行缩放
 
@@ -60,9 +60,9 @@ NAT 允许创建从虚拟网络到 Internet 的流。 在活动流的响应中�
 
 NAT 与以下标准 SKU 资源兼容：
 
-- [负载均衡器](../load-balancer/load-balancer-overview.md)
-- [公共 IP 地址](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
-- [公共 IP 前缀](../virtual-network/public-ip-address-prefix.md)
+- 负载均衡器
+- 公共 IP 地址
+- 公共 IP 前缀
 
 与 NAT 一起使用时，这些资源提供与子网的入站 Internet 连接。 NAT 提供来自子网的所有出站 Internet 连接。
 

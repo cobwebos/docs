@@ -2,19 +2,19 @@
 title: 快速入门：使用 REST API 在 Python 中创建搜索索引
 titleSuffix: Azure Cognitive Search
 description: 介绍如何使用 Python、Jupyter Notebook 和 Azure 认知搜索 REST API 创建索引、加载数据以及运行查询。
-author: tchristiani
+author: HeidiSteen
 manager: nitinme
-ms.author: terrychr
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-ms.date: 02/10/2020
-ms.openlocfilehash: 93fb9ec735de1abf89eb217d0f4096fcfc0afe94
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/01/2020
+ms.openlocfilehash: fd87dbe125e84c171cc35a2b242879c44bc50fd9
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78227096"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585930"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>快速入门：在 Python 中使用 Jupyter Notebook 创建 Azure 认知搜索索引
 
@@ -197,7 +197,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
         "@search.action": "upload",
         "HotelId": "3",
         "HotelName": "Triple Landscape Hotel",
-        "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.",
+        "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel's restaurant services.",
         "Description_fr": "L'hôtel est situé dans une place du XIXe siècle, qui a été agrandie et rénovée aux plus hautes normes architecturales pour créer un hôtel moderne, fonctionnel et de première classe dans lequel l'art et les éléments historiques uniques coexistent avec le confort le plus moderne.",
         "Category": "Resort and Spa",
         "Tags": [ "air conditioning", "bar", "continental breakfast" ],
@@ -256,45 +256,59 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
    ```python
    searchstring = '&search=*&$count=true'
-   ```
 
-1. 在新单元格中提供以下示例，以根据字词“hotels”和“wifi”执行搜索。 添加 $select 以指定要包含在搜索结果中的字段。
-
-   ```python
-   searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
-   ```
-
-1. 在另一个单元格中构建请求。 此 GET 请求针对 hotels-quickstart 索引的文档集合，将附加在上一步骤中指定的查询。
-
-   ```python
    url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
    response  = requests.get(url, headers=headers, json=searchstring)
    query = response.json()
    pprint(query)
    ```
 
-1. 运行每个步骤。 结果应如以下输出所示。 
+1. 在新单元格中提供以下示例，以根据字词“hotels”和“wifi”执行搜索。 添加 $select 以指定要包含在搜索结果中的字段。
+
+   ```python
+   searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
+
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
+   response  = requests.get(url, headers=headers, json=searchstring)
+   query = response.json()
+   pprint(query)   
+   ```
+
+   结果应如以下输出所示。 
 
     ![搜索索引](media/search-get-started-python/search-index.png "搜索索引")
 
-1. 尝试其他查询示例来了解语法。 可将 `searchstring` 替换为以下示例，然后重新运行搜索请求。 
-
-   应用筛选器： 
+1. 接下来，应用一个 $filter 表达式，该表达式仅选择评级高于 4 的酒店。 
 
    ```python
    searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description,Rating'
+
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
+   response  = requests.get(url, headers=headers, json=searchstring)
+   query = response.json()
+   pprint(query)     
    ```
 
-   采用前两个结果：
+1. 默认情况下，搜索引擎返回前 50 个文档，但你可以使用 top 和 skip 来添加分页，并选择每个结果中的文档数。 此查询在每个结果集中返回两个文档。
 
    ```python
-   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description,Category'
+   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description'
+
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
+   response  = requests.get(url, headers=headers, json=searchstring)
+   query = response.json()
+   pprint(query)
    ```
 
-    按特定的字段排序：
+1. 上一示例使用 $orderby 按城市对结果排序。 此示例包含“地址”集合中的字段。
 
    ```python
-   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince, Tags'
+   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince'
+
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
+   response  = requests.get(url, headers=headers, json=searchstring)
+   query = response.json()
+   pprint(query)
    ```
 
 ## <a name="clean-up"></a>清除

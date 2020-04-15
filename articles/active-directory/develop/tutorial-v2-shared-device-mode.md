@@ -2,25 +2,22 @@
 title: 在 MSAL Android 中使用共享设备模式 | Azure
 description: 了解如何准备 Android 设备以在共享模式下运行，并运行一个一线工作人员应用。
 services: active-directory
-documentationcenter: dev-center-name
 author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 1/15/2020
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: bf7e6bb22ce89d6be3f79efad1f1a3679e8780e7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b2f74d2d441007f195abd38ca26ca7fa73605318
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77086060"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886426"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>教程：在 Android 应用程序中使用共享设备模式
 
@@ -96,9 +93,9 @@ deviceModeTextView.setText(mSingleAccountApp.isSharedDevice() ?"Shared" :"Non-Sh
 ```java
 private ISingleAccountPublicClientApplication mSingleAccountApp;
 
-/*Configure your sample app and save state for this activity*/ 
+/*Configure your sample app and save state for this activity*/
 PublicClientApplication.create(this.getApplicationCOntext(),
-  R.raw.auth_config, 
+  R.raw.auth_config,
   new PublicClientApplication.ApplicationCreatedListener(){
   @Override
   public void onCreated(IPublicClientApplication application){
@@ -109,7 +106,7 @@ PublicClientApplication.create(this.getApplicationCOntext(),
   public void onError(MsalException exception{
   /*Fail to initialize PublicClientApplication */
   }
-});  
+});
 ```
 
 ### <a name="detect-single-vs-multiple-account-mode"></a>检测单帐户与多帐户模式
@@ -134,7 +131,7 @@ private IPublicClientApplication mApplication;
 
 `loadAccount` 方法检索已登录用户的帐户。 `onAccountChanged` 方法确定已登录用户是否已更改，如果已更改，则清除：
 
-```java 
+```java
 private void loadAccount()
 {
   mSingleAccountApp.getCurrentAccountAsync(new ISingleAccountPublicClientApplication.CurrentAccountCallback()
@@ -157,12 +154,12 @@ private void loadAccount()
         updateSingedOutUI();
       }
     }
-    @Override 
-    public void onError(@NonNull Exception exception) 
+    @Override
+    public void onError(@NonNull Exception exception)
     {
     }
   }
-}  
+}
 ```
 
 ### <a name="globally-sign-in-a-user"></a>将用户全局登录
@@ -233,10 +230,10 @@ private void onSignOutClicked()
 ![验证器“添加帐户”屏幕](media/tutorial-v2-shared-device-mode/authenticator-add-account.png)
 
  使用右侧菜单栏转到“设置”  窗格。 在“工作和学校帐户”下选择“设备注册”。  
- 
+
  ![验证器“添加帐户”屏幕](media/tutorial-v2-shared-device-mode/authenticator-settings.png)
 
- 单击此按钮时，系统将要求你授权访问设备联系人。 这是由设备上的 Android 帐户集成导致的。 选择“允许”  。
+ 单击此按钮时，系统将要求你授权访问设备联系人。 这是由于设备上的 Android 帐户集成导致的。 选择“允许”  。
 
  ![验证器“添加帐户”屏幕](media/tutorial-v2-shared-device-mode/authenticator-allow-screen.png)
 
@@ -254,7 +251,7 @@ private void onSignOutClicked()
 
 ## <a name="view-the-shared-device-in-the-azure-portal"></a>在 Azure 门户中查看共享设备
 
-将设备置于共享模式后，它会为你的组织所知，并可在你的组织租户中跟踪它。 可以通过在 Azure 门户的 Azure Active Directory 边栏选项卡中查看“联接类型”  来查看共享设备。
+将设备置于共享模式后，它会为你的组织所知，并将在你的组织租户中受到跟踪。 可以通过在 Azure 门户的 Azure Active Directory 边栏选项卡中查看“联接类型”  来查看共享设备。
 
 ![Azure 门户中的“所有设备”边栏选项卡](media/tutorial-v2-shared-device-mode/registered-device-screen.png)
 
@@ -266,4 +263,4 @@ private void onSignOutClicked()
 
 ## <a name="next-steps"></a>后续步骤
 
-在 [Android 设备的共享设备模型](shared-device-mode.md)中详细了解共享模型
+在 [Android 设备的共享设备模型](msal-android-shared-devices.md)中详细了解共享模型

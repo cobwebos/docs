@@ -10,18 +10,18 @@ ms.topic: include
 ms.custom: include file
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 46947579ea72e2199af116442472eec330b38009
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: dd44d9cb01ff072d89afeb4efc4a59071c621315
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77112313"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80758458"
 ---
 此基于 Postman 的快速入门详细介绍如何从知识库获取答案。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-* 最新 [Postman  ](https://www.getpostman.com/)。
+* 最新 [Postman](https://www.getpostman.com/)  。
 * 必须具有：
     * 一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)
     * 在快速入门中生成的已训练且已发布的[包含问题和答案的知识库](../Quickstarts/add-question-metadata-portal.md)已配置元数据和闲聊内容。
@@ -49,9 +49,9 @@ ms.locfileid: "77112313"
 
 ## <a name="use-metadata-to-filter-answer"></a>使用元数据筛选答案
 
-在前一篇快速入门中，已将元数据添加到两个 QnA 集，以区分两个不同的问题。 将元数据添加到查询，以将筛选器限制为仅返回相关的 QnA 集。
+在前一篇快速入门中，已将元数据添加到两个 QnA 对，以区分两个不同的问题。 将元数据添加到查询，以将筛选器限制为仅返回相关的 QnA 对。
 
-1. 在 Postman 中，通过添加包含名称/值对 `strictFilters` 的 `service:qna_maker` 属性来仅更改查询 JSON。 正文 JSON 应是：
+1. 在 Postman 中，通过添加包含名称/值对 `service:qna_maker` 的 `strictFilters` 属性来仅更改查询 JSON。 正文 JSON 应是：
 
     ```json
     {

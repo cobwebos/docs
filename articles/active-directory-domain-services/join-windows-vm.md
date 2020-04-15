@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/19/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: f853d6d59a4c23b7b52a2a0ba800ace58c997f6e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1ac508fc9fee07482e475c46e1db262c8bfa1a12
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79481579"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476239"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>教程：将 Windows Server 虚拟机加入托管域
 
@@ -27,7 +27,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 > * 将 Windows Server VM 连接到 Azure 虚拟网络
 > * 将 VM 加入 Azure AD DS 托管域
 
-如果你没有 Azure 订阅，可以在开始之前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果还没有 Azure 订阅，可以在开始前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -76,8 +76,6 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
     应仅在需要时启用 RDP，并将其限制为一组已授权 IP 范围。 此配置有助于提高 VM 的安全性并减小潜在攻击的范围。 或者，创建并使用 Azure Bastion 主机，以便仅允许在 Azure 门户中通过 TLS 进行访问。 在本教程的下一步，我们使用 Azure Bastion 主机安全地连接到 VM。
 
-    现在，请禁用到 VM 的直接 RDP 连接。
-
     在“公共入站端口”下，选择“无”。  
 
 1. 完成后，选择“下一步: **磁盘”** 。
@@ -96,22 +94,23 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
     ![在 Azure 门户中选择管理子网配置](./media/join-windows-vm/manage-subnet.png)
 
-1. 在虚拟网络窗口的左侧菜单中，选择“地址空间”。  随即会使用单个地址空间 *10.0.1.0/24*（由默认子网使用）创建虚拟网络。
+1. 在虚拟网络窗口的左侧菜单中，选择“地址空间”。  随即会创建带有单个地址空间 *10.0.2.0/24*（由默认子网使用）的虚拟网络。 其他子网（例如用于工作负载  的子网）或 Azure Bastion 也可能已存在。
 
     将额外的 IP 地址范围添加到该虚拟网络。 此地址范围的大小以及要使用的实际 IP 地址范围取决于已部署的其他网络资源。 该 IP 地址范围不应与 Azure 或本地环境中的任何现有地址范围重叠。 请确保该 IP 地址范围足够大，能够与要部署到子网中的 VM 数量相适应。
 
-    在以下示例中，添加了额外的 IP 地址范围 *10.0.2.0/24*。 准备就绪后，选择“保存”。 
+    在以下示例中，添加了额外的 IP 地址范围 *10.0.5.0/24*。 准备就绪后，选择“保存”。 
 
-    ![在 Azure 门户中添加额外的虚拟网络 IP 地址范围](./media/tutorial-configure-networking/add-vnet-address-range.png)
+    ![在 Azure 门户中添加额外的虚拟网络 IP 地址范围](./media/join-windows-vm/add-vnet-address-range.png)
 
 1. 接下来，在虚拟网络窗口的左侧菜单中选择“子网”，然后选择“+ 子网”以添加子网。  
 
-1. 选择“+ 子网”，然后输入子网名，如 management   。 提供“地址范围(CIDR 块)”，如 10.0.2.0/24   。 请确保此 IP 地址范围与任何其他现有的 Azure 或本地地址范围不重叠。 将其他选项保留默认值，然后选择“确定”  。
+1. 选择“+ 子网”，然后输入子网名，如 management   。 提供“地址范围(CIDR 块)”，如 10.0.5.0/24   。 请确保此 IP 地址范围与任何其他现有的 Azure 或本地地址范围不重叠。 将其他选项保留默认值，然后选择“确定”  。
 
     ![在 Azure 门户中创建子网配置](./media/join-windows-vm/create-subnet.png)
 
 1. 创建子网需要几秒钟的时间。 创建后，请选择“X”关闭子网窗口  。
 1. 返回到“网络”窗格以创建 VM，从下拉菜单中选择所创建的子网，如 management   。 同样，请确保选择了正确的子网，并且不要将 VM 部署在与 Azure AD DS 托管域相同的子网中。
+1. 对于“公共 IP”  ，请从下拉菜单中选择“无”  ，因为你使用 Azure Bastion 连接到“管理”，不需要分配公共 IP 地址。
 1. 将其他选项保留默认值，然后选择“管理”  。
 1. 将“启动诊断”设置为“关”   。 将其他选项保留默认值，然后选择“查看 + 创建”  。
 1. 查看 VM 设置，然后选择“创建”  。
@@ -155,10 +154,10 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 1. 输入域凭据以加入域。 使用属于 Azure AD DS 托管域的用户的凭据。 此帐户必须属于 Azure AD DS 托管域或 Azure AD 租户 - 与 Azure AD 租户关联的外部目录的帐户无法在加入域的过程中正确进行身份验证。 可以通过以下某种方式指定帐户凭据：
 
-    * **UPN 格式**（推荐）- 输入在 Azure AD 中为用户帐户配置的用户主体名称 (UPN) 后缀。 例如，用户 contosoadmin 的 UPN 后缀为 `contosoadmin@aaddscontoso.onmicrosoft.com`  。 有几种常见的用例，可以可靠地使用 UPN 格式登录到域而不是使用 SAMAccountName 格式  ：
+    * **UPN 格式**（推荐）- 输入在 Azure AD 中为用户帐户配置的用户主体名称 (UPN) 后缀。 例如，用户 contosoadmin 的 UPN 后缀为 `contosoadmin@aaddscontoso.onmicrosoft.com` 。 有几种常见的用例，可以可靠地使用 UPN 格式登录到域而不是使用 SAMAccountName 格式  ：
         * 如果用户的 UPN 前缀过长（如 deehasareallylongname），服务可能会自动生成 SAMAccountName   。
         * 如果 Azure AD 租户中有多个用户具有相同的 UPN 前缀（如 dee），服务可能会自动生成其 SAMAccountName 格式   。
-    * **SAMAccountName 格式** - 以 SAMAccountName 格式输入帐户名  。 例如，用户 contosoadmin 的 SAMAccountName 将为 `AADDSCONTOSO\contosoadmin`   。
+    * **SAMAccountName 格式** - 以 SAMAccountName 格式输入帐户名  。 例如，用户 contosoadmin 的 SAMAccountName 将为 `AADDSCONTOSO\contosoadmin`  。
 
 1. 加入 Azure AD DS 托管域需要几秒钟时间。 完成后，将出现以下消息欢迎你访问该域：
 

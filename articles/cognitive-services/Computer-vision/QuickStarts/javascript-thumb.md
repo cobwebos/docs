@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 03/26/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 1d07bc12f33df7253a849b605fdaff1f2f0123dd
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2485794d9ec1ce78a8916014dc1117ed59c34e44
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74974540"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656066"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-javascript"></a>快速入门：使用计算机视觉 REST API 和 JavaScript 生成缩略图
 
@@ -26,18 +26,18 @@ ms.locfileid: "74974540"
 
 ## <a name="prerequisites"></a>先决条件
 
-必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费的试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。 然后，为密钥和服务终结点字符串[创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别名为 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`。
+必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费的试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。 将订阅密钥和终结点 URL 保存到临时位置。
 
 ## <a name="create-and-run-the-sample"></a>创建并运行示例
 
 要创建和运行示例，请执行以下步骤：
 
-1. 将以下代码复制到文本编辑器中。
+1. 创建一个名为 _get-thumbnail.html_ 的文件，在文本编辑器中打开它，然后将以下代码复制到其中。
 1. （可选）将 `inputImage` 控件的 `value` 属性的值替换为要分析的其他图像的 URL。
-1. 将代码保存为以 `.html` 为扩展名的文件。 例如，`get-thumbnail.html` 。
 1. 打开一个浏览器窗口。
 1. 在浏览器中，将文件拖放到浏览器窗口。
-1. 在浏览器中显示网页时，选择“生成缩略图”按钮  。
+1. 当网页显示在浏览器中时，请将订阅密钥和终结点 URL 粘贴到相应的输入框中。
+1. 最后，选择“生成缩略图”  按钮。
 
 ```html
 <!DOCTYPE html>
@@ -53,9 +53,8 @@ ms.locfileid: "74974540"
         // *** Update or verify the following values. ***
         // **********************************************
 
-        let subscriptionKey = process.env['COMPUTER_VISION_SUBSCRIPTION_KEY'];
-        let endpoint = process.env['COMPUTER_VISION_ENDPOINT']
-        if (!subscriptionKey) { throw new Error('Set your environment variables for your subscription key and endpoint.'); }
+        var subscriptionKey = document.getElementById("subscriptionKey").value;
+        var endpoint = document.getElementById("endpointUrl").value;
         
         var uriBase = endpoint + "vision/v2.1/generateThumbnail";
 
@@ -122,6 +121,13 @@ ms.locfileid: "74974540"
 <h1>Generate thumbnail image:</h1>
 Enter the URL to an image to use in creating a thumbnail image,
 then click the <strong>Generate thumbnail</strong> button.
+<br><br>
+Subscription key: 
+<input type="text" name="subscriptionKey" id="subscriptionKey"
+    value="" /> 
+Endpoint URL:
+<input type="text" name="endpointUrl" id="endpointUrl"
+    value="" />
 <br><br>
 Image for thumbnail:
 <input type="text" name="inputImage" id="inputImage"

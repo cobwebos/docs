@@ -1,21 +1,14 @@
 ---
 title: 快速入门：通过 LUIS 门户部署应用
-titleSuffix: Azure Cognitive Services
 description: 本快速入门介绍如何通过创建预测终结点资源、分配资源、训练和发布应用来部署应用。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 01/27/2020
-ms.author: diberry
-ms.openlocfilehash: 0ee2b33aa3388b3cb99aa42c338ded800c9679a4
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/06/2020
+ms.openlocfilehash: aaf86766c2357c5382b78cd4a35fd4b159e5c0f3
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79218496"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756301"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>快速入门：在 LUIS 门户中部署应用
 
@@ -29,35 +22,13 @@ LUIS 应用准备好将话语预测返回到客户端应用程序（例如聊天
 * 完成[上述门户快速入门](get-started-portal-build-app.md)或[下载并导入应用](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json)。
 * 如果应用将 Azure 资源身份验证的日期提前，则[迁移到 Azure 资源](luis-migration-authoring.md)。 电子邮件身份验证生效时，某些门户页面的外观会有所不同。
 
-## <a name="create-the-endpoint-resource"></a>创建终结点资源
+<a name="create-the-endpoint-resource"></a>
 
-在 Azure 门户中创建预测终结点资源。 此资源仅应用于终结点预测查询。 请勿使用此资源来创建对应用的更改。
-
-1. 在 [Azure 门户](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)中登录并创建资源。
-
-1. 使用以下设置配置订阅：
-
-   |设置|值|目的|
-   |--|--|--|
-   |名称|`my-luis-resource`|Azure 资源的名称。 将资源分配给 LUIS 门户中的应用时需要此名称。|
-   |订阅|订阅|选择与你的帐户关联的其中某个订阅。|
-   |资源组|`my-resource-group`|为所有认知服务资源创建新资源组。 完成资源后，可以删除资源组以清理订阅。 |
-   |创作位置|**美国西部**|用于创作的 Azure 区域。|
-   |创作定价层|**F0**|用于创作的默认定价层。|
-   |运行时位置|**美国西部**|用于预测终结点查询的 Azure 区域。|
-   |运行时定价层|**S0**|此定价层面向高流量网站。|
-   | | | |
-
-
-   ![Azure API 选择](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
-
-1. 选择“创建”以创建 Azure 资源  。
-
-   在下一部分中，你将了解如何在 LUIS 门户中将此新资源连接到 LUIS 应用。
+[!INCLUDE [Create LUIS resource](includes/create-luis-resource.md)]
 
 ## <a name="assign-the-resource-key-to-the-luis-app-in-the-luis-portal"></a>将资源关键字分配给 LUIS 门户中的 LUIS 应用
 
-每次为 LUIS 创建新资源时，都需要将资源分配给 LUIS 应用。 分配后，除非创建新资源，否则无需再次执行此步骤。 可以创建新资源来扩展应用的区域或支持更多预测查询。
+每次为 LUIS 创建新的创作或查询预测资源时，都需要将资源分配给 LUIS 应用。 分配后，除非创建新资源，否则无需再次执行此步骤。 可以创建新资源来扩展应用的区域或支持更多预测查询。
 
 1. 登录到[预览版 LUIS 门户](https://preview.luis.ai)，从应用列表中选择“myEnglishApp”应用  。
 

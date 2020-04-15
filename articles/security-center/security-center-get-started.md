@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 26d62f2c027a093ba518b98fa37ce3a31a14f175
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3f0d624605f617a8e5ab914c49c4c94a40ebdcc6
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73664289"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435782"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>快速入门：将 Azure 订阅加入安全中心标准层
 Azure 安全中心跨混合云工作负荷提供统一的安全管理和威胁防护。 免费层只能为 Azure 资源提供有限的安全性，而标准层将这些功能扩展到了本地和其他云。 借助安全中心标准层，可以查找和修复安全漏洞、应用访问控制和应用程序控制来阻止恶意活动、使用分析和智能功能检测威胁，以及在受到攻击时迅速做出响应。 可以免费试用安全中心标准版。 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
 
-本文介绍如何升级到标准层以提高安全性，以及在虚拟机上安装 Microsoft Monitoring Agent 来监视安全漏洞和威胁。
+本文介绍如何升级到标准层以提高安全性，以及如何在虚拟机上安装 Log Analytics 代理来监视安全漏洞和威胁。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 若要开始使用安全中心，必须具有 Microsoft Azure 订阅。 如果尚无订阅，可注册[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 若要将订阅升级到标准层，必须拥有“订阅所有者”、“订阅参与者”或“安全管理员”角色。
@@ -47,7 +47,7 @@ Azure 安全中心跨混合云工作负荷提供统一的安全管理和威胁�
 - 有关如何改善 Azure 订阅安全性的**建议**。 单击“建议”磁贴会启动一个优先级列表。 
 - 该列表中包含安全中心目前正在评估的“计算和应用”、“网络”、“数据安全性”以及“标识和访问”资源的清单以及每个项的安全局势。    
 
-若要充分利用安全中心，需要完成以下步骤升级到标准层，并安装 Microsoft Monitoring Agent。
+若要充分利用安全中心，需要按以下步骤升级到标准层，并安装 Log Analytics 代理。
 
 ## <a name="upgrade-to-the-standard-tier"></a>升级到标准层
 若要学习安全中心快速入门和教程，必须升级到标准层。 有一个免费试用的安全中心标准版。 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。 
@@ -66,11 +66,11 @@ Azure 安全中心跨混合云工作负荷提供统一的安全管理和威胁�
   ![安全警报][9]
 
 ## <a name="automate-data-collection"></a>自动收集数据
-安全中心从 Azure VM 和非 Azure 计算机收集数据以监视安全漏洞和威胁。 数据是使用 Microsoft Monitoring Agent 收集的，它从计算机中读取各种安全相关的配置和事件日志，然后将数据复制到工作区以进行分析。 默认情况下，安全中心会自动创建新工作区。
+安全中心从 Azure VM 和非 Azure 计算机收集数据以监视安全漏洞和威胁。 数据是使用 Log Analytics 代理收集的，该代理从计算机中读取各种与安全相关的配置和事件日志，然后将数据复制到工作区进行分析。 默认情况下，安全中心会自动创建新工作区。
 
-启动自动预配后，安全中心可在所有受支持的 Azure VM 以及任何新建的 Azure VM 中安装 Microsoft Monitoring Agent。 我们强烈建议启用自动预配。
+启用自动预配后，安全中心可在所有受支持的 Azure VM 以及任何新建的 Azure VM 中安装 Log Analytics 代理。 我们强烈建议启用自动预配。
 
-启用 Microsoft Monitoring Agent 自动设置的步骤：
+若要启用对 Log Analytics 代理的自动预配，请执行以下操作：
 
 1. 在“安全中心”主菜单下，选择“定价和设置”  。
 2. 在订阅的行上，单击要更改其设置的订阅。
@@ -99,11 +99,11 @@ Azure 安全中心跨混合云工作负荷提供统一的安全管理和威胁�
 4. 选择“保存”。 
 
 >[!NOTE]
-> 禁用自动设置不会从已预配代理的 Azure VM 中删除 Microsoft Monitoring Agent。 禁用自动设置会限制对资源的安全监视。
+> 禁用自动预配不会从已预配 Log Analytics 代理的 Azure VM 中删除该代理。 禁用自动设置会限制对资源的安全监视。
 >
 
 ## <a name="next-steps"></a>后续步骤
-在本快速入门中，我们已升级到标准层，并预配了 Microsoft Monitoring Agent，用于在混合云工作负荷之间进行统一的安全管理和威胁防护。 若要详细了解如何使用安全中心，请继续学习有关如何加入本地和其他云中的 Windows 计算机的快速入门。
+在本快速入门中，你已升级到标准层，并预配了 Log Analytics 代理，以便对混合云工作负载进行统一的安全管理和威胁防护。 若要详细了解如何使用安全中心，请继续学习有关如何加入本地和其他云中的 Windows 计算机的快速入门。
 
 > [!div class="nextstepaction"]
 > [快速入门：将 Windows 计算机加入安全中心](quick-onboard-windows-computer.md)

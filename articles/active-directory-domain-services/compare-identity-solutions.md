@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 01/22/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: d2495605cccf658b15e812fd85fd65671e84d15b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5925e3374634dd4db4bdc6855949dc3880d8de7c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76544270"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655515"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>自我管理型 Azure Active Directory 域服务、Azure Active Directory 和托管型 Azure Active Directory 域服务的比较
 
@@ -25,12 +25,16 @@ ms.locfileid: "76544270"
 
 * **Active Directory 域服务 (AD DS)** - 随时可在企业中部署的轻型目录访问协议 (LDAP) 服务器，提供标识和身份验证、计算机对象管理、组策略和信任等关键功能。
     * AD DS 是使用本地 IT 环境的众多组织中的一个中心组件，提供核心用户帐户身份验证和计算机管理功能。
+    * 有关详细信息，请参阅 [Windows Server 文档中的 Active Directory 域服务概述][overview-adds]。
 * **Azure Active Directory (Azure AD)** - 基于云的标识和移动设备管理，为 Office 365、Azure 门户或 SaaS 应用程序等资源提供用户帐户和身份验证服务。
     * Azure AD 可与本地 AD DS 环境同步，以便为原本就在云中工作的用户提供单个标识。
+    * 有关 Azure AD 的详细信息，请参阅[什么是 Azure Active Directory？][whatis-azuread]
 * **Azure Active Directory 域服务 (Azure AD DS)** - 为托管域服务提供一部分完全兼容的传统 AD DS 功能，例如域加入、组策略、LDAP 和 Kerberos/NTLM 身份验证。
     * Azure AD DS 与 Azure AD 集成，后者本身可与本地 AD DS 环境同步。 此功能通过直接迁移策略将中心标识用例扩展到在 Azure 中运行的传统 Web 应用程序。
 
 本概述文章将这些标识解决方案根据组织需求相互配合工作或者独立工作时的情况做了对比。
+
+若要开始，请[使用 Azure 门户创建 Azure AD DS 托管域][tutorial-create]。
 
 ## <a name="azure-ad-ds-and-self-managed-ad-ds"></a>Azure AD DS 和自我管理型 AD DS
 
@@ -102,7 +106,7 @@ Azure AD DS 提供传统自我管理型 AD DS 环境的一小部分功能，这�
 |:--------------------------------| --------------------------------------------------- | ------------------------------------------------------------------------- |
 | 设备控制方            | Azure AD                                            | Azure AD DS 托管域                                                |
 | 在目录中的表示形式 | Azure AD 目录中的设备对象            | Azure AD DS 托管域中的计算机对象                        |
-| Authentication                  | 基于 OAuth/OpenID Connect 的协议              | Kerberos 和 NTLM 协议                                               |
+| 身份验证                  | 基于 OAuth/OpenID Connect 的协议              | Kerberos 和 NTLM 协议                                               |
 | 管理                      | Intune 等移动设备管理 (MDM) 软件 | 组策略                                                              |
 | 网络                      | 通过 Internet 工作                             | 必须连接到部署管理域的虚拟网络或与其对等互连 |
 | 非常适合用于...                    | 最终用户移动设备或台式机设备                  | 在 Azure 中部署的服务器 VM                                              |
@@ -118,3 +122,5 @@ Azure AD DS 提供传统自我管理型 AD DS 环境的一小部分功能，这�
 [manage-gpos]: manage-group-policy.md
 [tutorial-ldaps]: tutorial-configure-ldaps.md
 [tutorial-create]: tutorial-create-instance.md
+[whatis-azuread]: ../active-directory/fundamentals/active-directory-whatis.md
+[overview-adds]: /windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview

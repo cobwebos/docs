@@ -1,15 +1,15 @@
 ---
 title: 创建 Azure 区块链服务成员 - Azure 门户
 description: 使用 Azure 门户创建区块链联盟的 Azure 区块链服务成员。
-ms.date: 03/12/2020
+ms.date: 03/30/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
-ms.openlocfilehash: 3c468633a193d78fb1c017a756ee372c6feefb12
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4c3dabc6abdffd2fb08ece617545d8471955d130
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79203655"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529644"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure 区块链服务区块链成员
 
@@ -36,7 +36,7 @@ Azure 区块链服务成员是专用联盟区块链网络中的区块链节点�
     联盟 | 对于新联盟，请输入唯一的名称。 如果通过某个计划加入联盟，请选择要加入的联盟。 有关联盟的详细信息，请参阅 [Azure 区块链服务联盟](consortium.md)。
     名称 | 为该 Azure 区块链服务成员选择一个唯一名称。 区块链成员名称只能包含小写字母和数字。 第一个字符必须是字母。 值长度必须介于 2 到 20 个字符之间。
     成员帐户密码 | 成员帐户密码用于加密为你的成员创建的 Ethereum 帐户的私钥。 你使用成员帐户和成员帐户密码进行联盟管理。
-    定价 | 新服务的节点配置和成本。 选择“更改”链接，在“标准”层和“基本”层之间进行选择    。 使用“基本”  层进行开发、测试和概念证明。 使用“标准”  层进行生产级部署。
+    定价 | 新服务的节点配置和成本。 选择“更改”链接，在“标准”层和“基本”层之间进行选择    。 使用“基本”  层进行开发、测试和概念证明。 使用“标准”  层进行生产级部署。 如果使用区块链数据管理器或发送大量专用事务，还应使用“标准”  层。 不支持在创建成员后在“基本”定价层和“标准”定价层之间进行切换。
     节点密码 | 成员的默认事务节点的密码。 连接到区块链成员的默认事务节点公共终结点时，请使用密码进行基本身份验证。
 
 1. 选择“查看 + 创建”以验证自己的设置  。 选择“创建”  来预配服务。 预配大约需要 10 分钟。

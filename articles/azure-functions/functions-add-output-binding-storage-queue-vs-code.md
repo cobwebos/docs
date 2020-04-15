@@ -4,12 +4,12 @@ description: 了解如何通过将输出绑定添加到 Visual Studio Code 项�
 ms.date: 02/07/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 22f7df52e90a35a3ed9a26a7672f8354efc173e3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c32f98fc1b3de98592f8e7ceb43c17aa8a9049f7
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290065"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673465"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>使用 Visual Studio Code 将 Azure Functions 连接到 Azure 存储
 
@@ -52,9 +52,13 @@ ms.locfileid: "79290065"
 
 由于你使用队列存储输出绑定，因此在运行项目之前，必须安装存储绑定扩展。 
 
-::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-java"
 
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
+项目已配置为使用[扩展捆绑包](functions-bindings-register.md#extension-bundles)，因此会自动安装一组预定义的扩展包。 
+
+在项目根目录下的 host.json 文件中启用扩展捆绑包，如下所示：
+
+:::code language="json" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/host.json":::
 
 ::: zone-end
 
@@ -74,7 +78,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 在 Functions 中，每种类型的绑定都需要一个 `direction`、`type`，以及要在 function.json 文件中定义的唯一 `name`。 定义这些属性的方式取决于函数应用的语言。
 
-::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-java"
 
 [!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
@@ -83,6 +87,12 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ::: zone pivot="programming-language-csharp"
 
 [!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-java"
+
+[!INCLUDE [functions-add-output-binding-java](../../includes/functions-add-output-binding-java.md)]
 
 ::: zone-end
 
@@ -111,8 +121,20 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ::: zone-end
 
 ::: zone pivot="programming-language-csharp"  
+
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
+
 ::: zone-end  
+
+::: zone pivot="programming-language-java"  
+
+[!INCLUDE [functions-add-storage-binding-java-code](../../includes/functions-add-storage-binding-java-code.md)]
+
+[!INCLUDE [functions-add-output-binding-java-test](../../includes/functions-add-output-binding-java-test.md)]
+
+::: zone-end  
+
+<!--- Local testing section --->
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python"
 
@@ -127,6 +149,12 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ::: zone-end
 
 首次使用输出绑定时，Functions 运行时会在存储帐户中创建名为 **outqueue** 的新队列。 将使用存储资源管理器来验证队列是否与新消息一起创建。
+
+::: zone pivot="programming-language-java"  
+
+[!INCLUDE [functions-add-output-binding-java-test](../../includes/functions-add-output-binding-java-test.md)]
+
+::: zone-end
 
 ### <a name="connect-storage-explorer-to-your-account"></a>将存储资源管理器连接到帐户
 
@@ -148,7 +176,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 1. 展开“队列”节点，然后选择名为 **outqueue** 的队列。  
 
-   此队列包含在运行 HTTP 触发的函数时队列输出绑定创建的消息。 如果使用默认的 `name` 值 *Azure* 调用了此函数，则队列消息为“传递给函数的名称: Azure”。 
+   此队列包含在运行 HTTP 触发的函数时队列输出绑定创建的消息。 如果使用 Azure 的默认 `name` 值调用了此函数，则队列消息为“传递给函数的名称：   Azure”。
 
     ![Azure 存储资源管理器中显示的队列消息](./media/functions-add-output-binding-storage-queue-vs-code/function-queue-storage-output-view-queue.png)
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0f94f4d312cefec80a0f294e256ee1ad908b903c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 59bf06d2b279bad792bdc42a7c3b6acc2bc304b8
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74068135"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985705"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建和部署高度可用的虚拟机
 
@@ -63,7 +63,7 @@ New-AzResourceGroup `
    -Location EastUS
 ```
 
-结合 [ 参数使用 ](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset)New-AzAvailabilitySet`-sku aligned` 创建托管的可用性集。
+结合 `-sku aligned` 参数使用 [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset) 创建托管的可用性集。
 
 ```azurepowershell-interactive
 New-AzAvailabilitySet `
@@ -107,13 +107,13 @@ for ($i=1; $i -le 2; $i++)
 
 创建和配置这两个 VM 需要几分钟的时间完成。 完成后，你将拥有两个跨基础硬件分布的虚拟机。 
 
-如果转到“资源组” **“myResourceGroupAvailability”** “myAvailabilitySet”在门户中查看可用性集，应会看到 VM 在两个容错域和更新域之间的分布方式。 >    >  
+如果转到“资源组” > “myResourceGroupAvailability” > “myAvailabilitySet”在门户中查看可用性集，应会看到 VM 在两个容错域和更新域之间的分布方式。   
 
 ![门户中的可用性集](./media/tutorial-availability-sets/fd-ud.png)
 
 ## <a name="check-for-available-vm-sizes"></a>检查可用的 VM 大小 
 
-稍后可向可用性集添加更多 VM，但需了解在硬件上可用的 VM 大小。 使用 [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) 列出可用性集的硬件群集上的所有可用大小。
+在可用性集中创建 VM 时，需了解在硬件上可用的 VM 大小。 使用 [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) 命令获取能够在可用性集中部署的虚拟机的所有可用大小。
 
 ```azurepowershell-interactive
 Get-AzVMSize `

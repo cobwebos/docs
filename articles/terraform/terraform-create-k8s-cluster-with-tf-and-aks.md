@@ -4,12 +4,12 @@ description: 本教程使用 Azure Kubernetes 服务和 Terraform 创建 Kuberne
 keywords: azure devops terraform aks kubernetes
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: 0a193c8da6441a04f742894797521fe92f26b2e1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b7a84d7562e99e53ff7be75b7d40795cd3f9e203
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78945294"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618939"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>教程：使用 Terraform 和 Azure Kubernetes 服务 (AKS) 创建 Kubernetes 群集
 
@@ -303,7 +303,7 @@ Terraform 在本地通过 `terraform.tfstate` 文件跟踪状态。 在单用户
 
 ## <a name="create-the-kubernetes-cluster"></a>创建 Kubernetes 群集
 
-本部分介绍如何使用 `terraform init` 命令来创建资源，这些资源定义了前面部分中所创建的配置文件。
+本部分介绍如何使用 `terraform init` 命令来创建资源，这些资源在前面部分所创建的配置文件中定义。
 
 1. 在 Cloud Shell 中，初始化 Terraform。 将占位符替换为你的环境的相应值。
 

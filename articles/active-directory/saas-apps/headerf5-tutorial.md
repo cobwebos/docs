@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ad6b7150a43a286a4bec39a0482e08f50d95c06
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 352f52a2a6d84d352bb46e09f104efde303307f5
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77048064"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478048"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>教程：Azure Active Directory 单一登录 (SSO) 与 F5 的集成
 
@@ -281,7 +281,7 @@ ms.locfileid: "77048064"
 
 ## <a name="advanced-configuration"></a>高级配置
 
-该部分针对的是无法使用引导式配置或希望添加/修改其他参数的情况。 需要 SSL 证书以获取应用程序主机名。
+该部分针对的是无法使用引导式配置或希望添加/修改其他参数的情况。 你将需要与应用程序主机名相匹配的 TLS/SSL 证书。
 
 1. 导航到“系统”>“证书管理”>“流量证书管理”>“SSL 证书列表”  。 在右下角选择“导入”  。 “导入类型”将为“PKCS 12(IIS)”   。 指定稍后会在配置中引用的“密钥名称”，并指定 PFX 文件  。 为 PFX 指定“密码”  。 单击“导入”  。
 
@@ -298,7 +298,7 @@ ms.locfileid: "77048064"
  
     ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure18.png)
 
-1. 在这种情况下，我们会在外部将 HeaderApp2 作为 HTTPS 发布。在“BIG-IP 系统应如何处理 SSL 流量?”下我们指定“终止来自客户端的 SSL、发往服务器的纯文本(SSL 卸载)”   。 在“希望使用哪个 SSL 证书?”和“希望使用哪个 SSL 私钥?”下选择自己的证书和密钥  。 在“希望虚拟服务器采用什么 IP 地址?”下指定虚拟服务器 IP  。 
+1. 在这种情况下，我们会在外部将 HeaderApp2 作为 HTTPS 发布。在“BIG-IP 系统应如何处理 SSL 流量?”下我们指定“终止来自客户端的 SSL、发往服务器的纯文本(SSL 卸载)”   。 在“希望使用哪个 SSL 证书?”和“希望使用哪个 SSL 私钥?”下指定证书和密钥  。  在“希望虚拟服务器采用什么 IP 地址?”下指定虚拟服务器 IP  。 
 
     * 指定其他详细信息 
 

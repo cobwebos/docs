@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: 84ed5db54874231d8bde4d892eedbc60c42a3430
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: d2e7e157156a4049a5db37b1d5c0e02773adbcc3
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77918751"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879541"
 ---
 # <a name="what-is-azure-security-center"></a>什么是 Azure 安全中心？
 
@@ -29,7 +29,7 @@ Azure 安全中心是一个统一的基础结构安全管理系统，可以增�
 
 Azure 安全中心解决了三个最紧急的安全性挑战：
 
--   **快速变化的工作负荷** - 这既是云的优势，也是云所带来的挑战。 一方面，使最终用户有权执行更多的操作。 另一方面，如何确保人们正在使用和创建的不断变化的服务符合安全标准并且遵循安全最佳做法？
+-   **快速变化的工作负载** - 这既是云的优势，也是云所带来的挑战。 一方面，使最终用户有权执行更多的操作。 另一方面，如何确保人们正在使用和创建的不断变化的服务符合安全标准并且遵循安全最佳做法？
 
 -   **日益复杂的攻击** - 无论在何处运行工作负荷，所面临的攻击都会变得越来越复杂。 必须要确保你的公有云工作负荷的安全，这些实际上是面向 Internet 的工作负荷，如果不遵循安全最佳做法，可能会使你更易受到攻击。
 
@@ -49,7 +49,7 @@ Azure 安全中心解决了三个最紧急的安全性挑战：
 
 由于安全中心本身是 Azure 的一部分，因此 Azure 中的 PaaS 服务（包括 Service Fabric、SQL 数据库和存储帐户）会受到安全中心的监视和保护，无需进行任何部署。
 
-此外，安全中心通过在 Windows 和 Linux 服务器的云中或本地非 Azure 服务器和虚拟机上安装 Microsoft Monitoring Agent 来对它们进行保护。 Azure 虚拟机是在安全中心中自动预配的。
+此外，安全中心还会保护云中或本地的非 Azure 服务器和虚拟机（针对 Windows 和 Linux 服务器），具体方式是在其上安装 Log Analytics 代理。 Azure 虚拟机是在安全中心中自动预配的。
 
 从代理和 Azure 收集的事件在安全分析引擎中相关联，以为你提供量身定制的建议（强化任务），你应该遵循这些建议以确保工作负荷安全，并发出安全警报。 应尽快调查此类警报以确保没有针对工作负荷发生的恶意攻击。
 
@@ -146,5 +146,7 @@ Azure 安全中心的值的核心在于其建议。 这些建议是针对在工�
 ## <a name="next-steps"></a>后续步骤
 
 - 若要开始使用安全中心，需要具有 Microsoft Azure 订阅。 如果尚无订阅，可注册[免费试用版](https://azure.microsoft.com/free/)。
-- 安全中心的免费定价层通过 Azure 订阅启用。 若要利用高级安全管理和威胁防护功能，必须升级到标准定价层。 标准层可以免费试用 30 天。 有关详细信息，请参阅[安全中心定价页](https://azure.microsoft.com/pricing/details/security-center/)。
+
+- 首次在 Azure 门户中访问 Azure 安全中心仪表板后，或通过 API 以编程方式启用安全中心的免费定价层后，安全中心的免费定价层就会在所有当前的 Azure 订阅上启用。 若要利用高级安全管理和威胁检测功能，必须升级到“标准”定价层。 标准层可以免费试用 30 天。 有关详细信息，请参阅[安全中心定价页](https://azure.microsoft.com/pricing/details/security-center/)。
+
 - 如果已准备好立即启用安全中心标准版，请参阅[快速入门：将 Azure 订阅载入到安全中心标准版](security-center-get-started.md)以详细了解相关步骤。

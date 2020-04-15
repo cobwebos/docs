@@ -3,22 +3,26 @@ title: 设置 AWS 与 Azure 成本管理的集成
 description: 本文逐步讲解如何设置并配置 AWS 成本和使用情况报表与 Azure 成本管理的集成。
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 04/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: matrive
-ms.openlocfilehash: c0f6f18abf7c05cf5ae6dcaa31a57974ecfca806
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d3b1efabbf5f05c05ef939ee8713829fbd49f483
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79203077"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878980"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>设置并配置 AWS 成本和使用情况报表集成
 
 使用 Amazon Web Services (AWS) 成本和使用情况报表 (CUR) 集成，可以在 Azure 成本管理中监视和控制 AWS 支出。 借助这种集成，可以在 Azure 门户中的单个位置监视和控制 Azure 与 AWS 的支出。 本文介绍如何设置并配置集成，以便可以使用 Azure 成本管理功能来分析成本和查看预算。
 
 成本管理使用你的 AWS 访问凭据来处理 S3 桶中存储的 AWS 成本和使用情况报表，以获取报表定义并下载报表 GZIP CSV 文件。
+
+观看视频 [How to set up Connectors for AWS in Cost Management](https://www.youtube.com/watch?v=Jg5KC1cx5cA)（如何在成本管理中设置 AWS 的连接器），详细了解如何设置 AWS 报表集成。 若要观看其他视频，请访问[成本管理 YouTube 频道](https://www.youtube.com/c/AzureCostManagement)。
+
+>[!VIDEO https://www.youtube.com/embed/Jg5KC1cx5cA]
 
 ## <a name="create-a-cost-and-usage-report-in-aws"></a>在 AWS 中创建成本和使用情况报表
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2019
 ms.author: sharadag
-ms.openlocfilehash: 0ee35f4f0b4bd8c46a0445e2905ae3b50d11f721
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b2ee41324cfaefa4d5aec3aa02b2d0d8c75da78f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79471637"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879116"
 ---
 # <a name="what-is-azure-front-door"></a>什么是 Azure Front Door？
 在 Azure Front Door 中可以进行优化以实现最佳性能以及进行即时全球故障转移以实现高可用性，并以此定义、管理和监视 Web 流量的全局路由。 使用 Front Door，可将全球（多区域）消费型和企业应用程序转化成可靠、高性能、个性化的现代应用程序、API 和内容，供 Azure 全球受众访问。
@@ -51,12 +51,12 @@ Front Door 使用其智能运行状况探测为关键应用程序提供高可用
 ## <a name="session-affinity"></a>会话相关性
 需要在同一应用程序后端上保留用户会话时，基于 Cookie 的会话关联功能非常有用。 使用 Front Door 托管 Cookie 时，来自用户会话的后续流量将定向到同一应用程序后端进行处理。 在会话状态是为用户会话而本地保存在后端的情况下，此功能十分重要。
 
-## <a name="secure-sockets-layer-ssl-termination"></a>安全套接字层 (SSL) 终止
-Front Door 支持边缘上的 SSL 终端，即，各个用户可以直接与 Front Door 环境建立 SSL 连接，而无需与应用程序后端建立远距离的连接。 此外，Front Door 支持在 Front Door 环境与后端之间建立 HTTP 和 HTTPS 连接。 因此，还可以设置端到端的 SSL 加密。 例如，如果应用程序工作负荷的 Front Door 在一分钟内收到 5000 多个请求，则由于热连接的重复使用，对于活动的服务，Front Door 只会与应用程序后端建立大约 500 个连接，因此能够大大减少来自后端的负载。
+## <a name="tls-termination"></a>TLS 终止
+Front Door 支持边缘上的 TLS 终止，即，各个用户可以直接与 Front Door 环境建立 TLS 连接，而无需与应用程序后端建立远距离的连接。 此外，Front Door 支持在 Front Door 环境与后端之间建立 HTTP 和 HTTPS 连接。 因此，还可以设置端到端的 TLS 加密。 例如，如果应用程序工作负荷的 Front Door 在一分钟内收到 5000 多个请求，则由于热连接的重复使用，对于活动的服务，Front Door 只会与应用程序后端建立大约 500 个连接，因此能够大大减少来自后端的负载。
 
 ## <a name="custom-domains-and-certificate-management"></a>自定义域和证书管理
 使用 Front Door 交付内容时，如果希望自己的域名在 Front Door URL 中可见，则必须使用自定义域。 使用可见的域名可以方便客户，适用于推广品牌。
-Front Door 支持对自定义域名使用 HTTPS。 可以通过为流量选择 Front Door 托管证书或者上传自己的自定义 SSL 证书来使用此功能。
+Front Door 支持对自定义域名使用 HTTPS。 可以通过为流量选择 Front Door 托管证书或者上传自己的自定义 TLS/SSL 证书来使用此功能。
 
 ## <a name="application-layer-security"></a>应用程序层安全性
 Azure Front Door 允许编写自定义 Web 应用程序防火墙 (WAF) 规则进行访问控制，以基于客户端 IP 地址、国家/地区代码和 http 参数来防范 HTTP/HTTPS 工作负荷遭到恶意利用。 此外，Front Door 还允许创建速率限制规则来阻止恶意机器人流量。 有关 Web 应用程序防火墙的详细信息，请参阅[什么是 Azure Web 应用程序防火墙？](../web-application-firewall/overview.md)

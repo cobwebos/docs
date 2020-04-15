@@ -8,18 +8,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 01/22/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: ea0fa0e9d4e475a8496d1ee52b4cdfea11a13d8d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0f5f890b4f32961e00fb30316a1dc7c88ef93a45
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76544098"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654842"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>什么是 Azure Active Directory 域服务？
 
 Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active Directory 完全兼容的托管域服务，例如域加入、组策略、轻型目录访问协议 (LDAP) 和 Kerberos/NTLM 身份验证。 无需在云中部署、管理和修补域控制器即可使用这些域服务。 Azure AD DS 与现有 Azure AD 租户集成，因此用户可使用其现有凭据登录。 此外，也可使用现有的组和用户帐户安全访问资源，确保更顺畅地将本地资源直接迁移到 Azure。
+
+若要开始，请[使用 Azure 门户创建 Azure AD DS 托管域][tutorial-create]。
 
 Azure AD DS 从 Azure AD 中复制标识信息，因此，适用于仅限云的 Azure AD 租户，或与本地 Active Directory 域服务 (AD DS) 环境同步的租户。 对于这两种环境，都存在相同的一组 Azure AD DS 功能。
 
@@ -51,7 +53,11 @@ Azure AD DS 提供了替代方法，由此能够创建返回到本地 AD DS 环�
 
 ## <a name="azure-ad-ds-features-and-benefits"></a>Azure AD DS 功能和优点
 
-为了向云中的应用程序和 VM 提供标识服务，Azure AD DS 与传统的 AD DS 环境完全兼容，可用于域加入、安全 LDAP (LDAPS)、组策略和 DNS 管理以及 LDAP 绑定和读取支持等操作。 LDAP 写入支持适用于在 Azure AD DS 托管域中创建的对象，但不适用于从 Azure AD 同步的资源。 Azure AD DS 的以下功能简化了部署和管理操作：
+为了向云中的应用程序和 VM 提供标识服务，Azure AD DS 与域加入、安全 LDAP (LDAPS)、组策略、DNS 管理以及 LDAP 绑定和读取支持等操作的传统 AD DS 环境完全兼容。 LDAP 写入支持适用于在 Azure AD DS 托管域中创建的对象，但不适用于从 Azure AD 同步的资源。
+
+若要详细了解标识选项，请[将 Azure AD DS 与 Azure AD、Azure VM 上的 Active Directory 域服务和本地 Active Directory 域服务进行比较][compare]。
+
+Azure AD DS 的以下功能简化了部署和管理操作：
 
 * **简化的部署体验：** 在 Azure 门户中使用单个向导为 Azure AD 租户启用 Azure AD DS。
 * **与 Azure AD 集成：** 可从 Azure AD 租户自动获得用户帐户、组成员身份和凭据。 新用户、组或者对 Azure AD 租户或本地 AD DS 环境中的属性所做的更改会自动同步到 Azure AD DS。

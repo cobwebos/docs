@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 02/20/2020
+ms.date: 04/02/2020
 ms.author: spelluru
-ms.openlocfilehash: 8047ac5d3db2db230a00583e888a4afea3b282b9
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 9c678a91b88b87acb438311b4968be4cae46733b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78969374"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632803"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>教程：使用 Stream analytics 处理用于事件中心的 Apache Kafka 事件 
-本文介绍如何将数据流式传输到启用了 Kafka 的事件中心，并使用 Azure 流分析对其进行处理。 其中包括以下步骤： 
+本文介绍如何将数据流式传输到事件中心，并使用 Azure 流分析对其进行处理。 其中包括以下步骤： 
 
-1. 创建启用了 Kafka 的事件中心命名空间。
+1. 创建事件中心命名空间。
 2. 创建向事件中心发送消息的 Kafka 客户端。
 3. 创建将数据从事件中心复制到 Azure Blob 存储的流分析作业。 
 
@@ -41,7 +41,7 @@ ms.locfileid: "78969374"
 * **Azure 存储帐户**。 如果没有帐户，[先创建一个帐户](../storage/common/storage-account-create.md)，然后再继续进行操作。 本演练中的流分析作业将输出数据存储在 Azure Blob 存储中。 
 
 
-## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>创建启用了 Kafka 的事件中心命名空间
+## <a name="create-an-event-hubs-namespace"></a>创建事件中心命名空间
 当你创建**标准**层事件中心命名空间时，系统会自动为该命名空间启用 Kafka 终结点。 可以将事件从使用 Kafka 协议的应用程序流式传输到标准层事件中心。 按照[使用 Azure 门户创建事件中心](event-hubs-create.md)中的分步说明创建**标准**层事件中心命名空间。 
 
 > [!NOTE]
@@ -73,7 +73,7 @@ ms.locfileid: "78969374"
     ```
 
     此代码以 JSON  格式发送事件数据。 配置流分析作业的输入时，指定 JSON 作为输入数据的格式。 
-7. 运行生产者  并将其流式传输到已启用 Kafka 的事件中心。 在 Windows 计算机上，使用 Node.js 命令提示符  时，先切换到 `azure-event-hubs-for-kafka/quickstart/java/producer` 文件夹，再运行这些命令。 
+7. 运行生产者  并将事件流式传输到事件中心。 在 Windows 计算机上，使用 Node.js 命令提示符  时，先切换到 `azure-event-hubs-for-kafka/quickstart/java/producer` 文件夹，再运行这些命令。 
    
     ```shell
     mvn clean package
@@ -181,15 +181,4 @@ ms.locfileid: "78969374"
 
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍了如何在不更改协议客户端或运行自己的群集的情况下，流式传输到已启用 Kafka 的事件中心。 若要详细了解事件中心和适用于 Kafka 的事件中心，请参阅以下主题：  
-
-- [了解事件中心](event-hubs-what-is-event-hubs.md)
-- [用于 Apache Kafka 的事件中心](event-hubs-for-kafka-ecosystem-overview.md)
-- [如何创建启用 Kafka 的事件中心](event-hubs-create-kafka-enabled.md)
-- [从 Kafka 应用程序流式传输到事件中心](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [将 Kafka 代理镜像到已启用 Kafka 的事件中心](event-hubs-kafka-mirror-maker-tutorial.md)
-- [将 Apache Spark 连接到已启用 Kafka 的事件中心](event-hubs-kafka-spark-tutorial.md)
-- [将 Apache Flink 连接到已启用 Kafka 的事件中心](event-hubs-kafka-flink-tutorial.md)
-- [将 Kafka Connect 与已启用 Kafka 的事件中心集成](event-hubs-kafka-connect-tutorial.md)
-- [将 Akka Streams 连接到已启用 Kafka 的事件中心](event-hubs-kafka-akka-streams-tutorial.md)
-- [了解 GitHub 上的示例](https://github.com/Azure/azure-event-hubs-for-kafka) 
+本文介绍了如何在不更改协议客户端或运行自己的群集的情况下，将事件流式传输到事件中心。 若要详细了解用于 Apache Kafka 的事件中心，请参阅[适用于 Azure 事件中心的 Apache Kafka 开发人员指南](apache-kafka-developer-guide.md)。 

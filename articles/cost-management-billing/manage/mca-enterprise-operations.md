@@ -5,18 +5,18 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 04/01/2020
 ms.author: banders
-ms.openlocfilehash: 6692bb8f323e42edfe546e15620442881f99032d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 01a7b81794342871ae8eadc090e61bbac0876c03
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78272183"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586157"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>完成 Microsoft 客户协议计费帐户中的企业协议任务
 
-如果你的组织已签署 Microsoft 客户协议以续订企业协议注册，则系统将为该协议创建新的计费帐户。 新帐户中计费的组织方式与企业协议不同。 本文介绍如何使用新的计费帐户来执行企业协议中的任务。
+如果你的组织已签署 Microsoft 客户协议以续订企业协议合约，则系统将为该协议创建新的计费帐户。 新帐户中计费的组织方式与企业协议不同。 本文介绍如何使用新的计费帐户来执行企业协议中的任务。
 
 ## <a name="billing-organization-in-the-new-account"></a>新帐户中的计费组织方式
 
@@ -26,28 +26,28 @@ ms.locfileid: "78272183"
 
 | 企业协议   | Microsoft 客户协议    |
 |------------------------|--------------------------------------------------------|
-| 注册            | 你将使用计费配置文件来管理组织的计费，类似于在企业协议注册中那样。 企业管理员将成为计费配置文件的所有者。 若要详细了解计费配置文件，请参阅[了解计费配置文件](../understand/mca-overview.md#billing-profiles)。
-| 部门            | 可以使用发票科目来组织成本，类似于在企业协议注册中使用部门。 部门将成为发票科目，部门管理员将成为各自发票科目的所有者。 若要详细了解发票科目，请参阅[了解发票科目](../understand/mca-overview.md#invoice-sections)。 |
+| 注册            | 你将使用计费配置文件来为组织管理计费，类似于在企业协议合约中那样。 企业管理员将成为计费配置文件的所有者。 若要详细了解计费配置文件，请参阅[了解计费配置文件](../understand/mca-overview.md#billing-profiles)。
+| 部门            | 可以使用发票科目来组织成本，类似于在企业协议合约中使用部门。 部门将成为发票科目，部门管理员将成为各自发票科目的所有者。 若要详细了解发票科目，请参阅[了解发票科目](../understand/mca-overview.md#invoice-sections)。 |
 | 帐户               | 新计费帐户不支持企业协议中创建的帐户。 新帐户的订阅属于其部门的相应发票科目。 帐户所有者可以创建和管理其发票科目的订阅。 |
 
 ## <a name="changes-for-enterprise-administrators"></a>企业管理员的变化
 
 以下变化适用于企业协议中已续订 Microsoft 客户协议的企业管理员。
 
-- 将为注册创建一个计费配置文件。 你将使用计费配置文件来管理组织的计费，类似于在企业协议注册中那样。 若要详细了解计费配置文件，请参阅[了解计费配置文件](../understand/mca-overview.md#billing-profiles)。
-- 将为企业协议注册中的每个部门创建一个发票科目。 你将使用发票科目来管理部门。 可以创建新的发票科目来设置更多部门。 若要详细了解发票科目，请参阅[了解发票科目](../understand/mca-overview.md#invoice-sections)。
-- 你将使用对发票科目的 Azure 订阅创建者角色来为其他人授予创建 Azure 订阅的权限，这类似于使用企业协议注册中创建的帐户。
-- 你将使用 [Azure 门户](https://portal.azure.com)而不是 Azure EA 门户来管理组织的计费。
+- 将为注册创建一个计费配置文件。 你将使用计费配置文件来为组织管理计费，类似于在企业协议合约中那样。 若要详细了解计费配置文件，请参阅[了解计费配置文件](../understand/mca-overview.md#billing-profiles)。
+- 将为企业协议合约中的每个部门创建一个发票科目。 你将使用发票科目来管理部门。 可以创建新的发票科目来设置更多部门。 若要详细了解发票科目，请参阅[了解发票科目](../understand/mca-overview.md#invoice-sections)。
+- 你将使用发票科目上的 Azure 订阅创建者角色来为其他人授予创建 Azure 订阅的权限，这类似于使用在企业协议合约中创建的帐户。
+- 你将使用 [Azure 门户](https://portal.azure.com)（而不是 Azure EA 门户）来为组织管理计费。
 
 将为你分配对新计费帐户的以下角色：
 
 **计费配置文件所有者** - 将为你分配对签署协议时创建的计费配置文件的计费配置文件所有者角色。 使用该角色可以管理组织的计费。 可以查看费用和发票、组织发票中的成本、管理付款方式，以及控制对组织计费的访问权限。
 
-**发票科目所有者** - 将为你分配发票科目所有者角色，该角色针对为企业协议注册中的部门创建的所有发票科目。 使用该角色可以控制谁能创建 Azure 订阅和购买其他产品。
+**发票科目所有者** - 将为你分配发票科目所有者角色，该角色针对为企业协议合约中的部门创建的所有发票科目。 使用该角色可以控制谁能创建 Azure 订阅和购买其他产品。
 
 ### <a name="view-charges-and-credits-balance-for-your-organization"></a>查看组织的费用和剩余额度
 
-可以使用计费配置文件来跟踪组织的费用和 Azure 剩余额度，类似于跟踪企业协议注册一样。
+可以使用计费配置文件来跟踪组织的费用和 Azure 剩余额度，类似于在企业协议合约中那样。
 
 若要了解如何查看计费配置文件的剩余额度，请参阅[跟踪计费配置文件的 Azure 剩余额度](mca-check-azure-credits-balance.md)。
 
@@ -59,7 +59,7 @@ ms.locfileid: "78272183"
 
 ### <a name="view-charges-for-an-account"></a>查看帐户的费用
 
-新计费帐户不支持企业协议注册中创建的帐户。 新帐户的订阅属于其部门的相应发票科目。 帐户所有者可以创建和管理其发票科目的订阅。
+新计费帐户不支持企业协议合约中创建的帐户。 新帐户的订阅属于其部门的相应发票科目。 帐户所有者可以创建和管理其发票科目的订阅。
 
 若要查看属于某个帐户的订阅的聚合成本，必须为每个订阅设置一个成本中心。 然后，可以使用 Azure 使用情况和费用 csv 文件按成本中心筛选订阅。
 
@@ -81,19 +81,19 @@ ms.locfileid: "78272183"
 
 ### <a name="create-a-new-department"></a>创建新部门
 
-根据需求使用发票科目来组织成本，类似于在企业协议注册中使用部门。 可以在 Azure 门户中创建新的发票科目。 有关详细信息，请参阅[在发票中创建科目以组织成本](mca-section-invoice.md)。
+根据需求使用发票科目来组织成本，类似于在企业协议合约中使用部门。 可以在 Azure 门户中创建新的发票科目。 有关详细信息，请参阅[在发票中创建科目以组织成本](mca-section-invoice.md)。
 
 ### <a name="create-a-new-account"></a>创建新帐户
 
-为用户分配对发票科目的 Azure 订阅创建者角色，使他们有权创建 Azure 订阅，这类似于使用企业协议注册中创建的帐户。 有关分配角色的详细信息，请参阅[在 Azure 门户中管理计费角色](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)
+为用户分配对发票科目的 Azure 订阅创建者角色，使他们有权创建 Azure 订阅，这类似于使用企业协议合约中创建的帐户。 有关分配角色的详细信息，请参阅[在 Azure 门户中管理计费角色](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)
 
 ## <a name="changes-for-department-administrators"></a>部门管理员的变化
 
 以下变化适用于企业协议中已续订 Microsoft 客户协议的部门管理员。
 
-- 将为企业协议注册中的每个部门创建一个发票科目。 你将使用发票科目来管理部门。 若要详细了解发票科目，请参阅[了解发票科目](../understand/mca-overview.md#invoice-sections)。
-- 你将使用对发票科目的 Azure 订阅创建者角色来为其他人授予创建 Azure 订阅的权限，这类似于使用企业协议注册中创建的帐户。
-- 你将使用 Azure 门户而不是 Azure EA 门户来管理组织的计费。
+- 将为企业协议合约中的每个部门创建一个发票科目。 你将使用发票科目来管理部门。 若要详细了解发票科目，请参阅[了解发票科目](../understand/mca-overview.md#invoice-sections)。
+- 你将使用发票科目上的 Azure 订阅创建者角色来为其他人授予创建 Azure 订阅的权限，这类似于使用在企业协议合约中创建的帐户。
+- 你将使用 Azure 门户而不是 Azure EA 门户来为组织管理计费。
 
 将为你分配对新计费帐户的以下角色：
 
@@ -111,11 +111,11 @@ ms.locfileid: "78272183"
 
 ### <a name="create-a-new-account-in-your-department"></a>在部门中创建新帐户
 
-为用户分配 Azure 订阅创建者角色，该角色针对为部门创建的发票科目。 有关分配角色的详细信息，请参阅[在 Azure 门户中管理计费角色](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)
+为用户分配已为部门创建的发票科目上的 Azure 订阅创建者角色。 有关分配角色的详细信息，请参阅[在 Azure 门户中管理计费角色](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)
 
 ### <a name="view-charges-for-accounts-in-your-departments"></a>查看部门中帐户的费用
 
-新计费帐户不支持企业协议注册中创建的帐户。 新帐户的订阅属于其部门的相应发票科目。 帐户所有者可以创建和管理其发票科目的订阅。
+新计费帐户不支持企业协议合约中创建的帐户。 新帐户的订阅属于其部门的相应发票科目。 帐户所有者可以创建和管理其发票科目的订阅。
 
 若要查看属于部门中某个帐户的订阅的聚合成本，必须为每个订阅设置一个成本中心。 然后，可以使用 Azure 使用情况和费用文件按成本中心筛选订阅。
 

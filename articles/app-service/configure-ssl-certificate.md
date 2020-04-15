@@ -1,19 +1,19 @@
 ---
-title: 添加和管理 SSL 证书
+title: 添加和管理 TLS/SSL 证书
 description: 在 Azure 应用服务中创建免费的证书、导入应用服务证书、导入 Key Vault 证书或购买应用服务证书。
 tags: buy-ssl-certificates
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 120caf459a7a8ca4e60d5e447a1e4130c0bce389
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4edf710e575bbb26fb0e247e59ff5c796f16226e
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223914"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810591"
 ---
-# <a name="add-an-ssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 SSL 证书
+# <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 TLS/SSL 证书
 
 [Azure 应用服务](overview.md)提供高度可缩放、自修复的 Web 托管服务。 本文介绍如何创建私有证书或公用证书，或将其上传或导入到应用服务中。 
 
@@ -47,7 +47,7 @@ ms.locfileid: "79223914"
 * 包含长度至少为 2048 位的私钥
 * 包含证书链中的所有中间证书
 
-若要保护 SSL 绑定中的自定义域，证书还有其他要求：
+若要保护 TLS 绑定中的自定义域，证书还有其他要求：
 
 * 包含用于服务器身份验证的[扩展密钥用法](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Extensions_informing_a_specific_usage_of_a_certificate) (OID = 1.3.6.1.5.5.7.3.1)
 * 已由受信任的证书颁发机构签名
@@ -59,7 +59,7 @@ ms.locfileid: "79223914"
 
 ## <a name="create-a-free-certificate-preview"></a>创建免费证书（预览版）
 
-免费应用服务托管证书是用于保护应用服务中的自定义 DNS 名称的统包解决方案。 它是一个功能完备的 SSL 证书，由应用服务管理并自动续订。 免费证书具有以下限制：
+免费应用服务托管证书是用于保护应用服务中的自定义 DNS 名称的统包解决方案。 它是一个功能完备的 TLS/SSL 证书，由应用服务管理并自动续订。 免费证书具有以下限制：
 
 - 不支持通配符证书。
 - 不支持裸域。
@@ -237,7 +237,7 @@ ms.locfileid: "79223914"
 
 ### <a name="export-certificate-to-pfx"></a>将证书导出为 PFX
 
-用生成证书请求时所用的私钥导出合并的 SSL 证书。
+使用在生成证书请求时所用的私钥导出合并的 TLS/SSL 证书。
 
 如果使用 OpenSSL 生成证书请求，则已创建私钥文件。 若要将证书导出为 PFX，请运行以下命令。 将占位符 _&lt;private-key-file>_ 和 _&lt;merged-certificate-file>_ 分别替换为私钥和合并证书文件的路径。
 
@@ -245,7 +245,7 @@ ms.locfileid: "79223914"
 openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>  
 ```
 
-出现提示时，定义导出密码。 稍后将 SSL 证书上传到应用服务时需使用此密码。
+出现提示时，定义导出密码。 稍后将 TLS/SSL 证书上传到应用服务时要使用此密码。
 
 如果使用 IIS 或 Certreq.exe  生成证书请求，请将证书安装到本地计算机，然后[将证书导出为 PFX](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx)。
 
@@ -363,16 +363,16 @@ az keyvault secret download \
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>更多资源
 
-* [使用 SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)
+* [在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)
 * [实施 HTTPS](configure-ssl-bindings.md#enforce-https)
 * [实施 TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)
-* [在应用程序代码中使用 SSL 证书](configure-ssl-certificate-in-code.md)
+* [在 Azure 应用服务中通过代码使用 TLS/SSL 证书](configure-ssl-certificate-in-code.md)
 * [常见问题解答：应用服务证书](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

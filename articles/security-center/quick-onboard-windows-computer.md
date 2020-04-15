@@ -1,6 +1,6 @@
 ---
 title: 将 Windows 计算机加入安全中心
-description: 本快速入门演示如何在 Windows 计算机上预配 Microsoft Monitoring Agent。
+description: 本快速入门演示如何在 Windows 计算机上预配 Log Analytics 代理。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 417d8379d019a9ef0da41638cba4a1f9cb7b8bc2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 2840b6636c2b511ab57a8bae8adf411f4d8a27d2
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73686500"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435930"
 ---
-# <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>快速入门：将 Windows 计算机登记到安全中心
-加入 Azure 订阅之后，可以通过预配 Microsoft Monitoring Agent 为 Azure 外部（例如，本地或在其他云中）运行的资源启用安全中心。
+# <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>快速入门：将 Windows 计算机加入安全中心
+载入 Azure 订阅之后，可以通过预配 Log Analytics 代理为在 Azure 外部（例如，在本地或在其他云中）运行的资源启用安全中心。
 
-本快速入门演示如何在 Windows 计算机上安装 Microsoft Monitoring Agent。
+本快速入门演示如何在 Windows 计算机上安装 Log Analytics 代理。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 若要开始使用安全中心，必须具有 Microsoft Azure 订阅。 如果尚无订阅，可注册[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 在开始学习本快速入门之前，你必须位于安全中心的“标准”定价层。 有关升级说明，请参阅[将 Azure 订阅载入到安全中心标准版](security-center-get-started.md)。 可以免费试用安全中心标准版。 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
@@ -72,7 +72,7 @@ ms.locfileid: "73686500"
 9. 在“准备安装”页上检查所做的选择，并选择“安装”   。
 10. 在“配置已成功完成”页上，选择“完成”  
 
-完成后，**Microsoft Monitoring Agent** 将显示在“**控制面板**”中。 可以在该处检查配置，并验证代理是否已连接。
+完成后，**Log Analytics 代理**会显示在“控制面板”中。  可以在该处检查配置，并验证代理是否已连接。
 
 有关安装和配置代理的详细信息，请参阅[连接 Windows 计算机](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)。
 
@@ -93,10 +93,10 @@ ms.locfileid: "73686500"
 
 1. 打开“控制面板” 
 2. 打开“程序和功能”。 
-3. 在“程序和功能”中选择“Microsoft Monitoring Agent”，单击“卸载”。   
+3. 在“程序和功能”中选择“Log Analytics 代理”，单击“卸载”。   
 
 ## <a name="next-steps"></a>后续步骤
-在本快速入门中，已在 Windows 计算机上预配了 Microsoft Monitoring Agent。 若要详细了解如何使用安全中心，请继续阅读教程，了解如何配置安全策略和评估资源的安全性。
+在本快速入门中，你已在 Windows 计算机上预配了 Log Analytics 代理。 若要详细了解如何使用安全中心，请继续阅读教程，了解如何配置安全策略和评估资源的安全性。
 
 > [!div class="nextstepaction"]
 > [教程：定义和评估安全策略](tutorial-security-policy.md)

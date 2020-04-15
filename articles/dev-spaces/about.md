@@ -1,19 +1,19 @@
 ---
-title: Azure Dev Spaces 简介
+title: Azure Dev Spaces 是什么？
 services: azure-dev-spaces
 ms.date: 05/07/2019
 ms.topic: overview
 description: 了解 Azure Dev Spaces 如何为团队提供 Azure Kubernetes 服务群集的一种快速、迭代的 Kubernetes 开发体验
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 586b19070ec36517add21f7aac86ddf15121be2d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8b22181bcddda9e4156c0e0dbe61d7d813498d96
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215685"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529733"
 ---
-# <a name="introduction-to-azure-dev-spaces"></a>Azure Dev Spaces 简介
+# <a name="what-is-azure-dev-spaces"></a>Azure Dev Spaces 是什么？
 
 Azure Dev Spaces 为团队提供 Azure Kubernetes 服务 (AKS) 群集的一种快速、迭代的 Kubernetes 开发体验。 还可以通过 Azure Dev Spaces 使用最小的开发计算机设置调试和测试 AKS 中应用程序的所有组件，无需复制或模拟依赖关系。
 
@@ -38,15 +38,11 @@ Azure Dev Spaces 提供的工具可用于为项目生成 Docker 和 Kubernetes �
 
 ## <a name="supported-regions-and-configurations"></a>支持的区域和配置
 
-仅[某些区域][supported-regions]中的 AKS 群集支持 Azure Dev Spaces。 Azure Dev Spaces 支持在 Linux、MacOS 或 Windows 8 或更高版本上安装了 [Azure Dev Spaces 扩展](/cli/azure/install-azure-cli?view=azure-cli-latest)的情况下使用 [Azure CLI](https://code.visualstudio.com/download) 或 [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)，从而在 AKS 上生成和运行应用程序。 它还支持使用安装在 Windows 8 或更高版本上的 [Visual Studio](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。 对于 Visual Studio 2019，将需要“Azure 开发”工作负荷。 对于 Visual Studio 2017，将需要“Web 开发”工作负荷和 [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools)。
+仅[某些区域][supported-regions]中的 AKS 群集支持 Azure Dev Spaces。 Azure Dev Spaces 支持在 Linux、macOS 或 Windows 8 或更高版本上安装了 [Azure Dev Spaces 扩展](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)的情况下使用 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 或 [Visual Studio Code](https://code.visualstudio.com/download)，从而在 AKS 上生成和运行应用程序。 它还支持使用安装在 Windows 8 或更高版本上的 [Visual Studio](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。 对于 Visual Studio 2019，将需要“Azure 开发”工作负荷。 对于 Visual Studio 2017，将需要“Web 开发”工作负荷和 [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools)。
 
 ## <a name="next-steps"></a>后续步骤
 
-使用 Azure Dev Spaces 的团队可以通过团队开发快速入门详细了解如何进行快速的迭代开发。
-
-> [!div class="nextstepaction"]
-> [团队开发快速入门](quickstart-team-development.md)
-
+使用 Azure Dev Spaces 的团队可以通过[团队开发快速入门][team-development-quickstart]详细了解如何进行快速的迭代开发。
 
 [how-dev-spaces-works]: how-dev-spaces-works.md
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

@@ -7,16 +7,16 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 2e14b669aadeec4c6a7245be8940051ec604059b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 371b99c794feb4a64eb3e9af389020e25d14eedb
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79409552"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879422"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>在标记项目中标记图像
 
-项目管理员在 Azure 机器学习中[创建标记项目](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project)后，你可以使用标记工具为机器学习项目快速准备数据。 本文介绍：
+项目管理员在 Azure 机器学习中[创建标记项目](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project)后，你可以使用标记工具（公共预览版）为机器学习项目快速准备数据。 本文介绍：
 
 > [!div class="checklist"]
 > * 如何访问标签项目
@@ -45,7 +45,9 @@ ms.locfileid: "79409552"
 
 在所有图像标记任务中，需从项目管理员指定的集内选择适当的标记。 可以使用键盘上的数字键选择前九个标记。  
 
-在图像分类任务中，可以同时选择查看多个图像。 使用图像区域上方的图标选择布局。 若要同时选择所有显示的图像，请使用“全选”。  若要选择单个图像，请使用图像右上角的循环选择按钮。 必须至少选择一个图像才能应用标记。 如果选择多个图像，选择的任何标记将应用到所有选定的图像。
+在图像分类任务中，可以同时选择查看多个图像。 使用图像区域上方的图标选择布局。 
+
+若要同时选择所有显示的图像，请使用“全选”。  若要选择单个图像，请使用图像右上角的循环选择按钮。 必须至少选择一个图像才能应用标记。 如果选择多个图像，选择的任何标记将应用到所有选定的图像。
 
 此处我们选择了 2x2 布局，并将“哺乳动物”标记应用到熊和虎鲸的。 鲨鱼图像标记为“软骨鱼”；尚未对鬣蜥进行标记。
 

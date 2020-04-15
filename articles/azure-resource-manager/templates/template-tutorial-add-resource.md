@@ -2,21 +2,21 @@
 title: 教程 - 将资源添加到模板
 description: 介绍创建第一个 Azure 资源管理器模板的步骤。 了解模板文件语法，以及如何部署存储帐户。
 author: mumian
-ms.date: 02/24/2020
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: af571b6503f04c809b62c530f6d6254082b838be
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: dcdbbb325e6589669abe6cf3d25ac5191e29118b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586676"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411731"
 ---
-# <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>教程：将资源添加到资源管理器模板
+# <a name="tutorial-add-a-resource-to-your-arm-template"></a>教程：将资源添加到 ARM 模板
 
 在[前一篇教程](template-tutorial-create-first-template.md)中，你已了解如何创建一个空白模板，然后部署该模板。 现在，可以部署实际的资源。 在本教程中，你将添加一个存储帐户。 完成本教程大约需要 **9 分钟**。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 建议完成[有关模板的简介教程](template-tutorial-create-first-template.md)，但这不是一项要求。
 
@@ -26,7 +26,7 @@ ms.locfileid: "77586676"
 
 若要将存储帐户定义添加到现有模板，请查看以下示例中突出显示的 JSON。 可以复制整个文件并使用其内容替换模板，而无需尝试复制模板的各个节。
 
-请将 **{provide-unique-name}** 替换为唯一的存储帐户名称。
+将 **{provide-unique-name}** （包括大括号）替换为唯一的存储帐户名称。
 
 > [!IMPORTANT]
 > 存储帐户名称在 Azure 中必须是唯一的。 该名称只能包含小写字母或数字。 其长度不能超过 24 个字符。 可以尝试使用某种命名模式，例如，使用 **store1** 作为前缀，然后添加你的姓名首字母缩写和当天的日期。 例如，使用的名称类似于 **store1abc09092019**。
@@ -37,7 +37,7 @@ ms.locfileid: "77586676"
 
 ## <a name="resource-properties"></a>资源属性
 
-你可能想要知道如何找到用于每种资源类型的属性。 可以使用[资源管理器模板参考](/azure/templates/)来查找你要部署的资源类型。
+你可能想要知道如何找到用于每种资源类型的属性。 可以使用 [ARM 模板参考](/azure/templates/)来查找要部署的资源类型。
 
 部署的每个资源至少具有以下三个属性：
 
@@ -72,14 +72,19 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
+若要运行此部署命令，必须具有 Azure CLI 的 [最新版本](/cli/azure/install-azure-cli)。
+
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addstorage \
   --resource-group myResourceGroup \
   --template-file $templateFile
 ```
 
 ---
+
+> [!NOTE]
+> 如果部署失败，请将 **debug** 开关和部署命令配合使用来显示调试日志。  还可以使用 **verbose** 开关来显示完整的调试日志。
 
 你可能会遇到两种可能的部署失败：
 

@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 26122278ad74fb1d383ca7a900810b6060ee78f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: af284e4c10487123c8c2a2105a25a2285ae0aa99
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73172648"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474338"
 ---
 # <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-instance"></a>教程：为 Azure Active Directory 域服务实例配置虚拟网络
 
@@ -29,7 +29,7 @@ ms.locfileid: "73172648"
 > * 在 Azure AD DS 虚拟网络中创建 IP 地址范围和额外的子网
 > * 配置与独立于 Azure AD DS 的网络之间的虚拟网络对等互连
 
-如果你没有 Azure 订阅，可以在开始之前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果还没有 Azure 订阅，可以在开始前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -72,18 +72,18 @@ ms.locfileid: "73172648"
 若要为 VM 和应用程序工作负荷创建虚拟网络子网，请完成以下步骤：
 
 1. 在 Azure 门户中，选择 Azure AD DS 托管域的资源组，例如 *myResourceGroup*。 在资源列表中选择默认的虚拟网络，例如 *aadds-vnet*。
-1. 在虚拟网络窗口的左侧菜单中，选择“地址空间”。  随即会使用单个地址空间 *10.0.1.0/24*（由默认子网使用）创建虚拟网络。
+1. 在虚拟网络窗口的左侧菜单中，选择“地址空间”。  随即会创建带有单个地址空间 *10.0.2.0/24*（由默认子网使用）的虚拟网络。
 
     将额外的 IP 地址范围添加到该虚拟网络。 此地址范围的大小以及要使用的实际 IP 地址范围取决于已部署的其他网络资源。 该 IP 地址范围不应与 Azure 或本地环境中的任何现有地址范围重叠。 请确保该 IP 地址范围足够大，能够与要部署到子网中的 VM 数量相适应。
 
-    在以下示例中，添加了额外的 IP 地址范围 *10.0.2.0/24*。 准备就绪后，选择“保存”。 
+    在以下示例中，添加了额外的 IP 地址范围 *10.0.3.0/24*。 准备就绪后，选择“保存”。 
 
     ![在 Azure 门户中添加额外的虚拟网络 IP 地址范围](./media/tutorial-configure-networking/add-vnet-address-range.png)
 
 1. 接下来，在虚拟网络窗口的左侧菜单中选择“子网”，然后选择“+ 子网”以添加子网。  
 1. 输入子网的名称，例如 *workloads*。 如果需要使用在前面步骤中为虚拟网络配置的 IP 地址范围子集，请更新“地址范围”。  暂时对网络安全组、路由表、服务终结点等选项保留默认值。
 
-    在以下示例中，创建了名为 *workloads*、使用 *10.0.2.0/24* IP 地址范围的子网：
+    在以下示例中，创建了名为 *workloads*、使用 *10.0.3.0/24* IP 地址范围的子网：
 
     ![在 Azure 门户中添加额外的虚拟网络子网](./media/tutorial-configure-networking/add-vnet-subnet.png)
 
@@ -130,7 +130,7 @@ ms.locfileid: "73172648"
 
 1. 在 Azure 门户中，选择对等互连虚拟网络的资源组，例如 *myResourceGroup*。 在资源列表中选择对等互连的虚拟网络，例如 *myVnet*。
 1. 在虚拟网络窗口的左侧菜单中，选择“DNS 服务器”。 
-1. 默认情况下，虚拟网络使用 Azure 提供的内置 DNS 服务器。 选择使用“自定义”DNS 服务器。  输入 Azure AD DS 域控制器的 IP 地址，通常是 *10.0.1.4* 和 *10.0.1.5*。 在门户上 Azure AD DS 托管域的“概述”窗口中确认这些 IP 地址。 
+1. 默认情况下，虚拟网络使用 Azure 提供的内置 DNS 服务器。 选择使用“自定义”DNS 服务器。  输入 Azure AD DS 域控制器的 IP 地址，通常是 *10.0.2.4* 和 *10.0.2.5*。 在门户上 Azure AD DS 托管域的“概述”窗口中确认这些 IP 地址。 
 
     ![将虚拟网络 DNS 服务器配置为使用 Azure AD DS 域控制器](./media/tutorial-configure-networking/custom-dns.png)
 

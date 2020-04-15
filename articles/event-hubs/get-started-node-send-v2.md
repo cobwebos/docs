@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: e296ae36eeeb816d8704ab03824f8cbb80082ea6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 063f2e1005db177420da7f81b799ab01fd212d7e
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77163001"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478475"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>使用 JavaScript（azure/event-hubs 版本 5）向/从事件中心发送/接收事件
 本快速入门介绍如何使用 **azure/event-hubs 版本 5** JavaScript 包向事件中心发送事件以及从事件中心接收事件。 
@@ -109,6 +109,10 @@ npm install @azure/eventhubs-checkpointstore-blob
 
 ## <a name="receive-events"></a>接收事件
 在本部分中，你将在 JavaScript 应用程序中使用 Azure Blob 存储检查点存储从事件中心接收事件。 该应用程序将在 Azure 存储 Blob 中定期针对收到的消息执行元数据检查点。 使用此方式可以很容易地在以后的某个时间从退出的位置继续接收消息。
+
+> [!NOTE]
+> 如果在 Azure Stack Hub 上运行，该平台支持的存储 Blob SDK 版本可能不同于通常在 Azure 上提供的版本。 例如，如果在 [Azure Stack Hub 版本 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview) 上运行，则存储服务的最高可用版本为版本 2017-11-09。 在这种情况下，除了执行本部分中的步骤以外，还需要添加相关代码，将存储服务 API 版本 2017-11-09 作为目标。 如需通过示例来了解如何以特定的存储 API 版本为目标，请参阅 GitHub 上的 [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) 和 [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts) 示例。 有关 Azure Stack Hub 上支持的 Azure 存储服务版本的详细信息，请参阅 [Azure Stack Hub 存储：差异和注意事项](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences)。
+
 
 ### <a name="create-an-azure-storage-account-and-a-blob-container"></a>创建 Azure 存储帐户和 Blob 容器
 若要创建 Azure 存储帐户并在其中创建 Blob 容器，请执行以下操作：

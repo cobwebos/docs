@@ -6,18 +6,18 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 2a09d5af013e804f33327855fb7b9f2104bc225c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6292c3c2d928581d0564fe457342ea7b1e17111c
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215245"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983018"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>欢迎使用 Azure Cosmos DB
 
 如今的应用程序需要具备高响应能力并始终联机。 若要实现低延迟和高可用性，需要在靠近用户的数据中心部署这些应用程序的实例。 应用程序需要实时对高峰时段使用情况的巨大变化做出响应，存储不断增加的数据量，并在毫秒内将这些数据提供给用户。
 
-Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 只需单击一个按钮，即可通过 Cosmos DB 跨任意数量的全球 Azure 区域弹性且独立地缩放吞吐量和存储。 你可以弹性缩放吞吐量和存储，并通过以下常用 API 利用个位数毫秒级的快速数据访问：SQL、MongoDB、Cassandra、表或 Gremlin。 Cosmos DB 为吞吐量、延迟、可用性和一致性保证提供综合[服务级别协议](https://aka.ms/acdbsla) (SLA)，这是其他数据库服务无法提供的。
+Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 只需单击一个按钮，即可通过 Cosmos DB 跨任意数量的全球 Azure 区域弹性且独立地缩放吞吐量和存储。 你可以弹性缩放吞吐量和存储，并通过以下常用 API 利用个位数毫秒级的快速数据访问：SQL、MongoDB、Cassandra、表或 Gremlin。 Cosmos DB 为吞吐量、延迟、可用性和一致性保证提供综合[服务级别协议](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/) (SLA)，这是其他数据库服务无法提供的。
 
 可以在没有 Azure 订阅的情况下[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)（无需支付费用，也无需承诺），或者使用 [Azure Cosmos DB 免费层](optimize-dev-test.md#azure-cosmos-db-free-tier)获取一个每秒的前 400 RU 免费且 5 GB 存储免费的帐户。
 
@@ -48,11 +48,11 @@ Cosmos DB 采用透明的水平分区和多主数据库复制设计，在全球�
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>精确定义的多个一致性选择
 
-在 Cosmos DB 中构建全球分布式应用程序时，不再需要[在一致性、可用性、延迟和吞吐量之间进行极端的权衡](consistency-levels-tradeoffs.md)。 Cosmos DB 的多主数据库复制协议经过精心设计，为直观的编程模型提供[五个明确定义的一致性选择](consistency-levels.md) -  强、有限过期、会话、一致前缀和最终，该编程模型针对全球分布式应用程序具有低延迟和高可用性      。
+在 Cosmos DB 中构建全球分布式应用程序时，不再需要[在一致性、可用性、延迟和吞吐量之间进行极端的权衡](consistency-levels-tradeoffs.md)。 Cosmos DB 的多主数据库复制协议经过精心设计，为一个直观的编程模型（其低延迟和高可用性适用于全球分布式应用程序）提供[五个明确定义的一致性选择](consistency-levels.md) - “强”、“有限过期”、“会话”、“一致前缀”和“最终”      。
 
 ### <a name="no-schema-or-index-management"></a>无需架构或索引管理
 
-对于全局分布的应用来说，让数据库架构和索引与应用程序架构保持同步尤其不便。 借助 Cosmos DB，则无需处理架构或索引管理。 数据库引擎完全与架构无关。  由于不需要架构和索引管理，因此迁移架构时也不必担心应用程序故障时间。 Cosmos DB [自动为所有数据编制索引](index-policy.md)，并可快速提供查询服务。
+对于全球分布式应用来说，让数据库架构和索引与应用程序架构保持同步尤其不便。 借助 Cosmos DB，则无需处理架构或索引管理。 数据库引擎完全与架构无关。  由于不需要架构和索引管理，因此迁移架构时也不必担心应用程序停用时间。 Cosmos DB [自动为所有数据编制索引](index-policy.md)，并可快速提供查询服务。
 
 ### <a name="battle-tested-database-service"></a>久经考验的数据库服务
 
@@ -60,7 +60,7 @@ Cosmos DB 是 Azure 中的一项基本服务。 近十年来，Microsoft 的许�
 
 ### <a name="ubiquitous-regional-presence"></a>无处不在、分布广泛
 
-Cosmos DB 已面向全球所有 Azure 区域推出，包括公有云中的区域（超过 54 个）、[中国区 Azure 世纪互联](https://www.azure.cn/en-us/)、Azure 德国、Azure 政府以及适用于美国国防部 (DoD) 的 Azure 政府。 请参阅 [Cosmos DB 的区域性存在](regional-presence.md)。
+Cosmos DB 已面向全球所有 Azure 区域推出，包括公有云中的区域（超过 54 个）、[中国区 Azure 世纪互联](https://www.azure.cn/en-us/)、Azure 德国、Azure 政府以及适用于美国国防部 (DoD) 的 Azure 政府。 请参阅 [Cosmos DB 在各区域的可用性](regional-presence.md)。
 
 ### <a name="secure-by-default-and-enterprise-ready"></a>默认保护和企业就绪
 

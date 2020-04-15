@@ -10,6 +10,9 @@
       href: analysis-services-create-server.md
     - name: 创建服务器 - PowerShell
       href: analysis-services-create-powershell.md
+    - name: 创建服务器 - ARM 模板
+      displayName: Resource Manager
+      href: analysis-services-create-template.md
     - name: 配置服务器防火墙 - 门户
       href: analysis-services-qs-firewall.md
 - name: 教程

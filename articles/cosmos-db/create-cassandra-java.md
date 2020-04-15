@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 5a21f36136c6f1d77a2e9cb9108f539c9fb39334
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 124bbcedceffca318367799441f66e330bc41fef
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77134904"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811329"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data"></a>快速入门：生成 Java 应用以管理 Azure Cosmos DB Cassandra API 数据
 
@@ -66,7 +66,7 @@ ms.locfileid: "77134904"
 
 此步骤是可选的。 如果有意了解如何通过代码创建数据库资源，可以查看以下代码片段。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-string)。 这些代码片段全部摘自 src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java  文件。  
 
-* 已设置 Cassandra 主机、端口、用户名、密码和 SSL 选项。 连接字符串信息来自 Azure 门户中的连接字符串页。
+* 已设置 Cassandra 主机、端口、用户名、密码和 TLS/SSL 选项。 连接字符串信息来自 Azure 门户中的连接字符串页。
 
    ```java
    cluster = Cluster.builder().addContactPoint(cassandraHost).withPort(cassandraPort).withCredentials(cassandraUsername, cassandraPassword).withSSL(sslOptions).build();
@@ -168,18 +168,18 @@ ms.locfileid: "77134904"
 
     `cassandra_password=2Ggkr662ifxz2Mg...==`
 
-5. 在第 6 行中，如果需要使用特定的 SSL 证书，则请使用该 SSL 证书的位置替换 `<SSL key store file location>`。 如果未提供值，则会使用安装在 <JAVA_HOME>/jre/lib/security/cacerts 中的 JDK 证书。 
+5. 在第 6 行中，如果需要使用特定的 TLS/SSL 证书，请将 `<SSL key store file location>` 替换为该 TLS/SSL 证书的位置。 如果未提供值，则会使用安装在 <JAVA_HOME>/jre/lib/security/cacerts 中的 JDK 证书。 
 
-6. 如果将第 6 行更改为使用特定的 SSL 证书，则请将第 7 行更新为使用该证书的密码。 
+6. 如果将第 6 行更改为使用特定的 TLS/SSL 证书，请将第 7 行更新为对该证书使用密码。 
 
 7. 保存 config.properties  文件。
 
 ## <a name="run-the-java-app"></a>运行 Java 应用
 
-1. 在 git 终端窗口中，通过 `cd` 转至 `azure-cosmosdb-cassandra-java-getting-started\java-examples` 文件夹。
+1. 在 git 终端窗口中，通过 `cd` 转至 `azure-cosmosdb-cassandra-java-getting-started` 文件夹。
 
     ```git
-    cd "C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples"
+    cd "C:\git-samples\azure-cosmosdb-cassandra-java-getting-started"
     ```
 
 2. 在 git 终端窗口中，使用以下命令生成 `cosmosdb-cassandra-examples.jar` 文件。

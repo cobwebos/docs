@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 25c0fe549dfc850a53b06f79f348a87cba3b70a1
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: f067bae55c38fc783c12bf9d0bc6fbcdf881e4e4
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77109929"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756685"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>快速入门：使用 QnA Maker 门户添加问题和回答
 
@@ -27,7 +27,7 @@ ms.locfileid: "77109929"
 |#1|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
 |#2|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
 
-将元数据添加到 QnA 集之后，客户端应用程序可以：
+将元数据添加到 QnA 对之后，客户端应用程序可以：
 
 * 请求仅与特定元数据匹配的回答。
 * 接收所有回答，但根据每个回答的元数据对回答进行后处理。
@@ -45,11 +45,11 @@ ms.locfileid: "77109929"
 
 ## <a name="add-additional-alternatively-phrased-questions"></a>添加其他采用替代句式的问题
 
-当前知识库具有 QnA Maker 排除故障 QnA 集。 这些集是在创建过程中向知识库添加 URL 时创建的。
+当前知识库具有 QnA Maker 故障排除 QnA 对。 这些集是在创建过程中向知识库添加 URL 时创建的。
 
 导入此 URL 后，只创建了具有一种回答的一个问题。 在此过程中添加其他问题。
 
-1. 在“编辑”页上，使用问题和回答集上方的搜索文本框查找问题 `How large a knowledge base can I create?` 
+1. 在“编辑”页上，使用问题和回答集上方的搜索文本框查找问题 `How large a knowledge base can I create?`
 
 1. 在“问题”列中，选择“+ 添加替代句式”，然后添加下表中提供的每种新句式。  
 
@@ -82,7 +82,7 @@ ms.locfileid: "77109929"
 
 1. 依次选择“视图选项”、“显示元数据”。  
 
-1. 对于刚刚添加的 QnA 集，选择“添加元数据标记”，然后添加名称 `service` 和值 `search`。  它将如下所示：`service:search`。
+1. 对于刚刚添加的 QnA 对，选择“添加元数据标记”，然后添加名称 `service` 和值 `search`。  它将如下所示：`service:search`。
 
 1. 添加名为 `link_in_answer` 且值为 `false` 的另一个元数据标记。 它将如下所示：`link_in_answer:false`。
 

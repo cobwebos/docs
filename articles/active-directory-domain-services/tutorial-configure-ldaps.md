@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 6db2c907abc495ca3c88e1e73e885043a8f19997
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 636f2e6139ad081d1e2fc67462a74cb7e18e3ff0
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79481528"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475869"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>教程：为 Azure Active Directory 域服务托管域配置安全 LDAP
 
@@ -30,7 +30,7 @@ ms.locfileid: "79481528"
 > * 配置在公共 Internet 上使用的安全 LDAP
 > * 绑定和测试 Azure AD DS 托管域的安全 LDAP
 
-如果你没有 Azure 订阅，可以在开始之前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果还没有 Azure 订阅，可以在开始前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -116,11 +116,11 @@ Thumbprint                                Subject
 
 1. 若要打开“运行”对话框，请按 **Windows** + **R** 键。 
 1. 在“运行”对话框中输入 **mmc** 并选择“确定”，打开 Microsoft 管理控制台 (MMC)。  
-1. 在“用户帐户控制”提示窗口中单击“是”，以管理员身份启动 MMC。  
-1. 在“文件”菜单中，单击“添加/删除管理单元...”。  
+1. 然后，在“用户帐户控制”提示窗口中选择“是”，以管理员身份启动 MMC。  
+1. 在“文件”菜单中，选择“添加/删除管理单元...”  
 1. 在“证书管理单元”向导中，依次选择“计算机帐户”、“下一步”。   
 1. 在“选择计算机”页上，依次选择“本地计算机: (运行此控制台的计算机)”、“完成”。   
-1. 在“添加或删除管理单元”对话框中，单击“确定”将证书管理单元添加到 MMC。  
+1. 在“添加或删除管理单元”对话框中选择“确定”，将证书管理单元添加到 MMC。  
 1. 在 MMC 窗口中，展开“控制台根节点”。  选择“证书(本地计算机)”，然后依次展开“个人”节点和“证书”节点。   
 
     ![在 Microsoft 管理控制台中打开个人证书存储](./media/tutorial-configure-ldaps/open-personal-store.png)
@@ -177,9 +177,6 @@ Thumbprint                                Subject
 创建并导出包含私钥的数字证书，并将客户端计算机设置为信任连接后，接下来请在 Azure AD DS 托管域上启用安全 LDAP。 若要在 Azure AD DS 托管域上启用安全 LDAP，请执行以下配置步骤：
 
 1. 在 [Azure 门户](https://portal.azure.com)上的“搜索资源”框中输入“域服务”   。 从搜索结果中“选择 Azure AD 域服务”  。
-
-    ![在 Azure 门户中搜索并选择 Azure AD DS 托管域](./media/tutorial-configure-ldaps/search-for-domain-services.png)
-
 1. 选择你的托管域，例如 *aaddscontoso.com*。
 1. 在 Azure AD DS 窗口的左侧，选择“安全 LDAP”。 
 1. 默认情况下，已禁用对托管域的安全 LDAP 访问。 将“安全 LDAP”切换为“启用”   。
@@ -235,10 +232,10 @@ Thumbprint                                Subject
 
 配置外部 DNS 提供程序，以创建一条可解析为此外部 IP 地址的主机记录（例如 *ldaps*）。 若要先在计算机本地进行测试，可在 Windows hosts 文件中创建一个条目。 若要成功编辑本地计算机上的 hosts 文件，请以管理员身份打开“记事本”，然后打开文件 *C:\Windows\System32\drivers\etc*。 
 
-外部 DNS 提供程序或本地 hosts 文件中的以下示例 DNS 条目将 *ldaps.aaddscontoso.com* 的流量解析为外部 IP 地址 *40.121.19.239*：
+外部 DNS 提供程序或本地 hosts 文件中的以下示例 DNS 条目将 *ldaps.aaddscontoso.com* 的流量解析为外部 IP 地址 *168.62.205.103*：
 
 ```
-40.121.19.239    ldaps.aaddscontoso.com
+168.62.205.103    ldaps.aaddscontoso.com
 ```
 
 ## <a name="test-queries-to-the-managed-domain"></a>测试对托管域的查询
@@ -261,7 +258,7 @@ Thumbprint                                Subject
 1. 选择“视图”菜单选项，然后选择“树”。  
 1. 将“基础 DN”字段保留空白，然后选择“确定”。  
 1. 选择一个容器（例如“AADDC 用户”），然后右键单击该容器并选择“搜索”。  
-1. 保留预先填充的字段设置，然后选择“运行”。  查询结果将显示在右侧窗口中。
+1. 保留预先填充的字段设置，然后选择“运行”。  查询结果显示在右侧窗口中，如以下示例输出所示：
 
     ![使用 LDP.exe 搜索 Azure AD DS 托管域中的对象](./media/tutorial-configure-ldaps/ldp-query.png)
 
@@ -273,7 +270,7 @@ Thumbprint                                Subject
 
 1. 在本地计算机上，以管理员身份打开“记事本” 
 1. 浏览到并打开文件 *C:\Windows\System32\drivers\etc*
-1. 删除所添加的记录对应的行，例如 `40.121.19.239    ldaps.aaddscontoso.com`
+1. 删除所添加的记录对应的行，例如 `168.62.205.103    ldaps.aaddscontoso.com`
 
 ## <a name="next-steps"></a>后续步骤
 

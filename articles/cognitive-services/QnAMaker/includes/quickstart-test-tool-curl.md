@@ -10,16 +10,16 @@ ms.topic: include
 ms.custom: include file
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: f3a1a33b2fe859839deec587191b3b3a319c0cf8
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 4bd483e40e3a85a2934e58abdf46d09b17a33ed4
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77495427"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80758658"
 ---
 此基于 cURL 的快速入门详细介绍如何从知识库获取答案。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 最新的 [  cURL](https://curl.haxx.se/)。
 * 必须具有：
@@ -34,13 +34,13 @@ ms.locfileid: "77495427"
 使用上一篇快速入门中的知识库基于元数据查询答案。
 
 1. 在知识库的“设置”页中，选择“CURL”选项卡查看用于从知识库生成答案的示例 cURL 命令。  
-1. 将该命令复制到可编辑环境（例如文本文件），以便可以编辑该命令。 按如下所示编辑问题，以便将 `service:qna_maker` 的元数据用作 QnA 集的筛选器。
+1. 将该命令复制到可编辑环境（例如文本文件），以便可以编辑该命令。 按如下所示编辑问题，以便将 `service:qna_maker` 的元数据用作 QnA 对的筛选器。
 
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
     ```
 
-    问题只有一个单词 `size`，可以返回两个 QnA 集中的一个。 `strictFilters` 数组告知响应将缩减为仅包含 `qna_maker` 回答。
+    该问题只是一个单词 `size`，可以返回两个 QnA 对中的一个。 `strictFilters` 数组告知响应将缩减为仅包含 `qna_maker` 回答。
 
 1. 该响应仅包含符合筛选条件的回答。 为便于阅读，以下 cURL 响应已设置格式：
 

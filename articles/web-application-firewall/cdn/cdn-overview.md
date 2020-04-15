@@ -7,19 +7,19 @@ ms.service: web-application-firewall
 ms.topic: overview
 ms.date: 03/18/2020
 ms.author: victorh
-ms.openlocfilehash: 559ce4d1500dc5f1b67a3b3dbdbeb5d8dda7e487
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 28cf8d9fd60cc6fc158812aa0a1dff3a4b0dced1
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79475798"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754294"
 ---
 # <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Azure 内容分发网络上的 Azure Web 应用程序防火墙
 
-Azure 内容分发网络 (CDN) 上的 Azure Web 应用程序防火墙 (WAF) 为 Web 内容提供集中保护。 WAF 可以防范 Web 服务遭到常见的恶意利用和出现漏洞。 它使服务对用户高度可用，并帮助满足合规性要求。
+Microsoft 推出的 Azure 内容分发网络 (CDN) 上的 Azure Web 应用程序防火墙 (WAF) 为 Web 内容提供集中保护。 WAF 可以防范 Web 服务遭到常见的恶意利用和出现漏洞。 它使服务对用户高度可用，并帮助满足合规性要求。
 
 > [!IMPORTANT]
-> Azure CDN 上的 WAF 目前以公共预览版提供，并附带预览版服务级别协议。 某些功能可能不受支持或者受限。  有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> Microsoft 推出的 Azure CDN 上的 WAF 目前以公共预览版提供，并附带预览版服务级别协议。 某些功能可能不受支持或者受限。  有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Azure CDN 上的 WAF 是全球性的集中式解决方案。 它部署在全球各地的 Azure 网络边缘位置。 在恶意攻击进入你的来源地之前，WAF 会阻止它们靠近攻击源。 你可以获得大规模的全局保护，且不会降低性能。 
 

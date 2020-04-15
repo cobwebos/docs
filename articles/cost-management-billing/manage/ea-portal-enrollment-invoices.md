@@ -3,16 +3,16 @@ title: Azure Enterprise 注册发票
 description: 本文介绍如何管理和处理 Azure 企业发票。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/03/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 9fbc2ffcf1158f436c060817f8f25152f839c3e0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d8d189d2ee67e3f98fec5d7d4cd295879e8689c9
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79037259"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743890"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure Enterprise 注册发票
 
@@ -494,6 +494,12 @@ Azure 货币承诺是提前为 Azure 服务支付的金额。 使用服务时，
 - Visual Studio Enterprise（每年）
 - Visual Studio Professional（每月）
 - Visual Studio Professional（每年）
+
+## <a name="what-to-expect-after-change-of-channel-partner"></a>更改渠道合作伙伴后会发生什么
+
+如果在月中更改了渠道合作伙伴 (COCP)，则客户会收到两份发票，一份对应于上一个关联合作伙伴的使用情况，另一份对应于新合作伙伴的使用情况。
+
+发票将在计费周期结束后的一个月发出。 如果按月计费，则会在 10 月为两个合作伙伴发出 9 月份的发票。 如果计费周期为一季或一年，则客户应收到一份针对上一个关联合作伙伴的使用情况的发票，以及其余针对新合作伙伴使用情况的发票，收到发票的时间取决于计费频率。
 
 ## <a name="azure-marketplace-for-ea-customers"></a>面向 EA 客户的 Azure 市场
 
