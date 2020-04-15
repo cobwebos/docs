@@ -7,19 +7,19 @@ ms.author: spelluru
 ms.date: 03/12/2020
 ms.service: event-hubs
 ms.topic: article
-ms.openlocfilehash: cff1b3b79b34d3f0bed27a2ea50799185958a8ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcc360bbe4dd58200993b9377317ccb608b3529d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477845"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383647"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link-preview"></a>将 Azure 事件中心与 Azure 专用链接（预览）集成
 Azure 专用链接服务使您能够通过虚拟网络中的**专用终结点**访问 Azure 服务（例如，Azure 事件中心、Azure 存储和 Azure 宇宙数据库）和 Azure 托管的客户/合作伙伴服务。
 
 专用终结点是一个网络接口，可私下安全地连接到由 Azure 专用链接提供支持的服务。 专用终结点使用 VNet 中的专用 IP 地址将服务有效接入 VNet 中。 发往服务的所有流量都可以通过专用终结点路由，因此不需要网关、NAT 设备、ExpressRoute 或 VPN 连接或公共 IP 地址。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。 可以连接到 Azure 资源的实例，从而获得最高级别的访问控制粒度。
 
-有关详细信息，请参阅什么是[Azure 专用链接？](../private-link/private-link-overview.md)
+有关详细信息，请参阅[什么是 Azure 专用链接？](../private-link/private-link-overview.md)
 
 > [!NOTE]
 > 此功能仅支持**专用**层。 有关专用层的详细信息，请参阅[活动中心专用概述](event-hubs-dedicated-overview.md)。 
@@ -45,14 +45,14 @@ Azure 专用链接服务使您能够通过虚拟网络中的**专用终结点**�
 ### <a name="steps"></a>步骤
 如果您已经有一个事件中心命名空间，可以通过以下步骤创建专用链接连接：
 
-1. 登录到 Azure[门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 2. 在搜索栏中，键入**事件中心**。
 3. 从要向其添加专用终结点的列表中选择**命名空间**。
 4. 选择 **"设置**"下的 **"网络**"选项卡。
 5. 选择页面顶部的**专用终结点连接（预览）** 选项卡。 如果不使用活动中心专用层，则会看到一条消息：**事件中心上的专用终结点连接仅由在专用群集下创建的命名空间支持**。
 6. 选择页面顶部的 **"+ 专用终结点"** 按钮。
 
-    ![图像](./media/private-link-service/private-link-service-3.png)
+    ![映像](./media/private-link-service/private-link-service-3.png)
 7. 在 **"基础知识"** 页上，按照以下步骤操作： 
     1. 选择要在其中创建专用终结点的**Azure 订阅**。 
     2. 选择专用终结点**资源的资源组**。
@@ -153,13 +153,39 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 
 ```
 
+### <a name="configure-the-private-dns-zone"></a>配置专用 DNS 区域
+为事件中心域创建专用 DNS 区域，并与虚拟网络创建关联链接：
+
+```azurepowershell-interactive
+$zone = New-AzPrivateDnsZone -ResourceGroupName $rgName `
+                            -Name "privatelink.servicebus.windows.net" 
+ 
+$link  = New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName $rgName `
+                                            -ZoneName "privatelink.servicebus.windows.net" `
+                                            -Name "mylink" `
+                                            -VirtualNetworkId $virtualNetwork.Id  
+ 
+$networkInterface = Get-AzResource -ResourceId $privateEndpoint.NetworkInterfaces[0].Id -ApiVersion "2019-04-01" 
+ 
+foreach ($ipconfig in $networkInterface.properties.ipConfigurations) { 
+    foreach ($fqdn in $ipconfig.properties.privateLinkConnectionProperties.fqdns) { 
+        Write-Host "$($ipconfig.properties.privateIPAddress) $($fqdn)"  
+        $recordName = $fqdn.split('.',2)[0] 
+        $dnsZone = $fqdn.split('.',2)[1] 
+        New-AzPrivateDnsRecordSet -Name $recordName -RecordType A -ZoneName "privatelink.servicebus.windows.net"  `
+                                -ResourceGroupName $rgName -Ttl 600 `
+                                -PrivateDnsRecords (New-AzPrivateDnsRecordConfig -IPv4Address $ipconfig.properties.privateIPAddress)  
+    } 
+}
+```
+
 ## <a name="manage-private-endpoints-using-azure-portal"></a>使用 Azure 门户管理专用终结点
 
 创建专用终结点时，必须批准连接。 如果要为其创建专用终结点的资源位于目录中，则可以批准连接请求，前提是您具有足够的权限。 如果要连接到另一个目录中的 Azure 资源，则必须等待该资源的所有者批准连接请求。
 
 有四种预配状态：
 
-| 服务操作 | 服务使用者专用终结点状态 | 描述 |
+| 服务操作 | 服务使用者专用终结点状态 | 说明 |
 |--|--|--|
 | 无 | 挂起的 | 连接是手动创建的，正等待专用链接资源所有者批准。 |
 | 审批 | 已批准 | 连接已自动或手动批准，可供使用。 |
@@ -168,7 +194,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>批准、拒绝或删除专用终结点连接
 
-1. 登录到 Azure 门户。  
+1. 登录到 Azure 门户。
 2. 在搜索栏中，键入**事件中心**。
 3. 选择要管理的**命名空间**。
 4. 选择 **"网络"** 选项卡。
@@ -179,7 +205,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 2. 选择要批准的**专用终结点**
 3. 选择"**批准**"按钮。
 
-    ![图像](./media/private-link-service/approve-private-endpoint.png)
+    ![映像](./media/private-link-service/approve-private-endpoint.png)
 4. 在 **"批准连接**"页上，添加注释（可选），然后选择 **"是**"。 如果选择 **"否**"，则不发生任何操作。 
 5. 您应该看到列表中的专用终结点连接的状态更改为 **"已批准**"。 
 
@@ -187,7 +213,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 
 1. 如果要拒绝任何专用终结点连接，无论是挂起的请求还是现有连接，请选择连接并单击 **"拒绝**"按钮。
 
-    ![图像](./media/private-link-service/private-endpoint-reject-button.png)
+    ![映像](./media/private-link-service/private-endpoint-reject-button.png)
 2. 在 **"拒绝连接"** 页上，输入注释（可选），然后选择 **"是**"。 如果选择 **"否**"，则不发生任何操作。 
 3. 您应该看到列表中的专用终结点连接的状态更改为 **"已拒绝**"。 
 
@@ -240,13 +266,13 @@ Aliases:  <your-event-hub-name>.servicebus.windows.net
 
 ## <a name="limitations-and-design-considerations"></a>限制和设计注意事项
 
-**定价**：有关定价信息，请参阅[Azure 专用链接定价](https://azure.microsoft.com/pricing/details/private-link/)。
+**定价**：有关定价信息，请参阅 [Azure 专用链接定价](https://azure.microsoft.com/pricing/details/private-link/)。
 
 **限制**： Azure 事件中心的私人终结点处于公共预览版。 此功能可在所有 Azure 公共区域中使用。
 
 **每个事件中心命名空间的最大专用终结点数**：120。
 
-有关详细信息，请参阅[Azure 专用链接服务：限制](../private-link/private-link-service-overview.md#limitations)
+有关详细信息，请参阅 [Azure 专用链接服务：限制](../private-link/private-link-service-overview.md#limitations)
 
 ## <a name="next-steps"></a>后续步骤
 

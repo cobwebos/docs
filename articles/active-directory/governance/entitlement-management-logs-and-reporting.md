@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 04/14/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 070b7c5e0fef7d50f84271190432a65d29699bdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d59a508d03730a51e793a5e30e2c99a91af77ce8
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128626"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380198"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Azure 监视器中的存档日志和 Azure AD 授权管理报告
 
@@ -49,6 +49,38 @@ Azure AD 在审核日志中存储审核事件长达 30 天。 但是，通过将
 1. 选择**使用情况和估计成本**，然后单击 **"数据保留**"。 将滑块更改为要保留数据的天数，以满足审核要求。
 
     ![日志分析工作区窗格](./media/entitlement-management-logs-and-reporting/log-analytics-workspaces.png)
+
+1. 稍后，要查看工作区中保留的日期范围，可以使用*存档日志日期范围*工作簿：  
+    
+    1. 选择**Azure 活动目录**，然后单击**工作簿**。 
+    
+    1. 展开**Azure 活动目录故障排除**部分，然后单击 **"存档日志日期范围**"。 
+
+
+## <a name="view-events-for-an-access-package"></a>查看访问包的事件  
+
+要查看访问包的事件，您必须有权访问基础 Azure 监视器工作区（请参阅[管理 Azure 监视器中日志数据和工作区的访问](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions)）以及以下角色之一： 
+
+- 全局管理员  
+- 安全管理员  
+- 安全读取者  
+- 报告阅读器  
+- 应用程序管理员  
+
+使用以下过程查看事件： 
+
+1. 在 Azure 门户中，选择**Azure 活动目录**，然后单击**工作簿**。 如果只有一个订阅，则继续执行步骤 3。 
+
+1. 如果您有多个订阅，请选择包含工作区的订阅。  
+
+1. 选择名为 *"访问包活动*"的工作簿。 
+
+1. 在该工作簿中，选择时间范围（如果不确定，则更改为**全部**），并从该时间范围内具有活动的所有访问包的下拉列表中选择访问包 ID。 将显示与选定时间范围内发生的访问包相关的事件。  
+
+    ![查看访问包事件](./media/entitlement-management-logs-and-reporting/view-events-access-package.png) 
+
+    每行包括时间、访问包 ID、操作的名称、对象 ID、UPN 以及启动操作的用户的显示名称。  JSON 中包含其他详细信息。   
+
 
 ## <a name="create-custom-azure-monitor-queries-using-the-azure-portal"></a>使用 Azure 门户创建自定义 Azure 监视器查询
 您可以在 Azure AD 审核事件（包括授权管理事件）上创建自己的查询。  
@@ -86,6 +118,7 @@ AuditLogs | where TimeGenerated > ago(3653d) | summarize OldestAuditEvent=min(Ti
 请确保您是要向 Azure AD 进行身份验证的用户或服务主体，在日志分析工作区中处于相应的 Azure 角色中。 角色选项是日志分析读取器或日志分析参与者。 如果您已在这些角色之一中，请跳过以[使用一个 Azure 订阅检索日志分析 ID。](#retrieve-log-analytics-id-with-one-azure-subscription)
 
 要设置角色分配并创建查询，请执行以下步骤：
+
 1. 在 Azure 门户中，找到[日志分析工作区](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces
 )。
 
@@ -150,7 +183,7 @@ $aResponse.Results |ft
 您还可以使用如下查询检索授权管理事件：
 
 ```azurepowershell
-$bQuery = = 'AuditLogs | where Category == "EntitlementManagement"'
+$bQuery = 'AuditLogs | where Category == "EntitlementManagement"'
 $bResponse = Invoke-AzOperationalInsightsQuery -WorkspaceId $wks[0].CustomerId -Query $Query
 $bResponse.Results |ft 
 ```

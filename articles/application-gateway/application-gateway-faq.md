@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/01/2020
 ms.author: victorh
-ms.openlocfilehash: d9691a6fd5c320242b9677776cbd08be4f800921
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: e64b0a8602a4a0806ada15546972856743c38161
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80544506"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312473"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>有关应用程序网关的常见问题解答
 
@@ -28,11 +28,11 @@ Azure 应用程序网关以服务形式提供应用程序传送控制器 (ADC)�
 
 ### <a name="what-features-does-application-gateway-support"></a>应用程序网关支持哪些功能？
 
-应用程序网关支持自动缩放、SSL 卸载、端到端 SSL、Web 应用程序防火墙 (WAF)、基于 Cookie 的会话相关性、基于 URL 路径的路由、多站点托管和其他功能。 有关受支持功能的完整列表，请参阅[应用程序网关简介](application-gateway-introduction.md)。
+应用程序网关支持自动缩放、TLS 卸载和端到端 TLS、Web 应用程序防火墙 （WAF）、基于 Cookie 的会话关联性、基于 URL 路径的路由、多站点托管和其他功能。 有关受支持功能的完整列表，请参阅[应用程序网关简介](application-gateway-introduction.md)。
 
 ### <a name="how-do-application-gateway-and-azure-load-balancer-differ"></a>应用程序网关与 Azure 负载均衡器有何不同？
 
-应用程序网关是第 7 层负载均衡器，这意味着，它只处理 Web 流量（HTTP、HTTPS、WebSocket 和 HTTP/2）。 它支持 SSL 终止、基于 Cookie 的会话相关性以及对流量进行负载均衡的轮循机制等功能。 负载均衡器在第 4 层对流量进行负载均衡（TCP 或 UDP）。
+应用程序网关是第 7 层负载均衡器，这意味着，它只处理 Web 流量（HTTP、HTTPS、WebSocket 和 HTTP/2）。 它支持诸如 TLS 终止、基于 Cookie 的会话关联和负载平衡流量的循环等功能。 负载均衡器在第 4 层对流量进行负载均衡（TCP 或 UDP）。
 
 ### <a name="what-protocols-does-application-gateway-support"></a>应用程序网关支持哪些协议？
 
@@ -216,7 +216,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 应用程序网关 v2 目前不支持 IPv6。 它只能使用 IPv4 在双堆栈 VNet 中运行，但网关子网仅限 IPv4。 应用程序网关 v1 不支持双堆栈 VNet。 
 
-## <a name="configuration---ssl"></a>配置 - SSL
+## <a name="configuration---tls"></a>配置 - TLS
 
 ### <a name="what-certificates-does-application-gateway-support"></a>应用程序网关支持哪些证书？
 
@@ -255,13 +255,13 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 - TLS_RSA_WITH_3DES_EDE_CBC_SHA
 - TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA
 
-有关如何自定义 SSL 选项的信息，请参阅[在应用程序网关上配置 SSL 策略版本和加密套件](application-gateway-configure-ssl-policy-powershell.md)。
+有关如何自定义 TLS 选项的信息，请参阅[在应用程序网关上配置 TLS 策略版本和密码套件](application-gateway-configure-ssl-policy-powershell.md)。
 
 ### <a name="does-application-gateway-support-reencryption-of-traffic-to-the-backend"></a>应用程序网关是否支持重新加密发往后端的流量？
 
-是的。 应用程序网关支持 SSL 卸载和端到端 SSL，因此支持重新加密发往后端的流量。
+是的。 应用程序网关支持 TLS 卸载和端到端 TLS，后者重新加密到后端的流量。
 
-### <a name="can-i-configure-ssl-policy-to-control-ssl-protocol-versions"></a>是否可以配置 SSL 策略来控制 SSL 协议版本？
+### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>我可以配置 TLS 策略来控制 TLS 协议版本吗？
 
 是的。 可将应用程序网关配置为拒绝 TLS1.0、TLS1.1 和 TLS1.2。 默认情况下，SSL 2.0 和 3.0 已禁用且不可配置。
 
@@ -278,9 +278,9 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 应用程序网关使用 SHA256 进行后端管理。
 
-### <a name="how-many-ssl-certificates-does-application-gateway-support"></a>应用程序网关支持多少个 SSL 证书？
+### <a name="how-many-tlsssl-certificates-does-application-gateway-support"></a>应用程序网关支持多少个 TLS/SSL 证书？
 
-应用程序网关最多支持 100 个 SSL 证书。
+应用程序网关最多支持 100 个 TLS/SSL 证书。
 
 ### <a name="how-many-authentication-certificates-for-backend-reencryption-does-application-gateway-support"></a>应用程序网关支持使用多少个身份验证证书进行后端重新加密？
 
@@ -288,7 +288,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="does-application-gateway-natively-integrate-with-azure-key-vault"></a>应用程序网关是否原生与 Azure Key Vault 集成？
 
-是，应用程序网关 v2 SKU 支持 Key Vault。 有关详细信息，请参阅[使用密钥保管库证书实现 SSL 终止](key-vault-certs.md)。
+是，应用程序网关 v2 SKU 支持 Key Vault。 有关详细信息，请参阅[使用密钥保管库证书的 TLS 终止](key-vault-certs.md)。
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>如何配置 .com 和 .net 站点的 HTTPS 侦听器？ 
 
@@ -338,7 +338,7 @@ WAF 目前支持 CRS [2.2.9](../web-application-firewall/ag/application-gateway-
 
 ### <a name="what-is-an-ingress-controller"></a>什么是入口控制器？
 
-Kubernetes 允许创建 `deployment` 和 `service` 资源，以便在群集内部公开一组 Pod。 为了在外部公开同一服务，定义了[`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/)提供负载平衡、SSL 终止和基于名称的虚拟托管的资源。
+Kubernetes 允许创建 `deployment` 和 `service` 资源，以便在群集内部公开一组 Pod。 为了在外部公开同一服务，定义了[`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/)提供负载平衡、TLS 终止和基于名称的虚拟托管的资源。
 为了满足此 `Ingress` 资源，需要一个入口控制器来侦听对 `Ingress` 资源进行的任何更改并配置负载均衡器策略。
 
 借助应用程序网关入口控制器，可将 [Azure 应用程序网关](https://azure.microsoft.com/services/application-gateway/)用作 [Azure Kubernetes 服务](https://azure.microsoft.com/services/kubernetes-service/)（也称为 AKS 群集）的入口。
@@ -411,7 +411,7 @@ Kubernetes 允许创建 `deployment` 和 `service` 资源，以便在群集内�
     
     d. 保留默认规则，如允许虚拟网络入站，以便不会阻止对专用 IP 地址的访问
     
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 不能阻止出站 Internet 连接。 否则，您将面临日志记录、指标等问题。
+    e. 不能阻止出站 Internet 连接。 否则，您将面临日志记录、指标等问题。
 
 仅用于专用 IP 访问的 NSG![配置示例：仅用于专用 IP 访问的应用程序网关 V2 NSG 配置](./media/application-gateway-faq/appgw-privip-nsg.png)
 

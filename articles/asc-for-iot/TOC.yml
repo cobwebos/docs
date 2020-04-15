@@ -47,7 +47,7 @@
       href: event-aggregation.md
     - name: 定价和关联的成本
       href: concept-pricing.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 我应该部署哪个代理？
       items:

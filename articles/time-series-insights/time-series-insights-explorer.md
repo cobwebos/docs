@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 时序见解资源管理器浏览数据 | Microsoft Docs
+title: 使用资源管理器浏览数据 - Azure 时间序列见解 |微软文档
 description: 了解如何使用 Azure 时序见解资源管理器查看 IoT 数据。
 ms.service: time-series-insights
 services: time-series-insights
@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/15/2020
+ms.date: 04/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: b8c2ba54fcc69ba126bf5f68aed99b25f8156155
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b564373780da5bba71bc46ddbac3dc69a0c94a4a
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76046176"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382782"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure 时序见解资源管理器
 
@@ -61,7 +61,7 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
 
 1. 接下来，会显示一个图表，该图表显示的是所选时间范围内所有事件的计数。 在此有许多控件：
 
-    - **术语编辑器面板**：术语空间是您查询环境的位置。 它位于屏幕的左侧：
+    - **术语编辑器面板**：术语空间是您查询环境的位置。 它在屏幕的左侧找到：
       - **测量**： 此下拉列表显示所有数字列 （**双列**）。
       - **拆分 BY**： 此下拉列表显示分类列 （**字符串**）。
       - 您可以启用步长插值，显示最小值和最大值，并从 **"测量"** 旁边的控制面板调整 y 轴。 还可以调整显示的是数据的计数、平均值还是总和。
@@ -82,7 +82,7 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
 
          [![GA 查询示例](media/time-series-insights-explorer/tsi-ga-example-queries.png)](media/time-series-insights-explorer/tsi-ga-example-queries.png#lightbox)
 
-1. 可以使用“间隔大小”**** 滑块工具在相同时间跨度内放大和缩小间隔。 使用该滑块可以更精确地控制在大量时间切片之间的移动，显示平滑的趋势直至小到毫秒的切片，从而可以显示并分析数据更精细、分辨率更高的剪切片段。 滑块的默认起点设置为所选的数据的最佳视图，可以平衡分辨率、查询速度和粒度。
+1. 可以使用“间隔大小”**** 滑块工具在相同时间跨度内放大和缩小间隔。 使用该滑块可以更精确地控制在大量时间切片之间的移动，显示平滑的趋势直至小到毫秒的切片，从而可以显示并分析数据更精细、分辨率更高的剪切片段。 滑块的默认起始点设置为所选数据的最佳视图，以平衡分辨率、查询速度和粒度。
 
 1. 使用“时间画笔”工具可以轻松从一个时间跨度导航到另一个时间跨度。****
 

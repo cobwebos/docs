@@ -4,12 +4,12 @@ description: 了解 Azure 资源日志支持的服务和事件架构。
 ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
-ms.openlocfilehash: de102c5dc4104aafc44b87b14aeea0b30cb7c083
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8abd8767d9bb7e3c4336f6600b94f6b3f4ea48f1
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248809"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380523"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Azure 资源日志支持的服务、架构和类别
 
@@ -22,7 +22,7 @@ ms.locfileid: "79248809"
 
 ## <a name="top-level-resource-logs-schema"></a>顶级资源日志架构
 
-| “属性” | 必需/可选 | 描述 |
+| 名称 | 必需/可选 | 描述 |
 |---|---|---|
 | time | 必选 | 事件时间戳 (UTC)。 |
 | resourceId | 必选 | 发出事件的资源的资源 ID。 对于租户服务，其形式为 /tenants/tenant-id/providers/provider-name。 |
@@ -38,7 +38,7 @@ ms.locfileid: "79248809"
 | correlationId | 可选 | 用于将一组相关事件组合在一起的 GUID。 通常情况下，如果两个事件具有相同 operationName，但具有两个不同状态（例如 “Started”和“Succeeded”），则它们共享相同的关联 ID。 这也可以代表事件之间的其他关系。 |
 | identity | 可选 | 描述执行操作的用户或应用程序的标识的 JSON Blob。 通常，这将包括 Active Directory 中的授权和声明/JWT 令牌。 |
 | 级别 | 可选 | 事件的严重级别。 必须是信息性、警告、错误或严重。 |
-| location | 可选 | 发出事件的资源区域，例如 “美国东部”或“法国南部” |
+| location | 可选 | 发出事件的资源区域，例如 "美国东部"或"法国南部" |
 | properties | 可选 | 与此特定类别的事件相关的任何扩展属性。 所有自定义/唯一属性都必须放入此架构的“B 部分”。 |
 
 ## <a name="service-specific-schemas-for-resource-logs"></a>资源日志的服务特定架构
@@ -54,7 +54,7 @@ ms.locfileid: "79248809"
 | Azure Batch |[Azure 批处理日志记录](../../batch/batch-diagnostics.md) |
 | Azure Database for MySQL | [Azure Database for MySQL 诊断日志](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [用于后格雷SQL日志的 Azure 数据库](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
-| Azure 数据资源管理器 | [Azure 数据资源管理器日志](../../data-explorer/using-diagnostic-logs.md) |
+| Azure 数据资源管理器 | [Azure 数据资源管理器日志](/azure/data-explorer/using-diagnostic-logs) |
 | 认知服务 | [Azure 认知服务的日志记录](../../cognitive-services/diagnostic-logging.md) |
 | 容器注册表 | [Azure 容器注册表的日志记录](../../container-registry/container-registry-diagnostics-audit-logs.md) |
 | 内容分发网络 | [CDN 的 Azure 日志](../../cdn/cdn-azure-diagnostic-logs.md) |
@@ -152,14 +152,14 @@ ms.locfileid: "79248809"
 |Microsoft.DBforPostgreSQL/serversv2|PostgreSQLLogs|PostgreSQL 服务器日志|
 |Microsoft.DBforPostgreSQL/serversv2|QueryStoreRuntimeStatistics|PostgreSQL 查询存储运行时统计信息|
 |Microsoft.DBforPostgreSQL/serversv2|QueryStoreWaitStatistics|PostgreSQL 查询存储等待统计信息|
-|Microsoft.DesktopVirtualization/workspaces|Checkpoint|Checkpoint|
+|Microsoft.DesktopVirtualization/workspaces|检查点|检查点|
 |Microsoft.DesktopVirtualization/workspaces|错误|错误|
 |Microsoft.DesktopVirtualization/workspaces|管理|管理|
 |Microsoft.DesktopVirtualization/workspaces|源|源|
-|Microsoft.DesktopVirtualization/applicationGroups|Checkpoint|Checkpoint|
+|Microsoft.DesktopVirtualization/applicationGroups|检查点|检查点|
 |Microsoft.DesktopVirtualization/applicationGroups|错误|错误|
 |Microsoft.DesktopVirtualization/applicationGroups|管理|管理|
-|Microsoft.DesktopVirtualization/hostPools|Checkpoint|Checkpoint|
+|Microsoft.DesktopVirtualization/hostPools|检查点|检查点|
 |Microsoft.DesktopVirtualization/hostPools|错误|错误|
 |Microsoft.DesktopVirtualization/hostPools|管理|管理|
 |Microsoft.DesktopVirtualization/hostPools|连接|连接|

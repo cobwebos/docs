@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: f5aaf8adf33d27f8ebb99c8ca3a873d958632a4f
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 7857d11c625911cd1b49dfcf0e0d612fc6a3871e
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616843"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314308"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MOPS：使用 Azure 机器学习进行模型管理、部署和监视
 
@@ -124,6 +124,16 @@ Azure 机器学习可帮助您了解部署模型时将创建的服务的 CPU 和
 
 有关详细信息，请参阅[部署模型](how-to-deploy-and-where.md)。
 
+#### <a name="controlled-rollout"></a>受控推出
+
+部署到 Azure 库伯奈斯服务时，可以使用受控的推出来启用以下方案：
+
+* 为部署创建多个版本的终结点
+* 通过将流量路由到不同版本的终结点来执行 A/B 测试。
+* 通过在终结点配置中更新流量百分比在终结点版本之间进行切换。
+
+有关详细信息，请参阅[ML 模型的受控推出](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview)。
+
 #### <a name="iot-edge-devices"></a>IoT Edge 设备
 
 可以通过 **Azure IoT Edge 模块**在 IoT 设备中使用模型。 IoT Edge 模块将部署到支持推理或模型评分的硬件设备。
@@ -136,12 +146,20 @@ Microsoft Power BI 支持使用机器学习模型进行数据分析。 有关详
 
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>捕获所需的监管数据以捕获端到端的 ML 生命周期
 
-Azure ML 提供用于跟踪所有 ML 资产的端到端审核线索的功能。 具体来说：
+Azure ML 使您能够使用元数据跟踪所有 ML 资产的端到端审核跟踪。
 
 - Azure ML [与 Git 集成](how-to-set-up-training-targets.md#gitintegration)，可跟踪有关存储库/分支/提交代码的来源位置的信息。
-- [Azure ML 数据集](how-to-create-register-datasets.md)可帮助你跟踪、分析数据及控制其版本。 
+- [Azure ML 数据集](how-to-create-register-datasets.md)可帮助你跟踪、分析数据及控制其版本。
+- [可解释性](how-to-machine-learning-interpretability.md)使您能够解释模型、满足法规遵从性，并了解模型如何得出给定输入的结果。
 - Azure ML 运行历史记录存储用于训练模型的代码、数据和计算的快照。
 - Azure ML 模型注册表捕获与模型关联的所有元数据（训练该模型的试验、模型的部署位置、其部署是否正常）。
+- [通过与 Azure 事件网格集成](concept-event-grid-integration.md)，可以处理 ML 生命周期中的事件。 例如，模型注册、部署、数据漂移和培训（运行）事件。
+
+> [!TIP]
+> 虽然自动捕获有关模型和数据集的某些信息，但您可以使用__标记__添加其他信息。 在工作区中查找已注册的模型和数据集时，可以使用标记作为筛选器。
+>
+> 将数据集与已注册的模型关联是可选步骤。 有关注册模型时引用数据集的信息，请参阅[Model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py)类引用。
+
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>针对 ML 生命周期中的事件发出通知和警报以及进行自动化处理
 Azure ML 将关键事件发布到 Azure 事件网格。使用事件网格可以针对 ML 生命周期中的事件发出通知并自动采取措施。 有关详细信息，请参阅[此文档](how-to-use-event-grid.md)。
@@ -157,7 +175,7 @@ Azure ML 将关键事件发布到 Azure 事件网格。使用事件网格可以�
 
 ## <a name="retrain-your-model-on-new-data"></a>根据新数据重新训练模型
 
-通常，当您收到新信息时，您需要更新模型，甚至从头开始重新训练模型。 有时，接收新数据是域的预期部分。 其他时间，如[在数据集中检测数据漂移（预览）](how-to-monitor-datasets.md)中所述，面对特定传感器的更改、自然数据变化（如季节性影响）或与其他要素相关的特征转移等情况，模型性能可能会降低。 
+通常，当您收到新信息时，您需要验证模型、更新模型，甚至从头开始重新训练模型。 有时，接收新数据是域的预期部分。 其他时间，如[在数据集中检测数据漂移（预览）](how-to-monitor-datasets.md)中所述，面对特定传感器的更改、自然数据变化（如季节性影响）或与其他要素相关的特征转移等情况，模型性能可能会降低。 
 
 "我如何知道我是否应该重新训练？ 但前面讨论的 Azure ML 事件和监视工具是自动化的良好起点。 一旦您决定重新培训，您应该： 
 
