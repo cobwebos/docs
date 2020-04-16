@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 70d5481c37777150927914042133286a77f53b89
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 15140ef392d8108b59bf50c396e529dc15951232
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76514402"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410910"
 ---
 ::: zone target = "docs"
 
@@ -39,11 +39,7 @@ ms.locfileid: "76514402"
 
 ### <a name="for-service"></a>对于服务
 
-在开始之前，请确保：
-
-- 具有 Microsoft Azure 存储帐户和访问凭据。
-- Data Box 服务使用的订阅是 [Microsoft 企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)、[云解决方案提供商 (CSP)](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) 或 [Microsoft Azure 赞助](https://azure.microsoft.com/offers/ms-azr-0036p/)。
-- 必须拥有该订阅的所有者或参与者访问权限才能创建 Data Box Heavy 订单。
+[!INCLUDE [Data Box service prerequisites](../../includes/data-box-supported-subscriptions.md)]
 
 ### <a name="for-device"></a>对于设备
 
@@ -57,7 +53,6 @@ ms.locfileid: "76514402"
     - 40-Gbps 线缆的设备端需是 QSFP+。
     - 对于 10-Gbps 线缆，需要使用 SFP+ 线缆，其一端插入 10-G 交换机，插入设备的另一端配备 QSFP+ 转 SFP+ 适配器（或 QSA 适配器）。
 - 设备背面的托盘中提供了电源线。
-
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 

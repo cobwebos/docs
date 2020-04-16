@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: ab107a0afe8be1d95de8dafb21f239e6da733271
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a418841d91ab6b8fe5457f3fd64d91306fe08dfe
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199324"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383112"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>了解如何将预留折扣应用于 Azure 数据资源管理器
 
@@ -65,7 +65,7 @@ ms.locfileid: "77199324"
 
 若要了解有关 Azure 预留的详细信息，请参阅以下文章：
 
-* [通过 Azure 数据资源管理器预留容量为 Azure 数据资源管理器计算资源预付费](../../data-explorer/pricing-reserved-capacity.md)  
+* [通过 Azure 数据资源管理器预留容量为 Azure 数据资源管理器计算资源预付费](/azure/data-explorer/pricing-reserved-capacity)  
 * [什么是适用于 Azure 的预留](save-compute-costs-reservations.md)  
 * [管理 Azure 预留](manage-reserved-vm-instance.md)  
 * [了解即用即付订阅的预留使用情况](understand-reserved-instance-usage.md)

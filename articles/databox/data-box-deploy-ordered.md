@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 04/23/2019
 ms.author: alkohli
-ms.openlocfilehash: b0204673c0706403c8c5a7367be19e590d9cb134
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 46dd89694857138d28255d5b1a86a8c947680520
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "65604088"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398661"
 ---
 # <a name="tutorial-order-azure-data-box"></a>教程：订购 Azure Data Box
 
@@ -27,20 +27,13 @@ Azure Data Box 是一个混合解决方案，可用于快速、方便、可靠�
 > * 跟踪订单
 > * 取消订单
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 请先完成下述适用于 Data Box 服务和设备的配置先决条件，然后部署设备。
 
 ### <a name="for-service"></a>对于服务
 
-在开始之前，请确保：
-- 具有 Microsoft Azure 存储帐户和访问凭据。
-- 确保用于 Data Box 服务的订阅是下述类型之一：
-    - Microsoft 企业协议 (EA)。 详细了解 [EA 订阅](https://azure.microsoft.com/pricing/enterprise-agreement/)。
-    - 云解决方案提供商 (CSP)。 详细了解 [Azure CSP 计划](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)。
-    - Microsoft Azure 赞助。 详细了解 [Azure 赞助计划](https://azure.microsoft.com/offers/ms-azr-0036p/)。
-
-- 确保有订阅的所有者或参与者访问权限，以便创建 Data Box 订单。
+[!INCLUDE [Data Box service prerequisites](../../includes/data-box-supported-subscriptions.md)]
 
 ### <a name="for-device"></a>对于设备
 
@@ -48,13 +41,12 @@ Azure Data Box 是一个混合解决方案，可用于快速、方便、可靠�
 - 应该将一个主机连接到数据中心网络。 Data Box 会从此计算机复制数据。 主机必须按照 [Azure Data Box 系统要求](data-box-system-requirements.md)中的说明运行支持的操作系统。
 - 数据中心需要有高速网络。 强烈建议你至少建立一个 10 GbE 连接。 如果 10 GbE 连接不可用，则可使用 1 GbE 数据链路，但复制速度会受影响。
 
-
 ## <a name="order-data-box"></a>订购 Data Box
 
 在 Azure 门户中执行以下步骤以订购设备。
 
 1. 使用 Microsoft Azure 凭据在以下 URL 登录：[https://portal.azure.com](https://portal.azure.com)。
-2. 单击“+ 创建资源”并搜索 **Azure Data Box**。  单击“Azure Data Box”。 
+2. 单击“+ 创建资源”并搜索 *Azure Data Box*。  单击“Azure Data Box”。 
     
    [![搜索“Azure Data Box 1”](media/data-box-deploy-ordered/search-azure-data-box1.png)](media/data-box-deploy-ordered/search-azure-data-box1.png#lightbox)
 

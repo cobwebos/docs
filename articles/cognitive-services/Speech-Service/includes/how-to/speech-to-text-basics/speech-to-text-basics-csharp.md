@@ -1,15 +1,15 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
-ms.author: dapine
-ms.openlocfilehash: 46ffe61028e40b17d31ceba34ee58b8f25c0c471
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.author: trbye
+ms.openlocfilehash: 982c3c6011936c184c55dd92a76d4aec023baaf6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80501787"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399732"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -83,7 +83,7 @@ using var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
 
 ## <a name="recognize-speech"></a>识别语音
 
-用于 C# 的语音 SDK 的[识别器类](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotne)公开了一些可用于语音识别的方法。
+用于 C# 的语音 SDK 的[识别器类](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet)公开了一些可用于语音识别的方法。
 
 * 单步识别（异步）- 在非阻塞（异步）模式下执行识别。 这将识别单个言语。 单个言语的结束是通过在结束时倾听静音或处理最长 15 秒音频时确定的。
 * 连续识别（异步）- 异步启动连续识别操作。 用户向事件注册并处理各种应用程序状态。 若要停止异步连续识别，请调用 [`StopContinuousRecognitionAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync?view=azure-dotnet)。

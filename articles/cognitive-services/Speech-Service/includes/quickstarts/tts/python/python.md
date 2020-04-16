@@ -3,19 +3,19 @@ title: 快速入门：合成语音，Python - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何在 Python 中使用语音 SDK 合成语音
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
-ms.author: dapine
-ms.openlocfilehash: 239bb1e43b6a89ed1e8a18d544cf646b5f2de9b9
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.author: trbye
+ms.openlocfilehash: e6daa0aaaca283dec11937d961886f95f1972b49
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80671606"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400412"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -82,7 +82,7 @@ python quickstart.py
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech synthesis basics](../../text-to-speech-next-steps.md)]
 
 ## <a name="see-also"></a>另请参阅
 

@@ -3,20 +3,20 @@ title: 语音识别基础知识 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用 Speech SDK 将语音转换为文本。 本文介绍对象构造、支持的音频输入格式和语音识别的配置选项。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 03/13/2020
-ms.author: dapine
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 6e1b366ee23f472489eeaa6c08df99bdfc892f00
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/14/2020
+ms.author: trbye
+zone_pivot_groups: programming-languages-set-sixteen
+ms.openlocfilehash: bdf8db4a7c946a50698d35aada5950ded671afb7
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79371963"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399746"
 ---
 # <a name="learn-the-basics-of-speech-recognition"></a>了解语音识别的基本知识
 
@@ -36,6 +36,10 @@ ms.locfileid: "79371963"
 
 ::: zone pivot="programming-language-java"
 [!INCLUDE [Java Basics include](includes/how-to/speech-to-text-basics/speech-to-text-basics-java.md)]
+::: zone-end
+
+::: zone pivot="programming-language-javascript"
+[!INCLUDE [JavaScript Basics include](includes/how-to/speech-to-text-basics/speech-to-text-basics-javascript.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-python"

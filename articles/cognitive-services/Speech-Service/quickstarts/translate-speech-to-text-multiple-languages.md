@@ -3,20 +3,20 @@ title: 快速入门：将语音翻译为多种语言 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，我们将使用语音 SDK 以交互方式将一种语言的语音翻译为另一种语言的语音。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 02/10/2020
-ms.author: dapine
+ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 7f68e3a1a6dd1e3583b9cd1c44fdb311137584e3
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: c1e04cdda77da3aac7a3c85f0967e9a48d3d7cca
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77119216"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400227"
 ---
 # <a name="quickstart-translate-speech-to-multiple-languages"></a>快速入门：将语音翻译成多种语言
 

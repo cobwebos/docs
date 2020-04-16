@@ -3,19 +3,19 @@ title: 快速入门：使用适用于 C# 的 SDK 创建物体检测项目 - 自�
 titleSuffix: Azure Cognitive Services
 description: 使用 .NET SDK 和 C# 创建项目、添加标记、上传图像、训练项目以及检测对象。
 services: cognitive-services
-author: areddish
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
-ms.author: areddish
-ms.openlocfilehash: c6aaf69ba3ed682a00a203079b024a47121334e3
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/14/2020
+ms.author: pafarley
+ms.openlocfilehash: d56953932a92eb4d9e39c8fe5f0d709a83ba3eaa
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76170069"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404197"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-net-sdk"></a>快速入门：使用自定义视觉 .NET SDK 创建对象检测项目
 

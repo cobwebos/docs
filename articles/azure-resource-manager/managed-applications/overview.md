@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: b4aa5dfd288819930da2f7af36b7d70df709e638
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0615830e525ab60bbb2167dd39d9c4bf14cc91b3
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79473024"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391577"
 ---
 # <a name="azure-managed-applications-overview"></a>Azure 托管应用程序概述
 
@@ -84,4 +84,4 @@ IT 团队可以使用托管应用程序为组织中的用户提供预先批准�
 在本文中，你了解了使用托管应用程序的好处。 请转到下一篇文章以创建托管应用程序定义。
 
 > [!div class="nextstepaction"]
-> [快速入门：发布 Azure 托管应用程序定义](publish-managed-app-definition-quickstart.md)
+> [快速入门：发布 Azure 托管应用程序定义](publish-service-catalog-app.md)

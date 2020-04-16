@@ -12,14 +12,16 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: e87f8d648a617aab24008bd63596db31dd24ab68
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 00d54f9adcab93152881852b6fcac417e9d7c7d9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74926442"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81409905"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>以增量方式将数据从源数据存储加载到目标数据存储
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 在数据集成解决方案中，一种广泛使用的方案是在完成初始的完整数据加载后以增量方式加载数据。 此部分的教程介绍如何使用不同的方法，通过 Azure 数据工厂以增量方式加载数据。
 

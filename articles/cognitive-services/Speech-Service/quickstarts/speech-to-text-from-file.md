@@ -3,20 +3,20 @@ title: 快速入门：识别音频文件中的语音 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，我们将使用语音 SDK 从音频文件识别语音。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 02/10/2020
-ms.author: dapine
+ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: da6094cd654652625a2ebab303c72fb16fb49b6b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 0480177bd504052804c9aa833f18d827f688f661
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77119479"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400632"
 ---
 # <a name="quickstart-recognize-speech-from-an-audio-file"></a>快速入门：识别音频文件中的语音
 

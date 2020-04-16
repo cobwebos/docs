@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 01/15/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: fe80b7343f67b06981707081931e35142985688e
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 5df21b2c1926803a65eca911c66b059f36ee18aa
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668783"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393620"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB 的 API for MongoDB（3.6 版本）：支持的功能和语法
 
@@ -95,8 +95,8 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 |dataSize     |   否      |
 |dbHash    |    否     |
 |dbStats     |   是      |
-|explain     | 否        |
-|explain: executionStats     |     否    |
+|explain     |   是      |
+|explain: executionStats     |   是      |
 |features     |    否     |
 |hostInfo     |   否      |
 |listDatabases         |   是      |

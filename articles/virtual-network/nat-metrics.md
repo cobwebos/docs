@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 4f1760c32117b34d4d453964473cba3c7d07f725
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1c3a73cba6a2ece0c9c7459b3515f053a648d683
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79202172"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408615"
 ---
 # <a name="azure-virtual-network-nat-metrics"></a>Azure 虚拟网络 NAT 指标
 
-Azure 虚拟网络 NAT 网关资源提供多维指标。 可以使用这些指标来观察操作以及进行[故障排除](nat-metrics.md)。  可以针对严重问题（例如 SNAT 耗尽）配置警报。
+Azure 虚拟网络 NAT 网关资源提供多维指标。 可以使用这些指标来观察操作以及进行[故障排除](troubleshoot-nat.md)。  可以针对严重问题（例如 SNAT 耗尽）配置警报。
 
 <p align="center">
   <img src="media/nat-overview/flow-direction1.svg" width="256" title="用于出站 Internet 连接的虚拟网络 NAT">
