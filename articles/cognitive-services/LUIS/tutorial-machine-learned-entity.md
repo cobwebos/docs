@@ -1,22 +1,14 @@
 ---
 title: 教程：使用机器学习实体提取结构化数据 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 使用机器学习实体从言语中提取结构化数据。 若要提高提取准确性，请添加具有描述符和约束的子组件。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: e1709a5e86c8fed8d7f724ad1b105bd02df9fa56
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/01/2020
+ms.openlocfilehash: 52bf2fb0b9f37e0c731a46c0aaf8b6c5e7f0e911
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75381760"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545851"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learned-entities-in-language-understanding-luis"></a>教程：在语言理解 (LUIS) 中使用机器习得实体从用户言语中提取结构化数据
 
@@ -44,19 +36,19 @@ ms.locfileid: "75381760"
 
 本教程添加了机器学习实体，用于从言语中提取数据。
 
-实体的用途是定义要提取的数据。 这包括为数据提供名称、类型（如果可能）、任何数据的解析（如果有多义性）以及组成数据的确切文本。
+该实体定义要从言语中提取的数据。 这包括为数据提供名称、类型（如果可能）、任何数据的解析（如果有多义性）以及组成数据的确切文本。
 
-若要定义实体，需要先创建实体，然后在示例言语中标记表示实体的文本。 这些标记的示例告知 LUIS 什么是实体以及在言语中何处可以找到实体。
+若要定义实体，需要先创建该实体，然后在所有意向内的示例言语中标记表示该实体的文本。 这些标记的示例告知 LUIS 什么是实体以及在言语中何处可以找到实体。
 
 ## <a name="entity-decomposability-is-important"></a>实体可分解性非常重要
 
-实体可分解性对于意向预测和数据提取十分重要。
+实体可分解性对于使用实体进行意向预测和数据提取十分重要。
 
 从机器学习实体（该实体是数据提取的开始和顶层实体）开始操作。 然后，将实体分解为客户端应用程序所需的部分。
 
 当你开始使用应用时，你可能不知道你需要实体的详细程度，最佳做法是从机器学习实体开始，然后随着应用的成熟，分解为子组件。
 
-在实际情况下，你将创建一个机器学习实体来表示披萨订单应用。 该订单应具有完成订单所需的所有部分。 开始时，实体将提取与订单相关的文本，从而提炼出大小和数量信息。
+在此应用中，你将创建一个进行机器学习的实体来表示披萨应用的订单。 该订单应具有完成订单所需的所有部分。 开始时，实体将提取与订单相关的文本，从而提炼出大小和数量信息。
 
 言语 `Please deliver one large cheese pizza to me` 应提取 `one large cheese pizza` 作为订单，然后提取 `1` 和 `large`。
 
@@ -92,7 +84,7 @@ ms.locfileid: "75381760"
     ![向实体添加结构](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
 
 1. 在“创建机器学习实体”  框中，在“结构”  框中添加 `Size`，然后选择 Enter。
-1. 若要添加描述符  ，请在“大小的描述符”区域中选择 `+`  ，然后选择“创建新短语列表”  。
+1. 若要添加描述符  ，请在“描述符”区域中选择 `+` ，然后选择“创建新短语列表”  。
 
 1. 在“创建新短语列表描述符”  框中，输入名称 `SizeDescriptor`，然后输入 `small`、`medium` 和 `large` 值。 当填充“建议”  框时，选择 `extra large` 和 `xl`。 选择“完成”以创建新的短语列表  。
 
@@ -108,7 +100,7 @@ ms.locfileid: "75381760"
 
     ![标记言语中文本的大小实体。](media/tutorial-machine-learned-entity/mark-and-create-size-entity.png)
 
-    文本下的线是实线，因为标记和预测均匹配，这是因为你显式标记了文本。
+    文本下的线是实线，因为标记和预测均匹配，这是因为你显式标记了文本  。
 
 1. 标记剩余言语中的 `Order` 实体以及大小实体。 文本中的方括号指示已标记的 `Order` 实体和其中的 `Size` 实体。
 
@@ -132,7 +124,7 @@ ms.locfileid: "75381760"
     |--|
     |`pickup XL meat lovers pizza`|
 
-    整个顶部实体 `Order` 已进行标记，`Size` 子组件也标有虚线。 这是成功的预测。
+    整个顶部实体 `Order` 已进行标记，`Size` 子组件也标有虚线。
 
     ![通过实体预测的新示例言语](media/tutorial-machine-learned-entity/new-example-utterance-predicted-with-entity.png)
 
@@ -160,20 +152,20 @@ ms.locfileid: "75381760"
 
 ## <a name="create-subcomponent-entity-with-constraint-to-help-extract-data"></a>创建具有约束的子组件实体以帮助提取数据
 
-`Order` 实体应有一个 `Quantity` 子组件来确定订单中有多少项。 应将此数量限制为一个数字，以便客户端应用程序立即可以使用提取的数据。
+`Order` 实体应有一个 `Quantity` 子组件来确定订单中有多少项。 应将此数量限制为一个数字，使客户端应用程序可按名称立即使用提取的数据。
 
 约束作为文本匹配应用，该匹配项具有完全匹配（如列表实体）或通过正则表达式匹配（如正则表达式实体或预生成的实体）。
 
 通过使用约束，仅与该约束匹配的文本会被提取。
 
 1. 选择“实体”  ，然后选择 `Order` 实体。
-1. 选择“+ 添加组件”  ，输入名称 `Quantity`，然后选择 Enter 以将新实体添加到应用。
-1. 成功通知后，选择 `Quantity` 子组件，然后选择“约束”铅笔图标。
+1. 选择“+ 添加组件”  ，输入名称 `Quantity`，然后按 Enter 将新的子组件添加到 `Order` 实体。
+1. 显示成功通知消息后，在“高级选项”  中选择“约束”铅笔图标。
 1. 在下拉列表中，选择预生成的数字。
 
     ![创建具有预生成数字作为约束的数量实体。](media/tutorial-machine-learned-entity/create-constraint-from-prebuilt-number.png)
 
-    当且仅当找到与预生成数字实体匹配的文本时，才会应用 `Quantity` 实体。
+    当文本与预生成数字实体匹配时，应用 `Quantity` 实体。
 
     已创建具有约束的实体，但该实体尚未应用于示例言语。
 
@@ -182,7 +174,7 @@ ms.locfileid: "75381760"
 
 ## <a name="label-example-utterance-to-teach-luis-about-the-entity"></a>用于教授 LUIS 关于实体的信息的标签示例言语
 
-1. 在左侧导航栏中选择“意向”，然后选择“OrderPizza”意向   。 以下言语中的三个数字均被标记，但在 `Order` 实体行的下方可见。 这一较低级别表示找到实体，但不会将其视为与 `Order` 实体分离。
+1. 在左侧导航栏中选择“意向”，然后选择“OrderPizza”意向   。 以下言语中的三个数字均被标记，但在 `Order` 实体行的下方可见。 这一较低级别表示找到实体，但不会将其视为 `Order` 实体的一部分。
 
     ![找到预生成数字，但不会将其视为与订单实体分离。](media/tutorial-machine-learned-entity/prebuilt-number-not-part-of-order-entity.png)
 
@@ -192,7 +184,7 @@ ms.locfileid: "75381760"
 
 ## <a name="train-the-app-to-apply-the-entity-changes-to-the-app"></a>训练应用以将实体更改应用于应用
 
-选择“训练”  以使用这些新言语训练应用。
+选择“训练”  以使用这些新言语训练应用。 训练后，将在 `Order` 组件中正确预测 `Quantity` 子组件。 此正确的预测以实线表示。
 
 ![训练应用，然后查看示例言语。](media/tutorial-machine-learned-entity/trained-example-utterances.png)
 
@@ -213,7 +205,7 @@ ms.locfileid: "75381760"
 
     已正确标识大小。 请记住，`OrderPizza` 意向中的示例言语没有 `medium` 作为大小的示例，但是使用包含 medium 的 `SizeDescriptor` 短语列表的描述符。
 
-    未正确预测数量。 若要解决此问题，可以添加更多使用该词语指示数量的示例言语，并将该词语标记为 `Quantity` 实体。
+    未正确预测数量。 如果 LUIS 预测中未返回任何大小，可以在客户端应用程序中通过将默认大小设置为一 (1) 来解决此问题。
 
 ## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>发布应用以从 HTTP 终结点访问它
 
@@ -223,7 +215,7 @@ ms.locfileid: "75381760"
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. 转到地址中 URL 的末尾，输入在交互式测试面板中输入的相同查询。
+1. 在地址栏中转到 URL 的末尾，将 YOUR_QUERY_HERE 替换为在交互式测试面板中输入的相同查询  。
 
     `deliver a medium veggie pizza`
 

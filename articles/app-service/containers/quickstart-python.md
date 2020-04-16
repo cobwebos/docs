@@ -2,16 +2,16 @@
 title: 快速入门：创建 Linux Python 应用
 description: 将第一个 Python 应用部署到 Azure 应用服务中的 Linux 容器即可开始使用应用服务上的 Linux 应用。
 ms.topic: quickstart
-ms.date: 10/22/2019
+ms.date: 04/03/2020
 ms.custom: seo-python-october2019, cli-validate
 experimental: true
 experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: 9cc314edf35d6a327522ed49fcc0c7798c7dcf63
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 63daecca710e0e4d7b3326cea59c0c025c24f619
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80045666"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811156"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>快速入门：在 Linux 上的 Azure 应用服务中创建 Python 应用
 
@@ -24,7 +24,7 @@ ms.locfileid: "80045666"
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 - <a href="https://www.python.org/downloads/" target="_blank">Python 3.7</a>（也支持 Python 3.6）
 - <a href="https://git-scm.com/downloads" target="_blank">Git</a>
-- <a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank">Azure CLI</a>
+- <a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.0.80 或更高版本。 请运行 `az --version` 检查版本。
 
 ## <a name="download-the-sample"></a>下载示例
 
@@ -98,39 +98,44 @@ az login
 
 [`az webapp up`](/cli/azure/webapp#az-webapp-up) 命令将在应用服务上创建 Web 应用并部署代码。
 
-在包含示例代码的 python-docs-hello-world 文件夹中，运行以下 `az webapp up` 命令  。 将 `<app-name>` 替换为全局唯一的应用名称（有效字符是 `a-z`、`0-9` 和 `-`）  。 同时将 `<location-name>` 替换为 centralus、eastasia、westeurope、koreasouth、brazilsouth、centralindia 等 Azure 区域       。 （可运行 [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) 命令来检索 Azure 帐户的允许区域列表。）
+在包含示例代码的 python-docs-hello-world 文件夹中，运行以下 `az webapp up` 命令  。 将 `<app-name>` 替换为全局唯一的应用名称（有效字符是 `a-z`、`0-9` 和 `-`）  。
 
 
 ```azurecli
-az webapp up --sku F1 -n <app-name> -l <location-name>
+az webapp up --sku F1 -n <app-name>
 ```
 
-此命令可能需要几分钟才能完全运行。 运行时，该命令会显示类似于以下示例的信息：
+`--sku F1` 参数在“免费”定价层上创建 Web 应用。 省略此参数即可改用高级层，这会按小时计费。
 
-```output
-The behavior of this command has been altered by the following extension: webapp
+可以选择性地包含参数 `-l <location-name>`，其中，`<location_name>` 是 Azure 区域，例如 centralus、eastasia、westeurope、koreasouth、brazilsouth、centralindia等。       可以运行 [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) 命令来检索 Azure 帐户的允许区域列表。
+
+`az webapp up` 命令可能需要几分钟才能完全运行。 运行时，它会显示类似于以下示例的信息，其中的 `<app_name>` 是前面提供的名称：
+
+<pre>
 Creating Resource group 'appsvc_rg_Linux_centralus' ...
 Resource group creation complete
 Creating App service plan 'appsvc_asp_Linux_centralus' ...
 App service plan creation complete
 Creating app '<app-name>' ....
-Webapp creation complete
-Creating zip with contents of dir /home/username/quickstart/python-docs-hello-world ...
-Preparing to deploy contents to app.
-All done.
+Configuring default logging for the app, if not already enabled
+Creating zip with contents of dir D:\Examples\python-docs-hello-world ...
+Getting scm site credentials for zip deployment
+Starting zip deployment. This operation can take a while to complete ...
+Deployment endpoint responded with status code 202
+You can launch the app at http://<app-name>.azurewebsites.net
 {
-  "app_url": "https:/<app-name>.azurewebsites.net",
-  "location": "Central US",
+  "URL": "http://<app-name>.net",
+  "appserviceplan": "appsvc_asp_Linux_centralus",
+  "location": "eastus",
   "name": "<app-name>",
   "os": "Linux",
-  "resourcegroup": "appsvc_rg_Linux_centralus ",
-  "serverfarm": "appsvc_asp_Linux_centralus",
-  "sku": "BASIC",
-  "src_path": "/home/username/quickstart/python-docs-hello-world ",
-  "version_detected": "-",
-  "version_to_create": "python|3.7"
+  "resourcegroup": "appsvc_rg_Linux_centralus",
+  "runtime_version": "python|3.7",
+  "runtime_version_detected": "-",
+  "sku": "FREE",
+  "src_path": "D:\\Examples\\python-docs-hello-world"
 }
-```
+</pre>
 
 [!INCLUDE [AZ Webapp Up Note](../../../includes/app-service-web-az-webapp-up-note.md)]
 
@@ -146,20 +151,23 @@ Python 示例代码在使用内置映像的应用服务中运行 Linux 容器。
 
 ## <a name="redeploy-updates"></a>重新部署更新
 
-在常用的代码编辑器中，打开“application.py”并更改最后一行中的 `return` 语句，使其与以下代码相匹配  。 此处包含 `print` 语句，用于生成下节将使用的日志记录输出。 
+在偏好的代码编辑器中打开 application.py，并按如下所示更新 `hello` 函数。  此项更改会添加一个 `print` 语句，用于生成要在下一部分使用的日志记录输出。 
 
 ```python
-print("Handling request to home page.")
-return "Hello Azure!"
+def hello():
+    print("Handling request to home page.")
+    return "Hello Azure!"
 ```
 
 保存更改并退出编辑器。 
 
-按如下方式重新部署应用：使用以下 `az webapp up` 命令以及首次部署应用时所用的命令，并将 `<app-name>` 和 `<location-name>` 替换为之前所用的名称。 
+再次使用 `az webapp up` 命令，重新部署应用：
 
 ```azurecli
-az webapp up --sku F1 -n <app-name> -l <location-name>
+az webapp up
 ```
+
+此命令使用 .azure/config 文件中缓存的值，包括应用名称、资源组和应用服务计划。 
 
 部署完成之后，返回打开 `http://<app-name>.azurewebsites.net` 的浏览器窗口并刷新页面，此时应显示修改后的消息：
 
@@ -172,24 +180,18 @@ az webapp up --sku F1 -n <app-name> -l <location-name>
 
 可以访问应用内和运行应用的容器所生成的控制台日志。 这些日志包括使用 `print` 语句生成的任何输出。
 
-首先，按如下方式启用容器日志记录：在终端运行以下命令，并将 `<app-name>` 替换为应用名称，将 `<resource-group-name>` 替换为所用 `az webapp up` 命令的输出中显示的资源组名称（例如“appsvc_rg_Linux_centralus”）：
+若要流式传输日志，请运行以下命令：
 
 ```azurecli
-az webapp log config --name <app-name> --resource-group <resource-group-name> --docker-container-logging filesystem
-```
-
-启用容器日志记录后，请运行以下命令来显示日志流：
-
-```azurecli
-az webapp log tail --name <app-name> --resource-group <resource-group-name>
+az webapp log tail
 ```
 
 在浏览器中刷新应用以生成控制台日志，日志中应包含与以下文本类似的行。 如果未立即显示输出，请在 30 秒后重试。
 
-```output
-2019-10-23T12:40:03.815574424Z Handling request to home page.
-2019-10-23T12:40:03.815602424Z 172.16.0.1 - - [23/Oct/2019:12:40:03 +0000] "GET / HTTP/1.1" 200 12 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.63 Safari/537.36 Edg/78.0.276.19"
-```
+<pre>
+2020-04-03T22:54:04.236405938Z Handling request to home page.
+2020-04-03T22:54:04.236497641Z 172.16.0.1 - - [03/Apr/2020:22:54:04 +0000] "GET / HTTP/1.1" 200 12 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.83 Safari/537.36 Edg/81.0.416.41"
+</pre>
 
 也可通过浏览器在 `https://<app-name>.scm.azurewebsites.net/api/logs/docker` 中检查日志文件。
 
@@ -213,7 +215,7 @@ az webapp log tail --name <app-name> --resource-group <resource-group-name>
 
 ## <a name="clean-up-resources"></a>清理资源
 
-在前面的步骤中，你在资源组中创建了 Azure 资源。 资源组根据位置得名，例如“appsvc_rg_Linux_CentralUS”。 如果使用 F1 免费层以外的应用服务 SKU，这些资源将产生持续成本。
+在前面的步骤中，你在资源组中创建了 Azure 资源。 资源组根据位置得名，例如“appsvc_rg_Linux_CentralUS”。 如果使用 F1 免费层以外的应用服务 SKU，这些资源会持续产生费用（请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/linux/)）。
 
 如果将来不需要这些资源，请按如下方式删除资源组：运行以下命令，并将 `<resource-group-name>` 替换为 `az webapp up` 命令的输出中所显示的资源组（例如“appsvc_rg_Linux_centralus”）。 此命令可能需要一分钟才能完成。
 

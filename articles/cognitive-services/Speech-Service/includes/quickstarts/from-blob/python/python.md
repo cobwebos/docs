@@ -1,15 +1,15 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
-ms.author: dapine
-ms.openlocfilehash: fcf2d3513936d50a0a5be8653e9bee5b30821e7d
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.author: trbye
+ms.openlocfilehash: 3ca50a9bad36e0174dc4ee0059c9d01fcc18a5f1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80671181"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400895"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,15 +37,15 @@ ms.locfileid: "80671181"
 
 > [!NOTE]
 > 由于 [Swagger 自动生成中的已知 bug](https://github.com/swagger-api/swagger-codegen/issues/7541)，导入 `swagger_client` 包时可能会遇到错误。
-> 这些错误可以通过从已安装的包中删除文件 中包含以下内容的行
+> 这些错误可以通过从已安装的包中删除
 > ```py
 > from swagger_client.models.model import Model  # noqa: F401,E501
 > ```
-> 和文件 `swagger_client/models/model.py` 中包含以下内容的行
+> 文件 `swagger_client/models/model.py` 中包含以下内容的行
 > ```py
 > from swagger_client.models.inner_error import InnerError  # noqa: F401,E501
 > ```
-> 来进行修复。 错误消息将告知安装这些文件的位置。
+> 和文件 `swagger_client/models/inner_error.py` 中包含以下内容的行来进行修复。 错误消息将告知安装这些文件的位置。
 
 ## <a name="install-other-dependencies"></a>安装其他依赖项
 

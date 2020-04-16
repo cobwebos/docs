@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 9b3af6a6cee4375a110c894b6b72655605ad077d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 45276ab59f1a3dabea42b904ff54bd37326fdeca
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372242"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398111"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure 事件中心 — 大数据流式处理平台和事件引入服务
 Azure 事件中心是大数据流式处理平台和事件引入服务。 它可以每秒接收和处理数百万个事件。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到事件中心的数据。
@@ -49,7 +49,7 @@ Azure 事件中心是大数据流式处理平台和事件引入服务。 它可�
 
 实时引入、缓冲、存储和处理流，以获取可行的见解。 事件中心使用[分区的使用者模型](event-hubs-scalability.md#partitions)，可让多个应用程序同时处理流，并允许控制处理速度。
 
-在 [Azure Blob 存储](event-hubs-capture-overview.md)或 [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/blobs/)[ 中近乎实时地](https://azure.microsoft.com/services/data-lake-store/)捕获 数据，以进行长期保留或微批处理。 可以基于用于派生实时分析的同一个流实现此行为。 设置捕获极其简单。 无需管理费用即可运行它，并且可以使用事件中心 [吞吐量单位](event-hubs-scalability.md#throughput-units)自动进行缩放。 使用事件中心可以专注于数据处理而不是数据捕获。
+在 [Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)或 [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/)  中近乎实时地[捕获](event-hubs-capture-overview.md)数据，以进行长期保留或微批处理。 可以基于用于派生实时分析的同一个流实现此行为。 设置捕获极其简单。 无需管理费用即可运行它，并且可以使用事件中心 [吞吐量单位](event-hubs-scalability.md#throughput-units)自动进行缩放。 使用事件中心可以专注于数据处理而不是数据捕获。
 
 Azure 事件中心还能与 [Azure Functions](/azure/azure-functions/) 集成，以构成无服务器体系结构。
 
@@ -61,20 +61,27 @@ Azure 事件中心还能与 [Azure Functions](/azure/azure-functions/) 集成，
 
 [Apache Kafka 生态系统的事件中心](event-hubs-for-kafka-ecosystem-overview.md)可让 [Apache Kafka（1.0 和更高版本）](https://kafka.apache.org/)客户端和应用程序与事件中心通信。 你无需设置、配置和管理自己的 Kafka 群集。
 
-借助各种[语言（.NET、Java、Python、Go、JavaScript）](https://github.com/Azure/azure-event-hubs)提供的广泛生态系统，可以轻松地从事件中心开始处理流。 所有支持的客户端语言提供低级别集成。 该生态系统还为你提供了与 Azure 服务（如 Azure 流分析和 Azure Functions）的无缝集成，使你能够构建无服务器体系结构。
+借助各种语言（[.NET](https://github.com/Azure/azure-sdk-for-net/)、[Java](https://github.com/Azure/azure-sdk-for-java/)、[Python](https://github.com/Azure/azure-sdk-for-python/)、[JavaScript](https://github.com/Azure/azure-sdk-for-js/)）提供的广泛生态系统，可以轻松地从事件中心开始处理流。 所有支持的客户端语言提供低级别集成。 该生态系统还为你提供了与 Azure 服务（如 Azure 流分析和 Azure Functions）的无缝集成，使你能够构建无服务器体系结构。
 
 ## <a name="key-architecture-components"></a>重要的体系结构组件
 事件中心包含以下[关键组件](event-hubs-features.md)：
 
-- **事件生成者**：向事件中心发送数据的实体。 事件发布者可以使用 HTTPS、AMQP 1.0 或 Apache Kafka（1.0 和更高版本）发布事件。
+- **事件生成者**：向事件中心发送数据的所有实体。 事件发布者可以使用 HTTPS、AMQP 1.0 或 Apache Kafka（1.0 和更高版本）发布事件。
 - **分区**：每个使用者只读取消息流的特定子集或分区。
 - **使用者组**：整个事件中心的视图（状态、位置或偏移量）。 通过使用者组来使用应用程序时，每个应用程序都有事件流的单独视图。 使用者根据自身的步调和情况独立读取流。
 - **吞吐量单位**：预先购买的容量单位，控制事件中心的吞吐量容量。
-- **事件接收者**：从事件中心读取事件数据的实体。 所有事件中心使用者通过 AMQP 1.0 会话进行连接。 事件中心服务在事件变得可用时通过会话来提供事件。 所有 Kafka 使用者都通过 Kafka 协议 1.0 及更高版本进行连接。
+- **事件接收者**：从事件中心读取事件数据的所有实体。 所有事件中心使用者通过 AMQP 1.0 会话进行连接。 事件中心服务在事件变得可用时通过会话来提供事件。 所有 Kafka 使用者都通过 Kafka 协议 1.0 及更高版本进行连接。
 
 下图显示了事件中心流处理体系结构：
 
 ![事件中心](./media/event-hubs-about/event_hubs_architecture.png)
+
+## <a name="event-hubs-on-azure-stack-hub"></a>Azure Stack Hub 上的事件中心
+使用 Azure Stack Hub 上的事件中心可以实现混合云方案。 支持使用基于流式处理和事件的解决方案进行本地处理和 Azure 云处理。 无论方案是混合（联网）还是离线的，解决方案都支持大规模的事件/流处理。 方案仅受事件中心群集大小的约束，但你可以根据需要预配群集大小。 
+
+（Azure Stack Hub 和 Azure 上的）事件中心版本提供高度的功能奇偶一致性。 这种奇偶一致性意味着 SDK、示例、PowerShell、CLI 和门户提供类似的体验（差异很小）。 
+
+Stack 上的事件中心在公共预览期免费。 有关详细信息，请参阅 [Azure Stack Hub 上的事件中心概述](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)。
 
 
 ## <a name="next-steps"></a>后续步骤

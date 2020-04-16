@@ -1,6 +1,6 @@
 ---
 title: 排查 Azure 虚拟网络 NAT 连接问题
-titleSuffix: Azure Virtual Network NAT troubleshooting
+titleSuffix: Azure Virtual Network
 description: 排查虚拟网络 NAT 的问题。
 services: virtual-network
 documentationcenter: na
@@ -12,21 +12,18 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/05/2020
+ms.date: 03/30/2020
 ms.author: allensu
-ms.openlocfilehash: c629b3425cd095a6ac9d305b5cd6de58ed9d572a
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: c012a8d83761b88cc59b62d11fd3d5542ca7f7a1
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78674328"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396091"
 ---
-# <a name="troubleshoot-azure-virtual-network-nat-connectivity-problems"></a>排查 Azure 虚拟网络 NAT 连接问题
+# <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>排查 Azure 虚拟网络 NAT 连接问题
 
 本文帮助管理员诊断和解决在使用虚拟网络 NAT 时出现的连接问题。
-
->[!NOTE] 
->虚拟网络 NAT 暂时以公共预览版提供。 目前它只能在有限的几个[区域](nat-overview.md#region-availability)中使用。 此预览版在提供时没有附带服务级别协议，不建议用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms)。
 
 ## <a name="problems"></a>问题
 
@@ -43,27 +40,39 @@ ms.locfileid: "78674328"
 
 一个 [NAT 网关资源](nat-gateway-resource.md)支持 64,000 到 100 万个并发流。  每个 IP 地址为可用库存提供 64,000 个 SNAT 端口。 对于每个 NAT 网关资源，最多可以使用 16 个 IP 地址。  [此文](nat-gateway-resource.md#source-network-address-translation)更详细地介绍了 SNAT 机制。
 
-通常，SNAT 耗尽的根本原因是建立和管理出站连接的方式出现了对立模式。  请认真阅读本部分。
+通常，SNAT 耗尽的根本原因是建立和管理出站连接的方式出现了对立模式，或者可配置的计时器已更改，不再使用默认值。  请认真阅读本部分。
 
 #### <a name="steps"></a>步骤
 
-1. 调查应用程序如何建立出站连接（例如，通过代码评审或数据包捕获进行调查）。 
-2. 确定此活动是否为预期行为，或者应用程序是否行为异常。  使用 Azure Monitor 中的[指标](nat-metrics.md)来证实发现结果。 对“SNAT 连接”指标使用“失败”类别。
-3. 评估是否遵循适当的模式。
-4. 评估向 NAT 网关资源分配更多的 IP 地址是否应该可以缓解 SNAT 端口耗尽的问题。
+1. 检查是否已将默认空闲超时修改为大于 4 分钟的值。
+2. 调查应用程序如何建立出站连接（例如，通过代码评审或数据包捕获进行调查）。 
+3. 确定此活动是否为预期行为，或者应用程序是否行为异常。  使用 Azure Monitor 中的[指标](nat-metrics.md)来证实发现结果。 对“SNAT 连接”指标使用“失败”类别。
+4. 评估是否遵循适当的模式。
+5. 评估向 NAT 网关资源分配更多的 IP 地址是否应该可以缓解 SNAT 端口耗尽的问题。
 
 #### <a name="design-patterns"></a>设计模式
 
-始终尽量利用连接重用和连接池。  这些模式可以彻底避免资源耗尽问题，并使行为可预测、可靠且可缩放。 在许多开发库和框架中，都可以找到这些模式的根源。
+始终尽量利用连接重用和连接池。  这些模式可以避免资源耗尽问题，并使行为可预测。 在许多开发库和框架中，都可以找到这些模式的根源。
 
-_**解决方法：**_ 使用适当的模式
+_**解决方法：**_ 使用适当的模式和最佳做法
 
+- NAT 网关资源的默认 TCP 空闲超时为 4 分钟。  如果将此设置更改为更大的值，NAT 绑定到流的时间会更长，可能导致[在 SNAT 端口库存方面出现不必要的压力](nat-gateway-resource.md#timers)。
+- 原子请求（每个连接一个请求）是一个拙劣的设计选项。 这种对立模式会限制缩放，降低性能并降低可靠性。 应该重复使用 HTTP/S 连接来减少连接数和关联的 SNAT 端口数。 由于使用 TLS 时可以减少握手次数、系统开销以及加密操作的开销，因此应用规模与性能都会提高。
+- 如果客户端不缓存 DNS 解析器的结果，DNS 可能会在卷上引入许多单独的流。 使用缓存。
+- UDP 流（例如 DNS 查找）根据空闲超时持续时间分配 SNAT 端口。 空闲超时越长，SNAT 端口上的压力越大。 使用较短的空闲超时（例如 4 分钟）。
+- 使用连接池来调整连接卷。
+- 切勿以静默方式丢弃 TCP 流，且不要依赖 TCP 计时器来清理流。 如果不允许 TCP 显式关闭连接，中间系统和终结点上将保持已分配状态，使 SNAT 端口不可用于其他连接。 这可能会触发应用程序故障和 SNAT 耗尽。 
+- 在对造成的影响了解不深的情况下，请不要更改与 OS 级别的 TCP 关闭相关的计时器值。 当某个连接的终结点不符合预期时，尽管 TCP 堆栈会恢复，但应用程序的性能可能会受负面影响。 需要更改计时器往往意味着底层设计出现了问题。 查看以下建议：
+
+底层应用程序中的其他对立模式往往也会使 SNAT 耗尽问题变得严重。 请查看这些附加模式和最佳做法，以改善服务的可伸缩性和可靠性。
+
+- 了解将 [TCP 空闲超时](nat-gateway-resource.md#timers)减小到更小的值（包括默认的 4 分钟空闲超时）来提前释放 SNAT 端口库存所造成的影响。
 - 考虑对长时间运行的操作使用[异步轮询模式](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply)，以释放连接资源供其他操作使用。
-- 生存期较长的流（例如重复使用的 TCP 连接）应使用 TCP Keepalive 或应用层 Keepalive，以避免中间系统超时。
+- 生存期较长的流（例如重复使用的 TCP 连接）应使用 TCP Keepalive 或应用层 Keepalive，以避免中间系统超时。增大空闲超时是最终手段，不一定可以解决根本原因。 较长的超时可以在超时时间过去时降低失败的频率，同时也会造成延迟和不必要的失败。
 - 应使用正常[重试模式](https://docs.microsoft.com/azure/architecture/patterns/retry)，以避免在发生暂时性故障或故障恢复期间出现频繁重试/突发。
 为每个 HTTP 操作创建新 TCP 连接（也称为“原子连接”）是一种对立模式。  原子连接会阻止应用程序正常缩放，并且会浪费资源。  始终通过管道将多个操作输送到同一连接。  应用程序将对事务速度和资源开销有利。  当应用程序使用传输层加密（例如 TLS）时，处理新连接的开销会很大。  有关其他最佳做法模式，请查看 [Azure 云设计模式](https://docs.microsoft.com/azure/architecture/patterns/)。
 
-#### <a name="possible-mitigations"></a>可能的缓解措施
+#### <a name="additional-possible-mitigations"></a>其他可能的缓解措施
 
 _**解决方法：**_ 按如下所述缩放出站连接：
 
@@ -73,7 +82,7 @@ _**解决方法：**_ 按如下所述缩放出站连接：
 | 已获得 16 个 IP 地址，但仍遇到 SNAT 端口耗尽的问题。 | 尝试添加更多 IP 地址失败。 公共 IP 地址资源或公共 IP 前缀资源的 IP 地址总数超过了 16 个。 | 跨多个子网分布应用程序环境，并为每个子网提供一个 NAT 网关资源。  重新评估设计模式，根据前面的[指导](#design-patterns)进行优化。 |
 
 >[!NOTE]
->必须了解发生 SNAT 耗尽的原因。 确保为可缩放、可靠的方案使用适当的模式。  只有在万不得已时，才能在不了解需求原因的情况下将更多 SNAT 端口添加到方案。 如果你不知道方案为何给 SNAT 端口库存施加压力，通过添加更多 IP 地址将更多 SNAT 端口添加到库存，只能在应用程序缩放时延缓相同的资源耗尽问题。  其他低效的做法和对立模式可能会被掩盖。
+>必须了解发生 SNAT 消耗的原因。 确保为可缩放、可靠的方案使用适当的模式。  只有在万不得已时，才能在不了解需求原因的情况下将更多 SNAT 端口添加到方案。 如果你不知道方案为何给 SNAT 端口库存施加压力，通过添加更多 IP 地址将更多 SNAT 端口添加到库存，只能在应用程序缩放时延缓相同的资源耗尽问题。  其他低效的做法和对立模式可能会被掩盖。
 
 ### <a name="icmp-ping-is-failing"></a>ICMP ping 失败
 
@@ -110,7 +119,7 @@ _**解决方法：**_ 请改用 TCP 连接测试（例如“TCP ping”）和 UD
 
 #### <a name="azure-infrastructure"></a>Azure 基础结构
 
-尽管 Azure 会非常严谨地监视和运行其基础结构，但暂时性故障仍会不时发生，因为无法保证传输内容不会丢失。  使用允许 TCP 应用程序进行 SYN 重传的设计模式。 使用足够大的连接超时，以允许 TCP SYN 重传，从而减轻 SYN 丢包造成的暂时性影响。
+Azure 会非常严谨地监视和运行其基础结构。 但暂时性故障仍可能会发生，且无法保证传输内容不会丢失。  使用允许 TCP 应用程序进行 SYN 重传的设计模式。 使用足够大的连接超时，以允许 TCP SYN 重传，从而减轻 SYN 丢包造成的暂时性影响。
 
 _**解决方法：**_
 
@@ -122,13 +131,13 @@ _**解决方法：**_
 
 #### <a name="public-internet-transit"></a>公共 Internet 传输
 
-如果通往目标的路径较长且存在较多的中间系统，则出现暂时性故障的概率会增大。 通过 [Azure 基础结构](#azure-infrastructure)传输时，出现暂时性故障的频率预期会增大。 
+如果通往目标的路径较长且存在较多的中间系统，则出现暂时性故障的几率会增大。 通过 [Azure 基础结构](#azure-infrastructure)传输时，出现暂时性故障的频率预期会增大。 
 
 请遵循前面的 [Azure 基础结构](#azure-infrastructure)部分中的相同指导。
 
 #### <a name="internet-endpoint"></a>Internet 终结点
 
-除了与用于建立通信的 Internet 终结点相关的注意事项以外，还可以遵循前面部分中的指导。 可能影响连接成功的其他因素为：
+可以运用前面部分中的指导，同时，遵循与用于建立通信的 Internet 终结点相关的注意事项。 可能影响连接成功的其他因素为：
 
 * 目标端的流量管理，包括
 - 目标端施加的 API 速率限制
@@ -147,9 +156,11 @@ _**解决方法：**_
 
 #### <a name="tcp-resets-received"></a>收到 TCP 重置
 
-如果发现源 VM 上收到 TCP 重置（TCP RST 数据包），这些响应可能是在处理过程中未识别到的流的专用端上的 NAT 网关生成的。  一个可能的原因是 TCP 连接发生空闲超时。可将空闲超时从 4 分钟调整为最长 120 分钟。
+NAT 网关在源 VM 上为处理过程中未识别到的流量生成 TCP 重置。
 
-NAT 网关资源的公共端不会生成 TCP 重置。 如果目标端收到 TCP 重置，它们是由源 VM 的堆栈生成的，而不是 NAT 网关资源生成的。
+一个可能的原因是 TCP 连接发生空闲超时。可将空闲超时从 4 分钟调整为最长 120 分钟。
+
+不会在 NAT 网关资源的公共端上生成 TCP 重置。 目标端上的 TCP 重置是由源 VM 生成的，而不是由 NAT 网关资源生成的。
 
 _**解决方法：**_
 

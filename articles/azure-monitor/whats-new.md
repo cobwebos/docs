@@ -6,15 +6,79 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 03/05/2020
-ms.openlocfilehash: c29790035ec4e971957784e826a1e8bd8e0c9329
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a2e6d2a459a6713aa9372496fc3a933c0a886ed9
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79500492"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802598"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor 文档中有哪些新增内容？
 本文提供新的或已经过重大更新的 Azure Monitor 文章列表。 在每个月的第一周，本文将会刷新，以包含上个月的文章更新。
+
+## <a name="march-2020"></a>2020 年 3 月
+
+### <a name="general"></a>常规
+- [Azure Monitor 概述](overview.md) - 添加了 Azure Monitor 概述视频。
+- [Azure Monitor 客户托管密钥配置](platform/customer-managed-keys.md) - 常规更新。
+- [Azure Monitor 数据参考](/azure/azure-monitor/reference) - 新站点。
+
+### <a name="alerts"></a>警报
+
+- [在 Azure Monitor 中创建、查看和管理活动日志警报](platform/alerts-activity-log.md) - 资源管理器模板的附加说明。
+- [了解指标警报在 Azure Monitor 中的工作原理](platform/alerts-metric-overview.md) - 更新了政府支持。
+- [排查 Azure Monitor 警报和通知问题](platform/alerts-troubleshoot.md) - 新文章
+
+### <a name="application-insights"></a>Application Insights
+- [使用 PowerShell 自动化 Azure Application Insights](app/powershell.md) - 添加了 ARMClient 示例。
+- [从 Application Insights 连续导出遥测数据](app/export-telemetry.md) - 添加了包含导出结构详细信息的表格。
+- [为 Azure 应用服务中的 .NET 应用启用 Snapshot Debugger](app/snapshot-debugger-appservice.md) - 添加了资源管理器模板示例。
+- [管理 Azure Application Insights 的用量和成本](app/pricing.md) - 添加了有关数据上限警报的信息。
+- [使用 Azure Monitor 监视 Python 应用程序（预览版）](app/opencensus-python.md)- 添加了标准指标。
+- [JavaScript 应用程序的源映射支持 - Azure Monitor Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/source-map-support) - 新文章。
+
+
+### <a name="containers"></a>容器
+- [Azure Monitor 常见问题解答](faq.md) - 更新了用于容器的 Azure Monitor 的内容。
+- [使用用于容器的 Azure Monitor 配置 GPU 监视](insights/container-insights-gpu-monitoring.md) - 新文章
+
+### <a name="insights"></a>洞察力
+- [Azure 中的 Office 365 管理解决方案](insights/solution-office-365.md) - 更新了弃用日期。
+
+### <a name="logs"></a>日志
+- [在 Azure Monitor 中优化日志查询](log-query/query-optimization.md) - 添加了 XML 和 JSON 分析的 CPU 条件。
+- [删除和恢复 Azure Log Analytics 工作区](platform/delete-workspace.md) - 添加了故障排除方法。
+- [将 Azure Monitor 日志与 Azure 逻辑应用和 Power Automate 配合使用](platform/logicapp-flow-connector.md) - 更新了新 Azure Monitor 连接器的内容。
+
+### <a name="metrics"></a>指标
+- [即将弃用 Azure 门户中的磁盘指标](https://docs.microsoft.com/azure/azure-monitor/platform/portal-disk-metrics-deprecation) - 新文章。
+- [教程 - 在 Azure Monitor 中创建指标图表](learn/tutorial-metrics-explorer.md) - 添加了视频。
+
+### <a name="platform-logs"></a>平台日志
+- [在 Azure Monitor 中收集和分析 Azure 活动日志](platform/activity-log-collect.md) - 重新撰写了该文章，以更好地解释如何使用诊断设置收集活动日志。
+
+### <a name="virtual-machines"></a>虚拟机
+- [使用 Azure Monitor 监视 Azure 虚拟机](insights/monitor-vm-azure.md) - 新文章。
+- [快速入门：使用 Azure Monitor 监视 Azure 虚拟机](learn/quick-monitor-azure-vm.md) - 更新了该文章，在其中添加了用于 VM 的 Azure Monitor 的内容。
+- [用于 VM 的 Azure Monitor 发出的警报](insights/vminsights-alerts.md) - 新文章
+- [启用用于 VM 的 Azure Monitor 概述](insights/vminsights-enable-overview.md) - 更新了代理下载链接。
+
+
+用于 VM 的 Azure Monitor 正式版常规更新
+- [什么是用于 VM 的 Azure Monitor？](insights/vminsights-overview.md)
+- [用于 VM 的 Azure Monitor（正式版）常见问题解答](insights/vminsights-ga-release-faq.md) 
+- [使用 Azure Policy 启用用于 VM 的 Azure Monitor](insights/vminsights-enable-at-scale-policy.md) 
+- [如何使用用于 VM 的 Azure Monitor 绘制性能图表](insights/vminsights-performance.md)
+- [如何从用于 VM 的 Azure Monitor 查询日志](insights/vminsights-log-search.md)
+- [使用用于 VM 的 Azure Monitor 查看应用依赖项](insights/vminsights-maps.md) 
+
+
+### <a name="visualizations"></a>可视化效果
+- [从 Azure Monitor 可视化数据](visualizations.md) - 更新了该文章，指出即将按计划弃用视图设计器。
+
+
+
+
 
 ## <a name="february-2020"></a>2020 年 2 月
 
@@ -53,7 +117,7 @@ ms.locfileid: "79500492"
 - [优化 Azure Monitor 中的日志查询](log-query/query-optimization.md) - 新文章。
 - [管理 Azure Monitor 日志的使用情况和成本](platform/manage-cost-storage.md) - 改进了示例查询来帮助你更好地了解使用情况。
 
-### <a name="metrics"></a>度量值
+### <a name="metrics"></a>指标
 - [可通过诊断设置导出的 Azure Monitor 平台指标](platform/metrics-supported-export-diagnostic-settings.md) - 添加了有关针对 null 值和零值的行为更改的内容。
 
 
@@ -175,7 +239,7 @@ ms.locfileid: "79500492"
 - [删除和恢复 Azure Log Analytics 工作区](platform/delete-workspace.md) - 添加了 PowerShell 方法。
 - [设计 Azure Monitor 日志部署](platform/design-logs-deployment.md) - 提高了工作区的引入速率。
 
-### <a name="metrics"></a>度量值
+### <a name="metrics"></a>指标
 - [可通过诊断设置导出的 Azure Monitor 平台指标](platform/metrics-supported-export-diagnostic-settings.md) - 新文章。
 
 ### <a name="platform-logs"></a>平台日志

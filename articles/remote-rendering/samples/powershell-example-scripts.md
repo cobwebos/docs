@@ -23,7 +23,7 @@ Azure 远程渲染提供以下两个 REST API：
 
 ## <a name="prerequisites"></a>先决条件
 
-若要执行示例脚本，需要正常安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)。
+若要执行示例脚本，需要正确安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)。
 
 1. 安装 Azure PowerShell：
     1. 以管理员权限打开 PowerShell
@@ -46,7 +46,7 @@ Azure 远程渲染提供以下两个 REST API：
 
 ## <a name="configuration-file"></a>配置文件
 
-在 `.ps1` 文件的旁边，需要填写 `arrconfig.json`：
+在 `.ps1` 文件的旁边，有一个需要填写的 `arrconfig.json`：
 
 ```json
 {
@@ -74,7 +74,7 @@ Azure 远程渲染提供以下两个 REST API：
 ```
 
 > [!CAUTION]
-> 请务必使用双反斜杠“\\\\”正确转义 LocalAssetDirectoryPath 路径中的反斜杠，并在 inputFolderPath 和 inputAssetPath 等所有其他路径中使用正斜杠“/”。
+> 请务必使用双反斜杠“\\\\”来正确转义 LocalAssetDirectoryPath 路径中的反斜杠，并在 inputFolderPath 和 inputAssetPath 等所有其他路径中使用正斜杠“/”。
 
 ### <a name="accountsettings"></a>accountSettings
 
@@ -86,7 +86,7 @@ Azure 远程渲染提供以下两个 REST API：
 若要运行 RenderingSession.ps1，必须填写此结构。 
 
 - **vmSize：** 选择虚拟机的大小。 选择“标准”或“高级”。   请关闭不再需要的渲染会话。
-- **maxLeaseTime：** 要租用 VM 的持续时间。 租约过期后，该 VM 将会关闭。 以后可以延长租用时间（见下文）。
+- **maxLeaseTime：** 要租用 VM 的持续时间。 租约过期后，该 VM 将会关闭。 以后可以延长租用时间（请参阅下文）。
 
 ### <a name="assetconversionsettings"></a>assetConversionSettings
 
@@ -99,11 +99,11 @@ Azure 远程渲染提供以下两个 REST API：
 此脚本用于创建、查询和停止渲染会话。
 
 > [!IMPORTANT]
-> 请确保已填写 arrconfig.json 中的 accountSettings 和 renderingSessionSettings 节。  
+> 请确保已填写 arrconfig.json 中的 accountSettings 和 renderingSessionSettings 部分。  
 
 ### <a name="create-a-rendering-session"></a>创建渲染会话
 
-在完全填写了 arrconfig.json 时的正常用法：
+如果有了完全填写的 arrconfig.json，那么常规的用法如下：
 
 ```PowerShell
 .\RenderingSession.ps1
@@ -169,7 +169,7 @@ Azure 远程渲染提供以下两个 REST API：
 此脚本用于将输入模型转换成特定于 Azure 远程渲染的运行时格式。
 
 > [!IMPORTANT]
-> 请确保已填写 arrconfig.json 中的 accountSettings 和 assetConversionSettings 节。  
+> 请确保已填写 arrconfig.json 中的 accountSettings 和 assetConversionSettings 部分。  
 
 该脚本演示两个用于在服务中使用存储帐户的选项：
 

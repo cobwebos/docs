@@ -8,18 +8,18 @@ ms.topic: overview
 ms.date: 02/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 9ac70252ce7c818ccbdecfd996b9970f011aa967
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 927c09f61ce0847c72cefb51935116070e956861
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290185"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743105"
 ---
 # <a name="about-azure-virtual-wan"></a>关于 Azure 虚拟 WAN
 
-Azure Virtual WAN 是一种网络服务，提供到 Azure 并穿过该服务的经优化的自动分支连接。 Azure 区域充当可以选择将分支连接到的中心。 还可以利用 Azure 主干连接分支，享用分支到 VNet 的连接。 我们有一个支持使用 Azure 虚拟 WAN VPN 实现连接自动化的合作伙伴列表。 有关详细信息，请参阅[虚拟 WAN 合作伙伴和位置](virtual-wan-locations-partners.md)一文。
+Azure 虚拟 WAN 是一个网络服务，其中整合了多种网络、安全和路由功能，提供单一操作界面。 这些功能包括分支连接（通过 SD-WAN 或 VPN CPE 等虚拟 WAN 合作伙伴设备的连接自动化）、站点到站点 VPN 连接、远程用户 VPN（点到站点）连接、专用 (ExpressRoute) 连接、云内部连接（虚拟网络的可中转连接）、VPN ExpressRoute 互连、路由、Azure 防火墙、专用连接加密等。无需所有这些用例即可开始使用虚拟 WAN。 只需准备一个用例并在网络不断变化时对网络进行调整，即可开始使用虚拟 WAN。 虚拟 WAN 体系结构是一种内置了规模和性能的中心辐射型体系结构，适用于分支（VPN/SD-WAN 设备）、用户（Azure VPN/OpenVPN/IKEv2 客户端）、ExpressRoute 线路和虚拟网络。 它支持[全球传输网络体系结构](virtual-wan-global-transit-network-architecture.md)，其中的云托管网络“中心”支持可能分布在不同“辐射”类型上的终结点之间的传输连接。
 
-Azure 虚拟 WAN 将许多 Azure 云连接服务（例如，站点到站点 VPN、用户 VPN（点到站点）和 ExpressRoute ）汇集到一个操作界面中。 通过使用虚拟网络连接建立与 Azure VNet 的连接。 它支持[全球传输网络体系结构](virtual-wan-global-transit-network-architecture.md)，该体系结构基于经典的中心辐射型连接模型，其中的云托管网络“中心”支持可能分布在不同“辐射”类型上的终结点之间的传输连接。
+Azure 区域充当可供连接的中心。 所有中心均在标准虚拟 WAN 中以完整网格的形式进行连接，使得用户能够轻松地使用 Microsoft 主干进行任意分支到任意分支的连接。 对于包含 SD-WAN/VPN 设备的辐射连接，用户可以在 Azure 虚拟 WAN 中手动设置该连接，或者使用虚拟 WAN CPE (SD-WAN/VPN) 合作伙伴解决方案来设置与 Azure 的连接。 我们提供了一个列表，其中的合作伙伴支持使用 Azure 虚拟 WAN 实现连接自动化（能够将设备信息导出到 Azure、下载 Azure 配置和建立连接）。 有关详细信息，请参阅[虚拟 WAN 合作伙伴和位置](virtual-wan-locations-partners.md)一文。 
 
 ![虚拟 WAN 示意图](./media/virtual-wan-about/virtualwan1.png)
 

@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 44f57f52be512924e228d6488a786d117c6444e7
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 824244c0c3247e5a218c1551dd95de6e1d6e1007
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79370587"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419215"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-messaging-eventhubs"></a>使用 Java 向/从 Azure 事件中心 (azure-messaging-eventhubs) 发送/接收事件
 本快速入门介绍如何使用 **azure-messaging-eventhubs** Java 包向事件中心发送事件以及从事件中心接收事件。
@@ -36,7 +36,7 @@ ms.locfileid: "79370587"
 
 ### <a name="add-reference-to-azure-event-hubs-library"></a>将引用添加到 Azure 事件中心库
 
-事件中心的 Java 客户端库可用于[Maven 中央存储库](https://search.maven.org/search?q=a:azure-messaging-eventhubs)中的 Marven 项目。 可使用 Maven 项目文件中的以下依赖项声明引用此库：
+[Maven 中心存储库](https://search.maven.org/search?q=a:azure-messaging-eventhubs)中提供了事件中心的 Java 客户端库。 可使用 Maven 项目文件中的以下依赖项声明引用此库：
 
 ```xml
 <dependency>
@@ -48,7 +48,7 @@ ms.locfileid: "79370587"
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>编写代码以将消息发送到事件中心
 
-对于以下示例，请首先在你最喜欢的 Java 开发环境中为控制台/shell 应用程序创建一个新的 Maven 项目。 添加一个名为 `SimpleSend` 的类，并向该类中添加以下代码：
+对于以下示例，请首先在你最喜欢的 Java 开发环境中为控制台/shell 应用程序创建一个新的 Maven 项目。 添加一个名为 `Sender` 的类，并向该类中添加以下代码：
 
 ```java
 import com.azure.messaging.eventhubs.*;
@@ -139,6 +139,9 @@ public class Sender {
 
 ## <a name="receive-events"></a>接收事件
 本教程中的代码基于 [GitHub 上的 EventProcessorClient 示例](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs/EventProcessorClientSample.java)，可检查该代码以查看完整的工作应用程序。
+
+> [!NOTE]
+> 如果在 Azure Stack Hub 上运行，该平台支持的存储 Blob SDK 可能不同于通常在 Azure 上提供的版本。 例如，如果在 [Azure Stack Hub 版本 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview) 上运行，则存储服务的最高可用版本为版本 2017-11-09。 在这种情况下，除了执行本部分中的步骤以外，还需要添加相关代码，将存储服务 API 版本 2017-11-09 作为目标。 如需通过示例来了解如何以特定的存储 API 版本为目标，请参阅 [GitHub 上的此示例](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java)。 有关 Azure Stack Hub 上支持的 Azure 存储服务版本的详细信息，请参阅 [Azure Stack Hub 存储：差异和注意事项](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences)
 
 ### <a name="create-a-java-project"></a>创建一个 Java 项目
 

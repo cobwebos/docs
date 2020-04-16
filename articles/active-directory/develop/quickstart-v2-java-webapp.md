@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: c2f3272beb463a16f9488139b6c3a45febae6493
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f3ede3ef0557c5ca425901e7404746b4e85aefcb
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79529628"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991120"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入门：向 Java Web 应用添加 Microsoft 登录功能
 
@@ -36,27 +36,27 @@ ms.locfileid: "79529628"
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 >
-> 1. 访问 [Azure 门户 - 应用注册](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)。
+> 1. 转到 [Azure 门户 - 应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaQuickstartPage/sourceType/docs)快速入门体验。
 > 1. 输入应用程序的名称并选择“注册”  。
-> 1. 遵照说明下载内容，系统会自动配置新应用程序。
+> 1. 按照门户快速入门体验中的说明下载自动配置的应用程序代码。
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>选项 2：注册并手动配置应用程序和代码示例
 >
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 >
-> 若要注册应用程序并将应用的注册信息手动添加到解决方案，请执行以下步骤：
+> 若要注册应用程序并将应用的注册信息手动添加到应用程序，请执行以下步骤：
 >
 > 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 > 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
 >
-> 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](/azure/active-directory/develop/)页。
+> 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。
 > 1. 选择“新注册”。 
 > 1. “注册应用程序”页出现后，请输入应用程序的注册信息： 
 >    - 在“名称”  部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `java-webapp`。
->    - 暂时将“重定向 URI”留空，并选择“注册”。  
+>    - 选择“注册”  。
 > 1. 在“概述”  页上，找到应用程序的“应用程序(客户端) ID”  和“目录(租户) ID”  值。 复制这些值，供以后使用。
 > 1. 从菜单选择“身份验证”，然后添加以下信息  ：
->    - 在“重定向 URI”中添加 `https://localhost:8080/msal4jsample/secure/aad` 和 `https://localhost:8080/msal4jsample/graph/me`。 
+>    - 添加“Web”平台配置。   将这些 `https://localhost:8080/msal4jsample/secure/aad` 和 `https://localhost:8080/msal4jsample/graph/me` 添加为“重定向 URI”。 
 >    - 选择“保存”。 
 > 1. 在菜单中选择“证书和密码”，然后在“客户端密码”部分中单击“新建客户端密码”：   
 >
@@ -84,7 +84,7 @@ ms.locfileid: "79529628"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > 下载项目并将 zip 文件解压缩到更靠近根文件夹的本地文件夹（例如，**C:\Azure-Samples**）
-> 
+>
 > 若要将 https 与 localhost 一起使用，请填写 server.ssl.key 属性。 若要生成自签名证书，请使用 keytool 实用工具（包含在 JRE 中）。
 >
 >  ```
@@ -97,9 +97,13 @@ ms.locfileid: "79529628"
 >   server.ssl.key-alias=testCert
 >   ```
 >   将生成的 keystore 文件放在“resources”文件夹中。
-   
+
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
 > [下载代码示例](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
+
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > `Enter_the_Supported_Account_Info_Here`
 
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-the-code-sample"></a>步骤 3：配置代码示例
@@ -153,8 +157,56 @@ ms.locfileid: "79529628"
     - *注销*：从应用程序中注销当前用户，并将其重定向到主页。
     - *显示用户信息*：获取 Microsoft Graph 的令牌，并使用包含该令牌的请求调用 Microsoft Graph，这将返回有关已登录用户的基本信息。
 
+##### <a name="running-from-tomcat"></a>从 Tomcat 运行
 
-   
+若要将 Web 示例部署到 Tomcat，需要对源代码进行一些更改。
+
+1. 打开 ms-identity-java-webapp/pom.xml
+    - 在 `<name>msal-web-sample</name>` 下添加 `<packaging>war</packaging>`
+    - 添加依赖项：
+
+         ```xml
+         <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-tomcat</artifactId>
+          <scope>provided</scope>
+         </dependency>
+         ```
+
+2. 打开 ms-identity-java-webapp/src/main/java/com.microsoft.azure.msalwebsample/MsalWebSampleApplication
+
+    - 删除所有源代码，将其替换为以下内容：
+
+   ```Java
+    package com.microsoft.azure.msalwebsample;
+
+    import org.springframework.boot.SpringApplication;
+    import org.springframework.boot.autoconfigure.SpringBootApplication;
+    import org.springframework.boot.builder.SpringApplicationBuilder;
+    import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+
+    @SpringBootApplication
+    public class MsalWebSampleApplication extends SpringBootServletInitializer {
+
+     public static void main(String[] args) {
+      SpringApplication.run(MsalWebSampleApplication.class, args);
+     }
+
+     @Override
+     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+      return builder.sources(MsalWebSampleApplication.class);
+     }
+    }
+   ```
+
+3. 打开命令提示符，转到项目的根文件夹，然后运行 `mvn package`
+    - 这会在 /targets 目录中生成一个 `msal-web-sample-0.1.0.war` 文件。
+    - 将此文件重命名为 `ROOT.war`
+    - 使用 Tomcat 或任何其他 J2EE 容器解决方案部署此 war 文件。
+        - 若要在 Tomcat 容器上部署，请将 .war 文件复制到 Tomcat 安装目录下的 webapps 文件夹中，然后启动 Tomcat 服务器。
+
+此 WAR 会自动托管在 https://localhost:8080/ 中。
+
 > [!IMPORTANT]
 > 本快速入门应用程序使用客户端机密将自己标识为机密客户端。 由于客户端机密是以纯文本形式添加到项目文件的，因此为了安全起见，建议在考虑将应用程序用作生产应用程序之前，使用证书来代替客户端机密。 有关如何使用证书的详细信息，请参阅[用于应用程序身份验证的证书凭据](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials)。
 
@@ -169,6 +221,8 @@ MSAL for Java (MSAL4J) 是一个 Java 库，用于用户登录和请求令牌，
 
 可以使用 Maven 或 Gradle 将 MSAL4J 添加到应用程序，以通过对应用程序的 pom.xml (Maven) 或 build.gradle (Gradle) 文件进行以下更改来管理依赖项。
 
+在 pom.xml 中：
+
 ```XML
 <dependency>
     <groupId>com.microsoft.azure</groupId>
@@ -176,6 +230,8 @@ MSAL for Java (MSAL4J) 是一个 Java 库，用于用户登录和请求令牌，
     <version>1.0.0</version>
 </dependency>
 ```
+
+在 build.gradle 中：
 
 ```$xslt
 compile group: 'com.microsoft.azure', name: 'msal4j', version: '1.0.0'
@@ -200,10 +256,5 @@ import com.microsoft.aad.msal4j.*;
 
 > [!div class="nextstepaction"]
 > [授权代码 Oauth 流](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)
-
-帮助我们改进 Microsoft 标识平台。 通过完成简短的两问题调查，告诉我们你的想法。
-
-> [!div class="nextstepaction"]
-> [Microsoft 标识平台调查](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
