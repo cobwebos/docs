@@ -1,15 +1,15 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
-ms.author: dapine
-ms.openlocfilehash: 5cbd1a0d18045a24d4de68f6c48323244d49b2b4
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.author: trbye
+ms.openlocfilehash: ccc7fcd748323e05f21edcfff1535085d2cdbdc7
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409577"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81422160"
 ---
 处理压缩音频是使用 [GStreamer](https://gstreamer.freedesktop.org) 实现的。 出于许可原因，GStreamer 二进制文件未编译并与语音 SDK 链接。 相反，您需要为 Android 使用预构建的二进制文件。 要下载预构建的库，请参阅[安装 Android 开发](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c)。
 

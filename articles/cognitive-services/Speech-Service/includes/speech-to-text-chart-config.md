@@ -3,25 +3,25 @@ title: 安装语音容器
 titleSuffix: Azure Cognitive Services
 description: 详细说明语音到文本的掌舵图配置选项。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 08/22/2019
-ms.author: dapine
-ms.openlocfilehash: 3f390affe7badb401277aa86d1867c763aa0ae3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: f7ca8fdaddab9757292939c4f7e658179d6e517c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "69971322"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81422041"
 ---
 ### <a name="speech-to-text-sub-chart-chartsspeechtotext"></a>语音到文本（子图表：图表/语音到文本）
 
 若要替代“伞形”图，请在任何参数上添加前缀 `speechToText.`，以使其更具体。 例如，它将替代相应参数，例如，`speechToText.numberOfConcurrentRequest` 替代 `numberOfConcurrentRequest`。
 
-|参数|描述|默认|
+|参数|说明|默认|
 | -- | -- | -- |
 | `enabled` | 是否启用**语音到文本**服务。 | `false` |
 | `numberOfConcurrentRequest` | **语音到文本**服务的并发请求数。 此图表基于该值自动计算 CPU 和内存资源。 | `2` |

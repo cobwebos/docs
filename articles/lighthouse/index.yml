@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: JnHs
   ms.author: jenhayes
-  ms.date: 09/25/2019
-  ms.openlocfilehash: bdda8aca71f09cfe570ffea7e03c63d7c87abbb5
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 04/14/2020
+  ms.openlocfilehash: 6d209715a86e580d402361189f4484e762c43706
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77212582"
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81414293"
 landingContent:
 - title: 关于 Azure Lighthouse
   linkLists:
@@ -43,6 +43,8 @@ landingContent:
       url: ./concepts/cloud-solution-provider.md
     - text: 企业应用场景
       url: ./concepts/enterprise.md
+    - text: 租户、角色和用户
+      url: ./concepts/tenants-users-roles.md
 - title: 市场套餐
   linkLists:
   - linkListType: how-to-guide
@@ -61,14 +63,6 @@ landingContent:
       url: https://github.com/Azure/Azure-Lighthouse-samples/
     - text: Azure Lighthouse 示例的索引
       url: ./samples/index.md
-- title: 使用 Azure 服务
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: 大规模使用 Azure Monitor 日志
-      url: ./how-to/monitor-at-scale.md
-    - text: 大规模部署 Azure Policy
-      url: ./how-to/policy-at-scale.md
 - title: Azure 门户体验
   linkLists:
   - linkListType: how-to-guide
@@ -77,16 +71,18 @@ landingContent:
       url: ./how-to/view-manage-customers.md
     - text: 查看和管理服务提供商
       url: ./how-to/view-manage-service-providers.md
-- title: 参考 - 下载
+- title: 使用 Azure 服务
   linkLists:
-  - linkListType: download
+  - linkListType: how-to-guide
     links:
-    - text: OpenAPI - 2019-06-01
-      url: https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/stable/2019-06-01
-    - text: 用于 .NET 的 SDK - NuGet
-      url: https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/
-    - text: 用于 Python 的 SDK - PyPi
-      url: https://pypi.org/project/azure-mgmt-managedservices/
+    - text: 大规模使用 Azure Monitor 日志
+      url: ./how-to/monitor-at-scale.md
+    - text: 监视委托更改
+      url: ./how-to/monitor-at-scale.md
+    - text: 大规模部署 Azure Policy
+      url: ./how-to/policy-at-scale.md
+    - text: 部署可修正的策略
+      url: ./how-to/deploy-policy-remediation.md
 - title: 参考 - SDK
   linkLists:
   - linkListType: reference
@@ -101,6 +97,16 @@ landingContent:
       url: /dotnet/api/Microsoft.Azure.Management.ManagedServices
     - text: Python
       url: /python/api/azure-mgmt-managedservices
+- title: 参考 - 下载
+  linkLists:
+  - linkListType: download
+    links:
+    - text: OpenAPI - 2019-06-01
+      url: https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/stable/2019-06-01
+    - text: 用于 .NET 的 SDK - NuGet
+      url: https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/
+    - text: 用于 Python 的 SDK - PyPi
+      url: https://pypi.org/project/azure-mgmt-managedservices/
 - title: 参与
   linkLists:
   - linkListType: get-started
