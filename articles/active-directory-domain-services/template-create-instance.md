@@ -63,7 +63,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 ## <a name="create-required-azure-ad-resources"></a>创建所需的 Azure AD 资源
 
-Azure AD DS 需要一个服务主体和 Azure AD 组。 这些资源使 Azure AD DS 托管域能够同步数据，并定义哪些用户在托管域中拥有管理权限。
+Azure AD DS 需要一个服务主体和一个 Azure AD 组。 这些资源使 Azure AD DS 托管域能够同步数据，并定义哪些用户在托管域中拥有管理权限。
 
 首先，使用 [Register-AzResourceProvider][Register-AzResourceProvider] cmdlet 注册 Azure AD 域服务资源提供程序：
 
@@ -71,13 +71,13 @@ Azure AD DS 需要一个服务主体和 Azure AD 组。 这些资源使 Azure AD
 Register-AzResourceProvider -ProviderNamespace Microsoft.AAD
 ```
 
-使用 [New-AzureADServicePrincipal][New-AzureADServicePrincipal] cmdlet 创建一个 Azure AD 服务主体，使 Azure AD DS 能够通信并对自身进行身份验证。 使用名称为“域控制器服务”的特定应用程序 ID 2565bd9d-da50-47d4-8b85-4c97f669dc36。   请不要更改此应用程序 ID。
+使用 [New-AzureADServicePrincipal][New-AzureADServicePrincipal] cmdlet 创建一个 Azure AD 服务主体，以供 Azure AD DS 通信和验证自身身份。 使用名称为“域控制器服务”的特定应用程序 ID 2565bd9d-da50-47d4-8b85-4c97f669dc36。   请不要更改此应用程序 ID。
 
 ```powershell
 New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 ```
 
-现在，使用 [New-AzureADGroup][New-AzureADGroup] cmdlet 创建名为“AAD DC 管理员”的 Azure AD 组。  然后，向添加到此组的用户授予在 Azure AD DS 托管域上执行管理任务的权限。
+现在，使用 [New-AzureADGroup][New-AzureADGroup] cmdlet 创建名为“AAD DC 管理员”的 Azure AD 组。  然后，添加到此组的用户会被授予在 Azure AD DS 托管域上执行管理任务的权限。
 
 ```powershell
 New-AzureADGroup -DisplayName "AAD DC Administrators" `
@@ -105,7 +105,7 @@ $UserObjectId = Get-AzureADUser `
 Add-AzureADGroupMember -ObjectId $GroupObjectId.ObjectId -RefObjectId $UserObjectId.ObjectId
 ```
 
-最后，使用 [New-AzResourceGroup][New-AzResourceGroup] cmdlet 创建一个资源组。 在以下示例中，资源组名为 myResourceGroup，它是在 westus 区域中创建的。   使用自己的名称和所需区域：
+最后，使用 [New-AzResourceGroup][New-AzResourceGroup] cmdlet 创建一个资源组。 在以下示例中，资源组被命名为 myResourceGroup，并且是在 westus 区域中创建的。   使用自己的名称和所需区域：
 
 ```powershell
 New-AzResourceGroup `
@@ -115,7 +115,7 @@ New-AzResourceGroup `
 
 如果选择支持可用性区域的区域，则 Azure AD DS 资源会跨区域分布以实现额外的冗余。 可用性区域是 Azure 区域中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的地区中都必须至少有三个单独的区域。
 
-对于要跨区域分布 Azure AD DS，无需进行任何配置。 Azure 平台会自动处理资源的区域分配。 有关详细信息和区域可用性，请参阅[Azure 中的可用性区域是什么？][availability-zones]。
+对于要跨区域分布 Azure AD DS，无需进行任何配置。 Azure 平台会自动处理资源的区域分配。 若要查看详细信息和区域可用性，请参阅[Azure 中的可用性区域是什么？][availability-zones]。
 
 ## <a name="resource-definition-for-azure-ad-ds"></a>Azure AD DS 的资源定义
 
@@ -123,9 +123,9 @@ New-AzResourceGroup `
 
 | 参数               | 值 |
 |-------------------------|---------|
-| domainName              | 托管域的 DNS 域名，填写此参数时，请注意前面提到的有关命名前缀和冲突的要点。 |
-| filteredSync            | Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围同步特定的组。   如果选择同步所有用户和组，则以后无法选择仅执行按范围同步。<br /> 有关按范围同步的详细信息，请参阅 [Azure AD 域服务的按范围同步][scoped-sync]。|
-| notificationSettings    | 如果 Azure AD DS 托管域中生成了任何警报，可以发出电子邮件通知。 <br />可为 Azure 租户的“全局管理员”以及“AAD DC 管理员”组的成员启用这些通知。   <br /> 可根据需要添加更多的通知收件人来关注警报。|
+| domainName              | 托管域的 DNS 域名，填写此参数时，请考虑到前面提到的有关命名前缀和冲突的要点。 |
+| filteredSync            | Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围同步特定的组。   如果选择同步所有用户和组，则以后无法选择仅执行范围内同步。<br /> 有关按范围同步的详细信息，请参阅 [Azure AD 域服务的按范围同步][scoped-sync]。|
+| notificationSettings    | 如果 Azure AD DS 托管域中生成了任何警报，可以发出电子邮件通知。 <br />可为 Azure 租户的“全局管理员”以及“AAD DC 管理员”组的成员启用这些通知。   <br /> 如果需要，可以添加更多收件人来接收在有需要关注的警报时发出的通知。|
 | domainConfigurationType | 默认情况下，Azure AD DS 托管域作为用户林创建  。 此类林可同步 Azure AD 中的所有对象，包括在本地 AD DS 环境中创建的所有用户帐户。 无需指定 domainConfiguration 值即可创建用户林。 <br /> *资源*林仅同步直接在 Azure AD 中创建的用户和组。 资源林目前处于预览状态。 将值设置为 ResourceTrusting 可创建资源林。 <br />有关资源林的详细信息，包括为何使用资源林以及如何创建本地 AD DS 域的林信任，请参阅 [Azure AD DS 资源林概述][resource-forests]  。|
 
 以下精简参数定义演示了这些值的声明方式。 将创建名为 aaddscontoso.com 的用户林，其中包含已从 Azure AD 同步到 Azure AD DS 托管域的所有用户： 
@@ -149,7 +149,7 @@ New-AzResourceGroup `
 }
 ```
 
-然后，使用以下精简资源管理器模板资源类型来定义和创建 Azure AD DS 托管域。 必须已存在一个 Azure 虚拟网络和子网，或者可以创建一个虚拟网络和子网作为资源管理器模板的一部分。 Azure AD DS 托管域已连接到此子网。
+然后，以下精简资源管理器模板资源类型将用来定义和创建 Azure AD DS 托管域。 一个 Azure 虚拟网络和子网必须已存在，或者作为资源管理器模板的一部分创建。 Azure AD DS 托管域已连接到此子网。
 
 ```json
 "resources": [
@@ -325,12 +325,12 @@ New-AzResourceGroup `
 New-AzResourceGroupDeployment -ResourceGroupName "myResourceGroup" -TemplateFile <path-to-template>
 ```
 
-创建资源并将控制权返回给 PowerShell 提示符需要花费几分钟时间。 Azure AD DS 托管域将在后台继续预配，完成部署最长可能需要一小时。 在 Azure 门户中，Azure AD DS 托管域的“概述”页会显示整个部署阶段的当前状态。 
+创建资源并将控制权返回给 PowerShell 提示符需要花费几分钟时间。 Azure AD DS 托管域将在后台继续预配，完成部署最长可能需要一小时。 在 Azure 门户中，Azure AD DS 托管域的“概览”页会显示整个部署阶段的当前状态。 
 
 当 Azure 门户显示 Azure AD DS 托管域已完成预配时，需要完成以下任务：
 
 * 为虚拟网络更新 DNS 设置，以使虚拟机能够找到用于域加入或身份验证的托管域。
-    * 若要配置 DNS，请在门户中选择你的 Azure AD DS 托管域。 在“概述”窗口中，系统会提示你自动配置这些 DNS 设置。 
+    * 若要配置 DNS，请在门户中选择你的 Azure AD DS 托管域。 在“概览”窗口中，系统会提示你自动配置这些 DNS 设置。 
 * [启用 Azure AD 域服务的密码同步](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，使最终用户能够使用其企业凭据登录到托管域。
 
 ## <a name="next-steps"></a>后续步骤

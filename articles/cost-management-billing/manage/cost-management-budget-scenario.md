@@ -34,7 +34,7 @@ ms.locfileid: "80586382"
 
 ## <a name="create-an-azure-automation-runbook"></a>创建 Azure 自动化 Runbook
 
-[Azure 自动化](https://docs.microsoft.com/azure/automation/automation-intro)是一种服务，可用于编写大部分资源管理任务并按计划或按需运行这些任务。 作为此方案的一部分，你将创建用于停止 VM 的 [Azure 自动化 Runbook](https://docs.microsoft.com/azure/automation/automation-runbook-types)。 请使用[库](https://docs.microsoft.com/azure/automation/automation-runbook-gallery)中的[停止 Azure V2 VM](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) 图形 Runbook 来构建此方案。 通过将此 Runbook 导入 Azure 帐户并发布，可以在达到预算阈值时停止 VM。
+[Azure 自动化](https://docs.microsoft.com/azure/automation/automation-intro)是一种服务，可用于编写大部分资源管理任务并按计划或按需运行这些任务。 你将创建用于停止 VM 的 [Azure 自动化 Runbook](https://docs.microsoft.com/azure/automation/automation-runbook-types)，作为此方案的一部分。 请使用[库](https://docs.microsoft.com/azure/automation/automation-runbook-gallery)中的[停止 Azure V2 VM](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) 图形 Runbook 来构建此方案。 通过将此 Runbook 导入 Azure 帐户并发布，可以在达到预算阈值时停止 VM。
 
 ### <a name="create-an-azure-automation-account"></a>创建 Azure 自动化帐户
 
@@ -55,7 +55,7 @@ ms.locfileid: "80586382"
 1. 在“流程自动化”部分选择“Runbook 库”   。
 1. 将“库源”设置为“脚本中心”，然后选择“确定”    。
 1. 在 Azure 门户中找到并选择[停止 Azure V2 VM](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) 库项。
-1. 选择“导入”以显示“导入”区域，然后选择“确定”    。 此时将显示 Runbook 概述区域。
+1. 选择“导入”以显示“导入”区域，然后选择“确定”    。 此时会显示 Runbook 概览区域。
 1. Runbook 完成导入过程后，选择“编辑”以显示图形 runbook 编辑器和发布选项  。  
     ![Azure - 编辑图形 Runbook](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-01.png)
 1. 选择“发布”以发布该 Runbook，并在出现提示时选择“是”   。 发布 runbook 时，可以用草稿版本替代任何现有的已发布版本。 在本例中，还没有已发布版本，因为才创建了 Runbook。
@@ -63,21 +63,21 @@ ms.locfileid: "80586382"
 
 ## <a name="create-webhooks-for-the-runbook"></a>为 runbook 创建 Webhook
 
-使用[停止 Azure V2 VM](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) 图形 Runbook 创建两个 Webhook 以通过单个 HTTP 请求在 Azure 自动化中启动 Runbook。 第一个 Webhook 将在达到 80% 预算阈值时调用 Runbook，并将资源组名称作为参数，允许停止可选的 VM。 然后，第二个 Webhook 将（在达到 100% 时）调用不带任何参数的 Runbook，以停止所有剩余的 VM 实例。
+使用[停止 Azure V2 VM](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) 图形 Runbook 创建两个 Webhook，以便通过单个 HTTP 请求在 Azure 自动化中启动 Runbook。 第一个 Webhook 会在达到 80% 预算阈值时调用 Runbook，并将资源组名称作为参数，允许停止可选的 VM。 然后，第二个 Webhook 会（在达到 100% 预算阈值时）调用不带任何参数的 Runbook，以停止所有剩余的 VM 实例。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“Runbook”页中，选择“StopAzureV2Vm”Runbook 显示该 Runbook 的概述区域。  
-1. 选择页面顶部的“Webhook”打开“添加 Webhook”区域   。
-1. 选择“创建新的 Webhook”打开“创建新的 Webhook”区域   。
+1. 在 [Azure 门户](https://portal.azure.com/)的“Runbook”页中，选择“StopAzureV2Vm”Runbook 以显示该 Runbook 的概览区域。  
+1. 选择页面顶部的“Webhook”，打开“添加 Webhook”区域   。
+1. 选择“创建新的 Webhook”，打开“创建新的 Webhook”区域   。
 1. 将 Webhook 的“名称”设置为“Optional”   。 “启用”属性必须为“是”   。 无需更改“过期时间”值  。 有关 Webhook 属性的详细信息，请参阅 [Webhook 属性](../../automation/automation-webhooks.md#webhook-properties)。
 1. 选择 URL 值旁边的复制图标以复制 Webhook 的 URL。
    > [!IMPORTANT]
    > 将名为“Optional”的 Webhook 的 URL 保存在安全的位置  。 本教程稍后会用到该 URL。 出于安全原因，创建 Webhook 后，就不能再次查看或检索该 URL。
 1. 选择“确定”以创建新的 Webhook  。
-1. 选择“配置参数和运行设置”以查看该 Runbook 的参数值  。
+1. 选择“配置参数并运行设置”以查看该 Runbook 的参数值  。
    > [!NOTE]
    > 如果 Runbook 包含必需的参数，除非提供了相应的值，否则无法创建 Webhook。
-1. 选择“确定”以接受 Webhook 参数值  。
-1. 选择“创建”  以创建 Webhook。
+1. 选择“确定”，接受 Webhook 参数值  。
+1. 选择“创建”  ，创建 Webhook。
 1. 接下来，请按上述步骤创建名为“Complete”的第二个 Webhook  。
     > [!IMPORTANT]
     > 请务必保存这两个 Webhook URL，供本教程后面部分使用。 出于安全原因，创建 Webhook 后，就不能再次查看或检索该 URL。
@@ -94,7 +94,7 @@ ms.locfileid: "80586382"
 
 可将“预算”设置为在达到指定的阈值时触发通知。 可提供触发通知的多个阈值，逻辑应用将为你演示基于达到的阈值执行不同操作的能力。 本示例将设置一个方案，其中你会收到两个通知，达到预算的 80% 时会收到第一个通知，达到预算的 100% 时会收到第二个通知。 逻辑应用将用于关闭资源组中的所有 VM。 首先，将达到“Optional”阈值的 80%，然后达到第二个阈值，此时将关闭订阅中的所有 VM  。
 
-可通过逻辑应用为 HTTP 触发器提供示例架构，但需要设置 Content-Type 标头  。 由于操作组没有 Webhook 的自定义标头，必须在单独的步骤中分析有效负载。 你将使用“分析”操作并为其提供有效负载示例  。
+可通过逻辑应用为 HTTP 触发器提供示例架构，但需要设置 Content-Type 标头  。 由于操作组没有 Webhook 的自定义标头，因此必须在单独的步骤中分析有效负载。 你将使用“分析”操作并为其提供有效负载示例  。
 
 ### <a name="create-the-logic-app"></a>创建逻辑应用
 
@@ -114,7 +114,7 @@ ms.locfileid: "80586382"
 1. 在“创建逻辑应用”区域中，提供创建逻辑应用所需的详细信息，选择“固定到仪表板”，然后选择“创建”    。  
     ![Azure - 创建逻辑应用](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-03a.png)
 
-在 Azure 部署逻辑应用后，“逻辑应用设计器”会打开并显示一个包含简介视频和常用触发器的区域  。
+当 Azure 部署逻辑应用后，“逻辑应用设计器”会打开并显示一个包含简介视频和常用触发器的区域  。
 
 ### <a name="add-a-trigger"></a>添加触发器
 
@@ -238,7 +238,7 @@ ms.locfileid: "80586382"
 
 ## <a name="create-the-azure-budget"></a>创建 Azure 预算
 
-可以使用成本管理中的[预算功能](../costs/tutorial-acm-create-budgets.md)在 Azure 门户中创建预算。 也可以使用 REST API、PowerShell cmdlet 或 CLI 创建预算。 以下过程使用 REST API。 在调用 REST API 之前，需要授权令牌。 若要创建授权令牌，可使用 [ARMClient](https://github.com/projectkudu/ARMClient) 项目。 通过 ARMClient，可向 Azure 资源管理器进行身份验证，并获取令牌来调用 API  。
+可以使用成本管理中的[预算功能](../costs/tutorial-acm-create-budgets.md)在 Azure 门户中创建预算。 也可以使用 REST API、PowerShell cmdlet 或 CLI 创建预算。 以下过程使用 REST API。 在调用 REST API 之前，需要一个授权令牌。 若要创建授权令牌，可使用 [ARMClient](https://github.com/projectkudu/ARMClient) 项目。 通过 ARMClient，可向 Azure 资源管理器进行身份验证，并获取令牌来调用 API  。
 
 ### <a name="create-an-authentication-token"></a>创建身份验证令牌
 
@@ -259,7 +259,7 @@ ms.locfileid: "80586382"
 
 ### <a name="create-the-budget"></a>创建预算
 
-接下来，通过调用 Azure Consumption REST API 来配置 Postman，以创建预算  。 Postman 是一个 API 开发环境。 需将环境和集合文件导入 Postman 中。 集合包含调用 Azure Consumption REST API 的 HTTP 请求的分组定义。 环境文件包含集合使用的变量。
+接下来，通过调用 Azure 使用情况 REST API 来配置 Postman，以创建预算  。 Postman 是一个 API 开发环境。 需将环境和集合文件导入 Postman 中。 集合包含调用 Azure Consumption REST API 的 HTTP 请求的分组定义。 环境文件包含集合使用的变量。
 
 1. 下载并安装 [Postman REST 客户端](https://www.getpostman.com/)，以执行 REST API。
 1. 在 Postman 中，创建新请求。  

@@ -24,7 +24,7 @@ ms.locfileid: "80678678"
 
 ## <a name="prerequisites"></a>先决条件
 
-本教程假设你已阅读[教程：在 Unity 中使用远程实体](working-with-remote-entities.md)。 但是，你只需要一个可用于连接到会话并加载模型的 Unity 项目，具体请参阅[教程：从头开始设置 Unity 项目](project-setup.md)。
+本教程假设你已熟悉 [Tutorial:Working with remote entities in Unity](working-with-remote-entities.md)（教程：在 Unity 中使用远程实体）。 但是，你只需要一个可用于连接到会话并加载模型的 Unity 项目，具体请参阅 [Tutorial:Setting up a Unity project from scratch](project-setup.md)（教程：从头开始设置 Unity 项目）。
 
 > [!TIP]
 > [ARR 示例存储库](https://github.com/Azure/azure-remote-rendering)在 Unity 文件夹中包含了为所有教程准备的 Unity 项目，可将其用作参考。 
@@ -95,9 +95,9 @@ public class RemoteSky : MonoBehaviour
 }
 ```
 
-请注意，上面之所以使用了 `LoadTextureFromSASAsync` 变体，是因为加载了内置纹理。 如果纹理是从[链接的 Blob 存储](../../how-tos/create-an-account.md#link-storage-accounts)加载的，请使用 `LoadTextureAsync` 变体。 在[模型加载部分](../../concepts/models.md#loading-models)可以找到演示如何对模型执行此操作的示例。
+请注意，上面之所以使用了 `LoadTextureFromSASAsync` 变体，是因为加载了内置纹理。 如果纹理是从[关联的 Blob 存储](../../how-tos/create-an-account.md#link-storage-accounts)加载的，请使用 `LoadTextureAsync` 变体。 在[模型加载部分](../../concepts/models.md#loading-models)可以找到演示如何对模型执行此操作的示例。
 
-运行代码并切换星空图时，将会注意到模型中光线的急剧变化。 但是，背景将保持黑色，而你看不到实际的星空纹理。 这是有意而为的，因为使用增强现实设备渲染背景会分散注意力。 在适当的应用程序中，应使用类似于现实生活中周边环境的星空纹理，因为这有助于使对象显得更真实。
+运行代码并切换星空图时，你会注意到模型中光线的急剧变化。 但是，背景会保持黑色，而你看不到实际的星空纹理。 这是有意而为的，因为使用增强现实设备渲染背景会分散注意力。 在适当的应用程序中，应使用类似于现实生活中周边环境的星空纹理，因为这会使对象显得更真实。
 
 ## <a name="modify-materials"></a>修改材料
 
@@ -314,19 +314,19 @@ public class RemoteModelEntity : MonoBehaviour
 }
 ```
 
-在运行此代码时，鼠标悬停到的对象将突出显示。 其效果与教程 2 中类似，但实现方式不同。 此处，我们将获取拾取的对象中的材料列表，然后将第一个材料修改为使用不同的 albedo 颜色。
+在运行此代码时，鼠标悬停的对象会突出显示。 其效果与教程 2 中类似，但实现方式不同。 此处，我们将获取所拾取对象中的材料列表，然后将第一个材料修改为使用不同的 albedo 颜色。
 
 > [!IMPORTANT]
-> 请注意，此方法是否突出显示模型的适当部件将取决于模型的创作方式。 如果每个对象只使用一个材料，则此方法可完美进行。 但是，如果模型的部件与材料不存在 1 对 1 的关系，则上述简单代码不会正常运行。
+> 请注意，此方法是否突出显示模型的适当部件取决于模型的创作方式。 如果每个对象只使用一个材料，则此方法可完美进行。 但是，如果模型的部件与材料不存在 1 对 1 的关系，则上述简单代码不会正常运行。
 
 ## <a name="use-a-different-texture"></a>使用不同纹理
 
-[纹理](../../concepts/textures.md)通常是源模型的组成部分。 在[模型转换](../../quickstarts/convert-model.md)期间，所有纹理将转换为所需的运行时格式，并打包到最终的模型文件中。 若要在运行时替换某个纹理，需以 [DDS 文件格式](https://en.wikipedia.org/wiki/DirectDraw_Surface)将其保存，并将其上传到 Azure Blob 存储。 有关如何创建 Azure Blob 容器，请参阅[此快速入门指南](../../quickstarts/convert-model.md)。 创建 Blob 容器后，可以在 Azure 存储资源管理器中将其打开，并通过拖放操作上传文件。
+[纹理](../../concepts/textures.md)通常是源模型的组成部分。 在[模型转换](../../quickstarts/convert-model.md)期间，所有纹理将转换为所需的运行时格式，并打包到最终的模型文件中。 若要在运行时替换某个纹理，需以 [DDS 文件格式](https://en.wikipedia.org/wiki/DirectDraw_Surface)将其保存，并将其上传到 Azure Blob 存储。 若要了解如何创建 Azure Blob 容器，请参阅[此快速入门指南](../../quickstarts/convert-model.md)。 有了 Blob 容器后，可以在 Azure 存储资源管理器中将其打开，并通过拖放操作上传文件。
 
 在运行时端，可通过两种不同的方式对 Blob 存储中的纹理资产进行寻址：
 
-* 按纹理的 SAS URI 寻址。 为此，请右键单击已上传的文件，然后从上下文菜单中选择“获取共享访问签名...”。  将此 SAS URI 与 `LoadTextureFromSASAsync` 函数变体一起使用（请参阅下面的示例代码）。
-* 如果 [Blob 存储已链接到帐户](../../how-tos/create-an-account.md#link-storage-accounts)，则可直接按 Blob 存储参数对纹理进行寻址。 在本例中，相关的加载函数为 `LoadTextureAsync`。
+* 按纹理的 SAS URI 对纹理寻址。 为此，请右键单击已上传的文件，然后从上下文菜单中选择“获取共享访问签名...”。  将此 SAS URI 与 `LoadTextureFromSASAsync` 函数变体一起使用（请参阅下面的示例代码）。
+* 如果 [Blob 存储已关联到帐户](../../how-tos/create-an-account.md#link-storage-accounts)，则可直接按 Blob 存储参数对纹理进行寻址。 在本例中，相关的加载函数为 `LoadTextureAsync`。
 
 现在，请打开 RemoteModelEntity 脚本，添加以下代码，然后删除重复的函数： 
 
@@ -385,11 +385,11 @@ public class RemoteModelEntity : MonoBehaviour
     }
 ```
 
-运行此代码，并将鼠标悬停在模型上。 如果模型使用了正确的 UV 坐标，则纹理应该就会显示出来。 否则只能看到颜色变化。
+运行此代码，并将鼠标悬停在模型上。 如果模型使用了正确的 UV 坐标，则纹理应该会显示出来， 否则只能看到颜色变化。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关如何在 Unity 中使用 Azure 远程渲染的简介教程系列到此结束。 接下来，请熟悉 ARR 的一些基本概念（例如[会话](../../concepts/sessions.md)、[实体](../../concepts/entities.md)和[模型](../../concepts/models.md)）以加深理解。 此外，还可以深入探索其他各种功能，例如[灯光](../../overview/features/lights.md)、[外框渲染](../../overview/features/outlines.md)、[分层状态重写](../../overview/features/override-hierarchical-state.md)和[材料](../../concepts/materials.md)。
+有关如何在 Unity 中使用 Azure 远程渲染的简介教程系列到此结束。 接下来，请熟悉 ARR 的一些基本概念（例如[会话](../../concepts/sessions.md)、[实体](../../concepts/entities.md)和[模型](../../concepts/models.md)），加深理解。 此外，还可以深入探索其他各种功能，例如[灯光](../../overview/features/lights.md)、[外框渲染](../../overview/features/outlines.md)、[分层状态重写](../../overview/features/override-hierarchical-state.md)和[材料](../../concepts/materials.md)。
 
 > [!div class="nextstepaction"]
 > [Unity 游戏对象和组件](../../how-tos/unity/objects-components.md)
