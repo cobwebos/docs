@@ -1,53 +1,42 @@
 ---
-title: 快速入门：从麦克风中识别语音，C++ (Windows) - 语音服务
-titleSuffix: Azure Cognitive Services
-description: 了解如何在 Windows 桌面上使用语音 SDK 通过 C++ 识别语音
-services: cognitive-services
-author: wolfma61
-manager: nitinme
+author: trevorbye
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 12/17/2019
-ms.author: wolfma
-ms.openlocfilehash: 416c2893ebf07cd638f3f1c06c709db2586245d1
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/03/2020
+ms.author: trbye
+ms.openlocfilehash: db87f31f4702d3487a11a6d833755105455d74c8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925737"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400797"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 准备工作：
 
 > [!div class="checklist"]
-> * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=windows)
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">创建 Azure 语音资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=windows&pivots=programming-language-cpp)
 > * 请确保你有权访问麦克风，以便进行音频捕获
 
-## <a name="add-sample-code"></a>添加示例代码
+## <a name="source-code"></a>源代码
 
-1. 打开源文件 **helloworld.cpp**。
+创建一个名为 *helloworld.cpp* 的 C++ 源文件，并将以下代码粘贴到其中。
 
-1. 将所有代码替换为以下片段：
+[!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-microphone/helloworld/helloworld.cpp#code)]
 
-   [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-microphone/helloworld/helloworld.cpp#code)]
+[!INCLUDE [replace key and region](../replace-key-and-region.md)]
 
-1. 在同一文件中，将字符串 `YourSubscriptionKey` 替换为你的订阅密钥。
+## <a name="code-explanation"></a>代码说明
 
-1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](https://aka.ms/speech/sdkregion)中的“区域标识符”（例如，对于免费试用版订阅，为 `westus`）。 
+[!INCLUDE [code explanation](../code-explanation.md)]
 
-1. 在菜单栏中，选择“文件”   > “全部保存”  。
-
-> [!NOTE]
-> 语音 SDK 将默认使用 en-us 作为语言进行识别。若要了解如何选择源语言，请参阅[指定语音转文本的源语言](../../../../how-to-specify-source-language.md)。
-
-## <a name="build-and-run-the-application"></a>构建并运行应用程序
+## <a name="build-and-run-app"></a>生成并运行应用
 
 1. 从菜单栏中，选择“构建”   > “构建解决方案”  以构建应用程序。 现在，编译代码时应不会提示错误。
 
-1. 选择“调试”   > “开始调试”  （或按 F5  ）以启动 helloworld  应用程序。
+1. 选择“调试”   > “开始调试”  （或按 F5<kbd></kbd>）以启动 helloworld  应用程序。
 
 1. 说一个英语短语或句子。 应用程序将语音传输到语音服务，该服务转录文本并将其发送回应用程序以供显示。
 
@@ -55,4 +44,4 @@ ms.locfileid: "78925737"
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]

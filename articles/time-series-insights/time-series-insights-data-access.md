@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 04/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1c8f14bb1bca082a9d887e5d6d88aec213448c3e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1735daf66483df496141a642ac6633973aa0abf0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79254347"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407550"
 ---
 # <a name="grant-data-access-to-an-environment"></a>授予对环境的数据访问权限
 
@@ -27,8 +27,8 @@ ms.locfileid: "79254347"
 
 ## <a name="sign-in-to-time-series-insights"></a>登录到 Azure 时序见解
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
-1. 查找时序见解环境。 在“搜索”框中输入 `Time Series`。**** 在搜索结果中选择“时序环境”****。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 查找时序见解环境。 在“搜索”框中输入 `Time Series`。**** 在搜索结果中选择**时间序列环境**。
 1. 从列表中选择时序见解环境。
 
 ## <a name="grant-data-access"></a>授予数据访问权限

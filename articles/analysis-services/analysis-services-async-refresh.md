@@ -4,19 +4,19 @@ description: 介绍如何使用 Azure Analysis Services REST API 对模型数据
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6457f062a40e60a491220fcf977585e8b07445b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5f6cec8b7fd1169a4f04649fcaf7bb7ada33833
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273716"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406284"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>使用 REST API 执行异步刷新
 
-使用支持 REST 调用的任何编程语言，可以针对 Azure Analysis Services 表格模型执行异步数据刷新操作。 这包括同步只读副本以进行查询扩展。 
+通过使用支持 REST 调用的任何编程语言，可以在 Azure 分析服务表格模型上执行异步数据刷新操作。 这包括同步只读副本以进行查询扩展。 
 
 数据刷新操作可能需要一些时间，具体取决于许多因素，包括数据量、使用分区的优化级别等。这些操作传统上是使用现有方法调用的，例如使用[TOM（](https://docs.microsoft.com/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo)表格对象模型[）、PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) cmdlet 或[TMSL（](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)表格模型脚本语言）。 但是，这些方法可能需要通常不可靠的且长时间运行的 HTTP 连接。
 
@@ -97,7 +97,7 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 
 不需要指定参数。 将应用默认值。
 
-| “属性”             | 类型  | 说明  |默认  |
+| 名称             | 类型  | 说明  |默认  |
 |------------------|-------|--------------|---------|
 | `Type`           | 枚举  | 要执行的处理类型。 类型与 TMSL [refresh 命令](https://docs.microsoft.com/analysis-services/tmsl/refresh-command-tmsl)类型相符：full、clearValues、calculate、dataOnly、automatic 和 defragment。 Add 类型不受支持。      |   automatic      |
 | `CommitMode`     | 枚举  | 确定是要分批提交对象，还是只在完成时才提交。 模式包括：default、transactional、partialBatch。  |  transactional       |
@@ -112,7 +112,7 @@ CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个�
 
 ### <a name="status-values"></a>状态值
 
-|状态值  |描述  |
+|状态值  |说明  |
 |---------|---------|
 |`notStarted`    |   操作尚未启动。      |
 |`inProgress`     |   操作正在进行。      |
@@ -208,8 +208,8 @@ CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个�
 
 ### <a name="to-use-the-code-sample"></a>使用代码示例
 
-1.  克隆或下载存储库。 打开 RestApiSample 解决方案。
-2.  找到 **client.BaseAddress = …** 行 并提供自己的[基 URL](#base-url)。
+1.    克隆或下载存储库。 打开 RestApiSample 解决方案。
+2.    找到 **client.BaseAddress = …** 行 并提供自己的[基 URL](#base-url)。
 
 此代码示例使用[服务主体](#service-principal)身份验证。
 
@@ -217,12 +217,12 @@ CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个�
 
 有关如何在 Azure AS 中设置服务主体和分配必要权限的详细信息，请参阅[创建服务主体 - Azure 门户](../active-directory/develop/howto-create-service-principal-portal.md)和[将服务主体添加到服务器管理员角色](analysis-services-addservprinc-admins.md)。 完成上述步骤后，请完成以下附加步骤：
 
-1.  在代码示例中，找到 **string authority = …**，将 **common** 替换为组织的租户 ID。
-2.  注释/取消注释，以便使用 ClientCredential 类来实例化 cred 对象。 确保以安全方式访问 \<App ID> 和 \<App Key> 值，或者对服务主体使用基于证书的身份验证。
-3.  运行该示例。
+1.    在代码示例中，查找**字符串权限 = ...** **common**
+2.    注释/取消注释，以便使用 ClientCredential 类来实例化 cred 对象。 确保以安全方式访问 \<App ID> 和 \<App Key> 值，或者对服务主体使用基于证书的身份验证。
+3.    运行该示例。
 
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 [样品](analysis-services-samples.md)   
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)   

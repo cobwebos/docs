@@ -12,18 +12,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 231b0d77dc441e70dc0ec8de313291bb6b4f9292
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aedb3df69821d1436b03b2eb1f12873b624d426e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79261393"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414173"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>复制活动性能和可伸缩性指南
 
 > [!div class="op_single_selector" title1="选择正在使用的 Azure 数据工厂版本："]
 > * [版本 1](v1/data-factory-copy-activity-performance.md)
 > * [当前版本](copy-activity-performance.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 无论是要执行从 Data Lake 或企业数据仓库 (EDW) 到 Azure 的大规模数据迁移，还是要将数据从不同的源大规模引入到 Azure 以进行大数据分析，实现最佳性能和可伸缩性都至关重要。  Azure 数据工厂提供高性能、可复原且经济高效的机制用于大规模引入数据，因此，想要生成高性能、可缩放数据引入管道的数据工程师非常适合使用数据工厂。
 
@@ -101,19 +103,19 @@ Azure 数据工厂提供以下性能优化功能：
 
 ### <a name="data-integration-units"></a>数据集成单元
 
-数据集成单元是一种度量单位，代表单个单位在 Azure 数据工厂中的能力（包含 CPU、内存、网络资源分配）。 数据集成单元仅适用于 [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)，而不适用于[自承载集成运行时](concepts-integration-runtime.md#self-hosted-integration-runtime)。 [了解详情](copy-activity-performance-features.md#data-integration-units)。
+数据集成单元是一种度量单位，代表单个单位在 Azure 数据工厂中的能力（包含 CPU、内存、网络资源分配）。 数据集成单元仅适用于 [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)，而不适用于[自承载集成运行时](concepts-integration-runtime.md#self-hosted-integration-runtime)。 [了解详细信息](copy-activity-performance-features.md#data-integration-units)。
 
 ### <a name="self-hosted-integration-runtime-scalability"></a>自托管集成运行时可扩展性
 
-要承载不断增加的并发工作负载或实现更高的性能，可以向上扩展或扩展自托管的集成运行时。 [了解详情](copy-activity-performance-features.md#self-hosted-integration-runtime-scalability)。
+要承载不断增加的并发工作负载或实现更高的性能，可以向上扩展或扩展自托管的集成运行时。 [了解详细信息](copy-activity-performance-features.md#self-hosted-integration-runtime-scalability)。
 
 ### <a name="parallel-copy"></a>并行复制
 
-您可以设置并行复制以指示您希望复制活动使用的并行性。 可以将此属性视为复制活动中从源读取或并行写入接收器数据存储的最大线程数。 [了解详情](copy-activity-performance-features.md#parallel-copy)。
+您可以设置并行复制以指示您希望复制活动使用的并行性。 可以将此属性视为复制活动中从源读取或并行写入接收器数据存储的最大线程数。 [了解详细信息](copy-activity-performance-features.md#parallel-copy)。
 
 ### <a name="staged-copy"></a>暂存复制
 
-将数据从源数据存储复制到接收器数据存储时，可能会选择使用 Blob 存储作为过渡暂存存储。 [了解详情](copy-activity-performance-features.md#staged-copy)。
+将数据从源数据存储复制到接收器数据存储时，可能会选择使用 Blob 存储作为过渡暂存存储。 [了解详细信息](copy-activity-performance-features.md#staged-copy)。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅其他复制活动文章：

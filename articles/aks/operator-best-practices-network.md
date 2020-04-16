@@ -5,12 +5,12 @@ description: 了解 Azure Kubernetes 服务 (AKS) 中虚拟网络资源和连接
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: c8aee9967e09d2ae8bec3ee170756d8d22de0fe4
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 1eed6f1f82a8a91b2335760e99ea6b895d15547e
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668203"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392717"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的网络连接和安全的最佳做法
 
@@ -43,7 +43,7 @@ ms.locfileid: "80668203"
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
-有关 AKS 服务主体委托的详细信息，请参阅[委托对其他 Azure 资源的访问权限][sp-delegation]。
+有关 AKS 服务主体委托的详细信息，请参阅[委托对其他 Azure 资源的访问权限][sp-delegation]。 您还可以使用分配给托管标识的系统来访问权限，而不是服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
 
 每个节点和 Pod 在接收自己的 IP 地址时，请规划 AKS 子网的地址范围。 子网必须大到足以为每个部署的节点、Pod 和网络资源提供 IP 地址。 每个 AKS 群集必须位于自己的子网中。 要允许连接到 Azure 中的本地网络或对等互连网络，请勿使用与现有网络资源重叠的 IP 地址范围。 每个节点使用 kubenet 和 Azure CNI 网络运行的 Pod 数量存在默认限制。 要处理横向扩展事件或群集升级，还需要其他 IP 地址，以便在分配的子网中使用。 如果您使用 Windows Server 容器（当前在 AKS 中预览），此附加地址空间尤其重要，因为这些节点池需要升级才能应用最新的安全修补程序。 有关 Windows 服务器节点的详细信息，请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
 

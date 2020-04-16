@@ -4,16 +4,16 @@ description: 创建测试证书，并了解如何将其安装在 Azure IoT Edge 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/26/2020
+ms.date: 04/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5afb9b7a6ba1ffb99df064c9f92780dc820b2e8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 364846f6cef196f6cefa7872af48f262b387db4f
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535980"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393817"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>创建演示证书用于测试 IoT Edge 设备功能
 
@@ -247,8 +247,9 @@ New-CACertsEdgeDeviceIdentity "<name>"
 
 传递给此命令的名称将是 IoT 中心中的 IoT 边缘设备的设备 ID。
 
-新的设备标识命令创建多个证书和密钥文件，包括两个在 DPS 中创建单个注册和安装 IoT Edge 运行时时将使用的文件：
+新的设备标识命令创建多个证书和密钥文件，包括三个在 DPS 中创建单个注册和安装 IoT Edge 运行时时将使用的文件：
 
+* `<WRKDIR>\certs\iot-edge-device-identity-<name>-full-chain.cert.pem`
 * `<WRKDIR>\certs\iot-edge-device-identity-<name>.cert.pem`
 * `<WRKDIR>\private\iot-edge-device-identity-<name>.key.pem`
 
@@ -262,8 +263,9 @@ New-CACertsEdgeDeviceIdentity "<name>"
 
 传递给此命令的名称将是 IoT 中心中的 IoT 边缘设备的设备 ID。
 
-该脚本创建多个证书和密钥文件，包括两个在 DPS 中创建单个注册和安装 IoT Edge 运行时时将使用的文件：
+该脚本创建多个证书和密钥文件，包括三个在 DPS 中创建单个注册和安装 IoT Edge 运行时时将使用的文件：
 
+* `<WRKDIR>\certs\iot-edge-device-identity-<name>-full-chain.cert.pem`
 * `<WRKDIR>/certs/iot-edge-device-identity-<name>.cert.pem`
 * `<WRKDIR>/private/iot-edge-device-identity-<name>.key.pem`
 

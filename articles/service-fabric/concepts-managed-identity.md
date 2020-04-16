@@ -4,14 +4,14 @@ description: 了解如何将托管标识用于 Azure 与服务结构。
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: 06ebcfdf3d6a3815908752153acb09437d745d15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f6f3736bed4d3d59bce08d4df3ee0aa164a0a764
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76986744"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415116"
 ---
-# <a name="using-managed-identities-for-azure-with-service-fabric-preview"></a>使用具有服务结构的 Azure 的托管标识（预览）
+# <a name="using-managed-identities-for-azure-with-service-fabric"></a>使用具有服务结构的 Azure 托管标识
 
 构建云应用程序时面临的一个常见挑战是，如何安全地管理代码中的凭据，以便对各种服务进行身份验证，而无需将它们保存在开发人员工作站或源代码管理中。 *Azure 的托管标识*通过在 Azure AD 中自动托管标识为 Azure 活动目录 （Azure AD） 中的所有资源提供此问题。 可以使用服务标识对支持 Azure AD 身份验证（包括密钥保管库）的任何服务进行身份验证，而无需在代码中存储任何凭据。
 
@@ -33,7 +33,7 @@ Azure 的托管标识基于几个关键概念：
 托管标识分为两种类型：
 
 - 直接在 Azure 服务实例上启用**系统分配的托管标识**。  系统分配的标识的生命周期对于启用它的 Azure 服务实例是唯一的。
-- **用户分配的托管标识**将创建为独立的 Azure 资源。 标识可以分配给一个或多个 Azure 服务实例，并独立于这些实例的生命周期进行管理。
+- **用户分配托管标识**是作为独立的 Azure 资源创建的。 标识可以分配给一个或多个 Azure 服务实例，并独立于这些实例的生命周期进行管理。
 
 为了进一步了解托管标识类型之间的区别，请参阅[Azure 资源的托管标识如何工作？](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)
 
@@ -47,7 +47,7 @@ Azure 的托管标识基于几个关键概念：
 
 应用程序的系统分配的标识是该应用程序特有的；用户分配的标识是独立的资源，可分配到多个应用程序。 在应用程序中，可将单个标识（无论是系统分配的还是用户分配的）分配到该应用程序的多个服务，但对于每个服务，只能为其分配一个标识。 最后，必须显式为服务分配标识才能访问此功能。 实际上，将应用程序的身份映射到其组成服务允许应用程序内隔离 - 服务只能使用映射到它的标识。  
 
-目前，此预览功能支持以下方案：
+目前，此功能支持以下方案：
 
 - 使用一个或多个服务和一个或多个分配标识部署新应用程序
 
@@ -57,12 +57,7 @@ Azure 的托管标识基于几个关键概念：
 
 - 删除或更改分配给应用程序的标识；如果必须进行更改，请提交单独的部署，以先添加新的标识分配，然后删除以前分配的标识。 从现有应用程序中删除标识可能会产生不良影响，包括使应用程序处于一种不可升级的状态。 如果有必要删除标识，安全的做法是连同应用程序一起删除；请注意，这会删除与该应用程序关联的系统分配的标识（如果已定义），并会删除与分配给该应用程序的用户分配的标识之间的所有关联。
 
-- 此时未将托管标识的服务交换矩阵支持集成到[AzureServiceToken 提供程序](../key-vault/service-to-service-authentication.md)中;集成将在托管标识功能的预览期结束时完成。
-
->
-> [!NOTE]
->
-> 此功能为预览版。 它可能经常更改，不适合生产部署。
+- 此时未将托管标识的服务交换矩阵支持集成到[AzureServiceToken 提供程序中](../key-vault/service-to-service-authentication.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,17 +6,17 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 03/10/2020
-ms.openlocfilehash: 34ec05a8362f5947cb61924b19c6b1a52e5d91a4
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.date: 04/15/2020
+ms.openlocfilehash: 5608d0cd83e506bc6b30337db5148f344f59f80e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437678"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410853"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight 的 NSG 服务标记
 
-用于网络安全组 （NSG） 的 Azure HDInsight 服务标记是运行状况和管理服务的 IP 地址组。 这些组有助于尽量降低创建安全规则时的复杂性。 [服务标记](../virtual-network/security-overview.md#service-tags)提供了一种替代方法，用于允许来自特定 IP 地址的入站流量，而无需输入 NSG 中的每个[管理 IP 地址](hdinsight-management-ip-addresses.md)。
+用于网络安全组 （NSG） 的 Azure HDInsight 服务标记是运行状况和管理服务的 IP 地址组。 这些组有助于尽量降低创建安全规则时的复杂性。 [服务标记](../virtual-network/security-overview.md#service-tags)允许来自特定 IP 的入站流量，而无需输入 NSG 中的每个[管理 IP 地址](hdinsight-management-ip-addresses.md)。
 
 HDInsight 服务管理这些服务标记。 不能创建自己的服务标记或修改现有标记。 Microsoft 管理与服务标记匹配的地址前缀，并在地址更改时自动更新服务标记。
 
@@ -46,13 +46,13 @@ HDInsight 服务管理这些服务标记。 不能创建自己的服务标记或
 
 ## <a name="use-regional-hdinsight-service-tags"></a>使用区域性 HDInsight 服务标记
 
-如果全局标记选项由于需要更严格的权限而不起作用，则只能允许适用于您所在地区的服务标记。 可能有一个、两个或三个适用的服务标记，具体取决于创建群集的区域。
+如果全局标记选项由于需要更严格的权限而不起作用，则只能允许适用于您所在地区的服务标记。 可能有多个服务标记，具体取决于创建群集的区域。
 
 要了解要为区域添加的服务标记，请阅读本文的以下部分。
 
 ### <a name="use-a-single-regional-service-tag"></a>使用单个区域性服务标记
 
-如果您更喜欢使用区域服务标记，并且群集位于此表中列出的区域之一，则只需向网络安全组添加单个区域服务标记。
+如果您的群集位于此表中列出的区域中，则只需向 NSG 添加单个区域服务标记。
 
 | 国家/地区 | 区域 | 服务标记 |
 | ---- | ---- | ---- |
@@ -80,13 +80,13 @@ HDInsight 服务管理这些服务标记。 不能创建自己的服务标记或
 
 ### <a name="use-multiple-regional-service-tags"></a>使用多个区域性服务标记
 
-如果您更喜欢使用区域服务标记，但创建群集的区域未列在上表中，则需要允许多个区域服务标记。 需要使用多个是因为不同区域的资源提供程序的安排不同。
+如果创建群集的区域未列在上表中，则需要允许多个区域服务标记。 需要使用多个，是因为各区域的资源提供者的安排不同。
 
 其余区域根据它们使用的区域性服务标记划分为各个组。
 
 #### <a name="group-1"></a>组 1
 
-如果您的群集是在下表中的一个区域中创建的，则允许服务标记`HDInsight.WestUS`以及`HDInsight.EastUS`列出的区域服务标记。 本部分中的区域需要三个服务标记。
+如果群集是在下表中的一个区域中创建的，请允许服务标记`HDInsight.WestUS`和`HDInsight.EastUS`。 此外，还列出了区域服务标记。 本部分中的区域需要三个服务标记。
 
 例如，如果群集是在`East US 2`该区域中创建的，则需要向网络安全组添加以下服务标记：
 

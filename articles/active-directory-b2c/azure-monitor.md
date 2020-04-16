@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
-ms.openlocfilehash: acba378badb41324b2124b84833407da920a0e00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99e04c95156e40eed8c2b9aa88a2bee6f39e90c9
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78190052"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392877"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>使用 Azure 监视器监视 Azure AD B2C
 
@@ -84,8 +84,8 @@ Azure AD B2C 目录（也称为租户 ID）的**目录 ID。**
 
 下载 Azure 资源管理器模板和参数文件：
 
-- [rgDelegatedResourceManagement.json](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
-- [rgDelegatedResourceManagement.parameters.json](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
+- [rgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
+- [rgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
 
 接下来，使用前面记录的值更新参数文件。 以下 JSON 代码段显示了 Azure 资源管理器模板参数文件的示例。 对于`authorizations.value.roleDefinitionId`，使用 *"参与者"角色的*`b24988ac-6180-42a0-ab88-20f7382dd24c`[内置角色](../role-based-access-control/built-in-roles.md)值 。
 
@@ -213,7 +213,7 @@ Parameters              :
 
 - [Azure 存储帐户](../azure-monitor/platform/resource-logs-collect-storage.md)
 - [事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md)解决方案。
-- [日志分析工作区](../azure-monitor/platform/resource-logs-collect-workspace.md)
+- [Log Analytics 工作区](../azure-monitor/platform/resource-logs-collect-workspace.md)
 
 如果尚未，请在[Azure 资源管理器模板](#create-an-azure-resource-manager-template)中指定的资源组中创建所选目标类型的实例。
 
@@ -223,7 +223,7 @@ Parameters              :
 
 要配置 Azure AD B2C 活动日志的监视设置，请执行以下操作：
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录****。
 1. 选择**Azure 活动目录**
 1. 在“监视”下，选择“诊断设置”********。
@@ -234,14 +234,14 @@ Parameters              :
 1. 为设置指定名称（如果未指定）。
 1. 选中要将日志发送到的每个目标对应的框。 选择 **"配置**"以按下表中所述指定其设置。
 
-    | 设置 | 描述 |
+    | 设置 | 说明 |
     |:---|:---|
     | 存档到存储帐户 | 存储帐户的名称。 |
     | 流式传输到事件中心 | 要在其中创建事件中心的命名空间（如果这是首次流式传输日志）或要将日志流式传输到的命名空间（如果已有资源将该日志类别流式传输到此命名空间）。
     | 发送到 Log Analytics | 工作区的名称。 |
 
 1. 选择**审核日志**和**登录日志**。
-1. 选择“保存”。****
+1. 选择“保存”。 
 
 ## <a name="next-steps"></a>后续步骤
 

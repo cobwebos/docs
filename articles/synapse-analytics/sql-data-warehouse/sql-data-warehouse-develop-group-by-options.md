@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 25e6770fb38d13591186754bc5e6a7641083a899
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 5d8d4c6d47e33ca365415542c2da9779b4d7d1dd
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633515"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416200"
 ---
 # <a name="group-by-options-in-synapse-sql-pool"></a>按 Synapse SQL 池中的选项分组
 
@@ -125,7 +125,7 @@ FROM GrpCube;
 
 ![按多维数据集分组](./media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png)
 
-第二步是指定目标表用于存储临时结果：
+第二步是指定用于存储中期结果的目标表：
 
 ```sql
 DECLARE

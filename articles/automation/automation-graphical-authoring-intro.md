@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 09afca7eaf385795baf9c4a3c94232622527e357
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cf8ced05066923c94e80628651d8983560601d69
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501040"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406052"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure 自动化中的图形创作
 
@@ -39,7 +39,7 @@ Azure 自动化中的所有运行簿都是 Windows PowerShell 工作流。 图�
 
 "库"控件允许您选择要添加到 Runbook[的活动](#activities)。 将它们添加到画布中，您可以在其中将它们连接到其他活动。 库控件包括下表中定义的部分。
 
-| 部分 | 描述 |
+| 部分 | 说明 |
 |:--- |:--- |
 | Cmdlet |可在 runbook 中使用的所有 cmdlet。 Cmdlet 按模块组织。 您在自动化帐户中安装的所有模块都可用。 |
 | Runbook |自动化帐户中的 Runbook。 您可以将这些 Runbook 添加到画布以用作子 Runbook。 仅显示与正在编辑的 Runbook 相同的核心类型的 Runbook。 对于图形运行簿，仅显示基于 PowerShell 的 Runbook。 对于图形 PowerShell 工作流运行簿，仅显示基于 PowerShell 工作流的 Runbook。 |
@@ -74,7 +74,7 @@ Azure 自动化中的所有运行簿都是 Windows PowerShell 工作流。 图�
 
 指定某个参数的值时，可以选择一个数据源，以便确定如何指定该值。 可用于特定参数的数据源取决于该参数的有效值。 例如，对于不允许 Null 值的参数，Null 不会是可用选项。
 
-| 数据源 | 描述 |
+| 数据源 | 说明 |
 |:--- |:--- |
 | 常量值 |键入参数的值。 此数据源仅适用于以下数据类型：Int32、Int64、字符串、布尔、日期时间、交换机。 |
 | 活动输出 |使用工作流中当前活动之前的活动的输出。 将列出所有有效的活动。 对于参数值，仅使用生成输出的活动。 如果活动输出具有多个属性的对象，则可以在选择活动后键入特定属性的名称。 |
@@ -104,7 +104,7 @@ Azure 自动化中的所有运行簿都是 Windows PowerShell 工作流。 图�
 
 重试条件可以使用名为 的`RetryData`变量，该变量提供对有关活动重试的信息的访问。 此变量具有下表中的属性。
 
-| properties | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | `NumberOfAttempts` |活动已运行的次数。 |
 | `Output` |活动上次运行的输出。 |
@@ -156,7 +156,7 @@ $DateTimeStart
 
 选择可在“配置”边栏选项卡中配置其属性的链接。 属性包括链接类型，下表中介绍。
 
-| 链接类型 | 描述 |
+| 链接类型 | 说明 |
 |:--- |:--- |
 | 管道 |对于源活动的每个对象输出，目标活动运行一次。 如果源活动没有生成任何输出，目标活动将不会运行。 源活动的输出可用作对象。 |
 | 序列 |目标活动在从源活动接收输出时仅运行一次。 源活动的输出可用作对象数组。 |
@@ -243,7 +243,7 @@ $ActivityOutput['Activity Label'].PropertyName
 
 您可以通过选择任何活动的**检查点运行簿**，在图形 PowerShell 工作流 Runbook 中设置[检查点](automation-powershell-workflow.md#checkpoints)。 这会导致在运行活动之后设置检查点。
 
-![Checkpoint](media/automation-graphical-authoring-intro/set-checkpoint.png)
+![检查点](media/automation-graphical-authoring-intro/set-checkpoint.png)
 
 检查点仅在图形 PowerShell 工作流运行簿中启用，在图形运行簿中不可用。 如果 Runbook 使用 Azure cmdlet，它应遵循具有`Connect-AzAccount`活动的任何检查点活动。 连接操作用于运行簿挂起且必须从其他工作人员上的此检查点重新启动。
 
@@ -261,10 +261,10 @@ Runbook 通过定义一个或多个输入参数来接受输入。 每次 Runbook
 
 按下表中的属性定义每个输入参数：
 
-| properties | 描述 |
+| properties | 说明 |
 |:--- |:--- |
-| “属性” | 必需。 参数的名称。 该名称在 Runbook 中必须是唯一的。 它必须以字母开头，并且只能包含字母、数字和下划线。 名称不能包含空格。 |
-| 描述 |可选。 输入参数的用途说明。 |
+| 名称 | 必需。 参数的名称。 该名称在 Runbook 中必须是唯一的。 它必须以字母开头，并且只能包含字母、数字和下划线。 名称不能包含空格。 |
+| 说明 |可选。 输入参数的用途说明。 |
 | 类型 | 可选。 参数值应有的数据类型。 提示输入时，Azure 门户将针对每个参数的数据类型提供相应的控件。 支持的参数类型包括 String、Int32、Int64、Decimal、Boolean、DateTime 和 Object。 如果未选择数据类型，将默认为 String。|
 | 必需 | 可选。 指定是否必须为参数提供值的设置。 如果选择`yes`，则必须在启动 Runbook 时提供值。 如果选择`no`，则在启动 Runbook 时不需要值，并且可以使用默认值。 如果不为每个未定义默认值的必需参数提供值，则 Runbook 无法启动。 |
 | 默认值 | 可选。 在启动 Runbook 时未传入参数时用于参数的值。 要设置默认值，请选择`Custom`。 如果`None`不想提供任何默认值，请选择该选项。 |
@@ -441,3 +441,5 @@ Azure 自动化中的每个图形运行簿都有草稿版本和已发布版本�
 * 要开始使用图形运行簿，请参阅[我的第一个图形运行簿](automation-first-runbook-graphical.md)。
 * 要了解有关 Runbook 类型及其优点和限制的更多信息，请参阅[Azure 自动化 Runbook 类型](automation-runbook-types.md)。
 * 要了解如何使用"作为帐户"进行自动化运行进行身份验证，请参阅[配置 Azure 运行作为帐户](automation-sec-configure-azure-runas-account.md)。
+* 有关 PowerShell cmdlet 引用，请参阅[Az.自动化](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)。

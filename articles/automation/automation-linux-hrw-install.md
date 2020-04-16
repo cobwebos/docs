@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2579748d9c68512e51fe46ec70084c30d06953bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9dc4dce5a7af49529924881321b1a5080293a585
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278761"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405626"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>部署 Linux 混合 Runbook 辅助角色
 
@@ -30,9 +30,27 @@ ms.locfileid: "79278761"
 * Ubuntu 12.04 LTS、14.04 LTS、16.04 LTS 和 18.04 （x86/x64）
 * SUSE Linux Enterprise Server 11 和 12 (x86/x64)
 
+## <a name="supported-runbook-types"></a>支持的 runbook 类型
+
+Linux 混合 Runbook 辅助角色并非支持 Azure 自动化中的全套 Runbook 类型。
+
+以下 runbook 类型可以在 Linux 混合辅助角色上工作：
+
+* Python 2
+* PowerShell
+
+  > [!NOTE]
+  > PowerShell Runbook 要求在 Linux 计算机上安装 PowerShell Core。 请参阅[在 Linux 上安装 PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-linux) 了解如何安装。
+
+以下 Runbook 类型不能在 Linux 混合辅助角色上运行：
+
+* PowerShell 工作流
+* 图形
+* 图形 PowerShell 工作流
+
 ## <a name="installing-a-linux-hybrid-runbook-worker"></a>安装 Linux 混合 Runbook 辅助角色
 
-若要在 Linux 计算机上安装和配置混合 Runbook 辅助角色，请按照一个简单明了的过程手动安装和配置此角色。 它需要启用 Azure Log Analytics 工作区中的“自动化混合辅助角色”解决方案，然后运行一组命令将计算机注册为辅助角色，并且将它添加到组中****。
+要在 Linux 计算机上安装和配置混合 Runbook 辅助角色，请按照简单的手动过程操作。 它需要启用 Azure Log Analytics 工作区中的“自动化混合辅助角色”解决方案，然后运行一组命令将计算机注册为辅助角色，并且将它添加到组中。
 
 Linux 混合 Runbook 辅助角色的最低要求如下：
 
@@ -56,9 +74,9 @@ Linux 混合 Runbook 辅助角色的最低要求如下：
 
 在继续操作之前，请记下自动化帐户链接到的 Log Analytics 工作区。 另请记下自动化帐户的主密钥。 在 Azure 门户中选择自己的自动化帐户，选择工作区 ID 对应的“工作区”，然后选择主密钥对应的“密钥”，即可找到这两个值。******** 有关混合 Runbook 辅助角色所需的端口和地址的信息，请参阅[配置网络](automation-hybrid-runbook-worker.md#network-planning)。
 
-1. 使用以下方法之一，在 Azure 中启用“自动化混合辅助角色”解决方案：****
+1. 使用以下方法之一，在 Azure 中启用“自动化混合辅助角色”解决方案：
 
-   * 使用[将 Azure Monitor 日志解决方案添加到工作区](../log-analytics/log-analytics-add-solutions.md)中所述的过程，将“自动化混合辅助角色”解决方案**** 添加到订阅。
+   * 使用[将 Azure Monitor 日志解决方案添加到工作区](../log-analytics/log-analytics-add-solutions.md)中所述的过程，将“自动化混合辅助角色”解决方案添加到订阅。
    * 运行以下 cmdlet：
 
         ```azurepowershell-interactive
@@ -79,36 +97,18 @@ Linux 混合 Runbook 辅助角色的最低要求如下：
    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/onboarding.py --register -w <LogAnalyticsworkspaceId> -k <AutomationSharedKey> -g <hybridgroupname> -e <automationendpoint>
    ```
 
-1. 命令完成后，Azure 门户中的“混合辅助角色组”页面会显示新组和成员数。**** 如果这是现有的组，则成员数会递增。 可以从“混合辅助角色组”**** 页上的列表中选择组，并选择“混合辅助角色”**** 磁贴。 在“混合辅助角色”**** 页上，会列出组的每个成员。
+1. 命令完成后，Azure 门户中的“混合辅助角色组”页面会显示新组和成员数。 如果这是现有的组，则成员数会递增。 可以从“混合辅助角色组”页上的列表中选择组，并选择“混合辅助角色”**** 磁贴。 在“混合辅助角色”页上，会列出组的每个成员。
 
 > [!NOTE]
-> 如果要对 Azure VM 使用用于 Linux 的 Azure Monitor 虚拟机扩展，我们建议将 `autoUpgradeMinorVersion` 设置为 false，因为自动升级版本可能会导致混合 Runbook 辅助角色出现问题。 若要了解如何手动升级扩展，请参阅 [Azure CLI 部署](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment)。
+> 如果要为 Azure VM 使用 Linux 的 Azure 监视器虚拟机扩展，`autoUpgradeMinorVersion`我们建议将设置为 false，因为自动升级版本可能会导致混合 Runbook 辅助角色出现问题。 要了解如何手动升级扩展，请参阅[Azure CLI 部署](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment)。
 
 ## <a name="turning-off-signature-validation"></a>关闭签名验证
 
-默认情况下，Linux 混合 Runbook 辅助角色需要签名验证。 如果针对辅助角色运行未签名的 runbook，将看到显示“签名验证失败”字样的错误。 若要禁用签名验证，请运行以下命令。 将第二个参数替换为 Log Analytics 工作区 ID。
+默认情况下，Linux 混合 Runbook 辅助角色需要签名验证。 如果针对工作人员运行无符号 Runbook，则会看到错误`Signature validation failed`。 若要禁用签名验证，请运行以下命令。 将第二个参数替换为 Log Analytics 工作区 ID。
 
  ```bash
  sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <LogAnalyticsworkspaceId>
  ```
-
-## <a name="supported-runbook-types"></a>支持的 runbook 类型
-
-Linux 混合 Runbook 辅助角色并非支持 Azure 自动化中的全套 Runbook 类型。
-
-以下 runbook 类型可以在 Linux 混合辅助角色上工作：
-
-* Python 2
-* PowerShell
-
-  > [!NOTE]
-  > PowerShell Runbook 要求在 Linux 计算机上安装 PowerShell Core。 请参阅[在 Linux 上安装 PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-linux) 了解如何安装。
-
-以下 Runbook 类型不能在 Linux 混合辅助角色上运行：
-
-* PowerShell 工作流
-* 图形
-* 图形 PowerShell 工作流
 
 ## <a name="next-steps"></a>后续步骤
 

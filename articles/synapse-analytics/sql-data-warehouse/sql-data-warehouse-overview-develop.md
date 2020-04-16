@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 933a175213afd81c81eb237a2b2dd4c3e24e3315
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 12f91633834ee98582eaad886b48eb8619378265
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633160"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411682"
 ---
 # <a name="design-decisions-and-coding-techniques-for-a-synapse-sql-pool-in-azure-synapse-analytics"></a>Azure 突触分析中突触 SQL 池的设计决策和编码技术 
  在本文中，您将找到其他资源，以帮助您更好地了解 Azure Synapse 中 SQL 池的关键设计决策、建议和编码技术。
@@ -23,7 +23,7 @@ ms.locfileid: "80633160"
 ## <a name="key-design-decisions"></a>关键设计决策
 以下文章重点介绍了使用 Azure Synapse 中的 SQL 池功能开发分布式数据仓库的概念和设计决策：
 
-* [连接](sql-data-warehouse-connect-overview.md)
+* [连接](../sql/connect-overview.md)
 * [并发](resource-classes-for-workload-management.md)
 * [交易](sql-data-warehouse-develop-transactions.md)
 * [用户定义的架构](sql-data-warehouse-develop-user-defined-schemas.md)

@@ -5,22 +5,22 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9a69296ddfc93fd7e8a6650df91876829631f5d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce58fc69496f54c078b0a0a55a8a3c7cad82a051
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473058"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391715"
 ---
 # <a name="quickstart-deploy-service-catalog-app-through-azure-portal"></a>快速入门：通过 Azure 门户部署服务目录应用
 
-在[前面的快速入门](publish-managed-app-definition-quickstart.md)中，你已发布了一个托管应用程序定义。 在本快速入门中，你将基于该定义创建一个服务目录应用。
+在[前面的快速入门](publish-service-catalog-app.md)中，你已发布了一个托管应用程序定义。 在本快速入门中，你将基于该定义创建一个服务目录应用。
 
 ## <a name="create-service-catalog-app"></a>创建服务目录应用
 
 在 Azure 门户中，使用以下步骤：
 
-1. 选择“创建资源”。****
+1. 选择“创建资源”。 
 
    ![创建资源](./media/deploy-service-catalog-quickstart/create-new.png)
 
@@ -28,11 +28,11 @@ ms.locfileid: "79473058"
 
    ![搜索服务目录应用程序](./media/deploy-service-catalog-quickstart/select-service-catalog.png)
 
-1. 你会看到托管应用程序服务的说明。 选择 **“创建”**。
+1. 你会看到托管应用程序服务的说明。 选择“创建”  。
 
    ![选择“创建”](./media/deploy-service-catalog-quickstart/create-service-catalog.png)
 
-1. 门户中将显示你有权访问的托管应用程序定义。 从可用的定义中，选择你要部署的一个定义。 在本快速入门中，使用你在前面的快速入门中创建的“托管存储帐户”**** 定义。 选择 **“创建”**。
+1. 门户中将显示你有权访问的托管应用程序定义。 从可用的定义中，选择你要部署的一个定义。 在本快速入门中，使用你在前面的快速入门中创建的“托管存储帐户”**** 定义。 选择“创建”  。
 
    ![选择要部署的定义](./media/deploy-service-catalog-quickstart/select-definition.png)
 

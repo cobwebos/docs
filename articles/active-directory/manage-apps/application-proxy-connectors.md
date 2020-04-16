@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b097ce3781a77a8c5e8a94b9c2bf0977f3efcfd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f1b8b9af8f90629d087246edf0cb3426bd9b66c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481324"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406829"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>了解 Azure AD 应用程序代理连接器
 
@@ -153,12 +153,17 @@ Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代�
 
 使用的证书特定于应用程序代理服务。 这些证书是在初始注册期间创建的，每隔几个月由连接器自动续订。
 
+首次成功续订证书后，Azure AD 应用程序代理连接器服务（网络服务）无权从本地计算机存储中删除旧证书。 如果证书已过期或服务不再使用它，则可以安全地将其删除。
+
+为避免证书续订出现问题，请确保启用从连接器到[文档目标](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment)的网络通信。
+
 如果连接器有几个月未连接到服务，其证书可能会过时。 在这种情况下，需卸载后重装连接器来触发注册。 可运行以下 PowerShell 命令：
 
 ```
 Import-module AppProxyPSModule
 Register-AppProxyConnector
 ```
+要了解有关如何验证证书和疑难解答问题，请参阅[验证计算机和后端组件支持应用程序代理信任证书](application-proxy-connector-installation-problem.md#verify-machine-and-backend-components-support-for-application-proxy-trust-certificate)。
 
 ## <a name="under-the-hood"></a>揭秘
 

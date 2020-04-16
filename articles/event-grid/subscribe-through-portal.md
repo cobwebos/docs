@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 3172c92ecae094ab5d978803d2ccac7e6404a5e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 599f48ed241010d8551bd110c7f778c9ef508eac
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76721500"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393178"
 ---
 # <a name="subscribe-to-events-through-portal"></a>通过门户订阅事件
 
@@ -20,9 +20,9 @@ ms.locfileid: "76721500"
 
 ## <a name="create-event-subscriptions"></a>创建事件订阅
 
-若要针对任何受支持的[事件源](event-sources.md)创建事件网格订阅，请使用以下步骤。 本文展示了如何为 Azure 订阅创建事件网格订阅。
+若要针对任何受支持的[事件源](overview.md#event-sources)创建事件网格订阅，请使用以下步骤。 本文展示了如何为 Azure 订阅创建事件网格订阅。
 
-1. 选择**所有服务**。
+1. 选择“所有服务”  。
 
    ![选择所有服务](./media/subscribe-through-portal/select-all-services.png)
 

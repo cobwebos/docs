@@ -1,74 +1,61 @@
 ---
 title: 许可证自助密码重置 - Azure Active Directory
-description: Azure AD 自助密码重置的授权要求
+description: 了解 Azure 活动目录自助密码重置许可要求的差异
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/19/2019
+ms.date: 04/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 598f3bd8500a59cd41cc4126915e6cccbd4fb2f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 45ca11af061e37cf4f804ce2d7ceed72a9448294
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74848555"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393066"
 ---
-# <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Azure AD 自助密码重置的授权要求
+# <a name="licensing-requirements-for-azure-active-directory-self-service-password-reset"></a>Azure 活动目录自助服务密码重置的许可要求
 
-Azure 活动目录 （Azure AD） 有多种版本：免费版、高级 P1 版和高级 P2。 有几个不同的功能可以构成自助密码重置，包括更改、重置、解锁和写回，这些功能在 Azure AD 的不同版本中可用。 本文尝试说明这些差异。 可以在 [Azure Active Directory 定价页](https://azure.microsoft.com/pricing/details/active-directory/)上找到每个Azure AD 版本中包含的功能的更多详细信息。
+为了减少用户无法登录到其设备或应用程序时的帮助台呼叫和工作效率损失，可以启用 Azure 活动目录 （Azure AD） 中的用户帐户进行自助服务密码重置 （SSPR）。 构成 SSPR 的功能包括密码更改、重置、解锁和写入本地目录。 Office 365 和所有 Azure AD 用户均可免费提供基本 SSPR 功能。
+
+本文详细介绍了自助服务密码重置可以许可和使用的不同方式。 有关定价和计费的具体详细信息，请参阅[Azure AD 定价页](https://azure.microsoft.com/pricing/details/active-directory/)。
 
 ## <a name="compare-editions-and-features"></a>比较版本和功能
 
-Azure AD 自助密码重置是按用户许可的，为了维护合规性，需要组织为其用户分配相应的许可证。
+SSPR 是每个用户的许可。 为了保持合规性，组织需要为其用户分配适当的许可证。
 
-* 云用户的自助密码更改
-   * 我是**仅限云用户**并且知道我的密码。
-      * 我想要将我的密码**更改**为新密码。
-   * 此功能包含在 Azure AD 的所有版本中。
+下表概述了密码更改、重置或本地写回的不同 SSPR 方案，以及哪些 SKU 提供了该功能。
 
-* 云用户的自助密码重置
-   * 我是**仅限云用户**并且忘记了密码。
-      * 我想要将我的密码**重置**为我知道的密码。
-   * 此功能包含在 Azure AD Premium P1 或 P2、Microsoft 365 商业版或 Office 365 中。
-
-* **通过本地写回**实现自助密码重置/更改/解锁
-   * 我是**混合用户**，我的本地 Active Directory 用户帐户已使用 Azure AD Connect 与我的 Azure AD 帐户同步。 我想要更改密码、已忘记密码或已被锁定。
-      * 我想要更改密码或将其重置为我知道的密码，或者解锁我的帐户，**并**将此更改同步回本地 Active Directory。
-   * 此功能包含在 Azure AD Premium P1 或 P2 版本，或 Microsoft 365 商业版中。
+| Feature | Azure AD Free | Office 365 商业高级版 | Microsoft 365 商业版 | Azure AD Premium P1 或 P2 |
+| --- |:---:|:---:|:---:|:---:|
+| **仅限云的用户密码更改**<br />当 Azure AD 中的用户知道其密码并希望将其更改为新密码时。 | ● | ● | ● | ● |
+| **仅限云的用户密码重置**<br />当 Azure AD 中的用户忘记了其密码并需要重置密码时。 | | ● | ● | ● |
+| **混合用户密码更改或重置与上前写**<br />当使用 Azure AD Connect 从本地目录同步的 Azure AD 中的用户想要更改或重置其密码，并将新密码写回 on-prem 时。 | | | ● | ● |
 
 > [!WARNING]
-> 独立 Office 365 许可计划不支持“通过本地写回实现自助式密码重置/更改/解锁”**，要使此功能正常工作，需要包含 Azure AD Premium P1 版本、Premium P2 版本，或 Microsoft 365 商业版的计划。
->
+> 独立 Office 365 许可计划不支持 SSPR 与本地回写。 这些 Office 365 许可计划需要 Azure AD 高级 P1、高级 P2 或 Microsoft 365 业务才能正常工作。
 
-可在以下页上找到其他许可信息（包括成本）：
+有关其他许可信息（包括成本），请参阅以下页面：
 
-* [Azure 活动目录定价站点](https://azure.microsoft.com/pricing/details/active-directory/)
+* [Azure Active Directory 定价](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Azure Active Directory 特性和功能](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
-* [企业移动性 + 安全性](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
+* [企业移动性与安全性](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
 * [Microsoft 365 企业版](https://www.microsoft.com/microsoft-365/enterprise)
-* [Microsoft 365 商业版服务说明](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)
+* [微软 365 业务](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)
 
 ## <a name="enable-group-or-user-based-licensing"></a>启用基于组或基于用户的许可
 
-Azure AD 现在支持基于组的许可。 管理员可以将许可证批量分配给一组用户，而不是一次一个用户地分配。 有关详细信息，请参阅[分配、验证许可证和解决许可证问题](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)。
+Azure AD 支持基于组的许可。 管理员可以将许可证批量分配给一组用户，而不是一次一个用户地分配。 有关详细信息，请参阅[分配、验证许可证和解决许可证问题](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)。
 
-某些 Microsoft 服务不能在所有位置使用。 在将许可证分配给用户之前，管理员必须在用户上指定 **"使用情况"位置**属性。 许可证分配可以在 Azure 门户中的 **"用户** > **配置文件** > **设置"** 部分下完成。 *使用组许可证分配时，任何没有指定使用位置的用户将继承该目录的位置。*
+某些 Microsoft 服务并非在所有位置都可用。 在将许可证分配给用户之前，管理员必须在用户上指定 **"使用情况"位置**属性。 许可证分配可以在 Azure 门户中的 **"用户** > **配置文件** > **设置"** 部分下完成。 *使用组许可证分配时，任何没有指定使用位置的用户将继承该目录的位置。*
 
 ## <a name="next-steps"></a>后续步骤
 
-* [如何成功推出 SSPR？](howto-sspr-deployment.md)
-* [重置或更改密码](../user-help/active-directory-passwords-update-your-own-password.md)
-* [注册进行自助服务密码重置](../user-help/active-directory-passwords-reset-register.md)
-* [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
-* [哪些身份验证方法可供用户使用？](concept-sspr-howitworks.md#authentication-methods)
-* [SSPR 有哪些策略选项？](concept-sspr-policy.md)
-* [什么是密码写回？我为什么关心它？](howto-sspr-writeback.md)
-* [如何报告 SSPR 中的活动？](howto-sspr-reporting.md)
-* [SSPR 中的所有选项有哪些？它们有哪些含义？](concept-sspr-howitworks.md)
-* [我觉得有些东西坏了。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
-* [我有在别处未涵盖的问题](active-directory-passwords-faq.md)
+要开始使用 SSPR，请完成以下教程：
+
+> [!div class="nextstepaction"]
+> [教程：启用自助服务密码重置 （SSPR）](tutorial-enable-sspr.md)

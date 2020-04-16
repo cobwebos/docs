@@ -11,14 +11,15 @@ ms.author: abnarain
 author: nabhishek
 manager: shwang
 ms.date: 03/15/2018
-ms.openlocfilehash: 20858069b745beeaf64951c4ef23c2eb85251985
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6b010000a674e351051c664dd5eeacd40e802439
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929114"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414609"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>通过运行 Azure Databricks 中的 Jar 活动转换数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 [数据工厂管道](concepts-pipelines-activities.md)中的 Azure Databricks Jar 活动在 Azure Databricks 群集中运行 Spark Jar。 本文以 [数据转换活动](transform-data.md) 一文为基础，其中概述了数据转换和支持的转换活动。Azure Databricks 是一个用于运行 Apache Spark 的托管平台。
 
@@ -55,7 +56,7 @@ ms.locfileid: "74929114"
 
 下表描述了 JSON 定义中使用的 JSON 属性：
 
-|properties|描述|必选|
+|properties|说明|必选|
 |:--|---|:-:|
 |name|管道中活动的名称。|是|
 |description|描述活动用途的文本。|否|

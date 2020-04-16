@@ -3,12 +3,12 @@ title: Azure Functions 2.x 的 host.json 参考
 description: 使用 v2 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 1a861d500f0b8cc31b8312d6c955916ab741b649
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 7b3c9d15fc8cf3a1651c44a5656f731a7820e344
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878234"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405490"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 及更高版本的 host.json 参考 
 
@@ -141,9 +141,9 @@ ms.locfileid: "80878234"
 有关完整的 JSON 结构，请参阅前面的[示例 host.json 文件](#sample-hostjson-file)。
 
 > [!NOTE]
-> 日志采样可能会导致一些执行不会显示在 Application Insights 监视器边栏选项卡中。 为了避免日志采样，请添加到`samplingExcludedTypes: "Request"``applicationInsights`值。
+> 日志采样可能会导致一些执行不会显示在 Application Insights 监视器边栏选项卡中。 为了避免日志采样，请添加到`excludedTypes: "Request"``samplingSettings`值。
 
-| Property | 默认 | 说明 |
+| properties | 默认 | 说明 |
 | --------- | --------- | --------- | 
 | 采样设置 | 不适用 | 请参阅[应用程序见解.采样设置](#applicationinsightssamplingsettings)。 |
 | 启用实时测量 | true | 启用实时指标集合。 |
@@ -155,7 +155,7 @@ ms.locfileid: "80878234"
 
 ### <a name="applicationinsightssamplingsettings"></a>应用程序见解.采样设置
 
-|Property | 默认 | 说明 |
+|properties | 默认 | 说明 |
 | --------- | --------- | --------- | 
 | isEnabled | true | 启用或禁用采样。 | 
 | maxTelemetryItemsPerSecond | 20 | 每台服务器主机上每秒记录的遥测项的目标数量。 如果应用在许多主机上运行，请减小此值以保持在总体流量目标速率内。 | 
@@ -166,12 +166,12 @@ ms.locfileid: "80878234"
 | 最小采样百分比 | 0.1 | 由于采样百分比不同，此属性确定允许的最小采样百分比。 |
 | 最大采样百分比 | 0.1 | 由于采样百分比不同，此属性确定允许的最大采样百分比。 |
 | 移动平均比率 | 1.0 | 在移动平均线的计算中，权重分配给最新的值。 使用等于或小于 1 的值。 较小的值会使算法不易受突然的更改影响。 |
-| 排除类型 | null | 不希望采样类型的分号分隔列表。 已识别的类型包括：Dependency、Event、Exception、PageView、Request、Trace。 传输指定类型的所有实例;对未指定的类型进行采样。 |
-| 包括类型 | null | 要采样的类型的分号分隔列表;空列表表示所有类型的。 此处列出的覆盖`excludedTypes`类型中列出的类型。 已识别的类型包括：Dependency、Event、Exception、PageView、Request、Trace。 传输指定类型的所有实例;对未指定的类型进行采样。 |
+| 排除类型 | Null | 不希望采样类型的分号分隔列表。 识别的类型是： `Dependency` `Event` `Exception`、、、、、`PageView``Request`和`Trace`。 传输指定类型的所有实例;对未指定的类型进行采样。 |
+| 包括类型 | Null | 要采样的类型的分号分隔列表;空列表表示所有类型的。 此处列出的覆盖`excludedTypes`类型中列出的类型。 识别的类型是： `Dependency` `Event` `Exception`、、、、、`PageView``Request`和`Trace`。 对指定类型的实例进行采样;未指定或隐含的类型在没有采样的情况下传输。 |
 
 ### <a name="applicationinsightshttpautocollectionoptions"></a>应用程序见解.http自动收集选项
 
-|Property | 默认 | 说明 |
+|properties | 默认 | 说明 |
 | --------- | --------- | --------- | 
 | 启用Httptrigger扩展信息集合 | true | 启用或禁用 HTTP 触发器的扩展 HTTP 请求信息：传入请求关联标头、多检测密钥支持、HTTP 方法、路径和响应。 |
 | 启用W3C分布式跟踪 | true | 启用或禁用对 W3C 分布式跟踪协议的支持（并启用旧相关架构）。 默认情况下启用（如果`enableHttpTriggerExtendedInfoCollection`为 true）。 如果`enableHttpTriggerExtendedInfoCollection`为 false，则此标志仅适用于传出请求，不适用于传入请求。 |
@@ -181,9 +181,9 @@ ms.locfileid: "80878234"
 
 有关快照的详细信息，请参阅[在 .NET 应用中调试异常的快照](/azure/azure-monitor/app/snapshot-debugger)，以及[启用应用程序见解快照调试器或查看快照的疑难解答问题](/azure/azure-monitor/app/snapshot-debugger-troubleshoot)。
 
-|Property | 默认 | 说明 |
+|properties | 默认 | 说明 |
 | --------- | --------- | --------- | 
-| 代理端点 | null | 用于连接到应用程序见解快照调试器服务的终结点。 如果为 null，则使用默认终结点。 |
+| 代理端点 | Null | 用于连接到应用程序见解快照调试器服务的终结点。 如果为 null，则使用默认终结点。 |
 | 捕获快照内存权重 | 0.5 | 检查是否有足够的内存拍摄快照时，当前进程内存大小给出的权重。 预期值大于 0 正确的分数（0 <捕获快照内存权重< 1）。 |
 | 失败的请求限制 | 3 | 禁用遥测处理器之前请求快照的失败请求数的限制。|
 | 句柄 未跟踪的异常 | true | 启用或禁用跟踪应用程序见解遥测未跟踪的异常。 |
@@ -197,14 +197,14 @@ ms.locfileid: "80878234"
 | 问题计数器重置间隔 | 24:00:00 | 在一分钟到七天之间重置问题计数器的频率。 达到此间隔时，所有问题计数将重置为零。 已达到执行快照阈值但尚未生成 中的`maximumSnapshotsRequired`快照数的现有问题保持活动状态。 |
 | 提供匿名遥测 | true | 确定是否向 Microsoft 发送匿名使用情况和错误遥测。 如果您联系 Microsoft 以帮助解决快照调试器的问题，则可能会使用此遥测数据。 它还用于监视使用模式。 |
 | 重新连接间隔 | 00:15:00 | 我们重新连接到快照调试器终结点的频率。 允许的范围为一分钟到一天。 |
-| 影子复制文件夹 | null | 指定用于卷影复制二进制文件的文件夹。 如果未设置，则按顺序尝试以下环境变量指定的文件夹：Fabric_Folder_App_Temp、本地应用数据、APPDATA、TEMP。 |
+| 影子复制文件夹 | Null | 指定用于卷影复制二进制文件的文件夹。 如果未设置，则按顺序尝试以下环境变量指定的文件夹：Fabric_Folder_App_Temp、本地应用数据、APPDATA、TEMP。 |
 | 共享加载程序 | true | 如果为 true，则只有一个快照 Uploader 实例将收集和上载共享检测密钥的多个应用的快照。 如果设置为 false，则快照 Uploader 对于每个（进程名称、检测键）元组将是唯一的。 |
 | 快照在低优先级线程 | true | 确定是否处理低 IO 优先级线程中的快照。 创建快照是一种快速操作，但是，为了将快照上载到快照调试器服务，必须首先将其写入磁盘作为小型转储。 这发生在快照加载器过程中。 将此值设置为 true 使用低优先级 IO 编写小型转储，这不会与您的应用程序竞争资源。 将此值设置为 false 会加快小型转储的创建速度，但代价是减慢应用程序的速度。 |
 | 快照PerDay限制 | 30 | 一天（24 小时）内允许的最大快照数。 此限制也在应用程序见解服务端强制执行。 每个应用程序的上载速率限制为每天 50 个（即每个检测密钥）。 此值有助于防止创建其他快照，这些快照最终将在上载期间被拒绝。 值为零将完全删除限制，不建议这样做。 |
 | 快照Perten分钟限制 | 1 | 10 分钟内允许的最大快照数。 尽管此值没有上限，但请谨慎增加此值，因为它可能会影响应用程序的性能。 创建快照速度很快，但创建快照的小型转储并将其上载到快照调试器服务是一个速度慢得多的操作，它将与应用程序争夺资源（CPU 和 I/O）。 |
-| 临时文件夹 | null | 指定用于编写小型转储和上载器日志文件的文件夹。 如果未设置，则使用 *%TEMP%\转储*。 |
+| 临时文件夹 | Null | 指定用于编写小型转储和上载器日志文件的文件夹。 如果未设置，则使用 *%TEMP%\转储*。 |
 | 用于快照的阈值 | 1 | 应用程序见解在请求快照之前需要查看异常的次数。 |
-| 上传器代理 | null | 覆盖快照上载程序进程中使用的代理服务器。 如果您的应用程序通过代理服务器连接到互联网，则可能需要使用此设置。 快照收集器在应用程序的进程中运行，并将使用相同的代理设置。 但是，快照上传程序作为单独的进程运行，您可能需要手动配置代理服务器。 如果此值为空，则快照收集器将尝试通过检查 System.Net.WebRequest.DefaultWebProxy 并将该值传递给快照上传程序来自动检测代理的地址。 如果此值不是空，则不使用自动检测，此处指定的代理服务器将在快照上传器中使用。 |
+| 上传器代理 | Null | 覆盖快照上载程序进程中使用的代理服务器。 如果您的应用程序通过代理服务器连接到互联网，则可能需要使用此设置。 快照收集器在应用程序的进程中运行，并将使用相同的代理设置。 但是，快照上传程序作为单独的进程运行，您可能需要手动配置代理服务器。 如果此值为空，则快照收集器将尝试通过检查 System.Net.WebRequest.DefaultWebProxy 并将该值传递给快照上传程序来自动检测代理的地址。 如果此值不是空，则不使用自动检测，此处指定的代理服务器将在快照上传器中使用。 |
 
 ## <a name="cosmosdb"></a>CosmosDB
 
@@ -268,7 +268,7 @@ ms.locfileid: "80878234"
 }
 ```
 
-|Property  |默认 | 说明 |
+|properties  |默认 | 说明 |
 |---------|---------|---------| 
 |已启用|true|指定是否启用此功能。 | 
 |healthCheckInterval|10 秒|定期后台运行状况检查之间的时间间隔。 | 
@@ -300,7 +300,7 @@ ms.locfileid: "80878234"
 }
 ```
 
-|Property  |默认 | 说明 |
+|properties  |默认 | 说明 |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|定义启用哪种级别的文件日志记录。  选项包括 `never`、`always` 和 `debugOnly`。 |
 |logLevel|不适用|一个对象，它定义了用于筛选应用中的函数的日志类别。 版本 2.x 和更高版本遵循日志类别筛选ASP.NET核心布局。 此设置允许您筛选特定函数的日志记录。 有关详细信息，请参阅 ASP.NET Core 文档中的[日志筛选](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)。 |
@@ -323,7 +323,7 @@ ms.locfileid: "80878234"
 }
 ```
 
-|Property  |默认 | 说明 |
+|properties  |默认 | 说明 |
 |---------|---------|---------| 
 |isEnabled|false|启用或禁用控制台日志记录。| 
 
@@ -367,7 +367,7 @@ ms.locfileid: "80878234"
 }
 ```
 
-|Property  |默认 | 说明 |
+|properties  |默认 | 说明 |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|占用函数级锁的时间段。 锁自动续订。| 
 |listenerLockPeriod|00:01:00|占用侦听器锁的时间段。| 

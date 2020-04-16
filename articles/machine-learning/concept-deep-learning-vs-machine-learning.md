@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 03/05/2020
-ms.openlocfilehash: a83f47942e986e882d99528be3f03f616c2a7e04
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: b024010583ba1c6e0ffdf663f7335011ce212bf1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257041"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414578"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>深度学习与机器学习
 
@@ -120,4 +120,4 @@ ms.locfileid: "81257041"
 
 - [使用 Chainer 模型将手写数字分类](https://docs.microsoft.com/azure/machine-learning/how-to-train-ml-models)
 
-此外，请使用[机器学习算法速查表](../synapse-analytics/sql-data-warehouse/cheat-sheet.md)为模型选择算法。
+此外，请使用[机器学习算法速查表](algorithm-cheat-sheet.md)为模型选择算法。

@@ -4,16 +4,16 @@ description: 使用 SSH 和 Azure 逻辑应用自动完成用于监视、创建�
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
-ms.reviewer: estfan, klam, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 03/7/2020
+ms.date: 04/13/2020
 tags: connectors
-ms.openlocfilehash: d4ab7425c967d3a176c0a576d0be38ece1701b8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7fafdd5830ec2825771d4d611a5f4bd5d87260a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79128415"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393633"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>使用 SSH 和 Azure 逻辑应用监视、创建和管理 SFTP 文件
 
@@ -147,6 +147,16 @@ SFTP-SSH 触发器的工作原理是轮询 SFTP 文件系统并查找自上次�
 
 1. 使用 `.pem` 文件扩展名保存该私钥文件。
 
+## <a name="considerations"></a>注意事项
+
+本节介绍查看此连接器触发器和操作的注意事项。
+
+<a name="create-file"></a>
+
+### <a name="create-file"></a>创建文件
+
+要在 SFTP 服务器上创建文件，可以使用 SFTP-SSH**创建文件**操作。 此操作创建文件时，逻辑应用服务还会自动调用 SFTP 服务器来获取文件的元数据。 但是，如果在逻辑应用服务可以调用获取元数据之前移动新创建的文件，则会收到一`404`条错误消息。 `'A reference was made to a file or folder which does not exist'` 要跳过文件创建后读取文件的元数据，请按照步骤[添加并设置 **"获取所有文件元数据**属性 **"为"否**](#file-does-not-exist)"。
+
 <a name="connect"></a>
 
 ## <a name="connect-to-sftp-with-ssh"></a>使用 SSH 连接到 SFTP
@@ -197,7 +207,7 @@ SFTP-SSH 触发器的工作原理是轮询 SFTP 文件系统并查找自上次�
 
    ![指定要改用的区块大小](./media/connectors-sftp-ssh/specify-chunk-size-override-default.png)
 
-1. 完成后，选择“完成”****。
+1. 完成后，选择“完成”  。
 
 ## <a name="examples"></a>示例
 
@@ -211,9 +221,27 @@ SFTP-SSH 触发器的工作原理是轮询 SFTP 文件系统并查找自上次�
 
 <a name="get-content"></a>
 
-### <a name="sftp---ssh-action-get-content-using-path"></a>SFTP - SSH 操作：使用路径获取内容
+### <a name="sftp---ssh-action-get-file-content-using-path"></a>SFTP - SSH 操作：使用路径获取文件内容
 
-此操作从 SFTP 服务器上的文件中获取内容。 例如，可以在前面的示例中添加触发器，并添加文件内容必须符合的条件。 如果条件为 true，则可以运行获取内容的操作。
+此操作通过指定文件路径从 SFTP 服务器上的文件获取内容。 例如，可以在前面的示例中添加触发器，并添加文件内容必须符合的条件。 如果条件为 true，则可以运行获取内容的操作。
+
+<a name="troubleshooting-errors"></a>
+
+## <a name="troubleshoot-errors"></a>排查错误
+
+本节介绍常见错误或问题的可能解决方案。
+
+<a name="file-does-not-exist"></a>
+
+### <a name="404-error-a-reference-was-made-to-a-file-or-folder-which-does-not-exist"></a>404 错误："对不存在的文件或文件夹进行了引用"
+
+当逻辑应用通过 SFTP-SSH**创建文件**操作在 SFTP 服务器上创建新文件时，可能会发生此错误，但随后在逻辑应用服务获取文件的元数据之前立即移动新创建的文件。 当逻辑应用运行 **"创建文件操作"** 时，逻辑应用服务也会自动调用 SFTP 服务器来获取文件的元数据。 但是，如果文件被移动，逻辑应用服务无法再找到该文件，`404`因此您会收到错误消息。
+
+如果无法避免或延迟移动文件，则可以在文件创建后跳过读取文件的元数据，而是按照以下步骤操作：
+
+1. 在 **"创建文件**"操作中，**打开"添加新参数**列表"，选择 **"获取所有文件元数据**属性"，并将该值设置为 **"否**"。
+
+1. 如果以后需要此文件元数据，可以使用**Get 文件元数据**操作。
 
 ## <a name="connector-reference"></a>连接器参考
 

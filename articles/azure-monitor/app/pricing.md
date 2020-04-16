@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9ecd0ffd76650efff3a4c9f877522cba6f28d080
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 0225484de06ae4e595f1dcbcdd520f4e0e4d53f5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81271108"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405391"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -28,7 +28,7 @@ ms.locfileid: "81271108"
 
 [多步骤 Web 测试](../../azure-monitor/app/availability-multistep.md)会额外收费。 多步骤 Web 测试是指执行一系列操作的 Web 测试。 单页“ping 测试”不单独计费**。 进行 ping 测试和多步测试时发送的遥测数据与应用发送的其他遥测数据计费方式相同。
 
-[启用自定义指标维度警报](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation)的应用程序见解选项也会产生额外的成本，因为这可能导致创建其他预聚合指标。 [了解更多]有关应用程序见解中的基于日志和预聚合指标以及 Azure 监视器自定义指标的[定价](https://azure.microsoft.com/pricing/details/monitor/)。
+[启用自定义指标维度警报](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation)的应用程序见解选项也会产生额外的成本，因为这可能导致创建其他预聚合指标。 [详细了解](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics)应用程序见解中的基于日志和预聚合指标以及 Azure 监视器自定义指标的[定价](https://azure.microsoft.com/pricing/details/monitor/)。
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>估算应用程序的管理成本
 
@@ -218,7 +218,9 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 
 ![调整每日遥测数据量上限](./media/pricing/pricing-005.png)
 
-也可以`retentionInDays`[使用 参数以编程方式设置](powershell.md#set-the-data-retention)保留。 降低保留率后，删除最旧数据之前有几天宽限期。 如果将数据保留设置为 30 天，则可以使用`immediatePurgeDataOn30Days`参数立即触发旧数据清除，这对于与合规性相关的方案可能很有用。 此清除功能仅通过 Azure 资源管理器公开，使用时应十分小心。 可以使用 Azure 资源管理器配置数据卷上限的每日重置时间以`dailyQuotaResetTime`设置参数。
+降低保留率后，删除最旧数据之前有几天宽限期。
+
+也可以`retentionInDays`[使用 参数以编程方式设置](powershell.md#set-the-data-retention)保留。 如果将数据保留设置为 30 天，则可以使用`immediatePurgeDataOn30Days`参数立即触发旧数据清除，这对于与合规性相关的方案可能很有用。 此清除功能仅通过 Azure 资源管理器公开，使用时应十分小心。 可以使用 Azure 资源管理器配置数据卷上限的每日重置时间以`dailyQuotaResetTime`设置参数。
 
 ## <a name="data-transfer-charges-using-application-insights"></a>使用 Application Insights 时的数据传输费
 

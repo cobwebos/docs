@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dsindona
-ms.openlocfilehash: 94bbfb16a967a97b1ee6f6d51a5f55bc8ba13227
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6113759cc68d07af4c22edf03b3274d92dcbe780
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281759"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416300"
 ---
 # <a name="azure-application-marketplace-tab"></a>Azure 应用程序的“市场”选项卡
 
@@ -26,13 +26,13 @@ ms.locfileid: "80281759"
 
 下表介绍的设置用于为套餐创建店面。   需要附加星号的字段。
 
-|      字段         |    描述    |
+|      字段         |    说明    |
 |  ---------------   |  ---------------  |
-| **Title\***        | 套餐的标题。 将在市场中突出显示。 最大长度为 50 个字符。 |
+| **标题\***        | 套餐的标题。 将在市场中突出显示。 最大长度为 50 个字符。 |
 | **总结\***      | 套餐的简短摘要。 最大长度为 100 个字符。           |
 | **长摘要\*** | 套餐的较长摘要（不过，其内容可与“摘要”相同）。 最大长度为 256 个字符。           |
-| **描述\***  | 套餐的说明。 最大长度为 3000 个字符。 允许简单的 HTML 格式化，包括 &lt;p&gt;、&lt;em&gt;、&lt;ul&gt;、&lt;li&gt;、&lt;ol&gt; 和标头标记。  |
-| **营销标识符\*** | 与此套餐关联的唯一 URL，通常包含组织名称和解决方案名称，最大长度为 50 个字符。 为服务选择一个短且易记的营销标识符。 此项将用在此套餐的市场 URL 中。 例如，如果您的发布者 ID 是"contoso"，而营销标识符为"示例App"，则 Azure 应用商店中产品/服务的 URL 将为https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp  
+| **说明\***  | 套餐的说明。 最大长度为 3000 个字符。 允许简单的 HTML 格式化，包括 &lt;p&gt;、&lt;em&gt;、&lt;ul&gt;、&lt;li&gt;、&lt;ol&gt; 和标头标记。  |
+| **营销标识符\*** | 与此套餐关联的唯一 URL，通常包含组织名称和解决方案名称，最大长度为 50 个字符。 为服务选择一个短且易记的营销标识符。 此项将用在此套餐的市场 URL 中。 例如，如果您的发布者 ID 是"contoso"，而营销标识符为"示例App"，则 Azure 应用商店中产品/服务的 URL 将为`https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  
 | **预览订阅代码\*** | 为预览器添加 1 到 100 个订阅标识符。 这些白名单的订阅将有权访问您的产品/服务，而优惠在发布后，在发布后，在发布之前，在预览版中可用。          |
 | **有用链接**    | 或者，您可以为产品/服务的用户（如支持、文档、论坛等）提供指向各种资源的链接。 建议您至少向文档添加一个链接。            |
 | **建议类别（最多 5 个）\*** | 选择一到五个类别。 所选类别用于将套餐映射到在 Azure 市场和 Azure 门户中提供的产品类别。 这些类别将显示在浏览页和产品详细信息页上。 |
@@ -47,10 +47,10 @@ ms.locfileid: "80281759"
 
 下表描述了营销项目。
 
-|      字段         |    描述    |
+|      字段         |    说明    |
 |  ---------------   |  ---------------  |
 | **小\***        | 小徽标：40x40 像素，采用 PNG 格式     |
-| **中\***       | 中等徽标：90x90 像素，采用 PNG 格式    |
+| **中型\***       | 中等徽标：90x90 像素，采用 PNG 格式    |
 | **大\***        | 大徽标：115x115 像素，采用 PNG 格式   |
 | **宽\***         | 宽徽标：255x115 像素，采用 PNG 格式    |
 | **主图**           | 可选的英雄徽标：815x290 像素，采用 PNG 格式。 **注：** 英雄图标在上载后无法删除。 |

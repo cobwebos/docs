@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ad2032497b4b01476389428f5a2ef4a3961a1c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e17cc4bf6f70901e3bb5d250f0a55f073ad8d99e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481239"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406734"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory 应用程序代理中的通配符应用程序
 
@@ -116,7 +116,7 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 ### <a name="kerberos-constrained-delegation"></a>Kerberos 约束委派
 
-对于[使用 Kerberos 约束委派 (KCD) 作为 SSO 方法](application-proxy-configure-single-sign-on-with-kcd.md)的应用程序，针对 SSO 方法列出的 SPN 可能也需要通配符。 例如，SPN 可能是：`HTTP/*.adventure-works.com`。 仍需要在后端服务器上配置各个 SPN（例如 `http://expenses.adventure-works.com and HTTP/travel.adventure-works.com`）。
+对于[使用 Kerberos 约束委派 (KCD) 作为 SSO 方法](application-proxy-configure-single-sign-on-with-kcd.md)的应用程序，针对 SSO 方法列出的 SPN 可能也需要通配符。 例如，SPN 可能是：`HTTP/*.adventure-works.com`。 仍需要在后端服务器上配置各个 SPN（例如 `HTTP/expenses.adventure-works.com and HTTP/travel.adventure-works.com`）。
 
 ## <a name="scenario-1-general-wildcard-application"></a>方案 1：常规通配符应用程序
 
@@ -158,7 +158,7 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 ![显示示例配置实现的结构](./media/application-proxy-wildcard/05.png)
 
-| Color | 描述 |
+| Color | 说明 |
 | ---   | ---         |
 | 蓝色  | 应用程序在 Azure 门户中显式发布和可见。 |
 | 灰色  | 可通过父应用程序访问的应用程序。 |

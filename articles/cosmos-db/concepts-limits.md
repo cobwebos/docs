@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 343e94fe681d398b695e0e24c22544bca470d75a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: b24d7db679bb9cb9dacd5e1db8e6410b883548cc
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80652187"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415711"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
 
@@ -70,7 +70,7 @@ Cosmos DB 支持通过 SDK 或门户弹性缩放每个容器或数据库的吞�
 > [!NOTE]
 > 区域故障转移仅适用于单区域写入帐户。 多区域写入帐户不需要，也不会对更改写入区域施加任何限制。
 
-Cosmos DB 会定期自动备份数据。 有关备份保留间隔和时限的详细信息，请参阅 [Azure Cosmos DB 中的联机备份和按需数据还原](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)。
+Cosmos DB 会定期自动备份数据。 有关备份保留间隔和时限的详细信息，请参阅 [Azure Cosmos DB 中的联机备份和按需数据还原](online-backup-and-restore.md)。
 
 ## <a name="per-account-limits"></a>每个帐户的限制
 

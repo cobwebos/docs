@@ -5,20 +5,20 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 04/07/2020
+ms.date: 04/14/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0133322eab9a554cf28c0a90fbadf9afe6fbcd64
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 3b45c20e2d3e8829913c9e566516f85866ee80d4
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314265"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390319"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
 > [!div class="op_single_selector"]
-> * [按提供商列出的位置](expressroute-locations.md)
-> * [按位置列出的提供商](expressroute-locations-providers.md)
+> * [按提供程序进行的位置](expressroute-locations.md)
+> * [提供程序（按位置）](expressroute-locations-providers.md)
 
 
 本文中的表格提供了有关 ExpressRoute 地理覆盖范围和位置、ExpressRoute 连接提供商和 ExpressRoute 系统集成商 (SI) 的信息。
@@ -95,7 +95,7 @@ ExpressRoute 位置（有时称为对等位置或 Meet-me 位置）是 Microsoft
 | **迪拜** | [PCCS](https://www.pacificcontrols.net/cloudservices/index.html) | 3 | 阿拉伯联合酋长国北部 | 不适用 | 埃泰萨尔特 阿联酋 |
 | **迪拜2** | [杜德梅纳](http://datamena.com/solutions/data-centre) | 3 | 阿拉伯联合酋长国北部 | 不适用 | 杜戈梅纳， 兆港， 奥兰治， 奥里克斯康 |
 | **都柏林** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | 1 | 北欧 | 10G， 100G | 科尔特， eir， Equinix， euNetworks， 互通， 兆端口 |
-| **法兰克福** | [锡龙 FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | 德国中西部 | 10G， 100G | 世纪链接云连接， 科尔特， DE-CIX， Equinix， GEANT， 互连， 兆港， 橙色， 泰利亚运营商 |
+| **法兰克福** | [锡龙 FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | 德国中西部 | 10G， 100G | AT&T NetBond、世纪链接云连接、科尔特、DE-CIX、Equinix、GEANT、Interxion、Megaport、奥兰治、泰利亚运营商 |
 | **日内瓦** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | 瑞士西部 | 10G， 100G | Equinix、Megaport |
 | **香港特别行政区** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | 东亚 | 不适用 | 亚里卡网络、英国电信、世纪通云连接、首席电信、中国电信全球、Equinix、InterCloud、Megaport、NTT通信、奥兰治、电讯盈科全球有限公司、塔塔通信、泰利亚运营商、Verizon |
 | **香港2** | [MEGA-i](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | 不适用 | 10G | |
@@ -128,7 +128,7 @@ ExpressRoute 位置（有时称为对等位置或 Meet-me 位置）是 Microsoft
 | **硅谷** | [Equinix SV1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/silicon-valley-data-centers/sv1/) | 1 | 美国西部 | 10G， 100G | Aryaka网络， AT&T NetBond， 英国电信， 世纪链接云连接， 科尔特， 康卡斯特， 核心网站， Equinix， InterCloud， 互联网2， IX 覆盖， 数据包， 数据包Fabric， 3级通信， 兆端口， 橙色， 冲刺， 塔塔通信， 泰利亚运营商， Verizon， Zayo |
 | **硅谷2** | [核心网站 SV7](https://www.coresite.com/data-centers/locations/silicon-valley/sv7) | 1 | 美国西部 | 10G， 100G | 科尔特， 核心网站 | 
 | **新加坡** | [Equinix SG1](https://www.equinix.com/locations/asia-colocation/singapore-colocation/singapore-data-center/sg1/) | 2 | 东南亚 | 10G， 100G | 阿里亚卡网络、美国电话电报公司&T NetBond、英国电信、中国移动国际、爱普西隆全球通信、Equinix、InterCloud、3级通信、兆丰、NTT通信、奥兰治、新加坡电信、塔塔通信、电信公司、Verizon、沃达丰 |
-| **新加坡 2** | [全球开关泰森](https://www.globalswitch.com/locations/singapore-data-centres/) | 2 | 东南亚 | 10G， 100G | 中国联通全球、科尔特、爱普西隆全球通信、兆港、新加坡电信 |
+| **新加坡 2** | [全球开关泰森](https://www.globalswitch.com/locations/singapore-data-centres/) | 2 | 东南亚 | 10G， 100G | 中国联通全球、科尔特、爱普西隆全球通信、兆港、电讯盈科全球有限公司、新加坡电信 |
 | **斯塔万格** | [绿山DC1](https://greenmountain.no/dc1-stavanger/) | 1 | 挪威西部 | 10G， 100G | |
 | **斯德哥尔摩** | [Equinix SK1](https://www.equinix.com/locations/europe-colocation/sweden-colocation/stockholm-data-centers/sk1/) | 1 | 不适用 | 10G | 埃奎尼克斯， 泰利亚航空公司 |
 | **悉尼** | [Equinix SY2](https://www.equinix.com/locations/asia-colocation/australia-colocation/sydney-data-centers/sy2/) | 2 | 澳大利亚东部 | 10G， 100G | AARNet、 AT&T NetBond、 英国电信、 德沃利、 Equinix、 科尔迪亚、 兆港、 NEXTDC、 NTT 通信、 Optus、 奥兰治、 Spark NZ、 Telstra 公司、 TPG 电信、 Verizon、 Vocus Group NZ |

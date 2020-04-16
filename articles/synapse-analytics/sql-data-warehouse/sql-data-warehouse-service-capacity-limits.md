@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f35a5da15ca1a672046844282626a6cb7b8ecbdf
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: fbdf0fda51ae35fac4f3f8ae45bfcd788fc406ae
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583532"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414004"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Azure Synapse Analytics（以前称为 SQL DW）容量限制
 
@@ -24,7 +24,7 @@ Azure Synapse 的各种组件允许的最大值。
 
 ## <a name="workload-management"></a>工作负荷管理
 
-| 类别 | 描述 | 最大值 |
+| 类别 | 说明 | 最大值 |
 |:--- |:--- |:--- |
 | [数据仓库单位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |单个 SQL 池（数据仓库）单元的最大 DWU | 第 1 代：DW6000<br></br>第 2 代：DW30000c |
 | [数据仓库单位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |每个服务器的默认 DTU |54,000<br></br>默认情况下，每个 SQL 服务器（例如myserver.database.windows.net）的 DTU 配额为 54，000，允许高达 DW5000c。 此配额仅仅只是安全限制。 您可以通过[创建支持票证](sql-data-warehouse-get-started-create-support-ticket.md)并选择 *"配额*"作为请求类型来增加配额。  要计算 DTU 需求，请将所需的 DWU 总数乘以 7.5 或将所需的 cDWU 总数乘以 9.5。 例如：<br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW5000c x 9.5 = 47,500 DTU。<br></br>可以在门户中的 SQL Server 选项中查看当前 DTU 消耗量。 已暂停和未暂停的数据库都计入 DTU 配额。 |
@@ -36,13 +36,13 @@ Azure Synapse 的各种组件允许的最大值。
 
 ## <a name="database-objects"></a>数据库对象
 
-| 类别 | 描述 | 最大值 |
+| 类别 | 说明 | 最大值 |
 |:--- |:--- |:--- |
 | 数据库 |最大大小 | 第 1 代：磁盘压缩后为 240TB。 此空间与 tempdb 或日志空间无关，因此，此空间专用于永久表。  聚集列存储压缩率估计为 5 倍。  此压缩率允许数据库在所有表都为聚集列存储（默认表类型）的情况下增长到大约 1 PB。 <br/><br/> 第 2 代：列存储表的无限存储。  数据库的行存储部分仍限制为磁盘上压缩的 240 TB。 |
 | 表 |最大大小 |列存储表的大小不受限制。 <br>60 TB 用于磁盘上压缩的行存储表。 |
 | 表 |每个数据库的表数 | 100,000 |
 | 表 |每个表的列数 |1024 个列 |
-| 表 |每个列的字节数 |取决于列[数据类型](sql-data-warehouse-tables-data-types.md)。 对于字符数据类型，MAX Limit 可在页外存储（行溢出）存储多达 2 GB。  数据页中的数据页中，字符或 varchar 限制等非 Unicode 字符为 8000，数据页中的 Unicode 字符（nchar 或 nvarchar 限制）为 4000。  使用数据页存储大小来提高性能。 |
+| 表 |每个列的字节数 |取决于列[数据类型](sql-data-warehouse-tables-data-types.md)。 char 数据类型的限制为 8000，nvarchar 数据类型的限制为 4000，MAX 数据类型的限制为 2 GB。 |
 | 表 |每行的字节数，定义的大小 |8060 字节<br/><br/>每行字节数的计算方式同于使用页面压缩的 SQL Server。 与 SQL Server 一样，支持行溢出存储，这样可以将**可变长度列**脱行推送。 对可变长度行进行拖行推送时，只将 24 字节的根存储在主记录中。 有关详细信息，请参阅[超过 8-KB 的行溢出数据](https://msdn.microsoft.com/library/ms186981.aspx)。 |
 | 表 |每个表的分区数 |15,000<br/><br/>为了实现高性能，建议在满足业务需求的情况下尽量减少所需的分区数。 随着分区数目的增长，数据定义语言 (DDL) 和数据操作语言 (DML) 操作的开销也会增长，导致性能下降。 |
 | 表 |每个分区边界值的字符数。 |4000 |
@@ -54,19 +54,19 @@ Azure Synapse 的各种组件允许的最大值。
 | 统计信息 |每个统计对象的列数。 |32 |
 | 统计信息 |每个表的列上创建的统计信息条数。 |30,000 |
 | 存储过程 |最大嵌套级数。 |8 |
-| 视图 |每个视图的列数 |1,024 |
+| 查看 |每个视图的列数 |1,024 |
 ||||
 
 ## <a name="loads"></a>加载
 
-| 类别 | 描述 | 最大值 |
+| 类别 | 说明 | 最大值 |
 |:--- |:--- |:--- |
 | Polybase 加载 |每行 MB 数 |1<br/><br/>Polybase 加载小于 1 MB 的行。 不支持将 LOB 数据类型加载到具有聚集列存储索引 (CCI) 的表。<br/><br/> |
 ||||
 
 ## <a name="queries"></a>查询
 
-| 类别 | 描述 | 最大值 |
+| 类别 | 说明 | 最大值 |
 |:--- |:--- |:--- |
 | 查询 |用户表的排队查询数。 |1000 |
 | 查询 |系统视图的并发查询数。 |100 |

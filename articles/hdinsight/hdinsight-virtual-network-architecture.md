@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.openlocfilehash: b3f622b360f565ef5b16d5376cb1aa2498655017
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: ad0e0250b32f2bdef4944e6e148be3215f3822f7
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272144"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390209"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight 虚拟网络体系结构
 
@@ -30,11 +30,11 @@ Azure HDInsight 群集包含不同类型的虚拟机（或节点）。 每个节
 | R Server 边缘节点 | R Server 边缘节点是可以通过 SSH 连接到其中并执行应用程序的节点。连接后，系统会协调这些应用程序，使其可在不同的群集资源上运行。 边缘节点不参与群集内部的数据分析。 此节点还托管 R Studio Server，使你能够使用浏览器运行 R 应用程序。 |
 | 区域节点 | 对于 HBase 群集类型，区域节点（也称为数据节点）将运行区域服务器。 区域服务器为 HBase 管理的一部分数据提供服务，并对其进行管理。 可以在群集中添加或删除区域节点，以缩放计算能力和控制成本。|
 | Nimbus 节点 | 对于 Storm 群集类型，Nimbus 节点提供类似于头节点的功能。 Nimbus 节点通过 Zookeeper 将任务分配给群集中的其他节点，Zookeeper 协调 Storm 拓扑的运行。 |
-| 监督器节点 | 对于 Storm 群集类型，监督器节点执行 Nimbus 节点所提供的、执行所需处理的指令。 |
+| 监督器节点 | 对于 Storm 群集类型，主管节点执行 Nimbus 节点提供的用于执行处理的说明。 |
 
 ## <a name="resource-naming-conventions"></a>资源命名约定
 
-在寻址群集中的节点时，请使用完全限定的域名 （FQDN）。 您可以使用[Ambari API](hdinsight-hadoop-manage-ambari-rest-api.md)获取群集中各种节点类型的 FQDN。 
+处理群集中的节点时，请使用完全限定的域名 （FQDN）。 您可以使用[Ambari API](hdinsight-hadoop-manage-ambari-rest-api.md)获取群集中各种节点类型的 FQDN。
 
 这些 FQDN 将的形式`<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.cloudapp.net`。
 
@@ -48,9 +48,9 @@ Azure HDInsight 群集包含不同类型的虚拟机（或节点）。 每个节
 
 ![在 Azure 自定义 VNET 中创建的 HDInsight 实体的关系图](./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png)
 
-将 HDInsight 部署到 Azure 虚拟网络时提供的默认资源包括上表中所述的群集节点类型，以及用于支持在虚拟网络与外部网络之间进行通信的网络设备。
+Azure 虚拟网络中的默认资源包括上表中提及的群集节点类型。 支持虚拟网络和外部网络之间通信的网络设备。
 
-下表汇总了将 HDInsight 部署到自定义 Azure 虚拟网络时创建的 9 个群集节点。
+下表总结了将 HDInsight 部署到自定义 Azure 虚拟网络时创建的九个群集节点。
 
 | 资源类型 | 提供的数量 | 详细信息 |
 | --- | --- | --- |
@@ -64,7 +64,7 @@ Azure HDInsight 群集包含不同类型的虚拟机（或节点）。 每个节
 | 网络资源 | 提供的数量 | 详细信息 |
 | --- | --- | --- |
 |负载均衡器 | three | |
-|网络接口 | 9 个 | 此值基于普通群集，在此类群集中，每个节点具有自身的网络接口。 9 个接口分别用于上表中所述的 2 个头节点、3 个 ZooKeeper 节点、2 个工作器节点和 2 个网关节点。 |
+|网络接口 | 9 个 | 此值基于普通群集，在此类群集中，每个节点具有自身的网络接口。 这九个接口用于：两个头节点、三个 Zookeeper 节点、两个辅助节点和上表中提及的两个网关节点。 |
 |公共 IP 地址 | two |    |
 
 ## <a name="endpoints-for-connecting-to-hdinsight"></a>用于连接 HDInsight 的终结点
@@ -73,7 +73,7 @@ Azure HDInsight 群集包含不同类型的虚拟机（或节点）。 每个节
 
 - 虚拟网络 (`CLUSTERNAME.azurehdinsight.net`) 外部的 HTTPS 终结点。
 - 直接连接到位于 `CLUSTERNAME-ssh.azurehdinsight.net` 中的头节点的 SSH 终结点。
-- 虚拟网络 (`CLUSTERNAME-int.azurehdinsight.net`) 内部的 HTTPS 终结点。 请注意此 URL 中的“-int”。 此终结点将解析为该虚拟网络中的专用 IP，无法从公共 Internet 访问。
+- 虚拟网络 (`CLUSTERNAME-int.azurehdinsight.net`) 内部的 HTTPS 终结点。 请注意此`-int`URL 中的""。 此终结点将解析为该虚拟网络中的专用 IP，无法从公共 Internet 访问。
 
 在这 3 个终结点中，每个终结点分配有一个负载均衡器。
 

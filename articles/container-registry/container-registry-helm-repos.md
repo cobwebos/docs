@@ -3,12 +3,12 @@ title: 存储头盔图表
 description: 了解如何使用 Azure 容器注册表中的存储库为 Kubernetes 应用程序存储 Helm 图表
 ms.topic: article
 ms.date: 03/20/2020
-ms.openlocfilehash: 6304486ac493e235ed74f26ab4be4f843ef52513
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3f1a68258b758380a66b63e3c3137f1d460d288c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131476"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399375"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>将 Helm 图表推送并拉至 Azure 容器注册表
 
@@ -41,7 +41,7 @@ ms.locfileid: "80131476"
 - Azure 订阅中的**Azure 容器注册表**。 如果需要，请使用[Azure 门户](container-registry-get-started-portal.md)或[Azure CLI](container-registry-get-started-azure-cli.md)创建注册表。
 - **掌舵客户端版本 3.1.0 或更高版本**- 运行`helm version`以查找当前版本。 有关如何安装和升级 Helm 的详细信息，请参阅[安装 Helm][helm-install]。
 - **Kubernetes 群集**，您将在其中安装 Helm 图表。 如果需要，请创建[Azure 库伯奈斯服务群集][aks-quickstart]。 
-- **Azure CLI 版本 2.0.71 或更高版本**- 运行`az --version`以查找版本。 如果需要安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+- **Azure CLI 版本 2.0.71 或更高版本**- 运行`az --version`以查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 ### <a name="high-level-workflow"></a>高级工作流
 
@@ -77,18 +77,21 @@ helm create hello-world
 作为基本示例，将目录更改为`templates`文件夹，然后首先删除其中的内容：
 
 ```console
+cd hello-world/templates
 rm -rf *
 ```
 
 在`templates`文件夹中，创建一个文件，`configmap.yaml`该文件名为以下内容：
 
-```yml
+```console
+cat <<EOF > configmap.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: hello-world-configmap
 data:
   myvalue: "Hello World"
+EOF
 ```
 
 有关创建和运行此示例的更多，请参阅在 Helm 文档中[入门](https://helm.sh/docs/chart_template_guide/getting_started/)。
@@ -282,7 +285,7 @@ az acr repository delete --name mycontainerregistry --image helm/hello-world:v1
 
 - Azure 订阅中的**Azure 容器注册表**。 如果需要，请使用[Azure 门户](container-registry-get-started-portal.md)或[Azure CLI](container-registry-get-started-azure-cli.md)创建注册表。
 - Helm 客户端版本 2.11.0（而不是 RC 版本）或更高版本**** - 运行 `helm version` 以查找当前版本。 还需要在 Kubernetes 群集中初始化的一个 Helm 服务器 (Tiller)。 如果需要，请创建[Azure 库伯奈斯服务群集][aks-quickstart]。 有关如何安装和升级 Helm 的详细信息，请参阅[安装 Helm][helm-install-v2]。
-- Azure CLI 版本 2.0.46 或更高版本 ****- 运行 `az --version` 查找版本。 如果需要安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+- Azure CLI 版本 2.0.46 或更高版本 ****- 运行 `az --version` 查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 ### <a name="high-level-workflow"></a>高级工作流
 

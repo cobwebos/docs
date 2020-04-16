@@ -1,36 +1,38 @@
 ---
-title: Azure 事件网格容器注册表事件架构
+title: Azure 容器注册表作为事件网格源
 description: 介绍为 Azure 事件网格中的容器注册表事件提供的属性
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
-ms.topic: reference
-ms.date: 03/12/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: c5998ff428c4b6f4c1f7a4087c6ccb27d93773eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e33feb04edf42f1e2a32b9b8c8e2fd214692f31
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60345458"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393365"
 ---
-# <a name="azure-event-grid-event-schema-for-container-registry"></a>容器注册表的 Azure 事件网格事件架构
+# <a name="azure-container-registry-as-an-event-grid-source"></a>Azure 容器注册表作为事件网格源
 
 本文提供了容器注册表事件的属性和架构。有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
-## <a name="available-event-types"></a>可用事件类型
+## <a name="event-grid-event-schema"></a>事件网格事件架构
+
+### <a name="available-event-types"></a>可用事件类型
 
 Azure 容器注册表发出以下事件类型：
 
-| 事件类型 | 描述 |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.ContainerRegistry.ImagePushed | 推送映像时引发。 |
 | Microsoft.ContainerRegistry.ImageDeleted | 删除映像时引发。 |
 | Microsoft.ContainerRegistry.ChartPushed | 推送 Helm 图表时引发。 |
 | Microsoft.ContainerRegistry.ChartDeleted | 删除 Helm 图表时引发。 |
 
-## <a name="example-event"></a>示例事件
+### <a name="example-event"></a>示例事件
 
 以下示例显示了映像推送事件的架构： 
 
@@ -151,7 +153,7 @@ Azure 容器注册表发出以下事件类型：
 }]
 ```
 
-## <a name="event-properties"></a>事件属性
+### <a name="event-properties"></a>事件属性
 
 事件具有以下顶级数据：
 
@@ -198,6 +200,12 @@ Azure 容器注册表发出以下事件类型：
 | host | 字符串 | 注册表实例的外部可访问主机名，由传入请求中的 http 主机标头指定。 |
 | method | 字符串 | 生成事件的请求方法。 |
 | useragent | 字符串 | 请求的用户代理标头。 |
+
+## <a name="tutorials-and-how-tos"></a>教程和如何
+|标题 |说明  |
+|---------|---------|
+| [快速入门：发送容器注册表事件](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 介绍如何使用 Azure CLI 发送容器注册表事件。 |
+
 
 ## <a name="next-steps"></a>后续步骤
 

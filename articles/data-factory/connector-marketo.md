@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 40a16d559a96c88a864ef809d40d798b99746230
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: efb450f4da58c73c134d9f6b6aad6193f786912d
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80992090"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415011"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Marketo 复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Marketo 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -49,7 +50,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 Marketo 链接服务支持以下属性：
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 Marketo**** | 是 |
 | endpoint | Marketo 服务器的终结点。 （即 123-ABC-321.mktorest.com）  | 是 |
@@ -84,7 +85,7 @@ Marketo 链接服务支持以下属性：
 
 若要从 Marketo 复制数据，请将数据集的 type 属性设置为“MarketoObject”****。 支持以下属性：
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的类型属性必须设置为：**市场对象** | 是 |
 | tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
@@ -114,7 +115,7 @@ Marketo 链接服务支持以下属性：
 
 若要从 Marketo 复制数据，请将复制活动中的源类型设置为“MarketoSource”****。 复制活动**源**部分支持以下属性：
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 MarketoSource**** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Activitiy_Types"`。 | 否（如果指定了数据集中的“tableName”） |

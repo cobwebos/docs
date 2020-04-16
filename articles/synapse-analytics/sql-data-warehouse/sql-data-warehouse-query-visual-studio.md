@@ -11,19 +11,19 @@ ms.date: 08/15/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e986515a911cf1bbd88dfc73c56efcc6e81826d6
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 174ee07e389e598fed6ed8487e60303fbce81f77
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351404"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416038"
 ---
 # <a name="connect-to-azure-synapse-analytics-with-visual-studio-and-ssdt"></a>通过可视化工作室和 SSDT 连接到 Azure 同步分析
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure 机器学习](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-> * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 
+> * [sqlcmd](../sql/get-started-connect-sqlcmd.md) 
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 > 
 > 
@@ -35,7 +35,7 @@ ms.locfileid: "80351404"
 
 * 现有的 SQL 池。 要创建一个，请参阅[创建 SQL 池](create-data-warehouse-portal.md)。
 * 适用于 Visual Studio 的 SSDT。 如果您有视觉工作室，您可能已经拥有用于视觉工作室的 SSDT。 有关安装说明和选项，请参阅 [安装 Visual Studio 和 SSDT](sql-data-warehouse-install-visual-studio.md)。
-* 完全限定的 SQL Server 名称。 要查找此信息，请参阅[连接到 SQL 池](sql-data-warehouse-connect-overview.md)。
+* 完全限定的 SQL Server 名称。 要查找此信息，请参阅[连接到 SQL 池](../sql/connect-overview.md)。
 
 ## <a name="1-connect-to-your-sql-pool"></a>1. 连接到 SQL 池
 1. 打开 Visual Studio 2019。

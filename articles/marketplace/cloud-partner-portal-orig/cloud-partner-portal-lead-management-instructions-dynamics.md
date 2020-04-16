@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: dsindona
-ms.openlocfilehash: 524ae203a311d538431205bf8c6498de45aeb4d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d64c8460f5653f28b96396025f29ea13af15c8c3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280297"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416310"
 ---
 # <a name="configure-lead-management-for-dynamics-crm-online"></a>为 Dynamics CRM Online 配置潜在顾客管理
 
@@ -63,7 +63,7 @@ ms.locfileid: "80280297"
 4.  输入应用程序名称。
 5.  对于“类型”，请选择“Web 应用/API”。****
 6.  提供 URL。 不需要为潜在顾客填写此字段，但若要创建应用程序，则必须填写。
-7. 选择 **“创建”**。
+7. 选择“创建”  。
 8.  注册应用程序后，选择 **"属性"，** 然后选择**复制应用程序 ID**。您将在云合作伙伴门户中使用此连接信息。
 9.  在“属性”中，将应用程序设置为“多租户”，然后选择“保存”。****
 
@@ -142,4 +142,4 @@ ms.locfileid: "80280297"
 将生成的帐户信息添加到云合作伙伴门户，完成 Dynamics CRM 的潜在顾客管理配置。 例如：
 
 -   **Azure Active Directory** - **应用程序 ID**（示例：*23456052-aaaa-bbbb-8662-1234df56788f*）、**目录 ID**（示例：*12345678-8af1-4asf-1234-12234d01db47*）和**应用程序密钥**（示例：*1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=*）。
--   **Office 365** - **URL**（示例：*https://contoso.crm4.dynamics.com*）、**用户名**（示例：*contoso\@contoso.onmicrosoft.com*）和**密码**（示例：*P\@ssw0rd*）。
+-   **Office 365** - **Url（** 例如：）、**`https://contoso.crm4.dynamics.com`****用户名**（示例**`contoso\@contoso.onmicrosoft.com`**：）和**密码**（示例 *：P\@ssw0rd）。*

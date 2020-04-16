@@ -5,12 +5,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Kubernetes 
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 01ba9e7353b6783d1b4fd1649291a64405fd9382
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: a2794f53407be3ce3d7e69caa8039c13217a0356
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886681"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392617"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用网络策略保护 Pod 之间的流量
 
@@ -18,7 +18,7 @@ ms.locfileid: "80886681"
 
 本文介绍如何安装网络策略引擎，并创建 Kubernetes 网络策略来控制 AKS 中 Pod 之间的流量流动方式。 应该只对 AKS 中基于 Linux 的节点和 Pod 使用网络策略。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 需要安装并配置 Azure CLI 2.0.61 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
@@ -55,7 +55,7 @@ Azure 提供两种方式来实现网络策略。 可以在创建 AKS 群集时�
 | 支持的平台                      | Linux                      | Linux                       |
 | 支持的网络选项             | Azure CNI                  | Azure CNI 和 kubenet       |
 | 符合 Kubernetes 规范 | 支持的所有策略类型 |  支持的所有策略类型 |
-| 其他功能                      | None                       | 扩展的策略模型，包括全局网络策略、全局网络集和主机终结点。 有关使用 `calicoctl` CLI 管理这些扩展功能的详细信息，请参阅 [calicoctl 用户参考][calicoctl]。 |
+| 其他功能                      | 无                       | 扩展的策略模型，包括全局网络策略、全局网络集和主机终结点。 有关使用 `calicoctl` CLI 管理这些扩展功能的详细信息，请参阅 [calicoctl 用户参考][calicoctl]。 |
 | 支持                                  | 由 Azure 支持部门和工程团队提供支持 | 由 Azure 社区提供支持。 有关其他付费支持的详细信息，请参阅 [Project Calico 支持选项][calico-support]。 |
 | 日志记录                                  | 在 IPTables 中添加/删除的规则将记录到每个主机上的 */var/log/azure-npm.log* 下。 | 有关详细信息，请参阅 [Calico 组件日志][calico-logs] |
 
@@ -82,6 +82,8 @@ Azure 提供两种方式来实现网络策略。 可以在创建 AKS 群集时�
 * 对虚拟网络的 AKS 服务主体授予“参与者”权限**。
 * 在定义的虚拟网络中创建 AKS 群集并启用网络策略。
     * 将使用 *azure* 网络策略选项。 若要改用 Calico 作为网络策略选项，请使用 `--network-policy calico` 参数。 注意：Calico 可以与 或`--network-plugin azure``--network-plugin kubenet`一起使用。
+
+请注意，可以使用托管标识的权限，而不是使用服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
 
 提供自己的安全 SP_PASSWORD**。 可以替换 *RESOURCE_GROUP_NAME* 和 *CLUSTER_NAME* 变量：
 

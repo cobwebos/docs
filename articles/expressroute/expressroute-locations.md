@@ -6,20 +6,20 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 03/25/2020
+ms.date: 04/14/2020
 ms.author: cherylmc
-ms.openlocfilehash: 913bc16f7408acebb0e65359e8845ce0f6a3a2f4
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: b99bd20b9b9e18bbc09edd5bb49f34147ccfaabd
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314252"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390246"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
 > [!div class="op_single_selector"]
-> * [按提供商列出的位置](expressroute-locations.md)
-> * [按位置列出的提供商](expressroute-locations-providers.md)
+> * [按提供程序进行的位置](expressroute-locations.md)
+> * [提供程序（按位置）](expressroute-locations-providers.md)
 
 
 本文中的表格提供了有关 ExpressRoute 地理覆盖范围和位置、ExpressRoute 连接提供商和 ExpressRoute 系统集成商 (SI) 的信息。
@@ -81,7 +81,7 @@ ExpressRoute 位置（有时称为对等位置或 Meet-me 位置）是 Microsoft
 | **[AIS](https://business.ais.co.th/solution/en/azure-expressroute.html)** | 支持 | 支持 | 曼谷 |
 | **[Aryaka Networks](https://www.aryaka.com/)** |支持 |支持 |阿姆斯特丹、芝加哥、达拉斯、香港特别行政区、圣保罗、西雅图、硅谷、新加坡、东京、华盛顿特区 |
 | **[Ascenty Data Centers](https://www.ascenty.com/en/cloud/microsoft-express-route)** |支持 |支持 |圣保罗 |
-| **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |支持 |支持 |阿姆斯特丹、芝加哥、达拉斯、伦敦、硅谷、新加坡、悉尼、东京、多伦多、华盛顿特区 |
+| **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |支持 |支持 |阿姆斯特丹、芝加哥、达拉斯、法兰克福、伦敦、硅谷、新加坡、悉尼、东京、多伦多、华盛顿特区 |
 | **[在东京](https://www.attokyo.com/service/cloudsconnection/forazure.html)** | 支持 | 支持 | 东京2 |
 | **[BBIX](https://www.bbix.net/en/service/ix/)** | 支持 | 支持 | 东京 |
 | **[BCX](https://www.bcx.co.za/solutions)** |支持 |支持 |开普敦|
@@ -138,7 +138,7 @@ ExpressRoute 位置（有时称为对等位置或 Meet-me 位置）是 Microsoft
 | **[橙色](https://www.orange-business.com/en/products/business-vpn-galerie)** |支持 |支持 |阿姆斯特丹，阿姆斯特丹2，迪拜2，法兰克福，香港特别行政区，约翰内斯堡，伦敦，巴黎，圣保罗，硅谷，新加坡，悉尼，东京，华盛顿特区 |
 | **[奥里克斯科姆](https://www.orixcom.com/cloud-solutions/)** | 支持 | 支持 | 迪拜2 |
 | **[数据包交换](https://www.packetfabric.com/cloud-connectivity/microsoft-azure)** |支持 |支持 |芝加哥、硅谷、华盛顿特区 |
-| **[电讯盈科全球有限公司](https://consoleconnect.com/clouds/#azureRegions)** |支持 |支持 |芝加哥， 香港特别行政区， 伦敦 |
+| **[电讯盈科全球有限公司](https://consoleconnect.com/clouds/#azureRegions)** |支持 |支持 |芝加哥， 香港特别行政区， 伦敦， 新加坡2 |
 | **[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)** |支持 |支持 |首尔 |
 | **[SES](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)** | 支持 |支持 | 华盛顿特区 |
 | **[SIFY](http://telecom.sify.com/azure-expressroute.html)** |支持 |支持 |金奈、孟买 2 |

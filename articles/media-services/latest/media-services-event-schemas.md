@@ -11,18 +11,18 @@ ms.workload: ''
 ms.topic: reference
 ms.date: 02/25/2020
 ms.author: juliako
-ms.openlocfilehash: d4a206bbddedfe9f23a943df27c6ac4b5fe17e8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3733a641bc116b57556c5ad4f5750bec69e10e9b
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79251344"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393737"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>媒体服务事件的 Azure 事件网格架构
 
 本文介绍媒体服务事件的架构和属性。
 
-有关示例脚本和教程的列表，请参阅[媒体服务事件源](../../event-grid/event-sources.md#azure-subscriptions)。
+有关示例脚本和教程的列表，请参阅[媒体服务事件源](../../event-grid/event-schema-subscriptions.md)。
 
 ## <a name="job-related-event-types"></a>作业相关事件类型
 
@@ -32,7 +32,7 @@ ms.locfileid: "79251344"
 
 ### <a name="monitoring-job-state-changes"></a>监视作业状态更改
 
-| 事件类型 | 描述 |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.Media.JobStateChange| 获取所有作业状态更改的事件。 |
 | Microsoft.Media.JobScheduled| 获取当作业转换为已计划状态时的事件。 |
@@ -52,7 +52,7 @@ ms.locfileid: "79251344"
 
 中的`JobFinished`错误消息`JobCanceled`，`JobError`输出每个作业输出的聚合结果 - 当所有这些工作完成。 然而，作业输出事件会随着每个任务完成而触发。 例如，如果您有编码输出，后跟视频分析输出，则在最后的 Job 完成事件触发聚合数据之前，将触发两个事件作为作业输出事件。
 
-| 事件类型 | 描述 |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.Media.JobOutputStateChange| 获取所有作业输出状态更改的事件。 |
 | Microsoft.Media.JobOutputScheduled| 获取当作业输出转换为已计划状态时的事件。 |
@@ -66,7 +66,7 @@ ms.locfileid: "79251344"
 
 ### <a name="monitoring-job-output-progress"></a>监视作业输出进度
 
-| 事件类型 | 描述 |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.Media.JobOutputProgress| 此事件反映了作业处理进度，从 0% 到 100%。 如果进度值增加了 5% 或更多，或者自上次事件（检测信号）以来已超过 30 秒，则服务会尝试发送事件。 无法保证进度值从 0% 开始或达到 100%，也无法保证其随时间推移而以恒定速率增加。 此事件不应用于确定是否已经完成处理 – 要实现此目的，请改用状态更改事件。|
 
@@ -80,7 +80,7 @@ ms.locfileid: "79251344"
 
 按流或连接引发流级事件。 每个事件具有一个用于标识连接或流的 `StreamId` 参数。 每个流或连接具有一个或多个不同类型的轨迹。 例如，来自编码器的一个连接可能具有一个音频轨迹和四个视频轨迹。 流事件类型包括：
 
-| 事件类型 | 描述 |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.Media.LiveEventConnectionRejected | 编码器的连接尝试被拒绝。 |
 | Microsoft.Media.LiveEventEncoderConnected | 编码器与直播活动建立连接。 |
@@ -97,7 +97,7 @@ ms.locfileid: "79251344"
 
 轨道级事件类型包括：
 
-| 事件类型 | 描述 |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.Media.LiveEventIncomingDataChunkDropped | 媒体服务器删除了数据区块，因为该区块的抵达时间过迟，或者带有重叠的时间戳（新数据区块的时间戳小于前一数据区块的结束时间）。 |
 | Microsoft.Media.LiveEventIncomingStreamReceived | 媒体服务器收到流或连接中每个轨迹的第一个数据区块。 |
@@ -402,7 +402,7 @@ ms.locfileid: "79251344"
 
 正常断开连接结果代码为：
 
-| 结果代码 | 描述 |
+| 结果代码 | 说明 |
 | ----------- | ----------- |
 | S_OK | 编码器已成功断开连接。 |
 | MPE_CLIENT_TERMINATED_SESSION | 编码器已断开连接 (RTMP)。 |
@@ -670,8 +670,8 @@ ms.locfileid: "79251344"
 
 [注册作业状态更改事件](job-state-events-cli-how-to.md)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [包含媒体服务事件的 EventGrid .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [媒体服务事件的定义](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
-- [实时事件错误代码](live-event-error-codes.md)
+- [直播活动错误代码](live-event-error-codes.md)

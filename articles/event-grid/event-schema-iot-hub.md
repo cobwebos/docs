@@ -1,33 +1,31 @@
 ---
-title: IoT 中心的 Azure 事件网格架构 | Microsoft Docs
+title: Azure IoT 中心作为事件网格源
 description: 本文提供 Azure IoT 中心事件的属性和架构。 它列出了可用的事件类型、示例事件和事件属性。
 services: iot-hub
 documentationcenter: ''
-author: kgremban
-manager: timlt
+author: spelluru
 editor: ''
 ms.service: event-grid
-ms.topic: reference
-ms.date: 01/21/2020
-ms.author: kgremban
-ms.openlocfilehash: cfbd46ad961bd1dc914bae98e761cd83d445ff88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.date: 04/09/2020
+ms.author: spelluru
+ms.openlocfilehash: f9bf807884ab5592fa320532f3ca10a223081263
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76513025"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393329"
 ---
-# <a name="azure-event-grid-event-schema-for-iot-hub"></a>IoT 中心的 Azure 事件网格事件架构
-
+# <a name="azure-iot-hub-as-an-event-grid-source"></a>Azure IoT 中心作为事件网格源
 本文提供 Azure IoT 中心事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。 
 
-有关示例脚本和教程的列表，请参阅 [IoT 中心事件源](event-sources.md#iot-hub)。
+## <a name="event-grid-event-schema"></a>事件网格事件架构
 
-## <a name="available-event-types"></a>可用事件类型
+### <a name="available-event-types"></a>可用事件类型
 
 Azure IoT 中心发出以下事件类型：
 
-| 事件类型 | 描述 |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.Devices.DeviceCreated | 当设备注册到 IoT 中心时发布。 |
 | Microsoft.Devices.DeviceDeleted | 当设备从 IoT 中心删除时发布。 | 
@@ -37,7 +35,7 @@ Azure IoT 中心发出以下事件类型：
 
 除设备遥测事件外，所有设备事件通常在所有事件网格支持的区域都可用。 设备遥测事件处于公共预览版中，除美国东部、美国西部、西欧[、Azure 政府](../azure-government/documentation-government-welcome.md)[、Azure 中国 21Vianet](/azure/china/china-welcome)和 Azure[德国](https://azure.microsoft.com/global-infrastructure/germany/)外，所有区域都可用。
 
-## <a name="example-event"></a>示例事件
+### <a name="example-event"></a>示例事件
 
 DeviceConnected 和 DeviceDisconnected 事件的架构具有相同结构。 此示例事件显示设备连接到 IoT 中心时引发的事件的架构：
 
@@ -205,6 +203,13 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 | desired | 对象 (object) | 只能由应用程序后端写入并且由设备读取的属性部分。 | 
 | reported | 对象 (object) | 只能由设备写入并且由应用程序后端读取的属性部分。 |
 | lastUpdated | 字符串 | 上次设备孪生属性更新的 ISO8601 时间戳。 | 
+
+## <a name="tutorials-and-how-tos"></a>教程和如何
+|标题  |说明  |
+|---------|---------|
+| [使用逻辑应用发送有关 Azure IoT 中心事件的电子邮件](publish-iot-hub-events-to-logic-apps.md) | 每次将设备添加到 IoT 中心时，逻辑应用就会发送一封通知电子邮件。 |
+| [通过使用事件网格触发操作来响应 IoT 中心事件](../iot-hub/iot-hub-event-grid.md) | 概述 IoT 中心与事件网格的集成。 |
+| [订阅设备已连接和设备已断开连接事件](../iot-hub/iot-hub-how-to-order-connection-state-events.md) | 显示如何订阅设备连接状态事件。 |
 
 ## <a name="next-steps"></a>后续步骤
 

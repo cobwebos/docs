@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfe8aa088538663ac3e64f5913ff031e6160b045
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: b3f284efd6a9a2fd83c8e2a8f9fb7a962c1cacc1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382644"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406458"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
-使用 Azure Active Directory (Azure AD) 时，可以指定有限的管理员以权限较低的角色来管理标识任务。 可以分配管理员来执行各种任务，例如，添加或更改用户、分配管理角色、重置用户密码、管理用户许可证，以及管理域名。 只能在 Azure AD 的用户设置中更改默认用户权限。
+使用 Azure Active Directory (Azure AD) 时，可以指定有限的管理员以权限较低的角色来管理标识任务。 可以分配管理员来执行各种任务，例如，添加或更改用户、分配管理角色、重置用户密码、管理用户许可证，以及管理域名。 默认[用户权限](../fundamentals/users-default-permissions.md)只能在 Azure AD 中的用户设置中更改。
 
 ## <a name="limit-use-of-global-administrator"></a>限制全局管理员的使用
 
@@ -226,7 +226,7 @@ In | 有权执行的操作
 >
 >
 
-### <a name="global-reader"></a>[全球阅读器](#global-reader-permissions)
+### <a name="global-reader"></a>[全局读取者](#global-reader-permissions)
 
 充当此角色的用户可以跨 Microsoft 365 服务读取设置和管理信息，但无法执行管理操作。 全局读取者是对应于全局管理员的只读角色。 满足规划、审核或调查目的时，请分配全局读取者，而不要分配全局管理员。 将全局读取者与其他受限管理员角色（例如 Exchange 管理员）结合使用可以更轻松地完成工作，且无需分配全局管理员角色。 全球阅读器与 Microsoft 365 管理中心、交换管理中心、SharePoint 管理中心、团队管理中心、安全中心、合规性中心、Azure AD 管理中心和设备管理管理中心合作。
 
@@ -276,6 +276,10 @@ In | 有权执行的操作
 
 在 [Azure 门户](https://portal.azure.com/)中，此角色以前称为“密码管理员”。 Azure AD 中的"帮助台管理员"名称现在与其名称在 Azure AD PowerShell 和 Microsoft 图形 API 中匹配。
 
+### <a name="hybrid-identity-administrator"></a>[混合标识管理员](#hybrid-identity-administrator-permissions)
+
+此角色中的用户可以在 Azure AD 中启用、配置和管理与启用混合标识相关的服务和设置。 此角色授予将 Azure AD 配置为三种受支持的身份验证方法之一，即密码哈希同步 （PHS）、直通身份验证 （PTA） 或联合身份验证（AD FS 或第三方联合提供程序），以及部署相关的本地基础结构以启用它们。 预置基础结构包括预配和 PTA 代理。 此角色允许启用无缝单一登录 （S-SSO），以便在非 Windows 10 设备或非 Windows Server 2016 计算机上启用无缝身份验证。 此外，此角色还允许查看登录日志以及访问运行状况和分析以用于监视和故障排除目的。 
+
 ### <a name="intune-administrator"></a>[Intune 管理员](#intune-service-administrator-permissions)
 
 具有此角色的用户具有 Microsoft Intune Online 内的全局权限（如果该服务存在）。 此外，此角色包含管理以关联策略，以及创建和管理组的用户和设备的能力。 有关微软[Intune 基于角色的管理控制 （RBAC）](https://docs.microsoft.com/intune/role-based-access-control)的更多信息。
@@ -300,6 +304,10 @@ In | 有权执行的操作
 ### <a name="message-center-reader"></a>[消息中心读取者](#message-center-reader-permissions)
 
 具有此角色的用户可以在其组织的 [Office 365 消息中心](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093)内，监视 Exchange、Intune 和 Microsoft Teams 等已配置服务的通知和公告运行状况更新。 消息中心读者会收到包含帖子和最新动态的每周电子邮件摘要，并能在 Office 365 内共享消息中心帖子。 在 Azure AD 中，分配到此角色的用户对 Azure AD 服务只拥有只读访问权限，如用户和组。 此角色无权查看、创建或管理支持票证。
+
+### <a name="network-administrator"></a>[网络管理员](#network-administrator-permissions)
+
+此角色中的用户可以查看 Microsoft 基于用户位置的网络遥测的网络外围体系结构建议。 Office 365 的网络性能依赖于谨慎的企业客户网络外围体系结构，这些体系结构通常是特定于用户位置的。 此角色允许编辑已发现的用户位置并配置这些位置的网络参数，以便改进遥测测量和设计建议。 
 
 ### <a name="office-apps-administrator"></a>[办公室应用管理员](#office-apps-administrator-permissions)
 
@@ -331,6 +339,14 @@ In | 有权执行的操作
 ### <a name="power-platform-administrator"></a>[电源平台管理员](#power-platform-administrator-permissions)
 
 充当此角色的用户可以创建和管理环境、PowerApps、Flows、数据丢失防护策略的所有方面。 另外，具有此角色的用户可以管理支持票证并监视服务运行状况。
+
+### <a name="printer-administrator"></a>[打印机管理员](#printer-administrator-permissions)
+
+此角色的用户可以注册打印机并管理 Microsoft 通用打印解决方案中所有打印机配置的所有方面，包括通用打印连接器设置。 他们可以同意所有委派的打印权限请求。 打印机管理员还可以访问打印报表。
+
+### <a name="printer-technician"></a>[打印机技术员](#printer-technician-permissions)
+
+具有此角色的用户可以在 Microsoft 通用打印解决方案中注册打印机和管理打印机状态。 他们还可以读取所有连接器信息。 打印机技术人员无法执行的关键任务是设置打印机和共享打印机的用户权限。
 
 ### <a name="privileged-authentication-administrator"></a>[特权身份验证管理员](#privileged-authentication-administrator-permissions)
 
@@ -998,6 +1014,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.directory/groups/unified/members/update | 更新 Office 365 组的成员身份。 |
 | microsoft.directory/groups/unified/owners/update | 更新 Office 365 组的所有权。 |
 | microsoft.office365.exchange/allEntities/allTasks | 管理 Exchange Online 的各个方面。 |
+| 微软.office365.网络/性能/所有属性/读取 | 阅读 M365 管理中心中的网络性能页面。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
 | microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
@@ -1076,6 +1093,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.office365.exchange/allEntities/read    | 读取 Exchange Online 的各个方面。 |
 | microsoft.office365.messageCenter/messages/read    | 读取 microsoft.office365.messageCenter 中的消息。 |
 | microsoft.office365.messageCenter/securityMessages/read    | 读取 microsoft.office365.messageCenter 中的安全消息。 |
+| 微软.office365.网络/性能/所有属性/读取 | 阅读 M365 管理中心中的网络性能页面。 |
 | microsoft.office365.protectionCenter/allEntities/read    | 读取 Office 365 防护中心的各个方面。 |
 | microsoft.office365.securityComplianceCenter/allEntities/read    | 读取 microsoft.office365.securityComplianceCenter 中的所有标准属性。 |
 | microsoft.office365.usageReports/allEntities/read    | 阅读 Office 365 使用情况报告。 |
@@ -1132,6 +1150,50 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
+
+### <a name="hybrid-identity-administrator-permissions"></a>混合标识管理员权限
+
+启用、部署、配置、管理、监视和排除云配置和身份验证服务。 
+
+| **操作** | **说明** |
+| --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
+| microsoft.directory/applications/audience/update  | 更新 Azure Active Directory 中的 applications.audience 属性。 |
+| microsoft.directory/applications/authentication/update | 更新 Azure Active Directory 中的 applications.authentication 属性。  |
+| microsoft.directory/applications/basic/update | 更新 Azure Active Directory 中应用程序的基本属性。 |
+| microsoft.directory/applications/create | 在 Azure Active Directory 中创建应用程序。 |
+| microsoft.directory/applications/credentials/update | 更新 Azure Active Directory 中的 applications.credentials 属性。 |
+| microsoft.directory/applications/delete | 删除 Azure Active Directory 中的应用程序。 |
+| microsoft.directory/applications/owners/update | 更新 Azure Active Directory 中的 applications.owners 属性。 |
+| microsoft.directory/applications/permissions/update | 更新 Azure Active Directory 中的 applications.permissions 属性。 |
+| microsoft.directory/applications/policies/update | 更新 Azure Active Directory 中的 applications.policies 属性。 |
+| 微软.目录/应用程序模板/实例化 | 从应用程序模板实例化库应用程序。 |
+| microsoft.directory/auditLogs/allProperties/read | 读取 Azure Active Directory 中 auditLogs 上的所有属性（包括特权属性）。 |
+| microsoft.目录/云配置/所有属性/所有任务 | 读取和配置 Azure AD 云配置服务的所有属性。 |
+| microsoft.directory/联合身份验证/所有属性/所有任务 | 在 Azure AD 中管理活动目录联合服务 （ADFS） 或第三方联合提供程序的所有方面。 |
+| 微软.目录/组织/dirSync/更新 | 更新 Azure Active Directory 中的 organization.dirSync 属性。 |
+| 微软.目录/密码哈希同步/所有属性/所有任务 | 管理 Azure AD 中密码哈希同步 （PHS） 的所有方面。 |
+| microsoft.directory/通过身份验证/所有属性/所有任务 | 管理 Azure AD 中直通身份验证 （PTA） 的所有方面。 |
+| 微软.目录/无缝SSO/所有属性/所有任务 | 在 Azure AD 中管理无缝单一登录 （SSO） 的所有方面。 |
+| microsoft.directory/servicePrincipals/audience/update | 更新 Azure Active Directory 中的 servicePrincipals.audience 属性。 |
+| microsoft.directory/servicePrincipals/authentication/update | 更新 Azure Active Directory 中的 servicePrincipals.authentication 属性。 |
+| microsoft.directory/servicePrincipals/basic/update | 更新 Azure Active Directory 中 servicePrincipals 的基本属性。 |
+| microsoft.directory/servicePrincipals/create | 在 Azure Active Directory 中创建 servicePrincipals。 |
+| microsoft.directory/servicePrincipals/credentials/update | 更新 Azure Active Directory 中的 servicePrincipals.credentials 属性。 |
+| microsoft.directory/servicePrincipals/delete | 删除 Azure Active Directory 中的 servicePrincipals。 |
+| microsoft.directory/servicePrincipals/owners/update | 更新 Azure Active Directory 中的 servicePrincipals.owners 属性。 |
+| microsoft.directory/servicePrincipals/permissions/update | 更新 Azure Active Directory 中的 servicePrincipals.permissions 属性。 |
+| microsoft.directory/servicePrincipals/policies/update | 更新 Azure Active Directory 中的 servicePrincipals.policies 属性。 |
+| microsoft.directory/服务主体/同步作业/管理 | 管理 Azure AD 中同步作业的所有方面。 |
+| microsoft.directory/服务主体/同步架构/管理 | 在 Azure AD 中管理同步架构的所有方面。 |
+| microsoft.directory/服务主体/同步凭据/管理 | 在 Azure AD 中管理同步凭据的所有方面。 |
+| 微软.目录/服务主体/标签/更新 | 更新 Azure 活动目录中的服务主体.标记属性。 |
+| microsoft.directory/signInReports/allProperties/read | 读取 Azure Active Directory 中 signInReports 上的所有属性（包括特权属性）。 |
+| microsoft.office365.messageCenter/messages/read | 读取 microsoft.office365.messageCenter 中的消息。 |
+| microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
+| microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
+
 
 ### <a name="intune-service-administrator-permissions"></a>Intune 服务管理员权限
 
@@ -1246,6 +1308,19 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 | microsoft.office365.messageCenter/messages/read | 读取 microsoft.office365.messageCenter 中的消息。 |
 
+### <a name="network-administrator-permissions"></a>网络管理员权限
+可以管理网络位置并查看 Microsoft 365 软件即服务应用程序的企业网络设计见解。
+
+> [!NOTE]
+> 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
+>
+>
+
+| **操作** | **说明** |
+| --- | --- |
+| 微软.office365.网络/性能/所有属性/读取 | 阅读 M365 管理中心中的网络性能页面。  |
+| 微软.office365.网络/位置/所有属性/所有任务 | 读取和配置每个位置的网络位置属性。 |
+
 ### <a name="office-apps-administrator-permissions"></a>办公室应用 管理员权限
 可以管理 Office 应用的云服务（包括策略和设置管理），并管理选择、取消选择和向最终用户设备发布"新增功能内容"的功能。
 
@@ -1261,6 +1336,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.office365.messageCenter/messages/read | 读取 microsoft.office365.messageCenter 中的消息。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
+| microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
 | 微软.office365.用户通信/所有身份/所有任务 | 阅读和更新"新增邮件"可见性。 |
 | microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 
@@ -1377,6 +1453,34 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
+
+### <a name="printer-administrator-permissions"></a>打印机管理员权限
+
+可以管理打印机和打印机连接器的所有方面。
+
+> [!NOTE]
+> 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
+>
+>
+| **操作** | **说明** |
+| --- | --- |
+| microsoft.azure.打印/所有实体/所有属性/所有任务 | 创建和删除打印机和连接器，并读取和更新 Microsoft 打印中的所有属性。 |
+
+### <a name="printer-technician-permissions"></a>打印机技术人员权限
+
+可以注册和取消注册打印机并更新打印机状态。
+
+> [!NOTE]
+> 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
+>
+>
+| **操作** | **说明** |
+| --- | --- |
+| microsoft.azure.打印/连接器/所有属性/读取 | 读取 Microsoft 打印中连接器的所有属性。 |
+| microsoft.azure.打印/打印机/所有属性/读取 | 阅读 Microsoft 打印版中打印机的所有属性。 |
+| microsoft.azure.打印/打印机/基本/更新 | 更新 Microsoft 打印版中打印机的基本属性。 |
+| 微软.azure.打印/打印机/寄存器 | 在 Microsoft 打印中注册打印机。 |
+| 微软.azure.打印/打印机/取消注册 | 在 Microsoft 打印中取消注册打印机。 |
 
 ### <a name="privileged-authentication-administrator-permissions"></a>特权身份验证管理员权限
 
@@ -1565,6 +1669,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.directory/groups/unified/delete | 删除 Office 365 组。 |
 | microsoft.directory/groups/unified/members/update | 更新 Office 365 组的成员身份。 |
 | microsoft.directory/groups/unified/owners/update | 更新 Office 365 组的所有权。 |
+| 微软.office365.网络/性能/所有属性/读取 | 阅读 M365 管理中心中的网络性能页面。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.sharepoint/allEntities/allTasks | 创建和删除所有资源，然后读取和更新 microsoft.office365.sharepoint 中的标准属性。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
@@ -1630,6 +1735,8 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 
 | **操作** | **说明** |
 | --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
 | microsoft.directory/groups/hiddenMembers/read | 读取 Azure Active Directory 中的 groups.hiddenMembers 属性。 |
 | microsoft.directory/groups/unified/appRoleAssignments/update | 更新 Azure Active Directory 中的 groups.unified 属性。 |
 | microsoft.directory/groups/unified/basic/update | 更新 Office 365 组的基本属性。 |
@@ -1637,12 +1744,11 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.directory/groups/unified/delete | 删除 Office 365 组。 |
 | microsoft.directory/groups/unified/members/update | 更新 Office 365 组的成员身份。 |
 | microsoft.directory/groups/unified/owners/update | 更新 Office 365 组的所有权。 |
-| microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
-| microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
-| microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
+| 微软.office365.网络/性能/所有属性/读取 | 阅读 M365 管理中心中的网络性能页面。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
 | microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
+| microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 
 ### <a name="user-administrator-permissions"></a>用户管理员权限
 可以管理用户和组的所有方面，包括重置有限管理员的密码。
@@ -1719,18 +1825,22 @@ Exchange 服务管理员 | Exchange 管理员 | 29232cdf-9323-42fd-ade2-1d097af3
 组管理员 | 组管理员 | fdd7a751-b60b-444a-984c-02652fe8fa1c 
 来宾邀请者 | 来宾邀请者 | 95e79109-95c0-4d8e-aee3-d01accf2d47b
 支持管理员 | 支持管理员 | 729827e3-9c14-49f7-bb1b-9608f156bbb8
+混合标识管理员 | 混合标识管理员 | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2
 Intune 服务管理员 | Intune 管理员 | 3a2c62db-5318-420d-8d74-23affee5d9d5
 Kaizala 管理员 | Kaizala 管理员 | 74ef975b-6605-40af-a5d2-b9539d836353
 许可证管理员 | 许可证管理员 | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
 Lync 服务管理员 | Skype for Business 管理员 | 75941009-915a-4869-abe7-691bff18279e
 消息中心隐私读取者 | 消息中心隐私读取者 | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 消息中心读取者 | 消息中心读取者 | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
+网络管理员 | 网络管理员 | d37c8床-0711-4417-ba38-b4abe66ce4c2
 办公室应用管理员 | 办公室应用管理员 | 2b745bdf-0803-4d80-aa65-822c4493daac
 合作伙伴一线支持人员 | 合作伙伴一线支持人员 | 4ba39ca4-527c-499a-b93d-d9b492c50246
 合作伙伴二线支持人员 | 合作伙伴二线支持人员 | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 密码管理员 | 密码管理员 | 966707d0-3269-4727-9be2-8c3a10f19b9d
 Power BI 服务管理员 | Power BI 管理员 | a9ea8996-122f-4c74-9520-8edcd192826c
 Power Platform 管理员 | Power Platform 管理员 | 11648597-926c-4cf3-9c36-bcebb0ba8dcc
+打印机管理员 | 打印机管理员 | 644ef478-e28f-4e28-b9dc-3fdde9aa0b1f
+打印机技术员 | 打印机技师 | e8cef6f1-e4bd-4ea8-bc07-4b8d950f4477
 特权身份验证管理员 | 特权身份验证管理员 | 7be44c8a-adaf-4e2a-84d6-ab2649e08a13
 特权角色管理员 | 特权角色管理员 | e8611ab8-c189-46e8-94e1-60213ab1f814
 报告读者 | 报告读者 | 4a5d8f65-41da-4de4-8968-e035b65339cf

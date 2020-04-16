@@ -7,14 +7,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/13/2020
-ms.openlocfilehash: 251507c5740af69bd0818391dd2e8f857338b6cf
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: e0042960c25d58b72bc0ab884de5a2db62e566d9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313915"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413448"
 ---
 # <a name="data-flow-script-dfs"></a>数据流脚本 （DFS）
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 数据流脚本 （DFS） 是基础元数据，类似于编码语言，用于执行映射数据流中包含的转换。 每个转换都由一系列属性表示，这些属性提供了正确运行作业的必要信息。 通过单击浏览器 UI 顶部功能区上的"脚本"按钮，该脚本可以从 ADF 可见和编辑。
 

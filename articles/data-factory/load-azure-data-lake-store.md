@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/17/2018
-ms.openlocfilehash: 1325910877d1e030b3bf4114e16d0f81ecea8cf7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b1b19814709451bdbbea97462c459149484e71f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443981"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415852"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>使用 Azure 数据工厂向 Azure Data Lake Storage Gen1 加载数据
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md)（以前称为 Azure Data Lake Store）是一个企业范围的超大规模存储库，适用于大数据分析工作负载。 使用 Data Lake Storage Gen1 可以捕获任何大小、类型和引入速度的数据。 可在单个位置捕获数据以用于操作和探索性分析。
 
@@ -58,7 +60,7 @@ Azure 数据工厂在将数据加载到 Data Lake Storage Gen1 方面提供以�
     * **版本**：选择“V2”****.
     * **位置**：选择数据工厂所在的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置和区域中。 这些数据存储包括 Azure Data Lake Storage Gen1、Azure 存储、Azure SQL 数据库，等等。
 
-3. 选择 **“创建”**。
+3. 选择“创建”  。
 4. 创建操作完成后，请转到数据工厂。 此时会看到“数据工厂”**** 主页，如下图所示： 
    
    ![数据工厂主页](./media/load-data-into-azure-data-lake-store/data-factory-home-page.png)
@@ -84,11 +86,11 @@ Azure 数据工厂在将数据加载到 Data Lake Storage Gen1 方面提供以�
 4. 在“指定 Amazon S3 连接”页中，执行以下步骤：**** 
    1. 指定“访问密钥 ID”**** 值。
    2. 指定“机密访问密钥”**** 值。
-   3. 选择“完成”****。
+   3. 选择“完成”  。
    
       ![指定 Amazon S3 帐户](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
    
-   4. 随即显示新的连接。 选择“下一步”。
+   4. 随即显示新的连接。 选择“**下一页**”。
    
    ![指定 Amazon S3 帐户](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
    
@@ -108,7 +110,7 @@ Azure 数据工厂在将数据加载到 Data Lake Storage Gen1 方面提供以�
 
    1. 为“Data Lake Store 帐户名”选择 Data Lake Storage Gen1 帐户****。
    2. 指定“租户”并选择“完成”****。
-   3. 选择“下一步”。
+   3. 选择“**下一页**”。
    
    > [!IMPORTANT]
    > 在本演练中，使用 Azure 资源的托管标识来对 Data Lake Storage Gen1 帐户进行身份验证。 请务必按照[这些说明](connector-azure-data-lake-store.md#managed-identity)授予 MSI 在 Data Lake Storage Gen1 中的适当权限。

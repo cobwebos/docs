@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 6e0c98cffef06fb6d6345fc2b23bbc22715909b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3432f981df3f666d6276eee4564ef33000faa6b1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79370179"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410899"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>使用防火墙为 Azure HDInsight 群集配置出站网络流量
 
@@ -60,21 +60,21 @@ HDInsight 出站流量依赖项几乎完全是使用 FQDN 定义的，而这些 
 
     **顶部部分**
 
-    | properties|  “值”|
+    | properties|  值|
     |---|---|
-    |“属性”| FwAppRule|
+    |名称| FwAppRule|
     |优先度|200|
     |操作|Allow|
 
     **FQDN 标记部分**
 
-    | “属性” | 源地址 | FQDN 标记 | 说明 |
+    | 名称 | 源地址 | FQDN 标记 | 说明 |
     | --- | --- | --- | --- |
     | Rule_1 | * | WindowsUpdate 和 HDInsight | HDI 服务所需 |
 
     **目标 FQDN 部分**
 
-    | “属性” | 源地址 | 协议:端口 | 目标 FQDN | 说明 |
+    | 名称 | 源地址 | 协议:端口 | 目标 FQDN | 说明 |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https:443 | login.windows.net | 允许 Windows 登录活动 |
     | Rule_3 | * | https:443 | login.microsoftonline.com | 允许 Windows 登录活动 |
@@ -82,7 +82,7 @@ HDInsight 出站流量依赖项几乎完全是使用 FQDN 定义的，而这些 
 
    ![标题：输入应用程序规则集合详细信息](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
-1. 选择“添加”****。
+1. 选择 **添加** 。
 
 ### <a name="configure-the-firewall-with-network-rules"></a>使用网络规则配置防火墙
 
@@ -94,15 +94,15 @@ HDInsight 出站流量依赖项几乎完全是使用 FQDN 定义的，而这些 
 
     **顶部部分**
 
-    | properties|  “值”|
+    | properties|  值|
     |---|---|
-    |“属性”| FwNetRule|
+    |名称| FwNetRule|
     |优先度|200|
     |操作|Allow|
 
     **IP 地址部分**
 
-    | “属性” | 协议 | 源地址 | 目标地址 | 目标端口 | 说明 |
+    | 名称 | 协议 | 源地址 | 目标地址 | 目标端口 | 说明 |
     | --- | --- | --- | --- | --- | --- |
     | Rule_1 | UDP | * | * | 123 | 时间服务 |
     | Rule_2 | Any | * | DC_IP_Address_1、DC_IP_Address_2 | * | 如果使用企业安全包 （ESP），则在 IP 地址部分中添加网络规则，允许与 ESP 群集的 AAD-DS 通信。 可以在门户的 AAD-DS 部分找到域控制器的 IP 地址 |
@@ -111,13 +111,13 @@ HDInsight 出站流量依赖项几乎完全是使用 FQDN 定义的，而这些 
 
     **服务标记部分**
 
-    | “属性” | 协议 | 源地址 | 服务标记 | 目标端口 | 说明 |
+    | 名称 | 协议 | 源地址 | 服务标记 | 目标端口 | 说明 |
     | --- | --- | --- | --- | --- | --- |
     | Rule_7 | TCP | * | SQL | 1433 | 在 SQL 的“服务标记”部分中配置允许你记录和审核 SQL 流量的网络规则，除非你在 HDInsight 子网中为 SQL Server 配置了服务终结点来绕过防火墙。 |
 
    ![标题：输入应用程序规则集合](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
-1. 选择“添加”****。
+1. 选择 **添加** 。
 
 ### <a name="create-and-configure-a-route-table"></a>创建并配置路由表
 
@@ -155,7 +155,7 @@ HDInsight 出站流量依赖项几乎完全是使用 FQDN 定义的，而这些 
 
 1. 在“关联子网”屏幕上，选择已创建群集的虚拟网络以及用于 HDInsight 群集的“子网”。********
 
-1. 选择“确定”。
+1. 选择“确定”  。
 
 ## <a name="edge-node-or-custom-application-traffic"></a>边缘节点或自定义应用程序流量
 
@@ -221,7 +221,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 #### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS 依赖项
 
 > [!Important]
-> 以下列表仅提供了一些最重要的 FQDN。 [此文件](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json)提供了用于配置 NVA 的完整 FQDN 列表。
+> 以下列表仅提供了一些最重要的 FQDN。 您可以获取用于[在此文件中](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json)配置 NVA 的其他 FQDN（主要是 Azure 存储和 Azure 服务总线）。
 
 | **终结点**                                                          |
 |---|

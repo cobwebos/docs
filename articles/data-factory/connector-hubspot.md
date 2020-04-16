@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.author: jingwang
-ms.openlocfilehash: cb0e20a96bebec22dff99d89c6be0a6d294c80a1
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 2d60a1b03da6fdf4af6b0d0378456c08d927f451
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80992141"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415205"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 HubSpot 复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 HubSpot 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -47,7 +48,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 HubSpot 链接服务支持以下属性：
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Hubspot** | 是 |
 | clientId | 与 HubSpot 应用程序关联的客户端 ID。 了解如何[在此处](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot)在 HubSpot 中创建应用。 | 是 |
@@ -90,7 +91,7 @@ HubSpot 链接服务支持以下属性：
 
 要从 HubSpot 复制数据，请将数据集的 type 属性设置为“HubspotObject”****。 支持以下属性：
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的类型属性必须设置为：**中心点对象** | 是 |
 | tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
@@ -120,7 +121,7 @@ HubSpot 链接服务支持以下属性：
 
 要从 HubSpot 复制数据，请将复制活动中的源类型设置为“HubspotSource”****。 复制活动**源**部分支持以下属性：
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：**HubspotSource** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Companies where Company_Id = xxx"`。 | 否（如果指定了数据集中的“tableName”） |

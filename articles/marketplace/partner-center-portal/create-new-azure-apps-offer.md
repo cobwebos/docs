@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 260193b3c71e29a32e0589f50864ffcca2e9a67c
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 6b7ca1f10744bf38137c57d94d796655946c31b3
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262258"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390348"
 ---
 # <a name="create-an-azure-application-offer"></a>创建 Azure 应用程序产品/服务
 
@@ -58,7 +58,7 @@ Azure[应用商店的视频构建解决方案模板和托管应用程序](https:
 
     * [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)
     * [GitHub Azure 快速入门模板](https://github.com/azure/azure-quickstart-templates)
-    * [发布应用程序定义](https://docs.microsoft.com/azure/managed-applications/publish-managed-app-definition-quickstart)
+    * [发布应用程序定义](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
     * [部署服务目录应用](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
 
 * 教程：
@@ -108,7 +108,7 @@ Azure[应用商店的视频构建解决方案模板和托管应用程序](https:
 >[!Note]
 >发布产品/服务后，只有在重新发布后，才会在系统和网店中更新对合作伙伴中心中提供的报价进行编辑。  请确保您在进行更改后提交要发布的要约。
 
-### <a name="create-a-new-offer"></a>创建新产品/服务
+### <a name="create-a-new-offer"></a>创建新套餐
 
 选择 **" 新增产品/服务**"按钮，然后选择**Azure 应用程序**菜单项。 将显示"**新建产品/服务**"对话框。
 

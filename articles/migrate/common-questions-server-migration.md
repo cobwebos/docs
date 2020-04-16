@@ -3,12 +3,12 @@ title: Azure 迁移服务器迁移常见问题解答
 description: 获取有关使用 Azure 迁移服务器迁移迁移计算机的常见问题的解答。
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 507cc8088bf54b1a4f4483673ec5332efcdd36c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cc78d2087dcaad2922ca6b6d9c090a8decdb6e84
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80127798"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393798"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure 迁移服务器迁移：常见问题
 
@@ -93,8 +93,12 @@ NetQos 策略中要使用的 AppNamePrefix 是"网关Windows服务.exe"。 您�
 - 将当前在私有云中运行的 VM 迁移到 Azure
 - 如果要将在公共云（如 Amazon Web 服务 （AWS） 或 Google 云平台 （GCP））中运行的 VM 迁移到 Azure。
 
+## <a name="i-deployed-two-or-more-appliances-to-discover-vms-in-my-vcenter-server-however-when-i-try-to-migrate-the-vms-i-only-see-vms-corresponding-to-one-of-the-appliance"></a>我部署了两个（或更多）设备来发现 vCenter 服务器中的 VM。 但是，当我尝试迁移 VM 时，我只看到与其中一个设备对应的 VM。
+
+虽然这可能是一个很好的用例，我们目前不支持它。 部署两个（或更多）设备以发现同一组 VM 会导致 VM 所有权在两个设备之间不断切换的服务问题。 这是您看到 VM 出现和消失的原因。 在这种情况下，要解决此问题，必须删除一个设备并执行硬刷新。
+
 ## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>我是否需要 VMware vCenter 来迁移 VMware VM？
-要使用基于 VMware 代理或无代理的迁移[迁移 VMware VM，VM](server-migrate-overview.md)所在的 ESXi 主机必须由 vCenter Server 管理。 如果没有 vCenter 服务器，则可以通过将 VMware VM 迁移到物理服务器来迁移 VMware VM。 [了解详情](migrate-support-matrix-physical-migration.md)。
+要使用基于 VMware 代理或无代理的迁移[迁移 VMware VM，VM](server-migrate-overview.md)所在的 ESXi 主机必须由 vCenter Server 管理。 如果没有 vCenter 服务器，则可以通过将 VMware VM 迁移到物理服务器来迁移 VMware VM。 [了解详细信息](migrate-support-matrix-physical-migration.md)。
  
 ## <a name="next-steps"></a>后续步骤
 

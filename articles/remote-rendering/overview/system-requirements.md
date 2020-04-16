@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: c239f7062dc39492a0cf63ac3aadbaf94acbf032
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 8573a88d5371bbde07a541c789f52e6c44f1e279
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80680435"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411126"
 ---
 # <a name="system-requirements"></a>系统要求
 
@@ -45,7 +45,7 @@ ms.locfileid: "80680435"
 
 ## <a name="devices"></a>设备
 
-Azure 远程呈现目前仅支持**HoloLens 2**和 Windows 桌面 UWP 作为目标设备。
+Azure 远程呈现目前仅支持**HoloLens 2**和 Windows 桌面作为目标设备。 请参阅[平台限制](../reference/limits.md#platform-limitations)部分。
 
 使用最新的 HEVC 编解码器非常重要，因为较新版本的延迟有显著改善。 要检查设备上安装了哪个版本：
 
@@ -77,10 +77,10 @@ Azure 远程呈现目前仅支持**HoloLens 2**和 Windows 桌面 UWP 作为目�
 
 对于使用 Unity 进行开发，请安装
 
-* Unity 2019.3.1 [（下载）](https://unity3d.com/get-unity/download)
-* 在 Unity 中安装这些模块：
-  * **UWP** - 通用 Windows 平台构建支持
-  * **IL2CPP** - Windows 构建支持 （IL2CPP）
+* Unity 2019.3.1[（下载）](https://unity3d.com/get-unity/download)
+* 在 Unity 中安装以下模块：
+  * **UWP** - 通用 Windows 平台生成支持
+  * **IL2CPP** - Windows 生成支持 (IL2CPP)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -2,13 +2,13 @@
 title: 高级应用程序升级主题
 description: 本文介绍有关升级 Service Fabric 应用程序的一些高级主题。
 ms.topic: conceptual
-ms.date: 1/28/2020
-ms.openlocfilehash: 182ab6dc1663e160561b8941ebf3a36b5af3d950
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.date: 03/11/2020
+ms.openlocfilehash: a12d2ec55bda95c1c61d4a73c76f4a777f4237f2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422813"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414500"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>服务结构应用程序升级：高级主题
 
@@ -18,7 +18,7 @@ ms.locfileid: "80422813"
 
 类似地，在升级过程中还可以从应用程序中删除服务类型。 但是，必须删除待删除服务类型的所有服务实例，然后才能继续进行升级（请参阅 [Remove-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)）。
 
-## <a name="avoid-connection-drops-during-stateless-service-planned-downtime-preview"></a>避免在无状态服务计划停机期间连接中断（预览）
+## <a name="avoid-connection-drops-during-stateless-service-planned-downtime"></a>避免在无状态服务计划停机期间连接中断
 
 对于计划无状态的实例停机时间（如应用程序/群集升级或节点停用），由于实例关闭后关闭公开的终结点，连接可能会被删除，从而导致强制连接关闭。
 

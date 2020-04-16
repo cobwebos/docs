@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 36cc63721fe003934aabfb3ae2a03a4113937ca4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3a2317554f02dc1f1198d8019bbfdb50e3cc71c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256934"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81409768"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>为 VMware VM/物理服务器设置大规模灾难恢复
 
@@ -95,7 +95,7 @@ ms.locfileid: "79256934"
 
 “符合条件”是什么意思？ 若要启动 Azure VM，Azure 要求某些驱动程序处于引导/启动状态，并将 DHCP 等服务设置为自动启动。
 - 符合条件的计算机已采用这些设置。
-- 对于运行 Windows 的计算机，可以主动检查符合性，并根据需要使其符合条件。 [了解详情](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010)。
+- 对于运行 Windows 的计算机，可以主动检查符合性，并根据需要使其符合条件。 [了解详细信息](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010)。
 - 对于 Linux 计算机，只能在故障转移时使其符合条件。
 
 **计算机是否符合 Azure 条件？** | **Azure VM 限制（托管磁盘故障转移）**
@@ -210,7 +210,7 @@ CPU**** | **内存** | **缓存磁盘** | **变动率**
 若要运行大规模故障转移，我们建议：
 
 1. 为工作负荷故障转移创建恢复计划。
-    - 每个恢复计划最多可以触发 50 台计算机的故障转移。
+    - 每个恢复计划可以触发多达 100 台计算机的故障转移。
     - [详细了解](recovery-plan-overview.md)恢复计划。
 2. 将 Azure 自动化 Runbook 脚本添加到恢复计划，以将 Azure 上的任何手动任务自动化。 典型的任务包括配置负载均衡器、更新 DNS，等等。 [了解详细信息](site-recovery-runbook-automation.md)
 2. 在故障转移之前，请准备好 Windows 计算机，使之符合 Azure 环境的条件。 符合条件的计算机的[故障转移限制](#plan-azure-subscriptions-and-quotas)更高。 [详细了解](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010) Runbook。

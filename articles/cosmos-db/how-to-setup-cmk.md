@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: 6e2a90b8f81b9b945905ee98beb1686c54a62e8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 733a85e492185e7e83922a3cc91d53c848b939a1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063754"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411147"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>使用 Azure Key Vault 为 Azure Cosmos 帐户配置客户管理的密钥
 
@@ -231,7 +231,7 @@ az cosmosdb create \
 
 ### <a name="how-do-customer-managed-keys-affect-a-backup"></a>客户管理的密钥如何影响备份？
 
-Azure Cosmos DB [定期自动备份](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)帐户中存储的数据。 此操作会备份已加密的数据。 若要使用还原的备份，需要提供备份时使用的加密密钥。 这意味着未进行吊销，并且仍将启用备份时使用的密钥版本。
+Azure Cosmos DB [定期自动备份](./online-backup-and-restore.md)帐户中存储的数据。 此操作会备份已加密的数据。 若要使用还原的备份，需要提供备份时使用的加密密钥。 这意味着未进行吊销，并且仍将启用备份时使用的密钥版本。
 
 ### <a name="how-do-i-revoke-an-encryption-key"></a>如何吊销加密密钥？
 

@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
-ms.openlocfilehash: 446e579a7205f0e785d7e940c1dbdd36cff8f370
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd6d6375b19689c582c0f129378c76936e624e04
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80285327"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416282"
 ---
 <a name="web-analytics"></a>Web Analytics
 =============
@@ -40,7 +40,7 @@ ms.locfileid: "80285327"
 
 1. 将查询参数 **mktcmpid** 添加到 URL。该查询参数描述营销活动的具体内容，以及这些客户来自哪个页面/事件。
 
-例如，可以使用：<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign>
+例如，可以使用：```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign```
 
 1. （高级）：在 URL 中使用支持的通用营销活动 ID 之一。 我们希望能够顺应你需要使用的其他推荐标记，因此我们支持自动识别这些附加标记的约定：
     
@@ -49,14 +49,14 @@ ms.locfileid: "80285327"
     3. **ref**
     4. **src**
 
-例如，可以使用：<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign>
+例如，可以使用：```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign```
 
 可以选择使用其中多个营销活动 ID 的组合，以进一步识别驱动营销活动流量的多个源，例如，客户来自何处（电子邮件、博客、社交媒体源等）。
 
 例如：
 
-1. 新闻稿推荐人：<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter>
-2. LinkedIn 推荐人：<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn>
+1. 新闻稿推荐人：```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter```
+2. LinkedIn 推荐人：```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn```
 
 ### <a name="ensuring-campaigns-pass-through-all-your-pages"></a>**确保在所有页面中传递营销活动**
 
@@ -64,13 +64,13 @@ ms.locfileid: "80285327"
 
 以下是示例：
 
-1. 营销员工从 Google 购买广告，以将流量驱动到公司的登陆页面 <https://contoso.com>。 此登陆页面包含一个指向 <https://appsource.com> 的\"试用我的产品\"链接。
+1. 营销员工从 Google 购买广告，以将流量驱动到公司的登陆页面 ```https://contoso.com```。 此登陆页面包含一个指向 ```https://appsource.com``` 的\"试用我的产品\"链接。
 2. 用户单击广告，然后登陆到其公司的登陆页面。
     1.  推荐 URL = google.com
-    2.  登陆页面 URL = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
+    2.  登陆页面 URL = ```https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName```
 3. 用户单击\"试用我的产品\"链接，然后进入 AppSource。
-    1. 推荐 URL = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-    2. 登陆页面 URL（**请确保在此 URL 中添加 utm\_campaign 和 utm\_source**）= [https://appsource.microsoft.com/product/dynamics-365/contoso.offername?**utm\_campaign=MyCampaignAdName&utm\_source=MySourceAdName**](https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
+    1. 推荐 URL = ```https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName```
+    2. 登录页 URL （**确保此 URL\_已添加到此\_URL 的 utm 市场活动源和 utm 源**） |```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?**utm\_campaign=MyCampaignAdName&utm\_source=MySourceAdName**```
 
 <a name="how-to-evaluate-the-success-of-a-campaign"></a>如何评估营销活动的成功度
 -----------------------------------------

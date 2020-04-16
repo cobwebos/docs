@@ -3,14 +3,14 @@ title: 在 Azure 自动化中执行 Runbook
 description: 详细介绍如何处理 Azure 自动化中的 Runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 04/04/2019
+ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: de01a7a76a5d225770c273c67f864c83226ecd07
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: a7dd9de1f2ae41b20d94cf31de48e92fbb71ca6a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261306"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405643"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>在 Azure 自动化中执行 Runbook
 
@@ -22,7 +22,7 @@ Azure 自动化中的流程自动化允许您创建和管理 PowerShell、PowerS
 
 Azure 自动化分配一个辅助角色在 Runbook 执行期间运行每个作业。 尽管辅助角色由多个 Azure 帐户共享，但不同自动化帐户中的作业是相互独立的。 您无法控制为作业请求提供服务的工作。
 
-在 Azure 门户中查看 Runbook 列表时，它会显示每个 Runbook 已启动的每个作业的状态。 Azure 自动化最多存储作业日志 30 天。 
+在 Azure 门户中查看 Runbook 列表时，它会显示每个 Runbook 已启动的每个作业的状态。 Azure 自动化最多存储作业日志 30 天。
 
 下图显示了[PowerShell Runbook、PowerShell](automation-runbook-types.md#powershell-runbooks)[工作流运行簿](automation-runbook-types.md#powershell-workflow-runbooks)和[图形运行簿](automation-runbook-types.md#graphical-runbooks)的运行日志作业的生命周期。
 
@@ -35,7 +35,7 @@ Azure 自动化分配一个辅助角色在 Runbook 执行期间运行每个作�
 
 ## <a name="where-to-run-your-runbooks"></a>运行 runbook 的位置
 
-Azure 自动化中的 Runbook 可以在 Azure 沙盒或[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)上运行。 您可以轻松地在 Azure 沙盒中运行大多数 Runbook，这是多个作业可以使用的共享环境。 使用同一沙盒的作业受沙盒的资源限制约束。
+Azure 自动化中的 Runbook 可以在 Azure 沙盒或[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)上运行。 当 Runbook 设计用于对 Azure 中的资源进行身份验证和运行时，它们在 Azure 沙盒中运行，这是多个作业可以使用的共享环境。 使用同一沙盒的作业受沙盒的资源限制约束。
 
 >[!NOTE]
 >Azure 沙盒环境不支持交互式操作。 它还要求对进行 Win32 调用的 Runbook 使用本地 MOF 文件。
@@ -44,21 +44,21 @@ Azure 自动化中的 Runbook 可以在 Azure 沙盒或[混合 Runbook 辅助角
 
 下表列出了一些 Runbook 执行任务，其中列出了每个任务所列出的建议执行环境。
 
-|任务|最佳选择|说明|
+|任务|建议|说明|
 |---|---|---|
 |与 Azure 资源集成|Azure 沙盒|托管在 Azure 中，身份验证更简单。 如果在 Azure VM 上使用混合 Runbook 工作线程，则可以[对 Azure 资源使用托管标识](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)。|
 |获得最佳性能来管理 Azure 资源|Azure 沙盒|脚本在同一环境中运行，延迟较少。|
 |最大程度减少运营成本|Azure 沙盒|没有计算开销，也不需要 VM。|
-|执行长时间运行的脚本|混合 Runbook 辅助角色|Azure 沙盒[对资源有限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)。|
-|与本地服务交互|混合 Runbook 辅助角色|可以直接访问主机。|
+|执行长时间运行的脚本|混合 Runbook 辅助角色|Azure 沙盒具有[资源限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)。|
+|与本地服务交互|混合 Runbook 辅助角色|可以直接访问主机或其他云环境中或本地环境中的资源。 |
 |需要第三方软件和可执行文件|混合 Runbook 辅助角色|您可以管理操作系统，并可以安装软件。|
 |使用 Runbook 监视文件或文件夹|混合 Runbook 辅助角色|在混合 Runbook 工作线程上使用[观察程序任务](automation-watchers-tutorial.md)。|
-|运行资源密集型脚本|混合 Runbook 辅助角色| Azure 沙盒[对资源有限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)。|
-|使用具有特定要求的模块| 混合 Runbook 辅助角色|一些示例如下：</br> WinSCP - winscp.exe 上的依赖项 </br> IIS 管理 - 依赖启用 IIS。|
+|运行资源密集型脚本|混合 Runbook 辅助角色| Azure 沙盒具有[资源限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)。|
+|使用具有特定要求的模块| 混合 Runbook 辅助角色|一些示例如下：</br> WinSCP - winscp.exe 上的依赖项 </br> IIS 管理 - 依赖于启用或管理 IIS。|
 |安装带有安装程序的模块|混合 Runbook 辅助角色|沙盒模块必须支持复制。|
-|使用需要与 4.7.2 不同的 .NET 框架版本的 Runbook 或模块|混合 Runbook 辅助角色|自动化沙盒具有 .NET 框架 4.7.2，无法升级版本。|
+|使用需要与 4.7.2 不同的 .NET 框架版本的 Runbook 或模块|混合 Runbook 辅助角色|自动化沙盒支持 .NET 框架 4.7.2，不支持升级到其他版本。|
 |运行需要提升的脚本|混合 Runbook 辅助角色|沙盒不允许高程。 使用混合 Runbook 辅助角色，您可以在运行需要提升的命令时关闭 UAC 并使用[调用命令](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7)。|
-|运行需要访问 Windows 管理检测 （WMI） 的脚本|混合 Runbook 辅助角色|在云中的沙盒中运行的作业无法访问 WMI。 |
+|运行需要访问 Windows 管理检测 （WMI） 的脚本|混合 Runbook 辅助角色|在云中的沙盒中运行的作业无法访问 WMI 提供程序。 |
 
 ## <a name="runbook-behavior"></a>Runbook 行为
 
@@ -75,7 +75,7 @@ $vmExists = Get-AzResource -Name $vmName -ResourceGroupName $resourceGroupName
 if(!$vmExists)
     {
     Write-Output "VM $vmName does not exist, creating"
-    New-AzureRMVM -Name $vmName -ResourceGroupName $resourceGroupName -Credential $myCred
+    New-AzVM -Name $vmName -ResourceGroupName $resourceGroupName -Credential $myCred
     }
 else
     {
@@ -278,7 +278,7 @@ PowerShell 作业从在 Azure 沙盒中运行的运行手册开始，可能无�
 
 ### <a name="retrieving-job-status-using-powershell"></a>使用 PowerShell 检索作业状态
 
-使用`Get-AzAutomationJob`cmdlet 检索为 Runbook 创建的作业以及特定作业的详细信息。 如果使用 使用 启动使用 PowerShell`Start-AzAutomationRunbook`的运行簿，它将返回生成的作业。 使用[获取自动化作业输出](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0)检索作业输出。
+使用[Get-AzAutomationJobJob](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) cmdlet 检索为 Runbook 创建的作业以及特定作业的详细信息。 如果使用 使用 启动使用 PowerShell`Start-AzAutomationRunbook`的运行簿，它将返回生成的作业。 使用[获取自动化作业输出](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0)检索作业输出。
 
 下面的示例获取示例 Runbook 的最后一个作业并显示其状态、为 Runbook 参数提供的值和作业输出。
 
@@ -356,3 +356,5 @@ $JobInfo.GetEnumerator() | sort key -Descending | Select-Object -First 1
 * 要了解如何使用 Runbook，请参阅在 Azure[自动化 中管理 Runbook。](manage-runbooks.md)
 * 要了解有关可用于在 Azure 自动化中启动 Runbook 的方法，请参阅[在 Azure 自动化 中启动 Runbook。](automation-starting-a-runbook.md)
 * 有关 PowerShell 的详细信息（包括语言参考和学习模块），请参阅[PowerShell 文档](https://docs.microsoft.com/powershell/scripting/overview)。
+* 有关 PowerShell cmdlet 引用，请参阅[Az.自动化](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)。

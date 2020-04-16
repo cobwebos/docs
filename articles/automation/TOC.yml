@@ -18,11 +18,11 @@
     - name: 管理基于角色的访问控制
       href: automation-role-based-access-control.md
       displayName: RBAC
-    - name: 在 Azure 自动化中使用 Azure AD 以便向 Azure 进行身份验证
+    - name: 使用 Azure AD 向 Azure 进行身份验证
       href: automation-use-azure-ad.md
-    - name: 使用 Azure 自动化管理 Office 365 服务
+    - name: 管理 Office 365 服务
       href: manage-office-365.md
-    - name: 配置使用 AWS 进行的身份验证
+    - name: 使用 Amazon Web Services 对 Azure 自动化 runbook 进行身份验证
       href: automation-config-aws-account.md
     - name: 加密 Azure 自动化中的安全资产
       href: automation-secure-asset-encryption.md
@@ -42,6 +42,9 @@
           displayName: troubleshoot
 - name: 过程自动化
   items:
+    - name: 在 Azure 自动化中执行 Runbook
+      href: automation-runbook-execution.md
+      displayName: 'fair share, activity log'
     - name: 混合 Runbook 辅助角色概述
       href: automation-hybrid-runbook-worker.md
     - name: Runbook 库
@@ -111,9 +114,6 @@
             - name: Runbook 输出
               href: automation-runbook-output-and-messages.md
               displayName: 'message streams, progress records, preference'
-            - name: 跟踪 Runbook 作业
-              href: automation-runbook-execution.md
-              displayName: 'fair share, activity log'
             - name: 图形 Runbook 中的错误处理
               href: automation-runbook-graphical-error-handling.md
         - name: 混合 Runbook 辅助角色

@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/07/2019
-ms.openlocfilehash: e918fe01426202746f0225d25304b9c1b26cb74b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23d799f84cb3ac3ca911a5669041b0a25394a7ff
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927327"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414760"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>将数据从 Amazon S3 迁移到 Azure Data Lake Storage Gen2
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 使用模板将数亿个文件构成的 PB 量级的数据从 Amazon S3 迁移到 Azure Data Lake Storage Gen2。 
 
@@ -71,7 +73,7 @@ ms.locfileid: "74927327"
 
     > [!NOTE]
     > 表名称为 s3_partition_control_table。
-    > 控制表的架构是分区前缀和成功或失败，其中分区前缀是 S3 中的前缀设置，用于按名称筛选 Amazon S3 中的文件夹和文件，而成功失败是复制每个分区的状态：0 表示此分区具有未复制到 Azure，1 表示此分区已成功复制到 Azure。
+    > 控制表的架构是分区前缀和成功或失败，其中分区前缀是 S3 中的前缀设置，用于按名称筛选 Amazon S3 中的文件夹和文件，而成功失败是复制每个分区的状态：0 表示此分区尚未复制到 Azure，1 表示此分区已成功复制到 Azure。
     > 控制表中定义了 5 个分区，复制每个分区的默认操作状态为 0。
 
     ```sql
@@ -132,7 +134,7 @@ ms.locfileid: "74927327"
 
     > [!NOTE]
     > 表名称为 s3_partition_delta_control_table。
-    > 控制表的架构是分区前缀、作业运行时间和成功或失败，其中分区前缀是 S3 中的前缀设置，用于按名称筛选 Amazon S3 中的文件夹和文件，JobRunTime 是运行复制作业时的日期时间值，而成功或失败是复制每个分区的状态：0 表示此分区尚未复制到 Azure，1 表示此分区已成功复制到 Azure。
+    > 控制表的架构是分区前缀、作业运行时间和成功失败，其中分区前缀是 S3 中按名称筛选 Amazon S3 中的文件夹和文件的前缀设置，JobRunTime 是运行复制作业时的日期时间值，成功失败是复制每个分区的状态：0 表示此分区尚未复制到 Azure，1 表示此分区已成功复制到 Azure。
     > 控制表中定义了 5 个分区。 JobRunTime 的默认值可以是启动一次性历史数据迁移时的时间。 ADF 复制活动将复制 AWS S3 上的、在该时间后已修改过的文件。 复制每个分区的默认操作状态为 1。
 
     ```sql

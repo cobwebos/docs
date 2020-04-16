@@ -9,14 +9,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 03/16/2020
-ms.openlocfilehash: 115cb3e499117457629e130b6432a1cbc2224edb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32088dd712cd0c70fc01de48add17a0b6a828dc8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79463044"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415334"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure 数据工厂中的数据流活动
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 使用数据流活动通过映射数据流转换和移动数据。 如果您是数据流的新人，请参阅[映射数据流概述](concepts-data-flow-overview.md)
 
@@ -52,14 +54,14 @@ ms.locfileid: "79463044"
 
 ## <a name="type-properties"></a>Type 属性
 
-properties | 描述 | 允许的值 | 必选
+properties | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
 数据流 | 对正在执行的数据流的引用 | 数据流参考 | 是
 集成运行时间 | 数据流运行的计算环境。 如果未指定，将使用自动解析 Azure 集成运行时 | 集成运行时参考 | 否
 计算.核心计数 | 火花簇中使用的内核数。 仅当使用自动解析 Azure 集成运行时时才能指定 | 8, 16, 32, 48, 80, 144, 272 | 否
 计算.计算类型 | 火花群集中使用的计算类型。 仅当使用自动解析 Azure 集成运行时时才能指定 | "常规"、"计算优化"、"内存优化" | 否
 暂存.链接服务 | 如果您使用的是 SQL DW 源或接收器，则用于 PolyBase 暂存的存储帐户 | 链接服务参考 | 仅当数据流读取或写入 SQL DW 时
-暂存.文件夹路径 | 如果使用 SQL DW 源或接收器，则 Blob 存储帐户中的文件夹路径用于 PolyBase 暂存 | String | 仅当数据流读取或写入 SQL DW 时
+暂存.文件夹路径 | 如果使用 SQL DW 源或接收器，则 Blob 存储帐户中的文件夹路径用于 PolyBase 暂存 | 字符串 | 仅当数据流读取或写入 SQL DW 时
 
 ![执行数据流](media/data-flow/activity-data-flow.png "执行数据流")
 
@@ -161,8 +163,8 @@ properties | 描述 | 允许的值 | 必选
 
 - [If Condition 活动](control-flow-if-condition-activity.md)
 - [执行管道活动](control-flow-execute-pipeline-activity.md)
-- [对于每个活动](control-flow-for-each-activity.md)
+- [For Each 活动](control-flow-for-each-activity.md)
 - [获取元数据活动](control-flow-get-metadata-activity.md)
-- [Lookup 活动](control-flow-lookup-activity.md)
-- [网站活动](control-flow-web-activity.md)
+- [查找活动](control-flow-lookup-activity.md)
+- [Web 活动](control-flow-web-activity.md)
 - [Until 活动](control-flow-until-activity.md)

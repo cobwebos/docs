@@ -11,14 +11,17 @@ author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
-ms.openlocfilehash: 006d4fa9ed09170a423e796e893b817e079e861b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: dce7fb87ee49aefdedf5653243fa5729eee34519
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261919"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414330"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>使用支持 Azure 的 dtexec 实用工具运行 SQL Server Integration Services 包
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 本文介绍支持 Azure 的 dtexec (AzureDTExec) 命令提示符实用工具。 此实用工具用于在 Azure 数据工厂中的 Azure-SSIS Integration Runtime (IR) 上运行 SQL Server Integration Services (SSIS) 包。
 
 SQL Server 随附了传统的 dtexec 实用工具。 有关详细信息，请参阅[dtexec 实用程序](https://docs.microsoft.com/sql/integration-services/packages/dtexec-utility?view=sql-server-2017)。 此实用工具通常由 ActiveBatch 和 Control-M 等第三方业务流程协调程序或计划程序调用，以在本地运行 SSIS 包。 

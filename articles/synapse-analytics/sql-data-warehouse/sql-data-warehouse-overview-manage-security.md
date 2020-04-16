@@ -11,12 +11,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 0c30294f2ca139a602074a980810e7c6737c4e2d
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 27d3a242d91a79ea00974748f4a8b5460d2dd247
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742986"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416055"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>在 Azure 同步器中保护数据库
 
@@ -104,4 +104,4 @@ GRANT SELECT ON SCHEMA::Test to ApplicationUser
 
 ## <a name="next-steps"></a>后续步骤
 
-有关使用不同协议连接到仓库的详细信息和示例，请参阅连接到 SQL[池](sql-data-warehouse-connect-overview.md)。
+有关使用不同协议连接到仓库的详细信息和示例，请参阅连接到 SQL[池](../sql/connect-overview.md)。

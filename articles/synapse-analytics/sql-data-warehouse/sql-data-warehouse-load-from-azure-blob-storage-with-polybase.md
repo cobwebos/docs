@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c93dab2f6086b10e1e8d75c4fc3334a95c3fcafa
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 118653efc8829ac5ef6287bb36fb5595cff1147b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633274"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416130"
 ---
-# <a name="load-contoso-retail-data-to-a-synapse-sql-data-warehouse"></a>将 Contoso 零售数据加载到 Synapse SQL 数据仓库
+# <a name="load-contoso-retail-data-to-synapse-sql"></a>将 Contoso 零售数据加载到同步 SQL 
 
 在本教程中，您将学习使用 PolyBase 和 T-SQL 命令将 Contoso 零售数据的两个表加载到 Synapse SQL 数据仓库中。
 
@@ -28,7 +28,7 @@ ms.locfileid: "80633274"
 2. 将公共数据载入数据库
 3. 完成加载后执行优化。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 要运行本教程，您需要一个已具有 Synapse SQL 数据仓库的 Azure 帐户。 如果没有预配数据仓库，请参阅[创建数据仓库并设置服务器级防火墙规则](create-data-warehouse-portal.md)。
 
@@ -221,7 +221,7 @@ GO
 
 ### <a name="load-the-data-into-new-tables"></a>将数据载入新表
 
-若要将 Azure Blob 存储中的数据载入数据仓库表，请使用 [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 语句。 使用[CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md)加载利用您创建的强类型外部表。 若要将数据载入新表，请对每个表使用一个 CTAS 语句。
+若要将 Azure Blob 存储中的数据载入数据仓库表，请使用 [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 语句。 使用[CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)加载利用您创建的强类型外部表。 若要将数据载入新表，请对每个表使用一个 CTAS 语句。
 
 CTAS 将创建新表，并在该表中填充 select 语句的结果。 CTAS 将新表定义为包含与 select 语句结果相同的列和数据类型。 如果选择了外部表中的所有列，新表将是外部表中的列和数据类型的副本。
 

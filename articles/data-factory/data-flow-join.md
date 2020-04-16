@@ -8,14 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/02/2020
-ms.openlocfilehash: 32100e9cad86f12dc8111ee8a0282a515540a4db
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 0c0e35f7f06afd0cafa4a1e353b7eda84ed226f2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346613"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413667"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>在映射数据流中加入转换
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 使用联接转换将来自映射数据流中的两个源或流的数据合并。 输出流将包括来自两个源的所有列，这些列基于联接条件进行匹配。 
 
@@ -53,7 +55,7 @@ ms.locfileid: "80346613"
 > [!NOTE]
 > 请确保在自定义交叉联接中至少包含一个来自左右关系两侧的列。 使用静态值而不是每一侧的列执行交叉联接会导致对整个数据集进行完整扫描，从而导致数据流执行不佳。
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 
 1. 在**右流**下拉下下拉列表中选择要加入的数据流。
 1. 选择**您的加入类型**

@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: dcefe6a6144c9a8f9c6ab7daf5b34b2d81a73c3f
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 260086d186f7e2b2d6f76c437057f5fbc8af39b5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743002"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416076"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics（前称为 SQL 数据仓库）常见问题解答
 
@@ -48,7 +48,7 @@ A. 请访问 [Microsoft 符合性](https://www.microsoft.com/trustcenter/complia
 
 Q. 是否可以连接 Power BI？
 
-A.  能！ 尽管 Power BI 支持使用 Azure Synapse 进行直接查询，但不适合大量用户或实时数据。 若要进一步优化 Power BI 性能，请考虑在 Azure Analysis Services 或 Analysis Service IaaS 的顶层使用 Power BI。
+A. 能！ 尽管 Power BI 支持使用 Azure Synapse 进行直接查询，但不适合大量用户或实时数据。 若要进一步优化 Power BI 性能，请考虑在 Azure Analysis Services 或 Analysis Service IaaS 的顶层使用 Power BI。
 
 Q. 什么是 Synapse SQL 池容量限制？
 
@@ -92,7 +92,7 @@ A. 是的。 大多数可用于 SQL 数据库的 REST 功能也可用于 Synapse
 
 Q. 支持哪些客户端驱动程序？
 
-A. 可在[连接字符串](sql-data-warehouse-connection-strings.md)页面上找到对 Synapse SQL 池的驱动程序支持
+A. 可在[连接字符串](../sql/connection-strings.md)页面上找到对 Synapse SQL 池的驱动程序支持
 
 问：PolyBase 支持哪些文件格式？
 

@@ -1,14 +1,14 @@
 ---
 title: 受支持的资源管理器资源类型
 description: 提供 Azure 资源图和更改历史记录支持的资源管理器资源类型的列表。
-ms.date: 04/06/2020
+ms.date: 04/15/2020
 ms.topic: reference
-ms.openlocfilehash: 85cab92981568f5ea3770e1102c3480ae4f3e638
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 99cb2176e4b0642be1fc31d49528ebf915ea440a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677053"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415140"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure 资源图表和资源类型引用
 
@@ -392,7 +392,6 @@ Azure 资源图支持[Azure 资源管理器](../../../azure-resource-manager/man
 - 微软.存储同步/存储同步服务
 - 微软.storsimple/经理
 - 微软.流分析/流式处理
-- microsoft.support/supporttickets
 - 微软.synapse/工作区
 - 微软.synapse/工作区/大数据池
 - 微软.synapse/工作区/sqlpools
@@ -474,4 +473,4 @@ Azure 资源图支持[Azure 资源管理器](../../../azure-resource-manager/man
 
 - 详细了解[查询语言](../concepts/query-language.md)。
 - 详细了解如何[浏览资源](../concepts/explore-resources.md)。
-- 请参阅[初学者查询的示例](../samples/starter.md)。
+- 查看[初级查询](../samples/starter.md)的示例。

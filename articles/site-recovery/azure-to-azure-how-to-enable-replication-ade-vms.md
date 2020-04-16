@@ -7,19 +7,19 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 3a59f137240eff2a3a68fa5547be8c6c25d3e5fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2bbb02df782439d934e96e7c16f28b9c11cc01fe
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75772221"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408625"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>将启用了 Azure 磁盘加密的虚拟机复制到另一个 Azure 区域
 
 本文介绍如何在启用 Azure 磁盘加密 （ADE） 后，将 Azure VM 从一个 Azure 区域复制到另一个 Azure 区域。
 
 >[!NOTE]
-> 站点恢复当前支持 ADE，并且没有 Azure 活动目录 （AAD）， 用于运行 Windows 和 Linux 操作系统的 VM。  对于运行 ADE 1.1（没有 AAD）的计算机，VM 必须使用托管磁盘。 不支持具有非托管磁盘的 VM。 如果从 ADE 0.1（使用 AAD）切换到 1.1 ，则需要在启用 1.1 后禁用复制并启用 VM 的复制。
+> 站点恢复当前支持 ADE，并且没有运行 Windows 操作系统的 VM 的 Azure 活动目录 （AAD）。 对于 Linux 操作系统，我们仅支持没有 AAD 的 ADE。 此外，对于运行 ADE 1.1（没有 AAD）的计算机，VM 必须使用托管磁盘。 不支持具有非托管磁盘的 VM。 如果从 ADE 0.1（使用 AAD）切换到 1.1 ，则需要在启用 1.1 后禁用复制并启用 VM 的复制。
 
 
 ## <a name="required-user-permissions"></a><a id="required-user-permissions"></a>必需的用户权限
@@ -99,7 +99,7 @@ Site Recovery 要求用户具有在目标区域中创建密钥保管库以及将
     - **缓存存储帐户**：站点恢复需要在源区域中称为*缓存存储*的额外存储帐户。 源 VM 上的所有更改将受到跟踪并发送到缓存存储帐户。 它们随后会复制到目标位置。
     - **可用性集**：默认情况下，站点恢复会在目标区域中创建新的可用性集。 其名称带有“asr”后缀。 如果已存在 Site Recovery 创建的可用性集，将会重复使用它。
     - **磁盘加密密钥保管库**：默认情况下，站点恢复会在目标区域中创建新的密钥保管库。 其名称包含基于源 VM 磁盘加密密钥的“asr”后缀。 如果已存在 Azure Site Recovery 创建的 Key Vault，将会重复使用它。
-    - **密钥加密密钥保管库**：默认情况下，站点恢复会在目标区域中创建新的密钥保管库。 其名称包含基于源 VM 密钥加密密钥的“asr”后缀。 如果已存在 Azure Site Recovery 创建的 Key Vault，将会重复使用它。
+    - **密钥加密密钥保管库**：默认情况下，Site Recovery 会在目标区域中创建新的 Key Vault， 其名称包含基于源 VM 密钥加密密钥的“asr”后缀。 如果已存在 Azure Site Recovery 创建的 Key Vault，将会重复使用它。
     - **复制策略**：定义恢复点保留历史记录和应用一致的快照频率的设置。 默认情况下，站点恢复会创建一个新的复制策略，默认设置为*24 小时*，用于恢复点保留 *，60 分钟*用于应用一致的快照频率。
 
 ## <a name="customize-target-resources"></a>自定义目标资源

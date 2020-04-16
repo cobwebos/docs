@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 40a7406ea91c95daad2f180b9d0f4620cdbbf454
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 87a962709638391887eaa275f059bf4ceae9218b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80875922"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406971"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 身份验证和授权错误代码
 
@@ -27,6 +27,49 @@ ms.locfileid: "80875922"
 > 本文中的信息属于初步信息，随时可能更改。 遇到了问题或者找不到所需的内容？ 请创建 GitHub 问题，或查看[面向开发人员的支持和帮助选项](active-directory-develop-help-support.md)来了解其他可以获得帮助和支持的方法。
 >
 > 本文档是为开发者和管理员提供的指导，但决不应当被客户自己使用。 错误代码可能会随时更改，以便提供更详细的错误消息，以在开发者构建应用程序时为其提供帮助。 依赖于文本或错误代码的应用程序随着时间的推移将会损坏。
+
+## <a name="handling-error-codes-in-your-application"></a>处理应用程序中的错误代码
+
+[OAuth2.0 规范](https://tools.ietf.org/html/rfc6749#section-5.2)提供有关如何使用错误响应`error`部分处理身份验证期间错误的指导。 
+
+下面是一个示例错误响应：
+
+```json
+{
+  "error": "invalid_scope",
+  "error_description": "AADSTS70011: The provided value for the input parameter 'scope' is not valid. The scope https://example.contoso.com/activity.read is not valid.\r\nTrace ID: 255d1aef-8c98-452f-ac51-23d051240864\r\nCorrelation ID: fb3d2015-bc17-4bb9-bb85-30c5cf1aaaa7\r\nTimestamp: 2016-01-09 02:02:12Z",
+  "error_codes": [
+    70011
+  ],
+  "timestamp": "2016-01-09 02:02:12Z",
+  "trace_id": "255d1aef-8c98-452f-ac51-23d051240864",
+  "correlation_id": "fb3d2015-bc17-4bb9-bb85-30c5cf1aaaa7", 
+  "error_uri":"https://login.microsoftonline.com/error?code=70011"
+}
+```
+
+| 参数         | 说明    |
+|-------------------|----------------|
+| `error`       | 可用于对发生的错误类型进行分类的错误代码字符串，并应用于对错误做出反应。 |
+| `error_description` | 帮助开发人员识别身份验证错误根本原因的特定错误消息。 切勿使用此字段对代码中的错误做出反应。 |
+| `error_codes` | 帮助诊断的 STS 特定错误代码列表。  |
+| `timestamp`   | 发生错误的时间。 |
+| `trace_id`    | 帮助诊断的请求唯一标识符。 |
+| `correlation_id` | 帮助跨组件诊断的请求唯一标识符。 |
+| `error_uri` |  指向错误查找页的链接，包含有关错误的其他信息。  这仅用于开发人员使用，不向用户显示它。  仅当错误查找系统包含有关错误的其他信息时，才会存在 - 并非所有错误都提供了其他信息。|
+
+该`error`字段有几个可能的值 - 查看协议文档链接和 OAuth 2.0 规范，以了解有关特定错误（例如，`authorization_pending`[在设备代码流](v2-oauth2-device-code.md)中）以及如何对它们做出反应的信息。  此处列出了一些常见问题：
+
+| 错误代码         | 说明        | 客户端操作    |
+|--------------------|--------------------|------------------|
+| `invalid_request`  | 协议错误，例如，缺少必需的参数。 | 修复并重新提交请求。|
+| `invalid_grant`    | 某些身份验证材料（身份验证代码、刷新令牌、访问令牌、PKCE 质询）无效、不可解析、丢失或其他无法使用 | 尝试对`/authorize`终结点的新请求以获取新的授权代码。  请考虑查看和验证该应用对协议的使用。 |
+| `unauthorized_client` | 经过身份验证的客户端无权使用此权限授予类型。 | 客户端应用程序未注册到 Azure AD 中或者未添加到用户的 Azure AD 租户时，通常会出现这种情况。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。 |
+| `invalid_client` | 客户端身份验证失败。  | 客户端凭据无效。 若要修复，应用程序管理员应更新凭据。   |
+| `unsupported_grant_type` | 授权服务器不支持权限授予类型。 | 更改请求中的授权类型。 这种类型的错误应该只在开发过程中发生，并且应该在初始测试过程中检测到。 |
+| `invalid_resource` | 目标资源无效，原因是它不存在，Azure AD 找不到它，或者未正确配置。 | 这表示未在租户中配置该资源（如果存在）。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。  在开发过程中，这通常表示被请求作用域的名称设置不正确或拼写错误。 |
+| `interaction_required` | 请求需要用户交互。 例如，需要额外的身份验证步骤。 | 使用相同的资源重试请求，进行交互，以便用户可以完成所需的任何挑战。  |
+| `temporarily_unavailable` | 服务器暂时繁忙，无法处理请求。 | 重试请求。 客户端应用程序可向用户说明，其响应由于临时状况而延迟。 |
 
 ## <a name="lookup-current-error-code-information"></a>查找当前错误代码信息
 错误代码和消息可能会更改。  有关最新信息，请查看 `https://login.microsoftonline.com/error` 页，以查找 AADSTS 错误说明、修复程序和一些建议的解决方法。  

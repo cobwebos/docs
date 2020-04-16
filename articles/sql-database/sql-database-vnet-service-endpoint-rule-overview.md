@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 4faead13c10171c31e76fe2dd59be32a93a12f86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7032f9e8f57ea9400bf6a92f89b13fa1866f8fc1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80124750"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414399"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>为数据库服务器使用虚拟网络服务终结点和规则
 
@@ -64,6 +64,7 @@ ms.locfileid: "80124750"
 
 > [!NOTE]
 > 在某些情况下，Azure SQL 数据库和 VNet-子网位于不同的订阅中。 在这些情况下，必须确保以下配置：
+>
 > - 两个订阅都必须属于同一 Azure Active Directory 租户。
 > - 用户具有启动操作所需的权限，例如启用服务终结点，以及向给定服务器添加 VNet-子网。
 > - 两个订阅都必须注册 Microsoft.Sql 提供程序。
@@ -134,7 +135,7 @@ PolyBase 通常用于将数据从 Azure 存储帐户加载到 Azure SQL 数据�
    > [!NOTE]
    > - 如果有常规用途 v1 或 Blob 存储帐户，则必须先按照此[指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)将该帐户**升级到 v2** 帐户。
    > - 若要了解 Azure Data Lake Storage Gen2 的已知问题，请参阅此[指南](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)。
-    
+
 1. 在存储帐户下导航到“访问控制(标识和访问管理)”，然后单击“添加角色分配”。******** 将“存储 Blob 数据参与者”**** RBAC 角色分配给托管 Azure SQL 数据仓库的 Azure SQL Server，后者已在步骤 #1 中向 Azure Active Directory (AAD) 注册。
 
    > [!NOTE]
@@ -235,7 +236,7 @@ Blob 审核将审核日志推送到你自己的存储帐户。 如果此存储�
 
 ## <a name="azure-portal-steps"></a>Azure 门户步骤
 
-1. 登录到 Azure[门户][http-azure-portal-link-ref-477t]。
+1. 登录 [Azure 门户][http-azure-portal-link-ref-477t]。
 
 2. 搜索并选择“SQL Server”，然后选择你的服务器****。 在“安全性”下，选择“防火墙和虚拟网络”********。
 
@@ -264,6 +265,7 @@ Blob 审核将审核日志推送到你自己的存储帐户。 如果此存储�
 
 > [!NOTE]
 > 以下状态适用于这些规则：
+>
 > - **就绪：** 表示所启动的操作已成功。
 > - **失败：** 表示所启动的操作已失败。
 > - **已删除：** 仅适用于删除操作，表示规则已删除，不再适用。

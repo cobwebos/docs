@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dsindona
-ms.openlocfilehash: 041b2133ed63a906d3fea3ab67890a0057151b9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 59f9fecb3d949d9cdf48719e6329b066d9eb3fc5
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80285259"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393531"
 ---
 # <a name="prepare-your-azure-application-technical-assets"></a>准备 Azure 应用程序技术资产
 
@@ -32,7 +32,7 @@ ms.locfileid: "80285259"
 
   - [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)
   - [GitHub Azure 快速入门模板](https://github.com/azure/azure-quickstart-templates)
-  - [发布应用程序定义](https://docs.microsoft.com/azure/managed-applications/publish-managed-app-definition-quickstart)
+  - [发布应用程序定义](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
   - [部署服务目录应用](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
 
   
@@ -44,7 +44,7 @@ ms.locfileid: "80285259"
   - 示例：
 
     - [Azure CLI](https://docs.microsoft.com/azure/managed-applications/cli-samples)
-    - [Azure 电源外壳](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
+    - [Azure PowerShell](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
     - [托管应用程序解决方案](https://docs.microsoft.com/azure/managed-applications/sample-projects)
 
 ## <a name="fundamental-technical-knowledge"></a>基础技术知识
@@ -63,12 +63,12 @@ ms.locfileid: "80285259"
 
 选择以下一种或两种脚本环境来帮助管理 Azure 应用程序：
 
-- [Azure 电源外壳](https://docs.microsoft.com/powershell/azure/overview)
+- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
 - [Azure CLI](https://docs.microsoft.com/cli/azure)
 
 我们建议将以下工具添加到开发环境：
 
-- [Azure 存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+- [Azure 存储浏览器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 - 包含以下扩展的 [Visual Studio Code](https://code.visualstudio.com/)：
 
   - 扩展：[Azure 资源管理器工具](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)

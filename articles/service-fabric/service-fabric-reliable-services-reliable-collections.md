@@ -2,19 +2,19 @@
 title: 可靠馆藏简介
 description: Service Fabric 有状态服务提供可靠集合，方便用户编写高度可用、高度可缩放且低延迟的云应用程序。
 ms.topic: conceptual
-ms.date: 1/3/2019
-ms.openlocfilehash: 48fa682f4c017f66911729e1f581f3aa91cdc28d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 3/10/2020
+ms.openlocfilehash: 78ecc57a4da43bf416839226253e6d0e2f4c1651
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75609717"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398427"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Azure Service Fabric 有状态服务中的可靠集合简介
 
 使用可靠集合，可以编写高度可用、高度可缩放且低延迟的云应用程序，就像编写单一计算机应用程序一样。 **Microsoft.ServiceFabric.Data.Collections** 命名空间中的类提供一组自动使状态具备高可用性的集合。 开发人员只需面向可靠集合 API 编程，并让可靠集合管理复制状态和本地状态。
 
-Reliable Collections 与其他高可用性技术（如 Redis、Azure 表服务和 Azure 队列服务）的主要区别在于其状态以本地方式保存在服务实例中，同时仍实现高可用性。 这意味着：
+Reliable Collections 与其他高可用性技术（如 Redis、Azure 表服务和 Azure 队列服务）的主要区别在于其状态以本地方式保存在服务实例中，同时仍实现高可用性。 这表示：
 
 * 所有读取均在本地进行，可保障读取的低延迟和高吞吐量。
 * 所有写入都只产生最少量的网络 IO，可保障写入的低延迟和高吞吐量。
@@ -24,10 +24,9 @@ Reliable Collections 与其他高可用性技术（如 Redis、Azure 表服务�
 可以将可靠集合视作 **System.Collections** 类的自然演变：它们是一组新的集合，专为云应用程序和多计算机应用程序设计，且不会为开发人员增加复杂性。 因此，可靠集合的特性如下：
 
 * 可复制：复制状态更改以实现高可用性。
-* 可保存：数据会保存至磁盘，可在发生大规模中断（例如，数据中心断电）时保障持续性。
-* 由于写入是持久化和复制的，因此无法创建易失性 ReliableDictionary、ReliableQueue 或其他仅在内存中保留数据的可靠集合。
 * 异步：API 采用异步模式，以确保在产生 IO 时不会阻止线程。
 * 事务性：API 利用事务抽象方法，让可以在某个服务内轻松管理多个可靠集合。
+* 持久或易失性：数据可以保存到磁盘，以抵御大规模中断（例如，数据中心断电）的持久性。 某些可靠集合还支持一种易失性模式（带[警告），](service-fabric-reliable-services-reliable-collections-guidelines.md#volatile-reliable-collections)其中所有数据都保存在内存中，例如复制的内存缓存。
 
 Reliable Collections 提供全新的非常一致保证，使应用程序状态推断变得更轻松。
 非常一致通过以下方法实现：确保仅对副本的多数仲裁（包括主副本）记录整个事务后，才完成事务提交。
@@ -48,7 +47,7 @@ Reliable Collections 提供全新的非常一致保证，使应用程序状态�
 ## <a name="next-steps"></a>后续步骤
 
 * [可靠的收集指南&建议](service-fabric-reliable-services-reliable-collections-guidelines.md)
-* [使用 Reliable Collections](service-fabric-work-with-reliable-collections.md)
+* [使用可靠集合](service-fabric-work-with-reliable-collections.md)
 * [事务和锁](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * 管理数据
   * [备份和还原](service-fabric-reliable-services-backup-restore.md)
@@ -57,5 +56,5 @@ Reliable Collections 提供全新的非常一致保证，使应用程序状态�
   * [序列化和升级](service-fabric-application-upgrade-data-serialization.md)
   * [可靠的状态管理器配置](service-fabric-reliable-services-configuration.md)
 * 其他
-  * [可靠的服务快速启动](service-fabric-reliable-services-quick-start.md)
+  * [Reliable Services 快速启动](service-fabric-reliable-services-quick-start.md)
   * [可靠集合的开发人员参考](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

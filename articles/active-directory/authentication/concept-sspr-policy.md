@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fba4dae66b5adcea6cc33e61d8cf88946e29546e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f5987bee82dc22d3742cb5d87040930e5d2c52d
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051173"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393038"
 ---
 # <a name="self-service-password-reset-policies-and-restrictions-in-azure-active-directory"></a>Azure 活动目录中的自助服务密码重置策略和限制
 
@@ -57,7 +57,7 @@ ms.locfileid: "80051173"
 * 已为 Azure AD 租户配置了自定义域，如 *contoso.com*；或
 * Azure AD Connect 正在从本地目录同步标识
 
-### <a name="exceptions"></a>异常
+### <a name="exceptions"></a>例外
 
 单门策略需要一条身份验证数据，如电子邮件地址或电话号码。 单门策略在以下情况下适用：
 
@@ -160,16 +160,6 @@ Microsoft 云服务的*全局管理员*或*用户管理员*可以使用*Windows 
 
 ## <a name="next-steps"></a>后续步骤
 
-以下文章提供了有关通过 Azure AD 进行密码重置的更多信息：
+要开始使用 SSPR，请参阅[教程：允许用户使用 Azure Active Directory 自助服务密码重置解锁其帐户或重置密码](tutorial-enable-sspr.md)。
 
-* [如何成功推出 SSPR？](howto-sspr-deployment.md)
-* [重置或更改密码](../user-help/active-directory-passwords-update-your-own-password.md)。
-* [注册自助服务密码重置](../user-help/active-directory-passwords-reset-register.md)。
-* [是否有许可问题？](concept-sspr-licensing.md)
-* [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
-* [哪些身份验证方法可供用户使用？](concept-sspr-howitworks.md#authentication-methods)
-* [什么是密码写回？我为什么关心它？](howto-sspr-writeback.md)
-* [如何报告 SSPR 中的活动？](howto-sspr-reporting.md)
-* [SSPR 中的所有选项有哪些？它们有哪些含义？](concept-sspr-howitworks.md)
-* [我觉得有些东西坏了。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
-* [我有在别处未涵盖的问题](active-directory-passwords-faq.md)
+如果您或用户对 SSPR 出现问题，请参阅[排除自助服务密码重置故障](active-directory-passwords-troubleshoot.md)

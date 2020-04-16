@@ -6,18 +6,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6bd360b2075c337e3ed3d69d84368d16571a9335
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcef0574e16e0b4d28755716c32670b00c65af14
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536048"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406095"
 ---
 # <a name="my-first-graphical-runbook"></a>我的第一个图形 Runbook
 
 > [!div class="op_single_selector"]
 > * [图形](automation-first-runbook-graphical.md)
-> * [电源外壳](automation-first-runbook-textual-powershell.md)
+> * [PowerShell](automation-first-runbook-textual-powershell.md)
 > * [PowerShell 工作流](automation-first-runbook-textual.md)
 > * [Python](automation-first-runbook-textual-python2.md)
 > 
@@ -100,7 +100,7 @@ ms.locfileid: "79536048"
 1. 单击“所有日志”打开 Runbook 作业的“流”窗格****。 您应该只在输出`Hello World`流中看到。 
 
     请注意，如果 Runbook 写入 Runbook，则"流"窗格可以显示 Runbook 作业的其他流，如"详细"和"错误"流。
-1. 关闭"流"窗格和作业窗格以返回到 **"MyFirstRunbook-图形"** 页。
+1. 关闭"流"窗格和作业窗格以返回到"MyFirstRunbook-图形"页。
 1. 要查看 Runbook 的所有作业，请在 **"资源**"下选择**作业**。 "作业"页列出了 Runbook 创建的所有作业。 您应该只看到一个列出的作业，因为您只运行该作业一次。
 1. 单击作业名称可打开启动 Runbook 时查看的相同作业窗格。 使用此窗格可以查看为 Runbook 创建的任何作业的详细信息。
 
@@ -126,7 +126,7 @@ ms.locfileid: "79536048"
 >[!NOTE]
 >对于 PowerShell 运行`Add-AzAccount`簿`Add-AzureRMAccount`，并且是`Connect-AzAccount`的别名。 请注意，这些别名不适用于图形运行簿。 图形运行簿只能使用`Connect-AzAccount`自身。
 
-1. 导航到 Runbook，并在**MyFirstRunbook-图形**页面上选择 **"编辑**"。
+1. 导航到 Runbook，并在 MyFirstRunbook-图形页面上选择 **"编辑**"。
 1. 您不再需要该`Write Hello World to output`条目了。 只需单击省略号并选择 **"删除**"。
 1. 在库控件中，展开**ASSETS**，然后**展开连接**。 `AzureRunAsConnection`通过选择 **"添加到画布"添加到画布**。
 1. 将 `AzureRunAsConnection` 重命名为 `Get Run As Connection`。
@@ -174,8 +174,8 @@ ms.locfileid: "79536048"
 1. 悬停，`Specify Subscription Id`直到形状底部出现一个圆圈。 单击圆圈并将箭头拖动到`Start-AzVM`。
 1. 选择 `Start-AzVM`。 单击 **"参数"，** 然后单击**参数集**以查看活动的集。
 1. 为参数集选择**资源组名称参数集名称**。 字段**资源组名称**和**名称**旁边有感叹号，以指示它们是必需的参数。 请注意，这两个字段都希望使用字符串值。
-1. 选择**名称**。 为**数据源**字段选择**PowerShell 表达式**。 对于用于启动此 Runbook 的 VM，键入用双引号括起来的计算机名称。 单击“确定”。
-1. 选择“ResourceGroupName”****。 使用**数据源**字段的值**PowerShell 表达式**，并键入用双引号括起来的资源组的名称。 单击“确定”。
+1. 选择**名称**。 为**数据源**字段选择**PowerShell 表达式**。 对于用于启动此 Runbook 的 VM，键入用双引号括起来的计算机名称。 单击“确定”。 
+1. 选择“ResourceGroupName”****。 使用**数据源**字段的值**PowerShell 表达式**，并键入用双引号括起来的资源组的名称。 单击“确定”。 
 1. 单击 **"测试"窗格**，以便可以测试 Runbook。
 1. 单击 **"开始"** 以开始测试。 完成后，请确保 VM 已启动。 此时，Runbook 应如下所示。
 
@@ -185,7 +185,7 @@ ms.locfileid: "79536048"
 
 Runbook 当前在为`Start-AzVM`cmdlet 指定的资源组中启动 VM。 如果在启动 Runbook 时同时指定名称和资源组，则 Runbook 将更有用。 让我们向 Runbook 添加输入参数以提供该功能。
 
-1. 在“MyFirstRunbook-Graphical”窗格上单击“编辑”，打开图形编辑器********。
+1. 单击"MyFirstRunbook-图形"页上**的"编辑"** 打开图形编辑器。
 1. 依次选择“输入和输出”和“添加输入”，打开“Runbook 输入参数”窗格********。
 1. 在提供的字段中进行以下设置，然后单击"**确定**"。
    * **名称**--`VMName`指定 。
@@ -212,9 +212,9 @@ Runbook 当前在为`Start-AzVM`cmdlet 指定的资源组中启动 VM。 如果�
 1. 添加到`Get-AzVM`画布。
 1. 选择`Get-AzVM`然后单击 **"参数集"** 以查看 cmdlet 的集。 
 1. **GetVirtualMachineInResourceGroupNameParamSet** 参数集。 **资源组名称**和**名称**字段旁边有感叹号，指示它们指定所需的参数。 请注意，这两个字段都希望使用字符串值。
-1. 在 **"名称****"的数据源**下，选择**Runbook 输入**，然后**选择 VMName**。 单击“确定”。
-1. 在 **"资源组名称****的数据源**"下，选择**Runbook 输入**，然后选择**资源组名称**。 单击“确定”。
-1. 在 **"状态的数据源**"下，选择 **"常量"值**，然后**选择 True**。 **Status** 单击“确定”。
+1. 在 **"名称****"的数据源**下，选择**Runbook 输入**，然后**选择 VMName**。 单击“确定”。 
+1. 在 **"资源组名称****的数据源**"下，选择**Runbook 输入**，然后选择**资源组名称**。 单击“确定”。 
+1. 在 **"状态的数据源**"下，选择 **"常量"值**，然后**选择 True**。 **Status** 单击“确定”。 
 1. 从 创建从`Specify Subscription Id``Get-AzVM`到 的链接。
 1. 在"库"控件中，展开**Runbook 控件**并将**代码**添加到画布。  
 1. 从 创建从`Get-AzVM``Code`到 的链接。  
@@ -243,7 +243,7 @@ Runbook 当前在为`Start-AzVM`cmdlet 指定的资源组中启动 VM。 如果�
 1. 对于第一`Write-Output`个控件，单击 **"参数**"并将**标签**值更改为 **"通知 VM 已启动**"。
 1. 对于**InputObject，** 将**数据源**更改为**PowerShell 表达式**，并在表达式`$VMName successfully started.`中键入 。
 1. 在第`Write-Output`二个控件上，单击 **"参数**"并将**标签**值更改为**通知 VM 启动失败**。
-1. 对于**InputObject，** 将**数据源**更改为**PowerShell 表达式**，并在表达式`$VMName could not start.`中键入 。
+1. 对于**InputObject，** 将**数据源**更改为**PowerShell 表达式**，并在表达式`$VMName could not start`中键入 。
 1. 从`Start-AzVM`和`Notify VM Started`创建`Notify VM Start Failed`链接。
 1. 选择指向`Notify VM Started`的链接并更改 **"将条件应用**为 true"。
 1. 对于**条件表达式**，键入`$ActivityOutput['Start-AzVM'].IsSuccessStatusCode -eq $true`。 仅当`Write-Output`VM 成功启动时，此控件才会运行。
@@ -259,3 +259,5 @@ Runbook 当前在为`Start-AzVM`cmdlet 指定的资源组中启动 VM。 如果�
 * 要了解有关图形创作的更多信息，请参阅[Azure 自动化 中的图形创作](automation-graphical-authoring-intro.md)。
 * 要开始使用 PowerShell 运行簿，请参阅[我的第一个 PowerShell 运行簿](automation-first-runbook-textual-powershell.md)。
 * 要开始使用 PowerShell 工作流运行簿，请参阅[我的第一个 PowerShell 工作流运行簿](automation-first-runbook-textual.md)。
+* 有关 PowerShell cmdlet 引用，请参阅[Az.自动化](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)。

@@ -4,12 +4,12 @@ description: 了解如何通过 Azure 门户创建使用虚拟节点运行 Pod �
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 7b9127c016fff78a8867dcecbe3260becdf02c65
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 62d8fec4c5c3ff35fb46826cb7118946f66948b2
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81259113"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392580"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>创建 Azure Kubernetes 服务 (AKS) 群集并将其配置为使用 Azure 门户中的虚拟节点
 
@@ -76,12 +76,12 @@ az provider register --namespace Microsoft.ContainerInstance
 
 在 Azure 门户的左上角，选择 **"创建资源** > **库伯奈斯服务**"。
 
-在“基本信息”页面上，配置以下选项****：
+在“基本信息”页面上，配置以下选项  ：
 
-- *项目详细信息*：选择 Azure 订阅，然后选择或创建一个 Azure 资源组，例如 *myResourceGroup*。 输入 **Kubernetes 群集名称**，例如 *myAKSCluster*。
+- *项目详细信息*：选择 Azure 订阅，然后选择或创建 Azure 资源组，如*我的资源组*。 输入 **Kubernetes 群集名称**，例如 *myAKSCluster*。
 - *群集详细信息*：选择 AKS 群集的区域、Kubernetes 版本和 DNS 名称前缀。
 - *主节点：* 为 AKS 节点选择 VM 大小。 一旦部署 AKS 群集，不能更改 VM 大小****。
-     - 选择要部署到群集中的节点数。 在本文中，将“节点计数”设置为 *1*****。 部署群集后，可以调整节点计数****。
+     - 选择要部署到群集中的节点数。 在本文中，将“节点计数”设置为 *1*****。 部署群集后，可以调整节点计数  。
 
 单击 **"下一步："缩放**。
 
@@ -89,7 +89,7 @@ az provider register --namespace Microsoft.ContainerInstance
 
 ![创建 AKS 群集并启用虚拟节点](media/virtual-nodes-portal/enable-virtual-nodes.png)
 
-默认情况下，将创建一个 Azure Active Directory 服务主体。 此服务主体用于群集通信以及与其他 Azure 服务集成。
+默认情况下，将创建一个 Azure Active Directory 服务主体。 此服务主体用于群集通信以及与其他 Azure 服务集成。 或者，您可以将托管标识用于权限，而不是服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
 
 群集还配置有高级网络。 虚拟节点配置为使用自己的 Azure 虚拟网络子网。 此子网具有委托的权限，可连接 AKS 群集之间的 Azure 资源。 如果还没有委托的子网，Azure 门户将创建并配置 Azure 虚拟网络和子网，以便与虚拟节点配合使用。
 
@@ -101,7 +101,7 @@ az provider register --namespace Microsoft.ContainerInstance
 
 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl][kubectl]。 `kubectl` 客户端已预装在 Azure Cloud Shell 中。
 
-若要打开 Cloud Shell，请从代码块的右上角选择“试一试”****。 您还可以通过 访问[https://shell.azure.com/bash](https://shell.azure.com/bash)在单独的浏览器选项卡中启动云外壳。 选择 **"复制"** 以复制代码块，将其粘贴到云外壳中，然后按 Enter 以运行它。
+若要打开 Cloud Shell，请从代码块的右上角选择“试一试”****。 也可以通过转到 [https://shell.azure.com/bash](https://shell.azure.com/bash) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。 
 
 使用 [az aks get-credentials][az-aks-get-credentials] 命令将 `kubectl` 配置为连接到 Kubernetes 群集。 以下示例获取名为 *myResourceGroup* 的资源组中群集名称 *myAKSCluster* 的凭据：
 
@@ -109,7 +109,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-若要验证到群集的连接，请使用 [kubectl get][kubectl-get] 命令返回群集节点的列表。
+若要验证到群集的连接，请使用 [kubectl get][kubectl-get] 命令返回群集节点列表。
 
 ```console
 kubectl get nodes

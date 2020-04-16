@@ -4,12 +4,12 @@ description: 了解如何使用 Azure CLI 将 Linux Service Fabric 群集部署�
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: f5788f07dd4a4f03a95efaea4b741cd64c930ac5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9026e46f2fd386892af5a3d8f4ec8d7e0c9f649
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78251786"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411011"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>将 Linux Service Fabric 群集部署到 Azure 虚拟网络
 
@@ -19,7 +19,7 @@ ms.locfileid: "78251786"
 
 开始之前：
 
-* 如果没有 Azure 订阅，请创建[一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * 安装 [Service Fabric CLI](service-fabric-cli.md)
 * 安装[Azure CLI](/cli/azure/install-azure-cli)
 * 若要了解群集的关键概念，请阅读 [Azure 群集概述](service-fabric-azure-clusters-overview.md)
@@ -31,8 +31,17 @@ ms.locfileid: "78251786"
 
 下载以下资源管理器模板文件：
 
+对于 Ubuntu 16.04 LTS：
+
 * [AzureDeploy.json][template]
-* [AzureDeploy.Parameters.json][parameters]
+* [Azure 部署.参数.json][parameters]
+
+对于 Ubuntu 18.04 LTS：
+
+* [AzureDeploy.json][template2]
+* [Azure 部署.参数.json][parameters2]
+
+两个模板之间的区别是**vmImageSku**属性设置为"18.04-LTS"，每个节点的类型**处理程序版本**设置为 1.1。
 
 此模板将包含七个虚拟机和三个节点类型的安全群集部署到虚拟网络中。  其他示例模板可以在 [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates) 上找到。 [AzureDeploy.json][template]部署一些资源，包括以下内容。
 
@@ -42,11 +51,11 @@ ms.locfileid: "78251786"
 
 * 三个节点类型
 * 主节点类型包含五个节点（可在模板参数中配置），其他节点类型各包含一个节点
-* OS：Ubuntu 16.04 LTS（可在模板参数中配置）
+* 操作系统：（Ubuntu 16.04 LTS / Ubuntu 18.04 LTS）（可配置在模板参数中）
 * 证书保护（可在模板参数中配置）
-* 已启用 [DNS 服务](service-fabric-dnsservice.md)
-* 铜级[持久性级别](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)（可在模板参数中配置）
-* 银级[可靠性级别](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster)（可在模板参数中配置）
+* [DNS 服务](service-fabric-dnsservice.md)已启用
+* 青铜的[持久性级别](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)（可配置在模板参数中）
+* 银的可靠性[级别](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster)（可配置在模板参数中）
 * 客户端连接终结点：19000（可在模板参数中配置）
 * HTTP 网关终结点：19080（可在模板参数中配置）
 
@@ -70,7 +79,7 @@ ms.locfileid: "78251786"
 
 ## <a name="set-template-parameters"></a>设置模板参数
 
-[AzureDeploy.Parameters][parameters] 参数文件声明用于部署群集和关联资源的多个值。 可能需要使用某些参数来修改部署：
+**AzureDeploy.parameters**文件声明用于部署群集和相关资源的许多值。 可能需要使用某些参数来修改部署：
 
 |参数|示例值|说明|
 |---|---||
@@ -86,7 +95,7 @@ ms.locfileid: "78251786"
 
 ## <a name="deploy-the-virtual-network-and-cluster"></a>部署虚拟网络和群集
 
-接下来，设置网络拓扑并部署 Service Fabric 群集。 [AzureDeploy.json][template] 资源管理器模板为 Service Fabric 创建虚拟网络 (VNET) 和子网。 该模板还会部署一个已启用证书安全性的群集。  对于生产群集，请使用证书颁发机构 (CA) 提供的证书作为群集证书。 可以使用自签名证书来保护测试群集。
+接下来，设置网络拓扑并部署 Service Fabric 群集。 **AzureDeploy.json** 资源管理器模板为 Service Fabric 创建虚拟网络 (VNET) 和子网。 该模板还会部署一个已启用证书安全性的群集。  对于生产群集，请使用证书颁发机构 (CA) 提供的证书作为群集证书。 可以使用自签名证书来保护测试群集。
 
 本文中的模板部署一个群集，该群集使用证书指纹来标识群集证书。  两个证书不能有相同的指纹，否则会增加证书管理的难度。 将已部署的群集从使用证书指纹切换为使用证书公用名称会使证书管理更加简单。  要了解如何更新群集，将证书通用名称用于证书管理，请阅读[更改群集到证书通用名称管理](service-fabric-cluster-change-cert-thumbprint-to-cn.md)。
 
@@ -163,3 +172,5 @@ sfctl cluster health
 
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.Parameters.json
+[template2]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-1804-3-NodeTypes-Secure/AzureDeploy.json
+[parameters2]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-1804-3-NodeTypes-Secure/AzureDeploy.Parameters.json

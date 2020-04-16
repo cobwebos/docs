@@ -11,15 +11,17 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 03/27/2020
-ms.openlocfilehash: d6252b7a0ecce553bc3a1519055375fd4cd034f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 3aabf68b6763e5815a03021cb02683d509c26190
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336188"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415051"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>自定义 Azure-SSIS 集成运行时的设置
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure-SQL 服务器集成服务集成运行时 （Azure-SSIS IR） 的自定义设置提供了一个接口，用于在 Azure-SSIS IR 的设置或重新配置期间添加您自己的步骤。 
 
@@ -32,7 +34,7 @@ Azure-SQL 服务器集成服务集成运行时 （Azure-SSIS IR） 的自定义�
 您可以安装免费、未经许可的组件和付费许可组件，并安装快速和标准的自定义设置。 如果您是独立的软件供应商 （ISV），请参阅[为 Azure-SSIS IR 开发付费或许可组件](how-to-develop-azure-ssis-ir-licensed-components.md)。
 
 > [!IMPORTANT]
-> 由于 Azure-SSIS IR 的 v2 系列节点不适合自定义设置，因此请使用 v3 系列节点。 如果您已经在使用 v2 系列节点，请尽快切换到 v3 系列节点。
+> 为了从将来的增强功能中获益，我们建议使用 v3 或更高版本的一系列节点来设置 Azure-SSIS IR。
 
 ## <a name="current-limitations"></a>当前限制
 
@@ -70,11 +72,11 @@ Azure-SQL 服务器集成服务集成运行时 （Azure-SSIS IR） 的自定义�
 
 1. 下载、安装和打开[Azure 存储资源管理器](https://storageexplorer.com/)。 为此，请执行以下操作：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在 **"本地"和"附加"** 下，右键单击 **"存储帐户**"，然后选择"**连接到 Azure 存储**"。
+   a. 在 **"本地"和"附加"** 下，右键单击 **"存储帐户**"，然后选择"**连接到 Azure 存储**"。
 
       ![连接到 Azure 存储](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png)
 
-   b.保留“数据库类型”设置，即设置为“共享”。 依次选择“使用存储帐户名和密钥”、“下一步”。********
+   b. 依次选择“使用存储帐户名和密钥”、“下一步”。********
 
       ![使用存储帐户名称和密钥](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image2.png)
 
@@ -82,11 +84,11 @@ Azure-SQL 服务器集成服务集成运行时 （Azure-SSIS IR） 的自定义�
 
       ![提供存储帐户名称和密钥](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image3.png)
 
-   d.单击“下一步”。 在连接的 Azure 存储帐户下，右键单击**Blob 容器**，选择 **"创建 Blob 容器**"，然后命名新容器。
+   d. 在连接的 Azure 存储帐户下，右键单击**Blob 容器**，选择 **"创建 Blob 容器**"，然后命名新容器。
 
       ![创建 Blob 容器](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image4.png)
 
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 选择新容器，然后上载自定义设置脚本及其关联文件。 请确保在容器的顶层上载*main.cmd，* 而不是在任何文件夹中。 还要确保容器仅包含必要的自定义设置文件，以便以后将它们下载到 Azure-SSIS IR 不会花很长时间。 自定义设置的最大持续时间当前设置为超时前 45 分钟。这包括从容器下载所有文件并将其安装在 Azure-SSIS IR 上的时间。 如果设置需要更多时间，则提高支持票证。
+   e. 选择新容器，然后上载自定义设置脚本及其关联文件。 请确保在容器的顶层上载*main.cmd，* 而不是在任何文件夹中。 还要确保容器仅包含必要的自定义设置文件，以便以后将它们下载到 Azure-SSIS IR 不会花很长时间。 自定义设置的最大持续时间当前设置为超时前 45 分钟。这包括从容器下载所有文件并将其安装在 Azure-SSIS IR 上的时间。 如果设置需要更多时间，则提高支持票证。
 
       ![将文件上传到 Blob 容器](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image5.png)
 
@@ -217,11 +219,11 @@ Azure-SQL 服务器集成服务集成运行时 （Azure-SSIS IR） 的自定义�
 
 1. 要查看标准自定义设置的一些示例，请使用 Azure 存储资源管理器连接到我们的公共预览容器。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“(本地和附加)”下面，右键单击“存储帐户”，并依次选择“连接到 Azure 存储”、“使用连接字符串或共享访问签名 URI”、“下一步”。********************
+   a. 在“(本地和附加)”下面，右键单击“存储帐户”，并依次选择“连接到 Azure 存储”、“使用连接字符串或共享访问签名 URI”、“下一步”。********************
 
       ![使用共享访问签名连接到 Azure 存储](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image9.png)
 
-   b.保留“数据库类型”设置，即设置为“共享”。 选择 **"使用 SAS URI"，** 然后在**URI**框中输入以下 SAS URI：
+   b. 选择 **"使用 SAS URI"，** 然后在**URI**框中输入以下 SAS URI：
 
       `https://ssisazurefileshare.blob.core.windows.net/publicpreview?sp=rl&st=2020-03-25T04:00:00Z&se=2025-03-25T04:00:00Z&sv=2019-02-02&sr=c&sig=WAD3DATezJjhBCO3ezrQ7TUZ8syEUxZZtGIhhP6Pt4I%3D`
 
@@ -229,7 +231,7 @@ Azure-SQL 服务器集成服务集成运行时 （Azure-SSIS IR） 的自定义�
 
    c. 依次选择“下一步”、“连接”********。
 
-   d.单击“下一步”。 在左侧窗格中，选择已连接**的公共预览**容器，然后双击*自定义设置脚本*文件夹。 此文件夹包含以下项：
+   d. 在左侧窗格中，选择已连接**的公共预览**容器，然后双击*自定义设置脚本*文件夹。 此文件夹包含以下项：
 
       * *示例*文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装基本任务的自定义设置。 该任务不会执行任何操作，而是休眠几秒。 该文件夹还包含一个*gacutil*文件夹，其全部内容（gacutil.exe、gacutil.exe.config 和*1033_gacutlrc.dll）* 可以像一样复制到您的容器。*gacutil.exe* *gacutil.exe.config*
 
@@ -237,7 +239,7 @@ Azure-SQL 服务器集成服务集成运行时 （Azure-SSIS IR） 的自定义�
 
         ![公共预览版容器的内容](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image11.png)
 
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 双击 *"用户方案"* 文件夹可查找以下项目：
+   e. 双击 *"用户方案"* 文件夹可查找以下项目：
 
       * *.NET FRAMEWORK 3.5*文件夹，其中包含自定义设置脚本 *（main.cmd），* 用于安装 Azure-SSIS IR 的每个节点上的自定义组件可能需要的早期版本.NET Framework。
 

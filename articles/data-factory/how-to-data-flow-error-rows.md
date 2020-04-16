@@ -8,18 +8,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: makromer
-ms.openlocfilehash: 3fe3403ad06d82ba5ccd33d2718bf0e5eff64490
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4f65421a6457d4bf4d438ce9d035d46476829da2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73166533"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414357"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>处理数据工厂映射数据流中的 SQL 截断错误行
 
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 在数据工厂中使用映射数据流时的常见方案是将数据转换后的数据写入 Azure SQL 数据库。 在这种情况下，必须防止的常见错误条件是可能的列截断。 按照以下步骤提供不适合目标字符串列的列的日志记录，从而允许数据流在这些方案中继续。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 
 1. 我们有一个目标 Azure SQL 数据库表，```nvarchar(5)```该表具有一个名为"name"的列。
 

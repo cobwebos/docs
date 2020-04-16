@@ -1,16 +1,16 @@
 ---
-title: 统一游戏对象和组件
+title: Unity 游戏对象和组件
 description: 描述用于远程渲染实体和组件的 Unity 特定方法。
 author: jakrams
 ms.author: jakras
 ms.date: 02/28/2020
 ms.topic: how-to
-ms.openlocfilehash: 872f0e60943a674e5febf269dcb5b09fd08d77c9
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: a34276c73211c1d9bea291f449cbc7041a3e78a2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80681150"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81409860"
 ---
 # <a name="interact-with-unity-game-objects-and-components"></a>与 Unity 游戏对象和组件交互
 
@@ -121,5 +121,5 @@ if (cutplane != null)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [为统一设置远程渲染](unity-setup.md)
+* [为 Unity 设置远程渲染](unity-setup.md)
 * [教程：在 Unity 中使用远程实体](../../tutorials/unity/working-with-remote-entities.md)

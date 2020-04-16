@@ -3,14 +3,14 @@ title: 配置 Azure AD 身份验证
 description: 了解如何将 Azure 活动目录身份验证配置为应用服务或 Azure 功能应用的标识提供程序。
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
-ms.date: 09/03/2019
+ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: dbbe58df4f1cfe93555b494e525fad18f5b02664
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 6f4dbedad56f6867558a8b70575ad906c8796612
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632572"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392559"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>将应用服务或 Azure 功能应用配置为使用 Azure AD 登录名
 
@@ -19,8 +19,7 @@ ms.locfileid: "80632572"
 本文介绍如何配置 Azure 应用服务或 Azure 函数，以便使用 Azure 活动目录 （Azure AD） 作为身份验证提供程序。
 
 > [!NOTE]
-> 此时，Azure 应用服务和 Azure 函数不支持[Azure 活动目录 v2.0（](../active-directory/develop/v2-overview.md)包括[MSAL）。](../active-directory/develop/msal-overview.md) 请回头查看是否有更新。
->
+> 快速设置流设置 AAD V1 应用程序注册。 如果要使用 Azure[活动目录 v2.0（](../active-directory/develop/v2-overview.md)包括[MSAL），](../active-directory/develop/msal-overview.md)请按照[高级配置说明操作](#advanced)。
 
 设置应用和身份验证时，请遵循以下最佳做法：
 
@@ -101,7 +100,7 @@ ms.locfileid: "80632572"
     |字段|说明|
     |-|-|
     |客户端 ID| 使用应用注册的“应用程序(客户端) ID”。**** |
-    |颁发者 Url| 使用`https://login.microsoftonline.com/<tenant-id>`，并将*\<租户 id>* 替换为应用注册的**目录（租户）ID。** 此值用于将用户重定向到正确的 Azure AD 租户，以及下载相应的元数据以确定适当的令牌签名密钥和令牌颁发者声明值。 |
+    |颁发者 Url| 使用`https://login.microsoftonline.com/<tenant-id>/v2.0`，并将*\<租户 id>* 替换为应用注册的**目录（租户）ID。** 此值用于将用户重定向到正确的 Azure AD 租户，以及下载相应的元数据以确定适当的令牌签名密钥和令牌颁发者声明值。 对于`/v2.0`使用 AAD v1 的应用程序，可以省略该部分。 |
     |客户端机密（可选）| 使用在应用注册中生成的客户端机密。|
     |允许的令牌受众| 如果这是一个云应用或服务器应用，而你希望允许来自 Web 应用的身份验证令牌，请在此处添加该 Web 应用的“应用程序 ID URI”。**** 系统始终会将配置的“客户端 ID”隐式视为允许的受众。****** |
 

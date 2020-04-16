@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: e6109a87750e588b12bfc9836c5db3db55420ec2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40a715ea27be161f09dea59e57799b08406e8ca7
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77133802"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393777"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Azure 中提供的红帽企业 Linux （RHEL） 映像
 Azure 为不同的用例提供各种 RHEL 映像。
@@ -76,6 +76,9 @@ RHEL-SAP-APPS | 6.8       | RAW    | Linux 代理 | 适用于 SAP 业务应用�
 |             |rhel-lvm76| LVM    | Linux 代理 | RHEL 7.6 BYOS 映像（未附加到任何更新源）不会收取 RHEL 溢价。
 |             |rhel-lvm77| LVM    | Linux 代理 | RHEL 7.7 BYOS 映像（未附加到任何更新源）不会收取 RHEL 溢价。
 |             |rhel-lvm8 | LVM    | Linux 代理 | RHEL 8 BYOS 映像（RHEL 次要版本显示在映像版本值中），不附加到任何更新源，不会收取 RHEL 溢价。
+
+> [!NOTE]
+> RHEL-SAP-HANA 产品被红帽视为生命周期终止。 现有部署将继续正常工作，但红帽建议客户从 RHEL-SAP-HANA 映像迁移到 RHEL-SAP-HA 映像，其中包括 SAP HANA 存储库以及 HA 加载项。 有关红帽 SAP 云产品的更多详细信息，[请点击此处](https://access.redhat.com/articles/3751271)。
 
 ## <a name="next-steps"></a>后续步骤
 * 了解有关 Azure[中的红帽映像](./redhat-images.md)的更多详细信息。

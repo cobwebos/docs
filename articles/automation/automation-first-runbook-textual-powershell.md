@@ -6,18 +6,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: e0c48137f5eecc96b6e7b1cbce5f0c683b2a976a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0df2680a9f17fc0af950b0ce744a655348b4cbf7
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367306"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406061"
 ---
 # <a name="my-first-powershell-runbook"></a>我的第一个 PowerShell Runbook
 
 > [!div class="op_single_selector"]
 > * [图形](automation-first-runbook-graphical.md)
-> * [电源外壳](automation-first-runbook-textual-powershell.md)
+> * [PowerShell](automation-first-runbook-textual-powershell.md)
 > * [PowerShell 工作流](automation-first-runbook-textual.md)
 > * [Python](automation-first-runbook-textual-python2.md)
 
@@ -77,7 +77,7 @@ PowerShell 运行簿与 PowerShell 工作流运行簿具有相同的生命周期
 2. 单击“启动”以启动测试 **** 。 这应该是唯一的已启用选项。
 3. 请注意，将创建[Runbook 作业](automation-runbook-execution.md)，其状态将显示在窗格中。
 
-   作业状态以 开始`Queued`，指示作业正在等待云中的 Runbook 工作人员变为可用。 状态更改为`Starting`工作人员声明作业时的状态。 最后，当 Runbook 实际开始运行时，状态变为`Running`该状态。
+   作业状态以"排队"开头，指示作业正在等待云中的 Runbook 工作人员变为可用。 当工作人员声明作业时，状态更改为"开始"。 最后，当 Runbook 实际开始运行时，状态变为"运行"。
 
 4. 运行簿作业完成后，"测试"窗格将显示其输出。 在这种情况下，您将看到`Hello World`。
 
@@ -91,7 +91,7 @@ PowerShell 运行簿与 PowerShell 工作流运行簿具有相同的生命周期
 
 1. 单击“发布”以发布该 Runbook，并在出现提示时单击“是”********。
 1. 向左滚动以查看 Runbook 页上的 Runbook，并注意 **"创作状态"** 值设置为 **"已发布**"。
-1. 向右滚动查看 **MyFirstRunbook-PowerShell**的窗格。
+1. 向后滚动到右侧以查看**MyFirstRunbook-PowerShell**的页面。
    
    顶部的选项允许您立即启动 Runbook、安排将来的开始时间或创建[Webhook，](automation-webhooks.md)以便通过 HTTP 调用启动 Runbook。
 1. 选择“启动”，并在出现提示时选择“是”******** 启动 runbook。 
@@ -99,7 +99,7 @@ PowerShell 运行簿与 PowerShell 工作流运行簿具有相同的生命周期
 
    ![作业摘要](media/automation-first-runbook-textual-powershell/job-pane-status-blade-jobsummary.png)
 
-1. Runbook 状态显示`Completed`后，单击"**输出"** 以打开"输出"页，您可以在`Hello World`其中显示。
+1. Runbook 状态显示"已完成"后，单击"**输出"** 以打开"输出"页`Hello World`，您可以在其中显示显示。
 
    ![作业输出](media/automation-first-runbook-textual-powershell/job-pane-status-blade-outputtile.png)
 
@@ -110,7 +110,7 @@ PowerShell 运行簿与 PowerShell 工作流运行簿具有相同的生命周期
 
    ![所有日志](media/automation-first-runbook-textual-powershell/job-pane-status-blade-alllogstile.png)
 
-1. 关闭"流"窗格和作业窗格以返回到 **"MyFirstRunbook-PowerShell"** 页。
+1. 关闭"流"窗格和作业窗格以返回到"MyFirstRunbook-PowerShell"页。
 1. 在 **"详细信息**"下，单击 **"作业**"以打开此 Runbook 的作业页面。 此页列出 Runbook 创建的所有作业。 您应该只看到列出的一个作业，因为您只运行该作业一次。
 
    ![作业列表](media/automation-first-runbook-textual-powershell/runbook-control-job-tile.png)
@@ -151,7 +151,7 @@ PowerShell 运行簿与 PowerShell 工作流运行簿具有相同的生命周期
 
    Get-AzVM -ResourceGroupName myResourceGroup -AzContext $AzureContext
    ```
-1. 单击 **"MyFirstRunbook-PowerShell"** 页上**的"编辑"，** 打开文本编辑器。
+1. 通过单击 MyFirstRunbook-PowerShell 页上的“编辑”**** 打开文本编辑器。
 1. 您不再需要这`Write-Output`条线了。 继续删除它。
 1. 键入或复制并粘贴以下代码，这些代码处理具有"自动运行为帐户"的身份验证。
 
@@ -212,7 +212,7 @@ PowerShell 运行簿与 PowerShell 工作流运行簿具有相同的生命周期
 
 ## <a name="step-7---add-an-input-parameter"></a>步骤 7 - 添加输入参数
 
-Runbook 当前启动在 Runbook 中硬编码的虚拟机。 如果在启动 Runbook 时指定虚拟机，则 Runbook 将更有用。 让我们向 Runbook 添加输入参数以提供该功能。
+Runbook 当前启动在 Runbook 中硬编码的虚拟机。 如果在启动 Runbook 时指定虚拟机，则 Runbook 更有用。 让我们向 Runbook 添加输入参数以提供该功能。
 
 1. 在文本编辑器中`Start-AzVM`，修改 cmdlet 以使用参数`VMName`和`ResourceGroupName`的变量。 
 
@@ -252,6 +252,8 @@ Runbook 当前启动在 Runbook 中硬编码的虚拟机。 如果在启动 Runb
 ## <a name="next-steps"></a>后续步骤
 
 * 有关 PowerShell 的详细信息（包括语言参考和学习模块），请参阅[PowerShell 文档](/powershell/scripting/overview)。
+* 有关 PowerShell cmdlet 引用，请参阅[Az.自动化](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)。
 * 要开始使用图形运行簿，请参阅[我的第一个图形运行簿](automation-first-runbook-graphical.md)。
 * 要开始使用 PowerShell 工作流运行簿，请参阅[我的第一个 PowerShell 工作流运行簿](automation-first-runbook-textual.md)。
 * 要了解有关 Runbook 类型及其优点和限制的更多信息，请参阅[Azure 自动化 Runbook 类型](automation-runbook-types.md)。

@@ -12,14 +12,17 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/31/2019
-ms.openlocfilehash: 5f21623af9b89bbb020063dfb72f7b60e65a6ebe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11e76fea87c60ae2b56cc15d5827be6e1b2b5a01
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927710"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399428"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>从 SSDT 在 Azure 中执行 SSIS 包
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 本文介绍 SQL Server 数据工具 （SSDT） 上启用 Azure 的 SQL 服务器集成服务 （SSIS） 项目的功能，它允许您在 Azure 数据工厂 （ADF） 中运行 Azure-SSIS 集成运行时 （IR） 上的包。  在提升&移位/迁移到 Azure 或开发要在 Azure 中运行的新 SSIS 包之前，可以使用此功能测试现有 SSIS 包。
 
 使用此功能，您可以创建新的 Azure-SSIS IR 或将现有 IR 附加到 SSIS 项目，然后执行其包。  我们支持在项目部署模型中将正在运行的包部署到 SSIS 目录 （SSISDB） 中，支持在包部署模型中将运行的包部署到文件系统/文件共享/Azure 文件中。 

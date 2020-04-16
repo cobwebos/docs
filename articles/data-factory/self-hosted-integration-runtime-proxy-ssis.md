@@ -11,15 +11,17 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 03/27/2020
-ms.openlocfilehash: 9a1923057bc318869f491791520aacb4d0d17591
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.date: 04/15/2020
+ms.openlocfilehash: ecfdf2a11f31c18064be9a607f2bb3938d26e661
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346620"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414896"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>将自承载的 IR 配置为 Azure 数据工厂中的 Azure-SSIS IR 的代理
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文介绍如何在 Azure 数据工厂中的 Azure-SSIS 集成运行时 （Azure-SSIS IR） 上运行 SQL 服务器集成服务 （SSIS） 包，并配置为代理的自托管集成运行时（自托管 IR）。 
 
@@ -52,7 +54,7 @@ ms.locfileid: "80346620"
 
 如果尚未这样做，请在同一数据工厂中创建 Azure Blob 存储链接服务，并设置 Azure-SSIS IR。 为此，请参阅创建[Azure 数据工厂链接的服务](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service)。 请务必执行以下操作：
 - 对于**数据存储**，选择**Azure Blob 存储**。  
-- 对于**通过集成运行时进行连接**，请选择 **"自动解析集成运行时**"（不是 Azure-SSIS IR 或自托管 IR），因为我们使用默认的 Azure IR 来获取 Azure Blob 存储的访问凭据  
+- 对于**通过集成运行时进行连接**，请选择 **"自动解析集成运行时**"（不是 Azure-SSIS IR 或自托管 IR），因为我们使用默认的 Azure IR 来获取 Azure Blob 存储的访问凭据。
 - 对于**身份验证方法**，选择**帐户密钥** **、SAS URI****或服务主体**。  
 
     >[!TIP]
@@ -76,7 +78,7 @@ ms.locfileid: "80346620"
 
    1. 在 **"暂存"路径**框中，在选定的 Azure Blob 存储帐户中指定 Blob 容器，或将其留空以使用默认容器进行暂存。
 
-   1. 选择“继续”****。
+   1. 选择“继续”。 
 
    ![具有自承载 IR 的高级设置](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-shir.png)
 
@@ -171,7 +173,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 ## <a name="current-limitations"></a>当前限制
 
-- 目前仅支持具有开放数据库连接 （ODBC）/OLEDB/平面文件源的数据流任务。 
+- 目前仅支持具有开放数据库连接 （ODBC）/OLEDB/平面文件源或 OLEDB 目标的数据流任务。 
 - 目前仅支持配置帐户*密钥*、*共享访问签名 （SAS） URI*或*服务主体*身份验证的 Azure Blob 存储链接服务。
 - 目前不支持在 OLEDB 源中*进行参数映射*。 作为解决方法，请使用 SQL*命令"从变量*"作为*AccessMode，* 并使用*表达式*在 SQL 命令中插入变量/参数。 例如，请参阅可在公共预览容器的*Self托管IRProxy/限制*文件夹中找到的*参数映射Sample.dtsx*包。 使用 Azure 存储资源管理器，您可以通过输入上述 SAS URI 连接到我们的公共预览容器。
 

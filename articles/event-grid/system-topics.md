@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 35025bf1592f1293b9326d643f76322b4af590c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46bceeb31fa38068c6c4f9f3a86ed556ad39effb
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501187"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393152"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Azure 事件网格中的系统主题
 在为 Azure 事件源创建第一个事件订阅时，Azure 事件网格服务将创建系统主题。 目前，事件网格不会为 2020 年 3 月 15 日之前创建的主题源创建系统主题。 对于在此日期或之后创建的所有主题源，事件网格会自动创建系统主题。 本文介绍 Azure 事件网格中的**系统主题**。
@@ -38,5 +38,5 @@ ms.locfileid: "79501187"
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章： 
 
-- [自定义主题](event-sources.md#custom-topics)
+- [自定义主题](custom-topics.md)
 - [域](event-domains.md)

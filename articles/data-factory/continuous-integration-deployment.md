@@ -11,14 +11,16 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: 8bbb11a8811582bea26e784636564eb5d5a4d284
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 8ce954e956da62d645e9b1e852ce7a7318c85791
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384324"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415365"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure 数据工厂中的持续集成和交付
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 ## <a name="overview"></a>概述
 
@@ -110,17 +112,17 @@ ms.locfileid: "80384324"
 
 1.  添加 Azure 资源管理器部署任务：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  在舞台视图中，选择 **"查看阶段任务**"。
+    a.  在舞台视图中，选择 **"查看阶段任务**"。
 
     ![舞台视图](media/continuous-integration-deployment/continuous-integration-image14.png)
 
-    b.保留“数据库类型”设置，即设置为“共享”。  创建新任务。 搜索**Azure 资源组部署**，然后选择 **"添加**"。
+    b.  创建新任务。 搜索**Azure 资源组部署**，然后选择 **"添加**"。
 
     c.  在"部署"任务中，选择目标数据工厂的订阅、资源组和位置。 如有必要，提供凭据。
 
-    d.单击“下一步”。  在 **"操作**"列表中，选择 **"创建"或"更新资源组**"。
+    d.  在 **"操作**"列表中，选择 **"创建"或"更新资源组**"。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。  选择**模板**框旁边的省略号按钮 （**...）。** 浏览在本文的每个环境部分的"[创建资源管理器资源管理器"模板](continuous-integration-deployment.md#create-a-resource-manager-template-for-each-environment)中使用 **"导入 ARM 模板**"创建的 Azure 资源管理器模板。 在adf_publish分支的<FactoryName>文件夹中查找此文件。
+    e.  选择**模板**框旁边的省略号按钮 （**...）。** 浏览在本文的每个环境部分的"[创建资源管理器资源管理器"模板](continuous-integration-deployment.md#create-a-resource-manager-template-for-each-environment)中使用 **"导入 ARM 模板**"创建的 Azure 资源管理器模板。 在adf_publish分支的<FactoryName>文件夹中查找此文件。
 
     f.  选择 **...** 在 **"模板参数"** 框旁边，以选择参数文件。 您选择的文件将取决于您是创建副本还是正在使用默认文件 ARMTemplate 参数 ForFactory.json。
 

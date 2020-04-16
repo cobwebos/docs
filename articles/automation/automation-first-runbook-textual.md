@@ -6,18 +6,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/24/2018
 ms.topic: conceptual
-ms.openlocfilehash: a5a1cad3179063f75a5d9a19567624180b5793a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b103437ab30c05ddab88b7a8a723cd2b4b1d5f6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367255"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405896"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>我的第一个 PowerShell 工作流 Runbook
 
 > [!div class="op_single_selector"]
 > * [图形](automation-first-runbook-graphical.md)
-> * [电源外壳](automation-first-runbook-textual-powershell.md)
+> * [PowerShell](automation-first-runbook-textual-powershell.md)
 > * [PowerShell 工作流](automation-first-runbook-textual.md)
 > * [Python](automation-first-runbook-textual-python2.md)
 
@@ -79,7 +79,7 @@ ms.locfileid: "79367255"
 1. 单击"**开始"** 以启动测试，并测试唯一启用的选项。
 1. 请注意，将创建[Runbook 作业](automation-runbook-execution.md)，其状态将显示在窗格中。
 
-   作业状态以 开始`Queued`，指示作业正在等待云中的 Runbook 工作人员变为可用。 状态更改为`Starting`工作人员声明作业时的状态。 最后，当 Runbook 实际开始运行时，状态变为`Running`该状态。
+   作业状态以"排队"开头，指示作业正在等待云中的 Runbook 工作人员变为可用。 当工作人员声明作业时，状态更改为"开始"。 最后，当 Runbook 实际开始运行时，状态变为"运行"。
 
 1. 运行簿作业完成后，"测试"窗格将显示其输出。 在这种情况下，您将看到`Hello World`。
 
@@ -107,7 +107,7 @@ ms.locfileid: "79367255"
 
    ![作业摘要](media/automation-first-runbook-textual/job-pane-status-blade-jobsummary.png)
 
-1. 运行簿状态显示`Completed`后，单击"**输出**"。 将打开"输出"页，您可以在其中查看`Hello World`消息。
+1. 运行簿状态显示"已完成"后，单击"**输出**"。 将打开"输出"页，您可以在其中查看`Hello World`消息。
 
    ![作业摘要](media/automation-first-runbook-textual/job-pane-status-blade-outputtile.png)
 
@@ -117,7 +117,7 @@ ms.locfileid: "79367255"
 
    ![作业摘要](media/automation-first-runbook-textual/job-pane-status-blade-alllogstile.png)
 
-1. 关闭"流"窗格和"作业"窗格以返回到 **"MyFirstRunbook"** 页。
+1. 关闭"流"窗格和"作业"窗格以返回到"MyFirstRunbook"页。
 1. 单击 **"资源**下的**作业**"以打开此 Runbook 的作业页面。 此页列出 Runbook 创建的所有作业。 您应该只看到列出的一个作业，因为您只运行该作业一次。
 
    ![作业](media/automation-first-runbook-textual/runbook-control-job-tile.png)
@@ -126,12 +126,12 @@ ms.locfileid: "79367255"
 
 ## <a name="step-5---add-authentication-to-manage-azure-resources"></a>步骤 5 - 添加身份验证来管理 Azure 资源
 
-已经测试并发布 Runbook，但到目前为止它不执行任何有用的操作。 需要让其管理 Azure 资源。 除非使用订阅的凭据进行身份验证，否则它无法执行此操作。 身份验证使用`Connect-AzAccount`cmdlet。
+已经测试并发布 Runbook，但到目前为止它不执行任何有用的操作。 需要让其管理 Azure 资源。 除非使用订阅的凭据进行身份验证，否则它无法执行此操作。 身份验证使用[连接-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) cmdlet。
 
 >[!NOTE]
 >对于 PowerShell 运行`Add-AzAccount`簿`Add-AzureRMAccount`，并且是`Connect-AzAccount`的别名。 您可以使用这些 cmdlet，也可以将自动化帐户中的[模块更新](automation-update-azure-modules.md)到最新版本。 即使您刚刚创建了新的自动化帐户，您也可能需要更新模块。
 
-1. 导航到**MyFirstRunbook-工作流**页面，然后单击 **"编辑**"打开文本编辑器。
+1. 导航到 MyFirstRunbook-工作流页面，然后单击 **"编辑**"打开文本编辑器。
 2. 删除行`Write-Output`。
 3. 将光标放在大括号之间的空白行上。
 4. 键入或复制并粘贴以下代码，这些代码处理具有"自动运行为帐户"的身份验证。
@@ -213,6 +213,8 @@ Runbook 当前启动在 Runbook 中硬编码的 VM。 如果可以在启动 Runb
 ## <a name="next-steps"></a>后续步骤
 
 * 有关 PowerShell 的详细信息（包括语言参考和学习模块），请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell/scripting/overview)。
+* 有关 PowerShell cmdlet 引用，请参阅[Az.自动化](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)。
 * 要开始使用图形运行簿，请参阅[我的第一个图形运行簿](automation-first-runbook-graphical.md)。
 * 要开始使用 PowerShell 运行簿，请参阅[我的第一个 PowerShell 运行簿](automation-first-runbook-textual-powershell.md)。
 * 要了解有关 Runbook 类型及其优点和限制的更多信息，请参阅[Azure 自动化 Runbook 类型](automation-runbook-types.md)。

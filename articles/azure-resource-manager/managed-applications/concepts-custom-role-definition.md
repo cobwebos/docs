@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 09/16/2019
-ms.openlocfilehash: 88e42fd9626276f6c77b46b33c138407f91d06ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7b7fff913c177703f959bfa103c8e310d01059e2
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75650755"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391829"
 ---
 # <a name="custom-role-definition-artifact-in-azure-managed-applications"></a>Azure 托管应用程序中的自定义角色定义项目
 
@@ -20,7 +20,7 @@ ms.locfileid: "75650755"
 
 ## <a name="custom-role-definition-artifact"></a>自定义角色定义项目
 
-需要将自定义角色定义项目命名为 customRoleDefinition.json。 请将其放置在特定级别中，该级别与创建托管应用程序定义的 .zip 包中的 createUiDefinition.json 和 mainTemplate.json 属于同一级别。 若要了解如何创建 .zip 包并发布托管应用程序定义，请参阅[发布托管应用程序定义。](publish-managed-app-definition-quickstart.md)
+需要将自定义角色定义项目命名为 customRoleDefinition.json。 请将其放置在特定级别中，该级别与创建托管应用程序定义的 .zip 包中的 createUiDefinition.json 和 mainTemplate.json 属于同一级别。 若要了解如何创建 .zip 包并发布托管应用程序定义，请参阅[发布托管应用程序定义。](publish-service-catalog-app.md)
 
 ## <a name="custom-role-definition-schema"></a>自定义角色定义架构
 
@@ -63,7 +63,7 @@ customRoleDefinition.json 文件有一个顶级 `roles` 属性，该属性是角
 > [!NOTE]
 > 可以使用 `id` 或 `roleName` 字段。 只需要一个。 这些字段用于查找应该应用的角色定义。 如果同时提供两者，则会使用 `id` 字段。
 
-|properties|必需？|描述|
+|properties|必需？|说明|
 |---------|---------|---------|
 |id|是|内置角色的 ID。 可以使用完整 ID 或只使用 GUID。|
 |roleName|是|内置角色的名称。|

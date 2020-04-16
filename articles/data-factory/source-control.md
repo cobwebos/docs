@@ -11,14 +11,15 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/09/2019
-ms.openlocfilehash: 6645c2672e15c562216b4347f779ef3634a2f124
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2108f2f9098fe6da8ee4666b30605bed14164484
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130874"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414720"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure 数据工厂中的源代码管理
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure 数据工厂用户界面体验 （UX） 有两种体验可用于可视化创作：
 
@@ -70,14 +71,14 @@ Azure 数据工厂用户界面体验 （UX） 有两种体验可用于可视化�
 
 配置窗格显示以下 Azure 存储库设置：
 
-| 设置 | 描述 | “值” |
+| 设置 | 说明 | 值 |
 |:--- |:--- |:--- |
 | **存储库类型** | Azure Repos 代码存储库的类型。<br/> | Azure 开发人员计划 Git 或 GitHub |
 | **Azure Active Directory** | Azure AD 租户的名称。 | `<your tenant name>` |
 | **Azure Repos 组织** | Azure Repos 组织名称。 可以在 `https://{organization name}.visualstudio.com` 中找到 Azure Repos 组织名称。 可以[登录到 Azure Repos 组织](https://www.visualstudio.com/team-services/git/)来访问 Visual Studio 配置文件并查看存储库和项目。 | `<your organization name>` |
 | **项目名称** | Azure Repos 项目名称。 可以在 `https://{organization name}.visualstudio.com/{project name}` 中找到 Azure Repos 项目名称。 | `<your Azure Repos project name>` |
 | **存储库名称** | Azure Repos 代码存储库名称。 Azure Repos 项目包含 Git 存储库，随着项目的发展来管理源代码。 要么创建一个新的存储库，要么使用项目中已有的存储库。 | `<your Azure Repos code repository name>` |
-| **协作分支** | 将用于发布的 Azure Repos 协作分支。 默认情况下，它是`master`。 如果希望从其他分支发布资源，可更改此设置。 | `<your collaboration branch name>` |
+| **协作分支** | 将用于发布的 Azure Repos 协作分支。 该名称默认为 `master`。 如果希望从其他分支发布资源，可更改此设置。 | `<your collaboration branch name>` |
 | **根文件夹** | Azure Repos 协作分支中的根文件夹。 | `<your root folder name>` |
 | 确认选中“将现有的数据工厂资源导入存储库”选项。**** | 指定是否从 UX 创作画布**** 将现有数据工厂资源导入 Azure Repos Git 存储库。 选择相应的框以将你的数据工厂资源导入 JSON 格式关联的 Git 存储库。 此操作单独导出每个资源（即，链接的服务和数据集导出到单独的 JSON）。 如果未选中此框，不能导入现有的资源。 | 已选择（默认） |
 | **要将资源导入到的分支** | 指定要将数据工厂资源（管道、数据集、链接服务等）导入哪个分支。 可将资源导入以下分支之一：a. 协作；b. 新建；c. 使用现有项 |  |
@@ -137,7 +138,7 @@ GitHub 与数据工厂的集成同时支持公共 GitHub（即[https://github.co
 
 配置窗格显示以下 GitHub 存储库设置：
 
-| **设置** | **说明**  | **价值**  |
+| **设置** | **说明**  | **值**  |
 |:--- |:--- |:--- |
 | **存储库类型** | Azure Repos 代码存储库的类型。 | GitHub |
 | **使用 GitHub Enterprise** | 用于选择 GitHub Enterprise 的复选框 | 未选中（默认） |
@@ -218,9 +219,9 @@ GitHub 与数据工厂的集成同时支持公共 GitHub（即[https://github.co
 -   **源代码管理**。 随着数据工厂工作负载变得至关重要，你可能需要将工厂与 Git 集成，以利用以下几种源代码管理优势：
     -   跟踪/审核更改的功能。
     -   还原导致 bug 的更改的功能。
--   **部分保存**。 在工厂中进行大量更改后，便将发现，在常规实时模式下，无法将更改保存为草稿，这是因为你尚未准备就绪，或者是因为你不希望因电脑发生故障而丢失更改。 通过 Git 集成，可以继续以增量方式保存更改，并且仅在准备就绪后才发布到工厂。 Git 会充当工作的暂存位置，直到对更改进行测试并感到满意为止。
+-   **部分保存**。 当您在工厂中进行大量更改时，您会意识到，在常规 LIVE 模式下，无法将更改另存为草稿，因为您尚未准备好，或者不希望在计算机崩溃时丢失更改。 通过 Git 集成，可以继续以增量方式保存更改，并且仅在准备就绪后才发布到工厂。 Git 会充当工作的暂存位置，直到对更改进行测试并感到满意为止。
 -   **协作和控制**。 如果有多个团队成员参与同一工厂，则可能需要通过代码评审流程让团队成员相互协作。 此外，还可以设置工厂，以免工厂的每一位参与者都有权部署到工厂。 可以仅允许团队成员通过 Git 进行更改，但只允许团队中的某些人将更改“发布”到工厂。
--   **显示差异**。 在 Git 模式下，可以看到即将发布到工厂的有效负载的精细差异。 此差异显示了自上次发布到工厂后已修改/添加/删除的所有资源/实体。 基于此差异，可以继续进行发布，也可以返回并检查更改，稍后再回来。
+-   **显示差异**。 在 Git 模式下，您可以看到即将发布到工厂的有效负载的一个很好的差异。 此差异显示了自上次发布到工厂后已修改/添加/删除的所有资源/实体。 基于此差异，可以继续进行发布，也可以返回并检查更改，稍后再回来。
 -   **更好的 CI/CD**。 如果使用的是 Git 模式，则可以将发布管道配置为开发工厂中发生任何更改后立即自动触发。 此外，还可以自定义工厂中可用作资源管理器模板的参数的属性。 仅将所需属性集保留为参数并将其他所有内容进行硬编码可能很有用。
 -   **性能更好**。 在 Git 模式下，平均工厂加载速度比常规 LIVE 模式快十倍，因为资源是通过 Git 下载的。
 
@@ -231,7 +232,7 @@ GitHub 与数据工厂的集成同时支持公共 GitHub（即[https://github.co
 通常，您不希望每个团队成员都具有更新工厂的权限。 建议设置以下权限：
 
 *   所有团队成员都应具有对数据工厂的读取权限。
-*   只允许一组选定的人员发布到工厂。 为此，他们必须在工厂上具有**数据工厂参与者**角色。 有关权限的详细信息，请参阅[Azure 数据工厂的角色和权限](concepts-roles-permissions.md)。
+*   只允许一组选定的人员发布到工厂。 为此，他们必须在工厂所位于的资源组中具有**数据工厂参与者**角色。 有关权限的详细信息，请参阅[Azure 数据工厂的角色和权限](concepts-roles-permissions.md)。
    
 建议不允许直接签入协作分支。 此限制有助于防止 Bug，因为每次签入都将通过["创建功能分支](source-control.md#creating-feature-branches)"中描述的拉取请求审阅过程。
 

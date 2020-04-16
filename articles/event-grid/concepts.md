@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 0821c749a6cb718e1b8abb74a2925bc041850eaf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 348d82f704b89b97e11a09b8f88e92831901b3bf
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79265059"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393462"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure 事件网格中的概念
 
@@ -27,7 +27,7 @@ ms.locfileid: "79265059"
 
 至于在事件中发送的属性，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
-## <a name="publishers"></a>发布者
+## <a name="publishers"></a>发布服务器
 
 发布服务器是决定将事件发送到事件网格的用户或组织。 Microsoft 发布了几个 Azure 服务的事件。 可以从自己的应用程序发布事件。 在 Azure 外部托管服务的组织可以通过事件网格发布事件。
 
@@ -35,7 +35,7 @@ ms.locfileid: "79265059"
 
 事件源即事件发生的位置。 每个事件源都与一个或多个事件类型相关。 例如，Azure 存储是 blob 创建事件的事件源。 IoT 中心是设备创建的事件的事件源。 你的应用程序是你定义的自定义事件的事件源。 事件源负责将事件发送到事件网格。
 
-有关实现任何受支持的事件网格源的信息，请参阅 [Azure 事件网格中的事件源](event-sources.md)。
+有关实现任何受支持的事件网格源的信息，请参阅 [Azure 事件网格中的事件源](overview.md#event-sources)。
 
 ## <a name="topics"></a>主题
 

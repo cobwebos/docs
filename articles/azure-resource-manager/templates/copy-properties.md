@@ -2,13 +2,13 @@
 title: 定义属性的多个实例
 description: 在 Azure 资源管理器模板中使用复制操作在资源上创建属性时多次迭代。
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: e86d38b0e5d2e39d54b3c419b6eebdcda74022db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 831ae1af202a1cdf52bdd2bdf0d9a042a97ba52f
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258101"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391339"
 ---
 # <a name="property-iteration-in-arm-templates"></a>ARM 模板中的属性迭代
 
@@ -30,7 +30,9 @@ ms.locfileid: "80258101"
 ]
 ```
 
-对于**名称**，请提供要创建的资源属性的名称。 **count**属性指定所需的属性的迭代数。
+对于**名称**，请提供要创建的资源属性的名称。
+
+**count**属性指定所需的属性的迭代数。
 
 **输入**属性指定要重复的属性。 创建从**输入**属性中的值构造的元素数组。
 
@@ -78,11 +80,7 @@ ms.locfileid: "80258101"
 }
 ```
 
-请注意，在属性迭代中使用 `copyIndex` 时，必须提供迭代的名称。
-
-> [!NOTE]
-> 属性迭代还支持偏移参数。 偏移量必须以迭代的名称（如 copyIndex（"数据磁盘"1）之后提供。
->
+请注意，在属性迭代中使用 `copyIndex` 时，必须提供迭代的名称。 属性迭代还支持偏移参数。 偏移量必须以迭代的名称（如 copyIndex（"数据磁盘"1）之后提供。
 
 Resource Manager 在部署期间扩展 `copy` 数组。 数组的名称将成为属性的名称。 输入值将成为对象属性。 已部署的模板将成为：
 
@@ -111,6 +109,66 @@ Resource Manager 在部署期间扩展 `copy` 数组。 数组的名称将成为
         }
       ],
       ...
+```
+
+当使用数组时，copy 操作十分有用，因为这样可以迭代数组中的每个元素。 可以对数组使用 `length` 函数来指定迭代计数，并使用 `copyIndex` 来检索数组中的当前索引。
+
+以下示例模板为作为数组传入的数据库创建故障转移组。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "primaryServerName": {
+            "type": "string"
+        },
+        "secondaryServerName": {
+            "type": "string"
+        },
+        "databaseNames": {
+            "type": "array",
+            "defaultValue": [
+                "mydb1",
+                "mydb2",
+                "mydb3"
+            ]
+        }
+    },
+    "variables": {
+        "failoverName": "[concat(parameters('primaryServerName'),'/', parameters('primaryServerName'),'failovergroups')]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Sql/servers/failoverGroups",
+            "apiVersion": "2015-05-01-preview",
+            "name": "[variables('failoverName')]",
+            "properties": {
+                "readWriteEndpoint": {
+                    "failoverPolicy": "Automatic",
+                    "failoverWithDataLossGracePeriodMinutes": 60
+                },
+                "readOnlyEndpoint": {
+                    "failoverPolicy": "Disabled"
+                },
+                "partnerServers": [
+                    {
+                        "id": "[resourceId('Microsoft.Sql/servers', parameters('secondaryServerName'))]"
+                    }
+                ],
+                "copy": [
+                    {
+                        "name": "databases",
+                        "count": "[length(parameters('databaseNames'))]",
+                        "input": "[resourceId('Microsoft.Sql/servers/databases', parameters('primaryServerName'), parameters('databaseNames')[copyIndex('databases')])]"
+                    }
+                ]
+            }
+        }
+    ],
+    "outputs": {
+    }
+}
 ```
 
 copy 元素是一个数组，因此，可以为资源指定多个属性。
@@ -185,7 +243,7 @@ count 不能为负数。 如果使用 Azure PowerShell 2.6 或更高版本、Azu
 
 下面的示例显示了为属性创建多个值的常见方案。
 
-|模板  |描述  |
+|模板  |说明  |
 |---------|---------|
 |[部署数据磁盘数量不定的 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |通过虚拟机部署多个数据磁盘。 |
 

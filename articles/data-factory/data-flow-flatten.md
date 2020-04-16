@@ -7,18 +7,20 @@ ms.review: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: b19aae8ab6730936a826f5bb069bfdb7d696cdfa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a0e75957a0ab49394dab56f2b7fb847dee4b43cb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246630"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413680"
 ---
 # <a name="flatten-transformation-in-mapping-data-flow"></a>映射数据流中的扁平转换
 
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 使用拼合变换在分层结构（如 JSON）中获取数组值，并将其展开到单独的行中。 此过程称为非规范化。
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 
 扁平转换包含以下配置设置
 

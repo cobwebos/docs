@@ -10,13 +10,12 @@ ms.subservice: ''
 ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 64490bbd44066389186a59e851045b6becbe7acc
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 56d8ab81fcf9200fec2cfb4a741724b8f79db820
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632465"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408031"
 ---
 # <a name="temporary-tables-in-synapse-sql-pool"></a>Synapse SQL 池中的临时表
 本文包含使用临时表的基本指导，并重点介绍会话级别临时表的原则。 
@@ -30,7 +29,14 @@ ms.locfileid: "80632465"
 
 临时表可以提高性能，因为其结果将写入到本地而不是远程存储。
 
-## <a name="create-a-temporary-table"></a>创建临时表
+临时表在处理数据时很有用，尤其是在转换期间，中间结果是暂时的。 使用 SQL 分析，临时表存在于会话级别。  它们仅在创建它们的会话中可见。 因此，当会话注销时，它们会自动丢弃。 
+
+## <a name="temporary-tables-in-sql-pool"></a>SQL 池中的临时表
+
+在 SQL 池资源中，临时表提供性能优势，因为它们的结果写入本地存储而不是远程存储。
+
+### <a name="create-a-temporary-table"></a>创建临时表
+
 只需为表名添加 `#` 前缀，即可创建临时表。  例如：
 
 ```sql
@@ -89,7 +95,7 @@ GROUP BY
 ,        st.[has_filter]
 )
 ;
-``` 
+```
 
 > [!NOTE]
 > `CTAS` 是一个强大的命令并具有附加优势，可有效利用事务日志空间。 
@@ -226,5 +232,6 @@ DROP TABLE #stats_ddl;
 此外，无法在临时表上创建视图。  只能使用哈希分布或轮循机制分布来创建临时表。  不支持复制的临时表分发。 
 
 ## <a name="next-steps"></a>后续步骤
-若要详细了解如何开发表，请参阅[表概述](sql-data-warehouse-tables-overview.md)。
+
+要了解有关开发表的更多信息，请参阅使用[SQL Analytics 资源设计表](sql-data-warehouse-tables-overview.md)一文。
 

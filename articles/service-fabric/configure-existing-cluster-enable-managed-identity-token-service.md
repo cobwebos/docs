@@ -2,16 +2,16 @@
 title: 在现有服务结构群集中配置托管标识支持
 description: 下面了解如何在现有 Azure 服务结构群集中启用托管标识支持
 ms.topic: article
-ms.date: 12/09/2019
+ms.date: 03/11/2019
 ms.custom: sfrev
-ms.openlocfilehash: 396978546b301884087c4ea51e242258d64a6b0b
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 73c890e960f26b8e0e3fa924d9ff6b7a4cd4a4dc
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983800"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415689"
 ---
-# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster-preview"></a>在现有服务交换矩阵群集中配置托管标识支持（预览）
+# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>在现有服务结构群集中配置托管标识支持
 
 要在 Service Fabric 应用程序中[对 Azure 资源使用托管标识](../active-directory/managed-identities-azure-resources/overview.md)，请首先在群集上启用*托管标识令牌服务*。 此服务负责使用 Service Fabric 应用程序的托管标识对这些应用程序进行身份验证，以及代表它们获取访问令牌。 启用此服务以后，即可在 Service Fabric Explorer 中左侧窗格的“系统”部分**** 看到它，它以 **fabric:/System/ManagedIdentityTokenService** 名称运行。
 

@@ -5,20 +5,22 @@ description: 了解如何更新或重置 Azure 库伯奈斯服务 （AKS） 群�
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 0203321af32bcc2ae70b726737b85870d08be86f
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 8420771e32aa792aa79a07fdf4362ad0d9b45d48
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886749"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392637"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>更新或轮换 Azure 库伯内斯服务 （AKS） 的凭据
 
 默认情况下，使用服务主体创建的 AKS 群集具有为期一年的有效期。 在有效期即将结束时，你可以重置凭据来将服务主体延长额外的一段时间。 作为已定义安全策略的一部分，还可能要更新或轮换凭据。 本文详细介绍如何为 AKS 群集更新这些凭据。
 
-您可能还必须将[AKS 群集与 Azure 活动目录集成][aad-integration]，并将其用作群集的身份验证提供程序。 在这种情况下，您将为群集、AAD 服务器应用和 AAD 客户端应用再创建 2 个标识，您也可以重置这些凭据。 
+您可能还必须将[AKS 群集与 Azure 活动目录集成][aad-integration]，并将其用作群集的身份验证提供程序。 在这种情况下，您将为群集、AAD 服务器应用和 AAD 客户端应用再创建 2 个标识，您也可以重置这些凭据。
 
-## <a name="before-you-begin"></a>在开始之前
+或者，您可以将托管标识用于权限，而不是服务主体。 托管标识比服务主体更易于管理，不需要更新或轮换。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
+
+## <a name="before-you-begin"></a>开始之前
 
 需要安装并配置 Azure CLI 2.0.65 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 

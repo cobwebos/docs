@@ -7,14 +7,16 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 11/07/2019
 ms.author: abnarain
-ms.openlocfilehash: b8492e8934c782451fb77d5a0ff56b96c34c9a00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f298b331d53eb8bab67a6f99194065dc5f889236
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75439880"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414891"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>排除自托管集成运行时故障
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文探讨了 Azure 数据工厂中自托管集成运行时的常见故障排除方法。
 
@@ -80,9 +82,9 @@ ms.locfileid: "75439880"
 
 > [!NOTE] 
 > 代理注意事项：
-> * 检查是否需要将代理服务器放在安全收件人列表中。 如果是这样，请确保[这些域](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network)位于安全收件人列表中。
-> * 检查 TLS/SSL 证书"wu2.frontend.clouddatahub.net/"是否受代理服务器上信任。
-> * 如果您在代理上使用 Active Directory 身份验证，请将服务帐户更改为可以访问代理的用户帐户，作为"集成运行时服务"。
+> *    检查是否需要将代理服务器放在安全收件人列表中。 如果是这样，请确保[这些域](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network)位于安全收件人列表中。
+> *    检查 TLS/SSL 证书"wu2.frontend.clouddatahub.net/"是否受代理服务器上信任。
+> *    如果您在代理上使用 Active Directory 身份验证，请将服务帐户更改为可以访问代理的用户帐户，作为"集成运行时服务"。
 
 ### <a name="error-message-self-hosted-integration-runtime-node-logical-shir-is-in-inactive-running-limited-state"></a>错误消息：自托管集成运行时节点/逻辑 SHIR 处于非活动/"正在运行（受限）"状态
 
@@ -117,7 +119,7 @@ ms.locfileid: "75439880"
         
    ![Command-line error](media/self-hosted-integration-runtime-troubleshoot-guide/command-line-error.png)
         
-1.  Check whether the error log contains the following:
+1.    Check whether the error log contains the following:
 
     ```Error log: Cannot connect to worker manager: net.tcp://xxxxxx:8060/ExternalService.svc/ No DNS entries exist for host azranlcir01r1. No such host is known Exception detail: System.ServiceModel.EndpointNotFoundException: No DNS entries exist for host xxxxx. ---> System.Net.Sockets.SocketException: No such host is known at System.Net.Dns.GetAddrInfo(String name) at System.Net.Dns.InternalGetHostByName(String hostName, Boolean includeIPv6) at System.Net.Dns.GetHostEntry(String hostNameOrAddress) at System.ServiceModel.Channels.DnsCache.Resolve(Uri uri) --- End of inner exception stack trace --- Server stack trace: at System.ServiceModel.Channels.DnsCache.Resolve(Uri uri)```
     

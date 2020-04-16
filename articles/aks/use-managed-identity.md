@@ -5,18 +5,18 @@ services: container-service
 author: saudas
 manager: saudas
 ms.topic: article
-ms.date: 03/10/2019
+ms.date: 04/02/2020
 ms.author: saudas
-ms.openlocfilehash: 85efc6d9d203ca06c5f7566376993b4c13950788
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a150e2f197f24db5da331195290d11ad925c47e
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369971"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392649"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>在 Azure 库伯奈斯服务中使用托管标识
 
-目前，Azure Kubernetes 服务 （AKS） 群集（特别是 Kubernetes 云提供商）需要*服务主体*才能在 Azure 中创建其他资源，如负载均衡器和托管磁盘。 您必须提供服务主体，要么 AKS 代表您创建服务主体。 服务主体通常具有到期日期。 群集最终达到必须续订服务主体以保持群集工作的状态。 管理服务主体会增加复杂性。
+目前，Azure Kubernetes 服务 （AKS） 群集（特别是 Kubernetes 云提供程序）需要和标识才能在 Azure 中创建负载均衡器和托管磁盘等其他资源，此标识可以是*托管标识*或*服务主体*。 如果使用[服务主体](kubernetes-service-principal.md)，则必须提供一个或 AKS 代表您创建一个。 如果您使用托管标识，AKS 将自动为您创建此标识。 使用服务主体的群集最终达到必须续订服务主体以保持群集工作的状态。 管理服务主体会增加复杂性，这就是为什么它更容易使用托管标识。 相同的权限要求适用于服务主体和托管标识。
 
 *托管标识*本质上是围绕服务主体的包装，并简化其管理。 要了解更多信息，请阅读[Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
 

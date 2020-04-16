@@ -11,14 +11,16 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: 52b1d93935e6428563c72361655893ffddf8a507
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0324044d93f12f6ac6ec96ff1a31be8ee02ada41
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74941843"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414702"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>在 Azure 数据工厂中排查 SSIS Integration Runtime 管理问题
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文提供的故障排除指南针对 Azure-SQL Server Integration Services (SSIS) Integration Runtime (IR)（简称 SSIS IR）中的管理问题。
 
@@ -41,7 +43,7 @@ ms.locfileid: "74941843"
 * 网络连接问题。 检查 SQL Server 或托管实例主机名是否可访问。 同时，确保没有防火墙或网络安全组 (NSG) 阻止 SSIS IR 访问服务器。
 * SQL 身份验证期间登录失败。 提供的帐户无法登录 SQL Server 数据库。 请确保提供正确的用户帐户。
 * Microsoft Azure Active Directory (Azure AD) 身份验证（托管标识）期间登录失败。 将工厂的托管标识添加到 AAD 组，并确保托管标识具有对目录数据库服务器的访问权限。
-* 连接超时。 此错误始终是由与安全相关的配置引起的。 建议：
+* 连接超时。 此错误始终是由与安全相关的配置引起的。 我们建议：
   1. 创建新 VM。
   1. 如果 IR 在虚拟网络中，请将 VM 加入相同的 IR Microsoft Azure 虚拟网络。
   1. 安装 SSMS 并检查 Azure SQL Database 服务器或托管实例状态。

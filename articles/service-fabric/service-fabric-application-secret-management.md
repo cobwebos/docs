@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: vturecek
-ms.openlocfilehash: 4a489993f982993d5703a9b46d42fffaa6134038
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d2138935122b9e08b21963519fce3f72466ab1f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259053"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414519"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>管理 Service Fabric 应用程序中的已加密机密
 本指南逐步讲解管理 Service Fabric 应用程序中的机密的步骤。 机密可以是任何敏感信息，例如存储连接字符串、密码或其他不应以明文形式处理的值。
@@ -57,6 +57,11 @@ ms.locfileid: "79259053"
   </Certificates>
 </ApplicationManifest>
 ```
+> [!NOTE]
+> 激活指定机密证书的应用程序后，Service Fabric 将查找匹配的证书，并将应用程序在证书私钥完全权限下运行的标识授予。 Service Fabric 还将监视证书的更改，并相应地重新应用权限。 要检测由通用名称声明的证书的更改，Service Fabric 会运行一个定期任务，该任务查找所有匹配的证书，并将其与缓存的指纹列表进行比较。 检测到新的指纹时，这意味着该主题的证书已续订。 任务每分钟在群集的每个节点上运行一次。
+>
+> 虽然机密证书确实允许基于主题的声明，但请注意，加密的设置绑定到用于加密客户端上的设置的密钥对。 必须确保原始加密证书（或等效证书）与基于主题的声明匹配，并确保在可以承载应用程序的群集的每个节点上安装该证书（包括相应的私钥）。 与基于主题的声明匹配且从与原始加密证书相同的密钥对构建的所有时间有效证书都被视为等效证书。
+>
 
 ### <a name="inject-application-secrets-into-application-instances"></a>将应用程序机密插入应用程序实例
 理想情况下，部署到不同环境的过程应尽可能自动化。 这可以通过在生成环境中执行机密加密，并在创建应用程序实例时提供加密机密作为参数来实现。

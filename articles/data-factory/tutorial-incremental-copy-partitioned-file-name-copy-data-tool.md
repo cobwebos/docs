@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/17/2020
-ms.openlocfilehash: 50e82362f39da2d3f3ecfad2de1ed07b68f8a6a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6cc089a1efc3f5960a8bca8a36063bb1019bbcc6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501657"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81409397"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>使用复制数据工具仅根据时间分区文件名以增量方式复制新文件
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 在本教程中，我们将使用 Azure 门户创建数据工厂。 然后，使用复制数据工具创建一个管道，该管道根据时间分区文件名以增量方式将新文件从 Azure Blob 存储复制到 Azure Blob 存储。
 
@@ -36,7 +38,7 @@ ms.locfileid: "79501657"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+* **Azure 订阅**：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 * **Azure 存储帐户**：使用 Blob 存储作为_源_和_接收器_数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)中的说明。
 
 ### <a name="create-two-containers-in-blob-storage"></a>在 Blob 存储中创建两个容器
@@ -68,15 +70,15 @@ ms.locfileid: "79501657"
 3. 选择要在其中创建新数据工厂的 Azure **订阅**。
 4. 对于“资源组”，请执行以下步骤之一：****
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择“使用现有资源组”，并从下拉列表选择现有的资源组。****
+    a. 选择“使用现有资源组”，并从下拉列表选择现有的资源组。****
 
-    b.保留“数据库类型”设置，即设置为“共享”。 选择“新建”，并输入资源组的名称。**** 
+    b. 选择“新建”，并输入资源组的名称。**** 
          
     若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。
 
 5. 在“版本”下选择“V2”作为版本。********
 6. 在“位置”下选择数据工厂的位置。**** 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他位置和区域。
-7. 选择 **“创建”**。
+7. 选择“创建”  。
 8. 创建完以后，会显示“数据工厂”**** 主页。
 9. 若要在单独的选项卡中启动 Azure 数据工厂用户界面 (UI)，请选择“创作和监视”磁贴。****
 
@@ -91,38 +93,38 @@ ms.locfileid: "79501657"
 
 2. 在“属性”页上执行以下步骤：****
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“任务名称”下**** 输入 **DeltaCopyFromBlobPipeline**。
+    a. 在“任务名称”下**** 输入 **DeltaCopyFromBlobPipeline**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“任务频率或任务计划”下 **，选择“按计划定期运行”******。
+    b. 在“任务频率或任务计划”下 **，选择“按计划定期运行”******。
 
     c. 在 **"触发类型"** 下，选择 **"翻转窗口**"。
 
-    d.单击“下一步”。 在“重复周期”下输入“1 小时”。********
+    d. 在“重复周期”下输入“1 小时”。********
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 选择“下一步”。
+    e. 选择“**下一页**”。
 
     数据工厂 UI 将使用指定的任务名称创建一个管道。
 
     ![“属性”页](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/copy-data-tool-properties-page.png)
 3. 在“源数据存储”**** 页上，完成以下步骤：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击 **+ 创建新连接**以添加连接
+    a. 单击 **+ 创建新连接**以添加连接
     
-    b.保留“数据库类型”设置，即设置为“共享”。 从库中选择“Azure Blob 存储”，然后选择“继续”。
+    b. 从库中选择“Azure Blob 存储”，然后选择“继续”。
     
     c. 在新**链接服务（Azure Blob 存储）** 页上，输入链接服务的名称。 选择 Azure 订阅，然后从 **"存储帐户"名称**列表中选择存储帐户。 测试连接，然后选择 **"创建**"。
 
     ![“源数据存储”页](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/source-data-store-page-linkedservice.png)
 
-    d.单击“下一步”。 在 **"源数据存储"** 页上选择新创建的链接服务，然后单击"**下一步**"。
+    d. 在 **"源数据存储"** 页上选择新创建的链接服务，然后单击"**下一步**"。
 
 4. 在“选择输入文件或文件夹”页中执行以下步骤：****
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 浏览并选择 **source** 容器，然后选择“选择”。****
+    a. 浏览并选择 **source** 容器，然后选择“选择”。****
 
     ![选择输入文件或文件夹](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/choose-input-file-folder.png)
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“文件加载行为”下选择“增量加载: 时间分区文件夹/文件名”。********
+    b. 在“文件加载行为”下选择“增量加载: 时间分区文件夹/文件名”。********
 
     c. 将动态文件夹路径写成**源/[年]/{每月}/{day}/{小时}，** 并更改格式，如下图所示。 勾选“二进制副本”，然后单击“下一步”。********
 
@@ -133,13 +135,13 @@ ms.locfileid: "79501657"
     ![“目标数据存储”页](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/destination-data-store-page-select-linkedservice.png)
 6. 在“选择输出文件或文件夹”页上执行以下步骤：****
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 浏览并选择 **destination** 文件夹，然后单击“选择”。****
+    a. 浏览并选择 **destination** 文件夹，然后单击“选择”。****
 
-    b.保留“数据库类型”设置，即设置为“共享”。 将动态文件夹路径编写为 **destination/{年}/{月}/{日}/{小时}/**，并将格式更改如下：
+    b. 将动态文件夹路径编写为 **destination/{年}/{月}/{日}/{小时}/**，并将格式更改如下：
 
     ![选择输出文件或文件夹](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/output-file-name.png)
 
-    c. 单击“下一步”****。
+    c. 单击“下一步”。 
 
     ![选择输出文件或文件夹](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/click-next-after-output-folder.png)
 7. 在“设置”页中，选择“下一步”。********

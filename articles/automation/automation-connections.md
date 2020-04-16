@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4840b135587ae776cfb80258ce513a48a79efa43
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 7a6fc2bd5cb6f5c7ae5bef9e9741fae92518d885
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383335"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392389"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure 自动化中的连接资产
 
@@ -38,7 +38,7 @@ Azure 自动化中有三种类型的内置连接：
 
 下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化连接。 它们作为[Azure PowerShell 模块](/powershell/azure/overview)的一部分发货，可用于自动化运行簿和 DSC 配置。
 
-|Cmdlet|描述|
+|Cmdlet|说明|
 |---|---|
 |[获取自动化连接](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationconnection?view=azps-3.7.0)|检索连接。 包括具有连接字段值的哈希表。|
 |[新-阿兹自动化连接](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection?view=azps-3.7.0)|创建新连接。|
@@ -49,7 +49,7 @@ Azure 自动化中有三种类型的内置连接：
 
 下表中的活动用于在 Runbook 或 DSC 配置中访问连接。
 
-|活动|描述|
+|活动|说明|
 |---|---|
 |`Get-AutomationConnection` | 获取要使用的连接。 返回包含连接的属性的哈希表。|
 
@@ -89,7 +89,7 @@ $ConnectionFieldValues = @{"ApplicationId" = $Application.ApplicationId; "Tenant
 New-AzAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $ConnectionFieldValues
 ```
 
-您可以使用该脚本创建连接资产，因为当您创建自动化帐户时，默认情况下它会自动包含多个全局模块以及创建`AzureServicePrincipal``AzureRunAsConnection`连接资产的连接类型。 牢记这一点很重要，因为如果尝试使用其他身份验证方法创建新的连接资产来连接到服务或应用程序，则会失败，原因在于连接类型尚未在自动化帐户中定义。 有关如何从[PowerShell 库](https://www.powershellgallery.com)为自定义或模块创建自己的连接类型的详细信息，请参阅[集成模块](automation-integration-modules.md)
+您可以使用该脚本创建连接资产，因为当您创建自动化帐户时，默认情况下它会自动包含多个全局模块以及创建`AzureServicePrincipal``AzureRunAsConnection`连接资产的连接类型。 牢记这一点很重要，因为如果尝试使用其他身份验证方法创建新的连接资产来连接到服务或应用程序，则会失败，原因在于连接类型尚未在自动化帐户中定义。 有关如何从[PowerShell 库](https://www.powershellgallery.com)为自定义或模块创建自己的连接类型的详细信息，请参阅[集成模块](automation-integration-modules.md)。
 
 ## <a name="using-a-connection-in-a-runbook-or-dsc-configuration"></a>在 Runbook 或 DSC 配置中使用连接
 
@@ -113,7 +113,7 @@ Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.
 
 ![添加到画布](media/automation-connections/connection-add-canvas.png)
 
-下图显示了在图形 Runbook 中使用连接的示例。 这是上面显示的同一示例，可以使用运行方式帐户通过文本 Runbook 进行身份验证。 本示例使用`Constant value`使用连接对象进行身份验证`Get RunAs Connection`的活动的数据集。 此处使用[管道链接](automation-graphical-authoring-intro.md#links-and-workflow)，`ServicePrincipalCertificate`因为参数集需要单个对象。
+下图显示了在图形 Runbook 中使用连接的示例。 这与上面所示使用带有文本 Runbook 的"运行作为"帐户进行身份验证的示例相同。 本示例使用`Constant value`使用连接对象进行身份验证`Get RunAs Connection`的活动的数据集。 此处使用[管道链接](automation-graphical-authoring-intro.md#links-and-workflow)，`ServicePrincipalCertificate`因为参数集需要单个对象。
 
 ![获取连接](media/automation-connections/automation-get-connection-object.png)
 

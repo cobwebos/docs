@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: 706ab128af4379a56223ff65fb12f29d37b524f7
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 0c61a431b985e494148500ed0a7aeb106534ed2c
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383274"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392124"
 ---
 # <a name="provide-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>使用自动化状态配置和巧克力提供虚拟机的持续部署
 
@@ -95,7 +95,7 @@ PowerShell 库自动将 DSC 资源安装到 Azure 自动化帐户。
 
 最近添加到 Azure 门户的另一种技术允许您提取新模块或更新现有模块。 单击"自动化帐户资源"、"资产"磁贴，最后单击"模块"磁贴。 "浏览库"图标允许您查看库中的模块列表，深入了解详细信息并最终导入自动化帐户。 这是让模块随时保持最新状态的绝佳方法。 而且，导入功能会检查与其他模块的依赖性，以确保所有模块都保持同步。
 
-还有手动方法。 除非以后要升级，否则每个资源只使用此方法一次。 有关创作 PowerShell 集成模块的详细信息，请参阅[为 Azure 自动化创作集成模块](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)。
+还有一个手动方法，每个资源只使用一次，除非您以后要升级它。 有关创作 PowerShell 集成模块的详细信息，请参阅[为 Azure 自动化创作集成模块](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)。
 
 >[!NOTE]
 >Windows 计算机的 PowerShell 集成模块的文件夹结构与 Azure 自动化预期的文件夹结构略有不同。 
@@ -121,7 +121,7 @@ PowerShell 库自动将 DSC 资源安装到 Azure 自动化帐户。
     ```azurepowershell-interactive
     New-AzAutomationModule `
       -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
-      -Name MODULE-NAME –ContentLink 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'
+      -Name MODULE-NAME –ContentLinkUri 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'
     ```
 
 包含的示例为 cChoco 和 xNetworking 实现这些步骤。 
@@ -196,18 +196,18 @@ Get-AzAutomationDscCompilationJob `
 
 ## <a name="step-5-create-and-maintain-package-metadata"></a>第 5 步：创建和维护包元数据
 
-对于放入包存储库中的每一个包，需要使用 nuspec 来描述它。
-该 nuspec 必须经过编译并存储在 NuGet 服务器中。 [此处](https://docs.nuget.org/create/creating-and-publishing-a-package)对该过程进行了说明。 可以使用 MyGet.org 作为 NuGet 服务器。 他们销售这种服务，但也提供免费的入门 SKU。 在NuGet.org，您将找到有关为私有软件包安装自己的 NuGet 服务器的说明。
+对于放入包存储库的每个包，都需要一个 Nuspec 来描述它。 它必须编译并存储在您的 NuGet 服务器上。 [此处](https://docs.nuget.org/create/creating-and-publishing-a-package)对该过程进行了说明。 
+
+您可以将**MyGet.org**用作 NuGet 服务器。 您可以购买此服务，但您是一个免费的启动 SKU。 在[NuGet，](https://www.nuget.org/)您将找到有关为私有软件包安装自己的 NuGet 服务器的说明。
 
 ## <a name="step-6-tie-it-all-together"></a>第6步：把一切都绑在一起
 
-每次版本通过 QA 并获得批准进行部署时，都会创建包，并将 nuspec 和 nupkg 更新并部署到 NuGet 服务器。 还必须更新配置（上面的步骤 4）以符合新版本号。 然后，必须将其发送到拉取服务器并进行编译。
+每次版本通过 QA 并获得批准进行部署时，都会创建包，并将 nuspec 和 nupkg 更新并部署到 NuGet 服务器。 还必须更新配置（步骤 4）以与新版本号一致。 然后，必须将其发送到拉取服务器并进行编译。
 
 然后，依赖于该配置的 VM 将提取并安装更新。 每个更新都很简单 - 只需一两行 PowerShell。 对于 Azure DevOps，其中一些可以封装在生成任务中，这些任务可以链接在一起生成。 [本文](https://www.visualstudio.com/docs/alm-devops-feature-index#continuous-delivery)提供更多详细信息。 此[GitHub 存储库](https://github.com/Microsoft/vso-agent-tasks)详细介绍了可用的生成任务。
 
 ## <a name="related-articles"></a>相关文章
-* [Azure Automation DSC 概述](automation-dsc-overview.md)
-* [Azure 自动化 DSC cmdlet](https://docs.microsoft.com/powershell/module/azurerm.automation#automation)
+* [Azure 自动化 DSC 概述](automation-dsc-overview.md)
 * [载入计算机以便通过 Azure 自动化 DSC 进行管理](automation-dsc-onboarding.md)
 
 ## <a name="next-steps"></a>后续步骤

@@ -11,14 +11,16 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: 1c2db107302e4851641ef430db61ec9b29ee151f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c85a652cde840336c51e1a5b5459f9dc591e0be
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77187480"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414686"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>排查 SSIS Integration Runtime 中的包执行问题
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文描述了在执行 SSIS Integration Runtime 中的 SQL Server Integration Services (SSIS) 包时可能遇到的最常见错误， 并描述了潜在的原因，以及解决这些错误的操作。
 
@@ -144,7 +146,7 @@ ms.locfileid: "77187480"
 
 确保包中的 OLE DB 连接器使用的相应提供程序正确安装在自托管集成运行时计算机上。 更多详细信息可在[ADF 中配置自托管 IR 作为 Azure-SSIS IR 的代理中找到](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir)
 
-### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>错误消息："暂存任务错误：错误代码：2906，错误消息：包执行失败.，输出："操作错误消息"："错误：系统.IO.文件加载异常：无法加载文件或程序集'Microsoft.WindowsAzure.存储，版本=...区域性_中性，PublicKeyToken_31bf3856ad364e35' 或其依赖项之一。 找到的程序集清单定义与程序集引用不匹配...”
+### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>错误消息："暂存任务错误：错误代码：2906，错误消息：包执行失败.，输出：{"操作错误消息"："错误：系统.IO.fileLoadException：无法加载文件或程序集'Microsoft.WindowsAzure.存储，版本=...，区域性=中性，PublicKeyToken_31bf385ad364e35'或其依赖项之一。 找到的程序集清单定义与程序集引用不匹配...”
 
 一个可能的原因是自承载集成运行时未正确安装或升级。 建议下载并重新安装最新的自承载集成运行时。 有关更多详细信息，请参阅[创建和配置自承载集成运行时](create-self-hosted-integration-runtime.md#installation-best-practices)
 

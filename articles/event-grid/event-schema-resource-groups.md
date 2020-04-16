@@ -1,20 +1,20 @@
 ---
-title: Azure 事件网格资源组事件架构
+title: Azure 资源组作为事件网格源
 description: 介绍针对 Azure 事件网格中的资源组事件提供的属性
 services: event-grid
 author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 01/12/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 6cbfc06f380d7c4818ca82e858c23bb18849fb7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb52b54eb32a119a463b59e4d4f2ab30096886fa
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60561687"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393254"
 ---
-# <a name="azure-event-grid-event-schema-for-resource-groups"></a>资源组的 Azure 事件网格事件架构
+# <a name="azure-resource-group-as-an-event-grid-source"></a>Azure 资源组作为事件网格源
 
 本文提供资源组事件的属性和架构。有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
@@ -28,13 +28,14 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 
 事件主题是作为操作目标的资源的资源 ID。 若要筛选资源的事件，请在创建事件订阅时提供该资源 ID。  若要按资源类型筛选，请使用以下格式的值：`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
-有关示例脚本和教程的列表，请参阅[资源组事件源](event-sources.md#resource-groups)。
 
-## <a name="available-event-types"></a>可用事件类型
+## <a name="event-grid-event-schema"></a>事件网格事件架构
+
+### <a name="available-event-types"></a>可用事件类型
 
 资源组可从 Azure 资源管理器发出管理事件，例如，在创建 VM 或删除存储帐户时。
 
-| 事件类型 | 描述 |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.Resources.ResourceActionCancel | 在资源操作被取消时引发。 |
 | Microsoft.Resources.ResourceActionFailure | 在资源操作失败时引发。 |
@@ -46,7 +47,7 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 | Microsoft.Resources.ResourceWriteFailure | 在创建或更新操作失败时引发。 |
 | Microsoft.Resources.ResourceWriteSuccess | 在创建或更新操作成功时引发。 |
 
-## <a name="example-event"></a>示例事件
+### <a name="example-event"></a>示例事件
 
 以下示例展示了 ResourceWriteSuccess 事件的架构****。 具有不同 `eventType` 值的 ResourceWriteFailure 和 ResourceWriteCancel 事件会使用相同的模式********。
 
@@ -230,7 +231,7 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 }]
 ```
 
-## <a name="event-properties"></a>事件属性
+### <a name="event-properties"></a>事件属性
 
 事件具有以下顶级数据：
 
@@ -259,6 +260,16 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 | status | 字符串 | 操作状态。 |
 | subscriptionId | 字符串 | 资源的订阅 ID。 |
 | tenantId | 字符串 | 资源的租户 ID。 |
+
+## <a name="tutorials-and-how-tos"></a>教程和如何
+|标题  |说明  |
+|---------|---------|
+| [教程：通过 Azure 事件网格和逻辑应用监视虚拟机更改](monitor-virtual-machine-changes-event-grid-logic-app.md) | 逻辑应用可监视对虚拟机的更改并就这些更改发送电子邮件。 |
+| [Azure CLI：订阅资源组的事件](./scripts/event-grid-cli-resource-group.md)| 用于订阅资源组的事件的示例脚本。 它将事件发送到 WebHook。 |
+| [Azure CLI：订阅资源组的事件并筛选资源](./scripts/event-grid-cli-resource-group-filter.md) | 用于订阅资源组的事件并筛选一个资源的事件的示例脚本。 |
+| [PowerShell：订阅资源组的事件](./scripts/event-grid-powershell-resource-group.md) | 用于订阅资源组的事件的示例脚本。 它将事件发送到 WebHook。 |
+| [PowerShell：订阅资源组的事件并筛选资源](./scripts/event-grid-powershell-resource-group-filter.md) | 用于订阅资源组的事件并筛选一个资源的事件的示例脚本。 |
+| [资源管理器模板：资源订阅](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-resource-events-to-webhook) | 订阅 Azure 订阅的事件或资源组。 它将事件发送到 WebHook。 |
 
 ## <a name="next-steps"></a>后续步骤
 

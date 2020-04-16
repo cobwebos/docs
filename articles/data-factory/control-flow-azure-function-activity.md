@@ -11,15 +11,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.openlocfilehash: ffb610634399594788afcb9b600ba00c6803dfdd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ee2e59e794cf34a8fd5043a56867a81c2537f1ae
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77207019"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415309"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Azure 函数活动
-
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 通过 Azure 函数活动可以在数据工厂管道中运行 [Azure Functions](../azure-functions/functions-overview.md)。 若要运行 Azure 函数，需要创建链接服务连接以及指定计划执行的 Azure 函数的活动。
 
 有关此功能的 8 分钟简介和演示，请观看以下视频：
@@ -41,10 +41,10 @@ Azure 函数的返回类型必须是有效的 `JObject`。 （请记住[，JArra
 
 | **属性**  | **说明** | **允许的值** | **必需** |
 | --- | --- | --- | --- |
-| name  | 管道中活动的名称  | String | 是 |
-| type  | 活动的类型为“AzureFunctionActivity” | String | 是 |
+| name  | 管道中活动的名称  | 字符串 | 是 |
+| type  | 活动的类型为“AzureFunctionActivity” | 字符串 | 是 |
 | 链接服务 | 相应 Azure 函数应用的 Azure 函数链接服务  | 链接服务引用 | 是 |
-| 函数名称  | 此活动在 Azure 函数应用中调用的函数的名称 | String | 是 |
+| 函数名称  | 此活动在 Azure 函数应用中调用的函数的名称 | 字符串 | 是 |
 | method  | 函数调用的 Rest API 方法 | 字符串支持类型："GET"、"POST"、"PUT"   | 是 |
 | 标头的值开始缓存响应  | 发送到请求的标头。 例如，若要在请求中设置语言和类型："headers": { "Accept-Language": "en-us", "Content-Type": "application/json" } | 字符串（或带有 resultType 字符串的表达式） | 否 |
 | body  | 随请求一起发送到函数 API 方法的正文  | 字符串（或带有 resultType 字符串的表达式）或对象。   | PUT/POST 方法所必需 |

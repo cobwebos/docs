@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: 243fea8fae071368a91bf482190442f15c372fc1
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 9f95677211a89c1bb2a18076741dec08e76c5d70
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81271295"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390396"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>排查 Azure 到 Azure VM 复制错误
 
@@ -404,21 +404,20 @@ Site Recovery 当前要求源区域资源组和虚拟机应位于同一位置。
 
 ### <a name="issue-1-vm-is-attached-to-a-network-thats-already-mapped-to-a-target-network"></a>问题 1：VM 连接到已映射到目标网络的网络
 
-如果源 VM 是虚拟网络的一部分，并且来自同一虚拟网络的另一个 VM 已与目标资源组中的网络映射，则默认情况下网络选择下拉列表框不可用（显示为灰色）。
+在灾难恢复配置期间，如果源 VM 是虚拟网络的一部分，并且来自同一虚拟网络的另一个 VM 已与目标资源组中的网络映射，则默认情况下网络选择下拉列表框不可用（显示为灰色）。
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png" alt-text="网络选择列表不可用。":::
 
 ### <a name="issue-2-you-previously-protected-the-vm-and-then-you-disabled-the-replication"></a>问题 2：您以前保护 VM，然后禁用复制
 
-禁用 VM 复制不会删除网络映射。 必须从保护 VM 的恢复服务保管库中删除映射。 转到**恢复服务保管库** > **站点恢复基础结构** > **网络映射**。
+禁用 VM 复制不会删除网络映射。 必须从保护 VM 的恢复服务保管库中删除映射。 选择**恢复服务保管库**，然后转到**为** > **Azure 虚拟机** > **网络映射**管理**站点恢复基础结构** > 。
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="删除网络映射。":::
 
-在灾难恢复设置期间配置的目标网络可以在初始设置后以及 VM 保护后更改：
+在灾难恢复设置期间配置的目标网络可以在初始设置后以及 VM 保护后更改。 要**修改网络映射**，请选择网络名称：
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png" alt-text="修改网络映射。":::
 
-更改网络映射会影响使用同一网络映射的所有受保护 VM。
 
 ## <a name="com-or-vss-error-code-151025"></a>COM+ 或 VSS（错误代码 151025）
 

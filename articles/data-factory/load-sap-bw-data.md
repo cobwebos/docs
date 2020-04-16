@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.openlocfilehash: 971871c28bd1b38b134c04b0334fbe99d1d655c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 96b23696164514ad2f16de72f0f76aa237ffce2e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440150"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415842"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文介绍如何使用 Azure 数据工厂通过 Open Hub 将 SAP Business Warehouse (BW) 中的数据复制到 Azure Data Lake Storage Gen2。 可以使用类似的过程将数据复制到其他[受支持的接收器数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
 
@@ -68,7 +69,7 @@ ms.locfileid: "75440150"
 
    3. 选择“测试连接”以验证设置，然后选择“完成”。********
 
-   4. 现已创建新的连接。 选择“下一步”。
+   4. 现已创建新的连接。 选择“**下一页**”。
 
 5. 在“选择 Open Hub 目标”页上，浏览 SAP BW 中可用的 Open Hub 目标。**** 选择要从中复制数据的 OHD，然后选择“下一步”。****
 
@@ -191,7 +192,7 @@ ms.locfileid: "75440150"
 
       3. 添加“创建 Blob”操作。**** 对于“文件夹路径”和“Blob 名称”，请使用前面在 HighWatermarkBlobContainer+HighWatermarkBlobDirectory** 和 HighWatermarkBlobName** 中配置的相同值。********
 
-      4. 选择“保存”。**** 然后，复制“HTTP POST URL”的值以便在数据工厂管道中使用。****
+      4. 选择“保存”。  然后，复制“HTTP POST URL”的值以便在数据工厂管道中使用。****
 
 4. 提供数据工厂管道参数后，选择 **"调试** > **完成"** 以调用运行以验证配置。 或者，选择“发布”以发布所有更改，然后选择“添加触发器”以执行运行。********
 

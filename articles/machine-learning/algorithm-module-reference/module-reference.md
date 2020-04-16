@@ -9,12 +9,12 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 02/22/2020
-ms.openlocfilehash: c24c7ce1d47a4734d79d7e17e9fb4b3a2d4d70e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fcfc7c15f94d7b569629e53534d731126172260
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064143"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399063"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Azure 机器学习设计器的算法&模块参考（预览）
 
@@ -24,7 +24,7 @@ ms.locfileid: "80064143"
 
 有关选择算法的帮助，请参阅 
 * [如何选择算法](../how-to-select-algorithms.md)
-* [Azure 机器学习算法备忘表](../../synapse-analytics/sql-data-warehouse/cheat-sheet.md)
+* [Azure 机器学习算法备忘表](../algorithm-cheat-sheet.md)
 
 > [!TIP]
 > 在设计器中的任何管道中，都可以获取有关特定模块的信息。 选择该模块，然后在“快速帮助”**** 窗格中选择“更多帮助”**** 链接。
@@ -32,16 +32,16 @@ ms.locfileid: "80064143"
 ## <a name="data-preparation-modules"></a>数据准备模块
 
 
-| 功能 | 描述 | 模块 |
+| 功能 | 说明 | 模块 |
 | --- |--- | --- |
 | 数据输入和输出 | 将数据从云源移动到管道。 在运行管道时将结果或中间数据写入到 Azure 存储、SQL 数据库或 Hive，或者使用云存储空间在管道之间交换数据。  | [手动输入数据](enter-data-manually.md) <br/> [导出数据](export-data.md) <br/> [导入数据](import-data.md) |
-| 数据转换 | 对数据执行机器学习独有的操作，例如将数据规范化或装箱、降维以及转换为各种文件格式。| [添加列](add-columns.md) <br/> [添加行](add-rows.md) <br/> [应用数学运算](apply-math-operation.md) <br/> [应用 SQL 转换](apply-sql-transformation.md) <br/> [清理缺失数据](clean-missing-data.md) <br/> [剪切值](clip-values.md) <br/> [转换为 CSV](convert-to-csv.md) <br/> [转换为数据集](convert-to-dataset.md) <br/> [转换为指示器值](convert-to-indicator-values.md) <br/> [编辑元数据](edit-metadata.md) <br/> [联接数据](join-data.md) <br/> [规范化数据](normalize-data.md) <br/> [分区和示例](partition-and-sample.md)  <br/> [删除重复的行](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [选择列转换](select-columns-transform.md) <br/> [在数据集中选择列](select-columns-in-dataset.md) <br/> [拆分数据](split-data.md) |
+| 数据转换 | 对数据执行机器学习独有的操作，例如将数据规范化或装箱、降维以及转换为各种文件格式。| [添加列](add-columns.md) <br/> [添加行](add-rows.md) <br/> [应用数学运算](apply-math-operation.md) <br/> [应用 SQL 转换](apply-sql-transformation.md) <br/> [清理缺失的数据](clean-missing-data.md) <br/> [剪切值](clip-values.md) <br/> [转换为 CSV](convert-to-csv.md) <br/> [转换为数据集](convert-to-dataset.md) <br/> [转换为指示器值](convert-to-indicator-values.md) <br/> [编辑元数据](edit-metadata.md) <br/> [联接数据](join-data.md) <br/> [规范化数据](normalize-data.md) <br/> [分区和示例](partition-and-sample.md)  <br/> [删除重复的行](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [选择列转换](select-columns-transform.md) <br/> [在数据集中选择列](select-columns-in-dataset.md) <br/> [拆分数据](split-data.md) |
 | 功能选择 | 选择用于构建分析模型的相关有用特征的子集。 | [基于筛选器的特征选择](filter-based-feature-selection.md) <br/> [排列特征重要性](permutation-feature-importance.md) |
 | 统计函数 | 提供与数据科学相关的各种统计方法。 | [汇总数据](summarize-data.md)|
 
 ## <a name="machine-learning-algorithms"></a>机器学习算法
 
-| 功能 | 描述 | 模块 |
+| 功能 | 说明 | 模块 |
 | --- |--- | --- |
 | 回归 | 预测值。 | [提升决策树回归](boosted-decision-tree-regression.md) <br/> [决策林回归](decision-forest-regression.md) <br/> [线性回归](linear-regression.md)  <br/> [神经网络回归](neural-network-regression.md)  <br/> |
 | 群集 | 将数据分到一组。| [K 平均值聚类](k-means-clustering.md)
@@ -49,7 +49,7 @@ ms.locfileid: "80064143"
 
 ## <a name="modules-for-building-and-evaluating-models"></a>用于构建和评估模型的模块
 
-| 功能 | 描述 | 模块 |
+| 功能 | 说明 | 模块 |
 | --- |--- | --- |
 | 模型定型 | 通过算法运行数据。 |  [训练聚类模型](train-clustering-model.md) <br/> [火车模型](train-model.md)  <br/> [优化模型超参数](tune-model-hyperparameters.md) |
 | 模型评分和评估 | 度量已训练模型的准确度。 | [应用转换](apply-transformation.md) <br/> [将数据分配给群集](assign-data-to-clusters.md) <br/> [交叉验证模型](cross-validate-model.md) <br/> [评估模型](evaluate-model.md) <br/> [评分模型](score-model.md) |
@@ -60,7 +60,7 @@ ms.locfileid: "80064143"
 | 异常检测 | 构建异常检测模型。 | [基于 PCA 的异常检测](pca-based-anomaly-detection.md) <br/> [训练异常检测模型](train-anomaly-detection-model.md) |
 
 
-## <a name="error-messages"></a>错误消息
+## <a name="error-messages"></a>Error messages
 
 了解使用 Azure 机器学习设计器中的模块可能遇到的[错误消息和异常代码](designer-error-codes.md)。
 

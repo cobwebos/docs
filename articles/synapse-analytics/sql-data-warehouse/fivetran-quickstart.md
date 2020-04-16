@@ -11,12 +11,12 @@ ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: b4742f48ee9ad0db60e21dd53c5c0f447c1ded67
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8f164232a3b1782511758f93a9e9b8d17d3714d5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348917"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414267"
 ---
 # <a name="quickstart-fivetran-with-data-warehouse"></a>快速入门：带有数据仓库的五个tran 
 
@@ -26,7 +26,7 @@ ms.locfileid: "80348917"
 
 1. 查找用于连接到数据仓库的完全限定的服务器名称和数据库名称。
     
-    如果您需要查找此信息的帮助，请参阅[连接到数据仓库](sql-data-warehouse-connect-overview.md)。
+    如果您需要查找此信息的帮助，请参阅[连接到数据仓库](../sql/connect-overview.md)。
 
 2. 在安装向导中，选择是要直接连接数据库还是通过 SSH 隧道进行连接。
 
@@ -75,9 +75,9 @@ ms.locfileid: "80348917"
     有关详细信息，请阅读[内存和并发限制](memory-concurrency-limits.md)和[资源类](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md#ways-to-allocate-more-memory)。
 
 
-## <a name="sign-in-to-fivetran"></a>登录到 Fivetran
+## <a name="connect-from-fivetran"></a>从五通连接
 
-要登录到 Fivetran，请输入用于访问数据仓库的凭据： 
+要从 Fivetran 帐户连接到数据仓库，请输入用于访问数据仓库的凭据： 
 
 * 主机（服务器名称）。
 * 端口。

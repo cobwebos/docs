@@ -13,19 +13,22 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: sawinark
-ms.openlocfilehash: 063728c03c689c2eafec889bdee8276772ae685a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95214d797afcef97d974eeba2b4aea941009e1f5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75444038"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413128"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用存储过程活动运行 SSIS 包
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 本文介绍如何使用存储过程活动在 Azure 数据工厂管道中运行 SSIS 包。 
 
 ## <a name="prerequisites"></a>先决条件
 
-### <a name="azure-sql-database"></a>Azure SQL 数据库 
+### <a name="azure-sql-database"></a>Azure SQL Database 
 本文中的演练使用托管 SSIS 目录的 Azure SQL 数据库。 还可使用 Azure SQL 数据库托管实例。
 
 ## <a name="create-an-azure-ssis-integration-runtime"></a>创建 Azure-SSIS 集成运行时
@@ -59,7 +62,7 @@ ms.locfileid: "75444038"
 4. 选择“V2”**** 作为“版本”****。
 5. 选择数据工厂的**位置**。 下拉列表中仅显示数据工厂支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库等）和计算资源（HDInsight 等）可以位于其他位置。
 6. 选择“固定到仪表板”****。     
-7. 单击 **“创建”**。
+7. 单击“创建”。 
 8. 在仪表板上，会看到状态为“正在部署数据工厂”的以下磁贴。**** 
 
      ![“正在部署数据工厂”磁贴](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
@@ -94,7 +97,7 @@ ms.locfileid: "75444038"
         ![Azure SQL 数据库链接服务](./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-settings.png)
 5. 在属性窗口中，从**SQL 帐户**选项卡切换到"**存储过程**"选项卡，并执行以下步骤： 
 
-    1. 选择 **"编辑**"。 
+    1. 选择“编辑”  。 
     2. 对于“存储过程名称”**** 字段，输入 `sp_executesql`。 
     3. 在“存储过程参数”**** 部分中单击“+ 新建”****。 
     4. 对于参数的“名称”****，输入“stmt”****。 

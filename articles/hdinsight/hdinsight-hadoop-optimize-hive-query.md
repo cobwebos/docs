@@ -5,29 +5,29 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: 144d51d08a61526ec0f183a63e1fdf5658136293
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/14/2020
+ms.openlocfilehash: 4955df718dcc8f169232052979ccf4a636c3be80
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272326"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390293"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>优化 Azure HDInsight 中的 Apache Hive 查询
 
-在 Azure HDInsight 中，有多种群集类型和技术可以运行 Apache Hive 查询。 创建 HDInsight 群集时，选择适当的群集类型有助于根据工作负荷的需求优化性能。
+在 Azure HDInsight 中，有多种群集类型和技术可以运行 Apache Hive 查询。 选择适当的群集类型，以帮助优化性能以满足工作负载需求。
 
-例如，选择“交互式查询”**** 群集类型可以优化即席的交互式查询。 选择 Apache **Hadoop** 群集类型可以优化用作批处理的 Hive 查询。 **Spark** 和 **HBase** 群集类型也可以运行 Hive 查询。 有关针对不同 HDInsight 群集类型运行 Hive 查询的详细信息，请参阅[ Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？](hadoop/hdinsight-use-hive.md)。
+例如，选择**交互式查询**群集类型以优化`ad hoc`交互式查询。 选择 Apache **Hadoop** 群集类型可以优化用作批处理的 Hive 查询。 **Spark** 和 **HBase** 群集类型也可以运行 Hive 查询。 有关针对不同 HDInsight 群集类型运行 Hive 查询的详细信息，请参阅[ Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？](hadoop/hdinsight-use-hive.md)。
 
 默认情况下，Hadoop 群集类型的 HDInsight 群集未针对性能进行优化。 本文介绍可应用于查询的一些最常见 Hive 性能优化方法。
 
 ## <a name="scale-out-worker-nodes"></a>向外缩放辅助节点
 
-增加 HDInsight 群集中的工作节点数目可以利用更多的映射器和化简器来并行运行工作。 在 HDInsight 中，可通过两种方式增加扩大的数目：
+增加 HDInsight 群集中的工作节点数，使工作能够使用更多的映射器和减少器并行运行。 在 HDInsight 中，可通过两种方式增加扩大的数目：
 
-* 创建群集时，可以使用 Azure 门户、Azure PowerShell 或命令行接口指定工作节点的数目。  有关详细信息，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。 以下屏幕截图显示了 Azure 门户上的工作节点配置：
+* 创建群集时，可以使用 Azure 门户、Azure PowerShell 或命令行界面指定辅助节点的数量。  有关详细信息，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。 以下屏幕截图显示了 Azure 门户上的工作节点配置：
   
     ![Azure 门户群集大小节点](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration.png "scaleout_1")
 
@@ -45,10 +45,10 @@ ms.locfileid: "79272326"
 
 Tez 速度更快，因为：
 
-* **作为 MapReduce 引擎中的单个作业执行有向无环图 (DAG)**。 DAG 要求每组映射器后接一组化简器。 这会导致针对每个 Hive 查询运行多个 MapReduce 作业。 Tez 没有这样的约束，可以将复杂的 DAG 作为一个作业来处理，从而最大限度地减少作业启动开销。
+* **作为 MapReduce 引擎中的单个作业执行有向无环图 (DAG)**。 DAG 要求每组映射器后接一组化简器。 此要求会导致为每个 Hive 查询拆分多个 MapReduce 作业。 Tez 没有这样的约束，可以将复杂的 DAG 作为一个作业，最大限度地减少作业启动开销。
 * **避免不必要的写入**。 多个作业用于处理 MapReduce 引擎中的同一 Hive 查询。 每个 MapReduce 作业的输出将作为中间数据写入 HDFS。 由于 Tez 将每个 Hive 查询的作业数降至最低，因此它能够避免不必要的写入。
 * **最大限度地降低启动延迟**。 Tez 可以减少需要启动的映射器数目，同时还能提高优化吞吐量，因此，更有利于最大限度地降低启动延迟。
-* **重复使用容器**。 Tez 会尽可能地重复使用容器，以确保降低由于启动容器而产生的延迟。
+* **重复使用容器**。 只要有可能，Tez 将重用容器，以确保减少启动容器的延迟。
 * **连续优化技术**。 传统上，优化是在编译阶段完成的。 但是，这可以提供有关输入的详细信息，以便在运行时更好地进行优化。 Tez 使用连续优化技术，从而可以在运行时阶段进一步优化计划。
 
 有关这些概念的详细信息，请参阅 [Apache TEZ](https://tez.apache.org/)。
@@ -69,8 +69,8 @@ Hive 分区的实现方法是将原始数据重新组织成新目录。 每个�
 
 一些分区注意事项：
 
-* **不要分区不足** - 根据仅包含少量值的列进行分区可能会导致创建很少的分区。 例如，根据性别（男性和女性）分区只会创建两个分区，从而最多只会将延迟降低一半。
-* **不要创建过多分区** - 另一种极端情况是，根据包含唯一值的列（例如，userid）创建分区会导致创建多个分区。 创建过多分区会给群集 namenode 带来很大压力，因为它必须处理大量的目录。
+* **不要在分区下**- 对只有几个值的列进行分区可能会导致分区数。 例如，性别分区仅创建两个分区（男性分区和分区），因此将延迟最多减少一半。
+* **不要过度分区**- 另一极端，在具有唯一值（例如，userid）的列上创建分区会导致多个分区。 创建过多分区会给群集 namenode 带来很大压力，因为它必须处理大量的目录。
 * **避免数据偏斜** - 明智选择分区键，以便所有分区的大小均等。 例如，按“州”列分区可能会导致数据分布出现偏斜。** 因为加利福尼亚州的人口几乎是佛蒙特州的 30 倍，分区大小可能会出现偏差，性能可能有极大的差异。
 
 若要创建分区表，请使用 *Partitioned By* 子句：
@@ -198,5 +198,5 @@ set hive.vectorized.execution.enabled = true;
 在本文中，已学习了几种常见的 Hive 查询优化方法。 若要了解详细信息，请参阅以下文章：
 
 * [使用 HDInsight 中的 Apache Hive](hadoop/hdinsight-use-hive.md)
-* [使用 HDInsight 中的交互式查询分析航班延误数据](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
+* [使用 HDInsight 中的交互式查询分析航班延误数据](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 * [使用 HDInsight 中的 Apache Hive 分析 Twitter 数据](hdinsight-analyze-twitter-data-linux.md)

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a75b71d43b072d366ef2fcb15bf4c901680d48fb
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: badd8ba676ef25c33a5034bb04d616faeb4ef1b0
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383214"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392103"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>将 Azure Automation State Configuration 报表数据转发到 Azure Monitor 日志
 
@@ -87,6 +87,7 @@ Azure Monitor 日志可以更直观地显示 Automation State Configuration 数�
 | where OperationName contains 'DSCNodeStatusData'
 | where ResultType != 'Compliant'
 ```
+
 筛选详细信息：
 
 * 筛选`DscNodeStatusData`以返回每个状态配置节点的操作。
@@ -104,7 +105,7 @@ Azure Monitor 日志可以更直观地显示 Automation State Configuration 数�
 1. 在“Log Analytics 工作区概述”页中，单击“日志”****。
 1. 通过在查询字段中键入以下搜索，为警报创建日志搜索查询：`Type=AzureDiagnostics Category='DscNodeStatus' NodeName_s='DSCTEST1' OperationName='DscNodeStatusData' ResultType='Failed'`
 
-   如果已设置在工作区中收集来自多个自动化帐户或订阅的日志，则可以按照订阅或自动化帐户来为警报分组。 在搜索`Resource`**DscNode 状态数据**记录时从字段中派生自动化帐户名称。
+   如果已设置在工作区中收集来自多个自动化帐户或订阅的日志，则可以按照订阅或自动化帐户来为警报分组。 从搜索`Resource``DscNodeStatusData`记录中的字段派生自动化帐户名称。
 1. 要打开"**创建规则"** 屏幕，请单击页面顶部**的新警报规则**。 
 
 有关警报配置选项的详细信息，请参阅[创建警报规则](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)。
@@ -128,46 +129,46 @@ Azure Monitor 日志可以更直观地显示 Automation State Configuration 数�
 
 Azure 自动化诊断在 Azure 监视器日志中创建两类记录：
 
-* 节点状态数据 （**DscNode 状态数据**）
-* 资源状态数据 （**Dsc 资源状态数据**）
+* 节点状态数据`DscNodeStatusData`（ ）
+* 资源状态数据`DscResourceStatusData`（ ）
 
 ### <a name="dscnodestatusdata"></a>DscNodeStatusData
 
-| Property | 描述 |
+| properties | 说明 |
 | --- | --- |
 | TimeGenerated |符合性检查运行的日期和时间。 |
-| OperationName |DscNode 状态数据。 |
-| ResultType |节点是否符合。 |
+| OperationName |`DscNodeStatusData`. |
+| ResultType |指示节点是否合规的值。 |
 | NodeName_s |托管节点的名称。 |
-| NodeComplianceStatus_s |节点是否符合。 |
-| DscReportStatus |符合性检查是否已成功运行。 |
-| ConfigurationMode | 如何将配置应用到节点。 可能的值包括： <ul><li>`ApplyOnly`：DSC 应用配置，除非将新配置推送到目标节点或从服务器提取新配置时，否则不会执行任何进一步操作。 首次应用新配置后，DSC 将不检查以前配置状态的偏离。 DSC 尝试应用配置，直到`ApplyOnly`该配置在值生效之前成功。 </li><li>`ApplyAndMonitor`：默认值。 LCM 将应用任意新配置。 首次应用新配置后，如果目标节点偏离所需状态，DSC 将在日志中报告差异。 DSC 尝试应用配置，直到`ApplyAndMonitor`该配置在值生效之前成功。</li><li>`ApplyAndAutoCorrect`：DSC 应用任何新配置。 首次应用新配置后，如果目标节点偏离所需状态，DSC 将在日志中报告差异，然后重新应用当前配置。</li></ul> |
+| NodeComplianceStatus_s |指定节点是否符合的状态值。 |
+| DscReportStatus |状态值，指示合规性检查是否成功运行。 |
+| ConfigurationMode | 用于将配置应用于节点的模式。 可能的值包括： <ul><li>`ApplyOnly`：DSC 应用配置，除非将新配置推送到目标节点或从服务器提取新配置时，否则不会执行任何进一步操作。 首次应用新配置后，DSC 将不检查以前配置状态的偏离。 DSC 尝试应用配置，直到`ApplyOnly`该配置在值生效之前成功。 </li><li>`ApplyAndMonitor`：默认值。 LCM 将应用任意新配置。 首次应用新配置后，如果目标节点偏离所需状态，DSC 将在日志中报告差异。 DSC 尝试应用配置，直到`ApplyAndMonitor`该配置在值生效之前成功。</li><li>`ApplyAndAutoCorrect`：DSC 应用任何新配置。 首次应用新配置后，如果目标节点偏离所需状态，DSC 将在日志中报告差异，然后重新应用当前配置。</li></ul> |
 | HostName_s | 托管节点的名称。 |
 | IPAddress | 托管节点的 IPv4 地址。 |
-| 类别 | DscNode 状态。 |
+| 类别 | `DscNodeStatus`. |
 | 资源 | Azure 自动化帐户的名称。 |
-| Tenant_g | GUID，用于为 Caller 标识租户。 |
-| NodeId_g |标识托管节点的 GUID。 |
-| DscReportId_g |标识报表的 GUID。 |
-| LastSeenTime_t |上一次查看报表的日期和时间。 |
-| ReportStartTime_t |报表开始的日期和时间。 |
-| ReportEndTime_t |报表完成的日期和时间。 |
-| NumberOfResources_d |在应用于节点的配置中调用的 DSC 资源数。 |
-| SourceSystem | Azure Monitor 日志收集数据的方式。 Azure 诊断始终为"Azure"。 |
-| ResourceId |Azure 自动化帐户的标识符。 |
-| ResultDescription | 此操作的说明。 |
+| Tenant_g | 标识调用方的租户的 GUID。 |
+| NodeId_g | 标识托管节点的 GUID。 |
+| DscReportId_g | 标识报表的 GUID。 |
+| LastSeenTime_t | 上一次查看报表的日期和时间。 |
+| ReportStartTime_t | 报表开始的日期和时间。 |
+| ReportEndTime_t | 报表完成的日期和时间。 |
+| NumberOfResources_d | 在应用于节点的配置中调用的 DSC 资源数。 |
+| SourceSystem | 源系统标识 Azure 监视器日志如何收集数据。 始终`Azure`用于 Azure 诊断。 |
+| ResourceId |Azure 自动化帐户的资源标识符。 |
+| ResultDescription | 此操作的资源描述。 |
 | SubscriptionId | 自动化帐户的 Azure 订阅 ID （GUID）。 |
 | ResourceGroup | 自动化帐户的资源组的名称。 |
 | ResourceProvider | 微软。自动化。 |
 | ResourceType | 自动化帐户。 |
-| CorrelationId |GUID，它是合规性报告的相关标识符。 |
+| CorrelationId | 作为合规性报告的相关标识符的 GUID。 |
 
 ### <a name="dscresourcestatusdata"></a>DscResourceStatusData
 
-| Property | 描述 |
+| properties | 说明 |
 | --- | --- |
 | TimeGenerated |符合性检查运行的日期和时间。 |
-| OperationName |Dsc资源状态数据。|
+| OperationName |`DscResourceStatusData`.|
 | ResultType |资源是否符合。 |
 | NodeName_s |托管节点的名称。 |
 | 类别 | DscNode 状态。 |
@@ -185,7 +186,7 @@ Azure 自动化诊断在 Azure 监视器日志中创建两类记录：
 | ErrorMessage_s |资源失败时的错误消息。 |
 | DscResourceDuration_d |DSC 资源运行的时间（以秒为单位）。 |
 | SourceSystem | Azure Monitor 日志收集数据的方式。 始终`Azure`用于 Azure 诊断。 |
-| ResourceId |指定 Azure 自动化帐户。 |
+| ResourceId |Azure 自动化帐户的标识符。 |
 | ResultDescription | 此操作的说明。 |
 | SubscriptionId | 自动化帐户的 Azure 订阅 ID （GUID）。 |
 | ResourceGroup | 自动化帐户的资源组的名称。 |

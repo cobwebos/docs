@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/11/2018
+ms.date: 04/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae3ace24d6f33702c15a364b913f841d90fd8872
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: d1246b5b980f60c2f3e65aa5b32a7d79dd6efc7d
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654197"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407162"
 ---
 # <a name="password-management-frequently-asked-questions"></a>密码管理常见问题
 
@@ -235,7 +235,7 @@ ms.locfileid: "80654197"
   >
 * **问：是否可以使用一个 API 来访问密码重置数据或注册报告数据？**
 
-  > **答：** 是的。 若要了解如何才能访问密码重置报告数据流，请参阅[了解如何以编程方式访问密码重置报告事件](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent)。
+  > **答：** 是的。 要了解如何访问密码重置报告数据，请参阅[Azure 日志分析 REST API 参考](/rest/api/loganalytics/)。
   >
   >
 

@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 04/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: c3b06289ba6ce98d4307a8255981ecdba069fdfa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 021ac5fccf4d694895ab9941bd46dd2388f49af9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76905409"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407461"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>将事件中心事件源添加到时序见解环境
 
@@ -50,11 +50,11 @@ ms.locfileid: "76905409"
 
 1. 在“使用者组”页上，输入一个新的唯一值作为**名称******。  创建新的事件源时，请在时序见解环境中使用此相同名称。
 
-1. 选择 **“创建”**。
+1. 选择“创建”  。
 
 ## <a name="add-a-new-event-source"></a>添加新的事件源
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 查找现有时序见解环境。 在左侧菜单中选择“所有资源”，然后选择时序见解环境****。
 
@@ -76,7 +76,7 @@ ms.locfileid: "76905409"
 
        [![订阅和事件中心详细信息](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png#lightbox)
 
-       | properties | 描述 |
+       | properties | 说明 |
        | --- | --- |
        | 订阅 | 所需的事件中心实例和命名空间所属的订阅。 |
        | 事件中心命名空间 | 所需的事件中心实例所属的事件中心命名空间。 |
@@ -88,7 +88,7 @@ ms.locfileid: "76905409"
 
        下表介绍“手动提供事件中心设置”选项**** 所需的属性：
  
-       | properties | 描述 |
+       | properties | 说明 |
        | --- | --- |
        | 订阅 ID | 所需的事件中心实例和命名空间所属的订阅。 |
        | 资源组 | 所需的事件中心实例和命名空间所属的资源组。 |
@@ -99,7 +99,7 @@ ms.locfileid: "76905409"
 
     * 这两个选项共享以下配置选项：
 
-       | properties | 描述 |
+       | properties | 说明 |
        | --- | --- |
        | 事件中心使用者组 | 从事件中心读取事件的使用者组。 强烈建议为事件源使用专用的使用者组。 |
        | 事件序列化格式 | 目前，JSON 是唯一可用的序列化格式。 事件消息必须采用此格式，否则将无法读取任何数据。 |
@@ -107,7 +107,7 @@ ms.locfileid: "76905409"
 
 1. 添加已添加到事件中心的专用时序见解使用者组名称。
 
-1. 选择 **“创建”**。
+1. 选择“创建”  。
 
    创建事件源以后，时序见解就会自动开始将数据流式传输到环境中。
 

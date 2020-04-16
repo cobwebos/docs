@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
-ms.openlocfilehash: d0c60f5738bf634f9d43d6d4f0d78c1239b7ff3c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a3d2234a140d1fb2eede50e3fe2eef5575da648
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75650690"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391694"
 ---
 # <a name="view-definition-artifact-in-azure-managed-applications"></a>查看 Azure 托管应用程序中的定义项目
 
@@ -20,7 +20,7 @@ ms.locfileid: "75650690"
 
 ## <a name="view-definition-artifact"></a>视图定义项目
 
-视图定义项目必须命名为 **viewDefinition.json**，并放置在用于创建托管应用程序定义的 .zip 包中 **createUiDefinition.json** 和 **mainTemplate.json** 所在的同一级别。 若要了解如何创建 .zip 包和发布托管应用程序定义，请参阅[发布 Azure 托管应用程序定义](publish-managed-app-definition-quickstart.md)
+视图定义项目必须命名为 **viewDefinition.json**，并放置在用于创建托管应用程序定义的 .zip 包中 **createUiDefinition.json** 和 **mainTemplate.json** 所在的同一级别。 若要了解如何创建 .zip 包和发布托管应用程序定义，请参阅[发布 Azure 托管应用程序定义](publish-service-catalog-app.md)
 
 ## <a name="view-definition-schema"></a>视图定义架构
 
@@ -125,7 +125,7 @@ ms.locfileid: "75650690"
 }
 ```
 
-|properties|必选|描述|
+|properties|必选|说明|
 |---------|---------|---------|
 |标头的值开始缓存响应|否|概述页的标题。|
 |description|否|托管应用程序的说明。|
@@ -164,7 +164,7 @@ ms.locfileid: "75650690"
 }
 ```
 
-|properties|必选|描述|
+|properties|必选|说明|
 |---------|---------|---------|
 |displayName|否|视图的显示标题。|
 |版本|否|用于呈现视图的平台版本。|
@@ -172,7 +172,7 @@ ms.locfileid: "75650690"
 
 ### <a name="chart"></a>图表
 
-|properties|必选|描述|
+|properties|必选|说明|
 |---------|---------|---------|
 |displayName|是|图表的显示标题。|
 |chartType|否|用于此图表的可视化效果。 默认使用折线图。 支持的图表类型：`Bar, Line, Area, Scatter`。|
@@ -180,7 +180,7 @@ ms.locfileid: "75650690"
 
 ### <a name="metric"></a>指标
 
-|properties|必选|描述|
+|properties|必选|说明|
 |---------|---------|---------|
 |name|是|指标的名称。|
 |aggregationType|是|用于此指标的聚合类型。 支持的聚合类型：`none, sum, min, max, avg, unique, percentile, count`|
@@ -224,7 +224,7 @@ ms.locfileid: "75650690"
 }
 ```
 
-|properties|必选|描述|
+|properties|必选|说明|
 |---------|---------|---------|
 |displayName|是|视图的显示标题。 标题对于 **viewDefinition.json** 中的每个 CustomResources 视图应该**唯一**。|
 |版本|否|用于呈现视图的平台版本。|
@@ -253,10 +253,10 @@ ms.locfileid: "75650690"
 }
 ```
 
-|properties|必选|描述|
+|properties|必选|说明|
 |---------|---------|---------|
 |displayName|是|命令按钮的显示名称。|
-|路径|是|自定义提供程序操作名称。 该操作必须在 **mainTemplate.json** 中定义。|
+|path|是|自定义提供程序操作名称。 该操作必须在 **mainTemplate.json** 中定义。|
 |icon|否|命令按钮的图标。 示例图标列表在 [JSON 架构](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)中定义。|
 |createUIDefinition|否|为命令创建 UI 定义架构。 有关创建 UI 定义的简介，请参阅 [CreateUiDefinition 入门](create-uidefinition-overview.md)。|
 
@@ -280,7 +280,7 @@ ms.locfileid: "75650690"
 }
 ```
 
-|properties|必选|描述|
+|properties|必选|说明|
 |---------|---------|---------|
 |displayName|是|视图的显示标题。 标题对于 **viewDefinition.json** 中的每个 Associations 视图应该**唯一**。|
 |版本|否|用于呈现视图的平台版本。|

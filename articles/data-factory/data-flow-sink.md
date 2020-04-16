@@ -9,14 +9,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: 8941c097fbb2d05c3a28be87d216b7a2679ebc68
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: a728ec6f261b82d563aeb4a8f5c98bbd546f4400
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804888"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413216"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>映射数据流的接收器转换
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 转换数据后，可以将数据沉入目标数据集。 每个数据流至少需要一个接收器转换，但您可以根据需要写入尽可能多的接收器来完成转换流。 要写入其他接收器，请通过新分支和条件拆分创建新流。
 
@@ -30,7 +32,7 @@ ms.locfileid: "80804888"
 * [Azure 数据存储湖存储第 1 代](connector-azure-data-lake-store.md#mapping-data-flow-properties)（JSON、Avro、文本、镶木地板）
 * [Azure 数据存储第 2 代](connector-azure-data-lake-storage.md#mapping-data-flow-properties)（JSON、Avro、文本、镶木地板）
 * [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties)
-* [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties)
+* [Azure SQL 数据库](connector-azure-sql-database.md#mapping-data-flow-properties)
 * [Azure 宇宙DB](connector-azure-cosmos-db.md#mapping-data-flow-properties)
 
 特定于这些连接器的**设置位于"设置"** 选项卡中。有关这些设置的信息位于连接器文档中。 

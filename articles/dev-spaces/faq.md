@@ -5,16 +5,20 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: 查找有关 Azure 开发空间的一些常见问题的解答
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 1fd176084cd0737a290e037ed19af510fcab3e78
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: b5a380f20640b9bc328aa30289ff7f915cc0b73c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81381992"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414315"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>有关 Azure 开发空间的常见问题
 
 这解决了有关 Azure 开发空间的常见问题。
+
+## <a name="what-versions-of-kubernetes-are-supported-for-azure-dev-spaces"></a>Azure 开发空间支持哪些版本的库伯奈斯？
+
+Azure 开发人员空间支持[AKS 中当前支持的所有 Kubernets 的通用 （GA） 版本][aks-supported-k8s]。
 
 ## <a name="which-azure-regions-currently-provide-azure-dev-spaces"></a>哪些 Azure 区域当前提供 Azure 开发空间？
 
@@ -89,6 +93,10 @@ ms.locfileid: "81381992"
 
 在可视化工作室中，可以配置 .NET 核心解决方案，以便通过 Azure 开发空间进行调试。
 
+## <a name="can-i-use-azure-dev-spaces-with-a-service-mesh"></a>是否可以将 Azure 开发空间与服务网格一起使用？
+
+此时，不能将 Azure 开发空间与服务区（如[Istio][istio]或[Linkerd）][linkerd]一起使用。 可以在同一 AKS 群集上运行 Azure 开发空间和服务网格，但不能在同一命名空间中同时启用 Azure 开发空间和服务网格。
+
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled
 [aks-auth-range-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
@@ -97,6 +105,7 @@ ms.locfileid: "81381992"
 [aks-pod-managed-id]: ../aks/developer-best-practices-pod-security.md#use-pod-managed-identities
 [aks-pod-managed-id-uninstall]: https://github.com/Azure/aad-pod-identity#uninstall-notes
 [aks-restrict-egress-traffic]: ../aks/limit-egress-traffic.md
+[aks-supported-k8s]: ../aks/supported-kubernetes-versions.md#list-currently-supported-versions
 [bike-sharing]: https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp
 [dev-spaces-pod-managed-id-steps]: troubleshooting.md#error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state
 [dev-spaces-prep]: how-dev-spaces-works-prep.md
@@ -105,6 +114,8 @@ ms.locfileid: "81381992"
 [ingress-traefik]: how-to/ingress-https-traefik.md#configure-a-custom-traefik-ingress-controller
 [ingress-https-nginx]: how-to/ingress-https-nginx.md#configure-the-nginx-ingress-controller-to-use-https
 [ingress-https-traefik]: how-to/ingress-https-traefik.md#configure-the-traefik-ingress-controller-to-use-https
+[istio]: https://istio.io/
+[linkerd]: https://linkerd.io/
 [quickstart-cli]: quickstart-cli.md
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [vs-code-multi-root-workspaces]: https://code.visualstudio.com/docs/editor/multi-root-workspaces

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 4fbb3e83692ec058c03b22654e82d4093fe3541d
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 9f3a1c3455aadfbd243cdc6ab2920849c8558841
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756563"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414628"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure 机器学习的企业安全性
 
@@ -112,7 +112,7 @@ Azure 机器学习依赖于其他 Azure 服务提供计算资源。 计算资源
 > [!TIP]
 > 您可以将虚拟网络和专用链接组合在一起，以保护工作区与其他 Azure 资源之间的通信。 但是，某些组合需要企业版工作区。 使用下表了解哪些方案需要企业版：
 >
-> | 方案 | Enterprise</br>edition | Basic</br>edition |
+> | 场景 | Enterprise</br>edition | 基本</br>edition |
 > | ----- |:-----:|:-----:| 
 > | 无虚拟网络或专用链路 | ✔ | ✔ |
 > | 没有专用链接的工作区。 虚拟网络中的其他资源（Azure 容器注册表除外） | ✔ | ✔ |
@@ -243,9 +243,9 @@ Azure 数据块可用于 Azure 机器学习管道。 默认情况下，Azure 数
 
 ### <a name="encryption-in-transit"></a>传输中加密
 
-可以使用 TLS 来保护 Azure 机器学习微服务之间的内部通信，并保护对评分终结点的外部调用。 所有 Azure 存储访问也是通过安全通道发生的。
+Azure 机器学习使用 TLS 来保护各种 Azure 机器学习微服务之间的内部通信。 所有 Azure 存储访问也是通过安全通道发生的。
 
-有关详细信息，请参阅使用[TLS 通过 Azure 机器学习来保护 Web 服务](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service)。
+要保护对评分终结点的外部调用，Azure 机器学习使用 TLS。 有关详细信息，请参阅使用[TLS 通过 Azure 机器学习来保护 Web 服务](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service)。
 
 ### <a name="using-azure-key-vault"></a>使用 Azure Key Vault
 

@@ -1,30 +1,30 @@
 ---
-title: Azure 事件网格机器学习事件架构
+title: Azure 机器学习作为事件网格源
 description: 介绍为 Azure 事件网格中的机器学习工作区事件提供的属性
 services: event-grid
-author: jenns
+author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 10/18/2019
-ms.author: jenns
-ms.openlocfilehash: 4051598a9abd787f6707e67a8c4dab12fc6d626a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.date: 04/09/2020
+ms.author: spelluru
+ms.openlocfilehash: 7d9af420c7e2b47d2aeb4a8bf42ee138a605b305
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79202138"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393275"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-machine-learning"></a>Azure 机器学习的 Azure 事件网格事件架构
+# <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure 机器学习作为事件网格源
 
 本文提供了机器学习工作区事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
-有关示例脚本和教程的列表，请参阅 [AzureML 事件源](event-sources.md#azure-machine-learning)。
+## <a name="event-grid-event-schema"></a>事件网格事件架构
 
-## <a name="available-event-types"></a>可用事件类型
+### <a name="available-event-types"></a>可用事件类型
 
 Azure 机器学习发出以下事件类型：
 
-| 事件类型 | 描述 |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.MachineLearningServices.ModelRegistered | 已成功注册新模型或模型版本时引发。 |
 | Microsoft.MachineLearningServices.ModelDeployed | 将模型成功部署到终结点时引发。 |
@@ -32,7 +32,7 @@ Azure 机器学习发出以下事件类型：
 | Microsoft.MachineLearningServices.DatasetDriftDetected | 当数据集偏移监视器检测到偏移时引发。 |
 | 微软.机器学习服务.运行状态已更改 | 当运行状态更改为"失败"时引发。 |
 
-## <a name="the-contents-of-an-event-response"></a>事件响应的内容
+### <a name="the-contents-of-an-event-response"></a>事件响应的内容
 
 触发某个事件后，事件网格服务会将有关该事件的数据发送到订阅终结点。
 
@@ -186,10 +186,7 @@ Azure 机器学习发出以下事件类型：
 }]
 ```
 
-
-
-
-## <a name="event-properties"></a>事件属性
+### <a name="event-properties"></a>事件属性
 
 事件具有以下顶级数据：
 
@@ -260,6 +257,11 @@ Azure 机器学习发出以下事件类型：
 | RunTags | 对象 (object) | 已完成的运行的标记。 |
 | RunProperties | 对象 (object) | 已完成的运行的属性。 |
 | 运行状态 | 字符串 | 运行的状态。 |
+
+## <a name="tutorials-and-how-tos"></a>教程和如何
+| 标题 | 说明 |
+| ----- | ----- |
+| [使用 Azure 机器学习事件](../machine-learning/concept-event-grid-integration.md) | 概述 Azure 机器学习与事件网格的集成。 |
 
 ## <a name="next-steps"></a>后续步骤
 

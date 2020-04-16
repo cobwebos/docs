@@ -2,13 +2,13 @@
 title: 可靠收集指南
 description: 在 Azure 服务结构应用程序中使用服务结构可靠集合的指南和建议。
 ms.topic: conceptual
-ms.date: 12/10/2017
-ms.openlocfilehash: 37c734205877f9e0cb98ef2834462691e8e483d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/10/2020
+ms.openlocfilehash: db37067069b2a9eb08009eb6bb373f6fce1cafa9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75645474"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398528"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Azure Service Fabric 中 Reliable Collections 的相关指导原则和建议
 本章节提供有关使用可靠状态管理器和 Reliable Collections 的指导原则。 目的是帮助用户避免常见的问题。
@@ -41,8 +41,20 @@ ms.locfileid: "75645474"
   从主副本读取的数据始终是可靠的，绝不会被错误处理。
 * 应用程序在可靠集合中保留的数据的安全性/隐私性是用户决定，并受到存储管理的保护；即 操作系统磁盘加密可用于保护静态数据。  
 
-### <a name="next-steps"></a>后续步骤
-* [使用 Reliable Collections](service-fabric-work-with-reliable-collections.md)
+## <a name="volatile-reliable-collections"></a>易失性可靠集合
+在决定使用易失性可靠集合时，请考虑以下事项：
+
+* ```ReliableDictionary```确实有不稳定的支持
+* ```ReliableQueue```确实有不稳定的支持
+* ```ReliableConcurrentQueue```没有不稳定的支持
+* 持久化服务不能变得不稳定。 更改标志```HasPersistedState```需要```false```从头开始重新创建整个服务
+* 无法持久化可变服务。 更改标志```HasPersistedState```需要```true```从头开始重新创建整个服务
+* ```HasPersistedState```是服务级别配置。这意味着**所有**集合都将持久或不稳定。 不能混合易失性和持久化集合
+* 可变分区的仲裁丢失导致完全数据丢失
+* 备份和还原不适用于易失性服务
+
+## <a name="next-steps"></a>后续步骤
+* [使用可靠集合](service-fabric-work-with-reliable-collections.md)
 * [事务和锁](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * 管理数据
   * [备份和还原](service-fabric-reliable-services-backup-restore.md)
@@ -50,5 +62,5 @@ ms.locfileid: "75645474"
   * [序列化和升级](service-fabric-application-upgrade-data-serialization.md)
   * [可靠的状态管理器配置](service-fabric-reliable-services-configuration.md)
 * 其他
-  * [可靠的服务快速启动](service-fabric-reliable-services-quick-start.md)
+  * [Reliable Services 快速启动](service-fabric-reliable-services-quick-start.md)
   * [可靠集合的开发人员参考](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

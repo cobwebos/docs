@@ -12,16 +12,16 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 04/14/2020
-ms.openlocfilehash: 0af322d589efd48cc224c69cef8e96fb887d9868
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: c9edbbf54696a817d0495f6890e0d796e482231f
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81384215"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393722"
 ---
 # <a name="manage-azure-sql-database-managed-instance-long-term-backup-retention-powershell"></a>管理 Azure SQL 数据库托管实例长期备份保留 （PowerShell）
 
-在 Azure SQL 数据库托管实例中，可以将[长期备份保留](sql-database-long-term-retention.md#managed-instance-support)策略 （LTR） 配置为有限的公共预览功能。 这允许您自动将数据库备份保留在单独的 Azure Blob 存储容器中长达 10 年。 然后，您可以使用 PowerShell 使用这些备份恢复数据库。
+在 Azure SQL 数据库托管实例中，可以将[长期备份保留](sql-database-long-term-retention.md#managed-instance-support)策略 （LTR） 配置为有限的公共预览功能。 这允许您自动将数据库备份保留在单独的 Azure Blob 存储容器中长达 10 年。 然后，您可以使用这些备份与 PowerShell 一起恢复数据库。
 
    > [!IMPORTANT]
    > 托管实例的 LTR 当前处于有限的预览状态，可按案例针对 EA 和 CSP 订阅使用。 要请求注册，请在支持主题 **"备份、还原和业务连续性/长期备份保留**"下创建[Azure 支持票证](https://azure.microsoft.com/support/create-ticket/)。 
@@ -34,7 +34,7 @@ ms.locfileid: "81384215"
 对于**获取 AzSqlInstance 数据库长期保留备份**和**还原-AzSqlInstance 数据库**，您需要具有以下角色之一：
 
 - “订阅所有者”角色或
-- 管理实例参与者角色或
+- 托管实例参与者角色或
 - 具有以下权限的自定义角色：
 
    ```Microsoft.Sql/locations/longTermRetentionManagedInstanceBackups/read``` ```Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionManagedInstanceBackups/read```
@@ -48,7 +48,7 @@ ms.locfileid: "81384215"
    ```Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete```
 
 > [!NOTE]
-> S托管实例参与者角色无权删除 LTR 备份。
+> 托管实例参与者角色无权删除 LTR 备份。
 
 可以在“订阅”** 或“资源组”** 范围内授予 RBAC 权限。 但是，要访问属于丢弃实例的 LTR 备份，必须在该实例的*订阅*范围内授予权限。
 

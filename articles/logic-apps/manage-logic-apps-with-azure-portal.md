@@ -8,13 +8,13 @@ ms.author: ladolan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.custom: mvc
-ms.date: 04/06/2020
-ms.openlocfilehash: a35f34ed27299077dca78630511ea3c291caff60
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.date: 04/13/2020
+ms.openlocfilehash: f726ca90c215c4aff3734bd8022bbc1ad4dc5f87
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804970"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415993"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>在 Azure 门户中管理逻辑应用
 
@@ -58,7 +58,7 @@ ms.locfileid: "80804970"
    * **资源 ID**
    * **资源组**
    * **位置**
-   * **Type** 
+   * 类型  
    * **订阅名称**
    * **订阅 ID**
    * **访问终结点**
@@ -177,6 +177,46 @@ ms.locfileid: "80804970"
    ![确认删除逻辑应用](./media/manage-logic-apps-with-azure-portal/delete-confirmation-multiple-logic-apps.png)
 
    Azure 门户在主 Azure 工具栏上显示一条通知，用于确认操作是成功还是失败。
+
+<a name="manage-logic-app-versions"></a>
+
+## <a name="manage-logic-app-versions"></a>管理逻辑应用版本
+
+可以使用 Azure 门户对逻辑应用进行版本控制。 您可以找到逻辑应用的版本历史记录，并升级以前的版本。
+
+<a name="find-version-history"></a>
+
+### <a name="find-and-view-previous-versions"></a>查找和查看早期版本
+
+1. 在 Azure 门户中，[找到要管理的逻辑应用](#find-logic-app)。
+
+1. 在逻辑应用的菜单中，在**开发工具**下，选择 **"版本**"。
+
+   ![在逻辑应用的菜单上，选择"开发工具"下的"版本"](./media/manage-logic-apps-with-azure-portal/logic-apps-menu-versions.png)
+
+1. 从列表中选择要管理的逻辑应用**的版本**。 您可以在搜索栏中输入 **"版本**"标识符以筛选列表。
+
+1. 在 **"历史记录"版本**页上，您将在只读模式下看到以前版本的详细信息。 您可以在逻辑应用**设计器**和**代码视图**模式之间进行选择。
+
+   ![具有代码视图和逻辑应用设计器视图的逻辑应用的历史记录版本页](./media/manage-logic-apps-with-azure-portal/history-version.png)
+
+<a name="promote-previous-versions"></a>
+
+### <a name="promote-previous-versions"></a>升级早期版本
+
+1. 在逻辑应用的版本历史记录中，[查找并选择要升级的版本](#find-version-history)。
+
+1. 在 **"历史记录版本**"页上，选择 **"升级**"。
+
+   ![在逻辑应用的版本历史记录中推广按钮](./media/manage-logic-apps-with-azure-portal/promote-button.png)
+
+1. 在打开**的逻辑应用设计器**页面上，根据需要编辑要升级的版本。 您可以在**设计器**和**代码视图**模式之间切换。 您还可以更新**参数**、**模板**和**连接器**。
+
+   ![用于推广早期版本的逻辑应用设计器页面](./media/manage-logic-apps-with-azure-portal/promote-page.png)
+
+1. 要保存任何更新并完成升级以前的版本，请选择"**保存**"。 （或者，要取消更改，请选择 **"丢弃**"） 
+
+   当您再次[查看逻辑应用的版本历史记录](#find-version-history)时，升级的版本将显示在列表顶部，并具有新的标识符。
 
 ## <a name="next-steps"></a>后续步骤
 

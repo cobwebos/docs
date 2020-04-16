@@ -11,14 +11,15 @@ author: djpmsft
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/04/2019
-ms.openlocfilehash: f150234ecd3446858e8a6aa7d224eb3ad3d0efd3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 14f1d3b58996d438279bfa2a234c754a6d840c79
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927346"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414731"
 ---
 # <a name="templates"></a>模板
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 模板是预定义的 Azure 数据工厂管道，可让你快速开始使用数据工厂。 如果你是数据工厂的新手并想要快速入门，则模板很有帮助。 这些模板减少了生成数据集成项目所需的开发时间，从而提高了开发人员的工作效率。
 
@@ -44,7 +45,7 @@ ms.locfileid: "74927346"
 
 -   复制模板：
 
-    -   [从数据库进行批量复制](solution-template-bulk-copy-with-control-table.md)
+    -   [从数据库批量复制](solution-template-bulk-copy-with-control-table.md)
     
     -   [按 LastModifiedDate 复制新文件](solution-template-copy-new-files-lastmodifieddate.md)
 
@@ -52,7 +53,7 @@ ms.locfileid: "74927346"
 
     -   [移动文件](solution-template-move-files.md)
 
-    -   [从数据库进行增量复制](solution-template-delta-copy-with-control-table.md)
+    -   [来自数据库的增量副本](solution-template-delta-copy-with-control-table.md)
 
     -   从 \<源\> 复制到 \<目标\>
 

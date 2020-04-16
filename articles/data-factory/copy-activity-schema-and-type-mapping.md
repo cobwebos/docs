@@ -9,16 +9,17 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 04/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 9ae07e2a471cc417b467092a2616a5a0cdafb1fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f04955fb910a6159dc09ac40a87a398e67d59d6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260808"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414114"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>复制活动中的架构映射
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文介绍在执行数据复制操作时，Azure 数据工厂复制活动如何将架构和数据类型从源数据映射到接收器数据。
 
@@ -87,18 +88,18 @@ ms.locfileid: "79260808"
 
 以下属性在 `translator` -> `mappings` 下带 `source` 和 `sink` 的对象中受支持：
 
-| properties | 描述                                                  | 必选 |
+| properties | 说明                                                  | 必选 |
 | -------- | ------------------------------------------------------------ | -------- |
 | name     | 源或接收器列的名称。                           | 是      |
 | 序号  | 列索引。 从 1 开始。 <br>在使用带分隔符的文本但没有标头行时应用，为必填项。 | 否       |
-| 路径     | 要提取或映射的每个字段的 JSON 路径表达式。 适用于分层数据，例如 MongoDB/REST。<br>对于根对象下的字段，JSON 路径以根 $ 开头；对于 `collectionReference` 属性选择的数组内的字段，JSON 路径从数组元素开始。 | 否       |
+| path     | 要提取或映射的每个字段的 JSON 路径表达式。 适用于分层数据，例如 MongoDB/REST。<br>对于根对象下的字段，JSON 路径以根 $ 开头；对于 `collectionReference` 属性选择的数组内的字段，JSON 路径从数组元素开始。 | 否       |
 | type     | 源或接收器列的数据工厂临时数据类型。 | 否       |
 | culture  | 源或接收器列的区域性。 <br>当类型为 `Datetime` 或 `Datetimeoffset` 时应用。 默认为 `en-us`。 | 否       |
 | format   | 当类型为 `Datetime` 或 `Datetimeoffset` 时要使用的格式字符串。 请参阅[自定义日期和时间格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)，了解如何设置日期时间格式。 | 否       |
 
 以下属性在 `translator` -> `mappings` 下带 `source` 和 `sink` 的对象中受支持：
 
-| properties            | 描述                                                  | 必选 |
+| properties            | 说明                                                  | 必选 |
 | ------------------- | ------------------------------------------------------------ | -------- |
 | collectionReference | 仅当分层数据（例如 MongoDB/REST）为源时，才支持此项。<br>若要进行迭代操作，以同一模式从**数组字段中**的对象提取数据并按行和对象进行转换，请指定要进行交叉应用的该数组的 JSON 路径。 | 否       |
 
@@ -200,7 +201,7 @@ ms.locfileid: "79260808"
 
 可以指定复制活动 -> `translator` -> `schemaMapping`，以便在分层数据和表格形式的数据之间进行映射（例如，将数据从 MongoDB/REST 复制到文本文件以及从 Oracle 复制到 Auzre Cosmos DB 的 API for MongoDB）。 复制活动 `translator` 部分支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 必须将复制活动转换器的类型属性设置为：**表格翻译器** | 是 |
 | schemaMapping | 键值对的集合，代表**从源端到接收器端**的映射关系。<br/>- **键：** 代表源。 对于**表格源**，指定数据集结构中定义的列名称；对于**分层源**，指定要提取和映射的每个字段的 JSON 路径表达式。<br>- **值：** 代表接收器。 对于**表格接收器**，指定数据集结构中定义的列名称；对于**分层接收器**，指定要提取和映射的每个字段的 JSON 路径表达式。 <br>在使用分层数据时，对于根对象下的字段，JSON 路径以根 $ 开头；对于按 `collectionReference` 属性选择的数组中的字段，JSON 路径以数组元素开头。  | 是 |
@@ -278,11 +279,7 @@ ms.locfileid: "79260808"
 1. 从本机源类型转换为 Azure 数据工厂临时数据类型
 2. 从 Azure 数据工厂临时数据类型转换为本机接收器类型
 
-在每个连接器主题中的“数据类型映射”部分，可以找到本机类型和临时类型之间的映射。
-
-### <a name="supported-data-types"></a>支持的数据类型
-
-数据工厂支持以下临时数据类型：在[数据集结构](concepts-datasets-linked-services.md#dataset-structure-or-schema)配置中配置类型信息时，可以指定以下值：
+复制活动支持以下临时数据类型： 
 
 * Byte[]
 * Boolean
@@ -295,7 +292,7 @@ ms.locfileid: "79260808"
 * Int32
 * Int64
 * Single
-* String
+* 字符串
 * Timespan
 
 ## <a name="next-steps"></a>后续步骤

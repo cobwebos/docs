@@ -8,14 +8,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: ae250c7d15801789ad22955845cfa535ed91f2c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 070b708f204006bc1ba90c4c3676696291fde902
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75921140"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414866"
 ---
 # <a name="bulk-copy-from-files-to-database"></a>从文件向数据库进行批量复制
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文介绍了一个解决方案模板，可用于将数据批量从 Azure 数据存储第 2 代复制到 Azure 同步分析/Azure SQL 数据库。
 

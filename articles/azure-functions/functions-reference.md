@@ -4,14 +4,14 @@ description: 了解在 Azure 中开发函数时需要掌握的 Azure Functions �
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 7dd7ef3c4833fb9ffa3781f06faba4f40cd40cfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6af3d7ab1fdd35391c9a189162c57dfb259f2d4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276616"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405352"
 ---
-# <a name="azure-functions-developers-guide"></a>Azure Functions 开发人员指南
+# <a name="azure-functions-developer-guide"></a>Azure Functions 开发人员指南
 在 Azure Functions 中，特定函数共享一些核心技术概念和组件，不受所用语言或绑定限制。 跳转学习某个特定语言或绑定的详细信息之前，请务必通读此通用概述。
 
 本文假定你已阅读 [Azure Functions 概述](functions-overview.md)。
@@ -98,7 +98,7 @@ Azure Functions 代码为开放源，位于 GitHub 存储库：
 ## <a name="next-steps"></a>后续步骤
 有关更多信息，请参见以下资源：
 
-* [Azure 函数触发器和绑定](functions-triggers-bindings.md)
+* [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
 * [在本地对 Azure Functions 进行编码和测试](./functions-develop-local.md)
 * [Azure 函数的最佳做法](functions-best-practices.md)
 * [Azure Functions C# 开发人员参考](functions-dotnet-class-library.md)

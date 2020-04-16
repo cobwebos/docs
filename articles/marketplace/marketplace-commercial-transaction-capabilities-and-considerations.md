@@ -1,84 +1,81 @@
 ---
-title: 市场‎商业交易功能和注意事项 | Azure
-description: 本文介绍套餐类型的交易定价、计费、开具发票和付款注意事项。
-services: Azure, Marketplace, Compute, Storage, Networking, Transact Offer Type
+title: 微软商业市场交易能力
+description: 本文介绍 Microsoft 商业市场交易选项的定价、计费、开票和支付注意事项。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: de93a3c48e0b0aceb447e54e11190f487d1aa2d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 768fa9ca2080fc9a58fb321e62d8d61a608f9564
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80279821"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415255"
 ---
-# <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>商业市场交易功能和注意事项
+# <a name="commercial-marketplace-transact-capabilities"></a>商业市场交易能力
 
-本文介绍商业市场的以下与商业相关的主题
+本文介绍 Microsoft 商业市场的以下与商务相关的主题：
 
-* 市场发布选项
+* 不同发布选项的事务责任
 * 交易一般概述
 * 交易计费模式
 * 交易要求
 
-## <a name="marketplace-publishing-options"></a>市场发布选项
+## <a name="transactions-by-publishing-option"></a>按发布方式的事务选项
 
-以下发布选项可供商业市场发布商使用。
+发布商或 Microsoft 负责管理商业市场产品/服务的软件许可证交易。 您为产品/服务选择的发布选项将决定谁管理交易记录。 有关每个发布选项的可用性和说明，请参阅[确定发布选项](./determine-your-listing-type.md#choose-a-publishing-option)。
 
-### <a name="list--trial-publishing-options"></a>列表和试用发布选项
+### <a name="list-trial-and-byol-publishing-options"></a>列表、试用和 BYOL 发布选项
 
-发布商可以利用列表、试用版和 BYOL 发布选项进行促销和用户获取。 使用这些选项，Microsoft 不会直接参与发布者的软件许可证交易，并且没有关联的交易费用。 发布者负责支持软件许可证交易的各个方面，包括但不限于：订单、履行、计量、计费、开具发票、付款和费用收集。 借助列表和试用发布选项，发布者保留 100% 的收集自客户的发布者软件许可费。 
+具有现有商务功能的发布者可以选择列表、试用和自带许可 （BYOL） 发布选项，用于促销和用户获取目的。 使用这些选项，Microsoft 不会直接参与发布者的软件许可证交易，并且没有关联的交易费用。 发布者负责支持软件许可证交易的各个方面，包括但不限于：订单、履行、计量、计费、开具发票、付款和费用收集。 借助列表和试用发布选项，发布者保留 100% 的收集自客户的发布者软件许可费。
 
 ### <a name="transact-publishing-option"></a>交易发布选项
 
-除了列表和试用发布选项外，发行商还可以使用交易发布选项。 这利用了 Microsoft 的全球可用商务功能，并允许 Microsoft 代表发布者托管云市场事务。
+交易发布选项利用 Microsoft 商务功能，并提供从发现和评估到购买和实现的端到端体验。 Transact 优惠根据现有的 Microsoft 订阅或信用卡计费，允许 Microsoft 代表发布者托管云市场交易。
+
+在合作伙伴中心创建新产品/服务时，请选择交易选项。 在 **"设置详细信息**"下的 **"产品设置"** 页面上，选择"是的，我想通过 Microsoft 销售，并代表我进行 Microsoft 主机交易。 仅当交易可用于您的产品/服务类型时，此选项才会显示。
 
 ## <a name="transact-general-overview"></a>交易一般概述
 
 使用交易发布选项时，Microsoft 允许销售第三方软件，并将某些产品/服务类型部署到客户的 Azure 订阅。 在选择计费模型和产品/服务类型时，发布者必须考虑基础结构费用的计费以及发布者自己的软件许可费用。
 
-当前支持以下产品类型（虚拟机、Azure 应用程序和 SaaS 应用）的 Transact 发布选项。
-
-
-![[处理 Azure 市场中的企业交易]](./media/marketplace-publishers-guide/Transact-enterprise-deals.png)
+当前支持以下产品类型（虚拟机、Azure 应用程序和 SaaS 应用）的"Transact 发布"选项。
 
 ### <a name="billing-infrastructure-costs"></a>计费基础结构成本
 
-**对于虚拟机和 Azure 应用程序**
+**适用于虚拟机和 Azure 应用程序**
 
-对于虚拟机和 Azure 应用程序，Azure 基础结构使用费将计费到客户的 Azure 订阅。  基础设施使用费在客户发票上与软件提供商的许可费分开定价和列报。
+对于虚拟机和 Azure 应用程序，Azure 基础结构使用费将计费到客户的 Azure 订阅。 基础设施使用费在客户发票上与软件提供商的许可费分开定价和列报。
 
 **对于 SaaS 应用**
 
-对于 SaaS 应用，发布者必须将 Azure 基础结构使用费和软件许可费视为单一费用项。  它表示为客户收取固定费用。 Azure 基础结构使用情况由合作伙伴直接管理并对其计费。  客户将无法看到实际的基础结构使用费。  发布者通常选择将 Azure 基础结构使用费捆绑到其软件许可证定价中。  不计量软件许可费，它也不基于消耗量。
+对于 SaaS 应用，发布者必须将 Azure 基础结构使用费和软件许可费视为单一费用项。  它表示为客户收取固定费用。 Azure 基础结构使用情况由合作伙伴直接管理并对其计费。 客户将无法看到实际的基础结构使用费。 发布者通常选择将 Azure 基础结构使用费捆绑到其软件许可证定价中。 不计量软件许可费，它也不基于消耗量。
 
 ## <a name="transact-billing-models"></a>交易计费模式
 
 根据所使用的交易选项，发布者的软件许可费用可以显示如下：  
 
-* 免费：不收取软件许可证费用。 
+* 免费：不收取软件许可证费用。
 
-* 自带许可 (BYOL)：直接在发布者和客户之间管理所有适用的软件许可证费用。 Microsoft 仅收取 Azure 基础结构使用费。 （仅限虚拟机和 Azure 应用程序。）
+* 自带许可 (BYOL)：直接在发布者和客户之间管理所有适用的软件许可证费用。 Microsoft 仅收取 Azure 基础结构使用费。 这仅适用于虚拟机和 Azure 应用程序。
 
 * 即用即付：软件许可证费用将根据所用的 Azure 基础结构显示为每小时每个核心 (vCPU) 定价费率。 这仅适用于虚拟机和 Azure 应用程序。
 
-* 订阅定价：软件许可费以每月或每年定期费用的形式提供，按统一费率或按席位计费。 这仅适用于 SaaS 应用和 Azure 应用程序 - 托管应用。
+* 订阅定价：软件许可费以每月或每年定期费用的形式提供，按统一费率或按席位计费。 这适用于 SaaS 应用和 Azure 应用程序 - 仅限托管应用。
 
 * 免费软件试用版：免费使用软件许可证 30 天或 90 天。
 
 ### <a name="free-and-bring-your-own-license-byol-pricing"></a>免费和自带许可 (BYOL) 定价
 
-发布免费或自带许可的交易产品/服务时，Microsoft 在促成有关软件许可证费用的销售交易中不扮演任何角色。 如列表和试用发布选项一样，发布者保留 100% 的软件许可证费用。 
+发布免费或自带许可的交易产品/服务时，Microsoft 在促成有关软件许可证费用的销售交易中不扮演任何角色。 如列表和试用发布选项一样，发布者保留 100% 的软件许可证费用。
 
 ### <a name="pay-as-you-go-and-subscription-site-based-pricing"></a>即用即付和订阅（基于站点）定价
 
 发布即用即付或订阅型交易产品/服务时，Microsoft 提供技术和服务用于处理软件许可证的购买、退货和退款。 在这种情况下，发布者出于上述目的授权 Microsoft 充当代理人。 发布者允许 Microsoft 促成软件许可交易，同时保留自身的卖家、提供商、分销商和许可方的称号。
 
-Microsoft 使客户能够订购、许可和使用发布商软件，但须遵守 Microsoft 商业应用商店和发布商最终用户许可协议的条款和条件。 发布商必须在创建产品/服务时提供其最终用户许可协议或选择[标准合同](https://docs.microsoft.com/azure/marketplace/standard-contract)。
-
+Microsoft 使客户能够订购、许可和使用发布商软件，但须遵守 Microsoft 商业应用商店和发布商最终用户许可协议的条款和条件。 发布商必须在创建产品/服务时提供其最终用户许可协议或选择[标准合同](./standard-contract.md)。
 
 ### <a name="free-software-trials"></a>免费软件试用
 
@@ -162,7 +159,7 @@ Microsoft 使客户能够订购、许可和使用发布商软件，但须遵守 
 
 例如，如果客户使用信用卡购买：
 
-|描述    |    Date  |
+|说明    |    Date  |
 |----------|----------|
 |订购期   | 2018 年 8 月 15 日 - 2018 年 8 月 30 日 |
 |期限结束（月）   | 2018 年 8 月 30 日 |
@@ -176,7 +173,7 @@ Microsoft 使客户能够订购、许可和使用发布商软件，但须遵守 
 
 如果客户使用企业协议购买：
 
-| 描述 |    Date  |
+| 说明 |    Date  |
 |----------|----------|
 |订购期 | 2018 年 8 月 15 日 - 2018 年 8 月 30 日 |
 |期限结束（季度） | 2018 年 9 月 30 日 |
@@ -204,7 +201,7 @@ Microsoft 使客户能够订购、许可和使用发布商软件，但须遵守 
 
 * 客户通常使用企业协议或支持信用卡的即用即付协议进行购买。 协议类型确定计费、发票、费用收集和付款时间。
 
->[!NOTE] 
+>[!NOTE]
 >交易发布选项的所有报告和见解均可通过合作伙伴中心的云合作伙伴门户或分析部分的"见解"部分获得。
 
 #### <a name="billing-questions-and-support"></a>计费问题和支持
@@ -219,15 +216,14 @@ Microsoft 使客户能够订购、许可和使用发布商软件，但须遵守 
 
 ### <a name="requirements-for-all-offer-types"></a>所有产品/服务类型的要求
 
-- 无论产品/服务/服务的价格模式如何，交易发布选项都需要 Microsoft 帐户和财务信息。
-- 强制性财务信息包括付款帐户和税务配置文件。
+* 无论产品/服务/服务的价格模式如何，交易发布选项都需要 Microsoft 帐户和财务信息。
+* 强制性财务信息包括付款帐户和税务配置文件。
 
-有关设置这些帐户的详细信息，请参阅[管理合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)。
-
+有关设置这些帐户的详细信息，请参阅[在合作伙伴中心管理您的商业市场帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)。
 
 ### <a name="requirements-for-specific-offer-types"></a>特定产品/服务类型的要求
 
-交易发布选项仅适用于以下市场产品/服务类型： 
+交易发布选项仅适用于以下市场产品/服务类型：
 
 **虚拟机** 
 

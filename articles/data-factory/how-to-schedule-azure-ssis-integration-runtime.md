@@ -13,14 +13,17 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 5263af2708ee30566e90cdf59ef69f52f76a9d32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 39f758b779e7c4935feab2424be16b829db8e46b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440322"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399511"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>如何按计划启动和停止 Azure-SSIS Integration Runtime
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 本文介绍如何使用 Azure 数据工厂 (ADF) 计划 Azure-SSIS Integration Runtime (IR) 的启动和停止。 Azure-SSIS IR 是专用于执行 SQL Server Integration Services (SSIS) 包的 ADF 计算资源。 运行 Azure-SSIS IR 会产生相关成本。 因此，通常只有在需要在 Azure 中运行 SSIS 包时才运行 IR，而不再需要该包时则停止 IR。 可以使用 ADF 用户界面 (UI)/应用或 Azure PowerShell [手动启动或停止 IR](manage-azure-ssis-integration-runtime.md)。
 
 或者，可以在 ADF 管道中创建 Web 活动，以按计划启动/停止 IR，例如，在早上执行每日 ETL 工作负载之前启动 IR，并在下午完成后将其停止。  还可以在启动和停止 IR 的两个 Web 活动之间链接一个执行 SSIS 包活动，这样 IR 就会按需在包执行之前/之后及时启动/停止。 有关执行 SSIS 包活动的详细信息，请参阅[在 ADF 管道中使用执行 SSIS 包活动运行 SSIS 包](how-to-invoke-ssis-package-ssis-activity.md)一文。
@@ -45,7 +48,7 @@ ms.locfileid: "75440322"
 
 ### <a name="create-your-adf"></a>创建 ADF
 
-1. 登录到[Azure 门户](https://portal.azure.com/)。    
+1. 登录到 [Azure 门户](https://portal.azure.com/)。    
 2. 在左侧菜单中单击“新建”，并依次单击“数据 + 分析”、“数据工厂”。************ 
    
    ![新建 -> DataFactory](./media/tutorial-create-azure-ssis-runtime-portal/new-data-factory-menu.png)
@@ -69,7 +72,7 @@ ms.locfileid: "75440322"
 6. 对于“版本”，选择“V2”********。
 7. 对于“位置”，从下拉列表中选择 ADF 创建支持的其中一个位置****。
 8. 选择“固定到仪表板”****。     
-9. 单击 **“创建”**。
+9. 单击“创建”。 
 10. 在 Azure 仪表板上，您将看到以下具有状态的磁贴：**部署数据工厂**。 
 
     ![“正在部署数据工厂”磁贴](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)
@@ -114,7 +117,7 @@ ms.locfileid: "75440322"
     1. 对于“角色”****，选择“参与者”****。 
     2. 对于“分配访问权限至”，选择“Azure AD 用户、组或服务主体”********。 
     3. 对于“选择”，搜索你的 ADF 名称并选择该 ADF****。 
-    4. 单击“保存”。****
+    4. 单击“ **保存**”。
     
    ![ADF 托管标识角色分配](./media/how-to-schedule-azure-ssis-integration-runtime/adf-managed-identity-role-assignment.png)
 
@@ -133,7 +136,7 @@ ms.locfileid: "75440322"
     1. 对于“服务器名称”，请输入 &lt;Azure SQL 数据库服务器名称 &gt;.database.windows.net********。
     2. 选择“选项Options >>”。****
     3. 对于“连接到数据库”，请选择“SSISDB”。********
-    4. 选择“连接”****。 
+    4. 选择“连接”  。 
     5. 展开**集成服务目录** -> **SSISDB** - >文件夹 ->**项目**-> SSIS 项目 ->**包**。 
     6. 右键单击指定的 SSIS 包以运行并选择 **"报告** -> **标准报告** -> **所有执行**"。 
     7. 验证是否已运行该包。 
@@ -160,7 +163,7 @@ ms.locfileid: "75440322"
     4. 对于“重复周期”，请输入触发器的频率****。 在以下示例中，频率为每日一次****。 
     5. 对于“结束”，请选择“不结束”或在选择“开始日期”后输入结束日期和时间************。 
     6. 发布整个 ADF 设置后，选择“激活”以立即激活触发器****。 
-    7. 选择“下一步”。
+    7. 选择“**下一页**”。
 
    ![“触发器”->“新建/编辑”](./media/how-to-schedule-azure-ssis-integration-runtime/new-trigger-window.png)
     
@@ -214,7 +217,7 @@ ms.locfileid: "75440322"
 如果没有 Azure 自动化帐户，请遵照此步骤中的说明创建一个。 有关详细步骤，请参阅[创建 Azure 自动化帐户](../automation/automation-quickstart-create-account.md)一文。 在执行此步骤的过程中，创建一个 Azure 运行方式帐户（Azure Active Directory 中的服务主体），并在 Azure 订阅中为其分配参与者角色********。 确保其与包含带有 Azure SSIS IR 的 ADF 的订阅相同。 Azure 自动化将使用此帐户在 Azure 资源管理器中进行身份验证，并对资源执行操作。 
 
 1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅在 Microsoft Edge 和 Google Chrome 网络浏览器中支持 ADF UI/应用。
-2. 登录到[Azure 门户](https://portal.azure.com/)。    
+2. 登录到 [Azure 门户](https://portal.azure.com/)。    
 3. 在左侧菜单中选择“新建”，然后依次选择“监视 + 管理”、“自动化”。************ 
 
    ![“新建”->“监视 + 管理”->“自动化”](./media/how-to-schedule-azure-ssis-integration-runtime/new-automation.png)
@@ -227,7 +230,7 @@ ms.locfileid: "75440322"
     4. 对于“位置”，选择 Azure 自动化的位置****。 
     5. 确认“创建 Azure 运行方式帐户”为“是”********。 将在 Azure Active Directory 中创建服务主体，并在 Azure 订阅中为其分配“参与者”角色****。
     6. 选择“固定到仪表板”以在 Azure 仪表板中永久显示该服务主体****。 
-    7. 选择 **“创建”**。 
+    7. 选择“创建”  。 
 
    ![“新建”->“监视 + 管理”->“自动化”](./media/how-to-schedule-azure-ssis-integration-runtime/add-automation-account-window.png)
    
@@ -265,7 +268,7 @@ ms.locfileid: "75440322"
 
     1. 对于“名称”，输入 StartStopAzureSsisRuntime********。
     2. 对于“Runbook 类型”，请选择“PowerShell”。********
-    3. 选择 **“创建”**。
+    3. 选择“创建”  。
     
    ![“添加 Runbook”按钮](./media/how-to-schedule-azure-ssis-integration-runtime/add-runbook-window.png)
    
@@ -336,7 +339,7 @@ ms.locfileid: "75440322"
     2. 对于“数据工厂名称”，请使用 Azure-SSIS IR 输入 ADF 的名称****。 
     3. 对于“AZURESSISNAME”，请输入 Azure SSIS IR 的名称****。 
     4. 对于“操作”，请输入“启动”。******** 
-    5. 选择“确定”。  
+    5. 选择“确定”  。  
 
    ![“启动 Runbook”窗口](./media/how-to-schedule-azure-ssis-integration-runtime/start-runbook-window.png)
    
@@ -364,7 +367,7 @@ ms.locfileid: "75440322"
     4. 对于“开始”，请输入比当前时间晚几分钟的时间****。 
     5. 对于“重复周期 ”，请选择“定期”。******** 
     6. 对于“重复间隔”，请输入“1”并选择“日”************。 
-    7. 选择 **“创建”**。 
+    7. 选择“创建”  。 
 
    ![计划 Azure SSIS IR 的启动](./media/how-to-schedule-azure-ssis-integration-runtime/new-schedule-start.png)
     
