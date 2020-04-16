@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 96d0a5b2fb59e4612107d8ccbf7285fff7576585
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c4c1cfdb927cfd2ee607bfe2a951e06c80f9bfb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128388"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418535"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>团队数据科学流程在操作中：使用 Azure 突触分析
 在本教程中，我们将介绍使用 Azure 突触分析构建和部署机器学习模型的可公开数据集[（NYC 出租车旅行](https://www.andresmh.com/nyctaxitrips/)数据集）。 构造的二进制分类模型预测小费是否为行程付费。  模型包括多类分类（无论是否有提示）和回归（已支付小费金额的分布）。
@@ -24,7 +24,7 @@ ms.locfileid: "80128388"
 该过程遵循[团队数据科学过程 (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 工作流。 我们演示如何设置数据科学环境、如何将数据加载到 Azure 同步分析中，以及如何使用 Azure 突触分析或 IPython 笔记本来探索要建模的数据和工程师功能。 然后，我们会介绍如何使用 Azure 机器学习来构建和部署模型。
 
 ## <a name="the-nyc-taxi-trips-dataset"></a><a name="dataset"></a>NYC 出租车行程数据集
-NYC 出租车车程数据包含大约 20 GB（未压缩约为 48 GB）的压缩 CSV 文件，记录了超过 1.73 亿个单独车程及每个车程支付的费用。 每个行程记录都包括上车和下车的位置和时间、匿名出租车司机的驾驶证号和车牌号（出租车的唯一 ID）。 数据涵盖  2013 年的所有行程，并在每个月的以下两个数据集中提供：
+NYC 出租车车程数据包含大约 20 GB（未压缩约为 48 GB）的压缩 CSV 文件，记录了超过 1.73 亿个单独车程及每个车程支付的费用。 每个行程记录包括接送地点和时间、匿名黑客（司机）许可证号码和奖章（出租车的唯一 ID）号码。 数据涵盖  2013 年的所有行程，并在每个月的以下两个数据集中提供：
 
 1. **trip_data.csv** 文件包含行程的详细信息，例如乘客编号、上车和下车时间、行程持续时间和行程距离。 下面是一些示例记录：
 
@@ -79,12 +79,12 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为 48 GB）的压缩 
 
 * **服务器名称** \<： 服务器名称>.database.windows.net
 * **SQLDW（数据库）名称**
-* **用户**
+* **用户名**
 * **密码**
 
 **安装可视化工作室和 SQL 服务器数据工具。** 有关说明，请参阅[从 Visual Studio 2019 开始获取 SQL 数据仓库](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)。
 
-**使用可视化工作室连接到 Azure 同步分析。** 有关说明，请参阅连接 Azure SQL[数据仓库](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-connect-overview.md)中的步骤 1 & 2。
+**使用可视化工作室连接到 Azure 同步分析。** 有关说明，请参阅[Azure SynapsE 分析 中连接 SQL 分析中](../../synapse-analytics/sql/connect-overview.md)的步骤 1 & 2。
 
 > [!NOTE]
 > 在 Azure 同步分析中创建的数据库（而不是连接主题步骤 3 中提供的查询）上运行以下 SQL 查询，以创建**主密钥**。
@@ -126,7 +126,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为 48 GB）的压缩 
 首次运行 PowerShell 脚本时，系统将要求您从 Azure 同步分析和 Azure Blob 存储帐户输入信息。 此 PowerShell 脚本完成首次运行之后，输入的凭据那时已经写入到现有工作目录中的一个名为 SQLDW.conf 的配置文件中。 以后运行此 PowerShell 脚本文件时，可以选择从此配置文件中读取所有需要的参数。 如果需要更改某些参数，可以选择通过删除此配置文件并按提示输入参数值，根据提示在屏幕上输入参数，或者通过编辑 *-DestDir* 目录中的 SQLDW.conf 文件更改参数值。
 
 > [!NOTE]
-> 为了避免架构名称与 Azure Synapse 分析中已经存在的架构名称冲突，当直接从 SQLDW.conf 文件中读取参数时，将从 SQLDW.conf 文件中向架构名称添加一个 3 位随机数作为默认架构架构名称添加到每次运行的名称。 PowerShell 脚本可能会提示输入架构名称︰该名称可以由用户自行指定。
+> 为了避免架构名称与 Azure Synapse 分析中已经存在的架构名称冲突，当直接从 SQLDW.conf 文件读取参数时，将从 SQLDW.conf 文件中向架构名称添加一个 3 位随机数，作为每次运行的默认架构名称。 PowerShell 脚本可能会提示输入架构名称︰该名称可以由用户自行指定。
 >
 >
 
@@ -310,7 +310,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为 48 GB）的压缩 
 存储帐户的地理位置会影响加载时间。
 
 > [!NOTE]
-> 根据专用 Blob 存储帐户的地理位置，将数据从公共 Blob 复制到专用存储帐户的过程可能需要大约 15 分钟甚至更长时间，以及将数据从存储帐户加载到 Azure 的过程Azure 同步分析可能需要 20 分钟或更长时间。
+> 根据专用 Blob 存储帐户的地理位置，将数据从公共 Blob 复制到专用存储帐户的过程可能需要大约 15 分钟甚至更长时间，将数据从存储帐户加载到 Azure Synapse 分析的过程可能需要 20 分钟或更长时间。
 >
 >
 
@@ -330,7 +330,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为 48 GB）的压缩 
 >
 >
 
-此 PowerShell 脚本还将 Azure Synapse 分析信息插入数据探索示例文件 SQLDW_Explorations.sql、SQLDW_Explorations.ipynb 和 SQLDW_Explorations_Scripts.py，以便这三个文件可以试用在 PowerShell 脚本完成后立即完成。
+此 PowerShell 脚本还将 Azure Synapse 分析信息插入数据探索示例文件 SQLDW_Explorations.sql、SQLDW_Explorations.ipynb 和 SQLDW_Explorations_Scripts.py，以便这三个文件在 PowerShell 脚本完成后立即试用。
 
 在成功执行之后，看到的屏幕与下面类似︰
 
@@ -839,7 +839,7 @@ and
 5. 在“服务器用户帐户名”**** 中输入 *SQL 用户名*，在“服务器用户帐户密码”**** 中输入*密码*。
 7. 在 **"数据库"查询**编辑文本区域中，粘贴提取必要的数据库字段（包括任何计算字段（如标签）的查询，并将数据采样到所需的样本大小。
 
-下图中列出了直接从 Azure Synapse Analytics 数据库读取数据的二进制分类实验示例（请记住，请替换nyctaxi_trip的表名称，然后nyctaxi_fare架构名称和在演练）。 可以针对多类分类和回归问题构建类似实验。
+下图中是直接从 Azure Synapse 分析数据库读取数据的二进制分类实验示例（请记住，请nyctaxi_trip替换表名，然后nyctaxi_fare架构名称和演练中使用的表名）。 可以针对多类分类和回归问题构建类似实验。
 
 ![Azure ML 训练][10]
 
@@ -880,9 +880,9 @@ Azure 机器学习将尝试根据训练实验的组件创建评分实验。 特�
 ### <a name="license-information"></a>许可证信息
 此示例演练和及其附带脚本和 IPython notebook 是在 MIT 许可证下由 Microsoft 共享。 如需更多详细信息，请查看 GitHub 上示例代码目录中的 LICENSE.txt 文件。
 
-## <a name="references"></a>参考
+## <a name="references"></a>reference
 - [Andrés Monroy NYC 出租车行程下载页](https://www.andresmh.com/nyctaxitrips/)
-- [由 Chris Whong 提供的 FOILing NYC 出租车行程数据](https://chriswhong.com/open-data/foil_nyc_taxi/)
+- [FOILing 纽约出租车旅行数据由克里斯·W](https://chriswhong.com/open-data/foil_nyc_taxi/)
 - [NYC 出租车和礼车委员会研究和统计信息](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [1]: ./media/sqldw-walkthrough/sql-walkthrough_26_1.png

@@ -10,14 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: 85b1d6b532ba11819947558226291e62af6b5119
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40b1b8d040c4b3ea76372920f88551fba35c5f26
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75690931"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419436"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>以可视化方式监视 Azure 数据工厂
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 在 Azure 数据工厂中创建并发布管道以后，即可将其与触发器关联，或者手动启动临时运行。 可以在 Azure 数据工厂用户体验中以本机方式监视所有管道运行。 若要打开监视体验，请在 [Azure 门户](https://portal.azure.com/)的数据工厂边栏选项卡中选择“监视和管理”磁贴。**** 如果已在 ADF UX 中，请单击左侧边栏上的“监视”图标。****
 

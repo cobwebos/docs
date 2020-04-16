@@ -10,17 +10,19 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/31/2018
-ms.openlocfilehash: eb887a7d9081875c28964ddb1e3d1b2e609862fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c39575e8ea60a091124c633f8958ec36e8a61885
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74912973"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418841"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Spark 活动转换数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-spark.md)
 > * [当前版本](transform-data-using-spark.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 数据工厂[管道](concepts-pipelines-activities.md)中的 Spark 活动在[自己的](compute-linked-services.md#azure-hdinsight-linked-service)或[按需](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上执行 Spark 程序。 本文基于[数据转换活动](transform-data.md)一文，它概述了数据转换和受支持的转换活动。 使用按需的 Spark 链接服务时，数据工厂会自动为你实时创建用于处理数据的 Spark 群集，然后在处理完成后删除群集。 
 
@@ -57,7 +59,7 @@ ms.locfileid: "74912973"
 
 下表描述了 JSON 定义中使用的 JSON 属性：
 
-| properties              | 描述                              | 必选 |
+| properties              | 说明                              | 必选 |
 | --------------------- | ---------------------------------------- | -------- |
 | name                  | 管道中活动的名称。    | 是      |
 | description           | 描述活动用途的文本。  | 否       |
@@ -77,7 +79,7 @@ ms.locfileid: "74912973"
 
 在 HDInsight 链接服务引用的 Azure Blob 存储中创建以下文件夹结构。 然后，将依赖文件上传到 **entryFilePath** 表示的根文件夹中的相应子文件夹。 例如，将 python 文件上传到根文件夹的 pyFiles 子文件夹，将 jar 文件上传到根文件夹的 jars 子文件夹。 在运行时，数据工厂服务需要 Azure Blob 存储中的以下文件夹结构：     
 
-| 路径                  | 描述                              | 必选 | 类型   |
+| 路径                  | 说明                              | 必选 | 类型   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
 | `.`（根）            | Spark 作业在存储链接服务中的根路径 | 是      | Folder |
 | &lt;用户定义&gt; | 指向 Spark 作业入口文件的路径 | 是      | 文件   |

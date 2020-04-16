@@ -11,17 +11,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 2cd76afa9412e89c57cfb6c357eb164ce5d3d1c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 09c39c41b2d31f88fe2b19d8f20cd19e182c9214
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75830422"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417265"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>使用 Azure 数据工厂从 HDFS 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-hdfs-connector.md)
 > * [当前版本](connector-hdfs.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何从 HDFS 服务器复制数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
 
@@ -55,7 +57,7 @@ ms.locfileid: "75830422"
 
 HDFS 链接的服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 类型属性必须设置为 **：Hdfs**。 | 是 |
 | url |HDFS 的 URL |是 |
@@ -116,7 +118,7 @@ HDFS 链接的服务支持以下属性：
 
 基于格式的数据集中 `location` 设置下的 HTTP 支持以下属性：
 
-| properties   | 描述                                                  | 必选 |
+| properties   | 说明                                                  | 必选 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 数据集中 `location` 下的 type 属性必须设置为 **HdfsLocation**。 | 是      |
 | folderPath | 文件夹的路径。 如果要使用通配符筛选文件夹，请跳过此设置并在活动源设置中指定。 | 否       |
@@ -158,7 +160,7 @@ HDFS 链接的服务支持以下属性：
 
 基于格式的复制源中 `storeSettings` 设置下的 HDFS 支持以下属性：
 
-| properties                 | 描述                                                  | 必选                                      |
+| properties                 | 说明                                                  | 必选                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | 下`storeSettings`的类型属性必须设置为**HdfsReadSettings**。 | 是                                           |
 | recursive                | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 请注意，当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。 允许的值**为 true（** 默认值）和**false**。 | 否                                            |
@@ -404,7 +406,7 @@ HDFS 链接的服务支持以下属性：
 
 ### <a name="legacy-dataset-model"></a>旧数据集模型
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：FileShare**** |是 |
 | folderPath | 文件夹路径。 支持通配符筛选器，允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件名中包含通配符或此转义字符，请使用 `^` 进行转义。 <br/><br/>示例：“rootfolder/subfolder/”，请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 |是 |
@@ -449,7 +451,7 @@ HDFS 链接的服务支持以下属性：
 
 ### <a name="legacy-copy-activity-source-model"></a>旧复制活动源模型
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：**HdfsSource** |是 |
 | recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制/创建空的文件夹/子文件夹。<br/>允许的值是 **：true（** 默认 **），false** | 否 |

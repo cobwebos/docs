@@ -11,14 +11,16 @@ author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
 ms.date: 10/31/2018
-ms.openlocfilehash: a2f24d8203ac5fb9724370cbdf4309bdc43c166a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cabdb45467f71749184c5f9a6a112242a82d618b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75444098"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416599"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建共享自承载集成运行时
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本指南介绍如何在 Azure 数据工厂中创建共享自承载集成运行时。 然后可在另一个数据工厂中使用共享自托管集成运行时。
 
@@ -55,7 +57,7 @@ ms.locfileid: "75444098"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure 订阅**。 如果没有 Azure 订阅，请先[创建一个免费帐户](https://azure.microsoft.com/free/)。" 
+- **Azure 订阅**。 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。 
 
 - **Azure 电源外壳**。 请遵循[使用 PowerShellGet 在 Windows 上安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) 中的说明。 可使用 PowerShell 运行脚本来创建可与其他数据工厂共享的自承载集成运行时。 
 

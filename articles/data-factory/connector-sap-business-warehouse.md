@@ -12,17 +12,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
-ms.openlocfilehash: 0c37d77ca73ddbe8b79351f90275a1d639757633
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2f8406038be10ba3bdc207bf447fecb86a376fe8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74923740"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418059"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-sap-business-warehouse-connector.md)
 > * [当前版本](connector-sap-business-warehouse.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 SAP Business Warehouse (BW) 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -66,7 +67,7 @@ ms.locfileid: "74923740"
 
 SAP Business Warehouse (BW) 链接服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：SapBw**** | 是 |
 | server | SAP BW 实例所驻留的服务器的名称。 | 是 |
@@ -134,7 +135,7 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
 
 若要从 SAP BW 复制数据，复制活动的 **source** 节支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 必须将复制活动源的类型属性设置为 **：SapBwSource** | 是 |
 | query | 指定要从 SAP BW 实例读取数据的 MDX 查询。 | 是 |
@@ -180,27 +181,27 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
 | SAP BW 数据类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
 | ACCP | Int |
-| CHAR | String |
-| CLNT | String |
+| CHAR | 字符串 |
+| CLNT | 字符串 |
 | CURR | Decimal |
-| CUKY | String |
+| CUKY | 字符串 |
 | DEC | Decimal |
 | FLTP | Double |
 | INT1 | Byte |
 | INT2 | Int16 |
 | INT4 | Int |
-| LANG | String |
-| LCHR | String |
+| LANG | 字符串 |
+| LCHR | 字符串 |
 | LRAW | Byte[] |
 | PREC | Int16 |
 | QUAN | Decimal |
 | RAW | Byte[] |
 | RAWSTRING | Byte[] |
-| STRING | String |
-| UNIT | String |
-| DATS | String |
-| NUMC | String |
-| TIMS | String |
+| STRING | 字符串 |
+| UNIT | 字符串 |
+| DATS | 字符串 |
+| NUMC | 字符串 |
+| TIMS | 字符串 |
 
 
 ## <a name="lookup-activity-properties"></a>Lookup 活动属性

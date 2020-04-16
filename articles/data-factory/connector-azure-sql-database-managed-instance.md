@@ -11,14 +11,16 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 11f4005e802e2a584b21903bfead2c6b9701f065
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe803c918cbf60b8f0af76d8c9a94d022153acbb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80238754"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417499"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure SQL 数据库托管实例复制数据
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从/向 Azure SQL 数据库托管实例复制数据。 它基于["复制活动概述](copy-activity-overview.md)"一文，其中概述了复制活动。
 
@@ -57,7 +59,7 @@ ms.locfileid: "80238754"
 
 Azure SQL 数据库托管实例链接的服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **AzureSqlMI**。 | 是 |
 | connectionString |此属性指定使用 SQL 身份验证连接到托管实例时所需的 **connectionString** 信息。 有关详细信息，请参阅以下示例。 <br/>默认端口为 1433。 如果对公共终结点使用 Azure SQL 数据库托管实例，请显式指定端口 3342。<br> 还可以在 Azure Key Vault 中输入密码。 如果使用 SQL 身份验证，请从连接字符串中提取 `password` 配置。 有关详细信息，请参阅表格后面的 JSON 示例，以及[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 |是 |
@@ -226,7 +228,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 
 在将数据复制到 Azure SQL 数据库托管实例或从其复制数据时，支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 AzureSqlMITable****。 | 是 |
 | 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
@@ -262,7 +264,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 
 若要从 Azure SQL 数据库托管实例复制数据，复制活动的 source 节需要支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **SqlMISource**。 | 是 |
 | sqlReaderQuery |此属性使用自定义 SQL 查询来读取数据。 示例为 `select * from MyTable`。 |否 |
@@ -369,7 +371,7 @@ GO
 
 若要将数据复制到 Azure SQL 数据库托管实例，复制活动的 sink 节需要支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 **SqlMISink**。 | 是 |
 | writeBatchSize |每批要插入到 SQL 表中的行数。**<br/>允许的值为表示行数的整数。 默认情况下，Azure 数据工厂会根据行大小动态确定适当的批大小。  |否 |
@@ -595,7 +597,7 @@ END
 | smalldatetime |DateTime |
 | smallint |Int16 |
 | smallmoney |Decimal |
-| sql_variant |Object |
+| sql_variant |对象 |
 | text |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |

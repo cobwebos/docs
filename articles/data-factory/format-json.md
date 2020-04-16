@@ -9,14 +9,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: jingwang
-ms.openlocfilehash: b63dcfd6ed293cab9d0107a8b6a35c7ce358d429
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: c18d767afd3721bd6f6250058b9fbe66990133e4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011678"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417736"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Azure 数据工厂中的 JSON 格式
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 如果要**分析 JSON 文件或以 JSON 格式写入数据**，请遵循本文中的说明。 
 
@@ -26,7 +27,7 @@ JSON格式支持以下连接器：[亚马逊S3，Azure](connector-amazon-simple-
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 JSON 数据集支持的属性列表。
 
-| Property         | 说明                                                  | 必选 |
+| properties         | 说明                                                  | 必选 |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | 数据集的 type 属性必须设置为 **Json**。 | 是      |
 | location         | 文件的位置设置。 每个基于文件的连接器在 `location` 下都有其自己的位置类型和支持的属性。 **请在连接器文章 -> 数据集属性部分中查看详细信息**。 | 是      |
@@ -69,7 +70,7 @@ JSON格式支持以下连接器：[亚马逊S3，Azure](connector-amazon-simple-
 
 复制活动***\*源\**** 部分支持以下属性。
 
-| Property      | 说明                                                  | 必选 |
+| properties      | 说明                                                  | 必选 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为 **JSONSource**。 | 是      |
 | storeSettings | 有关如何从数据存储读取数据的一组属性。 每个基于文件的连接器在 `storeSettings` 下都有其自己支持的读取设置。 **请在连接器文章 -> 复制活动属性部分中查看详细信息**。 | 否       |
@@ -78,7 +79,7 @@ JSON格式支持以下连接器：[亚马逊S3，Azure](connector-amazon-simple-
 
 复制活动***\*接收器\**** 部分支持以下属性。
 
-| Property      | 说明                                                  | 必选 |
+| properties      | 说明                                                  | 必选 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为 **JSONSink**。 | 是      |
 | formatSettings | 一组属性。 请参阅下面的“JSON 写入设置”表。**** | 否       |
@@ -86,7 +87,7 @@ JSON格式支持以下连接器：[亚马逊S3，Azure](connector-amazon-simple-
 
 `formatSettings` 下支持的 **JSON 写入设置**：
 
-| Property      | 说明                                                  | 必选                                              |
+| properties      | 说明                                                  | 必选                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | 格式类型设置必须设置为**JsonWriteSettings**。 | 是                                                   |
 | filePattern |指示每个 JSON 文件中存储的数据模式。 允许的值为：**setOfObjects** 和 **arrayOfObjects**。 **默认**值为 **setOfObjects**。 请参阅 [JSON 文件模式](#json-file-patterns)部分，详细了解这些模式。 |否 |

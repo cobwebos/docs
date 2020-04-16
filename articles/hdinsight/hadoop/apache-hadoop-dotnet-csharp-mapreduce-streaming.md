@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/22/2019
-ms.openlocfilehash: 025b5c5c1e3b8543111e112202906ef6f1fdb482
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 7a299ce16f6e9c7292cebf198c9c3077f8e05fcb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74561804"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417607"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 上将 C# 与 MapReduce 流式处理配合使用
 
 了解如何在 HDInsight 上使用 C# 创建 MapReduce 解决方案。
 
-Apache Hadoop 流式处理是一个实用工具，通过它可以使用脚本或可执行文件运行 MapReduce 作业。 在本示例中，.NET 用于为单词计数解决方案实现映射器和化简器。
+Apache Hadoop 流允许您使用脚本或可执行文件运行 MapReduce 作业。 此处，.NET 用于实现字数解决方案的映射器和减少器。
 
 ## <a name="net-on-hdinsight"></a>HDInsight 上的 .NET
 
@@ -49,12 +49,9 @@ HDInsight 群集使用 [Mono (https://mono-project.com)](https://mono-project.co
 
 * 如果使用 PowerShell，需要安装 [Az 模块](https://docs.microsoft.com/powershell/azure/overview)。
 
-* SSH 客户端（可选）。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
-
 * HDInsight 中的 Apache Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](../hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 
-* 群集主存储的 [URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 对于 Azure 存储，这将是 `wasb://`，对于 Azure Data Lake Storage Gen2，这将是 `abfs://`，对于 Azure Data Lake Storage Gen1，这将是 `adl://`。 如果为 Azure 存储或 Data Lake Storage Gen2 启用了安全传输，则 URI 将分别为 `wasbs://` 或 `abfss://`，另请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
-
+* 群集主存储的 [URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 此方案适用于`wasb://`Azure 存储、Azure`abfs://`数据湖存储第 2`adl://`代或 Azure 数据湖存储第 1 代。 如果为 Azure 存储或 Data Lake Storage Gen2 启用了安全传输，则 URI 将分别为 `wasbs://` 或 `abfss://`，另请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
 
 ## <a name="create-the-mapper"></a>创建映射器
 
@@ -152,7 +149,7 @@ namespace reducer
 
 1. 在可视化工作室中，选择 **"查看** > **服务器资源管理器**"。
 
-1. 右键单击“Azure”并选择“连接到 Microsoft Azure 订阅...”，然后完成登录过程。********
+1. 右键单击**Azure**，选择"**连接到 Microsoft Azure 订阅..."，** 然后完成登录过程。
 
 1. 展开要将此应用程序部署到的 HDInsight 群集。 将列出带有文本“（默认存储帐户）”**** 的条目。
 
@@ -221,14 +218,16 @@ namespace reducer
 
    以下列表描述了每个参数和选项的含义：
 
-   * *hadoop-streaming.jar*： 指定包含流式 MapReduce 功能的 jar 文件。
-   * `-files`：指定此作业的*mapper.exe*和*减量器.exe*文件。 每个文件前的 `wasbs:///`、`adl:///` 或 `abfs:///` 协议声明是群集默认存储的根目录的路径。
-   * `-mapper`：指定实现映射器的文件。
-   * `-reducer`：指定实现减分器的文件。
-   * `-input`：指定输入数据。
-   * `-output`：指定输出目录。
+   |参数 | 说明 |
+   |---|---|
+   |hadoop-streaming.jar|指定包含流式处理 MapReduce 功能的 jar 文件。|
+   |-文件|为此作业指定 *mapper.exe* 和 *reducer.exe* 文件。 每个文件前的 `wasbs:///`、`adl:///` 或 `abfs:///` 协议声明是群集默认存储的根目录的路径。|
+   |-映射器|指定实现映射器的文件。|
+   |-减速器|指定实现化简器的文件。|
+   |-输入|指定输入数据。|
+   |-输出|指定输出目录。|
 
-3. 完成 MapReduce 作业后，使用以下命令查看结果：
+1. 完成 MapReduce 作业后，使用以下命令查看结果：
 
    ```bash
    hdfs dfs -text /example/wordcountout/part-00000

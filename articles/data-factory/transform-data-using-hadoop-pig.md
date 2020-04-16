@@ -11,18 +11,20 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 01/16/2018
-ms.openlocfilehash: 4064d62a6dc826b23ff1f51e9f61e48d362ae695
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73ce8c670940a31af6a88f98bfd5880ede259e01
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74912933"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418892"
 ---
 # <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hadoop Pig 活动转换数据
 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-pig-activity.md)
 > * [当前版本](transform-data-using-hadoop-pig.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 数据工厂[管道](concepts-pipelines-activities.md)中的 HDInsight Pig 活动会在[自己的](compute-linked-services.md#azure-hdinsight-linked-service)或[按需](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上执行 Pig 查询。 本文基于[数据转换活动](transform-data.md)一文，它概述了数据转换和受支持的转换活动。
 
@@ -57,7 +59,7 @@ ms.locfileid: "74912933"
 ```
 ## <a name="syntax-details"></a>语法详细信息
 
-| properties            | 描述                              | 必选 |
+| properties            | 说明                              | 必选 |
 | ------------------- | ---------------------------------------- | -------- |
 | name                | 活动名称                     | 是      |
 | description         | 描述活动用途的文本 | 否       |

@@ -8,18 +8,20 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/16/2019
-ms.openlocfilehash: d7e2af6c98951e685192656b37226716e4340bfe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 20def8ca51f21d914e7090999e8284244c5f3ec7
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930449"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416495"
 ---
 # <a name="conditional-split-transformation-in-mapping-data-flow"></a>映射数据流中的条件拆分转换
 
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 条件拆分转换根据匹配条件将数据行路由到不同的流。 条件拆分转换类似于编程语言中的 CASE 决策结构。 转换计算表达式，并根据结果将数据行定向到指定的流。
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 
 "**拆分"** 设置确定数据行是流向第一个匹配流还是与其匹配的每个流。
 

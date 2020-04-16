@@ -10,17 +10,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/16/2018
-ms.openlocfilehash: 1c12a10dfdf8e69cf05ab30d0e6aa48fea5803a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1bba6903fe1cb8cc5bae9a12153553594180b43
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74912902"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418875"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的 Hadoop 流式处理活动转换数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-hadoop-streaming-activity.md)
 > * [当前版本](transform-data-using-hadoop-streaming.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 数据工厂[管道](concepts-pipelines-activities.md)中的 HDInsight 流式处理活动会在[自己的](compute-linked-services.md#azure-hdinsight-linked-service)或[按需](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上执行 Hadoop 流式处理程序。 本文基于[数据转换活动](transform-data.md)一文，它概述了数据转换和受支持的转换活动。
 
@@ -67,7 +69,7 @@ ms.locfileid: "74912902"
 
 ## <a name="syntax-details"></a>语法详细信息
 
-| properties          | 描述                              | 必选 |
+| properties          | 说明                              | 必选 |
 | ----------------- | ---------------------------------------- | -------- |
 | name              | 活动名称                     | 是      |
 | description       | 描述活动用途的文本 | 否       |

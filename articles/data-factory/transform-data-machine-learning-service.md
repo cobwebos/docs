@@ -10,14 +10,16 @@ ms.author: daperlov
 author: djpmsft
 manager: anandsub
 ms.date: 10/10/2019
-ms.openlocfilehash: b54504cf8ca7b32bf14bd4b7e0c561ffd56d4098
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f033651eb7e52ba60cce9b74941a4ef0eb376d2b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76155157"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418994"
 ---
 # <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>在 Azure 数据工厂中执行 Azure 机器学习管道
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 在 Azure 数据工厂管道中运行 Azure 机器学习管道作为步骤。 机器学习执行管道活动支持批处理预测方案，例如识别可能的贷款默认值、确定情绪和分析客户行为模式。
 
@@ -48,10 +50,10 @@ ms.locfileid: "76155157"
 
 ## <a name="type-properties"></a>Type 属性
 
-properties | 描述 | 允许的值 | 必选
+properties | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
-name | 管道中活动的名称 | String | 是
-type | 活动类型为"AzureML 执行管道" | String | 是
+name | 管道中活动的名称 | 字符串 | 是
+type | 活动类型为"AzureML 执行管道" | 字符串 | 是
 linkedServiceName | 链接到 Azure 机器学习的服务 | 链接服务引用 | 是
 毫升里线Id | 已发布的 Azure 机器学习管道的 ID | 字符串（或带有 resultType 字符串的表达式） | 是
 实验名称 | 运行机器学习管道运行的历史实验名称 | 字符串（或带有 resultType 字符串的表达式） | 否

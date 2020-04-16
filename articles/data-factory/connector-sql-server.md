@@ -12,18 +12,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: e7f91d60a0e181690859da64e491c4c0fa1e1a3e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 063ac32c98d4eb64b676247c0a16f98fa7d1702d
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80238719"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416691"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 SQL Server 复制数据
 
 > [!div class="op_single_selector" title1="选择正在使用的 Azure 数据工厂版本："]
 > * [版本 1](v1/data-factory-sqlserver-connector.md)
 > * [当前版本](connector-sql-server.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从/向 SQL Server 数据库复制数据。 它基于[复制活动概述](copy-activity-overview.md)文章，该文章概述了复制活动。
 
@@ -63,7 +64,7 @@ ms.locfileid: "80238719"
 
 SQL Server 链接服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 类型属性必须设置为**SqlServer**。 | 是 |
 | connectionString |指定使用 SQL 身份验证或 Windows 身份验证连接到 SQL Server 数据库时所需的 **connectionString** 信息。 请参阅以下示例。<br/>还可以在 Azure Key Vault 中输入密码。 如果使用 SQL 身份验证，请从连接字符串中提取 `password` 配置。 有关详细信息，请参阅表格后面的 JSON 示例，以及[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 |是 |
@@ -147,7 +148,7 @@ SQL Server 链接服务支持以下属性：
 
 从/向 SQL Server 数据库复制数据时支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的类型属性必须设置为**SqlServerTable**。 | 是 |
 | 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
@@ -183,7 +184,7 @@ SQL Server 链接服务支持以下属性：
 
 要从 SQL Server 复制数据，请将复制活动中的源类型设置为 SqlSource****。 复制活动的 source 节支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 节的 type 属性必须设置为 SqlSource****。 | 是 |
 | sqlReaderQuery |使用自定义 SQL 查询读取数据。 示例为 `select * from MyTable`。 |否 |
@@ -290,7 +291,7 @@ GO
 
 要向 SQL Server 复制数据，请将复制活动中的接收器类型设置为 SqlSink****。 复制活动的 sink 节支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动的 sink 的 type 属性必须设置为 SqlSink****。 | 是 |
 | writeBatchSize |每批要插入到 SQL 表中的行数。**<br/>允许的值为表示行数的整数。 默认情况下，Azure 数据工厂会根据行大小动态确定适当的批大小。 |否 |
@@ -516,7 +517,7 @@ END
 | smalldatetime |DateTime |
 | smallint |Int16 |
 | smallmoney |Decimal |
-| sql_variant |Object |
+| sql_variant |对象 |
 | text |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |

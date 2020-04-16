@@ -12,14 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.openlocfilehash: 4acad5e2de55211b6c4492513f331c36286ed852
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4dd82eea0a80ef81a0f972d1964a62e6c17a80c0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75892782"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417364"
 ---
 # <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Dynamics AX 复制数据
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Dynamics AX 源复制数据。 本文是根据总体概述复制活动的 [Azure 数据工厂中的复制活动](copy-activity-overview.md)编写的。
 
@@ -59,7 +61,7 @@ ms.locfileid: "75892782"
 
 Dynamics AX 链接的服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | **type** 属性必须设置为 **DynamicsAX**。 |是 |
 | url | Dynamics AX（或 Dynamics 365 Finance and Operations）实例 OData 终结点。 |是 |
@@ -103,10 +105,10 @@ Dynamics AX 链接的服务支持以下属性：
 
 要从 Dynamics AX 复制数据，请将数据集的 **type** 属性设置为 **DynamicsAXResource**。 支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 **type** 属性必须设置为 **DynamicsAXResource**。 | 是 |
-| 路径 | Dynamics AX OData 实体的路径。 | 是 |
+| path | Dynamics AX OData 实体的路径。 | 是 |
 
 **示例**
 
@@ -137,7 +139,7 @@ Dynamics AX 链接的服务支持以下属性：
 
 若要从 Dynamics AX 复制数据，请将复制活动中的 **source** 类型设置为 **DynamicsAXSource**。 复制活动**源**部分支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **DynamicsAXSource**。 | 是 |
 | query | 用于筛选数据的 OData 查询选项。 示例：`"?$select=Name,Description&$top=5"`。<br/><br/>**注意**：连接器从以下组合 URL 复制数据：`[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`。 有关详细信息，请参阅 [OData URL 组件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |

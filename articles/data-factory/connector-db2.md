@@ -11,17 +11,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: jingwang
-ms.openlocfilehash: 22ecac12e049e58e533cdde0078f4a25f6bb2aa6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c2071e4b2a3daa528c7d01f64e38247b063e6f1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77423821"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417415"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 DB2 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-onprem-db2-connector.md)
 > * [当前版本](connector-db2.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 DB2 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -65,7 +67,7 @@ ms.locfileid: "77423821"
 
 DB2 链接服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：Db2**** | 是 |
 | server |DB2 服务器的名称。 可以在冒号分隔的服务器名称后面指定端口号，例如 `server:port`。 |是 |
@@ -111,7 +113,7 @@ DB2 链接服务支持以下属性：
 
 若要从 DB2 复制数据，需要支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的类型属性必须设置为 **：Db2Table** | 是 |
 | 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
@@ -146,7 +148,7 @@ DB2 链接服务支持以下属性：
 
 若要从 DB2 复制数据，复制活动的 **source** 节需要支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 必须将复制活动源的类型属性设置为 **：Db2Source** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`。 | 否（如果指定了数据集中的“tableName”） |
@@ -194,28 +196,28 @@ DB2 链接服务支持以下属性：
 | BigInt |Int64 |
 | Binary |Byte[] |
 | Blob |Byte[] |
-| Char |String |
-| Clob |String |
+| Char |字符串 |
+| Clob |字符串 |
 | Date |Datetime |
-| DB2DynArray |String |
-| DbClob |String |
+| DB2DynArray |字符串 |
+| DbClob |字符串 |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Double |Double |
 | Float |Double |
-| Graphic |String |
+| Graphic |字符串 |
 | Integer |Int32 |
 | LongVarBinary |Byte[] |
-| LongVarChar |String |
-| LongVarGraphic |String |
+| LongVarChar |字符串 |
+| LongVarGraphic |字符串 |
 | Numeric |Decimal |
 | Real |Single |
 | SmallInt |Int16 |
 | 时间 |TimeSpan |
 | 时间戳 |DateTime |
 | VarBinary |Byte[] |
-| VarChar |String |
-| VarGraphic |String |
+| VarChar |字符串 |
+| VarGraphic |字符串 |
 | Xml |Byte[] |
 
 ## <a name="lookup-activity-properties"></a>Lookup 活动属性

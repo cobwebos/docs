@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 26cb111b2e557427b74fb142d3c0b14680c3886e
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 2e27c54b6d5a95de92f77e61f5a1e11e1fd53ee5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80992107"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416906"
 ---
 # <a name="copy-data-from-magento-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Magento 复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Magento 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -46,7 +47,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 Magento 链接的服务支持以下属性：
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：Magento**** | 是 |
 | host | Magento 实例的 URL。 （即 192.168.222.110/magento3）  | 是 |
@@ -82,7 +83,7 @@ Magento 链接的服务支持以下属性：
 
 要从 Magento 复制数据，请将数据集的 type 属性设置为 MagentoObject****。 支持以下属性：
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的类型属性必须设置为 **：MagentoObject** | 是 |
 | tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
@@ -112,7 +113,7 @@ Magento 链接的服务支持以下属性：
 
 要从 Magento 复制数据，请将复制活动中的源类型设置为 MagentoSource****。 复制活动**源**部分支持以下属性：
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：MagentoSource**** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Customers"`。 | 否（如果指定了数据集中的“tableName”） |

@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d56964b7415e4ca5903950cd46c02b3c27f62d5e
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 4063751a71cd9cecc424dfe3daddaecfd9ea4071
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547410"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81421938"
 ---
 使用 Spot VM 使您能够利用我们未使用的容量，从而显著节省成本。 在 Azure 需要返回容量的任何时间点，Azure 基础结构将驱逐 Spot VM。 因此，Spot VM 非常适合处理批处理作业、开发/测试环境、大型计算工作负载等中断的工作负载。
 
@@ -88,6 +88,7 @@ Spot VM 当前无法使用临时操作系统磁盘。
 | 企业协议         | 是                               |
 | Pay As You Go                | 是                               |
 | 云服务提供商 (CSP) | [联系您的合作伙伴](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
+| Microsoft 客户协议 | 是                               |
 | 优点                     | 不可用                     |
 | 赞助                    | 不可用                     |
 | 免费试用版                   | 不可用                     |

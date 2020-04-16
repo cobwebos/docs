@@ -3,12 +3,12 @@ title: 跨租户管理体验
 description: Azure 委派资源管理可实现跨租户管理体验。
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0ac5d62fbf6b6ee418cd4b2f2b00dfc12e05f809
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 66e2b2f7fbbae5940b576ead22a416625af3c058
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754132"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418502"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
@@ -25,11 +25,7 @@ Azure Active Directory (Azure AD) 租户表示组织。 它是组织通过注册
 
 使用 Azure 委派资源管理时，加入过程会指定服务提供商租户中能够访问和管理客户租户中的订阅、资源组和资源的用户。 然后，这些用户可以使用自己的凭据登录到 Azure 门户。 在 Microsoft Azure 门户中，这些用户可以管理其有权访问的所有客户的资源。 为此，可以访问 Microsoft Azure 门户中的[我的客户](../how-to/view-manage-customers.md)页，或直接在该客户订阅的上下文中工作（在 Azure 门户中或通过 API）。
 
-Azure 委派资源管理可更灵活地管理多个客户的资源，而无需登录到不同租户中的不同帐户。 例如，服务提供商可能有三个客户，各自具有不同的责任和访问级别，如下所示：
-
-![显示服务提供者责任的三个客户租户](../media/azure-delegated-resource-management-customer-tenants.jpg)
-
-使用 Azure 委派的资源管理，授权用户可以登录到服务提供商的租户以访问这些资源，如下所示：
+Azure 委派资源管理可更灵活地管理多个客户的资源，而无需登录到不同租户中的不同帐户。 例如，服务提供商可能有两个客户具有不同的责任和访问级别。 使用 Azure 委派的资源管理，授权用户可以登录到服务提供商的租户以访问这些资源。
 
 ![通过一个服务提供商租户管理的客户资源](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 

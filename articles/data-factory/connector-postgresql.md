@@ -11,17 +11,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 38cab21fb38fe171992ec8ce6c48b07f2ea94e9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6d10e7b9b24817eb738172bd0f2d2c3e7f8f2cbf
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77471136"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416749"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 PostgreSQL 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-onprem-postgresql-connector.md)
 > * [当前版本](connector-postgresql.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 PostgreSQL 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -52,7 +54,7 @@ ms.locfileid: "77471136"
 
 PostgreSQL 链接的服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**PostgreSql** | 是 |
 | connectionString | 用于连接到 Azure Database for PostgreSQL 的 ODBC 连接字符串。 <br/>还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
@@ -60,7 +62,7 @@ PostgreSQL 链接的服务支持以下属性：
 
 典型的连接字符串为 `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`。 你可以根据自己的情况设置更多属性：
 
-| properties | 描述 | 选项 | 必选 |
+| properties | 说明 | 选项 | 必选 |
 |:--- |:--- |:--- |:--- |
 | EncryptionMethod (EM)| 驱动程序用于加密在驱动程序和数据库服务器之间发送的数据的方法。 例如，`EncryptionMethod=<0/1/6>;`| 0 (No Encryption) **(Default)** / 1 (SSL) / 6 (RequestSSL) | 否 |
 | ValidateServerCertificate (VSC) | 启用 SSL 加密后，确定驱动程序是否验证数据库服务器发送的证书（加密方法=1）。 例如，`ValidateServerCertificate=<0/1>;`| 0 (Disabled) **(Default)** / 1 (Enabled) | 否 |
@@ -141,7 +143,7 @@ PostgreSQL 链接的服务支持以下属性：
 
 从 PostgreSQL 复制数据时，支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的类型属性必须设置为 **：PostgreSqlTable** | 是 |
 | 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
@@ -176,7 +178,7 @@ PostgreSQL 链接的服务支持以下属性：
 
 从 PostgreSQL 复制数据时，复制活动的 **source** 节支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 必须将复制活动源的类型属性设置为 **：PostgreSqlSource** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"query": "SELECT * FROM \"MySchema\".\"MyTable\""`。 | 否（如果指定了数据集中的“tableName”） |

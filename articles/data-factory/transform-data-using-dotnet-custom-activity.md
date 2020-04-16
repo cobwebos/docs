@@ -10,18 +10,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: 4913152125b0fafd74db575f835d53fa992b075e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 74e381a9ad32acdaa8cbb719824d74ca6d339f30
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260574"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418943"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-use-custom-activities.md)
 > * [当前版本](transform-data-using-dotnet-custom-activity.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在 Azure 数据工厂管道中可使用两类活动。
 
@@ -99,7 +100,7 @@ ms.locfileid: "79260574"
 
 下表描述了此活动特有的属性的名称和描述。
 
-| properties              | 描述                              | 必选 |
+| properties              | 说明                              | 必选 |
 | :-------------------- | :--------------------------------------- | :------- |
 | name                  | 管道中活动的名称     | 是      |
 | description           | 描述活动用途的文本。  | 否       |
@@ -344,7 +345,7 @@ Activity Error section:
 |所需数据集      |可选      |需要链接活动并传递信息      |
 |将信息从活动传递到自定义逻辑      |通过 ReferenceObjects（LinkedServices 和数据集）与 ExtendedProperties（自定义属性）      |通过 ExtendedProperties（自定义属性）、输入和输出数据集      |
 |在自定义逻辑中检索信息      |分析可执行文件所在文件夹中存储的 activity.json、linkedServices.json 和 datasets.json      |通过 .NET SDK （.NET 帧 4.5.2）      |
-|Logging      |直接写入到 STDOUT      |在 .NET DLL 中实现记录器      |
+|日志记录      |直接写入到 STDOUT      |在 .NET DLL 中实现记录器      |
 
 如果为版本 1（自定义）DotNet 活动编写了现有的 .NET 代码，则需要修改代码，以便它才能与自定义活动的当前版本一起工作。 按照以下高级准则更新代码：
 

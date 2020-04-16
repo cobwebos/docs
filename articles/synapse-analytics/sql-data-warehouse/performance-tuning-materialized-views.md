@@ -10,19 +10,18 @@ ms.subservice: ''
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 6e942130d9acf803665e52498ef6a4976cc9ade7
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 6a3235d5edc5249bbbdc2e79dac8575ad26fd5e1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743172"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417027"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>使用具体化视图优化性能
 
 Synapse SQL 池中的具体化视图为复杂的分析查询提供了一种低维护方法，无需任何查询更改即可获得快速性能。 本文提供有关使用具体化视图的一般性指导。
 
-Azure SQL 数据仓库中的具体化视图为复杂的分析查询提供一种低维护的方法来加速查询性能，且无需对查询进行任何更改。 本文提供有关使用具体化视图的一般性指导。
+SQL 池中的具体化视图为复杂的分析查询提供了一种低维护方法，无需任何查询更改即可获得快速性能。 本文提供有关使用具体化视图的一般性指导。
 
 ## <a name="materialized-views-vs-standard-views"></a>具体化视图与标准视图
 
@@ -34,18 +33,18 @@ SQL 池支持标准和具体化视图。  两者都是使用 SELECT 表达式创
 
 对标准视图的大部分要求仍适用于具体化视图。 有关具体化视图语法和其他要求的详细信息，请参阅[创建重要性视图作为选择](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-| 比较                     | 视图                                         | 具体化视图
+| 比较                     | 查看                                         | 具体化视图
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
 |查看定义                 | 存储在 SQL 池中。              | 存储在 SQL 池中。
 |视图内容                    | 每次使用视图时生成。   | 在创建视图期间预处理并存储在 SQL 池中。 随着在基础表中添加数据而不断更新。
 |数据刷新                    | 始终更新                               | 始终更新
-|从复杂查询检索视图数据的速度     | 较慢                                         | Fast  
+|从复杂查询检索视图数据的速度     | 较慢                                         | 快速  
 |额外的存储                   | 否                                           | 是
 |语法                          | CREATE VIEW                                  | CREATE MATERIALIZED VIEW AS SELECT
 
 ## <a name="benefits-of-using-materialized-views"></a>使用具体化视图的优势
 
-合理设计的具体化视图可提供以下优势：
+正确设计的具体化视图提供了以下好处：
 
 - 减少包含 JOIN 和聚合函数的复杂查询的执行时间。 查询越复杂，节省执行时间的可能性就越大。 当查询的计算成本较高并且生成的数据集较小时优势最大。  
 - SQL 池中的优化程序可以自动使用已部署的实物视图来改进查询执行计划。  此过程对于用户是透明的，提供更快的查询性能，且不需要查询直接引用具体化视图。
@@ -118,7 +117,7 @@ JOIN sys.indexes I ON V.object_id= I.object_id AND I.index_id < 2;
 
 - 删除使用率较低或不再需要的具体化视图。  已禁用的具体化视图不再受到维护，但仍会产生存储成本。  
 
-- 合并针对相同或类似基表创建的具体化视图，即使这些表中的数据不重叠。  合并具体化视图可能会导致合并后的视图大小比各个视图的大小之和更大，但视图维护成本应会降低。  例如：
+- 合并针对相同或类似基表创建的具体化视图，即使这些表中的数据不重叠。  合并具体化视图可能会导致比单独视图的总和更大的视图，但视图维护成本应降低。  例如：
 
 ```sql
 

@@ -11,14 +11,16 @@ ms.author: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 5/14/2019
-ms.openlocfilehash: 70367a38fbf7b59486e2eaaf6c05634aa7575869
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2359b378b1f54cf6e03218f819b3a7c5740ba596
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260704"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416403"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>为 Azure-SSIS 集成运行时启用 Azure Active Directory 身份验证
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文介绍如何使用 Azure 数据工厂 (ADF) 的托管标识启用 Azure Active Directory (Azure AD) 身份验证，并使用它代替常规身份验证方法（如 SQL 身份验证）执行以下操作：
 
@@ -63,7 +65,7 @@ Azure SQL 数据库服务器支持使用 Azure AD 用户创建数据库。 首�
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  将 ADF 的托管标识添加到该组。 可以按照文章[数据工厂的托管标识](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)获取主体托管标识对象 ID（例如，765ad4ab-XXXX-XXXX-XXXX-51ed985819dc，但不要将托管标识应用程序 ID 用于此目的）。
+3.  将 ADF 的托管标识添加到该组。 您可以按照[数据工厂的托管标识](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)来获取主托管标识对象 ID（例如 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc，但不为此使用托管标识应用程序 ID）。
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
@@ -225,6 +227,6 @@ Azure SQL 数据库托管实例支持直接使用 ADF 的托管标识创建数�
 
 - [OLE DB 连接管理器](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager#managed-identities-for-azure-resources-authentication)
 
-- [ADO.NET连接管理器](https://docs.microsoft.com/sql/integration-services/connection-manager/ado-net-connection-manager#managed-identities-for-azure-resources-authentication)
+- [ADO.NET 连接管理器](https://docs.microsoft.com/sql/integration-services/connection-manager/ado-net-connection-manager#managed-identities-for-azure-resources-authentication)
 
 - [Azure 存储连接管理器](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication)

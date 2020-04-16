@@ -12,14 +12,15 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 11/20/2019
-ms.openlocfilehash: 9bbd2e3376f1da3fdf5b10d654a331ce258be5cf
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: c891cb4eca2c286b3ac636e5995714accd591772
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422089"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417348"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365 (Common Data Service) 或 Dynamics CRM 复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述如何使用 Azure 数据工厂中的复制活动从/向 Microsoft Dynamics 365 或 Microsoft Dynamics CRM 复制数据。 它基于["复制活动概述](copy-activity-overview.md)"一文，其中介绍了复制活动的一般概述。
 

@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/24/2020
-ms.openlocfilehash: 7d380f34f849eac835abbd295cd1e2d8c17daaef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 184c5f23ae18a58f26f4b18a884209941343e2e1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153841"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418093"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Salesforce 复制数据
 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-salesforce-connector.md)
 > * [当前版本](connector-salesforce.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述如何使用 Azure 数据工厂中的复制活动从/向 Salesforce 复制数据。 本文基于总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -65,7 +67,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 
 Salesforce 链接服务支持以下属性。
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type |类型属性必须设置为 **Salesforce**。 |是 |
 | environmentUrl | 指定 Salesforce 实例的 URL。 <br> - 默认为 `"https://login.salesforce.com"`。 <br> - 要从沙盒复制数据，请指定 `"https://test.salesforce.com"`。 <br> - 要从自定义域复制数据，请指定 `"https://[domain].my.salesforce.com"`（以此为例）。 |否 |
@@ -144,7 +146,7 @@ Salesforce 链接服务支持以下属性。
 
 要从/向 Salesforce 复制数据，请将数据集的 type 属性设置为 **SalesforceObject**。 支持以下属性。
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **SalesforceObject**。  | 是 |
 | objectApiName | 要从中检索数据的 Salesforce 对象名称。 | 对于源为“No”，对于接收器为“Yes” |
@@ -176,7 +178,7 @@ Salesforce 链接服务支持以下属性。
 >[!NOTE]
 >为了向后兼容，从 Salesforce 中复制数据时，使用以前“RelationalTable”类型的数据集都将有效，而建议以切换到新的“SalesforceObject”类型。
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 **RelationalTable**。 | 是 |
 | tableName | 在 Salesforce 中表的名称。 | 否（如果指定了活动源中的“query”） |
@@ -189,7 +191,7 @@ Salesforce 链接服务支持以下属性。
 
 要从 Salesforce 复制数据，请将复制活动中的源类型设置为“SalesforceSource”****。 复制活动的 **source** 节支持以下属性。
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **SalesforceSource**。 | 是 |
 | query |使用自定义查询读取数据。 可以使用 [Salesforce 对象查询语言 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) 查询或 SQL-92 查询。 请在[查询提示](#query-tips)部分中查看更多提示。 如果未指定查询，将检索在数据集的“objectApiName”中指定的 Salesforce 对象的所有数据。 | 否（如果指定了数据集中的“objectApiName”） |
@@ -239,7 +241,7 @@ Salesforce 链接服务支持以下属性。
 
 要向 Salesforce 复制数据，请将复制活动中的接收器类型设置为“SalesforceSink”****。 复制活动**接收器**部分支持以下属性。
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 **SalesforceSink**。 | 是 |
 | writeBehavior | 操作写入行为。<br/>允许的值为 **Insert** 和 **Upsert**。 | 否（默认值为 Insert） |
@@ -322,25 +324,25 @@ Salesforce 链接服务支持以下属性。
 
 | Salesforce 数据类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
-| 自动编号 |String |
+| 自动编号 |字符串 |
 | 复选框 |Boolean |
 | 货币 |Decimal |
 | Date |DateTime |
 | 日期/时间 |DateTime |
-| 电子邮件 |String |
-| ID |String |
-| 查找关系 |String |
-| 多选择列表 |String |
+| 电子邮件 |字符串 |
+| ID |字符串 |
+| 查找关系 |字符串 |
+| 多选择列表 |字符串 |
 | Number |Decimal |
 | 百分比 |Decimal |
-| 电话 |String |
-| 选择列表 |String |
-| Text |String |
-| 文本区域 |String |
-| 文本区域（长型值） |String |
-| 文本区域（丰富） |String |
-| 文本（加密） |String |
-| 代码 |String |
+| 电话 |字符串 |
+| 选择列表 |字符串 |
+| 文本 |字符串 |
+| 文本区域 |字符串 |
+| 文本区域（长型值） |字符串 |
+| 文本区域（丰富） |字符串 |
+| 文本（加密） |字符串 |
+| 代码 |字符串 |
 
 ## <a name="lookup-activity-properties"></a>Lookup 活动属性
 

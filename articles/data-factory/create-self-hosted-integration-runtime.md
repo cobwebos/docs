@@ -11,14 +11,16 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 03/13/2020
-ms.openlocfilehash: 3fe5a58046776d00ce68189cf724a995380869eb
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 6bc0f002c6927cfd9a314797663e1dabbac392b6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887280"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416645"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的计算基础结构。 有关 IR 的详细信息，请参阅[集成运行时概述](concepts-integration-runtime.md)。
 
@@ -105,7 +107,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 下面是应用程序参数和属性的详细信息： 
 
-| Property                                                    | 说明                                                  | 必选 |
+| properties                                                    | 说明                                                  | 必选 |
 | ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
 | **注册新节点**"`<AuthenticationKey>`"                     | 使用指定的身份验证密钥注册自承载集成运行时节点。 | 否       |
 | **注册新节点**"`<AuthenticationKey>`" "`<NodeName>`"      | 使用指定的身份验证密钥和节点名称注册自承载集成运行时节点。 | 否       |
@@ -203,7 +205,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
     1. 或者选择“显示身份验证密钥”****，以查看密钥文本。
 
-    1. 选择“注册”****。
+    1. 选择“注册”  。
 
 ## <a name="high-availability-and-scalability"></a>高可用性和可伸缩性
 

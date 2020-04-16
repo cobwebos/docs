@@ -10,17 +10,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/20/2019
-ms.openlocfilehash: 44371c78a4d02588eef21aae5a4bba3d033763d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3587ee711864eb33fea9bc4e61fe226562e8f612
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76029989"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418858"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>使用 Azure 机器学习和 Azure 数据工厂创建预测管道
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-azure-ml-batch-execution-activity.md)
 > * [当前版本](transform-data-using-machine-learning.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 通过 [Azure 机器学习](https://azure.microsoft.com/documentation/services/machine-learning/)，可以生成、测试和部署预测分析解决方案。 从高层次的角度来看，这可通过三个步骤完成：
 
@@ -123,7 +125,7 @@ Azure 机器学习支持将经典 Web 服务和新 Web 服务用于预测试验�
 }
 ```
 
-| properties          | 描述                              | 必选 |
+| properties          | 说明                              | 必选 |
 | :---------------- | :--------------------------------------- | :------- |
 | name              | 管道中活动的名称     | 是      |
 | description       | 描述活动用途的文本。  | 否       |

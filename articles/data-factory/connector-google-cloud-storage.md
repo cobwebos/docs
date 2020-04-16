@@ -10,14 +10,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: d811076e0d78ed2812681447bebe8e6e07aa33e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2ee0fc7f7b7e3ef465a43eed2bd47f33e87162b7
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75892667"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417304"
 ---
 # <a name="copy-data-from-google-cloud-storage-using-azure-data-factory"></a>使用 Azure 数据工厂从 Google 云存储复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何从 Google 云存储复制数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
 
@@ -62,7 +63,7 @@ Google 云存储帐户需要进行以下设置：
 
 Google 云存储链接服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **GoogleCloudStorage**。 | 是 |
 | accessKeyId | 机密访问键 ID。 若要查找访问密钥和机密，请参阅[先决条件](#prerequisites)。 |是 |
@@ -99,7 +100,7 @@ Google 云存储链接服务支持以下属性：
 
 基于格式的数据集中 `location` 设置下的 Google 云存储支持以下属性：
 
-| properties   | 描述                                                  | 必选 |
+| properties   | 说明                                                  | 必选 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 数据集中 `location` 下的 type 属性必须设置为 **AmazonS3Location**。 | 是      |
 | bucketName | S3 存储桶的名称。                                          | 是      |
@@ -143,7 +144,7 @@ Google 云存储链接服务支持以下属性：
 
 基于格式的复制源中 `storeSettings` 设置下的 Google 云存储支持以下属性：
 
-| properties                 | 描述                                                  | 必选                                                    |
+| properties                 | 说明                                                  | 必选                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
 | type                     | 下`storeSettings`的类型属性必须设置为**AmazonS3ReadSettings**。 | 是                                                         |
 | recursive                | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 请注意，当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。 允许的值**为 true（** 默认值）和**false**。 | 否                                                          |
@@ -225,7 +226,7 @@ Google 云存储链接服务支持以下属性：
 
 ### <a name="legacy-dataset-model"></a>旧数据集模型
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：AmazonS3Object**** |是 |
 | bucketName | S3 存储桶的名称。 不支持通配符筛选器。 |对于复制/查找活动，为“是”；对于 GetMetadata 活动，为“否” |
@@ -272,7 +273,7 @@ Google 云存储链接服务支持以下属性：
 
 ### <a name="legacy-copy-activity-source-model"></a>旧复制活动源模型
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：FileSystemSource**** |是 |
 | recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制/创建空的文件夹/子文件夹。<br/>允许的值是 **：true（** 默认 **），false** | 否 |

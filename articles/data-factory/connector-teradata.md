@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 1e1d7cc4bb7762d3ebd29e349467f3e33c0887f9
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 4eed79210e3e39f82b892ac0681e161ebb59597e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421220"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418025"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Teradata Vantage 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 >
 > * [版本 1](v1/data-factory-onprem-teradata-connector.md)
 > * [当前版本](connector-teradata.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Teradata Vantage 复制数据。 它基于[复制活动概述](copy-activity-overview.md)。
 
@@ -67,10 +69,10 @@ Teradata 链接服务支持以下属性：
 
 可以根据自己的情况在连接字符串中设置更多连接属性：
 
-| properties | 说明 | 默认值 |
+| properties | 描述 | 默认值 |
 |:--- |:--- |:--- |
-| CharacterSet | 要用于会话的字符集。 例如，`CharacterSet=UTF16`。<br><br/>此值可以是用户定义的字符集，也可以是以下预定义的字符集之一： <br/>- ASCII<br/>- UTF8<br/>- UTF16<br/>- LATIN1252_0A<br/>- LATIN9_0A<br/>- LATIN1_0A<br/>- Shift-JIS（Windows、兼容 DOS、KANJISJIS_0S）<br/>- EUC（兼容 Unix、KANJIEC_0U）<br/>- IBM Mainframe (KANJIEBCDIC5035_0I)<br/>- KANJI932_1S0<br/>- BIG5 (TCHBIG5_1R0)<br/>- GB (SCHGB2312_1T0)<br/>- SCHINESE936_6R0<br/>- TCHINESE950_8R0<br/>- NetworkKorean (HANGULKSC5601_2R4)<br/>- HANGUL949_7R0<br/>- ARABIC1256_6A0<br/>- CYRILLIC1251_2A0<br/>- HEBREW1255_5A0<br/>- LATIN1250_1A0<br/>- LATIN1254_7A0<br/>- LATIN1258_8A0<br/>- THAI874_4A0 | 默认值为 `ASCII`。 |
-| MaxRespSize |SQL 请求的响应缓冲区的最大大小，以千字节 (KB) 为单位。 例如，`MaxRespSize=‭10485760‬`。<br/><br/>对于 Teradata 数据库版本 16.00 或更高版本，最大值为 7361536。 对于使用较早版本的连接，最大值为 1048576。 | 默认值为 `65536`。 |
+| CharacterSet | 要用于会话的字符集。 例如，`CharacterSet=UTF16`。<br><br/>此值可以是用户定义的字符集，也可以是以下预定义的字符集之一： <br/>- ASCII<br/>- UTF8<br/>- UTF16<br/>- LATIN1252_0A<br/>- LATIN9_0A<br/>- LATIN1_0A<br/>- Shift-JIS（Windows、兼容 DOS、KANJISJIS_0S）<br/>- EUC（兼容 Unix、KANJIEC_0U）<br/>- IBM Mainframe (KANJIEBCDIC5035_0I)<br/>- KANJI932_1S0<br/>- BIG5 (TCHBIG5_1R0)<br/>- GB (SCHGB2312_1T0)<br/>- SCHINESE936_6R0<br/>- TCHINESE950_8R0<br/>- NetworkKorean (HANGULKSC5601_2R4)<br/>- HANGUL949_7R0<br/>- ARABIC1256_6A0<br/>- CYRILLIC1251_2A0<br/>- HEBREW1255_5A0<br/>- LATIN1250_1A0<br/>- LATIN1254_7A0<br/>- LATIN1258_8A0<br/>- THAI874_4A0 | 默认值是 `ASCII`。 |
+| MaxRespSize |SQL 请求的响应缓冲区的最大大小，以千字节 (KB) 为单位。 例如，`MaxRespSize=‭10485760‬`。<br/><br/>对于 Teradata 数据库版本 16.00 或更高版本，最大值为 7361536。 对于使用较早版本的连接，最大值为 1048576。 | 默认值是 `65536`。 |
 
 **使用基本身份验证的示例**
 
@@ -254,9 +256,9 @@ Teradata 链接服务支持以下属性：
 
 建议同时启用并行复制和数据分区，尤其是从 Teradata 加载大量数据时。 下面是适用于不同方案的建议配置。 将数据复制到基于文件的数据存储中时，建议将数据作为多个文件写入文件夹（仅指定文件夹名称），在这种情况下，性能优于写入单个文件。
 
-| 方案                                                     | 建议的设置                                           |
+| 场景                                                     | 建议的设置                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 从大型表进行完整加载。                                   | **分区选项**：哈希。 <br><br/>在执行期间，数据工厂将自动检测 PK 列，对其应用哈希，然后按分区复制数据。 |
+| 从大型表进行完整加载。                                   | **分区选项**：哈希。 <br><br/>在执行期间，数据工厂会自动检测主索引列，对它应用哈希，并通过分区复制数据。 |
 | 使用自定义查询加载大量数据。                 | **分区选项**：哈希。<br>**查询** `SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>`： .<br>**分区列**：指定用于应用哈希分区的列。 如果未指定，数据工厂将自动检测 Teradata 数据集中指定的表的 PK 列。<br><br>在执行期间，数据工厂会将 `?AdfHashPartitionCondition` 替换为哈希分区逻辑，并发送到 Teradata。 |
 | 使用自定义查询加载大量数据，某个整数列包含均匀分布的范围分区值。 | **分区选项**：动态范围分区。<br>**查询** `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`： .<br>**分区列**：指定用于对数据进行分区的列。 可以针对整数数据类型的列进行分区。<br>**分区上限**和**分区下限**：指定是否要针对分区列进行筛选，以便仅在下部和上部范围之间检索数据。<br><br>在执行期间，数据工厂会将 `?AdfRangePartitionColumnName`、`?AdfRangePartitionUpbound` 和 `?AdfRangePartitionLowbound` 替换为每个分区的实际列名和值范围，并将其发送到 Teradata。 <br>例如，如果为分区列“ID”设置了下限 1、上限 80，并将并行复制设置为 4，则数据工厂会按 4 个分区检索数据。 其 ID 分别介于 [1, 20]、[21, 40]、[41, 60] 和 [61, 80] 之间。 |
 

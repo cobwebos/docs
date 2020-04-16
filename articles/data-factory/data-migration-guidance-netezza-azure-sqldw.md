@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 9/03/2019
-ms.openlocfilehash: 80c9929f37b4890387a7625f04db6ce3e37f0cdd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a0263880262da95f4d26ee8388da464e9a59efca
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74922120"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416455"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>使用 Azure 数据工厂将数据从本地 Netezza 服务器迁移到 Azure 
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure 数据工厂提供高性能、稳健且经济高效的机制用于将数据从本地 Netezza 服务器大规模迁移到 Azure 存储帐户或 Azure SQL 数据仓库数据库。 
 
@@ -199,7 +201,7 @@ Azure 数据工厂提供一个可在不同级别实现并行度的无服务器�
 - [创建和配置自承载集成运行时](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
 - [自承载集成运行时的高可用性和可伸缩性](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
 - [数据移动安全注意事项](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
-- [在 Azure 密钥保管库中存储凭据](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
+- [在 Azure Key Vault 中存储凭据](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
 - [以增量方式从一个表复制数据](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-portal)
 - [以增量方式从多个表复制数据](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-multiple-tables-portal)
 - [Azure 数据工厂定价页](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)

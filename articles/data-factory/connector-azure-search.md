@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/13/2019
-ms.openlocfilehash: 418026d5569cd7e4a7c5239f99650833b1b9514d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dfa1ad318ccc9e891b646ec050f6a0776e108206
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75892944"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418229"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure 认知搜索索引
 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-azure-search-connector.md)
 > * [当前版本](connector-azure-search.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动将数据复制到 Azure 认知搜索索引中。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -40,7 +42,7 @@ ms.locfileid: "75892944"
 
 Azure 认知搜索链接服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：AzureSearch**** | 是 |
 | url | 搜索服务的 URL。 | 是 |
@@ -78,7 +80,7 @@ Azure 认知搜索链接服务支持以下属性：
 
 要将数据复制到 Azure 认知搜索，支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：AzureSearchIndex**** | 是 |
 | indexName | 搜索索引的名称。 数据工厂不创建索引。 索引必须存在于 Azure 认知搜索中。 | 是 |
@@ -110,7 +112,7 @@ Azure 认知搜索链接服务支持以下属性：
 
 要将数据复制到 Azure 认知搜索，请将复制活动中的源类型设置为**AzureSearchIndexSink**。 复制活动接收器部分中支持以下属性****：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：AzureSearchIndexSink**** | 是 |
 | writeBehavior | 指定索引中已存在文档时要合并还是替换该文档。 请参阅 [WriteBehavior 属性](#writebehavior-property)。<br/><br/>允许的值为：**Merge**（默认）和**Upload**。 | 否 |
@@ -169,7 +171,7 @@ Azure 认知搜索服务支持将文档编写为批处理。 每批次可包含 
 
 | Azure 认知搜索数据类型 | Azure 认知搜索接收器中支持 |
 | ---------------------- | ------------------------------ |
-| String | Y |
+| 字符串 | Y |
 | Int32 | Y |
 | Int64 | Y |
 | Double | Y |

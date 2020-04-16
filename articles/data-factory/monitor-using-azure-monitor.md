@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 8325b4ef6b89a76eeec418386cec4922cb5916b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5753336eeef115038de4eb0b5ade0651b1fa293e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979153"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419453"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>使用 Azure Monitor 发出警报和监视数据工厂
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 云应用程序比较复杂，包含很多移动部件。 监视功能可以提供数据来确保应用程序始终处于正常运行状态。 监视功能还有助于避免潜在问题，或者排查以往的问题。
 
@@ -64,7 +66,7 @@ PUT
 https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnosticSettings/service?api-version={api-version}
 ```
 
-##### <a name="headers"></a>标头
+##### <a name="headers"></a>头文件
 
 * 将 `{api-version}` 替换为 `2016-09-01`。
 * 将 `{resource-id}` 替换为要编辑其诊断设置的资源的 ID。 有关详细信息，请参阅[使用资源组来管理 Azure 资源](../azure-resource-manager/management/manage-resource-groups-portal.md)。
@@ -114,13 +116,13 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | properties | 类型 | 说明 |
 | --- | --- | --- |
-| **存储帐户 Id** |String | 要将诊断日志发送到的存储帐户的资源 ID。 |
-| **serviceBusRuleId** |String | 服务总线命名空间的服务总线规则 ID。你要在该服务总线命名空间中创建事件中心，以便流式传输诊断日志。 规则 ID 的格式为 `{service bus resource ID}/authorizationrules/{key name}`。|
+| **存储帐户 Id** |字符串 | 要将诊断日志发送到的存储帐户的资源 ID。 |
+| **serviceBusRuleId** |字符串 | 服务总线命名空间的服务总线规则 ID。你要在该服务总线命名空间中创建事件中心，以便流式传输诊断日志。 规则 ID 的格式为 `{service bus resource ID}/authorizationrules/{key name}`。|
 | **工作区 Id** | 复杂类型 | 指标时间粒度及其保留策略的数组。 此属性的值为空。 |
 |**指标**| 要传递到被调用管道的管道运行的参数值| 将参数名映射为自变量值的 JSON 对象。 |
 | **日志**| 复杂类型| 某个资源类型的诊断日志类别的名称。 若要获取资源的诊断日志类别列表，请先执行 GET 诊断设置操作。 |
-| **类别**| String| 日志类别及其保留策略的数组。 |
-| **时间格雷** | String | 以 ISO 8601 持续时间格式捕获的指标的粒度。 该属性值必须为 `PT1M`（1 分钟）。 |
+| **类别**| 字符串| 日志类别及其保留策略的数组。 |
+| **时间格雷** | 字符串 | 以 ISO 8601 持续时间格式捕获的指标的粒度。 该属性值必须为 `PT1M`（1 分钟）。 |
 | **启用**| Boolean | 指定是否为此资源启用了该指标或日志类别的收集。 |
 | **retentionPolicy**| 复杂类型| 描述指标或日志类别的保留策略。 此属性仅用于存储帐户。 |
 |**天**| Int| 指标或日志的保留天数。 如果该属性值为 0，则永久保留日志。 此属性仅用于存储帐户。 |
@@ -185,7 +187,7 @@ GET
 https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnosticSettings/service?api-version={api-version}
 ```
 
-##### <a name="headers"></a>标头
+##### <a name="headers"></a>头文件
 
 * 将 `{api-version}` 替换为 `2016-09-01`。
 * 将 `{resource-id}` 替换为要编辑其诊断设置的资源的 ID。 有关详细信息，请参阅[使用资源组来管理 Azure 资源](../azure-resource-manager/management/manage-resource-groups-portal.md)。
@@ -289,19 +291,19 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | properties | 类型 | 说明 | 示例 |
 | --- | --- | --- | --- |
-| **水平** |String | 诊断日志的级别。 对于活动运行日志，请将该属性值设置为 4。 | `4` |
-| **相关性Id** |String | 用于跟踪特定请求的唯一 ID。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| **时间** | String | 事件的时间，以时间跨度表示，采用 UTC 格式 `YYYY-MM-DDTHH:MM:SS.00000Z`。 | `2017-06-28T21:00:27.3534352Z` |
-|**activityRunId**| String| 活动运行的 ID。 | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
-|**pipelineRunId**| String| 管道运行的 ID。 | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
-|**资源 Id**| String | 与数据工厂资源关联的 ID。 | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|**类别**| String | 诊断日志的类别。 请将该属性值设置为 `ActivityRuns`。 | `ActivityRuns` |
-|**水平**| String | 诊断日志的级别。 请将该属性值设置为 `Informational`。 | `Informational` |
-|**操作名称**| String | 活动的名称及其状态。 如果活动是启动检测信号，则属性值为 `MyActivity -`。 如果活动是结束检测信号，则属性值为 `MyActivity - Succeeded`。 | `MyActivity - Succeeded` |
-|**pipelineName**| String | 管道的名称。 | `MyPipeline` |
-|**activityName**| String | 活动的名称。 | `MyActivity` |
-|**开始**| String | 活动运行的开始时间，以时间跨度表示，采用 UTC 格式。 | `2017-06-26T20:55:29.5007959Z`|
-|**结束**| String | 活动运行的结束时间，以时间跨度表示，采用 UTC 格式。 如果诊断日志显示活动已启动但尚未结束，则该属性值为 `1601-01-01T00:00:00Z`。 | `2017-06-26T20:55:29.5007959Z` |
+| **级别** |字符串 | 诊断日志的级别。 对于活动运行日志，请将该属性值设置为 4。 | `4` |
+| **相关性Id** |字符串 | 用于跟踪特定请求的唯一 ID。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| **time** | 字符串 | 事件的时间，以时间跨度表示，采用 UTC 格式 `YYYY-MM-DDTHH:MM:SS.00000Z`。 | `2017-06-28T21:00:27.3534352Z` |
+|**activityRunId**| 字符串| 活动运行的 ID。 | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
+|**pipelineRunId**| 字符串| 管道运行的 ID。 | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
+|**资源 Id**| 字符串 | 与数据工厂资源关联的 ID。 | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|**类别**| 字符串 | 诊断日志的类别。 请将该属性值设置为 `ActivityRuns`。 | `ActivityRuns` |
+|**水平**| 字符串 | 诊断日志的级别。 请将该属性值设置为 `Informational`。 | `Informational` |
+|**操作名称**| 字符串 | 活动的名称及其状态。 如果活动是启动检测信号，则属性值为 `MyActivity -`。 如果活动是结束检测信号，则属性值为 `MyActivity - Succeeded`。 | `MyActivity - Succeeded` |
+|**pipelineName**| 字符串 | 管道的名称。 | `MyPipeline` |
+|**activityName**| 字符串 | 活动的名称。 | `MyActivity` |
+|**start**| 字符串 | 活动运行的开始时间，以时间跨度表示，采用 UTC 格式。 | `2017-06-26T20:55:29.5007959Z`|
+|**结束**| 字符串 | 活动运行的结束时间，以时间跨度表示，采用 UTC 格式。 如果诊断日志显示活动已启动但尚未结束，则该属性值为 `1601-01-01T00:00:00Z`。 | `2017-06-26T20:55:29.5007959Z` |
 
 #### <a name="pipeline-run-log-attributes"></a>管道运行日志属性
 
@@ -335,18 +337,18 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | properties | 类型 | 说明 | 示例 |
 | --- | --- | --- | --- |
-| **水平** |String | 诊断日志的级别。 对于活动运行日志，请将该属性值设置为 4。 | `4` |
-| **相关性Id** |String | 用于跟踪特定请求的唯一 ID。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| **时间** | String | 事件的时间，以时间跨度表示，采用 UTC 格式 `YYYY-MM-DDTHH:MM:SS.00000Z`。 | `2017-06-28T21:00:27.3534352Z` |
-|**runId**| String| 管道运行的 ID。 | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
-|**资源 Id**| String | 与数据工厂资源关联的 ID。 | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|**类别**| String | 诊断日志的类别。 请将该属性值设置为 `PipelineRuns`。 | `PipelineRuns` |
-|**水平**| String | 诊断日志的级别。 请将该属性值设置为 `Informational`。 | `Informational` |
-|**操作名称**| String | 管道的名称及其状态。 管道运行完成后，该属性值为 `Pipeline - Succeeded`。 | `MyPipeline - Succeeded`. |
-|**pipelineName**| String | 管道的名称。 | `MyPipeline` |
-|**开始**| String | 活动运行的开始时间，以时间跨度表示，采用 UTC 格式。 | `2017-06-26T20:55:29.5007959Z`. |
-|**结束**| String | 活动运行的结束时间，以时间跨度表示，采用 UTC 格式。 如果诊断日志显示活动已启动但尚未结束，则该属性值为 `1601-01-01T00:00:00Z`。  | `2017-06-26T20:55:29.5007959Z` |
-|**状态**| String | 管道运行的最终状态。 可能的属性值为 `Succeeded` 和 `Failed`。 | `Succeeded`|
+| **级别** |字符串 | 诊断日志的级别。 对于活动运行日志，请将该属性值设置为 4。 | `4` |
+| **相关性Id** |字符串 | 用于跟踪特定请求的唯一 ID。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| **time** | 字符串 | 事件的时间，以时间跨度表示，采用 UTC 格式 `YYYY-MM-DDTHH:MM:SS.00000Z`。 | `2017-06-28T21:00:27.3534352Z` |
+|**runId**| 字符串| 管道运行的 ID。 | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
+|**资源 Id**| 字符串 | 与数据工厂资源关联的 ID。 | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|**类别**| 字符串 | 诊断日志的类别。 请将该属性值设置为 `PipelineRuns`。 | `PipelineRuns` |
+|**水平**| 字符串 | 诊断日志的级别。 请将该属性值设置为 `Informational`。 | `Informational` |
+|**操作名称**| 字符串 | 管道的名称及其状态。 管道运行完成后，该属性值为 `Pipeline - Succeeded`。 | `MyPipeline - Succeeded`. |
+|**pipelineName**| 字符串 | 管道的名称。 | `MyPipeline` |
+|**start**| 字符串 | 活动运行的开始时间，以时间跨度表示，采用 UTC 格式。 | `2017-06-26T20:55:29.5007959Z`. |
+|**结束**| 字符串 | 活动运行的结束时间，以时间跨度表示，采用 UTC 格式。 如果诊断日志显示活动已启动但尚未结束，则该属性值为 `1601-01-01T00:00:00Z`。  | `2017-06-26T20:55:29.5007959Z` |
+|**状态**| 字符串 | 管道运行的最终状态。 可能的属性值为 `Succeeded` 和 `Failed`。 | `Succeeded`|
 
 #### <a name="trigger-run-log-attributes"></a>触发器运行日志属性
 
@@ -379,19 +381,19 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | properties | 类型 | 说明 | 示例 |
 | --- | --- | --- | --- |
-| **水平** |String | 诊断日志的级别。 对于活动运行日志，请将该属性值设置为 4。 | `4` |
-| **相关性Id** |String | 用于跟踪特定请求的唯一 ID。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| **时间** | String | 事件的时间，以时间跨度表示，采用 UTC 格式 `YYYY-MM-DDTHH:MM:SS.00000Z`。 | `2017-06-28T21:00:27.3534352Z` |
-|**触发器 Id**| String| 触发器运行的 ID。 | `08587023010602533858661257311` |
-|**资源 Id**| String | 与数据工厂资源关联的 ID。 | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|**类别**| String | 诊断日志的类别。 请将该属性值设置为 `PipelineRuns`。 | `PipelineRuns` |
-|**水平**| String | 诊断日志的级别。 请将该属性值设置为 `Informational`。 | `Informational` |
-|**操作名称**| String | 触发器的名称及其最终状态（指示是否已成功激发该触发器）。 如果检测信号成功，则该属性值为 `MyTrigger - Succeeded`。 | `MyTrigger - Succeeded` |
-|**触发器名称**| String | 触发器的名称。 | `MyTrigger` |
-|**触发器类型**| String | 触发器的类型。 可能的属性值为 `Manual Trigger` 和 `Schedule Trigger`。 | `ScheduleTrigger` |
-|**triggerEvent**| String | 触发器的事件。 | `ScheduleTime - 2017-07-06T01:50:25Z` |
-|**开始**| String | 激发触发器的开始时间，以时间跨度表示，采用 UTC 格式。 | `2017-06-26T20:55:29.5007959Z`|
-|**状态**| String | 最终状态（指示是否已成功激发该触发器）。 可能的属性值为 `Succeeded` 和 `Failed`。 | `Succeeded`|
+| **级别** |字符串 | 诊断日志的级别。 对于活动运行日志，请将该属性值设置为 4。 | `4` |
+| **相关性Id** |字符串 | 用于跟踪特定请求的唯一 ID。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| **time** | 字符串 | 事件的时间，以时间跨度表示，采用 UTC 格式 `YYYY-MM-DDTHH:MM:SS.00000Z`。 | `2017-06-28T21:00:27.3534352Z` |
+|**触发器 Id**| 字符串| 触发器运行的 ID。 | `08587023010602533858661257311` |
+|**资源 Id**| 字符串 | 与数据工厂资源关联的 ID。 | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|**类别**| 字符串 | 诊断日志的类别。 请将该属性值设置为 `PipelineRuns`。 | `PipelineRuns` |
+|**水平**| 字符串 | 诊断日志的级别。 请将该属性值设置为 `Informational`。 | `Informational` |
+|**操作名称**| 字符串 | 触发器的名称及其最终状态（指示是否已成功激发该触发器）。 如果检测信号成功，则该属性值为 `MyTrigger - Succeeded`。 | `MyTrigger - Succeeded` |
+|**触发器名称**| 字符串 | 触发器的名称。 | `MyTrigger` |
+|**触发器类型**| 字符串 | 触发器的类型。 可能的属性值为 `Manual Trigger` 和 `Schedule Trigger`。 | `ScheduleTrigger` |
+|**triggerEvent**| 字符串 | 触发器的事件。 | `ScheduleTime - 2017-07-06T01:50:25Z` |
+|**start**| 字符串 | 激发触发器的开始时间，以时间跨度表示，采用 UTC 格式。 | `2017-06-26T20:55:29.5007959Z`|
+|**状态**| 字符串 | 最终状态（指示是否已成功激发该触发器）。 可能的属性值为 `Succeeded` 和 `Failed`。 | `Succeeded`|
 
 ### <a name="log-analytics-schema"></a>Log Analytics 架构
 
@@ -467,7 +469,7 @@ Azure 数据工厂版本 2 发出以下指标。
 
     ![命名设置并选择 log-analytics 工作区](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
-1. 选择“保存”。****
+1. 选择“保存”。 
 
 几分钟后，新设置将出现在此数据工厂的设置列表中。 生成新的事件数据后，诊断日志将立即流式传输到该工作区。 发出事件后可能需要最多 15 分钟的时间该事件才会出现在 Log Analytics 中。
 

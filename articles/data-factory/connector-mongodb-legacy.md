@@ -12,18 +12,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.openlocfilehash: 31588f9657a883e9c4a5600d2d164125a5f68edf
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 803e34a93e8019cfc2577bfaab3ba13c409c6b01
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991937"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418161"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>使用 Azure 数据工厂从 MongoDB 复制数据
 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-on-premises-mongodb-connector.md)
 > * [当前版本](connector-mongodb.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 MongoDB 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -55,7 +56,7 @@ ms.locfileid: "80991937"
 
 MongoDB 链接的服务支持以下属性：
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type |type 属性必须设置为：**MongoDb** |是 |
 | server |MongoDB 服务器的 IP 地址或主机名。 |是 |
@@ -98,7 +99,7 @@ MongoDB 链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集和链接服务](concepts-datasets-linked-services.md)。 MongoDB 数据集支持以下属性：
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**MongoDbCollection** | 是 |
 | collectionName |MongoDB 数据库中集合的名称。 |是 |
@@ -129,7 +130,7 @@ MongoDB 链接的服务支持以下属性：
 
 复制活动**源**部分支持以下属性：
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：**MongoDbSource** | 是 |
 | query |使用自定义 SQL-92 查询读取数据。 例如：从 MyTable 中选择 *。 |否（如果指定了数据集中的“collectionName”） |

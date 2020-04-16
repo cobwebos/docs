@@ -11,17 +11,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 534e5c913685eeac92022f6694ea31b24816da5d
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: d37a9bd4cc29ee60f9833ffbcb5a2701a19bbaa7
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011644"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416828"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Oracle 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-onprem-oracle-connector.md)
 > * [当前版本](connector-oracle.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述如何在 Azure 数据工厂中使用复制活动从/向 Oracle 数据库复制数据。 它基于[复制活动概述](copy-activity-overview.md)。
 
@@ -66,7 +68,7 @@ ms.locfileid: "81011644"
 
 Oracle 链接服务支持以下属性：
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 类型属性必须设置为**Oracle**。 | 是 |
 | connectionString | 指定连接到 Oracle 数据库实例所需的信息。 <br/>还可以将密码放在 Azure Key Vault 中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 <br><br>**支持的连接类型**：可以使用 **Oracle SID** 或 **Oracle 服务名称**来标识数据库：<br>- 如果使用 SID：`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>- 如果使用服务名称：`Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;`<br>对于高级 Oracle 本机连接选项，您可以选择在 TNSNAMES 中添加条目[。Oracle](http://www.orafaq.com/wiki/Tnsnames.ora)服务器上的 ORA 文件以及 ADF Oracle 链接服务中，选择使用 Oracle 服务名称连接类型并配置相应的服务名称。 | 是 |
@@ -77,7 +79,7 @@ Oracle 链接服务支持以下属性：
 
 可以根据自己的情况在连接字符串中设置更多连接属性：
 
-| Property | 说明 | 允许的值 |
+| properties | 说明 | 允许的值 |
 |:--- |:--- |:--- |
 | ArraySize |连接器在单个网络往返中可以提取的字节数。 例如，`ArraySize=‭10485760‬`。<br/><br/>较大的值可减少在网络中提取数据的次数，从而提高吞吐量。 较小的值会增加响应时间，因为等待服务器传输数据的延迟较小。 | 1 到 4294967296 (4 GB) 之间的一个整数。 默认值是 `60000`。 值 1 不定义字节数，而指示仅为一行数据分配空间。 |
 
@@ -171,7 +173,7 @@ Oracle 链接服务支持以下属性：
 
 若要从/向 Oracle 复制数据，请将数据集的 type 属性设置为 `OracleTable`。 支持以下属性。
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 `OracleTable`。 | 是 |
 | 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
@@ -210,7 +212,7 @@ Oracle 链接服务支持以下属性：
 
 要从 Oracle 复制数据，请将复制活动中的源类型设置为 `OracleSource`。 复制活动的 **source** 节支持以下属性。
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为 `OracleSource`。 | 是 |
 | oracleReaderQuery | 使用自定义 SQL 查询读取数据。 示例为 `"SELECT * FROM MyTable"`。<br>启用分区加载时，需要在查询中挂接任何相应的内置分区参数。 有关示例，请参阅[从 Oracle 进行并行复制](#parallel-copy-from-oracle)部分。 | 否 |
@@ -257,7 +259,7 @@ Oracle 链接服务支持以下属性：
 
 若要向 Oracle 复制数据，请将复制活动中的接收器类型设置为 `OracleSink`。 复制活动**接收器**部分支持以下属性。
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 `OracleSink`。 | 是 |
 | writeBatchSize | 缓冲区大小达到 `writeBatchSize` 时将数据插入 SQL 表。<br/>允许的值为 Integer（行数）。 |否（默认值为 10,000） |

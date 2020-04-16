@@ -12,17 +12,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/25/2019
-ms.openlocfilehash: 878ad98b118fa02a6659584ac60e3343a948cd20
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33b2ca8db75acff1ce423aa50087961cce6092b2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79246261"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418399"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure 数据工厂中的数据集
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-create-datasets.md)
 > * [当前版本](concepts-datasets-linked-services.md)
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 
 本文介绍了数据集的涵义，采用 JSON 格式定义数据集的方式以及数据集在 Azure 数据工厂管道中的用法。
 
@@ -67,7 +70,7 @@ ms.locfileid: "79246261"
 ```
 下表描述了上述 JSON 中的属性：
 
-properties | 描述 | 必选 |
+properties | 说明 | 必选 |
 -------- | ----------- | -------- |
 name | 数据集名称。 请参阅 [Azure 数据工厂 - 命名规则](naming-rules.md)。 |  是 |
 type | 数据集的类型。 指定数据工厂支持的类型之一（例如：AzureBlob、AzureSqlTable）。 <br/><br/>有关详细信息，请参阅[数据集类型](#dataset-type)。 | 是 |
@@ -112,7 +115,7 @@ typeProperties | 每种类型（例如 Azure Blob、Azure SQL 表）的类型属
 
 下表描述了上述 JSON 中的属性：
 
-properties | 描述 | 必选 |
+properties | 说明 | 必选 |
 -------- | ----------- | -------- |
 name | 数据集名称。 请参阅 [Azure 数据工厂 - 命名规则](naming-rules.md)。 |  是 |
 type | 数据集的类型。 指定数据工厂支持的类型之一（例如：AzureBlob、AzureSqlTable）。 <br/><br/>有关详细信息，请参阅[数据集类型](#dataset-type)。 | 是 |
@@ -178,7 +181,7 @@ typeProperties | 每种类型（例如 Azure Blob、Azure SQL 表）的类型属
 
 结构中的每个列都包含以下属性：
 
-properties | 描述 | 必选
+properties | 说明 | 必选
 -------- | ----------- | --------
 name | 列的名称。 | 是
 type | 列的数据类型。 数据工厂支持将以下临时数据类型作为允许的值：Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Boolean、String、Guid、Datetime、Datetimeoffset 和 Timespan**** | 否

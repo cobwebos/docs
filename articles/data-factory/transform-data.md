@@ -10,14 +10,16 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: 1f920f2672c19455a8e8ac979e8d6d1eb14d4c35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 024d61c5bcc38c78dc5a2bd5e01cba43d7b5267e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74924298"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418824"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>在 Azure 数据工厂中转换数据
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 > [!div class="op_single_selector"]
 > * [映射数据流](data-flow-create.md)
@@ -29,11 +31,11 @@ ms.locfileid: "74924298"
 > * [机器学习](transform-data-using-machine-learning.md) 
 > * [存储过程](transform-data-using-stored-procedure.md)
 > * [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md)
-> * [Databricks Notebook](transform-data-databricks-notebook.md)
+> * [数据砖笔记本](transform-data-databricks-notebook.md)
 > * [Databricks Jar](transform-data-databricks-jar.md)
 > * [Databricks Python](transform-data-databricks-python.md)
 > * [.NET 自定义](transform-data-using-dotnet-custom-activity.md)
-
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 ## <a name="overview"></a>概述
 本文介绍了 Azure 数据工厂中的数据转换活动，可利用这些活动将原始数据转换和处理为大规模预测和见解。 转换活动在计算环境中执行，如 Azure 数据块或 Azure HDInsight。 其提供了相关文章链接，内附各转换活动的详细信息。
 

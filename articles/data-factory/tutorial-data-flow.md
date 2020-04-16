@@ -8,14 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/07/2019
-ms.openlocfilehash: e6ca8007a96cc63b51b4f79b69029cbf0799e71c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 917a8d6edf04d8a160c3a6a5ac59949623dfee5c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979184"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418671"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>使用映射数据流转换数据
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 如果对 Azure 数据工厂不熟悉，请参阅 [Azure 数据工厂简介](introduction.md)。
 
@@ -53,14 +55,14 @@ ms.locfileid: "75979184"
 4. 选择要在其中创建数据工厂的 Azure **订阅**。
 5. 对于“资源组”，请执行以下步骤之一：****
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择“使用现有资源组”，并从下拉列表选择现有的资源组。****
+    a. 选择“使用现有资源组”，并从下拉列表选择现有的资源组。****
 
-    b.保留“数据库类型”设置，即设置为“共享”。 选择“新建”，并输入资源组的名称。**** 
+    b. 选择“新建”，并输入资源组的名称。**** 
          
     若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。 
 6. 在“版本”下选择“V2”。********
 7. 在“位置”下选择数据工厂所在的位置。**** 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如 Azure 存储和 SQL 数据库）和计算（例如 Azure HDInsight）可以位于其他区域。
-8. 选择 **“创建”**。
+8. 选择“创建”  。
 9. 创建完成后，通知中心内会显示通知。 选择“转到资源”导航到“数据工厂”页。****
 10. 选择“创作和监视”，在单独的选项卡中启动数据工厂 UI。****
 
@@ -116,7 +118,7 @@ ms.locfileid: "75979184"
     ![数据流画布](media/tutorial-data-flow/dataflow5.png)
 1. 命名筛选器转换**筛选器年份**。 单击 **"筛选"** 旁边的表达式框以打开表达式生成器。 在这里，您将指定筛选条件。
 
-    ![“筛选器”](media/tutorial-data-flow/filter1.png)
+    ![筛选器](media/tutorial-data-flow/filter1.png)
 1. 数据流表达式生成器允许您以交互方式生成用于各种转换的表达式。 表达式可以包括内置函数、输入架构中的列和用户定义的参数。 有关如何生成表达式的详细信息，请参阅[数据流表达式生成器](concepts-data-flow-expression-builder.md)。
 
     在本教程中，您希望过滤 1910 年至 2000 年间的流派喜剧电影。 由于年份当前是字符串，因此您需要使用 函数```toInteger()```将其转换为整数。 使用大于或等于 （>+） 和小于或等于 （<=） 运算符来比较与字面年份值 1910 和 200-进行比较。 将这些表达式与 和 （&&） 运算符结合在一起。 表达式以：
@@ -129,32 +131,32 @@ ms.locfileid: "75979184"
 
     如果调试群集处于活动状态，则可以通过单击 **"刷新"** 来验证逻辑，以查看与使用的输入相比的表达式输出。 关于如何使用数据流表达式语言完成此逻辑，有一个以上正确的答案。
 
-    ![“筛选器”](media/tutorial-data-flow/filter2.png)
+    ![筛选器](media/tutorial-data-flow/filter2.png)
 
     完成表达式后，单击"**保存"和"完成**"。
 
 1. 获取**数据预览**以验证筛选器是否正常工作。
 
-    ![“筛选器”](media/tutorial-data-flow/filter3.png)
+    ![筛选器](media/tutorial-data-flow/filter3.png)
 1. 要添加的下一个转换是在**架构修改器**下的**聚合**变换。
 
-    ![Aggregate](media/tutorial-data-flow/agg1.png)
+    ![聚合](media/tutorial-data-flow/agg1.png)
 1. 命名聚合转换**聚合喜剧评级**。 在 **"按组"** 选项卡中，从下拉列表中选择**年份**，按影片出名的年份对聚合进行分组。
 
-    ![Aggregate](media/tutorial-data-flow/agg2.png)
+    ![聚合](media/tutorial-data-flow/agg2.png)
 1. 转到 **"聚合"** 选项卡。在左侧文本框中，命名聚合列 **"平均喜剧"。** 单击右表达式框通过表达式生成器输入聚合表达式。
 
-    ![Aggregate](media/tutorial-data-flow/agg3.png)
+    ![聚合](media/tutorial-data-flow/agg3.png)
 1. 要获取列**评级**的平均值，请使用```avg()```聚合函数。 由于**评级**是一个字符串```avg()```，并且采用数字输入，因此必须通过```toInteger()```函数将值转换为数字。 这是表达式看起来像：
 
     ```avg(toInteger(Rating))```
 
     完成后单击 **"保存并完成**"。
 
-    ![Aggregate](media/tutorial-data-flow/agg4.png)
+    ![聚合](media/tutorial-data-flow/agg4.png)
 1. 转到"**数据预览"** 选项卡以查看转换输出。 注意只有两列存在，**年份**和**平均喜剧。**
 
-    ![Aggregate](media/tutorial-data-flow/agg3.png)
+    ![聚合](media/tutorial-data-flow/agg3.png)
 1. 接下来，您希望在 **"目标**"下添加**Sink**转换。
 
     ![接收器](media/tutorial-data-flow/sink1.png)

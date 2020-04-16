@@ -11,17 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 0552cdc50e2b760600ad8c58bd3d1cd4d2dc50a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 495d16efcc26fc336a87c0f2d88f5202ab0b4a3e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930982"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416619"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>使用 Azure 数据工厂从 Sybase 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-onprem-sybase-connector.md)
 > * [当前版本](connector-sybase.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Sybase 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -56,7 +57,7 @@ ms.locfileid: "74930982"
 
 Sybase 链接的服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Sybase** | 是 |
 | server | Sybase 服务器的名称。 |是 |
@@ -97,7 +98,7 @@ Sybase 链接的服务支持以下属性：
 
 若要从 Sybase 复制数据，支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的类型属性必须设置为 **：SybaseTable** | 是 |
 | tableName | Sybase 数据库中的表名。 | 否（如果指定了活动源中的“query”） |
@@ -129,7 +130,7 @@ Sybase 链接的服务支持以下属性：
 
 若要从 Sybase 复制数据，复制活动的 **source** 节支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 必须将复制活动源的类型属性设置为 **：SybaseSource** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |

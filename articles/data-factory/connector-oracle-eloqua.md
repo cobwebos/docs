@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.openlocfilehash: abb323bbdb2d49f46fea83e1c881f1ef6a4efff7
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 3ea9d7baf427e70df349c926a0b6b8b72ba82293
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80990797"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416857"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Oracle Eloqua 复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Oracle Eloqua 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -46,7 +47,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 Oracle Eloqua 链接服务支持以下属性：
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Eloqua** | 是 |
 | endpoint | Eloqua 服务器的终结点。 Eloqua 支持多个数据中心，用于确定终结点、使用凭据登录 https://login.eloqua.com，然后通过 `xxx.xxx.eloqua.com` 模式从重定向 URL 复制“基 URL”**** 部分。 | 是 |
@@ -81,7 +82,7 @@ Oracle Eloqua 链接服务支持以下属性：
 
 要从 Oracle Eloqua 复制数据，请将数据集的 type 属性设置为“EloquaObject”****。 支持以下属性：
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的类型属性必须设置为 **：EloquaObject** | 是 |
 | tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
@@ -111,7 +112,7 @@ Oracle Eloqua 链接服务支持以下属性：
 
 要从 Oracle Eloqua 复制数据，请将复制活动中的源类型设置为“EloquaSource”****。 复制活动**源**部分支持以下属性：
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：EloquaSource**** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Accounts"`。 | 否（如果指定了数据集中的“tableName”） |

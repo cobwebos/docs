@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: ced2279878ee2eb361ec7338647418658e411513
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4056550ae0a71138d136878fc7e3aa5f6f8f4180
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79213001"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417872"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Webhook 活动
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Webhook 活动可以通过自定义代码控制管道的执行。 使用 Webhook 活动时，客户代码可以调用终结点并将其传递回调 URL。 管道运行等待回调调用，然后再继续下一个活动。
 
@@ -51,16 +53,16 @@ Webhook 活动可以通过自定义代码控制管道的执行。 使用 Webhook
 
 ## <a name="type-properties"></a>Type 属性
 
-properties | 描述 | 允许的值 | 必选
+properties | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
-**name** | 网钩活动的名称。 | String | 是 |
-**type** | 必须设置为"网络挂"。 | String | 是 |
+name  | 网钩活动的名称。 | 字符串 | 是 |
+**type** | 必须设置为"网络挂"。 | 字符串 | 是 |
 **方法** | 目标终结点的 REST API 方法。 | 字符串。 支持的类型为"POST"。 | 是 |
 **url** | 目标终结点和路径。 | 具有字符串**结果类型**值的字符串或表达式。 | 是 |
-**headers** | 发送到请求的标头。 下面是一个在请求上设置语言和类型的示例： `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`。 | 具有字符串**结果类型**值的字符串或表达式。 | 是的。 需要`Content-Type`这样的`"headers":{ "Content-Type":"application/json"}`标头。 |
+**头** | 发送到请求的标头。 下面是一个在请求上设置语言和类型的示例： `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`。 | 具有字符串**结果类型**值的字符串或表达式。 | 是的。 需要`Content-Type`这样的`"headers":{ "Content-Type":"application/json"}`标头。 |
 **身体** | 表示要发送到终结点的有效负载。 | 有效的 JSON 或具有 JSON**的结果类型**值的表达式。 有关请求有效负载的架构，请参阅[请求有效负载架构](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#request-payload-schema)。 | 是 |
 **认证** | 用于调用终结点的身份验证方法。 支持的类型是"基本"和"客户端证书"。 有关详细信息，请参阅[身份验证](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#authentication)。 如果不需要身份验证，则排除此属性。 | 具有字符串**结果类型**值的字符串或表达式。 | 否 |
-**超时** | 活动等待**调用 callBackUri**指定的回调的时间。 默认值为 10 分钟（"00：10：00"）。 值具有时间跨度格式*d*。*hh*：*毫米*：*s.* | String | 否 |
+**超时** | 活动等待**调用 callBackUri**指定的回调的时间。 默认值为 10 分钟（"00：10：00"）。 值具有时间跨度格式*d*。*hh*：*毫米*：*s.* | 字符串 | 否 |
 **回调时报告状态** | 允许用户报告 Webhook 活动的失败状态。 | Boolean | 否 |
 
 ## <a name="authentication"></a>身份验证
@@ -71,7 +73,7 @@ Webhook 活动支持以下身份验证类型。
 
 如果不需要身份验证，请不要包含**身份验证**属性。
 
-### <a name="basic"></a>Basic
+### <a name="basic"></a>基本
 
 指定用于基本身份验证的用户名和密码。
 
@@ -144,8 +146,8 @@ Webhook 活动支持以下身份验证类型。
 
 - [If Condition 活动](control-flow-if-condition-activity.md)
 - [执行管道活动](control-flow-execute-pipeline-activity.md)
-- [对于每个活动](control-flow-for-each-activity.md)
+- [For Each 活动](control-flow-for-each-activity.md)
 - [获取元数据活动](control-flow-get-metadata-activity.md)
-- [Lookup 活动](control-flow-lookup-activity.md)
-- [网站活动](control-flow-web-activity.md)
+- [查找活动](control-flow-lookup-activity.md)
+- [Web 活动](control-flow-web-activity.md)
 - [Until 活动](control-flow-until-activity.md)

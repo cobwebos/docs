@@ -11,17 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/17/2020
-ms.openlocfilehash: e1a3ff32956e8a8530684ba7f300f06d0c032227
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 74462b68bea38e4d84219adeedb7c3bb0893bbb4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421117"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417237"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP HANA 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-sap-hana-connector.md)
 > * [当前版本](connector-sap-hana.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 SAP HANA 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -237,7 +238,7 @@ SAP HANA 链接的服务支持以下属性：
 
 建议使用数据分区启用并行复制，尤其是在从 SAP HANA 中引入大量数据时。 下面是适用于不同方案的建议配置。 将数据复制到基于文件的数据存储中时，建议将数据写入文件夹时为多个文件（仅指定文件夹名称），在这种情况下，性能优于写入单个文件。
 
-| 方案                                           | 建议的设置                                           |
+| 场景                                           | 建议的设置                                           |
 | -------------------------------------------------- | ------------------------------------------------------------ |
 | 从大型表进行完整加载。                        | **分区选项**：表的物理分区。 <br><br/>在执行期间，数据工厂会自动检测指定 SAP HANA 表的物理分区类型，并选择相应的分区策略：<br>- **范围分区**：获取为表定义的分区列和分区范围，然后按范围复制数据。 <br>- **哈希分区**：使用哈希分区键作为分区列，然后根据 ADF 计算的范围对数据进行分区和复制。 <br>- **循环分区**或**无分区**：使用主键作为分区列，然后根据 ADF 计算的范围对数据进行分区和复制。 |
 | 使用自定义查询加载大量数据。 | **分区选项**：动态范围分区。<br>**查询** `SELECT * FROM <TABLENAME> WHERE ?AdfHanaDynamicRangePartitionCondition AND <your_additional_where_clause>`： .<br>**分区列**：指定用于应用动态范围分区的列。 <br><br>在执行期间，数据工厂首先计算指定分区列的值范围，根据不同的分区列值和 ADF 并行复制设置的数量均匀分布多个存储桶中的行，然后替换为`?AdfHanaDynamicRangePartitionCondition`筛选每个分区的分区列值范围，然后发送到 SAP HANA。<br><br>如果要使用多个列作为分区列，可以将每列的值串联为查询中的一列，并将其指定为 ADF 中的分区列，如`SELECT * FROM (SELECT *, CONCAT(<KeyColumn1>, <KeyColumn2>) AS PARTITIONCOLUMN FROM <TABLENAME>) WHERE ?AdfHanaDynamicRangePartitionCondition`。 |

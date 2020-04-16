@@ -12,14 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: 90573f77c77d614923f882053145d2f84598953d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 96674f059e9cbc21c5c8c64eff8c94c810c4aa32
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440234"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417770"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>使用 Azure 数据工厂将数据加载到 Azure Data Lake Storage Gen2 中
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure Data Lake Storage Gen2 是一组专用于大数据分析的功能，内置于 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)中。 它可使用文件系统和对象存储范例与数据进行交互。
 
@@ -54,7 +56,7 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
     * **版本**：选择“V2”****.
     * **位置**：选择数据工厂所在的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置和区域中。 
 
-3. 选择 **“创建”**。
+3. 选择“创建”  。
 4. 创建操作完成后，请转到数据工厂。 此时会看到“数据工厂”**** 主页，如下图所示： 
    
    ![数据工厂主页](./media/load-azure-data-lake-storage-gen2/data-factory-home-page.png)
@@ -82,7 +84,7 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
    1. 指定“访问密钥 ID”**** 值。
    2. 指定“机密访问密钥”**** 值。
    3. 单击“测试连接”以验证设置，然后选择“完成”********。
-   4. 随即会显示新创建的连接。 选择“下一步”。
+   4. 随即会显示新创建的连接。 选择“**下一页**”。
    
       ![指定 Amazon S3 帐户](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
       

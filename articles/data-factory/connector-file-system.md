@@ -11,17 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 90bab7b49f82c3c9c8954c603e8d3bda6e2dcc89
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 21329e3fada62036bc5b8d2bf6cdf6b3be5adad3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77082925"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417405"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从文件系统复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-onprem-file-system-connector.md)
 > * [当前版本](connector-file-system.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何将数据复制到文件系统以及从文件系统复制数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
 
@@ -54,7 +55,7 @@ ms.locfileid: "77082925"
 
 文件系统链接服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：FileServer****。 | 是 |
 | host | 指定要复制的文件夹的根路径。 请对字符串中的特殊字符使用转义符“\"”。 有关[示例，请参阅示例链接的服务和数据集定义](#sample-linked-service-and-dataset-definitions)。 | 是 |
@@ -64,7 +65,7 @@ ms.locfileid: "77082925"
 
 ### <a name="sample-linked-service-and-dataset-definitions"></a>链接服务和数据集定义示例
 
-| 方案 | 链接服务定义中的“主机” | 数据集定义中的“folderPath” |
+| 场景 | 链接服务定义中的“主机” | 数据集定义中的“folderPath” |
 |:--- |:--- |:--- |
 | 集成运行时计算机上的本地文件夹： <br/><br/>示例：D:\\\* 或 D:\folder\subfolder\\\* |在 JSON 中：`D:\\`<br/>在 UI 上：`D:\` |在 JSON 中：`.\\` 或 `folder\\subfolder`<br>在 UI 上：`.\` 或 `folder\subfolder` |
 | 远程共享文件夹： <br/><br/>示例：\\\\myserver\\share\\\* 或 \\\\myserver\\share\\folder\\subfolder\\\* |在 JSON 中：`\\\\myserver\\share`<br/>在 UI 上：`\\myserver\share` |在 JSON 中：`.\\` 或 `folder\\subfolder`<br/>在 UI 上：`.\` 或 `folder\subfolder` |
@@ -103,7 +104,7 @@ ms.locfileid: "77082925"
 
 基于格式的数据集中 `location` 设置下的文件系统支持以下属性：
 
-| properties   | 描述                                                  | 必选 |
+| properties   | 说明                                                  | 必选 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 数据集中 `location` 下的 type 属性必须设置为 **FileServerLocation**。 | 是      |
 | folderPath | 文件夹的路径。 如果要使用通配符筛选文件夹，请跳过此设置并在活动源设置中指定。 | 否       |
@@ -145,7 +146,7 @@ ms.locfileid: "77082925"
 
 基于格式的复制源中 `storeSettings` 设置下的文件系统支持以下属性：
 
-| properties                 | 描述                                                  | 必选                                      |
+| properties                 | 说明                                                  | 必选                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | 下`storeSettings`的类型属性必须设置为**FileServerReadSettings**。 | 是                                           |
 | recursive                | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 请注意，当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。 允许的值**为 true（** 默认值）和**false**。 | 否                                            |
@@ -202,7 +203,7 @@ ms.locfileid: "77082925"
 
 基于格式的复制接收器中 `storeSettings` 设置下的文件系统支持以下属性：
 
-| properties                 | 描述                                                  | 必选 |
+| properties                 | 说明                                                  | 必选 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | 下`storeSettings`的类型属性必须设置为**文件服务器Write设置**。 | 是      |
 | copyBehavior             | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认值）</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名，则合并文件的名称为指定名称。 否则，它是自动生成的文件名。 | 否       |
@@ -286,7 +287,7 @@ ms.locfileid: "77082925"
 
 ### <a name="legacy-dataset-model"></a>旧数据集模型
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：FileShare**** |是 |
 | folderPath | 文件夹路径。 支持通配符筛选器，允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名中包含通配符或此转义字符，请使用 `^` 进行转义。 <br/><br/>示例：“rootfolder/subfolder/”，请参阅[示例链接服务和数据集定义](#sample-linked-service-and-dataset-definitions)和[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 |否 |
@@ -334,7 +335,7 @@ ms.locfileid: "77082925"
 
 ### <a name="legacy-copy-activity-source-model"></a>旧复制活动源模型
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：FileSystemSource**** |是 |
 | recursive | 指示是要以递归方式从子文件夹中读取数据，还是只从指定的文件夹中读取数据。 当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制/创建空的文件夹/子文件夹。<br/>允许的值是 **：true（** 默认 **），false** | 否 |
@@ -374,7 +375,7 @@ ms.locfileid: "77082925"
 
 ### <a name="legacy-copy-activity-sink-model"></a>旧复制活动接收器模型
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为：FileSystemSink**** |是 |
 | copyBehavior | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- 保留层次结构（默认）：</b>保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><b>- 合并文件</b>：将源文件夹中的所有文件合并到一个文件。 合并期间不执行记录重复数据消除。 如果指定文件名，则合并的文件名将为指定的名称；否则，会自动生成文件名。 | 否 |

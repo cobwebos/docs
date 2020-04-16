@@ -10,18 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/25/2019
-ms.openlocfilehash: 9ef4b569fd8413d2825374c963fb272dd450cf0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c456e486217886510a1fd2ef1aeabae47d35b53c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74533139"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417194"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure 数据工厂中的表达式和函数
 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-functions-variables.md)
 > * [当前版本](control-flow-expression-language-functions.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文提供了有关 Azure 数据工厂支持的表达式和函数的详细信息。 
 
@@ -33,7 +34,7 @@ ms.locfileid: "74533139"
 "name": "value"
 ```
 
- 或  
+ or  
   
 ```json
 "name": "@pipeline().parameters.password"
@@ -154,11 +155,11 @@ ms.locfileid: "74533139"
 | 字符串函数 | 任务 |
 | --------------- | ---- |
 | [Concat](control-flow-expression-language-functions.md#concat) | 组合两个或更多字符串，并返回组合后的字符串。 |
-| [endsWith](control-flow-expression-language-functions.md#endswith) | 检查字符串是否以指定的子字符串结尾。 |
+| [结束与](control-flow-expression-language-functions.md#endswith) | 检查字符串是否以指定的子字符串结尾。 |
 | [Guid](control-flow-expression-language-functions.md#guid) | 生成字符串形式的全局唯一标识符 (GUID)。 |
 | [索引](control-flow-expression-language-functions.md#indexof) | 返回子字符串的起始位置。 |
 | [lastIndexOf](control-flow-expression-language-functions.md#lastindexof) | 返回最后一次出现的子字符串的起始位置。 |
-| [replace](control-flow-expression-language-functions.md#replace) | 将子字符串替换为指定的字符串，并返回更新的字符串。 |
+| [取代](control-flow-expression-language-functions.md#replace) | 将子字符串替换为指定的字符串，并返回更新的字符串。 |
 | [分裂](control-flow-expression-language-functions.md#split) | 根据原始字符串中指定的分隔符字符，从较大字符串中返回一个包含子字符串（以逗号分隔）的数组。 |
 | [开始与](control-flow-expression-language-functions.md#startswith) | 检查字符串是否以特定的子字符串开头。 |
 | [子](control-flow-expression-language-functions.md#substring) | 返回字符串中的字符，从指定的位置开始。 |
@@ -226,10 +227,10 @@ ms.locfileid: "74533139"
 | [decodeDataUri](control-flow-expression-language-functions.md#decodeDataUri) | 返回数据 URI 的二进制版本。 |
 | [decodeUriComponent](control-flow-expression-language-functions.md#decodeUriComponent) | 返回一个字符串，并将其中的转义字符替换为解码后的版本。 |
 | [encodeUriComponent](control-flow-expression-language-functions.md#encodeUriComponent) | 返回一个字符串，并将其中的 URL 不安全字符替换为转义字符。 |
-| [浮动](control-flow-expression-language-functions.md#float) | 返回输入值的浮点数。 |
-| [Int](control-flow-expression-language-functions.md#int) | 返回字符串的整数版本。 |
+| [float](control-flow-expression-language-functions.md#float) | 返回输入值的浮点数。 |
+| [int](control-flow-expression-language-functions.md#int) | 返回字符串的整数版本。 |
 | [Json](control-flow-expression-language-functions.md#json) | 返回字符串或 XML 的 JavaScript 对象表示法 (JSON) 类型的值或对象。 |
-| [字符串](control-flow-expression-language-functions.md#string) | 返回输入值的字符串版本。 |
+| [string](control-flow-expression-language-functions.md#string) | 返回输入值的字符串版本。 |
 | [uriComponent](control-flow-expression-language-functions.md#uriComponent) | 通过将 URL 不安全字符替换为转义字符来返回输入值的 URI 编码版本。 |
 | [uriComponentToBinary](control-flow-expression-language-functions.md#uriComponentToBinary) | 返回 URI 编码字符串的二进制版本。 |
 | [uriComponentToString](control-flow-expression-language-functions.md#uriComponentToString) | 返回 URI 编码字符串的字符串版本。 |
@@ -243,11 +244,11 @@ ms.locfileid: "74533139"
 | ------------- | ---- |
 | [添加](control-flow-expression-language-functions.md#add) | 返回两个数字相加的结果。 |
 | [div](control-flow-expression-language-functions.md#div) | 返回两个数字相除的结果。 |
-| [max](control-flow-expression-language-functions.md#max) | 返回一组数字或数组中的最大值。 |
+| max  | 返回一组数字或数组中的最大值。 |
 | [分钟](control-flow-expression-language-functions.md#min) | 返回一组数字或数组中的最小值。 |
 | [国防部](control-flow-expression-language-functions.md#mod) | 返回将两个数字相除后的余数。 |
-| [mul](control-flow-expression-language-functions.md#mul) | 返回将两个数字相乘得到的乘积。 |
-| [rand](control-flow-expression-language-functions.md#rand) | 返回指定范围内的随机整数。 |
+| [马尔](control-flow-expression-language-functions.md#mul) | 返回将两个数字相乘得到的乘积。 |
+| [兰德](control-flow-expression-language-functions.md#rand) | 返回指定范围内的随机整数。 |
 | [范围](control-flow-expression-language-functions.md#range) | 返回以指定整数开头的一个整数数组。 |
 | [子](control-flow-expression-language-functions.md#sub) | 返回第一个数字减去第二个数字得到的结果。 |
   
@@ -322,14 +323,14 @@ addDays('<timestamp>', <days>, '<format>'?)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
 | <*天*> | 是 | Integer | 要加上的正负天数 |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新时间戳*> | String | 时间戳加上指定的天数  |
+| <*更新时间戳*> | 字符串 | 时间戳加上指定的天数  |
 ||||
 
 *示例 1*
@@ -364,14 +365,14 @@ addHours('<timestamp>', <hours>, '<format>'?)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
 | <*小时*> | 是 | Integer | 要加上的正负小时数 |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新时间戳*> | String | 时间戳加上指定的小时数  |
+| <*更新时间戳*> | 字符串 | 时间戳加上指定的小时数  |
 ||||
 
 *示例 1*
@@ -406,14 +407,14 @@ addMinutes('<timestamp>', <minutes>, '<format>'?)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
 | <*分钟*> | 是 | Integer | 要加上的正负分钟数 |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新时间戳*> | String | 时间戳加上指定的分钟数 |
+| <*更新时间戳*> | 字符串 | 时间戳加上指定的分钟数 |
 ||||
 
 *示例 1*
@@ -448,14 +449,14 @@ addSeconds('<timestamp>', <seconds>, '<format>'?)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
 | <*秒*> | 是 | Integer | 要加上的正负秒数 |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新时间戳*> | String | 时间戳加上指定的秒数  |
+| <*更新时间戳*> | 字符串 | 时间戳加上指定的秒数  |
 ||||
 
 *示例 1*
@@ -491,15 +492,15 @@ addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
 | <*区间*> | 是 | Integer | 要添加的指定时间单位数 |
-| <*时间单位*> | 是 | String | 要与 *interval* 一起使用的时间单位：“Second”、“Minute”、“Hour”、“Day”、“Week”、“Month”、“Year” |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*时间单位*> | 是 | 字符串 | 要与 *interval* 一起使用的时间单位：“Second”、“Minute”、“Hour”、“Day”、“Week”、“Month”、“Year” |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新时间戳*> | String | 时间戳加上指定的时间单位数  |
+| <*更新时间戳*> | 字符串 | 时间戳加上指定的时间单位数  |
 ||||
 
 *示例 1*
@@ -588,7 +589,7 @@ array('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 用于创建数组的字符串 |
+| <*价值*> | 是 | 字符串 | 用于创建数组的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -618,12 +619,12 @@ base64('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 输入字符串 |
+| <*价值*> | 是 | 字符串 | 输入字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*基64字符串*> | String | 返回输入字符串的 base64 编码版本 |
+| <*基64字符串*> | 字符串 | 返回输入字符串的 base64 编码版本 |
 ||||
 
 *示例*
@@ -648,12 +649,12 @@ base64ToBinary('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 要转换的 base64 编码字符串 |
+| <*价值*> | 是 | 字符串 | 要转换的 base64 编码字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*二进制换基64字符串*> | String | base64 编码字符串的二进制版本 |
+| <*二进制换基64字符串*> | 字符串 | base64 编码字符串的二进制版本 |
 ||||
 
 *示例*
@@ -682,12 +683,12 @@ base64ToString('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 要解码的 base64 编码字符串 |
+| <*价值*> | 是 | 字符串 | 要解码的 base64 编码字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*解码基64字符串*> | String | base64 编码字符串的字符串版本 |
+| <*解码基64字符串*> | 字符串 | base64 编码字符串的字符串版本 |
 ||||
 
 *示例*
@@ -712,12 +713,12 @@ binary('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 要转换的字符串 |
+| <*价值*> | 是 | 字符串 | 要转换的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*二进制表示输入值*> | String | 指定字符串的二进制版本 |
+| <*二进制表示输入值*> | 字符串 | 指定字符串的二进制版本 |
 ||||
 
 *示例*
@@ -815,12 +816,12 @@ concat('<text1>', '<text2>', ...)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*text1*>, <*text2*>, ... | 是 | String | 至少两个要组合的字符串 |
+| <*text1*>, <*text2*>, ... | 是 | 字符串 | 至少两个要组合的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*文本1文本2...*> | String | 基于组合后的输入字符串创建的字符串 |
+| <*文本1文本2...*> | 字符串 | 基于组合后的输入字符串创建的字符串 |
 ||||
 
 *示例*
@@ -891,14 +892,14 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
-| <*目的地时区*> | 是 | String | 目标时区的名称。 有关时区名称，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)，但你可能需要删除时区名称中的任何标点。 |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
+| <*目的地时区*> | 是 | 字符串 | 目标时区的名称。 有关时区名称，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)，但你可能需要删除时区名称中的任何标点。 |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*转换时间戳*> | String | 已转换为目标时区的时间戳 |
+| <*转换时间戳*> | 字符串 | 已转换为目标时区的时间戳 |
 ||||
 
 *示例 1*
@@ -933,15 +934,15 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
-| <*源时区*> | 是 | String | 源时区的名称。 有关时区名称，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)，但你可能需要删除时区名称中的任何标点。 |
-| <*目的地时区*> | 是 | String | 目标时区的名称。 有关时区名称，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)，但你可能需要删除时区名称中的任何标点。 |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
+| <*源时区*> | 是 | 字符串 | 源时区的名称。 有关时区名称，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)，但你可能需要删除时区名称中的任何标点。 |
+| <*目的地时区*> | 是 | 字符串 | 目标时区的名称。 有关时区名称，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)，但你可能需要删除时区名称中的任何标点。 |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*转换时间戳*> | String | 已转换为目标时区的时间戳 |
+| <*转换时间戳*> | 字符串 | 已转换为目标时区的时间戳 |
 ||||
 
 *示例 1*
@@ -976,14 +977,14 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
-| <*源时区*> | 是 | String | 源时区的名称。 有关时区名称，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)，但你可能需要删除时区名称中的任何标点。 |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
+| <*源时区*> | 是 | 字符串 | 源时区的名称。 有关时区名称，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)，但你可能需要删除时区名称中的任何标点。 |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*转换时间戳*> | String | 已转换为 UTC 的时间戳 |
+| <*转换时间戳*> | 字符串 | 已转换为 UTC 的时间戳 |
 ||||
 
 *示例 1*
@@ -1049,12 +1050,12 @@ dataUri('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 要转换的字符串 |
+| <*价值*> | 是 | 字符串 | 要转换的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*数据-uri*> | String | 输入字符串的数据 URI |
+| <*数据-uri*> | 字符串 | 输入字符串的数据 URI |
 ||||
 
 *示例*
@@ -1081,12 +1082,12 @@ dataUriToBinary('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 要转换的数据 URI |
+| <*价值*> | 是 | 字符串 | 要转换的数据 URI |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*二进制数据-uri*> | String | 数据 URI 的二进制版本 |
+| <*二进制数据-uri*> | 字符串 | 数据 URI 的二进制版本 |
 ||||
 
 *示例*
@@ -1116,12 +1117,12 @@ dataUriToString('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 要转换的数据 URI |
+| <*价值*> | 是 | 字符串 | 要转换的数据 URI |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*字符串表示数据-uri*> | String | 数据 URI 的字符串版本 |
+| <*字符串表示数据-uri*> | 字符串 | 数据 URI 的字符串版本 |
 ||||
 
 *示例*
@@ -1146,7 +1147,7 @@ dayOfMonth('<timestamp>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -1176,7 +1177,7 @@ dayOfWeek('<timestamp>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -1206,7 +1207,7 @@ dayOfYear('<timestamp>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -1238,12 +1239,12 @@ decodeBase64('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 要解码的 base64 编码字符串 |
+| <*价值*> | 是 | 字符串 | 要解码的 base64 编码字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*解码基64字符串*> | String | base64 编码字符串的字符串版本 |
+| <*解码基64字符串*> | 字符串 | base64 编码字符串的字符串版本 |
 ||||
 
 *示例*
@@ -1270,12 +1271,12 @@ decodeDataUri('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 要解码的数据 URI 字符串 |
+| <*价值*> | 是 | 字符串 | 要解码的数据 URI 字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*二进制数据-uri*> | String | 数据 URI 字符串的二进制版本 |
+| <*二进制数据-uri*> | 字符串 | 数据 URI 字符串的二进制版本 |
 ||||
 
 *示例*
@@ -1305,12 +1306,12 @@ decodeUriComponent('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 包含要解码的转义字符的字符串 |
+| <*价值*> | 是 | 字符串 | 包含要解码的转义字符的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*解码-uri*> | String | 包含解码后的转义字符的更新后字符串 |
+| <*解码-uri*> | 字符串 | 包含解码后的转义字符的更新后字符串 |
 ||||
 
 *示例*
@@ -1370,12 +1371,12 @@ encodeUriComponent('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 要转换为 URI 编码格式的字符串 |
+| <*价值*> | 是 | 字符串 | 要转换为 URI 编码格式的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*编码-uri*> | String | 带有转义字符的 URI 编码字符串 |
+| <*编码-uri*> | 字符串 | 带有转义字符的 URI 编码字符串 |
 ||||
 
 *示例*
@@ -1438,8 +1439,8 @@ endsWith('<text>', '<searchText>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*文本*> | 是 | String | 要检查的字符串 |
-| <*搜索文本*> | 是 | String | 要查找的结尾子字符串 |
+| <*文本*> | 是 | 字符串 | 要检查的字符串 |
+| <*搜索文本*> | 是 | 字符串 | 要查找的结尾子字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -1549,7 +1550,7 @@ float('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 包含要转换的有效浮点数的字符串 |
+| <*价值*> | 是 | 字符串 | 包含要转换的有效浮点数的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -1579,13 +1580,13 @@ formatDateTime('<timestamp>', '<format>'?)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*重新格式化时间戳*> | String | 采用指定格式的更新后时间戳 |
+| <*重新格式化时间戳*> | 字符串 | 采用指定格式的更新后时间戳 |
 ||||
 
 *示例*
@@ -1611,13 +1612,13 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*区间*> | 是 | Integer | 要添加的指定时间单位数 |
-| <*时间单位*> | 是 | String | 要与 *interval* 一起使用的时间单位：“Second”、“Minute”、“Hour”、“Day”、“Week”、“Month”、“Year” |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*时间单位*> | 是 | 字符串 | 要与 *interval* 一起使用的时间单位：“Second”、“Minute”、“Hour”、“Day”、“Week”、“Month”、“Year” |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新时间戳*> | String | 当前时间戳加上指定的时间单位数 |
+| <*更新时间戳*> | 字符串 | 当前时间戳加上指定的时间单位数 |
 ||||
 
 *示例 1*
@@ -1655,13 +1656,13 @@ getPastTime(<interval>, <timeUnit>, <format>?)
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*区间*> | 是 | Integer | 要减去的指定时间单位数 |
-| <*时间单位*> | 是 | String | 要与 *interval* 一起使用的时间单位：“Second”、“Minute”、“Hour”、“Day”、“Week”、“Month”、“Year” |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*时间单位*> | 是 | 字符串 | 要与 *interval* 一起使用的时间单位：“Second”、“Minute”、“Hour”、“Day”、“Week”、“Month”、“Year” |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新时间戳*> | String | 当前时间戳减去指定的时间单位数 |
+| <*更新时间戳*> | 字符串 | 当前时间戳减去指定的时间单位数 |
 ||||
 
 *示例 1*
@@ -1778,12 +1779,12 @@ guid('<format>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*格式*> | 否 | String | 表示返回的 GUID 的单一[格式说明符](https://msdn.microsoft.com/library/97af8hh4)。 默认情况下，格式为“D”，但可以使用“N”、“D”、“B”、“P”或“X”。 |
+| <*格式*> | 否 | 字符串 | 表示返回的 GUID 的单一[格式说明符](https://msdn.microsoft.com/library/97af8hh4)。 默认情况下，格式为“D”，但可以使用“N”、“D”、“B”、“P”或“X”。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*GUID 值*> | String | 随机生成的 GUID |
+| <*GUID 值*> | 字符串 | 随机生成的 GUID |
 ||||
 
 *示例*
@@ -1841,8 +1842,8 @@ indexOf('<text>', '<searchText>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*文本*> | 是 | String | 包含要查找的子字符串的字符串 |
-| <*搜索文本*> | 是 | String | 要查找的子字符串 |
+| <*文本*> | 是 | 字符串 | 包含要查找的子字符串的字符串 |
+| <*搜索文本*> | 是 | 字符串 | 要查找的子字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -1872,7 +1873,7 @@ int('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 要转换的字符串 |
+| <*价值*> | 是 | 字符串 | 要转换的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -2005,12 +2006,12 @@ join([<collection>], '<delimiter>')
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*收集*> | 是 | Array | 包含要联接的项的数组 |
-| <*分隔符*> | 是 | String | 出现在结果字符串中的每个字符之间的分隔符 |
+| <*分隔符*> | 是 | 字符串 | 出现在结果字符串中的每个字符之间的分隔符 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*char1*><*分隔符*><*char2*><*分隔符*>... | String | 基于指定数组中的所有项创建的结果字符串 |
+| <*char1*><*分隔符*><*char2*><*分隔符*>... | 字符串 | 基于指定数组中的所有项创建的结果字符串 |
 ||||
 
 *示例*
@@ -2071,8 +2072,8 @@ lastIndexOf('<text>', '<searchText>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*文本*> | 是 | String | 包含要查找的子字符串的字符串 |
-| <*搜索文本*> | 是 | String | 要查找的子字符串 |
+| <*文本*> | 是 | 字符串 | 包含要查找的子字符串的字符串 |
+| <*搜索文本*> | 是 | 字符串 | 要查找的子字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -2380,7 +2381,7 @@ not(equals(1, 1))
 
 <a name="or"></a>
 
-### <a name="or"></a>或
+### <a name="or"></a>or
 
 检查是否至少一个表达式为 true。
 当至少一个表达式为 true 时返回 true，当所有表达式均为 false 时返回 false。
@@ -2501,14 +2502,14 @@ replace('<text>', '<oldText>', '<newText>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*文本*> | 是 | String | 包含要替换的子字符串的字符串 |
-| <*旧文本*> | 是 | String | 要替换的子字符串 |
-| <*新文本*> | 是 | String | 替换字符串 |
+| <*文本*> | 是 | 字符串 | 包含要替换的子字符串的字符串 |
+| <*旧文本*> | 是 | 字符串 | 要替换的子字符串 |
+| <*新文本*> | 是 | 字符串 | 替换字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新文本*> | String | 替换子字符串后得到的更新后字符串 <p>如果未找到子字符串，则返回原始字符串。 |
+| <*更新文本*> | 字符串 | 替换子字符串后得到的更新后字符串 <p>如果未找到子字符串，则返回原始字符串。 |
 ||||
 
 *示例*
@@ -2564,8 +2565,8 @@ split('<text>', '<delimiter>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*文本*> | 是 | String | 根据原始字符串中指定的分隔符将分隔成子字符串的字符串 |
-| <*分隔符*> | 是 | String | 原始字符串中用作分隔符的字符 |
+| <*文本*> | 是 | 字符串 | 根据原始字符串中指定的分隔符将分隔成子字符串的字符串 |
+| <*分隔符*> | 是 | 字符串 | 原始字符串中用作分隔符的字符 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -2595,13 +2596,13 @@ startOfDay('<timestamp>', '<format>'?)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新时间戳*> | String | 指定的时间戳，但从该天的零小时标记开始 |
+| <*更新时间戳*> | 字符串 | 指定的时间戳，但从该天的零小时标记开始 |
 ||||
 
 *示例*
@@ -2626,13 +2627,13 @@ startOfHour('<timestamp>', '<format>'?)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新时间戳*> | String | 指定的时间戳，但从该小时的零分钟标记开始 |
+| <*更新时间戳*> | 字符串 | 指定的时间戳，但从该小时的零分钟标记开始 |
 ||||
 
 *示例*
@@ -2657,13 +2658,13 @@ startOfMonth('<timestamp>', '<format>'?)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新时间戳*> | String | 指定的时间戳，但从该月第一天的零小时标记开始 |
+| <*更新时间戳*> | 字符串 | 指定的时间戳，但从该月第一天的零小时标记开始 |
 ||||
 
 *示例*
@@ -2690,8 +2691,8 @@ startsWith('<text>', '<searchText>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*文本*> | 是 | String | 要检查的字符串 |
-| <*搜索文本*> | 是 | String | 要查找的起始字符串 |
+| <*文本*> | 是 | 字符串 | 要检查的字符串 |
+| <*搜索文本*> | 是 | 字符串 | 要查找的起始字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -2736,7 +2737,7 @@ string(<value>)
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*字符串值*> | String | 指定的值的字符串版本 |
+| <*字符串值*> | 字符串 | 指定的值的字符串版本 |
 ||||
 
 *示例 1*
@@ -2803,14 +2804,14 @@ substring('<text>', <startIndex>, <length>)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*文本*> | 是 | String | 所需字符所在的字符串 |
+| <*文本*> | 是 | 字符串 | 所需字符所在的字符串 |
 | <*启动索引*> | 是 | Integer | 一个等于或大于 0 的正数，需将其用作起始位置或索引值 |
 | <*长度*> | 是 | Integer | 希望子字符串中具有的字符数（正数） |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*子字符串结果*> | String | 包含指定字符数的子字符串，从源字符串中的指定索引位置开始 |
+| <*子字符串结果*> | 字符串 | 包含指定字符数的子字符串，从源字符串中的指定索引位置开始 |
 ||||
 
 *示例*
@@ -2836,15 +2837,15 @@ subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
 | <*区间*> | 是 | Integer | 要减去的指定时间单位数 |
-| <*时间单位*> | 是 | String | 要与 *interval* 一起使用的时间单位：“Second”、“Minute”、“Hour”、“Day”、“Week”、“Month”、“Year” |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*时间单位*> | 是 | 字符串 | 要与 *interval* 一起使用的时间单位：“Second”、“Minute”、“Hour”、“Day”、“Week”、“Month”、“Year” |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新时间戳*> | String | 时间戳减去指定的时间单位数 |
+| <*更新时间戳*> | 字符串 | 时间戳减去指定的时间单位数 |
 ||||
 
 *示例 1*
@@ -2916,7 +2917,7 @@ ticks('<timestamp>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 时间戳的字符串 |
+| <*时间 戳*> | 是 | 字符串 | 时间戳的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -2936,12 +2937,12 @@ toLower('<text>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*文本*> | 是 | String | 要以小写格式返回的字符串 |
+| <*文本*> | 是 | 字符串 | 要以小写格式返回的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*小写文本*> | String | 采用小写格式的原始字符串 |
+| <*小写文本*> | 字符串 | 采用小写格式的原始字符串 |
 ||||
 
 *示例*
@@ -2966,12 +2967,12 @@ toUpper('<text>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*文本*> | 是 | String | 要以大写格式返回的字符串 |
+| <*文本*> | 是 | 字符串 | 要以大写格式返回的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*大写文本*> | String | 采用大写格式的原始字符串 |
+| <*大写文本*> | 字符串 | 采用大写格式的原始字符串 |
 ||||
 
 *示例*
@@ -2996,12 +2997,12 @@ trim('<text>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*文本*> | 是 | String | 包含要删除的前导和尾随空格的字符串 |
+| <*文本*> | 是 | 字符串 | 包含要删除的前导和尾随空格的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新文本*> | String | 原始字符串的更新后版本，其中不含前导或尾随空格 |
+| <*更新文本*> | 字符串 | 原始字符串的更新后版本，其中不含前导或尾随空格 |
 ||||
 
 *示例*
@@ -3060,12 +3061,12 @@ uriComponent('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 要转换为 URI 编码格式的字符串 |
+| <*价值*> | 是 | 字符串 | 要转换为 URI 编码格式的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*编码-uri*> | String | 带有转义字符的 URI 编码字符串 |
+| <*编码-uri*> | 字符串 | 带有转义字符的 URI 编码字符串 |
 ||||
 
 *示例*
@@ -3090,12 +3091,12 @@ uriComponentToBinary('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 要转换的 URI 编码字符串 |
+| <*价值*> | 是 | 字符串 | 要转换的 URI 编码字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*二进制编码-uri*> | String | URI 编码字符串的二进制版本。 二进制内容是 base64 编码的，并且由 `$content` 表示。 |
+| <*二进制编码-uri*> | 字符串 | URI 编码字符串的二进制版本。 二进制内容是 base64 编码的，并且由 `$content` 表示。 |
 ||||
 
 *示例*
@@ -3125,12 +3126,12 @@ uriComponentToString('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 要解码的 URI 编码字符串 |
+| <*价值*> | 是 | 字符串 | 要解码的 URI 编码字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*解码-uri*> | String | URI 编码字符串的解码后的版本 |
+| <*解码-uri*> | 字符串 | URI 编码字符串的解码后的版本 |
 ||||
 
 *示例*
@@ -3157,12 +3158,12 @@ utcNow('<format>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*当前时间戳*> | String | 当前日期和时间 |
+| <*当前时间戳*> | 字符串 | 当前日期和时间 |
 ||||
 
 *示例 1*
@@ -3199,12 +3200,12 @@ xml('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 要转换的包含 JSON 对象的字符串 <p>该 JSON 对象必须只有一个根属性，该属性不能是数组。 <br>请使用反斜杠字符 (\\) 作为双引号 (") 的转义字符。 |
+| <*价值*> | 是 | 字符串 | 要转换的包含 JSON 对象的字符串 <p>该 JSON 对象必须只有一个根属性，该属性不能是数组。 <br>请使用反斜杠字符 (\\) 作为双引号 (") 的转义字符。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*xml 版本*> | Object | 指定的字符串或 JSON 对象的编码 XML |
+| <*xml 版本*> | 对象 | 指定的字符串或 JSON 对象的编码 XML |
 ||||
 
 *示例 1*

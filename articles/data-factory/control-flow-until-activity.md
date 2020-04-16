@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: b4786b612dedb065239f57e0286bafb688180dff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 63873a4f8301d3cb20488b02b32200f476922276
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440370"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417940"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Until 活动
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Until 活动提供的功能与 do-until 循环结构以编程语言提供的功能相同。 它在循环中将执行一组活动，直到与活动相关联的条件的计算结果为 true。 你可以在数据工厂中为 Until 活动指定超时值。 
 
 ## <a name="syntax"></a>语法
@@ -51,10 +53,10 @@ Until 活动提供的功能与 do-until 循环结构以编程语言提供的功�
 
 ## <a name="type-properties"></a>Type 属性
 
-properties | 描述 | 允许的值 | 必选
+properties | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
-name | `Until` 活动的名称。 | String | 是
-type | 必须设置为 Until****。 | String | 是
+name | `Until` 活动的名称。 | 字符串 | 是
+type | 必须设置为 Until****。 | 字符串 | 是
 表达式 | 计算结果必须为 true 或 false 的表达式 | 表达式。  | 是
 timeout | 此处在指定的时间之后 do-until 循环超时。 | 字符串。 `d.hh:mm:ss` 或 `hh:mm:ss` 默认值为 7 天。 最大值为 90 天。 | 否
 活动 | 在表达式计算结果为 `true` 前将执行的活动集。 | 活动数组 |  是
@@ -290,7 +292,7 @@ while ($True) {
 
 - [If Condition 活动](control-flow-if-condition-activity.md)
 - [执行管道活动](control-flow-execute-pipeline-activity.md)
-- [对于每个活动](control-flow-for-each-activity.md)
+- [For Each 活动](control-flow-for-each-activity.md)
 - [获取元数据活动](control-flow-get-metadata-activity.md)
-- [Lookup 活动](control-flow-lookup-activity.md)
-- [网站活动](control-flow-web-activity.md)
+- [查找活动](control-flow-lookup-activity.md)
+- [Web 活动](control-flow-web-activity.md)

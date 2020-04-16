@@ -10,14 +10,17 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: 15aac35a7ebc505e76ddfd0c538c4fddb7b2d9ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ca88e42438c7cb48b062aa67d82053afbb9244bf
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930547"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418280"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>配置高性能 Azure-SSIS Integration Runtime
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 
 本文介绍如何配置高性能 Azure-SSIS Integration Runtime (IR)。 通过 Azure-SSIS IR 可以在 Azure 中部署和运行 SQL Server Integration Services (SSIS) 包。 有关 Azure-SSIS IR 的详细信息，请参阅 [Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime) 一文。 有关在 Azure 上部署和运行 SSIS 包的详细信息，请参阅[将 SQL Server Integration Services 工作负荷直接迁移到云](/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview)。
 

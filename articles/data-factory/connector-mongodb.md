@@ -12,14 +12,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.openlocfilehash: a7bb74c09b45429a160a3ec481c23073575cfe3c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3b6476b794d2e1b2e9a36aa26f35c247641d44e8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79251708"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418144"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>使用 Azure 数据工厂从 MongoDB 复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 MongoDB 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -46,7 +47,7 @@ ms.locfileid: "79251708"
 
 MongoDB 链接的服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type |类型属性必须设置为 **：MongoDbV2** |是 |
 | connectionString |指定 MongoDB 连接字符串，例如 `mongodb://[username:password@]host[:port][/[database][?options]]`。 请参阅 [MongoDB 连接字符串手册](https://docs.mongodb.com/manual/reference/connection-string/)获取详细信息。 <br/><br /> 还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取  `password`  配置。 有关详细信息，请参阅 [在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)。 |是 |
@@ -76,7 +77,7 @@ MongoDB 链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集和链接服务](concepts-datasets-linked-services.md)。 MongoDB 数据集支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的类型属性必须设置为 **：MongoDbV2集合** | 是 |
 | collectionName |MongoDB 数据库中集合的名称。 |是 |
@@ -108,7 +109,7 @@ MongoDB 链接的服务支持以下属性：
 
 复制活动**源**部分支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 必须将复制活动源的类型属性设置为 **：MongoDbV2Source** | 是 |
 | filter | 使用查询运算符指定选择筛选器。 若要返回集合中的所有文档，请省略此参数或传递空文档 ({})。 | 否 |

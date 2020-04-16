@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/27/2019
-ms.openlocfilehash: cf79a670db4e2729c6e0a5fb7112cdc6114f465a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6edd32f8f3579238d1f08f55ce9fb1528fa5d211
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77460699"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417485"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure 表存储复制数据
 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-azure-table-connector.md)
 > * [当前版本](connector-azure-table-storage.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述如何使用 Azure 数据工厂中的复制活动向/从 Azure 表存储复制数据。 它基于["复制活动概述](copy-activity-overview.md)"一文，其中介绍了复制活动的一般概述。
 
@@ -51,7 +53,7 @@ ms.locfileid: "77460699"
 
 可以使用帐户密钥创建 Azure 存储链接服务。 该链接服务将存储的全局访问权限提供给数据工厂。 支持以下属性。
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **AzureTableStorage**。 |是 |
 | connectionString | 为 connectionString 属性指定连接到存储所需的信息。 <br/>还可以将帐户密钥放在 Azure 密钥保管库中，并从连接字符串中拉取 `accountKey` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 |是 |
@@ -120,7 +122,7 @@ ms.locfileid: "77460699"
 
 若要使用共享访问签名身份验证，需支持以下属性。
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **AzureTableStorage**。 |是 |
 | sasUri | 向表指定共享访问签名 URI 的 SAS URI。 <br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以将 SAS 令牌放在 Azure 密钥保管库中，以利用自动轮换以及删除令牌部分。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
@@ -191,7 +193,7 @@ ms.locfileid: "77460699"
 
 要向/从 Azure 表复制数据，请将数据集的 type 属性设置为 **AzureTable**。 支持以下属性。
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的类型属性必须设置为**AzureTable**。 |是 |
 | tableName |链接服务引用的表存储数据库实例中表的名称。 |是 |
@@ -231,7 +233,7 @@ ms.locfileid: "77460699"
 
 要从 Azure 表复制数据，请将复制活动中的源类型设置为“AzureTableSource”****。 复制活动的 **source** 节支持以下属性。
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 必须将复制活动源的类型属性设置为**AzureTableSource**。 |是 |
 | azureTableSourceQuery |使用自定义表存储查询读取数据。 请参阅以下部分中的示例。 |否 |
@@ -260,7 +262,7 @@ ms.locfileid: "77460699"
 
 若要将数据复制到 Azure 表，请将复制活动中的接收器类型设置为“AzureTableSink”****。 复制活动**接收器**部分支持以下属性。
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 **AzureTableSink**。 |是 |
 | azureTableDefaultPartitionKeyValue |接收器可以使用的默认分区键值。 |否 |
@@ -340,7 +342,7 @@ ms.locfileid: "77460699"
 | Edm.Guid |Guid |128 位全局唯一标识符。 |
 | Edm.Int32 |Int32 |32 位整数。 |
 | Edm.Int64 |Int64 |64 位整数。 |
-| Edm.String |String |UTF-16 编码值。 字符串值最大可以为 64 KB。 |
+| Edm.String |字符串 |UTF-16 编码值。 字符串值最大可以为 64 KB。 |
 
 ## <a name="lookup-activity-properties"></a>Lookup 活动属性
 

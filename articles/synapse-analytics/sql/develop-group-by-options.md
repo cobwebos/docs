@@ -1,0 +1,191 @@
+---
+title: 在 SynapsE SQL 中使用组 BY 选项
+description: Synapse SQL 允许通过实现不同的 GROUP BY 选项来开发解决方案。
+services: synapse-analytics
+author: filippopovic
+manager: craigg
+ms.service: synapse-analytics
+ms.topic: conceptual
+ms.subservice: ''
+ms.date: 04/15/2020
+ms.author: fipopovi
+ms.reviewer: jrasnick
+ms.custom: ''
+ms.openlocfilehash: 261f75344d250ae8a8d9687f4bcd80535d11716b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81429039"
+---
+# <a name="group-by-options-in-synapse-sql"></a>SynapsE SQL 中的分组 BY 选项
+Synapse SQL 允许通过实现不同的 GROUP BY 选项来开发解决方案。 
+
+## <a name="what-does-group-by-do"></a>组 BY 做什么
+
+[GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 子句用于将数据聚合成摘要行集。
+
+SQL 按需支持整个 GROUP BY 选项。 SQL 池支持数量有限的 GROUP BY 选项。
+
+## <a name="group-by-options-supported-in-sql-pool"></a>SQL 池中支持的分组 BY 选项
+
+GROUP BY 具有 SQL 池不支持的一些选项。 这些选项具有解决方法，如下所示：
+
+* 带 ROLLUP 的 GROUP BY
+* GROUPING SETS
+* 带 CUBE 的 GROUP BY
+
+### <a name="rollup-and-grouping-sets-options"></a>Rollup 和 grouping sets 选项
+
+此处最简单的选项是使用 UNION ALL 执行汇总，而不是依赖显式语法。 结果应完全相同
+
+以下示例使用带有 ROLLUP 选项的 GROUP BY 语句：
+
+```sql
+SELECT [SalesTerritoryCountry]
+,      [SalesTerritoryRegion]
+,      SUM(SalesAmount)             AS TotalSalesAmount
+FROM  dbo.factInternetSales s
+JOIN  dbo.DimSalesTerritory t       ON s.SalesTerritoryKey       = t.SalesTerritoryKey
+GROUP BY ROLLUP (
+                        [SalesTerritoryCountry]
+                ,       [SalesTerritoryRegion]
+                )
+;
+```
+
+通过使用 ROLLUP，前面的示例请求以下聚合：
+
+* 国家/地区和区域
+* 国家/地区
+* 总计
+
+若要替换 ROLLUP 并返回相同的结果，可以使用 UNION ALL 并显式指定所需的聚合：
+
+```sql
+SELECT [SalesTerritoryCountry]
+,      [SalesTerritoryRegion]
+,      SUM(SalesAmount) AS TotalSalesAmount
+FROM  dbo.factInternetSales s
+JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritoryKey
+GROUP BY
+       [SalesTerritoryCountry]
+,      [SalesTerritoryRegion]
+UNION ALL
+SELECT [SalesTerritoryCountry]
+,      NULL
+,      SUM(SalesAmount) AS TotalSalesAmount
+FROM  dbo.factInternetSales s
+JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritoryKey
+GROUP BY
+       [SalesTerritoryCountry]
+UNION ALL
+SELECT NULL
+,      NULL
+,      SUM(SalesAmount) AS TotalSalesAmount
+FROM  dbo.factInternetSales s
+JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritoryKey;
+```
+
+若要替换 GROUPING SETS，示例原则也适用。 只需要为希望查看的聚合级别创建 UNION ALL 部分。
+
+### <a name="cube-options"></a>Cube 选项
+
+可以使用"全联盟"方法创建具有 CUBE 的组。 问题在于，代码可能很快就会变得庞大且失控。 要缓解此问题，可以使用此更高级的方法。
+
+第一步是定义“cube”，它定义我们想要创建的所有聚合级别。 请注意两个派生表生成所有级别的 CROSS JOIN。 代码的其余部分用于格式化。
+
+```sql
+CREATE TABLE #Cube
+WITH
+(   DISTRIBUTION = ROUND_ROBIN
+,   LOCATION = USER_DB
+)
+AS
+WITH GrpCube AS
+(SELECT    CAST(ISNULL(Country,'NULL')+','+ISNULL(Region,'NULL') AS NVARCHAR(50)) as 'Cols'
+,          CAST(ISNULL(Country+',','')+ISNULL(Region,'') AS NVARCHAR(50))  as 'GroupBy'
+,          ROW_NUMBER() OVER (ORDER BY Country) as 'Seq'
+FROM       ( SELECT 'SalesTerritoryCountry' as Country
+             UNION ALL
+             SELECT NULL
+           ) c
+CROSS JOIN ( SELECT 'SalesTerritoryRegion' as Region
+             UNION ALL
+             SELECT NULL
+           ) r
+)
+SELECT Cols
+,      CASE WHEN SUBSTRING(GroupBy,LEN(GroupBy),1) = ','
+            THEN SUBSTRING(GroupBy,1,LEN(GroupBy)-1)
+            ELSE GroupBy
+       END AS GroupBy  --Remove Trailing Comma
+,Seq
+FROM GrpCube;
+```
+
+下图显示了["选择"创建表](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)的结果：
+
+![按多维数据集分组](./media/develop-group-by-options/develop-group-by-cube.png)
+
+第二步是指定用于存储中期结果的目标表：
+
+```sql
+DECLARE
+ @SQL NVARCHAR(4000)
+,@Columns NVARCHAR(4000)
+,@GroupBy NVARCHAR(4000)
+,@i INT = 1
+,@nbr INT = 0
+;
+CREATE TABLE #Results
+(
+ [SalesTerritoryCountry] NVARCHAR(50)
+,[SalesTerritoryRegion]  NVARCHAR(50)
+,[TotalSalesAmount]      MONEY
+)
+WITH
+(   DISTRIBUTION = ROUND_ROBIN
+,   LOCATION = USER_DB
+)
+;
+```
+
+第三步是循环访问执行聚合的列的多维数据集。 查询将针对临时表中的每一行运行一次#Cube。 结果存储在#Results临时表中：
+
+```sql
+SET @nbr =(SELECT MAX(Seq) FROM #Cube);
+
+WHILE @i<=@nbr
+BEGIN
+    SET @Columns = (SELECT Cols    FROM #Cube where seq = @i);
+    SET @GroupBy = (SELECT GroupBy FROM #Cube where seq = @i);
+
+    SET @SQL ='INSERT INTO #Results
+              SELECT '+@Columns+'
+              ,      SUM(SalesAmount) AS TotalSalesAmount
+              FROM  dbo.factInternetSales s
+              JOIN  dbo.DimSalesTerritory t  
+              ON s.SalesTerritoryKey = t.SalesTerritoryKey
+              '+CASE WHEN @GroupBy <>''
+                     THEN 'GROUP BY '+@GroupBy ELSE '' END
+
+    EXEC sp_executesql @SQL;
+    SET @i +=1;
+END
+```
+
+最后，您可以通过从#Results临时表中读取来返回结果：
+
+```sql
+SELECT *
+FROM #Results
+ORDER BY 1,2,3
+;
+```
+
+通过将代码分解为多个部分并生成循环构造，代码变得更加可管理和可维护。
+
+## <a name="next-steps"></a>后续步骤
+
+有关更多开发技巧，请参阅[开发概述](develop-overview.md)。

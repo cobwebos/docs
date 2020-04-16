@@ -11,14 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/29/2019
-ms.openlocfilehash: 0557c9b9eb65654c4a11c1389ace4776ab60a61d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 39ea8dda0fd823d3061b2cb29e1c548f99281c82
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79532564"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418790"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>创建翻转窗口触发器依赖项
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文提供创建翻转窗口触发器上的依赖项的步骤。 有关翻转窗口触发器的一般信息，请参阅[如何创建翻转窗口触发器](how-to-create-tumbling-window-trigger.md)。
 
@@ -74,7 +75,7 @@ ms.locfileid: "79532564"
 
 下表提供了定义翻转窗口依赖项所需的属性列表。
 
-| **属性名称** | **说明**  | **类型** | **必需** |
+| **属性名称** | **说明**  | 类型  | **必需** |
 |---|---|---|---|
 | type  | 所有现有翻转窗口触发器将显示在此下拉列表中。 选择要依赖的触发器。  | TumblingWindowTriggerDependencyReference 或 SelfDependencyTumblingWindowTriggerReference | 是 |
 | offset | 依赖项触发器的偏移量。 以时间跨度格式提供值，负数和正数偏移量均可。 如果触发器依赖于自身，则此属性是必需的；对于其他所有情况，此属性是可选的。 自我依赖项应始终为负偏移量。 如果未指定任何值，则该窗口与触发器本身相同。 | Timespan<br/>(hh:mm:ss) | 自依赖：是<br/>其他： 否 |

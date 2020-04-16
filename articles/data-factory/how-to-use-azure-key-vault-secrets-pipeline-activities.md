@@ -10,14 +10,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
-ms.openlocfilehash: 09051ad3633ddc720cb34d3d145ccf649fa9cb08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2531ebfd8b1eafc04fa6eda660b0eec3d1147f2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77200106"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417073"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>在管道活动中使用 Azure Key Vault 机密
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 您可以将凭据或机密值存储在 Azure 密钥保管库中，并在管道执行期间使用它们传递到活动。
 
@@ -47,7 +49,7 @@ ms.locfileid: "77200106"
 
 4. 在数据工厂管道中，添加新的 Web 活动并将其配置如下。  
 
-    |properties  |“值”  |
+    |properties  |值  |
     |---------|---------|
     |安全输出     |True         |
     |代码     |[您的机密 URI 值]？api 版本=7.0         |

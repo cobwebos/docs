@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: jingwang
-ms.openlocfilehash: 6494352bf957af83b45488493bf12a094c730c09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 47824095e892ca3c919d2d871feb612758ab2308
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79125753"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417838"
 ---
 # <a name="monitor-copy-activity"></a>监视复制活动
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何在 Azure 数据工厂中监视复制活动执行。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -153,4 +155,4 @@ ms.locfileid: "79125753"
 
 \-[复制活动概述](copy-activity-overview.md)
 
-\-[复制活动性能](copy-activity-performance.md)
+\- [复制活动性能](copy-activity-performance.md)

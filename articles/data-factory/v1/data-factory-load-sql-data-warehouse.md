@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 079d29c241cfbbdcc991f024c07b07b378670c10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0bef6b5e87e7f0964989db371014c305b97f1d12
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130887"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419300"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>在不到 15 分钟的时间里通过数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库
 > [!NOTE]
@@ -116,14 +116,14 @@ ms.locfileid: "80130887"
 3. 在“新建数据工厂”**** 窗格中：
 
    1. 输入 **LoadIntoSQLDWDataFactory** 作为**名称**。
-       Azure 数据工厂的名称必须全局唯一。 如果收到错误：**数据工厂名称“LoadIntoSQLDWDataFactory”不可用**，请更改该数据工厂名称（例如改为“yournameLoadIntoSQLDWDataFactory”），并尝试再次创建。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。  
-   2. 选择 Azure**订阅**。
+       Azure 数据工厂的名称必须全局唯一。 如果收到错误：**数据工厂名称"LoadIntoSQLDWDataFactory"不可用**，请更改数据工厂的名称（例如，您的姓名 LoadIntoSQLDWDataFactory），然后重试创建。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。  
+   2. 选择 **Azure 订阅**。
    3. 对于资源组，请执行以下步骤之一：
       1. 选择“使用现有资源组”并选择一个现有的资源组。****
       2. 选择“新建”并输入资源组的名称。****
    4. 选择数据工厂的**位置**。
    5. 选中位于边栏选项卡底部的“固定到仪表板”复选框。****  
-   6. 单击 **“创建”**。
+   6. 单击“创建”。 
 4. 完成创建后，将看到如下图所示的“数据工厂”边栏选项卡：****
 
    ![数据工厂主页](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
@@ -141,7 +141,7 @@ ms.locfileid: "80130887"
 
 1. 输入 **CopyFromBlobToAzureSqlDataWarehouse** 作为**任务名称**
 2. 选择“立即运行一次”**** 选项。   
-3. 单击“下一步”****。  
+3. 单击“下一步”。   
 
     ![复制向导 - 属性页](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
 
@@ -160,7 +160,7 @@ ms.locfileid: "80130887"
 
     ![复制向导 - 选择输入文件夹](media/data-factory-load-sql-data-warehouse/select-input-folder.png)
 
-4. 单击“下一步”**** 时会自动检测文件格式设置。  请检查，以确保列分隔符为“|”而非默认的逗号“，”。  预览数据后，单击“下一步”****。
+4. 单击“下一步”**** 时会自动检测文件格式设置。  检查以确保列分隔符是"*"而不是默认逗号""。"。  预览数据后，单击“下一步”****。
 
     ![复制向导 - 文件格式设置](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
 
@@ -183,7 +183,7 @@ ms.locfileid: "80130887"
 
 ## <a name="step-4-performance-settings"></a>步骤 4：性能设置
 
-默认选中“允许 polybase”****。  单击“下一步”****。
+默认选中“允许 polybase”****。  单击“下一步”。 
 
 ![复制向导 - 架构映射页](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 

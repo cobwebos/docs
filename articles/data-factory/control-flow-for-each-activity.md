@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: 71528385563b29ce70edf396434be0174beac105
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 35d61e896a395c3044a51780fef72d54c211a31f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804837"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417179"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Azure 数据工厂中的 ForEach 活动
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 ForEach 活动在管道中定义重复的控制流。 此活动用于循环访问集合，并在循环中执行指定的活动。 此活动的循环实现类似于采用编程语言的 Foreach 循环结构。
 
 ## <a name="syntax"></a>语法
@@ -492,5 +494,5 @@ Items | 返回要循环访问的 JSON 数组的表达式。 | 表达式（返回
 
 - [执行管道活动](control-flow-execute-pipeline-activity.md)
 - [获取元数据活动](control-flow-get-metadata-activity.md)
-- [Lookup 活动](control-flow-lookup-activity.md)
-- [网站活动](control-flow-web-activity.md)
+- [查找活动](control-flow-lookup-activity.md)
+- [Web 活动](control-flow-web-activity.md)

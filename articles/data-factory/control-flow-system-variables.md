@@ -11,20 +11,22 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: 0a5237336530d30c3801b13b910171e236e87a23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2690ded0ac45719cb1082c85ab535c91ad491172
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73679279"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417957"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Azure 数据工厂支持的系统变量
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 本文介绍了 Azure 数据工厂支持的系统变量。 定义数据工厂实体时，可以在表达式中使用这些变量。
 
 ## <a name="pipeline-scope"></a>管道范围
 可以在管道 JSON 中的任何位置引用这些系统变量。
 
-| 变量名 | 描述 |
+| 变量名 | 说明 |
 | --- | --- |
 | @pipeline().DataFactory |在其中运行管道运行的数据工厂的名称 |
 | @pipeline().Pipeline |管道的名称 |
@@ -37,7 +39,7 @@ ms.locfileid: "73679279"
 ## <a name="schedule-trigger-scope"></a>计划触发器范围
 如果触发器的类型为“ScheduleTrigger”，则可以在触发器 JSON 中的任何位置引用这些系统变量。
 
-| 变量名 | 描述 |
+| 变量名 | 说明 |
 | --- | --- |
 | @trigger().scheduledTime |触发器计划调用管道运行的时间。 例如，对于每 5 分钟触发一次的触发器，此变量将分别返回 `2017-06-01T22:20:00Z`、`2017-06-01T22:25:00Z`、`2017-06-01T22:30:00Z`。|
 | @trigger().startTime |触发器**实际**触发调用管道运行的时间。 例如，对于每 5 分钟触发一次的触发器，此变量可能分别返回类似此 `2017-06-01T22:20:00.4061448Z`、`2017-06-01T22:25:00.7958577Z`、`2017-06-01T22:30:00.9935483Z` 的内容。 （注意：默认情况下，时间戳为 ISO 8601 格式）|
@@ -46,7 +48,7 @@ ms.locfileid: "73679279"
 如果触发器的类型为“TumblingWindowTrigger”，则可以在触发器 JSON 中的任何位置引用这些系统变量。
 （注意：默认情况下，时间戳为 ISO 8601 格式）
 
-| 变量名 | 描述 |
+| 变量名 | 说明 |
 | --- | --- |
 | @trigger().outputs.windowStartTime |在触发器计划调用管道运行时启动窗口。 如果翻转窗口触发器的频率为“每小时”，则这将是小时开始时的时间。|
 | @trigger().outputs.windowEndTime |在触发器计划调用管道运行时结束窗口。 如果翻转窗口触发器的频率为“每小时”，则这将是小时结束时的时间。|

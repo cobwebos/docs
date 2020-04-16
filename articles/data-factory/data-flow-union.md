@@ -8,14 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 02/12/2019
-ms.openlocfilehash: adba1eb61676dbebcb356490b14b279ebe69c644
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3bdf443a052ba8884a361774154f4d68cc180dfb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930147"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417821"
 ---
 # <a name="azure-data-factory-mapping-data-flow-union-transformation"></a>Azure 数据工厂映射数据流联合转换
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Union 会将多个数据流组合成一个数据流，而这些流的 SQL Union 会作为 Union 转换的新输出。 每个输入流中的所有架构都将在数据流内部合并，而无需具有联接键。
 

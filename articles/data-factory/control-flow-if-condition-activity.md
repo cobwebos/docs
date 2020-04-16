@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: bfa308e2cc67bd14a248f3edc7b182f9a772ed98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b491c4f0cc99395c44d989bf19fa2a7b03da696
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80238696"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417171"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure 数据工厂中的 If Condition 活动
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 If Condition 活动可提供 if 语句在编程语言中提供相同的功能。 当条件计算结果为 `true` 时，它会计算一组活动，当条件计算结果为 `false` 时，它会计算另一组活动。 
 
 ## <a name="syntax"></a>语法
@@ -63,10 +65,10 @@ If Condition 活动可提供 if 语句在编程语言中提供相同的功能。
 
 ## <a name="type-properties"></a>Type 属性
 
-properties | 描述 | 允许的值 | 必选
+properties | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
-name | if-condition 活动名称。 | String | 是
-type | 必须设置为“IfCondition”**** | String | 是
+name | if-condition 活动名称。 | 字符串 | 是
+type | 必须设置为“IfCondition”**** | 字符串 | 是
 表达式 | 计算结果必须为 true 或 false 的表达式 | 具有结果类型布尔的表达式 | 是
 ifTrueActivities | 表达式计算结果为 `true` 时将执行的活动集。 | Array | 是
 ifFalseActivities | 表达式计算结果为 `false` 时将执行的活动集。 | Array | 是
@@ -289,7 +291,7 @@ $result.Error -join "`r`n"
 查看数据工厂支持的其他控制流活动： 
 
 - [执行管道活动](control-flow-execute-pipeline-activity.md)
-- [对于每个活动](control-flow-for-each-activity.md)
+- [For Each 活动](control-flow-for-each-activity.md)
 - [获取元数据活动](control-flow-get-metadata-activity.md)
-- [Lookup 活动](control-flow-lookup-activity.md)
-- [网站活动](control-flow-web-activity.md)
+- [查找活动](control-flow-lookup-activity.md)
+- [Web 活动](control-flow-web-activity.md)

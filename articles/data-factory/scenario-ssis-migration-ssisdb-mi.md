@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: 38010e3aaa2d0544dfbfe19135d25250d2b021a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2e35e4eb750aa2244df920111b201d886599eaf6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929784"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419045"
 ---
 # <a name="ssis-migration-with-azure-sql-database-managed-instance-as-the-database-workload-destination"></a>以 Azure SQL 数据库托管实例为数据库工作负荷目标的 SSIS 迁移
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 将数据库工作负荷从本地 SQL Server 迁移到 Azure SQL 数据库托管实例时，应熟悉 [Azure 数据迁移服务](https://docs.microsoft.com/azure/dms/dms-overview) (DMS) 和[使用 DMS 进行的 Azure SQL 数据库托管实例迁移的网络拓扑](https://docs.microsoft.com/azure/dms/resource-network-topologies)。
 

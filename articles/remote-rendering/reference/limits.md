@@ -5,16 +5,16 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: 6e23c716a965cdf178c9f847900e66c141d5d7eb
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: b6e501cdc1d5091a27d86406c6919587bedb261a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80680331"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417685"
 ---
-# <a name="limits"></a>限制
+# <a name="limitations"></a>限制
 
-由于正在运行的系统的内部详细信息，许多功能具有大小或计数限制。
+许多功能具有大小、计数或其他限制。
 
 ## <a name="azure-frontend"></a>Azure 前端
 
@@ -40,4 +40,13 @@ ms.locfileid: "80680331"
 |溢价| 无限制 |
 
 
+## <a name="platform-limitations"></a>平台限制
 
+**视窗 10 桌面**
+
+* 不支持从 Unity 部署"PC 独立"部署。 改用 UWP。
+* UWP/x86 是唯一受支持的 UWP 平台。 不支持 UWP/x64。
+
+**霍洛伦斯 2**
+
+* 不支持[来自 PV 摄像机功能的渲染](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers#render-from-the-pv-camera-opt-in)。

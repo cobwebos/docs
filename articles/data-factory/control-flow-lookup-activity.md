@@ -11,14 +11,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: 08cc7ce8f306095a66bc0f8cf74dff8c8b551ecf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02abdaf46ca2af6c96d3b5e8d4ce5876831bd415
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440484"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417992"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure 数据工厂中的查找活动
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 查找活动可以从任何 Azure 数据工厂支持的数据源检索数据集。 在以下方案中使用它：
 - 动态确定哪些对象在后续活动中工作，而不是针对对象名称进行硬编码。 一些对象示例包括文件和表。
@@ -53,7 +54,7 @@ ms.locfileid: "75440484"
 
 ## <a name="type-properties"></a>Type 属性
 
-“属性” | 描述 | 类型 | 必需？
+名称 | 说明 | 类型 | 必需？
 ---- | ----------- | ---- | --------
 dataset | 为查找提供数据集引用。 从每篇相应的连接器文章的“数据集属性”**** 部分中获取详细信息。 | 键/值对 | 是
 source | 包含特定于数据集的源属性，与复制活动源相同。 从每篇相应的连接器文章的“复制活动属性”**** 部分中获取详细信息。 | 键/值对 | 是
@@ -306,4 +307,4 @@ firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 不�
 - [执行管道活动](control-flow-execute-pipeline-activity.md)
 - [ForEach 活动](control-flow-for-each-activity.md)
 - [获取元数据活动](control-flow-get-metadata-activity.md)
-- [Web 活动](control-flow-web-activity.md)
+- [网络活动](control-flow-web-activity.md)

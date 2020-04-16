@@ -11,18 +11,27 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/25/2020
-ms.openlocfilehash: 822a981b84919670aa476567625cdf914206eaa8
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 7fb1560fb9be809d816dde7dd69f1ec8afe5649f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422183"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417579"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Synapse Analytics（前称为 Azure SQL 数据仓库）中复制和转换数据 
 
 > [!div class="op_single_selector" title1="选择您正在使用的数据工厂服务版本："]
 > * [版本1](v1/data-factory-azure-sql-data-warehouse-connector.md)
 > * [当前版本](connector-azure-sql-data-warehouse.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+本文概述了如何使用 Azure 数据工厂中的复制活动从 Azure 同步分析复制数据，以及使用数据流转换 Azure 数据湖存储 Gen2 中的数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
+
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+本文概述了如何使用 Azure 数据工厂中的复制活动将数据从 Azure SQL 数据仓库复制到 Azure SQL 数据仓库，并使用数据流转换 Azure 数据湖存储 Gen2 中的数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Azure 同步分析复制数据，以及使用数据流转换 Azure 数据湖存储 Gen2 中的数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
 
@@ -407,7 +416,7 @@ Azure 数据工厂支持通过三种方式将数据载入 SQL 数据仓库。
 
 | properties          | 说明                                                  | 必选                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| rejectValue       | 指定在查询失败之前可以拒绝的行数或百分比。<br/><br/>有关 PolyBase 的拒绝选项的详细信息，请参阅 [CREATE EXTERNAL TABLE (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) 的“参数”部分。 <br/><br/>允许的值为 0（默认值）、1、2 等。 | 否                                            |
+| rejectValue       | 指定在查询失败之前可以拒绝的行数或百分比。<br/><br/>在[创建外部表（转接-SQL）](https://msdn.microsoft.com/library/dn935021.aspx)的参数部分中了解有关 PolyBase 拒绝选项的详细信息。 <br/><br/>允许的值为 0（默认值）、1、2 等。 | 否                                            |
 | rejectType        | 指定 **rejectValue** 选项是文本值还是百分比。<br/><br/>允许的值是**值**（默认）和**百分比**。 | 否                                            |
 | rejectSampleValue | 确定在 PolyBase 重新计算被拒绝行的百分比之前要检索的行数。<br/><br/>允许的值为 1、2 等。 | 如果 **rejectType** 是 **percentage**，则为“是” |
 | useTypeDefault    | 指定在 PolyBase 从文本文件中检索数据时如何处理带分隔符的文本文件中的缺失值。<br/><br/>有关此属性的详细信息，请参阅[创建外部文件格式 (Transact SQL)](https://msdn.microsoft.com/library/dn935026.aspx) 中的参数部分。<br/><br/>允许的值为 **"真****"和"假**"（默认值）。<br><br> | 否                                            |
@@ -531,7 +540,7 @@ SQL 数据仓库 PolyBase 直接支持 Azure Blob、Azure 数据湖存储第 1 �
 
 ### <a name="best-practices-for-using-polybase"></a>有关使用 PolyBase 的最佳做法
 
-除了 [Azure Synapse Analytics 的最佳做法](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md)中提到的最佳做法以外，以下部分提供了其他最佳做法。
+除了 [Azure Synapse Analytics 的最佳做法](../synapse-analytics/sql/best-practices-sql-pool.md)中提到的最佳做法以外，以下部分提供了其他最佳做法。
 
 #### <a name="required-database-permission"></a>所需数据库权限
 
@@ -740,7 +749,7 @@ SQL 数据仓库 [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/c
 从/向 Azure Synapse Analytics 复制数据时，以下映射用于从 Azure Synapse Analytics 数据类型映射到 Azure 数据工厂临时数据类型。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
 
 >[!TIP]
->请参阅 [Azure Synapse Analytics 中的表数据类型](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types.md)一文，了解 SQL 数据仓库支持的数据类型和对于不支持数据类型的解决方法。
+>请参阅 [Azure Synapse Analytics 中的表数据类型](../synapse-analytics/sql/develop-tables-data-types.md)一文，了解 SQL 数据仓库支持的数据类型和对于不支持数据类型的解决方法。
 
 | Azure Synapse Analytics 数据类型    | 数据工厂临时数据类型 |
 | :------------------------------------ | :----------------------------- |

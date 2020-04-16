@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: bee627ade4f66206cd5254fc32bc7aa9973c7bee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bb3f22223bd64c06cfa4a5f6ffabe7b128dff1d5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131319"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416471"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure 数据工厂中数据移动的安全注意事项
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 >
 > * [版本 1](v1/data-factory-data-movement-security-considerations.md)
 > * [当前版本](data-movement-security-considerations.md)
+
+ [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文介绍 Azure 数据工厂中数据移动服务用于帮助保护数据的基本安全基础结构。 数据工厂管理资源建立在 Azure 安全基础结构上，并使用 Azure 提供的所有可能的安全措施。
 
@@ -59,7 +61,7 @@ ms.locfileid: "80131319"
 ### <a name="securing-data-store-credentials"></a>保护数据存储凭据
 
 - **在 Azure 数据工厂托管存储中存储加密的凭据**。 数据工厂使用由 Microsoft 管理的证书对数据存储凭据加密，从而帮助为这些凭据提供保护。 这些证书每两年轮换一次（包括证书续订和凭据迁移）。 有关 Azure 存储安全的详细信息，请参阅 [Azure 存储安全概述](../security/fundamentals/storage-overview.md)。
-- **在 Azure Key Vault 中存储凭据**。 还可以将数据存储的凭据存储在 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 中。 数据工厂在执行某个活动期间会检索该凭据。 有关详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。
+- **在 Azure 密钥保管库中存储凭据**。 还可以将数据存储的凭据存储在 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 中。 数据工厂在执行某个活动期间会检索该凭据。 有关详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。
 
 ### <a name="data-encryption-in-transit"></a>传输中的数据加密
 如果云数据存储支持 HTTPS 或 TLS，则数据工厂中数据移动服务与云数据存储之间的所有数据传输均通过安全通道 HTTPS 或 TLS 进行。
@@ -81,7 +83,7 @@ ms.locfileid: "80131319"
 #### <a name="azure-sql-data-warehouse"></a>Azure SQL 数据仓库
 Azure SQL 数据仓库中的透明数据加密 (TDE) 可帮助对静态数据进行实时加密和解密，避免恶意活动造成的威胁。 此行为对客户端透明。 有关详细信息，请参阅[保护 SQL 数据仓库中的数据库](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)。
 
-#### <a name="azure-sql-database"></a>Azure SQL 数据库
+#### <a name="azure-sql-database"></a>Azure SQL Database
 Azure SQL 数据库还支持透明数据加密 (TDE)，它无需更改应用程序，即可对数据执行实时加密和解密，从而帮助防止恶意活动的威胁。 此行为对客户端透明。 有关详细信息，请参阅 [SQL 数据库和数据仓库的透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)。
 
 #### <a name="azure-data-lake-store"></a>Azure Data Lake Store
@@ -111,7 +113,7 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件和
  
 - **在本地存储凭据**。 如果直接结合 JSON 中内联的连接字符串和凭据使用 **Set-AzDataFactoryV2LinkedService** cmdlet，则链接服务将加密并存储在自承载集成运行时中。  在这种情况下，凭据将通过 Azure 后端服务（此服务非常安全）传递到自承载集成计算机（在其中最终会对其进行加密和存储）。 自承载集成运行时使用 Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) 来加密敏感数据和凭据信息。
 
-- **在 Azure Key Vault 中存储凭据**。 还可以将数据存储的凭据存储在 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 中。 数据工厂在执行某个活动期间会检索该凭据。 有关详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。
+- **在 Azure 密钥保管库中存储凭据**。 还可以将数据存储的凭据存储在 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 中。 数据工厂在执行某个活动期间会检索该凭据。 有关详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。
 
 - **在本地存储凭据，而无需通过 Azure 后端将凭据传递到自承载集成运行时**。 如果想要在自承载集成运行时本地加密并存储凭据，而不必通过数据工厂后端传递凭据，请按照[在 Azure 数据工厂中加密本地数据存储的凭据](encrypt-credentials-self-hosted-integration-runtime.md)中的步骤操作。 所有连接器都支持此选项。 自承载集成运行时使用 Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) 来加密敏感数据和凭据信息。 
 
@@ -143,7 +145,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 下图显示了如何使用自承载集成运行时通过 ExpressRoute 和 IPSec VPN（具有 Azure 虚拟网络）在本地数据库和 Azure 服务之间移动数据：
 
-**快速路线**
+**ExpressRoute**
 
 ![结合使用 ExpressRoute 和网关](media/data-movement-security-considerations/express-route-for-gateway.png) 
 
@@ -165,7 +167,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 下表提供了 Windows 防火墙的入站端口要求：
 
-| 入站端口 | 描述                              |
+| 入站端口 | 说明                              |
 | ------------- | ---------------------------------------- |
 | 8060 (TCP)    | PowerShell 加密 cmdlet（参阅[在 Azure 数据工厂中加密本地数据存储的凭据](encrypt-credentials-self-hosted-integration-runtime.md)）和凭据管理器应用程序需要使用此端口在自承载集成运行时中安全设置本地数据存储的凭据。 |
 
@@ -180,7 +182,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 - [Azure SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure 数据湖存储](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../cosmos-db/firewall-support.md)
-- [亚马逊红移](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
+- [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
 
 ## <a name="frequently-asked-questions"></a>常见问题
 

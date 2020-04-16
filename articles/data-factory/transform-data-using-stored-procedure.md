@@ -11,17 +11,19 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 11/27/2018
-ms.openlocfilehash: 4a0709b4eaa8742069eecb4c39712e384645304b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57bf653aa3f421ae8897c4be661ceef589fcdc06
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74926658"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418807"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 SQL Server 存储过程活动转换数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-stored-proc-activity.md)
 > * [当前版本](transform-data-using-stored-procedure.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 可使用数据工厂[管道](concepts-pipelines-activities.md)中的数据转换活动将原始数据转换和处理为预测和见解。 存储过程活动是数据工厂支持的转换活动之一。 本文基于[转换数据](transform-data.md)一文编写，它概述了数据转换和数据工厂中支持的转换活动。
 
@@ -30,7 +32,7 @@ ms.locfileid: "74926658"
 
 可以使用存储过程活动调用企业或 Azure 虚拟机 (VM) 中以下数据存储中的存储过程： 
 
-- Azure SQL 数据库
+- Azure SQL Database
 - Azure SQL 数据仓库
 - SQL Server 数据库。  如果使用 SQL Server，请在托管数据库的同一计算机上或在可以访问数据库的单独计算机上安装自托管集成运行时。 自托管集成运行时是一种以安全托管方式将本地/Azure VM 上的数据源与云服务进行连接的组件。 有关详细信息[，请参阅自托管集成运行时](create-self-hosted-integration-runtime.md)文章。
 
@@ -66,7 +68,7 @@ ms.locfileid: "74926658"
 
 下表描述了其中的 JSON 属性：
 
-| properties                  | 描述                              | 必选 |
+| properties                  | 说明                              | 必选 |
 | ------------------------- | ---------------------------------------- | -------- |
 | name                      | 活动名称                     | 是      |
 | description               | 描述活动用途的文本 | 否       |
@@ -81,7 +83,7 @@ ms.locfileid: "74926658"
 | 数据源          | 数据类型映射 |
 | ---------------------|-------------------|
 | Azure SQL 数据仓库 | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
-| Azure SQL 数据库   | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#data-type-mapping-for-azure-sql-database | 
+| Azure SQL Database   | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#data-type-mapping-for-azure-sql-database | 
 | Oracle               | https://docs.microsoft.com/azure/data-factory/connector-oracle#data-type-mapping-for-oracle |
 | SQL Server           | https://docs.microsoft.com/azure/data-factory/connector-sql-server#data-type-mapping-for-sql-server |
 

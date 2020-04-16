@@ -10,16 +10,17 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 04/15/2020
 ms.author: jingwang
-ms.openlocfilehash: a0c07aaf27825254f776a03b9b9ca2cbeddca02d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 344ad8e106c119c1de59570d1ec4e3df5e1cc8af
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250277"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417110"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure 数据工厂中的“获取元数据”活动
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 可以使用“获取元数据”活动来检索 Azure 数据工厂中任何数据的元数据。 可在以下方案中使用此活动：
 
@@ -54,6 +55,7 @@ ms.locfileid: "78250277"
 | [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | x/x | √ | x | √ | √ | √/√ |
 
+- 对文件夹使用"获取元数据"活动时，请确保对给定文件夹具有 LIST/EXECUTE 权限。
 - 对于 Amazon S3 和 Google 云存储，`lastModified` 适用于桶和键，但不适用于虚拟文件夹；而 `exists` 适用于桶和键，但不适用于前缀或虚拟文件夹。
 - 对于 Azure Blob 存储，`lastModified` 适用于容器和 Blob，但不适用于虚拟文件夹。
 - `lastModified` 筛选器当前适用于筛选子项，但不适用于筛选指定的文件夹/文件本身。
@@ -72,7 +74,7 @@ ms.locfileid: "78250277"
 
 可以在“获取元数据”活动字段列表中指定以下元数据类型，以检索相应的信息：
 
-| 元数据类型 | 描述 |
+| 元数据类型 | 说明 |
 |:--- |:--- |
 | itemName | 文件或文件夹的名称。 |
 | itemType | 文件或文件夹的类型。 返回的值为 `File` 或 `Folder`。 |
@@ -135,7 +137,7 @@ ms.locfileid: "78250277"
 
 目前，“获取元数据”活动可以返回以下类型的元数据信息：
 
-properties | 描述 | 必选
+properties | 说明 | 必选
 -------- | ----------- | --------
 fieldList | 所需元数据信息的类型。 有关支持的元数据的详细信息，请参阅本文的[元数据选项](#metadata-options)部分。 | 是 
 dataset | 引用数据集，其元数据将由“获取元数据”活动检索。 有关支持的连接器的信息，请参阅[功能](#capabilities)部分。 有关数据集语法详细信息，请参阅特定的连接器主题。 | 是
@@ -199,4 +201,4 @@ storeSettings | 使用格式类型数据集时适用。 | 否
 - [执行管道活动](control-flow-execute-pipeline-activity.md)
 - [ForEach 活动](control-flow-for-each-activity.md)
 - [查找活动](control-flow-lookup-activity.md)
-- [Web 活动](control-flow-web-activity.md)
+- [网络活动](control-flow-web-activity.md)

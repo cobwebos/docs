@@ -11,17 +11,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 6aac3f1bb29ccfab0de4cb0a807ca0831a62af7e
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 4b7fd2de0762de147ad3ceae0d562a1c78b33dc2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991546"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417471"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>使用 Azure 数据工厂从 Cassandra 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-onprem-cassandra-connector.md)
 > * [当前版本](connector-cassandra.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Cassandra 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -58,7 +60,7 @@ ms.locfileid: "80991546"
 
 Cassandra 链接的服务支持以下属性：
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type |type 属性必须设置为：**Cassandra** |是 |
 | host |Cassandra 服务器的一个或多个 IP 地址或主机名。<br/>指定以逗号分隔的 IP 地址或主机名列表，以同时连接到所有服务器。 |是 |
@@ -101,7 +103,7 @@ Cassandra 链接的服务支持以下属性：
 
 要从 Cassandra 复制数据，请将数据集的 type 属性设置为“CassandraTable”****。 支持以下属性：
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**CassandraTable** | 是 |
 | keyspace |Cassandra 数据库中密钥空间或架构的名称。 |否（如果指定了“CassandraSource”的“query”） |
@@ -136,7 +138,7 @@ Cassandra 链接的服务支持以下属性：
 
 要从 Cassandra 复制数据，请将复制活动中的源类型设置为“CassandraSource”****。 复制活动**源**部分支持以下属性：
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：**CassandraSource** | 是 |
 | query |使用自定义查询读取数据。 SQL-92 查询或 CQL 查询。 请参阅 [CQL reference](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)（CQL 参考）。 <br/><br/>使用 SQL 查询时，请指定 keyspace name.table name 来表示要查询的表****。 |否（如果指定了数据集中的“tableName”和“keyspace”）。 |
@@ -184,7 +186,7 @@ Cassandra 链接的服务支持以下属性：
 | BIGINT |Int64 |
 | BLOB |Byte[] |
 | BOOLEAN |Boolean |
-| DECIMAL |十进制 |
+| DECIMAL |Decimal |
 | DOUBLE |Double |
 | FLOAT |Single |
 | INET |字符串 |
@@ -194,7 +196,7 @@ Cassandra 链接的服务支持以下属性：
 | TIMEUUID |Guid |
 | UUID |Guid |
 | VARCHAR |字符串 |
-| VARINT |十进制 |
+| VARINT |Decimal |
 
 > [!NOTE]
 > 对于集合类型（映射、集、列表等），请参阅[通过虚拟表使用 Cassandra 集合类型](#work-with-collections-using-virtual-table)部分。

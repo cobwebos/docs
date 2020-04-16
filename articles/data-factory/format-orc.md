@@ -9,14 +9,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: e104c4c8e976207859b75212d5406558f04c6377
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b68d3724c6390fc5d30745924451e27ef9855b3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77597484"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417719"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>Azure 数据工厂中的 ORC 格式
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 如果要**分析 ORC 文件或以 ORC 格式写入数据**，请遵循本文中的说明。 
 
@@ -26,7 +28,7 @@ ms.locfileid: "77597484"
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 ORC 数据集支持的属性列表。
 
-| properties         | 描述                                                  | 必选 |
+| properties         | 说明                                                  | 必选 |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | 数据集的 type 属性必须设置为 **Orc**。 | 是      |
 | location         | 文件的位置设置。 每个基于文件的连接器在 `location` 下都有其自己的位置类型和支持的属性。 **请在连接器文章 -> 数据集属性部分中查看详细信息**。 | 是      |
@@ -68,7 +70,7 @@ ms.locfileid: "77597484"
 
 复制活动***\*源\**** 部分支持以下属性。
 
-| properties      | 描述                                                  | 必选 |
+| properties      | 说明                                                  | 必选 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为 OrcSource****。 | 是      |
 | storeSettings | 有关如何从数据存储读取数据的一组属性。 每个基于文件的连接器在 `storeSettings` 下都有其自己支持的读取设置。 **请在连接器文章 -> 复制活动属性部分中查看详细信息**。 | 否       |
@@ -77,7 +79,7 @@ ms.locfileid: "77597484"
 
 复制活动***\*接收器\**** 部分支持以下属性。
 
-| properties      | 描述                                                  | 必选 |
+| properties      | 说明                                                  | 必选 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为 OrcSink****。 | 是      |
 | storeSettings | 有关如何将数据写入到数据存储的一组属性。 每个基于文件的连接器在 `storeSettings` 下都有其自身支持的写入设置。 **请在连接器文章 -> 复制活动属性部分中查看详细信息**。 | 否       |

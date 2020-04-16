@@ -8,14 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/12/2019
-ms.openlocfilehash: 9daf7973a2e48f866a8d0b93a682851d31dc3af7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a6b3b1d11242434088c138460d968f39d5273e4f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74928540"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418416"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>映射数据流中的架构漂移
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 架构漂移是源经常更改元数据的情况。 字段、列和 类型可以动态添加、删除或更改。 如果不处理架构漂移，数据流就容易受到上游数据源更改的影响。 当传入列和字段发生更改时，典型的 ETL 模式将失败，因为它们往往绑定到这些源名称。
 

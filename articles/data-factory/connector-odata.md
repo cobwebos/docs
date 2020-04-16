@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 17b78e03e330e342e9d558dd3ca5d9071bcd3c2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c2fe6b6cc7b52dda9f2beffa444f1965723ea92a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78163924"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416927"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 OData 源复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-odata-connector.md)
@@ -54,7 +55,7 @@ ms.locfileid: "78163924"
 
 OData 链接的服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | **类型**属性必须设置为**OData**。 |是 |
 | url | OData 服务的根 URL。 |是 |
@@ -203,10 +204,10 @@ OData 链接的服务支持以下属性：
 
 要从 OData 复制数据，请将数据集的 type 属性设置为“ODataResource”********。 支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 ODataResource********。 | 是 |
-| 路径 | OData 资源的路径。 | 是 |
+| path | OData 资源的路径。 | 是 |
 
 **示例**
 
@@ -239,7 +240,7 @@ OData 链接的服务支持以下属性：
 
 从 OData 复制数据时，复制活动的 **source** 节支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 ODataSource********。 | 是 |
 | query | 用于筛选数据的 OData 查询选项。 示例：`"$select=Name,Description&$top=5"`。<br/><br/>请注意，OData 连接器会从组合 URL 复制数据：`[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]`****。 有关详细信息，请参阅 [OData URL 组件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
@@ -296,7 +297,7 @@ OData 链接的服务支持以下属性：
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
-| Edm.String | String |
+| Edm.String | 字符串 |
 | Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 

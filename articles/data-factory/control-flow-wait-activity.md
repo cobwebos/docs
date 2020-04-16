@@ -11,15 +11,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.openlocfilehash: f9dd53fded06eec169219d00993620a0f2aa2bf0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6158938d01b6e5da74ed046d2a74e0dfd827f47
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73678240"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417906"
 ---
 # <a name="execute-wait-activity-in-azure-data-factory"></a>在 Azure 数据工厂中执行等待活动
 在管道中使用等待活动时，管道将等待一段指定的时间，然后继续执行后续活动。 
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 
 ## <a name="syntax"></a>语法
 
@@ -36,10 +39,10 @@ ms.locfileid: "73678240"
 
 ## <a name="type-properties"></a>Type 属性
 
-properties | 描述 | 允许的值 | 必选
+properties | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
-name | `Wait` 活动的名称。 | String | 是
-type | 必须被设置为 **Wait**。 | String | 是
+name | `Wait` 活动的名称。 | 字符串 | 是
+type | 必须被设置为 **Wait**。 | 字符串 | 是
 waitTimeInSeconds | 管道在继续进行处理前所等待的秒数。 | Integer | 是
 
 ## <a name="example"></a>示例
@@ -103,8 +106,8 @@ waitTimeInSeconds | 管道在继续进行处理前所等待的秒数。 | Intege
 
 - [If Condition 活动](control-flow-if-condition-activity.md)
 - [执行管道活动](control-flow-execute-pipeline-activity.md)
-- [对于每个活动](control-flow-for-each-activity.md)
+- [For Each 活动](control-flow-for-each-activity.md)
 - [获取元数据活动](control-flow-get-metadata-activity.md)
-- [Lookup 活动](control-flow-lookup-activity.md)
-- [网站活动](control-flow-web-activity.md)
+- [查找活动](control-flow-lookup-activity.md)
+- [Web 活动](control-flow-web-activity.md)
 - [Until 活动](control-flow-until-activity.md)

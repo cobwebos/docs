@@ -12,14 +12,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2019
-ms.openlocfilehash: 0b0352632491dbfc46ed4819653c6cb902eee4ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d3772a17d0429d9b3a5bf95d2060f2dfbbbafe1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74923723"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418042"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Cloud for Customer (C4C) 复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述如何使用 Azure 数据工厂中的复制活动从/向 SAP Cloud for Customer (C4C) 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -47,7 +48,7 @@ ms.locfileid: "74923723"
 
 SAP Cloud for Customer 链接服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapCloudForCustomer**。 | 是 |
 | url | SAP C4C OData 服务的 URL。 | 是 |
@@ -87,10 +88,10 @@ SAP Cloud for Customer 链接服务支持以下属性：
 
 若要从 SAP Cloud for Customer 复制数据，请将数据集的 type 属性设置为 **SapCloudForCustomerResource**。 支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**SapCloudForCustomerResource** |是 |
-| 路径 | 指定 SAP C4C OData 实体的路径。 |是 |
+| path | 指定 SAP C4C OData 实体的路径。 |是 |
 
 **例子：**
 
@@ -119,7 +120,7 @@ SAP Cloud for Customer 链接服务支持以下属性：
 
 若要从 SAP Cloud for Customer 复制数据，请将复制活动中的源类型设置为 **SapCloudForCustomerSource**。 复制活动**源**部分支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapCloudForCustomerSource**  | 是 |
 | query | 指定用于读取数据的自定义 OData 查询。 | 否 |
@@ -162,7 +163,7 @@ SAP Cloud for Customer 链接服务支持以下属性：
 
 若要将数据复制到 SAP Cloud for Customer，请将复制活动中的接收器类型设置为 **SapCloudForCustomerSink**。 复制活动接收器部分中支持以下属性****：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapCloudForCustomerSink**  | 是 |
 | writeBehavior | 操作的写入行为。 可以是“Insert”、“Update”。 | 不是。 默认值为“Insert”。 |
@@ -225,7 +226,7 @@ SAP Cloud for Customer 链接服务支持以下属性：
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
-| Edm.String | String |
+| Edm.String | 字符串 |
 | Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 

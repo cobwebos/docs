@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: e0f9e87fbef72db6f3a21d7531df3e1cefc6317f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 050037748969fe76dd1be9db80d68fb23ccd7940
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75444323"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417386"
 ---
 # <a name="copy-data-from-drill-using-azure-data-factory"></a>使用 Azure 数据工厂从 Drill 复制数据
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Drill 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -47,7 +49,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 Drill 链接服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Drill** | 是 |
 | connectionString | 用于连接到 Drill 的 ODBC 连接字符串。 <br/>还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `pwd` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
@@ -104,7 +106,7 @@ Drill 链接服务支持以下属性：
 
 要从 Drill 复制数据，请将数据集的 type 属性设置为“DrillTable”****。 支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的类型属性必须设置为：**钻表** | 是 |
 | 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
@@ -136,7 +138,7 @@ Drill 链接服务支持以下属性：
 
 要从 Drill 复制数据，请将复制活动中的源类型设置为“DrillSource”****。 复制活动**源**部分支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：DrillSource**** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |

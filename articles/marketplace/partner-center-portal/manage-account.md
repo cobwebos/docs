@@ -1,22 +1,22 @@
 ---
-title: 如何在合作伙伴中心管理商业市场帐户
-description: 了解如何在合作伙伴中心管理商业市场帐户。
+title: 如何在 Microsoft 合作伙伴中心管理商业市场帐户
+description: 了解如何在 Microsoft 合作伙伴中心管理商业市场帐户。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 50ea56a8c743636f9fdd9105e5b07a868e71d3d0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 256ea1a03cd22df443362623177f91893f28b664
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262921"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419147"
 ---
-# <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>如何在合作伙伴中心管理您的商业市场帐户
+# <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>在合作伙伴中心管理您的商业市场帐户
 
-[创建合作伙伴中心帐户](./create-account.md)后，您可以使用[商业市场仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)管理您的帐户和优惠。
+[创建合作伙伴中心帐户](./create-account.md)后，可以使用[商业市场仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)来管理您的帐户和优惠。
 
 在本文中，我们将深入探讨如何管理合作伙伴中心帐户，包括：
 
@@ -35,12 +35,12 @@ ms.locfileid: "81262921"
 
 如果您尚未这样做，您（或您的组织的管理员）应访问合作伙伴中心帐户的[帐户设置](https://partner.microsoft.com/dashboard/account/management)，以便：
 - 检查您公司的帐户验证状态
-- 确认您的赛门铁克 ID、卖家 ID、MPN ID、发布者 ID 和联系信息，包括公司审批人和卖家联系人
+- 确认您的赛门铁克 ID、卖家 ID、Microsoft 合作伙伴网络 （MPN） ID、发布者 ID 和联系信息，包括公司审批人和卖家联系人
 - 为将在合作伙伴中心使用您业务帐户的任何人创建用户帐户
 
 ### <a name="open-developer-settings"></a>打开开发人员设置
 
-帐户设置位于合作伙伴中心[商业市场仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace)的右上角。 选择齿轮图标（靠近仪表板右上角），然后选择 **"开发人员"设置**。
+**帐户设置**位于合作伙伴中心[商业市场仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace)的右上角。 选择齿轮图标（靠近仪表板右上角），然后选择 **"开发人员"设置**。
 
 ![合作伙伴中心中的帐户设置菜单](./media/dashboard-developer-settings.png)
 
@@ -66,11 +66,11 @@ ms.locfileid: "81262921"
 
 付款帐户是从销售中汇到收益的银行帐户。 此银行帐户必须位于您注册合作伙伴中心帐户的同一国家/地区。
 
-要设置您的支出帐户，您需要**关联您的 Microsoft 帐户**：
+要设置支出帐户，您需要**关联您的 Microsoft 帐户**：
 1. 转到合作伙伴中心[中的商业市场概述页面](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)。
 2. 在"配置文件"部分下，选择 **"关联您的 Microsoft 帐户**"。
 3. 出现提示后，请使用 Microsoft 帐户 （MSA） 登录。 此帐户不能已与其他合作伙伴中心帐户关联。
-4. 要完成支出帐户的设置，请完全注销合作伙伴中心，然后使用 Microsoft 帐户（而不是您的工作帐户）重新登录。
+4. 要完成支出帐户的设置，请注销合作伙伴中心，然后使用 Microsoft 帐户（而不是您的工作帐户）重新登录。
 
 现在，您的 Microsoft 帐户已关联，要添加支出帐户，您需要：
 - **选择付款方式**：银行账户或PayPal
@@ -91,7 +91,7 @@ ms.locfileid: "81262921"
 
 您可以在合作伙伴中心以电子方式填写和提交您的纳税申报表;在大多数情况下，您不需要打印和邮寄任何表单。
 
-不同的国家和地区有不同的纳税要求。 您必须在纳税中支付的确切金额取决于您销售优惠的国家和地区。 在某些国家/地区，Microsoft 代表您征收销售和使用税。 这些国家/地区将在列出您的报价的过程中被识别。 在其他国家/地区，根据您注册的地点，您可能需要将销售汇出，并将销售用税直接汇给当地税务机关。 此外，您收到的销售收入可能作为收入纳税。 我们强烈建议您联系您所在国家或地区的有关当局，以便最好地帮助您确定适用于 Microsoft 销售交易的税务信息。
+不同的国家和地区有不同的纳税要求。 您必须在纳税中支付的确切金额取决于您销售优惠的国家和地区。 在某些国家/地区，Microsoft 代表您征收销售和使用税款。 这些国家/地区将在列出您的报价的过程中被识别。 在其他国家/地区，根据您注册的地点，您可能需要将销售汇出，并将销售用税直接汇给当地税务机关。 此外，您收到的销售收入可能作为收入纳税。 我们强烈建议您联系您所在国家或地区的有关当局，以便最好地帮助您确定适用于 Microsoft 销售交易的税务信息。
 
 ##### <a name="withholding-rates"></a>预缴比率
 你在税单中提交的信息将确定相应的预缴比率。 预缴比率仅适用于你在美国的销售；非美国地区的销售不受预缴约束。 不同情况下的预缴比率有所不同，但对于在美国之外国家或地区注册的大多数开发人员，黙认税率是 30%。 如果你的国家和地区与美国签有所得税条约，你可以选择降低此税率。
@@ -124,7 +124,7 @@ ms.locfileid: "81262921"
 
 建议为每个产品/服务和每个产品的分销渠道创建唯一的 GUID。 如果不希望拆分报告，则可以选择对产品的多个分销渠道使用单个 GUID。
 
-如果使用模板部署产品并且产品在 Azure 市场和 GitHub 中都提供，则可以创建并注册 2 个不同的 GUID：
+如果使用模板部署产品，并且该产品在 Azure 应用商店和 GitHub 上都可用，则可以创建和注册两个不同的 GUIDS：
 
 *    Azure 市场中的产品 A
 *    GitHub 中的产品 A
@@ -145,23 +145,20 @@ ms.locfileid: "81262921"
 
 ## <a name="manage-users"></a>管理用户
 
-合作伙伴中心**的用户**部分（在**帐户设置**）下，让我们使用 Azure AD 来管理有权访问合作伙伴中心帐户的用户、组和 Azure AD 应用程序。 为了管理用户，您必须使用[工作帐户](./company-work-accounts.md)（关联的 Azure AD 租户）登录。 要管理其他工作帐户/租户中的用户，您需要注销，然后以具有该工作帐户/租户的**Manager**权限的用户身份重新登录。
+合作伙伴中心**的用户部分（** 在**帐户设置**）中允许您使用 Azure AD 来管理有权访问合作伙伴中心帐户的用户、组和 Azure AD 应用程序。 您的帐户必须具有要在其中添加或编辑用户[的工作帐户（Azure AD 租户）](./company-work-accounts.md)[**的管理器级**](#define-user-roles-and-permissions)权限。 要管理其他工作帐户/租户中的用户，您需要注销，然后以具有该工作帐户/租户的**Manager**权限的用户身份重新登录。
 
 使用工作帐户（Azure AD 租户）登录后，可以：
-- [添加或删除用户](#add-or-remove-users)
+
+- [添加或删除用户](#add-existing-users)
 - [更改用户密码](#change-a-user-password)
-- [添加或删除组](#add-or-remove-users)
+- [添加或删除组](#manage-groups)
 - [添加或删除 Azure AD 应用程序](#add-new-azure-ad-applications)
 - [管理 Azure AD 应用程序的密钥](#manage-keys-for-an-azure-ad-application)
 - [定义用户角色和权限](#define-user-roles-and-permissions)
 
 请记住，所有合作伙伴中心用户（包括组和 Azure AD 应用程序）都必须在与合作伙伴中心帐户关联的[Azure AD 租户](#manage-tenants)中具有活动工作帐户。
 
-### <a name="add-or-remove-users"></a>添加或删除用户
-
-您的帐户必须具有要在其中添加或编辑用户[的工作帐户（Azure AD 租户）](./company-work-accounts.md)[**的管理器级**](#define-user-roles-and-permissions)权限。
-
-#### <a name="add-existing-users"></a>添加现有用户
+### <a name="add-existing-users"></a>添加现有用户
 
 要将用户添加到公司[工作帐户（Azure AD 租户）](./company-work-accounts.md)中已存在的合作伙伴中心帐户：
 
@@ -172,7 +169,7 @@ ms.locfileid: "81262921"
 4. 在**角色**部分中，为选定的用户指定角色或自定义权限。
 5. 选择“保存”。 
 
-#### <a name="create-new-users"></a>创建新用户
+### <a name="create-new-users"></a>创建新用户
 
 要创建新用户帐户，您必须具有具有[**全局管理员**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)权限的帐户。 
 
@@ -186,7 +183,7 @@ ms.locfileid: "81262921"
 
 在合作伙伴中心创建新用户还将在您登录的工作帐户（Azure AD 租户）中为该用户创建一个帐户。 更改合作伙伴中心中的用户名将在组织的工作帐户（Azure AD 租户）中进行相同的更改。
 
-#### <a name="invite-new-users-by-email"></a>通过电子邮件邀请新用户
+### <a name="invite-new-users-by-email"></a>通过电子邮件邀请新用户
 
 要通过电子邮件邀请当前不是公司工作帐户（Azure AD 租户）一部分的用户，您必须具有具有[**全局管理员**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)权限的帐户。
 
@@ -202,11 +199,11 @@ ms.locfileid: "81262921"
 > [!NOTE]
 > 如果组织使用[目录集成](https://go.microsoft.com/fwlink/p/?LinkID=724033)将本地目录服务与 Azure AD 同步，则无法在合作伙伴中心创建新用户、组或 Azure AD 应用程序。 您需要（或本地目录中的另一个管理员）需要在本地目录中直接创建它们，然后才能在合作伙伴中心中查看和添加它们。
 
-#### <a name="remove-a-user"></a>删除用户
+### <a name="remove-a-user"></a>删除用户
 
 要从工作帐户（Azure AD 租户）中删除用户，请转到 **"用户**"（在 **"帐户设置**"下），使用最右侧列中的复选框选择要删除的用户，然后从可用操作中选择 **"删除**"。 将显示一个弹出窗口，以确认要删除选定的用户。
 
-#### <a name="change-a-user-password"></a>更改用户密码
+### <a name="change-a-user-password"></a>更改用户密码
 
 如果您的一个用户需要更改其密码，如果您在创建用户帐户时提供了**密码恢复电子邮件**，他们可以自己更改密码。 还可遵循以下步骤来更新用户密码。 要更改公司工作帐户（Azure AD 租户）中的用户密码，必须在具有[**全局管理员**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)权限的帐户上登录。 请注意，这将更改 Azure AD 租户中的用户的密码以及他们用于访问合作伙伴中心的密码。
 
@@ -218,7 +215,7 @@ ms.locfileid: "81262921"
 
 组允许您一起控制多个用户角色和权限。
 
-#### <a name="add-an-existing-group"></a>添加现有组
+### <a name="add-an-existing-group"></a>添加现有组
 
 要将组织工作帐户（Azure AD 租户）中已存在的组添加到合作伙伴中心帐户：请执行：
 
@@ -231,7 +228,7 @@ ms.locfileid: "81262921"
 
 添加现有组时，该组成员的每个用户将能够访问您的合作伙伴中心帐户，并具有与该组分配的角色关联的权限。
 
-#### <a name="add-a-new-group"></a>添加新组
+### <a name="add-a-new-group"></a>添加新组
 
 要向合作伙伴中心帐户添加全新组，请：
 
@@ -245,7 +242,7 @@ ms.locfileid: "81262921"
 
 请注意，此新组也将在组织的工作帐户（Azure AD 租户）中创建，而不仅仅是在合作伙伴中心帐户中。
 
-#### <a name="remove-a-group"></a>删除组
+### <a name="remove-a-group"></a>删除组
 
 要从工作帐户（Azure AD 租户）中删除组，请转到 **"用户**"（在 **"帐户设置"** 下），使用最右侧列中的复选框选择要删除的组，然后从可用操作中选择 **"删除**"。 将显示一个弹出窗口，以确认要删除选定的组。
 
@@ -253,7 +250,7 @@ ms.locfileid: "81262921"
 
 您可以允许属于公司 Azure AD 的应用程序或服务访问合作伙伴中心帐户。
 
-#### <a name="add-existing-azure-ad-applications"></a>添加现有的 Azure AD 应用程序
+### <a name="add-existing-azure-ad-applications"></a>添加现有的 Azure AD 应用程序
 
 要添加公司 Azure 活动目录中已存在的应用程序，请执行：
 
@@ -263,7 +260,7 @@ ms.locfileid: "81262921"
 4. 在**角色**部分中，为选定的 Azure AD 应用程序指定角色或自定义权限。
 5. 选择“保存”。 
 
-#### <a name="add-new-azure-ad-applications"></a>添加新的 Azure AD 应用程序
+### <a name="add-new-azure-ad-applications"></a>添加新的 Azure AD 应用程序
 
 如果要授予合作伙伴中心对全新 Azure AD 应用程序帐户的访问权限，可以在 **"用户"** 部分创建一个。 请注意，这将在公司工作帐户（Azure AD 租户）中创建新帐户，而不仅仅是在合作伙伴中心帐户中。 如果您主要使用此 Azure AD 应用程序进行合作伙伴中心身份验证，并且不需要用户直接访问它，则可以为**回复 URL** **和应用 ID URI**输入任何有效地址，只要这些值不由目录中的任何其他 Azure AD 应用程序使用。
 
@@ -276,11 +273,11 @@ ms.locfileid: "81262921"
 
 添加或创建 Azure AD 应用程序后，可以返回到**用户**部分，然后选择应用程序名称查看应用程序的设置，包括租户 ID、客户端 ID、回复 URL 和应用 ID URI。
 
-#### <a name="remove-an-application"></a>删除应用程序
+### <a name="remove-an-azure-ad-application"></a>删除 Azure AD 应用程序
 
 要从工作帐户（Azure AD 租户）中删除应用程序，请转到 **"用户**"（在 **"帐户设置"** 下），使用最右侧列中的复选框选择要删除的应用程序，然后从可用操作中选择 **"删除**"。 将显示一个弹出窗口，以确认要删除选定的应用程序。
 
-#### <a name="manage-keys-for-an-azure-ad-application"></a>管理 Azure AD 应用程序的密钥
+### <a name="manage-keys-for-an-azure-ad-application"></a>管理 Azure AD 应用程序的密钥
 
 如果 Azure AD 应用程序在 Microsoft Azure AD 中读写数据，它将需要密钥。 通过在合作伙伴中心中编辑其信息，可以为 Azure AD 应用程序创建密钥。 还可以删除不再需要的密钥。
 
@@ -350,7 +347,3 @@ Azure 活动目录 （AD） 租户（在本文档中也称为"工作帐户"）�
 合作伙伴中心**的协议**部分（在**帐户设置**下）允许您查看您授权的发布协议的列表。 这些协议按名称和版本号列出，包括接受协议的日期和接受协议的用户的名称。
 
 如果需要**的操作**可能会显示在此页面顶部，如果有需要您注意的协议更新。 要接受更新的协议，请先阅读链接的协议版本，然后选择 **"接受协议**"。
-
-## <a name="next-steps"></a>后续步骤
-
-- [创建新的 SaaS 套餐](./create-new-saas-offer.md)

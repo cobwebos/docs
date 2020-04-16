@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 69e2a0fe63be65a2b5d51f7bd2e0885fcbfc5bbb
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 89efa8dc9989f693964415741299042c63f93780
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991665"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418110"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Netezza 复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Netezza 复制数据。 本文是根据总体概述复制活动的 [Azure 数据工厂中的复制活动](copy-activity-overview.md)编写的。
 
@@ -53,7 +54,7 @@ Azure 数据工厂提供内置驱动程序以启用连接。 无需要手动安�
 
 Netezza 链接服务支持以下属性：
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | **类型**属性必须设置为**Netezza**。 | 是 |
 | connectionString | 用于连接到 Netezza 的 ODBC 连接字符串。 <br/>还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `pwd` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
@@ -61,10 +62,10 @@ Netezza 链接服务支持以下属性：
 
 典型的连接字符串为 `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>`。 下表介绍了更多可以设置的属性：
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | SecurityLevel | 驱动程序用于连接到数据存储区的安全级别 (SSL/TLS)。 示例：`SecurityLevel=preferredSecured`。 支持的值为：<br/>- **只有不安全的**（**仅无安全**）： 驱动程序不使用 TLS。<br/>- **首选不安全（首选不安全）（默认）：** 如果服务器提供选择，驱动程序不使用 TLS。 <br/>- **首选安全（首选安全）：** 如果服务器提供选择，驱动程序将使用 TLS。 <br/>- **仅安全（仅安全）：** 除非 TLS 连接可用，否则驱动程序不会连接。 | 否 |
-| CaCertFile | 服务器使用的 TLS/SSL 证书的完整路径。 示例： `CaCertFile=<cert path>;`| 是，如果启用了 TLS |
+| CaCertFile | 服务器使用的 TLS/SSL 证书的完整路径。 示例：`CaCertFile=<cert path>;`| 是，如果启用了 TLS |
 
 **示例**
 
@@ -118,7 +119,7 @@ Netezza 链接服务支持以下属性：
 
 若要从 Netezza 复制数据，请将数据集的 type 属性设置为“NetezzaTable”********。 支持以下属性：
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的类型属性必须设置为 **：NetezzaTable** | 是 |
 | 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
@@ -154,10 +155,10 @@ Netezza 链接服务支持以下属性：
 
 若要从 Netezza 复制数据，请将复制活动中的 source 类型设置为“NetezzaSource”********。 复制活动**源**部分支持以下属性：
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源**的类型**属性必须设置为**NetezzaSource**。 | 是 |
-| query | 使用自定义 SQL 查询读取数据。 示例： `"SELECT * FROM MyTable"` | 否（如果指定了数据集中的“tableName”） |
+| query | 使用自定义 SQL 查询读取数据。 示例：`"SELECT * FROM MyTable"` | 否（如果指定了数据集中的“tableName”） |
 | partitionOptions | 指定用于从 Netezza 加载数据的数据分区选项。 <br>允许值为：**无**（默认）、**数据切片**和**动态范围**。<br>启用分区选项（即不是`None`），通过[`parallelCopies`](copy-activity-performance-features.md#parallel-copy)设置复制活动来控制从 Netezza 数据库同时加载数据的并行性程度。 | 否 |
 | partitionSettings | 指定数据分区的设置组。 <br>当分区选项不是 `None` 时适用。 | 否 |
 | partitionColumnName | 指定并行复制范围分区使用的源列（**整数类型**）的名称。 如果未指定，系统会自动检测表的主键并将其用作分区列。 <br>当分区选项是 `DynamicRange` 时适用。 如果使用查询来检索源数据，请在 WHERE 子句中挂接 `?AdfRangePartitionColumnName`。 请参阅[从 Netezza 进行并行复制](#parallel-copy-from-netezza)部分的示例。 | 否 |

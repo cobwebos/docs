@@ -11,20 +11,21 @@ author: djpmsft
 ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
-ms.openlocfilehash: e736cc95628bd0e15bdb7ffd425608278788c353
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: e5bd3d10e4e43daf3031aae5083ee917cfe65ede
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879253"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417974"
 ---
-# <a name="set-variable-activity-in-azure-data-factory"></a>在 Azure 数据工厂中设置变量活动
+# <a name="set-variable-activity-in-azure-data-factory"></a>Azure 数据工厂中的设置变量活动
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 使用“设置变量”活动可设置数据工厂管道中定义的 String、Bool 或 Array 类型的现有变量的值。
 
 ## <a name="type-properties"></a>Type 属性
 
-Property | 说明 | 必选
+properties | 说明 | 必选
 -------- | ----------- | --------
 name | 管道中活动的名称 | 是
 description | 描述活动用途的文本 | 否

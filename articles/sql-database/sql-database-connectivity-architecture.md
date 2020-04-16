@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 6fdfbce6dce2428a8f2757b0755e6f982f02240f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2028aac9c01aedc4baa568d370c9f7d21c920647
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256414"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419257"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL 连接体系结构
 > [!NOTE]
@@ -45,7 +45,7 @@ ms.locfileid: "79256414"
 Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三个选项：
 
 - **重定向（推荐）：** 客户端直接建立与托管数据库的节点的连接，从而降低延迟并提高吞吐量。 要使用此模式的连接，客户端需要：
-   - 允许从客户端向区域中所有 Azure IP 地址进行 11000 11999 范围内的所有 Azure IP 地址的通信。 使用 SQL 的服务标记使其更易于管理。  
+   - 允许从客户端向区域中所有 Azure SQL IP 地址进行 11000 11999 范围内的所有 Azure SQL IP 地址通信。 使用 SQL 的服务标记使其更易于管理。  
    - 允许从客户端到端口 1433 上的 Azure SQL 数据库网关 IP 地址的出站通信。
 
 - **代理：** 在此模式下，所有连接都通过 Azure SQL 数据库网关进行接近，从而导致延迟增加和吞吐量降低。 要使用此模式的连接，客户端需要允许从客户端到端口 1433 上的 Azure SQL 数据库网关 IP 地址的出站通信。

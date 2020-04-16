@@ -11,17 +11,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: yexu
-ms.openlocfilehash: 42c637839172dab09a8721a93a67785a748afd2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 766520fe44047eee76029adf8ee1683c7b8008a1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75708896"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417855"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure 数据工厂中复制活动的容错
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-copy-activity-fault-tolerance.md)
 > * [当前版本](copy-activity-fault-tolerance.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在源数据存储与接收器数据存储之间复制数据时，可通过 Azure 数据工厂中的复制活动提供的两种方式处理不兼容行：
 
@@ -48,7 +50,7 @@ ms.locfileid: "75708896"
 >- 将复制活动配置为调用 [AmazonRedShift 卸载](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift)时，此功能不适用。
 >- 当复制活动配置为调用 [SQL 接收器中的存储过程](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#invoke-a-stored-procedure-from-a-sql-sink)时，此功能不适用。
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 下面的 JSON 定义示例用于配置在复制活动中跳过不兼容行：
 
 ```json
@@ -70,12 +72,12 @@ ms.locfileid: "75708896"
 }
 ```
 
-properties | 描述 | 允许的值 | 必选
+properties | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | -------- 
 enableSkipIncompatibleRow | 指定是否在复制期间跳过不兼容的行。 | True<br/>False（默认值） | 否
 redirectIncompatibleRowSettings | 若要记录不兼容行，可以指定的一组属性。 | &nbsp; | 否
 linkedServiceName | [Azure 存储](connector-azure-blob-storage.md#linked-service-properties)或 [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) 的链接服务，用于存储包含跳过的行的记录。 | `AzureStorage` 或 `AzureDataLakeStore` 类型链接服务的名称，指代要用于存储日志文件的实例。 | 否
-路径 | 包含跳过行的日志文件的路径。 | 指定要用于记录不兼容数据的路径。 如果未提供路径，服务会为用户创建一个容器。 | 否
+path | 包含跳过行的日志文件的路径。 | 指定要用于记录不兼容数据的路径。 如果未提供路径，服务会为用户创建一个容器。 | 否
 
 ## <a name="monitor-skipped-rows"></a>监视跳过的行
 复制活动运行完成后，可以在复制活动输出中看到跳过的行数：

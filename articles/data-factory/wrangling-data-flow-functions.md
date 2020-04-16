@@ -7,14 +7,16 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: e2517ec4a02a5d61fb3ce1d9ca9ffa2b5f4e8bf8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7235e95e5b33fb931411a51796a8dbec96c46355
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74287026"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417651"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>在争论数据流中的转换函数
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在 Azure 数据工厂中构建数据流允许您在云规模下进行无代码敏捷数据准备和争鸣。 旋转数据流与[联机电源查询](https://docs.microsoft.com/powerquery-m/power-query-m-reference)集成，并使 Power Query M 函数可用于通过火花执行进行数据争鸣。 
 

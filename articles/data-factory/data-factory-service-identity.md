@@ -10,14 +10,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jingwang
-ms.openlocfilehash: 45699680ad2003c034bce588857f8b102a0b6d26
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d47450f3252074d3bae8df97766bf8858fca5972
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79261120"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416580"
 ---
 # <a name="managed-identity-for-data-factory"></a>数据工厂的托管标识
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文将帮助你了解什么是数据工厂的托管标识（以前称为托管服务标识/MSI）及其工作原理。
 

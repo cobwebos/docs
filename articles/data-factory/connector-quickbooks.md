@@ -12,14 +12,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.openlocfilehash: ca57f4611b9eb483104d8d0b8fc5636726203195
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2c9da9c1a37b087a31d1910094f51a39288c192
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927763"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416705"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 QuickBooks Online 复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 QuickBooks Online 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -49,7 +50,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 QuickBooks 链接的服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：“QuickBooks”**** | 是 |
 | endpoint | QuickBooks Online 服务器的终结点。 （即 quickbooks.api.intuit.com）  | 是 |
@@ -95,7 +96,7 @@ QuickBooks 链接的服务支持以下属性：
 
 若要从 QuickBooks Online 复制数据，请将数据集的 type 属性设置为 **QuickBooksObject**。 支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的类型属性必须设置为 **：QuickBooksObject** | 是 |
 | tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
@@ -125,7 +126,7 @@ QuickBooks 链接的服务支持以下属性：
 
 要从 QuickBooks Online 复制数据，请将复制活动中的源类型设置为 **QuickBooksSource**。 复制活动**源**部分支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：“QuickBooksSource”**** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM "Bill" WHERE Id = '123'"`。 | 否（如果指定了数据集中的“tableName”） |

@@ -11,17 +11,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.openlocfilehash: 4d729a0117c7c409d1a3e0c3fd440aed96153203
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce63da745fb84ebccd57b246fc934f595dd7cda1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243583"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418246"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon Redshift 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-amazon-redshift-connector.md)
 > * [当前版本](connector-amazon-redshift.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Amazon Redshift 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
@@ -55,7 +57,7 @@ ms.locfileid: "79243583"
 
 Amazon Redshift 链接的服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 类型属性必须设置为：**亚马逊红移** | 是 |
 | server |Amazon Redshift 服务器的 IP 地址或主机名。 |是 |
@@ -97,7 +99,7 @@ Amazon Redshift 链接的服务支持以下属性：
 
 若要从 Amazon Redshift 复制数据，支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的类型属性必须设置为 **：AmazonRedshiftTable** | 是 |
 | 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
@@ -132,7 +134,7 @@ Amazon Redshift 链接的服务支持以下属性：
 
 要从 Amazon Redshift 复制数据，请将复制活动中的源类型设置为“AmazonRedshiftSource”****。 复制活动**源**部分支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：**AmazonRedshiftSource** | 是 |
 | query |使用自定义查询读取数据。 例如：从 MyTable 中选择 *。 |否（如果指定了数据集中的“tableName”） |
@@ -219,17 +221,17 @@ Amazon Redshift 链接的服务支持以下属性：
 | Amazon Redshift 数据类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
 | BIGINT |Int64 |
-| BOOLEAN |String |
-| CHAR |String |
+| BOOLEAN |字符串 |
+| CHAR |字符串 |
 | DATE |DateTime |
 | DECIMAL |Decimal |
 | DOUBLE PRECISION |Double |
 | INTEGER |Int32 |
 | real |Single |
 | SMALLINT |Int16 |
-| TEXT |String |
+| TEXT |字符串 |
 | TIMESTAMP |DateTime |
-| VARCHAR |String |
+| VARCHAR |字符串 |
 
 ## <a name="lookup-activity-properties"></a>Lookup 活动属性
 

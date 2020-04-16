@@ -11,12 +11,12 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 2113e5ac3563a22c5f2c6b755230b05fb9a2cb35
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 088a0d10b96a30ef830b4e8a8dc12c19127141db
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583873"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417041"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>使用有序聚集列存储索引优化性能  
 
@@ -28,7 +28,7 @@ ms.locfileid: "80583873"
 
 创建有序 CCI 时，Synapse SQL 引擎在索引生成器将现有数据压缩到索引段之前，通过订单键对内存中的现有数据进行排序。  使用有序数据可以减少段重叠的情况，使查询更有效地消除段，因而可提高性能，因为要从磁盘读取的段数更少。  如果可以一次性在内存中为所有数据排序，则可以避免段重叠的情况。  由于数据仓库中的大型表，这种情况不经常发生。  
 
-若要检查列的段范围，请结合表名称和列名称运行以下命令：
+要检查列的段范围，请使用表名和列名称运行以下命令：
 
 ```sql
 SELECT o.name, pnp.index_id, 

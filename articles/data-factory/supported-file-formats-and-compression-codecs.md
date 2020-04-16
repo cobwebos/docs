@@ -9,14 +9,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 6855eea5939419c9a0a867de4e0621b4d4ae02b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dbcfad3dd3db9f5c9431e07d85d77a77a10283c4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75439577"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419028"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure 数据工厂中支持的文件格式和压缩编解码器
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 *本文适用于以下连接器[：Amazon S3、Azure](connector-amazon-simple-storage-service.md) [Blob、Azure](connector-azure-blob-storage.md)[数据存储湖存储第 1 代](connector-azure-data-lake-store.md)[、Azure 数据存储第 2 代](connector-azure-data-lake-storage.md)[、Azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)[、FTP、Google](connector-ftp.md)[云存储](connector-google-cloud-storage.md)[、HDFS、HTTP](connector-hdfs.md)和[SFTP。](connector-sftp.md) [HTTP](connector-http.md)*
 

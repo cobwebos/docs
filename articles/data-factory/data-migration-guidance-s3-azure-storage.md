@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 6f2db91a35573bc2cbdd0df2cb1ac09914cc956b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3f40ad7346219b48a38ade38b2a75ddf71940875
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76122638"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416416"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>使用 Azure 数据工厂将数据从 Amazon S3 迁移到 Azure 存储 
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure 数据工厂提供高性能、稳健且经济高效的机制用于将数据从 Amazon S3 大规模迁移到 Azure Blob 存储或 Azure Data Lake Storage Gen2。  本文提供面向数据工程师和开发人员的以下信息： 
 
@@ -143,7 +145,7 @@ ADF 默认通过 HTTPS 协议使用加密的连接将数据从 Amazon S3 传输�
 - [创建和配置自承载集成运行时](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
 - [自承载集成运行时的高可用性和可伸缩性](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
 - [数据移动安全注意事项](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
-- [在 Azure 密钥保管库中存储凭据](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
+- [在 Azure Key Vault 中存储凭据](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
 - [基于时间分区文件名增量复制文件](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-partitioned-file-name-copy-data-tool)
 - [基于 LastModifiedDate 复制新文件和更改的文件](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-lastmodified-copy-data-tool)
 - [ADF 定价页](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)

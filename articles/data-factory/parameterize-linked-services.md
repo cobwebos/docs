@@ -10,14 +10,15 @@ ms.date: 12/18/2018
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: acc7284eb607d20ca1d62b478d802be56048bc6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8fa8603f2bee7e42db0f085d78117d61bd14ce5c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440099"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419385"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>参数化 Azure 数据工厂中的链接服务
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 现在可以参数化链接服务并在运行时传递动态值。 例如，如果要连接到同一 Azure SQL 数据库服务器上的不同数据库，则现在可以在链接服务定义中参数化数据库名称。 这可以避免必须为 Azure SQL 数据库服务器上的每个数据库创建链接服务。 也可以参数化链接服务定义中的其他属性 - 例如，** 用户名。
 
@@ -33,7 +34,7 @@ ms.locfileid: "75440099"
 ## <a name="supported-data-stores"></a>支持的数据存储
 
 目前，Azure 门户中的数据工厂 UI 支持以下数据存储的链接服务参数化。 对于所有其他数据存储，可以通过选择“连接”选项卡上的**代码**图标并使用 JSON 编辑器来参数化链接的服务****。
-- Azure SQL 数据库
+- Azure SQL Database
 - Azure SQL 数据仓库
 - SQL Server
 - Oracle

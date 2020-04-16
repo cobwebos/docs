@@ -11,14 +11,15 @@ manager: shwang
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: c7a2aec35511ef066033c3d6462143ac31660e76
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6d3c9f0df0d834ffe75d0b56e3c80a432c27ea38
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74923060"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419011"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>通过运行 Databricks Notebook 转换数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 [数据工厂管道](concepts-pipelines-activities.md)中的 Azure 数据砖块笔记本活动在 Azure 数据砖块工作区中运行数据砖块笔记本。 本文以 [数据转换活动](transform-data.md) 一文为基础，其中概述了数据转换和支持的转换活动。Azure Databricks 是一个用于运行 Apache Spark 的托管平台。
 
@@ -56,7 +57,7 @@ ms.locfileid: "74923060"
 
 下表描述了 JSON 定义中使用的 JSON 属性：
 
-|properties|描述|必选|
+|properties|说明|必选|
 |---|---|---|
 |name|管道中活动的名称。|是|
 |description|描述活动用途的文本。|否|
@@ -122,7 +123,7 @@ ms.locfileid: "74923060"
 2. 可以使用 表达式（如`'@activity('databricks notebook activity name').output.runOutput'`） 使用数据工厂中的输出。 
 
    > [!IMPORTANT]
-   > 如果要传递 JSON 对象，可以通过附加属性名称来检索值。 示例： `'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
+   > 如果要传递 JSON 对象，可以通过附加属性名称来检索值。 示例：`'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>如何上传 Databricks 中的库
 

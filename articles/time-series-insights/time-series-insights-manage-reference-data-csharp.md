@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 04/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: cf5f89197798f95dced5bfd8817f1df050297048
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f0ce0f7d90540274d24a7e0248e6f197b74033a1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76961993"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416982"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>使用 C# 管理 Azure 时序见解环境的正式版参考数据
 
@@ -46,7 +46,7 @@ ms.locfileid: "76961993"
 
    | 项名 | 类型 |
    | --- | --- |
-   | uuid | String | 
+   | uuid | 字符串 | 
 
 1. 为 Azure Active Directory 配置 Azure 时序见解环境，如[身份验证和授权](time-series-insights-authentication-and-authorization.md)中所述。 使用 `http://localhost:8080/` 作为**重定向 URI**。
 

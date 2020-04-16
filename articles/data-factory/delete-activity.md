@@ -12,14 +12,16 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: f265cdc955becd53ae7ba61ad827b2be69b92907
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: d90f38f83bd4d2d5311f277fcc928e442d7ea793
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618265"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416383"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Delete 活动
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 
 可以使用 Azure 数据工厂中的 Delete 活动从“本地存储”库或“云存储”库中删除文件或文件夹。 不再需要文件时，使用此活动来清理或存档文件。
 
@@ -80,7 +82,7 @@ ms.locfileid: "80618265"
 
 ## <a name="type-properties"></a>Type 属性
 
-| Property | 描述 | 必选 |
+| properties | 说明 | 必选 |
 | --- | --- | --- |
 | dataset | 提供数据集引用以确定要删除的文件或文件夹 | 是 |
 | recursive | 表明从子文件夹中以递归方式删除数据，还是只从指定文件夹中删除数据。  | 不是。 默认为 `false`。 |
@@ -116,7 +118,7 @@ ms.locfileid: "80618265"
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Delete 活动的示例日志文件
 
-| “属性” | 类别 | 状态 | 错误 |
+| 名称 | 类别 | 状态 | 错误 |
 |:--- |:--- |:--- |:--- |
 | test1/yyy.json | 文件 | Deleted |  |
 | test2/hello789.txt | 文件 | Deleted |  |

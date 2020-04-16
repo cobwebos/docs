@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 3a16a8263c80852127ca61db3c666ebf0f7f1e4c
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: db55e685fb50c89eb850e1b9ee9dcf13d20fb614
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011695"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417541"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure SQL 数据库中复制和转换数据
 
 > [!div class="op_single_selector" title1="选择正在使用的 Azure 数据工厂版本："]
 > * [版本 1](v1/data-factory-azure-sql-connector.md)
 > * [当前版本](connector-azure-sql-database.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Azure SQL 数据库复制数据，以及使用数据流转换 Azure SQL 数据库中的数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
 
@@ -58,7 +60,7 @@ ms.locfileid: "81011695"
 
 Azure SQL 数据库链接服务支持以下属性：
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | **类型**属性必须设置为**AzureSqlDatabase**。 | 是 |
 | connectionString | 指定连接到**连接String**属性的 Azure SQL 数据库实例所需的信息。 <br/>还可以将密码或服务主体密钥放在 Azure Key Vault 中。 如果使用 SQL 身份验证，请从连接字符串中提取 `password` 配置。 有关详细信息，请参阅表格后面的 JSON 示例，以及[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 | 是 |
@@ -219,7 +221,7 @@ Azure SQL 数据库链接服务支持以下属性：
 
 Azure SQL 数据库数据集支持以下属性：
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集**的类型**属性必须设置为**AzureSqlTable**。 | 是 |
 | 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
@@ -255,7 +257,7 @@ Azure SQL 数据库数据集支持以下属性：
 
 若要从 Azure SQL 数据库复制数据，复制活动的 **source** 节需要支持以下属性：
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **AzureSqlSource**。 为了向后兼容，仍然支持“SqlSource”类型。 | 是 |
 | sqlReaderQuery | 此属性使用自定义 SQL 查询来读取数据。 示例为 `select * from MyTable`。 | 否 |
@@ -362,7 +364,7 @@ GO
 
 将数据复制到 Azure SQL 数据库时，复制活动的 **sink** 节支持以下属性：
 
-| Property | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 **type** 属性必须设置为 **AzureSqlSink**。 为了向后兼容，仍然支持“SqlSink”类型。 | 是 |
 | writeBatchSize | 每批要插入到 SQL 表中的行数。**<br/> 允许的值为 **integer**（行数）。 默认情况下，Azure 数据工厂会根据行大小动态确定适当的批大小。 | 否 |
@@ -617,21 +619,21 @@ END
 | Datetime |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| 十进制 |十进制 |
+| Decimal |Decimal |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
 | image |Byte[] |
 | int |Int32 |
-| money |十进制 |
+| money |Decimal |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |十进制 |
+| numeric |Decimal |
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |十进制 |
+| smallmoney |Decimal |
 | sql_variant |对象 |
 | text |String, Char[] |
 | time |TimeSpan |

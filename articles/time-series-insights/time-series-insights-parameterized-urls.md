@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 02/04/2020
+ms.date: 04/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9dfe499a7d6084a23fd71ab98db472befe71fc04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10616c8003d9bbbe42cb70bd1bac4193044907c0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77024358"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416998"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>通过参数化 URL 共享自定义视图
 
@@ -29,7 +29,7 @@ ms.locfileid: "77024358"
 
 ## <a name="environment-id"></a>环境 ID
 
-`environmentId=<guid>` 参数指定目标环境 ID。 这是数据访问 FQDN 的一个组件，可以在 Azure 门户的环境概览的右上角找到。 它是 `env.timeseries.azure.com` 之前的所有内容。
+`environmentId=<guid>` 参数指定目标环境 ID。 这是数据访问 FQDN 的一个组件，可以在 Azure 门户的环境概览的右上角找到。 这是之前的一`env.timeseries.azure.com`切。
 
 例如，`?environmentId=10000000-0000-0000-0000-100000000108` 是环境 ID 参数。
 
@@ -68,9 +68,9 @@ ms.locfileid: "77024358"
 
 `timeSeriesDefinitions=<collection of term objects>` 参数指定将在时序见解视图中显示的谓词术语：
 
-| 参数 | URL 项 | 描述 |
+| 参数 | URL 项 | 说明 |
 | --- | --- | --- |
-| **name** | `\<string>` | 术语的名称。** |
+| name  | `\<string>` | 术语的名称。** |
 | **拆分由** | `\<string>` | 要按其进行拆分的列名。** |
 | **度量值名称** | `\<string>` | 度量值的列名。** |
 | **谓词** | `\<string>` | 用于服务器端筛选的 ** where 子句。 |
@@ -85,7 +85,7 @@ ms.locfileid: "77024358"
 * 可以通过 `timeBucketUnit=<Unit>&timeBucketSize=<integer>` 来调整时间间隔滑块，使图表的视图更精细或更光滑，聚合程度更高。  
 * 可以通过 `timezoneOffset=<integer>` 参数将显示图表的时区设置为 UTC 的偏移量。
 
-| 对 | 描述 |
+| 对 | 说明 |
 | --- | --- |
 | `multiChartStack=false` | `true` 是默认启用的，因此请将 `false` 传递到堆栈。 |
 | `multiChartStack=false&multiChartSameScale=true` | 必须启用堆叠才能在不同的条件中使用同一 Y 轴比例。  它在默认情况下为 `false`，因此传递 `true` 即可启用此功能。 |

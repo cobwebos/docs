@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 03/14/2019
-ms.openlocfilehash: 7b7ef3b6f2d400dafb28cfb7a15cf95cbbe2c457
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 76085dc29d40944cf704dbc5efc578b3314f499a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351015"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419232"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>使用 DTU 购买模型的弹性池的资源限制
 
@@ -32,6 +32,9 @@ ms.locfileid: "80351015"
 > 有关缩放指南和注意事项，请参阅[缩放弹性池](sql-database-elastic-pool-scale.md)
 > [!NOTE]
 > 弹性池中各个数据库的资源限制通常与池外部基于 DTU 和服务层级的各个数据库相同。 例如，S2 数据库的最大并发辅助进程数为 120 个。 因此，如果池中每个数据库的最大 DTU 是 50 个 DTU（这等效于 S2），则标准池中数据库的最大并发辅助进程数也是 120 个辅助进程。
+
+> [!NOTE]
+> 以下每个表中每个池资源限制的存储不包括 tempdb 和日志存储。
 
 ### <a name="basic-elastic-pool-limits"></a>基本弹性池限制
 
@@ -140,7 +143,7 @@ ms.locfileid: "80351015"
 
 下表介绍了共用数据库的属性。
 
-| properties | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | 每个数据库的最大 eDTU 数 |根据池中其他数据库的 eDTU 使用率，池中任何数据库可以使用的 eDTU 的最大数目。 每个数据库的 eDTU 上限并不是数据库的资源保障。 此设置是应用于池中所有数据库的全局设置。 将每个数据库的最大 eDTU 数设置得足够高，以处理数据库使用高峰情况。 因为池通常会假定数据库存在热使用模式和冷使用模式，在这些模式中并非所有数据库同时处于高峰使用状态，所以预期会存在某种程度的过量使用情况。 例如，假设每个数据库的高峰使用量为 20 个 eDTU，并且池中 100 个数据库仅有 20% 同时处于高峰使用中。 如果将每个数据库的 eDTU 最大值设为 20 个 eDTU，则可以认为超量 5 倍使用该池是合理的，并且将每个池的 eDTU 数设为 400。 |
 | 每个数据库的最小 eDTU 数 |池中任何数据库可以保证的 eDTU 最小数目。 此设置是应用于池中所有数据库的全局设置。 每个数据库的最小 eDTU 可能设为 0，这也是默认值。 该属性值可以设置为介于 0 和每个数据库的平均 eDTU 使用量之间的任意值。 池中数据库数目和每个数据库的 eDTU 下限的积不能超过每个池的 eDTU 数。 例如，如果一个池有 20 个数据库，每个数据库的 eDTU 最小值设为 10 个 eDTU，则池的 eDTU 数目必须大于或等于 200 个 eDTU。 |
