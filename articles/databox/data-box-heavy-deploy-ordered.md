@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: dce3549bde4c62245e1d2b1f8ac0c88c0b70260c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4e9077d06341ce5ecf6b2238374ce1ac8e13dca3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "70241393"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415165"
 ---
 # <a name="tutorial-order-azure-data-box-heavy"></a>教程：订购 Azure Data Box Heavy
 
@@ -41,17 +41,9 @@ Azure Data Box Heavy 是一个混合解决方案，可以快速、方便、可�
 - 如果在第一层以外的楼层安装设备，必须能够通过升降机或活动梯来接触设备。 设备重约 500 磅。
 - 务必在数据中心内的平坦场地上操作，该场地靠近可用的网络连接，并能够放得下 Data Box Heavy 大小的设备。
 
-
 ### <a name="for-service"></a>对于服务
 
-在开始之前，请确保：
-- 具有 Microsoft Azure 存储帐户和访问凭据。
-- 确保用于 Data Box 服务的订阅是下述类型之一：
-    - Microsoft 企业协议 (EA)。 详细了解 [EA 订阅](https://azure.microsoft.com/pricing/enterprise-agreement/)。
-    - 云解决方案提供商 (CSP)。 详细了解 [Azure CSP 计划](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)。
-    - Microsoft Azure 赞助。 详细了解 [Azure 赞助计划](https://azure.microsoft.com/offers/ms-azr-0036p/)。
-
-- 确保拥有订阅所有者或参与者访问权限，以便创建 Data Box Heavy 订单。
+[!INCLUDE [Data Box service prerequisites](../../includes/data-box-supported-subscriptions.md)]
 
 ### <a name="for-device"></a>对于设备
 
