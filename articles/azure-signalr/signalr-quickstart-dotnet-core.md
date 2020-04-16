@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: zhshang
-ms.openlocfilehash: 022780f2b37c8bed49c81774d443b69bae41e5e7
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f87625fe4f56b369f2bf4aade3ef5424084b6fe8
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73476754"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254880"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>快速入门：使用 SignalR 服务创建聊天室
 
@@ -95,7 +95,7 @@ Azure SignalR 服务是一项 Azure 服务，可帮助开发者轻松生成具�
     此机密使用配置 API 进行访问。 在所有支持的平台上，冒号 (:) 可以在配置 API 的配置名称中使用。 请参阅[按环境进行的配置](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0)。 
 
 
-4. 打开 Startup.cs，并通过调用仅适用于 ASP.NET Core 2 的 `services.AddSignalR().AddAzureSignalR()` 方法更新 `ConfigureServices` 方法，从而使用 Azure SignalR 服务  ：
+4. 打开 Startup.cs，并通过调用 `services.AddSignalR().AddAzureSignalR()` 方法更新 `ConfigureServices` 方法，从而使用 Azure SignalR 服务  ：
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -104,7 +104,6 @@ Azure SignalR 服务是一项 Azure 服务，可帮助开发者轻松生成具�
         services.AddSignalR().AddAzureSignalR();
     }
     ```
-    对于 ASP.NET Core 3+，`ConfigureServices` 方法不需要进行任何更改。
 
     此代码不会向 `AddAzureSignalR()` 传递参数，而是使用默认配置密钥作为 SignalR 服务资源连接字符串。 默认配置密钥为 *Azure:SignalR:ConnectionString*。
 

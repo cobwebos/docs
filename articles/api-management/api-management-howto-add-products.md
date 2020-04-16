@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: 813117bce4abd3550ac559109c1650ea4a7cff5c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 686d6e2ff01fd4d8283350ab8097e1f73c914af0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74538262"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260990"
 ---
 # <a name="create-and-publish-a-product"></a>创建和发布产品  
 
@@ -85,7 +85,7 @@ ms.locfileid: "74538262"
 4. 选择 API 并单击“选择”。 
 
 > [!TIP]
-> 可以[通过 REST API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription/createorupdate) 或 PowerShell 命令使用自定义订阅密钥来创建用户的订阅或将其更新为某个产品  。
+> 可以[通过 REST API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription/createorupdate) 或 PowerShell 命令使用自定义订阅密钥来创建用户的订阅或将其更新为某个产品  。
 
 ## <a name="next-steps"></a>后续步骤
 

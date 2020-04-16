@@ -1,20 +1,20 @@
 ---
 title: Azure CLI 示例 - 单区域规模集
 description: 此脚本创建一个在单个可用性区域中运行 Ubuntu 的 Azure 虚拟机规模集。
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 64fbd715a21e801c4adac02f301ea91d3205fbbd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: cd41f21c5390ca0d2c62c1989d46f3d4c0ec36f8
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76278734"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010998"
 ---
 # <a name="create-a-single-zone-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 创建单区域虚拟机规模集
 此脚本创建在单个可用性区域中运行 Ubuntu 的虚拟机规模集。 运行脚本后，可通过 RDP 访问虚拟机。

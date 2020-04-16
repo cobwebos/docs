@@ -1,19 +1,19 @@
 ---
 title: Azure PowerShell 示例 - 附加并使用数据磁盘
 description: 此脚本使用 PowerShell 创建一个 Azure 虚拟机规模集，并附加和准备数据磁盘。
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: sample
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: ea18b6d2271d56d9a2287b92678ef8bfcab891a5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bff0bb0673862d614aac5bb783bc501516871b29
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76279129"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010374"
 ---
 # <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-powershell"></a>使用 PowerShell 为虚拟机规模集附加并使用数据磁盘
 此脚本创建虚拟机规模集并附加和准备数据磁盘。

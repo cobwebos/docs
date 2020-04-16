@@ -52,7 +52,7 @@
           href: self-service-portal.md
         - name: 当前限制
           href: current-limitations.md
-    - name: 操作方法指南
+    - name: 操作指南
       expanded: true
       items:
         - name: 管理 B2B 共享
@@ -63,6 +63,8 @@
               href: add-users-administrator.md
             - name: 信息工作者添加 B2B 用户
               href: add-users-information-worker.md
+            - name: 邀请内部用户使用 B2B 协作
+              href: invite-internal-users.md
             - name: Google 联合身份验证
               href: google-federation.md
             - name: 一次性密码身份验证

@@ -20,6 +20,9 @@
     - name: 通过 IP 组进行部署
       displayName: Resource Manager
       href: quick-create-ipgroup-template.md
+    - name: 使用多个地址进行部署
+      displayName: Resource Manager
+      href: quick-create-multiple-ip-template.md
 - name: 示例
   items:
     - name: Azure PowerShell

@@ -3,7 +3,7 @@ title: 教程 - 将自定义域添加到 Azure CDN 终结点 | Microsoft Docs
 description: 在本教程中，请将 Azure CDN 终结点内容映射到自定义域。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.service: azure-cdn
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/11/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 22283833ebb414372de16cbe4ce7d3986cd400a9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ab4845a93771bace5bca15ea3afa7027884e36f4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222404"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260575"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>教程：将自定义域添加到 Azure CDN 终结点
 本教程介绍如何将自定义域添加到 Azure 内容分发网络 (CDN) 终结点。 使用 CDN 终结点来交付内容时，如果希望自己的域名在 CDN URL 中可见，则必须使用自定义域。 使用可见的域名可以方便客户，适用于推广品牌。 
@@ -50,7 +50,7 @@ ms.locfileid: "79222404"
 一个自定义域及其子域一次只能与一个终结点相关联。 但是，可以通过使用多个 CNAME 记录，将同一自定义域中的不同子域用于不同的 Azure 服务终结点。 还可以将包含不同子域的自定义域映射到同一 CDN 终结点。
 
 > [!NOTE]
-> 如果使用 Azure DNS 作为域提供商，则任何别名记录类型都可以用于自定义域。 本演练使用 CNAME 记录类型。 如果使用 A 或 AAAA 记录类型，请遵循以下相同步骤，并将 CNAME 替换为所选的记录类型。 如果使用别名记录将根域添加为自定义域，并且要启用 SSL，则必须使用手动验证，如[本文](https://docs.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint)所述。 有关详细信息，请参阅[指向 Azure CDN 终结点的区域顶点](https://docs.microsoft.com/azure/dns/dns-alias#point-zone-apex-to-azure-cdn-endpoints)。
+> 如果使用 Azure DNS 作为域提供商，则任何别名记录类型都可以用于自定义域。 本演练使用 CNAME 记录类型。 如果使用 A 或 AAAA 记录类型，请遵循以下相同步骤，并将 CNAME 替换为所选的记录类型。 如果使用别名记录将根域添加为自定义域，并且要启用 TLS，则必须使用手动验证，如[此文](https://docs.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint)所述。 有关详细信息，请参阅[指向 Azure CDN 终结点的区域顶点](https://docs.microsoft.com/azure/dns/dns-alias#point-zone-apex-to-azure-cdn-endpoints)。
 
 ## <a name="map-the-temporary-cdnverify-subdomain"></a>映射临时的 cdnverify 子域
 

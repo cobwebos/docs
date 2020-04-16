@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 61b5017609d99f2f0074c67d3838cf351ea38bea
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 322ff2be4b90a945305915432a8191db9f4efee2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79365417"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252551"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>教程：通过使用 PowerShell 创建服务主体和角色分配
 
@@ -77,7 +77,7 @@ $svcPrincipalCreds = New-AzureADApplicationPasswordCredential -ObjectId $svcPrin
     $svcPrincipal.AppId
     ```
 
-## <a name="create-a-role-assignment-in-windows-virtual-desktop-preview"></a>在 Windows 虚拟桌面预览版中创建角色分配
+## <a name="create-a-role-assignment-in-windows-virtual-desktop"></a>在 Windows 虚拟桌面中创建角色分配
 
 接下来，需要创建角色分配，以便服务主体可以登录到 Windows 虚拟桌面。 请确保使用有权创建角色分配的帐户登录。
 

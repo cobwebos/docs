@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 3306fe6265d02fda48e3a75540be42e46e8feb89
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: ecbed58eabd2e835d8fa202916829d1da91210e7
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473548"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991052"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>快速入门：使用应用的标识获取令牌并从 Python 控制台应用中调用 Microsoft Graph API
 
@@ -239,8 +239,3 @@ if not result:
 
 > [!div class="nextstepaction"]
 > [客户端凭据 Oauth 流](v2-oauth2-client-creds-grant-flow.md)
-
-帮助我们改进 Microsoft 标识平台。 通过完成简短的两问题调查，告诉我们你的想法。
-
-> [!div class="nextstepaction"]
-> [Microsoft 标识平台调查](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

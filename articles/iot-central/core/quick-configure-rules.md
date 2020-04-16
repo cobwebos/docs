@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 4bbf571d6b73a6f43c1c3b1ce261da6963a74183
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 66c3bd8650d1194d5d753c1dc967ec8e870c8748
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77169471"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998967"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>快速入门：在 Azure IoT Central 中配置用于设备的规则和操作
 
@@ -24,7 +24,7 @@ ms.locfileid: "77169471"
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，应先完成前面的两个快速入门：[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)和[将模拟设备添加到 IoT Central 应用程序](./quick-create-pnp-device.md)，以创建要使用的 **MXChip IoT DevKit** 设备模板。
+在开始之前，应先完成前面的两个快速入门：[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)和[将模拟设备添加到 IoT Central 应用程序](./quick-create-simulated-device.md)，以创建要使用的 **MXChip IoT DevKit** 设备模板。
 
 ## <a name="create-a-telemetry-based-rule"></a>创建基于遥测的规则
 

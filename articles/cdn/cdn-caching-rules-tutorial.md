@@ -3,7 +3,7 @@ title: 教程 - 设置 Azure CDN 缓存规则 | Microsoft Docs
 description: 在本教程中，将设置 Azure CDN 全局缓存规则和自定义缓存规则。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.service: azure-cdn
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/20/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 5330c99f4d42f591944ddc5c58ac98bea6387da5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3d52b9a6842c13e9141fd081e10156e3866c163f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74278144"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254302"
 ---
 # <a name="tutorial-set-azure-cdn-caching-rules"></a>教程：设置 Azure CDN 缓存规则
 

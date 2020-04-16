@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: 526922d73f2176825b8bba8982316f3c9c129963
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: ac134dce5ad739d1d81ef0c62a6bfb04468cafff
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473582"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991103"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>快速入门：登录用户并在 JavaScript SPA 中获取访问令牌
 
@@ -306,8 +306,3 @@ myMSALObj.acquireTokenPopup(requestObj)
 
 > [!div class="nextstepaction"]
 > [MSAL.js GitHub 存储库](https://github.com/AzureAD/microsoft-authentication-library-for-js)
-
-帮助我们改进 Microsoft 标识平台。 通过完成简短的两问题调查，告诉我们你的想法。
-
-> [!div class="nextstepaction"]
-> [Microsoft 标识平台调查](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

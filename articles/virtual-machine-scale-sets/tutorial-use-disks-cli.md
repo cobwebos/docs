@@ -1,19 +1,19 @@
 ---
 title: 教程 - 通过 Azure CLI 创建和使用规模集的磁盘
 description: 了解如何通过 Azure CLI 对虚拟机规模集创建和使用托管磁盘，包括如何添加、准备、列出和分离磁盘。
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 12bde51222e1e648f97476d5dab039b4ad2adfe8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3759fa426a712308e1956376d559c1ac84eadbd7
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067056"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008822"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>教程：通过 Azure CLI 对虚拟机规模集创建和使用磁盘
 虚拟机规模集使用磁盘来存储 VM 实例的操作系统、应用程序和数据。 创建和管理规模集时，请务必选择适用于所需工作负荷的磁盘大小和配置。 本教程介绍如何创建和管理 VM 磁盘。 本教程介绍如何执行下列操作：
@@ -51,18 +51,7 @@ ms.locfileid: "80067056"
 
 
 ## <a name="azure-data-disks"></a>Azure 数据磁盘
-可添加额外的数据磁盘，用于安装应用程序和存储数据。 在任何需要持久和响应性数据存储的情况下，都应使用数据磁盘。 每个数据磁盘的最大容量为 4 TB。 VM 实例的大小决定可附加的数据磁盘数。 对于每个 VM vCPU，都可以附加两个数据磁盘。
-
-### <a name="max-data-disks-per-vm"></a>每个 VM 的最大数据磁盘数
-| 类型 | 常见大小 | 每个 VM 的最大数据磁盘数 |
-|----|----|----|
-| [常规用途](../virtual-machines/linux/sizes-general.md) | A、B、D 系列 | 64 |
-| [计算优化](../virtual-machines/linux/sizes-compute.md) | F 系列 | 64 |
-| [内存优化](../virtual-machines/linux/sizes-memory.md) | D、E、G、M 系列 | 64 |
-| [存储优化](../virtual-machines/linux/sizes-storage.md) | L 系列 | 64 |
-| [GPU](../virtual-machines/linux/sizes-gpu.md) | N 系列 | 64 |
-| [高性能](../virtual-machines/linux/sizes-hpc.md) | A 和 H 系列 | 64 |
-
+可添加额外的数据磁盘，用于安装应用程序和存储数据。 在任何需要持久和响应性数据存储的情况下，都应使用数据磁盘。 每个数据磁盘的最大容量为 4 TB。 VM 实例的大小决定可附加的数据磁盘数。 可以为每个 VM vCPU 附加两个数据磁盘，直至达到每个虚拟机 64 个磁盘的绝对上限。
 
 ## <a name="vm-disk-types"></a>VM 磁盘类型
 Azure 提供两种类型的磁盘。

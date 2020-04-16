@@ -9,12 +9,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 6c2514bd078cc3feee4bd2802cf314079b824311
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f1f83fdd73816e6e30c5cac7d193719591bb8dc1
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77022114"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80999026"
 ---
 # <a name="in-store-analytics-architecture"></a>店内分析体系结构
 
@@ -51,7 +51,7 @@ Azure IoT Central 还为商店运营商提供定制的体验，使他们能够�
 解决方案中的 Azure IoT Central 应用程序可配置为将原始或聚合见解导出到一组 Azure PaaS（平台即服务）服务，这些服务可执行数据操作并丰富这些见解，然后将其放入业务应用程序。 
 
 ## <a name="business-application"></a>业务应用程序
-IoT 数据可用于为零售环境中部署的各种业务应用程序提供支持。 零售店经理或员工可以使用这些应用程序将业务见解可视化，并实时采取有意义的行动。 若要了解如何为零售团队构建实时 Power BI 仪表板，请按照[教程](./tutorial-in-store-analytics-create-app-pnp.md)操作。
+IoT 数据可用于为零售环境中部署的各种业务应用程序提供支持。 零售店经理或员工可以使用这些应用程序将业务见解可视化，并实时采取有意义的行动。 若要了解如何为零售团队构建实时 Power BI 仪表板，请按照[教程](./tutorial-in-store-analytics-create-app.md)操作。
 
 ## <a name="next-steps"></a>后续步骤
 * 开始使用[店内分析结账](https://aka.ms/checkouttemplate)和[店内分析环境监视](https://aka.ms/conditiontemplate)应用程序模板。 

@@ -1,26 +1,22 @@
 ---
-title: Microsoft 标识平台 Windows 桌面入门 | Microsoft Docs
+title: Microsoft 标识平台 Windows 桌面入门
 description: 了解 Windows 桌面 .NET (XAML) 应用程序如何获取访问令牌并调用受 Microsoft 标识平台保护的 API。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 422251da25ae0ef911eb723bb0342a84fe99559c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: aa09d06af4706af3ae120f62a897c0bc632fb657
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79129921"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990933"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>从 Windows 桌面应用调用 Microsoft Graph API
 
@@ -74,7 +70,7 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
 
 ## <a name="add-msal-to-your-project"></a>将 MSAL 添加到项目
 
-1. 在 Visual Studio 中，选择“工具” **“NuGet 包管理器”** “包管理器控制台” >   >   。
+1. 在 Visual Studio 中，选择“工具” > “NuGet 包管理器”> “包管理器控制台”    。
 2. 在“包管理器控制台”窗口中，粘贴以下 Azure PowerShell 命令：
 
     ```powershell
@@ -379,8 +375,3 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
 <!--end-collapse-->
 
 [!INCLUDE [5. Test and Validate](../../../includes/active-directory-develop-guidedsetup-windesktop-test.md)]
-
-帮助我们改进 Microsoft 标识平台。 通过完成简短的两问题调查，告诉我们你的想法。
-
-> [!div class="nextstepaction"]
-> [Microsoft 标识平台调查](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

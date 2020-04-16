@@ -1,19 +1,19 @@
 ---
 title: Azure 虚拟机规模集概述
 description: 了解 Azure 虚拟机规模集和应用程序自动缩放方法。
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/26/2019
-ms.author: manayar
-ms.openlocfilehash: e6201f9ac2e9b813de5a4622fc7996eb1202a164
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.author: mimckitt
+ms.openlocfilehash: 03e3c7b5c0696069729d3067faad8ceb91fc611f
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76273693"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272536"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>什么是虚拟机规模集？
 使用 Azure 虚拟机规模集可以创建并管理一组完全相同的、负载均衡的 VM。 可以根据需求或定义的计划自动增减 VM 实例的数目。 规模集为应用程序提供高可用性，用于集中管理、配置和更新大量 VM。 可以使用虚拟机规模集为计算、大数据和容器工作负荷等领域构建大规模的服务。
@@ -27,7 +27,7 @@ Azure 虚拟机规模集为跨多个 VM 运行的应用程序提供管理功能�
 - **易于创建和管理多个 VM**
     - 有多个运行应用程序的 VM 时，必须在整个环境中维持一致的配置。 为了确保应用程序性能可靠，所有 VM 的 VM 大小、磁盘配置和应用程序安装都应匹配。
     - 使用规模集时，所有 VM 实例都是根据相同的基础 OS 映像和配置来创建的。 使用这种方法可以轻松地管理数百个 VM，不需执行其他的配置任务或网络管理。
-    - 规模集支持使用 [Azure 负载均衡器](../load-balancer/load-balancer-overview.md)进行基本的 4 层流量分发操作，以及使用 [Azure 应用程序网关](../application-gateway/application-gateway-introduction.md)进行更高级的 7 层流量分发和 SSL 终止操作。
+    - 规模集支持使用 [Azure 负载均衡器](../load-balancer/load-balancer-overview.md)进行基本的第 4 层流量分发操作，以及使用 [Azure 应用程序网关](../application-gateway/application-gateway-introduction.md)进行更高级的第 7 层流量分发和 TLS 终止操作。
 
 - **提供高可用性和应用程序复原能力**
     - 规模集用于运行应用程序的多个实例。 如果某个 VM 实例出现问题，客户可以继续通过其他 VM 实例来访问应用程序，将中断的可能性降至最低。

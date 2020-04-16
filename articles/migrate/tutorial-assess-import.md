@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 23fa1a2a0b035d04334c51c02411de6de70f2cad
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2a30222902fd8797908202562a04018209842af2
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79453640"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115065"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>使用导入的数据评估服务器
 
@@ -126,22 +126,8 @@ IP 地址  | 否 | 服务器地址。
 **网络流入吞吐量** | 否 | 服务器接收的数据，以 MB/秒为单位。
 **网络流出吞吐量** | 否 | 服务器传输的数据，以 MB/秒为单位。
 **固件类型** | 否 | 服务器固件。 值可以是“BIOS”或“UEFI”。
-**服务器类型** | 否 | 值可以是“物理”或“虚拟”。
-**虚拟机监控程序** | 否 | 计算机正在其上运行的虚拟机监控程序。 <br/> 值可以是“VMware”、“Hyper-v”、“Xen”、“AWS”、“GCP”或“其他”。
-**虚拟机监控程序版本号** | 否 | 虚拟机监控程序版本。
-**虚拟机 ID** | 否 | VM 标识符。 这是 VMware vCenter VM 的 **InstanceUUid** 或者是 Hyper-V 的 **Hyper-V VM ID**。
-**Virtual Machine Manager** | 否 | 这是 VMWare vCenter 的 **InstanceUUid** 值。 Hyper-V 不需要此项。
 **MAC 地址**| 否 | 服务器 MAC 地址。
-**BIOS ID** | 否 | 服务器 BIOS ID。
-**自定义服务器 ID** | 否 | 本地唯一服务器 ID。 <br/> 用于按本地 ID 跟踪导入的服务器。
-**应用程序 1 名称** | 否 | 服务器上运行的工作负载的名称。<br/>可以通过在模板中[添加列](#add-multiple-applications)来添加更多应用程序的详细信息。 最多可添加五个应用程序。
-**应用程序 1 类型** | 否 | 服务器上运行的工作负载的类型
-**应用程序 1 版本** | 否 | 服务器上运行的工作负载的版本。
-**应用程序 1 许可证过期** | 否 | 工作负载的许可证过期（如果适用）。
-**业务部门** | 否 | 服务器所属的业务部门。
-**业务负责人** | 否 | 业务部门所有者。
-**业务应用程序名称** | 否 | 应用所属的应用程序的名称。
-**位置** | 否 | 服务器所在的数据中心。
+
 
 ### <a name="add-operating-systems"></a>添加操作系统
 
@@ -159,19 +145,6 @@ IP 地址  | 否 | 服务器地址。
 - 磁盘 2 读取吞吐量
 - 磁盘 2 写入吞吐量
 
-### <a name="add-multiple-applications"></a>添加多个应用程序
-
-模板为单个应用程序提供字段。 你可以为多达五个应用程序添加类似的列。  
-
-例如，若要指定第二个应用程序的所有字段，请添加以下列：
-
-- 应用程序 2 名称
-- 应用程序 2 类型
-- 应用程序 2 版本
-- 应用程序 2 许可证过期
-
-> [!NOTE]
-> 评估本地环境以进行迁移时，应用程序信息非常有用。 但是，Azure Migrate 服务器评估目前不会执行应用程序级评估，并且在创建评估时不会考虑应用程序。
 
 ## <a name="import-the-server-information"></a>导入服务器信息
 

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: e56b733a567c706c2a15f2c30ed93a47c244db11
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1dec52bbf1435cd7e363edf111f769d3e2cffb6a
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77168736"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998919"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices"></a>快速入门：使用 Azure IoT Central 监视设备
 
@@ -24,7 +24,7 @@ ms.locfileid: "77168736"
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，应先完成前面的三个快速入门：[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)、[将模拟设备添加到 IoT Central 应用程序](./quick-create-pnp-device.md)以及[为设备配置规则和操作](quick-configure-rules.md)。
+在开始之前，应先完成前面的三个快速入门：[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)、[将模拟设备添加到 IoT Central 应用程序](./quick-create-simulated-device.md)以及[为设备配置规则和操作](quick-configure-rules.md)。
 
 ## <a name="receive-a-notification"></a>接收通知
 

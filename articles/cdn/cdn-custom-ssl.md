@@ -3,7 +3,7 @@ title: 教程 - 在 Azure CDN 自定义域上配置 HTTPS | Microsoft Docs
 description: 在本教程中，你将了解如何在 Azure CDN 终结点自定义域上启用和禁用 HTTPS。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: 10337468-7015-4598-9586-0b66591d939b
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/1/2019
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: f1af388d1f8b9542d196a53cc6c143f9b48e6d5a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5cf1181c41af1edc752205f4477f18b78680f484
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222424"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253996"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>教程：在 Azure CDN 自定义域中配置 HTTPS
 
@@ -58,8 +58,8 @@ ms.locfileid: "79222424"
 
 ---
 
-## <a name="ssl-certificates"></a>SSL 证书数
-若要启用 HTTPS 协议以在 Azure CDN 自定义域上安全传送内容，必须使用 SSL 证书。 可以选择是使用由 Azure CDN 托管的证书还是使用自己的证书。
+## <a name="tlsssl-certificates"></a>TLS/SSL 证书
+若要启用 HTTPS 协议以在 Azure CDN 自定义域上安全传送内容，必须使用 TLS/SSL 证书。 可以选择是使用由 Azure CDN 托管的证书还是使用自己的证书。
 
 
 # <a name="option-1-default-enable-https-with-a-cdn-managed-certificate"></a>[选项 1（默认）：使用 CDN 托管的证书启用 HTTPS](#tab/option-1-default-enable-https-with-a-cdn-managed-certificate)
@@ -99,7 +99,7 @@ ms.locfileid: "79222424"
 > 此选项仅适用于来自 Microsoft 的 Azure CDN 和来自 Verizon 的 Azure CDN 配置文件   。 
 >
  
-可以使用自己的证书启用 HTTPS 功能。 此过程通过与 Azure Key Vault 的集成完成，后者允许你安全地存储证书。 Azure CDN 使用此安全机制来获得你的证书，并且需要一些额外的步骤。 创建 SSL 证书时，必须使用允许的证书颁发机构 (CA) 创建。 否则，如果使用不允许的 CA，你的请求将被拒绝。 有关允许的 CA 的列表，请参阅[允许在 Azure CDN 上启用自定义 HTTPS 的证书颁发机构](cdn-troubleshoot-allowed-ca.md)。对于  来自 Verizon 的 Azure CDN，可接受任何有效 CA。 
+可以使用自己的证书启用 HTTPS 功能。 此过程通过与 Azure Key Vault 的集成完成，后者允许你安全地存储证书。 Azure CDN 使用此安全机制来获得你的证书，并且需要一些额外的步骤。 创建 TLS/SSL 证书时，必须使用允许的证书颁发机构 (CA) 创建。 否则，如果使用不允许的 CA，你的请求将被拒绝。 有关允许的 CA 的列表，请参阅[允许在 Azure CDN 上启用自定义 HTTPS 的证书颁发机构](cdn-troubleshoot-allowed-ca.md)。对于  来自 Verizon 的 Azure CDN，可接受任何有效 CA。 
 
 ### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>准备 Azure Key Vault 帐户和证书
  
@@ -308,7 +308,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 4. 使用 SAN 证书是否没有使用专用证书安全？ 
     
-    SAN 证书遵循与专用证书相同的加密和安全标准。 所有颁发的 SSL 证书都使用 SHA-256 来增强服务器安全性。
+    SAN 证书遵循与专用证书相同的加密和安全标准。 所有颁发的 TLS/SSL 证书都使用 SHA-256 来增强服务器安全性。
 
 5. 我是否需要通过我的 DNS 提供商获得证书颁发机构授权记录？ 
 
@@ -320,7 +320,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 7. *证书续订如何处理自带证书？*
 
-    若要确保将较新的证书部署到 PoP 基础结构，只需将新证书上传到 Azure Key Vault，然后在 Azure CDN 上的 SSL 设置中，选择最新的证书版本并点击“保存”。 然后 Azure CDN 将传播新的已更新证书。 
+    若要确保将较新的证书部署到 PoP 基础结构，只需将新证书上传到 Azure Key Vault，然后在 Azure CDN 上的 TLS 设置中，选择最新的证书版本并点击“保存”。 然后 Azure CDN 将传播新的已更新证书。 
 
 ## <a name="next-steps"></a>后续步骤
 

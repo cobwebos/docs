@@ -3,7 +3,7 @@ title: 教程 - 向 Azure 应用服务 Web 应用添加Azure CDN | Microsoft Doc
 description: 本教程演示如何向 Azure 应用服务 Web 应用添加 Azure 内容分发网络 (CDN)，以便在全球靠近客户的服务器缓存和分发静态文件。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/14/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 1b67522834497a264d95fc9b80246b16841d6026
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 18054e47a987a7e79e9083b6f7a2f20b059c7f28
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67594223"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254602"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>教程：向 Azure 应用服务 Web 应用添加 Azure CDN
 

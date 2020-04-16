@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/15/2019
 ms.topic: tutorial
-ms.openlocfilehash: 332d7e4cae3b65d794d48d208b54db3809b78a8f
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: f12b5c158025db89dcc64a3be03b263f95a3a64c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632368"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261351"
 ---
 # <a name="tutorial-send-an-email-from-an-azure-automation-runbook"></a>教程：从 Azure 自动化 runbook 发送电子邮件
 
@@ -81,7 +81,7 @@ Set-AzKeyVaultAccessPolicy -VaultName $VaultName -ServicePrincipalName $appID -P
 
 在“Azure 自动化”选项卡的“安装选项”下，单击<kbd>部署到 Azure 自动化</kbd>。 此操作会打开 Azure 门户。 在“导入”页上，选择自动化帐户并单击“确定”<kbd></kbd>。
 
-如需通过其他方法来添加所需模块，请参阅[导入模块](/azure/automation/shared-resources/modules#import-modules)。
+如需通过其他方法来添加所需模块，请参阅[导入模块](/azure/automation/shared-resources/modules#importing-modules)。
 
 ## <a name="create-the-runbook-to-send-an-email"></a>创建用于发送电子邮件的 runbook
 

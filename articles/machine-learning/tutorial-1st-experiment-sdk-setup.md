@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: a6f977c0cdca670b40ccdc01db64a493962e3dda
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 820332b0692c0c863ed23912fe9913c419769155
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79224094"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272995"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>教程：开始使用 Python SDK 创建第一个 ML 试验
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -86,7 +86,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
     
 1. 选择 **tutorials/create-first-ml-experiment** 文件夹中的 **tutorial-1st-experiment-sdk-train.ipynb** 文件。
 
-1. 在顶部栏上，选择用来运行笔记本的计算实例。 这些 VM 中已预先配置了[运行 Azure 机器学习所需的一切设置](concept-compute-instance.md#contents)。 可以选择任何工作区用户创建的 VM。 
+1. 在顶部栏上，选择用来运行笔记本的计算实例。 这些 VM 中已预先配置了[运行 Azure 机器学习所需的一切设置](concept-compute-instance.md#contents)。 
 
 1. 如果未找到任何 VM，请选择“+ 添加”来创建计算实例 VM  。 
 

@@ -3,7 +3,7 @@ title: 快速入门 - 创建 Azure CDN 配置文件和终结点 | Microsoft Docs
 description: 本快速入门介绍如何通过创建新 CDN 配置文件和 CDN 终结点启用 Azure CDN。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: 4ca51224-5423-419b-98cf-89860ef516d2
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/24/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 2a3325217c1ec854e4f6cef3facce5580fb06a57
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e11e6e4cc0194991b322d591049d7156b9979c45
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215065"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254030"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>快速入门：创建 Azure CDN 配置文件和终结点
 在本快速入门中，请通过创建新的 Azure 内容分发网络 (CDN) 配置文件和 CDN 终结点来启用 CDN。 创建配置文件和终结点以后，即可将内容交付给客户。

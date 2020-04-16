@@ -1,19 +1,19 @@
 ---
 title: 教程 - 使用 Azure PowerShell 自动缩放规模集
 description: 了解如何使用 Azure PowerShell 随 CPU 需求的增减自动缩放虚拟机规模集
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 50fb0c1c13ceba88b1894fa0f3165dd40b8e23cf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b2451779119ab8fb6c1446631797ce32fd376146
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76278409"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008992"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>教程：使用 Azure PowerShell 自动缩放虚拟机规模集
 
@@ -180,7 +180,7 @@ IpAddress
 52.168.121.216
 ```
 
-创建连接到第一个 VM 实例所需的远程连接。 指定所需 VM 实例对应的你自己的公共 IP 地址和端口号，如前述命令所示。 出现提示时，输入创建规模集时使用的凭据（在示例命令中，默认为 *azureuser* 和 P*ssw0rd!\@* ）。 如果使用 Azure Cloud Shell，请从本地 PowerShell 命令提示符或远程桌面客户端执行此步骤。 以下示例连接到 VM 实例 *0*：
+创建连接到第一个 VM 实例所需的远程连接。 指定所需 VM 实例对应的你自己的公共 IP 地址和端口号，如前述命令所示。 出现提示时，输入创建规模集时使用的凭据（在示例命令中，默认为 *azureuser* 和 P\@ssw0rd!  ）。 如果使用 Azure Cloud Shell，请从本地 PowerShell 命令提示符或远程桌面客户端执行此步骤。 以下示例连接到 VM 实例 *0*：
 
 ```powershell
 mstsc /v 52.168.121.216:50001
@@ -209,7 +209,7 @@ mstsc /v 52.168.121.216:50002
 
 
 ## <a name="monitor-the-active-autoscale-rules"></a>监视活动的自动缩放规则
-若要监视规模集中的 VM 实例数，请使用 **while**。 自动缩放规模需要 5 分钟的时间才能启动横向扩展过程，以便响应由每个 VM 实例上的 **CPUStress* 生成的 CPU 负载：
+若要监视规模集中的 VM 实例数，请使用 **while**。 自动缩放规模需要 5 分钟的时间才能启动横向扩展过程，以便响应由每个 VM 实例上的 **CPUStress** 生成的 CPU 负载：
 
 ```azurepowershell-interactive
 while (1) {Get-AzureRmVmssVM `
@@ -235,7 +235,7 @@ MYRESOURCEGROUP   myScaleSet_6   eastus Standard_DS2                   6        
 MYRESOURCEGROUP   myScaleSet_6   eastus Standard_DS2                   6          Deleting
 ```
 
-使用 *退出*while`Ctrl-c`。 规模集继续每 5 分钟横向缩减一次，每次删除一个 VM 实例，直至达到最小实例计数 2。
+使用 `Ctrl-c` 退出 *while*。 规模集继续每 5 分钟横向缩减一次，每次删除一个 VM 实例，直至达到最小实例计数 2。
 
 
 ## <a name="clean-up-resources"></a>清理资源

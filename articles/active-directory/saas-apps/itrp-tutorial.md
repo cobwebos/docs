@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: d44391624e29d2bdd182bb07452e0e8def2d1407
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c4d0f753e23e42b1064fec3f56957dfe97c30ca4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67656695"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261187"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>教程：Azure Active Directory 与 ITRP 集成
 
@@ -113,7 +113,7 @@ ms.locfileid: "67656695"
        `https://<tenant-name>.itrp.com`
 
     > [!NOTE]
-    > 这些值是占位符。 需要使用实际登录 URL 和标识符。 若要获取这些值，请与 [ITRP 支持团队](https://www.itrp.com/support)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”对话框中显示的模式  。
+    > 这些值是占位符。 需要使用实际登录 URL 和标识符。 若要获取这些值，请与 [ITRP 支持团队](https://www.4me.com/support/)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”对话框中显示的模式  。
 
 5. 在“SAML 签名证书”  部分中，选择“编辑”  图标以打开“SAML 签名证书”  对话框：
 

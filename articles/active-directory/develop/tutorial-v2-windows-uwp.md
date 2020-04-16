@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f6e7ee1b03dda30bea15a837b6daf6469e00e46d
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 205f4a27a7903bc5a1da3fc12e3d4a02b23f58cf
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886392"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990916"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>从通用 Windows 平台应用程序 (XAML) 调用 Microsoft 图形 API
 
@@ -435,8 +435,3 @@ Microsoft Graph API 需要 `user.read` 作用域来读取用户的个人资料�
 解决方法：选择“使用其他选项登录”。  然后选择“使用用户名和密码登录”。  选择“提供密码”。  然后完成手机身份验证过程。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
-
-帮助我们改进 Microsoft 标识平台。 请完成一个简短的包含两个问题的调查，告诉我们你的想法：
-
-> [!div class="nextstepaction"]
-> [Microsoft 标识平台调查](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

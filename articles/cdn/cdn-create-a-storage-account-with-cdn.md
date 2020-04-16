@@ -3,7 +3,7 @@ title: 快速入门 - 将 Azure 存储帐户与 Azure CDN 集成
 description: 了解如何使用 Azure 内容分发网络 (CDN) 通过缓存 Azure 存储中的 blob 来分发高带宽内容。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: cbc2ff98-916d-4339-8959-622823c5b772
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/24/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: ffcbeb311a91791432bb285b59f5486393ffe4f7
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 35de327b4a6602bb5191157e3b3c4e56c9c091b5
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75386980"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254064"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>快速入门：将 Azure 存储帐户与 Azure CDN 集成
 在此快速入门中，你将启用 [Azure 内容分发网络 (CDN)](cdn-overview.md) 来缓存 Azure 存储中的内容。 Azure CDN 为开发人员提供了一个用于交付高带宽内容的全局解决方案。 它可以在遍布美国、欧洲、亚洲、澳大利亚和南美洲的众多物理节点上缓存 blob 和计算实例的静态内容。

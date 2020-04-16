@@ -10,12 +10,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 11/04/2019
   ms.author: robreed
-  ms.openlocfilehash: 2ff0b9a194faf4d5a6b9e5181c52dc135208bdee
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: e80cdec365a14caee5c74900e1c21f7349165e66
+  ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "73508544"
+  ms.lasthandoff: 04/13/2020
+  ms.locfileid: "81261272"
 landingContent:
 - title: Azure Arc 概述
   linkLists:
@@ -31,7 +31,9 @@ landingContent:
       url: ./servers/overview.md
   - linkListType: quickstart
     links:
-    - text: 使用用于服务器的 Azure Arc 将计算机连接到 Azure - 门户
-      url: ./servers/quickstart-onboard-portal.md
-    - text: 使用用于服务器的 Azure Arc 将计算机连接到 Azure - PowerShell
-      url: ./servers/quickstart-onboard-portal.md
+    - text: 从 Azure 门户将计算机连接到 Azure Arc
+      url: ./servers/onboard-portal.md
+    - text: 使用服务主体大规模连接计算机
+      url: ./servers/onboard-service-principal.md
+    - text: 通过 PowerShell DSC 将计算机连接到 Azure
+      url: ./servers/onboard-dsc.md

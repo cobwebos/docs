@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/29/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e7d6b23aa3f35c99cf03f855152b2b231a60a965
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b117861a528b6983876d28d5b343ea88c2bcadc0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75921624"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260677"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>教程：使用 Azure Pipelines 持续集成 Azure 资源管理器模板
 
@@ -46,7 +46,7 @@ Azure DevOps 提供开发人员服务，以支持团队规划工作、协作开�
 
 ## <a name="prepare-a-github-repository"></a>准备 GitHub 存储库
 
-GitHub 用于存储项目源代码，包括资源管理器模板。 有关其他受支持的存储库，请参阅 [Azure DevOps 支持的存储库](/azure/devops/pipelines/repos/?view=azure-devops#supported-repository-types)。
+GitHub 用于存储项目源代码，包括资源管理器模板。 有关其他受支持的存储库，请参阅 [Azure DevOps 支持的存储库](/azure/devops/pipelines/repos/?view=azure-devops)。
 
 ### <a name="create-a-github-repository"></a>创建 GitHub 存储库
 

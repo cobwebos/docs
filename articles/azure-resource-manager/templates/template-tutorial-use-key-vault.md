@@ -6,12 +6,12 @@ ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: e49fafc2889b98d013d77471f8177fd85a307cc8
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 440835f50d2ef9c03dabc7a66e8f162e3fa15b2f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754890"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260694"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>教程：在 ARM 模板部署中集成 Azure Key Vault
 
@@ -171,6 +171,8 @@ New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -TemplateFile "$HOME/azuredeploy.json" `
     -TemplateParameterFile "$HOME/azuredeploy.parameters.json"
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 部署模板时，请使用密钥保管库中使用的同一资源组。 此方法使你更轻松地清理资源，因为你需要仅删除一个资源组，而不是两个资源组。
@@ -194,6 +196,8 @@ $projectName = Read-Host -Prompt "Enter the same project name that is used for c
 $resourceGroupName = "${projectName}rg"
 
 Remove-AzResourceGroup -Name $resourceGroupName
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 ## <a name="next-steps"></a>后续步骤

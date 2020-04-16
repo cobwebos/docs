@@ -2,21 +2,21 @@
 title: 创建并查询 Synapse SQL 池（Azure 门户）
 description: 使用 Azure 门户创建并查询 Synapse SQL 池
 services: synapse-analytics
-author: XiaoyuMSFT
+author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: ''
 ms.date: 05/28/2019
-ms.author: xiaoyul
+ms.author: Kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 685d6970b0e88032fe503bf97a139c0b8c0f8a73
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 9605d20fa6a1480b24d7b64963aa9579ed3b5a11
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631349"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115181"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建并查询 Synapse SQL 池
 

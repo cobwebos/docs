@@ -198,6 +198,8 @@
               href: cognitive-search-custom-skill-python.md
             - name: 示例 - Azure Functions
               href: cognitive-search-create-custom-skill-example.md
+            - name: 示例 - Azure 表单识别器
+              href: cognitive-search-custom-skill-form.md
             - name: 示例 - 容器
               href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
         - name: 设计提示
