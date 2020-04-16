@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 5a34ac2d1b7401d31ae518334aedc15c626b66a3
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 379739533e15e60bc47bfc883a67037d4a58d0e0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529489"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417626"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>使用 Java 向/从 Azure 事件中心 (azure-eventhubs) 发送/接收事件
 
@@ -314,7 +314,8 @@ EventProcessorHost  是一个 Java 类，通过在这些事件中心管理持久
         
            System.out.println("End of sample");
        }
-    ```
+   }
+   ```
 3. 使用以下代码另外创建一个名为 `EventProcessor` 的类：
    
     ```java

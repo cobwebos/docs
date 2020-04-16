@@ -7,16 +7,20 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: 6c501205812ac72da8cd970b61b71e493888cef1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7d453b2724c308e48366d653a51d9e6aa8e82c96
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76156720"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415925"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>使用 Azure 数据工厂和 Azure Data Share 实现数据集成
 
-当客户开始组建其新式数据仓库和分析项目时，他们不仅需要更多的数据，而且还需要能够洞察整个数据资产中的数据。 本讲座深入探讨如何对 Azure 数据工厂和 Azure Data Share 做出改进，以简化 Azure 中的数据集成和管理。 从启用无代码的 ETL/ELT，到基于数据创建综合视图，Azure 数据工厂的改进可让数据工程师自信地引入更多数据，从而为企业带来增大的价值。 借助 Azure Data Share 能够以受控的方式实现业务到业务共享。
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+当客户开始组建其新式数据仓库和分析项目时，他们不仅需要更多的数据，而且还需要能够洞察整个数据资产中的数据。 本讲座深入探讨如何对 Azure 数据工厂和 Azure Data Share 做出改进，以简化 Azure 中的数据集成和管理。 
+
+从启用无代码的 ETL/ELT，到基于数据创建综合视图，Azure 数据工厂的改进可让数据工程师自信地引入更多数据，从而为企业带来增大的价值。 借助 Azure Data Share 能够以受控的方式实现业务到业务共享。
 
 在本讲座中，你要使用 Azure 数据工厂 (ADF) 将数据从 Azure SQL 数据库 (SQL DB) 引入 Azure Data Lake Storage Gen2 (ADLS Gen2)。 数据进入 Data Lake 后，你将通过映射数据流（数据工厂的本机转换服务）转换数据，并在 Azure Synapse Analytics（前称为 SQL 数据仓库）中接收数据。 然后，使用 Azure Data Share 来共享包含转换后的数据以及其他一些数据的表。 
 
