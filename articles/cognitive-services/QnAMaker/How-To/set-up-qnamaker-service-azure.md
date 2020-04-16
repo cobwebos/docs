@@ -3,12 +3,12 @@ title: 设置 QnA 制造商服务 - QnA 制造商
 description: 在创建任何 QnA Maker 知识库之前，必须先在 Azure 中设置 QnA Maker 服务。 任何有权在订阅中创建新资源的人都可以设置 QnA Maker 服务。
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: 8ec57f441ba58227e45398c35c7931dc75fa658f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 563a56fdb288568e7fe667fa54658400064a560f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131702"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402986"
 ---
 # <a name="manage-qna-maker-resources"></a>管理 QnA 制造商资源
 
@@ -89,7 +89,7 @@ ms.locfileid: "80131702"
     >[!NOTE]
     >如果您认为密钥已泄露，请刷新您的密钥。 这可能需要相应地更改客户端应用程序或机器人代码。
 
-### <a name="upgrade-qna-maker-sku"></a>升级 QnA 制造商 SKU
+## <a name="upgrade-qna-maker-sku"></a>升级 QnA 制造商 SKU
 
 当您希望在知识库中有更多的问题和答案时，除了当前层之外，请升级 QnA Maker 服务定价层。
 
@@ -103,7 +103,7 @@ ms.locfileid: "80131702"
 
     ![QnA Maker 定价](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-pricing-page.png)
 
-### <a name="upgrade-app-service"></a>升级应用服务
+## <a name="upgrade-app-service"></a>升级应用服务
 
  当您的知识库需要从客户端应用提供更多请求时，请升级应用服务定价层。
 
@@ -113,7 +113,7 @@ ms.locfileid: "80131702"
 
 ![QnA 制造商应用服务规模](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
 
-### <a name="upgrade-the-azure-cognitive-search-service"></a>升级 Azure 认知搜索服务
+## <a name="upgrade-the-azure-cognitive-search-service"></a>升级 Azure 认知搜索服务
 
 如果计划拥有许多知识库，请升级 Azure 认知搜索服务定价层。
 
@@ -197,7 +197,7 @@ QnA Maker**的应用服务**资源使用认知搜索资源。 为了更改 QnA M
 
 为了即使在没有流量的情况下也能加载预测终结点应用，请将空闲设置为始终打开。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 搜索并选择 QnA Maker 资源的应用服务。 它将具有与 QnA Maker 资源相同的名称，但它将具有**不同类型的**应用服务。
 1. 查找**设置**，然后选择 **"配置**"。
 1. 在"配置"窗格中，选择 **"常规设置**"，然后查找 **"始终打开**"，然后选择 **"作为**值"。
@@ -206,7 +206,7 @@ QnA Maker**的应用服务**资源使用认知搜索资源。 为了更改 QnA M
     > ![在"配置"窗格中，选择[常规设置]，然后查找 [始终打开]，然后选择 [打开] 作为值。](../media/qnamaker-how-to-upgrade-qnamaker/configure-app-service-idle-timeout.png)
 
 1. 选择“保存”**** 以保存配置。
-1. 系统会询问您是否要重新启动应用以使用新设置。 选择“继续”****。
+1. 系统会询问您是否要重新启动应用以使用新设置。 选择“继续”。 
 
 详细了解如何配置应用服务[常规设置](../../../app-service/configure-common.md#configure-general-settings)。
 

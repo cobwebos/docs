@@ -3,19 +3,19 @@ title: 自定义语音入门 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 自定义语音是一组联机工具，可用于针对你的应用程序、工具和产品评估并改进我们的语音转文本准确度。 只需准备几个测试性音频文件即可开始。 请遵循以下链接开始创建自定义语音转文本体验。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.author: dapine
-ms.openlocfilehash: e30587ed4d09ba792516ebc7b16529a6ee5ac57c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: a52735ee62f564a5dc536fd2b7d3539406388341
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77918948"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402066"
 ---
 # <a name="what-is-custom-speech"></a>什么是自定义语音？
 
@@ -69,5 +69,5 @@ ms.locfileid: "77918948"
 * [准备和测试数据](how-to-custom-speech-test-data.md)
 * [检查数据](how-to-custom-speech-inspect-data.md)
 * [评估数据](how-to-custom-speech-evaluate-data.md)
-* [训练模型](how-to-custom-speech-train-model.md)
+* [为模型定型](how-to-custom-speech-train-model.md)
 * [部署模型](how-to-custom-speech-deploy-model.md)

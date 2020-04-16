@@ -3,19 +3,19 @@ title: 教程：语音使用语音 SDK 启用您的自动程序 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 在本教程中，您将使用 Microsoft 机器人框架创建 Echo Bot，将其部署到 Azure，并将其注册到机器人框架直接行语音通道。 然后，您将为 Windows 配置一个示例客户端应用，该应用允许您与机器人通话，并听到它响应您。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.author: dapine
-ms.openlocfilehash: 3c2d74eb7e46d9909d87a7ccadadd6129a3d48d8
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.author: trbye
+ms.openlocfilehash: b2c119f6552773bce7bb93a503c22324278ac0bc
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397897"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399463"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>教程：使用语音 SDK 启用自动程序
 
@@ -56,9 +56,9 @@ ms.locfileid: "80397897"
 
 - 带有工作麦克风和扬声器（或耳机）的 Windows 10 电脑
 - [视觉工作室 2017](https://visualstudio.microsoft.com/downloads/)或更高版本
-- [.NET 核心 SDK](https://dotnet.microsoft.com/download)版本 2.1 或更高版本
+- [.NET 框架运行时 4.6.1](https://dotnet.microsoft.com/download)或更高版本
 - 一个 Azure 帐户。 [免费注册](https://azure.microsoft.com/free/ai/)。
-- 一个 [GitHub](https://github.com/) 帐户
+- [GitHub](https://github.com/)帐户
 - [用于窗口的 Git](https://git-scm.com/download/win)
 
 ## <a name="create-a-resource-group"></a>创建资源组
@@ -196,7 +196,7 @@ ms.locfileid: "80397897"
    * 对于**资源组**，选择**语音回声机器人教程-资源组**
    * 对于**托管计划**，选择**语音EchoBot教程-应用程序服务计划**
    * 对于**应用程序见解**，请保留为 **"无"**
-1. 单击 **"创建"**
+1. 单击“创建” 
 1. 您应该在 Visual Studio 中看到一条如下所示的成功消息：
 
    ```
@@ -221,7 +221,7 @@ ms.locfileid: "80397897"
 2. 在**Azure 服务**导航中，在 **"设置"** 下单击"**配置**"。
 3. 选择"**常规设置"** 选项卡。
 4. 找到**Web 套接字的**切换，并将其设置为 **"打开**"。
-5. 单击“保存”  。
+5. 单击“ **保存**”。
 
 > [!TIP]
 > 您可以使用 Azure 应用服务页顶部的控件停止或重新启动服务。 在故障排除时，这可能派上用场。
@@ -267,28 +267,32 @@ ms.locfileid: "80397897"
    * 查找**更多频道**，找到并单击 **"直线语音**"。
    * 查看标题为 **"配置直线语音**"的页面上的文本，然后展开标记为"认知服务帐户"的下拉菜单。
    * 从菜单中选择您之前创建的语音资源（例如，**语音EchoBotTutorial-语音**），将自动程序与语音订阅键相关联。
-   * 单击“保存”  。
+   * 单击“ **保存**”。
 
 1. 在 **"机器人管理**"导航中，单击"**设置**"。
    * 选中标记为启用**流式处理终结点**的框。 这是必需的，以启用在自动程序与直线语音通道之间的 Web 套接字上构建的通信协议。
-   * 单击“保存”  。
+   * 单击“ **保存**”。
 
 > [!TIP]
 > 如果您想了解更多信息，请参阅[将自动程序连接到直线语音](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0)。 此页包括其他信息和已知问题。
 
-## <a name="build-the-windows-voice-assistant-client"></a>构建 Windows 语音助理客户端
+## <a name="run-the-windows-voice-assistant-client"></a>运行 Windows 语音助理客户端
 
-在此步骤中，您将构建 Windows 语音助理客户端。 客户端是 C# 中的 Windows 演示文稿基础 （WPF） 应用，它使用[语音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk)使用直接线路语音通道管理与机器人的通信。 在编写自定义客户端应用之前，使用它与机器人进行交互并测试。
+在此步骤中，您将运行 Windows 语音助理客户端。 客户端是 C# 中的 Windows 演示文稿基础 （WPF） 应用，它使用[语音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk)使用直接线路语音通道管理与机器人的通信。 在编写自定义客户端应用之前，使用它与机器人进行交互并测试。 它是开源的，因此您可以下载可执行文件并运行它，也可以自己构建它。
 
 Windows 语音助理客户端具有一个简单的 UI，允许您配置与自动程序的连接、查看文本对话、以 JSON 格式查看 Bot-Framework 活动以及显示自适应卡。 它还支持使用自定义关键字。 您将使用此客户端与您的机器人对话并接收语音响应。
 
 在我们继续之前，请确保您的麦克风和扬声器已启用并正常工作。
 
 1. 导航到[Windows 语音助理客户端](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/README.md)的 GitHub 存储库。
-2. 按照提供的指令克隆存储库、生成项目、配置客户端和启动客户端。
-3. 单击 **"重新连接**"并确保看到消息 **"按麦克风"按钮，或键入以开始与机器人对话**。
-4. 让我们测试一下。单击麦克风按钮，用英语说几句话。 您说话时将显示识别的文本。 当你说完之后，机器人会用自己的声音回答，说"回声"，然后是识别的单词。
-5. 您还可以使用文本与机器人通信。 只需在底部栏中键入文本。 
+1. 按照提供的说明，要么
+   * 下载包含要运行的可执行文件的 ZIP 包，或
+   * 通过克隆存储库和生成项目，自行构建可执行文件。
+
+1. 启动客户端应用程序并对其进行配置。
+1. 单击 **"重新连接**"并确保看到消息 **"按麦克风"按钮，或键入以开始与机器人对话**。
+1. 让我们测试一下。单击麦克风按钮，用英语说几句话。 您说话时将显示识别的文本。 当你说完之后，机器人会用自己的声音回答，说"回声"，然后是识别的单词。
+1. 您还可以使用文本与机器人通信。 只需在底部栏中键入文本。 
 
 ### <a name="troubleshooting-errors-in-windows-voice-assistant-client"></a>解决 Windows 语音助理客户端中的错误
 
@@ -425,7 +429,7 @@ Windows 语音助理客户端使用 NuGet 包[Microsoft.认知服务.语音](htt
 2. 以前的部署配置已加载为默认值。 只需单击**Publish****EchoBot20190805125647 旁边发布 - Web 部署**。
 3. **"发布成功"** 消息将显示在 Visual Studio 输出窗口中，并且将启动一个网页，其中将显示"您的自动程序已准备就绪！
 4. 打开 Windows 语音助理客户端应用，单击设置按钮（右上角的齿轮图标），并确保您仍然位于`de-de`"语言"字段中。
-5. 按照["构建 Windows 语音助理客户端](#build-the-windows-voice-assistant-client)"中的说明重新连接到新部署的自动程序，使用新语言说话，并听到使用新语音用该语言进行自动回复。
+5. 按照运行 Windows[语音助理客户端](#run-the-windows-voice-assistant-client)中的说明重新连接到新部署的自动程序，使用新语言说话，并听到使用新语音用该语言进行自动回复。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -433,14 +437,14 @@ Windows 语音助理客户端使用 NuGet 包[Microsoft.认知服务.语音](htt
 
 1. 从[Azure 门户](https://portal.azure.com)中，单击 Azure**服务**导航中的**资源组**。
 2. 查找名为"**语音回声机器人教程-资源组"的资源组**。 单击三个点 （...）。
-3. 选择“删除资源组”****。
+3. 选择“删除资源组”  。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [使用语音 SDK 构建您自己的客户端应用](quickstart-voice-assistant-csharp-uwp.md)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * 部署到[您附近的 Azure 区域](https://azure.microsoft.com/global-infrastructure/locations/)以查看自动程序响应时间改进
 * 部署到[支持高质量神经 TTS 语音的 Azure 区域](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)

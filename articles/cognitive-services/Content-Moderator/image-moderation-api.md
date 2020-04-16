@@ -1,21 +1,21 @@
 ---
 title: 图像审查 - 内容审查器
 titleSuffix: Azure Cognitive Services
-description: 使用内容审查器的机器辅助图像审查和人工循环评审工具来调整具有成人和猥亵内容的图像。
+description: 使用内容审阅者的计算机辅助图像审核和人循环审阅工具来调节成人和淫秽内容的图像。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 6d419135a1da68d23689f66d3134a638d71a3eab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 36777208dc8ac179f1aaf345c374a33001e3f8bd
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73044105"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404269"
 ---
 # <a name="learn-image-moderation-concepts"></a>了解图像审查概念
 
@@ -139,9 +139,9 @@ ms.locfileid: "73044105"
     ....
     }
 
-## <a name="human-review-tool"></a>人工评审工具
+## <a name="review-tool"></a>审阅工具
 
-对于更微妙的情况，请使用内容审查器[评审工具](Review-Tool-User-Guide/human-in-the-loop.md)及其 API 在人工审查方的评审中显示审核结果和内容。 他们检查机器分配的标记并确认其最终决定。
+有关更细微的情况，请使用内容审阅者[审阅工具](Review-Tool-User-Guide/human-in-the-loop.md)及其 API 在审核中为人工审阅人显示审核结果和内容。 他们检查机器分配的标记并确认其最终决定。
 
 ![供人工审查方审阅的图像](images/moderation-reviews-quickstart-dotnet.PNG)
 

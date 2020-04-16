@@ -3,19 +3,19 @@ title: 文本转语音 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 语音服务中的文本转语音功能可让应用程序、工具或设备将文本转换为类似于人类的自然合成语音。 选择预设的声音或创建自己的自定义语音。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.author: dapine
-ms.openlocfilehash: 7c7574ee4e9f75b9b650ff63a10666c5e379fca8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: 1a8b458eb004b44d0045f36b18d88e11e019c4d2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131568"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399499"
 ---
 # <a name="what-is-text-to-speech"></a>什么是文本转语音？
 
@@ -77,7 +77,7 @@ GitHub 上提供了文本转语音的示例代码。 这些示例涵盖了最流
 ## <a name="reference-docs"></a>参考文档
 
 - [语音 SDK](speech-sdk.md)
-- [REST API：文本到语音](rest-text-to-speech.md)
+- [REST API：文本转语音](rest-text-to-speech.md)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,19 +3,19 @@ title: 对话转录（预览） - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 对话转录是会议的解决方案，它结合了识别、演讲者 ID 和二分化，以提供任何会话的转录。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.author: dapine
-ms.openlocfilehash: ba56c7fb989658195f6394c7390c4f83027c7c96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: dcc7721aec067c4de309e3fdd926245a9d240f0d
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79479733"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402511"
 ---
 # <a name="what-is-conversation-transcription-in-meetings-preview"></a>什么是会议中的对话转录（预览）？
 

@@ -3,20 +3,20 @@ title: 语音翻译基础知识 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用语音 SDK 翻译语音。 在本文中，您将了解对象构造、支持的音频输入格式以及语音转换的配置选项。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.author: dapine
+ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 966407a1e88856c041ae453cfa1bf0ecf55da9d1
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 04ece5ccf91056af02bd450eb760534b82de5959
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81266588"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399641"
 ---
 # <a name="learn-the-basics-of-speech-translation"></a>学习语音翻译的基础知识
 

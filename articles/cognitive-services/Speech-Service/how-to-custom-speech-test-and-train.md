@@ -3,19 +3,19 @@ title: 为自定义语音 - 语音服务准备数据
 titleSuffix: Azure Cognitive Services
 description: 在测试 Microsoft 语音识别的准确性或训练自定义模型时，需要音频和文本数据。 本页介绍数据的类型、用法及其管理方式。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.author: dapine
-ms.openlocfilehash: d6e377ca4f33c0160267b23daaaaef5e07c271bb
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.author: trbye
+ms.openlocfilehash: 78857709447f99895c36f23d8760f44f8468ba7c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398685"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402141"
 ---
 # <a name="prepare-data-for-custom-speech"></a>准备自定义语音的数据
 
@@ -182,5 +182,5 @@ ms.locfileid: "80398685"
 
 * [检查数据](how-to-custom-speech-inspect-data.md)
 * [评估数据](how-to-custom-speech-evaluate-data.md)
-* [训练模型](how-to-custom-speech-train-model.md)
+* [为模型定型](how-to-custom-speech-train-model.md)
 * [部署模型](how-to-custom-speech-deploy-model.md)

@@ -740,6 +740,8 @@
           href: insights/containers.md
     - name: 监视其他资源
       items:
+        - name: Key Vault
+          href: insights/key-vault-insights-overview.md
         - name: 存储
           items:
             - name: 用于存储的 Azure Monitor
@@ -1075,6 +1077,8 @@
               href: platform/itsmc-connections.md
             - name: 创建 Service Manager Web 应用
               href: platform/itsmc-service-manager-script.md
+            - name: 修复 ServiceNow ITSM 同步问题
+              href: platform/itsmc-resync-servicenow.md
     - name: 自动化
       items:
         - name: 自动缩放

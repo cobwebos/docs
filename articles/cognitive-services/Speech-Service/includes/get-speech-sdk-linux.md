@@ -1,15 +1,15 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: dapine
-ms.openlocfilehash: 14f9d0936a4d1949cf8d7fc69bbb782ee447bdba
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.author: trbye
+ms.openlocfilehash: e47c8bc4dc814f1d4c5cb115a2da911544dd55f8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668755"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399942"
 ---
 :::row:::
     :::column span="3":::
@@ -63,7 +63,7 @@ sudo yum install alsa-lib openssl
 > 按照有关如何[为语音 SDK 配置 RHEL/CentOS 7](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md)的说明。
 
 > [!TIP]
-> 在 RHEL/CentOS 8 上，请按照有关如何[为 Linux 配置 OpenSSL](../how-to-configure-openssl-linux.md)的说明进行操作。
+> 在 RHEL/CentOS 8 上，按照[如何配置 OpenSSL for Linux](../how-to-configure-openssl-linux.md) 上的说明进行操作。
 
 ---
 

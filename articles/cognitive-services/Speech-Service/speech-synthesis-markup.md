@@ -3,19 +3,19 @@ title: 语音合成标记语言 (SSML) - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 使用语音合成标记语言来控制文本到语音转换中的发音和韵律。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.author: dapine
-ms.openlocfilehash: 7d5dd79399b15ade90173a55aeb71dacbc61fa78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: dc11d26c73c52b5e6c4d8e05cc27dd6ebce0c5d8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80365810"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399817"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>使用语音合成标记语言 （SSML） 改进合成
 
@@ -53,7 +53,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="string"></speak>
 ```
 
-**属性**
+**特性**
 
 | 特性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
@@ -73,7 +73,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 </voice>
 ```
 
-**属性**
+**特性**
 
 | 特性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
@@ -96,7 +96,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 在 `speak` 元素中，可为文本转语音输出指定多种语音。 这些语音可以采用不同的语言。 对于每种语音，必须将文本包装在 `voice` 元素中。 
 
-**属性**
+**特性**
 
 | 特性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
@@ -145,7 +145,7 @@ speech_config.set_property_by_name(
     "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 有关详细信息，请参阅<a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#setproperty-string--string-" target="_blank">`setProperty`<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
@@ -154,7 +154,7 @@ speechConfig.setProperty(
     "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
 ```
 
-# <a name="objective-c"></a>[目标C](#tab/objectivec)
+# <a name="objective-c"></a>[Objective-C](#tab/objectivec)
 
 有关详细信息，请参阅<a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank">`setPropertyTo`<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
@@ -162,7 +162,7 @@ speechConfig.setProperty(
 [speechConfig setPropertyTo:@"false" byName:@"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"];
 ```
 
-# <a name="swift"></a>[迅速](#tab/swift)
+# <a name="swift"></a>[Swift](#tab/swift)
 
 有关详细信息，请参阅<a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank">`setPropertyTo`<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
@@ -196,7 +196,6 @@ speechConfig!.setPropertyTo(
 目前，支持调整以下神经语音的讲话风格：
 * `en-US-AriaNeural`
 * `zh-CN-XiaoxiaoNeural`
-* `pt-BR-FranciscaNeural`
 
 更改将在句子级别应用，风格因语音而异。 如果某种风格不受支持，该服务将以默认的中性讲话风格返回语音。
 
@@ -206,7 +205,7 @@ speechConfig!.setPropertyTo(
 <mstts:express-as style="string"></mstts:express-as>
 ```
 
-**属性**
+**特性**
 
 | 特性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
@@ -214,18 +213,17 @@ speechConfig!.setPropertyTo(
 
 参考下表来确定每种神经语音支持的讲话风格。
 
-| 语音 | Style | 描述 |
-|-------|------|-------------|
-| `en-US-AriaNeural` | `style="newscast"` | 表达正式和专业的语气，讲述新闻 |
-| | `style="customerservice"` | 为客户支持表达友好且有用的语气 |
-| | `style="chat"` | 表达一个随意和轻松的语气 |
-| | `style="cheerful"` | 表达积极和快乐的语气 |
-| | `style="empathetic"` | 表达关心和理解 |
-| `zh-CN-XiaoxiaoNeural` | `style="newscast"` | 表达正式和专业的语气，讲述新闻 |
-| | `style="customerservice"` | 为客户支持表达友好且有用的语气 |
-| | `style="assistant"` | 为数字助理表达温暖而轻松的语气  |
-| | `style="lyrical"` | 以旋律和感伤的方式表达情感 |
-| `pt-BR-FranciscaNeural` | `style="cheerful"` | 表达积极和快乐的语气 |
+| 语音                   | 样式                     | 说明                                                 |
+|-------------------------|---------------------------|-------------------------------------------------------------|
+| `en-US-AriaNeural`      | `style="newscast"`        | 表达正式和专业的语气，讲述新闻 |
+|                         | `style="customerservice"` | 为客户支持表达友好且有用的语气  |
+|                         | `style="chat"`            | 表达一个随意和轻松的语气                         |
+|                         | `style="cheerful"`        | 表达积极和快乐的语气                         |
+|                         | `style="empathetic"`      | 表达关心和理解               |
+| `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | 表达正式和专业的语气，讲述新闻 |
+|                         | `style="customerservice"` | 为客户支持表达友好且有用的语气  |
+|                         | `style="assistant"`       | 为数字助理表达温暖而轻松的语气    |
+|                         | `style="lyrical"`         | 以旋律和感伤的方式表达情感         |
 
 **示例**
 
@@ -256,22 +254,21 @@ speechConfig!.setPropertyTo(
 <break time="string" />
 ```
 
-**属性**
+**特性**
 
 | 特性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `strength` | 使用以下值之一指定暂停的相对持续时间：<ul><li>none</li><li>x-weak</li><li>weak</li><li>medium（默认值）</li><li>strong</li><li>x-strong</li></ul> | 可选 |
+| `strength` | 使用以下值之一指定暂停的相对持续时间：<ul><li>无</li><li>x-weak</li><li>weak</li><li>medium（默认值）</li><li>strong</li><li>x-strong</li></ul> | 可选 |
 | `time` | 指定暂停的绝对持续时间，以秒或毫秒为单位。 有效值的示例为`2s`和`500` | 可选 |
 
-| Strength | 描述 |
-|----------|-------------|
-| None，或者不提供任何值 | 0 毫秒 |
-| x-weak | 250 毫秒 |
-| weak | 500 毫秒 |
-| 中 | 750 毫秒 |
-| strong | 1000 毫秒 |
-| x-strong | 1250 毫秒 |
-
+| Strength                      | 说明 |
+|-------------------------------|-------------|
+| None，或者不提供任何值 | 0 毫秒        |
+| x-weak                        | 250 毫秒      |
+| weak                          | 500 毫秒      |
+| 中                        | 750 毫秒      |
+| strong                        | 1000 毫秒     |
+| x-strong                      | 1250 毫秒     |
 
 **示例**
 
@@ -327,7 +324,7 @@ speechConfig!.setPropertyTo(
 <phoneme alphabet="string" ph="string"></phoneme>
 ```
 
-**属性**
+**特性**
 
 | 特性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
@@ -370,13 +367,13 @@ speechConfig!.setPropertyTo(
 <lexicon uri="string"/>
 ```
 
-**属性**
+**特性**
 
-| 特性 | 描述 | 必需/可选 |
-|-----------|-------------|---------------------|
-| `uri` | 外部 PLS 文档的地址。 | 必需。 |
+| 特性 | 描述                               | 必需/可选 |
+|-----------|-------------------------------------------|---------------------|
+| `uri`     | 外部 PLS 文档的地址。 | 必需。           |
 
-**使用**
+**使用情况**
 
 第 1 步：定义自定义词典 
 
@@ -467,7 +464,7 @@ Could you help leave a message to Robert Benigni for me?
 <prosody pitch="value" contour="value" range="value" rate="value" duration="value" volume="value"></prosody>
 ```
 
-**属性**
+**特性**
 
 | 特性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
@@ -550,7 +547,7 @@ Could you help leave a message to Robert Benigni for me?
 <say-as interpret-as="string" format="digit string" detail="string"> <say-as>
 ```
 
-**属性**
+**特性**
 
 | 特性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
@@ -574,7 +571,7 @@ Could you help leave a message to Robert Benigni for me?
 | `telephone` | | 此文本朗读为电话号码。 `format` 属性可以包含表示国家/地区代码的数字。 例如，“1”表示美国，“39”表示意大利。 语音合成引擎可以使用此信息来指导其电话号码的发音。 电话号码中也可能包含国家/地区代码，如果是，则它优先于 `format` 中的国家/地区代码。 语音合成引擎将以下内容：<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />朗读为“My number is area code eight eight eight five five five one two one two.” |
 | `time` | hms12, hms24 | 此文本朗读为时间。 `format` 属性指定时间是使用 12 小时制 (hms12) 还是 24 小时制 (hms24) 指定的。 请使用冒号分隔表示小时、分钟和秒的数字。 以下是有效的时间示例：12：35、1：14：32、08：15 和 02：50：45。 语音合成引擎将以下内容：<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />朗读为“The train departs at four A M.” |
 
-**使用**
+**使用情况**
 
 `say-as` 元素只能包含文本。
 
@@ -612,11 +609,11 @@ Could you help leave a message to Robert Benigni for me?
 <audio src="string"/></audio>
 ```
 
-**属性**
+**特性**
 
-| 特性 | 描述 | 必需/可选 |
-|-----------|-------------|---------------------|
-| `src` | 指定音频文件的位置/URL。 | 在 SSML 文档中使用音频元素时，此属性是必需的。 |
+| 特性 | 描述                                   | 必需/可选                                        |
+|-----------|-----------------------------------------------|------------------------------------------------------------|
+| `src`     | 指定音频文件的位置/URL。 | 在 SSML 文档中使用音频元素时，此属性是必需的。 |
 
 **示例**
 
@@ -648,12 +645,12 @@ Could you help leave a message to Robert Benigni for me?
 <mstts:backgroundaudio src="string" volume="string" fadein="string" fadeout="string"/>
 ```
 
-**属性**
+**特性**
 
 | 特性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `src` | 指定背景音频文件的位置/URL。 | 如果在 SSML 文档中使用背景音频，则此属性是必需的。 |
-| `volume` | 指定背景音频文件的音量。 **接受的值** `0` ：`100`到包容性。 默认值为 `1`。 | 可选 |
+| `volume` | 指定背景音频文件的音量。 **接受的值** `0` ：`100`到包容性。 默认值是 `1`。 | 可选 |
 | `fadein` | 指定背景音频"淡入"的持续时间为毫秒。 默认值为 `0`，即，不淡入。 **接受的值** `0` ：`10000`到包容性。  | 可选 |
 | `fadeout` | 指定背景音频淡出的持续时间，以毫秒为单位。 默认值为`0`，这相当于不淡出。**接受的值** `0` ：`10000`到包容性。  | 可选 |
 

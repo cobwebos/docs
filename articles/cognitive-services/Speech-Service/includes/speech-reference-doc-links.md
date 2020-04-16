@@ -2,19 +2,19 @@
 title: 语音服务
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/06/2019
-ms.author: dapine
-ms.openlocfilehash: b24918f377e0d0744331974993cbb94f963e521e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: 50dd7ddb636658ec6d29c2669d02320c73167fde
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75379942"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399692"
 ---
 ## <a name="reference-docs"></a>参考文档
 
@@ -42,6 +42,6 @@ ms.locfileid: "75379942"
 
 有关各种语音服务 REST API 的参考，请参阅下面的列表：
 
-- [REST API：语音到文本](../rest-speech-to-text.md)
-- [REST API：文本到语音](../rest-text-to-speech.md)
+- [REST API：语音转文本](../rest-speech-to-text.md)
+- [REST API：文本转语音](../rest-text-to-speech.md)
 - <a href="https://cris.ai/swagger/ui/index" target="_blank" rel="noopener">REST API：批处理转录和自定义<span class="docon docon-navigate-external x-hidden-focus"></span></a>

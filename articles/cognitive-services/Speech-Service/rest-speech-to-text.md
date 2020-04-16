@@ -3,19 +3,19 @@ title: 语音转文本 API 参考 (REST) - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用语音转文本 REST API。 本文介绍授权选项、查询选项，以及如何构建请求和接收响应。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.author: dapine
-ms.openlocfilehash: 759ea697e4093da5bfc1c082c886c6dfda636f42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: fbb4d114d1fee21d7950e53b06fc16c96b5c930b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79474792"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400180"
 ---
 # <a name="speech-to-text-rest-api"></a>语音转文本 REST API
 
@@ -49,7 +49,7 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 
 可将以下参数包含在 REST 请求的查询字符串中。
 
-| 参数 | 描述 | 必需/可选 |
+| 参数 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `language` | 标识所要识别的口语。 请参阅[支持的语言](language-support.md#speech-to-text)。 | 必选 |
 | `format` | 指定结果格式。 接受的值为 `simple` 和 `detailed`。 简单结果包括 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 详细响应包括多个具有置信度值的结果，以及四种不同的表示形式。 默认设置为 `simple`。 | 可选 |
@@ -60,7 +60,7 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 
 下表列出了语音转文本请求的必需和可选标头。
 
-|标头| 描述 | 必需/可选 |
+|标头| 说明 | 必需/可选 |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | 语音服务订阅密钥。 | 此标头或 `Authorization` 是必需的。 |
 | `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 此标头或 `Ocp-Apim-Subscription-Key` 是必需的。 |
@@ -99,7 +99,7 @@ Expect: 100-continue
 
 每个响应的 HTTP 状态代码指示成功或一般错误。
 
-| HTTP 状态代码 | 描述 | 可能的原因 |
+| HTTP 状态代码 | 说明 | 可能的原因 |
 |------------------|-------------|-----------------|
 | `100` | 继续 | 已接受初始请求。 继续发送剩余的数据。 （与块传输一起使用） |
 | `200` | OK | 请求成功；响应正文是一个 JSON 对象。 |
@@ -147,7 +147,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 结果以 JSON 格式提供。 `simple` 格式包含以下顶级字段。
 
-| 参数 | 描述  |
+| 参数 | 说明  |
 |-----------|--------------|
 |`RecognitionStatus`|状态，例如 `Success` 表示成功识别。 请参阅下表。|
 |`DisplayText`|大写后识别的文本，标点符号，反文本规范化（将口语文本转换为较短的形式，如200表示"200"或"史密斯博士"为"史密斯医生"），以及亵渎性掩盖。 仅在成功时提供。|
@@ -156,7 +156,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 `RecognitionStatus` 字段可包含以下值：
 
-| 状态 | 描述 |
+| 状态 | 说明 |
 |--------|-------------|
 | `Success` | 识别成功并且存在 `DisplayText` 字段。 |
 | `NoMatch` | 在音频流中检测到语音，但没有匹配目标语言的字词。 通常表示识别语言不同于讲话用户所用的语言。 |
@@ -171,7 +171,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 `NBest` 列表中的每个对象包括：
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 |-----------|-------------|
 | `Confidence` | 条目的置信度评分，从 0.0（完全不可信）到 1.0（完全可信） |
 | `Lexical` | 已识别文本的词法形式：识别的实际单词。 |

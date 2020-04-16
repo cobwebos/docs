@@ -3,20 +3,20 @@ title: 使用语音 SDK 选择语音识别模式
 titleSuffix: Azure Cognitive Services
 description: 了解如何在使用语音 SDK 时选择最佳识别模式。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.author: dapine
+ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: d997cb592d9d648998f2b44d9f61f465f05faeb0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5fdca371e9188ef69068ddbcaa416cbb2b44054c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79079821"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402156"
 ---
 # <a name="choose-a-speech-recognition-mode"></a>选择语音识别模式
 
@@ -160,7 +160,7 @@ speech_recognizer.stop_continuous_recognition()
 
 ## <a name="dictation"></a>听写
 
-使用连续识别时，可以使用相应的"启用听写"功能启用听写处理。 此模式将导致语音配置实例解释句子结构（如标点符号）的单词描述。 例如，"你住在城里问号"的话语将被解释为"你住在城里吗？
+使用连续识别时，可以使用相应的“启用听写”功能启用听写处理。 此模式将导致语音配置实例解释句子结构的单词说明（如标点符号）。 例如，言语“你居住在城镇吗问号”会被解释为文本“你居住在城镇吗？”。
 
 ::: zone pivot="programming-language-csharp"
 

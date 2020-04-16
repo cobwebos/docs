@@ -3,19 +3,19 @@ title: 如何使用语音 SDK C 识别语音中的意图#
 titleSuffix: Azure Cognitive Services
 description: 在本指南中，您将了解如何使用 C# 的语音 SDK 识别语音中的意图。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.author: dapine
-ms.openlocfilehash: 5d3c77c307739f9014010a592aa496a1cc83b333
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: 41ebcb7b44ea88af06a30a611960fd8bb0ceddee
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77120036"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402221"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>如何使用 C 语音 SDK 识别语音中的意图#
 
@@ -48,7 +48,7 @@ LUIS 与语音服务集成，可从语音中识别意向。 不需要语音服�
 
 LUIS 使用三种密钥：
 
-| 密钥类型  | 目的                                               |
+| 密钥类型  | 目标                                               |
 | --------- | ----------------------------------------------------- |
 | 创作 | 用于以编程方式创建和修改 LUIS 应用 |
 | 入门   | 仅允许使用纯文本测试 LUIS 应用程序   |
@@ -141,7 +141,7 @@ LUIS 使用三种密钥：
 
 若要添加意向，必须提供三个参数：LUIS 模型（已创建并命名为 `model`）、意向名称和意向 ID。 ID 与名称之间的差别如下。
 
-| `AddIntent()`&nbsp;参数 | 目的 |
+| `AddIntent()`&nbsp;参数 | 目标 |
 | --------------------------- | ------- |
 | `intentName` | LUIS 应用中定义的意向的名称。 此值必须与 LUIS 意向名称完全匹配。 |
 | `intentID` | 语音 SDK 分配给已识别的意向的 ID。 此值可以是任何内容；不需要对应于 LUIS 应用中定义的意向名称。 例如，如果多个意向由相同的代码处理，则可以对这些意向使用相同的 ID。 |

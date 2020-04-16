@@ -3,28 +3,28 @@ title: 短语列表 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用 `PhraseListGrammar` 对象为语音服务提供短语列表，以便改进语音转文本的识别结果。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.author: dapine
+ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: f84ea6b2b0f1e8246e1d765e54f663cd01f29b1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a21358edae4c61f35993770c22634da9ac83633
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77560841"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81401973"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>语音转文本的短语列表
 
-可以通过提供带短语列表的语音服务，改进语音识别的准确度。 短语列表用于确定音频数据中的已知短语，例如某个人的姓名或特定位置。
+可以通过提供带短语列表的语音服务，改进语音识别的准确度。 短语列表用于标识音频数据中的已知短语，如人的姓名或特定位置。
 
 例如，如果命令为“Move to”，可能的目标为可以说出来的“Ward”，则可添加条目“Move to Ward”。 添加短语以后，在识别该音频时，将其识别成“Move to Ward”而不是“Move toward”的可能性就会增加。
 
-可以向短语列表添加单个单词或完整短语。 在识别过程中，如果音频中包含与整个短语完全匹配的单独短语，则使用短语列表中的一个条目。 如果找不到与该短语的完全匹配项，则不会帮助识别。
+可以将单个词或完整短语添加到短语列表。 在识别过程中，如果音频中包含与整个短语完全匹配的单独短语，则使用短语列表中的一个条目。 如果找不到与短语完全匹配的项，则不支持识别。
 
 >[!Note]
 > 目前，短语列表仅支持英语版语音转文本。

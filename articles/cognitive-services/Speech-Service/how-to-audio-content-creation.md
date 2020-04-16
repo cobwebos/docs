@@ -3,19 +3,19 @@ title: 音频内容创建 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 音频内容创建是一个在线工具，允许您自定义和微调 Microsoft 的应用和产品的文本到语音输出。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.author: dapine
-ms.openlocfilehash: 8184d30471b4d9171a23c8d03e17b2a54dca2ece
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.author: trbye
+ms.openlocfilehash: a263e7e17cda64a8519bab215f97fdf26e88d9d2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397817"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402242"
 ---
 # <a name="improve-synthesis-with-audio-content-creation"></a>通过音频内容创建改进合成
 
@@ -95,7 +95,7 @@ Welcome to use Audio Content Creation to customize audio output for your product
 2. 选择已调谐音频的输出格式。 支持格式和采样率的列表如下。
 3. 您可以在 **"导出任务"** 选项卡上查看任务的状态。如果任务失败，请参阅完整报表的详细信息页。
 4. 任务完成后，您的音频可在 **"音频库"** 选项卡上下载。
-5. 单击“下载”****。 现在，您可以在应用或产品中使用自定义调谐音频。
+5. 单击 **“下载”** 。 现在，您可以在应用或产品中使用自定义调谐音频。
 
 ### <a name="supported-audio-formats"></a>支持的音频格式
 
@@ -104,7 +104,7 @@ Welcome to use Audio Content Creation to customize audio output for your product
 | wav | 里夫-16khz-16位单件 | riff-24khz-16 位单位 pcm |
 | mp3 | 音频-16khz-128kbitrate-单声道mp3 | 音频-24khz-160kbitrate-单声道mp3 |
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [长音频 API](https://aka.ms/long-audio-api)
 

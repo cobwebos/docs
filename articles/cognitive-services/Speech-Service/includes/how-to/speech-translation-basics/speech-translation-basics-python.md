@@ -1,23 +1,23 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
-ms.author: dapine
-ms.openlocfilehash: cd7a8c0104a903f49c5ce8ae1e1a561d53c0fbf5
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.author: trbye
+ms.openlocfilehash: 17d8c0157fcd478d01452167d240fb67daeeda5b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81266632"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399607"
 ---
 ## <a name="prerequisites"></a>先决条件
 
-本文假定您具有 Azure 帐户和语音服务订阅。 如果您没有帐户和订阅，[请免费试用语音服务](../../../get-started.md)。
+本文假定你有 Azure 帐户和语音服务订阅。 如果你没有帐户和订阅，[可以免费试用语音服务](../../../get-started.md)。
 
 ## <a name="install-the-speech-sdk"></a>安装语音 SDK
 
-在可以执行任何操作之前，您需要安装语音 SDK。 根据您的平台，请按照语音 SDK 文章的<a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">"获取语音<span class="docon docon-navigate-external x-hidden-focus"></span>SDK"</a>部分下的说明进行操作。
+你需要先安装语音 SDK，然后才能执行任何操作。 根据您的平台，请按照语音 SDK 文章的<a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">"获取语音<span class="docon docon-navigate-external x-hidden-focus"></span>SDK"</a>部分下的说明进行操作。
 
 ## <a name="import-dependencies"></a>导入依赖项
 
@@ -38,19 +38,19 @@ speech_key, service_region = os.environ['SPEECH__SUBSCRIPTION__KEY'], os.environ
 
 ## <a name="create-a-speech-translation-configuration"></a>创建语音翻译配置
 
-要使用语音 SDK 调用语音服务，您需要创建 一个[`SpeechTranslationConfig`][config]。 此类包括有关订阅的信息，例如密钥和相关区域、终结点、主机或授权令牌。
+若要使用语音 SDK 调用语音服务，需要创建 [`SpeechTranslationConfig`][config]。 此类包含有关你的订阅的信息，例如你的密钥和关联的区域、终结点、主机或授权令牌。
 
 > [!TIP]
-> 无论您执行语音识别、语音合成、翻译还是意图识别，您始终都会创建配置。
+> 无论你是要执行语音识别、语音合成、翻译，还是意向识别，都需要创建一个配置。
 
-有几种方法可以初始化 ： [`SpeechTranslationConfig`][config]
+可以通过以下几种方法初始化 [`SpeechTranslationConfig`][config]：
 
-* 使用订阅：在密钥和相关区域中传递。
-* 使用终结点：在语音服务终结点中传递。 密钥或授权令牌是可选的。
-* 与主机：在主机地址中传递。 密钥或授权令牌是可选的。
-* 使用授权令牌：在授权令牌和相关区域中传递。
+* 使用订阅：传入密钥和关联的区域。
+* 使用终结点：传入语音服务终结点。 密钥或授权令牌是可选的。
+* 使用主机：传入主机地址。 密钥或授权令牌是可选的。
+* 使用授权令牌：传入授权令牌和关联的区域。
 
-让我们来看看如何使用键和地区创建 。 [`SpeechTranslationConfig`][config] 请参阅[区域支持](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk)页以查找区域标识符。
+让我们看看如何使用密钥和区域创建 [`SpeechTranslationConfig`][config]。 请查看[区域支持](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk)页以找到你的区域标识符。
 
 ```python
 from_language, to_language = 'en-US', 'de'
@@ -62,7 +62,7 @@ def translate_speech_to_text():
 
 ## <a name="change-source-language"></a>更改源语言
 
-语音转换的一个常见任务是指定输入（或源）语言。 让我们来看看如何将输入语言更改为意大利语。 在代码中，与实例交互[`SpeechTranslationConfig`][config]，将分配给属性`speech_recognition_language`。
+语音转换的一个常见任务是指定输入（或源）语言。 让我们看看如何将输入语言更改为意大利语。 在代码中，与实例交互[`SpeechTranslationConfig`][config]，将分配给属性`speech_recognition_language`。
 
 ```python
 def translate_speech_to_text():
@@ -73,7 +73,7 @@ def translate_speech_to_text():
     translation_config.speech_recognition_language = from_language
 ```
 
-属性[`speech_recognition_language`][recognitionlang]需要语言区域设置格式字符串。 您可以在受支持[区域设置/语言](../../../language-support.md)列表中的 **"区域设置"** 列中提供任何值。
+[`speech_recognition_language`][recognitionlang] 属性需要语言区域设置格式字符串。 可以提供受支持的[区域设置/语言](../../../language-support.md)的列表中“区域设置”列中的任何值  。
 
 ## <a name="add-translation-language"></a>添加翻译语言
 
@@ -95,9 +95,9 @@ def translate_speech_to_text():
 
 ## <a name="initialize-a-translation-recognizer"></a>初始化翻译识别器
 
-创建 后，下一[`SpeechTranslationConfig`][config]步是初始化 。 [`TranslationRecognizer`][recognizer] 初始化 时[`TranslationRecognizer`][recognizer]，需要传递 您的`translation_config`。 配置对象提供语音服务验证请求所需的凭据。
+创建 [`SpeechTranslationConfig`][config] 后，下一步是初始化 [`TranslationRecognizer`][recognizer]。 初始化 [`TranslationRecognizer`][recognizer] 时，需要向其传递 `translation_config`。 配置对象提供语音服务验证请求所需的凭据。
 
-如果您使用设备的默认麦克风识别语音，则[`TranslationRecognizer`][recognizer]如下所示：
+如果使用设备的默认麦克风识别语音，则 [`TranslationRecognizer`][recognizer] 应如下所示：
 
 ```python
 def translate_speech_to_text():
@@ -111,10 +111,10 @@ def translate_speech_to_text():
             translation_config=translation_config)
 ```
 
-如果要指定音频输入设备，则需要在初始化 时[`AudioConfig`][audioconfig]`audio_config`[`TranslationRecognizer`][recognizer]创建 并提供 参数。
+如果要指定音频输入设备，则需要创建一个 [`AudioConfig`][audioconfig] 并在初始化 [`TranslationRecognizer`][recognizer] 时提供 `audio_config` 参数。
 
 > [!TIP]
-> [了解如何获取音频输入设备的设备 ID。](../../../how-to-select-audio-input-devices.md)
+> [了解如何获取音频输入设备的设备 ID](../../../how-to-select-audio-input-devices.md)。
 
 首先，您将引用对象`AudioConfig`如下：
 
@@ -132,7 +132,7 @@ def translate_speech_to_text():
             translation_config=translation_config, audio_config=audio_config)
 ```
 
-如果要提供音频文件而不是使用麦克风，仍需要提供`audioConfig`。 但是，当您创建 一[`AudioConfig`][audioconfig]个 时，而不是`use_default_microphone=True`使用 调用 调用，`filename="path-to-file.wav"`您将调用`filename`并提供参数。
+如果要提供音频文件而不是使用麦克风，则仍需要提供 `audioConfig`。 但是，当您创建 一[`AudioConfig`][audioconfig]个 时，而不是`use_default_microphone=True`使用 调用 调用，`filename="path-to-file.wav"`您将调用`filename`并提供参数。
 
 ```python
 def translate_speech_to_text():

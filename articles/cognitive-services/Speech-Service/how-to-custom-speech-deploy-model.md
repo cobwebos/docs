@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: e41653e4644b09cc357510223e5ee86c3806ae2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9d48f09fe5d5c736f65b6a76211dd3fec85479ea
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74806107"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402180"
 ---
 # <a name="deploy-a-custom-model"></a>部署自定义模型
 
@@ -42,12 +42,12 @@ ms.locfileid: "74806107"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 配合使用自定义终结点和[语音 SDK](speech-sdk.md)
+* 在此处了解如何使用[自定义模型。](how-to-specify-source-language.md)
 
 ## <a name="additional-resources"></a>其他资源
 
 * [准备和测试数据](how-to-custom-speech-test-data.md)
 * [检查数据](how-to-custom-speech-inspect-data.md)
 * [评估数据](how-to-custom-speech-evaluate-data.md)
-* [训练模型](how-to-custom-speech-train-model.md)
+* [为模型定型](how-to-custom-speech-train-model.md)
 * [部署模型](how-to-custom-speech-deploy-model.md)

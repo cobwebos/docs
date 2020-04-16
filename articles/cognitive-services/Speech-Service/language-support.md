@@ -3,20 +3,20 @@ title: 语言支持 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 语音服务支持多种语言，可用于语音到文本和文本到语音转换，以及语音翻译。 本文提供按服务功能分类的语言支持的完整列表。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.author: dapine
+ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: d01ab60790311649e424a98d5a08c6af0bca90f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a876349af2bd53a46737dda82961afe442bae05
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336044"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81401082"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>语音服务的语言和语音支持
 
@@ -66,8 +66,8 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `nb-NO` | 书面挪威语(挪威)       | 是       | 语言模型                                    |
 | `nl-NL` | 荷兰语（荷兰）               | 是       | 语言模型                                    |
 | `pl-PL` | 波兰语（波兰）                   | 是       | 语言模型                                    |
-| `pt-BR` | 葡萄牙语（巴西）               | 是       | 声学模型<br>语言模型<br>发音 |
-| `pt-PT` | 葡萄牙语(葡萄牙)             | 是       | 语言模型                                    |
+| `pt-BR` | 葡萄牙语(巴西)               | 是       | 声学模型<br>语言模型<br>发音 |
+| `pt-PT` | 葡萄牙语（葡萄牙）             | 是       | 语言模型                                    |
 | `ru-RU` | 俄语（俄罗斯）                  | 是       | 声学模型<br>语言模型                  |
 | `sv-SE` | 瑞典语（瑞典）                  | 是       | 语言模型                                    |
 | `ta-IN` | 泰米尔语（印度）                     | 是       | 语言模型                                    |
@@ -99,7 +99,7 @@ Microsoft Speech SDK 和 REST API 均支持这些语音，每种语音支持区�
 | `en-US` | 英语(美国)        | Female | "微软服务器语音文本到语音语音（en-美国，阿里亚斯神经）"      | "美国-阿里亚斯神经"      |
 | `en-US` | 英语(美国)        | 男   | “Microsoft 服务器语音的文本转语音（en-US，GuyNeural）”       | "en-US-GuyNeural"       |
 | `it-IT` | 意大利语（意大利）     | Female | "Microsoft Server Speech Text to Speech Voice (it-IT, ElsaNeural)"      | "it-IT-ElsaNeural"      |
-| `pt-BR` | 葡萄牙语（巴西） | Female | 微软服务器语音文本到语音语音（pt-BR，弗朗西斯卡神经）" | "pt-BR-弗兰西卡神经" |
+| `pt-BR` | 葡萄牙语(巴西) | Female | 微软服务器语音文本到语音语音（pt-BR，弗朗西斯卡神经）" | "pt-BR-弗兰西卡神经" |
 | `zh-CN` | 中文(普通话，简体)  | Female | “Microsoft 服务器语音的文本转语音（zh-CN，XiaoxiaoNeural）”  | "zh-CN-XiaoxiaoNeural"  |
 
 > [!IMPORTANT]
@@ -167,14 +167,14 @@ Microsoft Speech SDK 和 REST API 均支持这些语音，每种语音支持区�
 | `ja-JP` | 日语 | Female | “Microsoft 服务器语音的文本转语音（ja-JP，Ayumi，Apollo）” | "ja-JP-Ayumi-Apollo" |
 |  |  | 男 | “Microsoft 服务器语音的文本转语音（ja-JP，Ichiro，Apollo）” | "ja-JP-Ichiro-Apollo" |
 |  |  | Female | “Microsoft 服务器语音的文本转语音（ja-JP，HarukaRUS）” | "ja-JP-HarukaRUS" |
-| `ko-KR` | 韩语 | Female | “Microsoft 服务器语音的文本转语音（ko-KR，HeamiRUS）” | "ko-KR-HeamiRUS" |
+| `ko-KR` | 朝鲜语 | Female | “Microsoft 服务器语音的文本转语音（ko-KR，HeamiRUS）” | "ko-KR-HeamiRUS" |
 | `ms-MY` | 马来语 | 男 | “Microsoft 服务器语音的文本转语音（ms-MY，Rizwan）” | "ms-MY-Rizwan" |
 | `nb-NO` | 挪威语 | Female | “Microsoft 服务器语音的文本转语音（nb-NO，HuldaRUS）” | "nb-NO-HuldaRUS" |
 | `nl-NL` | 荷兰语 | Female | “Microsoft 服务器语音的文本转语音（nl-NL，HannaRUS）” | "nl-NL-HannaRUS" |
 | `pl-PL` | 波兰语 | Female | “Microsoft 服务器语音的文本转语音（pl-PL，PaulinaRUS）” | "pl-PL-PaulinaRUS" |
-| `pt-BR` | 葡萄牙语（巴西） | Female | “Microsoft 服务器语音的文本转语音（pt-BR，HeloisaRUS）” | "pt-BR-HeloisaRUS" |
+| `pt-BR` | 葡萄牙语(巴西) | Female | “Microsoft 服务器语音的文本转语音（pt-BR，HeloisaRUS）” | "pt-BR-HeloisaRUS" |
 |  |  | 男 | “Microsoft 服务器语音的文本转语音（pt-BR，Daniel，Apollo）” | "pt-BR-Daniel-Apollo" |
-| `pt-PT` | 葡萄牙语(葡萄牙) | Female | “Microsoft 服务器语音的文本转语音（pt-PT，HeliaRUS）” | "pt-PT-HeliaRUS" |
+| `pt-PT` | 葡萄牙语（葡萄牙） | Female | “Microsoft 服务器语音的文本转语音（pt-PT，HeliaRUS）” | "pt-PT-HeliaRUS" |
 | `ro-RO` | 罗马尼亚语 | 男 | “Microsoft 服务器语音的文本转语音（ro-RO，Andrei）” | "ro-RO-Andrei" |
 | `ru-RU` | 俄语 | Female | “Microsoft 服务器语音的文本转语音（ru-RU，Irina，Apollo）” | "ru-RU-Irina-Apollo" |
 |  |  | 男 | “Microsoft 服务器语音的文本转语音（ru-RU，Pavel，Apollo）” | "ru-RU-Pavel-Apollo" |
@@ -254,7 +254,7 @@ Microsoft Speech SDK 和 REST API 均支持这些语音，每种语音支持区�
 | 斯瓦希里语               | `sw`          |
 | 克林贡语                 | `tlh`         |
 | 克林贡语(plqaD)         | `tlh-Qaak`    |
-| 韩语                  | `ko`          |
+| 朝鲜语                  | `ko`          |
 | 拉脱维亚语                 | `lv`          |
 | 立陶宛语              | `lt`          |
 | 马达加斯加语                | `mg`          |
@@ -264,8 +264,8 @@ Microsoft Speech SDK 和 REST API 均支持这些语音，每种语音支持区�
 | 挪威语               | `nb`          |
 | 波斯语                 | `fa`          |
 | 波兰语                  | `pl`          |
-| 葡萄牙语（巴西）     | `pt-br`       |
-| 葡萄牙语(葡萄牙)   | `pt-pt`       |
+| 葡萄牙语(巴西)     | `pt-br`       |
+| 葡萄牙语（葡萄牙）   | `pt-pt`       |
 | 旁遮普语                 | `pa`          |
 | 克雷塔罗奥托米语         | `otq`         |
 | 罗马尼亚语                | `ro`          |
