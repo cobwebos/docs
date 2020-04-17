@@ -131,7 +131,7 @@ ms.locfileid: "81274375"
 
 您可以直接从合作伙伴中心门户请求[停止在市场上销售产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)。 该选项可在优惠**优惠概览**页面上使用。
 
-:::image type="content" source="media/migration-faq/stop-selling-migration.png" alt-text="使用止损选项说明"产品/服务概述"页面。":::
+:::image type="content" source="media/migration-faq/stop-selling-migration.png" alt-text="使用止损选项说明 产品/服务概述 页面。":::
 
 ## <a name="what-pages-in-partner-center-correspond-to-pages-i-used-in-the-cloud-partner-portal"></a>合作伙伴中心中的哪些页面对应于我在云合作伙伴门户中使用的页面？
 
