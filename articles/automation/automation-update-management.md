@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: c76b14e4f08ec930159498da4a35fdad0341929e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eaba4bf7760e150f2477ee743c797f94784b8506
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278501"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535496"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -127,7 +127,7 @@ Azure[资源管理器模板](automation-update-management-deploy-template.md)可
 
 ## <a name="permissions"></a>权限
 
-若要创建和管理更新部署，需要特定的权限。 要了解这些权限，请参阅[基于角色的访问和更新管理](automation-role-based-access-control.md#update-management)。
+若要创建和管理更新部署，需要特定的权限。 要了解这些权限，请参阅[基于角色的访问和更新管理](automation-role-based-access-control.md#update-management-permissions)。
 
 ## <a name="solution-components"></a>解决方案组件
 
@@ -163,7 +163,7 @@ Azure[资源管理器模板](automation-update-management-deploy-template.md)可
 
 下表介绍了此解决方案支持的连接的源：
 
-| 连接的源 | 支持 | 描述 |
+| 连接的源 | 支持 | 说明 |
 | --- | --- | --- |
 | Windows 代理 |是 |该解决方案从 Windows 代理收集有关系统更新的信息，然后开始安装必需的更新。 |
 | Linux 代理 |是 |该解决方案从 Linux 代理收集有关系统更新的信息，然后开始在受支持的发行版上安装必需的更新。 |
@@ -183,11 +183,11 @@ Azure[资源管理器模板](automation-update-management-deploy-template.md)可
 
 更新管理特别需要以下地址。 与以下地址的通信通过端口 443 进行。
 
-|Azure Public  |Azure Government   |
+|Azure Public  |Azure Government  |
 |---------|---------|
 |*.ods.opinsights.azure.com    | *.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
-|* .blob.core.windows.net | *.blob.core.usgovcloudapi.net|
+|\* .blob.core.windows.net | *.blob.core.usgovcloudapi.net|
 |* .azure-automation.net | *.azure-automation.us|
 
 对于 Windows 计算机，还必须允许流量到 Windows 更新所需的任何终结点。 您可以在[与 HTTP/代理相关的问题](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)中找到所需终结点的更新列表。 如果您有本地 Windows[更新服务器](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)，还必须允许流量到[WSUS 密钥](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)中指定的服务器。
@@ -206,7 +206,7 @@ Azure[资源管理器模板](automation-update-management-deploy-template.md)可
 
 ### <a name="windows"></a>Windows
 
-|分类  |描述  |
+|分类  |说明  |
 |---------|---------|
 |关键更新     | 解决关键、非安全相关错误的特定问题的更新。        |
 |安全更新     | 产品特定、安全相关问题的更新。        |
@@ -219,7 +219,7 @@ Azure[资源管理器模板](automation-update-management-deploy-template.md)可
 
 ### <a name="linux"></a><a name="linux-2"></a>Linux
 
-|分类  |描述  |
+|分类  |说明  |
 |---------|---------|
 |关键和安全更新     | 特定问题或产品特定、安全相关问题的更新。         |
 |其他更新     | 所有其他不在性质上不重要的更新或不是安全更新的更新。        |

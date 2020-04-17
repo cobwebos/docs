@@ -5,12 +5,12 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 621b429f5dc3a6b6620e4d41ad46763e1d4fa226
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f33f829b6cb86cb01c848e5fc48e1618a3e00a2c
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78299514"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537026"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>从 Azure 虚拟机载入“更新管理”、“更改跟踪”和“清单”解决方案
 
@@ -24,38 +24,38 @@ Azure 自动化提供了解决方案来帮助管理操作系统安全更新、�
 
 首先，在 VM 上启用一个或所有三个解决方案：
 
-1. 在[Azure 门户](https://portal.azure.com)中，从左侧窗格中选择 **"虚拟机"，** 或从**主页**搜索和选择**虚拟机**。
+1. 在[Azure 门户](https://portal.azure.com)中，选择**虚拟机**或从主页搜索和选择**虚拟机**。
 2. 选择要为其启用解决方案的 VM。
-3. 在 VM 页上，在 **"操作"** 下，选择 **"更新管理**、**库存**"或 **"更改跟踪**"。 无论自动化帐户的位置如何，虚拟机都可以存在于任何区域中。 从 VM 载入解决方案时，需要具有确定 VM`Microsoft.OperationalInsights/workspaces/read`是否已载入工作区的权限。 要了解所需的其他权限，请参阅[板载计算机所需的权限](automation-role-based-access-control.md#onboarding)。
+3. 在 VM 页上，在 **"操作"** 下，选择 **"更新管理**、**库存**"或 **"更改跟踪**"。 无论自动化帐户位于何处，虚拟机都可以存在于任何区域。 从 VM 载入解决方案时，需要具有确定 VM`Microsoft.OperationalInsights/workspaces/read`是否已载入工作区的权限。 要了解所需的其他权限，请参阅[板载计算机所需的权限](automation-role-based-access-control.md#onboarding-permissions)。 若要了解如何一次加入多台计算机，请参阅[载入“更新管理”、“更改跟踪”和“清单”解决方案](automation-onboard-solutions-from-automation-account.md)。
 
-若要了解如何一次加入多台计算机，请参阅[载入“更新管理”、“更改跟踪”和“清单”解决方案](automation-onboard-solutions-from-automation-account.md)。
-
-选择 Azure Log Analytics 工作区和自动化帐户，然后选择“启用”以启用此解决方案。**** 启用此解决方案最长需要 15 分钟的时间。
+4. 选择 Azure 日志分析工作区和自动化帐户，然后单击"**启用"** 以启用解决方案。 启用此解决方案最长需要 15 分钟的时间。
 
 ![载入“更新管理”解决方案](media/automation-tutorial-update-management/manageupdates-update-enable.png)
 
-请转到其他解决方案，然后选择“启用”****。 日志分析工作区和自动化帐户下拉列表被禁用，因为这些解决方案使用与以前启用的解决方案相同的工作区和自动化帐户。
+5. 请转到其他解决方案，然后选择“启用”****。 日志分析工作区和自动化帐户下拉列表被禁用，因为这些解决方案使用与以前启用的解决方案相同的工作区和自动化帐户。
 
 > [!NOTE]
-> **更改跟踪**和**清单**使用同一解决方案。 启用其中一个解决方案时，另一个解决方案也会被启用。
+> 更改跟踪和清单使用同一解决方案。 启用其中一个解决方案时，另一个解决方案也会被启用。
 
 ## <a name="scope-configuration"></a>作用域配置
 
-每个解决方案在工作区中使用作用域配置来确定获取解决方案的计算机。 作用域配置是包含一个或多个已保存搜索的组，这些搜索用来将解决方案的作用域限制为特定计算机。 要访问范围配置，请在自动化帐户中，在 **"相关资源**"下，选择**工作区**。 在工作区中，在**工作区数据源**下，选择 **"范围配置**"。
+每个解决方案在工作区中使用作用域配置来确定获取解决方案的计算机。 作用域配置是包含一个或多个已保存搜索的组，这些搜索用来将解决方案的作用域限制为特定计算机。 要访问作用域配置：
 
-如果所选工作区中还没有“更新管理”或“更改跟踪”解决方案，则将创建以下作用域配置：
+1. 在自动化帐户中，在 **"相关资源**"下，选择**工作区**。 
+2. 在工作区中，在**工作区数据源**下，选择 **"范围配置**"。
+3. 如果所选工作区尚未具有更新管理或更改跟踪解决方案，则创建以下范围配置：
 
-* **MicrosoftDefaultScopeConfig-ChangeTracking**
+    * `MicrosoftDefaultScopeConfig-ChangeTracking`
+    * `MicrosoftDefaultScopeConfig-Updates`
 
-* **MicrosoftDefaultScopeConfig-Updates**
+    如果所选工作区已有解决方案，则不会重新部署解决方案，也不会添加作用域配置。
 
-如果所选工作区已有解决方案，则不会重新部署解决方案，也不会添加作用域配置。
-
-选择任何配置上的省略号 (...) 并选择“编辑”。******** 在“编辑作用域配置”**** 窗格中，选择“选择计算机组”****。 “计算机组”**** 窗格将显示用来创建作用域配置的已保存搜索。
+4. 选择任何配置上的椭圆 （**...），** 然后单击"**编辑**"。 
+5. 在“编辑作用域配置”**** 窗格中，选择“选择计算机组”****。 “计算机组”**** 窗格将显示用来创建作用域配置的已保存搜索。
 
 ## <a name="saved-searches"></a>保存的搜索
 
-向“更新管理”、“更改跟踪”和“清单”解决方案添加计算机时，计算机会添加到工作区中的两个已保存搜索之一。 这些已保存搜索是包含这些解决方案所针对的目标计算机的查询。
+将计算机添加到更新管理、更改跟踪或清单解决方案时，计算机将添加到工作区中保存的两个搜索之一。 这些已保存搜索是包含这些解决方案所针对的目标计算机的查询。
 
 转到你的工作区。 在“常规”**** 下，选择“保存的搜索”****。 下表中将显示这些解决方案使用的两个已保存搜索：
 
@@ -74,7 +74,7 @@ Azure 自动化提供了解决方案来帮助管理操作系统安全更新、�
 
 * [更新管理](automation-update-management.md)
 * [更改跟踪](automation-change-tracking.md)
-* [在非工作时间启动/停止 VM](automation-solution-vm-management.md)
+* [非工作时间启动/停止 VM](automation-solution-vm-management.md)
 
 如果您决定不再希望将自动化帐户与日志分析工作区集成，则可以直接从 Azure 门户取消链接帐户。  在继续之前，首先需要删除前面所述的解决方案，否则此过程将无法继续。 查看已导入的特定解决方案的主题，了解删除该解决方案所需的步骤。
 
@@ -83,7 +83,7 @@ Azure 自动化提供了解决方案来帮助管理操作系统安全更新、�
 > [!NOTE]
 > 某些解决方案（包括早期版本的 Azure SQL 监视解决方案）可能已创建自动化资产并可能还需要在取消链接工作区之前删除。
 
-1. 从 Azure 门户中打开自动化帐户，并在“自动化帐户”页左侧的“相关资源”部分下，选择“链接工作区”********。
+1. 从 Azure 门户中，打开自动化帐户，并在左侧的"**相关资源**"部分下选择 **"链接工作区**"。
 
 2. 在“取消链接工作区”页上，单击“取消链接工作区”****。
 
@@ -112,7 +112,7 @@ Azure 自动化提供了解决方案来帮助管理操作系统安全更新、�
 从更新管理中删除 VM：
 
 * 在 Log Analytics 工作区中，从范围配置 `MicrosoftDefaultScopeConfig-Updates` 的已保存的搜索中删除 VM。 已保存的搜索位于工作区的“常规”下****。
-* 删除 [Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) 或 [适用于 Linux 的 Log Analytics 代理](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)。
+* 删除[Windows 的日志分析代理](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources)或[Linux 的日志分析代理](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)。
 
 ## <a name="next-steps"></a>后续步骤
 

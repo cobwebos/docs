@@ -2,13 +2,13 @@
 title: Azure 迁移服务器评估中的依赖项分析
 description: 介绍如何使用 Azure 迁移服务器评估使用依赖项分析进行评估。
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.openlocfilehash: f96496b66d6bcfd397fb0a7303d3dbfb4fd6f6b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: b11796f2c5d7c1d87f383e6780444e572352eff5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79455632"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537740"
 ---
 # <a name="dependency-analysis"></a>依赖项分析
 
@@ -30,7 +30,7 @@ ms.locfileid: "79455632"
 - **无代理**：使用无代理分析，您无需在要交叉检查的计算机上安装代理。 此选项当前处于预览状态，仅适用于 VMware VM。
 
 > [!NOTE]
-> 依赖关系分析在 Azure 政府中不可用。
+> Azure 政府中不提供基于代理的依赖项分析。 您可以使用无代理依赖项分析。
 
 ## <a name="agentless-analysis"></a>无代理分析
 

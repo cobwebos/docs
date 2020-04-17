@@ -3,12 +3,12 @@ title: 使用 Azure Application Insights 为 ASP.NET 设置 Web 应用分析 | M
 description: 为托管在本地或 Azure 中的 ASP.NET 网站配置性能、可用性和用户行为分析工具。
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: 0843d6c04bf6fc9bab07207072990fb3fb8f1844
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bdd5b1131a0d2d3e2f53840d21cedce1577fde03
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665912"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536890"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>为 ASP.NET 网站设置 Application Insights
 
@@ -23,7 +23,7 @@ ms.locfileid: "77665912"
     - ASP.NET 和 Web 开发（不要取消选中可选组件）
     - Azure 开发
 
-如果没有 Azure 订阅，请先创建[一个免费](https://azure.microsoft.com/free/)帐户。"
+如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="step-1-add-the-application-insights-sdk"></a><a name="ide"></a> 步骤 1：添加 Application Insights SDK
 
@@ -46,7 +46,7 @@ Application Insights 配置屏幕：
 
 如果想要设置用于存储数据的资源组或位置，请单击“配置设置”。**** 资源组用于控制对数据的访问。 例如，如果有多个应用构成了同一个系统的一部分，可在同一个资源组中放置这些应用的 Application Insights 数据。
 
- 选择“注册”****。
+ 选择“注册”  。
 
 ![使用 Application Insights 页注册应用的屏幕截图](./media/asp-net/00005-register-ed.png)
 
@@ -56,7 +56,7 @@ Application Insights 配置屏幕：
 > [!NOTE]
 > 如果不希望在进行调试时向门户发送遥测，则请直接向应用添加 Application Insights SDK，但不要在门户中配置资源。 在调试时，可以在 Visual Studio 中查看遥测数据。 稍后可以返回此配置页，或者等到部署应用后，启用[在运行时打开遥测](../../azure-monitor/app/monitor-performance-live-website-now.md)。
 
-## <a name="step-2-run-your-app"></a><a name="run"></a> 步骤 2：运行应用
+## <a name="step-2-run-your-app"></a><a name="run"></a>第 2 步：运行应用
 使用 F5 运行应用。 打开不同的页以生成一些遥测数据。
 
 Visual Studio 中会显示已记录的事件数。
@@ -93,7 +93,7 @@ Visual Studio 中会显示已记录的事件数。
 在门户中，单击任何磁贴或图表以查看更多详细信息。
 
 ## <a name="step-4-publish-your-app"></a>步骤 4：发布应用
-将应用发布到 IIS 服务器或 Azure。 监视 [实时指标流](../../azure-monitor/app/metrics-explorer.md#live-metrics-stream) ，确保一切平稳运行。
+将应用发布到 IIS 服务器或 Azure。 监视 [实时指标流](../../azure-monitor/app/live-stream.md) ，确保一切平稳运行。
 
 遥测数据会在 Application Insights 门户中累积，可在该门户中监视指标、搜索遥测数据。 还可以使用功能强大的 [Kusto 查询语言](/azure/kusto/query/)来分析使用情况和性能，或查找特定的事件。
 

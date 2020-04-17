@@ -318,8 +318,6 @@
               href: app/pre-aggregated-metrics-log-metrics.md
             - name: 基于日志的指标定义
               href: platform/app-insights-metrics.md
-            - name: 经典指标资源管理器
-              href: app/metrics-explorer.md
         - name: 搜索
           href: app/diagnostic-search.md
         - name: 探查器

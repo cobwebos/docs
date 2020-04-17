@@ -1,17 +1,14 @@
 ---
 title: 在 Azure 迁移中添加评估/迁移工具
 description: 介绍如何创建 Azure 迁移项目并添加评估/迁移工具。
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 319d97d96bd054aed90079777e2ff83d0e308e5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 04/16/2020
+ms.openlocfilehash: 48bdea31d17ea1ddf0b983af962dce30b22d8dcf
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74185941"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537723"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>第一次添加评估/迁移工具
 
@@ -25,40 +22,26 @@ Azure 迁移提供了一个中心中心，用于跟踪本地应用和工作负�
 - Azure 迁移项目用于存储从要评估或迁移的环境收集的发现、评估和迁移元数据。 
 - 在项目中，您可以跟踪发现的资产，并协调评估和迁移。
 
-1. 在 Azure 门户中选择“所有服务”，然后搜索 **Azure Migrate**。****
-2. 在“服务”下选择“Azure Migrate”。********
+1. 在 Azure 门户中选择“所有服务”，然后搜索 **Azure Migrate**。 
+2. 在“服务”下选择“Azure Migrate”。  
 
     ![设置 Azure Migrate](./media/how-to-add-tool-first-time/azure-migrate-search.png)
 
-3. 在“概述”中，单击“评估和迁移服务器”。********
-4. 在“发现、评估和迁移服务器”下，单击“评估和迁移服务器”。********
+3. 在“概述”中，单击“评估和迁移服务器”。  
+4. 在“发现、评估和迁移服务器”下，单击“评估和迁移服务器”。  
 
     ![发现和评估服务器](./media/how-to-add-tool-first-time/assess-migrate.png)
 
-1. 在“发现、评估和迁移服务器”中，单击“添加工具”。********
-2. 在“迁移项目”中选择你的 Azure 订阅，并创建一个资源组（如果没有）。****
-3. 在 **"项目详细信息**"中，指定要在其中创建项目的项目名称和地理位置。 
+1. 在“发现、评估和迁移服务器”中，单击“添加工具”。  
+2. 在“迁移项目”中选择你的 Azure 订阅，并创建一个资源组（如果没有）。 
+3. 在 **"项目详细信息**"中，指定要在其中创建项目的项目名称和地理位置。  审查[公共](migrate-support-matrix.md#supported-geographies-public-cloud)和政府[云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。
 
     ![创建 Azure Migrate 项目](./media/how-to-add-tool-first-time/migrate-project.png)
 
-    可在下述任一地理位置创建 Azure Migrate 项目。
+    - 为项目指定的地理位置仅用于存储从本地 VM 中收集的元数据。 可为实际迁移选择任一目标区域。
+    - 如果需要在地理位置的特定区域中部署项目，请使用以下 API 创建项目。 指定订阅 ID、资源组名称和项目名称以及位置。 查看地区/地区[，查看公共](migrate-support-matrix.md#supported-geographies-public-cloud)和政府[云](migrate-support-matrix.md#supported-geographies-azure-government)。
 
-   **地理** | **存储位置区域**
-    --- | ---
-    亚洲   | 东南亚或东亚
-    欧洲 | 欧洲北部或欧洲西部
-    日本  | 日本东部或日本西部
-    United Kingdom | 英国南部或英国西部
-    United States | 美国中部或美国西部 2
-    Canada | 加拿大中部
-    印度  | 印度中部或印度南部
-    澳大利亚 | 澳大利亚东南部
-
-    为项目指定的地理位置仅用于存储从本地 VM 中收集的元数据。 可为实际迁移选择任一目标区域。
-
-    如果要在地理位置中指定用于部署迁移项目及其关联资源的特定区域（订阅中的策略限制可能只允许将 Azure 资源部署到特定的 Azure 区域），则可以使用以下 API 进行创建迁移项目。 指定订阅 ID、资源组名称、迁移项目名称以及位置（部署 Azure 迁移的表中提及的任何 Azure 区域）。
-
-    `PUT /subscriptions/<subid>/resourceGroups/<rg>/providers/Microsoft.Migrate/MigrateProjects/<mymigrateprojectname>?api-version=2018-09-01-preview "{location: 'centralus', properties: {}}"`   
+        `PUT /subscriptions/<subid>/resourceGroups/<rg>/providers/Microsoft.Migrate/MigrateProjects/<mymigrateprojectname>?api-version=2018-09-01-preview "{location: 'centralus', properties: {}}"`   
 
 
 4. 单击 **"下一步**"，然后添加评估或迁移工具。
@@ -68,7 +51,7 @@ Azure 迁移提供了一个中心中心，用于跟踪本地应用和工作负�
 
 5. 在 **"选择评估工具"** 中，添加评估工具。 如果您不需要评估工具，请选择 **"立即跳过添加评估工具** > **下一步**"。 
 2. 在**选择迁移工具**中，根据需要添加迁移工具。 如果您现在不需要迁移工具，请选择 **"立即跳过添加迁移工具** > **"。**
-3. 在 **"审阅 + 添加工具**"中，查看设置并单击"**添加工具**"。
+3. 在“检查 + 添加工具”中检查设置，然后单击“添加工具”。  
 
 创建项目后，您可以选择用于评估和迁移服务器和工作负荷、数据库和 Web 应用的其他工具。
 

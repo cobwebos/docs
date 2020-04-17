@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b0f60e13ca4bc5115f9a49885c3c659ad1147fcc
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 7f05d33b43df85c49a0c92b60157e2a6448325ac
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881887"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537128"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>调用 Web API 的 Web 应用：代码配置
 
@@ -94,7 +94,7 @@ Microsoft 身份验证库 (MSAL) 中的以下库支持 Web 应用的授权代码
 下面是摘自 [Startup.cs#L40-L42](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/2-WebApp-graph-user/2-1-Call-MSGraph/Startup.cs#L40-L42) 的代码。 其中包含对以下方法的调用：
 
 - `AddMicrosoftIdentityPlatformAuthentication` 方法，用于向 Web 应用添加身份验证。
-- `AddMsal` 方法，用于添加调用 Web API 的功能。
+- 该方法`AddMsal`，它添加了调用 Web API 的功能。
 - `AddInMemoryTokenCaches` 方法，用于选择令牌缓存实现。
 
 ```csharp
@@ -253,7 +253,7 @@ public class TokenAcquisition : ITokenAcquisition
 
 ### <a name="the-tokenacquisitionbuildconfidentialclientapplication-method"></a>TokenAcquisition.BuildConfidentialClientApplication 方法
 
-在 ASP.NET Core 中，生成机密客户端应用程序会用到 `HttpContext` 中的信息。 使用 `CurrentHttpContext` 属性访问与请求关联的 `HttpContext`。 `HttpContext` 包含有关 Web 应用 URL 的信息，以及有关已登录用户的信息（在 `ClaimsPrincipal` 中）。 
+在 ASP.NET Core 中，生成机密客户端应用程序会用到 `HttpContext` 中的信息。 使用 `CurrentHttpContext` 属性访问与请求关联的 `HttpContext`。 `HttpContext` 包含有关 Web 应用 URL 的信息，以及有关已登录用户的信息（在 `ClaimsPrincipal` 中）。
 
 `BuildConfidentialClientApplication` 方法还使用 ASP.NET Core 配置。 此配置包含“AzureAD”节，同时已绑定到以下两个元素：
 

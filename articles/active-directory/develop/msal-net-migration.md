@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: cccb886e13482292e8ab9afa2b34bd9dd2c3229b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f389943d284c573312473f426048f8aadb79088e
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80050304"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533966"
 ---
 # <a name="migrating-applications-to-msalnet"></a>将应用程序迁移到 MSAL.NET
 
@@ -31,11 +31,11 @@ ms.locfileid: "80050304"
 
 **MSAL.NET 现在是建议用于 Microsoft 标识平台的身份验证库**。 不会使用 ADAL.NET 实现任何新功能。 工作的重点是改进 MSAL。
 
-本文介绍适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 与适用于 .NET 的 Azure AD 身份验证库 (ADAL.NET) 之间的差异，并帮助你迁移到 MSAL。  
+本文介绍适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 与适用于 .NET 的 Azure AD 身份验证库 (ADAL.NET) 之间的差异，并帮助你迁移到 MSAL。
 
 ## <a name="differences-between-adal-and-msal-apps"></a>ADAL 与 MSAL 应用之间的差异
 
-在大多数情况下都可以使用 MSAL.NET 和 Microsoft 标识平台终结点，这是最新一代的 Microsoft 身份验证库。 使用 MSAL.NET 可以获取通过 Azure AD（工作和学校帐户）、Microsoft（个人）帐户 (MSA) 或 Azure AD B2C 登录到应用程序的用户的令牌。 
+在大多数情况下都可以使用 MSAL.NET 和 Microsoft 标识平台终结点，这是最新一代的 Microsoft 身份验证库。 使用 MSAL.NET 可以获取通过 Azure AD（工作和学校帐户）、Microsoft（个人）帐户 (MSA) 或 Azure AD B2C 登录到应用程序的用户的令牌。
 
 如果你已熟悉面向开发人员的 Azure AD (v1.0) 终结点（和 ADAL.NET），请阅读[ Microsoft 标识平台 (v2.0) 终结点有何不同？](active-directory-v2-compare.md)
 
@@ -53,7 +53,7 @@ ADAL.NET 是从 [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nu
 
 ADAL.NET 获取资源的令牌，但 MSAL.NET 获取范围的令牌。**** 许多 MSAL.NET AcquireToken 重写都需要名为 scopes(`IEnumerable<string> scopes`) 的参数。 此参数是一个简单的字符串列表，这些字符串声明所需的权限和请求的资源。 已知的范围是 [Microsoft Graph 范围](/graph/permissions-reference)。
 
-在 MSAL.NET 中也可以访问 v1.0 资源。 请参阅 [v1.0 应用程序的范围](#scopes-for-a-web-api-accepting-v10-tokens)中的详细信息。 
+在 MSAL.NET 中也可以访问 v1.0 资源。 请参阅 [v1.0 应用程序的范围](#scopes-for-a-web-api-accepting-v10-tokens)中的详细信息。
 
 ### <a name="core-classes"></a>核心类
 
@@ -63,13 +63,13 @@ ADAL.NET 获取资源的令牌，但 MSAL.NET 获取范围的令牌。**** 许�
 
 ### <a name="iaccount-not-iuser"></a>IAccount 不是 IUser
 
-ADAL.NET 操控用户。 但是，用户是人类或软件代理，可以拥有/负责 Microsoft 标识系统中的一个或多个帐户（若干 Azure AD 帐户、Azure AD B2C、Microsoft 个人帐户）。 
+ADAL.NET 操控用户。 但是，用户是人类或软件代理，可以拥有/负责 Microsoft 标识系统中的一个或多个帐户（若干 Azure AD 帐户、Azure AD B2C、Microsoft 个人帐户）。
 
 MSAL.NET 2.x 现在定义了帐户的概念（通过 IAccount 接口）。 这项中断性变更提供了正确的语义：同一用户可以在不同的 Azure AD 目录中拥有多个帐户这一事实。 此外，由于系统会提供主帐户信息，MSAL.NET 可以在来宾方案中提供更有用的信息。
 
 有关 IUser 与 IAccount 之间的差异的详细信息，请参阅 [MSAL.NET 2.x](https://aka.ms/msal-net-2-released)。
 
-### <a name="exceptions"></a>异常
+### <a name="exceptions"></a>例外
 
 #### <a name="interaction-required-exceptions"></a>“需要交互”异常
 
@@ -102,13 +102,13 @@ catch(MsalUiRequiredException exception)
 在 ADAL.NET 中，声明质询异常按以下方式进行处理：
 
 - `AdalClaimChallengeException` 是当资源需要用户的更多声明时（例如，使用双重身份验证时），服务引发的异常（派生自 `AdalServiceException`）。 `Claims` 成员包含某个带有预期声明的 JSON 片段。
-- 在 ADAL.NET 中，接收此异常的公共客户端应用程序需要调用包含声明参数的 `AcquireTokenInteractive` 重写。 此 `AcquireTokenInteractive` 重写甚至不会尝试命中缓存，因为缓存是不必要的。 原因在于，缓存中的令牌没有适当的声明（否则不会引发 `AdalClaimChallengeException`）。 因此，没有必要查找缓存。 请注意，可以在执行 OBO 的 Web API 中接收 `ClaimChallengeException`，而 `AcquireTokenInteractive` 需要在调用此 Web API 的公共客户端应用程序中调用。
+- 在 ADAL.NET 中，接收此异常的公共客户端应用程序需要调用包含声明参数的 `AcquireTokenInteractive` 重写。 此 `AcquireTokenInteractive` 重写甚至不会尝试命中缓存，因为缓存是不必要的。 原因在于，缓存中的令牌没有适当的声明（否则不会引发 `AdalClaimChallengeException`）。 因此，没有必要查找缓存。 请注意，`ClaimChallengeException`可以在执行 OBO 的 WebAPI 中接收，`AcquireTokenInteractive`而需要在调用此 Web API 的公共客户端应用程序中调用 。
 - 有关详细信息（包括示例），请参阅[处理 AdalClaimChallengeException](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Exceptions-in-ADAL.NET#handling-adalclaimchallengeexception)
 
 在 MSAL.NET 中，声明质询异常按以下方式进行处理：
 
 - `Claims` 在 `MsalServiceException` 中显示。
-- 可对 `AcquireTokenInteractive` 生成器应用一个 `.WithClaim(claims)` 方法。 
+- 可对 `AcquireTokenInteractive` 生成器应用一个 `.WithClaim(claims)` 方法。
 
 ### <a name="supported-grants"></a>支持的授权
 
@@ -127,11 +127,11 @@ Windows 集成身份验证 | [Windows 上的集成身份验证 (Kerberos)](https
 
 #### <a name="confidential-client-applications"></a>机密客户端应用程序
 
-下面是适用于 Web 应用程序、Web API 和守护程序应用程序的 ADAL.NET 与 MSAL.NET 支持的授权：
+以下是 web 应用程序、Web API 和守护程序应用程序ADAL.NET和MSAL.NET中支持的授予：
 
 应用类型 | 授予 | ADAL.NET | MSAL.NET
 ----- | ----- | ----- | -----
-Web 应用、Web API、守护程序 | 客户端凭据 | [ADAL.NET 中的客户端凭据流](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [MSAL.NET 中的客户端凭据流](msal-authentication-flows.md#client-credentials)
+Web 应用、Web API、守护进程 | 客户端凭据 | [ADAL.NET 中的客户端凭据流](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [MSAL.NET 中的客户端凭据流](msal-authentication-flows.md#client-credentials)
 Web API | 代表 | [代表用户使用 ADAL.NET 进行服务到服务的调用](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [在 MSAL.NET 中代表](msal-authentication-flows.md#on-behalf-of)
 Web 应用 | 身份验证代码 | [使用 ADAL.NET 通过 Web 应用中的授权代码获取令牌](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-authorization-codes-on-web-apps) | [使用 MSAL.NET 通过 Web 应用中的授权代码获取令牌](msal-authentication-flows.md#authorization-code)
 
@@ -151,15 +151,15 @@ MSAL.NET 将令牌缓存用作密封类，并消除了扩展该类的功能。 �
 
 有两种令牌版本：
 - v1.0 令牌
-- v2.0 令牌 
+- v2.0 令牌
 
 v1.0 终结点（由 ADAL 使用）只发出 v1.0 令牌。
 
-但是，v2.0 终结点（由 MSAL 使用）可发出 Web API 所接受的令牌版本。 开发人员可以使用 Web API 应用程序清单的属性来选择接受的令牌版本。 请参阅[应用程序清单](reference-app-manifest.md)参考文档中的 `accessTokenAcceptedVersion`。
+但是，v2.0 终结点（由 MSAL 使用）发出 Web API 接受的令牌版本。 Web API 应用程序清单的属性使开发人员能够选择接受哪个版本的令牌。 请参阅[应用程序清单](reference-app-manifest.md)参考文档中的 `accessTokenAcceptedVersion`。
 
 有关 v1.0 和 v2.0 令牌的详细信息，请参阅 [Azure Active Directory 访问令牌](access-tokens.md)
 
-## <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>接受 v1.0 令牌中的 Web API 的范围
+## <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>接受 v1.0 令牌的 Web API 的作用域
 
 OAuth2 权限是 v1.0 Web API（资源）应用程序向客户端应用程序公开的权限范围。 在许可期间，可将这些权限范围授予客户端应用程序。 请参阅 [Azure Active Directory 应用程序清单](active-directory-application-manifest.md)中有关 oauth2Permissions 的部分。
 
@@ -167,7 +167,7 @@ OAuth2 权限是 v1.0 Web API（资源）应用程序向客户端应用程序公
 
 如果要为接受 v1.0 令牌的应用程序获取令牌（例如 Microsoft 图形 API，即https://graph.microsoft.com)，您需要通过将所需的资源标识符与该资源的所需`scopes`OAuth2 权限串联来创建。
 
-例如，若要以用户名访问应用 ID URI 为 `ResourceId` 的 v1.0 Web API，需要使用：
+例如，要以用户的名义访问应用 ID URI 的`ResourceId`v1.0 Web API，您需要使用：
 
 ```csharp
 var scopes = new [] {  ResourceId+"/user_impersonation"};
@@ -182,7 +182,7 @@ var scopes = new [] { ResourceId + "Directory.Read", ResourceID + "Directory.Wri
 
 #### <a name="warning-should-you-have-one-or-two-slashes-in-the-scope-corresponding-to-a-v10-web-api"></a>警告： 如果范围中应与 v1.0 Web API 对应一个或两个斜杠
 
-若要写入对应于 Azure 资源管理器 API (https://management.core.windows.net/) 的范围，需要请求以下范围（请注意有两个斜杠） 
+若要写入对应于 Azure 资源管理器 API (https://management.core.windows.net/) 的范围，需要请求以下范围（请注意有两个斜杠）
 
 ```csharp
 var scopes = new[] {"https://management.core.windows.net//user_impersonation"};
@@ -214,29 +214,30 @@ var scopes = new [] {  ResourceId+"/.default"};
 
 ## <a name="adal-to-msal-migration"></a>ADAL 到 MSAL 的迁移
 
-ADAL.NET v2.X 中公开了刷新令牌，使你能够通过缓存这些令牌并使用 ADAL 2.x 提供的 `AcquireTokenByRefreshToken` 方法，来围绕这些令牌的使用开发解决方案。 其中的某些解决方案在如下所述的场景中使用：
-* 当用户不再保持连接时，长时间运行的服务代表用户执行仪表板刷新等操作。 
+ADAL.NET v2.X 中公开了刷新令牌，使你能够通过缓存这些令牌并使用 ADAL 2.x 提供的 `AcquireTokenByRefreshToken` 方法，来围绕这些令牌的使用开发解决方案。
+其中的某些解决方案在如下所述的场景中使用：
+* 当用户不再保持连接时，长时间运行的服务代表用户执行仪表板刷新等操作。
 * 在 Web 场场景中，让客户端将 RT 引入 Web 服务（缓存在客户端以加密 Cookie 的形式执行，而不是在服务器端执行）
 
-出于安全原因，MSAL.NET不会公开刷新令牌：MSAL 会为您处理刷新令牌。 
+出于安全原因，MSAL.NET不会公开刷新令牌：MSAL 会为您处理刷新令牌。
 
 幸运的是，MSAL.NET 现在会提供一个 API 用于将以前的刷新令牌（通过 ADAL 获取）迁移到 `IConfidentialClientApplication` 中：
 
 ```csharp
 /// <summary>
-/// Acquires an access token from an existing refresh token and stores it and the refresh token into 
+/// Acquires an access token from an existing refresh token and stores it and the refresh token into
 /// the application user token cache, where it will be available for further AcquireTokenSilent calls.
-/// This method can be used in migration to MSAL from ADAL v2 and in various integration 
-/// scenarios where you have a RefreshToken available. 
+/// This method can be used in migration to MSAL from ADAL v2 and in various integration
+/// scenarios where you have a RefreshToken available.
 /// (see https://aka.ms/msal-net-migration-adal2-msal2)
 /// </summary>
-/// <param name="scopes">Scope to request from the token endpoint. 
+/// <param name="scopes">Scope to request from the token endpoint.
 /// Setting this to null or empty will request an access token, refresh token and ID token with default scopes</param>
 /// <param name="refreshToken">The refresh token from ADAL 2.x</param>
 IByRefreshToken.AcquireTokenByRefreshToken(IEnumerable<string> scopes, string refreshToken);
 ```
- 
-使用此方法可以结合所需的任何范围（资源）提供以前用过的刷新令牌。 该刷新令牌将交换一个新令牌，并缓存到应用程序中。  
+
+使用此方法可以结合所需的任何范围（资源）提供以前用过的刷新令牌。 该刷新令牌将交换一个新令牌，并缓存到应用程序中。
 
 由于此方法适用于非典型的场景，因此，在未事先将 `IConfidentialClientApplication` 强制转换为 `IByRefreshToken` 的情况下，不能现成地使用它来访问刷新令牌。
 
@@ -253,7 +254,7 @@ app = ConfidentialClientApplicationBuilder.Create(clientId)
  .WithClientSecret(ClientSecret)
  .Build();
 IByRefreshToken appRt = app as IByRefreshToken;
-         
+
 AuthenticationResult result = await appRt.AcquireTokenByRefreshToken(null, rt)
                                          .ExecuteAsync()
                                          .ConfigureAwait(false);

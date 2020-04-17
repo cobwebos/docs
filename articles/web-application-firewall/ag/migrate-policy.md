@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: conceptual
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/19/2019
+ms.date: 04/16/2020
 ms.author: ant
-ms.openlocfilehash: 1fac524af4b69f8e35934840643c6d3ad99fe1cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb3b922b753b9696aa26ea189597589ecc5772db
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74174598"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536618"
 ---
 # <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>使用 Azure PowerShell 迁移 Web 应用程序防火墙策略
 
@@ -28,6 +28,13 @@ ms.locfileid: "74174598"
 2. 将脚本复制到云外壳窗口中并运行它。
 3. 脚本要求订阅 ID、资源组名称、WAF 配置关联的应用程序网关的名称以及要创建的新 WAF 策略的名称。 输入这些输入后，脚本将运行并创建新的 WAF 策略
 4. 将新的 WAF 策略与您的应用程序网关相关联。 转到门户中的 WAF 策略并选择 **"关联应用程序网关**"选项卡。选择 **"关联应用程序网关**"，然后选择应用程序网关将 WAF 策略关联到。
+
+> [!NOTE]
+> 如果存在以下条件，脚本不会完成迁移：
+> - 整个规则被禁用。 要完成迁移，请确保未禁用整个规则组。
+> - 具有*等于任何*运算符的排除项。 要完成迁移，请确保不存在"*任何运算符"* 的排除条目。
+>
+> 有关详细信息，请参阅脚本中的*验证输入*函数。
 
 ```azurepowershell-interactive
 <#PSScriptInfo

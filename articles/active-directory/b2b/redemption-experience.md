@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 043e0f3a0ff2c1c642c63a387c571b575f77cf7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0645807aa40557c163643f1393c310668518f9be
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80050836"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535123"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B 协作邀请兑换
 
@@ -52,6 +52,36 @@ ms.locfileid: "80050836"
  - 有时，由于与联系人对象（例如，Outlook 联系人对象）存在冲突，受邀用户对象可能会没有电子邮件地址。 在这种情况下，用户必须单击邀请电子邮件中的兑换 URL。
  - 用户可使用受邀电子邮件地址的别名登录。 （别名是与电子邮件帐户关联的其他电子邮件地址。在这种情况下，用户必须单击邀请电子邮件中的兑换 URL。
 
+## <a name="invitation-redemption-flow"></a>邀请兑换流程
+
+当用户单击[邀请电子邮件中](invitation-email-elements.md)的 **"接受邀请**"链接时，Azure AD 会根据兑换流程自动兑换邀请，如下所示：
+
+![显示兑换流程图的屏幕截图](media/redemption-experience/invitation-redemption-flow.png)
+
+1. 兑换过程检查用户是否拥有现有的个人 Microsoft[帐户 （MSA）。](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create)
+
+2. 如果管理员已启用[直接联合](direct-federation.md)，Azure AD 将检查用户的域后缀是否与配置的 SAML/WS-Fed 标识提供程序的域匹配，并将用户重定向到预配置的标识提供程序。
+
+3. 如果管理员启用了[Google 联合身份验证](google-federation.md)，Azure AD 会检查用户的域名后缀是否gmail.com或googlemail.com，并将用户重定向到 Google。
+
+4. Azure AD 执行基于用户的发现，以确定用户是否存在[在现有 Azure AD 租户](what-is-b2b.md#easily-add-guest-users-in-the-azure-ad-portal)中。
+
+5. 识别用户**主目录**后，用户将发送到相应的标识提供程序登录。  
+
+6. 如果步骤 1 到步骤 4 找不到受邀用户主目录，Azure AD 将确定邀请租户是否已为来宾启用[电子邮件一次性密码 （OTP）](one-time-passcode.md)功能。
+
+7. 如果[启用了来宾的电子邮件一次性密码](one-time-passcode.md#when-does-a-guest-user-get-a-one-time-passcode)，则密码将通过邀请的电子邮件发送给用户。 用户将在 Azure AD 登录页中检索并输入此密码。
+
+8. 如果禁用了来宾的电子邮件一次性密码，Azure AD 会根据 Microsoft 维护的消费域列表检查域后缀。 如果域与使用者域列表中的任何域匹配，系统将提示用户创建个人 Microsoft 帐户。 如果没有，系统将提示用户创建 Azure [AD 自助服务帐户](../users-groups-roles/directory-self-service-signup.md)（病毒帐户）。
+
+9. Azure AD 尝试通过验证对电子邮件的访问来创建 Azure AD 自助服务帐户（病毒帐户）。 通过将代码发送到电子邮件，并让用户检索并提交到 Azure AD，验证帐户。 但是，如果受邀用户的租户是联合的，或者如果"AllowEmail 验证用户"字段在受邀用户的租户中设置为 false，则用户无法完成兑换，并且流会导致错误。 有关详细信息，请参阅[对 Azure 活动目录 B2B 协作进行故障排除](troubleshoot.md#the-user-that-i-invited-is-receiving-an-error-during-redemption)。
+
+10. 系统会提示用户创建个人 Microsoft 帐户 （MSA）。
+
+11. 向正确的标识提供程序进行身份验证后，用户将被重定向到 Azure AD 以完成[同意体验](redemption-experience.md#consent-experience-for-the-guest)。  
+
+对于及时 （JIT） 兑换（如果兑换是通过租户应用程序链接），则步骤 8 到 10 不可用。 如果用户到达步骤 6 且未启用电子邮件一次性密码功能，则用户将收到一条错误消息，无法兑换邀请。 为了防止这种情况，管理员应[启用电子邮件一次性密码](one-time-passcode.md#when-does-a-guest-user-get-a-one-time-passcode)或确保用户单击邀请链接。
+
 ## <a name="consent-experience-for-the-guest"></a>客人的同意体验
 
 当来宾首次登录以访问合作伙伴组织中的资源时，他们会通过以下页面进行引导。 
@@ -67,8 +97,7 @@ ms.locfileid: "80050836"
 
    ![显示新使用条款的屏幕截图](media/redemption-experience/terms-of-use-accept.png) 
 
-   > [!NOTE]
-   > 您可以在 **"管理** > **组织关系** > 使用**条款**"中配置[使用条款](../governance/active-directory-tou.md)。
+   您可以在 **"管理** > **组织关系** > 使用**条款**"中配置[使用条款](../governance/active-directory-tou.md)。
 
 3. 除非另有说明，否则来宾将重定向到"应用访问"面板，该面板列出了来宾可以访问的应用程序。
 

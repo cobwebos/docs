@@ -30,6 +30,11 @@
     - name: 索引
       displayName: 'list, examples'
       href: ./samples/index.md
+    - name: Azure 安全基准
+      items:
+        - name: 控制映射
+          displayName: 'standards, azure, benchmark'
+          href: ./samples/azure-security-benchmark/control-mapping.md
     - name: 加拿大联邦 PBMM
       items:
         - name: 概述

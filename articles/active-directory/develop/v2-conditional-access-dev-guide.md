@@ -13,12 +13,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: e8c890a6daf2411b09162ab0072aed594820b936
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: aae1b8aa27363e8f1d3c72d3934146c47b0cf2c9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886341"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535887"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问开发人员指南
 
@@ -59,12 +59,12 @@ ms.locfileid: "80886341"
 
 在某些应用场景下，需要进行代码更改来处理条件访问，而在其他应用场景下一切按原样运行。 以下是使用条件访问执行多重身份验证的一些应用场景，可以通过它们深入了解其中的差异。
 
-* 你正在构建单租户 iOS 应用，并应用了条件访问策略。 应用允许用户登录且不请求访问 API。 用户登录后，自动调用策略，用户需要执行多重身份验证 (MFA)。 
+* 你正在构建单租户 iOS 应用，并应用了条件访问策略。 应用允许用户登录且不请求访问 API。 用户登录后，自动调用策略，用户需要执行多重身份验证 (MFA)。
 * 你正在构建使用中间层服务访问下游 API 的本机应用。 公司中使用此应用的企业客户对下游 API 应用了策略。 最终用户登录时，本机应用将请求访问中间层并将发送令牌。 中间层执行代理流来请求访问下游 API。 此时，将向中间层发出一个声明“质询”。 中间层将质询发送回本机应用，本机应用需符合条件访问策略。
 
 #### <a name="microsoft-graph"></a>Microsoft Graph
 
-在条件访问环境中构建应用时，需要考虑到 Microsoft Graph 方面的一些特殊注意事项。 通常，条件访问机制的行为相同，但用户看到的策略取决于应用从图形请求的基础数据。 
+在条件访问环境中构建应用时，需要考虑到 Microsoft Graph 方面的一些特殊注意事项。 通常，条件访问机制的行为相同，但用户看到的策略取决于应用从图形请求的基础数据。
 
 具体而言，所有 Microsoft Graph 范围都表示某个可单独应用策略的数据集。 由于为条件访问策略分配了特定的数据集，因此 Azure AD 会根据 Graph 后面的数据（而非 Graph 本身）强制实施条件访问策略。
 
@@ -74,13 +74,13 @@ ms.locfileid: "80886341"
 scopes="Bookings.Read.All Mail.Read"
 ```
 
-应用可能期望其用户满足针对 Bookings 和 Exchange 设置的所有策略。 某些范围可能会映射到多个数据集（如果授予了访问权限）。 
+应用可能期望其用户满足针对 Bookings 和 Exchange 设置的所有策略。 某些范围可能会映射到多个数据集（如果授予了访问权限）。
 
 ### <a name="complying-with-a-conditional-access-policy"></a>符合条件访问策略
 
 对于多个不同的应用拓扑，会在建立会话时评估条件访问策略。 条件访问策略在应用和服务的粒度上运行时，调用它的时间很大程度上取决于你尝试完成的应用场景。
 
-在应用尝试访问具有条件访问策略的服务时，可能会遇到条件访问质询。 此质询编码在 `claims` 参数中，而此参数来自 Azure AD 的响应。 以下是此质询参数的示例： 
+在应用尝试访问具有条件访问策略的服务时，可能会遇到条件访问质询。 此质询编码在 `claims` 参数中，而此参数来自 Azure AD 的响应。 以下是此质询参数的示例：
 
 ```
 claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
@@ -106,7 +106,7 @@ Azure AD 条件访问是[Azure AD 高级版](https://docs.microsoft.com/azure/ac
 
 ## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>应用场景：执行代理流的应用
 
-在此应用场景中，我们将演示本机应用调用 Web 服务/API 时的场景。 而此服务将执行“代理”流来调用下游服务。 在本示例中，我们已向下游服务 (Web API 2) 应用条件访问策略，并且使用的是本机应用，而非服务器/守护程序应用。 
+在此应用场景中，我们将演示本机应用调用 Web 服务/API 时的场景。 而此服务将执行“代理”流来调用下游服务。 在本示例中，我们已向下游服务 (Web API 2) 应用条件访问策略，并且使用的是本机应用，而非服务器/守护程序应用。
 
 ![执行代理流的应用示意图](./media/v2-conditional-access-dev-guide/app-performing-on-behalf-of-scenario.png)
 
@@ -159,7 +159,7 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 * 然后可以使用 `acquireTokenSilent(…)` 以无提示方式获取访问令牌，这意味着在任何情况下它都不会显示 UI。
 * `acquireTokenPopup(…)` 和 `acquireTokenRedirect(…)` 用于以交互方式请求资源的令牌，这意味着它们始终会显示登录 UI。
 
-应用需要访问令牌来调用 Web API 时，它尝试 `acquireTokenSilent(…)`。 如果令牌会话已过期，或者我们需要遵守条件访问策略，则*accessToken*函数将失败，应用使用`acquireTokenPopup()`或`acquireTokenRedirect()`。
+当应用需要访问令牌来调用 Web API 时，它会尝试`acquireTokenSilent(…)`。 如果令牌会话已过期，或者我们需要遵守条件访问策略，则*accessToken*函数将失败，应用使用`acquireTokenPopup()`或`acquireTokenRedirect()`。
 
 ![使用 MSAL 流程图的单页应用](./media/v2-conditional-access-dev-guide/spa-using-msal-scenario.png)
 
@@ -175,7 +175,7 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 应用需要捕获 `error=interaction_required`。 然后应用程序可以在同一个资源上使用 `acquireTokenPopup()` 或 `acquireTokenRedirect()`。 用户被强制执行多重身份验证。 用户完成多重身份验证后，应用针对所请求资源签发一个新访问令牌。
 
-若要尝试此应用场景，请参阅 [JS SPA 代理代码示例](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/master/Microsoft.Identity.Web/README.md#handle-conditional-access)。 此代码示例使用之前通过 JS SPA 注册的条件访问策略和 Web API 演示此应用场景。 它演示了如何正确处理声明质询并获取可用于 Web API 的访问令牌。 或者，请查看常规的 [Angular.js 代码示例](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2)，获取 Angular SPA 方面的指南。
+若要尝试此应用场景，请参阅 [JS SPA 代理代码示例](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/master/Microsoft.Identity.Web/README.md#handle-conditional-access)。 此代码示例使用之前通过 JS SPA 注册的条件访问策略和 Web API 演示此应用场景。 它演示如何正确处理声明质询并获得可用于 Web API 的访问令牌。 或者，请查看常规的 [Angular.js 代码示例](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2)，获取 Angular SPA 方面的指南。
 
 ## <a name="see-also"></a>请参阅
 

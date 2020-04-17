@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: rohogue
-ms.openlocfilehash: 6da35cb60dc5f22be01ae25393bd62327db64867
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: ab342dba5c8be2ff3793c0eb36926969b3e364e5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655658"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537281"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC 缓存的先决条件
 
@@ -20,9 +20,6 @@ ms.locfileid: "80655658"
 ## <a name="azure-subscription"></a>Azure 订阅
 
 建议付费订阅。
-
-> [!NOTE]
-> 在 GA 发布的头几个月中，Azure HPC 缓存团队必须将订阅添加到访问列表中，然后才能用于创建缓存实例。 此过程有助于确保每个客户从他们的缓存中获得高质量的响应。 填写[此表单](https://aka.ms/onboard-hpc-cache)以请求访问。
 
 ## <a name="network-infrastructure"></a>网络基础结构
 
@@ -84,11 +81,11 @@ Azure HPC 缓存需要具有以下特性的专用子网：
 * 访问层（默认）：**热**
 
 最好使用与缓存位于同一位置的存储帐户。
-<!-- clarify location - same region or same resource group or same virtual network? -->
 
 您还必须向缓存应用程序授予对 Azure 存储帐户的访问权限，如上文[的权限](#permissions)中所述。 按照["添加存储目标"](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)中的过程为缓存提供所需的访问角色。 如果您不是存储帐户所有者，则让所有者执行此步骤。
 
 ### <a name="nfs-storage-requirements"></a>NFS 存储要求
+<!-- linked from configuration.md -->
 
 如果使用 NFS 存储系统（例如，本地硬件 NAS 系统），请确保它满足这些要求。 您可能需要与存储系统（或数据中心）的网络管理员或防火墙管理员合作，以验证这些设置。
 

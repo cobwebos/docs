@@ -3,12 +3,12 @@ title: Azure Migrate 复制设备
 description: 了解基于代理的 VMWare 迁移的 Azure 迁移复制应用。
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 4521fce6310b319d155a2f0c418cd934be7e2cb8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85641f514fc4367f02901eb1dd394cfa204c3ec4
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245858"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535207"
 ---
 # <a name="replication-appliance"></a>复制设备
 
@@ -28,8 +28,11 @@ ms.locfileid: "79245858"
 
 **用于** | **详细信息**
 --- |  ---
-基于 VMware VM 代理的迁移 | 从 Azure 迁移中心下载 OVA 模板，然后导入到 vCenter 服务器以创建设备 VM。
-基于物理计算机代理的迁移 | 如果您没有 VMware 基础结构，或者无法使用 OVA 模板创建 VMware VM，则从 Azure 迁移中心下载软件安装程序，然后运行它以设置设备计算机。
+**基于 VMware VM 代理的迁移** | 从 Azure 迁移中心下载 OVA 模板，然后导入到 vCenter 服务器以创建设备 VM。
+**基于物理计算机代理的迁移** | 如果您没有 VMware 基础结构，或者无法使用 OVA 模板创建 VMware VM，则从 Azure 迁移中心下载软件安装程序，然后运行它以设置设备计算机。
+
+> [!NOTE]
+> 如果要在 Azure 政府中部署，请使用安装文件部署复制设备。
 
 ## <a name="appliance-requirements"></a>设备要求
 
@@ -58,7 +61,7 @@ Windows Server 角色 | 请勿启用以下角色： <br> - Active Directory 域�
 组策略 | 请勿启用以下组策略： <br> - 阻止访问命令提示符。 <br> - 阻止访问注册表编辑工具。 <br> - 信任文件附件的逻辑。 <br> - 打开脚本执行。 <br> [了解详细信息](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
 IIS | - 无预先存在的默认网站 <br> - 端口 443 上没有预先存在的网站/应用程序侦听 <br>- 启用[匿名身份验证](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> - 启用[快速CGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)设置
 **网络设置** |
-IP 地址类型 | Static
+IP 地址类型 | 静态
 端口 | 443（控制通道协调）<br>9443（数据传输）
 NIC 类型 | VMXNET3
 
@@ -74,9 +77,9 @@ NIC 类型 | VMXNET3
 
 ## <a name="url-access"></a>URL 访问
 
-复制设备需要访问这些 URL。
+复制设备需要访问 Azure 公共云中的这些 URL。
 
-**Url** | **详细信息**
+**URL** | **详细信息**
 --- | ---
 \*.backup.windowsazure.com | 用于复制的数据传输和协调
 \*.store.core.windows.net | 用于复制的数据传输和协调
@@ -84,10 +87,26 @@ NIC 类型 | VMXNET3
 \*.hypervrecoverymanager.windowsazure.com | 用于复制管理操作和协调
 https:\//management.azure.com | 用于复制管理操作和协调
 *.services.visualstudio.com | 用于遥测数据（可选）
-time.nist.gov | 用于检查系统时间与全球时间之间的时间同步。
 time.windows.com | 用于检查系统时间与全球时间之间的时间同步。
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https：\//login.live.com <br/> https：\//graph.windows.net <br/> https:\//login.windows.net <br/> https：\//www.live.com <br/> https：\//www.microsoft.com  | OVF 设置需要访问这些 URL。 它们由 Azure Active Directory 用于访问控制和标识管理
-https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | 完成 MySQL 下载
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https：\//login.live.com <br/> https：\//graph.windows.net <br/> https:\//login.windows.net <br/> https：\//www.live.com <br/> https：\//www.microsoft.com  | 设备设置需要访问这些 URL。 它们由 Azure Active Directory 用于访问控制和标识管理
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | 完成 MySQL 下载。 在少数区域中，下载可能会重定向到 CDN URL。 如果需要，确保 CDN URL 也允许。
+
+
+## <a name="azure-government-url-access"></a>Azure 政府 URL 访问
+
+复制设备需要访问 Azure 政府中的这些 URL。
+
+**URL** | **详细信息**
+--- | ---
+\*.backup.windowsazure.us | 用于复制的数据传输和协调
+\*.store.core.windows.net | 用于复制的数据传输和协调
+\*.blob.core.windows.net | 用于访问存储所复制数据的存储帐户
+\*.hypervrecoverymanager.windowsazure.us | 用于复制管理操作和协调
+https:\//management.usgovcloudapi.net | 用于复制管理操作和协调
+*.services.visualstudio.com | 用于遥测数据（可选）
+time.nist.gov | 用于检查系统时间与全球时间之间的时间同步。
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https：\//login.live.com <br/> https：\//graph.windows.net <br/> https:\//login.windows.net <br/> https：\//www.live.com <br/> https：\//www.microsoft.com  | 带有 OVA 的设备设置需要访问这些 URL。 它们用于 Azure 活动目录的访问控制和标识管理。
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | 完成 MySQL 下载。 在少数区域中，下载可能会重定向到 CDN URL。 如果需要，确保 CDN URL 也允许。
 
 ## <a name="port-access"></a>端口访问
 
@@ -107,7 +126,7 @@ VM | 在 VM 上运行的移动服务与端口 HTTPS 443 入站上的本地复制
     - VM 与端口 HTTPS 443 入站上的复制设备进行通信，以便进行复制管理。
     - 复制设备通过端口 HTTPS 443 出站协调使用 Azure 进行复制。
     - VM 将复制数据发送到端口 HTTPS 9443 入站上的进程服务器（在复制设备上运行）。 可以修改此端口。
-    - 进程服务器接收复制数据、优化和加密数据，然后通过 443 出站端口将其发送到 Azure 存储。
+    - 进程服务器接收复制数据、优化和加密数据，然后通过端口 443 出站将其发送到 Azure 存储。
 5. 复制数据首先登陆 Azure 中的缓存存储帐户。 这些日志将处理，并将数据存储在 Azure 托管磁盘中。
 
 ![体系结构](./media/migrate-replication-appliance/architecture.png)

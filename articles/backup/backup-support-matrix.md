@@ -3,12 +3,12 @@ title: Azure 备份支持矩阵
 description: 汇总 Azure 备份服务的支持设置和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 120882b15dcf9f27c280984ff6d0df31e38ebb73
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: b87430c9ff7d806fd1fc74d5d2a8270f9db43b53
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878946"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537315"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 备份的支持矩阵
 
@@ -43,7 +43,7 @@ Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用�
 
 下面是在需要备份本地计算机的情况下的支持项目：
 
-**机** | **备份的内容** | **位置** | **功能**
+**机** | **备份的内容** | **位置** | **特征**
 --- | --- | --- | ---
 **使用 MARS 代理直接备份 Windows 计算机** | 文件、文件夹、系统状态 | 备份到恢复服务保管库。 | 一天备份三次<br/><br/> 无应用感知型备份<br/><br/> 还原文件、文件夹、卷
 **使用 MARS 代理直接备份 Linux 计算机** | 不支持备份
@@ -63,7 +63,7 @@ Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用�
 
 下面是在需要备份 Azure VM 的情况下的支持项目：
 
-**机** | **备份的内容** | **位置** | **功能**
+**机** | **备份的内容** | **位置** | **特征**
 --- | --- | --- | ---
 **使用 VM 扩展的 Azure VM 备份** | 整个 VM | 备份到保管库。 | 为 VM 启用备份时安装的扩展。<br/><br/> 一天备份一次。<br/><br/> 应用感知型备份适用于 Windows VM；文件一致性备份适用于 Linux VM。 可以使用自定义脚本配置 Linux 计算机的应用一致性。<br/><br/> 还原 VM 或磁盘。<br/><br/> 不能将 Azure VM 备份到本地位置。
 **使用 MARS 代理的 Azure VM 备份** | 文件、文件夹、系统状态 | 备份到保管库。 | 一天备份三次。<br/><br/> 如果想要备份特定文件或文件夹，而不是备份整个 VM，MARS 代理可以随 VM 扩展运行。
@@ -90,7 +90,7 @@ Azure 备份不支持根据 Azure VM 备份的夏令时时自动调整时钟。 
 
 磁盘重复数据删除支持如下：
 
-- 使用 DPM 或 MABS 备份运行 Windows 的 Hyper-V VM 时，支持在本地进行磁盘重复数据删除。 Windows Server 会在以备份存储形式附加到 VM 的虚拟硬盘 (VHD) 上执行主机级别的重复数据删除。
+- 当您使用 DPM 或 MABS 备份运行 Windows 的超 V VM 时，磁盘重复数据消除在本地支持。 Windows Server 会在以备份存储形式附加到 VM 的虚拟硬盘 (VHD) 上执行主机级别的重复数据删除。
 - 在 Azure 中，任何备份组件都不支持重复数据删除。 如果 DPM 和 MABS 部署在 Azure 中，则附加到 VM 的存储磁盘无法进行重复数据删除。
 
 ## <a name="security-and-encryption-support"></a>安全与加密支持
@@ -152,9 +152,9 @@ Azure 备份添加了跨区域还原功能，以增强数据可用性和恢复�
 | 备份管理类型 | 支持                                                    | 支持的区域 |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | 是的。   支持用于磁盘小于 4 TB 的加密 VM 和 VM | 所有 Azure 公共区域。  |
-| MARS 代理/内部 | 否                                                           | 不可用               |
-| SQL /SAP HANA          | 否                                                           | 不可用               |
-| Afs                    | 否                                                           | 不可用               |
+| MARS 代理/内部 | 否                                                           | 空值               |
+| SQL /SAP HANA          | 否                                                           | 空值               |
+| Afs                    | 否                                                           | 空值               |
 
 ## <a name="next-steps"></a>后续步骤
 

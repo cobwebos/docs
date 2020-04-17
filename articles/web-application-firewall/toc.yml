@@ -22,6 +22,7 @@
   expanded: true
   items:
     - name: 应用程序网关
+      expanded: true
       items:
         - name: 部署 WAF v2 - ARM 模板
           displayName: Resource Manager

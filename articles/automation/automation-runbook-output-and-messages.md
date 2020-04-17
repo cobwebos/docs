@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: 457b2d2211ea1ba5fa36cec4b7e9a214f5bcad77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92b6378b00e12f618d07798b5ce789cbd9971544
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367085"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535530"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Azure 自动化中的 Runbook 输出和消息
 
@@ -18,7 +18,7 @@ ms.locfileid: "79367085"
 
 下表简要描述了每个流及其在 Azure 门户中为已发布的 Runbook 和[Runbook 测试](automation-testing-runbook.md)期间的行为。 输出流是用于在 Runbook 之间通信的主流。 其他流被归类为消息流，旨在向用户传达信息。 
 
-| 流 | 描述 | 已发布 | 测试 |
+| 流 | 说明 | 已发布 | 测试 |
 |:--- |:--- |:--- |:--- |
 | 错误 |面向用户的错误消息。 与异常不同，Runbook 在默认情况下出现错误消息后继续。 |写入作业历史记录 |显示在测试输出窗格中 |
 | 调试 |面向交互式用户的消息。 不应在 Runbook 中使用。 |未写入作业历史记录 |未显示在测试输出窗格中 |
@@ -187,7 +187,7 @@ Write-Verbose –Message "This is a verbose message."
 
 下一个表列出了在 Runbook 中有效的首选项变量值的行为。
 
-| “值” | 行为 |
+| 值 | 行为 |
 |:--- |:--- |
 | 继续 |记录消息并继续执行 Runbook。 |
 | SilentlyContinue |继续执行 Runbook 但不记录消息。 该值会导致忽略消息。 |
@@ -240,7 +240,7 @@ Get-AzAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
 **要启用活动级跟踪：**
 
 1. 在 Azure 门户中，打开自动化帐户。
-2. 在 **"流程自动化**"部分中选择**Runbook**以打开 Runbook 列表。
+2. 在 **"流程自动化**"下选择**Runbook**以打开 Runbook 列表。
 3. 在 Runbook 页上，从 Runbook 列表中选择图形运行簿。
 4. 在“设置”**** 下，单击“日志记录和跟踪”****。
 5. 在"日志记录和跟踪"页上，在 **"记录详细记录**"下，单击"**打开**"以启用详细日志记录。
@@ -253,7 +253,7 @@ Get-AzAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
 Azure 自动化可以将 Runbook 作业状态和作业流发送到日志分析工作区。 Azure 监视器支持允许您执行的日志：
 
 * 获取有关自动化作业的见解。
-* 根据 runbook 作业状态触发电子邮件或警报，例如，失败或挂起。
+* 根据 runbook 作业状态触发电子邮件或警报，例如"失败"或"挂起"。
 * 跨作业流编写高级查询。
 * 跨自动化帐户关联作业。
 * 可视化作业历史记录。

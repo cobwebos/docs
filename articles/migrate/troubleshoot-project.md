@@ -6,12 +6,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/01/2020
-ms.openlocfilehash: 3b8c2f6ec33965317d2aaa23a36b6becff11a54a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1fc4bce988b13a9ff76fd961d524ce945876054
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75725723"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535394"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>排查 Azure Migrate 项目问题
 
@@ -32,7 +32,7 @@ ms.locfileid: "75725723"
 
 ## <a name="cant-find-a-geography"></a>找不到地理
 
-可以在[受支持的地理位置](migrate-support-matrix.md#supported-geographies)中创建 Azure 迁移项目。 请注意，项目地理区用于存储已发现的计算机元数据。 您也可以评估或迁移其他位置的计算机。
+您可以在[公共和政府](migrate-support-matrix.md#supported-geographies-public-cloud)[云](migrate-support-matrix.md#supported-geographies-azure-government)受支持的地理位置中创建 Azure 迁移项目。
 
 ## <a name="what-are-vm-limits"></a>什么是 VM 限制？
 

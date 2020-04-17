@@ -3,12 +3,12 @@ title: 使用 Azure Application Insights 监视实时 ASP.NET Web 应用 | Micro
 description: 在不重新部署网站的情况下监视网站性能。 使用托管在本地或 VM 中的 ASP.NET Web 应用。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 63d632df61548d15a1e0a606cf2e198207faf341
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba17ee275a744b88f2c76e7e3f99a1ac9cc8e758
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670043"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536822"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>在运行时使用 Application Insights 无代码附加检测 Web 应用
 
@@ -289,7 +289,7 @@ Application Insights SDK 版本 2.4 是[支持 .NET 4.0 的最新版本](https:/
 
 * HTTP 请求
 * 对依赖项的调用
-* 异常
+* 例外
 * 性能计数器
 
 对于已在编译时进行检测的应用程序：
@@ -314,7 +314,7 @@ Application Insights SDK 版本 2.4 是[支持 .NET 4.0 的最新版本](https:/
 
 查看遥测：
 
-* [浏览指标](../../azure-monitor/app/metrics-explorer.md)，以便监视性能和使用情况
+* [浏览指标](../../azure-monitor/platform/metrics-charts.md)，以便监视性能和使用情况
 * [搜索事件和日志][diagnostic]，以便诊断问题
 * [分析](../../azure-monitor/app/analytics.md)，以便进行更高级的查询
 

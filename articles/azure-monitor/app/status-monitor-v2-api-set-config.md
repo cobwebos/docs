@@ -5,18 +5,18 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 1226b3e10adf786ed3335844a5d3f4e530911705
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c47b9b5f297fa62c474e6c29737d6d11b887130d
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671233"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537468"
 ---
 # <a name="application-insights-agent-api-set-applicationinsightsmonitoringconfig"></a>应用程序见解代理 API：设置应用程序见解监控配置
 
 本文档介绍属于 [Az.ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)的 cmdlet。
 
-## <a name="description"></a>描述
+## <a name="description"></a>说明
 
 在不进行完全重新安装的情况下设置配置文件。
 重启 IIS 以使更改生效。
@@ -35,7 +35,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 ```
 
 ### <a name="example-with-an-instrumentation-key-map"></a>使用检测密钥映射的示例
-在此示例中：
+在本示例中：
 - `MachineFilter` 使用 `'.*'` 通配符匹配当前计算机。
 - `AppFilter='WebAppExclude'` 提供 `null` 检测密钥。 不会检测指定的应用。
 - `AppFilter='WebAppOne'` 为指定的应用分配唯一的检测密钥。
@@ -113,7 +113,7 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applica
 ## <a name="next-steps"></a>后续步骤
 
   查看遥测：
- - [浏览指标](../../azure-monitor/app/metrics-explorer.md)以监视性能和使用情况。
+ - [浏览指标](../../azure-monitor/platform/metrics-charts.md)以监视性能和使用情况。
 - [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)以诊断问题。
 - 对更高级的查询[使用分析](../../azure-monitor/app/analytics.md)。
 - [创建仪表板](../../azure-monitor/app/overview-dashboard.md)。

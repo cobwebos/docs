@@ -12,12 +12,12 @@ ms.date: 04/13/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 143a2ec0bfbcc6997eb6d8b2599b848a509ee773
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: bdbda8bed38819ca2b4d2fb1ef3d9bf591269890
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309496"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535904"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft 标识平台的应用程序类型
 
@@ -80,11 +80,11 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 
 若要查看此方案的实际运行情况，请尝试运行 [Microsoft 标识平台入门](v2-overview.md#getting-started)部分提供的 Web 应用登录代码示例之一。
 
-除了简单登录，Web 服务器应用可能还需要访问其他 Web 服务，例如 REST API。 在这种情况下，Web 服务器应用可以使用 [OAuth 2.0 授权代码流](active-directory-v2-protocols.md)参与合并的 OpenID Connect 和 OAuth 2.0 流。 有关此方案的详细信息，请阅读 [Web 应用和 Web API 入门](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)。
+除了简单登录，Web 服务器应用可能还需要访问其他 Web 服务，例如 REST API。 在这种情况下，Web 服务器应用可以使用 [OAuth 2.0 授权代码流](active-directory-v2-protocols.md)参与合并的 OpenID Connect 和 OAuth 2.0 流。 有关此方案的详细信息，请阅读有关[开始使用 Web 应用和 Web API 的信息](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)。
 
 ## <a name="web-apis"></a>Web API
 
-可以使用 Microsoft 标识平台终结点来保护 Web 服务，例如应用的 RESTful Web API。 Web API 可以在多种平台和语言中实现。 它们还可以在 Azure Functions 中使用 HTTP 触发器实现。 Web API 使用 OAuth 2.0 访问令牌（而不是 ID 令牌和会话 Cookie）来保护数据并对传入的请求进行身份验证。 Web API 调用方会在 HTTP 请求的授权标头中附加一个访问令牌，如下所示：
+您可以使用 Microsoft 标识平台终结点来保护 Web 服务，例如应用的 RESTful Web API。 Web API 可以在多种平台和语言中实现。 它们还可以在 Azure Functions 中使用 HTTP 触发器实现。 Web API 使用 OAuth 2.0 访问令牌来保护其数据并验证传入请求，而不是 ID 令牌和会话 Cookie。 Web API 的调用方在 HTTP 请求的授权标头中追加访问令牌，如下所示：
 
 ```HTTP
 GET /api/items HTTP/1.1
@@ -94,29 +94,29 @@ Accept: application/json
 ...
 ```
 
-Web API 使用此访问令牌来验证 API 调用方的标识，并从访问令牌中编码的声明里提取调用方的相关信息。 [访问令牌](access-tokens.md)引用和[id_token](id-tokens.md)引用中提供了 Microsoft 标识平台终结点中使用的不同类型的令牌的详细信息。
+Web API 使用访问令牌来验证 API 调用方的标识，并从访问令牌中编码的声明中提取有关调用方的信息。 [访问令牌](access-tokens.md)引用和[id_token](id-tokens.md)引用中提供了 Microsoft 标识平台终结点中使用的不同类型的令牌的详细信息。
 
-Web API 可让用户通过公开权限（也称为[范围](v2-permissions-and-consent.md)）来选择添加/排除特定的功能或数据。 为了使调用应用能够获取某个范围的权限，用户必须在执行流的过程中同意该范围。 Microsoft 标识平台终结点向用户请求权限，并将这些权限记录在 Web API 收到的所有访问令牌中。 Web API 验证每次调用中接收的访问令牌，并执行授权检查。
+Web API 可以允许用户通过公开权限（也称为[作用域](v2-permissions-and-consent.md)）来选择加入或选择退出特定功能或数据。 为了使调用应用能够获取某个范围的权限，用户必须在执行流的过程中同意该范围。 Microsoft 标识平台终结点请求用户权限，然后在 Web API 收到的所有访问令牌中记录权限。 Web API 验证它在每个调用上接收的访问令牌，并执行授权检查。
 
-Web API 可以从各种应用接收访问令牌，其中包括 Web 服务器应用、桌面和移动应用、单页应用、服务器端守护程序，甚至其他 Web API。 Web API 的高级流如下所示：
+Web API 可以从所有类型的应用（包括 Web 服务器应用、桌面和移动应用、单页应用、服务器端守护进程，甚至其他 Web API）接收访问令牌。 Web API 的高级流如下所示：
 
 ![显示 Web API 身份验证流](./media/v2-app-types/convergence-scenarios-webapi.svg)
 
-若要了解如何使用 OAuth2 访问令牌保护 Web API，请查看 [Microsoft 标识平台入门](v2-overview.md#getting-started)部分提供的 Web API 代码示例。
+要了解如何使用 OAuth2 访问令牌来保护 Web API，请查看[Microsoft 标识平台入门](v2-overview.md#getting-started)部分中的 Web API 代码示例。
 
 在许多情况下，Web API 还需要对由 Microsoft 标识平台保护的其他下游 Web API 发出出站请求。 为执行此操作，Web API 可以利用**代理**流，它允许 Web API 将传入的访问令牌替换为将在出站请求中使用的另一个访问令牌。 有关详细信息，请参阅 [Microsoft 标识平台和 OAuth 2.0 代理流](v2-oauth2-on-behalf-of-flow.md)。
 
 ## <a name="mobile-and-native-apps"></a>移动和本机应用
 
-安装在设备中的应用（如移动和桌面应用）通常需要访问用于存储数据和代表用户执行各种功能的后端服务或 Web API。 这些应用可以使用 [OAuth 2.0 授权代码流](v2-oauth2-auth-code-flow.md)将登录凭据和授权添加到后端服务。
+设备安装的应用（如移动和桌面应用）通常需要访问后端服务或 Web API，这些服务或 Web API 代表用户存储数据和执行功能。 这些应用可以使用 [OAuth 2.0 授权代码流](v2-oauth2-auth-code-flow.md)将登录凭据和授权添加到后端服务。
 
-在此流中，应用在用户登录时从 Microsoft 标识平台终结点接收授权代码。 授权代码表示应用有权代表登录用户调用后端服务。 应用可以通过在后台交换授权代码获得 OAuth 2.0 访问令牌和刷新令牌。 应用可以使用访问令牌在 HTTP 请求中向 Web API 进行身份验证，并可以在旧的访问令牌过期时，用刷新令牌获取新的访问令牌。
+在此流中，应用在用户登录时从 Microsoft 标识平台终结点接收授权代码。 授权代码表示应用有权代表登录用户调用后端服务。 应用可以通过在后台交换授权代码获得 OAuth 2.0 访问令牌和刷新令牌。 应用可以使用访问令牌在 HTTP 请求中对 Web API 进行身份验证，并在较旧的访问令牌过期时使用刷新令牌获取新的访问令牌。
 
 ![显示本机应用身份验证流](./media/v2-app-types/convergence-scenarios-native.svg)
 
 ## <a name="daemons-and-server-side-apps"></a>守护程序和服务器端应用
 
-包含长时运行进程或无需用户交互便可操作的应用还需要通过其他方法访问受保护的资源，例如 Web API。 这些应用可以通过 OAuth 2.0 客户端凭据流使用应用的标识（而不是用户的委派标识）来进行身份验证和获取令牌。 可以使用客户端机密或证书证明应用的身份。 有关详细信息，请参阅[.NET Core 守护进程控制台应用程序使用 Microsoft 标识平台](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)。
+具有长时间运行的进程或无需与用户交互即可运行的应用也需要访问安全资源（如 Web API）的方法。 这些应用可以通过 OAuth 2.0 客户端凭据流使用应用的标识（而不是用户的委派标识）来进行身份验证和获取令牌。 可以使用客户端机密或证书证明应用的身份。 有关详细信息，请参阅[.NET Core 守护进程控制台应用程序使用 Microsoft 标识平台](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)。
 
 在此流中，应用通过直接与 `/token` 终结点交互来获取访问权限：
 

@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev
-ms.openlocfilehash: 2929b94a2cb624b96649292714fe93dea09a2085
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 7ba845e79074313f0ccf2c066ba016bd72d46efe
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886494"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534561"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>适用于 Java 的 ADAL 到 MSAL 迁移指南
 
@@ -82,7 +82,7 @@ MSAL for Java 添加了[令牌缓存](msal-acquire-cache-tokens.md)，在可能�
 
 v1.0 终结点（由 ADAL 使用）只发出 v1.0 令牌。
 
-v2.0 终结点（由 MSAL 使用）可以发出 v1.0 和 v2.0 令牌。 开发人员可以使用 Web API 应用程序清单的属性来选择接受的令牌版本。 请参阅`accessTokenAcceptedVersion`[应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)参考文档。
+v2.0 终结点（由 MSAL 使用）可以发出 v1.0 和 v2.0 令牌。 Web API 应用程序清单的属性使开发人员能够选择接受哪个版本的令牌。 请参阅`accessTokenAcceptedVersion`[应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)参考文档。
 
 有关 v1.0 和 v2.0 令牌的详细信息，请参阅[Azure 活动目录访问令牌](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)。
 
@@ -109,7 +109,8 @@ PublicClientApplication app = PublicClientApplication.builder(CLIENT_ID) // Clie
 IAuthenticationResult result = app.acquireToken(parameters);
 ```
 
-`IAuthenticationResult` 返回访问令牌和 ID 令牌，新的刷新令牌将存储在缓存中。 应用程序现在还包含一个 IAccount：
+`IAuthenticationResult` 返回访问令牌和 ID 令牌，新的刷新令牌将存储在缓存中。
+应用程序现在还包含一个 IAccount：
 
 ```java
 Set<IAccount> accounts =  app.getAccounts().join();
@@ -118,6 +119,6 @@ Set<IAccount> accounts =  app.getAccounts().join();
 若要使用现已进入缓存中的令牌，请调用：
 
 ```java
-SilentParameters parameters = SilentParameters.builder(scope, accounts.iterator().next()).build(); 
+SilentParameters parameters = SilentParameters.builder(scope, accounts.iterator().next()).build();
 IAuthenticationResult result = app.acquireToken(parameters);
 ```

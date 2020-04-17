@@ -6,14 +6,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 01/30/2020
+ms.date: 04/16/2020
 ms.author: victorh
-ms.openlocfilehash: 809274aba35e9607aeacf7c6483ec3d10f899667
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: df21a2c40dd532ac1ff321638099ceee8a2b3e53
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312370"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535581"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>使用内部负载均衡器 (ILB) 终结点配置应用程序网关
 
@@ -95,8 +95,8 @@ Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创�
    - 对于“资源组”，请选择“myResourceGroupAG”。******
    - *myVM* - 作为**虚拟机名称**。
    - 对于“映像”，请选择“Windows Server 2019 Datacenter”。********
-   - *azureadmin* - 作为**用户名**。
-   - *Azure123456!* 密码 **。**
+   - 有效的**用户名**。
+   - 有效的**密码**。
 5. 接受剩余的默认值，然后选择 **"下一步：磁盘**"。
 6. 接受默认值并选择 **"下一步：网络**"。
 7. 请确保选择 **myVNet** 作为虚拟网络，子网是 **myBackendSubnet**。

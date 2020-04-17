@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/03/2020
+ms.date: 04/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a6ab13dea1a1db96cbb2f2ac70b9779eca60591
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 5310c999cc44f0cf35f129751da7472031e6c57a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885219"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537077"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>教程：Azure 活动目录与亚马逊 Web 服务 （AWS） 集成（旧教程）
 
@@ -37,7 +37,7 @@ ms.locfileid: "80885219"
 ![结果列表中的 Amazon Web Services (AWS)](./media/aws-multi-accounts-tutorial/amazonwebservice.png)
 
 > [!NOTE]
-> 请注意，不建议将 AWS 应用连接到所有 AWS 账户。 相反，建议使用[此](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial)方法将 AWS 帐户的多个实例配置为 Azure AD 中 AWS 应用的多个实例。 仅当 AWS 账户和角色数量非常少时，才应使用[此方法](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial)。 随着 AWS 账户和这些账户内角色的增加，[此](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial)模型无法扩展。 此外[，此方法](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial)不使用使用 Azure AD 用户预配的 AWS 角色导入功能，因此您必须手动添加/更新/删除角色。 有关[此方法](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial)的其他限制，请参阅以下详细信息。
+> 请注意，不建议将 AWS 应用连接到所有 AWS 账户。 相反，建议使用[此](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial)方法将 AWS 帐户的多个实例配置为 Azure AD 中 AWS 应用的多个实例。 仅当 AWS 账户和角色数量非常少时，才应使用此方法，此模型不会随着这些账户中的 AWS 账户和角色的增长而扩展。 此外，此方法不使用使用 Azure AD 用户预配的 AWS 角色导入功能，因此您必须手动添加/更新/删除角色。 有关此方法的其他限制，请参阅以下详细信息。
 
 请注意，不建议使用此方法的原因如下****：
 

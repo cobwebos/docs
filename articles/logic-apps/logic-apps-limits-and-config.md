@@ -3,15 +3,15 @@ title: 限制和配置
 description: Azure 逻辑应用的服务限制（如持续时间、吞吐量和容量）以及配置值（如允许的 IP 地址）
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 03/12/2020
-ms.openlocfilehash: 4359c5581d14f4a918a49cf2b91ac58561ea93d3
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.date: 04/17/2020
+ms.openlocfilehash: 40950be2e5caeb17d20086720a7b65c15147c2f5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257447"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535105"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -23,7 +23,7 @@ ms.locfileid: "81257447"
 
 下面是针对单个逻辑应用定义的限制：
 
-| 名称 | 限制 | 说明 |
+| “属性” | 限制 | 说明 |
 | ---- | ----- | ----- |
 | 每个工作流的操作数 | 500 | 要对此限制进行扩展，可根据需要添加嵌套工作流。 |
 | 操作的允许嵌套深度 | 8 | 要对此限制进行扩展，可根据需要添加嵌套工作流。 |
@@ -45,7 +45,7 @@ ms.locfileid: "81257447"
 
 下面是针对单个逻辑应用运行的限制：
 
-| 名称 | 多租户限制 | 集成服务环境限制 | 说明 |
+| “属性” | 多租户限制 | 集成服务环境限制 | 说明 |
 |------|--------------------|---------------------------------------|-------|
 | 运行持续时间 | 90 天 | 366 天 | 运行持续时间的计算时间是使用运行的开始时间和工作流设置在*开始时间*指定的限制，[**在天中运行历史记录保留**](#change-duration)。 <p><p>要更改默认限制（90 天），请参阅[更改运行持续时间](#change-duration)。 |
 | 在存储中运行保留 | 90 天 | 366 天 | 运行保留是通过使用运行的开始时间和工作流设置在*当前时间*指定的限制（[**以天运行历史记录保留）**](#change-retention)计算的。 无论运行完成还是超时，保留计算始终使用运行的开始时间。 当运行的持续时间超过*当前*保留限制时，将从运行历史记录中删除运行。 <p><p>如果更改此设置，则当前限制始终用于计算保留率，无论以前的限制。 例如，如果将保留限制从 90 天减少到 30 天，则从运行历史记录中删除 60 天旧的运行。 如果将保留期从 30 天增加到 60 天，则运行时为 20 天，在运行历史记录中会再保留 40 天。 <p><p>要更改默认限制（即 90 天），请参阅[更改存储中的运行保留。](#change-retention) |
@@ -82,7 +82,7 @@ ms.locfileid: "81257447"
 
 下面是针对单个逻辑应用运行的限制：
 
-| 名称 | 限制 | 说明 |
+| “属性” | 限制 | 说明 |
 | ---- | ----- | ----- |
 | 触发器并发 | - 关闭并发控制时无限制 <p><p>- 25 是打开并发控件时的默认限制，在启用并发后无法撤消。 可以将默认值更改为介于 1 与 50（含）之间的值。 | 此限制描述可以在同一时间或并行运行的逻辑应用实例的最大数。 <p><p>**注意**：当并发打开时，对于[辩论数组](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)，SplitOn 限制将减少到 100 个项。 <p><p>若要将默认限制更改为介于 1 到 50 之间（含）的值，请参阅[更改触发器并发限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)或[按顺序触发实例](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)。 |
 | 最大等待运行数 | - 如果没有并发，等待运行的最小数为 1，而最大数量为 50。 <p><p>- 使用并发时，等待运行的最小数为 10 加上并发运行数（触发并发）。 可以将最大数更改为多达 100 个（含）。 | 此限制描述当逻辑应用已在运行最大数量并发实例时，可等待运行的最大逻辑应用实例数。 <p><p>若要更改此默认限制，请参阅[更改等待的运行限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)。 |
@@ -100,7 +100,7 @@ ms.locfileid: "81257447"
 
 ### <a name="multi-tenant-logic-apps-service"></a>多租户逻辑应用服务
 
-| 名称 | 限制 | 说明 |
+| “属性” | 限制 | 说明 |
 | ---- | ----- | ----- |
 | 操作：每 5 分钟执行的次数 | 默认限制为 100,000，最大限制为 300,000。 | 若要更改此默认限制，请参阅处于预览阶段的[在“高吞吐量”模式下运行逻辑应用](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode)。 或者，你可根据需要在多个逻辑应用之间分配工作负荷。 |
 | 操作：并发传出调用数 | ~2,500 | 你可减少并发请求数，或根据需要减少持续时间。 |
@@ -112,9 +112,9 @@ ms.locfileid: "81257447"
 
 ### <a name="integration-service-environment-ise"></a>集成服务环境 （ISE）
 
-以下是高级 SKU 的吞吐量限制：
+以下是[高级 ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)的吞吐量限制：
 
-| 名称 | 限制 | 说明 |
+| “属性” | 限制 | 说明 |
 |------|-------|-------|
 | 基本单位执行限制 | 当基础设施容量达到 80% 时，系统受限 | 每分钟提供 4，000 次操作执行，即每月 1.6 亿次操作执行 | |
 | 缩放单位执行限制 | 当基础设施容量达到 80% 时，系统受限 | 每个规模单元每分钟可以提供 2，000 次额外的操作执行，即每月多执行 8000 万次操作 | |
@@ -124,8 +124,7 @@ ms.locfileid: "81257447"
 若要在正常处理中超过这些限制，或要运行可能超过这些限制的负载测试，请[与逻辑应用团队联系](mailto://logicappsemail@microsoft.com)，获取满足要求的帮助。
 
 > [!NOTE]
-> [开发人员 SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)没有已发布的限制，因为此 SKU 没有任何服务级别协议 （SLA） 或扩展功能。
-> 仅使用此 SKU 进行试验、开发和测试，而不是生产或性能测试。
+> [开发人员 ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)没有已发布的限制，没有扩展功能，也没有服务级别协议 （SLA）。 仅使用此 SKU 进行试验、开发和测试，而不是生产或性能测试。
 
 <a name="gateway-limits"></a>
 
@@ -143,7 +142,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 某些连接器操作会进行异步调用或侦听 Webhook 请求，因此，这些操作的超时时间可能会长于以下限制。 有关详细信息，请参阅特定连接器的技术详细信息以及[工作流触发器和操作](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)。
 
-| 名称 | 多租户限制 | 集成服务环境限制 | 说明 |
+| “属性” | 多租户限制 | 集成服务环境限制 | 说明 |
 |------|--------------------|---------------------------------------|-------|
 | 出站请求 | 120 秒 <br>（2 分钟） | 240 秒 <br>（4 分钟） | 出站请求的示例包括 HTTP 触发器进行的调用。 <p><p>**提示**： 对于较长的运行操作，请使用[异步轮询模式](../logic-apps/logic-apps-create-api-app.md#async-pattern)或[直到循环](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)。 |
 | 入站请求 | 120 秒 <br>（2 分钟） | 240 秒 <br>（4 分钟） | 入站请求的示例包括请求触发器和 webhook 触发器收到的请求。 <p><p>**注意**：对于原始调用方获取响应，响应中的所有步骤都必须在限制内完成，除非您将另一个逻辑应用称为嵌套工作流。 有关详细信息，请参阅[调用、触发器或嵌套逻辑应用](../logic-apps/logic-apps-http-endpoint.md)。 |
@@ -153,7 +152,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 #### <a name="message-size"></a>消息大小
 
-| 名称 | 多租户限制 | 集成服务环境限制 | 说明 |
+| “属性” | 多租户限制 | 集成服务环境限制 | 说明 |
 |------|--------------------|---------------------------------------|-------|
 | 消息大小 | 100 MB | 200 MB | ISE 标记的连接器使用 ISE 限制，而不是其非 ISE 连接器限制。 <p><p>若要解决此限制问题，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 但是，某些连接器和 API 可能不支持分块，甚至不支持默认限制。 |
 | 使用分块的消息大小 | 1 GB | 5 GB | 此限制适用于本机支持分块或允许您在其运行时配置中启用分块的操作。 <p><p>对于集成服务环境，逻辑应用引擎支持此限制，但连接器具有其自己的分块限制，最多达引擎限制，例如，请参阅[Azure Blob 存储连接器的 API 引用](https://docs.microsoft.com/connectors/azureblob/)。 有关分块的详细信息，请参阅[处理具有分块的大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 |
@@ -161,7 +160,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 #### <a name="character-limits"></a>字符限制
 
-| 名称 | 说明 |
+| “属性” | 说明 |
 |------|-------|
 | 表达式计算限制 | 131,072 个字符 | `@concat()`、`@base64()`、`@string()` 表达式的长度不能超过此限制。 |
 | 请求 URL 字符限制 | 16，384 个字符 |
@@ -171,7 +170,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 #### <a name="retry-policy"></a>重试策略
 
-| 名称 | 限制 | 说明 |
+| “属性” | 限制 | 说明 |
 | ---- | ----- | ----- |
 | 重试次数 | 90 | 默认值为 4。 若要更改默认值，请使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)。 |
 | 重试最大延迟 | 1 天 | 若要更改默认值，请使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)。 |
@@ -184,7 +183,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 下面介绍对可通过 Web API 创建的自定义连接器的限制。
 
-| 名称 | 多租户限制 | 集成服务环境限制 | 说明 |
+| “属性” | 多租户限制 | 集成服务环境限制 | 说明 |
 |------|--------------------|---------------------------------------|-------|
 | 自定义连接器数 | 每个 Azure 订阅 1,000 | 每个 Azure 订阅 1,000 ||
 | 自定义连接器的每分钟请求数 | 每分钟每个连接 500 个请求 | 每个*自定义连接器*每分钟 2，000 个请求 ||
@@ -194,7 +193,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 ## <a name="managed-identities"></a>托管标识
 
-| 名称 | 限制 |
+| “属性” | 限制 |
 |------|-------|
 | 每个逻辑应用的托管标识 | 系统分配的标识或 1 个用户分配的标识 |
 | 每个区域在 Azure 订阅中具有托管标识的逻辑应用数 | 250 |
@@ -214,7 +213,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
   | ISE SKU | 集成帐户限制 |
   |---------|----------------------------|
-  | **溢价** | 5 个总计 - 仅限[标准](../logic-apps/logic-apps-pricing.md#integration-accounts)帐户，包括一个免费标准帐户。 不允许使用免费或基本帐户。 |
+  | **Premium** | 5 个总计 - 仅限[标准](../logic-apps/logic-apps-pricing.md#integration-accounts)帐户，包括一个免费标准帐户。 不允许使用免费或基本帐户。 |
   | **开发人员** | 5 个总计 -[免费](../logic-apps/logic-apps-pricing.md#integration-accounts)（仅限于 1 个帐户）和[标准](../logic-apps/logic-apps-pricing.md#integration-accounts)帐户，或所有标准账户。 不允许使用基本帐户。 使用[开发人员 SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)进行试验、开发和测试，但不适用于生产或性能测试。 |
   |||
 
@@ -230,7 +229,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 > [!NOTE]
 > 仅将免费层用于探索应用场景，而非生产应用场景。 此层限制吞吐量和使用情况，并且不具有服务级别协议 (SLA)。
 
-| 项目 | 免费 | Basic | Standard |
+| 项目 | 免费 | 基本 | Standard |
 |----------|------|-------|----------|
 | EDI 贸易协议 | 10 | 1 | 1,000 |
 | EDI 参与方 | 25 | 2 | 1,000 |
@@ -256,7 +255,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 ### <a name="throughput-limits"></a>吞吐量限制
 
-| 运行时终结点 | 免费 | Basic | Standard | 说明 |
+| 运行时终结点 | 免费 | 基本 | Standard | 说明 |
 |------------------|------|-------|----------|-------|
 | 每 5 分钟读取调用 | 3,000 | 30,000 | 60,000 | 你可根据需要在多个帐户之间分配工作负荷。 |
 | 每 5 分钟调用调用 | 3,000 | 30,000 | 45,000 | 你可根据需要在多个帐户之间分配工作负荷。 |
@@ -270,7 +269,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 以下消息大小限制适用于 B2B 协议：
 
-| 名称 | 多租户限制 | 集成服务环境限制 | 说明 |
+| “属性” | 多租户限制 | 集成服务环境限制 | 说明 |
 |------|--------------------|---------------------------------------|-------|
 | AS2 | v2 - 100 MB<br>v1 - 50 MB | v2 - 200 MB <br>v1 - 50 MB | 适用于解码和编码 |
 | X12 | 50 MB | 50 MB | 适用于解码和编码 |
@@ -281,12 +280,9 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 ## <a name="disabling-or-deleting-logic-apps"></a>禁用或删除逻辑应用
 
-禁用逻辑应用后，任何新运行都不会实例化。
-所有正在进行的和挂起的运行将继续进行，直到完成，这可能要花费一些时间才能完成。
+禁用逻辑应用后，任何新运行都不会实例化。 所有正在进行的和挂起的运行将继续进行，直到完成，这可能要花费一些时间才能完成。
 
-删除逻辑应用后，任何新运行都不会实例化。
-所有正在进行和挂起的运行都将取消。
-如果有成千上万个运行，取消操作可能需要很长时间才能完成。
+删除逻辑应用后，任何新运行都不会实例化。 所有正在进行和挂起的运行都将取消。 如果有成千上万个运行，取消操作可能需要很长时间才能完成。
 
 <a name="configuration"></a>
 
@@ -300,17 +296,17 @@ Azure 逻辑应用用于传入和传出调用的 IP 地址取决于逻辑应用�
 > * **逻辑应用管理**：表示逻辑应用服务的入站 IP 地址前缀。
 > * **逻辑应用**：表示逻辑应用服务的出站 IP 地址前缀。
 
+* 对于[Azure 中国 21Vianet，](https://docs.microsoft.com/azure/china/)[自定义连接器](../logic-apps/custom-connector-overview.md)和[托管连接器](../connectors/apis-list.md#managed-api-connectors)（例如 Azure 存储、SQL Server、Office 365 Outlook 等）不能使用固定或保留的 IP 地址。
+
 * 若要支持逻辑应用通过 [HTTP](../connectors/connectors-native-http.md)、[HTTP + Swagger](../connectors/connectors-native-http-swagger.md) 和其他 HTTP 请求直接发出的调用，请根据这些逻辑应用所在的区域，使用逻辑应用服务所用的所有[入站和](#inbound) ** [出站](#outbound) IP 地址对防火墙进行设置。 这些地址显示在本部分的“入站”**** 和“出站”**** 标题下，并按区域进行排序。
 
-* 若要支持 [Microsoft 托管的连接器](../connectors/apis-list.md)发出的调用，请根据逻辑应用所在的区域，使用这些连接器所用的所有**[出站](#outbound) IP 地址对防火墙进行设置。 这些地址显示在本部分的“出站”**** 标题下，并按区域进行排序。
+* 要支持[托管连接器](../connectors/apis-list.md#managed-api-connectors)发出的调用，请根据逻辑应用所在的区域，使用这些连接器使用*的所有*[出站](#outbound)IP 地址设置防火墙。 这些地址显示在本部分的“出站”**** 标题下，并按区域进行排序。
 
 * 若要为在集成服务环境 (ISE) 中运行的逻辑应用启用通信，请确保[打开这些端口](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise)。
 
 * 如果逻辑应用无法访问使用[防火墙和防火墙规则](../storage/common/storage-network-security.md)的 Azure 存储帐户，则可通过[各种选项来启用访问权限](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)。
 
   例如，逻辑应用不能直接访问使用防火墙规则的存储帐户，因此存在于同一区域中。 但是，如果允许[区域中托管连接器的出站 IP 地址](../logic-apps/logic-apps-limits-and-config.md#outbound)，则逻辑应用可以访问其他区域中的存储帐户，除非你使用 Azure 表存储或 Azure 队列存储连接器。 若要访问表存储或队列存储，则可改用 HTTP 触发器和操作。 有关其他选项，请参阅[访问防火墙后的存储帐户](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)。
-
-* 对于自定义连接器[、Azure 政府](../azure-government/documentation-government-overview.md)和[Azure 中国 21Vianet，](https://docs.microsoft.com/azure/china/)固定或保留的 IP 地址不可用。
 
 <a name="inbound"></a>
 

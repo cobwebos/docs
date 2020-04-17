@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2cdf3ff45a400d4b8d0b2605bf7ddc364aff1fe6
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 997dd98d35b74effe5d195f9a781fa0935286ee9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80882380"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537213"
 ---
 # <a name="protected-web-api-app-registration"></a>受保护的 Web API：应用注册
 
@@ -82,9 +82,9 @@ Web API 不需注册重定向 URI，因为没有任何用户以交互方式登�
     - 选择“范围名称”并输入 **access_as_user**。****
     - 选择“谁能许可”，并确保选择“管理员和用户”。********
     - 选择“管理员许可显示名称”，并输入“以用户身份访问 TodoListService”。********
-    - 选择“管理员许可说明”，并输入“以用户身份访问 TodoListService Web API”。********
+    - 选择**管理员同意说明**，并输入**访问 TodoList 服务 Web API 作为用户**。
     - 选择“用户许可显示名称”，并输入“以用户身份访问 TodoListService”。********
-    - 选择“用户许可说明”，并输入“以用户身份访问 TodoListService Web API”。********
+    - 选择**用户同意说明**，然后**输入"访问 TodoList 服务 Web API"作为用户**。
     - 将“状态”值保留设置为“已启用”。********
  1. 选择 **"添加范围**"。
 

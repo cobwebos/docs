@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 317ca55adb9f680dc93343a185395abad08889da
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 2ab5697ceff612e65174fdb7f9ef6137e2c8b9a5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881309"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537060"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>登录用户的 Web 应用：登录和注销
 
@@ -205,7 +205,7 @@ def _get_token_from_cache(scope=None):
 ## <a name="sign-out"></a>注销
 
 从 Web 应用注销不仅仅涉及到从 Web 应用的状态中删除有关已登录帐户的信息。
-该 Web 应用还必须将用户重定向到 Microsoft 标识平台 `logout` 终结点才能注销。 
+该 Web 应用还必须将用户重定向到 Microsoft 标识平台 `logout` 终结点才能注销。
 
 当 Web 应用将用户重定向到 `logout` 终结点时，此终结点将从浏览器中清除用户的会话。 如果应用尚未进入 `logout` 终结点，则用户不需要再次输入凭据就能重新通过应用的身份验证。 原因是他们与 Microsoft 标识平台终结点之间建立了有效的单一登录会话。
 
@@ -306,7 +306,7 @@ else
     <meta charset="UTF-8">
 </head>
 <body>
-    <h1>Microsoft Identity Python Web App</h1>
+    <h1>Microsoft Identity Python web app</h1>
     Welcome {{ user.get("name") }}!
     <li><a href='/graphcall'>Call Microsoft Graph API</a></li>
     <li><a href="/logout">Logout</a></li>

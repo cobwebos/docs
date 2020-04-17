@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8a2e5defd0672516d52d4f3477641f39eca63368
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd7b889560acbe484581f065b641375c222f7ca8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77597764"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536468"
 ---
 默认情况下，标准文件共享只能跨越 5 TiB，尽管共享限制可以增加到 100 TiB。 为此，必须在存储帐户级别启用*大型文件共享*功能。 高级存储帐户（*文件存储*存储帐户）没有大型文件共享功能标志，因为已启用所有高级文件共享以预配高达 100 个 TiB 的全部容量。
 
@@ -23,6 +23,6 @@ ms.locfileid: "77597764"
 
 ![Azure 门户中启用大型文件共享摇臂开关的屏幕截图](media/storage-files-tiers-enable-large-shares/enable-lfs-0.png)
 
-还可以通过[`Set-AzStorageAccount`](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount)PowerShell cmdlet 和[`az storage account update`](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-update)Azure CLI 命令启用 100 个 TiB 文件共享。
+还可以通过[`Set-AzStorageAccount`](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount)PowerShell cmdlet 和[`az storage account update`](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-update)Azure CLI 命令启用 100 个 TiB 文件共享。 有关启用大型文件共享的详细说明，请参阅[启用和创建大型文件共享](../articles/storage/files/storage-files-how-to-create-large-file-share.md)。
 
-要了解有关如何在新存储帐户上启用大型文件共享的更多详细信息，请参阅[创建 Azure 文件共享](../articles/storage/files/storage-how-to-create-file-share.md)。
+要了解有关如何在新存储帐户上创建文件共享的更多详细信息，请参阅[创建 Azure 文件共享](../articles/storage/files/storage-how-to-create-file-share.md)。

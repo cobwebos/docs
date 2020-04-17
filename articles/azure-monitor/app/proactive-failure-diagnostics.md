@@ -4,12 +4,12 @@ description: 将针对到 Web 应用的失败请求速率的异常变化向用�
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: e1c07fca3a4eee19e56c313a889e5b86ce2b4c42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1bce3ab86748d8247a72da3bd70e0f2e8155dbf
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671743"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536805"
 ---
 # <a name="smart-detection---failure-anomalies"></a>智能检测 - 失败异常
 如果 Web 应用的失败请求速率出现异常上升，[Application Insights](../../azure-monitor/app/app-insights-overview.md) 会几乎实时地自动向你发出警报。 它会对 HTTP 请求速率或报告为失败的依赖项调用的异常上升进行检测。 对于请求而言，失败请求的响应代码通常为 400 或更大的数字。 为了帮助会审和诊断问题，警报详细信息中会提供失败及相关应用程序数据的特征分析。 还提供指向 Application Insights 门户的链接，以供进一步诊断。 该功能不需要任何设置或配置，因为它使用机器学习算法来预测正常的失败率。
@@ -353,7 +353,7 @@ ms.locfileid: "77671743"
 ## <a name="next-steps"></a>后续步骤
 这些诊断工具可帮助检查来自你的应用的数据：
 
-* [指标资源管理器](../../azure-monitor/app/metrics-explorer.md)
+* [指标资源管理器](../../azure-monitor/platform/metrics-charts.md)
 * [搜索资源管理器](../../azure-monitor/app/diagnostic-search.md)
 * [分析 - 功能强大的查询语言](../../azure-monitor/log-query/get-started-portal.md)
 

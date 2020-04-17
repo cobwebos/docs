@@ -4,12 +4,12 @@ description: 提供 Azure 迁移服务的支持设置和限制摘要。
 ms.topic: conceptual
 ms.date: 03/22/2020
 ms.author: raynew
-ms.openlocfilehash: bf719f9179384ec3dca99d2429f569ef209b5daa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f766bf95bb7e26d942e7dde3f315bbef6d5dc5c
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80127701"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535190"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure 迁移支持矩阵
 
@@ -69,13 +69,12 @@ Hyper-V VM    | 在单个项目中评估多达 35，000 台 Hyper-V VM。
 注册 Azure Migrate 设备| Azure 迁移使用轻量级[Azure 迁移设备](migrate-appliance.md)评估具有 Azure 迁移服务器评估的计算机，并使用 Azure 迁移服务器迁移运行 VMware VM[的无代理迁移](server-migrate-overview.md)。 本设备发现计算机，并将元数据和性能数据发送到 Azure 迁移。<br/><br/> 在注册期间，注册提供程序（Microsoft.OffAzure、Microsoft.Migrate 和 Microsoft.KeyVault）在设备中选择的订阅中注册，以便订阅与资源提供程序一起工作。 要注册，您需要订阅上的参与者或所有者访问权限。<br/><br/> **VMware**- 在载入过程中，Azure 迁移将创建两个 Azure 活动目录 （Azure AD） 应用。 第一个应用在设备代理和 Azure 迁移服务之间通信。 应用没有对 Azure 资源管理调用或具有资源 RBAC 访问权限的权限。 第二个应用访问仅在用户订阅中创建的 Azure 密钥保管库，用于无代理 VMware 迁移。 在无代理迁移中，Azure 迁移创建密钥保管库来管理订阅中复制存储帐户的访问密钥。 从设备启动发现时，它在 Azure 密钥保管库（客户租户中）具有 RBAC 访问权限。<br/><br/> **超V**-在载入期间。 Azure 迁移将创建一个 Azure AD 应用。 应用在设备代理和 Azure 迁移服务之间通信。 应用没有对 Azure 资源管理调用或具有资源 RBAC 访问权限的权限。 | 为[VMware、](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance)[超 V](tutorial-prepare-hyper-v.md#assign-permissions-to-register-the-appliance)或[物理服务器](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance)设置。
 为 VMware 无代理迁移创建密钥保管库 | 要使用无代理 Azure 迁移服务器迁移 VMware VM，Azure 迁移将创建一个密钥保管库来管理订阅中复制存储帐户的访问密钥。 要创建保管库，请对 Azure 迁移项目所在的资源组设置权限（所有者或参与者和用户访问管理员）。 | [设置](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault)权限。
 
-## <a name="supported-geographies"></a>支持的地理位置
+## <a name="supported-geographies-public-cloud"></a>受支持的地理位置（公共云）
 
-可以在多个地理位置创建 Azure 迁移项目。 尽管只能在这些地理位置中创建项目，但可以评估或迁移其他目标位置的计算机。 项目地域仅用于存储已发现的元数据。
+您可以在公共云中的多个地理位置中创建 Azure 迁移项目。 尽管只能在这些地理位置中创建项目，但可以评估或迁移其他目标位置的计算机。 项目地域仅用于存储已发现的元数据。
 
-**地理** | **元数据存储位置**
+**地域** | **元数据存储位置**
 --- | ---
-Azure Government  | US Gov 弗吉尼亚州
 亚太区 | 东亚或东南亚
 澳大利亚 | 澳大利亚东部或澳大利亚东南部
 巴西 | 巴西南部
@@ -89,9 +88,13 @@ United Kingdom | 英国南部或英国西部
 United States | 美国中部或美国西部 2
 
 
- > [!NOTE]
- > 对 Azure 政府的支持目前仅适用于[旧版本的](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions)Azure 迁移。
+## <a name="supported-geographies-azure-government"></a>支持的地理位置（Azure 政府）
 
+**任务** | **地域** | **详细信息**
+--- | --- | ---
+创建项目 | United States | 元数据存储在美国亚利桑那州州长、美国弗吉尼亚州州长
+目标评估 | United States | 目标地区：美国亚利桑那州州长、美国弗吉尼亚州州长/得克萨斯州美国政府
+目标复制 | United States | 目标地区：美国国防部中心、美国国防部东部、美国亚利桑那州州长、美国爱荷华州州长、美国得克萨斯州州长、美国弗吉尼亚州州长
 
 
 ## <a name="vmware-assessment-and-migration"></a>VMware 评估和迁移
@@ -108,7 +111,7 @@ United States | 美国中部或美国西部 2
 
 有两个版本的 Azure Migrate 服务：
 
-- **当前版本**：使用此版本可以创建新的 Azure 迁移项目、发现本地评估以及协调评估和迁移。 [了解详情](whats-new.md)。
+- **当前版本**：使用此版本可以创建新的 Azure 迁移项目、发现本地评估以及协调评估和迁移。 [了解详细信息](whats-new.md)。
 - **以前的版本**：对于使用早期版本的 Azure 迁移的客户（仅支持本地 VMware VM 评估），现在应使用当前版本。 在前面版本中，无法创建新的 Azure 迁移项目或执行新的发现。
 
 ## <a name="next-steps"></a>后续步骤

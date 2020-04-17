@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: 12dd17045715a24d1e5151b30a5e7706b0e58717
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 161fd9276427db0d0d7d56da1bfc0bb8ccf52a52
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383798"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536652"
 ---
 # <a name="create-an-azure-virtual-machine-offer"></a>创建 Azure 虚拟机产品/服务
 
@@ -21,7 +21,7 @@ ms.locfileid: "81383798"
 
 本文介绍如何创建 Azure 虚拟机产品/服务并将其发布到[Azure 应用商店](https://azuremarketplace.microsoft.com/)。 它面向包含操作系统、虚拟硬盘 （VHD） 和多达 16 个数据磁盘的基于 Windows 和 Linux 的虚拟机。
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 ### <a name="publishing-benefits"></a>发布的好处
 
@@ -174,7 +174,7 @@ ms.locfileid: "81383798"
 
 ### <a name="marketplace-details"></a>市场详细信息
 
-#### <a name="name"></a>名称
+#### <a name="name"></a>“属性”
 
 您在此处输入的名称将作为产品/服务列表的标题显示给客户。 此字段预先填充您在创建产品/服务时在 **"产品/服务"别名**框中输入的文本。 可以稍后更改此名称。
 
@@ -192,7 +192,7 @@ ms.locfileid: "81383798"
 
 提供更久的报价说明。 这最多可达 256 个字符，并且用于市场搜索结果。
 
-#### <a name="description"></a>描述
+#### <a name="description"></a>说明
 
 提供您的优惠的详细描述，最多 3，000 个字符。 这在商业市场列表概述中向客户显示。
 
@@ -239,7 +239,7 @@ ms.locfileid: "81383798"
 
 为 Microsoft 合作伙伴提供联系信息，供客户打开支持票证时使用。 这将不会在市场上列出。
 
-- 名称
+- “属性”
 - 电子邮件
 - 电话
 
@@ -247,7 +247,7 @@ ms.locfileid: "81383798"
 
 在您的产品/服务出现问题（包括认证问题）时，为 Microsoft 提供要使用的联系信息。 这将不会在市场上列出。
 
-- 名称
+- “属性”
 - 电子邮件
 - 电话
 
@@ -296,7 +296,7 @@ ms.locfileid: "81383798"
 
 ## <a name="plan-overview"></a>计划概述
 
-您可以在合作伙伴中心的同一优惠中提供不同的计划选项。 这些计划以前称为 SKU。 产品/服务至少需要一个计划，在货币化受众、Azure 云、功能或 VM 映像方面可能有所不同。
+您可以在合作伙伴中心的同一优惠中提供不同的计划选项。 这些计划以前称为 SKU。 产品/服务至少需要一个计划，在货币化受众、Azure 区域、功能或 VM 映像方面可能有所不同。
 
 创建计划后，"**计划概览**"选项卡显示：
 
@@ -326,7 +326,7 @@ ms.locfileid: "81383798"
 
 ### <a name="plan-setup"></a>计划设置
 
-设置计划类型的高级配置、是否重用其他计划的技术配置以及计划应可用的云。 此处的选择确定同一计划的其他选项卡上显示哪些字段。
+设置计划类型的高级配置，它是否重用其他计划的技术配置，以及计划应在哪些区域可用。 此处的选择确定同一计划的其他选项卡上显示哪些字段。
 
 #### <a name="reuse-technical-configuration"></a>重用技术配置
 
@@ -335,24 +335,24 @@ ms.locfileid: "81383798"
 > [!NOTE]
 > 当您从另一个计划重用技术配置时，整个**技术配置**选项卡将从这个计划中消失。 其他计划中的技术配置详细信息（包括您将来进行的任何更新）也将用于此计划。 此计划发布后，无法更改此设置。
 
-#### <a name="cloud-availability"></a>云可用性
+#### <a name="azure-regions"></a>Azure 区域
 
-您的计划必须至少在一个云中提供。
+您的计划必须至少在一个 Azure 区域中可用。
 
-选择**Azure 全局**选项，使计划可供具有商业市场集成的所有公共 Azure 区域的客户使用。 有关详细信息，请参阅[地理可用性和货币支持](https://aka.ms/AzureGovCurrencies)。
+选择**Azure 全局**选项，使计划可供具有商业市场集成的所有公共 Azure 区域的客户使用。 有关详细信息，请参阅[地理可用性和货币支持](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)。
 
-选择**Azure 政府云**选项以使计划在 Azure[政府云](https://aka.ms/WhatIsAzureGovernment)中可用。 这是一个政府社区云，由来自美国联邦、州、地方或部落机构的客户以及有资格为这些实体提供服务的合作伙伴进行受控访问。 作为发布者，您负责为此云社区提供服务的任何合规性控制、安全措施和最佳实践。 Azure 政府使用物理隔离的数据中心和网络（仅适用于美国）。
+选择**Azure 政府**选项以使计划在 Azure[政府](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)区域中可用。 此区域为美国联邦、州、地方或部落实体的客户以及有资格为其提供服务的合作伙伴提供受控访问。 作为发布者，您负责任何合规性控制、安全措施和最佳实践。 Azure 政府使用物理隔离的数据中心和网络（仅适用于美国）。
 
-在发布到[Azure 政府](https://aka.ms/azuregovpublish)之前，在环境中测试和验证计划，因为某些终结点可能有所不同。 要设置和测试计划，请从 Microsoft Azure[政府试用版](https://aka.ms/AzureGovernmentTrial)请求试用帐户。
+在发布到[Azure 政府](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)之前，在环境中测试和验证计划，因为某些终结点可能有所不同。 要设置和测试计划，请从 Microsoft Azure[政府试用版](https://azure.microsoft.com/global-infrastructure/government/request/)请求试用帐户。
 
 > [!NOTE]
-> 计划发布并在特定云中可用后，无法删除该云。
+> 计划发布并在特定 Azure 区域中可用后，无法删除该区域。
 
-#### <a name="azure-government-cloud-certifications"></a>Azure 政府云认证
+#### <a name="azure-government-certifications"></a>Azure 政府认证
 
-仅当在**云可用性**下选择**Azure 政府云**时，此选项才可见。
+仅当在**Azure 区域**下选择**Azure 政府**时，此选项才可见。
 
-Azure 政府服务处理受某些政府法规和要求约束的数据。 例如，FedRAMP、NIST 800.171 （DIB）、ITAR、IRS 1075、DoD L4 和 CJIS。 为了提高您对这些计划的认证的认识，您最多可以提供 100 个描述它们的链接。 这些可以是直接指向您在程序上列表的链接，也可以是指向您自己网站上遵守这些列表的链接。 这些链接仅对 Azure 政府云客户可见。
+Azure 政府服务处理受某些政府法规和要求约束的数据。 例如，FedRAMP、NIST 800.171 （DIB）、ITAR、IRS 1075、DoD L4 和 CJIS。 为了提高您对这些计划的认证的认识，您最多可以提供 100 个描述它们的链接。 这些可以是直接指向您在程序上列表的链接，也可以是指向您自己网站上遵守这些列表的链接。 这些链接仅对 Azure 政府客户可见。
 
 选择 **"保存"草稿**，然后再继续。
 
@@ -384,7 +384,7 @@ Azure 政府服务处理受某些政府法规和要求约束的数据。 例如�
 
 #### <a name="markets"></a>市场
 
-每个计划必须至少在一个市场可用。 选择此计划可供购买的每个市场位置的复选框（这些市场中的用户仍可以将产品/服务部署到所选云的所有 Azure 区域）。 **"税务汇入**"按钮显示 Microsoft 代表您汇入销售和使用税款的国家/地区。 发布到中国仅限于**免费**或**自带许可证**（BYOL） 的计划。
+每个计划必须至少在一个市场可用。 选择此计划可供购买的每个市场位置的复选框（这些市场中的用户仍然可以将产品/服务部署到**[计划设置](#plan-setup)** 中选择的所有 Azure 区域）。 **"税务汇入**"按钮显示 Microsoft 代表您汇入销售和使用税款的国家/地区。 发布到中国仅限于**免费**或**自带许可证**（BYOL） 的计划。
 
 如果您已为计划设定价格（美元），并添加其他市场位置，则新市场的价格将根据当前汇率计算。 在出版之前，务必查看每个市场的价格。 保存更改后，使用 **"导出价格 （xlsx）"** 链接查看价格。
 

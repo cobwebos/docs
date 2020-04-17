@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 76a96d36387f55889b65f16ea1ca6ec07359c377
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d5bf3a6df9d7292c18a93737fb7dea5d8c91f984
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79502433"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536469"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 [Azure 文件](storage-files-introduction.md)可通过两种主要方式进行部署：直接安装无服务器 Azure 文件共享或使用 Azure 文件同步在本地缓存 Azure 文件共享。您选择的部署选项会更改在规划部署时需要考虑的事项。 
@@ -28,7 +28,7 @@ ms.locfileid: "79502433"
 
 将 Azure 文件共享部署到存储帐户时，我们建议：
 
-- 仅将 Azure 文件共享部署到具有其他 Azure 文件共享的存储帐户中。 尽管 GPv2 存储帐户允许您具有混合用途存储帐户，但由于存储资源（如 Azure 文件共享和 Blob 容器）共享存储帐户的限制，因此将资源混合在一起可能会加大故障排除的难度稍后，性能问题。 
+- 仅将 Azure 文件共享部署到具有其他 Azure 文件共享的存储帐户中。 尽管 GPv2 存储帐户允许您具有混合用途存储帐户，但由于存储资源（如 Azure 文件共享和 Blob 容器）共享存储帐户的限制，因此将资源混合在一起可能会使以后解决性能问题变得更加困难。 
 
 - 在部署 Azure 文件共享时，注意存储帐户的 IOPS 限制。 理想情况下，您将文件共享 1：1 映射到存储帐户，但由于组织与 Azure 的各种限制和限制，这并不总是可能的。 如果不可能在一个存储帐户中只部署一个文件共享，请考虑哪些共享将高度活跃，哪些共享将不太活跃，以确保最热门的文件共享不会放在同一个存储帐户中。
 
@@ -36,8 +36,8 @@ ms.locfileid: "79502433"
 
 ## <a name="identity"></a>标识
 要访问 Azure 文件共享，必须对文件共享的用户进行身份验证并具有访问共享的授权。 这是基于访问文件共享的用户的标识完成的。 Azure 文件与三个主要标识提供程序集成：
-- **客户拥有的活动目录**（预览）：Azure 存储帐户可以像 Windows 服务器文件服务器或 NAS 设备一样，加入到客户拥有的 Windows Server 活动目录的域。 活动目录域控制器可以部署在本地、Azure VM 中，甚至可以作为其他云提供商中的 VM 进行部署;Azure 文件与 DC 的托管位置无关。 加入存储帐户后，最终用户就可以将文件共享与登录到其 PC 中的用户帐户一起装载。 基于 AD 的身份验证使用 Kerberos 身份验证协议。
-- **Azure 活动目录域服务 （Azure AD DS）：** Azure AD DS 提供 Microsoft 管理的活动目录域控制器，可用于 Azure 资源。 将存储帐户加入 Azure AD DS 的域与将存储帐户加入客户拥有的 Active Directory 的域提供了类似的好处。 此部署选项对于需要基于 AD 的权限的应用程序升降和移位方案最有用。 由于 Azure AD DS 提供基于 AD 的身份验证，此选项还使用 Kerberos 身份验证协议。
+- **本地活动目录域服务（AD DS 或本地 AD DS）（预览）：Azure**存储帐户可以加入客户拥有的活动目录域服务，就像 Windows 服务器文件服务器或 NAS 设备一样。 您可以在本地、Azure VM 中部署域控制器，甚至可以在另一个云提供程序中部署 VM;Azure 文件与域控制器的托管位置无关。 加入存储帐户后，最终用户就可以将文件共享与登录到其 PC 中的用户帐户一起装载。 基于 AD 的身份验证使用 Kerberos 身份验证协议。
+- **Azure 活动目录域服务 （Azure AD DS）：** Azure AD DS 提供 Microsoft 管理的域控制器，可用于 Azure 资源。 将存储帐户加入 Azure AD DS 的域与将存储帐户加入客户拥有的 Active Directory 的域提供了类似的好处。 此部署选项对于需要基于 AD 的权限的应用程序升降和移位方案最有用。 由于 Azure AD DS 提供基于 AD 的身份验证，此选项还使用 Kerberos 身份验证协议。
 - **Azure 存储帐户密钥**：Azure 文件共享也可以装载 Azure 存储帐户密钥。 要以这种方式装载文件共享，存储帐户名称用作用户名，存储帐户密钥用作密码。 使用存储帐户密钥装载 Azure 文件共享实际上是管理员操作，因为装载的文件共享将对共享上的所有文件和文件夹具有完全权限，即使它们具有 ACL。 当使用存储帐户密钥装载到 SMB 上时，将使用 NTLMv2 身份验证协议。
 
 对于从本地文件服务器迁移的客户，或在 Azure 文件中创建新的文件共享，以像 Windows 文件服务器或 NAS 设备一样，建议选择将存储帐户加入**客户拥有的 Active Directory 的**域。 要了解有关域将存储帐户加入客户拥有的活动目录的详细信息，请参阅[Azure 文件活动目录概述](storage-files-active-directory-overview.md)。
@@ -49,7 +49,7 @@ Azure 文件共享可通过存储帐户的公共终结点从任何位置访问�
 
 要取消阻止对 Azure 文件共享的访问，有两个主要选项：
 
-- 为组织的本地网络取消阻止端口 445。 Azure 文件共享只能通过公共终结点使用 Internet 安全协议（如 SMB 3.0 和 FileREST API）进行外部访问。 这是从本地访问 Azure 文件共享的最简单方法，因为它除了更改组织的出站端口规则之外不需要高级网络配置，但是，我们建议您删除 SMB 的旧版本和弃用版本协议，即 SMB 1.0。 要了解如何执行此操作，请参阅[保护 Windows/Windows 服务器](storage-how-to-use-files-windows.md#securing-windowswindows-server)和保护[Linux](storage-how-to-use-files-linux.md#securing-linux)。
+- 为组织的本地网络取消阻止端口 445。 Azure 文件共享只能通过公共终结点使用 Internet 安全协议（如 SMB 3.0 和 FileREST API）进行外部访问。 这是从本地访问 Azure 文件共享的最简单方法，因为它除了更改组织的出站端口规则外不需要高级网络配置，但是，我们建议您删除 SMB 协议的旧版本和弃用版本，即 SMB 1.0。 要了解如何执行此操作，请参阅[保护 Windows/Windows 服务器](storage-how-to-use-files-windows.md#securing-windowswindows-server)和保护[Linux](storage-how-to-use-files-linux.md#securing-linux)。
 
 - 通过 ExpressRoute 或 VPN 连接访问 Azure 文件共享。 通过网络隧道访问 Azure 文件共享时，可以像本地文件共享一样装载 Azure 文件共享，因为 SMB 流量不会遍历组织边界。   
 
@@ -153,7 +153,7 @@ Azure 文件支持两种不同类型的加密：传输中的加密（与装载/�
 ### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>使标准文件共享跨越多达 100 TiB
 [!INCLUDE [storage-files-tiers-enable-large-shares](../../../includes/storage-files-tiers-enable-large-shares.md)]
 
-#### <a name="regional-availability"></a>区域可用性
+#### <a name="limitations"></a>限制
 [!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]
 
 ## <a name="redundancy"></a>冗余

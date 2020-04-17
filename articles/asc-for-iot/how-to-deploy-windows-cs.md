@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: d667dd09c2276936e10cea0581e4c8d2810b2ccb
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 4d7d2f0a423a50f85160a856480eaa973be7e2b0
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81311092"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537604"
 ---
 # <a name="deploy-an-azure-security-center-for-iot-c-based-security-agent-for-windows"></a>为 Windows 部署适用于 IoT 的 Azure 安全中心基于 C# 的安全代理
 
@@ -135,9 +135,9 @@ ms.locfileid: "81311092"
      sc.exe start "ASC IoT Agent"
      ```
 
-1. 查看日志文件，了解有关故障的详细信息。
+1. 查看日志文件，了解有关故障的详细信息。 日志文件将存在于运行脚本的工作目录中。 
 
-   日志文件位置：`%WinDir%/System32/IoTAgentLog.log`
+   日志文件位置：`.\IoTAgentLog.log`
 
 ## <a name="next-steps"></a>后续步骤
 

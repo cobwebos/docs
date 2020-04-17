@@ -3,17 +3,17 @@ title: Azure Application Insights 数据模型 | Microsoft Docs
 description: 介绍在 JSON 中通过连续导出导出的、用作筛选器的属性。
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: e4dd2310169476e54c06083fee11b2e4cccecd8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9891bea1d52c61197fa32fa5c0764df5450b563c
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663869"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536839"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights 导出数据模型
 此表列出了从 [Application Insights](../../azure-monitor/app/app-insights-overview.md) SDK 发送到门户的遥测属性。
 [连续导出](export-telemetry.md)的数据输出中会显示这些属性。
-这些属性还显示在[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)和[诊断搜索](../../azure-monitor/app/diagnostic-search.md)的属性筛选器中。
+这些属性还显示在[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)和[诊断搜索](../../azure-monitor/app/diagnostic-search.md)的属性筛选器中。
 
 需要注意的要点：
 
@@ -127,16 +127,16 @@ ms.locfileid: "77663869"
 | context.device.roleName |字符串 | |
 | context.device.screenResolution |字符串 | |
 | context.device.type |字符串 |电脑、浏览器... |
-| context.location |对象 (object) |派生自 clientip。 |
-| context.location.city |字符串 |派生自 clientip（如果已知） |
+| context.location |对象 (object) |从 `clientip`派生。 |
+| context.location.city |字符串 |派生自`clientip`，如果已知 |
 | context.location.clientip |字符串 |最后一个八边形匿名化为 0。 |
 | context.location.continent |字符串 | |
 | context.location.country |字符串 | |
 | context.location.province |字符串 |州或省 |
-| context.operation.id |字符串 |具有相同操作 ID 的项在门户中显示为相关项。 通常为请求 ID。 |
+| context.operation.id |字符串 |具有相同`operation id`项的项目与门户中的"相关项目"一样显示。 通常为`request id`。 |
 | context.operation.name |字符串 |URL 或请求名称 |
 | context.operation.parentId |字符串 |允许嵌套的相关项。 |
-| context.session.id |字符串 |一组来自相同源的操作的 ID。 如果在 30 分钟期限内没有操作，则表示会话结束。 |
+| context.session.id |字符串 |`Id`来自同一源的一组操作。 如果在 30 分钟期限内没有操作，则表示会话结束。 |
 | context.session.isFirst |boolean | |
 | context.user.accountAcquisitionDate |字符串 | |
 | context.user.accountId |字符串 | |
@@ -147,7 +147,7 @@ ms.locfileid: "77663869"
 | context.user.isAuthenticated |boolean | |
 | context.user.storeRegion |字符串 | |
 | internal.data.documentVersion |字符串 | |
-| internal.data.id |字符串 | 将项引入到 Application Insights 时分配的唯一 ID |
+| internal.data.id |字符串 | `Unique id`当将项目引入到应用程序见解时分配 |
 
 ## <a name="events"></a>事件
 [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) 生成的自定义事件。
@@ -160,7 +160,7 @@ ms.locfileid: "77663869"
 | event [0] urlData.base |字符串 | |
 | event [0] urlData.host |字符串 | |
 
-## <a name="exceptions"></a>异常
+## <a name="exceptions"></a>例外
 报告服务器和浏览器中发生的[异常](../../azure-monitor/app/asp-net-exceptions.md)。
 
 | 路径 | 类型 | 说明 |
@@ -173,7 +173,7 @@ ms.locfileid: "77663869"
 | basicException [0] failedUserCodeAssembly |字符串 | |
 | basicException [0] handledAt |字符串 | |
 | basicException [0] hasFullStack |boolean | |
-| basicException [0] id |字符串 | |
+| 基本例外 [0]`id` |字符串 | |
 | basicException [0] method |字符串 | |
 | basicException [0] message |字符串 |异常消息。 最大长度为 10k。 |
 | basicException [0] outerExceptionMessage |字符串 | |
@@ -210,7 +210,7 @@ ms.locfileid: "77663869"
 | remoteDependency [0] count |integer |100/（[采样](../../azure-monitor/app/sampling.md)率）。 例如 4 =&gt; 25%。 |
 | remoteDependency [0] dependencyTypeName |字符串 |HTTP、SQL... |
 | remoteDependency [0] durationMetric.value |数字 |从依赖项调用到完成响应花费的时间 |
-| remoteDependency [0] id |字符串 | |
+| 远程依赖 [0]`id` |字符串 | |
 | remoteDependency [0] name |字符串 |URL。 最大长度为 250。 |
 | remoteDependency [0] resultCode |字符串 |源 HTTP 依赖项 |
 | remoteDependency [0] success |boolean | |
@@ -227,7 +227,7 @@ ms.locfileid: "77663869"
 | --- | --- | --- |
 | request [0] count |integer |100/（[采样](../../azure-monitor/app/sampling.md)率）。 例如：4 =&gt; 25%。 |
 | request [0] durationMetric.value |数字 |从请求到响应花费的时间。 1e7 == 1s |
-| request [0] id |字符串 |操作 ID |
+| 请求 {0}`id` |字符串 |`Operation id` |
 | request [0] name |字符串 |GET/POST + URL 基。  最大长度为 250 |
 | request [0] responseCode |integer |发送到客户端的 HTTP 响应 |
 | request [0] success |boolean |默认值 == (responseCode &lt; 400) |
@@ -345,4 +345,4 @@ ms.locfileid: "77663869"
 ## <a name="see-also"></a>请参阅
 * [Application Insights](../../azure-monitor/app/app-insights-overview.md)
 * [连续出口](export-telemetry.md)
-* [代码示例](export-telemetry.md#code-samples)
+* [示例代码](export-telemetry.md#code-samples)

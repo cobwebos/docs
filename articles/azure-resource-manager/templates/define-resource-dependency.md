@@ -3,12 +3,12 @@ title: 设置资源的部署顺序
 description: 介绍如何在部署期间将一个资源设置为依赖于另一个资源，以确保按正确的顺序部署资源。
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: f11f79df875492a568a76f494dfffb4a163f64cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 764b718416e1185f56c7eb6b8335792a5822f212
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153278"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535462"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>定义在 ARM 模板中部署资源的顺序
 
@@ -18,7 +18,7 @@ Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序
 
 ## <a name="dependson"></a>dependsOn
 
-在模板中，使用 dependsOn 元素可将一个资源定义为与一个或多个资源相依赖。 它的值是逗号分隔的资源名称列表。 该列表可以包括[有条件部署](conditional-resource-deployment.md)的资源。 条件资源未部署时，Azure 资源管理器会自动将其从所需依赖项中删除。
+在模板中，使用 dependsOn 元素可将一个资源定义为与一个或多个资源相依赖。 其值是字符串的 JSON 数组，每个字符串都是资源名称。 数组可以包括[有条件部署](conditional-resource-deployment.md)的资源。 条件资源未部署时，Azure 资源管理器会自动将其从所需依赖项中删除。
 
 以下示例显示了一个虚拟机规模集，该集依赖于负载均衡器、虚拟网络以及创建多个存储帐户的循环。 下面的示例中未显示其他这些资源，但它们需要存在于模板的其他位置。
 

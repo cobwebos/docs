@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 备份服务管理和监视 Microsoft Azur
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: c11d73edd32c197aac2cec58eeb1cc20e5c6a339
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 404341c8324d9e127e8d8e6bc8083926c0d3106f
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673246"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537349"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>使用 Azure 备份服务管理 Microsoft Azure 恢复服务 （MARS） 代理备份
 
@@ -90,7 +90,7 @@ ms.locfileid: "78673246"
 
 - **停止保护并保留备份数据**。
   - 此选项将停止保护以后的所有备份作业。
-  - Azure 备份服务将保留已根据保留策略备份的恢复点。
+  - Azure 备份服务将无限期地保留所有现有恢复点。 在恢复保护之前，不会检查恢复点是否过期。
   - 您将能够为未过期的恢复点还原备份的数据。
   - 如果您决定恢复保护，则可以使用 *"重新启用备份计划"* 选项。 之后，将根据新的保留政策保留数据。
 - **停止保护并删除备份数据**。
@@ -106,7 +106,7 @@ ms.locfileid: "78673246"
 1. 在 **"选择策略项目"** 页**中，选择"修改文件和文件夹的备份计划**"，然后单击"**下一步**"。
 
     ![修改或停止计划的备份。](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
-1. 在 **"修改或停止计划备份"页中**，选择 **"停止使用此备份计划"，但保留存储的备份，直到计划再次激活**。 然后，选择 **"下一步**"。
+1. 在 **"修改或停止计划备份"页中**，选择 **"停止使用此备份计划"，但保留存储的备份，直到计划再次激活**。 然后，选择“下一步”  。
 
     ![修改或停止计划的备份。](./media/backup-azure-manage-mars/stop-schedule-backup.png)
 1. 在**暂停计划备份**中查看信息，然后单击 **"完成**"。
@@ -117,7 +117,7 @@ ms.locfileid: "78673246"
 ### <a name="stop-protection-and-delete-backup-data"></a>停止保护并删除备份数据
 
 1. 打开 MARS 管理控制台，转到“操作”窗格并选择“计划备份”。********
-2. 在“修改或停止计划的备份”页中选择“停止使用此备份计划并删除所有存储的备份”选项。******** 然后，选择 **"下一步**"。
+2. 在“修改或停止计划的备份”页中选择“停止使用此备份计划并删除所有存储的备份”选项。******** 然后，选择“下一步”  。
 
     ![修改或停止计划的备份。](./media/backup-azure-delete-vault/modify-schedule-backup.png)
 

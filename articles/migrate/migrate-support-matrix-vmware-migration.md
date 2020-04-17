@@ -2,13 +2,13 @@
 title: 支持 Azure 迁移中的 VMware 迁移
 description: 了解在 Azure 迁移中对 VMware VM 迁移的支持。
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: bf9cc471eef31edd513358a97d2ece17015ba781
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.date: 04/15/2020
+ms.openlocfilehash: eee16b244ae4f9d517bdd42a0b7f37b1494ac480
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313996"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538131"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 迁移的支持矩阵
 
@@ -64,10 +64,12 @@ ms.locfileid: "81313996"
 
 
 ## <a name="agentless-azure-migrate-appliance"></a>无代理-Azure 迁移设备 
-无代理迁移使用部署在 VMware VM 上的 Azure 迁移设备。
+
+无代理迁移使用[Azure 迁移设备](migrate-appliance.md)。 您可以使用 OVA 模板、导入到 vCenter 服务器或使用[PowerShell 脚本](deploy-appliance-script.md)将设备部署为 VMWare VM。
 
 - 了解 VMware[的设备要求](migrate-appliance.md#appliance---vmware)。
-- 了解设备需要访问的[URL。](migrate-appliance.md#url-access)
+- 了解产品[在公共和政府云](migrate-appliance.md#public-cloud-urls)中需要访问的 URL。 [government](migrate-appliance.md#government-cloud-urls)
+- 在 Azure 政府中，必须使用脚本部署设备。
 
 ## <a name="agentless-ports"></a>无代理端口
 
@@ -123,7 +125,8 @@ vSphere/EXSI 主机 | 在 TCP 端口 902 上入站，用于设备从快照复制
 
 - 了解 VMware 的[复制设备要求](migrate-replication-appliance.md#appliance-requirements)。
 - 必须在设备上安装 MySQL。 了解[安装选项](migrate-replication-appliance.md#mysql-installation)。
-- 了解复制设备需要访问的[URL](migrate-replication-appliance.md#url-access)和[端口](migrate-replication-appliance.md#port-access)。
+- 了解复制设备需要[在公共](migrate-replication-appliance.md#url-access)[和政府云](migrate-replication-appliance.md#azure-government-url-access)中访问的 URL。
+- 查看复制设备需要访问的[端口](migrate-replication-appliance.md#port-access)。
 
 ## <a name="agent-based-ports"></a>基于代理的端口
 

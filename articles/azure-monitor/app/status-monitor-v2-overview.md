@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 4a240bc62816a46bc37108777a8b081b74047738
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4042fc05f278915fe72bf8fc4e6afd69a5bbb4b9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275706"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537417"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>为本地服务器部署 Azure Monitor Application Insights 代理
 
@@ -50,7 +50,7 @@ Application Insights 代理位于此处：https://www.powershellgallery.com/pack
 - [已知问题](status-monitor-v2-troubleshoot.md#known-issues)
 
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题解答
 
 - Application Insights 代理是否支持代理安装？
 
@@ -76,7 +76,7 @@ Application Insights 代理位于此处：https://www.powershellgallery.com/pack
 
 查看遥测：
 
-* [浏览指标](../../azure-monitor/app/metrics-explorer.md)以监视性能和使用情况。
+* [浏览指标](../../azure-monitor/platform/metrics-charts.md)以监视性能和使用情况。
 * [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)以诊断问题。
 * 对更高级的查询[使用分析](../../azure-monitor/app/analytics.md)。
 * [创建仪表板](../../azure-monitor/app/overview-dashboard.md)。

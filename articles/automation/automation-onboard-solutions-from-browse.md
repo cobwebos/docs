@@ -5,12 +5,12 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: 385806dca7dcac9fd0aac4c1bf9e1072e7fe5ecb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f5f18e9365b09f06c1bd4f25a8efe909cc308dad
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979473"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537009"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>在多台 VM 上启用更新管理、更改跟踪和清单解决方案
 
@@ -33,9 +33,9 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 从命令栏中，单击“服务”****，然后选择“更改跟踪”****、“清单”**** 或“更新管理”****。
 
 > [!NOTE]
-> “更改跟踪”**** 和“清单”**** 使用相同的解决方案，启用其中一个后，另一个也会启用。
+> 更改跟踪和库存使用相同的解决方案。 启用一个时，另一个也启用。
 
-下图是关于“更新管理”的。 “更改跟踪”和“清单”具有相同的布局和行为。
+下图是关于“更新管理”的。 更改跟踪和清单具有相同的布局和行为。
 
 虚拟机的列表已经过筛选，仅显示了位于相同订阅和位置的虚拟机。 如果你的虚拟机位于三个以上资源组中，则会选择前三个资源组。
 
@@ -72,7 +72,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 * [更新管理](automation-update-management.md)
 * [更改跟踪](automation-change-tracking.md)
-* [在非工作时间启动/停止 VM](automation-solution-vm-management.md)
+* [非工作时间启动/停止 VM](automation-solution-vm-management.md)
 
 如果您决定不再希望将自动化帐户与日志分析工作区集成，则可以直接从 Azure 门户取消链接帐户。 在继续之前，首先需要删除前面所述的解决方案，否则此过程将无法继续。 查看已导入的特定解决方案的主题，了解删除该解决方案所需的步骤。
 
@@ -107,13 +107,13 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 ## <a name="troubleshooting"></a>疑难解答
 
-当载入多台计算机时，可能会有显示为“无法启用”**** 的计算机。 有各种原因会导致某些计算机无法启用。 以下各部分显示了当尝试载入时 VM 上出现“无法启用”**** 状态的可能原因。
+在多台机器上时，可能有一些机器显示为`Cannot enable`。 有各种原因会导致某些计算机无法启用。 以下各节显示在尝试板载`Cannot enable`时 VM 上的状态的可能原因。
 
 ### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>VM 向一个不同的工作区进行报告：“\<workspaceName\>”。  请更改配置以将其用于启用
 
 **原因**：此错误表明你尝试载入的 VM 向另一个工作区进行报告。
 
-**解决方案**：单击“用作配置”**** 来更改目标自动化帐户和 Log Analytics 工作区。
+**解决方案**： 单击 **"使用作为配置**"以更改目标自动化帐户和日志分析工作区。
 
 ### <a name="vm-reports-to-a-workspace-that-is-not-available-in-this-subscription"></a>VM 向此订阅中不可用的工作区进行报告
 
@@ -148,7 +148,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 从更新管理中删除 VM：
 
 * 在 Log Analytics 工作区中，从范围配置 `MicrosoftDefaultScopeConfig-Updates` 的已保存的搜索中删除 VM。 已保存的搜索位于工作区的“常规”下****。
-* 删除 [Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) 或 [适用于 Linux 的 Log Analytics 代理](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)。
+* 删除[Windows 的日志分析代理](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources)或[Linux 的日志分析代理](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: rohogue
-ms.openlocfilehash: 3fbc4e683c2b0e72c3a084a59793dbf9eb4b658c
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: cecafd9209b095270e9a06ca59ffef162326efc2
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657401"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537995"
 ---
 # <a name="add-storage-targets"></a>添加存储目标
 
@@ -117,8 +117,6 @@ NFS 存储目标可以有多个虚拟路径，只要每个路径表示同一存�
 为每个命名空间路径填写这些值：
 
 * **虚拟命名空间路径**- 为此存储目标设置面向客户端的文件路径。 阅读[配置聚合命名空间](hpc-cache-namespace.md)以了解有关虚拟命名空间功能的更多内容。
-
-<!--  The virtual path should start with a slash ``/``. -->
 
 * **NFS 导出路径**- 输入 NFS 导出的路径。
 

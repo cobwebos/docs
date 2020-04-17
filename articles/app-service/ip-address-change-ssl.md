@@ -4,12 +4,12 @@ description: 如果 SSL IP 地址将要更改，请了解如何在更改后继�
 ms.topic: article
 ms.date: 06/28/2018
 ms.custom: seodec18
-ms.openlocfilehash: 34f35eb67cada6066e35227fcd6a0eaf425ac007
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dcfe11bcab25f6267a557de5faf7befab467bc29
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74672402"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535717"
 ---
 # <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>如何为 SSL IP 地址更改做好准备
 
@@ -17,7 +17,7 @@ ms.locfileid: "74672402"
 
 ## <a name="release-ssl-ip-addresses-and-assign-new-ones"></a>释放 SSL IP 地址并分配新地址
 
-1.  打开[Azure 门户](https://portal.azure.com)。
+1.  打开 [Azure 门户](https://portal.azure.com)。
 
 2.  在左侧导航菜单中选择“应用服务”。****
 
@@ -25,7 +25,7 @@ ms.locfileid: "74672402"
 
 4.  在左侧导航窗格中，单击“设置”标头下的“SSL 设置”。********
 
-1. 在“SSL 绑定”部分，选择主机名记录。 在打开的编辑器中，从“SSL 类型”下拉菜单中选择“SNI SSL”，然后单击“添加绑定”。************ 如果出现操作成功的消息，则表示已释放现有的 IP 地址。
+1. 在 TLS/SSL 绑定部分中，选择主机名记录。 在打开的编辑器中，从“SSL 类型”下拉菜单中选择“SNI SSL”，然后单击“添加绑定”。************ 如果出现操作成功的消息，则表示已释放现有的 IP 地址。
 
 6.  在“SSL 绑定”部分，再次选择包含证书的同一主机名记录。**** 在打开的编辑器中，这次请从“SSL 类型”下拉菜单中选择“基于 IP 的 SSL”，然后单击“添加绑定”。************ 如果出现操作成功的消息，表示已获取新的 IP 地址。
 
@@ -45,4 +45,4 @@ ms.locfileid: "74672402"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何对 Azure 发起的 IP 地址更改做好准备。 有关 Azure 应用服务中的 IP 地址的详细信息，请参阅 [Azure 应用服务中的 SSL 和 SSL IP 地址](overview-inbound-outbound-ips.md)。
+本文介绍了如何对 Azure 发起的 IP 地址更改做好准备。 有关 Azure 应用服务中的 IP 地址的详细信息，请参阅 [Azure 应用服务中的入站和出站 IP 地址](overview-inbound-outbound-ips.md)。

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: cd5ca5039b537859d5b31c901ed1f93877ecb629
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a0eb83b4b056230e8e7ef103f220b216fceb9e9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275719"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537451"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>应用程序见解代理（以前称为状态监视器 v2）：详细说明
 
@@ -227,7 +227,7 @@ Application Insights SDK 需要将应用的遥测数据发送给 Microsoft。 �
 
  查看遥测：
 
-- [浏览指标](../../azure-monitor/app/metrics-explorer.md)以监视性能和使用情况。
+- [浏览指标](../../azure-monitor/platform/metrics-charts.md)以监视性能和使用情况。
 - [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)以诊断问题。
 - 对更高级的查询[使用分析](../../azure-monitor/app/analytics.md)。
 - [创建仪表板](../../azure-monitor/app/overview-dashboard.md)。

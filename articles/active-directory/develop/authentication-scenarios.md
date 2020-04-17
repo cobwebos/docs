@@ -12,18 +12,18 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: e78f822a88b093992f065a509c2250e6a5c0dec2
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 5252fdbbaf425662fc9725e618f8fc450b435722
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885559"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534646"
 ---
 # <a name="authentication-basics"></a>身份验证基础知识
 
 ## <a name="what-is-authentication"></a>什么是身份验证
 
-本文解释在创建受保护的 Web 应用、Web API 或创建调用受保护 Web API 的应用时需要了解的许多身份验证概念。 如果您看到一个不熟悉的术语，请尝试我们的[词汇表](developer-glossary.md)或我们的[Microsoft 身份平台视频](identity-videos.md)，这些视频涵盖了基本概念。
+本文介绍了创建受保护的 Web 应用、Web API 或调用受保护 Web API 的应用需要了解的许多身份验证概念。 如果您看到一个不熟悉的术语，请尝试我们的[词汇表](developer-glossary.md)或我们的[Microsoft 身份平台视频](identity-videos.md)，这些视频涵盖了基本概念。
 
 **身份验证**就是证明自己的身份的过程。 身份验证有时缩写为 AuthN。
 
@@ -70,26 +70,26 @@ Azure AD 还提供 Azure 活动目录 B2C，以便组织可以使用 Google 帐�
 
 有关详细信息的声明信息，请参阅[访问令牌](access-tokens.md)和 ID[令牌](id-tokens.md)。
 
-由为其生成了令牌的应用、将登录用户的 Web 应用或所调用的 Web API 负责验证令牌。 令牌由安全令牌服务器 (STS) 使用私钥签名。 STS 发布相应的公钥。 若要验证令牌，应用需使用 STS 公钥验证签名，以验证签名是使用私钥创建的。
+它由生成令牌的应用、登录用户的 Web 应用或正在调用的 Web API 来验证令牌。 令牌由安全令牌服务器 (STS) 使用私钥签名。 STS 发布相应的公钥。 若要验证令牌，应用需使用 STS 公钥验证签名，以验证签名是使用私钥创建的。
 
 令牌仅在有限的时间内有效。 通常，STS 会提供一对令牌：一个用于访问应用程序或受保护资源的访问令牌，以及一个在访问令牌即将过期时用于刷新访问令牌的刷新令牌。
 
-访问令牌作为 `Authorization` 标头中的持有者令牌传递给 Web API。 应用可向 STS 提供刷新令牌，如果用户对应用的访问权限未吊销，则应用将取回新的访问令牌和新的刷新令牌。 用户离职的场景就是这样处理的。 当 STS 收到刷新令牌时，如果用户不再获得授权，则 STS 不会颁发另一个有效的访问令牌。
+访问令牌作为`Authorization`标头中的承载令牌传递到 Web API。 应用可向 STS 提供刷新令牌，如果用户对应用的访问权限未吊销，则应用将取回新的访问令牌和新的刷新令牌。 用户离职的场景就是这样处理的。 当 STS 收到刷新令牌时，如果用户不再获得授权，则 STS 不会颁发另一个有效的访问令牌。
 
 ### <a name="how-each-flow-emits-tokens-and-codes"></a>每个流如何发出令牌和代码
 
 根据客户端的生成方式，客户端可以使用 Azure AD 支持的一种（或几种）身份验证流。 这些流可以生成各种令牌（id_tokens、刷新令牌、访问令牌）以及授权代码，并需要不同的令牌使其正常工作。 此图表提供概述：
 
-|流向 | 需要 | id_token | 访问令牌 | 刷新令牌 | 授权代码 | 
+|流向 | 需要 | id_token | 访问令牌 | 刷新令牌 | 授权代码 |
 |-----|----------|----------|--------------|---------------|--------------------|
-|[授权代码流](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
+|[授权代码流](v2-oauth2-auth-code-flow.md) | | x | x | x | x|
 |[隐式流](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
 |[混合 OIDC 流](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
 |[刷新令牌兑换](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | 刷新令牌 | x | x | x| |
 |[代理流](v2-oauth2-on-behalf-of-flow.md) | 访问令牌| x| x| x| |
 |[客户端凭据](v2-oauth2-client-creds-grant-flow.md) | | | x（仅限应用）| | |
 
-通过隐式模式颁发的令牌由于通过 URL（其中 `response_mode` 是 `query` 或 `fragment`）传回浏览器而具有长度限制。  有些浏览器对可以放在浏览器栏中的 URL 的大小有限制，当 URL 太长时会失败。  因此，这些令牌没有 `groups` 或 `wids` 声明。 
+通过隐式模式颁发的令牌由于通过 URL（其中 `response_mode` 是 `query` 或 `fragment`）传回浏览器而具有长度限制。  有些浏览器对可以放在浏览器栏中的 URL 的大小有限制，当 URL 太长时会失败。  因此，这些令牌没有 `groups` 或 `wids` 声明。
 
 现在，您已经了解了基础知识，请继续阅读以了解标识应用模型和 API，了解预配在 Azure AD 中的工作原理，并获取有关 Azure AD 支持的常见方案的详细信息的链接。
 
@@ -126,7 +126,7 @@ Microsoft 标识平台：
 
 在 Microsoft 标识平台中，[应用程序对象](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#application-object)描述应用程序。 在部署时，Microsoft 标识平台使用应用程序对象作为蓝图来创建[服务主体](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#service-principal-object)，它表示目录或租户中的应用程序的具体实例。 该服务主体定义应用在特定目标目录中可以实际执行的操作、使用者是谁、以及可以访问哪些资源等。 Microsoft 标识平台通过**许可**使用应用程序对象创建服务主体。
 
-下图显示了征得同意后经过简化的 Microsoft 标识平台预配流程。 它显示两个租户：A 和 B. 租户 A 拥有应用程序。 租户 B 通过服务主体实例化该应用程序。  
+下图显示了征得同意后经过简化的 Microsoft 标识平台预配流程。 它显示两个租户：A 和 B. 租户 A 拥有应用程序。 租户 B 通过服务主体实例化该应用程序。
 
 ![征得同意后经过简化的预配流程](./media/authentication-scenarios/simplified-provisioning-flow-consent-driven.svg)
 
@@ -160,7 +160,7 @@ Microsoft 标识平台：
 
 ### <a name="how-a-web-app-determines-if-the-user-is-authenticated"></a>Web 应用如何确定用户是否已完成身份验证
 
-Web 应用开发人员可以指定是所有页还是只有特定的页需要身份验证。 例如，在 ASP.NET/ASP.NET Core 中，可以通过将 `[Authorize]` 属性添加到控制器操作来进行这种指定。 
+Web 应用开发人员可以指定是所有页还是只有特定的页需要身份验证。 例如，在 ASP.NET/ASP.NET Core 中，可以通过将 `[Authorize]` 属性添加到控制器操作来进行这种指定。
 
 此属性会导致 ASP.NET 检查是否存在包含用户标识的会话 Cookie。 如果 Cookie 不存在，ASP.NET 会将身份验证重定向到指定的标识提供者。 如果标识提供者是 Azure AD，则 Web 应用会将身份验证重定向到 `https://login.microsoftonline.com`，这会显示登录对话框。
 

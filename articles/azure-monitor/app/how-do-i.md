@@ -3,12 +3,12 @@ title: 如何在 Azure Application Insights 中执行... | Microsoft Docs
 description: 有关 Application Insights 的常见问题解答。
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 5b65087c361911f0714723c315e0b7f7e9bb74e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d4b1e79c48b14ed7dce756468e4c48d633c3f04
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663851"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536856"
 ---
 # <a name="how-do-i--in-application-insights"></a>如何在 Application Insights 中执行...？
 ## <a name="get-an-email-when-"></a>... 时收到电子邮件
@@ -35,7 +35,7 @@ ms.locfileid: "77663851"
 
     telemetry.TrackMetric("Alarm", 10);
 
-或者：
+或：
 
     var measurements = new Dictionary<string,double>();
     measurements ["Alarm"] = 10;
@@ -45,7 +45,7 @@ ms.locfileid: "77663851"
 
     telemetry.TrackMetric("Alarm", 0.5);
 
-在[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)中创建一个图表来查看警报：
+在[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)中创建一个图表来查看警报：
 
 ![](./media/how-do-i/010-alarm.png)
 
@@ -82,12 +82,12 @@ ms.locfileid: "77663851"
 
 ## <a name="visualize-data"></a>可视化数据
 #### <a name="dashboard-with-metrics-from-multiple-apps"></a>包含来自多个应用的指标的仪表板
-* 在 [指标资源管理器](../../azure-monitor/app/metrics-explorer.md) 中，自定义图表并将它保存到收藏夹。 将图表固定到 Azure 仪表板。
+* 在 [指标资源管理器](../../azure-monitor/platform/metrics-charts.md) 中，自定义图表并将它保存到收藏夹。 将图表固定到 Azure 仪表板。
 
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>包含来自其他源和 Application Insights 的数据的仪表板
 * [将遥测数据导出到 Power BI](../../azure-monitor/app/export-power-bi.md )。
 
-或
+Or
 
 * 使用 SharePoint 作为仪表板，在 SharePoint Web 部件中显示数据。 [使用连续导出和数据流分析导出到 SQL](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)。  使用 PowerView 检查数据库，并创建适用于 PowerView 的 SharePoint Web 部件。
 
@@ -159,5 +159,5 @@ ms.locfileid: "77663851"
 * **Unix 服务器** - [安装收集](../../azure-monitor/app/java-collectd.md)
 
 ### <a name="to-display-more-performance-counters"></a>显示更多性能计数器
-* 首先[添加一个新图表](../../azure-monitor/app/metrics-explorer.md)，然后查看计数器是否出现在提供的基本集内。
+* 首先[添加一个新图表](../../azure-monitor/platform/metrics-charts.md)，然后查看计数器是否出现在提供的基本集内。
 * 如果没有，请[将计数器添加到性能计数器模块收集的集内](../../azure-monitor/app/performance-counters.md)。

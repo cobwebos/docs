@@ -3,12 +3,12 @@ title: 用于处理自定义事件和指标的 Application Insights API | Micros
 description: 在设备、桌面应用、网页或服务中插入几行代码，即可跟踪使用情况和诊断问题。
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.openlocfilehash: 06bd8bd0958afd26e1256a010b08c908c59aaf7d
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: d6cb2f5ab418e8d3b5935fef535565ccf55a3906
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585879"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536941"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -31,7 +31,7 @@ ms.locfileid: "80585879"
 
 可以[将属性和指标附加到](#properties)其中的大多数遥测调用。
 
-## <a name="before-you-start"></a><a name="prep"></a>准备工作
+## <a name="before-you-start"></a><a name="prep"></a>开始之前
 
 如果还没有 Application Insights SDK 引用：
 
@@ -107,7 +107,7 @@ telemetry.getContext().getDevice().setId("...");
 
 ## <a name="trackevent"></a>TrackEvent
 
-在 Application Insights 中，自定义事件** 是一个数据点，它可在[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)中显示为聚合计数，在[诊断搜索](../../azure-monitor/app/diagnostic-search.md)中显示为单个事件。 （它与 MVC 或其他框架“事件”不相关。）
+在 Application Insights 中，自定义事件** 是一个数据点，它可在[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)中显示为聚合计数，在[诊断搜索](../../azure-monitor/app/diagnostic-search.md)中显示为单个事件。 （它与 MVC 或其他框架“事件”不相关。）
 
 在代码中插入 `TrackEvent` 调用来统计各种事件。 用户选择特定功能的频率、实现特定目标的频率，或可能制造特定类型的错误的频率。
 
@@ -443,7 +443,7 @@ requests
 
 将异常发送到 Application Insights：
 
-* 用于[对其计数](../../azure-monitor/app/metrics-explorer.md)，作为问题发生频率的指示。
+* 用于[对其计数](../../azure-monitor/platform/metrics-charts.md)，作为问题发生频率的指示。
 * 用于[检查单个事件](../../azure-monitor/app/diagnostic-search.md)。
 
 报告包含堆栈跟踪。
@@ -573,7 +573,7 @@ trackTrace(message: string, properties?: {[string]:string}, severityLevel?: Seve
 
 记录诊断事件，例如进入或离开某个方法。
 
- 参数 | 描述
+ 参数 | 说明
 ---|---
 `message` | 诊断数据。 可以比名称长很多。
 `properties` | 字符串映射到字符串：用于筛选门户中[异常](https://azure.microsoft.com/documentation/articles/app-insights-api-custom-events-metrics/#properties)的其他数据。 默认为空。
@@ -774,7 +774,7 @@ function Authenticated(signInId) {
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-在[指标资源管理器中](../../azure-monitor/app/metrics-explorer.md)，您可以创建一个计算**用户、已身份验证**和**用户帐户**的图表。
+在[指标资源管理器中](../../azure-monitor/platform/metrics-charts.md)，您可以创建一个计算**用户、已身份验证**和**用户帐户**的图表。
 
 还可以[搜索](../../azure-monitor/app/diagnostic-search.md)具有特定用户名和帐户的客户端数据点。
 

@@ -3,12 +3,12 @@ title: Azure Migrate 设备
 description: 提供服务器评估和迁移中使用的 Azure 迁移设备的概述。
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.openlocfilehash: bccf4738d46b65f2d149eafc8e69591141d7d073
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 130de0824a1671fb0b0e3e980f06f4c3abc689d2
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437593"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538216"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 设备
 
@@ -25,11 +25,22 @@ Azure 迁移设备用于以下方案。
 **超 V VM 评估** | Azure 迁移：服务器评估 | 发现超虚拟机<br/><br/> 收集机器元数据和性能元数据进行评估。
 **物理机器评估** |  Azure 迁移：服务器评估 |  发现物理服务器（或您视为物理服务器的 VM）。<br/><br/> 收集机器元数据和性能元数据进行评估。
 
+## <a name="deployment-methods"></a>部署方法
+
+可以使用以下几种方法部署设备：
+
+- 可以使用 VMware VM 和超 VM 的模板（VMware 的 OVA 模板或用于 Hyper-V 的 VHD）部署设备。
+- 如果不想使用模板，可以使用 PowerShell 脚本为 VMware 或 Hyper-V 部署设备。
+- 在 Azure 政府中，应使用脚本部署设备。
+- 对于物理服务器，您始终使用脚本部署设备。
+- 下载链接可在下表中提供。
+
+
 ## <a name="appliance---vmware"></a>设备 - VMware 
 
 下表总结了 VMware 的 Azure 迁移设备要求。
 
-**要求** | **Vmware** 
+**要求** | **VMware** 
 --- | ---
 **设备组件** | 产品具有以下组件：<br/><br/> - **管理应用**：这是一个 Web 应用程序，用于在设备部署期间用户输入。 用于评估计算机以迁移到 Azure 时使用。<br/> - **发现代理**：代理收集计算机配置数据。 用于评估计算机以迁移到 Azure 时使用。<br/>- **评估代理**：代理收集性能数据。 用于评估计算机以迁移到 Azure 时使用。<br/>- **自动更新服务**：更新设备组件（每 24 小时运行一次）。<br/>- **DRA 代理**：协调 VM 复制，并协调复制的计算机和 Azure 之间的通信。 仅在使用无代理迁移将 VMware VM 复制到 Azure 时使用。<br/>- **网关**：向 Azure 发送复制的数据。 仅在使用无代理迁移将 VMware VM 复制到 Azure 时使用。
 **支持部署** | 使用 OVA 模板部署为 VMware VM。<br/><br/> 使用 PowerShell 安装脚本部署为 VMware VM 或物理计算机。
@@ -67,7 +78,7 @@ Azure 迁移设备用于以下方案。
 **要求** | **物理** 
 --- | ---
 **设备组件** | 产品具有以下组件： <br/><br/> - **管理应用**：这是一个 Web 应用程序，用于在设备部署期间用户输入。 用于评估计算机以迁移到 Azure 时使用。<br/> - **发现代理**：代理收集计算机配置数据。 用于评估计算机以迁移到 Azure 时使用。<br/>- **评估代理**：代理收集性能数据。 用于评估计算机以迁移到 Azure 时使用。<br/>- **自动更新服务**：更新设备组件（每 24 小时运行一次）。
-**支持部署** | 使用 PowerShell 安装脚本部署为专用物理计算机或 VM。
+**支持部署** | 使用 PowerShell 安装脚本部署为专用物理计算机或 VM。 该脚本可从门户下载。
 **项目支持** |  设备可以与单个项目关联。 <br/> 任意数量的设备都可以与单个项目关联。<br/> 
 **发现限制** | 设备可以发现多达 250 台物理服务器。
 **电源外壳脚本** | 从门户将脚本 （AzureMigrate 安装程序.ps1） 下载到压缩文件夹中。 [了解详细信息](tutorial-assess-physical.md#set-up-the-appliance)。 或者，[直接下载](https://go.microsoft.com/fwlink/?linkid=2105112)。<br/><br/> 下载大小为 59.7 MB。
@@ -78,8 +89,10 @@ Azure 迁移设备用于以下方案。
 
 Azure 迁移设备需要连接到 Internet。
 
-- 部署设备时，Azure 迁移对下表中总结的 URL 执行连接检查。
+- 部署设备时，Azure 迁移会对所需的 URL 执行连接检查。
 - 如果您使用的是基于 URL 的代理连接到互联网，则需要允许访问这些 URL，确保代理解析在查找 URL 时收到的任何 CNAME 记录。
+
+### <a name="public-cloud-urls"></a>公共云 URL
 
 **URL** | **详细信息**  
 --- | --- |
@@ -95,6 +108,25 @@ download.microsoft.com/download | 允许从微软下载下载。
 *.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com | 连接到 Azure 迁移服务 URL。
 *.hypervrecoverymanager.windowsazure.com | **用于无 VMware 无代理迁移**<br/><br/> 连接到 Azure 迁移服务 URL。
 \* .blob.core.windows.net |  **用于无 VMware 无代理迁移**<br/><br/>将数据上载到存储以进行迁移。
+
+### <a name="government-cloud-urls"></a>政府云 URL
+
+**URL** | **详细信息**  
+--- | --- |
+*.portal.azure.us  | 导航到 Azure 门户。
+graph.windows.net | 登录到 Azure 订阅。
+login.microsoftonline.us  | 为设备创建 Azure 活动目录 （AD） 应用，以便与 Azure 迁移进行通信。
+management.usgovcloudapi.net | 为设备创建 Azure AD 应用，以便与 Azure 迁移服务进行通信。
+dc.services.visualstudio.com | 上传用于内部监视的应用日志。
+*.vault.usgovcloudapi.net | 在 Azure 密钥保管库中管理机密。
+aka.ms/* | 允许访问也称为链接。 用于 Azure 迁移设备更新。
+download.microsoft.com/download | 允许从微软下载下载。
+*.servicebus.usgovcloudapi.net  | 设备和 Azure 迁移服务之间的通信。
+*.discoverysrv.windowsazure.us <br/> *.migration.windowsazure.us | 连接到 Azure 迁移服务 URL。
+*.hypervrecoverymanager.windowsazure.us | **用于无 VMware 无代理迁移**<br/><br/> 连接到 Azure 迁移服务 URL。
+*.blob.core.usgovcloudapi.net  |  **用于无 VMware 无代理迁移**<br/><br/>将数据上载到存储以进行迁移。
+*.applicationinsights.us | 由设备上的网关代理用于访问应用程序见解终结点以进行诊断监视。
+
 
 
 
@@ -144,7 +176,7 @@ IPv6 地址 | vm.Guest.Net
 读取吞吐量（每秒 MB） | net.received.average
 写入吞吐量（每秒 MB） | net.transmitted.average
 **库存路径详细信息** | 
-名称 | container.GetType().Name
+“属性” | container.GetType().Name
 子对象类型 | container.ChildType
 引用详细信息 | container.MoRef
 父级详细信息 | Container.Parent

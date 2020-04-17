@@ -3,12 +3,12 @@ title: 在 Azure 应用程序见解中分离遥测
 description: 为开发、测试和生产戳记直接遥测不同的资源。
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 3580d162f4b3955a04ffcd0f13933221bfef3b65
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 565d51751ad50479f4e227b6855ac63b80bd949e
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671454"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536771"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>分隔开发、测试和生产阶段的遥测
 
@@ -69,7 +69,7 @@ ms.locfileid: "77671454"
 
 ![依次单击“新建”、“Application Insights”](./media/separate-resources/01-new.png)
 
-* **应用程序类型**会影响在概述边栏选项卡上看到的内容和[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)中的可用属性。 如果未看到应用类型，请选择网页的 Web 类型之一。
+* **应用程序类型**会影响在概述边栏选项卡上看到的内容和[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)中的可用属性。 如果未看到应用类型，请选择网页的 Web 类型之一。
 * **资源组**是管理访问[控制](../../azure-monitor/app/resources-roles-access-control.md)等属性的便利。 可为开发、测试和生产使用单独的资源组。
 * **订阅**是 Azure 中的付款帐户。
 * **位置**是保留数据的位置。 当前无法更改它。 
@@ -89,7 +89,7 @@ ms.locfileid: "77671454"
 ## <a name="filter-on-build-number"></a>按版本号筛选
 发布新应用版本时，我们希望能够将不同版本的遥测数据分开。
 
-可以设置“应用程序版本”属性，这样便可以筛选[搜索](../../azure-monitor/app/diagnostic-search.md)和[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)结果。
+可以设置“应用程序版本”属性，这样便可以筛选[搜索](../../azure-monitor/app/diagnostic-search.md)和[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)结果。
 
 ![按属性进行筛选](./media/separate-resources/050-filter.png)
 
@@ -139,7 +139,7 @@ ms.locfileid: "77671454"
     </PropertyGroup>
 ```
 
-当它具有内部信息时，Application Insights Web 模块自动将**应用程序版本**作为属性添加到每个遥测项。 这样，便可以在执行[诊断搜索](../../azure-monitor/app/diagnostic-search.md)或[浏览指标](../../azure-monitor/app/metrics-explorer.md)时按版本进行筛选。
+当它具有内部信息时，Application Insights Web 模块自动将**应用程序版本**作为属性添加到每个遥测项。 这样，便可以在执行[诊断搜索](../../azure-monitor/app/diagnostic-search.md)或[浏览指标](../../azure-monitor/platform/metrics-charts.md)时按版本进行筛选。
 
 但是，请注意，生成版本号仅由 Microsoft 生成引擎生成，而不是由 Visual Studio 的开发人员生成。
 

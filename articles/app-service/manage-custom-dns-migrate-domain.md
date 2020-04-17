@@ -6,12 +6,12 @@ ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
 ms.topic: article
 ms.date: 10/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 79bd0a19a9bd8ebd100ed80ca0206656d73ef76c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5c1760c746aca439e19ab5727e5be02f6dbad3cb
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74672361"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535683"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>将活动 DNS 名称迁移到 Azure 应用服务
 
@@ -71,7 +71,7 @@ ms.locfileid: "74672361"
 
 键入已添加 TXT 记录的完全限定的域名，如 `www.contoso.com`。 对于通配符域（如 \*.contoso.com），可以使用与通配符域匹配的任何 DNS 名称。 
 
-选择“验证”。****
+选择“验证”。 
 
 “添加主机名”**** 按钮会被激活。 
 
@@ -101,7 +101,7 @@ ms.locfileid: "74672361"
 
 通过选择右上角的 X **** 关闭“添加主机名”**** 页。 
 
-在“自定义域”页中，复制应用的 IP 地址。****
+在“自定义域”页中，复制应用的 IP 地址。 
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
 
@@ -111,7 +111,7 @@ ms.locfileid: "74672361"
 
 对于 `contoso.com` 根域示例，重新映射 A 或 CNAME 记录，如下表中的示例所示： 
 
-| FQDN 示例 | 记录类型 | 主机 | “值” |
+| FQDN 示例 | 记录类型 | 主机 | 值 |
 | - | - | - | - |
 | contoso.com（根域） | A | `@` | 在[复制应用的 IP 地址](#info)步骤中复制的 IP 地址 |
 | www\.contoso.com (sub) | CNAME | `www` | _&lt;应用程序名称>.azure 网站.net_ |
@@ -129,7 +129,7 @@ ms.locfileid: "74672361"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何将自定义 SSL 证书绑定到应用服务。
+了解如何将自定义 TLS/SSL 证书绑定到应用服务。
 
 > [!div class="nextstepaction"]
-> [将 SSL 证书绑定到 Azure 应用服务](configure-ssl-bindings.md)
+> [使用 Azure 应用服务中的 TLS 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)

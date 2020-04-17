@@ -3,12 +3,12 @@ title: 监视 Windows 桌面应用的使用情况和性能
 description: 使用 Application Insights 分析 Windows 桌面应用的使用情况和性能。
 ms.topic: conceptual
 ms.date: 10/29/2019
-ms.openlocfilehash: 8234b9ba2c92fc64cfa8f598db99954e00caab45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb9e0fc480098478a3a68265ac85e0d5450e27fe
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670825"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537383"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>监视经典 Windows 桌面应用中的使用情况和性能
 
@@ -109,6 +109,6 @@ namespace CustomInitializer.Telemetry
 ## <a name="next-steps"></a>后续步骤
 * [创建仪表板](../../azure-monitor/app/overview-dashboard.md)
 * [诊断搜索](../../azure-monitor/app/diagnostic-search.md)
-* [探索指标](../../azure-monitor/app/metrics-explorer.md)
+* [探索指标](../../azure-monitor/platform/metrics-charts.md)
 * [编写分析查询](../../azure-monitor/app/analytics.md)
 

@@ -10,101 +10,18 @@ ms.tgt_pltfrm: vm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: avverma
-ms.openlocfilehash: f335b0fb3396103c321d740bcf6d125e60e95086
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8e73ef75b3313656b45d29270d9996c3ad17c630
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78274809"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538063"
 ---
-# <a name="preview-automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>预览：Azure 虚拟机缩放集的自动实例修复
+# <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Azure 虚拟机缩放集的自动实例修复
 
 为 Azure 虚拟机扩展集启用自动实例修复有助于通过维护一组正常实例实现应用程序的高可用性。 如果发现比例集中的实例与[应用程序运行状况扩展](./virtual-machine-scale-sets-health-extension.md)或[负载均衡器运行状况探测器](../load-balancer/load-balancer-custom-probe-overview.md)报告的那样不正常，则此功能通过删除不正常的实例并创建新实例来替换它，自动执行实例修复。
 
-> [!NOTE]
-> 此预览版功能不附带服务级别协议，不建议将其用于生产工作负荷。
-
 ## <a name="requirements-for-using-automatic-instance-repairs"></a>使用自动实例修复的要求
-
-**选择加入自动实例修复预览**
-
-使用 REST API 或 Azure PowerShell 选择加入自动实例修复预览。 这些步骤将注册预览功能的订阅。 请注意，这只是使用此功能所需的一次性设置。 如果您的订阅已注册用于自动实例修复预览，则无需再次注册。 
-
-使用 REST API 
-
-1. 使用功能注册功能[- 注册](/rest/api/resources/features/register) 
-
-```
-POST on '/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/RepairVMScaleSetInstancesPreview/register?api-version=2015-12-01'
-```
-
-```json
-{
-  "properties": {
-    "state": "Registering"
-  },
-  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/RepairVMScaleSetInstancesPreview",
-  "type": "Microsoft.Features/providers/features",
-  "name": "Microsoft.Compute/RepairVMScaleSetInstancesPreview"
-}
-```
-
-2. 等待几分钟，*让国家*更改为*注册*。 您可以使用以下 API 来确认这一点。
-
-```
-GET on '/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/RepairVMScaleSetInstancesPreview?api-version=2015-12-01'
-```
-
-```json
-{
-  "properties": {
-    "state": "Registered"
-  },
-  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/RepairVMScaleSetInstancesPreview",
-  "type": "Microsoft.Features/providers/features",
-  "name": "Microsoft.Compute/RepairVMScaleSetInstancesPreview"
-}
-```
-
-3. 一旦*国家*更改为*注册*，然后运行以下内容。
-
-```
-POST on '/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2015-12-01'
-```
-
-使用 Azure PowerShell
-
-1. 使用 cmdlet[寄存器-AzureRm 资源提供程序](/powershell/module/azurerm.resources/register-azurermresourceprovider)注册该功能，后跟[注册 -AzureRm 提供程序功能](/powershell/module/azurerm.resources/register-azurermproviderfeature)
-
-```azurepowershell-interactive
-Register-AzureRmResourceProvider `
- -ProviderNamespace Microsoft.Compute
-
-Register-AzureRmProviderFeature `
- -ProviderNamespace Microsoft.Compute `
- -FeatureName RepairVMScaleSetInstancesPreview
-```
-
-2. 等待几分钟，注册*状态*更改为*注册*。 您可以使用以下 cmdlet 来确认这一点。
-
-```azurepowershell-interactive
-Get-AzureRmProviderFeature `
- -ProviderNamespace Microsoft.Compute `
- -FeatureName RepairVMScaleSetInstancesPreview
- ```
-
- 答复应如下。
-
-| 功能名称                           | ProviderName            | 注册国       |
-|---------------------------------------|-------------------------|-------------------------|
-| 修复VMScale设置实例预览      | Microsoft.Compute       | 已注册              |
-
-3. 一旦*注册状态*更改为*已注册*，然后运行以下 cmdlet。
-
-```azurepowershell-interactive
-Register-AzureRmResourceProvider `
- -ProviderNamespace Microsoft.Compute
-```
 
 **为规模集启用应用程序运行状况监视**
 
@@ -122,7 +39,7 @@ Register-AzureRmResourceProvider `
 
 **启用单个放置组**
 
-此预览当前仅适用于作为单个放置组部署的规模集。 属性*单放置组*应设置为*true，* 以便将缩放设置为使用自动实例修复功能。 了解有关[放置组](./virtual-machine-scale-sets-placement-groups.md#placement-groups)的更多。
+此功能当前仅适用于作为单个放置组部署的规模集。 属性*单放置组*应设置为*true，* 以便将缩放设置为使用自动实例修复功能。 了解有关[放置组](./virtual-machine-scale-sets-placement-groups.md#placement-groups)的更多。
 
 **API 版本**
 
@@ -130,15 +47,15 @@ Register-AzureRmResourceProvider `
 
 **对资源或订阅移动的限制**
 
-作为此预览的一部分，启用自动修复策略时，缩放集当前不支持资源或订阅移动。
+启用自动修复功能时，缩放集当前不支持资源或订阅移动。
 
 **对服务结构规模集的限制**
 
-服务结构缩放集当前不支持此预览功能。
+服务结构缩放集当前不支持此功能。
 
 ## <a name="how-do-automatic-instance-repairs-work"></a>自动实例修复如何工作？
 
-自动实例修复功能依赖于对规模集中的各个实例的运行状况监视。 缩放集中的 VM 实例可以配置为使用[应用程序运行状况扩展](./virtual-machine-scale-sets-health-extension.md)或[负载均衡器运行状况探测器](../load-balancer/load-balancer-custom-probe-overview.md)发出应用程序运行状况。 如果发现实例不正常，则缩放集通过删除不正常的实例并创建新实例来替换它来执行修复操作。 此功能可以使用*自动修复策略*对象在虚拟机缩放集模型中启用。
+自动实例修复功能依赖于对规模集中的各个实例的运行状况监视。 缩放集中的 VM 实例可以配置为使用[应用程序运行状况扩展](./virtual-machine-scale-sets-health-extension.md)或[负载均衡器运行状况探测器](../load-balancer/load-balancer-custom-probe-overview.md)发出应用程序运行状况。 如果发现实例不正常，则缩放集通过删除不正常的实例并创建新实例来替换它来执行修复操作。 最新的虚拟机规模集模型用于创建新实例。 此功能可以使用*自动修复策略*对象在虚拟机缩放集模型中启用。
 
 ### <a name="batching"></a>批处理
 
@@ -147,6 +64,12 @@ Register-AzureRmResourceProvider `
 ### <a name="grace-period"></a>宽限期
 
 当实例由于在规模集上执行的 PUT、PATCH 或 POST 操作（例如重新映像、重新部署、更新等）而通过状态更改操作时，则该实例上的任何修复操作仅在等待宽限期后执行。 宽限期是允许实例返回到正常状态的时间量。 宽限期在状态更改完成后开始。 这有助于避免任何过早或意外的维修操作。 对于比例集中中任何新创建的实例（包括由于修复操作而创建的实例），宽限期都适用。 宽限期以 ISO 8601 格式以分钟为单位指定，可以使用属性 *"自动修复策略.gracePeriod"* 进行设置。 宽限期的范围为 30 分钟到 90 分钟，默认值为 30 分钟。
+
+### <a name="suspension-of-repairs"></a>暂停维修 
+
+虚拟机规模集提供了在需要时临时挂起自动实例修复的功能。 虚拟机规模集实例中属性*业务流程服务*下的自动修复*服务服务状态*显示自动修复的当前状态。 当选择缩放集进行自动修复时，参数*服务状态*的值设置为 *"正在运行*"。 当缩放集的自动修复挂起时，参数*服务状态*设置为*挂起*。 如果在比例集中定义了*自动修复策略*，但未启用自动修复功能，则参数*服务状态*设置为 *"不运行*"。
+
+如果新创建的用于替换规模集中的不正常实例即使在重复执行维修操作后仍不正常，则作为安全措施，平台将*服务状态*更新为"*挂起*"。 通过将自动修复*的服务状态*值设置为 *"正在运行*"，可以再次恢复自动修复。 有关[查看和更新秤集自动维修策略的服务状态](#viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy)的部分提供了详细说明。 
 
 自动实例修复过程的工作方式如下：
 
@@ -158,11 +81,29 @@ Register-AzureRmResourceProvider `
 
 ## <a name="instance-protection-and-automatic-repairs"></a>实例保护和自动修复
 
-如果比例集中的实例通过应用*["保护从比例集操作"保护策略](./virtual-machine-scale-sets-instance-protection.md#protect-from-scale-set-actions)* 进行保护，则不会对该实例执行自动修复。
+如果比例集中的实例通过应用其中一个[保护策略](./virtual-machine-scale-sets-instance-protection.md)受到保护，则不会对该实例执行自动修复。 这同时适用于保护策略：*防止扩展*和*防止缩放集*操作。 
+
+## <a name="terminatenotificationandautomaticrepairs"></a>终止通知和自动修复
+
+如果在规模集中启用[了终止通知](./virtual-machine-scale-sets-terminate-notification.md)功能，则在自动修复操作期间，删除不正常的实例将遵循终止通知配置。 终止通知通过 Azure 元数据服务发送 （ 计划的事件 ）， 并且实例删除在配置的延迟超时期间延迟。 但是，创建新实例以替换不正常的实例不会等待延迟超时完成。
 
 ## <a name="enabling-automatic-repairs-policy-when-creating-a-new-scale-set"></a>创建新比例集时启用自动修复策略
 
 对于在创建新比例集时启用自动修复策略，请确保满足选择加入此功能的所有[要求](#requirements-for-using-automatic-instance-repairs)。 应正确配置应用程序终结点以用于缩放集实例，以避免在配置终结点时触发意外修复。 对于新创建的缩放集，任何实例修复仅在等待宽限期后执行。 要在比例集中启用自动实例修复，请使用虚拟机缩放集模型中的*自动修复策略*对象。
+
+### <a name="azure-portal"></a>Azure 门户
+ 
+在创建新比例集时，以下步骤启用自动修复策略。
+ 
+1. 转到**虚拟机缩放集**。
+1. 选择 **+ 添加**以创建新的比例集。
+1. 转到 **"运行状况"** 选项卡。 
+1. 找到 **"运行状况**"部分。
+1. 启用**监视器应用程序运行状况**选项。
+1. 找到 **"自动维修策略"** 部分。
+1. **打开****"自动修复"** 选项。
+1. 在**宽限期（分钟）** 中，以分钟指定宽限期，允许的值在 30 到 90 分钟之间。 
+1. 创建新比例集后，选择 **"查看 + 创建**"按钮。
 
 ### <a name="rest-api"></a>REST API
 
@@ -197,9 +138,42 @@ New-AzVmssConfig `
  -AutomaticRepairGracePeriod "PT30M"
 ```
 
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+
+下面的示例启用自动修复策略，同时使用*[az vms 创建](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-create)* 创建新的缩放集。 首先创建资源组，然后创建一个新的规模集，自动修复策略宽限期设置为 30 分钟。
+
+```azurecli-interactive
+az group create --name <myResourceGroup> --location <VMSSLocation>
+az vmss create \
+  --resource-group <myResourceGroup> \
+  --name <myVMScaleSet> \
+  --image UbuntuLTS \
+  --admin-username <azureuser> \
+  --generate-ssh-keys \
+  --load-balancer <existingLoadBalancer> \
+  --health-probe <existingHealthProbeUnderLoaderBalancer> \
+  --automatic-repairs-period 30
+```
+
+上述示例使用现有的负载均衡器和运行状况探测器来监视实例的应用程序运行状况状态。 如果您更喜欢使用应用程序运行状况扩展进行监视，则可以创建比例集，配置应用程序运行状况扩展，然后使用*az vmss 更新*启用自动实例修复策略，如下一节所述。
+
 ## <a name="enabling-automatic-repairs-policy-when-updating-an-existing-scale-set"></a>更新现有规模集时启用自动修复策略
 
 在现有比例集中启用自动修复策略之前，请确保满足选择加入此功能的所有[要求](#requirements-for-using-automatic-instance-repairs)。 应正确配置应用程序终结点以用于缩放集实例，以避免在配置终结点时触发意外修复。 要在比例集中启用自动实例修复，请使用虚拟机缩放集模型中的*自动修复策略*对象。
+
+更新现有比例集的模型后，请确保将最新模型应用于比例的所有实例。 请参阅有关如何使 VM 与[最新的比例集模型](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)更新的说明。
+
+### <a name="azure-portal"></a>Azure 门户
+
+您可以通过 Azure 门户修改现有规模集的自动修复策略。 
+ 
+1. 转到现有虚拟机规模集。
+1. 在左侧菜单中的 **"设置"** 下，选择 **"运行状况"和"修复**"。
+1. 启用**监视器应用程序运行状况**选项。
+1. 找到 **"自动维修策略"** 部分。
+1. **打开****"自动修复"** 选项。
+1. 在**宽限期（分钟）** 中，以分钟指定宽限期，允许的值在 30 到 90 分钟之间。 
+1. 完成后，选择“保存”****。 
 
 ### <a name="rest-api"></a>REST API
 
@@ -232,6 +206,96 @@ Update-AzVmss `
  -AutomaticRepairGracePeriod "PT40M"
 ```
 
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+
+下面是使用*[az vms 更新](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-update)* 更新更新现有规模集的自动实例修复策略的示例。
+
+```azurecli-interactive
+az vmss update \  
+  --resource-group <myResourceGroup> \
+  --name <myVMScaleSet> \
+  --enable-automatic-repairs true \
+  --automatic-repairs-period 30
+```
+
+## <a name="viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy"></a>查看和更新自动实例修复策略的服务状态
+
+### <a name="rest-api"></a>REST API 
+
+使用 API 版本 2019-12-01 或更高版本的虚拟机规模设置[获取实例视图](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/getinstanceview)，以查看*服务状态*，以便根据属性*业务流程服务*进行自动修复。 
+
+```http
+GET '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/instanceView?api-version=2019-12-01'
+```
+
+```json
+{
+  "orchestrationServices": [
+    {
+      "serviceName": "AutomaticRepairs",
+      "serviceState": "Running"
+    }
+  ]
+}
+```
+
+在虚拟机规模集中使用 API 版本 2019-12-01 或更高版本的*SetOrchestraServiceState* API 来设置自动修复的状态。 选择缩放集进入自动修复功能后，可以使用此 API 暂停或恢复缩放集的自动修复。 
+
+ ```http
+ POST '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/setOrchestrationServiceState?api-version=2019-12-01'
+ ```
+
+```json
+{
+  "orchestrationServices": [
+    {
+      "serviceName": "AutomaticRepairs",
+      "serviceState": "Suspend"
+    }
+  ]
+}
+```
+
+### <a name="azure-cli"></a>Azure CLI 
+
+使用[获取实例视图](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-get-instance-view)cmdlet 查看*服务状态*以进行自动实例修复。 
+
+```azurecli-interactive
+az vmss get-instance-view \
+    --name MyScaleSet \
+    --resource-group MyResourceGroup
+```
+
+使用[集式-编排-服务状态](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-set-orchestration-service-state)cmdlet 更新*服务状态*以进行自动实例修复。 选择缩放集进入自动修复功能后，您可以使用此 cmdlet 暂停或恢复缩放集的自动修复。 
+
+```azurecli-interactive
+az vmss set-orchestration-service-state \
+    --service-name AutomaticRepairs \
+    --action Resume \
+    --name MyScaleSet \
+    --resource-group MyResourceGroup
+```
+### <a name="azure-powershell"></a>Azure PowerShell
+
+使用带有参数*实例视图*[的 Get-AzVms](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss?view=azps-3.7.0) cmdlet 查看*服务状态*以进行自动实例修复。
+
+```azurepowershell-interactive
+Get-AzVmss `
+    -ResourceGroupName "myResourceGroup" `
+    -VMScaleSetName "myScaleSet" `
+    -InstanceView
+```
+
+使用 Set-AzVmsOrchestraServiceServiceServiceScmdlet 更新*服务状态*以进行自动实例修复。 选择缩放集进入自动修复功能后，您可以使用此 cmdlet 暂停或恢复缩放集的自动修复。
+
+```azurepowershell-interactive
+Set-AzVmssOrchestrationServiceState `
+    -ResourceGroupName "myResourceGroup" `
+    -VMScaleSetName "myScaleSet" `
+    -ServiceName "AutomaticRepairs" `
+    -Action "Suspend"
+```
+
 ## <a name="troubleshoot"></a>疑难解答
 
 **无法启用自动修复策略**
@@ -245,6 +309,8 @@ Update-AzVmss `
 **查看缩放集实例的应用程序运行状况**
 
 您可以将[获取实例视图 API](/rest/api/compute/virtualmachinescalesetvms/getinstanceview)用于虚拟机规模集中的实例以查看应用程序运行状况状态。 使用 Azure PowerShell，可以将 cmdlet [Get-AzVmsVM](/powershell/module/az.compute/get-azvmssvm)与 *-实例视图*标志一起使用。 应用程序运行状况状态在属性*vmHealth*下提供。
+
+在 Azure 门户中，您还可以查看运行状况状态。 转到现有比例集，从左侧的菜单中选择**实例**，然后查看"**运行状况状态**"列，了解每个比例集实例的运行状况。 
 
 ## <a name="next-steps"></a>后续步骤
 

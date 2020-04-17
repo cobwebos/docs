@@ -3,12 +3,12 @@ title: 新建 Azure Application Insights 资源 | Microsoft Docs
 description: 为新的实时应用程序手动设置 Application Insights 监视。
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: c1b3a6920723ad59b714cce4bd69e1b95fe1995f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0c8b9ccaa70a2fd1bf46c6f4537f54d702ecc48f
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132418"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537570"
 ---
 # <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 
@@ -16,7 +16,7 @@ Azure 应用程序见解在 Microsoft Azure*资源*中显示有关应用程序�
 
 ## <a name="sign-in-to-microsoft-azure"></a>登录 Microsoft Azure
 
-如果没有 Azure 订阅，请先创建[一个免费](https://azure.microsoft.com/free/)帐户。"
+如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 
@@ -24,7 +24,7 @@ Azure 应用程序见解在 Microsoft Azure*资源*中显示有关应用程序�
 
 ![单击左上角的“+”号。 选择开发人员工具，然后选择“Application Insights”](./media/create-new-resource/new-app-insights.png)
 
-   | 设置        |  “值”           | 描述  |
+   | 设置        |  值           | 说明  |
    | ------------- |:-------------|:-----|
    | **名称**      | 唯一值 | 标识所监视的应用的名称。 |
    | **资源组**     | myResourceGroup      | 用于托管 App Insights 数据的新资源组或现有资源组的名称。 |
@@ -153,12 +153,12 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 
 ## <a name="next-steps"></a>后续步骤
 * [诊断搜索](../../azure-monitor/app/diagnostic-search.md)
-* [探索指标](../../azure-monitor/app/metrics-explorer.md)
+* [探索指标](../../azure-monitor/platform/metrics-charts.md)
 * [编写分析查询](../../azure-monitor/app/analytics.md)
 
 <!--Link references-->
 
 [api]: ../../azure-monitor/app/api-custom-events-metrics.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[metrics]: ../../azure-monitor/app/metrics-explorer.md
+[metrics]: ../../azure-monitor/platform/metrics-charts.md
 [start]: ../../azure-monitor/app/app-insights-overview.md

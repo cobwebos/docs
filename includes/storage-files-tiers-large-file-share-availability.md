@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 625b7fc8d49c91a9f2b1c09e1add72993e828d43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 27e3f0ef7539f3fb875c087ff7d1351916877d19
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77597768"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536467"
 ---
-具有 100 个 TiB 容量限制的标准文件共享在所有 Azure 区域中都在全球可用，但：
+具有 100 TiB 容量的标准文件共享有一定的限制。
 
-- 本地冗余存储：除南非北部、南非西部、德国中西部和德国北部外的所有区域。
-- 区域冗余存储：支持支持区域冗余存储的所有区域，日本东部、北欧、南非北部除外。
-- 异地冗余/GeoZone 冗余存储：不支持。
+- 目前，仅支持本地冗余存储 （LRS） 和区域冗余存储 （ZRS） 帐户。
+- 启用大型文件共享后，将无法将存储帐户转换为异地冗余存储 （GRS） 或地理位置区域冗余存储 （GZRS） 帐户。
+- 启用大型文件共享后，无法禁用它。

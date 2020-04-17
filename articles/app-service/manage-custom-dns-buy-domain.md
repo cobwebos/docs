@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: afb40d0f3681bc02351e43166fccfaafe7741128
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 47daf4ecd034c390a1460610e78d4fffd9277ac7
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259274"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535700"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>为 Azure 应用服务购买自定义域名
 
@@ -20,7 +20,7 @@ ms.locfileid: "79259274"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+为完成此教程：
 
 * [创建应用服务应用](/azure/app-service/)，或使用为另一教程创建的应用。
 * [移除订阅中的支出限制](../cost-management-billing/manage/spending-limit.md#remove)。 无法购买具有免费订阅信用额度的应用服务域。
@@ -45,7 +45,7 @@ ms.locfileid: "79259274"
 
 ### <a name="check-the-pricing-tier"></a>检查定价层
 
-在应用页的左侧导航窗格中，向下滚动到“设置”**** 部分，然后选择“增加(应用服务计划)”****。
+在应用页的左侧导航窗格中，向下滚动到“设置”  部分，然后选择“增加(应用服务计划)”  。
 
 ![扩展菜单](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
@@ -57,9 +57,9 @@ ms.locfileid: "79259274"
 
 ### <a name="scale-up-the-app-service-plan"></a>增加应用服务计划
 
-选择任何非免费层（**D1**、**B1**、**B2**、**B3**，或“生产”**** 类别中的任何层）。 有关其他选项，请单击“查看其他选项”****。
+选择任何非免费层（**D1**、**B1**、**B2**、**B3**，或“生产”  类别中的任何层）。 有关其他选项，请单击“查看其他选项”  。
 
-单击 **“应用”**。
+单击“应用”  。
 
 ![检查定价层](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "79259274"
 
 接下来，选择域的所需选项。 参阅下表中的说明：
 
-| 设置 | 建议的值 | 描述 |
+| 设置 | 建议的值 | 说明 |
 |-|-|-|
 |隐私保护 | 启用 | 选择“隐私保护”，已在__ 采购价免费包含。 某些顶级域由不支持隐私保护的注册机构托管，并在“隐私保护”**** 页上列出。 |
 | 分配默认主机名 | **www** 和 **\@** | 根据需要选择主机名绑定。 完成域购买操作后，即可通过选定的主机名访问自己的应用。 如果应用在 [Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)的后面，则不会显示用于分配根域 (@) 的选项，因为流量管理器不支持 A 记录。 完成域购买过程后，可以更改主机名分配。 |
@@ -137,7 +137,7 @@ ms.locfileid: "79259274"
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
 > [!NOTE]
-> 自定义域**的"不安全**"标签意味着它尚未绑定到 SSL 证书，并且从浏览器到自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 要配置 SSL 绑定，请参阅[在 Azure 应用服务 中使用 SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
+> 自定义域**的"不安全**"标签意味着它尚未绑定到 TLS/SSL 证书，并且从浏览器到自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 要配置 TLS 绑定，请参阅[在 Azure 应用服务 中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
 >
 
 若要测试主机名，请在浏览器中导航到列出的主机名。 在前面的屏幕截图中，请尝试导航到_kontoso.net_和_wwwkontoso.net\._。

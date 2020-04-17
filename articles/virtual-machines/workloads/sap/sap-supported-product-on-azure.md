@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/16/2020
+ms.date: 04/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f0aaa13ff4d3331378cc17cd0cde29be43822397
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56341affee721b3ee6676da401e03dbbca84e597
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460783"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538233"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Azure 部署支持哪些 SAP 软件
 本文介绍如何了解 Azure 部署支持哪些 SAP 软件，以及什么是必要的操作系统版本或 DBMS 版本。
@@ -34,7 +34,7 @@ ms.locfileid: "79460783"
 
 
 ## <a name="general-restrictions-for-sap-workload"></a>SAP 工作负载的一般限制
-可用于 SAP 工作负载的 Azure IaaS 服务仅限于 x86-64 或 x64 硬件。 没有适用于 SAP 工作负载的基于 Sparc 或 Power CPU 的优惠。 在 IBM 大型机或 AS400 等硬件体系结构专有的操作系统上运行其应用程序的客户，或者在使用 HP-UX、Solaris 或 AIX 的操作系统时，需要将其 SAP 应用程序（包括 DBMS）更改为以下操作系统：
+可用于 SAP 工作负载的 Azure IaaS 服务仅限于 x86-64 或 x64 硬件。 没有适用于 SAP 工作负载的基于 Sparc 或 Power CPU 的优惠。 在 IBM 大型机或 AS400 等硬件体系结构专有的操作系统上运行其应用程序的客户，或者在使用 HP-UX、Solaris 或 AIX 的操作系统时，需要将其 SAP 应用程序（包括 DBMS）更改为以下操作系统之一：
 
 - x86-64 平台的 Windows 服务器 64 位
 - X86-64 平台的 SUSE linux 64 位
@@ -111,20 +111,20 @@ ms.locfileid: "79460783"
 
 
 ## <a name="certified-azure-vms-and-hana-large-instance-units-and-business-transaction-throughput"></a>认证的 Azure VM 和 HANA 大型实例单元和业务事务吞吐量
-除了评估支持的操作系统版本、DBMS 版本和 Azure 基础结构单元的从属支持 SAP 软件版本外，还需要按业务事务吞吐量对这些单元进行限定，该吞吐量在单位"SAP"中表示：Sap。 所有 SAP 大小取决于 SAPS 计算。 评估现有的 SAP 系统时，您通常可以在基础结构提供商的帮助下计算单位的 SAPS。 对于 DBMS 层以及应用程序层。 在创建新功能的其他情况下，使用 SAP 进行大小调整练习可以显示应用程序层和 DBMS 层所需的 SAPS 编号。 作为基础设施提供商，Microsoft 有义务提供 NetWeaver 和/或 HANA 认证的不同单元的 SAP 吞吐量特征。
+除了评估支持的操作系统版本、DBMS 版本和 Azure 基础结构单元的从属支持 SAP 软件版本外，还需要按业务事务吞吐量对这些单元进行限定，SAP 在单元"SAP"中表示。 所有 SAP 大小取决于 SAPS 计算。 评估现有的 SAP 系统时，您通常可以在基础结构提供商的帮助下计算单位的 SAPS。 对于 DBMS 层以及应用程序层。 在创建新功能的其他情况下，使用 SAP 进行大小调整练习可以显示应用程序层和 DBMS 层所需的 SAPS 编号。 作为基础设施提供商，Microsoft 有义务提供 NetWeaver 和/或 HANA 认证的不同单元的 SAP 吞吐量特征。
 
 对于 Azure VM，这些 SAPS 吞吐量编号记录在[SAP 支持说明#1928533](https://launchpad.support.sap.com/#/notes/1928533)。 对于 Azure HANA 大型实例单元，SAPS 吞吐量编号记录在[SAP 支持说明#2316233](https://launchpad.support.sap.com/#/notes/2316233)
 
 查看[SAP 支持说明#1928533，](https://launchpad.support.sap.com/#/notes/1928533)以下注释适用：
 
-- **对于 M 系列 Azure VM 和 Mv2 系列 Azure VM，应用的最小操作系统版本与其他 Azure VM 类型不同**。 对更新的操作系统版本的要求基于不同操作系统供应商在其操作系统版本中必须提供的更改，以便启用在特定 Azure VM 类型上运行的操作系统，或者优化性能和这些 VM 类型上的 SAP 工作负载的吞吐量
+- **对于 M 系列 Azure VM 和 Mv2 系列 Azure VM，应用的最小操作系统版本与其他 Azure VM 类型不同**。 对更新的操作系统版本的要求基于不同操作系统供应商在其操作系统版本中必须提供的更改，以便启用在特定 Azure VM 类型上运行的操作系统，或者优化这些 VM 类型的 SAP 工作负载的性能和吞吐量
 - 有两个表指定不同的 VM 类型。 第二个表指定仅支持 Azure 标准存储的 Azure VM 类型的 SAPS 吞吐量。 不支持在注释的第二个表中指定的单元上的 DBMS 部署
 
 
 ## <a name="other-sap-products-supported-on-azure"></a>Azure 上支持的其他 SAP 产品
 通常，假设在 Azure 等超大规模云的状态下，大多数 SAP 软件应在 Azure 中运行，而不会出现功能问题。 然而，与私有云可视化相反，SAP 仍然明确表达了对不同 hyerpscale 云提供商的不同 SAP 产品的支持。 因此，有不同的 SAP 支持说明，指示对 Azure 的不同 SAP 产品的支持。 
 
-对于业务对象 BI 平台[，SAP 支持说明#2145537](https://launchpad.support.sap.com/#/notes/2145537)提供了 Azure 上支持的 SAP 业务对象产品的列表。 如果有关软件版本和操作系统版本的组件或组合的问题似乎未列出或支持，并且比列出的最小版本更新，则需要针对您询问的组件打开 SAP 支持请求支持。
+对于业务对象 BI 平台[，SAP 支持说明#2145537](https://launchpad.support.sap.com/#/notes/2145537)提供了 Azure 上支持的 SAP 业务对象产品的列表。 如果有关软件版本和操作系统版本的组件或组合的问题似乎未列出或支持，并且比列出的最小版本更新，则需要针对您询问支持的组件打开 SAP 支持请求。
 
 对于业务对象数据服务[，SAP 支持说明#22288344](https://launchpad.support.sap.com/#/notes/2288344)解释了在 Azure 上运行的 SAP 数据服务的最低支持。 
 
@@ -135,7 +135,12 @@ Azure 库伯奈斯服务 （AKS） 中的 SAP Datahub/Vora 支持在[SAP 支持�
 
 [SAP 支持说明](https://launchpad.support.sap.com/#/notes/2451795)#2451795介绍了对 SAP BPC 10.1 SP08 的支持
 
-[在 Hybris Wiki](https://wiki.hybris.com/display/SUP/Using+the+hybris+Platform+with+the+Cloud)中详细介绍了对 Azure 上的 SAP Hybris 商务平台 5.x 和 6.x 的支持
+[在 Hybris Wiki](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud)中详细介绍了对 Azure 上的 SAP Hybris 商务平台的支持。 作为 SAP Hybris 商务平台支持的 DBMS，它列出了如下：
+
+- Windows 操作系统平台上的 SQL Server 和 Oracle。 与 SAP NetWeaver 相同的最小版本适用。 有关详细信息，请参阅[SAP 支持说明#1928533](https://launchpad.support.sap.com/#/notes/1928533)
+- 在红帽和SUSE Linux上的SAP HANA。 SAP HANA 认证的 VM 类型是必需的，[本文档前面所述](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#sap-hana-support)。 SAP（Hybris） 商务平台被视为 OLTP 工作负载
+
+
 
 
 ## <a name="next-steps"></a>后续步骤

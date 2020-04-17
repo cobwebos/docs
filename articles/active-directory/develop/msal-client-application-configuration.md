@@ -13,12 +13,12 @@ ms.date: 09/27/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 0262d22ae00456ce06cb8efbf995f1a093b20043
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4595a63613afa3c6fef2fa2a85647d8b70b1388
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79262888"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534459"
 ---
 # <a name="application-configuration-options"></a>应用程序配置选项
 
@@ -106,11 +106,11 @@ Azure AD 云颁发机构有两个组成部分：
 ### <a name="redirect-uri-for-public-client-apps"></a>公共客户端应用的重定向 URI
 
 如果你是使用 MSAL 的公共客户端应用开发人员：
-- 可能需要在桌面或 UWP 应用程序 (MSAL.NET 4.1+) 中使用 `.WithDefaultRedirectUri()`。 此方法会将公共客户端应用程序的重定向 URI 属性设置为建议用于公共客户端应用程序的默认重定向 URI。 
+- 可能需要在桌面或 UWP 应用程序 (MSAL.NET 4.1+) 中使用 `.WithDefaultRedirectUri()`。 此方法会将公共客户端应用程序的重定向 URI 属性设置为建议用于公共客户端应用程序的默认重定向 URI。
 
-  Platform  | 重定向 URI  
+  Platform  | 重定向 URI
   ---------  | --------------
-  桌面应用 (.NET FW) | `https://login.microsoftonline.com/common/oauth2/nativeclient` 
+  桌面应用 (.NET FW) | `https://login.microsoftonline.com/common/oauth2/nativeclient`
   UWP | `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()` 的值。 这可以通过浏览器启用 SSO，方法是：将值设置为需注册的 WebAuthenticationBroker.GetCurrentApplicationCallbackUri() 的结果
   .NET Core | `https://localhost`. 这样用户就可以将系统浏览器用于交互式身份验证，因为 .NET Core 目前没有 UI 用于嵌入式 Web 视图。
 
@@ -130,7 +130,7 @@ Azure AD 云颁发机构有两个组成部分：
 
 ### <a name="redirect-uri-for-confidential-client-apps"></a>机密客户端应用的重定向 URI
 
-对于 Web 应用，重定向 URI（或回复 URI）是 Azure AD 用来向应用程序发回令牌的 URI。 如果机密应用是 Web 应用/Web API，则此 URI 可以是该 Web 应用/Web API 的 URL。 重定向 URI 需在应用注册中注册。 部署一个最初已在本地测试的应用时，这种注册尤其重要。 然后，您需要在应用程序注册门户中添加已部署应用的回复 URL。
+对于 Web 应用，重定向 URI（或回复 URI）是 Azure AD 用来向应用程序发回令牌的 URI。 如果机密应用是其中之一，则此 URI 可以是 Web 应用/Web API 的 URL。 重定向 URI 需在应用注册中注册。 部署一个最初已在本地测试的应用时，这种注册尤其重要。 然后，您需要在应用程序注册门户中添加已部署应用的回复 URL。
 
 对于守护程序应用，不需要指定重定向 URI。
 
@@ -138,7 +138,7 @@ Azure AD 云颁发机构有两个组成部分：
 
 此选项指定机密客户端应用的客户端机密。 此机密（应用密码）由应用程序注册门户提供，或在使用 PowerShell AzureAD、PowerShell AzureRM 或 Azure CLI 进行应用注册期间提供给 Azure AD。
 
-## <a name="logging"></a>Logging
+## <a name="logging"></a>日志记录
 
 其他配置选项可用于日志记录和故障排除。 有关其用法的详细信息，请参阅[日志记录](msal-logging.md)一文。
 

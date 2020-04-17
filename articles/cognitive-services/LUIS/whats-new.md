@@ -3,12 +3,12 @@ title: 新增功能 - 语言理解 (LUIS)
 description: 本文会经常更新有关 Azure 认知服务语言理解 API 的新闻。
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 562f7f8b4974363daab91991e6a8219b352432fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6334b157f68f09f2b165c6073ba63f45a0caf3c4
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80155998"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538012"
 ---
 # <a name="whats-new-in-language-understanding"></a>语言理解中的新增功能
 
@@ -73,8 +73,8 @@ ms.locfileid: "80155998"
 * [V3 API 预览版迁移指南](luis-migration-api-v3.md)
 * [改进的分析仪表板](luis-how-to-use-dashboard.md)
 * [改进的预生成域](luis-reference-prebuilt-domains.md)
-* [动态列表实体](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
-* [外部实体](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
+* [动态列表实体](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)
+* [外部实体](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time)
 
 ## <a name="blogs"></a>博客
 

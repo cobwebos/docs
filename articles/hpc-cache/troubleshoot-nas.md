@@ -4,14 +4,14 @@ description: 避免和修复创建 NFS 存储目标时可能导致故障的配�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 03/18/2020
 ms.author: rohogue
-ms.openlocfilehash: c88ffb9e87bc0688cc87b816efaa8e101e23407c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a24530810a448a713c01efbc8933b9f22d15b3b
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77652082"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536363"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>解决 NAS 配置和 NFS 存储目标问题
 
@@ -63,6 +63,9 @@ Azure HPC 缓存需要访问存储系统的导出以创建存储目标。 具体
 
 如果使用导出规则，请记住缓存可以使用与缓存子网的多个不同的 IP 地址。 允许从各种可能的子网 IP 地址进行访问。
 
+> [!NOTE]
+> 默认情况下，Azure HPC 缓存会挤压根访问。 阅读[配置其他缓存设置](configuration.md#configure-root-squash)的详细信息。
+
 与 NAS 存储供应商合作，为缓存启用正确的访问级别。
 
 ### <a name="allow-root-access-on-directory-paths"></a>允许在目录路径上进行根访问
@@ -100,7 +103,7 @@ Azure HPC 缓存需要访问存储系统的导出以创建存储目标。 具体
 如果该命令未列出导出，则缓存将难以连接到存储系统。 与 NAS 供应商合作，启用导出列表。
 
 ## <a name="adjust-vpn-packet-size-restrictions"></a>调整 VPN 数据包大小限制
-<!-- link in prereqs article -->
+<!-- link in prereqs article and configuration article -->
 
 如果在缓存和 NAS 设备之间具有 VPN，则 VPN 可能会阻止全尺寸 1500 字节以太网数据包。 如果 NAS 和 Azure HPC 缓存实例之间的大型交换未完成，但较小的更新按预期工作，则可能存在此问题。
 
@@ -128,7 +131,11 @@ Azure HPC 缓存需要访问存储系统的导出以创建存储目标。 具体
   1480 bytes from 10.54.54.11: icmp_seq=1 ttl=64 time=2.06 ms
   ```
 
-  如果 ping 以 1472 字节失败，则可能需要在 VPN 上配置 MSS 夹紧，以使远程系统正确检测最大帧大小。 阅读[VPN 网关 IPsec/IKE 参数文档](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec)以了解更多信息。
+  如果 ping 以 1472 字节失败，则可能存在数据包大小问题。
+
+要解决此问题，您可能需要配置 VPN 上的 MSS 夹紧功能，以使远程系统正确检测最大帧大小。 阅读[VPN 网关 IPsec/IKE 参数文档](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec)以了解更多信息。
+
+在某些情况下，将 Azure HPC 缓存的 MTU 设置更改为 1400 可能会有所帮助。 但是，如果将 MTU 限制在缓存上，则还必须限制与缓存交互的客户端和后端存储系统的 MTU 设置。 阅读[配置其他 Azure HPC 缓存设置](configuration.md#adjust-mtu-value)以了解详细信息。
 
 ## <a name="check-for-acl-security-style"></a>检查 ACL 安全样式
 

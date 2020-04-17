@@ -3,12 +3,12 @@ title: 使用 Azure 备份服务器备份 VMware VM
 description: 本文介绍如何使用 Azure 备份服务器备份 VMware vCenter/ESXi 服务器上运行的 VMware VM。
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 951016d393b095b0329ff18861421402e0e18a1a
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 92846f9bb9259e55a2c957716676ff42c032b2b5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529505"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537400"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 备份服务器备份 VMware VM
 
@@ -22,7 +22,7 @@ ms.locfileid: "80529505"
 - 将 vCenter 或 ESXi 服务器添加到 Azure 备份服务器。
 - 设置一个包含要备份的 VMware VM 的保护组，指定备份设置，并计划备份。
 
-## <a name="before-you-start"></a>准备工作
+## <a name="before-you-start"></a>开始之前
 
 - 验证您是否正在运行支持备份的 vCenter/ESXi 版本。 请参阅[此处](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)的支持矩阵。
 - 确保已设置 Azure 备份服务器。 如果没有，请在开始之前进行[设置](backup-azure-microsoft-azure-backup.md)。 应运行装有最新更新的 Azure 备份服务器。
@@ -31,7 +31,7 @@ ms.locfileid: "80529505"
 
 默认情况下，Azure 备份服务器通过 HTTPS 来与 VMware 服务器通信。 若要设置 HTTPS 连接，请下载 VMware 证书颁发机构 (CA) 证书，并将其导入到 Azure 备份服务器。
 
-### <a name="before-you-begin"></a>在开始之前
+### <a name="before-you-begin"></a>开始之前
 
 - 如果不想使用 HTTPS，可以[对所有 VMware 服务器禁用 HTTPS 证书验证](backup-azure-backup-server-vmware.md#disable-https-certificate-validation)。
 - 通常，你会使用 vSphere Web 客户端从 Azure 备份服务器计算机上的浏览器连接到 vCenter/ESXi 服务器。 首次执行此操作时，连接并不安全，会显示以下消息。
@@ -96,11 +96,11 @@ ms.locfileid: "80529505"
 
 1. 将以下文本复制并粘贴到 .txt 文件中。
 
-```text
-Windows Registry Editor Version 5.00
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]
-"IgnoreCertificateValidation"=dword:00000001
-```
+    ```text
+    Windows Registry Editor Version 5.00
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]
+    "IgnoreCertificateValidation"=dword:00000001
+    ```
 
 2. 使用文件名 **DisableSecureAuthentication.reg** 将该文件保存在 Azure 备份服务器计算机上。
 
@@ -130,27 +130,49 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
 ### <a name="role-permissions"></a>角色权限
 
-| **vCenter 6.7 用户帐户的权限**              | **vCenter 6.5 用户帐户的权限**             |
-| --------------------------------------------------------- | -------------------------------------------------------- |
-| 数据存储.分配空间                                  | 数据存储.分配空间                                 |
-| 全局.日志事件                                          | 全局.日志事件                                         |
-| 全局.管理自定义属性                           | 全局.管理自定义属性                          |
-| Network.Assign                                            | Network.Assign                                           |
-| Resource. 将虚拟机分配给资源池        | Resource. 将虚拟机分配给资源池       |
-| 虚拟机.配置.添加新磁盘                   | 虚拟机.配置.添加新磁盘                  |
-| 虚拟机.配置。 添加或删除设备       | 虚拟机.配置。 添加或删除设备      |
-| 虚拟机.配置.高级                     | 虚拟机.配置.高级                    |
-| 虚拟机.配置.切换磁盘更改跟踪 | 虚拟机.配置.磁盘更改跟踪       |
-| 虚拟机.配置.配置主机 USB 设备   | 虚拟机.配置.主机 USB 设备            |
-| 虚拟机.配置.查询未拥有文件         | 虚拟机.配置.查询未拥有文件        |
-| 虚拟机.配置.更改交换文件放置位置   | 虚拟机.配置.交换文件放置         |
-| 虚拟机.交互.关闭电源                      | 虚拟机.交互.关闭电源                     |
-| 虚拟机.库存.创建新                       | 虚拟机.库存.创建新                      |
-| 虚拟机.预配.允许磁盘访问            | 虚拟机.预配.允许磁盘访问           |
-| 虚拟机.预配.允许文件访问            | 虚拟机.预配.允许文件访问           |
-| 虚拟机.预配.允许只读磁盘访问  | 虚拟机.预配.允许只读磁盘访问 |
-| 虚拟机.快照管理.创建快照       | 虚拟机.快照管理.创建快照      |
-| 虚拟机.快照管理.删除快照       | 虚拟机.快照管理.删除快照      |
+| vCenter 6.7 用户帐户的权限                     | vCenter 6.5 用户帐户的权限                     |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 数据存储群集。配置数据存储群集            | 数据存储群集。配置数据存储群集            |
+| Datastore.AllocateSpace                                      | Datastore.AllocateSpace                                      |
+| Datastore.Browse datastore                                   | Datastore.Browse datastore                                   |
+| Datastore.Low-level file operations                          | Datastore.Low-level file operations                          |
+| Global.Disable methods                                       | Global.Disable methods                                       |
+| Global.Enable methods                                        | Global.Enable methods                                        |
+| Global.Licenses                                              | Global.Licenses                                              |
+| Global.Log event                                             | Global.Log event                                             |
+| Global.Manage custom attributes                              | Global.Manage custom attributes                              |
+| Global.Set custom attribute                                  | Global.Set custom attribute                                  |
+| 主机.本地操作。创建虚拟机                | 主机.本地操作。创建虚拟机                |
+| Network.Assign network                                       | Network.Assign network                                       |
+| Resource. 将虚拟机分配给资源池           | Resource. 将虚拟机分配给资源池           |
+| vApp.Add virtual machine                                     | vApp.Add virtual machine                                     |
+| vApp.Assign resource pool                                    | vApp.Assign resource pool                                    |
+| vApp.Unregister                                              | vApp.Unregister                                              |
+| 虚拟机.配置。 添加或删除设备          | 虚拟机.配置。 添加或删除设备          |
+| 虚拟机。配置.获取磁盘租约            | Virtual machine.Configuration.Disk lease                     |
+| Virtual machine.Configuration.Add new disk                   | Virtual machine.Configuration.Add new disk                   |
+| 虚拟机。配置.高级配置        | Virtual machine.Configuration.Advanced                       |
+| 虚拟机。配置.切换磁盘更改跟踪   | 虚拟机。配置.磁盘更改跟踪          |
+| 虚拟机。配置.配置主机 USB 设备     | 虚拟机。配置.主机 USB 设备               |
+| 虚拟机。配置.扩展虚拟磁盘           | 虚拟机。配置.扩展虚拟磁盘           |
+| 虚拟机。配置.查询未拥有的文件           | 虚拟机。配置.查询未拥有的文件           |
+| 虚拟机。配置.更改交换文件放置位置     | 虚拟机。配置.交换文件放置位置            |
+| 虚拟机。来宾操作.来宾操作计划执行 | 虚拟机。来宾操作.来宾操作计划执行 |
+| 虚拟机。来宾操作.来宾操作修改 | 虚拟机。来宾操作.来宾操作修改 |
+| 虚拟机。来宾操作.来宾操作查询    | 虚拟机。来宾操作.来宾操作查询    |
+| 虚拟机 。互动。设备连接             | 虚拟机 。互动。设备连接             |
+| 虚拟机 。互动。VIX API 的访客操作系统管理 | 虚拟机 。互动。VIX API 的访客操作系统管理 |
+| 虚拟机 。互动。关机                      | 虚拟机 。互动。关机                      |
+| 虚拟机 。库存.创建新                        | 虚拟机 。库存.创建新                        |
+| Virtual machine .Inventory.Remove                            | Virtual machine .Inventory.Remove                            |
+| Virtual machine .Inventory.Register                          | Virtual machine .Inventory.Register                          |
+| 虚拟机 。预配.允许磁盘访问             | 虚拟机 。预配.允许磁盘访问             |
+| 虚拟机 。预配.允许文件访问             | 虚拟机 。预配.允许文件访问             |
+| 虚拟机 。预配.允许只读磁盘访问   | 虚拟机 。预配.允许只读磁盘访问   |
+| 虚拟机 。预配.允许虚拟机下载 | 虚拟机 。预配.允许虚拟机下载 |
+| Virtual machine .Snapshot management.  创建快照       | Virtual machine .Snapshot management.  创建快照       |
+| 虚拟机 。快照管理。删除快照        | 虚拟机 。快照管理。删除快照        |
+| 虚拟机 。快照管理。还原为快照     | 虚拟机 。快照管理。还原为快照     |
 
 <br>
 
@@ -174,8 +196,6 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 | 虚拟机。供应。 Allow read-only disk access |                                             |
 | 虚拟机。快照管理。创建快照       |                                             |
 | 虚拟机。快照管理。删除快照       |                                             |
-
-
 
 ## <a name="create-a-vmware-account"></a>创建 VMware 帐户
 
@@ -255,7 +275,7 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
     ![指定凭据](./media/backup-azure-backup-server-vmware/identify-creds.png)
 
-6. 单击“添加”将 VMware 服务器添加到服务器列表。**** 然后单击“下一步”****。
+6. 单击“添加”将 VMware 服务器添加到服务器列表。**** 然后单击“下一步”  。
 
     ![添加 VMWare 服务器和凭据](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
 
@@ -283,14 +303,14 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
 1. 在“选择保护组类型”页面上选择“服务器”，然后单击“下一步”。************ 将出现“选择组成员”页面。****
 
-1. 在“选择组成员”中，选择要备份的 VM（或 VM 文件夹）。**** 然后单击“下一步”****。
+1. 在“选择组成员”中，选择要备份的 VM（或 VM 文件夹）。**** 然后单击“下一步”  。
 
     - 选择某个文件夹时，也会选择该文件夹中的 VM 或子文件夹进行备份。 可以取消选中不想要备份的文件夹或 VM。
 1. 如果 VM 或文件夹已在备份，则无法选择它。 这可以确保不会为 VM 创建重复的恢复点。
 
     ![选择组成员](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
-1. 在“选择数据保护方法”页中，输入保护组的名称和保护设置。**** 若要备份到 Azure，请将短期保护设置为“磁盘”，并启用联机保护。**** 然后单击“下一步”****。
+1. 在“选择数据保护方法”页中，输入保护组的名称和保护设置。**** 若要备份到 Azure，请将短期保护设置为“磁盘”，并启用联机保护。**** 然后单击“下一步”  。
 
     ![选择数据保护方法](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
@@ -321,17 +341,17 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
     ![选择副本创建方法](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
-1. 在“一致性检查选项”中，选择如何以及何时自动执行一致性检查。**** 然后单击“下一步”****。
+1. 在“一致性检查选项”中，选择如何以及何时自动执行一致性检查。**** 然后单击“下一步”  。
       - 当副本数据变得不一致时，可以运行一致性检查；也可以根据设置的计划运行该检查。
       - 如果不想配置自动一致性检查，可运行手动检查。 为此，请右键单击保护组并选择“执行一致性检查”。****
 
-1. 在“指定联机保护数据”页中，选择要备份的 VM 或 VM 文件夹。**** 可以选择单个成员，或者单击“全选”选择所有成员。**** 然后单击“下一步”****。
+1. 在“指定联机保护数据”页中，选择要备份的 VM 或 VM 文件夹。**** 可以选择单个成员，或者单击“全选”选择所有成员。**** 然后单击“下一步”  。
 
     ![指定在线保护数据](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
 1. 在“指定联机备份计划”页中，指定将数据从本地存储备份到 Azure 的频率。****
 
-    - 将根据计划生成数据的云恢复点。 然后单击“下一步”****。
+    - 将根据计划生成数据的云恢复点。 然后单击“下一步”  。
     - 生成恢复点后，该恢复点将传输到 Azure 中的恢复服务保管库。
 
     ![指定联机备份计划](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)

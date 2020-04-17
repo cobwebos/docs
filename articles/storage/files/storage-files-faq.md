@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 82c516eeac6d3e88ca7b6ac1c97ebb638ba27979
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 01b5f87c2557e2195573b90766ee45e001798cca
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383914"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537689"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>有关 Azure 文件的常见问题解答 (FAQ)
 [Azure 文件](storage-files-introduction.md)在云端提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)进行访问。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
@@ -164,7 +164,7 @@ ms.locfileid: "81383914"
 * <a id="ad-support"></a>
 **Azure 文件是否支持基于标识的身份验证和访问控制？**  
     
-    是的，Azure 文件支持基于身份的身份验证和访问控制。 您可以选择使用基于标识的访问控制的两种方法之一：活动目录 （AD）（预览）或 Azure 活动目录域服务 （Azure AD DS） （GA）。 AD 支持使用 AD 域联接的计算机（本地或 Azure 中）进行身份验证，以便通过 SMB 访问 Azure 文件共享。 Azure AD DS 通过 SMB 对 Azure 文件进行身份验证，使 Azure AD DS 域加入的 Windows VM 能够使用 Azure AD 凭据访问共享、目录和文件。 有关详细信息，请参阅对[SMB 访问的基于 Azure 文件的身份验证支持的概述](storage-files-active-directory-overview.md)。 
+    是的，Azure 文件支持基于身份的身份验证和访问控制。 您可以选择使用基于标识的访问控制的两种方法之一：本地活动目录域服务（预览）或 Azure 活动目录域服务（Azure AD DS）。 本地活动目录域服务 （AD DS） 支持使用 AD DS 域联接的计算机（本地或 Azure 中）进行身份验证，以便通过 SMB 访问 Azure 文件共享。 Azure AD DS 通过 SMB 对 Azure 文件进行身份验证，使 Azure AD DS 域加入的 Windows VM 能够使用 Azure AD 凭据访问共享、目录和文件。 有关详细信息，请参阅对[SMB 访问的基于 Azure 文件的身份验证支持的概述](storage-files-active-directory-overview.md)。 
 
     Azure 文件还提供了另外两种方法来管理访问控制：
 
@@ -185,30 +185,30 @@ ms.locfileid: "81383914"
     是的，我们支持 REST API，这些 API 在使用[2019-07-07（](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07)或更高版本）REST API时获取、设置或复制目录或文件的 NTFS ACL。
 
 * <a id="ad-vm-subscription"></a>
-**我是否可以从不同订阅下的 VM 使用 Azure AD 凭据访问 Azure 文件？**
+**是否可以从其他订阅下从 VM 访问 Azure 文件共享？**
 
-    如果部署了文件共享的订阅与 VM 所加入到的 Azure AD 域服务部署相同的 Azure AD 租户相关联，则可以使用相同的 Azure AD 凭据访问 Azure 文件存储。 限制不是针对订阅，而是针对关联的 Azure AD 租户的。
+    如果部署文件共享的订阅与 VM 加入域的 Azure AD DS 部署与 Azure AD 租户相关联，则可以使用相同的 Azure AD 凭据访问 Azure 文件共享。 限制不是针对订阅，而是针对关联的 Azure AD 租户的。
     
 * <a id="ad-support-subscription"></a>
-**是否可以使用与文件共享关联的主租户不同的 Azure AD 租户启用 Azure 文件 Azure AD DS 或 AD 身份验证？**
+**是否可以使用不同于 Azure 文件共享的主租户的 Azure AD Ad 租户为 Azure 文件共享启用 Azure AD DS 或本地 AD DS 身份验证？**
 
-    否，Azure 文件仅支持 Azure AD DS 或 AD 集成与驻留在与文件共享相同的订阅中的 Azure AD 租户。 只有一个订阅可以与 Azure AD 租户相关联。 此限制同时适用于 Azure AD DS 和 AD 身份验证方法。 使用 AD 进行身份验证时，AD 凭据必须同步到存储帐户关联的 Azure AD。
+    否，Azure 文件仅支持 Azure AD DS 或与驻留在文件共享中的 Azure AD 租户的本地 AD DS 集成。 只有一个订阅可以与 Azure AD 租户相关联。 此限制同时适用于 Azure AD DS 和本地 AD DS 身份验证方法。 使用本地 AD DS 进行身份验证时[，AD DS 凭据必须同步到](../../active-directory/hybrid/how-to-connect-install-roadmap.md)存储帐户关联的 Azure AD。
 
 * <a id="ad-linux-vms"></a>
-**Azure 文件 Azure AD DS 或 AD 身份验证是否支持 Linux VM？**
+**Azure AD DS 或 Azure 文件共享的本地 AD DS 身份验证是否支持 Linux VM？**
 
     否，不支持来自 Linux VM 的身份验证。
 
 * <a id="ad-aad-smb-afs"></a>
-**是否可以在 Azure 文件同步管理的文件共享上利用 Azure 文件 Azure 文件 AD DS 身份验证或活动目录 （AD） 身份验证（预览）？**
+**Azure 文件同步管理的文件共享是否支持 Azure AD DS 或本地 AD DS（预览）身份验证？**
 
-    可以，您可以在 Azure 文件同步管理的文件共享上启用 Azure AD DS 或 AD 身份验证。对本地文件服务器上的目录/文件 NTFS ACL 的更改将分层到 Azure 文件，反之亦然。
+    可以，您可以在 Azure 文件同步管理的文件共享上启用 Azure AD DS 或本地 AD DS 身份验证。对本地文件服务器上的目录/文件 NTFS ACL 的更改将分层到 Azure 文件，反之亦然。
 
 * <a id="ad-aad-smb-files"></a>
-**如何检查我的存储帐户和 AD 域信息是否启用了 AD 身份验证？**
+**如何检查我的存储帐户上是否启用了 AD DS 身份验证并检索域信息？**
 
-    您可以参考[此处](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account)提供的说明，以验证存储帐户上是否启用了 Azure 文件 AD 身份验证并检索 AD 域信息。
-
+    有关说明，请参阅[此处](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account)。
+    
 * <a id="encryption-at-rest"></a>
 **如何确保已静态加密 Azure 件共享？**  
 
@@ -241,15 +241,15 @@ ms.locfileid: "81383914"
     否，不支持来自 Linux VM 的身份验证。
 
 * <a id="ad-multiple-forest"></a>
-**Azure 文件 AD 身份验证是否支持使用多个林与 AD 环境集成？**    
+**Azure 文件的本地 AD DS 身份验证是否支持使用多个林与 AD DS 环境集成？**    
 
-    Azure 文件 AD 身份验证仅与存储帐户注册的 AD 域服务的林集成。 要支持来自其他 AD 林的身份验证，您的环境必须正确配置林信任。 Azure 文件注册到 AD 域服务的方式与常规文件服务器大致相同，在 AD 中创建标识（计算机或服务登录帐户）以进行身份验证。 唯一的区别是，存储帐户的已注册的 SPN 以与域后缀不匹配的"file.core.windows.net"结尾。 请咨询域管理员，了解是否需要对 DNS 路由策略进行任何更新，才能由于不同的域后缀而启用多个林身份验证。
+    Azure 文件本地 AD DS 身份验证仅与存储帐户注册的域服务的林集成。 要支持来自其他林的身份验证，您的环境必须正确配置林信任。 Azure 文件在 AD DS 中的注册方式与常规文件服务器几乎相同，在 AD DS 中创建标识（计算机或服务登录帐户）进行身份验证。 唯一的区别是，存储帐户的已注册的 SPN 以与域后缀不匹配的"file.core.windows.net"结尾。 请咨询域管理员，了解是否需要对 DNS 路由策略进行任何更新，才能由于不同的域后缀而启用多个林身份验证。
 
 * <a id=""></a>
-**哪些区域可用于 Azure 文件 AD 身份验证（预览）？**
+**哪些区域可用于 Azure 文件 AD DS 身份验证（预览）？**
 
-    有关详细信息，请参阅[AD 区域可用性](storage-files-identity-auth-active-directory-enable.md#regional-availability)。
-
+    有关详细信息，请参阅[AD DS 区域可用性](storage-files-identity-auth-active-directory-enable.md#regional-availability)。
+    
 * <a id="ad-aad-smb-afs"></a>
 **是否可以在 Azure 文件同步管理的文件共享上利用 Azure 文件活动目录 （AD） 身份验证（预览）？**
 

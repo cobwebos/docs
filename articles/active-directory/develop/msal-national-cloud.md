@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: dfca2b1311f1b55f19d5709f7c9ca7c3e366769c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f3bb4dd1c564e5f6c4a8ee1bb5bf7424a74a339e
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76695732"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533983"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>在国家云环境中使用 MSAL
 
@@ -28,7 +28,7 @@ ms.locfileid: "76695732"
 
 包括全局云，Azure 活动目录 （Azure AD） 部署在以下国家云中：  
 
-- Azure Government 
+- Azure Government
 - Azure 中国世纪互联
 - Azure 德国
 
@@ -62,34 +62,34 @@ ms.locfileid: "76695732"
 以下教程演示如何构建 .NET 核心 2.2 MVC Web 应用。 该应用程序使用 OpenID Connect 在属于国家云的组织中使用工作帐户和学校帐户登录用户。
 
 - 要登录用户并获取令牌，请按照本教程操作：[使用 Microsoft 标识平台在主权云中构建ASP.NET核心 Web 应用登录用户](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-4-Sovereign#build-an-aspnet-core-web-app-signing-in-users-in-sovereign-clouds-with-the-microsoft-identity-platform)。
-- 要调用 Microsoft 图形 API，请按照本教程操作：[使用 Microsoft 标识平台从 ASP.NET Core 2.x Web App 调用 Microsoft 图形 API，代表用户使用他们的工作和学校帐户在 Microsoft 国家云中登录](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-4-Sovereign-Call-MSGraph#using-the-microsoft-identity-platform-to-call-the-microsoft-graph-api-from-an-an-aspnet-core-2x-web-app-on-behalf-of-a-user-signing-in-using-their-work-and-school-account-in-microsoft-national-cloud)。
+- 要调用 Microsoft 图形 API，请按照本教程操作：[使用 Microsoft 标识平台从ASP.NET Core 2.x Web 应用调用 Microsoft 图形 API，代表用户使用他们的工作和学校帐户在 Microsoft 国家云中登录](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-4-Sovereign-Call-MSGraph#using-the-microsoft-identity-platform-to-call-the-microsoft-graph-api-from-an-an-aspnet-core-2x-web-app-on-behalf-of-a-user-signing-in-using-their-work-and-school-account-in-microsoft-national-cloud)。
 
-## <a name="javascript"></a>[Javascript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 要启用主权云的 MSAL.js 应用程序，请执行：
 
 ### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 
-1. 登录到 Azure[门户](https://portal.azure.us/)。
-    
+1. 登录 [Azure 门户](https://portal.azure.us/)。
+
    要查找其他国家云的 Azure 门户终结点，请参阅[应用注册终结点](authentication-national-cloud.md#app-registration-endpoints)。
 
 1. 如果您的帐户允许您访问多个租户，请在右上角选择您的帐户，并将门户会话设置为所需的 Azure AD 租户。
 1. 转到 Microsoft 标识平台上面向开发人员[的应用注册](https://aka.ms/ra/ff)页面。
-1. “注册应用程序”页显示后，请输入应用程序的名称。****
+1. “注册应用程序”页显示后，请输入应用程序的名称。 
 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户”。********
 1. 在 **"重定向 URI"** 部分中，选择**Web**平台并根据 Web 服务器将值设置为应用程序的 URL。 有关如何在 Visual Studio 和 Node 中设置和获取重定向 URL 的说明，请参阅以下部分。
-1. 选择“注册”****。
+1. 选择“注册”  。
 1. 在应用的“概述”页上，记下“应用程序(客户端) ID”值。********
-1. 本教程要求您启用[隐式授予流](v2-oauth2-implicit-grant-flow.md)。 在已注册的应用程序的左窗格中，选择“身份验证”****。
-1. 在“高级设置”部分的“隐式授权”下，选中“ID 令牌”和“访问令牌”复选框****************。 需要 ID 令牌和访问令牌，因为此应用需要登录用户并调用 API。
-1. 选择“保存”。****
+1. 本教程要求您启用[隐式授予流](v2-oauth2-implicit-grant-flow.md)。 在已注册的应用程序的左窗格中，选择“身份验证”  。
+1. 在“高级设置”部分的“隐式授权”下，选中“ID 令牌”和“访问令牌”复选框     。 需要 ID 令牌和访问令牌，因为此应用需要登录用户并调用 API。
+1. 选择“保存”。 
 
 ### <a name="step-2--set-up-your-web-server-or-project"></a>第 2 步：设置 Web 服务器或项目
 
 - 下载本地 Web 服务器（如 Node）[的项目文件](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)。
 
-  或
+  or
 
 - [下载视觉工作室项目](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip)。
 
@@ -126,12 +126,12 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 - `Enter_the_Tenant_Info_Here`设置为以下选项之一：
     - 如果应用程序支持**此组织目录中的帐户**，请将此值替换为租户 ID 或租户名称（例如，contoso.microsoft.com）。
     - 如果应用程序支持**任何组织目录中的帐户**，请将此值替换为`organizations`。
-    
+
     要查找所有国家云的身份验证终结点，请参阅 Azure [AD 身份验证终结点](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints)。
 
     > [!NOTE]
     > 国家云不支持个人 Microsoft 帐户。
-  
+
 - `graphEndpoint`是美国政府的微软云的微软图形终结点。
 
    要查找所有国家云的 Microsoft 图形终结点，请参阅[国家云中的 Microsoft 图形终结点](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)。
@@ -149,16 +149,16 @@ const myMSALObj = new UserAgentApplication(msalConfig);
     ```json
     "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
     ```
-    
+
 - 要调用 Microsoft 图形需要特定的图形终结点 URL，具体取决于您使用的云。 要查找所有国家云的 Microsoft 图形终结点，请参阅[Microsoft 图形和图形资源管理器服务根终结点](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)。
 
     下面是具有作用域的图形终结点的示例：
-    
+
     ```json
     "endpoint" : "https://graph.microsoft.us/v1.0/me"
     "scope": "User.Read"
     ```
-    
+
 ## <a name="java"></a>[Java](#tab/java)
 
 要为主权云启用 JAVA 应用程序的 MSAL，请执行：
@@ -182,7 +182,7 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 "scope": "User.Read"
 ```
 
-## <a name="objective-c"></a>[目标C](#tab/objc)
+## <a name="objective-c"></a>[Objective-C](#tab/objc)
 
 适用于 iOS 和 macOS 的 MSAL 可用于在国家云中获取令牌，但在创建`MSALPublicClientApplication`时需要额外的配置。
 
@@ -194,18 +194,18 @@ MSALAADAuthority *aadAuthority =
                                                    audienceType:MSALAzureADMultipleOrgsAudience
                                                       rawTenant:nil
                                                           error:nil];
-                                                          
+
 MSALPublicClientApplicationConfig *config =
                 [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"
                                                                 redirectUri:@"<your-redirect-uri-here>"
                                                                   authority:aadAuthority];
-                                                                  
+
 NSError *applicationError = nil;
 MSALPublicClientApplication *application =
                 [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&applicationError];
 ```
 
-## <a name="swift"></a>[迅速](#tab/swift)
+## <a name="swift"></a>[Swift](#tab/swift)
 
 适用于 iOS 和 macOS 的 MSAL 可用于在国家云中获取令牌，但在创建`MSALPublicClientApplication`时需要额外的配置。
 
@@ -213,7 +213,7 @@ MSALPublicClientApplication *application =
 
 ```swift
 let authority = try? MSALAADAuthority(cloudInstance: .usGovernmentCloudInstance, audienceType: .azureADMultipleOrgsAudience, rawTenant: nil)
-        
+
 let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>", redirectUri: "<your-redirect-uri-here>", authority: authority)
 if let application = try? MSALPublicClientApplication(configuration: config) { /* Use application */}
 ```
@@ -225,6 +225,6 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 了解有关以下方面的详细信息：
 
 - [国家云中的身份验证](authentication-national-cloud.md)
-- [Azure 政府](https://docs.microsoft.com/azure/azure-government/)
-- [Azure 中国 21Vianet](https://docs.microsoft.com/azure/china/)
+- [Azure Government](https://docs.microsoft.com/azure/azure-government/)
+- [Azure 中国世纪互联](https://docs.microsoft.com/azure/china/)
 - [Azure 德国](https://docs.microsoft.com/azure/germany/)

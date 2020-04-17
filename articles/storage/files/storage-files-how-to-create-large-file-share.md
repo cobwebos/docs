@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c683e9847864de4e3409fb6dbd533497a5ae3cea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd7726d2bbf2830d18d78b5f0b0d7202b734124d
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060999"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537672"
 ---
 # <a name="enable-and-create-large-file-shares"></a>启用并创建大型文件共享
 
@@ -33,9 +33,9 @@ ms.locfileid: "80060999"
 
 ### <a name="portal"></a>门户
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
-1. 在 Azure 门户中，选择“所有服务”。**** 
-1. 在资源列表中，输入**存储帐户**。 键入时，列表会根据输入的内容进行筛选。 选择“存储帐户”****。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 在 Azure 门户中，选择 **"所有服务**"。 
+1. 在资源列表中，输入**存储帐户**。 键入时，列表会根据输入的内容进行筛选。 选择**存储帐户**。
 1. 在显示的 **"存储帐户**"窗口中，选择"**添加**"。
 1. 选择用于创建存储帐户的订阅。
 1. 在“资源组”**** 字段下，选择“新建”****。 输入新资源组的名称。
@@ -43,11 +43,11 @@ ms.locfileid: "80060999"
     ![显示如何在门户中创建资源组的屏幕截图](media/storage-files-how-to-create-large-file-share/create-large-file-share.png)
 
 1. 然后，输入存储帐户的名称。 该名称在 Azure 中必须唯一。 名称的长度也必须为 3 到 24 个字符，并且只能有数字和小写字母。
-1. 选择存储帐户的位置，并确保它是[大型文件共享受支持的复制之一](storage-files-planning.md#regional-availability)。
+1. 选择存储帐户的位置。
 1. 将复制设置为**本地冗余存储**或**区域冗余存储**。
 1. 将这些字段保留为其默认值：
 
-   |字段  |“值”  |
+   |字段  |值  |
    |---------|---------|
    |部署模型     |资源管理器         |
    |性能     |Standard         |
@@ -59,7 +59,7 @@ ms.locfileid: "80060999"
 
     ![在 Azure 门户中新存储帐户上使用"已启用"选项按钮的屏幕截图](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
 
-1. 选择 **“创建”**。
+1. 选择“创建”  。
 
 ### <a name="cli"></a>CLI
 
@@ -126,7 +126,7 @@ Set-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAc
 
 1. 从存储帐户中，选择 **"文件共享**"。
 1. 选择“+ 文件共享”。****
-1. 输入文件共享的名称。 您还可以设置您希望的配额大小，最多 100 TiB。 然后选择 **"创建**"。 
+1. 输入文件共享的名称。 您还可以设置您希望的配额大小，最多 100 TiB。 然后选择“创建”  。 
 
 ![显示名称和配额框的 Azure 门户 UI](media/storage-files-how-to-create-large-file-share/large-file-shares-create-share.png)
 

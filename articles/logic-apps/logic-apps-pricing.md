@@ -3,17 +3,17 @@ title: 定价&计费模型
 description: 定价和计费模型如何适用于 Azure 逻辑应用的概述
 services: logic-apps
 ms.suite: integration
-author: kevinlam1
-ms.author: klam
+author: jonfancey
+ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 795acd67a8d4a9f8b8b7d78799a92134f249cf8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f47c7412bdd5ada1e50d1005b8e740e3f46ffd8d
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270454"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536227"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure 逻辑应用的定价模型
 
@@ -23,50 +23,55 @@ ms.locfileid: "79270454"
 
 ## <a name="consumption-pricing-model"></a>消耗量定价模型
 
-对于在公共或“全球”Azure 逻辑应用服务中运行的新逻辑应用，只需根据实际使用的资源付费。 这些逻辑应用使用基于消耗量的计划和定价模型。 在逻辑应用中，每个步骤都是一个操作，Azure 逻辑应用会管理逻辑应用中运行的所有操作。
+对于在公共中运行的新逻辑应用"全局"多租户 Azure 逻辑应用服务，只需为使用的内容付费。 这些逻辑应用使用基于消耗量的计划和定价模型。 在逻辑应用中，每个步骤都是一个操作，Azure 逻辑应用会管理逻辑应用中运行的所有操作。
 
 例如，操作包括：
 
-* 触发器（特殊的操作）。 所有逻辑应用需将一个触发器用作第一个步骤。
+* [触发器](#triggers)，这是特殊操作。 所有逻辑应用需将一个触发器用作第一个步骤。
+
 * [“内置”或本机操作](../connectors/apis-list.md#built-in)，例如 HTTP、对 Azure Functions 和 API 管理的调用，等等
+
 * 对[托管连接器](../connectors/apis-list.md#managed-connectors)（如 Outlook 365、Dropbox 等）的调用
-* 控制流步骤，例如循环、条件语句，等等
+
+* [控制工作流操作](../connectors/apis-list.md#control-workflow)，如循环、条件语句等
 
 [标准连接器](../connectors/apis-list.md#managed-connectors)按[标准连接器价格](https://azure.microsoft.com/pricing/details/logic-apps)收费。 一般可用的[企业连接器](../connectors/apis-list.md#managed-connectors)按[企业连接器价格](https://azure.microsoft.com/pricing/details/logic-apps)收费，而公共预览企业连接器按[标准连接器价格](https://azure.microsoft.com/pricing/details/logic-apps)收费。
 
-详细了解[触发器](#triggers)和[操作](#actions)的计费方式。
+详细了解计费在[触发器](#triggers)和[操作](#actions)级别的工作方式。 或者，有关限制的信息，请参阅[Azure 逻辑应用的限制和配置](logic-apps-limits-and-config.md)。
 
 <a name="fixed-pricing"></a>
 
 ## <a name="fixed-pricing-model"></a>固定定价模型
 
-[*集成服务环境*（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)提供了一种独立的方式，用于创建和运行可以访问 Azure 虚拟网络中资源的逻辑应用。 对于在 ISE 内运行的新逻辑应用，您每月为这些功能支付[固定价格](https://azure.microsoft.com/pricing/details/logic-apps)：
+[*集成服务环境*（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)提供了一种独立的方式，用于创建和运行可以访问 Azure 虚拟网络中资源的逻辑应用。 在 ISE 中运行的逻辑应用不会产生数据保留成本。 创建 ISE 时，仅在创建期间，您可以选择具有不同[定价率](https://azure.microsoft.com/pricing/details/logic-apps)的[ISE 级别或"SKU"：](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)
+
+* **高级**ISE：此 SKU 的基本单位具有固定容量，但如果您需要更多吞吐量，可以在 ISE 创建期间或之后[添加更多缩放单位](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)。 有关 ISE 限制，请参阅[Azure 逻辑应用的限制和配置](logic-apps-limits-and-config.md#integration-service-environment-ise)。
+
+* **开发人员**ISE：此 SKU 没有扩展功能，没有服务级别协议 （SLA），也没有已发布的限制。 仅使用此 SKU 进行试验、开发和测试，而不是生产或性能测试。
+
+对于在 ISE 中创建和运行的逻辑应用，您每月为这些功能支付[固定价格](https://azure.microsoft.com/pricing/details/logic-apps)：
 
 * [内置](../connectors/apis-list.md#built-in)触发器和操作
 
   在 ISE 中，内置触发器和操作显示**核心**标签，并在与逻辑应用相同的 ISE 中运行。
 
-* [标准](../connectors/apis-list.md#managed-connectors)连接器[和企业](../connectors/apis-list.md#enterprise-connectors)连接器（根据需要连接企业数）
+* [标准](../connectors/apis-list.md#managed-connectors)连接器[和企业](../connectors/apis-list.md#enterprise-connectors)连接器，可让您拥有所需的尽可能多的企业连接
 
-   显示**ISE**标签的标准和企业连接器与逻辑应用在相同的 ISE 中运行。 不显示 ISE 标签的连接器在全局逻辑应用服务中运行。 固定每月定价也适用于在全局服务中运行的连接器，当您将其与在 ISE 中运行的逻辑应用一起运行时。
+   显示**ISE**标签的标准和企业连接器与逻辑应用在相同的 ISE 中运行。 不显示 ISE 标签的连接器在公共"、"全局"多租户逻辑应用服务中运行。 固定每月定价也适用于在多租户服务中运行的连接器，当您将其与在 ISE 中运行的逻辑应用一起运行时。
 
 * 基于[ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)的[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)使用情况，无需额外费用：
 
-  * **高级 SKU**：单个[标准层](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)集成帐户
+  * **高级**ISE SKU：单个[标准层](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)集成帐户
 
-  * **开发人员 SKU**： 单个[免费套餐](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)集成帐户
+  * **开发人员**ISE SKU：单个[免费套餐](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)集成帐户
 
   每个 ISE SKU 限制为 5 个总集成帐户。 对于额外的成本，您可以基于 ISE SKU 拥有更多的集成帐户：
 
-  * **高级 SKU**： 最多四个标准帐户。 无免费或基本帐户。
+  * **高级**ISE SKU：最多还有四个标准帐户。 无免费或基本帐户。
 
-  * **开发人员 SKU**： 最多 4 个标准帐户，或最多 5 个标准帐户。 无基本帐户。
+  * **开发人员**ISE SKU：最多增加 4 个标准帐户，或最多 5 个标准帐户。 无基本帐户。
 
-  有关集成帐户限制的详细信息，请参阅[逻辑应用限制和配置](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。 在本主题稍后部分，您可以了解有关[集成帐户层及其定价模型](#integration-accounts)的详细信息。
-
-如果选择高级 ISE SKU，则基本单位具有固定容量。 如果需要更多吞吐量，可以在创建期间或之后[添加更多比例单位](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)。 开发人员 ISE SKU 无法添加更多缩放单位。 在 ISE 中运行的逻辑应用不会产生数据保留成本。
-
-有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps)。
+  有关集成帐户限制的详细信息，请参阅[Azure 逻辑应用的限制和配置](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。 在本主题稍后部分，您可以了解有关[集成帐户层及其定价模型](#integration-accounts)的详细信息。
 
 <a name="connectors"></a>
 

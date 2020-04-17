@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: b6a8bc083b589463b67f2e25e262b15456355d05
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: e40171b95e6faae0020f8bf61410aad8999ddecb
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383837"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536517"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2. 向标识分配访问权限
 
@@ -31,7 +31,7 @@ ms.locfileid: "81383837"
 可以使用 Azure 门户、PowerShell 或 Azure CLI 将内置角色分配给用户的 Azure AD 标识，以便授予共享级别权限。
 
 > [!NOTE]
-> 如果计划使用 AD 进行身份验证，请记住将 AD 凭据同步到 Azure AD。 从 AD 到 Azure AD 的密码哈希同步是可选的。 共享级别权限将授予从 AD 同步的 Azure AD 标识。
+> 如果计划使用本地 AD DS 进行身份验证，请记住将[AD DS 凭据同步到 Azure AD。](../articles/active-directory/hybrid/how-to-connect-install-roadmap.md) 从 AD DS 到 Azure AD 的密码哈希同步是可选的。 共享级别权限将授予从本地 AD DS 同步的 Azure AD 标识。
 
 一般建议是，对表示一组用户和身份的 AD 组使用高级别访问管理共享级别权限，然后利用 NTFS 权限在目录/文件级别进行精细访问控制。 
 
@@ -73,7 +73,7 @@ az role assignment create --role "<role-name>" --assignee <user-principal-name> 
 ## <a name="3-configure-ntfs-permissions-over-smb"></a>3. 通过 SMB 配置 NTFS 权限 
 使用 RBAC 分配共享级别权限后，必须在根目录、目录或文件级别分配正确的 NTFS 权限。 将共享级别权限视为高级网守，用于确定用户是否可以访问共享。 而 NTFS 权限在更精细的级别执行，以确定用户可以在目录或文件级别执行哪些操作。
 
-Azure 文件支持全套 NTFS 基本和高级权限。 您可以通过安装共享，然后使用 Windows 文件资源管理器或运行 Windows [Icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)或[Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl)命令来查看和配置 Azure 文件共享中的目录和文件的 NTFS 权限。 
+Azure 文件支持全套 NTFS 基本和高级权限。 您可以通过安装共享，然后使用 Windows 文件资源管理器或运行 Windows [Icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)或[Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-acl)命令来查看和配置 Azure 文件共享中的目录和文件的 NTFS 权限。 
 
 要配置具有超级用户权限的 NTFS，您必须使用域加入的 VM 中的存储帐户密钥来装载共享。 按照下一节中的说明从命令提示符装载 Azure 文件共享，并相应地配置 NTFS 权限。
 
@@ -101,29 +101,29 @@ icacls <mounted-drive-letter>: /grant <user-email>:(f)
 使用 Windows net use**** 命令装载 Azure 文件共享。 请记住，将以下示例中的占位符值替换为您自己的值。 有关安装文件共享的详细信息，请参阅使用[Windows 文件共享](../articles/storage/files/storage-how-to-use-files-windows.md)。 
 
 ```
-net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
+net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /user:Azure\<storage-account-name> <storage-account-key>
 ```
 ### <a name="configure-ntfs-permissions-with-windows-file-explorer"></a>使用 Windows 文件资源管理器配置 NTFS 权限
 使用 Windows 文件资源管理器向文件共享下的所有目录和文件（包括根目录）授予完全权限。
 
-1. 打开 Windows 文件资源管理器并右键单击文件/目录并选择**属性**
-2. 单击"**安全**"选项卡
-3. 单击**编辑.**. .按钮以更改权限
-4. 您可以更改现有用户的权限，或单击"**添加..."** 向新用户授予权限
-5. 在添加新用户的提示窗口中，在 **"输入要选择对象名称**"框中输入要授予权限的目标用户名，然后单击 **"选中名称"** 以查找目标用户的完整 UPN 名称。
-7.  单击 **"确定"**
-8.  在"安全"选项卡中，选择要授予新添加的用户的所有权限
-9.  单击“应用”****
+1. 打开 Windows 文件资源管理器并右键单击文件/目录并选择**属性**。
+2. 选择“安全”**** 选项卡。
+3. 选择 **"编辑"。** 更改权限。
+4. 您可以更改现有用户的权限或选择 **"添加..."** 以向新用户授予权限。
+5. 在添加新用户的提示窗口中，在 **"输入要选择对象名称**"框中输入要授予权限的目标用户名，然后选择 **"选中名称"** 以查找目标用户的完整 UPN 名称。
+7.    选择“确定”  。
+8.    在"**安全"** 选项卡中，选择要授予新用户的所有权限。
+9.    选择“应用”。 
 
 ## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4. 从加入域的 VM 装载文件共享
 
 以下过程验证文件共享和访问权限设置是否正确，以及可以从加入域的 VM 访问 Azure 文件共享。 请注意，共享级别 RBAC 角色分配可能需要一些时间才能生效。 
 
-使用已授予权限的 Azure AD 标识登录到 VM，如下图所示。 如果已为 Azure 文件启用 AD 身份验证，请使用 AD 凭据。 对于 Azure AD DS 身份验证，请使用 Azure AD 凭据登录。
+使用已授予权限的 Azure AD 标识登录到 VM，如下图所示。 如果已为 Azure 文件启用本地 AD DS 身份验证，请使用 AD DS 凭据。 对于 Azure AD DS 身份验证，请使用 Azure AD 凭据登录。
 
 ![显示用户身份验证的 Azure AD 登录屏幕的屏幕截图](media/storage-files-aad-permissions-and-mounting/azure-active-directory-authentication-dialog.png)
 
-使用以下命令装载 Azure 文件共享。 请务必将占位符值替换为你自己的值。 由于已过身份验证，因此无需提供存储帐户密钥、AD 凭据或 Azure AD 凭据。 支持使用 AD 或 Azure AD DS 进行身份验证的单一登录体验。 如果在使用 AD 凭据安装时遇到问题，请检查[Windows 中的"解决 Azure 文件问题"，](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems)以便进行自我诊断指导。
+使用以下命令装载 Azure 文件共享。 请务必将占位符值替换为你自己的值。 由于已过身份验证，因此无需提供存储帐户密钥、本地 AD DS 凭据或 Azure AD DS 凭据。 支持使用本地 AD DS 或 Azure AD DS 进行身份验证的单一登录体验。 如果遇到 AD DS 凭据安装问题，请参阅[Windows 中的"解决 Azure 文件问题"](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems)以获得指导。
 
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name>

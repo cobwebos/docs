@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: 9f592c345b7cfcf5f21d816fde1fae6b8e6b98c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d920fb7815e5a9fe30d8f3b4e40f36133d83222
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73823384"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538080"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>将应用程序连接到 Azure SQL 数据库托管实例
 
@@ -133,6 +133,8 @@ ms.locfileid: "73823384"
 
 - 如果使用 VNet 对等互连，请确保遵循相关说明来设置[允许网关传输并使用远程网关](#connect-from-on-premises-with-vnet-peering)。
 
+- 如果使用 VNet 对等互连连接 Azure 应用服务托管应用程序，并且托管实例 VNet 具有公共 IP 地址范围，请确保托管应用程序设置允许将出站流量路由到公共 IP 网络。 按照[区域 VNet 集成](../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)中的说明进行操作。
+
 ## <a name="required-versions-of-drivers-and-tools"></a>所需的驱动程序和工具版本
 
 如果要连接到托管实例，建议使用以下最低版本的工具和驱动程序：
@@ -146,7 +148,7 @@ ms.locfileid: "73823384"
 |Node.js 驱动程序| 2.1.1 |
 |OLEDB 驱动程序| 18.0.2.0 |
 |SSMS| 18.0 或[更高版本](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
-|[Smo](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) 或更高版本 |
+|[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) 或更高版本 |
 
 ## <a name="next-steps"></a>后续步骤
 

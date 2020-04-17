@@ -12,18 +12,18 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a6c9ccb3dc29865c790e5d8cc9cfc35e68f5561d
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: b3b0114bb5d545755fe59c49605d6def341d2275
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886137"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535768"
 ---
 # <a name="supported-account-types"></a>支持的帐户类型
 
 本文介绍了应用程序支持的帐户类型（有时称为受众）。
 
-<!-- This section can be in an include for many of the scenarios (SPA, Web App signing-in users, protecting a Web API, Desktop (depending on the flows), Mobile -->
+<!-- This section can be in an include for many of the scenarios (SPA, web app signing-in users, protecting a web API, Desktop (depending on the flows), Mobile -->
 
 ## <a name="supported-accounts-types-in-microsoft-identity-platform-applications"></a>Microsoft 标识平台应用程序中支持的帐户类型
 
@@ -44,7 +44,7 @@ ms.locfileid: "80886137"
 
 某些帐户类型不能与某些身份验证流程一起使用。 例如，在桌面、UWP 应用程序或守护程序应用程序中：
 
-- 守护程序应用程序只能与 Azure Active Directory 组织配合使用。 尝试使用守护程序应用程序来操作 Microsoft 个人帐户是没有意义的（永远不会授予管理员同意）。  
+- 守护程序应用程序只能与 Azure Active Directory 组织配合使用。 尝试使用守护程序应用程序来操作 Microsoft 个人帐户是没有意义的（永远不会授予管理员同意）。
 - 只能将集成身份验证流与工作或学校帐户配合使用（在你的组织或任何组织中均可）。 实际上，集成 Windows 身份验证适用于域帐户，并且需要将计算机加入域或加入 Azure AD。 该流对个人 Microsoft 帐户不适应。
 - [资源所有者密码授权](./v2-oauth-ropc.md)（用户名/密码）不能用于个人 Microsoft 帐户。 实际上，个人 Microsoft 帐户要求用户同意在每次登录会话中访问个人资源。 这就是这种行为与非交互流不兼容的原因。
 - 设备代码流尚不适用于个人 Microsoft 帐户。

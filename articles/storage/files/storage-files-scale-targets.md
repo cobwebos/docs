@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1a74ec3610367193b5eee53ea0e0818901433e96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46c46faf8f7ee52978ae5542ab7ebd72a41b8357
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255127"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536418"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 文件可伸缩性和性能目标
 
@@ -51,8 +51,7 @@ Azure 文件共享的父资源是 Azure 存储帐户。 存储帐户表示 Azure
 ### <a name="file-share-and-file-scale-targets"></a>文件共享和文件规模目标
 
 > [!NOTE]
-> 大于 5 TiB 的标准文件共享具有某些限制和区域限制。
-> 有关启用这些较大文件共享大小的限制列表、区域信息和说明，请参阅规划指南的["板载到大型文件共享](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib)"部分。
+> 大于 5 TiB 的标准文件共享有一定的限制。 有关启用较大文件共享大小的限制和说明列表，请参阅规划指南[的标准文件共享部分启用较大的文件共享](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib)。
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
