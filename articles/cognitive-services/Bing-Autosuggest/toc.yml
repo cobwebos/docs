@@ -79,7 +79,7 @@
       href: 'https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api'
     - name: 试试看！
       href: 'https://azure.microsoft.com/services/cognitive-services/autosuggest/'
-    - name: 语言和区域支持
+    - name: 语言支持
       href: language-support.md
     - name: 适用于必应自动推荐 API 的分析
       maintainContext: true

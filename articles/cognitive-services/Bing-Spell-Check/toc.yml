@@ -32,7 +32,7 @@
   items:
     - name: 构建拼写检查 Web 应用
       href: tutorials/spellcheck.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 从 v5 升级到 v7
       href: bing-spell-check-upgrade-guide-v5-to-v7.md
@@ -72,7 +72,7 @@
     - name: 适用于必应拼写检查 API 的分析
       maintainContext: true
       href: ../bing-web-search/bing-web-stats.md
-    - name: 语言和区域支持
+    - name: 语言支持
       href: language-support.md
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/'

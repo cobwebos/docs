@@ -38,7 +38,7 @@
   items:
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+News+Search'
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 处理搜索词突出显示
       href: ../Bing-Web-Search/hit-highlighting.md
@@ -97,7 +97,7 @@
       href: 'https://dev.cognitive.microsoft.com/docs/services/56b43f72cf5ff8098cef380a/operations/56f02400dbe2d91900c68553'
     - name: 必应新闻搜索终结点
       href: endpoint-news.md
-    - name: 语言和区域支持
+    - name: 语言支持
       href: language-support.md
     - name: 适用于必应新闻搜索 API 的分析
       href: bing-news-stats.md

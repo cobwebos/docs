@@ -42,7 +42,7 @@
   items:
     - name: 将表单识别器与逻辑应用搭配使用
       href: tutorial-form-recognizer-with-logic-apps.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 生成训练数据集
       href: build-training-data-set.md
@@ -80,5 +80,7 @@
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: 区域可用性
       href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
+    - name: 语言支持
+      href: language-support.md
     - name: 合规性
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

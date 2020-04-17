@@ -32,7 +32,7 @@
           href: customization.md
         - name: API 如何对字符计数
           href: character-counts.md
-    - name: 操作方法指南
+    - name: 操作指南
       items:
         - name: 注册文本翻译 API
           href: translator-text-how-to-signup.md
@@ -98,7 +98,7 @@
           href: 'https://aka.ms/TranslatorGitHub'
         - name: 常见问题解答
           href: 'https://www.microsoft.com/translator/faq.aspx'
-        - name: 语言和区域支持
+        - name: 语言支持
           href: language-support.md
         - name: 定价
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
@@ -138,7 +138,7 @@
           href: custom-translator/training-and-model.md
         - name: BLEU 分数
           href: custom-translator/what-is-bleu-score.md
-    - name: 操作方法指南
+    - name: 操作指南
       items:
         - name: 创建一个项目
           href: custom-translator/how-to-create-project.md

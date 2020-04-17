@@ -37,7 +37,7 @@
   items:
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Custom+Search'
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 配置自定义搜索体验
       href: define-your-custom-view.md
@@ -108,7 +108,7 @@
       href: 'https://aka.ms/bingcustomsearchtryit'
     - name: 必应自定义搜索终结点
       href: endpoint-custom.md
-    - name: 语言和区域支持
+    - name: 语言支持
       href: language-support.md
     - name: 合规性
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

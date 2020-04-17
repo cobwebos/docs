@@ -38,7 +38,7 @@
   items:
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Image+Search'
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 获取图像见解
       href: image-insights.md
@@ -107,7 +107,7 @@
       href: 'https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/'
     - name: 必应图像搜索终结点
       href: image-search-endpoint.md
-    - name: 语言和区域支持
+    - name: 语言支持
       href: language-support.md
     - name: 适用于必应图像搜索 API 的分析
       maintainContext: true
