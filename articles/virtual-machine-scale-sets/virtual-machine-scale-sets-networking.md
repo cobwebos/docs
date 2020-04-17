@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: mimckitt
-ms.openlocfilehash: 9f048c7d89da0ab75c321cd8e3932ea97c7ed09c
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: efe3a39008361fdf76d80a0c8e7e2e30b061117d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310013"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461339"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集的网络
 
@@ -41,42 +41,27 @@ Azure 加速网络可以实现对虚拟机的单根 I/O 虚拟化 (SR-IOV)，从
 }
 ```
 
-## <a name="create-a-scale-set-that-references-an-existing-azure-load-balancer"></a>创建引用现有 Azure 负载均衡器的规模集
-使用 Azure 门户创建规模集后，就大多数配置选项来说，都会创建新的负载均衡器。 如果创建需引用现有负载均衡器的规模集，可以使用 CLI。 以下示例脚本先创建负载均衡器，然后创建规模集来引用该均衡器：
+## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>Azure 虚拟机使用 Azure 负载均衡器缩放集
 
-```azurecli
-az network lb create \
-    -g lbtest \
-    -n mylb \
-    --vnet-name myvnet \
-    --subnet mysubnet \
-    --public-ip-address-allocation Static \
-    --backend-pool-name mybackendpool
+使用虚拟机秤集和负载均衡器时，应考虑以下事项：
 
-az vmss create \
-    -g lbtest \
-    -n myvmss \
-    --image Canonical:UbuntuServer:16.04-LTS:latest \
-    --admin-username negat \
-    --ssh-key-value /home/myuser/.ssh/id_rsa.pub \
-    --upgrade-policy-mode Automatic \
-    --instance-count 3 \
-    --vnet-name myvnet \
-    --subnet mysubnet \
-    --lb mylb \
-    --backend-pool-name mybackendpool
-```
+* **多个虚拟机规模集不能使用相同的负载均衡器**。
+* **端口转发和入站 NAT 规则**：
+  * 每个虚拟机规模集必须具有入站 NAT 规则。
+  * 创建比例集后，无法为负载均衡器的运行状况探测使用的负载平衡规则修改后端端口。 要更改端口，可以通过更新 Azure 虚拟机缩放集、更新端口然后再次配置运行状况探测来删除运行状况探测。
+  * 在负载均衡器的后端池中使用虚拟机比例设置时，将自动创建默认入站 NAT 规则。
+* **负载均衡规则**：
+  * 在负载均衡器的后端池中使用虚拟机比例设置时，将自动创建默认负载平衡规则。
+* **出站规则**：
+  *  要为负载平衡规则已引用的后端池创建出站规则，您需要在创建入站负载平衡规则时，首先在门户中将 **"创建隐式出站规则"** 标记为 **"否**"。
 
->[!NOTE]
-> 创建比例集后，无法为负载均衡器的运行状况探测使用的负载平衡规则修改后端端口。 要更改端口，可以通过更新 Azure 虚拟机缩放集、更新端口然后再次配置运行状况探测来删除运行状况探测。 
-
-有关负载均衡器和虚拟机扩展集的详细信息，请参阅 Azure[中的虚拟网络和虚拟机](../../articles/virtual-machines/windows/network-overview.md)。
+  :::image type="content" source="./media/vmsslb.png" alt-text="负载平衡规则创建" border="true":::
 
 以下方法可用于部署具有现有 Azure 负载均衡器的虚拟机规模集。
 
-* [使用 Azure 门户使用现有 Azure 负载均衡器配置虚拟机规模集](../../articles/load-balancer/configure-vm-scale-set-portal.md)。
-* [使用 Azure PowerShell 使用现有的 Azure 负载均衡器配置虚拟机规模集](../../articles/load-balancer/configure-vm-scale-set-powershell.md)。
-* [使用 Azure CLI 配置具有现有 Azure 负载均衡器的虚拟机规模集](../../articles/load-balancer/configure-vm-scale-set-cli.md)。
+* [使用 Azure 门户使用现有 Azure 负载均衡器配置虚拟机规模集](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-portal)。
+* [使用 Azure PowerShell 使用现有的 Azure 负载均衡器配置虚拟机规模集](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-powershell)。
+* [使用 Azure CLI 配置具有现有 Azure 负载均衡器的虚拟机规模集](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-cli)。
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>创建引用应用程序网关的规模集
 若要创建使用应用程序网关的规模集，请在规模集的 ipConfigurations 节中引用应用程序网关的后端地址池，如此 ARM 模板配置所示：

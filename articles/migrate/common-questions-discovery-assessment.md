@@ -2,13 +2,13 @@
 title: 有关 Azure 迁移中的发现、评估和依赖关系分析的问题
 description: 获取有关 Azure 迁移中发现、评估和依赖项分析的常见问题的解答。
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 7a63271811053ee2da79f134ac117559e31b0fed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 700e5318b66cdf4993a17b1dae85fb43f75ab035
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460800"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81529767"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>发现、评估和依赖分析 - 常见问题
 
@@ -19,9 +19,16 @@ ms.locfileid: "79460800"
 - 有关[服务器迁移](common-questions-server-migration.md)的问题
 - 在[Azure 迁移论坛](https://aka.ms/AzureMigrateForum)中回答问题
 
+
+## <a name="what-geographies-are-supported-for-discovery-and-assessment-with-azure-migrate"></a>Azure 迁移支持哪些地理位置用于发现和评估？
+
+查看[公共](migrate-support-matrix.md#supported-geographies-public-cloud)和政府[云](migrate-support-matrix.md#supported-geographies-azure-government)的支持地理位置。
+
+
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>使用设备可以发现多少个 VM？
 
 通过使用单个设备，您可以发现多达 10，000 个 VMware VM、多达 5，000 台 Hyper-VM 和多达 250 台物理服务器。 如果您有更多计算机，请阅读有关缩放[Hyper-V 评估](scale-hyper-v-assessment.md)、[缩放 VMware 评估](scale-vmware-assessment.md)或[缩放物理服务器评估](scale-physical-assessment.md)。
+
 
 ## <a name="the-size-of-my-vm-changed-can-i-run-an-assessment-again"></a>我的 VM 大小已更改。 我可以再次进行评估吗？
 
@@ -77,7 +84,7 @@ Azure 迁移设备不断收集有关本地环境的信息。  评估是本地 VM
 
 ## <a name="what-is-dependency-visualization"></a>什么是依赖项可视化？
 
-依赖项可视化可帮助您更自信地评估要迁移的 VM 组。 依赖项可视化在运行评估之前交叉检查计算机依赖项。 它有助于确保不会留下任何内容，并且有助于避免迁移到 Azure 时意外中断。 Azure Migrate 使用 Azure Monitor 中的“服务映射”解决方案来实现依赖项可视化。 [了解详情](concepts-dependency-visualization.md)。
+依赖项可视化可帮助您更自信地评估要迁移的 VM 组。 依赖项可视化在运行评估之前交叉检查计算机依赖项。 它有助于确保不会留下任何内容，并且有助于避免迁移到 Azure 时意外中断。 Azure Migrate 使用 Azure Monitor 中的“服务映射”解决方案来实现依赖项可视化。 [了解详细信息](concepts-dependency-visualization.md)。
 
 > [!NOTE]
 > 依赖项可视化在 Azure 政府中不可用。
@@ -91,7 +98,7 @@ Azure 迁移设备不断收集有关本地环境的信息。  评估是本地 VM
 支持 | 此选项当前处于预览状态，仅适用于 VMware VM。 [查看](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements)支持的操作系统。 | 在一般可用性 （GA） 中。
 代理 | 无需在要交叉检查的计算机上安装代理。 | 要安装在要分析的每个本地计算机上的代理[：Microsoft 监视代理 （MMA）](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)和[依赖项代理](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent)。 
 先决条件 | [查看](concepts-dependency-visualization.md#agentless-analysis)先决条件和部署要求。 | [查看](concepts-dependency-visualization.md#agent-based-analysis)先决条件和部署要求。
-Log Analytics | 非必需。 | Azure 迁移使用[Azure 监视器日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)中的[服务映射](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map)解决方案进行依赖项可视化。 [了解详情](concepts-dependency-visualization.md#agent-based-analysis)。
+Log Analytics | 非必需。 | Azure 迁移使用[Azure 监视器日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)中的[服务映射](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map)解决方案进行依赖项可视化。 [了解详细信息](concepts-dependency-visualization.md#agent-based-analysis)。
 工作原理 | 在启用依赖项可视化的计算机上捕获 TCP 连接数据。 发现后，它每隔五分钟收集数据。 | 安装在计算机上的服务映射代理收集有关每个进程的 TCP 进程和入站/出站连接的数据。
 数据 | 源计算机服务器名称、进程、应用程序名称。<br/><br/> 目标计算机服务器名称、进程、应用程序名称和端口。 | 源计算机服务器名称、进程、应用程序名称。<br/><br/> 目标计算机服务器名称、进程、应用程序名称和端口。<br/><br/> 收集连接数、延迟和数据传输信息，并可用于日志分析查询。 
 可视化 | 单个服务器的依赖项映射可在 1 小时到 30 天的持续时间内查看。 | 单个服务器的依赖项映射。<br/><br/> 地图只能查看一个多小时。<br/><br/> 一组服务器的依赖项映射。<br/><br/> 从地图视图添加和删除组中的服务器。

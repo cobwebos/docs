@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 0643ae792c890b65f239d9a0c16a05639dd4f8b9
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 9adbe7b03283a00f78222ffdc77dca7aaadcbda0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811469"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461695"
 ---
 # <a name="securing-paas-deployments"></a>保护 PaaS 部署
 
@@ -74,7 +74,7 @@ PaaS 与传统本地部署之间的另一个重大差别在于，前者为主要
 下面是管理标识边界的最佳做法。
 
 最佳做法****：保护密钥和凭据以保护 PaaS 部署。   
-详细信息****：丢失密钥和凭据是一个常见问题。 您可以使用集中式解决方案，其中密钥和机密可以存储在硬件安全模块 （HSM） 中。 [Azure 密钥保管库](../../key-vault/key-vault-overview.md)通过使用受 HSM 保护的密钥加密身份验证密钥、存储帐户密钥、数据加密密钥、.pfx 文件和密码来保护密钥和机密。
+详细信息****：丢失密钥和凭据是一个常见问题。 您可以使用集中式解决方案，其中密钥和机密可以存储在硬件安全模块 （HSM） 中。 [Azure 密钥保管库](../../key-vault/general/overview.md)通过使用受 HSM 保护的密钥加密身份验证密钥、存储帐户密钥、数据加密密钥、.pfx 文件和密码来保护密钥和机密。
 
 最佳做法****：不要将凭据和其他机密放入源代码或 GitHub。   
 详细信息****：比丢失密钥和凭据更遭糕的唯一问题就是让未经授权的人员获取这些密钥和凭据的访问权限。 攻击者可以利用 bot 技术来查找 GitHub 等代码存储库中存储的密钥和机密。 请不要将密钥和机密放入这些公共代码存储库。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/16/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: c6455930f88d02e11cb0c45d29594ae40eaad9e3
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 82d8c8ca94f3d0f4289902ae40928ff507e2d1ec
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113290"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460658"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 文件同步代理发行说明
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Windows Server 安装可转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上提供的任意协议（包括 SMB、NFS 和 FTPS）以本地方式访问数据， 并且可以根据需要在世界各地设置多个缓存。
@@ -36,10 +36,10 @@ ms.locfileid: "81113290"
 | 2019 年 6 月更新汇总 - [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 2019 年 6 月 13 日 | 支持 - 代理版本将于 2020 年 4 月 21 日过期 |
 | 2019 年 5 月更新汇总 - [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 2019 年 5 月 7 日 | 支持 - 代理版本将于 2020 年 4 月 21 日过期 |
 | V6 版本 - [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 2019年4月21日 | 支持 - 代理版本将于 2020 年 4 月 21 日过期 |
-| V5 版本 | 5.0.2.0 - 5.2.0.0 | 不可用 | 不支持 - 代理版本于 2020 年 3 月 18 日过期 |
-| V4 版本 | 4.0.1.0 - 4.3.0.0 | 不可用 | 不支持 - 代理版本于 2019 年 11 月 6 日过期 |
-| V3 版本 | 3.1.0.0 - 3.4.0.0 | 不可用 | 不支持 - 代理版本于 2019 年 8 月 19 日过期 |
-| GA 前代理 | 1.1.0.0 - 3.0.13.0 | 不可用 | 不支持 - 代理版本于 2018 年 10 月 1 日到期 |
+| V5 版本 | 5.0.2.0 - 5.2.0.0 | 空值 | 不支持 - 代理版本于 2020 年 3 月 18 日过期 |
+| V4 版本 | 4.0.1.0 - 4.3.0.0 | 空值 | 不支持 - 代理版本于 2019 年 11 月 6 日过期 |
+| V3 版本 | 3.1.0.0 - 3.4.0.0 | 空值 | 不支持 - 代理版本于 2019 年 8 月 19 日过期 |
+| GA 前代理 | 1.1.0.0 - 3.0.13.0 | 空值 | 不支持 - 代理版本于 2018 年 10 月 1 日到期 |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure 文件同步代理更新策略
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
@@ -63,9 +63,6 @@ ms.locfileid: "81113290"
 - 支持将存储同步服务和/或存储帐户移动到其他 Azure 活动目录 （AAD） 租户
     - Azure 文件同步现在支持将存储同步服务和/或存储帐户移动到其他资源组、订阅或 Azure AD 租户。
     
-- 评估工具现在标识以句点结尾的文件或目录
-    - [评估工具](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet)已更新，以标识以句点结尾的文件或目录。 Azure 文件同步当前不支持以句点结尾的文件或目录。要使用[评估工具](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet)的更新版本，请安装[Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)的最新版本。
- 
 - 各种性能和可靠性改进
     - 如果在存储帐户上配置了虚拟网络 （VNET） 和防火墙规则，则 Azure 文件共享上的更改检测可能会失败。
     - 减少与召回相关的内存消耗。 

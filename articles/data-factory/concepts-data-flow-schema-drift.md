@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/12/2019
-ms.openlocfilehash: a6b3b1d11242434088c138460d968f39d5273e4f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/15/2020
+ms.openlocfilehash: 4c510cae7ba5a952e6dc7f7cb7ae7591fe801560
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418416"
+ms.locfileid: "81461287"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>映射数据流中的架构漂移
 
@@ -30,6 +30,10 @@ ms.locfileid: "81418416"
 Azure 数据工厂本机支持从执行更改为执行的灵活架构，以便无需重新编译数据流即可构建通用数据转换逻辑。
 
 需要在数据流中做出体系结构方面的决策，使整个流接受架构偏差。 这样做可以防范源中发生架构更改。 但是，您将在整个数据流中丢失列和类型的早期绑定。 Azure 数据工厂将架构漂移流视为后期绑定流，因此，在生成转换时，漂移列名称将在整个流的架构视图中不可用。
+
+本视频介绍了一些复杂的解决方案，您可以使用数据流的架构漂移功能在 ADF 中轻松构建这些解决方案。 在此示例中，我们基于灵活的数据库架构构建可重用的模式：
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tyx7]
 
 ## <a name="schema-drift-in-source"></a>架构漂移在源
 

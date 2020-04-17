@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
-ms.date: 03/20/2020
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 795d21e05ade652b52c06d597ca4c5fef85e7245
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ddb4b2cd465b5e9542d777d33b9bd8cb952becd
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80152791"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81531331"
 ---
-# <a name="deploy-the-sample-labeling-tool"></a>部署示例标签工具
+# <a name="deploy-the-sample-labeling-tool"></a>部署示例标记工具
 
 窗体识别器示例标签工具是一个应用程序，它提供了一个简单的用户界面 （UI），可用于手动标记表单（文档），以便进行监督学习。 在本文中，我们将提供链接和说明，教您如何：
 
@@ -41,8 +41,8 @@ ms.locfileid: "80152791"
 
 按照以下步骤使用 Azure 门户创建新资源： 
 
-1. 登录到 Azure[门户](https://portal.azure.com/signin/index/)。
-2. 选择“创建资源”。**** 
+1. 登录 [Azure 门户](https://portal.azure.com/signin/index/)。
+2. 选择“创建资源”。  
 3. 接下来，选择**Web 应用程序**。 
 
    > [!div class="mx-imgBorder"]
@@ -76,6 +76,7 @@ ms.locfileid: "80152791"
    * 用户名（可选） - 创建用户名。 
    * 密码（可选） - 创建您记得的安全密码。
    * 图像和标记 - 将此设置为`mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
+   * 连续部署 - 如果要在开发团队更改示例标记工具时接收自动更新，则将其设置为 **"打开**"。
    * 启动命令 - 将此设置为`./run.sh eula=accept`
 
    > [!div class="mx-imgBorder"]
@@ -120,7 +121,7 @@ az container create \
 
 ## <a name="open-source-on-github"></a>GitHub 上的开源
 
-OCR 表单标签工具也可作为 GitHub 上的开源项目提供。 该工具是使用 React + Redux 构建的 Web 应用程序，在 TypeScript 中编写。 要了解更多信息或贡献，请参阅[OCR 表单标签工具](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md)。
+OCR 表单标签工具也可作为 GitHub 上的开源项目提供。 该工具是使用 React + Redux 生成并采用 TypeScript 编写的 web 应用程序。 若要了解详细信息或参与，请参阅 [OCR 窗体标记工具](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

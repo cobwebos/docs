@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 7bc637b5719da3c5f5e5607436aa7da0721f5a9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fcc7c5b8fa182cace6e3dae0b1cae4cd41c5dcb9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266008"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532575"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>使用 FTP/S 将应用部署到 Azure 应用服务
 
@@ -67,7 +67,7 @@ ms.locfileid: "79266008"
 
 ## <a name="enforce-ftps"></a>强制实施 FTPS
 
-为了增强安全性，只应启用基于 SSL 的 FTP。 如果不使用 FTP 部署，也可禁用 FTP 和 FTPS。
+为提高安全性，应仅允许 FTP 通过 TLS/SSL。 如果不使用 FTP 部署，也可禁用 FTP 和 FTPS。
 
 在 [Azure 门户](https://portal.azure.com)的应用资源页中，从左侧导航中选择“配置”**** > “常规设置”****。
 

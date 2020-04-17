@@ -3,12 +3,12 @@ title: 策略定义结构的详细信息
 description: 描述如何使用策略定义为组织中的 Azure 资源建立约定。
 ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 017878c4c47a5645ea8815580d2176c7a2ff5d66
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 0a7c4e05270ff242fa97b253b27a5de92895368a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314023"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460998"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -89,7 +89,7 @@ Azure 策略为资源建立约定。 策略定义描述资源合规性[条件](#
 - `Microsoft.ContainerService.Data`用于管理[Azure 库伯内斯服务](../../../aks/intro-kubernetes.md)上的入场控制器规则。 使用此资源提供程序模式的策略**必须**使用[强制重新策略](./effects.md#enforceregopolicy)效果。
 - `Microsoft.Kubernetes.Data`用于在 Azure 上管理自管理的 AKS 引擎库伯奈斯群集。
   使用此资源提供程序模式的策略**必须**使用[强制OPA约束](./effects.md#enforceopaconstraint)效果。
-- `Microsoft.KeyVault.Data`用于在[Azure 密钥保管库](../../../key-vault/key-vault-overview.md)中管理保管库和证书。
+- `Microsoft.KeyVault.Data`用于在[Azure 密钥保管库](../../../key-vault/general/overview.md)中管理保管库和证书。
 
 > [!NOTE]
 > 资源提供程序模式仅支持内置策略定义，并且在预览版中不支持计划。
@@ -324,7 +324,7 @@ Azure 策略为资源建立约定。 策略定义描述资源合规性[条件](#
 }
 ```
 
-### <a name="value"></a>“值”
+### <a name="value"></a>值
 
 也可使用 **value** 来形成条件。 **value** 会针对[参数](#parameters)、[支持的模板函数](#policy-functions)或文本来检查条件。
 **value** 可与任何支持的[条件](#conditions)配对。

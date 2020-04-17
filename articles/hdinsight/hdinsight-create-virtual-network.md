@@ -5,37 +5,37 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 6fd23e3d41dda15b1ec439c1e8b02073722b8871
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/16/2020
+ms.openlocfilehash: 0c7791d43ffbbc13ab151362c5c3026ebbdb0d34
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272534"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81531010"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>为 Azure HDInsight 群集创建虚拟网络
 
-本文通过操作示例与代码示例来演示如何创建和配置用于 Azure HDInsight 群集的 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)。 其中提供了有关创建网络安全组 (NSG) 和配置 DNS 的详细示例。 
+本文提供了用于创建和配置[Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)的示例和代码示例。 与 Azure HDInsight 群集一起使用。 其中提供了有关创建网络安全组 (NSG) 和配置 DNS 的详细示例。
 
 有关在 Azure HDInsight 中使用虚拟网络的背景信息，请参阅[规划 Azure HDInsight 的虚拟网络](hdinsight-plan-virtual-network-deployment.md)。
 
 ## <a name="prerequisites-for-code-samples-and-examples"></a>代码示例和示例的先决条件
 
-在执行本文中的任何代码示例之前，应了解 TCP/IP 网络。 如果你不熟悉 TCP/IP 网络，请在修改生产网络之前咨询相关的人员。
+在执行本文中的任何代码示例之前，请了解 TCP/IP 网络。 如果您不熟悉 TCP/IP 网络，请在修改生产网络之前咨询某人。
 
-本文中的示例要求满足的其他先决条件包括：
+本文中示例的其他先决条件包括以下项：
 
-* 如果使用 PowerShell，则需要安装 [AZ 模块](https://docs.microsoft.com/powershell/azure/overview)。
-* 若要使用 Azure CLI 但尚未安装它，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+* 如果您使用的是 PowerShell，则需要安装[AZ 模块](https://docs.microsoft.com/powershell/azure/overview)。
+* 如果要使用 Azure CLI 但尚未安装 Azure [CLI，请参阅安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 > [!IMPORTANT]  
 > 如果正在查找有关如何使用 Azure 虚拟网络将 HDInsight 连接到本地网络的分步指南，请参阅[将 HDInsight 连接到本地网络](connect-on-premises-network.md)文档。
 
 ## <a name="example-network-security-groups-with-hdinsight"></a><a id="hdinsight-nsg"></a>示例：网络安全组与 HDInsight
 
-本节中的示例演示如何创建可允许 HDInsight 与 Azure 管理服务进行通信的网络安全组规则。 使用示例之前，修改 IP 地址以便与正在使用的 Azure 区域的 IP 地址匹配。 在 [HDInsight 管理 IP 地址](hdinsight-management-ip-addresses.md)中可找到此信息。
+本节中的示例演示如何创建网络安全组规则。 这些规则允许 HDInsight 与 Azure 管理服务通信。 在使用示例之前，请调整 IP 地址以匹配正在使用的 Azure 区域的地址。 在 [HDInsight 管理 IP 地址](hdinsight-management-ip-addresses.md)中可找到此信息。
 
 ### <a name="azure-resource-management-template"></a>Azure 资源管理模板
 
@@ -151,7 +151,7 @@ Set-AzVirtualNetworkSubnetConfig `
 $vnet | Set-AzVirtualNetwork
 ```
 
-本示例演示如何添加规则以允许所需 IP 地址的入站流量。 它不包含用于限制其他源的入站访问的规则。 以下代码演示如何允许来自 Internet 的 SSH 访问：
+本示例演示如何添加规则以允许所需 IP 地址的入站流量。 它不包含限制从其他源的入站访问的规则。 以下代码演示如何允许来自 Internet 的 SSH 访问：
 
 ```powershell
 Get-AzNetworkSecurityGroup -Name hdisecure -ResourceGroupName RESOURCEGROUP |
@@ -202,7 +202,6 @@ Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -So
 
     此命令完成后，就可以将 HDInsight 安装到虚拟网络中了。
 
-
 这些步骤只会实现对 Azure 云中 HDInsight 运行状况和管理服务的访问。 任何从虚拟网络外部对 HDInsight 群集的其他访问会被阻止。 若要从虚拟网络之外启用访问，必须添加其他的虚拟网络安全组规则。
 
 以下代码演示如何允许来自 Internet 的 SSH 访问：
@@ -238,7 +237,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
     az network nic list --resource-group RESOURCEGROUP --query "[0].dnsSettings.internalDomainNameSuffix"
     ```
 
-2. 在虚拟网络的自定义 DNS 服务器上，使用以下文本作为 `/etc/bind/named.conf.local` 文件的内容：
+1. 在虚拟网络的自定义 DNS 服务器上，使用以下文本作为 `/etc/bind/named.conf.local` 文件的内容：
 
     ```
     // Forward requests for the virtual network suffix to Azure recursive resolver
@@ -252,7 +251,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
 
     此配置将虚拟网络 DNS 后缀的所有 DNS 请求路由到 Azure 递归解析程序。
 
-2. 在虚拟网络的自定义 DNS 服务器上，使用以下文本作为 `/etc/bind/named.conf.options` 文件的内容：
+1. 在虚拟网络的自定义 DNS 服务器上，使用以下文本作为 `/etc/bind/named.conf.options` 文件的内容：
 
     ```
     // Clients to accept requests from
@@ -288,9 +287,9 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
     
     * 将值 `192.168.0.1` 替换为本地 DNS 服务器的 IP 地址。 此条目可将所有其他 DNS 请求路由到本地 DNS 服务器。
 
-3. 若要使用配置，请重新启动 Bind。 例如，`sudo service bind9 restart` 。
+1. 若要使用配置，请重新启动 Bind。 例如，`sudo service bind9 restart` 。
 
-4. 将一个条件转发器添加到本地 DNS 服务器。 配置条件转发器，以便将步骤 1 中 DNS 后缀的请求发送到自定义 DNS 服务器。
+1. 将一个条件转发器添加到本地 DNS 服务器。 配置条件转发器，以便将步骤 1 中 DNS 后缀的请求发送到自定义 DNS 服务器。
 
     > [!NOTE]  
     > 请查阅 DNS 软件的文档，具体了解如何添加条件转发器。
@@ -351,7 +350,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
             allow-query { goodclients; };
 
             forwarders {
-            168.63.129.16;   # Azure recursive resolver         
+            168.63.129.16;   # Azure recursive resolver
             };
 
             dnssec-validation auto;
@@ -360,10 +359,10 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
             listen-on { any; };
     };
     ```
-    
+
    将值 `10.0.0.0/16` 和 `10.1.0.0/16` 替换为虚拟网络的 IP 地址范围。 此条目允许每个网络中的资源发出 DNS 服务器请求。
 
-    不是针对虚拟网络 DNS 后缀（例如，microsoft.com）的任何请求由 Azure 递归解析程序处理。
+    任何不是虚拟网络的 DNS 后缀的请求（例如，microsoft.com）都由 Azure 递归解析程序处理。
 
 4. 若要使用配置，请重新启动 Bind。 例如，在两个 DNS 服务器上运行 `sudo service bind9 restart`。
 
@@ -371,7 +370,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关将 HDInsight 配置为连接到本地网络的端到端示例，请参阅[将 HDInsight 连接到本地网络](./connect-on-premises-network.md)。
+* 有关配置 HDInsight 以连接到本地网络的完整示例，请参阅[将 HDInsight 连接到本地网络](./connect-on-premises-network.md)。
 * 有关在 Azure 虚拟网络中配置 Apache HBase 群集，请参阅[在 Azure 虚拟网络中的 HDInsight 上创建 Apache HBase 群集](hbase/apache-hbase-provision-vnet.md)。
 * 要了解如何配置 Apache HBase 异地复制，请参阅[在 Azure 虚拟网络中设置 Apache HBase 群集复制](hbase/apache-hbase-replication.md)。
 * 有关 Azure 虚拟网络的详细信息，请参阅 [Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。

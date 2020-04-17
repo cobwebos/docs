@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/27/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 8ce949ac997ba7ee38cb057752d89f4b4d22388f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c8578c518ac45bea147790028c2904c7ce36fffb
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73838707"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459026"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>将 Azure 存储帐户移到另一个区域
 
@@ -51,7 +51,7 @@ ms.locfileid: "73838707"
 
 若要使用 Azure 门户导出模板：
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 2. 选择**所有资源**，然后选择您的存储帐户。
 
@@ -63,7 +63,7 @@ ms.locfileid: "73838707"
 
    此 zip 文件包含构成模板的 .json 文件以及用于部署模板的脚本。
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 若要使用 PowerShell 导出模板：
 
@@ -109,7 +109,7 @@ ms.locfileid: "73838707"
 
     ![Azure 资源管理器模板库](./media/storage-account-move/azure-resource-manager-template-library.png)
 
-4. 选择 **“创建”**。
+4. 选择“创建”  。
 
 5. 选择“在编辑器中生成自己的模板”****。
 
@@ -139,7 +139,7 @@ ms.locfileid: "73838707"
     ```
     若要获取区域位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是没有空格的区域名称，**美国** = **中部中心**。
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 若要使用 PowerShell 部署模板：
 
@@ -194,7 +194,7 @@ ms.locfileid: "73838707"
 
 3. 单击“我同意上述条款和条件”复选框，然后单击“选择购买”按钮。********
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. 使用 [Get-AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-2.5.0) 获取要在其中部署目标公共 IP 的订阅 ID：
 
@@ -274,9 +274,9 @@ ms.locfileid: "73838707"
 
 3. 选择“删除”并确认。****
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-若要删除资源组及其关联的资源（包括新的存储帐户），请使用 [Remove-AzStorageAccount](/powershell/module/az.resources/remove-azstorageaccount) 命令：
+若要删除资源组及其关联的资源（包括新的存储帐户），请使用 [Remove-AzStorageAccount](/powershell/module/az.storage/remove-azstorageaccount) 命令：
 
 ```powershell
 Remove-AzStorageAccount -ResourceGroupName  $resourceGroup -AccountName $storageAccount
@@ -289,4 +289,4 @@ Remove-AzStorageAccount -ResourceGroupName  $resourceGroup -AccountName $storage
 
 
 - [将资源移到新资源组或订阅中](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [将 Azure VM 移到另一区域](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [将 Azure VM 移动到另一区域](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)

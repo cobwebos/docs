@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: befe8945468d220a04ec7f0b515f22159cb72b0f
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 4548bf77c01194802c2e6203bcbf9fbd240370a2
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549230"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461644"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric 安全性最佳做法
 在 Azure 上部署应用程序的过程快速、轻松且经济高效。 将云应用程序部署到生产环境前，请先查看有必要遵照和建议的最佳做法列表，了解最好应如何在应用程序中实现群集安全性。
@@ -155,7 +155,7 @@ Service Fabric 使用证书提供身份验证和加密，从而保护群集及�
 
 Service Fabric 使用 X.509 证书保护群集，并提供应用程序安全功能。 Azure Key Vault 用于管理 Azure 中 Service Fabric 群集的[证书](../../service-fabric/service-fabric-cluster-security-update-certs-azure.md)。 创建群集的 Azure 资源提供程序从密钥保管库拉取证书。 然后，当群集在 Azure 上部署时，资源提供程序在 VM 上安装这些证书。
 
-[Azure Key Vault](../../key-vault/key-vault-secure-your-key-vault.md)、Service Fabric 群集与使用这些证书的资源提供程序之间存在证书关系。 在群集创建后，证书关系的相关信息会存储在密钥保管库中。
+[Azure Key Vault](../../key-vault/general/secure-your-key-vault.md)、Service Fabric 群集与使用这些证书的资源提供程序之间存在证书关系。 在群集创建后，证书关系的相关信息会存储在密钥保管库中。
 
 设置密钥保管库有两个基本步骤：
 1. 专门为密钥保管库创建一个资源组。
@@ -166,7 +166,7 @@ Service Fabric 使用 X.509 证书保护群集，并提供应用程序安全功�
 
     必须启用密钥保管库，才能进行部署。 然后，计算资源提供程序可以从保管库获取证书，并将证书安装在 VM 实例上。
 
-若要详细了解如何设置密钥保管库，请参阅[什么是 Azure 密钥保管库？](../../key-vault/key-vault-overview.md)。
+若要详细了解如何设置密钥保管库，请参阅[什么是 Azure 密钥保管库？](../../key-vault/general/overview.md)。
 
 ## <a name="assign-users-to-roles"></a>将用户分配到角色
 创建表示群集的应用程序后，将用户分配给 Service Fabric 支持的角色：只读和管理员。可以使用 Azure 门户分配这些角色。

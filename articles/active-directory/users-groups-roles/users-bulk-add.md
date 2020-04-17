@@ -1,11 +1,11 @@
 ---
-title: 批量在 Azure 活动目录门户中创建用户（预览） |微软文档
+title: 批量在 Azure 活动目录门户中创建用户 |微软文档
 description: 在 Azure 活动目录中的 Azure AD 管理中心批量添加用户
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 08/30/2019
+ms.date: 04/16/2020
 ms.topic: article
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a10dfffa69652ee2b75053c04b97f6492c46811e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c3a8b9cb9701288d24534ab08940f6dbd4a698ad
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72174320"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532914"
 ---
-# <a name="bulk-create-users-preview-in-azure-active-directory"></a>批量在 Azure 活动目录中创建用户（预览）
+# <a name="bulk-create-users-in-azure-active-directory"></a>批量在 Azure 活动目录中创建用户
 
 Azure 活动目录 （Azure AD） 支持批量用户创建和删除操作、批量邀请来宾，并支持下载用户、组和组成员的列表。
 
@@ -40,7 +40,7 @@ Azure 活动目录 （Azure AD） 支持批量用户创建和删除操作、批�
 
    ![CSV 文件包含要创建的用户的名称和指示](./media/users-bulk-add/add-csv-file.png)
 
-1. 在**批量创建用户（预览）** 页面上，在"上传 CSV 文件"下，浏览到该文件。 当您选择该文件并单击"**提交**"时，将启动 CSV 文件的验证。
+1. 在 **"批量创建用户**"页上，在"上传 CSV 文件"下，浏览到该文件。 当您选择该文件并单击"**提交**"时，将启动 CSV 文件的验证。
 1. 验证文件内容后，您将看到**已成功上载的文件**。 如果有错误，必须修正错误，然后才能提交作业。
 1. 文件通过验证后，选择 **"提交"** 以启动导入新用户的 Azure 批量操作。
 1. 导入操作完成后，您将看到批量操作作业状态的通知。
@@ -49,9 +49,9 @@ Azure 活动目录 （Azure AD） 支持批量用户创建和删除操作、批�
 
 ## <a name="check-status"></a>查看状态
 
-您可以在**批量操作结果（预览）** 页中查看所有挂起的批量请求的状态。
+您可以在 **"批量操作结果"** 页中查看所有挂起的批量请求的状态。
 
-   ![在"批量操作结果"页中检查上载状态](./media/users-bulk-add/bulk-center.png)
+   [![](media/users-bulk-add/bulk-center.png "Check create status in the Bulk Operations Results page")](media/users-bulk-add/bulk-center.png#lightbox)
 
 接下来，可以检查所创建的用户是否存在于 Azure 门户或使用 PowerShell 中的 Azure AD 组织中。
 
@@ -59,12 +59,12 @@ Azure 活动目录 （Azure AD） 支持批量用户创建和删除操作、批�
 
 1. 使用组织中的用户管理员的帐户[登录到 Azure AD 管理中心](https://aad.portal.azure.com)。
 1. 在导航窗格中选择“Azure Active Directory”。****
-1. 在“管理”下，选择“用户”********。
+1. 在“管理”下，选择“用户”   。
 1. 在 **"显示**"下，选择 **"所有用户**"并验证是否列出了您创建的用户。
 
 ### <a name="verify-users-with-powershell"></a>使用 PowerShell 验证用户
 
-运行以下命令：
+运行下面的命令：
 
 ``` PowerShell
 Get-AzureADUser -Filter "UserType eq 'Member'"

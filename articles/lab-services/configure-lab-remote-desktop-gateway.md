@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 2cdafa9a36a5f906151ca6946e18ef82bc7f1e01
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: eac195babebf300aa9770d35b7b98eba29c234cf
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529424"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460981"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>在 Azure 开发人员测试实验室中配置实验室以使用远程桌面网关
 在 Azure DevTest 实验室中，可以为实验室配置远程桌面网关，以确保安全访问实验室虚拟机 （VM），而无需公开 RDP 端口。 该实验室为您的实验室用户提供了一个中心位置，以便查看和连接到他们有权访问的所有虚拟机。 **"虚拟机**"页上的 **"连接**"按钮将创建一个特定于计算机的 RDP 文件，您可以打开该文件以连接到计算机。 通过将实验室连接到远程桌面网关，您可以进一步自定义 RDP 连接并保护 RDP 连接。 
@@ -64,7 +64,7 @@ Azure 函数处理具有 的`https://{function-app-uri}/app/host/{lab-machine-na
 ## <a name="configure-the-lab-to-use-token-authentication"></a>将实验室配置为使用令牌身份验证 
 本节演示如何将实验室配置为使用支持令牌身份验证的远程桌面网关计算机。 本节不介绍如何设置远程桌面网关服务器场本身。 有关此信息，请参阅本文末尾的示例[以创建远程桌面网关](#sample-to-create-a-remote-desktop-gateway)部分。 
 
-在更新实验设置之前，请存储成功执行函数以在实验室密钥保管库中返回身份验证令牌所需的密钥。 您可以在 Azure 门户中的函数**的"管理**"页中获取函数键值。 有关如何在密钥保管库中保存机密的详细信息，请参阅[向密钥保管库添加机密](../key-vault/quick-create-portal.md#add-a-secret-to-key-vault)。 保存机密的名称以供以后使用。
+在更新实验设置之前，请存储成功执行函数以在实验室密钥保管库中返回身份验证令牌所需的密钥。 您可以在 Azure 门户中的函数**的"管理**"页中获取函数键值。 有关如何在密钥保管库中保存机密的详细信息，请参阅[向密钥保管库添加机密](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault)。 保存机密的名称以供以后使用。
 
 要查找实验室密钥保管库的 ID，运行以下 Azure CLI 命令： 
 

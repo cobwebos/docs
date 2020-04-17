@@ -1,11 +1,11 @@
 ---
-title: 在 Azure 活动目录门户中下载用户列表（预览 ） |微软文档
+title: 在 Azure 活动目录门户中下载用户列表 |微软文档
 description: 在 Azure 活动目录中的 Azure 管理中心批量下载用户记录。
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 02/06/2020
+ms.date: 04/16/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,20 +13,20 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4716ff9547f64dc6551b4d4adb0a8578da9fa83e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b35163387ed4ce71f7a2019835a1d9fdbff3051
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77063826"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532625"
 ---
-# <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>在 Azure 活动目录门户中下载用户列表（预览）
+# <a name="download-a-list-of-users-in-azure-active-directory-portal"></a>在 Azure 活动目录门户中下载用户列表
 
 Azure 活动目录 （Azure AD） 支持批量用户导入（创建）操作。
 
 ## <a name="required-permissions"></a>所需的权限
 
-要从 Azure AD 管理中心下载用户列表，必须与在 Azure AD 中分配给一个或多个组织级管理员角色的用户登录。 来宾邀请者和应用程序开发人员不被视为管理员角色。
+要从 Azure AD 管理中心下载用户列表，必须与在 Azure AD 中分配给一个或多个组织级管理员角色的用户登录（用户管理员是所需的最低角色）。 来宾邀请者和应用程序开发人员不被视为管理员角色。
 
 ## <a name="to-download-a-list-of-users"></a>下载用户列表
 
@@ -70,9 +70,9 @@ Azure 活动目录 （Azure AD） 支持批量用户导入（创建）操作。
 
 ## <a name="check-status"></a>查看状态
 
-您可以在**批量操作结果（预览）** 页中查看挂起的批量请求的状态。
+您可以在 **"批量操作结果"** 页中查看挂起的批量请求的状态。
 
-   ![在"批量操作结果"页中检查上载状态](./media/users-bulk-download/bulk-center.png)
+[![](media/users-bulk-download/bulk-center.png "Check status in the Bulk Operations Results page")](media/users-bulk-download/bulk-center.png#lightbox)
 
 ## <a name="bulk-download-service-limits"></a>批量下载服务限制
 

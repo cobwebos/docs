@@ -5,15 +5,15 @@ services: app-service\mobile
 author: conceptdev
 ms.service: app-service-mobile
 ms.topic: include
-ms.date: 05/06/2019
+ms.date: 04/15/2020
 ms.author: crdun
 ms.custom: include file
-ms.openlocfilehash: a7e543dcad9ad1b016d1244451cd87cda5ad7492
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5b6389491fd91b716a05e7c57c98addb6352bd9
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67440224"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461914"
 ---
 1. 下载以下平台的客户端 SDK 快速入门：
     
@@ -69,23 +69,13 @@ ms.locfileid: "67440224"
    - **Node.js backend**
     
      若要使用 Node.js 快速入门应用，请按以下说明操作。
-
-     1. 在 Azure 门户中转到“简易表”即可看到以下屏幕。****
-      
-        ![Node 简易表](./media/app-service-mobile-configure-new-backend/node-easy-tables.png)
-
-     2. 确保 SQL 连接字符串已在 **"配置"** 选项卡中添加。然后选中 **"我确认这将覆盖所有网站内容**"复选框，然后单击"**创建 TodoItem"表**按钮。
      
-        ![Node 简易表的“配置”](./media/app-service-mobile-configure-new-backend/node-easy-tables-configuration.png)
-
-     3. 在“简易表”中单击“+ 添加”按钮。********
-    
-        ![Node 简易表的“添加”按钮](./media/app-service-mobile-configure-new-backend/node-easy-tables-add.png)
-
-     4. 创建允许匿名访问的 `TodoItem` 表。
-      
-        ![Node 简易表的“添加表”](./media/app-service-mobile-configure-new-backend/node-easy-tables-table-add.png)
-
+        1. 创建新 API - 您可以在 Azure 门户中直接进行更改，或在开发环境中在本地修改代码，然后发布到 Azure。 单击下面`Development Tools`菜单`App Service Editor (Preview)`，该菜单为您的应用代码提供浏览器内编辑体验。
+        
+        2. 单击，`Go`应用服务编辑器打开后，您可以完全控制源代码。 假设您已经安装了带有 npm 安装命令的 Express 和 azure-移动应用包，请单击 WWWROOT 下的 api 文件夹以创建或编辑自定义 API。 对代码文件进行更改，并自动保存更改。
+        
+        3. 您可以完全控制用于存储应用程序数据的 Azure SQL 数据库。 您可以轻松地在数据库中创建新表。
+ 
    - **.NET 后端**
     
         若要使用 .NET 快速入门应用，请按以下说明操作。

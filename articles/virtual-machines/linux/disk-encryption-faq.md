@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: ae3743530440c9df9094a0b9784922d2d6a3dfdf
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 753d606e1fc2dc966c970a210cf6fc5066d5ed83
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985399"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460131"
 ---
 # <a name="azure-disk-encryption-for-linux-virtual-machines-faq"></a>适用于 Linux 虚拟机的 Azure 磁盘加密常见问题解答
 
@@ -148,7 +148,9 @@ Azure 磁盘加密可将 aes-xts-plain64 的 decrypt 默认方法和 256 位卷�
 否，不会擦除已使用 Azure 磁盘加密进行了加密的数据驱动器上的数据。 与 EncryptFormatAll 不重新加密 OS 驱动器类似，它也不会重新加密已加密的数据驱动器。 有关详细信息，请参阅 [EncryptFormatAll 条件](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)。        
 
 ## <a name="is-xfs-filesystem-supported"></a>是否支持 XFS 文件系统？
-只有在使用 EncryptFormatAll 的情况下，XFS 卷才支持数据磁盘加密。 该操作会将卷重新格式化，擦除以前存在上面的任何数据。 有关详细信息，请参阅 [EncryptFormatAll 条件](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)。
+支持 XFS OS 磁盘的加密。
+
+仅当使用加密格式所有参数时，才支持 XFS 数据磁盘的加密。 该操作会将卷重新格式化，擦除以前存在上面的任何数据。 有关详细信息，请参阅 [EncryptFormatAll 条件](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)。
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>能否备份和还原加密的 VM？ 
 

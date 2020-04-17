@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: ce9919a0b0f614e427c12ee3e3fbda0be46470ea
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 9ed17ed0825e0011d1402efc45155755a1ecbadf
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273301"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459162"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
@@ -721,10 +721,10 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
       + 如果输入特定的 start_time 和/或 end_time，只会返回计划运行的结果；
       + 参数“daily_latest_only”已弃用。
     + 支持检索基于数据集的数据偏移输出。
-  + **[azureml 解释模型](https://docs.microsoft.com/python/api/azureml-explain-model)**
+  + **azureml 解释模型**
     + 将 AzureML-explain-model 包重命名为 AzureML-interpret，暂时保留旧包，以便能够后向兼容。
     + 修复了 AutoML bug：从 ExplanationClient 下载时，原始解释默认设置为分类任务而不是回归
-    + 添加了直接使用 [MimicWrapper](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.mimic_wrapper.mimicwrapper) 创建 [ScoringExplainer](/python/api/azureml-interpret/azureml.interpret.scoring.scoring_explainer.scoringexplainer?view=azure-ml-py) 的支持
+    + 添加了直接使用 MimicWrapper 创建 [ScoringExplainer](/python/api/azureml-interpret/azureml.interpret.scoring.scoring_explainer.scoringexplainer?view=azure-ml-py) 的支持
   + **[azureml-pipeline-core](https://docs.microsoft.com/python/api/azureml-pipeline-core)**
     + 改进了创建大管道的性能。
   + **[azureml-train-core](https://docs.microsoft.com/python/api/azureml-train-core)**
@@ -798,7 +798,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
     + 为 [supported_vmsizes()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#supported-vmsizes-workspace--location-none-) 函数添加了更多的 VM 大小字段（OS 磁盘、GPU 数目）
     + 为 [list_nodes()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#list-nodes--) 函数添加了更多的字段，以显示运行、专用 IP 和公共 IP、端口等。
     + 在群集[预配期间可以指定新字段，可将 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none--remote-login-port-public-access--notspecified--) `--remotelogin_port_public_access` 设置为 enabled 或 disabled，具体取决于在创建群集时是要将 SSH 端口保留为打开还是关闭状态。 如果不指定此字段，服务将会根据是否在 VNet 中部署群集，智能地打开或关闭该端口。
-  + **[azureml 解释模型](https://docs.microsoft.com/python/api/azureml-explain-model)**
+  + **azureml 解释模型**
     + 改进了分类方案中解释输出的文档。
     + 在评估示例的解释中添加了上传预测的 y 值的功能。 解锁了更有用的可视化效果。
     + 已将 explainer 属性添加到 MimicWrapper，以便能够获取基础 MimicExplainer。

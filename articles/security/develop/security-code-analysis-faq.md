@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: de76467cc741a65a851e5f3a7ec424d0326aebb2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb04a8e5a6d8c982a35cb5c448e4b6d93825bf73
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74851513"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460216"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
 有问题吗？ 有关详细信息，请查看以下常见问题解答。
@@ -159,7 +159,7 @@ CredScan 输出文件中的机密哈希密钥是必需的，如下例所示。
  - [Azure AD 托管服务标识 （MSI）](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
  - [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)
  - [Azure 应用服务和 Azure 函数中的托管标识](../../app-service/overview-managed-identity.md)
- - [应用身份验证库](../../key-vault/service-to-service-authentication.md)
+ - [应用身份验证库](../../key-vault/general/service-to-service-authentication.md)
 
 
 有关详细信息，请参阅在[云中安全地管理机密的](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/)博客文章。

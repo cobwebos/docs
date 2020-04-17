@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 03/22/2020
+ms.date: 04/15/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 2fe3b94463da07304f2c853910ac5d2a6771d070
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 14ff86bc47ab6de55d840c4b986c99caf2d4e99c
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545643"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482025"
 ---
 # <a name="azure-built-in-roles"></a>Azure 内置角色
 
@@ -28,7 +28,7 @@ ms.locfileid: "80545643"
 
 本文列出了 Azure 资源的内置角色，这些角色总是在不断发展。 若要获取最新角色，请使用 [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) 或 [az role definition list](/cli/azure/role/definition#az-role-definition-list)。 如果要查找 Azure 活动目录 （Azure AD） 的管理员角色，请参阅[Azure 活动目录 中的管理员角色权限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
 
-## <a name="all"></a>All
+## <a name="all"></a>全部
 
 下表提供了每个内置角色的简要说明和唯一 ID。 选择角色名称以查看`Actions`、`NotActions`和`DataActions``NotDataActions`每个角色的列表。 有关这些操作的含义以及它们如何应用于管理和数据平面的信息，请参阅[了解 Azure 资源的角色定义](role-definitions.md)。
 
@@ -139,7 +139,7 @@ ms.locfileid: "80545643"
 > | [智能系统帐户参与者](#intelligent-systems-account-contributor) | 允许管理智能系统帐户，但不允许访问这些帐户。 | 03a6d094-3444-4b3d-88af-7477090a9e5e |
 > | [逻辑应用参与者](#logic-app-contributor) | 允许管理逻辑应用，但不允许更改其访问权限。 | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
 > | [逻辑应用运算符](#logic-app-operator) | 允许读取、启用和禁用逻辑应用，但不允许编辑或更新它们。 | 515c2055-d9d4-4321-b1b9-bd0c9a0f79fe |
-> | **标识** |  |  |
+> | **身份** |  |  |
 > | [托管的标识参与者](#managed-identity-contributor) | 创建、读取、更新和删除用户分配的标识 | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
 > | [托管的标识操作员](#managed-identity-operator) | 读取和分配用户分配的标识 | f1a07417-d97a-45cb-824c-7a7467783830 |
 > | **安全性** |  |  |
@@ -168,7 +168,7 @@ ms.locfileid: "80545643"
 > | [自动化 Runbook 操作员](#automation-runbook-operator) | 读取 Runbook 属性 - 以能够创建 runbook 的作业。 | 5fb5aef8-1081-4b8e-bb16-9d5d0385bab5 |
 > | [Azure Connected Machine 加入](#azure-connected-machine-onboarding) | 可以加入 Azure Connected Machine。 | b64e21ea-ac4e-4cdf-9dc9-5b892992bee7 |
 > | [Azure Connected Machine 资源管理员](#azure-connected-machine-resource-administrator) | 可以读取、写入、删除和重新加入 Azure Connected Machine。 | cd570a14-e51a-42ad-bac8-bafd67325302 |
-> | [计费读者](#billing-reader) | 允许对帐单数据进行读取访问 | fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64 |
+> | [计费读取器](#billing-reader) | 允许对帐单数据进行读取访问 | fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64 |
 > | [蓝图参与者](#blueprint-contributor) | 可以管理蓝图定义，但不能对其进行分配。 | 41077137-e803-4205-871c-5a86e6a753b4 |
 > | [蓝图操作员](#blueprint-operator) | 可以分配现有已发布的蓝图，但不能创建新蓝图。 请注意，仅当分配使用用户分配的托管标识完成时，此操作才有效。 | 437d2ced-4a38-4302-8479-ed2bcb43d090 |
 > | [成本管理参与者](#cost-management-contributor) | 可以查看成本和管理成本配置（例如预算、导出） | 434105ed-43f6-45c7-a02f-909b2ba83430 |
@@ -2071,6 +2071,7 @@ ms.locfileid: "80545643"
 > | **数据操作** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | 删除 Blob。 |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | 返回 Blob 或 Blob 列表。 |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action | 将 Blob 从一个路径移到另一个路径 |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | 写入到 Blob。 |
 > | **NotDataActions** |  |
 > | *无* |  |
@@ -2095,6 +2096,7 @@ ms.locfileid: "80545643"
       "dataActions": [
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete",
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action",
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
       ],
       "notDataActions": []
@@ -4099,6 +4101,7 @@ Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 �
 > | Microsoft.ClassicCompute/virtualMachines/extensions/* |  |
 > | Microsoft.ClassicStorage/storageAccounts/listKeys/action | 列出存储帐户的访问密钥。 |
 > | Microsoft.Compute/virtualMachines/extensions/* |  |
+> | Microsoft.HybridCompute/machines/extensions/write | 安装或更新 Azure 电弧扩展 |
 > | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
 > | Microsoft.Insights/diagnosticSettings/* | 创建、更新或读取 Analysis Server 的诊断设置 |
 > | Microsoft.OperationalInsights/* |  |
@@ -4130,6 +4133,7 @@ Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 �
         "Microsoft.ClassicCompute/virtualMachines/extensions/*",
         "Microsoft.ClassicStorage/storageAccounts/listKeys/action",
         "Microsoft.Compute/virtualMachines/extensions/*",
+        "Microsoft.HybridCompute/machines/extensions/write",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Insights/diagnosticSettings/*",
         "Microsoft.OperationalInsights/*",
@@ -5515,6 +5519,7 @@ Azure Sentinel 读取者
 > | --- | --- |
 > | **操作** |  |
 > | 微软.安全见解/*/阅读 |  |
+> | 微软.安全洞察/数据连接器检查要求/操作 | 检查用户授权和许可证 |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | 使用新引擎进行搜索。 |
 > | Microsoft.OperationalInsights/workspaces/*/read | 查看日志分析数据 |
 > | 微软.运营洞察/工作空间/链接服务/阅读 | 获取给定工作区下的链接服务。 |
@@ -5548,6 +5553,7 @@ Azure Sentinel 读取者
     {
       "actions": [
         "Microsoft.SecurityInsights/*/read",
+        "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
         "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/LinkedServices/read",
@@ -5583,6 +5589,7 @@ Azure Sentinel 响应方
 > | --- | --- |
 > | **操作** |  |
 > | 微软.安全见解/*/阅读 |  |
+> | 微软.安全洞察/数据连接器检查要求/操作 | 检查用户授权和许可证 |
 > | 微软.安全见解/案例/* |  |
 > | 微软.安全见解/事件/* |  |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | 使用新引擎进行搜索。 |
@@ -5618,6 +5625,7 @@ Azure Sentinel 响应方
     {
       "actions": [
         "Microsoft.SecurityInsights/*/read",
+        "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
         "Microsoft.SecurityInsights/cases/*",
         "Microsoft.SecurityInsights/incidents/*",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",

@@ -2,13 +2,13 @@
 title: Azure 迁移中的 VMware 评估支持
 description: 通过 Azure 迁移服务器评估了解对 VMware VM 评估的支持。
 ms.topic: conceptual
-ms.date: 03/29/2020
-ms.openlocfilehash: e0172656d06075f89a7c3a06e8d4e9be94e6f5d0
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.date: 04/15/2020
+ms.openlocfilehash: 8a09562f14b95256ee9c2b5ba7d9c308cde66397
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80389301"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532198"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 评估的支持矩阵 
 
@@ -39,7 +39,7 @@ ms.locfileid: "80389301"
 **vCenter 凭据** | 应用发现需要一个 vCenter Server 帐户，该帐户具有只读访问权限，并为虚拟机启用了>来宾操作的权限。
 **VM 凭据** | 应用发现当前支持对所有 Windows 服务器使用一个凭据，支持对所有 Linux 服务器使用一个凭据。<br/><br/> 为 Windows VM 创建来宾用户帐户，为所有 Linux VM 创建常规/正常用户帐户（非 sudo 访问）。
 **VMware 工具** | VMware 工具必须在要发现的 VM 上安装和运行。 <br/> VMware 工具版本必须晚于 10.2.0。
-**电源外壳** | VM 必须安装 PowerShell 版本 2.0 或更高版本。
+**PowerShell** | VM 必须安装 PowerShell 版本 2.0 或更高版本。
 **端口访问** | 在运行要发现的 VM 的 ESXi 主机上，Azure 迁移设备必须能够连接到 TCP 端口 443。
 **限制** | 对于应用发现，您可以发现每个 Azure 迁移设备上最多 10000 个 VM。
 
@@ -47,7 +47,7 @@ ms.locfileid: "80389301"
 
 ## <a name="vmware-requirements"></a>VMware 要求
 
-**Vmware** | **详细信息**
+**VMware** | **详细信息**
 --- | ---
 **VMware VM** | 支持所有 Windows 和 Linux 操作系统的评估。
 **vCenter 服务器** | 要发现和评估的计算机必须由 vCenter Server 版本 5.5、6.0、6.5 或 6.7 进行管理。
@@ -61,7 +61,9 @@ ms.locfileid: "80389301"
 Azure 迁移使用[Azure 迁移设备](migrate-appliance.md)进行发现和评估。 您可以使用 OVA 模板、导入到 vCenter 服务器或使用[PowerShell 脚本](deploy-appliance-script.md)将设备部署为 VMWare VM。
 
 - 了解 VMware[的设备要求](migrate-appliance.md#appliance---vmware)。
-- 了解设备需要访问的[URL。](migrate-appliance.md#url-access)
+- 了解产品[在公共和政府云](migrate-appliance.md#public-cloud-urls)中需要访问的 URL。 [government](migrate-appliance.md#government-cloud-urls)
+- 在 Azure 政府中，必须使用脚本部署设备。
+
 
 ## <a name="port-access"></a>端口访问
 
@@ -86,8 +88,9 @@ ESXi 主机（应用发现/无代理依赖关系分析） | 如果要执行[应�
 **必需的代理** | 要分析的计算机上不需要代理。
 **VMware 工具** | VMware 工具（晚于 10.2）必须在要分析的每个 VM 上安装和运行。
 **vCenter 服务器凭据** | 依赖项可视化需要具有只读访问权限的 vCenter Server 帐户，并为虚拟机启用>来宾操作的权限。 
-**电源外壳** | VM 必须安装 PowerShell 版本 2.0 或以上。
+**PowerShell** | VM 必须安装 PowerShell 版本 2.0 或以上。
 **端口访问** | 在运行要分析的 VM 的 ESXi 主机上，Azure 迁移设备必须能够连接到 TCP 端口 443。
+
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>基于代理的依赖项分析要求
 
@@ -96,13 +99,14 @@ ESXi 主机（应用发现/无代理依赖关系分析） | 如果要执行[应�
 **要求** | **详细信息** 
 --- | --- 
 **部署前** | 应使用 Azure 迁移项目，将 Azure 迁移：服务器评估工具添加到项目中。<br/><br/>  设置 Azure 迁移设备以发现本地计算机后部署依赖项可视化<br/><br/> [了解如何](create-manage-projects.md)首次创建项目。<br/> [了解如何](how-to-assess.md)将评估工具添加到现有项目。<br/> 了解如何设置 Azure 迁移设备以评估[Hyper-V、VMware](how-to-set-up-appliance-hyper-v.md)或物理服务器。 [VMware](how-to-set-up-appliance-vmware.md)
-**Azure 政府** | 依赖项可视化在 Azure 政府中不可用。
-**日志分析** | Azure 迁移使用[Azure 监视器日志](../log-analytics/log-analytics-overview.md)中的[服务映射](../operations-management-suite/operations-management-suite-service-map.md)解决方案进行依赖项可视化。<br/><br/> 将新的或现有的日志分析工作区与 Azure 迁移项目相关联。 添加 Azure 迁移项目的工作区后无法对其进行修改。 <br/><br/> 工作区必须与 Azure 迁移项目处于同一订阅中。<br/><br/> 工作区必须位于美国东部、东南亚或西欧区域。 其他区域中的工作区不能与项目关联。<br/><br/> 工作区必须位于[支持服务映射](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)的区域。<br/><br/> 在日志分析中，与 Azure 迁移关联的工作区将使用迁移项目键和项目名称进行标记。
+**Azure Government** | 依赖项可视化在 Azure 政府中不可用。
+**Log Analytics** | Azure 迁移使用[Azure 监视器日志](../log-analytics/log-analytics-overview.md)中的[服务映射](../operations-management-suite/operations-management-suite-service-map.md)解决方案进行依赖项可视化。<br/><br/> 将新的或现有的日志分析工作区与 Azure 迁移项目相关联。 添加 Azure 迁移项目的工作区后无法对其进行修改。 <br/><br/> 工作区必须与 Azure 迁移项目处于同一订阅中。<br/><br/> 工作区必须位于美国东部、东南亚或西欧区域。 其他区域中的工作区不能与项目关联。<br/><br/> 工作区必须位于[支持服务映射](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)的区域。<br/><br/> 在日志分析中，与 Azure 迁移关联的工作区将使用迁移项目键和项目名称进行标记。
 **必需的代理** | 在要分析的每台计算机上，安装以下代理：<br/><br/> [微软监控代理 （MMA）](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows).<br/> [依赖项代理](../azure-monitor/platform/agents-overview.md#dependency-agent)。<br/><br/> 如果本地计算机未连接到互联网，则需要在它们上下载并安装日志分析网关。<br/><br/> 了解有关安装[依赖项代理](how-to-create-group-machine-dependencies.md#install-the-dependency-agent)和[MMA](how-to-create-group-machine-dependencies.md#install-the-mma)的更多详细信息。
-**日志分析工作区** | 工作区必须与 Azure 迁移项目处于同一订阅中。<br/><br/> Azure 迁移支持驻留在美国东部、东南亚和西欧区域的工作区。<br/><br/>  工作区必须位于[支持服务映射](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#prerequisites)的区域。<br/><br/> 添加 Azure 迁移项目的工作区后无法对其进行修改。
+**Log Analytics 工作区** | 工作区必须与 Azure 迁移项目处于同一订阅中。<br/><br/> Azure 迁移支持驻留在美国东部、东南亚和西欧区域的工作区。<br/><br/>  工作区必须位于[支持服务映射](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#prerequisites)的区域。<br/><br/> 添加 Azure 迁移项目的工作区后无法对其进行修改。
 **成本** | 服务映射解决方案在前 180 天内不产生任何费用（从将日志分析工作区与 Azure 迁移项目关联的当天起）/<br/><br/> 在 180 天之后，将收取标准 Log Analytics 费用。<br/><br/> 在关联的日志分析工作区中使用服务映射以外的任何解决方案将会产生日志分析[的标准费用](https://azure.microsoft.com/pricing/details/log-analytics/)。<br/><br/> 删除 Azure Migrate 项目时，工作区不会随之一起删除。 删除项目后，服务映射使用不是免费的，每个节点将按日志分析工作区的付费层收费/<br/><br/>如果在 Azure 迁移通用性（GA- 2018 年 2 月 28 日）之前创建的项目，则可能已产生额外的服务映射费用。 为了确保仅在 180 天后付款，我们建议您创建新项目，因为 GA 之前的现有工作区仍可收费。
 **管理** | 将代理注册到工作区时，可以使用 Azure 迁移项目提供的 ID 和密钥。<br/><br/> 你可以使用 Azure Migrate 外部的 Log Analytics 工作区。<br/><br/> 如果删除关联的 Azure 迁移项目，则不会自动删除工作区。 [手动删除它](../azure-monitor/platform/manage-access.md)。<br/><br/> 除非删除 Azure 迁移项目，否则不要删除 Azure 迁移创建的工作区。 否则，依赖项可视化功能将不会按预期工作。
 **互联网连接** | 如果计算机未连接到互联网，则需要在它们上安装日志分析网关。
+**Azure Government** | 不支持基于代理的依赖项分析。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 03/20/2020
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 7f20244906581dd2869bbc7fcd997d5245540eda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f8c66db491b93278fedf1378d3df86e7ce5fdbf
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80155165"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81531076"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表单识别器的新增功能
 
@@ -25,48 +25,46 @@ ms.locfileid: "80155165"
 
 ## <a name="march-2020"></a>2020 年 3 月 
 
+### <a name="new-features"></a>新增功能
+
+* **用于标签的值类型**现在，您可以使用窗体识别器示例标签工具指定要标记的值的类型。 当前支持以下值类型和变体：
+  * `string`
+    * 默认值`no-whitespaces`，`alphanumeric`
+  * `number`
+    * 默认`currency`
+  * `date` 
+    * 默认值`dmy`， `mdy`，`ymd`
+  * `time`
+  * `integer`
+
+  请参阅[示例标签工具](./quickstarts/label-tool.md#specify-tag-value-types)指南，了解如何使用此功能。
+
+
+* **表可视化**示例标签工具现在显示文档中识别的表。 这样，您就可以在标记和分析之前查看从文档中识别和提取的表。 可以使用图层选项打开和关闭此功能。
+
+  这是如何识别和提取表的示例：
+
+  > [!div class="mx-imgBorder"]
+  > ![使用示例标记工具进行表可视化](./media/whats-new/formre-table-viz.png)
+
+    提取的表在 下的`"pageResults"`JSON 输出中可用。
+
+  > [!IMPORTANT]
+  > 不支持标记表。 如果表未自动识别和外推，则只能将它们标记为键/值对。 将表标记为键/值对时，将每个单元格标记为唯一值。
+
 ### <a name="extraction-enhancements"></a>提取增强功能
 
 此版本包括提取增强和精度改进，特别是在同一行文本中标记和提取多个键/值对的功能。 
  
-### <a name="form-recognizer-sample-labeling-tool-is-now-open-source"></a>表单识别器示例标签工具现在是开源的
+### <a name="sample-labeling-tool-is-now-open-source"></a>示例标签工具现在是开源的
 
 表单识别器示例标签工具现在可作为开源项目提供。 您可以将其集成到解决方案中，并针对客户进行更改，以满足您的需求。
 
 有关表单识别器示例标签工具的详细信息，请查看[GitHub](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md)上提供的文档。
 
-### <a name="labeling-value-types"></a>标记值类型
-
-值类型现在可用于表单识别器示例标签工具。 当前支持这些值类型： 
-
-* String
-* Number 
-* Integer
-* Date 
-* 时间
-
-此图像显示了窗体识别器示例标签工具中的值类型选择的外观：
-
-> [!div class="mx-imgBorder"]
-> ![使用示例标记工具选择值类型](./media/whats-new/formre-value-type.png)
-
-提取的表在 中的 JSON 输出中`pageResults`可用。
-
-### <a name="table-visualization"></a>表可视化 
-
-窗体识别器标签工具现在显示文档中识别的表。 这样，您就可以在使用表单识别器示例标签工具进行标记和分析之前，查看从文档中识别和提取的表。 可以使用图层选项打开和关闭此功能。 
-
-这是如何识别和提取表的示例：
-
-> [!div class="mx-imgBorder"]
-> ![使用示例标记工具进行表可视化](./media/whats-new/formre-table-viz.png)
-
-> [!IMPORTANT]
-> 不支持标记表。 如果表未自动识别和外推，则只能将它们标记为键/值对。 将表标记为键/值对时，请将每个单元格标记为值。
-
 ### <a name="tls-12-enforcement"></a>强制执行 TLS 1.2
 
-* TLS 1.2 现在对对此服务的所有 HTTP 请求强制执行。 有关详细信息，请参阅[Azure 认知服务安全性](../cognitive-services-security.md)。
+TLS 1.2 现在对对此服务的所有 HTTP 请求强制执行。 有关详细信息，请参阅[Azure 认知服务安全性](../cognitive-services-security.md)。
 
 ## <a name="january-2020"></a>2020 年 1 月
 

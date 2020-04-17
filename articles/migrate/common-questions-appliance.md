@@ -2,13 +2,13 @@
 title: Azure 迁移设备常见问题解答
 description: 获取有关 Azure 迁移设备的常见问题的解答。
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: a08423637f255b973f52616f53172ef6e48d0804
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.date: 04/15/2020
+ms.openlocfilehash: 529ead1baa769ee3e71f6fcf77ef7e020ed196a6
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437599"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81529682"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure 迁移设备：常见问题
 
@@ -31,6 +31,15 @@ Azure 迁移设备是 Azure 迁移：服务器评估工具用于发现和评估�
 
 [了解有关产品详细信息](migrate-appliance.md)。
 
+## <a name="how-can-i-deploy-the-appliance"></a>如何部署设备？
+
+设备可以部署如下：
+
+- 使用 VMware VM 和超 V VM 的模板（用于 VMware 的 OVA 模板或用于 Hyper-V 的 VHD）。
+- 如果不想使用模板，或者您位于 Azure 政府中，则可以使用 PowerShell 脚本部署适用于 VMware 或 Hyper-V 的设备。
+- 对于物理服务器，您始终使用脚本部署设备。
+
+
 ## <a name="how-does-the-appliance-connect-to-azure"></a>设备如何连接到 Azure？
 
 设备可以通过 Internet 或将 Azure ExpressRoute 与公共/微软对等互连连接。
@@ -45,11 +54,8 @@ Azure 连续迁移本地计算机的设备配置文件，以测量性能数据�
 
 ## <a name="what-network-connectivity-is-required"></a>需要哪些网络连接？
 
-有关 Azure 迁移设备的网络连接要求的信息，请参阅以下文章：
 
-- **VMware 评估** [：URL 访问](migrate-appliance.md#url-access)和[端口访问](migrate-support-matrix-vmware.md#port-access)
-- **VMware 无代理迁移**[：URL 访问](migrate-appliance.md#url-access)和[端口访问](migrate-support-matrix-vmware-migration.md#agentless-ports)
-- **Hyper-V 评估** [：URL 访问](migrate-appliance.md#url-access)和[端口访问](migrate-support-matrix-hyper-v.md#port-access)
+设备需要访问 Azure URL。 [查看](migrate-appliance.md#url-access)URL 列表。
 
 ## <a name="what-data-does-the-appliance-collect"></a>产品收集哪些数据？
 

@@ -5,7 +5,6 @@ services: virtual-machines-linux
 documentationcenter: ''
 author: gbowerman
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 6c6b8f72-32d3-47fa-be94-6cb54537c69f
 ms.service: virtual-machines-linux
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: guybo
-ms.openlocfilehash: cd0a71c60930e3eb659255a23cdb03360730f2a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cc806fe0c3894174835c99493ebf2ba19a11ca28
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060735"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460454"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>为 Azure 准备基于 Red Hat 的虚拟机
 在本文中，将了解如何准备 Red Hat Enterprise Linux (RHEL) 虚拟机，以供在 Azure 中使用。 本文介绍的 RHEL 版本为 6.7+ 和 7.1+。 本文所述的用于准备工作的虚拟机监控程序为 Hyper-V、基于内核的虚拟机 (KVM) 和 VMware。 有关参与 Red Hat 云访问计划的资格要求的详细信息，请参阅 [Red Hat 的云访问网站](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)和[在 Azure 上运行 RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)。 有关自动生成 RHEL 映像的方法，请参阅[Azure 映像生成器](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)。
@@ -896,9 +895,9 @@ ms.locfileid: "80060735"
 
 1. 打开虚拟机设置：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  将新的虚拟硬盘附加到虚拟机。 请务必选择“VHD 格式”和“固定大小”********。
+    a.  将新的虚拟硬盘附加到虚拟机。 请务必选择“VHD 格式”和“固定大小”********。
 
-    b.保留“数据库类型”设置，即设置为“共享”。  将安装 ISO 附加到 DVD 光驱。
+    b.  将安装 ISO 附加到 DVD 光驱。
 
     c.  将 BIOS 设置为从 CD 启动。
 

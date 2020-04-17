@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 0ce813e91750db3cdfa1e651a68fbb82d593eb32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0e7c34e42d0ab68a5dab9718075f02a85322ce6c
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77650550"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458822"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中交换 AS2 消息以实现 B2B 企业集成
 
@@ -61,7 +61,7 @@ ms.locfileid: "77650550"
 
 * 在使用 AS2 连接器之前，您必须在贸易伙伴之间创建 AS2[协议](../logic-apps/logic-apps-enterprise-integration-agreements.md)，并将该协议存储在集成帐户中。
 
-* 如果将[Azure 密钥保管库](../key-vault/key-vault-overview.md)用于证书管理，请检查保管库密钥是否允许**加密**和**解密**操作。 否则，编码和解码操作将失败。
+* 如果将[Azure 密钥保管库](../key-vault/general/overview.md)用于证书管理，请检查保管库密钥是否允许**加密**和**解密**操作。 否则，编码和解码操作将失败。
 
   在 Azure 门户中，转到密钥保管库中的密钥，查看密钥的**允许操作**，并确认已选择**加密**和**解密**操作，例如：
 
@@ -81,7 +81,7 @@ ms.locfileid: "77650550"
 
 1. 现在提供有关这些属性的信息：
 
-   | properties | 描述 |
+   | properties | 说明 |
    |----------|-------------|
    | **要编码的消息** | 消息有效负载 |
    | **AS2 从** | AS2 协议指定的邮件发件人的标识符 |

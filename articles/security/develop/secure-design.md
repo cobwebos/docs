@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 889897cfd4dc8714ae3aea556f0924c9dbcd7825
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c9e3cfa689f2e528f4d20e796017ae9d91c29fe2
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78299408"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461712"
 ---
 # <a name="design-secure-applications-on-azure"></a>在 Azure 上设计安全应用程序
 在本文中，我们将介绍在为云设计应用程序时要考虑的安全活动和控制措施。 培训资源以及 Microsoft[安全开发生命周期 （SDL）](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx)的要求和设计阶段需要考虑的安全问题和概念。 目标是帮助您定义可用于设计更安全应用程序的活动和 Azure 服务。
@@ -242,7 +242,7 @@ Azure 提供了可用于托管网站和 Web 应用程序的其他服务。 大�
 
 丢失密钥和凭据是一个常见问题。 唯一比丢失密钥和凭据更遭糕的事情是让未经授权的一方获取这些密钥和凭据的访问权限。 攻击者可以利用自动化和手动技术来查找存储在 GitHub 等代码存储库中的密钥和机密。 不要在这些公共代码存储库或任何其他服务器上放置密钥和机密。
 
-始终将密钥、证书、机密和连接字符串放在密钥管理解决方案中。 您可以使用集中式解决方案，其中密钥和机密存储在硬件安全模块 （HSM） 中。 Azure 在云中提供具有[Azure 密钥保管库](../../key-vault/key-vault-overview.md)的 HSM。
+始终将密钥、证书、机密和连接字符串放在密钥管理解决方案中。 您可以使用集中式解决方案，其中密钥和机密存储在硬件安全模块 （HSM） 中。 Azure 在云中提供具有[Azure 密钥保管库](../../key-vault/general/overview.md)的 HSM。
 
 密钥保管库是一个秘密*存储*：它是用于存储应用程序机密的集中云服务。 密钥保管库通过将应用程序机密保存在单个中心位置并提供安全访问、权限控制和访问日志记录来保护您的机密数据安全。
 
@@ -273,11 +273,11 @@ Azure 提供了可用于托管网站和 Web 应用程序的其他服务。 大�
 
 有些东西不应该在你的软件中硬编码。 一些示例包括主机名或 IP 地址、URL、电子邮件地址、用户名、密码、存储帐户密钥和其他加密密钥。 请考虑围绕代码中可以硬编码或不能硬编码的内容（包括在代码的注释部分）实现要求。
 
-在代码中放置注释时，请确保不保存任何敏感信息。 这包括您的电子邮件地址、密码、连接字符串、仅由组织中的人员知道的应用程序信息，以及可能让攻击者在攻击应用程序或组织时具有优势的任何其他信息.
+在代码中放置注释时，请确保不保存任何敏感信息。 这包括您的电子邮件地址、密码、连接字符串、仅组织中的人知道的应用程序信息，以及可能让攻击者在攻击应用程序或组织时具有优势的任何其他信息。
 
 基本上，假设开发项目中的所有内容在部署时都是公共知识。 避免在项目中包含任何类型的敏感数据。
 
-早些时候，我们讨论了[Azure 密钥保管库](../../key-vault/key-vault-overview.md)。 您可以使用密钥保管库存储密钥和密码等机密，而不是对其进行硬编码。 将密钥保管库与 Azure 资源的托管标识结合使用时，Azure Web 应用可以轻松安全地访问机密配置值，而无需在源代码管理或配置中存储任何机密。 要了解更多信息，请参阅[使用 Azure 密钥保管库 管理服务器应用中的机密](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/)。
+早些时候，我们讨论了[Azure 密钥保管库](../../key-vault/general/overview.md)。 您可以使用密钥保管库存储密钥和密码等机密，而不是对其进行硬编码。 将密钥保管库与 Azure 资源的托管标识结合使用时，Azure Web 应用可以轻松安全地访问机密配置值，而无需在源代码管理或配置中存储任何机密。 要了解更多信息，请参阅[使用 Azure 密钥保管库 管理服务器应用中的机密](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/)。
 
 ### <a name="implement-fail-safe-measures"></a>实施故障安全措施
 

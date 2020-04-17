@@ -5,7 +5,6 @@ services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -15,12 +14,12 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 933b648f15418c4838d3da1ea8379267765c784b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a5aa05a9045548e15aba667fdcdbd14fc8990e6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74073326"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460301"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>将通用化 VHD 上传到 Azure，创建新 VM
 
@@ -53,7 +52,7 @@ ms.locfileid: "74073326"
 2. 以管理员身份打开“命令提示符”窗口。 将目录更改为 **%windir%_system32_sysprep，** 然后运行`sysprep.exe`。
 3. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”复选框。************
 4. 在 **“关机选项”** 中选择 **“关机”**。
-5. 单击“确定”。
+5. 单击“确定”。 
    
     ![启动 Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
 6. Sysprep 在完成运行后会关闭虚拟机。 

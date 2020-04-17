@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: a3b738d95b5b777f1cf0329fb3c1bc3e2860421e
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: a7957c7cbcfa511ea441d8c7bd4371f56ab87560
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545974"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461678"
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性简介
 ## <a name="overview"></a>概述
@@ -295,7 +295,7 @@ Web 应用程序防火墙是 [Azure 应用程序网关](../../application-gatewa
 借助 Azure IaaS，可以使用来自 Microsoft、Symantec、Trend Micro、McAfee 和 Kaspersky 等安全性供应商的反恶意软件，以保护虚拟机免受恶意文件、广告软件和其他威胁的侵害。 适用于 Azure 云服务和虚拟机的 [Microsoft 反恶意软件](antimalware.md)是一种保护功能，可帮助识别并删除病毒、间谍软件和其他恶意软件。 Microsoft 反恶意软件提供了已知恶意或不需要的软件试图安装自身或在 Azure 系统上运行时的可配置警报。 此外可以使用 Azure 安全中心部署 Microsoft 反恶意软件
 
 ### <a name="hardware-security-module"></a>硬件安全模块
-加密和身份验证不会提高安全性，除非密钥本身受到保护。 通过将关键机密和密钥存储在[Azure 密钥保管库中](../../key-vault/key-vault-overview.md)，可以简化关键机密和密钥的管理和安全。 Key Vault 可将用户密钥存储在已通过 FIPS 140-2 Level 2 标准认证的硬件安全模块 (HSM) 中。 用于备份或[透明数据加密](https://msdn.microsoft.com/library/bb934049.aspx)的 SQL Server 加密密钥均可存储在密钥保管库中，此外还可存储应用程序中的任意密钥或密码。 对这些受保护项的权限和访问权限通过 [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) 进行管理。
+加密和身份验证不会提高安全性，除非密钥本身受到保护。 通过将关键机密和密钥存储在[Azure 密钥保管库中](../../key-vault/general/overview.md)，可以简化关键机密和密钥的管理和安全。 Key Vault 可将用户密钥存储在已通过 FIPS 140-2 Level 2 标准认证的硬件安全模块 (HSM) 中。 用于备份或[透明数据加密](https://msdn.microsoft.com/library/bb934049.aspx)的 SQL Server 加密密钥均可存储在密钥保管库中，此外还可存储应用程序中的任意密钥或密码。 对这些受保护项的权限和访问权限通过 [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) 进行管理。
 
 ### <a name="virtual-machine-backup"></a>虚拟机备份
 [Azure 备份](../../backup/backup-overview.md)是一种解决方案，无需资本投资便可保护应用程序数据，最大限度降低运营成本。 应用程序错误可能损坏数据，人为错误可能将 bug 引入应用程序，从而导致安全问题。 借助 Azure 备份，可以保护运行 Windows 和 Linux 的虚拟机。

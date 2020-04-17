@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: 354b0eae1620c49006b350371aae38f8867c18b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 07fa72f086b676723279ee4b8efd927beb2692f0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80124658"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481971"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>将 Azure 流分析与 Azure 机器学习（预览）集成
 
@@ -31,7 +31,7 @@ ms.locfileid: "80124658"
 
 3. 请确保您的 Web 服务接受并返回 JSON 序列化数据。
 
-4. 在 Azure[库伯奈斯服务](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target)上部署模型，用于大规模生产部署。 如果 Web 服务无法处理来自作业的请求数，则流分析作业的性能将降低，从而影响延迟。
+4. 在 Azure[库伯奈斯服务](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target)上部署模型，用于大规模生产部署。 如果 Web 服务无法处理来自作业的请求数，则流分析作业的性能将降低，从而影响延迟。 部署在 Azure 容器实例上的模型今天不受支持，但将在未来几个月提供。
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>将机器学习模型添加到作业中
 
@@ -47,7 +47,7 @@ ms.locfileid: "80124658"
 
 下表描述了流分析中 Azure ML 服务函数的每个属性。
 
-|properties|描述|
+|properties|说明|
 |--------|-----------|
 |函数别名|输入名称以在查询中调用函数。|
 |订阅|您的 Azure 订阅。|

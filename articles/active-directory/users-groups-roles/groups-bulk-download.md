@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 09/11/2019
+ms.date: 04/16/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b08e807e179270b63ca81d3777c230c3e129c3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 59983678c1b14d6aa87a7b500605e3abeb6a9b85
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72517148"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533526"
 ---
-# <a name="bulk-download-a-list-of-groups-preview-in-azure-active-directory"></a>批量下载 Azure 活动目录中的组（预览）列表
+# <a name="bulk-download-a-list-of-groups-in-azure-active-directory"></a>批量下载 Azure 活动目录中的组列表
 
 使用 Azure 活动目录 （Azure AD） 门户，可以将组织中所有组的列表批量下载到逗号分隔的值 （CSV） 文件中。
 
@@ -34,9 +34,9 @@ ms.locfileid: "72517148"
 
 ## <a name="check-download-status"></a>检查下载状态
 
-您可以在**批量操作结果（预览）** 页中查看所有挂起的批量请求的状态。
+您可以在 **"批量操作结果"** 页中查看所有挂起的批量请求的状态。
 
-   ![批量操作结果页显示批量请求状态](./media/groups-bulk-download/bulk-center.png)
+[![](media/groups-bulk-download/bulk-center.png "Check status in the Bulk Operations Results page")](media/groups-bulk-download/bulk-center.png#lightbox)
 
 ## <a name="bulk-download-service-limits"></a>批量下载服务限制
 

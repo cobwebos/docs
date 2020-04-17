@@ -12,23 +12,19 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 11/20/2019
-ms.openlocfilehash: 2a2cd4bfc3d393543b41eea776f02723d94054b1
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: 46ca4661d06b52c861431a680a69297575ac99b0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345833"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461406"
 ---
 # <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>使用 R 的 Azure SQL 数据库机器学习服务（预览版）
 
 机器学习服务是 Azure SQL 数据库的一项功能，用于执行数据库中的 R 脚本。 该功能包括用于高性能预测分析和机器学习的 Microsoft R 包。 关系数据可以通过存储过程、包含 R 语句的 T-SQL 脚本或包含 T-SQL 的 R 代码在 R 脚本中使用。
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
-
-> [!NOTE]
-> 预览版可用于单个数据库和弹性池，使用**通用**和**业务关键型**服务层中基于 vCore 的采购模型。 在此初始预览中，不支持**超大规模**服务层和**托管实例**部署选项。 目前，R 是唯一受支持的语言。 目前不支持 Python。
->
-> 预览版目前在以下区域提供：西欧、北欧、美国西部 2、美国东部、美国中南部、美国中北部、加拿大中部、东南亚、印度南部和澳大利亚东南部。
 
 ## <a name="what-you-can-do-with-r"></a>R 的功能
 
@@ -40,7 +36,7 @@ ms.locfileid: "80345833"
 
 最常见的开源 R 包都预安装在机器学习服务中。 还包括 Microsoft 提供的以下 R 包：
 
-| R 程序包 | 描述|
+| R 程序包 | 说明|
 |-|-|
 | [Microsoft R Open](https://mran.microsoft.com/rro) | Microsoft R Open 是 Microsoft 提供的增强型发行版 R。 它是用于统计分析和数据科学的完整开源平台。 它基于 R，并 100% 与 R 兼容，包括很多其他功能，可以带来更高的性能和可再现性。 |
 | [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler) | RevoScaleR 是可缩放 R 的主库。该库中的函数属于使用最广泛的函数。 这些库中包含的函数可用于数据转换和操作、统计汇总、可视化以及许多形式的建模和分析。 另外，这些库中的函数可以自动地跨可用核心分发工作负荷，以便对其进行并行分析，并且可以处理由计算引擎协调和管理的大块数据。 |

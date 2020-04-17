@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 4219bb471b92e7ddae72c50403f635498c90080d
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: f390aececdbf9a20f191279892c1856332f2aa8e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81251684"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482097"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>为 Azure 存储配置高级威胁保护
 
@@ -27,9 +27,7 @@ Azure 存储的高级威胁保护提供了额外的安全智能层，用于检�
 
 ## <a name="availability"></a>可用性
 
-Azure 存储的高级威胁保护目前仅适用于 Blob[存储](https://azure.microsoft.com/services/storage/blobs/)。 
-
-此服务在所有公共云和美国政府云中都可用，但没有其他主权或 Azure 政府云区域。
+Azure 存储的高级威胁保护目前仅适用于 Blob[存储](https://azure.microsoft.com/services/storage/blobs/)。 支持高级威胁保护的帐户类型包括通用 v2、块 Blob 和 Blob 存储帐户。 高级威胁防护在所有公共云和美国政府云中都可用，但在其他主权或 Azure 政府云区域中不可用。
 
 有关定价详细信息（包括 30 天免费试用版），请参阅[Azure 安全中心定价页面](https://azure.microsoft.com/pricing/details/security-center/)。
 

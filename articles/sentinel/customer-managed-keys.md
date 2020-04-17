@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: yelevin
-ms.openlocfilehash: bc2fa02925e7f5c671085eb87ca0431d3fca7691
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5eed208ed79aeab4e46ed90dd4d340a8b445be96
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77587951"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461627"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>设置 Azure 哨兵客户管理密钥
 
@@ -60,11 +60,11 @@ Azure Sentinel 解决方案使用多个存储资源进行日志收集和功能�
     > [!NOTE]
     >  Azure 密钥保管库必须配置为可恢复，以保护密钥和访问权限。
 
-1.  [打开恢复选项：](../key-vault/key-vault-best-practices.md#turn-on-recovery-options)
+1.  [打开恢复选项：](../key-vault/general/best-practices.md#turn-on-recovery-options)
 
-    -   确保[软删除](../key-vault/key-vault-ovw-soft-delete.md)已打开。
+    -   确保[软删除](../key-vault/general/overview-soft-delete.md)已打开。
 
-    -   打开[清除保护](../key-vault/key-vault-ovw-soft-delete.md#purge-protection)，以防止强制删除机密/保管库，即使在软删除后也是如此。
+    -   打开[清除保护](../key-vault/general/overview-soft-delete.md#purge-protection)，以防止强制删除机密/保管库，即使在软删除后也是如此。
 
 ### <a name="step-2-enable-cmk-on-your-log-analytics-workspace"></a>第 2 步：在日志分析工作区上启用 CMK
 

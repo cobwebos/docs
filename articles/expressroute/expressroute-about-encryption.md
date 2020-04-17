@@ -7,19 +7,19 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7dd9106539b6756d74629ac663241a5b5562cefb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d48f83df4e83fd1d1fe38eea76432e1b1c711b76
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75437043"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461457"
 ---
 # <a name="expressroute-encryption"></a>ExpressRoute 加密
  
 ExpressRoute 支持一些加密技术，以确保网络和 Microsoft 网络之间遍历数据的机密性和完整性。
 
 ## <a name="point-to-point-encryption-by-macsec-faq"></a>由 MACsec 常见问题解答进行点对点加密
-MACsec 是[IEEE 标准](https://1.ieee802.org/security/802-1ae/)。 它在媒体访问控制 （MAC） 级别或网络层 2 加密数据。 当您通过[ExpressRoute Direct](expressroute-erdirect-about.md)连接到 Microsoft 时，您可以使用 MACsec 加密网络设备和微软网络设备之间的物理链接。 默认情况下，在 ExpressRoute Direct 端口上禁用 MACsec。 您自带 MACsec 密钥进行加密，并将其存储在[Azure 密钥保管库中](../key-vault/key-vault-overview.md)。 您决定何时轮换密钥。 请参阅下面的其他常见问题解答。
+MACsec 是[IEEE 标准](https://1.ieee802.org/security/802-1ae/)。 它在媒体访问控制 （MAC） 级别或网络层 2 加密数据。 当您通过[ExpressRoute Direct](expressroute-erdirect-about.md)连接到 Microsoft 时，您可以使用 MACsec 加密网络设备和微软网络设备之间的物理链接。 默认情况下，在 ExpressRoute Direct 端口上禁用 MACsec。 您自带 MACsec 密钥进行加密，并将其存储在[Azure 密钥保管库中](../key-vault/general/overview.md)。 您决定何时轮换密钥。 请参阅下面的其他常见问题解答。
 ### <a name="can-i-enable-macsec-on-my-expressroute-circuit-provisioned-by-an-expressroute-provider"></a>我能否在由快递提供商预配的 ExpressRoute 电路上启用 MACsec？
 不是。 MACsec 使用一个实体（即客户）拥有的密钥对物理链路上的所有流量进行加密。 因此，它仅在 ExpressRoute Direct 上可用。
 ### <a name="can-i-encrypt-some-of-the-expressroute-circuits-on-my-expressroute-direct-ports-and-leave-other-circuits-on-the-same-ports-unencrypted"></a>是否可以加密 ExpressRoute Direct 端口上的一些 ExpressRoute 电路，并在同一端口上保留其他电路未加密？ 

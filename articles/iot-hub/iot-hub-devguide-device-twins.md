@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/01/2020
-ms.openlocfilehash: 51e58de92f111c8854add613a299f2b8ccec0503
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 251c9c9717bae1728bffa48827a45d4535d66c15
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79285235"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482077"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>了解并在 IoT 中心内使用设备孪生
 
@@ -58,7 +58,7 @@ ms.locfileid: "79285235"
 
 * **报告属性**。 与所需的属性结合使用，同步设备配置或状态。 设备应用可设置报告的属性，并且解决方案后端可进行读取和查询。
 
-* **设备标识属性**。 设备孪生 JSON 文档的根包含[标识注册表](iot-hub-devguide-identity-registry.md)中存储的相应设备标识的只读属性。
+* **设备标识属性**。 设备孪生 JSON 文档的根包含[标识注册表](iot-hub-devguide-identity-registry.md)中存储的相应设备标识的只读属性。 属性`connectionStateUpdatedTime`，`generationId`将不包含。
 
 ![设备孪生属性的屏幕截图](./media/iot-hub-devguide-device-twins/twin.png)
 
@@ -182,7 +182,7 @@ ms.locfileid: "79285235"
 
   - 属性
 
-    | “属性” | “值” |
+    | “属性” | 值 |
     | --- | --- |
     $content-type | application/json |
     $iothub-enqueuedtime |  发送通知的时间 |
@@ -399,7 +399,7 @@ IoT 中心开发人员指南中的其他参考主题包括：
 
 * [在 IoT 中心内了解并使用模块孪生](iot-hub-devguide-module-twins.md)
 * [在设备上调用直接方法](iot-hub-devguide-direct-methods.md)
-* [在多台设备上安排作业](iot-hub-devguide-jobs.md)
+* [在多个设备上计划作业](iot-hub-devguide-jobs.md)
 
 要尝试本文中介绍的一些概念，请参阅以下 IoT 中心教程：
 

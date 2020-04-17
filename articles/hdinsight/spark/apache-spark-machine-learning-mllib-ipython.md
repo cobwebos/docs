@@ -1,49 +1,50 @@
 ---
 title: HDInsight 上 Spark MLlib 的机器学习示例 - Azure
 description: 了解如何使用 Spark MLlib 创建机器学习应用，以通过逻辑回归使用分类对数据集进行分析。
-keywords: spark 机器学习, spark 机器学习示例
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 06/17/2019
-ms.author: hrasheed
-ms.openlocfilehash: c8ead7abc454df387db31b2ce65d2ba714b0067d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 04/16/2020
+ms.openlocfilehash: 26695df299ba5d0f50c8f271b5da99284a8d6764
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73494087"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81531127"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>使用 Apache Spark MLlib 生成机器学习应用程序并分析数据集
 
-了解如何使用 Apache Spark [MLlib](https://spark.apache.org/mllib/) 创建机器学习应用程序，以便对打开的数据集执行简单预测分析。 在 Spark 的内置机器学习库中，本示例通过逻辑回归使用*分类*。 
+了解如何使用 Apache Spark [MLlib](https://spark.apache.org/mllib/)创建机器学习应用程序。 应用程序将对打开的数据集进行预测分析。 在 Spark 的内置机器学习库中，本示例通过逻辑回归使用*分类*。
 
-MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实用工具，其中包括适用于以下任务的实用工具：
+MLlib 是一个核心 Spark 库，它提供了许多可用于机器学习任务的实用程序，例如：
 
 * 分类
 * 回归
 * 群集
-* 主题建模
+* 建模
 * 单值分解 (SVD) 和主体组件分析 (PCA)
 * 假设测试和计算示例统计信息
 
 ## <a name="understand-classification-and-logistic-regression"></a>了解分类和逻辑回归
-*分类*是一种常见的机器学习任务，是将输入数据按类别排序的过程。 它是一种分类算法的作业，旨在算出如何将“标签”分配到提供的输入数据。 例如，可以联想机器学习算法，该算法接受股票信息作为输入并将股票划分为两个类别：应该卖出的股票和应该保留的股票。
+
+*分类*是一种常见的机器学习任务，是将输入数据按类别排序的过程。 分类算法的工作是找出如何为提供的输入数据分配"标签"。 例如，您可以想到一种机器学习算法，该算法接受库存信息作为输入。 然后把股票分为两类：你应该卖出的股票和你应该保留的股票。
 
 逻辑回归是用于分类的算法。 Spark 的逻辑回归 API 可用于 *二元分类*，或将输入数据归类到两组中的一组。 有关逻辑回归的详细信息，请参阅[维基百科](https://en.wikipedia.org/wiki/Logistic_regression)。
 
-总之，逻辑回归的过程会产生 *逻辑函数*，可用于预测输入向量属于一个组或另一个组的概率。  
+总之，逻辑回归过程产生*物流功能*。 使用 函数预测输入向量属于一个组或另一个组的概率。  
 
 ## <a name="predictive-analysis-example-on-food-inspection-data"></a>食品检测数据的预测分析示例
-本示例使用 Spark 对食品检测数据 (**Food_Inspections1.csv**) 执行一些预测分析，这些数据通过 [City of Chicago data portal](https://data.cityofchicago.org/)（芝加哥市数据门户）获取。 此数据集包含有关在芝加哥执行的食品企业检测的信息，包括每家企业的相关信息、发现的违规行为（若有）以及检测结果。 CSV 数据文件在与群集（位于 **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv**）关联的存储帐户中可用。
+
+在此示例中，您可以使用 Spark 对食品检验数据 **（Food_Inspections1.csv**） 进行一些预测性分析。 通过[芝加哥市数据门户获取的数据](https://data.cityofchicago.org/)。 此数据集包含有关在芝加哥进行的食品机构检查的信息。 包括有关每个机构的信息、发现的违规行为（如果有）和检查结果。 CSV 数据文件在与群集（位于 **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv**）关联的存储帐户中可用。
 
 在以下步骤中，将开发一个模型以查看如何通过食物检测或为何失败。
 
 ## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>创建 Apache Spark MLlib 机器学习应用
 
-1. 使用 PySpark 内核创建 Jupyter Notebook。 有关说明，请参阅[创建聚居笔记本](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook)。
+1. 使用 PySpark 内核创建 Jupyter Notebook。 有关说明，请参阅[创建 Jupyter Notebook](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook)。
 
 2. 导入此应用程序所需的类型。 将以下代码复制并粘贴到空白单元格中，然后按 **SHIFT + ENTER**。
 
@@ -55,11 +56,12 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
     from pyspark.sql.functions import UserDefinedFunction
     from pyspark.sql.types import *
     ```
-    由于使用的是 PySpark 内核，因此不需要显式创建任何上下文。 运行第一个代码单元格时，系统会自动创建 Spark 和 Hive 上下文。 
+
+    由于 PySpark 内核，因此无需显式创建任何上下文。 当您运行第一个代码单元时，将自动创建 Spark 和 Hive 上下文。
 
 ## <a name="construct-the-input-dataframe"></a>构造输入数据帧
 
-由于原始数据是 CSV 格式，因此可以使用 Spark 上下文将文件拉取到内存中作为非结构化文本，并使用 Python 的 CSV 库分析每行数据。
+使用 Spark 上下文将原始 CSV 数据作为非结构化文本放入内存。 然后使用 Python 的 CSV 库解析数据的每一行。
 
 1. 运行以下命令行，通过导入并分析输入数据来创建弹性分布式数据集 (RDD)。
 
@@ -71,7 +73,7 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
         value = csv.reader(sio).next()
         sio.close()
         return value
-    
+
     inspections = sc.textFile('/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv')\
                     .map(csvParse)
     ```
@@ -104,9 +106,9 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
         '(41.97583445690982, -87.7107455232781)']]
     ```
 
-    通过这些输出可以了解输入文件的架构。 它包括每家企业的名称、企业类型、地址、检测数据、位置，以及其他事项。 
+    通过这些输出可以了解输入文件的架构。 它包括每个机构的名称和建立的类型。 此外，地址、检查数据以及地点等。
 
-3. 运行以下代码创建数据帧 (*df*) 和临时表 (*CountResults*)，其中包含一些可用于预测分析的列。 `sqlContext` 用于对结构化数据执行转换。 
+3. 运行以下代码创建数据帧 (*df*) 和临时表 (*CountResults*)，其中包含一些可用于预测分析的列。 `sqlContext`用于对结构化数据进行转换。
 
     ```PySpark
     schema = StructType([
@@ -114,12 +116,12 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
     StructField("name", StringType(), False),
     StructField("results", StringType(), False),
     StructField("violations", StringType(), True)])
-    
+
     df = spark.createDataFrame(inspections.map(lambda l: (int(l[0]), l[1], l[12], l[13])) , schema)
     df.registerTempTable('CountResults')
     ```
 
-    数据帧中的相关四个列为 **id**、**name**、**results** 和 **violations**。
+    数据框中感兴趣的四列是**ID、****名称**、**结果**和**违规**。
 
 4. 运行以下代码获取数据小样本：
 
@@ -178,8 +180,7 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
 
     ![SQL 查询输出](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png "SQL 查询输出")
 
-
-3. 也可以使用 [Matplotlib](https://en.wikipedia.org/wiki/Matplotlib)（用于构造数据可视化的库）创建绘图。 因为必须从本地保存的 **countResultsdf** 数据帧中创建绘图，所以代码片段必须以 `%%local` magic 开头。 这可确保代码在 Jupyter 服务器上本地运行。
+3. 也可以使用 [Matplotlib](https://en.wikipedia.org/wiki/Matplotlib)（用于构造数据可视化的库）创建绘图。 因为必须从本地保存的 **countResultsdf** 数据帧中创建绘图，所以代码片段必须以 `%%local` magic 开头。 此操作可确保代码在 Jupyter 服务器上本地运行。
 
     ```PySpark
     %%local
@@ -193,10 +194,6 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
     plt.axis('equal')
     ```
 
-    输出为：
-
-    ![火花机器学习应用输出 - 饼图，具有五个不同的检测结果](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-1.png "火花机器学习结果输出")
-
     若要预测食物检测结果，需要基于违规行为开发一个模型。 由于逻辑回归是二元分类方法，因此有必要将结果数据分为两个类别：“失败”**** 和“通过”****。
 
    - 通过
@@ -208,9 +205,9 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
        - 未找到企业
        - 停止经营
 
-     附带其他结果（“未找到企业”或“停止经营”）的数据没有作用，不过它们在结果中占据极小的百分比。
+     具有其他结果（"业务未定位"或"业务外"）的数据没有用处，它们无论如何在结果中占很小的百分比。
 
-4. 运行以下代码，将现有数据帧 (`df`) 转换为新的数据帧，其中每个检测以“违规行为标签对”表示。 在本例中，`0.0` 标签表示失败，`1.0` 标签表示成功，`-1.0` 标签表示除了这两个以外的结果。 
+4. 运行以下代码，将现有数据帧 (`df`) 转换为新的数据帧，其中每个检测以“违规行为标签对”表示。 在这种情况下，表示`0.0`失败的标签，表示`1.0`成功的标签，以及 表示`-1.0`除这两个结果之外的某些结果的标签。
 
     ```PySpark
     def labelForResults(s):
@@ -238,11 +235,11 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
 
 ## <a name="create-a-logistic-regression-model-from-the-input-dataframe"></a>从输入数据帧创建逻辑回归模型
 
-最后一项任务是将标签数据转换为逻辑回归可分析的格式。 逻辑回归算法的输入需是一组*标签特征矢量对*，其中的“特征矢量”是表示输入点的数字矢量。 因此，需要将“违规行为”列（半结构化，并且包含许多任意文本格式的注释）转换为计算机能轻松理解的实数组。
+最后的任务是转换标记的数据。 将数据转换为可以通过逻辑回归进行分析的格式。 逻辑回归算法的输入需要一组*标签特征矢量对*。 其中"要素矢量"是表示输入点的数字矢量。 因此，您需要转换"违规"列，该列是半结构化的，包含许多自由文本注释。 将列转换为计算机可以轻松理解的实数数组。
 
-处理自然语言的一种标准机器学习方法是为每个不同单词分配一个“索引”，并将一个向量传递到机器学习算法，以便每个索引值包含文本字符串中该单词的相对频率。
+处理自然语言的标准机器学习方法是为每个不同的单词指定一个"索引"。 然后将矢量传递给机器学习算法。 因此，每个索引的值在文本字符串中包含该单词的相对频率。
 
-MLlib 提供一种简单方法来执行此操作。 首先，“标记”每个违规行为字符串以获取每个字符串中的单个单词。 然后使用 `HashingTF` 将每组令牌转换为功能向量，随后可将向量传递到逻辑回归算法以构造模型。 利用“管道”按序列执行上述所有步骤。
+MLlib 提供了一种简单的操作方法。 首先，“标记”每个违规行为字符串以获取每个字符串中的单个单词。 然后使用 `HashingTF` 将每组令牌转换为功能向量，随后可将向量传递到逻辑回归算法以构造模型。 利用“管道”按序列执行上述所有步骤。
 
 ```PySpark
 tokenizer = Tokenizer(inputCol="violations", outputCol="words")
@@ -255,7 +252,7 @@ model = pipeline.fit(labeledData)
 
 ## <a name="evaluate-the-model-using-another-dataset"></a>使用另一个数据集评估模型
 
-可使用先前创建的模型基于所观察到的违规行为来预测后续检查将产生哪些结果**。 通过数据集 Food_Inspections1.csv 来训练此模型****。 可以使用另一个数据集 **Food_Inspections2.csv** 来评估此模型对新数据的功能性。** 第二个数据集 (**Food_Inspections2.csv**) 位于与群集关联的默认存储容器中。
+您可以使用之前创建的模型*来预测*新检查的结果。 预测基于观察到的违规行为。 通过数据集 Food_Inspections1.csv 来训练此模型****。 可以使用另一个数据集 **Food_Inspections2.csv** 来评估此模型对新数据的功能性。** 第二个数据集 (**Food_Inspections2.csv**) 位于与群集关联的默认存储容器中。
 
 1. 运行以下代码创建新的数据帧 **predictionsDf**，其中包含由模型生成的预测。 该代码片段还根据数据帧创建一个名为 **Predictions** 的临时表。
 
@@ -269,7 +266,7 @@ model = pipeline.fit(labeledData)
     predictionsDf.columns
     ```
 
-    应看到如下输出：
+    您应该会看到如下所示的输出：
 
     ```
     ['id',
@@ -289,8 +286,9 @@ model = pipeline.fit(labeledData)
     predictionsDf.take(1)
     ```
 
-   将显示针对测试数据集中第一项的预测。
-1. `model.transform()` 方法会将相同转换应用于任何具有相同构架的新数据，并成功预测如何对数据进行分类。 可执行一些简单的统计，以了解预测的准确度：
+   对测试数据集中的第一个条目进行了预测。
+
+1. `model.transform()` 方法会将相同转换应用于任何具有相同构架的新数据，并成功预测如何对数据进行分类。 您可以执行一些统计信息来了解预测：
 
     ```PySpark
     numSuccesses = predictionsDf.where("""(prediction = 0 AND results = 'Fail') OR
@@ -302,16 +300,17 @@ model = pipeline.fit(labeledData)
     print "This is a", str((float(numSuccesses) / float(numInspections)) * 100) + "%", "success rate"
     ```
 
-    输出如下所示：
+    输出类似于以下文本：
 
     ```
     There were 9315 inspections and there were 8087 successful predictions
     This is a 86.8169618894% success rate
     ```
 
-    将逻辑回归与 Spark 配合使用可得到关于违规行为（中文）描述和给定企业是通过还是未通过食物检测之间关系的准确模型。
+    使用 Spark 使用逻辑回归可以建模英语中违规描述之间的关系。 以及某一企业是否会通过或未能通过食品检验。
 
 ## <a name="create-a-visual-representation-of-the-prediction"></a>创建预测的直观表示形式
+
 现在可以构造一个最终可视化效果，以帮助推理此测试的结果。
 
 1. 首先，提取之前创建的“Predictions”临时表中的不同预测和结果****。 以下查询将输出分为 *true_positive*、*false_positive*、*true_negative* 和 *false_negative*。 在以下查询中，使用 `-q` 关闭可视化，同时使用 `-o` 将输出保存为随后可用于 `%%local` 幻数的数据帧。
@@ -357,21 +356,26 @@ model = pipeline.fit(labeledData)
     在此图中，“positive”结果是指未通过食品检测，而“negative”结果表示已通过检测。
 
 ## <a name="shut-down-the-notebook"></a>关闭笔记本
-运行完应用程序之后，应该关闭笔记本以释放资源。 为此，请在 Notebook 的“文件”菜单中选择“关闭并停止”********。 这会关闭笔记本。
 
-## <a name="see-also"></a><a name="seealso"></a>请参阅
+运行完应用程序之后，应该关闭笔记本以释放资源。 为此，请在 Notebook 的“文件”菜单中选择“关闭并停止”   。 此操作会关闭 Notebook。
+
+## <a name="next-steps"></a>后续步骤
+
 * [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>方案
-* [Apache Spark 和 BI：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](apache-spark-use-bi-tools.md)
+
+* [带 BI 的 Apache Spark：使用 HDInsight 中的 Spark 与 BI 工具进行交互式数据分析](apache-spark-use-bi-tools.md)
 * [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 结合 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
 * [使用 HDInsight 中的 Apache Spark 分析网站日志](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>创建和运行应用程序
+
 * [使用 Scala 创建独立的应用程序](apache-spark-create-standalone-application.md)
 * [使用 Apache Livy 在 Apache Spark 群集中远程运行作业](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>工具和扩展
+
 * [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件创建和提交 Spark Scala 应用程序](apache-spark-intellij-tool-plugin.md)
 * [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Apache Spark 应用程序](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [在 HDInsight 上的 Apache Spark 群集中使用 Apache Zeppelin 笔记本](apache-spark-zeppelin-notebook.md)
@@ -380,5 +384,6 @@ model = pipeline.fit(labeledData)
 * [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>管理资源
+
 * [管理 Azure HDInsight 中 Apache Spark 群集的资源](apache-spark-resource-manager.md)
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight（跟踪和调试 HDInsight 中的 Apache Spark 群集上运行的作业）](apache-spark-job-debugging.md)

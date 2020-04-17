@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 43e626355feaf1e51fc840f82506c559a1859b84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f515d3ad832db7f78f98111ab67628a2874033ff
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77621992"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459128"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>配置客户管理的密钥，以便使用 Azure 门户加密静态 Azure 事件中心数据
 Azure 事件中心通过 Azure 存储服务加密 （Azure SSE） 提供静态数据加密。 事件中心依赖于 Azure 存储来存储数据，默认情况下，与 Azure 存储一起存储的所有数据都使用 Microsoft 管理的密钥进行加密。 
@@ -26,9 +26,9 @@ Azure 事件中心现在支持使用 Microsoft 管理的密钥或客户管理的
 > [!NOTE]
 > BYOK 功能由[事件中心专用单租户](event-hubs-dedicated-overview.md)群集支持。 无法为标准事件中心命名空间启用它。
 
-您可以使用 Azure 密钥保管库来管理密钥并审核密钥使用情况。 可以创建自己的密钥并将其存储在 Key Vault 中，或者使用 Azure Key Vault API 来生成密钥。 有关 Azure 密钥保管库的详细信息，请参阅[什么是 Azure 密钥保管库？](../key-vault/key-vault-overview.md)
+您可以使用 Azure 密钥保管库来管理密钥并审核密钥使用情况。 可以创建自己的密钥并将其存储在 Key Vault 中，或者使用 Azure Key Vault API 来生成密钥。 有关 Azure 密钥保管库的详细信息，请参阅[什么是 Azure 密钥保管库？](../key-vault/general/overview.md)
 
-本文演示如何使用 Azure 门户使用客户管理的密钥配置密钥保管库。 若要了解如何使用 Azure 门户创建密钥保管库，请参阅[快速入门：使用 Azure 门户从 Azure 密钥保管库设置和检索机密](../key-vault/quick-create-portal.md)。
+本文演示如何使用 Azure 门户使用客户管理的密钥配置密钥保管库。 若要了解如何使用 Azure 门户创建密钥保管库，请参阅[快速入门：使用 Azure 门户从 Azure 密钥保管库设置和检索机密](../key-vault/secrets/quick-create-portal.md)。
 
 > [!IMPORTANT]
 > 将客户管理的密钥与 Azure 事件中心一起使用需要密钥保管库配置两个必需属性。 它们是：**软删除**和**不清除**。 在 Azure 门户中创建新的 Key Vault 时，默认会启用这些属性。 但是，如果需要针对现有的 Key Vault 启用这些属性，必须使用 PowerShell 或 Azure CLI。
@@ -44,9 +44,9 @@ Azure 事件中心现在支持使用 Microsoft 管理的密钥或客户管理的
     ![启用客户托管密钥](./media/configure-customer-managed-key/enable-customer-managed-key.png)
 
 ## <a name="set-up-a-key-vault-with-keys"></a>设置带密钥的密钥保管库
-启用客户管理的密钥后，需要将客户托管密钥与 Azure 事件中心命名空间相关联。 事件中心仅支持 Azure 密钥保管库。 如果在上一节中启用**了使用客户管理的密钥选项的加密**，则需要将密钥导入 Azure 密钥保管库。 此外，密钥必须为密钥配置 **"软删除****"和"不清除**"。 这些设置可以使用[PowerShell](../key-vault/key-vault-soft-delete-powershell.md)或[CLI](../key-vault/key-vault-soft-delete-cli.md#enabling-purge-protection)进行配置。
+启用客户管理的密钥后，需要将客户托管密钥与 Azure 事件中心命名空间相关联。 事件中心仅支持 Azure 密钥保管库。 如果在上一节中启用**了使用客户管理的密钥选项的加密**，则需要将密钥导入 Azure 密钥保管库。 此外，密钥必须为密钥配置 **"软删除****"和"不清除**"。 这些设置可以使用[PowerShell](../key-vault/general/soft-delete-powershell.md)或[CLI](../key-vault/general/soft-delete-cli.md#enabling-purge-protection)进行配置。
 
-1. 要创建新密钥保管库，请按照 Azure 密钥保管库[快速入门](../key-vault/key-vault-overview.md)。 有关导入现有密钥的详细信息，请参阅[有关密钥、机密和证书](../key-vault/about-keys-secrets-and-certificates.md)。
+1. 要创建新密钥保管库，请按照 Azure 密钥保管库[快速入门](../key-vault/general/overview.md)。 有关导入现有密钥的详细信息，请参阅[有关密钥、机密和证书](../key-vault/about-keys-secrets-and-certificates.md)。
 1. 要在创建保管库时同时打开软删除和清除保护，请使用[az 密钥保管库创建](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create)命令。
 
     ```azurecli-interactive
@@ -71,10 +71,10 @@ Azure 事件中心现在支持使用 Microsoft 管理的密钥或客户管理的
 
 
 ## <a name="rotate-your-encryption-keys"></a>旋转加密密钥
-可以使用 Azure 密钥保管库轮换机制在密钥保管库中旋转密钥。 有关详细信息，请参阅[设置密钥轮换和审核](../key-vault/key-vault-key-rotation-log-monitoring.md)。 激活和到期日期也可以设置为自动轮换密钥。 事件中心服务将检测新的密钥版本，并自动开始使用它们。
+可以使用 Azure 密钥保管库轮换机制在密钥保管库中旋转密钥。 有关详细信息，请参阅[设置密钥轮换和审核](../key-vault/secrets/key-rotation-log-monitoring.md)。 激活和到期日期也可以设置为自动轮换密钥。 事件中心服务将检测新的密钥版本，并自动开始使用它们。
 
 ## <a name="revoke-access-to-keys"></a>撤销对密钥的访问
-撤销对加密密钥的访问不会从事件中心清除数据。 但是，无法从事件中心命名空间访问数据。 您可以通过访问策略或删除密钥来撤消加密密钥。 详细了解访问策略和保护密钥保管库从[安全访问密钥保管库](../key-vault/key-vault-secure-your-key-vault.md)。
+撤销对加密密钥的访问不会从事件中心清除数据。 但是，无法从事件中心命名空间访问数据。 您可以通过访问策略或删除密钥来撤消加密密钥。 详细了解访问策略和保护密钥保管库从[安全访问密钥保管库](../key-vault/general/secure-your-key-vault.md)。
 
 一旦加密密钥被吊销，加密命名空间上的事件中心服务将变得无法运行。 如果启用了对密钥的访问或已还原删除密钥，事件中心服务将选取该密钥，以便可以从加密的事件中心命名空间访问数据。
 
@@ -99,7 +99,7 @@ Azure 事件中心现在支持使用 Microsoft 管理的密钥或客户管理的
 ## <a name="log-schema"></a>日志架构 
 所有日志均以 JavaScript 对象表示法 (JSON) 格式存储。 每个条目都有使用下表中描述的格式的字符串字段。 
 
-| “属性” | 描述 |
+| 名称 | 说明 |
 | ---- | ----------- | 
 | TaskName | 失败的任务的说明。 |
 | ActivityId | 用于跟踪的内部 ID。 |
@@ -423,7 +423,7 @@ Azure 事件中心现在支持使用 Microsoft 管理的密钥或客户管理的
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章：
 - [事件中心概述](event-hubs-about.md)
-- [密钥保管库概述](../key-vault/key-vault-overview.md)
+- [密钥保管库概述](../key-vault/general/overview.md)
 
 
 

@@ -1,11 +1,11 @@
 ---
-title: 在 Azure 活动目录门户中批量还原已删除的用户（预览 ） |微软文档
+title: Azure 活动目录门户中的批量还原已删除用户 |微软文档
 description: 在 Azure 活动目录中的 Azure AD 管理中心批量还原已删除的用户
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 08/15/2019
+ms.date: 04/16/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d392ae97a8325dd4a56acd807ebfb2b951216eae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f75fe224491c2853f819a45db678e87849dc72d1
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72174246"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532693"
 ---
-# <a name="bulk-restore-deleted-users-preview-in-azure-active-directory"></a>Azure 活动目录中批量还原已删除的用户（预览）
+# <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>批量还原 Azure 活动目录中已删除的用户
 
 Azure 活动目录 （Azure AD） 支持批量用户创建和删除操作、批量邀请来宾，并支持下载用户、组和组成员的列表。
 
@@ -36,7 +36,7 @@ Azure 活动目录 （Azure AD） 支持批量用户创建和删除操作、批�
 
    ![选择本地 CSV 文件，其中列出要添加的用户](./media/users-bulk-restore/upload-button.png)
 
-1. 在**批量还原（预览）** 页上，**在"上传 csv 文件**"下，浏览到该文件。 当您选择该文件并单击"**提交**"时，将启动 CSV 文件的验证。
+1. 在**批量还原**页上，**在"上传 csv 文件**"下，浏览到该文件。 当您选择该文件并单击"**提交**"时，将启动 CSV 文件的验证。
 1. 验证文件内容后，会看到“文件上传成功”消息。**** 如果有错误，必须修正错误，然后才能提交作业。
 1. 文件通过验证后，选择 **"提交"** 以启动还原用户的 Azure 批量操作。
 1. 还原操作完成后，您将看到批量操作成功的通知。
@@ -45,9 +45,9 @@ Azure 活动目录 （Azure AD） 支持批量用户创建和删除操作、批�
 
 ## <a name="check-status"></a>查看状态
 
-您可以在**批量操作结果（预览）** 页中查看所有挂起的批量请求的状态。
+您可以在 **"批量操作结果"** 页中查看所有挂起的批量请求的状态。
 
-   ![在"批量操作结果"页中检查上载状态](./media/users-bulk-restore/bulk-center.png)
+[![](media/users-bulk-restore/bulk-center.png "Check status in the Bulk Operations Results page")](media/users-bulk-restore/bulk-center.png#lightbox)
 
 接下来，可以检查还原的用户是否存在 Azure 门户或使用 PowerShell 的 Azure AD 组织。
 
@@ -55,12 +55,12 @@ Azure 活动目录 （Azure AD） 支持批量用户创建和删除操作、批�
 
 1. 使用组织中的用户管理员的帐户[登录到 Azure AD 管理中心](https://aad.portal.azure.com)。
 1. 在导航窗格中选择“Azure Active Directory”。****
-1. 在“管理”下，选择“用户”********。
+1. 在“管理”下，选择“用户”   。
 1. 在 **"显示**"下，选择 **"所有用户**"并验证已列出还原的用户。
 
 ### <a name="view-users-with-powershell"></a>使用 PowerShell 查看用户
 
-运行以下命令：
+运行下面的命令：
 
 ``` PowerShell
 Get-AzureADUser -Filter "UserType eq 'Member'"

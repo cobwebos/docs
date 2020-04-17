@@ -3,12 +3,12 @@ title: 监视管理租户中的委派更改
 description: 了解如何监视从客户租户到管理租户的委派活动。
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 322580cc3d0246f7a34e28cdae94da57fda070b5
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: a4593b34311eca34e4fb68926a3820899ab3f324
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985144"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458805"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>监视管理租户中的委派更改
 
@@ -44,7 +44,7 @@ ms.locfileid: "80985144"
 
 - [创建新的服务主体帐户](../../active-directory/develop/howto-create-service-principal-portal.md)仅用于此函数，而不是将此角色分配给用于其他自动化的现有服务主体。
 - 确保此服务主体无法访问任何委派的客户资源。
-- [使用证书对其进行身份验证](../../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets)[并将其安全地存储在 Azure 密钥保管库中](../../key-vault/key-vault-best-practices.md)。
+- [使用证书对其进行身份验证](../../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets)[并将其安全地存储在 Azure 密钥保管库中](../../key-vault/general/best-practices.md)。
 - 限制有权访问代表服务主体行事的用户。
 
 使用以下方法之一进行根作用域分配。

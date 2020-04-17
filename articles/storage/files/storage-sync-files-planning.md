@@ -7,21 +7,31 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0684f626553946619a0db2cd895df39576bd17b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8666f51b88d2a70a2cb27e3606f24010771c8017
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255114"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460693"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
-[Azure 文件](storage-files-introduction.md)可通过两种主要方式进行部署：直接安装无服务器 Azure 文件共享或使用 Azure 文件同步在本地缓存 Azure 文件共享。您选择的部署选项会更改在规划部署时需要考虑的事项。 
+
+:::row:::
+    :::column:::
+        [![访谈和演示介绍 Azure 文件同步 - 点击播放！](./media/storage-sync-files-planning/azure-file-sync-interview-video-snapshot.png)](https://www.youtube.com/watch?v=nfWLO7F52-s)
+    :::column-end:::
+    :::column:::
+        Azure 文件同步是一项服务，允许您在本地 Windows 服务器或云 VM 上缓存许多 Azure 文件共享。 
+        
+        本文向您介绍 Azure 文件同步的概念和功能。 熟悉 Azure 文件同步后，请考虑按照[Azure 文件同步部署指南](storage-sync-files-deployment-guide.md)试用此服务。        
+    :::column-end:::
+:::row-end:::
+
+这些文件将存储在[Azure 文件共享](storage-files-introduction.md)中的云中。 Azure 文件共享可通过两种方式使用：直接安装这些无服务器 Azure 文件共享 （SMB） 或使用 Azure 文件同步在本地缓存 Azure 文件共享。您选择的部署选项会更改在规划部署时需要考虑的方面。 
 
 - **Azure 文件共享的直接装载**：由于 Azure 文件提供 SMB 访问，因此可以使用 Windows、macOS 和 Linux 中可用的标准 SMB 客户端在本地或云中装载 Azure 文件共享。 由于 Azure 文件共享是无服务器的，因此为生产方案部署不需要管理文件服务器或 NAS 设备。 这意味着您不必应用软件修补程序或交换物理磁盘。 
 
 - **使用 Azure 文件同步在本地缓存 Azure 文件共享**：Azure 文件同步使您能够在 Azure 文件中集中组织的文件共享，同时保持本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步将本地（或云）Windows 服务器转换为 Azure 文件共享的快速缓存。 
-
-本文主要介绍部署 Azure 文件同步的部署注意事项。要计划由本地或云客户端直接装载 Azure 文件共享的部署，请参阅[规划 Azure 文件部署](storage-files-planning.md)。
 
 ## <a name="management-concepts"></a>管理概念
 Azure 文件同步部署有三个基本管理对象：
@@ -181,7 +191,7 @@ Windows Server 2016 和 Windows Server 2019 上启用了云分层的卷支持重
 > [!Note]  
 > 为了支持 Windows Server 2019 上启用了云分层的卷上的数据重复数据消除，必须安装 Windows 更新[KB4520062，](https://support.microsoft.com/help/4520062)并且需要 Azure 文件同步代理版本 9.0.0.0 或更新。
 
-**视窗服务器 2012 R2**  
+**Windows Server 2012 R2**  
 Azure 文件同步不支持 Windows Server 2012 R2 上同一卷上的数据重复数据消除和云分层。 如果在卷上启用了数据重复数据消除，则必须禁用云分层。 
 
 **说明**

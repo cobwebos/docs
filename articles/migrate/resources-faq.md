@@ -1,17 +1,14 @@
 ---
 title: Azure 迁移常见问题解答
 description: 获取有关 Azure 迁移服务的常见问题的解答。
-author: snehaamicrosoft
-ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.author: snehaa
-ms.openlocfilehash: c85c5c6e11beb0178139dad152f56f420b2ac26f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 9b71888b284fd9cc125def4758d1e3800a92acf2
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78926732"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81530311"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure 迁移：常见问题
 
@@ -22,7 +19,7 @@ ms.locfileid: "78926732"
 
 ## <a name="what-is-azure-migrate"></a>Azure Migrate 是什么？
 
-Azure 迁移提供了一个中心中心，用于跟踪本地应用和工作负荷以及私有和公共云 VM 到 Azure 的发现、评估和迁移。 中心提供用于评估和迁移以及第三方 ISV 服务的 Azure 迁移工具。 [了解详情](migrate-services-overview.md)。
+Azure 迁移提供了一个中心中心，用于跟踪本地应用和工作负荷以及私有和公共云 VM 到 Azure 的发现、评估和迁移。 中心提供用于评估和迁移以及第三方 ISV 服务的 Azure 迁移工具。 [了解详细信息](migrate-services-overview.md)。
 
 ## <a name="what-can-i-do-with-azure-migrate"></a>使用 Azure 迁移可以执行什么操作？
 
@@ -56,8 +53,7 @@ Azure 迁移：服务器迁移工具使用某些后端站点恢复功能来提�
 
 ## <a name="which-geographies-are-supported"></a>支持哪些地理位置？
 
-- **VMware VM**：查看 VMware VM 的 Azure 迁移[支持地理位置](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)。
-- **超 VM**：查看超级 VM 的 Azure 迁移[支持地理位置](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)。
+查看[公共](migrate-support-matrix.md#supported-geographies-public-cloud)和政府[云](migrate-support-matrix.md#supported-geographies-azure-government)的支持地理位置。
 
 ## <a name="how-do-i-get-started"></a>如何入门？
 

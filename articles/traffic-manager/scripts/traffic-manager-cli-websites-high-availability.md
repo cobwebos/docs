@@ -5,7 +5,6 @@ services: traffic-manager
 documentationcenter: traffic-manager
 author: rohinkoul
 manager: twooley
-editor: tysonn
 tags: azure-infrastructure
 ms.assetid: ''
 ms.service: traffic-manager
@@ -15,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 04/26/2018
 ms.author: rohink
-ms.openlocfilehash: e4912e0e285d41bf2de4cf439788a943251cfae8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e108fbe54ce67d4eb354319450259fc410462c53
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76934792"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460607"
 ---
 # <a name="route-traffic-for-high-availability-of-applications-using-azure-cli"></a>使用 Azure CLI 为实现应用程序的高可用性路由流量
 
@@ -48,7 +47,7 @@ az group delete --name myResourceGroup2 --yes
 
 此脚本使用以下命令创建资源组、Web 应用、流量管理器配置文件和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | 创建用于存储所有资源的资源组。 |
 | [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan) | 创建应用服务计划。 这与 Azure Web 应用的服务器场类似。 |

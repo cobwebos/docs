@@ -5,7 +5,6 @@ services: azure-portal
 documentationcenter: ''
 author: adamabmsft
 manager: mtillman
-editor: tysonn
 ms.service: azure-portal
 ms.devlang: NA
 ms.topic: conceptual
@@ -13,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: 5329a7b21aff7ecffc7153c7aa74ddb93bce75cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ec9a4daad139a4930174ba9e3445e1cda1f8c54
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132007"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461304"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>以编程方式创建 Azure 仪表板
 
@@ -126,7 +125,7 @@ id: "[resourceId(parameters('virtualMachineResourceGroup'), 'Microsoft.Compute/v
 配置模板后，使用以下任意方法部署模板：
 
 * [REST API](/rest/api/resources/deployments)
-* [电源外壳](../azure-resource-manager/resource-group-template-deploy.md)
+* [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
 * [Azure CLI](/cli/azure/group/deployment#az-group-deployment-create)
 * [Azure 门户模板部署页](https://portal.azure.com/#create/Microsoft.Template)
 

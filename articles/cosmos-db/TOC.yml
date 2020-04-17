@@ -759,14 +759,6 @@
           items:
             - name: 1 - 查询数据
               href: tutorial-query-graph.md
-        - name: 参考
-          items:
-            - name: 响应标头
-              href: gremlin-headers.md
-            - name: 限制
-              href: gremlin-limits.md
-            - name: 兼容性
-              href: gremlin-compatibility.md
         - name: 操作指南
           items:
             - name: 图形数据建模
@@ -794,6 +786,14 @@
               href: powershell-samples-gremlin.md
             - name: 使用 Azure CLI 进行管理
               href: cli-samples-gremlin.md
+        - name: 参考
+          items:
+            - name: 响应标头
+              href: gremlin-headers.md
+            - name: 限制
+              href: gremlin-limits.md
+            - name: 兼容性
+              href: gremlin-compatibility.md
     - name: 表 API
       items:
         - name: 概述

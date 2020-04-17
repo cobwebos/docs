@@ -5,7 +5,6 @@ services: azure-portal
 documentationcenter: ''
 author: sewatson
 manager: mtillman
-editor: tysonn
 ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
 ms.service: azure-portal
 ms.devlang: NA
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: 4c01321662b302103cdedfb5b78dadf89860fb8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6eda3b522a5b46cd82ef29ae493891a624d3272
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132079"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459281"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>在 Azure 门户中创建和共享仪表板
 
@@ -31,7 +30,7 @@ Azure 门户提供默认仪表板作为起点。 你可以编辑默认仪表板�
 
 在此示例中，我们将创建新的专用仪表板并分配名称。 执行以下步骤以便开始：
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在 Azure 门户菜单上，选择“仪表板”****。 默认视图可能已设置为“仪表板”。
 
@@ -119,7 +118,7 @@ Azure 门户提供默认仪表板作为起点。 你可以编辑默认仪表板�
 
 1. 选择要显示的时间粒度。 可以使用 1 分钟到 1 个月的增量作为显示粒度。
 
-1. 选择“应用”。
+1. 选择“应用”。 
 
 ## <a name="delete-a-tile"></a>删除磁贴
 

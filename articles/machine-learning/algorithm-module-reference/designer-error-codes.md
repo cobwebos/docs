@@ -8,23 +8,25 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 12/03/2019
-ms.openlocfilehash: cda499b81a61a5b78ca86a96372640e368f90357
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.date: 04/16/2020
+ms.openlocfilehash: cc04d11475568af92ba6a617a1eb6b2b51accb45
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80364203"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481669"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>设计器的异常和错误代码（预览）
 
 本文介绍 Azure 机器学习设计器（预览）中的错误消息和异常代码，以帮助你对机器学习管道进行故障排除。
 
-可以通过两种方式获取设计器中错误消息的完整文本：  
+您可以按照以下步骤在设计器中找到错误消息：  
 
-- 单击右窗格中的链接“查看输出日志”，然后滚动到底部****。 详细错误消息将显示在窗口的最后两行。  
-  
-- 选择出现错误的模块，然后单击红色 X。仅显示相关的错误文本。
+- 选择失败的模块，转到 **"输出\日志**"选项卡，您可以在**azureml 日志**类别下的**70_driver_log.txt**文件中找到详细日志。
+
+- 有关详细的模块错误，您可以在**module_statistics**类别下的 error_info.json 中选中它。
+
+以下是设计器中模块的错误代码。
 
 ## <a name="error-0001"></a>错误 0001  
  如果找不到数据集的一个或多个指定列，将出现异常。  
@@ -736,7 +738,7 @@ For general information about how the Matchbox recommendation algorithm works, a
     + 检查文本列中的非 unicode 字符、制表符或控制字符
     + 日期/时间数据应保持一致，以免出现建模错误，但清理可能会很复杂，因为存在多种格式。 请考虑使用 <!--the [Execute R Script](execute-r-script.md) or -->[执行 Python 脚本](execute-python-script.md)模块来执行清理。  
 + 如有必要，请修改输入数据集中的值，以便可以成功转换该列。 修改可能包括分箱、截断或舍入运算、清除离群值或补充缺少的值。 请参阅以下文章，了解机器学习中的一些常见数据转换方案：
-    + [清理缺失数据](clean-missing-data.md)
+    + [清理缺失的数据](clean-missing-data.md)
     + [规范化数据](normalize-data.md)
 <!--+ [Clip Values](clip-values.md) 
     + [Group Data Into Bins](group-data-into-bins.md)

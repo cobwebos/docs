@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/15/2019
-ms.openlocfilehash: 15a2c75a7619a815655be0fd9fd3044d86acd057
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/16/2020
+ms.openlocfilehash: c88882175ff256300dee486e680a9b63e9a65c99
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272560"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532492"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>使用 Apache Ambari 优化 HDInsight 群集配置
 
-HDInsight 为大规模数据处理应用程序提供 [Apache Hadoop](https://hadoop.apache.org/) 群集。 对这些复杂的多节点群集进行管理、监视和优化可能存在一定的难度。 [Apache Ambari](https://ambari.apache.org/) 是可用于管理和监视 HDInsight Linux 群集的 Web 界面。  对于 Windows 群集，请使用 [Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)。
+HDInsight 为大规模数据处理应用程序提供 [Apache Hadoop](./hadoop/apache-hadoop-introduction.md) 群集。 对这些复杂的多节点群集进行管理、监视和优化可能存在一定的难度。 [Apache Ambari](https://ambari.apache.org/) 是可用于管理和监视 HDInsight Linux 群集的 Web 界面。  对于 Windows 群集，请使用 [Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)。
 
 有关使用 Ambari Web UI 的简介，请参阅[使用 Apache Ambari Web UI 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)
 
@@ -25,17 +25,17 @@ HDInsight 为大规模数据处理应用程序提供 [Apache Hadoop](https://had
 
 ![显示阿帕奇 Ambari 用户仪表板](./media/hdinsight-changing-configs-via-ambari/apache-ambari-dashboard.png)
 
-Ambari Web UI 可用于管理主机、服务、警报、配置和视图。 Ambari 不可用于创建 HDInsight 群集、升级服务、管理堆栈和版本、停用或重用主机，或者将服务添加到群集。
+Ambari Web UI 用于管理主机、服务、警报、配置和视图。 Ambari 不能用于创建 HDInsight 群集或升级服务。 也不能管理堆栈和版本、停用或重新调试主机或向群集添加服务。
 
 ## <a name="manage-your-clusters-configuration"></a>管理群集的配置
 
-配置设置可帮助优化特定服务。 若要修改某个服务的配置设置，请从“服务”边栏（左侧）中选择该服务，然后在服务详细信息页中导航到“配置”选项卡。********
+配置设置可帮助优化特定服务。 要修改服务的配置设置，请从 **"服务**"侧边栏（左侧）选择该服务。 然后导航到服务详细信息页中的 **"Configs"** 选项卡。
 
 ![阿帕奇安巴里服务侧边栏](./media/hdinsight-changing-configs-via-ambari/ambari-services-sidebar.png)
 
 ### <a name="modify-namenode-java-heap-size"></a>修改 NameNode Java 堆大小
 
-NameNode Java 堆大小取决于许多因素，例如群集上的负载、文件数和块数。 默认大小 1 GB 能够很好地满足大多数群集的需要，不过，某些工作负荷可能需要更多或更少的内存。
+NameNode Java 堆大小取决于许多因素，如群集上的负载。 此外，文件数和块数。 默认大小 1 GB 能够很好地满足大多数群集的需要，不过，某些工作负荷可能需要更多或更少的内存。
 
 修改 NameNode Java 堆大小：
 
@@ -57,7 +57,7 @@ NameNode Java 堆大小取决于许多因素，例如群集上的负载、文件
 
 1. 单击配置屏幕顶部的绿色“保存”按钮保存所做的更改。****
 
-    ![安巴里·安巴里保存配置](./media/hdinsight-changing-configs-via-ambari/ambari-save-changes1.png)
+    !["阿帕奇·安巴里保存配置"](./media/hdinsight-changing-configs-via-ambari/ambari-save-changes1.png)
 
 ## <a name="apache-hive-optimization"></a>Apache Hive 优化
 
@@ -85,7 +85,7 @@ Hadoop 会尝试将单个文件拆分（映射）为多个文件，以并行方�
 * `tez.grouping.min-size`：分组拆分大小的下限，默认值为 16 MB（16,777,216 字节）。
 * `tez.grouping.max-size`：分组拆分大小的上限，默认值为 1 GB（1,073,741,824 字节）。
 
-在性能方面的一项经验法则是，减小这两个参数可以改善延迟，增大这两个参数可以提高吞吐量。
+作为性能指南，降低这两个参数以提高延迟，增加吞吐量。
 
 例如，若要为数据大小 128 MB 设置四个映射器任务，可将每个任务的这两个参数设置为 32 MB（33,554,432 字节）。
 
@@ -103,7 +103,7 @@ Hadoop 会尝试将单个文件拆分（映射）为多个文件，以并行方�
 
 例如，假设输入数据大小为 50 GB。 使用 Snappy 以 ORC 格式压缩这些数据后，大小为 1 GB。 Hive 估计所需的化简器数目为：(在映射器中输入的字节数 / `hive.exec.reducers.bytes.per.reducer`)。
 
-如果使用默认设置，此示例的化简器数目为 4。
+使用默认设置，此示例是四个缩减器。
 
 `hive.exec.reducers.bytes.per.reducer` 参数指定每个化简器处理的字节数。 默认值为 64 MB。 减小此值可提高并行度，并可能会改善性能。 但过度减小也可能生成过多的化简器，从而对性能产生潜在的负面影响。 此参数基于特定的数据要求、压缩设置和其他环境因素。
 
@@ -115,7 +115,7 @@ Hadoop 会尝试将单个文件拆分（映射）为多个文件，以并行方�
 
     ![每个减分器的 Ambari 数据 - 编辑](./media/hdinsight-changing-configs-via-ambari/data-per-reducer-edited.png)
   
-    假设输入大小为 1024 MB，每个化简器的数据为 128 MB，则有 8 个化简器 (1024/128)。
+    给定输入大小为 1，024 MB，每个缩减器具有 128 MB 的数据，则有 8 个缩减器 （1024/128）。
 
 1. 为“每个化简器的数据”参数提供错误的值可能导致生成大量的化简器，从而对查询性能产生负面影响。**** 若要限制化简器的最大数目，请将 `hive.exec.reducers.max` 设置为适当的值。 默认值为 1009。
 
@@ -141,7 +141,7 @@ Hive 逐行处理数据。 矢量化指示 Hive 以块（一个块包含 1,024 �
 
 ### <a name="enable-cost-based-optimization-cbo"></a>启用基于成本的优化 (CBO)
 
-默认情况下，Hive 遵循一组规则来找到一个最佳的查询执行计划。 基于成本的优化 (CBO) 可以评估多个查询执行计划并向每个计划分配一个成本，然后确定成本最低的查询执行计划。
+默认情况下，Hive 遵循一组规则来找到一个最佳的查询执行计划。 基于成本的优化 （CBO） 评估多个计划以执行查询。 并为每个计划分配成本，然后确定执行查询的最便宜的计划。
 
 要启用 CBO，请导航到**Hive** > **配置** > **设置**并查找**启用成本优化器**，然后将切换按钮切换到 **"打开**"。
 
@@ -163,7 +163,7 @@ Hive 逐行处理数据。 矢量化指示 Hive 以块（一个块包含 1,024 �
 
 * `hive.stats.fetch.partition.stats`
 
-    行数、数据大小和文件大小等基本分区统计信息存储在元存储中。 如果设置为 true，则会从元存储中提取分区统计信息。 如果为 false，则从文件系统中提取文件大小，并从行架构中提取行数。
+    行数、数据大小和文件大小等基本分区统计信息存储在元存储中。 如果设置为 true，将从元存储获取分区统计信息。 如果为 false，则从文件系统获取文件大小。 行数从行架构中获取。
 
     ![Hive 统计信息 - 设置分区统计信息](./media/hdinsight-changing-configs-via-ambari/hive-stats-fetch-partition-stats.png)
 
@@ -176,17 +176,17 @@ Hadoop 作业通常会遇到 I/O 瓶颈。 压缩数据能够加快 I/O 和总�
 可用的压缩类型包括：
 
 | 格式 | 工具 | 算法 | 文件扩展名 | 是否可拆分？ |
-| -- | -- | -- | -- | -- |
-| Gzip | Gzip | DEFLATE | .gz | 否 |
-| Bzip2 | Bzip2 | Bzip2 |.bz2 | 是 |
-| LZO | Lzop | LZO | .lzo | 是（如果已编制索引） |
+| --- | --- | --- | --- | --- |
+| Gzip | Gzip | DEFLATE | `.gz` | 否 |
+| Bzip2 | Bzip2 | Bzip2 |`.bz2` | 是 |
+| LZO | `Lzop` | LZO | `.lzo` | 是（如果已编制索引） |
 | Snappy | 空值 | Snappy | Snappy | 否 |
 
-一般规则是，尽量使用可拆分的压缩方法，否则会创建极少的映射器。 如果输入数据为文本，则 `bzip2` 是最佳选项。 对于 ORC 格式，Snappy 是最快的压缩选项。
+通常，使用压缩方法拆分非常重要，否则将创建很少映射器。 如果输入数据为文本，则 `bzip2` 是最佳选项。 对于 ORC 格式，Snappy 是最快的压缩选项。
 
 1. 若要启用中间压缩，请导航到 Hive 的“配置”选项卡，并将 `hive.exec.compress.intermediate` 参数设置为 true。**** 默认值是 False。
 
-    ![Hive 执行 - 中间压缩](./media/hdinsight-changing-configs-via-ambari/hive-exec-compress-intermediate.png)
+    !['Hive 执行压缩中间体'](./media/hdinsight-changing-configs-via-ambari/hive-exec-compress-intermediate.png)
 
     > [!NOTE]  
     > 若要压缩中间文件，请选择一个 CPU 开销较低的压缩编解码器，即使该编解码器不能提供较高的压缩输出。
@@ -195,17 +195,17 @@ Hadoop 作业通常会遇到 I/O 瓶颈。 压缩数据能够加快 I/O 和总�
 
 1. 添加自定义设置：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 导航到**蜂巢** > **Configs** > **Advanced**高级 > **自定义配置单元站点**。
+    a. 导航到**蜂巢** > **Configs** > **Advanced**高级 > **自定义配置单元站点**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在自定义配置单元网站窗格的底部选择 **"添加属性..."**
+    b. 在自定义配置单元网站窗格的底部选择 **"添加属性..."**
 
     c. 在“添加属性”窗口中，输入 `mapred.map.output.compression.codec` 作为键，输入 `org.apache.hadoop.io.compress.SnappyCodec` 作为值。
 
-    d.单击“下一步”。 选择“添加”****。
+    d. 选择 **添加** 。
 
-    ![阿帕奇蜂巢自定义属性添加](./media/hdinsight-changing-configs-via-ambari/hive-custom-property.png)
+    !["Apache Hive 自定义属性添加"](./media/hdinsight-changing-configs-via-ambari/hive-custom-property.png)
 
-    这会使用 Snappy 压缩来压缩中间文件。 添加该属性后，它会显示在“自定义 hive-site”窗格中。
+    此设置将使用 Snappy 压缩压缩中间文件。 添加该属性后，它会显示在“自定义 hive-site”窗格中。
 
     > [!NOTE]  
     > 此过程会修改 `$HADOOP_HOME/conf/hive-site.xml` 文件。
@@ -222,21 +222,21 @@ Hadoop 作业通常会遇到 I/O 瓶颈。 压缩数据能够加快 I/O 和总�
 
 ### <a name="enable-speculative-execution"></a>启用推理执行
 
-推理执行可以启动特定数量的重复任务以检测运行速度缓慢的任务跟踪程序并将其加入方块列表，同时通过优化各项任务结果来改善总体作业执行。
+推测执行将启动一定数量的重复任务，以检测和拒绝列出运行缓慢的任务跟踪器。 同时通过优化单个任务结果来改进总体作业执行。
 
 不应该对输入量较大的长时间运行的 MapReduce 任务启用推理执行。
 
 * 若要启用推理执行，请导航到 Hive 的“配置”选项卡，并将 `hive.mapred.reduce.tasks.speculative.execution` 参数设置为 true。**** 默认值是 False。
 
-    ![Hive mapred 化简任务推理执行](./media/hdinsight-changing-configs-via-ambari/hive-mapred-reduce-tasks-speculative-execution.png)
+    !["Hive 映射可减少推测执行的任务"](./media/hdinsight-changing-configs-via-ambari/hive-mapred-reduce-tasks-speculative-execution.png)
 
 ### <a name="tune-dynamic-partitions"></a>优化动态分区
 
-Hive 允许在表中插入记录时创建动态分区，且无需预定义每个分区。 这是一项强大功能，不管，它可能导致创建大量的分区并为每个分区创建大量的文件。
+Hive 允许在将记录插入到表中时创建动态分区，而无需预定义每个分区。 此功能是一个强大的功能。 尽管它可能导致创建大量分区。 并且每个分区有大量的文件。
 
 1. 要让 Hive 执行动态分区，应将 `hive.exec.dynamic.partition` 参数值设置为 true（默认值）。
 
-1. 将动态分区模式更改为 *strict*。 在 strict（严格）模式下，必须至少有一个分区是静态的。 这可以阻止未在 WHERE 子句中包含分区筛选器的查询，即，*strict* 可阻止扫描所有分区的查询。 导航到 Hive 的“配置”选项卡，并将 `hive.exec.dynamic.partition.mode` 设置为 **strict**。**** 默认值为 **nonstrict**。
+1. 将动态分区模式更改为 *strict*。 在 strict（严格）模式下，必须至少有一个分区是静态的。 此设置可防止 WHERE 子句中没有分区筛选器的查询，即*严格*防止扫描所有分区的查询。 导航到 Hive 的“配置”选项卡，并将 `hive.exec.dynamic.partition.mode` 设置为 **strict**。**** 默认值为 **nonstrict**。
 
 1. 若要限制要创建的动态分区数，请修改 `hive.exec.max.dynamic.partitions` 参数。 默认值为 5000。
 
@@ -244,7 +244,7 @@ Hive 允许在表中插入记录时创建动态分区，且无需预定义每个
 
 ### <a name="enable-local-mode"></a>启用本地模式
 
-本地模式可让 Hive 在一台计算机上（有时是在单个进程中）执行某个作业的所有任务。 如果输入数据较小，并且查询启动任务的开销会消耗总体查询执行资源的绝大部分，则此模式可以提高查询性能。
+本地模式使 Hive 能够在一台计算机上执行作业的所有任务。 或者有时在单个进程中。 如果输入数据较小，此设置可提高查询性能。 启动查询任务的开销消耗了整个查询执行的很大一部分。
 
 若要启用本地模式，请根据[启用中间压缩](#enable-intermediate-compression)部分的步骤 3 所述，将 `hive.exec.mode.local.auto` 参数添加到“自定义 hive-site”面板。
 
@@ -267,19 +267,19 @@ Hive 允许在表中插入记录时创建动态分区，且无需预定义每个
 Hive 中的默认联接类型是“随机联接”。** 在 Hive 中，特殊的映射器会读取输入，并向中间文件发出联接键/值对。 Hadoop 在随机阶段中排序与合并这些对。 此随机阶段的系统开销较大。 根据数据选择右联接可以显著提高性能。
 
 | 联接类型 | 时间 | 方式 | Hive 设置 | 注释 |
-| -- | -- | -- | -- | -- |
+| --- | --- | --- | --- | --- |
 | 随机联接 | <ul><li>默认选项</li><li>始终运行</li></ul> | <ul><li>从某个表的一部分内容中读取</li><li>根据联接键存储和排序</li><li>向每个化简器发送一个存储桶</li><li>在化简端执行联接</li></ul> | 不需要过多的 Hive 设置 | 每次运行 |
-| 映射联接 | <ul><li>一个表可以装入内存</li></ul> | <ul><li>将小型表读入内存哈希表</li><li>通过大型文件的一部分流式处理</li><li>联接哈希表中的每条记录</li><li>只按映射器执行联接</li></ul> | `hive.auto.confvert.join=true` | 速度很快，但受限 |
-| 排序合并存储桶 | 如果两个表： <ul><li>排序方式相同</li><li>存储方式相同</li><li>按排序/存储的列执行联接</li></ul> | 每个进程： <ul><li>从每个表中读取存储桶</li><li>处理值最小的行</li></ul> | `hive.auto.convert.sortmerge.join=true` | 非常高效 |
+| 映射联接 | <ul><li>一个表可以装入内存</li></ul> | <ul><li>将小型表读入内存哈希表</li><li>通过大型文件的一部分流式处理</li><li>联接哈希表中的每条记录</li><li>只按映射器执行联接</li></ul> | `hive.auto.confvert.join=true` | 速度快，但有限 |
+| 排序合并存储桶 | 如果两个表： <ul><li>排序方式相同</li><li>存储方式相同</li><li>按排序/存储的列执行联接</li></ul> | 每个进程： <ul><li>从每个表中读取存储桶</li><li>处理值最小的行</li></ul> | `hive.auto.convert.sortmerge.join=true` | 高效 |
 
 #### <a name="execution-engine-optimizations"></a>执行引擎优化
 
 有关优化 Hive 执行引擎的其他建议：
 
 | 设置 | 建议 | HDInsight 默认值 |
-| -- | -- | -- |
+| --- | --- | --- |
 | `hive.mapjoin.hybridgrace.hashtable` | True = 更安全，但速度更慢；false = 速度更快 | false |
-| `tez.am.resource.memory.mb` | 大多数引擎的上限为 4 GB | 自动优化 |
+| `tez.am.resource.memory.mb` | 大多数为 4 GB 上限 | 自动优化 |
 | `tez.session.am.dag.submit.timeout.secs` | 300+ | 300 |
 | `tez.am.container.idle.release-timeout-min.millis` | 20000+ | 10000 |
 | `tez.am.container.idle.release-timeout-max.millis` | 40000+ | 20000 |
@@ -317,17 +317,17 @@ Hive 中的默认联接类型是“随机联接”。** 在 Hive 中，特殊的
 
 ### <a name="copy-user-jar-cache"></a>将用户 jar 复制到缓存中
 
-Pig 可将 UDF 所需的 JAR 文件复制到分布式缓存，使这些文件可供任务节点使用。 这些罐子不会经常变化。 如果已启用，`pig.user.cache.enabled` 设置允许将 jar 放入缓存，使同一用户运行的作业能够重复使用这些文件。 这样可以小幅提高作业的性能。
+Pig 可将 UDF 所需的 JAR 文件复制到分布式缓存，使这些文件可供任务节点使用。 这些罐子不会经常变化。 如果已启用，`pig.user.cache.enabled` 设置允许将 jar 放入缓存，使同一用户运行的作业能够重复使用这些文件。 此设置会导致工作绩效略有提高。
 
 1. 若要启用，请将 `pig.user.cache.enabled` 设置为 true。 默认值为 false。
 
-1. 若要设置缓存 jar 的基本路径，请将 `pig.user.cache.location` 设置为基本路径。 默认为 `/tmp`。
+1. 若要设置缓存 jar 的基本路径，请将 `pig.user.cache.location` 设置为基本路径。 默认值为 `/tmp`。
 
 ### <a name="optimize-performance-with-memory-settings"></a>使用内存设置优化性能
 
 以下内存设置可以帮助优化 Pig 脚本的性能。
 
-* `pig.cachedbag.memusage`：分配给包的内存量。 包是元组的集合。 元组是字段的有序集，字段是数据片段。 如果包中的数据超出分配的内存，则数据会溢出到磁盘。 默认值为 0.2，表示可用内存的 20%。 这是在应用程序中的所有包之间分摊的内存量。
+* `pig.cachedbag.memusage`：给袋子的内存量。 包是元组的集合。 元组是字段的有序集，字段是数据片段。 如果包中的数据超出给定内存，则数据会溢出到磁盘。 默认值为 0.2，表示可用内存的 20%。 这是在应用程序中的所有包之间分摊的内存量。
 
 * `pig.spill.size.threshold`：超过此溢出大小阈值（以字节为单位）的包将溢出到磁盘。 默认值为 5 MB。
 
@@ -337,15 +337,15 @@ Pig 在作业执行期间生成临时文件。 压缩临时文件可以在将文
 
 * `pig.tmpfilecompression`：如果为 true，则启用临时文件压缩。 默认值是 False。
 
-* `pig.tmpfilecompression.codec`：用于压缩临时文件的压缩编解码器。 建议的压缩编解码器为 [LZO](https://www.oberhumer.com/opensource/lzo/) 和 Snappy，它们可以降低 CPU 利用率。
+* `pig.tmpfilecompression.codec`：用于压缩临时文件的压缩编解码器。 推荐的压缩编解码器为[LZO](https://www.oberhumer.com/opensource/lzo/)和 Snappy，用于降低 CPU 使用率。
 
 ### <a name="enable-split-combining"></a>启用拆分合并
 
-如果已启用，则会合并小型文件，以减少映射任务数目。 这可以提高包含大量小型文件的作业的效率。 若要启用，请将 `pig.noSplitCombination` 设置为 true。 默认值是 False。
+如果已启用，则会合并小型文件，以减少映射任务数目。 此设置提高了具有许多小文件的作业的效率。 若要启用，请将 `pig.noSplitCombination` 设置为 true。 默认值是 False。
 
 ### <a name="tune-mappers"></a>优化映射器
 
-可以通过修改 `pig.maxCombinedSplitSize` 属性来控制映射器数目。 此属性指定单个映射任务要处理的数据大小。 默认值为文件系统的默认块大小。 增大此值可减少映射器任务的数目。
+可以通过修改 `pig.maxCombinedSplitSize` 属性来控制映射器数目。 此属性指定要由单个地图任务处理的数据的大小。 默认值为文件系统的默认块大小。 增加此值会导致映射器任务数量减少。
 
 ### <a name="tune-reducers"></a>优化化简器
 
@@ -357,13 +357,13 @@ Pig 在作业执行期间生成临时文件。 压缩临时文件可以在将文
 
 ### <a name="set-hbase_heapsize"></a>设置 HBASE_HEAPSIZE
 
-HBase 堆大小指定区域服务器和主服务器要使用的最大堆数量（以 MB 为单位）。**** 默认值为 1,000 MB。 应该优化群集工作负荷的此项设置。
+HBase 堆大小指定区域服务器和主服务器要使用的最大堆数量（以 MB 为单位）。**** 默认值为 1,000 MB。 此值应针对群集工作负载进行调整。
 
 1. 若要修改，请导航到 HBase“配置”选项卡中的“高级 HBase-env”窗格，然后找到 `HBASE_HEAPSIZE` 设置。********
 
 1. 将默认值更改为 5,000 MB。
 
-    ![阿帕奇安巴里HBase内存堆大](./media/hdinsight-changing-configs-via-ambari/ambari-hbase-heapsize.png)
+    !["阿帕奇安巴里HBase内存堆大小"](./media/hdinsight-changing-configs-via-ambari/ambari-hbase-heapsize.png)
 
 ### <a name="optimize-read-heavy-workloads"></a>优化读取密集型工作负荷
 
@@ -381,7 +381,7 @@ HBase 堆大小指定区域服务器和主服务器要使用的最大堆数量�
 
 #### <a name="memstore-size"></a>Memstore 大小
 
-所有编辑内容都存储在称作 *Memstore* 的内存缓冲区中。 此机制增大了可在单个操作中写入磁盘的总数据量，并可加速以后对最近编辑内容的访问。 Memstore 大小由以下两个参数定义：
+所有编辑内容都存储在称作 *Memstore* 的内存缓冲区中。 此缓冲区会增加可在单个操作中写入磁盘的数据总量。 它还加快了对最近编辑的访问速度。 Memstore 大小由以下两个参数定义：
 
 * `hbase.regionserver.global.memstore.UpperLimit`：定义 Memstore 总共可以使用的区域服务器最大内存百分比。
 
@@ -391,7 +391,7 @@ HBase 堆大小指定区域服务器和主服务器要使用的最大堆数量�
 
 #### <a name="number-of-rows-fetched-when-scanning-from-disk"></a>从磁盘扫描时提取的行数
 
-`hbase.client.scanner.caching` 设置定义在扫描程序中调用 `next` 方法时，要从磁盘读取的行数。  默认值为 100。 该数字越大，从客户端向区域服务器发出的远程调用数就越少，因而扫描速度也就越快。 但是，这也会增大客户端上的内存压力。
+`hbase.client.scanner.caching` 设置定义在扫描程序中调用 `next` 方法时，要从磁盘读取的行数。  默认值为 100。 该数字越大，从客户端向区域服务器发出的远程调用数就越少，因而扫描速度也就越快。 但是，此设置也会增加客户端的内存压力。
 
 ![Apache HBase 提取的行数](./media/hdinsight-changing-configs-via-ambari/hbase-num-rows-fetched.png)
 
@@ -406,7 +406,7 @@ HBase 堆大小指定区域服务器和主服务器要使用的最大堆数量�
 
 HBase 使用称作 *HFile* 的内部文件格式存储数据。 属性 `hbase.hregion.max.filesize` 定义区域的单个 HFile 的大小。  如果区域中的 HFiles 总数大于此设置，则会将该区域拆分为两个区域。
 
-![Apache HBase H 区域最大文件大小](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-max-filesize.png)
+!["Apache HBase H 区域最大文件大小"](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-max-filesize.png)
 
 区域文件大小越大，拆分数目越小。 可以增大文件大小，以确定可以最大程度地提高写入性能的值。
 
@@ -428,7 +428,7 @@ Memstore 大小由 `hbase.regionserver.global.memstore.UpperLimit` 和 `hbase.re
 
 ### <a name="set-memstore-local-allocation-buffer"></a>设置 Memstore 本地分配缓冲区
 
-Memstore 本地分配缓冲区使用率由 `hbase.hregion.memstore.mslab.enabled` 属性确定。 如果已启用 (true)，则可以防止在执行写入密集型操作期间出现堆碎片。 默认值为 true。
+Memstore 本地分配缓冲区使用率由 `hbase.hregion.memstore.mslab.enabled` 属性确定。 启用（true）后，此设置可防止重写入操作期间的堆碎片。 默认值为 true。
 
 ![hbase.hregion.memstore.mslab.enabled](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-mslab-enabled.png)
 

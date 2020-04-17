@@ -3,12 +3,12 @@ title: 将 Azure Policy 大规模部署到委托订阅
 description: 了解 Azure 委托资源管理如何允许跨多个租户部署策略定义和策略分配。
 ms.date: 11/8/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9015351c3fc8f374c5ce85712907fa05249cde11
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 3fe7e48c56e9a5af93e9642ee16c50cfbce34f9e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984566"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481821"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>将 Azure Policy 大规模部署到委托订阅
 
@@ -41,7 +41,7 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 {
     Select-AzSubscription -SubscriptionId $ManagedSub.subscriptionId
 
-    New-AzDeployment -Name mgmt `
+    New-AzSubscriptionDeployment -Name mgmt `
                      -Location eastus `
                      -TemplateUri "https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/templates/policy-enforce-https-storage/enforceHttpsStorage.json" `
                      -AsJob
@@ -70,7 +70,7 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 {
     select-azsubscription -subscriptionId $ManagedSub.subscriptionId
 
-    Remove-AzDeployment -Name mgmt -AsJob
+    Remove-AzSubscriptionDeployment -Name mgmt -AsJob
 
     $Assignment = Get-AzPolicyAssignment | where-object {$_.Name -like "enforce-https-storage-assignment"}
 

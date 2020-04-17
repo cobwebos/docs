@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 29011760a94a05020150ceddeba4303b87c2f610
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0b602660142f70fb1442977b22fce2bc1bb275cd
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76722180"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481931"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>使用 pandas 浏览 Azure blob 存储中的数据
 
@@ -35,30 +35,30 @@ ms.locfileid: "76722180"
 
 1. 使用 Blob 服务使用以下 Python 代码示例从 Azure Blob 下载数据。 使用特定值替代下方代码中的变量：
 
-```python
-from azure.storage.blob import BlockBlobService
-import tables
+    ```python
+    from azure.storage.blob import BlockBlobService
+    import tables
 
-STORAGEACCOUNTNAME= <storage_account_name>
-STORAGEACCOUNTKEY= <storage_account_key>
-LOCALFILENAME= <local_file_name>
-CONTAINERNAME= <container_name>
-BLOBNAME= <blob_name>
+    STORAGEACCOUNTNAME= <storage_account_name>
+    STORAGEACCOUNTKEY= <storage_account_key>
+    LOCALFILENAME= <local_file_name>
+    CONTAINERNAME= <container_name>
+    BLOBNAME= <blob_name>
 
-#download from blob
-t1=time.time()
-blob_service=BlockBlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
-blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
-t2=time.time()
-print(("It takes %s seconds to download "+blobname) % (t2 - t1))
-```
+    #download from blob
+    t1=time.time()
+    blob_service=BlockBlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
+    blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
+    t2=time.time()
+    print(("It takes %s seconds to download "+blobname) % (t2 - t1))
+    ```
 
 1. 从下载的文件中将数据读入 pandas 数据帧。
 
-```python
-# LOCALFILE is the file path
-dataframe_blobdata = pd.read_csv(LOCALFILE)
-```
+    ```python
+    # LOCALFILE is the file path
+    dataframe_blobdata = pd.read_csv(LOCALFILENAME)
+    ```
 
 现在可以准备浏览数据并在此数据集上生成功能了。
 
@@ -67,72 +67,72 @@ dataframe_blobdata = pd.read_csv(LOCALFILE)
 
 1. 检查**行数和列数**
 
-```python
-print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
-```
+    ```python
+    print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
+    ```
 
 1. 在下方数据集中**检查**前面或后面几**行**：
 
-```python
-dataframe_blobdata.head(10)
+    ```python
+    dataframe_blobdata.head(10)
 
-dataframe_blobdata.tail(10)
-```
+    dataframe_blobdata.tail(10)
+    ```
 
 1. 使用以下示例代码检查导入的每个列的**数据类型**
 
-```python
-for col in dataframe_blobdata.columns:
-    print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
-```
+    ```python
+    for col in dataframe_blobdata.columns:
+        print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
+    ```
 
 1. 如下所示，检查数据中列的**基本统计信息**
 
-```python
-dataframe_blobdata.describe()
-```
+    ```python
+    dataframe_blobdata.describe()
+    ```
 
 1. 如下所示，查看每列值的条目数
 
-```python
-dataframe_blobdata['<column_name>'].value_counts()
-```
+    ```python
+    dataframe_blobdata['<column_name>'].value_counts()
+    ```
 
 1. 使用下方示例代码计算每列中的**缺失值**与实际项目数
 
-```python
-miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
-print miss_num
-```
+    ```python
+    miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
+    print miss_num
+    ```
 
 1. 如果数据中**缺少**特定列的值，可以按照如下方式删除这些值：
 
-```python
-dataframe_blobdata_noNA = dataframe_blobdata.dropna()
-dataframe_blobdata_noNA.shape
-```
+    ```python
+    dataframe_blobdata_noNA = dataframe_blobdata.dropna()
+    dataframe_blobdata_noNA.shape
+    ```
 
-另一种替代缺失值的方法是使用模式函数：
+    另一种替代缺失值的方法是使用模式函数：
 
-```python
-dataframe_blobdata_mode = dataframe_blobdata.fillna(
-    {'<column_name>': dataframe_blobdata['<column_name>'].mode()[0]})
-```
+    ```python
+    dataframe_blobdata_mode = dataframe_blobdata.fillna(
+        {'<column_name>': dataframe_blobdata['<column_name>'].mode()[0]})
+    ```
 
 1. 使用数量不定的量化创建**直方图**绘制出变量分布情况
 
-```python
-dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
+    ```python
+    dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
 
-np.log(dataframe_blobdata['<column_name>']+1).hist(bins=50)
-```
+    np.log(dataframe_blobdata['<column_name>']+1).hist(bins=50)
+    ```
 
 1. 使用散点图或内置关联函数查看变量间的**关联**
 
-```python
-# relationship between column_a and column_b using scatter plot
-plt.scatter(dataframe_blobdata['<column_a>'], dataframe_blobdata['<column_b>'])
+    ```python
+    # relationship between column_a and column_b using scatter plot
+    plt.scatter(dataframe_blobdata['<column_a>'], dataframe_blobdata['<column_b>'])
 
-# correlation between column_a and column_b
-dataframe_blobdata[['<column_a>', '<column_b>']].corr()
-```
+    # correlation between column_a and column_b
+    dataframe_blobdata[['<column_a>', '<column_b>']].corr()
+    ```

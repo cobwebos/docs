@@ -13,12 +13,12 @@ ms.date: 10/29/2019
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 697b4bc8e3a25085ac6f7d600ea2227dd30a6624
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d31cf3a4e024dc59b865d096cbd0829d50f61a1a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79262810"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533949"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>使用 MSAL.NET 通过社交标识将用户登录
 
@@ -34,7 +34,7 @@ ms.locfileid: "79262810"
 要使用的颁发机构是 `https://{azureADB2CHostname}/tfp/{tenant}/{policyName}`，其中：
 
 - `azureADB2CHostname` 是 Azure AD B2C 租户的名称加上主机（例如 `{your-tenant-name}.b2clogin.com`），
-- `tenant` 是 Azure AD B2C 租户的完整名称（例如，`{your-tenant-name}.onmicrosoft.com`）或租户的 GUID， 
+- `tenant` 是 Azure AD B2C 租户的完整名称（例如，`{your-tenant-name}.onmicrosoft.com`）或租户的 GUID，
 - `policyName` 要应用的策略或用户流的名称（例如，“b2c_1_susi”用于注册/登录）。
 
 有关 Azure AD B2C 机构的详细信息，请参阅此[文档](/azure/active-directory-b2c/b2clogin)。
@@ -121,7 +121,7 @@ private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
 ## <a name="resource-owner-password-credentials-ropc-with-azure-ad-b2c"></a>Azure AD B2C 中的资源所有者密码凭据 (ROPC)
 有关 ROPC 流的更多详细信息，请参阅[此文档](v2-oauth-ropc.md)。
 
-**不建议**使用此流，因为要求用户提供其密码的应用程序是不安全的。 有关此问题的详细信息，请参阅[此文](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)。 
+**不建议**使用此流，因为要求用户提供其密码的应用程序是不安全的。 有关此问题的详细信息，请参阅[此文](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)。
 
 使用用户名/密码意味着会丧失许多功能：
 - 新式标识的核心原则：密码被窃取、重放。 我们的观点是共享机密可能会被截获。 此方法与无密码登录是不兼容的。
@@ -155,15 +155,15 @@ AcquireTokenByUsernamePassword(
 
 如果情况发生变化，我们将提供[此问题](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/688)的更新。
 
-## <a name="caching-with-azure-ad-b2c-in-msalnet"></a>在 MSAL.Net 中使用 Azure AD B2C 进行缓存 
+## <a name="caching-with-azure-ad-b2c-in-msalnet"></a>在 MSAL.Net 中使用 Azure AD B2C 进行缓存
 
 ### <a name="known-issue-with-azure-ad-b2c"></a>Azure AD B2C 的已知问题
 
-MSAL.Net 支持[令牌缓存](/dotnet/api/microsoft.identity.client.tokencache?view=azure-dotnet)。 缓存令牌密钥基于标识提供者返回的声明。 目前，MSAL.Net 需要使用两个声明来生成令牌缓存密钥：  
-- `tid`：Azure AD 租户 ID； 
-- `preferred_username` 
+MSAL.Net 支持[令牌缓存](/dotnet/api/microsoft.identity.client.tokencache?view=azure-dotnet)。 缓存令牌密钥基于标识提供者返回的声明。 目前，MSAL.Net 需要使用两个声明来生成令牌缓存密钥：
+- `tid`：Azure AD 租户 ID；
+- `preferred_username`
 
-许多 Azure AD B2C 方案中缺少这两个声明。 
+许多 Azure AD B2C 方案中缺少这两个声明。
 
 判断客户是否受到影响的依据是，在尝试显示用户名字段时，值是否显示为“在令牌响应中缺失”？ 如果是，原因是 Azure AD B2C 不会在 IdToken 中返回 preferred_username 的值，因为社交帐户和外部标识提供者 (IdP) 存在限制。 Azure AD 返回preferred_username的值，因为它知道用户是谁，但对于 Azure AD B2C，因为用户可以使用本地帐户、Facebook、Google、GitHub 等登录，因此 Azure AD B2C 没有用于preferred_username的一致值。 为了阻止 MSAL 实施与 ADAL 的缓存兼容性，我们决定在处理 Azure AD B2C 帐户的过程中，当 IdToken 未返回 preferred_username 的任何值时，在我们一端使用“在令牌响应中缺失”。 MSAL 必须返回 preferred_username 的值才能保持库间的缓存兼容性。
 
@@ -178,10 +178,10 @@ MSAL.Net 支持[令牌缓存](/dotnet/api/microsoft.identity.client.tokencache?v
 #### <a name="mitigation-for-missing-from-the-token-response"></a>“在令牌响应中缺失”的缓解措施
 一种做法是使用“name”声明作为首选用户名。 [B2C 文档](../../active-directory-b2c/user-flow-overview.md)中提到了该过程 ->“在‘返回声明’列中，选择需要在成功获得配置文件编辑体验后发回到应用程序的授权令牌中返回的声明。 例如，选择‘显示名称’、‘邮政编码’。”
 
-## <a name="next-steps"></a>后续步骤 
+## <a name="next-steps"></a>后续步骤
 
 以下示例提供了有关使用 MSAL.NET 以交互方式获取 Azure AD B2C 应用程序的令牌的更多详细信息。
 
-| 示例 | Platform | 描述|
+| 示例 | 平台 | 说明|
 |------ | -------- | -----------|
-|[active-directory-b2c-xamarin-native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS、Xamarin Android、UWP | 一个简单的 Xamarin Forms 应用，演示如何使用 MSAL.NET 通过 Azure AD B2C 对用户进行身份验证，并使用生成的令牌访问 Web API。|
+|[active-directory-b2c-xamarin-native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS、Xamarin Android、UWP | 一个简单的 Xamarin 窗体应用，演示如何使用MSAL.NET通过 Azure AD B2C 对用户进行身份验证，并使用生成的令牌访问 Web API。|

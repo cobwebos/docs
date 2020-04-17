@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 82608c98fc8ea15167b690547906c2238b1b3c04
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: bdf69a9ff7b3260b47042f296a47826e3c52387b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80544341"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460641"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple 虚拟阵列最佳实践
 
@@ -199,7 +199,7 @@ StorSimple 虚拟阵列可与单个存储帐户关联。 此存储帐户可以�
 ### <a name="data-security-and-encryption"></a>数据安全与加密
 StorSimple 虚拟阵列具有数据安全和加密功能，可确保数据的机密性和完整性。 使用这些功能时，建议遵循以下最佳实践： 
 
-* 先定义用于生成 AES-256 加密的云存储加密密钥，然后将数据从虚拟阵列发送到云。 如果数据一开始就已加密，则不需要此密钥。 使用密钥管理系统（例如 [Azure 密钥保管库](../key-vault/key-vault-overview.md)）可以生成并妥善保存密钥。
+* 先定义用于生成 AES-256 加密的云存储加密密钥，然后将数据从虚拟阵列发送到云。 如果数据一开始就已加密，则不需要此密钥。 使用密钥管理系统（例如 [Azure 密钥保管库](../key-vault/general/overview.md)）可以生成并妥善保存密钥。
 * 通过 StorSimple Manager 服务配置存储帐户时，请确保启用 TLS 模式，以便在 StorSimple 设备和云之间创建用于网络通信的安全通道。
 * 定期重新生成存储帐户的密钥（通过访问 Azure 存储服务），反映管理员列表更改造成的访问权限更改。
 * 虚拟阵列上的数据先压缩并进行重复数据删除，再发送到 Azure。 不建议在 Windows Server 主机上使用“重复数据删除”角色服务。

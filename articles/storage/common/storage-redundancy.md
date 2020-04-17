@@ -10,12 +10,12 @@ ms.date: 02/25/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 1961797f37a760fe3a31dc8aa3830889965b69b5
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 78f7c935e64276e7f4862dad966b99bff6bd246d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81379937"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481945"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 存储冗余
 
@@ -145,7 +145,7 @@ Microsoft 继续在其他 Azure 区域中启用 GZRS 和 RA-GZRS。 定期查看
 
 下表显示了数据在给定方案中的持久性和可用程度，具体取决于存储帐户有效的冗余类型：
 
-| 场景                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS（预览版）                              |
+| 方案                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS（预览版）                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
 | 数据中心内的节点不可用                                                                 | 是                             | 是                              | 是                                  | 是                                  |
 | 整个数据中心（区域性或非区域性）不可用                                           | 否                              | 是                              | 是                                  | 是                                  |
@@ -160,7 +160,7 @@ Microsoft 继续在其他 Azure 区域中启用 GZRS 和 RA-GZRS。 定期查看
 
 <sup>2</sup>有关存储帐户类型的信息，请参阅[存储帐户概述](storage-account-overview.md)。
 
-根据存储帐户的冗余选项复制所有类型的存储帐户的所有数据。 将复制对象，包括块 Blob、追加 Blob、页面 Blob、队列、表和文件。
+根据存储帐户的冗余选项复制所有类型的存储帐户[和所有层（包括存档）](../blobs/storage-blob-storage-tiers.md)的所有数据。 将复制对象，包括块 Blob、追加 Blob、页面 Blob、队列、表和文件。
 
 有关每个冗余选项的定价信息，请参阅[Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)。
 

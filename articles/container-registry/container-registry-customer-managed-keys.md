@@ -4,18 +4,18 @@ description: 了解 Azure 容器注册表的静态加密，以及如何使用存
 ms.topic: article
 ms.date: 03/10/2020
 ms.custom: ''
-ms.openlocfilehash: fe0736f83db2ba5b872d50bcf1262ca423de9f09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d5561998cf0b19698c8059a861a4014a171a7e7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79498946"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461746"
 ---
 # <a name="encryption-using-customer-managed-keys"></a>使用客户管理的密钥进行加密
 
 在 Azure 容器注册表中存储图像和其他项目时，Azure 会自动使用[服务管理的密钥](../security/fundamentals/encryption-atrest.md#data-encryption-models)对静态注册表内容进行加密。 您可以使用在 Azure 密钥保管库中创建和管理的密钥，使用其他加密层补充默认加密。 本文将引导您使用 Azure CLI 和 Azure 门户完成这些步骤。
 
-通过与[Azure 密钥保管库](../key-vault/key-vault-overview.md)集成，支持使用客户管理密钥进行服务器端加密。 你可以创建自己的加密密钥并将其存储在 Key Vault 中，或使用 Azure Key Vault 的 API 来生成加密密钥。 使用 Azure Key Vault 还可以审核密钥用法。
+通过与[Azure 密钥保管库](../key-vault/general/overview.md)集成，支持使用客户管理密钥进行服务器端加密。 你可以创建自己的加密密钥并将其存储在 Key Vault 中，或使用 Azure Key Vault 的 API 来生成加密密钥。 使用 Azure Key Vault 还可以审核密钥用法。
 
 此功能在**高级**容器注册表服务层中可用。 有关注册表服务层和限制的信息，请参阅[Azure 容器注册表 SKU](container-registry-skus.md)。
 
@@ -32,7 +32,7 @@ ms.locfileid: "79498946"
 
 ## <a name="prerequisites"></a>先决条件
 
-要使用本文中的 Azure CLI 步骤，需要 Azure CLI 版本 2.2.0 或更高版本。 如果需要安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+要使用本文中的 Azure CLI 步骤，需要 Azure CLI 版本 2.2.0 或更高版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="enable-customer-managed-key---cli"></a>启用客户管理密钥 - CLI
 
@@ -176,7 +176,7 @@ az acr encryption show --name <registry-name>
 
 ### <a name="create-a-key-vault"></a>创建 key vault
 
-有关创建密钥保管库的步骤，请参阅[快速入门：使用 Azure 门户从 Azure 密钥保管库设置和检索机密](../key-vault/quick-create-portal.md)。
+有关创建密钥保管库的步骤，请参阅[快速入门：使用 Azure 门户从 Azure 密钥保管库设置和检索机密](../key-vault/secrets/quick-create-portal.md)。
 
 在 **"基本"** 选项卡中为客户管理的密钥创建密钥保管库时，必须启用以下保护设置：**软删除**和**清除保护**。 这些设置有助于防止意外删除密钥或密钥保管库而导致的数据丢失。
 
@@ -392,7 +392,7 @@ az keyvault delete-policy \
 ## <a name="next-steps"></a>后续步骤
 
 * 了解有关[Azure 中静态加密](../security/fundamentals/encryption-atrest.md)的更多详细信息。
-* 详细了解访问策略以及如何[保护对密钥保管库的访问](../key-vault/key-vault-secure-your-key-vault.md)。
+* 详细了解访问策略以及如何[保护对密钥保管库的访问](../key-vault/general/secure-your-key-vault.md)。
 * 要提供有关 Azure 容器注册表的客户管理密钥的反馈，请访问[ACR GitHub 网站](https://aka.ms/acr/issues)。
 
 

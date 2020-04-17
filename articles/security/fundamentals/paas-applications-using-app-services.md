@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2019
 ms.author: terrylan
-ms.openlocfilehash: c3f3c7fbaa043a03b70ab770c06e493716c70daf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 49b51a5f14f305afa915ec1d0fae42ca9ded6b1e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77500286"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461661"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>使用 Azure 应用服务保护 PaaS Web 和移动应用程序的最佳做法
 
@@ -36,7 +36,7 @@ Azure 应用服务是一个平台即服务 (PaaS) 产品，可创建适用于任
 对于想要实施数据访问安全策略的组织，限制访问是必须要做的事。 可使用基于角色的访问控制 (RBAC) 向特定范围的用户、组和应用程序分配权限，例如需要知道和最低特权安全原则。 若要了解有关向用户授予应用程序访问权限的详细信息，请参阅[什么是基于角色的访问控制](/azure/role-based-access-control/overview)。
 
 ## <a name="protect-your-keys"></a>保护你的密钥
-如果丢失了订阅密钥，安全做得再好也无济于事。 Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 通过 Key Vault，可以使用受硬件安全模块 (HSM) 保护的密钥，来加密密钥和机密（例如身份验证密钥、存储帐户密钥、数据加密密钥、.PFX 文件和密码）。 为了提升可靠性，可以在 HSM 中导入或生成密钥。 还可以使用 Key Vault 和自动续订来管理 TLS 证书。 请参阅 [Azure Key Vault](../../key-vault/key-vault-overview.md) 了解详细信息。
+如果丢失了订阅密钥，安全做得再好也无济于事。 Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 通过 Key Vault，可以使用受硬件安全模块 (HSM) 保护的密钥，来加密密钥和机密（例如身份验证密钥、存储帐户密钥、数据加密密钥、.PFX 文件和密码）。 为了提升可靠性，可以在 HSM 中导入或生成密钥。 还可以使用 Key Vault 和自动续订来管理 TLS 证书。 请参阅 [Azure Key Vault](../../key-vault/general/overview.md) 了解详细信息。
 
 ## <a name="restrict-incoming-source-ip-addresses"></a>限制传入的源 IP 地址
 [应用服务环境](../../app-service/environment/intro.md)提供虚拟网络集成功能，可帮助你通过网络安全组 (NSG) 限制传入的源 IP 地址。 如果不熟悉 Azure 虚拟网络 (VNET)，可使用此功能将多个 Azure 资源放置在可以控制其访问权限但无法通过 Internet 路由的网络中。 要了解更多信息，请参阅[将应用与 Azure 虚拟网络集成](../../app-service/web-sites-integrate-with-vnet.md)。

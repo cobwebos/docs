@@ -7,12 +7,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mimckitt
-ms.openlocfilehash: ee6a25ac5a4cc7de8b8340afb186d170cc147a38
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 70810b21def1672758683abd49f92b86776c9d7b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393792"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458975"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure 虚拟机规模集自动 OS 映像升级
 
@@ -158,7 +158,7 @@ az provider register --namespace Microsoft.Compute
 - 不应从该库图像的最新版本中排除新映像版本。 从库映像的最新版本中排除的图像版本不会通过自动 OS 映像升级扩展到比例设置。
 
 > [!NOTE]
->在为自动操作系统升级配置比例集后，缩放集最多可能需要 2 小时才能获取第一个映像展开。 这是每个比例集的一次性延迟。 后续图像卷展将应用于比例集，而不会出现此延迟。
+>在为自动操作系统升级配置比例集后，缩放集最多可能需要 3 小时才能触发第一个映像升级卷展。 这是每个比例集的一次性延迟。 后续图像卷展将在 30 分钟内在比例设置上触发。
 
 
 ## <a name="configure-automatic-os-image-upgrade"></a>配置自动 OS 映像升级

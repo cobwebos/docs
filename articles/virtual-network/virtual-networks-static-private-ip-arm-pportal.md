@@ -5,7 +5,6 @@ services: virtual-network
 documentationcenter: na
 author: KumudD
 manager: twooley
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 11245645-357d-4358-9a14-dd78e367b494
 ms.service: virtual-network
@@ -15,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/07/2020
 ms.author: kumud
-ms.openlocfilehash: b50875105696dc5c556e2a4a9e756078cf995327
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 946926a8a805ec3c53ea3c57dc3eded2462f7673
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060542"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461542"
 ---
 # <a name="configure-a-private-ip-address-for-a-vm-using-the-azure-portal"></a>使用 Azure 门户为 VM 配置专用 IP 地址
 
@@ -30,9 +29,9 @@ ms.locfileid: "80060542"
 
 以下示例步骤期望已创建一个简单的环境。 如果要在本文档中显示的步骤中运行这些步骤，请先[创建虚拟网络](quick-create-portal.md#create-a-virtual-network)。 但是，在步骤 3 中，改用这些值：
 
-| 设置 | “值” |
+| 设置 | 值 |
 | ------- | ----- |
-| “属性” | *TestVNet* |
+| 名称 | *TestVNet* |
 | 地址空间 | *192.168.0.0/16* |
 | 资源组 | **TestRG（** 如有必要，选择 **"创建新**"以创建它） |
 | 子网 - 名称 | *前端* |
@@ -51,25 +50,25 @@ ms.locfileid: "80060542"
     ![创建 VM、Azure 门户](./media/virtual-networks-static-ip-arm-pportal/compute-virtual-machine.png)
 3. 在 **"基础知识"** 中，指定下表中所述的项的值。 然后选择 **"&nbsp;下&nbsp;一步：磁盘"，** 然后**选择"下一个&nbsp;：&nbsp;网络**"。
 
-    | Item | “值” |
+    | Item | 值 |
     | --- | --- |
     | **订阅** | 您当前的订阅 |
     | **资源组** | **TestRG（** 从下拉列表中选择） |
     | **虚拟机名称** | *DNS01* |
-    | **地区** | **（美国）美国东部** |
+    | **区域** | **（美国）美国东部** |
     | **映像** | **视窗服务器 2019 数据中心** |
     | **大小** | **B1ls**的**VM 大小**，**Offering****提供标准** |
-    | **用户** | 管理员帐户的用户名 |
+    | **用户名** | 管理员帐户的用户名 |
     | **密码** | 管理员帐户用户名的密码 |
     | **确认密码** | 再次使用密码 |
 
     ![基础知识选项卡，创建虚拟机，Azure 门户](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-basics.png)
 4. 在 **"网络"** 中，指定下表中所述项的值，然后选择 **"下一步**"。
 
-    | Item | “值” |
+    | Item | 值 |
     | --- | --- |
     | **虚拟网络** | **TestVNet** |
-    | **子** | **前端** |
+    | **子网** | **前端** |
 
     ![网络选项卡，创建虚拟机，Azure 门户](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-networking.png)
 5. 在 **"管理**"下，**在诊断存储帐户**下，选择**vnetstorage**。 如果该存储帐户未显示在列表中，请选择"**创建新**"，指定*vnetstorage***的名称**，然后选择 **"确定**"。 最后，选择 **"&nbsp;+&nbsp;审阅创建**"。

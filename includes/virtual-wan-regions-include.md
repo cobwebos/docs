@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 757367e2b9773908b81ad35615a23b1b5c67aa3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c822e8af076f74e1bccc46b7a71717d9631de0a1
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80116911"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461877"
 ---
 ### <a name="azure-regions-within-a-geopolitical-region"></a>地缘政治区域中的 Azure 区域
 
@@ -42,5 +42,5 @@ ms.locfileid: "80116911"
 |地缘政治区域 | Azure 区域|
 |---|---|
 | 美国政府云 | US Gov 亚利桑那州、US Gov 爱荷华州、US Gov 德克萨斯州、US Gov 弗吉尼亚州、US DoD 中部、US DoD 东部 |
-| 中国东部 | 中国东部、中国东部 2|
-| 中国北部 | 中国北部、中国北部 2 |
+| 中国东部 | 中国东部 2|
+| 中国北部 | 中国北部 2 |

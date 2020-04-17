@@ -3,12 +3,12 @@ title: 将托管标识与应用程序一起使用
 description: 如何使用 Azure Service Fabric 应用程序代码中的托管标识访问 Azure 服务。
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: cbdb1190ec3238a6accd34db3025e08c194d60b8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8f1f355d6add16f3b3ec25bc569f9b198a8d6778
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415620"
+ms.locfileid: "81461559"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>如何利用服务结构应用程序的托管标识访问 Azure 服务
 
@@ -41,10 +41,6 @@ Service Fabric 应用程序可以利用托管标识来访问支持基于 Azure A
 成功的响应将包含一个 JSON 有效负载，该有效负载表示生成的访问令牌，以及用于描述该令牌的元数据。 失败的响应还包含有关失败的说明。 有关错误处理的更多详细信息，请参阅下文。
 
 Service Fabric 将在不同的级别（节点、群集、资源提供程序服务）缓存访问令牌，因此，成功的响应不一定表示在用户应用程序请求的响应中直接颁发了令牌。 令牌的缓存期限不超过其生存期，因此，可以保证应用程序收到有效的令牌。 建议让应用程序代码自行缓存它所获得的任何访问令牌；缓存密钥应包括受众（派生对象）。 
-
-
-> [!NOTE]
-> 目前唯一`2019-07-01-preview`接受的 API 版本，可能会更改。
 
 示例请求：
 ```http

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: 9d8fce0772f13c6e009b2441ecd85779a7622c5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93f01b3c23e08e7f432841d8a77cbe3602bff1c5
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243193"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482141"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM 的存储配置
 
@@ -56,7 +56,7 @@ ms.locfileid: "79243193"
 
 高级 SSD 的磁盘缓存可以是*只读*、*读写*或*无*。 
 
-- *只读*缓存对于存储在高级存储上的 SQL Server 数据文件非常有益。 *ReadOnly*缓存带来了低读取延迟、高读取 IOPS 和吞吐量，因为读取是从缓存执行的，缓存在 VM 内存和本地 SSD 中运行。 这些读取速度比从 Azure Blob 存储的数据磁盘读取快得多。 高级存储不计算从缓存到磁盘 IOPS 的读取和吞吐量。 因此，您适用的能够实现更高的 IOPS 蚂蚁总吞吐量。 
+- *只读*缓存对于存储在高级存储上的 SQL Server 数据文件非常有益。 *ReadOnly*缓存带来了低读取延迟、高读取 IOPS 和吞吐量，因为读取是从缓存执行的，缓存位于 VM 内存和本地 SSD 中。 这些读取速度比从 Azure Blob 存储的数据磁盘读取快得多。 高级存储不计算从缓存到磁盘 IOPS 的读取和吞吐量。 因此，您的适用能够实现更高的 IOPS 和吞吐量。 
 - *不应将任何*缓存配置用于托管 SQL Server 日志文件的磁盘，因为日志文件是按顺序编写的，并且不能从*ReadOnly*缓存中受益。 
 - *不应使用 ReadWrite*缓存来承载 SQL Server 文件，因为 SQL Server 不支持与*ReadWrite*缓存的数据一致性。 如果写入通过*ReadOnly* blob 缓存层，则*写入*的浪费容量会略有增加。 
 
@@ -123,7 +123,7 @@ ms.locfileid: "79243193"
 
 Azure 使用以下设置在 SQL Server VM 上创建存储池。
 
-| 设置 | “值” |
+| 设置 | 值 |
 | --- | --- |
 | 条带大小 |256 KB（数据仓库）；64 KB（事务） |
 | 磁盘大小 |每个磁盘 1 TB |
@@ -140,7 +140,7 @@ Azure 使用以下设置在 SQL Server VM 上创建存储池。
 
 下表描述了三个可用的工作负荷类型选项及其对应的优化：
 
-| 工作负荷类型 | 描述 | 优化 |
+| 工作负荷类型 | 说明 | 优化 |
 | --- | --- | --- |
 | **常规** |支持大多数工作负荷的默认设置 |无 |
 | **事务处理** |针对传统数据库 OLTP 工作负荷优化存储 |跟踪标志 1117<br/>跟踪标志 1118 |

@@ -10,12 +10,12 @@ ms.date: 05/11/2017
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 8fe95a471df6ea86aad90f387088824c3c92bd3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32691e0ddcee3f5410b12f07a2fb80806345bc26
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75460446"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460505"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>针对 Microsoft Azure 存储使用 Java 的客户端加密和 Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -103,7 +103,7 @@ ms.locfileid: "75460446"
 > 若要执行查询操作，必须指定一个能够解析结果集中的所有密钥的密钥解析程序。 如果查询结果中包含的实体不能解析为提供程序，则客户端库将引发错误。 对于执行服务器端投影的任何查询，在默认情况下，客户端库将为所选列添加特殊的加密元数据属性（_ClientEncryptionMetadata1 和 _ClientEncryptionMetadata2）。
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
-Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 通过 Azure 密钥保管库，用户可以使用受硬件安全模块 (HSM) 保护的密钥，来加密密钥和机密（例如身份验证密钥、存储帐户密钥、数据加密密钥、.PFX 文件和密码）。 有关详细信息，请参阅[什么是 Azure 密钥保管库？](../../key-vault/key-vault-overview.md)。
+Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 通过 Azure 密钥保管库，用户可以使用受硬件安全模块 (HSM) 保护的密钥，来加密密钥和机密（例如身份验证密钥、存储帐户密钥、数据加密密钥、.PFX 文件和密码）。 有关详细信息，请参阅[什么是 Azure 密钥保管库？](../../key-vault/general/overview.md)。
 
 存储客户端库使用密钥保管库核心库，以便在整个 Azure 上提供一个通用框架进行管理密钥。 用户还可以从使用密钥保管库扩展库中获得其他好处。 扩展库围绕简单无缝的对称/RSA 本地和云密钥提供程序以及使用聚合和缓存提供有用的功能。
 
@@ -256,4 +256,4 @@ public void setEncryptedProperty1(final String encryptedProperty1) {
 * 下载适用于 Java 的 Azure 密钥保管库 Maven 程序包：
   * [核心](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault-core)程序包
   * [客户端](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault)包
-* 访问 [Azure 密钥保管库文档](../../key-vault/key-vault-overview.md)
+* 访问 [Azure 密钥保管库文档](../../key-vault/general/overview.md)

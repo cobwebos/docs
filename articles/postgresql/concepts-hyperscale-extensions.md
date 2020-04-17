@@ -1,18 +1,18 @@
 ---
 title: 扩展 = 超缩放（Citus） - 用于后格雷SQL的 Azure 数据库
 description: 描述通过使用 Azure 数据库中的扩展来扩展数据库的功能，用于 PostgreSQL - 超大规模 （Citus）
-author: rachel-msft
-ms.author: raagyema
+author: jonels-msft
+ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 02/18/2020
-ms.openlocfilehash: 84b28096904db49f98c16601c5927928ad38743b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/16/2020
+ms.openlocfilehash: 5d0798c77135b15e26c9787d9844cd9525cf12c5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77485397"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532011"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure 数据库中的后格雷SQL 扩展，用于后格雷SQL和超大规模（Citus）
 
@@ -31,7 +31,7 @@ PostgreSQL 提供了通过使用扩展来扩展数据库功能的功能。 扩�
 ### <a name="data-types-extensions"></a>数据类型扩展
 
 > [!div class="mx-tableFixed"]
-> | **扩展** | **说明** |
+> | **分机** | **说明** |
 > |---|---|
 > | [citext](https://www.postgresql.org/docs/current/static/citext.html) | 提供不区分大小写的字符串类型。 |
 > | [立方体](https://www.postgresql.org/docs/current/static/cube.html) | 提供用于多维数据集的数据类型。 |
@@ -46,7 +46,7 @@ PostgreSQL 提供了通过使用扩展来扩展数据库功能的功能。 扩�
 ### <a name="full-text-search-extensions"></a>全文搜索扩展
 
 > [!div class="mx-tableFixed"]
-> | **扩展** | **说明** |
+> | **分机** | **说明** |
 > |---|---|
 > | [dict\_int](https://www.postgresql.org/docs/current/static/dict-int.html) | 提供用于整数的文本搜索字典模板。 |
 > | [迪克特\_·辛](https://www.postgresql.org/docs/current/dict-xsyn.html) | 用于扩展同义词处理的文本搜索字典模板。 |
@@ -55,7 +55,7 @@ PostgreSQL 提供了通过使用扩展来扩展数据库功能的功能。 扩�
 ### <a name="functions-extensions"></a>函数扩展
 
 > [!div class="mx-tableFixed"]
-> | **扩展** | **说明** |
+> | **分机** | **说明** |
 > |---|---|
 > | [自动公司](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.7) | 用于自动递增字段的函数。 |
 > | [earthdistance](https://www.postgresql.org/docs/current/static/earthdistance.html) | 提供一种计算地球表面上的大圆距离的方法。 |
@@ -77,7 +77,7 @@ PostgreSQL 提供了通过使用扩展来扩展数据库功能的功能。 扩�
 ### <a name="hyperscale-extensions"></a>超大规模扩展
 
 > [!div class="mx-tableFixed"]
-> | **扩展** | **说明** |
+> | **分机** | **说明** |
 > |---|---|
 > | [西图斯](https://github.com/citusdata/citus) | Citus 分布式数据库。 |
 > | 分片\_再平衡器 | 在添加或删除节点的情况下，安全地重新平衡服务器组中的数据。 |
@@ -85,7 +85,7 @@ PostgreSQL 提供了通过使用扩展来扩展数据库功能的功能。 扩�
 ### <a name="index-types-extensions"></a>索引类型扩展
 
 > [!div class="mx-tableFixed"]
-> | **扩展** | **说明** |
+> | **分机** | **说明** |
 > |---|---|
 > | [绽放](https://www.postgresql.org/docs/current/bloom.html) | 绽放访问方法 - 基于签名文件的索引。 |
 > | [btree\_gin](https://www.postgresql.org/docs/current/static/btree-gin.html) | 提供示例 GIN 运算符类，这些类为某些数据类型实现类似 B 树的行为。 |
@@ -94,14 +94,14 @@ PostgreSQL 提供了通过使用扩展来扩展数据库功能的功能。 扩�
 ### <a name="language-extensions"></a>语言扩展
 
 > [!div class="mx-tableFixed"]
-> | **扩展** | **说明** |
+> | **分机** | **说明** |
 > |---|---|
 > | [plpgsql](https://www.postgresql.org/docs/current/static/plpgsql.html) | PL/pgSQL 可加载过程语言。 |
 
 ### <a name="miscellaneous-extensions"></a>其他扩展
 
 > [!div class="mx-tableFixed"]
-> | **扩展** | **说明** |
+> | **分机** | **说明** |
 > |---|---|
 > | [管理员包](https://www.postgresql.org/docs/current/adminpack.html) | PostgreSQL 的管理功能。 |
 > | [阿姆切克](https://www.postgresql.org/docs/current/amcheck.html) | 用于验证关系完整性的功能。 |
@@ -127,7 +127,7 @@ PostgreSQL 提供了通过使用扩展来扩展数据库功能的功能。 扩�
 ### <a name="postgis-extensions"></a>PostGIS 扩展
 
 > [!div class="mx-tableFixed"]
-> | **扩展** | **说明** |
+> | **分机** | **说明** |
 > |---|---|
 > | [PostGIS](https://www.postgis.net/), postgis\_topology, postgis\_tiger\_geocoder, postgis\_sfcgal | PostgreSQL 的空间和地理对象。 |
 > | address\_standardizer, address\_standardizer\_data\_us | 用于将地址分析成构成元素。 用于支持地理编码地址规范化步骤。 |

@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: f38fd7c8e14f58052912f68a277f194fd3866f2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 029743dbb44ab0ebb6ab8f695c0c966137c45107
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970582"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459791"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>使用 Azure AD 进行 Azure 磁盘加密（以前版本）
 
@@ -35,7 +35,7 @@ Azure 磁盘加密的新版本消除了提供 Azure 活动目录 （Azure AD） 
   - 要获取令牌以连接到密钥保管库，IaaS VM 必须能够连接到 Azure AD 终结点，login.microsoftonline.com \[\]。
   - IaaS VM 必须能够连接到 Key Vault 终结点，以将加密密钥写入 Key Vault。
   - IaaS VM 必须能够连接到托管 Azure 扩展存储库的 Azure 存储终结点和托管 VHD 文件的 Azure 存储帐户。
-  -  如果安全策略限制从 Azure VM 访问 Internet，则可以解析前面的 URI 并配置特定规则以允许向外站连接到 IP。 有关详细信息，请参阅[防火墙后的 Azure Key Vault](../../key-vault/key-vault-access-behind-firewall.md)。
+  -  如果安全策略限制从 Azure VM 访问 Internet，则可以解析前面的 URI 并配置特定规则以允许向外站连接到 IP。 有关详细信息，请参阅[防火墙后的 Azure Key Vault](../../key-vault/general/access-behind-firewall.md)。
   - 在 Windows 上，如果 TLS 1.0 被显式禁用，并且 .NET 版本未更新到 4.6 或更高版本，则以下注册表更改使 Azure 磁盘加密能够选择较新的 TLS 版本：
     
             [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
