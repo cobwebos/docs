@@ -10,12 +10,12 @@ metadata:
   author: vhorne
   ms.author: victorh
   ms.date: 03/27/2020
-  ms.openlocfilehash: 89dde5fdc9ee20f6a8687ee88359a3cfe453f5e9
-  ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+  ms.openlocfilehash: 023755687ccee87a3e08cb3a089ad56f196bcbff
+  ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/27/2020
-  ms.locfileid: "80366455"
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81536550"
 landingContent:
 - title: 概述
   linkLists:
@@ -37,6 +37,8 @@ landingContent:
       url: ./ag/application-gateway-web-application-firewall-portal.md
     - text: Front Door 上的 Web 应用程序防火墙
       url: ./afds/waf-front-door-create-portal.md
+    - text: Azure CDN 上的 WAF 策略
+      url: ./cdn/waf-cdn-create-portal.md
 - title: 管理应用程序网关上的 WAF 规则
   linkLists:
   - linkListType: how-to-guide

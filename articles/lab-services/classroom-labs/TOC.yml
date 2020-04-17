@@ -50,6 +50,8 @@
           href: class-type-jupyter-notebook.md
         - name: 使用 Android Studio 进行移动应用开发
           href: class-type-mobile-dev-android-studio.md
+        - name: 大数据分析
+          href: class-type-big-data-analytics.md
     - name: 创建和配置实验室帐户（实验室帐户所有者）
       items:
         - name: 创建和管理实验室帐户

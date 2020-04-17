@@ -70,7 +70,9 @@
                   href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
                 - name: 从 HDFS 存储
                   href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
-            - name: 故障排除
+                - name: 到 Azure 备份
+                  href: ../backup/offline-backup-azure-data-box.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+            - name: 疑难解答
               items:
                 - name: Data Box 问题
                   href: data-box-troubleshoot.md
@@ -113,7 +115,7 @@
           items:
             - name: 通过 Azure 门户管理
               href: data-box-portal-ui-admin.md
-            - name: 故障排除
+            - name: 疑难解答
               items:
                 - name: 解锁问题
                   href: data-box-disk-troubleshoot-unlock.md

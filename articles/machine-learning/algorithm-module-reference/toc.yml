@@ -152,5 +152,9 @@
       href: pca-based-anomaly-detection.md
     - name: 训练异常情况检测模型
       href: train-anomaly-detection-model.md
+- name: Web 服务
+  items:
+    - name: Web 服务输入/输出
+      href: web-service-input-output.md
 - name: 模块错误和故障排除
   href: designer-error-codes.md

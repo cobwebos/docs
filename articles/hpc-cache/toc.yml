@@ -8,9 +8,9 @@
   items:
     - name: 规划聚合命名空间
       href: hpc-cache-namespace.md
-- name: 操作方法指南
+- name: 操作指南
   items:
-    - name: 必备条件
+    - name: 先决条件
       href: hpc-cache-prereqs.md
     - name: 创建缓存
       href: hpc-cache-create.md
@@ -36,6 +36,8 @@
       href: hpc-cache-mount.md
     - name: 管理缓存
       href: hpc-cache-manage.md
+    - name: 配置可选设置
+      href: configuration.md
 - name: 资源
   items:
     - name: 开具支持票证
@@ -46,5 +48,7 @@
       href: troubleshoot-nas.md
     - name: 区域性服务中断后进行恢复
       href: hpc-region-recovery.md
+    - name: 使用客户管理的加密密钥
+      href: customer-keys.md
     - name: 将 Azure NetApp 文件和 Azure HPC 缓存搭配使用
       href: hpc-cache-netapp.md

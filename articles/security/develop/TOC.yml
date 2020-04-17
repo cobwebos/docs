@@ -41,6 +41,8 @@
           href: security-code-analysis-faq.md
         - name: YAML 配置
           href: yaml-configuration.md
+        - name: 发行版和路线图
+          href: security-code-analysis-releases.md
     - name: Microsoft 威胁建模工具
       displayName: stride
       href: threat-modeling-tool.md
