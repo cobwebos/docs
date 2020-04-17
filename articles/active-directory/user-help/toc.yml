@@ -24,6 +24,10 @@
       href: active-directory-passwords-reset-register.md
     - name: 重置密码
       href: active-directory-passwords-update-your-own-password.md
+- name: “我的员工”门户帮助
+  items:
+    - name: “我的员工”用户管理
+      href: my-staff-team-manager.md
 - name: Microsoft Authenticator 应用帮助
   items:
     - name: 什么是 Microsoft Authenticator 应用？
@@ -74,6 +78,8 @@
           href: security-info-setup-text-msg.md
         - name: 设置电话呼叫
           href: security-info-setup-phone-number.md
+        - name: 设置 SMS 登录
+          href: sms-sign-in-explainer.md
         - name: 设置安全密钥
           href: security-info-setup-security-key.md
         - name: 设置电子邮件

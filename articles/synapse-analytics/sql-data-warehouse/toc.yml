@@ -1,13 +1,13 @@
-- name: Azure Synapse Analytics 文档
+- name: Azure Synapse（SQL 数据仓库）
   href: index.yml
+- name: 切换到 Azure Synapse（工作区预览版）
+  href: ../overview-what-is.md
 - name: 概述
   items:
     - name: 什么是 Azure Synapse Analytics？
       href: sql-data-warehouse-overview-what-is.md
     - name: Azure Synapse Analytics 体系结构
       href: massively-parallel-processing-mpp-architecture.md
-    - name: 数据仓库单位数
-      href: what-is-a-data-warehouse-unit-dwu-cdwu.md
     - name: 备忘单
       href: cheat-sheet.md
     - name: 最佳做法

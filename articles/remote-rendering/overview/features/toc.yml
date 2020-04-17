@@ -1,5 +1,7 @@
 - name: 剪切平面
   href: cut-planes.md
+- name: 调试渲染
+  href: debug-rendering.md
 - name: 分层状态替代
   href: override-hierarchical-state.md
 - name: 后期阶段重新投影

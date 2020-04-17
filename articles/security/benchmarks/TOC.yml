@@ -40,6 +40,8 @@
       href: ../../container-registry/security-baseline.md
     - name: Cosmos DB 安全基线
       href: ../../cosmos-db/security-baseline.md
+    - name: 数据资源管理器安全基线
+      href: /azure/data-explorer/security-baseline
     - name: 事件中心安全基线
       href: ../../event-hubs/security-baseline.md
     - name: HDInsight 安全基线

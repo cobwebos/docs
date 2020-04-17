@@ -6,7 +6,9 @@
   href: network-requirements.md
 - name: 限制
   href: limits.md
-- name: arrClient 存储库 (GitHub)
-  href: 'https://dev.azure.com/arrClient/arrClient/_git/arrClient'
+- name: 远程渲染示例存储库 (GitHub)
+  href: 'https://github.com/Azure/azure-remote-rendering'
 - name: Azure 混合现实资源管理 REST API
   href: 'https://docs.microsoft.com/rest/api/mixedreality/'
+- name: 'C# API 文档'
+  href: 'https://docs.microsoft.com/dotnet/api/Microsoft.Azure.RemoteRendering'

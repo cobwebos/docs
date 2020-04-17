@@ -39,6 +39,8 @@
       href: analysis-services-connect.md
     - name: 高可用性
       href: analysis-services-bcdr.md
+    - name: 长时间运行的操作
+      href: analysis-services-long-operations.md
     - name: 支持的数据源
       href: analysis-services-datasource.md
 - name: 操作说明

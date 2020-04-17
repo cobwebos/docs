@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Azure Synapse Analytics（以前称为 Azure SQL 数据仓库）
+title: Azure Synapse Analytics
 summary: Azure Synapse 是一种无限制的分析服务，它将企业数据仓库和大数据分析结合在一起。 借助它可以使用无服务器的按需资源或预配资源，任意执行自己定义的大规模数据查询。
 metadata:
   title: Azure Synapse Analytics
@@ -11,28 +11,40 @@ metadata:
   ms.collection: collection
   author: julieMSFT
   ms.author: jrasnick
-  ms.date: 10/03/2019
-  ms.openlocfilehash: 16855697c61bb4b919d4f7dcaa752d3a17f6dbef
-  ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+  ms.date: 04/15/2020
+  ms.openlocfilehash: ea895ce94ed3b1fde574a1753981ac58adcb72b3
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/09/2020
-  ms.locfileid: "80998824"
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81414266"
 landingContent:
-- title: 关于 Azure Synapse Analytics
+- title: 关于 Azure Synapse Analytics（以前称为 Azure SQL 数据仓库）
   linkLists:
   - linkListType: overview
     links:
-    - text: 什么是 Azure Synapse？
+    - text: 什么是 Azure Synapse？ （以前称为 Azure SQL 数据仓库）
       url: sql-data-warehouse-overview-what-is.md
+    - text: 提示和最佳实践
+      url: cheat-sheet.md
   - linkListType: architecture
     links:
     - text: Azure Synapse 体系结构
       url: massively-parallel-processing-mpp-architecture.md
-    - text: 提示和最佳实践
-      url: cheat-sheet.md
     - text: 参考体系结构
       url: https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/data/enterprise-bi-synapse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+- title: 关于 Azure Synapse Analytics（工作区预览版）
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure Synapse（工作区预览版）
+      url: ../overview-what-is.md
+    - text: 提示和最佳实践
+      url: ../overview-cheat-sheet.md
+    - text: 常见问题解答
+      url: ../overview-faq.md
+    - text: 发行说明
+      url: ../release-notes.md
 - title: 入门
   linkLists:
   - linkListType: deploy
@@ -63,12 +75,8 @@ landingContent:
   linkLists:
   - linkListType: overview
     links:
-    - text: 最佳做法
-      url: sql-data-warehouse-best-practices.md
     - text: 有序聚集列存储索引优化
       url: performance-tuning-ordered-cci.md
-    - text: 使用具体化视图进行工作负荷优化
-      url: performance-tuning-materialized-views.md
   - linkListType: how-to-guide
     links:
     - text: 分析工作负荷
@@ -99,5 +107,5 @@ landingContent:
   linkLists:
   - linkListType: video
     links:
-    - text: 观看最新的数据仓库视频
+    - text: 观看最新的 Synapse SQL 视频
       url: sql-data-warehouse-videos.md

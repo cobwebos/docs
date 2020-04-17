@@ -1,0 +1,64 @@
+### YamlMime:Landing
+title: 密钥文档
+summary: Microsoft Azure 应用程序和用户可以使用 Azure Key Vault 来存储和使用密钥。 Key Vault 支持多种密钥类型和算法。借助 Key Vault，可以对高价值的密钥使用硬件安全模块 (HSM)。
+metadata:
+  title: 键
+  description: Microsoft Azure 应用程序和用户可以使用 Azure Key Vault 来存储和使用密钥。 Key Vault 支持多种密钥类型和算法。借助 Key Vault，可以对高价值的密钥使用硬件安全模块 (HSM)。
+  services: key-vault
+  ms.service: key-vault
+  ms.subservice: keys
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  ms.date: 04/07/2020
+  ms.openlocfilehash: d5394200164d4f254ceca7a18035df95cc401747
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81423354"
+landingContent:
+- title: 键
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Key Vault 密钥？
+      url: about-keys.md
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure CLI
+      url: quick-create-cli.md
+    - text: Azure PowerShell
+      url: quick-create-powershell.md
+    - text: 门户
+      url: quick-create-portal.md
+    - text: Python
+      url: quick-create-python.md
+- title: 教程
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 将 HSM 保护的密钥导入 Key Vault
+      url: hsm-protected-keys.md
+    - text: 导入与供应商无关的受 HSM 保护的密钥
+      url: hsm-protected-keys-vendor-agnostic-byok.md
+- title: 有关 Key Vault 的详细信息
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Key Vault 概述
+      url: ../general/overview.md
+    - text: 基本概念
+      url: ../general/basic-concepts.md
+    - text: 软删除概述
+      url: ../general/overview-soft-delete.md
+    - text: 安全概述
+      url: ../general/overview-security.md
+- title: Microsoft Learn
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 使用 Azure Key Vault 管理服务器应用中的机密
+      url: /learn/modules/manage-secrets-with-azure-key-vault/
