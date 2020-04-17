@@ -10,18 +10,18 @@ ms.date: 03/19/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e7878cae7bc6aabf1db58bfd63338955b9e830d3
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 192e58b101b824ca0cc0c732e02647838be6dc35
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478234"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456475"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>通过 Azure 门户使用 Azure Key Vault 配置客户管理的密钥
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-本文介绍如何使用 [Azure 门户](https://portal.azure.com/)配置包含客户管理的密钥的 Azure 密钥保管库。 若要了解如何使用 Azure 门户创建密钥保管库，请参阅[快速入门：使用 Azure 门户从 Azure 密钥保管库设置和检索机密](../../key-vault/quick-create-portal.md)。
+本文介绍如何使用 [Azure 门户](https://portal.azure.com/)配置包含客户管理的密钥的 Azure 密钥保管库。 若要了解如何使用 Azure 门户创建密钥保管库，请参阅[快速入门：使用 Azure 门户从 Azure 密钥保管库设置和检索机密](../../key-vault/secrets/quick-create-portal.md)。
 
 ## <a name="configure-azure-key-vault"></a>配置 Azure Key Vault
 
@@ -29,8 +29,8 @@ ms.locfileid: "80478234"
 
 若要了解如何在现有密钥保管库上启用这些属性，请参阅以下文章之一中标题为“启用软删除”和“启用清除保护”的部分：********
 
-- [如何通过 PowerShell 使用软删除](../../key-vault/key-vault-soft-delete-powershell.md)。
-- [如何通过 CLI 使用软删除](../../key-vault/key-vault-soft-delete-cli.md)。
+- [如何通过 PowerShell 使用软删除](../../key-vault/general/soft-delete-powershell.md)。
+- [如何通过 CLI 使用软删除](../../key-vault/general/soft-delete-cli.md)。
 
 Azure 存储加密仅支持 2048 位 RSA 和 RSA-HSM 密钥。 有关密钥的详细信息，请参阅[关于 Azure Key Vault 密钥、机密和证书](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)中的“Key Vault 密钥”。****
 

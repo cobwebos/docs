@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: peterclu
-ms.author: peterlu
-ms.date: 02/22/2020
-ms.openlocfilehash: 7fcfc7c15f94d7b569629e53534d731126172260
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+author: likebupt
+ms.author: keli19
+ms.date: 04/13/2020
+ms.openlocfilehash: c46c21b5662b924552f850f226a12c7350b4625a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399063"
+ms.locfileid: "81458192"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Azure 机器学习设计器的算法&模块参考（预览）
 
@@ -59,6 +59,10 @@ ms.locfileid: "81399063"
 | 建议 | 构建推荐模型。 | [评估推荐器](evaluate-recommender.md) <br/> [为 SVD 推荐器评分](score-svd-recommender.md) <br/> [训练 SVD 推荐器](train-SVD-recommender.md) |
 | 异常检测 | 构建异常检测模型。 | [基于 PCA 的异常检测](pca-based-anomaly-detection.md) <br/> [训练异常检测模型](train-anomaly-detection-model.md) |
 
+
+## <a name="web-service"></a>Web 服务
+
+了解 Azure 机器学习设计器中实时推理所必需的[Web 服务模块](web-service-input-output.md)。
 
 ## <a name="error-messages"></a>Error messages
 

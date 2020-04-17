@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c11521ec074b63843b873c39102b68bf185d2821
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 8bec28b98a8d2640b5a8034569d49077ce6b4177
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80676730"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450983"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>规划 Azure 活动目录自助密码重置部署
 
@@ -115,7 +115,7 @@ Azure 活动目录是每个用户的许可，这意味着每个用户都需要�
 
 Microsoft 建议组织启用 SSPR 和多重身份验证的组合注册体验。 启用此合并注册体验时，用户只需选择一次注册信息，即启用这两种功能。
 
-组合注册体验不需要组织同时启用 SSPR 和 Azure 多重身份验证。 合并注册为组织提供更好的用户体验。 有关详细信息，请参阅[组合安全信息注册（预览）](concept-registration-mfa-sspr-combined.md)
+组合注册体验不需要组织同时启用 SSPR 和 Azure 多重身份验证。 合并注册为组织提供更好的用户体验。 有关详细信息，请参阅[组合安全信息注册](concept-registration-mfa-sspr-combined.md)
 
 ## <a name="plan-the-deployment-project"></a>规划部署项目
 

@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: mimckitt
-ms.openlocfilehash: 3dcf82a8d4bc698c1900903649a2dd5a383f64b4
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 098d4df3938f591cb72b3bfd59b7a5549469785c
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878402"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81451731"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>在 Azure 资源管理器中为虚拟机设置密钥保管库
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-rm-include.md)]
 
-在 Azure 资源管理器堆栈中，密码/证书被建模为密钥保管库资源提供程序所提供的资源。 若要了解有关密钥保管库的详细信息，请参阅[什么是 Azure 密钥保管库？](../../key-vault/key-vault-overview.md)
+在 Azure 资源管理器堆栈中，密码/证书被建模为密钥保管库资源提供程序所提供的资源。 若要了解有关密钥保管库的详细信息，请参阅[什么是 Azure 密钥保管库？](../../key-vault/general/overview.md)
 
 > [!NOTE]
 > 1. 为了让密钥保管库能与 Azure 资源管理器虚拟机搭配使用，必须将密钥保管库上的 **EnabledForDeployment** 属性设置为 true。 可以在各种客户端中执行此操作。
@@ -34,7 +34,7 @@ ms.locfileid: "80878402"
 >
 
 ## <a name="use-powershell-to-set-up-key-vault"></a>使用 PowerShell 设置密钥保管库
-若要使用 PowerShell 创建密钥保管库，请参阅[使用 PowerShell 在 Azure 密钥保管库中设置和检索机密](../../key-vault/quick-create-powershell.md)。
+若要使用 PowerShell 创建密钥保管库，请参阅[使用 PowerShell 在 Azure 密钥保管库中设置和检索机密](../../key-vault/secrets/quick-create-powershell.md)。
 
 对于新的密钥保管库，可以使用此 PowerShell cmdlet：
 
@@ -45,7 +45,7 @@ ms.locfileid: "80878402"
     Set-AzKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
 
 ## <a name="use-cli-to-set-up-key-vault"></a>使用 CLI 设置密钥保管库
-若要使用命令行接口 (CLI) 创建密钥保管库，请参阅[使用 CLI 管理密钥保管库](../../key-vault/key-vault-manage-with-cli2.md#create-a-key-vault)。
+若要使用命令行接口 (CLI) 创建密钥保管库，请参阅[使用 CLI 管理密钥保管库](../../key-vault/general/manage-with-cli2.md#create-a-key-vault)。
 
 使用 CLI 时，必须先创建密钥保管库，然后分配部署策略。 可以使用以下命令来执行此操作：
 

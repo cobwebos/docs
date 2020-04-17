@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c9933e75a39af43af9e2745d5f7732d40027b34
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: e3ed549e51b911452bca7d4d4a16c7ef45594a8f
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582471"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81451425"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>在 Azure 活动目录中规划无密码身份验证部署
 
@@ -67,7 +67,7 @@ Microsoft 提供了三个无密码身份验证选项，涵盖许多方案。 这
 
 | 先决条件 | Authenticator 应用 | FIDO2 安全密钥 |
 | --- | --- | --- |
-| 启用[Azure 多重身份验证和自助服务密码重置 （SSPR） 的组合注册](howto-registration-mfa-sspr-combined.md)（预览功能） | √ | √ |
+| 启用[Azure 多重身份验证和自助服务密码重置 （SSPR） 的组合注册](howto-registration-mfa-sspr-combined.md) | √ | √ |
 | [用户可以执行 Azure 多重身份验证](howto-mfa-getstarted.md) | √ | √ |
 | [用户已注册 Azure 多重身份验证和 SSPR](howto-registration-mfa-sspr-combined.md) | √ | √ |
 | [用户已将其移动设备注册到 Azure 活动目录](../devices/overview.md) | √ |   |
@@ -93,7 +93,7 @@ Windows Hello 的先决条件在很大程度上取决于您是在本地配置、
 
 下表概述了在此项目期间要实现的用例。
 
-| 区域 | 描述 |
+| 区域 | 说明 |
 | --- | --- |
 | **访问** | 无密码登录可从公司网络内外的公司或个人设备获得。 |
 | **审核** | 使用数据可供管理员近乎实时审核。 <br> 使用数据至少每 29 天下载一次到公司系统中，或者使用 SIEM 工具。 |
@@ -292,7 +292,7 @@ Azure AD 在以下时间将条目添加到审核日志：
 
 ### <a name="required-administrative-roles"></a>所需的管理角色
 
-| Azure AD 角色 | 描述 |
+| Azure AD 角色 | 说明 |
 | --- | --- |
 | 全局管理员角色|能够实现合并注册体验的最小特权角色。 |
 | 身份验证管理员 | 能够实现和管理身份验证方法的最小特权角色。 |

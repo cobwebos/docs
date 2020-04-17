@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bfe39d9528927f995d14772e07e02b2a0528e5e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 000f63ef5f73e77eb22fb539fc6736b929ac6bcc
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78188522"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81451561"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略添加 ADFS 作为 SAML 标识提供者
 
@@ -34,7 +34,7 @@ ms.locfileid: "78188522"
 
 需要将你的证书存储在 Azure AD B2C 租户中。
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录****。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”********。
 4. 在“概述”页上选择“标识体验框架”****。
@@ -42,7 +42,7 @@ ms.locfileid: "78188522"
 6. 对于“选项”****，请选择 `Upload`。
 7. 输入策略密钥的**名称**。 例如，`SamlCert` 。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 8. 浏览并选择带有私钥的证书 .pfx 文件。
-9. 单击 **“创建”**。
+9. 单击“创建”。 
 
 ## <a name="add-a-claims-provider"></a>添加声明提供程序
 
@@ -121,7 +121,7 @@ ms.locfileid: "78188522"
 
 1. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”********。
 2. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件****。
-3. 单击 **“上载”**。
+3. 单击“上载” 。 
 
 > [!NOTE]
 > 可视化工作室代码 B2C 扩展使用"社交 IdpUserId"。 ADFS也需要一项社会政策。
@@ -169,7 +169,7 @@ ms.locfileid: "78188522"
 要将 ADFS 用作 Azure AD B2C 中的标识提供者，需要使用 Azure AD B2C SAML 元数据创建 ADFS 信赖方信任。 以下示例显示 Azure AD B2C 技术配置文件的 SAML 元数据的 URL 地址：
 
 ```
-https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadata?idptp=your-technical-profile
+https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-policy/samlp/metadata?idptp=your-technical-profile
 ```
 
 请替换以下值：

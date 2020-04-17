@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 72c2c90f7a71bd9bf251adb492168fa5d2baa60a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b75e0c1e53f1e00579de73897197cdd2f14d79af
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79244779"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81455404"
 ---
 # <a name="virtual-network-service-endpoints"></a>虚拟网络服务终结点
 
@@ -35,7 +35,7 @@ ms.locfileid: "79244779"
 - **[MySQL 服务器的 Azure 数据库](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)***（Microsoft.Sql*）： 通常在数据库服务可用的 Azure 区域中可用。
 - **[MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)** 的 Azure 数据库 （*Microsoft.Sql*）： 通常在数据库服务可用的 Azure 区域中可用。
 - **[Azure 宇宙数据库](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**（*微软.AzureCosmosDB*）： 通常在所有 Azure 区域都可用。
-- **[Azure 密钥保管库](../key-vault/key-vault-overview-vnet-service-endpoints.md)**（*微软.KeyVault*）： 通常在所有 Azure 区域都可用.
+- **[Azure 密钥保管库](../key-vault/general/overview-vnet-service-endpoints.md)**（*微软.KeyVault*）： 通常在所有 Azure 区域都可用.
 - **[Azure 服务总线](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**（*Microsoft.服务总线*）： 通常在所有 Azure 区域都可用。
 - **[Azure 事件中心](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**（*Microsoft.事件Hub*）： 通常在所有 Azure 区域都可用。
 - **[Azure 数据湖存储第 1 代](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)***（Microsoft.AzureActiveDirectory）：* 通常在 ADLS Gen1 可用的所有 Azure 区域可用。
@@ -45,7 +45,7 @@ ms.locfileid: "79244779"
 
 - **[Azure 容器注册表](../container-registry/container-registry-vnet.md)**（*Microsoft.容器注册表*）： 预览在 Azure 容器注册表可用的所有 Azure 区域都可用。
 
-有关最新通知，请查看 [Azure 虚拟网络更新](https://azure.microsoft.com/updates/?product=virtual-network)页。
+有关最新通知，请查看[Azure 虚拟网络更新](https://azure.microsoft.com/updates/?product=virtual-network)页面。
 
 ## <a name="key-benefits"></a>主要优点
 
@@ -80,7 +80,7 @@ ms.locfileid: "79244779"
 
 ![在虚拟网络中保护 Azure 服务](./media/virtual-network-service-endpoints-overview/VNet_Service_Endpoints_Overview.png)
 
-### <a name="configuration"></a>Configuration
+### <a name="configuration"></a>配置
 
 - 在虚拟网络中的子网上配置服务终结点。 终结点可以处理该子网中运行的任何类型的计算实例。
 - 可以为子网上的所有受支持的 Azure 服务（例如 Azure 存储或 Azure SQL 数据库）配置多个服务终结点。

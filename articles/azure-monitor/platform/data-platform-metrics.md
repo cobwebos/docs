@@ -4,18 +4,17 @@ description: 介绍 Azure Monitor 中的指标：能够为近实时方案提供�
 documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: tysonn
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 80bbf83da17d833c4f8bb1abac9610d70e9a23cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a02b3df02d455db8a7dfd21f63d659f75a66e446
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274822"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457308"
 ---
 # <a name="metrics-in-azure-monitor"></a>Azure Monitor 中的指标
 
@@ -36,7 +35,7 @@ Azure Monitor 中的指标是能够为近实时方案提供支持的轻型数据
 | 可视化 | 将指标资源管理器中的图表固定到 [Azure 仪表板](../learn/tutorial-app-dashboards.md)。<br>创建[工作簿](../app/usage-workbooks.md)以在交互式报表中与多组数据组合。将查询结果导出到[Grafana](grafana-plugin.md)以利用其仪表板并与其他数据源结合使用。 |
 | 警报 | 配置指标[警报规则](alerts-metric.md)，以便在指标值超过阈值时发送通知或执行[自动化操作](action-groups.md)。 |
 | 自动化 |  根据超过阈值的指标值，使用[自动缩放](autoscale-overview.md)来增加或减少资源。 |
-| Export | [将指标路由到日志](resource-logs-collect-storage.md)，以连同 Azure Monitor 日志中的数据一起分析 Azure Monitor 指标中的数据，并将指标值存储 93 天以上。<br>将指标流式传输到[事件中心](stream-monitoring-data-event-hubs.md)，以将其路由到外部系统。 |
+| 导出 | [将指标路由到日志](resource-logs-collect-storage.md)，以连同 Azure Monitor 日志中的数据一起分析 Azure Monitor 指标中的数据，并将指标值存储 93 天以上。<br>将指标流式传输到[事件中心](stream-monitoring-data-event-hubs.md)，以将其路由到外部系统。 |
 | 检索 | 使用 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights) 从命令行访问指标值<br>使用 [REST API](rest-api-walkthrough.md) 从自定义应用程序访问指标值。<br>使用 [CLI](/cli/azure/monitor/metrics) 从命令行访问指标值。 |
 | 存档 | 出于符合性、审核或脱机报告目的，对资源的性能或运行状况历史记录进行 [存档](..//learn/tutorial-archive-data.md)。 |
 

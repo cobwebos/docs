@@ -8,16 +8,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/27/2020
 ms.author: victorh
-ms.openlocfilehash: 1979f759f5a1b037adfd7b67a7be50cbba0f596f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: ffda4b41497a9fd84db5fcee36202eb1c1dca2c0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312215"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457835"
 ---
 # <a name="configure-tls-termination-with-key-vault-certificates-by-using-azure-powershell"></a>使用 Azure PowerShell 使用密钥保管库证书配置 TLS 终止
 
-[Azure 密钥保管库](../key-vault/key-vault-overview.md)是一个平台管理的秘密存储，可用于保护机密、密钥和 TLS/SSL 证书。 Azure 应用程序网关支持与密钥保管库集成，以存储附加到支持 HTTPS 的侦听器的服务器证书。 此支持仅限于应用程序网关 v2 SKU。
+[Azure 密钥保管库](../key-vault/general/overview.md)是一个平台管理的秘密存储，可用于保护机密、密钥和 TLS/SSL 证书。 Azure 应用程序网关支持与密钥保管库集成，以存储附加到支持 HTTPS 的侦听器的服务器证书。 此支持仅限于应用程序网关 v2 SKU。
 
 有关详细信息，请参阅[使用密钥保管库证书的 TLS 终止](key-vault-certs.md)。
 
@@ -71,7 +71,7 @@ $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
 > [!NOTE]
-> -启用SoftDelete 标志必须用于 TLS 终止才能正常运行。 如果要[通过门户配置密钥保管库软删除](../key-vault/key-vault-ovw-soft-delete.md#soft-delete-behavior)，则保留期必须保持在默认值 90 天。 应用程序网关还不支持不同的保留期。 
+> -启用SoftDelete 标志必须用于 TLS 终止才能正常运行。 如果要[通过门户配置密钥保管库软删除](../key-vault/general/overview-soft-delete.md#soft-delete-behavior)，则保留期必须保持在默认值 90 天。 应用程序网关还不支持不同的保留期。 
 
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
 

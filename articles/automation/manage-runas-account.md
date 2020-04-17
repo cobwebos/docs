@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8d7d0baacd5f702e8f435ab440eaf0338a60f4cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a043bcc2f81214b68b166d443baead6cd230184
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500769"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457495"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>管理 Azure 自动化运行方式帐户
 
@@ -464,7 +464,7 @@ $roleDefinition | Set-AzRoleDefinition
 * 向密钥保管库授予权限。
 * 设置访问策略。
 
-您可以使用 PowerShell 库中的[扩展-自动化运行帐户分配给 KeyVault.ps1](https://aka.ms/AA5hugb)脚本，将您的"作为运行"帐户权限授予密钥保管库。 有关在密钥保管库上设置权限的更多详细信息，请参阅[授予应用程序对密钥保管库](../key-vault/key-vault-group-permissions-for-apps.md)的访问。
+您可以使用 PowerShell 库中的[扩展-自动化运行帐户分配给 KeyVault.ps1](https://aka.ms/AA5hugb)脚本，将您的"作为运行"帐户权限授予密钥保管库。 有关在密钥保管库上设置权限的更多详细信息，请参阅[授予应用程序对密钥保管库](../key-vault/general/group-permissions-for-apps.md)的访问。
 
 ## <a name="resolving-misconfiguration-issues-for-run-as-accounts"></a>解决"以帐户身份运行"的配置错误问题
 

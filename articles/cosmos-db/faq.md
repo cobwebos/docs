@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 4c76bcbf945c63588f8471c10deca0b5982d3562
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: e904f650c9fc11aab2dcb002ac68a9f19287940e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414235"
+ms.locfileid: "81449946"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>有关 Azure Cosmos DB 中不同 API 的常见问题
 
@@ -34,7 +34,7 @@ Azure Cosmos DB 有一个不受架构影响的索引编制引擎，能够自动�
 
 ### <a name="can-i-use-multiple-apis-to-access-my-data"></a>是否可以使用多个 API 来访问我的数据？
 
-Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 其中多模型意味着 Azure Cosmos DB 支持多个 API 和多个数据模型，不同的 API 将不同的数据格式用于存储和线路协议。 例如，SQL 使用 JSON，MongoDB 使用 BSON，表使用 EDM，Cassandra 使用 CQL，Gremlin 使用 GraphSON。 因此，建议使用相同的 API 对给定帐户中的数据进行所有访问。
+Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 其中多模型意味着 Azure Cosmos DB 支持多个 API 和多个数据模型，不同的 API 将不同的数据格式用于存储和线路协议。 例如，SQL使用JSON，蒙哥DB使用BSON，表使用EDM，卡桑德拉使用CQL，格雷姆林使用JSON格式。 因此，建议使用相同的 API 对给定帐户中的数据进行所有访问。
 
 除了可互操作的 Gremlin 和 SQL API，每个 API 都独立运行。
 
@@ -234,7 +234,7 @@ Azure Cosmos DB 强制实施严格的安全要求和标准。 Azure Cosmos DB �
 
 ### <a name="is-the-simba-driver-for-mongodb-supported-for-use-with-azure-cosmos-dbs-api-for-mongodb"></a>是否支持将 MongoDB 的 Simba 驱动程序与 Azure CosmosDB 的用于 MongoDB 的 API 一起使用？
 
-是，可以将 Simba 的 Mongo ODBC 驱动程序与 Azure CosmosDB 的用于 MongoDB 的 API 配合使用
+是的，可以将 Simba 的 Mongo ODBC 驱动程序与 Azure Cosmos DB 的用于 MongoDB 的 API 一起使用
 
 ## <a name="table-api"></a><a id="table"></a>表 API
 
@@ -531,13 +531,13 @@ Azure Cosmos DB 利用[水平分区](partition-data.md)自动满足增加存储�
 
 大多数本机 Apache Tinkerpop Gremlin 驱动程序允许用户选择为执行查询提供参数字典。 这里提供了有关如何执行此操作的示例（分别以 [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) 和 [Gremlin Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js) 编写）。
 
-### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>为什么我收到“Gremlin 查询编译错误: 找不到任何方法”错误？
+### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>为什么我收到"格林林查询编译错误：找不到任何方法"错误？
 
 Azure Cosmos DB Gremlin API 实现了 Gremlin 图面区域中定义的功能的子集。 有关受支持的步骤和详细信息，请参阅 [Gremlin 支持](gremlin-support.md)一文。
 
 最佳解决方法是使用受支持的功能重新编写所需的 Gremlin 步骤，因为 Azure Cosmos DB 支持所有基本 Gremlin 步骤。
 
-### <a name="why-am-i-getting-the-websocketexception-the-server-returned-status-code-200-when-status-code-101-was-expected-error"></a>为什么我收到“WebSocketException: 当状态代码应为‘101’时，服务器返回了状态代码‘200’”错误？
+### <a name="why-am-i-getting-the-websocketexception-the-server-returned-status-code-200-when-status-code-101-was-expected-error"></a>为什么收到"WebSocket 异常：当状态代码"101"错误时服务器返回状态代码"200"？
 
 正在使用不正确的终结点时，可能会引发此错误。 导致出现此错误的终结点采用以下模式：
 

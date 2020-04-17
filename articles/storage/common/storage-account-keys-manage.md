@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: tamram
-ms.openlocfilehash: b4e91aa59168deb18375bf86ae77f655ca3dab47
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 50c0980800bbc9b2951bf9107114c1a4d9265558
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521266"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454656"
 ---
 # <a name="manage-storage-account-access-keys"></a>管理存储帐户访问密钥
 
@@ -31,8 +31,8 @@ Microsoft 建议使用 Azure 密钥保管库来管理访问密钥，并定期轮
 
 Microsoft 建议使用 Azure 密钥保管库来管理和旋转访问密钥。 应用程序可以安全地访问密钥保管库中的密钥，这样就可以避免使用应用程序代码来存储密钥。 有关使用密钥保管库进行密钥管理的详细信息，请参阅以下文章：
 
-- [使用 Azure 密钥保管库和 PowerShell 管理存储帐户密钥](../../key-vault/key-vault-overview-storage-keys-powershell.md)
-- [使用 Azure 密钥保管库和 Azure CLI 管理存储帐户密钥](../../key-vault/key-vault-ovw-storage-keys.md)
+- [使用 Azure 密钥保管库和 PowerShell 管理存储帐户密钥](../../key-vault/secrets/overview-storage-keys-powershell.md)
+- [使用 Azure 密钥保管库和 Azure CLI 管理存储帐户密钥](../../key-vault/secrets/overview-storage-keys.md)
 
 ## <a name="manually-rotate-access-keys"></a>手动轮换访问密钥
 

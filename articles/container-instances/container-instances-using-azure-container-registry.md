@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 50c209483a12adc3545b63fb66685e386d9ad10a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 212624b857d65297830995018603c2627f83369b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252140"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453517"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>从 Azure 容器注册表部署到 Azure 容器实例
 
@@ -36,7 +36,7 @@ Azure 容器注册表提供了附加的[身份验证选项](../container-registr
 
 ### <a name="create-key-vault"></a>创建 Key Vault
 
-如果 [Azure Key Vault](../key-vault/key-vault-overview.md) 中没有保管库，请在 Azure CLI 中使用以下命令创建一个保管库。
+如果 [Azure Key Vault](../key-vault/general/overview.md) 中没有保管库，请在 Azure CLI 中使用以下命令创建一个保管库。
 
 将 `RES_GROUP` 变量更新为要在其中创建 Key Vault 的现有资源组的名称，将 `ACR_NAME` 更新为容器注册表的名称。 为简洁起见，本文中的命令假设你的注册表、密钥保管库和容器实例都是在同一资源组中创建的。
 

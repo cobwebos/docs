@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 970701606811cbd61a9bfebe39ff82cdc91d5693
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4f6de807628704051cdddf74bcefbed678f8fcd
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80245831"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457886"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>为 Azure 应用服务配置 Linux Java 应用
 
@@ -230,7 +230,7 @@ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter
 
 ### <a name="use-keyvault-references"></a>使用 KeyVault 引用
 
-[Azure KeyVault](../../key-vault/key-vault-overview.md) 使用访问策略和审核历史记录来提供集中式机密管理。 可以在 KeyVault 中存储机密（例如密码或连接字符串），然后通过环境变量在应用程序中访问这些机密。
+[Azure KeyVault](../../key-vault/general/overview.md) 使用访问策略和审核历史记录来提供集中式机密管理。 可以在 KeyVault 中存储机密（例如密码或连接字符串），然后通过环境变量在应用程序中访问这些机密。
 
 首先，按照有关[为应用授予对 Key Vault 的访问权限](../app-service-key-vault-references.md#granting-your-app-access-to-key-vault)以及[在应用程序设置中添加对机密的 KeyVault 引用](../app-service-key-vault-references.md#reference-syntax)的说明操作。 可以在远程访问应用服务终端时，通过输出环境变量来验证该引用是否解析为机密。
 
@@ -497,7 +497,7 @@ xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl 
 
 1. 打开 Bash 终端，`<variable>=<value>`并用于设置以下每个环境变量。
 
-    | 变量                 | “值”                                                                      |
+    | 变量                 | 值                                                                      |
     |--------------------------|----------------------------------------------------------------------------|
     | RESOURCEGROUP_NAME       | 包含应用服务实例的资源组的名称。       |
     | WEBAPP_NAME              | 应用服务实例的名称。                                     |

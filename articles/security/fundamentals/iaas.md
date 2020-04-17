@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: fadf07f312c86f8ca15f5a97ebbe99e84bcffc89
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 49a40d78b4ba3bc1e90bb341cca90bece0b998a8
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548227"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450009"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure 中 IaaS 工作负荷的安全性最佳实践
 本文介绍了 VM 和操作系统的安全最佳做法。
@@ -155,7 +155,7 @@ Microsoft 反恶意软件包括实时保护、计划扫描、恶意软件修正�
 详细信息：Azure 磁盘加密将生成加密密钥并将其写入密钥保管库****。 在 Key Vault 中管理加密密钥需要 Azure AD 身份验证。 为此，请创建 Azure AD 应用程序。 出于身份验证目的，可以使用基于客户端密钥的身份验证或[基于客户端证书的 Azure AD 身份验证](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)。
 
 最佳做法：使用密钥加密密钥 (KEK) 来为加密密钥提供附加的安全层****。 将 KEK 添加到密钥保管库。   
-**详细信息**：使用[Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet 在密钥保管库中创建密钥加密密钥。 还可从本地硬件安全模块 (HSM) 导入 KEK 以进行密钥管理。 有关详细信息，请参阅 [Key Vault 文档](../../key-vault/key-vault-hsm-protected-keys.md)。 指定密钥加密密钥后，Azure 磁盘加密会使用该密钥包装加密机密，然后将机密写入 Key Vault。 在本地密钥管理 HSM 中保留此密钥的托管副本，提供额外的保护，防止意外删除密钥。
+**详细信息**：使用[Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet 在密钥保管库中创建密钥加密密钥。 还可从本地硬件安全模块 (HSM) 导入 KEK 以进行密钥管理。 有关详细信息，请参阅 [Key Vault 文档](../../key-vault/keys/hsm-protected-keys.md)。 指定密钥加密密钥后，Azure 磁盘加密会使用该密钥包装加密机密，然后将机密写入 Key Vault。 在本地密钥管理 HSM 中保留此密钥的托管副本，提供额外的保护，防止意外删除密钥。
 
 最佳做法：在加密磁盘之前创建[快照](../../virtual-machines/windows/snapshot-copy-managed-disk.md)和/或备份****。 如果加密期间发生意外故障，备份可提供恢复选项。   
 详细信息：加密之前，需要备份包含托管磁盘的 VM****。 进行备份后，可以使用**Set-AzVMDisk 加密扩展**cmdlet 通过指定 *-skipVmBackup*参数来加密托管磁盘。 有关如何备份和还原已加密 VM 的详细信息，请参阅 [Azure 备份](../../backup/backup-azure-vms-encryption.md)一文。

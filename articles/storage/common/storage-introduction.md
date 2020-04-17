@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 1cc047ee60cf8287f32a42b878371c5fc9680b7a
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 6c75b9c2feeab32c139998f617cacf540733e3bd
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985739"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456339"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>核心 Azure 存储服务简介
 
@@ -131,7 +131,7 @@ Azure 存储客户端库提供的方法用于加密客户端库的数据，然�
 
 ## <a name="redundancy"></a>冗余
 
-为确保数据持久，Azure 存储存储存储数据的多个副本。 设置存储帐户时，可选择冗余选项。 有关详细信息，请参阅 [Azure 存储冗余](/storage-redundancy?toc=/azure/storage/blobs/toc.json)。
+为确保数据持久，Azure 存储存储存储数据的多个副本。 设置存储帐户时，可选择冗余选项。 有关详细信息，请参阅 [Azure 存储冗余](/azure/storage/common/storage-redundancy?toc=/azure/storage/blobs/toc.json)。
 
 ## <a name="transfer-data-to-and-from-azure-storage"></a>将数据传输到 Azure 存储中
 

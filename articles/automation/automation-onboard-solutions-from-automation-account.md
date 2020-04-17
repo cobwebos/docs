@@ -5,12 +5,12 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: cf82dddf281e8e6f1348884702e32330dee4781b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57378005bd668fa9c0f2aea70c411bbf911130db
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278670"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457648"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>载入更新管理、更改跟踪和清单解决方案
 
@@ -18,7 +18,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录 Azure (https://portal.azure.com)
+在 登录 Azure。 https://portal.azure.com
 
 ## <a name="enable-solutions"></a>启用解决方案
 
@@ -82,7 +82,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 需要手动添加 Azure 中没有的计算机。 从您的自动化帐户中选择 **"配置管理**下的**库存**"或 **"更改跟踪**"，或**选择"更新管理**下的**更新管理**"。
 
-单击“添加非 Azure 计算机”****。 此操作打开新浏览器窗口，其中[介绍了如何在计算机上安装并配置 Microsoft Monitoring Agent](../azure-monitor/platform/log-analytics-agent.md)，让计算机能够开始向解决方案进行报告。 如果你载入当前由 System Center Operations Manager 管理的计算机，则不需要新代理，工作区信息将输入到现有代理中。
+单击“添加非 Azure 计算机”****。 此操作将打开一个新的浏览器窗口，其中包含[安装和配置 Windows 的日志分析代理的说明](../azure-monitor/platform/log-analytics-agent.md)，以便计算机可以开始向解决方案报告。 如果您正在进入当前由系统中心操作管理器管理的计算机，则不需要新代理，并且工作区信息将输入到现有代理中。
 
 ## <a name="onboard-machines-in-the-workspace"></a>在工作区中载入计算机
 
@@ -112,7 +112,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 * [更新管理](automation-update-management.md)
 * [更改跟踪](automation-change-tracking.md)
-* [在非工作时间启动/停止 VM](automation-solution-vm-management.md)
+* [非工作时间启动/停止 VM](automation-solution-vm-management.md)
 
 如果您决定不再希望将自动化帐户与日志分析工作区集成，则可以直接从 Azure 门户取消链接帐户。  在继续之前，首先需要删除前面所述的解决方案，否则此过程将无法继续。 查看已导入的特定解决方案的主题，了解删除该解决方案所需的步骤。
 
@@ -150,7 +150,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 从更新管理中删除 VM：
 
 * 在 Log Analytics 工作区中，从范围配置 `MicrosoftDefaultScopeConfig-Updates` 的已保存的搜索中删除 VM。 已保存的搜索位于工作区的“常规”下****。
-* 删除 [Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) 或 [适用于 Linux 的 Log Analytics 代理](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)。
+* 删除[Windows 的日志分析代理](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources)或[Linux 的日志分析代理](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)。
 
 ## <a name="next-steps"></a>后续步骤
 

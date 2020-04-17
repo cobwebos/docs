@@ -4,18 +4,17 @@ description: Azure Monitor 收集的监视数据划分为指标（轻型数据�
 documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: tysonn
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: a1b5859341237c1b177ee8deaf636a67f4824948
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 58f542238c952088777ed9809b57dae3cdb9cf12
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77666541"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457257"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor 数据平台
 
@@ -66,7 +65,7 @@ Azure Monitor 中的分布式跟踪是使用 [Application Insights SDK](../app/d
 
 下表对 Azure Monitor 中的指标和日志做了比较。
 
-| 特性  | 指标 | 日志 |
+| Attribute  | 指标 | 日志 |
 |:---|:---|:---|
 | 优点 | 轻型数据，支持警报等近实时方案。 非常适合用于快速检测问题。 | 使用丰富查询语言进行分析。 非常适合用于深入分析和识别根本原因。 |
 | 数据 | 仅限数字值 | 文本或数字数据 |

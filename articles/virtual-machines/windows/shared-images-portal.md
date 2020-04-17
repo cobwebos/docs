@@ -5,7 +5,6 @@ services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -15,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 6273b58d9db53cfc4f6647885c70148982f0b950
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 83cdae95d43884647e257cbf1808222a542a212e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74975493"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458090"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>使用门户创建 Azure 共享映像库
 
@@ -32,7 +31,7 @@ ms.locfileid: "74975493"
 
 共享映像库功能具有多种资源类型。 我们将在本文中使用或生成这些资源类型：
 
-| 资源 | 描述|
+| 资源 | 说明|
 |----------|------------|
 | **托管映像** | 一个基本映像，可以单独使用，也可用于在映像库中创建**映像版本**。 托管映像是从[通用](shared-image-galleries.md#generalized-and-specialized-images)VM 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
 | **快照** | 可用于创建**映像版本**的 VHD 副本。 可以从[专用化](shared-image-galleries.md#generalized-and-specialized-images) VM（一个尚未通用化的 VM）创建快照，然后单独使用该快照，或者将其与数据磁盘的快照配合使用，以创建专用化的映像版本。
@@ -78,7 +77,7 @@ ms.locfileid: "74975493"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-当不再需要时，可以删除资源组、虚拟机和所有相关资源。 为此，请选择虚拟机的资源组，选择 **"删除**"，然后确认要删除的资源组的名称。
+当不再需要时，可以删除资源组、虚拟机和所有相关资源。 为此，请选择虚拟机的资源组，选择“删除”  ，然后确认要删除的资源组的名称。
 
 若要删除单个资源，需要按相反的顺序删除。 例如，若要删除某个映像定义，需要先删除基于该映像创建的所有映像版本。
 

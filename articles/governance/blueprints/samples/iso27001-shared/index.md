@@ -3,12 +3,12 @@ title: ISO 27001 共享服务蓝图示例概述
 description: ISO 27001 共享服务蓝图示例的概述和体系结构。 此蓝图示例可帮助客户评估特定 ISO 27001 控制要求。
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 9b0b49582023ee5c68fea0f21b70290a102a038a
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 5a18af942e1d1088b681712f7035f57d354ecb19
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81381571"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458448"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共享服务蓝图示例的概述
 
@@ -34,7 +34,7 @@ VDC 是一套行之有效的参考体系结构、自动化工具和参与模型�
   - 一个用于管理目的的 Jumpbox 或堡垒主机，只能通过入口堆叠子网中部署的 [Azure 防火墙](../../../../firewall/overview.md)访问
   - 两个运行 Active Directory 域服务 (ADDS) 和 DNS 的虚拟机，只能通过 Jumpbox 访问，可以配置为仅通过 VPN 或 [ExpressRoute](../../../../expressroute/expressroute-introduction.md) 连接来复制 AD（不按蓝图部署）
   - 使用 [Azure 网络观察程序](../../../../network-watcher/network-watcher-monitoring-overview.md)和标准 DDoS 保护
-- 一个 [Azure Key Vault](../../../../key-vault/key-vault-overview.md) 实例，用于托管对共享服务环境中部署的 VM 使用的机密
+- 一个 [Azure Key Vault](../../../../key-vault/general/overview.md) 实例，用于托管对共享服务环境中部署的 VM 使用的机密
 
 所有这些元素遵守 [Azure 体系结构中心 - 参考体系结构](/azure/architecture/reference-architectures/)中发布的行之有效的做法。
 

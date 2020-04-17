@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: abff2f16d9559f015417711820a993badd636f7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ebbdda39f019f374f8e5abe951d0180c0dd453f6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80133080"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457869"
 ---
 # <a name="metrics-for-application-gateway"></a>应用程序网关的指标
 
@@ -102,7 +102,7 @@ ms.locfileid: "80133080"
 
 - **失败的请求数**
 
-  应用程序网关已提供服务的失败请求计数。 可以进一步筛选请求计数，以显示每个/特定后端池 http 设置组合的计数。
+  应用程序网关使用 5xx 服务器错误代码提供的请求数。 这包括从应用程序网关生成的 5xx 代码以及从后端生成的 5xx 代码。 可以进一步筛选请求计数，以显示每个/特定后端池 http 设置组合的计数。
    
 - **固定计费容量单位**
 
@@ -162,7 +162,7 @@ ms.locfileid: "80133080"
 
 - **失败的请求数**
 
-  应用程序网关已提供服务的失败请求计数。 可以进一步筛选请求计数，以显示每个/特定后端池 http 设置组合的计数。
+  应用程序网关使用 5xx 服务器错误代码提供的请求数。 这包括从应用程序网关生成的 5xx 代码以及从后端生成的 5xx 代码。 可以进一步筛选请求计数，以显示每个/特定后端池 http 设置组合的计数。
 
 - **响应状态**
 

@@ -3,16 +3,16 @@ title: 密钥保管库机密与模板
 description: 说明在部署期间如何以参数形式从密钥保管库传递机密。
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 08b4042c6bad83f13ebaea0f46046ea7707fd868
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d21a7d727091b427fee59e22db6a77a495a4eab7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460188"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458260"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>在部署过程中使用 Azure Key Vault 传递安全参数值
 
-在部署过程中，可以从 [Azure Key Vault](../../key-vault/key-vault-overview.md) 中检索一个安全值，而不是直接在模板或参数文件中放置该值（如密码）。 通过引用参数文件中的密钥保管库和密钥来检索值。 值永远不会公开，因为仅引用其密钥保管库 ID。 密钥保管库可以与要部署到的资源组位于不同的订阅中。
+在部署过程中，可以从 [Azure Key Vault](../../key-vault/general/overview.md) 中检索一个安全值，而不是直接在模板或参数文件中放置该值（如密码）。 通过引用参数文件中的密钥保管库和密钥来检索值。 值永远不会公开，因为仅引用其密钥保管库 ID。 密钥保管库可以与要部署到的资源组位于不同的订阅中。
 
 本文重点介绍将敏感值作为模板参数传入的方案。 它不涉及将虚拟机属性设为 Key Vault 中的证书 URL 的方案。 有关该方案的快速入门模板，请参阅[在虚拟机上安装来自 Azure Key Vault 的证书](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows)。
 
@@ -28,7 +28,7 @@ ms.locfileid: "79460188"
 az keyvault update  --name ExampleVault --enabled-for-template-deployment true
 ```
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Set-AzKeyVaultAccessPolicy -VaultName ExampleVault -EnabledForTemplateDeployment
@@ -50,7 +50,7 @@ az keyvault create \
 az keyvault secret set --vault-name ExampleVault --name "ExamplePassword" --value "hVFkk965BuUv"
 ```
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name ExampleGroup -Location centralus
@@ -76,7 +76,7 @@ az keyvault set-policy \
   --secret-permissions set delete get list
 ```
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 $userPrincipalName = "<Email Address of the deployment operator>"
@@ -91,11 +91,11 @@ Set-AzKeyVaultAccessPolicy `
 
 若要详细了解如何创建密钥保管库和添加机密，请参阅：
 
-- [使用 CLI 设置和检索机密](../../key-vault/quick-create-cli.md)
-- [使用 Powershell 设置和检索机密](../../key-vault/quick-create-powershell.md)
-- [使用门户设置和检索机密](../../key-vault/quick-create-portal.md)
-- [使用 .NET 设置和检索机密](../../key-vault/quick-create-net.md)
-- [使用 Node.js 设置和检索机密](../../key-vault/quick-create-node.md)
+- [使用 CLI 设置和检索机密](../../key-vault/secrets/quick-create-cli.md)
+- [使用 Powershell 设置和检索机密](../../key-vault/secrets/quick-create-powershell.md)
+- [使用门户设置和检索机密](../../key-vault/secrets/quick-create-portal.md)
+- [使用 .NET 设置和检索机密](../../key-vault/secrets/quick-create-net.md)
+- [使用 Node.js 设置和检索机密](../../key-vault/secrets/quick-create-node.md)
 
 ## <a name="grant-access-to-the-secrets"></a>授予对机密的访问权限
 
@@ -135,7 +135,7 @@ Set-AzKeyVaultAccessPolicy `
       --resource-group ExampleGroup
     ```
 
-    # <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
     ```azurepowershell-interactive
     New-AzRoleDefinition -InputFile "<path-to-role-file>"
@@ -241,7 +241,7 @@ az deployment group create \
   --parameters <parameter-file>
 ```
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name $resourceGroupName -Location $location
@@ -375,5 +375,5 @@ New-AzResourceGroupDeployment `
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关密钥保管库的一般信息，请参阅[什么是 Azure 密钥保管库？](../../key-vault/key-vault-overview.md)。
+- 有关密钥保管库的一般信息，请参阅[什么是 Azure 密钥保管库？](../../key-vault/general/overview.md)。
 - 有关引用密钥机密的完整示例，请参阅[密钥保管库示例](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)。

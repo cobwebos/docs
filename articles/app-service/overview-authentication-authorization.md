@@ -3,23 +3,20 @@ title: 身份验证和授权
 description: 了解 Azure 应用服务和 Azure 函数中的内置身份验证和授权支持，以及它如何帮助保护应用免受未经授权的访问。
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 04/15/2020
 ms.reviewer: mahender
 ms.custom:
 - seodec18
 - fasttrack-edit
-ms.openlocfilehash: 0fe436b1da551bbc8a0064cb3cfdff864d8f9eb8
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: a4ceed0d897f069a7895a3eb6b10c327566afbe5
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520694"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457852"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure 应用服务和 Azure 函数中的身份验证和授权
 
-> [!NOTE]
-> 此时，Azure 应用服务和 Azure 函数不支持[Azure 活动目录 v2.0（](../active-directory/develop/v2-overview.md)包括[MSAL）。](../active-directory/develop/msal-overview.md) 请回头查看是否有更新。
->
 > [!NOTE]
 > 此时，ASP.NET核心当前不支持使用身份验证/授权功能填充当前用户。
 >
@@ -83,9 +80,9 @@ ID 令牌、访问令牌和刷新令牌缓存用于经过身份验证的会话�
 | 提供程序 | 登录终结点 |
 | - | - |
 | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) | `/.auth/login/aad` |
-| [微软帐户](../active-directory/develop/v2-overview.md) | `/.auth/login/microsoftaccount` |
+| [Microsoft 帐户](../active-directory/develop/v2-overview.md) | `/.auth/login/microsoftaccount` |
 | [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` |
-| [谷歌](https://developers.google.com/identity/choose-auth) | `/.auth/login/google` |
+| [Google](https://developers.google.com/identity/choose-auth) | `/.auth/login/google` |
 | [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` |
 
 对其中一个提供程序启用身份验证和授权时，其登录终结点可用于用户身份验证，以及验证来自提供程序的身份验证令牌。 可以轻松为用户提供其中任意数量的登录选项。 还可以集成其他标识提供者或[自己的自定义标识解决方案][custom-auth]。

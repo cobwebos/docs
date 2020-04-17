@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 26093d051da8f2182a40f80837acbd9ef7dd008f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: be558c3e3a68ce6c194dcf98d8f5ff92c4c14edb
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312072"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457818"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>使用密钥保管库证书的 TLS 终止
 
-[Azure 密钥保管库](../key-vault/key-vault-overview.md)是一个平台管理的秘密存储，可用于保护机密、密钥和 TLS/SSL 证书。 Azure 应用程序网关支持与密钥保管库集成，以存储附加到支持 HTTPS 的侦听器的服务器证书。 此支持仅限 v2 SKU 版应用程序网关。
+[Azure 密钥保管库](../key-vault/general/overview.md)是一个平台管理的秘密存储，可用于保护机密、密钥和 TLS/SSL 证书。 Azure 应用程序网关支持与密钥保管库集成，以存储附加到支持 HTTPS 的侦听器的服务器证书。 此支持仅限 v2 SKU 版应用程序网关。
 
 密钥保管库集成为 TLS 端接提供了两种模型：
 

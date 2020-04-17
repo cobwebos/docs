@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/18/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 5749b2fc58c4e1c5c75142f85a5132946714e25b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ace34cf4a72b871ba6646b279007b8ce21c03e9b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77472630"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457427"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>使用客户管理的密钥加密应用配置数据
 Azure 应用程序配置[在静态时加密敏感信息](../security/fundamentals/encryption-atrest.md)。 使用客户管理的密钥允许您管理加密密钥，从而增强数据保护。  使用托管密钥加密时，应用配置中的所有敏感信息都使用用户提供的 Azure 密钥保管库密钥进行加密。  这提供了按需旋转加密密钥的能力。  它还提供了通过撤消应用配置实例对密钥的访问来撤消 Azure 应用配置对敏感信息的访问的能力。
@@ -20,7 +20,7 @@ Azure 应用程序配置[在静态时加密敏感信息](../security/fundamental
 Azure 应用配置使用 Microsoft 提供的 256 位 AES 加密密钥对静态敏感信息进行加密。 每个应用配置实例都有自己的加密密钥，由服务管理，并用于加密敏感信息。 敏感信息包括键值对中找到的值。  启用客户托管密钥功能后，应用配置将使用分配给应用配置实例的托管标识对 Azure 活动目录进行身份验证。 然后，托管标识调用 Azure 密钥保管库并包装应用配置实例的加密密钥。 然后存储包装的加密密钥，并在应用配置中缓存未包装的加密密钥一小时。 应用配置每小时刷新应用配置实例加密密钥的未包装版本。 这可确保在正常操作条件下的可用性。 
 
 >[!IMPORTANT]
-> 如果分配给应用配置实例的标识不再授权解包实例的加密密钥，或者如果托管密钥被永久删除，则将不再能够解密存储在 App 中的敏感信息配置实例。 使用 Azure 密钥保管库的[软删除](../key-vault/key-vault-ovw-soft-delete.md)功能可减少意外删除加密密钥的可能性。
+> 如果分配给应用配置实例的标识不再授权解包实例的加密密钥，或者托管密钥被永久删除，则将不再能够解密存储在应用配置实例中的敏感信息。 使用 Azure 密钥保管库的[软删除](../key-vault/general/overview-soft-delete.md)功能可减少意外删除加密密钥的可能性。
 
 当用户在其 Azure 应用配置实例上启用客户托管密钥功能时，他们控制服务访问其敏感信息的能力。 托管密钥用作根加密密钥。 用户可以通过更改其密钥保管库访问策略来撤消其应用配置实例对其托管密钥的访问权限。 撤销此访问权限后，应用配置将失去在一小时内解密用户数据的能力。 此时，应用配置实例将禁止所有访问尝试。 此情况可以通过再次授予对托管密钥的服务访问权限来恢复。  在一小时内，应用配置将能够解密用户数据并在正常条件下运行。
 

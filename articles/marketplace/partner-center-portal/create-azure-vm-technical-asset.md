@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: eb885d0e965579b1ab2d66395f9f96eab0845bae
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 46c59e8b4e60fbe17887ea0fc375b6da758ebf50
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81266495"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457393"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>创建 Azure 虚拟机技术资产
 
@@ -176,7 +176,7 @@ Azure 开始预配指定的虚拟机。 您可以通过选择左侧的 **"虚拟
 3. 将此[JSON 模板](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-deploy-json-template)粘贴到编辑器中，然后选择 **"保存**"。
 4. 提供显示的“自定义部署”属性页的参数值。****
 
-    | 参数 | 描述 |
+    | 参数 | 说明 |
     | ------------ | ------------- |
     | 用户存储帐户名称 | 单元格 2 中的内容 |
     | 用户存储容器名称 | 通用化 VHD 所在的存储帐户名称 |
@@ -281,8 +281,8 @@ Windows OS 磁盘已使用 [sysprep 工具](https://docs.microsoft.com/windows-h
 
 ## <a name="next-steps"></a>后续步骤
 
-如果在创建基于 Azure 的新 VHD 时遇到问题，请参阅[在创建 VHD 期间出现的常见问题](https://aka.ms/AzureVM_VHDCreationFAQ)。
+如果在创建基于 Azure 的新 VHD 时遇到问题，请参阅[在创建 VHD 期间出现的常见问题](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues)。
 
 否则：
 
-* [验证 VM 映像](https://aks.ms/CertifyVMimage)说明如何测试和提交 VM 映像以进行 Azure 应用商店认证，包括获取*Azure 认证工具的认证测试工具*的位置以及如何使用它来验证 VM 映像。
+* [验证 VM 映像](https://docs.microsoft.com/azure/marketplace/partner-center-portal/get-sas-uri)说明如何测试和提交 VM 映像以进行 Azure 应用商店认证，包括获取*Azure 认证工具的认证测试工具*的位置以及如何使用它来验证 VM 映像。

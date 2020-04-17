@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 36b7b81a18c8725929ab5676b844e1ee319e287f
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 40bff9585e64163039a8847ff868c982ffb20414
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393314"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458243"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>Azure 密钥保管库作为事件网格源
 
@@ -80,18 +80,18 @@ Azure Key Vault 帐户生成以下事件类型：
 ## <a name="tutorials-and-how-tos"></a>教程和如何
 |标题  |说明  |
 |---------|---------|
-| [通过 Azure 事件网格监视 Key Vault 事件](../key-vault/event-grid-overview.md) | 概述 Key Vault 与事件网格的集成。 |
-| [教程：使用事件网格创建和监视密钥保管库事件](../key-vault/event-grid-tutorial.md) | 了解如何为 Key Vault 设置事件网格通知。 |
+| [通过 Azure 事件网格监视 Key Vault 事件](../key-vault/general/event-grid-overview.md) | 概述 Key Vault 与事件网格的集成。 |
+| [教程：使用事件网格创建和监视密钥保管库事件](../key-vault/general/event-grid-tutorial.md) | 了解如何为 Key Vault 设置事件网格通知。 |
 
 
 ## <a name="next-steps"></a>后续步骤
 
 * 有关 Azure 事件网格的简介，请参阅[什么是事件网格？](overview.md)。
 * 有关如何创建 Azure 事件网格订阅的详细信息，请参阅[事件网格订阅架构](subscription-creation-schema.md)。
-* 若要详细了解 Key Vault 与事件网格的集成，请参阅[使用 Azure 事件网格（预览版）监视 Key Vault](../key-vault/event-grid-overview.md)。
-* 有关 Key Vault 与事件网格集成的教程，请参阅[通过 Azure 事件网格接收和响应 Key Vault 通知（预览版）](../key-vault/event-grid-tutorial.md)。
+* 若要详细了解 Key Vault 与事件网格的集成，请参阅[使用 Azure 事件网格（预览版）监视 Key Vault](../key-vault/general/event-grid-overview.md)。
+* 有关 Key Vault 与事件网格集成的教程，请参阅[通过 Azure 事件网格接收和响应 Key Vault 通知（预览版）](../key-vault/general/event-grid-tutorial.md)。
 * 若要获取有关 Key Vault 和 Azure 自动化的其他指南，请参阅：
-    - [什么是 Azure Key Vault？](../key-vault/key-vault-overview.md)
-    - [通过 Azure 事件网格监视 Key Vault（预览版）](../key-vault/event-grid-overview.md)
-    - [通过 Azure 事件网格接收和响应 Key Vault 通知（预览版）](../key-vault/event-grid-tutorial.md)
+    - [什么是 Azure Key Vault？](../key-vault/general/overview.md)
+    - [通过 Azure 事件网格监视 Key Vault（预览版）](../key-vault/general/event-grid-overview.md)
+    - [通过 Azure 事件网格接收和响应 Key Vault 通知（预览版）](../key-vault/general/event-grid-tutorial.md)
     - [Azure 自动化概述](../automation/index.yml)

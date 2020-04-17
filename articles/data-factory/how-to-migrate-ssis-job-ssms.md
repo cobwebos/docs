@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: ee51be1d994c3b81765266e95c48d321a2f43b14
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 6e357e98d6c5190c6dfef675dc1ab9cf30a717c1
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80989436"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81455081"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>使用 SSMS 将 SQL 服务器代理作业迁移到 ADF
 
@@ -35,7 +35,7 @@ ms.locfileid: "80989436"
 |SSIS 作业步骤|执行 SSIS 包活动|<li> 活动的名称将为\<>步骤名称。 <li> 作业步骤中使用的代理帐户将作为此活动的 Windows 身份验证进行迁移。 <li> 除了在作业步骤中定义的*使用 32 位运行时*之外，*执行选项*将在迁移中忽略。 <li> 在作业步骤中定义的*验证*将在迁移中忽略。|
 |schedule      |计划触发器        |计划名称>将*\<生成计划触发器的名称*。 <br> <br> SQL 代理作业计划中的以下选项将在迁移中忽略： <li> 第二级间隔。 <li> *SQL Server 代理启动时自动启动* <li> *CPU 空闲时启动* <li> *工作日和**周末*<time zone> <br> 以下是 SQL 代理作业计划迁移到 ADF 计划触发器后的差异： <li> ADF 计划触发器后续运行独立于前触发运行的执行状态。 <li> ADF 计划触发器定期配置不同于 SQL 代理作业中的每日频率。|
 
-- 在本地输出文件夹中生成 Azure 资源管理器 （ARM） 模板，并直接或以后手动部署到数据工厂。 有关 ADF 资源管理器模板的详细信息，请参阅[Microsoft.DataFactory 资源类型](https://docs.microsoft.com/azure/templates/microso.ft.datafactory/allversions)。
+- 在本地输出文件夹中生成 Azure 资源管理器 （ARM） 模板，并直接或以后手动部署到数据工厂。 有关 ADF 资源管理器模板的详细信息，请参阅[Microsoft.DataFactory 资源类型](https://docs.microsoft.com/azure/templates/microsoft.datafactory/allversions)。
 
 ## <a name="prerequisites"></a>先决条件
 

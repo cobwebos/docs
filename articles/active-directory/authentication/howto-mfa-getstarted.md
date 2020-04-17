@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a70c6ae3ebc7f5b39550508594bd4d4907e68a67
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 845a202faccbbe0a604560ac57ae30f87344b95a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80667346"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81451119"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>规划 Azure 多重身份验证部署
 
@@ -144,7 +144,7 @@ Azure 活动目录标识保护检测到的某些风险检测是实时进行的�
 
 ## <a name="plan-registration-policy"></a>计划注册政策
 
-管理员必须确定用户如何注册其方法。 组织应启用 Azure MFA 和自助服务密码重置 （SSPR）[的新组合注册体验](howto-registration-mfa-sspr-combined.md)。 SSPR 允许用户使用与用于多重身份验证的相同方法以安全方式重置密码。 我们建议此组合注册（当前在公共预览版中），因为它对用户来说是一种很好的体验，能够为这两种服务注册一次。 为 SSPR 和 Azure MFA 启用相同的方法将允许注册用户使用这两种功能。
+管理员必须确定用户如何注册其方法。 组织应启用 Azure MFA 和自助服务密码重置 （SSPR）[的新组合注册体验](howto-registration-mfa-sspr-combined.md)。 SSPR 允许用户使用与用于多重身份验证的相同方法以安全方式重置密码。 我们建议此合并注册，因为它对用户来说是一种出色的体验，能够为这两种服务注册一次。 为 SSPR 和 Azure MFA 启用相同的方法将允许注册用户使用这两种功能。
 
 ### <a name="registration-with-identity-protection"></a>身份保护注册
 
@@ -244,7 +244,7 @@ Get-MsolUser -All | Set-MfaState -State Disabled
    * 可选：如果已配置受信任的位置或命名的位置，则可以指定在策略中包括或排除这些位置。
 1. 在“授予”下，确保选中“授权访问”单选按钮********。
     * 选中“要求多重身份验证”复选框****。
-    * 单击“选择”。
+    * 单击“选择”  。
 1. 跳过“会话”**** 部分。
 1. 将“启用策略”**** 开关设置为“开”****。
 1. 单击“创建”。 
@@ -354,7 +354,7 @@ Azure MFA 的报告
 
 Azure 多重身份验证通过 Azure 门户提供报告：
 
-| 报表 | 位置 | 说明 |
+| 报表 | 位置 | 描述 |
 | --- | --- | --- |
 | 使用情况和欺诈警报 | Azure AD > 登录 | 提供有关总体使用情况、用户摘要和用户详细信息的信息；以及指定日期范围内提交的欺诈警报的历史记录。 |
 

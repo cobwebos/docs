@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 25b8df0d8565686737b33aac16d4bf698ce43280
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 85fc6412a12963bb01782becf639f7acfc31fbe5
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757207"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452072"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 托管磁盘的服务器端加密
 
@@ -34,7 +34,7 @@ ms.locfileid: "80757207"
 
 ## <a name="customer-managed-keys"></a>客户管理的密钥
 
-您可以选择使用自己的密钥在每个托管磁盘级别管理加密。 使用客户托管密钥的托管磁盘的服务器端加密提供了 Azure 密钥保管库的集成体验。 您可以将[RSA 密钥](../../key-vault/key-vault-hsm-protected-keys.md)导入密钥保管库，或在 Azure 密钥保管库中生成新的 RSA 密钥。 
+您可以选择使用自己的密钥在每个托管磁盘级别管理加密。 使用客户托管密钥的托管磁盘的服务器端加密提供了 Azure 密钥保管库的集成体验。 您可以将[RSA 密钥](../../key-vault/keys/hsm-protected-keys.md)导入密钥保管库，或在 Azure 密钥保管库中生成新的 RSA 密钥。 
 
 Azure 托管磁盘使用[信封加密](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique)以完全透明的方式处理加密和解密。 它使用基于[AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 的数据加密密钥 （DEK） 加密数据，而密钥又使用密钥进行保护。 存储服务生成数据加密密钥，并使用 RSA 加密使用客户管理的密钥对其进行加密。 信封加密允许您根据合规性策略定期轮换（更改）密钥，而不会影响 VM。 旋转密钥时，存储服务使用新的客户管理密钥重新加密数据加密密钥。 
 
@@ -288,7 +288,7 @@ $disk.Encryption.Type
 ## <a name="next-steps"></a>后续步骤
 
 - [浏览 Azure 资源管理器模板，以便使用客户管理的密钥创建加密磁盘](https://github.com/ramankumarlive/manageddiskscmkpreview)
-- [什么是 Azure Key Vault？](../../key-vault/key-vault-overview.md)
+- [什么是 Azure Key Vault？](../../key-vault/general/overview.md)
 - [使用启用客户管理的密钥磁盘复制计算机](../../site-recovery/azure-to-azure-how-to-enable-replication-cmk-disks.md)
 - [使用 PowerShell 设置 VMware VM 到 Azure 的灾难恢复](../../site-recovery/vmware-azure-disaster-recovery-powershell.md#replicate-vmware-vms)
 - [使用 PowerShell 和 Azure 资源管理器对 Hyper-V VM 设置到 Azure 的灾难恢复](../../site-recovery/hyper-v-azure-powershell-resource-manager.md#step-7-enable-vm-protection)

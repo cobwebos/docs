@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 006c780aeb3db813c8fdfb5da0b5c13fc4dcfebc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1d08581c5d29fc41fb33541d766af7cece88cdc
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067430"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81451663"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted：保护敏感数据并将加密密钥存储在 Azure 密钥保管库中
 
@@ -55,9 +55,9 @@ ms.locfileid: "80067430"
 
 至此，已配置客户端应用并且已拥有应用程序 ID，接下来，可以创建密钥保管库并配置其访问策略，以便你和你的应用程序可以访问保管库的机密（Always Encrypted 密钥）。 *create*、*get*、*list*、*sign*、*verify*、*wrapKey* 和 *unwrapKey* 权限是用于创建新的列主密钥以及通过 SQL Server Management Studio 设置加密所必需的。
 
-通过运行以下脚本，可以快速创建密钥保管库。 有关这些命令的详细说明以及有关创建和配置密钥保管库的详细信息，请参阅[什么是 Azure 密钥保管库？](../key-vault/key-vault-overview.md)。
+通过运行以下脚本，可以快速创建密钥保管库。 有关这些命令的详细说明以及有关创建和配置密钥保管库的详细信息，请参阅[什么是 Azure 密钥保管库？](../key-vault/general/overview.md)。
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
 > PowerShell Azure 资源管理器 (RM) 模块仍受 Azure SQL 数据库支持，但所有未来的开发都是针对 Az.Sql 模块的。 AzureRM 模块至少在 2020 年 12 月之前将继续接收 bug 修补程序。  Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 若要详细了解其兼容性，请参阅[新 Azure PowerShell Az 模块简介](/powershell/azure/new-azureps-module-az)。
@@ -106,7 +106,7 @@ az keyvault set-policy --name $vaultName --key-permissions get, list, sign, unwr
 
 ## <a name="create-a-blank-sql-database"></a>创建空的 SQL 数据库
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 转到**创建资源** > **数据库** > **SQL 数据库**。
 3. 在新服务器或现有服务器上创建名为 **Clinic** 的**空**数据库。 若要深入了解如何在 Azure 门户中创建数据库，请参阅 [Azure SQL 数据库](sql-database-single-database-get-started.md)。
 
@@ -135,7 +135,7 @@ az keyvault set-policy --name $vaultName --key-permissions get, list, sign, unwr
 
 在本部分中，将创建一个表以保存患者数据。 它最初尚未加密 - 可在下一部分配置加密。
 
-1. 展开 **“数据库”**。
+1. 展开 **“数据库”** 。
 2. 右键单击“Clinic”**** 数据库，并单击“新建查询”****。
 3. 将以下 Transact-SQL (T-SQL) 粘贴到新查询窗口中，然后“执行”**** 它。
 
@@ -172,7 +172,7 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
 
 加密每位患者的“SSN”**** 和“出生日期”**** 信息。 SSN 列将使用确定性加密，该加密支持相等性查找、联接和分组方式。 BirthDate 列将使用随机加密，该加密不支持操作。
 
-将 SSN 列的“加密类型”**** 设置为“确定”****，并将 BirthDate 列设置为“随机”****。 单击“下一步”****。
+将 SSN 列的“加密类型”**** 设置为“确定”****，并将 BirthDate 列设置为“随机”****。 单击“下一步”。 
 
 ![加密列](./media/sql-database-always-encrypted-azure-key-vault/column-selection.png)
 
@@ -184,7 +184,7 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
 
 1. 选择“Azure 密钥保管库”****。
 2. 从下拉列表中选择所需密钥保管库。
-3. 单击“下一步”****。
+3. 单击“下一步”。 
 
 ![主密钥配置](./media/sql-database-always-encrypted-azure-key-vault/master-key-configuration.png)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: 733a85e492185e7e83922a3cc91d53c848b939a1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8f58887a056c8ca0cd175a44127556562338de38
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81411147"
+ms.locfileid: "81450026"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>使用 Azure Key Vault 为 Azure Cosmos 帐户配置客户管理的密钥
 
@@ -23,7 +23,7 @@ ms.locfileid: "81411147"
 
 ![围绕客户数据的加密层](./media/how-to-setup-cmk/cmk-intro.png)
 
-必须在[Azure 密钥保管库中](../key-vault/key-vault-overview.md)存储客户管理的密钥，并为使用客户管理的密钥启用的每个 Azure Cosmos 帐户提供密钥。 此密钥用于加密该帐户中存储的所有数据。
+必须在[Azure 密钥保管库中](../key-vault/general/overview.md)存储客户管理的密钥，并为使用客户管理的密钥启用的每个 Azure Cosmos 帐户提供密钥。 此密钥用于加密该帐户中存储的所有数据。
 
 > [!NOTE]
 > 目前，客户管理的密钥仅适用于新的 Azure Cosmos 帐户。 应在帐户创建期间配置它们。
@@ -44,8 +44,8 @@ ms.locfileid: "81411147"
 
 若要了解如何在现有 Azure Key Vault 实例上启用这些属性，请参阅以下文章之一中的“启用软删除”和“启用清除保护”部分：
 
-- [如何使用电源Shell软删除](../key-vault/key-vault-soft-delete-powershell.md)
-- [如何通过 Azure CLI 使用软删除](../key-vault/key-vault-soft-delete-cli.md)
+- [如何使用电源Shell软删除](../key-vault/general/soft-delete-powershell.md)
+- [如何通过 Azure CLI 使用软删除](../key-vault/general/soft-delete-cli.md)
 
 ## <a name="add-an-access-policy-to-your-azure-key-vault-instance"></a>将访问策略添加到 Azure Key Vault 实例
 

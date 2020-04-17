@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1e4470ce5ac69390cf8d361577b9ebf0013e4e51
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 861c7ffa647c8d2f37b32c359253ca991eeb314f
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405788"
+ms.locfileid: "81457699"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>使用混合 Runbook 辅助角色使数据中心或云端的资源实现自动化
 
@@ -68,7 +68,7 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 ```
 
 > [!NOTE]
-> 此代码不会从计算机中删除 Microsoft 监视代理。 它仅删除混合 Runbook 辅助角色的功能和配置。
+> 此代码不会从计算机中删除 Linux 的日志分析代理。 它仅删除混合 Runbook 辅助角色的功能和配置。
 
 ## <a name="remove-a-hybrid-worker-group"></a>删除混合辅助角色组
 
@@ -89,7 +89,7 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 
 ### <a name="hybrid-worker-role"></a>混合辅助角色
 
-要使混合 Runbook 辅助角色连接并注册到 Azure 自动化，必须让其有权访问此部分所述的端口号和 URL。 除了这些端口和 URL 以外，还需要有权访问 [Microsoft Monitoring Agent 连接到 Azure Monitor 日志时要使用的端口和 URL](../azure-monitor/platform/agent-windows.md)。
+要使混合 Runbook 辅助角色连接并注册到 Azure 自动化，必须让其有权访问此部分所述的端口号和 URL。 此访问位于日志分析代理连接到 Azure 监视器日志[所需的端口和 URL](../azure-monitor/platform/agent-windows.md)的顶部。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

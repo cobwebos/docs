@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69bdd2d6825427597e9030a03aae7d219361ba25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b15b022726c09ccbaf9674775d114c8dd1916e1d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78671948"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457291"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>条件访问：云应用或操作
 
@@ -120,7 +120,7 @@ Microsoft Azure 管理应用程序包括多个基础服务。
 
 ## <a name="user-actions"></a>用户操作
 
-用户操作是可由用户执行的任务。 目前唯一支持的操作是“注册安全信息(预览版)”****。当启用了组合注册功能的用户尝试注册其安全信息时，此操作允许条件访问策略来强制实施。 更多信息请参阅文章，[组合安全信息注册（预览）。](../authentication/concept-registration-mfa-sspr-combined.md)
+用户操作是可由用户执行的任务。 当前唯一支持的操作是**注册安全信息**，它允许条件访问策略在启用合并注册的用户尝试注册其安全信息时强制执行。 更多信息请参阅《[综合安全信息注册》](../authentication/concept-registration-mfa-sspr-combined.md)一文。
 
 ## <a name="next-steps"></a>后续步骤
 

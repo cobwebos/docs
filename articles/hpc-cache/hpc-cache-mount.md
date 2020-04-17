@@ -4,14 +4,14 @@ description: 如何将客户端连接到 Azure HPC 缓存服务
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 04/03/2020
-ms.author: rohogue
-ms.openlocfilehash: f176e30cfaf9a52e4f58091b7fc76098a4c88a48
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.date: 04/15/2020
+ms.author: v-erkel
+ms.openlocfilehash: a44232f06b455e20530271723e816c2117b339a0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657357"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458333"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>装载 Azure HPC 缓存
 
@@ -45,51 +45,65 @@ ms.locfileid: "80657357"
 
 ### <a name="create-a-local-path"></a>创建本地路径
 
-在每个客户端上创建本地目录路径以连接到缓存。 为要装载的每个存储目标创建路径。
+在每个客户端上创建本地目录路径以连接到缓存。 为要装载的每个命名空间路径创建路径。
 
-示例： `sudo mkdir -p /mnt/hpc-cache-1/target3`
+示例：`sudo mkdir -p /mnt/hpc-cache-1/target3`
+
+Azure 门户中的["装载说明"](#use-the-mount-instructions-utility)页包含可以复制的原型命令。
+
+将客户端计算机连接到缓存时，将此路径与表示存储目标导出的虚拟命名空间路径相关联。 为客户端将使用的每个虚拟命名空间路径创建目录。
 
 ## <a name="use-the-mount-instructions-utility"></a>使用装载说明实用程序
 
-从 Azure 门户中的缓存视图的 **"配置**"部分打开 **"装载说明"** 页。
+可以使用 Azure 门户中的 **"装载指令"** 页创建可复制装载命令。 从门户中缓存视图的 **"配置**"部分打开页面。
+
+在客户端上使用 命令之前，请确保客户端满足先决条件，并具有使用 NFS`mount`命令所需的软件，如上述在["准备客户端](#prepare-clients)"中所述。
 
 ![门户中的 Azure HPC 缓存实例的屏幕截图，加载了"配置>装载指令页](media/mount-instructions.png)
 
-装载命令页包括有关客户端装载过程和先决条件的信息，以及可用于创建可复制装载命令的字段。
+按照此过程创建装载命令。
 
-要使用此页面，请按照以下步骤操作：
+1. 自定义**客户端路径**字段。 此字段提供一个示例命令，可用于在客户端上创建本地路径。 客户端在此目录中本地访问 Azure HPC 缓存中的内容。
 
-<!--1.  In step one of **Mounting your file system**, enter the path that the client will use to access the Azure HPC Cache storage target.
+   单击该字段并编辑该命令以包含所需的目录名称。 该名称显示在字符串的末尾`sudo mkdir -p`
 
-   * This path is local to the client.
-   * After you provide the directory name, the field populates with a command you can copy. Use this command on the client directly or in a setup script to create the directory path on the client VM. -->
+   ![客户端路径字段的屏幕截图，光标位于末尾](media/mount-edit-client.png)
 
-1. 查看客户端先决条件并安装使用 NFS`mount`命令所需的实用程序，如上述[在"准备客户端](#prepare-clients)"中所述。
+   完成编辑字段后，页面底部的装载命令将更新新客户端路径。
 
-1. **安装文件系统**的步骤一<!-- label will change --> 给出了在客户端上创建本地路径的示例命令。 这是客户端将用于从 Azure HPC 缓存访问内容的路径。
+1. 从列表中选择**缓存装载地址**。 此菜单列出了缓存的所有[客户端装载点](#find-mount-command-components)。
 
-   请注意路径名称，以便在需要时可以在命令中对其进行修改。
+   平衡所有可用装载地址的客户端负载，以更好的缓存性能。
 
-1. 在步骤 2 中，选择其中一个可用的 IP 地址。 此处列出了缓存的所有[客户端装载点](#find-mount-command-components)。 确保您有一个系统来平衡所有 IP 地址之间的负载。
+   ![缓存装载地址字段的屏幕截图，选择器显示三个 IP 地址可供选择](media/mount-select-ip.png)
 
-1. 步骤三中的字段自动填充原型装载命令。 单击字段右侧的复制符号，自动将其复制到剪贴板。
+1. 选择要用于客户端的**虚拟命名空间路径**。 这些路径链接到后端存储系统上的导出。
 
-   > [!NOTE]
-   > 在使用复制命令之前，请检查该命令。 您可能需要自定义客户端装载路径和存储目标虚拟命名空间路径，这些路径在此接口中尚未选择。 您还应更新装载命令选项以反映以下[建议的选项](#mount-command-options)。 阅读["了解装载"命令语法](#understand-mount-command-syntax)以寻求帮助。
+   ![命名空间路径字段的屏幕截图，选择器打开](media/mount-select-target.png)
 
-1. 在客户端计算机上使用复制的装载命令（如果需要进行编辑）将其连接到 Azure HPC 缓存上的存储目标。 可以直接从客户端命令行发出该命令，或在客户端设置脚本或模板中包括装载命令。
+   您可以在"存储目标"门户页上查看和更改虚拟命名空间路径。 阅读[添加存储目标](hpc-cache-add-storage.md)以查看如何。
+
+   要了解有关 Azure HPC 缓存聚合命名空间功能的详细信息，请阅读[规划聚合命名空间](hpc-cache-namespace.md)。
+
+1. 步骤三中的 **"装载"命令**字段使用自定义装载命令自动填充，该命令使用在前面的字段中设置的装载地址、虚拟命名空间路径和客户端路径。
+
+   单击字段右侧的复制符号，自动将其复制到剪贴板。
+
+   ![命名空间路径字段的屏幕截图，选择器打开](media/mount-command-copy.png)
+
+1. 使用客户端计算机上的复制装载命令将其连接到 Azure HPC 缓存。 可以直接从客户端命令行发出该命令，或在客户端设置脚本或模板中包括装载命令。
 
 ## <a name="understand-mount-command-syntax"></a>了解装载命令语法
 
 装载命令具有以下形式：
 
-> 苏多安装*cache_mount_address*：/*namespace_pathlocal_path* *local_path* [*选项*]
+> sudo 安装 [*选项*] *cache_mount_address*：/*namespace_pathlocal_path* *local_path*
 
 示例：
 
 ```bash
 root@test-client:/tmp# mkdir hpccache
-root@test-client:/tmp# sudo mount 10.0.0.28:/blob-demo-0722 ./hpccache/ -o hard,proto=tcp,mountproto=tcp,retry=30
+root@test-client:/tmp# sudo mount -o hard,proto=tcp,mountproto=tcp,retry=30 10.0.0.28:/blob-demo-0722 hpccache
 root@test-client:/tmp#
 ```
 
@@ -117,9 +131,9 @@ root@test-client:/tmp#
 > [!NOTE]
 > 缓存装载地址对应于缓存子网中的网络接口。 在资源组中，这些 NIC 列出的名称以 结尾`-cluster-nic-`，以数字结尾。 不要更改或删除这些接口，否则缓存将不可用。
 
-虚拟命名空间路径显示在 **"存储目标"** 页中。 单击单个存储目标名称以查看其详细信息，包括与其关联的聚合命名空间路径。
+虚拟命名空间路径显示在每个存储目标的详细信息页上。 单击单个存储目标名称以查看其详细信息，包括与其关联的聚合命名空间路径。
 
-![缓存存储目标面板的屏幕截图，在表的 Path 列中条目周围有一个突出显示框](media/hpc-cache-view-namespace-paths.png)
+![存储目标详细信息页面的屏幕截图（标题"更新存储目标"）。 表的虚拟命名空间路径列中条目周围有一个突出显示框](media/hpc-cache-view-namespace-paths.png)
 
 ## <a name="next-steps"></a>后续步骤
 

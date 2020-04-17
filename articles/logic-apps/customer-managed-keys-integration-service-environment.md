@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: fa39c8f65b00283044ef31dc7577a4668b3e634b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7314559849f0b2019820ec3cb4fb10c684d330d6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127649"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458431"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>设置客户管理的密钥，以加密 Azure 逻辑应用中的集成服务环境 （ISEs） 静态数据
 
 Azure 逻辑应用依赖于 Azure 存储来存储和自动[加密静态数据](../storage/common/storage-service-encryption.md)。 此加密可保护您的数据，并帮助您履行组织安全和合规性承诺。 默认情况下，Azure 存储使用 Microsoft 管理的密钥来加密数据。 有关 Azure 存储加密的工作原理的详细信息，请参阅[静态数据的 Azure 存储加密](../storage/common/storage-service-encryption.md)和[静态 Azure 数据加密](../security/fundamentals/encryption-atrest.md)。
 
-当您为托管逻辑应用创建[集成服务环境 （ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)时，希望对 Azure 存储使用的加密密钥进行更多控制时，可以使用[Azure 密钥保管库](../key-vault/key-vault-overview.md)设置、使用和管理自己的密钥。 此功能也称为"自带密钥"（BYOK），密钥称为"客户管理密钥"。
+当您为托管逻辑应用创建[集成服务环境 （ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)时，希望对 Azure 存储使用的加密密钥进行更多控制时，可以使用[Azure 密钥保管库](../key-vault/general/overview.md)设置、使用和管理自己的密钥。 此功能也称为"自带密钥"（BYOK），密钥称为"客户管理密钥"。
 
 本主题演示如何使用逻辑应用 REST API 设置和指定自己的加密密钥，以便使用 ISE 时使用。 有关通过逻辑应用 REST API 创建 ISE 的一般步骤，请参阅[使用逻辑应用 REST API 创建集成服务环境 （ISE）。](../logic-apps/create-integration-service-environment-rest-api.md)
 
@@ -39,15 +39,15 @@ Azure 逻辑应用依赖于 Azure 存储来存储和自动[加密静态数据](.
 
 * 启用 **"软删除**"和 **"不清除"** 属性的 Azure 密钥保管库
 
-  有关启用这些属性的详细信息，请参阅[Azure 密钥保管库软删除概述](../key-vault/key-vault-ovw-soft-delete.md)，以及[使用 Azure 密钥保管库配置客户管理的密钥](../storage/common/storage-encryption-keys-portal.md)。 如果您是 Azure 密钥保管库的新增功能，请了解如何使用 Azure 门户或使用 Azure PowerShell 命令["New-AzKeyVault"](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault)[创建密钥保管库](../key-vault/quick-create-portal.md#create-a-vault)。
+  有关启用这些属性的详细信息，请参阅[Azure 密钥保管库软删除概述](../key-vault/general/overview-soft-delete.md)，以及[使用 Azure 密钥保管库配置客户管理的密钥](../storage/common/storage-encryption-keys-portal.md)。 如果您是 Azure 密钥保管库的新增功能，请了解如何使用 Azure 门户或使用 Azure PowerShell 命令["New-AzKeyVault"](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault)[创建密钥保管库](../key-vault/secrets/quick-create-portal.md#create-a-vault)。
 
 * 在密钥保管库中，使用以下属性值创建的密钥：
 
-  | properties | “值” |
+  | properties | 值 |
   |----------|-------|
   | **密钥类型** | RSA |
   | **RSA 密钥大小** | 2048 |
-  | **启用** | 是 |
+  | **已启用** | 是 |
   |||
 
   ![创建客户托管的加密密钥](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
@@ -225,8 +225,8 @@ Azure 逻辑应用依赖于 Azure 存储来存储和自动[加密静态数据](.
 
    1. 完成 **"访问策略"** 窗格后，选择"**保存**"。
 
-有关详细信息，请参阅[使用托管标识提供密钥保管库身份验证](../key-vault/managed-identity.md#grant-your-app-access-to-key-vault)。
+有关详细信息，请参阅[使用托管标识提供密钥保管库身份验证](../key-vault/general/managed-identity.md#grant-your-app-access-to-key-vault)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解 [Azure Key Vault](../key-vault/key-vault-overview.md)
+* 详细了解 [Azure Key Vault](../key-vault/general/overview.md)

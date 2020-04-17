@@ -5,16 +5,16 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: f434ad6e19c89f248fec948c0a049fabb0f7c476
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5dc219747b9cc74b6c6aac8ab190ebfbe5ae9b32
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248432"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458277"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>部署 Azure 托管应用程序时访问 Key Vault 机密
 
-在部署过程中，需要将安全值（例如密码）作为参数传递时，可从 [Azure 密钥保管库](../../key-vault/key-vault-overview.md)检索值。 若要在部署托管应用程序时访问 Key Vault，必须授予对**设备资源提供程序**服务主体的访问权限。 托管应用程序服务使用此标识来运行操作。 若要在部署过程中从密钥保管库成功检索某个值，服务主体必须能够访问密钥保管库。
+在部署过程中，需要将安全值（例如密码）作为参数传递时，可从 [Azure 密钥保管库](../../key-vault/general/overview.md)检索值。 若要在部署托管应用程序时访问 Key Vault，必须授予对**设备资源提供程序**服务主体的访问权限。 托管应用程序服务使用此标识来运行操作。 若要在部署过程中从密钥保管库成功检索某个值，服务主体必须能够访问密钥保管库。
 
 本文介绍如何配置 Key Vault 以与托管应用程序一起使用。
 
@@ -48,7 +48,7 @@ ms.locfileid: "79248432"
 
    ![搜索提供程序](./media/key-vault-access/search-provider.png)
 
-1. 选择“保存”。****
+1. 选择“保存”。 
 
 ## <a name="reference-key-vault-secret"></a>引用 Key Vault 机密
 

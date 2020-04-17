@@ -10,18 +10,18 @@ ms.date: 04/02/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ea944d4cfa3006c33f1dee3dd8e6ee6088681aa7
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 796e3b3f46bc83b776826baf6e078c696eda543b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618651"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456764"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>通过 Azure CLI 使用 Azure Key Vault 配置客户管理的密钥
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-本文介绍如何使用 Azure CLI 配置包含客户管理的密钥的 Azure Key Vault。 若要了解如何使用 Azure CLI 创建密钥保管库，请参阅[快速入门：使用 Azure CLI 从 Azure 密钥保管库设置和检索机密](../../key-vault/quick-create-cli.md)。
+本文介绍如何使用 Azure CLI 配置包含客户管理的密钥的 Azure Key Vault。 若要了解如何使用 Azure CLI 创建密钥保管库，请参阅[快速入门：使用 Azure CLI 从 Azure 密钥保管库设置和检索机密](../../key-vault/secrets/quick-create-cli.md)。
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>将标识分配到存储帐户
 
@@ -55,7 +55,7 @@ az keyvault create \
     --enable-purge-protection
 ```
 
-若要了解如何使用 Azure CLI 在现有密钥保管库上启用“软删除”**** 和“请勿清除”****，请参阅[如何在 CLI 中使用软删除](../../key-vault/key-vault-soft-delete-cli.md)中标题为“启用软删除”**** 和“启用清除保护”**** 的部分。
+若要了解如何使用 Azure CLI 在现有密钥保管库上启用“软删除”**** 和“请勿清除”****，请参阅[如何在 CLI 中使用软删除](../../key-vault/general/soft-delete-cli.md)中标题为“启用软删除”**** 和“启用清除保护”**** 的部分。
 
 ## <a name="configure-the-key-vault-access-policy"></a>配置 Key Vault 访问策略
 

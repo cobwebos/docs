@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: aeffa0bb736f03403bf483b22775ef468bbcb2bd
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: f0034d06c852d4d71284093879a456d296d98715
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405461"
+ms.locfileid: "81457461"
 ---
 # <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>解决 Azure 自动化所需状态配置 （DSC） 的问题
 
@@ -113,7 +113,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 ### <a name="cause"></a>原因
 
-此问题是由证书损坏或过期引起的。  有关详细信息，请参阅[证书过期和重新注册](../automation-dsc-onboarding.md#re-register-a-node)。
+此问题是由证书损坏或过期引起的。  有关详细信息，请参阅[证书过期和重新注册](../automation-dsc-onboarding.md#re-registering-a-node)。
 
 此问题也可能由不允许访问 ***.azure-automation.net**的代理配置引起。 有关详细信息，请参阅[专用网络的配置](../automation-dsc-overview.md#network-planning)。 
 
@@ -135,7 +135,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 第三，从节点中删除所有损坏或过期的证书。
 
-在提升的 Powershell 提示器中的故障节点上，运行以下操作：
+在来自提升 PowerShell 提示符的故障节点上，运行以下操作：
 
 ```powershell
 $certs = @()
@@ -279,8 +279,8 @@ One or more errors occurred.
 
 按照以下步骤注册节点。
 
-* Windows -[本地或 Azure/AWS 以外的云中的物理/虚拟 Windows 计算机](../automation-dsc-onboarding.md#onboard-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure)。
-* Linux -[本地或 Azure 以外的云中的物理/虚拟 Linux 计算机](../automation-dsc-onboarding.md#onboard-physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure)。
+* Windows -[本地或 Azure/AWS 以外的云中的物理/虚拟 Windows 计算机](../automation-dsc-onboarding.md#onboarding-physicalvirtual-windows-machines)。
+* Linux -[本地或 Azure 以外的云中的物理/虚拟 Linux 计算机](../automation-dsc-onboarding.md#onboarding-physicalvirtual-linux-machines)。
 
 ### <a name="scenario-error-message---provisioning-failed"></a><a name="agent-has-a-problem"></a>方案：错误消息 - "预配失败"
 

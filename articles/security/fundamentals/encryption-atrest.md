@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c3491a54682e8f2b244c0400480a69e083335f5c
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 1e08e758fbba911d3391794f5bab31aaf6a5fc73
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81008383"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454673"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure 静态数据加密
 
@@ -163,7 +163,7 @@ Azure 中受支持的加密模型分为两个主要组："客户端加密"和"�
 若要获取用于加密或解密静态数据的密钥，服务标识（将由资源管理器服务实例在运行时充当）必须使用 UnwrapKey 来获取解密用的密钥，并在创建新密钥时使用 WrapKey 将密钥插入密钥保管库中。
 
 >[!NOTE]
->有关 Key Vault 授权的更多详细信息，请参阅 [Azure Key Vault 文档](../../key-vault/key-vault-secure-your-key-vault.md)中的“保护密钥保管库”页。
+>有关 Key Vault 授权的更多详细信息，请参阅 [Azure Key Vault 文档](../../key-vault/general/secure-your-key-vault.md)中的“保护密钥保管库”页。
 
 **优点**
 
@@ -282,7 +282,7 @@ Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务�
 | Azure 数据目录               | 是                | -                  | -                  |
 | Azure HDInsight                  | 是                | 全部                | -                  |
 | Azure 监视器应用程序见解 | 是                | 是                | -                  |
-| Azure 监视器日志分析 | 是                | 是                | -                  |
+| Azure 监视器日志分析      | 是                | 是                | -                  |
 | Azure 数据资源管理器              | 是                | 是                | -                  |
 | Azure 数据工厂               | 是                | 是                | -                  |
 | Azure Data Lake Store            | 是                | 是，RSA 2048 位  | -                  |
@@ -294,11 +294,12 @@ Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务�
 | 虚拟机                 | 是                | 是，RSA 2048 位  | -                  |
 | 虚拟机规模集        | 是                | 是，RSA 2048 位  | -                  |
 | SAP HANA                         | 是                | 是，RSA 2048 位  | -                  |
-| 应用服务                      | 是                | 是                | -                  |
-| 自动化                       | 是                | 是                | -                  |
-| Azure 门户                     | 是                | 是                | -                  |
+| 应用服务                      | 是                | 是\*\*            | -                  |
+| 自动化                       | 是                | 是\*\*            | -                  |
+| Azure Functions                  | 是                | 是\*\*            | -                  |
+| Azure 门户                     | 是                | 是\*\*            | -                  |
 | 逻辑应用                       | 是                | 是                | -                  |
-| Azure 托管应用程序       | 是                | 是                | -                  |
+| Azure 托管应用程序       | 是                | 是\*\*            | -                  |
 | 服务总线                      | 是                | 是                | -                  |
 | Site Recovery                    | 是                | 是                | -                  |
 | **数据库**                    |                    |                    |                    |
@@ -312,10 +313,11 @@ Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务�
 | 表存储                    | 是                | 是                | 是                |
 | Azure Cosmos DB                  | 是                | 是                | -                  |
 | Azure Databricks                 | 是                | 是                | -                  |
+| Azure 数据库迁移服务 | 是                | 暂无\*              | -                  |
 | **DevOps**                       |                    |                    |                    |
 | Azure DevOps Services            | 是                | -                  | 是                |
 | Azure Repos                      | 是                | -                  | 是                |
-| **标识**                     |                    |                    |                    |
+| **身份**                     |                    |                    |                    |
 | Azure Active Directory           | 是                | -                  | -                  |
 | Azure Active Directory 域服务 | 是          | 是，RSA 2048 位  | -                  |
 | **集成**                  |                    |                    |                    |
@@ -328,7 +330,7 @@ Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务�
 | **管理和监管**    |                    |                    |                    |
 | Azure Site Recovery              | 是                | -                  | -                  |
 | Azure Migrate                    | 是                | 是                | -                  |
-| **媒体**                        |                    |                    |                    |
+| **介质**                        |                    |                    |                    |
 | 媒体服务                   | 是                | -                  | 是                |
 | **安全性**                     |                    |                    |                    |
 | 适用于 IoT 的 Azure 安全中心    | 是                | 是                | -                  |
@@ -344,6 +346,7 @@ Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务�
 | 文件同步                        | 是                | 是，RSA 2048 位  | -                  |
 | 队列存储                    | 是                | 是                | 是                |
 | Avere vFXT                       | 是                | -                  | -                  |
+| 用于 Redis 的 Azure 缓存            | 是                | 暂无\*              | -                  |
 | Azure NetApp 文件               | 是                | 是                | -                  |
 | 存档存储                  | 是                | 是，RSA 2048 位  | -                  |
 | StorSimple                       | 是                | 是，RSA 2048 位  | 是                |
@@ -352,6 +355,8 @@ Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务�
 | Data Box Edge                    | 是                | 是                | -                  |
 
 \*此服务不保留数据。 瞬态缓存（如果有）使用 Microsoft 密钥进行加密。
+
+\*\*此服务支持将数据存储在您自己的密钥保管库、存储帐户或其他已支持使用客户管理密钥进行服务器端加密的数据持久化服务中。
 
 ## <a name="conclusion"></a>结束语
 

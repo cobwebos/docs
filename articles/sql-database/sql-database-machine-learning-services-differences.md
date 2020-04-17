@@ -12,12 +12,13 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 11/20/2019
-ms.openlocfilehash: 533e2b9e50a92cce1419da521d8cebc4955e4df6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ROBOTS: NOINDEX
+ms.openlocfilehash: 34ba75b6126024c9cd43d6fe474f7c1b62dd990f
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74462105"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453143"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-database-preview-and-sql-server"></a>Azure SQL 数据库（预览）和 SQL Server 中的机器学习服务之间的主要区别
 
@@ -31,7 +32,7 @@ SQL Server 通过[扩展性框架](https://docs.microsoft.com/sql/advanced-analy
 
 - R 是 SQL 数据库中唯一受支持的语言。 目前不支持 Python。
 - R 版本为 3.4.4。
-- 无需通过 `sp_configure` 配置 `external scripts enabled`。 [注册](sql-database-machine-learning-services-overview.md#signup)后，即会为 SQL 数据库启用机器学习。
+- 无需通过 `sp_configure` 配置 `external scripts enabled`。
 
 ## <a name="package-management"></a>包管理
 

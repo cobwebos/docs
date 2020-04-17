@@ -3,12 +3,12 @@ title: 使用参数创建动态蓝图
 description: 了解静态和动态参数以及如何使用它们创建安全和动态蓝图。
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: ed596db2050ac788c2d98c63cb7314de473b5f4e
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: e5953617d5fa27098380f3f0e95843c69800f823
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383617"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458482"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>通过参数创建动态蓝图
 
@@ -41,7 +41,7 @@ ms.locfileid: "81383617"
 > [!IMPORTANT]
 > 在这两种情况下，密钥保管库都必须具有"**访问策略**"页上配置**的模板部署的 Azure 资源管理器访问权限**。 有关如何启用此功能的说明，请参阅 [Key Vault - 启用模板部署](../../../azure-resource-manager/managed-applications/key-vault-access.md#enable-template-deployment)。
 
-有关 Azure Key Vault 的详细信息，请参阅 [ 概述](../../../key-vault/key-vault-overview.md)。
+有关 Azure Key Vault 的详细信息，请参阅 [ 概述](../../../key-vault/general/overview.md)。
 
 ## <a name="parameter-types"></a>参数类型
 
@@ -235,7 +235,7 @@ ms.locfileid: "81383617"
 
 - 请参阅[蓝图函数](../reference/blueprint-functions.md)列表。
 - 了解[蓝图生命周期](lifecycle.md)。
-- 学习自定义[蓝图排序顺序](sequencing-order.md)。
+- 了解如何自定义[蓝图排序顺序](sequencing-order.md)。
 - 了解如何利用[蓝图资源锁定](resource-locking.md)。
-- 了解如何[更新现有作业](../how-to/update-existing-assignments.md)。
-- 在分配蓝图期间使用[常规故障排除时](../troubleshoot/general.md)解决问题。
+- 了解如何[更新现有分配](../how-to/update-existing-assignments.md)。
+- 使用[一般故障排除](../troubleshoot/general.md)在蓝图的分配期间解决问题。

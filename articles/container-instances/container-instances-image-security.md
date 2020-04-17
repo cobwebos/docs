@@ -4,12 +4,12 @@ description: 有关保护 Azure 容器实例的映像和机密的建议，以及
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: b5f2c4d9ca80318574e288110fd4ce7f490af00d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 87fa28cf9bdb546a5f108284023a9f787645a1fd
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76260491"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457988"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Azure 容器实例的安全注意事项
 
@@ -37,7 +37,7 @@ ms.locfileid: "76260491"
 
 ### <a name="protect-credentials"></a>保护凭据
 
-容器可能分散在多个群集和 Azure 区域之间。 因此，必须保护登录或 API 访问所需的凭据，例如密码或令牌。 确保只有特权用户能够在传输中和静态状态下访问这些容器。 清点所有凭据机密，并要求开发人员使用专为容器平台设计的新兴机密管理工具。  确保解决方案包含加密的数据库、针对传输中机密数据的 TLS 加密，以及最低特权的[基于角色的访问控制](../role-based-access-control/overview.md)。 [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md) 是一种云服务，用于保护容器化应用程序的加密密钥和机密（例如证书、连接字符串和密码）。 由于这些数据极其机密且对企业至关重要，因此请保护对 Key Vault 的访问，以便只有经过授权的应用程序和用户才能访问它们。
+容器可能分散在多个群集和 Azure 区域之间。 因此，必须保护登录或 API 访问所需的凭据，例如密码或令牌。 确保只有特权用户能够在传输中和静态状态下访问这些容器。 清点所有凭据机密，并要求开发人员使用专为容器平台设计的新兴机密管理工具。  确保解决方案包含加密的数据库、针对传输中机密数据的 TLS 加密，以及最低特权的[基于角色的访问控制](../role-based-access-control/overview.md)。 [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) 是一种云服务，用于保护容器化应用程序的加密密钥和机密（例如证书、连接字符串和密码）。 由于这些数据极其机密且对企业至关重要，因此请保护对 Key Vault 的访问，以便只有经过授权的应用程序和用户才能访问它们。
 
 ## <a name="considerations-for-the-container-ecosystem"></a>容器生态系统的注意事项
 

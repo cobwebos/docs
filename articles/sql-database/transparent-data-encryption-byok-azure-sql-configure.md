@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 81927575b99604e71f7b0920bc3a448f7796f565
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b1c985eeec9af25ec576f4e2375c417dc376f95
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067192"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452751"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell 和 CLI：使用 Azure 密钥保管库的客户管理密钥启用透明数据加密
 
@@ -28,19 +28,19 @@ ms.locfileid: "80067192"
 - [建议但可选] 提供硬件安全模块 (HSM) 或本地密钥存储，以便创建 TDE 保护器密钥材料的本地副本。
 - 必须安装并运行 Azure PowerShell。
 - 创建用于 TDE 的 Azure Key Vault 和密钥。
-  - [有关使用硬件安全模块 (HSM) 和 Key Vault 的说明](../key-vault/key-vault-hsm-protected-keys.md)
+  - [有关使用硬件安全模块 (HSM) 和 Key Vault 的说明](../key-vault/keys/hsm-protected-keys.md)
     - Key Vault 必须包含用于 TDE 的以下属性：
-  - [软删除](../key-vault/key-vault-ovw-soft-delete.md)和清除保护
+  - [软删除](../key-vault/general/overview-soft-delete.md)和清除保护
 - 密钥必须包含用于 TDE 的以下特性：
    - 无过期日期
    - 未禁用
    - 能够执行“获取”、“包装密钥”和“解包密钥”操作******
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 有关 Az 模块安装说明，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)。 若要了解具体的 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。
 
-有关 Key Vault 的具体信息，请参阅 [Key Vault 的 PowerShell 说明](../key-vault/quick-create-powershell.md)和[如何将 Key Vault 软删除与 PowerShell 配合使用](../key-vault/key-vault-soft-delete-powershell.md)。
+有关 Key Vault 的具体信息，请参阅 [Key Vault 的 PowerShell 说明](../key-vault/secrets/quick-create-powershell.md)和[如何将 Key Vault 软删除与 PowerShell 配合使用](../key-vault/general/soft-delete-powershell.md)。
 
 > [!IMPORTANT]
 > PowerShell Azure 资源管理器 (RM) 模块仍受 Azure SQL 数据库支持，但所有未来的开发都是针对 Az.Sql 模块的。 AzureRM 模块至少在 2020 年 12 月之前将继续接收 bug 修补程序。  Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 若要详细了解其兼容性，请参阅[新 Azure PowerShell Az 模块简介](/powershell/azure/new-azureps-module-az)。
@@ -123,7 +123,7 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
 
 若要安装所需的命令行界面 2.0 或更高版本并连接到 Azure 订阅，请参阅[安装和配置 Azure 跨平台命令行界面 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
-有关 Key Vault 的具体信息，请参阅[使用 CLI 2.0 管理 Key Vault](../key-vault/key-vault-manage-with-cli2.md) 和[如何将 Key Vault 软删除与 CLI 配合使用](../key-vault/key-vault-soft-delete-cli.md)。
+有关 Key Vault 的具体信息，请参阅[使用 CLI 2.0 管理 Key Vault](../key-vault/general/manage-with-cli2.md) 和[如何将 Key Vault 软删除与 CLI 配合使用](../key-vault/general/soft-delete-cli.md)。
 
 ## <a name="assign-an-azure-ad-identity-to-your-server"></a>将 Azure AD 标识分配到服务器
 
@@ -182,7 +182,7 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
 
 ## <a name="useful-powershell-cmdlets"></a>有用的 PowerShell cmdlet
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 - 使用 [Set-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) cmdlet 来禁用 TDE。
 
@@ -221,7 +221,7 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
 
 - 如果找不到 Key Vault，请确保在正确的订阅中操作。
 
-   # <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+   # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
    ```powershell
    Get-AzSubscription -SubscriptionId <SubscriptionId>

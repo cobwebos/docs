@@ -4,12 +4,12 @@ description: 了解 Azure 资源日志支持的服务和事件架构。
 ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
-ms.openlocfilehash: 8abd8767d9bb7e3c4336f6600b94f6b3f4ea48f1
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 352310a6e489a96c38e85b16e9504d8eb9be38b1
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81380523"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457240"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Azure 资源日志支持的服务、架构和类别
 
@@ -22,7 +22,7 @@ ms.locfileid: "81380523"
 
 ## <a name="top-level-resource-logs-schema"></a>顶级资源日志架构
 
-| 名称 | 必需/可选 | 描述 |
+| “属性” | 必需/可选 | 说明 |
 |---|---|---|
 | time | 必选 | 事件时间戳 (UTC)。 |
 | resourceId | 必选 | 发出事件的资源的资源 ID。 对于租户服务，其形式为 /tenants/tenant-id/providers/provider-name。 |
@@ -66,7 +66,7 @@ ms.locfileid: "81380523"
 | Express Route | 架构不可用。 |
 | Azure 防火墙 | 架构不可用。 |
 | IoT 中心 | [IoT 中心操作](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
-| Key Vault |[Azure 密钥保管库日志记录](../../key-vault/key-vault-logging.md) |
+| Key Vault |[Azure 密钥保管库日志记录](../../key-vault/general/logging.md) |
 | Kubernetes 服务 |[Azure 库伯内斯日志记录](../../aks/view-master-logs.md#log-event-schema) |
 | 负载均衡器 |[Azure 负载均衡器的 Log Analytics](../../load-balancer/load-balancer-monitor-log.md) |
 | 逻辑应用 |[逻辑应用 B2B 自定义跟踪架构](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |

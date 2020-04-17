@@ -5,7 +5,6 @@ services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cathysull
 manager: cathys
-editor: tysonn
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.custom: vs-azure
@@ -15,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 12/04/2019
 ms.author: cathys
 keywords: visualstudio
-ms.openlocfilehash: 2977fb6f14468429eb651e4f8a6034c060cdee2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 76c8ec8f3d691a897ec924e06b76beec746ad14a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75895950"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81451578"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 上的 Visual Studio 映像
 使用预配置的 Azure 虚拟机 (VM) 中的 Visual Studio 是从无到启动并运行的开发环境的简单快捷方法。 具有不同 Visual Studio 配置的系统映像位于 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure)。

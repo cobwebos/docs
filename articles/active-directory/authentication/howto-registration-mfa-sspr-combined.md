@@ -1,38 +1,30 @@
 ---
 title: 开始合并注册 - Azure 活动目录
-description: 启用组合 Azure AD 多重身份验证和自助服务密码重置注册（预览）
+description: 启用组合 Azure AD 多重身份验证和自助服务密码重置注册
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 11/21/2019
+ms.date: 04/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry, calebb
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e22871114f260417e8a1514546c88ec4541064a4
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 5d9544b1f4dd5ecbf66493f26c373c5502dce68a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309747"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81451069"
 ---
-# <a name="enable-combined-security-information-registration-preview"></a>启用组合安全信息注册（预览）
+# <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>在 Azure 活动目录中启用组合安全信息注册
 
-在启用新体验之前，请查看文章["组合安全信息注册（预览）"，](concept-registration-mfa-sspr-combined.md)以确保您了解此功能的功能和效果。
+在合并注册之前，用户分别注册了 Azure 多重身份验证和自助服务密码重置 （SSPR） 的身份验证方法。 人们感到困惑的是，类似的方法被用于多重身份验证和SSPR，但他们必须注册这两个功能。 现在，通过合并注册，用户可以注册一次，并获得多重身份验证和 SSPR 的优势。
+
+在启用新体验之前，请查看文章["组合安全信息注册](concept-registration-mfa-sspr-combined.md)"，以确保您了解此功能的功能和效果。
 
 ![组合安全信息注册增强体验](media/howto-registration-mfa-sspr-combined/combined-security-info-more-required.png)
-
-|     |
-| --- |
-| Azure 多重身份验证和 Azure 活动目录 （Azure AD） 自助服务密码重置的组合安全信息注册是 Azure AD 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
-|     |
-
-> [!NOTE]
-> 启用上一个预览以注册和管理安全信息的组织应完成以下步骤，以启用增强的预览体验。 对于未进行切换的组织，Microsoft 将在 2019 年 10 月 8 日将以前预览版的用户切换到增强型体验。 
-> 
-> 如果您尚未启用预览版的任何版本，您的组织将不会受到影响。
 
 ## <a name="enable-combined-registration"></a>启用合并注册
 
@@ -43,9 +35,6 @@ ms.locfileid: "81309747"
 3. **在"用户"下可以使用预览功能注册和管理安全信息**，选择为**选定的**用户组或**所有用户**启用。
 
    ![为所有用户启用组合安全信息预览体验](media/howto-registration-mfa-sspr-combined/enable-the-combined-security-info-preview.png)
-
-> [!IMPORTANT]
-> 从 2019 年 3 月开始，免费/试用 Azure AD 租户中的多重身份验证和 SSPR 用户将不能使用电话呼叫选项。 SMS 消息不受此更改的影响。 电话呼叫选项仍可供付费 Azure AD 租户中的用户使用。
 
 > [!NOTE]
 > 启用合并注册后，通过新体验注册或确认其电话号码或移动应用的用户可以使用它们进行多重身份验证和 SSPR，如果这些方法在多重身份验证和 SSPR 策略中启用。 如果随后禁用此体验，则转到以前的 SSPR 注册页`https://aka.ms/ssprsetup`的用户将需要执行多重身份验证，然后才能访问该页面。
@@ -58,7 +47,7 @@ ms.locfileid: "81309747"
 
 ## <a name="conditional-access-policies-for-combined-registration"></a>合并注册的条件访问策略
 
-使用“条件访问策略”中的“用户操作”，现在可对用户注册 Azure 多重身份验证和自助式密码重置的时间和方式提供保护。 此预览功能可供启用[合并注册预览](../authentication/concept-registration-mfa-sspr-combined.md)的组织使用。 在希望用户从中心位置（如 HR 入职期间受信任的网络位置）注册 Azure 多重身份验证和 SSPR 的组织中，可以启用此功能。 有关在条件访问中创建受信任位置的详细信息，请参阅文档 [Azure Active Directory 条件访问中的位置条件是什么？](../conditional-access/location-condition.md#named-locations)
+使用“条件访问策略”中的“用户操作”，现在可对用户注册 Azure 多重身份验证和自助式密码重置的时间和方式提供保护。 此功能可供启用[合并注册功能](../authentication/concept-registration-mfa-sspr-combined.md)的组织使用。 在希望用户从中心位置（如 HR 入职期间受信任的网络位置）注册 Azure 多重身份验证和 SSPR 的组织中，可以启用此功能。 有关在条件访问中创建受信任位置的详细信息，请参阅文档 [Azure Active Directory 条件访问中的位置条件是什么？](../conditional-access/location-condition.md#named-locations)
 
 ### <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>创建要求从受信任的位置注册的策略
 
@@ -72,7 +61,7 @@ ms.locfileid: "81309747"
 1. 在 **"分配"** 下，单击 **"用户和组**"，然后选择要应用于此策略的用户和组
 
    > [!WARNING]
-   > 必须为[组合注册预览](../authentication/howto-registration-mfa-sspr-combined.md)启用用户。
+   > 必须启用用户进行[合并注册](../authentication/howto-registration-mfa-sspr-combined.md)。
 
 1. 在 **"云应用"或"操作**"下，选择 **"用户操作"，** 检查**注册安全信息（预览）**
 1. 在**条件** > **位置**
@@ -89,14 +78,10 @@ ms.locfileid: "81309747"
 
 ## <a name="next-steps"></a>后续步骤
 
-[强制用户重新注册身份验证方法](howto-mfa-userdevicesettings.md#manage-user-authentication-options)
+如果您需要帮助，请参阅如何[排除组合安全信息注册故障](howto-registration-mfa-sspr-combined-troubleshoot.md)，或了解[Azure 活动目录条件访问中的位置条件是什么？](../conditional-access/location-condition.md)
 
-[多因素身份验证和 SSPR 的可用方法](concept-authentication-methods.md)
+要启用 Azure AD 租户中的功能，请参阅[启用自助服务密码重置](tutorial-enable-sspr.md)和[启用 Azure 多重身份验证 的](tutorial-enable-azure-mfa.md)教程。
 
-[配置自助服务密码重置](howto-sspr-deployment.md)
+了解如何[在租户中启用合并注册](howto-registration-mfa-sspr-combined.md)或[强制用户重新注册身份验证方法](howto-mfa-userdevicesettings.md#manage-user-authentication-options)。
 
-[配置 Azure 多重身份验证](howto-mfa-getstarted.md)
-
-[故障排除组合安全信息注册](howto-registration-mfa-sspr-combined-troubleshoot.md)
-
-[Azure 活动目录条件访问中的位置条件是什么？](../conditional-access/location-condition.md)
+您还可以查看 Azure[多重身份验证和 SSPR 的可用方法](concept-authentication-methods.md)。

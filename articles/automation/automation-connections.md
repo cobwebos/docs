@@ -5,18 +5,18 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7a6fc2bd5cb6f5c7ae5bef9e9741fae92518d885
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: d1ce59322b0cbfaf5a4f7b31371f0d0929a3a3ab
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392389"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457716"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure 自动化中的连接资产
 
 自动化连接资产包含从 Runbook 或 DSC 配置连接到外部服务或应用程序所需的信息。 除 URL 和端口等连接信息外，还包括身份验证所需的信息，如用户名和密码。 使用连接的值用于连接一个特定应用程序的所有属性保留在一个资产中，而不是创建多个变量。 用户可以从一个位置编辑连接的值，并且可以在单个参数中将连接名称传递给 Runbook 或 DSC 配置。 可以在 Runbook 或 DSC 配置中访问与`Get-AutomationConnection`活动的连接属性。
 
-创建连接时，必须指定*连接类型*。 连接类型是定义了一组属性的模板。 连接为其连接类型中定义的每个属性定义值。 连接类型通过集成模块添加到 Azure 自动化，或使用 [Azure 自动化 API](/previous-versions/azure/reference/mt163818(v=azure.100)) 进行创建，前提是集成模块包含连接类型，并且已导入到自动化帐户中。 否则，必须创建元数据文件以指定自动化连接类型。 有关此的详细信息，请参阅[集成模块](automation-integration-modules.md)。
+创建连接时，必须指定连接类型。 连接类型是定义了一组属性的模板。 连接为其连接类型中定义的每个属性定义值。 连接类型通过集成模块添加到 Azure 自动化，或使用 [Azure 自动化 API](/previous-versions/azure/reference/mt163818(v=azure.100)) 进行创建，前提是集成模块包含连接类型，并且已导入到自动化帐户中。 否则，必须创建元数据文件以指定自动化连接类型。 有关此的详细信息，请参阅[集成模块](automation-integration-modules.md)。
 
 >[!NOTE]
 >Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产使用为每个自动化帐户生成的唯一密钥在 Azure 自动化中加密和存储。 此密钥存储在系统托管的密钥保管库中。 在存储安全资产之前，从密钥保管库加载密钥，然后使用该密钥加密资产。 此过程由 Azure 自动化管理。

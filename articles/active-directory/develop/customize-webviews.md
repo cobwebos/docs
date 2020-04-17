@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 8552fc8555207c5b6ca59bbd0da0fdebaae2e87b
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 3b4362e4c5e69efddfbc99ef0f98ad3c5966165c
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546109"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450865"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>如何：为 iOS/macOS 自定义浏览器和 Web 视图
 
@@ -75,9 +75,9 @@ ms.locfileid: "80546109"
 | 技术    | 浏览器类型  | iOS 可用性 | macOS 可用性 | 共享 Cookie 和其他数据  | MSAL 可用性 | SSO |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|-------------:|
 | [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | 系统 | iOS12 和更高版本 | macOS 10.15 和更高版本 | 是 | iOS 和 macOS 10.15° | 具有 Safari 实例
-| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | 系统 | iOS11 和更高版本 | 不可用 | 是 | 仅限 iOS |  具有 Safari 实例
-| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | 系统 | iOS11 和更高版本 | 不可用 | 否 | 仅限 iOS | 否**
-| **SFSafariViewController** | 系统 | iOS10 | 不可用 | 是 | 仅限 iOS |  具有 Safari 实例
+| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | 系统 | iOS11 和更高版本 | 空值 | 是 | 仅限 iOS |  具有 Safari 实例
+| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | 系统 | iOS11 和更高版本 | 空值 | 否 | 仅限 iOS | 否**
+| **SFSafariViewController** | 系统 | iOS10 | 空值 | 是 | 仅限 iOS |  具有 Safari 实例
 | **WKWebView**  | 应用中 | iOS8 和更高版本 | macOS 10.10 和更高版本 | 否 | iOS 和 macOS | 否**
 
 ** 要正常进行 SSO，需要在应用之间共享令牌。 这需要使用令牌缓存或中介应用程序，例如适用于 iOS 的 Microsoft Authenticator。
@@ -102,7 +102,7 @@ Objective-C
 ```objc
 UIViewController *myParentController = ...;
 WKWebView *myCustomWebView = ...;
-MSALWebviewParameters *webViewParameters = [[MSALWebviewParameters alloc] initWithParentViewController:myParentController];
+MSALWebviewParameters *webViewParameters = [[MSALWebviewParameters alloc] initWithAuthPresentationViewController:myParentController];
 webViewParameters.webviewType = MSALWebviewTypeWKWebView;
 webViewParameters.customWebview = myCustomWebView;
 MSALInteractiveTokenParameters *interactiveParameters = [[MSALInteractiveTokenParameters alloc] initWithScopes:@[@"myscope"] webviewParameters:webViewParameters];
@@ -113,7 +113,7 @@ Swift
 ```swift
 let myParentController: UIViewController = ...
 let myCustomWebView: WKWebView = ...
-let webViewParameters = MSALWebviewParameters(parentViewController: myParentController)
+let webViewParameters = MSALWebviewParameters(authPresentationViewController: myParentController)
 webViewParameters.webviewType = MSALWebviewType.wkWebView
 webViewParameters.customWebview = myCustomWebView
 let interactiveParameters = MSALInteractiveTokenParameters(scopes: ["myscope"], webviewParameters: webViewParameters)

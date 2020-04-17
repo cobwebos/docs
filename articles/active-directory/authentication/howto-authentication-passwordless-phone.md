@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 853e7143834a340b870b71ef1a287dab136e2783
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 3412938cfc2ad3fbec293fd33f64e114e14e6f7e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654055"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450966"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>使用 Microsoft 身份验证器应用启用无密码登录（预览版）
 
@@ -41,7 +41,7 @@ ms.locfileid: "80654055"
 
 ### <a name="enable-the-combined-registration-experience"></a>启用组合注册体验
 
-无密码身份验证方法的注册功能依赖于组合的注册预览。 按照文章"[启用组合安全信息注册（预览）"](howto-registration-mfa-sspr-combined.md)中的步骤启用合并注册预览。
+无密码身份验证方法的注册功能依赖于组合注册功能。 按照文章中的步骤[启用组合安全信息注册](howto-registration-mfa-sspr-combined.md)，以启用合并注册。
 
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>启用无密码电话登录身份验证方法
 

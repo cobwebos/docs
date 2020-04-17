@@ -1,31 +1,26 @@
 ---
 title: 故障排除组合注册 - Azure 活动目录
-description: 故障排除 Azure AD 多重身份验证和自助服务密码重置组合注册（预览）
+description: 排除 Azure AD 多重身份验证和自助服务密码重置组合注册
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 11/21/2019
+ms.date: 04/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab7c38d23cb1f05e07488810640aeb791ded3d4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c840df2c53554519f62a3d1d7a7d8b305187ffb
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74847382"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450932"
 ---
-# <a name="troubleshooting-combined-security-information-registration-preview"></a>故障排除组合安全信息注册（预览）
+# <a name="troubleshooting-combined-security-information-registration"></a>故障排除组合安全信息注册
 
 本文中的信息旨在指导正在排除用户报告的合并注册体验用户报告的问题的管理员。
-
-|     |
-| --- |
-| Azure 多重身份验证和 Azure 活动目录 （Azure AD） 自助服务密码重置的组合安全信息注册是 Azure AD 的公共预览功能。 有关预览的详细信息，请参阅 Microsoft [Azure 预览的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
-|     |
 
 ## <a name="audit-logs"></a>审核日志
 
@@ -35,7 +30,7 @@ ms.locfileid: "74847382"
 
 下表列出了合并注册生成的所有审核事件：
 
-| 活动 | 状态 | 原因 | 描述 |
+| 活动 | 状态 | 原因 | 说明 |
 | --- | --- | --- | --- |
 | 用户注册了所有必需的安全信息 | Success | 用户注册了所有必需的安全信息。 | 当用户成功完成注册时，将发生此事件。|
 | 用户注册了所有必需的安全信息 | 失败 | 用户已取消安全信息注册。 | 当用户取消中断模式的注册时，将发生此事件。|
@@ -150,16 +145,16 @@ ms.locfileid: "74847382"
 
 `<script location> -path <user file location>`
 
-### <a name="disable-the-preview-experience"></a>禁用预览体验
+### <a name="disable-the-updated-experience"></a>禁用更新的体验
 
-要禁用用户的预览体验，请完成以下步骤：
+要禁用用户的更新体验，请完成以下步骤：
 
 1. 以用户管理员身份登录到 Azure 门户。
 2. 转到**Azure 活动目录** > **用户设置** > **管理访问面板预览功能的设置**。
 3. **在"用户"下可以使用预览功能注册和管理安全信息**，将选择器设置为 **"无**"，然后选择"**保存**"。
 
-将不再提示用户使用预览体验进行注册。
+将不再提示用户使用更新的体验进行注册。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解有关自助服务密码重置和 Azure 多重身份验证组合注册的公共预览](concept-registration-mfa-sspr-combined.md)
+* [了解有关自助服务密码重置和 Azure 多重身份验证的组合注册数](concept-registration-mfa-sspr-combined.md)

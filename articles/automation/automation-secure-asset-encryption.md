@@ -9,12 +9,12 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: 0b1d194209122fa71272243c80a2d4c57f6834a1
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: a82d2b6d9521ba7dd5e7b194c26ff8fe5a100871
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547755"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457478"
 ---
 # <a name="encrypt-secure-assets-in-azure-automation"></a>加密 Azure 自动化中的安全资产
 
@@ -32,7 +32,7 @@ Azure 自动化中的安全资产包括凭据、证书、连接和加密的变�
 
 您可以使用自己的密钥管理自动化帐户的安全资产加密。 在自动化帐户级别指定客户管理的密钥时，该密钥用于保护和控制对自动化帐户帐户帐户加密密钥的访问。 这反过来又用于加密和解密所有安全资产。 使用客户管理的密钥可以更灵活地创建、轮换、禁用和撤销访问控制。 您还可以审核用于保护安全资产的加密密钥。
 
-使用 Azure 密钥保管库存储客户管理的密钥。 可以创建自己的密钥并将其存储在 Key Vault 中，或者使用 Azure Key Vault API 来生成密钥。  有关 Azure 密钥保管库的详细信息，请参阅[什么是 Azure 密钥保管库？](../key-vault/key-vault-overview.md)
+使用 Azure 密钥保管库存储客户管理的密钥。 可以创建自己的密钥并将其存储在 Key Vault 中，或者使用 Azure Key Vault API 来生成密钥。  有关 Azure 密钥保管库的详细信息，请参阅[什么是 Azure 密钥保管库？](../key-vault/general/overview.md)
 
 ## <a name="enable-customer-managed-keys-for-an-automation-account"></a>为自动化帐户启用客户管理的密钥
 
@@ -192,7 +192,7 @@ PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000
 
 ## <a name="next-steps"></a>后续步骤
 
-- [什么是 Azure Key Vault？](../key-vault/key-vault-overview.md)
+- [什么是 Azure Key Vault？](../key-vault/general/overview.md)
 
 - [Azure 自动化中的证书资产](shared-resources/certificates.md)
 

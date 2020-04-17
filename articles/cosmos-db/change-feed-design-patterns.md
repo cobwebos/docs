@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 7e6981fb57421846b491693bb6195ecef31a3773
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 012d27b44ecfbdd460adf241742df397880f78c6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986299"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450345"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>更改 Azure Cosmos DB 中的源设计模式
 
@@ -99,7 +99,7 @@ Azure Cosmos DB 是事件源模式中仅集中追加的持久数据存储，因�
 
 1. 客户将项目 A 添加到购物车
 2. 客户将项目 B 添加到购物车
-3. 客户添加从购物车中删除项目 A
+3. 客户从购物车中删除项目 A
 4. 客户签出和购物车内容已发货
 
 为每个客户维护当前购物车内容的物化视图。 此应用程序必须确保按这些事件发生的顺序处理这些事件。 例如，如果在项目 A 删除之前处理购物车结帐，则客户很可能已装运项目 A，而不是所需的项目 B。为了保证这四个事件按其发生顺序进行处理，它们应属于相同的分区键值。 如果选择**用户名**（每个客户都有唯一的用户名）作为分区键，则可以保证这些事件以写入 Azure Cosmos DB 的相同顺序显示在更改源中。

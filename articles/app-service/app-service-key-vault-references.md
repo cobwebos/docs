@@ -6,39 +6,39 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 7fdb7c980a278e2dcd4b64a4b70de50721d0b72a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd0a03ea76d517486bb9bda6d9628fb529166dd8
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280334"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453721"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>使用应用服务和 Azure Functions 的 Key Vault 引用
 
-本主题介绍在不需进行任何代码更改的情况下，如何使用应用服务或 Azure Functions 应用程序的 Azure Key Vault 中的机密。 [Azure Key Vault](../key-vault/key-vault-overview.md) 是一项服务，可以提供集中式机密管理，并且可以完全控制访问策略和审核历史记录。
+本主题介绍在不需进行任何代码更改的情况下，如何使用应用服务或 Azure Functions 应用程序的 Azure Key Vault 中的机密。 [Azure Key Vault](../key-vault/general/overview.md) 是一项服务，可以提供集中式机密管理，并且可以完全控制访问策略和审核历史记录。
 
 ## <a name="granting-your-app-access-to-key-vault"></a>授予应用对 Key Vault 的访问权限
 
 若要从 Key Vault 读取机密，需创建一个保管库并授予应用访问该保管库的权限。
 
-1. 按照 [Key Vault 快速入门](../key-vault/quick-create-cli.md)中的说明创建一个密钥保管库。
+1. 按照 [Key Vault 快速入门](../key-vault/secrets/quick-create-cli.md)中的说明创建一个密钥保管库。
 
 1. 为应用程序创建一个[系统分配托管标识](overview-managed-identity.md)。
 
    > [!NOTE] 
    > Key Vault 引用目前仅支持系统分配托管标识。 不能使用用户分配标识。
 
-1. 在 Key Vault 中为此前创建的应用程序标识创建一项[访问策略](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies)。 在此策略上启用“获取”机密权限。 请勿配置“授权的应用程序”或 `applicationId` 设置，因为这与托管标识不兼容。
+1. 在 Key Vault 中为此前创建的应用程序标识创建一项[访问策略](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies)。 在此策略上启用“获取”机密权限。 请勿配置“授权的应用程序”或 `applicationId` 设置，因为这与托管标识不兼容。
 
     > [!NOTE]
-    > Key Vault 引用目前无法解析 Key Vault 中存储的机密，并存在[网络限制](../key-vault/key-vault-overview-vnet-service-endpoints.md)。
+    > Key Vault 引用目前无法解析 Key Vault 中存储的机密，并存在[网络限制](../key-vault/general/overview-vnet-service-endpoints.md)。
 
 ## <a name="reference-syntax"></a>引用语法
 
 Key Vault 引用采用 `@Microsoft.KeyVault({referenceString})` 格式，其中 `{referenceString}` 将替换为下述选项之一：
 
 > [!div class="mx-tdBreakAll"]
-> | 引用字符串                                                            | 描述                                                                                                                                                                                 |
+> | 引用字符串                                                            | 说明                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | SecretUri=_secretUri_                                                       | **SecretUri** 应该是 Key Vault 中机密的完整数据平面 URI（包括版本），例如 https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
 > | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | **VaultName** 应该是 Key Vault 资源的名称。 **SecretName** 应该是目标机密的名称。 **SecretVersion** 应该是要使用的机密的版本。 |

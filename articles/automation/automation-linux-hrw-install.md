@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9dc4dce5a7af49529924881321b1a5080293a585
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: f2584a8d4e68b7c16b3acdc29f64f0a19d83d735
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405626"
+ms.locfileid: "81457665"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>部署 Linux 混合 Runbook 辅助角色
 
@@ -76,7 +76,7 @@ Linux 混合 Runbook 辅助角色的最低要求如下：
 
 1. 使用以下方法之一，在 Azure 中启用“自动化混合辅助角色”解决方案：
 
-   * 使用[将 Azure Monitor 日志解决方案添加到工作区](../log-analytics/log-analytics-add-solutions.md)中所述的过程，将“自动化混合辅助角色”解决方案添加到订阅。
+   * 使用"[将 Azure 监视器日志解决方案添加到工作区](../log-analytics/log-analytics-add-solutions.md)"的过程，将自动化混合辅助角色解决方案添加到订阅中。
    * 运行以下 cmdlet：
 
         ```azurepowershell-interactive

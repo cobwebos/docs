@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: 7a2becf8cb43568383c324bb9f4f5b2e7b844268
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7da2fa2ddfbd9c71563dd8bd2e17b14c6dee62b3
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77667136"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81455421"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Monitor 中的 Azure Key Vault 分析解决方案
 
@@ -94,9 +94,9 @@ Azure Key Vault 解决方案直接从 Key Vault 收集诊断日志。
     在任何日志搜索页上，都可以按时间、详细结果和日志搜索历史记录查看结果。 也可以按方面进行筛选以缩减搜索结果。
 
 ## <a name="azure-monitor-log-records"></a>Azure Monitor 日志记录
-Azure 密钥保管库解决方案可分析从 Azure 诊断中的 [AuditEvent 日志](../../key-vault/key-vault-logging.md)收集的类型为 **KeyVaults** 的记录。  这些记录的属性如下表中所列：  
+Azure 密钥保管库解决方案可分析从 Azure 诊断中的 [AuditEvent 日志](../../key-vault/general/logging.md)收集的类型为 **KeyVaults** 的记录。  这些记录的属性如下表中所列：  
 
-| properties | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | `Type` |AzureDiagnostics** |
 | `SourceSystem` |*Azure* |
@@ -107,7 +107,7 @@ Azure 密钥保管库解决方案可分析从 Azure 诊断中的 [AuditEvent 日
 | `httpStatusCode_d` |由请求返回的 HTTP 状态代码（例如，200**） |
 | `id_s` |请求的唯一 ID |
 | `identity_claim_appid_g` | 应用程序 ID 的 GUID |
-| `OperationName` |[Azure 密钥保管库日志记录](../../key-vault/key-vault-logging.md)中所述操作的名称 |
+| `OperationName` |[Azure 密钥保管库日志记录](../../key-vault/general/logging.md)中所述操作的名称 |
 | `OperationVersion` |客户端请求的 REST API 版本（例如，2015-06-01**） |
 | `requestUri_s` |请求的 URI |
 | `Resource` |密钥保管库的名称 |
