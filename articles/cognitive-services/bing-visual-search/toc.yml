@@ -80,7 +80,7 @@
       maintainContext: true
 - name: 资源
   items:
-    - name: 语言和区域支持
+    - name: 语言支持
       href: language-support.md
     - name: 获取免费访问密钥
       href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api'
