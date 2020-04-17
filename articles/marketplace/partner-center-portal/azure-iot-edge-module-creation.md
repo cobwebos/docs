@@ -398,7 +398,7 @@ Azure 政府服务处理受某些政府法规和要求约束的数据。 例如�
 
 **Azure 容器注册表的管理员用户名**：提供与具有容器映像的 Azure 容器注册表关联的[管理员用户名](https://aka.ms/AdminAccountContainerRegistry)。 需要用户名和密码来确保您的公司有权访问注册表。 要获取管理员用户名和密码，请使用 Azure 命令行接口 （CLI） 将**启用管理员**的属性设置为**True。** 可以选择将**管理员用户**设置为在 Azure 门户中**启用**。
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-admin-user.png" alt-text="演示更新容器注册表"对话框。":::
+:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-admin-user.png" alt-text="演示更新容器注册表 对话框。":::
 
 **Azure 容器注册表的密码**：为与 Azure 容器注册表关联的管理员用户名提供密码，并具有容器映像。 需要用户名和密码来确保您的公司有权访问注册表。 您可以通过使用[show 命令](https://aka.ms/azacrcredentialshow)访问**容器注册表** > **访问密钥**或使用 Azure CLI 从 Azure 门户获取密码。
 
