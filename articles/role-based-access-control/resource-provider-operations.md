@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 04/15/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 274e85a914ebec31a03f1149bc4467ea142e7255
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 50a1971fed4cce49eea1922bc9b81f06667f4dd8
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81482110"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641005"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure 资源管理器资源提供程序操作
 
@@ -1681,7 +1681,7 @@ Azure 服务：经典部署模型存储
 > | 操作 | Microsoft.ClassicStorage/checkStorageAccountAvailability/read | 获取存储帐户的可用性。 |
 > |  | **磁盘** |  |
 > | 操作 | Microsoft.ClassicStorage/disks/read | 返回存储帐户磁盘。 |
-> |  | **图像** |  |
+> |  | **images** |  |
 > | 操作 | Microsoft.ClassicStorage/images/read | 返回映像。 |
 > |  | **图像/操作状态** |  |
 > | 操作 | Microsoft.ClassicStorage/images/operationstatuses/read | 获取映像操作状态。 |
@@ -2185,7 +2185,7 @@ Azure 服务：[虚拟机](../virtual-machines/index.yml)、[虚拟机缩放集]
 > | 操作 | Microsoft.Compute/hostGroups/hosts/read | 获取主机的属性 |
 > | 操作 | Microsoft.Compute/hostGroups/hosts/write | 创建新的主机，或更新现有的主机 |
 > | 操作 | Microsoft.Compute/hostGroups/hosts/delete | 删除主机 |
-> |  | **图像** |  |
+> |  | **images** |  |
 > | 操作 | Microsoft.Compute/images/read | 获取映像的属性 |
 > | 操作 | Microsoft.Compute/images/write | 创建新的映像，或更新现有的映像 |
 > | 操作 | Microsoft.Compute/images/delete | 删除映像 |
@@ -4499,7 +4499,7 @@ Azure 服务[：Azure 资源管理器](../azure-resource-manager/index.yml)
 > | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Features/register/action | 注册某个订阅的功能。 |
-> |  | **features** |  |
+> |  | **特征** |  |
 > | 操作 | Microsoft.Features/features/read | 获取订阅的功能。 |
 > |  | **操作** |  |
 > | 操作 | Microsoft.Features/operations/read | 获取操作列表。 |
@@ -5182,7 +5182,7 @@ Azure 服务[：Azure 数字孪生](../digital-twins/index.yml)
 > | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.IoTSpaces/register/action | 注册 Microsoft.IoTSpaces Graph 资源提供程序的订阅，以便能够创建资源 |
-> |  | **图形** |  |
+> |  | **Graph** |  |
 > | 操作 | Microsoft.IoTSpaces/Graph/write | 创建 Microsoft.IoTSpaces Graph 资源 |
 > | 操作 | Microsoft.IoTSpaces/Graph/read | 获取 Microsoft.IoTSpaces Graph 资源 |
 > | 操作 | Microsoft.IoTSpaces/Graph/delete | 删除 Microsoft.IoTSpaces Graph 资源 |
@@ -10164,7 +10164,7 @@ Azure 服务[：Azure DevOps](https://docs.microsoft.com/azure/devops/)
 > |  | **账户/项目** |  |
 > | 操作 | Microsoft.VisualStudio/Account/Project/Read | 读取帐户/项目 |
 > | 操作 | Microsoft.VisualStudio/Account/Project/Write | 设置帐户/项目 |
-> |  | **分机** |  |
+> |  | **扩展名** |  |
 > | 操作 | Microsoft.VisualStudio/Extension/Write | 设置扩展 |
 > | 操作 | Microsoft.VisualStudio/Extension/Delete | 删除扩展 |
 > | 操作 | Microsoft.VisualStudio/Extension/Read | 读取扩展 |
@@ -10859,5 +10859,5 @@ Azure 服务[：Azure 监视器](../azure-monitor/index.yml)
 ## <a name="next-steps"></a>后续步骤
 
 - [将资源提供程序与服务匹配](../azure-resource-manager/management/azure-services-resource-providers.md)
-- [Azure 自定义角色](custom-roles.md)
 - [Azure 内置角色](built-in-roles.md)
+- [云采用框架：Azure 中的资源访问管理](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

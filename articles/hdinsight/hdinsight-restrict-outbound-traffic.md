@@ -6,27 +6,27 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.openlocfilehash: 3432f981df3f666d6276eee4564ef33000faa6b1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/17/2020
+ms.openlocfilehash: d4bf2d1d4beeb00325d54e091a00438073509eef
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81410899"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641315"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>使用防火墙为 Azure HDInsight 群集配置出站网络流量
 
-本文提供使用 Azure 防火墙保护来自 HDInsight 群集的出站流量的步骤。 以下步骤假定您正在为现有群集配置 Azure 防火墙。 如果要部署新群集并在防火墙后面部署，请先创建 HDInsight 群集和子网，然后按照本指南中的步骤操作。
+本文提供使用 Azure 防火墙保护来自 HDInsight 群集的出站流量的步骤。 以下步骤假定您正在为现有群集配置 Azure 防火墙。 如果要在防火墙后面部署新群集，请先创建 HDInsight 群集和子网。 然后按照本指南中的步骤操作。
 
 ## <a name="background"></a>背景
 
-Azure HDInsight 群集通常部署在你自己的虚拟网络中。 群集在该虚拟网络外部的服务中包含依赖项，这些依赖项需要网络访问权限才能正常运行。
+HDInsight 群集通常部署在虚拟网络中。 群集依赖于该虚拟网络以外的服务。
 
 有多个依赖项需要入站流量。 无法通过防火墙设备发送入站管理流量。 此流量的源地址是已知的，已在[此处](hdinsight-management-ip-addresses.md)发布。 还可以使用此信息创建网络安全组 (NSG) 规则用于保护发往群集的入站流量。
 
-HDInsight 出站流量依赖项几乎完全是使用 FQDN 定义的，而这些 FQDN 并未附带静态 IP 地址。 缺少静态地址意味着无法使用网络安全组 (NSG) 锁定来自群集的出站流量。 地址会频率更改，用户无法基于当前名称解析设置规则，然后使用这些规则来设置 NSG 规则。
+HDInsight 出站流量依赖项几乎完全使用 FQDN 定义。 其背后没有静态 IP 地址。 缺少静态地址意味着网络安全组 （NSG） 无法锁定群集中的出站流量。 地址更改频率足够大，无法根据当前名称解析和使用设置规则。
 
-保护出站地址的解决方案是使用可基于域名控制出站流量的防火墙设备。 Azure 防火墙可以根据目标的 FQDN 或 [FQDN 标记](../firewall/fqdn-tags.md)限制出站 HTTP 和 HTTPS 流量。
+使用防火墙保护出站地址，该防火墙可以基于域名控制出站流量。 Azure 防火墙根据目标或[FQDN 标记](../firewall/fqdn-tags.md)的 FQDN 限制出站流量。
 
 ## <a name="configuring-azure-firewall-with-hdinsight"></a>在 HDInsight 中配置 Azure 防火墙
 
@@ -63,7 +63,7 @@ HDInsight 出站流量依赖项几乎完全是使用 FQDN 定义的，而这些 
     | properties|  值|
     |---|---|
     |名称| FwAppRule|
-    |优先度|200|
+    |Priority|200|
     |操作|Allow|
 
     **FQDN 标记部分**
@@ -74,7 +74,7 @@ HDInsight 出站流量依赖项几乎完全是使用 FQDN 定义的，而这些 
 
     **目标 FQDN 部分**
 
-    | 名称 | 源地址 | 协议:端口 | 目标 FQDN | 说明 |
+    | 名称 | 源地址 | `Protocol:Port` | 目标 FQDN | 说明 |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https:443 | login.windows.net | 允许 Windows 登录活动 |
     | Rule_3 | * | https:443 | login.microsoftonline.com | 允许 Windows 登录活动 |
@@ -97,7 +97,7 @@ HDInsight 出站流量依赖项几乎完全是使用 FQDN 定义的，而这些 
     | properties|  值|
     |---|---|
     |名称| FwNetRule|
-    |优先度|200|
+    |Priority|200|
     |操作|Allow|
 
     **IP 地址部分**
@@ -106,14 +106,14 @@ HDInsight 出站流量依赖项几乎完全是使用 FQDN 定义的，而这些 
     | --- | --- | --- | --- | --- | --- |
     | Rule_1 | UDP | * | * | 123 | 时间服务 |
     | Rule_2 | Any | * | DC_IP_Address_1、DC_IP_Address_2 | * | 如果使用企业安全包 （ESP），则在 IP 地址部分中添加网络规则，允许与 ESP 群集的 AAD-DS 通信。 可以在门户的 AAD-DS 部分找到域控制器的 IP 地址 |
-    | Rule_3 | TCP | * | Data Lake Storage 帐户的 IP 地址 | * | 如果使用的是 Azure Data Lake Storage，则可以在“IP 地址”部分中添加一个网络规则来解决 ADLS Gen1 和 Gen2 的 SNI 问题。 此选项会将流量路由到防火墙，而这可能会导致增大较大数据负载的费用，但流量将会在防火墙日志中记录并且可供审核。 确定 Data Lake Storage 帐户的 IP 地址。 可以使用 `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` 等 PowerShell 命令将 FQDN 解析成 IP 地址。|
+    | Rule_3 | TCP | * | Data Lake Storage 帐户的 IP 地址 | * | 如果使用的是 Azure Data Lake Storage，则可以在“IP 地址”部分中添加一个网络规则来解决 ADLS Gen1 和 Gen2 的 SNI 问题。 此选项会将流量路由到防火墙。 这可能导致大型数据加载的成本增加，但流量将在防火墙日志中记录和审核。 确定 Data Lake Storage 帐户的 IP 地址。 您可以使用 PowerShell 命令（例如`[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")`将 FQDN 解析为 IP 地址）。|
     | Rule_4 | TCP | * | * | 12000 | （可选）如果使用的是 Log Analytics，请在“IP 地址”部分中创建一个网络规则以实现与 Log Analytics 工作区的通信。 |
 
     **服务标记部分**
 
     | 名称 | 协议 | 源地址 | 服务标记 | 目标端口 | 说明 |
     | --- | --- | --- | --- | --- | --- |
-    | Rule_7 | TCP | * | SQL | 1433 | 在 SQL 的“服务标记”部分中配置允许你记录和审核 SQL 流量的网络规则，除非你在 HDInsight 子网中为 SQL Server 配置了服务终结点来绕过防火墙。 |
+    | Rule_7 | TCP | * | SQL | 1433 | 在 SQL 的服务标记部分中配置网络规则，以允许您记录和审核 SQL 流量。 除非您在 HDInsight 子网上为 SQL Server 配置了服务终结点，否则该子网将绕过防火墙。 |
 
    ![标题：输入应用程序规则集合](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
@@ -153,7 +153,7 @@ HDInsight 出站流量依赖项几乎完全是使用 FQDN 定义的，而这些 
 
 1. 选择 **= 关联**。
 
-1. 在“关联子网”屏幕上，选择已创建群集的虚拟网络以及用于 HDInsight 群集的“子网”。********
+1. 在 **"关联子网"** 屏幕上，选择群集创建的虚拟网络。 以及用于 HDInsight 群集的**子网**。
 
 1. 选择“确定”  。
 
@@ -171,13 +171,13 @@ HDInsight 出站流量依赖项几乎完全是使用 FQDN 定义的，而这些 
 
 Azure 防火墙可将日志发送到一些不同的存储系统。 有关为防火墙配置日志记录的说明，请按照教程中的步骤[：监视 Azure 防火墙日志和指标](../firewall/tutorial-diagnostics.md)。
 
-完成日志记录设置后，将数据记录到 Log Analytics 时，可以使用如下所示的查询查看阻止的流量：
+完成日志记录设置后，如果您使用的是日志分析，则可以使用查询（如：
 
 ```Kusto
 AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 ```
 
-当您不知道所有应用程序依赖项时，首次让应用程序正常工作时，将 Azure 防火墙与 Azure 监视器日志集成非常有用。 可以通过[在 Azure Monitor 中分析日志数据](../azure-monitor/log-query/log-query-overview.md)详细了解 Azure Monitor 日志
+首次使应用程序正常工作时，将 Azure 防火墙与 Azure 监视器日志集成非常有用。 特别是当您不知道所有应用程序依赖项时。 可以通过[在 Azure Monitor 中分析日志数据](../azure-monitor/log-query/log-query-overview.md)详细了解 Azure Monitor 日志
 
 若要了解 Azure 防火墙的缩放限制以及如何提高请求，请参阅[此文档](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)或参阅[常见问题解答](../firewall/firewall-faq.md)。
 
@@ -185,14 +185,14 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 成功设置防火墙后，可以使用内部终结点 （`https://CLUSTERNAME-int.azurehdinsight.net`） 从虚拟网络内部访问 Ambari。
 
-若要使用公共终结点 (`https://CLUSTERNAME.azurehdinsight.net`) 或 SSH 终结点 (`CLUSTERNAME-ssh.azurehdinsight.net`)，请确保路由表和 NSG 规则中包含适当的路由，以避免出现[此处](../firewall/integrate-lb.md)所述的非对称路由问题。 具体而言，在这种情况下，需要允许入站 NSG 规则中的客户端 IP 地址，并在将下一跃点设置为 `internet` 的情况下，将此地址添加到用户定义的路由表中。 如果未正确设置，将会出现超时错误。
+若要使用公共终结点 (`https://CLUSTERNAME.azurehdinsight.net`) 或 SSH 终结点 (`CLUSTERNAME-ssh.azurehdinsight.net`)，请确保路由表和 NSG 规则中包含适当的路由，以避免出现[此处](../firewall/integrate-lb.md)所述的非对称路由问题。 具体而言，在这种情况下，需要允许入站 NSG 规则中的客户端 IP 地址，并在将下一跃点设置为 `internet` 的情况下，将此地址添加到用户定义的路由表中。 如果路由设置不正确，您将看到超时错误。
 
 ## <a name="configure-another-network-virtual-appliance"></a>配置另一个网络虚拟设备
 
 > [!Important]
 > **仅当**所要配置的网络虚拟设备 (NVA) 不是 Azure 防火墙时，才需要以下信息。
 
-前面的说明可帮助你配置 Azure 防火墙，以限制来自 HDInsight 群集的出站流量。 对于许多常见的重要方案，Azure 防火墙已自动配置为允许流量。 若要使用另一个网络虚拟设备，需要手动配置其他一些功能。 配置网络虚拟设备时注意以下几点：
+前面的说明可帮助你配置 Azure 防火墙，以限制来自 HDInsight 群集的出站流量。 对于许多常见的重要方案，Azure 防火墙已自动配置为允许流量。 使用另一个网络虚拟设备需要配置许多附加功能。 在配置网络虚拟设备时，请记住以下因素：
 
 * 应在支持服务终结点的服务中配置服务终结点。
 * IP 地址依赖项适用于非 HTTP/S 流量（TCP 和 UDP 流量）。
@@ -213,7 +213,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 | **终结点** | **详细信息** |
 |---|---|
 | \*:123 | NTP 时钟检查。 在端口 123 上的多个终结点中检查流量 |
-| [此处](hdinsight-management-ip-addresses.md)发布的 IP | 这是一些 HDInsight 服务 |
+| [此处](hdinsight-management-ip-addresses.md)发布的 IP | 这些 IP 是 HDInsight 服务 |
 | ESP 群集的 AAD-DS 专用 IP |
 | \*:16800，用于 KMS Windows 激活 |
 | \*12000，用于 Log Analytics |

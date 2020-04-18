@@ -47,7 +47,7 @@
           href: media-services-portal-live-passthrough-get-started.md
         - name: .NET
           href: media-services-dotnet-live-encode-with-onpremises-encoders.md
-- name: 如何
+- name: 操作方式
   items:
     - name: 旧组件
       displayName: 'deprecated, deprecation, retired, retirement, legacy'
@@ -257,8 +257,6 @@
           items:
             - name: Haivision KB 编码器
               href: media-services-configure-kb-live-encoder.md
-            - name: NewTek TriCaster 编码器
-              href: media-services-configure-tricaster-live-encoder.md
             - name: Wirecast 编码器
               href: media-services-configure-wirecast-live-encoder.md
         - name: 处理长时间运行的操作
@@ -430,7 +428,7 @@
           href: media-services-dotnet-check-job-progress-with-queues.md
         - name: 使用 Webhook 监视作业通知
           href: media-services-dotnet-check-job-progress-with-webhooks.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 常见问题
           href: media-services-frequently-asked-questions.md

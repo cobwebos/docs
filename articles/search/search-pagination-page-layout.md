@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 451e83fa6ab547536a4cfd85304930e749a8247f
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 0f815003449f0600bce1cb8927b92b85b51b09a1
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998396"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641624"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中使用搜索结果
 
@@ -108,10 +108,22 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
     }
 ```
 
-> [!IMPORTANT]
-> 2020 年 7 月 15 日之后创建的服务将提供不同的突出显示体验。 该日期之前创建的服务在突出显示行为中不会改变。 使用此更改，将仅返回与完整短语查询匹配的短语。 此外，还可以指定为高光返回的片段大小。
->
-> 编写实现命中突出显示的客户端代码时，请注意此更改。 请注意，除非您创建全新的搜索服务，否则这不会影响您。
+### <a name="new-behavior-starting-july-15"></a>新行为（从 7 月 15 日开始）
+
+2020 年 7 月 15 日之后创建的服务将提供不同的突出显示体验。 该日期之前创建的服务在突出显示行为中不会改变。 
+
+使用新行为：
+
+* 将仅返回与完整短语查询匹配的短语。 查询"超级碗"将返回如下所示的亮点：
+
+    ```html
+    '<em>super bowl</em> is super awesome with a bowl of chips'
+    ```
+  请注意，芯片术语*碗*没有任何突出显示，因为它与完整短语不匹配。
+  
+* 可以指定为高光返回的片段大小。 片段大小指定为字符数（最大为 1000 个字符）。
+
+编写实现命中突出显示的客户端代码时，请注意此更改。 请注意，除非您创建全新的搜索服务，否则这不会影响您。
 
 ## <a name="next-steps"></a>后续步骤
 

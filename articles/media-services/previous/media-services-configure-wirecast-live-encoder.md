@@ -15,18 +15,16 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: cenkdin;anilmur
-ms.openlocfilehash: 1d9d63aa6b3da1b8d8389722bd5af0eeed585d03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8e3705aaecb0760513f0605aece89b7ffc0044a8
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77134976"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641647"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>使用 Wirecast 编码器发送单比特率实时流 
 > [!div class="op_single_selector"]
 > * [有线广播](media-services-configure-wirecast-live-encoder.md)
-> * [Tricaster](media-services-configure-tricaster-live-encoder.md)
->
 >
 
 本文说明如何配置 [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) 实时编码器，以便将单比特率流发送到用于实时编码的 AMS 频道。 有关详细信息，请参阅 [使用能够通过 Azure 媒体服务执行实时编码的频道](media-services-manage-live-encoder-enabled-channels.md)。
@@ -94,7 +92,7 @@ ms.locfileid: "77134976"
 2. 导航到“输出”**** 选项卡并选择“输出设置…”****，以配置输出。
 
     确保已将“输出目标”**** 设置为“RTMP 服务器”****。
-3. 单击“确定”。
+3. 单击 **“确定”** 。
 4. 在设置页上，将“目标”**** 字段设置为“Azure 媒体服务”****。
 
     编码配置文件已预先选择为 **Azure H.264 720p 16:9 (1280x720)**。 要自定义这些设置，请选择下拉列表右侧的齿轮图标，并选择“新建预设”****。
@@ -134,7 +132,7 @@ ms.locfileid: "77134976"
 
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast5.png)
 
-1. 选择“确定”。
+1. 选择“确定”  。
 2. 在“Wirecast”**** 主屏幕上，确认视频和音频的输入源已就绪，并单击左上角的“流”****。
 
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)

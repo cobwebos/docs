@@ -14,17 +14,16 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: afc0fcb6751a08b41010fa569c67a9827e0abec0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: babb5a10818c8108bae34402962fd2503dbecbdc
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77131931"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641686"
 ---
 # <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>使用 Haivision KB 实时编码器发送单比特率实时流  
 > [!div class="op_single_selector"]
 > * [Haivision](media-services-configure-kb-live-encoder.md)
-> * [Tricaster](media-services-configure-tricaster-live-encoder.md)
 > * [有线广播](media-services-configure-wirecast-live-encoder.md)
 
 本主题说明如何配置 [Haivision KB 实时编码器](https://www.haivision.com/products/kb-series/)，以便将单比特率流发送到用于实时编码的 AMS 频道。 有关详细信息，请参阅 [使用能够通过 Azure 媒体服务执行实时编码的频道](media-services-manage-live-encoder-enabled-channels.md)。

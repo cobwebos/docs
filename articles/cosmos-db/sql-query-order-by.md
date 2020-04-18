@@ -4,18 +4,18 @@ description: 了解 Azure Cosmos DB 的 SQL ORDER BY 子句。 将 SQL 用作 Az
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 04/17/2020
 ms.author: tisande
-ms.openlocfilehash: b88184be39a41ec42f8fb304a7511073f645f1cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 70702ee4a77e8b3c46de4354f3394bca4080d837
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77188733"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641400"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 ORDER BY 子句
 
-可选的 ORDER BY 子句指定查询返回的结果的排序顺序。
+可选`ORDER BY`子句指定查询返回的结果的排序顺序。
 
 ## <a name="syntax"></a>语法
   
@@ -25,15 +25,15 @@ ORDER BY <sort_specification>
 <sort_expression> ::= {<scalar_expression> [ASC | DESC]} [ ,...n ]  
 ```  
 
-## <a name="arguments"></a>自变量
+## <a name="arguments"></a>参数
   
 - `<sort_specification>`  
   
    指定查询结合集要进行排序的属性或表达式。 可将排序列指定为名称或属性别名。  
   
-   可以指定多个属性。 属性名称必须唯一。 ORDER BY 子句中排序属性的顺序定义了排序结果集的组织方式。 即：结果集按第一个属性排序，然后该排序列表按第二个属性排序，依此类推。  
+   可以指定多个属性。 属性名称必须唯一。 `ORDER BY`子句中排序属性的顺序定义排序结果集的组织。 即：结果集按第一个属性排序，然后该排序列表按第二个属性排序，依此类推。  
   
-   ORDER BY 子句中引用的属性名称必须与 select 列表中的某个属性或者与在 FROM 子句中指定的集合中定义的某个属性相对应，且不存在任何多义性。  
+   `ORDER BY`子句中引用的属性名称必须对应于选择列表中的属性或`FROM`子句中指定的集合中定义的属性，没有任何含糊不清之处。  
   
 - `<sort_expression>`  
   
@@ -45,7 +45,7 @@ ORDER BY <sort_specification>
   
 - `ASC | DESC`  
   
-   指定按升序或降序排列指定列中的值。 ASC 按从最低值到最高值的顺序进行排序。 DESC 按从最高值到最低值的顺序进行排序。 ASC 是默认排序顺序。 Null 值被视为最低的可能值。  
+   指定按升序或降序排列指定列中的值。 `ASC`从最低值到最高值进行排序。 `DESC`从最高值到最低值进行排序。 `ASC`是默认排序顺序。 Null 值被视为最低的可能值。  
   
 ## <a name="remarks"></a>备注  
   
@@ -152,7 +152,7 @@ ORDER BY <sort_specification>
     ]
 ```
 
-如果我们更新容器的索引策略以显式包含 的`lastName`路径，我们将在查询结果中包括具有未定义排序属性的文档。 您必须显式定义路径才能导致此标量值（而不是超出该值）。 应在索引策略中使用`?`路径定义中的字符，以确保显式索引属性，并且没有超出该属性`lastName`的其他嵌套路径。
+如果我们更新容器的索引策略以显式包含 的`lastName`路径，我们将在查询结果中包括具有未定义排序属性的文档。 您必须显式定义路径才能导致此标量值（而不是超出该值）。 应在索引策略中使用`?`路径定义中的字符，以确保显式索引属性，并且没有超出该属性`lastName`的其他嵌套路径。 如果`Order By`查询使用[复合索引](index-policy.md#composite-indexes)，则结果将始终在查询结果中包含具有未定义排序属性的文档。
 
 下面是一个示例索引策略，允许您在查询结果中显示未定义`lastName`的文档：
 

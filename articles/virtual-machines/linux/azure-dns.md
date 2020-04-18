@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 3d5ecaf67dcff182c7dace474b7bda45cdfd5c58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0910b31685aa408c319b40ea23782b11724b6237
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78969322"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641714"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure 中 Linux 虚拟机的 DNS 名称解析选项
 Azure 默认为单个虚拟网络中的所有虚拟机提供 DNS 名称解析。 在 Azure 托管的虚拟机上配置自己的 DNS 服务，即可实现自己的 DNS 名称解析解决方案。 以下方案有助于选择适合的解决方案。
@@ -97,7 +97,7 @@ DNS 主要是一个 UDP 协议。 UDP 协议不保证消息传递，所以 DNS �
 resolv.conf 文件是自动生成的，不应进行编辑。 添加“options”行的具体步骤因发行版而异：
 
 **乌本图**（使用管解）
-1. 将“options”行添加到“/etc/resolveconf/resolv.conf.d/head”。
+1. 将选项行添加到"/等/resolvconf/resolv.conf.d/head"。
 2. 运行“resolvconf -u”以更新。
 
 **SUSE（** 使用网联）

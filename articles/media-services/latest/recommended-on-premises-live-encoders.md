@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 04/16/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: bbd2929e245fa5fc01245e7bd02e537db8d5ef36
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 0676b6b183c64dcd0fb15b87de48a4afed3a0011
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536329"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641807"
 ---
 # <a name="tested-on-premises-live-streaming-encoders"></a>测试的本地实时流式处理器
 
@@ -57,7 +57,6 @@ ms.locfileid: "81536329"
 - 由于 TLS 1.2 要求，远程直播有线广播（版本 13.0.2 或更高版本）
 - 远程有线广播 S（仅支持 RTMP）
 - Teradek Slice 756
-- TriCaster 8000
 - VMIX
 - xStream
 - [Ffmpeg](https://www.ffmpeg.org)
@@ -105,7 +104,7 @@ ms.locfileid: "81536329"
 > [!IMPORTANT]
 > 观察机器的物理状况（CPU/内存/等），因为将片段上载到云涉及 CPU 和 IO 操作。 如果更改编码器中的任何设置，请确定重置通道/实时事件，以便更改生效。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 [使用媒体服务 v3 实时传送视频流](live-streaming-overview.md)
 

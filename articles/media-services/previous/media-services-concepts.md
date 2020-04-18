@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 260ddccc1a1b0bd4090284025b79e20ff5ce4fdc
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 44d6776a367a5cb1eeb86c955f083598d417aba6
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475245"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641670"
 ---
 # <a name="azure-media-services-concepts"></a>Azure 媒体服务概念 
 
@@ -111,10 +111,10 @@ Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项�
 ## <a name="live-streaming"></a>实时流式处理
 在 Azure 媒体服务中，通道表示用于处理实时流内容的管道。 通道通过以下两种方式之一接收实时输入流：
 
-* 本地实时编码器将多比特率 RTMP 或平滑流（分片 MP4）发送到通道。 可以使用以下输出多比特率平滑流的实时编码器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 以下实时编码器输出RTMP：Adobe闪存实时编码器，[远程有线广播](media-services-configure-wirecast-live-encoder.md)，泰拉德克，海视和特里卡斯特编码器。 引入的流会直接通过通道，而不会经过任何进一步的转码和编码。 收到请求时，媒体服务会将该流传递给客户。
+* 本地实时编码器将多比特率 RTMP 或平滑流（分片 MP4）发送到通道。 可以使用以下输出多比特率平滑流的实时编码器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 以下实时编码器输出RTMP：Adobe闪存实时编码器，[远程有线广播](media-services-configure-wirecast-live-encoder.md)，泰拉德克，海视编码器。 引入的流会直接通过通道，而不会经过任何进一步的转码和编码。 收到请求时，媒体服务会将该流传递给客户。
 * 将单比特率流（采用以下某种格式：RTMP 或平滑流式处理（分片 MP4））发送到能够使用媒体服务执行实时编码的通道。 然后，频道将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。 收到请求时，媒体服务会将该流传递给客户。
 
-### <a name="channel"></a>通道
+### <a name="channel"></a>Channel
 在媒体服务中，[频道](https://docs.microsoft.com/rest/api/media/operations/channel)负责处理实时传送视频流内容。 通道提供输入终结点（引入 URL），然后要将该终结点提供给实时转码器。 通道从实时转码器接收实时输入流，并通过一个或多个 StreamingEndpoints 使其可用于流式处理。 通道还提供可用于预览的预览终结点（预览 URL），并在进一步处理和传递流之前对流进行验证。
 
 可以在创建通道时获取引入 URL 和预览 URL。 若要获取这些 URL，通道不一定要处于已启动状态。 准备好开始将数据从实时转码器推送到通道时，通道必须已启动。 实时转码器开始引入数据后，可以预览流。
@@ -131,7 +131,7 @@ ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向
 
 一个通道最多支持三个并发运行的节目，因此可以为同一传入流创建多个存档。 这样，便可以根据需要发布和存档事件的不同部分。 例如，业务要求是存档 6 小时的节目，但只广播过去 10 分钟的内容。 为了实现此目的，需要创建两个同时运行的节目。 一个节目设置为存档 6 小时的事件但不发布该节目。 另一个节目设置为存档 10 分钟的事件，并且要发布该节目。
 
-有关详细信息，请参阅：
+有关详细信息，请参见:
 
 * [使用启用以使用 Azure 媒体服务执行实时编码的通道](media-services-manage-live-encoder-enabled-channels.md)
 * [使用从本地编码器接收多比特率实时流的频道](media-services-live-streaming-with-onprem-encoders.md)

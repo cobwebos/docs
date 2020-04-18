@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.openlocfilehash: 100f95c20743f70bb4a9f2ac7e74853eab80f3e9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a0a01dad5ae86cf20d57ade845326838f8fd686a
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414471"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641526"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>创建按计划运行管道的触发器
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -31,38 +31,46 @@ ms.locfileid: "81414471"
 可以创建**计划触发器**，用于将管道计划为定期运行（每小时运行一次、每天运行一次，等等）。 
 
 > [!NOTE]
-> 有关创建管道和计划触发器、将触发器与管道相关联，以及运行和监视管道的完整演练，请参阅[快速入门：使用数据工厂 UI 创建数据工厂](quickstart-create-data-factory-portal.md)。
+> 有关创建管道和计划触发器的完整演练，这将触发器与管道关联，并运行并监视管道，请参阅[快速入门：使用数据工厂 UI 创建数据工厂](quickstart-create-data-factory-portal.md)。
 
-1. 切换到“编辑”**** 选项卡。 
+1. 切换到"**编辑"** 选项卡，该选项卡带有铅笔符号。 
 
     ![切换到“编辑”选项卡](./media/how-to-create-schedule-trigger/switch-edit-tab.png)
-1. 单击菜单上的“触发器”****，然后单击“新建/编辑”****。 
+
+1. 在菜单上选择 **"触发器**"，然后选择 **"新建/编辑**"。 
 
     ![“新建触发器”菜单](./media/how-to-create-schedule-trigger/new-trigger-menu.png)
-2. 在“添加触发器”页中单击“选择触发器...”，然后单击“新建”。************ 
+
+1. 在"**添加触发器"** 页上，**选择"选择触发器..."，** 然后选择 **"新建**"。 
 
     ![添加触发器 - 新建触发器](./media/how-to-create-schedule-trigger/add-trigger-new-button.png)
-3. 在“新建触发器”**** 页中执行以下步骤： 
+
+1. 在 **"新建触发器"** 页上，执行以下步骤： 
 
     1. 确认在“类型”中选择了“计划”。******** 
-    2. 在“开始日期(UTC)”中指定触发器的开始日期时间。**** 此值默认设置为当前日期时间。 
-    3. 指定触发器的“重复周期”。**** 从下拉列表中选择一个值（“每分钟”、“每小时”、“每日”、“每周”和“每月”）。 在文本框中输入乘数。 例如，如果希望触发器每隔 15 分钟运行一次，请选择“每分钟”，并在文本框中输入 **15**。**** 
-    4. 对于“结束”字段，如果不想要指定触发器的结束日期时间，请选择“不结束”。******** 若要指定结束日期时间，请选择“日期”并指定结束日期时间，然后单击“应用”。******** 每次管道运行都需要付出相关成本。 若要进行测试，需确保只触发管道几次。 但是，请确保在发布时间和结束时间之间有足够的时间来运行管道。 只有在将解决方案发布到数据工厂之后，触发器才会生效，而不是在 UI 中保存触发器就会使该触发器生效。
+    1. 在“开始日期(UTC)”中指定触发器的开始日期时间。**** 此值默认设置为当前日期时间。 
+    1. 指定触发器的“重复周期”。**** 从下拉列表中选择一个值（“每分钟”、“每小时”、“每日”、“每周”和“每月”）。 在文本框中输入乘数。 例如，如果希望触发器每隔 15 分钟运行一次，请选择“每分钟”，并在文本框中输入 **15**。**** 
+    1. 对于“结束”字段，如果不想要指定触发器的结束日期时间，请选择“不结束”。******** 要指定结束日期时间，请选择 **"日期"** 并指定结束日期时间，然后选择 **"确定**"。 每次管道运行都需要付出相关成本。 若要进行测试，需确保只触发管道几次。 但是，请确保在发布时间和结束时间之间有足够的时间来运行管道。 只有在将解决方案发布到数据工厂之后，触发器才会生效，而不是在 UI 中保存触发器就会使该触发器生效。
 
         ![触发器设置](./media/how-to-create-schedule-trigger/trigger-settings.png)
-4. 在“新建触发器”窗口中，选中“已激活”选项，然后单击“下一步”。************ 以后，可以使用此复选框停用该触发器。 
+
+1. 在 **"新建触发器"** 窗口中，在 **"已激活"** 选项中选择 **"是**"，然后选择 **"确定**"。 以后，可以使用此复选框停用该触发器。 
 
     ![触发器设置 -“下一步”按钮](./media/how-to-create-schedule-trigger/trigger-settings-next.png)
-5. 在“新建触发器”页中查看警告消息，然后单击“完成”。********
+
+1. 在 **"新建触发器"** 窗口中，查看警告消息，然后选择 **"确定**"。
 
     ![触发器设置 -“完成”按钮](./media/how-to-create-schedule-trigger/new-trigger-finish.png)
-6. 单击“发布”****，将所做的更改发布到数据工厂。 在将更改发布到数据工厂之前，触发器不会开始触发管道运行。 
+
+1. 选择 **"发布所有内容**"以将更改发布到数据工厂。 在将更改发布到数据工厂之前，触发器不会开始触发管道运行。 
 
     ![发布按钮](./media/how-to-create-schedule-trigger/publish-2.png)
-8. 在左侧切换到“监视”选项卡。**** 单击“刷新”可刷新列表****。 可以看到计划的触发器触发的管道运行。 请注意“触发因素”列中的值。**** 如果使用“立即触发”选项，将在列表中看到手动触发器运行。**** 
+
+1. 切换到左侧**的"管道运行"** 选项卡，然后选择 **"刷新"** 以刷新列表。 您将看到由计划触发器触发的管道运行。 请注意“触发因素”列中的值。**** 如果使用"**立即触发"** 选项，您将在列表中看到手动触发器运行。 
 
     ![监视触发的运行](./media/how-to-create-schedule-trigger/monitor-triggered-runs.png)
-9. 单击“管道运行”旁边的向下箭头，切换到“触发器运行”视图。******** 
+
+1. 切换到“触发器运行”**** 视图。 
 
     ![监视触发器运行](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
 
@@ -112,31 +120,31 @@ ms.locfileid: "81414471"
     - 触发器与 **Adfv2QuickStartPipeline** 管道相关联。 若要将多个管道与某个触发器相关联，请添加多个 **pipelineReference** 节。
     - 快速入门中的管道采用两个**参数**值：**inputPath** 和 **outputPath**。 因此，可以通过触发器传递这些参数的值。
 
-2. 使用 **Set-AzDataFactoryV2Trigger** cmdlet 创建一个触发器：
+1. 使用 **Set-AzDataFactoryV2Trigger** cmdlet 创建一个触发器：
 
     ```powershell
     Set-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
     ```
 
-3. 使用 **Get-AzDataFactoryV2Trigger** cmdlet 确认触发器的状态为 **Stopped**：
+1. 使用 **Get-AzDataFactoryV2Trigger** cmdlet 确认触发器的状态为 **Stopped**：
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-4. 使用**启动-AzDataFactoryV2触发器**cmdlet 启动触发器：
+1. 使用**启动-AzDataFactoryV2触发器**cmdlet 启动触发器：
 
     ```powershell
     Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-5. 使用 **Get-AzDataFactoryV2Trigger** cmdlet 确认触发器的状态为 **Started**：
+1. 使用 **Get-AzDataFactoryV2Trigger** cmdlet 确认触发器的状态为 **Started**：
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-6.  使用 **Get-AzDataFactoryV2TriggerRun** cmdlet 在 Azure PowerShell 中获取触发器运行。 若要获取有关触发器运行的信息，请定期执行以下命令。 更新 **TriggerRunStartedAfter** 和 **TriggerRunStartedBefore** 值以匹配触发器定义中的值：
+1.  使用 **Get-AzDataFactoryV2TriggerRun** cmdlet 在 Azure PowerShell 中获取触发器运行。 若要获取有关触发器运行的信息，请定期执行以下命令。 更新 **TriggerRunStartedAfter** 和 **TriggerRunStartedBefore** 值以匹配触发器定义中的值：
 
     ```powershell
     Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
@@ -328,7 +336,7 @@ Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区�
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **开始时间** | 字符串 | 是 | 无 | ISO-8601 日期时间 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **复发** | 对象 | 是 | 无 | Recurrence 对象 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **区间** | Number | 否 | 1 | 1 到 1,000 | `"interval":10` |
+| **区间** | 数字 | 否 | 1 | 1 到 1,000 | `"interval":10` |
 | **结束时间** | 字符串 | 是 | 无 | 代表将来某个时间的日期/时间值。 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
 | **附表** | 对象 | 否 | 无 | Schedule 对象 | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
