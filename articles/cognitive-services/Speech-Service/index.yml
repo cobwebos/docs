@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: 4b9b447ce06e0316cf229fc9a064bfded7411abf
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.openlocfilehash: 3535f1cb5f8901c0da629e7d2ef4f2a045d714f2
+  ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81401371"
+  ms.lasthandoff: 04/17/2020
+  ms.locfileid: "81604923"
 highlightedContent:
   items:
   - title: 什么是语音服务？
@@ -37,43 +37,43 @@ conceptualContent:
   items:
   - title: 语音转文本
     links:
-    - itemType: how-to-guide
-      text: 语音识别基础知识
-      url: speech-to-text-basics.md
     - itemType: quickstart
       text: 识别来自麦克风的语音
       url: quickstarts/speech-to-text-from-microphone.md
     - itemType: quickstart
       text: 识别音频文件中的语音
       url: quickstarts/speech-to-text-from-file.md
+    - itemType: how-to-guide
+      text: 语音识别基础知识
+      url: speech-to-text-basics.md
     footerLink:
       text: 查看详细信息
       url: index-speech-to-text.yml
   - title: 文本转语音
     links:
-    - itemType: how-to-guide
-      text: 语音合成基础知识
-      url: text-to-speech-basics.md
     - itemType: quickstart
       text: 将语音合成到扬声器
       url: quickstarts/text-to-speech.md
     - itemType: quickstart
       text: 将语音合成到音频文件
       url: quickstarts/text-to-speech-audio-file.md
+    - itemType: how-to-guide
+      text: 语音合成基础知识
+      url: text-to-speech-basics.md
     footerLink:
       text: 查看详细信息
       url: index-text-to-speech.yml
   - title: 语音翻译
     links:
-    - itemType: how-to-guide
-      text: 语音翻译基础知识
-      url: speech-translation-basics.md
     - itemType: quickstart
       text: 将语音翻译为文本
       url: quickstarts/translate-speech-to-text.md
     - itemType: quickstart
       text: 将语音翻译为多种目标语言
       url: quickstarts/translate-speech-to-text-multiple-languages.md
+    - itemType: how-to-guide
+      text: 语音翻译基础知识
+      url: speech-translation-basics.md
     footerLink:
       text: 查看详细信息
       url: index-speech-translation.yml
