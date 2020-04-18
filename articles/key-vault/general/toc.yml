@@ -1,0 +1,137 @@
+- name: 常规
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是 Azure Key Vault？
+      href: overview.md
+- name: 教程
+  items:
+    - name: Azure 虚拟机
+      items:
+        - name: 将 Azure Key Vault 与通过 .NET 编写的 Windows 虚拟机配合使用
+          href: tutorial-net-windows-virtual-machine.md
+        - name: 将 Azure Key Vault 与通过 Python 编写的 Windows 虚拟机配合使用
+          href: tutorial-python-windows-virtual-machine.md
+    - name: 如何将 Azure Key Vault 与 .NET Azure Web 应用配合使用
+      href: tutorial-net-create-vault-azure-web-app.md
+- name: 概念
+  items:
+    - name: 基本概念
+      href: basic-concepts.md
+    - name: 安全性
+      items:
+        - name: Azure Key Vault 安全性
+          href: overview-security.md
+        - name: 有关使用 Key Vault 的最佳做法 - Azure Key Vault
+          href: best-practices.md
+        - name: Azure Key Vault 安全体系
+          href: overview-security-worlds.md
+        - name: 网络安全
+          href: network-security.md
+        - name: 保护对 Key Vault 的访问 - Azure Key Vault
+          href: secure-your-key-vault.md
+        - name: Key Vault 的 Azure 安全基线
+          href: security-baseline.md
+        - name: Azure Key Vault 安全建议
+          href: security-recommendations.md
+    - name: 通知（预览版）
+      items:
+        - name: 使用 Azure 事件网格进行监视（预览版）
+          href: event-grid-overview.md
+    - name: 软删除
+      items:
+        - name: Azure Key Vault 软删除
+          href: overview-soft-delete.md
+    - name: 身份验证、请求和响应
+      href: authentication-requests-and-responses.md
+    - name: Azure Key Vault 限制指南
+      href: overview-throttling.md
+    - name: Azure Key Vault 的虚拟网络服务终结点 - Azure Key Vault
+      href: overview-vnet-service-endpoints.md
+- name: 操作指南
+  items:
+    - name: Authenticate
+      items:
+        - name: 使用应用服务托管标识
+          href: managed-identity.md
+        - name: 使用访问控制策略
+          href: group-permissions-for-apps.md
+    - name: 开发
+      items:
+        - name: Azure 密钥保管库开发人员指南
+          href: developers-guide.md
+        - name: 保存 Web 应用机密
+          href: vs-secure-secret-appsettings.md
+        - name: 使用 .NET 进行服务到服务身份验证
+          href: service-to-service-authentication.md
+        - name: 使用 Key Vault 连接服务
+          href: vs-key-vault-add-connected-service.md
+    - name: 监视和监管
+      items:
+        - name: 将 Azure Key Vault 与 Azure Policy 集成
+          href: azure-policy.md
+        - name: Azure Key Vault 日志记录
+          href: logging.md
+        - name: 通过 Azure 事件网格和逻辑应用接收通知
+          href: event-grid-logicapps.md
+        - name: 通过 Azure 事件网格和 Azure 自动化接收通知
+          href: event-grid-tutorial.md
+    - name: 安全
+      items:
+        - name: 与 Azure 专用链接服务集成
+          href: private-link-service.md
+        - name: 访问防火墙后的 Key Vault - Azure Key Vault
+          href: access-behind-firewall.md
+    - name: 软删除
+      items:
+        - name: 在 CLI 中使用软删除
+          href: soft-delete-cli.md
+        - name: 在 PowerShell 中使用软删除
+          href: soft-delete-powershell.md
+    - name: 疑难解答
+      items:
+        - name: 移动订阅后更改 Key Vault 租户 ID
+          href: subscription-move-fix.md
+- name: 参考
+  items:
+    - name: REST API 错误代码 - Azure Key Vault
+      href: rest-error-codes.md
+    - name: 常见参数和标头
+      href: common-parameters-and-headers.md
+    - name: Azure PowerShell
+      href: '/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault'
+    - name: Azure CLI
+      href: /cli/azure/keyvault
+    - name: .NET
+      href: /dotnet/api/overview/azure/key-vault?view=azure-dotnet
+    - name: Java
+      href: /java/api/overview/azure/keyvault?view=azure-java-stable
+    - name: Node.js
+      href: /javascript/api/overview/azure/key-vault?view=azure-node-latest
+    - name: Python
+      href: /python/api/overview/azure/key-vault?view=azure-python
+    - name: REST
+      href: /rest/api/keyvault
+    - name: 资源管理器模板
+      href: /azure/templates/microsoft.keyvault/allversions
+      displayName: ARM
+- name: 资源
+  items:
+    - name: 利用 Microsoft Learn 掌握技能
+      href: /learn/browse/?products=azure-key-vault
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/key-vault/'
+    - name: 上市区域
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=key-vault'
+    - name: 服务级别协议 (SLA)
+      href: 'https://azure.microsoft.com/support/legal/sla/key-vault/'
+    - name: 服务限制
+      href: ../general/service-limits.md
+    - name: 服务状态
+      href: 'https://azure.microsoft.com/status/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=key-vault'
+    - name: 博客
+      href: 'https://blogs.technet.com/b/kv/'
+    - name: 产品反馈
+      href: 'https://feedback.azure.com/forums/906355-azure-key-vault'
