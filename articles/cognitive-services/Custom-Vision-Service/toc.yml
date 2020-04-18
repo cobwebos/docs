@@ -9,41 +9,33 @@
       href: whats-new.md
 - name: 快速入门
   items:
-    - name: 使用 Web 门户
+    - name: 生成分类器
       items:
-        - name: 生成分类器
+        - name: 使用 Web 门户
           href: getting-started-build-a-classifier.md
-        - name: 生成对象检测器
-          href: get-started-build-detector.md
-    - name: 使用 .NET SDK
-      items:
-        - name: 图像分类
+        - name: 使用 .NET SDK
           href: csharp-tutorial.md
-        - name: 对象检测
-          href: csharp-tutorial-od.md
-    - name: 使用 Python SDK
-      items:
-        - name: 图像分类
+        - name: 使用 Python SDK
           href: python-tutorial.md
-        - name: 对象检测
-          href: python-tutorial-od.md
-    - name: 使用 Java SDK
-      items:
-        - name: 图像分类
+        - name: 使用 Java SDK
           href: java-tutorial.md
-        - name: 对象检测
-          href: java-tutorial-od.md
-    - name: 使用 Node.js SDK
-      items:
-        - name: 图像分类
+        - name: 使用 Node.js SDK
           href: node-tutorial.md
-        - name: 对象检测
-          href: node-tutorial-object-detection.md
-    - name: 使用 Go SDK
-      items:
-        - name: 图像分类
+        - name: 使用 Go SDK
           href: go-tutorial.md
-        - name: 对象检测
+    - name: 生成对象检测器
+      items:
+        - name: 使用 Web 门户
+          href: get-started-build-detector.md
+        - name: 使用 .NET SDK
+          href: csharp-tutorial-od.md
+        - name: 使用 Python SDK
+          href: python-tutorial-od.md
+        - name: 使用 Java SDK
+          href: java-tutorial-od.md
+        - name: 使用 Node.js SDK
+          href: node-tutorial-object-detection.md
+        - name: 使用 Go SDK
           href: go-tutorial-object-detection.md
 - name: 教程
   items:
@@ -51,7 +43,7 @@
       href: iot-visual-alerts-tutorial.md
     - name: 识别移动设备上的徽标
       href: logo-detector-mobile.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 测试模型
       href: test-your-model.md
