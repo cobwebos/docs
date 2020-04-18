@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: e4f1369aa850a244128da470aee81b2efc2e09be
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: b2f533e8bd9199025260aaca9cff587b13adce64
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81413209"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606309"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>映射数据流的源转换 
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 源转换为数据流配置数据源。 设计数据流时，您的第一步将始终配置源转换。 要添加源，请单击数据流画布中的"**添加源**"框。
 

@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 04/15/2020
 ms.author: ccompy
-ms.openlocfilehash: 7f2b011b2de5af0e4ace9cbeb4399911d8e83b7f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: f7208307df51ecefb76f9adaedea59b327cdc19e
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312820"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604879"
 ---
 使用区域 VNet 集成使应用可以访问：
 
@@ -19,7 +19,7 @@ ms.locfileid: "81312820"
 * 跨 Azure 快速路由连接的资源。
 * 您要集成的 VNet 中的资源。
 * 跨对等连接的资源，其中包括 Azure 快速路由连接。
-* 专用终结点 - 注意：DNS 必须单独管理，而不是使用 Azure DNS 专用区域。
+* 专用终结点 
 
 在同一区域中使用 VNet 集成时，可以使用以下 Azure 网络功能：
 
@@ -50,7 +50,7 @@ ms.locfileid: "81312820"
 * 您只能与 VNet 集成在与应用相同的订阅中。
 * 每个应用服务计划只能有一个区域 VNet 集成。 同一应用服务计划中的多个应用可以使用相同的 VNet。
 * 当有一个应用使用区域 VNet 集成时，不能更改应用或计划的订阅。
-* 你的应用无法解决 Azure DNS 专用区域中的地址。
+* 如果不进行配置更改，你的应用无法解决 Azure DNS 专用区域中的地址
 
 每个计划实例使用一个地址。 如果将应用缩放为五个实例，则使用五个地址。 由于子网大小在分配后无法更改，因此必须使用足够大的子网，以适应应用可能达到的任何比例。 建议的尺寸是带 64 个地址的 /26。 带 64 个地址的 /26 适合包含 30 个实例的高级计划。 向上或向下扩展计划时，需要在短时间内使用两倍的地址。
 
@@ -83,9 +83,22 @@ ms.locfileid: "81312820"
 
 边境网关协议 （BGP） 路由也会影响应用流量。 如果您有来自快速路由网关等内容的 BGP 路由，则应用出站流量将受到影响。 默认情况下，BGP 路由仅影响您的 RFC1918 目标流量。 如果WEBSITE_VNET_ROUTE_ALL设置为 1，则所有出站流量都可能受 BGP 路由的影响。
 
+### <a name="azure-dns-private-zones"></a>Azure DNS 专用区域 
+
+应用与 VNet 集成后，它将使用 VNet 配置的相同 DNS 服务器。 默认情况下，你的应用将不能与 Azure DNS 专用区域配合使用。 要使用 Azure DNS 专用区域，您需要添加以下应用设置：
+
+1. 值 168.63.129.16 的WEBSITE_DNS_SERVER 
+1. 值 1 的WEBSITE_VNET_ROUTE_ALL
+
+除了使应用能够使用 Azure DNS 专用区域外，这些设置还将将应用的所有出站呼叫发送到 VNet。
+
+### <a name="private-endpoints"></a>专用终结点
+
+如果要对[专用终结点][privateendpoints]进行调用，则需要与 Azure DNS 专用区域集成，或者管理应用使用的 DNS 服务器中的专用终结点。 
 
 <!--Image references-->
 [4]: ../includes/media/web-sites-integrate-with-vnet/vnetint-appsetting.png
 
 <!--Links-->
 [VNETnsg]: https://docs.microsoft.com/azure/virtual-network/security-overview/
+[privateendpoints]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: reference
-ms.openlocfilehash: 73bbfad4c0535fa00b1aa53764eb52acb83124f8
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 9bb8818d2bb91c14eafc272774e0b633c51e58e1
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80680370"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617874"
 ---
 # <a name="network-requirements"></a>网络要求
 
@@ -27,6 +27,9 @@ ms.locfileid: "80680370"
 * 避免在同一 Wi-Fi 网络上**出现争用带宽密集流量**（如视频或游戏流）。
 * **良好的 Wi-Fi 信号强度**至关重要。 如果可能，请靠近 Wi-Fi 接入点，避免客户端设备和接入点之间的障碍物。
 * 请确保始终连接到[区域](regions.md)最近的 Azure**数据中心**。 数据中心越近，网络延迟越低，对全息图稳定性的影响很大。
+
+> [!NOTE]
+> 下游带宽主要由视频流消耗，而视频流又在颜色和深度信息（60 Hz，立体声）之间分裂。
 
 ## <a name="network-performance-tests"></a>网络性能测试
 

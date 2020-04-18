@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: d7ba62c795e23e41a1947def77300ffe5d2cc010
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 520699b81024de9491f34263f16872428ddbd487
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262445"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81618042"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Azure 认知搜索 - 常见问题解答 (FAQ)
 
  查找与 Azure 认知搜索有关的概念、代码和方案的常见问题的解答。
 
-## <a name="platform"></a>平台
+## <a name="platform"></a>Platform
 
 ### <a name="how-is-azure-cognitive-search-different-from-full-text-search-in-my-dbms"></a>Azure 认知搜索与 DBMS 中的全文搜索有何不同？
 
@@ -82,6 +82,14 @@ Azure 门户目前不提供内置的索引提取、快照或备份/还原功能�
 默认情况下，根据[匹配术语的统计属性](search-lucene-query-architecture.md#stage-4-scoring)对搜索结果打分，在结果集中从高到低排序。 但某些查询类型（通配符、前缀、正则表达式）始终会给文档总评分贡献一个常数分数。 这是设计的行为。 Azure 认知搜索设置一个常量评分后，便可以在结果中包含通过查询扩展找到的匹配项，且不会影响排名。
 
 例如，假设通配符搜索中的"tour+"输入在"旅游"、"旅游"和"Tourmaline"上生成匹配项。 由于这些结果的性质，我们无法合理推断出哪些字词的相关性高于其他字词。 因此，在为通配符、前缀和正则表达式类型的查询结果评分时，我们会忽略字词频率。 建立在不完整输入上的搜索结果获得一个常数分数，以避免可能的意外匹配偏差。
+
+## <a name="skillset-operations"></a>技能集操作
+
+### <a name="are-there-any-tips-or-tricks-to-reduce-cognitive-services-charges-on-ingestion"></a>是否有任何提示或技巧来降低认知服务费用的摄入？
+
+您可以理解的是，您不想执行比绝对必要的更多内置技能或自定义技能，尤其是在处理要处理的数百万个文档时。 考虑到这一点，我们添加了"增量扩充"功能，以进行技能集执行。 从本质上讲，您可以提供一个缓存位置（Blob 存储连接字符串），用于存储"中间"扩充步骤的输出。  这允许浓缩管道是智能的，并且仅应用修改技能集时所需的扩充。 这自然会节省索引时间，因为管道效率会更高。
+
+了解有关[增量扩充](cognitive-search-incremental-indexing-conceptual.md)的更多
 
 ## <a name="design-patterns"></a>设计模式
 

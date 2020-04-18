@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7003899b59e409a785c3a50e89aae6674e377b4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bfee19e9cfd1def71ebad82c2210ffc10146c896
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264084"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639745"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>为 Azure 活动目录中的 SaaS 应用程序自定义用户预配属性映射
 
@@ -143,7 +143,10 @@ SCIM RFC 定义了核心用户和组架构，同时还允许扩展架构以满�
    4. 为**应用名称选择"编辑属性列表**"。
    5. 在属性列表的底部，在提供的字段中输入有关自定义属性的信息。 然后选择 **"添加属性**"。
 
-对于 SCIM 应用程序，属性名称必须遵循下面示例中所示的模式。 "自定义扩展名称"和"自定义属性"可以根据您的应用程序要求进行自定义，例如：urn：ietf：参数：scim：架构：扩展：2.0：自定义扩展名称：自定义属性或 urn：ietf：参数：scim：架构：扩展：自定义扩展名称：2.0：用户.自定义属性名称：值
+对于 SCIM 应用程序，属性名称必须遵循下面示例中所示的模式。 "自定义扩展名称"和"自定义属性"可以根据应用程序的要求进行自定义，例如：  
+ * urn：ietf：参数：scim：架构：扩展：自定义扩展名称：2.0：用户：自定义属性 
+ * urn：ietf：参数：scim：架构：扩展：2.0：自定义扩展名称：自定义属性  
+ * urn：ietf：参数：scim：架构：扩展：自定义扩展名称：2.0：用户.自定义属性名称：值
 
 这些说明仅适用于支持 SCIM 的应用程序。 服务现在和 Salesforce 等应用程序不使用 SCIM 与 Azure AD 集成，因此在添加自定义属性时不需要此特定的命名空间。
 
@@ -313,7 +316,7 @@ SCIM RFC 定义了核心用户和组架构，同时还允许扩展架构以满�
 - 更新属性映射会影响同步周期的性能。 对属性映射配置进行更新需要重新评估所有托管对象。
 - 建议的最佳做法是至少将属性映射的连续更改数保持在最小。
 - 现在不支持将要预配到应用的照片属性添加，因为您无法指定同步照片的格式。 您可以在[用户语音](https://feedback.azure.com/forums/169401-azure-active-directory)上请求该功能
-- 属性 IsSoftDeleted 通常是应用程序的默认映射的一部分。 IsSoftdelete 可在四种情况之一中为 true（用户由于未从应用程序分配而不在范围范围内，用户由于不符合范围范围筛选器而退出范围，用户已在 Azure AD 中软删除，或者属性帐户启用设置为 false在用户上）。 
+- 属性 IsSoftDeleted 通常是应用程序的默认映射的一部分。 IsSoftdelete 在四种情况之一中可能为 true（用户由于未从应用程序分配而不在范围范围内，用户由于不符合范围范围筛选器而退出范围，用户已在 Azure AD 中软删除，或者属性帐户启用设置为 false 用户）。 
 - Azure AD 预配服务不支持预配空值
 
 ## <a name="next-steps"></a>后续步骤

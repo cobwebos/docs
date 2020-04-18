@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 4/1/2020
-ms.openlocfilehash: 715f1028597d76915d833b0ade66bc03d939030d
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 4/16/2020
+ms.openlocfilehash: bd0a867cce9b2a9ad793b491b9042034ef5810f5
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546446"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605154"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>如何使用 Azure 门户在适用于 MySQL 的 Azure 数据库中配置服务器参数
 
@@ -39,8 +39,8 @@ InnoDB 缓冲池大小不可配置，并且与[定价层](concepts-service-tiers
 
 |**定价层**|**vCore**|**InnoDB 缓冲区池大小（MB）（<br>支持最多 4 TB 存储的服务器）**| **InnoDB 缓冲区池大小（MB）（<br>支持多达 16 TB 存储的服务器）**|
 |:---|---:|---:|---:|
-|Basic| 1| 832| |
-|Basic| 2| 2560| |
+|基本| 1| 832| |
+|基本| 2| 2560| |
 |常规用途| 2| 3584| 7168|
 |常规用途| 4| 7680| 15360|
 |常规用途| 8| 15360| 30720|
@@ -55,12 +55,13 @@ InnoDB 缓冲池大小不可配置，并且与[定价层](concepts-service-tiers
 
 以下附加服务器参数不可在系统中配置：
 
-|**参数**|**固定值**|
+|**Parameter**|**固定值**|
 | :------------------------ | :-------- |
 |基本层中的 innodb_file_per_table|OFF|
 |innodb_flush_log_at_trx_commit|1|
 |sync_binlog|1|
-|innodb_log_file_size|512MB|
+|innodb_log_file_size|256MB|
+|innodb_log_files_in_group|2|
 
 在版本 [5.7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) 和 [5.6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html) 中，上表中未列出的其他服务器参数将设置为其 MySQL 现成默认值。
 

@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/10/2020
+ms.date: 04/16/2020
 ms.author: alsin
-ms.openlocfilehash: 40a715ea27be161f09dea59e57799b08406e8ca7
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 028c30fced14a60af9f5683e6c6e087b15591735
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393777"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605479"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Azure 中提供的红帽企业 Linux （RHEL） 映像
 Azure 为不同的用例提供各种 RHEL 映像。
@@ -47,8 +47,12 @@ RHEL          | 6.7      | RAW    | Linux 代理 |
 |             | 7.6      | RAW    | Linux 代理 | 默认截至 2019 年 5 月连接到 EUS 存储库。
 |             | 76 代2  | RAW    | Linux 代理 | 默认情况下附加到 EUS 存储库。
 |             | 7.7      | LVM    | Linux 代理 | 默认情况下附加到 EUS 存储库。
-|             | 8        | LVM    | Linux 代理 | RHEL 8.x 图像系列
-|             | 8 代2   | LVM    | Linux 代理 | Hyper-V 第 2 代 - RHEL 8.x 图像系列。
+|             | 8-LVM    | LVM    | Linux 代理 | RHEL 8.x 图像系列。 附加到常规存储库。
+|             | 8-lvm-gen2| LVM    | Linux 代理 | Hyper-V 第 2 代 - RHEL 8.x 图像系列。 附加到常规存储库。
+|             | 8        | LVM    | Linux 代理 | RHEL 8.0 图像
+|             | 8 代2   | LVM    | Linux 代理 | Hyper-V 第 2 代 - RHEL 8.0 图像。
+|             | 8.1      | LVM    | Linux 代理 | RHEL 8.1 图像。 当前附加到常规存储库。
+|             | 81x2   | LVM    | Linux 代理 | Hyper-V 第 2 代 - RHEL 8.1 图像。 当前附加到常规存储库。
 RHEL-SAP      | 7.4      | LVM    | Linux 代理 | RHEL 7.4 适用于 SAP HANA 和业务应用。 连接到 E4S 存储库后，SAP 和 RHEL 将收取额外费用以及基本计算费用。
 |             | 74sap-gen2| LVM    | Linux 代理 | RHEL 7.4 适用于 SAP HANA 和业务应用。 第 2 代图像。 连接到 E4S 存储库后，SAP 和 RHEL 将收取额外费用以及基本计算费用。
 |             | 7.5       | LVM    | Linux 代理 | RHEL 7.5 适用于 SAP HANA 和业务应用。 连接到 E4S 存储库后，SAP 和 RHEL 将收取额外费用以及基本计算费用。

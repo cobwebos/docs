@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: b7bd85508851df7c7a664862b02141bf4d3bea1f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0da1a3019124f62aba6a959ce9104c85bd85d3fc
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81429845"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81616481"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>适用于 Azure Key Vault 的安全建议
 

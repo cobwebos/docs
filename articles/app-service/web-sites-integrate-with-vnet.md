@@ -4,15 +4,15 @@ description: 将 Azure 应用服务中的应用与 Azure 虚拟网络集成。
 author: ccompy
 ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
-ms.date: 04/15/2020
+ms.date: 04/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: cb5747c6780da134dfb2f5ab088348b848c5f04a
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 4866397af244ffb3c6aa9c7547b0a9413b10ccfd
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312814"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604860"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>将应用与 Azure 虚拟网络集成
 
@@ -41,8 +41,6 @@ Azure 应用服务有两种变体：
     ![选择经典 VNet][3]
 
 在集成期间，应用会重启。 集成完成后，您将在要集成的 VNet 上看到详细信息。
-
-应用与 VNet 集成后，它将使用 VNet 配置的相同 DNS 服务器，除非它是 Azure DNS 专用区域。 目前，不能将 VNet 集成与 Azure DNS 专用区域结合使用。
 
 ## <a name="regional-vnet-integration"></a>区域 VNet 集成
 
@@ -200,3 +198,4 @@ CLI 支持可用于区域 VNet 集成。 要访问以下命令[，请安装 Azur
 [setp2saddresses]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#addresspool
 [VNETRouteTables]: https://docs.microsoft.com/azure/virtual-network/manage-route-table/
 [installCLI]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest/
+[privateendpoints]: networking/private-endpoint.md

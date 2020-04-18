@@ -12,16 +12,16 @@ ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/09/2020
-ms.openlocfilehash: 75dd5a917d718f4ccef034e953a415d575d42bd9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9548d3eb4f51dd61186aa7f13343d946035d95ef
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418297"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81603644"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>针对 Azure SQL 数据库异地复制和故障转移配置 Azure-SSIS Integration Runtime
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文介绍了如何针对 Azure SQL 数据库异地复制和 SSISDB 数据库配置 Azure-SSIS Integration Runtime。 发生故障转移时，你可以确保 Azure-SSIS IR 使用辅助数据库保持工作。
 
@@ -53,11 +53,11 @@ ms.locfileid: "81418297"
 
 - Azure-SSIS IR 指向故障转移组的主服务器终结点。 发生故障转移时，此终结点更改。
 
-  OR
+  或
 
 - Azure SQL 数据库服务器配置了虚拟网络服务终结点规则。
 
-  OR
+  或
 
 - 数据库服务器是配置有虚拟网络的 SQL 数据库托管实例。
 

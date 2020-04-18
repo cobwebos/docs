@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2bd9b4f46e28a28f99045319d8ac606cdcee7216
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 53dfe07ebd4925c96290db140b6e613c38eef564
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536779"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617335"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>部署 Windows 混合 Runbook 辅助角色
 
@@ -69,7 +69,7 @@ Windows 混合 Runbook 辅助角色的最低要求如下：
 
 从[PowerShell 库](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker)下载 **"全新内部混合工作者.ps1"** 脚本。 下载应直接从运行混合 Runbook 工作角色的计算机或环境中的另一台计算机下载。 下载脚本后，将其复制到工作人员。 **New-Onpremise 混合工作线程.ps1**脚本使用执行期间描述的参数。
 
-| 参数 | 状态 | 描述 |
+| 参数 | 状态 | 说明 |
 | --------- | ------ | ----------- |
 | `AAResourceGroupName` | 必需 | 与自动化帐户关联的资源组的名称。 |
 | `AutomationAccountName` | 必需 | 自动化帐户的名称。
@@ -144,7 +144,7 @@ Heartbeat
 使用以下步骤完成代理安装和设置。
 
 1. 使解决方案能够加入代理计算机。 请参阅[工作区中的板载计算机](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-automation-account#onboard-machines-in-the-workspace)。
-2. 验证代理是否正确下载了自动化解决方案。 它应该有一个文件夹，称为**Azure 自动化文件**在**C：\程序文件\微软监视代理\代理**。 
+2. 验证代理是否正确下载了自动化解决方案。 
 3. 要确认混合 Runbook 辅助角色的版本，请浏览到**C：*程序文件\Microsoft 监视代理\代理\Azure自动化**并记下**版本**子文件夹。
 
 ### <a name="step-4---install-the-runbook-environment-and-connect-to-azure-automation"></a>步骤 4 - 安装 Runbook 环境并连接到 Azure 自动化

@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/12/2020
 tags: connectors
-ms.openlocfilehash: 8aefe851708c0b8d8780d03e4364e034e783bf4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c52f2df34faf441ab70b48b11bbc393ebcecb65
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79297182"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617609"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>通过 HTTP 或 HTTPS 从 Azure 逻辑应用调用服务终结点
 
@@ -59,7 +59,7 @@ ms.locfileid: "79297182"
 
 此内置触发器对终结点的指定 URL 发出 HTTP 调用，并返回响应。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。 在逻辑应用设计器中打开空白逻辑应用。
+1. 登录 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开空白逻辑应用。
 
 1. 在设计器的搜索框下，选择**内置**。 在搜索框中，输入 `http` 作为筛选器。 在“触发器”列表中，选择“HTTP”触发器。********
 
@@ -88,7 +88,7 @@ ms.locfileid: "79297182"
 
 此内置操作对终结点的指定 URL 发出 HTTP 调用，并返回响应。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。 在逻辑应用设计器中打开逻辑应用。
+1. 登录 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开逻辑应用。
 
    此示例的第一步是使用 HTTP 触发器。
 
@@ -140,8 +140,8 @@ ms.locfileid: "79297182"
 以下是在基础工作流定义中显示 HTTP 操作的 JSON 定义的同一示例：
 
 ```json
-{
-   "HTTP_action": {
+"HTTP_action": {
+   "inputs": {
       "body": {
          "$content-type": "multipart/form-data",
          "$multipart": [
@@ -179,7 +179,7 @@ ms.locfileid: "79297182"
 | 状态代码 | int | 请求中的状态代码 |
 |||
 
-| 状态代码 | 描述 |
+| 状态代码 | 说明 |
 |-------------|-------------|
 | 200 | OK |
 | 202 | 已接受 |

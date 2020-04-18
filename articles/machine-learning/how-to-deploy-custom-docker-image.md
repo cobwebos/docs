@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 03/16/2020
-ms.openlocfilehash: 1f11d6667c22990b3cba2079959bec6f413d5951
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a237beb72e35a236e353c58db520a8d611fdfdcd
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80296929"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617997"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>使用自定义 Docker 基础映像部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -96,7 +96,7 @@ Azure 机器学习提供了一个默认的 Docker 基础映像，因此你无需
 
     按照提示对订阅进行身份验证。
 
-    [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
+    [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
 2. 使用以下命令列出工作区的容器注册表。 将 `<myworkspace>` 替换为 Azure 机器学习工作区名称。 请将 `<resourcegroup>` 替换为包含你的工作区的 Azure 资源组：
 
@@ -190,7 +190,7 @@ Azure 机器学习提供了一个默认的 Docker 基础映像，因此你无需
 
 Microsoft 在可公开访问的存储库中提供了多个 docker 映像，可按照本节中的步骤使用这些映像：
 
-| 图像 | 描述 |
+| 映像 | 说明 |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Azure 机器学习的基础映像 |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | 包含用于 CPU 推理的 ONNX 运行时 |

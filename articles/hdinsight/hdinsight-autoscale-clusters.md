@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 03/05/2020
-ms.openlocfilehash: 68bc30d08d95fe8e3d20a8ecb7af6c9710951921
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/07/2020
+ms.openlocfilehash: 4f9b43b6f800bb47942ccc00fee0fac4536d2ec0
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399713"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640579"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>自动缩放 Azure HDInsight 群集
 
@@ -39,15 +39,15 @@ Azure HDInsight 的群集自动缩放功能可自动缩放群集中辅助节点�
 
 ## <a name="how-it-works"></a>工作原理
 
-可为 HDInsight 群集选择基于负载的缩放或基于计划的缩放。 基于负载的缩放会在设置的范围内更改群集中的节点数，以确保获得最佳的 CPU 利用率并尽量降低运行成本。
+可为 HDInsight 群集选择基于负载的缩放或基于计划的缩放。 基于负载的扩展会更改群集中设置范围内的节点数，以确保最佳 CPU 使用率并最大限度降低运行成本。
 
-基于计划的缩放根据特定时间生效的条件更改群集中的节点数。 这些条件会将群集缩放到所需的节点数。
+基于计划的缩放根据特定时间生效的条件更改群集中的节点数。 这些条件将群集缩放为预期的节点数。
 
 ### <a name="metrics-monitoring"></a>指标监视
 
 自动缩放会持续监视群集并收集以下指标：
 
-|指标|描述|
+|指标|说明|
 |---|---|
 |总挂起 CPU|开始执行所有待处理容器所需的核心总数。|
 |总挂起内存|开始执行所有待处理容器所需的总内存（以 MB 为单位）。|
@@ -56,7 +56,7 @@ Azure HDInsight 的群集自动缩放功能可自动缩放群集中辅助节点�
 |每个节点使用的内存|工作节点上的负载。 使用了 10 GB 内存的工作节点的负载被认为比使用了 2 GB 内存的工作节点的负载更大。|
 |每个节点的应用程序母版数|在工作节点上运行的应用程序主机 (AM) 容器的数量。 托管两个 AM 容器的工作节点被认为比托管零个 AM 容器的工作节点更重要。|
 
-每 60 秒检查一次上述指标。 自动缩放根据这些指标做出纵向扩展和纵向缩减决策。
+每 60 秒检查一次上述指标。 自动缩放根据这些指标做出决策。
 
 ### <a name="load-based-scale-conditions"></a>基于负载的缩放条件
 
@@ -67,9 +67,9 @@ Azure HDInsight 的群集自动缩放功能可自动缩放群集中辅助节点�
 |总待处理 CPU 大于总可用 CPU 的时间超过 3 分钟。|总待处理 CPU 小于总可用 CPU 的时间超过 10 分钟。|
 |总待处理内存大于总可用内存的时间超过 3 分钟。|总待处理内存小于总可用内存的时间超过 10 分钟。|
 
-对于扩展，HDInsight 服务计算满足当前 CPU 和内存要求所需的新工作节点数，然后发出扩展请求以添加所需的节点数。
+对于放大，自动缩放发出放大请求以添加所需的节点数。 扩展基于满足当前 CPU 和内存要求所需的新工作节点数。
 
-对于横向扩展，根据每个节点的 AM 容器数以及当前的 CPU 和内存要求，自动缩放会发出删除一定数量的节点的请求。 该服务还会根据当前的作业执行来检测哪些节点可以删除。 纵向缩减操作首先会解除节点，然后从群集中删除它们。
+对于缩减，自动缩放发出删除一定数量的节点的请求。 缩减基于每个节点的 AM 容器数。 以及当前的 CPU 和内存要求。 该服务还会根据当前的作业执行来检测哪些节点可以删除。 纵向缩减操作首先会解除节点，然后从群集中删除它们。
 
 ## <a name="get-started"></a>入门
 
@@ -79,7 +79,7 @@ Azure HDInsight 的群集自动缩放功能可自动缩放群集中辅助节点�
 
 1. 在"**配置 + 定价**"选项卡上，选择"**启用自动缩放**"复选框。
 1. 在“自动缩放类型”下选择“基于负载”。********
-1. 为以下属性输入所需的值：  
+1. 输入以下属性的预期值：  
 
     * 适用于工作器节点的初始工作节点数****。****
     * 工作器节点**最小**数目。
@@ -108,11 +108,11 @@ Azure HDInsight 的群集自动缩放功能可自动缩放群集中辅助节点�
 
 ### <a name="final-creation-steps"></a>最终创建步骤
 
-对于基于负载和基于计划的缩放，请在“节点大小”下的下拉列表中选择一个 VM，通过这种方式选择工作器节点的 VM 类型。**** 为每个节点类型选择 VM 类型后，可以看到整个群集的估算成本范围。 请根据预算调整 VM 类型。
+通过在 **"节点大小**"下的下拉列表中选择 VM，为辅助节点选择 VM 类型。 为每个节点类型选择 VM 类型后，可以看到整个群集的估算成本范围。 请根据预算调整 VM 类型。
 
 ![启用工作器节点的基于计划的自动缩放节点大小](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-vmsize.png)
 
-你的订阅具有针对每个区域的容量配额。 头节点的内核总数加上工作节点的最大数量不能超过容量配额。 但是，此配额是软性限制；始终可创建支持票证来轻松地增加此配额。
+你的订阅具有针对每个区域的容量配额。 头节点和最大辅助节点的内核总数不能超过容量配额。 但是，此配额是软性限制；始终可创建支持票证来轻松地增加此配额。
 
 > [!Note]  
 > 如果超出总核心配额限制，将收到一条错误消息，指出“最大节点数超出此区域中的可用核心数，请选择其他区域或联系客户支持以增加配额”。
@@ -148,8 +148,6 @@ Azure HDInsight 的群集自动缩放功能可自动缩放群集中辅助节点�
   "scriptActions": []
 }
 ```
-
-若要深入了解如何使用资源管理器模板创建群集，请参阅[在 HDInsight 中使用资源管理器模板创建 Apache Hadoop 群集](hdinsight-hadoop-create-linux-clusters-arm-templates.md)。  
 
 #### <a name="schedule-based-autoscaling"></a>基于计划的自动缩放
 
@@ -193,7 +191,7 @@ Azure HDInsight 的群集自动缩放功能可自动缩放群集中辅助节点�
 
 #### <a name="using-the-rest-api"></a>使用 REST API
 
-若要使用 REST API 在运行中的群集上启用或禁用自动缩放，请向自动缩放终结点发出 POST 请求，如以下代码片段所示：
+要使用 REST API 在正在运行的群集上启用或禁用自动缩放，请向自动缩放终结点发出 POST 请求：
 
 ```
 https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{resourceGroup Name}/providers/Microsoft.HDInsight/clusters/{CLUSTERNAME}/roles/workernode/autoscale?api-version=2018-06-01-preview
@@ -207,7 +205,7 @@ https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{res
 
 请参阅介绍如何[启用基于负载的自动缩放](#load-based-autoscaling)的上一部分，详尽了解所有的有效负载参数。
 
-## <a name="best-practices"></a>最佳做法
+## <a name="guidelines"></a>指南
 
 ### <a name="choosing-load-based-or-schedule-based-scaling"></a>选择基于负载或基于计划的缩放
 
@@ -224,9 +222,9 @@ https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{res
 
 ### <a name="preparation-for-scaling-down"></a>准备进行纵向缩减
 
-在群集纵向缩减过程中，自动缩放会根据目标大小解除节点的授权。 如果这些节点上有正在运行的任务，自动缩放会等待这些任务完成。 由于每个工作器节点也充当 HDFS 中的某个角色，因此会将临时数据转移到剩余节点中。 因此，应确保其余节点上有足够的空间来承载所有临时数据。
+在群集纵向缩减过程中，自动缩放会根据目标大小解除节点的授权。 如果这些节点上运行任务，自动缩放将等待任务完成。 由于每个工作器节点也充当 HDFS 中的某个角色，因此会将临时数据转移到剩余节点中。 因此，应确保其余节点上有足够的空间来承载所有临时数据。
 
-正在运行的作业会继续运行，直至完成。 在可用的工作器节点变少的情况下，挂起的作业会等待系统按正常情况进行安排。
+正在运行的作业将继续。 挂起的作业将等待具有较少可用辅助角色节点的计划。
 
 ### <a name="minimum-cluster-size"></a>最小的群集大小
 
@@ -242,15 +240,15 @@ Azure 门户中列出的群集状态可帮助你监视自动缩放活动。
 
 以下列表解释了你可能会看到的所有群集状态消息。
 
-| 群集状态 | 描述 |
+| 群集状态 | 说明 |
 |---|---|
-| 正在运行 | 群集在正常运行。 所有以前的自动缩放活动已成功完成。 |
+| 运行 | 群集在正常运行。 所有以前的自动缩放活动已成功完成。 |
 | 正在更新  | 正在更新群集自动缩放配置。  |
 | HDInsight 配置  | 某个群集纵向扩展或缩减操作正在进行。  |
-| 更新时出错  | 更新自动缩放配置期间 HDInsight 遇到问题。 客户可以选择重试更新或禁用自动缩放。  |
+| 更新时出错  | HDInsight 在自动缩放配置更新期间遇到了问题。 客户可以选择重试更新或禁用自动缩放。  |
 | 错误  | 群集出现问题，并且不可用。 请删除此群集，然后新建一个。  |
 
-要查看群集中的当前节点数，请转到群集**的"概述"** 页上的 **"群集大小**图表"，或在 **"设置"** 下选择**群集大小**。
+要查看群集中的当前节点数，请转到群集**的"概述"** 页上的 **"群集大小**图表"。 或者选择 **"设置"** 下的 **"群集大小**"。
 
 ### <a name="operation-history"></a>操作历史记录
 
@@ -262,4 +260,4 @@ Azure 门户中列出的群集状态可帮助你监视自动缩放活动。
 
 ## <a name="next-steps"></a>后续步骤
 
-阅读[缩放最佳做法](hdinsight-scaling-best-practices.md)，了解手动缩放群集的最佳做法
+在缩放指南中阅读有关手动缩放群集[的指南](hdinsight-scaling-best-practices.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3e7b1a656c92e37a709b57dae463f6644003e42
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 60d0ad0a1c0a1b4d13ce4d386df22406a8ab8e51
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755184"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617619"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>条件访问：要求所有用户使用 MFA
 
@@ -41,7 +41,7 @@ ms.locfileid: "80755184"
 
 ## <a name="create-a-conditional-access-policy"></a>创建条件访问策略
 
-以下步骤将有助于创建条件访问策略，该策略要求那些分配的管理角色执行多重身份验证。
+以下步骤将有助于创建条件访问策略，以要求所有用户执行多重身份验证。
 
 1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 **Azure 门户**。
 1. 浏览到**Azure 活动目录** > **安全** > **条件访问**。
@@ -50,7 +50,7 @@ ms.locfileid: "80755184"
 1. 在 **"分配"** 下，选择 **"用户"和"组**"
    1. 在“包括”下，选择“所有用户”********
    1. 在“排除”下**** 选择“用户和组”****，然后选择组织的紧急访问帐户或不受限帐户。 
-   1. 选择 **"完成**"。
+   1. 选择“完成”  。
 1. 在 **"云应用"或"包括** > **"下**，选择 **"所有云应用**"。
    1. 在“排除”**** 下，选择任何不需要多重身份验证的应用程序。
 1. 在**条件** > **客户端应用（预览）** 下，将 **"配置配置为** **"，** 然后选择 **"完成**"。
@@ -68,8 +68,8 @@ ms.locfileid: "80755184"
    1. 配置：“是”****。
    1. 包括**任何位置**。
    1. 排除**所有受信任的位置**。
-   1. 选择 **"完成**"。
-1. 选择 **"完成**"。
+   1. 选择“完成”  。
+1. 选择“完成”  。
 1. 保存策略更改****。
 
 ## <a name="next-steps"></a>后续步骤

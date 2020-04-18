@@ -7,16 +7,16 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: c28305cc55fcc561863670a15480782ce63e75b4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: dda2812b5e2cc79d53658d568ba0845d593f41d6
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415521"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605382"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>在映射数据流中生成表达式
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在映射数据流时，许多转换属性作为表达式输入。 这些表达式由列值、参数、函数、运算符和文本组成，这些列值在运行时计算为 Spark 数据类型。
 
@@ -113,7 +113,7 @@ regex_replace('100 and 200', '(\\d+)', 'digits')
 
 ![表达式生成器数组](media/data-flow/expb2.png "表达式数据预览")
 
-## <a name="keyboard-shortcuts"></a>键盘快捷方式
+## <a name="keyboard-shortcuts"></a>键盘快捷键
 
 * Ctrl_K Ctrl_C：注释整行。
 * Ctrl_K Ctrl_U：无注释。

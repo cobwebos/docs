@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 03/30/2020
-ms.openlocfilehash: e69f3d7350d0da9f364983eae0935532b576bd76
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 81f9d242d93ffe513c0c3733ceb9d38ca9cadc1c
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411461"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617450"
 ---
 # <a name="onboard-update-management-solution-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板的板载更新管理解决方案
 
@@ -20,16 +20,19 @@ ms.locfileid: "80411461"
 
 * 创建 Azure 监视器日志分析工作区。
 * 创建 Azure 自动化帐户。
-* 如果尚未链接，则将自动化帐户链接到日志分析工作区。
-* Azure 自动化更新管理解决方案
+* 将自动化帐户链接到日志分析工作区（如果尚未链接）。
+* 加入 Azure 自动化更新管理解决方案。
 
 该模板不自动载入一个或多个 Azure 或非 Azure VM。
 
-如果已在订阅中受支持的区域部署了日志分析工作区和自动化帐户，则它们未链接，并且工作区尚未部署更新管理解决方案，使用此模板成功创建链接并部署更新管理解决方案。 
+如果您已在订阅中受支持的区域部署了日志分析工作区和自动化帐户，则它们不会链接。 工作区尚未部署更新管理解决方案。 使用此模板成功创建链接并部署更新管理解决方案。 
+
+>[!NOTE]
+>本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az 模块安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于自动化帐户，可以使用["如何更新 Azure 自动化 中的 Azure PowerShell"模块](automation-update-azure-modules.md)将模块更新到最新版本。
 
 ## <a name="api-versions"></a>API 版本
 
-下表列出了此示例中使用的资源的 API 版本。
+下表列出了此模板中使用的资源的 API 版本。
 
 | 资源 | 资源类型 | API 版本 |
 |:---|:---|:---|
@@ -39,18 +42,18 @@ ms.locfileid: "80411461"
 
 ## <a name="before-using-the-template"></a>在使用模板之前
 
-如果选择在本地安装和使用 PowerShell，本文需要 Azure PowerShell Az 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。 使用 Azure PowerShell，部署使用[新阿兹资源组部署](/powershell/module/az.resources/new-azresourcegroupdeployment)。
+如果选择在本地安装和使用 PowerShell，本文需要 Azure PowerShell Az 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需要运行[Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0)以创建与 Azure 的连接。 使用 Azure PowerShell，部署使用[新阿兹资源组部署](/powershell/module/az.resources/new-azresourcegroupdeployment)。
 
-如果选择在本地安装和使用 CLI，则本文要求您运行 Azure CLI 版本 2.1.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 使用 Azure CLI，此部署使用[az 组部署创建](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)。 
+如果选择在本地安装和使用 CLI，则本文要求您运行 Azure CLI 版本 2.1.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 使用 Azure CLI，此部署使用[az 组部署创建](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)。 
 
 JSON 模板配置为提示您：
 
 * 工作区的名称
-* 要在 中创建工作区的区域
+* 在其中创建工作区的区域
 * 自动化帐户的名称
-* 要在 中创建帐户的区域
+* 要在其中创建帐户的区域
 
-JSON 模板为可能用作环境中标准配置的其他参数指定默认值。 您可以将模板存储在 Azure 存储帐户中，以便组织中共享访问。 有关使用模板的详细信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](../azure-resource-manager/templates/deploy-cli.md)。
+JSON 模板为可能用于环境中标准配置的其他参数指定默认值。 您可以将模板存储在 Azure 存储帐户中，以便组织中共享访问。 有关使用模板的详细信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](../azure-resource-manager/templates/deploy-cli.md)。
 
 模板中的以下参数使用日志分析工作区的默认值设置：
 
@@ -59,11 +62,11 @@ JSON 模板为可能用作环境中标准配置的其他参数指定默认值。
 * 容量预留 - 默认值为 100 GB
 
 >[!WARNING]
->如果在订阅中创建或配置 Log Analytics 工作区，而该订阅已加入 2018 年 4 月的新定价模型，则唯一有效的 Log Analytics 定价层为 **PerGB2018**。
+>如果在已选择加入 2018 年 4 月定价模型的订阅中创建或配置日志分析工作区，则唯一有效的日志分析定价层是**PerGB2018**。
 >
 
 >[!NOTE]
->在使用此模板之前，请查看[其他详细信息](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace)以完全了解工作区配置选项，如访问控制模式、定价层、保留和容量预留级别。 如果您是 Azure 监视器日志的新增功能，并且尚未部署工作区，则应查看[工作区设计](../azure-monitor/platform/design-logs-deployment.md)指南以了解访问控制，并了解我们建议组织的设计实现策略。
+>在使用此模板之前，请查看[其他详细信息](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace)以完全了解工作区配置选项，如访问控制模式、定价层、保留和容量预留级别。 如果您是 Azure 监视器日志的新增功能，并且尚未部署工作区，则应查看[工作区设计](../azure-monitor/platform/design-logs-deployment.md)指南以了解访问控制，并了解我们为组织推荐的设计实现策略。
 
 ## <a name="deploy-template"></a>部署模板
 
@@ -235,7 +238,7 @@ JSON 模板为可能用作环境中标准配置的其他参数指定默认值。
 
 2. 按要求编辑模板。 请考虑创建[资源管理器参数文件](../azure-resource-manager/templates/parameter-files.md)，而不是将参数作为内联值传递。
 
-3. 将此文件保存为"部署UMSolutiontemplate.json"到本地文件夹。
+3. 将此文件保存到本地文件夹，作为**部署UMSolutiontemplate.json**。
 
 4. 已做好部署此模板的准备。 可以使用 PowerShell 或 Azure CLI。 当您提示您创建工作区和自动化帐户名称时，请提供在所有 Azure 订阅中全局唯一的名称。
 

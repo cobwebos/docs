@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/15/2019
+ms.date: 04/17/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1e8587562ff452373fe2ee3b98fa20309e77cc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be5defb85547e8750dea9ceaa481217aa40a004e
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266580"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639765"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>使用 Azure CLI 创建、列出或删除用户分配的托管标识
 
@@ -37,6 +37,12 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
     - 在 Azure 门户中使用 [Azure Cloud Shell](../../cloud-shell/overview.md)（见下一部分）。
     - 单击各代码块右上角的“试运行”按钮，使用嵌入的 Azure Cloud Shell。
     - 如果喜欢使用本地 CLI 控制台，请[安装最新版 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)（2.0.13 或更高版本）。 使用与要在其下部署用户分配的托管标识的 Azure 订阅关联的帐户通过 `az login` 登录到 Azure。
+
+
+> [!NOTE]
+> 为了在使用 CLI 使用应用 servivce 主体时修改用户权限，您必须在 Azure AD 图形 API 中提供服务主体附加权限，因为 CLI 的一部分对图形 API 执行 GET 请求。 否则，您可能会最终收到"完成操作的权限不足"消息。 为此，您需要进入 Azure 活动目录中的应用注册，选择应用、单击 API 权限、向下滚动并选择 Azure 活动目录图。 在此处选择应用程序权限，然后添加相应的权限。 
+
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

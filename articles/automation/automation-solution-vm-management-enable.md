@@ -1,20 +1,20 @@
 ---
-title: 在非工作时间启用启动/停止 VM 解决方案
+title: 启用 Azure 自动化在非工作时间启动/停止 VM 解决方案
 description: 本文介绍如何为 Azure 虚拟机启用 Azure 自动化启动/停止 VM 解决方案。
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7b619d3c9b4b334e637d6a1c456256cb33ad5134
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 2414567b74232d634fa0a34202691a8e43ae6135
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261374"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604744"
 ---
-# <a name="enable-azure-startstop-vms-solution"></a>启用 Azure 启动/停止 VM 解决方案
+# <a name="enable-azure-automation-startstop-vms-solution"></a>启用 Azure 自动化启动/停止 VM 解决方案
 
-执行以下步骤，将非工作时间解决方案的启动/停止 VM 添加到新的或现有的自动化帐户和链接的日志分析工作区。 完成载入过程后，配置变量以自定义解决方案。
+执行以下步骤，将**非工作时间解决方案的启动/停止 VM**添加到新的或现有的自动化帐户和链接的日志分析工作区。 完成载入过程后，配置变量以自定义解决方案。
 
 >[!NOTE]
 >要将此解决方案与经典 VM 一起使用，您需要一个经典运行作为帐户，默认情况下不创建该帐户。 有关创建经典"作为"帐户的说明，请参阅[创建经典运行作为帐户](automation-create-standalone-account.md#create-a-classic-run-as-account)。
@@ -26,7 +26,7 @@ ms.locfileid: "81261374"
 
 2. 搜索并选择**自动化帐户**。
 
-3. 在 **"自动化帐户"** 页上，从列表中选择您的自动化帐户。
+3. 在"自动化帐户"页上，从列表中选择您的自动化帐户。
 
 4. 从自动化帐户中，选择 **"相关资源**"下的 **"开始/停止 VM"。** 在此处，可以单击“详细了解和启用解决方案”。**** 如果已部署“启动/停止 VM”解决方案，可单击“管理解决方案”，在列表中找到并选择它****。
 
@@ -39,32 +39,32 @@ ms.locfileid: "81261374"
 
    ![Azure 门户](media/automation-solution-vm-management/azure-portal-01.png)
 
-6. 将显示 **"添加解决方案**"页。 系统会提示先要配置解决方案，然后才可以将它导入自动化订阅。
+6. 此时会显示“添加解决方案”页面。 系统会提示您先配置解决方案，然后才能将其导入自动化订阅。
 
    ![VM 管理中的“添加解决方案”页面](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
 
-7. 在“添加解决方案”页面上，选择“工作区”********。 选择链接到自动化帐户所在的同一个 Azure 订阅的 Log Analytics 工作区。 如果没有工作区，请选择“新建工作区”****。 在**日志分析工作区**页上，执行以下步骤：
+7. 在“添加解决方案”页面上，选择“工作区”****。 选择链接到自动化帐户所在的同一个 Azure 订阅的 Log Analytics 工作区。 如果没有工作区，请选择“新建工作区”****。 在日志分析工作区页上，执行以下步骤：
 
-   - 为新**日志分析工作区**指定名称，例如"ContosoLA工作区"。
+   - 为新日志分析工作区指定名称，如**ContosoLA 工作区**。
    - 如果选择的默认值不合适，请从下拉列表中选择要链接到的**订阅**。
    - 对于“资源组”****，可以创建新资源组，或选择现有的资源组。
    - 选择**位置**。
    - 选择**定价层**。 选择“每 GB (独立)”选项****。 Azure 监视器日志已更新[定价](https://azure.microsoft.com/pricing/details/log-analytics/)，并且"每 GB"层是唯一的选项。
 
    > [!NOTE]
-   > 在启用解决方案时，只有某些区域支持链接 Log Analytics 工作区和自动化帐户。
+   > 启用解决方案时，仅支持某些区域链接日志分析工作区和自动化帐户。
    >
-   > 有关支持的映射对的列表，请参阅[自动化帐户和日志分析工作区的区域映射](how-to/region-mappings.md)。
+   > 有关支持的映射对的列表，请参阅[自动化帐户的区域映射和日志分析工作区](how-to/region-mappings.md)。
 
-8. 在“Log Analytics 工作区”页上提供所需信息后，单击“创建”********。 可以在菜单中的“通知”下面跟踪操作进度，完成后将返回到“添加解决方案”页面。********
+8. 在“Log Analytics 工作区”页上提供所需信息后，单击“创建”****。 可以在菜单中的“通知”下面跟踪操作进度，完成后将返回到“添加解决方案”页面。****
 
-9. 在“添加解决方案”页面中，选择“自动化帐户”********。 如果要创建新的 Log Analytics 工作区，可以创建与它关联的新自动化帐户，或选择尚未链接到 Log Analytics 工作区的现有自动化帐户。 选择现有的自动化帐户，或者单击“创建自动化帐户”，并在“添加自动化帐户”页上提供以下信息：********
+9. 在“添加解决方案”页面中，选择“自动化帐户”****。 如果要创建新的日志分析工作区，则可以创建新的自动化帐户以与其关联，或者选择尚未链接到日志分析工作区的现有自动化帐户。 选择现有自动化帐户或单击"**创建自动化帐户**"，在"添加自动化"帐户页上提供以下信息：
  
    - 在“名称”字段中输入自动化帐户的名称****。
 
      系统会根据所选的 Log Analytics 工作区自动填充所有其他选项。 无法修改这些选项。 “Azure 运行方式帐户”是此解决方案为 Runbook 包含的默认身份验证方法。 单击“确定”后，系统会验证配置选项并创建自动化帐户。**** 可以在菜单中的“通知”下面跟踪操作进度****。
 
-10. 最后，在“添加解决方案”页面上，选择“配置”。******** 此时会显示“参数”页面。****
+10. 最后，在“添加解决方案”页面上，选择“配置”。**** 此时会显示“参数”页面。
 
     ![解决方案的“参数”页面](media/automation-solution-vm-management/azure-portal-add-solution-02.png)
 
@@ -85,12 +85,12 @@ ms.locfileid: "81261374"
      > [!IMPORTANT]
      > “目标资源组名称”的默认值是 &ast;********。 这面向订阅中的所有 VM。 如果不希望解决方案面向订阅中的所有 VM，则需要在启用计划前，将此值更新到资源组名称列表。
 
-11. 配置解决方案所需的初始设置后，单击“确定”以关闭“参数”页面并选择“创建”。************ 
+11. 配置解决方案所需的初始设置后，单击“确定”以关闭“参数”页面并选择“创建”。******** 
 
 系统会验证所有设置，然后在订阅中部署该解决方案。 此过程需要几秒钟才能完成，可以在菜单中的“通知”下面跟踪进度****。
 
 > [!NOTE]
-> 如果您有 Azure 云解决方案提供程序 （Azure CSP） 订阅，则在部署完成后，在自动化帐户中转到 **"共享资源**"下的**变量**，并将[**External_EnableClassicVMs**](automation-solution-vm-management.md#variables)变量设置为**False**。 这会使解决方案停止查找经典 VM 资源。
+> 如果您有 Azure 云解决方案提供程序 （Azure CSP） 订阅，则在部署完成后，在自动化帐户中，转到 **"共享资源**"下的**变量**，并将[**External_EnableClassicVMs**](automation-solution-vm-management.md#variables)变量设置为**False**。 这会使解决方案停止查找经典 VM 资源。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: b0569907537f91f7e84b8156dffa0f313461f6e1
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 6210d6ee4877c6ba84178340cf0a6610e402da31
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677024"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641108"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>使用 Azure 媒体服务执行实时流式处理以创建多比特率流
 
@@ -31,7 +31,7 @@ ms.locfileid: "80677024"
 在 Azure 媒体服务 (AMS) 中，**频道**表示用于处理实时传送视频流内容的管道。 **通道**以两种方式之一接收实时输入流：
 
 * 本地实时编码器采用 RTMP 或平滑流式处理（分片 MP4）格式将单比特率流发送至能够使用媒体服务执行实时编码的频道。 然后，频道将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。 收到请求时，媒体服务会将该流传递给客户。
-* 本地实时编码器将多比特率 **RTMP** 或**平滑流式处理**（零碎的 MP4）发送到无法通过 AMS 进行实时编码的频道。 引入的流通过**通道**，无需任何进一步处理。 这种方法称为**直通**。 可以使用以下输出多比特率平滑流的实时编码器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 以下实时编码器输出RTMP：[远程有线广播](media-services-configure-wirecast-live-encoder.md)，海视，特拉德克和特里卡斯特编码器。  实时编码器也可将单比特率流发送到并未启用实时编码的频道，并不建议这样做。 收到请求时，媒体服务会将该流传递给客户。
+* 本地实时编码器将多比特率 **RTMP** 或**平滑流式处理**（零碎的 MP4）发送到无法通过 AMS 进行实时编码的频道。 引入的流通过**通道**，无需任何进一步处理。 这种方法称为**直通**。 可以使用以下输出多比特率平滑流的实时编码器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 以下实时编码器输出RTMP：[远程有线广播](media-services-configure-wirecast-live-encoder.md)，海视，特拉德克编码器。  实时编码器也可将单比特率流发送到并未启用实时编码的频道，并不建议这样做。 收到请求时，媒体服务会将该流传递给客户。
 
   > [!NOTE]
   > 实时传送视频流时，使用直通方法是最经济的。
@@ -322,7 +322,7 @@ ms.locfileid: "80677024"
 > 
 > 
 
-## <a name="considerations"></a><a id="Considerations"></a>考虑
+## <a name="considerations"></a><a id="Considerations"></a>注意事项
 * 当某个编码类型为“标准”**** 的频道出现输入源/贡献源丢失的情况时，该频道会采取相应的补偿措施，将源视频/音频替换为错误的盖板和静音。 该频道会持续发出静态图像，直到输入/贡献源恢复。 我们建议不要让实时频道处于此类状态的时间超过 2 小时。 如果超出该限制，该频道将无法保证输入重新连接时的行为，也无法保证其响应重置命令时的行为。 这种情况下必须停止通道并将其删除，然后创建一个新的。
 * 当频道或其关联的节目正在运行时，无法更改输入协议。 如果需要不同的协议，应当针对每个输入协议创建单独的频道。
 * 每次重新配置实时编码器时，可调用频道上的**重置**方法。 在重置频道之前，必须停止节目。 在重置频道后，重新启动节目。

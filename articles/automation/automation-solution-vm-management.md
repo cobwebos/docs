@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: fbcd4ea174d4b6a2a45495c32f178ed1bd01bbe0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 968e609772e08814a9943734d30c16bf6f5972e8
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261340"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604713"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>在 Azure 自动化中，在非工作时间解决方案期间启动/停止 VM
 
@@ -106,7 +106,7 @@ ms.locfileid: "81261340"
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | 从父 runbook 调用。 此 Runbook 基于每个资源为自动停止方案创建警报。|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf：True 或 False  | 在目标订阅或资源组中的 VM 上创建或更新 Azure 警报规则。 <br> `VMList`是 VM 的逗号分隔列表。 例如，`vm1, vm2, vm3` 。<br> `WhatIf`支持在不执行的情况下验证 Runbook 逻辑。|
-|AutoStop_Disable | None | 禁用自动停止警报和默认计划。|
+|AutoStop_Disable | 无 | 禁用自动停止警报和默认计划。|
 |AutoStop_VM_Child | WebHookData | 从父 runbook 调用。 警报规则调用此 Runbook 以停止经典 VM。|
 |AutoStop_VM_Child_ARM | WebHookData |从父 runbook 调用。 警报规则调用此 Runbook 以停止 VM。  |
 |ScheduledStartStop_Base_Classic | CloudServiceName<br> Action：Start 或 Stop<br> VMList  | 按云服务在经典 VM 组中执行操作启动或停止。 |
@@ -225,11 +225,11 @@ Azure CSP 订阅仅支持 Azure 资源管理器模型。 非 Azure 资源管理�
 
 1. 搜索并选择**日志分析工作区**。
 
-2. 在**日志分析工作区**页面上，选择工作区。
+2. 在日志分析工作区页面上，选择工作区。
 
 3. 从工作区设置页面上的菜单中选择“删除”。****
 
-4. 如果不想保留 Azure 自动化帐户组件，可以手动删除每个组件。 请参阅[解决方案组件](#solution-components)。
+4. 如果不想保留 Azure 自动化帐户[解决方案组件](#solution-components)，可以手动删除每个组件。
 
 ## <a name="next-steps"></a>后续步骤
 

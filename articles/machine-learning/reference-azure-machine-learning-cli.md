@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 471b26ebc4bd4aecb814ec43c7eba56e3d764fa0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 16f9080487af95e7de5c5f8c91fd5c8d356b7bde
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78402489"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81618074"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>使用 Azure 机器学习的 CLI 扩展
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,11 +35,30 @@ CLI 不能取代 Azure 机器学习 SDK。 它是一个经过优化的补充工�
 
 * 若要使用 CLI，必须拥有 Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)。
+* 若要在**本地环境**中使用本文档所述的 CLI 命令，需要安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+
+    如果使用 Azure[云外壳](https://azure.microsoft.com//features/cloud-shell/)，则 CLI 将通过浏览器访问并生活在云中。
 
 ## <a name="full-reference-docs"></a>完整参考文档
 
 查找 [Azure CLI 的 azure-cli-ml 扩展的完整参考文档](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/?view=azure-cli-latest)。
+
+## <a name="connect-the-cli-to-your-azure-subscription"></a>将 CLI 连接到 Azure 订阅
+
+> [!IMPORTANT]
+> 如果使用 Azure 云外壳，则可以跳过此部分。 云外壳使用登录到 Azure 订阅的帐户自动对您进行身份验证。
+
+可通过多种方法从 CLI 对 Azure 订阅进行身份验证。 最基本的方法是使用浏览器进行交互式身份验证。 若要以交互方式进行身份验证，请打开命令行或终端，然后使用以下命令：
+
+```azurecli-interactive
+az login
+```
+
+如果 CLI 可以打开默认的浏览器，则它会打开该浏览器并加载登录页。 否则，需要打开浏览器并按照命令行中的说明操作。 这些说明涉及浏览[https://aka.ms/devicelogin](https://aka.ms/devicelogin)和输入授权代码。
+
+[!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
+
+有关其他身份验证方法，请参阅[使用 Azure CLI 登录](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。
 
 ## <a name="install-the-extension"></a>安装扩展
 

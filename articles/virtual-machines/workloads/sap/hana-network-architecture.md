@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 33684a6292d7e51c04f6bacc7c49ee5986dbec10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b3bc87b183803c0854542d6925af7429b593d2af
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79502399"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605178"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA（大型实例）网络体系结构
 
@@ -86,7 +86,7 @@ Azure 中 SAP 部署的差别如下：
 为了降低延迟，ExpressRoute 快速路径于 2019 年 5 月推出并发布了，用于将 HANA 大型实例与托管 SAP 应用程序 VM 的 Azure 虚拟网络的特定连接。 到目前为止，解决方案的主要区别是，VM 和 HANA 大型实例之间的数据流不再通过 ExpressRoute 网关路由。 相反，在 Azure 虚拟网络的子网中分配的 VM 直接与专用企业边缘路由器通信。 
 
 > [!IMPORTANT] 
-> ExpressRoute 快速路径功能要求运行 SAP 应用程序 VM 的子网位于连接到 HANA 大型实例的同一 Azure 虚拟网络中。 位于 Azure 虚拟网络中的 VM 与直接连接到 HANA 大型实例单元的 Azure 虚拟网络对等互连，因此不会从 ExpressRoute 快速路径中受益。 因此，典型的集线器和分支虚拟网络设计，其中 ExpressRoute 电路与集线器虚拟网络和包含 SAP 应用程序层（分支）的虚拟网络进行对等，ExpressRoute 快速优化路径将不起作用。 在加法中，快速路由快速路径今天不支持用户定义的路由规则 （UDR）。 有关详细信息，请参阅[ExpressRoute 虚拟网络网关和 FastPath](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways)。 
+> ExpressRoute 快速路径功能要求运行 SAP 应用程序 VM 的子网位于连接到 HANA 大型实例的同一 Azure 虚拟网络中。 位于 Azure 虚拟网络中的 VM 与直接连接到 HANA 大型实例单元的 Azure 虚拟网络对等互连，因此不会从 ExpressRoute 快速路径中受益。 因此，典型的集线器和分支虚拟网络设计，其中 ExpressRoute 电路与集线器虚拟网络连接，包含 SAP 应用程序层（分支）的虚拟网络正在对等，ExpressRoute 快速路径的优化将不起作用。 在加法中，快速路由快速路径今天不支持用户定义的路由规则 （UDR）。 有关详细信息，请参阅[ExpressRoute 虚拟网络网关和 FastPath](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways)。 
 
 
 有关如何配置 ExpressRoute 快速路径的更多详细信息，请阅读文档[将虚拟网络连接到 HANA 大型实例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route)。    
@@ -151,7 +151,7 @@ Azure 中 SAP 部署的差别如下：
 - 在 Linux VM 中使用 [IPTables 规则](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ)在本地位置与 HANA 大型实例单元之间，或者在不同区域中的 HANA 大型实例单元之间实现路由。 运行 IPTables 的 VM 需要部署在连接到 HANA 大型实例和本地的 Azure 虚拟网络中。 需要相应地调整 VM 的大小，以便 VM 的网络吞吐量足以满足预期的网络流量。 有关 VM 网络带宽的详细信息，请查看[Azure 中 Linux 虚拟机的大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)文章。
 - [Azure 防火墙](https://azure.microsoft.com/services/azure-firewall/)是另一个解决方案，用于在本地和 HANA 大型实例单元之间启用直接流量。 
 
-这些解决方案的所有流量都将通过 Azure 虚拟网络路由，因此，这些流量可能另外受到使用的软设备或 Azure 网络安全组的限制，因此，某些 IP 地址或 IP 地址的范围来自可以阻止或显式允许访问 HANA 大型实例。 
+这些解决方案的所有流量都将通过 Azure 虚拟网络路由，因此，流量可能另外受到使用的软设备或 Azure 网络安全组的限制，因此，某些 IP 地址或 IP 地址范围从本地可能会被阻止或显式允许访问 HANA 大型实例。 
 
 > [!NOTE]  
 > 请注意，Microsoft 不实现也不支持涉及第三方网络设备或 IPTables 的自定义解决方案。 必须由所用组件的供应商或集成者提供支持。 
@@ -182,7 +182,7 @@ Azure 中 SAP 部署的差别如下：
 HANA 大型实例未建立直接 Internet 连接**。 这会限制某些功能，例如，直接向 OS 供应商注册 OS 映像的功能。 可能需要使用本地 SUSE Linux Enterprise Server 订阅管理工具服务器或 Red Hat Enterprise Linux 订阅管理器。
 
 ## <a name="data-encryption-between-vms-and-hana-large-instance"></a>VM 与 HANA 大型实例之间的数据加密
-在 HANA 大型实例与 VM 之间传输的数据不会加密。 但是，仅仅是用于 HANA DBMS 端和基于 JDBC/ODBC 应用程序之间的交换，可以启用加密的流量。 有关详细信息，请参阅[此 SAP 文档](http://help-legacy.sap.com/saphelp_hanaplatform/helpdata/en/db/d3d887bb571014bf05ca887f897b99/content.htm?frameset=/en/dd/a2ae94bb571014a48fc3b22f8e919e/frameset.htm&current_toc=/en/de/ec02ebbb57101483bdf3194c301d2e/plain.htm&node_id=20&show_children=false)。
+在 HANA 大型实例与 VM 之间传输的数据不会加密。 但是，仅仅是用于 HANA DBMS 端和基于 JDBC/ODBC 应用程序之间的交换，可以启用加密的流量。 有关详细信息，请参阅[此 SAP 文档](https://help.sap.com/viewer/102d9916bf77407ea3942fef93a47da8/1.0.11/en-US/dbd3d887bb571014bf05ca887f897b99.html)。
 
 ## <a name="use-hana-large-instance-units-in-multiple-regions"></a>在多个区域使用 HANA 大型实例单位
 

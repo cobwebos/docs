@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9e1f62dcdb122726fc1c08b7bea4e4c214ce7906
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1cf1750924ab8ea8afff6ac788683565433866b
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76933364"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81618023"
 ---
 # <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>索引期间文本和图像处理的内置认知技能（Azure 认知搜索）
 
@@ -23,13 +23,15 @@ ms.locfileid: "76933364"
 > 随着通过增加处理频率、添加更多文档或添加更多 AI 算法来扩大范围，您需要[附加计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API 以及在 Azure 认知搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
 >
 > 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取定价如 [Azure 认知搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)所述。
+>
+> [增量扩充（预览）](cognitive-search-incremental-indexing-conceptual.md)功能允许您提供缓存，使索引器能够更高效地运行将来修改技能集时所需的认知技能，从而节省时间和金钱。
 
 
 ## <a name="built-in-skills"></a>内置技能
 
 多种技能可在其使用或生成的对象中灵活应用。 一般来说，大多数技能都基于预先定型的模型，这意味着你无法使用自己的定型数据来定型模型。 下表枚举并介绍了 Microsoft 提供的技能。 
 
-| 技能 | 描述 |
+| 技能 | 说明 |
 |-------|-------------|
 |[微软.技能.文本.自定义实体查找技能](cognitive-search-skill-custom-entity-lookup.md)| 从自定义的、用户定义的单词和短语列表中查找文本。|
 | [Microsoft.Skills.Text.KeyPhraseSkill](cognitive-search-skill-keyphrases.md) | 此技能使用预定型模型来检测基于术语放置、语言规则、与其他术语的接近度以及该术语在源数据内的异常程度的重要短语。 |
@@ -50,7 +52,7 @@ ms.locfileid: "76933364"
 
 有关创建[自定义技能](cognitive-search-custom-skill-web-api.md)的指导，请参阅[如何定义自定义接口](cognitive-search-custom-skill-interface.md)和[示例：为 AI 充实创建自定义技能](cognitive-search-create-custom-skill-example.md)。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 + [如何定义技能集](cognitive-search-defining-skillset.md)
 + [自定义技能接口定义](cognitive-search-custom-skill-interface.md)

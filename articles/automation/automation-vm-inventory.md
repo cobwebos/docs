@@ -6,12 +6,12 @@ ms.subservice: change-inventory-management
 keywords: 清单, 自动化, 更改, 跟踪
 ms.date: 01/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: d0324038b8a38d7eba84e5472b8f90439b0322c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0627d2daa70c276535dc43b722e22e1d73b0c8d2
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76844813"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617377"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>使用清单收集管理 Azure 虚拟机
 
@@ -22,15 +22,15 @@ ms.locfileid: "76844813"
 
 此方法提供一个基于浏览器的用户界面，用于设置和配置清单收集。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
-如果没有 Azure 订阅，可以[创建一个免费帐户](https://azure.microsoft.com/free/)。
+如果没有 Azure 订阅，[请创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 本文假定你有一个要在其上配置解决方案的 VM。 如果没有 Azure 虚拟机，请[创建虚拟机](../virtual-machines/windows/quick-create-portal.md)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 Azure[门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="enable-inventory-collection-from-the-virtual-machine-resource-page"></a>从虚拟机资源页启用清单收集
 
@@ -53,15 +53,15 @@ ms.locfileid: "76844813"
 
 默认情况下，为收集配置了软件、Windows 服务和 Linux 守护程序。 若要收集 Windows 注册表和文件清单，需配置清单收集设置。
 
-1. 在“清单”**** 视图中，选择窗口顶部的“编辑设置”**** 按钮。
-2. 若要添加新的收集设置，请选择“Windows 注册表”、“Windows 文件”和“Linux 文件”选项卡，转到要添加的设置类别。************
-3. 选择相应的类别，然后单击窗口顶部的“添加”****。
+1. 在"清单"页上，单击页面顶部的 **"编辑设置**"。
+2. 要添加新集合设置，请参阅要添加的设置类别，请参阅 Windows**注册表****、Windows 文件**或**Linux 文件**选项卡。
+3. 选择相应的类别，然后单击页面顶部的 **"添加**"。
 
 下表提供了可以为各种类别配置的每个属性的相关信息。
 
 ### <a name="windows-registry"></a>Windows 注册表
 
-|properties  |描述  |
+|properties  |说明  |
 |---------|---------|
 |已启用     | 确定是否应用了设置        |
 |项名称     | 要跟踪的文件的友好名称        |
@@ -70,25 +70,25 @@ ms.locfileid: "76844813"
 
 ### <a name="windows-files"></a>Windows 文件
 
-|properties  |描述  |
+|properties  |说明  |
 |---------|---------|
-|已启用     | 确定是否应用了设置        |
-|项名称     | 要跟踪的文件的友好名称        |
-|组     | 一个组名，用于对文件进行逻辑分组        |
-|输入路径     | 用于查看文件的路径，例如“c:\temp\myfile.txt”
+|已启用     | 如果应用了该设置，则为 True，否则为 False。        |
+|项名称     | 要跟踪的文件的友好名称。        |
+|组     | 用于对文件进行逻辑分组的组名。       |
+|输入路径     | 要检查文件的路径，例如 **，c：\temp_myfile.txt**。
 
 ### <a name="linux-files"></a>Linux 文件
 
-|properties  |描述  |
+|properties  |说明  |
 |---------|---------|
-|已启用     | 确定是否应用了设置        |
-|项名称     | 要跟踪的文件的友好名称        |
-|组     | 一个组名，用于对文件进行逻辑分组        |
-|输入路径     | 用于查看文件的路径，例如“/etc/*.conf”       |
-|路径类型     | 要跟踪的项的类型，可能值为“文件”和“目录”        |
-|递归     | 在查找要跟踪的项时，确定是否使用递归。        |
-|使用 Sudo     | 此设置确定在检查该项时是否使用 Sudo。         |
-|链接     | 此设置确定在遍历目录时如何处理符号链接。<br> **忽略**- 忽略符号链接，不包括引用的文件/目录<br>**遵循**- 在递归期间遵循符号链接，还包括引用的文件/目录<br>**管理** - 追随符号链接并允许修改返回内容的处置方式      |
+|已启用     | 如果应用了该设置，则为 True，否则为 False。        |
+|项名称     | 要跟踪的文件的友好名称。        |
+|组     | 用于对文件进行逻辑分组的组名。        |
+|输入路径     | 要检查文件的路径，例如 **/etc/_.conf**。       |
+|路径类型     | 要跟踪的项的类型。 值是文件和目录。        |
+|递归     | 如果查找要跟踪的项目时使用递归，则为 True，否则为 False。        |
+|使用 Sudo     | 如果检查项目时使用 sudo，则为 True，否则为 False。         |
+|链接     | 指示遍历目录时如何处理符号链接的值。 可能的值包括： <br> 忽略 - 忽略符号链接，不包括引用的文件/目录<br>遵循 - 在递归期间遵循符号链接，还包括引用的文件/目录<br>管理 - 追随符号链接并允许修改返回内容的处置方式      |
 
 ## <a name="manage-machine-groups"></a>管理计算机组
 
@@ -104,9 +104,9 @@ ms.locfileid: "76844813"
 
 ![查看计算机组页面](./media/automation-vm-inventory/machine-group-page.png)
 
-单击“+ 克隆”**** 按钮可以克隆计算机组。 此处，必须为组提供一个新名称并为组提供别名。 此时可以更改定义。 在更改查询后，按“验证查询”**** 来预览将被选择的计算机。 当对组感到满意时，单击“创建”**** 来创建计算机组
+单击 **" 克隆**"以克隆计算机组。 您必须为组指定一个新名称和别名。 此时可以更改定义。 更改查询后，单击 **"验证查询**"以预览将选择的计算机。 当您对组满意时，单击"**创建**"以创建计算机组。
 
-如果要创建新计算机组，请选择 **"创建机器组**"。 此按钮将打开“创建计算机组”**** 页面，可以在其中定义新组。 单击“创建”**** 以创建组。
+如果要创建新计算机组，请单击 **"创建机器组**"。 此按钮将打开 **"创建计算机组**"页，您可以在其中定义新组。 单击“创建”**** 以创建组。
 
 ![创建新的计算机组](./media/automation-vm-inventory/create-new-group.png)
 
@@ -115,18 +115,17 @@ ms.locfileid: "76844813"
 若要从清单管理中删除虚拟机，请执行以下操作：
 
 1. 在 Azure 门户的左窗格中选择“Log Analytics”****，然后选择载入虚拟机时使用过的工作区。
-2. 在“Log Analytics”窗口的“资源”菜单的“工作区数据源”类别下选择“虚拟机”****************。
-3. 在列表中选择要断开连接的虚拟机。 该虚拟机有一个绿色复选标记，位于“OMS 连接”列中“此工作区”的旁边。********
+2. 在日志分析页上，打开 **"资源"** 菜单。
+3. 在**工作区数据源**下选择**虚拟机**。
+4. 在列表中选择要断开连接的虚拟机。 该虚拟机有一个绿色复选标记，位于“OMS 连接”列中“此工作区”的旁边。********
 
    >[!NOTE]
-   >OMS 现在称为 Azure 监视器日志。
+   >操作管理套件 （OMS） 现在称为 Azure 监视器日志。
    
-4. 在下一页的顶部，选择“断开连接”。****
-5. 在配置窗口中，选择“是”****。
-    此操作断开计算机与管理的连接。
+5. 在下一页的顶部，单击 **"断开连接**"。
+6. 在确认窗口中，单击"**是**"以断开机器与管理层的连接。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解如何管理虚拟机上文件和注册表设置中的更改，请参阅[使用更改跟踪解决方案跟踪环境中的软件更改](../log-analytics/log-analytics-change-tracking.md)。
 * 若要了解如何管理虚拟机上的 Windows 和程序包更新，请参阅 [Azure 中的更新管理解决方案](../operations-management-suite/oms-solution-update-management.md)。
-

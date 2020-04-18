@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/12/2020
-ms.openlocfilehash: c55bee9880c4134f2e304a7fc5176225477fe5f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/16/2020
+ms.openlocfilehash: 01dd8422658aa0c8982733e48782efd27c1bf5be
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480753"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617855"
 ---
 # <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>如何升级 VM 依赖项代理的 Azure 监视器
 
@@ -60,7 +60,7 @@ Windows 和 Linux 的依赖项代理可以手动或自动升级到最新版本�
 
 支持从 Linux 上依赖项代理的早期版本进行升级，并按照与新安装相同的命令执行。
 
-你可以[从这里](https://aka.ms/dependencyagentlinux)下载最新版本的Windows代理。
+你可以[从这里](https://aka.ms/dependencyagentlinux)下载最新版本的Linux代理。
 
 1. 使用具有管理权限的帐户登录到计算机。
 

@@ -8,12 +8,12 @@ ms.date: 09/23/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 3d5f3ade3ef3b79ddb3996b5bf2d609b11aff8a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0bbffacc0a8c47950b8637e826d1d5db9fbdb234
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255959"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605071"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>监视、诊断和排查 Microsoft Azure 存储问题
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "79255959"
 * [简介]
   * [本指南是如何组织的]
 * [监视存储服务]
-  * [监视服务运行状况]
+  * [监控服务运行状况]
   * [监测能力]
   * [监控可用性]
   * [监控性能]
@@ -75,7 +75,7 @@ ms.locfileid: "79255959"
   * [附录 4：使用 Excel 查看指标和日志数据]
   * [附录 5：使用 Application Insights for Azure DevOps 进行监视]
 
-## <a name="introduction"></a><a name="introduction"></a>介绍
+## <a name="introduction"></a><a name="introduction"></a>简介
 本指南演示如何使用 Azure 存储客户端库中的 Azure 存储分析、客户端日志记录等功能及其他第三方工具来确定、诊断和排查与 Azure 存储相关的问题。
 
 ![][1]
@@ -516,24 +516,24 @@ queueServicePoint.UseNagleAlgorithm = false;
 
 | 请求 ID | 操作文本 |
 | --- | --- |
-| 07b26a5d-... |开始向 https://domemaildist.blob.core.windows.net/azuremmblobcontainer 发出同步请求。 |
+| 07b26a5d-... |开始向 `https://domemaildist.blob.core.windows.net/azuremmblobcontainer` 发出同步请求。 |
 | 07b26a5d-... |StringToSign = HEAD............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:11 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | 07b26a5d-... |正在等待响应。 |
 | 07b26a5d-... |收到响应。 Status code = 200, Request ID = eeead849-...Content-MD5 = , ETag =    &quot;0x8D14D2DC63D059B&quot;. |
 | 07b26a5d-... |响应标头已成功处理，继续执行该操作的剩余部分。 |
 | 07b26a5d-... |正在下载响应正文。 |
 | 07b26a5d-... |操作已成功完成。 |
-| 07b26a5d-... |开始向 https://domemaildist.blob.core.windows.net/azuremmblobcontainer 发出同步请求。 |
+| 07b26a5d-... |开始向 `https://domemaildist.blob.core.windows.net/azuremmblobcontainer` 发出同步请求。 |
 | 07b26a5d-... |StringToSign = DELETE............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:12    GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | 07b26a5d-... |正在等待响应。 |
 | 07b26a5d-... |收到响应。 状态代码 = 202，请求 ID = 6ab2a4cf-...，Content-MD5 = ，ETag = 。 |
 | 07b26a5d-... |响应标头已成功处理，继续执行该操作的剩余部分。 |
 | 07b26a5d-... |正在下载响应正文。 |
 | 07b26a5d-... |操作已成功完成。 |
-| e2d06d78-... |开始向 https://domemaildist.blob.core.windows.net/azuremmblobcontainer 发出异步请求。</td> |
+| e2d06d78-... |开始向 `https://domemaildist.blob.core.windows.net/azuremmblobcontainer` 发出异步请求。</td> |
 | e2d06d78-... |StringToSign = HEAD............x-ms-client-request-id:e2d06d78-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | e2d06d78-... |正在等待响应。 |
-| de8b1c3c-... |开始向 https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt 发出同步请求。 |
+| de8b1c3c-... |开始向 `https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt` 发出同步请求。 |
 | de8b1c3c-... |StringToSign = PUT...64.qCmF+TQLPhq/YYK50mP9ZQ==........x-ms-blob-type:BlockBlob.x-ms-client-request-id:de8b1c3c-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer/blobCreated.txt. |
 | de8b1c3c-... |正在准备写入请求数据。 |
 | e2d06d78-... |在等待响应时引发的异常：远程服务器返回了错误：(404) 未找到... |
@@ -541,7 +541,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 | e2d06d78-... |响应标头已成功处理，继续执行该操作的剩余部分。 |
 | e2d06d78-... |正在下载响应正文。 |
 | e2d06d78-... |操作已成功完成。 |
-| e2d06d78-... |开始向 https://domemaildist.blob.core.windows.net/azuremmblobcontainer 发出异步请求。 |
+| e2d06d78-... |开始向 `https://domemaildist.blob.core.windows.net/azuremmblobcontainer` 发出异步请求。 |
 | e2d06d78-... |StringToSign = PUT...0.........x-ms-client-request-id:e2d06d78-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | e2d06d78-... |正在等待响应。 |
 | de8b1c3c-... |正在写入请求数据。 |
@@ -562,15 +562,15 @@ queueServicePoint.UseNagleAlgorithm = false;
 
 下表显示了存储日志记录日志文件中的示例服务器端日志消息：
 
-| “属性” | “值” |
+| 名称 | 值 |
 | --- | --- |
 | 请求开始时间 | 2014-05-30T06:17:48.4473697Z |
 | 操作类型     | GetBlobProperties            |
 | 请求状态     | SASAuthorizationError        |
-| HTTP 状态代码   | 404                          |
+| HTTP 状态代码   | 404                            |
 | 身份验证类型| Sas                          |
 | 服务类型       | Blob                         |
-| 请求 URL        | https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt |
+| 请求 URL         | `https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt` |
 | &nbsp;                 |   ?sv=2014-02-14&sr=c&si=mypolicy&sig=XXXXX&;api-version=2014-02-14 |
 | 请求 ID 标头  | a1f348d5-8032-4912-93ef-b393e5252a3b |
 | 客户端请求 ID  | 2d064953-8436-4ee0-aa0c-65cb874f7929 |
@@ -739,7 +739,7 @@ sqllocaldb create v11.0
 4. 将一个筛选器添加到“捕获筛选器”**** 文本框中。 例如，**host contosoemaildist.table.core.windows.net** 会将 Wireshark 配置为只捕获发送到 **contosoemaildist** 存储帐户中的表服务终结点或从该终结点发送的数据包。 请查看[捕获筛选器的完整列表](https://wiki.wireshark.org/CaptureFilters)。
 
    ![][6]
-5. 单击“开始”****。 现在，当在本地计算机上使用客户端应用程序时，Wireshark 将捕获发送到表服务终结点或从该终结点发送的所有数据包。
+5. 单击“启动”  。 现在，当在本地计算机上使用客户端应用程序时，Wireshark 将捕获发送到表服务终结点或从该终结点发送的所有数据包。
 6. 完成后，在主菜单上，依次单击“捕获”**** 和“停止”****。
 7. 要将捕获的数据保存到 Wireshark 捕获文件中，请在主菜单上依次单击“文件”**** 和“保存”****。
 
@@ -825,7 +825,7 @@ Microsoft Message Analyzer 中内置的 **Web 代理**跟踪基于 Fiddler；它
 [本指南是如何组织的]: #how-this-guide-is-organized
 
 [监视存储服务]: #monitoring-your-storage-service
-[监视服务运行状况]: #monitoring-service-health
+[监控服务运行状况]: #monitoring-service-health
 [监测能力]: #monitoring-capacity
 [监控可用性]: #monitoring-availability
 [监控性能]: #monitoring-performance

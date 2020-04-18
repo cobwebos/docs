@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的 VMware/物理灾难恢复支持列表
 description: 汇总了使用 Azure Site Recovery 将 VMware VM 和物理服务器灾难恢复到 Azure 的支持。
 ms.topic: conceptual
 ms.date: 2/24/2020
-ms.openlocfilehash: fbd5d87b219cbb482569dc5e45adc9c81181670c
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 02448754abd92eab9e095a5eaff10861f8b5e5e4
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80672439"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606038"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 
@@ -53,7 +53,7 @@ Windows Server 角色 | 不要启用 Active Directory 域服务、Internet Infor
 组策略| - 阻止访问命令提示符。 <br/> - 阻止访问注册表编辑工具。 <br/> - 信任文件附件的逻辑。 <br/> - 打开脚本执行。 <br/> - [了解详细信息](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 IIS | 确保：<br/><br/> - 没有预先存在的默认网站 <br/> - 启用[匿名身份验证](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br/> - 启用[快速CGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)设置  <br/> - 端口 443 上没有预先存在的网站/应用侦听<br/>
 NIC 类型 | VMXNET3（部署为 VMware VM 时）
-IP 地址类型 | Static
+IP 地址类型 | 静态
 端口 | 443，用于控制通道协调<br/>9443，用于数据传输
 
 ## <a name="replicated-machines"></a>复制的计算机
@@ -117,7 +117,7 @@ Debian 8 | [9.29][9.29 UR] | 3.16.0-4-amd64 到 3.16.0-10-amd64、4.9.0-0.bpo.4-
 
 ### <a name="suse-linux-enterprise-server-12-supported-kernel-versions"></a>SUSE Linux Enterprise Server 12 支持的内核版本
 
-**释放** | **移动服务版本** | **内核版本** |
+**发布** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
 SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | [9.28][9.28 UR] | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.118-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.117-default</br></br>SP3 4.4.73-5-default 到 4.4.180-94.100-default</br></br>SP3 4.4.138-4.7-azure 到 4.4.180-4.31-azure</br></br>SP4 4.12.14-94.41-default 到 4.12.14-95.29-default</br>SP4 4.12.14-6.3-azure 到 4.12.14-6.23-azure |
 SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | [9.27][9.27 UR] | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.115-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.114-default</br></br>SP3 4.4.73-5-default 到 4.4.180-94.97-default</br></br>SP3 4.4.138-4.7-azure 到 4.4.180-4.31-azure</br></br>SP4 4.12.14-94.41-default 到 4.12.14-95.19-default</br>SP4 4.12.14-6.3-azure 到 4.12.14-6.15-azure |
@@ -126,9 +126,9 @@ SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | [9.25][9.25 UR] | S
 
 ### <a name="suse-linux-enterprise-server-15-supported-kernel-versions"></a>SUSE Linux 企业服务器 15 支持内核版本
 
-**释放** | **移动服务版本** | **内核版本** |
+**发布** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
-SUSE Linux 企业服务器 15 和 15 SP1 | [9.32](https://support.microsoft.com/help/4550047/) | 支持所有[股票 SUSE 15 和 15 内核](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_15)。 </br></br> 4.12.14-5.5-azure 至 4.12.14-8.22-azure
+SUSE Linux 企业服务器 15 和 15 SP1 | [9.32](https://support.microsoft.com/help/4550047/) | 支持所有股票 SUSE 15 和 15 内核。 </br></br> 4.12.14-5.5-azure 至 4.12.14-8.22-azure
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux 文件系统/来宾存储
 

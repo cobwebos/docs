@@ -1,25 +1,25 @@
 ---
 title: 使用 Ambari Web UI 监视和管理 Azure HDInsight
-description: 了解如何使用 Ambari 监视和管理基于 Linux 的 HDInsight 群集。 本文档介绍如何使用 HDInsight 群集随附的 Ambari Web UI。
+description: 了解如何使用 Apache Ambari UI 监视和管理 HDInsight 群集。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/05/2020
-ms.openlocfilehash: bf780897317d41c7da85140f64313546cf5c31d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/16/2020
+ms.openlocfilehash: 2ed3d6b1088315b580ab8ddc4f12d8d61434ec53
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064693"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606557"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>使用 Apache Ambari Web UI 管理 HDInsight 群集
 
 [!INCLUDE [ambari-selector](../../includes/hdinsight-ambari-selector.md)]
 
-Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 群集的管理和监视。 Ambari 包含在 HDInsight 群集上，用于监视群集和进行配置更改。
+阿帕奇·安巴里简化了阿帕奇哈多普集群的管理和监视。 这种简化是通过提供易于使用的 Web UI 和 REST API 来完成的。 Ambari 包含在 HDInsight 群集上，用于监视群集和进行配置更改。
 
 本文档介绍如何搭配使用 Ambari Web UI 和 HDInsight 群集。
 
@@ -49,7 +49,7 @@ Ambari Web UI 在 HDInsight 群集`https://CLUSTERNAME.azurehdinsight.net`上可
 
 ![阿帕奇·安巴里仪表板概述](./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png)
 
-|Item |描述 |
+|项 |说明 |
 |---|---|
 |Ambari 徽标|打开仪表板，以便可以监视群集。|
 |群集名称 # 项操作|显示进行中的 Ambari 操作数目。 选择群集名称或“# 项操作”**** 会显示后台操作列表。|
@@ -82,7 +82,7 @@ Ambari Web UI 在 HDInsight 群集`https://CLUSTERNAME.azurehdinsight.net`上可
 
 ![阿帕奇·安巴里管理警报组](./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png)
 
-还可管理发警报方式，并通过在“操作”菜单中选择“管理通知”来创建警报通知。****____ 所有当前通知都会显示。 还可以从此处创建通知。 出现特定的警报/严重性组合时，可通过**电子邮件**或 **SNMP** 发送通知。 例如，可在“YARN 默认设置”**** 组中的任何警报设为“严重”**** 时发送电子邮件消息。
+您可以管理警报方法，并通过选择 __"管理通知__"从 **"操作"** 菜单创建警报通知。 所有当前通知都会显示。 在此处创建通知。 出现特定的警报/严重性组合时，可通过**电子邮件**或 **SNMP** 发送通知。 例如，可在“YARN 默认设置”**** 组中的任何警报设为“严重”**** 时发送电子邮件消息。
 
 ![阿帕奇·安巴里创建警报通知](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
 
@@ -119,10 +119,10 @@ Ambari Web UI 在 HDInsight 群集`https://CLUSTERNAME.azurehdinsight.net`上可
 
 #### <a name="quick-links"></a>快速链接
 
-某些服务会在页面顶部显示“快速链接”**** 链接。 这可以用于访问特定于服务的 Web UI，例如：
+某些服务会在页面顶部显示“快速链接”**** 链接。 此链接可用于访问特定于服务的 Web U，例如：
 
 * **作业历史记录** - MapReduce 作业历史记录。
-* **Resource Manager** - YARN ResourceManager UI。
+* **资源管理器**- YARN 资源管理器 UI。
 * **NameNode** - Hadoop 分布式文件系统 (HDFS) NameNode UI。
 * **Oozie Web UI** - Oozie UI。
 
@@ -151,9 +151,9 @@ Ambari Web UI 在 HDInsight 群集`https://CLUSTERNAME.azurehdinsight.net`上可
 
 1. 选择要管理的主机。
 
-2. 使用“操作”**** 菜单选择要执行的操作：
+2. 使用 **"操作"** 菜单选择要执行的操作：
 
-    |Item |描述 |
+    |项 |说明 |
     |---|---|
     |启动所有组件|启动主机上的所有组件。|
     |停止所有组件|停止主机上的所有组件。|
@@ -163,8 +163,8 @@ Ambari Web UI 在 HDInsight 群集`https://CLUSTERNAME.azurehdinsight.net`上可
     |停止|停止主机上的 DataNode 或 NodeManagers。|
     |开始|启动主机上的 DataNode 或 NodeManagers。|
     |重新启动|停止然后启动主机上的 DataNode 或 NodeManagers。|
-    |解除授权|从群集中删除主机。 **请勿在 HDInsight 群集上使用此操作。**|
-    |重用|将以前已解除授权的主机添加到群集中。 **请勿在 HDInsight 群集上使用此操作。**|
+    |解除授权|从群集中删除主机。 **不要在 HDInsight 群集上使用此操作。**|
+    |重用|将以前已解除授权的主机添加到群集中。 **不要在 HDInsight 群集上使用此操作。**|
 
 ### <a name="services"></a><a id="service"></a>Services
 
@@ -175,11 +175,11 @@ Ambari Web UI 在 HDInsight 群集`https://CLUSTERNAME.azurehdinsight.net`上可
 > [!WARNING]  
 > 虽然“添加服务”**** 列于该菜单中，但不应将其用于将服务添加到 HDInsight 群集。 群集设置期间应使用脚本操作添加新服务。 有关使用脚本操作的详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
 
-虽然“操作”**** 按钮可以重新启动所有服务，但要启动、停止或重新启动的往往是特定服务。 使用以下步骤来对单个服务执行操作：
+虽然“操作”**** 按钮可以重新启动所有服务，但要启动、停止或重新启动的往往是特定服务。 使用以下步骤对单个服务执行操作：
 
 1. 从“仪表板”**** 或“服务”**** 页面中选择一个服务。
 
-2. 在“摘要”**** 选项卡的顶部，使用“服务操作”**** 按钮，并选择要执行的操作。 这会重启所有节点上的服务。
+2. 在“摘要”**** 选项卡的顶部，使用“服务操作”**** 按钮，并选择要执行的操作。 此操作将重新启动所有节点上的服务。
 
     ![阿帕奇·安巴里个人服务操作](./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png)
 
@@ -211,10 +211,12 @@ Ambari 视图允许开发人员使用 [Apache Ambari 视图框架](https://cwiki
 
 ## <a name="unsupported-operations"></a>不受支持操作
 
-HDInsight 上不支持以下 Ambari 操作：
+HDInsight 不支持以下 Ambari 操作：
 
 * 移动指标收集器服务____。 查看指标收集器服务上的信息时，“服务操作”菜单中的一个可用操作是移动指标收集器____。 HDInsight 不支持此操作。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何将 [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md) 与 HDInsight 配合使用。
+* [阿帕奇安巴里REST API](hdinsight-hadoop-manage-ambari-rest-api.md)与HDInsight。
+* [使用 Apache Ambari 优化 HDInsight 群集配置](./hdinsight-changing-configs-via-ambari.md)
+* [缩放 Azure HDInsight 群集](./hdinsight-scaling-best-practices.md)

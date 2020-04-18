@@ -3,12 +3,12 @@ title: 在任何环境中监视 Java 应用程序 - Azure 监视器应用程序�
 description: 应用程序性能监视，适用于在任何环境中运行的 Java 应用程序，而无需检测应用程序。 分布式跟踪和应用程序映射。
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 5a62be45320523ee0577d56eb557a4f87a58a1cc
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 5706d5a74bd6850a237f7418b1a86a8e9c7762e1
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886851"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604576"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java 无代码应用程序监视 Azure 监视器应用程序见解 - 公共预览
 
@@ -24,11 +24,11 @@ Java 无代码应用程序监视是简单性的 - 没有代码更改，Java代�
 
 **1. 下载代理**
 
-下载[应用程序见解-代理-3.0.0-PREVIEW.2.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.2/applicationinsights-agent-3.0.0-PREVIEW.2.jar)
+下载[应用程序见解-代理-3.0.0-PREVIEW.3.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.3/applicationinsights-agent-3.0.0-PREVIEW.3.jar)
 
 **2. 将 JVM 指向代理**
 
-添加到`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.2.jar`应用程序的 JVM args
+添加到`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.3.jar`应用程序的 JVM args
 
 典型的 JVM args 包括`-Xmx512m`和`-XX:+UseG1GC`。 因此，如果您知道要在哪里添加这些，那么您已经知道在哪里添加此。
 
@@ -37,7 +37,14 @@ Java 无代码应用程序监视是简单性的 - 没有代码更改，Java代�
 **3. 将代理指向您的应用程序见解资源**
 
 如果还没有应用程序见解资源，则可以按照[资源创建指南](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)中的步骤创建新的资源。
-创建名为 的`ApplicationInsights.json`配置文件，并将其放在与`applicationinsights-agent-3.0.0-PREVIEW.2.jar`的目录中，包含以下内容：
+
+通过设置环境变量，将代理指向您的应用程序见解资源：
+
+```
+APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
+```
+
+或者创建名为 的`ApplicationInsights.json`配置文件，并将其放置在与`applicationinsights-agent-3.0.0-PREVIEW.3.jar`的目录中，包含以下内容：
 
 ```json
 {

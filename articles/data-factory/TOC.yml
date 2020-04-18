@@ -553,8 +553,6 @@
           href: data-factory-service-identity.md
     - name: 监视和管理
       items:
-        - name: 直观地监视
-          href: monitor-visually.md
         - name: 使用 Azure Monitor 进行监视
           href: monitor-using-azure-monitor.md
         - name: 使用 SDK 进行监视

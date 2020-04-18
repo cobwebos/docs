@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 213fb6e73ae2fc4314320d0e3e593632d8eb7f85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d0ef55f6f5117ffa77052118155afea716125a4
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266437"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639724"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>将 Azure AD 日志与 Azure 监视器日志集成
 
@@ -60,9 +60,13 @@ Ignite 会话中的以下视频通过实际用户方案演示了将 Azure Monito
 * 一个是 Azure AD 租户的全局管理员或安全管理员的用户。****
 * 在 Azure 订阅中创建 Log Analytics 工作区。 了解如何[创建日志分析工作区](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)。
 
+## <a name="licensing-requirements"></a>许可要求
+
+使用此功能需要 Azure AD 高级 P1 或 P2 许可证。 若要根据需要查找合适的许可证，请参阅[比较免费版、基本版和高级版的正式发布功能](https://azure.microsoft.com/pricing/details/active-directory/)。
+
 ## <a name="send-logs-to-azure-monitor"></a>将日志发送到 Azure 监视器
 
-1. 登录到 Azure[门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 
 2. 选择**Azure 活动目录** > **诊断设置** -> **添加诊断设置**。 还可以从“审核日志”**** 或“登录”**** 页选择“导出设置”****，以转到诊断设置配置页。  
     

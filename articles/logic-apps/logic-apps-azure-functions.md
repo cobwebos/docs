@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 68975f21ab810398da969384db4d3bddd22f1bd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 29713622be90ea280bff3c002be746bf1615718f
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284117"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605902"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>从 Azure 逻辑应用调用 Azure 函数
 
@@ -101,7 +101,9 @@ function convertToDateString(request, response){
 
 ## <a name="create-functions-inside-logic-apps"></a>在逻辑应用内部创建函数
 
-若要在逻辑应用编辑器中从逻辑应用内部创建 Azure 函数，必须先具备一个 Azure 函数应用，这是函数的容器。 若没有函数应用，请先创建一个。 请参阅[在 Azure 门户中创建第一个函数](../azure-functions/functions-create-first-azure-function.md)。
+可以使用逻辑应用设计器中的内置 Azure 函数操作直接从逻辑应用的工作流创建 Azure 函数，但只能对 JavaScript 中编写的 Azure 函数使用此方法。 对于其他语言，可以通过 Azure 门户中的 Azure 函数体验创建 Azure 函数。 有关详细信息，请参阅在[Azure 门户中创建第一个函数](../azure-functions/functions-create-first-azure-function.md)。
+
+但是，在创建任何 Azure 函数之前，必须已经具有 Azure 函数应用，它是函数的容器。 若没有函数应用，请先创建一个。 请参阅[在 Azure 门户中创建第一个函数](../azure-functions/functions-create-first-azure-function.md)。
 
 1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用。
 
@@ -123,7 +125,7 @@ function convertToDateString(request, response){
 
    1. 在“函数名称”框中提供函数的名称****。
 
-   1. 在“代码”框中，将代码添加至函数模板，包括函数运行完成后想返回至逻辑应用的响应和有效负载****。 完成操作后，选择“创建”****。
+   1. 在“代码”框中，将代码添加至函数模板，包括函数运行完成后想返回至逻辑应用的响应和有效负载****。 完成操作后，选择“创建”  。
 
    例如：
 
@@ -306,7 +308,7 @@ function convertToDateString(request, response){
 
    ![Azure Active Directory 身份验证设置](./media/logic-apps-azure-functions/azure-active-directory-authentication-settings.png)
 
-1. 完成后，请选择“确定”****。
+1. 完成后，请选择“确定”  。
 
 1. 返回逻辑应用设计器，并遵循[使用托管标识对访问进行身份验证的步骤](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)操作。
 

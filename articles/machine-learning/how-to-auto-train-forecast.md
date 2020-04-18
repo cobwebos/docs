@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: d4e36c0d3838af85768453496a51ecd295c22b93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be3046a343e14be4a527363751081ba3f2593cd3
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79081839"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605893"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时序预测模型
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -113,7 +113,7 @@ test_labels = test_data.pop(label).values
 
 该[`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)对象定义自动机器学习任务所需的设置和数据。 与回归问题类似，需定义标准训练参数，如任务类型、迭代数、训练数据和交叉验证次数。 对于预测任务，还必须设置对试验有影响的其他参数。 下表阐释了每个参数及其用途。
 
-| 参数&nbsp;名称 | 描述 | 必选 |
+| 参数&nbsp;名称 | 说明 | 必选 |
 |-------|-------|-------|
 |`time_column_name`|用于指定输入数据中用于生成时序的日期时间列并推断其频率。|✓|
 |`grain_column_names`|定义输入数据中各个序列组的名称。 如果未定义粒度，则假定数据集为一个时序。||
@@ -205,12 +205,7 @@ fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
 
 使用最佳模型迭代预测测试数据集的值。
 
-```python
-predict_labels = fitted_model.predict(test_data)
-actual_labels = test_labels.flatten()
-```
-
-或者，可以使用 `forecast()` 函数而不使用 `predict()`，这将允许指定预测开始时间。 在下面的示例中，首先将 `y_pred` 中的所有值替换为 `NaN`。 在本例中，预测原点将位于训练数据的末尾，这是使用 `predict()` 时的常态。 但是，如果只将 `y_pred` 的后半部分替换为 `NaN`，则函数不会修改前半部分的数值，而会在后半部分预测 `NaN` 值。 函数将返回预测值和对齐的特征。
+应`forecast()`使用函数而不是`predict()`，这将允许预测何时开始。 在下面的示例中，首先将 `y_pred` 中的所有值替换为 `NaN`。 在本例中，预测原点将位于训练数据的末尾，这是使用 `predict()` 时的常态。 但是，如果只将 `y_pred` 的后半部分替换为 `NaN`，则函数不会修改前半部分的数值，而会在后半部分预测 `NaN` 值。 函数将返回预测值和对齐的特征。
 
 还可以在 `forecast()` 函数中使用 `forecast_destination` 参数，预测到指定日期为止的值。
 

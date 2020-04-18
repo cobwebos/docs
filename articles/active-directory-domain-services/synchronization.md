@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 7e0e904b182a57a51b5d76f0acebc13bce5902b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 38ed48df4d681543cc30daccf46b98635d973b89
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78944422"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639913"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>如何在 Azure AD 域服务托管域中同步对象和凭据
 
@@ -31,6 +31,8 @@ Azure 活动目录域服务 （AD DS） 托管域中的对象和凭据可以在�
 ## <a name="synchronization-from-azure-ad-to-azure-ad-ds"></a>从 Azure AD 到 Azure AD DS 的同步
 
 用户帐户、组成员身份和凭据哈希以 Azure AD 到 Azure AD DS 的方式同步。 此同步过程是自动的。 您无需配置、监视或管理此同步过程。 初始同步可能需要几个小时到几天，具体取决于 Azure AD 目录中的对象数。 完成初始同步后，在 Azure AD 中所做的更改（如密码或属性更改）将自动同步到 Azure AD DS。
+
+在 Azure AD 中创建用户时，在 Azure AD 中更改其密码之前，不会将其同步到 Azure AD DS。 此密码更改过程会导致在 Azure AD 中生成并存储用于 Kerberos 和 NTLM 身份验证的密码哈希。 需要密码哈希才能在 Azure AD DS 中成功验证用户。
 
 同步过程是单向的/单向的。 从 Azure AD DS 到 Azure AD 的更改没有反向同步。 Azure AD DS 托管域大部分是只读的，但您可以创建的自定义 O 除外。 不能更改 Azure AD DS 托管域中的用户属性、用户密码或组成员身份。
 
@@ -134,7 +136,7 @@ Azure AD 具有更简单、更平坦的命名空间。 为了使用户能够可�
 
 然后，旧密码哈希从 Azure AD 同步到 Azure AD DS 托管域的域控制器中。 Azure AD DS 中这些托管域控制器的磁盘在静态时进行加密。 这些密码哈希存储在这些域控制器上并加以保护，类似于密码在本地 AD DS 环境中的存储和保护方式。
 
-对于仅云 Azure AD 环境，[用户必须重置/更改其密码](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，以便生成和存储在 Azure AD 中所需的密码哈希。 对于启用 Azure AD 域服务后在 Azure AD 中创建的任何云用户帐户，会生成密码哈希并采用与 NTLM 和 Kerberos 兼容的格式进行存储。 这些新帐户不需要重置或更改其密码即可生成旧密码哈希。
+对于仅云 Azure AD 环境，[用户必须重置/更改其密码](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，以便生成和存储在 Azure AD 中所需的密码哈希。 对于启用 Azure AD 域服务后在 Azure AD 中创建的任何云用户帐户，会生成密码哈希并采用与 NTLM 和 Kerberos 兼容的格式进行存储。 所有云用户帐户在同步到 Azure AD DS 之前都必须更改其密码。
 
 对于使用 Azure AD Connect 从本地 AD DS 环境同步的混合用户帐户，必须[配置 Azure AD 连接以同步 NTLM 和 Kerberos 兼容格式的密码哈希](tutorial-configure-password-hash-sync.md)。
 

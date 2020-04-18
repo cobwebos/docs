@@ -6,19 +6,18 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f284d4dfbe550c357f81c01fa0a66aa9878b6c1e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55bc4ff05b650884ef17e0de10d7156cbf458a9c
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671556"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640950"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>排查启用或查看 Application Insights Profiler 时遇到的问题
 
 ## <a name="active-issues"></a>活动问题
 
-* 还不支持对 ASP.NET Core 3.x 应用程序进行分析。
-  * 如果必须打开探查器，解决方法是使用[应用程序见解探查器ASP.NET核心](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore)。 探查器标记为 Linux，但它也适用于 Windows 上的 .NET Core 3.0+ 应用程序。 有关详细信息，请参阅[支持的版本](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore#supported-versions)。
+* 现在 Azure 应用服务支持ASP.NET Core 3.x 应用程序的分析。
 
 ## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>常规故障排除
 
@@ -69,7 +68,7 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 * Web 应用必须已启用 Application Insights。
 * Web 应用必须具有以下应用设置：
 
-    |应用设置    | “值”    |
+    |应用设置    | 值    |
     |---------------|----------|
     |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights 资源的 iKey    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
@@ -101,7 +100,7 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 1. 将“Always On”设置为“打开”********。
 1. 创建以下应用设置：
 
-    |应用设置    | “值”    |
+    |应用设置    | 值    |
     |---------------|----------|
     |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights 资源的 iKey    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |

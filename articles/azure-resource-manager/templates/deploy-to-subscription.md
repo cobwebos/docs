@@ -3,12 +3,12 @@ title: 将资源部署到订阅
 description: 介绍了如何在 Azure 资源管理器模板中创建资源组。 它还展示了如何在 Azure 订阅范围内部署资源。
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.openlocfilehash: 65cc220d32d1e1149b7026fc438f5e34262511dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6bec29a07653ff5ad7d1e2f8317246049e127c8c
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131961"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605005"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在订阅级别创建资源组和资源
 
@@ -23,17 +23,17 @@ ms.locfileid: "80131961"
 * [预算](/azure/templates/microsoft.consumption/budgets)
 * [部署](/azure/templates/microsoft.resources/deployments)- 用于部署到资源组的嵌套模板。
 * [eventSubscriptions](/azure/templates/microsoft.eventgrid/eventsubscriptions)
-* [对等Asns](/azure/templates/microsoft.peering/peerasns)
+* [对等Asns](/azure/templates/microsoft.peering/2019-09-01-preview/peerasns)
 * [策略分配](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
-* [补救](/azure/templates/microsoft.policyinsights/remediations)
+* [补救](/azure/templates/microsoft.policyinsights/2019-07-01/remediations)
 * [resourceGroups](/azure/templates/microsoft.resources/resourcegroups)
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
 * [范围分配](/azure/templates/microsoft.managednetwork/scopeassignments)
 * [支持计划类型](/azure/templates/microsoft.addons/supportproviders/supportplantypes)
-* [标记](/azure/templates/microsoft.resources/tags)
+* [标签](/azure/templates/microsoft.resources/tags)
 
 ### <a name="schema"></a>架构
 

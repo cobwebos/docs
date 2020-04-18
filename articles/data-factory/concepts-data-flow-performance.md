@@ -7,16 +7,16 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 04/14/2020
-ms.openlocfilehash: c09a035c8994118b0fb116f357485766e05883ac
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1b3e3cd39edccd0952ce44d9cb050ca1d0c724ea
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418433"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605307"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>映射数据流性能和调优指南
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在 Azure 数据工厂中映射数据流提供了一个无代码接口，用于大规模设计、部署和协调数据转换。 如果您不熟悉映射数据流，请参阅[映射数据流概述](concepts-data-flow-overview.md)。
 

@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a02c099871ce9748f4c5f604900a7c4d57bb96b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 298555da2056bc4c16d4d7b16615604f9798b91b
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473517"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639273"
 ---
-# <a name="azure-app-service-access-restrictions"></a>Azure 应用服务访问限制 #
+# <a name="azure-app-service-access-restrictions"></a>Azure 应用服务访问限制
 
 使用访问限制可以定义一个按优先级排序的允许/拒绝列表，用于控制在网络中对应用的访问。 该列表可以包含 IP 地址或 Azure 虚拟网络子网。 如果存在一个或多个条目，则在列表末尾会存在一个隐式的“拒绝所有”。
 
@@ -125,12 +125,12 @@ management.azure.com/subscriptions/subscription ID/resourceGroups/resource group
 }
 ```
 
-## <a name="azure-function-app-access-restrictions"></a>Azure 函数应用访问限制
+## <a name="azure-functions-access-restrictions"></a>Azure 函数访问限制
 
-具有与应用服务计划相同的功能的功能的函数应用也提供访问限制。 启用访问限制会针对任何不允许的 IP 禁用门户代码编辑器。
+具有与应用服务计划相同的功能的功能应用也可用于访问限制。 启用访问限制会针对任何不允许的 IP 禁用门户代码编辑器。
 
 ## <a name="next-steps"></a>后续步骤
-[Azure 函数应用的访问限制](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
+[Azure 函数的访问限制](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
 
 [应用程序网关与服务终结点的集成](networking/app-gateway-with-service-endpoints.md)
 

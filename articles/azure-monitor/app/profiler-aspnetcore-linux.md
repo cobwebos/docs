@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9c98cd5d3d4d76f9455e4c036aa32a4ead20cfff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d845e245a242a88d16a2597f0144a0ae4a727cb0
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671709"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640974"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>使用 Application Insights Profiler 探查 ASP.NET Core Azure Linux Web 应用
 
@@ -150,7 +150,7 @@ ms.locfileid: "77671709"
 
 ## <a name="add-application-insights-to-monitor-your-web-apps"></a>添加 Application Insights 来监视 Web 应用
 
-1. [创建 Application Insights 资源](./../../azure-monitor/app/create-new-resource.md )。
+1. [创建应用程序见解资源](./../../azure-monitor/app/create-new-resource.md )。
 
 2. 复制 Application Insights 资源的 **iKey** 并在 Web 应用中指定以下设置：
 
@@ -168,10 +168,6 @@ ms.locfileid: "77671709"
 
     ![查看探查器跟踪](./media/profiler-aspnetcore-linux/view-traces.png)
 
-## <a name="known-issues"></a>已知问题
-
-### <a name="profile-now-button-doesnt-work-for-linux-profiler"></a>“立即探查”按钮不适用于 Linux Profiler
-App Insights 探查器的 Linux 版本尚不支持使用“立即探查”按钮按需分析。
 
 
 ## <a name="next-steps"></a>后续步骤

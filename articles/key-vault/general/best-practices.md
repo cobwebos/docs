@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 57bb897978f47a66adebac069d8892d596ba78f5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 923fb90f7f0e8eefec650515ed2a3b9b75d2ae77
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81430859"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617919"
 ---
 # <a name="best-practices-to-use-key-vault"></a>使用密钥保管库的最佳做法
 
@@ -44,4 +44,4 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 ## <a name="turn-on-recovery-options"></a>启用恢复选项
 
 1. 打开["软删除](overview-soft-delete.md)"。
-2. 如果要防止强制删除机密/保管库，即使启用软删除后，也要启用清除保护。
+2. 如果要防止强制删除机密/保管库，即使在软删除打开后，也打开清除保护。

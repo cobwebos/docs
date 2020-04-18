@@ -3,12 +3,12 @@ title: 如何为 Linux 创建来宾配置策略
 description: 了解如何为 Linux 创建 Azure 策略来宾配置策略。
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: f93aafc8f2c016218b1b7fea82558ea6ba4b4ff8
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 65e0082f87f05104e9a57ff0342cd3d2950b63e8
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365395"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617940"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>如何为 Linux 创建来宾配置策略
 
@@ -89,7 +89,7 @@ supports:
     - os-family: unix
 ```
 
-将此文件保存到项目目录中指定的`linux-path`文件夹。
+将具有名称`inspec.yml`的文件保存到项目目录中指定的`linux-path`文件夹。
 
 接下来，使用用于审核计算机的 InSpec 语言抽象创建 Ruby 文件。
 
@@ -99,7 +99,7 @@ describe file('/tmp') do
 end
 ```
 
-将此文件保存在`controls``linux-path`目录中命名的新文件夹中。
+将具有名称`linux-path.rb`的文件保存在`controls``linux-path`目录中命名的新文件夹中。
 
 最后，创建配置、导入**来宾配置**资源模块，`ChefInSpecResource`并使用该资源设置 InSpec 配置文件的名称。
 

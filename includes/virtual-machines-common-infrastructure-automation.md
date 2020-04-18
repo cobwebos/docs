@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: f2eb503b58f1679d138b6a1dd9304896be098ad6
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 7c1ad2581d025a9259c5cb2a84e4237f938fc892
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80419074"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81637139"
 ---
 若要以一致的方式大规模创建和管理 Azure 虚拟机 (VM)，通常需要某种形式的自动化。 可以通过许多工具和解决方案来自动完成整个 Azure 基础结构部署和管理生命周期。 本文介绍了一些可以在 Azure 中使用的基础结构自动化工具。 这些工具通常适合以下某个方法：
 
@@ -121,11 +121,11 @@ Azure 自动化还提供 Desired State Configuration (DSC) 服务，用于针对
 
 了解有关以下方面的详细信息：
 
-- [Azure DevOps Services](https://docs.microsoft.com/azure/devops/user-guide/index?view=vsts)。
+- [Azure 开发人员服务](https://docs.microsoft.com/azure/devops/user-guide/index?view=vsts)。
 
 
 ## <a name="jenkins"></a>Jenkins
-[Jenkins](https://www.jenkins.io) 是一种持续集成服务器，用于部署和测试应用程序，以及创建进行代码交付的自动化管道。 可以通过成百上千的插件来扩展核心 Jenkins 平台，还可以通过 Webhook 集成许多其他的产品和解决方案。 可以在 Azure VM 上手动安装 Jenkins，从 Docker 容器内部运行 Jenkins，或者使用预建的 Azure 市场映像。
+[Jenkins](https://jenkins.io) 是一种持续集成服务器，用于部署和测试应用程序，以及创建进行代码交付的自动化管道。 可以通过成百上千的插件来扩展核心 Jenkins 平台，还可以通过 Webhook 集成许多其他的产品和解决方案。 可以在 Azure VM 上手动安装 Jenkins，从 Docker 容器内部运行 Jenkins，或者使用预建的 Azure 市场映像。
 
 了解如何操作：
 

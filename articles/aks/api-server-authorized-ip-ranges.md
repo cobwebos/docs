@@ -4,12 +4,12 @@ description: 了解如何使用用于访问 Azure Kubernetes 服务 (AKS) 中 AP
 services: container-service
 ms.topic: article
 ms.date: 11/05/2019
-ms.openlocfilehash: 593f9e0b335e6f4d62c76ce92f833ff4e9143372
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 570d842409fc019d24446e091f83402f4c288d7c
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79126624"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640059"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 中的已授权 IP 地址范围保护对 API 服务器的访问
 
@@ -20,7 +20,7 @@ ms.locfileid: "79126624"
 > [!IMPORTANT]
 > 在新的群集上，仅支持在标准 SKU 负载均衡器中使用 API 服务器已授权 IP 地址范围。** 配置了基本 SKU 负载均衡器和 API 服务器已授权 IP 地址范围的现有群集将继续按原有方式工作，但不能迁移到标准 SKU 负载均衡器****。 即使 Kubernetes 版本或控制平面升级后，这些现有群集也会继续工作。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 API 服务器已授权 IP 范围仅适用于创建的新 AKS 群集。 本文介绍如何使用 Azure CLI 创建 AKS 群集。
 
@@ -39,7 +39,7 @@ Kubernetes API 服务器用于公开基础 Kubernetes API。 此组件为管理�
 API 服务器已授权 IP 范围仅适用于新的 AKS 群集。 使用 [az aks create][az-aks-create] 创建群集，并指定 *--api-server-authorized-ip-ranges* 参数以提供已授权 IP 地址范围的列表。 这些 IP 地址范围通常是本地网络或公共 IP 使用的地址范围。 指定 CIDR 范围时，请先指定该范围内的第一个 IP 地址。 例如，*137.117.106.90/29* 是有效范围，但请确保指定该范围内的第一个 IP 地址，如 *137.117.106.88/29*。
 
 > [!IMPORTANT]
-> 群集默认使用可用于配置出站网关的[标准 SKU 负载均衡器][standard-sku-lb]。 在创建群集期间启用 API 服务器已授权 IP 范围时，除了允许指定的范围以外，默认还允许群集的公共 IP。 如果为 *--api-server-authorized-ip-ranges* 指定 *""* 或者不指定任何值，则会禁用 API 服务器已授权 IP 范围。
+> 群集默认使用可用于配置出站网关的[标准 SKU 负载均衡器][standard-sku-lb]。 在创建群集期间启用 API 服务器已授权 IP 范围时，除了允许指定的范围以外，默认还允许群集的公共 IP。 如果为 *--api-server-authorized-ip-ranges* 指定 *""* 或者不指定任何值，则会禁用 API 服务器已授权 IP 范围。 请注意，如果您使用的是 PowerShell，请使用 *--api 服务器授权的 ip 范围*"（* 使用等于符号）来避免任何分析问题。
 
 以下示例在名为 *myResourceGroup* 的资源组中，创建名为 *myAKSCluster*、已启用 API 服务器已授权 IP 范围的单节点群集。 允许的 IP 地址范围为 *73.140.245.0/24*：
 

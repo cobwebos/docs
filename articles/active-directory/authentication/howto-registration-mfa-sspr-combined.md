@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/15/2020
+ms.date: 04/17/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d9544b1f4dd5ecbf66493f26c373c5502dce68a
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 466b063253ee49ab58c2685f359b4bb8a4079532
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81451069"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639671"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>在 Azure 活动目录中启用组合安全信息注册
 
@@ -47,34 +47,34 @@ ms.locfileid: "81451069"
 
 ## <a name="conditional-access-policies-for-combined-registration"></a>合并注册的条件访问策略
 
-使用“条件访问策略”中的“用户操作”，现在可对用户注册 Azure 多重身份验证和自助式密码重置的时间和方式提供保护。 此功能可供启用[合并注册功能](../authentication/concept-registration-mfa-sspr-combined.md)的组织使用。 在希望用户从中心位置（如 HR 入职期间受信任的网络位置）注册 Azure 多重身份验证和 SSPR 的组织中，可以启用此功能。 有关在条件访问中创建受信任位置的详细信息，请参阅文档 [Azure Active Directory 条件访问中的位置条件是什么？](../conditional-access/location-condition.md#named-locations)
+使用“条件访问策略”中的“用户操作”，现在可对用户注册 Azure 多重身份验证和自助式密码重置的时间和方式提供保护。 此功能可供启用[合并注册功能](../authentication/concept-registration-mfa-sspr-combined.md)的组织使用。 在希望用户从中心位置（如 HR 入职期间受信任的网络位置）注册 Azure 多重身份验证和 SSPR 的组织中，可以启用此功能。
+
+有关在条件访问中创建受信任位置的详细信息，请参阅文档 [Azure Active Directory 条件访问中的位置条件是什么？](../conditional-access/location-condition.md#named-locations)
 
 ### <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>创建要求从受信任的位置注册的策略
 
-以下策略适用于所有试图使用组合注册体验进行注册的选定用户，并将阻止访问，除非他们从标记为受信任网络的位置进行连接。
-
-![创建 CA 策略以控制安全信息注册](media/howto-registration-mfa-sspr-combined/require-registration-from-trusted-location.png)
+以下策略适用于尝试使用组合注册体验进行注册的所有选定用户，并阻止访问，除非他们从标记为受信任网络的位置进行连接。
 
 1. 在**Azure 门户**中，浏览到**Azure 活动目录** > **安全** > **条件访问**
-1. 选择**新策略**
-1. 在“名称”中，输入此策略的名称。 例如，**在受信任的网络上合并安全信息注册**
-1. 在 **"分配"** 下，单击 **"用户和组**"，然后选择要应用于此策略的用户和组
+1. 选择 **= 新策略**
+1. 输入此策略的名称，例如 *"受信任网络上的安全信息合并注册*"。
+1. 在“分配”**** 下，选择“用户和组”****。 选择要应用此策略的用户和组，然后选择 **"完成**"。
 
    > [!WARNING]
-   > 必须启用用户进行[合并注册](../authentication/howto-registration-mfa-sspr-combined.md)。
+   > 必须启用用户进行合并注册。
 
-1. 在 **"云应用"或"操作**"下，选择 **"用户操作"，** 检查**注册安全信息（预览）**
-1. 在**条件** > **位置**
+1. 在 **"云应用"或"操作"** 下，选择 **"用户操作**"。 检查**注册安全信息**，然后选择 **"完成**"。
+
+    ![创建条件访问策略以控制安全信息注册](media/howto-registration-mfa-sspr-combined/require-registration-from-trusted-location.png)
+
+1. 在 **"条件** > **位置**"下，配置以下选项：
    1. 配置**是**
    1. 包括**任何位置**
    1. 排除**所有受信任位置**
-   1. 单击"在位置"边栏选项卡上**完成**
-   1. 单击"条件"边栏选项卡上的 **"完成"**
-1. **在"访问控制** > **"下授予**
-   1. 单击 **"阻止访问**"
-   1. 然后单击 **"选择"**
+1. 在 *"位置*"窗口中选择 **"完成**"，然后在"*条件*"窗口中选择 **"完成**"。
+1. 在 **"访问控制** > **授予"下**，选择 **"阻止访问**"，然后**选择**
 1. 将**启用策略**设置为 **"打开"**
-1. 然后单击"**创建"**
+1. 要最终确定策略，请选择 **"创建"**
 
 ## <a name="next-steps"></a>后续步骤
 

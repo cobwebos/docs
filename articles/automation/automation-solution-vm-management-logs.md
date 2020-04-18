@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 00f6a5f88a66f0a19943ff3a2c722ae1a9938e9e
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 472f3762ca18f71ba95053576daf025d8477fee9
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80550391"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604728"
 ---
 # <a name="how-to-query-logs-from-startstop-vms-solution"></a>如何从启动/停止 VM 解决方案查询日志
 
@@ -71,4 +71,4 @@ Azure 自动化将两种类型的记录转发到链接的日志分析工作区�
 
 ## <a name="next-steps"></a>后续步骤
 
-在非工作时间启动/停止 VM 解决方案不包括预定义的警报集。 使用 Azure 监视器查看[创建日志警报](../azure-monitor/platform/alerts-log.md)，了解如何创建作业失败警报以支持 DevOps 或操作过程和过程。
+**非工作时间解决方案期间的启动/停止 VM**不包括预定义的警报集。 使用 Azure 监视器查看[创建日志警报](../azure-monitor/platform/alerts-log.md)，了解如何创建作业失败警报以支持 DevOps 或操作过程和过程。

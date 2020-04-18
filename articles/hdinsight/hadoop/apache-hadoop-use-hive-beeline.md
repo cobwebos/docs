@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: 426294f20dd51538920182a0e7a2915f6a47ba54
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.date: 04/17/2020
+ms.openlocfilehash: 10e53b6b7b79e7d4581a1843b70b3d02778e8df5
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383556"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617789"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>将 Apache Beeline 客户端与 Apache Hive 配合使用
 
@@ -40,7 +40,8 @@ beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
 beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
 ```
 
-<a name="replace-headnode-fqdn-with-the-fully-qualified-domain-name-of-a-cluster-headnode-to-find-the-fully-qualified-domain-name-of-a-headnode-use-the-information-in-the-manage-hdinsight-using-the-apache-ambari-rest-api-document"></a>将 `<headnode-FQDN>` 替换为群集头节点的完全限定域名。 若要查找头节点的完全限定域名，请使用[使用 Apache Ambari REST API 管理 HDInsight](../hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes) 文档中的信息。
+将 `<headnode-FQDN>` 替换为群集头节点的完全限定域名。 若要查找头节点的完全限定域名，请使用[使用 Apache Ambari REST API 管理 HDInsight](../hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes) 文档中的信息。
+
 ---
 
 ### <a name="to-hdinsight-enterprise-security-package-esp-cluster-using-kerberos"></a>使用 Kerberos 向 HDInsight 企业安全包 （ESP） 群集
@@ -84,11 +85,11 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 ### <a name="use-beeline-with-apache-spark"></a>将 Beeline 与 Apache Spark 配合使用
 
-Apache Spark 提供自己的 HiveServer2 实现（有时称为 Spark Thrift 服务器）。 此服务使用 Spark SQL 而不是 Hive 来解析查询，并且可以根据查询改善性能。
+Apache Spark 提供自己的 HiveServer2 实现（有时称为 Spark Thrift 服务器）。 此服务使用 Spark SQL 来解决查询，而不是 Hive。 根据您的查询，可能会提供更好的性能。
 
 #### <a name="through-public-or-private-endpoints"></a>通过公共或专用终结点
 
-使用的连接字符串略有不同。 而不是包含`httpPath=/hive2`它`httpPath/sparkhive2`。 将 `clustername` 替换为 HDInsight 群集的名称。 将 `admin` 替换为群集的群集登录帐户。 对于 ESP 群集，请使用完整的 UPN（例如user@domain.com， 将 `password` 替换为群集登录帐户的密码。
+使用的连接字符串略有不同。 而不是包含`httpPath=/hive2`它使用`httpPath/sparkhive2`。 将 `clustername` 替换为 HDInsight 群集的名称。 将 `admin` 替换为群集的群集登录帐户。 对于 ESP 群集，请使用完整的 UPN（例如user@domain.com， 将 `password` 替换为群集登录帐户的密码。
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
@@ -118,7 +119,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 * HDInsight 上的 Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
 
-* 请记下群集主存储的 [URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 例如，对于 Azure 存储，此值为 `wasb://`；对于Azure Data Lake Storage Gen2，此值为 `abfs://`；对于 Azure Data Lake Storage Gen1，此值为 `adl://`。 如果为 Azure 存储启用了安全传输，则`wasbs://`URI 为 。 有关详细信息，请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
+* 请记下群集主存储的 URI 方案。 例如，对于 Azure 存储，此值为 `wasb://`；对于Azure Data Lake Storage Gen2，此值为 `abfs://`；对于 Azure Data Lake Storage Gen1，此值为 `adl://`。 如果为 Azure 存储启用了安全传输，则`wasbs://`URI 为 。 有关详细信息，请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
 
 * 选项 1：SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。 本文档中的大多数步骤假定您使用的是从 SSH 会话到群集的 Beeline。
 
@@ -177,7 +178,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
     此信息描述表中的列。
 
-5. 输入以下语句，使用 HDInsight 群集提供的示例数据创建名为**log4jLogs**的表：（根据需要根据[URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)进行修订。
+5. 输入以下语句，使用 HDInsight 群集提供的示例数据创建名为**log4jLogs**的表：（根据需要根据 URI 方案进行修订。
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -198,7 +199,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
     这些语句执行以下操作：
 
-    |语句 |描述 |
+    |语句 |说明 |
     |---|---|
     |DROP TABLE|如果表存在，则将其删除。|
     |CREATE EXTERNAL TABLE|在蜂巢中创建**外部**表。 外部表只会在 Hive 中存储表定义。 数据将保留在原始位置。|
@@ -244,7 +245,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 ## <a name="run-a-hiveql-file"></a>运行 HiveQL 文件
 
-这是上一示例的继续。 使用以下步骤创建文件，并使用 Beeline 运行该文件。
+此示例是上一个示例的延续。 使用以下步骤创建文件，并使用 Beeline 运行该文件。
 
 1. 使用以下命令创建一个名为 **query.hql** 的文件：
 
@@ -261,7 +262,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
     这些语句执行以下操作：
 
-    |语句 |描述 |
+    |语句 |说明 |
     |---|---|
     |创建表（如果不存在）|如果表不存在，则创建该表。 由于不使用**外部**关键字，因此此语句将创建一个内部表。 内部表存储在 Hive 数据仓库中，由 Hive 全权管理。|
     |存储为 ORC|以优化的行纵栏式 (ORC) 格式存储数据。 ORC 格式是高度优化且有效的 Hive 数据存储格式。|
@@ -300,7 +301,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 ## <a name="install-beeline-client"></a>安装 beeline 客户端
 
-尽管 HDInsight 群集的头节点上包含 Beeline，但你可能需要将其安装在本地计算机上。  用于在本地计算机上安装 Beeline 的步骤基于[用于 Linux 的 Windows 子系统](https://docs.microsoft.com/windows/wsl/install-win10)。
+尽管 Beeline 包含在头节点上，但您可能希望在本地安装它。  本地计算机的安装步骤基于 Linux 的[Windows 子系统](https://docs.microsoft.com/windows/wsl/install-win10)。
 
 1. 更新包列表。 在 bash shell 中输入以下命令：
 

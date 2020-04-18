@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/17/2020
+ms.date: 04/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3fdc007caaa4cb79f6083599a5bc176bc022fb03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 524e47e5be142b720687ad48ee9407da23284bd4
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278633"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605051"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>在时序见解中配置保留期
 
@@ -34,7 +34,7 @@ ms.locfileid: "76278633"
 
 ## <a name="configure-data-retention"></a>配置数据保留
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 查找现有时序见解环境。 在 Azure 门户左侧的菜单中，选择“所有资源”****。 选择时序见解环境。
 

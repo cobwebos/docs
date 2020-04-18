@@ -12,16 +12,16 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
-ms.openlocfilehash: 3aabf68b6763e5815a03021cb02683d509c26190
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ab2ba31d6b712bd3399bc8bf5b491337d462dac9
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415051"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606207"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>自定义 Azure-SSIS 集成运行时的设置
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure-SQL 服务器集成服务集成运行时 （Azure-SSIS IR） 的自定义设置提供了一个接口，用于在 Azure-SSIS IR 的设置或重新配置期间添加您自己的步骤。 
 
@@ -60,7 +60,7 @@ Azure-SQL 服务器集成服务集成运行时 （Azure-SSIS IR） 的自定义�
 
 - [Azure 存储帐户](https://azure.microsoft.com/services/storage/)。 对于快速自定义安装并非必需。 对于标准自定义安装，请在 Blob 容器中上传并存储自定义安装脚本及其关联文件。 自定义安装进程还会将其执行日志上传到相同的 Blob 容器。
 
-## <a name="instructions"></a>Instructions
+## <a name="instructions"></a>说明
 
 1. 如果要使用 PowerShell 设置或重新配置 Azure-SSIS IR，请下载并安装[Azure PowerShell](/powershell/azure/install-az-ps)。 对于快速自定义安装，请跳到步骤 4。
 

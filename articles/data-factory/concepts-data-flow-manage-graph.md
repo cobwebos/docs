@@ -7,16 +7,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/04/2019
-ms.openlocfilehash: 1618011dc3c281cb2ef06ef80cfc7c8e69c4e091
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0d357c4c671070a5c5e9d4587e2f90b6628996f4
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415492"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605361"
 ---
 # <a name="mapping-data-flow-graphs"></a>映射数据流图
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 映射数据流设计图面是一个"构造"曲面，您可以在其中自上而下、从左到右生成数据流。 具有加号 (+) 符号的每个转换都附加有一个工具箱。 请专注于你的业务逻辑，而非在自由形式的 DAG 环境中通过边缘来连接节点。
 

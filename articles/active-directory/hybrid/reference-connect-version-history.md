@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/03/2020
+ms.date: 04/17/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d2e3f8da4a05feedb8c1ab585fabcc74edbc71a
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 815d3afe68003f56a5748584b322b731ef5a3dc7
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998749"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639651"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发布历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -55,6 +55,15 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 
 ### <a name="fixed-issues"></a>修复的问题
 如果启用了组筛选功能并使用 mS-DS-一致性 Guid 作为源锚点，则此修补程序生成修复了内部版本 1.5.18.0 的问题。
+
+> [!IMPORTANT]
+> 如果使用 mS-DS-一致性 Guid 作为源锚点，并且已**克隆了 AD - 组加入**同步规则并计划升级，则作为升级的一部分完成以下步骤：
+> 1. 在升级期间，取消选中选项 **"在配置完成时启动同步过程**"。
+> 2. 编辑克隆的联接同步规则并添加以下两个转换：
+>     - 将直接流`objectGUID`设置为`sourceAnchorBinary`。
+>     - 将表达式流`ConvertToBase64([objectGUID])`设置为`sourceAnchor`。     
+> 3. 使用`Set-ADSyncScheduler -SyncCycleEnabled $true`启用计划程序。
+
 
 ## <a name="15180"></a>1.5.18.0
 
@@ -528,7 +537,7 @@ Azure AD Connect 版本 1.1.654.0（以及更高版本）中已添加了一项�
 *   删除特定对象上的所有 ACE，特定于 SELF 的 ACE 除外。 当涉及到 SELF 时，我们希望保持默认权限不变。
 *   分配以下特定权限：
 
-类型     | “属性”                          | 访问               | 应用于
+类型     | 名称                          | 访问               | 应用于
 ---------|-------------------------------|----------------------|--------------|
 Allow    | SYSTEM                        | 完全控制         | 此对象  |
 Allow    | 企业管理员             | 完全控制         | 此对象  |
@@ -1057,7 +1066,7 @@ AD FS 管理
 ## <a name="113800"></a>1.1.380.0
 发布日期：2016 年 12 月
 
-**修复了问题：**
+**已修复问题：**
 
 * 修复了本版本中缺少针对 Active Directory 联合身份验证服务 (AD FS) 的 issuerid 声明规则的问题。
 
@@ -1071,7 +1080,7 @@ AD FS 管理
 
 * 本版本中缺少针对 AD FS 的 issuerid 声明规则。 要将多个域与 Azure Active Directory (Azure AD) 联合，需使用 issuerid 声明规则。 如果使用 Azure AD Connect 管理本地 AD FS 部署，则升级到此版本将从 AD FS 配置中删除现有 issuerid 声明规则。 可在安装/升级后添加 issuerid 声明规则来解决此问题。 有关添加 issuerid 声明规则的详细信息，请参阅[与 Azure AD 联合的多域支持](how-to-connect-install-multiple-domains.md)一文。
 
-**修复了问题：**
+**已修复问题：**
 
 * 如果未打开用于出站连接的端口 9090，Azure AD Connect 安装或升级会失败。
 

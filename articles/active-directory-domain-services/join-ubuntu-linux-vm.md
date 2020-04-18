@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 95373ab8ff78c5bcb856e6d7e6d67d8525cd3f7e
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 74af841b777494744c72ed219bacd3b3835d41ac
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655132"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617560"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>将 Ubuntu Linux 虚拟机加入 Azure AD 域服务托管域
 
@@ -29,7 +29,7 @@ ms.locfileid: "80655132"
 需有以下资源和特权才能完成本教程：
 
 * 一个有效的 Azure 订阅。
-    * 如果没有 Azure 订阅，[请创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+    * 如果你没有 Azure 订阅，请[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 与订阅关联的 Azure Active Directory 租户，可以与本地目录或仅限云的目录同步。
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。
@@ -154,6 +154,12 @@ Successfully enrolled machine in realm
 ```
 
 如果 VM 无法成功完成域加入过程，请确保 VM 的网络安全组允许在 TCP + UDP 端口 464 上向 Azure AD DS 托管域的虚拟网络子网进行出站 Kerberos 流量。
+
+如果收到错误*未指定的 GSS 失败。 次要代码可能会提供更多信息（Kerberos 数据库中找不到服务器），* 打开文件 */etc/krb5.conf*并在`[libdefaults]`节中添加以下代码，然后重试：
+
+```console
+rdns=false
+```
 
 ## <a name="update-the-sssd-configuration"></a>更新 SSSD 配置
 

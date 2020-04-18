@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ffb3d590aebe80994de1e7e834a2eba5777df9a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 427ab6c4e0e769ab881af0af3023d514c1b092c6
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76262480"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604614"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions 中的任务中心 (Azure Functions)
 
@@ -35,7 +35,13 @@ ms.locfileid: "76262480"
 
 ## <a name="task-hub-names"></a>任务中心名称
 
-任务中心由 *host.json* 文件中声明的名称标识，如以下示例所示：
+任务中心由符合以下规则的名称标识：
+
+* 仅包含字母数字字符
+* 以字母开头
+* 最小长度为 3 个字符，最大长度为 45 个字符
+
+任务中心名称在*host.json*文件中声明，如以下示例所示：
 
 ### <a name="hostjson-functions-20"></a>host.json (Functions 2.0)
 
@@ -121,7 +127,7 @@ public static async Task<HttpResponseMessage> Run(
 > [!NOTE]
 > 前面的 C# 示例适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关不同版本之间的差异的详细信息，请参阅[持久函数版本](durable-functions-versions.md)一文。
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 `function.json` 文件中的任务中心属性通过应用设置进行设置：
 

@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 770c88ddfb44004b76633cbeb726d28e1626a72c
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 5d737b1e85a28661a7491b8d2822e6472538c7a1
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80681722"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617955"
 ---
 # <a name="models"></a>模型
 
@@ -71,6 +71,8 @@ async void LoadModel(AzureSession session, Entity modelParent, string storageAcc
         modelParent
     );
 
+    var loadOp = session.Actions.LoadModelAsync(modelParams);
+
     // ... (identical to the SAS URI snippet above)
 }
 ```
@@ -83,4 +85,4 @@ async void LoadModel(AzureSession session, Entity modelParent, string storageAcc
 ## <a name="next-steps"></a>后续步骤
 
 * [实体](entities.md)
-* [网 格](meshes.md)
+* [网格](meshes.md)

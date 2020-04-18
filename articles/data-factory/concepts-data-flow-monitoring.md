@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/07/2019
-ms.openlocfilehash: b06000d6b3cd7a429b7ad0fc9c453595f21bd893
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: dea0f9a038958ea747147a179020545f2f6922a2
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418467"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605347"
 ---
 # <a name="monitor-data-flows"></a>监视数据流
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 完成数据流的生成和调试之后，需要在管道上下文中将数据流安排为按计划执行。 可以使用触发器从 Azure 数据工厂计划管道。 或者，可以使用 Azure 数据工厂管道生成器中的“立即触发”选项执行单次运行，以便在管道上下文中测试数据流。
 

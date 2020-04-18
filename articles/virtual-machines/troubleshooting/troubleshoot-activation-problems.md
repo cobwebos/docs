@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 5c84588290ce769b556002469b6a11c6950bb878
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd38f646b8dfc58839cd2645f7fadf7332693854
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476546"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605991"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>排查 Azure Windows 虚拟机激活问题
 
@@ -77,7 +77,7 @@ Azure 使用不同的终结点进行 KMS（密钥管理服务）激活，具体�
 
 ### <a name="step-2-verify-the-connectivity-between-the-vm-and-azure-kms-service"></a>第 2 步：验证 VM 与 Azure KMS 服务的连接
 
-1. 将[PSping](http:/technet.microsoft.com/sysinternals/jj729731.aspx)工具下载并提取到 VM 中未激活的本地文件夹。 
+1. 将[PSping](https://docs.microsoft.com/sysinternals/downloads/psping)工具下载并提取到 VM 中未激活的本地文件夹。 
 
 2. 转到“开始”，搜索 Windows PowerShell，右键单击 Windows PowerShell，再选择“以管理员身份运行”。
 
@@ -98,7 +98,7 @@ Azure 使用不同的终结点进行 KMS（密钥管理服务）激活，具体�
 
    如果“Lost”大于 0（零），表示 VM 未连接到 KMS 服务器。 在这种情况下，如果 VM 位于虚拟网络中，并且指定了自定义 DNS 服务器，必须确保此 DNS 服务器能够解析 kms.core.windows.net。 或者，将 DNS 服务器更改为可以解析 kms.core.windows.net。
 
-   请注意，如果从虚拟网络中删除所有 DNS 服务器，VM 将使用 Azure 的内部 DNS 服务。 此服务可以解析 kms.core.windows.net。
+   请注意，如果从虚拟网络中删除所有 DNS 服务器，VM 会使用 Azure 的内部 DNS 服务。 此服务可以解析 kms.core.windows.net。
   
     另外，请确保到具有 1688 端口的 KMS 终结点的出站网络流量未被 VM 上的防火墙阻止。
 
@@ -114,7 +114,7 @@ Azure 使用不同的终结点进行 KMS（密钥管理服务）激活，具体�
     
     **激活 Windows （R）， 服务器数据中心版本 （12345678-1234-1234-1234-12345678） ... 已成功激活产品。**
 
-## <a name="faq"></a>FAQ 
+## <a name="faq"></a>常见问题解答 
 
 ### <a name="i-created-the-windows-server-2016-from-azure-marketplace-do-i-need-to-configure-kms-key-for-activating-the-windows-server-2016"></a>我从 Azure 市场创建了 Windows Server 2016。 是否需要配置用于激活 Windows Server 2016 的 KMS 密钥？ 
 

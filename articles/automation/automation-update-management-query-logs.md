@@ -5,22 +5,22 @@ services: automation
 ms.subservice: update-management
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 81e12e775306cc8637dedd534f50e8a14bc09a26
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 09eacb42eff6ecf3a3fca2d7fb401f52195f5f2d
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743867"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617421"
 ---
 # <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>在 Azure 监视器日志中查询更新管理记录
 
-除了更新管理解决方案中提供的详细信息外，您还可以针对日志分析工作区中存储的日志进行搜索。 在解决方案页中，在左侧窗格中选择 **"日志**"。 将打开 **"日志搜索"** 页。
+除了更新管理解决方案中提供的详细信息外，您还可以针对日志分析工作区中存储的日志进行搜索。 在解决方案页中，在左侧窗格中，选择 **"日志**"。 将打开"日志搜索"页。
 
-您还可以通过访问：[日志分析搜索 API 文档](https://dev.loganalytics.io/)，了解如何自定义查询或从不同客户端使用它们。
+您还可以了解如何自定义查询或从不同的客户端使用它们。 请参阅[日志分析搜索 API 文档](https://dev.loganalytics.io/)。
 
 ## <a name="update-records"></a>更新记录
 
-由 Windows 和 Linux VM 的更新管理以及日志搜索结果中显示的数据类型收集的记录。 以下各节介绍这些记录。
+更新管理收集 Windows 和 Linux VM 的记录以及日志搜索结果中显示的数据类型。 以下各节介绍这些记录。
 
 ### <a name="required-updates"></a>所需更新
 
@@ -40,7 +40,7 @@ ms.locfileid: "80743867"
 | TimeGenerated | 创建记录的日期和时间。 | 
 | 类型 | *更新* | 
 | UpdateClassification | 指示可应用的更新类型。 对于 Windows：<br> *关键更新*<br> *安全更新*<br> *更新汇总*<br> *功能包*<br> *服务包*<br> *定义更新*<br> *工具*<br> *更新*. 对于 Linux：<br> *关键和安全更新*<br> *其他* |
-| 更新严重性 | 漏洞的严重性评级。 值为：<br> *关键*<br> *重要说明*<br> *中等*<br> *低* |
+| 更新严重性 | 漏洞的严重性评级。 值为：<br> *严重*<br> *重要说明*<br> *中等*<br> *低* |
 | UpdateTitle | 更新的标题。|
 
 ### <a name="update"></a>更新
@@ -49,36 +49,36 @@ ms.locfileid: "80743867"
 
 | properties | 说明 | 
 |----------|-------------|
-| 批准来源 | 仅适用于 Windows 操作系统。 价值是*微软更新*。 |
-| 已批准 | *真**假* |
-| 分类 | *更新* |
+| 批准来源 | 仅适用于 Windows 操作系统。 记录的批准来源。 该值是微软更新。 |
+| 已批准 | 如果记录已批准，则为 True，否则为 False。 |
+| 分类 | 批准分类。 该值为"更新"。 |
 | Computer | 报告机的完全限定域名。 |
-| 计算机环境 | *Azure* *或非 Azure*。 |
-| MSRCBulletinID | 安全公告 ID 号 | 
-| MSRCSeverity | 漏洞的严重性评级。 值为：<br> *关键*<br> *重要说明*<br> *中等*<br> *低* |  
+| 计算机环境 | 环境。 可能的值是 Azure 或非 Azure。 |
+| MSRCBulletinID | 安全公告 ID 号。 | 
+| MSRCSeverity | 漏洞的严重性评级。 值为：<br> 严重<br> 重要说明<br> 中等<br> 低 |  
 | KBID | Windows 更新的知识库文章 ID。 |
 | ManagementGroupName | 操作管理器管理组或日志分析工作区的名称。 |
 | UpdateID | 软件更新的唯一标识符。 |
 | RevisionNumber | 更新的特定修订的修订号。 |
-| 可选 | *真**假* | 
+| 可选 | 如果记录是可选的，则为 True，否则为 False。 | 
 | RebootBehavior | 安装/卸载更新后的重新启动行为。 |
-| _ResourceId | 记录关联的资源的唯一标识符。 |
-| 类型 | *更新* |
+| _ResourceId | 与记录关联的资源的唯一标识符。 |
+| 类型 | 记录类型。 该值为"更新"。 |
 | VMUUID | 虚拟机的唯一标识符。 |
 | MG | 管理组或日志分析工作区的唯一标识符。 | 
-| TenantId | 表示 Azure 活动目录的组织实例的唯一标识符。 | 
-| SourceSystem | *OperationsManager* | 
+| TenantId | 表示组织 Azure 活动目录实例的唯一标识符。 | 
+| SourceSystem | 记录的源系统。 该值为 `OperationsManager`。 | 
 | TimeGenerated | 创建记录的日期和时间。 | 
 | SourceComputerId | 表示源计算机的唯一标识符。 | 
-| Title | 更新的标题。 |
+| 标题 | 更新的标题。 |
 | 发布日期 （UTC） | 更新准备好从 Windows 更新下载和安装的日期。  |
 | UpdateState | 更新的当前状态。 | 
-| Products | 更新适用于的产品。 |
+| Products | 更新适用的产品。 |
 | SubscriptionId | Azure 订阅的唯一标识符。 | 
-| ResourceGroup | 资源的成员的资源组的名称。 | 
-| ResourceProvider | 指定资源提供程序。 | 
+| ResourceGroup | 资源所属的资源组的名称。 | 
+| ResourceProvider | 资源提供程序。 | 
 | 资源 | 资源的名称。 | 
-| ResourceType | 资源类型的名称。 | 
+| ResourceType | 资源类型。 | 
 
 ### <a name="update-agent"></a>更新代理
 
@@ -94,12 +94,12 @@ ms.locfileid: "80743867"
 | OSVersion | 操作系统的版本。 |
 | 服务器 | |
 | SourceHealthServiceId | 表示日志分析 Windows 代理 ID 的唯一标识符。 |
-| SourceSystem | *OperationsManager* | 
-| TenantId | 表示 Azure 活动目录的组织实例的唯一标识符。 |
+| SourceSystem | 记录的源系统。 该值为 `OperationsManager`。 | 
+| TenantId | 表示组织 Azure 活动目录实例的唯一标识符。 |
 | TimeGenerated | 创建记录的日期和时间。 |
-| 类型 | *更新* | 
+| 类型 | 记录类型。 该值为"更新"。 | 
 | WindowsUpdateAgentVersion | Windows 更新代理的版本。 |
-| WSUSServer | 如果 Windows 更新代理出现问题以帮助进行故障排除，请显示错误。 |
+| WSUSServer | 如果 Windows 更新代理出现问题，则出错，以帮助进行故障排除。 |
 
 ### <a name="update-deployment-status"></a>更新部署状态 
 
@@ -108,30 +108,30 @@ ms.locfileid: "80743867"
 | properties | 说明 | 
 |----------|-------------|
 | Computer | 报告机的完全限定域名。 |
-| 计算机环境 | *Azure* *或非 Azure*。 | 
+| 计算机环境 | 环境。 值为 Azure 或非 Azure。 | 
 | CorrelationId | 运行更新的 Runbook 作业的唯一标识符。 |
 | EndTime | 同步过程结束的时间。 | 
 | 错误结果 | 如果更新安装失败，则生成 Windows 更新错误代码。 | 
-| 安装状态 | 客户端计算机上的更新的可能安装状态，<br> *未启动*- 作业尚未触发。<br> *无法启动*- 无法在计算机上启动作业。<br> *作业*已启动但异常失败。<br> *进度*- 正在进行的工作。<br> *维护窗口超过*- 如果执行仍然存在，但达到维护窗口间隔。<br> *成功*- 作业成功.<br> *安装失败*- 更新失败，无法成功安装。<br> *不包括*<br> *已排除* |
+| 安装状态 | 客户端计算机上的更新的可能安装状态，<br> `NotStarted`- 作业尚未触发。<br> `FailedToStart`- 无法在机器上启动作业。<br> `Failed`- 作业已启动，但异常失败。<br> `InProgress`- 工作正在进行中。<br> `MaintenanceWindowExceeded`- 如果执行仍然存在，但达到维护窗口间隔。<br> `Succeeded`-工作成功了<br> `InstallFailed`- 更新成功安装失败。<br> `NotIncluded`<br> `Excluded` |
 | KBID | Windows 更新的知识库文章 ID。 | 
 | ManagementGroupName | 操作管理器管理组或日志分析工作区的名称。 |
-| OSType | 指定操作系统 *、Windows*或*Linux*的类型。 | 
-| Products | 更新适用于的产品。 |
+| OSType | 操作系统的类型。 值是 Windows 或 Linux。 | 
+| Products | 更新适用的产品。 |
 | 资源 | 资源的名称。 | 
-| ResourceId | 记录关联的资源的唯一标识符。 |
-| ResourceProvider | 指定资源提供程序。 | 
-| ResourceType | 资源类型的名称。 | 
+| ResourceId | 与记录关联的资源的唯一标识符。 |
+| ResourceProvider | 资源提供程序。 | 
+| ResourceType | 资源类型。 | 
 | SourceComputerId | 表示源计算机的唯一标识符。 | 
-| SourceSystem | *OperationsManager* |
+| SourceSystem | 记录的源系统。 该值为 `OperationsManager`。 |
 | StartTime | 计划安装更新的时间。 |
 | SubscriptionId | Azure 订阅的唯一标识符。 | 
-| 成功重新测量 | 显示第一次尝试的更新执行失败以及当前操作是重试尝试时。 |
+| 成功重新测量 | 指示第一次尝试的更新执行失败，当前操作是否为重试尝试的值。 |
 | TimeGenerated | 创建记录的日期和时间。 |
-| Title | 更新的标题。 |
-| 类型 | *UpdateRunProgress* |
+| 标题 | 更新的标题。 |
+| 类型 | 更新的类型。 该值为 `UpdateRunProgress`。 |
 | 更新 Id | 软件更新的唯一标识符。 |
 | VMUUID | 虚拟机的唯一标识符。 |
-| _ResourceId | 记录关联的资源的唯一标识符。 |
+| ResourceId | 与记录关联的资源的唯一标识符。 |
 
 ### <a name="update-summary"></a>更新摘要 
 
@@ -140,32 +140,32 @@ ms.locfileid: "80743867"
 | properties | 说明 | 
 |----------|-------------|
 | Computer | 报告机的完全限定域名。 |
-| 计算机环境 | *Azure* *或非 Azure*。 | 
-| CriticalUpdatesMissing | 缺少的关键更新数。 | 
+| 计算机环境 | 环境。 值为 Azure 或非 Azure。 | 
+| CriticalUpdatesMissing | 缺少的适用关键更新数。 | 
 | ManagementGroupName | 操作管理器管理组或日志分析工作区的名称。 |
 | NETRuntimeVersion | 在 Windows 计算机上安装的 .NET 框架的版本。 |
-| OldestMissingSecurityUpdateBucket | 值为：<br> *最近*如果值小于 30 天<br> *30 天前*<br> *60 天前*<br> *90 天前*<br> *120 天前*<br> *150 天前*<br> *180 天前*<br> 值大于 180 天时*较旧* | 
+| OldestMissingSecurityUpdateBucket | 最旧缺少的安全存储桶的指定器。 值为：<br> 最近如果值小于 30 天<br> 30 天前<br> 60 天前<br> 90 天前<br> 120 天前<br> 150 天前<br> 180 天前<br> 当值大于 180 天时，旧。 | 
 | OldestMissingSecurityUpdateInDays | 检测到的未安装的最早更新的总天数。 |
 | OsVersion | 操作系统的版本。 |
 | OtherUpdatesMissing | 缺少检测到的更新计数。 |
-| 资源 |  资源的名称。 | 
-| ResourceGroup | 资源的成员的资源组的名称。 |
-| ResourceId | 记录关联的资源的唯一标识符。 |
-| ResourceProvider | 指定资源提供程序。 |
-| ResourceType | 资源类型的名称。 |
-| 重新启动挂起 | *真**或假*。 |
-| SecurityUpdatesMissing | 适用的安全更新缺失计数。| 
+| 资源 | 记录的资源的名称。 | 
+| ResourceGroup | 包含资源的资源组的名称。 |
+| ResourceId | 与记录关联的资源的唯一标识符。 |
+| ResourceProvider | 资源提供程序。 |
+| ResourceType | 资源类型。 |
+| 重新启动挂起 | 如果重新启动处于挂起状态，则为 True，否则为 False。 |
+| SecurityUpdatesMissing | 缺少的安全更新的计数。| 
 | SourceComputerId | 虚拟机的唯一标识符。 |
-| SourceSystem | *OpsManager* | 
+| SourceSystem | 记录的源系统。 该值为 `OpsManager`。 | 
 | SubscriptionId | Azure 订阅的唯一标识符。 |
 | TimeGenerated | 创建记录的日期和时间。 |
 | TotalUpdatesMissing | 适用的缺少更新的总数。 | 
-| 类型 | *UpdateSummary* |
+| 类型 | 记录类型。 该值为 `UpdateSummary`。 |
 | VMUUID | 虚拟机的唯一标识符。 |
 | WindowsUpdateAgentVersion | Windows 更新代理的版本。 |
-| WindowsUpdateSetting | 显示 Windows 更新代理的状态。 可能的值包括：<br> *计划安装*<br> *安装前通知*<br> 从不正常的 WUA 代理返回的错误。 | 
-| WSUSServer | 如果 Windows 更新代理出现问题以帮助进行故障排除，请显示错误。 |
-| _ResourceId | 记录关联的资源的唯一标识符。 |
+| WindowsUpdateSetting | Windows 更新代理的状态。 可能的值包括：<br> `Scheduled installation`<br> `Notify before installation`<br> `Error returned from unhealthy WUA agent` | 
+| WSUSServer | 如果 Windows 更新代理出现问题，则出错，以帮助进行故障排除。 |
+| _ResourceId | 与记录关联的资源的唯一标识符。 |
 
 ## <a name="sample-queries"></a>示例查询
 
@@ -306,8 +306,6 @@ on SourceComputerId
 | summarize assessedComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity>-1), notAssessedComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==-1), computersNeedCriticalUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==4), computersNeedSecurityUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==2), computersNeedOtherUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==1), upToDateComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==0)
 | summarize assessedComputersCount=sum(assessedComputersCount), computersNeedCriticalUpdatesCount=sum(computersNeedCriticalUpdatesCount),  computersNeedSecurityUpdatesCount=sum(computersNeedSecurityUpdatesCount), computersNeedOtherUpdatesCount=sum(computersNeedOtherUpdatesCount), upToDateComputersCount=sum(upToDateComputersCount), notAssessedComputersCount=sum(notAssessedComputersCount)
 | extend allComputersCount=assessedComputersCount+notAssessedComputersCount
-
-
 ```
 
 #### <a name="missing-updates-summary"></a>缺少更新摘要

@@ -3,12 +3,12 @@ title: 适用于 Visual Studio Code 的 Azure Policy 扩展
 description: 了解如何使用适用于 Visual Studio Code 的 Azure Policy 扩展来查找资源管理器别名。
 ms.date: 03/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 0e9123f2975bda0d61e9d6e9bf894ecd359e6c5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e31af652f2746adbf0eda386bdb178c752f5f84
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264669"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641025"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>使用适用于 Visual Studio Code 的 Azure Policy 扩展
 
@@ -26,7 +26,7 @@ ms.locfileid: "79264669"
 完成本文中的步骤需要以下各项：
 
 - Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
-- [视觉工作室代码](https://code.visualstudio.com)。
+- [Visual Studio Code](https://code.visualstudio.com)。
 
 ## <a name="install-azure-policy-extension"></a>安装 Azure Policy 扩展
 
@@ -121,7 +121,7 @@ Azure Policy 扩展在“资源”窗格中按资源提供程序和资源组列�
 
 ## <a name="discover-aliases-for-resource-properties"></a>发现资源属性的别名
 
-选择某个资源时（不管是通过搜索界面选择，还是在树视图中选择），Azure Policy 扩展将会打开表示该资源及其所有资源管理器属性值的 JSON 文件。
+选择资源时，无论是通过搜索界面还是通过在树视图中选择资源，Azure 策略扩展名将打开 JSON 文件，表示该资源及其所有资源管理器属性值。
 
 打开某个资源后，将鼠标悬停在资源管理器属性名称或值上可显示 Azure Policy 别名（如果存在）。 在此示例中，资源的类型是 `Microsoft.Compute/virtualMachines`，鼠标已悬停在 **properties.storageProfile.imageReference.offer** 属性上。 悬停鼠标可显示匹配的别名。
 
@@ -157,7 +157,7 @@ Azure Policy 扩展在“资源”窗格中按资源提供程序和资源组列�
 
 - 查看[Azure 策略示例](../samples/index.md)中的示例。
 - 查看 [Azure Policy 定义结构](../concepts/definition-structure.md)。
-- 回顾[了解政策效果](../concepts/effects.md)。
+- 查看[了解策略效果](../concepts/effects.md)。
 - 了解如何[以编程方式创建策略](programmatically-create.md)。
 - 了解如何[修复不合规资源](remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 682935fa2324b8de4992ab2f90c7f71e05c4f8ac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba281ffb30801e0ae10cab10ceb95c0a3bffde2d
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264227"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640027"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Azure 活动目录域服务中用户帐户、密码和管理的管理概念
 
@@ -48,7 +48,7 @@ Azure AD DS 包括默认密码策略，用于定义帐户锁定、最大密码�
 
 若要对托管域上的用户进行身份验证，Azure AD DS 需要密码哈希，其格式适用于 NT LAN Manager (NTLM) 和 Kerberos 身份验证。 除非为租户启用了 Azure AD DS，否则 Azure AD 不会以 NTLM 或 Kerberos 身份验证所需的格式生成或存储密码哈希。 出于安全考虑，Azure AD 也不以明文形式存储任何密码凭据。 因此，Azure AD 无法基于用户的现有凭据自动生成这些 NTLM 或 Kerberos 密码哈希。
 
-对于仅限云的用户帐户，用户必须更改其密码才能使用 Azure AD DS。 此密码更改过程会导致在 Azure AD 中生成并存储用于 Kerberos 和 NTLM 身份验证的密码哈希。
+对于仅限云的用户帐户，用户必须更改其密码才能使用 Azure AD DS。 此密码更改过程会导致在 Azure AD 中生成并存储用于 Kerberos 和 NTLM 身份验证的密码哈希。 在更改密码之前，帐户不会从 Azure AD 同步到 Azure AD DS。
 
 对于使用 Azure AD 连接从本地 AD DS 环境同步的用户，[启用密码哈希的同步][hybrid-phs]。
 
@@ -70,7 +70,7 @@ Azure AD DS 包括默认密码策略，用于定义帐户锁定、最大密码�
 
 默认情况下，Azure AD DS 托管域将作为*用户*林创建。 此类林可同步 Azure AD 中的所有对象，包括在本地 AD DS 环境中创建的所有用户帐户。 用户帐户可以直接针对 Azure AD DS 托管域进行身份验证，例如登录到加入域的 VM。 当用户林可以同步密码哈希，并且用户不使用专用登录方法（如智能卡身份验证）时，用户林将起作用。
 
-在 Azure AD DS*资源*林中，用户通过本地 AD DS 的单向林*信任*进行身份验证。 使用此方法，用户对象和密码哈希不会同步到 Azure AD DS。 用户对象和凭据仅存在于本地 AD DS 中。 此方法允许企业在 Azure 中托管依赖于经典身份验证（如 LDAPS、Kerberos 或 NTLM）的资源和应用程序平台，但删除了任何身份验证问题或疑虑。 Azure AD DS 资源林当前处于预览状态。
+在 Azure AD DS*资源*林中，用户通过本地 AD DS 的单向林*信任*进行身份验证。 使用此方法，用户对象和密码哈希不会同步到 Azure AD DS。 用户对象和凭据仅存在于本地 AD DS 中。 此方法允许企业在 Azure 中托管依赖于经典身份验证（如 LDAPS、Kerberos 或 NTLM）的资源和应用程序平台，但删除了任何身份验证问题或疑虑。 Azure AD DS 资源林目前为预览版。
 
 有关 Azure AD DS 中的林类型的详细信息，请参阅[什么是资源林？][concepts-forest]和[在 Azure AD DS 中，林信任如何工作？][concepts-trust]
 

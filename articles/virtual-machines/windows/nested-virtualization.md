@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: d127d3f9e66b7d2d40aa420e2116fee17d996514
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 7858bd467c6e3fd82fcb3803a98e96b265f17d23
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437294"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605256"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>如何在 Azure VM 中启用嵌套虚拟化
 
@@ -42,7 +42,7 @@ ms.locfileid: "80437294"
 
 1. 单击虚拟机属性上的“连接”按钮。**** 此时会创建和下载远程桌面协议文件（.rdp 文件）。
 
-2. 若要连接到 VM，请打开下载的 RDP 文件。 出现提示时，请单击“连接”。**** 在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12)。
+2. 若要连接到 VM，请打开下载的 RDP 文件。 出现提示时，请单击“连接”。**** 在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)。
 
 3. 输入在创建虚拟机时指定的用户名和密码，单击“确定”。****
 
@@ -122,7 +122,7 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 
 >[!IMPORTANT] 
 >
->Azure 来宾代理在嵌套 VM 上不受支持，并且可能会在主机和嵌套 VM 上导致问题。 不要在嵌套 VM 上安装 Azure 代理，也不要使用映像创建已安装了 Azure 来宾代理的嵌套 VM。
+>Azure 来宾代理在嵌套 VM 上不受支持，并且可能会在主机和嵌套 VM 上导致问题。 请勿在嵌套 VM 上安装 Azure 代理，也不要使用映像创建已安装 Azure 来宾代理的嵌套 VM。
 
 1. 打开 Hyper-V 管理器并创建新的虚拟机。 配置虚拟机以使用你创建的新内部网络。
     
@@ -149,7 +149,7 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
   
 3. 单击以选择“DHCP 服务器”**** 复选框，然后依次单击“添加功能”**** 和“下一步”****，直至完成向导。
   
-4. 单击 **“安装”**。
+4. 单击“安装”  。
 
 #### <a name="configure-a-new-dhcp-scope"></a>配置新的 DHCP 作用域
 

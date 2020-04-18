@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 7ee219ae5ace0f0da398cc542f410d3c895c8bd4
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: ac7e721a863414cf0617177885e0ff1c9e9a35d4
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679980"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617870"
 ---
 # <a name="troubleshoot"></a>疑难解答
 
@@ -38,7 +38,7 @@ ms.locfileid: "80679980"
 
 首先，请确保安装系统要求[的软件](../overview/system-requirements.md#software)部分中提到的**HEVC 视频扩展**。
 
-如果仍然遇到问题，请确保您的显卡支持 H265，并且安装了最新的图形驱动程序。 有关供应商特定信息，请参阅系统要求的["开发 PC"](../overview/system-requirements.md#development-pc)部分。
+如果仍然遇到问题，请确保您的显卡支持 H265 并安装了最新的图形驱动程序。 有关特定于供应商的信息，请参阅系统要求的["开发 PC"](../overview/system-requirements.md#development-pc)部分。
 
 **已安装编解码器，但无法使用：**
 
@@ -76,6 +76,14 @@ ms.locfileid: "80679980"
 
 * 请参阅[识别网络问题](#unstable-holograms)的步骤。
 * 请参阅安装最新图形驱动程序[的系统要求](../overview/system-requirements.md#development-pc)。
+
+## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>使用 MRC 录制的视频不反映实时体验的质量
+
+视频可以通过[混合现实捕获 （MRC）](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers)在霍洛伦斯上录制。 但是，生成的视频的质量比现场体验差，原因有二：
+* 视频帧速率上限为 30 Hz，而不是 60 Hz。
+* 视频图像不会经过[后期重新投影](../overview/features/late-stage-reprojection.md)处理步骤，因此视频看起来是斩波的。
+
+两者都是录音技术的内在局限性。
 
 ## <a name="black-screen-after-successful-model-loading"></a>成功加载模型后黑屏
 

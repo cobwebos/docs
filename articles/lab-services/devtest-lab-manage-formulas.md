@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 04/17/2020
 ms.author: spelluru
-ms.openlocfilehash: 4f8c8d4ff0a8014fe0b9a6ae4aead35ec7df4bf6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce980167cd88adfada1aa294aafa885184565799
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501985"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641164"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>管理 Azure 开发测试实验室公式
 
@@ -38,7 +38,7 @@ ms.locfileid: "79501985"
 ### <a name="create-a-formula-from-a-base"></a>从基项创建公式
 以下步骤介绍从自定义映像、市场映像或其他公式创建公式的过程。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 2. 选择“所有服务”****，并从列表中选择“开发测试实验室”****。
 
@@ -83,7 +83,7 @@ ms.locfileid: "79501985"
 > 
 > 
 
-1. 登录到 Azure[门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 2. 选择“所有服务”****，并从列表中选择“开发测试实验室”****。
 3. 从实验室列表，选择所需的实验室。  
 4. 在实验室的“概述”**** 页面上，选择要从中创建公式的 VM。
@@ -100,7 +100,7 @@ ms.locfileid: "79501985"
 ## <a name="modify-a-formula"></a>修改公式
 若要修改公式，请按照下列步骤操作：
 
-1. 登录到 Azure[门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 2. 选择“所有服务”****，并从列表中选择“开发测试实验室”****。
 3. 从实验室列表，选择所需的实验室。  
 4. 在实验室的页面上，选择“公式（可重用基项）”****。
@@ -112,7 +112,7 @@ ms.locfileid: "79501985"
 ## <a name="delete-a-formula"></a>删除公式
 若要删除公式，请按照下列步骤操作：
 
-1. 登录到 Azure[门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 2. 选择“所有服务”****，并从列表中选择“开发测试实验室”****。
 3. 从实验室列表，选择所需的实验室。  
 4. 在实验室“设置”**** 页面上，选择“公式”****。
@@ -129,7 +129,7 @@ ms.locfileid: "79501985"
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="related-blog-posts"></a>相关的博客文章
-* [自定义映像或公式？](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
+* [自定义映像或公式？](devtest-lab-faq.md#what-is-the-difference-between-a-custom-image-and-a-formula)
 
 ## <a name="next-steps"></a>后续步骤
 创建完用于创建 VM 的公式后，下一步就是[将 VM 添加到实验室](devtest-lab-add-vm.md)。

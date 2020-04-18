@@ -9,12 +9,12 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: a82d2b6d9521ba7dd5e7b194c26ff8fe5a100871
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 594bac257c2b9739f1ece276c881348b35d2f704
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457478"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604819"
 ---
 # <a name="encrypt-secure-assets-in-azure-automation"></a>加密 Azure 自动化中的安全资产
 
@@ -58,7 +58,7 @@ Azure 自动化中的安全资产包括凭据、证书、连接和加密的变�
 
 ### <a name="assign-an-identity-to-the-automation-account"></a>将标识分配给自动化帐户
 
-要将客户管理的密钥与自动化帐户一起使用，自动化帐户需要针对存储客户管理的密钥的密钥保管库进行身份验证。 Azure 自动化使用系统分配的托管标识使用 Azure 密钥保管库对帐户进行身份验证。 有关托管标识的详细信息，请参阅[什么是 Azure 资源的托管标识？](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+要将客户管理的密钥与自动化帐户一起使用，自动化帐户需要针对存储客户管理的密钥的密钥保管库进行身份验证。 Azure 自动化使用系统分配的托管标识使用 Azure 密钥保管库对帐户进行身份验证。 有关托管标识的详细信息，请参阅 Azure[资源的托管标识是什么？](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
 使用以下 REST API 调用将托管标识分配给自动化帐户的系统：
 
@@ -133,7 +133,7 @@ PUT https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000
 
 ### <a name="change-the-configuration-of-automation-account-to-use-customer-managed-key"></a>更改自动化帐户的配置以使用客户管理的密钥
 
-最后，您可以使用以下 REST API 调用将自动化帐户从 Microsft 管理的密钥切换到客户管理的密钥：
+最后，您可以使用以下 REST API 调用将自动化帐户从 Microsoft 管理的密钥切换到客户管理的密钥：
 
 ```http
 PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group-name/providers/Microsoft.Automation/automationAccounts/automation-account-name?api-version=2020-01-13-preview
@@ -193,9 +193,6 @@ PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000
 ## <a name="next-steps"></a>后续步骤
 
 - [什么是 Azure Key Vault？](../key-vault/general/overview.md)
-
 - [Azure 自动化中的证书资产](shared-resources/certificates.md)
-
 - [Azure 自动化中的凭据资产](shared-resources/credentials.md)
-
 - [Azure 自动化中的变量资产](shared-resources/variables.md)

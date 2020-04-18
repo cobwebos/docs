@@ -3,18 +3,18 @@ title: 使用地点和方式 - 个性化
 description: 在应用程序能够选择要显示的正确项、操作或产品的任何场合下，都可以应用个性化体验创建服务，以改善体验，实现更好的业务成果，或提高工作效率。
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: 63e66315898242beb5da59927e8d506e6f2cff78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c562d7a1853736204a7a03262547e083bd85fb75
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219320"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617679"
 ---
 # <a name="where-and-how-to-use-personalizer"></a>使用个性化器的位置和方式
 
 在应用程序需要选择正确的操作（内容）以显示的任何情况下使用个性化程序 - 以使体验更好、实现更好的业务结果或提高工作效率。
 
-个性化程序使用机器学习来选择要显示用户的操作（内容）。 所做的选择根据发送到服务的数据数量、质量和分布而有很大的不同。
+个性化工具使用强化学习来选择向用户显示的操作（内容）。 所做的选择根据发送到服务的数据数量、质量和分布而有很大的不同。
 
 ## <a name="example-use-cases-for-personalizer"></a>个性化体验创建服务的用例
 

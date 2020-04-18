@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2ddfa9611143d5c3f823539e018c8afc885c6a46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1f5ff48f4d5a658a1bbb4e6b9fb4b3f0f3fb190f
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77083229"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81602692"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>使用第 2 层外延式网络迁移工作负荷
 
@@ -57,10 +57,10 @@ ms.locfileid: "77083229"
 
 | vSphere 版本 | 源 vSwitch 类型 | 虚拟 NIC 驱动程序 | 目标 vSwitch 类型 | 支持？ |
 ------------ | ------------- | ------------ | ------------- | ------------- 
-| All | Dvs | All | Dvs | 是 |
+| 全部 | Dvs | 全部 | Dvs | 是 |
 | vSphere 6.7UI 或更高版本，6.5P03 或更高版本 | Dvs | VMXNET3 | N-VDS | 是 |
 | vSphere 6.7UI 或更高版本，6.5P03 或更高版本 | Dvs | E1000 | N-VDS | [每个 VWware 不受支持](https://kb.vmware.com/s/article/56991) |
-| vSphere 6.7UI 或 6.5P03、NSX-V 或 NSX-T2.2、6.5P03 或更高版本 | All | All | N-VDS | [每个 VWware 不受支持](https://kb.vmware.com/s/article/56991) |
+| vSphere 6.7UI 或 6.5P03、NSX-V 或 NSX-T2.2、6.5P03 或更高版本 | 全部 | 全部 | N-VDS | [每个 VWware 不受支持](https://kb.vmware.com/s/article/56991) |
 
 自 VMware NSX-T 2.3 版本：
 
@@ -73,7 +73,7 @@ ms.locfileid: "77083229"
 
 ### <a name="on-premises-network-where-the-standalone-esg-l2-vpn-client-is-deployed"></a>部署独立 ESG（L2 VPN 客户端）的本地网络
 
-| **项目** | **价值** |
+| **项** | **值** |
 |------------|-----------------|
 | 网络名称 | MGMT_NET_VLAN469 |
 | VLAN | 469 |
@@ -83,14 +83,14 @@ ms.locfileid: "77083229"
 
 ### <a name="on-premises-network-to-be-stretched"></a>要拉伸的本地网络
 
-| **项目** | **价值** |
+| **项** | **值** |
 |------------|-----------------|
 | VLAN | 472 |
 | CIDR| 10.250.3.0/24 |
 
 ### <a name="private-cloud-ip-schema-for-nsx-t-tier0-router-l2-vpn-serve"></a>NSX-T Tier0 路由器的私有云 IP 架构（L2 VPN 服务）
 
-| **项目** | **价值** |
+| **项** | **值** |
 |------------|-----------------|
 | 环回接口 | 192.168.254.254/32 |
 | 隧道接口 | 5.5.5.1/29 |
@@ -99,7 +99,7 @@ ms.locfileid: "77083229"
 
 ### <a name="private-cloud-network-to-be-mapped-to-the-stretched-network"></a>要映射到拉伸网络的私有云网络
 
-| **项目** | **价值** |
+| **项** | **值** |
 |------------|-----------------|
 | VLAN | 712 |
 | CIDR| 10.200.15.0/24 |
@@ -108,7 +108,7 @@ ms.locfileid: "77083229"
 
 以下步骤演示如何获取 IPsec 和 L2VPN 服务的 Tier0 DR 逻辑路由器实例的逻辑路由器 ID。 实现 L2VPN 时，稍后将需要逻辑路由器 ID。
 
-1. 登录到 NSX-T 管理器https://*nsx-t-manager-ip 地址*，然后选择**网络** > **路由器** > **提供商-LR** > **概述**。 对于**高可用性模式**，选择 **"活动待机**"。 此操作将打开一个弹出窗口，该窗口显示第 0 层路由器当前处于活动状态的边缘 VM。
+1. 登录到 NSX-T 管理器`https://*nsx-t-manager-ip-address*`并选择**网络** > **路由器** > **提供商-LR** > **概述**。 对于**高可用性模式**，选择 **"活动待机**"。 此操作将打开一个弹出窗口，该窗口显示第 0 层路由器当前处于活动状态的边缘 VM。
 
     ![选择活动待机](media/l2vpn-fetch01.png)
 
@@ -154,16 +154,16 @@ ms.locfileid: "77083229"
 
 ### <a name="advertise-the-loopback-interface-ip-to-the-underlay-network"></a>通告环回接口 IP 到底层网络
 
-1. 为环回接口网络创建空路由。 登录到 NSX-T 管理器并选择**网络** > **路由** > **路由器** > **提供商-LR** > **路由** > **静态路由**。 单击 **“添加”**。 对于**网络**，输入回环接口 IP 地址。 对于**下一个跃点**，单击 **"添加**"，为下一个跃点指定"Null"，并为"管理员距离"保留默认值 1。
+1. 为环回接口网络创建空路由。 登录到 NSX-T 管理器并选择**网络** > **路由** > **路由器** > **提供商-LR** > **路由** > **静态路由**。 单击“添加”  。 对于**网络**，输入回环接口 IP 地址。 对于**下一个跃点**，单击 **"添加**"，为下一个跃点指定"Null"，并为"管理员距离"保留默认值 1。
 
     ![添加静态路由](media/l2vpn-routing-security01.png)
 
-2. 创建 IP 前缀列表。 登录到 NSX-T 管理器并选择**网络** > **路由** > **路由器** > **提供商-LR** > **路由** > **IP 前缀列表**。 单击 **“添加”**。 输入名称以标识列表。 对于**前缀**，单击"**添加**"两次。 在第一行中，输入"0.0.0.0/0"为 **"网络**"和"拒绝"**为操作**。 在第二行中，选择 **"任意**为**网络和****操作许可**"。 **Action**
+2. 创建 IP 前缀列表。 登录到 NSX-T 管理器并选择**网络** > **路由** > **路由器** > **提供商-LR** > **路由** > **IP 前缀列表**。 单击“添加”  。 输入名称以标识列表。 对于**前缀**，单击"**添加**"两次。 在第一行中，输入"0.0.0.0/0"为 **"网络**"和"拒绝"**为操作**。 在第二行中，选择 **"任意**为**网络和****操作许可**"。 **Action**
 3. 将 IP 前缀列表附加到两个 BGP 邻居 （TOR）。 将 IP 前缀列表附加到 BGP 邻居可防止在 BGP 中通告默认路由到 TOR 交换机。 但是，包含空路由的任何其他路由都将通告回环接口 IP 地址到 TOR 交换机。
 
     ![创建 IP 前缀列表](media/l2vpn-routing-security02.png)
 
-4. 登录到 NSX-T 管理器并选择**网络** > **路由** > **路由器** > **提供商-LR** > **路由** > **BGP** > **邻居**。 选择第一个邻居。 单击 **"编辑** > **地址族**"。 对于 IPv4 系列，编辑 **"退出筛选器"** 列并选择您创建的 IP 前缀列表。 单击“保存”。**** 对第二个邻居重复此步骤。
+4. 登录到 NSX-T 管理器并选择**网络** > **路由** > **路由器** > **提供商-LR** > **路由** > **BGP** > **邻居**。 选择第一个邻居。 单击 **"编辑** > **地址族**"。 对于 IPv4 系列，编辑 **"退出筛选器"** 列并选择您创建的 IP 前缀列表。 单击“ **保存**”。 对第二个邻居重复此步骤。
 
     ![附加 IP 前](media/l2vpn-routing-security03.png)![缀列表 1 附加 IP 前缀列表 2](media/l2vpn-routing-security04.png)
 
@@ -180,7 +180,7 @@ ms.locfileid: "77083229"
 ```
 Loopback interface ip : 192.168.254.254/32
 Tunnel interface subnet : 5.5.5.0/29
-Logical-router ID : UUID of Tier0 DR logical router obtained in section “Steps to fetch Logical-Router ID needed for L2VPN”
+Logical-router ID : UUID of Tier0 DR logical router obtained in section "Steps to fetch Logical-Router ID needed for L2VPN"
 Logical-switch ID(Stretch) : UUID of Stretch Logical Switch obtained earlier
 IPSec Service ID :
 IKE profile ID :
@@ -356,7 +356,7 @@ POST : https://192.168.110.201/api/v1/vpn/l2vpn/services
 
 对于以下 POST 命令，L2VPN 服务 ID 是您刚刚获得的 ID，IPsec VPN 会话 ID 是上一节中获得的 ID。
 
-``` 
+```    
 POST: https://192.168.110.201/api/v1/vpn/l2vpn/sessions
 
 {
@@ -428,7 +428,7 @@ GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes
 
     ![下载独立的 NSX 边缘客户端](media/l2vpn-deploy-client01.png)
 
-2. 转到包含所有提取文件的文件夹。 选择适用于大型设备尺寸或 NSX-l2t-客户端-Xlarge.mf 和 NSX-l2t-客户端-大.ovf 的所有 vmdks（NSX-l2t-客户端-大.mf 和 NSX-l2t-客户端-Xlarge.ovf，用于超大设备大小）。 单击“下一步”****。
+2. 转到包含所有提取文件的文件夹。 选择适用于大型设备尺寸或 NSX-l2t-客户端-Xlarge.mf 和 NSX-l2t-客户端-大.ovf 的所有 vmdks（NSX-l2t-客户端-大.mf 和 NSX-l2t-客户端-Xlarge.ovf，用于超大设备大小）。 单击“下一步”。 
 
     ![选择模板](media/l2vpn-deploy-client02.png)![选择模板](media/l2vpn-deploy-client03.png)
 
@@ -440,7 +440,7 @@ GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes
 
     ![选择数据存储](media/l2vpn-deploy-client06.png)
 
-5. 为 NSX-T 独立客户端选择中继 （Trunk PG）、公共（上行链路 PG） 和 HA 接口 （上行 PG） 的正确端口组。 单击“下一步”****。
+5. 为 NSX-T 独立客户端选择中继 （Trunk PG）、公共（上行链路 PG） 和 HA 接口 （上行 PG） 的正确端口组。 单击“下一步”。 
 
     ![选择端口组](media/l2vpn-deploy-client07.png)
 

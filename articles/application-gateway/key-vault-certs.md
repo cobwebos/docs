@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: be558c3e3a68ce6c194dcf98d8f5ff92c4c14edb
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 934cf854b0c526ed994c7dc91763f65de64fd14b
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457818"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617504"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>使用密钥保管库证书的 TLS 终止
 
@@ -47,7 +47,10 @@ ms.locfileid: "81457818"
 
 1. **配置密钥保管库**
 
-   然后导入现有的证书，或者在密钥保管库中创建新证书。 此证书将供通过应用程序网关的应用程序使用。 在此步骤中，也可使用密钥保管库机密，该机密作为无密码的 base 64 编码的 PFX 文件存储。 我们建议使用证书类型是因为适用于密钥保管库中证书类型对象的自动续订功能。 在创建证书或机密以后，即可在密钥保管库中定义访问策略，此类策略允许为标识授予对机密的“获取”** 访问权限。
+   然后导入现有的证书，或者在密钥保管库中创建新证书。 此证书将供通过应用程序网关的应用程序使用。 在此步骤中，您还可以使用密钥保管库密钥库密钥，该密钥保管库密钥作为无密码、base-64 编码的 PFX 文件存储。 我们建议使用证书类型是因为适用于密钥保管库中证书类型对象的自动续订功能。 在创建证书或机密以后，即可在密钥保管库中定义访问策略，此类策略允许为标识授予对机密的“获取”** 访问权限。
+   
+   > [!NOTE]
+   > 如果通过 ARM 模板（通过使用 Azure CLI 或 PowerShell）或通过从 Azure 门户部署的 Azure 应用程序部署应用程序网关，则作为基 64 编码 PFX 文件存储在密钥保管库中的 SSL 证书**必须无密码**。 此外，还必须完成使用 Azure[密钥保管库中的步骤，以在部署期间传递安全参数值](../azure-resource-manager/templates/key-vault-parameter.md)。 设置`enabledForTemplateDeployment`这一点尤为重要`true`。
 
 1. **配置应用程序网关**
 

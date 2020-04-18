@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/28/2020
-ms.openlocfilehash: 39d1f15b771168b618bfbc4951f2036a8b95b027
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8420cba043e7fc9285b473b877f0ff10212e9fda
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418450"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605326"
 ---
 # <a name="what-are-mapping-data-flows"></a>映射数据流是什么？
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 映射数据流是在 Azure 数据工厂中直观地设计的数据转换。 数据流允许数据工程师无需编写代码即可开发图形数据转换逻辑。 生成的数据流作为使用横向扩展的 Apache Spark 群集的 Azure 数据工厂管道中的活动执行。 数据流活动可以通过现有的数据工厂调度、控制、流和监视功能进行。
 
@@ -37,7 +37,7 @@ ms.locfileid: "81418450"
 
 ![Canvas](media/data-flow/canvas1.png "Canvas")
 
-### <a name="graph"></a>图形
+### <a name="graph"></a>Graph
 
 该图显示转换流。 它显示源数据的沿线，因为它流入一个或多个接收器。 要添加新源，请选择"**添加源**"。 要添加新转换，请选择现有转换右下角的加号。
 
