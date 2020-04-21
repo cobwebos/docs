@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 门户创建数据工厂管道
-description: 本教程分步说明了如何使用 Azure 门户创建带管道的数据工厂。 该管道通过复制活动将数据从 Azure Blob 存储复制到 SQL 数据库。
+description: 本教程分步说明了如何使用 Azure 门户创建带管道的数据工厂。 该管道通过复制活动将数据从 Azure Blob 存储复制到 Azure SQL 数据库。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,17 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 06/21/2018
+ms.date: 04/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 135a18f275137e72b5ff4d79f6a32bd39bd9c00c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 655a98ef1b6b8b2d4086b472ee7ce4d67346e5ca
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75977409"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418699"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂，将数据从 Azure Blob 存储复制到 SQL 数据库
-在本教程中，请使用 Azure 数据工厂用户界面 (UI) 创建数据工厂。 此数据工厂中的管道将数据从 Azure Blob 存储复制到 SQL 数据库。 本教程中的配置模式适用于从基于文件的数据存储复制到关系数据存储。 如需可以用作源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
+在本教程中，请使用 Azure 数据工厂用户界面 (UI) 创建数据工厂。 此数据工厂中的管道将数据从 Azure Blob 存储复制到 Azure SQL 数据库。 本教程中的配置模式适用于从基于文件的数据存储复制到关系数据存储。 如需可以用作源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 > [!NOTE]
 > - 如果对数据工厂不熟悉，请参阅 [Azure 数据工厂简介](introduction.md)。
@@ -38,7 +41,7 @@ ms.locfileid: "75977409"
 ## <a name="prerequisites"></a>先决条件
 * **Azure 订阅**。 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * **Azure 存储帐户**。 可将 Blob 存储用作  源数据存储。 如果没有存储帐户，请参阅[创建 Azure 存储帐户](../storage/common/storage-account-create.md)以获取创建步骤。
-* **Azure SQL 数据库**。 将数据库用作  接收器数据存储。 如果没有 SQL 数据库，请参阅[创建 SQL 数据库](../sql-database/sql-database-get-started-portal.md)，了解创建该数据库的步骤。
+* **Azure SQL 数据库**。 将数据库用作  接收器数据存储。 如果没有 Azure SQL 数据库，请参阅[创建 SQL 数据库](../sql-database/sql-database-get-started-portal.md)，了解创建该数据库的步骤。
 
 ### <a name="create-a-blob-and-a-sql-table"></a>创建 blob 和 SQL 表
 
@@ -49,6 +52,7 @@ ms.locfileid: "75977409"
 1. 启动记事本。 复制以下文本并将其在磁盘上另存为 **emp.txt** 文件：
 
     ```
+    FirstName,LastName
     John,Doe
     Jane,Doe
     ```
@@ -77,10 +81,7 @@ ms.locfileid: "75977409"
 在此步骤中，请先创建数据工厂，然后启动数据工厂 UI，在该数据工厂中创建一个管道。
 
 1. 打开 **Microsoft Edge** 或 **Google Chrome**。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
-2. 在左侧菜单中，选择“创建资源” > “分析” > “数据工厂”：   
-
-   ![在“新建”窗格中选择“数据工厂”](./media/doc-common-process/new-azure-data-factory-menu.png)
-
+2. 在左侧菜单中，选择“创建资源”   > “Analytics”   > “数据工厂”  。
 3. 在“新建数据工厂”  页的“名称”下输入 **ADFTutorialDataFactory**  。
 
    Azure 数据工厂的名称必须 *全局唯一*。 如果收到有关名称值的错误消息，请为数据工厂输入另一名称。 （例如 yournameADFTutorialDataFactory）。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
@@ -121,33 +122,38 @@ ms.locfileid: "75977409"
 
 ### <a name="configure-source"></a>配置源
 
+>[!TIP]
+>本教程使用“帐户密钥”  作为源数据存储的身份验证类型，但你可以根据需要选择其他受支持的身份验证方法：“SAS URI”  、“服务主体”  和“托管标识”  。 有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#linked-service-properties)中的相应部分。
+>为了安全地存储数据存储的机密，我们还建议使用 Azure Key Vault。 有关详细说明，请参阅[此文](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)。
+
 1. 转到“源”选项卡。  选择“+ 新建”创建源数据集。 
 
 1. 在“新建数据集”对话框中选择“Azure Blob 存储”，然后选择“继续”。    源数据位于 Blob 存储中，因此选择“Azure Blob 存储”作为源数据集。 
 
 1. 在“选择格式”对话框中选择数据的格式类型，然后选择“继续”。  
 
-    ![数据格式类型](./media/doc-common-process/select-data-format.png)
+1. 在“设置属性”对话框中，输入 **SourceBlobDataset** 作为名称。  选中“第一行作为标题”  复选框。 在“链接服务”文本框下，选择“+ 新建”。  
 
-1. 在“设置属性”对话框中，输入 **SourceBlobDataset** 作为名称。  在“链接服务”文本框旁边，选择“+ 新建”。  
-
-1. 在“新建链接服务(Azure Blob 存储)”窗口中，输入 **AzureStorageLinkedService** 作为名称，从“存储帐户名称”列表中选择你的存储帐户。   测试连接，然后选择“完成”以部署该链接服务。 
+1. 在“新建链接服务(Azure Blob 存储)”窗口中，输入 **AzureStorageLinkedService** 作为名称，从“存储帐户名称”列表中选择你的存储帐户。   测试连接，选择“创建”以部署该链接服务。 
 
 1. 创建链接服务后，会导航回到“设置属性”页。  在“文件路径”旁边，选择“浏览”。  
 
-1. 导航到 **adftutorial/input** 文件夹，选择 **emp.txt** 文件，然后选择“完成”  。
+1. 导航到 adftutorial/input  文件夹，选择 emp.txt  文件，然后选择“确定”  。
 
-1. 将自动导航到管道页。 在“源”选项卡中，确认已选择“SourceBlobDataset”。   若要预览此页上的数据，请选择“预览数据”  。
+1. 选择“确定”  。 将自动导航到管道页。 在“源”选项卡中，确认已选择“SourceBlobDataset”。   若要预览此页上的数据，请选择“预览数据”  。
 
     ![源数据集](./media/tutorial-copy-data-portal/source-dataset-selected.png)
 
 ### <a name="configure-sink"></a>配置接收器
+>[!TIP]
+>本教程使用“SQL 身份验证”  作为接收器数据存储的身份验证类型，但你可以根据需要选择其他受支持的身份验证方法：“服务主体”  和“托管标识”  。 有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#linked-service-properties)中的相应部分。
+>为了安全地存储数据存储的机密，我们还建议使用 Azure Key Vault。 有关详细说明，请参阅[此文](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)。
 
 1. 转到“接收器”选项卡，选择“+ 新建”，创建一个接收器数据集。  
 
 1. 在“新建数据集”对话框中的搜索框内输入“SQL”来筛选连接器，选择“Azure SQL 数据库”，然后选择“继续”。    在本教程中，请将数据复制到 SQL 数据库。
 
-1. 在“设置属性”对话框中，输入 **OutputSqlDataset** 作为名称。  在“链接服务”文本框旁边，选择“+ 新建”。   数据集必须与链接服务相关联。 该链接服务包含的连接字符串可供数据工厂用于在运行时连接到 SQL 数据库。 数据集指定可将数据复制到其中的容器、文件夹和文件（可选）。
+1. 在“设置属性”对话框中，输入 **OutputSqlDataset** 作为名称。  从“链接服务”  下拉列表中，选择“+ 新建”  。 数据集必须与链接服务相关联。 该链接服务包含的连接字符串可供数据工厂用于在运行时连接到 SQL 数据库。 数据集指定可将数据复制到其中的容器、文件夹和文件（可选）。
 
 1. 在“新建链接服务(Azure SQL 数据库)”对话框中执行以下步骤： 
 
@@ -163,17 +169,17 @@ ms.locfileid: "75977409"
 
     f. 选择“测试连接”  以测试连接。
 
-    g. 选择“完成”以部署该链接服务。 
+    g. 选择“创建”以部署链接服务。 
 
     ![保存新建链接服务](./media/tutorial-copy-data-portal/new-azure-sql-linked-service-window.png)
 
-1. 将自动导航到“设置属性”对话框。  在“表”中选择“[dbo].[emp]”。   然后选择“完成”  。
+1. 将自动导航到“设置属性”对话框。  在“表”中选择“[dbo].[emp]”。   然后选择“确定”。 
 
 1. 转到包含管道的选项卡。在“接收器数据集”中，确认已选中“OutputSqlDataset”。  
 
     ![“管道”选项卡](./media/tutorial-copy-data-portal/pipeline-tab-2.png)       
 
-可以选择通过按照[复制活动中的架构映射](copy-activity-schema-and-type-mapping.md)中所述操作将源架构映射到对应的目标架构
+可以选择按照[复制活动中的架构映射](copy-activity-schema-and-type-mapping.md)中所述将源架构映射到对应的目标架构。
 
 ## <a name="validate-the-pipeline"></a>验证管道
 若要验证管道，请从工具栏中选择“验证”  。
@@ -192,15 +198,15 @@ ms.locfileid: "75977409"
 ## <a name="trigger-the-pipeline-manually"></a>手动触发管道
 在此步骤中，请手动触发在前面的步骤中发布的管道。
 
-1. 选择工具栏中的“添加触发器”，然后选择“立即触发”。   在“管道运行”页上选择“完成”。    
+1. 选择工具栏中的“触发器”，然后选择“立即触发”。   在“管道运行”页上，选择“确定”。    
 
-1. 转到左侧的“监视”选项卡。  此时会看到由手动触发器触发的管道运行。 可以使用“操作”列中的链接来查看活动详细信息以及重新运行该管道。 
+1. 转到左侧的“监视”选项卡。  此时会看到由手动触发器触发的管道运行。 可以使用“管道名称”列下的链接来查看活动详细信息以及重新运行该管道。 
 
-    ![监视管道运行](./media/tutorial-copy-data-portal/monitor-pipeline.png)
+    [![监视管道运行](./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png)](./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png#lightbox)
 
-1. 若要查看与管道运行关联的活动运行，请选择“操作”列中的“查看活动运行”链接。   此示例中只有一个活动，因此列表中只看到一个条目。 有关复制操作的详细信息，请选择“操作”列中的“详细信息”链接（眼镜图标）。   若要回到“管道运行”视图，请选择顶部的“管道运行”  。 若要刷新视图，请选择“刷新”。 
+1. 若要查看与管道运行关联的活动运行，请选择“管道名称”  列下的“CopyPipeline”  链接。 此示例中只有一个活动，因此列表中只看到一个条目。 有关复制操作的详细信息，请选择“活动名称”列下的“详细信息”链接（眼镜图标）。   选择顶部的“所有管道运行”，回到“管道运行”视图  。 若要刷新视图，请选择“刷新”。 
 
-    ![监视活动运行](./media/tutorial-copy-data-portal/view-activity-runs.png)
+    [![监视活动运行](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png#lightbox)
 
 1. 验证是否又向 SQL 数据库的 **emp** 表添加了两个行。
 
@@ -209,9 +215,9 @@ ms.locfileid: "75977409"
 
 1. 转到左侧位于“监视器”选项卡上方的“创作”选项卡。 
 
-1. 转到你的管道，在工具栏上单击“添加触发器”，然后选择“新建/编辑”。  
+1. 转到你的管道，在工具栏上单击“触发器”，然后选择“新建/编辑”。  
 
-1. 在“添加触发器”对话框中，在“选择触发器”区域选择“+ 新建”。   
+1. 在“添加触发器”对话框中，针对“选择触发器”区域选择“+ 新建”。   
 
 1. 在“新建触发器”  窗口中，执行以下步骤：
 
@@ -225,25 +231,24 @@ ms.locfileid: "75977409"
 
     e. 更新“结束时间”部分，使之超过当前的日期/时间数分钟。  触发器只会在发布所做的更改后激活。 如果将其设置为仅数分钟后激活，而到时又不进行发布，则看不到触发器运行。
 
-    f. 选择“应用”。 
+    f. 选择“确定”  。
 
     g. 对于“已激活”选项，请选择“是”。  
 
-    h. 选择“**下一页**”。
-
-    ![“已激活”按钮](./media/tutorial-copy-data-portal/trigger-activiated-next.png)
+    h. 选择“确定”  。
 
     > [!IMPORTANT]
     > 每个管道运行都有相关联的成本，因此请正确设置结束日期。
-1. 在“触发器运行参数”页中查看以下警告，然后选择“完成”。   此示例中的管道不采用任何参数。
 
-1. 单击“全部发布”  来发布更改。
+1. 在“编辑触发器”页中查看警告，然后选择“保存”。   此示例中的管道不采用任何参数。
+
+1. 单击“全部发布”  ，发布所做的更改。
 
 1. 转到左侧的“监视”选项卡，查看触发的管道运行。 
 
-    ![触发的管道运行](./media/tutorial-copy-data-portal/triggered-pipeline-runs.png)   
+    [![触发的管道运行](./media/tutorial-copy-data-portal/triggered-pipeline-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/triggered-pipeline-runs-inline-and-expended.png#lightbox)
 
-1. 若要从“管道运行”视图切换到“触发器运行”视图，请选择窗口顶部的“触发器运行”。   
+1. 若要从“管道运行”视图切换到“触发器运行”视图，请选择窗口左侧的“触发器运行”。   
 
 1. 可以在列表中看到触发器运行。
 

@@ -1,6 +1,6 @@
 ---
 title: 教程 - 使用 Azure Databricks 执行 ETL 操作
-description: 本教程介绍如何将数据从 Data Lake Storage Gen2 提取到 Azure Databricks 中，对数据进行转换，然后将数据加载到 Azure SQL 数据仓库中。
+description: 本教程介绍如何将数据从 Data Lake Storage Gen2 提取到 Azure Databricks 中，对数据进行转换，然后将数据加载到 Azure Synapse Analytics 中。
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
@@ -8,22 +8,22 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: 8819b79a105b7a654a34e47c5ba9b3d351a1d926
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: fa7750a6e7888b6ca13c1ec32cabee9bcf803e65
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239419"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382725"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>教程：使用 Azure Databricks 提取、转换和加载数据
 
-本教程使用 Azure Databricks 执行 ETL（提取、转换和加载数据）操作。 将数据从 Azure Data Lake Storage Gen2 提取到 Azure Databricks 中，在 Azure Databricks 中对数据运行转换操作，并将转换的数据加载到 Azure SQL 数据仓库中。
+本教程使用 Azure Databricks 执行 ETL（提取、转换和加载数据）操作。 将数据从 Azure Data Lake Storage Gen2 提取到 Azure Databricks 中，在 Azure Databricks 中对数据运行转换操作，然后将转换的数据加载到 Azure Synapse Analytics 中。
 
-本教程中的步骤使用 Azure Databricks 的 SQL 数据仓库连接器将数据传输到 Azure Databricks。 而此连接器又使用 Azure Blob 存储来临时存储在 Azure Databricks 群集和 Azure SQL 数据仓库之间传输的数据。
+本教程中的步骤使用 Azure Databricks 的 Azure Synapse 连接器将数据传输到 Azure Databricks。 而此连接器又使用 Azure Blob 存储来临时存储在 Azure Databricks 群集和 Azure Synapse 之间传输的数据。
 
 下图演示了应用程序流：
 
-![Azure Databricks 与 Data Lake Store 和 SQL 数据仓库](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Azure Databricks 与 Data Lake Store 和 SQL 数据仓库")
+![Azure Databricks 与 Data Lake Store 和 Azure Synapse](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Azure Databricks 与 Data Lake Store 和 Azure Synapse")
 
 本教程涵盖以下任务：
 
@@ -35,9 +35,9 @@ ms.locfileid: "80239419"
 > * 创建服务主体。
 > * 从 Azure Data Lake Storage Gen2 帐户中提取数据。
 > * 在 Azure Databricks 中转换数据。
-> * 将数据载入 Azure SQL 数据仓库。
+> * 将数据加载到 Azure Synapse 中。
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!Note]
 > 不能使用 Azure 免费试用订阅完成本教程  。
@@ -47,9 +47,9 @@ ms.locfileid: "80239419"
 
 在开始本教程之前，完成以下任务：
 
-* 以服务器管理员身份创建 Azure SQL 数据仓库、创建服务器级防火墙规则并连接到服务器。请参阅[快速入门：在 Azure 门户中创建和查询 Azure SQL 数据仓库](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)。
+* 以服务器管理员身份创建 Azure Synapse、创建服务器级防火墙规则并连接到服务器。请参阅[快速入门：使用 Azure 门户创建并查询 Synapse SQL 池](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)。
 
-* 为 Azure SQL 数据仓库创建主密钥。 请参阅[创建数据库主密钥](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key)。
+* 为 Azure Synapse 创建主密钥。 请参阅[创建数据库主密钥](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key)。
 
 * 创建 Azure Blob 存储帐户并在其中创建容器。 另外，请检索用于访问该存储帐户的访问密钥。 请参阅[快速入门：使用 Azure 门户上传、下载和列出 Blob](../storage/blobs/storage-quickstart-blobs-portal.md)。
 
@@ -63,7 +63,7 @@ ms.locfileid: "80239419"
 
       如果想使用访问控制列表 (ACL) 来关联服务主体和特定的文件或目录，请参考 [Azure Data Lake Storage Gen2 中的访问控制](../storage/blobs/data-lake-storage-access-control.md)。
 
-   * 执行本文中[获取用于登录的值](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)部分中的步骤时，请将租户 ID、应用 ID 和机密值粘贴到文本文件中。 很快就会需要这些值。
+   * 执行本文中[获取用于登录的值](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)部分中的步骤时，请将租户 ID、应用 ID 和机密值粘贴到文本文件中。
 
 * 登录 [Azure 门户](https://portal.azure.com/)。
 
@@ -73,7 +73,7 @@ ms.locfileid: "80239419"
 
    在开始之前，应具有以下这些信息项：
 
-   :heavy_check_mark:Azure SQL 数据仓库的数据库名称、数据库服务器名称、用户名和密码。
+   :heavy_check_mark:Azure Synapse 的数据库名称、数据库服务器名称、用户名和密码。
 
    :heavy_check_mark:blob 存储帐户的访问密钥。
 
@@ -316,11 +316,11 @@ ms.locfileid: "80239419"
    +---------+----------+------+--------------------+-----------------+
    ```
 
-## <a name="load-data-into-azure-sql-data-warehouse"></a>将数据加载到 Azure SQL 数据仓库
+## <a name="load-data-into-azure-synapse"></a>将数据加载到 Azure Synapse 中
 
-在此部分，请将转换的数据上传到 Azure SQL 数据仓库中。 使用适用于 Azure Databricks 的 Azure SQL 数据仓库连接器直接上传 dataframe，在 SQL 数据仓库中作为表来存储。
+在本部分，请将转换的数据上传到 Azure Synapse 中。 使用适用于 Azure Databricks 的 Azure Synapse 连接器直接上传数据帧，在 Azure Synapse 池中作为表来存储。
 
-如前所述，SQL 数据仓库连接器使用 Azure Blob 存储作为临时存储，以便将数据从 Azure Databricks 上传到 Azure SQL 数据仓库。 因此，一开始请提供连接到存储帐户所需的配置。 必须已经按照本文先决条件部分的要求创建了帐户。
+如前所述，Azure Synapse 连接器使用 Azure Blob 存储作为临时存储，以便将数据从 Azure Databricks 上传到 Azure Synapse。 因此，一开始请提供连接到存储帐户所需的配置。 必须已经按照本文先决条件部分的要求创建了帐户。
 
 1. 提供从 Azure Databricks 访问 Azure 存储帐户所需的配置。
 
@@ -330,7 +330,7 @@ ms.locfileid: "80239419"
    val blobAccessKey =  "<access-key>"
    ```
 
-2. 指定一个在 Azure Databricks 和 Azure SQL 数据仓库之间移动数据时需要使用的临时文件夹。
+2. 指定一个在 Azure Databricks 和 Azure Synapse 之间移动数据时需要使用的临时文件夹。
 
    ```scala
    val tempDir = "wasbs://" + blobContainer + "@" + blobStorage +"/tempDirs"
@@ -343,10 +343,10 @@ ms.locfileid: "80239419"
    sc.hadoopConfiguration.set(acntInfo, blobAccessKey)
    ```
 
-4. 提供连接到 Azure SQL 数据仓库实例所需的值。 必须已经将 SQL 数据仓库作为先决条件创建。 为 dwServer 使用完全限定的服务器名称  。 例如，`<servername>.database.windows.net` 。
+4. 提供连接到 Azure Synapse 实例所需的值。 先决条件是必须已创建 Azure Synapse Analytics 服务。 为 dwServer 使用完全限定的服务器名称  。 例如，`<servername>.database.windows.net` 。
 
    ```scala
-   //SQL Data Warehouse related settings
+   //Azure Synapse related settings
    val dwDatabase = "<database-name>"
    val dwServer = "<database-server-name>"
    val dwUser = "<user-name>"
@@ -357,7 +357,7 @@ ms.locfileid: "80239419"
    val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ":" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
    ```
 
-5. 运行以下代码片段来加载转换的 dataframe **renamedColumnsDF**，在 SQL 数据仓库中作为表来存储。 此代码片段在 SQL 数据库中创建名为 **SampleTable** 的表。
+5. 运行以下代码片段来加载转换的数据帧 renamedColumnsDF  ，在 Azure Synapse 中将其存储为表。 此代码片段在 SQL 数据库中创建名为 **SampleTable** 的表。
 
    ```scala
    spark.conf.set(
@@ -368,9 +368,9 @@ ms.locfileid: "80239419"
    ```
 
    > [!NOTE]
-   > 此示例使用 `forward_spark_azure_storage_credentials` 标志，该标志导致 SQL 数据仓库使用访问密钥访问 blob 存储中的数据。 这是唯一支持的身份验证方法。
+   > 此示例使用 `forward_spark_azure_storage_credentials` 标志，Azure Synapse 可以根据该标志使用访问密钥访问 blob 存储中的数据。 这是唯一支持的身份验证方法。
    >
-   > 如果将 Azure Blob 存储限制为选择虚拟网络，则 SQL 数据仓库需要[托管服务标识，而不是访问密钥](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 这将导致错误“此请求无权执行此操作”。
+   > 如果将 Azure Blob 存储限制为特选虚拟网络，则 Azure Synapse 需要[托管服务标识而非访问密钥](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 这将导致错误“此请求无权执行此操作”。
 
 6. 连接到 SQL 数据库，验证是否看到名为 **SampleTable** 的数据库。
 
@@ -398,7 +398,7 @@ ms.locfileid: "80239419"
 > * 在 Azure Databricks 中创建 Notebook
 > * 从 Data Lake Storage Gen2 帐户提取数据
 > * 在 Azure Databricks 中转换数据
-> * 将数据加载到 Azure SQL 数据仓库
+> * 将数据加载到 Azure Synapse 中
 
 请继续学习下一教程，了解如何使用 Azure 事件中心将实时数据流式传输到 Azure Databricks 中。
 
