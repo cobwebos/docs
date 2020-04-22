@@ -3,16 +3,16 @@ title: 常见成本分析在 Azure 成本管理中的使用
 description: 本文介绍如何在 Azure 成本管理中获取常见成本分析任务的结果。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/31/2020
+ms.date: 04/10/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: a333cad51e6fc089e7e6994c7b89210b12686cd5
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 2e0e222e636f694328835e20fda97deca1d9986a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520883"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261478"
 ---
 # <a name="common-cost-analysis-uses"></a>常见成本分析的使用
 
@@ -28,7 +28,18 @@ Azure 成本管理用户通常需要那些对许多其他人提出的问题的�
 
 [![按 Azure 服务提供的成本细分](./media/cost-analysis-common-uses/breakdown-by-service.png)](./media/cost-analysis-common-uses/breakdown-by-service.png#lightbox)
 
-## <a name="view-cost-breakdown-by-azure-resource"></a>查看按 Azure 资源提供的成本细分
+## <a name="review-invoiced-charges-in-cost-analysis"></a>在成本分析中查看已开票费用
+
+若要在 Azure 门户中查看发票详细信息，请导航到“成本分析”，查找与要分析的发票相关的范围。 选择“发票详细信息”  视图。 发票详细信息会显示发票上的费用。
+
+[![显示发票详细信息的示例](./media/cost-analysis-common-uses/invoice-details.png)](./media/cost-analysis-common-uses/invoice-details.png#lightbox)
+
+查看发票详细信息即可在成本分析中确定具有意外成本的服务，并确定与该资源直接关联的资源。 例如，若要分析虚拟机服务的费用，请导航到“累计成本”  视图。 然后，将粒度设为“每日”  并筛选费用“服务名称:  虚拟机”费用，然后按“资源”  将费用分组。
+
+[![显示了虚拟机累计成本的示例](./media/cost-analysis-common-uses/virtual-machines.png)](./media/cost-analysis-common-uses/virtual-machines.png#lightbox)
+
+
+## <a name="view-cost-breakdown-by-azure-resource"></a>查看按 Azure 资源进行的成本细分
 
 服务是用 Azure 资源生成的。 查看基于资源的成本有助于快速确定主要的成本贡献者。 如果服务的资源太昂贵，可以考虑进行更改以降低成本。
 

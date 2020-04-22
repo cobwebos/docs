@@ -1,6 +1,6 @@
 ---
-title: 教程：Azure Active Directory 单一登录 (SSO) 与 Logz.io - Cloud Observability for Engineers 的集成 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 和 Logz.io - Cloud Observability for Engineers 之间配置单一登录。
+title: 教程：Azure Active Directory 单一登录 (SSO) 与 Logz.io - Azure AD Integration 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 与 Logz.io - Azure AD Integration 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,22 +12,22 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/26/2020
+ms.date: 04/08/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de1c929ffa790d2abe3a1922cecc2175cd7a8e12
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: e192a8e97e82ba26ffa7527cb12219aeaf2a80cd
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385269"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259419"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-logzio---cloud-observability-for-engineers"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Logz.io - Cloud Observability for Engineers 的集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-logzio---azure-ad-integration"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Logz.io - Azure AD Integration 的集成
 
-本教程介绍如何将 Logz.io - Cloud Observability for Engineers 与 Azure Active Directory (Azure AD) 集成。 将 Logz.io - Cloud Observability for Engineers 与 Azure AD 集成后，可以：
+本教程介绍如何将 Logz.io - Azure AD Integration 与 Azure Active Directory (Azure AD) 集成。 将 Logz.io - Azure AD Integration 与 Azure AD 集成后，可以：
 
-* 在 Azure AD 中控制谁有权访问 Logz.io - Cloud Observability for Engineers。
-* 让用户使用其 Azure AD 帐户自动登录到 Logz.io - Cloud Observability for Engineers。
+* 在 Azure AD 中控制谁有权访问 Logz.io - Azure AD Integration。
+* 让用户使用其 Azure AD 帐户自动登录到 Logz.io - Azure AD Integration。
 * 在一个中心位置（Azure 门户）管理帐户。
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
@@ -37,44 +37,44 @@ ms.locfileid: "80385269"
 若要开始操作，需备齐以下项目：
 
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
-* 启用了单一登录 (SSO) 的 Logz.io - Cloud Observability for Engineers 订阅。
+* 启用了单一登录 (SSO) 的 Logz.io - Azure AD Integration 订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Logz.io - Cloud Observability for Engineers 支持 **IDP** 发起的 SSO
-* 配置 Logz.io - Cloud Observability for Engineers 后，就可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* Logz.io - Azure AD Integration 支持 IDP 发起的 SSO 
+* 配置 Logz.io - Azure AD Integration 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
-## <a name="adding-logzio---cloud-observability-for-engineers-from-the-gallery"></a>从库中添加 Logz.io - Cloud Observability for Engineers
+## <a name="adding-logzio---azure-ad-integration-from-the-gallery"></a>从库中添加 Logz.io - Azure AD Integration
 
-若要配置 Logz.io - Cloud Observability for Engineers 与 Azure AD 的集成，需要从库中将 Logz.io - Cloud Observability for Engineers 添加到托管 SaaS 应用列表。
+若要配置 Logz.io - Azure AD Integration 与 Azure AD 的集成，需要从库中将 Logz.io - Azure AD Integration 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **Logz.io - Cloud Observability for Engineers**。 
-1. 在结果面板中选择“Logz.io - Cloud Observability for Engineers”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
+1. 在“从库中添加”部分的搜索框中，键入 Logz.io - Azure AD Integration。  
+1. 在结果面板中选择“Logz.io - Azure AD Integration”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-logzio---cloud-observability-for-engineers"></a>配置并测试 Logz.io - Cloud Observability for Engineers 的 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-single-sign-on-for-logzio---azure-ad-integration"></a>配置并测试 Logz.io - Azure AD Integration 的 Azure AD 单一登录
 
-使用名为 **B.Simon** 的测试用户为 Logz.io - Cloud Observability for Engineers 配置和测试 Azure AD SSO。 若要使 SSO 有效，需要在 Azure AD 用户与 Logz.io - Cloud Observability for Engineers 相关用户之间建立关联。
+使用名为 B.Simon 的测试用户配置并测试 Logz.io - Azure AD Integration 的 Azure AD SSO。  若要使 SSO 有效，需要在 Azure AD 用户与 Logz.io - Azure AD Integration 相关用户之间建立关联。
 
-若要为 Logz.io - Cloud Observability for Engineers 配置和测试 Azure AD SSO，请完成以下构建基块：
+若要配置并测试 Logz.io - Azure AD Integration 的 Azure AD SSO，请完成以下构建基块：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
     1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
     1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
-1. **[配置 Logz.io - Cloud Observability for Engineers SSO](#configure-logzio-cloud-observability-for-engineers-sso)** - 在应用程序端配置单一登录设置。
-    1. **[创建 Logz.io - Cloud Observability for Engineers 测试用户](#create-logzio-cloud-observability-for-engineers-test-user)** - 在 Logz.io - Cloud Observability for Engineers 中创建 Britta Simon 的对应用户，并将其关联到用户的 Azure AD 表示形式。
+1. **[配置 Logz.io - Azure AD Integration SSO](#configure-logzio-azure-ad-integration-sso)** - 在应用程序端配置单一登录设置。
+    1. **[创建 Logz.io - Azure AD Integration 测试用户](#create-logzio-azure-ad-integration-test-user)** - 在 Logz.io - Azure AD Integration 中创建 B.Simon 的对应用户，并将其关联到用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Logz.io - Cloud Observability for Engineers”应用程序集成页上，找到“管理”部分并选择“单一登录”。   
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Logz.io - Azure AD Integration”应用程序集成页上，找到“管理”部分并选择“单一登录”。   
 1. 在“选择单一登录方法”页上选择“SAML”   。
 1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
 
@@ -87,13 +87,13 @@ ms.locfileid: "80385269"
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://logzio.auth0.com/login/callback?connection=CONNECTION-NAME`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Logz.io - Cloud Observability for Engineers 客户端支持团队](mailto:help@logz.io)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Logz.io - Azure AD Integration 客户端支持团队](mailto:help@logz.io)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-1. Logz.io - Cloud Observability for Engineers 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
+1. Logz.io - Azure AD Integration 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
     ![image](common/default-attributes.png)
 
-1. 除上述属性以外，Logz.io - Cloud Observability for Engineers 应用程序还要求在 SAML 响应中传回其他几个属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
+1. 除上述属性以外，Logz.io - Azure AD Integration 应用程序还要求在 SAML 响应中传回其他几个属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
     
     | 名称 |  源属性|
     | ---------------| --------- |
@@ -105,7 +105,7 @@ ms.locfileid: "80385269"
 
     ![证书下载链接](common/certificatebase64.png)
 
-1. 在“设置 Logz.io - Cloud Observability for Engineers”部分，根据要求复制相应的 URL  。
+1. 在“设置 Logz.io - Azure AD Integration”部分，根据要求复制相应的 URL。 
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -123,10 +123,10 @@ ms.locfileid: "80385269"
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分，我们通过授予 B.Simon 访问 Logz.io - Cloud Observability for Engineers 的权限，允许她使用 Azure 单一登录。
+在本部分，你将通过授予 B.Simon 访问 Logz.io - Azure AD Integration 的权限，使其能够使用 Azure 单一登录。
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“Logz.io - Cloud Observability for Engineers”。 
+1. 在应用程序列表中选择“Logz.io - Azure AD Integration”。 
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
 
    ![“用户和组”链接](common/users-groups-blade.png)
@@ -139,19 +139,19 @@ ms.locfileid: "80385269"
 1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
-## <a name="configure-logzio-cloud-observability-for-engineers-sso"></a>配置 Logz.io Cloud Observability for Engineers SSO
+## <a name="configure-logzio-azure-ad-integration-sso"></a>配置 Logz.io - Azure AD Integration SSO
 
-若要在 **Logz.io - Cloud Observability for Engineers** 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Logz.io - Cloud Observability for Engineers 支持团队](mailto:help@logz.io)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Logz.io - Azure AD Integration 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Logz.io - Azure AD Integration 支持团队](mailto:help@logz.io)。   他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
-### <a name="create-logzio-cloud-observability-for-engineers-test-user"></a>创建 Logz.io - Cloud Observability for Engineers 测试用户
+### <a name="create-logzio-azure-ad-integration-test-user"></a>创建 Logz.io - Azure AD Integration 测试用户
 
-在本部分，我们在 Logz.io - Cloud Observability for Engineers 中创建一个名为“Britta Simon”的用户。 请与 [Logz.io - Cloud Observability for Engineers 支持团队](mailto:help@logz.io)协作，将用户添加到 Logz.io - Cloud Observability for Engineers 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分，你将在 Logz.io - Azure AD Integration 中创建名为 Britta Simon 的用户。 在  [Logz.io - Azure AD Integration 支持团队](mailto:help@logz.io)的配合下，将用户添加到 Logz.io - Azure AD Integration 平台。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Logz.io - Cloud Observability for Engineers 磁贴时，应当会自动登录到设置了 SSO 的 Logz.io - Cloud Observability for Engineers。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Logz.io - Azure AD Integration”磁贴时，应会自动登录到设置了 SSO 的 Logz.io - Azure AD Integration。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
@@ -161,9 +161,9 @@ ms.locfileid: "80385269"
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [在 Azure AD 中试用 Logz.io - Cloud Observability for Engineers](https://aad.portal.azure.com/)
+- [在 Azure AD 中试用 Logz.io - Azure AD Integration](https://aad.portal.azure.com/)
 
 - [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [如何通过高级可见性和控制保护 Logz.io - Cloud Observability for Engineers](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何使用高级可见性和控制保护 Logz.io - Azure AD Integration](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
