@@ -1,39 +1,39 @@
 ---
-title: 使用门户将旧版直接对等互连转换为 Azure 资源
+title: 使用 Azure 门户将旧版 Exchange 对等互连转换为 Azure 资源
 titleSuffix: Azure
-description: 使用门户将旧版直接对等互连转换为 Azure 资源
+description: 使用 Azure 门户将旧版 Exchange 对等互连转换为 Azure 资源
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: a40c7bbc9f37135814b7bba3396d368faf97a166
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 87a7a6bca608f1748d3b659eabdc3e941b537377
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75775194"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678546"
 ---
-# <a name="convert-a-legacy-exchange-peering-to-azure-resource-using-the-portal"></a>使用门户将旧版 Exchange 对等互连转换为 Azure 资源
+# <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-the-azure-portal"></a>使用 Azure 门户将旧版 Exchange 对等互连转换为 Azure 资源
 
-本文介绍如何使用门户将现有旧版 Exchange 对等互连转换为 Azure 资源。
+本文介绍如何使用 Azure 门户将现有旧版 Exchange 对等互连转换为 Azure 资源。
 
 如果您愿意，您可以使用[PowerShell](howto-legacy-exchange-powershell.md)完成本指南。
 
 ## <a name="before-you-begin"></a>开始之前
-* 在开始配置之前，请查看[先决条件](prerequisites.md)和[交换对等演练](walkthrough-exchange-all.md)。
+* 在开始配置之前，请查看[先决条件](prerequisites.md)和[Exchange 对等演练](walkthrough-exchange-all.md)。
 
-## <a name="convert-a-legacy-exchange-peering-to-azure-resource"></a>将旧版 Exchange 对等互连转换为 Azure 资源
+## <a name="convert-a-legacy-exchange-peering-to-an-azure-resource"></a>将旧版 Exchange 对等互连转换为 Azure 资源
 
-### <a name="sign-in-to-portal-and-select-your-subscription"></a>登录到门户并选择订阅
+### <a name="sign-in-to-the-portal-and-select-your-subscription"></a>登录到门户并选择订阅
 [!INCLUDE [Account](./includes/account-portal.md)]
 
 ### <a name="convert-legacy-exchange-peering"></a><a name=create></a>转换旧交易所对等互连
 
 您可以使用**对等互连**资源转换旧体向互连连接。
 
-#### <a name="launch-resource-and-configure-basic-settings"></a>启动资源并配置基本设置
+#### <a name="launch-the-resource-and-configure-basic-settings"></a>启动资源并配置基本设置
 [!INCLUDE [direct-peering-basic](./includes/direct-portal-basic.md)]
 
 #### <a name="configure-connections-and-submit"></a>配置连接并提交
@@ -44,7 +44,7 @@ ms.locfileid: "75775194"
 
 ## <a name="additional-resources"></a>其他资源
 
-有关详细信息，请访问[互联网对等常见问题解答](faqs.md)
+有关详细信息，请参阅[互联网对等常见问题解答](faqs.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

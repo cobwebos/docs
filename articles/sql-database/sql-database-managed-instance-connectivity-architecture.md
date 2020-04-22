@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: f30ccd498b79c36c8892ae38a3e26d169249621a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4d6098b7b4de76461e924fc7d42d039046d7ce5
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481093"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677173"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL 数据库中托管实例的连接体系结构
 
@@ -104,24 +104,24 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>采用服务辅助子网配置的必需入站安全规则 
 
-| “属性”       |端口                        |协议|源           |目标|操作|
+| 名称       |端口                        |协议|源           |目标|操作|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |管理  |9000、9003、1438、1440、1452|TCP     |SqlManagement    |MI SUBNET  |Allow |
 |            |9000、9003                  |TCP     |CorpnetSaw       |MI SUBNET  |Allow |
 |            |9000、9003                  |TCP     |公司网络公共    |MI SUBNET  |Allow |
-|mi_subnet   |Any                         |Any     |MI SUBNET        |MI SUBNET  |Allow |
-|health_probe|Any                         |Any     |AzureLoadBalancer|MI SUBNET  |Allow |
+|mi_subnet   |任意                         |Any     |MI SUBNET        |MI SUBNET  |Allow |
+|health_probe|任意                         |Any     |AzureLoadBalancer|MI SUBNET  |Allow |
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>采用服务辅助子网配置的必需出站安全规则 
 
-| “属性”       |端口          |协议|源           |目标|操作|
+| 名称       |端口          |协议|源           |目标|操作|
 |------------|--------------|--------|-----------------|-----------|------|
 |管理  |443、12000    |TCP     |MI SUBNET        |AzureCloud |Allow |
-|mi_subnet   |Any           |Any     |MI SUBNET        |MI SUBNET  |Allow |
+|mi_subnet   |任意           |Any     |MI SUBNET        |MI SUBNET  |Allow |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>采用服务辅助子网配置的用户定义的路由 
 
-|“属性”|地址前缀|下一跃点|
+|名称|地址前缀|下一跃点|
 |----|--------------|-------|
 |subnet-to-vnetlocal|MI SUBNET|虚拟网络|
 |mi-13-64-11-nexthop-internet|13.64.0.0/11|Internet|
@@ -306,6 +306,7 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 - **微软对等**：启用 Microsoft 对[等互连](../expressroute/expressroute-faqs.md#microsoft-peering)路由电路，直接或与虚拟网络进行对等，其中托管实例驻留影响虚拟网络中托管实例组件与它所依赖的服务之间的流量流，具体取决于导致可用性问题。 已启用 Microsoft 对等互连的托管实例部署到虚拟网络预期将失败。
 - **全局虚拟网络对等互连**：由于[记录的负载均衡器约束](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)，跨 Azure 区域的[虚拟网络对等](../virtual-network/virtual-network-peering-overview.md)互连对托管实例不起作用。
 - **AzurePlatformDNS**： 使用 AzurePlatformDNS[服务标记](../virtual-network/service-tags-overview.md)来阻止平台 DNS 解析将使托管实例不可用。 尽管托管实例支持客户定义的 DNS，用于引擎内的 DNS 解析，但平台操作依赖于平台 DNS。
+- **NAT 网关**：使用[虚拟网络 NAT](../virtual-network/nat-overview.md)控制具有特定公共 IP 地址的出站连接将使托管实例不可用。 托管实例服务目前仅限于使用基本负载均衡器，该平衡器不提供与虚拟网络 NAT 的入站和出站流共存。
 
 ### <a name="deprecated-network-requirements-without-service-aided-subnet-configuration"></a>[已弃用] 不采用服务辅助子网配置时的网络要求
 
@@ -322,7 +323,7 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 
 ### <a name="mandatory-inbound-security-rules"></a>强制性入站安全规则
 
-| “属性”       |端口                        |协议|源           |目标|操作|
+| 名称       |端口                        |协议|源           |目标|操作|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |管理  |9000、9003、1438、1440、1452|TCP     |Any              |MI SUBNET  |Allow |
 |mi_subnet   |Any                         |Any     |MI SUBNET        |MI SUBNET  |Allow |
@@ -330,7 +331,7 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 
 ### <a name="mandatory-outbound-security-rules"></a>强制性出站安全规则
 
-| “属性”       |端口          |协议|源           |目标|操作|
+| 名称       |端口          |协议|源           |目标|操作|
 |------------|--------------|--------|-----------------|-----------|------|
 |管理  |443、12000    |TCP     |MI SUBNET        |AzureCloud |Allow |
 |mi_subnet   |Any           |Any     |MI SUBNET        |MI SUBNET  |Allow |
@@ -348,7 +349,7 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 
 ### <a name="user-defined-routes"></a>用户定义的路由
 
-|“属性”|地址前缀|下一跃点|
+|名称|地址前缀|下一跃点|
 |----|--------------|-------|
 |subnet_to_vnetlocal|MI SUBNET|虚拟网络|
 |mi-13-64-11-nexthop-internet|13.64.0.0/11|Internet|

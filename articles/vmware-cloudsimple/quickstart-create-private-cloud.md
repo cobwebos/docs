@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7460490dbd45862f4269d25e3910373700ec9a03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10831c0dc39fa241a43541850afae39593ae033b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77564714"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678275"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>快速入门 - 配置私有云环境
 
@@ -26,7 +26,7 @@ ms.locfileid: "77564714"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 中的[https://portal.azure.com](https://portal.azure.com)Azure 门户。
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="create-a-private-cloud"></a>创建私有云
 
@@ -34,7 +34,7 @@ ms.locfileid: "77564714"
 
 私有云通过云简单门户进行管理。 它们有自己的 vCenter 服务器。 堆栈在专用节点和隔离裸机硬件节点上运行。
 
-1. 选择**所有服务**。
+1. 选择“所有服务”  。
 2. 搜索**云简单服务**。
 3. 选择要在其中创建私有云的云简单服务。
 4. 从**概述**中，单击 **"创建私有云**"可为云简单门户打开新的浏览器选项卡。  如果出现提示，请使用 Azure 登录凭据登录。  
@@ -58,7 +58,7 @@ ms.locfileid: "77564714"
 
 11. 单击 **"下一步："查看并创建**。
 12. 查看设置。 如果需要更改任何设置，请单击"**上一个**"。
-13. 单击 **“创建”**。
+13. 单击“创建”。 
 
 私有云预配过程开始。  预配私有云最多可能需要两个小时。
 
@@ -66,7 +66,7 @@ ms.locfileid: "77564714"
 
 可以从 Azure 门户访问云简单门户。  CloudSimple 门户将使用单一登录 （SSO） 使用 Azure 登录凭据启动。  访问云简单门户需要您授权**云简单服务授权**应用程序。  有关授予权限的详细信息，请参阅[同意云简单服务授权应用程序](access-cloudsimple-portal.md#consent-to-cloudsimple-service-authorization-application)。
 
-1. 选择**所有服务**。
+1. 选择“所有服务”  。
 2. 搜索**云简单服务**。
 3. 选择要在其中创建私有云的云简单服务。
 4. 从概述中，单击"**转到云简单"门户**可打开 CloudSimple 门户的新浏览器选项卡。  如果出现提示，请使用 Azure 登录凭据登录。  
@@ -140,7 +140,7 @@ VPN 客户端需要从您的计算机连接到云简单。  下载适用于 MacO
 5. 从列表中选择 VLAN ID。  
 6. 输入子网名称以标识子网。
 7. 指定子网 CIDR 范围和掩码。  此范围不得与任何现有子网重叠。
-8. 单击 **“提交”**。
+8. 单击“提交”  。
 
     ![创建 VLAN/子网详细信息](media/create-new-vlan-subnet-details.png)
 
@@ -159,8 +159,8 @@ VPN 客户端需要从您的计算机连接到云简单。  下载适用于 MacO
     ![启动 vSphere 客户端](media/launch-vcenter-from-cloudsimple-portal.png)
 
 2. 选择您首选的 vSphere 客户端以访问 vCenter，并使用用户名和密码登录。  默认值为：
-    * 用户名：**云所有者\@云简单.本地**
-    * 密码：**云简单123！**  
+    * 用户名：`CloudOwner@cloudsimple.local`
+    * 密码：`CloudSimple123!`
 
 下一个过程中的 vCenter 屏幕来自 vSphere （HTML5） 客户端。
 

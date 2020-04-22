@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5a6c85ebed7271655745de45694542fb359836e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be3a7a3ce4ce3a06398436058ea5d4d935ef5a5c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78188404"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678097"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>使用自定义策略在 Azure Active Directory B2C 中设置 Azure Active Directory 帐户登录
 
@@ -28,40 +28,8 @@ ms.locfileid: "78188404"
 
 完成 [Azure Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)中的步骤。
 
-## <a name="register-an-application"></a>注册应用程序
 
-若要让用户从特定的 Azure AD 组织登录，需要在组织 Azure AD 租户中注册一个应用程序。
-
-1. 登录到 Azure[门户](https://portal.azure.com)。
-1. 确保使用的目录包含组织 Azure AD 租户（例如，contoso.com）。 选择顶部菜单中的**目录 + 订阅筛选器**，然后选择包含 Azure AD 租户的目录。
-1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册”********。
-1. 选择“新注册”。****
-1. 输入应用程序的**名称**。 例如，`Azure AD B2C App` 。
-1. **仅接受此组织目录中此组织目录中**的默认选择帐户。
-1. 对于“重定向 URI”****，接受值 **Web**，并以全小写字母输入以下 URL，其中 `your-B2C-tenant-name` 将替换为 Azure AD B2C 租户的名称。
-
-    ```
-    https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
-    ```
-
-    例如，`https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` 。
-
-1. 选择“注册”****。 记录“应用程序(客户端) ID”，以便在后续步骤中使用****。
-1. 依次选择“证书和机密”、“新建客户端机密”。********
-1. 输入机密**的描述**，选择过期，然后选择 **"添加**"。 记录机密**的值**，以便在后面的步骤中使用。
-
-## <a name="configuring-optional-claims"></a>配置可选声明
-
-如果要从 Azure AD `family_name` `given_name`获取 和 声明，可以在 Azure 门户 UI 或应用程序清单中为应用程序配置可选声明。 有关详细信息，请参阅[如何向 Azure AD 应用提供可选声明](../active-directory/develop/active-directory-optional-claims.md)。
-
-1. 登录到 Azure[门户](https://portal.azure.com)。 搜索并选择“Azure Active Directory”****。
-1. 在“管理”部分，选择“应用注册”。********
-1. 在列表中选择要为其配置可选声明的应用程序。
-1. 在“管理”部分，选择“令牌配置(预览)”。********
-1. 选择“添加可选声明”。****
-1. 选择要配置的令牌类型。
-1. 选择要添加的可选声明。
-1. 单击 **“添加”**。
+[!INCLUDE [active-directory-b2c-identity-provider-azure-ad](../../includes/active-directory-b2c-identity-provider-azure-ad.md)]
 
 ## <a name="create-a-policy-key"></a>创建策略密钥
 
@@ -75,7 +43,7 @@ ms.locfileid: "78188404"
 1. 输入策略密钥的**名称**。 例如，`ContosoAppSecret` 。  前缀`B2C_1A_`在创建时会自动添加到密钥的名称中，因此其在下一节中的 XML 中的引用B2C_1A_ContosoAppSecret *。*
 1. 在 **"秘密**"中，输入您之前记录的客户机密。
 1. 在“密钥用法”处选择 `Signature`。****
-1. 选择 **“创建”**。
+1. 选择“创建”  。
 
 ## <a name="add-a-claims-provider"></a>添加声明提供程序
 
@@ -149,7 +117,7 @@ ms.locfileid: "78188404"
 
 1. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”********。
 1. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件****。
-1. 单击 **“上载”**。
+1. 单击“上载” 。 
 
 ## <a name="register-the-claims-provider"></a>注册声明提供程序
 

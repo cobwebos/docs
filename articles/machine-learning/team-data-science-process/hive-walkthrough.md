@@ -11,21 +11,21 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 005d4fe1b6ec59e7f05be3dd2ab3e72d0e7aa8e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf69786f56f52874bd9358ae44a6b88b466e77f4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79283415"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677465"
 ---
-# <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Team Data Science Process 的工作原理：使用 Azure HDInsight Hadoop 群集
+# <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>运行中的 Team Data Science Process：使用 Azure HDInsight Hadoop 群集
 本演练在一个端到端方案中使用 [Team Data Science Process (TDSP)](overview.md)。 其中使用 [Azure HDInsight Hadoop 群集](https://www.andresmh.com/nyctaxitrips/)对公开发布的[纽约市出租车行程](https://azure.microsoft.com/services/hdinsight/)数据集中的数据进行存储、探索和实施特性工程，以及对该数据进行下采样。 为了处理二元分类、多类分类和回归预测任务，我们将使用 Azure 机器学习构建数据模型。 
 
 有关演示如何处理较大数据集的演练，请参阅[团队数据科学过程 - 在 1 TB 数据集上使用 Azure HDInsight Hadoop 群集](hive-criteo-walkthrough.md)。
 
 您还可以使用 IPython 笔记本来完成演练中介绍的任务，这些任务使用 1 TB 数据集。 有关详细信息，请参阅[使用 Hive ODBC 连接的 Criteo 演练](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb)。
 
-## <a name="nyc-taxi-trips-dataset-description"></a><a name="dataset"></a>纽约市出租车旅行数据集描述
+## <a name="nyc-taxi-trips-dataset-description"></a><a name="dataset"></a>NYC 出租车行程数据集介绍
 NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩逗号分隔值 (CSV) 文件。 其中包含超过 1.73 亿个单独行程及每个行程支付的费用。 每个行程记录会包括上车和下车的位置和时间、匿名的出租车司机驾驶证编号和牌照编号（出租车的唯一 ID）。 数据涵盖 2013 年的所有行程，并在每个月的以下两个数据集中提供：
 
 - trip_data CSV 文件包含行程详细信息：乘客人数、接送点、行程持续时间和行程长度。 下面是一些示例记录：
@@ -721,7 +721,7 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
 下面是有关[导入数据][import-data]模块的一些详细信息和要输入的参数：
 
-**HCatalog 服务器 URI**：如果群集名称为**abc123** https://abc123.azurehdinsight.net，则使用： 。
+**HCatalog 服务器 URI**：如果群集名称为**abc123**，则使用\/： https： /abc123.azurehdinsight.net。
 
 **Hadoop 用户帐户名称**：为群集选择的用户名（不是远程访问用户名）。
 
@@ -761,13 +761,13 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
   **使用的学习器：** 双类逻辑回归
 
-  a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于此问题，目标（或类）标签是**倾斜的**。 原始下采样数据集具有几个列，这些列是此分类实验的目标泄漏。 特别是，**提示\_类**、**小费\_金额**和**总金额\_** 显示有关目标标签的信息，这些信息在测试时不可用。 使用[选择数据集中的列][select-columns]模块删除这些列，不将其纳入考虑。
+  a. 对于此问题，目标（或类）标签是**倾斜的**。 原始下采样数据集具有几个列，这些列是此分类实验的目标泄漏。 特别是，**提示\_类**、**小费\_金额**和**总金额\_** 显示有关目标标签的信息，这些信息在测试时不可用。 使用[选择数据集中的列][select-columns]模块删除这些列，不将其纳入考虑。
 
   下图显示预测给定行程是否支付小费的试验。
 
   ![示意图：预测是否支付小费试验](./media/hive-walkthrough/QGxRz5A.png)
 
-  b.保留“数据库类型”设置，即设置为“共享”。 对于此实验，我们的目标标签分布大约是 1:1。
+  b. 对于此实验，我们的目标标签分布大约是 1:1。
 
    下图显示该二元分类问题的小费类标签的分布情况。
 
@@ -781,7 +781,7 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
   **使用的学习器：** 多类逻辑回归
 
-  a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于此问题，我们的目标（或类）标签是**提示\_类**，它可以采用五个值之一（0，1，2，3，4）。 与二元分类的情况类似，我们也具有几个作为此实验的目标泄漏的列。 具体而言，**tipped**、**tip\_amount** 和 **total\_amount** 可揭示有关测试时不可用的目标标签的信息。 使用[选择数据集中的列][select-columns]模块删除这些列。
+  a. 对于此问题，我们的目标（或类）标签是**提示\_类**，它可以采用五个值之一（0，1，2，3，4）。 与二元分类的情况类似，我们也具有几个作为此实验的目标泄漏的列。 具体而言，**tipped**、**tip\_amount** 和 **total\_amount** 可揭示有关测试时不可用的目标标签的信息。 使用[选择数据集中的列][select-columns]模块删除这些列。
 
   下图显示预测小费可能归属的 bin 的试验。 bin 为：类 0：小费 = $0，类 1：小费 > $0 且 <= $5，类 2：小费 > $5 且 <= $10，类 3：小费 > $10 且 <= $20，类 4：小费 > $20。
 
@@ -791,7 +791,7 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
   ![测试类分布图表](./media/hive-walkthrough/Vy1FUKa.png)
 
-  b.保留“数据库类型”设置，即设置为“共享”。 对于此实验，我们使用混淆矩阵来查看预测精度，如下所示：
+  b. 对于此实验，我们使用混淆矩阵来查看预测精度，如下所示：
 
   ![混淆矩阵](./media/hive-walkthrough/cxFmErM.png)
 
@@ -801,13 +801,13 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
   **使用的学习器：** 提升决策树
 
-  a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于此问题，目标（或类）标签是**小费\_金额**。 在本例中，目标泄漏为：**tipped**、**tip\_class** 和 **total\_amount**。 所有这些变量都揭示有关测试时通常不可用的小费金额的信息。 使用[选择数据集中的列][select-columns]模块删除这些列。
+  a. 对于此问题，目标（或类）标签是**小费\_金额**。 在本例中，目标泄漏为：**tipped**、**tip\_class** 和 **total\_amount**。 所有这些变量都揭示有关测试时通常不可用的小费金额的信息。 使用[选择数据集中的列][select-columns]模块删除这些列。
 
   下图显示预测支付的小费金额的试验。
 
   ![示意图：预测小费金额的试验](./media/hive-walkthrough/11TZWgV.png)
 
-  b.保留“数据库类型”设置，即设置为“共享”。 对于回归问题，我们将通过查看预测中的平方误差和决定系数，测量预测准确性：
+  b. 对于回归问题，我们将通过查看预测中的平方误差和决定系数，测量预测准确性：
 
   ![预测统计信息的屏幕截图](./media/hive-walkthrough/Jat9mrz.png)
 

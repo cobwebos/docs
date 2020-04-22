@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 395f0ff2880f4889cb0c214772f1056e26f1c616
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: de6be27183ecc621edeb0f3b89c509fa39f239cb
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81253080"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678390"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Azure 同步分析数据集成合作伙伴
 
@@ -34,6 +34,7 @@ ms.locfileid: "81253080"
 | ![Informatica](./media/sql-data-warehouse-partner-data-integration/informatica_logo.png) |**1.Azure 信息云服务**<br> Informatica 云为自助服务数据迁移、集成和管理功能提供了一流的解决方案。 客户可以快速可靠地从不同类型的源将 PB 的数据导出到 Azure。 Azure 信息云服务提供与 Azure 突触、SQL 数据库、Blob 存储、数据湖存储和 Azure Cosmos DB 的本机、高容量、高性能连接。 <br><br> **2.信息电源中心**PowerCenter 是一个元数据驱动的数据集成平台，它启动并加快了数据集成项目，以便比手动编码更快地将数据交付给企业。 它作为数据集成投资的基础 |**面向 Azure 的 Informatica 云服务**<br>[产品页](https://www.informatica.com/products/cloud-integration.html)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/informatica.iics-winter)<br><br> **Informatica PowerCenter**<br>[产品页](https://www.informatica.com/products/data-integration/powercenter.html)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/informatica.powercenter/)<br>|
 | ![信息构建者](./media/sql-data-warehouse-partner-data-integration/informationbuilders_logo.png) |**信息构建者（Omni-Gen 数据管理）**<br>信息构建器的 Omni-Gen 数据管理平台提供数据集成、数据质量和主数据管理解决方案。 无论格式、位置、体积或延迟如何，它都能轻松访问、移动和混合所有数据。|[产品页](https://www.informationbuilders.com/3i-platform)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/informationbuilders.omni-gen-mdm) |
 | ![马蒂利翁](./media/sql-data-warehouse-partner-data-integration/matillion-logo.png) |**马蒂利翁**<br>Matillion 是云数据仓库的数据转换软件。 只有 Matillion 是专为 Azure Synapse 而构建的，使企业能够实现新的简单性、速度、规模和节约水平。 Matillion 产品受到各种规模的公司的高度评价和信赖，以满足其数据集成和转型需求。 详细了解如何使用 Matillion 基于云的数据转换方法释放数据潜力。| [产品页](https://www.matillion.com/technology/cloud-data-warehouse/microsoft-azure-synapse/)<br> [请求早期访问](https://www.matillion.com/lp/etl-azure-synapse-access) |
+| ![哦22赫达Io](./media/sql-data-warehouse-partner-data-integration/heddaiowhitebg-logo.png) |**哦22赫达<span></span>。Io**<br>哦22的HEDDA。<span></span>IO 是专为 Microsoft Azure 构建的知识驱动型数据质量产品。 它使您能够构建知识库，并用它来执行各种关键数据质量任务，包括数据的更正、丰富和标准化。 赫达<span></span>.IO 还允许您使用参考数据提供商提供或由您开发和提供的基于云的参考数据服务执行数据清理。| [产品页](https://hedda.io)<br> [Azure 市场]( https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oh22.hedda-io) |
 | ![Qubole](./media/sql-data-warehouse-partner-data-integration/qubole_logo.png) |**Qubole**<br>Qubole 提供了一个云原生平台，使用户能够执行 ETL、分析和 AI/ML 工作负载。 它支持不同类型的开源引擎 - 阿帕奇火花，TensorFlow，普雷斯托，气流，哈多普，蜂巢，以及更多。 它提供了易于使用的最终用户工具，用于从 SQL 查询工具到笔记本和利用强大开源引擎的仪表板的数据处理。|[产品页](https://www.qubole.com/)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/qubole-inc.qubole-data-service?tab=Overview) |
 | ![段](./media/sql-data-warehouse-partner-data-integration/segment_logo.png) |**段**<br>细分是一种数据管理和分析解决方案，可帮助您了解来自各种来源的客户数据。 它允许您将数据连接到 200 多个工具，以创建更好的决策、产品和体验。 段将使用内置数据连接器将多个数据源转换并加载到仓库中|[产品页](https://segment.com/)<br> |
 | ![天空](./media/sql-data-warehouse-partner-data-integration/skyvia_logo.png) |**Skyvia（数据集成）**<br>Skyvia 数据集成提供了一个可自动导入数据的向导。 此向导允许您在不同类型的源之间迁移数据 - VM、应用程序数据库、CSV 文件等。 |[产品页](https://skyvia.com/)<br> |

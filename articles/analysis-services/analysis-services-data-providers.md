@@ -4,17 +4,17 @@ description: 介绍了客户端应用程序和工具连接 Azure Analysis Servic
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 04/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c5914c7987d5a54a6bcc779231287309517f5121
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be6ee594896384bce86d892c9a7811e09a0f4efd
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80129221"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676578"
 ---
-# <a name="client-libraries-for-connecting-to-analysis-services"></a>用于连接到分析服务的客户端库
+# <a name="client-libraries-for-connecting-to-analysis-services"></a>用于连接到 Analysis Services 的客户端库
 
 客户端应用程序和工具连接到 Analysis Services 服务器时需要使用客户端库。 Microsoft 客户端应用程序（例如 Power BI Desktop、Excel、SQL Server Management Studio (SSMS) 和适用于 Visual Studio 的 Analysis Services 项目扩展）会安装全部三个客户端库并与常规应用程序更新一起更新它们。 在某些情况下，可能需要安装较新版本的客户端库。 自定义客户端应用程序还需要安装客户端库。
 
@@ -22,29 +22,29 @@ ms.locfileid: "80129221"
 
 |下载  |产品版本  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.29.25    |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.29.25       |
-|[Amo](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.4.8.0    |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.4.8.0     |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.36.38    |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.36.38       |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.6.0.1    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.6.0.1     |
 
 ## <a name="amo-and-adomd-nuget-packages"></a>AMO 和 ADOMD（NuGet 包）
 
-分析服务管理对象 （AMO） 和 ADOMD 客户端库可作为可安装的包从[NuGet.org](https://www.nuget.org/)。建议您迁移到 NuGet 引用，而不是使用 Windows 安装程序。 
+Analysis Services Management Objects (AMO) 和 ADOMD 客户端库在 [NuGet.org](https://www.nuget.org/) 上作为可安装的程序包提供。建议你迁移到 NuGet 引用而非使用 Windows Installer。 
 
 |程序包  | 产品版本  | 
 |---------|---------|
-|[Amo](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.4.8.0     |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.4.8.0      |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.6.0.1     |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.6.0.1      |
 
 NuGet 包程序集 AssemblyVersion 遵循语义版本控制：MAJOR.MINOR.PATCH。 NuGet 引用加载预期的版本，即使 GAC 中存在不同的版本（由 MSI 安装导致的）。 PATCH 将随每次发布递增。 AMO 和 ADOMD 版本保持同步。
 
 ## <a name="understanding-client-libraries"></a>了解客户端库
 
-Analysis Services 利用三个客户端库（也称为数据提供程序）。 ADOMD.NET 和 Analysis Services 管理对象 (AMO) 都是托管型客户端库。 Analysis Services OLE DB 提供程序 (MSOLAP DLL) 是本机客户端库。 通常，所有三个库会同时安装。 **Azure Analysis Services 要求安装所有三个库的最新版本**。 
+Analysis Services 利用三个客户端库（也称为数据提供程序）。 ADOMD.NET 和 Analysis Services 管理对象 (AMO) 都是托管型客户端库。 Analysis Services OLE DB 提供程序 (MSOLAP DLL) 是本机客户端库。 通常，所有这三个客户端库会同时安装。 **Azure Analysis Services 要求安装所有三个库的最新版本**。 
 
-Microsoft 客户端应用程序（例如 Power BI Desktop 和 Excel）会安装所有这三个客户端库，有新版本可用时，会更新这些库。 某些客户端库可能不是 Azure Analysis Services 所需要的最新版本，具体取决于更新的版本或频率。 这同样适用于自定义应用程序或其他界面，例如 AsCmd、TOM、ADOMD.NET。 这些应用程序需要手动或以编程方式安装库。 用于手动安装的客户端库作为可分发程序包包含在 SQL Server 功能包中。 但是，这些客户端库与 SQL Server 版本关联，可能不是最新的。  
+Microsoft 客户端应用程序（例如 Power BI Desktop 和 Excel）会安装所有这三个客户端库，有新版本可用时，会更新这些库。 某些客户端库可能不是 Azure Analysis Services 所需要的最新版本，具体取决于更新的版本或频率。 这同样适用于自定义应用程序或其他接口，例如 AsCmd、TOM、ADOMD.NET。 这些应用程序需要手动或以编程方式安装库。 用于手动安装的客户端库作为可分发包包含在 SQL Server 功能包中。 但是，这些客户端库与 SQL Server 版本关联，可能不是最新的。  
 
-进行客户端连接的客户端库不同于从 Azure Analysis Services 服务器连接到数据源时需要的数据提供程序。 若要详细了解数据源连接，请参阅[数据源连接](analysis-services-datasource.md)。
+用于客户端连接的客户端库不同于从 Azure Analysis Services 服务器连接到数据源时所需的数据提供程序。 若要详细了解数据源连接，请参阅[数据源连接](analysis-services-datasource.md)。
 
 ## <a name="client-library-types"></a>客户端库类型
 
@@ -74,7 +74,7 @@ Microsoft 客户端应用程序（例如 Power BI Desktop 和 Excel）会安装�
   
 1.  转到  `C:\Program Files\Microsoft Analysis Services\AS OLEDB\` 。 如果有多个文件夹，请选择较大的数字。
   
-2.  右键单击**msolap.dll** > **属性** > **详细信息**。 如果文件名为 msolap140.dll，则它早于最新版本并且应当升级。
+2.  右键单击“msolap.dll” > “属性” > “详细信息”。    如果文件名为 msolap140.dll，则它早于最新版本并且应当升级。
     
     ![客户端库详细信息](media/analysis-services-data-providers/aas-msolap-details.png)
     
@@ -82,14 +82,14 @@ Microsoft 客户端应用程序（例如 Power BI Desktop 和 Excel）会安装�
 ### <a name="amo"></a>AMO
 
 1. 转到  `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\` 。 如果有多个文件夹，请选择较大的数字。
-2. 右键单击**Microsoft.分析服务** > **属性** > **详细信息**。  
+2. 右键单击“Microsoft.AnalysisServices” > ，选择“属性” > “详细信息”。     
 
 ### <a name="adomd"></a>ADOMD
 
 1. 转到  `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\` 。 如果有多个文件夹，请选择较大的数字。
-2. 右键单击**Microsoft.分析服务.AdomdClient** > **属性** > **详细信息**。  
+2. 右键单击“Microsoft.AnalysisServices.AdomdClient” > ，选择“属性” > “详细信息”。     
 
 
 ## <a name="next-steps"></a>后续步骤
-[与 Excel 连接](analysis-services-connect-excel.md)    
+[使用 Excel 进行连接](analysis-services-connect-excel.md)    
 [使用 Power BI 进行连接](analysis-services-connect-pbi.md)

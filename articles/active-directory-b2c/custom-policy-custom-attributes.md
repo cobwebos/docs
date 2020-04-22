@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bc5204518cb6e801ba661aecd5498a501122225f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5990f79891a9cbc0d18c3499691a3d7ef309a73
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473653"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678256"
 ---
 # <a name="azure-active-directory-b2c-enable-custom-attributes-in-a-custom-profile-policy"></a>Azure 活动目录 B2C：在自定义配置文件策略中启用自定义属性
 
@@ -46,9 +46,9 @@ Azure AD B2C 允许您扩展存储在每个用户帐户的属性集。 您还可
 
 ## <a name="get-the-application-properties"></a>获取应用程序属性
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
-1. 在顶部菜单中选择“目录 + 订阅”**** 筛选器，然后选择包含Azure AD B2C 租户的目录。
-1. 在左侧菜单中，选择“Azure AD B2C”****。 或者，选择“所有服务”**** 并搜索并选择“Azure AD B2C”****。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 在顶部菜单中选择“目录 + 订阅”  筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 在左侧菜单中，选择“Azure AD B2C”  。 或者，选择“所有服务”  并搜索并选择“Azure AD B2C”  。
 1. 选择**应用注册（预览），** 然后选择 **"所有应用程序**"。
 1. 选择`b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.`应用程序。
 1. 将以下标识符复制到剪贴板并保存：
@@ -75,13 +75,13 @@ Azure AD B2C 允许您扩展存储在每个用户帐户的属性集。 您还可
             <Item Key="ApplicationObjectId"></Item>
           </Metadata>
         </TechnicalProfile>
-      <TechnicalProfiles> 
+      </TechnicalProfiles> 
     </ClaimsProvider>
     ```
 
 ## <a name="upload-your-custom-policy"></a>上传自定义策略
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 通过在顶部菜单中选择**目录 + 订阅**筛选器并选择包含 Azure AD B2C 租户的目录，请确保使用的目录包含 Azure AD 租户。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册”********。
 4. 选择**身份体验框架**。
@@ -96,7 +96,7 @@ Azure AD B2C 允许您扩展存储在每个用户帐户的属性集。 您还可
 
 您可以在自定义策略中使用门户 UI 来创建这些属性。 按照有关如何在 Azure[活动目录 B2C 中定义自定义属性](user-flow-custom-attributes.md)的指导。 在门户中创建属性 **"忠诚 Id"** 时，必须引用如下：
 
-|“属性”     |适用范围 |
+|名称     |适用范围 |
 |---------|---------|
 |`extension_loyaltyId`  | 自定义策略|
 |`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft Graph API](manage-user-accounts-graph-api.md)|

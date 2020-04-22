@@ -12,19 +12,16 @@ ms.date: 04/12/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: fa42bf65ea5f4469f714dda4331d3cb66156d187
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: ebec4cb6bbbac5b331eb2eb4145716e16e7320fa
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535786"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677686"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft 标识平台和 OpenID Connect 协议
 
-OpenID Connect 是在 OAuth 2.0 基础上构建的身份验证协议，可用于将用户安全登录到 Web 应用程序。 使用 Microsoft 标识平台终结点的 OpenID Connect 实现时，可将登录功能和 API 访问权限添加到基于 Web 的应用中。 本文介绍如何独立于语言执行此操作，并介绍如何在不使用任何 Microsoft 开源库的情况下发送和接收 HTTP 消息。
-
-> [!NOTE]
-> Microsoft 标识平台终结点并非支持所有 Azure Active Directory (Azure AD) 方案和功能。 若要确定是否应使用 Microsoft 标识平台终结点，请阅读 [Microsoft 标识平台限制](active-directory-v2-limitations.md)。
+OpenID Connect 是构建在 OAuth 2.0 基础之上的身份验证协议，可用于将用户安全登录到 Web 应用程序。 使用 Microsoft 标识平台终结点的 OpenID Connect 实现时，可将登录功能和 API 访问权限添加到基于 Web 的应用中。 本文介绍如何独立于语言执行此操作，并介绍如何在不使用任何 Microsoft 开源库的情况下发送和接收 HTTP 消息。
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) 扩展了 OAuth 2.0 *授权*协议，使其可用作*身份验证*协议，这样一来，用户可使用 OAuth 执行单一登录。 OpenID Connect 引入了 ID 令牌** 的概念，ID 令牌是一种可让客户端验证用户标识的安全令牌。 ID 令牌还可获取用户的基本个人资料信息。 由于 OpenID Connect 扩展了 OAuth 2.0，因此应用可安全获取访问令牌**，访问令牌可用于访问[授权服务器](active-directory-v2-protocols.md#the-basics)保护的资源。 Microsoft 标识平台终结点还允许在 Azure AD 中注册的第三方应用为安全资源（如 Web API）颁发访问令牌。 有关如何设置应用程序以颁发访问令牌的详细信息，请参阅[如何向 Microsoft 标识平台终结点注册应用](quickstart-register-app.md)。 如果要构建在服务器上托管并通过浏览器访问的 [web 应用程序](v2-app-types.md#web-apps)，建议使用 OpenID Connect。
 
@@ -205,9 +202,9 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 ## <a name="protocol-diagram-access-token-acquisition"></a>协议图：访问令牌获取
 
-许多 Web 应用不仅需要登录用户，还需要代表该用户使用 OAuth 访问 Web 服务。 如果要使用 OAuth 授权代码流，此方案合并了用于对用户进行身份验证的 OpenID Connect，同时将获取授权代码，用户可以使用该代码获取访问令牌。
+许多 Web 应用不仅需要将用户登录，而且还要代表该用户使用 OAuth 来访问 Web 服务。 此方案合并了用于对用户进行身份验证的 OpenID Connect，同时会获取授权代码，用于通过 OAuth 授权代码流来获取访问令牌。
 
-完整的 OpenID Connect 登录和令牌获取流与下图类似。 本文以下各节将详细介绍各步骤。
+完整的 OpenID Connect 登录和令牌获取流如下图所示。 本文的后续部分详细介绍每个步骤。
 
 ![OpenID Connect 协议：令牌获取](./media/v2-protocols-oidc/convergence-scenarios-webapp-webapi.svg)
 
@@ -230,14 +227,14 @@ https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
 ```
 
 > [!TIP]
-> 单击下面的链接可执行此请求。 登录后，浏览器将重定向到 `https://localhost/myapp/`，且地址栏中有一个 ID 令牌和一个代码。 请注意，此请求使用 `response_mode=fragment`（仅用于演示）。 建议使用 `response_mode=form_post`。
+> 单击以下链接执行此请求！ 登录后，浏览器将重定向到 `https://localhost/myapp/`，且地址栏中有一个 ID 令牌和一个代码。 请注意，此请求使用 `response_mode=fragment`（仅用于演示）。 建议使用 `response_mode=form_post`。
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token%20code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=fragment&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fuser.read&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
-通过使用 `response_type=id_token code` 在请求中包含权限范围，Microsoft 标识平台终结点可确保用户已经许可 `scope` 查询参数中指示的权限。 它将授权代码返回应用，以交换访问令牌。
+通过使用 `response_type=id_token code` 在请求中包含权限范围，Microsoft 标识平台终结点可确保用户已经许可 `scope` 查询参数中指示的权限。 v2.0 终结点会将授权代码返回给应用，以交换访问令牌。
 
 ### <a name="successful-response"></a>成功的响应
 
-使用 `response_mode=form_post` 的成功响应如下所示：
+使用 `response_mode=form_post` 后的成功响应如下所示：
 
 ```
 POST /myapp/ HTTP/1.1
@@ -249,13 +246,13 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 
 | 参数 | 说明 |
 | --- | --- |
-| `id_token` | 应用请求的 ID 令牌。 可以使用 ID 令牌验证用户的身份，并开始与用户的会话。 您将在[`id_tokens`引用](id-tokens.md)中找到有关 ID 令牌及其内容的更多详细信息。 |
-| `code` | 应用程序请求的授权代码。 应用程序可以使用授权代码请求目标资源的访问令牌。 授权代码的生存期较短。 通常情况下，授权代码会在约 10 分钟后过期。 |
-| `state` | 如果请求中包含状态参数，响应中就应该出现相同的值。 应用程序应该验证请求和响应中的状态值是否完全相同。 |
+| `id_token` | 应用请求的 ID 令牌。 可以使用 ID 令牌验证用户的标识，开始与用户建立会话。 有关 ID 令牌及其内容的详细信息，请参阅 [`id_tokens` 参考](id-tokens.md)。 |
+| `code` | 应用请求的授权代码。 应用可以使用授权代码请求目标资源的访问令牌。 授权代码的生存期较短。 通常，授权代码在大约 10 分钟后即会过期。 |
+| `state` | 如果请求中包含 state 参数，响应中就应该出现相同的值。 应用应该验证请求和响应中的 state 值是否完全相同。 |
 
 ### <a name="error-response"></a>错误响应
 
-错误响应也可能发送到重定向 URI，使应用可以对其进行适当处理。 错误响应如下所示：
+也可以将错误响应发送到重定向 URI，使应用能够适当地处理这些响应。 错误响应如下所示：
 
 ```
 POST /myapp/ HTTP/1.1
@@ -267,9 +264,9 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 | 参数 | 说明 |
 | --- | --- |
-| `error` | 可用于分类发生的错误类型和响应错误的错误代码字符串。 |
-| `error_description` | 可帮助用户识别身份验证错误根本原因的特定错误消息。 |
+| `error` | 可用于对发生的错误分类以及对错误做出反应的错误代码字符串。 |
+| `error_description` | 帮助识别身份验证错误根本原因的特定错误消息。 |
 
-有关可能的错误代码的描述及建议的客户端响应，请参阅[授权终结点错误的错误代码](#error-codes-for-authorization-endpoint-errors)。
+有关可能的错误代码和建议的客户端操作的说明，请参阅 [授权终结点错误的错误代码](#error-codes-for-authorization-endpoint-errors)。
 
-如果拥有授权代码和 ID 令牌，可以登录用户并代表他们获取访问令牌。 若要登录用户，必须[完全按照上面所述](id-tokens.md#validating-an-id_token)验证 ID 令牌。 若要获取访问令牌，请遵循 [OAuth 代码流文档](v2-oauth2-auth-code-flow.md#request-an-access-token)中所述的步骤。
+获取授权代码和 ID 令牌之后，可将用户登录，并代表用户获取访问令牌。 要将用户登录，必须 [完全根据说明](id-tokens.md#validating-an-id_token)验证 ID 令牌。 若要获取访问令牌，请遵循 [OAuth 代码流文档](v2-oauth2-auth-code-flow.md#request-an-access-token)中所述的步骤。

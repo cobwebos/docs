@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 04/20/2020
 ms.author: rogarana
-ms.openlocfilehash: 8d1e1262c592f0120b191e18a5c16b97b887a6a2
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 44debc299054568769bfbe6cfc089cc528594274
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536518"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677077"
 ---
 # <a name="enable-on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>通过 SMB 为 Azure 文件共享启用本地活动目录域服务身份验证
 
@@ -68,11 +68,7 @@ ms.locfileid: "81536518"
 
 ## <a name="regional-availability"></a>区域可用性
 
-Azure 文件身份验证与 AD DS（预览）在大多数[公共区域](https://azure.microsoft.com/global-infrastructure/regions/)都可用。
-
-具有本地 AD DS 的 Azure 文件身份验证不在：
-- 美国西部
-
+所有[公共区域和 Azure Gov 区域](https://azure.microsoft.com/global-infrastructure/locations/)都提供具有 AD DS（预览）的 Azure 文件身份验证。
 
 ## <a name="workflow-overview"></a>工作流概述
 
@@ -84,13 +80,13 @@ Azure 文件身份验证与 AD DS（预览）在大多数[公共区域](https://
 
 1. 在存储帐户上启用 Azure 文件 AD DS 身份验证。 
 
-1. 将共享的访问权限分配给与目标 AD 标识同步的 Azure AD 标识（用户、组或服务主体）。 
+2. 将共享的访问权限分配给与目标 AD 标识同步的 Azure AD 标识（用户、组或服务主体）。 
 
-1. 通过 SMB 配置目录和文件的 ACL。 
+3. 通过 SMB 配置目录和文件的 ACL。 
  
-1. 将 Azure 文件共享装载到加入 AD DS 的 VM。 
+4. 将 Azure 文件共享装载到加入 AD DS 的 VM。 
 
-1. 在 AD DS 中更新存储帐户标识的密码。
+5. 在 AD DS 中更新存储帐户标识的密码。
 
 下图说明了用于通过 SMB 为 Azure 文件共享启用 Azure AD 身份验证的端到端工作流。 
 

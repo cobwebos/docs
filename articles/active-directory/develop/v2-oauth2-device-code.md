@@ -1,7 +1,7 @@
 ---
-title: OAuth 2.0 设备代码流 |蔚蓝
+title: OAuth 2.0 设备代码流 | Azure
 titleSuffix: Microsoft identity platform
-description: 在没有浏览器的情况下登录用户。 使用设备权限授予生成嵌入式无浏览器身份验证流。
+description: 无需浏览器即可登录用户。 使用设备权限授予生成嵌入式无浏览器身份验证流。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,21 +13,18 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 9186f633b773a243a84692c30ddc2c2261fb69ba
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 2a39dbb3676df5ed916203bdcbbc51d5a0da32a4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309407"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677839"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft 标识平台和 OAuth 2.0 设备权限授予流
 
-Microsoft 标识平台支持[设备权限授予](https://tools.ietf.org/html/rfc8628)，可让用户登录到智能电视、IoT 设备或打印机等输入受限设备。  若要启用此流，设备会让用户在另一台设备上的浏览器中访问一个网页，以进行登录。  用户登录后，设备可以获取所需的访问令牌和刷新令牌。  
+Microsoft 标识平台支持[设备权限授予](https://tools.ietf.org/html/rfc8628)，可让用户登录到智能电视、IoT 设备或打印机等输入受限设备。  若要启用此流，设备会让用户在另一台设备上的浏览器中访问一个网页，以进行登录。  用户登录后，设备可以获取所需的访问令牌和刷新令牌。
 
 本文介绍如何在应用程序中直接针对协议进行编程。  如果可能，建议你改用受支持的 Microsoft 身份验证库 (MSAL) 来[获取令牌并调用受保护的 Web API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)。  另请参阅[使用 MSAL 的示例应用](sample-v2-code.md)。
-
-> [!NOTE]
-> Microsoft 标识平台终结点并非支持所有 Azure Active Directory 方案和功能。 若要确定是否应使用 Microsoft 标识平台终结点，请阅读 [Microsoft 标识平台限制](active-directory-v2-limitations.md)。
 
 ## <a name="protocol-diagram"></a>协议图
 
@@ -62,9 +59,9 @@ scope=user.read%20openid%20profile
 
 ### <a name="device-authorization-response"></a>设备授权响应
 
-成功响应是一个 JSON 对象，其中包含允许用户登录所需的信息。  
+成功响应是一个 JSON 对象，其中包含允许用户登录所需的信息。
 
-| 参数 | 格式 | 描述 |
+| 参数 | 格式 | 说明 |
 | ---              | --- | --- |
 |`device_code`     | 字符串 | 一个长字符串，用于验证客户端与授权服务器之间的会话。 客户端使用此参数从授权服务器请求访问令牌。 |
 |`user_code`       | 字符串 | 向用户显示的短字符串，用于标识辅助设备上的会话。|
@@ -80,11 +77,11 @@ scope=user.read%20openid%20profile
 
 收到 `user_code` 和 `verification_uri` 后，客户端会向用户显示这些信息，指示他们使用移动电话或电脑浏览器登录。
 
-如果用户使用个人帐户（在 /common 或 /使用者上）进行身份验证，系统将要求他们重新登录，以便将身份验证状态传输到设备。  他们也将被要求提供同意，以确保他们知道被授予的权限。  这不适用于用于进行身份验证的工作或学校帐户。 
+如果用户使用个人帐户（在 /common 或 /使用者上）进行身份验证，系统将要求他们重新登录，以便将身份验证状态传输到设备。  他们也将被要求提供同意，以确保他们知道被授予的权限。  这不适用于用于进行身份验证的工作或学校帐户。
 
 尽管用户是在 `verification_uri` 中进行身份验证，但客户端应使用 `device_code` 来轮询所请求令牌的 `/token` 终结点。
 
-``` 
+```
 POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 Content-Type: application/x-www-form-urlencoded
 
@@ -93,23 +90,23 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 ```
 
-| 参数 | 必选 | 描述|
+| 参数 | 必选 | 说明|
 | -------- | -------- | ---------- |
-| `tenant`  | 必选 | 初始请求中使用的同一租户或租户别名。 | 
+| `tenant`  | 必选 | 初始请求中使用的同一租户或租户别名。 |
 | `grant_type` | 必选 | 必须是 `urn:ietf:params:oauth:grant-type:device_code`|
 | `client_id`  | 必选 | 必须与初始请求中使用的 `client_id` 匹配。 |
 | `device_code`| 必选 | 设备授权请求中返回的 `device_code`。  |
 
 ### <a name="expected-errors"></a>预期错误
 
-由于设备代码流是一个轮询协议，因此，客户端必须预料到在用户完成身份验证之前会收到错误。  
+由于设备代码流是一个轮询协议，因此，客户端必须预料到在用户完成身份验证之前会收到错误。
 
-| 错误 | 描述 | 客户端操作 |
+| 错误 | 说明 | 客户端操作 |
 | ------ | ----------- | -------------|
 | `authorization_pending` | 用户尚未完成身份验证，但未取消流。 | 在至少 `interval` 秒之后重复请求。 |
 | `authorization_declined` | 最终用户拒绝了授权请求。| 停止轮询，并恢复到未经过身份验证状态。  |
 | `bad_verification_code`| 未识别已发送到 `/token` 终结点的 `device_code`。 | 验证客户端是否在请求中发送了正确的 `device_code`。 |
-| `expired_token` | 至少已经过去了 `expires_in` 秒，不再可以使用此 `device_code` 进行身份验证。 | 停止轮询，并恢复到未经过身份验证状态。 |   
+| `expired_token` | 至少已经过去了 `expires_in` 秒，不再可以使用此 `device_code` 进行身份验证。 | 停止轮询，并恢复到未经过身份验证状态。 |
 
 ### <a name="successful-authentication-response"></a>成功的身份验证响应
 
@@ -126,7 +123,7 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 }
 ```
 
-| 参数 | 格式 | 描述 |
+| 参数 | 格式 | 说明 |
 | --------- | ------ | ----------- |
 | `token_type` | 字符串| 始终为“Bearer”。 |
 | `scope` | 空格分隔的字符串 | 如果返回了访问令牌，则会列出该访问令牌的有效范围。 |
@@ -135,4 +132,4 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 | `id_token`   | JWT | 如果原始 `scope` 参数包含 `openid` 范围，则颁发。  |
 | `refresh_token` | 不透明字符串 | 如果原始 `scope` 参数包含 `offline_access`，则颁发。  |
 
-可以运行 [OAuth 代码流文档](v2-oauth2-auth-code-flow.md#refresh-the-access-token)中所述的同一个流，使用刷新令牌来获取新的访问令牌和刷新令牌。  
+可以运行 [OAuth 代码流文档](v2-oauth2-auth-code-flow.md#refresh-the-access-token)中所述的同一个流，使用刷新令牌来获取新的访问令牌和刷新令牌。

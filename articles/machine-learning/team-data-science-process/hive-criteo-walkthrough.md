@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 218fb96f6960e194f0fc4a4a3a3e603388b961c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1198d3cc7ccc0013e7c894488027d8e162470247
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76760804"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677603"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>团队数据科学流程在操作中 - 在 1 TB 数据集上使用 Azure HDInsight Hadoop 群集
 
@@ -29,11 +29,11 @@ Criteo 数据是一个单击预测数据集，它是 370 GB 的 gzip 压缩 TSV 
 
 此数据集中的每个记录包含 40 列：
 
-* 第一列是一个标签列，指示用户是单击添加项（值 1）还是不单击添加**项**（值 0）
+*  第一列是标签列，该列指示用户是否单击“添加”（值 1）或未单击（值 0）
 * 接下来的 13 列是数值列，并且
 * 最后的 26 列是分类列
 
-列是匿名的，并使用一系列枚举名称：“Col1”（对于标签列）到“Col40”（对于最后一个分类列）。
+这些列是匿名的，并且使用一系列枚举的名称：“Col1”（表示标签列）到“Col40”（表示最后一个分类列）。
 
 以下是此数据集中两个观测（行）的前 20 列的摘要：
 
@@ -49,10 +49,10 @@ Criteo 数据是一个单击预测数据集，它是 370 GB 的 gzip 压缩 TSV 
 ## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>预测任务示例
 本演练中涉及两个示例预测问题：
 
-1. **二进制分类**：预测用户是否单击了添加：
+1. **二元分类**：预测用户是否单击了添加：
 
-   * 类 0：未单击
-   * 类 1：单击
+   * 分类 0：无点击
+   * 分类 1：单击
 2. **回归**：预测来自用户功能的广告点击概率。
 
 ## <a name="set-up-an-hdinsight-hadoop-cluster-for-data-science"></a><a name="setup"></a>为数据科学设置 HDInsight Hadoop 群集
@@ -62,26 +62,26 @@ Criteo 数据是一个单击预测数据集，它是 370 GB 的 gzip 压缩 TSV 
 通过三个步骤设置 Azure Data Science 环境，以构建具有 HDInsight 群集的预测分析解决方案：
 
 1. [创建存储帐户](../../storage/common/storage-account-create.md)：此存储帐户用于在 Azure Blob 存储中存储数据。 HDInsight 群集中使用的数据存储在此处。
-2. [为 Data Science 自定义 Azure HDInsight Hadoop 群集](customize-hadoop-cluster.md)：此步骤将创建一个在所有节点上安装有 64 位 Anaconda Python 2.7 的 Azure HDInsight Hadoop 群集。 自定义 HDInsight 群集时，要完成两个重要步骤（本主题中有所描述）。
+2. [自定义用于数据科学的 Azure HDInsight Hadoop 群集](customize-hadoop-cluster.md)：此步骤将创建一个在所有节点上都安装有 64 位 Anaconda Python 2.7 的 Azure HDInsight Hadoop 群集。 自定义 HDInsight 群集时，要完成两个重要步骤（本主题中有所描述）。
 
    * 创建 HDInsight 群集时，将步骤 1 中创建的存储帐户与 HDInsight 群集链接。 此存储帐户用于访问可在群集中处理的数据。
    * 创建群集后，启用对其头节点的远程访问。 请记住您在此处指定的远程访问凭据（不同于群集创建时指定的凭据）：完成以下过程。
-3. [创建 Azure 机器学习工作室（经典）工作区](../studio/create-workspace.md)：此 Azure 机器学习工作区用于在 HDInsight 群集上进行初始数据浏览和向下采样后构建机器学习模型。
+3. [创建 Azure 机器学习工作室（经典）工作区](../studio/create-workspace.md)：此 Azure 机器学习工作区用于在 HDInsight 群集上进行初始数据浏览和缩小取样后构建机器学习模型。
 
 ## <a name="get-and-consume-data-from-a-public-source"></a><a name="getdata"></a>从公共源获取和使用数据
 可以通过单击链接、接受使用条款并提供名称来访问 [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) 数据集。 快照如下所示：
 
 ![接受 Criteo 条款](./media/hive-criteo-walkthrough/hLxfI2E.png)
 
-单击“继续下载”****，详细了解数据集及其可用性。
+单击“继续下载”  ，详细了解数据集及其可用性。
 
 数据驻留在 Azure [blob 存储](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)位置： wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/。 “wasb”表示 Azure Blob 存储位置。
 
 1. 此 Azure Blob 存储中的数据由三个解压缩数据的子文件夹组成。
 
-   1. 子文件夹 raw/count/** 包含前 21 天的数据 - 从第\_00天到第\_20天
-   2. 子文件夹 raw/train/** 由一天的数据组成，即第\_21 天
-   3. 子文件夹 raw/test/** 由两天的数据组成，第\_22 天和第\_23 天
+   1. 子文件夹 raw/count/  包含前 21 天的数据 - 从第\_00天到第\_20天
+   2. 子文件夹 raw/train/  由一天的数据组成，即第\_21 天
+   3. 子文件夹 raw/test/  由两天的数据组成，第\_22 天和第\_23 天
 2. 原始 gzip 数据也可在主文件夹中*原始/* 作为 day_NN.gz，其中 NN 从 00 到 23。
 
 另一种访问、浏览和建模不需要任何本地下载的数据的方法会在本演示的后续部分中创建 Hive 表时进行介绍。
@@ -434,7 +434,7 @@ Col15 具有 19M 唯一值！ 使用类似“one-hot encoding”的 naive 技术
 
 1. 为“数据源”**** 选择“Hive 查询”
 2. 在“Hive 数据库查询”**** 框中，一个简单的SELECT * FROM <\_数据集\_名称.\_表\_名称> - 就足够了。
-3. **Hcatalog 服务器 URI**：如果群集是“abc”，则此项就是：https://abc.azurehdinsight.net
+3. **Hcatalog 服务器 URI**：如果您的群集是"abc"，则只需： https：\//abc.azurehdinsight.net
 4. **Hadoop 用户帐户名称**：调试群集时选择的用户名。 （不是远程访问用户名！）
 5. **Hadoop 用户帐户密码**：调试群集时为用户名选择的密码。 （不是远程访问密码！）
 6. **输出数据的位置**：选择“Azure”
@@ -543,7 +543,7 @@ Col15 具有 19M 唯一值！ 使用类似“one-hot encoding”的 naive 技术
 
 对于试验，请选择默认值。 默认值是有意义的，是快速获取性能基线的好方法。 如果选择一旦有基线，则可以通过扫描参数来提高性能。
 
-#### <a name="train-the-model"></a>定型模型
+#### <a name="train-the-model"></a>训练模型
 对于训练，只需调用“训练模型”**** 模块。 它的两个输入是二类提升的决策树学习者和我们的定型数据集。 如下所示：
 
 ![“定型模型”模块](./media/hive-criteo-walkthrough/2bZDZTy.png)

@@ -3,12 +3,12 @@ title: Azure Migrate 设备
 description: 提供服务器评估和迁移中使用的 Azure 迁移设备的概述。
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.openlocfilehash: 130de0824a1671fb0b0e3e980f06f4c3abc689d2
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 1c21f06e674871aefde1ae952a459db16feeb717
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538216"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676339"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 设备
 
@@ -125,7 +125,7 @@ download.microsoft.com/download | 允许从微软下载下载。
 *.discoverysrv.windowsazure.us <br/> *.migration.windowsazure.us | 连接到 Azure 迁移服务 URL。
 *.hypervrecoverymanager.windowsazure.us | **用于无 VMware 无代理迁移**<br/><br/> 连接到 Azure 迁移服务 URL。
 *.blob.core.usgovcloudapi.net  |  **用于无 VMware 无代理迁移**<br/><br/>将数据上载到存储以进行迁移。
-*.applicationinsights.us | 由设备上的网关代理用于访问应用程序见解终结点以进行诊断监视。
+*.applicationinsights.us | 上传用于内部监视的应用日志。
 
 
 
@@ -176,7 +176,7 @@ IPv6 地址 | vm.Guest.Net
 读取吞吐量（每秒 MB） | net.received.average
 写入吞吐量（每秒 MB） | net.transmitted.average
 **库存路径详细信息** | 
-“属性” | container.GetType().Name
+名称 | container.GetType().Name
 子对象类型 | container.ChildType
 引用详细信息 | container.MoRef
 父级详细信息 | Container.Parent

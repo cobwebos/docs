@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f72aedb010301f9c7b12778432c4f10feb10f7a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f18f44208b97ab5bc8d9cd9ff01d604c62deb963
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79246040"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678164"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略
 
@@ -39,11 +39,13 @@ ms.locfileid: "79246040"
 
 使用以下三种类型的策略文件：
 
-- 基本文件**** - 包含大多数定义。 建议对此文件进行极少量的更改，以帮助进行故障排除和长期维护策略。
-- 扩展文件**** 保存租户的唯一配置更改。
-- 信赖方 (RP) 文件**** 注重单个任务的文件，由应用程序或服务（又称信赖方）直接调用。 每个唯一任务需要自身的 RP，根据品牌要求，该数字可能是“应用程序总数 x 用例总数”。
+- 基本文件  - 包含大多数定义。 建议对此文件进行极少量的更改，以帮助进行故障排除和长期维护策略。
+- 扩展文件  保存租户的唯一配置更改。
+- 信赖方 (RP) 文件  注重单个任务的文件，由应用程序或服务（又称信赖方）直接调用。 每个唯一任务需要自身的 RP，根据品牌要求，该数字可能是“应用程序总数 x 用例总数”。
 
-Azure AD B2C 中的用户流遵循上面描述的三文件模式，但开发人员只能看到 RP 文件，同时，Azure 门户会在后台对扩展文件进行更改。
+Azure AD B2C 中的用户流遵循上面描述的文件模式，但开发人员只看到 RP 文件，而 Azure 门户在后台对扩展文件进行更改。
+
+尽管有三种类型的策略文件，但您并不仅限于三个文件。 您可能有多个每个文件类型的文件。 例如，如果您不想对扩展名文件进行更改，则可以创建扩展程序2文件以进一步扩展扩展文件。
 
 ## <a name="custom-policy-core-concepts"></a>自定义策略核心概念
 
@@ -66,4 +68,4 @@ Azure AD B2C 依次与标识提供程序、用户、其他系统和本地用户�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [开始使用自定义策略](custom-policy-get-started.md)
+> [自定义策略入门](custom-policy-get-started.md)

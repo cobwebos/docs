@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: fb982324b66c5ac0d2db00eb906ed850827bc72e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 80c0afafca3b0bf497689cbd4a0870eedd066cfd
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79533277"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677144"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>将 Azure 数据存储从第 1 代迁移到第 2 代
 
@@ -100,9 +100,9 @@ Azure 数据存储第 2 代基于[Azure Blob 存储](storage-blobs-introduction.
 |身份验证|[AAD 托管标识](../../active-directory/managed-identities-azure-resources/overview.md)<br>[服务主体](../../active-directory/develop/app-objects-and-service-principals.md)|[AAD 托管标识](../../active-directory/managed-identities-azure-resources/overview.md)<br>[服务主体](../../active-directory/develop/app-objects-and-service-principals.md)<br>[共享访问密钥](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)|
 |授权|管理 - [RBAC](../../role-based-access-control/overview.md)<br>数据 + [ACL](data-lake-storage-access-control.md)|管理与[RBAC](../../role-based-access-control/overview.md)<br>数据 - [ACL](data-lake-storage-access-control.md)， [RBAC](../../role-based-access-control/overview.md) |
 |加密 = 静态数据|服务器端 — 使用[Microsoft 管理](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)或[客户管理的](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)密钥|服务器端 — 使用[Microsoft 管理](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)或[客户管理的](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)密钥|
-|VNET 支持|[VNET 集成](../../data-lake-store/data-lake-store-network-security.md)|[服务终结点](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)，[专用终结点（公共预览）](../common/storage-private-endpoints.md)|
-|开发人员体验|[REST](../../data-lake-store/data-lake-store-data-operations-rest-api.md)， [.NET](../../data-lake-store/data-lake-store-data-operations-net-sdk.md)， [Java](../../data-lake-store/data-lake-store-get-started-java-sdk.md)， [Python](../../data-lake-store/data-lake-store-data-operations-python.md)，[电源外壳](../../data-lake-store/data-lake-store-get-started-powershell.md)， [Azure CLI](../../data-lake-store/data-lake-store-get-started-cli-2.0.md)|[REST](/rest/api/storageservices/data-lake-storage-gen2)， [.NET](data-lake-storage-directory-file-acl-dotnet.md)， [Java](data-lake-storage-directory-file-acl-java.md)， [Python](data-lake-storage-directory-file-acl-python.md)， [JavaScript](data-lake-storage-directory-file-acl-javascript.md)， [PowerShell](data-lake-storage-directory-file-acl-powershell.md)， [Azure CLI](data-lake-storage-directory-file-acl-cli.md) （在公共预览版中）|
-|诊断日志|经典日志<br>[集成 Azure 监视器](../../data-lake-store/data-lake-store-diagnostic-logs.md)|[经典日志](../common/storage-analytics-logging.md)（在公共预览版中）<br>Azure 监视器集成 + 时间线 TBD|
+|VNET 支持|[VNET 集成](../../data-lake-store/data-lake-store-network-security.md)|[服务终结点](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)，[专用终结点](../common/storage-private-endpoints.md)|
+|开发人员体验|[REST](../../data-lake-store/data-lake-store-data-operations-rest-api.md)， [.NET](../../data-lake-store/data-lake-store-data-operations-net-sdk.md)， [Java](../../data-lake-store/data-lake-store-get-started-java-sdk.md)， [Python](../../data-lake-store/data-lake-store-data-operations-python.md)，[电源外壳](../../data-lake-store/data-lake-store-get-started-powershell.md)， [Azure CLI](../../data-lake-store/data-lake-store-get-started-cli-2.0.md)|一般可用 - [REST](/rest/api/storageservices/data-lake-storage-gen2)， [.NET](data-lake-storage-directory-file-acl-dotnet.md)， [Java](data-lake-storage-directory-file-acl-java.md)， [Python](data-lake-storage-directory-file-acl-python.md)<br>公共预览 - [JavaScript](data-lake-storage-directory-file-acl-javascript.md)，[电源外壳](data-lake-storage-directory-file-acl-powershell.md)， [Azure CLI](data-lake-storage-directory-file-acl-cli.md)|
+|诊断日志|经典日志<br>[集成 Azure 监视器](../../data-lake-store/data-lake-store-diagnostic-logs.md)|[经典日志](../common/storage-analytics-logging.md)- 一般可用<br>Azure 监视器集成 + 时间线 TBD|
 |生态系统|[HDInsight （3.6）](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)， [Azure 数据砖 （3.1 及以上）](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html)， [SQL DW](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store)， [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight （3.6， 4.0）](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)， [Azure 数据砖 （5.1 及以上）](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2)， [SQL DW](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md)， [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
 
 <a id="migration-patterns" />

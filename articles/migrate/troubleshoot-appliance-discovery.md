@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 9fbf55fbe16d958bf10541894159dade26668bef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6cb83a87f2e96eb62696e5d92095ef2b8d7c7def
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336721"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677329"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>排除 Azure 迁移设备和发现故障
 
@@ -27,7 +27,7 @@ ms.locfileid: "80336721"
 
 如果您收到错误"提供的清单文件无效：OVF清单条目无效"，则执行以下操作：
 
-1. 通过检查 Azure 迁移设备 OVA 文件是否正确下载。 [了解详情](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware)。 如果哈希值不匹配，请再次下载 OVA 文件并重试部署。
+1. 通过检查 Azure 迁移设备 OVA 文件是否正确下载。 [了解详细信息](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware)。 如果哈希值不匹配，请再次下载 OVA 文件并重试部署。
 2. 如果部署仍然失败，并且您正在使用 VMware vSphere 客户端来部署 OVF 文件，请尝试通过 vSphere Web 客户端进行部署。 如果部署仍然失败，请尝试使用其他 Web 浏览器。
 3. 如果您使用的是 vSphere Web 客户端并尝试在 vCenter Server 6.5 或 6.7 上部署它，请尝试直接在 ESXi 主机上部署 OVA：
    - 直接与 Web 客户端（https：//<*主机 IP 地址*>/ui）连接到 ESXi 主机（而不是 vCenter 服务器）。
@@ -41,6 +41,15 @@ ms.locfileid: "80336721"
 - 如果代理需要授权凭据，请确保提供授权凭据。
 - 如果使用基于 URL 的防火墙代理来控制出站连接，请[将这些 URL](migrate-appliance.md#url-access)添加到允许列表中。
 - 如果您使用拦截代理连接到互联网，请使用[以下步骤](https://docs.microsoft.com/azure/migrate/concepts-collector)将代理证书导入设备 VM。
+
+## <a name="cant-sign-into-azure-from-the-appliance-web-app"></a>无法从设备 Web 应用登录到 Azure
+
+如果您使用不正确的 Azure 帐户登录到 Azure，则会出现"对不起，但我们登录时遇到问题"错误。 出现此错误有几个原因：
+
+- 如果您为公共云登录到设备 Web 应用程序，请使用政府云门户的用户帐户凭据。
+- 如果使用私有云门户的用户帐户凭据登录政府云的设备 Web 应用程序。
+
+确保您使用的凭据正确。
 
 ##  <a name="datetime-synchronization-error"></a>日期/时间同步错误
 

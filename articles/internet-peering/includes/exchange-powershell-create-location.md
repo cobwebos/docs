@@ -8,14 +8,14 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 6f5d2dc30ac0f6316587fa0836b87cbd4efc0a8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2ebf5d574b4d185953ab0f7984648c440d6f107e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75774388"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678630"
 ---
-PowerShell cmdlet **Get-AzPeeringLocation**返回具有强制参数`Kind`的对等位置列表，您将在后面的步骤中使用该参数：
+PowerShell cmdlet **Get-AzPeeringLocation**返回具有强制参数`Kind`的对等位置列表，您将在后面的步骤中使用该参数。
 
 ```powershell
 Get-AzPeeringLocation -Kind "Exchange"
@@ -32,7 +32,7 @@ Get-AzPeeringLocation -Kind "Exchange"
 
 通过引用[对等互连数据库](https://wwww.peeringdb.com)，验证您是否在所需的对等设施中。
 
-下面是一个示例，演示如何使用西雅图作为对等位置来创建对等互连：
+此示例演示如何使用西雅图作为对等位置来创建对等互连。
 
 ```powershell
 $exchangeLocations = Get-AzPeeringLocation -Kind Exchange

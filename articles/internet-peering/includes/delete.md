@@ -8,11 +8,11 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 0ed2137d1fd7a3c207db3ec49590a61f00b5fd99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d3f866064790fb3936fb76c1deef15ee2a38773
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75774271"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678692"
 ---
-此时不支持使用门户或 PowerShell 进行取消预配，请与[Microsoft 对等互连器联系](mailto:peeringexperience@microsoft.com)"取消预配"。
+此时，使用 Azure 门户或 PowerShell 不支持取消预配。 要取消预配，请与[微软对等互连](mailto:peeringexperience@microsoft.com)。

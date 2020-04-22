@@ -5,14 +5,14 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 4583c02b52ab6b3a4e5056a47db096d4e34399ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3eedb5440711c7a45a13dcd53dd489c490588fc
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248016"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677411"
 ---
-# <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure 备份故障排除：代理或扩展的问题
+# <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>对 Azure 备份失败进行故障排除：代理或扩展的问题
 
 本文提供故障排查步骤，可帮助解决与 VM 代理和扩展通信相关的 Azure 备份错误。
 
@@ -20,26 +20,26 @@ ms.locfileid: "79248016"
 
 ## <a name="usererrorguestagentstatusunavailable---vm-agent-unable-to-communicate-with-azure-backup"></a><a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable - VM 代理无法与 Azure 备份通信
 
-**错误代码**： 用户错误来宾代理状态不可用 <br>
-**错误消息**：VM 代理无法与 Azure 备份通信<br>
+**错误代码**：UserErrorGuestAgentStatusUnavailable <br>
+**错误消息**：VM 代理无法与 Azure 备份进行通信<br>
 
-Azure VM 代理可能已停止、过时、处于不一致状态或未安装。 这些状态阻止 Azure 备份服务触发快照。
+Azure VM 代理可能已停止、已过期、处于不一致状态或未安装。 这些状态会阻止 Azure 备份服务触发快照。
 
-- **打开 Azure 门户> VM >>属性窗格**>确保 VM**状态****处于运行**状态和**代理状态****已准备就绪**。 如果 VM 代理已停止或处于不一致状态，请重启代理<br>
-  - 对于 Windows VM，请按照[以下步骤](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)重新启动来宾代理。<br>
-  - 对于 Linux VM，请按照[以下步骤](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)重新启动来宾代理。
-- **打开 Azure 门户> VM >>扩展>** 确保所有扩展都**处于预配成功**状态。 如果未处于该状态，请按照以下[步骤](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state)解决问题。
+- 打开 Azure 门户>“VM”>“设置”>“属性”窗格 > 确保 VM“状态”为“正在运行”，“代理状态”为“就绪”      。 如果 VM 代理已停止或处于不一致状态，请重启代理<br>
+  - 对于 Windows VM，请遵循以下[步骤](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)重启来宾代理。<br>
+  - 对于 Linux VM，请遵循以下[步骤](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)重启来宾代理。
+- 打开 Azure 门户>“VM”>“设置”>“扩展”> 确保所有扩展均处于“预配成功”状态   。 如果未处于该状态，请按照以下[步骤](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state)解决问题。
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError - 无法与 VM 代理通信以获取快照状态
 
-**错误代码**： 来宾代理快照任务状态错误<br>
-**错误消息**：无法与 VM 代理通信快照状态 <br>
+**错误代码**：GuestAgentSnapshotTaskStatusError<br>
+**错误消息**：无法与 VM 代理通信，因此无法获取快照状态 <br>
 
-注册和计划 Azure 备份服务的 VM 后，备份通过与 VM 备份扩展通信来获取时间点快照来启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：  
+注册和计划 Azure 备份服务的 VM 后，备份会通过与 VM 备份扩展通信来获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：  
 
 **原因 1：[代理安装在 VM 中，但无响应（针对 Windows VM）](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
 
-**原因 2：[安装在 VM 中的代理已过期（对于 Linux VM）](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
+**原因 2：[VM 中安装的代理已过时（针对 Linux VM）](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
 
 **原因 3：[无法检索快照状态或无法创建快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**
 
@@ -52,7 +52,7 @@ Azure VM 代理可能已停止、过时、处于不一致状态或未安装。 �
 
 当其中一个扩展失败将 VM 状态置于预配失败状态时，会发生此错误。<br>**打开 Azure 门户> VM >>扩展状态的"设置">扩展**，并检查所有扩展是否处于**预配成功**状态。 要了解更多信息，请参阅[预配状态](https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle#provisioning-states)。
 
-- 如果 VMSnapshot 扩展处于失败状态，则右键单击失败的扩展并将其删除。 触发按需备份。 此操作将重新安装扩展并运行备份作业。  <br>
+- 如果 VMSnapshot 扩展处于失败状态，则右键单击失败的扩展并将其删除。 触发按需备份。 此操作会重新安装扩展并运行备份作业。  <br>
 - 如果其他任何扩展处于失败状态，则可能会干扰备份。 确保这些扩展问题已解决，然后重试备份操作。
 - 如果 VM 预配状态处于更新状态，则可能会干扰备份。 确保它正常，并重试备份操作。
 
@@ -102,11 +102,11 @@ Azure VM 代理可能已停止、过时、处于不一致状态或未安装。 �
 ## <a name="backupoperationfailed--backupoperationfailedv2---backup-fails-with-an-internal-error"></a>BackUpOperationFailed/BackUpOperationFailedV2 - 备份失败并出现内部错误
 
 **错误代码**：BackUpOperationFailed/BackUpOperationFailedV2 <br>
-**错误消息**：备份失败，出现内部错误 - 请在几分钟内重试操作 <br>
+**错误消息**：发生内部错误，备份失败 - 请在几分钟后重试操作 <br>
 
-注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：  
+注册和计划 Azure 备份服务的 VM 后，备份会通过与 VM 备份扩展通信来获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：  
 **原因 1：[代理安装在 VM 中，但无响应（针对 Windows VM）](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
-**原因 2：[安装在 VM 中的代理已过期（对于 Linux VM）](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**原因 2：[VM 中安装的代理已过时（针对 Linux VM）](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **原因 3：[无法检索快照状态或无法创建快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **原因 4：[由于资源组锁定，备份服务没有删除旧还原点的权限](#remove_lock_from_the_recovery_point_resource_group)**<br>
 
@@ -141,6 +141,13 @@ Azure VM 代理可能已停止、过时、处于不一致状态或未安装。 �
 **错误消息**：由于错误，备份失败。 有关详细信息，请参阅作业错误消息详细信息。
 
 此错误从 IaaS VM 报告。 要确定问题的根本原因，请转到恢复服务保管库设置。 在 **"监视**"部分下，选择 **"备份作业**"以筛选和查看状态。 单击 **"失败"** 以查看基础错误消息详细信息。 根据错误详细信息页中的建议执行进一步操作。
+
+## <a name="usererrorbcmdatasourcenotpresent---backup-failed-this-virtual-machine-is-not-actively-protected-by-azure-backup"></a>UserErrorBcmDatasource 不存在 - 备份失败：此虚拟机未（主动）受 Azure 备份保护
+
+**错误代码**： 用户错误BcmDatasource不存在 <br>
+**错误消息**：备份失败：此虚拟机未（主动）受 Azure 备份保护。
+
+请检查给定虚拟机是否受 Azure 备份保护（未处于暂停状态）。 要解决此问题，请确保虚拟机处于活动状态，然后重试该操作。
 
 ## <a name="causes-and-solutions"></a>原因和解决方法
 
@@ -211,7 +218,7 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 
 ### <a name="remove-lock-from-the-recovery-point-resource-group"></a><a name="remove_lock_from_the_recovery_point_resource_group"></a>删除恢复点资源组中的锁
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 转到 **"所有资源"选项**，选择以下格式的还原点集合资源组AzureBackupRG_`<Geo>`*`<number>`。
 3. 在“设置”部分，选择“锁”以显示锁。********
 4. 若要删除锁，请选择省略号，然后单击“删除”。****
@@ -240,7 +247,7 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 
 要手动清除由于资源组上的锁定而未清除的还原点集合，请尝试以下步骤：
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 在“中心”菜单中单击“所有资源”，选择 VM 所在的、采用 AzureBackupRG_`<Geo>`_`<number>` 格式的资源组。********
 
     ![删除锁](./media/backup-azure-arm-vms-prepare/resource-group.png)

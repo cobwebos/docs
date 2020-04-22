@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 72e1d3b0ad72b1e68b88eb0550cbe839ade9d929
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 74d38af4a64a184b26bd6ba1105db0d2530d8ba6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260015"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676404"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box 和 Azure Data Box Heavy 的跟踪与事件日志记录
 
@@ -40,20 +40,20 @@ Data Box 或 Data Box Heavy 订单会经历以下步骤：订购、设置、数�
 可为 Azure Data Box 服务定义的两个角色：
 
 - **Data Box 读取者** - 对订单拥有按范围定义的只读访问权限。 他们只能查看订单详细信息。 他们无法访问与存储帐户相关的任何其他详细信息，也无法编辑订单详细信息，例如地址等。
-- **Data Box 参与者** - 仅当已对某个存储帐户拥有写入访问权限时，才能创建一个订单以将数据传输到给定的存储帐户。** 如果他们没有某个存储帐户的访问权限，则无法 Data Box 订单以将数据复制到该帐户。 此角色不会定义任何存储帐户相关的权限，也不授予对存储帐户的访问权限。  
+- **Data Box 参与者** - 仅当已对某个存储帐户拥有写入访问权限时，才能创建一个订单以将数据传输到给定的存储帐户。  如果他们没有某个存储帐户的访问权限，则无法 Data Box 订单以将数据复制到该帐户。 此角色不会定义任何存储帐户相关的权限，也不授予对存储帐户的访问权限。  
 
 若要限制对订单的访问，可以：
 
 - 在订单级别分配一个角色。 用户只拥有角色定义的权限，只能与该特定的 Data Box 订单交互，而没有任何其他权限。
 - 在资源组级别分配一个角色，这样，用户便有权访问资源组中的所有 Data Box 订单。
 
-有关 RBAC 建议用法的详细信息，请参阅 [RBAC 的最佳做法](../role-based-access-control/overview.md#best-practice-for-using-rbac)。
+有关建议的 RBAC 使用的详细信息，请参阅[Azure RBAC 的最佳做法](../role-based-access-control/best-practices.md)。
 
 ## <a name="track-the-order"></a>跟踪订单
 
 可以通过 Azure 门户和承运商网站跟踪订单。 随时可以使用以下机制跟踪 Data Box 订单：
 
-- 若要在设备已抵达 Azure 数据中心或你的所在地时跟踪订单，请在 Azure 门户中转到你的 Data Box 订单并选择“概述”。****
+- 若要在设备已抵达 Azure 数据中心或你的所在地时跟踪订单，请在 Azure 门户中转到你的 Data Box 订单并选择“概述”。 
 
     ![查看订单状态和跟踪号](media/data-box-logs/overview-view-status-1.png)
 
@@ -64,7 +64,7 @@ Data Box 或 Data Box Heavy 订单会经历以下步骤：订购、设置、数�
 
 - 当 Data Box 抵达你的所在地时处于锁定状态。 可以使用 Azure 门户中根据订单提供的设备凭据。  
 
-    如果已安装 Data Box，你可能需要知道谁访问过设备凭据。 若要了解谁访问过“设备凭据”边栏选项卡，可以查询活动日志。****  涉及到访问“设备详细信息”>“凭据”边栏选项卡的任何操作都会作为 `ListCredentials` 操作记录到活动日志。****
+    如果已安装 Data Box，你可能需要知道谁访问过设备凭据。 若要了解谁访问过“设备凭据”边栏选项卡，可以查询活动日志。   涉及到访问“设备详细信息”>“凭据”边栏选项卡的任何操作都会作为  **操作记录到活动日志。** `ListCredentials`
 
     ![查询活动日志](media/data-box-logs/query-activity-log-1.png)
 
@@ -76,7 +76,7 @@ Data Box 或 Data Box Heavy 订单会经历以下步骤：订购、设置、数�
 
 ### <a name="errorxml-file"></a>Error.xml 文件
 
-请确保复制作业已完成且未出错。 如果复制过程中出错，请从“连接和复制”页下载日志。****
+请确保复制作业已完成且未出错。 如果复制过程中出错，请从“连接和复制”页下载日志。 
 
 - 如果将未经 512 字节对齐的文件复制到 Data Box 上的托管磁盘文件夹，该文件不会作为页 Blob 上传到临时存储帐户。 日志中会出现错误。 请删除该文件，并复制经过 512 字节对齐的文件。
 - 如果复制了 VHDX、动态 VHD 或差异 VHD（不支持这些文件），将在日志中看到错误。
@@ -205,9 +205,9 @@ BOM 或清单文件还会复制到 Azure 存储帐户。 可以使用 BOM 或清
 
 默认情况下，日志将写入一个名为 `copylog` 的容器中。 使用以下命名约定存储日志：
 
-`storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`.
+`storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml` 列中的一个值匹配。
 
-复制日志路径也会显示在门户的“概述”边栏选项卡上。****
+复制日志路径也会显示在门户的“概述”边栏选项卡上。 
 
 ![完成后“概述”边栏选项卡中显示的复制日志路径](media/data-box-logs/copy-log-path-1.png)
 
@@ -354,13 +354,13 @@ The authentication information fields provide detailed information about this sp
 
 ## <a name="download-order-history"></a>下载订单历史记录
 
-Azure 门户提供订单历史记录。 如果订单处理和设备清理（从磁盘中擦除数据）已完成，请转到设备订单，然后导航到“订单详细信息”。**** “下载订单历史记录”选项可用。**** 有关详细信息，请参阅[下载订单历史记录](data-box-portal-admin.md#download-order-history)。
+Azure 门户提供订单历史记录。 如果订单处理和设备清理（从磁盘中擦除数据）已完成，请转到设备订单，然后导航到“订单详细信息”。  “下载订单历史记录”选项可用。  有关详细信息，请参阅[下载订单历史记录](data-box-portal-admin.md#download-order-history)。
 
 滚动浏览订单历史记录时，可以看到：
 
 - 设备的承运商跟踪信息。
 - 包含 *SecureErase* 活动的事件。 这些事件对应于磁盘上的数据擦除活动。
-- Data Box 日志链接。 会显示审核日志、复制日志和 BOM 文件的路径。******
+- Data Box 日志链接。 会显示审核日志、复制日志和 BOM 文件的路径。   
 
 下面是 Azure 门户中的订单历史记录日志的示例：
 

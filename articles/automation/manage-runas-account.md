@@ -5,21 +5,21 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 341db4ffa5b2e0641572f2c9dc011e91fac6a1e9
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: 8d2c2f1e7ee10153108e54649ceba45b927b0cd2
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81617317"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676632"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>管理 Azure 自动化运行方式帐户
 
-在 Azure 自动化中运行为帐户提供使用 Azure cmdlet 管理 Azure 中的资源的身份验证。 创建"运行为"帐户时，它会在 Azure 活动目录 （AD） 中创建新的服务主体用户，并在订阅级别将参与者角色分配给此用户。 对于在 Azure 虚拟机上使用混合 Runbook 辅助角色的 Runbook，可以使用 [Azure 资源托管标识](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)而不是运行方式帐户来对 Azure 资源进行身份验证。
+Azure 自动化中的运行方式帐户提供身份验证，以使用 Azure cmdlet 管理 Azure 中的资源。 创建运行方式帐户时，将在 Azure Active Directory (AD) 中创建新的服务主体用户，并在订阅级别向此用户分配“参与者”角色。 对于在 Azure 虚拟机上使用混合 Runbook 辅助角色的 Runbook，可以使用 [Azure 资源托管标识](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)而不是运行方式帐户来对 Azure 资源进行身份验证。
 
-默认情况下，"作为帐户运行"的服务主体没有读取 Azure AD 的权限。 如果要添加读取或管理 Azure AD 的权限，则需要在**API 权限**下授予服务主体的权限。 若要了解详细信息，请参阅[添加用于访问 Web API 的权限](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)。
+默认情况下，运行方式帐户的服务主体没有读取 Azure AD 的权限。 如果希望添加读取或管理 Azure AD 的权限，需要在“API 权限”  下对服务主体授予该权限。 若要了解详细信息，请参阅[添加用于访问 Web API 的权限](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)。
 
 >[!NOTE]
->本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az 模块安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于自动化帐户，可以使用["如何更新 Azure 自动化 中的 Azure PowerShell"模块](automation-update-azure-modules.md)将模块更新到最新版本。
+>本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)。 有关混合 Runbook 辅助角色上的 Az 模块安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 对于自动化帐户，可以使用["如何更新 Azure 自动化 中的 Azure PowerShell"模块](automation-update-azure-modules.md)将模块更新到最新版本。
 
 ## <a name="types-of-run-as-accounts"></a>作为帐户运行的类型
 
@@ -37,9 +37,9 @@ Azure 自动化使用两种类型的"以帐户形式运行"：
 
 * 将创建使用自签名证书的 Azure AD 应用程序，在 Azure AD 中为此应用程序创建服务主体帐户，并在当前订阅中为此帐户分配“参与者”角色。 您可以将证书设置更改为所有者或任何其他角色。 有关详细信息，请参阅 [Azure 自动化中基于角色的访问控制](automation-role-based-access-control.md)。
   
-* 创建指定自动化帐户中指定的`AzureRunAsCertificate`自动化证书资产。 证书资产包含 Azure AD 应用程序使用的证书私钥。
+* 在指定的自动化帐户中创建名为 `AzureRunAsCertificate` 的自动化证书资产。 证书资产包含 Azure AD 应用程序使用的证书私钥。
   
-* 创建指定自动化帐户中指定的`AzureRunAsConnection`自动化连接资产。 连接资产包含应用程序 ID、租户 ID、订阅 ID 和证书指纹。
+* 在指定的自动化帐户中创建名为 `AzureRunAsConnection` 的自动化连接资产。 连接资产包含应用程序 ID、租户 ID、订阅 ID 和证书指纹。
 
 ### <a name="azure-classic-run-as-account"></a>Azure 经典运行方式帐户
 
@@ -63,12 +63,12 @@ Azure 经典运行为帐户执行以下任务。
 
 |任务|Cmdlet  |最低权限  |设置权限的位置|
 |---|---------|---------|---|
-|创建 Azure AD 应用程序|[新阿达应用程序](https://docs.microsoft.com/powershell/module/az.resources/new-azadapplication?view=azps-3.5.0)     | 应用程序开发人员角色<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>主页 > Azure AD >应用注册 |
-|将凭据添加到应用程序。|[新阿达帕西](https://docs.microsoft.com/powershell/module/az.resources/new-azadappcredential?view=azps-3.5.0)     | 应用程序管理员或全局管理员<sup>1</sup>         |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>主页 > Azure AD >应用注册|
-|创建和获取 Azure AD 服务主体|[New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal?view=azps-3.5.0)</br>[获取 Aad 服务原则](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal?view=azps-3.5.0)     | 应用程序管理员或全局管理员<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>主页 > Azure AD >应用注册|
-|分配或获取指定主体的 RBAC 角色|[New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment?view=azps-3.5.0)</br>[Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleAssignment?view=azps-3.5.0)      | 用户访问管理员或所有者，或具有以下权限：</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br> | [订阅](../role-based-access-control/role-assignments-portal.md)</br>“主页”>“订阅”> \<订阅名称\> -“访问控制(IAM)”|
-|创建或删除自动化证书|[新阿兹自动化证书](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationCertificate?view=azps-3.5.0)</br>[删除-阿兹自动化证书](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationcertificate?view=azps-3.5.0)     | 资源组的参与者         |自动化帐户资源组|
-|创建或删除自动化连接|[新-阿兹自动化连接](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection?view=azps-3.5.0)</br>[删除-阿兹自动化连接](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationconnection?view=azps-3.5.0)|资源组的参与者 |自动化帐户资源组|
+|创建 Azure AD 应用程序|[新阿达应用程序](https://docs.microsoft.com/powershell/module/az.resources/new-azadapplication)     | 应用程序开发人员角色<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>主页 > Azure AD >应用注册 |
+|将凭据添加到应用程序。|[新阿达帕西](https://docs.microsoft.com/powershell/module/az.resources/new-azadappcredential)     | 应用程序管理员或全局管理员<sup>1</sup>         |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>主页 > Azure AD >应用注册|
+|创建和获取 Azure AD 服务主体|[New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal)</br>[获取 Aad 服务原则](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal)     | 应用程序管理员或全局管理员<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>主页 > Azure AD >应用注册|
+|分配或获取指定主体的 RBAC 角色|[New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)</br>[Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleAssignment)      | 用户访问管理员或所有者，或具有以下权限：</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br> | [订阅](../role-based-access-control/role-assignments-portal.md)</br>“主页”>“订阅”> \<订阅名称\> -“访问控制(IAM)”|
+|创建或删除自动化证书|[新阿兹自动化证书](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationCertificate)</br>[删除-阿兹自动化证书](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationcertificate)     | 资源组的参与者         |自动化帐户资源组|
+|创建或删除自动化连接|[新-阿兹自动化连接](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection)</br>[删除-阿兹自动化连接](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationconnection)|资源组的参与者 |自动化帐户资源组|
 
 <sup>1</sup>如果 Azure AD 租户的用户可以在"用户设置"页上**注册应用程序**选项设置为 **"是**"，则 Azure AD 租户中的 1 个非管理员用户可以[注册 AD 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)。 如果应用程序注册设置**为"否**"，则执行此操作的用户必须如此表中的定义。
 

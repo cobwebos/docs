@@ -2,13 +2,13 @@
 title: 创建和管理 Azure Migrate 项目
 description: 在 Azure 迁移中查找、创建、管理和删除项目。
 ms.topic: how-to
-ms.date: 02/17/2020
-ms.openlocfilehash: a49595f0580e71048239d5c5d8f4d1a66e24fe6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/19/2020
+ms.openlocfilehash: f5079ed979d98f2c6f0c654c860c6f176f366497
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79269635"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676395"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>创建和管理 Azure Migrate 项目
 
@@ -23,7 +23,7 @@ ms.locfileid: "79269635"
 
 如果已有 Azure 迁移项目，并且想要创建其他项目，请执行以下操作：  
 
-1. 在[Azure 门户](https://portal.azure.com)中，搜索**Azure 迁移**。
+1. 在[Azure 公共门户](https://portal.azure.com)或[Azure 政府中](https://portal.azure.us)，搜索**Azure 迁移**。
 2. 在 Azure 迁移仪表板>**服务器**上，选择右上角的**更改**。
 
    ![更改 Azure 迁移项目](./media/create-manage-projects/switch-project.png)
