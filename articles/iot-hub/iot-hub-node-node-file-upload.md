@@ -9,12 +9,13 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: db3da5ff2d7e8b6fa493f5338fac93df0d1a7fe2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: af9743233a61e8e6d816b362d35e6a38735df35b
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77110897"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732253"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>使用 IoT 中心将文件从设备上传到云 (Node.js)
 
@@ -44,7 +45,7 @@ ms.locfileid: "77110897"
 > [!NOTE]
 > IoT 中心通过 Azure IoT 设备 SDK 来支持许多设备平台和语言（包括 C、.NET、Javascript、Python 和 Java）。 有关如何将设备连接到 Azure IoT 中心的步骤说明，请参阅 [Azure IoT 开发人员中心]。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Node.js 版本 10.0.x 或更高版本。 [准备开发环境](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
 
@@ -64,15 +65,15 @@ ms.locfileid: "77110897"
     npm init
     ```
 
-2. 在 ```simulateddevice``` 文件夹的命令提示符处，运行下述命令以安装 **** azure-iot-device 设备 SDK 包和 **** azure-iot-device-mqtt 包：
+2. 在 ```simulateddevice``` 文件夹的命令提示符处，运行下述命令以安装  azure-iot-device 设备 SDK 包和  azure-iot-device-mqtt 包：
 
     ```cmd/sh
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-3. 在 ```simulateddevice``` 文件夹中，利用文本编辑器创建 **** SimulatedDevice.js 文件。
+3. 在 **文件夹中，利用文本编辑器创建**```simulateddevice```SimulatedDevice.js 文件。
 
-4. 在 **SimulatedDevice.js** 文件的开头添加以下 ```require``` 语句：
+4. 在 ```require```SimulatedDevice.js**文件的开头添加以下** 语句：
 
     ```javascript
     'use strict';
@@ -82,7 +83,7 @@ ms.locfileid: "77110897"
     var clientFromConnectionString = require('azure-iot-device-mqtt').clientFromConnectionString;
     ```
 
-5. 添加 `deviceconnectionstring` 变量，并使用它创建一个客户端**** 实例。  将 `{deviceconnectionstring}` 替换为在**“创建 IoT 中心”部分中创建的设备的名称。
+5. 添加 `deviceconnectionstring` 变量，并使用它创建一个客户端  实例。  将 `{deviceconnectionstring}` 替换为在  “创建 IoT 中心”部分中创建的设备的名称。
 
     ```javascript
     var connectionString = '{deviceconnectionstring}';
@@ -121,7 +122,7 @@ ms.locfileid: "77110897"
 
 ## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
 
-在本文中，你将创建一项后端服务，用于从你在[将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-node.md)中创建的 IoT 中心接收文件上传通知消息。 若要接收文件上传通知消息，服务需要“服务连接”权限。**** 默认情况下，每个 IoT 中心都使用名为 **service** 的共享访问策略创建，该策略授予此权限。
+在本文中，你将创建一项后端服务，用于从你在[将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-node.md)中创建的 IoT 中心接收文件上传通知消息。 若要接收文件上传通知消息，服务需要“服务连接”权限。  默认情况下，每个 IoT 中心都使用名为 **service** 的共享访问策略创建，该策略授予此权限。
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
@@ -129,7 +130,7 @@ ms.locfileid: "77110897"
 
 本部分中的操作将会创建一个 Node.js 控制台应用，用于接收来自 IoT 中心的文件上传通知消息。
 
-可以使用 IoT 中心的 **iothubowner** 的连接字符串完成本部分的操作。 可以在 [Azure 门户](https://portal.azure.com/)上的“共享访问策略”边栏选项卡中找到该连接字符串。****
+可以使用 IoT 中心的 **iothubowner** 的连接字符串完成本部分的操作。 可以在 [Azure 门户](https://portal.azure.com/)上的“共享访问策略”边栏选项卡中找到该连接字符串。 
 
 1. 创建名为 ```fileuploadnotification``` 的空文件夹。  在 ```fileuploadnotification``` 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
 
@@ -143,9 +144,9 @@ ms.locfileid: "77110897"
     npm install azure-iothub --save
     ```
 
-3. 使用文本编辑器在 `fileuploadnotification` 文件夹中创建 **FileUploadNotification.js** 文件。
+3. 使用文本编辑器在 **文件夹中创建**FileUploadNotification.js`fileuploadnotification` 文件。
 
-4. 在 **FileUploadNotification.js** 文件的开头添加以下 `require` 语句：
+4. 在 `require`FileUploadNotification.js**文件的开头添加以下** 语句：
 
     ```javascript
     'use strict';
@@ -153,7 +154,7 @@ ms.locfileid: "77110897"
     var Client = require('azure-iothub').Client;
     ```
 
-5. 添加 `iothubconnectionstring` 变量，并使用它创建一个客户端**** 实例。  将`{iothubconnectionstring}`占位符值替换为以前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 IoT 中心连接字符串：
+5. 添加 `iothubconnectionstring` 变量，并使用它创建一个客户端  实例。  将 `{iothubconnectionstring}` 占位符值替换为先前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 IoT 中心连接字符串：
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';

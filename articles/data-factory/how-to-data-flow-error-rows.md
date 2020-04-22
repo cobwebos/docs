@@ -6,14 +6,14 @@ author: kromerm
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 04/20/2020
 ms.author: makromer
-ms.openlocfilehash: 4f65421a6457d4bf4d438ce9d035d46476829da2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8225143bb75118620b45c2520bb62ea30501a617
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414357"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732689"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>处理数据工厂映射数据流中的 SQL 截断错误行
 
@@ -21,7 +21,7 @@ ms.locfileid: "81414357"
 
 在数据工厂中使用映射数据流时的常见方案是将数据转换后的数据写入 Azure SQL 数据库。 在这种情况下，必须防止的常见错误条件是可能的列截断。 按照以下步骤提供不适合目标字符串列的列的日志记录，从而允许数据流在这些方案中继续。
 
-## <a name="scenario"></a>场景
+## <a name="scenario"></a>方案
 
 1. 我们有一个目标 Azure SQL 数据库表，```nvarchar(5)```该表具有一个名为"name"的列。
 
@@ -30,6 +30,9 @@ ms.locfileid: "81414357"
     ![影片数据流 1](media/data-flow/error4.png)
     
 3. 问题是，影片标题不能全部适合只能容纳 5 个字符的接收器列。 执行此数据流时，您将收到如下所示的错误：```"Job failed due to reason: DF-SYS-01 at Sink 'WriteToDatabase': java.sql.BatchUpdateException: String or binary data would be truncated. java.sql.BatchUpdateException: String or binary data would be truncated."```
+
+本视频介绍数据流中设置错误行处理逻辑的示例：
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4uOHj]
 
 ## <a name="how-to-design-around-this-condition"></a>如何围绕此条件进行设计
 

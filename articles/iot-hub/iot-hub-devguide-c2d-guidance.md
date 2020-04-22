@@ -8,12 +8,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: a2ca9a167d50619ed2963b13515c0a772d712570
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: b5682334bd3fb23fbbebed5fc8ece6d55e9c5652
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77591262"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733231"
 ---
 # <a name="cloud-to-device-communications-guidance"></a>从云到设备通信指南
 
@@ -43,4 +46,4 @@ IoT 中心提供三个选项，允许设备应用向后端应用公开功能：
 
 * [使用直接方法](quickstart-control-device-node.md)
 * [使用所需属性配置设备](tutorial-device-twins.md) 
-* [发送云到设备的消息](iot-hub-node-node-c2d.md)
+* [发送“云到设备”消息](iot-hub-node-node-c2d.md)

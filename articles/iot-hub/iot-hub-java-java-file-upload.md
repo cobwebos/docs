@@ -9,12 +9,15 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: fcc2013f67c6e91182979a9bcab683894088a1d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: f0753827fe5f7f2b866726683d4cb1f205da4599
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284520"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732464"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>使用 IoT 中心将文件从设备上传到云 (Java)
 
@@ -39,16 +42,16 @@ ms.locfileid: "79284520"
 
 * **模拟设备**，在 [使用 IoT Hub] 教程中创建的应用程序的修改版本。 该应用使用 IoT 中心提供的 SAS URI 将文件上传到存储。
 
-* **读取文件上传通知**，从 IoT 中心接收文件上载通知。
+* **read-file-upload-notification**，它可以接收来自 IoT 中心的文件上传通知。
 
 > [!NOTE]
 > IoT 中心通过 Azure IoT 设备 SDK 来支持许多设备平台和语言（包括 C、.NET 和 Javascript）。 有关如何将设备连接到 Azure IoT 中心的分步说明，请参阅 [Azure IoT 开发人员中心](https://azure.microsoft.com/develop/iot)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* [Java SE 开发工具包 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). 请确保在“长期支持”**** 下选择“Java 8”**** 以获取 JDK 8 的下载。
+* [Java SE 开发工具包 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)。 请确保在“长期支持”  下选择“Java 8”  以获取 JDK 8 的下载。
 
-* [马文 3](https://maven.apache.org/download.cgi)
+* [Maven 3](https://maven.apache.org/download.cgi)
 
 * 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
 
@@ -124,7 +127,7 @@ ms.locfileid: "79284520"
 
 ## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
 
-在本文中，你将创建一项后端服务，用于从你在[将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-java.md)中创建的 IoT 中心接收文件上传通知消息。 若要接收文件上传通知消息，服务需要“服务连接”权限。**** 默认情况下，每个 IoT 中心都使用名为 **service** 的共享访问策略创建，该策略授予此权限。
+在本文中，你将创建一项后端服务，用于从你在[将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-java.md)中创建的 IoT 中心接收文件上传通知消息。 若要接收文件上传通知消息，服务需要“服务连接”权限。  默认情况下，每个 IoT 中心都使用名为 **service** 的共享访问策略创建，该策略授予此权限。
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
@@ -140,7 +143,7 @@ ms.locfileid: "79284520"
 
 2. 在命令提示符下，导航到新的 `read-file-upload-notification` 文件夹。
 
-3. 使用文本编辑器打开 `read-file-upload-notification` 文件夹中的 `pom.xml` 文件，在 **dependencies** 节点中添加以下依赖项。 这样即可使用应用程序中的 **iothub-java-service-client** 包来与 IoT 中心服务通信：
+3. 使用文本编辑器打开 `pom.xml` 文件夹中的 `read-file-upload-notification` 文件，在 **dependencies** 节点中添加以下依赖项。 这样即可使用应用程序中的 **iothub-java-service-client** 包来与 IoT 中心服务通信：
 
     ```xml
     <dependency>
@@ -151,7 +154,7 @@ ms.locfileid: "79284520"
     ```
 
     > [!NOTE]
-    > 可以使用 [Maven 搜索](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)检查是否有最新版本的 **iot-service-client**。
+    > 可以使用 **Maven 搜索**检查是否有最新版本的 [iot-service-client](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)。
 
 4. 保存并关闭 `pom.xml` 文件。
 
@@ -167,7 +170,7 @@ ms.locfileid: "79284520"
     import java.util.concurrent.Executors;
     ```
 
-7. 将以下类级变量添加到**App**类。 将`{Your IoT Hub connection string}`占位符值替换为以前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 IoT 中心连接字符串：
+7. 将以下类级变量添加到 **App** 类。 将 `{Your IoT Hub connection string}` 占位符值替换为先前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 IoT 中心连接字符串：
 
     ```java
     private static final String connectionString = "{Your IoT Hub connection string}";
@@ -254,7 +257,7 @@ mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
 mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
 ```
 
-以下屏幕截图显示了**来自模拟设备**应用的输出：
+以下屏幕截图显示 **simulated-device** 应用的输出：
 
 ![simulated-device 应用的输出](media/iot-hub-java-java-upload/simulated-device.png)
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 1d8085c6056cb0d2541999c3e9c249cde3da8834
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 60e9a435d705ee0fee6509e92cdcb056ac7ab609
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641255"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758106"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>向客户端应用添加自动完成和建议
 
@@ -22,7 +22,7 @@ ms.locfileid: "81641255"
 要在 Azure 认知搜索中实现这些体验，您需要：
 
 + 后端的*推荐器*。
-+ 指定自动完成或建议 API 的*查询*。
++ 指定[自动完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete)或[建议](https://docs.microsoft.com/rest/api/searchservice/suggestions)API 的*查询*。
 + 用于处理客户端应用中的搜索类型交互的*UI 控件*。 为此，我们建议使用现有的 JavaScript 库。
 
 在 Azure 认知搜索中，自动完成的查询和建议的结果将从已向建议程序注册的选定字段从搜索索引中检索。 建议器是索引的一部分，它指定哪些字段将提供完成查询、建议结果或同时执行两者的内容。 创建和加载索引时，将在内部创建建议器数据结构，以存储用于在部分查询上匹配的前缀。 对于建议，选择唯一或至少不重复的合适字段对于体验至关重要。 有关详细信息，请参阅[创建建议器](index-add-suggesters.md)。
@@ -31,7 +31,7 @@ ms.locfileid: "81641255"
 
 ## <a name="set-up-a-request"></a>设置请求
 
-请求的元素包括 API（[自动完成 REST](https://docs.microsoft.com/rest/api/searchservice/autocomplete)或[建议 REST）、](https://docs.microsoft.com/rest/api/searchservice/suggestions)部分查询和建议程序。
+请求的元素包括一种即用即用搜索 API、部分查询和建议程序。 以下脚本使用自动完成 REST API 作为示例，演示了请求的组件。
 
 ```http
 POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
@@ -49,7 +49,7 @@ API 不对部分查询施加最小长度要求;因此，API 不会对部分查�
 
 匹配位于输入字符串中任意位置的术语的开头。 给定"快速棕色狐狸"，自动完成和建议将匹配部分版本的""，"快速"，"棕色"，或"狐狸"，但不是部分固定术语，如"rown"或"牛"。 此外，每个匹配设置下游扩展的范围。 部分查询"快速br"将在"快速棕色"或"快速面包"上匹配，但"棕色"或"面包"本身与"快速"或"面包"不匹配，除非"快速"在它们前面。
 
-### <a name="apis"></a>API
+### <a name="apis-for-search-as-you-type"></a>用于按类型搜索的 API
 
 按照以下链接进行 REST 和 .NET SDK 参考页：
 
@@ -64,12 +64,13 @@ API 不对部分查询施加最小长度要求;因此，API 不会对部分查�
 
 响应由请求上的参数形状。 对于自动完成，设置[**自动完成模式**](https://docs.microsoft.com/rest/api/searchservice/autocomplete#autocomplete-modes)以确定文本完成是否发生在一个或两个术语上。 对于"建议"，您选择的字段将确定响应的内容。
 
-要进一步优化响应，请对请求包含更多参数。 以下参数适用于自动完成和建议。
+有关建议，应进一步优化响应，以避免重复或看似不相关的结果。 要控制结果，请在请求上包含更多参数。 以下参数适用于自动完成和建议，但可能更需要建议，尤其是当建议器包含多个字段时。
 
 | 参数 | 使用情况 |
 |-----------|-------|
-| **$select** | 如果有多个**源字段**，请使用 **$select**选择哪个字段贡献值 （）。`$select=GameTitle` |
-| **$filter** | 在结果集上应用匹配条件`$filter=ActionAdventure`（ 。 |
+| **$select** | 如果建议器中有多个**源字段**，请使用 **$select**选择哪个字段贡献值 （`$select=GameTitle`。 |
+| **searchFields** | 将查询约束到特定字段。 |
+| **$filter** | 在结果集上应用匹配条件`$filter=Category eq 'ActionAdventure'`（ 。 |
 | **$top** | 将结果限制为特定数字 （）。`$top=5`|
 
 ## <a name="add-user-interaction-code"></a>添加用户交互代码
@@ -149,6 +150,8 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
     // Call suggest API and return results
     SuggestParameters sp = new SuggestParameters()
     {
+        Select = HotelName,
+        SearchFields = HotelName,
         UseFuzzyMatching = fuzzy,
         Top = 5
     };

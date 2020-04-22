@@ -1,25 +1,20 @@
 ---
 title: 在 Linux VM 上设置 PostgreSQL
 description: 了解如何在 Azure 中的 Linux 虚拟机上安装和配置 PostgreSQL
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: 1a747363-0cc5-4ba3-9be7-084dfeb04651
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: bbfad994de663881e3aa03292fc0d0611a0d0933
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d86e42dcc16d108cc82c9d245c7919145cef365f
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75747803"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759332"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>在 Azure 上安装和配置 PostgreSQL
 PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库。 它包含许多企业级功能，比如完整的 ACID 合规性、可靠的事务处理和多版本并发控制。 它还支持 ANSI SQL 和 SQL/MED（包括 Oracle、MySQL、MongoDB 等等的外来数据包装器）等标准。 它具有高度的可扩展性，支持超过 12 种程序语言，并支持 GIN 和 GiST 索引、空间数据，以及面向 JSON 或基于键值的应用程序的多款类似于 NoSQL 的功能。
@@ -63,7 +58,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
         # cd postgresql-9.3.5
    
         # ./configure --prefix=/opt/postgresql-9.3.5
-5. 如果要构建可以构建的所有内容，包括文档（HTML 和人页）和其他模块 （），`contrib`请改为运行以下命令：
+5. 如果希望生成所有能生成的内容，包括文档（HTML 和手册页）和其他模块 (`contrib`)，则改为运行以下命令：
    
         # gmake install-world
    
@@ -78,7 +73,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 2. 为数据库创建一个目录：
    
         # mkdir -p /opt/pgsql_data
-3. 创建一个非根用户并修改该用户的配置文件。 然后，切换到该新用户（在我们的示例中称为“postgres”**）：
+3. 创建一个非根用户并修改该用户的配置文件。 然后，切换到该新用户（在我们的示例中称为“postgres”  ）：
    
         # useradd postgres
    
@@ -135,7 +130,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 
     # cp linux /etc/init.d/postgresql
 
-修改 /etc/init.d/postgresql 文件中的两个变量。 前缀设置为 PostgreSQL 的安装路径：**/opt/pgsql**。 PGDATA 设置为 PostgreSQL 的数据存储路径：**/opt/pgsql_data**。
+修改 /etc/init.d/postgresql 文件中的两个变量。 前缀设置为 PostgreSQL 的安装路径： **/opt/pgsql**。 PGDATA 设置为 PostgreSQL 的数据存储路径： **/opt/pgsql_data**。
 
     # sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
 
@@ -155,7 +150,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 
     # netstat -tunlp|grep 1999
 
-您应看到以下输出：
+应该会看到以下输出：
 
 ![image](./media/postgresql-install/no3.png)
 

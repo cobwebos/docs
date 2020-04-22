@@ -226,8 +226,6 @@
               href: app/remove-application-insights.md
         - name: 无代码监视
           items:
-            - name: 任何环境 - Java（预览版）
-              href: app/java-in-process-agent.md
             - name: Azure VM 和规模集
               href: app/azure-vm-vmss-apps.md
             - name: Azure 应用服务
@@ -242,36 +240,34 @@
             - name: Kubernetes 应用程序
               displayname: 'aks, microservice, istio, service mesh, application monitoring, monitor kubernetes, monitor aks'
               href: app/kubernetes.md
-            - name: 状态监视器（旧版）
-              displayname: 'IIS monitoring, on premises monitoring, on prem,'
-              href: app/monitor-performance-live-website-now.md
+            - name: 独立 - 任何环境
+              items:
+                - name: Java（预览版）
+                  href: app/java-in-process-agent.md
+                - name: Java JVM 配置
+                  href: app/java-standalone-arguments.md
+                - name: Java 配置选项
+                  href: app/java-standalone-config.md
             - name: 本地服务器
               items:
-                - name: 概述
-                  displayname: 'IIS monitoring, on premises monitoring, on prem,'
-                  href: app/status-monitor-v2-overview.md
-                - name: 入门
-                  href: app/status-monitor-v2-get-started.md
-                - name: 详细说明
-                  href: app/status-monitor-v2-detailed-instructions.md
-                - name: 故障排除和已知问题
-                  href: app/status-monitor-v2-troubleshoot.md
-                - name: API Disable-InstrumentationEngine
-                  href: app/status-monitor-v2-api-disable-instrumentation-engine.md
-                - name: API Disable-ApplicationInsightsMonitoring
-                  href: app/status-monitor-v2-api-disable-monitoring.md
-                - name: API Enable-InstrumentationEngine
-                  href: app/status-monitor-v2-api-enable-instrumentation-engine.md
-                - name: API Enable-ApplicationInsightsMonitoring
-                  href: app/status-monitor-v2-api-enable-monitoring.md
-                - name: API Get-ApplicationInsightsMonitoringConfig
-                  href: app/status-monitor-v2-api-get-config.md
-                - name: API Get-ApplicationInsightsMonitoringStatus
-                  href: app/status-monitor-v2-api-get-status.md
-                - name: API Set-ApplicationInsightsMonitoringConfig
-                  href: app/status-monitor-v2-api-set-config.md
-                - name: API Start-ApplicationInsightsMonitoringTrace
-                  href: app/status-monitor-v2-api-start-trace.md
+                - name: ASP.NET
+                  items:
+                    - name: 概述
+                      displayname: 'IIS monitoring, on premises monitoring, on prem'
+                      href: app/status-monitor-v2-overview.md
+                    - name: 入门
+                      href: app/status-monitor-v2-get-started.md
+                    - name: 详细说明
+                      href: app/status-monitor-v2-detailed-instructions.md
+                    - name: 疑难解答
+                      href: app/status-monitor-v2-troubleshoot.md
+                    - name: API 参考
+                      href: app/status-monitor-v2-api-reference.md
+                    - name: 状态监视器（旧版）
+                      displayname: 'IIS monitoring, on premises monitoring, on prem'
+                      href: app/monitor-performance-live-website-now.md
+                - name: Java
+                  href: app/java-on-premises.md
         - name: 创建资源
           href: app/create-new-resource.md
         - name: 应用程序仪表板
@@ -1269,7 +1265,7 @@
       href: 'https://azure.microsoft.com/resources/videos/index/?services=monitor'
     - name: 快速入门模板
       href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Insights'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/search?q=monitoring'
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?service=monitor'

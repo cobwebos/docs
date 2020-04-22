@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: a1fd22772e72cba4cce3f9fa2751dc0df0e15bb9
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 5a8d5f96449cfecd4628c38fa2788a1e06e96b07
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535592"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758889"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>如何使用 Azure WebJobs SDK 进行事件驱动的后台处理
 
@@ -29,7 +29,7 @@ ms.locfileid: "81535592"
 
 > [!NOTE]
 > [Azure Functions](../azure-functions/functions-overview.md) 是基于 WebJobs SDK 构建的，本文提供了适用于某些主题的 Azure Functions 文档的链接。 注意 Functions 与 WebJobs SDK 之间的以下差异：
-> * Azure 函数版本 2。*x*对应于 Web 作业 SDK 版本 3。*x*和 Azure 函数 1。*x*对应于 Web 作业 SDK 2。*x*. . 源代码存储库使用 WebJobs SDK 编号。
+> * Azure Functions 版本 2.*x* 对应于 WebJobs SDK 版本 3.*x*，Azure Functions 1.*x* 对应于 WebJobs SDK 2.*x*。 源代码存储库使用 WebJobs SDK 编号。
 > * Azure Functions C# 类库的示例代码类似于 WebJobs SDK 代码，不过，在 WebJobs SDK 项目中，无需指定 `FunctionName` 特性。
 > * 某些绑定类型，例如 HTTP (Webhook) 以及基于 HTTP 的事件网格，只在 Functions 中受支持。
 >
@@ -71,7 +71,7 @@ static void Main(string[] args)
 
 可在开发模式下运行主机，提高本地开发效率。 下面介绍部分设置，这些设置在开发模式下运行时会发生更改：
 
-| properties | 开发设置 |
+| 属性 | 开发设置 |
 | ------------- | ------------- |
 | `Tracing.ConsoleLevel` | `TraceLevel.Verbose`：最大化日志输出。 |
 | `Queues.MaxPollingInterval`  | 使用较小的值可确保立即触发队列方法。  |
@@ -125,7 +125,7 @@ static void Main()
 
 在版本 2.*x* 中，使用 [ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit#System_Net_ServicePointManager_DefaultConnectionLimit) API 控制主机的并发连接数。 在 2 中。*x*，在启动 Web作业主机之前，应从默认值 2 中增加此值。
 
-使用 `HttpClient` 从某个函数发出的所有传出 HTTP 请求都会流经 `ServicePointManager`。 达到 `DefaultConnectionLimit` 中设置的值后，`ServicePointManager` 会开始将请求排队，然后再发送请求。 假设 `DefaultConnectionLimit` 设置为 2，并且代码发出了 1,000 个 HTTP 请求。 最初，只允许 2 个请求传入 OS。 其他 998 个请求将会排队，直到有可用的空间。 这意味着 `HttpClient` 可能会超时，因为它似乎已发出请求，但是，OS 从未将此请求发送到目标服务器。 因此，可能会出现看似不合理的行为：本地 `HttpClient` 花费了 10 秒来完成请求，但服务在 200 毫秒内就返回了每个请求。 
+使用 `HttpClient` 从某个函数发出的所有传出 HTTP 请求都会流经 `ServicePointManager`。 达到 `DefaultConnectionLimit` 中设置的值后，`ServicePointManager` 会开始将请求排队，然后再发送请求。 假设 `DefaultConnectionLimit` 设置为 2，并且代码发出了 1,000 个 HTTP 请求。 最初，只允许 2 个请求传入 OS。 其他998人排队，直到有空间供他们使用。 这意味着 `HttpClient` 可能会超时，因为它似乎已发出请求，但是，OS 从未将此请求发送到目标服务器。 因此，可能会出现看似不合理的行为：本地 `HttpClient` 花费了 10 秒来完成请求，但服务在 200 毫秒内就返回了每个请求。 
 
 ASP.NET 应用程序的默认值是 `Int32.MaxValue`，这可能非常适合在“基本”或更高级别应用服务计划中运行的 WebJob。 WebJob 通常需要 Always On 设置，该设置仅受“基本”和更高级别应用服务计划的支持。
 
@@ -423,7 +423,7 @@ static async Task Main()
 }
 ```
 
-有关更多详细信息，请参阅[事件中心绑定](../azure-functions/functions-bindings-event-hubs-output.md#hostjson-settings)一文。
+有关更多详细信息，请参阅[事件中心绑定](../azure-functions/functions-bindings-event-hubs-trigger.md#host-json)一文。
 
 ### <a name="queue-storage-trigger-configuration"></a>队列存储触发器配置
 

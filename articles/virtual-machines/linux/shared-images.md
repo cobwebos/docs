@@ -1,26 +1,20 @@
 ---
 title: 使用 Azure CLI 创建共享图像库
 description: 在本文中，你将了解如何使用 Azure CLI 在 Azure 中创建 VM 的共享映像。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
-author: axayjo
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
+author: cynthn
+ms.service: virtual-machines
+ms.subservice: imaging
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/06/2019
-ms.author: akjosh
-ms.reviewer: cynthn
-ms.custom: ''
-ms.openlocfilehash: ab0a4b98e562cda544800f2938d0b829fb1d6ef7
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.author: cynthn
+ms.reviewer: akjosh
+ms.openlocfilehash: c75d33f8310cfd143bf201cdac861954d07baf0b
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458635"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758419"
 ---
 # <a name="create-a-shared-image-gallery-with-the-azure-cli"></a>使用 Azure CLI 创建共享映像库
 
@@ -34,7 +28,7 @@ ms.locfileid: "81458635"
 
 | 资源 | 说明|
 |----------|------------|
-| **托管映像** | 这是基本映像，可以单独使用，也可用于在映像库中创建“映像版本”****。 托管映像是从通用 VM 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
+| **托管映像** | 这是基本映像，可以单独使用，也可用于在映像库中创建“映像版本”  。 托管映像是从通用 VM 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
 | **映像库** | 与 Azure 市场一样，**映像库**是用于管理和共享映像的存储库，但你可以控制谁有权访问这些映像。 |
 | **映像定义** | 映像在库中定义，携带有关该映像及其在内部使用的要求的信息。 这包括了该映像是 Windows 还是 Linux 映像、发行说明以及最低和最高内存要求。 它是某种映像类型的定义。 |
 | **映像版本** | 使用库时，将使用**映像版本**来创建 VM。 可根据环境的需要创建多个映像版本。 与托管映像一样，在使用**映像版本**创建 VM 时，将使用映像版本来创建 VM 的新磁盘。 可以多次使用映像版本。 |

@@ -8,16 +8,19 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: robinsh
-ms.openlocfilehash: a1fd99ee595c4ae91ccd06aa41fa421ca8fcc074
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: a67d90a0888c39938f07c294f8e161ce98fd945a
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284546"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732504"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>通过使用事件网格触发操作来响应 IoT 中心事件
 
-通过将 Azure IoT 中心与 Azure 事件网格进行集成，使你可以向其他服务发送事件通知，并触发下游流程。 配置商业应用程序来侦听 IoT 中心事件，以便安全可靠地以可缩放方式响应关键事件。例如，生成一个应用程序来更新数据库、创建工作票证，并在每当有新的 IoT 设备注册到 IoT 中心时，发送一封电子邮件通知。
+通过将 Azure IoT 中心与 Azure 事件网格进行集成，使你可以向其他服务发送事件通知，并触发下游流程。 配置商业应用程序来侦听 IoT 中心事件，以便安全可靠地以可缩放方式响应关键事件。 例如，生成一个应用程序来更新数据库、创建工作票证，并在每当有新的 IoT 设备注册到 IoT 中心时，发送一封电子邮件通知。
 
 [Azure 事件网格](../event-grid/overview.md)是一种完全托管的事件路由服务，使用发布-订阅模型。 事件网格包含对 Azure 服务（如 [Azure Functions](../azure-functions/functions-overview.md) 和 [Azure 逻辑应用](../logic-apps/logic-apps-what-are-logic-apps.md)）的内置支持，还可使用 Webhook 向非 Azure 服务传递事件警报。 有关受事件网格支持的事件处理程序的完整列表，请参阅 [Azure 事件网格简介](../event-grid/overview.md)。
 
@@ -31,7 +34,7 @@ ms.locfileid: "79284546"
 
 IoT 中心将发布以下事件类型：
 
-| 事件类型 | 描述 |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.Devices.DeviceCreated | 当设备注册到 IoT 中心时发布。 |
 | Microsoft.Devices.DeviceDeleted | 当设备从 IoT 中心删除时发布。 |
@@ -43,7 +46,7 @@ IoT 中心将发布以下事件类型：
 
 ## <a name="event-schema"></a>事件架构
 
-IoT 中心事件包含响应设备生命周期中更改所需的全部信息。 可通过检查 eventType 属性是否以“Microsoft.Devices”开头来标识 IoT 中心事件****。 有关如何使用事件网格事件属性的详细信息，请参阅[事件网格事件架构](../event-grid/event-schema.md)。
+IoT 中心事件包含响应设备生命周期中更改所需的全部信息。 可通过检查 eventType 属性是否以“Microsoft.Devices”开头来标识 IoT 中心事件  。 有关如何使用事件网格事件属性的详细信息，请参阅[事件网格事件架构](../event-grid/event-schema.md)。
 
 ### <a name="device-connected-schema"></a>设备已连接架构
 
@@ -160,13 +163,13 @@ IoT 中心事件包含响应设备生命周期中更改所需的全部信息。 
 }]
 ```
 
-有关每个属性的详细说明，请参阅[IoT 中心的 Azure 事件网格事件架构](../event-grid/event-schema-iot-hub.md)。
+有关各属性的详细说明，请参阅 [IoT 中心的 Azure 事件网格事件架构](../event-grid/event-schema-iot-hub.md)。
 
 ## <a name="filter-events"></a>筛选事件
 
 IoT 中心事件订阅可以根据事件类型、数据内容和使用者（即设备名称）来筛选事件。
 
-事件网格启用了基于事件类型、使用者和数据内容的[筛选](../event-grid/event-filtering.md)。 创建事件网格订阅时，可以选择订阅所选择的 IoT 事件。 事件网格中的使用者筛选器基于“开头为”（前缀）和“结尾为”（后缀）匹配进行筛选********。 该筛选器使用 `AND` 运算符，以便将含有与前缀和后缀都匹配的使用者的事件传送给订阅方。
+事件网格启用了基于事件类型、使用者和数据内容的[筛选](../event-grid/event-filtering.md)。 创建事件网格订阅时，可以选择订阅所选择的 IoT 事件。 事件网格中的使用者筛选器基于“开头为”（前缀）和“结尾为”（后缀）匹配进行筛选   。 该筛选器使用 `AND` 运算符，以便将含有与前缀和后缀都匹配的使用者的事件传送给订阅方。
 
 IoT 事件使用者使用的格式：
 
@@ -184,7 +187,7 @@ devices/{deviceId}
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>设备已连接和设备已断开连接事件的限制
 
-若要接收设备连接状态事件，设备必须通过 Iot 中心执行“D2C 发送遥测数据”或“C2D 接收消息”操作。 但请注意，如果设备使用 AMQP 协议连接到 Iot 中心，则建议它们执行“C2D 接收消息”操作，否则其连接状态通知可能会延迟几分钟。 如果设备使用的是 MQTT 协议，IoT 中心将保持 C2D 链路打开。 对于 AMQP，可以通过调用[接收异步 API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet) 来打开 C2D 链路；对于 IoT 中心 C# SDK，则调用[用于 AMQP 的设备客户端](iot-hub-amqp-support.md#device-client)。
+要接收设备连接状态事件，设备必须使用 Iot 中心执行"D2C 发送遥测"或"C2D 接收消息"操作。 但是，请注意，如果设备使用 AMQP 协议与 Iot Hub 连接，建议他们执行"C2D 接收消息"操作，否则其连接状态通知可能会延迟几分钟。 如果设备使用的是 MQTT 协议，IoT 中心将保持 C2D 链路打开。 对于 AMQP，可以通过调用[接收异步 API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet) 来打开 C2D 链路；对于 IoT 中心 C# SDK，则调用[用于 AMQP 的设备客户端](iot-hub-amqp-support.md#device-client)。
 
 如果正在发送遥测数据，则 D2C 链路是打开的。 
 
@@ -206,7 +209,7 @@ devices/{deviceId}
 
 * [了解如何订阅设备已连接和已断开连接事件](iot-hub-how-to-order-connection-state-events.md)
 
-* [了解有关事件网格的更多信息](../event-grid/overview.md)
+* [详细了解事件网格](../event-grid/overview.md)
 
 * [比较路由 IoT 中心事件和消息之间的区别](iot-hub-event-grid-routing-comparison.md)
 

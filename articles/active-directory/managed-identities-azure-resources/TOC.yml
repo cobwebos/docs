@@ -54,7 +54,7 @@
       href: /azure/event-hubs/authenticate-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
     - name: Azure 容器实例
       href: /azure/container-instances/container-instances-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 在 VM 上配置托管标识
       items:
@@ -131,20 +131,20 @@
     - name: Java
       href: 'https://github.com/Azure/azure-libraries-for-java#ready-to-run-code-samples-for-virtual-machines'
     - name: Python
-      href: /python/api/azure.mgmt.msi
+      href: 'https://docs.microsoft.com/windows/python/'
     - name: Ruby
       href: 'https://rubygems.org/gems/azure_mgmt_msi'
     - name: Node.js
-      href: /javascript/api/ms-rest-azure
+      href: 'https://nodejs.org/en/docs/'
     - name: Go
-      href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/msi/mgmt/2015-08-31-preview/msi'
+      href: 'https://golang.org/doc/'
 - name: 资源
   items:
     - name: 反馈和已知问题
       href: known-issues.md
     - name: 支持 Azure 资源托管标识的 Azure 服务
       href: services-support-managed-identities.md
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-msi'
     - name: AAD 开发者论坛
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences'

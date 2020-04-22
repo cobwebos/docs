@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 72d7a2dd112e5e7a5105ff977e3917ccdfd7b53e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5724a9e4308f05a82df84ae6a7d5602747f5a140
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77500291"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757372"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure 操作安全性最佳做法
 本文提供了一组用于保护 Azure 中的数据、应用程序和其他资产的操作最佳做法。
@@ -108,7 +108,7 @@ Azure 操作安全性是指用户可用于在 Azure 中保护其数据、应用�
 **详细信息**：调查[Azure Sentinel](/azure/sentinel/overview)的特性和功能，并将其与当前在本地使用的功能进行比较。 如果 Azure Sentinel 符合组织的 SIEM 要求，请考虑采用 Azure Sentinel。
 
 **最佳实践**：查找最严重的安全漏洞，以便您可以确定调查优先级。   
-**详细信息**：查看[Azure 安全分数](../../security-center/security-center-secure-score.md)以查看 Azure 安全中心内置的 Azure 策略和计划提出的建议。 这些建议有助于解决安全更新、端点保护、加密、安全配置、缺少 WAF、连接 Internet 的 VM 等顶级风险。
+**详细信息**：查看[Azure 安全分数](../../security-center/secure-score-security-controls.md)以查看 Azure 安全中心内置的 Azure 策略和计划提出的建议。 这些建议有助于解决安全更新、端点保护、加密、安全配置、缺少 WAF、连接 Internet 的 VM 等顶级风险。
 
 基于 Internet 安全中心 （CIS） 控件的安全分数允许您根据外部源对组织的 Azure 安全性进行基准测试。 外部验证有助于验证和丰富团队的安全策略。
 
@@ -116,7 +116,7 @@ Azure 操作安全性是指用户可用于在 Azure 中保护其数据、应用�
 **详细信息**：使用优先级最高的项目，按照安全中心开始[的安全建议](../../security-center/security-center-recommendations.md)进行操作。
 
 **最佳实践**：将安全中心警报集成到您的安全信息和事件管理 （SIEM） 解决方案中。   
-**详细信息**：大多数具有 SIEM 的组织将其用作需要分析师响应的安全警报的中央交换中心。 安全中心生成的已处理事件将发布到 Azure 活动日志，Azure 活动日志可通过 Azure 监视器提供日志之一。 Azure Monitor 提供了一个综合管道，可将任何监视数据路由到 SIEM 工具。 有关说明[，请参阅安全中心中的集成安全解决方案](../../security-center/security-center-partner-integration.md#exporting-data-to-a-siem)。 如果使用 Azure 哨兵，请参阅连接[Azure 安全中心](../../sentinel/connect-azure-security-center.md)。
+**详细信息**：大多数具有 SIEM 的组织将其用作需要分析师响应的安全警报的中央交换中心。 安全中心生成的已处理事件将发布到 Azure 活动日志，Azure 活动日志可通过 Azure 监视器提供日志之一。 Azure Monitor 提供了一个综合管道，可将任何监视数据路由到 SIEM 工具。 有关说明[，请参阅导出安全警报和建议](../../security-center/continuous-export.md#configuring-siem-integration-via-azure-event-hubs)。 如果使用 Azure 哨兵，请参阅连接[Azure 安全中心](../../sentinel/connect-azure-security-center.md)。
 
 **最佳实践**：将 Azure 日志与 SIEM 集成。   
 **详细信息**：使用[Azure 监视器收集和导出数据](/azure/azure-monitor/overview#integrate-and-export-data)。 这种做法对于启用安全事件调查至关重要，并且在线日志保留受到限制。 如果使用 Azure 哨兵，请参阅[连接数据源](../../sentinel/connect-data-sources.md)。

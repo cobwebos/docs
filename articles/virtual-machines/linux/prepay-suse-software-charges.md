@@ -3,18 +3,17 @@ title: 软件计划的预付款 - Azure 预订
 description: 了解如何为软件计划预付费用，以节省您即用即付成本的费用。
 author: bandersmsft
 manager: yashesvi
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: 3e05920e495dd4aa14be6c849590a37a2bafa33f
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: a527b75d376f05ab6190187b7a03d6da775055ab
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757230"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759284"
 ---
 # <a name="prepay-for-azure-software-plans"></a>为 Azure 软件计划预付
 
@@ -71,7 +70,7 @@ RedHat 计划折扣仅适用于您在购买时选择的 VM 大小。 RHEL 计划
 
 若要了解详细信息，请参阅以下文章：
 
-- [什么是 Azure 预留？](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [什么是 Azure 预留项？](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
 - [管理 Azure 中的预留](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)
 - [了解如何应用 SUSE 预留折扣](../../cost-management-billing/reservations/understand-suse-reservation-charges.md)
 - [了解即用即付订阅的预留使用情况](../../cost-management-billing/reservations/understand-reserved-instance-usage.md)

@@ -5,14 +5,14 @@ services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 04/20/2020
 ms.author: charwen
-ms.openlocfilehash: 15abee4688a2f6aefa2b08ad2b8eee6622d56be2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0188f9bc1c7c0e8d7fed9f590d078085b175614f
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77087268"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732194"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>使用 NSG 访问和 Azure 堡垒
 
@@ -32,9 +32,9 @@ ms.locfileid: "77087268"
 
 本节显示用户和 Azure 堡垒之间的网络流量，以及虚拟网络中的目标 VM 的网络流量：
 
-### <a name="azurebastionsubnet"></a>Azure 堡垒子网
+### <a name="azurebastionsubnet"></a><a name="apply"></a>Azure 堡垒子网
 
-Azure 堡垒专门部署到 Azure Bastion 子网。
+Azure 堡垒专门部署到***Azure Bastion 子网***。
 
 * **入口流量：**
 
@@ -46,19 +46,11 @@ Azure 堡垒专门部署到 Azure Bastion 子网。
    * **面向 VM 的出入口流量：** Azure 堡垒将通过专用 IP 到达目标 VM。 NSG 需要允许从流量到端口 3389 和 22 的其他目标 VM 子网。
    * **向 Azure 中的其他公共终结点的流量：** Azure 堡垒需要能够连接到 Azure 中的各种公共终结点（例如，用于存储诊断日志和计量日志）。 因此，Azure 堡垒需要出站到 443 到**Azure 云服务**标记。
 
-* **目标 VM 子网：** 这是包含要 RDP/SSH 的目标虚拟机的子网。
+### <a name="target-vm-subnet"></a>目标 VM 子网
+这是包含要 RDP/SSH 的目标虚拟机的子网。
 
    * **来自 Azure 堡垒的入侵流量：** Azure 堡垒将通过专用 IP 到达目标 VM。 RDP/SSH 端口（端口 3389/22）需要在目标 VM 端通过专用 IP 打开。 最佳做法是，可以在此规则中添加 Azure 堡垒子网 IP 地址范围，以便仅允许 Bastion 能够在目标 VM 子网中的目标 VM 上打开这些端口。
 
-## <a name="apply-nsgs-to-azurebastionsubnet"></a><a name="apply"></a>将 NSG 应用于 Azure Bastion 子网
-
-如果创建 NSG 并将其应用于***AzureBastionSubnet，*** 请确保在 NSG 中添加了以下规则。 如果不添加这些规则，NSG 创建/更新将失败：
-
-* **控制平面连接：** 从网关管理器进入 443
-* **诊断日志记录和其他：** 从 443 到 AzureCloud 的出站。 此服务标记中的区域标记尚不受支持。
-* **目标 VM：** 3389 和 22 到虚拟网络的出站
-
-NSG 规则示例可用于此[快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg)中的参考。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,25 +1,18 @@
 ---
 title: Azure 中 Linux VM 的计划事件
 description: 通过为 Linux 虚拟机使用 Azure 元数据服务来计划事件。
-services: virtual-machines-windows, virtual-machines-linux, cloud-services
-documentationcenter: ''
 author: mimckitt
-manager: gwallace
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: mimckitt
-ms.openlocfilehash: b3b9914d0e5162f8f8f41b929d7bdfef68f85ad9
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: ee600d7524af27a0e9e2ce0176e7bd4d1f60bc3b
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81263312"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758555"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure 元数据服务：适用于 Linux VM 的计划事件
 
@@ -74,12 +67,12 @@ ms.locfileid: "81263312"
 ### <a name="version-and-region-availability"></a>版本和区域可用性
 计划事件服务受版本控制。 版本是必需的，当前版本为 `2019-01-01`。
 
-| Version | 发布类型 | 区域 | 发行说明 | 
+| 版本 | 发布类型 | 区域 | 发行说明 | 
 | - | - | - | - | 
-| 2019-01-01 | 正式版 | 全部 | <li> 添加了对虚拟机规模集事件类型"终止"的支持 |
-| 2017-11-01 | 正式版 | 全部 | <li> 添加了对 Spot VM 逐出事件类型"抢占"的支持<br> | 
-| 2017-08-01 | 正式版 | 全部 | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
-| 2017-03-01 | 预览 | 全部 | <li>初始版本 |
+| 2019-01-01 | 正式版 | All | <li> 添加了对虚拟机规模集事件类型"终止"的支持 |
+| 2017-11-01 | 正式版 | All | <li> 添加了对 Spot VM 逐出事件类型"抢占"的支持<br> | 
+| 2017-08-01 | 正式版 | All | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
+| 2017-03-01 | 预览 | All | <li>初始版本 |
 
 
 > [!NOTE] 
@@ -127,7 +120,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 ```
 
 ### <a name="event-properties"></a>事件属性
-|Property  |  说明 |
+|属性  |  说明 |
 | - | - |
 | EventId | 此事件的全局唯一标识符。 <br><br> 示例： <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | EventType | 此事件造成的影响。 <br><br> 值： <br><ul><li> `Freeze`：虚拟机计划暂停几秒钟。 CPU 和网络连接可能会暂停，但对内存或打开的文件没有影响。<li>`Reboot`：计划重启虚拟机（非永久性内存丢失）。 <li>`Redeploy`：计划将虚拟机移到另一节点（临时磁盘丢失）。 <li>`Preempt`：正在删除 Spot 虚拟机（临时磁盘丢失）。 <li> `Terminate`：计划删除虚拟机。 |

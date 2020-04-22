@@ -1,24 +1,21 @@
 ---
-title: 使用门户为 Linux 创建共享的 Azure VM 映像
-description: 了解如何使用 Azure 门户创建和共享虚拟机映像。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
+title: 使用门户创建共享的 Azure Linux VM 映像
+description: 了解如何使用 Azure 门户创建和共享 Linux 虚拟机映像。
 author: cynthn
-manager: gwallace
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
+ms.subservice: imaging
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
-ms.custom: ''
-ms.openlocfilehash: 44df85a94ad26d3abcd48f01c31e7aa093c1123f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: akjosh
+ms.openlocfilehash: 74c87d589f1c50551ac5685fe0fa126a82bffbde
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74978690"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758439"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>使用门户创建 Azure 共享映像库
 
@@ -30,9 +27,9 @@ ms.locfileid: "74978690"
 
 共享映像库功能具有多种资源类型。 我们将在本文中使用或生成这些资源类型：
 
-| 资源 | 描述|
+| 资源 | 说明|
 |----------|------------|
-| **托管映像** | 一个基本映像，可以单独使用，也可用于在映像库中创建**映像版本**。 托管映像是从[通用](shared-image-galleries.md#generalized-and-specialized-images)VM 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
+| **托管映像** | 一个基本映像，可以单独使用，也可用于在映像库中创建**映像版本**。 托管映像是从[通用化](shared-image-galleries.md#generalized-and-specialized-images) VM 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
 | **快照** | 可用于创建**映像版本**的 VHD 副本。 可以从[专用化](shared-image-galleries.md#generalized-and-specialized-images) VM（一个尚未通用化的 VM）创建快照，然后单独使用该快照，或者将其与数据磁盘的快照配合使用，以创建专用化的映像版本。
 | **映像库** | 与 Azure 市场一样，**映像库**是用于管理和共享映像的存储库，但你可以控制谁有权访问这些映像。 |
 | **映像定义** | 映像在库中定义，携带有关该映像及其在组织内部使用的要求的信息。 可以包含映像是通用化还是专用化映像、操作系统、最小和最大内存要求以及发行说明等信息。 它是某种映像类型的定义。 |
@@ -47,9 +44,9 @@ ms.locfileid: "74978690"
 > **预览版的已知限制**：只能使用门户或 API 从专用化映像创建 VM。 预览版不提供 CLI 或 PowerShell 支持。
 
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
-若要完成本文中的示例，必须准备好通用化 VM 的现有托管映像，或专用化 VM 的快照。 可以按照[教程操作：使用 Azure PowerShell 创建 Azure VM 的自定义映像](tutorial-custom-images.md)以创建托管映像，或为专用 VM[创建快照](../windows/snapshot-copy-managed-disk.md)。 对于托管映像和快照，数据磁盘大小不能超过 1 TB。
+若要完成本文中的示例，必须准备好通用化 VM 的现有托管映像，或专用化 VM 的快照。 可以按照[教程：使用 Azure PowerShell 创建 Azure VM 的自定义映像](tutorial-custom-images.md)来创建托管映像，或按照[创建快照](../windows/snapshot-copy-managed-disk.md)来创建专用化 VM。 对于托管映像和快照，数据磁盘大小不能超过 1 TB。
 
 通过本文进行操作时，请根据需要替换资源组和 VM 名称。
 
@@ -61,13 +58,13 @@ ms.locfileid: "74978690"
 现在，可以创建一个或多个新的 VM。 本示例在美国东部数据中心的“myResourceGroup”中创建名为“myVMfromImage”的 VM******。
 
 1. 转到映像定义。 可以使用资源筛选器显示所有可用的映像定义。
-1. 在映像定义的页面顶部，从菜单中选择“创建 VM”。****
-1. 对于“资源组”，请选择“新建”并键入 *myResourceGroup* 作为名称。********
-1. 在“虚拟机名称”中键入 *myVM*。****
+1. 在映像定义的页面顶部，从菜单中选择“创建 VM”。 
+1. 对于“资源组”，请选择“新建”并键入 *myResourceGroup* 作为名称。  
+1. 在“虚拟机名称”中键入 *myVM*。 
 1. 对于**区域**，选择 *"美国东部*"。
-1. 对于“可用性选项”，请保留默认设置“无需基础结构冗余”。******
-1. 如果你是从映像定义的页面开始操作的，系统会自动使用 `latest` 映像版本填充“映像”的值。****
-1. 对于“大小”，请从可用大小列表中选择一种 VM 大小，然后选择“选择”。********
+1. 对于“可用性选项”，请保留默认设置“无需基础结构冗余”。  
+1. 如果你是从映像定义的页面开始操作的，系统会自动使用 `latest` 映像版本填充“映像”的值。 
+1. 对于“大小”，请从可用大小列表中选择一种 VM 大小，然后选择“选择”。  
 1. 在“管理员帐户”下，如果源 VM 是通用化的，请输入**用户名**和 **SSH 公钥**。**** 如果源 VM 是专用化的，则这些选项将会灰显，因为系统会使用源 VM 中的信息。
 1. 若要允许远程访问 VM，请在“公共入站端口”下选择“允许所选端口”，然后从下拉列表中选择“SSH (22)”。************ 如果你不希望允许远程访问 VM，请为“公共入站端口”保留选择“无”。********
 1. 完成后，选择页面底部的“查看 + 创建”按钮。****
@@ -76,7 +73,7 @@ ms.locfileid: "74978690"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-当不再需要时，可以删除资源组、虚拟机和所有相关资源。 为此，请选择虚拟机的资源组，选择 **"删除**"，然后确认要删除的资源组的名称。
+当不再需要时，可以删除资源组、虚拟机和所有相关资源。 为此，请选择虚拟机的资源组，选择“删除”  ，然后确认要删除的资源组的名称。
 
 若要删除单个资源，需要按相反的顺序删除。 例如，若要删除某个映像定义，需要先删除基于该映像创建的所有映像版本。
 

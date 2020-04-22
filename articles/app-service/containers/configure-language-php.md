@@ -4,12 +4,12 @@ description: 了解如何为应用配置预构建的 PHP 容器。 本文介绍�
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: ad121d605e521704597471b446fa79cb43dfccc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e87466f810dc4ebf767c36ad74c358cbf6069e5
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255838"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758876"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>为 Azure 应用服务配置 Linux PHP 应用
 
@@ -86,7 +86,7 @@ getenv("DB_HOST")
 <IfModule mod_rewrite.c>
     RewriteEngine on
 
-    RewriteRule ^.*$ /public/$1 [NC,L,QSA]
+    RewriteRule ^(.*)$ /public/$1 [NC,L,QSA]
 </IfModule>
 ```
 
@@ -209,7 +209,7 @@ zend_extension=/home/site/wwwroot/bin/xdebug.so
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [教程： PHP应用程序与MySQL](tutorial-php-mysql-app.md)
+> [教程：将 PHP 应用与 MySQL 配合使用](tutorial-php-mysql-app.md)
 
 > [!div class="nextstepaction"]
 > [应用服务 Linux 常见问题解答](app-service-linux-faq.md)

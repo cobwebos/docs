@@ -9,12 +9,13 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: e0114c37b2204a7ad1d7b0cf9c7f336dcd85883a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: 3ea2f0eec12d756a898f1761f6b22fd034c1bc3e
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77110486"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732460"
 ---
 # <a name="get-started-with-device-twins-java"></a>设备孪生入门 (Java)
 
@@ -26,13 +27,13 @@ ms.locfileid: "77110486"
 * **simulated-device**：Java 设备应用，它连接到 IoT 中心，并使用报告的属性报告其连接状态。
 
 > [!NOTE]
-> [Azure IoT SDK](iot-hub-devguide-sdks.md) 文章介绍了可用于构建设备和后端应用的 Azure IoT SDK。
+> [Azure IoT SDK](iot-hub-devguide-sdks.md) 一文介绍了可用于构建设备和后端应用的 Azure IoT SDK。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* [Java SE 开发工具包 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). 请确保在“长期支持”**** 下选择“Java 8”**** 以获取 JDK 8 的下载。
+* [Java SE 开发工具包 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)。 请确保在“长期支持”  下选择“Java 8”  以获取 JDK 8 的下载。
 
-* [马文 3](https://maven.apache.org/download.cgi)
+* [Maven 3](https://maven.apache.org/download.cgi)
 
 * 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
 
@@ -66,7 +67,7 @@ ms.locfileid: "77110486"
 
 3. 在命令提示符下，导航到 **add-tags-query** 文件夹。
 
-4. 使用文本编辑器，打开 **add-tags-query** 文件夹中的 **pom.xml** 文件，并在 **dependencies** 节点中添加以下依赖项。 此依赖项使您能够在应用中使用**iot 服务客户端**包与 IoT 中心进行通信：
+4. 使用文本编辑器，打开 **add-tags-query** 文件夹中的 **pom.xml** 文件，并在 **dependencies** 节点中添加以下依赖项。 通过此依赖项可以使用应用中的 **iot-service-client** 包来与 IoT 中心通信：
 
     ```xml
     <dependency>
@@ -78,7 +79,7 @@ ms.locfileid: "77110486"
     ```
 
     > [!NOTE]
-    > 可以使用 [Maven 搜索](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)检查是否有最新版本的 **iot-service-client**。
+    > 可以使用 **Maven 搜索**检查是否有最新版本的 [iot-service-client](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)。
 
 5. 在 **dependencies** 节点后添加以下 **build** 节点。 此配置指示 Maven 使用 Java 1.8 来生成应用。
 
@@ -98,7 +99,7 @@ ms.locfileid: "77110486"
     </build>
     ```
 
-6. 保存并关闭**pom.xml**文件。
+6. 保存并关闭 pom.xml 文件  。
 
 7. 使用文本编辑器打开 **add-tags-query\src\main\java\com\mycompany\app\App.java** 文件。
 
@@ -113,7 +114,7 @@ ms.locfileid: "77110486"
     import java.util.Set;
     ```
 
-9. 将以下类级变量添加到**App**类。 替换为`{youriothubconnectionstring}`在[获取 IoT 中心连接字符串中复制的 IoT 中心连接字符串](#get-the-iot-hub-connection-string)。
+9. 将以下类级变量添加到 **App** 类。 将 `{youriothubconnectionstring}` 替换为在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 IoT 中心连接字符串。
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -225,9 +226,9 @@ ms.locfileid: "77110486"
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. 在命令提示符下，导航到**模拟设备**文件夹。
+2. 在命令提示符下，导航到 **simulated-device** 文件夹。
 
-3. 使用文本编辑器，在**模拟设备**文件夹中打开**pom.xml**文件，并将以下依赖项添加到**依赖项**节点。 此依赖项使您能够在应用中使用**iot 设备客户端**包与 IoT 中心进行通信。
+3. 使用文本编辑器，打开 **simulated-device** 文件夹中的 **pom.xml** 文件，并在 **dependencies** 节点中添加以下依赖项。 此依赖项使得你可以使用应用中的 **iot-device-client** 包来与 IoT 中心进行通信。
 
     ```xml
     <dependency>
@@ -238,9 +239,9 @@ ms.locfileid: "77110486"
     ```
 
     > [!NOTE]
-    > 可以使用 [Maven 搜索](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)检查是否有最新版本的 **iot-device-client**。
+    > 可以使用 **Maven 搜索**检查是否有最新版本的 [iot-device-client](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)。
 
-4. 将以下依赖项添加到 **dependencies** 节点。 此依赖项为 Apache [SLF4J](https://www.slf4j.org/) 日志记录外观配置 NOP，设备客户端 SDK 使用它来实现日志记录。 此配置是可选的，但如果省略此配置，则在运行应用时，可能会在控制台中看到一条警告。 有关设备客户端 SDK 中的日志记录的详细信息，请参阅*适用于 Java 的 Azure IoT 设备 SDK 的示例*自述文件中的[日志记录](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging)。
+4. 将以下依赖项添加到 **dependencies** 节点。 此依赖项为 Apache [SLF4J](https://www.slf4j.org/) 日志记录外观配置 NOP，设备客户端 SDK 使用它来实现日志记录。 此配置是可选的，但如果省略此配置，则在运行应用时，可能会在控制台中看到一条警告。 有关设备客户端 SDK 中的日志记录的详细信息，请参阅[适用于 Java 的 Azure IoT 设备 SDK 的示例](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging)自述文件中的*日志记录*。
 
     ```xml
     <dependency>
@@ -268,9 +269,9 @@ ms.locfileid: "77110486"
     </build>
     ```
 
-6. 保存并关闭**pom.xml**文件。
+6. 保存并关闭 pom.xml 文件  。
 
-7. 使用文本编辑器打开**模拟设备\src_main_java_com_mycompany_App.java**文件。
+7. 使用文本编辑器打开 **simulated-device\src\main\java\com\mycompany\app\App.java** 文件。
 
 8. 在该文件中添加以下 **import** 语句：
 
@@ -283,7 +284,7 @@ ms.locfileid: "77110486"
     import java.util.Scanner;
     ```
 
-9. 将以下类级变量添加到**App**类。 将 `{yourdeviceconnectionstring}` 替换为在[在 IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中复制的设备连接字符串。
+9. 将以下类级变量添加到 **App** 类。 将 `{yourdeviceconnectionstring}` 替换为在[在 IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中复制的设备连接字符串。
 
     ```java
     private static String connString = "{yourdeviceconnectionstring}";
@@ -343,7 +344,7 @@ ms.locfileid: "77110486"
     }
     ```
 
-13. 将以下代码添加到**主**方法的末尾。 等待**Enter**键允许 IoT 中心有时间报告设备孪生操作的状态。
+13. 将以下代码添加到 **main** 方法的末尾。 等待**Enter**键允许 IoT 中心有时间报告设备孪生操作的状态。
 
     ```java
     System.out.println("Press any key to exit...");
@@ -361,9 +362,9 @@ ms.locfileid: "77110486"
      public static void main(String[] args) throws URISyntaxException, IOException
      ```
 
-15. 保存并关闭**模拟设备\src\main_java_com_mycompany_App.java**文件。
+15. 保存并关闭 **simulated-device\src\main\java\com\mycompany\app\App.java** 文件。
 
-16. 生成 **simulated-device** 应用并更正任何错误。 在命令提示符下，导航到**模拟设备**文件夹并运行以下命令：
+16. 生成 **simulated-device** 应用并更正任何错误。 在命令提示符下，导航到 **simulated-device** 文件夹并运行以下命令：
 
     ```cmd/sh
     mvn clean package -DskipTests
@@ -407,6 +408,6 @@ ms.locfileid: "77110486"
 
 使用下列资源了解如何执行以下操作：
 
-* 使用[IoT 中心](quickstart-send-telemetry-java.md)教程从设备发送遥测数据。
+* 通过 [IoT 中心入门](quickstart-send-telemetry-java.md)教程学习如何从设备发送遥测数据。
 
-* 使用["使用直接方法"](quickstart-control-device-java.md)教程，以交互方式控制设备（例如从用户控制的应用程序打开风扇）。
+* 通过[使用直接方法](quickstart-control-device-java.md)教程学习如何以交互方式控制设备（例如从用户控制的应用打开风扇）。

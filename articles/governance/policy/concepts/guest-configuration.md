@@ -3,36 +3,42 @@ title: 了解如何审核虚拟机的内容
 description: 了解 Azure Policy 如何使用来宾配置代理审核虚拟机内部的设置。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: e4899f6b3108cabb4e9cdd36e4b2bc5cd2f1cbd4
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 1721c0f1ca7c084d636278aabc96f8dac3293038
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538029"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759075"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
-除了审核和[修正](../how-to/remediate-resources.md) Azure 资源以外，Azure Policy 还可以审核计算机内部的设置。 验证由来宾配置扩展和客户端执行。 扩展通过客户端验证设置，例如：
+除了审核和[修正](../how-to/remediate-resources.md) Azure 资源以外，Azure Policy 还可以审核计算机内部的设置。 验证由来宾配置扩展和客户端执行。 该扩展将通过客户端验证如下所述的设置：
 
 - 操作系统的配置
-- 应用程序配置或状态
+- 应用程序配置或存在性
 - 环境设置
 
 此时，大多数 Azure 策略来宾配置策略仅审核计算机内的设置。 它们不应用配置。 例外情况是[下面引用](#applying-configurations-using-guest-configuration)的一个内置策略。
+
+## <a name="resource-provider"></a>资源提供程序
+
+必须注册资源提供程序，之后才能使用来宾配置。 如果 Guest Configuration 策略的分配是通过门户完成的，则会自动注册资源提供程序。 您可以通过[门户](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)Azure [PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)或[Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli)手动注册。
 
 ## <a name="extension-and-client"></a>扩展和客户端
 
 为了审核计算机内部的设置，将会启用一个[虚拟机扩展](../../../virtual-machines/extensions/overview.md)。 该扩展下载适用的策略分配和相应的配置定义。
 
+> [!Important]
+> 在 Azure 虚拟机中执行审核需要来宾配置扩展。
+> 要大规模部署扩展，请分配以下策略定义：
+>   - 部署必备组件以在 Windows VM 上启用 Guest Configuration 策略
+>   - 部署必备组件以在 Linux VM 上启用 Guest Configuration 策略
+
 ### <a name="limits-set-on-the-extension"></a>在扩展中设置的限制
 
 为了限制扩展影响在计算机内运行的应用程序，不允许来宾配置超过 CPU 的 5%。 内置定义和自定义定义都存在此限制。
 
-## <a name="register-guest-configuration-resource-provider"></a>注册来宾配置资源提供程序
-
-必须注册资源提供程序，之后才能使用来宾配置。 您可以通过[门户](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) [Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)或 Azure [CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli)进行注册。 如果 Guest Configuration 策略的分配是通过门户完成的，则会自动注册资源提供程序。
-
-## <a name="validation-tools"></a>验证工具
+### <a name="validation-tools"></a>验证工具
 
 在计算机中，Guest Configuration 客户端使用本地工具运行审核。
 
@@ -50,17 +56,17 @@ ms.locfileid: "81538029"
 
 ## <a name="supported-client-types"></a>支持的客户端类型
 
-下表显示了 Azure 映像上支持的操作系统列表：
+来宾配置策略包括新版本。 如果来宾配置代理不兼容，则排除 Azure 应用商店中可用的旧版本的操作系统。 下表显示了 Azure 映像上受支持的操作系统的列表：
 
-|发布者|“属性”|版本|
+|发布者|名称|版本|
 |-|-|-|
-|Canonical|Ubuntu Server|14.04、16.04、18.04|
-|Credativ|Debian|8、9|
-|Microsoft|Windows Server|2012 Datacenter、2012 R2 Datacenter、2016 Datacenter、2019 Datacenter|
+|Canonical|Ubuntu Server|14.04 及更高版本|
+|Credativ|Debian|8 及更高版本|
+|Microsoft|Windows Server|2012年及以后|
 |Microsoft|Windows 客户端|Windows 10|
-|OpenLogic|CentOS|7.3, 7.4, 7.5, 7.6, 7.7|
-|Red Hat|Red Hat Enterprise Linux|7.4, 7.5, 7.6, 7.7, 7.8|
-|Suse|SLES|12 SP3|
+|OpenLogic|CentOS|7.3 及更高版本|
+|Red Hat|Red Hat Enterprise Linux|7.4 及更高版本|
+|Suse|SLES|12 SP3 及更高版本|
 
 ### <a name="unsupported-client-types"></a>不支持的客户端类型
 
@@ -112,9 +118,9 @@ Azure 策略中的一个计划提供了按照"基线"审核操作系统设置的
 
 #### <a name="applying-configurations-using-guest-configuration"></a>使用 Guest Configuration 应用配置
 
-Azure Policy 的最新功能可以配置计算机内部的设置。 定义“在 Windows 计算机上配置时区”通过配置时区对计算机进行更改。__
+Azure Policy 的最新功能可以配置计算机内部的设置。 定义“在 Windows 计算机上配置时区”通过配置时区对计算机进行更改。 
 
-分配以“配置”开头的定义时，还必须分配定义“部署必备组件以在 Windows VM 上启用 Guest Configuration 策略”。____ 如果需要，可将这些定义合并到一个计划中。
+分配以“配置”开头的定义时，还必须分配定义“部署必备组件以在 Windows VM 上启用 Guest Configuration 策略”。   如果需要，可将这些定义合并到一个计划中。
 
 #### <a name="assigning-policies-to-machines-outside-of-azure"></a>将策略分配给 Azure 以外的计算机
 

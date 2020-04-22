@@ -3,31 +3,31 @@ title: Azure Functions 2.x 的 host.json 参考
 description: 使用 v2 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 7b3c9d15fc8cf3a1651c44a5656f731a7820e344
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7967cdc7f5f7cbb92c12de15d31471fda8aa6569
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405490"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758847"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 及更高版本的 host.json 参考 
 
 > [!div class="op_single_selector" title1="选择要使用的 Azure Functions 运行时的版本： "]
 > * [版本 1](functions-host-json-v1.md)
-> * [版本 2*](functions-host-json.md)
+> * [版本 2+](functions-host-json.md)
 
 *host.json* 元数据文件包含对函数应用的所有函数产生影响的全局配置选项。 本文列出了从 Azure Functions 运行时 2.x 版开始可用的设置。  
 
 > [!NOTE]
 > 本文适用于 Azure Functions 2.x 及更高版本。  有关 Functions 1.x 中 host.json 的参考，请参阅 [Azure Functions 1.x 的 host.json 参考](functions-host-json-v1.md)。
 
-其他功能应用配置选项在[应用设置](functions-app-settings.md)（针对已部署的应用）或[本地.settings.json](functions-run-local.md#local-settings-file)文件（用于本地开发）中管理。
+其他函数应用配置选项在[应用设置](functions-app-settings.md)（适用于已部署的应用）或 [local.settings.json](functions-run-local.md#local-settings-file) 文件（用于本地开发）中进行管理。
 
-与绑定相关的 host.json 中的配置将同样应用于函数应用中的每个函数。 
+host.json 中与绑定相关的配置将同样地应用于函数应用中的每个函数。 
 
 ## <a name="sample-hostjson-file"></a>示例 host.json 文件
 
-版本 2.x_ 的以下示例*host.json*文件指定了所有可能的选项（不包括任何仅供内部使用的选项）。
+以下版本 2.x+ 的示例 host.json  文件指定了所有可能的选项（不包括仅供内部使用的任何选项）。
 
 ```json
 {
@@ -143,7 +143,7 @@ ms.locfileid: "81405490"
 > [!NOTE]
 > 日志采样可能会导致一些执行不会显示在 Application Insights 监视器边栏选项卡中。 为了避免日志采样，请添加到`excludedTypes: "Request"``samplingSettings`值。
 
-| properties | 默认 | 说明 |
+| 属性 | 默认 | 说明 |
 | --------- | --------- | --------- | 
 | 采样设置 | 不适用 | 请参阅[应用程序见解.采样设置](#applicationinsightssamplingsettings)。 |
 | 启用实时测量 | true | 启用实时指标集合。 |
@@ -155,7 +155,7 @@ ms.locfileid: "81405490"
 
 ### <a name="applicationinsightssamplingsettings"></a>应用程序见解.采样设置
 
-|properties | 默认 | 说明 |
+|属性 | 默认 | 说明 |
 | --------- | --------- | --------- | 
 | isEnabled | true | 启用或禁用采样。 | 
 | maxTelemetryItemsPerSecond | 20 | 每台服务器主机上每秒记录的遥测项的目标数量。 如果应用在许多主机上运行，请减小此值以保持在总体流量目标速率内。 | 
@@ -171,7 +171,7 @@ ms.locfileid: "81405490"
 
 ### <a name="applicationinsightshttpautocollectionoptions"></a>应用程序见解.http自动收集选项
 
-|properties | 默认 | 说明 |
+|属性 | 默认 | 说明 |
 | --------- | --------- | --------- | 
 | 启用Httptrigger扩展信息集合 | true | 启用或禁用 HTTP 触发器的扩展 HTTP 请求信息：传入请求关联标头、多检测密钥支持、HTTP 方法、路径和响应。 |
 | 启用W3C分布式跟踪 | true | 启用或禁用对 W3C 分布式跟踪协议的支持（并启用旧相关架构）。 默认情况下启用（如果`enableHttpTriggerExtendedInfoCollection`为 true）。 如果`enableHttpTriggerExtendedInfoCollection`为 false，则此标志仅适用于传出请求，不适用于传入请求。 |
@@ -181,7 +181,7 @@ ms.locfileid: "81405490"
 
 有关快照的详细信息，请参阅[在 .NET 应用中调试异常的快照](/azure/azure-monitor/app/snapshot-debugger)，以及[启用应用程序见解快照调试器或查看快照的疑难解答问题](/azure/azure-monitor/app/snapshot-debugger-troubleshoot)。
 
-|properties | 默认 | 说明 |
+|属性 | 默认 | 说明 |
 | --------- | --------- | --------- | 
 | 代理端点 | Null | 用于连接到应用程序见解快照调试器服务的终结点。 如果为 null，则使用默认终结点。 |
 | 捕获快照内存权重 | 0.5 | 检查是否有足够的内存拍摄快照时，当前进程内存大小给出的权重。 预期值大于 0 正确的分数（0 <捕获快照内存权重< 1）。 |
@@ -216,7 +216,7 @@ ms.locfileid: "81405490"
 
 ## <a name="eventhub"></a>eventHub
 
-可在[事件中心触发器和绑定](functions-bindings-event-hubs-output.md#host-json)中查找配置设置。 
+可在[事件中心触发器和绑定](functions-bindings-event-hubs-trigger.md#host-json)中查找配置设置。 
 
 ## <a name="extensions"></a>扩展
 
@@ -268,7 +268,7 @@ ms.locfileid: "81405490"
 }
 ```
 
-|properties  |默认 | 说明 |
+|属性  |默认 | 说明 |
 |---------|---------|---------| 
 |已启用|true|指定是否启用此功能。 | 
 |healthCheckInterval|10 秒|定期后台运行状况检查之间的时间间隔。 | 
@@ -300,7 +300,7 @@ ms.locfileid: "81405490"
 }
 ```
 
-|properties  |默认 | 说明 |
+|属性  |默认 | 说明 |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|定义启用哪种级别的文件日志记录。  选项包括 `never`、`always` 和 `debugOnly`。 |
 |logLevel|不适用|一个对象，它定义了用于筛选应用中的函数的日志类别。 版本 2.x 和更高版本遵循日志类别筛选ASP.NET核心布局。 此设置允许您筛选特定函数的日志记录。 有关详细信息，请参阅 ASP.NET Core 文档中的[日志筛选](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)。 |
@@ -323,7 +323,7 @@ ms.locfileid: "81405490"
 }
 ```
 
-|properties  |默认 | 说明 |
+|属性  |默认 | 说明 |
 |---------|---------|---------| 
 |isEnabled|false|启用或禁用控制台日志记录。| 
 
@@ -367,7 +367,7 @@ ms.locfileid: "81405490"
 }
 ```
 
-|properties  |默认 | 说明 |
+|属性  |默认 | 说明 |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|占用函数级锁的时间段。 锁自动续订。| 
 |listenerLockPeriod|00:01:00|占用侦听器锁的时间段。| 

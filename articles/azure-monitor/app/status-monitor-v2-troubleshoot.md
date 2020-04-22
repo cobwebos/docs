@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 217629ba5c386557455cc2d2b8bd47f85fa8f84e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9bb22b12a7b3e972ff144bd121db4288801e2488
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671148"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732937"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights 代理（以前称为状态监视器 v2）故障排除
 
@@ -56,7 +56,7 @@ ms.locfileid: "77671148"
 ### <a name="conflict-with-iis-shared-configuration"></a>与 IIS 共享配置冲突
 
 如果拥有 Web 服务器群集，则可能会使用[共享配置](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)。
-HttpModule 无法注入此共享配置。
+HttpModule 无法注入到此共享配置中。
 在每个 Web 服务器上运行 Enable 命令，以将 DLL 安装到每个服务器的 GAC 中。
 
 在运行 Enable 命令后，请完成以下步骤：
@@ -81,7 +81,7 @@ HttpModule 无法注入此共享配置。
 
     
     
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
     
 ### <a name="troubleshooting-powershell"></a>PowerShell 故障排除
 
@@ -116,17 +116,17 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
    - Application Insights SDK 版本
    - PowerShell 模块的文件路径
     
-有关如何使用此 cmdlet 的详细说明，请查看 [API 参考](status-monitor-v2-api-get-status.md)。
+有关如何使用此 cmdlet 的详细说明，请查看 [API 参考](status-monitor-v2-api-reference.md)。
 
 
 ### <a name="troubleshooting-running-processes"></a>对正在运行的进程进行故障排除
 
 可以检查已检测的计算机上的进程，以确定是否加载了所有 DLL。
-如果监视正常工作，则至少应加载 12 个 DLL。
+如果监视功能在正常工作，则至少有 12 个 DLL 应加载。
 
 使用 `Get-ApplicationInsightsMonitoringStatus -InspectProcess` 命令来检查 DLL。
 
-有关如何使用此 cmdlet 的详细说明，请查看 [API 参考](status-monitor-v2-api-get-status.md)。
+有关如何使用此 cmdlet 的详细说明，请查看 [API 参考](status-monitor-v2-api-reference.md)。
 
 
 ### <a name="collect-etw-logs-by-using-perfview"></a>使用 PerfView 收集 ETW 日志
@@ -135,25 +135,25 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
 
 1. 从 [GitHub](https://github.com/Microsoft/perfview/releases) 下载 PerfView.exe 和 PerfView64.exe。
 2. 启动 PerfView64.exe。
-3. 展开“高级选项”****。
+3. 展开“高级选项”  。
 4. 清除这些复选框：
     - **Zip**
     - **合并**
     - **.NET 符号集合**
-5. 设置这些**附加提供程序**：`61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
+5. 设置以下“其他提供程序”  ：`61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
 
 
 #### <a name="collecting-logs"></a>收集日志
 
 1. 在具有管理员权限的命令控制台中，运行 `iisreset /stop` 命令以禁用 IIS 和所有 Web 应用。
-2. 在 PerfView 中，选择“开始收集”****。
+2. 在 PerfView 中，选择“开始收集”  。
 3. 在具有管理员权限的命令控制台中，运行 `iisreset /start` 命令以启动 IIS。
 4. 尝试浏览到你的应用。
-5. 在应用加载后，请返回到 PerfView，然后选择“停止收集”****。
+5. 在应用加载后，请返回到 PerfView，然后选择“停止收集”  。
 
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看[API 引用](status-monitor-v2-overview.md#powershell-api-reference)以了解您可能错过的参数。
+- 请查看 [API 参考](status-monitor-v2-overview.md#powershell-api-reference)，以了解你可能错过的参数。
 - 如果遇到此处未列出的问题，可以通过 [GitHub](https://github.com/Microsoft/ApplicationInsights-Home/issues) 联系我们。

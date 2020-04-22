@@ -8,14 +8,19 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 8178e585ecb7b1cdfd5e530f3d3406b7397f0968
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: f37b070c74abd8511fc597f9b159312d91281083
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476043"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759116"
 ---
-# <a name="get-connected-to-azure-iot-central"></a>连接到 Azure IoT 中心
+# <a name="get-connected-to-azure-iot-central"></a>连接到 Azure IoT Central
+
+*本文适用于操作员和设备开发人员。*
 
 本文介绍将设备连接到 Azure IoT 中心应用程序的选项。
 
@@ -241,8 +246,8 @@ Azure 设备 SDK 为实现设备代码提供最简便的方法。 以下设备 S
 | Azure IoT Central | Azure IoT 中心 |
 | ----------- | ------- |
 | 遥测 | 设备到云的消息传递 |
-| properties | 设备孪生报告属性 |
-| 属性（可写入） | 设备孪生所需的和报告的属性 |
+| 属性 | 设备孪生报告属性 |
+| 属性（可写） | 设备孪生所需的和报告的属性 |
 | 命令 | 直接方法 |
 
 若要详细了解如何使用设备 SDK，请参阅[将 DevDiv 工具包设备连接到 Azure IoT Central 应用程序](howto-connect-devkit.md)中的示例代码。
@@ -265,7 +270,8 @@ Azure 设备 SDK 为实现设备代码提供最简便的方法。 以下设备 S
 
 ## <a name="next-steps"></a>后续步骤
 
-了解 Azure IoT Central 中的设备连接后，建议接下来执行以下步骤：
+如果您是设备开发人员，建议的后续步骤是：
 
-- [准备和连接 DevKit 设备](howto-connect-devkit.md)
-- [C SDK：预配设备客户端 SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
+- 了解如何使用[Azure CLI 监视设备连接](./howto-monitor-devices-azure-cli.md)
+- 了解如何在[Azure IoT 中央应用程序中定义新的 IoT 设备类型](./howto-set-up-template.md)
+- 阅读有关[Azure IoT 边缘设备和 Azure IoT 中心](./concepts-iot-edge.md)

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/01/2020
 ms.author: victorh
-ms.openlocfilehash: e64b0a8602a4a0806ada15546972856743c38161
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 0e5a683c95e213a0fc37ec4f559e89abfecf034a
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312473"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758905"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>有关应用程序网关的常见问题解答
 
@@ -28,7 +28,7 @@ Azure 应用程序网关以服务形式提供应用程序传送控制器 (ADC)�
 
 ### <a name="what-features-does-application-gateway-support"></a>应用程序网关支持哪些功能？
 
-应用程序网关支持自动缩放、TLS 卸载和端到端 TLS、Web 应用程序防火墙 （WAF）、基于 Cookie 的会话关联性、基于 URL 路径的路由、多站点托管和其他功能。 有关受支持功能的完整列表，请参阅[应用程序网关简介](application-gateway-introduction.md)。
+应用程序网关支持自动缩放、TLS 卸载和端到端 TLS、Web 应用程序防火墙 （WAF）、基于 Cookie 的会话关联性、基于 URL 路径的路由、多站点托管和其他功能。 有关支持的功能的完整列表，请参阅[应用程序网关简介](application-gateway-introduction.md)。
 
 ### <a name="how-do-application-gateway-and-azure-load-balancer-differ"></a>应用程序网关与 Azure 负载均衡器有何不同？
 
@@ -66,13 +66,13 @@ Azure 应用程序网关以服务形式提供应用程序传送控制器 (ADC)�
 
 如果使用公共 IP 地址作为终结点，可以在公共 IP 地址资源中找到 IP 和 DNS 信息。 或者可以在门户中应用程序网关的概述页上找到它。 如果使用内部 IP 地址，可在概述页上找到该信息。
 
-对于 v2 SKU，打开公共 IP 资源并选择 **"配置**"。 **DNS 名称标签（可选）** 字段可用于配置 DNS 名称。
+对于 v2 SKU，请打开公共 IP 资源，然后选择“配置”  。 “DNS 名称标签(可选)”  字段可用于配置 DNS 名称。
 
 ### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>Keep-Alive 超时和 TCP 空闲超时的设置是什么？
 
-*保持活动超时*控制应用程序网关在重用或关闭之前等待客户端在持久连接上发送另一个 HTTP 请求的时间。 *TCP 空闲超时*控制 TCP 连接保持打开状态的时间，以防无活动。 
+Keep-Alive 超时  控制应用程序网关在重新使用或关闭它之前将等待客户端在持久连接上发送另一个 HTTP 请求的时间。 TCP 空闲超时  控制在无活动的情况下 TCP 连接保持打开状态的时间。 
 
-应用程序网关 v1 SKU 中的*保持活动超时*为 120 秒，在 v2 SKU 中为 75 秒。 对于应用程序网关的 v1 和 v2 SKU 的前端虚拟 IP （VIP）， *TCP 空闲超时*是 4 分钟的默认值。 
+应用程序网关 v1 SKU 中的 Keep-Alive 超时  为 120 秒，而在 v2 SKU 中为 75 秒。 在应用程序网关的 v1 和 v2 SKU 的前端虚拟 IP (VIP) 上，TCP 空闲超时  是默认的 4 分钟。 不能更改这些值。
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>在应用程序网关的生存期内，其 IP 或 DNS 名称是否会变化？
 

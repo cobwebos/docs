@@ -8,12 +8,15 @@ services: iot-hub
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: d0a9f643516af5945037acb3dd1da24b06944171
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: f46d41c8287d03cbe9582ed560244cbd85cdeeaa
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284403"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759592"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
@@ -33,7 +36,7 @@ ms.locfileid: "79284403"
 * IotHub '\*' 未包含指定的设备 '\*'
 * 授权规则 '\*' 不允许访问 '\*'
 * 此设备的身份验证失败，请续订令牌或证书，然后重新连接
-* 指纹与配置不匹配：指纹：SHA1哈希*，SHA2\*哈希*;\*配置：主拇指打印\**\*
+* 指纹与配置不匹配：指纹：SHA1Hash=\*, SHA2Hash=\*；配置：PrimaryThumbprint=\*, SecondaryThumbprint=\*
 
 ## <a name="cause"></a>原因
 

@@ -5,18 +5,21 @@ services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 1/31/2020
+ms.date: 4/20/2020
 ms.author: alzam
-ms.openlocfilehash: 3b7e765dbd024d46939e8989993f0c882b2a8f4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b63bb861f4df087f852bb1bf599d32100d063f7e
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76965224"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733184"
 ---
-# <a name="download-a-global-or-hub-based-profile-for-user-vpn-clients"></a>下载用户 VPN 客户端的全局或基于中心的配置文件
+# <a name="download-a-global-or-hub-based-profile-for-user-vpn-clients"></a>为用户 VPN 客户端下载全局或基于中心的配置文件
 
-Azure 虚拟 WAN 为远程用户提供两种类型的连接：全局和基于集线器。 使用以下部分了解和下载配置文件。
+Azure 虚拟 WAN 为远程用户提供两种类型的连接：全局连接和基于中心的连接。 使用以下部分了解和下载配置文件。 
+
+> [!IMPORTANT]
+> RADIUS 身份验证仅支持基于集线器的配置文件。
 
 ## <a name="global-profile"></a>全球概况
 

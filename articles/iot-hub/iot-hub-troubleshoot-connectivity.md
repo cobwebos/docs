@@ -8,12 +8,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: bed6736fda0c1815964f9017adb1e6fffa9335d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: 82139eef9708ff8d76e1087c71aa5445ba898385
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77110685"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759610"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>监视、诊断和排查 Azure IoT 中心的连接断开问题
 
@@ -27,15 +28,15 @@ ms.locfileid: "77110685"
 
 若要记录设备连接事件和错误，请为 IoT 中心启用诊断。 建议尽早启用这些日志，因为如果未启用诊断日志，则当设备断开连接时，你将不会有任何信息可用来排查问题。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 2. 浏览到 IoT 中心。
 
-3. 选择“诊断设置”****。
+3. 选择“诊断设置”  。
 
-4. 选择“启用诊断”****。
+4. 选择“启用诊断”  。
 
-5. 启用要收集的“连接”日志****。
+5. 启用要收集的“连接”日志  。
 
 6. 为便于分析，应启用“发送到 Log Analytics”（[参阅定价](https://azure.microsoft.com/pricing/details/log-analytics/)）****。 请参阅[解决连接错误](#resolve-connectivity-errors)下的示例。
 
@@ -47,15 +48,15 @@ ms.locfileid: "77110685"
 
 要在设备断开连接时获取警报，请在 **"已连接的设备（预览）"** 指标上配置警报。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 2. 浏览到 IoT 中心。
 
-3. 选择**警报**。
+3. 选择“**警报**”。
 
-4. 选择“新建警报规则”。****
+4. 选择“新建警报规则”。 
 
-5. 选择“添加条件”，然后选择“联网设备(预览版)”。****
+5. 选择“添加条件”，然后选择“联网设备(预览版)”。 
 
 6. 按照提示设置阈值和警报。
 
@@ -63,19 +64,19 @@ ms.locfileid: "77110685"
 
 #### <a name="detecting-individual-device-disconnects"></a>检测各个设备断开连接
 
-若要检测“每设备”** 断开连接，例如当需要知道某个工厂刚刚离线时，请[使用事件网格配置设备断开连接事件](iot-hub-event-grid.md)。
+若要检测“每设备”  断开连接，例如当需要知道某个工厂刚刚离线时，请[使用事件网格配置设备断开连接事件](iot-hub-event-grid.md)。
 
 ## <a name="resolve-connectivity-errors"></a>解决连接错误
 
 为联网设备启用诊断日志和警报后，如果出错，则会收到警报。 本部分介绍了如何在收到警报时查找常见问题。 以下步骤假设已经在 Azure Monitor 日志中设置了诊断日志。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 浏览到 IoT 中心。
 
-1. 选择**日志**。
+1. 选择“日志”。 
 
-1. 若要隔离 IoT 中心的连接错误日志，请输入以下查询，然后选择“运行”****：
+1. 若要隔离 IoT 中心的连接错误日志，请输入以下查询，然后选择“运行”  ：
 
     ```kusto
     AzureDiagnostics
@@ -102,7 +103,7 @@ ms.locfileid: "77110685"
 
 * 验证您的设备在 Azure 门户中**是否已启用**，> IoT 中心> IoT 设备。
 
-* 如果您的设备使用 MQTT 协议，请验证端口 8883 是否打开。 有关详细信息，请参阅连接到[IoT 中心 （MQTT）](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
+* 如果设备使用 MQTT 协议，请确认端口 8883 已打开。 有关详细信息，请参阅[连接到 IoT 中心 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 * 从 [Azure IoT 中心论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=azureiothub)、[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub) 或 [Azure 支持](https://azure.microsoft.com/support/options/)获得帮助。
 

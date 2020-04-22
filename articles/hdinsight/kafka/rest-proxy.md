@@ -7,16 +7,16 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 6bf34f8fb15bf8fddb1ba398ed678d5c98b8c84f
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 265e15713f8159e370ef22a197ffe931200a88f7
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80667785"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758996"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>使用 REST 代理与 Azure HDInsight 中的 Apache Kafka 群集交互
 
-Kafka REST 代理使您能够通过 REST API 通过 HTTP 与卡夫卡群集进行交互。 此操作意味着您的 Kafka 客户端可以位于虚拟网络之外。 客户端可以对 Kafka 群集进行简单的 HTTP 调用，而不是依赖于卡夫卡库。 本文将介绍如何创建启用 REST 代理的 Kafka 群集。 还提供了一个示例代码，演示如何调用 REST 代理。
+使用 Kafka REST 代理可以通过基于 HTTP 的 REST API 来与 Kafka 群集交互。 此操作意味着您的 Kafka 客户端可以位于虚拟网络之外。 客户端可以对 Kafka 群集进行简单的 HTTP 调用，而不是依赖于卡夫卡库。 本文将介绍如何创建启用 REST 代理的 Kafka 群集。 还提供了一个示例代码，演示如何调用 REST 代理。
 
 ## <a name="rest-api-reference"></a>REST API 参考
 
@@ -74,17 +74,17 @@ Kafka REST 代理使您能够通过 REST API 通过 HTTP 与卡夫卡群集进�
 可使用以下 Python 代码来与 Kafka 群集上的 REST 代理交互。 若要使用代码示例，请执行以下步骤：
 
 1. 在装有 Python 的计算机上保存示例代码。
-1. 执行 `pip3 install adal` 和 `pip install msrestazure` 安装所需的 Python 依赖项。
+1. 通过 执行 安装所需的 python`pip3 install msal`依赖项。
 1. 修改代码部分**配置这些属性**并更新环境的以下属性：
 
-    |properties |说明 |
+    |属性 |说明 |
     |---|---|
     |租户 ID|订阅所在的 Azure 租户。|
     |客户端 ID|您在安全组中注册的应用程序的 ID。|
     |客户端机密|您在安全组中注册的应用程序的机密。|
     |Kafkarest_endpoint|从群集概述中的 **"属性"** 选项卡获取此值，如[部署部分](#create-a-kafka-cluster-with-rest-proxy-enabled)所述。 此属性应采用以下格式 – `https://<clustername>-kafkarest.azurehdinsight.net`|
 
-1. 在命令行中，通过执行 `python <filename.py>` 来执行 Python 文件
+1. 在命令行中，通过执行 `sudo python3 <filename.py>` 来执行 Python 文件
 
 此代码执行以下操作：
 
@@ -95,13 +95,9 @@ Kafka REST 代理使您能够通过 REST API 通过 HTTP 与卡夫卡群集进�
 
 ```python
 #Required python packages
-#pip3 install adal
-#pip install msrestazure
+#pip3 install msal
 
-import adal
-from msrestazure.azure_active_directory import AdalAuthentication
-from msrestazure.azure_cloud import AZURE_PUBLIC_CLOUD
-import requests
+import msal
 
 #--------------------------Configure these properties-------------------------------#
 # Tenant ID for your Azure Subscription
@@ -114,19 +110,24 @@ client_secret = 'password'
 kafkarest_endpoint = "https://<clustername>-kafkarest.azurehdinsight.net"
 #--------------------------Configure these properties-------------------------------#
 
-#getting token
-login_endpoint = AZURE_PUBLIC_CLOUD.endpoints.active_directory
-resource = "https://hib.azurehdinsight.net"
-context = adal.AuthenticationContext(login_endpoint + '/' + tenant_id)
+# Scope
+scope = 'https://hib.azurehdinsight.net/.default'
+#Authority
+authority = 'https://login.microsoftonline.com/' + tenant_id
 
-token = context.acquire_token_with_client_credentials(
-    resource,
-    client_id,
-    client_secret)
+# Create a preferably long-lived app instance which maintains a token cache.
+app = msal.ConfidentialClientApplication(
+    client_id , client_secret, authority,
+    #cache - For details on how look at this example: https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/app.py
+    )
 
-accessToken = 'Bearer ' + token['accessToken']
+# The pattern to acquire a token looks like this.
+result = None
 
-print(accessToken)
+result = app.acquire_token_for_client(scopes=[scope])
+
+print(result)
+accessToken = result['access_token']
 
 # relative url
 getstatus = "/v1/metadata/topics"
@@ -137,10 +138,10 @@ response = requests.get(request_url, headers={'Authorization': accessToken})
 print(response.content)
 ```
 
-下面查找有关如何使用 curl 命令从 AZURE 获取 REST 代理令牌的另一个示例。 请注意，我们需要在`resource=https://hib.azurehdinsight.net`获取令牌时指定。
+下面查找有关如何使用 curl 命令从 AZURE 获取 REST 代理令牌的另一个示例。 **请注意，我们需要在`scope=https://hib.azurehdinsight.net/.default`获取令牌时指定。**
 
 ```cmd
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=<clientid>&client_secret=<clientsecret>&grant_type=client_credentials&resource=https://hib.azurehdinsight.net' 'https://login.microsoftonline.com/<tenantid>/oauth2/token'
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=<clientid>&client_secret=<clientsecret>&grant_type=client_credentials&scope=https://hib.azurehdinsight.net/.default' 'https://login.microsoftonline.com/<tenantid>/oauth2/v2.0/token'
 ```
 
 ## <a name="next-steps"></a>后续步骤

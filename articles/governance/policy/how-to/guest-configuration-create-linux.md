@@ -1,29 +1,34 @@
 ---
-title: 如何为 Linux 创建来宾配置策略
-description: 了解如何为 Linux 创建 Azure 策略来宾配置策略。
+title: 如何创建适用于 Linux 的 Guest Configuration 策略
+description: 了解如何创建适用于 Linux 的 Azure Policy Guest Configuration 策略。
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 65e0082f87f05104e9a57ff0342cd3d2950b63e8
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: 24442a89d55e34f9ce9697c2f6a32cfc740bcd85
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81617940"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758961"
 ---
-# <a name="how-to-create-guest-configuration-policies-for-linux"></a>如何为 Linux 创建来宾配置策略
+# <a name="how-to-create-guest-configuration-policies-for-linux"></a>如何创建适用于 Linux 的 Guest Configuration 策略
 
-在创建自定义策略之前，请阅读 Azure[策略来宾配置](../concepts/guest-configuration.md)上的概述信息。
+在创建自定义策略之前，请阅读 [Azure Policy Guest Configuration](../concepts/guest-configuration.md) 中的概述信息。
  
-要了解如何为 Windows 创建来宾配置策略，请参阅["如何为 Windows 创建来宾配置策略](./guest-configuration-create.md)"页
+若要了解如何创建适用于 Windows 的 Guest Configuration 策略，请参阅[如何创建适用于 Windows 的 Guest Configuration 策略](./guest-configuration-create.md)页
 
-审核 Linux 时，来宾配置使用[Chef InSpec](https://www.inspec.io/)。 InSpec 配置文件定义计算机应处于的条件。 如果配置评估失败，将触发策略效果**审核IfNotExists，** 并且计算机被视为**不符合**。
+审核 Linux 时，Guest Configuration 将使用 [Chef InSpec](https://www.inspec.io/)。 InSpec 配置文件定义计算机应该所处的状态。 如果配置评估失败，则会触发策略效应 auditIfNotExists，并将计算机视为不合规。  
 
 [Azure Policy Guest Configuration](../concepts/guest-configuration.md) 只可用于审核计算机内部的设置。 目前尚未提供修正计算机内部设置的功能。
 
-使用以下操作创建自己的配置以验证 Azure 或非 Azure 计算机的状态。
+使用以下操作创建自己的配置用于验证 Azure 或非 Azure 计算机的状态。
 
 > [!IMPORTANT]
 > 使用 Guest Configuration 的自定义策略是一项预览版功能。
+>
+> 在 Azure 虚拟机中执行审核需要来宾配置扩展。
+> 要大规模部署扩展，请分配以下策略定义：
+>   - 部署必备组件以在 Windows VM 上启用 Guest Configuration 策略
+>   - 部署必备组件以在 Linux VM 上启用 Guest Configuration 策略
 
 ## <a name="install-the-powershell-module"></a>安装 Powershell 模块
 
@@ -101,7 +106,7 @@ end
 
 将具有名称`linux-path.rb`的文件保存在`controls``linux-path`目录中命名的新文件夹中。
 
-最后，创建配置、导入**来宾配置**资源模块，`ChefInSpecResource`并使用该资源设置 InSpec 配置文件的名称。
+最后，创建配置、导入**PS希望状态配置**资源模块并编译配置。
 
 ```powershell
 # Define the configuration and import GuestConfiguration
@@ -119,10 +124,15 @@ Configuration AuditFilePathExists
 }
 
 # Compile the configuration to create the MOF files
+import-module PSDesiredStateConfiguration
 AuditFilePathExists -out ./Config
 ```
 
+将此文件与名称`config.ps1`保存在项目文件夹中。 通过在终端中执行`./config.ps1`在 PowerShell 中运行它。 将创建新的 mof 文件。
+
 该`Node AuditFilePathExists`命令在技术上不是必需的，但它生成名为`AuditFilePathExists.mof`而不是默认值的文件。 `localhost.mof` 使 .mof 文件名遵循配置，因此在大规模运行时很容易组织许多文件。
+
+
 
 现在，您应该有如下项目结构：
 
@@ -150,8 +160,8 @@ AuditFilePathExists -out ./Config
 ```azurepowershell-interactive
 New-GuestConfigurationPackage `
   -Name 'AuditFilePathExists' `
-  -Configuration './Config/AuditFilePathExists.mof'
-  -ChefProfilePath './'
+  -Configuration './Config/AuditFilePathExists.mof' `
+  -ChefInSpecProfilePath './'
 ```
 
 创建配置包后，但在将其发布到 Azure 之前，可以从工作站或 CI/CD 环境中测试该包。 Guest 配置 cmdlet`Test-GuestConfigurationPackage`在开发环境中包括与 Azure 计算机中使用的代理相同的代理。 使用此解决方案，您可以在本地执行集成测试，然后再发布到计费的云环境。
@@ -168,7 +178,7 @@ New-GuestConfigurationPackage `
 
 ```azurepowershell-interactive
 Test-GuestConfigurationPackage `
-  -Path ./AuditFilePathExists.zip
+  -Path ./AuditFilePathExists/AuditFilePathExists.zip
 ```
 
 该 cmdlet 还支持来自 PowerShell 管道的输入。 通过管道将 `New-GuestConfigurationPackage` cmdlet 的输出传送到 `Test-GuestConfigurationPackage` cmdlet。

@@ -8,12 +8,13 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: elioda
-ms.openlocfilehash: 55dc7f73a3e5bbff2e6e331ba0bd7d4088a86536
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: e65c781bd5cb62bdaa693b854caafd5f91fd497e
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77110828"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732281"
 ---
 # <a name="get-started-with-device-twins-nodejs"></a>设备孪生入门 (Node.js)
 
@@ -23,13 +24,13 @@ ms.locfileid: "77110828"
 
 * **AddTagsAndQuery.js**（Node.js 后端应用），用于添加标记和查询设备孪生。
 
-* **Twin模拟设备.js**，Node.js 应用程序，它模拟使用较早创建的设备标识连接到 IoT 中心的设备，并报告其连接条件。
+*  TwinSimulatedDevice.js（Node.js 应用），用于模拟使用早先创建的设备标识连接到 IoT 中心的设备，并报告其连接状况。
 
 > [!NOTE]
-> [Azure IoT SDK](iot-hub-devguide-sdks.md) 文章介绍了可用于构建设备和后端应用的 Azure IoT SDK。
+> [Azure IoT SDK](iot-hub-devguide-sdks.md) 一文介绍了可用于构建设备和后端应用的 Azure IoT SDK。
 >
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，需要：
 
@@ -106,7 +107,7 @@ ms.locfileid: "77110828"
 
     **Registry** 对象公开从该服务与设备孪生交互所需的所有方法。 前面的代码首先初始化 **Registry** 对象，并检索 **myDeviceId** 的设备孪生，最后使用所需位置信息更新其标记。
 
-    更新标记后，它将调用 queryTwins 函数****。
+    更新标记后，它将调用 queryTwins 函数  。
 
 5. 在 **AddTagsAndQuery.js** 末尾添加以下代码以实现 **queryTwins** 函数：
 
@@ -166,7 +167,7 @@ ms.locfileid: "77110828"
 
 3. 使用文本编辑器，在 **reportconnectivity** 文件夹中创建一个新的 **ReportConnectivity.js** 文件。
 
-4. 将以下代码添加到 **ReportConnectivity.js** 文件。 将 `{device connection string}` 替换为在[在 IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中创建 **myDeviceId** 设备标识时复制的设备连接字符串。
+4. 将以下代码添加到 **ReportConnectivity.js** 文件。 将 `{device connection string}` 替换为在**在 IoT 中心注册新设备**中创建 [myDeviceId](#register-a-new-device-in-the-iot-hub) 设备标识时复制的设备连接字符串。
 
     ```javascript
         'use strict';
@@ -232,8 +233,8 @@ ms.locfileid: "77110828"
 
 使用下列资源了解如何执行以下操作：
 
-* 使用[IoT 中心](quickstart-send-telemetry-node.md)教程从设备发送遥测数据，
+* 通过 [IoT 中心入门](quickstart-send-telemetry-node.md)教程学习如何从设备发送遥测数据。
 
 * 按照[使用所需属性配置设备](tutorial-device-twins.md)教程使用设备孪生的所需属性配置设备，
 
-* 使用["使用直接方法"](quickstart-control-device-node.md)教程，以交互方式控制设备（例如从用户控制的应用程序打开风扇）。
+* 通过[使用直接方法](quickstart-control-device-node.md)教程学习如何以交互方式控制设备（例如从用户控制的应用打开风扇）。

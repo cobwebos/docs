@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure IoT 中心安排作业 (Node) | Microsoft Docs
-description: 如何安排 Azure IoT 中心作业对多台设备调用直接方法。 使用 Azure IoT SDK for Node.js 实现模拟设备应用以及用于运行作业的服务应用。
+description: 如何安排 Azure IoT 中心作业实现多台设备上的直接方法调用。 使用 Azure IoT SDK for Node.js 实现模拟设备应用以及用于运行作业的服务应用。
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -9,12 +9,13 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.openlocfilehash: 5053935f52153f0cd6ff2f05c5153732f5bda945
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: d7f9ce37ad85d39388eea90af263f59ce312a6b8
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77110849"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732268"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>计划和广播作业 (Node.js)
 
@@ -26,7 +27,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 * 更新标记
 * 调用直接方法
 
-从概念上讲，一个作业包装上述一项作业，并跟踪一组设备中的执行进度（由设备孪生查询定义）。  例如，后端应用可使用作业重启 10,000 台设备（由设备孪生查询指定并计划在将来执行）。 该应用程序随后可以在其中每个设备接收和执行重新启动方法时跟踪进度。
+从概念上讲，作业包装这些操作之一，并跟踪针对一组设备执行（由设备孪生查询定义）的进度。  例如，后端应用可使用作业重启 10,000 台设备（由设备孪生查询指定并计划在将来执行）。 该应用程序随后可以在其中每个设备接收和执行重新启动方法时跟踪进度。
 
 可在以下文章中了解有关所有这些功能的详细信息：
 
@@ -38,15 +39,15 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 本教程演示如何：
 
-* 创建一个具有直接方法的 Node.js 模拟设备应用，启用可由解决方案后端进行调用的 lockDoor****。
+* 创建一个具有直接方法的 Node.js 模拟设备应用，启用可由解决方案后端进行调用的 lockDoor  。
 
 * 创建一个 Node.js 控制台应用，该应用使用作业调用模拟设备应用中的 **lockDoor** 直接方法，并使用设备作业更新所需属性。
 
 在本教程结束时，会创建两个 Node.js 应用：
 
-* **simDevice.js**，它使用设备标识连接到 IoT 中心，并接收**lockDoor**直接方法。
+* **simDevice.js**，它使用设备标识连接到 IoT 中心，并接收 **lockDoor** 直接方法。
 
-* scheduleJobService.js，它调用模拟设备应用中的直接方法，并通过作业更新设备孪生的所需属性****。
+* scheduleJobService.js，它调用模拟设备应用中的直接方法，并通过作业更新设备孪生的所需属性  。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -66,9 +67,9 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 ## <a name="create-a-simulated-device-app"></a>创建模拟设备应用程序
 
-本部分将创建一个 Node.js 控制台应用，用于响应通过云调用的方法，这会触发模拟 lockDoor 方法****。
+本部分将创建一个 Node.js 控制台应用，用于响应通过云调用的方法，这会触发模拟 lockDoor 方法  。
 
-1. 新建名为 **simDevice** 的空文件夹。  在 **simDevice** 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
+1. 新建名为 **simDevice**的空文件夹。  在 **simDevice** 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
 
    ```console
    npm init
@@ -98,7 +99,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
 
-6. 添加以下函数来处理**lockDoor**方法。
+6. 添加以下函数以处理 **lockDoor** 方法。
 
     ```javascript
     var onLockDoor = function(request, response) {
@@ -116,7 +117,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
     };
     ```
 
-7. 添加以下代码以注册**lockDoor**方法的处理程序。
+7. 添加以下代码以注册 **lockDoor** 方法的处理程序。
 
    ```javascript
    client.open(function(err) {
@@ -143,15 +144,15 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 ## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>安排作业，用于调用直接方法和更新设备孪生的属性
 
-在本节中，您将创建 Node.js 控制台应用，该应用程序使用直接方法在设备上启动远程**lockDoor**并更新设备孪生的属性。
+在此部分中，会创建一个 Node.js 控制台应用，它使用直接方法对设备启动远程 **lockDoor** 并更新设备孪生的属性。
 
-1. 新建名为 **scheduleJobService** 的空文件夹。  在 **scheduleJobService** 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
+1. 新建名为 **scheduleJobService**的空文件夹。  在 **scheduleJobService** 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
 
     ```console
     npm init
     ```
 
-2. 在 **scheduleJobService** 文件夹的命令提示符处，运行下述命令以安装 **azure-iothub** 设备 SDK 包和 **azure-iot-device-mqtt** 包：
+2. 在 scheduleJobService  文件夹的命令提示符处，运行以下命令安装 azure-iothub  设备 SDK 包和 azure-iot-device-mqtt  包：
 
     ```console
     npm install azure-iothub uuid --save
@@ -229,7 +230,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
     });
     ```
 
-8. 添加以下代码，安排设备孪生的更新作业：
+8. 添加以下代码以安排更新设备孪生的作业：
 
     ```javascript
     var twinPatch = {
@@ -271,7 +272,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 现在，已准备就绪，可以运行应用程序了。
 
-1. 在 **simDevice** 文件夹的命令提示符处，运行以下命令以开始侦听重新启动直接方法。
+1. 在 simDevice  文件夹的命令提示符处，运行以下命令以开始侦听重启直接方法。
 
     ```console
     node simDevice.js
@@ -297,6 +298,6 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 在本教程中，使用了作业来安排用于设备的直接方法以及设备孪生属性的更新。
 
-要继续使用 IoT 中心和设备管理模式（如远程通过空气固件更新）入门，请参阅[教程：如何执行固件更新](tutorial-firmware-update.md)。
+若要继续完成 IoT 中心和设备管理模式（如远程无线固件更新）的入门内容，请参阅[教程：如何执行固件更新](tutorial-firmware-update.md)。
 
 若要继续完成 IoT 中心入门内容，请参阅 [Azure IoT Edge 入门](../iot-edge/tutorial-simulate-device-linux.md)。

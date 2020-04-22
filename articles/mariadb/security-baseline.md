@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: bca9c0e4c0695b6180775051d8b018930f8b808f
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 9df0de443e28e0eea3224e42178eddd46108ea64
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81256461"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759174"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>MariaDB Azure 数据库的 Azure 安全基线
 
@@ -620,7 +620,7 @@ Microsoft 管理 MariaDB 的基础基础结构，并实施了严格的控制，�
 
 **指南**：使用 Azure 资源图查询和发现订阅中的所有资源（包括 MariaDB 服务器的 Azure 数据库）。 确保租户中具有适当的（读取）权限，并能够枚举订阅中的所有 Azure 订阅和资源。
 
-如何使用 Azure 图形创建查询：https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+如何使用 Azure 资源图创建查询：https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 如何查看 Azure 订阅：https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 

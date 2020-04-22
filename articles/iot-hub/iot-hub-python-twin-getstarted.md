@@ -8,12 +8,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: robinsh
-ms.openlocfilehash: c1db7f1a891646ad29f6cae95ddb7e2cf3a42bfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: 0bb1371de827fbb68afd5d114f49afa4acec0deb
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409692"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759735"
 ---
 # <a name="get-started-with-device-twins-python"></a>设备孪生入门 (Python)
 
@@ -27,7 +28,7 @@ ms.locfileid: "79409692"
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
@@ -49,9 +50,9 @@ ms.locfileid: "79409692"
 
 ## <a name="create-the-service-app"></a>创建服务应用
 
-在本节中，您将创建一个 Python 控制台应用，将位置元数据添加到与 **[设备 ID]** 关联的设备孪生。 然后，该应用将选择位于 Redmond 的设备来查询存储在 IoT 中心的设备孪生，然后查询报告移动电话网络连接的设备孪生。
+在本部分中，将创建一个 Python 控制台应用，该应用将位置元数据添加到与 **{Device ID}** 关联的设备孪生。 然后，该应用将选择位于 Redmond 的设备来查询存储在 IoT 中心的设备孪生，然后查询报告移动电话网络连接的设备孪生。
 
-1. 在工作目录中，打开命令提示符并安装安装适用于 Python 的 Azure IoT 中心服务 SDK****。
+1. 在工作目录中，打开命令提示符并安装安装适用于 Python 的 Azure IoT 中心服务 SDK  。
 
    ```cmd/sh
    pip install azure-iot-hub
@@ -68,7 +69,7 @@ ms.locfileid: "79409692"
    from azure.iot.hub.models import Twin, TwinProperties, QuerySpecification, QueryResult
    ```
 
-4. 添加以下代码。 替换为`[IoTHub Connection String]`在[获取 IoT 中心连接字符串中复制的 IoT 中心连接字符串](#get-the-iot-hub-connection-string)。 将 `[Device Id]` 替换为在[在 IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中注册的设备 ID。
+4. 添加以下代码。 将 `[IoTHub Connection String]` 替换为在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 IoT 中心连接字符串。 将 `[Device Id]` 替换为在[在 IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中注册的设备 ID。
   
     ```python
     IOTHUB_CONNECTION_STRING = "[IoTHub Connection String]"
@@ -113,7 +114,7 @@ ms.locfileid: "79409692"
             print("IoT Hub Device Twin service sample stopped")
     ```
 
-    **IoTHubRegistryManager**对象公开了与服务中的设备孪生交互所需的所有方法。 代码首先初始化**IoTHubRegistryManager**对象，然后更新**DEVICE_ID**的设备孪生，最后运行两个查询。 第一个仅选择位于**Redmond43**工厂中的设备的设备孪生，第二个优化查询以仅选择也通过蜂窝网络连接的设备。
+     IoTHubRegistryManager 对象公开从服务与设备孪生进行交互所需的所有方法。 此代码将首先初始化 IoTHubRegistryManager  对象，然后更新 DEVICE_ID  的设备孪生，最后运行两个查询。 第一个查询仅选择位于 Redmond43  工厂的设备的设备孪生，第二个查询将查询细化为仅选择还通过移动电话网络连接的设备。
 
 6. 在 **AddTagsAndQuery.py** 的末尾添加以下代码来实现 **iothub_service_sample_run** 函数：
 
@@ -196,7 +197,7 @@ ms.locfileid: "79409692"
             print ( "IoT Hub Device Twin device sample stopped" )
     ```
 
-    **IoTHubModuleClient**对象公开与设备中的设备孪生交互所需的所有方法。 前面的代码在初始化**IoTHubModuleClient**对象后，会检索设备的孪生，并更新其报告的属性与连接信息。
+    IoTHubModuleClient  对象公开从该设备与设备孪生交互所需的所有方法。 上面的代码在初始化 IoTHubModuleClient  对象后，检索你的设备的设备孪生，并使用连接信息更新其报告属性。
 
 6. 在 **ReportConnectivity.py** 的末尾添加以下代码来实现 **iothub_client_sample_run** 函数：
 
@@ -214,9 +215,9 @@ ms.locfileid: "79409692"
     python ReportConnectivity.py
     ```
 
-    您应该会看到确认设备孪生报告的属性已更新。
+    应当会看到设备孪生报告属性已更新的确认。
 
-    ![从设备应用更新报告的属性](./media/iot-hub-python-twin-getstarted/device-1.png)
+    ![从设备应用更新报告属性](./media/iot-hub-python-twin-getstarted/device-1.png)
 
 8. 既然设备报告其连接的信息，该信息应显示在两个查询中。 回过头来再次运行查询：
 
@@ -224,13 +225,13 @@ ms.locfileid: "79409692"
     python AddTagsAndQuery.py
     ```
 
-    这一次 **，您的 [设备 ID]** 应出现在两个查询结果中。
+    这一次，两个查询结果中应当都会显示你的 **{Device ID}** 。
 
-    ![服务应用的第二个查询](./media/iot-hub-python-twin-getstarted/service-2.png)
+    ![第二次查询服务应用](./media/iot-hub-python-twin-getstarted/service-2.png)
 
-    在设备应用中，您将看到服务应用发送的所需属性孪生修补程序已收到确认。
+    在设备应用中，你将看到“已收到服务应用发送的所需属性孪生修补程序”的确认。
 
-    ![在设备应用上接收所需的属性](./media/iot-hub-python-twin-getstarted/device-2.png)
+    ![在设备应用上接收所需属性](./media/iot-hub-python-twin-getstarted/device-2.png)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -238,8 +239,8 @@ ms.locfileid: "79409692"
 
 使用下列资源了解如何执行以下操作：
 
-* 使用[IoT 中心](quickstart-send-telemetry-python.md)教程从设备发送遥测数据。
+* 通过 [IoT 中心入门](quickstart-send-telemetry-python.md)教程学习如何从设备发送遥测数据。
 
-* 使用设备孪生所需的属性使用["使用所需属性"配置设备，以配置设备](tutorial-device-twins.md)教程。
+* 按照[使用所需属性配置设备](tutorial-device-twins.md)教程使用设备孪生的所需属性配置设备。
 
-* 使用["使用直接方法"](quickstart-control-device-python.md)教程，以交互方式控制设备（例如从用户控制的应用程序打开风扇）。
+* 通过[使用直接方法](quickstart-control-device-python.md)教程学习如何以交互方式控制设备（例如从用户控制的应用打开风扇）。

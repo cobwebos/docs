@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 01/07/2020
+ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: f1387273f9736fea70682177d5d48dc2f141bbad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5aa7abf7aafc14e71af5618cec892ef9f843d88a
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76933864"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733066"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒体服务视频索引器发布说明
 
@@ -29,6 +29,20 @@ ms.locfileid: "76933864"
 * 已知问题
 * Bug 修复
 * 已弃用的功能
+
+## <a name="april-2020"></a>2020 年 4 月
+
+### <a name="new-widget-parameters-capabilities"></a>新的小部件参数功能
+
+**见解**小部件包括新的参数：`language`和`control`。
+
+**播放器**小部件有一个新的`locale`参数。 和`locale``language`参数都控制玩家的语言。
+
+有关详细信息，请参阅[小部件类型](video-indexer-embed-widgets.md#widget-types)部分。 
+
+## <a name="new-player-skin"></a>新玩家皮肤
+
+一个新的玩家皮肤推出与更新的设计。
 
 ## <a name="january-2020"></a>2020 年 1 月
  
@@ -46,7 +60,7 @@ ms.locfileid: "76933864"
  
 ### <a name="swagger-update"></a>斯瓦格更新
 
-视频索引器将**身份验证**和**操作**统一到单个[视频索引器 OpenAPI 规范（摇号）](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson)中。 Develpers 可以在[视频索引器开发人员门户](https://api-portal.videoindexer.ai/)中找到 API。
+视频索引器将**身份验证**和**操作**统一到单个[视频索引器 OpenAPI 规范（摇号）](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson)中。 开发人员可以在[视频索引器开发人员门户](https://api-portal.videoindexer.ai/)中找到 API。
 
 ## <a name="december-2019"></a>2019 年 12 月
 
@@ -129,7 +143,7 @@ IBC 2019 年宣布的多项进展：
 
 ### <a name="new-editorial-shot-type-insights-available"></a>提供新的编辑拍摄类型见解
 
-添加到视频拍摄的新标签提供编辑"拍摄类型"，用于识别内容创建工作流中使用的常见编辑短语，例如：极端特写、特写、宽、中、两个镜头、室外、室内、左脸和右脸（可在JSON）。
+添加到视频拍摄的新标签提供了编辑"拍摄类型"，用于识别内容创建工作流中使用的常见编辑短语，例如：极端特写、特写、宽、中、两次拍摄、室外、室内、左脸和右脸（在 JSON 中可用）。
 
 ### <a name="new-people-and-locations-entities-extraction-available"></a>提供新人员点和地点实体提取
 

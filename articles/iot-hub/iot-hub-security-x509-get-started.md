@@ -8,18 +8,19 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: a22808b1d7ab2b2451f50470e8da3770d07407a5
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.custom: amqp
+ms.openlocfilehash: ac45cf42ed174d3e9423b4ea39cadf16b84897ef
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985654"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759651"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>在 Azure IoT 中心设置 X.509 安全性
 
 本教程介绍使用 *X.509 证书身份验证*保护 Azure IoT 中心所要执行的步骤。 在演示过程中，我们将使用开源工具 OpenSSL 在 Windows 计算机本地创建证书。 我们建议仅将本教程用于测试目的。 对于生产环境，应该从*根证书颁发机构 (CA)* 购买证书。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本教程要求准备好以下资源：
 
@@ -82,7 +83,7 @@ IoT 中心基于 X.509 证书的安全性需从 [X.509 证书链](https://en.wik
 
 ## <a name="authenticate-your-x509-device-with-the-x509-certificates"></a>使用 X.509 证书对 X.509 设备进行身份验证
 
-若要对 X.509 设备进行身份验证，首先需要使用 CA 证书为该设备签名。 叶设备的签名通常在已相应地启用了制造工具的制造车间完成。 随着设备从一家制造商转移到另一家制造商，每家制造商的签名操作都捕获为链中的中间证书。 结果是建立了从 CA 证书到设备叶证书的证书链。 [管理示例和教程的测试 CA 证书](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的步骤 4 会生成设备证书。
+若要对 X.509 设备进行身份验证，首先需要使用 CA 证书为该设备签名。 叶设备的签名通常在已相应地启用了制造工具的制造车间完成。 当设备从一个制造商到另一个制造商时，每个制造商的签名操作将作为链中的中间证书捕获。 结果是从 CA 证书到设备的叶证书的证书链。 [管理示例和教程的测试 CA 证书](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的步骤 4 会生成设备证书。
 
 接下来，我们演示如何创建一个 C# 应用程序来模拟针对 IoT 中心注册的 X.509 设备。 我们会将模拟设备提供的温度和湿度值发送到中心。 本教程只创建设备应用程序。 至于如何创建 IoT 中心服务应用程序用于向此模拟设备发送的事件发送响应，是留给读者的练习。 C# 应用程序假定你已按照[管理示例和教程的测试 CA 证书](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的步骤进行操作。
 
@@ -100,7 +101,7 @@ IoT 中心基于 X.509 证书的安全性需从 [X.509 证书链](https://en.wik
 
     此步骤将下载、安装 Azure IoT 设备 SDK NuGet 包及其依赖项并添加对它的引用。
 
-1. 在 Program.cs**** 文件顶部添加以下 `using` 语句：
+1. 在**Program.cs**文件`using`的顶部添加以下语句：
 
     ```csharp
         using Microsoft.Azure.Devices.Client;

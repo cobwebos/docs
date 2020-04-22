@@ -1,21 +1,18 @@
 ---
-title: 使用 Linux VM 的邻近放置组
-description: 了解如何在 Azure 中创建和使用 Linux 虚拟机的邻近放置组。
-services: virtual-machines-linux
+title: 使用邻近放置组
+description: 了解如何在 Azure 中创建和使用虚拟机的邻近放置组。
 author: cynthn
-manager: gwallace
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 353a266b647c299515c15889c302ba4409aa511b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f89b28e7a3c29e45efa2796788e27325c01d7098
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73171047"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759251"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>使用 Azure CLI 将 VM 部署到邻近放置组
 

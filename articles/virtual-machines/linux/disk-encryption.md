@@ -2,17 +2,17 @@
 title: Azure 托管磁盘的服务器端加密 - Azure CLI
 description: Azure 存储在将数据保存到存储群集之前会对其进行静态加密，以此保护数据。 您可以依赖 Microsoft 管理的密钥来加密托管磁盘，也可以使用客户管理的密钥使用您自己的密钥管理加密。
 author: roygara
-ms.date: 04/02/2020
+ms.date: 04/21/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 68341de82ae15df91477947664c500caaa96a09a
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 151c84424e33233cd48414875230a63df598d8e2
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81452717"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757432"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 托管磁盘的服务器端加密
 
@@ -20,17 +20,17 @@ ms.locfileid: "81452717"
 
 加密不会影响托管磁盘的性能。 加密不会产生额外的费用。
 
-有关 Azure 托管磁盘基础的加密模块的详细信息，请参阅加密[API：下一代](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)
+有关 Azure 托管磁盘底层加密模块的详细信息，请参见[加密 API：下一代](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)
 
 ## <a name="about-encryption-key-management"></a>关于加密密钥管理
 
-您可以依赖平台管理的密钥来加密托管磁盘，也可以使用自己的密钥管理加密。 如果选择使用自己的密钥来管理加密，则可以指定*客户管理的密钥*，用于加密和解密托管磁盘中的所有数据。 
+可以依赖于平台托管的密钥来加密托管磁盘，也可以使用自己的密钥来管理加密。 如果选择使用自己的密钥来管理加密，则可以指定*客户管理的密钥*，用于加密和解密托管磁盘中的所有数据。 
 
 以下部分更详细地介绍了每个密钥管理选项。
 
 ## <a name="platform-managed-keys"></a>平台托管的密钥
 
-默认情况下，托管磁盘使用平台托管的加密密钥。 自 2017 年 6 月 10 日起，所有写入现有托管磁盘的新托管磁盘、快照、映像和新数据都使用平台托管密钥自动加密静态。
+默认情况下，托管磁盘使用平台托管的加密密钥。 自 2017 年 6 月 10 日起，所有写入现有托管磁盘的新托管磁盘、快照、映像和新数据都会自动使用平台托管密钥进行静态加密。
 
 ## <a name="customer-managed-keys"></a>客户管理的密钥
 
@@ -72,7 +72,7 @@ Azure 托管磁盘使用[信封加密](../../storage/common/storage-client-side-
 
 - 如果为磁盘启用了此功能，则无法禁用它。
     如果需要解决此问题，则必须[将所有数据复制到](disks-upload-vhd-to-managed-disk-cli.md#copy-a-managed-disk)不使用客户托管密钥的完全不同的托管磁盘。
-- 仅支持大小为 2048 的["软"和"硬"RSA 密钥](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types)，没有其他键或大小。
+- 仅支持大小为 2048 的["软"和"硬"RSA 密钥](../../key-vault/keys/about-keys.md)，没有其他键或大小。
 - 使用服务器端加密和客户管理的密钥加密的自定义映像创建的磁盘必须使用相同的客户管理密钥进行加密，并且必须在同一订阅中。
 - 使用服务器端加密和客户管理的密钥加密的磁盘创建的快照必须使用相同的客户管理密钥进行加密。
 - 在共享映像库中，无法使用使用服务器端加密和客户管理密钥加密的自定义映像。

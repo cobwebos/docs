@@ -2,23 +2,18 @@
 title: 用于 GRUB 和单用户模式的 Azure 串行控制台
 description: 在 Azure 虚拟机中使用 grub 串行控制台。
 services: virtual-machines-linux
-documentationcenter: ''
 author: asinn826
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 87f16ec615c8b47c93745b33be12d3acd6d9177a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2aa7110ab4e52fdc5c3804bd27be5f41081fb435
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74035042"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758506"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>使用串行控制台访问 GRUB 和单用户模式
 GRUB 指的是 GRand Unified Bootloader。 从 GRUB 可以修改启动配置以实现启动进入单用户模式等功能。
@@ -125,7 +120,7 @@ Ubuntu 映像不需要 root 密码。 如果系统启动进入单用户模式，
 1. 将 `GRUB_TIMEOUT` 值更改为非零值
 1. 在所选的文本编辑器中打开 `/etc/default/grub`
 1. 注释掉 `GRUB_HIDDEN_TIMEOUT=1` 所在的行
-1. 运行 
+1. `sudo update-grub`运行
 
 ### <a name="single-user-mode-in-ubuntu"></a>Ubuntu 中的单用户模式
 在无法正常启动的情况下，Ubuntu 会自动将你置于单用户模式。 若要手动进入单用户模式，请遵照以下说明：

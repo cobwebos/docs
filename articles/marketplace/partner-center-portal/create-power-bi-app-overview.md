@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: c348a172b16e12334d33cf2718609694147fdce3
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 8f050a43cbdf4ab29df55cd5526eb231c301b271
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674522"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732675"
 ---
 # <a name="power-bi-app-creation-overview"></a>电源 BI 应用创建概述
 
@@ -45,7 +45,7 @@ ms.locfileid: "80674522"
 7. 认证后，在测试环境中查看应用并发布它。 这将在 AppSource 上列出它（它"上线"）。
 8. 在 Power BI 中，将包发送到生产。 有关详细信息，请参阅[管理 Power BI 应用版本](https://docs.microsoft.com/power-bi/service-template-apps-create#manage-the-template-app-release)。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 查看以下链接，这些链接提供模板、提示和示例。
 
@@ -69,7 +69,7 @@ ms.locfileid: "80674522"
 2. 在 Power BI 中创建和测试应用。
 3. 收到应用安装 Web 地址后，将其添加到合作伙伴中心**的技术配置**页面。
 
-在 Power BI 中创建和测试应用后，请保存应用程序安装 Web 地址，因为您需要它才能[创建 Power BI 应用产品/](https://aka.ms/AzureCreatePBIServiceApp)
+在 Power BI 中创建和测试应用后，请保存应用程序安装 Web 地址，因为您需要它才能[创建 Power BI 应用产品/](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)
 
 ### <a name="business-requirements"></a>业务要求
 
@@ -81,4 +81,4 @@ ms.locfileid: "80674522"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在合作伙伴中心创建 Power BI 应用产品/服务](https://aka.ms/AzureCreatePBIServiceApp)
+- [在合作伙伴中心创建 Power BI 应用产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)

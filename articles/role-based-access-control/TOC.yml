@@ -28,11 +28,11 @@
       href: tutorial-custom-role-cli.md
 - name: 概念
   items:
-    - name: 适用于 Azure 资源的 PIM
-      href: pim-azure-resource.md
+    - name: 最佳做法
+      href: best-practices.md
     - name: 用于 Azure 管理的条件访问
       href: conditional-access-azure-management.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 列出角色定义
       items:
@@ -92,7 +92,7 @@
       href: elevate-access-global-admin.md
     - name: 经典管理员
       href: classic-administrators.md
-    - name: 故障排除
+    - name: 疑难解答
       href: troubleshooting.md
 - name: 参考
   items:

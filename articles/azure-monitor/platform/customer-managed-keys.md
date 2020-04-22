@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 04/12/2020
-ms.openlocfilehash: dbd217c7135172c52a5ec7459930977960c452aa
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 25fdb0aefacbdd9c2630a69981a67821ac155786
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81260849"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758805"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure 监视器客户管理的关键配置 
 
@@ -281,7 +281,7 @@ Authorization: Bearer <token>
 
 **更新**
 
-此资源管理器请求是异步操作。
+此资源管理器请求在更新密钥标识符详细信息时是异步操作，而更新容量值时它是同步的。
 
 > [!Warning]
 > 您必须在*群集*资源更新中提供一个完整的正文，其中包括*标识**、sKU、KeyVault**属性*和*位置*。 缺少*KeyVault属性*详细信息将从*群集*资源中删除密钥标识符，并导致[密钥吊销](#cmk-kek-revocation)。
@@ -314,7 +314,7 @@ Content-type: application/json
 **响应**
 
 200 确定和标头。
-完成密钥标识符的传播需要几分钟时间。 您可以通过两种方式检查预配状态：
+完成密钥标识符的传播需要几分钟时间。 您可以通过两种方式检查更新状态：
 1. 从响应复制 Azure-Async 操作 URL 值，然后按照[异步操作状态检查](#asynchronous-operations-and-status-check)。
 2. 在*群集*资源上发送 GET 请求，并查看*KeyVault 属性属性*。 最近更新的密钥标识符详细信息应在响应中返回。
 
@@ -436,13 +436,13 @@ CMK 的轮换需要使用 Azure 密钥保管库中的新密钥版本显式更新
 
 - 每个订阅的最大*群集*资源数限制为 2
 
-- 只有在验证 ADX 群集预配已完成后，才应对工作区进行*群集*资源关联。 在此预配之前发送的数据将被删除，并且无法恢复。
+- 只有在验证 ADX 群集预配完成后，才应携带*群集*资源关联到工作区。 在预配完成之前发送到工作区的数据将被删除，并且无法恢复。
 
 - CMK 加密适用于 CMK 配置后新引入的数据。 在 CMK 配置之前引入的数据，仍使用 Microsoft 密钥进行加密。 您可以无缝查询在 CMK 配置之前和之后引入的数据。
 
-- 工作区与*群集*资源关联后，无法与*群集*资源取消关联，因为数据使用密钥加密，如果没有 Azure 密钥保管库中的 KEK，则无法访问。
+- 在决定特定工作区不需要 CMK 时，可以从*群集*资源取消关联工作区。 取消关联操作后的新引入数据存储在共享日志分析存储中，就像与*群集*资源关联之前一样。 如果*群集*资源预配并配置了有效的密钥保管库密钥，则可以无缝查询取消关联前后引入的数据。
 
-- Azure 密钥保管库必须配置为可恢复。 默认情况下，这些属性未启用，应使用 CLI 和 PowerShell 进行配置：
+- Azure 密钥保管库必须配置为可恢复。 默认情况下，这些属性未启用，应使用 CLI 或 PowerShell 进行配置：
 
   - [必须打开软删除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
   - [应打开清除保护](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection)，以防止强制删除机密/保管库，即使在软删除后
@@ -470,6 +470,8 @@ CMK 的轮换需要使用 Azure 密钥保管库中的新密钥版本显式更新
 
 - 如果尝试删除与工作区关联的*群集*资源，则删除操作将失败。
 
+- 如果在创建*群集*资源时出现冲突错误 ， 则可能是您在过去 14 天内删除了*群集*资源，并且该资源处于软删除期间。 群集*资源*名称在软删除期间保持保留状态，无法创建具有该名称的新群集。 当*群集*资源被永久删除时，该名称在软删除期后释放。
+
 - 获取资源组的所有*群集*资源：
 
   ```rst
@@ -488,6 +490,11 @@ CMK 的轮换需要使用 Azure 密钥保管库中的新密钥版本显式更新
           "tenantId": "tenant-id",
           "principalId": "principal-Id"
         },
+        "sku": {
+          "name": "capacityReservation",
+          "capacity": 1000,
+          "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
+          },
         "properties": {
            "KeyVaultProperties": {
               KeyVaultUri: "https://key-vault-name.vault.azure.net",
@@ -517,8 +524,10 @@ CMK 的轮换需要使用 Azure 密钥保管库中的新密钥版本显式更新
   **响应**
     
   与"资源组的*群集*资源"相同的响应，但在订阅范围内。
-    
-- 删除*群集*资源 -- 执行软删除操作，以便在 14 天内恢复群集资源、数据和相关工作区，无论删除是意外的还是有意的。 群集*资源*名称在软删除期间保持保留状态，无法创建具有该名称的新群集。 在软删除期间之后 *，群集资源和*数据不可恢复。 关联的工作区从*群集*资源取消关联，新数据被引入到共享存储和使用 Microsoft 密钥进行加密。
+
+- 在*群集*资源中更新*容量预留*- 当关联工作区的数据量发生更改，并且您想要更新容量预留级别以进行计费考虑时，请遵循[更新*群集*资源](#update-cluster-resource-with-key-identifier-details)并提供新的容量值。 容量预留级别可能位于每天 1，000 到 2，000 GB 之间，步长为 100。 对于每天超过 2，000 GB 的级别，请联系 Microsoft 联系人启用它。
+
+- 删除*群集*资源 -- 执行软删除操作，以便在 14 天内恢复*群集*资源（包括其数据），无论删除是意外的还是有意的。 群集*资源*名称在软删除期间保持保留状态，无法创建具有该名称的新群集。 软删除期间后 *，群集资源*名称将被释放，*群集*资源和数据将被永久删除，并且不可恢复。 删除操作时，任何关联的工作区都将从*群集*资源取消关联。 新的引入数据存储在共享的日志分析存储中，并且使用 Microsoft 密钥进行加密。 取消关联的工作区操作是异步的。
 
   ```rst
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -529,8 +538,7 @@ CMK 的轮换需要使用 Azure 密钥保管库中的新密钥版本显式更新
 
   200 正常
 
-- 恢复*群集*资源和数据 -- 在软删除期间，创建具有相同名称且位于同一订阅、资源组和区域中的*群集*资源。 按照**创建*群集*资源**步骤恢复*群集*资源。
-
+- 恢复*群集*资源和数据 -- 过去 14 天内删除的*群集*资源处于软删除状态，可以恢复。 这由当前产品组手动执行。 使用 Microsoft 通道进行恢复请求。
 
 ## <a name="appendix"></a>附录
 

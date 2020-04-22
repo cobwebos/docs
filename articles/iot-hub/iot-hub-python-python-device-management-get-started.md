@@ -8,12 +8,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: robinsh
-ms.openlocfilehash: 6d6a50db42924d868b57cacc415246ee6990859c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: f376831175840284fdfd15f367542d33ad9f7177
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77110471"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759755"
 ---
 # <a name="get-started-with-device-management-python"></a>设备管理入门 (Python)
 
@@ -35,7 +36,7 @@ ms.locfileid: "77110471"
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
@@ -67,7 +68,7 @@ ms.locfileid: "77110471"
 
 2. 使用文本编辑器，在工作目录中创建名为 **dmpatterns_getstarted_device.py** 的文件。
 
-3. 在 **dmpatterns_getstarted_device.py** 文件开头添加以下 `import` 语句。
+3. 在 `import`dmpatterns_getstarted_device.py**文件开头添加以下** 语句。
 
     ```python
     import threading
@@ -160,7 +161,7 @@ ms.locfileid: "77110471"
 
 2. 使用文本编辑器，在工作目录中创建名为 **dmpatterns_getstarted_service.py** 的文件。
 
-3. 在 **dmpatterns_getstarted_service.py** 文件开头添加以下 `import` 语句。
+3. 在 `import`dmpatterns_getstarted_service.py**文件开头添加以下** 语句。
 
     ```python
     import sys, time
@@ -169,7 +170,7 @@ ms.locfileid: "77110471"
     from azure.iot.hub.models import CloudToDeviceMethod, CloudToDeviceMethodResult, Twin
     ```
 
-4. 添加以下变量声明。 将`{IoTHubConnectionString}`占位符值替换为以前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 IoT 中心连接字符串。 将 `{deviceId}` 占位符值替换为在[在 IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中注册的设备 ID。
+4. 添加以下变量声明。 将 `{IoTHubConnectionString}` 占位符值替换为先前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 IoT 中心连接字符串。 将 `{deviceId}` 占位符值替换为在[在 IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中注册的设备 ID。
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"

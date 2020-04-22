@@ -3,12 +3,12 @@ title: 如何为 Windows 创建来宾配置策略
 description: 了解如何为 Windows 创建 Azure 策略来宾配置策略。
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: deb51cf502d26dc994bf74ef3cb0c728f624afde
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 7b06aa0a70bfa17d67da9c6af447138f8bb9e712
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313978"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757412"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>如何为 Windows 创建来宾配置策略
 
@@ -25,6 +25,11 @@ ms.locfileid: "81313978"
 
 > [!IMPORTANT]
 > 使用 Guest Configuration 的自定义策略是一项预览版功能。
+>
+> 在 Azure 虚拟机中执行审核需要来宾配置扩展。
+> 要大规模部署扩展，请分配以下策略定义：
+>   - 部署必备组件以在 Windows VM 上启用 Guest Configuration 策略
+>   - 部署必备组件以在 Linux VM 上启用 Guest Configuration 策略
 
 ## <a name="install-the-powershell-module"></a>安装 Powershell 模块
 
@@ -176,8 +181,10 @@ Configuration AuditBitLocker
 }
 
 # Compile the configuration to create the MOF files
-AuditBitLocker -out ./Config
+AuditBitLocker ./Config
 ```
+
+将此文件与名称`config.ps1`保存在项目文件夹中。 通过在终端中执行`./config.ps1`在 PowerShell 中运行它。 将创建新的 mof 文件。
 
 该`Node AuditBitlocker`命令在技术上不是必需的，但它生成名为`AuditBitlocker.mof`而不是默认值的文件。 `localhost.mof` 使 .mof 文件名遵循配置，因此在大规模运行时很容易组织许多文件。
 

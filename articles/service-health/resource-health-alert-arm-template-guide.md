@@ -3,12 +3,12 @@ title: 创建资源运行状况警报的模板
 description: 以编程方式创建在 Azure 资源不可用时发出通知的警报。
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: c01934cc88dc29d0503abfafc203ab0f04bf1761
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 60ff5bdf2f4f0dab94c18fd7c751869c1893ad65
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062896"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759017"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>使用资源管理器模板创建资源运行状况警报
 
@@ -21,7 +21,7 @@ ms.locfileid: "80062896"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要按本页中的说明操作，需事先进行几项设置：
 
@@ -228,6 +228,9 @@ ms.locfileid: "80062896"
 ```
 
 如果希望在运行状况的全部四个阶段都获得通知，可以将这一条件全部删除，这样不管 `status` 属性是什么，警报都会向你发出通知。
+
+> [!NOTE]
+> 每个"任意"部分应仅包含一个字段类型值。
 
 ### <a name="adjusting-the-resource-health-alerts-to-avoid-unknown-events"></a>将资源运行状况警报调整为避免“Unknown”事件
 

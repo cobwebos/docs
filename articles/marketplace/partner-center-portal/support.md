@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/07/2020
-ms.openlocfilehash: fbfc8cc29a1584dbc9f7e4ff0b73513d85950f99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd7582877a74aa998de3a6d0a0f38e56c3c3af91
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281385"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733118"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>支持合作伙伴中心的商业市场计划
 
@@ -40,7 +40,7 @@ Microsoft 支持各种产品和服务。 找到合适的支持团队对于确保
 
 5. 选择**["市场合作伙伴"社区论坛](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)**，利用其他 Microsoft 发布者的知识来回答您的问题。 
 
-6. 选择**["其他帮助](https://aka.ms/marketplacepublishersupport)**"以打开 **"新建支持请求**票证"。  
+6. 选择**["其他帮助](https://partner.microsoft.com/support/v2/?stage=1)**"以打开 **"新建支持请求**票证"。  
 
 ## <a name="how-to-open-a-support-ticket"></a>如何开具支持票证
 

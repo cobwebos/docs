@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/23/2019
-ms.openlocfilehash: 67660e3e98f5a12236798d74cc61f71616e6751d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a012c3ce8f7c9e105a42d8383a502f3608c84070
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76934747"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732912"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>使用用于 IntelliJ 的 Azure 工具包通过 SSH 调试 HDInsight 群集上的 Apache Spark 应用程序
 
@@ -25,11 +25,11 @@ ms.locfileid: "76934747"
 
 * 对于 Windows 用户：当您在 Windows 计算机上运行本地 Spark Scala 应用程序时，您可能会遇到异常，如[SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356)中所述。 发生此异常的原因是 Windows 中缺少 WinUtils.exe。
 
-    要解决此错误，请将[Winutils.exe](https://github.com/steveloughran/winutils)下载到**C：\WinUtils\bin**等位置。 然后，将环境变量**HADOOP_HOME**，并将变量的值设置为**C：\WinUtils**。
+    要解决此错误，请将[Winutils.exe](https://github.com/steveloughran/winutils)下载到**C：\WinUtils\bin**等位置。 然后，必须添加环境变量 HADOOP_HOME  ，并将其值设置为 C:\WinUtils  。
 
 * [IntelliJ IDEA（](https://www.jetbrains.com/idea/download/#section=windows)社区版是免费的）。
 
-* [用于 intelliJ 的 Azure 工具包](https://docs.microsoft.com/azure/java/intellij/azure-toolkit-for-intellij-installation)。
+* [用于 intelliJ 的 Azure 工具包](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/installation)。
 
 * [Scala插件为IntelliJ。](../spark/apache-spark-intellij-tool-plugin.md#install-scala-plugin-for-intellij-idea)
 
@@ -37,9 +37,9 @@ ms.locfileid: "76934747"
 
 ## <a name="create-a-spark-scala-application"></a>创建 Spark Scala 应用程序
 
-1. 启动 IntelliJ IDEA，选择“创建新项目”打开“新建项目”窗口。********
+1. 启动 IntelliJ IDEA，选择“创建新项目”打开“新建项目”窗口。  
 
-1. 从左侧窗格中选择**Apache Spark/HDInsight。**
+1. 从左侧窗格中选择“Apache Spark/HDInsight”  。
 
 1. 从主窗口中选择**具有样本 （Scala） 的火花项目**。
 
@@ -50,11 +50,11 @@ ms.locfileid: "76934747"
 
      ![Intellij 创建新项目火花](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-create-projectfor-debug-remotely.png)
 
-1. 选择“下一步”。
+1. 选择“**下一页**”。
 
 1. 在下一个**新项目**窗口中，提供以下信息：
 
-    |properties |描述 |
+    |属性 |说明 |
     |---|---|
     |项目名称|输入名称。 这演练了用途`myApp`。|
     |项目位置|输入所需的位置用于保存项目。|
@@ -63,7 +63,7 @@ ms.locfileid: "76934747"
 
    ![Intellij 新项目选择火花版本](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-new-project.png)
 
-1. 选择“完成”****。 可能需要在几分钟后才会显示该项目。 注意右下角的进度。
+1. 选择“完成”  。 可能需要在几分钟后才会显示该项目。 注意右下角的进度。
 
 1. 展开项目，并导航到**src** > **主** > **scala** > **示例**。 双击**SparkCore_WasbIOTest**。
 
@@ -77,7 +77,7 @@ ms.locfileid: "76934747"
 
 1. 执行本地运行和本地调试时，工具已自动设置默认的本地运行配置。 打开右上角的“[HDInsight 上的 Spark] XXX”配置，可以看到已在“HDInsight 上的 Apache Spark”下创建了“[HDInsight 上的 Spark]XXX”************。 切换到“本地运行”选项卡****。
 
-    ![Intellij 运行调试配置本地运行](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-configuration.png)
+    ![Intellij - 运行/调试配置 - 本地运行](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-configuration.png)
 
     - [环境变量](#prerequisites)：如果已将系统环境变量“HADOOP_HOME”**** 设置为“C:\WinUtils”****，则它可自动检测到此设置，而无需手动添加此变量。
     - [WinUtils.exe 位置](#prerequisites)：如果尚未设置此系统环境变量，则可单击其按钮找到它的位置。

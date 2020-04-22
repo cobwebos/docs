@@ -1,14 +1,14 @@
 ---
 title: Azure Service Fabric 中支持的群集版本
-description: 了解 Azure 服务结构中的群集版本，包括服务结构团队博客中指向最新版本的链接。
+description: 了解 Azure Service Fabric 中的群集版本，包括指向 Service Fabric 团队博客中最新版本的链接。
 ms.topic: troubleshooting
-ms.date: 03/02/2020
-ms.openlocfilehash: b76e498926492ce7acaa696dfe9a0299fb5573e0
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.date: 04/20/2020
+ms.openlocfilehash: b68314a116b0d9da8baf5f61eeffeef2b30835c4
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460522"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732876"
 ---
 # <a name="supported-service-fabric-versions"></a>支持的 Service Fabric 版本
 
@@ -25,7 +25,7 @@ ms.locfileid: "81460522"
 
 | 群集中的 Service Fabric 运行时 | 可以直接从群集版本升级 |兼容的 SDK 或 NuGet 包版本 | 结束支持 |
 | --- | --- |--- | --- |
-| 5.3.121 之前的所有群集版本 | 5.1.158.* |低于或等于版本 2.3 |2017 年 1 月 20 日 |
+| 5\.3.121 之前的所有群集版本 | 5.1.158.* |低于或等于版本 2.3 |2017 年 1 月 20 日 |
 | 5.3.* | 5.1.158.* |低于或等于版本 2.3 |2017 年 2 月 24 日 |
 | 5.4.* | 5.1.158.* |低于或等于版本 2.4 |2017 年 5 月 10 日       |
 | 5.5.* | 5.4.164.* |低于或等于版本 2.5 |2017 年 8 月 10 日    |
@@ -37,10 +37,11 @@ ms.locfileid: "81460522"
 | 6.3.* | 6.1.480.* |版本 3.2 或更低版本 |2019 年 3 月 31 日  |
 | 6.4.* | 6.2.301.* |版本 3.3 或更低版本 |2019 年 9 月 15 日 |
 | 6.5.* | 6.4.617.* |低于或等于版本 3.4 |2020年8月1日 |
-| 7.0.466.* | 6.4.664.* |小于或等于版本 4.0|2020年8月1日  |
+| 7.0.466.* | 6.4.664.* |低于或等于版本 4.0|2020年8月1日  |
 | 7.0.466.* | 6.5.* |小于或等于版本 4.0|2020年8月1日 |
 | 7.0.470.* | 7.0.466.* |小于或等于版本 4.0 |2020年8月1日  |
 | 7.1.409.* | 7.0.466.* |小于或等于版本 4.0 |当前版本，因此无结束日期 |
+
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
 下表列出了支持的 Service Fabric 版本所支持的操作系统。
@@ -106,3 +107,4 @@ ms.locfileid: "81460522"
 | 7.0 CU2 | 7.0.464.9590 | 7.0.464.1 |
 | 7.0 CU3 | 7.0.466.9590 | 7.0.465.1 |
 | 7.0 CU4 | 7.0.470.9590 | 7.0.469.1 |
+| 7.1 RTO | 7.1.409.9590 | 7.1.410.1 |

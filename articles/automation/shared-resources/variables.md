@@ -1,5 +1,5 @@
 ---
-title: Azure 自动化中的变量资产
+title: 在 Azure 自动化中管理变量
 description: 变量资产是可供 Azure 自动化中的所有 Runbook 和 DSC 配置使用的值。  本文介绍了变量的详细信息，以及如何在文本和图形创作中使用变量。
 services: automation
 ms.service: automation
@@ -9,26 +9,26 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d4a4a92feb3e1b400c0f40076148f7898c4bdef1
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 4778e9b2c0d3b442b214966ab69810d2f42b70b8
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365826"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732764"
 ---
-# <a name="variable-assets-in-azure-automation"></a>Azure 自动化中的变量资产
+# <a name="manage-variables-in-azure-automation"></a>在 Azure 自动化中管理变量
 
-可变资产是可用于自动化帐户中的所有 Runbook 和 DSC 配置的值。 可以从 Azure 门户、PowerShell、Runbook 或 DSC 配置中管理它们。
+变量资产是可供自动化帐户中的所有 Runbook 和 DSC 配置使用的值。 可以在 Azure 门户、PowerShell、Runbook 内部或 DSC 配置中管理这些资产。
 
 自动化变量可用于以下方案：
 
-- 在多个 Runbook 或 DSC 配置之间共享值。
+- 在多个 Runbook 或 DSC 配置之间共享某个值。
 
-- 在同一 Runbook 或 DSC 配置中的多个作业之间共享值。
+- 在同一 Runbook 或 DSC 配置中的多个作业之间共享某个值。
 
-- 从门户或 PowerShell 命令行管理 Runbook 或 DSC 配置使用的值。 例如一组常见的配置项，例如 VM 名称的特定列表、特定资源组、AD 域名等。  
+- 通过门户或 PowerShell 命令行管理 Runbook 或 DSC 配置使用的值。 例如一组常用配置项，包括特定的 VM 名称列表、特定资源组、AD 域名，等等。  
 
-Azure 自动化会保留变量，即使 Runbook 或 DSC 配置失败，它们也能可用。 此行为允许一个 Runbook 或 DSC 配置设置一个值，然后由另一个 Runbook 或下次运行时由同一 Runbook 或 DSC 配置使用。
+Azure 自动化会保留变量，即使 Runbook 或 DSC 配置失败，它们也能可用。 此行为允许一个 Runbook 或 DSC 配置设置的值随后由另一个 Runbook 使用，或由同一 Runbook 或 DSC 配置在下次运行时使用。
 
 Azure 自动化安全地存储每个加密变量。 创建变量时，可以将 Azure 自动化的加密和存储指定为安全资产。 其他安全资产包括凭据、证书和连接。 Azure 自动化对这些资产进行加密，并使用为每个自动化帐户生成的唯一密钥存储它们。 密钥存储在系统管理的关键保管库中。 在存储安全资产之前，Azure 自动化会从密钥保管库加载密钥，然后使用它对资产进行加密。 
 
@@ -39,23 +39,26 @@ Azure 自动化安全地存储每个加密变量。 创建变量时，可以将 
 
 使用 Azure 门户创建变量时，必须从下拉列表中指定数据类型，以便门户可以显示用于输入变量值的适当控件。 以下是 Azure 自动化中可用的变量类型：
 
-* String
+* 字符串
 * Integer
 * DateTime
 * Boolean
 * Null
 
-该变量不局限于指定的数据类型。 如果想要指定不同类型的值，则必须使用 Windows PowerShell 设置该变量。 如果指示`Not defined`，变量的值设置为 Null，则必须使用[Set-AzAutomationvariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) cmdlet 或`Set-AutomationVariable`活动设置该值。
+该变量不局限于指定的数据类型。 如果想要指定不同类型的值，则必须使用 Windows PowerShell 设置该变量。 如果指示`Not defined`，变量的值将设置为 Null。 您必须使用[Set-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) cmdlet 或`Set-AutomationVariable`活动设置值。
 
 不能使用 Azure 门户创建或更改复杂变量类型的值。 但是，您可以使用 Windows PowerShell 提供任何类型的值。 复杂类型作为[PSCustomObject](/dotnet/api/system.management.automation.pscustomobject)检索。
 
 可以通过创建一个数组或哈希表并将其保存到变量，来将多个值存储到单一变量。
 
+>[!NOTE]
+>VM 名称变量最多可以为 80 个字符。 资源组变量最多可以为 90 个字符。 请参阅[Azure 资源的命名规则和限制](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)。
+
 ## <a name="powershell-cmdlets-that-create-and-manage-variable-assets"></a>创建和管理可变资产的 PowerShell cmdlet
 
 对于 Az 模块，下表中的 cmdlet 用于使用 Windows PowerShell 创建和管理自动化变量资产。 它们作为[Az.自动化模块](/powershell/azure/overview)的一部分发货，可用于自动化手册和 DSC 配置。
 
-| Cmdlet | 描述 |
+| Cmdlet | 说明 |
 |:---|:---|
 |[获取-阿兹自动化变量](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) | 检索现有变量的值。 不能使用此 cmdlet 检索加密变量的值。 执行此操作的唯一方法是在 Runbook 或`Get-AutomationVariable`DSC 配置中使用活动。 |
 |[新-阿兹自动化变量](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationvariable?view=azps-3.5.0) | 创建新变量并设置变量值。|
@@ -66,7 +69,7 @@ Azure 自动化安全地存储每个加密变量。 创建变量时，可以将 
 
 下表中的活动用于访问 Runbook 和 DSC 配置中的变量。 这些活动的 cmdlet 随全局模块`Orchestrator.AssetManagement.Cmdlets`一起提供。
 
-| 活动 | 描述 |
+| 活动 | 说明 |
 |:---|:---|
 |`Get-AutomationVariable`|检索现有变量的值。|
 |`Set-AutomationVariable`|设置现有变量的值。|
@@ -85,7 +88,7 @@ Write-output "The encrypted value of the variable is: $mytestencryptvar"
 
 下表中的函数用于访问 Python 2 Runbook 中的变量。
 
-|Python 2 功能|描述|
+|Python 2 功能|说明|
 |:---|:---|
 |`automationassets.get_automation_variable`|检索现有变量的值。 |
 |`automationassets.set_automation_variable`|设置现有变量的值。 |
@@ -140,7 +143,7 @@ $vmIpAddress = $vmValue.IpAddress
 
 ### <a name="create-and-use-a-variable-in-a-runbook-or-dsc-configuration"></a>在 Runbook 或 DSC 配置中创建和使用变量
 
-在 Runbook 或 DSC 配置中创建新变量的唯一方法是使用`New-AzAutomationVariable`cmdlet 或其 AzureRM 模块等效。 脚本使用此 cmdlet 设置变量的初始值。 然后，脚本可以使用 检索值`Get-AzAutomationVariable`。 如果值是一个简单的类型，则检索相同的类型。 如果是复杂类型，则检索`PSCustomObject`类型。
+在 Runbook 或 DSC 配置中创建新变量的唯一方法是使用`New-AzAutomationVariable`cmdlet 或其 AzureRM 模块等效项。 脚本使用此 cmdlet 设置变量的初始值。 然后，脚本可以使用 检索值`Get-AzAutomationVariable`。 如果值是一个简单的类型，则检索相同的类型。 如果是复杂类型，则检索`PSCustomObject`类型。
 
 >[!NOTE]
 >检索加密值的唯一方法是使用 Runbook 或`Get-AutomationVariable`DSC 配置中的活动。 

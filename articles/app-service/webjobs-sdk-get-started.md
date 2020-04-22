@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 4976be485a9b7609c6e8d23f6b897092217663fc
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 4ee724ec66d5fb474f8c8a9a967cc7235fef5e85
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535666"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732626"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>用于事件驱动的后台处理的 Azure WebJobs SDK 入门
 
@@ -19,19 +19,19 @@ ms.locfileid: "81535666"
 
 本文介绍如何将 WebJobs 部署为 .NET Core 控制台应用。 若要将 WebJobs 部署为 .NET Framework 控制台应用，请参阅 [WebJobs 作为 .NET Framework 控制台应用](webjobs-dotnet-deploy-vs.md#webjobs-as-net-framework-console-apps)。 如果你对仅支持 .NET Framework 的 WebJobs SDK 版本 2.x 感兴趣，请参阅[使用 Visual Studio 开发和部署 WebJob - Azure 应用服务](webjobs-dotnet-deploy-vs.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* 使用**Azure 开发**工作负荷安装 Visual [Studio 2019。](/visualstudio/install/) 如果已安装 Visual Studio，但未配置该工作负荷，请选择“工具”>“获取工具和功能”添加该工作负荷。****
+* [安装 Visual Studio 2019](/visualstudio/install/)（包含 **Azure 开发**工作负荷）。 如果已安装 Visual Studio，但未配置该工作负荷，请选择“工具”>“获取工具和功能”添加该工作负荷。 
 
 * 必须有一个 [Azure 帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)才能将 WebJobs SDK 项目发布到 Azure。
 
 ## <a name="create-a-project"></a>创建一个项目
 
-1. 在可视化工作室中，选择 **"创建新项目**"。
+1. 在 Visual Studio 中，选择“新建项目”  。
 
-2. 选择“控制台应用(.NET Core)”****。
+2. 选择“控制台应用(.NET Core)”  。
 
-3. 将项目命名为 *WebJobsSDKSample*，然后选择“创建”。****
+3. 将项目命名为 *WebJobsSDKSample*，然后选择“创建”。 
 
    ![“新建项目”对话框](./media/webjobs-sdk-get-started/new-project.png)
 
@@ -134,7 +134,7 @@ ms.locfileid: "81535666"
     * 禁用[仪表板日志记录](https://github.com/Azure/azure-webjobs-sdk/wiki/Queues#logs)。 仪表板是一个旧式监视工具，不建议对高吞吐量生产方案使用仪表板日志记录。
     * 使用默认[筛选](webjobs-sdk-how-to.md#log-filtering)添加控制台提供程序。
 
-现在即可以添加由到达 [Azure 存储队列](../azure-functions/functions-bindings-storage-queue.md)的消息触发的函数。
+现在即可以添加由到达 Azure 存储队列的消息触发的函数。
 
 ## <a name="install-the-storage-binding-extension"></a>安装存储绑定扩展
 
@@ -184,7 +184,7 @@ ms.locfileid: "81535666"
 
    `QueueTrigger` 特性告知运行时，在名为 `queue` 的 Azure 存储队列中写入新消息时，应调用此函数。 队列消息的内容将提供给 `message` 参数中的方法代码。 在方法的正文中处理触发器数据。 在此示例中，代码只是记录消息。
 
-   `message` 参数不一定要是字符串。 也可以绑定到 JSON 对象、字节数组或 [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) 对象。 [参阅队列触发器用法](../azure-functions/functions-bindings-storage-queue-trigger.md#usage)。 每个绑定类型（例如队列、Blob 或表）具有一组可以绑定到的不同参数类型。
+   `message` 参数不一定要是字符串。 也可以绑定到 JSON 对象、字节数组或 [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) 对象。 [参阅队列触发器用法](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#usage)。 每个绑定类型（例如队列、Blob 或表）具有一组可以绑定到的不同参数类型。
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
@@ -280,7 +280,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
    由于在 `ProcessQueueMessage` 函数中使用了 `QueueTrigger` 特性，因此 WeJobs SDK 运行时会在启动时侦听队列消息。 它会在名为 *queue* 的队列中查找新队列消息，并调用函数。
 
-   由于[队列轮询指数退让](../azure-functions/functions-bindings-storage-queue-trigger.md#polling-algorithm)，运行时最长可能需要花费 2 分钟才能找到消息并调用函数。 以[开发模式](webjobs-sdk-how-to.md#host-development-settings)运行可以缩减此等待时间。
+   由于[队列轮询指数退让](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#polling-algorithm)，运行时最长可能需要花费 2 分钟才能找到消息并调用函数。 以[开发模式](webjobs-sdk-how-to.md#host-development-settings)运行可以缩减此等待时间。
 
    控制台输出如下所示：
 
@@ -327,13 +327,13 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 1. 在“连接字符串”框中添加以下条目。****
 
-   |“属性”  |连接字符串  |数据库类型|
+   |名称  |连接字符串  |数据库类型|
    |---------|---------|------|
    |AzureWebJobsStorage | {前面复制的存储连接字符串}|自定义|
 
 1. 如果“应用程序设置”框中没有 Application Insights 检测密钥，请添加前面复制的检测密钥。**** （根据应用服务应用的创建方式，该框中可能已包含检测密钥。）
 
-   |“属性”  |值  |
+   |名称  |值  |
    |---------|---------|
    |APPINSIGHTS_INSTRUMENTATIONKEY | {instrumentation key} |
 
@@ -444,7 +444,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 1. 刷新“队列”页后新消息消失，因为它已由 Azure 中运行的函数处理****。
 
    > [!TIP]
-   > 若要在 Azure 中进行测试，请使用[开发模式](webjobs-sdk-how-to.md#host-development-settings)来确保立即调用队列触发函数，并避免[队列轮询指数退让](../azure-functions/functions-bindings-storage-queue-trigger.md#polling-algorithm)导致的延迟。
+   > 若要在 Azure 中进行测试，请使用[开发模式](webjobs-sdk-how-to.md#host-development-settings)来确保立即调用队列触发函数，并避免[队列轮询指数退让](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#polling-algorithm)导致的延迟。
 
 ### <a name="view-logs-in-application-insights"></a>在 Application Insights 中查看日志
 

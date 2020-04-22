@@ -10,14 +10,16 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
-ms.openlocfilehash: e8d1c4a605e8db2e9753bb80c9712dd6c2be7b59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93e4d3d0bed9090573d2b6ee87a29b86ccd72e42
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158214"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758950"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>将 RuuviTag 传感器连接到 Azure IoT Central 应用程序
+
+*本文适用于解决方案生成器和设备开发人员。*
 
 本文为解决方案构建人员介绍如何将 RuuviTag 传感器连接到 Microsoft Azure IoT Central 应用程序。
 
@@ -67,11 +69,14 @@ RuuviTag 通过 BLE（低能耗蓝牙）通信，要求网关设备与 Azure IoT
 若要创建模拟的 RuuviTag：
 
 1. 选择“设备”>“RuuviTag”。****
-1. 选择“+ 新建”****。
+1. 选择“+ 新建”  。
 1. 指定唯一的**设备 ID** 和易记的**设备名称**。  
 1. 启用“模拟”设置。****
-1. 选择 **“创建”**。  
+1. 选择“创建”  。  
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何将 RuuviTag 连接到 Azure IoT Central 应用程序后，建议接下来了解如何[自定义 IoT Central 应用程序](../retail/tutorial-in-store-analytics-customize-dashboard-pnp.md)来构建端到端的解决方案。
+如果您是设备开发人员，建议的后续步骤是：
+
+- 阅读[有关 Azure IoT 中心中的设备连接](./concepts-get-connected.md)
+- 了解如何使用[Azure CLI 监视设备连接](./howto-monitor-devices-azure-cli.md)

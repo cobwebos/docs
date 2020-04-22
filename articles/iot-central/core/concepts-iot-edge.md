@@ -1,20 +1,22 @@
 ---
-title: Azure IoT 边缘和 Azure IoT 中心 |微软文档
-description: 了解如何将 Azure IoT 边缘与 IoT 中央应用程序一起使用。
+title: Azure IoT Edge 和 Azure IoT Central | Microsoft Docs
+description: 了解如何在 IoT Central 应用程序中使用 Azure IoT Edge。
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/12/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 69660152458de26e9dbcbf1f50db6ce6824351d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89d068fbd835a5b4f8886a2ed77691f94a701bb0
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77027064"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759104"
 ---
-# <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>将 Azure IoT 边缘设备连接到 Azure IoT 中心应用程序
+# <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>将 Azure IoT Edge 设备连接到 Azure IoT Central 应用程序
+
+*本文适用于解决方案生成器和设备开发人员。*
 
 IoT Edge 包含三个组件：
 
@@ -72,4 +74,4 @@ IoT 即插即用（预览）对 IoT 边缘设备进行建模，如下所示：
 
 ## <a name="next-steps"></a>后续步骤
 
-了解 IoT Central 应用程序模板是什么以后，即可开始[创建 IoT Central 应用程序](quick-deploy-iot-central.md)。
+如果您是设备开发人员，建议的下一步是了解[IoT 中央中的网关设备类型](./tutorial-define-gateway-device-type.md)。

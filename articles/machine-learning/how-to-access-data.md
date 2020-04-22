@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: ca892b5f360f523ee2b5ff875dfb0707136a5ab5
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 4a2102f442fc176762b7d5d69f7b367a94633ef5
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383443"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758788"
 ---
 # <a name="connect-to-azure-storage-services"></a>连接到 Azure 存储服务
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "81383443"
 
 - Azure 机器学习工作区。
   
-  [创建 Azure 机器学习工作区](how-to-manage-workspace.md)或通过 Python SDK 使用现有工作区。 导入`Workspace`和`Datastore`类，并使用 函数`config.json``from_config()`从文件加载订阅信息。 默认情况下，这将查找当前目录中的 JSON 文件，但您也可以指定路径参数以使用 指向`from_config(path="your/file/path")`该文件。
+  [创建 Azure 机器学习工作区](how-to-manage-workspace.md)或通过 Python SDK 使用现有工作区。 导入 `Workspace` 和 `Datastore` 类，并使用函数 `from_config()` 从文件 `config.json` 中加载订阅信息。 默认情况下，这会查找当前目录中的 JSON 文件，但你也可以使用 `from_config(path="your/file/path")` 指定一个路径参数，使之指向该文件。
 
    ```Python
    import azureml.core
@@ -99,7 +99,7 @@ ms.locfileid: "81383443"
 * 对于服务主体项目（如租户 ID 和客户端 ID），请转到**应用注册**并选择要使用的应用。 其相应的 **"概述"** 页将包含这些项目。
 
 > [!IMPORTANT]
-> 如果您的存储帐户位于虚拟网络中，则仅支持**通过 SDK**创建 Blob、文件共享、ADLS 第 1 代和 ADLS 第 2 代数据存储。 若要授权工作区访问存储帐户，请将参数 `grant_workspace_access` 设置为 `True`。
+> 如果您的存储帐户位于虚拟网络中，则仅支持**通过 SDK**创建数据存储。
 
 以下示例演示如何将 Azure Blob 容器、Azure 文件共享和 Azure 数据存储第 2 代作为数据存储注册。 有关其他存储服务，请参阅[适用`register_azure_*`方法的参考文档](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#methods)。
 
@@ -121,6 +121,7 @@ blob_datastore = Datastore.register_azure_blob_container(workspace=ws,
                                                          account_name=account_name,
                                                          account_key=account_key)
 ```
+如果 Blob 容器位于虚拟网络中，请使用`skip_validation=True`[`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-)设置。
 
 #### <a name="file-share"></a>文件共享
 
@@ -140,6 +141,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
                                                      account_name=account_name,
                                                      account_key=account_key)
 ```
+如果文件共享在虚拟网络中，请使用`skip_validation=True`[`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-)设置。 
 
 #### <a name="azure-data-lake-storage-generation-2"></a>Azure 数据存储第 2 代
 
@@ -176,7 +178,7 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 
 1. 登录到 [Azure 机器学习工作室](https://ml.azure.com/)。
 1. 在左窗格中的“管理”下，选择“数据存储”********。
-1. 选择“+ 新建数据存储”****。
+1. 选择“+ 新建数据存储”。 
 1. 填写表单以创建新的数据存储。 窗体根据 Azure 存储类型和身份验证类型的选择自行更新。
   
 可以使用 [Azure 门户](https://portal.azure.com)找到必要的信息来填充该表单。 在左窗格中选择“存储帐户”****，并选择要注册的存储帐户。 “概述”**** 页提供了帐户名称、容器和文件共享名称等信息。 
@@ -268,7 +270,7 @@ run_config.source_directory_data_store = "workspaceblobstore"
 
 Azure 机器学习提供多种方法来使用模型进行评分。 其中一些方法不提供对数据存储的访问权限。 使用下表了解允许在评分期间访问数据存储的方法：
 
-| 方法 | 数据存储访问 | 描述 |
+| 方法 | 数据存储访问 | 说明 |
 | ----- | :-----: | ----- |
 | [成批预测](how-to-use-parallel-run-step.md) | ✔ | 以异步方式对大量数据进行预测。 |
 | [Web 服务](how-to-deploy-and-where.md) | &nbsp; | 将模型部署为 Web 服务。 |

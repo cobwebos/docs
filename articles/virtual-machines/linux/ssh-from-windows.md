@@ -1,29 +1,23 @@
 ---
 title: 在 Windows 中对 Linux VM 使用 SSH 密钥
 description: 了解如何在 Windows 计算机上生成和使用 SSH 密钥连接到 Azure 上的 Linux 虚拟机。
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-service-management,azure-resource-manager
-ms.assetid: 2cacda3b-7949-4036-bd5d-837e8b09a9c8
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: e01fb23bbf1720f7d8df9c269373c1b8dc3ec75c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cdf901ca56c150cfed6ba3d462ce493d40bd2488
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74034806"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757990"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>如何在 Azure 上将 SSH 密钥与 Windows 配合使用
 
-本文介绍了如何在 Windows 计算机上生成和使用安全外壳** (SSH) 密钥以在 Azure 中创建并连接到 Linux 虚拟机 (VM)。 若要使用来自 Linux 或 macOS 客户端的 SSH 密钥，请参阅[快速](mac-create-ssh-keys.md)或[详细](create-ssh-keys-detailed.md)指南。
+本文介绍了如何在 Windows 计算机上生成和使用安全外壳  (SSH) 密钥以在 Azure 中创建并连接到 Linux 虚拟机 (VM)。 若要使用来自 Linux 或 macOS 客户端的 SSH 密钥，请参阅[快速](mac-create-ssh-keys.md)或[详细](create-ssh-keys-detailed.md)指南。
 
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 
@@ -32,12 +26,12 @@ ms.locfileid: "74034806"
 ## <a name="windows-packages-and-ssh-clients"></a>Windows 程序包和 SSH 客户端
 可使用 *SSH 客户端*连接到 Azure 中的 Linux VM，并对其进行管理。 运行 Linux 或 macOS 的计算机通常具有一套 SSH 命令来生成和管理 SSH 密钥并建立 SSH 连接。 
 
-Windows 计算机并不总是装有类似的 SSH 命令。 最新版本的 Windows 10 提供[OpenSSH 客户端命令](https://blogs.msdn.microsoft.com/commandline/2018/03/07/windows10v1803/)，用于创建和管理 SSH 密钥，并从命令提示符建立 SSH 连接。 最近的 Windows 10 版本还包括[适用于 Linux 的 Windows 子系统](https://docs.microsoft.com/windows/wsl/about)，以便在 Bash shell 中以本机方式运行并访问 SSH 客户端等实用工具。 
+Windows 计算机并不总是装有类似的 SSH 命令。 最新版本的 Windows 10 提供 [OpenSSH 客户端命令](https://blogs.msdn.microsoft.com/commandline/2018/03/07/windows10v1803/)来创建和管理 SSH 密钥，并通过命令提示符建立 SSH 连接。 最近的 Windows 10 版本还包括[适用于 Linux 的 Windows 子系统](https://docs.microsoft.com/windows/wsl/about)，以便在 Bash shell 中以本机方式运行并访问 SSH 客户端等实用工具。 
 
 以下程序包中包含可以在本地安装的其他常见 Windows SSH 客户端：
 
-* [腻子](https://www.chiark.greenend.org.uk/~sgtatham/putty/)
-* [用于窗口的 Git](https://git-for-windows.github.io/)
+* [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/)
+* [Git For Windows](https://git-for-windows.github.io/)
 * [MobaXterm](https://mobaxterm.mobatek.net/)
 * [Cygwin](https://cygwin.com/)
 

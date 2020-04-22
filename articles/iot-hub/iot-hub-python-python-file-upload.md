@@ -8,12 +8,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: robinsh
-ms.openlocfilehash: 706e1920c6c4fe39e885fd3f5a631070545509ee
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.custom: mqtt
+ms.openlocfilehash: 47fb7c615389e24322450ed1785aa7da9ec50db6
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529297"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759691"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>使用 IoT 中心将文件从设备上传到云 (Python)
 
@@ -59,9 +60,9 @@ ms.locfileid: "80529297"
 
 1. 创建要上载到 Blob 存储的测试文件。
 
-1. 使用文本编辑器，在工作文件夹中创建一个 FileUpload.py 文件****。
+1. 使用文本编辑器，在工作文件夹中创建一个 FileUpload.py 文件  。
 
-1. 在 FileUpload.py 文件的开头添加以下 `import` 语句和变量****。
+1. 在 FileUpload.py 文件的开头添加以下 `import` 语句和变量  。
 
     ```python
     import os

@@ -1,5 +1,5 @@
 ---
-title: Azure 自动化中的凭据资产
+title: 在 Azure 自动化中管理凭据
 description: Azure 自动化中的凭据资产包含可用于向 Runbook 或 DSC 配置访问的资源进行身份验证的安全凭据。 本文介绍如何创建凭据资产并在 Runbook 或 DSC 配置中使用它们。
 services: automation
 ms.service: automation
@@ -9,21 +9,22 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c8b63a2676690004d23094b490fea0ef150ab9cb
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 59e32087d4489cbb155a9cff7d40094c0606c0cf
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546410"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732850"
 ---
-# <a name="credential-assets-in-azure-automation"></a>Azure 自动化中的凭据资产
+# <a name="manage-credentials-in-azure-automation"></a>在 Azure 自动化中管理凭据
 
 自动化凭据资产包含包含安全凭据（如用户名和密码）的对象。 Runbook 和 DSC 配置使用接受[PS凭据](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0)对象的 cmdlet 进行身份验证。 或者，他们可以提取`PSCredential`对象的用户名和密码，以提供给需要身份验证的某些应用程序或服务。 
 
-Azure 自动化安全地存储凭据的属性。 通过 Runbook 或 DSC 配置访问属性使用[获取自动化PS凭据](#activities-used-to-access-credentials)活动。
-
 > [!NOTE]
 > Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产使用为每个自动化帐户生成的唯一密钥在 Azure 自动化中加密和存储。 此密钥存储在密钥保管库中。 在存储安全资产之前，从密钥保管库加载密钥，然后使用该密钥加密资产。
+
+>[!NOTE]
+>本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az 模块安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于自动化帐户，可以使用["如何更新 Azure 自动化 中的 Azure PowerShell"模块](../automation-update-azure-modules.md)将模块更新到最新版本。
 
 [!INCLUDE [gdpr-dsr-and-stp-note.md](../../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -44,13 +45,11 @@ Azure 自动化安全地存储凭据的属性。 通过 Runbook 或 DSC 配置�
 
 | 活动 | 说明 |
 |:--- |:--- |
-| `Get-AutomationPSCredential` |在 Runbook 或 DSC 配置中获取要使用的凭据。 凭据以对象的形式出现`PSCredential`。 |
+| `Get-AutomationPSCredential` |在 Runbook 或 DSC 配置中获取要使用的凭据。 凭据以对象的形式出现`PSCredential`。 有关与此活动对应的 cmdlet 的更多信息，请参阅[Azure 自动化 中的模块资产](modules.md)。 |
 | [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) |获取具有用户名和密码提示的凭据。 |
 | [New-AzureAutomationCredential](https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) | 创建凭据资产。 |
 
-对于使用 Azure 自动化创作工具包的本地开发，cmdlet`Get-AutomationPSCredential`是程序集 Azure[自动化创作工具包的](https://www.powershellgallery.com/packages/AzureAutomationAuthoringToolkit/0.2.3.9)一部分。 对于使用自动化上下文的 Azure，cmdlet 位于`Orchestrator.AssetManagement.Cmdlets`中。 请参阅[在 Azure 自动化中管理模块](modules.md)。
-
-若要检索`PSCredential`代码中的对象，可以[安装 PowerShell ISE 的 Microsoft Azure 自动化 ISE 加载项](https://github.com/azureautomation/azure-automation-ise-addon)。
+若要检索`PSCredential`代码中的对象，可以安装 PowerShell ISE 的 Microsoft Azure 自动化 ISE 加载项。 有关详细信息，请参阅[Azure 自动化 中的模块资产](modules.md)。
 
 ```azurepowershell
 Install-Module AzureAutomationAuthoringToolkit -Scope CurrentUser -Force
@@ -65,9 +64,9 @@ Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 > [!NOTE]
 > 应避免在`Name`的`Get-AutomationPSCredential`参数中使用变量。 它们的使用会使在设计时 Runbook 或 DSC 配置和凭据资产之间的依赖项发现复杂化。
 
-## <a name="python2-functions-that-access-credentials"></a>访问凭据的 Python2 函数
+## <a name="python-2-functions-that-access-credentials"></a>Python 2 函数访问凭据
 
-下表中的函数用于在 Python2 Runbook 中访问凭据。
+下表中的函数用于访问 Python 2 运行簿中的凭据。
 
 | 函数 | 说明 |
 |:---|:---|
@@ -154,9 +153,9 @@ Connect-AzAccount -Credential $myPsCred
 
 虽然 Azure 自动化中的 DSC 配置可以使用 的`Get-AutomationPSCredential`凭据资产使用，但它们还可以通过参数传递凭据资产。 有关详细信息，请参阅[在 Azure 自动化 DSC 中编译配置](../automation-dsc-compile.md#credential-assets)。
 
-## <a name="using-credentials-in-python2"></a>在 Python2 中使用凭据
+## <a name="using-credentials-in-python-2"></a>在 Python 2 中使用凭据
 
-下面的示例显示了在 Python2 Runbook 中访问凭据的示例。
+下面的示例显示了在 Python 2 Runbook 中访问凭据的示例。
 
 
 ```python
@@ -175,4 +174,4 @@ print cred["password"]
 * 要了解自动化的不同身份验证方法，请参阅[Azure 自动化安全](../automation-security-overview.md)。
 * 要开始使用图形运行簿，请参阅[我的第一个图形运行簿](../automation-first-runbook-graphical.md)。
 * 若要开始使用 PowerShell 工作流 Runbook，请参阅 [我的第一个 PowerShell 工作流 Runbook](../automation-first-runbook-textual.md)。
-* 要开始使用 Python2 运行簿，请参阅[我的第一个 Python2 运行簿](../automation-first-runbook-textual-python2.md)。 
+* 要开始使用 Python 2 运行簿，请参阅[我的第一个 Python 2 运行簿](../automation-first-runbook-textual-python2.md)。 

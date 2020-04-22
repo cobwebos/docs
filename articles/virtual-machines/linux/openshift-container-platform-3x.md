@@ -1,25 +1,20 @@
 ---
 title: 在 Azure 中部署 OpenShift 容器平台 3.11
 description: 在 Azure 中部署 OpenShift 容器平台 3.11。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: haroldwongms
 manager: mdotson
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/05/2020
 ms.author: haroldw
-ms.openlocfilehash: 7fd1c381ecd2b7dba4c77a025cb0332ace4147bf
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 7d6cd4c6ce7991ae83f6f4a1dd6d8b86fe7eedbc
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673663"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757899"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>在 Azure 中部署 OpenShift 容器平台 3.11
 
@@ -248,7 +243,7 @@ ms.locfileid: "80673663"
 
 ### <a name="azuredeployparametersjson-file-explained"></a>azure 部署。参数.json 文件解释
 
-| properties | 说明 | 有效选项 | 默认值 |
+| 属性 | 说明 | 有效选项 | 默认值 |
 |----------|-------------|---------------|---------------|
 | `_artifactsLocation`  | 项目 URL（json、脚本等） |  |  https：\//raw.githubusercontent.com/Microsoft/openshift-container-platform/master  |
 | `location` | 要将资源部署到 |  |  |

@@ -7,12 +7,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 9ccfaa57b8e8fdea325bed908ffe8815b09d0d15
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 86fc5d4845e746604c1ba69f661d1b9ea9d8dca4
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257787"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732321"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 协议与 IoT 中心通信
 
@@ -34,25 +37,25 @@ IoT 中心不是功能完备的 MQTT 中转站，并未支持 MQTT v3.1.1 标准
 * [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) 中的库。
 * 直接通过 MQTT 协议。
 
-MQTT 端口 （8883） 在许多企业和教育网络环境中被阻止。 如果无法在防火墙中打开端口 8883，我们建议您在 Web 套接字中使用 MQTT。 通过 Web 套接字进行 MQTT 通过端口 443 进行通信，端口 443 几乎总是在网络环境中打开。 要了解如何在使用 Azure IoT SDK 时通过 Web 套接字协议指定 MQTT 和 MQTT，请参阅[使用设备 SDK](#using-the-device-sdks)。
+许多公司和教育网络环境中的 MQTT 端口 (8883) 被阻止。 如果无法在防火墙中打开端口 8883，建议使用基于 Web 套接字的 MQTT。 基于 Web 套接字的 MQTT 通过端口 443 通信，该端口在网络环境中几乎始终处于打开状态。 若要了解如何在使用 Azure IoT SDK 时指定 MQTT 协议和基于 Web 套接字的 MQTT 协议，请参阅[使用设备 SDK](#using-the-device-sdks)。
 
 ## <a name="using-the-device-sdks"></a>使用设备 SDK
 
-支持 MQTT 协议的[设备 SDK](https://github.com/Azure/azure-iot-sdks) 可用于 Java、Node.js、C、C# 和 Python。 设备 SDK 使用标准 IoT 中心连接字符串来连接到 IoT 中心。 要使用 MQTT 协议，必须将客户端协议参数设置为 **MQTT**。 您还可以在客户端协议参数中通过 Web 套接字指定 MQTT。 默认情况下，设备 SDK 在 **CleanSession** 标志设置为 **0** 的情况下连接到 IoT 中心，并使用 **QoS 1** 来与 IoT 中心交换消息。
+支持 MQTT 协议的[设备 SDK](https://github.com/Azure/azure-iot-sdks) 可用于 Java、Node.js、C、C# 和 Python。 设备 SDK 使用标准 IoT 中心连接字符串来连接到 IoT 中心。 要使用 MQTT 协议，必须将客户端协议参数设置为 **MQTT**。 也可在客户端协议参数中指定基于 Web 套接字的 MQTT。 默认情况下，设备 SDK 在 **CleanSession** 标志设置为 **0** 的情况下连接到 IoT 中心，并使用 **QoS 1** 来与 IoT 中心交换消息。
 
 当设备连接到 IoT 中心时，设备 SDK 会提供方法，让设备与 IoT 中心交换消息。
 
-下表包含指向每个受支持语言的代码示例的链接，并指定使用 MQTT 或通过 Web 套接字协议建立与 IoT 中心连接的参数。
+下表包含了每种受支持语言的代码示例链接，并指定了以 MQTT 协议或基于 Web 套接字的 MQTT 协议连接到 IoT 中心时要使用的参数。
 
-| 语言 | MQTT 协议参数 | 通过 Web 套接字协议参数进行 MQTT
+| 语言 | MQTT 协议参数 | 基于 Web 套接字的 MQTT 协议参数
 | --- | --- | --- |
-| [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | azure-iot 设备-mqtt。Mqtt | azure-iot 设备-mqtt。MqttWs |
-| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHub客户协议](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable)。Mqtt | IotHub客户协议.MQTT_WS |
+| [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | azure-iot-device-mqtt.Mqtt | azure-iot-device-mqtt.MqttWs |
+| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable).MQTT | IotHubClientProtocol.MQTT_WS |
 | [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) | [MQTT_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-h/mqtt-protocol) | [MQTT_WebSocket_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-websockets-h/mqtt-websocket-protocol) |
-| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [运输类型](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet).Mqtt | 如果 MQTT 发生故障，传输类型.Mqtt 通过 Web 套接字回退到 MQTT。 要仅在 Web 套接字上指定 MQTT，请使用传输类型.Mqtt_WebSocket_Only |
-| [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) | 默认情况下支持 MQTT | 添加`websockets=True`调用以创建客户端 |
+| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet).Mqtt | 如果 MQTT 失败，TransportType.Mqtt 会回退到基于 Web 套接字的 MQTT。 若只指定基于 Web 套接字的 MQTT，请使用 TransportType.Mqtt_WebSocket_Only |
+| [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) | 默认支持 MQTT | 在调用中添加 `websockets=True` 来创建客户端 |
 
-以下片段演示如何在使用 Azure IoT Node.js SDK 时通过 Web 套接字协议指定 MQTT：
+以下片段演示了如何在使用 Azure IoT Node.js SDK 时指定基于 Web 套接字的 MQTT 协议：
 
 ```javascript
 var Client = require('azure-iot-device').Client;
@@ -60,7 +63,7 @@ var Protocol = require('azure-iot-device-mqtt').MqttWs;
 var client = Client.fromConnectionString(deviceConnectionString, Protocol);
 ```
 
-以下片段演示如何在使用 Azure IoT Python SDK 时通过 Web 套接字协议指定 MQTT：
+以下片段演示了如何在使用 Azure IoT Python SDK 时指定基于 Web 套接字的 MQTT 协议：
 
 ```python
 from azure.iot.device.aio import IoTHubDeviceClient
@@ -87,29 +90,29 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 ### <a name="migrating-a-device-app-from-amqp-to-mqtt"></a>将设备应用从 AMQP 迁移到 MQTT
 
-如果使用[设备 SDK](https://github.com/Azure/azure-iot-sdks)，则从使用 AMQP 切换到 MQTT 需要在客户端初始化中更改协议参数，如前面所述。
+如果使用[设备 SDK](https://github.com/Azure/azure-iot-sdks)，则需要在客户端初始化过程中更改协议参数才可将 AMQP 切换为使用 MQTT，如上所述。
 
 执行此操作时，请确保检查下列各项：
 
 * AMQP 针对许多条件返回错误，而 MQTT 会终止连接。 因此异常处理逻辑可能需要进行一些更改。
 
-* MQTT 在接收[“云到设备”消息](iot-hub-devguide-messaging.md)时不支持*拒绝*操作。 如果后端应用需要接收来自设备应用的响应，请考虑使用[直接方法](iot-hub-devguide-direct-methods.md)。
+* MQTT 在接收[云到设备消息](iot-hub-devguide-messaging.md)  时不支持拒绝操作。 如果后端应用需要接收来自设备应用的响应，请考虑使用[直接方法](iot-hub-devguide-direct-methods.md)。
 
 * Python SDK 不支持 AMQP
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>直接使用 MQTT 协议（作为设备）
 
-如果设备无法使用设备 SDK，仍可在 8883 端口使用 MQTT 协议连接到公共设备终结点。 在**CONNECT**数据包中，设备应使用以下值：
+如果设备无法使用设备 SDK，仍可使用端口 8883 上的 MQTT 协议连接到公共设备终结点。 在**CONNECT**数据包中，设备应使用以下值：
 
 * **ClientId** 字段使用 **deviceId**。
 
-* “用户名”**** 字段使用 `{iothubhostname}/{device_id}/?api-version=2018-06-30`，其中 `{iothubhostname}` 是 IoT 中心的完整 CName。
+* “用户名”  字段使用 `{iothubhostname}/{device_id}/?api-version=2018-06-30`，其中 `{iothubhostname}` 是 IoT 中心的完整 CName。
 
     例如，如果 IoT 中心的名称为 **contoso.azure-devices.net**，设备的名称为 **MyDevice01**，则完整“用户名”**** 字段应包含：
 
     `contoso.azure-devices.net/MyDevice01/?api-version=2018-06-30`
 
-* “**密码**”字段使用 SAS 令牌。 对于 HTTPS 和 AMQP 协议，SAS 令牌的格式是相同的：
+* “密码”  字段使用 SAS 令牌。 对于 HTTPS 和 AMQP 协议，SAS 令牌的格式是相同的：
 
   `SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}`
 
@@ -122,11 +125,11 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 ### <a name="for-azure-iot-tools"></a>对于 Azure IoT 工具
 
-1. 展开 Visual Studio Code 左下角的“AZURE IOT 中心设备”**** 选项卡。
+1. 展开 Visual Studio Code 左下角的“AZURE IOT 中心设备”  选项卡。
   
-2. 右键单击设备，然后选择“为设备生成 SAS 令牌”****。
+2. 右键单击设备，然后选择“为设备生成 SAS 令牌”  。
   
-3. 设置“到期时间”****，然后按 Enter。
+3. 设置“到期时间”  ，然后按 Enter。
   
 4. 将创建 SAS 令牌并将其复制到剪贴板。
 

@@ -1,6 +1,6 @@
 ---
 title: 将 DevKit 设备连接到 Azure IoT Central 应用程序 | Microsoft Docs
-description: 作为设备开发人员，了解如何使用 IoT 即插即用（预览）将 MXChip IoT DevKit 设备连接到 Azure IoT 中央应用程序。
+description: 了解如何使用 IoT 即插即用（预览版）以设备开发人员的身份将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序。
 author: liydu
 ms.author: liydu
 ms.date: 12/03/2019
@@ -8,14 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: jeffya
-ms.openlocfilehash: 0a393ae8629f1742002344ee717a6719269a6722
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcf1dd2f89cf049d7da5b56170b2c13874c83ba4
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158530"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756808"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序
+
+*本文适用于设备开发人员。*
 
 本文介绍如何将 MXChip IoT DevKit (DevKit) 设备连接到 Azure IoT Central 应用程序。 设备使用 DevKit 设备的经认证的 IoT 即插即用（预览）型号来配置其与 IoT 中心的连接。
 
@@ -44,7 +46,7 @@ ms.locfileid: "80158530"
 
     ![新设备](media/howto-connect-devkit/new-device.png)
 
-1. 在弹出窗口中，将**设备 ID**输入`SampleDevKit`为 **，设备名称**为`MXChip IoT DevKit - Sample`。 确保 **"模拟"** 选项已关闭。 然后选择 **"创建**"。
+1. 在弹出窗口中，将**设备 ID**输入`SampleDevKit`为 **，设备名称**为`MXChip IoT DevKit - Sample`。 确保 **"模拟"** 选项已关闭。 然后选择“创建”  。
 
     ![设备 ID 和名称](media/howto-connect-devkit/device-id-name.png)
 
@@ -104,4 +106,7 @@ DevKit 首先在 IoT Central 应用程序中注册新设备，然后开始发送
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何将 DevKit 设备连接到 Azure IoT Central 应用程序后，建议接下来了解如何为自己的 IoT 设备[设置自定义设备模板](./howto-set-up-template.md)。
+如果您是设备开发人员，建议的后续步骤是：
+
+- 阅读[有关 Azure IoT 中心中的设备连接](./concepts-get-connected.md)
+- 了解如何使用[Azure CLI 监视设备连接](./howto-monitor-devices-azure-cli.md)
