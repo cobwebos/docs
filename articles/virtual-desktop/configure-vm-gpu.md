@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 941a1ff23668a3202028e8b693b57d902095b3b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b675a78041b68210fa7583510582783c506c720
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78384828"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767039"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>为 Windows 虚拟桌面配置图形处理单元 （GPU） 加速
 
@@ -88,7 +88,7 @@ Windows 虚拟桌面支持 GPU 加速呈现和编码在以下操作系统中：
 
 ## <a name="next-steps"></a>后续步骤
 
-这些说明应该让您在单个会话主机 VM 上使用 GPU 加速启动和运行。 跨较大主机池启用 GPU 加速的一些其他注意事项：
+这些说明应该让您在一个会话主机（一个 VM）上使用 GPU 加速启动和运行。 跨较大主机池启用 GPU 加速的一些其他注意事项：
 
 * 请考虑使用[VM 扩展](/azure/virtual-machines/extensions/overview)来简化跨多个 VM 的驱动程序安装和更新。 使用[NVIDIA GPU 驱动程序扩展](/azure/virtual-machines/extensions/hpccompute-gpu-windows)功能，用于具有 NVIDIA GPU 的 VM，并使用 AMD GPU 驱动程序扩展（即将推出）用于具有 AMD GPU 的 VM。
 * 请考虑使用 Active 目录组策略来简化多个 VM 的组策略配置。 有关在活动目录域中部署组策略的信息，请参阅[使用组策略对象](https://go.microsoft.com/fwlink/p/?LinkId=620889)。

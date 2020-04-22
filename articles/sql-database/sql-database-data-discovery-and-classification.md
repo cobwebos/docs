@@ -1,6 +1,6 @@
 ---
 title: 数据发现和分类
-description: Azure SQL 数据库和 Azure 突触分析的数据发现&分类
+description: Azure SQL 数据库和 Azure Synapse Analytics 的数据发现和分类
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,16 +11,16 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 02/05/2020
+ms.date: 04/21/2020
 tags: azure-synapse
-ms.openlocfilehash: 599b2a280e386e49eb114f448f55b17ed7e823d7
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: f05b4d4fec99aaa2fb79da46e2167d883d1f15ec
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81616766"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81766984"
 ---
-# <a name="data-discovery--classification-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure 突触分析的数据发现&分类
+# <a name="data-discovery--classification-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure Synapse Analytics 的数据发现和分类
 
 数据发现&分类内置于 Azure SQL 数据库中。 它提供了用于发现、分类、标记和报告数据库中敏感数据的高级功能。
 

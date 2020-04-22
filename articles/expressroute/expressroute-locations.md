@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 04/14/2020
 ms.author: cherylmc
-ms.openlocfilehash: b99bd20b9b9e18bbc09edd5bb49f34147ccfaabd
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: b825ed513f530733d7552e32206c12422a956b14
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81390246"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81766939"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
 > [!div class="op_single_selector"]
-> * [按提供程序进行的位置](expressroute-locations.md)
-> * [提供程序（按位置）](expressroute-locations-providers.md)
+> * [按提供商列出的位置](expressroute-locations.md)
+> * [按位置列出的提供商](expressroute-locations-providers.md)
 
 
 本文中的表格提供了有关 ExpressRoute 地理覆盖范围和位置、ExpressRoute 连接提供商和 ExpressRoute 系统集成商 (SI) 的信息。
@@ -84,7 +84,7 @@ ExpressRoute 位置（有时称为对等位置或 Meet-me 位置）是 Microsoft
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |支持 |支持 |阿姆斯特丹、芝加哥、达拉斯、法兰克福、伦敦、硅谷、新加坡、悉尼、东京、多伦多、华盛顿特区 |
 | **[在东京](https://www.attokyo.com/service/cloudsconnection/forazure.html)** | 支持 | 支持 | 东京2 |
 | **[BBIX](https://www.bbix.net/en/service/ix/)** | 支持 | 支持 | 东京 |
-| **[BCX](https://www.bcx.co.za/solutions)** |支持 |支持 |开普敦|
+| **[BCX](https://www.bcx.co.za/solutions)** |支持 |支持 |开普敦、约翰内斯堡|
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |支持 |支持 |蒙特利尔、多伦多、魁北克市 |
 | **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)** |支持 |支持 |阿姆斯特丹、香港特别行政区、约翰内斯堡、伦敦、纽波特（威尔士）、圣保罗、硅谷、新加坡、悉尼、东京、华盛顿特区 |
 | **[C3ntro](https://www.c3ntro.com/data1/express-route1.php)** |支持 |支持 |迈阿密 |
@@ -279,7 +279,7 @@ Azure 国家云彼此隔离，与全局商业 Azure 隔离。 一个 Azure 云�
 | **[RETN](https://retn.net/services/cloud-connect/)** | Equinix | 阿姆斯特丹 |
 | **Rogers** | Cologix、Equinix | 蒙特利尔、多伦多 |
 | **[频谱企业](https://enterprise.spectrum.com/services/cloud/cloud-connect.html)** | Equinix | 芝加哥、达拉斯、洛杉矶、纽约、硅谷 | 
-| **[Tamares Telecom](https://www.tamarestelecom.com/our-services/#Connectivity)** | Equinix | London | 
+| **[Tamares Telecom](http://www.tamarestelecom.com/our-services/#Connectivity)** | Equinix | London | 
 | **[TDC Erhverv](https://tdc.dk/Produkter/cloudaccessplus)** | Equinix | 阿姆斯特丹 | 
 | **[Telecom Italia Sparkle](https://www.tisparkle.com/our-platform/corporate-platform/sparkle-cloud-connect#catalogue)**| Equinix | 阿姆斯特丹 |
 | **[德国电信有限公司](https://cloud.telekom.de/de/infrastruktur/managed-it-services/managed-hybrid-infrastructure-mit-microsoft-azure)** | Interxion | 阿姆斯特丹、法兰克福 |
