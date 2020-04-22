@@ -12,12 +12,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 6a127510b454244b32ad481cdb32c5d2e8faf9a0
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 47485d8d9007a6cf6432b7bf401c7c1c34a9863a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991171"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536125"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>快速入门：从 iOS 或 macOS 应用将用户登录并调用 Microsoft Graph API
 
@@ -30,7 +30,7 @@ ms.locfileid: "80991171"
 > [!NOTE]
 > **先决条件**
 > * XCode 10+
-> * iOS 10+ 
+> * iOS 10+
 > * macOS 10.12+
 
 > [!div renderon="docs"]
@@ -83,7 +83,7 @@ ms.locfileid: "80991171"
 #### <a name="step-4-configure-your-project"></a>步骤 4：配置项目
 
 > [!div renderon="docs"]
-> 如果选择了上面的“选项 1”，则可跳过这些步骤。 
+> 如果选择了上面的“选项 1”，则可跳过这些步骤。
 
 > [!div renderon="portal" class="sxs-lookup"]
 > 1. 解压缩 zip 文件并在 XCode 中打开该项目。
@@ -149,9 +149,9 @@ ms.locfileid: "80991171"
 >          </array>
 >       </dict>
 >    </array>
-> 
+>
 >    ```
-> 1. 生成并运行应用！ 
+> 1. 生成并运行应用！
 
 ## <a name="more-information"></a>更多信息
 
@@ -192,7 +192,7 @@ import MSAL
 
 ```swift
 let authority = try MSALAADAuthority(url: URL(string: kAuthority)!)
-            
+
 let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, redirectUri: nil, authority: authority)
 self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
 ```
@@ -209,7 +209,7 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
 
  ```swift
  func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        
+
         return MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String)
     }
 
@@ -221,21 +221,21 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
 
  ```swift
  func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        
+
         guard let urlContext = URLContexts.first else {
             return
         }
-        
+
         let url = urlContext.url
         let sourceApp = urlContext.options.sourceApplication
-        
+
         MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: sourceApp)
     }
  ```
 
-最后，应用必须在 ***Info.plist*** 中有一个与 `CFBundleURLTypes` 一起的 `LSApplicationQueriesSchemes` 条目。 示例包含此条目。 
+最后，应用必须在 ***Info.plist*** 中有一个与 `CFBundleURLTypes` 一起的 `LSApplicationQueriesSchemes` 条目。 示例包含此条目。
 
-   ```xml 
+   ```xml
    <key>LSApplicationQueriesSchemes</key>
    <array>
       <string>msauthv2</string>
@@ -249,10 +249,10 @@ MSAL 有两种用来获取令牌的方法：`acquireToken` 和 `acquireTokenSile
 
 #### <a name="acquiretoken-get-a-token-interactively"></a>acquireToken：以交互方式获取令牌
 
-有些情况下，需要用户与 Microsoft 标识平台交互。 在这些情况下，最终用户可能需要选择其帐户、输入其凭据，或者同意应用的权限。 例如， 
+有些情况下，需要用户与 Microsoft 标识平台交互。 在这些情况下，最终用户可能需要选择其帐户、输入其凭据，或者同意应用的权限。 例如，
 
 * 用户首次登录应用程序
-* 用户在重置其密码时需输入其凭据。 
+* 用户在重置其密码时需输入其凭据。
 * 应用程序首次请求访问资源时
 * 需要 MFA 或其他条件访问策略时
 
@@ -263,19 +263,19 @@ self.applicationContext!.acquireToken(with: parameters) { (result, error) in /* 
 
 > |其中：||
 > |---------|---------|
-> | `scopes` | 包含所请求的作用域（即针对 Microsoft Graph 的 `[ "user.read" ]` 或针对自定义 Web API (`api://<Application ID>/access_as_user`)的 `[ "<Application ID URL>/scope" ]`） |
+> | `scopes` | 包含所请求的范围（即针对 Microsoft Graph 的 `[ "user.read" ]` 或针对自定义 Web API (`api://<Application ID>/access_as_user`) 的 `[ "<Application ID URL>/scope" ]`） |
 
 #### <a name="acquiretokensilent-get-an-access-token-silently"></a>acquireTokenSilent：以无提示方式获取访问令牌
 
-应用不应该在用户每次请求令牌时都要求他们登录。 如果用户已登录，则此方法允许应用以静默方式请求令牌。 
+应用不应该在用户每次请求令牌时都要求他们登录。 如果用户已登录，则此方法允许应用以静默方式请求令牌。
 
 ```swift
 self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previousAccount, error) in
-            
+
    guard let account = currentAccount else {
       return
    }
-            
+
    let silentParams = MSALSilentTokenParameters(scopes: self.kScopes, account: account)
    self.applicationContext!.acquireTokenSilent(with: silentParams) { (result, error) in /* Add your handling logic */}
 }
@@ -283,7 +283,7 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 
 > |其中： ||
 > |---------|---------|
-> | `scopes` | 包含所请求的作用域（即针对 Microsoft Graph 的 `[ "user.read" ]` 或针对自定义 Web API (`api://<Application ID>/access_as_user`) 的 `[ "<Application ID URL>/scope" ]`） |
+> | `scopes` | 包含所请求的范围（即针对 Microsoft Graph 的 `[ "user.read" ]` 或针对自定义 Web API (`api://<Application ID>/access_as_user`) 的 `[ "<Application ID URL>/scope" ]`） |
 > | `account` | 请求令牌时对应的帐户。 本快速入门介绍单帐户应用程序。 如果要构建多帐户应用，则需要定义相关逻辑，以使用 `accountsFromDeviceForParameters:completionBlock:` 并传递正确的 `accountIdentifier` 来标识用于令牌请求的帐户 |
 
 ## <a name="next-steps"></a>后续步骤

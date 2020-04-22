@@ -1,24 +1,24 @@
 ---
-title: 根据登录提示设置安全信息（预览）- Azure AD
-description: 如何在组织的登录页上出现提示后为工作或学校帐户设置安全信息（预览）。
+title: 根据登录提示设置安全信息 - Azure AD
+description: 如何在组织的登录页上出现提示后为工作或学校帐户设置安全信息。
 services: active-directory
 author: curtand
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 08/05/2019
+ms.date: 04/07/2020
 ms.author: curtand
-ms.openlocfilehash: c216dbfef99422fc49fde774dc57d5cbcc9f879a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: eb6b124ea0ec036cd9846652fbd9eac5f81eb560
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77063979"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454380"
 ---
-# <a name="set-up-your-security-info-preview-from-a-sign-in-prompt"></a>根据登录提示设置安全信息（预览）
+# <a name="set-up-your-security-info-from-a-sign-in-prompt"></a>根据登录提示设置安全信息
 
 如果在你登录到工作或学校帐户后，紧接着出现设置安全信息的提示，你可以遵循以下步骤进行设置。
 
@@ -122,7 +122,7 @@ ms.locfileid: "77063979"
 某些应用（例如 Outlook 2010）不支持双重验证。 缺少这种支持意味着，如果你在组织中使用双重验证，该应用将不会正常工作。 若要解决此问题，可以创建一个与普通密码不同的自动生成的密码，并在每个非浏览器应用中使用该密码。
 
 >[!Note]
->如果向导中未显示此选项，则表示管理员尚未设置此选项。 如果未设置此项，但你知道需要使用应用密码，可以遵循[“安全信息（预览）”页中的“设置应用密码”](security-info-app-passwords.md)中所述的步骤。
+>如果向导中未显示此选项，则表示管理员尚未设置此选项。 如果未设置此项，但你知道需要使用应用密码，可以遵循[从“安全信息”页设置应用密码](security-info-app-passwords.md)中所述的步骤。
 
 使用应用密码时，请务必记住：
 

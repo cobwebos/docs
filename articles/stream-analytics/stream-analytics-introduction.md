@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: f15a4605d28beaf97e877f337051a2ec13148a41
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 673c6e2ed0aedcc186baf8c7e1884dd537f9567d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80235773"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459842"
 ---
 # <a name="what-is-azure-stream-analytics"></a>什么是 Azure 流分析？
 
@@ -49,9 +49,9 @@ Azure 流分析经过专门的设计，具有易用、灵活、可靠的特点�
 
 ## <a name="ease-of-getting-started"></a>易于入门
 
-Azure 流分析易于入门。 只需点击几下鼠标即可连接到多个源和接收器并创建端到端的管道。 流分析可连接到 [Azure 事件中心](/azure/event-hubs/)和 [Azure IoT 中心](/azure/iot-hub/)来引入流数据，并可连接到 [Azure Blob 存储](/azure/storage/storage-introduction)来引入历史数据。 作业输入还可以包含 Azure Blob 存储或 [SQL 数据库](stream-analytics-use-reference-data.md#azure-sql-database)中的静态数据或缓慢更改的参考数据，可将这些数据与流数据相联接，以执行查找操作。
+Azure 流分析易于入门。 只需点击几下鼠标即可连接到多个源和接收器并创建端到端的管道。 流分析可连接到 [Azure 事件中心](/azure/event-hubs/)和 [Azure IoT 中心](/azure/iot-hub/)来引入流数据，并可连接到 [Azure Blob 存储](/azure/storage/common/storage-introduction)来引入历史数据。 作业输入还可以包含 Azure Blob 存储或 [SQL 数据库](stream-analytics-use-reference-data.md#azure-sql-database)中的静态数据或缓慢更改的参考数据，可将这些数据与流数据相联接，以执行查找操作。
 
-流分析可以将作业输出路由到许多存储系统，例如 [Azure Blob 存储](/azure/storage/storage-introduction)、[Azure SQL 数据库](/azure/sql-database/)、[Azure Data Lake Store](/azure/data-lake-store/) 和 [Azure Cosmos DB](/azure/cosmos-db/introduction)。 可以使用 Azure HDInsight 基于存储的输出运行批处理分析，或将输出发送到另一个服务（例如事件中心）以使用这些输出，或发送到 [Power BI](https://docs.microsoft.com/power-bi/) 以进行实时可视化。
+流分析可以将作业输出路由到许多存储系统，例如 [Azure Blob 存储](/azure/storage/common/storage-introduction)、[Azure SQL 数据库](/azure/sql-database/)、[Azure Data Lake Store](/azure/data-lake-store/) 和 [Azure Cosmos DB](/azure/cosmos-db/introduction)。 可以使用 Azure HDInsight 基于存储的输出运行批处理分析，或将输出发送到另一个服务（例如事件中心）以使用这些输出，或发送到 [Power BI](https://docs.microsoft.com/power-bi/) 以进行实时可视化。
 
 有关流分析输出的完整列表，请参阅[了解 Azure 流分析的输出](stream-analytics-define-outputs.md)。
 

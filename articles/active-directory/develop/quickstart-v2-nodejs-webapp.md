@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 4aa0cce83f9adc8c648656899ec6dc12d498e26b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1ff92b8a9477800477ebb2d79145ddaa78831f30
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77160442"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536057"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>快速入门：向 Node.js Web 应用添加使用 OpenID Connect 登录功能
 
@@ -30,7 +30,7 @@ ms.locfileid: "77160442"
 
 * [Microsoft 帐户](https://www.outlook.com)或 [Office 365 开发人员计划](/office/developer-program/office-365-developer-program)
 
-## <a name="register-your-application"></a>注册应用程序 
+## <a name="register-your-application"></a>注册应用程序
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com/)。
 1. 如果你的帐户存在于多个 Azure AD 租户中：
     - 请从页面右上角的菜单中选择你的配置文件，然后选择“切换目录”  。
@@ -78,7 +78,7 @@ ms.locfileid: "77160442"
 
 在项目根目录中运行命令：
 
-`$ npm install`  
+`$ npm install`
 
 ## <a name="configure-the-application"></a>配置应用程序
 

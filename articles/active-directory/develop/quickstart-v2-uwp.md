@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: feb1fa82653a0db7b3041a4f745d0563c220bd31
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 362f6d1f4e50e1cc78c8897499b9f6593096162b
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991086"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536006"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>快速入门：从通用 Windows 平台 (UWP) 应用程序调用 Microsoft Graph API
 
@@ -72,7 +72,7 @@ ms.locfileid: "80991086"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步骤 3：应用已配置并可以运行
-> 我们已经为项目配置了应用属性的值，并且该项目已准备好运行。 
+> 我们已经为项目配置了应用属性的值，并且该项目已准备好运行。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
@@ -80,7 +80,7 @@ ms.locfileid: "80991086"
 
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-visual-studio-project"></a>步骤 3：配置 Visual Studio 项目
-> 
+>
 > 1. 将 zip 文件提取到靠近磁盘根目录的本地文件夹，例如 **C:\Azure-Samples**。
 > 1. 在 Visual Studio 中打开项目。 系统可能会提示你安装 UWP SDK。 在这种情况下，请接受。
 > 1. 编辑 **MainPage.Xaml.cs**，替换 `ClientId` 字段的值：
@@ -157,7 +157,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(scopes)
 
 > |其中：||
 > |---------|---------|
-> | `scopes` | 包含所请求的作用域，例如针对 Microsoft Graph 的 `{ "user.read" }` 或针对自定义 Web API 的 `{ "api://<Application ID>/access_as_user" }`。 |
+> | `scopes` | 包含所请求的范围，例如 `{ "user.read" }`（针对 Microsoft Graph）或 `{ "api://<Application ID>/access_as_user" }`（针对自定义 Web API）。 |
 
 #### <a name="get-a-user-token-silently"></a>以无提示方式获取用户令牌
 
@@ -172,7 +172,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 
 > |其中： ||
 > |---------|---------|
-> | `scopes` | 包含所请求的作用域，例如针对 Microsoft Graph 的 `{ "user.read" }` 或针对自定义 Web API 的 `{ "api://<Application ID>/access_as_user" }` |
+> | `scopes` | 包含所请求的范围，例如 `{ "user.read" }`（针对 Microsoft Graph ）或 `{ "api://<Application ID>/access_as_user" }`（针对自定义 Web API）。 |
 > | `firstAccount` | 指定缓存中的第一个用户帐户（MSAL 支持在单个应用中使用多个用户） |
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

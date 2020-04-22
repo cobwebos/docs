@@ -6,12 +6,12 @@ ms.date: 02/05/2019
 ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 5a6dbda59495fccb6b9d53440f408fd4750925b5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 250f51c9f028dd55d8327259e35b82b0c392c1f6
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75421672"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536992"
 ---
 # <a name="create-an-azure-automation-runbook"></a>创建 Azure 自动化 Runbook
 
@@ -21,9 +21,9 @@ Azure 自动化 Runbook 可以通过 Azure 创建。 此方法提供一个基于
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录 Azure (https://portal.azure.com )
+通过 https://portal.azure.com 登录到 Azure。
 
-## <a name="create-runbook"></a>创建 Runbook
+## <a name="create-the-runbook"></a>创建 Runbook
 
 首先，请创建 Runbook。 本快速入门中创建的示例 Runbook 默认输出 `Hello World`。
 
@@ -31,17 +31,17 @@ Azure 自动化 Runbook 可以通过 Azure 创建。 此方法提供一个基于
 
 1. 单击“流程自动化”下的“Runbook”。   此时会显示 Runbook 列表。
 
-1. 单击列表顶部的“创建 Runbook”按钮 
+1. 单击列表顶部的“创建 Runbook”。 
 
-1. 输入“Hello-World”作为 Runbook **名称**，选择 **PowerShell** 作为 **Runbook 类型**。 单击“创建”。 
+1. 在“名称”字段中输入 `Hello-World` 作为 Runbook 名称，并在“Runbook 类型”字段中选择“PowerShell”。    
 
    ![在页面中输入有关自动化 Runbook 的信息](./media/automation-quickstart-create-runbook/automation-create-runbook-configure.png)
 
-1. 此时会创建 Runbook 并打开“编辑 PowerShell Runbook”页面。 
+1. 单击“创建”。  此时会创建 Runbook 并打开“编辑 PowerShell Runbook”页。
 
     ![在 Runbook 编辑器中创作 PowerShell 脚本](./media/automation-quickstart-create-runbook/automation-edit-runbook-empty.png)
 
-1. 将以下代码键入或者复制并粘贴到编辑窗格中。 此代码创建名为“名称”的可选输入参数，其默认值为“World”，并输出使用以下输入值的字符串：
+1. 将以下代码键入或者复制并粘贴到编辑窗格中。 此代码创建名为 `Name`、默认值为 `World` 的可选输入参数，并输出使用以下输入值的字符串：
 
    ```powershell-interactive
    param
@@ -53,23 +53,23 @@ Azure 自动化 Runbook 可以通过 Azure 创建。 此方法提供一个基于
    "Hello $Name!"
    ```
 
-1. 单击“保存”  ，保存 Runbook 的草稿副本。
+1. 单击“保存”以保存 Runbook 的草稿副本。 
 
     ![在 Runbook 编辑器中创作 PowerShell 脚本](./media/automation-quickstart-create-runbook/automation-edit-runbook.png)
 
 ## <a name="test-the-runbook"></a>测试 Runbook
 
-创建 Runbook 之后，请对其进行测试以验证其是否正常。
+创建 Runbook 之后，必须对其进行测试以验证其是否正常工作。
 
-1. 单击“测试窗格”  打开“测试”页。 
+1. 单击“测试窗格”  打开测试窗格。
 
 1. 输入一个值作为“名称”  ，然后单击“启动”。  此时会启动测试作业并显示作业状态和输出。
 
     ![Runbook 测试作业](./media/automation-quickstart-create-runbook/automation-test-runbook.png)
 
-1. 单击右上角的“X”关闭“测试”页。   在显示的弹出窗口中选择“确定”。 
+1. 单击右上角的“X”关闭“测试”窗格。  在显示的弹出窗口中选择“确定”。 
 
-1. 在“编辑 PowerShell Runbook”页中单击“发布”，   将此 Runbook 作为帐户中的正式版 Runbook 发布。
+1. 在“编辑 PowerShell Runbook”页中，单击“发布”将此 Runbook 作为正式版 Runbook 在帐户中发布。 
 
    ![Runbook 测试作业](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job.png)
 
@@ -77,15 +77,15 @@ Azure 自动化 Runbook 可以通过 Azure 创建。 此方法提供一个基于
 
 Runbook 发布以后，会显示概览页。
 
-1. 在 Runbook 概览页中，单击“启动”打开该 Runbook 的“启动 Runbook”配置页。  
+1. 在 Runbook 概览页中，单击“启动”打开该 Runbook 的“启动 Runbook”配置页。 
 
    ![Runbook 测试作业](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-start.png)
 
-1. 将“名称”保留为空，以便使用默认值，然后单击“确定”。   此时会提交 Runbook 作业，并显示作业页。
+1. 将“名称”保留为空，以便使用默认值，然后单击“确定”。   此时会提交 Runbook 作业，并显示“作业”页。
 
    ![Runbook 测试作业](./media/automation-quickstart-create-runbook/automation-job-page.png)
 
-1. 当“作业状态”为“正在运行”或“已完成”后，单击“输出”打开“输出”窗格并查看 Runbook 输出。     
+1. 当作业状态为 `Running` 或 `Completed` 时，单击“输出”打开“输出”窗格并查看 Runbook 输出。 
 
    ![Runbook 测试作业](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png)
 

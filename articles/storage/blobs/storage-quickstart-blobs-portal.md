@@ -7,20 +7,20 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 12/04/2019
+ms.date: 04/16/2020
 ms.author: tamram
-ms.openlocfilehash: 3ceeb878121782ea3664e1ed62d5d632b606f08e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a9a048801c6bea74e6b5318eeedf76f92709bee6
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061394"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535157"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>快速入门：使用 Azure 门户上传、下载和列出 Blob
 
 本快速入门介绍如何使用 [Azure 门户](https://portal.azure.com/)在 Azure 存储中创建容器，以及在该容器中上传和下载块 Blob。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -39,27 +39,25 @@ ms.locfileid: "80061394"
 
 ## <a name="upload-a-block-blob"></a>上传块 Blob
 
-块 Blob 包含经过组装后可以生成 Blob 的数据块。 大多数使用 Blob 存储的方案都采用块 Blob。 块 Blob 适用于在云中存储文本和二进制数据，例如文件、图像和视频。 本快速入门介绍如何使用块 Blob。 
+块 Blob 包含经过组装后可以生成 Blob 的数据块。 大多数使用 Blob 存储的方案都采用块 Blob。 块 Blob 适用于在云中存储文本和二进制数据，例如文件、图像和视频。 本快速入门介绍如何使用块 Blob。
 
 若要在 Azure 门户中将块 Blob 上传到新的容器，请执行以下步骤：
 
 1. 在 Azure 门户中，导航到在上一部分创建的容器。
-2. 选择一个容器，显示其包含的 Blob 的列表。 此容器为新容器，因此不会包含任何 Blob。
-3. 选择“上传”  按钮以打开“上传”边栏选项卡
-4. 浏览本地文件系统，找到要作为块 Blob 上传的文件
-     
+1. 选择一个容器，显示其包含的 Blob 的列表。 由于此容器为新容器，因此尚不包含任何 Blob。
+1. 选择“上传”按钮打开“上传”边栏选项卡，并浏览本地文件系统，找到要作为块 Blob 上传的文件。  （可选）可以展开“高级”部分，以配置上传操作的其他设置。
+
     ![显示如何将 Blob 从本地驱动器上传的屏幕截图](media/storage-quickstart-blobs-portal/upload-blob.png)
 
-5. （可选）展开“高级”部分以定义其他设置，例如身份验证类型、访问层或虚拟文件夹路径。
-6. 选择“上传”  按钮以提交上传
-7. 以这种方式根据需要上传相应数量的 Blob。 可以看到新的 Blob 现已列在容器中。
+1. 选择“上传”按钮以上传 Blob。 
+1. 以这种方式根据需要上传相应数量的 Blob。 可以看到新的 Blob 现已列在容器中。
 
 ## <a name="download-a-block-blob"></a>下载块 Blob
 
 可以下载一个块 Blob，让其在浏览器中显示，或者将其保存到本地文件系统。 若要下载块 Blob，请执行以下步骤：
 
-1. 导航到在前一部分上传的 Blob 的列表。 
-2. 右键单击要下载的 Blob，然后选择“下载”。  
+1. 导航到在前一部分上传的 Blob 的列表。
+1. 右键单击要下载的 Blob，然后选择“下载”。 
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -68,9 +66,9 @@ ms.locfileid: "80061394"
 若要删除容器，请执行以下操作：
 
 1. 在 Azure 门户中，导航到存储帐户中的容器的列表。
-2. 选择要删除的容器。
-3. 选择“更多”按钮 ( **...** )，然后选择“删除”。  
-4. 确认要删除该容器。
+1. 选择要删除的容器。
+1. 选择“更多”按钮 ( **...** )，然后选择“删除”。  
+1. 确认要删除该容器。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -78,4 +76,3 @@ ms.locfileid: "80061394"
 
 > [!div class="nextstepaction"]
 > [Blob 存储操作说明](storage-dotnet-how-to-use-blobs.md)
-

@@ -11,18 +11,18 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 582afef8929da2ba75aab70c1ed0fa9e57fd3f19
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 084083a704a007e6675234883c62350d1d9a0849
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76703467"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536142"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>快速入门：调用受 Microsoft 标识平台保护的 ASP.NET Web API
 
-在本快速入门中，请公开 Web API 并对其进行保护，这样只有通过身份验证的用户才可以访问它。 此示例介绍如何公开 ASP.NET Web API，使其可以接受由个人帐户（包括 outlook.com、live.com 和其他帐户）以及来自集成了 Microsoft 标识平台的任何公司或组织的工作和学校帐户发出的令牌。
+在本快速入门中，你将公开一个 Web API 并对其进行保护，以便只有通过身份验证的用户才能访问它。 本示例演示如何公开 ASP.NET Web API，使其可以接受由个人帐户（包括 outlook.com、live.com 和其他帐户）以及由集成了 Microsoft 标识平台的任何公司或组织的工作和学校帐户发出的令牌。
 
-此示例还包含 Windows 桌面应用程序 (WPF) 客户端，该客户端演示了如何请求访问令牌以访问 Web API。
+本示例还包含 Windows 桌面应用程序 (WPF) 客户端，该客户端演示了如何请求访问令牌以访问 Web API。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -69,24 +69,24 @@ ms.locfileid: "76703467"
      -  对于“范围名称”，请使用 `access_as_user`
      -   确认是否为“谁能同意?”选择了“管理员和用户”选项
      -  在“管理员同意显示名称”中，键入 `Access TodoListService as a user`
-     -  在“管理员同意说明”中，键入 `Accesses the TodoListService Web API as a user`
+     -  在“管理员同意说明”中，键入 `Accesses the TodoListService web API as a user`
      -  在“用户同意显示名称”中，键入 `Access TodoListService as a user`
-     -  在“用户同意说明”中，键入 `Accesses the TodoListService Web API as a user`
+     -  在“用户同意说明”中，键入 `Accesses the TodoListService web API as a user`
      -   将“状态”保持为“已启用”
      -  选择“添加范围”
 
-### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>配置服务项目以匹配注册的 Web API 
+### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>配置服务项目以匹配注册的 Web API
 
 1. 在 Visual Studio 中打开解决方案，然后在“TodoListService”项目的根目录下打开“Web.config”文件   。
 1. 将 `ida:ClientId` 参数的值替换为刚在应用程序注册门户中注册的应用程序中的客户端 ID（应用程序 ID）  。
 
 ### <a name="add-the-new-scope-to-the-todolistclients-appconfig"></a>将新范围添加到“TodoListClient”的 app.config 中 
 
-1. 打开位于“TodoListClient”项目的根文件夹中的“app.config”文件，然后将刚刚为“TodoListService”注册的应用程序中的“应用程序 ID”粘贴到 `TodoListServiceScope` 参数下，并替换字符串 `{Enter the Application ID of your TodoListService from the app registration portal}`     。
+1. 打开位于“TodoListClient”项目的根文件夹中的“app.config”文件，然后将刚刚为“TodoListService”注册的应用程序中的“应用程序 ID”粘贴到 `TodoListServiceScope` 参数下，并替换字符串 `{Enter the Application ID of your TodoListService from the app registration portal}`    。
 
    > 注意：请确保它使用以下格式：
    >
-   > `api://{TodoListService-Application-ID}/access_as_user` 
+   > `api://{TodoListService-Application-ID}/access_as_user`
    >
    >（其中，{TodoListService-Application-ID} 是表示 TodoListService 的应用程序 ID 的 GUID）。
 
@@ -108,7 +108,7 @@ ms.locfileid: "76703467"
 1. 选择“API 权限”部分 
    - 单击“添加权限”  按钮，然后
    - 选择“我的 API”  选项卡。
-   - 在 API 列表中，选择 `AppModelv2-NativeClient-DotNet-TodoListService API` 或为 Web API 输入的名称。
+   - 在 API 列表中，选择 `AppModelv2-NativeClient-DotNet-TodoListService API` 或你为 Web API 输入的名称。
    -  如果“access_as_user”权限未处于选中状态，请将其选中。 如有必要，请使用搜索框。
    - 选择“添加权限”按钮 
 
@@ -131,7 +131,7 @@ ms.locfileid: "76703467"
 1. 返回到“应用程序注册门户”并打开“TodoListService”的属性   。
 1. 在“公开 API”部分中，单击“授权的客户端应用程序”部分下的“添加客户端应用程序”    。
 1. 在“客户端 ID”字段中，粘贴 `TodoListClient` 应用程序的应用程序 ID  。
-1. 在“授权范围”部分中，为此 Web API `api://<Application ID>/access_as_user` 选择范围  。
+1. 在“授权范围”  部分中，为此 Web API `api://<Application ID>/access_as_user` 选择范围。
 1. 按页面底部的“添加应用程序”按钮  。
 
 ## <a name="run-your-project"></a>运行项目
@@ -141,7 +141,7 @@ ms.locfileid: "76703467"
 
 ## <a name="optional-restrict-sign-in-access-to-your-application"></a>可选：限制应用程序的登录访问权限
 
-默认情况下，在按照以下步骤下载此代码示例并将应用程序配置为使用 Azure Active Directory v2 终结点时，个人帐户（例如，outlook.com、live.com 和其他帐户）以及来自集成了 Azure AD 的任何组织的工作或学校帐户均可请求令牌和访问 Web API。 
+默认情况下，在按照以下步骤下载此代码示例并将应用程序配置为使用 Azure Active Directory v2 终结点时，个人帐户（例如，outlook.com、live.com 和其他帐户）以及来自集成了 Azure AD 的任何组织的工作或学校帐户均可请求令牌和访问 Web API。
 
 若要限制可登录应用程序的人员，请使用以下某个选项：
 

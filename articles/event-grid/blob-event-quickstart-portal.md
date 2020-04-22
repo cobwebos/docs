@@ -5,16 +5,16 @@ services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 11/05/2019
+ms.date: 04/16/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 2daf17ccef1bca363fe92f71a332fbfa78637135
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ada451b6bb3578a2903e9bd832b98981d7029d1d
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76844764"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605845"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>快速入门：利用 Azure 门户将 Blob 存储事件路由到 Web 终结点
 
@@ -32,30 +32,50 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，你将使�
 
 1. 若要创建 Blob 存储，请选择“创建资源”。  
 
-   ![创建资源](./media/blob-event-quickstart-portal/create-resource.png)
-
 1. 选择“存储”  来筛选可用选项，并选择“存储帐户 - blob、文件、表、队列”  。
 
    ![选择“存储”](./media/blob-event-quickstart-portal/create-storage.png)
 
-1. 要订阅事件，请创建常规用途 v2 存储帐户或 Blob 存储帐户。 有关详细信息，请参阅[创建存储帐户](../storage/common/storage-account-create.md)。
+   要订阅事件，请创建常规用途 v2 存储帐户或 Blob 存储帐户。
+   
+1. 在“创建存储帐户”页中执行以下步骤： 
+    1. 选择 Azure 订阅。 
+    2. 对于“资源组”  ，创建一个新资源组或选择现有的资源组。 
+    3. 输入存储帐户的名称。 
+    4. 选择“查看 + 创建”  。 
 
-   ![开始执行步骤](./media/blob-event-quickstart-portal/provide-blob-values.png)
+       ![开始执行步骤](./media/blob-event-quickstart-portal/provide-blob-values.png)    
+    5. 在“查看 + 创建”页上查看设置，然后选择“创建”。   
 
->[!NOTE]
-> 只有种类为“StorageV2 (常规用途 v2)”和“BlobStorage”的存储帐户支持事件集成。   “存储(常规用途 v1)”  不  支持与事件网格集成。
+        >[!NOTE]
+        > 只有种类为“StorageV2 (常规用途 v2)”和“BlobStorage”的存储帐户支持事件集成。   “存储(常规用途 v1)”  不  支持与事件网格集成。
 
 ## <a name="create-a-message-endpoint"></a>创建消息终结点
 
 在订阅 Blob 存储的事件之前，让我们创建事件消息的终结点。 通常情况下，终结点基于事件数据执行操作。 为了简化此快速入门，将部署用于显示事件消息的[预建的 Web 应用](https://github.com/Azure-Samples/azure-event-grid-viewer)。 所部署的解决方案包括应用服务计划、应用服务 Web 应用和 GitHub 中的源代码。
 
-1. 选择“部署到 Azure”  将解决方案部署到你的订阅。 在 Azure 门户中，为参数提供值。
+1. 选择“部署到 Azure”  将解决方案部署到你的订阅。 
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+2. 在“自定义部署”页上执行以下步骤：  
+    1. 对于“资源组”，请选择你在创建存储帐户时创建的资源组。  这样就可以在完成本教程后，通过删除资源组来更轻松地清理资源。  
+    2. 对于“站点名称”，请输入 Web 应用的名称。 
+    3. 对于“托管计划名称”，请输入用于托管 Web 应用的应用服务计划的名称。 
+    4. 选中“我同意上述条款和条件”对应的复选框。  
+    5. 选择“购买”。  
 
-1. 部署可能需要几分钟才能完成。 部署成功后，请查看 Web 应用以确保它正在运行。 在 Web 浏览器中导航到 `https://<your-site-name>.azurewebsites.net`
+       ![部署参数](./media/blob-event-quickstart-portal/template-deploy-parameters.png)
+1. 部署可能需要几分钟才能完成。 在门户中选择“警报”（钟形图标），然后选择“转到资源组”。  
 
-1. 查看站点，但是尚未有事件发布到它。
+    ![警报 - 导航到资源组](./media/blob-event-quickstart-portal/navigate-resource-group.png)
+4. 在“资源组”页上，在资源列表中，选择你创建的 Web 应用。  在此列表中还可以看到应用服务计划和存储帐户。 
+
+    ![选择网站](./media/blob-event-quickstart-portal/resource-group-resources.png)
+5. 在 Web 应用的“应用服务”页上，选择相应的 URL 以导航到该网站。  URL 应采用以下格式：`https://<your-site-name>.azurewebsites.net`。
+    
+    ![导航到网站](./media/blob-event-quickstart-portal/web-site.png)
+
+6. 确认你可以看到站点，但尚未有任何事件发布到站点。
 
    ![查看新站点](./media/blob-event-quickstart-portal/view-site.png)
 
@@ -65,15 +85,20 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，你将使�
 
 订阅主题，以告知事件网格要跟踪哪些事件，以及要将事件发送到何处。
 
-1. 在门户中，选择你的 blob 存储，然后选择“事件”  。
-
-   ![选择“事件”](./media/blob-event-quickstart-portal/select-events.png)
-
-1. 若要将事件发送到查看器应用，请为终结点使用 Webhook。 依次选择“更多选项”和“Webhook”。  
+1. 在门户中，导航到你之前创建的 Azure 存储帐户。 在左侧菜单中，选择“所有资源”并选择你的存储帐户。  
+2. 在“存储帐户”页上，在左侧菜单中选择“事件”。  
+1. 依次选择“更多选项”和“Webhook”。   你正在使用终结点的 Web Hook 将事件发送到查看器应用。 
 
    ![选择“Webhook”](./media/blob-event-quickstart-portal/select-web-hook.png)
+3. 在“创建事件订阅”页中执行以下步骤：  
+    1. 输入事件订阅的“名称”  。
+    2. 对于“终结点类型”，请选择“Web Hook”。   
 
-1. 事件订阅中预先填写了你的 Blob 存储的值。 对于 Webhook 终结点，请提供你的 Web 应用的 URL，并将 `api/updates` 添加到主页 URL。 为你的订阅提供一个名称。 完成后，选择“创建”。 
+       ![选择 Web Hook 终结点类型](./media/blob-event-quickstart-portal/select-web-hook-end-point-type.png)
+4. 对于“终结点”，请单击“选择终结点”，输入你的 Web 应用的 URL 并将 `api/updates` 添加到主页 URL（例如：`https://spegridsite.azurewebsites.net/api/updates`），然后选择“确认选择”。   
+
+   ![确认终结点选择](./media/blob-event-quickstart-portal/confirm-endpoint-selection.png)
+5. 现在，在“创建事件订阅”页上，选择“创建”以创建事件订阅。   
 
    ![选择日志](./media/blob-event-quickstart-portal/create-subscription.png)
 
@@ -87,11 +112,11 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，你将使�
 
 通过上传一个文件来为 Blob 存储触发一个事件。 该文件不需要有任何特定内容。 本文假定你有一个名为 testfile.txt 的文件，但是可以使用任何文件。
 
-1. 针对你的 Blob 存储，选择“Blob”。 
+1. 在 Azure 门户中，导航到你的 Blob 存储帐户，然后在“概述”页上选择“容器”。  
 
    ![选择 Blob](./media/blob-event-quickstart-portal/select-blobs.png)
 
-1. 选择“+ 容器”  。 为容器提供一个名称，并使用任意访问级别。
+1. 选择“+ 容器”  。 为容器命名，使用任意访问级别，然后选择“创建”。  
 
    ![添加容器](./media/blob-event-quickstart-portal/add-container.png)
 
@@ -99,39 +124,15 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，你将使�
 
    ![选择容器](./media/blob-event-quickstart-portal/select-container.png)
 
-1. 若要上传文件，请选择“上传”。 
+1. 若要上传文件，请选择“上传”。  在“上传 Blob”页上，浏览并选择要上传用于测试的文件，然后在该页上选择“上传”。   
 
    ![选择“上传”](./media/blob-event-quickstart-portal/upload-file.png)
 
 1. 浏览到你的测试文件并上传它。
 
-1. 现已触发事件，并且事件网格已将消息发送到订阅时配置的终结点。 消息采用 JSON 格式，它包含一个或多个事件的数组。 在以下示例中，JSON 消息包含一个事件的数组。 查看你的 Web 应用，将会看到已收到了一个 blob 已创建事件。 
+1. 现已触发事件，并且事件网格已将消息发送到订阅时配置的终结点。 消息采用 JSON 格式，它包含一个或多个事件的数组。 在以下示例中，JSON 消息包含一个事件的数组。 查看 Web 应用，将会看到已收到一个“已创建 Blob”事件。  
 
-   ```json
-   [{
-    "topic": "/subscriptions/{subscription-id}/resourceGroups/eventgroup/providers/Microsoft.Storage/storageAccounts/demoblob0625",
-    "subject": "/blobServices/default/containers/eventcontainer/blobs/testfile.txt",
-    "eventType": "Microsoft.Storage.BlobCreated",
-    "eventTime": "2018-06-25T22:50:41.1823131Z",
-    "id": "89a2f9da-c01e-00bb-13d6-0c599506e4e3",
-    "data": {
-      "api": "PutBlockList",
-      "clientRequestId": "41341a9b-e977-4a91-9000-c64125039047",
-      "requestId": "89a2f9da-c01e-00bb-13d6-0c5995000000",
-      "eTag": "0x8D5DAEE13C8F9ED",
-      "contentType": "text/plain",
-      "contentLength": 4,
-      "blobType": "BlockBlob",
-      "url": "https://demoblob0625.blob.core.windows.net/eventcontainer/testfile.txt",
-      "sequencer": "00000000000000000000000000001C24000000000004712b",
-      "storageDiagnostics": {
-        "batchId": "ef633252-32fd-464b-8f5a-0d10d68885e6"
-      }
-    },
-    "dataVersion": "",
-    "metadataVersion": "1"
-   }]
-   ```
+   ![“已创建 Blob”事件](./media/blob-event-quickstart-portal/blob-created-event.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 

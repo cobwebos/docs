@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: ac134dce5ad739d1d81ef0c62a6bfb04468cafff
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 1d22f66ad5f7adf5bb8196c3e72a2a343f4558b0
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991103"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536091"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>快速入门：登录用户并在 JavaScript SPA 中获取访问令牌
 
@@ -39,7 +39,7 @@ ms.locfileid: "80991103"
 > 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 > 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，然后将门户会话设置为要使用的 Azure Active Directory (Azure AD) 租户。
 > 1. 转到新的 [Azure 门户 - 应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs)窗格。
-> 1. 输入应用程序的名称。 
+> 1. 输入应用程序的名称。
 > 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。  
 > 1. 选择“注册”  。
 > 1. 遵照说明下载内容，系统会自动配置新应用程序。
@@ -99,7 +99,7 @@ ms.locfileid: "80991103"
 >      cacheLocation: "sessionStorage", // This configures where your cache will be stored
 >      storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
 >    }
->  };  
+>  };
 >
 >```
 
@@ -122,10 +122,10 @@ ms.locfileid: "80991103"
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步骤 3：应用已配置并可以运行
-> 我们已经为项目配置了应用属性的值。 
+> 我们已经为项目配置了应用属性的值。
 
 > [!div renderon="docs"]
-> 
+>
 > 然后，仍在同一文件夹中，编辑 graphConfig.js  文件，以便为 `apiConfig` 对象设置 `graphMeEndpoint` 和 `graphMeEndpoint`。
 > ```javascript
 >   // Add here the endpoints for MS Graph API services you would like to use.
@@ -199,7 +199,7 @@ npm install msal
       cacheLocation: "sessionStorage", // This configures where your cache will be stored
       storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
     }
-  };  
+  };
 
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
@@ -234,7 +234,7 @@ myMSALObj.loginPopup(loginRequest)
 
 > |其中  |  |
 > |---------|---------|
-> | `scopes`   | （可选）包含在登录时为了获得用户许可而请求的范围。 例如：`[ "user.read" ]` 适用于 Microsoft Graph，`[ "<Application ID URL>/scope" ]` 适用于自定义 Web API（即 `api://<Application ID>/access_as_user`）。 |
+> | `scopes`   | （可选）包含在登录时为了获得用户许可而请求的范围。 例如：`[ "user.read" ]`（针对 Microsoft Graph）或 `[ "<Application ID URL>/scope" ]`（针对自定义 Web API，即 `api://<Application ID>/access_as_user`）。 |
 
 > [!TIP]
 > 另外，你可能希望使用 `loginRedirect` 方法将当前页重定向到登录页，而不是显示弹出窗口。
@@ -264,7 +264,7 @@ myMSALObj.acquireTokenSilent(tokenRequest)
 
 > |其中  |  |
 > |---------|---------|
-> | `scopes`   | 包含请求的需要在 API 的访问令牌中返回的作用域。 例如：`[ "mail.read" ]` 适用于 Microsoft Graph，`[ "<Application ID URL>/scope" ]` 适用于自定义 Web API（即 `api://<Application ID>/access_as_user`）。|
+> | `scopes`   | 包含请求的需要在 API 的访问令牌中返回的作用域。 例如：`[ "mail.read" ]`（针对 Microsoft Graph）或 `[ "<Application ID URL>/scope" ]`（针对自定义 Web API，即 `api://<Application ID>/access_as_user`）。|
 
 #### <a name="get-a-user-token-interactively"></a>以交互方式获取用户令牌
 
