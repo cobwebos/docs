@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Storage Gen2 的已知问题 | Microsoft Docs
-description: 了解 Azure 数据存储第 2 代的限制和已知问题。
+description: 了解 Azure Data Lake Storage Gen2 的限制和已知问题。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 204b5dd4661b34aae8b76d65505a65e20f293f0f
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: dfa4d65464192b90d4a6f74255faaf8b664ce118
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115328"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767973"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
 
-本文介绍了 Azure 数据存储第 2 代的限制和已知问题。
+本文介绍 Azure Data Lake Storage Gen2 的限制和已知问题。
 
 ## <a name="supported-blob-storage-features"></a>支持的 Blob 存储功能
 
@@ -31,9 +31,9 @@ Azure 数据存储库 Gen2 支持多个 Azure 服务，可用于引入数据、�
 
 ## <a name="supported-open-source-platforms"></a>支持的开源平台
 
-多个开源平台支持 Data Lake Storage Gen2。 有关完整列表，请参阅[支持 Azure 数据存储第 2 代 的开源平台](data-lake-storage-supported-open-source-platforms.md)。
+多个开源平台支持 Data Lake Storage Gen2。 有关完整列表，请参阅[支持 Azure Data Lake Storage Gen2 的开源平台](data-lake-storage-supported-open-source-platforms.md)。
 
-请参阅[支持 Azure 数据存储第 2 代 的开源平台](data-lake-storage-supported-open-source-platforms.md)。
+请参阅[支持 Azure Data Lake Storage Gen2 的开源平台](data-lake-storage-supported-open-source-platforms.md)。
 
 ## <a name="blob-storage-apis"></a>Blob 存储 API
 
@@ -56,20 +56,17 @@ Blob API 和 Data Lake Storage Gen2 API 可以对相同的数据执行操作。
 * [从 URL 放置页](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
 * [放置 Blob（追加）](https://docs.microsoft.com/rest/api/storageservices/put-blob)
 * [追加块](https://docs.microsoft.com/rest/api/storageservices/append-block)
-* [URL 中的追加块](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
+* [从 URL 追加块](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
 
 在有分层命名空间的帐户中，非托管 VM 磁盘不受支持。 若要在存储帐户中启用分层命名空间，请将非托管 VM 磁盘放到未启用分层命名空间功能的存储帐户中。
 
 <a id="api-scope-data-lake-client-library" />
 
-## <a name="file-system-support-in-sdks"></a>SDK 中的文件系统支持
+## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>SDK、电源外壳和 Azure CLI 中的文件系统支持
 
-获取和设置 ACL 的操作当前不是递归的。
-
-## <a name="file-system-support-in-powershell-and-azure-cli"></a>PowerShell 和 Azure CLI 中的文件系统支持
-
-- [PowerShell](data-lake-storage-directory-file-acl-powershell.md)和[Azure CLI](data-lake-storage-directory-file-acl-cli.md)支持处于公共预览版中。
 - 获取和设置 ACL 的操作当前不是递归的。
+- [Azure CLI](data-lake-storage-directory-file-acl-cli.md)支持处于公共预览版。
+
 
 ## <a name="lifecycle-management-policies"></a>生命周期管理策略
 

@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 03/30/2020
+ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: dd41596b6631bb63e1625325f8bec065b43881cd
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: dc57978dd881532cab59150dec921df9ffa958c3
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421396"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767209"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>视频索引器常见问题
 
@@ -43,7 +43,7 @@ ms.locfileid: "80421396"
 
 ### <a name="how-do-i-get-started-with-video-indexer"></a>如何快速入门视频索引器？
 
-视频索引器附带的免费试用版在基于 Web 的界面中提供 600 分钟的试用，通过 API 提供 2,400 分钟的试用。 你可以[登录到视频索引器的基于 Web 的界面](https://www.videoindexer.ai/)，然后使用任何 Web 标识自行试用，而无需设置 Azure 订阅。 
+视频索引器附带的免费试用版在基于 Web 的界面中提供 600 分钟的试用，通过 API 提供 2,400 分钟的试用。 你可以[登录到视频索引器的基于 Web 的界面](https://www.videoindexer.ai/)，然后使用任何 Web 标识自行试用，而无需设置 Azure 订阅。 请遵循[此简单的介绍实验室](https://github.com/Azure-Samples/media-services-video-indexer/blob/master/IntroToVideoIndexer.md)，更好地了解如何使用视频索引器。
 
 若要将大量视频和音频文件编入索引，可将视频索引器连接到付费的 Microsoft Azure 订阅。 可在[定价页](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/)上找到定价详细信息。
 
@@ -61,9 +61,18 @@ ms.locfileid: "80421396"
 
 视频索引器支持最常见的媒体格式。 有关详细信息，请参阅[Azure 媒体编码器标准格式](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats)列表。
 
-### <a name="how-to-do-i-upload-a-media-into-video-indexer"></a>如何将媒体上传到视频索引器？
+### <a name="how-do-i-upload-a-media-file-into-video-indexer-and-what-are-the-limitations"></a>如何将媒体文件上载到视频索引器，有哪些限制？
 
-在视频索引器的基于 Web 的门户中，可以使用文件上传对话框上传媒体文件，或者指向直接托管源文件的 URL（参阅[示例](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4)）。 使用 iFrame 或嵌入代码托管媒体内容的任何 URL 不起作用（参阅[示例](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11)）。 视频索引器 API 要求通过 URL 或字节数组指定输入文件。 使用 API 通过 URL 上传的大小限制为 10 GB，但没有时长限制。 有关详细信息，请参阅[操作方法指南](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos)。
+在视频索引器的基于 Web 的门户中，可以使用文件上传对话框上传媒体文件，或者指向直接托管源文件的 URL（参阅[示例](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4)）。 使用 iFrame 或嵌入代码托管媒体内容的任何 URL 不起作用（参阅[示例](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11)）。 
+
+有关详细信息，请参阅[操作方法指南](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos)。
+
+#### <a name="limitations"></a>限制
+
+* 视频名称不能超过 80 个字符。
+* 如果使用字节数组上传视频，则视频大小限制为 2GB（使用 URL 时为 30GB）。 
+
+有关综合列表，请参阅[上载注意事项和限制](upload-index-videos.md#uploading-considerations-and-limitations)。
 
 ### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>视频索引器从媒体中提取见解需要多长时间？
 
@@ -71,7 +80,7 @@ ms.locfileid: "80421396"
 
 ### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>是否可以创建自定义工作流来自动化视频索引器的流程？
 
-是的，可将视频索引器集成到逻辑应用、Flow 和 [Azure Functions](https://azure.microsoft.com/services/functions/) 等无服务器技术。 在[此处](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/)可以找到有关适用于视频索引器的[逻辑应用](https://azure.microsoft.com/services/logic-apps/)和 [Flow](https://flow.microsoft.com/en-us/) 连接器的更多详细信息。 
+是的，可将视频索引器集成到逻辑应用、Flow 和 [Azure Functions](https://azure.microsoft.com/services/functions/) 等无服务器技术。 在[此处](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/)可以找到有关适用于视频索引器的[逻辑应用](https://azure.microsoft.com/services/logic-apps/)和 [Flow](https://flow.microsoft.com/en-us/) 连接器的更多详细信息。 您可以在[视频索引器示例](https://github.com/Azure-Samples/media-services-video-indexer)回购中看到合作伙伴执行的一些自动化项目。
 
 ### <a name="in-which-azure-regions-is-video-indexer-available"></a>视频索引器在哪些 Azure 区域是可用的？
 
@@ -84,6 +93,12 @@ ms.locfileid: "80421396"
 例如，我们的 Person 模型支持开箱即用的 1，000，000 张名人识别人脸，但您也可以训练它识别该数据库中不的其他人脸。 
 
 有关详细信息，请参阅有关自定义[人员](customize-person-model-overview.md)、[品牌](customize-brands-model-overview.md)和[语言](customize-language-model-overview.md)模型的文章。 
+
+###  <a name="can-i-edit-the-videos-in-my-library"></a>我可以编辑库中的视频吗？
+
+是的。 按库显示屏中的**编辑视频**按钮或播放器显示屏**中的"打开编辑器"** 按钮以进入"**项目"** 选项卡。您可以创建新项目并从库中添加更多视频以一起编辑它们，完成后，您可以渲染视频和下载视频。 
+
+如果要获取新视频的见解，请使用视频索引器进行索引，并将其随其见解显示在库中。
 
 ### <a name="what-is-the-sla-for-video-indexer"></a>什么是适用于视频索引器的 SLA？
 

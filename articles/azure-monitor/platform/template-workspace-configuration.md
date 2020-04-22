@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
-ms.openlocfilehash: 81e46f53c0afc69c927918daa0488c4835d60805
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: dbeaa58da109c5afceb03a560e69e0c8bf63ad42
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605017"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768129"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics 工作区
 
@@ -19,7 +19,7 @@ ms.locfileid: "81605017"
 
 可以使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)在 Azure Monitor 中创建和配置 Log Analytics 工作区。 可使用模板执行的任务示例包括：
 
-* 创建工作区，包括设置定价层和容量预留
+* 创建工作区，包括设置定价层和产能预留
 * 添加解决方案
 * 创建保存的搜索
 * 创建计算机组
@@ -46,7 +46,7 @@ ms.locfileid: "81605017"
 
 ## <a name="create-a-log-analytics-workspace"></a>创建 Log Analytics 工作区
 
-下面的示例使用本地计算机中的模板创建工作区。 JSON 模板配置为仅需要新工作区的名称和位置。 它使用为其他工作区参数指定的值，如[访问控制模式](design-logs-deployment.md#access-control-mode)、定价层、保留和容量预留级别。
+以下示例将使用本地计算机上的模板创建一个工作区。 JSON 模板配置为仅需要新工作区的名称和位置。 它使用为其他工作区参数指定的值，例如[访问控制模式](design-logs-deployment.md#access-control-mode)、定价层、保留期和产能预留级别。
 
 > [!WARNING]
 > 以下模板创建日志分析工作区并配置数据收集。 这可能会更改您的计费设置。 使用[Azure 监视器日志查看管理使用情况和成本](manage-cost-storage.md)，以了解日志分析工作区中收集的数据的计费，然后再将其应用于 Azure 环境。
@@ -180,14 +180,15 @@ ms.locfileid: "81605017"
 
 1. 向工作区添加解决方案
 2. 创建保存的搜索。 为了确保部署不会意外覆盖已保存的搜索，应在"已保存的搜索"资源中添加 eTag 属性，以覆盖和维护已保存搜索的阳萎性。
-3. 创建计算机组
-4. 从装有 Windows 代理的计算机启用 IIS 日志收集
-5. 从 Linux 计算机中收集逻辑磁盘性能计数器 (% Used Inodes; Free Megabytes; % Used Space; Disk Transfers/sec; Disk Reads/sec; Disk Writes/sec)
-6. 从 Linux 计算机中收集 syslog 事件
-7. 从 Windows 计算机的应用程序事件日志中收集错误和警告事件
-8. 从 Windows 计算机中收集可用内存 (MB) 性能计数器
-9. 收集由 Azure 诊断写入存储帐户的 IIS 日志和 Windows 事件日志
-10. 从 Windows 计算机收集自定义日志
+3. 创建保存的函数。 应添加 eTag 以覆盖功能并保持效力。
+4. 创建计算机组
+5. 从装有 Windows 代理的计算机启用 IIS 日志收集
+6. 从 Linux 计算机中收集逻辑磁盘性能计数器 (% Used Inodes; Free Megabytes; % Used Space; Disk Transfers/sec; Disk Reads/sec; Disk Writes/sec)
+7. 从 Linux 计算机中收集 syslog 事件
+8. 从 Windows 计算机的应用程序事件日志中收集错误和警告事件
+9. 从 Windows 计算机中收集可用内存 (MB) 性能计数器
+10. 收集由 Azure 诊断写入存储帐户的 IIS 日志和 Windows 事件日志
+11. 从 Windows 计算机收集自定义日志
 
 ```json
 {
@@ -228,35 +229,35 @@ ms.locfileid: "81605017"
       "type": "bool",
       "defaultValue": "[bool('false')]",
       "metadata": {
-        "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This only applies when retention is being set to 30 days."
+        "description": "If set to true, changing retention to 30 days will immediately delete older data. Use this with extreme caution. This only applies when retention is being set to 30 days."
       }
     },
     "location": {
       "type": "string",
       "allowedValues": [
-        "australiacentral", 
-        "australiaeast", 
-        "australiasoutheast", 
+        "australiacentral",
+        "australiaeast",
+        "australiasoutheast",
         "brazilsouth",
-        "canadacentral", 
-        "centralindia", 
-        "centralus", 
-        "eastasia", 
-        "eastus", 
-        "eastus2", 
-        "francecentral", 
-        "japaneast", 
-        "koreacentral", 
-        "northcentralus", 
-        "northeurope", 
-        "southafricanorth", 
-        "southcentralus", 
-        "southeastasia", 
-        "uksouth", 
-        "ukwest", 
-        "westcentralus", 
-        "westeurope", 
-        "westus", 
+        "canadacentral",
+        "centralindia",
+        "centralus",
+        "eastasia",
+        "eastus",
+        "eastus2",
+        "francecentral",
+        "japaneast",
+        "koreacentral",
+        "northcentralus",
+        "northeurope",
+        "southafricanorth",
+        "southcentralus",
+        "southeastasia",
+        "uksouth",
+        "ukwest",
+        "westcentralus",
+        "westeurope",
+        "westus",
         "westus2"
       ],
       "metadata": {
@@ -264,38 +265,38 @@ ms.locfileid: "81605017"
       }
     },
     "applicationDiagnosticsStorageAccountName": {
-        "type": "string",
-        "metadata": {
-          "description": "Name of the storage account with Azure diagnostics output"
-        }
+      "type": "string",
+      "metadata": {
+        "description": "Name of the storage account with Azure diagnostics output"
+      }
     },
     "applicationDiagnosticsStorageAccountResourceGroup": {
-        "type": "string",
-        "metadata": {
-          "description": "The resource group name containing the storage account with Azure diagnostics output"
-        }
+      "type": "string",
+      "metadata": {
+        "description": "The resource group name containing the storage account with Azure diagnostics output"
+      }
     },
     "customLogName": {
-    "type": "string",
-    "metadata": {
-      "description": "The custom log name"
+      "type": "string",
+      "metadata": {
+        "description": "The custom log name"
       }
-     }
+    }
+  },
+  "variables": {
+    "Updates": {
+      "Name": "[Concat('Updates', '(', parameters('workspaceName'), ')')]",
+      "GalleryName": "Updates"
     },
-    "variables": {
-      "Updates": {
-        "Name": "[Concat('Updates', '(', parameters('workspaceName'), ')')]",
-        "GalleryName": "Updates"
-      },
-      "AntiMalware": {
-        "Name": "[concat('AntiMalware', '(', parameters('workspaceName'), ')')]",
-        "GalleryName": "AntiMalware"
-      },
-      "SQLAssessment": {
-        "Name": "[Concat('SQLAssessment', '(', parameters('workspaceName'), ')')]",
-        "GalleryName": "SQLAssessment"
-      },
-      "diagnosticsStorageAccount": "[resourceId(parameters('applicationDiagnosticsStorageAccountResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('applicationDiagnosticsStorageAccountName'))]"
+    "AntiMalware": {
+      "Name": "[concat('AntiMalware', '(', parameters('workspaceName'), ')')]",
+      "GalleryName": "AntiMalware"
+    },
+    "SQLAssessment": {
+      "Name": "[Concat('SQLAssessment', '(', parameters('workspaceName'), ')')]",
+      "GalleryName": "SQLAssessment"
+    },
+    "diagnosticsStorageAccount": "[resourceId(parameters('applicationDiagnosticsStorageAccountResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('applicationDiagnosticsStorageAccountName'))]"
   },
   "resources": [
     {
@@ -321,11 +322,31 @@ ms.locfileid: "81605017"
             "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
           ],
           "properties": {
-            "category": "VMSS",
             "eTag": "*",
+            "category": "VMSS",
             "displayName": "VMSS Instance Count",
             "query": "Event | where Source == \"ServiceFabricNodeBootstrapAgent\" | summarize AggregatedValue = count() by Computer",
             "version": 1
+          }
+        },
+        {
+          "apiVersion": "2017-04-26-preview",
+          "name": "Cross workspace function",
+          "type": "savedSearches",
+            "dependsOn": [
+             "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+            ],
+            "properties": {
+              "etag": "*",
+              "displayName": "failedLogOnEvents",
+              "category": "Security",
+              "FunctionAlias": "failedlogonsecurityevents",
+              "query": "
+                union withsource=SourceWorkspace
+                workspace('workspace1').SecurityEvent,
+                workspace('workspace2').SecurityEvent,
+                workspace('workspace3').SecurityEvent,
+                | where EventID == 4625"
           }
         },
         {
@@ -519,8 +540,8 @@ ms.locfileid: "81605017"
             "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
           ],
           "properties": {
-            "containers": [ 
-              "wad-iis-logfiles" 
+            "containers": [
+              "wad-iis-logfiles"
             ],
             "tables": [
               "WADWindowsEventLogsTable"
@@ -616,7 +637,7 @@ ms.locfileid: "81605017"
       "type": "int",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').retentionInDays]"
     },
-    "immediatePurgeDataOn30Days": {  
+    "immediatePurgeDataOn30Days": {
       "type": "bool",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').features.immediatePurgeDataOn30Days]"
     },

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ac44661dd5a52ba19a3b2dd461aabec1ec250bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd24650c9bf0c4de155b5bfc8723cfa1fef01548
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284868"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81755411"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中按管理员任务委托管理员角色
 
@@ -76,9 +76,9 @@ ms.locfileid: "80284868"
 
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
-直通身份验证 | 全局管理员角色 | 
-读取所有配置 | 全局读取者 | 
-无缝单一登录 | 全局管理员角色 | 
+直通身份验证 | 混合标识管理员 | 
+读取所有配置 | 全局读取者 | 混合标识管理员 |
+无缝单一登录 | 混合标识管理员 | 
 
 ## <a name="connect-health"></a>Connect Health
 

@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/16/2020
+ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: ''
-ms.openlocfilehash: e803da238ebdd728e772a15b0f29ae36d401a699
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: c19471fee9235faffba12a12d9f92de77f60fd4d
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536397"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770520"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>在 Microsoft Azure 上运行的 SAP 认证和配置
 
@@ -68,3 +68,4 @@ SAP 和 Microsoft 具有悠久的合作历史，建立了强大的合作伙伴�
 | SAP Hybris 商务平台  | Windows | SQL Server、Oracle | 所有 NetWeaver 认证的 VM 类型 <br /> [Hybris Wiki](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud) |
 | SAP Hybris 商务平台  | SLES 12 或更多最新 | SAP HANA | 所有 NetWeaver 认证的 VM 类型 <br /> [Hybris Wiki](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud) |
 | SAP Hybris 商务平台  | RHEL 7 或更多最新 | SAP HANA | 所有 NetWeaver 认证的 VM 类型 <br /> [Hybris Wiki](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud) |
+| SAP（Hybris） 商务平台 1811 及更高版本  | 窗口、SLES 或 RHEL | SQL Azure 数据库 | 所有 NetWeaver 认证的 VM 类型 <br /> [海布里斯文档](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/1811/en-US/8c71300f866910149b40c88dfc0de431.html) |

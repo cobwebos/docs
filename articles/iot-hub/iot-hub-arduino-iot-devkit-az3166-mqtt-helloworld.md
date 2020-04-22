@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
-ms.openlocfilehash: 14feb02fbac800cd37da882a1872beb8269d9938
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: 600e64ef5bc3329f0116359066bdcdaf42c13e2e
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73954245"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733492"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>向 MQTT 服务器发送消息
 
@@ -80,7 +81,7 @@ ms.locfileid: "73954245"
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [将 IoT DevKit AZ3166 连接到云中的 Azure IoT 中心](iot-hub-arduino-iot-devkit-az3166-get-started.md)
 * [摇一摇，摇一摇搜推文](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)

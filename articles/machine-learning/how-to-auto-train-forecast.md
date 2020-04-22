@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: be3046a343e14be4a527363751081ba3f2593cd3
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 9f80156f61ad82e5563f1c38764c81297f5979f2
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605893"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767316"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时序预测模型
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -23,12 +23,12 @@ ms.locfileid: "81605893"
 本文介绍如何使用 Azure 机器学习中的自动化机器学习来训练时序预测回归模型。 配置预测模型类似于使用自动化机器学习设置标准回归模型，但存在某些用于处理时序数据的配置选项和预处理步骤。 以下示例介绍如何：
 
 * 准备用于时序建模的数据
-* 在[`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)对象中配置特定的时间序列参数
+* 在 [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) 对象中配置特定的时序参数
 * 使用时序数据运行预测
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GW]
 
-可以使用自动化 ML 来合并多种技术和方法，获得推荐的高质量时序预测结果。 自动化时序试验被视为多元回归问题。 过去的时间序列值被"透视"，成为回归者与其他预测变量的其他维度。
+可使用自动化 ML 来合并多种技术和方法，获得推荐的高质量时序预测结果。 自动化时序试验被视为多元回归问题。 过去的时间序列值被"透视"，成为回归者与其他预测变量的其他维度。
 
 与传统时序方法不同，这种方法的优点是，在训练过程中自然包含多个上下文变量及其相互关系。 在实际预测应用中，可能有多个因素影响预测。 例如，在预测销售时，历史趋势、汇率和价格相互作用，共同促成了销售结果。 进而还有一个好处，即回归模型中的所有最新创新都直接适用于预测。
 
@@ -36,13 +36,13 @@ ms.locfileid: "81605893"
 
 从训练数据中提取的特征扮演着关键的角色。 而且，自动化 ML 会执行标准预处理步骤并生成额外的时序特征，以反应季节的影响并最大程度地提高预测准确性。
 
-## <a name="time-series-and-deep-learning-models"></a>时序和深度学习模型
+## <a name="time-series-and-deep-learning-models"></a>时间序列和深度学习模型
 
 
 自动化 ML 包含推荐系统，可为用户提供本机时序和深度学习模型。 这些学习器包括：
-+ Prophet
-+ Auto-ARIMA
-+ ForecastTCN
++ 先知（预览）
++ 自动 ARIMA（预览版）
++ 预测TCN（预览版）
 
 通过自动化 ML 的深度学习，可预测单变量和多变量时序数据。
 
@@ -51,7 +51,7 @@ ms.locfileid: "81605893"
 1. 支持多个输入和输出
 1. 可以从跨越较长序列的输入数据中自动提取模式
 
-给定更大的数据，深度学习模型（如 Microsoft 的预测TCN）可以提高结果模型的分数。 
+对于较大型数据，深度学习模型（如 Microsoft 的 ForecastTCN）可以提升生成的模型的分数。 了解如何[为深度学习配置实验](#configure-a-dnn-enable-forecasting-experiment)。
 
 自动化 ML 中还提供本机时序学习器。 Prophet 最适合用于受季节影响大且包含多个季节历史数据的时序。 Prophet 能够准确、快速、可靠地确定时序中的离群值、丢失数据和剧烈变化。 
 
@@ -181,6 +181,17 @@ best_run, fitted_model = local_run.get_output()
 > 对自动机器学习中预测的 DNN 支持处于预览状态，不支持本地运行。
 
 为了利用 DNN 进行预测，需要将 AutoMLConfig 中的 `enable_dnn` 参数设置为 true。 
+
+```python
+automl_config = AutoMLConfig(task='forecasting',
+                             enable_dnn=True,
+                             ...
+                             **time_series_settings)
+```
+了解有关[自动MLConfig](#configure-and-run-experiment)的更多。
+
+或者，您也可以在`Enable deep learning`工作室中选择该选项。
+![替换文字](./media/how-to-auto-train-forecast/enable_dnn.png)
 
 我们建议使用具有 GPU SKU 和至少两个节点的 AML 计算群集作为计算目标。 为了留出足够的时间完成 DNN 培训，我们建议将实验超时设置为至少几个小时。
 有关包括 GPU 的 AML 计算和 VM 大小的详细信息，请参阅[AML 计算文档](how-to-set-up-training-targets.md#amlcompute)和[GPU 优化的虚拟机大小文档](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)。

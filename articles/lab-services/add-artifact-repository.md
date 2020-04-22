@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 04/21/2019
 ms.author: spelluru
-ms.openlocfilehash: a0dbd92533703a56f1ec2478fab8944656129247
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2bb871119bece71c705ad9621a7c76c4b5ed0bc7
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295508"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770243"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>在 DevTest 实验室中向实验室添加项目存储库
 DevTest Labs 允许您指定在创建 VM 时或创建 VM 后要添加到 VM 的项目。 此项目可以是要在 VM 上安装的工具或应用程序。 项目在从 GitHub 或 Azure DevOps Git 存储库加载的 JSON 文件中定义。
@@ -52,20 +52,20 @@ DevTest Labs 允许您指定在创建 VM 时或创建 VM 后要添加到 VM 的�
 4. 保存 URL。 稍后会用到该 URL。
 5. 若要创建个人访问令牌，在用户帐户下拉列表菜单中选择“我的个人资料”****。
 6. 在个人资料信息页中，选择“安全性”****。
-7. 在“安全性”**** 选项卡上，选择“添加”****。
-8. 在“创建个人访问令牌”**** 页中：
-   1. 输入令牌的**说明**。
-   2. 选择“有效期”列表中的“180 天”********。
-   3. 选择“帐户”列表中的“所有可访问的帐户”********。
-   4. 选择“所有范围”选项****。
-   5. 选择“创建令牌”****。
+7. 在 **"安全>个人访问令牌"** 选项卡上，选择 **"新建令牌**"。
+8. 在 **"创建新的个人访问令牌"** 页上：
+   1. 输入令牌**的名称**。
+   2. 在 **"组织"** 列表中，选择 **"所有可访问的组织**"。
+   3. 在**过期 （UTC）** 列表中，选择**90 天**或自定义的过期期限。
+   4. 选择"范围 **"的"完全访问**"选项。
+   5. 选择“创建”  。
 9. 随后“个人访问令牌”列表中会出现新的令牌****。 选择“复制令牌”****，并保存令牌值以备后用。
 10. 继续转到将实验室连接到存储库部分。
 
 ## <a name="use-azure-portal"></a>使用 Azure 门户
 本节提供向 Azure 门户中的实验室添加项目存储库的步骤。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 选择“更多服务”，并从服务列表中选择“开发测试实验室”********。
 3. 在实验室列表中，选择实验室。
 4. 选择左侧菜单上的 **"配置"和"策略**"。
@@ -81,7 +81,7 @@ DevTest Labs 允许您指定在创建 VM 时或创建 VM 后要添加到 VM 的�
    5. **文件夹路径**。 输入至少一个与包含项目定义或资源管理器模板定义的克隆 URL 有关的文件夹路径。 指定子目录时，请确保在文件夹路径中包含正斜杠。
 
         ![“存储库”区域](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
-6. 选择“保存”。****
+6. 选择“保存”。 
 
 ## <a name="use-azure-resource-manager-template"></a>使用 Azure 资源管理器模板
 Azure 资源管理（Azure 资源管理器）模板是 JSON 文件，用于描述要创建的 Azure 中的资源。 有关这些模板的详细信息，请参阅[创作 Azure 资源管理器模板](../azure-resource-manager/templates/template-syntax.md)。
@@ -348,7 +348,7 @@ Set-AzContext -SubscriptionId <Your Azure subscription ID>
 ### <a name="parameters"></a>参数
 本文中的示例 PowerShell 脚本采用以下参数：
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 | --------- | ----------- |
 | 实验室名称 | 实验室的名称。 |
 | 项目存储库名称 | 新项目存储库的名称。 如果未指定，脚本将创建存储库的随机名称。 |

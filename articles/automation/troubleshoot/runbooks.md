@@ -1,6 +1,6 @@
 ---
-title: Azure 自动化 Runbook 错误故障排除
-description: 了解如何对 Azure 自动化 Runbook 可能会遇到的问题进行故障排除和解决。
+title: 排除 Azure 自动化运行簿错误
+description: 了解如何排查和解决在使用 Azure 自动化 Runbook 时可能遇到的问题。
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,16 +8,23 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 26c5c5b31d5f3f9e1a642c0bafb947190e479055
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 5ed25821f606b98bacf2acf3c2c389a8437406fa
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632631"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770907"
 ---
-# <a name="troubleshoot-errors-with-runbooks"></a>Runbook 错误故障排除
+# <a name="troubleshoot-runbook-errors"></a>排除运行簿错误
 
-在 Azure 自动化中执行 Runbook 时出错时，可以使用以下步骤来帮助诊断问题。
+ 本文介绍了可能发生的各种 Runbook 错误以及如何解决这些问题。
+
+>[!NOTE]
+>本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az 模块安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于自动化帐户，可以使用["如何更新 Azure 自动化 中的 Azure PowerShell"模块](../automation-update-azure-modules.md)将模块更新到最新版本。
+
+## <a name="diagnosing-runbook-issues"></a>诊断运行簿问题
+
+在 Azure 自动化中的 Runbook 执行期间收到错误时，可以使用以下步骤来帮助诊断问题。
 
 1. **确保 Runbook 脚本在本地计算机上成功执行。** 
 
@@ -67,25 +74,32 @@ Run Login-AzureRMAccount to login.
 如果您尝试访问其他订阅中的资源，可以按照以下步骤配置权限。
 
 1. 转到"自动运行为帐户"并复制应用程序 ID 和指纹。
-  ![复制应用程序 ID 和指纹](../media/troubleshoot-runbooks/collect-app-id.png)
+
+    ![复制 ID 和指纹](../media/troubleshoot-runbooks/collect-app-id.png)
+
 1. 转到未托管自动化帐户的订阅访问控制，并添加新的角色分配。
-  ![访问控制](../media/troubleshoot-runbooks/access-control.png)
+
+    ![访问控制](../media/troubleshoot-runbooks/access-control.png)
+
 1. 添加较早收集的应用程序 ID。 选择“参与者”权限。
-   ![添加角色分配](../media/troubleshoot-runbooks/add-role-assignment.png)
+
+    ![添加角色分配](../media/troubleshoot-runbooks/add-role-assignment.png)
+
 1. 复制订阅的名称。
+
 1. 现在，您可以使用以下 Runbook 代码来测试从自动化帐户到其他订阅的权限。 替换为`"\<CertificateThumbprint\>"`步骤 1 中复制的值。 替换为`"\<SubscriptionName\>"`步骤 4 中复制的值。
 
     ```powershell
     $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-    Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint "<CertificateThumbprint>"
+    Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint "<CertificateThumbprint>"
     #Select the subscription you want to work with
-    Select-AzureRmSubscription -SubscriptionName '<YourSubscriptionNameGoesHere>'
+    Select-AzSubscription -SubscriptionName '<YourSubscriptionNameGoesHere>'
 
     #Test and get outputs of the subscriptions you granted access.
-    $subscriptions = Get-AzureRmSubscription
+    $subscriptions = Get-AzSubscription
     foreach($subscription in $subscriptions)
     {
-        Set-AzureRmContext $subscription
+        Set-AzContext $subscription
         Write-Output $subscription.Name
     }
     ```
@@ -94,7 +108,7 @@ Run Login-AzureRMAccount to login.
 
 ### <a name="issue"></a>问题
 
-使用`Select-AzureSubscription`或`Select-AzureRmSubscription`cmdlet 时，您会收到以下错误：
+使用`Select-AzureSubscription`时收到以下错误`Select-AzureRMSubscription`， 或`Select-AzSubscription`cmdlet：
 
 ```error
 The subscription named <subscription name> cannot be found.
@@ -106,25 +120,26 @@ The subscription named <subscription name> cannot be found.
 
 * 订阅名称无效。
 * 尝试获取订阅详细信息的 Azure 活动目录用户未配置为订阅的管理员。
+* cmdlet 不可用。
 
 ### <a name="resolution"></a>解决方法
 
 按照以下步骤确定您是否已对 Azure 进行身份验证，以及是否有权访问尝试选择的订阅。
 
 1. 为了确保脚本独立工作，请将其测试到 Azure 自动化之外。
-2. 在运行`Select-AzureSubscription`cmdlet`Add-AzureAccount`之前，请确保脚本运行 cmdlet。
-3. 将 `Disable-AzureRmContextAutosave –Scope Process` 添加到 runbook 的开头。 此 cmdlet 调用可确保任何凭据仅适用于当前 Runbook 的执行。
-4. 如果仍然看到此错误消息，请通过添加`AzureRmContext``Add-AzureAccount`cmdlet 的参数来修改代码，然后执行代码。
+2. 在运行`Select-*`cmdlet 之前，请确保脚本运行[连接-AzAccount](https://docs.microsoft.com/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) cmdlet。
+3. 将 `Disable-AzContextAutosave –Scope Process` 添加到 runbook 的开头。 此 cmdlet 调用可确保任何凭据仅适用于当前 Runbook 的执行。
+4. 如果仍然看到此错误消息，请通过添加 的`AzContext``Connect-AzAccount`参数来修改代码，然后执行代码。
 
    ```powershell
-   Disable-AzureRmContextAutosave –Scope Process
+   Disable-AzContextAutosave –Scope Process
 
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-   Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+   Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
 
-   $context = Get-AzureRmContext
+   $context = Get-AzContext
 
-   Get-AzureRmVM -ResourceGroupName myResourceGroup -AzureRmContext $context
+   Get-AzVM -ResourceGroupName myResourceGroup -AzContext $context
     ```
 
 ## <a name="scenario-authentication-to-azure-failed-because-multi-factor-authentication-is-enabled"></a><a name="auth-failed-mfa"></a>场景：无法向 Azure 进行身份验证，因为已启用多重身份验证
@@ -152,15 +167,15 @@ Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is re
 在 Runbook 的作业流中可以看到以下错误：
 
 ```error
-Connect-AzureRMAccount : Method 'get_SerializationSettings' in type
+Connect-AzAccount : Method 'get_SerializationSettings' in type
 'Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient' from assembly
 'Microsoft.Azure.Commands.ResourceManager.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35'
 does not have an implementation.
 At line:16 char:1
-+ Connect-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -Appl ...
++ Connect-AZAccount -ServicePrincipal -Tenant $Conn.TenantID -Appl ...
 + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (:) [Connect-AzureRmAccount], TypeLoadException
-    + FullyQualifiedErrorId : System.TypeLoadException,Microsoft.Azure.Commands.Profile.ConnectAzureRmAccountCommand
+    + CategoryInfo          : NotSpecified: (:) [Connect-AzAccount], TypeLoadException
+    + FullyQualifiedErrorId : System.TypeLoadException,Microsoft.Azure.Commands.Profile.ConnectAzAccountCommand
 ```
 
 ### <a name="cause"></a>原因
@@ -169,7 +184,7 @@ At line:16 char:1
 
 ### <a name="resolution"></a>解决方法
 
-不能在同一运行簿中导入和使用 Az 和 AzureRM cmdlet。 要了解有关 Azure 自动化中的 Az cmdlet 的更多信息，请参阅[Azure 自动化 中的 Az 模块支持](../az-modules.md)。
+不能在同一运行簿中导入和使用 Az 和 AzureRM cmdlet。 要了解有关 Azure 自动化中的 Az cmdlet 的更多内容，请参阅[在 Azure 自动化 中管理模块](../shared-resources/modules.md)。
 
 ## <a name="scenario-the-runbook-fails-with-the-error-a-task-was-canceled"></a><a name="task-was-cancelled"></a>场景：Runbook 失败且出现错误：取消了一个任务
 
@@ -210,26 +225,26 @@ Runbook 在运行时没有使用正确的上下文。
 
 ```azurepowershell-interactive
 # Ensures that any credentials apply only to the execution of this runbook
-Disable-AzureRmContextAutosave –Scope Process
+Disable-AzContextAutosave –Scope Process
 
 # Connect to Azure with Run As account
 $ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
 
-Add-AzureRmAccount `
+Connect-AzAccount `
     -ServicePrincipal `
-    -TenantId $ServicePrincipalConnection.TenantId `
+    -Tenant $ServicePrincipalConnection.TenantId `
     -ApplicationId $ServicePrincipalConnection.ApplicationId `
     -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
 
-$AzureContext = Select-AzureRmSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
+$AzContext = Select-AzSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
 
 $params = @{"VMName"="MyVM";"RepeatCount"=2;"Restart"=$true}
 
-Start-AzureRmAutomationRunbook `
+Start-AzAutomationRunbook `
     –AutomationAccountName 'MyAutomationAccount' `
     –Name 'Test-ChildRunbook' `
     -ResourceGroupName 'LabRG' `
-    -AzureRmContext $AzureContext `
+    -AzContext $AzureContext `
     –Parameters $params –wait
 ```
 
@@ -240,7 +255,7 @@ Start-AzureRmAutomationRunbook `
 Runbook 失败，出现类似于以下示例的错误：
 
 ```error
-The term 'Connect-AzureRmAccount' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if the path was included verify that the path is correct and try again.
+The term 'Connect-AzAccount' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if the path was included verify that the path is correct and try again.
 ```
 
 ### <a name="cause"></a>原因
@@ -298,7 +313,7 @@ The job was tried three times but it failed
 
 ### <a name="issue"></a>问题
 
-使用`Add-AzureAccount`或`Connect-AzureRmAccount`cmdlet 时，您会收到以下错误之一：
+使用`Connect-AzAccount`cmdlet 时，您会收到以下错误之一：
 
 ```error
 Unknown_user_type: Unknown User Type
@@ -324,7 +339,7 @@ No certificate was found in the certificate store with thumbprint
    #Using Azure Service Management
    Add-AzureAccount –Credential $Cred
    #Using Azure Resource Manager
-   Connect-AzureRmAccount –Credential $Cred
+   Connect-AzAccount –Credential $Cred
    ```
 
 3. 如果身份验证在本地失败，则未正确设置 Azure 活动目录凭据。 请参阅使用[Azure 活动目录博客文章对 Azure 进行身份验证](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/)，以便正确设置 Azure 活动目录帐户。
@@ -343,9 +358,9 @@ No certificate was found in the certificate store with thumbprint
    {
        $LogonAttempt++
        #Logging in to Azure...
-       $connectionResult = Connect-AzureRmAccount `
+       $connectionResult = Connect-AzAccount `
                               -ServicePrincipal `
-                              -TenantId $servicePrincipalConnection.TenantId `
+                              -Tenant $servicePrincipalConnection.TenantId `
                               -ApplicationId $servicePrincipalConnection.ApplicationId `
                               -CertificateThumbprint $servicePrincipalConnection.CertificateThumbprint
 
@@ -365,11 +380,11 @@ Object reference not set to an instance of an object
 
 ### <a name="cause"></a>原因
 
-`Start-AzureRmAutomationRunbook`如果流包含对象，则无法正确处理输出流。
+`Start-AzAutomationRunbook`如果流包含对象，则无法正确处理输出流。
 
 ### <a name="resolution"></a>解决方法
 
-建议实现轮询逻辑，并使用[获取 AzureRm 自动化作业输出](/powershell/module/azurerm.automation/get-azurermautomationjoboutput)cmdlet 检索输出。 下面定义了此逻辑的示例。
+建议实现轮询逻辑，并使用[Get-AzAutomationJob输出](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0)cmdlet 检索输出。 下面定义了此逻辑的示例。
 
 ```powershell
 $automationAccountName = "ContosoAutomationAccount"
@@ -380,17 +395,17 @@ function IsJobTerminalState([string] $status) {
     return $status -eq "Completed" -or $status -eq "Failed" -or $status -eq "Stopped" -or $status -eq "Suspended"
 }
 
-$job = Start-AzureRmAutomationRunbook -AutomationAccountName $automationAccountName -Name $runbookName -ResourceGroupName $resourceGroupName
+$job = Start-AzAutomationRunbook -AutomationAccountName $automationAccountName -Name $runbookName -ResourceGroupName $resourceGroupName
 $pollingSeconds = 5
 $maxTimeout = 10800
 $waitTime = 0
 while((IsJobTerminalState $job.Status) -eq $false -and $waitTime -lt $maxTimeout) {
    Start-Sleep -Seconds $pollingSeconds
    $waitTime += $pollingSeconds
-   $job = $job | Get-AzureRmAutomationJob
+   $job = $job | Get-AzAutomationJob
 }
 
-$jobResults | Get-AzureRmAutomationJobOutput | Get-AzureRmAutomationJobOutputRecord | Select-Object -ExpandProperty Value
+$jobResults | Get-AzAutomationJobOutput | Get-AzAutomationJobOutputRecord | Select-Object -ExpandProperty Value
 ```
 
 ## <a name="scenario-runbook-fails-because-of-deserialized-object"></a><a name="fails-deserialized-object"></a>场景：Runbook 因反序列化的对象而失败
@@ -487,9 +502,9 @@ Runbook 超过 Azure 沙盒中公平共享允许的 3 小时限制。
 
 启用子 runbook 方案的 PowerShell cmdlet 是：
 
-* [启动-AzureRM自动化运行簿](/powershell/module/AzureRM.Automation/Start-AzureRmAutomationRunbook)。 此 cmdlet 用于启动 Runbook 并将参数传递给该 Runbook。
+* [启动-阿兹自动化Runbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0)。 此 cmdlet 用于启动 Runbook 并将参数传递给该 Runbook。
 
-* [获取 AzureRm 自动化作业](/powershell/module/azurerm.automation/get-azurermautomationjob)。 如果在子 Runbook 完成后需要执行一些操作，则此 cmdlet 允许您检查每个子级的作业状态。
+* [获取-阿兹自动化作业](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0)。 如果在子 Runbook 完成后需要执行一些操作，则此 cmdlet 允许您检查每个子级的作业状态。
 
 ## <a name="scenario-status-400-bad-request-when-calling-a-webhook"></a><a name="expired webhook"></a>方案：状态：调用 Webhook 时有 400 个错误请求
 
@@ -513,7 +528,7 @@ Runbook 超过 Azure 沙盒中公平共享允许的 3 小时限制。
 
 ### <a name="issue"></a>问题
 
-在运行 `Get-AzureRmAutomationJobOutput` cmdlet 时收到以下错误消息：
+在运行 `Get-AzAutomationJobOutput` cmdlet 时收到以下错误消息：
 
 ```error
 429: The request rate is currently too large. Please try again
@@ -529,7 +544,7 @@ Runbook 超过 Azure 沙盒中公平共享允许的 3 小时限制。
 
 * 编辑 Runbook，并减少它发出的作业流数量。
 
-* 减少运行 cmdlet 时要检索的流数量。 为此，可以设置`Stream``Get-AzureRmAutomationJobOutput`cmdlet 的参数值，以便仅检索输出流。 
+* 减少运行 cmdlet 时要检索的流数量。 为此，您可以设置[Get-AzAutomation输出](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) `Stream` cmdlet 的参数值，以便仅检索输出流。 
 
 ## <a name="scenario-powershell-job-fails-with-error-cannot-invoke-method"></a><a name="cannot-invoke-method"></a>方案：PowerShell 作业失败，出错：无法调用方法
 
@@ -549,7 +564,7 @@ Exception was thrown - Cannot invoke method. Method invocation is supported only
 
 有两种方法可以解决此问题。
 
-* 而不是使用`Start-Job`，使用`Start-AzureRmAutomationRunbook`来启动 Runbook。
+* 不使用["开始作业"，](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/start-job?view=powershell-7)请使用["开始-Az自动化 Runbook"](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0)来启动 Runbook。
 * 尝试在混合 Runbook 工作线程上运行 Runbook。
 
 要了解有关 Azure 自动化 Runbook 的此行为和其他行为的更多信息，请参阅[Runbook 行为](../automation-runbook-execution.md#runbook-behavior)。
@@ -594,6 +609,33 @@ Linux 日志分析代理的**nx 自动化用户帐户**在**sudoers**文件中�
 $SomeVariable = add-pnplistitem ....
 if ($SomeVariable.someproperty -eq ....
 ```
+
+## <a name="scenario-invalid-status-code-forbidden-when-using-key-vault-inside-a-runbook"></a>方案：在 Runbook 中使用密钥保管库时，无效状态代码"禁止"
+
+### <a name="issue"></a>问题
+
+尝试通过 Azure 自动化运行簿访问密钥保管库时，会收到以下错误：
+
+```error
+Operation returned an invalid status code 'Forbidden' 
+```
+
+### <a name="cause"></a>原因
+
+此问题的可能原因：
+
+* 不使用"运行为"帐户。
+* 权限不足。
+
+### <a name="resolution"></a>解决方法
+
+#### <a name="not-using-run-as-account"></a>不使用"作为帐户运行"
+
+按照步骤[5 中的步骤 - 添加身份验证来管理 Azure 资源](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell#add-authentication-to-manage-azure-resources)，以确保使用"运行作为"帐户访问密钥保管库。 
+
+#### <a name="insufficient-permissions"></a>权限不足
+
+按照"[向密钥保管库添加权限"](https://docs.microsoft.com/azure/automation/manage-runas-account#add-permissions-to-key-vault)中的步骤操作，以确保运行"作为"帐户具有访问密钥保管库的足够权限。 
 
 ## <a name="my-problem-isnt-listed-above"></a><a name="other"></a>上面未列出我的问题
 

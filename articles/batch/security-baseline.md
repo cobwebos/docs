@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fef1afb9748fd6f2f59b972c451d95ae1204ef70
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 8bda712523faa90f32a12fe7eecce27dccf3a55c
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011627"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756635"
 ---
 # <a name="azure-security-baseline-for-batch"></a>批处理的 Azure 安全基线
 
@@ -712,7 +712,7 @@ https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 
 尽管可以通过资源图发现经典 Azure 资源，但强烈建议今后创建和使用 Azure 资源管理器 （ARM） 资源。
 
-如何使用 Azure 图形创建查询：
+如何使用 Azure 资源图创建查询：
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 

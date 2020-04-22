@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: cosmos-db
 ms.date: 09/26/2019
 ms.reviewer: sngun
-ms.openlocfilehash: b9bac14ff47107a4b39f12989685e2e510569ba2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adf1db2d737de7004b5ab71c8e0e44d61d1da8c9
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72757081"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768513"
 ---
 # <a name="use-cases-for-built-in-analytics-with-azure-cosmos-db"></a>将内置分析与 Azure Cosmos DB 配合使用的用例
 
@@ -37,7 +37,7 @@ Azure Cosmos DB 具有本机内置的 Apache Spark，提供了一种快速、简
 
 在某些情况下，你可能需要根据过去完成的事件中特定时间点的数据来解答问题。 例如，要获取特定日期的 CRM 活动状态计数。 如果你在一周前运行了报告，则状态计数是根据该时间点的每个活动的状态计算的。 如果今天运行相同的报告，将会得到处于今天的状态的活动计数，而这些状态可能与过去一周的状态不同，因为这些活动经历了从开始到结束的生命周期。 因此，您需要在案例生命周期的每个阶段报告快照。
 
-在传统的数据仓库方案中，快照的概念是不可能的，因为数据仓库不是设计为要合并它，并且数据只提供当前对所发生的事情的视图。 使用 Azure Cosmos DB，用户可以实现“按时间顺序查看”的概念，可以追溯的方式针对数据查询和运行分析，并询问在特定的历史时间点查看数据的方式。 这意味着，用户可以轻松查看数据的当前视图和历史视图，并对其运行分析。
+使用 Azure Cosmos DB，用户可以实现“按时间顺序查看”的概念，可以追溯的方式针对数据查询和运行分析，并询问在特定的历史时间点查看数据的方式。 这意味着，用户可以轻松查看数据的当前视图和历史视图，并对其运行分析。
 
 ## <a name="globally-distributed-machine-learning-and-ai"></a>全球分布式机器学习和 AI
 

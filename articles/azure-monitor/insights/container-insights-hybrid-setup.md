@@ -3,12 +3,12 @@ title: 使用 Azure 监视器配置用于容器的混合库伯奈斯群集 |微�
 description: 本文介绍如何为容器配置 Azure 监视器，以监视托管在 Azure 堆栈或其他环境中的 Kubernetes 群集。
 ms.topic: conceptual
 ms.date: 01/24/2020
-ms.openlocfilehash: 5a973e7e500906ebe833ec4cc6fd2fa8ee79c19e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 6c2782fdd810403a793f6ef682d1112fadc22465
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255424"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769046"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>使用 Azure 监视器为容器配置混合库伯奈斯群集
 
@@ -241,6 +241,9 @@ ms.locfileid: "81255424"
 
 ## <a name="install-the-chart"></a>安装图表
 
+>[!NOTE]
+>以下命令仅适用于 Helm 版本 2。 --name 参数的使用不适用于 Helm 版本 3。
+
 要启用 HELM 图表，可以执行以下操作：
 
 1. 通过运行以下命令将 Azure 图表存储库添加到本地列表：
@@ -279,7 +282,7 @@ ms.locfileid: "81255424"
 >[!NOTE]
 >从代理到在 Azure 日志分析工作区中提交，引入延迟大约需要 5 到 10 分钟。 群集的状态显示值 **"无数据**"或 **"未知"，** 直到 Azure 监视器中所有必需的监视数据都可用。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 如果在尝试为混合 Kubernetes 群集启用监视时遇到错误，请复制 PowerShell 脚本[TroubleshootError_nonAzureK8s.ps1](https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/Troubleshoot/TroubleshootError_nonAzureK8s.ps1)并将其保存到计算机上的文件夹中。 此脚本用于帮助检测和修复遇到的问题。 它旨在检测和尝试更正的问题如下：
 

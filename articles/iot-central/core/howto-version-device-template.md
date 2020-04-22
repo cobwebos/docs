@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: bb77d1a09cb2692765c4c834ce617d13465d4d67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 37c7bc99881c8d1106c8464cfe18c9e63b8a1b02
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80157562"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756736"
 ---
 # <a name="create-a-new-device-template-version"></a>创建新设备模板版本
 
-
+*本文适用于解决方案生成器和设备开发人员。*
 
 Azure IoT Central 用于快速开发 IoT 应用程序。 可以通过添加、编辑或删除设备功能、视图和自定义项来快速循环访问设备模板设计。 发布设备模板后，设备功能模型将显示为“已发布”，其旁边会显示锁形图标。**** 若要对设备功能模型进行更改，需要创建设备模板的新版本。 同时，云属性、自定义项和视图均可随时编辑，而无需对设备模板进行版本控制。 保存其中的任何更改后，可以发布设备模板，使操作员能够在设备资源管理器中看到最新的更改。
 
@@ -32,7 +32,7 @@ Azure IoT Central 用于快速开发 IoT 应用程序。 可以通过添加、�
 1. 选择要自定义的设备模板。
 1. 选择“自定义”选项卡。****
 1. 在设备功能模型中定义的所有功能将在此处列出。 可以保存此处可编辑的所有字段并在整个应用程序中使用，而无需对设备模板进行版本控制。 如果要编辑的字段是只读的，则需要对设备模板进行版本控制才能更改这些字段。 选择要编辑的字段，然后输入任何新值。
-1. 单击“保存”。**** 现在，这些值将替代设备模板中最初保存的所有内容，并在整个应用程序中使用。
+1. 单击“ **保存**”。 现在，这些值将替代设备模板中最初保存的所有内容，并在整个应用程序中使用。
 
 ## <a name="versioning-a-device-template"></a>对设备模板进行版本控制
 
@@ -45,7 +45,7 @@ Azure IoT Central 用于快速开发 IoT 应用程序。 可以通过添加、�
 1. 转到“设备模板”页。****
 1. 选择尝试进行版本控制的设备模板。
 1. 单击页面顶部的“版本”按钮，并为模板指定新名称。**** 我们已自动建议一个新名称，但可以编辑该名称。
-1. 单击 **“创建”**。
+1. 单击“创建”。 
 1. 该设备模板现在处于草稿模式。 将会看到，接口仍处于锁定状态，必须单独对其进行版本控制才能编辑。 
 
 ### <a name="versioning-an-interface"></a>对接口进行版本控制
@@ -58,7 +58,7 @@ Azure IoT Central 用于快速开发 IoT 应用程序。 可以通过添加、�
 1. 选择处于草稿模式的设备模板。
 1. 选择处于已发布模式的、要进行版本控制和编辑的接口。
 1. 单击接口页面顶部的“版本”按钮。**** 
-1. 单击 **“创建”**。
+1. 单击“创建”。 
 1. 该接口现在处于草稿模式。 可以在接口中添加或编辑功能，而不会破坏现有的自定义项和视图。 
 
 > [!NOTE]
@@ -81,7 +81,4 @@ Azure IoT Central 用于快速开发 IoT 应用程序。 可以通过添加、�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何在 Azure IoT Central 应用程序中使用设备模板版本后，建议接下来执行以下步骤：
-
-> [!div class="nextstepaction"]
-> [如何创建遥测规则](tutorial-create-telemetry-rules.md)
+如果您是设备开发人员，建议的下一步是阅读有关[Azure IoT 边缘设备和 Azure IoT 中心](./concepts-iot-edge.md)。

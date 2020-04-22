@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 39edaa32b0695f4ab83206cd5701629f12295a0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/21/2020
+ms.openlocfilehash: b2e8bec18f4f5df6fb78a3c31aa0956ec7333eb5
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79527905"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770110"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的只读副本
 
@@ -73,7 +73,7 @@ ms.locfileid: "79527905"
 
 ## <a name="connect-to-a-replica"></a>连接到副本
 
-创建时，副本会继承主服务器的防火墙规则或 VNet 服务终结点。 之后，这些规则将独立于主服务器。
+在创建时，副本将继承主服务器的防火墙规则。 之后，这些规则将独立于主服务器。
 
 副本从主服务器继承其管理员帐户。 主服务器上的所有用户帐户将复制到只读副本。 只能使用主服务器上可用的用户帐户连接到只读副本。
 
@@ -126,7 +126,7 @@ Azure Database for MariaDB 在 Azure Monitor 中提供“复制滞后时间(秒)
 > [!IMPORTANT]
 > 将主服务器的配置更新为新值之前，请将副本配置更新为与这些新值相等或更大的值。 此操作可确保副本与主服务器发生的任何更改保持同步。
 
-创建副本服务器时，防火墙规则、虚拟网络规则和参数设置会从主服务器继承到副本服务器。 之后，副本服务器的规则将独立。
+创建副本时，防火墙规则和参数设置将从主服务器继承到副本。 之后，副本服务器的规则将独立。
 
 ### <a name="stopped-replicas"></a>停止的副本
 

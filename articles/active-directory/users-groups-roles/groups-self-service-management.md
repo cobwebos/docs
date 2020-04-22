@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e52c37e293941a767621cf56ef75f8cc83b1925
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 541deb5cf44ad5440e31641b673ed5da5b5d2b26
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79297997"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768544"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>在 Azure 活动目录中设置自助服务组管理 
 
@@ -56,6 +56,9 @@ ms.locfileid: "79297997"
 
 当用户可以创建组时，允许组织中的所有用户创建新组，然后作为默认所有者，可以将成员添加到这些组。 不能指定可以创建自己的组的个人。 只能指定个人，使另一个组成员成为组所有者。
 
+> [!NOTE]
+> 用户需要 Azure 活动目录高级版 （P1 或 P2） 许可证才能请求加入安全组或 Office 365 组，并且所有者需要批准或拒绝成员资格请求。 如果没有 Azure 活动目录高级许可证，用户仍然可以在"访问面板"中管理其组，但不能创建在访问面板中需要所有者批准的组，并且无法请求加入组。 
+
 ## <a name="next-steps"></a>后续步骤
 
 这些文章提供了有关 Azure Active Directory 的更多信息。
@@ -63,5 +66,5 @@ ms.locfileid: "79297997"
 * [使用 Azure Active Directory 组管理对资源的访问权限](../fundamentals/active-directory-manage-groups.md)
 * [用于配置组设置的 Azure Active Directory cmdlet](groups-settings-cmdlets.md)
 * [Azure Active Directory 中的应用程序管理](../manage-apps/what-is-application-management.md)
-* [什么是 Azure 活动目录？](../fundamentals/active-directory-whatis.md)
+* [什么是 Azure Active Directory？](../fundamentals/active-directory-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](../hybrid/whatis-hybrid-identity.md)

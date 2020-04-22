@@ -2,16 +2,16 @@
 author: rothja
 ms.service: cost-management-billing
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 04/21/2020
 ms.author: jroth
-ms.openlocfilehash: 2d16febd4676ca7ba763eb7bc6dcecda4608ebb5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8247b1cedc2c5ebc8577af6be485aed0fcd5d6af
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74224357"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768727"
 ---
-#### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>密钥事务数（每个区域的每个保管库在 10 秒内允许的事务数上限<sup>1</sup>）：
+### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>密钥事务数（每个区域的每个保管库在 10 秒内允许的事务数上限<sup>1</sup>）：
 
 |密钥类型|HSM 密钥<br>CREATE 密钥|HSM 密钥<br>所有其他事务|软件密钥<br>CREATE 密钥|软件密钥<br>所有其他事务|
 |:---|---:|---:|---:|---:|
@@ -34,7 +34,8 @@ ms.locfileid: "74224357"
 > - 125 RSA 4，096 位 HSM 密钥 GET 事务
 > - 124 RSA 4，096 位 HSM 密钥 GET 事务和 8 个 RSA 2，048 位 HSM 密钥 GET 事务
 
-#### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>机密、托管存储帐户密钥，以及保管库事务：
+### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>机密、托管存储帐户密钥，以及保管库事务：
+
 | 事务类型 | 每个区域的每个保管库在 10 秒内允许的事务数上限<sup>1</sup> |
 | --- | --- |
 | 所有事务 |2,000 |
@@ -42,3 +43,10 @@ ms.locfileid: "74224357"
 有关超出这些限制时如何处理限制的信息，请参阅 [Azure Key Vault 限制指南](../articles/key-vault/key-vault-ovw-throttling.md)。
 
 <sup>1</sup> 所有事务类型的订阅范围限制是每个密钥保管库限制的 5 倍。 例如，每个订阅的 HSM-其他事务数限制为 10 秒内 5,000 个事务。
+
+### <a name="azure-private-link-integration"></a>Azure 专用链接集成
+
+| 资源 | 限制 |
+| -------- | ----- |
+| 每个密钥保管库的专用终结点 | 64 |
+| 每个订阅具有专用终结点的密钥保管库 | 64 |

@@ -1,25 +1,25 @@
 ---
 title: 使用 Azure IoT 中心进行大规模自动设备管理 | Microsoft Docs
 description: 使用 Azure IoT 中心的自动配置来管理多个 IoT 设备和模块
-author: ChrisGMsft
+author: Philmea
 manager: bruz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 12/13/2019
-ms.author: chrisgre
-ms.openlocfilehash: 75c6b7d89e7ae540e7428afde127281aa3f15fc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: philmea
+ms.openlocfilehash: 1de7c34d8f8cbfa139212f29ca6be5d4eca64655
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271299"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767489"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>使用 Azure 门户自动管理 IoT 设备和模块
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
-Azure IoT 中心的自动设备管理功能可自动完成许多复杂且重复性的大型设备阵列管理任务。 使用自动设备管理，可以根据设备的属性将一组设备指定为目标、定义所需的配置，然后在设备进入管理范畴时让 IoT 中心更新这些设备。 此更新是使用自动设备配置或自动模块配置执行的。使用此项功能还能汇总完整度与符合性、处理合并与冲突，以及分阶段推出配置。____
+Azure IoT 中心的自动设备管理功能可自动完成许多复杂且重复性的大型设备阵列管理任务。 使用自动设备管理，可以根据设备的属性将一组设备指定为目标、定义所需的配置，然后在设备进入管理范畴时让 IoT 中心更新这些设备。 此更新是使用自动设备配置或自动模块配置执行的。使用此项功能还能汇总完整度与符合性、处理合并与冲突，以及分阶段推出配置。  
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -29,13 +29,13 @@ Azure IoT 中心的自动设备管理功能可自动完成许多复杂且重复�
 
 * **目标内容**定义要在目标设备孪生或模块孪生中添加或更新的所需属性。 内容包括要更改的所需属性节的路径。
 
-* **指标**定义各种配置状态（例如“成功”、“正在进行中”和“错误”）的摘要计数。************ 自定义指标指定为孪生报告的属性中的查询。  系统指标是度量孪生更新状态的默认指标，例如，针对的孪生数，以及已成功更新的孪生数。
+* **指标**定义各种配置状态（例如“成功”、“正在进行中”和“错误”）的摘要计数。    自定义指标指定为孪生报告的属性中的查询。  系统指标是度量孪生更新状态的默认指标，例如，针对的孪生数，以及已成功更新的孪生数。
 
 自动配置在配置创建不久后就首次运行，然后每隔五分钟运行一次。 每次自动配置运行时，都会运行指标查询。
 
 ## <a name="implement-twins"></a>实现孪生
 
-自动设备配置需要使用设备孪生来同步云与设备之间的状态。  有关详细信息，请参阅在[IoT 中心中了解和使用设备孪生](iot-hub-devguide-device-twins.md)。
+自动设备配置需要使用设备孪生来同步云与设备之间的状态。  有关详细信息，请参阅[了解并在 IoT 中心内使用设备孪生](iot-hub-devguide-device-twins.md)。
 
 自动模块配置需要使用模块孪生来同步云与模块之间的状态。 有关详细信息，请参阅[了解并在 IoT 中心内使用模块孪生](iot-hub-devguide-module-twins.md)。
 
@@ -56,9 +56,9 @@ Azure IoT 中心的自动设备管理功能可自动完成许多复杂且重复�
 
 1. 在 [Azure 门户](https://portal.azure.com)中，转到 IoT 中心。 
 
-2. 选择“IoT 设备配置”****。
+2. 选择“IoT 设备配置”  。
 
-3. 选择“添加设备配置”**** 或“添加模块配置”****。
+3. 选择“添加设备配置”  或“添加模块配置”  。
 
    ![添加设备配置或模块配置](./media/iot-hub-automatic-device-management/create-automatic-configuration.png)
 
@@ -68,9 +68,9 @@ Azure IoT 中心的自动设备管理功能可自动完成许多复杂且重复�
 
 1. 为配置指定不超过 128 个小写字母的唯一名称。 避免空格和以下无效字符：`& ^ [ ] { } \ | " < > /`。
 
-2. 添加标签以帮助跟踪配置。 标签是描述配置的 <名称, 值> 对。******** 例如，`HostPlatform, Linux` 或 `Version, 3.0.1`。
+2. 添加标签以帮助跟踪配置。 标签是描述配置的 <名称, 值> 对。   例如，`HostPlatform, Linux` 或 `Version, 3.0.1`。
 
-3. 选择“下一步”，转到下一步。**** 
+3. 选择“下一步”，转到下一步。  
 
 ### <a name="specify-settings"></a>指定设置
 
@@ -94,7 +94,7 @@ Azure IoT 中心的自动设备管理功能可自动完成许多复杂且重复�
 
 如果想要删除某个现有属性，请将属性值指定为 `null`。
 
-可以通过选择“添加设备孪生设置”或“添加模块孪生设置”来添加其他设置********。
+可以通过选择“添加设备孪生设置”或“添加模块孪生设置”来添加其他设置   。
 
 ### <a name="specify-metrics-optional"></a>指定指标（可选）
 
@@ -102,9 +102,9 @@ Azure IoT 中心的自动设备管理功能可自动完成许多复杂且重复�
 
 每个配置最多可以有五个自定义指标。 
 
-1. 在“指标名称”中输入名称****。
+1. 在“指标名称”中输入名称  。
 
-2. 在“指标条件”中输入查询。****  该查询基于设备孪生报告的属性。  指标表示查询返回的行数。
+2. 在“指标条件”中输入查询。   该查询基于设备孪生报告的属性。  指标表示查询返回的行数。
 
 例如：
 
@@ -121,7 +121,7 @@ SELECT deviceId FROM devices
   WHERE configurations.[[yourconfigname]].status='Applied'
 ```
 
-如果要构建用于报告已配置模块的指标，请从 `devices.modules` 中选择 `moduleId`。 例如：
+如果要构建用于报告已配置模块的指标，请从 `moduleId` 中选择 `devices.modules`。 例如：
 
 ```sql
 SELECT deviceId, moduleId FROM devices.modules
@@ -136,7 +136,7 @@ SELECT deviceId, moduleId FROM devices.modules
 
 由于多个配置可能以同一设备为目标，因此，每个配置都需要一个优先级编号。 如果存在冲突，则优先级最高的配置将会胜出。 
 
-1. 为配置的“优先级”输入一个正整数。**** 最大数值被视为最高优先级。 如果两个配置的优先级编号相同，则最近创建的配置胜出。 
+1. 为配置的“优先级”输入一个正整数。  最大数值被视为最高优先级。 如果两个配置的优先级编号相同，则最近创建的配置胜出。 
 
 2. 输入一个**目标条件**来确定此配置的目标设备或模块。 该条件基于孪生标记或孪生报告的属性，应与表达式格式相匹配。 
 
@@ -144,11 +144,11 @@ SELECT deviceId, moduleId FROM devices.modules
    
    对于自动模块配置，请使用查询来指定注册到 IoT 中心的模块中的标记或报告的属性。 例如，`from devices.modules where tags.environment='test'` 或 `from devices.modules where properties.reported.chillerProperties.model='4000x'`。 不能使用通配符来指定以所有模块为目标。 
 
-3. 选择“下一步”****，进入到最后一步。
+3. 选择“下一步”  ，进入到最后一步。
 
 ### <a name="review-configuration"></a>查看配置
 
-查看配置信息，然后选择“提交”****。
+查看配置信息，然后选择“提交”  。
 
 ## <a name="monitor-a-configuration"></a>监视配置
 
@@ -156,7 +156,7 @@ SELECT deviceId, moduleId FROM devices.modules
 
 1. 在 [Azure 门户](https://portal.azure.com)中，转到 IoT 中心。 
 
-2. 选择“IoT 设备配置”****。
+2. 选择“IoT 设备配置”  。
 
 3. 检查配置列表。 对于每个配置，可查看以下详细信息：
 
@@ -178,7 +178,7 @@ SELECT deviceId, moduleId FROM devices.modules
 
    * **目标条件** - 与目标条件匹配的设备或模块。 
 
-   * **指标** - 系统指标和自定义指标的列表。  在下拉列表中选择指标，然后选择“查看设备”或“查看模块”，即可查看计入每个指标的设备或模块列表。********
+   * **指标** - 系统指标和自定义指标的列表。  在下拉列表中选择指标，然后选择“查看设备”或“查看模块”，即可查看计入每个指标的设备或模块列表。  
 
    * **设备孪生设置**或**模块孪生设置** - 由配置设定的孪生设置。 
 
@@ -200,7 +200,7 @@ SELECT deviceId, moduleId FROM devices.modules
 
 1. 在 [Azure 门户](https://portal.azure.com)中，转到 IoT 中心。 
 
-2. 选择“IoT 设备配置”****。 
+2. 选择“IoT 设备配置”  。 
 
 3. 选择要修改的配置。 
 
@@ -209,9 +209,9 @@ SELECT deviceId, moduleId FROM devices.modules
    * 目标条件 
    * 标签 
    * 优先度 
-   * 指标
+   * 度量值
 
-4. 选择“保存”。****
+4. 选择“保存”。 
 
 5. 按照[监视配置](#monitor-a-configuration)中的步骤观察更改的实施。 
 
@@ -221,11 +221,11 @@ SELECT deviceId, moduleId FROM devices.modules
 
 1. 在 [Azure 门户](https://portal.azure.com)中，转到 IoT 中心。 
 
-2. 选择“IoT 设备配置”****。 
+2. 选择“IoT 设备配置”  。 
 
 3. 使用复选框选择想要删除的配置。 
 
-4. 选择 **"删除**"。
+4. 选择“删除”。 
 
 5. 系统会提示确认。
 
@@ -234,7 +234,7 @@ SELECT deviceId, moduleId FROM devices.modules
 本文介绍了如何大规模配置和监视 IoT 设备。 若要了解有关如何管理 Azure IoT 中心的详细信息，请参阅以下链接：
 
 * [批量管理 IoT 中心设备标识](iot-hub-bulk-identity-mgmt.md)
-* [IoT 中心度量值](iot-hub-metrics.md)
+* [IoT 中心指标](iot-hub-metrics.md)
 * [操作监视](iot-hub-operations-monitoring.md)
 
 若要进一步探索 IoT 中心的功能，请参阅：

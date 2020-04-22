@@ -7,18 +7,18 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3b45c20e2d3e8829913c9e566516f85866ee80d4
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: ba0573af59c2924648361fec10bffed189291d28
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81390319"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768571"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
 > [!div class="op_single_selector"]
-> * [按提供程序进行的位置](expressroute-locations.md)
-> * [提供程序（按位置）](expressroute-locations-providers.md)
+> * [按提供商列出的位置](expressroute-locations.md)
+> * [按位置列出的提供商](expressroute-locations-providers.md)
 
 
 本文中的表格提供了有关 ExpressRoute 地理覆盖范围和位置、ExpressRoute 连接提供商和 ExpressRoute 系统集成商 (SI) 的信息。
@@ -100,7 +100,7 @@ ExpressRoute 位置（有时称为对等位置或 Meet-me 位置）是 Microsoft
 | **香港特别行政区** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | 东亚 | 不适用 | 亚里卡网络、英国电信、世纪通云连接、首席电信、中国电信全球、Equinix、InterCloud、Megaport、NTT通信、奥兰治、电讯盈科全球有限公司、塔塔通信、泰利亚运营商、Verizon |
 | **香港2** | [MEGA-i](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | 不适用 | 10G | |
 | **雅加达** | 印度尼西亚特尔科姆 | 4 | 不适用 | 10G | |
-| **约翰内斯堡** | [特拉科JB1](https://www.teraco.co.za/data-centre-locations/johannesburg/#jb1) | 3 | 南非北部 | 10G | 英国电信， 互联网解决方案 - 云连接， 液体电信， 橙色， 特拉科 |
+| **约翰内斯堡** | [特拉科JB1](https://www.teraco.co.za/data-centre-locations/johannesburg/#jb1) | 3 | 南非北部 | 10G | BCX， 英国电信， 互联网解决方案 - 云连接， 液体电信， 橙色， 特拉科 |
 | **吉隆坡** | [时代点梅纳拉AIMS](https://www.aims.com.my/co-location/points-of-presence.html) | 2 | 不适用 | 不适用 | TIME dotCom |
 | **拉斯维加斯** | [开关 LV](https://www.switch.com/las-vegas) | 1 | 不适用 | 不适用 | CenturyLink Cloud Connect、Megaport |
 | **伦敦** | [Equinix LD5](https://www.equinix.com/locations/europe-colocation/united-kingdom-colocation/london-data-centers/ld5/) | 1 | 英国南部 | 10G， 100G | 美国电话电报公司&T NetBond、 英国电信、 科尔特、 Equinix、 euNetworks、 InterCloud、 互联网解决方案 - 云连接、Interxion、Jisc、3 级通信、兆波特、MTN、NTT 通信、奥兰治、电讯盈科全球有限公司、塔塔通信、电信总部 - KDDI、Telenor、Telia 运营商、Verizon、沃达丰、Zayo |

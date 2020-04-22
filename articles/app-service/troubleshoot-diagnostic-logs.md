@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6f22d5b2140e42f5f4b8ef5787d22b4be399c7e8
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: e945fd77c2615e6f5213a9aa4fc996f0c4d2f3dd
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272519"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769985"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
 ## <a name="overview"></a>概述
@@ -23,13 +23,13 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 >
 >
 
-|类型|平台|位置|描述|
+|类型|平台|位置|说明|
 |-|-|-|-|
-| 应用程序日志记录 | Windows、Linux | 应用服务文件系统和/或 Azure 存储 Blob | 记录应用程序代码生成的消息。 这些消息可能由所选的 Web 框架生成，或者由应用程序代码使用你的语言的标准日志记录模式直接生成。 每条消息被分配为以下类别之一：**严重**、**错误**、**警告**、**信息**、**调试**和**跟踪**。 启用应用程序日志记录时，可以通过设置严重性级别来选择日志记录的详细程度。|
+| 应用程序日志记录 | Windows、Linux | 应用服务文件系统和/或 Azure 存储 Blob | 记录应用程序代码生成的消息。 这些消息可能由所选的 Web 框架生成，或者由应用程序代码使用你的语言的标准日志记录模式直接生成。 为每条消息分配以下类别之一：“严重”、“错误”、“警告”、“信息”、“调试”和“跟踪”。       启用应用程序日志记录时，可以通过设置严重性级别来选择日志记录的详细程度。|
 | Web 服务器日志记录| Windows | 应用服务文件系统或 Azure 存储 Blob| 采用 [W3C 扩展日志文件格式](/windows/desktop/Http/w3c-logging)的原始 HTTP 请求数据。 每条日志消息包含 HTTP 方法、资源 URI、客户端 IP、客户端端口、用户代理、响应代码等数据。 |
 | 详细错误消息| Windows | 应用服务文件系统 | 已发送到客户端浏览器的 *.htm* 错误页副本。 出于安全原因，不应将详细错误页发送到生产环境中的客户端，但每当出现 HTTP 代码为 400 或更高的应用程序错误时，应用服务都可以保存错误页。 该页可能包含有助于确定服务器返回错误代码的原因的信息。 |
 | 失败请求跟踪 | Windows | 应用服务文件系统 | 有关失败请求的详细跟踪信息，包括对用于处理请求的 IIS 组件和每个组件所用的时间的跟踪。 如果要提高站点性能或隔离特定的 HTTP 错误，这将非常有用。 为每个失败的请求生成一个文件夹，其中包含 XML 日志文件，以及用于查看日志文件的 XSL 样式表。 |
-| 部署日志记录 | Windows、Linux | 应用服务文件系统 | 有关何时将内容发布到应用的日志。 部署日志记录会自动发生，它没有可配置的设置。 它可以帮助确定部署失败的原因。 例如，如果使用[自定义部署脚本](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)，则可以使用部署日志记录来确定脚本失败的原因。 |
+| 部署日志记录 | Windows、Linux | 应用服务文件系统 | 有关何时将内容发布到应用的日志。 部署日志记录会自动发生，它没有可配置的设置。 它可以帮助确定部署失败的原因。 例如，如果使用[自定义部署脚本](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)，你可能会使用部署日志记录确定该脚本失败的原因。 |
 
 > [!NOTE]
 > 应用服务提供了一个专用的交互式诊断工具来帮助你排查应用程序问题。 有关详细信息，请参阅[Azure 应用服务诊断概述](overview-diagnostics.md)。
@@ -38,6 +38,9 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 >
 
 ## <a name="enable-application-logging-windows"></a>启用应用程序日志记录 (Windows)
+
+> [!NOTE]
+> Blob 存储的应用程序日志记录只能使用与应用服务位于同一区域中的存储帐户
 
 若要在 [Azure 门户](https://portal.azure.com)中为 Windows 应用启用应用程序日志记录，请导航到你的应用，然后选择“应用服务日志”。****
 
@@ -59,7 +62,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 
 | 级别 | 包含的类别 |
 |-|-|
-|**已禁用** | None |
+|**已禁用** | 无 |
 |**错误** | “错误”、“严重” |
 |**警告** | “警告”、“错误”、“严重”|
 |**信息** | “信息”、“警告”、“错误”、“严重”|

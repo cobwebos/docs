@@ -1,5 +1,5 @@
 ---
-title: 使用 Web 浏览器 Azure HDInsight 创建 Apache Hadoop 群集
+title: 使用 Web 浏览器创建 Apache Hadoop 群集 - Azure HDInsight
 description: 了解如何在 HDInsight 上创建阿帕奇哈达普、阿帕奇 HBase、阿帕奇风暴或阿帕奇火花群集。 使用 Web 浏览器和 Azure 门户。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/13/2020
-ms.openlocfilehash: a5f6ac76d509a0a63c2d641f91cd91cdb2e0d19d
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 88392e4e61c28d4fe821c8176242246d10e52b23
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313814"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770899"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集
 
@@ -45,7 +45,7 @@ Azure 门户会公开大部分的群集属性。 使用 Azure 资源管理器模
 
 从 **"基础知识"** 选项卡中，提供以下信息：
 
-|Property |说明 |
+|属性 |说明 |
 |---|---|
 |订阅|从下拉列表中选择用于此群集的 Azure 订阅。|
 |资源组|从下拉列表中选择现有资源组，或选择 **"创建新**"。|
@@ -91,10 +91,10 @@ Azure 门户会公开大部分的群集属性。 使用 Azure 资源管理器模
 
 在 **"安全+ 网络"** 选项卡中，提供以下信息：
 
-|Property |描述 |
+|属性 |说明 |
 |---|---|
 |企业安全数据包|可选：选择使用**企业安全包**的复选框。 有关详细信息，请参阅使用[Azure 活动目录域服务使用企业安全包配置 HDInsight 群集](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)。|
-|TLS|可选：从下拉列表中选择 TLS 版本。 有关详细信息，请参阅[传输层安全性](./hdinsight-plan-virtual-network-deployment.md#transport-layer-security)。|
+|TLS|可选：从下拉列表中选择 TLS 版本。 有关详细信息，请参阅[传输层安全性](./transport-layer-security.md)。|
 |虚拟网络|可选：从下拉列表中选择现有虚拟网络和子网。 有关详细信息，请参阅[规划 Azure HDInsight 群集的虚拟网络部署](hdinsight-plan-virtual-network-deployment.md)。 本文包含虚拟网络的特定配置要求。|
 |磁盘加密设置|可选：选择使用加密的复选框。 有关详细信息，请参阅[客户管理密钥磁盘加密](./disk-encryption.md)。|
 |Kafka REST 代理|此设置仅适用于群集类型 Kafka。 有关详细信息，请参阅使用[REST 代理](./kafka/rest-proxy.md)。|
@@ -108,7 +108,7 @@ Azure 门户会公开大部分的群集属性。 使用 Azure 资源管理器模
 
 在 **"配置 + 定价**"选项卡中，提供以下信息：
 
-|Property |描述 |
+|属性 |说明 |
 |---|---|
 |• 添加应用程序|可选：选择所需的任何应用程序。 Microsoft、独立软件供应商 (ISV) 或你自己都可以开发这些应用程序。 有关详细信息，请参阅[在群集创建期间安装应用程序](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation)。|
 |节点大小|可选：选择不同大小的节点。|
@@ -134,7 +134,7 @@ Azure 门户会公开大部分的群集属性。 使用 Azure 资源管理器模
 
 窗口中的某些图标解释如下：
 
-|Property | 描述 |
+|属性 | 说明 |
 |---|---|
 |概述|提供有关群集的所有基本信息。 例如，名称、其所属的资源组、位置、操作系统、群集仪表板 URL。|
 |群集仪表板|将你定向到与群集关联的 Ambari 门户。|

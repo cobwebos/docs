@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 4042fc05f278915fe72bf8fc4e6afd69a5bbb4b9
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 626a8c96fdc247db174e2cbcd2e5c99cec43d2ea
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537417"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770961"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>为本地服务器部署 Azure Monitor Application Insights 代理
 
@@ -26,7 +26,7 @@ Application Insights 代理（以前称为状态监视器 V2）是发布到 [Pow
 
 ## <a name="powershell-gallery"></a>PowerShell 库
 
-Application Insights 代理位于此处：https://www.powershellgallery.com/packages/Az.ApplicationMonitor。
+Application Insights 代理位于此处： https://www.powershellgallery.com/packages/Az.ApplicationMonitor 。
 
 ![PowerShell 库](https://img.shields.io/powershellgallery/v/Az.ApplicationMonitor.svg?color=Blue&label=Current%20Version&logo=PowerShell&style=for-the-badge)
 
@@ -36,17 +36,17 @@ Application Insights 代理位于此处：https://www.powershellgallery.com/pack
 - 请参阅[详细说明](status-monitor-v2-detailed-instructions.md)，以深入了解如何开始使用。
 
 ## <a name="powershell-api-reference"></a>PowerShell API 参考
-- [禁用应用程序见解监控](status-monitor-v2-api-disable-monitoring.md)
-- [Disable-InstrumentationEngine](status-monitor-v2-api-disable-instrumentation-engine.md)
-- [启用应用程序洞察监控](status-monitor-v2-api-enable-monitoring.md)
-- [启用检测引擎](status-monitor-v2-api-enable-instrumentation-engine.md)
-- [获取应用程序洞察监控配置](status-monitor-v2-api-get-config.md)
-- [获取应用程序见解监视状态](status-monitor-v2-api-get-status.md)
-- [设置应用程序洞察监控配置](status-monitor-v2-api-set-config.md)
-- [Start-ApplicationInsightsMonitoringTrace](status-monitor-v2-api-start-trace.md)
+- [Disable-ApplicationInsightsMonitoring](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#disable-applicationinsightsmonitoring)
+- [Disable-InstrumentationEngine](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#disable-instrumentationengine)
+- [Enable-ApplicationInsightsMonitoring](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-applicationinsightsmonitoring)
+- [Enable-InstrumentationEngine](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-instrumentationengine)
+- [Get-ApplicationInsightsMonitoringConfig](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringconfig)
+- [Get-ApplicationInsightsMonitoringStatus](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringstatus)
+- [Set-ApplicationInsightsMonitoringConfig](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#set-applicationinsightsmonitoringconfig)
+- [Start-ApplicationInsightsMonitoringTrace](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#start-applicationinsightsmonitoringtrace)
 
-## <a name="troubleshooting"></a>疑难解答
-- [疑难解答](status-monitor-v2-troubleshoot.md)
+## <a name="troubleshooting"></a>故障排除
+- [故障排除](status-monitor-v2-troubleshoot.md)
 - [已知问题](status-monitor-v2-troubleshoot.md#known-issues)
 
 
@@ -54,17 +54,17 @@ Application Insights 代理位于此处：https://www.powershellgallery.com/pack
 
 - Application Insights 代理是否支持代理安装？
 
-  *有*。 可以通过多种方式下载 Application Insights 代理。 如果计算机可以访问 Internet，则可以使用 `-Proxy` 参数登录到 PowerShell 库。
+  *是*。 可以通过多种方式下载 Application Insights 代理。 如果计算机可以访问 Internet，则可以使用 `-Proxy` 参数登录到 PowerShell 库。
 还可以手动下载此模块，并将其安装到计算机上或直接使用它。
 上述每个选项都在[详细说明](status-monitor-v2-detailed-instructions.md)中进行了说明。
 
 - 状态监视器 v2 是否支持 ASP.NET Core 应用程序？
 
-  *No*。 有关启用对 ASP.NET Core 应用程序的监视的说明，请参阅[适用于 ASP.NET Core 应用程序的 Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)。 无需为 ASP.NET Core 应用程序安装 StatusMonitor。 即使 ASP.NET Core 应用程序托管在 IIS 中，也是如此。
+  *不*。 有关启用对 ASP.NET Core 应用程序的监视的说明，请参阅[适用于 ASP.NET Core 应用程序的 Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)。 无需为 ASP.NET Core 应用程序安装 StatusMonitor。 即使 ASP.NET Core 应用程序托管在 IIS 中，也是如此。
 
 - 如何验证启用是否成功？
 
-  - [Get-ApplicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md) cmdlet 可用于验证启用是否成功。
+  - [Get-ApplicationInsightsMonitoringStatus](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringstatus) cmdlet 可用于验证启用是否成功。
   - 我们建议你使用[实时指标](https://docs.microsoft.com/azure/azure-monitor/app/live-stream)来快速确定应用是否正在发送遥测数据。
 
   - 还可以使用 [Log Analytics](../log-query/get-started-portal.md) 列出当前正在发送遥测数据的所有云角色：
@@ -76,14 +76,14 @@ Application Insights 代理位于此处：https://www.powershellgallery.com/pack
 
 查看遥测：
 
-* [浏览指标](../../azure-monitor/platform/metrics-charts.md)以监视性能和使用情况。
+* [浏览指标](../../azure-monitor/platform/metrics-charts.md)，以便监视性能和使用情况。
 * [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)以诊断问题。
-* 对更高级的查询[使用分析](../../azure-monitor/app/analytics.md)。
+* [使用分析](../../azure-monitor/app/analytics.md)，以便进行更高级的查询。
 * [创建仪表板](../../azure-monitor/app/overview-dashboard.md)。
 
 添加更多遥测：
 
-* [创建 Web 测试](monitor-web-app-availability.md)，确保站点保持活动状态。
+* [创建 Web 测试](monitor-web-app-availability.md)，以确保站点保持活动状态。
 * [添加 Web 客户端遥测](../../azure-monitor/app/javascript.md)，以查看网页代码中的异常并启用跟踪调用。
 * [将 Application Insights SDK 添加到代码](../../azure-monitor/app/asp-net.md)，以便插入跟踪和日志调用。
 

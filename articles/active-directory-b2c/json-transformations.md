@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ad8fcf578ae1c89856a9d7929af0aec813cb4082
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b42c2a414333e7ed262441321a808fc45425fc3b
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78187587"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756759"
 ---
 # <a name="json-claims-transformations"></a>JSON 声明转换
 
@@ -28,11 +28,11 @@ ms.locfileid: "78187587"
 
 使用声明值或常量生成 JSON 字符串。 点表示法后面的路径字符串用于指示将数据插入 JSON 字符串的位置。 按点拆分后，任何整数都解释为 JSON 数组的索引，而非整数则解释为 JSON 对象的索引。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 注释 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | 点表示法后面的任何字符串 | 字符串 | JSON 的 JsonPath，声明值将插入到其中。 |
-| InputParameter | 点表示法后面的任何字符串 | 字符串 | JSON 的 JsonPath，常量字符串值将插入到其中。 |
-| OutputClaim | outputClaim | 字符串 | 生成的 JSON 字符串。 |
+| InputClaim | 点表示法后面的任何字符串 | string | JSON 的 JsonPath，声明值将插入到其中。 |
+| InputParameter | 点表示法后面的任何字符串 | string | JSON 的 JsonPath，常量字符串值将插入到其中。 |
+| OutputClaim | outputClaim | string | 生成的 JSON 字符串。 |
 
 以下示例基于“email”和“otp”的声明值以及常量字符串生成 JSON 字符串。
 
@@ -62,10 +62,10 @@ ms.locfileid: "78187587"
   - **otp**, 转换声明类型 **personalizations.0.dynamic_template_data.otp** "346349"
 - 输入参数：
   - **template_id**: "d-4c56ffb40fa648b1aa6822283df94f60"
-  - **从.email**："service@contoso.com"
+  - **from.email**: "service@contoso.com"
   - **personalizations.0.subject** "Contoso 帐户电子邮件验证码"
 - 输出声明：
-  - **请求正文**： JSON 值
+  - **requestBody**:JSON 值
 
 ```JSON
 {
@@ -94,11 +94,11 @@ ms.locfileid: "78187587"
 
 从 JSON 数据中获取指定的元素。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 注释 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputJson | 字符串 | 由声明转换用于获取项的 ClaimTypes。 |
-| InputParameter | claimToExtract | 字符串 | 要提取的 JSON 元素的名称。 |
-| OutputClaim | extractedClaim | 字符串 | 调用此声明转换后生成的 ClaimType，即 claimToExtract__ 输入参数中指定的元素值。 |
+| InputClaim | inputJson | string | 由声明转换用于获取项的 ClaimTypes。 |
+| InputParameter | claimToExtract | string | 要提取的 JSON 元素的名称。 |
+| OutputClaim | extractedClaim | string | 调用此声明转换后生成的 ClaimType，即 claimToExtract  输入参数中指定的元素值。 |
 
 在以下示例中，声明转换提取 JSON 数据中的 `emailAddress` 元素：`{"emailAddress": "someone@example.com", "displayName": "Someone"}`
 
@@ -119,25 +119,25 @@ ms.locfileid: "78187587"
 ### <a name="example"></a>示例
 
 - 输入声明：
-  - **inputJson**: {"emailAddress": "someone@example.com", "displayName": "Someone"}
+  - inputJson  : {"emailAddress": "someone@example.com", "displayName":"Someone"}
 - 输入参数：
-    - **** claimToExtract: emailAddress
+    -  claimToExtract: emailAddress
 - 输出声明：
-  - **提取索赔**：someone@example.com
+  -  extractedClaim: someone@example.com
 
 
 ## <a name="getclaimsfromjsonarray"></a>GetClaimsFromJsonArray
 
 从 Json 数据中获取指定元素列表。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 注释 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | jsonSourceClaim | 字符串 | 由声明转换用于获取声明的 ClaimTypes。 |
+| InputClaim | jsonSourceClaim | string | 由声明转换用于获取声明的 ClaimTypes。 |
 | InputParameter | errorOnMissingClaims | boolean | 指定如果缺少一个声明是否引发错误。 |
-| InputParameter | includeEmptyClaims | 字符串 | 指定是否包含空声明。 |
-| InputParameter | jsonSourceKeyName | 字符串 | 元素键名称 |
-| InputParameter | jsonSourceValueName | 字符串 | 元素值名称 |
-| OutputClaim | 集合 | 字符串、int、布尔值，和日期时间 |要提取的声明列表。 声明名称应等于 jsonSourceClaim__ 输入声明中指定的名称。 |
+| InputParameter | includeEmptyClaims | string | 指定是否包含空声明。 |
+| InputParameter | jsonSourceKeyName | string | 元素键名称 |
+| InputParameter | jsonSourceValueName | string | 元素值名称 |
+| OutputClaim | 集合 | 字符串、int、布尔值，和日期时间 |要提取的声明列表。 声明名称应等于 jsonSourceClaim  输入声明中指定的名称。 |
 
 在以下示例中，声明转换从 JSON 数据中提取以下声明：email（字符串）、displayName（字符串）、membershipNum (int)、active（布尔值）和 birthdate（日期时间）。
 
@@ -167,28 +167,28 @@ ms.locfileid: "78187587"
 ```
 
 - 输入声明：
-  - **** jsonSourceClaim: [{"key":"email","value":"someone@example.com"}, {"key":"displayName","value":"Someone"}, {"key":"membershipNum","value":6353399}, {"key":"active","value": true}, {"key":"birthdate","value":"1980-09-23T00:00:00Z"}]
+  -  jsonSourceClaim: [{"key":"email","value":"someone@example.com"}, {"key":"displayName","value":"Someone"}, {"key":"membershipNum","value":6353399}, {"key":"active","value": true}, {"key":"birthdate","value":"1980-09-23T00:00:00Z"}]
 - 输入参数：
-    - **** errorOnMissingClaims: false
-    - **** includeEmptyClaims: false
-    - **** jsonSourceKeyName: key
-    - **** jsonSourceValueName: value
+    -  errorOnMissingClaims: false
+    -  includeEmptyClaims: false
+    -  jsonSourceKeyName: key
+    -  jsonSourceValueName: value
 - 输出声明：
-  - **电子邮件**："someone@example.com"
-  - **** displayName: "Someone"
-  - **** membershipNum: 6353399
-  - **** active: true
-  - **** birthdate: 1980-09-23T00:00:00Z
+  -  email: "someone@example.com"
+  - displayName  :"Someone"
+  - membershipNum  :6353399
+  -  active: true
+  - birthdate  :1980-09-23T00:00:00Z
 
 ## <a name="getnumericclaimfromjson"></a>GetNumericClaimFromJson
 
 从 JSON 数据中获取指定的数值 (long) 元素。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 注释 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputJson | 字符串 | 由声明转换用于获取声明的 ClaimTypes。 |
-| InputParameter | claimToExtract | 字符串 | 要提取的 JSON 元素的名称。 |
-| OutputClaim | extractedClaim | long | 调用此 ClaimsTransformation 后生成的 ClaimType，即 claimToExtract__ 输入参数中指定的元素值。 |
+| InputClaim | inputJson | string | 由声明转换用于获取声明的 ClaimTypes。 |
+| InputParameter | claimToExtract | string | 要提取的 JSON 元素的名称。 |
+| OutputClaim | extractedClaim | long | 调用此 ClaimsTransformation 后生成的 ClaimType，即 claimToExtract  输入参数中指定的元素值。 |
 
 在以下示例中，声明转换提取 JSON 数据中的 `id` 元素。
 
@@ -217,17 +217,50 @@ ms.locfileid: "78187587"
 ### <a name="example"></a>示例
 
 - 输入声明：
-  - **** inputJson: {"emailAddress": "someone@example.com", "displayName": "Someone", "id" : 6353399}
+  - inputJson  : {"emailAddress": "someone@example.com", "displayName":"Someone", "id" :6353399}
 - 输入参数
-    - **** claimToExtract:  id
+    -  claimToExtract:  id
 - 输出声明：
-    - **** extractedClaim: 6353399
+    -  extractedClaim:6353399
+
+## <a name="getsingleitemfromjson"></a>从Json获取单物项目
+
+从 JSON 数据获取第一个元素。
+
+| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputJson | string | 声明转换用于从 JSON 数据获取项的声明类型。 |
+| OutputClaim | key | string | JSON 中的第一个元素键。 |
+| OutputClaim | 值 | 字符串 | JSON 中的第一个元素值。 |
+
+在下面的示例中，声明转换从 JSON 数据中提取第一个元素（给定名称）。
+
+```XML
+<ClaimsTransformation Id="GetGivenNameFromResponse" TransformationMethod="GetSingleItemFromJson">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="json" TransformationClaimType="inputJson" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="givenNameKey" TransformationClaimType="key" />
+    <OutputClaim ClaimTypeReferenceId="givenName" TransformationClaimType="value" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>示例
+
+- 输入声明：
+  - **输入Json：**{"指定名称"："埃米尔"，"姓氏"："史密斯"*
+- 输出声明：
+  - **键**： 给定名称
+  - **值**： 埃米尔
+
 
 ## <a name="getsinglevaluefromjsonarray"></a>GetSingleValueFromJsonArray
 
 从 JSON 数据数组中获取第一个元素。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputJsonClaim | 字符串 | 由声明转换用于从 JSON 数组中获取项的 ClaimTypes。 |
 | OutputClaim | extractedClaim | 字符串 | 调用此 ClaimsTransformation 后生成的 ClaimType，即 JSON 数组中的第一个元素。 |
@@ -256,7 +289,7 @@ ms.locfileid: "78187587"
 
 将 XML 数据转换为 JSON 格式。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | xml | 字符串 | 由声明转换用于将数据从 XML 转换为 JSON 格式的 ClaimTypes。 |
 | OutputClaim | json | 字符串 | 调用此 ClaimsTransformation 后生成的 ClaimType，即采用 JSON 格式的数据。 |
@@ -294,3 +327,5 @@ ms.locfileid: "78187587"
   }
 }
 ```
+
+

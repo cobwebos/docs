@@ -1,23 +1,23 @@
 ---
 title: 定价层 - Azure 数据库，用于 PostgreSQL - 单个服务器
 description: 本文介绍了 Azure 数据库中的 PostgreSQL - 单服务器的计算和存储选项。
-author: jan-eng
-ms.author: janeng
+author: jasonwhowell
+ms.author: jasonh
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 2e5b01a271eb290229904fc98d1268760e01620d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e4e69b63e51bafe8ca0b032c22ca509f5a7e6a2
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243557"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770566"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的定价层
 
 在“基本”、“常规用途”和“内存优化”这三个不同的定价层中，Azure Database for PostgreSQL 服务器可以在其中的一个定价层中创建。 定价层的差异表现在可以预配的 vCore 中的计算量、每个 vCore 的内存，以及用于存储数据的存储技术。 所有资源都在 PostgreSQL 服务器级别预配。 一个服务器可以有一个或多个数据库。
 
-|    | **Basic** | **通用用途** | **内存优化** |
+|    | **基本** | **通用用途** | **内存优化** |
 |:---|:----------|:--------------------|:---------------------|
 | 计算的代 | 第 4 代、第 5 代 | 第 4 代、第 5 代 | 第 5 代 |
 | vCore 数 | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -29,7 +29,7 @@ ms.locfileid: "79243557"
 
 | 定价层 | 目标工作负荷 |
 |:-------------|:-----------------|
-| Basic | 需要轻型计算和 I/O 性能的工作负荷。 示例包括用于开发或测试的服务器，或不常使用的小型应用程序。 |
+| 基本 | 需要轻型计算和 I/O 性能的工作负荷。 示例包括用于开发或测试的服务器，或不常使用的小型应用程序。 |
 | 常规用途 | 大多数业务工作负荷。此类工作负荷需要均衡的计算和内存以及可缩放的 I/O 吞吐量。 相关示例包括用于托管 Web 和移动应用的服务器，以及其他企业应用程序。|
 | 内存优化 | 高性能数据库工作负荷。此类工作负荷需要内存中性能来实现更快的事务处理速度和更高的并发性。 相关示例包括用于处理实时数据的服务器，以及高性能事务性应用或分析应用。|
 
@@ -43,7 +43,7 @@ ms.locfileid: "79243557"
 
 预配的存储是指可供 Azure Database for PostgreSQL 服务器使用的存储容量。 此存储用于数据库文件、临时文件、事务日志和 PostgreSQL 服务器日志。 预配的总存储量也定义了可供服务器使用的 I/O 容量。
 
-|    | **Basic** | **通用用途** | **内存优化** |
+|    | **基本** | **通用用途** | **内存优化** |
 |:---|:----------|:--------------------|:---------------------|
 | 存储类型 | 基本存储 | 通用存储 | 通用存储 |
 | 存储大小 | 5 GB 到 1 TB | 5 GB 到 16 TB | 5 GB 到 16 TB |
@@ -51,7 +51,7 @@ ms.locfileid: "79243557"
 | IOPS | 变量 |3 IOPS/GB<br/>至少 100 IOPS<br/>最多 20，000 IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最多 20，000 IOPS |
 
 > [!NOTE]
-> 以下区域支持高达 16TB 和 20，000 IOPS 的存储：美国东部、美国东部 2、美国中部、美国西部、美国中北部、美国中南部、北欧、西欧、英国南部、英国西部、东南亚、东亚、日本东部、日本西部、韩国中部，韩国，澳大利亚东部，澳大利亚东南。
+> 以下区域支持高达 16TB 和 20，000 IOPS 的存储：美国东部、美国东部 2、美国中部、美国西部、美国中北部、美国中南部、北欧、西欧、英国南部、英国西部、东南亚、东亚、日本东部、日本西部、韩国中部、韩国南部、澳大利亚东部、澳大利亚东南部。
 >
 > 所有其他区域都支持高达 4TB 的存储空间和 6000 IOPS。
 >
@@ -63,7 +63,7 @@ ms.locfileid: "79243557"
 
 “基本”层不提供 IOPS 保证。 在“常规用途”和“内存优化”定价层中，IOPS 与预配的存储大小按 3:1 的比例缩放。
 
-可以通过 Azure 门户或 Azure CLI 命令监视 I/O 使用情况。 要监视的相关指标是[存储限制、存储百分比、使用的存储和 IO 百分比](concepts-monitoring.md)。
+可以通过 Azure 门户或 Azure CLI 命令监视 I/O 使用情况。 要监视的相关指标是[存储上限、存储百分比、已用存储和 IO 百分比](concepts-monitoring.md)。
 
 ### <a name="reaching-the-storage-limit"></a>达到存储限制
 

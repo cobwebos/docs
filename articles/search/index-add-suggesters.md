@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: 1e2a837acef976b6b872c2d4002ee49d662ad594
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.date: 04/21/2020
+ms.openlocfilehash: 7eb2988628d60fa72c7d83b81a58a1e0fae5de33
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641322"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770103"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>创建建议程序以在查询中启用自动完成和建议的结果
 
-在 Azure 认知搜索中，通过添加到[搜索索引](search-what-is-an-index.md)**的建议器**构造启用"按类型搜索"。 建议者支持两个体验：*自动完成*，它完成术语或短语，以及返回匹配文档的简短列表*的建议*。  
+在 Azure 认知搜索中，通过添加到[搜索索引](search-what-is-an-index.md)**的建议器**构造启用"按类型搜索"。 建议器支持两种体验：*自动完成*，完成整个术语查询的部分输入，以及邀请单击到特定匹配*项的建议*。 自动完成生成查询。 建议生成匹配的文档。
 
 以下屏幕截图在[C# 中创建第一个应用](tutorial-csharp-type-ahead-and-suggestions.md)说明了这两个示例。 自动完成预期一个潜在的术语，用"in"完成"tw"。 建议是迷你搜索结果，其中像酒店名称这样的字段表示索引中的匹配酒店搜索文档。 有关建议，可以显示任何提供描述性信息的字段。
 
@@ -29,31 +29,40 @@ ms.locfileid: "81641322"
 
 + 在查询请求中，调用[下面列出的 API](#how-to-use-a-suggester) 之一。
 
-基于字符串字段的按字段启用搜索即类型支持。 若要获得屏幕截图中所示的类似体验，可以在同一搜索解决方案中实现这两种自动提示行为。 这两个请求针对特定索引的文档集合，在用户提供至少包含三个字符的输入字符串后，将返回响应。**
+基于字符串字段的按字段启用搜索即类型支持。 若要获得屏幕截图中所示的类似体验，可以在同一搜索解决方案中实现这两种自动提示行为。 这两个请求针对特定索引的文档集合，在用户提供至少包含三个字符的输入字符串后，将返回响应。 
 
 ## <a name="what-is-a-suggester"></a>什么是建议者？
 
-建议程序是一种数据结构，通过存储用于在部分查询上匹配的前缀，支持按类型搜索行为。 与标记化术语类似，前缀存储在倒置索引中，对于建议器字段集合中指定的每个字段一个。
-
-创建前缀时，建议器有自己的分析链，类似于用于全文搜索的分析链。 但是，与全文搜索中的分析不同，建议器只能在使用标准 Lucene 分析器（默认）或[语言分析器](index-add-language-analyzers.md)的字段上运行。 使用[自定义分析器](index-add-custom-analyzers.md)或[预定义分析仪](index-add-custom-analyzers.md#predefined-analyzers-reference)（标准 Lucene 除外）的字段明确不允许防止不良结果。
-
-> [!NOTE]
-> 如果需要解决分析器约束，请使用两个单独的字段来访问同一内容。 这样，就可以在其中一个字段中使用建议器，并使用自定义分析器配置来设置其他字段。
+建议程序是一种内部数据结构，通过存储用于在部分查询上匹配的前缀，支持按类型搜索行为。 与标记化术语一样，前缀存储在倒置索引中，每个字段都存储在建议器字段集合中。
 
 ## <a name="define-a-suggester"></a>定义建议者
 
-要创建建议程序，请向[索引架构](https://docs.microsoft.com/rest/api/searchservice/create-index)添加一个，并[设置每个属性](#property-reference)。 在索引中，可以有一个建议器（具体来说，建议者集合中有一个建议器）。 创建建议器的最佳时间是定义将使用它的字段。
+要创建建议程序，请向[索引架构](https://docs.microsoft.com/rest/api/searchservice/create-index)添加一个，并[设置每个属性](#property-reference)。 创建建议器的最佳时间是定义将使用它的字段。
+
++ 仅使用字符串字段
+
++ 在现场使用默认标准 Lucene`"analyzer": null`分析器 （ ） 或[语言分析器](index-add-language-analyzers.md)（例如`"analyzer": "en.Microsoft"`），
 
 ### <a name="choose-fields"></a>选择字段
 
-尽管建议者具有多个属性，但它主要是启用搜索即用式体验的字段的集合。 对于建议，请选择最能表示单个结果的字段。 区分多个匹配项的名称、标题或其他唯一字段最符合最佳功能。 如果字段由重复值组成，则建议由相同的结果组成，用户不知道要单击哪个字段。
+尽管建议器具有多个属性，但它主要是字符串字段的集合，您为其启用搜索即用式体验。 每个索引都有一个建议器，因此建议者列表必须包含所有为建议和自动完成贡献内容的字段。
 
-确保每个字段使用在索引期间执行词法分析的分析器。 您可以使用默认标准 Lucene 分析器 （`"analyzer": null`） 或[语言分析器](index-add-language-analyzers.md)（例如`"analyzer": "en.Microsoft"`。 
+自动完成从更大的字段池中获益，因为附加内容具有更大的期限完成潜力。
 
-您选择的分析器决定了字段如何标记并随后预定。 例如，对于连字符字符串（如"上下文敏感"），使用语言分析器将导致这些令牌组合："上下文"、"敏感"、"上下文敏感"。 如果使用标准 Lucene 分析器，则连字符字符串将不存在。
+另一方面，当字段选择是选择性的时，建议会产生更好的结果。 请记住，该建议是搜索文档的代理，因此您需要最能表示单个结果的字段。 区分多个匹配项的名称、标题或其他唯一字段最符合最佳功能。 如果字段由重复值组成，则建议由相同的结果组成，用户不知道要单击哪个字段。
 
-> [!TIP]
-> 请考虑使用[分析文本 API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)来深入了解术语如何标记并随后预缀。 生成索引后，可以在字符串上尝试各种分析器以查看它发出的令牌。
+为了满足"即搜索即用"体验，添加自动完成所需的所有字段，然后使用 **$select、$top、$filter**和**搜索字段**来控制 **$select**建议的结果。 **$filter**
+
+### <a name="choose-analyzers"></a>选择分析仪
+
+您选择的分析器决定了字段如何标记并随后预定。 例如，对于连字符字符串（如"上下文敏感"），使用语言分析器将导致这些令牌组合："上下文"、"敏感"、"上下文敏感"。 如果使用标准 Lucene 分析器，则连字符字符串将不存在。 
+
+在评估分析器时，请考虑使用[分析文本 API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)来深入了解术语如何标记并随后预缀。 生成索引后，可以在字符串上尝试各种分析器以查看令牌输出。
+
+使用[自定义分析器](index-add-custom-analyzers.md)或[预定义分析仪](index-add-custom-analyzers.md#predefined-analyzers-reference)（标准 Lucene 除外）的字段明确不允许防止不良结果。
+
+> [!NOTE]
+> 如果需要解决分析器约束，例如，如果需要关键字或 ngram 分析器用于某些查询方案，则应对同一内容使用两个单独的字段。 这样，就可以在其中一个字段中使用建议器，并使用自定义分析器配置来设置其他字段。
 
 ### <a name="when-to-create-a-suggester"></a>何时创建建议器
 
@@ -124,7 +133,7 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 
 ## <a name="property-reference"></a>属性参考
 
-|properties      |说明      |
+|属性      |说明      |
 |--------------|-----------------|
 |`name`        |建议器的名称。|
 |`searchMode`  |用于搜索候选短语的策略。 当前支持的唯一模式是`analyzingInfixMatching`，当前与 术语开头匹配。|
@@ -161,7 +170,7 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
 
 ## <a name="next-steps"></a>后续步骤
 
-建议查看以下示例来了解如何构建请求。
+我们建议使用以下文章来详细了解请求的表述方式。
 
 > [!div class="nextstepaction"]
 > [向客户端代码添加自动完成和建议](search-autocomplete-tutorial.md) 

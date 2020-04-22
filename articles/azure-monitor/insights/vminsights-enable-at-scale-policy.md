@@ -1,19 +1,19 @@
 ---
-title: 使用 Azure 策略为 VM 启用 Azure 监视器
+title: 使用 Azure Policy 启用用于 VM 的 Azure Monitor
 description: 本文介绍如何使用 Azure Policy 为多个 Azure 虚拟机或虚拟机规模集启用用于 VM 的 Azure Monitor。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 7069f2cc96b8876f5514acfa4ba49274b61be46f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73c18d45136eea90ad29dc1bd40c4539dddc0ee6
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282930"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767253"
 ---
-# <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>使用 Azure 策略为 VM 启用 Azure 监视器
+# <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>使用 Azure Policy 启用用于 VM 的 Azure Monitor
 
 本文介绍如何使用 Azure 策略为 Azure 虚拟机或虚拟机缩放集启用 Azure 监视器。 在此过程结束时，即已成功配置并启用 Log Analytics 和依赖项代理，同时已识别不合规的虚拟机。
 
@@ -59,7 +59,7 @@ VM 策略覆盖范围的 Azure 监视器简化了大规模发现、管理和启�
 
 下表详细提供了策略覆盖范围页上显示的信息及其解释。
 
-| 函数 | 描述 | 
+| 函数 | 说明 | 
 |----------|-------------| 
 | **范围** | 你拥有的或者继承了其访问权限的管理组和订阅，可以通过管理组层次结构向下钻取。|
 | **作用** | 你在该范围内的角色，可能是读取者、所有者或参与者。 在某些情况下，此项可能显示为空白，表示你可能有权访问订阅，但无权访问该订阅所属的管理组。 其他列中的信息根据角色的不同而异。 在确定可以查看哪些数据和执行哪些操作（包括分配策略或计划（所有者）、对其进行编辑，或查看合规性）时，角色非常关键。 |
@@ -67,7 +67,7 @@ VM 策略覆盖范围的 Azure 监视器简化了大规模发现、管理和启�
 | **分配覆盖范围** | 策略或计划覆盖的 VM 百分比。 |
 | **分配状态** | 有关策略或计划分配状态的信息。 |
 | **合规的 VM 数** | 符合策略或计划的 VM 数目。 对于“启用用于 VM 的 Azure Monitor”计划，这是包含 Log Analytics 代理和依赖项代理的 VM 数目。**** 在某些情况下，可能会由于没有分配、VM 或足够的权限，此项显示为空白。 “合规状态”下会提供信息。**** |
-| **合 规** | 整体合规性是不同合规资源的总和除以所有唯一资源。 |
+| **合规性** | 整体合规性是不同合规资源的总和除以所有唯一资源。 |
 | **合规性状态** | 有关策略或计划分配的合规状态的信息。|
 
 分配策略或计划时，在分配中选择的范围可能是列出的范围或者其子集。 例如，你可能为某个订阅创建了分配（策略范围），但没有为管理组创建分配（覆盖范围）。 在这种情况下，“分配覆盖范围”的值表示策略或计划范围内的 VM 数除以覆盖范围内的 VM 数。**** 另举一例。你可能从策略范围中排除了一些 VM、资源组或订阅。 如果该值为空白，表示策略或计划不存在，或者你没有权限。 “分配状态”下会提供信息。****
@@ -79,13 +79,13 @@ VM 策略覆盖范围的 Azure 监视器简化了大规模发现、管理和启�
 - 将计划分配到范围：管理组、订阅或资源组。
 - 检查和修正合规性结果。
 
-有关分配 Azure Policy 的详细信息，请参阅 [Azure Policy 概述](../../governance/policy/overview.md#policy-assignment)，并在继续操作前查看[管理组概述](../../governance/management-groups/overview.md)。
+有关分配 Azure Policy 的详细信息，请参阅 [Azure Policy 概述](../../governance/policy/overview.md#assignments)，并在继续操作前查看[管理组概述](../../governance/management-groups/overview.md)。
 
 ### <a name="policies-for-azure-vms"></a>Azure VM 的策略
 
 下表列出了 Azure VM 的策略定义：
 
-|“属性” |描述 |类型 |
+|名称 |说明 |类型 |
 |-----|------------|-----|
 |启用用于 VM 的 Azure Monitor |在指定范围（管理组、订阅或资源组）中启用用于虚拟机的 Azure Monitor。 将 Log Analytics 工作区用作参数。 |计划 |
 |审核依赖项代理部署 - VM 映像 (OS) 未列出 |如果 VM 映像 (OS) 未在列表中定义且未安装代理，则报告 VM 不合规。 |策略 |
@@ -99,7 +99,7 @@ VM 策略覆盖范围的 Azure 监视器简化了大规模发现、管理和启�
 
 下表列出了 Azure 虚拟机规模集的策略定义：
 
-|“属性” |描述 |类型 |
+|名称 |说明 |类型 |
 |-----|------------|-----|
 |为虚拟机规模集启用 Azure Monitor |在指定范围（管理组、订阅或资源组）中为虚拟机规模集启用 Azure Monitor。 将 Log Analytics 工作区用作参数。 注意：如果规模设置升级策略设置为"手动"，则通过在设置上调用升级来应用扩展程序。 在 CLI 中，`az vmss update-instances`这是 。 |计划 |
 |审核虚拟机规模集中的依赖项代理部署 - VM 映像 (OS) 未列出 |如果虚拟机规模集映像 (OS) 未在列表中定义且未安装代理，则报告 VM 不合规。 |策略 |
@@ -111,7 +111,7 @@ VM 策略覆盖范围的 Azure 监视器简化了大规模发现、管理和启�
 
 以下介绍独立策略（未包含在计划中）：
 
-|“属性” |描述 |类型 |
+|名称 |说明 |类型 |
 |-----|------------|-----|
 |审核 VM 的 Log Analytics 工作区 — 报告不匹配 |如果 VM 未登录到策略或计划分配中指定的 Log Analytics 工作区，则报告 VM 不合规。 |策略 |
 
@@ -121,7 +121,7 @@ VM 策略覆盖范围的 Azure 监视器简化了大规模发现、管理和启�
 
 分配策略或计划时，在分配中选择的范围可能是此处列出的范围或者其子集。 例如，你可能为订阅创建了分配（策略范围），但没有为管理组创建分配（覆盖范围）。 在这种情况下，覆盖范围百分比表示策略或计划范围内的 VM 数除以覆盖范围内的 VM 数。 另举一例。你可能从策略范围中排除了一些 VM、资源组或订阅。 如果该值为空白，表示策略或计划不存在，或者你没有权限。 “分配状态”下会提供信息。****
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 2. 在 Azure 门户中，选择 **"监视器**"。 
 
@@ -151,7 +151,7 @@ VM 策略覆盖范围的 Azure 监视器简化了大规模发现、管理和启�
 
 以下矩阵映射了计划每种可能的合规状态。  
 
-| 符合性状态 | 描述 | 
+| 符合性状态 | 说明 | 
 |------------------|-------------|
 | **兼容** | 该范围内的所有 VM 都部署了 Log Analytics 和依赖项代理。|
 | **不合规** | 该范围内并非所有 VM 都部署了 Log Analytics 和依赖项代理，可能需要修正。|
@@ -163,7 +163,7 @@ VM 策略覆盖范围的 Azure 监视器简化了大规模发现、管理和启�
 
 下表映射了计划的每种可能的分配状态。
 
-| 分配状态 | 描述 | 
+| 分配状态 | 说明 | 
 |------------------|-------------|
 | **成功** | 该范围内的所有 VM 都部署了 Log Analytics 和依赖项代理。|
 | **警告** | 订阅不在管理组下。|
@@ -203,10 +203,10 @@ VM 策略覆盖范围的 Azure 监视器简化了大规模发现、管理和启�
 将计划分配到管理组或订阅后，随时可以编辑该计划，以修改以下属性：
 
 - 分配名称
-- 描述
+- 说明
 - 分配者
 - Log Analytics 工作区
-- 异常
+- 例外
 
 ## <a name="next-steps"></a>后续步骤
 

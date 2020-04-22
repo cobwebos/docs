@@ -1,23 +1,23 @@
 ---
 title: 定价层 - Azure Database for MariaDB
 description: 了解 Azure Database for MariaDB 的各种定价层，包括计算代系、存储类型、存储大小、vCore 数、内存和备份保留期。
-author: jan-eng
-ms.author: janeng
+author: jasonwhowell
+ms.author: jasonh
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 39af6850810fa471003cea27ed274972fb2ff046
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c057bebf94362b3b9e42db9d311e99f1e35c651
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528024"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770126"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB 定价层
 
 在“基本”、“常规用途”和“内存优化”这三个不同的定价层中，Azure Database for MariaDB 服务器可以在其中的一个定价层中创建。 定价层的差异表现在可以预配的 vCore 中的计算量、每个 vCore 的内存，以及用于存储数据的存储技术。 所有资源都在 MariaDB 服务器级别预配。 一个服务器可以有一个或多个数据库。
 
-|    | **Basic** | **通用用途** | **内存优化** |
+|    | **基本** | **通用用途** | **内存优化** |
 |:---|:----------|:--------------------|:---------------------|
 | 计算的代 | 第 5 代 |第 5 代 | 第 5 代 |
 | vCore 数 | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -29,7 +29,7 @@ ms.locfileid: "79528024"
 
 | 定价层 | 目标工作负荷 |
 |:-------------|:-----------------|
-| Basic | 需要轻型计算和 I/O 性能的工作负荷。 示例包括用于开发或测试的服务器，或不常使用的小型应用程序。 |
+| 基本 | 需要轻型计算和 I/O 性能的工作负荷。 示例包括用于开发或测试的服务器，或不常使用的小型应用程序。 |
 | 常规用途 | 大多数业务工作负荷。此类工作负荷需要均衡的计算和内存以及可缩放的 I/O 吞吐量。 相关示例包括用于托管 Web 和移动应用的服务器，以及其他企业应用程序。|
 | 内存优化 | 高性能数据库工作负荷。此类工作负荷需要内存中性能来实现更快的事务处理速度和更高的并发性。 相关示例包括用于处理实时数据的服务器，以及高性能事务性应用或分析应用。|
 
@@ -43,7 +43,7 @@ ms.locfileid: "79528024"
 
 预配的存储是指可供 Azure Database for MariaDB 服务器使用的存储容量。 此存储可用于数据库文件、临时文件、事务日志和 MariaDB 服务器日志。 预配的总存储量也定义了可供服务器使用的 I/O 容量。
 
-|    | **Basic** | **通用用途** | **内存优化** |
+|    | **基本** | **通用用途** | **内存优化** |
 |:---|:----------|:--------------------|:---------------------|
 | 存储类型 | 基本存储 | 通用存储 | 通用存储 |
 | 存储大小 | 5 GB 到 1 TB | 5GB 到 4TB | 5GB 到 4TB |

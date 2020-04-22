@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b199854867c48906061cff65bad21e514456c911
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 845948d9aec28ee79a11fb11aaef4cfbf1b263fa
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81378699"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770552"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>使用 Azure 活动目录配置和启用用户进行基于 SMS 的身份验证（预览）
 
@@ -40,7 +40,8 @@ ms.locfileid: "81378699"
 * 需要在 Azure AD 租户中具有*全局管理员*权限才能启用基于 SMS 的身份验证。
 * 在文本消息身份验证方法策略中启用的每个用户都必须获得许可，即使他们不使用它。 每个启用的用户必须具有以下 Azure AD 或 Microsoft 365 许可证之一：
     * [Azure AD Premium P1 或 P2][azuread-licensing]
-    * [微软 365 F1 或 F3][m365-firstline-workers-licensing]
+    * [微软 365 （M365） F1 或 F3][m365-firstline-workers-licensing]
+    * [企业移动性 + 安全 （EMS） E3 或 E5][ems-licensing]或[Microsoft 365 （M365） E3 或 E5][m365-licensing]
 
 ## <a name="limitations"></a>限制
 
@@ -63,7 +64,7 @@ ms.locfileid: "81378699"
 首先，让我们为 Azure AD 租户启用基于 SMS 的身份验证。
 
 1. 以*全局管理员*身份登录到[Azure 门户][azure-portal]。
-1. 搜索并选择“Azure Active Directory”****。
+1. 搜索并选择“Azure Active Directory”  。
 1. 从 Azure 活动目录窗口左侧的导航菜单中，选择 **"安全>身份验证方法>身份验证方法策略（预览）。**
 
     [![](media/howto-authentication-sms-signin/authentication-method-policy-cropped.png "Browse to and select the Authentication method policy (preview) window in the Azure portal")](media/howto-authentication-sms-signin/authentication-method-policy.png#lightbox)
@@ -94,7 +95,7 @@ ms.locfileid: "81378699"
 
 当为 SMS 签名设置电话号码时，它也可以与[Azure 多重身份验证][tutorial-azure-mfa]和[自助服务密码重置][tutorial-sspr]一起使用。
 
-1. 搜索并选择“Azure Active Directory”****。
+1. 搜索并选择“Azure Active Directory”  。
 1. 从 Azure 活动目录窗口左侧的导航菜单中，选择 **"用户**"。
 1. 在上一节中（如*Contoso User）* 中选择启用基于 SMS 的身份验证的用户，然后选择**身份验证方法**。
 1. 输入用户的电话号码，包括国家/地区代码，如 *#1 xxxxxxxxx*。 Azure 门户验证电话号码的格式正确。
@@ -161,3 +162,5 @@ ms.locfileid: "81378699"
 [office]: https://www.office.com
 [m365-firstline-workers-licensing]: https://www.microsoft.com/licensing/news/m365-firstline-workers
 [azuread-licensing]: https://azure.microsoft.com/pricing/details/active-directory/
+[ems-licensing]: https://www.microsoft.com/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing
+[m365-licensing]: https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans

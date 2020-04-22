@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 1054328216d0517b3f450ba4fe08f3bef32d68f7
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 645baf9102785d223fd1f23ae52a4609725f795b
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81431717"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770815"
 ---
 # <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>在 Azure 同步分析中使用 SQL 按需（预览）查询 JSON 文件
 
@@ -145,4 +145,4 @@ WHERE
 本系列的下一篇文章将演示如何：
 
 - [查询文件夹和多个文件](query-folders-multiple-csv-files.md)
-- [创建和使用视图](create-use-views.md)。
+- [创建和使用视图](create-use-views.md)

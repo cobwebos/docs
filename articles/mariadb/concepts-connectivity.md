@@ -2,17 +2,17 @@
 title: 瞬态连接错误 - MariaDB 的 Azure 数据库
 description: 了解如何处理 Azure Database for MariaDB 的暂时性连接错误。
 keywords: mysql 连接, 连接字符串, 连接问题, 暂时性错误, 连接错误
-author: jan-eng
-ms.author: janeng
+author: jasonwhowell
+ms.author: jasonh
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 26a6ac4412f1dff450cc087382dc9b0fce443f0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d162b5123cdaabe17859863c148f6483175d1e1
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79532189"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770230"
 ---
 # <a name="handling-of-transient-connectivity-errors-for-azure-database-for-mariadb"></a>处理 Azure Database for MariaDB 的暂时性连接错误
 
@@ -20,7 +20,7 @@ ms.locfileid: "79532189"
 
 ## <a name="transient-errors"></a>暂时性错误
 
-暂时性错误也称为暂时性故障，是一种可以自行解决的错误。 这些错误往往表现为与数据库服务器的连接断开。 此外，无法与服务器建立的新连接。 例如，在发生硬件或网络故障时，可能会出现暂时性错误。 另一个原因可能是正在推出的 PaaS 服务的新版本。系统可在 60 秒内自动缓解大多数这些事件。 设计和开发云中的应用程序时，预料到会出现暂时性错误是最佳做法。 假设这些错误随时可能在任意组件中发生，并部署相应的逻辑来应对这种情况。
+暂时性错误也称为暂时性故障，是一种可以自行解决的错误。 这些错误往往表现为与数据库服务器的连接断开。 此外，无法与服务器建立的新连接。 例如，在发生硬件或网络故障时，可能会出现暂时性错误。 另一个可能的原因是正在推出 PaaS 服务的新版本。系统在 60 秒以内可自动解决其中的大部分事件。 设计和开发云中的应用程序时，预料到会出现暂时性错误是最佳做法。 假设这些错误随时可能在任意组件中发生，并部署相应的逻辑来应对这种情况。
 
 ## <a name="handling-transient-errors"></a>处理暂时性错误
 

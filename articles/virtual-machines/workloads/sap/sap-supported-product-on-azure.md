@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/16/2020
+ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 56341affee721b3ee6676da401e03dbbca84e597
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 0cfc66789360f78c927dd157305074ed5ea6f32a
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538233"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768444"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Azure 部署支持哪些 SAP 软件
 本文介绍如何了解 Azure 部署支持哪些 SAP 软件，以及什么是必要的操作系统版本或 DBMS 版本。
@@ -139,6 +139,7 @@ Azure 库伯奈斯服务 （AKS） 中的 SAP Datahub/Vora 支持在[SAP 支持�
 
 - Windows 操作系统平台上的 SQL Server 和 Oracle。 与 SAP NetWeaver 相同的最小版本适用。 有关详细信息，请参阅[SAP 支持说明#1928533](https://launchpad.support.sap.com/#/notes/1928533)
 - 在红帽和SUSE Linux上的SAP HANA。 SAP HANA 认证的 VM 类型是必需的，[本文档前面所述](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#sap-hana-support)。 SAP（Hybris） 商务平台被视为 OLTP 工作负载
+- SQL Azure DB 截至 SAP（Hybris） 商务平台版本 1811
 
 
 

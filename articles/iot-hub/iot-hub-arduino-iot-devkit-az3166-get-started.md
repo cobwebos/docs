@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 0c7566df870b3c41b1f1dd7d4a4129ff9d9d9407
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.custom: mqtt
+ms.openlocfilehash: 1c6af4f44cd16405d1ef12ae909085220b0d072d
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81481739"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733597"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>将 IoT DevKit AZ3166 连接到 Azure IoT 中心
 
@@ -32,11 +33,11 @@ ms.locfileid: "81481739"
 
 你可以从[代码示例库中](https://docs.microsoft.com/samples/browse/?term=mxchip)找到所有 DevKit 教程的源代码。
 
-## <a name="what-you-need"></a>所需条件
+## <a name="what-you-need"></a>需要什么
 
-* 一块 MXChip IoT DevKit 开发板和一根 Micro-USB 数据线。 [现在就拿来](https://aka.ms/iot-devkit-purchase)。
+* 一块 MXChip IoT DevKit 开发板和一根 Micro-USB 数据线。 [立即获取](https://aka.ms/iot-devkit-purchase)。
 * 一台运行 Windows 10、macOS 10.10+ 或 Ubuntu 18.04+ 的计算机。
-* 一个有效的 Azure 订阅。 [激活免费试用 30 天试用的 Microsoft Azure 帐户](https://azureinfo.microsoft.com/us-freetrial.html)。
+* 一个有效的 Azure 订阅。 [激活 30 天免费试用版 Microsoft Azure 帐户](https://azureinfo.microsoft.com/us-freetrial.html)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
   
@@ -75,7 +76,7 @@ ms.locfileid: "81481739"
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
-   **MyNodeDevice：** 您正在注册的设备的名称。 如图所示，请使用**MyNodeDevice。** 如果为设备选择其他名称，则需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
+   **MyNodeDevice**：所注册的设备的名称。 如下所示请使用 MyNodeDevice 。  如果为设备选择其他名称，则需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyNodeDevice
@@ -175,7 +176,7 @@ DevKit 将连接到 IoT 中心内特定于设备的终结点，并发送温度�
 
     ![安装 Azure IoT Tools](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-azure-iot-tools.png)
 
-    或者使用此直接 URL：`vscode:extension/vsciot-vscode.azure-iot-tools`
+    或者将此 URL 复制并粘贴到浏览器窗口中：`vscode:extension/vsciot-vscode.azure-iot-tools`
 
     > [!NOTE]
     > Azure IoT Tools 扩展包包含用于在各种 IoT devkit 设备上进行开发和调试的 [Azure IoT Device Workbench](https://aka.ms/iot-workbench)。 [Azure IoT 中心扩展](https://aka.ms/iot-toolkit)包也包含在 Azure IoT 工具扩展包中，用于管理和与 Azure IoT 中心进行交互。
@@ -245,7 +246,7 @@ IoT DevKit 包含丰富的示例库，可以使用这些示例来了解如何将
 
 1. 单击`F1`以打开命令调色板，键入并选择**Azure IoT 设备工作台：打开示例..."** 然后选择**IoT 开发人员工具包**作为板。
 
-1. 在 IoT Workbench 的“示例”页中，找到“入门”并单击“打开示例”。******** 然后选择用于下载示例代码的默认路径。
+1. 在 IoT Workbench 的“示例”页中，找到“入门”并单击“打开示例”。   然后选择用于下载示例代码的默认路径。
 
     ![打开示例](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/open-sample.png)
 

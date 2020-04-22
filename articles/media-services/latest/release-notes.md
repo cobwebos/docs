@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 02/03/2020
+ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 76ef9f92b6b6633982242ccafab1950e0ef5f410
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: b4849b4fbfdbaece46f5669f4c242e864b1ca533
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582800"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769754"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -35,7 +35,13 @@ ms.locfileid: "80582800"
 > 可以使用 [Azure 门户](https://portal.azure.com/)执行以下操作：管理 v3 [直播活动](live-events-outputs-concept.md)、查看 v3 [资产](assets-concept.md)、获取有关访问 API 的信息。 对于其他所有管理任务（例如，转换和作业），请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
 
 有关详细信息，请参阅[有关从媒体服务 v2 迁移到 v3 的指导](migrate-from-v2-to-v3.md#known-issues)。
- 
+
+## <a name="april-2020"></a>2020 年 4 月
+
+### <a name="improvements-in-documentation"></a>文档的改进
+
+Azure 媒体播放器文档已迁移到[Azure 文档](../azure-media-player/azure-media-player-overview.md)。
+
 ## <a name="january-2020"></a>2020 年 1 月
 
 ### <a name="improvements-in-media-processors"></a>媒体处理器的改进
@@ -361,4 +367,5 @@ CMAF 和“cbcs”加密支持 Apple HLS (iOS 11+) 以及支持 CMAF 的 MPEG-DA
 ## <a name="next-steps"></a>后续步骤
 
 - [概述](media-services-overview.md)
+- [媒体服务 v3 文档更新](docs-release-notes.md)
 - [媒体服务 v2 发行说明](../previous/media-services-release-notes.md)

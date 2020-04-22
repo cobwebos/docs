@@ -4,12 +4,12 @@ description: Azure 中的警报概述。 警报、经典警报和警报界面。
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: 7ca77531ed3e1fae8ec297e430597452c7512aea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e02c23623062f5cb3e4c597b0bb257b30aa9f44a
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274783"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769771"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure 中的警报概述 
 
@@ -18,7 +18,7 @@ ms.locfileid: "79274783"
 ## <a name="what-are-alerts-in-microsoft-azure"></a>什么是 Microsoft Azure 中的警报？
 在监视数据中发现重要情况时，警报会以主动的方式通知你。 有了警报，你就可以在系统的用户注意到问题之前确定和解决这些问题。 
 
-本文讨论 Azure Monitor 中的统一警报体验，其包括以前由 Log Analytics 和 Application Insights 管理的警报。 [以前的警报体验](alerts-classic.overview.md)和警报类型称为“经典警报”。** 选择警报页顶部的“查看经典警报”即可查看这个较旧的体验和较旧的警报类型。**** 
+本文讨论 Azure Monitor 中的统一警报体验，其包括以前由 Log Analytics 和 Application Insights 管理的警报。 [以前的警报体验](alerts-classic.overview.md)和警报类型称为“经典警报”。  选择警报页顶部的“查看经典警报”即可查看这个较旧的体验和较旧的警报类型。  
 
 ## <a name="overview"></a>概述
 
@@ -30,21 +30,21 @@ ms.locfileid: "79274783"
 
 下面是警报规则的关键属性：
 
-**目标资源**：定义可用于警报的范围和信号。 目标可以是任何 Azure 资源。 示例目标：虚拟机、存储帐户、虚拟机规模集、Log Analytics 工作区或 Application Insights 资源。 对于某些资源（例如虚拟机）来说，可以将多个资源指定为警报规则的目标。
+**目标资源**：定义适用于警报的范围和信号。 目标可以是任何 Azure 资源。 示例目标：虚拟机、存储帐户、虚拟机规模集、Log Analytics 工作区或 Application Insights 资源。 对于某些资源（例如虚拟机）来说，可以将多个资源指定为警报规则的目标。
 
 **信号**：由目标资源发出。 信号可以是以下类型：指标、活动日志、Application Insights 和日志。
 
-**条件**：应用于目标资源的信号和逻辑的组合。 示例： 
+**条件**：应用于目标资源的信号和逻辑的组合。 示例: 
 
 - CPU 百分比 > 70%
 - 服务器响应时间 > 4 毫秒 
 - 日志查询的结果计数 > 100
 
-**警报名称**：用户配置的警报规则的特定名称。
+**警报名称**：用户配置的警报规则的具体名称。
 
-**警报说明**：由用户配置的警报规则的说明。
+**警报说明**：用户配置的警报规则的说明。
 
-**严重性**：满足警报规则中指定的条件后警报的严重性。 严重性的范围为 0 到 4。
+**严重性**：警报规则中指定的条件符合后确定的警报严重性。 严重性的范围为 0 到 4。
 
 - 严重性为 0 = 严重
 - 严重性为 1 = 错误
@@ -56,7 +56,7 @@ ms.locfileid: "79274783"
 
 ## <a name="what-you-can-alert-on"></a>可以报警的内容
 
-您可以对指标和日志发出警报，如[监视数据源](../../azure-monitor/platform/data-sources.md)中所述。 这些检查包括但不限于：
+可以按照[监视数据源](../../azure-monitor/platform/data-sources.md)中的说明，针对指标和日志发出警报。 这些检查包括但不限于：
 
 - 指标值
 - 日志搜索查询
@@ -72,17 +72,17 @@ ms.locfileid: "79274783"
 | Application Insights | Web 可用性测试 | 不支持。 请参阅 [Web 测试警报](../../azure-monitor/app/monitor-web-app-availability.md)。 适用于任何经检测可将数据发送到 Application Insights 的网站。 网站的可用性或响应度低于预期时，就会收到通知。 |
 
 ## <a name="manage-alerts"></a>管理警报
-可以设置警报状态来指定它在解决过程中所处的阶段。 符合警报规则中指定的条件以后，就会创建或触发警报，其状态为“新”。** 可以在确认警报和关闭警报时更改状态。 所有状态更改都存储在警报历史记录中。
+可以设置警报状态来指定它在解决过程中所处的阶段。 符合警报规则中指定的条件以后，就会创建或触发警报，其状态为“新”。  可以在确认警报和关闭警报时更改状态。 所有状态更改都存储在警报历史记录中。
 
 支持以下警报状态。
 
-| 状态 | 描述 |
+| 状态 | 说明 |
 |:---|:---|
 | 新建 | 只是检测到了问题，但尚未审查问题。 |
 | 已确认 | 管理员已审查警报，并已开始进行处理。 |
 | 已关闭 | 问题已解决。 关闭某个警报后，可通过将其更改为另一种状态来重新打开它。 |
 
-*警报状态*不同于且独立于*监视条件*。 警报状态是由用户设置的。 监视条件是由系统设置的。 当警报触发后，警报的监视条件设置为“已触发”**。 当导致警报触发的基础条件解除后，监视条件会设置为“已解决”。** 在用户更改警报状态之前，警报状态不会改变。 了解[如何更改警报和智能组的状态](https://aka.ms/managing-alert-smart-group-states)。
+*警报状态*不同于且独立于*监视条件*。 警报状态是由用户设置的。 监视条件是由系统设置的。 当警报触发后，警报的监视条件设置为“已触发”  。 当导致警报触发的基础条件解除后，监视条件会设置为“已解决”。  在用户更改警报状态之前，警报状态不会改变。 了解[如何更改警报和智能组的状态](https://aka.ms/managing-alert-smart-group-states)。
 
 ## <a name="smart-groups"></a>智能组 
 
@@ -103,7 +103,7 @@ ms.locfileid: "79274783"
 
 可以通过选择页面顶部的下拉菜单中的值，来对此视图进行筛选。
 
-| 列 | 描述 |
+| 列 | 说明 |
 |:---|:---|
 | 订阅 | 选择要查看其警报的 Azure 订阅。 （可选）可以选择你的所有订阅。 视图中仅包含你在所选订阅中有权访问的警报。 |
 | 资源组 | 选择单个资源组。 只有包含选定资源组中的目标的警报才会包含在视图中。 |
@@ -111,7 +111,7 @@ ms.locfileid: "79274783"
 
 选择“警报”页面顶部的以下值打开另一个页面：
 
-| “值” | 描述 |
+| Value | 说明 |
 |:---|:---|
 | 警报总数 | 符合选定条件的警报总数。 选择此值会打开未经筛选的“所有警报”视图。 |
 | 智能组 | 从符合选定条件的警报创建的智能组总数。 选择此值会在“所有警报”视图中打开智能组列表。
@@ -119,13 +119,16 @@ ms.locfileid: "79274783"
 
 
 ## <a name="manage-alert-rules"></a>管理警报规则
-若要显示“规则”页，请选择“管理警报规则”。******** “规则”页是用于跨 Azure 订阅管理所有警报规则的一个地方。 此页列出所有警报规则，这些规则可以根据目标资源、资源组、规则名称或状态排序。 还可以在此页中编辑、启用或禁用警报规则。  
+若要显示“规则”页，请选择“管理警报规则”。   “规则”页是用于跨 Azure 订阅管理所有警报规则的一个地方。 此页列出所有警报规则，这些规则可以根据目标资源、资源组、规则名称或状态排序。 还可以在此页中编辑、启用或禁用警报规则。  
 
  ![“规则”页的屏幕截图](./media/alerts-overview/alerts-preview-rules.png)
 
 
 ## <a name="create-an-alert-rule"></a>创建警报规则
-可以通过一致的方式创作警报，而不考虑监视服务或信号类型。 单个页面中提供了所有触发的警报和相关详细信息。
+无论监视服务或信号类型如何，您都可以以一致的方式编写警报规则。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tflw]
+
  
 下面介绍如何创建新警报规则：
 1. 选取警报的目标。__
@@ -146,7 +149,7 @@ ms.locfileid: "79274783"
 
 可以选择页面顶部下拉菜单中的以下值，对该视图进行筛选：
 
-| 列 | 描述 |
+| 列 | 说明 |
 |:---|:---|
 | 订阅 | 选择要查看其警报的 Azure 订阅。 （可选）可以选择你的所有订阅。 视图中仅包含你在所选订阅中有权访问的警报。 |
 | 资源组 | 选择单个资源组。 只有包含选定资源组中的目标的警报才会包含在视图中。 |
@@ -167,7 +170,7 @@ ms.locfileid: "79274783"
 
 “警报详细信息”页包括以下部分：
 
-| 部分 | 描述 |
+| 部分 | 说明 |
 |:---|:---|
 | 总结 | 显示警报的属性和其他重要信息。 |
 | 历史记录 | 列出警报执行的每个操作，以及对警报进行的任何更改。 目前仅限状态更改。 |
@@ -208,7 +211,7 @@ ms.locfileid: "79274783"
 - [了解操作组](../../azure-monitor/platform/action-groups.md)
 - [在 Azure 中管理警报实例](https://aka.ms/managing-alert-instances)
 - [Managing Smart Groups](https://aka.ms/managing-smart-groups)（管理智能组）
-- [了解有关 Azure 警报定价的更多](https://azure.microsoft.com/pricing/details/monitor/)
+- [详细了解 Azure 警报定价](https://azure.microsoft.com/pricing/details/monitor/)
 
 
 

@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: 1dbcf953ad5f70c6ddf2a73eef2ea712f1e1278c
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: b3b235833e794e48ae655d184bf938effc0d7ac0
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632084"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768374"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>自动优化的电子邮件通知
 
@@ -38,17 +38,17 @@ SQL 数据库自动优化建议可在 [Azure 门户](sql-database-advisor-portal
 
 请通过从市场选择和配置自动化应用的方法，执行以下步骤来创建 Azure 自动化帐户：
 
-- 登录到 Azure 门户
-- 单击左上角的 **"+ 创建资源**"
-- 搜索"**自动化**"（按输入）
-- 单击搜索结果中的自动化应用
+1. 登录到 Azure 门户。
+1. 单击左上角的 **"+ 创建资源**"。
+1. 搜索"**自动化**"（按Enter）。
+1. 单击搜索结果中的"自动化"应用。
 
-![添加 Azure 自动化](./media/sql-database-automatic-tuning-email-notifications/howto-email-01.png)
+    ![添加 Azure 自动化](./media/sql-database-automatic-tuning-email-notifications/howto-email-01.png)
 
-- 进入"创建自动化帐户"窗格后，单击"**创建**"
-- 填充所需信息：输入此自动化帐户的名称，选择要用于 PowerShell 脚本执行的 Azure 订阅 ID 和 Azure 资源
-- 对于"**创建 Azure 运行作为帐户**"选项，选择 **"是**"以配置 PowerShell 脚本在 Azure 自动化的帮助下运行的帐户类型。 要了解有关帐户类型的详细信息，请参阅[运行方式帐户](https://docs.microsoft.com/azure/automation/automation-create-runas-account)
-- 通过单击“创建”确定自动化帐户的创建****
+1. 进入"创建自动化帐户"窗格后，单击"**创建**"。
+1. 填充所需信息：输入此自动化帐户的名称，选择要用于 PowerShell 脚本执行的 Azure 订阅 ID 和 Azure 资源。
+1. 对于"**创建 Azure 运行作为帐户**"选项，选择 **"是**"以配置 PowerShell 脚本在 Azure 自动化的帮助下运行的帐户类型。 要了解有关帐户类型的更多信息，请参阅["以帐户身份运行](https://docs.microsoft.com/azure/automation/automation-create-runas-account)"。
+1. 单击"**创建**"结束创建自动化帐户。
 
 > [!TIP]
 > 创建自动化应用时，请完全按照输入内容记录 Azure 自动化帐户名称、订阅 ID 和资源（如复制粘贴到记事本）。 稍后需要使用此信息。
@@ -60,7 +60,7 @@ SQL 数据库自动优化建议可在 [Azure 门户](sql-database-advisor-portal
 
 用于检索自动调优建议的 PowerShell 脚本使用[获取-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Get-azResource)和[Get-AzSqlDatabase 推荐操作](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlDatabaseRecommendedAction)命令，Azure 模块版本 4 及以上需要这些命令。
 
-- 如果 Azure 模块需要更新，请参阅[Azure 自动化 中的 Az 模块支持](../automation/az-modules.md)。
+- 如果 Azure 模块需要更新，请参阅[Azure 自动化 中的 Az 模块支持](../automation/shared-resources/modules.md)。
 
 ## <a name="create-azure-automation-runbook"></a>创建 Azure 自动化 Runbook
 
@@ -68,18 +68,18 @@ SQL 数据库自动优化建议可在 [Azure 门户](sql-database-advisor-portal
 
 请按照以下步骤创建新的 Azure 自动化 Runbook：
 
-- 访问上一步中创建的 Azure 自动化帐户
-- 进入自动化帐户窗格后，单击左侧的 **"Runbook"** 菜单项，使用 PowerShell 脚本创建新的 Azure 自动化 Runbook。 要了解有关创建自动化 runbook 的详细信息，请参阅[创建新的 runbook](../automation/manage-runbooks.md#creating-a-runbook)。
-- 要添加新 Runbook，请单击 **"+添加 Runbook"** 菜单选项，然后单击"**快速创建 + 创建新 Runbook"。**
-- 在 Runbook 窗格中，键入 Runbook 的名称（为了此示例的目的，使用"**自动调谐电子邮件自动化**"），选择 Runbook 的类型作为**PowerShell，** 并编写此 Runbook 的说明来描述其用途。
-- 单击“创建”按钮，完成创建新的 runbook****
+1. 访问您在上一步中创建的 Azure 自动化帐户。
+1. 进入自动化帐户窗格后，单击左侧的 **"Runbook"** 菜单项，使用 PowerShell 脚本创建新的 Azure 自动化 Runbook。 要了解有关创建自动化 runbook 的详细信息，请参阅[创建新的 runbook](../automation/manage-runbooks.md#creating-a-runbook)。
+1. 要添加新 Runbook，请单击 **"+添加 Runbook"** 菜单选项，然后单击"**快速创建 + 创建新 Runbook"。**
+1. 在 Runbook 窗格中，键入 Runbook 的名称（为了此示例的目的，使用"**自动调谐电子邮件自动化**"），选择 Runbook 的类型作为**PowerShell，** 并编写此 Runbook 的说明来描述其用途。
+1. 单击"**创建**"按钮以完成创建新 Runbook。
 
-![添加 Azure 自动化 Runbook](./media/sql-database-automatic-tuning-email-notifications/howto-email-03.png)
+    ![添加 Azure 自动化 Runbook](./media/sql-database-automatic-tuning-email-notifications/howto-email-03.png)
 
 请按照以下步骤在创建的 runbook 中加载 PowerShell 脚本：
 
-- 在"**编辑 PowerShell Runbook"** 窗格中，在菜单树中选择 **"RUNBOOKS"** 并展开视图，直到看到 Runbook 的名称（在此示例中为"**自动调谐电子邮件自动化**"）。 选择此 runbook。
-- 在"编辑 PowerShell Runbook"的第一行（从数字 1 开始），复制粘贴以下 PowerShell 脚本代码。 此 PowerShell 脚本按原样提供，可帮助你入门。 修改脚本以满足需求。
+1. 在"**编辑 PowerShell Runbook"** 窗格中，在菜单树中选择 **"RUNBOOKS"** 并展开视图，直到看到 Runbook 的名称（在此示例中为"**自动调谐电子邮件自动化**"）。 选择此 runbook。
+1. 在"编辑 PowerShell Runbook"的第一行（从数字 1 开始），复制粘贴以下 PowerShell 脚本代码。 此 PowerShell 脚本按原样提供，可帮助你入门。 修改脚本以满足需求。
 
 在提供的 PowerShell 脚本的标头中，需要使用 Azure 订阅 ID 替换 `<SUBSCRIPTION_ID_WITH_DATABASES>`。 要了解如何检索 Azure 订阅 ID，请参阅 [Getting your Azure Subscription GUID](https://blogs.msdn.microsoft.com/mschray/20../../getting-your-azure-subscription-guid-new-portal/)（获取 Azure 订阅 GUID）。
 
@@ -184,45 +184,45 @@ Write-Output $table
 
 要完成作为最后一步的该解决方案，请在 Microsoft Flow 中创建包含三个操作（作业）的自动化流：
 
-1. "Azure**自动化 - 创建作业**" - 用于执行 PowerShell 脚本，以检索 Azure 自动化运行簿中的自动调优建议
-2. "Azure**自动化 - 获取作业输出**" - 用于从执行的 PowerShell 脚本中检索输出
-3. "Office**365 Outlook = 发送电子邮件**" - 用于发送电子邮件。 电子邮件使用创建此流的个人的 Office 365 帐户发送。
+ - "Azure**自动化 - 创建作业**" - 用于执行 PowerShell 脚本，以检索 Azure 自动化运行簿中的自动调优建议。
+ - "Azure**自动化 - 获取作业输出**" - 用于从执行的 PowerShell 脚本中检索输出。
+ - "Office**365 Outlook = 发送电子邮件**" - 用于发送电子邮件。 电子邮件使用创建此流的个人的 Office 365 帐户发送。
 
 要了解有关 Microsoft Flow 功能的详细信息，请参阅[开始使用 Microsoft Flow](https://docs.microsoft.com/flow/getting-started)。
 
 此步骤的先决条件是注册 [Microsoft Flow](https://flow.microsoft.com) 帐户并登录。 进入解决方案后，请按照以下步骤设置新流****
 
-- 访问"**我的流**"菜单项
-- 在"我的流"中，选择页面顶部的"**从空白创建**"链接
-- 单击页面底部的链接"**搜索数百个连接器和触发器**"
-- 在搜索字段类型"**重复**"中，并从搜索结果中选择"**计划 - 重复**"以计划运行电子邮件传递作业。
-- 在“频率”字段的“定期”窗格中，选择执行此流的计划频率，如按每分钟、每小时、每天、每周等间隔自动发送电子邮件。
+1. 访问"**我的流**"菜单项。
+1. 在"我的流"中，选择页面顶部的"**从空白创建**"链接。
+1. 单击页面底部的链接"**搜索数百个连接器和触发器**"。
+1. 在搜索字段类型"**重复**"中，并从搜索结果中选择"**计划 - 重复**"以计划运行电子邮件传递作业。
+1. 在“频率”字段的“定期”窗格中，选择执行此流的计划频率，如按每分钟、每小时、每天、每周等间隔自动发送电子邮件。
 
 下一步是向新创建的定期流添加三个作业（创建、获取输出和发送电子邮件）。 要完成向流中添加所需作业，请执行以下步骤：
 
 1. 创建操作以执行检索优化建议的 PowerShell 脚本
 
-   - 选择 **"+新步骤**"，后跟"**添加操作**"在"重复"流窗格中
-   - 在搜索字段中键入"**自动化**"，并从搜索结果中选择 **"Azure 自动化 + 创建作业**"
+   - 选择 **"_New 步骤**"，然后选择"**添加操作**"在"重复"流窗格中。
+   - 在搜索字段中键入"**自动化**"，并从搜索结果中选择 **"Azure 自动化 + 创建作业**"。
    - 在“创建作业”窗格中，配置作业属性。 对于此配置，需要之前在“自动化帐户”窗格上记录的 Azure 订阅 ID、资源组和自动化帐户的详细信息********。 要了解本部分提供选项的详细信息，请参阅 [Azure 自动化 - 创建作业](https://docs.microsoft.com/connectors/azureautomation/#create-job)。
-   - 单击"**保存流**"完成此操作
+   - 单击"**保存流**"完成此操作。
 
 2. 创建从已执行的 PowerShell 脚本检索输出的操作
 
    - 选择 **"+新步骤**"，后跟"**添加操作**"在"重复"流窗格中
    - 在搜索归档类型"**自动化**"中，并从搜索结果中选择 **"Azure 自动化 + 获取作业输出**"。 要了解本部分提供选项的详细信息，请参阅 [Azure 自动化 - 获取作业输出](https://docs.microsoft.com/connectors/azureautomation/#get-job-output)。
-   - 填充所需字段（类似于创建上一个作业）- 填充 Azure 订阅 ID、资源组和自动化帐户（与“自动化帐户”窗格中输入的内容一样）
+   - 填充所需的字段（类似于创建上一个作业） - 填充 Azure 订阅 ID、资源组和自动化帐户（如在"自动化帐户"窗格中输入）。
    - 单击"**工作 ID"** 字段内显示"**动态内容**"菜单。 在此菜单中，选择"**工作 ID"** 选项。
-   - 单击"**保存流**"完成此操作
+   - 单击"**保存流**"完成此操作。
 
 3. 创建使用 Office 365 集成发送电子邮件的操作
 
-   - 选择 **"+新步骤**"，后跟"**添加操作**"在"重复"流窗格中
-   - 在搜索提交类型"**发送电子邮件**"，并从搜索结果中选择 **"Office 365 Outlook + 发送电子邮件**"
-   - 在需要向其发送通知电子邮件的电子邮件地址中的 **"to"** 字段键入
-   - 在电子邮件主题中的"**主题**"字段类型中，例如"自动调优建议电子邮件通知"
-   - 单击字段"**正文**"以显示"**动态内容**"菜单。 在此菜单中，在"**获取作业输出**"下，选择"**内容**"
-   - 单击"**保存流**"完成此操作
+   - 选择 **"_New 步骤**"，然后选择"**添加操作**"在"重复"流窗格中。
+   - 在搜索提交类型"**发送电子邮件**"，并从搜索结果中选择 **"Office 365 Outlook + 发送电子邮件**"。
+   - 在需要向其发送通知电子邮件的电子邮件地址中的 **"to"** 字段键入。
+   - 在电子邮件主题中的"**主题**"字段类型中，例如"自动调优建议电子邮件通知"。
+   - 单击字段"**正文**"以显示"**动态内容**"菜单。 在此菜单中，在"**获取作业输出**"下，选择"**内容**"。
+   - 单击"**保存流**"完成此操作。
 
 > [!TIP]
 > 要将自动电子邮件发送给不同的收件人，请创建单独的流。 在这些附加流中，更改"收件人"字段中的收件人电子邮件地址和"主题"字段中的电子邮件主题行。 使用自定义 PowerShell 脚本在 Azure 自动化中创建新的 runbook（例如更改 Azure 订阅 ID）可进一步自定义自动化方案，例如向单独的收件人发送有关单独订阅的自动优化建议的电子邮件。

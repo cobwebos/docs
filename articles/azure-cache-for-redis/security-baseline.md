@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 364b87e4d64b8cc65fdf293032f4340bddec957c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 172ac4e13201457f62d722236dff130a312cfdeb
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79479132"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81755513"
 ---
 # <a name="azure-security-baseline-for-azure-cache-for-redis"></a>用于雷瑞斯 Azure 缓存的 Azure 安全基线
 

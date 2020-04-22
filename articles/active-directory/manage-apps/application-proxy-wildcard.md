@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e17cc4bf6f70901e3bb5d250f0a55f073ad8d99e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1e5861e802f39adecb5661bc17c22b432f137d59
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406734"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770307"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory 应用程序代理中的通配符应用程序
 
@@ -48,8 +48,6 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 例如：`http(s)://*.adventure-works.com`。
 
 尽管内部和外部 URL 可以使用不同的域，但最佳做法是使它们保持相同。 发布应用程序时，如果某个 URL 没有通配符，则会出现错误。
-
-如果其他应用程序采用不同的配置设置，则必须将这些例外的应用程序发布为单独的应用程序，以覆盖通配符的默认值设置。 没有通配符的应用程序始终优先于通配符应用程序。 从配置角度讲，前者“只是”普通的应用程序。
 
 创建通配符应用程序的过程基于适用于其他所有应用程序的相同[应用程序发布流](application-proxy-add-on-premises-application.md)。 唯一的区别在于，需在 URL 中包含通配符，有时可以在 SSO 配置中包含通配符。
 

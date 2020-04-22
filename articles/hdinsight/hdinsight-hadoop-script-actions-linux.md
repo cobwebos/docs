@@ -1,18 +1,18 @@
 ---
 title: 开发脚本操作以自定义 Azure HDInsight 群集
-description: 了解如何使用 Bash 脚本自定义 HDInsight 群集。 脚本操作允许您在群集创建期间或之后运行脚本，以更改群集配置设置或安装其他软件。
+description: 了解如何使用 Bash 脚本自定义 HDInsight 群集。 脚本操作用于在创建群集期间或之后运行脚本，以更改群集配置设置或安装其他软件。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/28/2019
-ms.openlocfilehash: ad9b4b69b0be34c89d03b677c1889e486aae0379
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db37a56ffbf0cb64530f8f7af38841bac72c77d4
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75931699"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767551"
 ---
 # <a name="script-action-development-with-hdinsight"></a>使用 HDInsight 进行脚本操作开发
 
@@ -30,11 +30,11 @@ ms.locfileid: "75931699"
 | Azure PowerShell |✓ |✓ |
 | Azure 经典 CLI |&nbsp; |✓ |
 | HDInsight .NET SDK |✓ |✓ |
-| Azure 资源管理器模板 |✓ |&nbsp; |
+| Azure Resource Manager 模板 |✓ |&nbsp; |
 
-有关使用这些方法应用脚本操作的详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
+有关使用这些方法来应用脚本操作的详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
 
-## <a name="best-practices-for-script-development"></a><a name="bestPracticeScripting"></a>脚本开发最佳做法
+## <a name="best-practices-for-script-development"></a><a name="bestPracticeScripting"></a>脚本开发最佳实践
 
 在针对 HDInsight 群集开发自定义脚本时，有些最佳做法要铭记于心：
 
@@ -44,7 +44,7 @@ ms.locfileid: "75931699"
 * [使用预编译的资源](#bPS4)
 * [确保群集自定义脚本是幂等的](#bPS3)
 * [确保群集体系结构的高可用性](#bPS5)
-* [将自定义组件配置为使用 Azure Blob 存储](#bPS6)
+* [配置自定义组件以使用 Azure Blob 存储](#bPS6)
 * [将信息写入 STDOUT 和 STDERR](#bPS7)
 * [将文件另存为包含 LF 行尾的 ASCII](#bps8)
 * [使用重试逻辑从暂时性错误中恢复](#bps9)
@@ -54,13 +54,13 @@ ms.locfileid: "75931699"
 
 ### <a name="target-the-apache-hadoop-version"></a><a name="bPS1"></a>选择目标 Apache Hadoop 版本
 
-不同版本的 HDInsight 有不同版本的 Hadoop 服务和已安装的组件。 如果脚本需要特定版本的服务或组件，你应该只在包含所需组件的 HDInsight 版本中使用该脚本。 可以使用 [HDInsight 组件版本控制](hdinsight-component-versioning.md)来查找有关 HDInsight 随附组件版本的信息。
+不同版本的 HDInsight 有不同版本的 Hadoop 服务和已安装的组件。 如果脚本需要特定版本的服务或组件，应该只在包含所需组件的 HDInsight 版本中使用该脚本。 可以使用 [HDInsight 组件版本控制](hdinsight-component-versioning.md)文档来查找 HDInsight 随附组件版本的相关信息。
 
-### <a name="checking-the-operating-system-version"></a>查看操作系统版本
+### <a name="checking-the-operating-system-version"></a>检查操作系统版本
 
-HDInsight 的不同版本取决于 Ubuntu 的特定版本。 不同 OS 版本之间存在不同，必须在脚本中检查。 例如，可能需要安装与 Ubuntu 版本相关的二进制文件。
+不同版本的 HDInsight 依赖于特定版本的 Ubuntu。 脚本必须查看的 OS 版本之间可能存在差异。 例如，可能需要安装与 Ubuntu 版本相关的二进制文件。
 
-若要查看 OS 版本，请使用 `lsb_release`。 例如，以下脚本演示如何根据 OS 版本引用特定的 tar 文件：
+若要检查 OS 版本，请使用 `lsb_release`。 例如，以下脚本演示如何根据 OS 版本引用特定的 tar 文件：
 
 ```bash
 OS_VERSION=$(lsb_release -sr)
@@ -75,9 +75,9 @@ fi
 
 ### <a name="target-the-operating-system-version"></a><a name="bps10"></a> 确定针对的操作系统版本
 
-HDInsight 基于 Ubuntu Linux 发行版。 不同版本的 HDInsight 依赖不同版本的 Ubuntu，这可能会改变脚本的行为方式。 例如，HDInsight 3.4 及更早版本取决于使用 Upstart 的 Ubuntu 版本。 版本 3.5 和更高版本取决于使用 Systemd 的 Ubuntu 16.04。 Systemd 和 Upstart 依赖不同的命令，因此编写的脚本应该同时使用两者。
+HDInsight 取决于 Ubuntu Linux 发行版。 不同版本的 HDInsight 依赖不同版本的 Ubuntu，这可能会改变脚本的行为方式。 例如，HDInsight 3.4 及更低版本基于使用 Upstart 的 Ubuntu 版本。 版本 3.5 和更高版本取决于使用 Systemd 的 Ubuntu 16.04。 Systemd 和 Upstart 采用不同的命令，因此，编写的脚本应能与这两者配合使用。
 
-HDInsight 3.4 和 3.5 的另一个重要区别在于 `JAVA_HOME` 现在指向 Java 8。 以下代码演示如何确定脚本是在 Ubuntu 14 还是 16 上运行：
+HDInsight 3.4 和 3.5 的另一个重要区别在于 `JAVA_HOME` 现在能够指向 Java 8。 以下代码演示如何确定脚本是在 Ubuntu 14 还是 16 上运行：
 
 ```bash
 OS_VERSION=$(lsb_release -sr)
@@ -110,20 +110,20 @@ fi
 
 可以在 https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh 中找到包含这些代码片段的完整脚本。
 
-有关用于 HDInsight 的 Ubuntu 版本，请参阅 [HDInsight 组件版本](hdinsight-component-versioning.md)文档。
+有关 HDInsight 所使用的 Ubuntu 版本，请参阅 [HDInsight 组件版本](hdinsight-component-versioning.md)文档。
 
-若要了解 Systemd 和 Upstart 之间的差异，请参阅 [Systemd for Upstart users](https://wiki.ubuntu.com/SystemdForUpstartUsers)（适用于 Upstart 用户的 Systemd）。
+若要了解 Systemd 和 Upstart 之间的差异，请参阅 [Upstart 用户的 Systemd](https://wiki.ubuntu.com/SystemdForUpstartUsers)。
 
 ### <a name="provide-stable-links-to-script-resources"></a><a name="bPS2"></a>提供指向脚本资源的可靠链接
 
-在群集的整个生存期内，脚本和关联的资源必须保持可用。 如果在缩放操作期间将新节点添加到了群集，将需要用到这些资源。
+在群集的整个生存期内，脚本和关联的资源必须保持可用。 如果在缩放操作期间将新节点添加到了群集，需要用到这些资源。
 
 最佳做法是下载订阅上 Azure 存储帐户中的所有内容并将其存档。
 
 > [!IMPORTANT]  
 > 使用的存储帐户必须是群集的默认存储帐户，或其他任何存储帐户的公共只读容器。
 
-例如，Microsoft 提供的示例存储在存储帐户中[https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/)。 此位置是 HDInsight 团队维护的一个公共只读容器。
+例如，Microsoft 提供的示例存储在 [https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) 存储帐户中。 此位置是 HDInsight 团队维护的一个公共只读容器。
 
 ### <a name="use-pre-compiled-resources"></a><a name="bPS4"></a>使用预编译的资源
 
@@ -131,7 +131,7 @@ fi
 
 ### <a name="ensure-that-the-cluster-customization-script-is-idempotent"></a><a name="bPS3"></a>确保群集自定义脚本是幂等的
 
-脚本必须是幂等的。 如果脚本多次运行，它应每次将群集返回到相同的状态。
+脚本必须是幂等的。 如果脚本多次运行，则每次都应将群集返回到相同的状态。
 
 例如，如果多次运行，修改配置文件的脚本不应添加重复的条目。
 
@@ -140,7 +140,7 @@ fi
 基于 Linux 的 HDInsight 群集提供在群集中保持活动状态的两个头节点，而脚本操作会同时在这两个节点上运行。 如果安装的组件只需要一个头节点，请不要在两个头节点上安装组件。
 
 > [!IMPORTANT]  
-> 作为 HDInsight 一部分提供的服务旨在根据需要在两个头节点之间故障转移。 此功能未扩展到通过脚本操作安装的自定义组件。 如果需要为自定义组件提供高可用性，必须实现自己的故障转移机制。
+> 作为 HDInsight 一部分提供的服务旨在根据需要在两个头节点之间进行故障转移。 此功能未扩展到通过脚本操作安装的自定义组件。 如果需要为自定义组件提供高可用性，必须实现自己的故障转移机制。
 
 ### <a name="configure-the-custom-components-to-use-azure-blob-storage"></a><a name="bPS6"></a>配置自定义组件以使用 Azure Blob 存储
 
@@ -159,38 +159,38 @@ hdfs dfs -put /usr/hdp/current/hadoop-client/hadoop-common.jar /example/jars/
 HDInsight 会记录已写入 STDOUT 和 STDERR 的脚本输出。 可以使用 Ambari Web UI 查看这些信息。
 
 > [!NOTE]  
-> 只有在成功创建群集之后，才能使用 Apache Ambari。 如果在群集创建期间使用脚本操作但创建失败，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)的故障排除部分，以了解访问所记录信息的其他方式。
+> 只有在成功创建群集之后，才能使用 Apache Ambari。 如果在群集创建期间使用脚本操作，并且创建失败，请参阅[对脚本操作进行故障排除，](./troubleshoot-script-action.md)了解访问记录信息的其他方法。
 
-大多数实用工具和安装包会将信息写入 STDOUT 和 STDERR，不过你可能想要添加更多日志记录。 若要将文本发送到 STDOUT，可使用 `echo`。 例如：
+大多数实用工具和安装包已将信息写入 STDOUT 和 STDERR，不过你可能需要添加更多日志记录。 若要将文本发送到 STDOUT，请使用 `echo`。 例如：
 
 ```bash
 echo "Getting ready to install Foo"
 ```
 
-默认情况下，`echo` 会将字符串发送到 STDOUT。 要将它定向到 STDERR，请在 `echo` 的前面添加 `>&2`。 例如：
+默认情况下，`echo` 会将字符串发送到 STDOUT。 若要将它定向到 STDERR，请在 `echo` 的前面添加 `>&2`。 例如：
 
 ```bash
 >&2 echo "An error occurred installing Foo"
 ```
 
-这会将写入 STDOUT 的信息改为重定向到 STDERR (2)。 有关 IO 重定向的详细信息，请参阅[https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html)。
+这会将写入 STDOUT 的信息改为重定向到 STDERR (2)。 有关 IO 重定向的详细信息，请参阅 [https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html)。
 
-有关查看脚本操作记录的信息的详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)
+有关查看脚本操作记录的信息的详细信息，请参阅[对脚本操作进行故障排除](./troubleshoot-script-action.md)。
 
-### <a name="save-files-as-ascii-with-lf-line-endings"></a><a name="bps8"></a>将文件保存为具有 LF 行尾的 ASCII
+### <a name="save-files-as-ascii-with-lf-line-endings"></a><a name="bps8"></a> 将文件另存为包含 LF 行尾的 ASCII
 
-应将 Bash 脚本存储为 ASCII 格式，该格式以 LF 作为行尾。 存储为 UTF-8 或者使用 CRLF 作为行尾的文件可能失败并返回以下错误：
+应将 Bash 脚本存储为 ASCII 格式，该格式以 LF 作为行尾。 存储为 UTF-8 的文件或使用 CRLF 作为行尾的文件可能发生故障，并返回以下错误：
 
 ```
 $'\r': command not found
 line 1: #!/usr/bin/env: No such file or directory
 ```
 
-### <a name="use-retry-logic-to-recover-from-transient-errors"></a><a name="bps9"></a>使用重试逻辑从瞬态错误中恢复
+### <a name="use-retry-logic-to-recover-from-transient-errors"></a><a name="bps9"></a> 使用重试逻辑从暂时性错误中恢复
 
-下载文件、使用 apt-get 安装包或其他通过互联网传输数据的操作时，操作可能会由于暂时性网络错误而失败。 例如，您要通信的远程资源可能正在故障转移到备份节点。
+下载文件、使用 apt-get 安装包或者执行通过 Internet 传输数据的其他操作时，可能会由于暂时性网络错误而失败。 例如，与你通信的远程资源可能正在故障转移到备份节点。
 
-若要使脚本能够从暂时性错误中恢复，可以实现重试逻辑。 以下示例函数演示如何实现重逻辑。 它在失败之前重试操作三次。
+若要使脚本能够从暂时性错误中恢复，可以实现重试逻辑。 以下函数演示如何实现重试逻辑。 它在失败之前重试操作三次。
 
 ```bash
 #retry
@@ -235,10 +235,10 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 可在脚本中使用以下帮助器：
 
-| 帮助器用法 | 描述 |
+| 帮助器用法 | 说明 |
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |将文件从源 URI 下载到指定的文件路径。 默认情况下，它不会覆盖现有文件。 |
-| `untar_file TARFILE DESTDIR` |将 tar 文件（使用 `-xf`）解压缩到目标目录。 |
+| `untar_file TARFILE DESTDIR` |将 tar 文件解压缩（使用 `-xf`）到目标目录。 |
 | `test_is_headnode` |如果在群集头节点上运行，则返回 1；否则返回 0。 |
 | `test_is_datanode` |如果当前节点是数据（辅助角色）节点，则返回 1；否则返回 0。 |
 | `test_is_first_datanode` |如果当前节点是第一个数据（辅助角色）节点（名为 workernode0），则返回 1；否则返回 0。 |
@@ -256,7 +256,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 在某些情况下，脚本可能需要参数。 例如，使用 Ambari REST API 时，可能需要群集的管理员密码。
 
-传递给脚本的参数称为“位置参数”**，将分配到 `$2` 作为第一个参数，分配到 `$1` 作为第二个参数，依此类推。 `$0` 包含该脚本本身的名称。
+传递给脚本的参数称为“位置参数”  ，将分配到 `$1` 作为第一个参数，分配到 `$2` 作为第二个参数，依此类推。 `$0` 包含脚本本身的名称。
 
 作为参数传递给脚本的值应括在单引号 (') 中。 这样可以确保将传递的值视为文本。
 
@@ -266,13 +266,13 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
     VARIABLENAME=value
 
-其中，VARIABLENAME 是变量的名称。 若要访问变量，请使用 `$VARIABLENAME`。 例如，要将位置参数提供的值指定为名为 PASSWORD 的环境变量，请使用以下语句：
+其中，VARIABLENAME 是变量的名称。 若要访问变量，请使用 `$VARIABLENAME`。 例如，若要将位置参数提供的值指定为名为 PASSWORD 的环境变量，请使用以下语句：
 
     PASSWORD=$1
 
 对信息进行后续访问时可以使用 `$PASSWORD`。
 
-在脚本中设置的环境变量只在脚本范围内存在。 在某些情况下，可能需要添加整个系统的环境变量，这些变量在脚本完成之后仍会保存。 若要添加系统范围的环境变量，请将变量添加到 `/etc/environment`。 例如，以下语句添加 `HADOOP_CONF_DIR`：
+在脚本中设置的环境变量只在脚本范围内存在。 在某些情况下，可能需要添加系统范围的环境变量，这些变量在脚本完成之后仍会存在。 若要添加系统范围的环境变量，请将变量添加到 `/etc/environment`。 例如，以下语句添加 `HADOOP_CONF_DIR`：
 
 ```bash
 echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
@@ -284,21 +284,21 @@ echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 
 * 与群集关联的 __Azure 存储帐户__。
 
-* 与群集关联的__其他存储帐户__。
+* 与群集关联的 __其他存储帐户__ 。
 
 * __可公开读取的 URI__。 例如，在 OneDrive、Dropbox 或其他文件托管服务中存储的数据的 URL。
 
-* 与 HDInsight 群集关联的 __Azure Data Lake Storage 帐户__。 有关将 Azure 数据存储与 HDInsight 一起使用的详细信息，请参阅[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
+* 与 HDInsight 群集关联的 __Azure Data Lake Storage 帐户__。 有关将 Azure Data Lake Storage 与 HDInsight 配合使用的详细信息，请参阅[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
 
     > [!NOTE]  
     > 用于访问 Data Lake Storage 的服务主体 HDInsight 必须具有对脚本的读取访问权限。
 
-脚本使用的资源也必须公开。
+脚本使用的资源也必须公开提供。
 
 与在 Azure 网络中一样，在 Azure 存储帐户或 Azure Data Lake Storage 中存储文件可提供快速访问。
 
 > [!NOTE]  
-> 用于引用脚本的 URI 格式取决于正在使用的服务。 对于与 HDInsight 群集关联的存储帐户，请使用 `wasb://` 或 `wasbs://`。 对于可公开读取的 URI，请使用 `http://` 或 `https://`。 对于 Data Lake Storage，请使用 `adl://`。
+> 用于引用脚本的 URI 格式因所使用的服务而异。 对于与 HDInsight 群集关联的存储帐户，请使用 `wasb://` 或 `wasbs://`。 对于可公开读取的 URI，请使用 `http://` 或 `https://`。 对于 Data Lake Storage，请使用 `adl://`。
 
 ## <a name="checklist-for-deploying-a-script-action"></a><a name="deployScript"></a>有关部署脚本操作的清单
 
@@ -339,7 +339,7 @@ Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。 请参�
 > [!NOTE]  
 > 以下命令大致相当于将 CRLF 行尾更改为 LF。 根据系统中提供的实用工具选择一种解决方法。
 
-| 命令 | 说明 |
+| Command | 说明 |
 | --- | --- |
 | `unix2dos -b INFILE` |原始文件以 .BAK 扩展名备份 |
 | `tr -d '\r' < INFILE > OUTFILE` |OUTFILE 包含只带 LF 行尾的版本 |

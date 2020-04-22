@@ -1,45 +1,46 @@
 ---
-title: HTTPS 端点 |Azure 应用商店
-description: 为 HTTPS 终结点配置潜在顾客管理。
+title: 使用 HTTPS 终结点配置潜在顾客管理 |Azure 应用商店
+description: 了解如何使用 HTTP 终结点来处理 Microsoft AppSource 和 Azure 应用商店潜在顾客。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/24/2018
+ms.date: 04/21/2020
 ms.author: dsindona
-ms.openlocfilehash: cb6ef173e97a7c2bbd7d7cad5e5074b1f2d0f066
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f56cc5aaad7d77ff8dc753115ef1becb08ddde73
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288591"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770194"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>使用 HTTPS 终结点配置潜在顾客管理
 
-可以使用 HTTPS 终结点来处理 Azure 市场和 AppSource 潜在顾客。 这些潜在顾客可以写入到客户关系管理 (CRM) 系统，或者以电子邮件通知的形式发出。 本文介绍如何使用[Microsoft Flow](https://powerapps.microsoft.com/automate-processes/)自动化服务配置潜在顾客管理。
+您可以使用 HTTPS 终结点来处理 Microsoft AppSource 和 Azure 应用商店潜在顾客。 这些潜在顾客可以写入客户关系管理 （CRM） 系统，也可以作为电子邮件通知发送。 本文介绍如何使用[Microsoft 电源自动化](https://powerapps.microsoft.com/automate-processes/)自动化服务来配置潜在顾客管理。
 
-## <a name="create-a-flow-using-microsoft-flow"></a>使用 Microsoft Flow 创建流
+## <a name="create-a-flow-using-microsoft-power-automate"></a>使用微软电源自动功能创建流
 
-1. 打开[流](https://flow.microsoft.com/)网页。 选择“登录”**** 或者选择“免费注册”**** 来创建免费的流帐户。
+1. 打开[电源自动功能](https://flow.microsoft.com/)网页。 选择“登录”**** 或者选择“免费注册”**** 来创建免费的流帐户。
 
-2. 登录并在菜单栏上选择“我的流”****。
+1. 登录并在菜单栏上选择“我的流”****。
+    > [!div class="mx-imgBorder"]
+    > ![我的流](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows.png)
 
-    ![我的流](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows.png)
+1. 在 **[ 新建**， 选择 =**即时] 从空白**。
+    > [!div class="mx-imgBorder"]
+    > ![从空白创建](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank.png)
 
-3. 选择“+从头开始创建”****。
+1. 命名您的流，然后在 **"选择如何触发此流**"下，选择 **"何时收到 HTTP 请求**"。
 
-    ![从空白创建](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank.png)
+    > [!div class="mx-imgBorder"]
+    > ![选择“收到 HTTP 请求时”触发器](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
 
-4. 选择“从头开始创建”****。
+1. 单击流步骤以展开它。
 
-    ![从空白创建](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank2.png)
+    > [!div class="mx-imgBorder"]
+    > ![展开流步骤](./media/cloud-partner-portal-lead-management-instructions-https/expand-flow-step.png)
 
-5. 在“搜索连接器和触发器”字段中，键入“请求”以查找“请求”连接器。****
-6. 在“触发器”下，选择“收到 HTTP 请求时”。******** 
-
-    ![选择“收到 HTTP 请求时”触发器](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
-
-7. 使用以下步骤之一配置“请求正文 JSON 架构”：****
+1. 使用以下方法之一配置**请求正文 JSON 架构**：
 
    - 将本文末尾的 [JSON 架构](#json-schema)复制到“请求正文 JSON 架构”文本框中。****
    - 选择“使用示例有效负载生成架构”。**** 在“输入或粘贴示例 JSON 有效负载”文本框中，粘贴该 [JSON 示例](#json-example)。**** 选择“完成”以创建架构。****
@@ -90,6 +91,7 @@ ms.locfileid: "80288591"
    ![添加电子邮件操作](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-action.png)
 
 5. 选择“保存”以完成 Flow 设置。****
+
 6. 将在请求中创建一个 HTTP POST URL。 复制此 URL 并使用它作为 HTTPS 终结点。
 
     ![HTTP Post URL](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-get-post-url.png)
@@ -100,7 +102,7 @@ ms.locfileid: "80288591"
 
 ![添加动态内容](./media/cloud-partner-portal-lead-management-instructions-https/https-image017.png)
 
-生成潜在顾客后，Microsoft 会将潜在顾客发送到 Flow，然后这些潜在顾客将路由到配置的 CRM 系统或电子邮件地址。
+生成潜在顾客时，Microsoft 会将潜在顾客发送到您的 Power 自动流，该流将路由到您配置的 CRM 系统或电子邮件地址。
 
 ## <a name="json-schema-and-example"></a>JSON 架构和示例
 
@@ -124,6 +126,10 @@ JSON 测试示例使用以下架构：
     },
     "LeadSource": {
       "id": "/properties/LeadSource",
+      "type": "string"
+    },
+    "Description": {
+      "id": "/properties/Description",
       "type": "string"
     },
     "UserDetails": {
@@ -165,23 +171,25 @@ JSON 测试示例使用以下架构：
 }
 ```
 
-可以复制并编辑以下 JSON 示例，以便在 MS Flow 中进行测试。
+您可以复制和编辑以下 JSON 示例，以用作流中的测试。
 
 ### <a name="json-example"></a>JSON 示例
 
 ```json
 {
-"OfferTitle": "Test Microsoft",
-"LeadSource": "Test run through MS Flow",
-"UserDetails": {
-"Company": "Contoso",
-"Country": "USA",
-"Email": "someone@contoso.com",
-"FirstName": "Some",
-"LastName": "One",
-"Phone": "16175555555",
-"Title": "Esquire"
-}
+  "UserDetails": {
+    "FirstName": "Some",
+    "LastName": "One",
+    "Email": "someone@contoso.com",
+    "Phone": "16175555555",
+    "Country": "USA",
+    "Company": "Contoso",
+    "Title": "Esquire"
+ },
+  "LeadSource": "AzureMarketplace",
+  "ActionCode": "INS",
+  "OfferTitle": "Test Microsoft",
+  "Description": "Test run through Power Automate"
 }
 ```
 

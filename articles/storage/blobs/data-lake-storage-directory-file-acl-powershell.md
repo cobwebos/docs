@@ -1,27 +1,24 @@
 ---
-title: 用于文件和 ACL 的 Azure Data Lake Storage Gen2 PowerShell（预览版）
+title: Azure 数据湖存储 Gen2 PowerShell 文件& ACL
 description: 使用 PowerShell cmdlet 在启用了分层命名空间 (HNS) 的存储帐户中管理目录和文件以及目录访问控制列表 (ACL)。
 services: storage
 author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: conceptual
-ms.date: 04/10/2020
+ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: b59c68e3f2edc0fbe5eee3c3861a3e5116d4fac6
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 68ffe40f93be3d10666ebad2eaa153fc9dc9687f
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262377"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768019"
 ---
-# <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL（预览版）
+# <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 PowerShell 管理 Azure 数据存储库第 2 代中的目录、文件和 ACL
 
 本文介绍如何使用 PowerShell 在启用了分层命名空间 (HNS) 的存储帐户中创建和管理目录、文件与权限。 
-
-> [!IMPORTANT]
-> 本文中所述的 PowerShell 模块目前以公共预览版提供。
 
 [第 1 代到第 2 代映射](#gen1-gen2-map) | [提供反馈](https://github.com/Azure/azure-powershell/issues)
 
@@ -33,7 +30,7 @@ ms.locfileid: "81262377"
 > * 已安装 .NET Framework 4.7.2 或更高版本。 请参阅[下载 .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework)。
 > * PowerShell `5.1` 或更高版本。
 
-## <a name="install-powershell-modules"></a>安装 PowerShell 模块
+## <a name="install-the-powershell-module"></a>安装 Powershell 模块
 
 1. 使用以下命令验证安装的 PowerShell 版本是否为 `5.1` 或以上。    
 
@@ -43,16 +40,10 @@ ms.locfileid: "81262377"
     
    若要升级 PowerShell 版本，请参阅[升级现有的 Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell)
     
-2. 安装最新的 **PowershellGet** 模块。 然后，关闭并重新打开 PowerShell 控制台。
+2. 安装**Az.存储**模块。
 
    ```powershell
-   Install-Module PowerShellGet –Repository PSGallery –Force 
-   ```
-
-3. 安装 **Az.Storage** 预览版模块。
-
-   ```powershell
-   Install-Module az.storage -RequiredVersion 1.13.3-preview -Repository PSGallery -AllowClobber -AllowPrerelease -Force 
+   Install-Module Az.Storage -Repository PSGallery -Force  
    ```
 
    有关如何安装 PowerShell 模块的详细信息，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0)

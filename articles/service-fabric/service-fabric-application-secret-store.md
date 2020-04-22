@@ -1,20 +1,20 @@
 ---
-title: Azure 服务结构中央机密存储
-description: 本文介绍如何在 Azure 服务结构中使用中央机密存储。
+title: Azure Service Fabric 中心机密存储
+description: 本文介绍如何使用 Azure Service Fabric 中的中心机密存储。
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.openlocfilehash: 11fb94a9fba40e6f2474ad64f5eb0c454be28ca0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4087e7ccdcb2281c4a08af155d35a10c66147a85
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77589158"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770415"
 ---
-# <a name="central-secrets-store-in-azure-service-fabric"></a>Azure 服务结构中的中央机密存储 
-本文介绍如何在 Azure 服务结构中使用中央机密存储 （CSS） 在服务结构应用程序中创建机密。 CSS 是本地机密存储缓存，用于在内存中加密敏感数据（如密码、令牌和密钥）。
+# <a name="central-secrets-store-in-azure-service-fabric"></a>Azure Service Fabric 中的中心机密存储 
+本文介绍如何使用 Azure Service Fabric 中的中心机密存储 (CSS) 在 Service Fabric 应用程序中创建机密。 CSS 是一个本地机密存储缓存，用于保存敏感数据，例如，已在内存中加密的密码、令牌和密钥。
 
-## <a name="enable-central-secrets-store"></a>启用中央机密存储
-将以下脚本添加到群集配置下`fabricSettings`，以启用 CSS。 我们建议您使用 CSS 的群集证书以外的证书。 确保加密证书安装在所有节点上，`NetworkService`并且已读取证书私钥的权限。
+## <a name="enable-central-secrets-store"></a>启用中心机密存储
+将以下脚本添加到群集配置中的 `fabricSettings` 下即可启用 CSS。 对于 CSS，我们建议使用除群集证书以外的证书。 确保在所有节点上安装加密证书，并且 `NetworkService` 对证书的私钥拥有读取权限。
   ```json
     "fabricSettings": 
     [
@@ -47,31 +47,9 @@ ms.locfileid: "77589158"
      ]
 ```
 ## <a name="declare-a-secret-resource"></a>声明机密资源
-可以使用 Azure 资源管理器模板或 REST API 创建机密资源。
-
-### <a name="use-resource-manager"></a>使用资源管理器
-
-使用以下模板使用资源管理器创建机密资源。 模板创建一个秘密`supersecret`资源，但尚未为机密资源设置任何值。
-
-
-```json
-   "resources": [
-      {
-        "apiVersion": "2018-07-01-preview",
-        "name": "supersecret",
-        "type": "Microsoft.ServiceFabricMesh/secrets",
-        "location": "[parameters('location')]", 
-        "dependsOn": [],
-        "properties": {
-          "kind": "inlinedValue",
-            "description": "Application Secret",
-            "contentType": "text/plain",
-          }
-        }
-      ]
-```
-
-### <a name="use-the-rest-api"></a>使用 REST API
+您可以使用 REST API 创建机密资源。
+  > [!NOTE] 
+  > 如果群集使用窗口身份验证，则 REST 请求通过不安全的 HTTP 通道发送。 建议使用基于 X509 的群集，该群集具有安全终结点。
 
 要使用`supersecret`REST API 创建机密资源，请对`https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`发出 PUT 请求。 您需要群集证书或管理客户端证书来创建机密资源。
 
@@ -81,48 +59,6 @@ Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecre
 ```
 
 ## <a name="set-the-secret-value"></a>设置机密值
-
-### <a name="use-the-resource-manager-template"></a>使用资源管理器模板
-
-使用以下资源管理器模板创建和设置机密值。 此模板将`supersecret`机密资源的秘密值集为版本`ver1`。
-```json
-  {
-  "parameters": {
-  "supersecret": {
-      "type": "string",
-      "metadata": {
-        "description": "supersecret value"
-      }
-   }
-  },
-  "resources": [
-    {
-      "apiVersion": "2018-07-01-preview",
-        "name": "supersecret",
-        "type": "Microsoft.ServiceFabricMesh/secrets",
-        "location": "[parameters('location')]", 
-        "dependsOn": [],
-        "properties": {
-          "kind": "inlinedValue",
-            "description": "Application Secret",
-            "contentType": "text/plain",
-        }
-    },
-    {
-      "apiVersion": "2018-07-01-preview",
-      "name": "supersecret/ver1",
-      "type": "Microsoft.ServiceFabricMesh/secrets/values",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "Microsoft.ServiceFabricMesh/secrets/supersecret"
-      ],
-      "properties": {
-        "value": "[parameters('supersecret')]"
-      }
-    }
-  ],
-  ```
-### <a name="use-the-rest-api"></a>使用 REST API
 
 使用以下脚本使用 REST API 设置机密值。
 ```powershell

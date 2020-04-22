@@ -8,23 +8,23 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/30/2020
+ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1c4bbd98682d964cfdf72031c7d6cb77cf42a809
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 0bdede482b79c82e6e05b1429cb7c17399bc2277
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396066"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756608"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的声明解析程序
 
 Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overview.md)中的声明解析程序提供关于授权请求的上下文信息，例如策略名称、请求相关 ID、用户界面语言等。
 
-若要在输入或输出声明中使用声明解析程序，请在 [ClaimsSchema](claimsschema.md) 元素下定义字符串 ClaimType，然后将 DefaultValue 设置为输入或输出声明元素中的声明解析程序********。 Azure AD B2C 读取声明解决程序的值并将该值用于技术配置文件中。
+若要在输入或输出声明中使用声明解析程序，请在 [ClaimsSchema](claimsschema.md) 元素下定义字符串 ClaimType，然后将 DefaultValue 设置为输入或输出声明元素中的声明解析程序   。 Azure AD B2C 读取声明解决程序的值并将该值用于技术配置文件中。
 
-在以下示例中，使用 `string` 数据类型定义名为 `correlationId` 的声明类型****。
+在以下示例中，使用 `string` 数据类型定义名为 `correlationId` 的声明类型  。
 
 ```XML
 <ClaimType Id="correlationId">
@@ -50,7 +50,7 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 | ----- | ----------- | --------|
 | {Culture:LanguageName} | 语言的两字母 ISO 代码。 | en |
 | {Culture:LCID}   | 语言代码的 LCID。 | 2052 |
-| {Culture:RegionName} | 区域的两字母 ISO 代码。 | 美国 |
+| {Culture:RegionName} | 区域的两字母 ISO 代码。 | US |
 | {Culture:RFC5646} | RFC5646 语言代码。 | zh-CN |
 
 ### <a name="policy"></a>策略
@@ -66,7 +66,7 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 
 | 声明 | 说明 | 示例 |
 | ----- | ----------- | --------|
-| {OIDC:AuthenticationContextReferences} |`acr_values` 查询字符串参数。 | 空值 |
+| {OIDC:AuthenticationContextReferences} |`acr_values` 查询字符串参数。 | 不适用 |
 | {OIDC:ClientId} |`client_id` 查询字符串参数。 | 00000000-0000-0000-0000-000000000000 |
 | {OIDC:DomainHint} |`domain_hint` 查询字符串参数。 | facebook.com |
 | {OIDC:LoginHint} |  `login_hint` 查询字符串参数。 | someone@contoso.com |
@@ -90,7 +90,14 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 | {Context:IPAddress} | 用户 IP 地址。 | 11.111.111.11 |
 | [上下文：KMSI] | 指示是否选中["保持我登录](custom-policy-keep-me-signed-in.md)"复选框。 |  true |
 
-### <a name="non-protocol-parameters"></a>非协议参数
+### <a name="claims"></a>声明 
+
+| 声明 | 说明 | 示例 |
+| ----- | ----------- | --------|
+| [索赔：声明类型] | 策略文件或父策略文件中的"声明架构"部分中已定义的声明类型的标识符。  例如：`{Claim:displayName}` 或 `{Claim:objectId}`。 | 声明类型值。|
+
+
+### <a name="oauth2-key-value-parameters"></a>OAuth2 键值参数
 
 可以将 OIDC 或 OAuth2 请求中包括的任何参数名称映射到用户旅程中的某个声明， 例如，来自应用程序的请求可能包括名为 `app_session`、`loyalty_number` 的查询字符串参数或任何自定义查询字符串。
 
@@ -118,12 +125,13 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 | [SAML：允许创建] | 属性`AllowCreate`值，来自 SAML 请求`NameIDPolicy`的元素。 | True |
 | [萨姆·斯图尔：强制奥特恩] | 属性`ForceAuthN`值，来自 SAML 请求`AuthnRequest`的元素。 | True |
 | [SAML：供应商名称] | 属性`ProviderName`值，来自 SAML 请求`AuthnRequest`的元素。| Contoso.com |
+| [SAML：中继状态] | `RelayState` 查询字符串参数。| 
 
 ## <a name="using-claim-resolvers"></a>使用声明解析器
 
 您可以将声明解析器与以下元素一起使用：
 
-| Item | 元素 | 设置 |
+| 项 | 元素 | 设置 |
 | ----- | ----------------------- | --------|
 |Application Insights 技术配置文件 |`InputClaim` | |
 |[Azure 活动目录](active-directory-technical-profile.md)技术配置文件| `InputClaim`, `OutputClaim`| 1, 2|

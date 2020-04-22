@@ -7,12 +7,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: robinsh
-ms.openlocfilehash: c812e00699cd8f8cfbaf32feea1b43866ffb0990
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: 78aee7829e58feede3360f30f10260903713c52f
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78674352"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770084"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>教程：使用 Azure IoT 中心消息扩充
 
@@ -76,7 +77,7 @@ ms.locfileid: "78674352"
 
 下面是脚本创建的资源。 *富集*意味着资源用于具有富集的消息。 *原始*表示资源用于不富集的邮件。
 
-| “属性” | “值” |
+| 名称 | 值 |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | 容器名称 | 原配  |
@@ -278,7 +279,7 @@ az iot hub route create \
 ## <a name="create-and-configure-by-using-a-resource-manager-template"></a>使用资源管理器模板创建和配置
 您可以使用资源管理器模板创建和配置资源、消息路由和消息扩充。
 
-1. 登录到 Azure 门户。   选择 **= 创建资源**以启动搜索框。 输入*模板部署*，然后搜索它。 在结果窗格中，选择**模板部署（使用自定义模板部署）。**
+1. 登录到 Azure 门户。 选择 **= 创建资源**以启动搜索框。 输入*模板部署*，然后搜索它。 在结果窗格中，选择**模板部署（使用自定义模板部署）。**
 
    ![Azure 门户中的模板部署](./media/tutorial-message-enrichments/template-select-deployment.png)
 
@@ -296,7 +297,7 @@ az iot hub route create \
 
    下面是通过加载模板创建的资源。 **富集**意味着资源用于具有富集的消息。 **原始**表示资源用于不富集的邮件。 这些值与 Azure CLI 脚本中使用的值相同。
 
-   | “属性” | “值” |
+   | 名称 | 值 |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
    | 容器名称 | 原配  |
@@ -309,7 +310,7 @@ az iot hub route create \
    | 路由名称 1 | ContosoStorageRouteOriginal |
    | 路由名称 2 | ContosoStorageRouteEnriched |
 
-1. 选择“保存”。**** "**自定义部署"** 窗格将显示并显示模板使用的所有参数。 需要设置的唯一字段是**资源组**。 创建新列表或从下拉列表中选择一个。
+1. 选择“保存”。  "**自定义部署"** 窗格将显示并显示模板使用的所有参数。 需要设置的唯一字段是**资源组**。 创建新列表或从下拉列表中选择一个。
 
    下面是**自定义部署**窗格的上半部分。 您可以看到在资源组中的填写位置。
 

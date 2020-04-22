@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：版本发布历史记录 | Microsoft 文档
+title: Azure AD Connect：版本发布历史记录 | Microsoft Docs
 description: 本文列出 Azure AD Connect 和 Azure AD Sync 的所有版本
 services: active-directory
 author: billmath
@@ -8,18 +8,18 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/17/2020
+ms.date: 04/21/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 815d3afe68003f56a5748584b322b731ef5a3dc7
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 3a03a03557fbb2e71ff79ff42fd9d9c72cd5907c
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81639651"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770507"
 ---
-# <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发布历史记录
+# <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发行历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
 
 本文旨在帮助你跟踪已发布的版本，并了解最新版本中的具体变化。
@@ -29,8 +29,8 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 主题 |  详细信息
 --------- | --------- |
 从 Azure AD Connect 升级的步骤 | [从旧版升级到最新版](how-to-upgrade-previous-version.md) Azure AD Connect 的不同方法。
-所需的权限 | 有关应用更新所需的权限，请参阅[帐户和权限](reference-connect-accounts-permissions.md#upgrade)。
-下载| [下载 Azure AD 连接](https://go.microsoft.com/fwlink/?LinkId=615771)。
+所需的权限 | 有关应用更新时所需的权限，请参阅[帐户和权限](reference-connect-accounts-permissions.md#upgrade)。
+下载| [下载 Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771)。
 
 >[!NOTE]
 >发布新版 Azure AD Connect 的过程要求采取多种质量控制措施来确保服务的功能正常运行，遵循此过程时，我们会更新新发行版的版本号以及发布状态，以反映最近的状态。
@@ -48,6 +48,14 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 >
 >请参阅[此文](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)，详细了解如何将 Azure AD Connect 升级到最新版本。
 
+## <a name="15220"></a>1.5.22.0
+
+### <a name="release-status"></a>版本状态
+04/20/2020： 发布供下载
+
+### <a name="fixed-issues"></a>修复的问题
+如果从 AD 克隆了**In - 组联接**规则，并且尚未**从 AD - 组通用**规则克隆 In，则此修补程序生成修复了内部版本 1.5.20.0 中的问题。
+
 ## <a name="15200"></a>1.5.20.0
 
 ### <a name="release-status"></a>版本状态
@@ -57,12 +65,13 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 如果启用了组筛选功能并使用 mS-DS-一致性 Guid 作为源锚点，则此修补程序生成修复了内部版本 1.5.18.0 的问题。
 
 > [!IMPORTANT]
-> 如果使用 mS-DS-一致性 Guid 作为源锚点，并且已**克隆了 AD - 组加入**同步规则并计划升级，则作为升级的一部分完成以下步骤：
+> 如果您从 AD 克隆了**In - 组加入**同步规则，并且尚未从 AD 克隆**In - 组通用**同步规则并计划升级，则作为升级的一部分完成以下步骤：
 > 1. 在升级期间，取消选中选项 **"在配置完成时启动同步过程**"。
 > 2. 编辑克隆的联接同步规则并添加以下两个转换：
 >     - 将直接流`objectGUID`设置为`sourceAnchorBinary`。
 >     - 将表达式流`ConvertToBase64([objectGUID])`设置为`sourceAnchor`。     
 > 3. 使用`Set-ADSyncScheduler -SyncCycleEnabled $true`启用计划程序。
+
 
 
 ## <a name="15180"></a>1.5.18.0
@@ -880,7 +889,7 @@ CBool(
     |CertFriendlyName|CertThumbprint|CertExtensionOids|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
-    |CertVersion|CertSignatureAlgorithmOid|Select|
+    |CertVersion|CertSignatureAlgorithmOid|选择|
     |CertKeyAlgorithmParams|CertHashString|其中|
     |||With|
 
@@ -1187,7 +1196,7 @@ AD FS 管理
 ## <a name="111100"></a>1.1.110.0
 发布日期：2016 年 2 月
 
-**已修复问题：**
+**已解决的问题：**
 
 * 如果安装不位于默认的 C:\Program Files 文件夹中，则无法从旧版升级。
 * 如果进行安装，并在安装向导结束时清除“启动同步过程”，再次运行安装向导将不启用计划程序。****
