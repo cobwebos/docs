@@ -1,49 +1,48 @@
 ---
-title: 使用复合资源在 Azure Automation State Configuration (DSC) 中编译 DSC 配置
-description: 了解如何使用复合资源在 Azure Automation State Configuration (DSC) 中撰写配置
+title: 使用复合资源在 Azure 自动化状态配置中组合 DSC 配置
+description: 了解如何在 Azure 自动化状态配置中使用复合资源组合配置配置配置。
 keywords: powershell dsc, 所需状态配置, powershell dsc azure, 复合资源
 services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: e5083ec55ee0a57cd7defd466f5baf1704336320
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e7625ae95d5355ae1122a16ea4828eed5f78c73
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77370665"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682931"
 ---
-# <a name="composing-dsc-configurations-in-azure-automation-state-configuration-dsc-using-composite-resources"></a>使用复合资源在 Azure Automation State Configuration (DSC) 中编译 DSC 配置
+# <a name="composing-dsc-configurations-in-azure-automation-state-configuration-using-composite-resources"></a>使用复合资源在 Azure 自动化状态配置中组合 DSC 配置
 
-当需要使用多个单个的所需状态配置 (DSC) 配置来托管资源时，最佳方法是使用[复合资源](/powershell/scripting/dsc/resources/authoringresourcecomposite)。 复合资源是嵌套的参数化配置，在另一个配置中用作 DSC 资源。 这允许创建复杂配置，同时允许单独托管和构建基础复合资源（参数化配置）。
+当您需要使用多个所需的状态配置 （DSC） 管理资源时，最佳路径是使用[复合资源](/powershell/scripting/dsc/resources/authoringresourcecomposite)。 复合资源是一个嵌套的参数化配置，用作另一配置中的 DSC 资源。 使用复合资源可以创建复杂的配置，同时允许单独管理和生成基础复合资源。
 
-Azure 自动化可以[导入和编译复合资源](automation-dsc-compile.md)。
-将复合资源导入自动化帐户后，即可在“状态配置 (DSC)”页面中使用撰写配置经验********。
+Azure 自动化支持[导入和撰写复合资源](automation-dsc-compile.md)。 将复合资源导入自动化帐户后，可以通过**状态配置（Azure**门户中的 DSC 功能）使用 Azure 自动化状态配置。
 
-## <a name="composing-a-configuration-from-composite-resources"></a>从复合资源撰写配置
+## <a name="composing-a-configuration-from-composite-resources"></a>基于复合资源撰写配置
 
-必须先撰写配置，才能分配从 Azure 门户的复合资源撰写的配置。 使用“状态配置 (DSC)”页面上的“配置”或“已编译配置”选项卡的“撰写配置”，即可完成此操作****************。
+在分配由 Azure 门户中的复合资源组成的配置之前，必须编写配置。 合成在"**配置**"或 **"已编译配置**"选项卡上使用状态配置 （DSC） 页上的**合成**配置。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
-1. 在左侧，单击“所有资源”****，并单击自动化帐户的名称。
-1. 在“自动化帐户”页上的“配置管理”下，选择“State configuration (DSC)”。************
-1. 在“状态配置 (DSC)”页面上，单击“配置”或“已编译配置”选项卡，然后单击页面顶部菜单中的“撰写配置”****************。
-1. 在“基本”中，提供一个新的配置名称（必填）并单击所需复合资源行，将其包含在新配置中，然后单击“下一步”或单击“源代码”************。 在下面步骤中，我们选择了 PSExecutionPolicy 和 RenameAndDomainJoin 复合资源********。
-   ![撰写配置页面的基本部分的屏幕截图](./media/compose-configurationwithcompositeresources/compose-configuration-basics.png)
-1. 源代码步骤显示所选复合资源的组合配置****。 可以看到所有参数的合并以及将它们传递给复合资源的方式。 查看所有新的源代码后，单击“下一步”或单击“参数”********。
-   ![撰写配置页面的源代码部分的屏幕截图](./media/compose-configurationwithcompositeresources/compose-configuration-sourcecode.png)
-1. 在“参数”中，公开了每个复合资源所具有的参数，以便可以提供它们****。 如果参数有说明，将显示在参数字段旁边。 如果某个字段是 PSCredential 类型的参数，要配置的下拉框会提供当前自动化帐户中 Credential 对象的列表********。 还可以使用“+ 添加凭据”**** 选项。 提供所有必需的参数后，单击“保存和编译”****。
-   ![撰写配置页面的参数部分的屏幕截图](./media/compose-configurationwithcompositeresources/compose-configuration-parameters.png)
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 在左侧，单击“所有资源”  ，并单击自动化帐户的名称。
+1. 在“自动化帐户”页上的“配置管理”下，选择“State configuration (DSC)”。********
+1. 在"状态配置 （DSC）"页上，单击"**配置**"或 **"已编译配置"** 选项卡，然后单击页面顶部菜单中的 **"撰写配置**"。
+1. 在“基本信息”  步骤中，提供新配置的名称（必填），在要包括在新配置中的每个复合资源的行中单击任意位置，然后单击“下一步”或单击“源代码”步骤。   对于以下步骤，我们选择了`PSExecutionPolicy`和`RenameAndDomainJoin`复合资源。
+   ![“撰写配置”页面的基本信息步骤的屏幕截图](./media/compose-configurationwithcompositeresources/compose-configuration-basics.png)
+1. “源代码”  步骤显示所选复合资源的已撰写配置的样子。 你可以看到所有参数的合并以及它们是如何传递给复合资源的。 复查新的源代码后，单击“下一步”或单击“参数”步骤。  
+   ![“撰写配置”页面的源代码步骤的屏幕截图](./media/compose-configurationwithcompositeresources/compose-configuration-sourcecode.png)
+1. 在**参数**步骤上，将公开每个复合资源的参数，以便提供值。 如果参数具有说明，则它会显示在参数字段旁边。 如果参数的类型`PSCredential`，下拉列表提供当前自动化帐户中的**凭据**对象列表。 还可以使用“+ 添加凭据”  选项。 提供所有必需的参数后，单击“保存并编译”  。
+   ![“撰写配置”页面的参数步骤的屏幕截图](./media/compose-configurationwithcompositeresources/compose-configuration-parameters.png)
 
-保存新配置后，将它提交以进行编译。 可以像任何导入的配置一样查看编译作业的状态。 有关详细信息，请参阅[查看编译作业](automation-dsc-getting-started.md#viewing-a-compilation-job)。
+一旦保存新配置，将会立即提交它进行编译。 可以像任何已导入的配置一样查看编译作业的状态。 有关详细信息，请参阅[查看编译作业](automation-dsc-getting-started.md#viewing-a-compilation-job)。
 
-成功编译后，新配置将显示在 **"已编译配置"选项卡中**。一旦它在此选项卡中可见，就可以使用[将节点重新分配给其他节点配置](automation-dsc-getting-started.md#reassigning-a-node-to-a-different-node-configuration)中的步骤将其分配给托管节点。
+成功编译后，新配置将显示在 **"已编译配置"选项卡中**。然后，您可以使用将[节点重新分配给其他节点配置](automation-dsc-getting-started.md#reassigning-a-node-to-a-different-node-configuration)中的步骤将配置分配给托管节点。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关入门信息，请参阅 [Azure Automation State Configuration 入门](automation-dsc-getting-started.md)
-- 要了解如何登记节点，请参阅[登记由 Azure Automation State Configuration 管理的计算机](automation-dsc-onboarding.md)
-- 若要了解如何编译 DSC 配置，以便将它们分配给目标节点，请参阅[在 Azure Automation State Configuration 中编译配置](automation-dsc-compile.md)
-- 有关 PowerShell cmdlet 参考，请参阅 [Azure Automation State Configuration cmdlet](/powershell/module/azurerm.automation/#automation)
-- 有关定价信息，请参阅 [Azure Automation State Configuration 定价](https://azure.microsoft.com/pricing/details/automation/)
-- 若要查看在持续部署管道中使用 Azure Automation State Configuration 的示例，请参阅[使用 Azure Automation State Configuration 和 Chocolatey 进行持续部署](automation-dsc-cd-chocolatey.md)
+- 要开始，请参阅[开始使用 Azure 自动化状态配置](automation-dsc-getting-started.md)。
+- 要了解如何载入节点，请参阅[载入计算机以进行 Azure 自动化状态配置进行管理](automation-dsc-onboarding.md)。
+- 要了解如何编译 DSC 配置以便将它们分配给目标节点，请参阅[在 Azure 自动化状态配置中编译配置](automation-dsc-compile.md)。
+- 有关 PowerShell cmdlet 引用，请参阅[Azure 自动化状态配置 cmdlet](/powershell/module/azurerm.automation/#automation)。
+- 有关定价信息，请参阅[Azure 自动化状态配置定价](https://azure.microsoft.com/pricing/details/automation/)。
+- 要查看在连续部署管道中使用 Azure 自动化状态配置的示例，请参阅[使用 Azure 自动化状态配置进行持续部署和巧克力](automation-dsc-cd-chocolatey.md)。

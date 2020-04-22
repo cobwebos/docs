@@ -1,6 +1,6 @@
 ---
-title: 诊断 Windows 混合 Runbook 工作线程 - Azure 更新管理
-description: 了解如何在支持更新管理的 Windows 上解决 Azure 自动化混合 Runbook 工作线程的问题。
+title: 在 Azure 自动化更新管理中解决 Windows 更新代理问题
+description: 了解如何使用更新管理解决方案解决 Windows 更新代理的问题。
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,36 +9,36 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: ec35d11eba59ea21947e2c3cd5286bababa4eabb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6983a2ac7ab5fafcb00aee0b72221a8540ea1668
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76153848"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678974"
 ---
-# <a name="understand-and-resolve-windows-hybrid-runbook-worker-health-in-update-management"></a>在更新管理中了解和解决 Windows 混合 Runbook 辅助角色运行状况
+# <a name="troubleshoot-windows-update-agent-issues"></a>解决 Windows 更新代理问题
 
-可能会有许多原因导致计算机在更新管理中不显示“就绪”****。 在更新管理中，可以检查混合 Runbook 工作线程代理的运行状况以确定基础问题。 本文讨论如何在[脱机方案中](#troubleshoot-offline)从 Azure 门户和非 Azure 计算机运行 Azure 计算机的疑难解答。
+在更新管理中，计算机未显示为就绪（正常）的原因有很多。 在更新管理中，可以检查混合 Runbook 工作线程代理的运行状况以确定基础问题。 本文讨论如何在[脱机方案中](#troubleshoot-offline)从 Azure 门户和非 Azure 计算机运行 Azure 计算机的疑难解答。
 
-下表列出计算机可能处于的三个就绪状态：
+以下是计算机的三个就绪状态：
 
-* **就绪**- 部署了混合 Runbook 工作线程，最后一次出现不到 1 小时。
-* **已断开连接**- 已部署混合 Runbook 工作线程，最后一次出现是在 1 小时前。
-* **未配置**- 找不到混合 Runbook 工作线程或尚未完成载入。
+* 就绪 - 部署了混合 Runbook 工作线程，最后一次出现不到 1 小时。
+* 已断开连接 - 已部署混合 Runbook 工作线程，最后一次出现是在 1 小时前。
+* 未配置 - 找不到混合 Runbook 工作线程或尚未完成载入。
 
 > [!NOTE]
 > Azure 门户显示的内容与计算机的当前状态之间可能会有轻微的延迟。
 
 ## <a name="start-the-troubleshooter"></a>启动“故障排除”
 
-对于 Azure 计算机，通过单击门户中“更新代理准备”**** 列下的“故障排除”**** 链接，可以启动“更新代理故障排除”**** 页。 对于非 Azure 计算机，该链接将带您到本文。 请参阅[脱机说明](#troubleshoot-offline)以排除非 Azure 计算机故障。
+对于 Azure 计算机，通过单击门户中“更新代理准备”**** 列下的“故障排除”**** 链接，可以启动“更新代理故障排除”页。 对于非 Azure 计算机，该链接将带您到本文。 请参阅[脱机说明](#troubleshoot-offline)以排除非 Azure 计算机故障。
 
 ![虚拟机更新管理列表](../media/update-agent-issues/vm-list.png)
 
 > [!NOTE]
 > 要检查混合 Runbook 辅助角色的运行状况，VM 必须正在运行。 如果 VM 没有运行，屏幕上会显示“启动 VM”按钮****。
 
-在“更新代理故障排除”页上选择“运行检查”，启动故障排除********。 疑难解答使用[Run 命令](../../virtual-machines/windows/run-command.md)在计算机上运行脚本以验证依赖项。 完成故障排除时，它会返回检查的结果。
+在“更新代理故障排除”页上选择“运行检查”，启动故障排除****。 疑难解答使用[Run 命令](../../virtual-machines/windows/run-command.md)在计算机上运行脚本以验证依赖项。 完成故障排除时，它会返回检查的结果。
 
 ![“更新代理故障排除”页面](../media/update-agent-issues/troubleshoot-page.png)
 
@@ -86,15 +86,13 @@ WMF 检查验证系统是否具有 Windows 管理框架 （WMF） - [Windows 管
 
 ### <a name="monitoring-agent-service-status"></a>监视代理服务的状态
 
-此项检查确定 `HealthService`（Microsoft Monitoring Agent）是否在计算机上运行。
+此检查确定 Windows 的日志分析代理`healthservice`（ ） 是否在计算机上运行。 要了解有关对服务进行故障排除的更多信息，请参阅[Windows 的日志分析代理未运行](hybrid-runbook-worker.md#mma-not-running)。
 
-若要详细了解如何对服务进行故障排查，请参阅 [Microsoft Monitoring Agent 未运行](hybrid-runbook-worker.md#mma-not-running)。
-
-要重新安装 Microsoft 监视代理，请参阅[安装和配置 Microsoft 监视代理](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)。
+要重新安装 Windows 的日志分析代理，请参阅[安装和配置 Windows 的日志分析代理](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)。
 
 ### <a name="monitoring-agent-service-events"></a>监视代理服务事件
 
-此检查用于确定过去 24 小时内计算机上的 Operations Manager 日志中是否出现过任何 `4502` 事件。
+此检查确定在过去 24 小时内，Azure 操作管理器日志中是否显示任何 4502 事件。
 
 有关此事件的详细信息，请参阅此事件的[故障排除指南](hybrid-runbook-worker.md#event-4502)。
 
@@ -167,9 +165,9 @@ RuleName                    : Monitoring Agent service status
 RuleGroupName               : VM Service Health Checks
 RuleDescription             : HealthService must be running on the machine
 CheckResult                 : Failed
-CheckResultMessage          : Microsoft Monitoring Agent service (HealthService) is not running
+CheckResultMessage          : Log Analytics for Windows service (HealthService) is not running
 CheckResultMessageId        : MonitoringAgentServiceRunningCheck.Failed
-CheckResultMessageArguments : {Microsoft Monitoring Agent, HealthService}
+CheckResultMessageArguments : {Log Analytics agent for Windows, HealthService}
 
 RuleId                      : MonitoringAgentServiceEventsCheck
 RuleGroupId                 : servicehealth
@@ -177,9 +175,9 @@ RuleName                    : Monitoring Agent service events
 RuleGroupName               : VM Service Health Checks
 RuleDescription             : Event Log must not have event 4502 logged in the past 24 hours
 CheckResult                 : Failed
-CheckResultMessage          : Microsoft Monitoring Agent service Event Log (Operations Manager) does not exist on the machine
+CheckResultMessage          : Log Analytics agent for Windows service Event Log (Operations Manager) does not exist on the machine
 CheckResultMessageId        : MonitoringAgentServiceEventsCheck.Failed.NoLog
-CheckResultMessageArguments : {Microsoft Monitoring Agent, Operations Manager, 4502}
+CheckResultMessageArguments : {Log Analytics agent for Windows, Operations Manager, 4502}
 
 RuleId                      : CryptoRsaMachineKeysFolderAccessCheck
 RuleGroupId                 : permissions

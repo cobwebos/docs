@@ -5,18 +5,18 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/16/2019
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 356713bd7d51be6f3550a6975a766fe1b6a0fc05
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce3dbf416da11fd6863622f1c6911eecb3726461
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286211"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684481"
 ---
 # <a name="publish-an-integrated-solution"></a>发布集成解决方案
 
-在单个捆绑产品/服务中，集成解决方案将软件供应商的点解决方案技术与服务合作伙伴的部署和支持相结合。 服务合作伙伴在 Microsoft AppSource 或 Azure 应用商店中列出产品/服务作为[咨询服务](https://docs.microsoft.com/azure/marketplace/consulting-services)。
+在单个捆绑产品/服务中，集成解决方案将软件供应商的点解决方案技术与服务合作伙伴的部署和支持相结合。 服务合作伙伴在 Microsoft AppSource 或 Azure 应用商店中列出产品/服务作为[咨询服务](./consulting-services.md)。
 
 集成解决方案旨在满足特定的客户需求或方案。 提供商首先了解行业挑战或痛点。 然后，他们集成了两种或两种以上同类最佳的技术，为客户创建统一且可重复的部署体验。 提供商使客户快速启动并运行。 他们为客户提供单一联系点，提供相关的定制、咨询和解决方案支持。 结果是一个集成的解决方案，包括技术和服务。
 
@@ -97,21 +97,21 @@ ms.locfileid: "80286211"
 1. 完成 Microsoft AppSource 或 Azure 应用商店列表的营销宣传资料，包括：
 
     * 组合解决方案名称。
-    * 集成解决方案的列表说明。 遵循[报价列表最佳实践](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)。
+    * 集成解决方案的列表说明。 遵循[报价列表最佳实践](./gtm-offer-listing-best-practices.md)。
     * 向客户宣传一页。 使用[单页机模板](https://aka.ms/AA5s08a)。
     * 客户演示文稿。 使用[演示文稿模板](https://aka.ms/AA5s7ql)。
     * 组合解决方案的徽标。
 
 ## <a name="publish-your-integrated-solution"></a>发布集成解决方案
 
-完成技术集成和营销宣传资料后，请参阅[Microsoft AppSource 和 Azure 应用商店咨询服务的](https://docs.microsoft.com/azure/marketplace/consulting-services)发布者指南。 使用此资源可确定解决方案将在 Microsoft AppSource 或 Azure 应用商店中发布。 还使用本指南准备发布项目并完成发布过程。
+完成技术集成和营销宣传资料后，请参阅[Microsoft AppSource 和 Azure 应用商店咨询服务的](./consulting-services.md)发布者指南。 使用此资源可确定解决方案将在 Microsoft AppSource 或 Azure 应用商店中发布。 还使用本指南准备发布项目并完成发布过程。
 
 尽管咨询服务提供有五种服务类型，但集成解决方案必须是概念证明或完全实现。
 
 ## <a name="go-to-market-with-your-integrated-solution"></a>使用集成解决方案进入市场
 
-当解决方案位于 Microsoft AppSource 或 Azure 应用商店中时，您需要通过营销活动来提高知名度和需求。 查看[项目计划和时间表](https://aka.ms/AA5qiuc)中列出的活动。 此资源包括合作伙伴可以在自己的团队中相互推动的活动。 然后，为在市场上发布的合作伙伴获取[上市优惠](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#list-trial-and-consulting-benefits)。 所有集成解决方案产品均有资格获得试用级权益。
+当解决方案位于 Microsoft AppSource 或 Azure 应用商店中时，您需要通过营销活动来提高知名度和需求。 查看[项目计划和时间表](https://aka.ms/AA5qiuc)中列出的活动。 此资源包括合作伙伴可以在自己的团队中相互推动的活动。 然后，为在市场上发布的合作伙伴获取[上市优惠](./gtm-your-marketplace-benefits.md#list-trial-and-consulting-benefits)。 所有集成解决方案产品均有资格获得试用级权益。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关在市场中购买集成解决方案的信息，请参阅[集成解决方案](https://docs.microsoft.com/azure/marketplace/integrated-solutions)。
+有关在市场中购买集成解决方案的信息，请参阅[集成解决方案](./integrated-solutions.md)。

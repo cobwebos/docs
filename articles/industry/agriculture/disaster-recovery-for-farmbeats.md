@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 04/13/2020
 ms.author: v-umha
-ms.openlocfilehash: d64735e683ba1133e7d381a68611d204c4068026
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 1665c535d4b1fb6190ee5736b688b402f8b4a541
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313069"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683898"
 ---
 # <a name="disaster-recovery-for-farmbeats"></a>服务器场灾难恢复
 
@@ -28,7 +28,7 @@ ms.locfileid: "81313069"
 
 FarmBeats 将数据存储在三个 Azure 第一方服务中，即**Azure 存储**、**宇宙 DB**和**时间序列见解**。 使用以下步骤将这些服务的数据冗余启用到配对的 Azure 区域：
 
-1.  **Azure 存储**- 遵循此准则，为服务器场 Bbeats 部署中的每个存储帐户启用数据冗余。
+1.  **Azure 存储**- 遵循此准则，为服务器场节拍部署中的每个存储帐户启用数据冗余。
 2.  **Azure Cosmos DB** - 遵循此准则，为服务器场节拍部署的 Cosmos DB 帐户启用数据冗余。
 3.  **Azure 时间序列见解 （TSI）** - TSI 当前不提供数据冗余。 要恢复时间序列见解数据，请转到传感器/天气合作伙伴，并将数据再次推送到 FarmBeats 部署。
 

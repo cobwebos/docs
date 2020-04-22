@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 0a7a89b4ff1f6deb94c545e64b4584d7959d573a
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: e49c621d92a8aa604b5f95291c5d80c0141f41dd
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546379"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682724"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>检测数据集中的数据偏移（预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -77,7 +77,7 @@ ms.locfileid: "80546379"
 
 #### <a name="python-sdk"></a>Python SDK
 
-类[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)的方法[`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)定义数据集的时间戳列。 
+[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) 类的 [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) 方法定义数据集的时间戳列。 
 
 ```python 
 from azureml.core import Workspace, Dataset, Datastore
@@ -104,7 +104,7 @@ dset = dset.with_timestamp_columns('date')
 dset = dset.register(ws, 'target')
 ```
 
-有关使用数据集的 `timeseries` 特征的完整示例，请参阅[示例笔记本](https://aka.ms/azureml-tsd-notebook)或[数据集 SDK 文档](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)。
+有关使用数据集的 `timeseries` 特征的完整示例，请参阅[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb)或[数据集 SDK 文档](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)。
 
 #### <a name="azure-machine-learning-studio"></a>Azure 机器学习工作室
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]
@@ -115,15 +115,15 @@ dset = dset.register(ws, 'target')
 
 [![分区格式](./media/how-to-monitor-datasets/partition-format.png)](media/how-to-monitor-datasets/partition-format-expand.png)
 
-在“架构”设置中，通过指定的数据集中的虚拟列或实际列指定时间戳列：****
+在“架构”设置中，通过指定的数据集中的虚拟列或实际列指定时间戳列： 
 
-![时间戳](./media/how-to-monitor-datasets/timestamp.png)
+![Timestamp](./media/how-to-monitor-datasets/timestamp.png)
 
 ## <a name="dataset-monitor-settings"></a>数据集监视器设置
 
 创建使用指定时间戳设置的数据集后，便可以配置数据集监视器。
 
-各种数据集监视器设置分为三组：**基本信息、监视器设置**和**回填设置**。
+各项数据集监视器设置划分为三组：**基本信息、监视设置**和**回填设置**。
 
 ### <a name="basic-info"></a>基本信息
 
@@ -171,9 +171,9 @@ dset = dset.register(ws, 'target')
 
 ![监视器列表](./media/how-to-monitor-datasets/monitor-list.png)
 
-单击“+创建监视器”按钮，然后单击“下一步”继续完成向导。********
+单击“+创建监视器”按钮，然后单击“下一步”继续完成向导。  
 
-![向导](./media/how-to-monitor-datasets/wizard.png)
+![奇才](./media/how-to-monitor-datasets/wizard.png)
 
 生成的数据集监视器将显示在列表中。 选择该监视器转到其详细信息页。
 
@@ -231,26 +231,26 @@ monitor = monitor.enable_schedule()
 
 ## <a name="understanding-data-drift-results"></a>了解数据偏移结果
 
-数据监视器生成两组结果：漂移概览和功能详细信息。 以下动画基于所选特征和指标演示了可用的偏移监视器图表。 
+数据监视器生成两组结果：偏移概述和特征详细信息。 以下动画基于所选特征和指标演示了可用的偏移监视器图表。 
 
 ![演示视频](./media/how-to-monitor-datasets/video.gif)
 
 ### <a name="drift-overview"></a>偏移概述
 
-“偏差概述”部分包含数据偏移幅度的顶级见解，并指出应该对哪些特征做进一步的调查。**** 
+“偏差概述”部分包含数据偏移幅度的顶级见解，并指出应该对哪些特征做进一步的调查。  
 
 | 指标 | 说明 | 提示 | 
 | ------ | ----------- | ---- | 
 | 数据偏移幅度 | 以介于基线与一段时间内的目标数据集之间的百分比表示。 范围为 0 到 100，其中 0 表示数据集相同，100 表示 Azure 机器学习数据偏移功能可以完全区分两个数据集。 | 由于这种幅度是使用机器学习技术生成的，预期度量的精确百分比中存在干扰。 | 
 | 按特征显示的偏移贡献 | 目标数据集中每个特征对度量的偏移幅度的贡献。 |  由于共变偏移，特征的基础分布不一定需要改变即可获得相对较高的特征重要性。 | 
 
-下图是 Azure 机器学习工作室的“偏移概述”中显示的图表示例，它是回填 [NOAA 集成式图面数据](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)后生成的。**** 数据已按 `stationName contains 'FLORIDA'` 采样，其中“2019 年 1 月”用作基线数据集，2019 年的所有数据用作目标。
+下图是 Azure 机器学习工作室的“偏移概述”中显示的图表示例，它是回填 [NOAA 集成式图面数据](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)后生成的。  数据已按 `stationName contains 'FLORIDA'` 采样，其中“2019 年 1 月”用作基线数据集，2019 年的所有数据用作目标。
  
 ![偏移概述](./media/how-to-monitor-datasets/drift-overview.png)
 
 ### <a name="feature-details"></a>特征详细信息
 
-“特征详细信息”部分包含所选特征的分布变化的特征级见解，以及一段时间内的其他统计信息。**** 
+“特征详细信息”部分包含所选特征的分布变化的特征级见解，以及一段时间内的其他统计信息。  
 
 此外，将分析一段时间内的目标数据集。 每个特征的基线分布之间的统计距离将与一段时间内的目标数据集进行比较，这在概念上类似于数据偏移幅度，只是统计距离适用于单个特征。 还可以使用最小值、最大值和平均值。 
 
@@ -287,7 +287,7 @@ monitor = monitor.enable_schedule()
 
 可以在与机器学习工作区关联的 [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) 资源中查询指标。 可以访问 Application Insights 的所有功能，包括设置自定义警报规则和操作组，以触发电子邮件/短信/推送/语音或 Azure 函数等操作。 有关详细信息，请参阅完整的 Application Insights 文档。 
 
-若要开始，请导航到 Azure 门户并选择工作区的“概述”页。****  关联的 Application Insights 资源位于最右侧：
+若要开始，请导航到 Azure 门户并选择工作区的“概述”页。   关联的 Application Insights 资源位于最右侧：
 
 [![Azure 门户概述](./media/how-to-monitor-datasets/ap-overview.png)](media/how-to-monitor-datasets/ap-overview-expanded.png)
 
@@ -297,7 +297,7 @@ monitor = monitor.enable_schedule()
 
 数据集监视器指标存储为 `customMetrics`。 可以在设置数据集监视器之后编写和运行查询来查看指标：
 
-[![日志分析查询](./media/how-to-monitor-datasets/simple-query.png)](media/how-to-monitor-datasets/simple-query-expanded.png)
+[![Log Analytics 查询](./media/how-to-monitor-datasets/simple-query.png)](media/how-to-monitor-datasets/simple-query-expanded.png)
 
 识别要对其设置警报规则的指标后，创建新的警报规则：
 
@@ -307,7 +307,7 @@ monitor = monitor.enable_schedule()
 
 ![新建操作组](./media/how-to-monitor-datasets/action-group.png)
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 限制和已知问题：
 
@@ -315,7 +315,7 @@ monitor = monitor.enable_schedule()
 * 除非未指定特征列表（使用所有特征），否则特征限制为 200 个。
 * 计算大小必须足够大才能处理数据。 
 * 确保数据集包含处于给定监视器运行的开始和结束日期范围内的数据。
-* 数据集监视器将仅适用于包含 50 行或更多行的数据集。 
+* 数据集监视器仅适用于包含 50 行或更多行的数据集。 
 
 数据集中的列或特征根据下表中的条件划分为分类值或数字值。 如果特征不满足这些条件 - 例如，某个字符串类型的列包含 100 个以上的唯一值 - 则会从数据偏移算法中删除该特征，但仍会对其进行分析。 
 

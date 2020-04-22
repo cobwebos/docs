@@ -1,18 +1,18 @@
 ---
-title: 上市服务 - 您的商业市场优势 |蔚蓝
+title: 上市服务 - 您的商业市场优势 |Azure 应用商店
 description: 本部分介绍发布者可以使用的市场推广服务 - Microsoft 资源。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 02/08/2020
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: d34fb989e7f656df93faae63ef4dc42ed0fe5abe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d5c8b2f5cb03c7e1777137100547fbbbaf107f0b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286228"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684539"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>您的商业市场优势
 
@@ -24,7 +24,7 @@ ms.locfileid: "80286228"
 
 市场奖励旨在支持您在特定的成长阶段，从提高认识活动开始，帮助您获得第一批客户。 随着您通过市场的发展，您可以解锁新的权益，旨在帮助您转换客户和达成交易。 
 
-该计划创建了一个积极的反馈循环：每个阶段的增长优势旨在推动您进入下一阶段，使您能够通过 Microsoft 领域的业务拓展业务，并通过 Microsoft 渠道商业市场作为您的平台。 
+该计划创建了一个积极的反馈循环：每个阶段的优势旨在推动您进入下一阶段，使您能够通过 Microsoft 领域以及 Microsoft 渠道将业务拓展到 Microsoft 客户，并通过 Microsoft 渠道作为您的平台。 
 
 您的权益根据您的优惠是["列表、试用"还是"交易"](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type#choose-a-publishing-option)而有所区别。
 
@@ -44,7 +44,7 @@ ms.locfileid: "80286228"
 2. 团队根据市场报价向"所有者"或"主要联系人"联系。 最佳做法是输入您定期检查的个人或别名：发送到别名（如经常丢失）info@company.com的邮件。
 
 >[!Note]
->如果您的优惠已活了四周以上，但您尚未收到消息，请在组织内查看相关产品/服务的所有者，请查看云合作伙伴门户或合作伙伴中心。 他们应该有沟通和后续步骤。 <br> <br> 如果您无法确定所有者，或者所有者已离开您的公司，则可以在 上https://aka.ms/marketplacepublishersupport升起支持票证。
+>如果您的报价已活了四周以上，但您没有收到消息，请在您的组织中查看相关产品/服务的所有者，请查看合作伙伴中心。 他们应该有沟通和后续步骤。 <br> <br> 如果您无法确定所有者，或者所有者已离开您的公司，则可以在 上https://aka.ms/marketplacepublishersupport升起支持票证。
 
 随着市场中套餐的不断增加，可用的活动范围也会不断扩大。 所有列表都会收到基本级别的优化建议和促销，作为资源和最佳实践自助服务电子邮件的一部分。
 
@@ -96,7 +96,7 @@ Microsoft 保留撤销和终止市场奖励权益的权利，以便发布者：
 * 利用其市场列表从事非法活动。
 * 从商业市场退市。 
 * 使用其优惠显示违反版权或商标法的营销或其他内容。
-* 违反[Azure 赞助计划](https://azure.microsoft.com/offers/ms-azr-0036p/)的策略，包括但不限于使用 Azure 赞助资金进行自己的内部操作或比特币挖掘。 
+* 违反[Azure 赞助计划](https://azure.microsoft.com/offers/ms-azr-0036p/)的策略，包括但不限于使用 Azure 赞助资金进行自己的内部运营或比特币挖掘。 
 
 ### <a name="offer-availability"></a>供货情况
 
@@ -106,9 +106,7 @@ Microsoft 保留撤销和终止市场奖励权益的权利，以便发布者：
 
 ## <a name="next-steps"></a>后续步骤
 
-如果您在[云合作伙伴门户](https://cloudpartner.azure.com)中创建了产品/服务，请登录以创建或配置产品/服务。
-
-如果您在[合作伙伴中心](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview)创建产品/服务，请登录以创建或配置产品/服务。
+如果您在[合作伙伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)创建产品/服务，请登录以创建或配置产品/服务。
 
 查看[可供您使用的自我服务资源](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)。
 

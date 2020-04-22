@@ -3,12 +3,12 @@ title: 使用 PowerShell 导入和导出蓝图
 description: 了解如何将蓝图定义用作代码。 使用导出和导入命令共享、源代码管理并管理它们。
 ms.date: 09/03/2019
 ms.topic: how-to
-ms.openlocfilehash: 98bd21aad944346a17d8bdce7fb74c0eb8be2ed7
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: dcdf48f8941198591b39d6cf89ec5e6dac7ba94c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677138"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686837"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>使用 PowerShell 的导入和导出蓝图定义
 
@@ -31,7 +31,7 @@ Azure 蓝图可以通过 Azure 门户完全管理。 随着组织在 Azure 蓝�
 - 阅读有关[部署阶段](../concepts/deployment-stages.md)和[蓝图生命周期](../concepts/lifecycle.md)
 - 使用 PowerShell[创建](../create-blueprint-powershell.md)[和管理](./manage-assignments-ps.md)蓝图定义和分配
 
-如果尚未安装，请按照[添加 Az.Blueprint 模块](./manage-assignments-ps.md#add-the-azblueprint-module)中的说明安装并验证 PowerShell 库中的 Az.Blueprint 模块****。
+如果尚未安装，请按照[添加 Az.Blueprint 模块](./manage-assignments-ps.md#add-the-azblueprint-module)中的说明安装并验证 PowerShell 库中的 Az.Blueprint 模块  。
 
 ## <a name="folder-structure-of-a-blueprint-definition"></a>蓝图定义的文件夹结构
 
@@ -88,7 +88,7 @@ Azure 蓝图可以通过 Azure 门户完全管理。 随着组织在 Azure 蓝�
 
 在[所需的文件夹结构](#folder-structure-of-a-blueprint-definition)中具有[导出的蓝图定义](#export-your-blueprint-definition)或手动创建的蓝图定义后，可以将该蓝图定义导入到不同的管理组或订阅。
 
-有关内置蓝图定义的示例，请参阅 Azure 蓝图[GitHub 存储库](https://github.com/Azure/azure-blueprints/tree/master/samples/builtins)。
+有关内置蓝图定义的示例，请参阅 Azure 蓝图[GitHub 存储库](https://github.com/Azure/azure-blueprints/tree/master/samples/001-builtins)。
 
 - **名称**[必需]
   - 指定新蓝图定义的名称
@@ -123,6 +123,6 @@ Azure 蓝图可以通过 Azure 门户完全管理。 随着组织在 Azure 蓝�
 
 - 了解[蓝图生命周期](../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../concepts/parameters.md)。
-- 学习自定义[蓝图排序顺序](../concepts/sequencing-order.md)。
+- 了解如何自定义[蓝图排序顺序](../concepts/sequencing-order.md)。
 - 了解如何利用[蓝图资源锁定](../concepts/resource-locking.md)。
-- 在分配蓝图期间使用[常规故障排除时](../troubleshoot/general.md)解决问题。
+- 使用[一般故障排除](../troubleshoot/general.md)在蓝图的分配期间解决问题。

@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: fb82cec6874f8ef4f41897cc22939fe69ed02ec2
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 1e7eaf49fb8b62259b8c619c89edffd629dfde7f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457410"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685511"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>使用 ID 代理（预览）进行凭据管理
 
@@ -46,6 +46,46 @@ ID 代理功能将添加一个额外的 VM 到群集。 此 VM 是 ID 代理节�
 
 ![启用 ID 代理的选项](./media/identity-broker/identity-broker-enable.png)
 
+### <a name="using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
+如果将调用`idbrokernode`具有以下属性的新角色添加到模板的计算配置文件中，则群集将在启用 ID 代理节点后创建：
+
+```json
+.
+.
+.
+"computeProfile": {
+    "roles": [
+        {
+            "autoscale": null,
+            "name": "headnode",
+           ....
+        },
+        {
+            "autoscale": null,
+            "name": "workernode",
+            ....
+        },
+        {
+            "autoscale": null,
+            "name": "idbrokernode",
+            "targetInstanceCount": 1,
+            "hardwareProfile": {
+                "vmSize": "Standard_A2_V2"
+            },
+            "virtualNetworkProfile": {
+                "id": "string",
+                "subnet": "string"
+            },
+            "scriptActions": [],
+            "dataDisksGroups": null
+        }
+    ]
+}
+.
+.
+.
+```
+
 ## <a name="tool-integration"></a>工具集成
 
 HDInsight [IntelliJ 插件](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib)已更新以支持 OAuth。 您可以使用此插件连接到群集并提交作业。
@@ -62,7 +102,7 @@ SSH 身份验证要求哈希在 Azure AD DS 中可用。 如果只想将 SSH 用
 
 *   OAuth 资源 uri：https://hib.azurehdinsight.net 
 * 阿皮德： 7865c1d2-f040-46cc-875f-831a1ef6a28a
-*   权限：（名称：群集.ReadWrite，id：8f89faa0-ffef-4007-974d-4989b39ad77d）
+*   权限： （名称： 群集.ReadWrite， ID： 8f89faa0-ffef-4007-974d-4989b39ad77d）
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
-title: 诊断 Linux 混合 Runbook 工作 - Azure 更新管理
-description: 了解如何在 Linux 上解决和支持更新管理的 Azure 自动化混合 Runbook 工作线程的问题。
+title: 在 Azure 自动化更新管理中解决 Linux 更新代理问题
+description: 了解如何使用更新管理解决方案解决 Linux Windows 更新代理的问题。
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,36 +9,36 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: e60ba71607b99f0ea97e0725ffdd0740f3e9c579
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bba1c7e89a9c3bb1c9aa1567e36dd71a40f14636
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278293"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81679060"
 ---
-# <a name="understand-and-resolve-linux-hybrid-runbook-worker-health-for-update-management"></a>了解并解决 Linux 混合 Runbook 辅助角色运行状况，用于更新管理
+# <a name="troubleshoot-linux-update-agent-issues"></a>解决 Linux 更新代理问题
 
-可能会有许多原因导致计算机在更新管理中不显示“就绪”****。 在更新管理中，可以检查混合 Runbook 工作线程代理的运行状况以确定基础问题。 本文讨论如何在[脱机方案中](#troubleshoot-offline)从 Azure 门户和非 Azure 计算机运行 Azure 计算机的疑难解答。
+在更新管理中，您的计算机未显示为就绪（正常）的原因可能有很多。 在更新管理中，可以检查混合 Runbook 工作线程代理的运行状况以确定基础问题。 本文讨论如何在[脱机方案中](#troubleshoot-offline)从 Azure 门户和非 Azure 计算机运行 Azure 计算机的疑难解答。 
 
 下表列出计算机可能处于的三个就绪状态：
 
-* **就绪**- 部署了混合 Runbook 工作线程，最后一次出现不到 1 小时。
-* **已断开连接**- 已部署混合 Runbook 工作线程，最后一次出现是在 1 小时前。
-* **未配置**- 找不到混合 Runbook 工作线程或尚未完成载入。
+* 就绪 - 部署了混合 Runbook 工作线程，最后一次出现不到 1 小时。
+* 已断开连接 - 已部署混合 Runbook 工作线程，最后一次出现是在 1 小时前。
+* 未配置 - 找不到混合 Runbook 工作线程或尚未完成载入。
 
 > [!NOTE]
 > Azure 门户显示的内容与计算机的当前状态之间可能会有轻微的延迟。
 
 ## <a name="start-the-troubleshooter"></a>启动“故障排除”
 
-对于 Azure 计算机，通过单击门户中“更新代理准备”**** 列下的“故障排除”**** 链接，可以启动“更新代理故障排除”**** 页。 对于非 Azure 计算机，该链接将带您到本文。 请参阅脱机说明以排除非 Azure 计算机故障。
+对于 Azure 计算机，通过单击门户中“更新代理准备”**** 列下的“故障排除”**** 链接，可以启动“更新代理故障排除”页。 对于非 Azure 计算机，该链接将带您到本文。 请参阅脱机说明以排除非 Azure 计算机故障。
 
 ![VM 列表页](../media/update-agent-issues-linux/vm-list.png)
 
 > [!NOTE]
-> 检查要求 VM 处于运行状态。 如果 VM 未运行，会出现一个用于链接到“启动 VM”**** 的按钮。
+> 检查要求 VM 处于运行状态。 如果 VM 未运行，则将显示"**启动 VM"** 按钮。
 
-在“更新代理故障排除”**** 页上，单击“运行检查”****，启动故障排除。 疑难解答使用[Run 命令](../../virtual-machines/linux/run-command.md)在计算机上运行脚本以验证依赖项。 完成故障排除时，它会返回检查的结果。
+在“更新代理故障排除”页上，单击“运行检查”****，启动故障排除。 疑难解答使用[Run 命令](../../virtual-machines/linux/run-command.md)在计算机上运行脚本以验证依赖项。 完成故障排除时，它会返回检查的结果。
 
 ![故障排除页](../media/update-agent-issues-linux/troubleshoot-page.png)
 

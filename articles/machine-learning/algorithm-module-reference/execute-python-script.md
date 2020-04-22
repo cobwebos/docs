@@ -1,5 +1,5 @@
 ---
-title: 执行 Python 脚本：模块引用
+title: 执行 Python 脚本：模块参考
 titleSuffix: Azure Machine Learning
 description: 了解如何使用 Azure 机器学习中的“执行 Python 脚本”模块来运行 Python 代码。
 services: machine-learning
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: 0f86d1ad03062797764af6a0d49beacaa3458a8f
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 79dc1b188e91028a98f43dc24972228f2d2101be
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365561"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684725"
 ---
 # <a name="execute-python-script-module"></a>“执行 Python 脚本”模块
 
-本文介绍 Azure 机器学习设计器（预览版）中的一个模块。
+本文介绍了 Azure 机器学习设计器（预览版）中的一个模块。
 
 使用此模块可以运行 Python 代码。 有关 Python 的体系结构和设计原则的详细信息，请参阅[以下文章](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts)。
 
@@ -164,7 +164,7 @@ os.system(f"pip install scikit-misc")
 # imports up here can be used to
 import pandas as pd
 
-# The entry point function can contain up to two input arguments:
+# The entry point function must have two input arguments:
 #   Param<dataframe1>: a pandas.DataFrame
 #   Param<dataframe2>: a pandas.DataFrame
 def azureml_main(dataframe1 = None, dataframe2 = None):
@@ -217,10 +217,17 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 5. 在“Python 脚本”文本框中，键入或粘贴有效的 Python 脚本****。
 
+    > [!NOTE]
+    > 编写脚本时请非常小心，并确保没有语法错误，例如使用未声明的对象或未导入的模块。 还要特别注意预安装的模块列表。 要导入未列出的模块，请在脚本中安装相应的包，例如
+    >  ``` Python
+    > import os
+    > os.system(f"pip install scikit-misc")
+    > ```
+    
     “Python 脚本”**** 文本框中预先填充了注释中的某些说明，以及用于数据访问和输出的示例代码。 你必须编辑或替换此代码。 请务必遵循有关缩进和大小写的 Python 约定。
 
     + 脚本必须包含名为 `azureml_main` 的函数作为此模块的入口点。
-    + 入口点函数最多可以包含两个输入参数：`Param<dataframe1>` 和 `Param<dataframe2>`
+    + 入口点函数必须具有两个输入参数：`Param<dataframe1>`和`Param<dataframe2>`，即使脚本中不使用这些参数也是如此。
     + 连接到第三个输入端口的压缩文件将被解压缩并存储在目录 `.\Script Bundle` 中，该目录还会添加到 Python `sys.path` 中。 
 
     因此，如果 zip 文件包含 `mymodule.py`，请使用 `import mymodule` 导入它。

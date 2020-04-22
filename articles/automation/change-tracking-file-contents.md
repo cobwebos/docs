@@ -1,16 +1,16 @@
 ---
 title: 使用 Azure 自动化查看文件内容更改
-description: 使用“更改跟踪”的文件内容更改功能查看已更改的文件内容。
+description: 使用"更改跟踪"的文件内容更改功能查看已更改的文件的内容。
 services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 23c4f24e430d58895eb551c3e2cb62b5f0003ac0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57c3c2c7a0c923921c727ccea7839940457bc1ee
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75418809"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683002"
 ---
 # <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>查看“更改跟踪”跟踪的文件的内容
 
@@ -20,9 +20,9 @@ ms.locfileid: "75418809"
 
 * 若要存储文件内容，需要有一个使用资源管理器部署模型的标准存储帐户。 不应使用高级和经典部署模型存储帐户。 有关存储帐户的详细信息，请参阅有关[Azure 存储帐户的信息](../storage/common/storage-create-storage-account.md)
 
-* 所使用的存储帐户只能有 1 个与之相连的自动化帐户。
+* 使用的存储帐户只能连接 1 个自动化帐户。
 
-* 在自动化帐户中启用[更改跟踪](automation-change-tracking.md)。
+* 在自动化帐户中启用[了更改跟踪](automation-change-tracking.md)。
 
 ## <a name="enable-file-content-tracking"></a>启用文件内容跟踪
 
@@ -44,19 +44,19 @@ ms.locfileid: "75418809"
 
 通过以下步骤可以为文件开启更改跟踪：
 
-1. 在“更改跟踪”的“编辑设置”页面上选择“Windows 文件”或“Linux 文件”选项卡，然后单击“添加”********************
+1. 在 **"更改跟踪**的编辑设置"页上，选择 **"Windows 文件**"或 **"Linux 文件**"选项卡，然后单击"**添加"**
 
-1. 填写文件路径信息，并在“上传所有设置的文件内容”处选择“True”********。 此设置只会为该文件路径启用文件内容跟踪。
+1. 填写文件路径信息，并在“上传所有设置的文件内容”处选择“True”****。 此设置只会为该文件路径启用文件内容跟踪。
 
    ![添加 Linux 文件](./media/change-tracking-file-contents/add-linux-file.png)
 
 ## <a name="viewing-the-contents-of-a-tracked-file"></a>查看所跟踪文件的内容
 
-1. 只要在文件或该路径中的某个文件中检测到了更改，就会将其显示在门户中。 从更改列表中选择文件更改。 已显示“更改详细信息”窗格****。
+1. 只要在文件或该路径中的某个文件中检测到了更改，就会将其显示在门户中。 从更改列表中选择文件更改。 已显示“更改详细信息”窗格。
 
    ![列出更改内容](./media/change-tracking-file-contents/change-list.png)
 
-1. 在“更改详细信息”页面上，能看到文件信息前后的标准，单击左上角的“查看文件内容更改”可以查看文件的内容********。
+1. 在"更改详细信息"窗格中，您可以看到文件信息前后的标准信息。 选择 **"查看文件内容更改**"以查看文件的内容。
 
    ![更改详细信息](./media/change-tracking-file-contents/change-details.png)
 

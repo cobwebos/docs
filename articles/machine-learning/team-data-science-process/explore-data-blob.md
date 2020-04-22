@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 0b602660142f70fb1442977b22fce2bc1bb275cd
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: e429dce497411305964cb1ec5298228dc4093b1f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81481931"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685957"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>使用 pandas 浏览 Azure blob 存储中的数据
 
@@ -24,7 +24,7 @@ ms.locfileid: "81481931"
 
 此任务是[团队数据科学过程](overview.md)中的一个步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 本文假设用户具备以下条件：
 
 * 已创建 Azure 存储帐户。 如果需要说明，请参阅[创建 Azure 存储帐户](../../storage/common/storage-account-create.md)
@@ -37,6 +37,7 @@ ms.locfileid: "81481931"
 
     ```python
     from azure.storage.blob import BlockBlobService
+    import pandas as pd
     import tables
 
     STORAGEACCOUNTNAME= <storage_account_name>
@@ -62,7 +63,7 @@ ms.locfileid: "81481931"
 
 现在可以准备浏览数据并在此数据集上生成功能了。
 
-## <a name="examples-of-data-exploration-using-pandas"></a><a name="blob-dataexploration"></a>使用熊猫进行数据探索示例
+## <a name="examples-of-data-exploration-using-pandas"></a><a name="blob-dataexploration"></a>使用 pandas 浏览数据的示例
 下方举例说明了如何使用 pandas 浏览数据：
 
 1. 检查**行数和列数**
@@ -79,7 +80,7 @@ ms.locfileid: "81481931"
     dataframe_blobdata.tail(10)
     ```
 
-1. 使用以下示例代码检查导入的每个列的**数据类型**
+1. 使用如下示例代码检查每列导入的**数据类型**
 
     ```python
     for col in dataframe_blobdata.columns:
@@ -105,7 +106,7 @@ ms.locfileid: "81481931"
     print miss_num
     ```
 
-1. 如果数据中**缺少**特定列的值，可以按照如下方式删除这些值：
+1. 如果数据中的特定列存在**缺失值**，可按如下方法进行替代：
 
     ```python
     dataframe_blobdata_noNA = dataframe_blobdata.dropna()

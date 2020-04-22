@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/05/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 457979837b1c56eb85fc19c9a1fce5dc7df8c23b
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: b802a9c9df7e7f0c44ea66ee0061efb517b80050
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81481987"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682759"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 <br>
@@ -24,15 +24,15 @@ ms.locfileid: "81481987"
 
 本文介绍几种使用 Azure 资源管理器模板创建 Azure 机器学习工作区的方法。 使用资源管理器模板可以轻松地通过单个协调操作创建资源。 模板是一个 JSON 文档，定义部署所需的资源。 它还可以指定部署参数。 使用模板时，参数用于提供输入值。
 
-有关详细信息，请参阅[使用 Azure 资源管理器模板部署应用程序](../azure-resource-manager/templates/deploy-powershell.md)。
+有关详细信息，请参阅[使用 Azure Resource Manager 模板部署应用程序](../azure-resource-manager/templates/deploy-powershell.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 订阅**。 如果没有订阅，可试用 [Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
+* 一个 **Azure 订阅**。 如果没有订阅，可试用 [Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
 * 若要在 CLI 中使用模板，需要安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-## <a name="resource-manager-template"></a>资源管理器模板
+## <a name="resource-manager-template"></a>Resource Manager 模板
 
 可使用以下资源管理器模板创建 Azure 机器学习工作区和关联的 Azure 资源：
 
@@ -63,7 +63,7 @@ ms.locfileid: "81481987"
     其他服务的名称将随机生成。
 
 > [!TIP]
-> 尽管与此文档关联的模板会创建新的 Azure 容器注册表，但你也可以创建新的工作区，而无需创建容器注册表。 当您执行需要容器注册表的操作时，将创建一个操作。 例如，训练或部署模型。
+> 尽管与此文档关联的模板会创建新的 Azure 容器注册表，但你也可以创建新的工作区，而无需创建容器注册表。 当你执行需要容器注册表的操作时，会创建容器注册表。 例如，训练或部署模型。
 >
 > 还可以在 Azure 资源管理器模板中引用现有的容器注册表或存储帐户，而不是创建一个新的。
 
@@ -71,17 +71,19 @@ ms.locfileid: "81481987"
 
 有关模板的详细信息，请参阅以下文章：
 
-* [创作 Azure 资源管理器模板](../azure-resource-manager/templates/template-syntax.md)
-* [使用 Azure 资源管理器模板部署应用程序](../azure-resource-manager/templates/deploy-powershell.md)
+* [创作 Azure Resource Manager 模板](../azure-resource-manager/templates/template-syntax.md)
+* [使用 Azure Resource Manager 模板部署应用程序](../azure-resource-manager/templates/deploy-powershell.md)
 * [Microsoft.MachineLearningServices 资源类型](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/allversions)
 
 ### <a name="advanced-template"></a>高级模板
 
-以下示例模板演示如何创建具有三个设置的工作区：
+以下示例模板演示如何创建具有三项设置的工作区：
 
-* 为工作区启用高机密性设置
-* 为工作区启用加密
-* 使用现有的 Azure 密钥保管库
+* 启用工作区的高保密性设置
+* 启用工作区加密
+* 使用现有的 Azure 密钥保管库检索客户管理的密钥
+
+有关详细信息，请参阅[静态加密](concept-enterprise-security.md#encryption-at-rest)。
 
 ```json
 {
@@ -121,7 +123,7 @@ ms.locfileid: "81481987"
         "description": "Specifies the sku, also referred to as 'edition' of the Azure Machine Learning workspace."
       }
     },
-    "hbi_workspace":{
+    "high_confidentiality":{
       "type": "string",
       "defaultValue": "false",
       "allowedValues": [
@@ -256,27 +258,31 @@ ms.locfileid: "81481987"
                     "keyIdentifier": "[parameters('resource_cmk_uri')]"
                   }
             },
-        "hbiWorkspace": "[parameters('hbi_workspace')]"
+        "hbiWorkspace": "[parameters('high_confidentiality')]"
       }
     }
   ]
 }
 ```
 
-要获取密钥保管库的 ID 以及此模板所需的密钥 URI，可以使用 Azure CLI。 以下命令是使用 Azure CLI 获取密钥保管库资源 ID 和 URI 的示例：
+要获取密钥保管库的 ID 以及此模板所需的密钥 URI，可以使用 Azure CLI。 以下命令获取密钥保管库 ID：
 
 ```azurecli-interactive
-az keyvault show --name mykeyvault --resource-group myresourcegroup --query "[id, properties.vaultUri]"
+az keyvault show --name mykeyvault --resource-group myresourcegroup --query "id"
 ```
 
-此命令返回类似于以下文本的值。 第一个值是 ID，第二个值是 URI：
+此命令会返回类似于 `"/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault"` 的值。
 
-```text
-[
-  "/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault",
-  "https://mykeyvault.vault.azure.net/"
-]
+要获取客户托管密钥的 URI，请使用以下命令：
+
+```azurecli-interactive
+az keyvault key show --vault-name mykeyvault --name mykey --query "key.kid"
 ```
+
+此命令会返回类似于 `"https://mykeyvault.vault.azure.net/keys/mykey/{guid}"` 的值。
+
+> [!IMPORTANT]
+> 创建工作区后，无法更改机密数据、加密、密钥保管库 ID 或密钥标识符的设置。 要更改这些值，必须使用新值创建新工作区。
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户
 

@@ -5,16 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 2660e4a348d2ffd71f912ff80c36a5a9a3c9fe88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 910f284eedbf50be5b58b6c18f02e50adda35e9a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75417785"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680005"
 ---
 # <a name="migrate-your-oms-update-deployments-to-azure"></a>将 OMS 更新部署迁移到 Azure
 
-Operations Management Suite (OMS) 门户已被[弃用](../azure-monitor/platform/oms-portal-transition.md)。 Azure 门户提供了 OMS 门户中可用于更新管理的所有功能。 本文提供迁移到 Azure 门户所需的信息。
+Operations Management Suite (OMS) 门户已被[弃用](../azure-monitor/platform/oms-portal-transition.md)。 在 Azure 门户中，通过 Azure 监视器日志，可在 OMS 门户中可用于更新管理的所有功能。 本文提供了迁移到 Azure 门户所需的信息。
 
 ## <a name="key-information"></a>重要信息
 
@@ -23,7 +23,7 @@ Operations Management Suite (OMS) 门户已被[弃用](../azure-monitor/platform
 
 ## <a name="access-the-azure-portal"></a>访问 Azure 门户
 
-在 OMS 工作区中，单击“在 Azure 中打开”****。 这将导航到 OMS 使用的 Log Analytics 工作区。
+在 OMS 工作区中，单击“在 Azure 中打开”****。 此选项将导航到 OMS 一直在使用的日志分析工作区。
 
 ![在 Azure 中打开 - OMS 门户](media/migrate-oms-update-deployments/link-to-azure-portal.png)
 
@@ -31,11 +31,13 @@ Operations Management Suite (OMS) 门户已被[弃用](../azure-monitor/platform
 
 ![Azure Monitor 日志](media/migrate-oms-update-deployments/log-analytics.png)
 
-在自动化帐户中，单击“更新管理”以打开更新管理****。
+在自动化帐户中，单击 **"更新管理**"。
 
 ![更新管理](media/migrate-oms-update-deployments/azure-automation.png)
 
-将来，你可以直接转到 Azure 门户，在“所有服务”下，选择“管理工具”下的“自动化帐户”，选择相应的自动化帐户，然后单击“更新管理”****************。
+在 Azure 门户中，选择 **"所有服务**"下的 **"自动化帐户**"。 
+
+在 **"管理工具**"下，选择相应的自动化帐户，然后单击 **"更新管理**"。
 
 ## <a name="recreate-existing-deployments"></a>重新创建现有部署
 
@@ -49,20 +51,20 @@ Operations Management Suite (OMS) 门户已被[弃用](../azure-monitor/platform
 
 ![计划更新部署](media/migrate-oms-update-deployments/schedule-update-deployment.png)
 
-此时将打开“新建更新部署”窗格。**** 为下表中介绍的属性输入值，然后单击“创建”****：
+此时将打开“新建更新部署”窗格。 为下表中介绍的属性输入值，然后单击“创建”****：
 
-对于要更新的计算机，请选择现有 OMS 部署所用的保存的搜索结果。
+对于**要更新的计算机**，请选择现有 OMS 部署使用的已保存搜索。
 
-| properties | 描述 |
+| 属性 | 说明 |
 | --- | --- |
-|“属性” |用于标识更新部署的唯一名称。 |
+|名称 |用于标识更新部署的唯一名称。 |
 |操作系统| 选择 **Linux** 或 **Windows**。|
-|要更新的计算机 |选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示********。</br> 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md) |
+|要更新的计算机 |选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示********。</br> 要了解在 Azure 监视器日志中创建计算机组的不同方法，请参阅[Azure 监视器日志中的计算机组](../azure-monitor/platform/computer-groups.md) |
 |更新分类|选择所需的所有更新分类。 CentOS 不能现成地支持此功能。|
 |要排除的更新|输入要排除的更新。 对于 Windows，输入不带 **KB** 前缀的知识库文章。 对于 Linux，输入包名称或使用通配符。  |
 |计划设置|选择启动时间，对于“定期”，然后“一次”或“重复”。******** | 
 | 维护时段 |为更新设置的分钟数。 该值不能小于 30 分钟，也不能大于 6 小时。 |
-| 重新启动控制| 确定应如何处理重新启动。</br>可用选项包括：</br>需要时重新启动(默认)</br>永远重启</br>永不重启</br>仅重启 - 不安装更新|
+| 重新启动控制| 确定应如何处理重新启动。</br>可用选项包括：</br>需要时重新启动(默认)</br>始终重新启动</br>永不重新启动</br>仅重启 - 不安装更新|
 
 单击“计划的更新部署”以查看新建更新部署的状态****。
 
@@ -72,4 +74,4 @@ Operations Management Suite (OMS) 门户已被[弃用](../azure-monitor/platform
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解 Azure 中的更新管理，请参阅[更新管理](automation-update-management.md)。
+要了解有关 Azure 中更新管理的详细信息，请参阅[更新管理](automation-update-management.md)。

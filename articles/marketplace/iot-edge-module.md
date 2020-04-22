@@ -1,18 +1,18 @@
 ---
-title: Azure IoT Edge 模块
+title: Azure 应用商店 IoT 边缘模块
 description: Azure 市场中的 IoT Edge 模块套餐适用于应用和服务发布者。
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/22/2018
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: aadbf33914f919e393a5ec88cf6fc0a6103911b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 762d9947046f159e992f09211bfcd76ff8d6712e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286143"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684336"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge 模块
 
@@ -58,7 +58,7 @@ Microsoft Azure 市场协议和策略的所有条款都适用于 IoT Edge 模块
 
 若要将 IoT Edge 模块发布到 Azure 市场，需满足以下先决条件：
 
-- 访问云合作伙伴门户 (CPP)。 有关详细信息，请参阅 [Azure 市场和 AppSource 发布指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)。
+- 访问合作伙伴中心。 有关详细信息，请参阅 [Azure 市场和 AppSource 发布指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)。
 - 在 Azure 容器注册表中托管 IoT Edge 模块。 
 - 准备好 IoT Edge 模块元数据，比如（非详尽列表）： 
     - 标题
@@ -71,19 +71,19 @@ Microsoft Azure 市场协议和策略的所有条款都适用于 IoT Edge 模块
 
 **技术要求**
 
-若要详细了解帮助 IoT Edge 模块获得认证并在 Azure 市场中发布的主要技术要求，请参阅[准备 IoT Edge 模块技术资产](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets)。  
+若要详细了解帮助 IoT Edge 模块获得认证并在 Azure 市场中发布的主要技术要求，请参阅[准备 IoT Edge 模块技术资产](./partner-center-portal/create-iot-edge-module-asset.md)。
 
 ## <a name="documentation-and-resources"></a>文档和资源
 
-[创建 IoT 边缘模块产品 /](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-offer)使用云发布门户发布新的 IoT Edge 模块产品的步骤。
+[创建 IoT 边缘模块产品 /](./partner-center-portal/azure-iot-edge-module-creation.md)在合作伙伴中心发布新的 IoT Edge 模块产品的步骤。
 
 ## <a name="next-steps"></a>后续步骤
 
 如果尚未注册，
 
-- 请在市场中[注册](https://azuremarketplace.microsoft.com/sell)。
+- [了解](https://azuremarketplace.microsoft.com/sell)市场。
 
-如果已注册并正在创建新套餐或正在使用现有套餐，
+要在合作伙伴中心注册，并开始创建新产品/服务或处理现有产品/服务，
 
-- 登录到[云合作伙伴门户](https://cloudpartner.azure.com/)创建或完成套餐。
-- 有关如何发布 IoT Edge 模块产品/服务的信息，请参阅 [IoT Edge 模块产品/服务发布概述](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-offer-process-parts)。
+- 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)创建或完成您的优惠。
+- 有关如何发布 IoT Edge 模块产品/服务的信息，请参阅[创建 IoT Edge 模块产品/服务](./partner-center-portal/azure-iot-edge-module-creation.md)。

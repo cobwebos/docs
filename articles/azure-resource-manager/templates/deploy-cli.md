@@ -2,13 +2,13 @@
 title: 使用 Azure CLI 和模板部署资源
 description: 使用 Azure 资源管理器和 Azure CLI 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
 ms.topic: conceptual
-ms.date: 03/25/2020
-ms.openlocfilehash: 241b84bc7b8c0b213e74cd7ee5f3d7668fe0d808
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/20/2020
+ms.openlocfilehash: 8ee15699a085178add05137be895fe6b660b715b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282641"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685706"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>使用 ARM 模板和 Azure CLI 部署资源
 
@@ -168,7 +168,7 @@ az deployment group create \
 
 ## <a name="handle-extended-json-format"></a>处理扩展 JSON 格式
 
-若要部署包含多行字符串或注释的模板，必须使用 `--handle-extended-json-format` 开关。  例如：
+要使用版本 2.3.0 或更版本的 Azure CLI 部署具有多行字符串或注释的模板，`--handle-extended-json-format`必须使用该交换机。  例如：
 
 ```json
 {

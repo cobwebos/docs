@@ -3,25 +3,25 @@ title: 如何在 Azure Functions 中禁用函数
 description: 了解如何在 Azure Functions 中禁用与启用函数。
 ms.topic: conceptual
 ms.date: 12/05/2019
-ms.openlocfilehash: fb8edf635856078655b8640ba0e1723fdd5e8a5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11585e92e7d239731b02d06c5093f979cd65cfba
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77116147"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686889"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>如何在 Azure Functions 中禁用函数
 
-本文介绍如何在 Azure Functions 中禁用函数。 禁用某个函数意味着运行时将忽略针对该函数定义的自动触发器。** 这样就可以在不停止整个函数应用的情况下阻止特定函数运行。
+本文介绍如何在 Azure Functions 中禁用函数。 禁用某个函数意味着运行时将忽略针对该函数定义的自动触发器。  这样就可以在不停止整个函数应用的情况下阻止特定函数运行。
 
-若要禁用函数，建议的方式是使用格式为 `AzureWebJobs.<FUNCTION_NAME>.Disabled` 的应用设置。 可以通过多种方式创建和修改此应用程序设置，包括使用 [Azure CLI](/cli/azure/) 以及从 [Azure 门户](https://portal.azure.com)中函数的“管理”**** 选项卡。 
+若要禁用函数，建议的方式是使用格式为 `AzureWebJobs.<FUNCTION_NAME>.Disabled` 的应用设置。 可以通过多种方式创建和修改此应用程序设置，包括使用 [Azure CLI](/cli/azure/) 以及从 [Azure 门户](https://portal.azure.com)中函数的“管理”  选项卡。 
 
 > [!NOTE]  
-> 使用本文中描述的方法禁用 HTTP 触发函数时，在本地计算机上运行时，终结点仍可能通过访问来访问。  
+> 如果使用本文中所述方法禁用 HTTP 触发的函数，则在本地计算机上运行时仍然可以访问终结点。  
 
 ## <a name="use-the-azure-cli"></a>使用 Azure CLI
 
-在 Azure CLI 中，[`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)使用 命令创建和修改应用设置。 以下命令通过创建名为 `AzureWebJobs.QueueTrigger.Disabled` 的应用设置并将其设置为 `true` 来禁用名为 `QueueTrigger` 的函数。 
+在 Azure CLI 中，使用 [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) 命令创建和修改应用设置。 以下命令通过创建名为 `AzureWebJobs.QueueTrigger.Disabled` 的应用设置并将其设置为 `true` 来禁用名为 `QueueTrigger` 的函数。 
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <myFunctionApp> \
@@ -39,9 +39,12 @@ az functionapp config appsettings set --name <myFunctionApp> \
 
 ## <a name="use-the-portal"></a>使用门户
 
-您还可以在函数的 **"管理"** 选项卡上使用**函数状态**开关。该开关的工作原理是创建和删除`AzureWebJobs.<FUNCTION_NAME>.Disabled`应用设置。
+也可以使用函数“管理”选项卡上的“函数状态”开关。   此开关的工作方式是创建和删除 `AzureWebJobs.<FUNCTION_NAME>.Disabled` 应用设置。
 
 ![函数状态开关](media/disable-function/function-state-switch.png)
+
+> [!NOTE]  
+> 门户集成的测试功能忽略该`Disabled`设置。 这意味着，从门户中的 **"测试"** 窗口启动时，禁用的函数仍运行。 
 
 ## <a name="other-methods"></a>其他方法
 

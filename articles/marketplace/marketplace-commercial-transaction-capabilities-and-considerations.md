@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 768fa9ca2080fc9a58fb321e62d8d61a608f9564
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7a0f0b96f8140118f1c74ecbd4368aac49d7ece6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415255"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684312"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>商业市场交易能力
 
@@ -202,11 +202,11 @@ Microsoft 使客户能够订购、许可和使用发布商软件，但须遵守 
 * 客户通常使用企业协议或支持信用卡的即用即付协议进行购买。 协议类型确定计费、发票、费用收集和付款时间。
 
 >[!NOTE]
->交易发布选项的所有报告和见解均可通过合作伙伴中心的云合作伙伴门户或分析部分的"见解"部分获得。
+>交易发布选项的所有报告和见解均可通过合作伙伴中心的"分析"部分获得。
 
 #### <a name="billing-questions-and-support"></a>计费问题和支持
 
-有关详细信息和法律策略，请参阅[发布者协议](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf)（请参见云合作伙伴门户）。
+有关详细信息和法律政策，请参阅[发布商协议](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)（在合作伙伴中心提供）。
 
 要获取有关计费问题的帮助，请联系[商业市场发布商支持](https://aka.ms/marketplacepublishersupport)。
 

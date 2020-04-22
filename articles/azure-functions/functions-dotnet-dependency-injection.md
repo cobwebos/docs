@@ -6,18 +6,18 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: f8f1eb353087c5121eaafb4c8789e7a2f7638b99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1ff8e0aedce5d3a6acc9a39084cf0839efdd88e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475115"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678444"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用依赖项注入
 
 Azure Functions 支持依赖项注入 (DI) 软件设计模式，这是在类及其依赖项之间实现[控制反转 (IoC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) 的一种技术。
 
-- Azure Functions 中的依赖项注入基于 .NET Core 依赖项注入功能。 建议熟悉 [.NET Core 依赖项注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)。 但是，在使用 Azure Functions 按消耗计划重写依赖项以及读取配置值的方式上存在差异。
+- Azure Functions 中的依赖项注入基于 .NET Core 依赖项注入功能。 建议熟悉[.NET 核心依赖项注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)。 There are differences in how you override dependencies and how configuration values are read with Azure Functions on the Consumption plan.
 
 - 对依赖项注入的支持始于 Azure Functions 2.x。
 
@@ -66,9 +66,9 @@ namespace MyNamespace
 
 在运行时处理启动类之前和之后，会运行一系列注册步骤。 因此，请注意以下事项：
 
-- 启动类只能用于设置和注册。** 避免使用在启动时注册的服务。 例如，请勿尝试在记录器中记录在启动过程中注册的消息。 此注册过程点对你的服务来说太早，因此无法使用。 在运行 `Configure` 方法以后，Functions 运行时会继续注册其他依赖项，这可能影响服务的运行。
+- 启动类只能用于设置和注册。  避免使用在启动时注册的服务。 例如，请勿尝试在记录器中记录在启动过程中注册的消息。 此注册过程点对你的服务来说太早，因此无法使用。 在运行 `Configure` 方法以后，Functions 运行时会继续注册其他依赖项，这可能影响服务的运行。
 
-- 依赖项注入容器仅存储显式注册的类型**。 能够用作可注入类型的服务仅限在 `Configure` 方法中设置的服务。 因此，特定于 Functions 的类型（例如 `BindingContext` 和 `ExecutionContext`）在设置中不可用，也不能用作可注入类型。
+- 依赖项注入容器仅存储显式注册的类型  。 能够用作可注入类型的服务仅限在 `Configure` 方法中设置的服务。 因此，特定于 Functions 的类型（例如 `BindingContext` 和 `ExecutionContext`）在设置中不可用，也不能用作可注入类型。
 
 ## <a name="use-injected-dependencies"></a>使用注入的依赖项
 
@@ -119,9 +119,9 @@ namespace MyNamespace
 
 Azure Functions 应用提供与 [ASP.NET 依赖项注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes)相同的服务生存期。 就 Functions 应用来说，不同的服务生存期表现如下：
 
-- **瞬态**：根据服务的每个请求创建瞬态服务。
-- **作用域**： 作用域服务生存期与函数执行生存期匹配。 具有作用域的服务针对每次执行创建一次。 在执行期间针对该服务的后续请求将重用现有的服务实例。
-- **Singleton**： singleton 服务生存期与主机生存期匹配，并可跨该实例上的函数执行重用。 对于连接和客户端（例如 `SqlConnection` 或 `HttpClient` 实例），建议使用单一实例生存期服务。
+- **暂时性**：每次请求此服务时，都会创建暂时性服务。
+- **限定范围**：限定范围的服务的生存期与函数执行生存期相匹配。 具有作用域的服务针对每次执行创建一次。 在执行期间针对该服务的后续请求将重用现有的服务实例。
+- **单一实例**：单一实例服务生存期与主机生存期相匹配，并且在该实例上的各个函数执行之间重用。 对于连接和客户端（例如 `SqlConnection` 或 `HttpClient` 实例），建议使用单一实例生存期服务。
 
 在 GitHub 上查看或下载[不同服务生存期的示例](https://aka.ms/functions/di-sample)。
 
@@ -183,7 +183,7 @@ namespace MyNamespace
 
 函数主机注册许多服务。 以下服务可以安全地用作应用程序中的依赖项：
 
-|服务类型|生存期|描述|
+|服务类型|生存期|说明|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|单一实例|运行时配置|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|单一实例|负责提供主机实例的 ID|

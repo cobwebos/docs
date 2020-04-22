@@ -4,12 +4,12 @@ description: 本文介绍如何使用 Azure 备份在 Azure 虚拟机上备份 S
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 5b10907738feeecbec06669175e82578f2915f92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 887f15deed74330cf132e0574d166c074d2c7cad
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79273327"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685718"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>备份 Azure VM 中的 SQL Server 数据库
 
@@ -17,7 +17,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 本文介绍如何将 Azure VM 上运行的 SQL Server 数据库备份到 Azure 备份恢复服务保管库。
 
-本文将指导如何进行以下操作：
+本文介绍如何执行以下操作：
 
 > [!div class="checklist"]
 >
@@ -59,7 +59,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
   1. 在“所有服务”**** 中转到“网络安全组”****，然后选择“网络安全组”。
   2. 在“设置”下，选择“出站安全规则”。********
-  3. 选择“添加”****。 输入创建新规则所需的所有详细信息，如[安全规则设置](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)中所述。 请确保将选项“目标”**** 设置为“服务标记”****，将“目标服务标记”**** 设置为 **AzureBackup**。
+  3. 选择 **添加** 。 输入创建新规则所需的所有详细信息，如[安全规则设置](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)中所述。 请确保将选项“目标”**** 设置为“服务标记”****，将“目标服务标记”**** 设置为 **AzureBackup**。
   4. 单击“添加”****，保存新创建的出站安全规则。
 
 若要使用 PowerShell 创建规则，请执行以下操作：
@@ -112,7 +112,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 * 分号“;”
 * 正斜杠“/”
 
-可对不支持的字符使用别名，但我们建议避免这样做。 有关详细信息，请参阅 [Understanding the Table Service Data Model](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN)（了解表服务数据模型）。
+可对不支持的字符使用别名，但我们建议避免这样做。 有关详细信息，请参阅 [Understanding the Table Service Data Model](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)（了解表服务数据模型）。
 
 >[!NOTE]
 >不支持对名称中具有特殊字符（如"+"或"&"）的数据库进行**配置保护**操作。 您可以更改数据库名称或启用**自动保护**，从而成功保护这些数据库。

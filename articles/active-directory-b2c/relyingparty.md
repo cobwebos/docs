@@ -7,23 +7,23 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/03/2020
+ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 221ed3169fff78a2721e91023036593570fbd723
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 733a33881fe3acc962aeda4b05a1b01be4e148ca
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637794"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680365"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-RelyingParty**** 元素指定用户旅程，以执行当前对 Azure Active Directory B2C (Azure AD B2C) 的请求。 它还指定依赖方 (RP) 应用程序需要作为已颁发令牌一部分的声明列表。 RP 应用程序（例如 Web、移动或桌面应用程序）调用 RP 策略文件。 RP 策略文件执行特定任务，例如登录、重置密码，或编辑配置文件。 多个应用程序可以使用相同的 RP 策略，单个应用程序可以使用多个策略。 所有 RP 应用程序都接收具有相同声明的令牌，用户会经历相同的用户旅程。
+RelyingParty  元素指定用户旅程，以执行当前对 Azure Active Directory B2C (Azure AD B2C) 的请求。 它还指定依赖方 (RP) 应用程序需要作为已颁发令牌一部分的声明列表。 RP 应用程序（例如 Web、移动或桌面应用程序）调用 RP 策略文件。 RP 策略文件执行特定任务，例如登录、重置密码，或编辑配置文件。 多个应用程序可以使用相同的 RP 策略，单个应用程序可以使用多个策略。 所有 RP 应用程序都接收具有相同声明的令牌，用户会经历相同的用户旅程。
 
-下面的示例演示 B2C_1A_signup_signin** 策略文件中的 RelyingParty**** 元素：
+下面的示例演示 B2C_1A_signup_signin  策略文件中的 RelyingParty  元素：
 
 ```XML
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -44,7 +44,7 @@ RelyingParty**** 元素指定用户旅程，以执行当前对 Azure Active Dire
   <RelyingParty>
     <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
     <UserJourneyBehaviors>
-      <SingleSignOn Scope="TrustFramework" KeepAliveInDays="7"/>
+      <SingleSignOn Scope="Tenant" KeepAliveInDays="7"/>
       <SessionExpiryType>Rolling</SessionExpiryType>
       <SessionExpiryInSeconds>300</SessionExpiryInSeconds>
       <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="your-application-insights-key" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
@@ -72,7 +72,7 @@ RelyingParty**** 元素指定用户旅程，以执行当前对 Azure Active Dire
   ...
 ```
 
-可选 RelyingParty**** 元素包含下列元素：
+可选 RelyingParty  元素包含下列元素：
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
@@ -82,9 +82,9 @@ RelyingParty**** 元素指定用户旅程，以执行当前对 Azure Active Dire
 
 ## <a name="defaultuserjourney"></a>DefaultUserJourney
 
-`DefaultUserJourney` 元素指定对通常在基本或扩展策略中定义的用户旅程标识符的引用。 下面的示例演示在 RelyingParty**** 元素中指定的注册或登录用户旅程：
+`DefaultUserJourney` 元素指定对通常在基本或扩展策略中定义的用户旅程标识符的引用。 下面的示例演示在 RelyingParty  元素中指定的注册或登录用户旅程：
 
-B2C_1A_signup_signin** 策略：
+B2C_1A_signup_signin  策略：
 
 ```XML
 <RelyingParty>
@@ -92,7 +92,7 @@ B2C_1A_signup_signin** 策略：
   ...
 ```
 
-B2C_1A_TrustFrameWorkBase** 或 B2C_1A_TrustFrameworkExtensionPolicy**：
+B2C_1A_TrustFrameWorkBase  或 B2C_1A_TrustFrameworkExtensionPolicy  ：
 
 ```XML
 <UserJourneys>
@@ -100,15 +100,15 @@ B2C_1A_TrustFrameWorkBase** 或 B2C_1A_TrustFrameworkExtensionPolicy**：
   ...
 ```
 
-DefaultUserJourney**** 元素包含以下属性：
+DefaultUserJourney  元素包含以下属性：
 
-| 特性 | 必选 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 策略中用户旅程的标识符。 有关详细信息，请参阅[用户旅程](userjourneys.md) |
 
 ## <a name="userjourneybehaviors"></a>UserJourneyBehaviors
 
-UserJourneyBehaviors**** 元素包含下列元素：
+UserJourneyBehaviors  元素包含下列元素：
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
@@ -123,18 +123,18 @@ UserJourneyBehaviors**** 元素包含下列元素：
 
 SingleSignOn**** 元素包含在以下属性中：
 
-| 特性 | 必选 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | 范围 | 是 | 单一登录行为的范围。 可能的值：`Suppressed`、`Tenant`、`Application` 或 `Policy`。 该`Suppressed`值指示行为被抑制，并且始终提示用户选择标识提供程序。  `Tenant` 值指示该行为适用于租户中的所有策略。 例如，不会提示在两个策略旅程中导航租户的用户选择标识提供者。 `Application` 值指示该行为适用于发出请求的应用程序的所有策略。 例如，不会提示在应用程序的两个策略旅程中导航的用户选择标识提供者。 `Policy` 值指示该行为仅适用于一个策略。 例如，当在策略之间切换时，会提示在两个策略旅程中导航信任框架的用户选择标识提供者。 |
 | KeepAliveInDays | 是 | 控制用户保持登录状态的时间长短。 将此值设置为 0 会关闭 KMSI 功能。 有关详细信息，请参阅[使我保持登录状态](custom-policy-keep-me-signed-in.md)。 |
-|强制执行 IdTokenhintonLogout| 否|  强制将以前颁发的 ID 令牌传递给注销终结点，作为有关最终用户当前与客户端的身份验证会话的提示。 可能的值为 `false`（默认）或 `true`。 有关详细信息，请参阅使用[OpenID 连接进行 Web 登录](openid-connect.md)。  |
+|EnforceIdTokenHintOnLogout| 否|  强制将以前颁发的 ID 令牌传递到注销终结点，作为最终用户当前与客户端进行的身份验证会话的提示。 可能的值为 `false`（默认）或 `true`。 有关详细信息，请参阅[使用 OpenID Connect 进行 Web 登录](openid-connect.md)。  |
 
 
 ## <a name="journeyinsights"></a>JourneyInsights
 
 JourneyInsights**** 元素包含以下属性：
 
-| 特性 | 必选 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | TelemetryEngine | 是 | 值必须是 `ApplicationInsights`。 |
 | InstrumentationKey | 是 | 一个字符串，其中包含 application insights 元素的检测密钥。 |
@@ -161,7 +161,7 @@ ContentDefinitionParameters**** 元素包含以下元素：
 
 ContentDefinitionParameters**** 元素包含以下属性：
 
-| 特性 | 必选 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | 名称 | 是 | 键值对的名称。 |
 
@@ -171,7 +171,7 @@ ContentDefinitionParameters**** 元素包含以下属性：
 
 **TechnicalProfile** 元素包含以下属性：
 
-| 特性 | 必选 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 值必须是 `PolicyProfile`。 |
 
@@ -188,7 +188,7 @@ ContentDefinitionParameters**** 元素包含以下属性：
 
 Protocol**** 元素包含以下属性：
 
-| 特性 | 必选 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | 名称 | 是 | Azure AD B2C 支持的有效协议的名称，用作技术配置文件的一部分。 可能的值：`OpenIdConnect` 或 `SAML2`。 `OpenIdConnect` 值表示根据 OpenID 基本规范的 OpenID Connect 1.0 协议标准。 `SAML2` 表示根据 OASIS 规范的 SAML 2.0 协议标准。 |
 
@@ -202,7 +202,7 @@ OutputClaims**** 元素包含以下元素：
 
 OutputClaim**** 元素包含以下属性：
 
-| 特性 | 必选 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 是 | 对在策略文件的 ClaimsSchema**** 部分定义的 ClaimType**** 的引用。 |
 | DefaultValue | 否 | 一个默认值，如果声明值为空，则可以使用该值。 |
@@ -216,7 +216,7 @@ OutputClaim**** 元素包含以下属性：
 
 SubjectNamingInfo**** 元素包含以下属性：
 
-| 特性 | 必选 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimType | 是 | 对输出声明的 PartnerClaimType**** 的引用。 输出声明必须在信赖方策略 OutputClaims**** 集合中定义。 |
 

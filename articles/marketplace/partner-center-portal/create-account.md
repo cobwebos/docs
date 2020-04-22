@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 04/14/2020
-ms.openlocfilehash: d62d05cdbda86af3c3a38757877624e87f6d1719
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 1bd71a4fb150d544125703679cf0fa0b8951e1eb
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383760"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684137"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>在合作伙伴中心创建商业市场帐户
 
@@ -164,7 +164,7 @@ ms.locfileid: "81383760"
 
 来自同一 Azure 活动目录租户的另一个用户可以按照以下步骤添加新发布者：
 
-1. 启动[微软合作伙伴中心的](https://partner.microsoft.com/en-us/dashboard/account/v3/enrollment/introduction/azureisv)注册流程。
+1. 启动[微软合作伙伴中心的](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)注册流程。
 2. 选择**使用工作帐户登录**并输入您的工作电子邮件地址。
 3. 选择"**添加发布者"** 按钮。
 4. 选择要关联到发布者的 MPN ID。

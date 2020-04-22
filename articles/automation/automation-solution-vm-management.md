@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 968e609772e08814a9943734d30c16bf6f5972e8
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 369e3bcf4e5913f4a3ff82206d1e24a206db3f34
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81604713"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681295"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>在 Azure 自动化中，在非工作时间解决方案期间启动/停止 VM
 
@@ -120,7 +120,7 @@ ms.locfileid: "81604713"
 下表列出了在自动化帐户中创建的变量。 仅修改预缀在`External`的变量。 修改预先固定的`Internal`变量会导致不良效果。
 
 > [!NOTE]
-> 对 VM 名称和资源组的限制很大程度上是可变大小造成的。
+> 对 VM 名称和资源组的限制很大程度上是可变大小造成的。 请参阅[Azure 自动化 中的变量资产](https://docs.microsoft.com/azure/automation/shared-resources/variables)。
 
 |变量 | 说明|
 |---------|------------|
@@ -159,7 +159,7 @@ ms.locfileid: "81604713"
 |Schedule_AutoStop_CreateAlert_Parent | 每隔 8 小时 | 每 8 小时运行**一次AutoStop_CreateAlert_Parent** runbook，这反过来又会停止`External_Start_ResourceGroupNames`中`External_Stop_ResourceGroupNames`基于 VM`External_ExcludeVMNames`的值， 和变量。 或者，可以使用`VMList`参数指定逗号分隔的 VM 列表。|
 |Scheduled_StopVM | 用户定义的每日 | 在指定时间运行具有每天参数`Stop`**的ScheduledStopStart_Parent** runbook。自动停止满足变量资产定义的规则的所有 VM。启用相关计划**计划-启动VM。**|
 |Scheduled_StartVM | 用户定义的每日 | 在指定时间运行具有`Start`每天参数值**的ScheduledStopStart_Parent** runbook。 自动启动满足变量资产定义的规则的所有 VM。启用相关**计划计划-停止VM。**|
-|Sequenced-StopVM | 凌晨 1:00 (UTC)，每星期五 | 在指定时间运行参数值为每周五的`Stop`Sequenced_Parent runbook。将按顺序（升序）停止具有相应变量定义的 **SequenceStop** 标记的所有 VM。 有关标记值和资产变量的详细信息，请参阅“Runbook”部分。启用相关计划 Sequenced-StartVM****。|
+|Sequenced-StopVM | 凌晨 1:00 (UTC)，每星期五 | 在指定时间运行**Sequenced_StopStop_Parent**运行簿，其参数`Stop`值为每周五。将按顺序（升序）停止具有相应变量定义的 **SequenceStop** 标记的所有 VM。 有关标记值和资产变量的详细信息，请参阅[Runbook](#runbooks)。启用相关计划 Sequenced-StartVM****。|
 |Sequenced-StartVM | 下午 1:00 (UTC)，每星期一 | **在指定**时间运行SequencedStopStart_Parent运行簿的参数值`Start`为每周一。 按顺序（降序）启动具有相应变量定义的 **SequenceStart** 标记的所有 VM。 有关标记值和变量资产的详细信息，请参阅[Runbook](#runbooks)。 启用相关计划 Sequenced-StopVM****。
 
 ## <a name="use-of-the-solution-with-classic-vms"></a>将解决方案与经典 VM 一起使用

@@ -1,18 +1,18 @@
 ---
-title: 市场推广服务 - 如何在市场中推广 | Azure
+title: 上市服务 - 如何在市场上获得特色 |Azure 应用商店
 description: 市场推广服务 - 本部分介绍如何在 Azure 市场中推广商品
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/21/2018
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 266070a6292e41af6ce1b4258774d20a9bd90312
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe18ca41942ff58b8d9eefef3122c90980029766
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286279"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684604"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>如何在 AppSource 和 Azure 市场中推广
 
@@ -38,7 +38,7 @@ Azure 市场和 AppSource 提供“特色应用”部分，可在其中推广应
 促销的特色应用不受搜索算法的控制。
 
 >[!Note]
->如果你的解决方案未正确显示在搜索结果中，请通过[云合作伙伴门户](https://cloudpartner.azure.com/)中的“帮助”菜单开具支持票证。
+>如果解决方案未正确显示在搜索结果中，请通过[合作伙伴中心](https://partner.microsoft.com/)中的"帮助"菜单提交支持票证。
 
 GTM 支持还包括完整的自助服务模板、Web 内容、培训和工具库，可帮助你进一步促销商品和业务。
 
@@ -46,6 +46,6 @@ GTM 支持还包括完整的自助服务模板、Web 内容、培训和工具库
 
 了解更多关于您的[商业市场优势](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)。
 
-登录到[云合作伙伴门户](https://cloudpartner.azure.com)，以便创建并配置套餐。
+登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以创建和配置您的产品/服务。
 
 ---

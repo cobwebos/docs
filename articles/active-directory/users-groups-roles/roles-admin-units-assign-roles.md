@@ -14,18 +14,18 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a518ff070ea021726ee382169e87cca55cad36d0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: c900b2a363a4ff271e7a436b358ecf170daca163
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81428246"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687021"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>将作用域角色分配给管理单位
 
 在 Azure 活动目录 （Azure AD） 中，可以将用户分配给范围仅限于一个或多个管理单位 （A） 的 Azure AD 角色，以便进行更精细的管理控制。
 
-有关准备使用 PowerShell 和 Microsoft 图形进行管理单元管理的步骤，请参阅[入门](roles-admin-units-manage.md#getting-started)。
+有关准备使用 PowerShell 和 Microsoft 图形进行管理单元管理的步骤，请参阅[入门](roles-admin-units-manage.md#get-started)。
 
 ## <a name="roles-available"></a>可用角色
 

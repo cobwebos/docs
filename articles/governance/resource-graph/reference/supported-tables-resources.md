@@ -1,56 +1,60 @@
 ---
-title: 受支持的资源管理器资源类型
-description: 提供 Azure 资源图和更改历史记录支持的资源管理器资源类型的列表。
-ms.date: 04/15/2020
+title: 支持的资源管理器资源类型
+description: 提供 Azure Resource Graph 和更改历史记录支持的资源管理器资源类型的列表。
+ms.date: 04/20/2020
 ms.topic: reference
-ms.openlocfilehash: 99cb2176e4b0642be1fc31d49528ebf915ea440a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 99a10e084f8ae24156c447f7abca31a8ef977720
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415140"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685477"
 ---
-# <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure 资源图表和资源类型引用
+# <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph 表和资源类型引用
 
-Azure 资源图支持[Azure 资源管理器](../../../azure-resource-manager/management/overview.md)的以下**资源类型**。 每个**资源类型**都是资源图中**表**的一部分。
+Azure Resource Graph 支持 **Azure 资源管理器**的下列[资源类型](../../../azure-resource-manager/management/overview.md)。 每个**资源类型**都是 Resource Graph 中的**表**的一部分。
 
-## <a name="advisorresources"></a>顾问资源
+## <a name="advisorresources"></a>advisorresources
 
-- 微软.顾问/配置
-- 微软.顾问/建议
-- 微软.顾问/抑制
+- microsoft.advisor/configurations
+- microsoft.advisor/recommendations
+- microsoft.advisor/suppressions
 
-## <a name="alertsmanagementresources"></a>警报管理资源
+## <a name="alertsmanagementresources"></a>alertsmanagementresources
 
-- 微软.警报管理/警报
+- microsoft.alertsmanagement/alerts
 
-## <a name="maintenanceresources"></a>维护资源
+## <a name="maintenanceresources"></a>maintenanceresources
 
-- 微软.维护/配置分配
-- 微软.维护/更新
+- microsoft.maintenance/configurationassignments
+- microsoft.maintenance/updates
 
-## <a name="resourcecontainers"></a>资源容器
+## <a name="resourcecontainers"></a>resourcecontainers
 
-- 微软.资源/订阅
-- microsoft.资源/订阅/资源组
+- microsoft.resources/subscriptions
+- microsoft.resources/subscriptions/resourcegroups
 
 ## <a name="resources"></a>资源
 
-- 84 代码.云amqp/服务器
-- citrix.服务/服务
-- citrix.服务/xendesktop必需品
-- conexlink.mycloudit/帐户
-- 加密网.数据安全/应用程序
-- 网格pro.evops/帐户
-- 网格pro.evops/帐户/事件规则
-- 网格pro.evops/帐户/请求模板
-- 网格pro.evops/帐户/视图
-- 配置单元流/服务
-- incapsula.waf/帐户
-- 直播/服务
-- 邮件jet.电子邮件/服务
-- 微软.aad/域服务
+- 84codes.cloudamqp/servers
+- citrix.services/xenappessentials
+- citrix.services/xendesktopessentials
+- conexlink.mycloudit/accounts
+- crypteron.datasecurity/apps
+- gridpro.evops/accounts
+- gridpro.evops/accounts/eventrules
+- gridpro.evops/accounts/requesttemplates
+- gridpro.evops/accounts/views
+- hive.streaming/services
+- incapsula.waf/accounts
+- livearena.broadcast/services
+- mailjet.email/services
+- microsoft.aad/domainservices
+- 微软.aadiam/私人链接福拉达
 - microsoft.aadiam/tenants
+- 微软.ai超级计算机/帐户
+- 微软.ai超级计算机/帐户/工作组
+- 微软.ai超级计算机/帐户/工作组/工作
 - microsoft.警报管理/操作规则
 - 微软.警报管理/智能探测器警报规则
 - 微软.分析服务/服务器
@@ -63,6 +67,7 @@ Azure 资源图支持[Azure 资源管理器](../../../azure-resource-manager/man
 - 微软.自动化/自动化帐户/运行簿
 - 微软.azconfig/配置商店
 - microsoft.azure 活动目录/b2c 目录
+- 微软.azure数据/数据控制器
 - 微软.azure数据/混合数据管理器
 - 微软.azure数据/后实例
 - 微软.azure数据/sqlbigdata集群
@@ -351,6 +356,7 @@ Azure 资源图支持[Azure 资源管理器](../../../azure-resource-manager/man
 - 微软.远程应用程序/集合
 - 微软.资源图/查询
 - microsoft.资源/部署脚本
+- 微软.资源/模板
 - 微软.saas/应用程序
 - 微软.计划/作业集合
 - 微软.搜索/搜索服务
@@ -405,6 +411,7 @@ Azure 资源图支持[Azure 资源管理器](../../../azure-resource-manager/man
 - 微软.视觉工作室/帐户
 - 微软.视觉工作室/帐户/扩展
 - 微软.视觉工作室/帐户/项目
+- 微软.vmware/弧带
 - 微软.vmwarecloud简单/专用云节点
 - microsoft.vmwarecloud 简单/专用云服务
 - 微软.vmwarecloud简单/虚拟机
@@ -454,7 +461,6 @@ Azure 资源图支持[Azure 资源管理器](../../../azure-resource-manager/man
 
 ## <a name="securityresources"></a>安全资源
 
-- 评估元数据
 - 微软.安全/评估
 - 微软.安全/评估/子评估
 - 微软.安全/定价

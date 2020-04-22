@@ -1,5 +1,5 @@
 ---
-title: 执行 R 脚本：模块引用
+title: 执行 R 脚本：模块参考
 titleSuffix: Azure Machine Learning
 description: 了解如何使用 Azure 机器学习中的“执行 R 脚本”模块来运行 R 代码。
 services: machine-learning
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: f038293b48956ac89314e426df3f5dc491954df3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb778c8d24639320b60927438de76a29de724ac2
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064209"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684713"
 ---
 # <a name="execute-r-script"></a>执行 R 脚本
 
-本文介绍如何使用“执行 R 脚本”模块在 Azure 机器学习设计器（预览版）管道中运行 R 代码****。
+本文介绍如何使用“执行 R 脚本”模块在 Azure 机器学习设计器（预览版）管道中运行 R 代码  。
 
 使用 R 可以执行现有模块当前不支持的任务，例如： 
 - 创建自定义数据转换
@@ -33,7 +33,7 @@ Azure 机器学习设计器使用 R 的 CRAN（综合 R 存档网络）分发。
 
 R 环境预安装了 100 多个包。 有关完整列表，请参阅[预安装的 R 包](#pre-installed-r-packages)部分。
 
-还可以将以下代码添加到任何“执行 R 脚本”模块，并查看已安装的包****。
+还可以将以下代码添加到任何“执行 R 脚本”模块，并查看已安装的包  。
 
 ```R
 azureml_main <- function(dataframe1, dataframe2){
@@ -44,7 +44,10 @@ azureml_main <- function(dataframe1, dataframe2){
 ```
 
 ## <a name="installing-r-packages"></a>安装 R 程序包
-若要安装其他 R 包，请使用 `install.packages()` 方法。 请务必指定 CRAN 存储库。 为每个“执行 R 脚本”模块安装包，但不在其他“执行 R 脚本”模块之间共享包********。
+若要安装其他 R 包，请使用 `install.packages()` 方法。 为每个“执行 R 脚本”模块安装包，但不在其他“执行 R 脚本”模块之间共享包********。
+
+> [!NOTE]
+> 安装软件包时请指定 CRAN 存储库，例如`install.packages("zoo",repos = "http://cran.us.r-project.org")`
 
 此示例演示如何安装 Zoo：
 ```R
@@ -52,7 +55,13 @@ azureml_main <- function(dataframe1, dataframe2){
 # The script MUST contain a function named azureml_main
 # which is the entry point for this module.
 
-# The entry point function can contain up to two input arguments:
+# Please note that functions dependant on X11 library
+# such as "View" are not supported because X11 library
+# is not pre-installed.
+
+# The entry point function MUST have two input arguments.
+# If the input port is not connected, the corresponding
+# dataframe argument will be null.
 #   Param<dataframe1>: a R DataFrame
 #   Param<dataframe2>: a R DataFrame
 azureml_main <- function(dataframe1, dataframe2){
@@ -68,16 +77,22 @@ azureml_main <- function(dataframe1, dataframe2){
   > 安装之前，请检查是否已存在包，避免重复安装。 类似于上述示例代码 `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")`。 重复安装可能会导致 Web 服务请求超时。     
 
 ## <a name="upload-files"></a>上传文件
-**执行 R 脚本**支持使用 Azure 机器学习 R SDK 上载文件。
+**执行 R 脚本**支持使用 Azure 机器学习 R SDK 来上传文件。
 
-下面的示例演示如何在**执行 R 脚本**中上载图像文件：
+以下示例演示了如何在“执行 R 脚本”  中上传映像文件：
 ```R
 
 # R version: 3.5.1
 # The script MUST contain a function named azureml_main
 # which is the entry point for this module.
 
-# The entry point function can contain up to two input arguments:
+# Please note that functions dependant on X11 library
+# such as "View" are not supported because X11 library
+# is not pre-installed.
+
+# The entry point function MUST have two input arguments.
+# If the input port is not connected, the corresponding
+# dataframe argument will be null.
 #   Param<dataframe1>: a R DataFrame
 #   Param<dataframe2>: a R DataFrame
 azureml_main <- function(dataframe1, dataframe2){
@@ -100,30 +115,36 @@ azureml_main <- function(dataframe1, dataframe2){
 管道运行完成后，您可以在模块的右侧面板中预览图像
 
 > [!div class="mx-imgBorder"]
-> ![上传图像](media/module/upload-image-in-r-script.png)
+> ![已上传 - 映像](media/module/upload-image-in-r-script.png)
 
 ## <a name="how-to-configure-execute-r-script"></a>如何配置“执行 R 脚本”
 
-“执行 R 脚本”模块包含可用作起点的示例代码****。 若要配置“执行 R 脚本”模块，请提供一组输入和要执行的代码****。
+“执行 R 脚本”模块包含可用作起点的示例代码  。 若要配置“执行 R 脚本”模块，请提供一组输入和要执行的代码  。
 
 ![R 模块](media/module/execute-r-script.png)
 
 使用此模块加载时，存储在设计器中的数据集将自动转换为 R 数据帧。
 
-1.  将“执行 R 脚本”模块添加到管道****。
+1.  将“执行 R 脚本”模块添加到管道  。
 
   
 
 1. 连接脚本所需的任何输入。 输入是可选的，可以包含数据和其他 R 代码。
 
-    * **数据集1**：将第一个`dataframe1`输入引用为 。 输入数据集的格式必须为 CSV、TSV、ARFF，或者可以连接 Azure 机器学习数据集。
+    * **Dataset1**：引用第一个输入作为 `dataframe1`。 输入数据集的格式必须为 CSV、TSV、ARFF，或者可以连接 Azure 机器学习数据集。
 
-    * **数据集2**： 将第二`dataframe2`个输入引用为 。 该数据集的格式也必须为 CSV、TSV、ARFF 文件，或者作为 Azure 机器学习数据集。
+    * **Dataset2**：引用第二个输入作为 `dataframe2`。 该数据集的格式也必须为 CSV、TSV、ARFF 文件，或者作为 Azure 机器学习数据集。
 
-    * **脚本捆绑**包 ：第三个输入接受 ZIP 文件。 压缩的文件可以包含多个文件和多个文件类型。
+    * **脚本包**：第三个输入接受 ZIP 文件。 压缩的文件可以包含多个文件和多个文件类型。
 
-1. 在“R 脚本”文本框中，键入或粘贴有效的 R 脚本****。
+1. 在“R 脚本”文本框中，键入或粘贴有效的 R 脚本  。
 
+    > [!NOTE]
+    > 编写脚本时请非常小心，并确保没有语法错误，例如使用未声明的变量或未导入的模块或函数。 此外，请注意本文档末尾的预安装包列表。 要使用未列出的包，请在脚本中安装它们，例如`install.packages("zoo",repos = "http://cran.us.r-project.org")`
+    
+    > [!NOTE]
+    > 不支持依赖于 X11 库的功能（如"视图"），因为未预安装 X11 库。
+    
     为了帮助你入门，“R 脚本”文本框中预填充了可以编辑或替换的示例代码****。
     
     ```R
@@ -131,7 +152,13 @@ azureml_main <- function(dataframe1, dataframe2){
     # The script MUST contain a function named azureml_main
     # which is the entry point for this module.
 
-    # The entry point function can contain up to two input arguments:
+    # Please note that functions dependant on X11 library
+    # such as "View" are not supported because X11 library
+    # is not pre-installed.
+    
+    # The entry point function MUST have two input arguments.
+    # If the input port is not connected, the corresponding
+    # dataframe argument will be null.
     #   Param<dataframe1>: a R DataFrame
     #   Param<dataframe2>: a R DataFrame
     azureml_main <- function(dataframe1, dataframe2){
@@ -148,8 +175,8 @@ azureml_main <- function(dataframe1, dataframe2){
 
  * 脚本必须包含名为 `azureml_main` 的函数，这是此模块的入口点。
 
- * 入口点函数最多可以包含两个输入参数：`Param<dataframe1>` 和 `Param<dataframe2>`
- 
+ * 入口点函数必须具有两个输入参数：`Param<dataframe1>`和`Param<dataframe2>`，即使函数中未使用这两个参数也是如此。
+
    > [!NOTE]
     > 传递给执行 R**脚本**模块的数据被引用为`dataframe1`和`dataframe2`，这与 Azure 机器学习设计器（设计器引用为`dataset1` `dataset2`） 不同。 请检查以确保在脚本中正确引用输入数据。  
  
@@ -195,7 +222,14 @@ azureml_main <- function(dataframe1, dataframe2){
 # R version: 3.5.1
 # The script MUST contain a function named azureml_main
 # which is the entry point for this module.
-# The entry point function can contain up to two input arguments:
+
+# Please note that functions dependant on X11 library
+# such as "View" are not supported because X11 library
+# is not pre-installed.
+
+# The entry point function MUST have two input arguments.
+# If the input port is not connected, the corresponding
+# dataframe argument will be null.
 #   Param<dataframe1>: a R DataFrame
 #   Param<dataframe2>: a R DataFrame
 azureml_main <- function(dataframe1, dataframe2){

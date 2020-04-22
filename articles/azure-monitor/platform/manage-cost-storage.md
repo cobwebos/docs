@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/08/2020
+ms.date: 04/20/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: d03b053f2aa5de4a6f7874dbf4e6ccb3a305a964
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 9a7d0530c4f03138fad3e4aaa473d54e1cfd5b0a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80992073"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686559"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>通过 Azure Monitor 日志管理使用情况和成本
 
@@ -38,8 +38,7 @@ Log Analytics 的默认定价采用**即用即付**模型，该模型基于数�
   - 受监视的 VM 数量
   - 从每个受监视 VM 收集的数据类型 
   
-除了即用即付模型以外，Log Analytics 还提供了**产能预留**层，与即用即付价格相比，该模型最多可将成本节省 25%。 容量预留定价模型允许每天购买 100 GB 的初始预留容量。 超过预留级别的任何用量将按即用即付费率计费。 产能预留层具有 31 天的套餐周期。 在套餐周期内，你可以更改为更高级别的产能预留层（这将重启 31 天的套餐周期），但在套餐周期结束之前，你不能返回到即用即付或更低级别的产能预留层。 
-[详细了解](https://azure.microsoft.com/pricing/details/monitor/) Log Analytics 即用即付和产能预留定价。 
+除了即用即付模型以外，Log Analytics 还提供了**产能预留**层，与即用即付价格相比，该模型最多可将成本节省 25%。 容量预留定价模型允许每天购买 100 GB 的初始预留容量。 超过预留级别的任何用量将按即用即付费率计费。 产能预留层具有 31 天的套餐周期。 在套餐周期内，你可以更改为更高级别的产能预留层（这将重启 31 天的套餐周期），但在套餐周期结束之前，你不能返回到即用即付或更低级别的产能预留层。 容量预留层的计费每天完成。 [详细了解](https://azure.microsoft.com/pricing/details/monitor/) Log Analytics 即用即付和产能预留定价。 
 
 在所有定价层中，数据量都是在准备存储时从数据的字符串表示形式计算的。 计算事件大小（`_ResourceId`包括`_ItemId`、`_IsBillable`和`_BilledSize`） 不包括[所有数据类型共有的几个属性](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties)。
 
@@ -112,10 +111,14 @@ Azure 在 [Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-ma
 3. 在窗格中，移动滑块以增加或减少天数，然后单击“确定”。****  如果位于“免费”层，则不能修改数据保留期，需要升级到付费层才能控制这一项设置。**
 
     ![更改工作区数据保留设置](media/manage-cost-storage/manage-cost-change-retention-01.png)
+
+降低保留率后，删除最旧数据之前有几天宽限期。 
     
 保留期也可使用 `retentionInDays` 参数[通过 Azure 资源管理器进行设置](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace)。 此外，如果将数据保留期设置为 30 天，则可以使用 `immediatePurgeDataOn30Days` 参数对旧数据触发立即清除，这对于合规性相关的方案可能很有用。 此功能仅通过 Azure 资源管理器公开。 
 
 两种数据类型（`Usage` 和 `AzureActivity`）默认保留 90 天，在这 90 天的保留期内不收费。 这些数据类型也没有数据引入费用。 
+
+
 
 ### <a name="retention-by-data-type"></a>按数据类型分类的保留期
 
@@ -446,7 +449,7 @@ union
 为了便于进行此评估，可以使用以下查询根据工作区的使用模式对最佳定价层提出建议。  此查询查看过去 7 天内引入工作区的受监视节点和数据，并每天评估哪个定价层是最佳的。 要使用查询，您需要通过设置为`workspaceHasSecurityCenter``true`或`false`指定工作区是否使用 Azure 安全中心，然后（可选）更新组织接收的"每个节点"和"每 GB"价格。 
 
 ```kusto
-// Set these paramaters before running query
+// Set these parameters before running query
 let workspaceHasSecurityCenter = true;  // Specify if the workspace has Azure Security Center
 let PerNodePrice = 15.; // Enter your price per node / month 
 let PerGBPrice = 2.30; // Enter your price per GB 
@@ -459,6 +462,14 @@ union withsource = tt *
 | summarize nodesPerHour = dcount(computerName) by bin(TimeGenerated, 1h)  
 | summarize nodesPerDay = sum(nodesPerHour)/24.  by day=bin(TimeGenerated, 1d)  
 | join (
+    Heartbeat 
+    | where TimeGenerated >= startofday(now(-7d)) and TimeGenerated < startofday(now())
+    | where Computer != ""
+    | summarize ASCnodesPerHour = dcount(Computer) by bin(TimeGenerated, 1h) 
+    | extend ASCnodesPerHour = iff(workspaceHasSecurityCenter, ASCnodesPerHour, 0)
+    | summarize ASCnodesPerDay = sum(ASCnodesPerHour)/24.  by day=bin(TimeGenerated, 1d)   
+) on day
+| join (
     Usage 
     | where TimeGenerated > ago(8d)
     | where StartTime >= startofday(now(-7d)) and EndTime < startofday(now())
@@ -469,18 +480,20 @@ union withsource = tt *
 ) on day
 | extend AvgGbPerNode =  NonSecurityDataGB / nodesPerDay
 | extend PerGBDailyCost = iff(workspaceHasSecurityCenter,
-             (NonSecurityDataGB + max_of(SecurityDataGB - 0.5*nodesPerDay, 0.)) * PerGBPrice,
+             (NonSecurityDataGB + max_of(SecurityDataGB - 0.5*ASCnodesPerDay, 0.)) * PerGBPrice,
              DataGB * PerGBPrice)
 | extend OverageGB = iff(workspaceHasSecurityCenter, 
-             max_of(DataGB - 1.0*nodesPerDay, 0.), 
+             max_of(DataGB - 0.5*nodesPerDay - 0.5*ASCnodesPerDay, 0.), 
              max_of(DataGB - 0.5*nodesPerDay, 0.))
 | extend PerNodeDailyCost = nodesPerDay * PerNodePrice / 31. + OverageGB * PerGBPrice
 | extend Recommendation = iff(PerNodeDailyCost < PerGBDailyCost, "Per Node tier", 
              iff(NonSecurityDataGB > 85., "Capacity Reservation tier", "Pay-as-you-go (Per GB) tier"))
-| project day, nodesPerDay, NonSecurityDataGB, SecurityDataGB, OverageGB, AvgGbPerNode, PerGBDailyCost, PerNodeDailyCost, Recommendation | sort by day asc
+| project day, nodesPerDay, ASCnodesPerDay, NonSecurityDataGB, SecurityDataGB, OverageGB, AvgGbPerNode, PerGBDailyCost, PerNodeDailyCost, Recommendation | sort by day asc
 | project day, Recommendation // Comment this line to see details
 | sort by day asc
 ```
+
+此查询不是计算使用情况的确切复制方式，但在大多数情况下，该查询可用于提供定价层建议。  
 
 ## <a name="create-an-alert-when-data-collection-is-high"></a>当数据收集量过高时创建警报
 

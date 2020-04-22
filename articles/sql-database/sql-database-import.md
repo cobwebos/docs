@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: 05698596f966f879da1affc58af0122d08d519ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7db3f6f50745526876ef2ca6e3253f1931420f0f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256232"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683249"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>快速入门：将 BACPAC 文件导入 Azure SQL 数据库中的数据库
 
-可以使用 [BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) 文件将 SQL Server 数据库导入 Azure SQL 数据库中的数据库。 可以从 Azure Blob 存储（仅限标准存储）中存储的 `BACPAC` 文件或从本地位置中的本地存储导入数据。 若要通过提供更多且更快的资源将导入速度最大化，请在导入过程中将数据库扩展到更高的服务层级和更大的计算大小。 然后，可以在导入成功后减少其值。
+可以使用 [BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) 文件将 SQL Server 数据库导入 Azure SQL 数据库中的数据库。 可以从 Azure Blob 存储（仅限标准存储）中存储的 `BACPAC` 文件或从本地位置中的本地存储导入数据。 若要通过提供更多且更快的资源将导入速度最大化，请在导入过程中将数据库扩展到更高的服务层级和更大的计算大小。 然后，可以在导入成功后进行缩减。
 
 > [!NOTE]
 > 导入的数据库的兼容性级别基于源数据库的兼容性级别。
@@ -51,7 +51,7 @@ ms.locfileid: "79256232"
 
    ![数据库 import2](./media/sql-database-import/sql-server-import-database-settings.png)
 
-1. 单击“确定”。
+1. 单击“确定”。 
 
 1. 若要监视导入的进度，请打开数据库的服务器页，然后在“设置”**** 下，选择“导入/导出历史记录”****。 成功导入后，状态为“已完成”****。
 
@@ -88,7 +88,7 @@ sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 > [!NOTE]
 > 处理通过门户或 Powershell 提交的导入/导出请求的计算机需要存储 bacpac 文件以及数据层应用程序框架 (DacFX) 生成的临时文件。 所需的磁盘空间在具有相同大小的 DB 之间存在显著差异，并且最多可占数据库大小的 3 倍。 运行导入/导出请求的计算机只有 450GB 的本地磁盘空间。 因此，某些请求可能会失败，出现"磁盘上空间不足"错误。 在这种情况下，解决方法是在具有足够本地磁盘空间的计算机上运行 sqlpackage.exe。 导入/导出大于 150GB 的数据库时，请使用 SqlPackage 来避免此问题。
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
 > PowerShell Azure 资源管理器 (RM) 模块仍受 Azure SQL 数据库支持，但所有未来的开发都是针对 Az.Sql 模块的。 AzureRM 模块至少在 2020 年 12 月之前将继续接收 bug 修补程序。  Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 若要详细了解其兼容性，请参阅[新 Azure PowerShell Az 模块简介](/powershell/azure/new-azureps-module-az)。
@@ -144,14 +144,15 @@ az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "
 
 ## <a name="limitations"></a>限制
 
-不支持导入到弹性池中的数据库。 可以将数据导入到单一数据库，然后将数据库移到弹性池。
+- 不支持导入到弹性池中的数据库。 可以将数据导入到单一数据库，然后将数据库移到弹性池。
+- 将 Azure 服务的允许访问设置为 OFF 时，导入导出服务不起作用。 不过，可通过以下方式解决此问题：在 Azure VM 中手动运行 sqlpackage.exe，或者直接在代码中使用 DACFx API 执行导出。
 
 ## <a name="import-using-wizards"></a>使用向导导入
 
 还可以使用以下向导。
 
 - [SQL Server Management Studio 中的“导入数据层应用程序”向导](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database#using-the-import-data-tier-application-wizard)。
-- [SQL Server 导入和导出向导](https://docs.microsoft.com/sql/integration-services/import-export-data/start-the-sql-server-import-and-export-wizard)。
+- [SQL 服务器导入和导出向导](https://docs.microsoft.com/sql/integration-services/import-export-data/start-the-sql-server-import-and-export-wizard)。
 
 ## <a name="next-steps"></a>后续步骤
 

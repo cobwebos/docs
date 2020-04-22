@@ -1,5 +1,5 @@
 ---
-title: 故障排除 - Azure 自动化混合 Runbook 辅助角色
+title: 故障排除 Azure 自动化混合 Runbook 工作
 description: 本文提供有关对 Azure 自动化混合 Runbook 工作项进行故障排除的信息。
 services: automation
 ms.service: automation
@@ -9,20 +9,23 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d2587af0ada18b5c4271e7411783fe60211a3479
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 2b3bf6706e977bdb6915335dee59da3c250e7895
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637861"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81679336"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>对混合 Runbook 辅助角色进行故障排除
 
 本文提供有关混合 Runbook 辅助角色故障排除问题的信息。
 
+>[!NOTE]
+>本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az 模块安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于自动化帐户，可以使用["如何更新 Azure 自动化 中的 Azure PowerShell"模块](../automation-update-azure-modules.md)将模块更新到最新版本。
+
 ## <a name="general"></a>常规
 
-混合 Runbook 辅助角色依靠代理与自动化帐户通信，以注册辅助角色、接收 Runbook 作业和报告状态。 对于 Windows，此代理是 Windows 的日志分析代理，也称为 Microsoft 监视代理 （MMA）。 对于 Linux，它是适用于 Linux 的 Log Analytics 代理。
+混合 Runbook 辅助角色依靠代理与自动化帐户通信，以注册辅助角色、接收 Runbook 作业和报告状态。 对于 Windows，此代理是 Windows 的日志分析代理。 对于 Linux，它是适用于 Linux 的 Log Analytics 代理。
 
 ### <a name="scenario-runbook-execution-fails"></a><a name="runbook-execution-fails"></a>方案：Runbook 执行失败
 
@@ -41,10 +44,8 @@ Runbook 执行失败，您会收到以下错误。
 下面是可能的原因：
 
 * Runbook 无法使用本地资源进行身份验证。
-
 * 混合辅助角色在代理或防火墙后面。
-
-* 配置为运行混合 Runbook 辅助功能的计算机不符合最低硬件要求。
+* 配置为运行混合 Runbook 辅助角色的计算机不符合最低硬件要求。
 
 #### <a name="resolution"></a>解决方法
 
@@ -103,20 +104,20 @@ Runbook 执行失败，您会收到以下错误。
 在混合 Runbook 工作线程上运行的 Runbook 失败，出现以下错误消息。
 
 ```error
-Connect-AzureRmAccount : No certificate was found in the certificate store with thumbprint 0000000000000000000000000000000000000000
+Connect-AzAccount : No certificate was found in the certificate store with thumbprint 0000000000000000000000000000000000000000
 At line:3 char:1
-+ Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -Appl ...
++ Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -Appl ...
 + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : CloseError: (:) [Connect-AzureRmAccount], ArgumentException
-    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.ConnectAzureRmAccountCommand
+    + CategoryInfo          : CloseError: (:) [Connect-AzAccount], ArgumentException
+    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.ConnectAzAccountCommand
 ```
 #### <a name="cause"></a>原因
 
-当您[尝试在运行](../manage-runas-account.md)在混合 Runbook 工作线程上运行的 Runbook 上运行的 Runbook 帐户时，将发生此错误，该操作簿中不存在"运行为帐户"证书。 默认情况下，混合 Runbook 工作人员没有本地证书资产，这是运行 As 帐户正常运行所必需的。
+当您尝试在运行簿中使用[运行为帐户](../manage-runas-account.md)时，将发生此错误，该运行簿运行在混合 Runbook 工作线程上，其中不存在"运行为帐户"证书。 默认情况下，混合 Runbook 工作团队在本地没有证书资产。 "运行为帐户"要求此资产正常运行。
 
 #### <a name="resolution"></a>解决方法
 
-如果混合 Runbook 工作线程是 Azure VM，则可以对[Azure 资源使用托管标识](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)。 此方案允许使用 Azure VM 的托管标识而不是"运行为"帐户对 Azure 资源进行身份验证，从而简化身份验证。 当混合 Runbook 工作线程是本地计算机时，您需要在计算机上安装"运行为帐户"证书。 要了解如何安装证书，请参阅在[混合 Runbook 工作线程上运行 Runbook](../automation-hrw-run-runbooks.md)运行簿中运行 PowerShell Runbook 运行簿导出运行证书到混合工作线程的步骤。
+如果混合 Runbook 工作线程是 Azure VM，则可以对[Azure 资源使用托管标识](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)。 此方案允许使用 Azure VM 的托管标识而不是"运行为"帐户对 Azure 资源进行身份验证，从而简化身份验证。 当混合 Runbook 工作线程是本地计算机时，您需要在计算机上安装"运行为帐户"证书。 要了解如何安装证书，请参阅在[混合 Runbook 工作线程上运行 Runbook](../automation-hrw-run-runbooks.md)运行簿中运行 PowerShell Runbook 运行簿**导出运行证书到混合工作线程的步骤**。
 
 ### <a name="scenario-error-403-during-registration-of-hybrid-runbook-worker"></a><a name="error-403-on-registration"></a>方案：混合 Runbook 工作线程注册期间的错误 403
 
@@ -193,15 +194,15 @@ wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/inst
 
 Windows 混合 Runbook 辅助角色依靠[适用于 Windows 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)与自动化帐户通信，以注册辅助角色、接收 Runbook 作业和报告状态。 如果工作人员的注册失败，本节包括一些可能的原因。
 
-### <a name="scenario-the-microsoft-monitoring-agent-isnt-running"></a><a name="mma-not-running"></a>方案：微软监视代理未运行
+### <a name="scenario-the-log-analytics-agent-for-windows-isnt-running"></a><a name="mma-not-running"></a>方案：Windows 的日志分析代理未运行
 
 #### <a name="issue"></a>问题
 
-`healthservice` 服务未在混合 Runbook 辅助角色计算机上运行。
+`healthservice`未在混合 Runbook 工作计算机上运行。
 
 #### <a name="cause"></a>原因
 
-如果 Microsoft 监视代理服务未运行，则阻止混合 Runbook 辅助角色与 Azure 自动化通信。
+如果 Windows 服务的日志分析未运行，则混合 Runbook 辅助角色无法与 Azure 自动化通信。
 
 #### <a name="resolution"></a>解决方法
 
@@ -272,7 +273,7 @@ Heartbeat
 
 #### <a name="resolution"></a>解决方法
 
-若要解决此问题，请登录到混合 Runbook 辅助角色并运行以下脚本。 此脚本将停止 Microsoft Monitoring Agent，删除其高速缓存并重启该服务。 此操作会强制混合 Runbook 辅助角色从 Azure 自动化重新下载其配置。
+若要解决此问题，请登录到混合 Runbook 辅助角色并运行以下脚本。 此脚本停止 Windows 的日志分析代理，删除其缓存，并重新启动服务。 此操作会强制混合 Runbook 辅助角色从 Azure 自动化重新下载其配置。
 
 ```powershell
 Stop-Service -Name HealthService
@@ -304,8 +305,8 @@ Machine is already registered
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
+如果您在上面看不到问题或无法解决问题，请尝试以下渠道之一以获取其他支持：
 
 * 通过[Azure 论坛](https://azure.microsoft.com/support/forums/)从 Azure 专家那里获得答案。
-* 与[@AzureSupport](https://twitter.com/azuresupport)— 正式的 Microsoft Azure 帐户连接，通过将 Azure 社区连接到正确的资源（答案、支持和专家），从而改善客户体验。
-* 如需更多帮助，可以提交 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **"获取支持**"。
+* 与[@AzureSupport](https://twitter.com/azuresupport)连接 ，官方 Microsoft Azure 帐户通过将 Azure 社区连接到正确的资源（答案、支持和专家）来改善客户体验。
+* 提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **"获取支持**"。

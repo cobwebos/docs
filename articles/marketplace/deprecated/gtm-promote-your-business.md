@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/12/2019
 ms.author: dsindona
-ms.openlocfilehash: 8e5165d000ee98212b3fd76091ffbd030b6b787f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fde249f22342ed2a0c50f5fdda3bde9dc2cde183
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281538"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685728"
 ---
 # <a name="promote-your-business-with-microsoft"></a>通过 Microsoft 促进业务发展
 
@@ -36,6 +36,6 @@ ms.locfileid: "80281538"
 
 有关市场 GTM 服务的详细信息，请转到[市场推广服务](https://partner.microsoft.com/reach-customers/gtm)。
 
-登录到[云合作伙伴门户](https://cloudpartner.azure.com)，以便创建并配置套餐。
+[登录合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)创建或完成您的产品/服务。
 
 ---

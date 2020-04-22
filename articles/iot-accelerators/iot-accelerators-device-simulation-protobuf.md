@@ -6,15 +6,17 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.custom: mvc
+ms.custom:
+- mvc
+- amqp
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: bc08cd5183bcaac6cb77ccb0938b07893f082862
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c49745b30d2c4acc115a72af095f3e941dc4d509
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250213"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683994"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>使用协议缓冲区将遥测数据序列化
 
@@ -204,7 +206,7 @@ Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输�
 
 #### <a name="configure-the-solution-to-include-your-new-device-model-files"></a>将解决方案配置为包含新的设备模型文件
 
-默认情况下，新设备模型的 JSON 和 JS 文件不会复制到生成的解决方案。 需要显式包含这些文件。
+默认情况下，新设备型号 JSON 和 JS 文件不会复制到构建的解决方案中。 需要显式包含这些文件。
 
 将一个条目添加到所要包含的每个文件的 **services\services.csproj** 文件。 例如：
 

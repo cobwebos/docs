@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 9d7cbdd5ad551ba48f08f62237d5384aa7998fb8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c4c8f21234cfbf040d57c0e1c8dbecbb698d7d50
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281657"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685923"
 ---
 # <a name="cloud-solution-providers"></a>云解决方案提供商
 
@@ -195,4 +195,4 @@ CSP 计划选择加入设置在合作伙伴中心或云合作伙伴门户提供�
 
 要了解有关市场 GTM 服务的信息，请参阅[上市服务](https://partner.microsoft.com/reach-customers/gtm)。
 
-登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)或[云合作伙伴门户](https://cloudpartner.azure.com/)以创建和配置您的产品/服务。
+登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)或[云合作伙伴门户](https://cloudpartner.azure.com/)以创建和配置您的产品/服务。

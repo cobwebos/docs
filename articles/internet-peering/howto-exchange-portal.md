@@ -1,40 +1,40 @@
 ---
-title: 使用门户创建或修改 Exchange 对等互连
+title: 使用 Azure 门户创建或修改 Exchange 对等互连
 titleSuffix: Azure
-description: 使用门户创建或修改 Exchange 对等互连
+description: 使用 Azure 门户创建或修改 Exchange 对等互连
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 2c186decf68d167ab2c5ab7696c2dfb51d77a071
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4f2ee72cbe17c094567aab5c7cc4720b02cde68
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75774570"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680949"
 ---
-# <a name="create-or-modify-an-exchange-peering-using-the-portal"></a>使用门户创建或修改 Exchange 对等互连
+# <a name="create-or-modify-an-exchange-peering-by-using-the-azure-portal"></a>使用 Azure 门户创建或修改 Exchange 对等互连
 
-本文介绍如何使用门户创建 Microsoft Exchange 对等互连。 本文还演示如何检查资源的状态、更新资源或删除和取消预配资源。
+本文介绍如何使用 Azure 门户创建 Microsoft Exchange 对等互连。 本文还演示如何检查资源的状态、更新资源或删除和取消预配资源。
 
 如果您愿意，您可以使用[PowerShell](howto-exchange-powershell.md)完成本指南。
 
 ## <a name="before-you-begin"></a>开始之前
-* 在开始配置之前，请查看[先决条件](prerequisites.md)和[交换对等演练](walkthrough-exchange-all.md)。
-* 如果已与 Microsoft 已具有 Exchange 对等互连（未转换为 Azure 资源），请参阅[使用门户将旧 Exchange 对等互连转换为 Azure 资源](howto-legacy-exchange-portal.md)
+* 在开始配置之前，请查看[先决条件](prerequisites.md)和[Exchange 对等演练](walkthrough-exchange-all.md)。
+* 如果已与 Microsoft 的 Exchange 对等互连未转换为 Azure 资源，请参阅[使用门户将旧 Exchange 对等互连转换为 Azure 资源](howto-legacy-exchange-portal.md)。
 
 ## <a name="create-and-provision-an-exchange-peering"></a>创建和预配 Exchange 对等互连
 
-### <a name="sign-in-to-portal-and-select-your-subscription"></a>登录到门户并选择订阅
+### <a name="sign-in-to-the-portal-and-select-your-subscription"></a>登录到门户并选择订阅
 [!INCLUDE [Account](./includes/account-portal.md)]
 
 ### <a name="create-an-exchange-peering"></a><a name=create></a>创建 Exchange 对等互连
 
 可以使用**对等互连**资源创建新的对等互连请求。
 
-#### <a name="launch-resource-and-configure-basic-settings"></a>启动资源并配置基本设置
+#### <a name="launch-the-resource-and-configure-basic-settings"></a>启动资源并配置基本设置
 [!INCLUDE [direct-peering-basic](./includes/direct-portal-basic.md)]
 
 #### <a name="configure-connections-and-submit"></a>配置连接并提交
@@ -56,4 +56,4 @@ ms.locfileid: "75774570"
 
 ## <a name="additional-resources"></a>其他资源
 
-有关详细信息，请访问[互联网对等常见问题解答](faqs.md)
+有关详细信息，请参阅[互联网对等常见问题解答](faqs.md)。

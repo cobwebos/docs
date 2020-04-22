@@ -3,12 +3,12 @@ title: 在容器组中启用托管标识
 description: 了解如何在 Azure 容器实例中启用可使用其他 Azure 服务进行身份验证的托管标识
 ms.topic: article
 ms.date: 01/29/2020
-ms.openlocfilehash: 003055d5021dd8ad7c3bab6d2900298ffd13b222
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 19d2ab22eea15278c7753046f9222c7856fbf5ef
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76901929"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685648"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>如何将托管标识与 Azure 容器实例结合使用
 
@@ -31,7 +31,7 @@ ms.locfileid: "76901929"
 在运行的容器中使用托管标识，可对[支持 Azure AD 身份验证的任何服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)进行身份验证，而无需在容器代码中管理凭据。 对于不支持 AD 身份验证的服务，可以在 Azure 密钥保管库中存储机密，并使用托管标识访问密钥保管库以检索凭据。 有关使用托管标识的详细信息，请参阅[什么是 Azure 资源的托管标识？](../active-directory/managed-identities-azure-resources/overview.md)
 
 > [!IMPORTANT]
-> 此功能目前处于预览状态。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。 目前，仅 Linux 容器支持 Azure 容器实例的托管标识，而 Windows 容器尚不支持。
+> 此功能目前以预览版提供。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。 目前，仅 Linux 容器支持 Azure 容器实例的托管标识，而 Windows 容器尚不支持。
 >  
 
 ### <a name="enable-a-managed-identity"></a>启用托管标识
@@ -40,19 +40,19 @@ ms.locfileid: "76901929"
 
 Azure 容器实例支持以下两种类型的 Azure 托管标识：用户分配和系统分配。 在容器组中，可以启用系统分配的标识、一个或多个用户分配的标识或这两种类型的标识。 
 
-* 用户分配**** 的托管标识作为独立的 Azure 资源在使用中的订阅所信任的 Azure AD 租户中创建。 创建标识后，可以将标识分配到一个或多个 Azure 资源（在 Azure 容器实例或其他 Azure 服务中）。 用户分配标识的生命周期与它所分配到的容器组或其他服务资源的生命周期是分开管理的。 此行为在 Azure 容器实例中特别有用。 由于标识扩展到了容器组的生命周期之外，可以将其与其他标准设置一起重用，从而使容器组部署具有高度可重复性。
+* 用户分配  的托管标识作为独立的 Azure 资源在使用中的订阅所信任的 Azure AD 租户中创建。 创建标识后，可以将标识分配到一个或多个 Azure 资源（在 Azure 容器实例或其他 Azure 服务中）。 用户分配标识的生命周期与它所分配到的容器组或其他服务资源的生命周期是分开管理的。 此行为在 Azure 容器实例中特别有用。 由于标识扩展到了容器组的生命周期之外，可以将其与其他标准设置一起重用，从而使容器组部署具有高度可重复性。
 
-* 系统分配**** 的托管标识直接在 Azure 容器实例的容器组上启用。 启用标识后，Azure 将在实例的订阅信任的 Azure AD 租户中创建组的标识。 创建标识后，系统会将凭据预配到容器组的每个容器中。 系统分配标识的生命周期直接绑定到启用它的容器组。 如果组遭删除，Azure 会自动清理 Azure AD 中的凭据和标识。
+* 系统分配  的托管标识直接在 Azure 容器实例的容器组上启用。 启用标识后，Azure 将在实例的订阅信任的 Azure AD 租户中创建组的标识。 创建标识后，系统会将凭据预配到容器组的每个容器中。 系统分配标识的生命周期直接绑定到启用它的容器组。 如果组遭删除，Azure 会自动清理 Azure AD 中的凭据和标识。
 
 ### <a name="use-a-managed-identity"></a>使用托管标识
 
-要使用托管标识，最初必须授予标识对订阅中的一个或多个 Azure 服务资源（如 Web 应用、密钥保管库或存储帐户）的访问权限。 若要从正在运行的容器访问 Azure 资源，代码必须从 Azure AD 终结点获得访问令牌**。 然后，代码在调用支持 Azure AD 身份验证的服务时发送访问令牌。 
+要使用托管标识，最初必须授予标识对订阅中的一个或多个 Azure 服务资源（如 Web 应用、密钥保管库或存储帐户）的访问权限。 若要从正在运行的容器访问 Azure 资源，代码必须从 Azure AD 终结点获得访问令牌  。 然后，代码在调用支持 Azure AD 身份验证的服务时发送访问令牌。 
 
 在正在运行的容器中使用托管标识与在 Azure VM 中使用标识本质上是相同的。 请参阅有关使用[令牌](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)、[Azure PowerShell 或 Azure CLI](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md) 或 [Azure SDK](../active-directory/managed-identities-azure-resources/how-to-use-vm-sdk.md) 的 VM 指南。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.49 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.49 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-an-azure-key-vault"></a>创建 Azure 密钥保管库
 
@@ -189,7 +189,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-现在使用访问令牌对密钥保管库进行身份验证并读取机密。 请务必在 URL （*https://mykeyvault.vault.azure.net/..中*替换密钥保管库的名称 。
+现在使用访问令牌对密钥保管库进行身份验证并读取机密。 请务必在 URL 中替换密钥保管库的名称 *（https：\//mykeyvault.vault.azure.net/...*
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5a80c6e3bd8cf647590ed757c042ef3301e27b4a
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 34ed6d043f713aa55bfe464c48d4332364df805d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743510"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680375"
 ---
 # <a name="secure-your-restful-services"></a>保护您的 RESTt 服务 
 
@@ -69,7 +69,7 @@ HTTP 基本身份验证在[RFC 2617](https://tools.ietf.org/html/rfc2617)中定�
 
 1. 在工作目录中，打开扩展策略文件 (TrustFrameworkExtensions.xml)。
 1. 搜索 REST API 技术配置文件。 例如 `REST-ValidateProfile` 或 `REST-GetProfile`。
-1. 找到 `<Metadata>` 元素。
+1. 查找 `<Metadata>` 元素。
 1. 将*身份验证类型*更改为`Basic`。
 1. 将 *"允许不安全 Auth 生产"* 更改为`false`。
 1. 紧靠在 `</Metadata>` 元素右括号的后面添加以下 XML 片段：
@@ -150,7 +150,7 @@ HTTP 基本身份验证在[RFC 2617](https://tools.ietf.org/html/rfc2617)中定�
 
 1. 在工作目录中，打开扩展策略文件 (TrustFrameworkExtensions.xml)。
 1. 搜索 REST API 技术配置文件。 例如 `REST-ValidateProfile` 或 `REST-GetProfile`。
-1. 找到 `<Metadata>` 元素。
+1. 查找 `<Metadata>` 元素。
 1. 将*身份验证类型*更改为`ClientCertificate`。
 1. 将 *"允许不安全 Auth 生产"* 更改为`false`。
 1. 紧靠在 `</Metadata>` 元素右括号的后面添加以下 XML 片段：
@@ -211,11 +211,19 @@ Authorization: Bearer <token>
 1. 打开策略的扩展文件。 例如， <em> `SocialAndLocalAccounts/` </em>.
 1. 搜索 BuildingBlocks[](buildingblocks.md) 元素。 如果该元素不存在，请添加该元素。
 1. 找到[声明架构](claimsschema.md)元素。 如果该元素不存在，请添加该元素。
-1. 将城市承载令牌添加到**声明架构**元素。  
+1. 将以下声明添加到**声明架构**元素。  
 
 ```xml
 <ClaimType Id="bearerToken">
-  <DisplayName>bearer token</DisplayName>
+  <DisplayName>Bearer token</DisplayName>
+  <DataType>string</DataType>
+</ClaimType>
+<ClaimType Id="grant_type">
+  <DisplayName>Grant type</DisplayName>
+  <DataType>string</DataType>
+</ClaimType>
+<ClaimType Id="scope">
+  <DisplayName>scope</DisplayName>
   <DataType>string</DataType>
 </ClaimType>
 ```
@@ -258,7 +266,7 @@ Authorization: Bearer <token>
 
 1. 在工作目录中，打开 *TrustFrameworkExtensions.xml* 扩展策略文件。
 1. 搜索包含 `Id="REST-API-SignUp"` 的 `<TechnicalProfile>` 节点。
-1. 找到 `<Metadata>` 元素。
+1. 查找 `<Metadata>` 元素。
 1. 将*身份验证类型*更改为*承载类型*，如下所示：
     ```xml
     <Item Key="AuthenticationType">Bearer</Item>
@@ -323,7 +331,7 @@ Authorization: Bearer <token>
 
 1. 在工作目录中，打开扩展策略文件 (TrustFrameworkExtensions.xml)。
 1. 搜索 REST API 技术配置文件。 例如 `REST-ValidateProfile` 或 `REST-GetProfile`。
-1. 找到 `<Metadata>` 元素。
+1. 查找 `<Metadata>` 元素。
 1. 将*身份验证类型*更改为`Bearer`。
 1. 将 *"允许不安全 Auth 生产"* 更改为`false`。
 1. 紧靠在 `</Metadata>` 元素右括号的后面添加以下 XML 片段：

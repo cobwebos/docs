@@ -1,14 +1,14 @@
 ---
 title: 策略分配结构的详细信息
 description: 介绍策略分配定义，Azure Policy 使用该定义将策略定义和参数关联到资源，以进行评估。
-ms.date: 09/23/2019
+ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: f03c654dfc4c8dfdf2bdc5103a5961b4d8ce1e64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cdb2fc0c6f057ece44383f68bc79fca54507db9b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79265293"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683221"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy 分配结构
 
@@ -20,6 +20,7 @@ Azure Policy 使用策略分配来定义为哪些资源分配了哪些策略或�
 - description
 - metadata
 - 强制模式
+- 排除的范围
 - 策略定义
 - parameters
 
@@ -34,6 +35,7 @@ Azure Policy 使用策略分配来定义为哪些资源分配了哪些策略或�
             "assignedBy": "Cloud Center of Excellence"
         },
         "enforcementMode": "DoNotEnforce",
+        "notScopes": [],
         "policyDefinitionId": "/subscriptions/{mySubscriptionID}/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming",
         "parameters": {
             "prefix": {
@@ -59,12 +61,16 @@ Azure Policy 使用策略分配来定义为哪些资源分配了哪些策略或�
 
 此属性具有以下值：
 
-|“模式” |JSON 值 |类型 |手动修正 |活动日志条目 |描述 |
+|“模式” |JSON 值 |类型 |手动修正 |活动日志条目 |说明 |
 |-|-|-|-|-|-|
 |已启用 |默认 |字符串 |是 |是 |在创建或更新资源期间强制实施策略效果。 |
 |已禁用 |DoNotEnforce |字符串 |是 |否 | 在创建或更新资源期间不强制实施策略效果。 |
 
 如果未在策略或计划定义中指定 **enforcementMode**，则使用值 _Default_。 即使 **enforcementMode** 设置为 _DoNotEnforce_，也可以针对 [deployIfNotExists](./effects.md#deployifnotexists) 策略启动[修正任务](../how-to/remediate-resources.md)。
+
+## <a name="excluded-scopes"></a>排除的范围
+
+分配**的范围**包括所有子资源容器和子资源。 如果子资源容器或子资源不应应用定义，则可以通过设置 **"不Scope"** 从评估中排除每个容器。 此属性是一个数组，用于启用从评估中排除一个或多个资源容器或资源。 在创建初始分配后，可以添加或更新 **"不Scope"。**
 
 ## <a name="policy-definition-id"></a>策略定义 ID
 

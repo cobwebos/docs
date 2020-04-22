@@ -6,14 +6,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/09/2018
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 882d428d7a8a9b56408aaa68964fa1e36c7cc7c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 80bcf0d5d37a44cee2aab38161abac619542204a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277300"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684326"
 ---
 # <a name="containers-offer-publishing-guide"></a>“容器”产品/服务发布指南
 
@@ -41,9 +41,9 @@ Microsoft 目前支持免费和自带许可 (BYOL) 许可模型。
 
 如果尚未注册， 
 
-- 请在市场中[注册](https://azuremarketplace.microsoft.com/sell)。
+- [了解](https://azuremarketplace.microsoft.com/sell)市场。
 
-如果已注册并正在创建新套餐或正在使用现有套餐，
+要在合作伙伴中心注册，请开始创建新产品/服务或处理现有产品/服务：
 
-- [登录到云合作伙伴门户](https://cloudpartner.azure.com)，创建或完成套餐。
-- 有关详细信息，请参阅[容器](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer)。
+- [登录合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)创建或完成您的优惠。
+- 有关详细信息[，请参阅创建 Azure 容器产品/服务](./partner-center-portal/create-azure-container-offer.md)。

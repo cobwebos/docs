@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 001a77734a8cedf08c5523380c1cbd00dce89f40
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: fd510f90887353d7486908ee076d5308db72c59d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80681189"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687067"
 ---
 # <a name="get-service-access-tokens"></a>获取服务访问令牌
 
@@ -24,7 +24,7 @@ ms.locfileid: "80681189"
 
 ## <a name="token-service-rest-api"></a>令牌服务 REST API
 
-要创建访问令牌，*安全令牌服务*提供单个 REST API。 ARR STS 服务的 URL[https://sts.mixedreality.azure.com](https://sts.mixedreality.azure.com)为 。
+要创建访问令牌，*安全令牌服务*提供单个 REST API。 ARR STS 服务的 URL 是 https：\//sts.mixedreality.azure.com。
 
 ### <a name="get-token-request"></a>"获取令牌"请求
 
@@ -67,6 +67,6 @@ Write-Output "Token: $($response.AccessToken)"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [电源外壳脚本示例](../samples/powershell-example-scripts.md)
+* [PowerShell 脚本示例](../samples/powershell-example-scripts.md)
 * [Azure 前端 API](../how-tos/frontend-apis.md)
 * [会话管理 REST API](../how-tos/session-rest-api.md)

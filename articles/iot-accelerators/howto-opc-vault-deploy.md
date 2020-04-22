@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: f577059e1ebf70e3a9dfe9e538a9d3d49d7c8e96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ee186684b702a42335c6e1a7832cc5c761a69d0
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71199995"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686943"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>构建和部署 OPC 保管库证书管理服务
 
@@ -90,7 +90,7 @@ PowerShell 脚本提供了一种部署 OPC Vault 微服务和应用程序的简�
 
 以下是操作方法：
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 转到部署服务的资源组。
 3. 选择“删除资源组”并进行确认。****
 4. 过一段时间后，将删除所有已部署的服务组件。
@@ -107,7 +107,7 @@ PowerShell 脚本提供了一种部署 OPC Vault 微服务和应用程序的简�
 
 ### <a name="website-name-already-in-use"></a>网站名称已在使用中
 
-网站的名称可能已在使用中。 您需要使用不同的资源组名称。 部署脚本正在使用的主机名是：https://resourcegroupname.azurewebsites.net和https://resourgroupname-service.azurewebsites.net。
+网站的名称可能已在使用中。 您需要使用不同的资源组名称。 部署脚本正在使用的主机名是：https：/resourcegroupname.azurewebsites.net\/和 https：/resourgroupname-service.azurewebsites.net。\/
 其他服务名称由短名称哈希的组合构建，不太可能与其他服务冲突。
 
 ### <a name="azure-ad-registration"></a>Azure AD 注册 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 55c6d374c8a3c308323c0d003726492477e33ff8
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 730e478622da8cd90af1c559e4d0c6fd04151cca
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811237"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686811"
 ---
 # <a name="develop-a-secure-web-app"></a>开发安全的 Web 应用
 
@@ -803,7 +803,7 @@ az network application-gateway http-settings update --gateway-name $gwName `
 将 Azure AD 配置和机密添加到密钥保管库后，可以使用 Azure OAuth 身份验证将用户身份验证到应用中。
 在应用代码中，这由 Azure 活动目录身份验证库 （ADAL） 处理。
 
-在密钥保管库中包含机密并应用程序可以访问机密和数据库后，可以通过网关的应用程序 URL （，https://GATEWAY_HASH.cloudapp.net)可以从其边栏选项卡获取）访问应用程序服务。
+在密钥保管库中包含机密并应用程序可以访问机密和数据库后，可以通过网关的应用程序 URL （https：\//GATEWAY_HASH.cloudapp.net） 访问应用程序服务，您可以通过其边栏选项卡获取该应用程序服务。
 
 如果在登录到 Azure AD 时，会收到一个错误，指出"用户未在尝试登录的目录中注册"，则需要添加该用户。 要添加用户，请转到 Azure AD 的 **"用户"** 选项卡，并通过输入用户的详细信息手动添加用户，或者通过在 **"邀请来宾"** 边栏选项卡中输入以来宾用户身份的用户电子邮件地址来邀请用户加入 Azure AD。
 
@@ -978,7 +978,7 @@ PyLint 为这个项目提供了最大的价值。 它执行代码标准检查、
 
 ### <a name="find-and-fix-vulnerabilities-in-app-dependencies"></a>查找和修复应用依赖项中的漏洞
 
-要查找和修复应用程序依赖项，可以使用[OWASP 的依赖项检查](https://www.owasp.org/index.php/OWASP_Dependency_Check)。
+要查找和修复应用程序依赖项，可以使用[OWASP 的依赖项检查](https://owasp.org/www-project-dependency-check/)。
 
 安全性是检查依赖项的类似应用程序。 你可以在[GitHub](https://github.com/pyupio/safety)上找到它。 安全扫描在已知漏洞数据库中发现的漏洞。
 

@@ -10,12 +10,12 @@ ms.date: 08/28/2019
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: d6ac5961cbecf4e81c0b6bcc25c39aad42b18416
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: cd630acfd65f0a79c186ba35bc15627bf7ccfdbe
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81429832"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686194"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 向 Azure Key Vault 进行服务到服务身份验证
 
@@ -33,9 +33,9 @@ ms.locfileid: "81429832"
 
 ## <a name="using-the-library"></a>使用库
 
-对于 .NET 应用程序，若要使用托管标识，最简单的方式是通过 `Microsoft.Azure.Services.AppAuthentication` 包来使用。 下面介绍如何入门：
+对于 .NET 应用程序，若要使用托管标识，最简单的方式是通过 `Microsoft.Azure.Services.AppAuthentication` 包。 下面介绍如何入门：
 
-1. 选择**工具** > **NuGet 包管理器** > **管理 NuGet 包的解决方案**，以添加对[Microsoft.Azure.服务.App 身份验证](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)和[Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet 包到您的项目的引用。
+1. 选择“工具” > “NuGet 包管理器” > “管理解决方案的 NuGet 包”，向应用程序添加对 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) 和 [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet 包的引用。   
 
 1. 添加以下代码：
 
@@ -70,13 +70,13 @@ ms.locfileid: "81429832"
 
 若要使用 Visual Studio 进行身份验证：
 
-1. 登录到可视化工作室并使用**工具**&nbsp;>&nbsp;**选项**打开**选项**。
+1. 登录到 Visual Studio，并使用“工具”>“选项”打开“选项”。   
 
-1. 选择“Azure 服务身份验证”，选择用于本地开发的帐户，然后选择“确定”。********
+1. 选择“Azure 服务身份验证”，选择用于本地开发的帐户，然后选择“确定”。  
 
 如果在使用 Visual Studio 时遇到问题，例如有关令牌提供程序文件的错误，请仔细检查上述步骤。
 
-可能需要对开发人员令牌重新进行身份验证。 为此，请选择 **"工具**&nbsp;>&nbsp;**选项**"，然后选择**Azure&nbsp;&nbsp;服务身份验证**。 找到所选帐户下的“重新进行身份验证”链接。**** 选择该链接进行身份验证。
+可能需要对开发人员令牌重新进行身份验证。 为此，请选择“工具”>“选项”，然后选择“Azure 服务身份验证”。    找到所选帐户下的“重新进行身份验证”链接。  选择该链接进行身份验证。
 
 #### <a name="authenticating-with-azure-cli"></a>使用 Azure CLI 进行身份验证
 
@@ -84,15 +84,15 @@ ms.locfileid: "81429832"
 
 使用 Azure CLI：
 
-1. 在 Windows 任务栏中搜索 Azure CLI，打开“Microsoft Azure 命令提示符”。****
+1. 在 Windows 任务栏中搜索 Azure CLI，打开“Microsoft Azure 命令提示符”。 
 
 1. 登录到 Azure 门户：运行 *az login* 登录到 Azure。
 
-1. 输入 *az account get-access-token --resource https://vault.azure.net* 验证访问权限。 如果收到错误，请检查是否正确安装了适当版本的 Azure CLI。
+1. 通过输入*az 帐户获取访问令牌 -资源 https/vault.azure.net\/* 验证访问。 如果收到错误，请检查是否正确安装了适当版本的 Azure CLI。
 
    如果未将 Azure CLI 安装到默认目录，则可能会收到错误，指出 `AzureServiceTokenProvider` 找不到 Azure CLI 的路径。 请使用 **AzureCLIPath** 环境变量来定义 Azure CLI 安装文件夹。 `AzureServiceTokenProvider` 在需要时将 **AzureCLIPath** 环境变量中指定的目录添加到 **Path** 环境变量。
 
-1. 如果使用多个帐户登录到 Azure CLI，或者帐户可以访问多个订阅，则需指定要使用的订阅。 输入命令 *az account set --subscription <订阅 ID>*。
+1. 如果使用多个帐户登录到 Azure CLI，或者帐户可以访问多个订阅，则需指定要使用的订阅。 输入命令 *az account set --subscription <订阅 ID>* 。
 
 此命令仅在发生故障时生成输出。 若要验证当前帐户设置，请输入命令 `az account list`。
 
@@ -108,7 +108,7 @@ ms.locfileid: "81429832"
 
 当某个服务调用 Azure 服务时，上述步骤适用，因为 Azure 服务允许访问用户和应用程序。
 
-创建调用自定义服务的服务时，请使用 Azure AD 客户端凭据进行本地开发身份验证。 存在两个选项：
+创建调用自定义服务的服务时，请使用 Azure AD 客户端凭据进行本地开发身份验证。 有两个选项：
 
 - 使用服务主体登录到 Azure：
 
@@ -126,11 +126,11 @@ ms.locfileid: "81429832"
 
 登录到 Azure 后，`AzureServiceTokenProvider` 会使用服务主体来检索本地开发的令牌。
 
-此方法仅适用于本地开发。 当解决方案部署到 Azure 时，库会切换到用于身份验证的托管标识。
+此方法仅适用于本地开发。 当解决方案部署到 Azure 时，该库会切换到托管标识以进行身份验证。
 
 ## <a name="running-the-application-using-managed-identity-or-user-assigned-identity"></a>使用托管标识或用户分配标识运行应用程序
 
-在启用托管标识的 Azure 应用服务或 Azure VM 上运行代码时，库自动使用托管标识。 无需更改代码，但托管标识必须对 Key Vault 拥有 *get* 权限。 可以通过 Key Vault 的访问策略为托管标识授予 *get* 权限。**
+在启用托管标识的 Azure 应用服务或 Azure VM 上运行代码时，库自动使用托管标识。 无需更改代码，但托管标识必须对 Key Vault 拥有 *get* 权限。 可以通过 Key Vault 的访问策略为托管标识授予 *get* 权限。 
 
 或者，可以使用用户分配的标识进行身份验证。 有关用户分配的标识的详细信息，请参阅[关于 Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)。 若要使用用户分配的标识进行身份验证，需要在连接字符串中指定用户分配的标识的客户端 ID。 在[连接字符串支持](#connection-string-support)中已指定连接字符串。
 
@@ -157,7 +157,7 @@ ms.locfileid: "81429832"
     此命令创建一个存储在主目录中的 .pem 文件（私钥）。 将此证书部署到 *LocalMachine* 或 *CurrentUser* 存储。
 
     > [!Important]
-    > CLI 命令生成一个 .pem 文件，但 Windows 原生仅支持 PFX 证书。 要生成 PFX 证书，请使用此处显示的 PowerShell 命令：[使用自签名证书创建服务主体](../../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate)。 这些命令也会自动部署证书。
+    > CLI 命令生成一个 .pem 文件，但 Windows 原生仅支持 PFX 证书。 若要改为生成 PFX 证书，请使用下面所示的 PowerShell 命令：[使用自签名证书创建服务主体](../../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate)。 这些命令也会自动部署证书。
 
 1. 将名为 **AzureServicesAuthConnectionString** 的环境变量设置为以下值：
 
@@ -166,7 +166,7 @@ ms.locfileid: "81429832"
           CertificateStoreLocation={CertificateStore}
     ```
 
-    将 **{AppId}、**{TenantId} 和 **{Thumbprint} 替换为步骤 1 中生成的值。 根据部署计划，将 *{CertificateStore}* 替换为 *LocalMachine*` 或 *CurrentUser*。
+    将  {AppId}、  {TenantId} 和  {Thumbprint} 替换为步骤 1 中生成的值。 根据部署计划，将 *{CertificateStore}* 替换为 *LocalMachine*` 或 *CurrentUser*。
 
 1. 运行应用程序。
 
@@ -184,7 +184,7 @@ ms.locfileid: "81429832"
     RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}
     ```
 
-    将 _{AppId}_、_{TenantId}_ 和 _{ClientSecret}_ 替换为步骤 1 中生成的值。
+    将 _{AppId}_ 、 _{TenantId}_ 和 _{ClientSecret}_ 替换为步骤 1 中生成的值。
 
 1. 运行应用程序。
 
@@ -226,11 +226,11 @@ ms.locfileid: "81429832"
 
 默认情况下，`AzureServiceTokenProvider` 使用多种方法来检索令牌。
 
-若要控制此过程，请使用传递到 `AzureServiceTokenProvider` 构造函数或在 ** AzureServicesAuthConnectionString 环境变量中指定的连接字符串。
+若要控制此过程，请使用传递到 `AzureServiceTokenProvider` 构造函数或在  AzureServicesAuthConnectionString 环境变量中指定的连接字符串。
 
 可以使用以下选项：
 
-| 连接字符串选项 | 场景 | 注释|
+| 连接字符串选项 | 方案 | 注释|
 |:--------------------------------|:------------------------|:----------------------------|
 | `RunAs=Developer; DeveloperTool=AzureCli` | 本地开发 | `AzureServiceTokenProvider` 使用 AzureCli 获取令牌。 |
 | `RunAs=Developer; DeveloperTool=VisualStudio` | 本地开发 | `AzureServiceTokenProvider` 使用 Visual Studio 获取令牌。 |
@@ -246,7 +246,7 @@ ms.locfileid: "81429832"
 
 若要了解 `Microsoft.Azure.Services.AppAuthentication` 库的运作方式，请参阅以下代码示例。
 
-- [Use a managed identity to retrieve a secret from Azure Key Vault at runtime](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)（在运行时使用托管标识从 Azure Key Vault 检索机密）
+- [在运行时使用托管标识从 Azure Key Vault 检索机密](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)
 
 - [Programmatically deploy an Azure Resource Manager template from an Azure VM with a managed identity](https://github.com/Azure-Samples/windowsvm-msi-arm-dotnet)（使用托管标识以编程方式从 Azure VM 部署 Azure 资源管理器模板）。
 
@@ -266,7 +266,7 @@ AzureServiceTokenProvider 在默认安装位置查找 Azure CLI。 如果找不�
 
 #### <a name="youre-logged-into-azure-cli-using-multiple-accounts-the-same-account-has-access-to-subscriptions-in-multiple-tenants-or-you-get-an-access-denied-error-when-trying-to-make-calls-during-local-development"></a>使用多个帐户登录到了 Azure CLI、同一个帐户有权访问多个租户中的订阅，或者在本地开发期间尝试发出调用时收到“拒绝访问”错误
 
-使用 Azure CLI 将默认订阅设置为包含所要使用的帐户的订阅。 该订阅必须位于你要访问的资源所在的同一租户中：**az account set --subscription [订阅 ID]**。 如果未显示任何输出，则表示命令成功。 使用 **az account list** 验证适当的帐户现在是否为默认帐户。
+使用 Azure CLI 将默认订阅设置为包含所要使用的帐户的订阅。 该订阅必须位于你要访问的资源所在的同一租户中：**az account set --subscription [订阅 ID]** 。 如果未显示任何输出，则表示命令成功。 使用 **az account list** 验证适当的帐户现在是否为默认帐户。
 
 ### <a name="common-issues-across-environments"></a>环境中出现的常见问题
 
@@ -286,7 +286,7 @@ AzureServiceTokenProvider 在默认安装位置查找 Azure CLI。 如果找不�
 
 默认情况下，AppAuth 在 IIS 的不同用户上下文中运行。 正因如此，它无权使用你的开发人员标识来检索访问令牌。 可通过以下两个步骤，将 IIS 配置为在你的用户上下文中运行：
 - 将 Web 应用的应用程序池配置为以当前用户帐户身份运行。 请在[此处](https://docs.microsoft.com/iis/manage/configuring-security/application-pool-identities#configuring-iis-application-pool-identities)查看详细信息
-- 将“setProfileEnvironment”配置为“True”。 [在此处](https://docs.microsoft.com/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration)查看更多信息。 
+- 将“setProfileEnvironment”配置为“True”。 请在[此处](https://docs.microsoft.com/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration)查看详细信息。 
 
     - 转到 %windir%\System32\inetsrv\config\applicationHost.config
     - 搜索“setProfileEnvironment”。 如果它设置为“False”，请更改为“True”。 如果不存在，则将其作为属性添加到进程模型元素 （），/configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment并将其设置为"True"。

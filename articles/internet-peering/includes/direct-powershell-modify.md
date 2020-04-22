@@ -8,24 +8,24 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 03c67ccf88a8c73fe04f062c6af9520115c185a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b2609a069872ec55ac9068fadcbb3f312d68a630
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75774258"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680777"
 ---
 本节介绍如何为 Direct 对等互连执行以下修改操作：
 
-* 添加直接对等互连连接
-* 删除直接对等互连连接
+* 添加直接对等互连连接。
+* 删除直接对等互连连接。
 * 升级或降级活动连接上的带宽。
-* 在活动连接上添加 IPv4/IPv6 会话。
-* 在活动连接上删除 IPv4/IPv6 会话。
+* 在活动连接上添加 IPv4 或 IPv6 会话。
+* 在活动连接上删除 IPv4 或 IPv6 会话。
 
 ### <a name="add-direct-peering-connections"></a>添加直接对等互连连接
 
-下面的示例介绍如何向现有 Direct 对等互连添加连接
+此示例介绍如何向现有 Direct 对等互连添加连接。
 
 ```powershell
 
@@ -46,7 +46,7 @@ $directPeering | Update-AzPeering
 
 ### <a name="remove-direct-peering-connections"></a>删除直接对等互连连接
 
-PowerShell 当前不支持删除连接。 联系[微软对等互连](mailto:peeringexperience@microsoft.com)。
+PowerShell 当前不支持删除连接。 有关详细信息，请与[微软对等互连](mailto:peeringexperience@microsoft.com)。
 
 <!--
 ```powershell
@@ -58,7 +58,7 @@ $directPeering | Update-AzPeering
 
 ### <a name="upgrade-or-downgrade-bandwidth-on-active-connections"></a>在活动连接上升级或降级带宽
 
-下面的示例介绍如何向现有直接连接添加 10Gbps。
+此示例介绍如何向现有 Direct 连接添加 10 Gbps。
 
 ```powershell
 
@@ -68,9 +68,9 @@ $directPeering | Update-AzPeering
 
 ```
 
-### <a name="add-ipv4ipv6-session-on-active-connections"></a>在活动连接上添加 IPv4/IPv6 会话。
+### <a name="add-ipv4-or-ipv6-sessions-on-active-connections"></a>在活动连接上添加 IPv4 或 IPv6 会话
 
-下面的示例介绍如何在仅与 IPv4 会话的现有直接连接上添加 IPv6 会话。 
+此示例介绍如何在仅具有 IPv4 会话的现有 Direct 连接上添加 IPv6 会话。 
 
 ```powershell
 
@@ -80,6 +80,6 @@ $directPeering | Update-AzPeering
 
 ```
 
-### <a name="remove-ipv4ipv6-session-on-active-connections"></a>在活动连接上删除 IPv4/IPv6 会话。
+### <a name="remove-ipv4-or-ipv6-sessions-on-active-connections"></a>在活动连接上删除 IPv4 或 IPv6 会话
 
-PowerShell 目前不支持从现有连接中删除 IPv4/IPv6 会话。 联系[微软对等互连](mailto:peeringexperience@microsoft.com)。
+PowerShell 目前不支持从现有连接中删除 IPv4 或 IPv6 会话。 有关详细信息，请与[微软对等互连](mailto:peeringexperience@microsoft.com)。

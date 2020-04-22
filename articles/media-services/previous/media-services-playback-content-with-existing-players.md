@@ -1,6 +1,6 @@
 ---
 title: 使用现有播放器播放内容 - Azure | Microsoft 文档
-description: 本文列出了可用于播放内容的现有播放器。
+description: 本文列出了可以用来播放内容的现有播放器。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 07537d3d67e41f7e1179a709ffa19f3d84aa4539
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d3c22e17c37bc46c16a9cc80eb3cf4b9ec93ecf
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77565819"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686926"
 ---
 # <a name="playing-your-content-with-existing-players"></a>使用现有播放器播放内容
 Azure 媒体服务支持多种常用的流式处理格式，如平滑流、HTTP 实时流和 MPEG-Dash。 本主题指出了可用来测试流的现有播放器。
 
 ### <a name="the-azure-portal-media-services-content-player"></a>Azure 门户媒体服务内容播放器
-**Azure**门户提供可用于测试视频的内容播放器。
+**Azure** 门户提供可用于测试视频的内容播放器。
 
-单击所需的视频（确保它[已发布](media-services-portal-publish.md)），并单击门户底部的“播放”**** 按钮。
+单击所需的视频（确保它[已发布](media-services-portal-publish.md)），并单击门户底部的“播放”  按钮。
 
 请注意以下事项：
 
@@ -45,10 +45,6 @@ Azure 媒体服务支持多种常用的流式处理格式，如平滑流、HTTP 
 * 渐进式 MP4
 
 ### <a name="flash-player"></a>Flash Player
-
-#### <a name="aes-encrypted-with-token"></a>带令牌的 AES 加密
-
-[https://aestoken.azurewebsites.net](https://aestoken.azurewebsites.net)
 
 #### <a name="playready-with-token"></a>带令牌的 PlayReady
 

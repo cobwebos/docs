@@ -10,16 +10,16 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/27/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 4e20129502e7538bd2f3354b75b33095970e1595
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9e8aa9bbbdf166ba0caf29cd0bce22b8ed321e4e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81411866"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685185"
 ---
 # <a name="azure-sql-auditing"></a>Azure SQL 审核
 
-Azure SQL[数据库](sql-database-technical-overview.md)和[Azure 同步分析](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的审核可跟踪数据库事件并将其写入 Azure 存储帐户、日志分析工作区或事件中心中的审核日志。 
+审核 Azure [SQL 数据库](sql-database-technical-overview.md)和 [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 可跟踪数据库事件，并将这些事件写入 Azure 存储帐户、Log Analytics 工作区或事件中心内的审核日志。 
 
 审核还可：
 
@@ -111,9 +111,6 @@ Azure SQL 数据库审核在审核记录中存储字符字段的 4000 个字符�
 ### <a name=""></a><a id="audit-log-analytics-destination">审核到日志分析目标</a>
   
 若要配置将审核日志写入 Log Analytics 工作区的操作，请选择“Log Analytics (预览版)”，并打开“Log Analytics 详细信息”。******** 选择或创建要将日志写入到其中的 Log Analytics 工作区，然后单击“确定”。****
-    
-  > [!WARNING]
-   > 启用在 Log Analytics 中进行审核会根据引入速率产生成本。 请注意，使用此[选项](https://azure.microsoft.com/pricing/details/monitor/)会产生相关的成本；或者，可以考虑将审核日志存储在 Azure 存储帐户中。
    
    ![日志分析工作区](./media/sql-database-auditing-get-started/auditing_select_oms.png)
 

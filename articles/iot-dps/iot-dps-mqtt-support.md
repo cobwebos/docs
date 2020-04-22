@@ -1,29 +1,32 @@
 ---
 title: 了解 Azure IoT 设备预配服务 MQTT 支持 | Microsoft Docs
-description: 开发人员指南 - 支持使用 MQTT 协议连接到 Azure IoT 设备配置服务 （DPS） 面向设备的终结点。
+description: 开发人员指南 - 为使用 MQTT 协议连接到 Azure IoT 设备预配服务 (DPS) 面向设备的终结点的设备提供支持。
 author: rajeevmv
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: ravokkar
-ms.openlocfilehash: ea6ece7e34ddb9c25f9f8349239ab3a1c3405abf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 213fc3412a2dfad77946e52a355a30774d6860c7
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74973367"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680678"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>使用 MQTT 协议与 DPS 通信
 
 DPS 可让设备使用以下协议来与 DPS 设备终结点通信：
 
 * 在端口 8883 上使用 [MQTT v3.1.1](https://mqtt.org/)
-* [MQTT v3.1.1](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718127)通过端口 443 上的 WebSocket。
+* 在端口 443 上使用基于 WebSocket 的 [MQTT v3.1.1](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718127)。
 
 DPS 不是功能完备的 MQTT 中转站，并未支持 MQTT v3.1.1 标准中指定的所有行为。 本文介绍设备如何使用受支持的 MQTT 行为通过 DPS 进行通信。
 
-所有通过 DPS 进行的设备通信都必须使用 TLS/SSL 来保护。 因此，DPS 不支持通过端口 1883 进行的不安全的连接。
+所有通过 DPS 进行的设备通信都必须使用 TLS/SSL 来保护。 因此，DPS 不支持通过端口 1883 进行不安全的连接。
 
  > [!NOTE] 
  > DPS 目前不支持通过 MQTT 协议使用 TPM [证明机制](https://docs.microsoft.com/azure/iot-dps/concepts-device#attestation-mechanism)的设备。
@@ -37,7 +40,7 @@ DPS 不是功能完备的 MQTT 中转站，并未支持 MQTT v3.1.1 标准中指
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>直接使用 MQTT 协议（作为设备）
 
-如果设备无法使用设备 SDK，仍可在 8883 端口使用 MQTT 协议连接到公共设备终结点。 在**CONNECT**数据包中，设备应使用以下值：
+如果设备无法使用设备 SDK，仍可在 8883 端口使用 MQTT 协议连接到公共设备终结点。 在 **CONNECT** 数据包中，设备应使用以下值：
 
 * 对于 **ClientId** 字段，使用 **registrationId**。
 
@@ -60,7 +63,7 @@ DPS 不是功能完备的 MQTT 中转站，并未支持 MQTT v3.1.1 标准中指
 
 ## <a name="tlsssl-configuration"></a>TLS/SSL 配置
 
-若要直接使用 MQTT 协议，客户端必须通过 TLS 1.2 进行连接。** 尝试跳过此步骤失败并显示连接错误。
+若要直接使用 MQTT 协议，客户端必须通过 TLS 1.2 进行连接。  尝试跳过此步骤失败并显示连接错误。
 
 
 ## <a name="registering-a-device"></a>注册设备

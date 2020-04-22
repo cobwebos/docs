@@ -3,12 +3,12 @@ title: 有关 Azure 迁移中的发现、评估和依赖关系分析的问题
 description: 获取有关 Azure 迁移中发现、评估和依赖项分析的常见问题的解答。
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 700e5318b66cdf4993a17b1dae85fb43f75ab035
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: b4b2a50bc88768d46c82f6bce73447dc901e5dfd
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81529767"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681902"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>发现、评估和依赖分析 - 常见问题
 
@@ -28,6 +28,10 @@ ms.locfileid: "81529767"
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>使用设备可以发现多少个 VM？
 
 通过使用单个设备，您可以发现多达 10，000 个 VMware VM、多达 5，000 台 Hyper-VM 和多达 250 台物理服务器。 如果您有更多计算机，请阅读有关缩放[Hyper-V 评估](scale-hyper-v-assessment.md)、[缩放 VMware 评估](scale-vmware-assessment.md)或[缩放物理服务器评估](scale-physical-assessment.md)。
+
+## <a name="i-cant-see-some-vm-types-in-azure-government"></a>我在 Azure 政府中看不到某些 VM 类型
+
+支持评估和迁移的 VM 类型取决于 Azure 政府位置的可用性。 您可以在 Azure 政府中[查看和比较](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines)VM 类型。
 
 
 ## <a name="the-size-of-my-vm-changed-can-i-run-an-assessment-again"></a>我的 VM 大小已更改。 我可以再次进行评估吗？
@@ -87,7 +91,7 @@ Azure 迁移设备不断收集有关本地环境的信息。  评估是本地 VM
 依赖项可视化可帮助您更自信地评估要迁移的 VM 组。 依赖项可视化在运行评估之前交叉检查计算机依赖项。 它有助于确保不会留下任何内容，并且有助于避免迁移到 Azure 时意外中断。 Azure Migrate 使用 Azure Monitor 中的“服务映射”解决方案来实现依赖项可视化。 [了解详细信息](concepts-dependency-visualization.md)。
 
 > [!NOTE]
-> 依赖项可视化在 Azure 政府中不可用。
+> Azure 政府中不提供基于代理的依赖项分析。 您可以使用无代理依赖项分析
 
 ## <a name="whats-the-difference-between-agent-based-and-agentless"></a>基于代理和无代理之间的区别是什么？
 

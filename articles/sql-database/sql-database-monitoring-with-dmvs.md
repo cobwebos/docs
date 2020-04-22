@@ -1,5 +1,5 @@
 ---
-title: 使用 DMV 监控性能
+title: 使用 DMV 监视性能
 description: 了解如何通过使用动态管理视图检测常见性能问题来监视 Microsoft Azure SQL 数据库。
 services: sql-database
 ms.service: sql-database
@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 958dcd441d35b5c28746ff79a0b341e5aa7383a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/19/2020
+ms.openlocfilehash: 6f33f49be74419a8f0cd31d973d64798f5d76a2c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79214024"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683016"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>使用动态管理视图监视性能 Azure SQL 数据库
 
@@ -41,15 +41,15 @@ GRANT VIEW DATABASE STATE TO database_user;
 
 在本地 SQL Server 的实例中，动态管理视图会返回服务器状态信息。 在 SQL 数据库中，这些视图会返回只与当前逻辑数据库相关的信息。
 
-本文包含 DMV 查询的集合，您可以使用 SQL 服务器管理工作室或 Azure 数据工作室执行这些查询以检测以下类型的查询性能问题：
+本文包含一组 DMV 查询，你可以使用 SQL Server Management Studio 或 Azure Data Studio 执行这些查询，以检测以下类型的查询性能问题：
 
-- [识别与 CPU 消耗过高相关的查询](#identify-cpu-performance-issues)
-- [与 IO 瓶颈相关的PAGELATCH_* 和WRITE_LOG等待](#identify-io-performance-issues)
-- [PAGELATCH_* 由TTempDB争用引起的等待](#identify-tempdb-performance-issues)
-- [RESOURCE_SEMAHPORE由内存授予等待问题引起的等待](#identify-memory-grant-wait-performance-issues)
-- [标识数据库和对象大小](#calculating-database-and-objects-sizes)
+- [确定与过多 CPU 消耗相关的查询](#identify-cpu-performance-issues)
+- [与 IO 瓶颈相关的 PAGELATCH_* 和 WRITE_LOG 等待](#identify-io-performance-issues)
+- [由 TempDB 争用导致的 PAGELATCH_* 等待](#identify-tempdb-performance-issues)
+- [由内存授予等待问题导致的 RESOURCE_SEMAHPORE 等待](#identify-memory-grant-wait-performance-issues)
+- [确定数据库和对象大小](#calculating-database-and-objects-sizes)
 - [检索有关活动会话的信息](#monitoring-connections)
-- [检索系统范围和数据库资源使用情况信息](#monitor-resource-use)
+- [检索系统范围资源使用情况信息和数据库资源使用情况信息](#monitor-resource-use)
 - [检索查询性能信息](#monitoring-query-performance)
 
 ## <a name="identify-cpu-performance-issues"></a>识别 CPU 性能问题
@@ -248,7 +248,7 @@ GO
 
 ## <a name="identify-tempdb-performance-issues"></a>识别 `tempdb` 性能问题
 
-识别 IO 性能问题时，与 `tempdb` 问题最相关的等待类型是 `PAGELATCH_*`（而不是 `PAGEIOLATCH_*`）。 但是，出现 `PAGELATCH_*` 等待并不总是意味着发生了 `tempdb` 争用。  这种等待可能还意味着，由于并发请求面向相同的数据页面，发生了用户对象数据页面争用。 要进一步`tempdb`确认争用，请使用[sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql)确认wait_resource值从`2:x:y`2`tempdb`是数据库 ID、`x`文件 ID 和`y`页面 ID 开始。  
+识别 IO 性能问题时，与 `tempdb` 问题最相关的等待类型是 `PAGELATCH_*`（而不是 `PAGEIOLATCH_*`）。 但是，出现 `PAGELATCH_*` 等待并不总是意味着发生了 `tempdb` 争用。  这种等待可能还意味着，由于并发请求面向相同的数据页面，发生了用户对象数据页面争用。 若要进一步确认 `tempdb` 争用，请使用 [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 确认 wait_resource 值是否以 `2:x:y` 开头，其中，`tempdb` 是数据库 ID，`x` 是文件 ID，`y` 是页 ID。  
 
 对于 tempdb 争用，常用的方法是减少依赖于 `tempdb` 的重写应用程序代码。  常见的 `tempdb` 使用区域包括：
 
@@ -546,7 +546,7 @@ FROM sys.dm_db_resource_stats;
 
 ### <a name="sysresource_stats"></a>sys.resource_stats
 
-**master** 数据库中的 [Sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) 视图包含可帮助监视 SQL 数据库在特定服务层级和计算大小的性能。 每 5 分钟收集一次数据，并且会保留大约 14 天。 此视图可用于 SQL 数据库使用资源的方式的长期历史分析。
+[master](https://msdn.microsoft.com/library/dn269979.aspx) 数据库中的 **Sys.resource_stats** 视图包含可帮助监视 SQL 数据库在特定服务层级和计算大小的性能。 每 5 分钟收集一次数据，并且会保留大约 14 天。 此视图可用于 SQL 数据库使用资源的方式的长期历史分析。
 
 下图显示一周内每小时的 P2 计算大小高级数据库的 CPU 资源使用情况。 此图形从周一开始，显示 5 个工作日，并显示周末（应用程序上很少发生的情况）。
 
@@ -559,7 +559,7 @@ FROM sys.dm_db_resource_stats;
 Azure SQL 数据库在每个服务器的 **master** 数据库的 **sys.resource_stats** 视图中，公开每个活动数据库的资源耗用信息。 表中的数据以 5 分钟为间隔收集而得。 对于“基本”、“标准”和“高级”服务层级，数据可能需要再耗费 5 分钟才会出现在表中，以使此数据更有利于历史分析而非接近实时的分析。 查询 **sys.resource_stats** 视图，以查看数据库的最近历史记录和验证你选择的预留是否提供了所需的性能。
 
 > [!NOTE]
-> 必须连接到 SQL 数据库服务器的 master**** 数据库，才能查询下面示例中的 sys.resource_stats****。
+> 必须连接到 SQL 数据库服务器的 master  数据库，才能查询下面示例中的 sys.resource_stats  。
 
 此示例演示如何公开此视图中的数据：
 
@@ -604,7 +604,7 @@ ORDER BY start_time DESC
 
 3. 使用每个资源指标的平均值和最大值信息，可以评估工作负荷与所选计算大小的适合程度。 通常情况下，**sys.resource_stats** 中的平均值提供了一个用于目标大小的良好基准。 它应该是主要测量标杆。 例如，你可能正在使用 S2 计算大小的“标准”服务层级。 CPU 和 IO 读写的平均使用百分比低于 40%，平均辅助角色数低于 50，平均会话数低于 200。 工作负荷可能适合 S1 计算大小。 很容易查看数据库是否在辅助角色和会话限制内。 若要查看数据库是否适合 CPU 和读写数等更小的计算大小，请将更小计算大小的 DTU 数除以当前计算大小的 DTU 数，并将结果乘以 100：
 
-    ```S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40```
+    `S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40`
 
     结果是以百分比表示的两个计算大小之间的相对性能差异。 如果资源使用不超出此量，则工作负荷可能适合更低的计算大小。 但是，需要查看资源用量值的所有范围，并按百分比确定数据库工作负荷适合更小计算大小的频率。 以下查询会根据此示例中计算得出的 40% 阈值，输出每个资源维度的适合百分比：
 
@@ -747,6 +747,6 @@ CROSS APPLY sys.dm_exec_sql_text(plan_handle) AS q
 ORDER BY highest_cpu_queries.total_worker_time DESC;
 ```
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 [SQL 数据库简介](sql-database-technical-overview.md)

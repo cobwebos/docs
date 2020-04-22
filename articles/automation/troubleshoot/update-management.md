@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 更新管理排除错误
-description: 了解如何使用 Azure 中的更新管理解决方案来排除和解决问题。
+title: 故障排除 Azure 自动化更新管理
+description: 了解如何使用 Azure 自动化中的更新管理解决方案来排除和解决问题。
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,22 +8,22 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: c9ff05591c98fda8be39e32f26da484f56e0831b
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 91ecff311b8820d3b97e1de0e4b4e87c150e749b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984617"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678927"
 ---
-# <a name="troubleshooting-issues-with-update-management"></a>排查更新管理问题
+# <a name="troubleshoot-issues-with-the-update-management-solution"></a>解决更新管理解决方案的问题
 
-本文讨论在使用更新管理时可能会遇到的问题的解决方案。
+本文讨论在使用更新管理解决方案时可能会遇到的问题。 混合 Runbook 工作代理有一个代理疑难解答，用于确定基础问题。 要了解有关疑难解答的详细信息，请参阅[解决 Windows 更新代理问题和](update-agent-issues.md)[疑难 Linux 更新代理问题](update-agent-issues-linux.md)。 有关其他载入问题，请参阅[载入的疑难解答解决方案](onboarding.md)。
 
-混合辅助角色代理有一个代理疑难解答，用于确定根本问题。 若要了解有关故障排除程序的详细信息，请参阅[排查更新代理问题](update-agent-issues.md)。 对于所有其他问题，请使用以下故障排除指南。
+>[!NOTE]
+>如果在虚拟机 （VM） 上加入解决方案时发现问题，请查看本地计算机上的 **"应用程序和服务日志**"下**的操作管理器**日志。 查找事件 ID 4502 的事件和包含`Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent`的事件详细信息。
 
-如果在虚拟机 （VM） 上加入解决方案时发现问题，请查看本地计算机上的 **"应用程序和服务日志**"下**的操作管理器**日志。 查找事件 ID 4502 的事件和包含`Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent`的事件详细信息。
-
-以下部分重点介绍特定错误消息和每个错误消息的可能解决方法。 有关其他载入问题，请参阅[载入的疑难解答解决方案](onboarding.md)。
+>[!NOTE]
+>本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az 模块安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于自动化帐户，可以使用["如何更新 Azure 自动化 中的 Azure PowerShell"模块](../automation-update-azure-modules.md)将模块更新到最新版本。
 
 ## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a>方案：您会收到错误"无法启用更新解决方案"
 
@@ -299,7 +299,7 @@ The components for the 'Update Management' solution have been enabled, and now t
 
 * 有一个重复的计算机名称与不同的源计算机指示。 当在不同的资源组中创建具有特定计算机名称的 VM 并报告到订阅中的同一物流代理工作区时，将发生此情况。
 
-* 正在装入的 VM 映像可能来自未准备好安装 Microsoft 监视代理 （MMA） 的系统准备 （sysprep） 的克隆计算机。
+* 正在装入的 VM 映像可能来自未准备好系统准备 （sysprep） 且安装了 Windows 日志分析代理的克隆计算机。
 
 ### <a name="resolution"></a>解决方法
 
@@ -351,17 +351,16 @@ The client has permission to perform action 'Microsoft.Compute/virtualMachines/w
 
 ### <a name="resolution"></a>解决方法
 
-使用以下解决方法来安排这些项目。 您可以使用`ForUpdate`[带有参数的"新建 AzureRm自动化计划](/powershell/module/azurerm.automation/new-azurermautomationschedule)cmdlet"创建计划。 然后，使用[New-AzureRm自动化软件更新配置](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
-)cmdlet 并将另一个租户中的计算机传递给`NonAzureComputer`参数。 以下示例介绍如何执行此操作：
+使用以下解决方法来安排这些项目。 您可以使用`ForUpdateConfiguration`[带有参数的"新-Az自动化计划](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0)cmdlet"创建计划。 然后，使用[New-AzAutomationSoftwareUpdate 配置](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0)cmdlet 并将另一个租户中的计算机`NonAzureComputer`传递给参数。 以下示例介绍如何执行此操作：
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
 
 $startTime = ([DateTime]::Now).AddMinutes(10)
 
-$s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdate
+$s = New-AzAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdateConfiguration
 
-New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
+New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
 
 ## <a name="scenario-unexplained-reboots"></a><a name="node-reboots"></a>方案：无法解释的重新启动

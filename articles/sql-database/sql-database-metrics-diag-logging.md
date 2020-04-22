@@ -1,6 +1,6 @@
 ---
 title: 配置指标和资源日志的流式导出
-description: 了解如何配置指标和资源日志的流式导出，包括从 Azure SQL 数据库到首选目标的智能诊断分析，以存储有关资源利用率和查询执行统计信息的信息。
+description: 了解如何配置指标和资源日志的流式导出，包括将 Azure SQL 数据库中的智能诊断分析导出到所选目标，以存储有关资源利用率和查询执行统计的信息。
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -11,49 +11,49 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 04/06/2020
-ms.openlocfilehash: 9c9f069ad38c65aa0bbfdcde9eef3fed32585d9e
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 288d4e4d0c5faa6bb2b51451fb36bbb6d666c9eb
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756417"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683184"
 ---
-# <a name="configure-streaming-export-of-azure-sql-database-diagnostic-telemetry"></a>配置 Azure SQL 数据库诊断遥测的流式导出
+# <a name="configure-streaming-export-of-azure-sql-database-diagnostic-telemetry"></a>配置 Azure SQL 数据库诊断遥测数据的流式导出
 
-在本文中，您将了解 Azure SQL 数据库的性能指标和资源日志，这些指标和资源日志可以导出到多个目标之一进行分析。 您将了解如何通过 Azure 门户、PowerShell、Azure CLI、REST API 和 Azure 资源管理器模板配置此诊断遥测的流式导出。
+本文介绍可导出到多个目标之一以进行分析的 Azure SQL 数据库性能指标和资源日志。 其中将会介绍如何通过 Azure 门户、PowerShell、Azure CLI、REST API 和 Azure 资源管理器模板配置这些诊断遥测数据的流式导出。
 
-您还将了解可以流式传输此诊断遥测的目标以及如何在这些选项中进行选择。 您的目的地选项包括：
+此外，介绍可将此诊断遥测数据流式传输到哪些目标，以及如何选择不同的目标。 目标选项包括：
 
 - [日志分析和 SQL 分析](#stream-into-sql-analytics)
 - [事件中心](#stream-into-event-hubs)
 - [Azure 存储](#stream-into-azure-storage)
 
-## <a name="diagnostic-telemetry-for-export-for-azure-sql-database"></a>用于 Azure SQL 数据库导出的诊断遥测
+## <a name="diagnostic-telemetry-for-export-for-azure-sql-database"></a>可导出的 Azure SQL 数据库诊断遥测数据
 
-可以导出的诊断遥测中最重要的是智能见解 （SQLInsights） 日志。 [智能见解](sql-database-intelligent-insights.md)使用内置智能通过人工智能持续监控数据库使用情况，并检测导致性能不佳的破坏性事件。 检测到后，将执行详细的分析，生成智能见解日志，并智能评估问题。 此评估包含对数据库性能问题的根本原因分析，以及为性能改进而提供的可行性建议。 您需要配置此日志的流式导出才能查看其内容。
+在可导出的诊断遥测数据中，最重要的是智能见解 (SQLInsights) 日志。 [智能见解](sql-database-intelligent-insights.md)使用内置智能，通过人工智能持续监视数据库使用情况，并检测导致性能不佳的干扰性事件。 检测后，将执行详细分析，并生成包含对问题的智能评估的智能见解日志。 此评估包含对数据库性能问题的根本原因分析，以及为性能改进而提供的可行性建议。 需要配置此日志的流式导出才能查看其内容。
 
-除了流式传输智能见解日志的导出外，您还可以导出各种性能指标和其他 SQL 数据库日志。 下表描述了性能指标和资源日志，您可以配置这些指标和资源日志，以便流式传输导出到多个目标之一。 此诊断遥测可以配置为单个数据库、弹性池和池数据库以及托管实例和实例数据库。
+除了流式导出智能见解日志以外，还可以导出各种性能指标和其他 SQL 数据库日志。 下表描述了可以配置为流式导出到多个目标之一的性能指标和资源日志。 可为单一数据库、弹性池和共用数据库以及托管实例和实例数据库配置此诊断遥测。
 
 | 数据库的诊断遥测 | 单一数据库和共用数据库支持 | 托管实例数据库支持 |
 | :------------------- | ----- | ----- |
-| [基本指标](#basic-metrics)：包含 DTU/CPU 百分比、DTU/CPU 限制、物理数据读取百分比、日志写入百分比、成功/失败/按防火墙连接阻止、会话百分比、辅助百分比、存储、存储百分比和 XTP 存储百分比。 | 是 | 否 |
-| [实例和应用程序高级](#advanced-metrics)：包含 tempdb 系统数据库数据和日志文件大小以及使用的 tempdb 百分比日志文件。 | 是 | 否 |
-| [查询存储运行时统计信息](#query-store-runtime-statistics)：包含有关查询运行时统计信息的信息，如 CPU 使用情况和查询持续时间统计信息。 | 是 | 是 |
-| [查询存储等待统计信息](#query-store-wait-statistics)：包含有关查询等待统计信息（查询等待等待的内容）的信息，例如 CPU、LOG 和锁定。 | 是 | 是 |
-| [错误](#errors-dataset)：包含有关数据库上的 SQL 错误的信息。 | 是 | 是 |
+| [基本指标](#basic-metrics)：包含 DTU/CPU 百分比、DTU/CPU 限制、物理数据读取百分比、日志写入百分比、成功/失败/防火墙阻止的连接数、会话百分比、辅助角色百分比、存储、存储百分比和 XTP 存储百分比。 | 是 | 否 |
+| [实例和应用高级指标](#advanced-metrics)：包含所使用的 tempdb 系统数据库数据和日志文件大小以及 tempdb 百分比日志文件。 | 是 | 否 |
+| [QueryStoreRuntimeStatistics](#query-store-runtime-statistics)：包含有关查询运行时统计信息的信息，例如 CPU 使用率、查询持续时间统计信息。 | 是 | 是 |
+| [QueryStoreWaitStatistics](#query-store-wait-statistics)：包含有关查询等待统计信息的信息（查询正在等待什么），例如 CPU、日志和锁定。 | 是 | 是 |
+| [错误](#errors-dataset)：包含有关数据库发生的 SQL 错误的信息。 | 是 | 是 |
 | [DatabaseWaitStatistics](#database-wait-statistics-dataset)：包含有关数据库针对不同等待类型花费多少时间等待的信息。 | 是 | 否 |
-| [超时](#time-outs-dataset)：包含有关数据库上的超时的信息。 | 是 | 否 |
-| [块](#blockings-dataset)：包含有关在数据库上阻止事件的信息。 | 是 | 否 |
-| [死锁](#deadlocks-dataset)：包含有关数据库上的死锁事件的信息。 | 是 | 否 |
-| [自动调优](#automatic-tuning-dataset)：包含有关数据库自动调优建议的信息。 | 是 | 否 |
-| [SQLInsights](#intelligent-insights-dataset)： 包含对数据库性能的智能见解。 有关详细信息，请参阅[智能见解](sql-database-intelligent-insights.md)。 | 是 | 是 |
+| [Timeouts](#time-outs-dataset)：包含有关数据库发生的超时的信息。 | 是 | 否 |
+| [Blocks](#blockings-dataset)：包含有关数据库发生的阻塞事件的信息。 | 是 | 否 |
+| [死锁数](#deadlocks-dataset)：包含有关数据库发生的死锁事件的信息。 | 是 | 否 |
+| [AutomaticTuning](#automatic-tuning-dataset)：包含有关数据库的自动优化建议的信息。 | 是 | 否 |
+| [SQLInsights](#intelligent-insights-dataset)：包含针对数据库性能的智能见解。 有关详细信息，请参阅[智能见解](sql-database-intelligent-insights.md)。 | 是 | 是 |
 
 > [!NOTE]
-> 无法为**系统数据库**配置诊断设置，例如主数据库、msdb 数据库、模型数据库、资源和 tempdb 数据库。
+> 不能为**系统数据库**（例如 master、msdb、model、resource 和 tempdb 数据库）配置诊断设置。
 
 ## <a name="streaming-export-destinations"></a>流式导出目标
 
-此诊断遥测可以流式传输到以下 Azure 资源之一进行分析。
+此诊断遥测数据可流式传输到以下 Azure 资源之一进行分析。
 
 - **[日志分析工作区](#stream-into-sql-analytics)**：
 
@@ -363,7 +363,7 @@ Azure SQL 分析可以使用流式传输到日志分析工作区的 SQL 数据�
 
 ## <a name="stream-into-event-hubs"></a>流式传输到事件中心
 
-通过使用 Azure 门户中的内置**流到事件中心**选项，可以将 SQL 数据库指标和资源日志流式传输到事件中心。 还可以通过使用通过 PowerShell cmdlet、Azure CLI 或 Azure 监视器 REST API 的诊断设置启用服务总线规则 ID。
+通过使用 Azure 门户中的内置**流到事件中心**选项，可以将 SQL 数据库指标和资源日志流式传输到事件中心。 还可以通过使用通过 PowerShell cmdlet、Azure CLI 或 Azure 监视器 REST API 的诊断设置启用服务总线规则 ID。 请确保事件中心与数据库和服务器位于同一区域。
 
 ### <a name="what-to-do-with-metrics-and-resource-logs-in-event-hubs"></a>如何处理事件中心的指标和资源日志
 
@@ -470,7 +470,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="resource-usage-stats-for-managed-instances"></a>托管实例的资源使用情况统计信息
 
-|properties|说明|
+|属性|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终是：Azure|
@@ -495,7 +495,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="query-store-runtime-statistics"></a>查询数据存储运行时统计信息
 
-|properties|说明|
+|属性|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终是：Azure |
@@ -546,7 +546,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="query-store-wait-statistics"></a>查询存储等待统计信息
 
-|properties|说明|
+|属性|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终是：Azure |
@@ -584,7 +584,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="errors-dataset"></a>错误数据集
 
-|properties|说明|
+|属性|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终是：Azure |
@@ -613,7 +613,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="database-wait-statistics-dataset"></a>数据库等待统计数据集
 
-|properties|说明|
+|属性|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终是：Azure |
@@ -642,7 +642,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="time-outs-dataset"></a>超时数据集
 
-|properties|说明|
+|属性|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终是：Azure |
@@ -665,7 +665,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="blockings-dataset"></a>阻塞数据集
 
-|properties|说明|
+|属性|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终是：Azure |
@@ -689,7 +689,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="deadlocks-dataset"></a>死锁数据集
 
-|properties|说明|
+|属性|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终是：Azure |
@@ -710,7 +710,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="automatic-tuning-dataset"></a>自动优化数据集
 
-|properties|说明|
+|属性|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终是：Azure |

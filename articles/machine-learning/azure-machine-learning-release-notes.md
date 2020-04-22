@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: 9ed17ed0825e0011d1402efc45155755a1ecbadf
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 2739e960c4bc6d35ac9ad757e80ed620e5dc04f8
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81459162"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684653"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
@@ -176,8 +176,8 @@ ms.locfileid: "81459162"
     + 管道批处理评分笔记本现在使用并行 RunStep
     + 修复了尽管更改参数列表，但 PythonScriptStep 结果可能被错误地重用的 Bug
     + 添加了在调用 parse_* 方法时设置列类型的能力。`PipelineOutputFileDataset`
-  + **azureml-管道步骤**
-    + 将`AutoMLStep`移动到`azureml-pipeline-steps`包。 弃用内部`AutoMLStep``azureml-train-automl-runtime`。
+  + **azureml-pipeline-steps**
+    + 将`AutoMLStep`移动到`azureml-pipeline-steps`包。 弃用了 `azureml-train-automl-runtime` 中的 `AutoMLStep`。
     + 添加数据集的文档示例作为 PythonScript 步骤输入
   + **azureml-tensor板**
     + 更新了 azureml-tensor 板以支持张量流 2.0
@@ -187,9 +187,9 @@ ms.locfileid: "81459162"
     + 修复了自定义完成配置的重写问题，可筛选自定义壮举配置。
   + **azureml-火车-自动-运行时间**
     + 修复了远程运行中频率检测的问题
-    + 在`azureml-pipeline-steps`包`AutoMLStep`中移动 。 弃用内部`AutoMLStep``azureml-train-automl-runtime`。
+    + 移动了 `azureml-pipeline-steps` 包中的 `AutoMLStep`。 弃用了 `azureml-train-automl-runtime` 中的 `AutoMLStep`。
   + **azureml-train-core**
-    + 在 PyTorch 估计器中支持 PyTorch 版本 1.4
+    + 在 PyTorch 估算器中支持 PyTorch 版本 1.4
   
 ## <a name="2020-03-02"></a>2020-03-02
 
@@ -748,7 +748,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
 
 ### <a name="azure-machine-learning-sdk-for-python-v1065"></a>适用于 Python 的 Azure 机器学习 SDK v1.0.65
 
-  + **新增功能**
+  + **新功能**
     + 添加了组织有序的环境。 这些环境中已预先配置用于常用机器学习任务的库，并且已预先生成并缓存为 Docker 映像，以加快执行速度。 默认情况下，这些环境会显示在工作区的环境列表中，其前缀为“AzureML”。
     + 添加了组织有序的环境。 这些环境中已预先配置用于常用机器学习任务的库，并且已预先生成并缓存为 Docker 映像，以加快执行速度。 默认情况下，它们显示在[工作区](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29)的环境列表中，前缀为"AzureML"。
 
@@ -825,7 +825,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
 ### <a name="azure-machine-learning-sdk-for-python-v1062"></a>适用于 Python 的 Azure 机器学习 SDK v1.0.62
 
 + **新增功能**
-  + 针对 TabularDataset 引入了 `timeseries` 特征。 使用此特性可以轻松地按时间戳对 TabularDataset 的数据进行筛选，例如，获取某个时间范围内的所有数据或最新的数据。 若要了解针对 TabularDataset 的此 `timeseries` 特征，请访问 https://aka.ms/azureml-data 上的文档或 https://aka.ms/azureml-tsd-notebook 上的示例笔记本。
+  + 针对 TabularDataset 引入了 `timeseries` 特征。 使用此特性可以轻松地按时间戳对 TabularDataset 的数据进行筛选，例如，获取某个时间范围内的所有数据或最新的数据。 若要了解针对 TabularDataset 的此 `timeseries` 特征，请访问 https://aka.ms/azureml-data 上的文档或 https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb 上的示例笔记本。
   + 支持使用 TabularDataset 和 FileDataset 进行训练。 请访问 https://aka.ms/dataset-tutorial 上的示例笔记本。
 
   + **azureml-train-core**
@@ -1194,7 +1194,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
 
 ### <a name="azure-machine-learning-data-prep-sdk-v119"></a>Azure 机器学习数据准备 SDK v1.1.9
 
-+ **新增功能**
++ **新功能**
   + 添加了对从 HTTP 或 HTTPS URL 直接读取文件的支持。
 
 + **Bug 修复与改进**
@@ -1339,7 +1339,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
 + **预览功能**
     + 通过 azureml-mlflow 包与 [MLflow](https://mlflow.org) 1.0.0 跟踪相集成（[示例笔记本](https://aka.ms/azureml-mlflow-examples)）。
     + 将 Jupyter 笔记本作为运行提交。 [API 参考文档](https://docs.microsoft.com/python/api/azureml-contrib-notebook/azureml.contrib.notebook?view=azure-ml-py)
-    + 通过 azureml-contrib-datadrift 包提供[数据偏移检测器](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector(class))公共预览版（[示例笔记本](https://aka.ms/azureml-datadrift-example)）。 数据偏移是模型准确度不断下降的主要原因之一。 当为生产环境中的模型提供的数据不同于训练模型所用的数据时，就会发生数据偏移。 AML 数据偏移检测器可帮助客户监视数据偏移，并在检测到偏移时发送警报。
+    + 通过 azureml-contrib-datadrift 包提供[数据偏移检测器](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector(class))公共预览版（[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/monitor-models/data-drift)）。 数据偏移是模型准确度不断下降的主要原因之一。 当为生产环境中的模型提供的数据不同于训练模型所用的数据时，就会发生数据偏移。 AML 数据偏移检测器可帮助客户监视数据偏移，并在检测到偏移时发送警报。
 
 + **中断性变更**
 

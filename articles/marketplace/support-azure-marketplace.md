@@ -1,20 +1,21 @@
 ---
-title: 支持商业市场 |蔚蓝
+title: 支持商业市场 |Azure 应用商店
 description: Azure 市场和 AppSource 支持信息和链接
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 3/19/2020
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: b2dba23bdf07233a9945086fba2274602cb2dcf1
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 2b73fee33692b65770caeea651c12e9780dba2c4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81252228"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681384"
 ---
-# <a name="support-for-the-marketplace"></a>市场的支持  
+# <a name="support-for-the-marketplace"></a>市场的支持
+
 以下是市场的支持选项列表。  
 
 此外，还可以在 [C+AI 社区论坛的市场通道](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)中让你的许多问题得到解答。  
@@ -23,11 +24,11 @@ ms.locfileid: "81252228"
 
 在 Microsoft[市场发布者的支持下](https://aka.ms/marketplacepublishersupport)，针对载入和入门问题打开票证。
 
-## <a name="partner-center-or-cloud-partner-portal"></a>合作伙伴中心或云合作伙伴门户  
+## <a name="partner-center"></a>合作伙伴中心   
 
 | 支持渠道 | 说明 | 可用性 |  
 |:--- |:--- |:--- |  
-| 如需帮助，请访问位于[市场支持](https://aka.ms/marketplacepublishersupport)中的“创建事件”页</li> </ul> | 支持合作伙伴中心或云合作伙伴门户。 | 支持全天候提供。 |  
+| 如需帮助，请访问位于[市场支持](https://aka.ms/marketplacepublishersupport)中的“创建事件”页</li> </ul> | 支持合作伙伴中心。 | 支持全天候提供。 |  
 
 ## <a name="technical"></a>技术方面  
 

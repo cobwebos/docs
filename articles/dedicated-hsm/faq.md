@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a0cb7957008308425d91abb3e0f828cc40301736
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f9e759372f01d2a1b48562aef2bace1e8435a67
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064932"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683312"
 ---
 # <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
 
@@ -40,7 +40,7 @@ Microsoft 与 Gemalto 合作提供 Azure 专用 HSM 服务。 使用的特定设
 
 ### <a name="q-what-is-an-hsm-used-for"></a>问：HSM 有什么作用？
 
-HSM 用于存储以下加密功能使用的加密密钥，这些功能包括 SSL（安全套接字层）、加密数据、PKI（公钥基础结构）、DRM（数字版权管理）以及签署文件等。
+HSM 用于存储用于加密功能的加密密钥，例如 TLS（传输层安全性）、加密数据、PKI（公钥基础结构）、DRM（数字权限管理）和签名文档。
 
 ### <a name="q-how-does-dedicated-hsm-work"></a>问：专用 HSM 的工作原理是怎样的？
 
@@ -69,6 +69,7 @@ Azure 专用 HSM 服务使用 SafeNet Luna Network HSM 7（型号 A790）设备�
 * 美国东部
 * 美国东部 2
 * 美国西部
+* 美国西部 2
 * 美国中南部
 * 东南亚
 * 东亚
@@ -84,6 +85,10 @@ Azure 专用 HSM 服务使用 SafeNet Luna Network HSM 7（型号 A790）设备�
 * 加拿大东部
 * 澳大利亚东部
 * 澳大利亚东南部
+* 瑞士北部
+* 瑞士西部
+* US Gov 弗吉尼亚州
+* US Gov 德克萨斯州
 
 ## <a name="interoperability"></a>互操作性
 
@@ -132,13 +137,13 @@ PKCS#11、Java (JCA/JCE)、Microsoft CAPI、CNG 和 OpenSSL
 
 ### <a name="q-how-do-i-decide-whether-to-use-azure-key-vault-or-azure-dedicated-hsm"></a>问：如何确定是要使用 Azure Key Vault 还是 Azure 专用 HSM？
 
-对于想要迁移到使用 HSM 的 Azure 本地应用程序的企业而言，Azure 专用 HSM 是适当的选择。 使用专用 HSM 提供的某个选项，只需进行极少量的更改即可迁移应用程序。 如果在 Azure VM 或 Web 应用上运行的应用程序代码中执行加密操作，则客户可以使用专用 HSM。 一般而言，在支持使用 HSM 作为密钥存储的 IaaS（基础结构即服务）模型中运行的套装软件可以使用专用 HSM，例如，适用于无密钥 SSL 的应用程序网关或流量管理器、ADCS（Active Directory 证书服务）或类似 PKI 工具、用于文档签名或代码签名的工具/应用程序，或者配置为使用 EKM（可扩展密钥管理）提供程序通过 HSM 中的主密钥进行 TDE（透明数据库加密）的 SQL Server (IaaS)。 Azure 密钥保管库适用于"云中诞生"应用程序或静态加密方案，其中客户数据由 PaaS（平台即服务）或 SaaS（软件即服务）方案处理，如 Office 365 客户密钥、Azure 信息保护，Azure 磁盘加密，使用客户管理的密钥的 Azure 数据湖存储加密，使用客户托管密钥的 Azure 存储加密，以及使用客户托管密钥的 Azure SQL。
+对于想要迁移到使用 HSM 的 Azure 本地应用程序的企业而言，Azure 专用 HSM 是适当的选择。 使用专用 HSM 提供的某个选项，只需进行极少量的更改即可迁移应用程序。 如果在 Azure VM 或 Web 应用上运行的应用程序代码中执行加密操作，则客户可以使用专用 HSM。 通常，在 IaaS（基础设施即服务）模型中运行的收缩包装软件， 支持 HSM 作为密钥存储可以使用专用 HSM，例如应用程序网关或流量管理器的无钥匙 TLS、ADCS（活动目录证书服务）或类似 PKI 工具、用于文档签名的工具/应用程序、代码签名或使用 TDE（透明数据库加密）配置的 SQL Server （IaaS） 与使用 EKM（可扩展密钥管理）提供程序配置的 HSM 的主密钥。 Azure 密钥保管库适用于"云中诞生"应用程序或静态加密方案，其中客户数据由 PaaS（平台即服务）或 SaaS（软件即服务）方案处理，如 Office 365 客户密钥、Azure 信息保护、Azure 磁盘加密、使用客户托管密钥的 Azure 数据存储存储加密、具有客户托管密钥的 Azure 存储加密以及具有客户托管密钥的 Azure SQL。
 
 ### <a name="q-what-usage-scenarios-best-suit-azure-dedicated-hsm"></a>问：Azure 专用 HSM 最适合哪些使用方案？
 
 Azure 专用 HSM 是最适合迁移方案。 即，将已在使用 HSM 的本地应用程序迁移到 Azure。 使用专用 HSM 提供的一个低冲突选项，只需对应用程序进行极少量的更改，即可迁移到 Azure。 如果在 Azure VM 或 Web 应用上运行的应用程序代码中执行加密操作，则可以使用专用 HSM。 一般而言，在支持使用 HSM 作为密钥存储的 IaaS（基础结构即服务）模型中运行的套装软件可以使用专用 HSM，例如：
 
-* 适用于无密钥 SSL 的应用程序网关或流量管理器
+* 无钥匙 TLS 的应用程序网关或流量管理器
 * ADCS（Active Directory 证书服务）
 * 类似的 PKI 工具
 * 用于文档签名的工具/应用程序

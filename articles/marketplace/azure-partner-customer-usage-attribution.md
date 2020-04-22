@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 5fec72ce5f86c1bee9ec0e978e458f5be454c8e3
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: e061baa8e7eb73bae0a78f4215f0d48610e85fcb
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81256563"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686735"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>商业市场合作伙伴和客户使用归因
 
@@ -31,7 +31,7 @@ ms.locfileid: "81256563"
 >
 >- 客户使用情况归因用于新部署，不支持标记已部署的现有资源。
 >
->- 发布到 Azure 应用商店的[Azure 应用程序](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer)产品/服务需要客户使用情况归因。
+>- 发布到 Azure 应用商店的[Azure 应用程序](./partner-center-portal/create-new-azure-apps-offer.md)产品/服务需要客户使用情况归因。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -83,7 +83,7 @@ GUID 必须在合作伙伴中心注册，以启用客户使用情况归因。
 > [!NOTE]
 > 有关创建和发布解决方案模板的详细信息，请参阅
 > * [创建并部署第一个资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
->* [Azure 应用程序产品 /服务](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer)。
+>* [Azure 应用程序产品 /服务](./partner-center-portal/create-new-azure-apps-offer.md)。
 >* 视频：[为 Azure 应用商店构建解决方案模板和托管应用程序](https://channel9.msdn.com/Events/Build/2018/BRK3603)。
 
 

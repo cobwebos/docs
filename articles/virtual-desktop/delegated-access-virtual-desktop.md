@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3e27550ecc5b42c2bf0d947690da09e13d88ea4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 91451ff3024a9a5019b3982b0e4471e2c4d80c74
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79128027"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683912"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop"></a>Windows 虚拟桌面中的委托访问
 
@@ -37,7 +37,7 @@ Windows 虚拟桌面委派访问支持角色分配的每个元素的以下值：
 Windows 虚拟桌面中的委派访问权限具有多个内置角色定义，您可以将其分配给用户和服务主体。
 
 * RDS 所有者可以管理所有内容，包括访问资源。
-* RDS 参与者可以管理一切，但访问资源。
+* RDS 参与者可以管理所有内容，但不能访问资源。
 * RDS 阅读器可以查看所有内容，但不能进行任何更改。
 * RDS 操作员可以查看诊断活动。
 

@@ -6,14 +6,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 02/27/2020
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 987d04a4138c37d9073e5e9925f06c93d7ebb8e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 528c393983cb3d8d96dbcee9157e38ebc4f193f4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281572"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685392"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure 市场和 AppSource 的咨询服务
 Azure 市场和 AppSource 中的咨询服务使 Microsoft 合作伙伴可实现将客户与服务相连以支持和扩展他们对 Azure 的使用的目标以及业务目标。 
@@ -27,22 +27,22 @@ Azure 应用商店和 AppSource 支持 Microsoft 系统集成商 （SI） 合作
 
 |         |Azure 市场  |Microsoft AppSource |
 |---------|---------|---------|
-|**观众**   |**IT 专业人员和云开发人员**|**业务用户/业务线决策者**|
-|解决方案相关性     |为 Azure 构建或在其上构建的技术应用|利用 Extend D365、Power BI、O365 和 Azure 的业务应用。 （已完成的外接程序或附加设备应用）|
-|发布选项     |与我联系 Azure 试用、交易或服务|联系我、试用或动态 365 和 Power BI 的服务|
+|**观众**      |**IT 专业人员和云开发人员**|**业务用户/业务线决策者**|
+|解决方案相关性      |为 Azure 构建或在其上构建的技术应用|利用 Extend D365、Power BI、O365 和 Azure 的业务应用。 （已完成的外接程序或附加设备应用）|
+|发布选项      |与我联系 Azure 试用、交易或服务|联系我、试用或动态 365 和 Power BI 的服务|
 |在产品体验中      |Azure 管理门户|Dynamics 365、Office 365、Office 客户端应用| 
 |其他      |通过 Azure 堆栈进行本地发布、Azure 咨询服务、Azure 托管服务|针对 Dynamics 和 Power BI 的咨询服务|
 
 基于 Microsoft 动态 365、电源应用和 Power BI 的咨询服务产品有资格在 Microsoft AppSource 上列出。 有关详细信息，请参阅 [Microsoft AppSource 咨询服务列出准则](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409)。
 
-基于 Microsoft Azure 的咨询服务和托管服务产品有资格在 Azure 应用商店中列出。 有关详细信息，请参阅有关[发布 Azure 咨询服务](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer)并将[托管服务产品发布到 Azure 应用商店](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)的文章。
+基于 Microsoft Azure 的咨询服务和托管服务产品有资格在 Azure 应用商店中列出。 有关详细信息，请参阅有关[发布 Azure 咨询服务](./partner-center-portal/create-consulting-service-offer.md)并将[托管服务产品发布到 Azure 应用商店](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)的文章。
 
 > [!Note]
 > Azure 应用商店中的咨询服务应利用面向 #技术受众的产品，重点关注 Azure*技术解决方案和服务。* • AppSource 中的咨询服务应利用针对其专业知识的产品，为 Dynamics 365、Power BI 或 Power Apps 提供优质解决方案，在 AppSource 上列出其咨询服务产品
 > 
 > 
 > [!TIP]
-> 若要发布到 Azure 市场店面，请在进行选择时，从云合作伙伴门户的“主产品”下拉菜单中选择“Azure”。 若要发布到 AppSource，请在进行选择时，从云合作伙伴门户的“主产品”下拉菜单中选择“Dynamics 365”、“Power BI”或“Power Apps”。
+> 要发布到 Azure 应用商店，将通过从合作伙伴中心的"初级产品"下拉菜单中选择"Azure"来进行此选择。 要发布到 AppSource，您将通过从合作伙伴中心的"初级产品"下拉菜单中选择"动态 365"、"Power BI"或"电源应用"来做出此选择。
 
 ## <a name="eligible-partners-and-supported-countriesregions"></a>符合条件的合作伙伴和支持的国家/地区
 
@@ -64,7 +64,7 @@ Azure 应用商店和 AppSource 支持 Microsoft 系统集成商 （SI） 合作
 | Dynamics 365 Sales <br> 动态 365 营销 <br> 动态 365 客户服务 <br> 动力365现场服务 <br> 动态 365 人力资源 |   必须是[云业务应用程序能力](https://partner.microsoft.com/membership/cloud-business-applications-competency)中的金或银认证，以便获得客户参与选项。    | 
 | 动态 365 财务 <br> 动态 365 供应链管理 <br> 动态 365 商务 <br> 动态 365 人力资源 <br> 动态 365 项目服务自动化 |  必须是[云业务应用程序能力](https://partner.microsoft.com/membership/cloud-business-applications-competency)的金或银认证，用于统一运营选项。       |
 | Dynamics 365 Customer Insights | 必须至少成功实施 1 个 Dynamics [365 客户洞察](https://dynamics.microsoft.com/ai/customer-insights/)，至少 5 个度量和 5 个细分市场。 |
-| Dynamics 365 Business Central | 必须是[企业资源规划能力](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)的金或银认证，并且必须是至少 3 个业务中心客户的云解决方案提供商。 <br> <br> 或 <br> <br> 必须在[AppSource 中发布了业务中心应用程序](https://appsource.microsoft.com/) |
+| Dynamics 365 Business Central | 必须是[企业资源规划能力](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)的金或银认证，并且必须是至少 3 个业务中心客户的云解决方案提供商。 <br> <br> OR <br> <br> 必须在[AppSource 中发布了业务中心应用程序](https://appsource.microsoft.com/) |
 | Power BI | 必须列在[Power BI 合作伙伴展示。](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=)|
 |Power Apps | 必须有资格在[电源应用合作伙伴计划中](https://aka.ms/PowerAppsPartner)获得高级福利。 |
 
@@ -87,13 +87,18 @@ Azure 应用商店和 AppSource 支持 Microsoft 系统集成商 （SI） 合作
 | United Kingdom  |
 
 
-## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>如何在 Azure 市场和 AppSource 中注册咨询服务
-首先在市场中[注册](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)公司信息。 发布者可以参考[成为 Marketplace 中的发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)，获取注册要求的完整清单。 
+## <a name="how-to-register-for-consulting-services-in-commercial-marketplace"></a>如何在商业市场注册咨询服务
 
-**注册后的期望** 实施团队将在 1-3 个工作日内通过欢迎电子邮件与你联系，其中包括你的云合作伙伴门户 (CPP) 登录信息。 [云合作伙伴门户](https://cloudpartner.azure.com)是产品/服务列表门户，发布者可以在其中提交列表信息和提交。 
+首先在市场中[注册](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)公司信息。 发布者可以参考[成为 Marketplace 中的发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)，获取注册要求的完整清单。 
+
+<!---
+**What To Expect After Registration**
+The Onboarding Team will reach out in 1-3 business days with a welcome email, which will include your Cloud Partner Portal (CPP) login information. [Cloud Partner Portal](https://cloudpartner.azure.com) is the offer listing portal where publishers submit listing information and submissions. 
 
 >[!Note]
->合作伙伴只需要注册一次，即可成为发布者。 收到欢迎电子邮件且云合作伙伴门户登录后，发布者无需重新注册即可发布不同的列表类型。 
+>Partners only need to register once to become a publisher. Once you receive your welcome email and Partner Center login, publishers do not need to re-register in order to publish different listing types. 
+
+--->
 
 ## <a name="prepare-your-publishing-artifacts"></a>准备发布项目
 在注册之前，可以开始收集和准备内容，以帮助通过列表向目标客户主张服务和解决方案的价值。 
@@ -120,7 +125,7 @@ Azure 应用商店和 AppSource 支持 Microsoft 系统集成商 （SI） 合作
 ## <a name="publishing-process"></a>发布过程
 在 Azure 市场和 AppSource 中列出咨询服务产品涉及以下阶段：
 
-1. **列出**：通过登录[云合作伙伴门户](https://cloudpartner.azure.com)帐户开始起草新的产品列表。 从下拉列表菜单中选择“新产品/服务”和“咨询服务”。 输入列表项目并发布。
+1. **列表**：通过登录[合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)帐户，开始起草新的产品/服务列表。 从下拉列表菜单中选择“新产品/服务”和“咨询服务”。 输入列表项目并发布。
 2. **验证：** 将评审你的请求，以确保你符合条件。 然后，我们会发送有关列出咨询服务产品的说明。 
 3. **提交：** 提供说明中列出的必需信息。 所有内容和支持材料都必须以英文提交。 
 4. **评审：** 我们的营销和编辑团队将会评审提交内容，并针对内可读性、语法和效果对其进行优化。 
@@ -165,7 +170,7 @@ Azure 应用商店和 AppSource 支持 Microsoft 系统集成商 （SI） 合作
 |**概念证明**    |    说明客户参加后预期可以获得的工程变化、技术项目或其他项目     | 使用最常用的搜索引擎优化关键字来优化产品/服务摘要        |
 |**研讨会**    |   包括一个详细的每日、每周或每月议程，具体取决于所选择的产品/服务持续时间。 说明研讨会的学习目标或其他可交付结果     |   使用最常用的搜索引擎优化关键字来优化产品/服务摘要      |
 
-在云合作伙伴门户中，可以通过 [Markdown](/contribute/markdown-reference) 向商品信息添加格式。 这是一种轻型设计语言，用于优化商品信息。 
+在合作伙伴中心，您可以使用[Markdown](/contribute/markdown-reference)向列表添加格式。 这是一种轻型设计语言，用于优化商品信息。 
 
 **示例 Markdown 说明**
 * 在复制块的开头和结尾添加 *（无空格）以创建斜体（例如：*content*）
@@ -181,9 +186,9 @@ Azure 应用商店和 AppSource 支持 Microsoft 系统集成商 （SI） 合作
 
 如果尚未注册， 
 
-- 请在市场中[注册](https://azuremarketplace.microsoft.com/sell)。
+- [了解](https://azuremarketplace.microsoft.com/sell)市场。
 
-如果已注册且正在使用云合作伙伴门户，请 
+要注册并开始在合作伙伴中心工作， 
 
-- [登录到云合作伙伴门户](https://cloudpartner.azure.com)，创建或完成套餐。
-- 有关详细信息，请参阅 [Azure 和 Dynamics 365 咨询服务产品/服务](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer)。
+- [登录合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)创建或完成您的优惠。
+- 有关详细信息[，请参阅创建咨询服务产品](./partner-center-portal/create-consulting-service-offer.md)。

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7eb01f3997ac4ab2e439c00f07990c51ec3e3d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bdf0cbfb91332d60516432a7a67fb10404d89113
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370362"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683848"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教程：为 Workday 配置自动用户预配
 
@@ -281,6 +281,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
     ![域安全策略](./media/workday-inbound-tutorial/wd_isu_06.png "域安全策略")  
 2. 在“域”文本框中，搜索以下域，并将其逐个添加到筛选器中****。  
    * *外部帐户预配*
+   * *工作人员数据：工作人员*
    * 工作人员数据：公职人员报告**
    * *人员数据：工作联系人信息*
    * *工作人员数据：所有职位*
@@ -292,7 +293,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
      ![域安全策略](./media/workday-inbound-tutorial/wd_isu_08.png "域安全策略") 
 
-     单击“确定”。
+     单击“确定”。 
 
 3. 在显示的报表中，选择“外部帐户预配”旁边显示的省略号 (...)，然后单击菜单选项“域”->“编辑安全策略权限”********
 
@@ -312,9 +313,10 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
    | ---------- | ---------- |
    | “获取”和“放置” | 工作人员数据：公职人员报告 |
    | “获取”和“放置” | 人员数据：工作联系人信息 |
-   | 获取 | 工作人员数据：所有职位 |
-   | 获取 | 工作人员数据：当前人员配备信息 |
-   | 获取 | 工作人员数据：工作人员个人资料中的职称 |
+   | Get | 工作人员数据：工作人员 |
+   | Get | 工作人员数据：所有职位 |
+   | Get | 工作人员数据：当前人员配备信息 |
+   | Get | 工作人员数据：工作人员个人资料中的职称 |
    | “获取”和“放置” | 工作日帐户 |
 
 ### <a name="configuring-business-process-security-policy-permissions"></a>配置业务流程安全策略权限
@@ -451,11 +453,15 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 1. 按如下所述完成“管理员凭据”部分：****
 
-   * **管理员用户名** - 输入 Workday 集成系统帐户的用户名并附加租户域名。 它应该看起来像：**用户名\@tenant_name**
+   * **工作日用户名**– 输入工作日集成系统帐户的用户名，并附上租户域名。 它应该看起来像：**用户名\@tenant_name**
 
-   * **管理员密码 -** 输入 Workday 集成系统帐户的密码
+   * **工作日密码 |** 输入工作日集成系统帐户的密码
 
-   * **租户 URL -** 输入租户的 Workday Web 服务终结点的 URL。 此值应如下所示： https://wd3-impl-services1.workday.com/ccx/service/contoso4，其中*contoso4*替换为正确的租户名称 *，wd3-impl*替换为正确的环境字符串。
+   * **工作日 Web 服务 API URL |** 输入租户的工作日 Web 服务终结点的 URL。 此值应如下所示： https://wd3-impl-services1.workday.com/ccx/service/contoso4，其中*contoso4*替换为正确的租户名称 *，wd3-impl*替换为正确的环境字符串。
+
+     > [!NOTE]
+     > 默认情况下，如果 URL 中未指定版本信息，则应用使用工作日 Web 服务 v21.1。 要使用特定的工作日 Web 服务 API 版本，请使用 URL 格式：https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
+     > 示例： https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0
 
    * **Active Directory 林 -** 向代理注册时使用的 Active Directory 域的“名称”。 使用下拉列表选择用于预配的目标域。 此值通常为如下所示的字符串：contoso.com**
 
@@ -607,11 +613,16 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 8. 按如下所述完成“管理员凭据”部分：****
 
-   * **管理员用户名**– 输入工作日集成系统帐户的用户名，并附上租户域名。 此值应类似于：username@contoso4
+   * **工作日用户名**– 输入工作日集成系统帐户的用户名，并附上租户域名。 此值应类似于：username@contoso4
 
-   * **管理员密码 -** 输入 Workday 集成系统帐户的密码
+   * **工作日密码 |** 输入工作日集成系统帐户的密码
 
-   * **租户 URL -** 输入租户的 Workday Web 服务终结点的 URL。 此值应类似于：https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources；其中，contoso4 替换为正确的租户名，wd3-impl 替换为正确的环境字符串****。 如果不知道此 URL，请咨询 Workday 集成合作伙伴或支持代表，确定要使用的正确 URL。
+   * **工作日 Web 服务 API URL |** 输入租户的工作日 Web 服务终结点的 URL。 此值应类似于：https://wd3-impl-services1.workday.com/ccx/service/contoso4；其中，contoso4 替换为正确的租户名，wd3-impl 替换为正确的环境字符串****。 如果不知道此 URL，请咨询 Workday 集成合作伙伴或支持代表，确定要使用的正确 URL。
+
+     > [!NOTE]
+     > 默认情况下，如果 URL 中未指定版本信息，则应用使用工作日 Web 服务 v21.1。 要使用特定的工作日 Web 服务 API 版本，请使用 URL 格式：https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
+     > 示例： https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0
+
 
    * **通知电子邮件 |** 输入您的电子邮件地址，并选中"如果发生故障发送电子邮件"复选框。
 
@@ -737,7 +748,7 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
 
 1. 在“预配”选项卡中，将“预配状态”设置为“打开”。************
 
-2. 单击“保存”。****
+2. 单击“ **保存**”。
 
 3. 此操作将启动初始同步；该过程会耗时数小时，具体时间取决于 Workday 租户中的用户数。 
 
@@ -807,9 +818,13 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
 
 该解决方案当前使用以下 Workday API：
 
-* Get_Workers (v21.1)，用于提取工作人员信息
-* Maintain_Contact_Information (v26.1)，用于工作电子邮件写回功能
-* Update_Workday_Account （v31.2） 用于用户名回写功能
+* **"管理凭据**"部分中使用的**工作日 Web 服务 API URL**格式确定用于Get_Workers
+  * 如果 URL 格式为\#\#\#\#\.：https://工作\.日 com/ccx/服务/租户名称，则使用 API v21.1。 
+  * \#\#\#\#\.如果 URL 格式为：https://工作\.日 com/ccx/服务/租户名称\_/人力资源，则使用 API v21.1 
+  * 如果 URL 格式为：https://\#\#\#\#\.工作\.日 com/ccx/服务/租户名称\_/人力资源/v，\#\#\.\#则使用指定的 API 版本。 （示例：如果指定了 v34.0，则使用它。  
+   
+* 工作日电子邮件回写功能使用Maintain_Contact_Information （v26.1） 
+* 工作日用户名回写功能使用Update_Workday_Account （v31.2） 
 
 #### <a name="can-i-configure-my-workday-hcm-tenant-with-two-azure-ad-tenants"></a>能否使用两个 Azure AD 租户配置 Workday HCM 租户？
 
@@ -1257,7 +1272,7 @@ Azure AD 预配服务支持自定义列表或 Workday 属性，以包含人力�
 
     ![Workday Studio](./media/workday-inbound-tutorial/wdstudio2.png)
 
-9. 选择“确定”。
+9. 选择“确定”  。
 
 10. 在“请求”窗格中，粘贴到下面的 XML 中，并将“Employee_ID”设置为 Workday 租户中某位真实用户的员工 ID。******** 选择一个已填充想要提取的属性的用户。
 

@@ -12,19 +12,16 @@ ms.date: 04/13/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: bc635addc2a5cd7d3c698f6885bec0399e28743a
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: e94bdd6e79ff13d8ba736e140538bae74091f727
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309655"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680092"
 ---
 # <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>Microsoft 标识平台上的 OAuth 2.0 和 OpenID Connect 协议
 
 使用行业标准协议 OpenID Connect 和 OAuth 2.0 的标识即服务的 Microsoft 标识平台终结点。 尽管此服务与标准兼容，但这些协议的两个实现之间仍然存在微妙的差异。 如果选择通过直接发送和处理 HTTP 请求，或使用第三方开放源代码库来编写代码，而不是使用我们的其中一个[开放源代码库](reference-v2-libraries.md)，则可以参考此处提供的有用信息。
-
-> [!NOTE]
-> Microsoft 标识平台终结点并非支持所有 Azure AD 方案和功能。 若要确定是否应使用 Microsoft 标识平台终结点，请阅读 [Microsoft 标识平台限制](active-directory-v2-limitations.md)。
 
 ## <a name="the-basics"></a>基础知识
 
@@ -58,7 +55,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 
 其中 `{tenant}` 可以接受以下四个不同值之一：
 
-| “值” | 描述 |
+| 值 | 说明 |
 | --- | --- |
 | `common` | 允许用户使用个人 Microsoft 帐户和工作/学校帐户从 Azure AD 登录应用程序。 |
 | `organizations` | 仅允许用户使用工作/学校帐户从 Azure AD 登录应用程序。 |
@@ -68,7 +65,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 要了解如何与这些终结点进行交互，请在[协议](#protocols)部分中选择特定的应用类型，然后通过访问链接获取更多信息。
 
 > [!TIP]
-> 在 Azure AD 中注册的任何应用都可以使用 Microsoft 标识平台终结点，即使它们不登录个人帐户也是如此。  这样，你便可以将现有的应用程序迁移到 Microsoft 标识平台和 [MSAL](reference-v2-libraries.md)，而无需重新创建应用程序。  
+> 在 Azure AD 中注册的任何应用都可以使用 Microsoft 标识平台终结点，即使它们不登录个人帐户也是如此。  这样，你便可以将现有的应用程序迁移到 Microsoft 标识平台和 [MSAL](reference-v2-libraries.md)，而无需重新创建应用程序。
 
 ## <a name="tokens"></a>令牌
 

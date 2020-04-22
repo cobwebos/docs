@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: cc04d11475568af92ba6a617a1eb6b2b51accb45
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 38e728de22d49de760e998ddc97c5067beb3ecd1
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81481669"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684702"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>设计器的异常和错误代码（预览）
 
@@ -33,7 +33,7 @@ ms.locfileid: "81481669"
 
  如果为模块选择了列，但所选列不存在于输入数据集中，则将收到此错误。 如果你手动键入了列名或者列选择器提供了建议的列，但运行管道时该列不存在于数据集中，则可能出现此错误。  
 
-**分辨率：** 重新访问引发此异常的模块，并验证列名称或名称是否正确，以及所有引用的列是否都存在。  
+**解决方法：** 重新访问引发此异常的模块，并验证列名是否正确以及所有引用的列是否都存在。  
 
 |异常消息|
 |------------------------|
@@ -145,6 +145,7 @@ ms.locfileid: "81481669"
 |参数"{arg_name}"值应小于或等于参数"{upper_boundary_parameter_name}"值。|
 |参数"{arg_name}"的值"{actual_value}"应小于或等于 {upper_boundary}。|
 |参数"arg_name"值 {actual_value}应小于或等于参数"upper_boundary_parameter_name"值 [upper_boundary]。|
+|参数"{arg_name}"值 {actual_value}应小于或等于 {upper_boundary_meaning} 值 {upper_boundary}。|
 
 
 ## <a name="error-0008"></a>错误 0008  
@@ -253,8 +254,8 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 
 |模型类型|训练模块| 评分模块|
 |----|----|----|
-|任何分类器|[火车模型](train-model.md) |[评分模型](score-model.md)|
-|任何回归模型|[火车模型](train-model.md) |[评分模型](score-model.md)|
+|任何分类器|[训练模型](train-model.md) |[评分模型](score-model.md)|
+|任何回归模型|[训练模型](train-model.md) |[评分模型](score-model.md)|
 
 <!--| clustering models| [Train Clustering Model](train-clustering-model.md) or [Sweep Clustering](sweep-clustering.md)| [Assign Data to Clusters](assign-data-to-clusters.md)|
 | anomaly detection - One-Class SVM | [Train Anomaly Detection Model](train-anomaly-detection-model.md) |[Score Model](score-model.md)|
@@ -271,6 +272,7 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 |传递的学习器类型无效。|
 |学习器“{arg_name}”的类型无效。|
 |学习器“{arg_name}”的类型“{learner_type}”无效。|
+|传递的学习器类型无效。 异常消息： {exception_message}|
 
 
 ## <a name="error-0014"></a>错误 0014  
@@ -393,6 +395,7 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 |未对列中的值进行排序。|
 |列"{col_index}"中的值未排序。|
 |数据集"[数据集]的列"{col_index}"中的值未排序。|
+|参数"{arg_name}"中的值未按"{sorting_order}"顺序排序。|
 
 
 ## <a name="error-0020"></a>错误 0020  
@@ -633,6 +636,7 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 |------------------------|
 |参数必须是有限的。|
 |"{arg_name}"不是有限的。|
+|列"{column_name}"包含无限值。|
 
 
 ## <a name="error-0034"></a>错误 0034  
@@ -738,7 +742,7 @@ For general information about how the Matchbox recommendation algorithm works, a
     + 检查文本列中的非 unicode 字符、制表符或控制字符
     + 日期/时间数据应保持一致，以免出现建模错误，但清理可能会很复杂，因为存在多种格式。 请考虑使用 <!--the [Execute R Script](execute-r-script.md) or -->[执行 Python 脚本](execute-python-script.md)模块来执行清理。  
 + 如有必要，请修改输入数据集中的值，以便可以成功转换该列。 修改可能包括分箱、截断或舍入运算、清除离群值或补充缺少的值。 请参阅以下文章，了解机器学习中的一些常见数据转换方案：
-    + [清理缺失的数据](clean-missing-data.md)
+    + [清理缺失数据](clean-missing-data.md)
     + [规范化数据](normalize-data.md)
 <!--+ [Clip Values](clip-values.md) 
     + [Group Data Into Bins](group-data-into-bins.md)
@@ -1492,6 +1496,18 @@ For general information about how the Matchbox recommendation algorithm works, a
 |------------------------------------------------------------|
 |给定转换目录无效。|
 |转换目录"{arg_name}"无效。 原因： [原因]。 请重新运行生成转换文件的训练实验。 如果已删除训练实验，请重新创建并保存转换文件。|
+|转换目录"{arg_name}"无效。 原因： [原因]。 {troubleshoot_hint}|
+
+
+## <a name="error-0159"></a>错误 0159
+ 如果传递到模块模型目录无效，则会发生异常。 
+
+|异常消息|
+|------------------------------------------------------------|
+|给定的 ModelDirectory 无效。|
+|模型目录"{arg_name}"无效。|
+|模型目录"{arg_name}"无效。 原因： [原因]。|
+|模型目录"{arg_name}"无效。 原因： [原因]。 {troubleshoot_hint}|
 
 
 ## <a name="error-1000"></a>错误 1000  

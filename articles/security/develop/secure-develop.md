@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 9d98660230e0ab9f4edcd9a7af8a3797106dd17a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03f5b0124f95465c4a5da5043364a2f5816dae62
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255660"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685755"
 ---
 # <a name="develop-secure-applications-on-azure"></a>在 Azure 上开发安全的应用程序
 在本文中，我们将介绍开发云应用程序时需要考虑的安全活动和控制措施。 介绍了在 Microsoft[安全开发生命周期 （SDL）](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx)实施和验证阶段需要考虑的安全问题和概念。 目标是帮助您定义可用于开发更安全应用程序的活动和 Azure 服务。
@@ -26,7 +26,7 @@ ms.locfileid: "78255660"
 本文将介绍以下 SDL 阶段：
 
 - 实现
-- 验证
+- 确认
 
 ## <a name="implementation"></a>实现
 实施阶段的重点是建立早期预防的最佳做法，并从代码中发现和删除安全问题。
@@ -44,7 +44,7 @@ Azure 应用商店提供[开发人员工具](https://azuremarketplace.microsoft.
 
 ### <a name="validate-and-sanitize-every-input-for-your-application"></a>验证和清理应用程序的每个输入
 
-将所有输入视为不受信任的输入，以保护应用程序免受最常见的 Web 应用程序漏洞的影响。 不受信任的数据是喷射攻击的工具。 应用程序的输入包括 URL 中的参数、来自用户的输入、来自数据库或 API 的数据以及用户可能操作的任何传入内容。 应用程序应在应用程序以任何方式使用数据之前[验证](https://www.owasp.org/index.php/OWASP_Proactive_Controls_2016#4:_Validate_All_Inputs)数据在语法和语义上是否有效（包括将其显示回用户）。
+将所有输入视为不受信任的输入，以保护应用程序免受最常见的 Web 应用程序漏洞的影响。 不受信任的数据是喷射攻击的工具。 应用程序的输入包括 URL 中的参数、来自用户的输入、来自数据库或 API 的数据以及用户可能操作的任何传入内容。 应用程序应在应用程序以任何方式使用数据之前[验证](https://owasp.org/www-project-proactive-controls/v3/en/c5-validate-inputs)数据在语法和语义上是否有效（包括将其显示回用户）。
 
 在数据流的早期验证输入，以确保只有正确格式的数据才进入工作流。 您不希望格式不正确的数据保留在数据库中或触发下游组件中的故障。
 
@@ -107,7 +107,7 @@ Azure 应用商店提供[开发人员工具](https://azuremarketplace.microsoft.
 
 不要在浏览器上缓存敏感内容。 浏览器可以存储缓存和历史记录的信息。 缓存的文件存储在一个文件夹中，如临时 Internet 文件文件夹，在 Internet 资源管理器的情况下。 再次引用这些页面时，浏览器将显示其缓存中的页面。 如果向用户显示敏感信息（地址、信用卡详细信息、社会保险号、用户名），则信息可能存储在浏览器的缓存中，并通过检查浏览器的缓存或只需按浏览器的 **"后退**"按钮即可检索。
 
-## <a name="verification"></a>验证
+## <a name="verification"></a>确认
 验证阶段涉及全面努力确保代码符合前几个阶段确立的安全和隐私原则。
 
 ### <a name="find-and-fix-vulnerabilities-in-your-application-dependencies"></a>查找和修复应用程序依赖项中的漏洞

@@ -3,12 +3,12 @@ title: 在 Linux 上设置开发环境
 description: 在 Linux 上安装运行时和 SDK 并创建本地开发群集。 完成此设置后，便可以开始生成应用程序。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 1048e1ccf6b9bc921daa3014ab8003fd53473461
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 6cedd97144a3fd32d9af8582e24ad5c12914e575
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309114"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682620"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上准备开发环境
 > [!div class="op_single_selector"]
@@ -265,7 +265,7 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
 
 2. 要安装服务交换矩阵插件，请选择 **"帮助** > **安装新软件**"。
 
-3. 在“使用”框中，输入 **https://dl.microsoft.com/eclipse**。****
+3. 在"**使用"** 框中，输入**\/https： /dl.microsoft.com/eclipse**。
 
 4. 选择 **添加** 。
 

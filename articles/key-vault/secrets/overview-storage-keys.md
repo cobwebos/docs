@@ -9,12 +9,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: 0b855584ef6efef574e8264f3cead79000a51b13
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1125bafa43ce1752c58d1cce0bba66a6bbd32c32
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81432003"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685423"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>使用 Key Vault 和 Azure CLI 管理存储帐户密钥
 
@@ -71,13 +71,23 @@ az login
 使用 Azure CLI [az role assignment create](/cli/azure/role/assignment?view=azure-cli-latest) 命令授予 Key Vault 访问你的存储帐户的权限。 为该命令提供以下参数值：
 
 - `--role`：传递"存储帐户密钥操作员服务角色"RBAC 角色。 此角色将访问范围限制为你的存储帐户。 对于经典存储帐户，请改为传递“经典存储帐户密钥操作员服务角色”。
-- `--assignee-object-id`：传递值"93c27d83-f79b-4cb2-8dd4-4aa716542e74"，这是 Azure 公共云中密钥保管库的对象 ID。 （要获取 Azure 政府云中密钥保管库的对象 ID，请参阅[服务主体应用程序 ID](#service-principal-application-id)。
+- `--assignee`：传递值"，https://vault.azure.net这是 Azure 公共云中密钥保管库的 URL。 （对于 Azure Goverment 云，请使用"-asingee-object-id"，请参阅[服务主体应用程序 ID](#service-principal-application-id)。
 - `--scope`：传递您的存储帐户资源 ID，该 ID`/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>`在 窗体中。 若要查找订阅 ID，请使用 Azure CLI [az account list](/cli/azure/account?view=azure-cli-latest#az-account-list) 命令；若要查找存储帐户名称和存储帐户资源组，请使用 Azure CLI [az storage account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) 命令。
 
 ```azurecli-interactive
-az role assignment create --role "Storage Account Key Operator Service Role" --assignee-object-id 93c27d83-f79b-4cb2-8dd4-4aa716542e74 --scope "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
+az role assignment create --role "Storage Account Key Operator Service Role" --assignee 'https://vault.azure.net' --scope "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
  ```
+### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>向托管存储帐户授予用户帐户权限
 
+使用 Azure CLI [az 密钥库集策略](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy)cmdlet 更新密钥保管库访问策略并将存储帐户权限授予用户帐户。
+
+```azurecli-interactive
+# Give your user principal access to all storage account permissions, on your Key Vault instance
+
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --storage-permissions get list delete set update regeneratekey getsas listsas deletesas setsas recover backup restore purge
+```
+
+请注意，Azure 门户中存储帐户的“访问策略”页不会显示存储帐户的权限。
 ### <a name="create-a-key-vault-managed-storage-account"></a>创建 Key Vault 托管存储帐户
 
  使用 Azure CLI [az keyvault storage](/cli/azure/keyvault/storage?view=azure-cli-latest#az-keyvault-storage-add) 命令创建 Key Vault 托管的存储帐户。 将重新生成周期设置为 90 天。 90 天后，Key Vault 将重新生成 `key1`，并将活动密钥从 `key2` 交换为 `key1`。 然后，`key1` 将标记为活动密钥。 为该命令提供以下参数值：

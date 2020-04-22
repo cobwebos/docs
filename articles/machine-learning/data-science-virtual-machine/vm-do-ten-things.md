@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 8da8cd7110cd17d0aadd52cce1263c7c0fcfdf5c
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 0f42f075f5d3be4486157334403bfa7d3f1aa80c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632171"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682875"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows 数据科学虚拟机的十大功能
 
@@ -25,11 +25,11 @@ DSVM 与 Azure 服务紧密协同工作。 它可以读取并处理已存储在 
 本文介绍如何使用 DSVM 执行数据科学任务，以及如何与其他 Azure 服务交互。 可以在 DSVM 上执行的操作如下所示：
 
 - 使用 Microsoft Machine Learning Server 和 Python 在 DSVM 上本地探索数据和开发模型。
-- 使用 Jupyter 笔记本使用 Python 2、Python 3 和 Microsoft R 在浏览器中试验数据（Microsoft R 是专为性能设计的企业版 R）。
+- 通过使用 Python 2、Python 3 和 Microsoft R，在浏览器中使用 Jupyter 笔记本对数据进行试验。（Microsoft R 是适用于企业的 R 版本，进行了性能优化设计。）
 - 在 Azure 机器学习上部署通过 R 和 Python 生成的模型，让客户端应用程序可以使用简单的 Web 服务接口访问你的模型。
 - 使用 Azure 门户或 PowerShell 管理 Azure 资源。
 - 通过将 Azure 文件存储共享创建为可在 DSVM 上装载的驱动器，即可扩展存储空间并跨整个团队共享大型数据集/代码。
-- 使用 GitHub 与团队共享代码。 使用预安装的 Git 客户端（Git Bash 和 Git GUI）访问存储库。
+- 使用 GitHub 与团队共享代码。 使用下列预安装的 Git 客户端访问存储库：Git Bash 和 Git GUI。
 - 访问 Azure 数据和分析服务，如 Azure Blob 存储、Azure Data Lake、Azure HDInsight (Hadoop)、Azure Cosmos DB、Azure SQL 数据仓库和 Azure SQL 数据库。
 - 使用 DSVM 上预安装的 Power BI Desktop 实例生成报表和仪表板，然后将它们部署到云中。
 - 动态缩放 DSVM 以满足项目需求。
@@ -55,25 +55,25 @@ DSVM 与 Azure 服务紧密协同工作。 它可以读取并处理已存储在 
 
 对于 Python，可以使用已预安装针对 Visual Studio 的 Python 工具 (PTVS) 扩展的 Visual Studio Community Edition 之类的 IDE。 默认情况下，PTVS 上仅配置了根 Conda 环境 Python 3.6。 若要启用 Anaconda Python 2.7，请按以下步骤操作：
 
-1. 通过访问**工具** > **Python 工具** > **Python 环境**，然后在可视化工作室社区版中选择 **"自定义"，** 为每个版本创建自定义环境。
-1. 为 Anaconda Python 2.7 提供说明并将环境前缀路径设置为**c：\anaconda\envs_python2。**
-1. 选择 **"自动检测** > **应用"** 以保存环境。
+1. 在 Visual Studio Community Edition 中，转到“工具”   > “Python 工具”   > “Python 环境”  ，并选择“+ 自定义”  ，为每个版本创建自定义环境。
+1. 提供描述并将环境前缀路径设置为 c:\anaconda\envs\python2（适用于 Anaconda Python 2.7）。 
+1. 选择“自动检测”   > “应用”  以保存环境。
 
 有关如何创建 Python 环境的详细信息，请参阅 [PTVS 文档](https://aka.ms/ptvsdocs)。
 
-现在即可开始创建新的 Python 项目。 转到 **"文件** > **新项目** > **Project****Python**Python"并选择要构建的 Python 应用程序的类型。 >  可以将当前项目的 Python 环境设置为所需版本（Python 2.7 或 3.6），方法是右键单击“Python 环境”****，然后选择“添加/删除 Python 环境”****。 您可以在[产品文档中](https://aka.ms/ptvsdocs)找到有关使用 PTVS 的更多信息。
+现在即可开始创建新的 Python 项目。 转到“文件”   > “新建”   > “项目”   > “Python”  ，并选择要生成的 Python 应用程序的类型。 可以将当前项目的 Python 环境设置为所需版本（Python 2.7 或 3.6），方法是右键单击“Python 环境”  ，然后选择“添加/删除 Python 环境”  。 要详细了解如何使用 PTVS，请参阅[产品文档](https://aka.ms/ptvsdocs)。
 
 ## <a name="use-jupyter-notebooks"></a>使用 Jupyter Notebook
 Jupyter Notebook 提供基于浏览器的 IDE，用于数据探索和建模。 可以在 Jupyter 笔记本中使用 Python 2、Python 3 或 R（开源和 Microsoft R Server）。
 
-若要启动 Jupyter Notebook，请在“开始”菜单或桌面上选择“Jupyter Notebook”图标。******** 在 DSVM 命令提示符处，还可以从包含现有笔记本或想在其中创建新笔记本的目录中运行 ```jupyter notebook``` 命令。  
+若要启动 Jupyter Notebook，请在“开始”菜单或桌面上选择“Jupyter Notebook”图标。   在 DSVM 命令提示符处，还可以从包含现有笔记本或想在其中创建新笔记本的目录中运行 ```jupyter notebook``` 命令。  
 
 启动 Jupyter 后，应当会看到一个目录，其中包含预打包到 DSVM 中的多个示例笔记本。 现在可以：
 
 * 单击笔记本以查看代码。
 * 选择 Shift+Enter 以运行每个单元格。
-* 通过选择 **"单元格** > **运行"运行**整个笔记本。
-* 依次选择 Jupyter 图标（左上角），右侧的“新建”按钮和笔记本语言（也称为内核），创建新的笔记本。****   
+* 选择“单元” > “运行”，运行整个笔记本。  
+* 依次选择 Jupyter 图标（左上角），右侧的“新建”按钮和笔记本语言（也称为内核），创建新的笔记本。    
 
 > [!NOTE]
 > Jupyter 当前支持 Python 2.7、Python 3.6、R、Julia 和 PySpark 内核。 R 内核支持以开放源代码 R 和 Microsoft R 进行编程。   
@@ -134,7 +134,7 @@ IrisPredictor(3,2,3,4)
 > 
 
 ### <a name="build-and-operationalize-r-models"></a>生成 R 模型并使其可操作
-可以将在 Data Science Virtual Machine 或其他环境中生成的 R 模型部署到 Azure 机器学习，方法与部署 Python 模型类似。 以下是具体步骤：
+可以将在 Data Science Virtual Machine 或其他环境中生成的 R 模型部署到 Azure 机器学习，方法与部署 Python 模型类似。 下面是相关步骤：
 
 1. 创建 settings.json 文件，以提供工作区 ID 和身份验证令牌。 
 2. 编写适用于模型的预测函数的包装器。
@@ -202,7 +202,7 @@ DSVM 不仅允许在虚拟机上本地生成分析解决方案。 它还允许�
 可选用两种方法管理 Azure 订阅和云资源：
 + 使用 Web 浏览器并转到 [Azure 门户](https://portal.azure.com)。
 
-+ 使用 PowerShell 脚本。 从桌面快捷方式或“开始”菜单运行 Azure PowerShell。**** 请参阅 [Microsoft Azure PowerShell 文档](../../powershell-azure-resource-manager.md)以了解全部详细信息。 
++ 使用 PowerShell 脚本。 从桌面快捷方式或“开始”菜单运行 Azure PowerShell。  请参阅 [Microsoft Azure PowerShell 文档](../../powershell-azure-resource-manager.md)以了解全部详细信息。 
 
 ## <a name="extend-storage-by-using-shared-file-systems"></a>使用共享文件系统扩展存储
 数据科学家可以在团队内共享大型数据集、代码或其他资源。 DSVM 约有 45 GB 的可用空间。 要扩展存储，可以使用 Azure 文件存储，将它装载到一个或多个 DSVM 实例或通过 REST API 访问它。 还可以使用 [Azure 门户](../../virtual-machines/windows/attach-managed-disk-portal.md)或 [Azure PowerShell](../../virtual-machines/windows/attach-disk-ps.md) 添加其他专用数据磁盘。 
@@ -249,7 +249,7 @@ GitHub 是一个代码存储库，可在其中找到代码示例和资源，用�
 
 有关使用 Git 的详细信息，请访问 [GitHub 帮助页](https://help.github.com/)。 可以将 GitHub 用作团队协作、利用社区开发的代码以及向社区回馈代码的一个途径。
 
-DSVM 包含用于访问 GitHub 存储库的客户端工具，可通过命令行和 GUI 使用。 可作用于 Git 和 GitHub 的命令行工具称为 Git Bash。 DSVM 上安装了 Visual Studio 且有 Git 扩展。 可以在“开始”菜单和桌面上找到这些工具的图标。****
+DSVM 包含用于访问 GitHub 存储库的客户端工具，可通过命令行和 GUI 使用。 可作用于 Git 和 GitHub 的命令行工具称为 Git Bash。 DSVM 上安装了 Visual Studio 且有 Git 扩展。 可以在“开始”菜单和桌面上找到这些工具的图标。 
 
 若要从 GitHub 存储库下载代码，请使用 ```git clone``` 命令。 例如，要将 Microsoft 发布的数据科学存储库下载到当前目录，可在 Git Bash 中运行以下命令：
 
@@ -276,13 +276,13 @@ Azure Blob 存储是适合大小数据的经济可靠云存储服务。 本部�
 
    ![Azure 存储资源管理器访问存储帐户时的屏幕截图](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
 
-#### <a name="move-data-from-a-vm-to-an-azure-blob-azcopy"></a>将数据从 VM 移动到 Azure Blob：AzCopy
+#### <a name="move-data-from-a-vm-to-an-azure-blob-azcopy"></a>将数据从 VM 移动到 Azure blob：AzCopy
 
 若要在本地文件和 Blob 存储之间移动数据，可以在命令行或 PowerShell 中使用 AzCopy：
 
     AzCopy /Source:C:\myfolder /Dest:https://<mystorageaccount>.blob.core.windows.net/<mycontainer> /DestKey:<storage account key> /Pattern:abc.txt
 
-将“C:\myfolder”替换为存储着文件的路径，将“mystorageaccount”替换为 Blob 存储帐户名称，将“mycontainer”替换为容器名称，将“storage account key”替换为 Blob 存储访问密钥。**************** 可以在 [Azure 门户](https://portal.azure.com)中找到存储帐户凭据。
+将“C:\myfolder”替换为存储着文件的路径，将“mystorageaccount”替换为 Blob 存储帐户名称，将“mycontainer”替换为容器名称，将“storage account key”替换为 Blob 存储访问密钥。     可以在 [Azure 门户](https://portal.azure.com)中找到存储帐户凭据。
 
 在 PowerShell 中或从命令提示符下运行 AzCopy 命令。 以下是 AzCopy 命令的一些使用示例：
 
@@ -299,20 +299,20 @@ Azure Blob 存储是适合大小数据的经济可靠云存储服务。 本部�
 
 ![存储帐户的屏幕截图，其中显示了上传的 CSV 文件](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
 
-#### <a name="move-data-from-a-vm-to-an-azure-blob-azure-storage-explorer"></a>将数据从 VM 移动到 Azure Blob：Azure 存储资源管理器
+#### <a name="move-data-from-a-vm-to-an-azure-blob-azure-storage-explorer"></a>将数据从 VM 移动到 Azure blob：Azure 存储资源管理器
 
 还可使用 Azure 存储资源管理器上传来自 VM 中本地文件的数据：
 
-* 要将数据上传到容器，请选择目标容器，然后选择“上传”按钮。****![Azure 存储资源管理器中上传按钮的屏幕截图](./media/vm-do-ten-things/storage-accounts.png)
-* 选择“文件”框右侧的省略号 (…)，选择要从文件系统上传的一个或多个文件，然后选择“上传”开始上传文件。************![“上传文件”对话框的屏幕截图](./media/vm-do-ten-things/upload-files-to-blob.png)
+* 要将数据上传到容器，请选择目标容器，然后选择“上传”按钮。  ![Azure 存储资源管理器中上传按钮的屏幕截图](./media/vm-do-ten-things/storage-accounts.png)
+* 选择“文件”框右侧的省略号 (…)，选择要从文件系统上传的一个或多个文件，然后选择“上传”开始上传文件。    ![“上传文件”对话框的屏幕截图](./media/vm-do-ten-things/upload-files-to-blob.png)
 
-#### <a name="read-data-from-an-azure-blob-machine-learning-reader-module"></a>从 Azure Blob 读取数据：机器学习读取器模块
+#### <a name="read-data-from-an-azure-blob-machine-learning-reader-module"></a>读取 Azure blob 中的数据：机器学习读取器模块
 
 在 Azure 机器学习工作室中，可以使用“导入数据”模块读取 blob 中的数据。
 
 ![机器学习工作室中的导入数据模块的屏幕截图](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
 
-#### <a name="read-data-from-an-azure-blob-python-odbc"></a>从 Azure Blob 读取数据：Python ODBC
+#### <a name="read-data-from-an-azure-blob-python-odbc"></a>读取 Azure blob 中的数据：Python ODBC
 
 在 Jupyter 笔记本或 Python 程序中，可以使用 BlobService 库直接读取 blob 中的数据。
 
@@ -377,19 +377,19 @@ Azure Data Lake Storage 是一个超大规模存储库，适用于大数据分�
 
    ![Visual Studio 中适用于 Data Lake 工具的插件的屏幕截图](./media/vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
 
-#### <a name="move-data-from-a-vm-to-data-lake-azure-data-lake-explorer"></a>将数据从 VM 移动到数据湖：Azure 数据湖资源管理器
+#### <a name="move-data-from-a-vm-to-data-lake-azure-data-lake-explorer"></a>将数据从 VM 移动到 Data Lake：Azure Data Lake 资源管理器
 
-您可以使用 Azure 数据湖资源管理器将数据[从虚拟机中的本地文件上载到数据湖存储](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)。
+可以使用 Azure Data Lake 资源管理器[将虚拟机上本地文件中的数据上传到 Data Lake 存储](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)。
 
 还可以使用 [Azure 数据工厂](https://azure.microsoft.com/services/data-factory/)生成用于将数据移出或移入 Azure Data Lake 的数据管道。 [本文](https://azure.microsoft.com/blog/creating-big-data-pipelines-using-azure-data-lake-and-azure-data-factory/)介绍生成数据管道的步骤。
 
-#### <a name="read-data-from-an-azure-blob-to-data-lake-u-sql"></a>将数据从 Azure blob 读取到数据湖：U-SQL
+#### <a name="read-data-from-an-azure-blob-to-data-lake-u-sql"></a>将数据从 Azure blob 读取到 Data Lake：U-SQL
 
-如果数据驻留在 Azure Blob 存储中，可以使用 U-SQL 查询直接读取 Azure blob 中的数据。 编写 U-SQL 查询之前，请确保你的 Blob 存储帐户已链接到 Azure Data Lake 实例。 转到 Azure 门户，找到 Azure Data Lake Analytics 仪表板，单击“添加数据源”，选择 Azure 存储的存储类型，并插入你的 Azure 存储帐户名称和密钥。******** 然后即可引用存储帐户中存储的数据。
+如果数据驻留在 Azure Blob 存储中，可以使用 U-SQL 查询直接读取 Azure blob 中的数据。 编写 U-SQL 查询之前，请确保你的 Blob 存储帐户已链接到 Azure Data Lake 实例。 转到 Azure 门户，找到 Azure Data Lake Analytics 仪表板，单击“添加数据源”，选择 Azure 存储的存储类型，并插入你的 Azure 存储帐户名称和密钥。   然后即可引用存储帐户中存储的数据。
 
 ![“添加数据源”对话框的屏幕截图](./media/vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
-在 Visual Studio 中，可以读取 Blob 存储中的数据、操纵数据、进行特征工程，并将生成的数据发送到 Azure Data Lake 或 Azure Blob 存储。 引用 Blob 存储中的数据时，请使用 wasb://。**** 引用 Azure Data Lake 中的数据时，请使用 swbhdfs://。****
+在 Visual Studio 中，可以读取 Blob 存储中的数据、操纵数据、进行特征工程，并将生成的数据发送到 Azure Data Lake 或 Azure Blob 存储。 引用 Blob 存储中的数据时，请使用 wasb://。  引用 Azure Data Lake 中的数据时，请使用 swbhdfs://。 
 
 在 Visual Studio 中，可以使用以下 U-SQL 查询：
 
@@ -579,7 +579,7 @@ for i in range(1, 13):
 
 将数据加载到 HDI 群集后，可在 Azure 存储资源管理器中查看数据。 而 nyctaxidb 数据库是在 HDI 群集中创建的。
 
-#### <a name="data-exploration-hive-queries-in-python"></a>数据探索：Python 中的 Hive 查询
+#### <a name="data-exploration-hive-queries-in-python"></a>数据探索：以 Python 进行 Hive 查询
 
 由于数据在 Hadoop 群集中，因此可以使用 pyodbc 包连接到 Hadoop 群集并使用 Hive 查询数据库，以执行探索和特征工程。 可以查看你在先决步骤中创建的现有表。
 
@@ -817,7 +817,7 @@ Azure Cosmos DB 是云中的 NoSQL 数据库。 可用其处理 JSON 等文档�
 1. DSVM 上已安装 Azure Cosmos DB Python SDK。 若要更新它，请在命令提示符下运行 ```pip install pydocumentdb --upgrade```。
 2. 从 [Azure 门户](https://portal.azure.com)创建 Azure Cosmos DB 帐户和数据库。
 3. 从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=53595)下载 Azure Cosmos DB 数据迁移工具，并提取到你选择的目录。
-4. 在迁移工具中使用以下命令参数，将存储在 [公共 blob](https://cahandson.blob.core.windows.net/samples/volcano.json) 中的 JSON 数据（Volcano 数据）导入 Azure Cosmos DB。 （使用安装 Azure Cosmos DB 数据迁移工具的目录中的 dtui.exe。使用以下参数输入源和目标位置：
+4. 在迁移工具中使用以下命令参数，将存储在 [公共 blob](https://dotnet.microsoft.com/) 中的 JSON 数据（Volcano 数据）导入 Azure Cosmos DB。 （使用安装 Azure Cosmos DB 数据迁移工具的目录中的 dtui.exe。使用以下参数输入源和目标位置：
    
     `/s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 

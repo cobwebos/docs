@@ -8,20 +8,20 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 33ae3c3f9a2a213bd8135af846b4e72901b3df0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34a23ce76ed0e9285a686073e1cbeb95347f7b7d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75774440"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678689"
 ---
-要获取对等互连列表，运行以下`Get-AzPeering`命令：
+要获取对等互连列表，运行**获取阿兹对流**命令。
 
 ```powershell
 Get-AzPeering ResourceGroupName "PeeringResourceGroup" -Name "SeattleExchangePeering"
 ```
 
-下面是成功完成端到端预配时的示例响应：
+此示例响应显示端到端预配成功完成时。
 
 ```powershell
     Name                     : SeattleExchangePeering

@@ -8,12 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8babacfede6e13fde629492e1cd9f80af7f0e53f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: d31e520dac1c7e2a13fbd9e24a0cd3167f69e904
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78943065"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682014"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>创建并测试新的模拟设备
 
@@ -30,7 +31,7 @@ ms.locfileid: "78943065"
 
 *属性*
 
-| “属性”                     | 值                      |
+| 名称                     | 值                      |
 | ------------------------ | --------------------------- |
 | Color                    | 白、红、蓝            |
 | 亮度               | 0 到 100                    |
@@ -40,7 +41,7 @@ ms.locfileid: "78943065"
 
 下表显示了灯泡以数据流形式报告给云的数据：
 
-| “属性”   | 值      |
+| 名称   | 值      |
 | ------ | ----------- |
 | 状态 | "on"、"off" |
 | 温度 | 华氏度 |
@@ -53,7 +54,7 @@ ms.locfileid: "78943065"
 
 下表显示了新设备支持的操作：
 
-| “属性”        |
+| 名称        |
 | ----------- |
 | 打开   |
 | 关闭  |
@@ -62,7 +63,7 @@ ms.locfileid: "78943065"
 
 下表显示了设备的初始状态：
 
-| “属性”                     | 值 |
+| 名称                     | 值 |
 | ------------------------ | -------|
 | 初始颜色            | 白色  |
 | 初始亮度       | 75     |
@@ -72,7 +73,7 @@ ms.locfileid: "78943065"
 
 完成本操作方法指南中的步骤需要有效的 Azure 订阅。
 
-如果没有 Azure 订阅，请先创建[一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。"
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

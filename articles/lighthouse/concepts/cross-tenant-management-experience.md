@@ -1,14 +1,14 @@
 ---
 title: 跨租户管理体验
 description: Azure 委派资源管理可实现跨租户管理体验。
-ms.date: 04/06/2020
+ms.date: 04/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 66e2b2f7fbbae5940b576ead22a416625af3c058
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 107350cdab90751e918d4c7845776464b43abbdd
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418502"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682829"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
@@ -72,6 +72,14 @@ Azure PowerShell [Get-Az订阅 cmdlet](https://docs.microsoft.com/powershell/mod
 - 日志分析：查询来自多个租户中的远程客户工作区的数据
 - 通过 Webhook 在服务提供商租户中创建触发自动化（例如 Azure Automation Runbook 或 Azure Functions）的客户租户警报
 
+[Azure 网络](../../networking/networking-overview.md)：
+
+- 在客户租户中部署和管理[Azure 虚拟网络 （VNet）](../../virtual-network/index.yml)和虚拟网络接口卡 （vNIC）
+- 部署和配置[Azure 防火墙](../../firewall/overview.md)以保护客户的虚拟网络资源
+- 为客户管理连接服务，如[Azure 虚拟广域网](../../virtual-wan/virtual-wan-about.md)、[快速路由](../../expressroute/expressroute-introduction.md)和[VPN 网关](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
+- 使用 Azure 灯塔支持 Azure 网络[MSP 计划](../../networking/networking-partners-msp.md)的关键方案
+
+
 [Azure 策略](../../governance/policy/index.yml)：
 
 - 符合性快照显示委派订阅中分配的策略的详细信息
@@ -121,10 +129,6 @@ Azure PowerShell [Get-Az订阅 cmdlet](https://docs.microsoft.com/powershell/mod
 - 使用启动诊断对客户租户中的 Azure VM 进行故障排除
 - 使用客户租户中的串行控制台访问 VM
 - 请注意，不能使用 Azure Active Directory 远程登录 VM，并且不能将 VM 与密码、机密或加密密钥的保管库相集成以进行磁盘加密
-
-[Azure 虚拟网络](../../virtual-network/index.yml)：
-
-- 在客户租户内部署和管理虚拟网络和虚拟网络接口卡 (vNIC)
 
 支持请求：
 

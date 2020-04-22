@@ -1,6 +1,6 @@
 ---
-title: 授权 Microsoft® 平滑流式处理客户端移植工具包
-description: 了解如何为 Microsoft® 平滑流式处理客户端移植工具包授权。
+title: 授权微软&reg;平滑流式处理客户端移植套件
+description: 了解如何许可 Microsoft&reg;平滑流式处理客户端移植工具包。
 services: media-services
 documentationcenter: ''
 author: xpouyat
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 59ac3ab2e70bfa00f19bae7e551780f2b2bb8ccb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd77c53a195a9549f6aaad9ee2928206f5324b0c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79096716"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686901"
 ---
-# <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>授权 Microsoft® 平滑流式处理客户端移植工具包 
+# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>授权微软&reg;平滑流式处理客户端移植套件 
 ## <a name="overview"></a>概述
 Microsoft 平滑流式处理客户端移植工具包（简称 **SSPK**）是经过优化的平滑流式处理客户端实现，可帮助嵌入式设备制造商、有线和移动运营商、内容服务提供商、手持设备制造商、独立软件供应商 (ISV) 和解决方案提供商创建产品和服务，用于流式传输平滑流式处理格式的自适应内容。 SSPK 是平滑流式处理客户端的与设备和平台无关的实现，许可接受方可将它移植到任何设备和平台。 
 
@@ -29,7 +29,7 @@ Microsoft 平滑流式处理客户端移植工具包（简称 **SSPK**）是经�
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
-## <a name="description"></a>描述
+## <a name="description"></a>说明
 经过授权的 SSPK 可以提供优异的商业价值。 SSPK 许可证为行业提供：
 
 * 采用 C++ 的平滑流式处理移植工具包源代码 
@@ -73,7 +73,7 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 ## <a name="licensing-procedure-and-sspk-access"></a>许可过程和 SSPK 访问权限
 电子邮件[sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com)，用于所有许可查询。
 
-已注册的中期受证者可以访问 [SSPK 分发门户](https://microsoft.sharepoint.com/teams/SSPKDOWNLOAD/)。
+已注册的中期受证者可以访问 SSPK 分发门户。
 
 临时和最终的 SSPK 被许可人可以向[smoothpk@microsoft.com](mailto:smoothpk@microsoft.com)提交技术问题。
 

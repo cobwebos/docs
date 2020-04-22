@@ -10,23 +10,23 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 04/17/2020
-ms.openlocfilehash: 1f3c9f86072eeedbc999946d0f846fbc3b41f94d
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: f94136ca6bfcb7e33415f2f44fdf4c44ef9f6a6f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641757"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682794"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虚拟网络中保护 Azure ML 试验和推理作业
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本文介绍如何在 Azure 虚拟网络 (VNet) 中保护 Azure 机器学习中的试验/训练作业和推理/评分作业。
 
-**虚拟网络**充当安全边界，将 Azure 资源与公共 Internet 隔离开来。 你也可以将 Azure 虚拟网络加入本地网络。 加入网络后，可以安全训练模型，以及访问用于推理的已部署模型。
+**虚拟网络**充当安全边界，可将 Azure 资源与公共 Internet 相隔离。 你也可以将 Azure 虚拟网络加入本地网络。 加入网络后，可以安全训练模型，以及访问用于推理的已部署模型。
 
-Azure 机器学习依赖于其他 Azure 服务提供计算资源。 计算资源或[计算目标](concept-compute-target.md)用于训练和部署模型。 可以在虚拟网络中创建目标。 例如，可以使用 Microsoft Data Science Virtual Machine 来训练模型，然后将该模型部署到 Azure Kubernetes 服务 (AKS)。 有关虚拟网络的详细信息，请参阅[Azure 虚拟网络概述](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)。
+Azure 机器学习依赖于其他 Azure 服务提供计算资源。 计算资源或[计算目标](concept-compute-target.md)用于训练和部署模型。 可以在虚拟网络中创建目标。 例如，可以使用 Microsoft Data Science Virtual Machine 来训练模型，然后将该模型部署到 Azure Kubernetes 服务 (AKS)。 有关虚拟网络的详细信息，请参阅 [Azure 虚拟网络概述](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)。
 
-本文还将提供有关高级安全设置的详细信息（在基本或试验用例中不需要这些信息）。** 本文的某些部分提供各种方案的配置信息。 无需按顺序遵循本文中的说明，也不需要遵循所有的说明。
+本文还将提供有关高级安全设置的详细信息（在基本或试验用例中不需要这些信息）。  本文的某些部分提供各种方案的配置信息。 无需按顺序遵循本文中的说明，也不需要遵循所有的说明。
 
 > [!TIP]
 > 除非有专门的说明，否则可以在机器学习管道和非管道工作流（例如脚本运行）中使用虚拟网络中的存储帐户或计算目标等资源。
@@ -36,7 +36,7 @@ Azure 机器学习依赖于其他 Azure 服务提供计算资源。 计算资源
 
 ## <a name="prerequisites"></a>先决条件
 
-+ Azure 机器学习[工作区](how-to-manage-workspace.md)。
++ 一个 Azure 机器学习[工作区](how-to-manage-workspace.md)。
 
 + 对 [Azure 虚拟网络服务](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)和 [IP 网络](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)具备一般性的实践知识。
 
@@ -120,7 +120,7 @@ Azure 机器学习使用与工作区关联的 Key Vault 实例来存储以下凭
    ![“Key Vault”窗格中的“防火墙和虚拟网络”部分](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks.png)
 
 1. 在__防火墙和虚拟网络__页面上，执行以下操作：
-    - 在“允许的访问来源”____ 下，选择“所选网络”____。
+    - 在“允许的访问来源”  下，选择“所选网络”  。
     - 在“虚拟网络”下，选择“添加现有的虚拟网络”，以添加试验计算资源所在的虚拟网络。________
     - 在“允许受信任的 Microsoft 服务跳过此防火墙”下选择“是”。________
 
@@ -140,12 +140,13 @@ Azure 机器学习使用与工作区关联的 Key Vault 实例来存储以下凭
 > * 如果工作区的 Azure 存储帐户也在虚拟网络中受保护，则它们必须与 Azure 机器学习计算实例或群集位于同一虚拟网络中。 
 
 > [!TIP]
-> 机器学习计算实例或群集自动在包含虚拟网络的资源组中分配更多网络资源。 对于每个计算实例或群集，该服务将分配以下资源：
+> 机器学习计算实例或群集会自动在__包含虚拟网络的资源组中__分配其他网络资源。 对于每个计算实例或群集，该服务将分配以下资源：
 > 
 > * 一个网络安全组
 > * 一个公共 IP 地址
 > * 一个负载均衡器
 > 
+> 在群集的情况下，每次群集向下缩放到 0 个节点时，这些资源都会被删除（并重新创建），但是对于实例，资源将一直保存到实例完全删除（停止不会删除资源）。 
 > 这些资源受订阅的[资源配额](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)限制。
 
 
@@ -247,7 +248,7 @@ Azure 机器学习使用与工作区关联的 Key Vault 实例来存储以下凭
 
 1. 登录到[Azure 机器学习工作室](https://ml.azure.com/)，然后选择订阅和工作区。
 
-1. 选择左侧的“计算”____。
+1. 选择左侧的“计算”  。
 
 1. 从中心选择__训练群集__，然后选择__+__。
 
@@ -257,7 +258,7 @@ Azure 机器学习使用与工作区关联的 Key Vault 实例来存储以下凭
 
     1. 在“资源组”下拉列表中，选择包含虚拟网络的资源组。____
     1. 在“虚拟网络”下拉列表中，选择包含子网的虚拟网络。____
-    1. 在“子网”下拉列表中，选择要使用的子网。____
+    1. 在“子网”下拉列表中，选择要使用的子网。 
 
    ![机器学习计算的虚拟网络设置](./media/how-to-enable-virtual-network/amlcompute-virtual-network-screen.png)
 
@@ -317,28 +318,28 @@ except ComputeTargetException:
 > [!IMPORTANT]
 > Azure 机器学习仅支持运行 Ubuntu 的虚拟机。
 
-要在具有工作区的虚拟网络中使用虚拟机或 Azure HDInsight 群集，请使用以下步骤：
+若要将虚拟网络中的虚拟机或 Azure HDInsight 群集与工作区配合使用，请执行以下步骤：
 
 1. 使用 Azure 门户或 Azure CLI 创建 VM 或 HDInsight 群集，并将群集放入 Azure 虚拟网络。 有关详细信息，请参阅以下文章：
     * [为 Linux VM 创建和管理 Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
 
     * [使用 Azure 虚拟网络扩展 HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network)
 
-1. 若要允许 Azure 机器学习与 VM 或群集上的 SSH 端口通信，请为网络安全组配置一个源条目。 SSH 端口通常是端口 22。 要允许来自此源的流量，请执行以下操作：
+1. 若要允许 Azure 机器学习与 VM 或群集上的 SSH 端口通信，请为网络安全组配置一个源条目。 SSH 端口通常是端口 22。 若要允许来自此源的流量，请执行以下操作：
 
-    * 在“源”下拉列表中，选择“服务标记”。________
+    * 在“源”下拉列表中，选择“服务标记”。  
 
-    * 在“源服务标记”下拉列表中，选择“AzureMachineLearning”。________
+    * 在“源服务标记”下拉列表中，选择“AzureMachineLearning”。  
 
-    * 在“源端口范围”下拉列表中，选择 __*__。____
+    * 在“源端口范围”下拉列表中，选择 __*__ 。 
 
-    * 在“目标”下拉列表中，选择“任何”。________
+    * 在“目标”下拉列表中，选择“任何”。  
 
-    * 在“目标端口范围”下拉列表中，选择“22”。________
+    * 在“目标端口范围”下拉列表中，选择“22”。  
 
-    * 在“协议”下，选择“任何”。________
+    * 在“协议”下，选择“任何”。  
 
-    * 在“操作”下，选择“允许”。________
+    * 在“操作”下，选择“允许”。  
 
    ![用于在虚拟网络中的 VM 或 HDInsight 群集上执行试验的入站规则](./media/how-to-enable-virtual-network/experimentation-virtual-network-inbound.png)
 
@@ -352,7 +353,7 @@ except ComputeTargetException:
 
 ## <a name="use-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS)
 
-要将虚拟网络中的 AKS 添加到工作区，请使用以下步骤：
+若要将虚拟网络中的 AKS 添加到工作区，请执行以下步骤：
 
 > [!IMPORTANT]
 > 在开始执行以下过程之前，请满足[在 Azure Kubernetes 服务 (AKS) 中配置高级网络](https://docs.microsoft.com/azure/aks/configure-advanced-networking#prerequisites)操作指南中的先决条件，并规划好群集的 IP 地址。
@@ -364,7 +365,7 @@ except ComputeTargetException:
 
 1. 登录到[Azure 机器学习工作室](https://ml.azure.com/)，然后选择订阅和工作区。
 
-1. 选择左侧的“计算”____。
+1. 选择左侧的“计算”  。
 
 1. 从中心选择 __"推理"群集__，然后选择__+__。
 
@@ -372,12 +373,12 @@ except ComputeTargetException:
 
 1. 要使用此计算资源使用虚拟网络，请执行以下操作：
 
-    1. 在“资源组”下拉列表中，选择包含虚拟网络的资源组。____
-    1. 在“虚拟网络”下拉列表中，选择包含子网的虚拟网络。____
-    1. 在“子网”下拉列表中选择子网。____
-    1. 在“Kubernetes 服务地址范围”中，输入 Kubernetes 服务地址范围。____ 此地址范围使用无类域间路由 (CIDR) 表示法表示的 IP 范围来定义群集可用的 IP 地址。 此范围不得与任何子网 IP 范围重叠（例如 10.0.0.0/16）。
-    1. 在“Kubernetes DNS 服务 IP 地址”框中，输入 Kubernetes DNS 服务 IP 地址。____ 此 IP 地址将分配给 Kubernetes DNS 服务。 此 IP 地址必须在 Kubernetes 服务地址范围内（例如 10.0.0.10）。
-    1. 在“Docker 网桥地址”框中，输入 Docker 网桥地址。____ 此 IP 地址将分配给 Docker 网桥。 此 IP 地址不得在任何子网 IP 范围或 Kubernetes 服务地址范围内（例如 172.17.0.1/16）。
+    1. 在“资源组”下拉列表中，选择包含虚拟网络的资源组。 
+    1. 在“虚拟网络”下拉列表中，选择包含子网的虚拟网络。 
+    1. 在“子网”下拉列表中选择子网。 
+    1. 在“Kubernetes 服务地址范围”中，输入 Kubernetes 服务地址范围。  此地址范围使用无类域间路由 (CIDR) 表示法表示的 IP 范围来定义群集可用的 IP 地址。 此范围不得与任何子网 IP 范围重叠（例如 10.0.0.0/16）。
+    1. 在“Kubernetes DNS 服务 IP 地址”框中，输入 Kubernetes DNS 服务 IP 地址。  此 IP 地址将分配给 Kubernetes DNS 服务。 此 IP 地址必须在 Kubernetes 服务地址范围内（例如 10.0.0.10）。
+    1. 在“Docker 网桥地址”框中，输入 Docker 网桥地址。  此 IP 地址将分配给 Docker 网桥。 此 IP 地址不得在任何子网 IP 范围或 Kubernetes 服务地址范围内（例如 172.17.0.1/16）。
 
    ![Azure 机器学习：机器学习计算虚拟网络设置](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
 
@@ -409,16 +410,16 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 创建过程完成后，可在虚拟网络后面的 AKS 群集上运行推理或模型评分。 有关详细信息，请参阅[如何部署 AKS](how-to-deploy-and-where.md)。
 
-### <a name="use-private-ips-with-azure-kubernetes-service"></a>将专用 IP 与 Azure 库伯奈斯服务一起使用
+### <a name="use-private-ips-with-azure-kubernetes-service"></a>将专用 IP 与 Azure Kubernetes 服务配合使用
 
-默认情况下，公共 IP 地址分配给 AKS 部署。 在虚拟网络中使用 AKS 时，可以使用专用 IP 地址。 专用 IP 地址只能通过虚拟网络或联接网络内部访问。
+默认情况下，将为 AKS 部署分配公共 IP 地址。 在虚拟网络中使用 AKS 时，可以改用专用 IP 地址。 只能从虚拟网络或已加入的网络内部访问专用 IP 地址。
 
-通过配置 AKS 来使用_内部负载均衡器_，启用专用 IP 地址。 
+可以通过将 AKS 配置为使用_内部负载均衡器_来启用专用 IP 地址。 
 
 > [!IMPORTANT]
-> 创建 Azure 库伯奈斯服务群集时，无法启用专用 IP。 必须将其作为对现有群集的更新启用。
+> 创建 Azure Kubernetes 服务群集时，无法启用专用 IP。 只能在更新现有群集时进行启用。
 
-以下代码段演示如何**创建新的 AKS 群集**，然后更新它以使用专用 IP/内部负载均衡器：
+以下代码片段演示了如何**创建新的 AKS 群集**，然后将其更新为使用专用 IP/内部负载均衡器：
 
 ```python
 import azureml.core
@@ -463,7 +464,7 @@ __Azure CLI__
 az rest --method put --uri https://management.azure.com"/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>?api-version=2018-11-19 --body @body.json
 ```
 
-命令引用`body.json`的文件内容类似于以下 JSON 文档：
+该命令引用的 `body.json` 文件的内容类似于以下 JSON 文档：
 
 ```json
 { 
@@ -483,9 +484,9 @@ az rest --method put --uri https://management.azure.com"/subscriptions/<subscrip
 ```
 
 > [!NOTE]
-> 当前，在现有群集上执行__附加__操作时，无法配置负载均衡器。 必须首先附加群集，然后执行更新操作以更改负载均衡器。
+> 目前，在现有群集上执行__附加__操作时，不能配置负载均衡器。 必须首先附加群集，然后执行更新操作来更改负载均衡器。
 
-有关将内部负载均衡器与 AKS 一起使用的详细信息，请参阅[使用 Azure Kubernetes 服务使用内部负载均衡器](/azure/aks/internal-lb)。
+有关将内部负载均衡器与 AKS 配合使用的详细信息，请参阅[将内部负载均衡器与 Azure Kubernetes 服务配合使用](/azure/aks/internal-lb)。
 
 ## <a name="use-azure-container-instances-aci"></a>使用 Azure 容器实例 （ACI）
 

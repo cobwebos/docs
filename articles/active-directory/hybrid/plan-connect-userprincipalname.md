@@ -10,12 +10,12 @@ ms.workload: identity
 ms.service: active-directory
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c198b329f07c5c7459f25165b2dc0a3bfa032276
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c748df10e432e3bebbce0dc8cb39dd2101d52e2
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60382019"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680043"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Azure AD UserPrincipalName 填充
 
@@ -25,20 +25,20 @@ UserPrincipalName 属性值是用户帐户的 Azure AD 用户名。
 ## <a name="upn-terminology"></a>UPN 术语
 本文使用了以下术语：
 
-|术语|描述|
+|术语|说明|
 |-----|-----|
 |初始域|Azure AD 租户中的默认域 (onmicrosoft.com)。 例如 contoso.onmicrosoft.com。|
 |Microsoft 联机电子邮件路由地址 (MOERA)|Azure AD 基于 Azure AD MailNickName 属性和 &lt;MailNickName&gt;&#64;&lt;初始域&gt; 形式的 Azure AD 初始域计算 MOERA。|
 |本地 mailNickName 属性|Active Directory 中的一个属性，其值表示 Exchange 组织中某个用户的别名。|
 |本地 mail 属性|Active Directory 中的一个属性，其值表示某个用户的电子邮件地址|
-|主要 SMTP 地址|Exchange 收件人对象的主要电子邮件地址。 例如，SMTP:user\@contoso.com。|
+|主要 SMTP 地址|Exchange 收件人对象的主要电子邮件地址。 例如 SMTP:user\@contoso.com。|
 |备用登录 ID|除 UserPrincipalName 以外的本地属性，例如 mail 属性，用于登录。|
 
 ## <a name="what-is-userprincipalname"></a>什么是 UserPrincipalName？
 UserPrincipalName 是基于 Internet 标准 [RFC 822](https://www.ietf.org/rfc/rfc0822.txt) 的属性，表示某个用户的 Internet 样式登录名。 
 
 ### <a name="upn-format"></a>UPN 格式
-UPN 由 UPN 前缀（用户帐户名）和 UPN 后缀（DNS 域名）组成。 前缀与后缀以“\@”符号相联接。 例如，“someone\@example.com”。 UPN 必须在目录林中的所有安全主体对象之间保持唯一。 
+UPN 由 UPN 前缀（用户帐户名）和 UPN 后缀（DNS 域名）组成。 前缀与后缀以“\@”符号相联接。 例如“someone\@example.com”。 UPN 必须在目录林中的所有安全主体对象之间保持唯一。 
 
 ## <a name="upn-in-azure-ad"></a>Azure AD 中的 UPN 
 Azure AD 使用 UPN 让用户登录。  用户可以使用的 UPN 取决于域是否经过验证。  如果域已验证，则允许具有该后缀的用户名登录到 Azure AD。  
@@ -52,7 +52,7 @@ Azure AD 使用 UPN 让用户登录。  用户可以使用的 UPN 取决于域�
 
 备用登录 ID 允许配置登录体验，用户可以使用其 UPN 以外的属性（如邮件）登录。
 
-若要在 Azure AD 中启用备用登录 ID，可以使用 Azure AD Connect，而无需执行任何附加的配置步骤。 可以直接通过向导配置备用 ID。 请参阅"同步"部分下用户的 Azure AD 登录配置。在 **"用户主体名称**"下拉列表下，选择备用登录 ID 的属性。
+若要在 Azure AD 中启用备用登录 ID，可以使用 Azure AD Connect，而无需执行任何附加的配置步骤。 可以直接通过向导配置备用 ID。 请参阅“同步”部分中适用于用户的 Azure AD 登录配置。在“用户主体名称”下拉列表中，选择“备用登录 ID”对应的属性。 
 
 ![未验证的域](./media/plan-connect-userprincipalname/altloginid.png)  
 
@@ -93,7 +93,7 @@ Azure AD 使用 UPN 让用户登录。  用户可以使用的 UPN 取决于域�
 - mailNickName：&lt;未设置&gt;
 - proxyAddresses：{SMTP:us1@contoso.com}
 - mail：us2@contoso.com
-- userPrincipalName：us3@contoso.com`
+- userPrincipalName：us3@contoso.com
 
 首次将用户对象同步到 Azure AD 租户
 - 将 Azure AD MailNickName 属性设置为主要 SMTP 地址前缀。

@@ -16,24 +16,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: yelevin
-ms.openlocfilehash: 54ddf6818b95a4037188ab222501ddfa69b28149
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 52af688917aa531d125f83844df29a988ed7cb7e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77587892"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686634"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>使用 Azure 哨兵搜索威胁
 
 如果您是希望主动查找安全威胁的调查员，Azure Sentinel 会强大的搜索和查询工具，以查找组织数据源的安全威胁。 但是，您的系统和安全设备会生成大量数据，这些数据可能难以解析和筛选到有意义的事件。 为了帮助安全分析人员主动查找安全应用未检测到的新异常，Azure Sentinel 的内置搜索查询指导您提出正确的问题，以查找网络上已有的数据中的问题。 
 
-例如，一个内置查询提供有关在基础结构上运行的最罕见进程的数据 - 您不希望每次运行这些进程时都发出警报，它们可能完全是无辜的，但您可能希望偶尔查看查询，以查看是否有什么不寻常的 
+例如，一个内置查询提供有关在基础结构上运行的最罕见进程的数据 - 您不希望每次运行这些进程时都发出警报，它们可能完全是无辜的，但您可能希望偶尔查看该查询，以查看是否有异常情况。 
 
 
 
 通过 Azure Sentinel 搜索，您可以利用以下功能：
 
-- 内置查询：为了入门，起始页提供预加载的查询示例，旨在帮助您入门并熟悉表和查询语言。 这些内置的狩猎查询由 Microsoft 安全研究人员持续开发，添加新查询，并微调现有查询，为您提供一个入口点，以查找新的检测，并找出从何处开始查找新的攻击的开始。 
+- 内置查询：为了入门，起始页提供预加载的查询示例，旨在帮助您入门并熟悉表和查询语言。 这些内置的狩猎查询由 Microsoft 安全研究人员持续开发，增加了新的查询，并微调现有查询，为您提供一个入口点来查找新检测，并找出从何处开始寻找新的攻击的开始。 
 
 - 使用 IntelliSense 强大的查询语言：构建在查询语言之上，使您能够灵活地将狩猎带到一个新的水平。
 
@@ -54,7 +54,7 @@ ms.locfileid: "77587892"
 
 3. 在查询详细信息窗格中快速查看基础查询，或单击"**查看查询结果**"以在日志分析中打开查询。 在底部，查看查询的匹配项。
 
-4.  单击该行并选择 **"添加书签**"以添加要调查的行 - 您可以对任何看起来可疑的行执行此操作。 
+4.    单击该行并选择 **"添加书签**"以添加要调查的行 - 您可以对任何看起来可疑的行执行此操作。 
 
 5. 然后，返回主要 **"搜索"** 页面，然后单击 **"书签"** 选项卡以查看所有可疑活动。 
 
@@ -66,7 +66,7 @@ ms.locfileid: "77587892"
 
 ## <a name="query-language"></a>查询语言 
 
-Azure Sentinel 中的搜索基于 Kusto 查询语言。 有关查询语言和受支持的运算符的详细信息，请参阅[查询语言参考](https://docs.loganalytics.io/docs/Language-Reference/)。
+Azure Sentinel 中的搜索基于 Kusto 查询语言。 有关查询语言和受支持的运算符的详细信息，请参阅[查询语言参考](/azure/azure-monitor/log-query/get-started-queries)。
 
 ## <a name="public-hunting-query-github-repository"></a>公共狩猎查询 GitHub 存储库
 

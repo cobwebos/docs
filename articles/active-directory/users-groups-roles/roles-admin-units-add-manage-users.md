@@ -14,18 +14,18 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b2b901f652564c47ca35cb0f75a69f26fa2fa71
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 9c2c5c083115440e1e4da203f39f2b32734458c3
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81533218"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684970"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>在 Azure 活动目录中的管理单元中添加和管理用户
 
 在 Azure 活动目录 （Azure AD） 中，您可以将用户添加到管理单位 （AU） 以进行更精细的管理控制范围。
 
-有关准备使用 PowerShell 和 Microsoft 图形进行管理单元管理的步骤，请参阅[入门](roles-admin-units-manage.md#getting-started)。
+有关准备使用 PowerShell 和 Microsoft 图形进行管理单元管理的步骤，请参阅[入门](roles-admin-units-manage.md#get-started)。
 
 ## <a name="add-users-to-an-au"></a>将用户添加到 AU
 
