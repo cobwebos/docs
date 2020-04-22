@@ -8,12 +8,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
-ms.openlocfilehash: ccb840caea5d28975daaf8cbf6f0d4985bdf006d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 2ef259bf76815fdf8672b696d2260fe6a143b798
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79499138"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730177"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>了解 IoT 中心的标识注册表
 
@@ -79,7 +82,7 @@ IoT 解决方案通常具有不同的解决方案特定存储，其中包含应�
 
 有关导入和导出 API 的详细信息，请参阅 [IoT 中心资源提供程序 REST API](/rest/api/iothub/iothubresource)。 若要了解有关如何运行导入和导出作业的详细信息，请参阅[批量管理 IoT 中心的设备标识](iot-hub-bulk-identity-mgmt.md)。
 
-设备标识也可以通过[REST API](/rest/api/iothub/service/jobclient/createimportexportjob)或 IoT 中心服务 SDK 之一通过服务 API 从 IoT 中心中心导出和[导入](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks)。
+设备标识也可以使用 [REST API](/rest/api/iothub/service/jobclient/createimportexportjob) 或 IoT 中心[服务 SDK](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks) 之一通过服务 API 从 IoT 中心导出和导入。
 
 ## <a name="device-provisioning"></a>设备预配
 
@@ -97,7 +100,7 @@ IoT 中心标识注册表包含名为 **connectionState** 的字段。 开发和
 更复杂的实现可包含来自 [Azure Monitor](../azure-monitor/index.yml) 和 [Azure 资源运行状况](../service-health/resource-health-overview.md)的信息，以便识别尝试连接或通信但失败的设备，请查阅[使用诊断进行监视](iot-hub-monitor-resource-health.md)指南。 实施检测信号模式时，请务必查看 [IoT 中心配额与限制](iot-hub-devguide-quotas-throttling.md)。
 
 > [!NOTE]
-> 如果 IoT 解决方案只使用连接状态来决定是否发送云到设备的消息，并且没有把消息广播到大量设备，则考虑使用更简单的较短到期时间** 模式。 此模式达到的效果与使用检测信号模式维护设备连接状态注册表达到的效果一样，而且更加有效。 如果请求消息确认，则 IoT 中心可以通知你哪些设备可以接收消息以及哪些设备不能接收。
+> 如果 IoT 解决方案只使用连接状态来决定是否发送云到设备的消息，并且没有把消息广播到大量设备，则考虑使用更简单的较短到期时间  模式。 此模式达到的效果与使用检测信号模式维护设备连接状态注册表达到的效果一样，而且更加有效。 如果请求消息确认，则 IoT 中心可以通知你哪些设备可以接收消息以及哪些设备不能接收。
 
 ## <a name="device-and-module-lifecycle-notifications"></a>设备和模块生命周期通知
 
@@ -107,7 +110,7 @@ IoT 中心标识注册表包含名为 **connectionState** 的字段。 开发和
 
 设备的通知消息：
 
-| “属性” | “值” |
+| 名称 | 值 |
 | --- | --- |
 |$content-type | application/json |
 |$iothub-enqueuedtime |  发送通知的时间 |
@@ -143,7 +146,7 @@ IoT 中心标识注册表包含名为 **connectionState** 的字段。 开发和
 ```
 模块的通知消息：
 
-| “属性” | “值” |
+| 名称 | 值 |
 | --- | --- |
 $content-type | application/json |
 $iothub-enqueuedtime |  发送通知的时间 |
@@ -183,11 +186,11 @@ iothub-message-schema | moduleLifecycleNotification |
 
 设备识别表示为包含以下属性的 JSON 文档：
 
-| properties | 选项 | 描述 |
+| properties | 选项 | 说明 |
 | --- | --- | --- |
 | deviceId |必需，更新时只读 |ASCII 7 位字母数字字符 + 某些特殊字符（`- . + % _ # * ? ! ( ) , = @ $ '`）的区分大小写字符串（最长为 128 个字符）。 |
 | generationId |必需，只读 |IoT 中心生成的区分大小写字符串，最长为 128 个字符。 删除并重新创建设备时，此值用于区分具有相同 **deviceId** 的设备。 |
-| etag |必需，只读 |表示设备标识的弱 ETag 的字符串，如[RFC7232](https://tools.ietf.org/html/rfc7232)。 |
+| etag |必需，只读 |一个字符串，根据 [RFC7232](https://tools.ietf.org/html/rfc7232) 表示设备标识的弱 ETag。 |
 | auth |可选 |包含身份验证信息和安全材料的复合对象。 |
 | auth.symkey |可选 |包含主密钥和辅助密钥的复合对象，以 base64 格式存储。 |
 | status |必填 |访问指示器。 可以是**已启用**或**已禁用**。 如果是**已启用**，则允许设备连接。 如果是**已禁用**，则此设备无法访问任何面向设备的终结点。 |
@@ -201,18 +204,18 @@ iothub-message-schema | moduleLifecycleNotification |
 > 连接状态只能表示连接状态的 IoT 中心视图。 根据网络状态和配置，可能会延迟此状态的更新。
 
 > [!NOTE]
-> 目前，设备 SDK 不支持在 **deviceId** 中使用 `+` 和 `#` 字符。
+> 目前，设备 SDK 不支持在 `+`deviceId`#` 中使用 **和** 字符。
 
 ## <a name="module-identity-properties"></a>模块标识属性
 
 模块识别表示为包含以下属性的 JSON 文档：
 
-| properties | 选项 | 描述 |
+| properties | 选项 | 说明 |
 | --- | --- | --- |
 | deviceId |必需，更新时只读 |ASCII 7 位字母数字字符 + 某些特殊字符（`- . + % _ # * ? ! ( ) , = @ $ '`）的区分大小写字符串（最长为 128 个字符）。 |
 | moduleId |必需，更新时只读 |ASCII 7 位字母数字字符 + 某些特殊字符（`- . + % _ # * ? ! ( ) , = @ $ '`）的区分大小写字符串（最长为 128 个字符）。 |
 | generationId |必需，只读 |IoT 中心生成的区分大小写字符串，最长为 128 个字符。 删除并重新创建设备时，此值用于区分具有相同 **deviceId** 的设备。 |
-| etag |必需，只读 |表示设备标识的弱 ETag 的字符串，如[RFC7232](https://tools.ietf.org/html/rfc7232)。 |
+| etag |必需，只读 |一个字符串，根据 [RFC7232](https://tools.ietf.org/html/rfc7232) 表示设备标识的弱 ETag。 |
 | auth |可选 |包含身份验证信息和安全材料的复合对象。 |
 | auth.symkey |可选 |包含主密钥和辅助密钥的复合对象，以 base64 格式存储。 |
 | status |必填 |访问指示器。 可以是**已启用**或**已禁用**。 如果是**已启用**，则允许设备连接。 如果是**已禁用**，则此设备无法访问任何面向设备的终结点。 |
@@ -223,21 +226,21 @@ iothub-message-schema | moduleLifecycleNotification |
 | lastActivityTime |只读 |临时指示器，显示设备上次连接、接收或发送消息的日期和时间。 |
 
 > [!NOTE]
-> 目前，设备 SDK 不支持在 **deviceId** 和 **moduleId** 中使用 `+` 和 `#` 字符。
+> 目前，设备 SDK 不支持在 `+`deviceId`#` 和 **moduleId** 中使用 **和** 字符。
 
 ## <a name="additional-reference-material"></a>其他参考资料
 
 IoT 中心开发人员指南中的其他参考主题包括：
 
-* [IoT 中心终结点](iot-hub-devguide-endpoints.md)描述每个 IoT 中心为运行时和管理操作公开的各种终结点。
+* [IoT 中心终结点](iot-hub-devguide-endpoints.md)介绍了每个 IoT 中心针对运行时和管理操作公开的各种终结点。
 
 * [限制和配额](iot-hub-devguide-quotas-throttling.md)介绍了适用于 IoT 中心服务的配额和限制行为。
 
 * [Azure IoT 设备和服务 SDK](iot-hub-devguide-sdks.md) 列出了开发与 IoT 中心交互的设备和服务应用时可使用的各种语言 SDK。
 
-* [IoT 中心查询语言](iot-hub-devguide-query-language.md)介绍了可用来从 IoT 中心检索设备克隆和作业相关信息的查询语言。
+* [IoT 中心查询语言](iot-hub-devguide-query-language.md)介绍了可用来从 IoT 中心检索设备孪生和作业相关信息的查询语言。
 
-* [IoT 中心 MQTT 支持](iot-hub-mqtt-support.md)提供有关 IoT 中心对 MQTT 协议的支持的详细信息。
+* [IoT 中心 MQTT 支持](iot-hub-mqtt-support.md)提供了有关 IoT 中心对 MQTT 协议的支持的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -249,7 +252,7 @@ IoT 中心开发人员指南中的其他参考主题包括：
 
 * [在设备上调用直接方法](iot-hub-devguide-direct-methods.md)
 
-* [在多台设备上安排作业](iot-hub-devguide-jobs.md)
+* [在多个设备上计划作业](iot-hub-devguide-jobs.md)
 
 要尝试本文中介绍的一些概念，请参阅以下 IoT 中心教程：
 

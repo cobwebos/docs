@@ -1,25 +1,25 @@
 ---
 title: 通过 JDBC 驱动程序查询 Apache Hive - Azure HDInsight
-description: 从 Java 应用程序使用 JDBC 驱动程序将 Apache Hive 查询提交到 HDInsight 上的 Hadoop。 以编程方式从 SQuirrel SQL 客户端进行连接。
+description: 从 Java 应用程序使用 JDBC 驱动程序将 Apache Hive 查询提交到 HDInsight 上的 Hadoop。 以编程方式以及通过 SQuirrel SQL 客户端进行连接。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 8129239f152f6b359b930e56466052da12ef4d42
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 04/20/2020
+ms.openlocfilehash: 803256ab1c5201534cfbd8210f96040ba75081e5
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437032"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687293"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>在 HDInsight 中通过 JDBC 驱动程序查询 Apache Hive
 
 [!INCLUDE [ODBC-JDBC-selector](../../../includes/hdinsight-selector-odbc-jdbc.md)]
 
-了解如何从 Java 应用程序使用 JDBC 驱动程序将 Apache Hive 查询提交到 Azure HDInsight 中的 Apache Hadoop。 本文档中的信息演示如何以编程方式从 SQuirreL SQL 客户端进行连接。
+了解如何使用 Java 应用程序中的 JDBC 驱动程序。 在 Azure HDInsight 中向 Apache Hadoop 提交 Apache Hive 查询。 本文档中的信息演示如何以编程方式从 SQuirreL SQL 客户端进行连接。
 
 有关 Hive JDBC 接口的详细信息，请参阅 [HiveJDBCInterface](https://cwiki.apache.org/confluence/display/Hive/HiveJDBCInterface)。
 
@@ -31,7 +31,7 @@ ms.locfileid: "80437032"
 
 ## <a name="jdbc-connection-string"></a>JDBC 连接字符串
 
-与 Azure 上的 HDInsight 群集的 JDBC 连接通过端口 443 进行，并且流量使用 TLS/SSL 进行保护。 公用网关（群集位于其后）会将通信重定向到 HiveServer2 在其上进行实际侦听的端口。 以下连接字符串显示要用于 HDInsight 的格式：
+JDBC 连接到 Azure 上的 HDInsight 群集是通过端口 443 进行的。 使用 TLS/SSL 保护流量。 公用网关（群集位于其后）会将通信重定向到 HiveServer2 在其上进行实际侦听的端口。 以下连接字符串显示要用于 HDInsight 的格式：
 
     jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2
 
@@ -43,17 +43,17 @@ ms.locfileid: "80437032"
 
 ### <a name="host-name-in-connection-string"></a>连接字符串中的主机名
 
-连接字符串中的主机名"CLUSTERNAME.azurehdinsight.net"与群集 URL 相同。 您可以通过 Azure 门户获取它。 
+连接字符串中的主机名"CLUSTERNAME.azurehdinsight.net"与群集 URL 相同。 您可以通过 Azure 门户获取它。
 
 ### <a name="port-in-connection-string"></a>连接字符串中的端口
 
-只能使用端口**443**从 Azure 虚拟网络之外的某些位置连接到群集。 HDInsight 是一种托管服务，这意味着与群集的所有连接都通过安全网关进行管理。 您不能直接在端口 10001 或 10000 上连接到 HiveServer 2，因为这些端口不会暴露给外部。 
+只能使用端口**443**从 Azure 虚拟网络之外的某些位置连接到群集。 HDInsight 是一个托管服务，这意味着与群集的所有连接都通过安全网关进行管理。 不能直接在端口 10001 或 10000 上连接到 HiveServer 2。 这些端口不会向外部公开。
 
 ## <a name="authentication"></a>身份验证
 
-建立连接时，必须使用 HDInsight 群集管理员名称和密码向群集网关进行身份验证。 从 JDBC 客户端（例如 SQuirreL SQL）进行连接时，必须在客户端设置中输入管理员名称和密码。
+建立连接时，请使用 HDInsight 群集管理员名称和密码进行身份验证。 从 JDBC 客户端（如 SQuirreL SQL）中，在客户端设置中输入管理员名称和密码。
 
-从 Java 应用程序建立连接时，必须使用该名称和密码。 例如，以下 Java 代码将使用连接字符串、管理员名称和密码打开新连接：
+从 Java 应用程序建立连接时，必须使用该名称和密码。 例如，以下 Java 代码将打开一个新连接：
 
 ```java
 DriverManager.getConnection(connectionString,clusterAdmin,clusterPassword);
@@ -86,7 +86,7 @@ SQuirreL SQL 是一种 JDBC 客户端，可用于通过 HDInsight 群集远程�
     |properties | 值 |
     |---|---|
     |名称|Hive|
-    |示例 URL|jdbc：hive2：//localhost：443/默认;传输模式_http;ssl_true;httpPath_/hive2|
+    |示例 URL|`jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2`|
     |额外类路径|使用 **"添加**"按钮添加之前下载的所有 jar 文件。|
     |类名|org.apache.hive.jdbc.HiveDriver|
 
@@ -96,7 +96,7 @@ SQuirreL SQL 是一种 JDBC 客户端，可用于通过 HDInsight 群集远程�
 
 6. 在 SQuirreL SQL 窗口左侧，选择“别名”****。 然后选择**+** 图标以创建连接别名。
 
-    ![SQuirreL SQL“添加新别名”对话框](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
+    !['SQuirreL SQL 添加新别名对话框'](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
 
 7. 对 **"添加别名**"对话框使用以下值：
 
@@ -104,7 +104,7 @@ SQuirreL SQL 是一种 JDBC 客户端，可用于通过 HDInsight 群集远程�
     |---|---|
     |名称|Hive on HDInsight|
     |驱动程序|使用下拉列表选择**Hive**驱动程序。|
-    |代码|jdbc：hive2：//CLUSTERNAME.azurehdinsight.net：443/默认;传输模式_http;ssl_true;httpPath_/hive2。 将**CLUSTERNAME**替换为 HDInsight 群集的名称。|
+    |代码|`jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2`. 将**CLUSTERNAME**替换为 HDInsight 群集的名称。|
     |用户名|HDInsight 群集的群集登录帐户名。 默认值为**管理员**。|
     |密码|群集登录帐户的密码。|
 
@@ -153,12 +153,11 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
 ### <a name="connection-disconnected-by-hdinsight"></a>HDInsight 断开连接
 
-**症状**：当尝试通过 JDBC/ODBC 下载大量数据（例如多个 GB）时，HDInsight 在下载时意外断开了连接。 
+**症状**：当尝试通过 JDBC/ODBC 下载大量数据（例如多个 GB）时，HDInsight 在下载时意外断开了连接。
 
-**原因**：此错误是由网关节点的限制引起的。 从 JDBC/ODBC 获取数据时，所有数据都需要通过网关节点。 但是，网关不是用于下载大量数据而设计的，因此，如果网关无法处理流量，则连接可能会关闭。
+**原因**：此错误是由网关节点的限制引起的。 从 JDBC/ODBC 获取数据时，所有数据都需要通过网关节点。 但是，网关不是用于下载大量数据而设计的，因此，如果网关无法处理流量，则可能会关闭连接。
 
 **解决方法**：避免使用 JDBC/ODBC 驱动程序下载大量数据。 而是直接从 Blob 存储复制数据。
-
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -166,12 +165,8 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
 * [在 Azure HDInsight 中使用 Microsoft Power BI 直观显示 Apache Hive 数据](apache-hadoop-connect-hive-power-bi.md)。
 * [在 Azure HDInsight 中使用 Power BI 直观显示交互式查询 Hive 数据](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)。
-* [使用 Apache Zepelin 在 Azure HDInsight 中运行 Apache Hive 查询](../interactive-query/hdinsight-connect-hive-zeppelin.md)。
 * [使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight](apache-hadoop-connect-excel-hive-odbc-driver.md)。
 * [使用 Power Query 将 Excel 连接到 Apache Hadoop](apache-hadoop-connect-excel-power-query.md)。
-* [使用针对 Visual Studio 的 Data Lake 工具连接到 Azure HDInsight 并运行 Apache Hive 查询](apache-hadoop-visual-studio-tools-get-started.md)。
-* [使用 Azure HDInsight 工具进行可视化工作室代码](../hdinsight-for-vscode.md)。
-* [将数据上传到 HDInsight](../hdinsight-upload-data.md)
 * [将 Apache Hive 和 HDInsight 配合使用](hdinsight-use-hive.md)
-* [将 Apache Pig 和 HDInsight 配合使用](hdinsight-use-pig.md)
+* [将 Apache Pig 和 HDInsight 配合使用](../use-pig.md)
 * [将 MapReduce 作业与 HDInsight 配合使用](hdinsight-use-mapreduce.md)

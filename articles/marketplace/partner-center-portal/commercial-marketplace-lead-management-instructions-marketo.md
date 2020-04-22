@@ -2,17 +2,17 @@
 title: 在 Marketo 中配置潜在客户管理 |Azure 应用商店
 description: 为 Azure 市场客户配置 Marketo 的潜在客户管理。
 author: qianw211
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.author: dsindona
-ms.openlocfilehash: 04eae529efcf9509d8cd43a7629bb0b76b593cd0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 90f42954fd4d7324a7684795fca6ec302411790c
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81252408"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731116"
 ---
 # <a name="configure-lead-management-in-marketo"></a>在 Marketo 中配置潜在顾客管理
 
@@ -21,16 +21,21 @@ ms.locfileid: "81252408"
 ## <a name="set-up-your-marketo-crm-system"></a>设置市场 CRM 系统
 
 1. 登录到 Marketo。
+
 2. 选择“Design Studio”。****
+
     ![Marketo Design Studio](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-1.png)
 
 3.  选择“新建窗体”。****
+
     ![Marketo 新建窗体](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-2.png)
 
 4.  在“新建窗体”中填写必填字段，然后选择“创建”。****
+
     ![Marketo 创建新窗体](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-3.png)
 
 5.  在“字段详细信息”中，选择“完成”。****
+
     ![Marketo 完成窗体](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-4.png)
 
 6.  同意并关闭。
@@ -41,7 +46,7 @@ ms.locfileid: "81252408"
 
 8. Marketo 的“嵌入代码”将显示类似于以下示例的代码。
 
-    ```
+    ```html
     <form id="mktoForm_1179"></form>
     <script>MktoForms2.loadForm("("//app-ys12.marketo.com", "123-PQR-789", 1179);</script>
     ```
@@ -63,6 +68,7 @@ ms.locfileid: "81252408"
 准备好在发布门户中配置产品/服务的首席管理信息时，请按照以下步骤操作： 
 
 1. 导航到产品 **/服务"产品/服务"设置**页面。
+
 1. 在"潜在顾客管理"部分下选择 **"连接**"。 
 
     ![铅管理 - 连接](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
@@ -73,12 +79,13 @@ ms.locfileid: "81252408"
 
 4. 提供**服务器 ID**、**蒙奇帐户 ID**和窗体**ID**。
 
-    >[!Note]
-    >您必须完成配置产品/服务的其余部分并发布它，然后才能收到产品/服务的潜在顾客。 
+    > [!Note]
+    > 您必须完成配置产品/服务的其余部分并发布它，然后才能收到产品/服务的潜在顾客。 
 
 5. **联系电子邮件**- 为公司中应接收新潜在顾客的电子邮件通知的人员提供电子邮件。 您可以通过用分号分隔它们来提供多封电子邮件。
+
 6. 选择“确定”  。
 
-要确保已成功连接到潜在顾客目标，请单击验证按钮。 如果成功，您将在潜在顾客目标中具有测试潜在顾客。
+   要确保已成功连接到潜在顾客目标，请单击验证按钮。 如果成功，您将在潜在顾客目标中具有测试潜在顾客。
 
-![连接详细信息](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-connection-details.png)
+   ![连接详细信息](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-connection-details.png)

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 6b7ca1f10744bf38137c57d94d796655946c31b3
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: a62551b31c51836dfa50534ee6db907c8a4e111a
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81390348"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730615"
 ---
 # <a name="create-an-azure-application-offer"></a>创建 Azure 应用程序产品/服务
 
@@ -56,7 +56,7 @@ Azure[应用商店的视频构建解决方案模板和托管应用程序](https:
 * [了解 Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)
 * 快速入门：
 
-    * [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)
+    * [Azure 快速启动模板](https://azure.microsoft.com/documentation/templates/)
     * [GitHub Azure 快速入门模板](https://github.com/azure/azure-quickstart-templates)
     * [发布应用程序定义](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
     * [部署服务目录应用](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
@@ -293,7 +293,7 @@ Azure[应用商店的视频构建解决方案模板和托管应用程序](https:
 
 选择 **"公共 Azure"** 选项可使解决方案部署到具有应用商店集成的所有公共 Azure 区域的客户。  了解有关[地理可用性](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)的更多信息。
 
-选择**Azure 政府云**选项可使解决方案在 Azure[政府云](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)中部署，这是一种政府社区云，对有资格为这些实体提供服务的来自美国联邦、州、本地或部落的客户以及合作伙伴具有受控访问权限。  作为发布者，您负责为此云社区提供服务的任何合规性控制、安全措施和最佳实践。  Azure 政府使用物理隔离的数据中心和网络（仅位于美国）。  在发布到[Azure 政府](https://aka.ms/azuregovpublish)之前，Microsoft 建议您在环境中测试和验证解决方案，因为某些终结点可能有所不同。 要暂示和测试您的解决方案，请从此[链接](https://azure.microsoft.com/global-infrastructure/government/request/)请求试用帐户。
+选择**Azure 政府云**选项可使解决方案在 Azure[政府云](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)中部署，这是一种政府社区云，对有资格为这些实体提供服务的来自美国联邦、州、本地或部落的客户以及合作伙伴具有受控访问权限。  作为发布者，您负责为此云社区提供服务的任何合规性控制、安全措施和最佳实践。  Azure 政府使用物理隔离的数据中心和网络（仅位于美国）。  在发布到[Azure 政府](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)之前，Microsoft 建议您在环境中测试和验证解决方案，因为某些终结点可能有所不同。 要暂示和测试您的解决方案，请从此[链接](https://azure.microsoft.com/global-infrastructure/government/request/)请求试用帐户。
 
 >[!Note]
 >在特定云中发布计划后，无法删除该云。

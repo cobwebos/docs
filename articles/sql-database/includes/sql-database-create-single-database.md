@@ -6,12 +6,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: mathoma
 ms.reviewer: vanto
-ms.openlocfilehash: c1ca87b6e7b8afb50522e73107707e15782a0a91
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 563ac8748e9d4f8a254a151814491113b9c816e6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79199969"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685131"
 ---
 在此步骤中，你将创建一个 Azure SQL 数据库服务器和一个使用 AdventureWorksLT 示例数据的数据库。 可以通过使用 Azure 门户菜单和屏幕，或通过在 Azure Cloud Shell 中使用 Azure CLI 或 PowerShell 脚本来创建数据库。
 
@@ -106,7 +106,7 @@ location=westus2
 adminlogin=azureuser
 password=Azure1234567
 
-# Set a logical server name that is unique in the system
+# Set a logical server name that is unique to Azure DNS (<server_name>.database.windows.net)
 servername=server-$RANDOM
 
 # Set the ip address range that can access your database

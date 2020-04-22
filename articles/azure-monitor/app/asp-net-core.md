@@ -3,12 +3,12 @@ title: ASP.NET核心应用程序的 Azure 应用程序见解 |微软文档
 description: 监视 ASP.NET Core Web 应用程序的可用性、性能和使用情况。
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: d6a0e507022452f1491e71651ba3bc8db3d1c090
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1a9a81d76df7f14fb99b8521e7bfa2edff6c9e9e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284783"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687373"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>适用于 ASP.NET Core 应用程序的 Application Insights
 
@@ -20,12 +20,12 @@ ms.locfileid: "80284783"
 
 无论在何处以何种方式运行你的应用程序，[适用于 ASP.NET Core 的 Application Insights SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) 都可对其进行监视。 如果应用程序正在运行并与 Azure 建立了网络连接，则可以收集遥测数据。 只要支持 .NET Core，就能支持 Application Insights 监视。 支持范围包括：
 * **操作系统**：Windows、Linux 或 Mac。
-* **托管方法**：在进程或进程外。
-* **部署方法**：框架相关或自包含。
-* **网络服务器**：IIS（互联网信息服务器）或凯斯特雷尔。
-* **托管平台**：Azure 应用服务、Azure VM、Docker、Azure 库伯奈斯服务 （AKS） 等的 Web 应用功能。
-* **.NET 核心运行时版本**： 1.XX、 2.XX 或 3.XX
-* **IDE**：视觉工作室、VS 代码或命令行。
+* **托管方法**：进程内或进程外。
+* **部署方法**：框架相关或独立。
+* **Web 服务器**：IIS (Internet Information Server) 或 Kestrel。
+* **托管平台**：Azure 应用服务的 Web 应用功能、Azure VM、Docker、Azure Kubernetes 服务 (AKS) 等。
+* **.NET Core 运行时版本**：1.XX、2.XX 或 3.XX
+* **IDE**：Visual Studio、VS Code 或命令行。
 
 > [!NOTE]
 > 如果您使用的是ASP.NET酷睿 3.X 以及应用程序见解，请使用[2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0)版本或更高版本。 这是支持ASP.NET酷3.X的唯一版本。
@@ -40,19 +40,19 @@ ms.locfileid: "80284783"
 1. 在 Visual Studio 中打开项目。
 
     > [!TIP]
-    > 如果需要，可为项目设置源代码管理，以便可以跟踪 Application Insights 做出的所有更改。 要启用源代码管理，请选择"**文件** > **添加到源代码管理**"。
+    > 如果需要，可为项目设置源代码管理，以便可以跟踪 Application Insights 做出的所有更改。 若要启用源代码管理，请选择“文件” > “添加到源代码管理”。  
 
-2. 选择**项目** > **添加应用程序见解遥测**。
+2. 选择“项目” > “添加 Application Insights 遥测”   。
 
-3. 选择 **"开始"。** 选项文本根据 Visual Studio 版本的不同而异。 在某些早期版本中，使用的是“免费开始”按钮。****
+3. 选择“入门”。  选项文本根据 Visual Studio 版本的不同而异。 在某些早期版本中，使用的是“免费开始”按钮。 
 
-4. 选择订阅。 然后选择**资源** > **注册**。
+4. 选择订阅。 然后选择“资源” > “注册”。  
 
-5. 将 Application Insights 添加到项目后，确认使用的是最新稳定版本的 SDK。 转到**项目** > **管理 NuGet 包** > **微软.应用程序见解.AspNetCore**. 根据需要选择“更新”。****
+5. 将 Application Insights 添加到项目后，确认使用的是最新稳定版本的 SDK。 转到“项目” > “管理 NuGet 包” > “Microsoft.ApplicationInsights.AspNetCore”。    根据需要选择“更新”。 
 
      ![显示在何处选择要更新的 Application Insights 包的屏幕截图](./media/asp-net-core/update-nuget-package.png)
 
-6. 如果您遵循可选提示并将项目添加到源代码管理，请转到**查看** > **团队资源管理器** > **更改**。 然后选择每个文件，以查看 Application Insights 遥测功能所做的更改的差异视图。
+6. 如果你已遵循可选的提示操作并已将项目添加到源代码管理，请转到“视图” > “团队资源管理器” > “更改”。    然后选择每个文件，以查看 Application Insights 遥测功能所做的更改的差异视图。
 
 ## <a name="enable-application-insights-server-side-telemetry-no-visual-studio"></a>启用 Application Insights 服务器端遥测（不使用 Visual Studio）
 
@@ -132,10 +132,10 @@ ms.locfileid: "80284783"
 
 ### <a name="performance-counters"></a>性能计数器
 
-对ASP.NET核心[中的性能计数器](https://azure.microsoft.com/documentation/articles/app-insights-web-monitor-performance/)的支持是有限的：
+对 ASP.NET Core 中的[性能计数器](https://azure.microsoft.com/documentation/articles/app-insights-web-monitor-performance/)的支持限制如下：
 
 * 如果应用程序在 Azure Web 应用 (Windows) 中运行，则 SDK 2.4.1 和更高版本将收集性能计数器。
-* 如果应用程序在 Windows 中运行，并且面向 `NETSTANDARD2.0` 或更高版本，则 SDK 2.7.1 版和更高版本将收集性能计数器。
+* 如果应用程序在 Windows 中运行，并且面向 `NETSTANDARD2.0` 或更高版本，则 SDK 2.7.1 和更高版本将收集性能计数器。
 * 对于面向 .NET Framework 的应用程序，所有版本的 SDK 都支持性能计数器。
 * SDK 2.8.0 版和更高版本支持 Linux 中的 cpu/内存计数器。 Linux 不支持其他计数器。 在 Linux（和其他非 Windows 环境）中，获取系统计数器的建议方法是使用 [EventCounter](#eventcounter)
 
@@ -160,13 +160,13 @@ ms.locfileid: "80284783"
         </head>
     ```
     
-或者使用 SDK `FullScript` `ScriptBody` v2.14 中的 可用 。 如果需要控制标记以设置内容安全策略`<script>`，请使用此选项：
+从 SDK v2.14 开始，除了使用 `FullScript` 之外，还可以使用 `ScriptBody`。 如果需要控制 `<script>` 标记以设置内容安全策略，请使用此标记：
 
-    ```cshtml
-        <script> // apply custom changes to this script tag.
-            @Html.Raw(JavaScriptSnippet.ScriptBody)
-        </script>
-    ```
+```cshtml
+ <script> // apply custom changes to this script tag.
+     @Html.Raw(JavaScriptSnippet.ScriptBody)
+ </script>
+```
 
 前面引用的 `.cshtml` 文件名取自默认的 MVC 应用程序模板。 从根本上讲，若要为应用程序正确启用客户端监视，JavaScript 代码片段必须出现在所要监视的应用程序的每个页面的 `<head>` 节中。 将 JavaScript 代码片段添加到 `_Layout.cshtml` 即可实现此应用程序模板的此目标。 
 
@@ -199,12 +199,12 @@ public void ConfigureServices(IServiceCollection services)
 
 `ApplicationInsightsServiceOptions` 中的完整设置列表
 
-|设置 | 描述 | 默认
+|设置 | 说明 | 默认
 |---------------|-------|-------
-|启用性能计数器收集模块  | 启用/禁用`PerformanceCounterCollectionModule` | true
-|启用请求跟踪遥测模块   | 启用/禁用`RequestTrackingTelemetryModule` | true
-|启用事件计数器收集模块   | 启用/禁用`EventCounterCollectionModule` | true
-|启用依赖跟踪遥测模块   | 启用/禁用`DependencyTrackingTelemetryModule` | true
+|启用性能计数器收集模块  | 启用/禁用`PerformanceCounterCollectionModule` | 是
+|启用请求跟踪遥测模块   | 启用/禁用`RequestTrackingTelemetryModule` | 是
+|启用事件计数器收集模块   | 启用/禁用`EventCounterCollectionModule` | 是
+|启用依赖跟踪遥测模块   | 启用/禁用`DependencyTrackingTelemetryModule` | 是
 |启用应用服务检测数据模块  |  启用/禁用`AppServicesHeartbeatTelemetryModule` | true
 |启用 Azure 实例元数据数据模块   |  启用/禁用`AzureInstanceMetadataTelemetryModule` | true
 |EnableQuickPulseMetricStream | Enable/Disable LiveMetrics feature | true

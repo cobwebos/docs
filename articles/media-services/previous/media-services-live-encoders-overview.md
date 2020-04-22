@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 82fa5968d004bd4460f2c05ec944f6e568508675
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 5a17f98d69cb2196f92e19b66fc23dcd89bce188
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641137"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687147"
 ---
 # <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>如何在使用 Azure 媒体服务时配置本地编码器以创建多比特率流
 本主题列出的本地实时编码器可用于捕获直播活动，并将单比特率实时流发送到 AMS 频道（已启用实时编码）以供进一步处理。 本主题还列出了演示如何配置所列编码器的教程链接。
@@ -34,7 +34,7 @@ ms.locfileid: "81641137"
 有关如何配置 [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) 编码器以将单比特率实时流发送到 AMS 通道的信息，请参阅[配置 Wirecast](media-services-configure-wirecast-live-encoder.md)。
 
 ## <a name="elemental-live"></a>Elemental Live
-有关详细信息，请参阅 [Elemental Live](https://www.elementaltechnologies.com/products/elemental-live)。
+有关详细信息，请参阅 [Elemental Live](https://www.elemental.com/products/aws-elemental-appliances-software/#elemental-live)。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

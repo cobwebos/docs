@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 04/20/2020
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcccc64e0c766164a06932e9b65a4459816f9deb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89e09fd63ee6121ac9bf7f3c2be00f0ac22f752f
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409110"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731708"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>如何配置自助应用程序分配
 
@@ -42,6 +42,9 @@ ms.locfileid: "79409110"
 
 -   （可选）自动将自助服务分配的用户直接分配到应用程序角色。
 
+> [!NOTE]
+> 用户需要 Azure 活动目录高级版 （P1 或 P2） 许可证才能请求加入自助服务应用，并且所有者需要批准或拒绝请求。 如果没有 Azure 活动目录高级许可证，用户无法添加自助服务应用。
+
 ## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>启用自助服务应用程序访问以允许用户查找自己的应用程序
 
 自助服务应用程序访问是允许用户自行发现应用程序以及允许业务组批准对这些应用程序的访问的好方法。 对于应用程序上的密码单一签名，您还可以允许业务组管理从他们自己的"我的应用"访问面板分配给这些用户的凭据。
@@ -50,7 +53,7 @@ ms.locfileid: "79409110"
 
 1. 以全局管理员身份登录到[Azure 门户](https://portal.azure.com)。
 
-2. 选择**Azure 活动目录**。 在左侧导航菜单中，选择**企业应用程序**。
+2. 选择“Azure Active Directory”  。 在左侧导航菜单中，选择**企业应用程序**。
 
 3. 从列表中选择应用程序。 如果看不到应用程序，请开始在搜索框中键入其名称。 或者使用筛选器控件选择应用程序类型、状态或可见性，然后选择 **"应用**"。
 

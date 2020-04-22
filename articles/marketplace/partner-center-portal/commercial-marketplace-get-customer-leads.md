@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 05b166b2ec46900d9e3972025efb581d9619ec6a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: a1ec89dfd2dda91a10f2cc00b6ca4d9d7abbf032
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81252590"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731142"
 ---
 # <a name="customer-leads-from-your-marketplace-offer"></a>来自市场产品/服务的客户线索
 
@@ -96,7 +96,7 @@ ms.locfileid: "81252590"
 
 ### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>在何处可获得设置潜在顾客目标的帮助？
 
-您可以[在此处](#connect-to-your-crm-system)查找文档或通过aka.ms/marketplacepublishersupport提交支持票证，然后选择 **"产品/服务创建"** •**您的产品/服务类型**+ **"潜在客户管理配置"。**
+您可以[在此处](#connect-to-your-crm-system)查找文档或通过https://partner.microsoft.com/support/v2/?stage=1选择 **"产品/服务创建"** 或 **"****潜在客户管理配置"** 来查找文档或提交支持票证。
 
 ### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-on-the-marketplace"></a>我是否需要配置潜在顾客目标才能在市场上发布产品/服务？
 
@@ -133,7 +133,7 @@ Azure Blob 潜在顾客目标不再受支持，因此您缺少产品/服务生�
 
 ### <a name="i-received-an-email-from-marketplace-why-cant-i-find-the-lead-in-my-crm"></a>我收到了来自市场的电子邮件，为什么找不到 CRM 中的潜在顾客？
 
-最终用户的电子邮件域可能来自 .edu。 出于隐私原因，我们不会从 .edu 域传递私人身份信息。 通过aka.ms/marketplacepublishersupport提交支持票证。
+最终用户的电子邮件域可能来自 .edu。 出于隐私原因，我们不会从 .edu 域传递私人身份信息。 通过https://partner.microsoft.com/support/v2/?stage=1提交支持票证。
 
 ### <a name="i-have-configured-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>我已经将 Azure 表配置为我的潜在顾客目标，如何查看潜在顾客？
 

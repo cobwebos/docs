@@ -3,19 +3,20 @@ title: 监视 Azure 应用服务性能 | Microsoft Docs
 description: Azure 应用服务的应用程序性能监视。 对加载和响应时间、依赖项信息绘制图表，并针对性能设置警报。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: d2134e059a446c18108e8dd16bcc74504b42b15a
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.custom: fasttrack-edit
+ms.openlocfilehash: dd0d3be6ed7e5185183618cc2bdeff5ee8d749f3
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437204"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729792"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
 现在，可以比过去更轻松地针对 [Azure 应用服务](https://docs.microsoft.com/azure/app-service/)中运行的基于 ASP.NET 和 ASP.NET Core 的 Web 应用程序启用监视。 以前需要手动安装某个站点扩展，而现在应用服务映像中默认会内置最新的扩展/代理。 本文逐步讲解如何启用 Application Insights 监视，并提供有关如何自动完成大规模部署的初步指导。
 
 > [!NOTE]
-> 使用开发**工具** > **扩展**手动添加应用程序见解网站扩展。 此扩展安装方法依赖于每个新版本的手动更新。 扩展的最新稳定版现在会[预装](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions)在应用服务映像中。 这些文件位于 `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` 中，每发布一个稳定版本，它们都会自动更新。 如果在下文中遵循基于代理的说明启用监视，系统会自动删除已弃用的扩展。
+> 通过“开发工具” > “扩展”手动添加 Application Insights 站点扩展的功能已弃用。   此扩展安装方法依赖于每个新版本的手动更新。 扩展的最新稳定版现在会[预装](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions)在应用服务映像中。 这些文件位于 `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` 中，每发布一个稳定版本，它们都会自动更新。 如果在下文中遵循基于代理的说明启用监视，系统会自动删除已弃用的扩展。
 
 ## <a name="enable-application-insights"></a>启用 Application Insights
 
@@ -55,15 +56,16 @@ ms.locfileid: "80437204"
 2. 指定要使用哪些资源后，可以选择 Application Insights 根据平台为应用程序收集数据的方式。 ASP.NET 应用监视默认已启用，它提供两种不同级别的集合。
 
     ![根据平台选择选项](./media/azure-web-apps/choose-options-new.png)
-
-   * .NET**基本集合**级别提供基本的单实例 APM 功能。
-
-   * .NET 建议集合**** 级别：
-       * 添加 CPU、内存和 I/O 使用情况趋势。
-       * 跨请求/依赖关系边界关联微服务。
-       * 收集使用情况趋势，并启用从可用性结果到事务的关联。
-       * 收集未经主机进程处理的异常。
-       * 提高使用采样时，负载下的 APM 指标准确性。
+ 
+ 以下是为每个路由收集的数据摘要：
+        
+|  | .NET 基本集合 | .NET 推荐集合 |
+| --- | --- | --- |
+| 添加 CPU、内存和 I/O 使用情况趋势 |是 |是 |
+| 收集使用情况趋势，并启用从可用性结果到事务的关联 | 是 |是 |
+| 收集未经主机进程处理的异常 | 是 |是 |
+| 提高使用采样时，负载下的 APM 指标准确性 | 是 |是 |
+| 跨请求/依赖项边界关联微服务 | 否（仅限单实例 APM 功能） |是 |
 
 3. 若要配置采样等设置（以前可以通过 applicationinsights.config 文件进行控制），现在可以通过应用程序设置使用相应的前缀来与这些设置交互。 
 
@@ -117,7 +119,7 @@ ms.locfileid: "80437204"
 
      名称：`APPINSIGHTS_JAVASCRIPT_ENABLED`
 
-     值： `true`
+     值：`true`
 
    * **保存**设置并**重新启动**应用。
 
@@ -136,7 +138,7 @@ ms.locfileid: "80437204"
 
      名称：`APPINSIGHTS_JAVASCRIPT_ENABLED`
 
-     值： `false`
+     值：`false`
 
    * **保存**设置并**重新启动**应用。
 

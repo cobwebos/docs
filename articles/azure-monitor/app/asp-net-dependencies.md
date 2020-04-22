@@ -3,12 +3,12 @@ title: 在 Azure Application Insights 中跟踪依赖项 | Microsoft Docs
 description: 使用 Application Insights 监视来自本地或 Microsoft Azure Web 应用程序的依赖项调用。
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 1d4e8d1a0482257c92f47a00bd440e786c09c7aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e30d8036c1fc624d39f027f38e314c6c57360f6
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80292128"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731492"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>在 Azure Application Insights 中跟踪依赖项 
 
@@ -26,8 +26,8 @@ ms.locfileid: "80292128"
 |WCF 调用| 仅当使用基于 Http 的绑定时，才会自动跟踪。|
 |SQL | 使用 `SqlClient` 发出的调用。 请参阅[此文](#advanced-sql-tracking-to-get-full-sql-query)来捕获 SQL 查询。  |
 |[Azure 存储（Blob、表、队列）](https://www.nuget.org/packages/WindowsAzure.Storage/) | 使用 Azure 存储客户端发出的调用。 |
-|[事件中心客户端 SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | 1.1.0 和更高版本。 |
-|[ServiceBus 客户端 SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| 3.0.0 和更高版本。 |
+|[事件中心客户端 SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | 1\.1.0 和更高版本。 |
+|[ServiceBus 客户端 SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| 3\.0.0 和更高版本。 |
 |Azure Cosmos DB | 仅当使用 HTTP/HTTPS 时，才会自动跟踪。 Application Insights 不会捕获 TCP 模式。 |
 
 如果您缺少依赖项，或者使用其他 SDK 请确保它位于[自动收集的依赖项](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)列表中。 如果依赖项未自动收集，您仍可以使用[跟踪依赖项调用](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)手动跟踪它。
@@ -94,10 +94,10 @@ ms.locfileid: "80292128"
 
 对于 ASP.NET 应用程序，可以借助字节代码检测（需要检测引擎）收集完整的 SQL 查询。 这需要执行其他特定于平台的步骤，如下所述。
 
-| Platform | 获取完整 SQL 查询所要执行的步骤 |
+| 平台 | 获取完整 SQL 查询所要执行的步骤 |
 | --- | --- |
 | Azure Web 应用 |在 Web 应用控制面板中，[打开“Application Insights”边栏选项卡](../../azure-monitor/app/azure-web-apps.md)并启用“.NET”下的“SQL 命令” |
-| IIS 服务器（Azure VM、本地服务器，等等。） | 使用状态监视器 PowerShell 模块[安装检测引擎](../../azure-monitor/app/status-monitor-v2-api-enable-instrumentation-engine.md)并重启 IIS。 |
+| IIS 服务器（Azure VM、本地服务器，等等。） | 使用状态监视器 PowerShell 模块[安装检测引擎](../../azure-monitor/app/status-monitor-v2-api-reference.md)并重启 IIS。 |
 | Azure 云服务 | 添加[启动任务以安装状态监视器](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> 应用应在生成时通过为[ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)或[ASP.NET核心应用程序](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)安装 NuGet 包，在生成时将其装机到应用程序 Insights SDK |
 | IIS Express | 不支持
 

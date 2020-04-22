@@ -1,20 +1,20 @@
 ---
 title: 模板结构和语法
-description: 使用声明性 JSON 语法描述 Azure 资源管理器模板的结构和属性。
+description: 使用声明性 JSON 语法描述 Azure Resource Manager 模板的结构和属性。
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: 4e8334e4ddfaee52c5d1aa68fb8689fcde0a6cbf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/20/2020
+ms.openlocfilehash: 60d800eb5251fb3454ba60a67bd109261c6ff9d4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79459984"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687870"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>了解 ARM 模板的结构和语法
 
 本文介绍 Azure 资源管理器 （ARM） 模板的结构。 演示了模板的不同部分，以及可在相应部分使用的属性。
 
-本文面向熟悉 ARM 模板的用户。 其中提供了有关模板结构的详细信息。 有关指导您完成模板创建过程的分步教程，请参阅[教程：创建和部署第一个 Azure 资源管理器模板](template-tutorial-create-first-template.md)。
+本文面向熟悉 ARM 模板的用户。 其中提供了有关模板结构的详细信息。 如果需要通过分步教程来了解创建模板的过程，请参阅[教程：创建和部署第一个 Azure 资源管理器模板](template-tutorial-create-first-template.md)。
 
 ## <a name="template-format"></a>模板格式
 
@@ -33,7 +33,7 @@ ms.locfileid: "79459984"
 }
 ```
 
-| 元素名称 | 必选 | 描述 |
+| 元素名称 | 必须 | 说明 |
 |:--- |:--- |:--- |
 | $schema |是 |描述模板语言版本的 JSON 架构文件所在的位置。 您使用的版本号取决于部署范围和 JSON 编辑器。<br><br>如果将[VS 代码与 Azure 资源管理器工具扩展一起使用](use-vs-code-to-create-template.md)，请使用最新版本进行资源组部署：<br>`https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#`<br><br>其他编辑器（包括 Visual Studio）可能无法处理此架构。 对于这些编辑器，请使用：<br>`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>对于订阅部署，请使用：<br>`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`<br><br>对于管理组部署，请使用：<br>`https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#`<br><br>对于租户部署，请使用：<br>`https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#` |
 | contentVersion |是 |模板的版本（例如 1.0.0.0）。 可为此元素提供任意值。 使用此值记录模板中的重要更改。 使用模板部署资源时，此值可用于确保使用正确的模板。 |
@@ -69,7 +69,7 @@ ms.locfileid: "79459984"
 }
 ```
 
-| 元素名称 | 必选 | 描述 |
+| 元素名称 | 必选 | 说明 |
 |:--- |:--- |:--- |
 | parameter-name |是 |参数的名称。 必须是有效的 JavaScript 标识符。 |
 | type |是 |参数值的类型。 允许的类型和值为 **string**、**securestring**、**int**、**bool**、**object**、**secureObject** 和 **array**。 请参阅[数据类型](#data-types)。 |
@@ -164,7 +164,7 @@ ms.locfileid: "79459984"
 ],
 ```
 
-| 元素名称 | 必选 | 描述 |
+| 元素名称 | 必选 | 说明 |
 |:--- |:--- |:--- |
 | namespace |是 |自定义函数的命名空间。 用于避免与模板函数的命名冲突。 |
 | function-name |是 |自定义函数的名称。 调用函数时，将函数名称与命名空间组合在一起。 例如，若要在命名空间 contoso 中调用名为 uniqueName 的函数，请使用 `"[contoso.uniqueName()]"`。 |
@@ -235,10 +235,10 @@ ms.locfileid: "79459984"
 ]
 ```
 
-| 元素名称 | 必选 | 描述 |
+| 元素名称 | 必选 | 说明 |
 |:--- |:--- |:--- |
 | 条件 (condition) | 否 | 布尔值，该值指示在此部署期间是否将预配资源。 为 `true` 时，在部署期间创建资源。 为 `false` 时，此部署将跳过资源。 请参阅[条件](conditional-resource-deployment.md)。 |
-| type |是 |资源的类型。 此值是资源提供程序的命名空间和资源类型（例如 **Microsoft.Storage/storageAccounts**）的组合。 若要确定可用值，请参阅[模板参考](/azure/templates/)。 对于子资源，类型的格式取决于该资源是嵌套在父资源中，还是在父资源的外部定义。 请参阅[设置子资源的名称和类型](child-resource-name-type.md)。 |
+| type |是 |资源的类型。 此值是资源提供程序的命名空间和资源类型（如**Microsoft.存储/存储帐户**）的组合。 若要确定可用值，请参阅[模板参考](/azure/templates/)。 对于子资源，类型的格式取决于该资源是嵌套在父资源中，还是在父资源的外部定义。 请参阅[设置子资源的名称和类型](child-resource-name-type.md)。 |
 | apiVersion |是 |用于创建资源的 REST API 版本。 若要确定可用值，请参阅[模板参考](/azure/templates/)。 |
 | name |是 |资源的名称。 该名称必须遵循 RFC3986 中定义的 URI 构成部分限制。 向外部各方公开资源名称的 Azure 服务会验证名称，以确保它不是试图窃取另一标识。 对于子资源，名称的格式取决于该资源是嵌套在父资源中，还是在父资源的外部定义。 请参阅[设置子资源的名称和类型](child-resource-name-type.md)。 |
 | comments |否 |用于描述模板中资源的注释。 有关详细信息，请参阅[模板中的注释](template-syntax.md#comments)。 |
@@ -272,12 +272,12 @@ ms.locfileid: "79459984"
 }
 ```
 
-| 元素名称 | 必选 | 描述 |
+| 元素名称 | 必选 | 说明 |
 |:--- |:--- |:--- |
 | output-name |是 |输出值的名称。 必须是有效的 JavaScript 标识符。 |
 | 条件 (condition) |否 | 指示此输出值是否返回的布尔值。 如果为 `true`，则该值包含在部署的输出中。 如果为 `false`，则此部署将跳过输出值。 如果未指定，则默认值为 `true`。 |
 | type |是 |输出值的类型。 输出值支持的类型与模板输入参数相同。 如果指定 **securestring** 作为输出类型，则值不会显示在部署历史记录中，并且无法从另一个模板检索。 若要在多个模板中使用机密值，请在 Key Vault 中存储该机密，并在参数文件中引用该机密。 有关详细信息，请参阅[在部署过程中使用 Azure 密钥保管库传递安全参数值](key-vault-parameter.md)。 |
-| value |否 |评估并作为输出值返回的模板语言表达式。 指定**值**或**复制**。 |
+| 值 |否 |评估并作为输出值返回的模板语言表达式。 指定**值**或**复制**。 |
 | copy |否 | 用于返回多个输出值。 指定**值**或**复制**。 有关详细信息，请参阅[Azure 资源管理器模板中的输出迭代](copy-outputs.md)。 |
 
 有关如何使用输出的示例，请参阅 [Azure 资源管理器模板中的输出](template-outputs.md)。
@@ -293,7 +293,7 @@ ms.locfileid: "79459984"
 对于内联注释，可使用 `//` 或 `/* ... */`，但此语法不适用于所有工具。 无法使用门户模板编辑器处理带有内联注释的模板。 如果添加此类注释，请务必使用支持内联 JSON 注释的工具。
 
 > [!NOTE]
-> 若要使用 Azure CLI 部署包含注释的模板，必须使用 `--handle-extended-json-format` 开关。
+> 要将具有注释的模板与版本 2.3.0 或更版本的 Azure CLI 一`--handle-extended-json-format`起使用，则必须使用该开关。
 
 ```json
 {
@@ -404,7 +404,7 @@ ms.locfileid: "79459984"
   ],
 ```
 
-若要使用 Azure CLI 部署包含多行字符串的模板，必须使用 `--handle-extended-json-format` 开关。
+要使用 Azure CLI 版本 2.3.0 或更版本的模板来部署具有多行字符串的模板`--handle-extended-json-format`，必须使用该交换机。
 
 ## <a name="next-steps"></a>后续步骤
 

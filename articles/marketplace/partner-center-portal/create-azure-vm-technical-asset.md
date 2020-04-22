@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 46c59e8b4e60fbe17887ea0fc375b6da758ebf50
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 4d2d33f9d83132147b5b257ffcd6d659f272b8ec
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457393"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730716"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>创建 Azure 虚拟机技术资产
 
@@ -109,7 +109,7 @@ Azure 提供了一系列已批准的 Linux 发行版。 有关最新列表，请
 
 Azure 开始预配指定的虚拟机。 您可以通过选择左侧的 **"虚拟机"** 选项卡来跟踪其进度。 创建后，状态将更改为 **"正在运行**"。
 
-如果在创建新基于 Azure 的 VHD 时遇到困难，请参阅[VHD 创建期间的常见问题 （FAQ）。](https://aka.ms/VHDcreationIssues)
+如果在创建新基于 Azure 的 VHD 时遇到困难，请参阅[VHD 创建期间的常见问题 （FAQ）。](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-issues-during-vhd-creation)
 
 ### <a name="connect-to-your-azure-vm"></a>连接到 Azure VM
 
@@ -129,7 +129,7 @@ Azure 开始预配指定的虚拟机。 您可以通过选择左侧的 **"虚拟
 要连接到基于 Linux 的 VM，您需要一个安全的 shell 协议 （SSH） 客户端。 以下步骤使用免费[的 PuTTY](https://www.ssh.com/ssh/putty/) SHH 端子。
 
 1. 转到 [Azure 门户](https://ms.portal.azure.com/)。
-2. 搜索并选择**虚拟机**。
+2. 搜索并选择“虚拟机”。 
 3. 选择要连接到的 VM。
 4. 如果 VM 尚未运行，则启动它。
 5. 选择 VM 的名称以打开其 **"概述"** 页。

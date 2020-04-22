@@ -1,21 +1,21 @@
 ---
-title: 教程 - 准备要部署到 Azure Spring Cloud 中的 Java Spring 应用程序
-description: 在本教程中，你将准备要部署到 Azure Spring Cloud 的 Java Spring 应用程序。
+title: 操作说明 - 准备要部署到 Azure Spring Cloud 中的 Java Spring 应用程序
+description: 在本主题中，我们准备一个要部署到 Azure Spring Cloud 的 Java Spring 应用程序。
 author: bmitchell287
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 49ebfec131c8b9fa7b8535163c03eb7cb692790d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
-ms.translationtype: HT
+ms.openlocfilehash: 16cee333d52765755b732c4de4dd8a6e092a130d
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78200016"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731184"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>准备要部署到 Azure Spring Cloud 中的 Java Spring 应用程序
 
-本快速入门介绍如何准备一个现有的 Java Spring 应用程序，以便将其部署到 Azure Spring Cloud。 在配置正确的情况下，Azure Spring Cloud 可以提供强大的服务来监视、缩放和更新 Java Spring Cloud 应用程序。
+本主题介绍如何准备现有的需要部署到 Azure Spring Cloud 的 Java Spring 应用程序。 在配置正确的情况下，Azure Spring Cloud 可以提供强大的服务来监视、缩放和更新 Java Spring Cloud 应用程序。
 
 其他示例说明了在配置 POM 文件时，如何将应用程序部署到 Azure Spring Cloud。 
 * [使用 Azure 门户启动应用](spring-cloud-quickstart-launch-app-portal.md)
@@ -27,7 +27,7 @@ ms.locfileid: "78200016"
 
 只有 Spring/Java 应用程序能够在 Azure Spring Cloud 中运行。
 
-Azure Spring Cloud 支持 Java 8 和 Java 11。 托管环境包含用于 Azure 的最新版 Azul Zulu OpenJDK。 若要详细了解用于 Azure 的 Azul Zulu OpenJDK，请参阅[安装 JDK](https://docs.microsoft.com/azure/java/jdk/java-jdk-install)。
+Azure Spring Cloud 支持 Java 8 和 Java 11。 托管环境包含用于 Azure 的最新版 Azul Zulu OpenJDK。 若要详细了解用于 Azure 的 Azul Zulu OpenJDK，请参阅[安装 JDK](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)。
 
 ## <a name="spring-boot-and-spring-cloud-versions"></a>Spring Boot 和 Spring Cloud 版本
 
@@ -225,7 +225,7 @@ public class GatewayApplication {
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何配置 Java Spring 应用程序，以便将其部署到 Azure Spring Cloud。 若要了解如何设置配置服务器实例，请继续阅读下一教程。
+本主题介绍了如何配置 Java Spring 应用程序，以便将其部署到 Azure Spring Cloud。 若要了解如何设置配置服务器实例，请参阅以下文章。
 
 > [!div class="nextstepaction"]
 > [了解如何设置配置服务器实例](spring-cloud-tutorial-config-server.md)

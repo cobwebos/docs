@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: af99f369245d6006d0d4784e572020b820e406a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 50028e81c4ca130aa3266c164a431dc935a271cb
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71266043"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730041"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>使用 Striim 将数据迁移到 Azure 宇宙 DB Cassandra API 帐户
 
@@ -22,13 +22,13 @@ Azure 应用商店中的 Striim 映像提供从数据仓库和数据库到 Azure
 
 ## <a name="prerequisites"></a>先决条件
 
-* 如果没有[Azure 订阅](/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)，请先创建[一个免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。然后开始。
+* 如果还没有 [Azure 订阅](/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 * 本地运行的 Oracle 数据库，其中有一些数据。
 
 ## <a name="deploy-the-striim-marketplace-solution"></a>部署斯特里姆市场解决方案
 
-1. 登录到[Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 1. 选择 **"创建资源并在**Azure 应用商店中搜索**Striim"。** 选择第一个选项并**创建**。
 
@@ -41,7 +41,7 @@ Azure 应用商店中的 Striim 映像提供从数据仓库和数据库到 Azure
 
 1. 在 **"斯特里姆群集设置"** 窗格中，选择斯特里姆部署的类型和虚拟机大小。
 
-   |设置 | “值” | 描述 |
+   |设置 | 值 | 说明 |
    | ---| ---| ---|
    |斯特里姆部署类型 |独立 | Striim 可以在**独立**部署类型或**群集**部署类型中运行。 独立模式将在单个虚拟机上部署 Striim 服务器，您可以根据数据量选择 VM 的大小。 群集模式将在具有所选大小的两个或多个 VM 上部署 Striim 服务器。 具有 2 个以上节点的群集环境提供自动高可用性和故障转移。</br></br> 在本教程中，您可以选择"独立"选项。 使用默认的"Standard_F4s"大小 VM。 | 
    | 斯特里姆群集的名称|    <Striim_cluster_Name>|  斯特里姆群集的名称。|
@@ -155,7 +155,7 @@ Azure 应用商店中的 Striim 映像提供从数据仓库和数据库到 Azure
 
    ![连接到目标](./media/cosmosdb-cassandra-api-migrate-data-striim/connect-to-target.png)
 
-1. 在配置目标之前，请确保向[Striim 的 Java 环境添加了巴尔的摩根证书](/azure/java/java-sdk-add-certificate-ca-store#to-add-a-root-certificate-to-the-cacerts-store)。
+1. 在配置目标之前，请确保向[Striim 的 Java 环境添加了巴尔的摩根证书](/azure/developer/java/sdk/java-sdk-add-certificate-ca-store#to-add-a-root-certificate-to-the-cacerts-store)。
 
 1. 输入目标 Azure Cosmos DB 实例的配置属性，然后选择 **"保存"** 以继续。 以下是需要注意的关键参数：
 

@@ -4,15 +4,15 @@ description: 本文介绍 Azure Cosmos DB 如何提供高可用性
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 2afeae937d56a84c39167ad55a57c86f2623e52d
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 0a67360ab840b7897c85a382dfc3965bd27f6a3e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382709"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81688062"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 实现高可用性
 
@@ -20,13 +20,13 @@ Azure Cosmos DB 以透明方式在与 Cosmos 帐户关联的所有 Azure 区域�
 
 ![物理分区](./media/high-availability/cosmosdb-data-redundancy.png)
 
-- Cosmos 容器中的数据是[水平分区的](partitioning-overview.md)。
+- Cosmos 容器中的数据[已水平分区](partitioning-overview.md)。
 
 - 在每个区域中，每个分区受副本集的保护，该副本集中的大多数副本将复制并以持久方式提交所有写入内容。 副本分布在最多 10 到 20 个容错域中。
 
 - 将复制所有区域中的每个分区。 每个区域包含某个 Cosmos 容器的所有数据分区，可接受写入并为读取提供服务。  
 
-如果您的 Cosmos 帐户分布在*N* Azure 区域，则所有数据将至少有*N* x 4 个副本。 除了在与 Cosmos 帐户关联的区域之间提供低延迟数据访问和缩放写入/读取吞吐量以外，部署更多的区域（*N* 值较高）还可进一步提高可用性。  
+如果 Cosmos 帐户分布在 *N* 个 Azure 区域之间，则所有数据至少有 *N* x 4 个副本。 除了在与 Cosmos 帐户关联的区域之间提供低延迟数据访问和缩放写入/读取吞吐量以外，部署更多的区域（*N* 值较高）还可进一步提高可用性。  
 
 ## <a name="slas-for-availability"></a>可用性 SLA
 
@@ -97,6 +97,8 @@ Azure Cosmos DB 以透明方式在与 Cosmos 帐户关联的所有 Azure 区域�
 - 西欧
 
 - 美国西部 2
+
+- 澳大利亚东部
 
 > [!NOTE]
 > 为单个区域启用可用区域 Azure Cosmos 帐户将导致费用，相当于向帐户添加其他区域。 有关定价的详细信息，请参阅 Azure Cosmos DB 文章中的[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)和[多区域成本](optimize-cost-regions.md)。

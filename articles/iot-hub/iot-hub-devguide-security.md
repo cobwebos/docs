@@ -8,12 +8,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: d37320ad6e8caf3300756466eabe8de29a339c4a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: b7f9ac7e6e7049a3b744151bc9cb05115fbac935
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81258280"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729218"
 ---
 # <a name="control-access-to-iot-hub"></a>控制对 IoT 中心的访问
 
@@ -35,7 +38,7 @@ ms.locfileid: "81258280"
 
 可以通过以下方式授予[权限](#iot-hub-permissions)：
 
-* **IoT 中心级别的共享访问策略**。 共享访问策略可以授予任意[权限](#iot-hub-permissions)组合。 可使用 [IoT 中心资源 REST API](/rest/api/iothub/iothubresource) 或使用 [az iot 中心策略](/cli/azure/iot/hub/policy?view=azure-cli-latest) CLI 以编程方式在 [Azure 门户](https://portal.azure.com)中定义策略。 新建的 IoT 中心有以下默认策略：
+* **IoT 中心级别的共享访问策略**。 共享访问策略可以授予任意[权限](#iot-hub-permissions)组合。 可使用 [IoT 中心资源 REST API](https://portal.azure.com) 或使用 [az iot 中心策略](/rest/api/iothub/iothubresource) CLI 以编程方式在 [Azure 门户](/cli/azure/iot/hub/policy?view=azure-cli-latest)中定义策略。 新建的 IoT 中心有以下默认策略：
   
   | 共享访问策略 | 权限 |
   | -------------------- | ----------- |
@@ -51,13 +54,13 @@ ms.locfileid: "81258280"
 
 * 设备管理组件使用 *registryReadWrite* 策略。
 * 事件处理器组件使用 *service* 策略。
-* 运行时设备业务逻辑组件使用 service** 策略。
+* 运行时设备业务逻辑组件使用 service  策略。
 * 各个设备的连接使用 IoT 中心的标识注册表中存储的凭据。
 
 > [!NOTE]
 > 有关详细信息，请参阅[权限](#iot-hub-permissions)。
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 Azure IoT 中心可根据共享访问策略和标识注册表安全凭据来验证令牌，以授予对终结点的访问权限。
 
@@ -85,7 +88,7 @@ Azure IoT 中心可根据共享访问策略和标识注册表安全凭据来验�
 
 在这两种情况下，密码字段都包含令牌，如 [IoT 中心安全令牌](iot-hub-devguide-security.md#security-tokens)所述。
 
-HTTPS 通过在 Authorization**** 请求标头中包含有效的令牌来实施身份验证。
+HTTPS 通过在 Authorization  请求标头中包含有效的令牌来实施身份验证。
 
 #### <a name="example"></a>示例
 
@@ -114,7 +117,7 @@ HTTPS 通过在 Authorization**** 请求标头中包含有效的令牌来实施�
 
 ## <a name="security-tokens"></a>安全令牌
 
-IoT 中心使用安全令牌对设备和服务进行身份验证，以避免在线发送密钥。 并且安全令牌的有效期和范围有限。 [Azure IoT SDK](iot-hub-devguide-sdks.md)可自动生成令牌，而无需任何特殊配置。 在某些情况下，确实需要用户生成并直接使用安全令牌。 这些情况包括：
+IoT 中心使用安全令牌对设备和服务进行身份验证，以避免在线发送密钥。 并且安全令牌的有效期和范围有限。 [Azure IoT SDK](iot-hub-devguide-sdks.md) 无需任何特殊配置即可自动生成令牌。 在某些情况下，确实需要用户生成并直接使用安全令牌。 这些情况包括：
 
 * MQTT、AMQP 或 HTTPS 曲面的直接使用。
 
@@ -126,7 +129,7 @@ IoT 中心还允许设备使用 [X.509 证书](iot-hub-devguide-security.md#supp
 
 可以使用安全令牌向设备和服务授予限时访问 IoT 中心特定功能的权限。 若要获取授权连接到 IoT 中心，设备和服务必须发送使用共享访问或对称密钥进行签名的安全令牌。 这些密钥与设备标识一起存储在标识注册表中。
 
-使用共享访问密钥进行签名的令牌可以授权访问与共享访问策略权限相关的所有功能。 使用设备标识的对称密钥进行签名的令牌只能向相关设备标识授予 DeviceConnect**** 权限。
+使用共享访问密钥进行签名的令牌可以授权访问与共享访问策略权限相关的所有功能。 使用设备标识的对称密钥进行签名的令牌只能向相关设备标识授予 DeviceConnect  权限。
 
 安全令牌采用以下格式：
 
@@ -137,7 +140,7 @@ IoT 中心还允许设备使用 [X.509 证书](iot-hub-devguide-security.md#supp
 | 值 | 说明 |
 | --- | --- |
 | {signature} |HMAC-SHA256 签名字符串的格式为：`{URL-encoded-resourceURI} + "\n" + expiry`。 **重要说明**：密钥是从 base64 解码得出的，用作执行 HMAC-SHA256 计算的密钥。 |
-| {resourceURI} |此令牌可以访问的终结点的 URI 前缀（根据分段）以 IoT 中心的主机名开始（无协议）。 例如，`myHub.azure-devices.net/devices/device1` |
+| {resourceURI} |此令牌可以访问的终结点的 URI 前缀（根据分段）以 IoT 中心的主机名开始（无协议）。 例如： `myHub.azure-devices.net/devices/device1` |
 | {expiry} |从纪元 1970 年 1 月 1日 00:00:00 UTC 时间至今秒数的 UTF8 字符串。 |
 | {URL-encoded-resourceURI} |小写资源 URI 的小写 URL 编码 |
 | {policyName} |此令牌所引用的共享访问策略名称。 如果此令牌引用设备注册表凭据，则空缺。 |
@@ -247,7 +250,7 @@ public static string generateSasToken(string resourceUri, string key, string pol
 
 面向设备的终结点包括（无论任何协议）：
 
-| 终结点 | 功能 |
+| 端点 | 功能 |
 | --- | --- |
 | `{iot hub host name}/devices/{deviceId}/messages/events` |发送设备到云的消息。 |
 | `{iot hub host name}/devices/{deviceId}/messages/devicebound` |接收云到设备的消息。 |
@@ -281,7 +284,7 @@ var token = generateSasToken(endpoint, deviceKey, null, 60);
 
 ### <a name="use-a-shared-access-policy"></a>使用共享访问策略
 
-使用共享访问策略创建令牌时，将 `skn` 字段设置为策略名称。 此策略必须授予 DeviceConnect **** 权限。
+使用共享访问策略创建令牌时，将 `skn` 字段设置为策略名称。 此策略必须授予 DeviceConnect  权限。
 
 使用共享访问策略访问设备功能的两个主要方案是：
 
@@ -319,7 +322,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 以下是终结点上显示的服务功能：
 
-| 终结点 | 功能 |
+| 端点 | 功能 |
 | --- | --- |
 | `{iot hub host name}/devices` |创建、更新、检索和删除设备标识。 |
 | `{iot hub host name}/messages/events` |接收设备到云的消息 |

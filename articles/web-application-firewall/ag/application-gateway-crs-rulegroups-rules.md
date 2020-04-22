@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 563aa701c1403a1ef26c6073496e7e59c7c5096c
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 59409c428aba938c49fc37647db82f30d783a629
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521846"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730559"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web 应用程序防火墙 CRS 规则组和规则
 
@@ -140,9 +140,9 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |920201|范围 = pdf 请求的字段在多（35 个或以上）|
 |920202|范围 = pdf 请求的字段在多（6 个或以上）|
 |920210|找到了多个/有冲突的连接标头数据。|
-|920220|URL 编码滥用攻击企图|
+|920220|URL 编码滥用攻击尝试|
 |920230|检测到多个 URL 编码|
-|920240|URL 编码滥用攻击企图|
+|920240|URL 编码滥用攻击尝试|
 |920250|UTF8 编码滥用攻击企图|
 |920260|Unicode 全角/半角滥用攻击企图|
 |920270|请求中的字符无效（null 字符）|
@@ -153,8 +153,8 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |920280|请求缺少 Host 标头|
 |920290|Host 标头为空|
 |920300|请求缺少 Accept 标头|
-|920310|请求包含空 Accept 标头|
-|920311|请求包含空 Accept 标头|
+|920310|请求包含空的 Accept 标头|
+|920311|请求包含空的 Accept 标头|
 |920320|缺少用户代理标头|
 |920330|用户代理标头为空|
 |920340|请求包含内容但缺少 Content-Type 标头|
@@ -218,6 +218,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |932120|远程命令执行 = 找到 Windows PowerShell 命令|
 |932130|远程命令执行 = 找到 Unix Shell 表达式|
 |932140|远程命令执行 = 找到 Windows FOR/IF 命令|
+|932150|远程命令执行：直接 Unix 命令执行|
 |932160|远程命令执行 = 找到 Unix Shell 代码|
 |932170|远程命令执行 = Shellshock (CVE-2014-6271)|
 |932171|远程命令执行 = Shellshock (CVE-2014-6271)|
@@ -563,7 +564,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |958291|范围 = 字段存在并以 0 开始。|
 |958230|范围 = 最后一个字节值无效。|
 |958295|找到了多个/有冲突的连接标头数据。|
-|950107|URL 编码滥用攻击企图|
+|950107|URL 编码滥用攻击尝试|
 |950109|检测到多个 URL 编码|
 |950108|URL 编码滥用攻击企图|
 |950801|UTF8 编码滥用攻击企图|

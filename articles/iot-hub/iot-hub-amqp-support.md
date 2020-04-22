@@ -7,12 +7,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: robinsh
-ms.openlocfilehash: 7f7e957502419b766f7da63048e8168192ea20da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 7b3dcfc51df7f0fe4291e9c5babccc1444ad32e9
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284780"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730758"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>使用 AMQP 协议来与 IoT 中心通信
 
@@ -26,10 +29,10 @@ Azure IoT 中心支持使用 [OASIS 高级消息队列协议 (AMQP) 版本 1.0](
 
 服务客户端需要以下信息：
 
-| 信息 | “值” |
+| 信息 | Value |
 |-------------|--------------|
 | IoT 中心主机名 | `<iot-hub-name>.azure-devices.net` |
-| 项名 | `service` |
+| 密钥名称 | `service` |
 | 访问密钥 | 与服务关联的主要密钥或辅助密钥 |
 | 共享访问签名 | 采用以下格式的短生存期共享访问签名：`SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`。 若要获取用于生成此签名的代码，请参阅[控制对 IoT 中心的访问](./iot-hub-devguide-security.md#security-token-structure)。
 
@@ -65,7 +68,7 @@ receive_client = uamqp.ReceiveClient(uri, debug=True)
 
 若要了解服务与 IoT 中心之间，以及设备与 IoT 中心之间的云到设备消息交换，请参阅[从 IoT 中心发送云到设备的消息](iot-hub-devguide-messages-c2d.md)。 服务客户端使用两个链接发送消息，以及接收先前从设备发送的消息的反馈，如下表中所述：
 
-| 创建者 | 链接类型 | 链接路径 | 描述 |
+| 创建者 | 链接类型 | 链接路径 | 说明 |
 |------------|-----------|-----------|-------------|
 | 服务 | 发送方链接 | `/messages/devicebound` | 服务会将发往设备的云到设备消息发送到此链接。 通过此链接发送的消息的 `To` 属性设置为目标设备的接收方链接路径 `/devices/<deviceID>/messages/devicebound`。 |
 | 服务 | 接收方链接 | `/messages/serviceBound/feedback` | 服务在此链接上收到的、来自设备的完成、拒绝和丢弃反馈消息。 有关反馈消息的详细信息，请参阅[从 IoT 中心发送云到设备的消息](./iot-hub-devguide-messages-c2d.md#message-feedback)。 |
@@ -128,7 +131,7 @@ for msg in batch:
 
 如以上代码中所示，云到设备的反馈消息的内容类型为 *application/vnd.microsoft.iothub.feedback.json*。 可以使用消息的 JSON 正文中的属性推断原始消息的传送状态：
 
-* 反馈`statusCode`正文中的键具有以下值之一：*成功*、*过期*、*交货计数超出*、*已拒绝*或*清除*。
+* 反馈正文中的键 `statusCode` 包含以下值之一：*Success*、*Expired*、*DeliveryCountExceeded*、*Rejected* 或 *Purged*。
 
 * 反馈正文中的键 `deviceId` 包含目标设备的 ID。
 
@@ -222,7 +225,7 @@ for msg in batch:
 
 设备客户端需要以下信息：
 
-| 信息 | “值” |
+| 信息 | Value |
 |-------------|--------------|
 | IoT 中心主机名 | `<iot-hub-name>.azure-devices.net` |
 | 访问密钥 | 与设备关联的主要密钥或辅助密钥 |
@@ -259,7 +262,7 @@ send_client = uamqp.SendClient(uri, debug=True)
 
 在设备操作中支持使用以下链接路径：
 
-| 创建者 | 链接类型 | 链接路径 | 描述 |
+| 创建者 | 链接类型 | 链接路径 | 说明 |
 |------------|-----------|-----------|-------------|
 | 设备 | 接收方链接 | `/devices/<deviceID>/messages/devicebound` | 每个目标设备将在此链接上接收发往设备的云到设备消息。 |
 | 设备 | 发送方链接 | `/devices/<deviceID>/messages/events` | 设备发送的设备到云消息将通过此链接发送。 |

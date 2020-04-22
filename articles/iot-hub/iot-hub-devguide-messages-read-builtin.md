@@ -8,18 +8,19 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: a2674ca0f4808cb6f01781565e57369ca5d3ac37
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.custom: amqp
+ms.openlocfilehash: 169d926e466559bc83ba64ce9e976e0d725f614d
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478787"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729991"
 ---
-# <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>通过内置终结点读取设备到云的消息
+# <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>从内置终结点读取设备到云的消息
 
-默认情况下，消息将路由到与[事件中心](https://azure.microsoft.com/documentation/services/event-hubs/)兼容的内置面向服务的终结点 (messages/events) 中****。 此终结点目前仅通过端口 5671 上的 [AMQP](https://www.amqp.org/) 协议公开。 IoT 中心公开以下属性，以便用户控制内置的与事件中心兼容的消息传送终结点 **messages/events**。
+默认情况下，消息将路由到与[事件中心](https://azure.microsoft.com/documentation/services/event-hubs/)兼容的内置面向服务的终结点 (**messages/events**) 中。 目前仅在端口 5671 上使用 [AMQP](https://www.amqp.org/) 协议公开此终结点。 IoT 中心公开以下属性，以便用户控制内置的与事件中心兼容的消息传送终结点 **messages/events**。
 
-| properties            | 说明 |
+| 属性            | 说明 |
 | ------------------- | ----------- |
 | **分区计数** | 在创建时设置此属性，以便为设备到云事件引入定义[分区](../event-hubs/event-hubs-features.md#partitions)数。 |
 | **保留时间**  | 此属性指定 IoT 中心保留消息的时间（以天为单位）。 默认值为一天，但可以增加到七天。 |
@@ -50,7 +51,7 @@ IoT 中心向后端服务公开 **messages/events** 内置终结点，让后端�
 
 在门户中，事件中心兼容终结点字段包含一个完整的事件中心连接字符串，如下所示：**终结点_sb：//abcd1234命名空间.服务总线.windows.net/;共享AccessKeyName_iothub所有者;共享访问密钥_密钥密钥键*;实体路径_iothub-ehub-abcd-1234-123456**。 如果所用 SDK 需求其他值，则这些值将会是：
 
-| “属性” | “值” |
+| 名称 | 值 |
 | ---- | ----- |
 | 终结点 | sb://abcd1234namespace.servicebus.windows.net/ |
 | 主机名 | abcd1234namespace.servicebus.windows.net |

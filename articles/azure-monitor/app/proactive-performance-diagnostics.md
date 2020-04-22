@@ -4,12 +4,12 @@ description: Application Insights 执行应用遥测的智能分析，并在有�
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 3d8de08605d3dd693eb74a84a29c2efa6cad669a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c5b19c7e03993ef973cd708ed7a6fe89feb01a5
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671726"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687702"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智能检测 - 性能异常
 
@@ -40,7 +40,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 ![下面是“服务器响应时间延长”检测的示例](media/proactive-performance-diagnostics/server_response_time_degradation.png)
 
 1. **会审**。 通知会显示有多少用户或多少操作受到影响。 这可以帮助你对问题分配优先级。
-2. **范围**. 该问题是影响所有流量，还是只影响某些页面？ 它是否只出现在特定的浏览器或位置中？ 可以从通知中获取此信息。
+2. **范围**。 该问题是影响所有流量，还是只影响某些页面？ 它是否只出现在特定的浏览器或位置中？ 可以从通知中获取此信息。
 3. **诊断**。 通常，通知的诊断信息会提示问题的性质。 例如，如果请求率较高时响应速度变慢，则表示服务器或依赖项过载。 
 
     否则，可在 Application Insights 中打开“性能”边栏选项卡， 在其中可以找到[探查器](profiler.md)数据。 如果引发了异常，还可以尝试[快照调试器](../../azure-monitor/app/snapshot-debugger.md)。
@@ -57,7 +57,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 
 每天只会针对每个 Application Insights 资源发送一封有关智能检测性能异常的电子邮件。 只有当天至少检测到一个新问题时，才会发送电子邮件。 将不会收到任何重复的消息。 
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题解答
 
 * *那么，Microsoft 员工会查看我的数据？*
   * 不是。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](../../azure-monitor/app/data-retention-privacy.md)数据。
@@ -71,7 +71,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 
   * 目前不可以，但可以：
     * [设置警报](../../azure-monitor/app/alerts.md)，告诉指标何时超过阈值。
-    * [将遥测导出到](../../azure-monitor/app/export-telemetry.md)[数据库](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)或 [PowerBI](../../azure-monitor/app/export-power-bi.md )，可自行在其中进行分析。
+    * [将遥测数据导出](../../azure-monitor/app/export-telemetry.md)到[数据库](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)或[Power BI，](../../azure-monitor/app/export-power-bi.md )您可以在其中自行分析它。
 * *执行分析的频率是多少？*
 
   * 我们每天针对前一天（UTC 时区整天）的遥测数据运行分析。
@@ -125,11 +125,11 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
   * 帮助你查看哪些地方需要花费操作时间的探查器跟踪（如果在检测期间已收集此操作的探查器跟踪示例，则会提供链接）。 
   * 指标资源管理器中的性能报告，可在其中分解此操作的时间范围/筛选器。
   * 搜索此调用以查看特定调用属性。
-  * 失败报告 - 如果计数大于 1，则表示此操作可能由于性能下降而发生失败。
+  * 故障报告 - 如果计数> 1，这意味着此操作中存在可能导致性能下降的失败。
 
 ## <a name="dependency-duration-degradation"></a>依赖项持续时间延长
 
-新型应用程序越来越多地采用微服务设计方案，在许多情况下这会导致严重依赖于外部服务。 例如，如果应用程序依赖于某个数据平台，或者，即使机器人服务是由自己构建的，它也可能会依赖于某个认知服务提供程序来使机器人能够以更加类似于人类的方式交互，并依赖于某个数据存储服务来让机器人提取解答。  
+现代应用越来越采用微服务设计方法，在许多情况下，这种方法会导致外部服务的可靠性。 例如，如果应用程序依赖于某个数据平台，或者，即使机器人服务是由自己构建的，它也可能会依赖于某个认知服务提供程序来使机器人能够以更加类似于人类的方式交互，并依赖于某个数据存储服务来让机器人提取解答。  
 
 依赖项降级通知的示例：
 
@@ -173,7 +173,7 @@ Application Insights 可以找到只会影响一部分用户，或者只会在�
 ## <a name="next-steps"></a>后续步骤
 这些诊断工具可帮助检查应用中的遥测数据：
 
-* [分析器](profiler.md) 
+* [探查器](profiler.md) 
 * [快照调试器](../../azure-monitor/app/snapshot-debugger.md)
 * [分析](../../azure-monitor/log-query/get-started-portal.md)
 * [分析智能诊断](../../azure-monitor/app/analytics.md)

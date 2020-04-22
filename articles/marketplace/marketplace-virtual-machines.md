@@ -6,14 +6,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/09/2018
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 34de5f59e96a37282063741a1664f512697c167b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fa67d81546db86535c179a9c59d0602c1175cba
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288710"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687495"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>“虚拟机”产品/服务发布指南
 
@@ -53,7 +53,7 @@ ms.locfileid: "80288710"
 | 要求 | 详细信息 |  
 |:--- |:--- | 
 | 计费和计量 | VM 必须支持 BYOL 或即用即付每月计费。 |  
-| 与 Azure 兼容的虚拟硬盘 (VHD) | 必须基于 Windows 或 Linux 构建 VM。 <ul> <li>有关创建 Linux VHD 的详细信息，请参阅 [Azure 认可的 Linux 发行版](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)。</li> <li>有关创建 Windows VHD 的详细信息，请参阅[创建与 Azure 兼容的 VHD](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)。</li> </ul> |  
+| 与 Azure 兼容的虚拟硬盘 (VHD) | 必须基于 Windows 或 Linux 构建 VM。 <ul> <li>有关创建 Linux VHD 的详细信息，请参阅 [Azure 认可的 Linux 发行版](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)。</li> <li>有关创建 Windows VHD 的详细信息，请参阅[创建与 Azure 兼容的 VHD](./partner-center-portal/azure-vm-create-offer.md)。</li> </ul> |  
 
 >[!Note]
 >云解决方案提供商 （CSP） 合作伙伴渠道选择加入现已可用。  有关通过 Microsoft CSP 合作伙伴渠道营销产品/服务的更多信息[，请参阅云解决方案提供商](./cloud-solution-providers.md)。
@@ -62,9 +62,9 @@ ms.locfileid: "80288710"
 
 如果尚未注册， 
 
-- 请在市场中[注册](https://azuremarketplace.microsoft.com/sell)。
+- [了解](https://azuremarketplace.microsoft.com/sell)市场。
 
 如果已注册并正在创建新套餐或正在使用现有套餐，
 
-- [登录到云合作伙伴门户](https://cloudpartner.azure.com)，创建或完成套餐。
-- 有关详细信息，请参阅[虚拟机产品/服务](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer)。
+- [登录合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)创建或完成您的优惠。
+- 有关详细信息[，请参阅创建虚拟机产品/服务](./partner-center-portal/azure-vm-create-offer.md)。

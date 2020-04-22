@@ -1,5 +1,5 @@
 ---
-title: 准备在生产中部署解决方案 - Azure IoT 边缘
+title: 准备在生产环境中部署解决方案 - Azure IoT Edge
 description: 了解如何将 Azure IoT Edge 解决方案从开发环境转移到生产环境，包括使用适当的证书设置设备以及为将来的代码更新制定部署计划。
 author: kgremban
 manager: philmea
@@ -8,24 +8,27 @@ ms.date: 4/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6bc74e82dd04e5845e95bdec5c841d0264dd1d3e
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: f1de8330b950ffa09ce3e8ae168f05021b2ad80c
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115087"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729453"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>准备在生产环境中部署 IoT Edge 解决方案
 
 如果已准备好将 IoT Edge 解决方案从开发环境转移到生产环境，请确保对其进行适当的配置，使其持续保持良好的性能。
 
-本文中提供的信息并非面面俱到。 为帮助你优先处理某些任务，每个部分首先会提供一些列表，将准备工作划分为两个部分：转移到生产环境之前要实施的“重要说明”，以及需要知道的“有用提示”。********
+本文中提供的信息并非面面俱到。 为帮助你优先处理某些任务，每个部分首先会提供一些列表，将准备工作划分为两个部分：转移到生产环境之前要实施的“重要说明”，以及需要知道的“有用提示”。  
 
 ## <a name="device-configuration"></a>设备配置
 
 IoT Edge 设备的类型多种多样，其中包括 Raspberry Pi、便携式计算机、服务器上运行的虚拟机，等等。 可通过物理方式或虚拟连接来访问设备，而设备也有可能长时间处于隔离状态。 不管通过什么方式进行访问，都需要确保它在配置后能够正常使用。
 
-* **重要说明**
+* 重要说明 
   * 安装生产证书
   * 创建设备管理计划
   * 使用 Moby 作为容器引擎
@@ -35,11 +38,11 @@ IoT Edge 设备的类型多种多样，其中包括 Raspberry Pi、便携式计�
 
 ### <a name="install-production-certificates"></a>安装生产证书
 
-生产环境中的每个 IoT Edge 设备上需要安装设备证书颁发机构 (CA) 证书。 然后，在 config.yaml 文件中将该 CA 证书声明到 IoT Edge 运行时。 对于开发和测试方案，如果 config.yaml 文件中未声明证书，IoT Edge 运行时将创建临时证书。 但是，这些临时证书将在三个月后过期，并且对于生产方案而言并不安全。
+生产环境中的每个 IoT Edge 设备上需要安装设备证书颁发机构 (CA) 证书。 然后，在 config.yaml 文件中将该 CA 证书声明到 IoT Edge 运行时。 对于开发和测试场景，如果 config.yaml 文件中没有声明证书，则 IoT Edge 运行时将创建临时证书。 但是，这些临时证书将在三个月后过期，并且对于生产方案而言并不安全。
 
 若要了解设备 CA 证书的作用，请参阅 [Azure IoT Edge 如何使用证书](iot-edge-certs.md)。
 
-有关如何在 IoT Edge 设备上安装证书并从 config.yaml 文件中引用证书的详细信息，请参阅在[IoT Edge 设备上安装生产证书](how-to-manage-device-certificates.md)。
+有关如何在 IoT Edge 设备上安装证书并从 config.yaml 文件引用这些证书的详细信息，请参阅[在 IoT Edge 设备上安装生产证书](how-to-manage-device-certificates.md)。
 
 ### <a name="have-a-device-management-plan"></a>创建设备管理计划
 
@@ -59,7 +62,7 @@ IoT Edge 设备的类型多种多样，其中包括 Raspberry Pi、便携式计�
 
 ### <a name="choose-upstream-protocol"></a>选择上游协议
 
-您可以为 IoT Edge 代理和 IoT Edge 中心配置与 IoT 中心进行上游通信的协议（确定使用的端口）。 默认协议为 AMQP，但可以根据网络设置更改协议。
+可同时为 IoT Edge 代理和 IoT Edge 中心配置用于与 IoT 中心进行上游通信的协议（确定所用端口）。 默认协议为 AMQP，但可以根据网络设置更改协议。
 
 两个运行时模块都包含 **UpstreamProtocol** 环境变量。 该变量的有效值为：
 
@@ -102,7 +105,7 @@ IoT Edge 中心和代理模块使用本地存储来保留状态，并允许在�
 
 IoT Edge 中心默认已进行性能优化，因此它会尝试分配较大的内存区块。 在 Raspberry Pi 等小型设备上，此配置可能会影响稳定性。 如果部署的设备的资源受限，建议在 IoT Edge 中心将 **OptimizeForPerformance** 环境变量设置为 **false**。
 
-当 **"优化性能**"设置为**true**时，MQTT 协议头使用池字节缓冲器，该分配器具有更好的性能，但分配了更多内存。 分配器在 32 位操作系统或内存不足的设备上工作正常。 此外，如果针对性能进行了优化，RocksDb 会为其作为本地存储提供程序的角色分配更多内存。
+当 **OptimizeForPerformance** 设置为 **true** 时，MQTT 协议标头将使用 PooledByteBufferAllocator（具有更佳性能，但会分配更多内存）。 分配器在 32 位操作系统或内存不足的设备上不能很好地工作。 此外，如果针对性能进行了优化，RocksDb 会为其作为本地存储提供程序的角色分配更多内存。
 
 有关详细信息，请参阅[资源受限设备的稳定性问题](troubleshoot.md#stability-issues-on-resource-constrained-devices)。
 
@@ -116,7 +119,7 @@ IoT Edge 中心默认已进行性能优化，因此它会尝试分配较大的�
 * **mqttSettings__enabled**
 * **httpSettings__enabled**
 
-所有三个变量都带有两条下划线，可设置为 true 或 false。**
+所有三个变量都带有两条下划线，可设置为 true 或 false。 
 
 #### <a name="reduce-storage-time-for-messages"></a>减少消息的存储时间
 
@@ -126,11 +129,11 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
 
 ### <a name="do-not-use-debug-versions-of-module-images"></a>不要使用模块映像的调试版本
 
-从测试方案转移到生产方案时，请记得从部署清单中删除调试配置。 检查部署清单中的模块映像中没有任何**\.调试**后缀。 如果添加了 create 选项用于公开模块中的调试端口，也请删除这些 create 选项。
+从测试方案转移到生产方案时，请记得从部署清单中删除调试配置。 确保部署清单中没有任何模块映像带有 **\.debug** 后缀。 如果添加了 create 选项用于公开模块中的调试端口，也请删除这些 create 选项。
 
 ## <a name="container-management"></a>容器管理
 
-* **重要说明**
+* 重要说明 
   * 管理对容器注册表的访问
   * 使用标记管理版本
 

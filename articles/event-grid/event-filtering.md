@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
-ms.openlocfilehash: f9fca0a9fefb5959747a4492139ae422a118db02
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce1bb3760ae73a9eaeee3cde957cc94841ebdf29
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70390180"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731944"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>了解事件网格订阅的事件筛选
 
@@ -97,7 +97,7 @@ ms.locfileid: "70390180"
 ]
 ```
 
-### <a name="operator"></a>运算符
+### <a name="operator"></a>操作员
 
 可用的数字运算符为：
 
@@ -120,7 +120,7 @@ ms.locfileid: "70390180"
 
 所有字符串比较都不区分大小写。
 
-### <a name="key"></a>键
+### <a name="key"></a>密钥
 
 对于事件网格架构中的事件，请使用以下键值：
 
@@ -156,7 +156,7 @@ ms.locfileid: "70390180"
 
 * 每个事件网格订阅有五个高级筛选器
 * 每个字符串值有 512 个字符
-* “in”和“not in”运算符有 5 个值********
+* “in”和“not in”运算符有 5 个值  
 
 可以在多个筛选器中使用相同的键。
 

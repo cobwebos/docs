@@ -3,12 +3,12 @@ title: 在任何环境中监视 Java 应用程序 - Azure 监视器应用程序�
 description: 应用程序性能监视，适用于在任何环境中运行的 Java 应用程序，而无需检测应用程序。 分布式跟踪和应用程序映射。
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 5706d5a74bd6850a237f7418b1a86a8e9c7762e1
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: b9c1a52051e63beee9a784714a7bb1a6a79e8759
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81604576"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687715"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java 无代码应用程序监视 Azure 监视器应用程序见解 - 公共预览
 
@@ -32,7 +32,7 @@ Java 无代码应用程序监视是简单性的 - 没有代码更改，Java代�
 
 典型的 JVM args 包括`-Xmx512m`和`-XX:+UseG1GC`。 因此，如果您知道要在哪里添加这些，那么您已经知道在哪里添加此。
 
-有关配置应用程序的 JVM args 的其他帮助，请参阅[3.0 预览：更新 JVM args 的提示](https://github.com/microsoft/ApplicationInsights-Java/wiki/3.0-Preview:-Tips-for-updating-your-JVM-args)。
+有关配置应用程序的 JVM args 的其他帮助，请参阅[3.0 预览：更新 JVM args 的提示](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments)。
 
 **3. 将代理指向您的应用程序见解资源**
 
@@ -80,7 +80,7 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000
 * HTTP 代理
 * 自我诊断
 
-请参阅[3.0 公共预览版的详细信息：配置选项](https://github.com/microsoft/ApplicationInsights-Java/wiki/3.0-Preview:-Configuration-Options)。
+请参阅[3.0 公共预览版的详细信息：配置选项](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config)。
 
 ## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>自动收集的请求、依赖项、日志和指标
 

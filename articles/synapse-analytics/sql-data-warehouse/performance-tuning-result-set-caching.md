@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 42f8f51545f643e1ed9e1a23c9445f6e216fdabe
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: eadbe13269ce1259b4560af117f5b15b3b294151
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273403"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730601"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>使用结果集缓存优化性能
 
@@ -42,10 +42,11 @@ ms.locfileid: "81273403"
 - 使用用户定义的函数的查询
 - 使用启用了行级安全性或列级安全性的表的查询
 - 返回行大小大于 64 KB 的数据的查询
+- 返回大数据大小的查询（>10GB） 
 
 > [!IMPORTANT]
 > 创建结果集缓存并从缓存中检索数据的操作发生在 Synapse SQL 池实例的控制节点上。
-> 当结果集缓存处于打开状态时，运行返回大型结果集（例如，超过 1 百万行）的查询可能会导致控制节点上 CPU 使用率较高，并降低实例上的整体查询响应速度。  这些查询通常在数据浏览或 ETL 操作过程中使用。 若要避免对控制节点造成压力并导致性能问题，用户应在运行此类查询之前关闭数据库的结果集缓存。  
+> 启用结果集缓存后，运行返回大型结果集（例如，>1GB）的查询可能会导致控制节点上出现高限制，并减慢实例上的总体查询响应。  这些查询通常在数据浏览或 ETL 操作过程中使用。 若要避免对控制节点造成压力并导致性能问题，用户应在运行此类查询之前关闭数据库的结果集缓存。  
 
 此查询的运行持续时间以针对某个查询执行结果集缓存操作所需的时间为宜：
 
@@ -71,7 +72,7 @@ WHERE request_id  = <'request_id'>;
 - 新查询与生成结果集缓存的上一个查询之间存在完全匹配。
 - 生成缓存结果集的表中没有任何数据或架构更改。
 
-运行此命令以检查所执行的查询的结果缓存是命中还是失误。 result_cache_hit列返回 1 表示缓存命中，0 返回缓存未命中，负值返回，以说明未使用结果集缓存的原因。 有关详细信息[，请查看 sys.dm_pdw_exec_requests。](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+运行此命令以检查所执行的查询的结果缓存是命中还是失误。 result_cache_hit列返回 1 表示缓存命中，0 返回缓存未命中，负值返回，以说明未使用结果集缓存的原因。 有关详细信息，请检查 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ```sql
 SELECT request_id, command, result_cache_hit FROM sys.dm_pdw_exec_requests

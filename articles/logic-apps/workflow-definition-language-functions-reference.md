@@ -1,24 +1,24 @@
 ---
 title: 表达式中函数的参考指南
-description: Azure 逻辑应用和电源自动功能表达式中的函数参考指南
+description: Azure 逻辑应用和 Power Automate 的表达式中的函数参考指南
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: 87798c93bbc1098daea2f7258a3af3e26bb4bb93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 48be73a6385c9690909cb70abe558a2def1ace88
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79283909"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730514"
 ---
-# <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>在 Azure 逻辑应用和电源自动化表达式中使用函数的参考指南
+# <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>有关在 Azure 逻辑应用和 Power Automate 的表达式中使用函数的参考指南
 
-对于[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[Power 自动](https://docs.microsoft.com/flow/getting-started)中的工作流定义，某些[表达式](../logic-apps/logic-apps-workflow-definition-language.md#expressions)从工作流开始运行时运行时操作中获取其值。 若要在这些表达式中引用或处理这些值，可以使用[工作流定义语言](../logic-apps/logic-apps-workflow-definition-language.md)提供的函数**。 
+对于 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和 [Power Automate](https://docs.microsoft.com/flow/getting-started) 中的工作流定义，某些[表达式](../logic-apps/logic-apps-workflow-definition-language.md#expressions)获取的值来自运行时操作，而这些运行时操作在工作流开始运行时可能尚不存在。 若要在这些表达式中引用或处理这些值，可以使用[工作流定义语言](../logic-apps/logic-apps-workflow-definition-language.md)提供的函数  。 
 
 > [!NOTE]
-> 此参考页同时适用于 Azure 逻辑应用和电源自动功能，但显示在 Azure 逻辑应用文档中。 虽然此页面专门引用逻辑应用，但这些函数适用于流和逻辑应用。 有关 Power 自动中的函数和表达式的详细信息，请参阅[在 条件 中使用表达式](https://docs.microsoft.com/flow/use-expressions-in-conditions)。
+> 本参考页适用于 Azure 逻辑应用和 Power Automate，但显示在 Azure 逻辑应用文档中。 虽然此页面专门引用逻辑应用，但这些函数适用于流和逻辑应用。 有关 Power Automate 中函数和表达式的详细信息，请参阅[在条件中使用表达式](https://docs.microsoft.com/flow/use-expressions-in-conditions)。
 
 例如，在需要根据整数或浮点数求和时，可以使用数学函数（例如 [add() 函数](../logic-apps/workflow-definition-language-functions-reference.md#add)）来计算值。 下面是可以使用函数执行的其他示例任务：
 
@@ -47,9 +47,9 @@ ms.locfileid: "79283909"
 | 任务 | 表达式中的函数语法 |
 | ---- | -------------------------------- |
 | 通过将某个项传递给函数，对该项执行操作。 | "\@<*functionName*>(<*item*>)" |
-| 1. 使用*parameterName*嵌套`parameters()`函数获取参数 Name 的值。 </br>2. 通过将该值传递给*函数 Name*来执行结果。 | "\@<*functionName*>(parameters('<*parameterName*>'))" |
-| 1. 从嵌套的内部*函数名称 获取*结果。 </br>2. 将结果传递给外部函数*Name2*。 | "\@<*functionName2*>(<*functionName*>(<*item*>))" |
-| 1. 从*函数名称*获取结果。 </br>2. 如果结果具有*属性属性 Name*的对象，则获取该属性的值。 | "\@<*functionName*>(<*item*>).<*propertyName*>" |
+| 1.使用嵌套的 `parameters()` 函数获取 *parameterName* 的值。 </br>2.通过将结果传递给 *functionName*，对该值执行操作。 | "\@<*functionName*>(parameters('<*parameterName*>'))" |
+| 1.从嵌套的内部函数 *functionName* 获取结果。 </br>2.将结果传递给外部函数 *functionName2*。 | "\@<*functionName2*>(<*functionName*>(<*item*>))" |
+| 1.从 *functionName* 获取结果。 </br>2.如果结果是包含属性 *propertyName* 的对象，则获取该属性的值。 | "\@<*functionName*>(<*item*>).<*propertyName*>" |
 |||
 
 例如，`concat()` 函数可以采用两个或更多个字符串值作为参数。 此函数将这些字符串组合成一个字符串。
@@ -79,19 +79,19 @@ ms.locfileid: "79283909"
 
 | 字符串函数 | 任务 |
 | --------------- | ---- |
-| [Concat](../logic-apps/workflow-definition-language-functions-reference.md#concat) | 组合两个或更多字符串，并返回组合后的字符串。 |
+| [concat](../logic-apps/workflow-definition-language-functions-reference.md#concat) | 组合两个或更多字符串，并返回组合后的字符串。 |
 | [endsWith](../logic-apps/workflow-definition-language-functions-reference.md#endswith) | 检查字符串是否以指定的子字符串结尾。 |
-| [格式编号](../logic-apps/workflow-definition-language-functions-reference.md#formatNumber) | 基于指定格式将数字作为字符串返回 |
-| [Guid](../logic-apps/workflow-definition-language-functions-reference.md#guid) | 生成字符串形式的全局唯一标识符 (GUID)。 |
-| [索引](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | 返回子字符串的起始位置。 |
+| [formatNumber](../logic-apps/workflow-definition-language-functions-reference.md#formatNumber) | 根据指定的格式以字符串形式返回一个数字 |
+| [guid](../logic-apps/workflow-definition-language-functions-reference.md#guid) | 生成字符串形式的全局唯一标识符 (GUID)。 |
+| [indexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | 返回子字符串的起始位置。 |
 | [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | 返回最后一次出现的子字符串的起始位置。 |
 | [replace](../logic-apps/workflow-definition-language-functions-reference.md#replace) | 将子字符串替换为指定的字符串，并返回更新的字符串。 |
-| [分裂](../logic-apps/workflow-definition-language-functions-reference.md#split) | 根据原始字符串中指定的分隔符字符，从较大字符串中返回一个包含子字符串（以逗号分隔）的数组。 |
-| [开始与](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | 检查字符串是否以特定的子字符串开头。 |
-| [子](../logic-apps/workflow-definition-language-functions-reference.md#substring) | 返回字符串中的字符，从指定的位置开始。 |
-| [到下](../logic-apps/workflow-definition-language-functions-reference.md#toLower) | 返回小写格式的字符串。 |
-| [到上](../logic-apps/workflow-definition-language-functions-reference.md#toUpper) | 返回大写格式的字符串。 |
-| [修剪](../logic-apps/workflow-definition-language-functions-reference.md#trim) | 从字符串中删除前导和尾随空格，并返回更新后的字符串。 |
+| [split](../logic-apps/workflow-definition-language-functions-reference.md#split) | 根据原始字符串中指定的分隔符字符，从较大字符串中返回一个包含子字符串（以逗号分隔）的数组。 |
+| [startsWith](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | 检查字符串是否以特定的子字符串开头。 |
+| [substring](../logic-apps/workflow-definition-language-functions-reference.md#substring) | 返回字符串中的字符，从指定的位置开始。 |
+| [toLower](../logic-apps/workflow-definition-language-functions-reference.md#toLower) | 返回小写格式的字符串。 |
+| [toUpper](../logic-apps/workflow-definition-language-functions-reference.md#toUpper) | 返回大写格式的字符串。 |
+| [trim](../logic-apps/workflow-definition-language-functions-reference.md#trim) | 从字符串中删除前导和尾随空格，并返回更新后的字符串。 |
 |||
 
 <a name="collection-functions"></a>
@@ -102,17 +102,17 @@ ms.locfileid: "79283909"
 
 | 集合函数 | 任务 |
 | ------------------- | ---- |
-| [包含](../logic-apps/workflow-definition-language-functions-reference.md#contains) | 检查集合是否包含某个特定项。 |
-| [空](../logic-apps/workflow-definition-language-functions-reference.md#empty) | 检查集合是否为空。 |
-| [第一](../logic-apps/workflow-definition-language-functions-reference.md#first) | 返回集合中的第一个项。 |
-| [交集](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | 返回其中仅包含指定集合的共有项的一个集合。** |
+| [contains](../logic-apps/workflow-definition-language-functions-reference.md#contains) | 检查集合是否包含某个特定项。 |
+| [empty](../logic-apps/workflow-definition-language-functions-reference.md#empty) | 检查集合是否为空。 |
+| [first](../logic-apps/workflow-definition-language-functions-reference.md#first) | 返回集合中的第一个项。 |
+| [intersection](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | 返回其中仅包含指定集合的共有项的一个集合。  |
 | [item](../logic-apps/workflow-definition-language-functions-reference.md#item) | 位于针对数组的重复操作中时，返回在操作的当前迭代过程中数组中的当前项。 |
-| [加入](../logic-apps/workflow-definition-language-functions-reference.md#join) | 返回一个字符串，其中包含某个数组中的所有项并以指定的分隔符分隔每个项。** |
-| [最后](../logic-apps/workflow-definition-language-functions-reference.md#last) | 返回集合中的最后一个项。 |
+| [join](../logic-apps/workflow-definition-language-functions-reference.md#join) | 返回一个字符串，其中包含某个数组中的所有项并以指定的分隔符分隔每个项。  |
+| [last](../logic-apps/workflow-definition-language-functions-reference.md#last) | 返回集合中的最后一个项。 |
 | [length](../logic-apps/workflow-definition-language-functions-reference.md#length) | 返回字符串或数组中的项数。 |
-| [跳](../logic-apps/workflow-definition-language-functions-reference.md#skip) | 删除集合开头的项，并返回所有其他项。** |
-| [采取](../logic-apps/workflow-definition-language-functions-reference.md#take) | 返回集合开头的项。 |
-| [联盟](../logic-apps/workflow-definition-language-functions-reference.md#union) | 返回一个集合，其中包含指定集合中的所有项。** |
+| [skip](../logic-apps/workflow-definition-language-functions-reference.md#skip) | 删除集合开头的项，并返回所有其他项。  |
+| [take](../logic-apps/workflow-definition-language-functions-reference.md#take) | 返回集合开头的项。 |
+| [union](../logic-apps/workflow-definition-language-functions-reference.md#union) | 返回一个集合，其中包含指定集合中的所有项。  |
 |||
 
 <a name="comparison-functions"></a>
@@ -124,15 +124,15 @@ ms.locfileid: "79283909"
 
 | 逻辑比较函数 | 任务 |
 | --------------------------- | ---- |
-| [和](../logic-apps/workflow-definition-language-functions-reference.md#and) | 检查所有表达式是否为 true。 |
+| [and](../logic-apps/workflow-definition-language-functions-reference.md#and) | 检查所有表达式是否为 true。 |
 | [equals](../logic-apps/workflow-definition-language-functions-reference.md#equals) | 检查两个值是否相等。 |
 | [greater](../logic-apps/workflow-definition-language-functions-reference.md#greater) | 检查第一个值是否大于第二个值。 |
 | [greaterOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#greaterOrEquals) | 检查第一个值是否大于或等于第二个值。 |
 | [if](../logic-apps/workflow-definition-language-functions-reference.md#if) | 检查表达式为 true 还是 false。 根据结果返回指定的值。 |
 | [less](../logic-apps/workflow-definition-language-functions-reference.md#less) | 检查第一个值是否小于第二个值。 |
 | [lessOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#lessOrEquals) | 检查第一个值是否小于或等于第二个值。 |
-| [不](../logic-apps/workflow-definition-language-functions-reference.md#not) | 检查表达式是否为 false。 |
-| [或](../logic-apps/workflow-definition-language-functions-reference.md#or) | 检查是否至少一个表达式为 true。 |
+| [not](../logic-apps/workflow-definition-language-functions-reference.md#not) | 检查表达式是否为 false。 |
+| [or](../logic-apps/workflow-definition-language-functions-reference.md#or) | 检查是否至少一个表达式为 true。 |
 |||
 
 <a name="conversion-functions"></a>
@@ -146,13 +146,13 @@ ms.locfileid: "79283909"
 
 | 转换函数 | 任务 |
 | ------------------- | ---- |
-| [阵 列](../logic-apps/workflow-definition-language-functions-reference.md#array) | 从单个指定的输入返回数组。 对于多个输入，请参阅 [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray)。 |
+| [array](../logic-apps/workflow-definition-language-functions-reference.md#array) | 从单个指定的输入返回数组。 对于多个输入，请参阅 [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray)。 |
 | [base64](../logic-apps/workflow-definition-language-functions-reference.md#base64) | 返回字符串的 base64 编码版本。 |
 | [base64ToBinary](../logic-apps/workflow-definition-language-functions-reference.md#base64ToBinary) | 返回 base64 编码字符串的二进制版本。 |
 | [base64ToString](../logic-apps/workflow-definition-language-functions-reference.md#base64ToString) | 返回 base64 编码字符串的字符串版本。 |
 | [binary](../logic-apps/workflow-definition-language-functions-reference.md#binary) | 返回输入值的二进制版本。 |
 | [bool](../logic-apps/workflow-definition-language-functions-reference.md#bool) | 返回输入值的布尔值版本。 |
-| [创建Array](../logic-apps/workflow-definition-language-functions-reference.md#createArray) | 从多个输入返回数组。 |
+| [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray) | 从多个输入返回数组。 |
 | [dataUri](../logic-apps/workflow-definition-language-functions-reference.md#dataUri) | 返回输入值的数据 URI。 |
 | [dataUriToBinary](../logic-apps/workflow-definition-language-functions-reference.md#dataUriToBinary) | 返回数据 URI 的二进制版本。 |
 | [dataUriToString](../logic-apps/workflow-definition-language-functions-reference.md#dataUriToString) | 返回数据 URI 的字符串版本。 |
@@ -160,10 +160,10 @@ ms.locfileid: "79283909"
 | [decodeDataUri](../logic-apps/workflow-definition-language-functions-reference.md#decodeDataUri) | 返回数据 URI 的二进制版本。 |
 | [decodeUriComponent](../logic-apps/workflow-definition-language-functions-reference.md#decodeUriComponent) | 返回一个字符串，并将其中的转义字符替换为解码后的版本。 |
 | [encodeUriComponent](../logic-apps/workflow-definition-language-functions-reference.md#encodeUriComponent) | 返回一个字符串，并将其中的 URL 不安全字符替换为转义字符。 |
-| [浮动](../logic-apps/workflow-definition-language-functions-reference.md#float) | 返回输入值的浮点数。 |
-| [Int](../logic-apps/workflow-definition-language-functions-reference.md#int) | 返回字符串的整数版本。 |
-| [Json](../logic-apps/workflow-definition-language-functions-reference.md#json) | 返回字符串或 XML 的 JavaScript 对象表示法 (JSON) 类型的值或对象。 |
-| [字符串](../logic-apps/workflow-definition-language-functions-reference.md#string) | 返回输入值的字符串版本。 |
+| [float](../logic-apps/workflow-definition-language-functions-reference.md#float) | 返回输入值的浮点数。 |
+| [int](../logic-apps/workflow-definition-language-functions-reference.md#int) | 返回字符串的整数版本。 |
+| [json](../logic-apps/workflow-definition-language-functions-reference.md#json) | 返回字符串或 XML 的 JavaScript 对象表示法 (JSON) 类型的值或对象。 |
+| [string](../logic-apps/workflow-definition-language-functions-reference.md#string) | 返回输入值的字符串版本。 |
 | [uriComponent](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | 通过将 URL 不安全字符替换为转义字符来返回输入值的 URI 编码版本。 |
 | [uriComponentToBinary](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToBinary) | 返回 URI 编码字符串的二进制版本。 |
 | [uriComponentToString](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | 返回 URI 编码字符串的字符串版本。 |
@@ -179,15 +179,15 @@ ms.locfileid: "79283909"
 
 | 数学函数 | 任务 |
 | ------------- | ---- |
-| [添加](../logic-apps/workflow-definition-language-functions-reference.md#add) | 返回两个数字相加的结果。 |
+| [add](../logic-apps/workflow-definition-language-functions-reference.md#add) | 返回两个数字相加的结果。 |
 | [div](../logic-apps/workflow-definition-language-functions-reference.md#div) | 返回两个数字相除的结果。 |
 | [max](../logic-apps/workflow-definition-language-functions-reference.md#max) | 返回一组数字或数组中的最大值。 |
-| [分钟](../logic-apps/workflow-definition-language-functions-reference.md#min) | 返回一组数字或数组中的最小值。 |
-| [国防部](../logic-apps/workflow-definition-language-functions-reference.md#mod) | 返回将两个数字相除后的余数。 |
+| [min](../logic-apps/workflow-definition-language-functions-reference.md#min) | 返回一组数字或数组中的最小值。 |
+| [mod](../logic-apps/workflow-definition-language-functions-reference.md#mod) | 返回将两个数字相除后的余数。 |
 | [mul](../logic-apps/workflow-definition-language-functions-reference.md#mul) | 返回将两个数字相乘得到的乘积。 |
 | [rand](../logic-apps/workflow-definition-language-functions-reference.md#rand) | 返回指定范围内的随机整数。 |
-| [范围](../logic-apps/workflow-definition-language-functions-reference.md#range) | 返回以指定整数开头的一个整数数组。 |
-| [子](../logic-apps/workflow-definition-language-functions-reference.md#sub) | 返回第一个数字减去第二个数字得到的结果。 |
+| [range](../logic-apps/workflow-definition-language-functions-reference.md#range) | 返回以指定整数开头的一个整数数组。 |
+| [sub](../logic-apps/workflow-definition-language-functions-reference.md#sub) | 返回第一个数字减去第二个数字得到的结果。 |
 |||
 
 <a name="date-time-functions"></a>
@@ -200,16 +200,16 @@ ms.locfileid: "79283909"
 | 日期或时间函数 | 任务 |
 | --------------------- | ---- |
 | [addDays](../logic-apps/workflow-definition-language-functions-reference.md#addDays) | 将天数加到时间戳。 |
-| [添加小时数](../logic-apps/workflow-definition-language-functions-reference.md#addHours) | 将小时数加到时间戳。 |
+| [addHours](../logic-apps/workflow-definition-language-functions-reference.md#addHours) | 将小时数加到时间戳。 |
 | [addMinutes](../logic-apps/workflow-definition-language-functions-reference.md#addMinutes) | 将分钟数加到时间戳。 |
 | [addSeconds](../logic-apps/workflow-definition-language-functions-reference.md#addSeconds) | 将秒数加到时间戳。 |
 | [addToTime](../logic-apps/workflow-definition-language-functions-reference.md#addToTime) | 将一定数目的时间单位加到时间戳。 另请参阅 [getFutureTime](../logic-apps/workflow-definition-language-functions-reference.md#getFutureTime)。 |
 | [convertFromUtc](../logic-apps/workflow-definition-language-functions-reference.md#convertFromUtc) | 将时间戳从协调世界时 (UTC) 转换为目标时区。 |
 | [convertTimeZone](../logic-apps/workflow-definition-language-functions-reference.md#convertTimeZone) | 将时间戳从源时区转换为目标时区。 |
 | [convertToUtc](../logic-apps/workflow-definition-language-functions-reference.md#convertToUtc) | 将时间戳从源时区转换为协调世界时 (UTC)。 |
-| [月日](../logic-apps/workflow-definition-language-functions-reference.md#dayOfMonth) | 返回时间戳中月份组成部分的日期。 |
-| [周一](../logic-apps/workflow-definition-language-functions-reference.md#dayOfWeek) | 返回时间戳中周组成部分的星期日期。 |
-| [一天](../logic-apps/workflow-definition-language-functions-reference.md#dayOfYear) | 返回时间戳中年组成部分的日期。 |
+| [dayOfMonth](../logic-apps/workflow-definition-language-functions-reference.md#dayOfMonth) | 返回时间戳中月份组成部分的日期。 |
+| [dayOfWeek](../logic-apps/workflow-definition-language-functions-reference.md#dayOfWeek) | 返回时间戳中周组成部分的星期日期。 |
+| [dayOfYear](../logic-apps/workflow-definition-language-functions-reference.md#dayOfYear) | 返回时间戳中年组成部分的日期。 |
 | [formatDateTime](../logic-apps/workflow-definition-language-functions-reference.md#formatDateTime) | 返回时间戳中的日期。 |
 | [getFutureTime](../logic-apps/workflow-definition-language-functions-reference.md#getFutureTime) | 返回当前时间戳加上指定的时间单位。 另请参阅 [addToTime](../logic-apps/workflow-definition-language-functions-reference.md#addToTime)。 |
 | [getPastTime](../logic-apps/workflow-definition-language-functions-reference.md#getPastTime) | 返回当前时间戳减去指定的时间单位。 另请参阅 [subtractFromTime](../logic-apps/workflow-definition-language-functions-reference.md#subtractFromTime)。 |
@@ -236,29 +236,29 @@ ms.locfileid: "79283909"
 
 | 工作流函数 | 任务 |
 | ----------------- | ---- |
-| [行动](../logic-apps/workflow-definition-language-functions-reference.md#action) | 返回当前操作在运行时的输出，或者来自其他 JSON 名称和值对的值。 另请参阅 [actions](../logic-apps/workflow-definition-language-functions-reference.md#actions)。 |
+| [action](../logic-apps/workflow-definition-language-functions-reference.md#action) | 返回当前操作在运行时的输出，或者来自其他 JSON 名称和值对的值。 另请参阅 [actions](../logic-apps/workflow-definition-language-functions-reference.md#actions)。 |
 | [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) | 返回操作在运行时的 `body` 输出。 另请参阅 [body](../logic-apps/workflow-definition-language-functions-reference.md#body)。 |
 | [actionOutputs](../logic-apps/workflow-definition-language-functions-reference.md#actionOutputs) | 返回操作在运行时的输出。 请参阅[输出](../logic-apps/workflow-definition-language-functions-reference.md#outputs)和[操作](../logic-apps/workflow-definition-language-functions-reference.md#actions)。 |
-| [行动](../logic-apps/workflow-definition-language-functions-reference.md#actions) | 返回操作在运行时的输出，或者来自其他 JSON 名称和值对的值。 另请参阅 [action](../logic-apps/workflow-definition-language-functions-reference.md#action)。  |
-| [身体](#body) | 返回操作在运行时的 `body` 输出。 另请参阅 [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody)。 |
-| [形式数据多值](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues) | 创建一个数组，其中包含与表单数据或表单编码操作输出中某个键名匹配的值。**** |
-| [formDataValue](../logic-apps/workflow-definition-language-functions-reference.md#formDataValue) | 返回与操作的表单数据或表单编码输出中的键名称匹配的单个值。**** |
+| [actions](../logic-apps/workflow-definition-language-functions-reference.md#actions) | 返回操作在运行时的输出，或者来自其他 JSON 名称和值对的值。 另请参阅 [action](../logic-apps/workflow-definition-language-functions-reference.md#action)。  |
+| [body](#body) | 返回操作在运行时的 `body` 输出。 另请参阅 [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody)。 |
+| [formDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues) | 创建一个数组，其中包含与表单数据或表单编码操作输出中某个键名匹配的值。   |
+| [formDataValue](../logic-apps/workflow-definition-language-functions-reference.md#formDataValue) | 返回与操作的表单数据或表单编码输出中的键名称匹配的单个值。   |
 | [item](../logic-apps/workflow-definition-language-functions-reference.md#item) | 位于针对数组的重复操作中时，返回在操作的当前迭代过程中数组中的当前项。 |
 | [items](../logic-apps/workflow-definition-language-functions-reference.md#items) | 位于 Foreach 或 Until 循环中时，返回指定循环中的当前项。|
 | [iterationIndexes](../logic-apps/workflow-definition-language-functions-reference.md#iterationIndexes) | 位于 Until 循环中时，返回当前迭代的索引值。 可以在嵌套式的 Until 循环中使用该函数。 |
 | [listCallbackUrl](../logic-apps/workflow-definition-language-functions-reference.md#listCallbackUrl) | 返回调用某个触发器或操作的“回调 URL”。 |
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | 返回具有多个部分的操作输出中某个特定部分的正文。 |
-| [输出](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | 返回操作在运行时的输出。 |
-| [参数](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | 返回工作流定义中描述的参数的值。 |
-| [结果](../logic-apps/workflow-definition-language-functions-reference.md#result) | 返回指定的范围受限操作（例如 `For_each`、`Until` 和 `Scope`）中所有操作的输入和输出。 |
-| [触发](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | 返回触发器在运行时的输出，或者来自其他 JSON 名称和值对的输出。 另请参阅 [triggerOutputs](#triggerOutputs) 和 [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody)。 |
-| [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | 返回触发器在运行时的 `body` 输出。 请参阅[触发器](../logic-apps/workflow-definition-language-functions-reference.md#trigger)。 |
-| [触发器形式数据值](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | 返回与表单数据或表单编码触发器输出中某个键名匹配的单个值。**** |
+| [outputs](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | 返回操作在运行时的输出。 |
+| [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | 返回工作流定义中描述的参数的值。 |
+| [result](../logic-apps/workflow-definition-language-functions-reference.md#result) | 返回指定的范围受限操作（例如 `For_each`、`Until` 和 `Scope`）中所有操作的输入和输出。 |
+| [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | 返回触发器在运行时的输出，或者来自其他 JSON 名称和值对的输出。 另请参阅 [triggerOutputs](#triggerOutputs) 和 [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody)。 |
+| [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | 返回触发器在运行时的 `body` 输出。 请参阅 [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger)。 |
+| [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | 返回与表单数据或表单编码触发器输出中某个键名匹配的单个值。   |
 | [triggerMultipartBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerMultipartBody) | 返回触发器多部分输出中特定部分的正文。 |
-| [触发器形式数据多值](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataMultiValues) | 创建一个数组，该数组的值与表单数据或表单编码触发器输出中某个键名匹配。**** |
-| [triggerOutputs](../logic-apps/workflow-definition-language-functions-reference.md#triggerOutputs) | 返回触发器在运行时的输出，或者来自其他 JSON 名称和值对的值。 请参阅[触发器](../logic-apps/workflow-definition-language-functions-reference.md#trigger)。 |
-| [变量](../logic-apps/workflow-definition-language-functions-reference.md#variables) | 返回指定变量的值。 |
-| [工作流](../logic-apps/workflow-definition-language-functions-reference.md#workflow) | 返回运行期间有关工作流本身的所有详细信息。 |
+| [triggerFormDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataMultiValues) | 创建一个数组，该数组的值与表单数据或表单编码触发器输出中某个键名匹配。   |
+| [triggerOutputs](../logic-apps/workflow-definition-language-functions-reference.md#triggerOutputs) | 返回触发器在运行时的输出，或者来自其他 JSON 名称和值对的值。 请参阅 [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger)。 |
+| [variables](../logic-apps/workflow-definition-language-functions-reference.md#variables) | 返回指定变量的值。 |
+| [workflow](../logic-apps/workflow-definition-language-functions-reference.md#workflow) | 返回运行期间有关工作流本身的所有详细信息。 |
 |||
 
 <a name="uri-parsing-functions"></a>
@@ -288,10 +288,10 @@ ms.locfileid: "79283909"
 | 操作函数 | 任务 |
 | --------------------- | ---- |
 | [addProperty](../logic-apps/workflow-definition-language-functions-reference.md#addProperty) | 将属性及其值或名称/值对添加到 JSON 对象，并返回更新的对象。 |
-| [合并](../logic-apps/workflow-definition-language-functions-reference.md#coalesce) | 返回一个或多个参数中的第一个非 null 值。 |
+| [coalesce](../logic-apps/workflow-definition-language-functions-reference.md#coalesce) | 返回一个或多个参数中的第一个非 null 值。 |
 | [removeProperty](../logic-apps/workflow-definition-language-functions-reference.md#removeProperty) | 从 JSON 对象中删除某个属性，并返回更新的对象。 |
 | [setProperty](../logic-apps/workflow-definition-language-functions-reference.md#setProperty) | 设置 JSON 对象的属性值并返回更新的对象。 |
-| [Xpath](../logic-apps/workflow-definition-language-functions-reference.md#xpath) | 检查 XML 中是否存在与 XPath（XML 路径语言）表达式匹配的节点或值，并返回匹配的节点或值。 |
+| [xpath](../logic-apps/workflow-definition-language-functions-reference.md#xpath) | 检查 XML 中是否存在与 XPath（XML 路径语言）表达式匹配的节点或值，并返回匹配的节点或值。 |
 |||
 
 <a name="alphabetical-list"></a>
@@ -304,9 +304,9 @@ ms.locfileid: "79283909"
 
 ### <a name="action"></a>action
 
-返回“当前”** 操作在运行时的输出，或者来自其他 JSON 名称和值对的值，可以将其分配给表达式。
+返回“当前”  操作在运行时的输出，或者来自其他 JSON 名称和值对的值，可以将其分配给表达式。
 默认情况下，此函数引用整个操作对象，但是也可以指定你需要其值的属性。
-另请参阅[操作（）](../logic-apps/workflow-definition-language-functions-reference.md#actions)。
+另请参阅 [actions()](../logic-apps/workflow-definition-language-functions-reference.md#actions)。
 
 只能在以下位置使用 `action()` 函数：
 
@@ -319,14 +319,14 @@ action()
 action().outputs.body.<property>
 ```
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*财产*> | 否 | String | 需要获取其值的操作对象属性的名称：**name**、**startTime**、**endTime**、**inputs**、**outputs**、**status**、**code**、**trackingId** 和 **clientTrackingId**。 在 Azure 门户中，可以通过查看特定运行历史记录的详细信息来查找这些属性。 有关详细信息，请参阅 [REST API - 工作流运行操作](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get)。 |
+| <*property*> | 否 | String | 需要获取其值的操作对象属性的名称：**name**、**startTime**、**endTime**、**inputs**、**outputs**、**status**、**code**、**trackingId** 和 **clientTrackingId**。 在 Azure 门户中，可以通过查看特定运行历史记录的详细信息来查找这些属性。 有关详细信息，请参阅 [REST API - 工作流运行操作](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get)。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | -----| ----------- |
-| <*动作输出*> | String | 当前操作或属性的输出 |
+| <*action-output*> | String | 当前操作或属性的输出 |
 ||||
 
 <a name="actionBody"></a>
@@ -341,14 +341,14 @@ action().outputs.body.<property>
 actionBody('<actionName>')
 ```
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*操作名称*> | 是 | String | 所需的操作 `body` 输出的名称 |
+| <*actionName*> | 是 | String | 所需的操作 `body` 输出的名称 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | -----| ----------- |
-| <*动作体输出*> | String | 指定操作的 `body` 输出 |
+| <*action-body-output*> | String | 指定操作的 `body` 输出 |
 ||||
 
 *示例*
@@ -380,7 +380,7 @@ actionBody('Get_user')
 
 ### <a name="actionoutputs"></a>actionOutputs
 
-返回操作在运行时的输出。  和 的缩写`actions('<actionName>').outputs`。 请参阅[操作（）](#actions)。 该`actionOutputs()`函数解析为`outputs()`逻辑应用设计器，因此请考虑使用[输出（）](#outputs)而不是`actionOutputs()`。 虽然这两个函数的工作方式相同，但首选 `outputs()`。
+返回操作在运行时的输出。  和 的缩写`actions('<actionName>').outputs`。 请参阅 [actions()](#actions)。 该`actionOutputs()`函数解析为`outputs()`逻辑应用设计器，因此请考虑使用[输出（）](#outputs)而不是`actionOutputs()`。 虽然这两个函数的工作方式相同，但首选 `outputs()`。
 
 ```
 actionOutputs('<actionName>')
@@ -388,12 +388,12 @@ actionOutputs('<actionName>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*操作名称*> | 是 | String | 所需的操作输出的名称 |
+| <*操作名称*> | 是 | 字符串 | 所需的操作输出的名称 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | -----| ----------- |
-| <*输出*> | String | 指定操作的输出 |
+| <*输出*> | 字符串 | 指定操作的输出 |
 ||||
 
 *示例*
@@ -458,13 +458,13 @@ actions('<actionName>').outputs.body.<property>
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*操作名称*> | 是 | String | 需要获取其输出的操作对象的名称  |
-| <*财产*> | 否 | String | 需要获取其值的操作对象属性的名称：**name**、**startTime**、**endTime**、**inputs**、**outputs**、**status**、**code**、**trackingId** 和 **clientTrackingId**。 在 Azure 门户中，可以通过查看特定运行历史记录的详细信息来查找这些属性。 有关详细信息，请参阅 [REST API - 工作流运行操作](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get)。 |
+| <*操作名称*> | 是 | 字符串 | 需要获取其输出的操作对象的名称  |
+| <*财产*> | 否 | 字符串 | 需要获取其值的操作对象属性的名称：**name**、**startTime**、**endTime**、**inputs**、**outputs**、**status**、**code**、**trackingId** 和 **clientTrackingId**。 在 Azure 门户中，可以通过查看特定运行历史记录的详细信息来查找这些属性。 有关详细信息，请参阅 [REST API - 工作流运行操作](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get)。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | -----| ----------- |
-| <*动作输出*> | String | 指定操作或属性的输出 |
+| <*动作输出*> | 字符串 | 指定操作或属性的输出 |
 ||||
 
 *示例*
@@ -519,14 +519,14 @@ addDays('<timestamp>', <days>, '<format>'?)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
 | <*天*> | 是 | Integer | 要加上的正负天数 |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新时间戳*> | String | 时间戳加上指定的天数  |
+| <*更新时间戳*> | 字符串 | 时间戳加上指定的天数  |
 ||||
 
 *示例 1*
@@ -561,14 +561,14 @@ addHours('<timestamp>', <hours>, '<format>'?)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
 | <*小时*> | 是 | Integer | 要加上的正负小时数 |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新时间戳*> | String | 时间戳加上指定的小时数  |
+| <*更新时间戳*> | 字符串 | 时间戳加上指定的小时数  |
 ||||
 
 *示例 1*
@@ -603,14 +603,14 @@ addMinutes('<timestamp>', <minutes>, '<format>'?)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
 | <*分钟*> | 是 | Integer | 要加上的正负分钟数 |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新时间戳*> | String | 时间戳加上指定的分钟数 |
+| <*更新时间戳*> | 字符串 | 时间戳加上指定的分钟数 |
 ||||
 
 *示例 1*
@@ -645,14 +645,14 @@ addProperty(<object>, '<property>', <value>)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*对象*> | 是 | Object | 要将属性添加到的 JSON 对象 |
-| <*财产*> | 是 | String | 要添加的属性的名称 |
+| <*对象*> | 是 | 对象 | 要将属性添加到的 JSON 对象 |
+| <*财产*> | 是 | 字符串 | 要添加的属性的名称 |
 | <*价值*> | 是 | Any | 属性的值 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新对象*> | Object | 具有指定属性的更新后 JSON 对象 |
+| <*更新对象*> | 对象 | 具有指定属性的更新后 JSON 对象 |
 ||||
 
 若要向现有属性添加子属性，请使用以下语法：
@@ -663,15 +663,15 @@ addProperty(<object>['<parent-property>'], '<child-property>', <value>)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*对象*> | 是 | Object | 要将属性添加到的 JSON 对象 |
-| <*父属性*> | 是 | String | 要在其中添加子属性的父属性的名称 |
-| <*儿童财产*> | 是 | String | 要添加的子属性的名称 |
+| <*对象*> | 是 | 对象 | 要将属性添加到的 JSON 对象 |
+| <*父属性*> | 是 | 字符串 | 要在其中添加子属性的父属性的名称 |
+| <*儿童财产*> | 是 | 字符串 | 要添加的子属性的名称 |
 | <*价值*> | 是 | Any | 要为指定属性设置的值 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新对象*> | Object | 设置了其属性的更新后 JSON 对象 |
+| <*更新对象*> | 对象 | 设置了其属性的更新后 JSON 对象 |
 ||||
 
 *示例 1*
@@ -744,14 +744,14 @@ addSeconds('<timestamp>', <seconds>, '<format>'?)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
 | <*秒*> | 是 | Integer | 要加上的正负秒数 |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新时间戳*> | String | 时间戳加上指定的秒数  |
+| <*更新时间戳*> | 字符串 | 时间戳加上指定的秒数  |
 ||||
 
 *示例 1*
@@ -787,15 +787,15 @@ addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
 | <*区间*> | 是 | Integer | 要添加的指定时间单位数 |
-| <*时间单位*> | 是 | String | 要与 *interval* 一起使用的时间单位：“Second”、“Minute”、“Hour”、“Day”、“Week”、“Month”、“Year” |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*时间单位*> | 是 | 字符串 | 要与 *interval* 一起使用的时间单位：“Second”、“Minute”、“Hour”、“Day”、“Week”、“Month”、“Year” |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新时间戳*> | String | 时间戳加上指定的时间单位数  |
+| <*更新时间戳*> | 字符串 | 时间戳加上指定的时间单位数  |
 ||||
 
 *示例 1*
@@ -820,7 +820,7 @@ addToTime('2018-01-01T00:00:00Z', 1, 'Day', 'D')
 
 <a name="and"></a>
 
-### <a name="and"></a>and
+### <a name="and"></a>和
 
 检查所有表达式是否为 true。
 当所有表达式均为 true 时返回 true，当至少一个表达式为 false 时返回 false。
@@ -884,7 +884,7 @@ array('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 用于创建数组的字符串 |
+| <*价值*> | 是 | 字符串 | 用于创建数组的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -914,12 +914,12 @@ base64('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 输入字符串 |
+| <*价值*> | 是 | 字符串 | 输入字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*基64字符串*> | String | 返回输入字符串的 base64 编码版本 |
+| <*基64字符串*> | 字符串 | 返回输入字符串的 base64 编码版本 |
 ||||
 
 *示例*
@@ -944,12 +944,12 @@ base64ToBinary('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 要转换的 base64 编码字符串 |
+| <*价值*> | 是 | 字符串 | 要转换的 base64 编码字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*二进制换基64字符串*> | String | base64 编码字符串的二进制版本 |
+| <*二进制换基64字符串*> | 字符串 | base64 编码字符串的二进制版本 |
 ||||
 
 *示例*
@@ -978,12 +978,12 @@ base64ToString('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 要解码的 base64 编码字符串 |
+| <*价值*> | 是 | 字符串 | 要解码的 base64 编码字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*解码基64字符串*> | String | base64 编码字符串的字符串版本 |
+| <*解码基64字符串*> | 字符串 | base64 编码字符串的字符串版本 |
 ||||
 
 *示例*
@@ -1008,12 +1008,12 @@ binary('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 要转换的字符串 |
+| <*价值*> | 是 | 字符串 | 要转换的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*二进制表示输入值*> | String | 指定字符串的二进制版本 |
+| <*二进制表示输入值*> | 字符串 | 指定字符串的二进制版本 |
 ||||
 
 *示例*
@@ -1042,12 +1042,12 @@ body('<actionName>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*操作名称*> | 是 | String | 所需的操作 `body` 输出的名称 |
+| <*操作名称*> | 是 | 字符串 | 所需的操作 `body` 输出的名称 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | -----| ----------- |
-| <*动作体输出*> | String | 指定操作的 `body` 输出 |
+| <*动作体输出*> | 字符串 | 指定操作的 `body` 输出 |
 ||||
 
 *示例*
@@ -1158,12 +1158,12 @@ concat('<text1>', '<text2>', ...)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*text1*>, <*text2*>, ... | 是 | String | 至少两个要组合的字符串 |
+| <*text1*>, <*text2*>, ... | 是 | 字符串 | 至少两个要组合的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*文本1文本2...*> | String | 基于组合后的输入字符串创建的字符串 |
+| <*文本1文本2...*> | 字符串 | 基于组合后的输入字符串创建的字符串 |
 ||||
 
 *示例*
@@ -1234,14 +1234,14 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
-| <*目的地时区*> | 是 | String | 目标时区的名称。 有关时区名称，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)，但你可能需要删除时区名称中的任何标点。 |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
+| <*目的地时区*> | 是 | 字符串 | 目标时区的名称。 有关时区名称，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)，但你可能需要删除时区名称中的任何标点。 |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*转换时间戳*> | String | 已转换为目标时区的时间戳 |
+| <*转换时间戳*> | 字符串 | 已转换为目标时区的时间戳 |
 ||||
 
 *示例 1*
@@ -1276,15 +1276,15 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
-| <*源时区*> | 是 | String | 源时区的名称。 有关时区名称，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)，但你可能需要删除时区名称中的任何标点。 |
-| <*目的地时区*> | 是 | String | 目标时区的名称。 有关时区名称，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)，但你可能需要删除时区名称中的任何标点。 |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
+| <*源时区*> | 是 | 字符串 | 源时区的名称。 有关时区名称，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)，但你可能需要删除时区名称中的任何标点。 |
+| <*目的地时区*> | 是 | 字符串 | 目标时区的名称。 有关时区名称，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)，但你可能需要删除时区名称中的任何标点。 |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*转换时间戳*> | String | 已转换为目标时区的时间戳 |
+| <*转换时间戳*> | 字符串 | 已转换为目标时区的时间戳 |
 ||||
 
 *示例 1*
@@ -1319,14 +1319,14 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
-| <*源时区*> | 是 | String | 源时区的名称。 有关时区名称，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)，但你可能需要删除时区名称中的任何标点。 |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
+| <*源时区*> | 是 | 字符串 | 源时区的名称。 有关时区名称，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)，但你可能需要删除时区名称中的任何标点。 |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*转换时间戳*> | String | 已转换为 UTC 的时间戳 |
+| <*转换时间戳*> | 字符串 | 已转换为 UTC 的时间戳 |
 ||||
 
 *示例 1*
@@ -1392,12 +1392,12 @@ dataUri('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 要转换的字符串 |
+| <*价值*> | 是 | 字符串 | 要转换的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*数据-uri*> | String | 输入字符串的数据 URI |
+| <*数据-uri*> | 字符串 | 输入字符串的数据 URI |
 ||||
 
 *示例*
@@ -1424,12 +1424,12 @@ dataUriToBinary('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 要转换的数据 URI |
+| <*价值*> | 是 | 字符串 | 要转换的数据 URI |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*二进制数据-uri*> | String | 数据 URI 的二进制版本 |
+| <*二进制数据-uri*> | 字符串 | 数据 URI 的二进制版本 |
 ||||
 
 *示例*
@@ -1459,12 +1459,12 @@ dataUriToString('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 要转换的数据 URI |
+| <*价值*> | 是 | 字符串 | 要转换的数据 URI |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*字符串表示数据-uri*> | String | 数据 URI 的字符串版本 |
+| <*字符串表示数据-uri*> | 字符串 | 数据 URI 的字符串版本 |
 ||||
 
 *示例*
@@ -1489,7 +1489,7 @@ dayOfMonth('<timestamp>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -1519,7 +1519,7 @@ dayOfWeek('<timestamp>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -1549,7 +1549,7 @@ dayOfYear('<timestamp>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -1581,12 +1581,12 @@ decodeBase64('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 要解码的 base64 编码字符串 |
+| <*价值*> | 是 | 字符串 | 要解码的 base64 编码字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*解码基64字符串*> | String | base64 编码字符串的字符串版本 |
+| <*解码基64字符串*> | 字符串 | base64 编码字符串的字符串版本 |
 ||||
 
 *示例*
@@ -1613,12 +1613,12 @@ decodeDataUri('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 要解码的数据 URI 字符串 |
+| <*价值*> | 是 | 字符串 | 要解码的数据 URI 字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*二进制数据-uri*> | String | 数据 URI 字符串的二进制版本 |
+| <*二进制数据-uri*> | 字符串 | 数据 URI 字符串的二进制版本 |
 ||||
 
 *示例*
@@ -1648,12 +1648,12 @@ decodeUriComponent('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 包含要解码的转义字符的字符串 |
+| <*价值*> | 是 | 字符串 | 包含要解码的转义字符的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*解码-uri*> | String | 包含解码后的转义字符的更新后字符串 |
+| <*解码-uri*> | 字符串 | 包含解码后的转义字符的更新后字符串 |
 ||||
 
 *示例*
@@ -1713,12 +1713,12 @@ encodeUriComponent('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 要转换为 URI 编码格式的字符串 |
+| <*价值*> | 是 | 字符串 | 要转换为 URI 编码格式的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*编码-uri*> | String | 带有转义字符的 URI 编码字符串 |
+| <*编码-uri*> | 字符串 | 带有转义字符的 URI 编码字符串 |
 ||||
 
 *示例*
@@ -1781,8 +1781,8 @@ endsWith('<text>', '<searchText>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*文本*> | 是 | String | 要检查的字符串 |
-| <*搜索文本*> | 是 | String | 要查找的结尾子字符串 |
+| <*文本*> | 是 | 字符串 | 要检查的字符串 |
+| <*搜索文本*> | 是 | 字符串 | 要查找的结尾子字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -1893,7 +1893,7 @@ float('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 包含要转换的有效浮点数的字符串 |
+| <*价值*> | 是 | 字符串 | 包含要转换的有效浮点数的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -1923,13 +1923,13 @@ formatDateTime('<timestamp>', '<format>'?)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*重新格式化时间戳*> | String | 采用指定格式的更新后时间戳 |
+| <*重新格式化时间戳*> | 字符串 | 采用指定格式的更新后时间戳 |
 ||||
 
 *示例*
@@ -1954,8 +1954,8 @@ formDataMultiValues('<actionName>', '<key>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*操作名称*> | 是 | String | 其输出中具有所需键值的操作 |
-| <*关键*> | 是 | String | 需要获取其值的键的名称 |
+| <*操作名称*> | 是 | 字符串 | 其输出中具有所需键值的操作 |
+| <*关键*> | 是 | 字符串 | 需要获取其值的键的名称 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -1986,13 +1986,13 @@ formDataValue('<actionName>', '<key>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*操作名称*> | 是 | String | 其输出中具有所需键值的操作 |
-| <*关键*> | 是 | String | 需要获取其值的键的名称 |
+| <*操作名称*> | 是 | 字符串 | 其输出中具有所需键值的操作 |
+| <*关键*> | 是 | 字符串 | 需要获取其值的键的名称 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*键值*> | String | 指定的键中的值  |
+| <*键值*> | 字符串 | 指定的键中的值  |
 ||||
 
 *示例*
@@ -2018,13 +2018,13 @@ formatNumber(<number>, <format>, <locale>?)
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*数量*> | 是 | 整数或双精度 | 要格式化的值。 |
-| <*格式*> | 是 | String | 指定要使用的格式的复合格式字符串。 有关支持的数字格式字符串，请参阅 标准[数字格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/standard-numeric-format-strings)，这些字符串受`number.ToString(<format>, <locale>)`支持。 |
-| <*现场*> | 否 | String | 要使用区域设置，如 所`number.ToString(<format>, <locale>)`支持。 如果未指定，默认值为 `en-us`。 |
+| <*格式*> | 是 | 字符串 | 指定要使用的格式的复合格式字符串。 有关支持的数字格式字符串，请参阅 标准[数字格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/standard-numeric-format-strings)，这些字符串受`number.ToString(<format>, <locale>)`支持。 |
+| <*现场*> | 否 | 字符串 | 要使用区域设置，如 所`number.ToString(<format>, <locale>)`支持。 如果未指定，默认值为 `en-us`。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*格式化号码*> | String | 指定的数字作为您指定的格式的字符串。 您可以将此返回值转换为 或`int``float`。 |
+| <*格式化号码*> | 字符串 | 指定的数字作为您指定的格式的字符串。 您可以将此返回值转换为 或`int``float`。 |
 ||||
 
 *示例 1*
@@ -2072,13 +2072,13 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*区间*> | 是 | Integer | 要添加的指定时间单位数 |
-| <*时间单位*> | 是 | String | 要与 *interval* 一起使用的时间单位：“Second”、“Minute”、“Hour”、“Day”、“Week”、“Month”、“Year” |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*时间单位*> | 是 | 字符串 | 要与 *interval* 一起使用的时间单位：“Second”、“Minute”、“Hour”、“Day”、“Week”、“Month”、“Year” |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新时间戳*> | String | 当前时间戳加上指定的时间单位数 |
+| <*更新时间戳*> | 字符串 | 当前时间戳加上指定的时间单位数 |
 ||||
 
 *示例 1*
@@ -2116,13 +2116,13 @@ getPastTime(<interval>, <timeUnit>, <format>?)
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*区间*> | 是 | Integer | 要减去的指定时间单位数 |
-| <*时间单位*> | 是 | String | 要与 *interval* 一起使用的时间单位：“Second”、“Minute”、“Hour”、“Day”、“Week”、“Month”、“Year” |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*时间单位*> | 是 | 字符串 | 要与 *interval* 一起使用的时间单位：“Second”、“Minute”、“Hour”、“Day”、“Week”、“Month”、“Year” |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新时间戳*> | String | 当前时间戳减去指定的时间单位数 |
+| <*更新时间戳*> | 字符串 | 当前时间戳减去指定的时间单位数 |
 ||||
 
 *示例 1*
@@ -2239,12 +2239,12 @@ guid('<format>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*格式*> | 否 | String | 表示返回的 GUID 的单一[格式说明符](https://msdn.microsoft.com/library/97af8hh4)。 默认情况下，格式为“D”，但可以使用“N”、“D”、“B”、“P”或“X”。 |
+| <*格式*> | 否 | 字符串 | 表示返回的 GUID 的单一[格式说明符](https://msdn.microsoft.com/library/97af8hh4)。 默认情况下，格式为“D”，但可以使用“N”、“D”、“B”、“P”或“X”。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*GUID 值*> | String | 随机生成的 GUID |
+| <*GUID 值*> | 字符串 | 随机生成的 GUID |
 ||||
 
 *示例*
@@ -2302,8 +2302,8 @@ indexOf('<text>', '<searchText>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*文本*> | 是 | String | 包含要查找的子字符串的字符串 |
-| <*搜索文本*> | 是 | String | 要查找的子字符串 |
+| <*文本*> | 是 | 字符串 | 包含要查找的子字符串的字符串 |
+| <*搜索文本*> | 是 | 字符串 | 要查找的子字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -2333,7 +2333,7 @@ int('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 要转换的字符串 |
+| <*价值*> | 是 | 字符串 | 要转换的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -2388,7 +2388,7 @@ items('<loopName>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*循环名称*> | 是 | String | for-each 循环的名称 |
+| <*循环名称*> | 是 | 字符串 | for-each 循环的名称 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -2416,7 +2416,7 @@ iterationIndexes('<loopName>')
 
 | 参数 | 必选 | 类型 | 说明 | 
 | --------- | -------- | ---- | ----------- | 
-| <*循环名称*> | 是 | String | Until 循环的名称 | 
+| <*循环名称*> | 是 | 字符串 | Until 循环的名称 | 
 ||||| 
 
 | 返回值 | 类型 | 说明 | 
@@ -2481,7 +2481,7 @@ iterationIndexes('<loopName>')
                "runAfter": {}
             }
          },
-         "expression": "@equals(variables('myCounter'), 5),
+         "expression": "@equals(variables('myCounter'), 5)",
          "limit": {
             "count": 60,
             "timeout": "PT1H"
@@ -2609,12 +2609,12 @@ join([<collection>], '<delimiter>')
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*收集*> | 是 | Array | 包含要联接的项的数组 |
-| <*分隔符*> | 是 | String | 出现在结果字符串中的每个字符之间的分隔符 |
+| <*分隔符*> | 是 | 字符串 | 出现在结果字符串中的每个字符之间的分隔符 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*char1*><*分隔符*><*char2*><*分隔符*>... | String | 基于指定数组中的所有项创建的结果字符串 |
+| <*char1*><*分隔符*><*char2*><*分隔符*>... | 字符串 | 基于指定数组中的所有项创建的结果字符串 |
 ||||
 
 *示例*
@@ -2675,8 +2675,8 @@ lastIndexOf('<text>', '<searchText>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*文本*> | 是 | String | 包含要查找的子字符串的字符串 |
-| <*搜索文本*> | 是 | String | 要查找的子字符串 |
+| <*文本*> | 是 | 字符串 | 包含要查找的子字符串的字符串 |
+| <*搜索文本*> | 是 | 字符串 | 要查找的子字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -2813,7 +2813,7 @@ listCallbackUrl()
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*回调 URL*> | String | 触发器或操作的回调 URL |
+| <*回调 URL*> | 字符串 | 触发器或操作的回调 URL |
 ||||
 
 *示例*
@@ -2967,13 +2967,13 @@ multipartBody('<actionName>', <index>)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*操作名称*> | 是 | String | 具有多部分输出的操作的名称 |
+| <*操作名称*> | 是 | 字符串 | 具有多部分输出的操作的名称 |
 | <*指数*> | 是 | Integer | 所需部分的索引值 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*身体*> | String | 指定部分的正文 |
+| <*身体*> | 字符串 | 指定部分的正文 |
 ||||
 
 <a name="not"></a>
@@ -3086,12 +3086,12 @@ outputs('<actionName>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*操作名称*> | 是 | String | 所需的操作输出的名称 |
+| <*操作名称*> | 是 | 字符串 | 所需的操作输出的名称 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | -----| ----------- |
-| <*输出*> | String | 指定操作的输出 |
+| <*输出*> | 字符串 | 指定操作的输出 |
 ||||
 
 *示例*
@@ -3149,7 +3149,7 @@ parameters('<parameterName>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*参数名称*> | 是 | String | 需要获取其值的参数的名称。 |
+| <*参数名称*> | 是 | 字符串 | 需要获取其值的参数的名称。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -3249,14 +3249,14 @@ replace('<text>', '<oldText>', '<newText>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*文本*> | 是 | String | 包含要替换的子字符串的字符串 |
-| <*旧文本*> | 是 | String | 要替换的子字符串 |
-| <*新文本*> | 是 | String | 替换字符串 |
+| <*文本*> | 是 | 字符串 | 包含要替换的子字符串的字符串 |
+| <*旧文本*> | 是 | 字符串 | 要替换的子字符串 |
+| <*新文本*> | 是 | 字符串 | 替换字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新文本*> | String | 替换子字符串后得到的更新后字符串 <p>如果未找到子字符串，则返回原始字符串。 |
+| <*更新文本*> | 字符串 | 替换子字符串后得到的更新后字符串 <p>如果未找到子字符串，则返回原始字符串。 |
 ||||
 
 *示例*
@@ -3281,13 +3281,13 @@ removeProperty(<object>, '<property>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*对象*> | 是 | Object | 要从中删除属性的 JSON 对象 |
-| <*财产*> | 是 | String | 要删除的属性的名称 |
+| <*对象*> | 是 | 对象 | 要从中删除属性的 JSON 对象 |
+| <*财产*> | 是 | 字符串 | 要删除的属性的名称 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新对象*> | Object | 不具有指定属性的更新后 JSON 对象 |
+| <*更新对象*> | 对象 | 不具有指定属性的更新后 JSON 对象 |
 ||||
 
 若要从现有属性中删除子属性，请使用以下语法：
@@ -3298,14 +3298,14 @@ removeProperty(<object>['<parent-property>'], '<child-property>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*对象*> | 是 | Object | 要删除其属性的 JSON 对象 |
-| <*父属性*> | 是 | String | 要删除其子属性的父属性的名称 |
-| <*儿童财产*> | 是 | String | 要删除的子属性的名称 |
+| <*对象*> | 是 | 对象 | 要删除其属性的 JSON 对象 |
+| <*父属性*> | 是 | 字符串 | 要删除其子属性的父属性的名称 |
+| <*儿童财产*> | 是 | 字符串 | 要删除的子属性的名称 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新对象*> | Object | 删除了其子属性的已更新 JSON 对象 |
+| <*更新对象*> | 对象 | 删除了其子属性的已更新 JSON 对象 |
 ||||
 
 *示例 1*
@@ -3378,7 +3378,7 @@ result('<scopedActionName>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*范围操作名称*> | 是 | String | 将会从其返回所有内部操作的输入和输出的范围受限操作的名称。 |
+| <*范围操作名称*> | 是 | 字符串 | 将会从其返回所有内部操作的输入和输出的范围受限操作的名称。 |
 ||||
 
 | 返回值 | 类型 | 说明 |
@@ -3499,8 +3499,8 @@ setProperty(<object>, '<property>', <value>)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*对象*> | 是 | Object | 要设置其属性的 JSON 对象 |
-| <*财产*> | 是 | String | 要设置的现有属性或新属性的名称 |
+| <*对象*> | 是 | 对象 | 要设置其属性的 JSON 对象 |
+| <*财产*> | 是 | 字符串 | 要设置的现有属性或新属性的名称 |
 | <*价值*> | 是 | Any | 要为指定属性设置的值 |
 |||||
 
@@ -3512,15 +3512,15 @@ setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<obj
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*对象*> | 是 | Object | 要设置其属性的 JSON 对象 |
-| <*父属性*> | 是 | String | 要设置其子属性的父属性的名称 |
-| <*儿童财产*> | 是 | String | 要设置的子属性的名称 |
+| <*对象*> | 是 | 对象 | 要设置其属性的 JSON 对象 |
+| <*父属性*> | 是 | 字符串 | 要设置其子属性的父属性的名称 |
+| <*儿童财产*> | 是 | 字符串 | 要设置的子属性的名称 |
 | <*价值*> | 是 | Any | 要为指定属性设置的值 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新对象*> | Object | 设置了其属性的更新后 JSON 对象 |
+| <*更新对象*> | 对象 | 设置了其属性的更新后 JSON 对象 |
 ||||
 
 *示例 1*
@@ -3622,8 +3622,8 @@ split('<text>', '<delimiter>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*文本*> | 是 | String | 根据原始字符串中指定的分隔符将分隔成子字符串的字符串 |
-| <*分隔符*> | 是 | String | 原始字符串中用作分隔符的字符 |
+| <*文本*> | 是 | 字符串 | 根据原始字符串中指定的分隔符将分隔成子字符串的字符串 |
+| <*分隔符*> | 是 | 字符串 | 原始字符串中用作分隔符的字符 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -3653,13 +3653,13 @@ startOfDay('<timestamp>', '<format>'?)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新时间戳*> | String | 指定的时间戳，但从该天的零小时标记开始 |
+| <*更新时间戳*> | 字符串 | 指定的时间戳，但从该天的零小时标记开始 |
 ||||
 
 *示例*
@@ -3684,13 +3684,13 @@ startOfHour('<timestamp>', '<format>'?)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新时间戳*> | String | 指定的时间戳，但从该小时的零分钟标记开始 |
+| <*更新时间戳*> | 字符串 | 指定的时间戳，但从该小时的零分钟标记开始 |
 ||||
 
 *示例*
@@ -3715,13 +3715,13 @@ startOfMonth('<timestamp>', '<format>'?)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新时间戳*> | String | 指定的时间戳，但从该月第一天的零小时标记开始 |
+| <*更新时间戳*> | 字符串 | 指定的时间戳，但从该月第一天的零小时标记开始 |
 ||||
 
 *示例*
@@ -3748,8 +3748,8 @@ startsWith('<text>', '<searchText>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*文本*> | 是 | String | 要检查的字符串 |
-| <*搜索文本*> | 是 | String | 要查找的起始字符串 |
+| <*文本*> | 是 | 字符串 | 要检查的字符串 |
+| <*搜索文本*> | 是 | 字符串 | 要查找的起始字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -3794,7 +3794,7 @@ string(<value>)
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*字符串值*> | String | 指定的值的字符串版本 |
+| <*字符串值*> | 字符串 | 指定的值的字符串版本 |
 ||||
 
 *示例 1*
@@ -3861,14 +3861,14 @@ substring('<text>', <startIndex>, <length>)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*文本*> | 是 | String | 所需字符所在的字符串 |
+| <*文本*> | 是 | 字符串 | 所需字符所在的字符串 |
 | <*启动索引*> | 是 | Integer | 一个等于或大于 0 的正数，需将其用作起始位置或索引值 |
 | <*长度*> | 是 | Integer | 希望子字符串中具有的字符数（正数） |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*子字符串结果*> | String | 包含指定字符数的子字符串，从源字符串中的指定索引位置开始 |
+| <*子字符串结果*> | 字符串 | 包含指定字符数的子字符串，从源字符串中的指定索引位置开始 |
 ||||
 
 *示例*
@@ -3894,15 +3894,15 @@ subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 包含时间戳的字符串 |
+| <*时间 戳*> | 是 | 字符串 | 包含时间戳的字符串 |
 | <*区间*> | 是 | Integer | 要减去的指定时间单位数 |
-| <*时间单位*> | 是 | String | 要与 *interval* 一起使用的时间单位：“Second”、“Minute”、“Hour”、“Day”、“Week”、“Month”、“Year” |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*时间单位*> | 是 | 字符串 | 要与 *interval* 一起使用的时间单位：“Second”、“Minute”、“Hour”、“Day”、“Week”、“Month”、“Year” |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新时间戳*> | String | 时间戳减去指定的时间单位数 |
+| <*更新时间戳*> | 字符串 | 时间戳减去指定的时间单位数 |
 ||||
 
 *示例 1*
@@ -3974,7 +3974,7 @@ ticks('<timestamp>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*时间 戳*> | 是 | String | 时间戳的字符串 |
+| <*时间 戳*> | 是 | 字符串 | 时间戳的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -3994,12 +3994,12 @@ toLower('<text>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*文本*> | 是 | String | 要以小写格式返回的字符串 |
+| <*文本*> | 是 | 字符串 | 要以小写格式返回的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*小写文本*> | String | 采用小写格式的原始字符串 |
+| <*小写文本*> | 字符串 | 采用小写格式的原始字符串 |
 ||||
 
 *示例*
@@ -4024,12 +4024,12 @@ toUpper('<text>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*文本*> | 是 | String | 要以大写格式返回的字符串 |
+| <*文本*> | 是 | 字符串 | 要以大写格式返回的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*大写文本*> | String | 采用大写格式的原始字符串 |
+| <*大写文本*> | 字符串 | 采用大写格式的原始字符串 |
 ||||
 
 *示例*
@@ -4061,7 +4061,7 @@ trigger()
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*触发器输出*> | String | 触发器在运行时的输出 |
+| <*触发器输出*> | 字符串 | 触发器在运行时的输出 |
 ||||
 
 <a name="triggerBody"></a>
@@ -4078,7 +4078,7 @@ triggerBody()
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*触发器体输出*> | String | 触发器的 `body` 输出 |
+| <*触发器体输出*> | 字符串 | 触发器的 `body` 输出 |
 ||||
 
 <a name="triggerFormDataMultiValues"></a>
@@ -4093,7 +4093,7 @@ triggerFormDataMultiValues('<key>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*关键*> | 是 | String | 需要获取其值的键的名称 |
+| <*关键*> | 是 | 字符串 | 需要获取其值的键的名称 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -4124,12 +4124,12 @@ triggerFormDataValue('<key>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*关键*> | 是 | String | 需要获取其值的键的名称 |
+| <*关键*> | 是 | 字符串 | 需要获取其值的键的名称 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*键值*> | String | 指定的键中的值 |
+| <*键值*> | 字符串 | 指定的键中的值 |
 ||||
 
 *示例*
@@ -4159,7 +4159,7 @@ triggerMultipartBody(<index>)
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*身体*> | String | 触发器多部分输出中指定部分的正文 |
+| <*身体*> | 字符串 | 触发器多部分输出中指定部分的正文 |
 ||||
 
 <a name="triggerOutputs"></a>
@@ -4176,7 +4176,7 @@ triggerOutputs()
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*触发器输出*> | String | 触发器在运行时的输出  |
+| <*触发器输出*> | 字符串 | 触发器在运行时的输出  |
 ||||
 
 <a name="trim"></a>
@@ -4191,12 +4191,12 @@ trim('<text>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*文本*> | 是 | String | 包含要删除的前导和尾随空格的字符串 |
+| <*文本*> | 是 | 字符串 | 包含要删除的前导和尾随空格的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*更新文本*> | String | 原始字符串的更新后版本，其中不含前导或尾随空格 |
+| <*更新文本*> | 字符串 | 原始字符串的更新后版本，其中不含前导或尾随空格 |
 ||||
 
 *示例*
@@ -4255,12 +4255,12 @@ uriComponent('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 要转换为 URI 编码格式的字符串 |
+| <*价值*> | 是 | 字符串 | 要转换为 URI 编码格式的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*编码-uri*> | String | 带有转义字符的 URI 编码字符串 |
+| <*编码-uri*> | 字符串 | 带有转义字符的 URI 编码字符串 |
 ||||
 
 *示例*
@@ -4285,12 +4285,12 @@ uriComponentToBinary('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 要转换的 URI 编码字符串 |
+| <*价值*> | 是 | 字符串 | 要转换的 URI 编码字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*二进制编码-uri*> | String | URI 编码字符串的二进制版本。 二进制内容是 base64 编码的，并且由 `$content` 表示。 |
+| <*二进制编码-uri*> | 字符串 | URI 编码字符串的二进制版本。 二进制内容是 base64 编码的，并且由 `$content` 表示。 |
 ||||
 
 *示例*
@@ -4320,12 +4320,12 @@ uriComponentToString('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 要解码的 URI 编码字符串 |
+| <*价值*> | 是 | 字符串 | 要解码的 URI 编码字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*解码-uri*> | String | URI 编码字符串的解码后的版本 |
+| <*解码-uri*> | 字符串 | URI 编码字符串的解码后的版本 |
 ||||
 
 *示例*
@@ -4350,12 +4350,12 @@ uriHost('<uri>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*Uri*> | 是 | String | 需要获取其 `host` 值的 URI |
+| <*Uri*> | 是 | 字符串 | 需要获取其 `host` 值的 URI |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*主机值*> | String | 指定的 URI 的 `host` 值 |
+| <*主机值*> | 字符串 | 指定的 URI 的 `host` 值 |
 ||||
 
 *示例*
@@ -4380,12 +4380,12 @@ uriPath('<uri>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*Uri*> | 是 | String | 需要获取其 `path` 值的 URI |
+| <*Uri*> | 是 | 字符串 | 需要获取其 `path` 值的 URI |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*路径值*> | String | 指定的 URI 的 `path` 值。 如果 `path` 不含值，则返回“/”字符。 |
+| <*路径值*> | 字符串 | 指定的 URI 的 `path` 值。 如果 `path` 不含值，则返回“/”字符。 |
 ||||
 
 *示例*
@@ -4410,12 +4410,12 @@ uriPathAndQuery('<uri>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*Uri*> | 是 | String | 需要获取其 `path` 和 `query` 值的 URI |
+| <*Uri*> | 是 | 字符串 | 需要获取其 `path` 和 `query` 值的 URI |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*路径查询值*> | String | 指定的 URI 的 `path` 和 `query` 值。 如果 `path` 未指定值，则返回“/”字符。 |
+| <*路径查询值*> | 字符串 | 指定的 URI 的 `path` 和 `query` 值。 如果 `path` 未指定值，则返回“/”字符。 |
 ||||
 
 *示例*
@@ -4440,7 +4440,7 @@ uriPort('<uri>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*Uri*> | 是 | String | 需要获取其 `port` 值的 URI |
+| <*Uri*> | 是 | 字符串 | 需要获取其 `port` 值的 URI |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -4470,12 +4470,12 @@ uriQuery('<uri>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*Uri*> | 是 | String | 需要获取其 `query` 值的 URI |
+| <*Uri*> | 是 | 字符串 | 需要获取其 `query` 值的 URI |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*查询值*> | String | 指定的 URI 的 `query` 值 |
+| <*查询值*> | 字符串 | 指定的 URI 的 `query` 值 |
 ||||
 
 *示例*
@@ -4500,12 +4500,12 @@ uriScheme('<uri>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*Uri*> | 是 | String | 需要获取其 `scheme` 值的 URI |
+| <*Uri*> | 是 | 字符串 | 需要获取其 `scheme` 值的 URI |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*方案值*> | String | 指定的 URI 的 `scheme` 值 |
+| <*方案值*> | 字符串 | 指定的 URI 的 `scheme` 值 |
 ||||
 
 *示例*
@@ -4533,12 +4533,12 @@ utcNow('<format>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*格式*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
+| <*格式*> | 否 | 字符串 | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*当前时间戳*> | String | 当前日期和时间 |
+| <*当前时间戳*> | 字符串 | 当前日期和时间 |
 ||||
 
 *示例 1*
@@ -4575,7 +4575,7 @@ variables('<variableName>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*变量名称*> | 是 | String | 需要获取其值的变量的名称 |
+| <*变量名称*> | 是 | 字符串 | 需要获取其值的变量的名称 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -4606,7 +4606,7 @@ workflow().<property>
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*财产*> | 否 | String | 需要获取其值的工作流属性的名称 <p>工作流对象应具有以下属性：**name**、**type**、**id**、**location** 和 **run**。 **run** 属性值也是一个对象，它具有以下属性：**name**、**type** 和 **id**。 |
+| <*财产*> | 否 | 字符串 | 需要获取其值的工作流属性的名称 <p>工作流对象应具有以下属性：**name**、**type**、**id**、**location** 和 **run**。 **run** 属性值也是一个对象，它具有以下属性：**name**、**type** 和 **id**。 |
 |||||
 
 *示例*
@@ -4629,12 +4629,12 @@ xml('<value>')
 
 | 参数 | 必选 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*价值*> | 是 | String | 要转换的包含 JSON 对象的字符串 <p>该 JSON 对象必须只有一个根属性，该属性不能是数组。 <br>请使用反斜杠字符 (\\) 作为双引号 (") 的转义字符。 |
+| <*价值*> | 是 | 字符串 | 要转换的包含 JSON 对象的字符串 <p>该 JSON 对象必须只有一个根属性，该属性不能是数组。 <br>请使用反斜杠字符 (\\) 作为双引号 (") 的转义字符。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*xml 版本*> | Object | 指定的字符串或 JSON 对象的编码 XML |
+| <*xml 版本*> | 对象 | 指定的字符串或 JSON 对象的编码 XML |
 ||||
 
 *示例 1*
@@ -4695,7 +4695,7 @@ xpath('<xml>', '<xpath>')
 | ------------ | ---- | ----------- |
 | <*xml 节点*> | XML | 一个 XML 节点，当只有单个节点与指定的 XPath 表达式匹配时 |
 | <*价值*> | Any | 来自一个 XML 节点的值，当只有单个值与指定的 XPath 表达式匹配时 |
-| [<*xml-node1*>, <*xml-node2*>, ...] </br>-或- </br>[<*value1*>, <*value2*>, ...] | Array | 一个数组，其中包含与指定的 XPath 表达式匹配的 XML 节点或值 |
+| [<*xml-node1*>, <*xml-node2*>, ...] </br>\- 或 - </br>[<*value1*>, <*value2*>, ...] | Array | 一个数组，其中包含与指定的 XPath 表达式匹配的 XML 节点或值 |
 ||||
 
 *示例 1*

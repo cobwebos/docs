@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: 161fd9276427db0d0d7d56da1bfc0bb8ccf52a52
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: d5626f00e9627338349d9b579bcf26256148b551
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536652"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731269"
 ---
 # <a name="create-an-azure-virtual-machine-offer"></a>创建 Azure 虚拟机产品/服务
 
@@ -21,7 +21,7 @@ ms.locfileid: "81536652"
 
 本文介绍如何创建 Azure 虚拟机产品/服务并将其发布到[Azure 应用商店](https://azuremarketplace.microsoft.com/)。 它面向包含操作系统、虚拟硬盘 （VHD） 和多达 16 个数据磁盘的基于 Windows 和 Linux 的虚拟机。
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 
 ### <a name="publishing-benefits"></a>发布的好处
 
@@ -34,19 +34,19 @@ ms.locfileid: "81536652"
 
 ### <a name="before-you-begin"></a>开始之前
 
-如果尚未这样做，请查看[虚拟机提供发布指南](https://aka.ms/Virtualmachineofferpublishingguide)和此 Azure 虚拟机材料：
+如果尚未这样做，请查看[虚拟机提供发布指南](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines)和此 Azure 虚拟机材料：
 
 - 快速入门指南
-  - [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)
+  - [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/)
   - [GitHub Azure 快速入门模板](https://github.com/azure/azure-quickstart-templates)
 - 教程
-  - [Linux VM](https://aka.ms/LinuxVMtutorial)
-  - [视窗 VM](https://aka.ms/windowsvms)
+  - [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
+  - [视窗 VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
 - 示例
-  - [Linux VM 的 Azure CLI 示例](https://aka.ms/linuxclisamples)
-  - [适用于 Linux VM 的 Azure 电源外壳](https://aka.ms/linuxpowershellsamples)
-  - [适用于 Windows VM 的 Azure CLI 示例](https://aka.ms/windowsclisamples)
-  - [适用于 Windows VM 的 Azure 电源外壳](https://aka.ms/windowspowershellvmsamples)
+  - [Linux VM 的 Azure CLI 示例](https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples)
+  - [适用于 Linux VM 的 Azure 电源外壳](https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples)
+  - [适用于 Windows VM 的 Azure CLI 示例](https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples)
+  - [适用于 Windows VM 的 Azure 电源外壳](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-quick)
 
 ### <a name="fundamentals-in-technical-knowledge"></a>技术知识基础知识
 
@@ -66,7 +66,7 @@ ms.locfileid: "81536652"
 2. 在左导航栏中，选择**商业市场**，然后 **"概述**"。
 3. 在 **"概述"** 页上，选择 **+新产品/服务**，然后选择**Azure 虚拟机**。 将显示 **"新建产品/服务**"对话框。
 
-![使用"新建产品/服务"按钮和 Azure 虚拟机产品/服务（已选择）在合作伙伴中心中演示"概述"页面。](media/avm-create7.png)
+    ![使用"新建产品/服务"按钮和 Azure 虚拟机产品/服务（已选择）在合作伙伴中心中演示"概述"页面。](media/avm-create7.png)
 
 ## <a name="offer-id-and-alias"></a>优惠 ID 和别名
 
@@ -91,7 +91,7 @@ ms.locfileid: "81536652"
 其他试驾资源：
 
 - [技术最佳实践](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [市场营销最佳做法](https://aka.ms/TestDriveMarketingBestPractices)
+- [市场营销最佳做法](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
 - [测试驱动器概述](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)PDF（确保弹出窗口阻止程序已关闭）。
 
 ### <a name="lead-management"></a>潜在顾客管理
@@ -99,12 +99,12 @@ ms.locfileid: "81536652"
 使用合作伙伴中心将产品/服务发布到商业市场时，请将其连接到您的客户关系管理 （CRM） 系统。 这样，一旦有人对您的产品表示兴趣或使用，您就可以立即接收客户联系信息。 如果要启用 **"测试驱动器**"（请参阅上一节），则需要连接到 CRM，否则它是可选的。
 
 1. 选择希望我们向其发送潜在客户的潜在客户目标。 合作伙伴中心支持以下 CRM 系统：
-    - [动态 365](https://aka.ms/Dyn365LeadMgmt)用于客户互动
-    - [Marketo](https://aka.ms/LeadMgmtMarketo)
-    - [Salesforce](https://aka.ms/LeadMgmtSalesforce)
+    - [动态 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics)用于客户互动
+    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
+    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
 
     > [!NOTE]
-    > 如果上面未列出 CRM 系统，请使用[Azure 表](https://aka.ms/AzureTableLeadMgmt)或[Https 终结点](https://aka.ms/LeadMgmtHTTPS)来存储客户潜在顾客数据。 然后将数据导出到 CRM 系统。
+    > 如果上面未列出 CRM 系统，请使用[Azure 表](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table)或[Https 终结点](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https)来存储客户潜在顾客数据。 然后将数据导出到 CRM 系统。
 
 2. 在合作伙伴中心发布时，请将您的产品/服务连接到潜在顾客目标。
 3. 确认与潜在顾客目标的连接配置正确。 在合作伙伴中心发布后，我们将验证连接并向您发送测试线索。 在产品/服务上线之前预览产品/服务时，还可以尝试在预览环境中自行部署产品/服务，以测试潜在顾客连接。
@@ -174,7 +174,7 @@ ms.locfileid: "81536652"
 
 ### <a name="marketplace-details"></a>市场详细信息
 
-#### <a name="name"></a>“属性”
+#### <a name="name"></a>名称
 
 您在此处输入的名称将作为产品/服务列表的标题显示给客户。 此字段预先填充您在创建产品/服务时在 **"产品/服务"别名**框中输入的文本。 可以稍后更改此名称。
 
@@ -239,16 +239,16 @@ ms.locfileid: "81536652"
 
 为 Microsoft 合作伙伴提供联系信息，供客户打开支持票证时使用。 这将不会在市场上列出。
 
-- “属性”
-- 电子邮件
+- 名称
+- Email
 - 电话
 
 ### <a name="engineering-contact"></a>工程联系人
 
 在您的产品/服务出现问题（包括认证问题）时，为 Microsoft 提供要使用的联系信息。 这将不会在市场上列出。
 
-- “属性”
-- 电子邮件
+- 名称
+- Email
 - 电话
 
 ### <a name="marketplace-media"></a>市场媒体
@@ -274,7 +274,7 @@ ms.locfileid: "81536652"
 
 最多添加五个视频，演示您的优惠。 这些视频应托管在外部视频服务上。 输入每个视频的名称、网址和视频的缩略图 PNG 图像，大小为 1280 x 720 像素。
 
-有关其他市场列表资源，请参阅[市场产品/服务列表的最佳做法](https://aka.ms/LdMgmtOfferListingBestPractices)。
+有关其他市场列表资源，请参阅[市场产品/服务列表的最佳做法](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)。
 
 选择 **"保存"草稿**，然后再继续。
 
@@ -554,4 +554,4 @@ Azure 政府服务处理受某些政府法规和要求约束的数据。 例如�
 
 ## <a name="next-step"></a>后续步骤
 
-- [更新商业市场中的现有产品/服务](https://aka.ms/UpdateOfferCM)
+- [更新商业市场中的现有产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)

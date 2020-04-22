@@ -6,12 +6,12 @@ ms.author: dsindona
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
-ms.openlocfilehash: 678dc8b058d0ae0694dafeb4222b2fc9f10ecda7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a930dfb38007349155581424d03ee7b3e7a6b46
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288693"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730209"
 ---
 # <a name="payout-reporting"></a>付款报告
 
@@ -67,21 +67,21 @@ ms.locfileid: "80288693"
 
 ## <a name="corelation-between-payout-and-usage"></a>付款和使用之间的共同关系
 
-|描述    |    Date  | 订单/使用情况  | 付款 |
+|说明    |    Date  | 订单/使用情况  | 付款 |
 |----------|----------|-----------|-------------|
-|订购期   | 8 月 15， 2019 - 8 月 30， 2019 | **关联属性订单** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **使用** <br> <ul> <li>CustomerId </li> <li>客户名称</li> <li>（使用参考）采购记录Id/行项目Id</li> <li> 估计延长费用 <br> 估计的付款金额 (PC) </li> </ul> |  |
+|订购期   | 8 月 15， 2019 - 8 月 30， 2019 | **关联属性订单** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **使用情况** <br> <ul> <li>CustomerId </li> <li>客户名称</li> <li>（使用参考）采购记录Id/行项目Id</li> <li> 估计延长费用 <br> 估计的付款金额 (PC) </li> </ul> |  |
 |期限结束（月）   | 8 月 30， 2019 | | |
 |计费日期 | 2019年9月1日 | | |
 |客户付款日期 | 2019年9月1日 | | |
-|代管期（仅限信用卡，30 天） | 九月 1， 2019 - 九月 30， 2019 | | **关联属性订单：** <br> <ul><li>资产 Id</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用** <br> <ul> <li>资产 Id</li> <li>CustomerId</li> <li>客户名称</li> <li>OrderId</li> <li>行项目Id</li> <li>交易金额</li> <li>收入金额 最后支付货币</li> </ul> <br> **付款状态：** 未处理 |
+|代管期（仅限信用卡，30 天） | 九月 1， 2019 - 九月 30， 2019 | | **关联属性订单：** <br> <ul><li>资产 Id</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>资产 Id</li> <li>CustomerId</li> <li>客户名称</li> <li>OrderId</li> <li>行项目Id</li> <li>交易金额</li> <li>收入金额 最后支付货币</li> </ul> <br> **付款状态：** 未处理 |
 |费用收集期开始 | 2019年9月1日 | | |
 |费用收集期结束（最大值，30 天） | 2019年9月30日 | | |
-|付款计算日期（每月第 15 天） | 2019年10月1日 | | **相关属性** <br> <ul><li>资产 Id</li> <li>客户 ID</li> <li>客户名称</li> </ul> <br> **使用** <br> <ul> <li>资产 Id</li> <li>CustomerId</li> <li>客户名称</li> <li>OrderId</li> <li>行项目Id</li> <li>交易金额</li> <li>收入金额 最后支付货币</li> </ul> <br> **付款状态：** 即将 到来 |
-|付款日期 | 2019年10月15日 | | **相关属性** <br> <ul><li>资产 Id</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用** <br> <ul> <li>资产 Id</li> <li>CustomerId</li> <li>客户名称</li> <li>OrderId</li> <li>行项目Id</li> <li>交易金额</li> <li>收入金额 最后支付货币</li> </ul> <br> **付款状态：** 已发送付款 |
+|付款计算日期（每月第 15 天） | 2019年10月1日 | | **相关属性** <br> <ul><li>资产 Id</li> <li>客户 ID</li> <li>客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>资产 Id</li> <li>CustomerId</li> <li>客户名称</li> <li>OrderId</li> <li>行项目Id</li> <li>交易金额</li> <li>收入金额 最后支付货币</li> </ul> <br> **付款状态：** 即将 到来 |
+|付款日期 | 2019年10月15日 | | **相关属性** <br> <ul><li>资产 Id</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>资产 Id</li> <li>CustomerId</li> <li>客户名称</li> <li>OrderId</li> <li>行项目Id</li> <li>交易金额</li> <li>收入金额 最后支付货币</li> </ul> <br> **付款状态：** 已发送付款 |
 
 ### <a name="enterprise-agreement-quarterlymonthly-customers"></a>企业协议（季度/月度客户）
 
-| 描述 |    Date  | 使用情况 | 付款 |
+| 说明 |    Date  | 使用情况 | 付款 |
 |----------|----------|---------|-----------|
 |订购期 | 8 月 15， 2019 - 8 月 30， 2019 | **关联属性订单** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **使用情况报告** <br> <ul> <li>CustomerId </li> <li>客户名称</li> <li>（使用参考）采购记录Id/行项目Id</li> <li> 估计延长费用 <br> 估计的付款金额 (PC) </li> </ul> | |
 |期限结束（季度） | 2019年9月30日 | | |
@@ -92,13 +92,13 @@ ms.locfileid: "80288693"
 |费用收集期结束（最大值，90 天） | 2020年1月15日 | | |
 |客户付款日期 | 2019年12月30日 | | |
 |付款计算 | 2020年1月15日 | | |
-|付款日期 | 2 月 15， 2020 | | **对于基于季度的客户** <br> <br> **订单报告** <br> <ul><li>资产 Id</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用** <br> <ul> <li>资产 Id</li> <li>CustomerId</li> <li>客户名称</li> <li>OrderId</li> <li>行项目Id</li> <li>交易金额</li> <li>收入金额 最后支付货币</li> </ul> <br> **付款状态：** 已发送 |
+|付款日期 | 2 月 15， 2020 | | **对于基于季度的客户** <br> <br> **订单报告** <br> <ul><li>资产 Id</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>资产 Id</li> <li>CustomerId</li> <li>客户名称</li> <li>OrderId</li> <li>行项目Id</li> <li>交易金额</li> <li>收入金额 最后支付货币</li> </ul> <br> **付款状态：** 已发送 |
 
 ## <a name="transaction-history-download-export"></a>事务历史记录下载导出
 
 此选项提供您在交易记录页中看到的每个收益行项目的下载、收入类型、日期、关联交易金额、客户、产品和其他适用于奖励计划的交易详细信息。
 
-| 列名称     | 描述    |
+| 列名称     | 说明    |
 |-------------|-------------------------------|
 | 盈利 Id                      | 每个收入的唯一标识符                                                                                                       |
 | 参与者Id                  | 根据计划赚取的合作伙伴的主要身份                                                                            |
@@ -175,4 +175,4 @@ ms.locfileid: "80288693"
 
 ## <a name="billing-questions-and-support"></a>计费问题和支持
 
-要获取有关计费问题的帮助，请联系[商业市场发布商支持](https://aka.ms/marketplacepublishersupport)。
+要获取有关计费问题的帮助，请联系[商业市场发布商支持](https://partner.microsoft.com/support/v2/?stage=1)。

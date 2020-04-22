@@ -3,14 +3,14 @@ title: 设置 Windows 开发环境
 description: 安装运行时、SDK 和工具并创建本地开发群集。 完成此设置后，就可以在 Windows 上开始生成应用程序。
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 04/20/2020
 ms.custom: sfrev
-ms.openlocfilehash: f08c6b0675475b4e15ce6db3a9dbe0e2863b9ddb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b43c838537e46ffbaf6c4adcfb117f6718bd046
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252771"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731757"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>在 Windows 上准备开发环境
 
@@ -21,9 +21,9 @@ ms.locfileid: "78252771"
 >
 >
 
-若要在 Windows 开发计算机上生成并运行 [Azure Service Fabric 应用程序][1]，请安装 Service Fabric 运行时、SDK 和工具。 您还需要启用 SDK 中包含的[Windows PowerShell 脚本的执行](#enable-powershell-script-execution)。
+若要在 Windows 开发计算机上生成并运行 [Azure Service Fabric 应用程序][1]，请安装 Service Fabric 运行时、SDK 和工具。 此外，还需要启用 SDK 中包含的 [Windows PowerShell 脚本执行](#enable-powershell-script-execution)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="supported-operating-system-versions"></a>支持的操作系统版本
 
@@ -68,8 +68,8 @@ Service Fabric 工具是 Visual Studio 2017 和 2019 中 Azure 开发工作负�
 
 当前版本包括：
 
-* 服务结构 SDK 和工具 4.0.470
-* 服务交换矩阵运行时 7.0.470
+* 服务结构 SDK 和工具 4.1.409
+* 服务交换矩阵运行时 7.1.409
 
 有关支持版本的列表，请参阅 [Service Fabric 版本](service-fabric-versions.md)
 
@@ -86,7 +86,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 
 ## <a name="install-docker-optional"></a>安装 Docker（可选）
 
-[Service Fabric 是容器业务流程协调程序](service-fabric-containers-overview.md)，用于跨计算机群集部署微服务。 若要在本地开发群集上运行 Windows 容器应用程序，必须先安装用于 Windows 的 Docker。 获取[用于 Windows 的 Docker CE (稳定版)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)。 安装并启动 Docker 以后，右键单击任务栏图标，并选择“切换到 Windows 容器”。**** 此步骤是运行基于 Windows 的 Docker 映像所必需的。
+[Service Fabric 是容器业务流程协调程序](service-fabric-containers-overview.md)，用于跨计算机群集部署微服务。 若要在本地开发群集上运行 Windows 容器应用程序，必须先安装用于 Windows 的 Docker。 获取[用于 Windows 的 Docker CE (稳定版)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)。 安装并启动 Docker 以后，右键单击任务栏图标，并选择“切换到 Windows 容器”。  此步骤是运行基于 Windows 的 Docker 映像所必需的。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -96,7 +96,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 * [了解编程模型：Reliable Services 和 Reliable Actors](service-fabric-choose-framework.md)
 * [在 GitHub 上检查 Service Fabric 代码示例](https://aka.ms/servicefabricsamples)
 * [使用 Service Fabric 资源管理器可视化群集](service-fabric-visualizing-your-cluster.md)
-* 了解[服务交换矩阵支持选项](service-fabric-support.md)
+* 了解 [Service Fabric 支持选项](service-fabric-support.md)
 
 [1]: https://azure.microsoft.com/campaigns/service-fabric/ "Service Fabric 活动页"
 [2]: https://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"

@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/4/2019
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 6a142ce3c082f6f9a53287885ba347fc78f77718
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: da324e1e1a40e515cac4b26d6c9f8661f344e1d7
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262020"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687606"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft 商业市场常见问题解答
 
@@ -46,7 +46,7 @@ Azure 市场提供 Microsoft 和合作伙伴为扩展 Azure 产品和服务而�
 
 **如何开始使用 Azure 市场？**
 
-访问 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps)可以找到各种经过认证和优化、可在 Azure 上运行的企业应用程序与解决方案。 [**创建资源**](https://portal.azure.com/#create/hub)时，还可以通过[Azure 门户]访问 Azure 应用商店。
+访问 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps)可以找到各种经过认证和优化、可在 Azure 上运行的企业应用程序与解决方案。 [**创建资源**](https://portal.azure.com/#create/hub)时，还可以通过 [Azure 门户] 访问 Azure 应用商店。
 
 **Azure 市场的关键优势是什么？**
 
@@ -127,7 +127,7 @@ Azure 订阅包含在发布者的独立软件供应商 （ISV） 解决方案定
 
 + *每个用户：* SaaS 订阅可以按用户按月或按年计费定价。 
 
-特定于优惠的定价详细信息可在 Azure 门户上或 Azure [https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/) [门户]中的解决方案详细信息页面上找到。
+特定于优惠的定价详细信息可在 [Azure 门户] 上[https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/)或 [Azure 门户] 上或内部的解决方案详细信息页面上找到。
 
 > [!Note]
 > 除每月费用外，除非另有说明，Azure 使用费适用于所有定价模型。
@@ -180,9 +180,9 @@ Azure 应用（解决方案模板和托管应用）：**
 
 **可在哪里查看 Azure 市场订阅详细信息和计费信息？**
 
-MOSP -[微软在线订阅计划](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en)（Web直接）客户可以在[Azure 门户]的成本管理和计费部分的"发票"选项卡中查看应用商店购买详细信息。
+MOSP - [Microsoft 在线订阅计划](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en)（Web 直接）客户可以在 [Azure 门户] 的成本管理 + 计费部分的"发票"选项卡中查看应用商店购买详细信息。
 
-企业协议 （EA） 客户可以在[Azure 门户]的成本管理 + 计费部分的"发票"选项卡中查看应用商店采购详细信息。
+企业协议 （EA） 客户可以在 [Azure 门户] 的成本管理 + 计费部分的"发票"选项卡中查看应用商店采购详细信息。
 
 云解决方案提供商 （CSP） 合作伙伴可以在"订单历史记录"选项卡中选择公司后，在"订单历史记录"选项卡中查看合作伙伴中心中每个客户的应用商店购买详细信息。
 
@@ -208,7 +208,7 @@ MOSP - [Microsoft 在线订阅计划](https://azure.microsoft.com/support/legal/
 
 **如何了解我已使用了多少 Azure 市场购买内容？**
 
-在[Azure 门户]中可以找到估计的使用信息。 此类使用情况估计信息可能不包括近期活动，并且可能以从过去的消费派生的投影为基础。 在公开预览期间，此功能并非对所有购买可用，而是因产品类型而异。
+在 [Azure 门户] 中找到估计使用情况信息。 此类使用情况估计信息可能不包括近期活动，并且可能以从过去的消费派生的投影为基础。 在公开预览期间，此功能并非对所有购买可用，而是因产品类型而异。
 
 ### <a name="customer-support"></a>客户支持
 
@@ -307,7 +307,7 @@ Microsoft 提供了两个不同的云市场网店 - Azure 应用商店和 AppSou
 
 **通过 Azure 市场购买是否有任何交易费？**
 
-通过 Azure 市场购买解决方案许可证时，软件许可证的收入将在发布者与 Microsoft 之间分摊。  这种分摊是根据[市场发布者协议](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf)中的条款和条件进行的。 此外，对于使用 BYOL（自带许可证）的发布者解决方案，发布者无需支付交易费。
+通过 Azure 市场购买解决方案许可证时，软件许可证的收入将在发布者与 Microsoft 之间分摊。  这种分摊是根据[市场发布者协议](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)中的条款和条件进行的。 此外，对于使用 BYOL（自带许可证）的发布者解决方案，发布者无需支付交易费。
 
 **什么是标准合同？**
 
@@ -335,7 +335,7 @@ Microsoft 需要使用开发人员中心帐户代表发布者向客户计收“�
 
 **在何处可获得设置潜在顾客目标的帮助？**
 
-在[合作伙伴中心获取客户线索](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md)文档中了解更多信息，或通过选择产品/服务类型和潜在[https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport)顾客管理提交支持票证。
+在[合作伙伴中心获取客户线索](./partner-center-portal/commercial-marketplace-get-customer-leads.md)文档中了解更多信息，或通过选择产品/服务类型和潜在[https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport)顾客管理提交支持票证。
 
 **是否必须在配置潜在顾客目标后，才能在市场上发布套餐？**
 
@@ -343,7 +343,7 @@ Microsoft 需要使用开发人员中心帐户代表发布者向客户计收“�
 
 **如何确认潜在顾客配置是否正确？**
 
-完成报价并设置潜在顾客目的地后，可以在[合作伙伴中心](https://cloudpartner.azure.com/)正确发布列表。 商品上线之前，可以验证潜在顾客配置设置是否正常工作。  将测试潜在顾客发送到套餐中配置的潜在顾客目标。
+完成报价并设置潜在顾客目的地后，可以在[合作伙伴中心](https://partner.microsoft.com/)正确发布列表。 商品上线之前，可以验证潜在顾客配置设置是否正常工作。  将测试潜在顾客发送到套餐中配置的潜在顾客目标。
 
 **发布者可在哪些国家/地区销售 Azure 市场？**
 
@@ -353,13 +353,13 @@ Microsoft 需要使用开发人员中心帐户代表发布者向客户计收“�
 
 *虚拟机& Azure 应用：*
 
-1. 登录到[合作伙伴中心](https://cloudpartner.azure.com/)。
+1. 登录到[合作伙伴中心](https://partner.microsoft.com/)。
 1. 从"**所有优惠**"选项卡中选择优惠。
 1. 在屏幕左侧窗格中，选择“SKU”**** 选项卡。
 1. 选择要删除的 SKU，然后单击该 SKU 的**删除**按钮。
 1. 将产品/服务[重新发布](./cloud-partner-portal/manage-offers/cpp-publish-offer.md)到 Azure 市场。
 
-有关详细信息，请参阅[删除套餐](./cloud-partner-portal/manage-offers/cpp-delete-offer.md)。
+有关详细信息，请参阅[更新产品/服务](./partner-center-portal/update-existing-offer.md)。
 
 *Web 应用（SaaS 应用、加载项）&咨询服务：*
 
@@ -392,7 +392,7 @@ Azure 市场是与 Microsoft 开展联合市场推广活动的起点，也是通
 
 **在 Microsoft Web 属性中，Azure 市场解决方案在何处得到推广？**
 
-Azure 应用商店解决方案可在 Microsoft [Azure 门户]和[Azure 应用商店网站](https://azuremarketplace.microsoft.com/marketplace/)中提供。 使用 Azure 的云开发人员和 IT 专业人员每次登录时，都会接触到合作伙伴解决方案。 此外，[Azure 市场主页](https://azuremarketplace.microsoft.com/marketplace)和 [Azure 解决方案页面](https://azure.microsoft.com/solutions/)上还会展示并轮换合作伙伴解决方案的子集。
+Azure 应用商店解决方案在 Microsoft [Azure 门户] 和[Azure 应用商店网站](https://azuremarketplace.microsoft.com/marketplace/)中可用。 使用 Azure 的云开发人员和 IT 专业人员每次登录时，都会接触到合作伙伴解决方案。 此外，[Azure 市场主页](https://azuremarketplace.microsoft.com/marketplace)和 [Azure 解决方案页面](https://azure.microsoft.com/solutions/)上还会展示并轮换合作伙伴解决方案的子集。
 
 ### <a name="billing-and-payments"></a>计费与付款
 
@@ -474,6 +474,3 @@ Azure 应用商店支持由客户的帐单地址定义的 141 个从购买地。
 ## <a name="next-steps"></a>后续步骤
 
 访问[商业市场发布者指南](/azure/marketplace/marketplace-publishers-guide)页面。
-
-
-[Azure 门户]: https://portal.azure.com

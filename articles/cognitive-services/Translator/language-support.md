@@ -1,7 +1,7 @@
 ---
 title: 语言支持 - 文本翻译 API
 titleSuffix: Azure Cognitive Services
-description: 翻译器文本 API 支持使用神经机翻译 （NMT） 进行文本到文本翻译的以下语言。
+description: 文本翻译 API 支持使用神经机器翻译 (NMT) 对以下语言进行文本到文本翻译。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: a4f9833e8dd14dc7c8ec5849cb809bf2089a5dae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ecde5acb7dc57ed9e5802c1589d5813a9206643
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77206117"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684828"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>文本翻译 API 的语言和区域支持
 
@@ -63,6 +63,7 @@ ms.locfileid: "77206117"
 |法语|    `fr`    |   神经|
 |德语|    `de`    |   神经|
 |希腊语| `el`    |   神经|
+|古吉拉特语|  `gu`    |   神经|
 |海地克里奥尔语|    `ht`        |统计|
 |希伯来语 |`he`   |神经
 |Hindi| `hi`    |   神经|
@@ -77,7 +78,7 @@ ms.locfileid: "77206117"
 |斯瓦希里语| `sw`    |   统计|
 |克林贡语|   `tlh`   |   统计|
 |克林贡语(plqaD)|   `tlh-Qaak`  |   统计|
-|韩语 |`ko`   |   神经|
+|朝鲜语 |`ko`   |   神经|
 |拉脱维亚语|   `lv`    |   神经|
 |立陶宛语|    `lt`    |   神经|
 |马达加斯加语|  `mg`    |   统计|
@@ -85,11 +86,12 @@ ms.locfileid: "77206117"
 |马拉雅拉姆语| `ml` | 神经
 |马耳他语|   `mt`    |   统计|
 |毛利语| `mi`  | 神经|
+|马拉地语| `mr`  | 神经|
 |挪威语| `nb`    |   神经|
 |波斯语|   `fa`    |   神经|
 |波兰语|    `pl`    |   神经|
-|葡萄牙语（巴西）|   `pt-br` |   神经|
-|葡萄牙语(葡萄牙)| `pt-pt` | 神经
+|葡萄牙语(巴西)|   `pt-br` |   神经|
+|葡萄牙语（葡萄牙）| `pt-pt` | 神经
 |旁遮普语|`pa`|神经
 |克雷塔罗奥托米语|   `otq`   |   统计|
 |罗马尼亚语|  `ro`    |   神经|
@@ -120,7 +122,7 @@ ms.locfileid: "77206117"
 
 Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”表示该语言可以从列出的两侧脚本互相音译。 “-->” 表示该语言只能从一个脚本音译到另一个脚本。
 
-| 语言    | 语言代码 | Script | 音译方向 | Script|
+| 语言    | 语言代码 | 脚本 | 音译方向 | 脚本|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | 阿拉伯语 | `ar` | 阿拉伯语 `Arab` | <--> | 拉丁语 `Latn` |
 |Bangla  | `bn` | 孟加拉语 `Beng` | <--> | 拉丁语 `Latn` |
@@ -176,7 +178,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 日语      | `ja`          |
 | 斯瓦希里语      | `sw`          |
 | 克林贡语      | `tlh`          |
-| 韩语      | `ko`          |
+| 朝鲜语      | `ko`          |
 | 拉脱维亚语      | `lv`          |
 | 立陶宛语      | `lt`          |
 | 马来语      | `ms`          |
@@ -184,7 +186,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 挪威语      | `nb`          |
 | 波斯语      | `fa`          |
 | 波兰语      | `pl`          |
-| 葡萄牙语（巴西）     | `pt-br`          |
+| 葡萄牙语(巴西)     | `pt-br`          |
 | 罗马尼亚语      | `ro`          |
 | 俄语      | `ru`          |
 | 塞尔维亚语（拉丁）      | `sr-Latn`          |
@@ -242,7 +244,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 意大利语      | `it`          |
 | 日语      | `ja`          |
 | 斯瓦希里语|    `sw`    |
-| 韩语      | `ko`          |
+| 朝鲜语      | `ko`          |
 | 拉脱维亚语      | `lv`          |
 | 立陶宛语      | `lt`          |
 | 马达加斯加语| `mg`    |
@@ -250,7 +252,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 挪威语      | `nb`          |
 | 波斯语      | `fa`          |
 | 波兰语      | `pl`          |
-| 葡萄牙语（巴西） | `pt-br` |
+| 葡萄牙语(巴西) | `pt-br` |
 | 罗马尼亚语      | `ro`          |
 | 俄语      | `ru`          |
 | 萨摩亚语|   `sm`    |

@@ -4,12 +4,12 @@ description: 如何对请求进行身份验证，以及如何使用 Azure Monito
 ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.openlocfilehash: f52776fc6b5f5f530cc368a2f148a2ff63fb5b40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6b0e321747e0f84be5a75ab96749311ff0071e8d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294622"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687416"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 监视 REST API 演练
 
@@ -238,7 +238,7 @@ Invoke-RestMethod -Uri $request `
 
 **方法**：GET
 
-**请求 URI**：\:https /management.azure.com/subscriptions/*[订阅-id]*/资源组组/*资源组/[资源-组名称]*/提供程序/[*资源提供程序*/*-类型] [资源类型]*/*[资源名称]*/提供程序/microsoft.insights/metrics？metricnames=&时间跨度[*开始时间/结束时间]*&$filter]*[筛选器]*&结果类型_元数据&api 版本 *{metric}**]}*
+**请求 URI**：\:https /management.azure.com/subscriptions/*[订阅 id]*/资源组组/*资源组/[资源-组名称]*/提供程序 */[资源提供程序*/*-类型] [资源类型]*/[*资源名称]*/提供程序/microsoft.insights/metrics？metricnames=*[度量]*&时间跨度**[开始时间/结束时间]*&$filter]*[筛选器]*&结果类型_元数据&api 版本 *]*
 
 例如，若要检索为“事务”指标的“API 名称维度”发出的维度值列表，其中在指定时间范围内 GeoType 维度为“Primary”，则请求将如下所示：
 
@@ -311,7 +311,7 @@ Invoke-RestMethod -Uri $request `
 
 **方法**：GET
 
-**请求**URI https://management.azure.com/subscriptions/： *[订阅-id]*/资源组名称/*[资源组名称]*/提供程序 */[资源*/*类型] [资源类型*/*] [资源名称]*/提供程序/microsoft.insights/metrics？metricnames=*[指标名称]*&时间跨度 *=*&$filter[*筛选器]*&间隔=*[时间格雷&* 聚合]*[aggreation]*&*apiVersion**
+**请求 URI**：\/https： /management.azure.com/subscriptions/*[订阅-id]**{apiVersion}* /资源组组名称/*[资源-* 提供程序 *{resource-provider-namespace}*/名称]*[资源类型] [资源类型]*/*{resource-name}*/提供程序/microsoft.insights/metrics？metricnames =&时间跨度 *[* *开始时间/结束时间]*&$filter [*筛选器]*&间隔[*时间谷]*&&*{aggreation}*
 
 例如，若要在 5 分钟时间范围内按“事务”数降序值检索前 3 个 API，其中 GeotType 为 “Primary”，则请求将如下所示：
 
@@ -463,7 +463,7 @@ Invoke-RestMethod -Uri $request `
 
 **方法**：GET
 
-**请求 URI**：`https://management.azure.com/subscriptions/\*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*`
+**请求 URI**：`https:\//management.azure.com/subscriptions/\*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*`
 
 例如，要检索给定时间范围内时间粒度为 1 小时的 RunsSucceeded 指标数据点，请求将如下所示：
 
@@ -601,13 +601,13 @@ armclient GET /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups
 
 以下列表包含各种 Azure 资源的几个资源 ID 格式示例：
 
-* **IoT 中心** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Devices/IotHubs/*{iot-hub-name}*
-* **SQL 弹性池** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Sql/servers/*{pool-db}*/elasticpools/*{sql-pool-name}*
-* **SQL 数据库 (v12)** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Sql/servers/*{server-name}*/databases/*{database-name}*
-* **服务总线** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.ServiceBus/*{namespace}*/*{servicebus-name}*
-* **虚拟机规模集** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Compute/virtualMachineScaleSets/*{vm-name}*
-* **VM** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Compute/virtualMachines/*{vm-name}*
-* **事件中心** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.EventHub/namespaces/*{eventhub-namespace}*
+* **IoT 中心** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Devices/IotHubs/ *{iot-hub-name}*
+* **SQL 弹性池** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Sql/servers/ *{pool-db}* /elasticpools/ *{sql-pool-name}*
+* **SQL 数据库 (v12)** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Sql/servers/ *{server-name}* /databases/ *{database-name}*
+* **服务总线** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.ServiceBus/ *{namespace}* / *{servicebus-name}*
+* **虚拟机规模集** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Compute/virtualMachineScaleSets/ *{vm-name}*
+* **VM** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Compute/virtualMachines/ *{vm-name}*
+* **事件中心** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.EventHub/namespaces/ *{eventhub-namespace}*
 
 还可以通过其他方法检索资源 ID，包括使用 Azure 资源浏览器，以及通过 Azure 门户、PowerShell 或 Azure CLI 查看所需的资源。
 

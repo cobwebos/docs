@@ -1,18 +1,18 @@
 ---
-title: Azure 自动化中的连接资产
+title: 在 Azure 自动化中管理连接
 description: Azure 自动化中的连接资产包含从 Runbook 或 DSC 配置连接到外部服务或应用程序所需的信息。 本文介绍了有关连接的详细信息，以及如何在文本和图形创作中使用连接。
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: d1ce59322b0cbfaf5a4f7b31371f0d0929a3a3ab
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 90d4ec1bbfd0d76ffedf1505c9147376e3947c3c
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457716"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729060"
 ---
-# <a name="connection-assets-in-azure-automation"></a>Azure 自动化中的连接资产
+# <a name="manage-connections-in-azure-automation"></a>在 Azure 自动化中管理连接
 
 自动化连接资产包含从 Runbook 或 DSC 配置连接到外部服务或应用程序所需的信息。 除 URL 和端口等连接信息外，还包括身份验证所需的信息，如用户名和密码。 使用连接的值用于连接一个特定应用程序的所有属性保留在一个资产中，而不是创建多个变量。 用户可以从一个位置编辑连接的值，并且可以在单个参数中将连接名称传递给 Runbook 或 DSC 配置。 可以在 Runbook 或 DSC 配置中访问与`Get-AutomationConnection`活动的连接属性。
 

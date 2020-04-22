@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/08/2020
-ms.openlocfilehash: 77c58bb8dfa7d21b108d2aa63e90142f66877fb7
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.date: 04/20/2020
+ms.openlocfilehash: 6b353967c9b9c7517f1a42581717c6394c0e6374
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606512"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729136"
 ---
 # <a name="alter-row-transformation-in-mapping-data-flow"></a>在映射数据流中更改行转换
 
@@ -48,10 +48,12 @@ ms.locfileid: "81606512"
 
 ![更改行接收器](media/data-flow/alter-row2.png "更改行接收器")
 
- 默认行为是只允许插入。 要允许更新、升级或删除，请在接收器中选中与该条件对应的框。 如果启用了更新、升级或删除，则必须指定要匹配的接收器中的键列。
+默认行为是只允许插入。 要允许更新、升级或删除，请在接收器中选中与该条件对应的框。 如果启用了更新、升级或删除，则必须指定要匹配的接收器中的键列。
 
 > [!NOTE]
 > 如果插入、更新或 upserts 修改接收器中目标表的架构，数据流将失败。 要修改数据库中的目标架构，请选择 **"重新创建表**"作为表操作。 这样就会删除表，然后使用新的架构定义重新创建表。
+
+接收器转换需要单个键或一系列键来标识目标数据库中的唯一行标识。 对于 SQL 接收器，在接收器设置选项卡中设置键。对于 CosmosDB，在设置中设置分区键，并在接收器映射中设置 CosmosDB 系统字段"id"。 对于 CosmosDB，必须包括更新、更新和删除的系统列"id"。
 
 ## <a name="data-flow-script"></a>数据流脚本
 

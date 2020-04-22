@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 009a8e3db097790788f71486431a3b5b05c488ea
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 9bd7e40855f30612b90cf28365c0b1410cd3e3d8
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81265962"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731127"
 ---
 # <a name="azure-virtual-machine-vm-image-certification"></a>Azure 虚拟机 （VM） 映像认证
 
@@ -45,7 +45,7 @@ ms.locfileid: "81265962"
 
 编辑并运行以下 Azure PowerShell 脚本，以在本地文件夹中创建证书文件 （.pfx）。 替换下表中显示的参数的值。
 
-| **参数** | **说明** |
+| **Parameter** | **说明** |
 | --- | --- |
 | $certroopath | 将 .pfx 文件保存到的本地文件夹。 |
 | $location | Azure 标准地理位置之一。 |
@@ -186,7 +186,7 @@ ms.locfileid: "81265962"
 
 编辑并运行以下 Azure PowerShell 脚本以创建 Azure 密钥保管库和相关资源组。 替换下表中显示的参数的值
 
-| **参数** | **说明** |
+| **Parameter** | **说明** |
 | --- | --- |
 | $postfix | 附加到部署标识符的随机数字字符串。 |
 | $rgName | 要创建的 Azure 资源组 （RG） 名称。 |
@@ -560,7 +560,7 @@ ms.locfileid: "81265962"
 
 编辑此文件以提供这些参数的值：
 
-| **参数** | **说明** |
+| **Parameter** | **说明** |
 | --- | --- |
 | ResourceGroupName | 现有 Azure 资源组名称。 通常，使用与密钥保管库相同的 RG。 |
 | TemplateFile | 文件 VHDtoImage.json 的完整路径名。 |
@@ -652,4 +652,4 @@ Azure 认证测试工具在本地 Windows 计算机上运行，但测试基于 A
 
 ## <a name="next-step"></a>后续步骤
 
-- [为每个 VHD 生成统一的资源标识符 （URI）](https://aka.ms/AzureSASURI)
+- [为每个 VHD 生成统一的资源标识符 （URI）](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-get-sas-uri)

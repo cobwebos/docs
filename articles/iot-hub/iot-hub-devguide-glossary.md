@@ -8,14 +8,17 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.openlocfilehash: 0c4a31d6273a7d440340fc1f907f287201134244
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 5c59ddf046e7ffe936b097878d5d049b43ea8aec
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81258399"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729013"
 ---
-# <a name="glossary-of-iot-hub-terms"></a>IoT 中心术语词汇表
+# <a name="glossary-of-iot-hub-terms"></a>IoT 中心术语表
 
 本文列出了一些在 IoT 中心文章中使用的常用术语。
 
@@ -41,7 +44,7 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 
 ## <a name="azure-iot-device-sdks"></a>Azure IoT 设备 SDK
 
-提供了多种语言的_设备 SDK_，方便用户创建与 IoT 中心交互的[设备应用](#device-app)。 IoT 中心教程介绍了如何使用这些设备 SDK。 可以在此 GitHub [存储库](https://github.com/Azure/azure-iot-sdks)中找到有关设备 SDK 的源代码和更多信息。
+提供了多种语言的 _设备 SDK_ ，以便于用户创建与 IoT 中心交互的 [设备应用](#device-app) 。 IoT 中心教程介绍了如何使用这些设备 SDK。 可以在此 GitHub [存储库](https://github.com/Azure/azure-iot-sdks)中找到有关设备 SDK 的源代码和进一步信息。
 
 ## <a name="azure-iot-explorer"></a>Azure IoT 资源管理器
 

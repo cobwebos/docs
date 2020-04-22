@@ -7,12 +7,13 @@ ms.date: 3/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0600568ace5384cfb13688d14d1cf79e473f3208
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: amqp
+ms.openlocfilehash: 270e6a0173ed0088ff5d37c989947f5272634200
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80133218"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687201"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>将 IoT Edge 设备配置为通过代理服务器进行通信
 
@@ -82,7 +83,7 @@ IoT Edge 设备将发送 HTTPS 请求以与 IoT 中心进行通信。 如果设�
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Initialize-IoTEdge
    ```
 
-如果拥有不能包含在 URL 中的复杂代理服务器凭据，请使用 `-InvokeWebRequestParameters` 中的 `-ProxyCredential` 参数。 例如，
+如果拥有不能包含在 URL 中的复杂代理服务器凭据，请使用 `-ProxyCredential` 中的 `-InvokeWebRequestParameters` 参数。 例如，
 
 ```powershell
 $proxyCredential = (Get-Credential).GetNetworkCredential()
@@ -104,8 +105,8 @@ Moby 和 IoT Edge 守护程序都需要配置为使用代理服务器持续获�
 
 选择适用于 IoT Edge 设备操作系统的文章：
 
-* [在 Linux 上配置 Docker 守护进程](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy)Linux 设备上的 Moby 守护进程保留 Docker 的名称。
-* [在 Windows 上配置 Docker 守护进程](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration)Windows 设备上的 Moby 守护进程称为 iotedge-moby。 之所以让这些名称保持不同，是因为可能会在 Windows 设备上并行运行 Docker Desktop 和 Moby。
+* [在 Linux 上配置 Docker 守护程序](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy) Linux 设备上的 Moby 守护程序保留“Docker”这一名称。
+* [在 Windows 上配置 Docker 守护程序](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration) Windows 设备上的 Moby 守护程序名为 iotedge-moby。 之所以让这些名称保持不同，是因为可能会在 Windows 设备上并行运行 Docker Desktop 和 Moby。
 
 ### <a name="iot-edge-daemon"></a>IoT Edge 守护程序
 
@@ -121,7 +122,7 @@ IoT Edge 守护程序始终使用 HTTPS 将请求发送到 IoT 中心。
 sudo systemctl edit iotedge
 ```
 
-输入以下文本，将**\<代理 URL>** 替换为代理服务器地址和端口。 然后，保存并退出。
+输入以下文本，将 **\<代理 URL>** 替换为代理服务器地址和端口。 然后，保存并退出。
 
 ```ini
 [Service]
@@ -148,7 +149,7 @@ systemctl show --property=Environment iotedge
 
 #### <a name="windows"></a>Windows
 
-以管理员身份打开 PowerShell 窗口，运行以下命令来使用新的环境变量编辑注册表。 将**\<代理>** 替换为代理服务器地址和端口。
+以管理员身份打开 PowerShell 窗口，运行以下命令来使用新的环境变量编辑注册表。 将 **\<代理 URL>** 替换为代理服务器地址和端口。
 
 ```powershell
 reg add HKLM\SYSTEM\CurrentControlSet\Services\iotedge /v Environment /t REG_MULTI_SZ /d https_proxy=<proxy URL>
@@ -166,9 +167,9 @@ IoT Edge 代理是在任意 IoT Edge 设备上启动的第一个模块。 该代
 
 需在最初设置设备期间，在 IoT Edge 设备上执行此步骤一次。
 
-1. 打开 IoT Edge 设备上的 config.yaml 文件。 在 Linux 系统上，此文件位于 /etc/iotedge/config.yaml****。 在 Windows 系统上，此文件位于 C:\ProgramData\iotedge\config.yaml****。 配置文件是受保护的，因此，你需要管理权限才能对其进行访问。 在 Linux 系统上，请使用 `sudo` 命令，然后在偏好的文本编辑器中打开该文件。 在 Windows 上，请以管理员身份打开记事本之类的文本编辑器，然后打开该文件。
+1. 打开 IoT Edge 设备上的 config.yaml 文件。 在 Linux 系统上，此文件位于 /etc/iotedge/config.yaml  。 在 Windows 系统上，此文件位于 C:\ProgramData\iotedge\config.yaml  。 配置文件是受保护的，因此，你需要管理权限才能对其进行访问。 在 Linux 系统上，请使用 `sudo` 命令，然后在偏好的文本编辑器中打开该文件。 在 Windows 上，请以管理员身份打开记事本之类的文本编辑器，然后打开该文件。
 
-2. 在 config.yaml 文件中，找到“Edge 代理模块规范”**** 部分。 IoT Edge 代理定义包括可以在其中添加环境变量的 **env** 参数。
+2. 在 config.yaml 文件中，找到“Edge 代理模块规范”  部分。 IoT Edge 代理定义包括可以在其中添加环境变量的 **env** 参数。
 
 3. 删除作为 env 参数占位符的大括号，并在新行上添加新变量。 请记住，YAML 中的缩进为两个空格。
 
@@ -200,19 +201,19 @@ IoT Edge 代理是在任意 IoT Edge 设备上启动的第一个模块。 该代
 
 ## <a name="configure-deployment-manifests"></a>配置部署清单  
 
-将 IoT Edge 设备配置为与代理服务器配合使用后，需要在将来的部署清单中继续声明HTTPS_PROXY环境变量。 可以使用 Azure 门户向导或者通过编辑部署清单 JSON 文件，来编辑部署清单。
+将 IoT Edge 设备配置为与代理服务器配合使用后，还需要在将来的部署清单中声明 HTTPS_PROXY 环境变量。 可以使用 Azure 门户向导或者通过编辑部署清单 JSON 文件，来编辑部署清单。
 
 始终配置两个运行时模块（edgeAgent 和 edgeHub），以通过代理服务器进行通信，从而维持与 IoT 中心的连接。 如果从 edgeAgent 模块中删除了代理信息，则重新建立连接的唯一方法是根据前一部分中所述，编辑设备上的 config.yaml 文件。
 
-除了边缘代理和边缘Hub模块外，其他模块可能需要代理配置。 这些是需要访问 IoT 中心之外的 Azure 资源的模块，如 blob 存储，并且必须在部署清单文件中为该模块指定HTTPS_PROXY变量。
+除了 edgeAgent 和 edgeHub 模块外，其他模块也可能需要代理配置。 这些模块需要访问 IoT 中心以外的 Azure 资源（例如 blob 存储），并且必须在部署清单文件中为该模块指定 HTTPS_PROXY 变量。
 
-以下过程适用于 IoT 边缘设备的整个生命周期。
+以下过程在 IoT Edge 设备的整个生命周期中适用。
 
 ### <a name="azure-portal"></a>Azure 门户
 
-使用“设置模块”**** 向导为 IoT Edge 设备创建部署时，每个模块都有可用于配置代理服务器连接的“环境变量”**** 部分。
+使用“设置模块”  向导为 IoT Edge 设备创建部署时，每个模块都有可用于配置代理服务器连接的“环境变量”  部分。
 
-若要配置 IoT Edge 代理和 IoT Edge 中心模块，请在向导的第一步中选择“运行时设置”****。
+若要配置 IoT Edge 代理和 IoT Edge 中心模块，请在向导的第一步中选择“运行时设置”  。
 
 ![配置 Edge 运行时高级设置](./media/how-to-configure-proxy-support/configure-runtime.png)
 

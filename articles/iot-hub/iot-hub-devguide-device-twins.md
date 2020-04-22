@@ -8,25 +8,26 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/01/2020
-ms.openlocfilehash: 251c9c9717bae1728bffa48827a45d4535d66c15
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.custom: mqtt
+ms.openlocfilehash: 3bec3d19ed68b7eb8bb50baa8f6c11135ef778cc
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81482077"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731467"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>了解并在 IoT 中心内使用设备孪生
 
-设备孪生是存储设备状态信息（例如元数据、配置和条件）的 JSON 文档**。 Azure IoT 中心为连接到 IoT 中心的每台设备保留一个设备孪生。 
+设备孪生是存储设备状态信息（例如元数据、配置和条件）的 JSON 文档  。 Azure IoT 中心为连接到 IoT 中心的每台设备保留一个设备孪生。 
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 本文介绍：
 
-* 设备孪生的结构：标记、所需的属性和报告的属性******。
+* 设备孪生的结构：标记、所需的属性和报告的属性    。
 * 设备应用和后端可在设备孪生上执行的操作。
 
-使用设备克隆可以：
+使用设备孪生可以：
 
 * 将设备特定的元数据存储在云中。 例如，存储在自动售货机的部署位置。
 
@@ -40,9 +41,9 @@ ms.locfileid: "81482077"
 
 有关使用所需的属性、直接方法或云到设备的消息的指导，请参阅[云到设备的通信指南](iot-hub-devguide-c2d-guidance.md)。
 
-## <a name="device-twins"></a>设备克隆
+## <a name="device-twins"></a>设备孪生
 
-设备克隆存储具有以下用途的设备相关信息：
+设备孪生存储具有以下用途的设备相关信息：
 
 * 设备和后端可以使用这些信息来同步设备状态和配置。
 
@@ -50,13 +51,13 @@ ms.locfileid: "81482077"
 
 设备孪生的生命周期链接到相应的[设备标识](iot-hub-devguide-identity-registry.md)。 在 IoT 中心创建或删除设备标识时，将隐式创建和删除设备孪生。
 
-设备克隆是一个 JSON 文档，其中包含：
+设备孪生是一个 JSON 文档，其中包含：
 
 * **标记**。 解决方案后端可从中读取和写入数据的 JSON 文档的某个部分。 标记对设备应用不可见。
 
-* **所需属性**。 与报告的属性结合使用，同步设备配置或状态。 解决方案后端可设置所需的属性，并且设备应用可进行读取。 此外，当所需的属性发生更改时，设备应用可收到通知。
+* **所需的属性**。 与报告的属性结合使用，同步设备配置或状态。 解决方案后端可设置所需的属性，并且设备应用可进行读取。 此外，当所需的属性发生更改时，设备应用可收到通知。
 
-* **报告属性**。 与所需的属性结合使用，同步设备配置或状态。 设备应用可设置报告的属性，并且解决方案后端可进行读取和查询。
+* **报告的属性**。 与所需的属性结合使用，同步设备配置或状态。 设备应用可设置报告的属性，并且解决方案后端可进行读取和查询。
 
 * **设备标识属性**。 设备孪生 JSON 文档的根包含[标识注册表](iot-hub-devguide-identity-registry.md)中存储的相应设备标识的只读属性。 属性`connectionStateUpdatedTime`，`generationId`将不包含。
 
@@ -182,7 +183,7 @@ ms.locfileid: "81482077"
 
   - 属性
 
-    | “属性” | 值 |
+    | 名称 | 值 |
     | --- | --- |
     $content-type | application/json |
     $iothub-enqueuedtime |  发送通知的时间 |
@@ -198,7 +199,7 @@ ms.locfileid: "81482077"
 
   - Body
         
-    本部分包括 JSON 格式的所有孪生更改。 它使用与修补程序相同的格式，不同的是它包含所有孪生节：标记、properties.reported、properties.desired，并且它包含“$metadata”元素。 例如，
+    本部分包括 JSON 格式的所有孪生更改。 它使用与修补程序相同的格式，其区别之处在于它可以包含所有孪生部分：标记、属性.报告、属性.希望，并且它包含"$metadata"元素。 例如，
 
     ```json
     {

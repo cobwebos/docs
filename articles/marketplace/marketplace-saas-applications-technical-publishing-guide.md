@@ -1,19 +1,19 @@
 ---
-title: Azure 市场 SaaS 应用程序技术发布指南
+title: Azure 应用商店 SaaS 应用程序发布指南
 description: 将 SaaS 应用程序发布到 Azure 市场的分步指南和发布查检表
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
-author: keithcharlie
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/09/2018
-ms.author: kevidal
-ms.openlocfilehash: 641297ea74a08dea163cf768b8e9b245348824a4
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/15/2020
+ms.author: dsindona
+ms.openlocfilehash: 1bc2feb4d8f3f103802bd823c66cd3f54ac5d74a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80544283"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687557"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS 应用程序产品/服务发布指南
 
@@ -35,7 +35,7 @@ SaaS 应用程序在两个 Azure 店面中均提供。下表介绍了当前的�
 | --- | --- | --- |  
 | **联系我们** | 是 | 否 |  
 | **PowerBI/Dynamics** | 是 | 是(Azure AD 集成) |  
-| **SaaS 应用程序**| 是 | 是(Azure AD 集成) |     
+| **SaaS 应用**| 是 | 是(Azure AD 集成) |     
 
 ## <a name="saas-list"></a>SaaS 列表
 
@@ -110,8 +110,8 @@ Microsoft 使用 Azure AD 对所有应用商店用户进行身份验证，因此
 **对于多租户应用程序：**  
 
 如果已启用 Azure AD，请执行以下操作：
-1.  在 Azure 门户中注册你的应用程序
-2.  启用 Azure AD 中的多租户支持功能，以获取“一键式”试用体验。 [此处](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)提供更具体的信息。  
+1.    在 Azure 门户中注册你的应用程序
+2.    启用 Azure AD 中的多租户支持功能，以获取“一键式”试用体验。 [此处](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)提供更具体的信息。  
 
 如果不熟悉 Azure AD 联合 SSO，请执行以下操作： 
 1.  在 Azure 门户中注册你的应用程序
@@ -144,9 +144,9 @@ Microsoft 托管商业事务。 Microsoft 代你向客户计费。 要提供 Saa
 ## <a name="next-steps"></a>后续步骤
 如果尚未注册，
 
-- 请在市场中[注册](https://azuremarketplace.microsoft.com/sell)。
+* [了解](https://azuremarketplace.microsoft.com/sell)市场。
 
-如果已注册并正在创建新套餐或正在使用现有套餐，
+要在合作伙伴中心注册，请开始创建新产品/服务或处理现有产品/服务：
 
-- [登录到云合作伙伴门户](https://cloudpartner.azure.com)，创建或完成套餐。
-- 请参阅 [Azure SaaS 应用程序产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer)获取详细信息。
+* [登录合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)创建或完成您的优惠。
+* 有关详细信息[，请参阅创建 SaaS 应用程序产品/服务](./partner-center-portal/create-new-saas-offer.md)。
