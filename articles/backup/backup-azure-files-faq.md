@@ -3,12 +3,12 @@ title: 备份 Azure 文件常见问题解答
 description: 本文介绍有关如何使用 Azure 备份服务保护 Azure 文件共享的常见问题解答。
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: b89e4a55bc8bc4ef2f4cdb50059537fe7708b6a6
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: d7b19fd11e6784a188a18f6a613eef5ff4f77764
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/23/2020
-ms.locfileid: "82101155"
+ms.locfileid: "82105635"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>有关如何备份 Azure 文件的问题
 
@@ -74,7 +74,7 @@ ms.locfileid: "82101155"
 
 ### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-them"></a>能否访问 Azure 备份创建的快照并装载它们？
 
-可以通过在门户、PowerShell 或 CLI 中查看快照来访问 Azure 备份所采用的所有快照。 若要详细了解 Azure 文件共享快照，请参阅 [Azure 文件的共享快照（预览版）概述](../storage/files/storage-snapshots-files.md)。
+可以通过在门户、PowerShell 或 CLI 中查看快照来访问 Azure 备份所采用的所有快照。 若要了解有关 Azure 文件共享快照的详细信息，请参阅[Azure 文件的共享快照概述](../storage/files/storage-snapshots-files.md)。
 
 ### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>可以为备份配置的最长保留期是多长？
 

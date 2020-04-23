@@ -6,13 +6,13 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/30/2019
-ms.openlocfilehash: ece6fdb743035069bc6c666d6e90c76860f63e82
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/23/2020
+ms.openlocfilehash: 3c4f6afe56f592c99a8d8fc4949bdfb9aab3d336
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75744909"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82106655"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>在基于 Linux 的 Azure HDInsight 中将 Apache Oozie 与 Apache Hadoop 配合使用以定义和运行工作流
 
@@ -26,7 +26,7 @@ ms.locfileid: "75744909"
 还可以使用 Oozie 来计划特定于某系统的作业，例如 Java 程序或 shell 脚本
 
 > [!NOTE]  
-> 用于定义与 HDInsight 配合运行的工作流的另一个选项是 Azure 数据工厂。 若要详细了解数据工厂，请参阅[将 Apache Pig 和 Apache Hive 用于数据工厂][azure-data-factory-pig-hive]。 若要在具有企业安全性套餐的群集上使用 Oozie，请参阅[在具有企业安全性套餐的 HDInsight Hadoop 群集中运行 Apache Oozie](domain-joined/hdinsight-use-oozie-domain-joined-clusters.md)。
+> 用于定义与 HDInsight 配合运行的工作流的另一个选项是 Azure 数据工厂。 若要详细了解数据工厂，请参阅[将 Apache Pig 和 Apache Hive 用于数据工厂](../data-factory/transform-data.md)。 若要在具有企业安全性套餐的群集上使用 Oozie，请参阅[在具有企业安全性套餐的 HDInsight Hadoop 群集中运行 Apache Oozie](domain-joined/hdinsight-use-oozie-domain-joined-clusters.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -34,15 +34,15 @@ ms.locfileid: "75744909"
 
 * **SSH 客户端**。 请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-* **Azure SQL 数据库**。  请参阅[在 Azure 门户中创建 Azure SQL 数据库](../sql-database/sql-database-get-started.md)。  本文使用名为**oozietest 的**数据库。
+* **一个 AZURE SQL 数据库**。  请参阅[在 Azure 门户中创建 Azure SQL 数据库](../sql-database/sql-database-get-started.md)。  本文使用名为**oozietest**的数据库。
 
-* 群集主存储的 [URI 方案](./hdinsight-hadoop-linux-information.md#URI-and-scheme)。 对于 Azure 存储，这将是 `wasb://`，对于 Azure Data Lake Storage Gen2，这将是 `abfs://`，对于 Azure Data Lake Storage Gen1，这将是 `adl://`。 如果为 Azure 存储启用安全传输，则 URI 将为 `wasbs://`。 另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
+* 群集主存储的 URI 方案。 `wasb://`对于 Azure 存储空间`abfs://` ，适用于`adl://` Azure Data Lake Storage Gen2 或 Azure Data Lake Storage Gen1。 如果为 Azure 存储启用安全传输，则 URI 将为 `wasbs://`。 另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
 
 ## <a name="example-workflow"></a>示例工作流
 
 本文档中使用的工作流包含两个操作。 操作是任务的定义，例如运行 Hive、Sqoop、MapReduce 或其他进程：
 
-![HDInsight oozie 工作流图](./media/hdinsight-use-oozie-linux-mac/oozie-workflow-diagram.png)
+![HDInsight oozie 工作流关系图](./media/hdinsight-use-oozie-linux-mac/oozie-workflow-diagram.png)
 
 1. Hive 操作运行 HiveQL 脚本，以从 HDInsight 随附的 `hivesampletable` 中提取记录。 每个数据行描述特定移动设备的访问。 显示的记录格式如下文所示：
 
@@ -52,12 +52,12 @@ ms.locfileid: "75744909"
 
     本文档中使用的 Hive 脚本将统计每个平台（例如 Android 或 iPhone）的总访问次数，并将计数存储到新的 Hive 表中。
 
-    有关 Hive 的详细信息，请参阅[将 Apache Hive 与 HDInsight 配合使用][hdinsight-use-hive]。
+    有关 Hive 的详细信息，请参阅 [将 Apache Hive 与 HDInsight 配合使用] [HDInsight-Hive]。
 
-2. Sqoop 操作将新 Hive 表的内容导出到在 Azure SQL 数据库中创建的表。 有关 Sqoop 的详细信息，请参阅[将 Apache Sqoop 与 HDInsight 配合使用][hdinsight-use-sqoop]。
+2. Sqoop 操作将新 Hive 表的内容导出到在 Azure SQL 数据库中创建的表。 有关 Sqoop 的详细信息，请参阅[将 Apache Sqoop 与 HDInsight 配合使用](hadoop/apache-hadoop-use-sqoop-mac-linux.md)。
 
 > [!NOTE]  
-> 有关 HDInsight 群集上支持的 Oozie 版本，请参阅 [HDInsight 提供的 Hadoop 群集版本有哪些新增功能][hdinsight-versions]。
+> 有关 HDInsight 群集上支持的 Oozie 版本，请参阅 [HDInsight 提供的 Hadoop 群集版本有哪些新增功能](hdinsight-component-versioning.md)。
 
 ## <a name="create-the-working-directory"></a>创建工作目录
 
@@ -89,7 +89,7 @@ Oozie 希望将作业所需的所有资源存储在同一个目录中。 此示�
 
 ## <a name="add-a-database-driver"></a>添加数据库驱动程序
 
-由于此工作流使用 Sqoop 将数据导出到 SQL 数据库，因此必须提供用来与 SQL 数据库交互的 JDBC 驱动程序的副本。 若要将 JDBC 驱动程序复制到工作目录，请在 SSH 会话中使用以下命令：
+此工作流使用 Sqoop 将数据导出到 SQL 数据库。 因此，你必须提供用于与 SQL 数据库进行交互的 JDBC 驱动程序的副本。 若要将 JDBC 驱动程序复制到工作目录，请在 SSH 会话中使用以下命令：
 
 ```bash
 hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc*.jar /tutorials/useoozie/
@@ -102,7 +102,7 @@ hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc*.jar /tutorials/useoozi
 
 ## <a name="define-the-hive-query"></a>定义 Hive 查询
 
-使用以下步骤创建用于定义查询的 Hive 查询语言 (HiveQL) 脚本。 在本文档中的稍后时间，您将在 Oozie 工作流中使用查询。
+使用以下步骤创建用于定义查询的 Hive 查询语言 (HiveQL) 脚本。 稍后将在本文档的 Oozie 工作流中使用该查询。
 
 1. 在 SSH 连接中，使用以下命令创建名为 `useooziewf.hql` 的文件：
 
@@ -208,7 +208,7 @@ Oozie 工作流定义以 Hadoop 过程定义语言（缩写为 hPDL，一种 XML
 
    * `RunSqoopExport`：此操作使用 Sqoop 将创建的数据从 Hive 脚本导出到 SQL 数据库。 仅当 `RunHiveScript` 操作成功时才运行此操作。
 
-     工作流包含多个条目，例如 `${jobTracker}`。 您将将这些条目替换为作业定义中使用的值。 您将在本文档的后面时间创建作业定义。
+     工作流包含多个条目，例如 `${jobTracker}`。 将这些条目替换为在作业定义中使用的值。 稍后将在本文档中创建作业定义。
 
      另请注意 Sqoop 节中的 `<archive>mssql-jdbc-7.0.0.jre8.jar</archive>` 条目。 该条目指示在运行此操作时 Oozie 要将此存档提供给 Sqoop 使用。
 
@@ -256,7 +256,7 @@ Oozie 工作流定义以 Hadoop 过程定义语言（缩写为 hPDL，一种 XML
     GO
     ```
 
-    输入 `GO` 语句后，将评估前面的语句。 这些语句创建一个表，`mobiledata`名为 ，工作流使用。
+    输入 `GO` 语句后，将评估前面的语句。 这些语句创建一个名为`mobiledata`的表，由工作流使用。
 
     若要验证是否已创建该表，请使用以下命令：
 
@@ -298,7 +298,7 @@ Oozie 工作流定义以 Hadoop 过程定义语言（缩写为 hPDL，一种 XML
 
     |占位符值| 替换的值|
     |---|---|
-    |wasbs://mycontainermystorageaccount.blob.core.windows.net\@| 从步骤 1 获取的值。|
+    |wasbs://mycontainer\@mystorageaccount.blob.core.windows.net| 从步骤 1 获取的值。|
     |admin| HDInsight 群集的登录名（如果不是 admin）。|
     |serverName| Azure SQL 数据库服务器名称。|
     |sqlLogin| Azure SQL 数据库服务器登录名。|
@@ -365,7 +365,7 @@ Oozie 工作流定义以 Hadoop 过程定义语言（缩写为 hPDL，一种 XML
     </configuration>
     ```
 
-    此文件中的大多数信息用于填充 workflow.xml 或 ooziewf.hql 文件中使用的值（例如 `${nameNode}`）。  如果该路径是 `wasbs` 路径，则必须使用完整路径。 不要缩短为只是`wasbs:///`。 `oozie.wf.application.path` 条目定义查找 workflow.xml 文件的位置。 此文件包含此作业运行的工作流。
+    此文件中的大多数信息用于填充 workflow.xml 或 ooziewf.hql 文件中使用的值（例如 `${nameNode}`）。  如果该路径是 `wasbs` 路径，则必须使用完整路径。 不要将其缩短为`wasbs:///`。 `oozie.wf.application.path` 条目定义查找 workflow.xml 文件的位置。 此文件包含此作业运行的工作流。
 
 3. 若要创建 Oozie 作业定义配置，请使用以下命令：
 
@@ -405,13 +405,13 @@ Oozie 工作流定义以 Hadoop 过程定义语言（缩写为 hPDL，一种 XML
     export OOZIE_URL=http://HOSTNAMEt:11000/oozie
     ```
 
-3. 若要提交作业，请使用以下命令：
+3. 若要提交作业，请使用以下代码：
 
     ```bash
     oozie job -config job.xml -submit
     ```
 
-    此命令从`job.xml`加载作业信息并将其提交到 Oozie，但不会运行它。
+    此命令从`job.xml`加载作业信息，并将其提交到 Oozie，但不运行它。
 
     命令完成后，应返回作业的 ID，例如 `0000005-150622124850154-oozie-oozi-W`。 此 ID 用于管理作业。
 
@@ -448,7 +448,7 @@ Oozie 工作流定义以 Hadoop 过程定义语言（缩写为 hPDL，一种 XML
 
     如果在运行此命令后检查状态，会发现作业处于正在运行状态，并且返回了作业中操作的信息。  该作业可能需要几分钟时间才能完成。
 
-6. 编辑以下代码，将 `<serverName>` 替换为 Azure SQL 服务器名称，将 `<sqlLogin>` 替换为 Azure SQL 服务器登录名。  *任务成功完成后*，可以使用以下命令验证数据是否生成并导出到 SQL 数据库表。  在提示符下输入密码。
+6. 编辑以下代码，将 `<serverName>` 替换为 Azure SQL 服务器名称，将 `<sqlLogin>` 替换为 Azure SQL 服务器登录名。  *任务成功完成后*，可以使用以下命令验证是否已生成数据并将其导出到 SQL 数据库表。  在提示符下输入密码。
 
     ```bash
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <sqlLogin> -p 1433 -D oozietest
@@ -476,7 +476,7 @@ Oozie 工作流定义以 Hadoop 过程定义语言（缩写为 hPDL，一种 XML
 
 ## <a name="oozie-rest-api"></a>Oozie REST API
 
-借助 Oozie REST API 可以构建自己的工具来使用 Oozie。 下面是有关在 HDInsight 中使用 Oozie REST API 的具体信息：
+借助 Oozie REST API 可以构建自己的工具来使用 Oozie。 以下有关使用 Oozie REST API 的 HDInsight 特定信息：
 
 * **URI**：可从群集（位于 `https://CLUSTERNAME.azurehdinsight.net/oozie`）外部访问 REST API。
 
@@ -506,27 +506,27 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 
 2. 创建隧道后，在 Web 浏览器中使用 URI `http://headnodehost:8080` 打开 Ambari Web UI。
 
-3. 从页面的左侧，选择**Oozie** > **快速链接** > **Oozie Web UI**。
+3. 在页面左侧，选择 " **Oozie** > **Quick Links** > **Oozie Web UI**"。
 
-    ![阿帕奇·安巴里·乌齐网络 ui 步骤](./media/hdinsight-use-oozie-linux-mac/hdi-oozie-web-ui-steps.png)
+    ![Apache Ambari oozie web ui 步骤](./media/hdinsight-use-oozie-linux-mac/hdi-oozie-web-ui-steps.png)
 
 4. Oozie Web UI 默认显示正在运行的工作流作业。 若要查看所有工作流作业，请选择“所有作业”****。
 
-    ![Oozie Web 控制台工作流作业](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-jobs.png)
+    ![Oozie web 控制台工作流作业](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-jobs.png)
 
 5. 若要查看有关某个作业的详细信息，请选择该作业。
 
-    ![HDInsight 阿帕奇 Oozie 工作信息](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-info.png)
+    ![HDInsight Apache Oozie 作业信息](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-info.png)
 
 6. 可以在“作业信息”选项卡中查看基本作业信息，以及作业中的各个操作。**** 可以使用顶部的选项卡查看“作业定义”和“作业配置”，访问“作业日志”，或者在“作业 DAG”下查看作业的有向无环图 (DAG)。****************
 
    * **作业日志**：选择“获取日志”**** 按钮获取作业的所有日志，或使用“输入搜索条件”**** 字段来筛选日志。
 
-       ![HDInsight 阿帕奇 Oozie 作业日志](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-log.png)
+       ![HDInsight Apache Oozie 作业日志](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-log.png)
 
    * **作业 DAG**：DAG 是整个工作流中使用的数据路径的图形概览。
 
-       ![HDInsight 阿帕奇·乌齐工作达格](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png)
+       !["HDInsight Apache Oozie job dag"](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png)
 
 7. 如果在“作业信息”**** 选项卡中选择一个操作，会显示有关该操作的信息。 例如，选择 **RunSqoopExport** 操作。
 
@@ -630,34 +630,34 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 
 7. 如果转到 Oozie Web UI 并选择“协调器作业”选项卡，会看到下图所示的信息****：
 
-    ![Oozie Web 控制台协调员作业选项卡](./media/hdinsight-use-oozie-linux-mac/coordinator-jobs-tab.png)
+    ![Oozie web 控制台协调器作业选项卡](./media/hdinsight-use-oozie-linux-mac/coordinator-jobs-tab.png)
 
     “下一次具体化”条目包含下次运行作业的时间****。
 
 8. 与前面的工作流作业一样，在 Web UI 中选择作业条目会显示有关该作业的信息：
 
-    ![阿帕奇·奥齐协调员工作信息](./media/hdinsight-use-oozie-linux-mac/coordinator-job-info.png)
+    ![Apache Oozie 协调器作业信息](./media/hdinsight-use-oozie-linux-mac/coordinator-job-info.png)
 
     > [!NOTE]  
     > 此图像只显示了作业的成功运行结果，而未显示计划工作流中的单个操作。 若要查看单个操作，请选择某个“操作”条目。****
 
-    ![OOzie Web 控制台作业信息选项卡](./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png)
+    ![OOzie web 控制台作业信息选项卡](./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png)
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 使用 Oozie UI 可查看 Oozie 日志。 Oozie UI 还包含一些链接，指向工作流启动的 MapReduce 任务的 JobTracker 日志。 故障排除的模式应为：
 
    1. 在 Oozie Web UI 中查看作业。
 
-   2. 如果特定操作存在错误或失败，请选择操作以查看 **"错误消息**"字段是否提供有关失败的详细信息。
+   2. 如果特定操作存在错误或失败，请选择该操作，查看**错误消息**字段是否提供了有关失败的详细信息。
 
    3. 如果已提供，请使用操作中的 URL 查看该操作的更多详细信息（例如 JobTracker 日志）。
 
-下面是可能会遇到的特定错误及其解决方法。
+下面是你可能遇到的特定错误及其解决方法。
 
-### <a name="ja009-cannot-initialize-cluster"></a>JA009: 无法初始化群集
+### <a name="ja009-cant-initialize-cluster"></a>JA009：无法初始化群集
 
-**症状**：作业状态变为“SUSPENDED”****。 作业详细信息中的 `RunHiveScript` 状态显示为“START_MANUAL”。**** 选择该操作会显示以下错误消息：
+**症状**：作业状态变为“SUSPENDED”  。 作业详细信息中的 `RunHiveScript` 状态显示为“START_MANUAL”。  选择该操作会显示以下错误消息：
 
     JA009: Cannot initialize Cluster. Please check your configuration for map
 
@@ -665,7 +665,7 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 
 **解决方法**：更改作业使用的 Blob 存储地址。
 
-### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltusergt"></a>JA002： 不允许 Oozie 模拟&lt;用户&gt;
+### <a name="ja002-oozie-isnt-allowed-to-impersonate-ltusergt"></a>JA002：不允许 Oozie 模拟&lt;用户&gt;
 
 **症状**：作业状态变为“SUSPENDED”****。 作业详细信息中的 `RunHiveScript` 状态显示为“START_MANUAL”。**** 选择操作会显示以下错误消息：
 
@@ -673,7 +673,7 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 
 **原因**：当前的权限设置不允许 Oozie 模拟指定的用户帐户。
 
-**解决方法**：允许 Oozie 模拟“用户”**** 组中的用户。 使用 `groups USERNAME` 查看用户帐户所属的组。 如果用户不是**用户**组的成员，请使用以下命令将用户添加到组：
+**解决方法**： Oozie 可以模拟组中**`users`** 的用户。 使用 `groups USERNAME` 查看用户帐户所属的组。 如果该用户不是**`users`** 该组的成员，请使用以下命令将该用户添加到该组中：
 
     sudo adduser USERNAME users
 
@@ -692,7 +692,7 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 
 例如，可以针对本文档中的作业使用以下步骤：
 
-1. 将`mssql-jdbc-7.0.0.jre8.jar`文件复制到 **/教程/useoozie**目录：
+1. 将该`mssql-jdbc-7.0.0.jre8.jar`文件复制到 **/tutorials/useoozie**目录：
 
     ```bash
     hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc-7.0.0.jre8.jar /tutorials/useoozie/mssql-jdbc-7.0.0.jre8.jar
@@ -708,13 +708,6 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 
 本文介绍了如何定义 Oozie 工作流，以及如何运行 Oozie 作业。 若要详细了解如何使用 HDInsight，请参阅以下文章：
 
-* [在 HDInsight 中上传 Apache Hadoop 作业的数据][hdinsight-upload-data]
-* [在 HDInsight 中将 Apache Sqoop 与 Apache Hadoop 配合使用][hdinsight-use-sqoop]
-* [将 Apache Hive 与 Apache Hadoop on HDInsight 配合使用][hdinsight-use-hive]
-* [为 HDInsight 开发 Java MapReduce 程序](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
-
-[azure-data-factory-pig-hive]: ../data-factory/transform-data.md
-[hdinsight-versions]:  hdinsight-component-versioning.md
-[hdinsight-use-sqoop]:hadoop/apache-hadoop-use-sqoop-mac-linux.md
-[hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-use-hive]:hadoop/hdinsight-use-hive.md
+* [在 HDInsight 中上传 Apache Hadoop 作业的数据](hdinsight-upload-data.md)
+* [在 HDInsight 中将 Apache Sqoop 与 Apache Hadoop 配合使用](hadoop/apache-hadoop-use-sqoop-mac-linux.md)
+* [将 Apache Hive 与 Apache Hadoop on HDInsight 配合使用](hadoop/hdinsight-use-hive.md)

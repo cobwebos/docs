@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: 4d65ca8d97e1cca81886259d4f15cc880e45be9c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46ff4d9c941af25fcec3a70d7a2e6da95da59f32
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77604285"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82106689"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 安全中心内的文件完整性监视
 使用本演练了解如何在 Azure 安全中心配置文件完整性监视 (FIM)。
@@ -37,15 +37,47 @@ ms.locfileid: "77604285"
 > [!NOTE]
 > 文件完整性监视 (FIM) 功能适用于 Windows 和 Linux 计算机与 VM，已在安全中心的标准层上提供。 若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。 FIM 将数据上传到 Log Analytics 工作区。 需要根据上传的数据量支付数据费用。 请参阅 [Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)了解详细信息。
 
-FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更改。 启用文件完整性监视后，您具有类型 **"解决方案**"的**更改跟踪**资源。 有关数据收集频率详细信息，请参阅[Azure 更改跟踪的更改跟踪数据收集详细信息](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details)。
+FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更改。 启用文件完整性监视时，你具有类型为 "**解决方案**" 的**更改跟踪**资源。 有关数据收集频率的详细信息，请参阅更改跟踪 Azure 更改跟踪的[数据收集详细信息](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details)。
 
 > [!NOTE]
-> 如果删除 **"更改跟踪"** 资源，还将禁用安全中心中的文件完整性监视功能。
+> 如果删除**更改跟踪**资源，还将禁用安全中心中的文件完整性监视功能。
 
 ## <a name="which-files-should-i-monitor"></a>应监视哪些文件？
 在选择要监视的文件时，应考虑对系统和应用程序至关重要的文件。 考虑选择预期不会在计划外发生更改的文件。 选择应用程序或操作系统经常更改的文件（例如日志文件和文本文件）会造成很多的干扰，使攻击识别变得很困难。
 
-安全中心会根据包含文件和注册表更改的已知攻击模式，建议默认情况下应该监视的文件。
+安全中心提供以下建议项列表，根据已知的攻击模式进行监视。 其中包括文件和 Windows 注册表项。 所有键都在 HKEY_LOCAL_MACHINE （表中的 "HKLM"）下。
+
+|**Linux 文件**|**Windows 文件**|**Windows 注册表项**|
+|:----|:----|:----|
+|/bin/login|C:\autoexec.bat|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg\{C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
+|/bin/passwd|C:\boot.ini|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg\{603BCC1F-4B59-4E08-B724-D2C6297EF351}|
+|/etc/*. 会议|C:\config.sys|HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\IniFileMapping\SYSTEM.ini\boot|
+|/usr/bin|C:\Windows\system.ini|HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows|
+|/usr/sbin|C:\Windows\win.ini|HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon|
+|/bin|C:\Windows\regedit.exe|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell 文件夹|
+|/sbin|C:\Windows\System32\userinit.exe|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell 文件夹|
+|/boot|C:\Windows\explorer.exe|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run|
+|/usr/local/bin|C:\Program Files\Microsoft Security Client\msseces.exe|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce|
+|/usr/local/sbin||HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnceEx|
+|/opt/bin||HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunServices|
+|/opt/sbin||HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunServicesOnce|
+|/etc/crontab||HKLM\SOFTWARE\WOW6432Node\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg\{C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
+|适用/etc/init.d||HKLM\SOFTWARE\WOW6432Node\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg\{603BCC1F-4B59-4E08-B724-D2C6297EF351}|
+|/etc/cron.hourly||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\IniFileMapping\system.ini\boot|
+|/etc/cron.daily||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\Windows|
+|/etc/cron.weekly||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\Winlogon|
+|/etc/cron.monthly||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\Shell 文件夹|
+|||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\User Shell 文件夹|
+|||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run|
+|||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\RunOnce|
+|||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\RunOnceEx|
+|||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\RunServices|
+|||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\RunServicesOnce|
+|||HKLM\SYSTEM\CurrentControlSet\Control\hivelist|
+|||HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\KnownDLLs|
+|||HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\DomainProfile|
+|||HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile|
+|||HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile|
 
 ## <a name="using-file-integrity-monitoring"></a>使用文件完整性监视
 1. 打开“安全中心”**** 仪表板。
@@ -85,15 +117,14 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 
 > [!NOTE]
 > 随时可以更改设置。 有关详细信息，请参阅下面的“编辑受监视的实体”。
->
->
+
 
 ## <a name="view-the-fim-dashboard"></a>查看 FIM 仪表板
 “文件完整性监视”仪表板显示已启用 FIM 的工作区。**** 对工作区启用 FIM 后或者在“文件完整性监视”窗口中选择已启用 FIM 的工作区时，FIM 仪表板将会打开。****
 
 ![文件完整性监视仪表板][6]
 
-工作区的 FIM 仪表板显示以下详细信息：
+工作区的 FIM 面板显示以下详细信息：
 
 - 连接到该工作区的计算机总数
 - 所选时间段内发生的更改总数
@@ -109,7 +140,7 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 - 所选时间段内发生的更改总数
 - 更改总数的细分，以文件更改数或注册表更改数的形式列出
 
-当您在搜索字段中输入计算机名称或选择"计算机"选项卡下列出的计算机时，将打开 **"日志搜索**"，日志搜索将显示计算机在选定时间段内所做的所有更改。 可以展开某项更改以查看其详细信息。
+在搜索字段中输入计算机名称或选择 "计算机" 选项卡下列出的计算机时，将打开**日志搜索**。 "日志搜索" 显示在计算机的所选时间段内所做的所有更改。 可以展开某项更改以查看其详细信息。
 
 ![日志搜索][8]
 
@@ -153,7 +184,7 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 
    ![添加要监视的新项][14]
 
-3. 选择“添加”****。 此时会打开“更改跟踪的添加”。****
+3. 选择 **添加** 。 此时会打开“更改跟踪的添加”。****
 
    ![输入请求的信息][15]
 
@@ -177,7 +208,7 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 
    ![将“已启用”设置为 false][19]
 
-6. 选择“保存”。****
+6. 选择“保存”。 
 
 ## <a name="folder-and-path-monitoring-using-wildcards"></a>使用通配符监视文件夹和路径
 
@@ -199,13 +230,10 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 4. 选择“删除”以禁用 FIM。****
 
 ## <a name="next-steps"></a>后续步骤
-在本文中，您学习了在安全中心使用文件完整性监视 （FIM）。 要了解有关安全中心的信息，请参阅以下页面：
+本文介绍了如何在安全中心使用文件完整性监视（FIM）。 若要了解有关安全中心的详细信息，请参阅以下页面：
 
 * [设置安全策略](tutorial-security-policy.md) -- 了解如何为 Azure 订阅和资源组配置安全策略。
 * [管理安全建议](security-center-recommendations.md) -- 了解建议如何帮助你保护 Azure 资源。
-* [安全运行状况监视](security-center-monitoring.md) -- 了解如何监视 Azure 资源的运行状况。
-* [管理和应对安全警报](security-center-managing-and-responding-alerts.md) -- 了解如何管理和应对安全警报。
-* [监视合作伙伴解决方案](security-center-partner-solutions.md) -- 了解如何监视合作伙伴解决方案的运行状况。
 * [Azure 安全博客](https://blogs.msdn.com/b/azuresecurity/) - 获取最新的 Azure 安全新闻和信息。
 
 <!--Image references-->

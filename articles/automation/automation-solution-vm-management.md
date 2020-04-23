@@ -5,25 +5,27 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0331678b50d2448013556ab0694d0ca87045c3a3
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 10c66ba175484d8b95f26ef9330753151a92969b
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/23/2020
-ms.locfileid: "82096910"
+ms.locfileid: "82106026"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>在 Azure 自动化中，在非工作时间启动/停止 Vm 解决方案
 
 在非**工作时间启动/停止 vm**解决方案启动或停止你的 Azure 虚拟机。 它将根据用户定义的计划启动或停止计算机，通过 Azure Monitor 日志提供见解，并通过使用[操作组](../azure-monitor/platform/action-groups.md)发送可选电子邮件。 此解决方案支持 Azure 资源管理器和经典 Vm，适用于大多数情况。 
 
-对于想要优化 VM 成本的用户，此解决方案提供分散式的低成本自动化选项。 使用此解决方案可以：
+此解决方案使用[get-azurermvm](https://docs.microsoft.com/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0) cmdlet 来启动 vm。 它使用[get-azurermvm](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Stop-AzureRmVM?view=azurermps-6.13.0)停止 vm。
+
+> [!NOTE]
+> 在非**工作时间启动/停止 vm**解决方案已更新，以支持可用 Azure 模块的最新版本。
+
+此解决方案为要优化其 VM 成本的用户提供了分散的低成本自动化选项。 使用此解决方案可以：
 
 - [计划要启动和停止的 vm](automation-solution-vm-management-config.md#schedule)。
 - [使用 Azure 标记](automation-solution-vm-management-config.md#tags)按升序计划要启动和停止的 vm （不支持经典 vm）。
 - 基于[CPU 使用率较低](automation-solution-vm-management-config.md#cpuutil)的 Autostop vm。
-
-> [!NOTE]
-> 在非**工作时间启动/停止 vm**解决方案已更新，以支持可用 Azure 模块的最新版本。
 
 下面是对当前解决方案的限制：
 

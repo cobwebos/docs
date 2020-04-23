@@ -1,6 +1,6 @@
 ---
-title: Azure 安全中心常见问题 - 有关权限的问题
-description: 此常见问题解答有关 Azure 安全中心中的权限的问题，该产品可帮助您预防、检测和响应威胁。
+title: Azure 安全中心常见问题解答-有关权限的问题
+description: 此常见问题回答有关 Azure 安全中心中的权限的问题，这是一个可帮助你预防、检测和响应威胁的产品。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 66a260fbb03f770ee98ec29a5f5e15e3d7dd1310
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89b3233966ac53d6c384ca6bd5ac30322fbb0b02
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77599387"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82106587"
 ---
 # <a name="permissions"></a>权限
 
-## <a name="how-do-permissions-work-in-azure-security-center"></a>权限在 Azure 安全中心的工作原理？
+## <a name="how-do-permissions-work-in-azure-security-center"></a>如何在 Azure 安全中心使用权限？
 
 Azure 安全中心使用[基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 提供可在 Azure 中分配给用户、组和服务的[内置角色](../role-based-access-control/built-in-roles.md)。
 
@@ -34,6 +34,6 @@ Azure 安全中心使用[基于角色的访问控制 (RBAC)](../role-based-acces
 
 ## <a name="who-can-modify-a-security-policy"></a>哪些用户可以修改安全策略？
 
-若要修改安全策略，用户必须是安全管理员或是该订阅的所有者或参与者。
+若要修改安全策略，你必须是该订阅的安全管理员或所有者或参与者。
 
 若要了解如何配置安全策略，请参阅[在 Azure 安全中心设置安全策略](tutorial-security-policy.md)。

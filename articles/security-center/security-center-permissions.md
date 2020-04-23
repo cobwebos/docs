@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: 0e60e782fa65cd5868bebe081673f9a158e07799
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e61571400930d4a781d6d67647bd662a7f2d350
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77921311"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82106213"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure 安全中心的权限
 
@@ -30,10 +30,10 @@ Azure 安全中心使用[基于角色的访问控制 (RBAC)](../role-based-acces
 除这些角色外，还有两个特定的安全中心角色：
 
 * **安全读取者**：属于此角色的用户对安全中心具有查看权限。 该用户可查看建议、警报、安全策略和安全状态，但不能更改。
-* **安全管理员**：属于此角色的用户具有与安全读取者相同的权限，此外，还可以更新安全策略、关闭警报和建议。
+* **安全管理员**：属于此角色的用户具有与安全读取器相同的权限，还可以更新安全策略并消除警报和建议。
 
 > [!NOTE]
-> 安全角色（安全读取者和安全管理员）只能访问安全中心。 安全角色无权访问存储、Web 和移动或物联网等其他 Azure 服务区域。
+> 安全角色、安全管理员和安全管理员只能访问安全中心。 安全角色无权访问存储、Web 和移动或物联网等其他 Azure 服务区域。
 >
 >
 
@@ -41,7 +41,7 @@ Azure 安全中心使用[基于角色的访问控制 (RBAC)](../role-based-acces
 
 下表显示安全中心的角色和允许的操作。
 
-| 角色 | 编辑安全策略 | 应用资源的安全建议</br> （包括"快速修复"） | 关闭警报和建议 | 查看警报和建议 |
+| 角色 | 编辑安全策略 | 应用资源的安全建议</br> （包括 with "Quick Fix！"） | 关闭警报和建议 | 查看警报和建议 |
 |:--- |:---:|:---:|:---:|:---:|
 | 订阅所有者 | ✔ | ✔ | ✔ | ✔ |
 | 订阅参与者 | -- | ✔ | ✔ | ✔ |

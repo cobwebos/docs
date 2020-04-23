@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 04/15/2020
 ms.author: v-erkel
-ms.openlocfilehash: befbe2435a518b82cf5a3ab12e6129aa3ce5c22b
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: efa9037b345cdfc5f165e9c5e0c1831ea97b52ed
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537962"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82106485"
 ---
 # <a name="create-an-azure-hpc-cache"></a>创建 Azure HPC 缓存
 
@@ -23,7 +23,7 @@ ms.locfileid: "81537962"
 
 ![Azure 门户中的“项目详细信息”页的屏幕截图](media/hpc-cache-create-basics.png)
 
-在“项目详细信息”**** 中，选择将托管缓存的订阅和资源组。
+在“项目详细信息”**** 中，选择将托管缓存的订阅和资源组。 请确保订阅位于[访问](hpc-cache-prereqs.md#azure-subscription)列表中。
 
 在“服务详细信息”**** 中，设置缓存名称和其他属性：
 
@@ -51,27 +51,27 @@ Azure HPC 缓存会管理缓存和预加载哪些文件，以最大限度地提�
 
 ![缓存大小调整页的屏幕截图](media/hpc-cache-create-capacity.png)
 
-## <a name="enable-azure-key-vault-encryption-optional"></a>启用 Azure 密钥保管库加密（可选）
+## <a name="enable-azure-key-vault-encryption-optional"></a>启用 Azure Key Vault 加密（可选）
 
-如果您的缓存位于支持客户管理的加密密钥的区域，**则"磁盘加密密钥"** 页将显示在 **"缓存**"和 **"标记"** 选项卡之间。 截至发布时，此选项在美国东部、美国中南部和美国西部 2 中支持。
+如果缓存位于支持客户管理的加密密钥的区域，则 "**磁盘加密密钥**" 页将出现在 "**缓存**" 和 "**标记**" 选项卡之间。 在发布时，此选项在美国东部、美国中南部和美国西部2受支持。
 
-如果要管理与缓存存储一起使用的加密密钥，请在 **"磁盘加密密钥"** 页上提供 Azure 密钥保管库信息。 密钥保管库必须位于与缓存相同的区域和订阅中。
+如果要管理用于缓存存储的加密密钥，请在 "**磁盘加密密钥**" 页上提供 Azure Key Vault 信息。 密钥保管库必须位于与缓存相同的区域和订阅中。
 
-如果您不需要客户管理的密钥，则可以跳过此部分。 默认情况下，Azure 使用 Microsoft 管理的密钥加密数据。 阅读[Azure 存储加密](../storage/common/storage-service-encryption.md)以了解更多信息。
+如果您不需要客户管理的密钥，则可以跳过此部分。 默认情况下，Azure 使用 Microsoft 托管的密钥加密数据。 有关详细信息，请参阅[Azure 存储加密](../storage/common/storage-service-encryption.md)。
 
 > [!NOTE]
 >
-> * 创建缓存后，无法在 Microsoft 管理的密钥和客户管理的密钥之间进行更改。
-> * 创建缓存后，必须授权它访问密钥保管库。 单击缓存 **"概述"** 页中的 **"启用加密**"按钮以打开加密。 在创建缓存后的 90 分钟内执行此步骤。
-> * 缓存磁盘是在此授权后创建的。 这意味着初始缓存创建时间较短，但在您授权访问后，缓存将无法使用 10 分钟或更长时间。
+> * 创建缓存后，不能在 Microsoft 管理的密钥和客户托管的密钥之间进行更改。
+> * 创建缓存后，你必须对其进行授权才能访问密钥保管库。 单击缓存的 "**概述**" 页中的 "**启用加密**" 按钮，以启用加密。 请在创建缓存的90分钟内执行此步骤。
+> * 缓存磁盘是在此授权之后创建的。 这意味着，初始缓存创建时间较短，但在授权访问后，缓存将不会准备好使用十分钟或更多时间。
 
-有关客户管理密钥加密过程的完整说明，请改为[使用 Azure HPC 缓存的客户托管加密密钥](customer-keys.md)。
+有关客户托管的密钥加密过程的完整说明，请参阅[将客户托管的加密密钥用于 AZURE HPC 缓存](customer-keys.md)。
 
-![加密密钥页的屏幕截图，其中选择了"客户托管"，并显示密钥保管库字段](media/create-encryption.png)
+!["加密密钥" 页的屏幕截图，其中显示了 "客户管理"，并显示了 key vault 字段](media/create-encryption.png)
 
-选择**客户管理以**选择客户管理密钥加密。 将显示密钥保管库规范字段。 选择要使用的 Azure 密钥保管库，然后选择要用于此缓存的密钥和版本。 密钥必须为 2048 位 RSA 密钥。 可以从此页面创建新的密钥保管库、密钥或密钥版本。
+选择 "**客户管理**" 以选择客户托管的密钥加密。 将显示密钥保管库规范字段。 选择要使用的 Azure Key Vault，然后选择要用于此缓存的密钥和版本。 密钥必须是2048位的 RSA 密钥。 你可以从此页面创建新的密钥保管库、密钥或密钥版本。
 
-创建缓存后，必须授权它使用密钥保管库服务。 请从[缓存中读取授权 Azure 密钥保管库加密](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache)，了解详细信息。
+创建缓存后，你必须对其进行授权才能使用 key vault 服务。 有关详细信息，请参阅[从缓存授权 Azure Key Vault 加密](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache)。
 
 ## <a name="add-resource-tags-optional"></a>添加资源标记（可选）
 
@@ -79,7 +79,7 @@ Azure HPC 缓存会管理缓存和预加载哪些文件，以最大限度地提�
 
 ## <a name="finish-creating-the-cache"></a>完成缓存创建
 
-配置新缓存后，单击"审阅 **+ 创建**"选项卡。门户验证您的选择，并允许您查看您的选择。 如果所有内容都正确，请单击“创建”****。
+配置新缓存后，请单击 "**查看**" 和 "创建" 选项卡。门户将验证你的选择，并允许你查看你的选择。 如果所有内容都正确，请单击“创建”****。
 
 缓存创建花费大约 10 分钟。 可在 Azure 门户的通知面板中跟踪进度。
 
@@ -90,11 +90,11 @@ Azure HPC 缓存会管理缓存和预加载哪些文件，以最大限度地提�
 ![Azure 门户中的 Azure HPC 缓存实例的屏幕截图](media/hpc-cache-new-overview.png)
 
 > [!NOTE]
-> 如果缓存使用客户管理的加密密钥，则在部署状态更改完成之前，缓存可能会显示在资源列表中。 一旦缓存的状态等待**密钥，** 您可以[授权它](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache)使用密钥保管库。
+> 如果缓存使用客户托管的加密密钥，则在部署状态更改为 "完成" 之前，缓存可能会出现在 "资源" 列表中。 一旦缓存的状态为 "**正在等待密钥**"，就可以[授权它](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache)使用密钥保管库。
 
 ## <a name="next-steps"></a>后续步骤
 
-缓存显示在 **"资源"** 列表中后，可以移动到下一步。
+缓存出现在**资源列表**中后，您可以转到下一步。
 
-* [定义存储目标](hpc-cache-add-storage.md)，以便授予缓存对数据源的访问权限。
-* 如果使用客户管理的加密密钥，则需要从缓存的概述页[授权 Azure 密钥保管库加密](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache)以完成缓存设置。 必须先执行此步骤，然后才能添加存储。 阅读[使用客户管理的加密密钥](customer-keys.md)了解详细信息。
+* [定义存储目标](hpc-cache-add-storage.md)以允许缓存访问数据源。
+* 如果使用客户托管的加密密钥，则需要从缓存的 "概述" 页[授权 Azure Key Vault 加密](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache)，以完成缓存设置。 在添加存储之前，必须执行此步骤。 有关详细信息，[请参阅使用客户管理的加密密钥](customer-keys.md)。

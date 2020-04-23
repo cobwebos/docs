@@ -1,38 +1,38 @@
 ---
-title: 微软商业市场常见问题解答
-description: 有关 Azure 应用商店和微软应用程序源的常见问题的解答
+title: Microsoft 商业市场常见问题解答
+description: 有关 Azure Marketplace 和 Microsoft AppSource 的常见问题的解答
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: da324e1e1a40e515cac4b26d6c9f8661f344e1d7
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 4b166af219c8983e5765ef4c884ced7eb0689f54
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687606"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82106672"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft 商业市场常见问题解答
 
-回答有关商业市场的常见问题的解答。
+有关商业应用商店的常见问题的解答。
 
 ## <a name="faq-for-customers"></a>面向客户的常见问题解答
 
-### <a name="what-you-need-to-know-about-the-commercial-marketplace"></a>您需要了解的商业市场
+### <a name="what-you-need-to-know-about-the-commercial-marketplace"></a>你需要了解的有关商业应用商店的内容
 
 **什么是 Azure 市场？**
 
-在 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace)中可以访问 Microsoft 及其合作伙伴提供的解决方案和服务，以及获取其相关信息。 客户可以发现、尝试或购买基于 Azure 或为 Azure 构建的云软件解决方案。 我们的目录包含 8,000 多款商品，提供虚拟机 (VM)、API、Azure 应用、解决方案模板等 Azure 构建基块，以及托管应用程序、SaaS 应用、容器和咨询服务。
+在 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace)中可以访问 Microsoft 及其合作伙伴提供的解决方案和服务，以及获取其相关信息。 客户可发现、试用或购买构建于 Azure 或 Azure 上的云软件解决方案。 我们的目录包含 8,000 多款商品，提供虚拟机 (VM)、API、Azure 应用、解决方案模板等 Azure 构建基块，以及托管应用程序、SaaS 应用、容器和咨询服务。
 
 **谁是 Azure 市场客户？**
 
-Azure 应用商店专为对商业 IT 软件和服务感兴趣的 IT 专业人员和云开发人员而设计。
+Azure Marketplace 专为对商业 IT 软件和服务感兴趣的 IT 专业人员和云开发人员而设计。
 
 **Azure 市场目前提供哪些类型的产品？**
 
-Azure 市场提供 Microsoft 和合作伙伴为扩展 Azure 产品和服务而构建的技术解决方案和服务。 解决方案目录跨越多个类别，包括：
+Azure 市场提供 Microsoft 和合作伙伴为扩展 Azure 产品和服务而构建的技术解决方案和服务。 解决方案目录跨多个类别，其中包括：
 
 * 基础操作系统
 * 数据库
@@ -46,7 +46,7 @@ Azure 市场提供 Microsoft 和合作伙伴为扩展 Azure 产品和服务而�
 
 **如何开始使用 Azure 市场？**
 
-访问 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps)可以找到各种经过认证和优化、可在 Azure 上运行的企业应用程序与解决方案。 [**创建资源**](https://portal.azure.com/#create/hub)时，还可以通过 [Azure 门户] 访问 Azure 应用商店。
+访问 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps)可以找到各种经过认证和优化、可在 Azure 上运行的企业应用程序与解决方案。 [**创建资源**](https://portal.azure.com/#create/hub)时，还可以通过 [Azure 门户] 访问 Azure Marketplace。
 
 **Azure 市场的关键优势是什么？**
 
@@ -56,18 +56,19 @@ Azure 市场提供 Microsoft 和合作伙伴为扩展 Azure 产品和服务而�
 
 可通过以下方式购买 Azure 市场套餐：
 
-* [基于 Web 的网店](https://azuremarketplace.microsoft.com/marketplace/apps)
-* [Azure 门户][Azure 门户]
-* [Azure 命令行接口 （CLI）](/cli/azure/?view=azure-cli-latest)
+* [基于 web 的店面](https://azuremarketplace.microsoft.com/marketplace/apps)
+* [Azure 门户](https://portal.azure.com) <br>
+[!Note] 需要一个 Azure 帐户。 如果没有，则会重定向到 "**欢迎使用 Azure** " 页面以创建一个。  
+* [Azure 命令行接口（CLI）](/cli/azure/?view=azure-cli-latest)
 
 >[!Note]
 >预付额度和其他形式的货币承诺不能用于支付软件许可证费用，但可用于支付相关 Azure 使用费。 [Azure 货币承诺](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)中列出了例外项目。
 
-**我可以选择部署 Azure 应用商店购买哪个 Azure 区域吗？**
+**能否选择要部署 Azure Marketplace 购买的 Azure 区域？**
 
-客户可以选择部署到他们启用的任何 Azure 数据中心区域。 我们建议选择距离服务最近的数据中心位置，以优化性能和控制预算。
+客户可以选择部署到其启用的任何 Azure 数据中心区域。 我们建议选择距离服务最近的数据中心位置，以优化性能和控制预算。
 
-**如果我不小心删除了 Azure 应用商店购买，是否可以*撤消*该操作？**
+**如果意外删除了 Azure Marketplace 购买，可以*撤消*此操作吗？**
 
 不能，删除操作是永久性的。 如果意外删除了订阅，可以重新购买。 任何未使用的功能或预付费服务将会丢失。
 
@@ -81,25 +82,25 @@ Azure 市场提供 Microsoft 和合作伙伴为扩展 Azure 产品和服务而�
 
 **可从 Azure 云解决方案提供商处购买 Azure 市场解决方案吗？**
 
-如果发布者已将其产品配置为通过云解决方案提供商 （CSP） 渠道提供，则云解决方案提供商合作伙伴可以选择转售解决方案。
+如果发布者已将产品/服务配置为可通过云解决方案提供商（CSP）通道获得，则云解决方案提供商合作伙伴可以选择转售解决方案。
 
-**支持哪些国家/地区购买通过 Azure 应用商店销售/调配的应用程序和服务？**
+**支持哪些国家/地区购买通过 Azure Marketplace 销售/设置的应用程序和服务？**
 
-Azure 应用商店可供[参与策略](/legal/marketplace/participation-policy)中列出的国家/地区的 Azure 客户使用。
+Azure Marketplace 适用于[参与策略](/legal/marketplace/participation-policy)中列出的国家/地区中的 azure 客户。
 
-**Azure 应用商店支持哪些货币？**
+**Azure Marketplace 支持哪些货币？**
 
-交易方式如下：澳元、BRL、加元、瑞士法郎、丹麦克朗、欧元、英镑、INR、日元、韩元、挪威克朗、新西兰元、卢布、瑞典克朗、新台币、美元、人民币。
+可以采用以下17个货币进行事务： AUD、BRL、CAD、CHF、克朗、EUR、GBP、INR、JPY、韩元、NOK、NZD、卢布、SEK、台币、USD、RMB。
 
 ### <a name="deploying-a-solution-from-azure-marketplace"></a>从 Azure 市场部署解决方案
 
-**我已经将 Azure 应用商店虚拟机 （VM） 部署到订阅，现在我想将订阅从一个 Azure 帐户迁移到另一个 Azure 帐户。当前是否支持此功能？**
+**我已将一个 Azure Marketplace 虚拟机（VM）部署到一个订阅，现在我想将该订阅从一个 Azure 帐户迁移到另一个 Azure 帐户。当前是否支持此功能？**
 
-若要迁移 Azure 订阅（包括 Azure 市场 VM 和服务），请先删除或取消任何旧版 Azure 市场 VM 和服务，然后再关联到新的 Azure 帐户。 迁移完成后，将使用新注册帐户的付款方式对由此产生的使用费进行计费。
+若要迁移 Azure 订阅（包括 Azure 市场 VM 和服务），请先删除或取消任何旧版 Azure 市场 VM 和服务，然后再关联到新的 Azure 帐户。 迁移完成后，将使用新的已注册帐户付款方式对产生的用量收费进行计费。
 
-**我想将 Azure 应用商店虚拟机 （VM） 订阅迁移到我的企业协议。当前是否支持此功能？**
+**我想要将 Azure Marketplace 虚拟机（VM）订阅迁移到我的企业协议。当前是否支持此功能？**
 
-若要将 Azure 市场虚拟机 (VM) 订阅迁移到企业协议，请在迁移之前停止或取消任何旧版订阅。 完成 Azure 帐户和相关订阅的迁移后，可以重新购买 Azure 应用商店 VM 或服务。  将根据企业协议按季度计收产生的使用费。
+若要将 Azure 市场虚拟机 (VM) 订阅迁移到企业协议，请在迁移之前停止或取消任何旧版订阅。 Azure 帐户和关联订阅的迁移完成后，即可重新购买 Azure Marketplace VM 或服务。  将根据企业协议按季度计收产生的使用费。
 
 ### <a name="pricing-and-payment"></a>定价与付款
 
@@ -109,54 +110,54 @@ Azure 应用商店可供[参与策略](/legal/marketplace/participation-policy)�
 
 非捆绑：**
 
-+ *自带许可证 （BYOL） 模型*：直接从发布商或经销商处获取软件许可证时，无需支付额外的软件相关费用或费用。
++ *自带许可（BYOL）模型*：直接从发布者或分销商处获取软件许可证时，无需支付额外的软件相关费用或费用。
 
 捆绑：**
 
-Azure 订阅包含在发布者的独立软件供应商 （ISV） 解决方案定价中。
+与发布者的独立软件供应商（ISV）解决方案定价一起提供 Azure 订阅。
 
 收费：**
 
 + *免费：* 免费 SKU。 不会因客户使用套餐而向其收取软件许可证费用。
 
-+ *免费软件试用：* 优惠期限为有限。 在试用期内，发布商的软件许可费不收取任何费用。 在试用期过后，将自动根据发布者提出的标准费率向使用套餐的客户收费。
++ *免费软件试用：* 在有限期限内免费提供的产品/服务。 在试用期期间，将不收取发布者的软件许可费用。 在试用期过后，将自动根据发布者提出的标准费率向使用套餐的客户收费。
 
-+ *基于使用情况：* 房价根据产品使用范围收费或计费。 对于虚拟机映像，将按小时收费。 对于开发者服务和 API，将按套餐定义的度量单位收费。
++ *基于使用情况：* 费率根据产品的使用范围使用情况收费或计费。 对于虚拟机映像，将按小时收费。 对于开发者服务和 API，将按套餐定义的度量单位收费。
 
-+ *固定费用：* SaaS 订阅可以按月或按年计费的固定费用定价。 这还可以包括根据消耗量（例如带宽、电子邮件或票证）收费的其他计费维度。 
++ *固定费用：* SaaS 订阅可以定价为按月或按年计费的固定费用。 这也可能包括根据消耗量收费的其他计费维度（例如，带宽、电子邮件或票证）。 
 
-+ *每个用户：* SaaS 订阅可以按用户按月或按年计费定价。 
++ *每用户：* SaaS 订阅可以按用户定价，每月或每年按用户计费。 
 
-特定于优惠的定价详细信息可在 [Azure 门户] 上[https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/)或 [Azure 门户] 上或内部的解决方案详细信息页面上找到。
+可在上[https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/)或在 [Azure 门户] 中的解决方案详细信息页找到特定于产品/服务的定价详细信息。
 
 > [!Note]
 > 除每月费用外，除非另有说明，Azure 使用费适用于所有定价模型。
 
 **如何为 BYOL 市场解决方案提供软件许可证密钥，Azure 市场发挥哪种作用？**
 
-BYOL 解决方案许可证凭据的获取和实施由发布者负责。 对于虚拟机产品/服务，许可证密钥的获取通常在应用程序启动后在发布者的应用程序中进行。 使用通过 Azure 应用程序解决方案模板部署的虚拟机产品/服务时，可以将资源管理器模板配置为提示用户输入一系列输入，包括许可证凭据。
+BYOL 解决方案许可证凭据的获取和实施由发布者负责。 对于虚拟机产品/服务，在应用程序启动后，获取许可证密钥通常会出现在发布服务器的应用程序中。 使用通过 Azure 应用程序解决方案模板部署的虚拟机产品/服务时，可以将资源管理器模板配置为提示用户提供一系列输入，包括许可证凭据。
 
 下面是按套餐类型列出的最常见选项：
 
-*虚拟机优惠：*
+*虚拟机产品/服务：*
 
-+ *选项 1：* 许可证密钥的获取通常在应用程序启动后在发布者应用程序中进行。
++ *选项1：* 在应用程序启动后，通常会在发布者的应用程序中获取许可证密钥。
 
-+ *选项 2：* 在所选订阅中部署 VM 产品/服务后，最终用户（通过产品/服务提供的命令行/Web 界面）输入许可证密钥。 许可证可以是密钥和/或文件，具体由发布者确定。
++ *选项2：* 当在所选订阅中部署 VM 产品/服务后，最终用户会输入许可证密钥（通过提供的命令行/web 界面）。 许可证可以是密钥和/或文件，具体由发布者确定。
 
 Azure 应用（解决方案模板和托管应用）：**
 
-+ *选项 1：* 可以配置资源管理器模板以提示输入一系列输入，包括许可证凭据。 可以在最终用户订阅中部署套餐之前，提供许可证文件（文件上传）或密钥（在文本框中输入）。
++ *选项1：* 可以将资源管理器模板配置为提示输入包含许可证凭据的一系列输入。 可以在最终用户订阅中部署套餐之前，提供许可证文件（文件上传）或密钥（在文本框中输入）。
 
-+ *选项 2：* 您可以通过产品/产品/服务提供的命令行/Web界面输入许可证密钥。  在选定的订阅中部署 Azure 应用套餐后执行此操作。 许可证可以是密钥和/或文件，具体由发布者确定。
++ *选项2：* 你可以通过该产品/服务提供的命令行/web 界面输入许可证密钥。  在选定的订阅中部署 Azure 应用套餐后执行此操作。 许可证可以是密钥和/或文件，具体由发布者确定。
 
-**支持哪些类型的试验？**
+**支持哪种类型的试验？**
 
-发布商可以为付费 SaaS 优惠添加一个免费月，为 VM 映像添加一个或三个月的免费消费月。 免费试用优惠是带有启动试用请求的操作列表。 这些引导客户访问发布者定义的网站以设置试用体验。 试用版也可以添加到第一个月的免费付费产品中。 
+发布者可以为付费 SaaS 产品/服务添加一个免费月份，并为 VM 映像添加一个或三个免费月份。 免费试用产品/服务是通过调用操作来启动试用的列表。 这会使客户成为发布者定义的网站，以设置试用体验。 还可将试用版添加到付费产品/服务，其中的第一个月免费。 
 
 **是否需要存档付款方式（例如信用卡），才能部署免费层套餐或自带许可 (BYOL) 套餐？**
 
-不是。 部署免费层或 BYOL 套餐无需付款方式。 但是，部署免费试用套餐则需要付款方式。 附带“立即获取”或“免费软件试用”按钮的商品将部署到选定的 Azure 订阅中********。  这些列表使用所选帐户的注册付款方式计费。 Azure 使用费将与软件许可证费用分开计费。
+不是。 部署免费层或 BYOL 套餐无需付款方式。 但是，部署免费试用套餐则需要付款方式。 附带“立即获取”或“免费软件试用”按钮的商品将部署到选定的 Azure 订阅中********。  这些列表使用所选帐户的已注册付款方式进行计费。 Azure 使用费将与软件许可证费用分开计费。
 
 **如果企业协议 (EA) 间接客户对于在 Azure 市场上销售的套餐的定价有问题，那么他们该与谁联系？**
 
@@ -166,13 +167,13 @@ Azure 应用（解决方案模板和托管应用）：**
 
 是的，注册时，注册管理员可对企业协议 (EA) 客户关闭所有帐户的购买特权，并将其重新打开足够长的时间以便进行购买。
 
-**商业市场购买支持哪些付款方式？**
+**商业 marketplace 购买支持哪些付款方式？**
 
-客户可以使用信用卡从商业市场购买产品。 如果您有现有的 Azure 订阅，则从 Azure 应用商店购买将使用在帐户上配置的付款方式，并在同一发票上显示为单独的行项目。 某些产品/服务会消耗 Azure 货币承诺，但大多数商业市场购买不会减少企业协议承诺，尽管 Azure 基础结构消耗将。
+客户可以使用信用卡从商业市场购买产品/服务。 如果你已有 Azure 订阅，则从 Azure Marketplace 进行的购买将使用帐户上配置的付款方式，并与单独的行项出现在同一发票上。 某些产品/服务使用 Azure 货币承诺，但大多数商业市场购买不会降低企业协议承诺，不过，Azure 基础结构消耗将会降低。
 
 **我能对 Azure 市场套餐应用我帐户上的 Azure 订阅额度或货币承诺资金吗？**
 
-特定 Azure 市场套餐可使用 Azure 订阅额度或货币承诺资金。 有关参与此计划的产品的完整列表，请参阅 [Azure 货币承诺](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)。 这些套餐不包括 BYOL 或 BYOS 选项。 所有其他 Azure 应用商店产品/服务不能使用 Azure 订阅积分或货币承诺：例如免费一个月试用积分、每月 MSDN 积分、Azure 促销的信用额度、货币承诺余额以及 Azure 提供的任何其他免费信用额度。
+特定 Azure 市场套餐可使用 Azure 订阅额度或货币承诺资金。 有关参与此计划的产品的完整列表，请参阅 [Azure 货币承诺](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)。 这些套餐不包括 BYOL 或 BYOS 选项。 所有其他 Azure Marketplace 产品/服务不能使用 Azure 订阅信用额度或资金承诺，如免费为期1个月的免费试用期、MSDN 信用额度、Azure 促销的信用额度、资金承诺余额以及 Azure 提供的任何其他免费信用额度。
 
 **批量许可折扣是否适用于 Azure 市场购买内容？**
 
@@ -180,11 +181,11 @@ Azure 应用（解决方案模板和托管应用）：**
 
 **可在哪里查看 Azure 市场订阅详细信息和计费信息？**
 
-MOSP - [Microsoft 在线订阅计划](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en)（Web 直接）客户可以在 [Azure 门户] 的成本管理 + 计费部分的"发票"选项卡中查看应用商店购买详细信息。
+MOSP- [Microsoft 联机订阅计划](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en)（web 直接）客户可以在 [Azure 门户] 的 "成本管理 + 计费" 部分的 "发票" 选项卡中查看 Marketplace 购买详细信息。
 
-企业协议 （EA） 客户可以在 [Azure 门户] 的成本管理 + 计费部分的"发票"选项卡中查看应用商店采购详细信息。
+企业协议（EA）客户可以在 [Azure 门户] 的 "成本管理 + 计费" 部分的 "发票" 选项卡中查看 Marketplace 购买详细信息。
 
-云解决方案提供商 （CSP） 合作伙伴可以在"订单历史记录"选项卡中选择公司后，在"订单历史记录"选项卡中查看合作伙伴中心中每个客户的应用商店购买详细信息。
+在 "客户" 视图中选择公司后，云解决方案提供商（CSP）合作伙伴可以在 "订单历史记录" 选项卡的 "订单历史记录" 选项卡中查看每个客户的 Marketplace 购买详细信息
 
 **如何取消 Azure VM 的 Azure 市场附加产品？**
 
@@ -192,9 +193,9 @@ MOSP - [Microsoft 在线订阅计划](https://azure.microsoft.com/support/legal/
 
 **将按何种频率对 Azure 市场购买内容计费？**
 
-对于不可从货币承诺扣费的所有 Azure 市场套餐，将以欠款形式按月计费。 年度 SaaS 订阅对全年服务收取一次费用。
+对于不可从货币承诺扣费的所有 Azure 市场套餐，将以欠款形式按月计费。 年度 SaaS 订阅按一年的服务计费。
 
-MOSP - [Microsoft 在线订阅计划](https://azure.microsoft.com/support/legal/subscription-agreement/)（Web 直接）客户每月根据其 Azure 订阅配置文件存档的同一信用卡收费。 年度 SaaS 订阅对全年服务收取一次费用。
+MOSP- [Microsoft 联机订阅计划](https://azure.microsoft.com/support/legal/subscription-agreement/)（web 直接）客户按月向其 Azure 订阅配置文件上的同一信用卡收费。 年度 SaaS 订阅按一年的服务计费。
 
 **如何将 Azure 市场购买内容从 MOSP 订阅迁移到我的直接企业协议 (EA) 订阅？**
 
@@ -202,13 +203,13 @@ MOSP - [Microsoft 在线订阅计划](https://azure.microsoft.com/support/legal/
 
 如需将从 Azure 市场购买的其他服务迁移到 EA 订阅，请先从现有 MOSP 订阅中取消应用程序，然后在 EA 订阅中重新购买这些应用程序。 执行此操作之后，可以提交额度请求，要求退还在市场服务订阅之间可能重叠的月份的款项 - [创建票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)即可。
 
-**Azure 应用商店中虚拟机产品的成本结构*中的价格*、*软件价格*和*总价*之间的差别是什么？**
+**Azure Marketplace 中虚拟机产品/服务的*价格*、*软件价格*和*总价格*之间的区别是什么？**
 
-*价格*是指 Azure 虚拟机运行软件的成本。 *软件价格*是指在 Azure 虚拟机上运行的应用商店发布者软件的成本。 *总价*是指在 Azure 虚拟机上运行的 Azure 虚拟机和应用商店发布者软件的总成本。
+*价格*指运行软件的 Azure 虚拟机的成本。 *软件价格*指的是在 Azure 虚拟机上运行的 Marketplace 发布者软件的成本。 *总价*指的是在 Azure 虚拟机上运行的 Azure 虚拟机和 Marketplace 发布者软件的总成本。
 
 **如何了解我已使用了多少 Azure 市场购买内容？**
 
-在 [Azure 门户] 中找到估计使用情况信息。 此类使用情况估计信息可能不包括近期活动，并且可能以从过去的消费派生的投影为基础。 在公开预览期间，此功能并非对所有购买可用，而是因产品类型而异。
+可在 [Azure 门户] 中找到估计的使用情况信息。 此类使用情况估计信息可能不包括近期活动，并且可能以从过去的消费派生的投影为基础。 在公开预览期间，此功能并非对所有购买可用，而是因产品类型而异。
 
 ### <a name="customer-support"></a>客户支持
 
@@ -232,38 +233,38 @@ MOSP - [Microsoft 在线订阅计划](https://azure.microsoft.com/support/legal/
 
 **如果不满意，能否退货？**
 
-无法退回从[Azure 应用商店](https://azuremarketplace.microsoft.com/)进行的采购，但可以取消/删除。 基于消费的优惠按使用情况计费，因此当停止时，费用也停止。 订阅将被取消，并且不会超过当前计费周期。 如果在购买后不久取消订阅（每月 24 小时，每年 14 天），则提供全额退款。
+从[Azure Marketplace](https://azuremarketplace.microsoft.com/)进行的购买不能返回，但可以取消/删除。 基于消费的产品/服务根据使用情况计费，因此在停止时，还会停止收费。 订阅将取消，并且不会在当前计费周期之后计费。 如果订阅在购买后不久（每月24小时，每年14天），则会提供完全退款。
 
 有关其市场服务或购买内容的任何技术问题，客户必须直接联系发布者。 可在 Azure 市场中的解决方案详细信息页上找到发布者联系方式和/或指向支持网站的链接。
 
-**增加中期许可证时如何处理许可证添加？**
+**如何在延长期限后处理许可证添加？**
 
-添加到现有订阅的许可证在订阅持续时间的剩余时间内按比例评级。
+添加到现有订阅的许可证在订阅持续时间的剩余时间内按比例进行评级。
 
-**中期时如何处理许可证删除？**
+**在中期，如何处理许可证删除？**
 
-取消的许可证将受此常见问题解答中的退款政策的约束。  取消的所有许可证将立即从您的帐户中删除，并且将不再可供使用。
+取消的许可证将受此 FAQ 中的退款政策的限制。  已取消的所有许可证将立即从你的帐户中删除，并且将不再可供使用。
 
-**支持基于消费的优惠退款吗？**
+**基于消费的产品/服务的退款是否受支持？**
 
-任何基于消费的费用（无论是每小时 VM 还是自定义仪表）均无法通过取消而退款。 消费一旦发生，费用将由 Microsoft 的商务平台处理，任何要求退款的服务质量争议都将在发布商和客户之间的 Microsoft 系统之外直接处理。 支持统一费率加计量计费的优惠遵循统一费率费用的标准退款政策。
+任何基于消耗的费用-无论是每小时 Vm 还是自定义计量，都不会退还取消。 一旦发生了消耗，Microsoft 的商业平台就会处理费用，请求退款的任何服务质量争议将直接在发布者与客户之间的 Microsoft 系统外部进行处理。 支持按固定费率和按流量计费的产品/服务将遵循标准退款政策来支付支付费用。
 
-**是否可以在中期更改计划？**
+**是否可以更改计划的中期？**
 
-不，不可能在每月和每年之间转换。
+不可以，不能在每月和每年之间过渡。
 
-**客户能否从同一优惠购买两个计划？**
+**客户能否从同一产品/服务购买两个计划？**
 
-是的，客户可以同时拥有同一优惠中的两个计划。
+是的，客户有可能同时拥有相同服务的两个计划。
 
-**退款和计划变更政策因网店而异吗？**
+**"退款" 和 "计划更改策略" 的不同之处：**
 
-不，整个商业市场的业务政策是一致的。 如果云解决方案提供计划中的合作伙伴转售，合作伙伴可能会为其客户实施不同的策略。
+不能，业务策略在商业应用商店中保持一致。 如果云解决方案中的合作伙伴转售给提供程序，则合作伙伴可以为其客户强制实施其他策略。
 
 
 ## <a name="faq-for-publishers"></a>面向发布者的常见问题解答
 
-### <a name="what-you-need-to-know-about-the-commercial-marketplace"></a>您需要了解的商业市场
+### <a name="what-you-need-to-know-about-the-commercial-marketplace"></a>你需要了解的有关商业应用商店的内容
 
 **什么是 Azure 市场？**
 
@@ -275,17 +276,17 @@ Azure 市场是与 Microsoft 开展联合市场推广活动的起点。  我们�
 
 Azure 市场主要面向对商用 IT 软件和服务感兴趣的 IT 专业人员与云开发人员。
 
-### <a name="azure-marketplace-for-publishers"></a>发布商的 Azure 应用商店
+### <a name="azure-marketplace-for-publishers"></a>适用于发布服务器的 Azure Marketplace
 
 **为什么我应该在 Azure 市场上发布我的应用程序，它对我有什么好处？**
 
-Azure 市场为 Microsoft 合作伙伴提供向 Azure 客户推广和销售产品及服务的市场。 发布商可立即访问 140 个全球市场、我们的 300，000 多个合作伙伴以及 Azure 的企业客户网络。  该市场包括 90% 以上的财富 500 强公司和许多世界领先的开发人员。 Azure 应用商店中的新合作伙伴会自动获得一套[无成本的上市权益](gtm-your-marketplace-benefits.md#list-trial-and-consulting-benefits)，以帮助提高在 Azure 市场中对其产品/服务的认识。
+Azure 市场为 Microsoft 合作伙伴提供向 Azure 客户推广和销售产品及服务的市场。 发布者可立即获取对140全球市场、我们的 300000 + 合作伙伴以及 Azure 企业客户网络的访问权限。  Marketplace 包含90% 以上的财富500公司和众多世界领先的开发人员。 Azure Marketplace 中的新合作伙伴会自动提供一组[无成本的投放市场优势](gtm-your-marketplace-benefits.md#list-trial-and-consulting-benefits)，有助于在 Azure marketplace 中提高对其产品/服务的认知度。
 
 **Azure 市场和 AppSource 之间的区别是什么？**
 
 Microsoft 合作伙伴可以根据其目标受众的位置来选择发布位置。
 
-Microsoft 提供了两个不同的云市场网店 - Azure 应用商店和 AppSource。 这些店面允许客户查找、试用和购买云应用程序和服务。 每个店面满足独特的客户需求，并使 Microsoft 合作伙伴能够根据目标受众提供相应的解决方案或服务。
+Microsoft 提供了两个不同的云 marketplace 商店-Azure Marketplace 和 AppSource。 这些店面允许客户查找、试用和购买云应用程序和服务。 每个店面满足独特的客户需求，并使 Microsoft 合作伙伴能够根据目标受众提供相应的解决方案或服务。
 
 对于 IT 专业人员、开发人员或技术用户，可以选择 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps)。
 
@@ -299,7 +300,7 @@ Microsoft 提供了两个不同的云市场网店 - Azure 应用商店和 AppSou
 
 **在 Azure 市场中发布解决方案的条件是什么？**
 
-若要在 Azure 市场中发布内容，合作伙伴必须演示其应用程序可在 Azure 上运行或扩展。 出版商必须为客户提供[服务级别协议](https://azure.microsoft.com/support/legal/sla/)、[隐私政策](https://privacy.microsoft.com/privacystatement)以及电话和在线支持。 各种工作负荷具有不同的要求。 有关更多指导，请查看 [Azure 市场参与策略](./marketplace-participation-policy.md)和[发布者指南](marketplace-publishers-guide.md)。
+若要在 Azure 市场中发布内容，合作伙伴必须演示其应用程序可在 Azure 上运行或扩展。 发布者需要为客户提供[服务级别协议](https://azure.microsoft.com/support/legal/sla/)、[隐私策略](https://privacy.microsoft.com/privacystatement)和电话和联机支持。 各种工作负荷具有不同的要求。 有关更多指导，请查看 [Azure 市场参与策略](./marketplace-participation-policy.md)和[发布者指南](marketplace-publishers-guide.md)。
 
 **在 Azure 市场中发布是否收费？**
 
@@ -309,9 +310,9 @@ Microsoft 提供了两个不同的云市场网店 - Azure 应用商店和 AppSou
 
 通过 Azure 市场购买解决方案许可证时，软件许可证的收入将在发布者与 Microsoft 之间分摊。  这种分摊是根据[市场发布者协议](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)中的条款和条件进行的。 此外，对于使用 BYOL（自带许可证）的发布者解决方案，发布者无需支付交易费。
 
-**什么是标准合同？**
+**什么是标准协定？**
 
-Microsoft 提供了发布者可以选择使用的标准合同条款，以便客户具有简化的采购和法律审查流程。
+Microsoft 提供了发布者可以选择利用的标准协定术语，使客户可以进行简化的采购和法律审查过程。
 
 **在何处可以找到将应用程序与 Azure Active Directory (AAD) 集成的指导原则？**
 
@@ -323,7 +324,7 @@ Microsoft 通过 AAD 对所有市场用户进行身份验证。  可以直接预
 
 若要开始，发布者应确认某个[开发人员中心帐户](deprecated/register-dev-center.md)尚未注册（目的是防止重复）。 确认后，下一步是使用与开发人员帐户关联的 Microsoft 帐户[登录](https://account.microsoft.com/account/)，以完成注册。
 
-如果您还没有 Microsoft 帐户，则可以[创建一个帐户](https://signup.live.com/)（例如： contoso_marketplace@live.com。
+如果还没有 Microsoft 帐户，则可以[创建一个帐户](https://signup.live.com/)（例如： contoso_marketplace@live.com）。
 
 **为何需要开发人员中心帐户？**
 
@@ -335,7 +336,7 @@ Microsoft 需要使用开发人员中心帐户代表发布者向客户计收“�
 
 **在何处可获得设置潜在顾客目标的帮助？**
 
-在[合作伙伴中心获取客户线索](./partner-center-portal/commercial-marketplace-get-customer-leads.md)文档中了解更多信息，或通过选择产品/服务类型和潜在[https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport)顾客管理提交支持票证。
+通过选择产品/服务类型和潜在客户管理，在合作伙伴中心了解详细信息[-获取客户主管](./partner-center-portal/commercial-marketplace-get-customer-leads.md)文档，或提交支持票证。 [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport)
 
 **是否必须在配置潜在顾客目标后，才能在市场上发布套餐？**
 
@@ -343,56 +344,56 @@ Microsoft 需要使用开发人员中心帐户代表发布者向客户计收“�
 
 **如何确认潜在顾客配置是否正确？**
 
-完成报价并设置潜在顾客目的地后，可以在[合作伙伴中心](https://partner.microsoft.com/)正确发布列表。 商品上线之前，可以验证潜在顾客配置设置是否正常工作。  将测试潜在顾客发送到套餐中配置的潜在顾客目标。
+完成产品/服务并设置潜在顾客目标后，可以在[合作伙伴中心](https://partner.microsoft.com/)正确发布此列表。 商品上线之前，可以验证潜在顾客配置设置是否正常工作。  将测试潜在顾客发送到套餐中配置的潜在顾客目标。
 
 **发布者可在哪些国家/地区销售 Azure 市场？**
 
-位于以下国家/地区的发布商目前可以在 Azure 应用商店中销售：阿富汗、阿尔巴尼亚、阿尔及利亚、 安哥拉、安提瓜和巴布达、阿根廷、亚美尼亚、澳大利亚、奥地利、阿塞拜疆、巴林、孟加拉国、白俄罗斯、比利时、贝宁、玻利维亚、波斯尼亚和黑塞哥维那、博茨瓦纳、巴西、保加利亚、布基纳法索、布隆迪、柬埔寨、喀麦隆、加拿大、中非共和国、乍得、智利、哥伦比亚、科摩罗、刚果、刚果（金）、哥斯达黎加、科特迪瓦、克罗地亚、塞浦路斯、捷克共和国、丹麦、多米尼克、多米尼加共和国、厄瓜多尔、埃及、萨尔瓦多 埃塞俄比亚、斐济群岛、芬兰、法国、格鲁吉亚、德国、加纳、希腊、危地马拉、几内亚、海地、洪都拉斯、香港特别行政区、匈牙利、冰岛、印度、印度尼西亚、伊拉克、爱尔兰、以色列、意大利、牙买加、日本、约旦、哈萨克斯坦、肯尼亚、韩国（南）、科威特、老挝、拉脱维亚、黎巴嫩、利比里亚、列支敦士登、立陶宛、卢森堡、马达加斯加、马拉维、马来西亚、马里、马耳他、毛里求斯、墨西哥、摩纳哥、蒙古、黑山、摩洛哥、莫桑比克、尼泊尔、荷兰、新西兰、尼加拉瓜、尼日尔、尼日利亚、挪威、阿曼、 巴基斯坦、巴拿马、巴拉圭、秘鲁、菲律宾、波兰、葡萄牙、卡塔尔、罗马尼亚、俄罗斯、卢旺达、沙特阿拉伯、塞内加尔、塞尔维亚、塞拉利昂、新加坡、斯洛伐克、斯洛文尼亚、索马里、南非、西班牙、斯里兰卡、瑞典、瑞士、塔吉克斯坦、坦桑尼亚、泰国、东帝汶、多哥、汤加、特立尼达和多巴哥、突尼斯、土耳其、土库曼斯坦、乌干达、乌克兰、阿拉伯联合酋长国、联合王国、美国、乌拉圭、乌兹别克斯坦、委内瑞拉、越南
+以下国家/地区的发布者当前可在 Azure Marketplace 中销售：阿富汗，阿尔巴尼亚，阿尔及利亚，安哥拉，安提瓜和巴布达，阿根廷，亚美尼亚，澳大利亚，奥地利，阿塞拜疆，巴林，孟加拉国，白俄罗斯，华南，贝宁，玻利维亚，波斯尼亚和黑塞哥维那，博茨瓦纳，巴西，保加利亚，布基纳法索，布隆迪，柬埔寨，喀麦隆，加拿大，中非共和国，乍得，智利，哥伦比亚，科摩罗，刚果民主共和国，刚果民主共和国，，哥斯达黎加，科特迪瓦民主，克罗地亚，塞浦路斯，捷克共和国，丹麦，多米尼加，多米尼加共和国，厄瓜多尔，埃及，，萨尔瓦多，厄立特里亚，爱沙尼亚，埃塞俄比亚，斐济群岛，芬兰，法国，格鲁吉亚，德国，加纳，希腊，危地马拉，几内亚，海地，洪都拉斯，香港特别行政区，匈牙利，冰岛，印度，印度尼西亚，伊拉克，爱尔兰，以色列，意大利，牙买加，日本，约旦，哈萨克斯坦，肯尼亚，韩国（南部），科威特，老挝，拉脱维亚，黎巴嫩，利比里亚，列支敦士登，立陶宛，卢森堡，马达加斯加，马拉维，马来西亚，马里，马耳他，毛里求斯，墨西哥，摩纳哥，蒙古，黑山，摩洛哥，莫桑比克，尼泊尔，荷兰，新西兰，尼加拉瓜，尼日尔，尼日利亚，挪威，阿曼，巴基斯坦，巴拿马，巴拉圭，秘鲁，菲律宾，波兰，葡萄牙，卡塔尔，罗马尼亚，俄罗斯，卢旺达，沙特阿拉伯，塞内加尔，塞尔维亚，塞拉利昂，新加坡，斯洛伐克，斯洛文尼亚，索马里，南非，西班牙，斯里兰卡，瑞典，瑞士，塔吉克斯坦，坦桑尼亚，泰国，东帝汶民主共和国-东帝汶民主共和国，多哥，汤加，特立尼达和多巴哥，突尼斯，土耳其，土库曼斯坦，乌干达，美国，乌拉圭，乌兹别克斯坦，
 
 **如何从 Azure 市场中删除商品？**
 
-*虚拟机& Azure 应用：*
+*虚拟机 & Azure 应用：*
 
 1. 登录到[合作伙伴中心](https://partner.microsoft.com/)。
-1. 从"**所有优惠**"选项卡中选择优惠。
+1. 从 "**所有产品/服务**" 选项卡中选择产品/服务。
 1. 在屏幕左侧窗格中，选择“SKU”**** 选项卡。
-1. 选择要删除的 SKU，然后单击该 SKU 的**删除**按钮。
-1. 将产品/服务[重新发布](./cloud-partner-portal/manage-offers/cpp-publish-offer.md)到 Azure 市场。
+1. 选择要删除的 SKU，并单击该 SKU 的 "**删除**" 按钮。
+1. 将产品/服务[重新发布](./partner-center-portal/update-existing-offer.md#review-and-publish-an-updated-offer)到 Azure 市场。
 
 有关详细信息，请参阅[更新产品/服务](./partner-center-portal/update-existing-offer.md)。
 
-*Web 应用（SaaS 应用、加载项）&咨询服务：*
+*Web 应用（SaaS 应用、加载项） & 咨询服务：*
 
-1. 在合作伙伴中心中，选择问号图标，然后单击"**支持**"。
+1. 在 "合作伙伴中心" 中，选择问号图标，然后单击 "**支持**"。
 1. 转到  <https://go.microsoft.com/fwlink/?linkid=844975> 。
 1. 在支持页上，选择套餐类型。
-1. 选择 **"删除**已发布产品/服务"。
+1. 选择 "**删除**已发布的产品/服务"。
 1. 创建事件票证。
 1. 提交。
 
 *O365 应用：*
 
-1.    <https://sellerdashboard.microsoft.com>使用开发帐户登录。
-1.    撤回外接程序。
+1.    用开发帐户<https://sellerdashboard.microsoft.com>登录到。
+1.    撤消外接程序。
 
     > [!NOTE]
-    > 应用在 90 天后从现有列表中消失。
+    > 90天后，应用将从现有列表中消失。
 
-**为什么我的更改没有反映在优惠中？**
+**此产品/服务中不会反映我的更改吗？**
 
-只有在重新发布产品/服务后，合作伙伴中心内所做的更改才会在系统和商店方面进行更新。 请确保您已提交发布要约后进行任何修改。
+仅在重新发布产品/服务后，才会在系统中更新合作伙伴中心内所做的更改。 请确保在进行任何修改后已提交产品/服务进行发布。
 
 ### <a name="benefits-and-go-to-market-gtm-resources"></a>优势和市场推广 (GTM) 资源
 
 **发布者在 Azure 市场发布产品可享受哪些市场推广权益？**
 
-Azure 市场是与 Microsoft 开展联合市场推广活动的起点，也是通向“联合销售就绪”合作的门户。 Azure 应用商店中的所有新上市项目都自动提供一套[免费上市优惠](https://assetsprod.microsoft.com/mpn/marketplace-gtm-benefits.pdf)，以帮助提高 Microsoft 客户对优惠的意识。 发布套餐后，Microsoft GTM 团队将与你取得联系，并开始交付权益。
+Azure 市场是与 Microsoft 开展联合市场推广活动的起点，也是通向“联合销售就绪”合作的门户。 Azure Marketplace 中的所有新列表都会自动提供一套[免费的市场推广权益](https://assetsprod.microsoft.com/mpn/marketplace-gtm-benefits.pdf)，以帮助你了解 Microsoft 客户的产品/服务。 发布套餐后，Microsoft GTM 团队将与你取得联系，并开始交付权益。
 
 有关 GTM 权益以及如何在市场中拓展业务的详细信息，请访问 [Microsoft GTM 服务](https://partner.microsoft.com/reach-customers/gtm)。
 
 **在 Microsoft Web 属性中，Azure 市场解决方案在何处得到推广？**
 
-Azure 应用商店解决方案在 Microsoft [Azure 门户] 和[Azure 应用商店网站](https://azuremarketplace.microsoft.com/marketplace/)中可用。 使用 Azure 的云开发人员和 IT 专业人员每次登录时，都会接触到合作伙伴解决方案。 此外，[Azure 市场主页](https://azuremarketplace.microsoft.com/marketplace)和 [Azure 解决方案页面](https://azure.microsoft.com/solutions/)上还会展示并轮换合作伙伴解决方案的子集。
+Microsoft [Azure 门户] 和[Azure marketplace 网站](https://azuremarketplace.microsoft.com/marketplace/)中提供了 azure marketplace 解决方案。 使用 Azure 的云开发人员和 IT 专业人员每次登录时，都会接触到合作伙伴解决方案。 此外，[Azure 市场主页](https://azuremarketplace.microsoft.com/marketplace)和 [Azure 解决方案页面](https://azure.microsoft.com/solutions/)上还会展示并轮换合作伙伴解决方案的子集。
 
 ### <a name="billing-and-payments"></a>计费与付款
 
@@ -422,24 +423,24 @@ Azure 市场目前不支持对虚拟机按节点计费。 发布者仍可根据 
 
 **有关发布或报价管理的问题，我应联系谁？**
 
-有关常见问题的最新资源和文档，请访问[商业市场发布者指南](marketplace-publishers-guide.md)。 此外，您还可以[在合作伙伴中心使用 Microsoft 支持](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)登录票证。
+请访问[商业 marketplace 发布者指南](marketplace-publishers-guide.md)以获取最新资源，并文档常见问题解答。 此外，还可以使用[合作伙伴中心 Microsoft 支持部门](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)来记录票证。
 
-### <a name="azure-marketplace-for-publishers"></a>发布商的 Azure 应用商店
+### <a name="azure-marketplace-for-publishers"></a>适用于发布服务器的 Azure Marketplace
 
-**如何定义我的地理位置可用性，以便在不同国家/地区进行销售？**
+**如何实现定义我的地理可用性，以便在不同的国家/地区销售？**
 
-1.  在合作伙伴中心中，导航到要向其添加新国家/地区 SKU。  在**SKU 详细信息**中，导航到**国家/地区可用性**，然后单击 **"选择区域**"。
+1.  在 "合作伙伴中心" 中，导航到要向其添加新国家/地区的 SKU。  在 " **SKU 详细信息**" 中，导航到 "**国家/地区可用性**"，然后单击 "**选择区域**"。
 
     ![选择区域](media/marketplace-publishers-guide/FAQ-choose-geo.png)
 
-1.  将弹出一个列表，所有可用的国家/地区将销售到。  单击要使此 SKU 可用的每个国家/地区旁边的复选框。 单击“确定”。 
+1.  将弹出一个列表，其中包含要销售到的所有可用国家/地区。  单击要使此 SKU 可用的每个国家/地区旁边的复选框。 单击“确定”。 
 
     ![选择国家/地区列表](media/marketplace-publishers-guide/FAQ-select-countries.png)
 
-1.  最后，要将更改应用于实时优惠，请单击"**发布**"。  
+1.  最后，若要将更改应用于你的 live 产品/服务，请单击 "**发布**"。  
 
     > [!Note]
-    > 更改生效需要 24 小时。
+    > 更改需要24小时才能生效。
 
 <!---    ![Publish offer](media/marketplace-publishers-guide/FAQ-publish-offer.png) -->
 
@@ -447,13 +448,13 @@ Azure 市场目前不支持对虚拟机按节点计费。 发布者仍可根据 
 
 发布者可以编辑现有产品/服务，选择新的国家/地区，并使用电子表格下载/上传功能设置定价。
 
-**客户可以在哪些国家/地区购买 Azure 应用商店产品？**
+**客户可在哪些国家/地区购买 Azure Marketplace 产品/服务？**
 
-Azure 应用商店支持由客户的帐单地址定义的 141 个从购买地。 有关国家/地区列表，请参阅[参与政策](/legal/marketplace/participation-policy)。
+Azure Marketplace 支持141购买-根据客户的帐单地址定义的地理位置。 有关国家/地区的列表，请参阅[参与策略](/legal/marketplace/participation-policy)。
 
-**Azure 应用商店支持哪些货币？**
+**Azure Marketplace 支持哪些货币？**
 
-交易方式如下：澳元、BRL、加元、瑞士法郎、丹麦克朗、欧元、英镑、INR、日元、韩元、挪威克朗、新西兰元、卢布、瑞典克朗、新台币和美元。
+可以采用以下17个货币进行事务： AUD、BRL、CAD、CHF、克朗、EUR、GBP、INR、JPY、韩元、NOK、NZD、卢布、SEK、台币和 USD。
 
 ### <a name="pricing-and-payment"></a>定价与付款
 
@@ -461,16 +462,16 @@ Azure 应用商店支持由客户的帐单地址定义的 141 个从购买地。
 
 “免费层”订阅套餐永久免费。  “免费软件试用”（立即试用）套餐为收费订阅，只是在有限的时间段内免费。
 
-**验证端到端采购和预配流的流程是什么？**
+**验证端到端购买和预配流的过程是什么？**
 
-在发布过程中，您将获得对优惠预览的访问权限。 访问权限仅限于您在"预览"选项卡中指定的用户，这是其他人看不到的实时优惠。 您可以购买此项并测试流程;但是，您将根据产品/服务配置向您收取全额费用。
+在发布过程中，将提供对产品/服务预览版的访问权限。 仅限在 "预览" 选项卡中指定的用户进行访问，这是一项实时优惠，对其他任何人都不可见。 你可以购买此过程并测试该过程;但是，会根据产品/服务的配置向你收费。
 
-为了以极低的价格完成购买，Microsoft 建议以您可以接受的价格为自己发布一个私人计划，作为测试成本。 零支持，但不会反映完整的体验，如付费订阅。
+为了以极低的价格完成购买，Microsoft 建议将一种私有计划发布到自己的价格中，你可以接受它作为测试成本。 支持零，但将不会反映完整的体验，如付费订阅。
 
-**微软是否会在标准政策之外提供退款？**
+**Microsoft 是否会提供标准以外的退款政策？**
 
-是的，根据您的请求通过支持票证，Microsoft 将处理给您的客户的积分，如果您认为合适。
+是的，当你通过支持票证请求时，Microsoft 将为你的客户处理信用（如果你认为合适）。
 
 ## <a name="next-steps"></a>后续步骤
 
-访问[商业市场发布者指南](/azure/marketplace/marketplace-publishers-guide)页面。
+请访问 "[商用 marketplace 发布者指南](/azure/marketplace/marketplace-publishers-guide)" 页。
