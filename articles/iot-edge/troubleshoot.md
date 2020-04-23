@@ -4,19 +4,19 @@ description: 使用本文了解 Azure IoT Edge 的标准诊断技能，例如检
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/20/2019
+ms.date: 04/21/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 3529d6a67c6c8c19c053fe3170298658e90b4a54
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 2e15dffac73b4a50b1ef9288feaeb6073dea91e0
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81729277"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086515"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge 的常见问题和解决方法
 
@@ -24,7 +24,7 @@ ms.locfileid: "81729277"
 
 ## <a name="run-the-iotedge-check-command"></a>运行 iotedge 的“check”命令
 
-排查 IoT Edge 问题时，第一步应该是使用 `check` 命令，针对常见问题运行一系列配置和连接性测试。 `check` 命令在[版本 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) 及更高版本中提供。
+对 IoT Edge 进行故障排除的第一步应该是使用`check`该命令，该命令针对常见问题运行配置和连接测试的集合。 `check` 命令在[版本 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) 及更高版本中提供。
 
 可以运行 `check` 命令（如下所示），也可以包括 `--help` 标志，以便查看选项的完整列表：
 
@@ -40,20 +40,19 @@ ms.locfileid: "81729277"
   iotedge check
   ```
 
-此工具运行的检查类型可以分类为：
+故障排除工具运行许多检查，这些检查被分类到以下三个类别中：
 
-* 配置检查：检查妨碍 Edge 设备连接到云的详细情况，包括 *config.yaml* 和容器引擎出现的问题。
-* 连接检查：验证 IoT Edge 运行时能否访问主机设备上的端口，以及所有 IoT Edge 组件能否连接到 IoT 中心。
-* 生产就绪性检查：查找建议的生产最佳做法，例如设备证书颁发机构 (CA) 证书的状态以及模块日志文件配置。
+* 配置检查：检查可能阻止 Edge 设备连接到云的详细信息，包括*config.yaml*和容器引擎的问题。
+* 连接检查：验证 IoT Edge 运行时可以访问主机设备上的端口，并且所有 IoT Edge 组件都可以连接到 IoT 中心。
+* 生产就绪性检查：查找推荐的生产最佳实践，例如设备证书颁发机构 （CA） 证书的状态和模块日志文件配置。
 
-如需诊断检查的完整列表，请参阅[内置的故障排除功能](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md)。
+有关此工具运行的每个诊断检查的信息，包括收到错误或警告时该怎么做，请参阅[IoT Edge 疑难解答检查](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md)。
 
-## <a name="gather-debug-information-with-iotedge-support-bundle-command"></a>通过 iotedge 的“support-bundle”命令收集调试信息
+## <a name="gather-debug-information-with-iotedge-support-bundle-command"></a>使用 iotedge"支持捆绑"命令收集调试信息
 
-需要从 IoT Edge 设备收集日志时，最方便的方法是使用 `support-bundle` 命令。 默认情况下，此命令收集模块、IoT Edge 安全管理器和容器引擎日志、“iotedge check”JSON 输出和其他有用的调试信息。 它将它们压缩成单个文件，便于共享。 `support-bundle` 命令在[版本 1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) 及更高版本中提供。
+当您需要从 IoT Edge 设备收集日志时，最方便的方法是使用 该`support-bundle`命令。 默认情况下，此命令收集模块、IoT Edge 安全管理器和容器引擎日志、"iotedge 检查"JSON 输出和其他有用的调试信息。 它将它们压缩到单个文件中，以便轻松共享。 该`support-bundle`命令在版本[1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9)及更高版本中可用。
 
-运行带 `--since` 标志的 `support-bundle` 命令，指定要从过去获取日志的时间。 例如，`6h` 会获取过去 6 小时的日志，`6d` 会获取过去 6 天的日志，`6m` 会获取过去 6 分钟的日志，依此类推。 包括 `--help` 标志即可查看选项的完整列表。
-
+使用`--since`标志`support-bundle`运行该命令，以指定要获取日志的过去多长时间。 例如`6h`，将获取自过去 6 小时以来`6d`的日志，因为过去`6m`6 天，最近 6 分钟，等等。 包括标志`--help`以查看完整的选项列表。
 
 * 在 Linux 上：
 
@@ -68,7 +67,7 @@ ms.locfileid: "81729277"
   ```
 
 > [!WARNING]
-> `support-bundle` 命令的输出可能包含主机、设备和模块名称、模块记录的信息，等等。如果在公共论坛中共享输出，请注意这一点。
+> 来自该命令`support-bundle`的输出可以包含主机、设备和模块名称、模块记录的信息等。如果在公共论坛中共享输出，请注意这一点。
 
 ## <a name="standard-diagnostic-steps"></a>标准诊断步骤
 
@@ -130,7 +129,7 @@ ms.locfileid: "81729277"
 ### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>如果 IoT Edge 安全管理器未运行，请验证 yaml 配置文件
 
 > [!WARNING]
-> YAML 文件不能包含制表符作为缩进。 请改用 2 个空格。 顶级元素应该没有前导空格。
+> YAML 文件不能包含制表符作为缩进。 请改用 2 个空格。 顶级元素应没有前导空格。
 
 在 Linux 上：
 
@@ -188,11 +187,11 @@ IoT Edge 安全守护程序运行后，请查看容器日志以检测问题。 �
    ```
 
    > [!WARNING]
-   > YAML 文件不能包含制表符作为缩进。 请改用 2 个空格。 顶级项不能有前导空格。
+   > YAML 文件不能包含制表符作为缩进。 请改用 2 个空格。 顶级项目不能具有前导空格。
 
 保存该文件并重启 IoT Edge 安全管理器。
 
-还可以检查在 IoT 中心与 IoT Edge 设备之间发送的消息。 使用[适用于 Visual Studio Code 的 Azure IoT 中心扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)查看这些消息。 有关详细信息，请参阅 [Handy tool when you develop with Azure IoT](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/)（通过 Azure IoT 进行开发时的顺手工具）。
+还可以检查在 IoT 中心与 IoT Edge 设备之间发送的消息。 使用 Visual Studio[代码的 Azure IoT 中心扩展名](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)查看这些消息。 有关详细信息，请参阅 [Handy tool when you develop with Azure IoT](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/)（通过 Azure IoT 进行开发时的顺手工具）。
 
 ### <a name="restart-containers"></a>重启容器
 
@@ -239,7 +238,7 @@ edgeAgent 模块将启动并成功运行大约一分钟，然后停止。 日志
 2017-11-28 18:46:49 [INF] - Edge agent attempting to connect to IoT Hub via AMQP over WebSocket...
 ```
 
-**根本原因**
+**根源**
 
 主机网络上的某个网络配置阻止 IoT Edge 代理到达该网络。 代理首先会尝试通过 AMQP（端口 5671）进行连接。 如果连接失败，它将尝试 WebSocket（端口 443）。
 
@@ -260,7 +259,7 @@ One or more errors occurred.
 Error starting userland proxy: Bind for 0.0.0.0:443 failed: port is already allocated\"}\n)
 ```
 
-**根本原因**
+**根源**
 
 主机上的某个其他进程已绑定了端口 443。 IoT Edge 中心映射端口 5671 和 443 以在网关方案中使用。 如果另一进程已绑定了此端口，则此端口映射会失败。
 
@@ -272,9 +271,9 @@ Error starting userland proxy: Bind for 0.0.0.0:443 failed: port is already allo
 
 某个容器未能运行，并且 edgeAgent 日志显示了 403 错误。
 
-**根本原因**
+**根源**
 
-IoT Edge 代理无权访问某个模块的映像。
+IoT Edge 代理无权访问模块的映像。
 
 **解决方法**
 
@@ -288,7 +287,7 @@ IoT Edge 代理无权访问某个模块的映像。
 Error parsing user input data: invalid hostname. Hostname cannot be empty or greater than 64 characters
 ```
 
-**根本原因**
+**根源**
 
 IoT Edge 运行时只支持短于 64 个字符的主机名。 物理计算机通常不具有长主机名，但此问题在虚拟机上更常见。 特别是为 Azure 中托管的 Windows 虚拟机自动生成的主机名，往往会很长。
 
@@ -297,12 +296,12 @@ IoT Edge 运行时只支持短于 64 个字符的主机名。 物理计算机通
 看到此错误时，可以配置虚拟机的 DNS 名称，然后在设置命令中将 DNS 名称设置为主机名。
 
 1. 在 Azure 门户中，导航到虚拟机的概述页面。
-2. 选择 DNS 名称下的“配置”  。 如果你的虚拟机已配置 DNS 名称，则不需要再配置。
+2. 选择 DNS 名称下的“配置”****。 如果你的虚拟机已配置 DNS 名称，则不需要再配置。
 
    ![配置虚拟机的 DNS 名称](./media/troubleshoot/configure-dns.png)
 
-3. 为“DNS 名称标签”提供一个值，然后选择“保存”   。
-4. 复制新的 DNS 名称，此名称应该为 \<DNSnamelabel\>.\<vmlocation\>.cloudapp.azure.com  。
+3. 为“DNS 名称标签”提供一个值，然后选择“保存”********。
+4. 复制新的 DNS 名称，该名称应采用**\<DNSname\>标签\<的格式。vmlocation\>.cloudapp.azure.com**。
 5. 在虚拟机中使用下列命令，以 DNS 名称设置 IoT Edge 运行时：
 
    * 在 Linux 上：
@@ -321,21 +320,21 @@ IoT Edge 运行时只支持短于 64 个字符的主机名。 物理计算机通
 
 你可能会在 Raspberry Pi 等受限设备上遇到稳定性问题，尤其是在这些设备用作网关时。 症状包括 Edge 中心模块出现“内存不足”异常、下游设备无法连接或者设备在几小时后停止发送遥测消息。
 
-**根本原因**
+**根源**
 
 IoT Edge 中心是 IoT Edge 运行时的一部分，默认情况下已针对性能进行了优化，并尝试分配大块内存。 这种优化对于受限 Edge 设备并不理想，并可能会导致稳定性问题。
 
 **解决方法**
 
-对于 IoT Edge 中心，请将环境变量 **OptimizeForPerformance** 设置为 **false**。 可以通过两种方式来设置环境变量：
+对于 IoT Edge 中心，请将环境变量 **OptimizeForPerformance** 设置为 **false**。 有两种方法可以设置环境变量：
 
 在 Azure 门户中：
 
-在 IoT 中心，选择 IoT Edge 设备，然后从设备详细信息页中依次选择“设置模块” > “运行时设置”   。 为 Edge 中心模块创建名为 *OptimizeForPerformance*、设置为 *false* 的环境变量。
+在 IoT 中心中，从设备详细信息页面选择 IoT 边缘设备，然后选择 **"设置模块** > **运行时设置**"。 为 Edge 中心模块创建名为 *OptimizeForPerformance*、设置为 *false* 的环境变量。
 
 ![设为 false 的 OptimizeForPerformance](./media/troubleshoot/optimizeforperformance-false.png)
 
-**或者**
+**或**
 
 在部署清单中：
 
@@ -357,7 +356,7 @@ IoT Edge 中心是 IoT Edge 运行时的一部分，默认情况下已针对性�
 
 如果在 Windows 上使用 `Get-WinEvent` 时收到 EventLogException，请检查注册表项。
 
-**根本原因**
+**根源**
 
 `Get-WinEvent` PowerShell 命令依赖于存在的注册表项来按特定 `ProviderName` 查找日志。
 
@@ -382,7 +381,7 @@ Windows Registry Editor Version 5.00
 Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 )
 ```
 
-**根本原因**
+**根源**
 
 出于安全考虑，IoT Edge 守护程序会强制对连接到 edgeHub 的所有模块执行进程识别。 它会验证某个模块发送的所有消息是否来自该模块的主进程 ID。 如果发送消息的模块的进程 ID 不同于最初建立的进程 ID，则守护程序会拒绝该消息并返回 404 错误消息。
 
@@ -408,7 +407,7 @@ IoT Edge 提供增强的配置来保护 Azure IoT Edge 运行时和已部署的�
 
 设备在启动部署中定义的模块时出现问题。 只有 edgeAgent 在运行，但它持续报告“配置文件为空...”。
 
-**根本原因**
+**根源**
 
 默认情况下，IoT Edge 在模块自身的隔离容器网络中启动模块。 在此专用网络中，设备可能会遇到 DNS 名称解析方面的问题。
 
@@ -416,7 +415,7 @@ IoT Edge 提供增强的配置来保护 Azure IoT Edge 运行时和已部署的�
 
 **选项 1：在容器引擎设置中设置 DNS 服务器**
 
-在容器引擎设置中为环境指定 DNS 服务器，该设置将应用于引擎启动的所有容器模块。 创建名为 `daemon.json` 的文件，并在其中指定要使用的 DNS 服务器。 例如：
+在容器引擎设置中指定环境的 DNS 服务器，该设置将应用于引擎启动的所有容器模块。 创建名为 `daemon.json` 的文件，并在其中指定要使用的 DNS 服务器。 例如：
 
 ```json
 {
@@ -435,14 +434,14 @@ IoT Edge 提供增强的配置来保护 Azure IoT Edge 运行时和已部署的�
 
 如果该位置已包含 `daemon.json` 文件，请在其中添加 **dns** 密钥，然后保存该文件。
 
-重启容器引擎以使更新生效。
+重新启动容器引擎，使更新生效。
 
-| 平台 | 命令 |
+| 平台 | Command |
 | --------- | -------- |
 | Linux | `sudo systemctl restart docker` |
 | Windows（管理 Powershell） | `Restart-Service iotedge-moby -Force` |
 
-**选项 2：在每个模块的 IoT Edge 部署中设置 DNS 服务器**
+**选项 2：将 DNS 服务器设置为每个模块的 IoT 边缘部署**
 
 可以针对 IoT Edge 部署中每个模块的 *createOptions* 设置 DNS 服务器。 例如：
 
@@ -456,7 +455,7 @@ IoT Edge 提供增强的配置来保护 Azure IoT Edge 运行时和已部署的�
 }
 ```
 
-请确保也为 edgeAgent  和 edgeHub  模块设置此配置。
+请务必为*边缘代理*和*边缘Hub*模块设置此配置。
 
 ## <a name="next-steps"></a>后续步骤
 

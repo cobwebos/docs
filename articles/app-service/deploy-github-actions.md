@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 4a8b3cf47235e061e5dbcc08a409fce84d421771
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57ca5b0880d4b027e33bc0d01fc6225eb886029b
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77562201"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084985"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>使用 GitHub 操作部署到应用服务
 
@@ -28,7 +28,7 @@ ms.locfileid: "77562201"
 |部分  |任务  |
 |---------|---------|
 |**身份验证** | 1. 定义服务主体 <br /> 2. 创建 GitHub 机密 |
-|**建立** | 1. 设置环境 <br /> 2. 构建 Web 应用程序 |
+|**生成** | 1. 设置环境 <br /> 2. 构建 Web 应用程序 |
 |**部署** | 1. 部署 Web 应用 |
 
 ## <a name="create-a-service-principal"></a>创建服务主体
@@ -62,7 +62,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 4. 现在，在分支中的工作流文件中：`.github/workflows/workflow.yml`替换部署 Azure Web`publish-profile`应用操作的输入的机密。
     
     ```yaml
-        - uses: azure/webapps-deploy@v1
+        - uses: azure/webapps-deploy@v2
           with:
             creds: ${{ secrets.azureWebAppPublishProfile }}
     ```
@@ -79,12 +79,12 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 |---------|---------|
 |**.NET**     | `actions/setup-dotnet` |
 |**Java**     | `actions/setup-java` |
-|**Javascript** | `actions/setup-node` |
+|**JavaScript** | `actions/setup-node` |
 |**Python**     | `actions/setup-python` |
 
 以下示例显示用于为各种受支持的语言设置环境的部分工作流：
 
-**Javascript**
+**JavaScript**
 
 ```yaml
     - name: Setup Node 10.x
@@ -127,7 +127,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 以下示例以各种受支持的语言显示构建 Web 应用的工作流部分。
 
-**Javascript**
+**JavaScript**
 
 ```yaml
     - name: 'Run npm'
@@ -182,13 +182,13 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 ```
 ## <a name="deploy-to-app-service"></a>部署到应用服务
 
-要将代码部署到应用服务应用，请使用 操作`azure/webapps-deploy@v1 `。 此操作有四个参数：
+要将代码部署到应用服务应用，请使用 操作`azure/webapps-deploy@v2`。 此操作有四个参数：
 
-| **参数**  | **说明**  |
+| **Parameter**  | **说明**  |
 |---------|---------|
 | **应用名称** | （必需）应用服务应用的名称 | 
 | **发布配置文件** | （可选）使用 Web 部署机密发布配置文件内容 |
-| **包** | （可选）包或文件夹的路径。 *.zip、*.war、*.jar 或要部署的文件夹 |
+| **package** | （可选）包或文件夹的路径。 *.zip、*.war、*.jar 或要部署的文件夹 |
 | **插槽名称** | （可选）输入生产槽以外的现有插槽 |
 
 ### <a name="deploy-using-publish-profile"></a>使用发布配置文件进行部署
@@ -219,7 +219,7 @@ jobs:
         npm run test --if-present
        
     - name: 'Run Azure webapp deploy action using publish profile credentials'
-          uses: azure/webapps-deploy@v1
+          uses: azure/webapps-deploy@v2
           with: 
             app-name: node-rn
             publish-profile: ${{ secrets.azureWebAppPublishProfile }}
@@ -258,7 +258,7 @@ jobs:
         npm run test --if-present
                
     # deploy web app using Azure credentials
-    - uses: azure/webapps-deploy@v1
+    - uses: azure/webapps-deploy@v2
       with:
         app-name: 'node-rn'
 

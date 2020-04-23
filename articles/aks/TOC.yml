@@ -20,8 +20,8 @@
     - name: 开发应用程序
       expanded: true
       items:
-        - name: 使用 Draft
-          href: kubernetes-draft.md
+        - name: 使用 Helm 进行开发
+          href: quickstart-helm.md
         - name: Azure Dev Spaces
           expanded: true
           items:
@@ -316,7 +316,7 @@
                 - name: 3 - 团队开发
                   href: ../dev-spaces/team-development-nodejs.md
                   maintainContext: true
-        - name: 使用 Helm 运行应用程序
+        - name: 通过 Helm 安装现有应用程序
           href: kubernetes-helm.md
         - name: 使用 OpenFaaS
           href: openfaas.md
@@ -410,7 +410,7 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 提供产品反馈
       href: 'https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-container-service'
     - name: 视频
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest'

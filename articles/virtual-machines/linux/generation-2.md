@@ -7,27 +7,27 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 0767d6c003be8f4e0b28c8d8ce1d48b8f578dd86
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: ae76c30f63c87f7e741fff31792d520fb144b93b
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273522"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084271"
 ---
-# <a name="support-for-generation-2-vms-on-azure"></a>支持 Azure 上第 2 代 VM
+# <a name="support-for-generation-2-vms-on-azure"></a>Azure 对第 2 代 VM 的支持
 
-第 2 代虚拟机 （VM） 的支持现在在 Azure 上可用。 创建虚拟机后无法更改其代系，因此，在选择代系之前，请先查看本页上的注意事项。
+Azure 现已提供对第 2 代虚拟机 (VM) 的支持。 创建虚拟机后无法更改其代系，因此，在选择代系之前，请先查看本页上的注意事项。
 
-第 2 代 VM 支持第 1 代 VM 所不支持的某些关键特性。 这些特性包括更大的内存、Intel Software Guard Extensions (Intel SGX) 和虚拟化持久性内存 (vPMEM)。 在本地运行的第 2 代 VM 具有 Azure 中尚不支持的功能。 有关详细信息，请参阅[特性和功能](#features-and-capabilities)部分。
+第 2 代 VM 支持第 1 代 VM 所不支持的某些关键特性。 这些特性包括更大的内存、Intel Software Guard Extensions (Intel SGX) 和虚拟化持久性内存 (vPMEM)。 在本地运行的第 2 代 VM 具有 Azure 中尚不支持的一些功能。 有关详细信息，请参阅[特性和功能](#features-and-capabilities)部分。
 
 第 2 代 VM 使用新的基于 UEFI 的启动体系结构，而不是使用第 1 代 VM 所用的基于 BIOS 的体系结构。 与第 1 代 VM 相比，第 2 代 VM 的启动时间和安装时间可能有所改善。 有关第 2 代 VM 的概述以及第 1 代与第 2 代之间的某些差异，请参阅[应在 Hyper-V 中创建第 1 代还是第 2 代虚拟机？](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)。
 
 ## <a name="generation-2-vm-sizes"></a>第 2 代 VM 的大小
 
-Azure 中的所有 VM 大小都支持第 1 代 VM（Mv2 系列 VM 除外）。 Azure 现在为以下选定的 VM 系列提供第 2 代支持：
+Azure 中的所有 VM 大小都支持第 1 代 VM（Mv2 系列 VM 除外）。 Azure 目前为以下选定 VM 系列提供第 2 代支持：
 
 * [B 系列](https://docs.microsoft.com/azure/virtual-machines/linux/b-series-burstable)
-* [DC 系列](../dcv2-series.md)
+* [DCv2 系列](../dcv2-series.md)
 * [DSv2 系列](../dv2-dsv2-series.md)和[Dsv3 系列](../dv3-dsv3-series.md)
 * [Esv3 系列](../ev3-esv3-series.md)
 * [Fsv2 系列](../fsv2-series.md)
@@ -101,7 +101,7 @@ Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 以下是在 Azure 门户中创建第 2 代 （Gen2） VM 的步骤。
 
 1. 通过 https://portal.azure.com 登录到 Azure 门户。
-1. 选择“创建资源”。****
+1. 选择“创建资源”。 
 1. 单击左侧 Azure 应用商店中的所有 **"查看"。**
 1. 选择支持 Gen 2 的图像。
 1. 单击“创建”。 

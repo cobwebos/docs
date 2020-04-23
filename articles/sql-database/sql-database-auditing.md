@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/27/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 9e8aa9bbbdf166ba0caf29cd0bce22b8ed321e4e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 48cdbc8188604ce1992a1cb15289576ba92902a3
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81685185"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086141"
 ---
 # <a name="azure-sql-auditing"></a>Azure SQL 审核
 
@@ -89,7 +89,7 @@ Azure SQL 数据库审核在审核记录中存储字符字段的 4000 个字符�
   
    ![存储选项](./media/sql-database-auditing-get-started/auditing-select-destination.png)
    
-### <a name=""></a><a id="audit-storage-destination">审核到存储目标</a>
+### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>审核到存储目标
 
 若要配置将审核日志写入存储帐户的操作，请选择“存储”，打开“存储详细信息”。******** 依次选择要用于保存日志的 Azure 存储帐户以及保持期。 然后单击“确定”****。 超过保留期日志的日志将被删除。
 
@@ -108,13 +108,13 @@ Azure SQL 数据库审核在审核记录中存储字符字段的 4000 个字符�
 - 使用 AAD 身份验证时，失败的登录记录将不会** 出现在 SQL 审核日志中。 若要查看失败的登录审核记录，需要访问 [Azure Active Directory 门户]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)，该门户记录这些事件的详细信息。
 - 已自动启用对[只读副本](sql-database-read-scale-out.md)的审核。 有关存储文件夹的层次结构、命名约定和日志格式的详细信息，请参阅 [SQL 数据库审核日志格式](sql-database-audit-log-format.md)。 
 
-### <a name=""></a><a id="audit-log-analytics-destination">审核到日志分析目标</a>
+### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>审核到日志分析目标
   
 若要配置将审核日志写入 Log Analytics 工作区的操作，请选择“Log Analytics (预览版)”，并打开“Log Analytics 详细信息”。******** 选择或创建要将日志写入到其中的 Log Analytics 工作区，然后单击“确定”。****
    
    ![日志分析工作区](./media/sql-database-auditing-get-started/auditing_select_oms.png)
 
-### <a name=""></a><a id="audit-event-hub-destination">审核到事件中心目标</a>
+### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>审核到事件中心目标
 
 > [!WARNING]
 > 在服务器上启用具有 SQL 池的审核**会导致 SQL 池恢复并重新暂停**，这可能会产生计费费用。
@@ -199,7 +199,7 @@ Azure SQL 数据库审核在审核记录中存储字符字段的 4000 个字符�
 
 <!--The description in this section refers to preceding screen captures.-->
 
-#### <a name="auditing-geo-replicated-databases"></a>审核异地复制的数据库
+### <a name="auditing-geo-replicated-databases"></a>审核异地复制的数据库
 
 通过异地复制数据库，在主数据库上启用审核时，辅助数据库将有相同的审核策略。 还可以在独立于主数据库的“辅助服务器”上启用审核，从而在辅助数据库上设置审核。****
 
@@ -211,7 +211,7 @@ Azure SQL 数据库审核在审核记录中存储字符字段的 4000 个字符�
     >[!IMPORTANT]
     >在数据库级审核中，辅助数据库的存储设置与主数据库相同，因而会导致生成跨区域流量。 建议仅启用服务器级审核，并对所有数据库禁用数据库级审核。
 
-#### <a name="storage-key-regeneration"></a>重新生成存储密钥
+### <a name="storage-key-regeneration"></a>重新生成存储密钥
 
 在生产环境中，可能会定期刷新存储密钥。 如果向 Azure 存储写入审核日志，则需在刷新密钥时重新保存审核策略。 该过程如下所示：
 
@@ -226,7 +226,7 @@ Azure SQL 数据库审核在审核记录中存储字符字段的 4000 个字符�
 
 ## <a name="manage-azure-sql-server-and-database-auditing"></a><a id="manage-auditing"></a>管理 Azure SQL 服务器和数据库审核
 
-#### <a name="using-azure-powershell"></a>使用 Azure PowerShell
+### <a name="using-azure-powershell"></a>使用 Azure PowerShell
 
 **PowerShell cmdlet（包括对附加筛选的 WHERE 子句支持）**：
 
@@ -239,7 +239,7 @@ Azure SQL 数据库审核在审核记录中存储字符字段的 4000 个字符�
 
 有关脚本示例，请参阅[使用 PowerShell 配置审核和威胁检测](scripts/sql-database-auditing-and-threat-detection-powershell.md)。
 
-#### <a name="using-rest-api"></a>使用 REST API
+### <a name="using-rest-api"></a>使用 REST API
 
 **REST API**：
 
@@ -255,7 +255,7 @@ Azure SQL 数据库审核在审核记录中存储字符字段的 4000 个字符�
 - [获取数据库扩展** 审核策略](/rest/api/sql/database%20extended%20auditing%20settings/get)
 - [获取服务器扩展** 审核策略](/rest/api/sql/server%20auditing%20settings/get)
 
-#### <a name="using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
+### <a name="using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
 
 可以使用 [Azure 资源管理器](../azure-resource-manager/management/overview.md)模板管理 Azure SQL 数据库审核，如以下示例所示：
 

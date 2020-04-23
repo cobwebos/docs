@@ -21,6 +21,8 @@
               href: quickstart-netcore-visualstudio.md
         - name: 使用 CLI 进行开发
           href: quickstart-cli.md
+        - name: 使用现有的 Helm 图表进行开发
+          href: quickstart-existing-helm-chart.md
     - name: 教程
       items:
         - name: Java（VS Code 和 CLI）

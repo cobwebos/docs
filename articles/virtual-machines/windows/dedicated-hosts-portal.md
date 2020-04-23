@@ -7,12 +7,13 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 03/10/2020
 ms.author: cynthn
-ms.openlocfilehash: 3d014014b540e5ea5959483427dec4b239ceaf7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: zivr
+ms.openlocfilehash: 53a9cd33f7bd2223be1c9f199b7a6d10d876c322
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476784"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082928"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>使用门户将 VM 部署到专用主机
 
@@ -28,11 +29,11 @@ ms.locfileid: "79476784"
 1. 在“实例详细信息”**** 下，对于“虚拟机名称”**** 键入 *myVM*，对于“位置”**** 选择“美国东部”**。
 1. 在 **"可用性"选项**中，选择 **"可用性区域**"，从下拉列表中选择*1。*
 1. 对于大小，选择 **"更改大小**"。 在可用尺寸列表中，从 Esv3 系列中选择一个，如**标准 E2s v3**。 您可能需要清除筛选器才能查看所有可用大小。
-1. 在“管理员帐户”**** 下，提供用户名（例如 *azureuser*）和密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。
+1. 在“管理员帐户”  下，提供用户名（例如 *azureuser*）和密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。
 1. 在“入站端口规则”下，选择“允许所选端口”，然后从下拉列表中选择“RDP (3389)”。************
 1. 在页面顶部，选择 **"高级**"选项卡，在 **"主机**"部分中，为**主机组**选择*myHostGroup，* 为 **"主机**"选择*myHost*组。 
     ![选择主机组和主机](./media/dedicated-hosts-portal/advanced.png)
-1. 保留其余默认值，然后选择页面底部的“查看 + 创建”**** 按钮。
+1. 保留其余默认值，然后选择页面底部的“查看 + 创建”  按钮。
 1. 当您看到验证已通过的消息时，选择 **"创建**"。
 
 ## <a name="add-an-existing-vm"></a>添加现有 VM 

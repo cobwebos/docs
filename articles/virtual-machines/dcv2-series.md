@@ -7,19 +7,19 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: lahugh
-ms.openlocfilehash: 7834c8a32d4d85fc354bac209e13f19f3b8315fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d35e37e53b84d317446a93a2301fc3b703b426b7
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80256923"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085716"
 ---
-# <a name="preview-dcsv2-series"></a>预览： DCv2 系列
+# <a name="dcsv2-series"></a>DCv2 系列
 
 
 DCsv2 系列可帮助保护数据和代码在公共云中处理时的机密性和完整性。 这些机器由最新一代英特尔 XEON E-2288G 处理器支持，配备新GX技术。 借助英特尔涡轮提升技术，这些机器可高达 5.0GHz。 DCsv2 系列实例使客户能够构建基于安全区的安全应用程序，以便在使用时保护其代码和数据。
 
-示例用例包括机密多方数据共享、欺诈检测、反洗钱、区块链、机密使用分析、智能分析和机密机器学习。
+示例用例包括：机密多方数据共享、欺诈检测、反洗钱、区块链、机密使用分析、智能分析和机密机器学习。
 
 高级存储：支持*
 
@@ -41,15 +41,15 @@ DCsv2 系列可帮助保护数据和代码在公共云中处理时的机密性�
 | Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16000/128 (172)                                                         | 12800/192                                 | 2                                            |
 
 - DCv2 系列 VM 是[第 2 代 VM，](./linux/generation-2.md#creating-a-generation-2-vm)仅支持`Gen2`映像。
-- 目前仅在英国南部和加拿大中部提供。
-- 上一代机密计算[VM：DC 系列](sizes-previous-gen.md)
-- 使用 Azure 门户[创建 VM - 门户创建](./linux/quick-create-portal.md)DCv2 VM
+- 目前仅在英国南部、加拿大中部和美国东部提供。
+- 上一代机密计算[VM：DC 系列](sizes-previous-gen.md#preview-dc-series)
+- 使用[Azure 门户](./linux/quick-create-portal.md)或[Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.acc-virtual-machine-v2?tab=overview)创建 DCv2 VM
 
 
 
 ## <a name="other-sizes"></a>其他大小
 
-- [一般用途](sizes-general.md)
+- [常规用途](sizes-general.md)
 - [内存优化](sizes-memory.md)
 - [存储优化](sizes-storage.md)
 - [GPU 优化](sizes-gpu.md)

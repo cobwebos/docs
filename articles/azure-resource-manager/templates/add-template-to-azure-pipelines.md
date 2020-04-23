@@ -3,12 +3,12 @@ title: 使用 Azure Pipelines 和模板实现 CI/CD
 description: 介绍如何在 Visual Studio 中使用 Azure 资源组部署项目在 Azure Pipelines 中设置持续集成，以部署资源管理器模板。
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 7617bf47595fce7baa533b0f7cc94a1803ddd349
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8eff1c7efae319106eb8a85af7823a820a0da39
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153448"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084645"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>将 ARM 模板与 Azure 管道集成
 
@@ -28,7 +28,7 @@ Visual Studio 提供 Azure 资源组项目，用于创建 Azure 资源管理器 
 
 * 你已有一个 Azure DevOps 组织。 如果没有，请[免费创建一个](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops)。 如果你的团队已创建了一个 Azure DevOps 组织，请确保你是要使用的 Azure DevOps 项目的管理员。
 
-* 已配置与 Azure 订阅之间的[服务连接](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops)。 管道中的任务将以服务主体的身份执行。 有关创建连接的步骤，请参阅[创建 DevOps 项目](template-tutorial-use-azure-pipelines.md#create-a-devops-project)。
+* 已配置与 Azure 订阅之间的[服务连接](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops)。 管道中的任务将以服务主体的身份执行。 有关创建连接的步骤，请参阅[创建 DevOps 项目](deployment-tutorial-pipeline.md#create-a-devops-project)。
 
 * 已从 **Azure 资源组**初学者模板创建了一个 Visual Studio 项目。 有关创建此类项目的信息，请参阅[通过 Visual Studio 创建和部署 Azure 资源组](create-visual-studio-deployment-project.md)。
 
@@ -36,11 +36,11 @@ Visual Studio 提供 Azure 资源组项目，用于创建 Azure 资源管理器 
 
 ## <a name="create-pipeline"></a>创建管道
 
-1. 如果事先尚未添加管道，需要创建一个新管道。 在 Azure DevOps 组织中，选择“管道”和“新建管道”。********
+1. 如果事先尚未添加管道，需要创建一个新管道。 在 Azure DevOps 组织中，选择“管道”和“新建管道”。  
 
    ![添加新管道](./media/add-template-to-azure-pipelines/new-pipeline.png)
 
-1. 指定代码的存储位置。 在下图中，选择的是“Azure Repos Git”。****
+1. 指定代码的存储位置。 在下图中，选择的是“Azure Repos Git”。 
 
    ![选择代码源](./media/add-template-to-azure-pipelines/select-source.png)
 
@@ -48,7 +48,7 @@ Visual Studio 提供 Azure 资源组项目，用于创建 Azure 资源管理器 
 
    ![选择存储库](./media/add-template-to-azure-pipelines/select-repo.png)
 
-1. 选择要创建的管道类型。 可以选择“初学者管道”。****
+1. 选择要创建的管道类型。 可以选择“初学者管道”。 
 
    ![选择管道](./media/add-template-to-azure-pipelines/select-pipeline.png)
 
@@ -122,13 +122,13 @@ ScriptArguments: -ResourceGroupName '<resource-group-name>' -ResourceGroupLocati
        azurePowerShellVersion: LatestVersion
    ```
 
-1. 选择“保存”。****
+1. 选择“保存”  。
 
    ![保存管道](./media/add-template-to-azure-pipelines/save-pipeline.png)
 
 1. 提供要提交的消息，并直接提交到 **master**。
 
-1. 选择“保存”时，生成管道将自动运行。**** 返回生成管道的摘要并观察状态。
+1. 选择“保存”时，生成管道将自动运行。  返回生成管道的摘要并观察状态。
 
    ![查看结果](./media/add-template-to-azure-pipelines/view-results.png)
 
@@ -194,9 +194,9 @@ ContainerName: '<container-name>'
 
 需要根据环境修改此任务的多个部分。
 
-- `deploymentScope`： 从选项中选择部署范围： `Management Group``Subscription`和`Resource Group`。 在本演练中使用**资源组**。 若要详细了解范围，请参阅[部署范围](deploy-rest.md#deployment-scope)。
+- `deploymentScope`：从以下选项中选择部署范围：`Subscription`、`Management Group` 和 `Resource Group`。 在本演练中使用**资源组**。 若要详细了解范围，请参阅[部署范围](deploy-rest.md#deployment-scope)。
 
-- `ConnectedServiceName`：提供您创建的服务连接的名称。
+- `ConnectedServiceName`：提供创建的服务连接的名称。
 
     ```yaml
     ConnectedServiceName: '<your-connection-name>'
@@ -249,11 +249,11 @@ ContainerName: '<container-name>'
         deploymentMode: 'Incremental'
    ```
 
-1. 选择“保存”。****
+1. 选择“保存”  。
 
 1. 提供要提交的消息，并直接提交到 **master**。
 
-1. 选择“保存”时，生成管道将自动运行。**** 返回生成管道的摘要并观察状态。
+1. 选择“保存”时，生成管道将自动运行。  返回生成管道的摘要并观察状态。
 
    ![查看结果](./media/add-template-to-azure-pipelines/view-results.png)
 
@@ -261,4 +261,4 @@ ContainerName: '<container-name>'
 
 ## <a name="next-steps"></a>后续步骤
 
-有关将 Azure 管道与 ARM 模板一起使用的分步过程，请参阅[教程：ARM 模板与 Azure 管道的持续集成](template-tutorial-use-azure-pipelines.md)。
+有关将 Azure 管道与 ARM 模板一起使用的分步过程，请参阅[教程：Azure 资源管理器模板与 Azure 管道的持续集成](deployment-tutorial-pipeline.md)。

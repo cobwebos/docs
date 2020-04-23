@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 04/14/2020
+ms.date: 04/22/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3f284efd6a9a2fd83c8e2a8f9fb7a962c1cacc1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 4ac49209fb1debca604a6aeb8ad3993ff898c331
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406458"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082996"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -29,11 +29,11 @@ ms.locfileid: "81406458"
 
 已分配到全局管理员角色的用户可以读取和修改 Azure AD 组织中的每项管理设置。 默认情况下，系统会将注册 Azure 订阅的人员分配为 Azure AD 组织的全局管理员角色。 只有全局管理员和特权角色管理员可以委托管理员角色。 为了降低业务风险，我们建议仅将此角色分配给组织中尽量少的人员。
 
-作为最佳实践，我们建议您将此角色分配给组织中少于五个人。 如果您的组织中已分配了五个以上的管理员到全局管理员角色，以下是减少其使用的一些方法。
+建议将此角色分配给组织中五个以下的人员，这是最佳做法。 如果已将“全局管理员”角色分配给组织中五个以上的管理员，可通过以下方法减少该角色的使用。
 
 ### <a name="find-the-role-you-need"></a>找到所需的角色
 
-如果你很难从包含众多角色的列表中找到所需的角色，Azure AD 可以根据角色类别显示角色的子集。 请查看适用于 [Azure AD 角色和管理员](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators)的“类型”筛选器，使用它可以仅显示所选类型的角色。****
+如果你很难从包含众多角色的列表中找到所需的角色，Azure AD 可以根据角色类别显示角色的子集。 请查看适用于 [Azure AD 角色和管理员](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators)的“类型”筛选器，使用它可以仅显示所选类型的角色。 
 
 ### <a name="a-role-exists-now-that-didnt-exist-when-you-assigned-the-global-administrator-role"></a>现在存在的角色在分配全局管理员角色时不存在
 
@@ -52,17 +52,18 @@ ms.locfileid: "81406458"
 充当此角色的用户可以创建和管理企业应用程序、应用程序注册和应用程序代理设置的所有方面。 请注意，在创建新应用程序注册或企业应用程序时，不会将分配到此角色的用户添加为所有者。
 
 应用程序管理员可以管理用于模拟应用程序的应用程序凭据。 因此，分配了此角色的用户只能管理那些尚未分配给任何 Azure AD 角色或仅分配给以下管理员角色的应用程序的应用程序凭据：
+
 * 应用程序管理员
 * 应用程序开发人员
 * 云应用管理员
 * 目录读者
 
-如果应用程序分配给上面未提到的任何其他角色，则应用程序管理员不能管理该应用程序的凭据。 
- 
-此角色还授予_同意_委派权限和应用程序权限的权限的权限的权限，但 Microsoft 图形 API 上的权限除外。
+如果应用程序分配给上面未提到的任何其他角色，则应用程序管理员不能管理该应用程序的凭据。
+
+此角色还可以许可委托的权限和应用程序权限，但对 Microsoft Graph API 的权限除外。 
 
 > [!IMPORTANT]
-> 这种例外情况意味着，你仍可以许可对其他应用（例如，第三方应用或已注册的应用）的权限，但不能许可对 Azure AD 本身的权限。__ 您仍然可以在应用注册时_请求_这些权限，但_授予_（即同意）这些权限需要 Azure AD 管理员。这意味着恶意用户无法轻松提升其权限，例如，通过创建和同意可以写入整个目录的应用，并通过该应用的权限提升自己，成为全局管理员。
+> 此例外情况意味着您仍然可以同意_其他_应用的权限（例如，已注册的非 Microsoft 应用或应用），但不能同意对 Azure AD 本身的权限。 您仍然可以在应用注册时_请求_这些权限，但_授予_（即同意）这些权限需要 Azure AD 管理员。这意味着恶意用户无法轻松提升其权限，例如，通过创建和同意可以写入整个目录的应用，并通过该应用的权限提升自己，成为全局管理员。
 
 ### <a name="application-developer"></a>[应用程序开发人员](#application-developer-permissions)
 
@@ -70,13 +71,15 @@ ms.locfileid: "81406458"
 
 ### <a name="authentication-administrator"></a>[身份验证管理员](#authentication-administrator-permissions)
 
-身份验证管理员角色目前以公共预览版提供。 具有此角色的用户可以设置或重置非密码凭据，并可以更新所有用户的密码。 身份验证管理员可以要求用户重新注册现有非密码凭据（例如 MFA 或 FIDO），并可以撤销“在设备上记住 MFA”（当非管理员或仅分配有以下角色的用户下次登录时提示他们执行 MFA）：****
+具有此角色的用户可以为某些用户设置或重置非密码凭据，并可以更新所有用户的密码。 身份验证管理员可以要求非管理员或分配给某些角色的用户根据现有非密码凭据（例如 MFA 或 FIDO）重新注册，还可以撤销**设备上的记住 MFA，** 这提示在下一个登录时输入 MFA。 这些操作仅适用于非管理员或分配了以下一个或多个角色的用户：
 
 * 身份验证管理员
 * 目录读者
 * 来宾邀请者
 * 消息中心读取者
 * 报告读者
+
+[特权身份验证管理员](#privileged-authentication-administrator)角色具有权限，可以强制所有用户重新注册和多重身份验证。
 
 > [!IMPORTANT]
 > 具有此角色的用户可以更改可能有权访问 Azure Active Directory 内外敏感或私有信息或关键配置的用户的凭据。 更改用户的凭据可能意味着假定用户标识和权限的能力。 例如：
@@ -103,7 +106,7 @@ ms.locfileid: "81406458"
 
 ### <a name="b2c-user-flow-attribute-administrator"></a>[B2C 用户流属性管理员](#b2c-user-flow-attribute-administrator-permissions)
 
-具有此角色的用户可以添加或删除适用于租户中所有用户流的自定义属性。因此，具有此角色的用户可以在最终用户架构中更改或新增元素，影响所有用户流的行为，间接导致更改可以请求最终用户提供的并最终作为声明发送到应用程序的数据。此角色无法编辑用户流。
+具有此角色的用户可以添加或删除适用于租户中所有用户流的自定义属性。因此，具有此角色的用户可以更改或向最终用户架构添加新元素，并影响所有用户流的行为，并间接导致最终用户可能要求哪些数据更改，并最终作为声明发送到应用程序。此角色无法编辑用户流。
 
 ### <a name="b2c-ief-keyset-administrator"></a>[B2C IEF 密钥集管理员](#b2c-ief-keyset-administrator-permissions)
 
@@ -128,6 +131,7 @@ ms.locfileid: "81406458"
 充当角色的用户具有与应用程序管理员角色相同的权限，但不包括管理应用程序代理的权限。 此角色授予创建和管理企业应用程序和应用程序注册的所有方面的权限。 此角色还授予同意委派权限的权限的权限以及不包括 Microsoft 图形 API 的应用程序权限。 在创建新应用程序注册或企业应用程序时，不会将分配到此角色的用户添加为所有者。
 
 云应用程序管理员可以管理用于模拟应用程序的应用程序凭据。 因此，分配了此角色的用户只能管理那些尚未分配给任何 Azure AD 角色或仅分配给以下管理员角色的应用程序的应用程序凭据：
+
 * 应用程序开发人员
 * 云应用管理员
 * 目录读者
@@ -212,7 +216,7 @@ In | 有权执行的操作
 
 ### <a name="external-identity-provider-administrator"></a>[外部标识提供者管理员](#external-identity-provider-administrator-permissions)
 
-此管理员可以管理 Azure Active Directory 租户与外部标识提供者之间的联合。用户可以使用此角色添加新的标识提供者及配置所有可用设置（例如身份验证路径、服务 ID 和分配的密钥容器）。此用户可让租户信任来自外部标识提供者的身份验证。对最终用户体验造成的影响取决于租户类型：
+此管理员可以管理 Azure Active Directory 租户与外部标识提供者之间的联合。用户可以使用此角色添加新的标识提供者及配置所有可用设置（例如身份验证路径、服务 ID 和分配的密钥容器）。此用户可让租户信任来自外部标识提供者的身份验证。由此产生的对最终用户体验的影响取决于租户的类型：
 
 * Azure 活动目录租户的员工和合作伙伴：添加联合（例如使用 Gmail）将立即影响尚未兑换的所有来宾邀请。 请参阅[添加 Google 作为 B2B 来宾用户的身份提供商](https://docs.microsoft.com/azure/active-directory/b2b/google-federation)。
 * Azure 活动目录 B2C 租户：添加联合（例如，使用 Facebook 或其他 Azure AD 组织）不会立即影响最终用户流，直到标识提供程序作为用户流中的选项添加（也称为内置策略）。 有关示例，请参阅[将 Microsoft 帐户配置为标识提供者](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app)。若要更改用户流，需要使用受限角色“B2C 用户流管理员”。
@@ -284,7 +288,7 @@ In | 有权执行的操作
 
 具有此角色的用户具有 Microsoft Intune Online 内的全局权限（如果该服务存在）。 此外，此角色包含管理以关联策略，以及创建和管理组的用户和设备的能力。 有关微软[Intune 基于角色的管理控制 （RBAC）](https://docs.microsoft.com/intune/role-based-access-control)的更多信息。
 
-此角色可创建和管理所有安全组。 但是，Intune 管理员对 Office 组没有管理员权限。 这意味着管理员无法更新租户中所有 Office 组的所有者或成员身份。 但可以管理他们自己创建的 Office 组，这是其最终用户权限的一部分。 因此，他们创建的任何 Office 组（非安全组）都应根据其 250 的配额进行计数。
+此角色可创建和管理所有安全组。 但是，Intune 管理员对 Office 组没有管理员权限。 这意味着管理员无法更新租户中所有 Office 组的所有者或成员身份。 但是，他/她可以管理他创建的 Office 组，该组是其最终用户权限的一部分。 因此，他们创建的任何 Office 组（非安全组）都应根据其 250 的配额进行计数。
 
 > [!NOTE]
 > 在 Microsoft 图形 API 和 Azure AD PowerShell 中，此角色标识为"Intune 服务管理员"。 它是[Azure 门户](https://portal.azure.com)中的"Intune 管理员"。
@@ -350,7 +354,13 @@ In | 有权执行的操作
 
 ### <a name="privileged-authentication-administrator"></a>[特权身份验证管理员](#privileged-authentication-administrator-permissions)
 
-具有此角色的用户可以设置或重置所有用户（包括全局管理员）的非密码凭据，并可以更新所有用户的密码。 特权身份验证管理员可以强制用户根据现有非密码凭据（例如 MFA、FIDO）重新注册，并撤销"记住设备上的 MFA"，从而在所有用户的下一次登录时提示 MFA。
+具有此角色的用户可以设置或重置所有用户（包括全局管理员）的非密码凭据，并可以更新所有用户的密码。 特权身份验证管理员可以强制用户根据现有非密码凭据（如 MFA 或 FIDO）重新注册，并撤销"记住设备上的 MFA"，从而在所有用户的下一次登录时提示 MFA。 [身份验证管理员](#authentication-administrator)角色可以强制仅对分配给以下 Azure AD 角色的非管理员和用户重新注册和 MFA：
+
+* 身份验证管理员
+* 目录读者
+* 来宾邀请者
+* 消息中心读取者
+* 报告读者
 
 ### <a name="privileged-role-administrator"></a>[特权角色管理员](#privileged-role-administrator-permissions)
 

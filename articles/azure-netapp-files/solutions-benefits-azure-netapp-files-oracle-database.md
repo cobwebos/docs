@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: b-juche
-ms.openlocfilehash: d28f5469174a2659869ebb01ef01653b7190e30e
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: a73da39dafcc8be78fbe1c023693ffa4a19aa1d3
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81772075"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085002"
 ---
-# <a name="benefits-of-using-azure-netapp-files-with-oracle-database"></a>将 Azure NetApp 文件与 Oracle 数据库一起使用的好处
+# <a name="benefits-of-using-azure-netapp-files-with-oracle-database"></a>将 Azure NetApp 文件与 Oracle Database 配合使用的好处
 
 Oracle 直接 NFS （dNFS） 使得其性能高于操作系统自己的 NFS 驱动程序。 本文介绍了该技术，并提供了dNFS与传统NFS客户端（Kernel NFS）之间的性能比较。 它还显示了使用 Azure NetApp 文件的优势和易用性。  
 
@@ -39,7 +39,7 @@ Oracle 直接 NFS （dNFS） 绕过操作系统的缓冲区缓存。 数据仅�
 
 [直接 NFS 的 Oracle 常见问题解答](http://www.orafaq.com/wiki/Direct_NFS)显示，Oracle dNFS 是一个优化的 NFS 客户端。 它提供了对位于 NAS 存储设备上的 NFS 存储的快速和可扩展访问（可通过 TCP/IP 访问）。 dNFS 内置于数据库内核中，就像 ASM 一样，它主要用于 DAS 或 SAN 存储。 因此 *，准则是在实现 NAS 存储时使用 dNFS，并在实现 SAN 存储时使用 ASM。*
 
-dNFS 是 Oracle 18c 中的默认选项，也是 RAC 的默认选项。
+dNFS 是 Oracle 18c 中的默认选项。
 
 dNFS 从 Oracle 数据库 11g 开始可用。 下图将 dNFS 与本机 NFS 进行比较。 使用 dNFS 时，在 Azure 虚拟机上运行的 Oracle 数据库可以驱动比本机 NFS 客户端更多的 I/O。
 

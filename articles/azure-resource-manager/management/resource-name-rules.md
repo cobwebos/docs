@@ -1,18 +1,18 @@
 ---
 title: 资源命名限制
-description: 显示命名 Azure 资源的规则和限制。
+description: 说明 Azure 资源的命名规则和限制。
 ms.topic: conceptual
-ms.date: 03/27/2020
-ms.openlocfilehash: f6203f987654b33b32da72bfec030a9d0ab69df8
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 04/22/2020
+ms.openlocfilehash: fab1ab2bb779b3826c852e49da7970030d34594d
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981522"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086379"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure 资源的命名规则和限制
 
-本文总结了 Azure 资源的命名规则和限制。 有关如何命名资源的建议，请参阅[建议命名和标记约定](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)。
+本文汇总了 Azure 资源的命名规则和限制。 有关如何命名资源的建议，请参阅[建议命名和标记约定](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)。
 
 除非在有效字符列中明确注明，否则资源名称不区分大小写。
 
@@ -91,12 +91,12 @@ ms.locfileid: "80981522"
 > | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | automationAccounts | 资源组 | 6-50 | 字母数字和连字符。<br><br>以字母开头，以字母数字结尾。 |
-> | 自动化帐户/证书 | 自动化帐户 | 1-128 | 无法使用：<br> `<>*%&:\?.+/` <br><br>不能以空间结束。  |
+> | 自动化帐户/证书 | 自动化帐户 | 1-128 | 不能使用：<br> `<>*%&:\?.+/` <br><br>不能以空格结尾。  |
 > | 自动化账户/连接 | 自动化帐户 | 1-128 | 无法使用：<br> `<>*%&:\?.+/` <br><br>不能以空间结束。 |
-> | 自动化帐户/凭据 | 自动化帐户 | 1-128 | 无法使用：<br> `<>*%&:\?.+/` <br><br>不能以空间结束。 |
+> | 自动化帐户/凭据 | 自动化帐户 | 1-128 | 不能使用：<br> `<>*%&:\?.+/` <br><br>不能以空格结尾。 |
 > | automationAccounts / runbooks | 自动化帐户 | 1-63 | 字母数字、下划线和连字符。<br><br>从字母开始。  |
 > | 自动化帐户/时间表 | 自动化帐户 | 1-128 | 无法使用：<br> `<>*%&:\?.+/` <br><br>不能以空间结束。 |
-> | 自动化帐户/变量 | 自动化帐户 | 1-128 | 无法使用：<br> `<>*%&:\?.+/` <br><br>不能以空间结束。 |
+> | 自动化帐户/变量 | 自动化帐户 | 1-128 | 不能使用：<br> `<>*%&:\?.+/` <br><br>不能以空格结尾。 |
 > | 自动化帐户/观察程序 | 自动化帐户 | 1-63 |  字母数字、下划线和连字符。<br><br>从字母开始。 |
 > | automationAccounts / webhooks | 自动化帐户 | 1-128 | 无法使用：<br> `<>*%&:\?.+/` <br><br>不能以空间结束。 |
 
@@ -122,7 +122,7 @@ ms.locfileid: "80981522"
 > [!div class="mx-tableFixed"]
 > | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
-> | botServices | global | 2-64 |  字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 |
+> | botServices | 全局 | 2-64 |  字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 |
 > | 机器人服务/频道 | 机器人服务 | 2-64 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 |
 > | 机器人服务 / 连接 | 机器人服务 | 2-64 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 |
 > | 企业渠道 | 资源组 | 2-64 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 |
@@ -522,7 +522,7 @@ ms.locfileid: "80981522"
 > [!div class="mx-tableFixed"]
 > | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
-> | namespaces | global | 6-50 | 字母数字和连字符<br><br>以字母数字开始和结束。 |
+> | namespaces | 全局 | 6-50 | 字母数字和连字符<br><br>以字母数字开始和结束。 |
 > | 命名空间/授权规则 | namespace | 1-256 | 字母数字、句点、连字符和下划线。<br><br>开始字母数字。 |
 > | namespaces / notificationHubs | namespace | 1-260 | 字母数字、句点、连字符和下划线。<br><br>开始字母数字。 |
 > | 命名空间 / 通知中心 / 授权规则 | 通知中心 | 1-256 | 字母数字、句点、连字符和下划线。<br><br>开始字母数字。 |
@@ -534,6 +534,13 @@ ms.locfileid: "80981522"
 > | --- | --- | --- | --- |
 > | clusters | 资源组 | 4-63 | 字母数字和连字符。<br><br>以字母数字开始和结束。 |
 > | workspaces | 资源组 | 4-63 | 字母数字和连字符。<br><br>以字母数字开始和结束。 |
+
+## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
+
+> [!div class="mx-tableFixed"]
+> | 实体 | 范围 | 长度 | 有效的字符 |
+> | --- | --- | --- | --- |
+> | solutions | 工作区 | 空值 | 对于由 Microsoft 创作的解决方案，名称必须位于模式中：<br>`SolutionType(WorkspaceName)`<br><br>对于由第三方创建的解决方案，名称必须位于模式中：<br>`SolutionType[WorkspaceName]`<br><br>例如，有效名称为：<br>`AntiMalware(contoso-IT)`<br><br>解决方案类型区分大小写。 |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 

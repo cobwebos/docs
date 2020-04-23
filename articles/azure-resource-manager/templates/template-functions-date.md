@@ -2,13 +2,13 @@
 title: 模板函数 - 日期
 description: 描述要在 Azure 资源管理器模板中使用用于日期的函数。
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: 75234a142b9f2fbe61c337bfeb378b47534bac79
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 04/22/2020
+ms.openlocfilehash: 364b41e9e92cb248a7bd2fac5a41eb535adbf440
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986273"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084781"
 ---
 # <a name="date-functions-for-arm-templates"></a>ARM 模板的日期函数
 
@@ -21,7 +21,7 @@ ms.locfileid: "80986273"
 
 `dateTimeAdd(base, duration, [format])`
 
-将持续时间添加到基本日期时间值。
+将持续时间添加到基值。 预期 ISO 8601 格式。
 
 ### <a name="parameters"></a>参数
 
@@ -74,7 +74,7 @@ ms.locfileid: "80986273"
 
 当使用 的基本时间`2020-04-07 14:53:14Z`部署前面的模板时，输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | 添加3年 | 字符串 | 2023年4月7日 下午2：53：14 |
 | 减去9天 | 字符串 | 2020年3月29日 下午2：53：14 |
@@ -201,7 +201,7 @@ ms.locfileid: "80986273"
 
 上述示例的输出根据每个部署的不同而异，但类似于：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | utcOutput | 字符串 | 20190305T175318Z |
 | utcShortOutput | 字符串 | 03/05/2019 |

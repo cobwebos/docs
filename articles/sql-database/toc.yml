@@ -108,7 +108,7 @@
           items:
             - name: Azure SQL 审核
               href: sql-database-auditing.md
-            - name: 到 VNet 或防火墙后面的存储
+            - name: 配置审核以写入到 VNet 或防火墙后面的存储帐户
               href: create-auditing-storage-account-vnet-firewall.md
             - name: 审核日志格式
               href: sql-database-audit-log-format.md
@@ -119,7 +119,11 @@
             - name: 数据发现和分类
               href: sql-database-data-discovery-and-classification.md
             - name: 漏洞评估
-              href: sql-vulnerability-assessment.md
+              items:
+                - name: 漏洞评估
+                  href: sql-vulnerability-assessment.md
+                - name: 将 VA 扫描存储在防火墙和 VNet 后面
+                  href: sql-database-vulnerability-assessment-storage.md
             - name: 高级威胁防护
               href: sql-database-threat-detection-overview.md
             - name: 安全属性
@@ -843,7 +847,7 @@
       href: 'https://azure.microsoft.com/pricing/details/sql-database/'
     - name: MSDN 论坛
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/sql-azure'
     - name: 疑难解答
       items:

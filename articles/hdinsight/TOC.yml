@@ -39,6 +39,8 @@
       items:
         - name: HDInsight 上的 Apache Hadoop 组件
           href: ./hdinsight-component-versioning.md
+        - name: Hortonworks 发行说明
+          href: ./hortonworks-release-notes.md
         - name: 高可用性组件
           href: ./hdinsight-high-availability-components.md
         - name: Azure HDInsight 中的 Apache Ambari
@@ -59,10 +61,17 @@
           href: ./cluster-management-best-practices.md
         - name: 可用性和可靠性
           href: ./hdinsight-high-availability-linux.md
-        - name: 比较存储选项
-          href: ./hdinsight-hadoop-compare-storage-options.md
         - name: 了解托管标识
           href: ./hdinsight-managed-identities.md
+        - name: 比较存储选项
+          href: hdinsight-hadoop-compare-storage-options.md
+          items:
+            - name: Azure 存储概述
+              href: overview-azure-storage.md
+            - name: Azure Data Lake Storage Gen1 概述
+              href: overview-data-lake-storage-gen1.md
+            - name: Azure Data Lake Storage Gen2 概述
+              href: overview-data-lake-storage-gen2.md
     - name: 如何
       items:
         - name: 创建群集
@@ -102,6 +111,8 @@
               href: hdinsight-hadoop-customize-cluster-linux.md
             - name: 开发脚本操作
               href: hdinsight-hadoop-script-actions-linux.md
+            - name: 开源软件支持
+              href: open-source-software.md
             - name: 添加 Apache Hive 库
               href: hdinsight-hadoop-add-hive-libraries.md
             - name: 使用 Hue
@@ -210,6 +221,10 @@
               href: ./hdinsight-key-scenarios-to-monitor.md
             - name: 使用 Ambari 和 Azure Monitor 日志监视群集可用性
               href: ./hdinsight-cluster-availability.md
+        - name: 疑难解答
+          items:
+            - name: 排查脚本操作问题
+              href: ./troubleshoot-script-action.md
     - name: 参考
       items:
         - name: Azure PowerShell
@@ -878,6 +893,8 @@
           href: ./domain-joined/apache-domain-joined-architecture.md
         - name: HDInsight 虚拟网络体系结构
           href: ./hdinsight-virtual-network-architecture.md
+        - name: 传输层安全性
+          href: ./transport-layer-security.md
         - name: 为 HDInsight 计划 VNET
           href: ./hdinsight-plan-virtual-network-deployment.md
         - name: NSG 和 UDR 所需的 IP 地址

@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 7f78774b0c26e26bb0fb0da1ac7a11ab13ee23e0
-  ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+  ms.openlocfilehash: c4f5f9516e4c96876bbdb3e37680ccf0ce7fea7a
+  ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/21/2020
-  ms.locfileid: "81732936"
+  ms.lasthandoff: 04/23/2020
+  ms.locfileid: "82086498"
 highlightedContent:
   items:
   - title: Azure 开发人员入门指南
@@ -475,15 +475,6 @@ productDirectory:
     - featured
     - compute
     url: virtual-machines/linux/index.yml
-  - title: 移动应用
-    summary: 构建和承载任何移动应用的后端
-    imageSrc: https://docs.microsoft.com/media/common/i_mobileapp.svg
-    azureCategories:
-    - compute
-    - containers
-    - mobile
-    - web
-    url: app-service-mobile/index.yml
   - title: Azure SAP HANA 大型实例
     summary: 运行任何超大规模云提供程序的最大 SAP HANA 工作负荷
     imageSrc: https://static.docs.com/ui/media/product/azure/sap.svg

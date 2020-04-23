@@ -31,6 +31,8 @@
           href: concept-fundamentals-block-legacy-authentication.md
         - name: 标识安全分数
           href: identity-secure-score.md
+        - name: 连续访问评估
+          href: concept-fundamentals-continuous-access-evaluation.md
     - name: 组和用户
       items:
         - name: 组和访问管理
@@ -55,7 +57,7 @@
           href: active-directory-data-storage-australia-newzealand.md
     - name: Azure AD 操作参考
       items:
-        - name: 介绍
+        - name: 简介
           href: active-directory-ops-guide-intro.md
         - name: 标识和访问管理
           href: active-directory-ops-guide-iam.md
@@ -65,7 +67,7 @@
           href: active-directory-ops-guide-govern.md
         - name: 操作
           href: active-directory-ops-guide-ops.md
-- name: 操作方法指南
+- name: 操作指南
   expanded: true
   items:
     - name: 组织

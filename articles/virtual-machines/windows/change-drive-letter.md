@@ -2,24 +2,19 @@
 title: '使 D：VM 驱动器成为数据磁盘 '
 description: '介绍如何更改 Windows VM 的盘符，以使用 D: 驱动器作为数据驱动器。'
 services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: 0867a931-0055-4e31-8403-9b38a3eeb904
 ms.service: virtual-machines-windows
+ms.subservice: disks
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: 491e7b7be084017cc370fe431c3175ac5b2673f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 15df3178f2860fa066a82cb1429e0c1a6e5c2b08
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74033656"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82083416"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>使用 D: 盘作为 Windows VM 上的数据驱动器
 如果应用程序需要使用 D 盘存储数据，请按照以下说明使用其他驱动器号作为临时磁盘。 切勿使用临时磁盘来存储需要保存的数据。
@@ -33,33 +28,33 @@ ms.locfileid: "74033656"
 
 ## <a name="temporarily-move-pagefilesys-to-c-drive"></a>将 pagefile.sys 暂时移到 C 驱动器
 1. 连接到虚拟机。 
-2. 右键单击“开始”菜单，并选择“系统”。********
-3. 在左侧菜单中，选择“高级系统设置”****。
-4. 在“性能”部分中，选择“设置”********。
-5. 选择“高级”选项卡****。
-6. 在“虚拟内存”部分中，选择“更改”********。
-7. 选择 **C** 盘，并依次单击“系统管理的大小”、“设置”********。
-8. 选择 **D** 盘，并依次单击“无分页文件”、“设置”********。
+2. 右键单击“开始”菜单，并选择“系统”。  
+3. 在左侧菜单中，选择“高级系统设置”  。
+4. 在“性能”部分中，选择“设置”   。
+5. 选择“高级”选项卡  。
+6. 在“虚拟内存”部分中，选择“更改”   。
+7. 选择 **C** 盘，并依次单击“系统管理的大小”、“设置”   。
+8. 选择 **D** 盘，并依次单击“无分页文件”、“设置”   。
 9. 单击“应用”。 将收到警告，指出计算机需要重新启动才能使更改生效。
 10. 重启虚拟机。
 
 ## <a name="change-the-drive-letters"></a>更改驱动器号
 1. VM 重新启动后，重新登录到 VM。
-2. 单击“开始”菜单，键入 **diskmgmt.msc**，并按 Enter****。 此时会启动“磁盘管理”。
-3. 右键单击 **D**（临时存储驱动器），并选择“更改驱动器号和路径”****。
-4. 在“驱动器号”下，选择一个新驱动器，如 **T**，并单击“确定”****。 
-5. 右键单击数据磁盘，并选择“更改驱动器号和路径”****。
-6. 在“驱动器号”下，选择驱动器 **D**，并单击“确定”****。 
+2. 单击“开始”菜单，键入 **diskmgmt.msc**，并按 Enter  。 此时会启动“磁盘管理”。
+3. 右键单击 **D**（临时存储驱动器），并选择“更改驱动器号和路径”  。
+4. 在“驱动器号”下，选择一个新驱动器，如 **T**，并单击“确定”  。 
+5. 右键单击数据磁盘，并选择“更改驱动器号和路径”  。
+6. 在“驱动器号”下，选择驱动器 **D**，并单击“确定”  。 
 
 ## <a name="move-pagefilesys-back-to-the-temporary-storage-drive"></a>将 pagefile.sys 移回临时存储驱动器
-1. 右键单击 **"开始"** 菜单并选择 **"系统"**
-2. 在左侧菜单中，选择“高级系统设置”****。
-3. 在“性能”部分中，选择“设置”********。
-4. 选择“高级”选项卡****。
-5. 在“虚拟内存”部分中，选择“更改”********。
-6. 选择 OS 驱动器 **C**，并依次单击“无分页文件”、“设置”********。
-7. 选择临时存储驱动器 **T**，并依次单击“系统管理的大小”****、“设置”****。
-8. 单击 **“应用”**。 将收到警告，指出计算机需要重新启动才能使更改生效。
+1. 右键单击“开始”  菜单，并选择“系统”  。
+2. 在左侧菜单中，选择“高级系统设置”  。
+3. 在“性能”部分中，选择“设置”   。
+4. 选择“高级”选项卡  。
+5. 在“虚拟内存”部分中，选择“更改”   。
+6. 选择 OS 驱动器 **C**，并依次单击“无分页文件”、“设置”   。
+7. 选择临时存储驱动器 **T**，并依次单击“系统管理的大小”  、“设置”  。
+8. 单击“应用”  。 将收到警告，指出计算机需要重新启动才能使更改生效。
 9. 重启虚拟机。
 
 ## <a name="next-steps"></a>后续步骤

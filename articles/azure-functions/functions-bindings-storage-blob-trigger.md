@@ -1,42 +1,42 @@
 ---
-title: Azure 函数的 Azure Blob 存储触发器
+title: 适用于 Azure Functions 的 Azure Blob 存储触发器
 description: 了解如何在 Azure Blob 存储数据更改时运行 Azure 函数。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 39e3521339947263161979033406fb39e397373f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 61fbaf37577efdab0b147d437ae78fc4df0764cb
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348975"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084951"
 ---
-# <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure 函数的 Azure Blob 存储触发器
+# <a name="azure-blob-storage-trigger-for-azure-functions"></a>适用于 Azure Functions 的 Azure Blob 存储触发器
 
-检测到新的或更新的 Blob 时，Blob 存储触发器会启动某个函数。 blob 内容作为输入提供给[函数](./functions-bindings-storage-blob-input.md)。
+检测到新的或更新的 Blob 时，Blob 存储触发器会启动某个函数。 Blob 内容以[函数输入](./functions-bindings-storage-blob-input.md)的形式提供。
 
-Azure Blob 存储触发器需要通用存储帐户。 要使用仅 Blob 帐户，或者应用程序有专门需要，请查看使用此触发器的替代方法。
+Azure Blob 存储触发器需要使用常规用途存储帐户。 若要使用仅限 Blob 的帐户，或者，如果应用程序有特殊需求，请查看使用此触发器的替代方法。
 
-有关设置和配置详细信息的信息，请参阅[概述](./functions-bindings-storage-blob.md)。
+若要了解设置和配置详细信息，请参阅[概述](./functions-bindings-storage-blob.md)。
 
-## <a name="alternatives"></a>备选项
+## <a name="alternatives"></a>备选方法
 
 ### <a name="event-grid-trigger"></a>事件网格触发器
 
-[事件网格触发器](functions-bindings-event-grid.md)还内置了对[blob 事件](../storage/blobs/storage-blob-event-overview.md)的支持。 以下方案请使用事件网格而不是 Blob 存储触发器：
+[事件网格触发器](functions-bindings-event-grid.md)还为 [blob 事件](../storage/blobs/storage-blob-event-overview.md)提供内置支持。 以下方案请使用事件网格而不是 Blob 存储触发器：
 
-- **仅限 Blob 的存储帐户**：[仅 Blob 存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)支持 Blob 输入和输出绑定，但不支持 Blob 触发器。
+- **仅限 Blob 的存储帐户**：[仅限 Blob 的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)适用于 Blob 输入和输出绑定，但不适用于 Blob 触发器。
 
-- **高比例**：可松散地定义为包含 100，000 个以上 blob 的容器或每秒具有 100 个以上 blob 更新的存储帐户。
+- **大规模**：大规模可以宽松地定义为包含 100,000 个以上的 Blob 的容器，或者定义为每秒进行 100 个以上 Blob 更新的存储帐户。
 
-- **最小化延迟**：如果函数应用位于消耗计划上，则如果函数应用已空闲，则处理新 Blob 的延迟可能长达 10 分钟。 若要避免此延迟，可以切换到启用了 Always On 的应用服务计划。 还可以为 Blob 存储帐户使用[事件网格触发器](functions-bindings-event-grid.md)。 有关示例，请参阅[事件网格教程](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json)。
+- **最大程度地降低延迟**：如果函数应用基于消耗计划，则当函数应用处于空闲状态时，处理新 Blob 会出现长达 10 分钟的延迟。 若要避免此延迟，可以切换到启用了 Always On 的应用服务计划。 还可以为 Blob 存储帐户使用[事件网格触发器](functions-bindings-event-grid.md)。 有关示例，请参阅[事件网格教程](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json)。
 
-请参阅[事件网格示例的事件网格教程的图像调整大小](../event-grid/resize-images-on-storage-blob-upload-event.md)。
+请参阅事件网格示例的[使用事件网格重试图像大小](../event-grid/resize-images-on-storage-blob-upload-event.md)教程。
 
 ### <a name="queue-storage-trigger"></a>队列存储触发器
 
-处理 Blob 的另一种方法是编写与正在创建或修改的 Blob 对应的队列消息，然后使用[队列存储触发器](./functions-bindings-storage-queue.md)开始处理。
+处理 blob 的另一种方法是编写对应于正在创建或修改的 blob 的队列消息，然后使用[队列存储触发器](./functions-bindings-storage-queue.md)开始处理。
 
 ## <a name="example"></a>示例
 
@@ -54,13 +54,13 @@ public static void Run([BlobTrigger("samples-workitems/{name}")] Stream myBlob, 
 
 blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创建一个[绑定表达式](./functions-bindings-expressions-patterns.md)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#blob-name-patterns)。
 
-有关属性的详细信息，`BlobTrigger`请参阅[属性和注释](#attributes-and-annotations)。
+有关 `BlobTrigger` 属性的详细信息，请参阅[属性和注释](#attributes-and-annotations)。
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-以下示例显示了 *function.json* 文件中的一个 blob 触发器绑定以及使用该绑定的代码。 当在`samples-workitems`[容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)中添加或更新 Blob 时，函数将写入日志。
+以下示例显示了 *function.json* 文件中的一个 blob 触发器绑定以及使用该绑定的代码。 在 `samples-workitems` [容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)中添加或更新 Blob 时，该函数会写入一条日志。
 
-下面是 function.json** 文件中的绑定数据：
+下面是 function.json  文件中的绑定数据：
 
 ```json
 {
@@ -103,11 +103,11 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 以下示例显示了 *function.json* 文件中的一个 Blob 触发器绑定以及使用该绑定的 [JavaScript 代码](functions-reference-node.md)。 在 `samples-workitems` 容器中添加或更新 Blob 时，该函数会写入日志。
 
-下面是*函数.json*文件：
+function.json  文件如下所示：
 
 ```json
 {
@@ -256,7 +256,7 @@ public void run(
 
 C# 脚本不支持特性。
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 JavaScript 不支持特性。
 
@@ -270,21 +270,21 @@ Python 不支持属性。
 
 ---
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 
 下表介绍了您在*函数.json*文件和`BlobTrigger`属性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |描述|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type** | 不适用 | 必须设置为 `blobTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
-|direction**** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 [用法](#usage)部分中已阐述异常。 |
-|**name** | 不适用 | 表示函数代码中的 Blob 的变量的名称。 |
+|type  | 不适用 | 必须设置为 `blobTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|**方向** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 [用法](#usage)部分中已阐述异常。 |
+|name  | 不适用 | 表示函数代码中的 Blob 的变量的名称。 |
 |**路径** | **BlobPath** |要监视的[容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)。  可以是某种 [Blob 名称模式](#blob-name-patterns)。 |
 |**连接** | **连接** | 包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[Blob 存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="usage"></a>使用情况
+## <a name="usage"></a>用法
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -294,7 +294,7 @@ Python 不支持属性。
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 使用 `context.bindings.<NAME>` 访问 blob 数据，其中 `<NAME>` 与 function.json** 中定义的值匹配。
 
@@ -360,7 +360,7 @@ Python 不支持属性。
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 module.exports = function (context, myBlob) {
@@ -391,7 +391,7 @@ Azure Functions 将 Blob 回执存储在函数应用的 Azure 存储帐户中名
 * Blob 名称
 * ETag（blob 版本标识符，例如："0x8D1DC6E70A277EF"）
 
-若要强制重新处理某个 blob，可从 azure-webjobs-hosts** 容器中手动删除该 blob 的 blob 回执。 虽然重新处理可能不会立即发生，但它肯定会在稍后的时间点发生。
+若要强制重新处理某个 blob，可从 azure-webjobs-hosts** 容器中手动删除该 blob 的 blob 回执。 虽然重新处理可能不会立即发生，但它肯定会在稍后的时间点发生。 要立即重新处理，可以更新*azure web 作业-主机/blobcaninfo*中的*扫描信息*blob。 属性之后`LatestScan`具有最后一个修改时间戳的任何 blob 都将再次扫描。
 
 ## <a name="poison-blobs"></a>毒物斑点
 

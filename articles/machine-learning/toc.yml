@@ -149,8 +149,9 @@
             - name: 使用专用链接
               displayName: private endpoint
               href: how-to-configure-private-link.md
-            - name: 使用 SSL 保护 Web 服务
+            - name: 使用 TLS 保护 Web 服务
               href: how-to-secure-web-service.md
+              displayName: ssl
             - name: 在 AKS 部署中使用 Azure AD 标识
               href: how-to-use-azure-ad-identity.md
             - name: 重新生成存储访问密钥

@@ -8,18 +8,18 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 1bff46c8584934ab8bcffce74763edc8363533d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d855019be7f357a35a26d14e68ba3d427d984e17
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76988237"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086022"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
 将源位置复制到目标位置。
 
-## <a name="synopsis"></a>概要
+## <a name="synopsis"></a>摘要
 
 上次修改时间用于比较。 如果目标中的上次修改时间与当前时间更近，则会跳过文件。
 
@@ -65,6 +65,9 @@ azcopy sync <source> <destination> [flags]
 ```azcopy
 azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
 ```
+
+> [!NOTE]
+> 目标 blob*必须*存在。 用于`azcopy copy`复制目标中尚不存在的单个文件。 否则，将发生以下错误： `Cannot perform sync due to error: sync must happen between source and destination of the same type, e.g. either file <-> file, or directory/container <-> directory/container`。
 
 与前面的示例相同，但这一次此命令还会计算文件内容的 MD5 哈希，并将其另存为 Blob 的 Content-MD5 属性：
 
@@ -157,11 +160,11 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 ## <a name="options-inherited-from-parent-commands"></a>从父命令继承的选项
 
-|选项|描述|
+|选项|说明|
 |---|---|
 |--cap-mbps uint32|以兆位/秒为单位限制传输速率。 瞬间吞吐量可能与上限略有不同。 如果此选项设置为零，或者省略，则吞吐量不受限制。|
 |--output-type string|命令输出的格式。 选项包括：text、json。 默认值为“text”。|
 
 ## <a name="see-also"></a>请参阅
 
-- [阿兹比贝](storage-ref-azcopy.md)
+- [azcopy](storage-ref-azcopy.md)

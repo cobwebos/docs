@@ -10,12 +10,12 @@ metadata:
   author: PatAltimore
   ms.author: patricka
   ms.date: 11/04/2019
-  ms.openlocfilehash: c388f08ae3e1323af48f486730699aee4f205468
-  ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+  ms.openlocfilehash: 216dbd52531807d471066b01151fba841df308b6
+  ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/27/2020
-  ms.locfileid: "80348331"
+  ms.lasthandoff: 04/23/2020
+  ms.locfileid: "82084968"
 landingContent:
 - title: 关于 Azure 区块链服务
   linkLists:
@@ -39,6 +39,8 @@ landingContent:
       url: create-member.md
     - text: 创建区块链成员 - CLI
       url: create-member-cli.md
+    - text: 使用 ARM 模板进行创建
+      url: create-member-template.md
   - linkListType: quickstart
     links:
     - text: 使用 Visual Studio Code 连接到联盟网络

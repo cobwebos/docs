@@ -1,5 +1,5 @@
 ---
-title: 自动化机器学习中的可规划性
+title: 自动 ML 中的可解释性
 titleSuffix: Azure Machine Learning
 description: 了解使用 Azure 机器学习 SDK 时如何获取解释，以了解自动化 ML 模型如何确定特征重要性并做出预测。
 services: machine-learning
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
 ms.date: 03/11/2020
-ms.openlocfilehash: ecf7cde1a7f804ef1c43b21ac5c1d2a488660590
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: e9155104905ae3e686a01b90cbcad2610b6f4c91
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257158"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086413"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning"></a>可解释性：自动化机器学习中的模型说明
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，您将了解如何在 Azure 机器学习中获取有关自动机器学习 （ML） 的说明。 自动 ML 可帮助您了解工程功能的重要性。 
+在本文中，您将了解如何在 Azure 机器学习中获取有关自动机器学习 （ML） 的说明。 自动化 ML 可帮助你了解工程特征重要性。 
 
-默认情况下设置`model_explainability=True`1.0.85 后的所有 SDK 版本。 在 SDK 版本 1.0.85 和早期版本中`model_explainability=True`，`AutoMLConfig`用户需要在对象中设置，以便使用模型可解释性。 
+默认情况下，1.0.85 之后的所有 SDK 版本设置 `model_explainability=True`。 在 SDK 版本 1.0.85 及更早版本中，用户需要在 `model_explainability=True` 对象中设置 `AutoMLConfig`，才能使用模型可解释性。 
 
 在本文中，学习如何：
 
@@ -30,14 +30,14 @@ ms.locfileid: "81257158"
 - 启用可视化效果，以帮助查看数据和解释中的模式。
 - 在推理或评分过程中实现可解释性。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 可解释性特征。 运行 `pip install azureml-interpret azureml-contrib-interpret` 获取所需的包。
 - 生成自动化 ML 试验的知识。 有关如何使用 Azure 机器学习 SDK 的详细信息，请完成此[回归模型教程](tutorial-auto-train-models.md)，或参阅如何[配置自动化 ML 试验](how-to-configure-auto-train.md)。
 
 ## <a name="interpretability-during-training-for-the-best-model"></a>训练最佳模型过程中的可解释性
 
-从 中检索说明`best_run`，其中包括工程特征的说明。
+从 `best_run` 中检索解释，其中包括工程特征的解释。
 
 ### <a name="download-engineered-feature-importance-from-artifact-store"></a>从项目存储下载工程特征重要性
 
@@ -53,7 +53,7 @@ print(engineered_explanations.get_feature_importance_dict())
 
 ## <a name="interpretability-during-training-for-any-model"></a>训练任意模型过程中的可解释性 
 
-计算模型解释并将其可视化时，并不局限于自动化 ML 模型的现有模型解释。 还可以获取使用不同测试数据的模型的解释。 本节中的步骤演示如何根据测试数据计算和可视化工程要素的重要性。
+计算模型解释并将其可视化时，并不局限于自动化 ML 模型的现有模型解释。 还可以获取使用不同测试数据的模型的解释。 本部分中的步骤说明如何根据测试数据计算工程特征重要性并将其可视化。
 
 ### <a name="retrieve-any-other-automl-model-from-training"></a>从训练中检索任何其他自动化 ML 模型
 
@@ -63,7 +63,7 @@ automl_run, fitted_model = local_run.get_output(metric='accuracy')
 
 ### <a name="set-up-the-model-explanations"></a>设置模型解释
 
-用于`automl_setup_model_explanations`获取工程说明。 `fitted_model` 可生成以下项：
+使用 `automl_setup_model_explanations` 获取工程解释。 `fitted_model` 可生成以下项：
 
 - 从已训练的样本或测试样本生成有特征的数据
 - 工程特征名称列表
@@ -87,7 +87,7 @@ automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_t
 - 工作区
 - 一个 LightGBM 模型，充当 `fitted_model` 自动化 ML 模型的代理项
 
-模拟包装器还获取将上载`automl_run`工程解释的对象。
+MimicWrapper 还获取 `automl_run` 对象，工程解释将上传到该对象。
 
 ```python
 from azureml.explain.model.mimic.models.lightgbm_model import LGBMExplainableModel
@@ -116,7 +116,7 @@ print(engineered_explanations.get_feature_importance_dict())
 
 ### <a name="register-the-model-and-the-scoring-explainer"></a>注册模型和评分解释器
 
-使用`TreeScoringExplainer`创建评分解释器，该解释器将在推理时计算工程要素重要性值。 使用前面计算出的 `feature_map` 初始化评分解释器。 
+使用 `TreeScoringExplainer` 创建评分解释器，用于在推理时计算工程特征重要性值。 使用前面计算出的 `feature_map` 初始化评分解释器。 
 
 保存评分解释器，然后将模型和评分解释器注册到模型管理服务。 运行以下代码：
 
@@ -190,7 +190,7 @@ service.wait_for_deployment(show_output=True)
 
 ### <a name="inference-with-test-data"></a>使用测试数据执行推理
 
-使用一些测试数据执行推理，以查看自动化 ML 模型提供的预测值。 查看工程要素对预测值的重要性。
+使用一些测试数据执行推理，以查看自动化 ML 模型提供的预测值。 查看预测值的工程特征重要性。
 
 ```python
 if service.state == 'Healthy':
@@ -207,7 +207,7 @@ if service.state == 'Healthy':
 
 ### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>在训练时进行可视化以发现数据和解释中的模式
 
-可以在 [Azure 机器学习工作室](https://ml.azure.com)中的工作区内可视化特征重要性图表。 自动化 ML 运行完成后，选择“查看模型详细信息”以查看特定的运行。**** 选择“解释”选项卡以查看解释可视化仪表板。****
+可以在 [Azure 机器学习工作室](https://ml.azure.com)中的工作区内可视化特征重要性图表。 自动化 ML 运行完成后，选择“查看模型详细信息”以查看特定的运行。  选择“解释”选项卡以查看解释可视化仪表板。 
 
 [![机器学习可解释性体系结构](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png)](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png#lightbox)
 

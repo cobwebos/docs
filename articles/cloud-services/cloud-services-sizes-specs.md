@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 34cb4282f64544e67b3724699380d1d54fd9b806
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2549cb0408c9dad3e92f2cec9625757de45a10dc
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247470"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086243"
 ---
 # <a name="sizes-for-cloud-services"></a>云服务的大小
 本主题介绍云服务角色实例（Web 角色和辅助角色）的可用大小和选项。 此外，还提供了在计划使用这些资源时要考虑的部署注意事项。 每个大小都具有会放入[服务定义文件](cloud-services-model-and-package.md#csdef)中的 ID。 [云服务定价](https://azure.microsoft.com/pricing/details/cloud-services/)页提供每种大小的价格。
@@ -147,6 +147,7 @@ ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。
 | Standard_D8_v3  | 8         | 32            | 200                  | 4/高 |
 | Standard_D16_v3 | 16        | 64            | 400                  | 8/极高 |
 | Standard_D32_v3 | 32        | 128           | 800                  | 8/极高 |
+| Standard_D48_v3 | 48        | 192           | 1200                 | 8/极高 |
 | Standard_D64_v3 | 64        | 256           | 1600                 | 8/极高 |
 
 ## <a name="ev3-series"></a>Ev3 系列
@@ -158,6 +159,7 @@ ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。
 | Standard_E8_v3  | 8         | 64            | 200                  | 4/高 |
 | Standard_E16_v3 | 16        | 128           | 400                  | 8/极高 |
 | Standard_E32_v3 | 32        | 256           | 800                  | 8/极高 |
+| Standard_E48_v3 | 48        | 384           | 1200                 | 8/极高 |
 | Standard_E64_v3 | 64        | 432           | 1600                 | 8/极高 |
 
 

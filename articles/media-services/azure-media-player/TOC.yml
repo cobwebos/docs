@@ -1,0 +1,50 @@
+- name: 概述
+  items:
+    - name: Azure Media Player 概述
+      href: azure-media-player-overview.md
+    - name: 发行说明
+      href: azure-media-player-release-notes.md
+    - name: 更改日志
+      href: azure-media-player-changelog.md
+- name: 快速入门
+  items:
+    - name: Azure Media Player 快速入门
+      href: azure-media-player-quickstart.md
+- name: 教程
+  items:
+    - name: Azure Media Player 完全设置
+      href: azure-media-player-full-setup.md
+- name: 概念
+  items:
+    - name: 播放技术
+      href: azure-media-player-playback-technology.md
+    - name: 受保护内容
+      href: azure-media-player-protected-content.md
+    - name: 功能列表
+      href: azure-media-player-feature-list.md
+    - name: URL 重写工具
+      href: azure-media-player-url-rewriter.md
+    - name: 可访问性
+      href: azure-media-player-accessibility.md
+    - name: 写入插件
+      href: azure-media-player-writing-plugins.md
+    - name: 插件库
+      href: azure-media-player-plugin-gallery.md
+    - name: 本地化
+      href: azure-media-player-localization.md
+- name: 示例
+  items:
+    - name: Azure Media Player 示例
+      href: 'https://github.com/Azure-Samples/azure-media-player-samples'
+- name: 参考
+  items:
+    - name: API
+      href: 'https://docs.microsoft.com/en-us/javascript/api/azuremediaplayer/?view=azure-node-latest'
+    - name: API 方法
+      href: azure-media-player-api-methods.md
+    - name: 选项
+      href: azure-media-player-options.md
+    - name: 错误代码
+      href: azure-media-player-error-codes.md
+    - name: 已知问题
+      href: azure-media-player-known-issues.md

@@ -13,12 +13,12 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: e969d71be3c8f77607e69205c24d6c980c9943a2
-  ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+  ms.openlocfilehash: 90867d51bd0952eea350ed9120d2274d40b30d99
+  ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81536261"
+  ms.lasthandoff: 04/22/2020
+  ms.locfileid: "81867257"
 highlightedContent:
   items:
   - title: Azure Key Vault 简介
@@ -89,14 +89,34 @@ conceptualContent:
     footerLink:
       url: ./secrets/index.yml
       text: 查看详细信息
-  - title: 管理存储密钥
+  - title: 将 Key Vault 与存储配合使用
     links:
     - url: ./secrets/overview-storage-keys.md
       itemType: overview
-      text: 存储密钥 - CLI
+      text: 管理存储密钥 - CLI
     - url: ./secrets/overview-storage-keys-powershell.md
       itemType: overview
-      text: 存储密钥 - PowerShell
+      text: 管理存储密钥 - PowerShell
     - url: ./secrets/storage-keys-sas-tokens-code.md
       itemType: overview
       text: 在代码中提取 SAS 令牌
+  - title: 将 Key Vault 与虚拟机配合使用
+    links:
+    - url: ../virtual-machines/extensions/key-vault-windows.md
+      itemType: overview
+      text: Key Vault VM 扩展 - Windows
+    - url: ../virtual-machines/extensions/key-vault-linux.md
+      itemType: overview
+      text: Key Vault VM 扩展 - Linux
+    - url: /azure/developer/ansible/key-vault-configure-vm-security
+      itemType: overview
+      text: 在 Ansible 中将 Key Vault 与 Linux VM 配合使用
+    - url: ../virtual-machines/windows/disk-encryption-key-vault.md
+      itemType: overview
+      text: 将 Key Vault 与 Azure 磁盘加密配合使用 - Windows
+    - url: ../virtual-machines/linux/disk-encryption-key-vault.md
+      itemType: overview
+      text: 将 Key Vault 与 Azure 磁盘加密配合使用 - Linux
+    - url: ../virtual-machine-scale-sets/disk-encryption-key-vault.md
+      itemType: overview
+      text: 将 Key Vault 与虚拟机规模集配合使用

@@ -1,24 +1,18 @@
 ---
 title: 从 Azure 中的专用 VHD 创建 Windows VM
 description: 使用资源管理器部署模型，通过将专用托管磁盘附加为 OS 磁盘来创建新的 Windows VM。
-services: virtual-machines-windows
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 3b7d3cd5-e3d7-4041-a2a7-0290447458ea
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: fc157c2253a718860e028fa493574cb9aa2ccdf2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2939726898abc2abc0e62d0e36feedbfe7ba3645
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243362"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086396"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>使用 PowerShell 从专用磁盘创建 Windows VM
 
@@ -33,7 +27,7 @@ ms.locfileid: "79243362"
 
 还可以使用 Azure 门户[从专用 VHD 创建新 VM](create-vm-specialized-portal.md)。
 
-本文介绍如何使用托管磁盘。 如果您有需要使用存储帐户的旧部署，请参阅[在存储帐户中从专用 VHD 创建 VM。](sa-create-vm-specialized.md)
+本文介绍如何使用托管磁盘。 如果有需要使用存储帐户的旧版部署，请参阅[从存储帐户中的专用 VHD 创建 VM](sa-create-vm-specialized.md)。
 
 我们建议你将单个 VHD 或快照的并发部署数限制为 20 个 VM。 
 
@@ -57,7 +51,7 @@ $osDisk = Get-AzDisk `
 ### <a name="prepare-the-vm"></a>准备 VM
 使用原始 VHD 创建新的 VM。 
   
-  * [准备要上载到 Azure 的 Windows VHD。](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) **不要**使用 Sysprep 通用化 VM。
+  * [准备好要上传到 Azure 的 Windows VHD](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 **不要**使用 Sysprep 通用化 VM。
   * 删除 VM 上安装的所有来宾虚拟化工具和代理（例如 VMware 工具）。
   * 确保 VM 配置为从 DHCP 获取 IP 地址和 DNS 设置。 这可以确保服务器在启动时获得虚拟网络中的 IP 地址。 
 
@@ -70,7 +64,7 @@ $osDisk = Get-AzDisk `
 
 通过拍摄 VM 快照来创建使用托管磁盘的 VM 副本，然后使用该快照创建一个新的托管磁盘和一个新 VM。
 
-如果要将现有 VM 复制到其他区域，可能需要使用 azcopy[在另一个区域中创建磁盘的副本](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)。 
+如果要将现有 VM 复制到其他区域，可能需要使用 azcopy [在其他区域中创建磁盘副本](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)。 
 
 ### <a name="take-a-snapshot-of-the-os-disk"></a>拍摄 OS 磁盘快照
 
@@ -122,7 +116,7 @@ $snapShot = New-AzSnapshot `
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>从快照创建新磁盘
 
-使用 [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk) 基于快照创建托管磁盘。 此示例使用“myOSDisk”作为磁盘名称**。
+使用 [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk) 基于快照创建托管磁盘。 此示例使用“myOSDisk”作为磁盘名称  。
 
 创建适用于新 VM 的新资源组。
 
@@ -156,7 +150,7 @@ $osDisk = New-AzDisk -DiskName $osDiskName -Disk `
 
 为 VM 创建[虚拟网络](../../virtual-network/virtual-networks-overview.md)和子网。
 
-1. 创建子网。 本示例在资源组“myDestinationResourceGroup”中创建名为“mySubNet”的子网，并将子网地址前缀设置为 10.0.0.0/24******。
+1. 创建子网。 本示例在资源组“myDestinationResourceGroup”中创建名为“mySubNet”的子网，并将子网地址前缀设置为 10.0.0.0/24    。
    
     ```powershell
     $subnetName = 'mySubNet'
@@ -226,7 +220,7 @@ $nsg = New-AzNetworkSecurityGroup `
 
 ### <a name="set-the-vm-name-and-size"></a>设置 VM 名称和大小
 
-此示例将 VM 名称设置为“myVM”，将 VM 大小设置为“Standard_A2”****。
+此示例将 VM 名称设置为“myVM”，将 VM 大小设置为“Standard_A2”   。
 
 ```powershell
 $vmName = "myVM"
@@ -267,7 +261,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>验证是否已创建 VM
-您应该在 **"浏览** > **虚拟机**"下的 Azure[门户](https://portal.azure.com)中看到新创建的 VM，或者使用以下 PowerShell 命令。
+应会在 [Azure 门户](https://portal.azure.com)的“浏览” **“虚拟机”下看到新建的 VM，也可以使用以下 PowerShell 命令查看该 VM。**  >  
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $destinationResourceGroup

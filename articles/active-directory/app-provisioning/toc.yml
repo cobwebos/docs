@@ -28,7 +28,7 @@
       href: plan-auto-user-provisioning.md
     - name: 规划云 HR 预配部署
       href: plan-cloud-hr-provision.md
-- name: 操作方法指南
+- name: 操作指南
   expanded: true
   items:
     - name: 为库应用配置预配
@@ -79,6 +79,8 @@
   items:
     - name: SCIM 2.0 协议符合性
       href: application-provisioning-config-problem-scim-compatibility.md
+    - name: SCIM 和 Graph 方案
+      href: scim-graph-scenarios.md
     - name: 选择预配方法
       href: isv-automatic-provisioning-multi-tenant-apps.md
     - name: 云 HR 预配
@@ -103,7 +105,7 @@
       href: 'https://azure.microsoft.com/pricing/details/active-directory'
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=active-directory'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
     - name: 视频
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

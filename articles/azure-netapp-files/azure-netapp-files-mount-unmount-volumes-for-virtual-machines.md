@@ -6,13 +6,13 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.openlocfilehash: 3457adf67fa067a154eef008b08d8cfcc1d9eaa0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: c439ff8df95d759e96d2fc82356bda8551507e8d
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75551533"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084934"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>为 Windows 或 Linux 虚拟机装载或卸载卷 
 
@@ -37,11 +37,12 @@ ms.locfileid: "75551533"
 
 4. 如果要使用 NFS 将卷装载到 Windows：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 首先将卷安装到 Unix 或 Linux VM 上。  
-    b.保留“数据库类型”设置，即设置为“共享”。 对卷`chmod 777`运行`chmod 775`或 命令。  
+    a. 首先将卷安装到 Unix 或 Linux VM 上。  
+    b. 对卷`chmod 777`运行`chmod 775`或 命令。  
     c. 通过 Windows 上的 NFS 客户端将卷安装。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [为 Azure NetApp 文件配置 NFSv 4.1 默认域](azure-netapp-files-configure-nfsv41-domain.md)
 * [NFS 常见问题解答](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#nfs-faqs)
+* [网络文件系统概述](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview)

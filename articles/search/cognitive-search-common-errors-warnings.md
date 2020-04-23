@@ -1,96 +1,98 @@
 ---
 title: 索引器错误和警告
 titleSuffix: Azure Cognitive Search
-description: 本文提供有关在 Azure 认知搜索中的 AI 丰富过程中可能会遇到的常见错误和警告的信息和解决方案。
+description: 本文提供有关在 Azure 认知搜索中进行 AI 扩充期间可能会遇到的常见错误和警告的信息及其解决方法。
 manager: nitinme
 author: amotley
 ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 72bf08dce36d857c1fe91bbe9806336dfa185f7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ed10e998ea05b6687190b1f87095f8bc28265905
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78671974"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086601"
 ---
-# <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>在 Azure 认知搜索中排除常见索引器错误和警告的故障
+# <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>排查 Azure 认知搜索中的常见索引器错误和警告
 
-本文提供有关在 Azure 认知搜索中索引和 AI 充实期间可能会遇到的常见错误和警告的信息和解决方案。
+本文提供有关在 Azure 认知搜索中进行索引编制与 AI 扩充期间可能会遇到的常见错误和警告的信息及其解决方法。
 
-当错误计数超过["最大失败项目"](cognitive-search-concept-troubleshooting.md#tip-3-see-what-works-even-if-there-are-some-failures)时，索引将停止。 
+当错误计数超过 [maxFailedItems](cognitive-search-concept-troubleshooting.md#tip-3-see-what-works-even-if-there-are-some-failures) 时，索引编制操作停止。 
 
-如果希望索引器忽略这些错误（并跳过"失败的文档"），请考虑更新`maxFailedItems`和`maxFailedItemsPerBatch`，如[此处](https://docs.microsoft.com/rest/api/searchservice/create-indexer#general-parameters-for-all-indexers)所述。
+如果你希望索引器忽略这些错误（并跳过“失败的文档”），请考虑按[此处](https://docs.microsoft.com/rest/api/searchservice/create-indexer#general-parameters-for-all-indexers)所述更新 `maxFailedItems` 和 `maxFailedItemsPerBatch`。
 
 > [!NOTE]
-> 每个失败的文档及其文档密钥（如果可用）将显示为索引器执行状态中的错误。 如果将[索引](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)器设置为允许故障，则可以在以后的点手动上载文档。
+> 每个失败的文档及其文档键（如果有）将在索引器执行状态中显示为错误。 如果已将索引器设置为容错，则以后可以使用[索引 API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) 手动上传文档。
 
-本文中的错误信息可以帮助您解决错误，从而允许继续索引。
+本文中的错误信息可帮助你解决错误，使索引编制能够继续。
 
-警告不会停止索引，但它们确实指示可能导致意外结果的情况。 是否执行操作取决于数据和方案。
+出现警告时不会停止索引编制，但它们确实表示出现了可能导致意外结果的状况。 是否采取措施取决于具体的数据和场景。
 
-从 API`2019-05-06`版本开始，项目级索引器错误和警告的结构是为了提高有关原因和后续步骤的清晰度。 它们包含以下属性：
+从 API 版本 `2019-05-06` 开始，将会构建项级索引器错误和警告，使原因和后续措施变得更明朗。 这些信息包含以下属性：
 
-| properties | 说明 | 示例 |
+| 属性 | 说明 | 示例 |
 | --- | --- | --- |
 | key | 受错误或警告影响的文档的文档 ID。 | https：\//coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
-| name | 描述错误或警告发生位置的操作名称。 这由以下结构生成：[类别]。[子类别]。[资源类型]。[资源名称] | 文档提取.azureblob.myBlob 容器名称丰富.WebApiskill.myskillname 投影.搜索索引.输出字段映射.myoutputfieldname 投影.搜索索引.mergeorupload.myindex名称投影.知识商店.表.myTable名称 |
-| message | 错误或警告的高级描述。 | 无法执行技能，因为 Web Api 请求失败。 |
-| 详细信息 | 可能有助于诊断问题的任何其他详细信息，如执行自定义技能时 WebApi 响应失败。 | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 源，`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.`丰克 ...堆栈跟踪的其余部分... |
-| 文档链接 | 指向相关文档的链接，包含用于调试和解决问题的详细信息。 此链接通常指向此页面上的以下部分之一。 | https://go.microsoft.com/fwlink/?linkid=2106475 |
+| name | 操作名称，描述发生错误或警告的位置。 此属性由以下结构生成的：[category].[subcategory].[resourceType].[resourceName] | DocumentExtraction.azureblob.myBlobContainerName Enrichment.WebApiSkill.mySkillName Projection.SearchIndex.OutputFieldMapping.myOutputFieldName Projection.SearchIndex.MergeOrUpload.myIndexName Projection.KnowledgeStore.Table.myTableName |
+| message | 错误或警告的概要说明。 | 由于 Web API 请求失败，无法执行技能。 |
+| 详细信息 | 可能有助于诊断问题的任何其他详细信息，例如，执行自定义技能失败时的 Web API 响应。 | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 source, Func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.` ...rest of stack trace... |
+| documentationLink | 相关文档的链接，该文档包含用于调试和解决问题的详细信息。 此链接通常指向本页的以下部分之一。 | https://go.microsoft.com/fwlink/?linkid=2106475 |
 
 <a name="could-not-read-document"/>
 
 ## <a name="error-could-not-read-document"></a>错误：无法读取文档
 
-索引器无法从数据源读取文档。 这可能是由于：
+索引器无法从数据源中读取文档。 此错误的可能原因包括：
 
-| 原因 | 详细信息/示例 | 解决方法 |
+| Reason | 详细信息/示例 | 解决方法 |
 | --- | --- | --- |
-| 不同文档中的字段类型不一致 | 值类型与列类型不匹配。 无法存储在`'{47.6,-122.1}'`作者列中。  预期类型为 JArray。  将数据类型 nvarchar 转换为浮动数据时出错。  将 nvarchar 值"12 个月"转换为数据类型 int 时，转换失败。  “将表达式转换为数据类型 int 时发生算术溢出错误。” | 确保每个字段的类型在不同的文档中相同。 例如，如果第一个文档`'startTime'`字段是 DateTime，而在第二个文档中，它是一个字符串，则将命中此错误。 |
-| 数据源的基础服务中的错误 | （来自宇宙 DB）`{"Errors":["Request rate is large"]}` | 检查存储实例以确保其正常运行。 您可能需要调整缩放/分区。 |
-| 瞬态问题 | 在接收来自服务器的结果时发生传输级错误。 （提供程序：TCP 提供程序，错误：0 - 远程主机强制关闭了现有连接 | 有时存在意外的连接问题。 稍后尝试通过索引器运行文档。 |
+| 不同文档中的字段类型不一致 | “值的类型与列类型不匹配。 无法将 `'{47.6,-122.1}'` 存储在 authors 列中。  预期的类型为 JArray。”  “从数据类型 nvarchar 转换为 float 时出错。”  “将 nvarchar 值 '12 months' 转换为数据类型 int 时转换失败。”  “将表达式转换为数据类型 int 时发生算术溢出错误。” | 确保不同文档中每个字段的类型相同。 例如，如果第一个文档的 `'startTime'` 字段是日期时间，而在第二个文档中，该字段是字符串，则就会出现此错误。 |
+| 数据源的底层服务发生的错误 | （来自 Cosmos DB）`{"Errors":["Request rate is large"]}` | 检查存储实例，确保其正常运行。 可能需要调整缩放/分区。 |
+| 暂时性问题 | 在接收来自服务器的结果时发生传输级错误。 （提供程序：TCP 提供程序，错误:0 - 远程主机强行关闭了现有连接 | 偶尔出现意外的连接问题。 稍后再次尝试通过索引器运行文档。 |
 
 <a name="could-not-extract-document-content"/>
 
 ## <a name="error-could-not-extract-content-or-metadata-from-your-document"></a>错误：无法从文档中提取内容或元数据
-具有 Blob 数据源的索引器无法从文档中提取内容或元数据（例如，PDF 文件）。 这可能是由于：
+具有 Blob 数据源的索引器无法从文档（例如 PDF 文件）中提取内容或元数据。 此错误的可能原因包括：
 
-| 原因 | 详细信息/示例 | 解决方法 |
+| Reason | 详细信息/示例 | 解决方法 |
 | --- | --- | --- |
-| blob 超过大小限制 | 文档是`'150441598'`字节，超过当前服务层的文档提取`'134217728'`的最大大小字节。 | [blob 索引错误](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
-| blob 具有不支持的内容类型 | 文档具有不支持的内容类型`'image/png'` | [blob 索引错误](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
-| Blob 已加密 | 无法处理文档 - 文档可能已加密或受密码保护。 | 您可以使用 blob 设置跳过[Blob。](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed) |
-| 瞬态问题 | 错误处理 blob：请求已中止：请求已取消。 "处理过程中超时的文档。 | 有时存在意外的连接问题。 稍后尝试通过索引器运行文档。 |
+| Blob 超过大小限制 | 文档大小为 `'150441598'` 字节，这超过了当前服务层级支持的最大文档提取大小（`'134217728'` 字节）。 | [Blob 索引错误](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
+| Blob 采用了不受支持的内容类型 | 文档采用了不受支持的内容类型 `'image/png'` | [Blob 索引错误](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
+| Blob 已加密 | 无法处理文档 - 它可能已加密或者受密码保护。 | 可以使用 [Blob 设置](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed)跳过 Blob。 |
+| 暂时性问题 | “处理 Blob 时出错:请求已中止：请求已被取消。” “在处理期间文档超时。” | 偶尔出现意外的连接问题。 稍后再次尝试通过索引器运行文档。 |
 
 <a name="could-not-parse-document"/>
 
 ## <a name="error-could-not-parse-document"></a>错误：无法分析文档
-索引器从数据源读取文档，但存在将文档内容转换为指定字段映射架构的问题。 这可能是由于：
+索引器从数据源中读取了文档，但在将文档内容转换为指定的字段映射架构时出现了问题。 此错误的可能原因包括：
 
-| 原因 | 详细信息/示例 | 解决方法 |
+| Reason | 详细信息/示例 | 解决方法 |
 | --- | --- | --- |
-| 缺少文档密钥 | 文档密钥不能丢失或为空 | 确保所有文档都具有有效的文档密钥 |
-| 文档密钥无效 | 文档密钥不能超过 1024 个字符 | 修改文档密钥以满足验证要求。 |
-| 无法将字段映射应用于字段 | 无法将映射函数`'functionName'`应用于字段`'fieldName'`。 数组不能为空。 参数名称：字节 | 仔细检查索引器上定义的[字段映射](search-indexer-field-mappings.md)，并与失败文档的指定字段的数据进行比较。 可能需要修改字段映射或文档数据。 |
-| 无法读取字段值 | 无法读取索引`'fieldName'``'fieldIndex'`处列的值。 在接收来自服务器的结果时发生传输级错误。 (访问接口: TCP 访问接口，错误: 0 - 现有连接已被远程主机强行关闭。) | 这些错误通常是由于数据源的基础服务出现意外的连接问题。 稍后尝试通过索引器运行文档。 |
+| 缺少文档键 | 文档键不能缺失或为空 | 确保所有文档具有有效的文档键 |
+| 文档键无效 | 文档键的长度不能超过 1024 个字符 | 根据验证要求修改文档键。 |
+| 无法将字段映射应用到某个字段 | 无法将映射函数 `'functionName'` 应用到字段 `'fieldName'`。 数组不能为 null。 参数名称: bytes | 请反复检查索引器中定义的[字段映射](search-indexer-field-mappings.md)，并与失败文档的指定字段的数据进行比较。 可能需要修改字段映射或文档数据。 |
+| 无法读取字段值 | 无法读取列 `'fieldName'` 在索引 `'fieldIndex'` 处的值。 在接收来自服务器的结果时发生传输级错误。 （提供程序：TCP 提供程序，错误:0 - 远程主机强行关闭了现有连接。 | 这些错误的常见原因是数据源的底层服务出现了意外的连接问题。 稍后再次尝试通过索引器运行文档。 |
 
 <a name="could-not-execute-skill"/>
 
 ## <a name="error-could-not-execute-skill"></a>错误：无法执行技能
-索引器无法在技能集中运行技能。
+索引器无法运行技能集中的某个技能。
 
-| 原因 | 详细信息/示例 | 解决方法 |
+| Reason | 详细信息/示例 | 解决方法 |
 | --- | --- | --- |
-| 瞬态连接问题 | 发生暂时性错误。 请稍后重试。 | 有时存在意外的连接问题。 稍后尝试通过索引器运行文档。 |
-| 潜在的产品错误 | 发生了意外错误。 | 这表示故障类别未知，可能意味着存在产品 Bug。 请提交[支持票证](https://ms.portal.azure.com/#create/Microsoft.Support)以获得帮助。 |
-| 技能在执行过程中遇到错误 | （从合并技能）一个或多个偏移值无效，无法解析。 项目插入到文本的末尾 | 使用错误消息中的信息来解决此问题。 此类故障需要采取措施来解决。 |
+| 暂时性连接问题 | 发生了暂时性错误。 请稍后重试。 | 偶尔出现意外的连接问题。 稍后再次尝试通过索引器运行文档。 |
+| 潜在的产品 bug | 发生了意外错误。 | 这表示发生了未知类别的失败，也可能表示产品有 bug。 若要获得帮助，请提交[支持票证](https://ms.portal.azure.com/#create/Microsoft.Support)。 |
+| 技能在执行期间遇到错误 | （来自合并技能）一个或多个偏移量值无效，无法对其进行分析。 项已插入到文本的末尾 | 使用错误消息中的信息来解决问题。 此类失败需要采取措施才能解决。 |
 
 <a name="could-not-execute-skill-because-the-web-api-request-failed"/>
 
 ## <a name="error-could-not-execute-skill-because-the-web-api-request-failed"></a>错误：由于 Web API 请求失败，无法执行技能
-技能执行失败，因为对 Web API 的调用失败。 通常，当使用自定义技能时，会发生此类故障，在这种情况下，您需要调试自定义代码以解决此问题。 如果故障来自内置技能，请参阅错误消息以寻求帮助以修复问题。
+由于对 Web API 的调用失败，未能执行技能。 通常，此类失败是在使用自定义技能时发生的，在这种情况下，需要调试自定义代码才能解决问题。 如果失败来源于某个内置技能，请参考错误消息获得解决问题的帮助。
+
+调试此问题时，请务必注意此[技能的任何技能输入警告](#warning-skill-input-was-invalid)。 Web API 终结点可能失败，因为索引器传递它意外的输入。
 
 <a name="could-not-execute-skill-because-web-api-skill-response-is-invalid"/>
 
@@ -221,7 +223,7 @@ ms.locfileid: "78671974"
 
 | 原因 | 详细信息/示例 | 解决方法 |
 | --- | --- | --- |
-| 技能输入类型错误 | "所需的技能输入不是预期类型`String`。 名称： `text`，`/document/merged_content`来源： .  所需的技能输入不是预期格式。 名称： `text`，`/document/merged_content`来源： .  "不能迭代非数组`/document/normalized_images/0/imageCelebrities/0/detail/celebrities`。  "无法`0`在非阵列`/document/normalized_images/0/imageCelebrities/0/detail/celebrities`中选择" | 某些技能需要特定类型的输入，例如[情绪技能](cognitive-search-skill-sentiment.md)预期`text`是字符串。 如果输入指定非字符串值，则技能不会执行，也不会生成输出。 确保数据集的输入值在类型上是一致的，或者使用[自定义 Web API 技能](cognitive-search-custom-skill-web-api.md)预处理输入。 如果要在数组上迭代技能，请检查技能上下文和输入`*`位于正确位置。 通常，对于数组，上下文和输入源都应`*`以数组结尾。 |
+| 技能输入类型错误 | "所需的技能输入不是预期类型`String`。 名称: `text`，源: `/document/merged_content`。”  所需的技能输入不是预期格式。 名称： `text`，`/document/merged_content`来源： .  "不能迭代非数组`/document/normalized_images/0/imageCelebrities/0/detail/celebrities`。  "无法`0`在非阵列`/document/normalized_images/0/imageCelebrities/0/detail/celebrities`中选择" | 某些技能需要特定类型的输入，例如[情绪技能](cognitive-search-skill-sentiment.md)预期`text`是字符串。 如果输入指定非字符串值，则技能不会执行，也不会生成输出。 确保数据集的输入值在类型上是一致的，或者使用[自定义 Web API 技能](cognitive-search-custom-skill-web-api.md)预处理输入。 如果要在数组上迭代技能，请检查技能上下文和输入`*`位于正确位置。 通常，对于数组，上下文和输入源都应`*`以数组结尾。 |
 | 缺少技能输入 | 缺少所需的技能输入。 名称： `text`，`/document/merged_content`来源：" 缺少`/document/normalized_images/0/imageTags`值 .  无法以长度`0``/document/pages``0`数组进行选择。 | 如果所有文档都收到此警告，则最有可能输入路径中存在拼写错误，您应该仔细检查属性名称大小写，在路径中额外或缺失`*`，并确保数据源中的文档提供所需的输入。 |
 | 技能语言代码输入无效 | 技能输入`languageCode`具有以下语言代码`X,Y,Z`，其中至少有一个无效。 | 查看[以下](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid)更多详细信息 |
 

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/20/2020
-ms.openlocfilehash: cdb31f1a46d7f46b69e9e0ad47a77ba6b32a50a0
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.date: 04/22/2020
+ms.openlocfilehash: f8331b64792781a89428f8c5070375c31c0da48d
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770818"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084883"
 ---
 # <a name="release-notes"></a>发行说明
 
@@ -66,14 +66,3 @@ HDInsight 会持续改善群集的可靠性和性能。
 ## <a name="component-version-change"></a>组件版本更改
 此版本的组件版本未更改。 可在此处查找 HDInsight 4.0 和 HDInsight 3.6 的当前组件版本。
 
-## <a name="known-issues"></a>已知问题
-
-截至 2020 年 3 月 18 日，西欧或北欧的一些 Azure HDInsight 客户在这些地区创建或扩展 HDInsight 群集时收到错误通知。 与此问题相关的错误包括：
-
-- 处理请求时发生内部服务器错误。 请重试请求或联系支持人员。
-- 至少有一个资源部署操作失败。 有关详细信息，请列出部署操作。 有关使用https://aka.ms/DeployOperations详情，请参阅
-- 用户订阅 Id\<'\>订阅 ID ' 没有内核用于创建\<资源"群集名称>"。 要求： \<\>X ， 可用： 0.
-
-工程师们意识到了这个问题，并正在积极调查。
-
-有关其他帮助，请创建[支持请求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。

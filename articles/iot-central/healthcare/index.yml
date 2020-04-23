@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: e5b8498039b16f3a5e3a68fc0c4329b3579d494a
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: a2eda11682ccd3329d1a9447aca3741ddd264da7
+  ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77623048"
+  ms.lasthandoff: 04/22/2020
+  ms.locfileid: "82024857"
 landingContent:
 - title: 生成医疗保健解决方案
   linkLists:
@@ -34,7 +34,7 @@ landingContent:
     - text: 设置设备模板
       url: ../core/howto-set-up-template.md
     - text: 连接一个设备
-      url: ../core/tutorial-connect-device.md
+      url: ../core/tutorial-connect-device-nodejs.md
     - text: 连接 IoT 即插即用（预览版）设备
       url: ../core/tutorial-connect-pnp-device.md
   - linkListType: how-to-guide
