@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 04/01/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: fc5e379aae7d8ff0d7cb685b0dd7e7e0a46bb677
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 1d1da88d1e7eaf06ebf71da999ef8fb25c7cf066
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393295"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482202"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>教程：使用事件网格自动调整上传图像的大小
 
@@ -102,7 +102,7 @@ Azure Functions 需要一个常规存储帐户。 除了在上一教程中创建
     ```azurecli-interactive
     az functionapp create --name $functionapp --storage-account $functionstorage \
       --resource-group $resourceGroupName --consumption-plan-location southeastasia \
-      --functions_version 2
+      --functions-version 2
     ```
 
 现在配置函数应用，以连接到你在[上一教程][previous-tutorial]中创建的 Blob 存储帐户。

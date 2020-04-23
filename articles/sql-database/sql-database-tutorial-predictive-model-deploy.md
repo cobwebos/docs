@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
-ms.openlocfilehash: 7779db053344f99238d38d5d49762730efbc5fc4
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: efcb73866c83dcc03b5db8b7b97f438fb3010511
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346318"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452802"
 ---
 # <a name="tutorial-deploy-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教程：使用 Azure SQL 数据库机器学习服务（预览版）在 R 中部署预测模型
 
@@ -39,8 +40,6 @@ ms.locfileid: "80346318"
 [第一部分](sql-database-tutorial-predictive-model-prepare-data.md)介绍如何导入示例数据库，然后准备要用于通过 R 训练预测模型的数据。
 
 [第二部分](sql-database-tutorial-predictive-model-build-compare.md)介绍如何使用 R 创建和训练多个机器学习模型，然后选择最准确的模型。
-
-[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 

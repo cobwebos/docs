@@ -3,12 +3,12 @@ title: 教程 - 在 Azure 存储中存储 Terraform 状态
 description: 在 Azure 存储中存储 Terraform 状态的简介。
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 1cc475e5070b21a7ea96585f2183c07d258acdc5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c94c66969c517bd0e51117ab7c6ed6a889149518
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75708418"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459009"
 ---
 # <a name="tutorial-store-terraform-state-in-azure-storage"></a>教程：在 Azure 存储中存储 Terraform 状态
 
@@ -67,7 +67,7 @@ Terraform 状态后端是在运行 `terraform init` 命令时配置的。 配置
 export ARM_ACCESS_KEY=<storage access key>
 ```
 
-若要进一步保护 Azure 存储帐户访问密钥，请将其存储在 Azure Key Vault 中。 然后可使用如下命令设置该环境变量。 有关 Azure Key Vault 的详细信息，请参阅 [Azure Key Vault 文档](../key-vault/quick-create-cli.md)。
+若要进一步保护 Azure 存储帐户访问密钥，请将其存储在 Azure Key Vault 中。 然后可使用如下命令设置该环境变量。 有关 Azure Key Vault 的详细信息，请参阅 [Azure Key Vault 文档](../key-vault/secrets/quick-create-cli.md)。
 
 ```bash
 export ARM_ACCESS_KEY=$(az keyvault secret show --name terraform-backend-key --vault-name myKeyVault --query value -o tsv)

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 4edf710e575bbb26fb0e247e59ff5c796f16226e
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 9f9fcc0b3d8dfe19961668e77da91bc9f14ff2d1
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80810591"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453891"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 TLS/SSL 证书
 
@@ -94,7 +94,7 @@ ms.locfileid: "80810591"
 
 - 负责 GoDaddy 的购买流程。
 - 对证书执行域验证。
-- 将证书保留在 [Azure Key Vault](../key-vault/key-vault-overview.md) 中。
+- 将证书保留在 [Azure Key Vault](../key-vault/general/overview.md) 中。
 - 管理证书续订（请参阅[续订证书](#renew-certificate)）。
 - 在应用服务应用中自动将证书与导入的副本同步。
 
@@ -140,8 +140,8 @@ ms.locfileid: "80810591"
 | 资源组 | 建议选择与应用服务证书相同的资源组。 |
 | 位置 | 选择与应用服务应用相同的位置。 |
 | 定价层 | 有关信息，请参阅 [Azure Key Vault 定价详细信息](https://azure.microsoft.com/pricing/details/key-vault/)。 |
-| 访问策略| 定义应用程序和对保管库资源允许的访问权限。 可以稍后配置，请按照[授予多个应用程序访问密钥保管库的权限](../key-vault/key-vault-group-permissions-for-apps.md)的步骤进行操作。 |
-| 虚拟网络访问 | 限制为仅特定 Azure 虚拟网络具有保管库访问权限。 可以稍后配置，请按照[配置 Azure Key Vault 防火墙和虚拟网络](../key-vault/key-vault-network-security.md)的步骤进行操作。 |
+| 访问策略| 定义应用程序和对保管库资源允许的访问权限。 可以稍后配置，请按照[授予多个应用程序访问密钥保管库的权限](../key-vault/general/group-permissions-for-apps.md)的步骤进行操作。 |
+| 虚拟网络访问 | 限制为仅特定 Azure 虚拟网络具有保管库访问权限。 可以稍后配置，请按照[配置 Azure Key Vault 防火墙和虚拟网络](../key-vault/general/network-security.md)的步骤进行操作。 |
 
 选择保管库后，关闭“Key Vault 存储库”页面  。 “步骤1:  存储”选项应显示绿色复选标记表示成功。 保持页面处于打开状态，执行下一步骤。
 

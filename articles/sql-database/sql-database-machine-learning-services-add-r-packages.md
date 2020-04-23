@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/29/2019
-ms.openlocfilehash: ce85f45d823df42e70af53824e175968439621d3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ROBOTS: NOINDEX
+ms.openlocfilehash: ab066609bff773ceacb06be604e386eed5cdf7ec
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73819872"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453330"
 ---
 # <a name="add-an-r-package-to-azure-sql-database-machine-learning-services-preview"></a>将 R 包添加到 Azure SQL 数据库机器学习服务（预览版）
 
