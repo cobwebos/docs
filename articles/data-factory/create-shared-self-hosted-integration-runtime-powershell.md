@@ -11,12 +11,12 @@ author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
 ms.date: 10/31/2018
-ms.openlocfilehash: cabdb45467f71749184c5f9a6a112242a82d618b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0f018d6b94d1c5b9d9002a767b3ebceb6c9c746c
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81416599"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82106604"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建共享自承载集成运行时
 
@@ -53,13 +53,13 @@ ms.locfileid: "81416599"
 1. 创建链接的集成运行时。
 1. 撤消共享。
 
-### <a name="prerequisites"></a>先决条件 
+### <a name="prerequisites"></a>必备条件 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 - **Azure 订阅**。 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。 
 
-- **Azure 电源外壳**。 请遵循[使用 PowerShellGet 在 Windows 上安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) 中的说明。 可使用 PowerShell 运行脚本来创建可与其他数据工厂共享的自承载集成运行时。 
+- **Azure PowerShell**。 请遵循[使用 PowerShellGet 在 Windows 上安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) 中的说明。 可使用 PowerShell 运行脚本来创建可与其他数据工厂共享的自承载集成运行时。 
 
 > [!NOTE]  
 > 若要查看目前提供数据工厂的 Azure 区域列表，请选择你感兴趣的区域：[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory)。
@@ -101,7 +101,7 @@ ms.locfileid: "81416599"
     > [!NOTE]  
     > 此步骤是可选的。 若已有数据工厂，请跳过此步骤。 
 
-    使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 命令创建 [Azure 资源组](../azure-resource-manager/management/overview.md)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 以下示例在 WestEurope 位置创建名为 `myResourceGroup` 的资源组： 
+    使用 [New-AzResourceGroup](../azure-resource-manager/management/overview.md) 命令创建 [Azure 资源组](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 以下示例在 WestEurope 位置创建名为 `myResourceGroup` 的资源组： 
 
     ```powershell
     New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
@@ -174,7 +174,7 @@ $factory = Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `
 ```powershell
 New-AzRoleAssignment `
     -ObjectId $factory.Identity.PrincipalId ` #MSI of the Data Factory with which it needs to be shared
-    -RoleDefinitionId 'b24988ac-6180-42a0-ab88-20f7382dd24c' ` #This is the Contributor role
+    -RoleDefinitionName 'Contributor' `
     -Scope $SharedIR.Id
 ```
 
@@ -201,7 +201,7 @@ Set-AzDataFactoryV2IntegrationRuntime `
 ```powershell
 Remove-AzRoleAssignment `
     -ObjectId $factory.Identity.PrincipalId `
-    -RoleDefinitionId 'b24988ac-6180-42a0-ab88-20f7382dd24c' `
+    -RoleDefinitionName 'Contributor' `
     -Scope $SharedIR.Id
 ```
 
