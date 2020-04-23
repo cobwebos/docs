@@ -1,22 +1,21 @@
 ---
 title: 故障排除指南
 titleSuffix: Microsoft Genomics
-description: 了解使用 Microsoft 基因组学的故障排除策略，包括错误消息以及如何解决这些问题。
+description: 了解有关使用 Microsoft 基因组学的故障排除策略，包括错误消息以及如何解决这些问题。
 keywords: 故障排除, 错误, 调试
 services: genomics
 author: ruchir
-editor: jasonwhowell
 ms.author: ruchir
 ms.service: genomics
 ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
-ms.openlocfilehash: f6ef56e4188a7541036db096e4ab35a1b95fc141
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c508c10d619cde1a16d89b446c5cfd1a3ce81daf
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73486002"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100900"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
 
@@ -82,7 +81,7 @@ msgen status -u URL -k KEY -w ID
 msgen status -w 1001 -f "config.txt"
 ```
 
-### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. 检查标准输出的内容.txt 
+### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. 检查 standardoutput 的内容 
 查找有问题的工作流的输出容器。 每次执行工作流后，MSGEN 会创建一个 `[workflowfilename].logs.zip` 文件夹。 请解压缩该文件夹以查看其内容：
 
 * outputFileList.txt - 工作流运行期间生成的输出文件列表

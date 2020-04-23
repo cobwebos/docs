@@ -1,73 +1,284 @@
 ---
 title: 排查 Azure 文件共享备份问题
 description: 本文提供在保护 Azure 文件共享时所发生的问题的故障排除信息。
-ms.date: 08/20/2019
+ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 050df5b96c265e468346535ff011e1baf7d86ad5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a6ce613b8c0fe8a7a5df6397ba2f1eb508d61aae
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79252384"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100050"
 ---
-# <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>排查 Azure 文件共享备份问题
+# <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>在备份 Azure 文件共享时排查问题
 
-可参考下表中所列信息，排查使用 Azure 文件共享备份时遇到的问题和错误。
+本文提供了有关使用 Azure 备份服务配置备份或还原 Azure 文件共享时遇到的任何问题的疑难解答信息。
 
-## <a name="limitations-for-azure-file-share-backup-during-preview"></a>预览版期间 Azure 文件共享备份的限制
+## <a name="common-configuration-issues"></a>常见配置问题
 
-Azure 文件共享备份处于预览状态。 常规用途 v1 和常规用途 v2 存储帐户中的 Azure 文件共享均受支持。 Azure 文件共享不支持以下备份场景：
+### <a name="could-not-find-my-storage-account-to-configure-backup-for-the-azure-file-share"></a>找不到存储帐户，无法为 Azure 文件共享配置备份
 
-- 无法使用 CLI 通过 Azure 备份来保护 Azure 文件。
-- 每天的计划备份数上限为 1。
-- 每天的按需备份数上限为 4。
-- 在存储帐户上使用[资源锁定](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest)，防止意外删除恢复服务保管库中的备份。
-- 请勿删除由 Azure 备份创建的快照。 删除快照可能导致恢复点丢失和/或还原失败。
-- 请勿删除受 Azure 备份保护的文件共享。 当前的解决方案会在文件共享删除后删除 Azure 备份创建的所有快照，因此会失去所有还原点。
+- 等到发现完成。
+- 检查存储帐户下的任何文件共享是否已由另一个恢复服务保管库保护。
 
-使用[区域冗余存储](../storage/common/storage-redundancy-zrs.md) (ZRS) 复制对存储帐户中的 Azure 文件共享进行备份，目前只能在美国中部 (CUS)、美国东部 (EUS)、美国东部 2 (EUS2)、北欧 (NE)、东南亚 (SEA)、西欧 (WE) 和美国西部 2 (WUS2) 使用。
+  >[!NOTE]
+  >一个存储帐户中的所有文件共享只能在一个恢复服务保管库中进行保护。 您可以使用[此脚本](scripts/backup-powershell-script-find-recovery-services-vault.md)查找您的存储帐户注册到的恢复服务保管库。
 
-## <a name="configuring-backup"></a>配置备份
+- 确保文件共享不在任何不受支持的存储帐户中。 可以参考[Azure 文件共享备份的支持矩阵](azure-file-share-support-matrix.md)来查找支持的存储帐户。
 
-下表用于配置备份：
+### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>门户中的错误指出无法发现存储帐户
 
-| 错误消息 | 解决办法或解决方法提示 |
-| ------------------ | ----------------------------- |
-| 找不到存储帐户，因此无法配置 Azure 文件共享的备份 | <ul><li>等到发现完成。 <li>检查是否已使用另一恢复服务保管库对存储帐户中的任何文件共享进行保护。 **注意**：一个存储帐户中的所有文件共享只能在一个恢复服务保管库中进行保护。 <li>请确保文件共享不是存在于不受支持的存储帐户中。<li> 确保在存储帐户中选中“允许受信任的 Microsoft 服务访问此存储帐户”**** 复选框。[了解更多。](../storage/common/storage-network-security.md)|
-| 门户中的错误指出无法发现存储帐户。 | 如果订阅为合作伙伴（已启用 CSP），请忽略此错误。 如果订阅未启用 CSP，且无法发现存储帐户，请联系支持部门。|
-| 所选存储帐户验证或注册失败。| 重试该操作。如果问题仍然存在，请联系支持部门。|
-| 无法在所选存储帐户中列出或查找文件共享。 | <ul><li> 确保存储帐户存在于资源组中（且自上次在保管库中进行验证/注册后尚未删除或移动）。<li>确保尚未删除要保护的文件共享。 <li>确保存储帐户是支持进行文件共享备份的存储帐户。<li>检查是否已在同一恢复服务保管库中对文件共享进行保护。|
-| 备份文件共享配置（或保护策略配置）故障。 | <ul><li>请重试该操作，看问题是否仍然存在。 <li> 确保尚未删除要保护的文件共享。 <li> 如果在尝试同时保护多个文件共享时部分文件共享故障，请再次重试配置故障文件共享的备份。 |
-| 在取消对文件共享的保护之后，无法删除恢复服务保管库。 | 在 Azure 门户中，打开保管库>**备份基础结构** > **存储帐户**，然后单击 **"取消注册**"以从恢复服务保管库中删除存储帐户。|
+如果有合作伙伴订阅（已启用 CSP），请忽略此错误。 如果订阅未启用 CSP，并且无法发现存储帐户，请联系支持人员。
 
-## <a name="error-messages-for-backup-or-restore-job-failures"></a>备忘或还原作业故障时的错误消息
+### <a name="selected-storage-account-validation-or-registration-failed"></a>选择的存储帐户验证或注册失败
 
-| 错误消息 | 解决办法或解决方法提示 |
-| -------------- | ----------------------------- |
-| 由于找不到文件共享，操作失败。 | 确保尚未删除要保护的文件共享。|
-| 存储帐户找不到或不受支持。 | <ul><li>确保存储帐户存在于资源组中，且自上次验证后未从资源组中删除或移除。 <li> 确保存储帐户是支持进行文件共享备份的存储帐户。|
-| 你已达到此文件共享的最大快照限制，在旧的快照过期后才能继续生成快照。 | <ul><li> 为文件创建多个按需备份时，可能发生此错误。 <li> 每个文件共享的快照限制为 200 个，包括通过 Azure 备份生成的快照。 较旧的计划备份（或快照）会自动清除。 如果达到最大限制，则必须删除按需备份（或快照）。<li> 从 Azure 文件门户删除按需备份（Azure 文件共享快照）。 **注意**：如果删除 Azure 备份创建的快照，会失去恢复点。 |
-| 文件共享备份或还原因存储服务限制而失败。 这可能是因为存储服务正忙于处理给定存储帐户的其他请求。| 稍后重试操作。 |
-| 还原失败，找不到目标文件共享。 | <ul><li>确保所选存储帐户存在，且目标文件共享未删除。 <li> 确保存储帐户是支持进行文件共享备份的存储帐户。 |
-| 由于存储帐户处于“已锁定”状态，备份或还原作业失败。 | 解除存储帐户上的锁定，或者使用删除锁定而不是读取锁定，然后重试该操作。 |
-| 恢复失败，因为故障文件数超出阈值。 | <ul><li> 恢复失败原因在文件中列出（作业详细信息中提供了路径）。 请解决导致失败的问题，然后只对故障文件重试还原操作。 <li> 文件还原失败的常见原因： <br/> - 确保目前没有在使用故障文件。 <br/> - 父目录中存在其名称与故障文件名称相同的目录。 |
-| 恢复失败，因为没有可以恢复的文件。 | <ul><li> 恢复失败原因在文件中列出（作业详细信息中提供了路径）。 解决导致失败的问题，然后只对故障文件重试还原操作。 <li> 文件还原失败的常见原因： <br/> - 确保目前没有在使用故障文件。 <br/> - 父目录中存在其名称与故障文件名称相同的目录。 |
-| 还原失败，因为源中的某个文件不存在。 | <ul><li> 所选项不在恢复点数据中。 若要恢复这些文件，请提供正确的文件列表。 <li> 与恢复点对应的文件共享快照已手动删除。 请选择另一恢复点，然后重试还原操作。 |
-| 正在进行恢复到同一目标的恢复作业。 | <ul><li>文件共享备份不支持并行恢复到同一目标文件共享。 <li>等待现有恢复完成，然后再试一次。 如果在恢复服务保管库中找不到恢复作业，请查看同一订阅中的其他恢复服务保管库。 |
-| 还原操作失败，因为目标文件共享已满。 | 增加目标文件共享大小配额，使之能够容纳还原数据，然后重试该操作。 |
-| 由于对与目标文件共享关联的文件同步服务资源执行预还原操作时出错，还原操作失败。 | 请稍后重试，如果问题仍然存在，请联系 Microsoft 支持部门。 |
-| 一个或多个文件无法成功恢复。 有关详细信息，请查看上面给出的路径中的故障文件列表。 | <ul> <li> 恢复失败原因已在文件中列出（作业详细信息中提供了路径），请针对原因解决相关问题，只对故障文件重试还原操作。 <li> 文件还原失败的常见原因如下： <br/> - 确保目前没有在使用故障文件。 <br/> - 父目录中存在其名称与故障文件名称相同的目录。 |
+重试注册。 如果问题持续出现，请联系支持人员。
 
-## <a name="modify-policy"></a>修改策略
+### <a name="could-not-list-or-find-file-shares-in-the-selected-storage-account"></a>无法在所选存储帐户中列出或查找文件共享
 
-| 错误消息 | 解决办法或解决方法提示 |
-| ------------------ | ----------------------------- |
-| 正在对此项进行另一个配置保护操作。 | 请等待上一个修改策略操作完成，并过一段时间重试。|
-| 正在对所选项进行另一项操作。 | 请等待其他正在进行的操作完成，并过一段时间重试 |
+- 请确保存储帐户存在于资源组中，但在保管库中的上次验证或注册后尚未删除或移动。
+- 确保未删除你要保护的文件共享。
+- 请确保存储帐户是支持进行文件共享备份的存储帐户。 可以参考[Azure 文件共享备份的支持矩阵](azure-file-share-support-matrix.md)来查找支持的存储帐户。
+- 检查是否已在同一恢复服务保管库中对文件共享进行保护。
+
+### <a name="backup-file-share-configuration-or-the-protection-policy-configuration-is-failing"></a>备份文件共享配置（或保护策略配置）失败
+
+- 请重试该配置，以确定问题是否仍然存在。
+- 确保尚未删除要保护的文件共享。
+- 如果你尝试同时保护多个文件共享，并且某些文件共享失败，请尝试再次为失败的文件共享配置备份。
+
+### <a name="unable-to-delete-the-recovery-services-vault-after-unprotecting-a-file-share"></a>取消保护文件共享后无法删除恢复服务保管库
+
+在 Azure 门户中，打开**保管库** > **备份基础结构** > **存储帐户**，然后单击 "**注销**" 以从恢复服务保管库中删除存储帐户。
+
+>[!NOTE]
+>只有注销已注册到保管库的所有存储帐户后，才能删除恢复服务保管库。
+
+## <a name="common-backup-or-restore-errors"></a>常见的备份或还原错误
+
+### <a name="filesharenotfound--operation-failed-as-the-file-share-is-not-found"></a>FileShareNotFound-操作失败，因为找不到文件共享
+
+错误代码： FileShareNotFound
+
+错误消息：操作失败，因为找不到文件共享
+
+确保未删除你要尝试保护的文件共享。
+
+### <a name="usererrorfileshareendpointunreachable--storage-account-not-found-or-not-supported"></a>UserErrorFileShareEndpointUnreachable-找不到或不支持存储帐户
+
+错误代码： UserErrorFileShareEndpointUnreachable
+
+错误消息：找不到或不支持存储帐户
+
+- 请确保存储帐户存在于资源组中，但未在上次验证后从资源组中删除或删除。
+
+- 请确保存储帐户是支持进行文件共享备份的存储帐户。
+
+### <a name="afsmaxsnapshotreached--you-have-reached-the-max-limit-of-snapshots-for-this-file-share-you-will-be-able-to-take-more-once-the-older-ones-expire"></a>AFSMaxSnapshotReached-已达到此文件共享的快照的最大限制;你将能够更好地使用较旧的过期时间
+
+错误代码： AFSMaxSnapshotReached
+
+错误消息：已达到此文件共享的快照的最大限制;更早的时间到期后，你将能够执行更多的工作。
+
+- 为文件共享创建多个按需备份时，可能出现此错误。
+- 每个文件共享的快照数限制为200，包括 Azure 备份占用的快照数。 较旧的计划备份（或快照）会自动清除。 如果达到最大限制，则必须删除按需备份（或快照）。
+
+从 Azure 文件门户删除按需备份（Azure 文件共享快照）。
+
+>[!NOTE]
+> 如果删除 Azure 备份创建的快照，会失去恢复点。
+
+### <a name="usererrorstorageaccountnotfound--operation-failed-as-the-specified-storage-account-does-not-exist-anymore"></a>UserErrorStorageAccountNotFound-操作失败，因为指定的存储帐户不再存在
+
+错误代码： UserErrorStorageAccountNotFound
+
+错误消息：操作失败，因为指定的存储帐户不再存在。
+
+确保存储帐户仍然存在且不会被删除。
+
+### <a name="usererrordtsstorageaccountnotfound--the-storage-account-details-provided-are-incorrect"></a>UserErrorDTSStorageAccountNotFound-提供的存储帐户详细信息不正确
+
+错误代码： UserErrorDTSStorageAccountNotFound
+
+错误消息：提供的存储帐户详细信息不正确。
+
+确保存储帐户仍然存在且不会被删除。
+
+### <a name="usererrorresourcegroupnotfound--resource-group-doesnt-exist"></a>UserErrorResourceGroupNotFound-资源组不存在
+
+错误代码： UserErrorResourceGroupNotFound
+
+错误消息：资源组不存在
+
+选择现有资源组或创建新资源组。
+
+### <a name="parallelsnapshotrequest--a-backup-job-is-already-in-progress-for-this-file-share"></a>ParallelSnapshotRequest-此文件共享的备份作业已在进行中
+
+错误代码： ParallelSnapshotRequest
+
+错误消息：此文件共享的备份作业已在进行中。
+
+- 文件共享备份不支持针对同一文件共享的并行快照请求。
+
+- 请等待现有备份作业完成，然后重试。 如果在恢复服务保管库中找不到备份作业，请检查同一订阅中的其他恢复服务保管库。
+
+### <a name="filesharebackupfailedwithazurerprequestthrottling-filesharerestorefailedwithazurerprequestthrottling--file-share-backup-or-restore-failed-due-to-storage-service-throttling-this-may-be-because-the-storage-service-is-busy-processing-other-requests-for-the-given-storage-account"></a>FileshareBackupFailedWithAzureRpRequestThrottling/FileshareRestoreFailedWithAzureRpRequestThrottling-文件共享备份或还原由于存储服务限制而失败。 这可能是因为存储服务正忙于处理给定存储帐户的其他请求
+
+错误代码： FileshareBackupFailedWithAzureRpRequestThrottling/FileshareRestoreFailedWithAzureRpRequestThrottling
+
+错误消息：文件共享备份或还原由于存储服务限制而失败。 这可能是因为存储服务正忙于处理给定存储帐户的其他请求。
+
+稍后尝试备份/还原操作。
+
+### <a name="targetfilesharenotfound--target-file-share-not-found"></a>TargetFileShareNotFound-找不到目标文件共享
+
+错误代码： TargetFileShareNotFound
+
+错误消息：找不到目标文件共享。
+
+- 请确保所选存储帐户存在，且目标文件共享未删除。
+
+- 请确保存储帐户是支持进行文件共享备份的存储帐户。
+
+### <a name="usererrorstorageaccountislocked--backup-or-restore-jobs-failed-due-to-storage-account-being-in-locked-state"></a>UserErrorStorageAccountIsLocked-备份或还原作业失败，因为存储帐户处于锁定状态
+
+错误代码： UserErrorStorageAccountIsLocked
+
+错误消息：由于存储帐户处于锁定状态，备份或还原作业失败。
+
+请删除对存储帐户的锁定，或者使用**删除锁定**而不是**读取锁定**，然后重试备份或还原操作。
+
+### <a name="datatransferservicecoflimitreached--recovery-failed-because-number-of-failed-files-are-more-than-the-threshold"></a>DataTransferServiceCoFLimitReached-恢复失败，因为失败的文件数超过了阈值
+
+错误代码： DataTransferServiceCoFLimitReached
+
+错误消息：恢复失败，因为失败的文件数超过了阈值。
+
+- 恢复失败原因列在文件（作业详细信息中提供的路径）中。 解决失败，并仅对失败的文件重试还原操作。
+
+- 文件还原失败的常见原因：
+
+  - 已失败的文件当前正在使用中
+  - 父目录中存在其名称与故障文件名称相同的目录。
+
+### <a name="datatransferserviceallfilesfailedtorecover--recovery-failed-as-no-file-could-be-recovered"></a>DataTransferServiceAllFilesFailedToRecover-恢复失败，因为无法恢复任何文件
+
+错误代码： DataTransferServiceAllFilesFailedToRecover
+
+错误消息：恢复失败，因为无法恢复任何文件。
+
+- 恢复失败原因列在文件（作业详细信息中提供的路径）中。 解决导致失败的问题，然后只对故障文件重试还原操作。
+
+- 文件还原失败的常见原因：
+
+  - 已失败的文件当前正在使用中
+  - 父目录中存在其名称与故障文件名称相同的目录。
+
+### <a name="usererrordtssourceurinotvalid---restore-fails-because-one-of-the-files-in-the-source-does-not-exist"></a>UserErrorDTSSourceUriNotValid-还原失败，因为源中的一个文件不存在
+
+错误代码： DataTransferServiceSourceUriNotValid
+
+错误消息：还原失败，因为源中的一个文件不存在。
+
+- 所选项不在恢复点数据中。 若要恢复这些文件，请提供正确的文件列表。
+- 与恢复点对应的文件共享快照已手动删除。 请选择另一恢复点，然后重试还原操作。
+
+### <a name="usererrordtsdestlocked--a-recovery-job-is-in-process-to-the-same-destination"></a>UserErrorDTSDestLocked-恢复作业正在处理同一目标
+
+错误代码： UserErrorDTSDestLocked
+
+错误消息：恢复作业正在处理同一目标。
+
+- 文件共享备份不支持对同一目标文件共享的并行恢复。
+
+- 等待现有恢复完成，然后再试一次。 如果在恢复服务保管库中找不到恢复作业，请检查同一订阅中的其他恢复服务保管库。
+
+### <a name="usererrortargetfilesharefull--restore-operation-failed-as-target-file-share-is-full"></a>UserErrorTargetFileShareFull-还原操作失败，因为目标文件共享已满
+
+错误代码： UserErrorTargetFileShareFull
+
+错误消息：还原操作失败，因为目标文件共享已满。
+
+请增加目标文件共享大小配额以容纳还原数据，然后重试还原操作。
+
+### <a name="usererrortargetfilesharequotanotsufficient--target-file-share-does-not-have-sufficient-storage-size-quota-for-restore"></a>UserErrorTargetFileShareQuotaNotSufficient-目标文件共享的存储大小配额不足，无法还原
+
+错误代码： UserErrorTargetFileShareQuotaNotSufficient
+
+错误消息：目标文件共享的存储大小配额不足，无法还原
+
+请增加目标文件共享大小配额以容纳还原数据，然后重试该操作
+
+### <a name="file-sync-prerestorefailed--restore-operation-failed-as-an-error-occurred-while-performing-pre-restore-operations-on-file-sync-service-resources-associated-with-the-target-file-share"></a>文件同步 PreRestoreFailed-还原操作失败，因为在对与目标文件共享相关联的文件同步服务资源执行预还原操作时出错
+
+错误代码：文件同步 PreRestoreFailed
+
+错误消息：还原操作失败，因为在对与目标文件共享相关联文件同步服务资源执行预还原操作时出错。
+
+请稍后尝试还原数据。 如果问题持续出现，请联系 Microsoft 支持。
+
+### <a name="azurefilesyncchangedetectioninprogress--azure-file-sync-service-change-detection-is-in-progress-for-the-target-file-share-the-change-detection-was-triggered-by-a-previous-restore-to-the-target-file-share"></a>AzureFileSyncChangeDetectionInProgress-正在为目标文件共享 Azure 文件同步服务更改检测。 更改检测由上一次还原到目标文件共享触发
+
+错误代码： AzureFileSyncChangeDetectionInProgress
+
+错误消息：目标文件共享正在进行 Azure 文件同步服务更改检测。 更改检测由上一次还原到目标文件共享触发。
+
+使用其他目标文件共享。 或者，你可以等待为目标文件共享完成 Azure 文件同步服务更改检测，然后重试还原。
+
+### <a name="usererrorafsrecoverysomefilesnotrestored--one-or-more-files-could-not-be-recovered-successfully-for-more-information-check-the-failed-file-list-in-the-path-given-above"></a>UserErrorAFSRecoverySomeFilesNotRestored-一个或多个文件无法成功恢复。 有关详细信息，请查看以上给定路径中的失败文件列表
+
+错误代码： UserErrorAFSRecoverySomeFilesNotRestored
+
+错误消息：一个或多个文件无法成功恢复。 有关详细信息，请查看上面给出的路径中的故障文件列表。
+
+- 恢复失败原因列在文件（作业详细信息中提供的路径）中。 解决原因，并重试仅对失败的文件执行还原操作。
+- 文件还原失败的常见原因：
+
+  - 已失败的文件当前正在使用中
+  - 父目录中存在其名称与故障文件名称相同的目录。
+
+### <a name="usererrorafssourcesnapshotnotfound--azure-file-share-snapshot-corresponding-to-recovery-point-cannot-be-found"></a>UserErrorAFSSourceSnapshotNotFound-找不到与恢复点相对应的 Azure 文件共享快照
+
+错误代码： UserErrorAFSSourceSnapshotNotFound
+
+错误消息：找不到与恢复点相对应的 Azure 文件共享快照
+
+- 确保文件共享快照与你尝试用于恢复的恢复点相对应，仍然存在。
+
+  >[!NOTE]
+  >如果删除由 Azure 备份创建的文件共享快照，则相应的恢复点将变为不可用。 建议不要删除快照以确保恢复。
+
+- 请尝试选择另一个还原点以恢复数据。
+
+### <a name="usererroranotherrestoreinprogressonsametarget--another-restore-job-is-in-progress-on-the-same-target-file-share"></a>UserErrorAnotherRestoreInProgressOnSameTarget-正在同一目标文件共享上执行另一个还原作业
+
+错误代码： UserErrorAnotherRestoreInProgressOnSameTarget
+
+错误消息：正在同一目标文件共享上正在进行另一个还原作业
+
+使用其他目标文件共享。 或者，你可以取消或等待其他还原完成。
+
+## <a name="common-modify-policy-errors"></a>常见的修改策略错误
+
+### <a name="bmsusererrorconflictingprotectionoperation--another-configure-protection-operation-is-in-progress-for-this-item"></a>BMSUserErrorConflictingProtectionOperation-正在对此项目进行另一配置保护操作
+
+错误代码： BMSUserErrorConflictingProtectionOperation
+
+错误消息：正在对此项目进行另一配置保护操作。
+
+等待上一个修改策略操作完成，稍后重试。
+
+### <a name="bmsusererrorobjectlocked--another-operation-is-in-progress-on-the-selected-item"></a>BMSUserErrorObjectLocked-所选项目正在进行另一个操作
+
+错误代码： BMSUserErrorObjectLocked
+
+错误消息：正在对所选项执行其他操作。
+
+等待其他正在进行的操作完成，稍后重试。
 
 ## <a name="next-steps"></a>后续步骤
 
 有关备份 Azure 文件共享的详细信息，请参阅：
 
 - [备份 Azure 文件共享](backup-afs.md)
-- [备份 Azure 文件共享常见问题解答](backup-azure-files-faq.md)
+- [备份 Azure 文件共享常见问题](backup-azure-files-faq.md)

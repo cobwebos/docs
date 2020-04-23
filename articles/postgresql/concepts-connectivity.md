@@ -1,18 +1,18 @@
 ---
-title: 处理瞬态连接错误 - Azure 数据库，用于 PostgreSQL - 单个服务器
-description: 了解如何处理 PostgreSQL - 单服务器 Azure 数据库的瞬态连接错误。
+title: 处理暂时性连接错误-Azure Database for PostgreSQL-单服务器
+description: 了解如何处理 Azure Database for PostgreSQL 单服务器的暂时性连接错误。
 keywords: postgresql 连接, 连接字符串, 连接问题, 暂时性错误, 连接错误
-author: jasonwhowell
-ms.author: jasonh
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 8138512dfc893f3523c5ad78a93aef1bcdedfe70
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 026a0edf24d349c4b445d6229d3b1ad73decf87d
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81768032"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82097823"
 ---
 # <a name="handling-transient-connectivity-errors-for-azure-database-for-postgresql---single-server"></a>处理 Azure Database for PostgreSQL - 单一服务器的暂时性连接错误
 

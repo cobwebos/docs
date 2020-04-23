@@ -2,18 +2,18 @@
 title: 在 Azure 中的 Windows VM 中运行 PowerShell 脚本
 description: 本主题介绍了如何使用“运行命令”功能在 Azure Windows 虚拟机中运行 PowerShell 脚本
 services: automation
-ms.service: automation
+ms.service: virtual-machines
 author: bobbytreed
 ms.author: robreed
 ms.date: 04/26/2019
-ms.topic: article
+ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: fa7f72989d47499127714eddfa6b5e98aa80178c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a0125c556789b1a1a5b11dcd16b852d7f57b6c50
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73749229"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82099863"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>使用“运行命令”在 Windows VM 中运行 PowerShell 脚本
 
@@ -79,16 +79,16 @@ az vm run-command invoke  --command-id RunPowerShellScript --name win-vm -g my-r
 
 ## <a name="azure-portal"></a>Azure 门户
 
-转到[Azure 门户](https://portal.azure.com)中的 VM，然后选择 **"操作**"下的 **"运行"命令**。 您将看到要在 VM 上运行的可用命令的列表。
+在[Azure 门户](https://portal.azure.com)中，选择 "VM"，并选择 "**操作**" 下的 "**运行命令**"。 你将看到可在 VM 上运行的命令的列表。
 
 ![命令列表](./media/run-command/run-command-list.png)
 
-选择要运行的命令。 某些命令可能具有可选或所需的输入参数。 对于这些命令，参数将作为文本字段显示，以便您提供输入值。 对于每个命令，可以通过展开**视图脚本**来查看正在运行的脚本。 **RunPowerShellScript**不同于其他命令，因为它允许您提供自己的自定义脚本。
+选择要运行的命令。 一些命令可能有可选的或必需的输入参数。 对于这些命令，这些参数将作为文本字段显示，以便你提供输入值。 对于每个命令，可以通过展开 "**查看脚本**" 来查看正在运行的脚本。 **RunPowerShellScript**不同于其他命令，因为它允许你提供自己的自定义脚本。
 
 > [!NOTE]
 > 内置命令不可编辑。
 
-选择该命令后，选择 **"运行"** 以运行脚本。 脚本完成后，它将返回输出窗口中的输出和任何错误。 下面的屏幕截图显示了运行 **RDPSettings** 命令时的示例输出。
+选择命令后，选择 "**运行**" 以运行脚本。 脚本完成后，会在 "输出" 窗口中返回输出和任何错误。 下面的屏幕截图显示了运行 **RDPSettings** 命令时的示例输出。
 
 ![运行命令脚本输出](./media/run-command/run-command-script-output.png)
 
@@ -106,7 +106,7 @@ Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' 
 
 运行命令需要订阅级别的 `Microsoft.Compute/virtualMachines/runCommand/action` 权限。 [虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)角色和更高级别的角色具有此权限。
 
-您可以使用其中一个[内置角色](../../role-based-access-control/built-in-roles.md)，也可以创建[自定义角色](../../role-based-access-control/custom-roles.md)来使用 Run 命令。
+可以使用某个[内置角色](../../role-based-access-control/built-in-roles.md)，也可以创建[自定义角色](../../role-based-access-control/custom-roles.md)来使用 "运行" 命令。
 
 ## <a name="next-steps"></a>后续步骤
 

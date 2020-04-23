@@ -1,14 +1,14 @@
 ---
 title: 备份 Azure 文件常见问题解答
 description: 本文介绍有关如何使用 Azure 备份服务保护 Azure 文件共享的常见问题解答。
-ms.date: 07/29/2019
+ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: c69d4642aefbd599d3783dcdfa059a0cd9d129d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b89e4a55bc8bc4ef2f4cdb50059537fe7708b6a6
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302536"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101155"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>有关如何备份 Azure 文件的问题
 
@@ -18,9 +18,9 @@ ms.locfileid: "78302536"
 
 ## <a name="configuring-the-backup-job-for-azure-files"></a>为 Azure 文件配置备份作业
 
-### <a name="why-cant-i-see-some-of-my-storage-accounts-i-want-to-protect-that-contain-valid-azure-file-shares"></a>为什么我看不到需要保护的部分存储帐户？这些帐户中包含的 Azure 文件共享都是有效的。
+### <a name="why-cant-i-see-some-of-my-storage-accounts-that-i-want-to-protect-which-contain-valid-azure-file-shares"></a>为什么我看不到我要保护的某些存储帐户，其中包含有效的 Azure 文件共享？
 
-在预览期间，Azure 文件共享的备份并不支持所有类型的存储帐户。 请参阅[此处](troubleshoot-azure-files.md#limitations-for-azure-file-share-backup-during-preview)的列表，了解一系列受支持的存储帐户。 还有一种可能是，要查找的存储帐户已受保护或已注册到另一保管库中。 从保管库中[注销](troubleshoot-azure-files.md#configuring-backup)可发现其他保管库中要保护的存储帐户。
+请参阅[Azure 文件共享备份的支持矩阵](azure-file-share-support-matrix.md)，以确保存储帐户属于受支持的存储帐户类型之一。 还可能是你要查找的存储帐户已受保护，或已注册到另一个保管库。 从保管库中[取消注册存储帐户](manage-afs-backup.md#unregister-a-storage-account)，以便在其他保管库中发现存储帐户以进行保护。
 
 ### <a name="why-cant-i-see-some-of-my-azure-file-shares-in-the-storage-account-when-im-trying-to-configure-backup"></a>尝试配置备份时，为什么看不到存储帐户中的部分 Azure 文件共享？
 
@@ -28,66 +28,19 @@ ms.locfileid: "78302536"
 
 ### <a name="can-i-protect-file-shares-connected-to-a-sync-group-in-azure-files-sync"></a>是否可以保护已连接到 Azure 文件同步中的某个同步组的文件共享？
 
-是的。 保护连接到同步组的 Azure 文件共享这一功能已启用，在公共预览版中提供。
+是的。 支持对连接到同步组的 Azure 文件共享进行保护。
 
-### <a name="when-trying-to-back-up-file-shares-i-clicked-on-a-storage-account-for-discovering-the-file-shares-in-it-however-i-did-not-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>我在尝试备份文件共享时，单击了某个存储帐户，看能否发现其中的文件共享。 但是，我发现自己无法对其进行保护。 如何使用其他保管库来保护这些文件共享？
+### <a name="when-trying-to-back-up-file-shares-i-clicked-on-a-storage-account-for-discovering-the-file-shares-in-it-however-i-didnt-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>我在尝试备份文件共享时，单击了某个存储帐户，看能否发现其中的文件共享。 但是，我并没有对其进行保护。 如何实现通过任何其他保管库保护这些文件共享？
 
-尝试进行备份时，如果选择一个要发现其中的文件共享的存储帐户，则会将该存储帐户注册到在其中执行此操作的保管库。 如果选择使用其他保管库来保护文件共享，则请从该保管库[注销](troubleshoot-azure-files.md#configuring-backup)所选存储帐户。
+尝试备份时，选择存储帐户以发现其中的文件共享时，会将存储帐户注册到完成此操作的保管库。 如果选择使用其他保管库来保护文件共享，请从该保管库中[取消注册](manage-afs-backup.md#unregister-a-storage-account)所选存储帐户。
 
 ### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>是否可以更改将文件共享备份到的保管库？
 
-是的。 但是，您需要停止对连接的保管库[的文件共享的保护](manage-afs-backup.md#stop-protection-on-a-file-share)，[取消注册](troubleshoot-azure-files.md#configuring-backup)此存储帐户，然后保护它免受其他保管库的影响。
-
-### <a name="in-which-geos-can-i-back-up-azure-file-shares"></a>可以在哪些地理区域备份 Azure 文件共享？
-
-Azure 文件共享备份目前为预览版，只在以下地理区域提供：
-
-- 澳大利亚东部 (AE)
-- 澳大利亚东南部 (ASE)
-- 巴西南部 (BRS)
-- 加拿大中部 (CNC)
-- 加拿大东部 (CE)
-- 美国中部 (CUS)
-- 东亚 (EA)
-- 美国东部 (EUS)
-- 美国东部 2 (EUS2)
-- 日本东部 (JPE)
-- 日本西部 (JPW)
-- 印度中部 (INC)
-- 印度南部 (INS)
-- 韩国中部 (KRC)
-- 韩国南部 (KRS)
-- 美国中北部 (NCUS)
-- 北欧 (NE)
-- 美国中南部 (SCUS)
-- 东南亚 (SEA)
-- 英国南部 (UKS)
-- 英国西部 (UKW)
-- 西欧 (WE)
-- 美国西部 (WUS)
-- 美国中西部 (WCUS)
-- 美国西部 2 (WUS 2)
-- US Gov 亚利桑那州 (UGA)
-- US Gov 德克萨斯州 (UGT)
-- US Gov 弗吉尼亚州 (UGV)
-- 澳大利亚中部 （ACL）
-- 印度西部（INW）
-- 南非北部（SAN）
-- 阿联酋北部（UAN）
-- 法国中部 （FRC）
-- 德国北部 （GN）                       
-- 德国中西部 （GWC）
-- 南非西部
-- 阿联酋中部 （UAC）
-- NWE（挪威东部）     
-- NWW（挪威西部）
-- SZN（瑞士北部）
-
-如果需要在[AskAzureBackupTeam@microsoft.com](mailto:askazurebackupteam@microsoft.com)上面未列出的特定地理位置中使用它，请写入。
+是的。 但是，你需要从已连接的保管库中[停止对文件共享的保护](manage-afs-backup.md#stop-protection-on-a-file-share)，[取消注册](manage-afs-backup.md#unregister-a-storage-account)此存储帐户，然后从其他保管库中对其进行保护。
 
 ### <a name="how-many-azure-file-shares-can-i-protect-in-a-vault"></a>可以在保管库中保护多少 Azure 文件共享？
 
-在预览期，一个保管库中最多可以保护 50 个存储帐户的 Azure 文件共享。 也可在单个保管库中保护多达 200 个 Azure 文件共享。
+你可以保护每个保管库最多50个存储帐户的 Azure 文件共享。 也可在单个保管库中保护多达 200 个 Azure 文件共享。
 
 ### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>是否可以在不同的保管库中对同一存储帐户中的两个不同的文件共享进行保护？
 
@@ -95,19 +48,15 @@ Azure 文件共享备份目前为预览版，只在以下地理区域提供：
 
 ## <a name="backup"></a>备份
 
-### <a name="how-many-scheduled-backups-can-i-configure-per-file-share"></a>针对每个文件共享，可以配置多少个计划备份？
+### <a name="what-should-i-do-if-my-backups-start-failing-due-to-the-maximum-limit-reached-error"></a>如果备份由于达到最大限制错误而开始失败，我该怎么办？
 
-Azure 备份当前支持对 Azure 文件共享配置计划的每日一次备份。
-
-### <a name="how-many-on-demand-backups-can-i-take-per-file-share"></a>每个文件共享可以进行多少个按需备份？
-
-在任何时间点，最多可以有一个文件共享的 200 个快照。 此限制包括由 Azure 备份根据策略的定义创建的快照。 如果在达到此限制后无法进行备份，请删除按需还原点，以便将来能够成功地进行备份。
+在任何时间点，最多可以有一个文件共享的 200 个快照。 此限制包括由 Azure 备份根据策略的定义创建的快照。 如果在达到此限制后，备份开始失败，请删除按需快照以获得成功的备份。
 
 ## <a name="restore"></a>还原
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share"></a>能否从已删除的 Azure 文件共享进行恢复？
 
-删除 Azure 文件共享时，系统会显示会被删除的备份的列表，并会要求你进行确认。 无法还原已删除的 Azure 文件共享。
+删除 Azure 文件共享时，会显示要删除的备份的列表并请求确认。 目前无法还原已删除的 Azure 文件共享。
 
 ### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-an-azure-file-share"></a>在停止对 Azure 文件共享进行保护的情况下，是否能从备份还原？
 
@@ -121,15 +70,15 @@ Azure 备份当前支持对 Azure 文件共享配置计划的每日一次备份�
 
 ### <a name="can-i-use-powershell-to-configuremanagerestore-backups-of-azure-file-shares"></a>是否可以使用 PowerShell 配置/管理/还原 Azure 文件共享的备份？
 
-是的。 请参阅[此处](backup-azure-afs-automation.md)的详细文档
+是的。 请参阅[此处](backup-azure-afs-automation.md)的详细文档。
 
-### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-it"></a>能否访问 Azure 备份生成的快照并将其装载？
+### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-them"></a>能否访问 Azure 备份创建的快照并装载它们？
 
-可以访问 Azure 备份生成的所有快照，只需在门户、PowerShell 或 CLI 中查看快照即可。 若要详细了解 Azure 文件共享快照，请参阅 [Azure 文件的共享快照（预览版）概述](../storage/files/storage-snapshots-files.md)。
+可以通过在门户、PowerShell 或 CLI 中查看快照来访问 Azure 备份所采用的所有快照。 若要详细了解 Azure 文件共享快照，请参阅 [Azure 文件的共享快照（预览版）概述](../storage/files/storage-snapshots-files.md)。
 
 ### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>可以为备份配置的最长保留期是多长？
 
-Azure 文件共享的备份提供了配置保留期最多为 180 天的策略的功能。 但是，使用 [PowerShell 中的“按需备份”选项](backup-azure-afs-automation.md#trigger-an-on-demand-backup)，你甚至可以将恢复点保留 10 年。
+有关最大保留期的详细信息，请参阅[支持矩阵](azure-file-share-support-matrix.md)。 当你在配置备份策略时输入保留值时，Azure 备份会实时计算快照数。 一旦与定义的保留值相对应的快照数超过200，门户会显示一条警告，要求你调整保留值。 这是因为，在任何时间点，你都不会超出 Azure 文件的 Azure 文件所支持的最大快照数限制。
 
 ### <a name="what-happens-when-i-change-the-backup-policy-for-an-azure-file-share"></a>更改 Azure 文件共享的备份策略时，会发生什么情况？
 

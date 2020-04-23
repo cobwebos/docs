@@ -1,25 +1,19 @@
 ---
-title: 使用 Azure PowerShell 创建共享的 VM 映像
+title: 创建具有 Azure PowerShell 的共享 VM 映像
 description: 了解如何使用 Azure PowerShell 在 Azure 中创建共享虚拟机映像
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.subservice: imaging
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/06/2019
 ms.author: cynthn
-ms.custom: ''
-ms.openlocfilehash: cfaf545ad2388688666a04076559ff82b7a5d120
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 9da3a531766e74398f4b54f1c777f9a5c65892e1
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458056"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100679"
 ---
 # <a name="create-a-shared-image-gallery-with-azure-powershell"></a>使用 Azure PowerShell 创建共享映像库 
 
@@ -33,16 +27,16 @@ ms.locfileid: "81458056"
 
 | 资源 | 说明|
 |----------|------------|
-| **托管映像** | 这是基本映像，可以单独使用，也可用于在映像库中创建“映像版本”****。 托管映像是从通用 VM 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
+| **托管映像** | 这是基本映像，可以单独使用，也可用于在映像库中创建“映像版本”  。 托管映像是从通用 VM 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
 | **映像库** | 与 Azure 市场一样，**映像库**是用于管理和共享映像的存储库，但你可以控制谁有权访问这些映像。 |
 | **映像定义** | 映像在库中定义，携带有关该映像及其在内部使用的要求的信息。 这包括了该映像是 Windows 还是 Linux 映像、发行说明以及最低和最高内存要求。 它是某种映像类型的定义。 |
 | **映像版本** | 使用库时，将使用**映像版本**来创建 VM。 可根据环境的需要创建多个映像版本。 与托管映像一样，在使用**映像版本**创建 VM 时，将使用映像版本来创建 VM 的新磁盘。 可以多次使用映像版本。 |
 
 对于并行创建的每 20 个 VM，我们建议保留一个副本。 例如，如果要在区域中使用相同映像并行创建 120 个 VM，我们建议至少保留映像的 6 个副本。 有关详细信息，请参阅[缩放](/azure/virtual-machines/windows/shared-image-galleries#scaling)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
-完成本文中的示例，必须具有现有托管映像。 您可以按照[教程操作：使用 Azure PowerShell 创建 Azure VM 的自定义映像](tutorial-custom-images.md)，以便在需要时创建一个映像。 如果托管映像包含数据磁盘，则数据磁盘大小不能超过 1 TB。
+完成本文中的示例，必须具有现有托管映像。 可以按照[教程：使用 Azure PowerShell 创建 Azure VM 的自定义映像](tutorial-custom-images.md)来创建映像（如有需要）。 如果托管映像包含数据磁盘，则数据磁盘大小不能超过 1 TB。
 
 通过本文进行操作时，请根据需要替换资源组和 VM 名称。
 
@@ -53,7 +47,7 @@ ms.locfileid: "81458056"
 
 映像版本完成后，可以创建一个或多个新的 VM。 使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet。 
 
-本示例*在美国中南部*数据中心*的 myResourceGroup*中创建名为*myVMfromImage*的 VM。
+此示例在*美国中南部*数据中心的*myResourceGroup*中创建名为*myVMfromImage*的 VM。
 
 
 ```azurepowershell-interactive
@@ -96,7 +90,7 @@ New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 [!INCLUDE [virtual-machines-common-shared-images-update-delete-ps](../../../includes/virtual-machines-common-shared-images-update-delete-ps.md)]
 
 ## <a name="next-steps"></a>后续步骤
-[Azure 映像生成器（预览）](image-builder-overview.md)可以帮助自动创建映像版本，您甚至可以使用它[从现有映像版本更新和创建新映像版本](image-builder-gallery-update-image-version.md)。 
+[Azure 映像生成器（预览版）](image-builder-overview.md)可帮助自动创建映像版本，甚至还可以使用它来更新[现有映像版本并创建新的映像版本](image-builder-gallery-update-image-version.md)。 
 
 此外可以使用模板创建共享映像库资源。 提供多个 Azure 快速入门模板： 
 

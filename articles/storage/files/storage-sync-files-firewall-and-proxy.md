@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7f398012edc25ba6a04e230fa8049e7264f857bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5fc469c3db7da45f818230909026cedf6c71a4c
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294523"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101733"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure 文件同步代理和防火墙设置
 Azure 文件同步可以将本地服务器连接到 Azure 文件，启用多站点同步和云分层功能。 因此，本地服务器必须连接到 Internet。 IT 管理员需确定服务器访问 Azure 云服务的最佳路径。
@@ -89,13 +89,14 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 下表介绍了进行通信所需的域：
 
-| 服务 | 公共云终结点 | Azure 政府版终结点 | 使用情况 |
+| 服务 | 公有云终结点 | Azure 政府版终结点 | 用法 |
 |---------|----------------|---------------|------------------------------|
 | **Azure 资源管理器** | `https://management.azure.com` | https://management.usgovcloudapi.net | 包括初始服务器注册调用在内的任何用户调用（例如 PowerShell）都会转到/经过此 URL。 |
 | **Azure Active Directory** | https://login.windows.net<br>`https://login.microsoftonline.com` | https://login.microsoftonline.us | Azure 资源管理器调用必须由经过身份验证的用户发出。 若要成功，请使用此 URL 进行用户身份验证。 |
 | **Azure Active Directory** | https://graph.microsoft.com/ | https://graph.microsoft.com/ | 在部署 Azure 文件同步的过程中，将在订阅的 Azure Active Directory 中创建服务主体。 此 URL 用于该操作。 此主体用于将最小的一组权限委托给 Azure 文件同步服务。 对 Azure 文件同步进行初始设置的用户必须是经过身份验证且具有订阅所有者特权的用户。 |
-| **Azure 存储** | &ast;.core.windows.net | &ast;.core.usgovcloudapi.net | 服务器在下载某个文件时，可以直接与存储帐户中的 Azure 文件共享通信，从而提高数据移动效率。 服务器有一个 SAS 密钥，只允许进行针对性的文件共享访问。 |
-| **Azure 文件同步** | &ast;.one.microsoft.com<br>&ast;.afs.azure.net | &ast;.afs.azure.us | 在完成初始服务器注册以后，服务器会收到一个区域 URL，适用于该区域中的 Azure 文件同步服务实例。 服务器可以使用此 URL 直接且高效地与负责其同步的实例通信。 |
+| **Azure Active Directory** | https://secure.aadcdn.microsoftonline-p.com | 使用公共终结点 URL。 | Azure 文件同步服务器注册 UI 用来登录管理员的 Active Directory 身份验证库访问此 URL。 |
+| **Azure 存储** | &ast;.core.windows.net | &ast;。 core.usgovcloudapi.net | 服务器在下载某个文件时，可以直接与存储帐户中的 Azure 文件共享通信，从而提高数据移动效率。 服务器有一个 SAS 密钥，只允许进行针对性的文件共享访问。 |
+| **Azure 文件同步** | &ast;.one.microsoft.com<br>&ast;。 afs.azure.net | &ast;。 afs.azure.us | 在完成初始服务器注册以后，服务器会收到一个区域 URL，适用于该区域中的 Azure 文件同步服务实例。 服务器可以使用此 URL 直接且高效地与负责其同步的实例通信。 |
 | **Microsoft PKI** | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | 安装 Azure 文件同步代理后，PKI URL 用于下载与 Azure 文件同步服务和 Azure 文件共享进行通信所需的中间证书。 OCSP URL 用于检查证书的状态。 |
 
 > [!Important]
@@ -103,7 +104,7 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 如果 &ast;.one.microsoft.com 范围太广，则可限制服务器的通信，只允许与 Azure 文件同步服务的显式区域性实例通信。 选择哪个或哪些实例取决于向其部署和注册了服务器的存储同步服务的区域。 在下表中，该区域称为“主终结点 URL”。
 
-出于业务连续性和灾难恢复 (BCDR) 的原因，你可能在全局冗余 (GRS) 存储帐户中指定了 Azure 文件共享。 如果是这样，在发生长时间的区域性中断时，Azure 文件共享将故障转移到配对的区域。 Azure 文件同步使用的区域配对与存储相同。 因此，如果使用 GRS 存储帐户，则需要启用其他 URL，以允许服务器与 Azure 文件同步的配对区域对话。下表称之为"配对区域"。 此外，还需要启用一个流量管理器配置文件 URL。 在发生故障转移时，此 URL 可确保将网络流量无缝重新路由到配对区域；在下表中，此 URL 称为“发现 URL”。
+出于业务连续性和灾难恢复 (BCDR) 的原因，你可能在全局冗余 (GRS) 存储帐户中指定了 Azure 文件共享。 如果是这样，在发生长时间的区域性中断时，Azure 文件共享将故障转移到配对的区域。 Azure 文件同步使用的区域配对与存储相同。 因此，如果你使用 GRS 存储帐户，则需要启用其他 Url，以允许服务器与 Azure 文件同步的配对区域通信。下表将调用此 "配对区域"。 此外，还需要启用一个流量管理器配置文件 URL。 在发生故障转移时，此 URL 可确保将网络流量无缝重新路由到配对区域；在下表中，此 URL 称为“发现 URL”。
 
 | 云  | 区域 | 主终结点 URL | 配对区域 | 发现 URL |
 |--------|--------|----------------------|---------------|---------------|
@@ -141,28 +142,28 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 **示例：** 在 `"West US"` 中部署存储同步服务并在其中注册自己的服务器。 在本例中，允许与服务器通信的 URL 为：
 
-> - https：\//kailani.one.microsoft.com （主终结点： 美国西部）
-> - https：\//kailani1.one.microsoft.com （配对故障转移区域： 美国东部）
-> - https：\//tm-kailani.one.microsoft.com（主区域的发现 URL）
+> - https：\//kailani.one.microsoft.com （主终结点：美国西部）
+> - https：\//kailani1.one.microsoft.com （配对的故障转移区域：美国东部）
+> - https：\//tm-kailani.one.microsoft.com （主要区域的发现 URL）
 
-### <a name="allow-list-for-azure-file-sync-ip-addresses"></a>允许 Azure 文件同步 IP 地址列表
-Azure 文件同步支持使用[服务标记](../../virtual-network/service-tags-overview.md)，它表示给定 Azure 服务的一组 IP 地址前缀。 可以使用服务标记创建防火墙规则，以启用与 Azure 文件同步服务的通信。 Azure 文件同步的服务标记为`StorageSyncService`。
+### <a name="allow-list-for-azure-file-sync-ip-addresses"></a>Azure 文件同步 IP 地址的允许列表
+Azure 文件同步支持使用[服务标记](../../virtual-network/service-tags-overview.md)，这些标记表示给定 Azure 服务的一组 IP 地址前缀。 你可以使用服务标记来创建防火墙规则，以便与 Azure 文件同步服务进行通信。 Azure 文件同步的服务标记为`StorageSyncService`。
 
-如果在 Azure 中使用 Azure 文件同步，则可以直接在网络安全组中使用服务标记的名称来允许流量。 要了解有关如何执行此操作的更多信息，请参阅[网络安全组](../../virtual-network/security-overview.md)。
+如果在 Azure 中使用 Azure 文件同步，则可以直接在网络安全组中使用服务标记名称来允许流量。 若要了解有关如何执行此操作的详细信息，请参阅[网络安全组](../../virtual-network/security-overview.md)。
 
-如果在本地使用 Azure 文件同步，则可以使用服务标记 API 获取防火墙允许列表的特定 IP 地址范围。 有两种方法可以获取此信息：
+如果你使用的是本地 Azure 文件同步，则可以使用服务标记 API 为防火墙的允许列表获取特定的 IP 地址范围。 获取此信息的方法有两种：
 
-- 支持服务标记的所有 Azure 服务标记的当前 IP 地址范围列表每周以 JSON 文档的形式在 Microsoft 下载中心发布。 每个 Azure 云都有自己的 JSON 文档，其 IP 地址范围与该云相关：
+- 所有支持服务标记的所有 Azure 服务的 IP 地址范围的当前列表将在 Microsoft 下载中心上以 JSON 文档的形式发布。 每个 Azure 云都有自己的 JSON 文档，该文档具有与该云相关的 IP 地址范围：
     - [Azure Public](https://www.microsoft.com/download/details.aspx?id=56519)
-    - [Azure 美国政府](https://www.microsoft.com/download/details.aspx?id=57063)
+    - [Azure 美国政府版](https://www.microsoft.com/download/details.aspx?id=57063)
     - [Azure 中国](https://www.microsoft.com/download/details.aspx?id=57062)
     - [Azure 德国](https://www.microsoft.com/download/details.aspx?id=57064)
-- 服务标记发现 API（预览）允许以编程方式检索当前服务标记列表。 在预览中，服务标记发现 API 可能会返回比从 Microsoft 下载中心上发布的 JSON 文档返回的信息更最新的信息。 您可以根据您的自动化首选项使用 API 曲面：
+- 服务标记发现 API （预览版）允许以编程方式检索当前服务标记列表。 在预览版中，服务标记发现 API 返回的信息可能低于从 Microsoft 下载中心发布的 JSON 文档返回的信息。 可以根据自动化首选项使用 API surface：
     - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
-    - [Azure 电源外壳](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag)
+    - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag)
     - [Azure CLI](https://docs.microsoft.com/cli/azure/network#az-network-list-service-tags)
 
-由于服务标记发现 API 的更新频率不如发布到 Microsoft 下载中心的 JSON 文档，因此建议使用 JSON 文档更新本地防火墙的允许列表。 可以按以下步骤来完成：
+由于服务标记发现 API 的更新频率不会与发布到 Microsoft 下载中心的 JSON 文档的频率相同，因此我们建议使用 JSON 文档来更新本地防火墙的允许列表。 可以按以下步骤来完成：
 
 ```PowerShell
 # The specific region to get the IP address ranges for. Replace westus2 with the desired region code 
@@ -259,12 +260,12 @@ if ($found) {
 }
 ```
 
-然后，您可以使用 中的`$ipAddressRanges`IP 地址范围来更新防火墙。 有关如何更新防火墙的信息，请查看防火墙/网络设备的网站。
+然后，你可以使用中`$ipAddressRanges`的 IP 地址范围来更新你的防火墙。 请查看你的防火墙/网络设备的网站，了解有关如何更新防火墙的信息。
 
 ## <a name="test-network-connectivity-to-service-endpoints"></a>测试与服务终结点的网络连接
-一旦服务器注册到 Azure 文件同步服务，测试存储同步连接 cmdlet 和服务器注册.exe 可用于测试与特定于此服务器的所有终结点 （URL） 的通信。 当通信不完整阻止服务器完全使用 Azure 文件同步并且可用于微调代理和防火墙配置时，此 cmdlet 可帮助进行故障排除。
+将服务器注册到 Azure 文件同步服务后，StorageSyncNetworkConnectivity cmdlet 和 ServerRegistration 可用于测试与特定于此服务器的所有终结点（Url）的通信。 当未完成通信阻止服务器完全使用 Azure 文件同步并且它可用于微调代理和防火墙配置时，此 cmdlet 可帮助进行故障排除。
 
-要运行网络连接测试，请安装 Azure 文件同步代理版本 9.1 或更高版本，并运行以下 PowerShell 命令：
+若要运行网络连接测试，请安装 Azure 文件同步代理版本9.1 或更高版本，并运行以下 PowerShell 命令：
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Test-StorageSyncNetworkConnectivity

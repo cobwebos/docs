@@ -1,26 +1,19 @@
 ---
 title: 了解 Azure 虚拟机使用情况
 description: 了解虚拟机使用情况详细信息
-services: virtual-machines
-documentationcenter: ''
 author: mmccrory
-manager: gwallace
-editor: ''
 tags: azure-virtual-machine
-ms.assetid: ''
 ms.service: virtual-machines
-ms.devlang: ''
-ms.topic: article
-ms.tgt_pltfrm: vm
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: 2aa175d97787d82aae062a95ed519f35ff65816b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0caa028c8352f8dd1b3be4a843b9b49128b2c382
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75982262"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101563"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>了解 Azure 虚拟机使用情况
 通过分析 Azure 使用情况数据，可以获得强有力的使用情况见解，根据这些见解，可以更好地在整个组织内进行成本管理和分配。 本文档深入介绍 Azure 计算使用情况详细信息。 有关 Azure 一般使用情况的更多详细信息，请导航到[了解你的帐单](../../cost-management-billing/understand/review-individual-bill.md)。
@@ -117,7 +110,7 @@ ms.locfileid: "75982262"
 VM 本身、在 VM 上运行的任何高级软件、与虚拟机相关的存储帐户/托管磁盘，以及从 VM 传输的网络宽带都会产生成本。
 ### <a name="how-can-i-tell-if-a-vm-is-using-azure-hybrid-benefit-in-the-usage-csv"></a>如何辨别 VM 在使用情况 CSV 中是否使用 Azure 混合权益？
 如果使用 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)进行部署，则会收取非 Windows VM 费率，因为你将自己的许可证带到了云中。 在帐单中，可以区分哪些资源管理器 VM 运行 Azure 混合权益，因为这些 VM 的 ImageType 列要么包含“Windows\_Server BYOL”，要么包含“Windows\_Client BYOL”。
-### <a name="how-are-basic-vs-standard-vm-types-differentiated-in-the-usage-csv"></a>基本 VM 类型与标准 VM 类型在使用情况 CSV 中是如何区分的？
+### <a name="how-are-basic-vs-standard-vm-types-differentiated-in-the-usage-csv"></a>使用情况 CSV 中的基本和标准 VM 类型有何区别？
 基本和标准 A 系列 VM 都有提供。 如果部署基本 VM，那么“测定仪子类别”列中将包含字符串“Basic”。 如果部署标准 A 系列 VM，则该 VM 的大小会显示为“A1 VM”，这是因为默认为标准 VM。 若要详细了解基本和标准 VM 的区别，请参阅[定价页](https://azure.microsoft.com/pricing/details/virtual-machines/)。
 ### <a name="what-are-extrasmall-small-medium-large-and-extralarge-sizes"></a>什么是“特小型”、“小型”、“中型”、“大型”和“特大型”？
 特小型 - 特大型是 Standard\_A0 – Standard\_A4 的原有名字。 在经典 VM 使用情况记录中，如果已部署这些大小，则可能会看到使用此约定。

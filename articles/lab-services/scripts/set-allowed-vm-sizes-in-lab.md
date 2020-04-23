@@ -1,6 +1,6 @@
 ---
 title: PowerShell 脚本：在 Azure 实验室服务中设置允许的 VM 大小 | Microsoft Docs
-description: 本文包括一个示例 PowerShell 脚本，该脚本在 Azure 实验室服务中设置允许的虚拟机 （VM） 大小。
+description: 本文包含一个示例 PowerShell 脚本，用于在 Azure 实验室服务中设置允许的虚拟机（VM）大小。
 services: lab-services
 author: spelluru
 manager: ''
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 04/24/2020
 ms.author: spelluru
-ms.openlocfilehash: a1b0e9a4aed475f04ec8dcffa9bc95b7c7c713e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b3dbee7d0ac928c4f18f25348e714aba9c1cd13
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76760434"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100763"
 ---
 # <a name="use-powershell-to-set-allowed-vm-sizes-in-azure-lab-services"></a>使用 PowerShell 在 Azure 实验室服务中设置允许的 VM 大小
 
@@ -38,9 +38,9 @@ ms.locfileid: "76760434"
 
 此脚本使用以下命令： 
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
-| 查找-阿兹资源 | 基于指定参数搜索资源。 |
+| AzResource | 基于指定参数搜索资源。 |
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | 获取资源。 |
 | [Set-AzResource](/powershell/module/az.resources/set-azresource) | 修改资源。 |
 | [New-AzResource](/powershell/module/az.resources/new-azresource) | 创建资源。 |

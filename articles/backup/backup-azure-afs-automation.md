@@ -1,18 +1,18 @@
 ---
-title: 使用 PowerShell 备份 Azure 文件
-description: 在本文中，了解如何使用 Azure 备份服务和 PowerShell 备份 Azure 文件。
+title: 使用 PowerShell 备份 Azure 文件存储
+description: 本文介绍如何使用 Azure 备份服务和 PowerShell 来备份 Azure 文件存储。
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: f85451e0da6458de34aea936836b46781f4c4a21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 865cfc6daa7568236b0306ba591b42a9f7704dd4
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79273535"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101172"
 ---
-# <a name="back-up-azure-files-with-powershell"></a>使用 PowerShell 备份 Azure 文件
+# <a name="back-up-azure-files-with-powershell"></a>使用 PowerShell 备份 Azure 文件存储
 
-本文介绍如何使用 Azure PowerShell 使用[Azure 备份](backup-overview.md)恢复服务保管库备份 Azure 文件共享。
+本文介绍如何在 Azure PowerShell 中使用 [Azure 备份](backup-overview.md)恢复服务保管库来备份“Azure 文件存储”文件共享。
 
 本文介绍如何执行以下操作：
 
@@ -26,7 +26,6 @@ ms.locfileid: "79273535"
 ## <a name="before-you-start"></a>开始之前
 
 * [详细了解](backup-azure-recovery-services-vault-overview.md)恢复服务保管库。
-* 阅读有关备份 Azure[文件共享的](backup-afs.md)预览功能。
 * 查看恢复服务的 PowerShell 对象层次结构。
 
 ## <a name="recovery-services-object-hierarchy"></a>恢复服务对象层次结构
@@ -45,12 +44,12 @@ ms.locfileid: "79273535"
 
 1. [下载最新版本的 Azure PowerShell](/powershell/azure/install-az-ps)。 所需的最低版本为 1.0.0。
 
-> [!WARNING]
-> 预览所需的最低 PS 版本为"Az 1.0.0"。 由于 GA 即将更改，所需的最低 PS 版本将为"Az.RecoveryServices 2.6.0"。 将所有现有 PS 版本升级到此版本非常重要。 否则，现有脚本将在 GA 后中断。 使用以下 PS 命令安装最小版本
+    > [!WARNING]
+    > Azure 文件共享备份所需的最低 PS 版本是**microsoft.recoveryservices 2.6.0**。 请升级您的版本，以避免出现与现有脚本有关的任何问题。 通过以下 PS 命令安装最低版本：
 
-```powershell
-Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
-```
+    ```powershell
+    Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
+    ```
 
 2. 找到包含以下命令的 Azure 备份 PowerShell cmdlet：
 
@@ -248,14 +247,14 @@ WorkloadName       Operation            Status                 StartTime        
 testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 PM     11/12/2018 2:16:11 PM     ec7d4f1d-40bd-46a4-9edb-3193c41f6bf6
 ```
 
-## <a name="important-notice---backup-item-identification-for-afs-backups"></a>重要通知 - AFS 备份的备份项标识
+## <a name="important-notice---backup-item-identification-for-afs-backups"></a>重要说明-用于 AFS 备份的备份项标识
 
-本节概述了为准备 GA 而 AFS 备份的一个重要更改。
+本部分概述了 AFS 备份中的一项重要更改，为 GA 做准备。
 
-在为 AFS 启用备份时，用户将客户友好的文件共享名称作为实体名称和备份项的创建。 备份项的"名称"是 Azure 备份服务创建的唯一标识符。 通常标识符涉及用户友好名称。 但是，要处理软删除的重要方案，其中文件共享可以被删除，另一个文件共享可以使用相同的名称创建，Azure 文件共享的唯一标识现在将是一个 ID 而不是客户友好的名称。 为了知道每个项目的唯一标识/名称，只需使用备份管理类型和工作负载```Get-AzRecoveryServicesBackupItem```类型的相关筛选器运行该命令，获取所有相关项，然后观察返回的 PS 对象/响应中的名称字段。 始终建议列出项，然后从"名称"字段中检索它们的唯一名称以进行响应。 使用此值使用"名称"参数筛选项。 否则，使用"友好名称"参数检索具有客户友好名称/标识符的项目。
+为 AFS 启用备份时，用户会提供客户友好的文件共享名称作为实体名称，并创建备份项。 备份项的 "名称" 是 Azure 备份服务创建的唯一标识符。 通常，标识符涉及用户友好名称。 但是，若要处理软删除的重要情况，其中可以删除文件共享，并且可以创建具有相同名称的另一个文件共享，则 Azure 文件共享的唯一标识现在为 ID 而不是客户友好名称。 为了了解每个项的唯一标识/名称，只需运行包含 backupManagementType ```Get-AzRecoveryServicesBackupItem```和 WorkloadType 相关筛选器的命令，即可获取所有相关项，然后在返回的 PS 对象/响应中观察名称字段。 始终建议列出项，然后在 "名称" 字段中检索其唯一名称。 使用此值可以筛选具有 "Name" 参数的项。 否则，请使用 FriendlyName 参数检索具有客户友好名称/标识符的项。
 
 > [!WARNING]
-> 确保 PS 版本升级到 AFS 备份的"Az.恢复服务 2.6.0"的最低版本。 使用此版本，"友好名称"筛选器可用于```Get-AzRecoveryServicesBackupItem```命令。 将 Azure 文件共享名称传递给友好名称参数。 如果将 Azure 文件共享名称传递给"名称"参数，此版本将引发一条警告，以将此友好名称传递给友好名称参数。 不安装此最小版本可能会导致现有脚本失败。 使用以下命令安装 PS 的最小版本。
+> 请确保将 PS 版本升级到最小版本的 Microsoft.recoveryservices 2.6.0。 在此版本中，"friendlyName" 筛选器可用于```Get-AzRecoveryServicesBackupItem```命令。 将 Azure 文件共享名称传递到 friendlyName 参数。 如果将 Azure 文件共享名称传递到 "Name" 参数，此版本将引发警告，以将此友好名称传递给易记名称参数。 如果不安装此最低版本，则可能导致现有脚本失败。 通过以下命令安装最小版本的 PS。
 
 ```powershell
 Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
@@ -265,8 +264,8 @@ Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
 
 使用 [Backup-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem?view=azps-1.4.0) 针对受保护的 Azure 文件共享运行按需备份。
 
-1. 使用[Get-AzRecoveryServices 备份容器](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer)从保管库中保存备份数据的容器中检索存储帐户。
-2. 要启动备份作业，您需要获取有关 Azure 文件共享的信息，包括[获取服务备份项](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem)。
+1. 从保管库中的容器中检索存储帐户，其中包含[AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer)的备份数据。
+2. 若要启动备份作业，可以使用[AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem)获取有关 Azure 文件共享的信息。
 3. 使用 [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem) 运行按需备份。
 
 按如下所示运行按需备份：
@@ -287,14 +286,12 @@ testAzureFS       Backup               Completed            11/12/2018 2:42:07 P
 
 创建备份时使用 Azure 文件共享快照，因此通常作业在命令返回此输出时完成。
 
-### <a name="using-on-demand-backups-to-extend-retention"></a>使用按需备份延长保留期
+### <a name="using-a-runbook-to-schedule-backups"></a>使用 runbook 计划备份
 
-可以使用按需备份将快照保留 10 年。 计划程序可用于运行可选择保留期的按需 PowerShell 脚本，从而每周、每月或每年定期拍摄快照。 拍摄常规快照时，请参阅使用 Azure[备份按需备份的限制](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share)。
+如果要查找示例脚本，可以使用 Azure 自动化 runbook[在 GitHub 上参阅示例脚本](https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup)。
 
-如果要查找示例脚本，可以使用 Azure 自动化 Runbook 参考 GitHub<https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup>（） 上的示例脚本，该运行簿使您能够定期计划备份，并保留备份甚至长达 10 年。
-
-> [!WARNING]
-> 确保 PS 版本升级到自动化 Runbook 中 AFS 备份的"Az.RecoveryServices 2.6.0"的最低版本。 您必须将旧的"AzureRM"模块替换为"Az"模块。 使用此版本，"友好名称"筛选器可用于```Get-AzRecoveryServicesBackupItem```命令。 将 azure 文件共享名称传递给友好名称参数。 如果将 azure 文件共享名称传递给"名称"参数，此版本将引发一条警告，以将此友好名称传递给友好名称参数。
+>[!NOTE]
+> Azure 文件共享备份策略现在支持配置每日/每周/每月/每年保留的备份。
 
 ## <a name="next-steps"></a>后续步骤
 

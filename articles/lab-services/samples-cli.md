@@ -1,6 +1,6 @@
 ---
 title: 用于 Azure 实验室服务的 Azure CLI 示例 | Microsoft Docs
-description: 本文提供了 Azure CLI 脚本示例的列表，这些示例可帮助您管理 Azure 实验室服务中的实验室。
+description: 本文提供了可帮助你管理 Azure 实验室服务中的实验室 Azure CLI 脚本示例的列表。
 services: lab-services
 author: spelluru
 manager: ''
@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 35c1a18587ebae1253bd1661a57e21c39f34ee51
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 075b5dc06c59682b33c20b182e0dc585b2727027
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76760498"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82097840"
 ---
 # <a name="azure-cli-samples-for-azure-lab-services"></a>用于 Azure 实验室服务的 Azure CLI 示例
 
@@ -26,6 +26,6 @@ ms.locfileid: "76760498"
 
 | | |
 |---|---|
-| [创建并验证 VM 的可用性](scripts/create-verify-virtual-machine-in-lab-cli.md?toc=%2fcli%2fazure%2ftoc.json) | 使用最小配置创建 Windows 虚拟机。 |
-| [启动 VM](scripts/start-connect-virtual-machine-in-lab-cli.md?toc=%2fcli%2fazure%2ftoc.json) | 启动 VM。 |
-| [停止和删除 VM](scripts/stop-delete-virtual-machine-in-lab-cli.md?toc=%2fcli%2fazure%2ftoc.json) | 停止和删除 VM。 |
+| [创建并验证 VM 的可用性](scripts/create-verify-virtual-machine-in-lab-cli.md) | 使用最小配置创建 Windows 虚拟机。 |
+| [启动 VM](scripts/start-connect-virtual-machine-in-lab-cli.md) | 启动 VM。 |
+| [停止和删除 VM](scripts/stop-delete-virtual-machine-in-lab-cli.md) | 停止和删除 VM。 |

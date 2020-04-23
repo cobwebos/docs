@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a5942a9d614bbb06fadb1d4b16d4c68c007434c7
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 24567461ee8a87fc9dbd1c5fb4eba5e34d458f7b
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885312"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82097755"
 ---
-# <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>调用 Web API 的桌面应用：获取令牌
+# <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>用于调用 Web API 的桌面应用：获取令牌
 
 生成公共客户端应用程序的实例后，你将使用它来获取一个令牌，然后使用该令牌调用 Web API。
 
@@ -175,7 +175,7 @@ catch(MsalUiRequiredException)
 
 ### <a name="mandatory-parameters"></a>必需参数
 
-`AcquireTokenInteractive` 只有一个必需的参数 ``scopes``，其中包含一个定义需要令牌的范围的字符串枚举。 如果该令牌适用于 Microsoft Graph，可以在名为“权限”的部分中每个 Microsoft Graph API 的 API 参考中找到所需的范围。 例如，要[列出用户的联系人](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts)，必须使用"用户.阅读"、"联系人.读取"的范围。 有关详细信息，请参阅 [Microsoft Graph 权限参考](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)。
+`AcquireTokenInteractive` 只有一个必需的参数 ``scopes``，其中包含一个定义需要令牌的范围的字符串枚举。 如果该令牌适用于 Microsoft Graph，可以在名为“权限”的部分中每个 Microsoft Graph API 的 API 参考中找到所需的范围。 例如，若要[列出用户的联系人](https://docs.microsoft.com/graph/api/user-list-contacts)，必须使用范围 "User. read"、"contacts"。 有关详细信息，请参阅 [Microsoft Graph 权限参考](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)。
 
 在 Android 上，还需要按如下所示使用 `.WithParentActivityOrWindow` 指定父活动，以便在交互后令牌返回到该父活动。 如果未指定父活动，则调用 `.ExecuteAsync()` 时会引发异常。
 
@@ -272,13 +272,13 @@ MSAL 为大多数平台提供 Web UI 实现，但有时，你可能需要自行�
                        .ExecuteAsync();
      ```
 
-##### <a name="examples-of-implementation-of-icustomwebui-in-test-automation-seleniumwebui"></a>ICustomWebUi 在测试自动化中的实现示例：硒WebUI
+##### <a name="examples-of-implementation-of-icustomwebui-in-test-automation-seleniumwebui"></a>测试自动化中 ICustomWebUi 的实现示例：SeleniumWebUI
 
 MSAL.NET 团队已重新编写 UI 测试，以使用此扩展性机制。 如果有兴趣，请查看 MSAL.NET 源代码中的 [SeleniumWebUI](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/tests/Microsoft.Identity.Test.Integration/Infrastructure/SeleniumWebUI.cs#L15-L160) 类。
 
 ##### <a name="provide-a-great-experience-with-systemwebviewoptions"></a>通过 SystemWebViewOptions 提供极佳体验
 
-从 MSAL.NET 4.1[`SystemWebViewOptions`](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet)中，您可以指定：
+在 MSAL.NET 4.1 [`SystemWebViewOptions`](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) 中，可以指定：
 
 - 在系统 Web 浏览器中出现登录或许可错误时，要转到的 URI (`BrowserRedirectError`) 或需要显示的 HTML 片段 (`HtmlMessageError`)。
 - 在成功完成登录或许可时，要转到的 URI (`BrowserRedirectSuccess`) 或需要显示的 HTML 片段 (`HtmlMessageSuccess`)。
@@ -417,7 +417,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 ### <a name="constraints"></a>约束
 
-- Windows 集成身份验证仅适用于“联合+”用户，即，在 Active Directory 中创建的、由 Azure AD 支持的用户。** 直接在 Azure AD 中创建的但不是由 Active Directory 支持的用户（称为“托管用户”）不能使用此身份验证流。** 此项限制不影响用户名和密码流。
+- Windows 集成身份验证仅适用于“联合+”用户，即，在 Active Directory 中创建的、由 Azure AD 支持的用户。  直接在 Azure AD 中创建的但不是由 Active Directory 支持的用户（称为“托管用户”）不能使用此身份验证流。  此项限制不影响用户名和密码流。
 - IWA 适用于针对 .NET Framework、.NET Core 和通用 Windows 平台 (UWP) 编写的应用。
 - IWA 不会绕过多重身份验证 (MFA)。 如果配置了 MFA，需要 MFA 质询时，IWA 可能会失败，因为 MFA 需要用户交互。
   > [!NOTE]
@@ -426,7 +426,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 - 在 `PublicClientApplicationBuilder` 中传入的颁发机构需要：
   - 租户化（采用 `https://login.microsoftonline.com/{tenant}/` 格式，其中，`tenant` 是表示租户 ID 或者与该租户关联的域的 GUID）。
   - 适用于任何工作和学校帐户：`https://login.microsoftonline.com/organizations/`。
-  - 不支持 Microsoft 个人帐户。 不能使用 /公共租户或 /使用者租户。
+  - 不支持 Microsoft 个人帐户。 不能使用/common 或/consumers 租户。
 
 - 由于 Windows 集成身份验证是一种静默流：
   - 应用程序的用户必须已事先许可使用该应用程序。
@@ -532,7 +532,7 @@ static async Task GetATokenForGraph()
 }
 ```
 
-有关获取令牌通过集成Windows身份验证上可能的修饰符的列表，请参阅[获取令牌由集成WindowsAuth参数生成器](/dotnet/api/microsoft.identity.client.acquiretokenbyintegratedwindowsauthparameterbuilder?view=azure-dotnet-preview#methods)。
+有关 AcquireTokenByIntegratedWindowsAuthentication 上可能的修饰符的列表，请参阅[AcquireTokenByIntegratedWindowsAuthParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyintegratedwindowsauthparameterbuilder?view=azure-dotnet-preview#methods)。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -615,7 +615,7 @@ MSAL Python 尚不支持此流。
 
 以下约束也适用：
 
-- 用户名和密码流与条件访问和多重身份验证不兼容。 因此，如果应用在 Azure AD 租户中运行，而该租户中的租户管理员需要多重身份验证，则你无法使用此流。 许多组织都会提出这种要求。
+- 用户名和密码流与条件性访问和多重身份验证不兼容。 因此，如果应用在 Azure AD 租户中运行，而该租户中的租户管理员需要多重身份验证，则你无法使用此流。 许多组织都会提出这种要求。
 - 它仅适用工作和学校帐户（而不适用于 MSA）。
 - 可在 .NET Desktop 和 .NET Core 中使用该流，但不能在 UWP 中使用。
 
@@ -1240,10 +1240,10 @@ static class TokenCacheHelper
  }
 ```
 
-[Microsoft.Identity.Client.Extensions.Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal) 开源库中提供了适用于公共客户端应用程序（适用于 Windows、Mac 和 Linux 上运行的桌面应用程序）的基于产品质量令牌缓存文件的序列化程序预览。 你可以从以下 NuGet 包中将其包含在应用程序中[：Microsoft.身份.客户端.扩展.Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/)。
+[Microsoft.Identity.Client.Extensions.Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal) 开源库中提供了适用于公共客户端应用程序（适用于 Windows、Mac 和 Linux 上运行的桌面应用程序）的基于产品质量令牌缓存文件的序列化程序预览。 可以将其包含在以下 NuGet 包中的应用程序中： [Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/)。
 
 > [!NOTE]
-> 免责声明：微软.身份.客户端.扩展.Msal 库是MSAL.NET的扩展。 这些库中的类将来可能会按原样或者在做出重大更改的情况下归入 MSAL.NET。
+> 免责声明： Msal 库是 MSAL.NET 上的一个扩展。 这些库中的类将来可能会按原样或者在做出重大更改的情况下归入 MSAL.NET。
 
 ### <a name="dual-token-cache-serialization-msal-unified-cache--adal-v3"></a>双令牌缓存序列化（MSAL 统一缓存和 ADAL v3）
 

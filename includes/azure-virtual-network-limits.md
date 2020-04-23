@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: ee4d629d80ff8265d58a1d05b8dca1652ddac6fb
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 511354633b9f88f3d6cd2e2170ce3b7ca1f4ecdb
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81112892"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82096073"
 ---
-### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>网络限制 - Azure 资源管理器
-以下限制仅适用于每个订阅每个订阅通过**Azure 资源管理器**管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
+### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>网络限制-Azure 资源管理器
+以下限制仅适用于通过**Azure 资源管理器**每个订阅每个区域管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
 
 > [!NOTE]
 > 我们最近将所有默认限制提高到了最大限制。 如果没有最大限制列，则资源没有可调整的限制。 如果过去已通过客户支持提高了这些上限，因此在以下表中看不到更新的限制，可[免费提交联机客户支持请求](../articles/azure-resource-manager/templates/error-resource-quota.md)
@@ -26,8 +26,8 @@ ms.locfileid: "81112892"
 | 虚拟网络 |1,000 |
 | 每个虚拟网络的子网数 |3,000 |
 | 每个虚拟网络的虚拟网络对等互连数 |500 |
-| [每个虚拟网络的虚拟网络网关 （VPN 网关）](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) |1 |
-| [每个虚拟网络的虚拟网络网关（快速路由网关）](../articles/expressroute/expressroute-about-virtual-network-gateways.md#gwsku) |1 |
+| [每个虚拟网络的虚拟网络网关（VPN 网关）](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) |1 |
+| [每个虚拟网络的虚拟网络网关（ExpressRoute 网关）](../articles/expressroute/expressroute-about-virtual-network-gateways.md#gwsku) |1 |
 | 每个虚拟网络的 DNS 服务器数 |20 |
 | 每个虚拟网络的专用 IP 地址数 |65,536 |
 | 每个网络接口的专用 IP 地址数 |256 |
@@ -52,13 +52,13 @@ ms.locfileid: "81112892"
 #### <a name="public-ip-address-limits"></a><a name="publicip-address"></a>公共 IP 地址限制
 | 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |
-| 公共 IP 地址<sup>1</sup> | 10 表示基本。 | 联系支持人员。 |
-| 静态公共 IP 地址<sup>1</sup> | 10 表示基本。 | 联系支持人员。 |
+| 公共 IP 地址<sup>1</sup> | 10表示基本。 | 联系支持人员。 |
+| 静态公共 IP 地址<sup>1</sup> | 10表示基本。 | 联系支持人员。 |
 | 标准公共 IP 地址<sup>1</sup> | 10 | 联系支持人员。 |
-| 公共 IP 前缀 | 受订阅中标准公共 IP 数量的限制 | 联系支持人员。 |
+| 公共 IP 前缀 | 受订阅中标准公共 Ip 的数量限制 | 联系支持人员。 |
 | 公共 IP 前缀长度 | /28 | 联系支持人员。 |
 
-<sup>1</sup>公共 IP 地址的默认限制因产品/服务类别类型而异，例如免费试用、即用即付、CSP。 例如，企业协议订阅的默认值为 1000。
+<sup>1</sup>公共 IP 地址的默认限制根据产品类别类型（例如免费试用、即用即付、CSP）而有所不同。 例如，企业协议订阅的默认值为1000。
 
 #### <a name="load-balancer-limits"></a><a name="load-balancer"></a>负载均衡器限制
 以下限制仅适用于每个订阅按区域通过 Azure 资源管理器管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
@@ -69,28 +69,28 @@ ms.locfileid: "81112892"
 |-----------------------------------------|-------------------------------|
 | 负载均衡器                          | 1,000                         |
 | 每个资源的规则                      | 1,500                         |
-| 每个 NIC 的规则（跨 NIC 上的所有 IP） | 300                           |
+| 每个 NIC 的规则（跨 NIC 上的所有 Ip） | 300                           |
 | 前端 IP 配置              | 600                           |
-| 后端池大小                       | 1，000 个 IP 配置，单个虚拟网络 |
-| 每个负载平衡器<sup>的后端资源 1<sup> | 150                   |
+| 后端池大小                       | 1000 IP 配置，单一虚拟网络 |
+| 每个负载均衡器<sup>的后端资源1<sup> | 150                   |
 | 高可用性端口                 | 每个内部前端 1 个       |
 | 每个负载均衡器的出站规则        | 600                           |
-| [TCP 空闲超时](https://docs.microsoft.com/azure/load-balancer/load-balancer-tcp-idle-timeout#tcp-idle-timeout) | 4 分钟/30 分钟          |
+| [TCP 空闲超时](https://docs.microsoft.com/azure/load-balancer/load-balancer-tcp-idle-timeout#tcp-idle-timeout) | 4分钟/30 分钟          |
 
-<sup>1</sup>限制是最多 150 种资源，采用独立虚拟机资源、可用性集资源和虚拟机规模集资源的任意组合。
+<sup>1</sup>最大限制为150个资源，其中包含独立虚拟机资源、可用性集资源和虚拟机规模集放置组的任意组合。
 
-**基本负载平衡器**
+**基本负载均衡器**
 
 | 资源                                | 限制        |
 |-----------------------------------------|------------------------------|
 | 负载均衡器                          | 1,000                        |
 | 每个资源的规则                      | 250                          |
-| 每个 NIC 的规则（跨 NIC 上的所有 IP） | 300                          |
+| 每个 NIC 的规则（跨 NIC 上的所有 Ip） | 300                          |
 | 前端 IP 配置              | 200                          |
-| 后端池大小                       | 300 个 IP 配置，单一可用性集 |
+| 后端池大小                       | 300 IP 配置，单个可用性集 |
 | 每个负载均衡器的可用性集     | 150                          |
 
-<a name="virtual-networking-limits-classic"></a>以下限制仅适用于通过每个订阅**的经典**部署模型管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
+<a name="virtual-networking-limits-classic"></a>以下限制仅适用于通过每个订阅的**经典**部署模型进行管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
 
 | 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |

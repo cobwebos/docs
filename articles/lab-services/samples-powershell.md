@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2018
+ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: 09b93cc1d1f05e185a1550fb8141423447e802b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 44050ab9367572a8160f6e268781478ca3313419
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "64730606"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100849"
 ---
 # <a name="azure-powershell-samples-for-azure-lab-services"></a>用于 Azure 实验室服务的 Azure PowerShell 示例
 
@@ -25,9 +25,9 @@ ms.locfileid: "64730606"
 
 | |  |
 |---|---|
-|[将外部用户添加到实验室](scripts/add-external-user-to-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 脚本将外部用户添加到 Azure 开发测试实验室中的实验室。 |
-|[将市场映像添加到实验室](scripts/add-marketplace-images-to-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 脚本将市场映像添加到 Azure 开发测试实验室中的实验室。 |
-|[从 VHD 创建自定义映像](scripts/create-custom-image-from-vhd.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 脚本在 Azure 开发测试实验室的实验室中创建自定义映像。 |
-|[在实验室中创建自定义角色](scripts/create-custom-role-in-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 脚本在 Azure 实验室服务的实验室中创建自定义角色。 |
-|[在实验室中设置允许的 VM 大小](scripts/set-allowed-vm-sizes-in-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 脚本在实验室中设置允许的虚拟机 (VM) 大小。 |
+|[将外部用户添加到实验室](scripts/add-external-user-to-lab.md)| 此 PowerShell 脚本将外部用户添加到 Azure 开发测试实验室中的实验室。 |
+|[将市场映像添加到实验室](scripts/add-marketplace-images-to-lab.md)| 此 PowerShell 脚本将市场映像添加到 Azure 开发测试实验室中的实验室。 |
+|[从 VHD 创建自定义映像](scripts/create-custom-image-from-vhd.md)| 此 PowerShell 脚本在 Azure 开发测试实验室的实验室中创建自定义映像。 |
+|[在实验室中创建自定义角色](scripts/create-custom-role-in-lab.md)| 此 PowerShell 脚本在 Azure 实验室服务的实验室中创建自定义角色。 |
+|[在实验室中设置允许的 VM 大小](scripts/set-allowed-vm-sizes-in-lab.md)| 此 PowerShell 脚本在实验室中设置允许的虚拟机 (VM) 大小。 |
 

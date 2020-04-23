@@ -1,6 +1,6 @@
 ---
-title: PowerShell - 将外部用户添加到 Azure 开发人员测试实验室中的实验室
-description: 本文提供了一个 Azure PowerShell 脚本，该脚本将外部用户添加到 Azure DevTest 实验室中的实验室。
+title: PowerShell-将外部用户添加到 Azure 开发测试实验室中的实验室
+description: 本文提供了一个 Azure PowerShell 脚本，该脚本将外部用户添加到 Azure 开发测试实验室中的实验室。
 services: lab-services
 author: spelluru
 manager: ''
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: e9efe5476da051d905feff3d6803cb60ea0c4beb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40103294e2f610e3ff5879c650f835d4c3e4c207
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76760481"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101716"
 ---
 # <a name="use-powershell-to-add-an-external-user-to-a-lab-in-azure-devtest-labs"></a>使用 PowerShell 将外部用户添加到 Azure 开发测试实验室中的实验室
 
@@ -38,9 +38,9 @@ ms.locfileid: "76760481"
 
 此脚本使用以下命令： 
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
-| [获取阿达用户](/powershell/module/az.resources/get-azaduser) | 从 Azure active directory 重试用户对象。 |
+| [AzADUser](/powershell/module/az.resources/get-azaduser) | 从 Azure active directory 重试用户对象。 |
 | [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) | 在指定范围内将指定的角色分配给指定的主体。 |
 
 ## <a name="next-steps"></a>后续步骤

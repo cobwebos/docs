@@ -1,24 +1,18 @@
 ---
 title: 使用 Python 在 Azure 中创建和管理 Windows VM
 description: 了解如何使用 Python 在 Azure 中创建和管理 Windows VM。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
+ms.workload: infrastructure
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.openlocfilehash: 670c369e25639c859f6a8d8b3c65e329b5cf7f04
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: b2172d44b4136b51c0ea459868ebd5b0572bb004
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458175"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82098062"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>在 Azure 中使用 Python 创建和管理 Windows VM
 
@@ -38,8 +32,8 @@ ms.locfileid: "81458175"
 ## <a name="create-a-visual-studio-project"></a>创建 Visual Studio 项目
 
 1. 如果尚未安装，请安装 [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio)。 在“工作负荷”页上选择“Python 开发”****，然后单击“安装”****。 在摘要中，能够看见自动为你选择了“Python 3 64 位(3.6.0)”****。 如果已安装 Visual Studio，则可以使用 Visual Studio 启动器添加 Python 工作负荷。
-2. 安装并启动可视化工作室后，单击"**文件** > **新项目** > **"。**
-3. 单击**模板** > **Python Python** > **应用程序**，输入*myPythonProject*以获取项目名称，选择项目的位置，然后单击"**确定**"。
+2. 安装并启动 Visual Studio 后，单击 "**文件** > " "**新建** > **项目**"。
+3. 单击 "**模板** > " "**python** > " "python**应用程序**"，输入*myPythonProject*作为项目的名称，选择项目的位置，然后单击 **"确定"**。
 
 ## <a name="install-packages"></a>安装包
 
@@ -78,7 +72,7 @@ ms.locfileid: "81458175"
     VM_NAME = 'myVM'
     ```
 
-    将**订阅 ID**替换为订阅标识符。
+    将**订阅 id**替换为你的订阅标识符。
 
 4. 若要创建进行请求所需的 Active Directory 凭据，请在 .py 文件中将此函数添加到变量之后：
 
@@ -571,6 +565,6 @@ compute_client = ComputeManagementClient(
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果部署出现问题，下一步是[使用 Azure 门户查看故障排除资源组部署](../../resource-manager-troubleshoot-deployments-portal.md)
+- 如果部署出现问题，下一步是查看[使用 Azure 门户排查资源组部署](../../resource-manager-troubleshoot-deployments-portal.md)问题
 - 了解有关 [Azure Python 库](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)的更多信息
 

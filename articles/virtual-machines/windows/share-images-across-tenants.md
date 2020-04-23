@@ -1,21 +1,19 @@
 ---
-title: 在 Azure 中的租户之间共享库图像
+title: 跨 Azure 中的租户共享库映像
 description: 了解如何使用共享映像库跨 Azure 租户共享 VM 映像。
-services: virtual-machines-windows
 author: cynthn
-manager: gwallace
 ms.service: virtual-machines-windows
+ms.subservice: imaging
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/15/2019
 ms.author: cynthn
-ms.openlocfilehash: 9b7e7066f186017b7cc4408cd4f7edcc7e5f0dcd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c35799147d276bf4b6f07893b7cd975c5c5823c
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74065517"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101189"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>跨 Azure 租户共享库 VM 映像
 
@@ -86,4 +84,4 @@ New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 
 ## <a name="next-steps"></a>后续步骤
 
-您还可以使用[Azure 门户](shared-images-portal.md)创建共享图像库资源。
+你还可以使用[Azure 门户](shared-images-portal.md)创建共享的映像库资源。

@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 活动目录门户中标记为风险的用户 |微软文档
+title: 在 Azure Active Directory 门户中标记为有风险的用户 |Microsoft Docs
 description: 了解 Azure Active Directory 门户中“标记为风险用户”的用户的安全报告
 services: active-directory
 author: MarkusVi
@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30d02c5484ea4cce2953eac6b1b7b26a17c142bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea1360499c4f4f9b2f6cfa07e81d8f692d0353d3
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68989698"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100781"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>修正 Azure Active Directory 门户中“标记为风险用户”的用户
 
@@ -32,7 +32,7 @@ Microsoft 致力于保护你的环境的安全。 为此，Microsoft 持续监�
 
 ## <a name="access-the-users-flagged-for-risk-report"></a>访问标记为存在风险的用户的报告
 
-可以在 Azure 门户中通过[“有风险的用户”](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers)报告查看已标记为存在风险的用户。 如果没有 Azure AD，则可以在[https://aka.ms/AccessAAD](https://aka.ms/AccessAAD)上免费注册。 
+可以在 Azure 门户中通过[“有风险的用户”](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers)报告查看已标记为存在风险的用户。 如果没有 Azure AD，可以免费注册[https://aka.ms/AccessAAD](https://aka.ms/AccessAAD)。 
 
 从“已标记为存在风险的用户”报告中，你可以针对每个用户采取以下操作：
 
@@ -46,7 +46,7 @@ Microsoft 致力于保护你的环境的安全。 为此，Microsoft 持续监�
 
 还可以使用 Office 365 凭据访问 **Azure 管理中心**。 激活对 Azure AD 的访问权限以后，就会重定向到 Azure AD 门户。 在基本订阅级别，报告中提供的详细信息量是受限制的。 Azure 高级订户可获取其他的数据和分析。
 
-要访问在 Microsoft 365 管理中心**中标记为风险报告的用户**，：
+若要访问 Microsoft 365 管理中心中**标记为风险**报告的用户：
 
 1.  在左侧导航菜单中，选择“管理中心”****。 
 2.  选择“Azure AD”****。
@@ -63,15 +63,15 @@ Microsoft 致力于保护你的环境的安全。 为此，Microsoft 持续监�
 2.  为所有用户[启用多重身份验证](https://aka.ms/MFAuth)。 
 3.  对每个受影响的帐户使用此[修正脚本](https://aka.ms/remediate)以自动执行以下步骤： 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 重置密码以保护帐户安全并终止活动会话。
+    a. 重置密码以保护帐户安全并终止活动会话。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 删除邮箱委托。
+    b. 删除邮箱委托。
 
     c. 禁用针对外部域的邮件转发规则。
 
-    d.单击“下一步”。 删除邮箱上的全局邮件转发属性。
+    d. 删除邮箱上的全局邮件转发属性。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 在用户的帐户上启用 MFA。
+    e. 在用户的帐户上启用 MFA。
 
     f. 将帐户的密码复杂性设置为高。
 
@@ -87,7 +87,6 @@ Microsoft 致力于保护你的环境的安全。 为此，Microsoft 持续监�
 
 - 在解决异常活动问题时，阅读并实施此[指南](https://aka.ms/fixaccount)。 
 - [启用审核管道](https://aka.ms/improvesecurity)来帮助你分析在租户上进行的活动。 完成后，系统会开始在审核存储中填充活动日志。 此时，还可以利用[安全性和符合性中心的搜索和调查资源](https://aka.ms/sccsearch)。 
-- 使用此[脚本](https://aka.ms/mailboxaudit1)对所有帐户启用邮箱审核功能。 
 - 查看所有邮箱的委托权限和邮件转发规则。 可以使用此 [PowerShell 脚本](https://aka.ms/delegateforwardrules)来执行此任务。 
 
 ## <a name="next-steps"></a>后续步骤

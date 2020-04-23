@@ -3,21 +3,21 @@ title: 在 Azure IoT Central 中基于规则创建 Webhook | Microsoft Docs
 description: 在 Azure IoT Central 中创建 Webhook，以便在规则触发时自动通知其他应用程序。
 author: viv-liu
 ms.author: viviali
-ms.date: 12/02/2019
+ms.date: 04/03/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: d97bd7a3c6de92f22a9880040f407960d5257f6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7cb80b54c75d637842c5f50d9336629dedf758fa
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158089"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100118"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>在 Azure IoT Central 中基于规则创建 Webhook 操作
 
-本主题适用于构建者和管理员**。
+本主题适用于构建者和管理员  。
 
 使用 Webhook 可以将 IoT Central 应用连接到其他应用程序和服务，以便进行远程监视和通知。 只要在 IoT Central 应用中触发了规则，Webhook 就会自动通知你连接的其他应用程序和服务。 每当触发规则时，IoT Central 应用就会向其他应用程序的 HTTP 终结点发送 POST 请求。 有效负载包含设备详细信息和规则触发详细信息。
 
@@ -42,6 +42,78 @@ ms.locfileid: "80158089"
 ## <a name="payload"></a>有效负载
 
 触发规则时，会向包含 json 有效负载的回调 URL 发出 HTTP POST 请求，其中包含遥测数据、设备、规则和应用程序详细信息。 有效负载可能如下所示：
+
+```json
+{
+    "timestamp": "2020-04-06T00:20:15.06Z",
+    "action": {
+        "id": "<id>",
+        "type": "WebhookAction",
+        "rules": [
+            "<rule_id>"
+        ],
+        "displayName": "Webhook 1",
+        "url": "<callback_url>"
+    },
+    "application": {
+        "id": "<application_id>",
+        "displayName": "Contoso",
+        "subdomain": "contoso",
+        "host": "contoso.azureiotcentral.com"
+    },
+    "device": {
+        "id": "<device_id>",
+        "etag": "<etag>",
+        "displayName": "MXChip IoT DevKit - 1yl6vvhax6c",
+        "instanceOf": "<device_template_id>",
+        "simulated": true,
+        "provisioned": true,
+        "approved": true,
+        "cloudProperties": {
+            "City": {
+                "value": "Seattle"
+            }
+        },
+        "properties": {
+            "deviceinfo": {
+                "firmwareVersion": {
+                    "value": "1.0.0"
+                }
+            }
+        },
+        "telemetry": {
+            "<interface_instance_name>": {
+                "humidity": {
+                    "value": 47.33228889360127
+                }
+            }
+        }
+    },
+    "rule": {
+        "id": "<rule_id>",
+        "displayName": "Humidity monitor"
+    }
+}
+```
+如果规则监视一段时间内的聚合遥测数据，则负载会包含不同的遥测部分。
+
+```json
+{
+    "telemetry": {
+        "<interface_instance_name>": {
+            "Humidity": {
+                "avg": 39.5
+            }
+        }
+    }
+}
+```
+
+## <a name="data-format-change-notice"></a>数据格式更改通知
+
+如果在**2020 年4月 3**日之前创建并保存了一个或多个 webhook，则需要删除 webhook 并创建新的 webhook。 这是因为，较旧的 webhook 使用的是将来将弃用的旧有效负载格式。
+
+### <a name="webhook-payload-format-deprecated-as-of-3-april-2020"></a>Webhook 有效负载（从2020年4月3日起已弃用）
 
 ```json
 {
@@ -82,7 +154,7 @@ ms.locfileid: "80158089"
 
 目前，没有通过 API 订阅/取消订阅这些 Webhook 的编程方式。
 
-如果您有如何改进此功能的想法，请将您的建议发布到我们的[用户语音论坛](https://feedback.azure.com/forums/911455-azure-iot-central)。
+如果你有关于如何改进此功能的建议，请将你的建议发布到[用户语音论坛](https://feedback.azure.com/forums/911455-azure-iot-central)。
 
 ## <a name="next-steps"></a>后续步骤
 

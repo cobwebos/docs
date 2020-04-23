@@ -1,18 +1,18 @@
 ---
-title: 故障排除连接 - Azure 数据库，用于 PostgreSQL - 单个服务器
+title: 排查连接问题-Azure Database for PostgreSQL-单服务器
 description: 了解如何排查 Azure Databases for PostgreSQL - 单一服务器的连接问题。
 keywords: postgresql 连接, 连接字符串, 连接问题, 暂时性错误, 连接错误
-author: jasonwhowell
-ms.author: jasonh
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 593dc060ff92c7f4bc338e235dd1a0dd9f303ab3
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 771d7f5b037fde1144b18dc4ed0dee7aecac6744
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81767615"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100203"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>排查 Azure Databases for PostgreSQL - 单一服务器的连接问题
 
@@ -46,9 +46,9 @@ ms.locfileid: "81767615"
 
 如果应用程序一直无法连接到 Azure Database for PostgreSQL，通常表示下列其中一项出现了问题：
 
-* 服务器防火墙配置：确保为 PostgreSQL 服务器防火墙配置 Azure 数据库以允许来自客户端的连接，包括代理服务器和网关。
+* 服务器防火墙配置：确保 Azure Database for PostgreSQL 服务器防火墙配置为允许来自客户端的连接，包括代理服务器和网关。
 * 客户端防火墙配置：客户端上的防火墙必须允许连接到数据库服务器。 对于无法访问的服务器 IP 地址和端口，必需授予其访问权限，并且必须允许使用某些防火墙的应用程序名称（如 PostgreSQL）。
-* 用户错误：可能键入了错误的连接参数，例如连接字符串中的服务器名称或用户名中缺少*\@的服务器名称*后缀。
+* 用户错误：您可能键入了错误的连接参数（例如连接字符串中的服务器名称或用户名中缺少* \@servername*后缀）。
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>解决永久性连接问题的步骤
 

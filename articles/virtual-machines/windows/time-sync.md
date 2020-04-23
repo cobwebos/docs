@@ -1,29 +1,24 @@
 ---
 title: Azure 中 Windows VM 的时间同步
 description: Windows 虚拟机的时间同步。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 33c8d58877a73c1ea3055fe52ef8470d8775b6e3
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: cd9a196e5f957782de91cff69c01fbfa5716369a
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458022"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100492"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Azure 中 Windows VM 的时间同步
 
-时间同步对于安全性和事件关联非常重要。 有时，它用于分布式的事务实现。 可通过同步实现多个计算机系统之间的时间准确性。 同步可能受到多种因素的影响，包括重新启动以及时间源和获取时间的计算机之间的流量。 
+时间同步对于安全性和事件相关性来说很重要。 有时候，它用于分布式事务实现。 多个计算机系统之间的时间准确性通过同步来实现。 同步可能受多种因素影响，包括重启以及时间源和提取时间的计算机之间的网络流量。 
 
-Azure 现在由运行 Windows Server 2016 的基础结构提供支持。 Windows Server 2016 改进了用于校正时间的算法和本地时钟与 UTC 同步的条件。  Windows Server 2016 还改进了 VMICTimeSync 服务，该服务管理 VM 如何与主机同步以获得准确时间。 改进包括 VM 启动或 VM 恢复的更精确的初始时间以及提供给 Windows 时间 (W32time) 的示例的中断延迟校正。 
+Azure 现在由运行 Windows Server 2016 的基础结构提供支持。 Windows Server 2016 已改进用于纠正时间和条件的算法，方便本地时钟与 UTC 同步。  Windows Server 2016 还改进了 VMICTimeSync 服务，该服务管理 VM 如何与主机同步以获得准确时间。 改进包括 VM 启动或 VM 恢复的更精确的初始时间以及提供给 Windows 时间 (W32time) 的示例的中断延迟校正。 
 
 
 >[!NOTE]
@@ -72,7 +67,7 @@ w32time 将按以下优先级顺序选择时间提供程序：层级、根延迟
 
 ### <a name="host-only"></a>仅限主机 
 
-由于time.windows.com是公共 NTP 服务器，因此与其同步的时间需要通过互联网发送流量，因此不同的数据包延迟可能会对时间同步的质量产生负面影响。通过切换到仅主机同步来删除time.windows.com有时会提高时间同步结果。
+由于 time.windows.com 是公共 NTP 服务器，因此与它同步时间需要通过 internet 发送流量，因此，不同的数据包延迟可能会对时间同步的质量产生负面影响。通过切换到仅限主机同步来删除 time.windows.com 有时会缩短时间同步结果。
 
 如果使用默认配置时遇到时间同步问题，切换到仅限主机时间同步可解决问题。 请尝试仅限主机同步，看看是否会改善 VM 上的时间同步。 
 
@@ -152,7 +147,7 @@ net stop w32time && net start w32time
 
 ## <a name="windows-server-2012-and-r2-vms"></a>Windows Server 2012 和 R2 VM 
 
-Windows 服务器 2012 和 Windows 服务器 2012 R2 具有不同的默认设置的时间同步。默认情况下，w32time 的配置方式比精确时间更喜欢低管理开销。 
+Windows Server 2012 和 Windows Server 2012 R2 具有不同的时间同步默认设置。默认情况下，w32time 的配置方式是更方便地将服务的开销降至最低。 
 
 如果要将 Windows Server 2012 和 2012 R2 部署移动到使用更倾向于精确时间的较新默认设置，则可以应用以下设置。
 

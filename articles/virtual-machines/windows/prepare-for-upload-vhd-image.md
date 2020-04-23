@@ -1,25 +1,19 @@
 ---
 title: 准备好要上传到 Azure 的 Windows VHD
 description: 了解如何准备要上传到 Azure 的 Windows VHD 或 VHDX
-services: virtual-machines-windows
-documentationcenter: ''
 author: glimoli
 manager: dcscontentpm
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 7802489d-33ec-4302-82a4-91463d03887a
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 8118ecde698b54213547e717d25613c0c3e0d3fd
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 1f8f595fd0656a35d54012ece64e826357e03bb9
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631554"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82098673"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
 
@@ -34,21 +28,21 @@ ms.locfileid: "80631554"
 >1. 64 位版本的 Windows Server 2008 R2 以及更高版本的 Windows Server 操作系统。 若要了解如何在 Azure 中运行 32 位操作系统，请参阅 [Azure VM 中的 32 位操作系统支持](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines)。
 >2. 如果将使用任何灾难恢复工具（如 Azure Site Recovery 或 Azure Migrate）来迁移工作负荷，则仍需要在来宾 OS上执行此过程以在迁移之前准备映像。
 
-## <a name="system-file-checker-sfc-command"></a>系统文件检查器 （SFC） 命令
+## <a name="system-file-checker-sfc-command"></a>系统文件检查器 (SFC) 命令
 
-### <a name="run-windows-system-file-checker-utility-run-sfc-scannow-on-os-prior-to-generalization-step-of-creating-customer-os-image"></a>在创建客户操作系统映像的通用步骤之前，在操作系统上运行 Windows 系统文件检查器实用程序（运行 sfc /scannow）
+### <a name="run-windows-system-file-checker-utility-run-sfc-scannow-on-os-prior-to-generalization-step-of-creating-customer-os-image"></a>在执行创建客户 OS 映像的通用化步骤之前，在 OS 上运行 Windows 系统文件检查器实用程序（运行 sfc/scannow）
 
-系统文件检查器 （SFC） 命令用于验证和替换 Windows 系统文件。
+系统文件检查器 (SFC) 命令用于验证和替换 Windows 系统文件。
 
-要运行 SFC 命令：
+若要运行 SFC 命令，请执行以下操作：
 
-1. 以管理员身份打开提升的 CMD 提示。
-1. 键入`sfc /scannow`并选择**Enter**。
+1. 以管理员身份打开提升的 CMD 提示符。
+1. 键入 `sfc /scannow` 并选择 **Enter**。
 
     ![系统文件检查器](media/prepare-for-upload-vhd-image/system-file-checker.png)
 
 
-SFC 扫描完成后，请尝试安装 Windows 更新并重新启动计算机。
+完成 SFC 扫描后，请尝试安装 Windows 更新并重启计算机。
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-and-to-vhd"></a>将虚拟磁盘转换为固定大小和 VHD
 
@@ -56,7 +50,7 @@ SFC 扫描完成后，请尝试安装 Windows 更新并重新启动计算机。
 
 1. 在运行虚拟磁盘转换过程之前备份 VM。
 
-1. 确保 Windows VHD 在本地服务器上正常工作。 在尝试转换磁盘或将其上传到 Azure 之前，请解决 VM 本身内部的所有错误。
+1. 确保 Windows VHD 在本地服务器上正常工作。 尝试转换磁盘或将其上传到 Azure 之前，先解决 VM 本身内部的所有错误。
 
 1. 关于 VHD 的大小：
 
@@ -68,19 +62,19 @@ SFC 扫描完成后，请尝试安装 Windows 更新并重新启动计算机。
 转换磁盘后，创建一个使用该磁盘的 VM。 启动并登录到 VM，以完成其上传准备工作。
 
 ### <a name="use-hyper-v-manager-to-convert-the-disk"></a>使用 Hyper-V 管理器转换磁盘 
-1. 打开 Hyper-V 管理器，在左侧选择本地计算机。 在计算机列表上方的菜单中，选择 **"操作** > **编辑磁盘**"。
-2. 在“查找虚拟硬盘”页上，选择你的虚拟磁盘。****
-3. 在“选择操作”页上选择“转换” > “下一步”。************
-4. 如果需要从 VHDX 进行转换，请选择 **"VHD** > **下一个**"。
-5. 如果需要从动态扩展的磁盘进行转换，请选择 **"下** > **一个**固定大小"。
+1. 打开 Hyper-V 管理器，在左侧选择本地计算机。 在计算机列表上方的菜单中，选择“操作” > “编辑磁盘”。  
+2. 在“查找虚拟硬盘”页上，选择你的虚拟磁盘。 
+3. 在“选择操作”页上选择“转换” > “下一步”。   
+4. 如果需要从 VHDX 进行转换，请选择“VHD” > “下一步”。  
+5. 如果需要从动态扩展磁盘进行转换，请选择“固定大小” > “下一步”。  
 6. 找到并选择新 VHD 文件的保存路径。
-7. 选择“完成”****。
+7. 选择“完成”。 
 
 > [!NOTE]
 > 使用提升权限的 PowerShell 会话中运行本文中所述的命令。
 
 ### <a name="use-powershell-to-convert-the-disk"></a>使用 PowerShell 转换磁盘 
-可以使用 Windows PowerShell 中的 [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) 命令转换虚拟磁盘。 启动 PowerShell 时，选择“以管理员身份运行”****。 
+可以使用 Windows PowerShell 中的 [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) 命令转换虚拟磁盘。 启动 PowerShell 时选择“以管理员身份运行”  。 
 
 以下示例命令将磁盘从 VHDX 转换为 VHD。 该命令还会将动态扩展磁盘转换为固定大小的磁盘。
 
@@ -96,8 +90,8 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
 ## <a name="set-windows-configurations-for-azure"></a>设置 Azure 的 Windows 配置
 
 > [!NOTE]
-> 从通用映像创建 Windows VM 时，Azure 平台会将 ISO 文件装载到 DVD-ROM。
-> 因此，必须在通用映像中的操作系统中启用 DVD-ROM。 如果禁用，Windows VM 将卡在 OOBE。
+> 使用通用化映像创建 Windows VM 时，Azure 平台会将 ISO 文件装载到 DVD-ROM。
+> 出于这个原因，必须在通用化映像的 OS 中启用 DVD-ROM。 如果禁用了它，Windows VM 会停滞在 OOBE。
 
 在计划要上传到 Azure 的 VM 上，通过[提升权限的命令提示符窗口](https://technet.microsoft.com/library/cc947813.aspx)运行以下命令：
 
@@ -120,7 +114,7 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
     netsh winhttp set proxy $proxyAddress $proxyBypassList
     ```
 
-3. 将磁盘 SAN 策略[`Onlineall`](https://technet.microsoft.com/library/gg252636.aspx)设置为 ：
+3. 将磁盘 SAN 策略设置为 [`Onlineall`](https://technet.microsoft.com/library/gg252636.aspx)：
    
     ```PowerShell
     diskpart 
@@ -235,7 +229,7 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
 
 9. 如果 VM 会成为域的一部分，请检查以下策略，确保未还原以前的设置。 
     
-    | 目标                                     | 策略                                                                                                                                                       | 值                                                                                    |
+    | 目标                                     | 策略                                                                                                                                                       | Value                                                                                    |
     |------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
     | RDP 已启用                           | 计算机配置\策略\Windows 设置\管理模板\组件\远程桌面服务\远程桌面会话主机\连接         | 允许用户使用远程桌面进行远程连接                                  |
     | NLA 组策略                         | 设置\管理模板\组件\远程桌面服务\远程桌面会话主机\安全性                                                    | 需要完成用户身份验证才能使用 NLA 进行远程访问 |
@@ -335,7 +329,7 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
     ```PowerShell
     winmgmt /verifyrepository
     ```
-    如果存储库已损坏，请参阅[WMI：存储库损坏与否](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not)。
+    如果存储库已损坏，请参阅[WMI：存储库损坏](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not)。
 
 5. 确保没有其他应用程序正在使用端口 3389。 此端口用于 Azure 中的 RDP 服务。 若要查看 VM 上使用的端口，请运行 `netstat -anob`：
 
@@ -381,7 +375,7 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
 12. 卸载与物理组件相关的任何其他第三方软件或驱动程序，或卸载任何其他虚拟化技术。
 
 ### <a name="install-windows-updates"></a>安装 Windows 更新
-最好是在*修补程序级别*保持更新计算机。 如果无法这样做，请确保安装了以下更新。 要获取最新更新，请参阅 Windows 更新历史记录页[：Windows 10 和 Windows 服务器 2019、Windows](https://support.microsoft.com/help/4000825) [8.1 和 Windows 服务器 2012 R2](https://support.microsoft.com/help/4009470)和[Windows 7 SP1 和 Windows 服务器 2008 R2 SP1](https://support.microsoft.com/help/4009469)。
+最好是在*修补程序级别*保持更新计算机。 如果无法做到这一点，请确保安装以下更新。 若要获取最新的更新，请参阅 Windows 更新历史记录页： [windows 10 和 Windows server 2019](https://support.microsoft.com/help/4000825)、 [Windows 8.1 以及 Windows server 2012 r2](https://support.microsoft.com/help/4009470)和[Windows 7 SP1 和 windows server 2008 R2 SP1](https://support.microsoft.com/help/4009469)。
 
 | 组件               | Binary         | Windows 7 SP1、Windows Server 2008 R2 SP1 | Windows 8、Windows Server 2012               | Windows 8.1、Windows Server 2012 R2 | Windows 10 v1607、Windows Server 2016 v1607 | Windows 10 v1703    | Windows 10 v1709、Windows Server 2016 v1709 | Windows 10 v1803、Windows Server 2016 v1803 |
 |-------------------------|----------------|-------------------------------------------|---------------------------------------------|------------------------------------|---------------------------------------------------------|----------------------------|-------------------------------------------------|-------------------------------------------------|
@@ -435,9 +429,9 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
 - [从专用磁盘创建 VM](create-vm-specialized.md)
 - [Create a VM from a specialized VHD disk](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master)（从专用 VHD 磁盘创建 VM）
 
-若要创建通用化映像，则需运行 Sysprep。 有关详细信息，请参阅如何使用[Sysprep：简介](https://technet.microsoft.com/library/bb457073.aspx)。 
+若要创建通用化映像，则需运行 Sysprep。 有关详细信息，请参阅[如何使用 Sysprep：简介](https://technet.microsoft.com/library/bb457073.aspx)。 
 
-并非每个安装在基于 Windows 的计算机上的角色或应用程序都支持通用化映像。 因此，在运行此过程之前，请确保 Sysprep 支持该计算机的角色。 有关详细信息，请参阅[对服务器角色的 Sysprep 支持](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)。
+并非每个安装在基于 Windows 的计算机上的角色或应用程序都支持通用化映像。 因此，在运行此过程之前，请确保 Sysprep 支持该计算机的角色。 有关详细信息，请参阅[Sysprep 对服务器角色的支持](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)。
 
 ### <a name="generalize-a-vhd"></a>通用化 VHD
 
@@ -470,7 +464,7 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
    ```PowerShell
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -Name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -Force
    ```
-  如果数据磁盘附加到 VM，则时态驱动器卷的字母通常是*D*。此指定可能不同，具体取决于您的设置和可用驱动器的数量。
+  如果数据磁盘已附加到 VM，则临时驱动器卷的驱动器号通常为*D*。此指定可能会不同，具体取决于你的设置和可用驱动器的数量。
   * 我们建议禁用防病毒软件可能提供的脚本阻止程序。 这些阻止程序可能会干扰并阻止从映像部署新 VM 时执行的 Windows 预配代理脚本。
   
 ## <a name="next-steps"></a>后续步骤
