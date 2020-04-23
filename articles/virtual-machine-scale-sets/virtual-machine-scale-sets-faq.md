@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: mimckitt
-ms.openlocfilehash: 1dbc08e01b9a36b1bc80ee6b81ceb2d92ff831cc
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: c2db0cca120d08b85229618547a2aaabbba437ad
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273709"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870221"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虚拟机规模集常见问题解答
 
@@ -43,7 +43,7 @@ ms.locfileid: "81273709"
 
 创建并捕获 VM 映像，然后将其用作规模集的源。 有关如何创建和使用自定义 VM 映像的教程，你可以使用 [Azure CLI](tutorial-use-custom-image-cli.md) 或 [Azure PowerShell](tutorial-use-custom-image-powershell.md)
 
-### <a name="if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed"></a>如果我将规模集容量从 20 减少到 15，将删除哪些 VM？
+### <a name="if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed"></a>如果我将规模集容量从 20 减少到 15，会删除哪些 VM？
 
 将从跨更新域和容错域的规模集中均匀地删除虚拟机，以最大限度地提高可用性。 首先删除 ID 最大的 VM。
 
@@ -61,7 +61,7 @@ ms.locfileid: "81273709"
 
 ### <a name="do-scale-sets-work-with-azure-availability-zones"></a>规模集是否可以与 Azure 可用性区域配合使用？
 
- 能！ 有关详细信息，请参阅[规模集区域文档](./virtual-machine-scale-sets-use-availability-zones.md)。
+能！ 有关详细信息，请参阅[规模集区域文档](./virtual-machine-scale-sets-use-availability-zones.md)。
 
 
 ## <a name="autoscale"></a>自动缩放
@@ -445,7 +445,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
     直接更新规模集模型中的管理员凭据（例如，使用 Azure 资源浏览器、PowerShell 或 CLI）。 规模集完成更新后，所有新的 VM 将获得全新凭据。 现有 VM 只有被重置映像时才获得新凭据。
 
-- 使用 VM 访问扩展重置密码。
+- 使用 VM 访问扩展重置密码。 请务必按照[此处](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm)所述的密码要求。
 
     使用以下 PowerShell 示例：
 
@@ -653,7 +653,7 @@ az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.Ente
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 ### <a name="how-do-i-turn-on-boot-diagnostics"></a>如何启用启动诊断？
 

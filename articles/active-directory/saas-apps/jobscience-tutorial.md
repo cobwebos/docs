@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f0ea5b922b2c958aabf5be3a6123bb81a8f0234
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23d2694aa4936090367cf881379f81911ae70f9d
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80048512"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870544"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>教程：Azure Active Directory 与 Jobscience 集成
 
@@ -60,7 +60,7 @@ ms.locfileid: "80048512"
 
 若要从库中添加 Jobscience，请执行以下步骤：****
 
-1. 在**[Azure 门户](https://portal.azure.com)** 中，在左侧导航面板上，单击**Azure 活动目录**图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。 
 
     ![Active Directory][1]
 
@@ -68,7 +68,7 @@ ms.locfileid: "80048512"
 
     ![应用程序][2]
     
-1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”**** 按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![应用程序][3]
 
@@ -116,7 +116,7 @@ ms.locfileid: "80048512"
     在“登录 URL”**** 文本框中，使用以下模式键入 URL：`http://<company name>.my.salesforce.com`
     
     > [!NOTE] 
-    > 此值不是真实值。 使用实际登录 URL 更新此值。 通过 [Jobscience 客户端支持团队](https://www.jobscience.com/support)获取此值，或从 SSO 配置文件可以创建将在教程后面部分进行说明的内容。 
+    > 此值不是真实值。 使用实际登录 URL 更新此值。 通过 [Jobscience 客户端支持团队](http://www.jobscience.com/support)获取此值，或从 SSO 配置文件可以创建将在教程后面部分进行说明的内容。 
  
 1. 在**SAML 签名证书**部分，单击**证书 （Base64），** 然后将证书文件保存到计算机上。
 
@@ -134,7 +134,7 @@ ms.locfileid: "80048512"
 
 1. 转到 **“设置”**。
    
-   ![设置](./media/jobscience-tutorial/IC784358.png "设置")
+   ![安装](./media/jobscience-tutorial/IC784358.png "Setup")
 
 1. 在左侧导航窗格中的“管理”**** 部分中，单击“域管理”**** 以展开相关部分，并单击“我的域”****，打开“我的域”**** 页。 
    
@@ -152,23 +152,23 @@ ms.locfileid: "80048512"
     
     ![单一登录设置](./media/jobscience-tutorial/ic781026.png "单一登录设置")
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择 **“启用 SAML”**。
+    a. 选择 **“启用 SAML”**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 单击 **“新建”**。
+    b. 单击 **“新建”**。
 
 1. 在 **“SAML 单一登录设置编辑”** 对话框中，执行以下步骤：
     
     ![SAML 单一登录设置](./media/jobscience-tutorial/ic784365.png "SAML 单一登录设置")
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在 **“名称”** 文本框中，键入你的配置名称。
+    a. 在 **“名称”** 文本框中，键入你的配置名称。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 将从 Azure 门户复制的“SAML 实体 ID”**** 的值粘贴到“颁发者”**** 文本框中。
+    b. 将从 Azure 门户复制的“SAML 实体 ID”**** 的值粘贴到“颁发者”**** 文本框中。
 
     c. 在“实体 Id”**** 文本框中，键入 `https://salesforce-jobscience.com`
 
-    d.单击“下一步”。 单击 **“浏览”** 上载你的 Azure AD 证书。
+    d. 单击 **“浏览”** 上载你的 Azure AD 证书。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 对于 **“SAML 标识类型”**，选择 **“断言包含来自用户对象的联合 ID”**。
+    e. 对于 **“SAML 标识类型”**，选择 **“断言包含来自用户对象的联合 ID”**。
 
     f. 对于 **“SAML 标识位置”**，请选择 **“标识在使用者表述的 NameIdentfier 元素中”**。
 
@@ -176,7 +176,7 @@ ms.locfileid: "80048512"
 
     h. 在“标识提供者注销 URL”**** 文本框中，粘贴从 Azure 门户复制的“注销 URL”**** 值。
 
-    i. 单击“保存”。****
+    i. 单击“ **保存**”。
 
 1. 在左侧导航窗格中的“管理”**** 部分中，单击“域管理”**** 以展开相关部分，并单击“我的域”****，打开“我的域”**** 页。 
     
@@ -223,13 +223,13 @@ ms.locfileid: "80048512"
  
     ![创建 Azure AD 测试用户](./media/jobscience-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”**** 文本框中，键入 **BrittaSimon**。
+    a. 在“名称”**** 文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。********
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。********
 
     c. 选择 **"显示密码**"并记下**密码**的值。
 
-    d.单击“下一步”。 单击 **“创建”**。
+    d. 单击“创建”。 
  
 ### <a name="creating-a-jobscience-test-user"></a>创建 Jobscience 测试用户
 
@@ -245,7 +245,7 @@ ms.locfileid: "80048512"
 
 1. 转到“设置”。
    
-   ![设置](./media/jobscience-tutorial/ic784358.png "设置")
+   ![安装](./media/jobscience-tutorial/ic784358.png "Setup")
 1. 转到“管理用户”\>“用户”****。
    
    ![用户](./media/jobscience-tutorial/ic784369.png "用户")
@@ -256,19 +256,19 @@ ms.locfileid: "80048512"
    
    ![用户编辑](./media/jobscience-tutorial/ic784371.png "用户编辑")
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名”**** 文本框中键入用户的名（如 Britta）。
+   a. 在“名”**** 文本框中键入用户的名（如 Britta）。
    
-   b.保留“数据库类型”设置，即设置为“共享”。 在“姓”**** 文本框中键入用户的姓（如 Simon）。
+   b. 在“姓”**** 文本框中键入用户的姓（如 Simon）。
    
    c. 在“别名”**** 文本框中键入用户的别名（如 brittas）。
 
-   d.单击“下一步”。 在“电子邮件”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。****
+   d. 在“电子邮件”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。****
 
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 在“用户名”**** 文本框中，键入用户的用户名（例如 Brittasimon@contoso.com）。
+   e. 在“用户名”**** 文本框中，键入用户的用户名（例如 Brittasimon@contoso.com）。
 
    f. 在“昵称”**** 文本框中，键入用户的昵称（例如 Simon）。
 
-   g. 单击“保存”。****
+   g. 单击“ **保存**”。
 
     
 > [!NOTE]
@@ -309,12 +309,12 @@ ms.locfileid: "80048512"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Jobscience 磁贴时，应自动登录到 Jobscience 应用程序。
-有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [有关如何将 SaaS 应用与 Azure 活动目录集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure 活动目录的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

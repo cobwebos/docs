@@ -9,25 +9,25 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3d06f3e8be449e7050c65c75339a0cff6efe19e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 63dc18c522a1e2e3b03bdf806945e0be67774b18
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77025310"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870477"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>从云简单门户升级私有云 vCenter 权限
 
 要对私有云 vCenter 进行管理访问，您可以暂时升级云简单权限。  使用提升的权限，您可以安装 VMware 解决方案、添加标识源和管理用户。
 
-可以在 vCenter SSO 域上创建新用户，并授予对 vCenter 的访问权限。  创建新用户时，请将它们添加到 CloudSimple 内置组中以访问 vCenter。  有关详细信息，请参阅[VMware vCenter 的云简单私有云权限模型](https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/)。
+可以在 vCenter SSO 域上创建新用户，并授予对 vCenter 的访问权限。  创建新用户时，请将它们添加到 CloudSimple 内置组中以访问 vCenter。  有关详细信息，请参阅[VMware vCenter 的云简单私有云权限模型](https://docs.microsoft.com/azure/vmware-cloudsimple/learn-private-cloud-permissions/)。
 
 > [!CAUTION]
 > 不要对管理组件进行任何配置更改。 在升级的特权状态期间执行的操作可能会对您的系统产生负面影响，或可能导致您的系统不可用。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 中的[https://portal.azure.com](https://portal.azure.com)Azure 门户。
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="escalate-privileges"></a>提升特权
 
@@ -47,7 +47,7 @@ ms.locfileid: "77025310"
 
     ![升级权限对话框](media/escalate-private-cloud-privilege-dialog.png)
 
-7. 单击“确定”。
+7. 单击“确定”。 
 
 8. 升级过程可能需要几分钟时间。 完成后，请单击“确定”****。
 
@@ -81,12 +81,12 @@ ms.locfileid: "77025310"
 
 2. 单击 **"取消升级**"。
 
-3. 单击“确定”。
+3. 单击“确定”。 
 
 > [!IMPORTANT]
 > 为避免任何错误，请注销 vCenter，并在取消升级权限后再次登录。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [设置 vCenter 标识源以使用活动目录](https://docs.azure.cloudsimple.com/set-vcenter-identity/)
-* 将备份解决方案安装到[备份工作负载虚拟机](https://docs.azure.cloudsimple.com/backup-workloads-veeam/)
+* [设置 vCenter 标识源以使用活动目录](https://docs.microsoft.com/azure/vmware-cloudsimple/set-vcenter-identity/)
+* 将备份解决方案安装到[备份工作负载虚拟机](https://docs.microsoft.com/azure/vmware-cloudsimple/backup-workloads-veeam/)

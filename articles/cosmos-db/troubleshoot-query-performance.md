@@ -4,22 +4,22 @@ description: 了解如何识别、诊断和排查 Azure Cosmos DB SQL 查询问�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 02/10/2020
+ms.date: 04/20/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 852ed8c49eda7f13542eb0bad63d84e1cf770e92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a8b61f3719a60af567d10f8839987e613babc9e
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131382"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870457"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>排查使用 Azure Cosmos DB 时遇到的查询问题
 
 本文逐步说明排查 Azure Cosmos DB 中的查询问题的一般建议方法。 尽管您不应将本文中概述的步骤视为针对潜在查询问题的完整防御，但此处包含了最常见的性能提示。 应使用本文作为在 Azure Cosmos DB 核心 （SQL） API 中解决慢速或昂贵查询的起始位置。 您还可以使用[诊断日志](cosmosdb-monitor-resource-logs.md)来标识速度慢或消耗大量吞吐量的查询。
 
-可对 Azure Cosmos DB 中的查询优化进行广泛分类： 
+可对 Azure Cosmos DB 中的查询优化进行广泛分类：
 
 - 减少查询请求单元 （RU） 费用的优化
 - 仅减少延迟的优化
@@ -28,19 +28,18 @@ ms.locfileid: "80131382"
 
 本文提供了可以使用[营养](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)数据集重新创建的示例。
 
-## <a name="important"></a>重要说明
+## <a name="common-sdk-issues"></a>常见 SDK 问题
 
 - 为了获得最佳性能，请遵循[性能提示](performance-tips.md)。
     > [!NOTE]
     > 为提高性能，我们建议处理 Windows 64 位主机。 SQL SDK 包括一个本机 ServiceInterop.dll，用于在本地解析和优化查询。 服务 Interop.dll 仅在 Windows x64 平台上受支持。 对于 Linux 和其他不支持的平台，其中 ServiceInterop.dll 不可用，将对网关进行额外的网络调用以获取优化的查询。
-- Azure Cosmos 数据库查询不支持最小项计数。
-    - 代码应处理任何页面大小，从零到最大项目计数。
-    - 页面中的项目数可以更改，恕不另行通知。
-- 查询需要空页，并且可以随时显示。
-    - 空页在 SDK 中公开，因为该曝光允许更多机会取消查询。 它还清楚地表明，SDK 正在执行多个网络调用。
-    - 空页可以出现在现有工作负荷中，因为物理分区在 Azure Cosmos DB 中拆分。 第一个分区的结果为零，这将导致页空。
-    - 空页是由后端抢占查询引起的，因为查询在后端检索文档需要超过一些固定时间。 如果 Azure Cosmos DB 抢占查询，它将返回一个延续令牌，允许查询继续。
-- 请确保完全耗尽查询。 查看 SDK 示例，并使用`while`循环`FeedIterator.HasMoreResults`来耗尽整个查询。
+- 您可以为查询设置`MaxItemCount`a，但不能指定最小项计数。
+    - 代码应处理任何页面大小，从零到`MaxItemCount`。
+    - 页面中的项数将始终小于指定的`MaxItemCount`。 但是，`MaxItemCount`严格来说，结果可能少于此金额。
+- 有时，即使将来页上有结果，查询也可能有空页。 原因可能是：
+    - SDK 可以执行多个网络调用。
+    - 查询可能需要很长时间才能检索文档。
+- 所有查询都有一个延续令牌，允许查询继续。 请确保完全耗尽查询。 查看 SDK 示例，并使用`while`循环`FeedIterator.HasMoreResults`来耗尽整个查询。
 
 ## <a name="get-query-metrics"></a>获取查询指标
 
@@ -61,6 +60,8 @@ ms.locfileid: "80131382"
 - [在索引策略中包括必要的路径。](#include-necessary-paths-in-the-indexing-policy)
 
 - [了解哪些系统函数使用索引。](#understand-which-system-functions-use-the-index)
+
+- [了解使用索引的聚合查询。](#understand-which-aggregate-queries-use-the-index)
 
 - [修改同时具有筛选器和 ORDER BY 子句的查询。](#modify-queries-that-have-both-a-filter-and-an-order-by-clause)
 
@@ -190,7 +191,7 @@ SELECT * FROM c WHERE c.description = "Malabar spinach, cooked"
 
 如果表达式可以转换为字符串值范围，则可以使用索引。 否则，它不能。
 
-下面是可以使用索引的字符串函数的列表：
+下面是一些可以使用索引的常见字符串函数的列表：
 
 - STARTSWITH(str_expr, str_expr)
 - LEFT(str_expr, num_expr) = str_expr
@@ -207,6 +208,50 @@ SELECT * FROM c WHERE c.description = "Malabar spinach, cooked"
 ------
 
 查询的其他部分可能仍使用索引，即使系统功能不。
+
+### <a name="understand-which-aggregate-queries-use-the-index"></a>了解使用索引的聚合查询
+
+在大多数情况下，Azure Cosmos DB 中的聚合系统函数将使用索引。 但是，根据聚合查询中的筛选器或其他子句，可能需要查询引擎来加载大量文档。 通常，查询引擎将首先应用相等和范围筛选器。 应用这些筛选器后，查询引擎可以评估其他筛选器，并根据需要加载剩余文档以计算聚合。
+
+例如，给定这两个示例查询，具有相等性和`CONTAINS`系统函数筛选器的查询通常比仅具有系统函数筛选器的`CONTAINS`查询更有效。 这是因为首先应用相等性筛选器，并在需要加载文档之前使用索引来为更昂贵的`CONTAINS`筛选器加载。
+
+仅`CONTAINS`具有筛选器的查询 - 较高的 RU 费用：
+
+```sql
+SELECT COUNT(1) FROM c WHERE CONTAINS(c.description, "spinach")
+```
+
+同时使用相等筛选器和`CONTAINS`筛选器的查询 - 较低的 RU 电荷：
+
+```sql
+SELECT AVG(c._ts) FROM c WHERE c.foodGroup = "Sausages and Luncheon Meats" AND CONTAINS(c.description, "spinach")
+```
+
+下面是不会完全使用索引的聚合查询的其他示例：
+
+#### <a name="queries-with-system-functions-that-dont-use-the-index"></a>具有不使用索引的系统函数的查询
+
+您应该参考相关[系统函数的页面](sql-query-system-functions.md)，看看它是否使用索引。
+
+```sql
+SELECT MAX(c._ts) FROM c WHERE CONTAINS(c.description, "spinach")
+```
+
+#### <a name="aggregate-queries-with-user-defined-functionsudfs"></a>使用用户定义的函数聚合查询（UDF）
+
+```sql
+SELECT AVG(c._ts) FROM c WHERE udf.MyUDF("Sausages and Luncheon Meats")
+```
+
+#### <a name="queries-with-group-by"></a>与组 BY 的查询
+
+RU 的`GROUP BY`电荷将随着`GROUP BY`子句中属性基数的增加而增加。 在此示例中，查询引擎必须加载与`c.foodGroup = "Sausages and Luncheon Meats"`筛选器匹配的每个文档，以便 RU 电荷预期很高。
+
+```sql
+SELECT COUNT(1) FROM c WHERE c.foodGroup = "Sausages and Luncheon Meats" GROUP BY c.description
+```
+
+如果计划经常运行相同的聚合查询，则使用[Azure Cosmos DB 更改源](change-feed.md)构建实时具体视图可能比运行单个查询更有效。
 
 ### <a name="modify-queries-that-have-both-a-filter-and-an-order-by-clause"></a>修改同时具有筛选器和 ORDER BY 子句的查询
 

@@ -7,12 +7,12 @@ manager: saudas
 ms.topic: article
 ms.date: 04/02/2020
 ms.author: saudas
-ms.openlocfilehash: 907aa83bc293aacd9920d8fd79a1b3184dd1d5dc
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 7a71d3bd70d97df884f1bc962c0ef9897d7fd2cb
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81767598"
+ms.locfileid: "82024398"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>在 Azure 库伯奈斯服务中使用托管标识
 
@@ -25,7 +25,7 @@ AKS 创建两个托管标识：
 - **系统分配的托管标识**：Kubernetes 云提供程序用于代表用户创建 Azure 资源的标识。 系统分配的标识的生命周期与群集的生命周期相关联。 删除群集时，标识将被删除。
 - **用户分配的托管标识**：用于群集中授权的标识。 例如，用户分配的标识用于授权 AKS 使用 Azure 容器注册表 （ACL），或授权 kubelet 从 Azure 获取元数据。
 
-加载项还会使用托管标识进行身份验证。 对于每个加载项，托管标识由 AKS 创建，并持续加载项的生命周期。 要创建和使用资源位于MC_* 资源组之外的您自己的 VNet、静态 IP 地址或附加的 Azure 磁盘，请使用群集的主体 ID 执行角色分配。 有关角色分配的详细信息，请参阅[委派对其他 Azure 资源的访问权限](kubernetes-service-principal.md#delegate-access-to-other-azure-resources)。
+加载项还会使用托管标识进行身份验证。 对于每个加载项，托管标识由 AKS 创建，并持续加载项的生命周期。 
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -58,6 +58,9 @@ az aks create -g MyResourceGroup -n MyManagedCluster --enable-managed-identity
     "secret": null
   }
 ```
+
+> [!NOTE]
+> 要创建和使用资源位于MC_* 资源组之外的 VNet、静态 IP 地址或附加的 Azure 磁盘，请使用群集系统分配的托管标识的主体 ID 执行角色分配。 有关角色分配的详细信息，请参阅[委派对其他 Azure 资源的访问权限](kubernetes-service-principal.md#delegate-access-to-other-azure-resources)。
 
 最后，获取访问群集的凭据：
 

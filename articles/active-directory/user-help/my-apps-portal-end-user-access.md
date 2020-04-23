@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: ab3ab25df6ce41d4045a270754830d501fe40689
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8eb59eebd29c2cc94e20b71b467866686deec2f1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80347173"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869727"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>从"我的应用"门户登录并开始应用
 
@@ -110,7 +110,7 @@ ms.locfileid: "80347173"
 
 在 iOS 和 Android 设备上从 Intune 托管浏览器查看和使用组织的应用。
 
-1. 在您的移动设备上，从[苹果应用商店](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)和[谷歌Play商店](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser)下载并安装 Intune 托管浏览器应用程序。
+1. 在移动设备上，从 Apple 应用商店和 Google Play 商店下载并安装 Intune 托管浏览器应用。
 
 2. 打开 Intune 托管浏览器应用，转到https://myapps.microsoft.com，或使用组织提供的链接（如果他们将您定向到自定义页面，如https://myapps.microsoft.com/contoso.com）。
 

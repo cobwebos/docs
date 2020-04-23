@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: 6cf43df756e9bed0438169c9c01b868653d84b57
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: ac49d2da9d05c9677dbb6f5328874ab3a45ff661
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985722"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82081534"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>前几代虚拟机大小
 
@@ -37,13 +37,13 @@ ACU：210 - 250
 
 高级存储缓存：不支持
 
-| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大数据磁盘/吞吐量：IOPS | 最大 NIC/预期网络带宽 （Mbps） |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大数据磁盘数/吞吐量：IOPS | 最大 NIC 数/预期网络带宽 (Mbps) |
 |---|---|---|---|---|---|---|
-| Standard_F1  | 1  | 2  | 16  | 3000/46/23    | 4/4 x 500   | 2/750   |
-| Standard_F2  | 2  | 4  | 32  | 6000/93/46    | 8/8 x 500   | 2/1500  |
-| Standard_F4  | 4  | 8  | 64  | 12000/187/93  | 16/16 x 500 | 4/3000  |
-| Standard_F8  | 8  | 16 | 128 | 24000/375/187 | 32/32 x 500 | 8/6000  |
-| Standard_F16 | 16 | 32 | 256 | 48000/750/375 | 64/64 x 500 | 8/12000 |
+| Standard_F1  | 1  | 2  | 16  | 3000/46/23    | 4/4x500   | 2/750   |
+| Standard_F2  | 2  | 4  | 32  | 6000/93/46    | 8/8x500   | 2/1500  |
+| Standard_F4  | 4  | 8  | 64  | 12000/187/93  | 16/16x500 | 4/3000  |
+| Standard_F8  | 8  | 16 | 128 | 24000/375/187 | 32/32x500 | 8/6000  |
+| Standard_F16 | 16 | 32 | 256 | 48000/750/375 | 64/64x500 | 8/12000 |
 
 ## <a name="fs-series-sup1sup"></a>Fs 系列 <sup>1</sup>
 
@@ -55,7 +55,7 @@ ACU：210 - 250
 
 高级存储缓存：支持
 
-| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存和临时存储吞吐量：IOPS/MBps（GiB 中的缓存大小） | 最大未缓存磁盘吞吐量：IOPS/MBps | 最大 NIC/预期网络带宽 （Mbps） |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数/预期网络带宽 (Mbps) |
 |---|---|---|---|---|---|---|---|
 | Standard_F1s  | 1  | 2  | 4  | 4  | 4000/32 (12)    | 3200/48   | 2/750   |
 | Standard_F2s  | 2  | 4  | 8  | 8  | 8000/64 (24)    | 6400/96   | 2/1500  |
@@ -63,9 +63,9 @@ ACU：210 - 250
 | Standard_F8s  | 8  | 16 | 32 | 32 | 32000/256 (96)  | 25600/384 | 8/6000  |
 | Standard_F16s | 16 | 32 | 64 | 64 | 64000/512 (192) | 51200/768 | 8/12000 |
 
-MBps = 每秒 10^6 字节，GiB = 1024^3 字节。
+Mbps = 每秒 10^6 字节，GiB = 1024^3 字节。
 
-<sup>1</sup> Fs 系列 VM 可能的最大磁盘吞吐量（IOPS 或 MBps）可能受限于附加磁盘的数量、大小和条带化。  有关详细信息，请参阅为[Windows](windows/premium-storage-performance.md)或[Linux](linux/premium-storage-performance.md)设计高性能。  
+<sup>1</sup> Fs 系列 VM 可能的最大磁盘吞吐量（IOPS 或 Mbps）可能受限于附加磁盘的数量、大小和条带化。  有关详细信息，请了解如何为 [Windows](windows/premium-storage-performance.md) 或 [Linux](linux/premium-storage-performance.md) 进行面向高性能的设计。  
 
 
 ## <a name="nvv2-series"></a>NVv2 系列
@@ -216,6 +216,8 @@ ACU： 160-250 <sup>1</sup>
 <br>
 
 ## <a name="preview-dc-series"></a>预览：直流系列
+
+**较新的尺寸建议**： [DCv2 系列](dcv2-series.md)
 
 高级存储：支持
 

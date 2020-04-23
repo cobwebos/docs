@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 620c0226d3aca907352658ebbe1b94c7673d91cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 13496a18f4c99b69a5b8095caf5b74a04d1bba88
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77014821"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869304"
 ---
 # <a name="manage-private-cloud-resources-and-activity"></a>管理私有云资源和活动
 
@@ -21,7 +21,7 @@ ms.locfileid: "77014821"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 中的[https://portal.azure.com](https://portal.azure.com)Azure 门户。
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="access-the-cloudsimple-portal"></a>访问 CloudSimple 门户
 
@@ -37,13 +37,13 @@ ms.locfileid: "77014821"
 
 ## <a name="private-cloud-summary"></a>私有云摘要
 
-查看所选私有云的全面摘要。  摘要页面包括部署在私有云上的 DNS 服务器。  您可以将 DNS 转发从本地 DNS 服务器连接到私有云 DNS 服务器。  有关 DNS 转发的详细信息，请参阅[配置 DNS 以了解本地私有云 vCenter 的名称解析](https://docs.azure.cloudsimple.com/on-premises-dns-setup/)。
+查看所选私有云的全面摘要。  摘要页面包括部署在私有云上的 DNS 服务器。  您可以将 DNS 转发从本地 DNS 服务器连接到私有云 DNS 服务器。  有关 DNS 转发的详细信息，请参阅[配置 DNS 以了解本地私有云 vCenter 的名称解析](https://docs.microsoft.com/azure/vmware-cloudsimple/on-premises-dns-setup/)。
 
 ![私有云摘要](media/private-cloud-summary.png)
 
 ### <a name="available-actions"></a>可用操作
 
-* [启动 vSphere 客户端](https://docs.azure.cloudsimple.com/vsphere-access/)。 访问此私有云的 vCenter。
+* [启动 vSphere 客户端](https://docs.microsoft.com/azure/vmware-cloudsimple/vcenter-access)。 访问此私有云的 vCenter。
 * [购买节点](create-nodes.md)。 向此私有云添加节点。
 * [展开](expand-private-cloud.md)。 向此私有云添加节点。
 * **刷新**。 更新此页面上的信息。
@@ -58,10 +58,10 @@ ms.locfileid: "77014821"
 
 ### <a name="available-actions"></a>可用操作
 
-* [添加 VLANS/子网](https://docs.azure.cloudsimple.com/create-vlan-subnet/)。 向此私有云添加 VLAN/子集。
+* [添加 VLANS/子网](https://docs.microsoft.com/azure/vmware-cloudsimple/create-vlan-subnet/)。 向此私有云添加 VLAN/子集。
 
 选择 VLAN/子网以进行以下操作
-* [附加防火墙表](https://docs.azure.cloudsimple.com/firewall/)。 将防火墙表附加到此私有云。
+* [附加防火墙表](https://docs.microsoft.com/azure/vmware-cloudsimple/firewall/)。 将防火墙表附加到此私有云。
 * **编辑**
 * **删除**（仅限用户定义的 VLAN/子网络）
 

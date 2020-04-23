@@ -3,12 +3,12 @@ title: 了解如何审核虚拟机的内容
 description: 了解 Azure Policy 如何使用来宾配置代理审核虚拟机内部的设置。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1721c0f1ca7c084d636278aabc96f8dac3293038
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 89f7cc3931971d70b441490f77b67ace89434c2b
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81759075"
+ms.locfileid: "82025214"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
@@ -31,8 +31,8 @@ ms.locfileid: "81759075"
 > [!Important]
 > 在 Azure 虚拟机中执行审核需要来宾配置扩展。
 > 要大规模部署扩展，请分配以下策略定义：
->   - 部署必备组件以在 Windows VM 上启用 Guest Configuration 策略
->   - 部署必备组件以在 Linux VM 上启用 Guest Configuration 策略
+>   - [部署必备组件以在 Windows VM 上启用 Guest Configuration 策略](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
+>   - [部署必备组件以在 Linux VM 上启用 Guest Configuration 策略](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
 ### <a name="limits-set-on-the-extension"></a>在扩展中设置的限制
 
@@ -68,6 +68,8 @@ ms.locfileid: "81759075"
 |Red Hat|Red Hat Enterprise Linux|7.4 及更高版本|
 |Suse|SLES|12 SP3 及更高版本|
 
+来宾配置策略支持自定义虚拟机映像，只要它们是上表中的操作系统之一。
+
 ### <a name="unsupported-client-types"></a>不支持的客户端类型
 
 任何版本都不支持 Windows Server Nano Server。
@@ -88,23 +90,23 @@ ms.locfileid: "81759075"
 
 Guest Configuration 运行的每个审核需要两个策略定义：**DeployIfNotExists** 定义和 **AuditIfNotExists** 定义。 
 
-“DeployIfNotExists”策略定义验证并更正以下项目****：
+“DeployIfNotExists”策略定义验证并更正以下项目  ：
 
 - 验证是否为计算机分配了要评估的配置。 如果当前不存在任何分配，请通过以下方式获取分配并准备计算机：
   - 使用[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)对计算机进行身份验证
-  - 安装 Microsoft.GuestConfiguration**** 扩展的最新版本
+  - 安装 Microsoft.GuestConfiguration  扩展的最新版本
   - 安装[验证工具](#validation-tools)和依赖项（如果需要）
 
-如果 **DeployIfNotExists ** 分配不合规，可以使用[修正任务](../how-to/remediate-resources.md#create-a-remediation-task)。
+如果 **DeployIfNotExists**  分配不合规，可以使用[修正任务](../how-to/remediate-resources.md#create-a-remediation-task)。
 
 一旦**部署非存在分配**符合要求，**审核非存在**策略分配将确定来宾分配是合规还是不合规。 验证工具向来宾配置客户端提供结果。 客户端将结果转发给来宾扩展，使其可通过来宾配置资源提供程序使用。
 
-Azure Policy 使用来宾配置资源提供程序 complianceStatus**** 属性在“符合性”**** 节点中报告符合性。 有关详细信息，请参阅[获取符合性数据](../how-to/get-compliance-data.md)。
+Azure Policy 使用来宾配置资源提供程序 complianceStatus  属性在“符合性”  节点中报告符合性。 有关详细信息，请参阅[获取符合性数据](../how-to/get-compliance-data.md)。
 
 > [!NOTE]
-> 需有 **DeployIfNotExists** 策略，才能让 **AuditIfNotExists ** 策略返回结果。 如果没有 **DeployIfNotExists**，**AuditIfNotExists** 策略会将状态显示为“第 0 个，共 0 个”资源。
+> 需有 **DeployIfNotExists** 策略，才能让 **AuditIfNotExists**  策略返回结果。 如果没有 **DeployIfNotExists**，**AuditIfNotExists** 策略会将状态显示为“第 0 个，共 0 个”资源。
 
-来宾配置的所有内置策略包含在一个计划内，以对分配中使用的定义分组。 名为_\["预览\]：在 Linux 和 Windows 计算机中审核密码安全性_"的内置计划包含 18 个策略。 对于 Windows 有六个 DeployIfNotExists**** 和 AuditIfNotExists**** 对，对于 Linux 有三个对。 [策略定义](definition-structure.md#policy-rule)逻辑将验证是否只评估目标操作系统。
+来宾配置的所有内置策略包含在一个计划内，以对分配中使用的定义分组。 名为_\["预览\]：在 Linux 和 Windows 计算机中审核密码安全性_"的内置计划包含 18 个策略。 对于 Windows 有六个 DeployIfNotExists  和 AuditIfNotExists  对，对于 Linux 有三个对。 [策略定义](definition-structure.md#policy-rule)逻辑将验证是否只评估目标操作系统。
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>根据行业基线审核操作系统设置
 
@@ -118,9 +120,9 @@ Azure 策略中的一个计划提供了按照"基线"审核操作系统设置的
 
 #### <a name="applying-configurations-using-guest-configuration"></a>使用 Guest Configuration 应用配置
 
-Azure Policy 的最新功能可以配置计算机内部的设置。 定义“在 Windows 计算机上配置时区”通过配置时区对计算机进行更改。 
+Azure Policy 的最新功能可以配置计算机内部的设置。 定义“在 Windows 计算机上配置时区”通过配置时区对计算机进行更改。__
 
-分配以“配置”开头的定义时，还必须分配定义“部署必备组件以在 Windows VM 上启用 Guest Configuration 策略”。   如果需要，可将这些定义合并到一个计划中。
+分配以“配置”开头的定义时，还必须分配定义“部署必备组件以在 Windows VM 上启用 Guest Configuration 策略”。____ 如果需要，可将这些定义合并到一个计划中。
 
 #### <a name="assigning-policies-to-machines-outside-of-azure"></a>将策略分配给 Azure 以外的计算机
 
@@ -134,7 +136,7 @@ Guest Configuration 策略目前仅支持为每台计算机分配相同的来宾
 
 Guest Configuration 扩展将日志文件写入以下位置：
 
-Windows：`C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
+Windows： `C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
 
 Linux：`/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
 
@@ -142,7 +144,7 @@ Linux：`/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
 
 ### <a name="collecting-logs-remotely"></a>远程收集日志
 
-排除来宾配置或模块的故障排除的第一步应该是使用`Test-GuestConfigurationPackage`cmdlet，按照如何为 Windows[创建自定义来宾配置审核策略](../how-to/guest-configuration-create.md#step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows)的步骤。
+排查 Guest Configuration 配置或模块问题的第一步应该是按照如何[为 Windows 创建自定义 Guest Configuration 审核策略](../how-to/guest-configuration-create.md#step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows)的步骤使用 `Test-GuestConfigurationPackage` cmdlet。
 如果这种做法无效，收集客户端日志可能会有助于诊断问题。
 
 #### <a name="windows"></a>Windows

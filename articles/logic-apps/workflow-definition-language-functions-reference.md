@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: 48be73a6385c9690909cb70abe558a2def1ace88
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: f557753c61af1e57490ae2d10b7f42475bd7c0a6
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81730514"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870233"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>有关在 Azure 逻辑应用和 Power Automate 的表达式中使用函数的参考指南
 
@@ -2426,9 +2426,11 @@ iterationIndexes('<loopName>')
 
 *示例* 
 
-此示例创建一个计数器变量，在 Until 循环中每迭代一次该变量就会递增 1，直至计数器值达到 5。 此示例还创建一个变量，用于跟踪每次迭代的当前索引。 在 Until 循环中，在每次迭代时，此示例会递增计数器，然后将计数器值指定给当前索引值，然后再递增计数器。 任何时候都可以通过检索当前索引值来确定当前迭代数。
+此示例创建一个计数器变量，在 Until 循环中每迭代一次该变量就会递增 1，直至计数器值达到 5。 此示例还创建一个变量，用于跟踪每次迭代的当前索引。 在 Until 循环中，在每次迭代时，此示例会递增计数器，然后将计数器值指定给当前索引值，然后再递增计数器。 在循环中，此示例使用`iterationIndexes`函数引用当前迭代索引：
 
-```
+`iterationIndexes('Until_Max_Increment')`
+
+```json
 {
    "actions": {
       "Create_counter_variable": {
@@ -2459,7 +2461,7 @@ iterationIndexes('<loopName>')
             "Create_counter_variable": [ "Succeeded" ]
          }
       },
-      "Until": {
+      "Until_Max_Increment": {
          "type": "Until",
          "actions": {
             "Assign_current_index_to_counter": {
@@ -2472,6 +2474,15 @@ iterationIndexes('<loopName>')
                   "Increment_variable": [ "Succeeded" ]
                }
             },
+            "Compose": {
+               "inputs": "'Current index: ' @{iterationIndexes('Until_Max_Increment')}",
+               "runAfter": {
+                  "Assign_current_index_to_counter": [
+                     "Succeeded"
+                    ]
+                },
+                "type": "Compose"
+            },           
             "Increment_variable": {
                "type": "IncrementVariable",
                "inputs": {
@@ -4695,7 +4706,7 @@ xpath('<xml>', '<xpath>')
 | ------------ | ---- | ----------- |
 | <*xml 节点*> | XML | 一个 XML 节点，当只有单个节点与指定的 XPath 表达式匹配时 |
 | <*价值*> | Any | 来自一个 XML 节点的值，当只有单个值与指定的 XPath 表达式匹配时 |
-| [<*xml-node1*>, <*xml-node2*>, ...] </br>\- 或 - </br>[<*value1*>, <*value2*>, ...] | Array | 一个数组，其中包含与指定的 XPath 表达式匹配的 XML 节点或值 |
+| [<*xml-node1*>, <*xml-node2*>, ...] </br>-或- </br>[<*value1*>, <*value2*>, ...] | Array | 一个数组，其中包含与指定的 XPath 表达式匹配的 XML 节点或值 |
 ||||
 
 *示例 1*

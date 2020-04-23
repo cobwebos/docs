@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 31826f5d4d88c977f859a009bface2fddf3a1c88
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 98a160b361e316c87e61855825c2cc36fdbb06d1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67093183"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870304"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>教程：Azure Active Directory 与 Rackspace SSO 集成
 
@@ -187,7 +187,7 @@ ms.locfileid: "67093183"
 
 ### <a name="set-up-attribute-mapping-in-the-rackspace-control-panel"></a>在 Rackspace 控制面板中设置属性映射
 
-Rackspace 使用**属性映射策略**为你的单一登录用户分配 Rackspace 角色和组。 **属性映射策略**将 Azure AD SAML 声明转换为 Rackspace 所需的用户配置字段。 可以在 Rackspace [属性映射基础知识文档](https://developer.rackspace.com/docs/rackspace-federation/attribmapping-basics/)中找到更多文档。 一些注意事项：
+Rackspace 使用**属性映射策略**为你的单一登录用户分配 Rackspace 角色和组。 **属性映射策略**将 Azure AD SAML 声明转换为 Rackspace 所需的用户配置字段。 可以在 Rackspace [属性映射基础知识文档](https://developer.rackspace.com/docs/rackspace-federation/appendix/map/)中找到更多文档。 一些注意事项：
 
 * 如果希望使用 Azure AD 组分配可变级别的 Rackspace 访问权限，则需要在 Azure **Rackspace SSO** 单一登录设置中启用组声明。 然后，可以使用**属性映射策略**将那些组匹配到所需的 Rackspace 角色和组：
 
@@ -226,7 +226,7 @@ mapping:
 > [!TIP]
 > 在编辑策略文件时，请确保使用可以验证 YAML 语法的文本编辑器。
 
-有关更多示例，请参阅 Rackspace [属性映射基础知识文档](https://developer.rackspace.com/docs/rackspace-federation/attribmapping-basics/)。
+有关更多示例，请参阅 Rackspace [属性映射基础知识文档](https://developer.rackspace.com/docs/rackspace-federation/appendix/map/)。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

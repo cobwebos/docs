@@ -6,17 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 5aa025fb366634e796abfb2eb9c0035d9b87dc3c
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 2c6eb5407ec62b6e9e771ce257b66fca2a91e0a5
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437048"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82023599"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）
 
 ![Office 365 徽标](media/solution-office-365/icon.png)
-
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>解决方案更新
@@ -36,8 +35,8 @@ ms.locfileid: "80437048"
 >
 > ## <a name="frequently-asked-questions"></a>常见问题
 > 
-> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-april-30th"></a>问：从现在到 4 月 30 日之间是否可以在 Office 365 Azure 监视器解决方案中登载？
-> 否，Azure 监视器 Office 365 解决方案载入脚本不再可用。 解决方案将于 4 月 30 日删除。
+> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-july-30th"></a>问：从现在到 7 月 30 日，是否可以在 Office 365 Azure 监视器解决方案中加入？
+> 否，Azure 监视器 Office 365 解决方案载入脚本不再可用。 解决方案将于 7 月 30 日删除。
 > 
 > ### <a name="q-will-the-tables-and-schemas-be-changed"></a>问：表和架构是否会更改？
 > **OfficeActivity**表名称和架构将保持不变，与当前解决方案中相同。 您可以在新解决方案中继续使用相同的查询，不包括引用 Azure AD 数据的查询。
@@ -103,11 +102,11 @@ ms.locfileid: "80437048"
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>问：Azure Sentinel 是否作为解决方案的一部分提供了其他连接器？
 > 是的，请参阅[Azure Sentinel 连接数据源](../../sentinel/connect-data-sources.md)。
 > 
-> ###    <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>问：4月30日会发生什么？ 我需要事先离开吗？
+> ###    <a name="q-what-will-happen-on-july-30-do-i-need-to-offboard-beforehand"></a>问：7月30日会发生什么？ 我需要事先离开吗？
 > 
 > - 您将无法从**Office365**解决方案接收数据。 该解决方案将不再在应用商店中可用
 > - 对于 Azure 哨兵客户，日志分析工作区解决方案**Office365**将包含在 Azure 哨兵**安全见解**解决方案中。
-> - 如果您不手动关闭解决方案，您的数据将在 4 月 30 日自动断开连接。
+> - 如果您不手动关闭解决方案，您的数据将在 7 月 30 日自动断开连接。
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>问：我的数据传输是否会传输到新解决方案？
 > 是的。 从工作区中删除**Office 365**解决方案时，由于架构被删除，其数据将暂时不可用。 在 Sentinel 中启用新的**Office 365**连接器时，架构将还原到工作区，并且已经收集的任何数据都将可用。 
@@ -382,7 +381,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
-| Item | 表示对其执行操作的项 | 
+| 项 | 表示对其执行操作的项 | 
 | SendAsUserMailboxGuid | 为发送电子邮件而访问的邮箱的 Exchange GUID。 |
 | SendAsUserSmtp | 被模拟用户的 SMTP 地址。 |
 | SendonBehalfOfUserMailboxGuid | 为代替发送邮件而访问的邮箱的 Exchange GUID。 |

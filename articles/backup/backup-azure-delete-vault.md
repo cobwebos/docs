@@ -1,18 +1,18 @@
 ---
 title: 删除 Microsoft Azure 恢复服务保管库
-description: 本文介绍如何删除依赖项，然后删除 Microsoft Azure 备份恢复服务 (MARS) 保管库。
+description: 在本文中，了解如何删除依赖项，然后删除 Azure 备份恢复服务保管库。
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: f33f52048729b50015ba86db71118b9a21e1a2fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 69fed6c53914ed7aa16b04b5311ec69966734f25
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500394"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025129"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>删除 Azure 备份恢复服务保管库
 
-本文介绍如何删除 Microsoft [Azure 备份](backup-overview.md)恢复服务 (MARS) 保管库。 其中分别说明了如何删除依赖项，以及如何删除保管库。
+本文介绍如何删除 [Azure 备份](backup-overview.md)恢复服务保管库。 其中分别说明了如何删除依赖项，以及如何删除保管库。
 
 ## <a name="before-you-start"></a>开始之前
 
@@ -28,7 +28,7 @@ ms.locfileid: "79500394"
 
   ![删除受保护的服务器出错。](./media/backup-azure-delete-vault/error-message.jpg)
 
-- 如果备份项处于软删除状态，将显示以下警告消息，你将需要等到这些备份项被永久删除。 有关详细信息，请参阅[本文](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud)。
+- 如果备份项处于软删除状态，将显示以下警告消息，你将需要等到这些备份项被永久删除。 有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud)。
 
    ![删除保管库出错。](./media/backup-azure-delete-vault/error-message-soft-delete.png)
 
@@ -36,7 +36,7 @@ ms.locfileid: "79500394"
   
 若要删除保管库，请选择与设置相匹配的方案，然后执行建议的步骤：
 
-方案 | 删除依赖项以删除保管库的步骤 |
+场景 | 删除依赖项以删除保管库的步骤 |
 -- | --
 我的本地文件和文件夹已备份到 Azure，并已使用 Azure 备份代理进行保护 | 执行[从 MARS 管理控制台删除备份项](#delete-backup-items-from-the-mars-management-console)中的步骤
 我的本地计算机已在 Azure 中使用 MABS（Microsoft Azure 备份服务器）或 DPM (System Center Data Protection Manager) 进行保护 | 执行[从 MABS 管理控制台删除备份项](#delete-backup-items-from-the-mabs-management-console)中的步骤
@@ -107,7 +107,7 @@ ms.locfileid: "79500394"
 ### <a name="delete-backup-items-from-the-mars-management-console"></a>从 MARS 管理控制台删除备份项
 
 1. 打开 MARS 管理控制台，转到“操作”窗格并选择“计划备份”。********
-2. 在“修改或停止计划的备份”页中选择“停止使用此备份计划并删除所有存储的备份”选项。******** 然后，选择 **"下一步**"。
+2. 在“修改或停止计划的备份”页中选择“停止使用此备份计划并删除所有存储的备份”选项。******** 然后，选择“下一步”  。
 
     ![修改或停止计划的备份。](./media/backup-azure-delete-vault/modify-schedule-backup.png)
 

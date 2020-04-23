@@ -5,12 +5,12 @@ author: jumeder
 ms.author: jumeder
 ms.date: 04/09/2020
 ms.topic: article
-ms.openlocfilehash: 675f8d988e64ed7b556f154f681ccb53ed1000c6
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: f10c736cad9322752d5d552d29ef0c63635628a5
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81394288"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868162"
 ---
 # <a name="debug-rendering"></a>调试渲染
 
@@ -22,7 +22,7 @@ ms.locfileid: "81394288"
 |---------------------------------|:-------------------------------------|
 |框架计数器                    | 将文本叠加渲染到框架的左上角。 文本显示当前服务器端帧 ID，该 ID 随着呈现过程而不断递增。 |
 |多边形计数                    | 将文本叠加渲染到框架的左上角。 文本显示当前呈现的多边形量，与[服务器端性能查询](performance-queries.md)查询的值相同| 
-|线框                        | 如果启用，则服务器上加载的所有对象几何体都将在线框模式下呈现。 只有多边形的边缘才会在此模式下进行栅格化。 |
+|线框                        | 如果启用，则服务器上加载的所有对象几何体都将在线框模式下呈现。 在此模式下，只有多边形的边缘才会栅格。 |
 
 以下代码支持以下调试效果：
 
@@ -56,7 +56,7 @@ void EnableDebugRenderingEffects(AzureSession session, bool highlight)
 ## <a name="performance-considerations"></a>性能注意事项
 
 * 启用文本叠加会产生很少或根本没有性能开销。
-* 此外，启用叠加确实会产生非同寻常的性能开销，尽管它可能因场景而异。 对于复杂场景，此模式可能会导致帧速率下降到 60 Hz 目标以下。
+* 启用线框模式确实会产生非同寻常的性能开销，但可能因场景而异。 对于复杂场景，此模式可能会导致帧速率降至 60 Hz 目标以下。
 
 ## <a name="next-steps"></a>后续步骤
 

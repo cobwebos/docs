@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: e06e71d4436ac6c64ff2edc876d7849d084482f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df8f68e47776f46ae2d1331f85bd76d6cfe17b80
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74671636"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869947"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Azure 应用服务诊断概述
 
@@ -31,6 +31,10 @@ ms.locfileid: "74671636"
 在"应用服务诊断主页"中，您可以使用每个主页磁贴中的关键字选择最能描述应用问题的类别。 此外，此页面是您可以找到 Windows 应用**的诊断工具**的位置。 请参阅[诊断工具（仅适用于 Windows 应用）。](#diagnostic-tools-only-for-windows-app)
 
 ![主页](./media/app-service-diagnostics/app-service-diagnostics-homepage-1.png)
+
+> [!NOTE]
+> 如果应用关闭或执行速度慢，则可以[收集分析跟踪](https://azure.github.io/AppService/2018/06/06/App-Service-Diagnostics-Profiling-an-ASP.NET-Web-App-on-Azure-App-Service.html)以标识问题的根本原因。 分析重量轻，专为生产方案而设计。
+>
 
 ## <a name="interactive-interface"></a>交互式界面
 

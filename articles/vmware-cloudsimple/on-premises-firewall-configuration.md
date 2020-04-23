@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: df4c51953c6f50e30ba61b993cdb35856fcb8e25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 539665c4756a7dc87078922421b45a88404f58f1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77082969"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868146"
 ---
 # <a name="accessing-your-cloudsimple-private-cloud-environment-and-applications-from-on-premises"></a>从本地访问云简单私有云环境和应用程序
 
@@ -35,7 +35,7 @@ ms.locfileid: "77082969"
 
 ## <a name="ports-required-for-using-on-premises-active-directory-as-an-identity-source"></a>将本地活动目录用作标识源所需的端口
 
-要将本地活动目录配置为私有云 vCenter 上的标识源，必须打开表中定义的端口。  有关配置步骤[，请参阅在云简单私有云上使用 Azure AD 作为 vCenter 的标识提供程序](https://docs.azure.cloudsimple.com/azure-ad/)。
+要将本地活动目录配置为私有云 vCenter 上的标识源，必须打开表中定义的端口。  有关配置步骤[，请参阅在云简单私有云上使用 Azure AD 作为 vCenter 的标识提供程序](https://docs.microsoft.com/azure/vmware-cloudsimple/azure-ad/)。
 
 | 端口         | 源                           | 目标                                         | 目的                                                                                                                                          |
 |--------------|----------------------------------|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -60,6 +60,6 @@ ms.locfileid: "77082969"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [创建和管理 VLAN 和子网](https://docs.azure.cloudsimple.com/create-vlan-subnet/)
-* [使用 Azure 快速路由连接到本地网络](https://docs.azure.cloudsimple.com/on-premises-connection/)
-* [从本地设置站点到站点 VPN](https://docs.azure.cloudsimple.com/vpn-gateway/)
+* [创建和管理 VLAN 和子网](https://docs.microsoft.com/azure/vmware-cloudsimple/create-vlan-subnet/)
+* [使用 Azure 快速路由连接到本地网络](https://docs.microsoft.com/azure/vmware-cloudsimple/on-premises-connection/)
+* [从本地设置站点到站点 VPN](https://docs.microsoft.com/azure/vmware-cloudsimple/vpn-gateway/)

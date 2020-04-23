@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 95d27bab243f6805436465f5027e519d33e20f6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 91d3dd2eee6f771df23b72eae7a33122c42f1690
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79244727"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869335"
 ---
 # <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>通过云简单门户从 Azure 门户访问 VMware 解决方案
 
@@ -34,11 +34,11 @@ Microsoft.VMwareCloudSimple/dedicatedCloudServices/*/write
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 中的[https://portal.azure.com](https://portal.azure.com)Azure 门户。
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="access-the-cloudsimple-portal"></a>访问 CloudSimple 门户
 
-1. 选择**所有服务**。
+1. 选择“所有服务”  。
 
 2. 搜索**云简单服务**。
 
@@ -71,5 +71,5 @@ Microsoft.VMwareCloudSimple/dedicatedCloudServices/*/write
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何[创建私有云](https://docs.azure.cloudsimple.com/create-private-cloud/)
+* 了解如何[创建私有云](https://docs.microsoft.com/azure/vmware-cloudsimple/create-private-cloud/)
 * 了解如何[配置私有云环境](quickstart-create-private-cloud.md)

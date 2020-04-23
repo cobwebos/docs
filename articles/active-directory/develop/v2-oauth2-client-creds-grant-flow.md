@@ -12,12 +12,12 @@ ms.date: 12/17/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f559dc0da8680a6cd3243b5ee12c3145244c9c2c
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 36a5fdf990432e3a41cf8fc578fa20b4910250b2
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81677869"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868445"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft 标识平台和 OAuth 2.0 客户端凭据流
 
@@ -90,7 +90,7 @@ OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调�
 > [!TIP]
 > 尝试在 Postman 中执行此请求！ （使用您自己的应用 ID 获得最佳结果 - 教程应用程序不会请求有用的权限。[尝试在邮递员中运行此请求![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
-```
+```HTTP
 // Line breaks are for legibility only.
 
 GET https://login.microsoftonline.com/{tenant}/adminconsent?
@@ -99,62 +99,60 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &redirect_uri=http://localhost/myapp/permissions
 ```
 
-```
-// Pro tip: Try pasting the following request in a browser.
-```
+专业提示：尝试在浏览器中粘贴以下请求。
 
 ```
 https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&state=12345&redirect_uri=http://localhost/myapp/permissions
 ```
 
-| 参数 | 条件 | 描述 |
+| 参数 | 条件 | 说明 |
 | --- | --- | --- |
-| `tenant` | 必选 | 要向其请求权限的目录租户。 这可采用 GUID 或友好名称格式。 如果不知道用户属于哪个租户并想让他们登录到任一租户，请使用 `common`。 |
-| `client_id` | 必选 | [Azure 门户和应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验**的应用程序（客户端）ID**分配给应用。 |
-| `redirect_uri` | 必选 | 要向其发送响应以供应用处理的重定向 URI。 其必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码并可包含其他路径段。 |
-| `state` | 建议 | 同时随令牌响应返回的请求中所包含的值。 它可以是用户想要的任何内容的字符串。 该状态用于对发出身份验证请求出现之前，有关用户在应用中的状态的信息（例如前面所在的页面或视图）编码。 |
+| `tenant` | 必须 | 要向其请求权限的目录租户。 此参数可采用 GUID 或友好名称格式。 如果不知道用户属于哪个租户并想让他们登录到任一租户，请使用 `common`。 |
+| `client_id` | 必须 | [Azure 门户和应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验**的应用程序（客户端）ID**分配给应用。 |
+| `redirect_uri` | 必须 | 要向其发送响应，供应用处理的重定向 URI。 它必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码并可包含其他路径段。 |
+| `state` | 建议 | 同时随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 该 state 用于在身份验证请求出现之前，于应用中编码用户的状态信息，例如之前所在的页面或视图。 |
 
-此时，Azure AD 强制要求只有租户管理员可以登录来完成请求。 系统将要求管理员批准在应用注册门户中针对应用请求的所有直接应用程序权限。
+此时，Azure AD 强制要求只有租户管理员可以登录来完成请求。 系统会要求管理员批准在应用注册门户中针对应用请求的所有直接应用程序权限。
 
 ##### <a name="successful-response"></a>成功的响应
 
 如果管理员批准了应用程序的权限，成功响应如下所示：
 
-```
+```HTTP
 GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
 ```
 
 | 参数 | 说明 |
 | --- | --- |
 | `tenant` | 向应用程序授予所请求权限的目录租户（采用 GUID 格式）。 |
-| `state` | 同样随令牌响应返回的请求中所包含的值。 它可以是用户想要的任何内容的字符串。 该状态用于对发出身份验证请求出现之前，有关用户在应用中的状态的信息（例如前面所在的页面或视图）编码。 |
+| `state` | 同样随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 该 state 用于在身份验证请求出现之前，于应用中编码用户的状态信息，例如之前所在的页面或视图。 |
 | `admin_consent` | 设置为 **True**。 |
 
 ##### <a name="error-response"></a>错误响应
 
 如果管理员未批准应用程序的权限，失败响应如下所示：
 
-```
+```HTTP
 GET http://localhost/myapp/permissions?error=permission_denied&error_description=The+admin+canceled+the+request
 ```
 
 | 参数 | 说明 |
 | --- | --- |
-| `error` | 可用于分类错误类型，并响应错误的错误代码字符串。 |
-| `error_description` | 可帮助用户识别错误根本原因的特定错误消息。 |
+| `error` | 可用于将错误分类，以及对错误做出反应的错误代码字符串。 |
+| `error_description` | 可帮助识别错误根本原因的特定错误消息。 |
 
-从应用预配终结点收到成功响应后，应用便已获得所请求的直接应用程序权限。 现在便可为所需资源请求令牌。
+从应用预配终结点收到成功响应后，应用便已获得它所请求的直接应用程序权限。 现在，可以请求所需的资源令牌。
 
 ## <a name="get-a-token"></a>获取令牌
 
-获取应用程序的必要授权后，可继续获取 API 的访问令牌。 若要使用客户端凭据授予获取令牌，请将 POST 请求发送到 `/token` Microsoft 标识平台终结点：
+获取应用程序的必要授权后，可以继续获取 API 的访问令牌。 若要使用客户端凭据授予获取令牌，请将 POST 请求发送到 `/token` Microsoft 标识平台终结点：
 
 > [!TIP]
-> 尝试在 Postman 中执行此请求！ （使用您自己的应用 ID 获得最佳结果 - 教程应用程序不会请求有用的权限。[尝试在邮递员中运行此请求![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> 尝试在 Postman 中执行此请求！ （为获得最佳效果，请使用自己的应用 ID - 教程应用程序不会请求有用的权限。）[![尝试在 Postman 中运行此请求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
-### <a name="first-case-access-token-request-with-a-shared-secret"></a>第一种情况：使用共享密钥访问令牌请求
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>第一种情况：使用共享机密访问令牌请求
 
-```
+```HTTP
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity
 Host: login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
@@ -165,22 +163,22 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 &grant_type=client_credentials
 ```
 
-```
-// Replace {tenant} with your tenant!
+```Bash
+# Replace {tenant} with your tenant!
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token'
 ```
 
-| 参数 | 条件 | 描述 |
+| 参数 | 条件 | 说明 |
 | --- | --- | --- |
-| `tenant` | 必选 | 应用程序计划对其进行操作的目录租户，采用 GUID 或域名格式。 |
-| `client_id` | 必选 | 分配给应用的应用程序 ID。 可以在注册应用的门户中找到此信息。 |
-| `scope` | 必选 | 在此请求中针对 `scope` 参数传递的值应该是所需资源的资源标识符（应用程序 ID URI），并附有 `.default` 后缀。 对于 Microsoft Graph 示例，该值为 `https://graph.microsoft.com/.default`。 <br/>此值告知 Microsoft 标识平台终结点：在为应用配置的所有直接应用程序权限中，终结点应该为与要使用的资源关联的权限颁发令牌。 若要了解有关 `/.default` 范围的详细信息，请参阅[许可文档](v2-permissions-and-consent.md#the-default-scope)。 |
-| `client_secret` | 必选 | 在应用注册门户中为应用生成的客户端机密。 在发送客户端密码之前必须对其进行 URL 编码。 |
-| `grant_type` | 必选 | 必须设置为 `client_credentials`。 |
+| `tenant` | 必须 | 应用程序计划对其进行操作的目录租户，采用 GUID 或域名格式。 |
+| `client_id` | 必须 | 分配给应用的应用程序 ID。 可以在注册应用的门户中找到此信息。 |
+| `scope` | 必须 | 在此请求中针对 `scope` 参数传递的值应该是所需资源的资源标识符（应用程序 ID URI），并附有 `.default` 后缀。 在 Microsoft Graph 示例中，该值为 `https://graph.microsoft.com/.default`。 <br/>此值告知 Microsoft 标识平台终结点：在为应用配置的所有直接应用程序权限中，终结点应该为与要使用的资源关联的权限颁发令牌。 若要了解有关 `/.default` 范围的详细信息，请参阅[许可文档](v2-permissions-and-consent.md#the-default-scope)。 |
+| `client_secret` | 必须 | 在应用注册门户中为应用生成的客户端机密。 在发送客户端密码之前必须对其进行 URL 编码。 |
+| `grant_type` | 必须 | 必须设置为 `client_credentials`。 |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>第二种情况：使用证书访问令牌请求
 
-```
+```HTTP
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity
 Host: login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
@@ -192,14 +190,14 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 &grant_type=client_credentials
 ```
 
-| 参数 | 条件 | 描述 |
+| 参数 | 条件 | 说明 |
 | --- | --- | --- |
-| `tenant` | 必选 | 应用程序计划对其进行操作的目录租户，采用 GUID 或域名格式。 |
-| `client_id` | 必选 |分配给应用的应用程序（客户端）ID。 |
-| `scope` | 必选 | 在此请求中针对 `scope` 参数传递的值应该是所需资源的资源标识符（应用程序 ID URI），并附有 `.default` 后缀。 对于 Microsoft Graph 示例，该值为 `https://graph.microsoft.com/.default`。 <br/>此值告知 Microsoft 标识平台终结点：在为应用配置的所有直接应用程序权限中，终结点应该为与要使用的资源关联的权限颁发令牌。 若要了解有关 `/.default` 范围的详细信息，请参阅[许可文档](v2-permissions-and-consent.md#the-default-scope)。 |
-| `client_assertion_type` | 必选 | 该值必须设置为 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`。 |
-| `client_assertion` | 必选 | 断言（JSON Web 令牌），需使用作为凭据向应用程序注册的证书进行创建和签名。 有关如何注册证书以及断言的格式，请阅读[证书凭据](active-directory-certificate-credentials.md)的相关信息。|
-| `grant_type` | 必选 | 必须设置为 `client_credentials`。 |
+| `tenant` | 必须 | 应用程序计划对其进行操作的目录租户，采用 GUID 或域名格式。 |
+| `client_id` | 必须 |分配给应用的应用程序（客户端）ID。 |
+| `scope` | 必须 | 在此请求中针对 `scope` 参数传递的值应该是所需资源的资源标识符（应用程序 ID URI），并附有 `.default` 后缀。 在 Microsoft Graph 示例中，该值为 `https://graph.microsoft.com/.default`。 <br/>此值告知 Microsoft 标识平台终结点：在为应用配置的所有直接应用程序权限中，终结点应该为与要使用的资源关联的权限颁发令牌。 若要了解有关 `/.default` 范围的详细信息，请参阅[许可文档](v2-permissions-and-consent.md#the-default-scope)。 |
+| `client_assertion_type` | 必须 | 该值必须设置为 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`。 |
+| `client_assertion` | 必须 | 断言（JSON Web 令牌），需使用作为凭据向应用程序注册的证书进行创建和签名。 有关如何注册证书以及断言的格式，请阅读[证书凭据](active-directory-certificate-credentials.md)的相关信息。|
+| `grant_type` | 必须 | 必须设置为 `client_credentials`。 |
 
 请注意，参数几乎与共享密钥请求的参数相同，只不过 client_secret 参数替换为两个参数：client_assertion_type 和 client_assertion。
 
@@ -207,7 +205,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 成功响应如下所示：
 
-```
+```json
 {
   "token_type": "Bearer",
   "expires_in": 3599,
@@ -225,7 +223,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 错误响应如下所示：
 
-```
+```json
 {
   "error": "invalid_scope",
   "error_description": "AADSTS70011: The provided value for the input parameter 'scope' is not valid. The scope https://foo.microsoft.com/.default is not valid.\r\nTrace ID: 255d1aef-8c98-452f-ac51-23d051240864\r\nCorrelation ID: fb3d2015-bc17-4bb9-bb85-30c5cf1aaaa7\r\nTimestamp: 2016-01-09 02:02:12Z",
@@ -240,8 +238,8 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 | 参数 | 说明 |
 | --- | --- |
-| `error` | 可用于分类发生的错误类型和响应错误的错误代码字符串。 |
-| `error_description` | 可帮助用户识别身份验证错误根本原因的特定错误消息。 |
+| `error` | 可用于对发生的错误分类以及对错误做出反应的错误代码字符串。 |
+| `error_description` | 可帮助识别身份验证错误根本原因的特定错误消息。 |
 | `error_codes` | 可帮助诊断的 STS 特定错误代码列表。 |
 | `timestamp` | 发生错误的时间。 |
 | `trace_id` | 可帮助进行诊断的请求的唯一标识符。 |
@@ -251,17 +249,15 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 获取令牌后，使用该令牌对资源发出请求。 令牌过期时，向 `/token` 终结点重复该请求，即可获取全新的访问令牌。
 
-```
+```HTTP
 GET /v1.0/me/messages
 Host: https://graph.microsoft.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 ```
 
-```
-// Pro tip: Try the following command! (Replace the token with your own.)
-```
+```bash
+# Pro tip: Try the following command! (Replace the token with your own.)
 
-```
 curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbG...." 'https://graph.microsoft.com/v1.0/me/messages'
 ```
 

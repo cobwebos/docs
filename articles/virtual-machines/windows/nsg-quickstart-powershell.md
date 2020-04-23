@@ -1,30 +1,24 @@
 ---
 title: 使用 Azure PowerShell 打开 VM 的端口
 description: 了解如何使用 Azure Resource Manager 部署模型和 Azure PowerShell 为 Windows VM 打开端口/创建终结点
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: cf45f7d8-451a-48ab-8419-730366d54f1e
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 547ca9c98d77b2aaa6d3630bff4b2ec10dcc5be0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a0dcc53d84edb4dd697213106c02626df24acfd8
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75754175"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869402"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>如何在 Azure 中使用 PowerShell 打开 VM 的端口和终结点
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 ## <a name="quick-commands"></a>快速命令
-若要创建网络安全组和 ACL 规则，需要[安装最新版本的 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 您还可以使用[Azure 门户执行这些步骤](nsg-quickstart-portal.md)。
+若要创建网络安全组和 ACL 规则，需要[安装最新版本的 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 还可以[使用 Azure 门户执行这些步骤](nsg-quickstart-portal.md)。
 
 登录到 Azure 帐户：
 
@@ -32,9 +26,9 @@ ms.locfileid: "75754175"
 Connect-AzAccount
 ```
 
-在以下示例中，请将参数名称替换成自己的值。 示例参数名称包括了 myResourceGroup**、myNetworkSecurityGroup** 和 myVnet**。
+在以下示例中，请将参数名称替换成自己的值。 示例参数名称包括了 myResourceGroup  、myNetworkSecurityGroup  和 myVnet  。
 
-使用 [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) 创建规则。 下面的示例创建一个名为*myNetworkSecurityGroupRule*的规则，以允许端口*80*上的*tcp*流量：
+使用 [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) 创建规则。 以下示例创建一个名为 myNetworkSecurityGroupRule  的规则，以允许端口 80  上的 tcp  流量：
 
 ```powershell
 $httprule = New-AzNetworkSecurityRuleConfig `
@@ -50,7 +44,7 @@ $httprule = New-AzNetworkSecurityRuleConfig `
     -DestinationPortRange 80
 ```
 
-接下来，使用 [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) 创建网络安全组，并按以下步骤分配刚刚创建的 HTTP 规则。 以下示例创建名为 myNetworkSecurityGroup** 的网络安全组：
+接下来，使用 [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) 创建网络安全组，并按以下步骤分配刚刚创建的 HTTP 规则。 以下示例创建名为 myNetworkSecurityGroup  的网络安全组：
 
 ```powershell
 $nsg = New-AzNetworkSecurityGroup `
@@ -60,7 +54,7 @@ $nsg = New-AzNetworkSecurityGroup `
     -SecurityRules $httprule
 ```
 
-现在我们将网络安全组分配给子网。 以下示例使用 [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) 向变量 *$vnet* 分配名为 *myVnet* 的现有虚拟网络：
+现在我们将网络安全组分配给子网。 以下示例使用 *Get-AzVirtualNetwork* 向变量 *$vnet* 分配名为 [myVnet](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) 的现有虚拟网络：
 
 ```powershell
 $vnet = Get-AzVirtualNetwork `
@@ -68,7 +62,7 @@ $vnet = Get-AzVirtualNetwork `
     -Name "myVnet"
 ```
 
-使用 [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworksubnetconfig) 将网络安全组关联到子网。 以下示例将名为 mySubnet** 的子网与网络安全组相关联：
+使用 [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworksubnetconfig) 将网络安全组关联到子网。 以下示例将名为 mySubnet  的子网与网络安全组相关联：
 
 ```powershell
 $subnetPrefix = $vnet.Subnets|?{$_.Name -eq 'mySubnet'}

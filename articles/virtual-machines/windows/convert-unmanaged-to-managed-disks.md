@@ -3,19 +3,20 @@ title: 将 Windows 虚拟机从非托管磁盘转换为托管磁盘
 description: 如何在 Resource Manager 部署模型中使用 PowerShell 将 Windows VM 从非托管磁盘转换为托管磁盘
 author: roygara
 ms.service: virtual-machines-windows
+ms.subservice: disks
 ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 8c180cfc597c0ade27b1fe8cca5a8751176ea12e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8069b174b7a69cc2e6c47171159569c56a15563
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75460128"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82081942"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>将 Windows 虚拟机从非托管磁盘转换为托管磁盘
 
-如果有使用非托管磁盘的现有 Windows 虚拟机 (VM)，可通过 [Azure 托管磁盘](managed-disks-overview.md)服务将 VM 转换为使用托管磁盘。 此过程将同时转换 OS 磁盘和任何附加的数据磁盘。
+如果有使用非托管磁盘的现有 Windows 虚拟机 (VM)，可通过 [Azure 托管磁盘](managed-disks-overview.md)服务将 VM 转换为使用托管磁盘。 此过程会同时转换 OS 磁盘和任何附加的数据磁盘。
 
  
 
@@ -94,7 +95,7 @@ ms.locfileid: "75460128"
 
 还可以使用 Azure 门户将非托管磁盘转换为托管磁盘。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 从门户的 VM 列表中选择 VM。
 3. 在 VM 的边栏选项卡中，从菜单中选择“磁盘”****。
 4. 在“磁盘”**** 边栏选项卡的顶部，选择“迁移到托管磁盘”****。

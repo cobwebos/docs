@@ -3,15 +3,16 @@ title: 使用 Azure PowerShell 创建和加密 Windows VM
 description: 本快速入门介绍如何使用 Azure PowerShell 创建和加密 Windows 虚拟机
 author: msmbaldwin
 ms.author: mbaldwin
-ms.service: security
+ms.service: virtual-machines-windows
+ms.subservice: security
 ms.topic: quickstart
 ms.date: 05/17/2019
-ms.openlocfilehash: b5e5b44742c85591b913b94e622c76a2aba111ce
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6f564a9a4f13136bbe7e28a3600ca71892c82439
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "72245707"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82081585"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-in-azure-with-powershell"></a>快速入门：使用 PowerShell 在 Azure 中创建和加密 Windows 虚拟机
 

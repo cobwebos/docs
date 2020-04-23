@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8ca8c5cacd2b1a1a7b4f70615831d2901510045e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7c137a75c0a021aa8bca3aec23da6c4d1ada300
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77024426"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868019"
 ---
 # <a name="quickstart---create-azure-vmware-solution-by-cloudsimple-service"></a>快速入门 - 通过云简单服务创建 Azure VMware 解决方案
 
@@ -34,11 +34,11 @@ ms.locfileid: "77024426"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 中的[https://portal.azure.com](https://portal.azure.com)Azure 门户。
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="create-the-service"></a>创建服务
 
-1. 选择**所有服务**。
+1. 选择“所有服务”  。
 2. 搜索**云简单服务**。
 
     ![搜索云简单服务](media/create-cloudsimple-service-search.png)
@@ -55,7 +55,7 @@ ms.locfileid: "77024426"
 
     ![创建云简单服务](media/create-cloudsimple-service.png)
 
-9. 单击“确定”。
+9. 单击“确定”。 
 
 该服务将创建并添加到服务列表中。
 
@@ -63,7 +63,7 @@ ms.locfileid: "77024426"
 
 要为云简单私有云环境设置即付容量，首先在 Azure 门户中预配节点。
 
-1. 选择**所有服务**。
+1. 选择“所有服务”  。
 2. 搜索**云简单节点**。
 
     ![搜索云简单节点](media/create-cloudsimple-node-search.png)
@@ -80,11 +80,11 @@ ms.locfileid: "77024426"
 9. 选择托管节点资源的专用位置。
 10. 选择[节点类型](cloudsimple-node.md)。
 11. 选择要预配的节点数。
-12. 选择 **"审阅 " 创建**。
+12. 选择“查看 + 创建”  。
 13. 查看设置。 要修改任何设置，请单击"**上一个**"。
-14. 选择 **“创建”**。
+14. 选择“创建”  。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [创建私有云并配置环境](quickstart-create-private-cloud.md)
-* 了解有关[云简单服务](https://docs.azure.cloudsimple.com/cloudsimple-service)的更多
+* 了解有关[云简单服务](https://docs.microsoft.com/azure/vmware-cloudsimple/cloudsimple-service)的更多

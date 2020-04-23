@@ -3,12 +3,12 @@ title: Azure 迁移服务器评估中的依赖项分析
 description: 介绍如何使用 Azure 迁移服务器评估使用依赖项分析进行评估。
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: b11796f2c5d7c1d87f383e6780444e572352eff5
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: f0b956620895ae2264b53916015d440f5e586eb2
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537740"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024755"
 ---
 # <a name="dependency-analysis"></a>依赖项分析
 
@@ -51,7 +51,7 @@ ms.locfileid: "81537740"
 
 ### <a name="collected-data"></a>收集的数据
 
-对于基于代理的可视化效果，将收集以下数据：
+对于基于代理的分析，将收集以下数据：
 
 - 源计算机服务器名称、进程、应用程序名称。
 - 目标计算机服务器名称、进程、应用程序名称和端口。

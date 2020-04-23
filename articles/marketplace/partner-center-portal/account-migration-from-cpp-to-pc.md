@@ -1,18 +1,18 @@
 ---
 title: 从云合作伙伴门户到合作伙伴中心的帐户迁移 - Azure 的商业市场
-description: 如何将您的帐户从 CPP 迁移到合作伙伴中心。 - Azure 的商业市场
+description: 如何将帐户从 CPP 迁移到合作伙伴中心 - Azure 的商业市场
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 3979be6f49f4ad01a6092fc0d5aa767d342c4642
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 49fb2da05b7284fff10e6271de177551000995ed
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81730491"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024415"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>将帐户从云合作伙伴门户迁移到合作伙伴中心
 
@@ -42,6 +42,16 @@ ms.locfileid: "81730491"
 2. 注册 Microsoft 合作伙伴网络计划
 
     如果您的 CPP 帐户没有 Microsoft 合作伙伴网络 ID 或 ID 无效，则需要注册 Microsoft 合作伙伴网络计划作为激活过程的一部分。
+
+## <a name="publishers-moving-from-cpp"></a>从 CPP 转移的发布者
+
+如果您的帐户已经从[云合作伙伴门户 （CPP）](https://cloudpartner.azure.com)迁移，则无需创建新的合作伙伴中心帐户。 您应该在登录到现有 CPP 帐户后通过电子邮件和横幅通知中收到指向新合作伙伴中心帐户的自定义链接。
+
+访问此自定义链接启用新合作伙伴中心帐户后，可以通过访问合作伙伴中心[中的商业市场仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)返回到您的帐户。
+
+发布协议和公司配置文件信息将迁移到您的新合作伙伴中心帐户，以及以前设置的任何帐户支出配置文件信息、用户帐户和权限以及与您的 CPP 帐户关联的活动优惠。
+
+将您的帐户信息从 CPP 移动到合作伙伴中心后，您将不再使用 CPP 进行帐户更新或管理用户、权限和计费。 在有限的时间内，您在合作伙伴中心进行的任何帐户更新将自动在只读 CPP 帐户中更新，直到 CPP 门户最终被弃用为止。
 
 ## <a name="sign-up-for-microsoft-partner-network-program"></a>注册 Microsoft 合作伙伴网络计划
 

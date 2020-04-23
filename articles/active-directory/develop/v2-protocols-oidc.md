@@ -12,12 +12,12 @@ ms.date: 04/12/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ebec4cb6bbbac5b331eb2eb4145716e16e7320fa
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 161f97dc99ce5ce16d7c40126b95a769c4b79621
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81677686"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868334"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft 标识平台和 OpenID Connect 协议
 
@@ -38,6 +38,7 @@ OpenID Connect 描述了元数据文档，该文档包含了应用执行登录�
 ```
 https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 ```
+
 > [!TIP]
 > 试试看！ 单击[https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration)以查看`common`租户配置。
 
@@ -52,7 +53,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 元数据是简单的 JavaScript 对象表示法 (JSON) 文档。 有关示例，请参阅下面的代码段。 [OpenID Connect 规范](https://openid.net/specs/openid-connect-discovery-1_0.html#rfc.section.4.2)对该代码段的内容进行了完整描述。
 
-```
+```json
 {
   "authorization_endpoint": "https:\/\/login.microsoftonline.com\/{tenant}\/oauth2\/v2.0\/authorize",
   "token_endpoint": "https:\/\/login.microsoftonline.com\/{tenant}\/oauth2\/v2.0\/token",
@@ -84,7 +85,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 例如：
 
-```
+```HTTP
 // Line breaks are for legibility only.
 
 GET https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
@@ -123,7 +124,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 使用 `response_mode=form_post` 时，成功的响应如下所示：
 
-```
+```HTTP
 POST /myapp/ HTTP/1.1
 Host: localhost
 Content-Type: application/x-www-form-urlencoded
@@ -140,7 +141,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 
 错误响应也可能发送到重定向 URI，使应用可对其进行处理。 错误响应如下所示：
 
-```
+```HTTP
 POST /myapp/ HTTP/1.1
 Host: localhost
 Content-Type: application/x-www-form-urlencoded
@@ -187,7 +188,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 可以将用户重定向到 OpenID Connect 元数据文档中所列的 `end_session_endpoint`：
 
-```
+```HTTP
 GET https://login.microsoftonline.com/common/oauth2/v2.0/logout?
 post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 ```
@@ -211,7 +212,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 ## <a name="get-access-tokens"></a>获取访问令牌
 若要获取访问令牌，请修改登录请求：
 
-```
+```HTTP
 // Line breaks are for legibility only.
 
 GET https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
@@ -236,7 +237,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
 
 使用 `response_mode=form_post` 后的成功响应如下所示：
 
-```
+```HTTP
 POST /myapp/ HTTP/1.1
 Host: localhost
 Content-Type: application/x-www-form-urlencoded
@@ -254,7 +255,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 
 也可以将错误响应发送到重定向 URI，使应用能够适当地处理这些响应。 错误响应如下所示：
 
-```
+```HTTP
 POST /myapp/ HTTP/1.1
 Host: localhost
 Content-Type: application/x-www-form-urlencoded

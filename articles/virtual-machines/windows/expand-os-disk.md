@@ -1,26 +1,20 @@
 ---
 title: 在 Azure 中扩展 Windows VM 的操作系统驱动器
 description: 在 Resource Manager 部署模型中，使用 Azure Powershell 增加虚拟机的 OS 驱动器大小。
-services: virtual-machines-windows
-documentationcenter: ''
 author: mimckitt
 manager: vashan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: d9edfd9f-482f-4c0b-956c-0d2c2c30026c
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: mimckitt
 ms.subservice: disks
-ms.openlocfilehash: 208438b5bc600fa09584ca34c72b1981d9eda399
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: e69b041a2e4c8a0715adb6ab126a3aede42f7dde
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261391"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869688"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>如何扩展虚拟机的 OS 驱动器
 
@@ -166,7 +160,7 @@ Start-AzVM -ResourceGroupName $rgName -Name $vmName
 
 ## <a name="resizing-data-disks"></a>调整数据磁盘的大小
 
-虽然本文重介绍扩展 VM 的 OS 磁盘，但该脚本也可用于扩展附加到 VM 的数据磁盘。 例如，要扩展附加到 VM 的第一个数据磁盘，请将 `StorageProfile` 的 `OSDisk` 对象替换为 `DataDisks` 数组，并使用数字索引获取对第一个附加的数据磁盘的引用，如下所示：
+虽然本文重介绍扩展 VM 的 OS 磁盘，但该脚本也可用于扩展附加到 VM 的数据磁盘。 例如，要扩展附加到 VM 的第一个数据磁盘，请将 `OSDisk` 的 `StorageProfile` 对象替换为 `DataDisks` 数组，并使用数字索引获取对第一个附加的数据磁盘的引用，如下所示：
 
 **托管磁盘**
 
@@ -184,7 +178,7 @@ $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 
 
 
-同样，如上所示使用索引或磁盘的“名称属性”可以引用附加到 VM 的其他数据磁盘****：
+同样，如上所示使用索引或磁盘的“名称属性”可以引用附加到 VM 的其他数据磁盘  ：
 
 
 **托管磁盘**
@@ -201,17 +195,17 @@ $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 
 ## <a name="expand-the-volume-within-the-os"></a>扩展 OS 中的卷
 
-展开 VM 的磁盘后，需要转到 OS 并展开卷以包含新的空间。 以下几种方法可用于扩展分区。 本部分介绍了如何使用 RDP 连接来连接 VM 以使用 DiskPart 展开分区****。
+展开 VM 的磁盘后，需要转到 OS 并展开卷以包含新的空间。 以下几种方法可用于扩展分区。 本部分介绍了如何使用 RDP 连接来连接 VM 以使用 DiskPart 展开分区  。
 
 1. 打开与 VM 的 RDP 连接。
 
-2.  打开命令提示符并键入 diskpart****
+2.  打开命令提示符并键入 diskpart 
 
-2.  在 DISKPART 提示符处，键入 `list volume`****。 记下要扩展的卷。
+2.  在 DISKPART 提示符处，键入  `list volume`。 记下要扩展的卷。
 
-3.  在 DISKPART 提示符处，键入 `select volume <volumenumber>`****。 这将选择将扩展到同一磁盘上的连续可用空间的卷 volumenumber**。
+3.  在 DISKPART 提示符处，键入  `select volume <volumenumber>`。 这将选择将扩展到同一磁盘上的连续可用空间的卷 volumenumber  。
 
-4.  在 DISKPART 提示符处，键入 `extend [size=<size>]`****。 这将按大小（MB）扩展所选的卷**。
+4.  在 DISKPART 提示符处，键入  `extend [size=<size>]`。 这将按大小（MB）扩展所选的卷  。
 
 
 ## <a name="next-steps"></a>后续步骤

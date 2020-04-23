@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 997dd98d35b74effe5d195f9a781fa0935286ee9
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 214d379525f2ee534415d713aa298ec858a84c92
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537213"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868845"
 ---
 # <a name="protected-web-api-app-registration"></a>受保护的 Web API：应用注册
 
 本文介绍适用于受保护 Web API 的应用注册详细信息。
 
-有关注册应用的常见步骤，请参阅[快速入门：使用 Microsoft 标识平台注册应用程序](quickstart-register-app.md)。
+有关注册应用程序的常用步骤，请参阅[快速入门：将应用程序注册到 Microsoft 标识平台](quickstart-register-app.md)。
 
 ## <a name="accepted-token-version"></a>接受的令牌版本
 
@@ -108,7 +108,7 @@ Web API 不需注册重定向 URI，因为没有任何用户以交互方式登�
 
 以下示例演示了 `appRoles` 的内容，其中 `id` 的值可以是任何唯一的 GUID。
 
-```JSon
+```json
 "appRoles": [
     {
     "allowedMemberTypes": [ "Application" ],

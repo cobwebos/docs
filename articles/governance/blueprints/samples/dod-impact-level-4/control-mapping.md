@@ -3,12 +3,12 @@ title: DoD 影响级别 4 蓝图示例控制
 description: DoD 影响级别 4 蓝图示例的控制映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
 ms.date: 03/06/2020
 ms.topic: sample
-ms.openlocfilehash: 001c838ed6a19269a6abbcebd59ee2e344b6a296
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a11a8637618bb42831ccf1a7001e4da40529ba74
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79415387"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024823"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>DoD 影响级别 4 蓝图示例的控制映射
 
@@ -18,7 +18,7 @@ ms.locfileid: "79415387"
 
 > [!IMPORTANT]
 > 下面的每个控件都与一个或多个 [Azure Policy](../../../policy/overview.md) 定义关联。 这些策略可以帮助你[评估控件的符合性](../../../policy/how-to/get-compliance-data.md)；但是，控件与一个或多个策略之间通常不是 1:1 或完全匹配。 因此，Azure Policy 中的符合性  仅引用策略本身；这不确保你完全符合控件的所有要求。 此外，符合性标准包含目前未由任何 Azure Policy 定义处理的控件。 因此，Azure Policy 中的符合性只是整体符合性状态的部分视图。 此符合性蓝图示例的控件和 Azure Policy 定义之间的关联可能会随着时间的推移而发生变化。
-> 若要查看更改历史记录，请参阅 [GitHub 提交历史记录](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/DoDIL4/control-mapping.md)。
+> 若要查看更改历史记录，请参阅 [GitHub 提交历史记录](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/dod-impact-level-4/control-mapping.md)。
 
 ## <a name="ac-2-account-management"></a>AC-2 帐户管理
 

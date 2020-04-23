@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a81f3ffb7ec190943c50127b129523badf0ef0a7
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: d755573b53eb63d85165fb73fe4b97298dbeff09
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80882975"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869000"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>用于调用 Web API 的守护程序应用 - 获取令牌
 
@@ -57,7 +57,7 @@ final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default"
 
 > [!IMPORTANT]
 > 当 MSAL 向接受 1.0 版访问令牌的资源请求访问令牌时，Azure AD 将获取最后一个斜杠前面的所有内容并将其用作资源标识符，从请求的范围内分析所需的受众。
-> 因此，如果与 Azure SQL 数据库 **（https：\//database.windows.net）** 一样，资源需要以斜杠结束（`https://database.windows.net/`对于 Azure SQL 数据库），则需要请求`https://database.windows.net//.default`的范围。 （注意双斜杠。另请参阅MSAL.NET问题[#747：资源 URL 的尾随斜杠被省略，这会导致 sql auth 失败](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)。
+> 因此，如果与 Azure SQL 数据库 **（https：\//database.windows.net）** 一样，资源需要以斜杠结束（`https://database.windows.net/`对于 Azure SQL 数据库），则需要请求`https://database.windows.net//.default`的范围。 （请注意双斜杠。）另请参阅 MSAL.NET 问题 [#747：将省略资源 URL 的尾部斜杠，因为该斜杠会导致 SQL 身份验证失败](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)。
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API
 
@@ -171,9 +171,9 @@ private static IAuthenticationResult acquireToken() throws Exception {
 
 如果还没有适用于所选语言的库，你可能希望直接使用协议：
 
-#### <a name="first-case-access-the-token-request-by-using-a-shared-secret"></a>第一种情况：使用共享密钥访问令牌请求
+#### <a name="first-case-access-the-token-request-by-using-a-shared-secret"></a>第一种情况：使用共享机密访问令牌请求
 
-```Text
+```HTTP
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity.
 Host: login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
@@ -186,7 +186,7 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 
 #### <a name="second-case-access-the-token-request-by-using-a-certificate"></a>第二种情况：使用证书访问令牌请求
 
-```Text
+```HTTP
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity.
 Host: login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
@@ -198,13 +198,13 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 &grant_type=client_credentials
 ```
 
-有关详细信息，请参阅协议文档[：Microsoft 标识平台和 OAuth 2.0 客户端凭据流](v2-oauth2-client-creds-grant-flow.md)。
+有关详细信息，请参阅协议文档：[Microsoft 标识平台和 OAuth 2.0 客户端凭据流](v2-oauth2-client-creds-grant-flow.md)。
 
 ## <a name="application-token-cache"></a>应用程序令牌缓存
 
-在 MSAL.NET 中，`AcquireTokenForClient` 使用应用程序令牌缓存。 （所有其他获取令牌*XX*方法都使用用户令牌缓存。`AcquireTokenSilent`在调用`AcquireTokenForClient`之前不要调用，因为`AcquireTokenSilent`使用*用户*令牌缓存。 `AcquireTokenForClient` 会检查*应用程序*令牌缓存本身并对其进行更新。
+在 MSAL.NET 中，`AcquireTokenForClient` 使用应用程序令牌缓存。 （所有其他 AcquireToken*XX* 方法都使用用户令牌缓存。）不要在调用 `AcquireTokenForClient` 之前调用 `AcquireTokenSilent`，因为 `AcquireTokenSilent` 使用“用户”  令牌缓存。 `AcquireTokenForClient` 会检查*应用程序*令牌缓存本身并对其进行更新。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 ### <a name="did-you-use-the-resourcedefault-scope"></a>你是否使用过 resource/.default 作用域？
 
@@ -212,10 +212,10 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 ### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>你是否忘记提供管理员许可？ 守护程序应用需要它！
 
-如果在调用 API 时出现错误“权限不足，无法完成该操作”，**** 则租户管理员需要授予对应用程序的权限。 请查看上面的步骤 6：注册客户端应用。
+如果在调用 API 时出现错误“权限不足，无法完成该操作”，  则租户管理员需要授予对应用程序的权限。 请查看上面的步骤 6：注册客户端应用。
 通常会看到如下错误：
 
-```JSon
+```json
 Failed to call the web API: Forbidden
 Content: {
   "error": {

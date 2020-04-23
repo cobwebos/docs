@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 063f2e1005db177420da7f81b799ab01fd212d7e
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 42c58a84c71b6573814e82517373db6900a83658
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478475"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025010"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>使用 JavaScript（azure/event-hubs 版本 5）向/从事件中心发送/接收事件
 本快速入门介绍如何使用 **azure/event-hubs 版本 5** JavaScript 包向事件中心发送事件以及从事件中心接收事件。 
@@ -60,7 +60,7 @@ npm install @azure/eventhubs-checkpointstore-blob
 
 在本部分中，你将创建一个可向事件中心发送事件的 JavaScript 应用程序。
 
-1. 打开偏好的编辑器，例如 [Visual Studio Code](https://code.visualstudio.com)。
+1. 打开你常用的编辑器，例如 [Visual Studio Code](https://code.visualstudio.com)。
 1. 创建名为 *send.js* 的文件，然后将以下代码粘贴到其中：
 
     ```javascript
@@ -104,7 +104,7 @@ npm install @azure/eventhubs-checkpointstore-blob
     > [!NOTE]
     > 有关完整源代码（包括附加的参考注释），请参阅 [GitHub sendEvents.js 页](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/samples/javascript/sendEvents.js)。
 
-祝贺你！ 现已向事件中心发送事件。
+祝贺！ 现在已向事件中心发送事件。
 
 
 ## <a name="receive-events"></a>接收事件
@@ -185,7 +185,7 @@ npm install @azure/eventhubs-checkpointstore-blob
 1. 在命令提示符下运行 `node receive.js` 以执行此文件。 窗口中应会显示有关已收到事件的消息。
 
     > [!NOTE]
-    > 有关完整源代码（包括附加的参考注释），请参阅 [GitHub receiveEventsUsingCheckpointStore.js 页](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsUsingCheckpointStore.js)。
+    > 有关完整源代码（包括附加的参考注释），请参阅 [GitHub receiveEventsUsingCheckpointStore.js 页](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsUsingCheckpointStore.js)。
 
 祝贺你！ 现已从事件中心收到事件。 接收器程序将从事件中心内默认使用者组的所有分区接收事件。
 

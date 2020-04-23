@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: e591a7035db82425952a16f5c4c220e25d8517fe
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: ee8bee832e48dc7354b4136e25be9bcc43eb90c5
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457172"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870557"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>在 Azure 逻辑应用中保护访问和数据
 
@@ -33,7 +33,7 @@ ms.locfileid: "81457172"
 
 * [生成共享访问签名](#sas)
 * [限制入站 IP 地址](#restrict-inbound-ip-addresses)
-* [添加 Azure 活动目录 OAuth 或其他安全性](#add-authentication)
+* [添加 Azure Active Directory OAuth 或其他安全性](#add-authentication)
 
 <a name="sas"></a>
 
@@ -66,7 +66,7 @@ ms.locfileid: "81457172"
 
 1. 在[Azure 门户](https://portal.azure.com)中，打开具有要重新生成的密钥的逻辑应用。
 
-1. 在逻辑应用菜单的“设置”下，选择“访问密钥”********。
+1. 在逻辑应用菜单的“设置”下，选择“访问密钥”   。
 
 1. 选择要重新生成的密钥并完成生成过程。
 
@@ -104,15 +104,15 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用。
 
-1. 在逻辑应用的菜单中，在“设置”**** 下，选择“工作流设置”****。
+1. 在逻辑应用的菜单中，在“设置”  下，选择“工作流设置”  。
 
-1. 在**访问控制配置** > **下允许入站 IP 地址**，选择**特定的 IP 范围**。
+1. 在“访问控制配置” > “允许的入站 IP 地址”下，选择“特定 IP 范围”    。
 
-1. 在“触发器的 IP 范围”下，请指定触发器接受的 IP 地址范围****。
+1. 在“触发器的 IP 范围”下，请指定触发器接受的 IP 地址范围  。
 
-   有效的 IP 范围使用这些格式：x.x.x.x/x 或 x.x.x.x-x.x.x.x****
+   有效的 IP 范围使用这些格式：x.x.x.x/x 或 x.x.x.x-x.x.x.x  
 
-如果想让逻辑应用仅作为嵌套逻辑应用触发，请从“允许的入站 IP 地址”列表中选择“仅限其他逻辑应用”********。 此选项会将空数组写入逻辑应用资源。 这样，只有来自逻辑应用服务（父级逻辑应用）的调用才能触发嵌套的逻辑应用。
+如果想让逻辑应用仅作为嵌套逻辑应用触发，请从“允许的入站 IP 地址”列表中选择“仅限其他逻辑应用”   。 此选项会将空数组写入逻辑应用资源。 这样，只有来自逻辑应用服务（父级逻辑应用）的调用才能触发嵌套的逻辑应用。
 
 > [!NOTE]
 > 无论 IP 地址如何，仍可通过 Azure REST API 或 API 管理使用 `/triggers/<trigger-name>/run` 来运行具有基于请求的触发器的逻辑应用。 不过，这种情况下仍需要针对 Azure REST API 进行身份验证。 所有事件将显示在 Azure 审核日志中。 请确保相应地设置访问控制策略。
@@ -170,9 +170,9 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 可以仅允许特定的用户或组运行特定的任务，例如管理、编辑和查看逻辑应用。 若要控制其权限，请使用 [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md)，以便能够为 Azure 订阅中的成员分配自定义角色或内置角色：
 
-* [逻辑应用参与者](../role-based-access-control/built-in-roles.md#logic-app-contributor)：允许您管理逻辑应用，但不能更改对它们的访问。
+* [逻辑应用参与者](../role-based-access-control/built-in-roles.md#logic-app-contributor)：允许管理逻辑应用，但不允许更改其访问权限。
 
-* [逻辑应用运算符](../role-based-access-control/built-in-roles.md#logic-app-operator)：允许您读取、启用和禁用逻辑应用，但不能编辑或更新它们。
+* [逻辑应用操作员](../role-based-access-control/built-in-roles.md#logic-app-operator)：允许读取、启用和禁用逻辑应用，但不允许编辑或更新它们。
 
 要防止他人更改或删除逻辑应用，可以使用 [Azure 资源锁](../azure-resource-manager/management/lock-resources.md)。 此功能可以防止他人更改或删除生产资源。
 
@@ -190,7 +190,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
   此选项可帮助您根据来自特定 IP 地址范围的请求保护运行历史记录的访问权限。
 
-* [使用模糊处理从运行历史记录隐藏数据](#obfuscate)。
+* [使用混淆向运行历史记录隐藏数据](#obfuscate)。
 
   在许多触发器和操作中，可以向逻辑应用的运行历史记录隐藏其输入和/或输出。
 
@@ -204,13 +204,13 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 1. 在 Azure 门户的逻辑应用设计器中打开逻辑应用。
 
-1. 在逻辑应用的菜单中，在“设置”**** 下，选择“工作流设置”****。
+1. 在逻辑应用的菜单中，在“设置”  下，选择“工作流设置”  。
 
-1. 在**访问控制配置** > **下允许入站 IP 地址**，选择**特定的 IP 范围**。
+1. 在“访问控制配置” > “允许的入站 IP 地址”下，选择“特定 IP 范围”    。
 
-1. 在“内容的 IP 范围”下，指定可以访问输入和输出中内容的 IP 地址范围****。 
+1. 在“内容的 IP 范围”下，指定可以访问输入和输出中内容的 IP 地址范围  。 
 
-   有效的 IP 范围使用这些格式：x.x.x.x/x 或 x.x.x.x-x.x.x.x****
+   有效的 IP 范围使用这些格式：x.x.x.x/x 或 x.x.x.x-x.x.x.x  
 
 #### <a name="restrict-ip-ranges-in-azure-resource-manager-template"></a>在 Azure 资源管理器模板中限制 IP 范围
 
@@ -269,7 +269,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
    ![打开触发器或操作设置](./media/logic-apps-securing-a-logic-app/open-action-trigger-settings.png)
 
-1. 启用“保护输入”和/或“保护输出”。******** 完成后，选择“完成”  。
+1. 启用“保护输入”和/或“保护输出”。   完成后，选择“完成”  。
 
    ![打开"安全输入"或"安全输出"](./media/logic-apps-securing-a-logic-app/turn-on-secure-inputs-outputs.png)
 
@@ -283,9 +283,9 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 1. 逻辑应用运行后，你可以查看该运行的历史记录。
 
-   1. 在逻辑应用的”概述“窗格中，选择要查看的运行。****
+   1. 在逻辑应用的”概述“窗格中，选择要查看的运行。 
 
-   1. 在“逻辑应用运行”窗格中，展开要查看的操作。****
+   1. 在“逻辑应用运行”窗格中，展开要查看的操作。 
 
       如果选择遮盖输入和输出，则这些值现在显示为隐藏值。
 
@@ -297,8 +297,8 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 在基础触发器或操作定义中，使用以下两个值中的一个或两个值添加或更新 `runtimeConfiguration.secureData.properties` 数组：
 
-* `"inputs"`：保护运行历史记录中的输入。
-* `"outputs"`：保护运行历史记录中的输出。
+* `"inputs"`：在运行历史记录中保护输入。
+* `"outputs"`：在运行历史记录中保护输出。
 
 当您使用这些设置来帮助保护此数据时，需要考虑以下[注意事项](#obfuscation-considerations)。
 
@@ -334,21 +334,21 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
   **“保护输出”设置**
 
-  在触发器或操作中手动启用“保护输出”时，逻辑应用将在运行历史记录中保护这些输出。**** 如果下游操作显式使用这些受保护的输出作为输入，则逻辑应用会在运行历史记录中隐藏此操作的输入，但不会启用该操作的“保护输入”设置。******
+  在触发器或操作中手动启用“保护输出”时，逻辑应用将在运行历史记录中保护这些输出。  如果下游操作显式使用这些受保护的输出作为输入，则逻辑应用会在运行历史记录中隐藏此操作的输入，但不会启用该操作的“保护输入”设置。  
 
   ![用作输入的受保护输出，以及对大多数操作的下游影响](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow.png)
 
-  “撰写”、“分析 JSON”和“响应”操作仅提供“保护输入”设置。**** 启用后，此设置也会隐藏这些操作的输出。 如果这些操作显式使用上游的受保护输出作为输入，则逻辑应用会隐藏这些操作的输入和输出，但不会启用这些操作的“保护输入”设置。****** 如果下游操作显式使用“撰写”、“分析 JSON”或“响应”操作中隐藏的输出作为输入，则逻辑应用不会隐藏此下游操作的输入或输出。**
+  “撰写”、“分析 JSON”和“响应”操作仅提供“保护输入”设置。  启用后，此设置也会隐藏这些操作的输出。 如果这些操作显式使用上游的受保护输出作为输入，则逻辑应用会隐藏这些操作的输入和输出，但不会启用这些操作的“保护输入”设置。   如果下游操作显式使用“撰写”、“分析 JSON”或“响应”操作中隐藏的输出作为输入，则逻辑应用不会隐藏此下游操作的输入或输出。 
 
   ![用作输入的受保护输出，以及对特定操作的下游影响](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow-special.png)
 
   **“保护输入”设置**
 
-  在触发器或操作中手动启用“保护输入”时，逻辑应用将在运行历史记录中保护这些输入。**** 如果下游操作显式使用该触发器或操作中的可见输出作为输入，则逻辑应用将在运行历史记录中隐藏此下游操作的输入，但不会在此操作中启用“保护输入”，且不会隐藏此操作的输出。** ****
+  在触发器或操作中手动启用“保护输入”时，逻辑应用将在运行历史记录中保护这些输入。  如果下游操作显式使用该触发器或操作中的可见输出作为输入，则逻辑应用将在运行历史记录中隐藏此下游操作的输入，但不会在此操作中启用“保护输入”，且不会隐藏此操作的输出。  
 
   ![受保护的输入以及对大多数操作的下游影响](./media/logic-apps-securing-a-logic-app/secure-inputs-impact-on-downstream.png)
 
-  如果“撰写”、“分析 JSON”和“响应”操作显式使用具有受保护输入的触发器或操作中的可见输出，则逻辑应用将隐藏这些操作的输入和输出，但不会启用这些操作的“保护输入”设置。****** 如果下游操作显式使用“撰写”、“分析 JSON”或“响应”操作中隐藏的输出作为输入，则逻辑应用不会隐藏此下游操作的输入或输出。**
+  如果“撰写”、“分析 JSON”和“响应”操作显式使用具有受保护输入的触发器或操作中的可见输出，则逻辑应用将隐藏这些操作的输入和输出，但不会启用这些操作的“保护输入”设置。   如果下游操作显式使用“撰写”、“分析 JSON”或“响应”操作中隐藏的输出作为输入，则逻辑应用不会隐藏此下游操作的输入或输出。 
 
   ![受保护的输入以及对特定操作的下游影响](./media/logic-apps-securing-a-logic-app/secure-inputs-flow-special.png)
 
@@ -429,7 +429,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 下面是有关这些 `parameters` 节的详细信息：
 
-* 在模板的最高级别，`parameters` 节定义了模板在部署时使用的值的参数。** 例如，这些值可能包含特定部署环境的连接字符串。 然后，你可将这些值存储在单独的[参数文件](../azure-resource-manager/templates/parameter-files.md)中，以方便更改这些值。
+* 在模板的最高级别，`parameters` 节定义了模板在部署时使用的值的参数。  例如，这些值可能包含特定部署环境的连接字符串。 然后，你可将这些值存储在单独的[参数文件](../azure-resource-manager/templates/parameter-files.md)中，以方便更改这些值。
 
 * 在逻辑应用的资源定义内部、工作流定义外部，`parameters` 节指定了工作流定义参数的值。 在此节中，可以使用引用模板参数的模板表达式来分配这些值。 这些表达式将在部署时计算。
 
@@ -576,7 +576,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
   * [客户端证书身份验证](#client-certificate-authentication)
 
-  * [活动目录身份验证](#azure-active-directory-oauth-authentication)
+  * [Active Directory OAuth 身份验证](#azure-active-directory-oauth-authentication)
 
   * [托管标识身份验证](#managed-identity-authentication)
   
@@ -655,7 +655,7 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 根据用于发出访问这�
 
 | 属性（设计器） | 属性 (JSON) | 必选 | 值 | 说明 |
 |---------------------|-----------------|----------|-------|-------------|
-| **身份验证** | `type` | 是 | **客户端证书** <br>or <br>`ClientCertificate` | 用于 TLS/SSL 客户端证书的身份验证类型。 虽然支持自签名证书，但不支持 TLS/SSL 的自签名证书。 |
+| **身份验证** | `type` | 是 | **客户端证书** <br>或 <br>`ClientCertificate` | 用于 TLS/SSL 客户端证书的身份验证类型 <p><p>**注意**：虽然支持自签名证书，但不支持 TLS/SSL 的自签名证书。 HTTP 连接器不支持中间 TLS/SSL 证书。 |
 | **普夫克斯** | `pfx` | 是 | <*编码-pfx-文件内容*> | 个人信息交换 (PFX) 文件中的 base64 编码内容 <p><p>若要将 PFX 文件转换为 base64 编码格式，可以使用 PowerShell 并执行以下步骤： <p>1. 将证书内容保存到变量中： <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. 使用`ToBase64String()`函数转换证书内容，并将该内容保存到文本文件： <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
 | **密码** | `password`| 否 | <*密码换pfx文件*> | 用于访问 PFX 文件的密码 |
 |||||
@@ -694,12 +694,12 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 根据用于发出访问这�
 
 | 属性（设计器） | 属性 (JSON) | 必选 | 值 | 说明 |
 |---------------------|-----------------|----------|-------|-------------|
-| **身份验证** | `type` | 是 | **Active Directory OAuth** <br>or <br>`ActiveDirectoryOAuth` | 可使用的身份验证类型。 逻辑应用当前遵循 [OAuth 2.0 协议](../active-directory/develop/v2-overview.md)。 |
+| **身份验证** | `type` | 是 | **Active Directory OAuth** <br>或 <br>`ActiveDirectoryOAuth` | 可使用的身份验证类型。 逻辑应用当前遵循 [OAuth 2.0 协议](../active-directory/develop/v2-overview.md)。 |
 | **颁发机构** | `authority` | 否 | <*URL for 授权令牌颁发者*> | 提供身份验证令牌的颁发机构的 URL。 此值默认为 `https://login.windows.net`。 |
 | **租户** | `tenant` | 是 | <*租户 ID*> | Azure AD 租户的租户 ID |
 | **观众** | `audience` | 是 | <*资源到授权*> | 要用于授权的资源，例如 `https://management.core.windows.net/` |
 | **客户端 ID** | `clientId` | 是 | <*客户端 ID*> | 请求授权的应用的客户端 ID |
-| **凭据类型** | `credentialType` | 是 | 证书 <br>or <br>机密 | 客户端用来请求授权的凭据类型。 此属性和值不会显示在逻辑应用的基础定义中，但确定了为选定凭据类型显示的属性。 |
+| **凭据类型** | `credentialType` | 是 | 证书 <br>或 <br>机密 | 客户端用来请求授权的凭据类型。 此属性和值不会显示在逻辑应用的基础定义中，但确定了为选定凭据类型显示的属性。 |
 | **秘密** | `secret` | 是，但仅适用于“机密”凭据类型 | <*客户端-机密*> | 用于请求授权的客户端密码 |
 | **普夫克斯** | `pfx` | 是，但仅适用于“证书”凭据类型 | <*编码-pfx-文件内容*> | 个人信息交换 (PFX) 文件中的 base64 编码内容 |
 | **密码** | `password` | 是，但仅适用于“证书”凭据类型 | <*密码换pfx文件*> | 用于访问 PFX 文件的密码 |
@@ -783,8 +783,8 @@ Authorization: OAuth realm="Photos",
 
    | 属性（设计器） | 属性 (JSON) | 必选 | 值 | 说明 |
    |---------------------|-----------------|----------|-------|-------------|
-   | **身份验证** | `type` | 是 | **托管标识** <br>or <br>`ManagedServiceIdentity` | 要使用的身份验证类型 |
-   | **托管标识** | `identity` | 是 | * **系统分配的托管标识** <br>or <br>`SystemAssigned` <p><p>• <*用户分配的标识名称*> | 要使用的托管标识 |
+   | **身份验证** | `type` | 是 | **托管标识** <br>或 <br>`ManagedServiceIdentity` | 要使用的身份验证类型 |
+   | **托管标识** | `identity` | 是 | * **系统分配的托管标识** <br>或 <br>`SystemAssigned` <p><p>• <*用户分配的标识名称*> | 要使用的托管标识 |
    | **观众** | `audience` | 是 | <*目标资源 ID*> | 要访问的目标资源的资源 ID。 <p>例如，`https://storage.azure.com/` 使得用于身份验证的访问令牌对所有存储帐户有效。 但是，还可以为特定的存储帐户指定根服务 URL，例如 `https://fabrikamstorageaccount.blob.core.windows.net`。 <p>**注意**： **"访问群体"** 属性可能隐藏在某些触发器或操作中。 若要在触发器或操作中显示此属性，请打开“添加新参数”列表，然后选择“受众”。******** <p><p>**重要提示**：确保此目标资源 ID 与 Azure AD 期望的值*完全匹配*，包括任何必需的尾随斜杠。 因此，所有 Azure Blob 存储帐户的 `https://storage.azure.com/` 资源 ID 都需要尾部斜杠。 但是，特定存储帐户的资源 ID 不需要尾部斜杠。 若要查找这些资源 ID，请参阅[支持 Azure AD 的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。 |
    |||||
 

@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: a8124e9860ba5703e96f96c90bc0cf37e42baf9c
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 2a3b14acad4990059a27201b7e1e6b9e93123194
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398347"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025163"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>使用 .NET Core (Microsoft.Azure.EventHubs) 向/从 Azure 事件中心发送/接收事件
-此快速入门演示如何使用**Microsoft.Azure.EventHubs** .NET 核心库向事件中心发送事件并从事件中心接收事件。
+本快速入门介绍如何使用 **Microsoft.Azure.EventHubs** .NET Core 库向/从事件中心发送/接收事件。
 
 > [!WARNING]
-> 本快速入门使用旧 **Microsoft.Azure.EventHubs** 包。 有关使用最新**Azure.消息传递.事件中心**库的快速入门，请参阅[使用 Azure.消息传递.事件中心库发送和接收事件](get-started-dotnet-standard-send-v2.md)。 要将应用程序从使用旧库移动到新库，请参阅[从 Microsoft.Azure.事件中心迁移到 Azure.消息器的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)。
+> 本快速入门使用旧 **Microsoft.Azure.EventHubs** 包。 有关使用最新 **Azure.Messaging.EventHubs** 库的快速入门，请参阅[使用 Azure.Messaging.EventHubs 库发送和接收事件](get-started-dotnet-standard-send-v2.md)。 若要将应用程序从使用旧库迁移到使用新库，请参阅[从 Microsoft.Azure.EventHubs 迁移到 Azure.Messaging.EventHubs 的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)。
 
 ## <a name="prerequisites"></a>先决条件
 如果不熟悉 Azure 事件中心，请在阅读本快速入门之前参阅[事件中心概述](event-hubs-about.md)。 
@@ -34,10 +34,10 @@ ms.locfileid: "80398347"
 - **Microsoft Azure 订阅**。 若要使用 Azure 服务（包括 Azure 事件中心），需要一个订阅。  如果没有现有的 Azure 帐户，可以注册[免费试用](https://azure.microsoft.com/free/)帐户，或者在[创建帐户](https://azure.microsoft.com)时使用 MSDN 订阅者权益。
 - [Microsoft Visual Studio 2019](https://www.visualstudio.com)。
 - [.NET Core Visual Studio 2015 或 2017 工具](https://www.microsoft.com/net/core)。 
-- **创建事件中心命名空间和事件中心**。 第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 然后，按照文章中的说明获取**事件中心命名空间的连接字符串**：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 稍后将在本快速入门中使用连接字符串。
+- **创建事件中心命名空间和事件中心**。 第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 然后，按照以下文章中的说明获取**事件中心命名空间的连接字符串**：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 稍后将在本快速入门中使用连接字符串。
 
 ## <a name="send-events"></a>发送事件 
-本部分介绍如何创建一个向事件中心发送事件的 .NET Core 控制台应用程序。 
+此部分介绍如何创建可将事件发送到事件中心的 .NET Core 控制台应用程序。 
 
 > [!NOTE]
 > 可以从 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) 下载此用作示例的快速入门，将 `EventHubConnectionString` 和 `EventHubName` 字符串替换为事件中心值，并运行它。 或者，也可以按照本快速入门中的步骤创建自己的应用程序。
@@ -45,16 +45,16 @@ ms.locfileid: "80398347"
 
 ### <a name="create-a-console-application"></a>创建控制台应用程序
 
-启动 Visual Studio。 在“文件”**** 菜单中，单击“新建”****，并单击“项目”****。 创建 .NET Core 控制台应用程序。
+启动 Visual Studio。 在“文件”  菜单中，单击“新建”  ，并单击“项目”  。 创建 .NET Core 控制台应用程序。
 
 ![新建项目](./media/event-hubs-dotnet-standard-getstarted-send/netcoresnd.png)
 
 ### <a name="add-the-event-hubs-nuget-package"></a>添加事件中心 NuGet 包
 
-按照以下步骤[`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)将 .NET Core 库 NuGet 包添加到您的项目中： 
+通过执行以下步骤，将 [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) .NET Core 库 NuGet 包添加到项目中： 
 
-1. 右键单击新创建的项目，并选择“管理 NuGet 包” ****。
-2. 单击“浏览”选项卡，然后搜索“Microsoft.Azure.EventHubs”，并选择“Microsoft.Azure.EventHubs”包********。 单击“安装”**** 以完成安装，并关闭此对话框。
+1. 右键单击新创建的项目，并选择“管理 NuGet 包”  。
+2. 单击“浏览”选项卡，然后搜索“Microsoft.Azure.EventHubs”，并选择“Microsoft.Azure.EventHubs”包   。 单击“安装”  以完成安装，并关闭此对话框。
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>编写代码以将消息发送到事件中心
 
@@ -201,13 +201,13 @@ ms.locfileid: "80398347"
 ## <a name="receive-events"></a>接收事件
 此部分介绍如何编写 .NET Core 控制台应用程序，以使用[事件处理程序主机](event-hubs-event-processor-host.md)从事件中心接收消息。 [事件处理程序主机](event-hubs-event-processor-host.md)是一个 .NET 类，它通过从事件中心管理持久检查点和并行接收来简化从那些事件中心接收事件的过程。 使用事件处理程序主机，可跨多个接收方拆分事件，即使在不同节点中托管时也是如此。 此示例演示如何为单一接收方使用事件处理程序主机。
 > [!NOTE]
-> 可以从[GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver)下载此快速入门，使用事件中心值替换`EventHubConnectionString``EventHubName`和`StorageAccountName` `StorageAccountKey`，以及`StorageContainerName`字符串，然后运行它。 或者，可以按照本教程中的步骤创建自己的解决方案。
+> 可以从 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) 下载此用作示例的快速入门，将 `EventHubConnectionString`、`EventHubName`、`StorageAccountName`、`StorageAccountKey`、`StorageContainerName` 字符串替换为事件中心值，并运行它。 或者，可以按照本教程中的步骤创建自己的解决方案。
 
 [!INCLUDE [event-hubs-create-storage](../../includes/event-hubs-create-storage.md)]
 
 ### <a name="create-a-console-application"></a>创建控制台应用程序
 
-启动 Visual Studio。 在“文件”**** 菜单中，单击“新建”****，并单击“项目”****。 创建 .NET Core 控制台应用程序。
+启动 Visual Studio。 在“文件”  菜单中，单击“新建”  ，并单击“项目”  。 创建 .NET Core 控制台应用程序。
 
 ![新建项目](./media/event-hubs-dotnet-standard-getstarted-receive-eph/netcorercv.png)
 
@@ -215,13 +215,13 @@ ms.locfileid: "80398347"
 
 遵循以下步骤，将 [**Microsoft.Azure.EventHubs**](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) 和 [**Microsoft.Azure.EventHubs.Processor**](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) .NET Standard 库 NuGet 包添加项目： 
 
-1. 右键单击新创建的项目，并选择“管理 NuGet 包” ****。
-2. 单击“浏览”选项卡，然后搜索“Microsoft.Azure.EventHubs”，并选择“Microsoft.Azure.EventHubs”包************。 单击“安装”**** 以完成安装，并关闭此对话框。
-3. 重复步骤 1 和步骤 2，安装“Microsoft.Azure.EventHubs.Processor”包****。
+1. 右键单击新创建的项目，并选择“管理 NuGet 包”  。
+2. 单击“浏览”选项卡，然后搜索“Microsoft.Azure.EventHubs”，并选择“Microsoft.Azure.EventHubs”包    。 单击“安装”  以完成安装，并关闭此对话框。
+3. 重复步骤 1 和步骤 2，安装“Microsoft.Azure.EventHubs.Processor”包  。
 
 ### <a name="implement-the-ieventprocessor-interface"></a>实现 IEventProcessor 接口
 
-1. 在“解决方案资源管理器”中，右键单击该项目，单击“添加”，并单击“类”。******** 将新类命名为 **SimpleEventProcessor**。
+1. 在“解决方案资源管理器”中，右键单击该项目，单击“添加”，并单击“类”。   将新类命名为 **SimpleEventProcessor**。
 
 2. 打开 SimpleEventProcessor.cs 文件，并将以下 `using` 语句添加到文件顶部。
 
@@ -371,9 +371,9 @@ ms.locfileid: "80398347"
 ## <a name="next-steps"></a>后续步骤
 请阅读以下文章：
 
-- [基于角色的访问控制 （RBAC） 示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)。 
+- [基于角色的访问控制 (RBAC) 示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)。 
     
-    这些示例使用旧的**Microsoft.Azure.EventHubs**库，但可以轻松地将其更新为使用最新的**Azure.消息.事件中心**库。 要将示例从使用旧库移动到新库，请参阅[从 Microsoft.Azure.事件中心迁移到 Azure.消息传递器的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)。
+    这些示例使用旧的 **Microsoft.Azure.EventHubs** 库，但你可以轻松地将其更新为使用最新的 **Azure.Messaging.EventHubs** 库。 要将示例从使用旧库移动到新库，请参阅[从 Microsoft.Azure.事件中心迁移到 Azure.消息集的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)。
 - [EventProcessorHost](event-hubs-event-processor-host.md)
 - [Azure 事件中心的功能和术语](event-hubs-features.md)
 - [事件中心常见问题](event-hubs-faq.md)

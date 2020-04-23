@@ -1,7 +1,7 @@
 ---
 title: 获取用于调用 Web API 的令牌（移动应用）| Azure
 titleSuffix: Microsoft identity platform
-description: 了解如何构建用于调用 Web API 的移动应用。 （获取应用的令牌。
+description: 了解如何构建用于调用 Web API 的移动应用。 （获取应用的令牌。）
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,22 +13,22 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 5750f4a5aa62b33c7d793b3e0c34f304ce1b187e
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: a77e6c9086a745804c23f431f633d530e2655f16
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535921"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868892"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>获取调用 Web API 的移动应用的令牌
 
-在应用可以调用受保护的 Web API 之前，它需要访问令牌。 本文将引导您完成使用 Microsoft 身份验证库 （MSAL） 获取令牌的过程。
+应用需要先获得访问令牌才能调用受保护的 Web API。 本文详述使用 Microsoft 身份验证库 (MSAL) 获取令牌的过程。
 
 ## <a name="define-a-scope"></a>定义范围
 
 请求令牌时，需定义作用域。 作用域决定了应用能够访问哪些数据。
 
-定义作用域的最简单方法是将所需的 Web API`App ID URI`与作用域`.default`相结合。 此定义告诉 Microsoft 标识平台，你的应用需要在门户中设置的所有作用域。
+定义范围的最简单方法是将所需 Web API 的 `App ID URI` 与范围 `.default` 组合在一起。 此定义告知 Microsoft 标识平台，应用需要在门户中设置的所有范围。
 
 ### <a name="android"></a>Android
 ```Java
@@ -49,7 +49,7 @@ var scopes = new [] {"https://graph.microsoft.com/.default"};
 
 ### <a name="acquire-tokens-via-msal"></a>通过 MSAL 获取令牌
 
-MSAL 允许应用以无提示方式和交互方式获取令牌。 调用`AcquireTokenSilent()`或`AcquireTokenInteractive()`时，MSAL 返回请求作用域的访问令牌。 正确的模式是发出静默请求，然后回退到交互式请求。
+MSAL 允许应用以无提示方式和交互方式获取令牌。 调用 `AcquireTokenSilent()` 或 `AcquireTokenInteractive()` 时，MSAL 将返回所请求范围的访问令牌。 正确的模式是发出无提示请求，然后回退到交互式请求。
 
 #### <a name="android"></a>Android
 
@@ -145,7 +145,7 @@ application.acquireTokenSilent(with: silentParameters) { (result, error) in
 }
 ```
 
-如果 MSAL`MSALErrorInteractionRequired`返回 ，则尝试以交互方式获取令牌：
+如果 MSAL 返回 `MSALErrorInteractionRequired`，请尝试以交互方式获取令牌：
 
 ```objc
 UIViewController *viewController = ...; // Pass a reference to the view controller that should be used when getting a token interactively
@@ -179,14 +179,14 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 })
 ```
 
-适用于 iOS 和 macOS 的 MSAL 支持各种修改器以交互或静默方式获取令牌：
-* [获取令牌的常见参数](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALTokenParameters.html#/Configuration%20parameters)
-* [获取交互式令牌的参数](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALInteractiveTokenParameters.html#/Configuring%20MSALInteractiveTokenParameters)
-* [获取静默令牌的参数](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALSilentTokenParameters.html)
+适用于 iOS 和 macOS 的 MSAL 在以交互方式或无提示方式获取令牌时支持各种修饰符：
+* [用于获取令牌的通用参数](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALTokenParameters.html#/Configuration%20parameters)
+* [用于获取交互式令牌的参数](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALInteractiveTokenParameters.html#/Configuring%20MSALInteractiveTokenParameters)
+* [用于获取无提示令牌的参数](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALSilentTokenParameters.html)
 
 #### <a name="xamarin"></a>Xamarin
 
-下面的示例显示了以交互方式获取令牌的最小代码。 该示例使用 Microsoft 图形读取用户的配置文件。
+以下示例演示了以交互方式获取令牌所需的最少量代码。 该示例使用 Microsoft Graph 读取用户的配置文件。
 
 ```csharp
 string[] scopes = new string[] {"user.read"};
@@ -207,7 +207,7 @@ catch(MsalUiRequiredException)
 
 #### <a name="mandatory-parameters-in-msalnet"></a>MSAL.NET 中的必需参数
 
-`AcquireTokenInteractive`只有一个必需参数： `scopes`. 参数`scopes`枚举定义需要令牌的范围的字符串。 如果令牌用于 Microsoft 图形，则可以在每个 Microsoft 图形 API 的 API 引用中找到所需的作用域。 在引用中，转到"权限"部分。
+`AcquireTokenInteractive` 只有一个必需的参数：`scopes`。 `scopes` 参数枚举用于定义所需令牌范围的字符串。 如果令牌用于 Microsoft Graph，可以在每个 Microsoft Graph API 的 API 参考文档中找到所需的范围。 参阅参考文档中的“权限”部分。
 
 例如，要[列出用户的联系人](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts)，请使用"用户.阅读"，"联系人.阅读"的范围。 有关详细信息，请参阅 [Microsoft Graph 权限参考](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)。
 
@@ -268,7 +268,7 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
 
 #### <a name="get-an-authorization-code"></a>获取授权代码
 
-```Text
+```
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
 client_id=<CLIENT_ID>
 &response_type=code
@@ -280,7 +280,7 @@ client_id=<CLIENT_ID>
 
 #### <a name="get-access-and-refresh-the-token"></a>获取访问权限并刷新令牌
 
-```Text
+```HTTP
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1
 Host: https://login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded

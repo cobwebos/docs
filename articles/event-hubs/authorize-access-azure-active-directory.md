@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: 1fa8f7a48c03ead7e939185b23834b3049b3e21c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6216b56c8e8f0de4f9cd60306bbf9c5ed49a11ad
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064861"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025197"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>使用 Azure Active Directory 授权访问事件中心资源
 Azure 事件中心支持使用 Azure Active Directory (Azure AD) 授权对事件中心资源的请求。 可以通过 Azure AD 使用基于角色的访问控制 (RBAC) 授予对服务主体的访问权限，该服务主体可能是用户或应用程序服务主体。 若要详细了解角色和角色分配，请参阅[了解不同的角色](../role-based-access-control/overview.md)。
@@ -65,7 +65,7 @@ Azure 提供以下内置 RBAC 角色，用于授权使用 Azure AD 和 OAuth 访
 ## <a name="samples"></a>示例
 - [微软.Azure.事件中心示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)。 
     
-    这些示例使用旧的**Microsoft.Azure.EventHubs**库，但可以轻松地将其更新为使用最新的**Azure.消息.事件中心**库。 要将示例从使用旧库移动到新库，请参阅[从 Microsoft.Azure.事件中心迁移到 Azure.消息集的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)。
+    这些示例使用旧的**Microsoft.Azure.EventHubs**库，但可以轻松地将其更新为使用最新的**Azure.消息.事件中心**库。 要将示例从使用旧库移动到新库，请参阅[从 Microsoft.Azure.事件中心迁移到 Azure.消息集的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)。
 - [Azure.消息传递.事件中心示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
 
     此示例已更新为使用最新的**Azure.消息.事件中心**库。

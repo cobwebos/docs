@@ -12,12 +12,12 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: 26bfbcb4762d889b2c56276e66e4bf8e0acb64b2
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 5495aa6fda189897985ed2f198f6e92c996f6fef
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81677706"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868386"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 标识平台终结点中的权限和许可
 
@@ -97,7 +97,7 @@ OpenID Connect 的 Microsoft 标识平台实现有一些明确定义但未应用
 
 在 [OpenID Connect 或 OAuth 2.0](active-directory-v2-protocols.md) 授权请求中，应用可以使用 `scope` 查询参数来请求它所需的权限。 例如，当用户登录应用程序时，应用发送如下示例所示的请求（包含换行符以便于阅读）：
 
-```
+```HTTP
 GET https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=code
@@ -179,15 +179,15 @@ Microsoft 生态系统中的某些高特权权限可以设置为受管理员限�
 
 准备好向组织管理员请求权限时，可将用户重定向到 Microsoft 标识平台*管理员许可终结点*。
 
-```
+```HTTP
 // Line breaks are for legibility only.
-  GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
-  client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-  &state=12345
-  &redirect_uri=http://localhost/myapp/permissions
-  &scope=
-  https://graph.microsoft.com/calendars.read
-  https://graph.microsoft.com/mail.send
+GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+&state=12345
+&redirect_uri=http://localhost/myapp/permissions
+&scope=
+https://graph.microsoft.com/calendars.read
+https://graph.microsoft.com/mail.send
 ```
 
 
@@ -206,7 +206,7 @@ Microsoft 生态系统中的某些高特权权限可以设置为受管理员限�
 
 如果管理员批准了应用的权限，成功响应如下所示：
 
-```
+```HTTP
 GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
 ```
 
@@ -220,7 +220,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 
 如果管理员未批准应用的权限，失败响应如下所示：
 
-```
+```HTTP
 GET http://localhost/myapp/permissions?error=permission_denied&error_description=The+admin+canceled+the+request
 ```
 
@@ -235,7 +235,7 @@ GET http://localhost/myapp/permissions?error=permission_denied&error_description
 
 用户许可应用的权限之后，应用即可获取访问令牌，这些令牌表示应用以某种身份访问资源的权限。 访问令牌只能用于单个资源，但其内部编码了应用已获得的该资源的所有权限。 若要获取访问令牌，应用可以对 Microsoft 标识平台令牌终结点发出类似于以下请求：
 
-```
+```HTTP
 POST common/oauth2/v2.0/token HTTP/1.1
 Host: https://login.microsoftonline.com
 Content-Type: application/json
@@ -287,7 +287,7 @@ Content-Type: application/json
 
 `/.default` 范围的一种特殊情况是客户端请求其自己的 `/.default` 范围。 以下示例演示了这种情况。
 
-```
+```HTTP
 // Line breaks are for legibility only.
 
 GET https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?

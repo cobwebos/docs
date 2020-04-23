@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: 14dbe360942f4645b08d161130216412c9c427f9
-  ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+  ms.openlocfilehash: 31ef06104f57fd2ec1530c621bceab899921b8f8
+  ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/09/2020
-  ms.locfileid: "80998779"
+  ms.lasthandoff: 04/22/2020
+  ms.locfileid: "82024636"
 landingContent:
 - title: 生成零售解决方案
   linkLists:
@@ -48,7 +48,7 @@ landingContent:
     - text: 设置设备模板
       url: ../core/howto-set-up-template.md
     - text: 连接一个设备
-      url: ../core/tutorial-connect-device.md
+      url: ../core/tutorial-connect-device-nodejs.md
     - text: 连接 IoT 即插即用（预览版）设备
       url: ../core/tutorial-connect-pnp-device.md
   - linkListType: how-to-guide

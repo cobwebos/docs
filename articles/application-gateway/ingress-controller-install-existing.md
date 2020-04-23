@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 048ab7249b27839890bab3e677154ca3c7a0cc98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 949f1b3ee3db72e1c541c3dd4c5f74f364f1b514
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239434"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869901"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>安装使用现有应用程序网关的应用程序网关入口控制器 (AGIC)
 
@@ -22,10 +22,10 @@ AGIC 监视 Kubernetes [入口](https://kubernetes.io/docs/concepts/services-net
 ## <a name="outline"></a>大纲：
 - [先决条件](#prerequisites)
 - [Azure 资源管理器身份验证 (ARM)](#azure-resource-manager-authentication)
-    - 选项 1：[设置 aad-pod 标识](#set-up-aad-pod-identity)并在 ARM 上创建 Azure 标识
+    - 选项 1：[设置 aad-pod-identity](#set-up-aad-pod-identity) 并在 ARM 上创建 Azure 标识
     - 选项 2：[使用服务主体](#using-a-service-principal)
 - [使用 Helm 安装入口控制器](#install-ingress-controller-as-a-helm-chart)
-- [多群集/共享应用程序网关](#multi-cluster--shared-application-gateway)：在一个环境中安装 AGIC，其中应用程序网关在一个或多个 AKS 群集和/或其他 Azure 组件之间共享。
+- [多群集/共享应用程序网关](#multi-cluster--shared-application-gateway)：在一个或多个 AKS 群集和/或其他 Azure 组件之间共享应用程序网关的环境中安装 AGIC。
 
 ## <a name="prerequisites"></a>先决条件
 本文档假设已安装以下工具和基础结构：
@@ -117,7 +117,7 @@ AGIC 与 Kubernetes API 服务器和 Azure 资源管理器通信。 它需要一
 1. 创建 Active Directory 服务主体并使用 base64 编码。 JSON Blob 需要使用 base64 编码才能保存到 Kubernetes 中。
 
 ```azurecli
-az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0
+az ad sp create-for-rbac --sdk-auth | base64 -w0
 ```
 
 2. 将 base64 编码的 JSON Blob 添加到 `helm-config.yaml` 文件中。 下一部分提供了有关 `helm-config.yaml` 的详细信息。
@@ -184,7 +184,7 @@ armAuth:
     ## Alternatively you can use Service Principal credentials
     # armAuth:
     #    type: servicePrincipal
-    #    secretJSON: <<Generate this value with: "az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0" >>
+    #    secretJSON: <<Generate this value with: "az ad sp create-for-rbac --sdk-auth | base64 -w0" >>
     
     ################################################################################
     # Specify if the cluster is RBAC enabled or not
@@ -221,7 +221,7 @@ armAuth:
          --set appgw.subscriptionId=subscription-uuid \
          --set appgw.shared=false \
          --set armAuth.type=servicePrincipal \
-         --set armAuth.secretJSON=$(az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0) \
+         --set armAuth.secretJSON=$(az ad sp create-for-rbac --sdk-auth | base64 -w0) \
          --set rbac.enabled=true \
          --set verbosityLevel=3 \
          --set kubernetes.watchNamespace=default \

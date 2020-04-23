@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 04/21/2020
-ms.openlocfilehash: b2e8bec18f4f5df6fb78a3c31aa0956ec7333eb5
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 9129cb308a364a3ed0654055f8afe9dd8c89010a
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770110"
+ms.locfileid: "82024619"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的只读副本
 
@@ -33,9 +33,6 @@ ms.locfileid: "81770110"
 
 ## <a name="cross-region-replication"></a>跨区域复制
 可以在与主服务器不同的区域中创建只读副本。 跨区域复制对于灾难恢复规划或使数据更接近用户等方案非常有用。
-
-> [!NOTE]
-> 跨区域复制处于预览状态。
 
 可以在任何 [Azure Database for MariaDB 区域](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb)中设置主服务器。  主服务器可以在其配对区域或通用副本区域中有一个副本。 下图显示了哪些副本区域可用，具体取决于您的主区域。
 

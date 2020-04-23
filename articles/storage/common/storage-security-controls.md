@@ -1,31 +1,32 @@
 ---
-title: Azure 存储的安全控制
-description: 用于评估 Azure 存储的安全控制的清单
+title: 安全控件
+titleSuffix: Azure Storage
+description: 用于评估 Azure 存储的安全控制清单。
 services: storage
 author: msmbaldwin
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 379acaf48c02f0a579c07773cd48366d962a44f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f03f497051367d36bd229a3f358d28a1130ec620
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061114"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082350"
 ---
 # <a name="security-controls-for-azure-storage"></a>Azure 存储的安全控制
 
-本文介绍 Azure 存储中内置的安全控制。 
+本文介绍 Azure 存储中内置的安全控制。
 
 [!INCLUDE [Security controls Header](../../../includes/security-controls-header.md)]
 
 ## <a name="data-protection"></a>数据保护
 
-| 安全控制 | Yes/No | 说明 |
+| 安全控制 | Yes/No | 注释 |
 |---|---|--|
-| 服务器端静态加密：微软管理的密钥 | 是 |  |
+| 服务器端静态加密：Microsoft 管理的密钥 | 是 |  |
 | 服务器端静态加密：客户管理的密钥 (BYOK) | 是 | 请参阅[在 Azure Key Vault 中使用客户托管密钥进行存储服务加密](storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。|
 | 列级加密（Azure 数据服务）| 空值 |  |
 | 传输中加密（例如 ExpressRoute 加密、VNet 中加密，以及 VNet-VNet 加密）| 是 | 支持标准的 HTTPS/TLS 机制。  用户也可以先加密数据，然后再将其传输到服务。 |
@@ -33,9 +34,10 @@ ms.locfileid: "80061114"
 
 ## <a name="network"></a>网络
 
-| 安全控制 | Yes/No | 说明 |
+| 安全控制 | Yes/No | 注释 |
 |---|---|--|
 | 服务终结点支持| 是 |  |
+| 支持服务标记| 是 | 有关 Azure 存储支持的服务标记的详细信息，请参阅[Azure 服务标记概述](../../virtual-network/service-tags-overview.md)。 |
 | VNet 注入支持| 空值 |  |
 | 网络隔离和防火墙支持| 是 | |
 | 强制隧道支持| 空值 |  |

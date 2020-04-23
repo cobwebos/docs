@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: adad0ddfc78530b3a3a7c139d9a95ec4790c8053
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a614d6b5d0cf5c6c1df5ffcb90e56960d6b8a2a9
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76934143"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025027"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>在专用主机上部署
 
@@ -37,7 +37,7 @@ ms.locfileid: "76934143"
 ## <a name="modify-your-json-deployment-template"></a>修改 JSON 部署模板
 
 在部署模板中，修改或添加以下属性：
-* 在`resources`下`apiVersion`，`2012-12-01`设置为 。
+* 在`resources`下`apiVersion`，`2019-12-01`设置为 。
 * 在容器组属性下，添加`sku`值 的属性`Dedicated`。
 
 下面是使用专用 SKU 的容器组部署模板的 resources 节的示例代码片段：

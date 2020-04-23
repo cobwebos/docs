@@ -8,24 +8,24 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 9e7070e925d12df82adbc3683da5b10e48c5d4b0
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 810219bca5c75e3ee7e65c6b7302531bca89788d
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668120"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869965"
 ---
-# <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用配置和管理常见问题解答
+# <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure Web 应用配置及管理常见问题解答
 
-本文包含有关 [Azure App Service 的 Web 应用功能](https://azure.microsoft.com/services/app-service/web/)的配置和管理问题的常见问题解答。
+本文对 [Azure App Service Web 应用功能](https://azure.microsoft.com/services/app-service/web/)配置和管理常见问题 (FAQ) 进行了解答。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="are-there-limitations-i-should-be-aware-of-if-i-want-to-move-app-service-resources"></a>如果要移动应用服务资源，则是否有我应该注意的限制？
+## <a name="are-there-limitations-i-should-be-aware-of-if-i-want-to-move-app-service-resources"></a>如果需要移动应用服务资源，是否有什么限制需要注意？
 
-如果你计划将应用服务资源移动到新的资源组或订阅，则需要注意几个限制。 有关详细信息，请参阅[应用服务限制](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)。
+如果打算将应用服资源转移到新的资源组或订阅，有一些限制需要注意。 有关详细信息，请参阅[应用服务限制](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)。
 
-## <a name="how-do-i-use-a-custom-domain-name-for-my-web-app"></a>如何为 Web 应用使用自定义域名？
+## <a name="how-do-i-use-a-custom-domain-name-for-my-web-app"></a>如何将自定义域名用于 Web 应用？
 
 有关将自定义域名用于 Azure Web 应用的常见问题解答，请参阅我们的七分钟视频[添加自定义域名](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name)。 该视频演示如何添加自定义域名。 它介绍如何将自己的 URL（而不是 *.azurewebsites.net URL）用于应用服务 Web 应用。 还可以查看有关[如何映射自定义域名](app-service-web-tutorial-custom-domain.md)的详细演练。
 
@@ -187,7 +187,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 3. 在窗格的消息区域中右键单击，然后选择“全部复制”****。
 4. 在文件中粘贴复制的文本，然后保存文件。
 
-若要查看 HAR 文件，可以使用 [HAR 查看器](https://www.softwareishard.com/har/viewer/)。
+若要查看 HAR 文件，可以使用 [HAR 查看器](http://www.softwareishard.com/har/viewer/)。
 
 ## <a name="why-do-i-get-an-error-when-i-try-to-connect-an-app-service-web-app-to-a-virtual-network-that-is-connected-to-expressroute"></a>在我尝试将应用服务 Web 应用到连接到与 ExpressRoute 连接的虚拟网络时，为何会遇到错误？
 

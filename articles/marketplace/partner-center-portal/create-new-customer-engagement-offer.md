@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 10d5449cb77ea09f62db0a2f2bbdab6761646738
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ec62095f14b38d0c4ffebfabc14c4a0a27a70fb
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295464"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869830"
 ---
 # <a name="create-a-new-dynamics-365-for-customer-engagement--powerapps-offer"></a>为客户互动& PowerApps 产品创建新动态 365
 
@@ -124,7 +124,7 @@ ms.locfileid: "80295464"
 > [!NOTE]
 > 报价列表内容（如说明、文档、屏幕截图、使用条款等）不需要以英文表示，只要要约说明以短语开头，"此应用程序仅以 [非英语语言]提供。 提供*有用的链接 URL*以提供产品/服务列表内容中所用语言以外的语言提供内容也是可接受的。
 
-### <a name="name"></a>“属性”
+### <a name="name"></a>名称
 
 您在此处输入的名称将作为产品/服务列表的标题显示给客户。 此字段预填充了创建产品/服务时为 **"产品/服务"别名**输入的文本，但您可以更改此值。 此名称可以注册商标（您可以包括商标或版权符号）。 名称不能超过 50 个字符，不能包含任何表情符号。
 
@@ -142,7 +142,7 @@ ms.locfileid: "80295464"
 
 
 
-### <a name="description"></a>描述
+### <a name="description"></a>说明
 
 提供更久的报价说明（最多 3，000 个字符）。 此描述将显示在市场列表概述中的客户。 包括您的产品/服务的价值主张、主要优势、类别和/或行业协会、应用内购买机会以及任何必需的披露。
 
@@ -214,6 +214,9 @@ ms.locfileid: "80295464"
 ### <a name="marketplace-images"></a>市场映像
 
 在本节中，您可以提供向客户展示产品/服务时将使用的徽标和图像。 所有图像必须采用 .png 格式。
+
+>[!Note]
+>如果上传文件出现问题，请确保本地网络不会阻止合作伙伴中心使用https://upload.xboxlive.com的服务。
 
 #### <a name="store-logos"></a>应用商店徽标
 

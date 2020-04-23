@@ -1,25 +1,18 @@
 ---
 title: 将 Azure VM 的 OS 磁盘与 PowerShell 交换 。
 description: 使用 PowerShell 更改 Azure 虚拟机使用的操作系统磁盘。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: ec66892804f3c2d1f831168a2955f2498462cbf3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 566347414ffe707b1d68a61b00ba21d19ff2b1eb
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74033029"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869390"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>使用 PowerShell 更改 Azure VM 使用的 OS 磁盘
 
@@ -37,7 +30,7 @@ ms.locfileid: "74033029"
 Get-AzDisk -ResourceGroupName myResourceGroup | Format-Table -Property Name
 ```
  
-如果知道要使用的磁盘的名称，请将其设置为该 VM 的 OS 磁盘。 此示例停止/取消分配名为 myVM 的 VM，并将名为 newDisk 的磁盘分配为新的 OS 磁盘****。 
+如果知道要使用的磁盘的名称，请将其设置为该 VM 的 OS 磁盘。 此示例停止/取消分配名为 myVM 的 VM，并将名为 newDisk 的磁盘分配为新的 OS 磁盘   。 
  
 ```azurepowershell-interactive 
 # Get the VM 

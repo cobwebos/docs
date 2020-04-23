@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: d5626f00e9627338349d9b579bcf26256148b551
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: d598f741c5add58a89aa2b7aa01802a7e35f9a19
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81731269"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869059"
 ---
 # <a name="create-an-azure-virtual-machine-offer"></a>创建 Azure 虚拟机产品/服务
 
@@ -21,7 +21,7 @@ ms.locfileid: "81731269"
 
 本文介绍如何创建 Azure 虚拟机产品/服务并将其发布到[Azure 应用商店](https://azuremarketplace.microsoft.com/)。 它面向包含操作系统、虚拟硬盘 （VHD） 和多达 16 个数据磁盘的基于 Windows 和 Linux 的虚拟机。
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 ### <a name="publishing-benefits"></a>发布的好处
 
@@ -240,7 +240,7 @@ ms.locfileid: "81731269"
 为 Microsoft 合作伙伴提供联系信息，供客户打开支持票证时使用。 这将不会在市场上列出。
 
 - 名称
-- Email
+- 电子邮件
 - 电话
 
 ### <a name="engineering-contact"></a>工程联系人
@@ -248,12 +248,15 @@ ms.locfileid: "81731269"
 在您的产品/服务出现问题（包括认证问题）时，为 Microsoft 提供要使用的联系信息。 这将不会在市场上列出。
 
 - 名称
-- Email
+- 电子邮件
 - 电话
 
 ### <a name="marketplace-media"></a>市场媒体
 
 提供徽标和图像，以便与您的产品配合使用。 所有图像必须采用 PNG 格式。 模糊的图像将导致您的提交被拒绝。
+
+>[!Note]
+>如果上传文件出现问题，请确保本地网络不会阻止合作伙伴中心使用https://upload.xboxlive.com的服务。
 
 #### <a name="marketplace-logos"></a>市场徽标
 

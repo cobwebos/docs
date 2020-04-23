@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bb2cc90e586f71bb7c90efd62ba3705cd9223bc5
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: ead39343cca9943ba55d66509bd9917402efb8cf
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885491"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868973"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>调用 Web API 的守护程序应用 - 代码配置
 
@@ -59,7 +59,7 @@ ms.locfileid: "80885491"
 
 [appsettings.json](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json)，来自 [.NET Core 控制台守护程序](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)示例。
 
-```JSon
+```json
 {
   "Instance": "https://login.microsoftonline.com/{0}",
   "Tenant": "[Enter here the tenantID or domain name for your Azure AD tenant]",
@@ -239,7 +239,7 @@ ConfidentialClientApplication cca =
                 .build();
 ```
 
-or
+或
 
 ```Java
 PrivateKey key = getPrivateKey(); /* RSA private key to sign the assertion */

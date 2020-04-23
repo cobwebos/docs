@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 10831c0dc39fa241a43541850afae39593ae033b
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: a2fe7daf1476f19f6a6eea83174342fa1273fe14
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81678275"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867965"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>快速入门 - 配置私有云环境
 
@@ -148,7 +148,7 @@ VPN 客户端需要从您的计算机连接到云简单。  下载适用于 MacO
 
 ## <a name="connect-your-environment-to-an-azure-virtual-network"></a>将环境连接到 Azure 虚拟网络
 
-云简单为您提供了专用云的 ExpressRoute 电路。 您可以将 Azure 上的虚拟网络连接到 ExpressRoute 电路。 有关设置连接的完整详细信息，[请按照 Azure 虚拟网络连接中的步骤使用 ExpressRoute](https://docs.azure.cloudsimple.com/cloudsimple-azure-network-connection/)。
+云简单为您提供了专用云的 ExpressRoute 电路。 您可以将 Azure 上的虚拟网络连接到 ExpressRoute 电路。 有关设置连接的完整详细信息，[请按照 Azure 虚拟网络连接中的步骤使用 ExpressRoute](https://docs.microsoft.com/azure/vmware-cloudsimple/cloudsimple-azure-network-connection)。
 
 ## <a name="sign-in-to-vcenter"></a>登录到 vCenter
 

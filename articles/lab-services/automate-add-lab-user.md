@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 70a6359923734c83590d4677bb2c93966c925d14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 81a8c5030f716246caf3dcd8b540bb47fcaf6520
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76718133"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82023616"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>自动将实验室用户添加到 Azure 开发人员测试实验室中的实验室
-Azure 开发人员测试实验室允许您使用 Azure 门户快速创建自助服务开发测试环境。 但是，如果您有多个团队和多个 DevTest Labs 实例，则自动化创建过程可以节省时间。 [Azure 资源管理器模板](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)允许您创建实验室、实验室 VM、自定义映像、公式，并自动添加用户。 本文特别侧重于将用户添加到 DevTest Labs 实例。
+Azure 开发人员测试实验室允许您使用 Azure 门户快速创建自助服务开发测试环境。 但是，如果您有多个团队和多个 DevTest Labs 实例，则自动化创建过程可以节省时间。 [Azure 资源管理器模板](https://github.com/Azure/azure-devtestlab/tree/master/Environments)允许您创建实验室、实验室 VM、自定义映像、公式，并自动添加用户。 本文特别侧重于将用户添加到 DevTest Labs 实例。
 
 要将用户添加到实验室，您需要将该用户添加到实验室的**DevTest Labs 用户**角色。 本文演示如何使用以下方法之一自动将用户添加到实验室：
 

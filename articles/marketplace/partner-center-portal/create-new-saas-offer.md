@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 45559978f710549088d75d0f0706b798ebad3821
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: a39e1e19f65722b4b5ae809ca943da719a3c6e22
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314087"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869777"
 ---
 # <a name="create-a-new-saas-offer"></a>创建新的 SaaS 套餐
 
@@ -290,6 +290,9 @@ SaaS 根据固定费用、每个用户或使用按流量计费服务的消耗费
 
 在继续下一节之前，请记住**保存**。
 
+>[!Note]
+>如果上传文件出现问题，请确保本地网络不会阻止合作伙伴中心使用https://upload.xboxlive.com的服务。
+
 #### <a name="additional-marketplace-listing-resources"></a>其他市场列表资源
 
 - [市场产品/服务列表的最佳实践](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
@@ -399,7 +402,7 @@ SaaS 根据固定费用、每个用户或使用按流量计费服务的消耗费
 
 - **价格**：每月美元或美元/年
 
-以当地货币（美元 = 美元）设置的价格使用设置期间可用的当前汇率转换为所有选定市场的当地货币。 通过导出定价电子表格并查看每个市场的价格，在发布之前验证这些价格。 如果要在单个市场设置自定义价格，请修改并导入定价电子表格。 您负责验证此定价并拥有这些设置。
+以美元（美元 = 美元）设定的价格在保存时使用当前汇率转换为所有选定市场的当地货币。 通过导出定价电子表格并查看每个市场的价格，在发布之前验证这些价格。 如果要在单个市场设置自定义价格，请修改并导入定价电子表格。 您负责验证此定价并拥有这些设置。
 *\*您必须首先保存定价更改，以启用定价数据的导出。*
 
 在发布之前，请仔细查看您的价格，因为在计划发布后，可能会更改哪些内容有一些限制：

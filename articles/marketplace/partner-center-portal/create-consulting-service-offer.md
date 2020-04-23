@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: f1354ce824bc4e57ab55846c714d4a0a73a46966
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: eff37750f0580a28c9644ee1ffb7fe4e95038709
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80873814"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869794"
 ---
 # <a name="create-a-consulting-service-offer"></a>创建咨询服务产品
 
@@ -32,7 +32,7 @@ ms.locfileid: "80873814"
 - 从这些市场获得高质量的潜在客户。
 - 让 Microsoft 现场和电话销售团队推广您的服务
 
-## <a name="create-a-new-offer"></a>创建新产品/服务
+## <a name="create-a-new-offer"></a>创建新套餐
 
 满足上述要求后，请按照以下步骤创建咨询服务产品。
 
@@ -173,6 +173,9 @@ ms.locfileid: "80873814"
 ### <a name="marketplace-images"></a>市场映像
 
 提供徽标和图像，以便与您的产品配合使用。 所有图像必须采用 .png 格式。 模糊图像将被拒绝。
+
+>[!Note]
+>如果上传文件出现问题，请确保本地网络不会阻止合作伙伴中心使用https://upload.xboxlive.com的服务。
 
 #### <a name="store-logos"></a>应用商店徽标
 

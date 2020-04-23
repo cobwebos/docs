@@ -12,12 +12,12 @@ ms.date: 01/31/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e5e462c52c8b06af6da5081f84a082138cd53a3f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: fcd80c052edf659f93f97800da3112c1f11309cc
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81677948"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868495"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft 标识平台和 OAuth 2.0 授权代码流
 
@@ -35,7 +35,7 @@ OAuth 2.0 授权代码授予可用于设备上所安装的应用，以访问受�
 
 ## <a name="request-an-authorization-code"></a>请求授权代码
 
-授权代码流始于客户端将用户定向到的 `/authorize` 终结点。 在此请求中，客户端向用户请求 `openid`、`offline_access` 和 `https://graph.microsoft.com/mail.read ` 权限。  某些权限受管理员限制，例如使用 `Directory.ReadWrite.All` 将数据写入组织的目录。 如果应用程序向组织用户请求访问以下权限之一，用户会收到错误消息，指出他们未经授权，无法许可应用的权限。 若要请求访问受管理员限制的范围，应该直接向公司管理员请求。  有关详细信息，请参阅[管理员限制的权限](v2-permissions-and-consent.md#admin-restricted-permissions)。
+授权代码流始于客户端将用户定向到的 `/authorize` 终结点。 在此请求中，客户端从用户请求`openid` `offline_access`.`https://graph.microsoft.com/mail.read `和权限。  某些权限受管理员限制，例如使用 `Directory.ReadWrite.All` 将数据写入组织的目录。 如果应用程序向组织用户请求访问以下权限之一，用户会收到错误消息，指出他们未经授权，无法许可应用的权限。 若要请求访问受管理员限制的范围，应该直接向公司管理员请求。  有关详细信息，请参阅[管理员限制的权限](v2-permissions-and-consent.md#admin-restricted-permissions)。
 
 ```
 // Line breaks for legibility only
@@ -76,7 +76,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 使用 `response_mode=query` 的成功响应如下所示：
 
-```
+```HTTP
 GET https://login.microsoftonline.com/common/oauth2/nativeclient?
 code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 &state=12345
@@ -91,7 +91,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 
 错误响应可能也发送到 `redirect_uri`，让应用可以适当地处理：
 
-```
+```HTTP
 GET https://login.microsoftonline.com/common/oauth2/nativeclient?
 error=access_denied
 &error_description=the+user+canceled+the+authentication
@@ -122,7 +122,7 @@ error=access_denied
 
 现在已获取 authorization_code 并获得用户授权，可兑换 `code` 以获取所需资源的 `access_token`。 通过向 `/token` 终结点发送 `POST` 请求来完成此操作：
 
-```
+```HTTP
 // Line breaks for legibility only
 
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1
@@ -221,7 +221,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > [!TIP]
 > 在 Postman 中执行此请求！ （先更换`Authorization`头）[尝试在邮递员中运行此请求![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
-```
+```HTTP
 GET /v1.0/me/messages
 Host: https://graph.microsoft.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
@@ -235,7 +235,7 @@ Access_token 生存期很短，必须在其过期后刷新，才能继续访问�
 
 尽管刷新令牌在用于获取新访问令牌时不会被吊销，但预期你会丢弃旧的刷新令牌。 [OAuth 2.0 规范](https://tools.ietf.org/html/rfc6749#section-6)表示："授权服务器可能会颁发新的刷新令牌，在这种情况下，客户端必须放弃旧的刷新令牌并将其替换为新的刷新令牌。 授权服务器在向客户端颁发新的刷新令牌后，可能会吊销旧的刷新令牌。”
 
-```
+```HTTP
 // Line breaks for legibility only
 
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1
@@ -276,6 +276,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
     "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctOD...",
 }
 ```
+
 | 参数     | 说明         |
 |---------------|-------------------------------------------------------------|
 | `access_token`  | 请求的访问令牌。 应用可以使用此令牌验证受保护的资源，例如 Web API。 |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b6f7634d16eeaa631f6d9f3c13ce23181ce7b40b
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: c07241345a724e4489fb137cfe862cde6518b318
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881802"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868713"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>调用 Web API 的 Web 应用：调用 Web API
 
@@ -26,7 +26,7 @@ ms.locfileid: "80881802"
 
 下面是 `HomeController` 操作的简化代码。 此代码获取用于调用 Microsoft Graph 的令牌。 添加了代码以演示如何将 Microsoft Graph 作为 REST API 调用。 Microsoft Graph API 的 URL 在 appsettings.json 文件中提供，并在名为 `webOptions` 的变量中读取：
 
-```JSon
+```json
 {
   "AzureAd": {
     "Instance": "https://login.microsoftonline.com/",
@@ -129,4 +129,4 @@ def graphcall():
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [移到生产环境](scenario-web-app-call-api-production.md)
+> [转移到生产环境](scenario-web-app-call-api-production.md)

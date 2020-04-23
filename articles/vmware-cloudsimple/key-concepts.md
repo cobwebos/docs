@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: efe6cc132b062e833dc85c13cf2f6c5f6289484c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 410215550f728d6b11b02b3ef108d429481e42a0
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77564613"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869034"
 ---
 # <a name="key-concepts-for-administration-of-azure-vmware-solutions-by-cloudsimple"></a>通过云简单管理 Azure VMware 解决方案的关键概念
 
@@ -51,7 +51,7 @@ CloudSimple 服务提供部署云简单服务的每个区域的网络。 网络�
 * [VLAN 和子网](cloudsimple-vlans-subnets.md)
 * [防火墙表](cloudsimple-firewall-tables.md)
 * [VPN 网关](cloudsimple-vpn-gateways.md)
-* [公共知识产权](cloudsimple-public-ip-address.md)
+* [公共 IP](cloudsimple-public-ip-address.md)
 * [Azure 网络连接](cloudsimple-azure-network-connection.md)
 
 ## <a name="cloudsimple-virtual-machine"></a>云简单虚拟机
@@ -61,4 +61,4 @@ CloudSimple 服务提供部署云简单服务的每个区域的网络。 网络�
 了解有关以下方面的详细信息：
 
 * [云简单虚拟机](cloudsimple-virtual-machines.md)
-* [Azure 订阅映射](https://docs.azure.cloudsimple.com/azure-subscription-mapping/)
+* [Azure 订阅映射](https://docs.microsoft.com/azure/vmware-cloudsimple/azure-subscription-mapping/)

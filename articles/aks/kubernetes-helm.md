@@ -1,19 +1,19 @@
 ---
-title: 使用 Helm 在 Kubernetes on Azure 中部署容器
+title: 在 AKS 中安装使用 Helm 的现有应用程序
 description: 了解如何使用 Helm 打包工具在 Azure Kubernetes 服务 (AKS) 群集中部署容器
 services: container-service
 author: zr-msft
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: zarhoads
-ms.openlocfilehash: 4a9ccaff0e3425c365a64ecb4fbadf3c7aa8dcfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e46bed5fc9fd83a907f8c9e716317a54548c58cc
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595172"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870250"
 ---
-# <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序
+# <a name="install-existing-applications-with-helm-in-azure-kubernetes-service-aks"></a>在 Azure 库伯奈斯服务 （AKS） 中使用 Helm 安装现有应用程序
 
 [Helm][helm] 是一种开放源打包工具，有助于安装和管理 Kubernetes 应用程序的生命周期。 与诸如 *APT* 和 *Yum* 的 Linux 包管理器类似，Helm 用于管理 Kubernetes 图表，这些图表是预配置的 Kubernetes 资源包。
 
@@ -23,7 +23,7 @@ ms.locfileid: "77595172"
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
-还需要安装 Helm CLI，这是在开发系统上运行的客户端。 它允许你使用 Helm 启动、停止和管理应用程序。 如果使用 Azure Cloud Shell，则已安装 Helm CLI。 有关本地平台上的安装说明，请参阅安装[Helm][helm-install]。
+还需要安装 Helm CLI，这是在开发系统上运行的客户端。 它允许你使用 Helm 启动、停止和管理应用程序。 如果使用 Azure Cloud Shell，则已安装 Helm CLI。 有关本地平台上的安装说明，请参阅[安装 Helm][helm-install]。
 
 > [!IMPORTANT]
 > Helm 要在 Linux 节点上运行。 如果群集中具有 Windows Server 节点，则必须确保将 Helm pod 安排仅在 Linux 节点上运行。 还需要确保所安装的所有 Helm 图表也计划在正确的节点上运行。 本文中的命令使用[节点选择器][k8s-node-selector]，确保将 Pod 安排到正确的节点，但并非所有 Helm 图表都可以公开节点选择器。 还可以考虑使用群集上的其他选项，例如[排斥][taints]。

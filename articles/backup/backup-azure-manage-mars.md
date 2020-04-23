@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 备份服务管理和监视 Microsoft Azur
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 404341c8324d9e127e8d8e6bc8083926c0d3106f
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: a88ec4dc9283114e06eed424172dbb958850c2e9
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537349"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025095"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>使用 Azure 备份服务管理 Microsoft Azure 恢复服务 （MARS） 代理备份
 
@@ -79,8 +79,8 @@ ms.locfileid: "81537349"
 
     ![选择项目](./media/backup-azure-manage-mars/select-items-remove.png)
 
-> [!NOTE]
-> 从策略中完全删除卷时，请小心操作。  如果需要再次添加它，则它将被视为新卷。 下一个计划备份将执行初始备份（完全备份），而不是增量备份。 如果需要稍后临时删除和添加项目，建议使用 **"排除设置"** 而不是 **"删除项目**"来确保增量备份而不是完全备份。
+    > [!NOTE]
+    > 从策略中完全删除卷时，请小心操作。  如果需要再次添加它，则它将被视为新卷。 下一个计划备份将执行初始备份（完全备份），而不是增量备份。 如果需要稍后临时删除和添加项目，建议使用 **"排除设置"** 而不是 **"删除项目**"来确保增量备份而不是完全备份。
 
 2. 完成后续步骤，然后单击 **"完成"** 以完成操作。
 
@@ -90,7 +90,7 @@ ms.locfileid: "81537349"
 
 - **停止保护并保留备份数据**。
   - 此选项将停止保护以后的所有备份作业。
-  - Azure 备份服务将无限期地保留所有现有恢复点。 在恢复保护之前，不会检查恢复点是否过期。
+  - Azure 备份服务将继续保留所有现有的恢复点。  
   - 您将能够为未过期的恢复点还原备份的数据。
   - 如果您决定恢复保护，则可以使用 *"重新启用备份计划"* 选项。 之后，将根据新的保留政策保留数据。
 - **停止保护并删除备份数据**。
@@ -167,7 +167,6 @@ ms.locfileid: "81537349"
 
     ![生成密码。](./media/backup-azure-manage-mars/passphrase2.png)
 - 确保密码短语安全地保存在备用位置（源计算机之外），最好保存在 Azure 密钥保管库中。 如果使用 MARS 代理备份多台计算机，请跟踪所有密码。
-
 
 ## <a name="next-steps"></a>后续步骤
 

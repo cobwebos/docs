@@ -1,19 +1,18 @@
 ---
 title: 使用 Azure IoT 中心进行大规模自动设备管理 | Microsoft Docs
 description: 使用 Azure IoT 中心的自动配置来管理多个 IoT 设备和模块
-author: Philmea
-manager: bruz
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 12/13/2019
-ms.author: philmea
-ms.openlocfilehash: 1de7c34d8f8cbfa139212f29ca6be5d4eca64655
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.author: robinsh
+ms.openlocfilehash: 276f115f579fbd1ab077722b220a4a0c6c571850
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81767489"
+ms.locfileid: "82025061"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>使用 Azure 门户自动管理 IoT 设备和模块
 

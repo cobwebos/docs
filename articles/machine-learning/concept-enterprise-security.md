@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 9f3a1c3455aadfbd243cdc6ab2920849c8558841
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1af1a1ccd8bff8fc4b578ecdeec3ac5f7c2352b1
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414628"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082129"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure 机器学习的企业安全性
 
@@ -24,9 +24,9 @@ ms.locfileid: "81414628"
 使用某个云服务时，最佳做法是仅限需要该服务的用户访问它。 首先需要了解服务使用的身份验证和授权模型。 此外，你可能想要限制网络访问，或者安全地将本地网络中的资源加入云中。 静态数据以及在服务之间移动的数据的加密也至关重要。 最后，需要能够监视服务并生成所有活动的审核日志。
 
 > [!NOTE]
-> 本文中的信息适用于 Azure 机器学习 Python SDK 版本 1.0.83.1 或更高版本。
+> 本文中的信息适用于 Azure 机器学习 Python SDK 1.0.83.1 或更高版本。
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 如果 Azure Active Directory (Azure AD) 已配置为使用多重身份验证，则支持多重身份验证。 下面是身份验证过程：
 
@@ -36,7 +36,7 @@ ms.locfileid: "81414628"
 
 [![Azure 机器学习中的身份验证](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication-expanded.png#lightbox)
 
-有关详细信息，请参阅为[Azure 机器学习资源和工作流设置身份验证](how-to-setup-authentication.md)。 本文提供有关身份验证的信息和示例，包括使用服务主体和自动化工作流。
+有关详细信息，请参阅[为 Azure 机器学习资源和工作流设置身份验证](how-to-setup-authentication.md)。 本文提供有关身份验证的信息和示例，包括如何使用服务主体和自动化工作流。
 
 ### <a name="authentication-for-web-service-deployment"></a>Web 服务部署的身份验证
 
@@ -47,7 +47,7 @@ ms.locfileid: "81414628"
 |密钥|密钥是静态的，无需刷新。 可以手动重新生成密钥。|默认已禁用| 默认已启用|
 |标记|令牌会在指定的时限后过期，需要刷新。| 不可用| 默认已禁用 |
 
-有关代码示例，请参阅[Web 服务身份验证部分](how-to-setup-authentication.md#web-service-authentication)。
+有关代码示例，请参阅 [Web 服务身份验证](how-to-setup-authentication.md#web-service-authentication)部分。
 
 ## <a name="authorization"></a>授权
 
@@ -183,7 +183,7 @@ Azure 机器学习在 Azure Cosmos DB 实例中存储指标和元数据。 此�
         > [!NOTE]
         > 此密钥保管库实例可能不同于 Azure 机器学习在预配工作区时创建的密钥保管库。 如果要对工作区使用相同的密钥保管库实例，请使用[key_vault 参数](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)在预配工作区时传递相同的密钥保管库。 
 
-此 Cosmos DB 实例是在订阅中的 Microsoft 托管资源组中创建的。 
+此 Cosmos DB 实例是在订阅中的 Microsoft 托管资源组中创建的。 托管资源组以格式命名<AML Workspace Resource Group Name><GUID>
 
 > [!IMPORTANT]
 > * 如果需要删除此 Cosmos DB 实例，则必须删除使用它的 Azure 机器学习工作区。 

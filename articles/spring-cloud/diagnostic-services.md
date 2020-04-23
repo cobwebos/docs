@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
-ms.openlocfilehash: 544de1b4ac46a58d533f71a46266807a3b93820a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adbcf28cfbbe2ea3b7cc9c7fd0d1c76246938344
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77920036"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870407"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>使用诊断设置分析日志和指标
 
@@ -23,9 +23,12 @@ ms.locfileid: "77920036"
 
 选择要监视的日志类别和指标类别。
 
+> [!TIP]
+> 只想流式传输日志？ 请查看此[Azure CLI 命令](https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud/app?view=azure-cli-latest#ext-spring-cloud-az-spring-cloud-app-logs)！
+
 ## <a name="logs"></a>日志
 
-|日志 | 描述 |
+|日志 | 说明 |
 |----|----|
 | **ApplicationConsole** | 所有客户应用程序的控制台日志。 | 
 | **系统日志** | 目前，只有[春云配置服务器](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server)在此类别中日志。 |
@@ -46,7 +49,7 @@ ms.locfileid: "77920036"
     * **发送到 Log Analytics**
 
 1. 选择要监视的日志类别和指标类别，然后指定保留时间（以天表示）。 保留时间仅适用于存储帐户。
-1. 选择“保存”。****
+1. 选择“保存”。 
 
 > [!NOTE]
 > 在发出日志或指标以及日志或指标显示在存储帐户、事件中心或日志分析中之间，间隔可能长达 15 分钟。

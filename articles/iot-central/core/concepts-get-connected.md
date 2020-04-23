@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: f37b070c74abd8511fc597f9b159312d91281083
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 1398169c44dadcd11ad037e4e3a1cc0132e21f13
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81759116"
+ms.locfileid: "82024687"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>连接到 Azure IoT Central
 
@@ -50,7 +50,7 @@ IoT 中心使用[Azure IoT 中心设备配置服务 （DPS）](../../iot-dps/abo
 
 ![单个设备的 SAS 密钥](./media/concepts-get-connected/single-device-sas.png)
 
-要了解更多信息，请参阅创建[Node.js 客户端应用程序并将其连接到 Azure IoT 中央应用程序](./tutorial-connect-device.md)教程。
+要了解更多信息，请参阅创建[Node.js 客户端应用程序并将其连接到 Azure IoT 中央应用程序](./tutorial-connect-device-nodejs.md)教程。
 
 ## <a name="connect-devices-at-scale-using-sas"></a>使用 SAS 大规模连接设备
 
@@ -246,9 +246,9 @@ Azure 设备 SDK 为实现设备代码提供最简便的方法。 以下设备 S
 | Azure IoT Central | Azure IoT 中心 |
 | ----------- | ------- |
 | 遥测 | 设备到云的消息传递 |
-| 属性 | 设备孪生报告属性 |
+| properties | 设备孪生报告属性 |
 | 属性（可写） | 设备孪生所需的和报告的属性 |
-| 命令 | 直接方法 |
+| Command | 直接方法 |
 
 若要详细了解如何使用设备 SDK，请参阅[将 DevDiv 工具包设备连接到 Azure IoT Central 应用程序](howto-connect-devkit.md)中的示例代码。
 

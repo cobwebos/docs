@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 6102b1e1d6ddbac01033b9cecfeba96a7eb33777
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41f9f267880d199d2e221453eea5c3584ce96881
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473534"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868394"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>在 Azure API 管理中使用 Azure Active Directory 授权开发人员帐户
 
@@ -26,57 +26,57 @@ ms.locfileid: "79473534"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
+- 完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
 - 导入并发布 Azure API 管理实例。 有关详细信息，请参阅[导入和发布](import-and-publish.md)。
 
 [!INCLUDE [premium-dev-standard.md](../../includes/api-management-availability-premium-dev-standard.md)]
 
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>使用 Azure AD 为开发人员帐户授权
 
-1. 登录到 Azure[门户](https://portal.azure.com)。 
-2. Select ![箭头](./media/api-management-howto-aad/arrow.png).
-3. 在搜索框中键入**api。**
-4. 选择**API 管理服务**。
+1. 登录到 [Azure 门户](https://portal.azure.com)。 
+2. 选择 ![箭头](./media/api-management-howto-aad/arrow.png)上获取。
+3. 在搜索框中键入 **api**。
+4. 选择“API 管理服务”。 
 5. 选择自己的 API 管理服务实例。
-6. 在 **"安全"** 下，选择**标识**。
-7. 在顶部选择“+添加”****。
+6. 在**开发人员门户**下，选择**标识**。
+7. 在顶部选择“+添加”  。
 
-    此时将在右侧显示“添加标识提供者”**** 窗格。
-8. 在“提供者类型”**** 下，选择 **Azure Active Directory**。
+    此时将在右侧显示“添加标识提供者”  窗格。
+8. 在“提供者类型”  下，选择 **Azure Active Directory**。
 
-    此时将在窗格中显示用于输入其他必要信息的控件。 控件包括“客户端 ID”和“客户端机密”********。 （本文稍后将介绍有关这些控件的信息。）
-9. 记下“重定向 URL”的内容****。
+    此时将在窗格中显示用于输入其他必要信息的控件。 控件包括“客户端 ID”和“客户端机密”   。 （本文稍后将介绍有关这些控件的信息。）
+9. 记下“重定向 URL”的内容  。
     
    ![在 Azure 门户中添加标识提供者的步骤](./media/api-management-howto-aad/api-management-with-aad001.png)  
 10. 在浏览器中，打开另一个标签页。 
 11. 导航到 [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)，在 Active Directory 中注册应用。
-12. 在 **"管理**"下，选择**应用注册**。
-13. 选择“新注册”。**** 在“注册应用程序”页上，将值设置如下：****
+12. 在“管理”  下，选择“应用注册”  。
+13. 选择“新注册”。  在“注册应用程序”页上，将值设置如下： 
     
-    * 将“名称”设置为一个有意义的名称。**** 例如，*developer-portal*
-    * 将“支持的帐户类型”设置为“仅限此组织目录中的帐户”。******** 
-    * 将“重定向 URI”设置为从步骤 9 获取的值。**** 
-    * 选择“注册”****。 
+    * 将“名称”设置为一个有意义的名称。  例如，*developer-portal*
+    * 将“支持的帐户类型”设置为“仅限此组织目录中的帐户”。   
+    * 将“重定向 URI”设置为从步骤 9 获取的值。  
+    * 选择“注册”  。 
 
-14.  注册应用程序以后，从“概览”页复制“应用程序(客户端) ID”****。**** 
-15. 回到你的 API 管理实例。 在“添加标识提供者”**** 窗口中，将“应用程序(客户端) ID”值粘贴到“客户端 ID”**** 框中****。
-16. 切换回 Azure AD 配置，在“管理”下选择“证书和机密”****。**** 选择“新建客户端机密”按钮。**** 在“说明”中输入一个值，**** 针对“过期”选择任意选项，然后选择“添加”。******** 在离开此页之前复制客户端机密值。 在下一步中将要使用它。 
-17. 在“管理”**** 下选择“身份验证”****，然后在“隐式授权”**** 下选择“ID 令牌”****
-18. 回到你的 API 管理实例，将机密粘贴到“客户端机密”框中。****
+14.  注册应用程序以后，从“概览”页复制“应用程序(客户端) ID”  。  
+15. 回到你的 API 管理实例。 在“添加标识提供者”  窗口中，将“应用程序(客户端) ID”值粘贴到“客户端 ID”  框中  。
+16. 切换回 Azure AD 配置，在“管理”下选择“证书和机密”  。  选择“新建客户端机密”按钮。  在“说明”中输入一个值，  针对“过期”选择任意选项，然后选择“添加”。   在离开此页之前复制客户端机密值。 在下一步中将要使用它。 
+17. 在“管理”  下选择“身份验证”  ，然后在“隐式授权”  下选择“ID 令牌” 
+18. 回到你的 API 管理实例，将机密粘贴到“客户端机密”框中。 
 
     > [!IMPORTANT]
-    > 请确保在密钥过期前更新“客户端机密”****。 
+    > 请确保在密钥过期前更新“客户端机密”  。 
     >  
     >
 
-19. “添加标识提供者”窗口还包含“允许的租户”文本框********。 可在此框中指定要授予 API 管理服务实例的 API 对哪些 Azure AD 实例域的访问权限。 可使用换行符、空格或逗号分隔多个域。
+19. “添加标识提供者”窗口还包含“允许的租户”文本框   。 可在此框中指定要授予 API 管理服务实例的 API 对哪些 Azure AD 实例域的访问权限。 可使用换行符、空格或逗号分隔多个域。
 
     > [!NOTE]
-    > 可在“允许的租户”**** 部分中指定多个域。 在任何用户可以从注册应用程序的原始域以外的其他域登录之前，不同域的全局管理员必须先授予权限以使应用程序访问目录数据。 若要授予权限，全局管理员应执行以下操作：a. 转到 `https://<URL of your developer portal>/aadadminconsent`（例如， https://contoso.portal.azure-api.net/aadadminconsent)。
-    > b.保留“数据库类型”设置，即设置为“共享”。 键入他们想要授权访问的 Azure AD 租户域名。
-    > c. 选择“提交”****。 
+    > 可在“允许的租户”  部分中指定多个域。 在任何用户可以从注册应用程序的原始域以外的其他域登录之前，不同域的全局管理员必须先授予权限以使应用程序访问目录数据。 若要授予权限，全局管理员应执行以下操作：a. 转到 `https://<URL of your developer portal>/aadadminconsent`（例如， https://contoso.portal.azure-api.net/aadadminconsent) 。
+    > b. 键入他们想要授权访问的 Azure AD 租户域名。
+    > c. 选择“提交”。  
 
-20.  指定所需配置后，选择“添加”****。
+20.  指定所需配置后，选择“添加”  。
 
 保存更改后，指定的 Azure AD 实例中的用户便可按照[使用 Azure AD 帐户登录开发人员门户](#log_in_to_dev_portal)中的步骤登录到开发人员门户。
 
@@ -91,15 +91,15 @@ ms.locfileid: "79473534"
 3. 在 **"请求 API 权限"** 窗格中，选择 **"Microsoft API"** 选项卡，然后选择 **"Microsoft 图形"** 磁贴。 选择**应用程序权限**，搜索**目录**，然后选择**目录.Read.All**权限。 
 4. 单击窗格底部的 **"添加权限**"，然后单击"**授予管理员同意 [租户名称]，** 以便授予此目录中所有用户的访问权限。 
 
-现在可以从 API 管理实例的“组”**** 选项卡添加外部 Azure AD 组。
+现在可以从 API 管理实例的“组”  选项卡添加外部 Azure AD 组。
 
-1. 选择“组”选项卡****。
-2. 选择“添加 AAD 组”**** 按钮。
+1. 选择“组”选项卡  。
+2. 选择“添加 AAD 组”  按钮。
     ![“添加 AAD 组”按钮](./media/api-management-howto-aad/api-management-with-aad008.png)
 3. 选择要添加的组。
-4. 按“选择”**** 按钮。
+4. 按“选择”  按钮。
 
-创建外部 Azure AD 组之后，可以查看和配置其属性。 从"**组"** 选项卡中选择组的名称。在此处，您可以编辑组**的名称**和**说明**信息。
+创建外部 Azure AD 组之后，可以查看和配置其属性。 从“组”选项卡中选择该组的名称。  在此处，可以编辑该组的“名称”和“说明”信息   。
  
 配置的 Azure AD 实例中的用户现在可以登录开发人员门户。 他们可以查看和订阅可见的任何组。
 
@@ -120,15 +120,15 @@ ms.locfileid: "79473534"
 
 使用前面部分中配置的 Azure AD 帐户登录开发人员门户：
 
-1. 使用 Active Directory 应用程序配置中的登录 URL 打开新的浏览器窗口，并选择“Azure Active Directory”****。
+1. 使用 Active Directory 应用程序配置中的登录 URL 打开新的浏览器窗口，并选择“Azure Active Directory”  。
 
    ![登录页][api-management-dev-portal-signin]
 
-1. 输入 Azure Active Directory 中某个用户的凭据，并选择“登录”****。
+1. 输入 Azure Active Directory 中某个用户的凭据，并选择“登录”  。
 
    ![使用用户名和密码登录][api-management-aad-signin]
 
-1. 如果需要其他信息，可能出现注册表单的提示。 完成注册表单并选择“登录”****。
+1. 如果需要其他信息，可能出现注册表单的提示。 完成注册表单并选择“登录”  。
 
    ![注册窗体中的“注册”按钮][api-management-complete-registration]
 

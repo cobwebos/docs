@@ -12,12 +12,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7fb2bbcdd5f84e3637a108d0753566d3a9de7fd0
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 89ae088b9cbb3bb3c593cfcbbfb4ce619baccfa8
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81677744"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868416"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft 标识平台和隐式授权流
 
@@ -117,7 +117,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 使用 `response_mode=fragment` 和 `response_type=id_token+token` 的成功响应如下所示（为方便阅读，包含了换行符）：
 
-```
+```HTTP
 GET https://localhost/myapp/#
 &token_type=Bearer
 &expires_in=3599
@@ -138,7 +138,7 @@ GET https://localhost/myapp/#
 
 错误响应可能也发送到 `redirect_uri`，让应用可以适当地处理：
 
-```
+```HTTP
 GET https://localhost/myapp/#
 error=access_denied
 &error_description=the+user+canceled+the+authentication
@@ -184,7 +184,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 使用 `response_mode=fragment` 的成功响应如下所示：
 
-```
+```HTTP
 GET https://localhost/myapp/#
 access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &state=12345
@@ -206,7 +206,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 
 错误响应还可能发送到 `redirect_uri`，因此应用可以适当地对其进行处理。 如果是 `prompt=none`，预期的错误为：
 
-```
+```HTTP
 GET https://localhost/myapp/#
 error=user_authentication_required
 &error_description=the+request+could+not+be+completed+silently

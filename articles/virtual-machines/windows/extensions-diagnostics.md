@@ -1,23 +1,19 @@
 ---
 title: Windows 的 Azure 诊断扩展
 description: 使用 Azure 诊断扩展监视 Azure Windows VM
-services: virtual-machines-windows
-documentationcenter: ''
 author: johnkemnetz
 manager: ashwink
-editor: ''
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.openlocfilehash: d4ba3e8bbdad72f10c630a056f988ec83e9b1a68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d38a3cac5525de6835bbb0f9873cbd0636d44a9
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77471612"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869671"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>适用于 Windows VM 的 Azure 诊断扩展
 
@@ -25,7 +21,7 @@ ms.locfileid: "77471612"
 
 Azure 诊断 VM 扩展可用来从 Windows VM 收集监视数据，例如性能计数器和事件日志。 你可以精细地指定要收集什么数据以及希望该数据出现在何处，例如 Azure 存储帐户或 Azure 事件中心。 还可以使用该数据在 Azure 门户中构建图表或创建指标警报。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="operating-system"></a>操作系统
 
@@ -76,7 +72,7 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup `
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>疑难解答
+### <a name="troubleshoot"></a>故障排除
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure CLI 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure CLI 运行以下命令。
 
@@ -88,7 +84,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 ### <a name="support"></a>支持
 
-如果本文中的任何一点都需要更多帮助，则可以在[MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上联系 Azure 专家。 或者，你也可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择"获取支持"。 有关使用 Azure 支持的信息，请阅读[Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果本文中的任何一点都需要更多帮助，则可以在[MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上联系 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读[Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
 
 ## <a name="next-steps"></a>后续步骤
 * [详细了解 Azure 诊断扩展](../../azure-monitor/platform/diagnostics-extension-overview.md)

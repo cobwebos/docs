@@ -1,24 +1,24 @@
 ---
 title: 将 Azure DNS 与 Azure 资源集成 - Azure DNS
-description: 在本文中，了解如何使用 Azure DNS 为 Azure 资源提供 DNS。
+description: 本文介绍如何使用 Azure DNS 为 Azure 资源提供 DNS。
 services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 7/13/2019
 ms.author: rohink
-ms.openlocfilehash: d84a7a908bd3bb5cfb2958a617be437f3b6b154e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56a7680de3127da06341ac03252a9ab0cff9da7c
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266229"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024942"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>使用 Azure DNS 为 Azure 服务提供自定义域设置
 
-Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azure 资源的自定义域提供 DNS。 例如，您有一个 Azure Web 应用，并且希望用户使用contoso.com或 www\.contoso.com作为 FQDN 来访问它。 本文逐步讲解如何使用 Azure DNS 配置 Azure 服务，以便使用自定义域。
+Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azure 资源的自定义域提供 DNS。 例如，你有一个 Azure Web 应用，并且希望用户使用 contoso.com 或 www\.contoso.com 作为 FQDN 来访问它。 本文逐步讲解如何使用 Azure DNS 配置 Azure 服务，以便使用自定义域。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要对自定义域使用 Azure DNS，首先必须将该域委派给 Azure DNS。 有关如何为委派配置名称服务器的说明，请访问[将域委派给 Azure DNS](./dns-delegate-domain-azure-dns.md)。 将域委派给 Azure DNS 区域后，便可以配置所需的 DNS 记录。
 
@@ -28,27 +28,27 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 
 若要为 Azure 函数应用配置自定义域，需要创建一条 CNAME 记录，并在该函数应用本身上进行配置。
  
-导航到“函数应用”并选择自己的函数应用。**** 单击“平台功能”，并在“网络”下面单击“自定义域”。************
+导航到“函数应用”并选择自己的函数应用。  单击“平台功能”，并在“网络”下面单击“自定义域”。   
 
 ![函数应用边栏选项卡](./media/dns-custom-domain/functionapp.png)
 
-记下“自定义域”边栏选项卡上的当前 URL，此地址用作创建的 DNS 记录的别名。****
+记下“自定义域”边栏选项卡上的当前 URL，此地址用作创建的 DNS 记录的别名。 
 
 ![自定义域边栏选项卡](./media/dns-custom-domain/functionshostname.png)
 
-导航到 DNS 区域，单击“+ 记录集”。**** 在“添加记录集”边栏选项卡上填写以下信息，单击“确定”创建该记录集。********
+导航到 DNS 区域，单击“+ 记录集”。  在“添加记录集”边栏选项卡上填写以下信息，单击“确定”创建该记录集。  
 
-|properties  |“值”  |描述  |
+|properties  |值  |说明  |
 |---------|---------|---------|
-|“属性”     | myfunctionapp        | 此值连同域名标签是自定义域名的 FQDN。        |
+|名称     | myfunctionapp        | 此值连同域名标签是自定义域名的 FQDN。        |
 |类型     | CNAME        | 使用 CNAME 记录相当于使用别名。        |
 |TTL     | 1        | 1 表示 1 小时        |
 |TTL 单位     | 小时        | 小时用作时间计量单位         |
 |Alias     | adatumfunction.azurewebsites.net        | 为其创建别名的 DNS 名称，在本示例中，为默认提供给函数应用的 adatumfunction.azurewebsites.net DNS 名称。        |
 
-导航回到函数应用，单击“平台功能”，在“网络”下面单击“自定义域”，在“自定义主机名”下面单击“+ 添加主机名”。********************
+导航回到函数应用，单击“平台功能”，在“网络”下面单击“自定义域”，在“自定义主机名”下面单击“+ 添加主机名”。     
 
-在“添加主机名”边栏选项卡上的“主机名”文本字段中输入 CNAME 记录，单击“验证”。************ 如果找到该记录，则会出现“添加主机名”按钮。**** 单击“添加主机名”以添加该别名。****
+在“添加主机名”边栏选项卡上的“主机名”文本字段中输入 CNAME 记录，单击“验证”。    如果找到该记录，则会出现“添加主机名”按钮。  单击“添加主机名”以添加该别名。 
 
 ![函数应用添加主机名边栏选项卡](./media/dns-custom-domain/functionaddhostname.png)
 
@@ -56,16 +56,16 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 
 若要为使用公共 IP 地址资源（例如应用程序网关、负载均衡器、云服务、资源管理器 VM 和经典 VM）的服务配置自定义域，请使用 A 记录。
 
-导航到**网络** > **公共 IP 地址**，选择公共 IP 资源并单击"**配置**"。 记下显示的 IP 地址。
+导航到“网络” **“公共 IP 地址”，选择“公共 IP 资源”，单击“配置”。**  >    记下显示的 IP 地址。
 
 ![公共 IP 边栏选项卡](./media/dns-custom-domain/publicip.png)
 
-导航到 DNS 区域，单击“+ 记录集”。**** 在“添加记录集”边栏选项卡上填写以下信息，单击“确定”创建该记录集。********
+导航到 DNS 区域，单击“+ 记录集”。  在“添加记录集”边栏选项卡上填写以下信息，单击“确定”创建该记录集。  
 
 
-|properties  |“值”  |描述  |
+|properties  |值  |说明  |
 |---------|---------|---------|
-|“属性”     | mywebserver        | 此值连同域名标签是自定义域名的 FQDN。        |
+|名称     | mywebserver        | 此值连同域名标签是自定义域名的 FQDN。        |
 |类型     | A        | 由于资源是 IP 地址，因此应使用 A 记录。        |
 |TTL     | 1        | 1 表示 1 小时        |
 |TTL 单位     | 小时        | 小时用作时间计量单位         |
@@ -81,18 +81,18 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 
 下面逐步介绍如何配置应用服务 Web 应用的自定义域。
 
-导航到“应用服务”，选择要配置自定义域名的资源，单击“自定义域”。********
+导航到“应用服务”，选择要配置自定义域名的资源，单击“自定义域”。  
 
-记下“自定义域”边栏选项卡上的当前 URL，此地址用作创建的 DNS 记录的别名。****
+记下“自定义域”边栏选项卡上的当前 URL，此地址用作创建的 DNS 记录的别名。 
 
 ![自定义域边栏选项卡](./media/dns-custom-domain/url.png)
 
-导航到 DNS 区域，单击“+ 记录集”。**** 在“添加记录集”边栏选项卡上填写以下信息，单击“确定”创建该记录集。********
+导航到 DNS 区域，单击“+ 记录集”。  在“添加记录集”边栏选项卡上填写以下信息，单击“确定”创建该记录集。  
 
 
-|properties  |“值”  |描述  |
+|properties  |值  |说明  |
 |---------|---------|---------|
-|“属性”     | mywebserver        | 此值连同域名标签是自定义域名的 FQDN。        |
+|名称     | mywebserver        | 此值连同域名标签是自定义域名的 FQDN。        |
 |类型     | CNAME        | 使用 CNAME 记录相当于使用别名。 如果资源使用了 IP 地址，则会使用 A 记录。        |
 |TTL     | 1        | 1 表示 1 小时        |
 |TTL 单位     | 小时        | 小时用作时间计量单位         |
@@ -101,7 +101,7 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 
 ![创建 CNAME 记录](./media/dns-custom-domain/createcnamerecord.png)
 
-导航回到为自定义域名配置的应用服务。 依次单击“自定义域”、“主机名”。******** 若要添加所创建的 CNAME 记录，请单击“+ 添加主机名”。****
+导航回到为自定义域名配置的应用服务。 依次单击“自定义域”、“主机名”。   若要添加所创建的 CNAME 记录，请单击“+ 添加主机名”。 
 
 ![图 1](./media/dns-custom-domain/figure1.png)
 
@@ -111,7 +111,7 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 
 若要详细了解如何将自定义域映射到应用服务，请访问[将现有的自定义 DNS 名称映射到 Azure Web 应用](../app-service/app-service-web-tutorial-custom-domain.md?toc=%dns%2ftoc.json)。
 
-要了解如何迁移活动 DNS 名称，请参阅[将活动 DNS 名称迁移到 Azure 应用服务](../app-service/manage-custom-dns-migrate-domain.md)。
+若要了解如何迁移活动 DNS 名称，请参阅[将活动 DNS 名称迁移到 Azure 应用服务](../app-service/manage-custom-dns-migrate-domain.md)。
 
 如果需要购买自定义域，请访问[购买 Azure Web 应用的自定义域名](../app-service/manage-custom-dns-buy-domain.md)来详细了解应用服务域。
 
@@ -126,15 +126,15 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 导航到 DNS 区域，单击“+ 记录集”。**** 在“添加记录集”边栏选项卡上填写以下信息，单击“确定”创建该记录集。********
 
 
-|properties  |“值”  |描述  |
+|properties  |值  |说明  |
 |---------|---------|---------|
-|“属性”     | asverify.mystorageaccount        | 此值连同域名标签是自定义域名的 FQDN。        |
+|名称     | asverify.mystorageaccount        | 此值连同域名标签是自定义域名的 FQDN。        |
 |类型     | CNAME        | 使用 CNAME 记录相当于使用别名。        |
 |TTL     | 1        | 1 表示 1 小时        |
 |TTL 单位     | 小时        | 小时用作时间计量单位         |
 |Alias     | asverify.adatumfunctiona9ed.blob.core.windows.net        | 为其创建别名的 DNS 名称，在本示例中，为默认提供给存储帐户的 asverify.adatumfunctiona9ed.blob.core.windows.net DNS 名称。        |
 
-单击"**Storage** > **存储存储帐户**"，选择存储帐户并单击 **"自定义域**"，即可导航回存储帐户。 在文本框中键入创建的别名（不带 asverify 前缀），选中“**使用间接 CNAME 验证”，单击“保存”。**** 完成此步骤后，返回 DNS 区域，并创建不带 asverify 前缀的 CNAME 记录。  此后，可以安全删除带有 cdnverify 前缀的 CNAME 记录。
+单击"**Storage** > **存储存储帐户**"，选择存储帐户并单击 **"自定义域**"，即可导航回存储帐户。 键入创建而不在文本框中没有 asverify 前缀的别名，选中"**使用间接 CNAME 验证**"，然后单击"**保存**"。 完成此步骤后，返回 DNS 区域，并创建不带 asverify 前缀的 CNAME 记录。  此后，可以安全删除带有 cdnverify 前缀的 CNAME 记录。
 
 ![Blob 存储自定义域](./media/dns-custom-domain/indirectvalidate.png)
 
@@ -154,9 +154,9 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 
 导航到 DNS 区域，单击“+ 记录集”。**** 在“添加记录集”边栏选项卡上填写以下信息，单击“确定”创建该记录集。********
 
-|properties  |“值”  |描述  |
+|properties  |值  |说明  |
 |---------|---------|---------|
-|“属性”     | cdnverify.mycdnendpoint        | 此值连同域名标签是自定义域名的 FQDN。        |
+|名称     | cdnverify.mycdnendpoint        | 此值连同域名标签是自定义域名的 FQDN。        |
 |类型     | CNAME        | 使用 CNAME 记录相当于使用别名。        |
 |TTL     | 1        | 1 表示 1 小时        |
 |TTL 单位     | 小时        | 小时用作时间计量单位         |

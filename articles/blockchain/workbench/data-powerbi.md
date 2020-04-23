@@ -1,15 +1,15 @@
 ---
 title: 在 Microsoft Power BI 中使用 Azure Blockchain Workbench 数据
 description: 了解如何在 Microsoft Power BI 中加载和查看 Azure Blockchain Workbench SQL DB 数据。
-ms.date: 05/09/2019
+ms.date: 04/22/2020
 ms.topic: article
-ms.reviewer: mmercuri
-ms.openlocfilehash: 6e1f160c3563a280548c74ebe84f30bf08945c3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: sunri
+ms.openlocfilehash: 4245603fee5b3d24488426c3dc2d026a3c0d7848
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74324799"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082520"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>通过 Microsoft Power BI 使用 Azure Blockchain Workbench 数据
 
@@ -19,7 +19,7 @@ Microsoft Power BI 提供了使用 Power BI 桌面轻松地从 SQL DB 数据库�
 
 ## <a name="prerequisites"></a>先决条件
 
-* 下载[电源 BI 桌面](https://aka.ms/pbidesktopstore)。
+* 下载[电源 BI 桌面](https://powerbi.microsoft.com/desktop/)。
 
 ## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>将 Power BI 连接到 Azure Blockchain Workbench 中的数据
 
@@ -29,7 +29,7 @@ Microsoft Power BI 提供了使用 Power BI 桌面轻松地从 SQL DB 数据库�
     ![获取数据](./media/data-powerbi/get-data.png)
 3.  从数据源类型列表中选择“SQL Server”。****
 
-4.  在对话框中提供服务器和数据库名称。 指定是要导入数据还是要执行 **DirectQuery**。 选择“确定”。
+4.  在对话框中提供服务器和数据库名称。 指定是要导入数据还是要执行 **DirectQuery**。 选择“确定”  。
 
     ![选择 SQL Server](./media/data-powerbi/select-sql.png)
 

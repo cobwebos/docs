@@ -1,24 +1,20 @@
 ---
 title: 在 Azure 的 Windows VM 上安装 MongoDB
 description: 了解如何在使用 Resource Manager 部署模型创建的、运行 Windows Server 2012 R2 的 Azure VM 上安装 MongoDB。
-services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: 53faf630-8da5-4955-8d0b-6e829bf30cba
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 37c1b58d364e7eadb33803ce7eac1f2b956ec1b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5ba7d7fce3f3eabd223956ca8d9cc824fbd0c5f
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74038554"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869453"
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>在 Azure 中的 Windows VM 上安装和配置 MongoDB
 [MongoDB](https://www.mongodb.org) 是一个流行的开源、高性能 NoSQL 数据库。 本文逐步讲解如何在 Azure 中的 Windows Server 2016 虚拟机 (VM) 上安装和配置 MongoDB。 也可以[在 Azure 中的 Linux VM 上安装 MongoDB](../linux/install-mongodb.md)。

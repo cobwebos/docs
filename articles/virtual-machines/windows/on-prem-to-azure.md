@@ -1,26 +1,21 @@
 ---
 title: 从 AWS 和其他平台迁移到 Azure 中的托管磁盘
 description: 使用从 AWS 等其他云或其他虚拟化平台上传的 VHD 在 Azure 中创建 VM，并利用 Azure 托管磁盘。
-services: virtual-machines-windows
-documentationcenter: ''
 author: roygara
 manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dbce2969ccb508c2bf3ee33730d0b112caa45c9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dc283d1845926b79fb541d8ccb011fe853f50484
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243154"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870284"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>从 Amazon Web Services (AWS) 和其他平台迁移到 Azure 中的托管磁盘
 
@@ -28,7 +23,7 @@ ms.locfileid: "79243154"
 
 可上传通用和专用 VHD。 
 - **通用 VHD** - 已使用 Sysprep 删除了所有个人帐户信息。 
-- “专用 VHD”**** - 维护来自原始 VM 的用户帐户、应用程序和其他状态数据。 
+- “专用 VHD”  - 维护来自原始 VM 的用户帐户、应用程序和其他状态数据。 
 
 > [!IMPORTANT]
 > 将任何 VHD 上传到 Azure 之前，应按照[准备要上传到 Azure 的 Windows VHD 或 VHDX](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 进行操作
@@ -36,7 +31,7 @@ ms.locfileid: "79243154"
 >
 
 
-| 方案                                                                                                                         | 文档                                                                                                                       |
+| 场景                                                                                                                         | 文档                                                                                                                       |
 |----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | 拥有要使用托管磁盘迁移至 Azure VM 的现有 AWS EC2 实例。                              | [将 VM 从 Amazon Web Services (AWS) 移动到 Azure](aws-to-azure.md)                           |
 | 拥有要用作映像的来自其他虚拟化平台的 VM，以创建多个 Azure VM。 | [上传通用 VHD 并用其在 Azure 中新建 VM](upload-generalized-managed.md) |
@@ -89,7 +84,7 @@ Azure 托管磁盘无需管理存储帐户，从而简化 VM 管理。 可用性
 
 **高级托管磁盘**
 
-默认情况下，所有高级数据磁盘的磁盘缓存策略都是“只读”**，所有附加到 VM 的高级操作系统都是“读写”**。 为使应用程序的 IO 达到最佳性能，建议使用此配置设置。 对于频繁写入或只写的磁盘（例如 SQL Server 日志文件），禁用磁盘缓存可获得更佳的应用程序性能。
+默认情况下，所有高级数据磁盘的磁盘缓存策略都是“只读”  ，所有附加到 VM 的高级操作系统都是“读写”  。 为使应用程序的 IO 达到最佳性能，建议使用此配置设置。 对于频繁写入或只写的磁盘（例如 SQL Server 日志文件），禁用磁盘缓存可获得更佳的应用程序性能。
 
 ### <a name="pricing"></a>定价
 

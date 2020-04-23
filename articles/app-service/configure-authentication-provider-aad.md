@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 6f4dbedad56f6867558a8b70575ad906c8796612
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: f625f5df4f33c6516bd5c50f97c52404d76757a0
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392559"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024449"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>将应用服务或 Azure 功能应用配置为使用 Azure AD 登录名
 
@@ -100,7 +100,7 @@ ms.locfileid: "81392559"
     |字段|说明|
     |-|-|
     |客户端 ID| 使用应用注册的“应用程序(客户端) ID”。**** |
-    |颁发者 Url| 使用`https://login.microsoftonline.com/<tenant-id>/v2.0`，并将*\<租户 id>* 替换为应用注册的**目录（租户）ID。** 此值用于将用户重定向到正确的 Azure AD 租户，以及下载相应的元数据以确定适当的令牌签名密钥和令牌颁发者声明值。 对于`/v2.0`使用 AAD v1 的应用程序，可以省略该部分。 |
+    |颁发者 Url| 使用`<authentication-endpoint>/<tenant-id>/v2.0`并将*\<身份验证终结点>* 替换为[云环境的身份验证终结点](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints)（例如，"全局 Azure"），https://login.microsoft.com还将*\<租户 id>* 替换为创建应用注册的**目录（租户）ID。** 此值用于将用户重定向到正确的 Azure AD 租户，以及下载相应的元数据以确定适当的令牌签名密钥和令牌颁发者声明值。 对于`/v2.0`使用 AAD v1 的应用程序，可以省略该部分。 |
     |客户端机密（可选）| 使用在应用注册中生成的客户端机密。|
     |允许的令牌受众| 如果这是一个云应用或服务器应用，而你希望允许来自 Web 应用的身份验证令牌，请在此处添加该 Web 应用的“应用程序 ID URI”。**** 系统始终会将配置的“客户端 ID”隐式视为允许的受众。****** |
 

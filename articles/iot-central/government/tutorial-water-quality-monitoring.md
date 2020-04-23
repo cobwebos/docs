@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: d738868e0e4ca7599f4aaf8d6e09d22f26a8db92
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 77ec999d63175f63c1de6e31fdb3f72c963d228c
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77016368"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024466"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>教程：在 Azure IoT Central 中创建水质监测应用程序
 
@@ -58,7 +58,7 @@ ms.locfileid: "77016368"
     * **URL**：可以输入所需的任何 URL，也可以稍后更改 URL 值。
     * 如果你有一个 Azure 订阅，请输入目录、Azure 订阅和区域的值    。 如果你没有订阅，则可以启用 7 天免费试用版并填写所需的联系人信息  。
 
-    有关目录和订阅的详细信息，请参阅[创建应用程序](../core/quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)快速入门。
+    有关目录和订阅的详细信息，请参阅[创建应用程序](../core/quick-deploy-iot-central.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)快速入门。
 
 1. 选择页面左下方的“创建”按钮  。
 

@@ -1,36 +1,32 @@
 ---
 title: Azure 实例元数据服务
-description: RESTful 接口，获取有关 Windows VM 计算、网络和即将发生的维护事件的信息。
-services: virtual-machines-windows
-documentationcenter: ''
+description: RESTful 接口，获取有关 VM 计算、网络和即将发生的维护事件的信息。
 author: KumariSupriya
 manager: paulmey
-editor: ''
-tags: azure-resource-manager
-ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.service: virtual-machines
+ms.subservice: monitoring
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: f351bba9cd474eab0774efa5ffbd2b24499d105b
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: cb9453e1a25f4042c45d4e89229b555c996d4c8b
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520956"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870080"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
-Azure 实例元数据服务 （IMDS） 提供有关当前正在运行的虚拟机实例的信息，可用于管理和配置虚拟机。
-提供的信息包括 SKU、网络配置和即将发生的维护事件。 有关可用数据的完整列表，请参阅[元数据 API](#metadata-apis)。
+Azure 实例元数据服务 (IMDS) 提供有关当前正在运行的虚拟机实例的信息，可用于管理和配置虚拟机。
+提供的信息包括 SKU、网络配置和即将发生的维护事件。 有关提供的数据的完整列表，请参阅[元数据 API](#metadata-apis)。
 
 Azure 的实例元数据服务是一个 REST 终结点，可供通过 [Azure 资源管理器](https://docs.microsoft.com/rest/api/resources/)创建的所有 IaaS VM 使用。
 该终结点位于已知不可路由的 IP 地址 (`169.254.169.254`)，该地址只能从 VM 中访问。
 
 > [!IMPORTANT]
-> 此服务在所有 Azure 区域中提供有正式版****。  它会定期更新，发布有关虚拟机实例的新信息。 本页反映了最新可用的[元数据 API](#metadata-apis)。
+> 此服务在所有 Azure 区域中提供有正式版  。  它会定期更新，发布有关虚拟机实例的新信息。 本页反映了最新可用的[元数据 API](#metadata-apis)。
 
 ## <a name="service-availability"></a>服务可用性
 
@@ -50,7 +46,7 @@ Azure 的实例元数据服务是一个 REST 终结点，可供通过 [Azure 资
 若要试用实例元数据服务，请在上述区域中从 [Azure 资源管理器](https://docs.microsoft.com/rest/api/resources/)或 [Azure 门户](https://portal.azure.com)创建一个 VM，并按照以下示例操作。
 有关如何查询 IMDS 的进一步示例，请参阅[Azure 实例元数据示例](https://github.com/microsoft/azureimds)
 
-## <a name="usage"></a>使用情况
+## <a name="usage"></a>用法
 
 ### <a name="versioning"></a>版本管理
 
@@ -455,7 +451,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 -----|-------------|-----------------------
 attested | 请参阅[证明数据](#attested-data) | 2018-10-01
 identity | Azure 资源的托管标识。 请参阅[获取访问令牌](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
-instance | 请参阅[实例 API](#instance-api) | 2017-04-02
+实例 | 请参阅[实例 API](#instance-api) | 2017-04-02
 scheduledevents | 请参阅[计划事件](scheduled-events.md) | 2017-08-01
 
 ### <a name="instance-api"></a>实例 API
@@ -934,7 +930,7 @@ OS 磁盘对象包含有关 VM 使用的 OS 磁盘的以下信息：
 缓存 | 缓存要求
 createOption | 有关如何创建 VM 的信息
 差异磁盘设置 | 临时磁盘设置
-磁盘SizeGB | 磁盘的大小（以 GB）表示
+diskSizeGB | 磁盘的大小（以 GB）表示
 image   | 源用户映像虚拟硬盘
 伦     | 磁盘的逻辑单位编号
 托管磁盘 | 托管磁盘参数
@@ -949,7 +945,7 @@ vhd     | 虚拟硬盘
 缓存 | 缓存要求
 createOption | 有关如何创建 VM 的信息
 差异磁盘设置 | 临时磁盘设置
-磁盘SizeGB | 磁盘的大小（以 GB）表示
+diskSizeGB | 磁盘的大小（以 GB）表示
 加密设置 | 磁盘的加密设置
 image   | 源用户映像虚拟硬盘
 托管磁盘 | 托管磁盘参数

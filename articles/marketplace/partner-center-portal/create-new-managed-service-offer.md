@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 6baf5d77b70fa6e2717b492163826f27d80fbb88
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: c040907c6101d11ee645f9967278d3cf297bd74a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991614"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869801"
 ---
 # <a name="create-a-new-managed-service-offer"></a>创建新的托管服务产品/服务
 
@@ -29,7 +29,7 @@ ms.locfileid: "80991614"
 >[!Note]
 > 产品/服务发布后，只有在重新发布后，才会在系统和商店前面更新对合作伙伴中心中提供的优惠进行编辑。 请确保在进行更改后提交要发布的要约。
 
-## <a name="create-a-new-offer"></a>创建新产品/服务
+## <a name="create-a-new-offer"></a>创建新套餐
 
 选择 **"+ 新产品/服务**"按钮，然后选择 **"托管服务**"菜单项。 将显示"**新建产品/服务**"对话框。
 
@@ -74,7 +74,7 @@ ms.locfileid: "80991614"
 > [!NOTE]
 > 报价列表内容（如说明、文档、屏幕截图、使用条款等）不需要以英文表示，只要要约说明以短语开头，"此应用程序仅以 [非英语语言]提供。 提供*有用的链接 URL*以提供产品/服务列表内容中所用语言以外的语言提供内容也是可接受的。
 
-### <a name="name"></a>“属性”
+### <a name="name"></a>名称
 
 您在此处输入的名称将作为产品/服务列表的标题显示给客户。 此字段预填充了创建产品/服务时为 **"产品/服务"别名**输入的文本，但您可以更改此值。 此名称可以注册商标（您可以包括商标或版权符号）。 名称不能超过 50 个字符，不能包含任何表情符号。
 
@@ -137,6 +137,9 @@ ms.locfileid: "80991614"
 ### <a name="marketplace-images"></a>市场映像
 
 在本节中，您可以提供向客户展示产品/服务时将使用的徽标和图像。 所有图像必须采用 .png 格式。
+
+>[!Note]
+>如果上传文件出现问题，请确保本地网络不会阻止合作伙伴中心使用https://upload.xboxlive.com的服务。
 
 #### <a name="marketplace-logos"></a>市场徽标
 
@@ -203,7 +206,7 @@ ms.locfileid: "80991614"
 > [!NOTE]
 > 如上所述，“授权”条目中的用户和角色将应用于每个购买了计划的客户****。 如果想要限制特定客户的访问权限，需发布专用计划供其专用。
 
-#### <a name="manifest"></a>清单
+#### <a name="manifest"></a>file:///
 
 首先，请提供清单的版本****。 使用 n.n.n 格式（例如 1.2.5）**。
 

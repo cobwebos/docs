@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: c13c6ab180a172c034d25ac84781f5d3f83ae186
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 43fbc158c9ed0bbe87a75cd845433c7a7be2e6d1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67086639"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867900"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workstars"></a>教程：Azure Active Directory 与 Workstars 集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "67086639"
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<subdomain>.workstars.com/saml/login_check`
 
     > [!NOTE]
-    > 此值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [Workstars 客户端支持团队](https://support.workstars.com/)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 此值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [Workstars 客户端支持团队](http://support.workstars.com/)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
@@ -210,7 +210,7 @@ ms.locfileid: "67086639"
 
 ### <a name="create-workstars-test-user"></a>创建 Workstars 测试用户
 
-本部分的内容是在 Workstars 中创建名为“Britta Simon”的用户。 请与 [Workstars 支持团队](https://support.workstars.com)协作，在 Workstars 平台中添加用户。
+本部分的内容是在 Workstars 中创建名为“Britta Simon”的用户。 请与 [Workstars 支持团队](http://support.workstars.com)协作，在 Workstars 平台中添加用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

@@ -1,24 +1,18 @@
 ---
 title: Azure 中 Windows VM 的隔离
-description: 了解 Azure 中的 VM 隔离工作。
-services: virtual-machines-windows
-documentationcenter: ''
+description: 了解 Azure 中 VM 隔离的工作原理。
 author: cynthn
-manager: gwallace
-editor: ''
-ms.service: virtual-machines-windows
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.service: virtual-machines
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 4d6c8bb2bc27c7202848229e749b62dd714e86fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e03f31d8a78a0d327278768c3f0b66d2119f8dc8
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74029886"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870058"
 ---
 # <a name="virtual-machine-isolation-in-azure"></a>Azure 中的虚拟机隔离
 

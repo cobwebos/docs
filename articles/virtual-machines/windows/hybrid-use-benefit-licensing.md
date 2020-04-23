@@ -1,24 +1,18 @@
 ---
 title: Windows Server 的 Azure 混合权益
 description: 了解如何充分利用 Windows 软件保障权益将本地许可证引入到 Azure 中
-services: virtual-machines-windows
-documentationcenter: ''
 author: xujing-ms
-manager: gwallace
-editor: ''
-ms.assetid: 332583b6-15a3-4efb-80c3-9082587828b0
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: 470e38c21a250273216f93eb38a5334a4bb581e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f84d4fcd85f1e718f414e63bbe76fd29fa32427d
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77911775"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869569"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 的 Azure 混合权益
 对于有软件保障的客户，Windows Server 的 Azure 混合权益可让你使用本地 Windows Server 许可证，并以较低成本在 Azure 中运行 Windows 虚拟机。 可以使用 Windows Server 的 Azure 混合权益部署 Windows OS 的新虚拟机。 本文介绍如何使用 Windows Server 的 Azure 混合权益部署新的 VM 的步骤，以及如何更新现有正在运行的 VM 的步骤。 有关 Windows Server 的 Azure 混合权益许可和成本节约方面的更多信息，请参阅[“Windows Server 的 Azure 混合权益许可”页](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。

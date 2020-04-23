@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 04/24/2019
+ms.date: 04/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a82766be01476890bbf18b518ce21febe0d07f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab51030ad39e1360cabc7d63390af7c1654d2891
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79253606"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082112"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect 同步：与 Azure Active Directory 同步的属性
 本主题列出通过 Azure AD Connect 同步进行同步的属性。  
@@ -252,7 +252,7 @@ ms.locfileid: "79253606"
 | unauthOrig |X |X |X | |
 | url |X |X | | |
 | usageLocation |X | | |机械属性。 用户所在的国家/地区
-. 用于进行许可证分配。 |
+。 用于进行许可证分配。 |
 | userPrincipalName |X | | |UPN 是用户的登录 ID。 大多数情况下与 [mail] 值相同。 |
 | wWWHomePage |X |X | | |
 
@@ -375,7 +375,7 @@ ms.locfileid: "79253606"
 * Yammer（只使用 User）
 * [SharePoint 等资源提供的混合企业到企业 (B2B) 跨组织协作方案](https://go.microsoft.com/fwlink/?LinkId=747036)
 
-如果不使用 Azure AD 目录来支持 Office 365、Dynamics 或 Intune，则可以使用这一组属性。 它包含一小部分核心属性。
+如果不使用 Azure AD 目录来支持 Office 365、Dynamics 或 Intune，则可以使用这一组属性。 它包含一小部分核心属性。 请注意，单一登录或预配到某些第三方应用程序需要配置属性的同步，以及此处描述的属性。 每个应用程序的[SaaS 应用教程](../saas-apps/tutorial-list.md)中介绍了应用程序要求。
 
 | 属性名称 | 用户 | 联系人 | 组 | 注释 |
 | --- |:---:|:---:|:---:| --- |

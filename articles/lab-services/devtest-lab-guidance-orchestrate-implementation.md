@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: e0ac09a68bda539fe7abd05fce1739d1a58a3c99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc6cbbd0aa9cb0750e497c7cc7edbd42f21bda55
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "62127338"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024993"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>协调 Azure 开发测试实验室的实施
 本文提供快速部署和实施 Azure 开发测试实验室的建议方法。 下图突出显示了整个过程（规范性指导），同时反映了支持各种行业要求和方案的灵活性。
@@ -43,7 +43,7 @@ ms.locfileid: "62127338"
 ## <a name="milestone-2-deploy-the-pilot-lab"></a>里程碑 2：部署试点实验室
 准备好网络拓扑后，可执行以下步骤来创建第一个/试点实验室：
 
-1. 创建初始开发测试实验室环境（[此处](https://github.com/Azure/fta-devops/blob/master/devtest-labs/articles/devtest-labs-walkthrough-it.md)提供了分步说明）
+1. 创建初始开发人员测试实验室环境。
 2. 确定允许在实验室中使用的 VM 映像和大小。 确定是否可将自定义映像上传到 Azure，以便在开发测试实验室中使用。
 3. 通过为实验室（实验室所有者和实验室用户）创建初始的基于角色的访问控制 (RBAC) 来保护对实验室的访问。 我们建议对开发测试实验室的标识结合使用同步的 Active Directory 帐户和 Azure Active Directory。
 4. 将开发测试实验室配置为使用计划、成本管理、可认领 VM、自定义映像或公式等策略。

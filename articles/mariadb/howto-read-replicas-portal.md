@@ -5,19 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 5c28697b27e9cf910302b7379e1443f7e78e96b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/21/2020
+ms.openlocfilehash: 20d8e46d6fa6b031c809d629a6af41e8e682bcef
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530608"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025078"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MariaDB 中创建和管理只读副本
 
 本文介绍如何使用 Azure 门户在 Azure Database for MariaDB 服务中创建和管理只读副本。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 将用作主服务器的 [Azure Database for MariaDB 服务器](quickstart-create-mariadb-server-database-using-azure-portal.md)。
 
@@ -28,13 +28,13 @@ ms.locfileid: "79530608"
 
 可以使用以下步骤创建只读副本服务器：
 
-1. 登录到[Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 选择要用作主服务器的现有 Azure Database for MariaDB 服务器。 此操作将打开“概述”**** 页。
+2. 选择要用作主服务器的现有 Azure Database for MariaDB 服务器。 此操作将打开“概述”  页。
 
-3. 从菜单中的“设置”**** 下，选择“复制”****。
+3. 从菜单中的“设置”  下，选择“复制”  。
 
-4. 选择“添加副本”****。
+4. 选择“添加副本”  。
 
    ![Azure Database for MariaDB - 复制](./media/howto-read-replica-portal/add-replica.png)
 
@@ -45,9 +45,6 @@ ms.locfileid: "79530608"
 6. 选择副本服务器的位置。 默认位置与主服务器的位置相同。
 
     ![Azure Database for MariaDB - 副本位置](./media/howto-read-replica-portal/replica-location.png)
-
-   > [!NOTE]
-   > 跨区域复制处于预览状态。 若要详细了解可以在哪些区域中创建副本，请访问[只读副本概念文章](concepts-read-replicas.md)。 
 
 7. 选择“确定”以确认创建该副本。****
 

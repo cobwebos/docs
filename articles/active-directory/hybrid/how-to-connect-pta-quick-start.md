@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b84e972584562be741919c7dccb6bdfe1bdea628
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 18ffb48b2e7978831155afaf2e675bb720e57544
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312853"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082197"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure 活动目录传递身份验证：快速入门
 
@@ -37,6 +37,9 @@ ms.locfileid: "81312853"
 ## <a name="step-1-check-the-prerequisites"></a>步骤 1：检查先决条件
 
 请确保符合以下先决条件：
+
+>[!IMPORTANT]
+>从安全角度来看，管理员应该将运行 PTA 代理的服务器视为域控制器。  PTA 代理服务器应按照[保护域控制器免受攻击](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack)时概述的相同思路进行强化
 
 ### <a name="in-the-azure-active-directory-admin-center"></a>在 Azure Active Directory 管理中心中
 
