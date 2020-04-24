@@ -61,6 +61,8 @@
     - name: 最佳做法
       href: Concepts/best-practices.md
       displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
+    - name: 使用 QnA Maker 和 LUIS
+      href: choose-natural-language-processing-service.md
 - name: 操作指南
   items:
     - name: 管理 Azure 资源
@@ -74,6 +76,8 @@
           href: How-To/collaborate-knowledge-base.md
         - name: 启用主动学习
           href: How-To/use-active-learning.md
+        - name: 更改默认答案
+          href: How-To/change-default-answer.md
     - name: 管理知识库
       items:
         - name: 创建知识库
@@ -227,7 +231,7 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 定价和限制
       href: 'https://aka.ms/qnamaker-pricing'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/QnAMaker'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/578689-qna-maker-api'
