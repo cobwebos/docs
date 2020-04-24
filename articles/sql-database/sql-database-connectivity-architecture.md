@@ -12,25 +12,25 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 2028aac9c01aedc4baa568d370c9f7d21c920647
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: b4e7d827536245a22d168c7d9923c2e5b82830b0
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419257"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82111787"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL 连接体系结构
 > [!NOTE]
 > 本文适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。
 
 > [!IMPORTANT]
-> 本文不** 适用于 **Azure SQL 数据库托管实例**。 请参阅[托管实例的连接体系结构](sql-database-managed-instance-connectivity-architecture.md)。
+> 本文不  适用于 **Azure SQL 数据库托管实例**。 请参阅 [托管实例的连接体系结构](sql-database-managed-instance-connectivity-architecture.md)。
 
-本文介绍将网络流量定向到 Azure SQL 数据库或 SQL 数据仓库的各种组件的体系结构。 它还解释了不同的连接策略，以及它如何影响从 Azure 内部连接的客户端和从 Azure 外部连接的客户端。 
+本文介绍了将网络流量定向到 Azure SQL 数据库或 SQL 数据仓库的各种组件的体系结构。 它还介绍了不同的连接策略，以及这些策略如何影响从 Azure 内部连接的客户端以及从 Azure 外部连接的客户端。 
 
 ## <a name="connectivity-architecture"></a>连接体系结构
 
-下图提供了 Azure SQL 数据库连接体系结构的高级别概述。
+下图提供 Azure SQL 数据库连接体系结构的高级概述。
 
 ![体系结构概述](./media/sql-database-connectivity-architecture/connectivity-overview.png)
 
@@ -44,43 +44,43 @@ ms.locfileid: "81419257"
 
 Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三个选项：
 
-- **重定向（推荐）：** 客户端直接建立与托管数据库的节点的连接，从而降低延迟并提高吞吐量。 要使用此模式的连接，客户端需要：
-   - 允许从客户端向区域中所有 Azure SQL IP 地址进行 11000 11999 范围内的所有 Azure SQL IP 地址通信。 使用 SQL 的服务标记使其更易于管理。  
-   - 允许从客户端到端口 1433 上的 Azure SQL 数据库网关 IP 地址的出站通信。
+- **重定向（建议）：** 客户端直接与托管数据库的节点建立连接，从而降低延迟并改进吞吐量。 若要通过连接来使用此模式，客户端需要：
+   - 允许从客户端到 11000 11999 范围内端口上的所有 Azure SQL IP 地址的出站通信。 使用 SQL 服务标记，使其更易于管理。  
+   - 在端口 1433 上允许从客户端到 Azure SQL 数据库网关 IP 地址的出站通信。
 
-- **代理：** 在此模式下，所有连接都通过 Azure SQL 数据库网关进行接近，从而导致延迟增加和吞吐量降低。 要使用此模式的连接，客户端需要允许从客户端到端口 1433 上的 Azure SQL 数据库网关 IP 地址的出站通信。
+- **代理：** 在此模式下，所有连接都通过 Azure SQL 数据库网关来代理，导致延迟增大和吞吐量降低。 若要通过连接来使用此模式，客户端需满足以下条件：在端口 1433 上允许从客户端到 Azure SQL 数据库网关 IP 地址的出站通信。
 
-- **默认值：** 这是创建后对所有服务器上有效的连接策略，除非您显式将连接策略更改为 或`Proxy``Redirect`。 默认策略适用于`Redirect`源自 Azure 内部的所有客户端连接（例如，来自 Azure 虚拟机）和`Proxy`源自外部的所有客户端连接（例如，来自本地工作站的连接）。
+- 默认值：  除非显式将连接策略更改为 `Proxy` 或 `Redirect`，否则，在创建后，此连接策略将在所有服务器上生效。 对于所有源自 Azure 内部的客户端连接（例如，源自 Azure 虚拟机的连接），默认策略为 `Redirect`；对于所有源自外部的客户端连接（例如，源自本地工作站的连接），默认策略为 `Proxy`。
 
  我们强烈建议使用 `Redirect` 连接策略而不要使用 `Proxy` 连接策略，以最大程度地降低延迟和提高吞吐量。但是，若要允许上述网络流量，需满足额外要求。 如果客户端为 Azure 虚拟机，则可将网络安全组 (NSG) 与[服务标记](../virtual-network/security-overview.md#service-tags)配合使用来实现它。 如果客户端从本地工作站进行连接，则可能需要联系网络管理员，让其允许网络流量通过公司防火墙。
 
-## <a name="connectivity-from-within-azure"></a>从 Azure 内部连接
+## <a name="connectivity-from-within-azure"></a>从 Azure 内连接
 
 如果从 Azure 内部连接，则连接默认具有 `Redirect` 连接策略。 `Redirect` 策略是指建立到 Azure SQL 数据库的 TCP 会话连接后，会将 Azure SQL 数据库网关的目标虚拟 IP 更改为群集的目标虚拟 IP，从而将客户端会话重定向到适当的数据库群集。 此后，所有后续数据包绕过 Azure SQL 数据库网关，直接传输到群集。 下图演示了此流量流。
 
 ![体系结构概述](./media/sql-database-connectivity-architecture/connectivity-azure.png)
 
-## <a name="connectivity-from-outside-of-azure"></a>从 Azure 外部连接
+## <a name="connectivity-from-outside-of-azure"></a>从 Azure 外连接
 
 如果从 Azure 外部连接，则连接默认具有 `Proxy` 连接策略。 `Proxy` 策略是指通过 Azure SQL 数据库网关建立 TCP 会话，并且所有后续数据包通过网关传输。 下图演示了此流量流。
 
 ![体系结构概述](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
 
 > [!IMPORTANT]
-> 另请打开端口 14000-14999，以便[使用 DAC 进行连接](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)
+> 另外，打开 TCP 端口1434和14000-14999 以启用[与 DAC 的连接](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)
 
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Azure SQL 数据库网关 IP 地址
 
 下表按区域列出了网关的 IP 地址。 若要连接到 Azure SQL 数据库，需要允许到/来自该区域的**所有**网关的网络流量。
 
-有关如何将流量迁移到特定区域中的新网关的详细信息，请于以下文章[：Azure SQL 数据库流量迁移到较新的网关](sql-database-gateway-migration.md)
+以下文章介绍了如何将流量迁移到特定区域中的新网关： [AZURE SQL 数据库流量迁移到更新的网关](sql-database-gateway-migration.md)
 
 
 | 区域名称          | 网关 IP 地址 |
 | --- | --- |
 | 澳大利亚中部    | 20.36.105.0 |
-| 澳大利亚中部2   | 20.36.113.0 |
+| 澳大利亚 Central2   | 20.36.113.0 |
 | 澳大利亚东部       | 13.75.149.87, 40.79.161.1 |
 | 澳大利亚东南部 | 191.239.192.109, 13.73.109.251 |
 | 巴西南部         | 104.41.11.5, 191.233.200.14 |

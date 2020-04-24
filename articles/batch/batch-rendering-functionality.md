@@ -1,18 +1,16 @@
 ---
-title: 渲染功能 - Azure Batch
+title: 呈现功能
 description: 标准 Azure Batch 功能用于运行渲染工作负荷和应用。 Batch 包含用于支持渲染工作负荷的特定功能。
-services: batch
-ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 697e2640b7215e0bbb9202c672f936535831eb99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3efe1dfa69de5ce41aed2152baa88b313fd928f1
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75449727"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115748"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch 的渲染功能
 
@@ -48,7 +46,7 @@ ms.locfileid: "75449727"
 
 需在池配置中指定要使用的并且会产生许可费的应用程序。
 
-* [创建池](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body)时指定 `applicationLicenses` 属性。  可在字符串数组中指定以下值 -“vray”、“arnold”、“3dsmax”、“maya”。
+* `applicationLicenses`创建池[时指定 ](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body) 属性。  可在字符串数组中指定以下值 -“vray”、“arnold”、“3dsmax”、“maya”。
 * 指定一个或多个应用程序时，这些应用程序的费用将与 VM 费用相加。  [Azure Batch 定价页面](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering)上列出了应用程序价格。
 
 > [!NOTE]

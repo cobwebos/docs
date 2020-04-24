@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 2a876349af2bd53a46737dda82961afe442bae05
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0b6fea381bd6b4aa8ad3e7061e6f632176c41033
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81401082"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82113827"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>语音服务的语言和语音支持
 
@@ -24,7 +24,7 @@ ms.locfileid: "81401082"
 
 ## <a name="speech-to-text"></a>语音转文本
 
-Microsoft 语音 SDK 和 REST API 都支持以下语言（区域设置）。 为了提高准确性，通过上传"音频+ 人工标记的脚本"或"相关文本：句子"，为语言的子集提供自定义。 发音自定义目前仅适用于 `en-US` 和 `de-DE`。 在[此处](how-to-custom-speech.md)详细了解自定义。
+Microsoft 语音 SDK 和 REST API 都支持以下语言（区域设置）。 若要提高准确性，可通过上传音频和人贴标签的脚本或相关文本：句子，为语言子集提供自定义项。 发音自定义目前仅适用于 `en-US` 和 `de-DE`。 在[此处](how-to-custom-speech.md)详细了解自定义。
 
 <!--
 To get the AM and ML bits:
@@ -89,23 +89,23 @@ Microsoft Speech SDK 和 REST API 均支持这些语音，每种语音支持区�
 
 神经文本到语音转换是由深度神经网络提供支持的新型语音合成。 使用神经语音时，几乎无法将合成的语音与人类录音区分开来。
 
-神经语音可用于使与聊天机器人和语音助理的互动更加自然和吸引人，将电子书等数字文本转换为有声读物，并增强车载导航系统。 随着类人的自然韵律和字词的清晰发音，用户在与 AI 系统交互时，神经语音显著减轻了听力疲劳。
+可以使用神经语音与聊天机器人和语音助手交互，使其更加自然和吸引人，将电子书等数字文本转换为 audiobooks 并增强汽车内导航系统。 随着类人的自然韵律和字词的清晰发音，用户在与 AI 系统交互时，神经语音显著减轻了听力疲劳。
 
 有关区域可用性的详细信息，请参阅[区域](regions.md#standard-and-neural-voices)。
 
 | Locale  | 语言            | 性别 | 完整服务名称映射                                               | 短语音名称        |
 |---------|---------------------|--------|-------------------------------------------------------------------------|-------------------------|
 | `de-DE` | 德语（德国）    | Female | "Microsoft Server Speech Text to Speech Voice (de-DE, KatjaNeural)"     | "de-DE-KatjaNeural"     |
-| `en-US` | 英语(美国)        | Female | "微软服务器语音文本到语音语音（en-美国，阿里亚斯神经）"      | "美国-阿里亚斯神经"      |
+| `en-US` | 英语(美国)        | Female | "Microsoft Server Speech 文本转语音 Voice （zh-cn，AriaNeural）"      | "en-us-AriaNeural"      |
 | `en-US` | 英语(美国)        | 男   | “Microsoft 服务器语音的文本转语音（en-US，GuyNeural）”       | "en-US-GuyNeural"       |
 | `it-IT` | 意大利语（意大利）     | Female | "Microsoft Server Speech Text to Speech Voice (it-IT, ElsaNeural)"      | "it-IT-ElsaNeural"      |
-| `pt-BR` | 葡萄牙语(巴西) | Female | 微软服务器语音文本到语音语音（pt-BR，弗朗西斯卡神经）" | "pt-BR-弗兰西卡神经" |
+| `pt-BR` | 葡萄牙语(巴西) | Female | "Microsoft Server Speech 文本转语音 Voice （pt-BR，FranciscaNeural）" | "pt-FranciscaNeural" |
 | `zh-CN` | 中文(普通话，简体)  | Female | “Microsoft 服务器语音的文本转语音（zh-CN，XiaoxiaoNeural）”  | "zh-CN-XiaoxiaoNeural"  |
 
 > [!IMPORTANT]
-> 语音`en-US-JessaNeural`已更改为`en-US-AriaNeural`。 如果您以前使用"杰萨"，则转换成"阿里娅"。
+> `en-US-JessaNeural`语音已更改为`en-US-AriaNeural`。 如果以前使用了 "Jessa"，则将转换为 "Aria"。
 
-要了解如何配置和调整神经语音，请参阅[语音合成标记语言](speech-synthesis-markup.md#adjust-speaking-styles)。
+若要了解如何配置和调整神经声音，请参阅[语音合成标记语言](speech-synthesis-markup.md#adjust-speaking-styles)。
 
 > [!TIP]
 > 可以在语音合成请求中使用完整服务名称映射或短语音名称。
@@ -116,7 +116,7 @@ Microsoft Speech SDK 和 REST API 均支持这些语音，每种语音支持区�
 
 | Locale | 语言 | 性别 | 完整服务名称映射 | 短名称 |
 |--|--|--|--|--|
-| <sup>1</sup>`ar-EG` | 阿拉伯语（埃及） | Female | “Microsoft 服务器语音的文本转语音（ar-EG，Hoda）” | "ar-EG-Hoda" |
+| <sup>2</sup>`ar-EG` | 阿拉伯语（埃及） | Female | “Microsoft 服务器语音的文本转语音（ar-EG，Hoda）” | "ar-EG-Hoda" |
 | `ar-SA` | 阿拉伯语（沙特阿拉伯） | 男 | “Microsoft 服务器语音的文本转语音（ar-SA，Naayf）” | "ar-SA-Naayf" |
 | `bg-BG` | 保加利亚语 | 男 | “Microsoft 服务器语音的文本转语音（bg-BG，Ivan）” | "bg-BG-Ivan" |
 | `ca-ES` | 加泰罗尼亚语(西班牙) | Female | “Microsoft 服务器语音的文本转语音（ca-ES，HerenaRUS）” | "ca-ES-HerenaRUS" |
@@ -140,7 +140,7 @@ Microsoft Speech SDK 和 REST API 均支持这些语音，每种语音支持区�
 |  |  | Female | “Microsoft 服务器语音的文本转语音（en-IN，PriyaRUS）” | "en-IN-PriyaRUS" |
 |  |  | 男 | “Microsoft 服务器语音的文本转语音（en-IN，Ravi，Apollo）” | "en-IN-Ravi-Apollo" |
 | `en-US` | 英语(美国) | Female | “Microsoft 服务器语音的文本转语音（en-US，ZiraRUS）” | "en-US-ZiraRUS" |
-|  |  | Female | "微软服务器语音文本到语音语音（en-美国，AriaRUS）" | "美国-阿里阿鲁斯" |
+|  |  | Female | "Microsoft Server Speech 文本转语音 Voice （zh-cn，AriaRUS）" | "en-us-AriaRUS" |
 |  |  | 男 | “Microsoft 服务器语音的文本转语音（en-US，BenjaminRUS）” | "en-US-BenjaminRUS" |
 |  |  | 男 | “Microsoft 服务器语音的文本转语音（en-US，Guy24kRUS）” | "en-US-Guy24kRUS" |
 | `es-ES` | 西班牙语(西班牙) | Female | “Microsoft 服务器语音的文本转语音（es-ES，Laura，Apollo）” | "es-ES-Laura-Apollo" |
@@ -200,17 +200,17 @@ Microsoft Speech SDK 和 REST API 均支持这些语音，每种语音支持区�
 **1 ar-EG 支持现代标准阿拉伯语 (MSA)。** **
 
 > [!IMPORTANT]
-> 语音`en-US-Jessa`已更改为`en-US-Aria`。 如果您以前使用"杰萨"，则转换成"阿里娅"。
+> `en-US-Jessa`语音已更改为`en-US-Aria`。 如果以前使用了 "Jessa"，则将转换为 "Aria"。
 
 > [!TIP]
 > 可以在语音合成请求中使用完整服务名称映射或短语音名称。
 
 ### <a name="customization"></a>自定义
 
-语音`de-DE`自定义可用于 、、、、、、、、、、`zh-CN``en-US``es-MX``fr-FR``it-IT``pt-BR``en-GB``en-IN`和 。 选择与训练自定义语音模型所需的训练数据相匹配的正确区域设置。 例如，如果您录制的数据以英语讲有英国口音，请选择`en-GB`。
+语音自定义适用于`de-DE`、 `en-GB`、 `en-IN`、 `en-US`、 `es-MX`、 `fr-FR` `it-IT` `pt-BR`、、和`zh-CN`。 选择与训练自定义语音模型所需的训练数据相匹配的正确区域设置。 例如，如果您的记录数据是以英语编写的，则选择`en-GB`。
 
 > [!NOTE]
-> 我们不支持在自定义语音中进行双语模型训练，但中-英双语除外。 如果你想训练一个能说英语的汉语语音，请选择"中英文双语"。 所有区域设置中的语音培训从 2，000 多个话语的数据集开始，但 和`en-US``zh-CN`位置可以从任何规模的训练数据开始。
+> 我们不支持在自定义语音中进行双语模型训练，但中-英双语除外。 如果要训练一种可以说英语的中文语音，请选择 "中文（英语）"。 所有区域设置中的语音训练都以 2000 + 最谈话的数据集开头，但`en-US` `zh-CN`也可以从任何大小的定型数据开始。
 
 ## <a name="speech-translation"></a>语音翻译
 
@@ -241,6 +241,7 @@ Microsoft Speech SDK 和 REST API 均支持这些语音，每种语音支持区�
 | 法语                  | `fr`          |
 | 德语                  | `de`          |
 | 希腊语                   | `el`          |
+| 古吉拉特语                | `gu`          |
 | 海地克里奥尔语          | `ht`          |
 | 希伯来语                  | `he`          |
 | Hindi                   | `hi`          |
@@ -261,6 +262,8 @@ Microsoft Speech SDK 和 REST API 均支持这些语音，每种语音支持区�
 | 马来语                   | `ms`          |
 | 马拉雅拉姆语               | `ml`          |
 | 马耳他语                 | `mt`          |
+| 毛利语                   | `mi`          |
+| 马拉地语                 | `mr`          |
 | 挪威语               | `nb`          |
 | 波斯语                 | `fa`          |
 | 波兰语                  | `pl`          |
@@ -291,5 +294,5 @@ Microsoft Speech SDK 和 REST API 均支持这些语音，每种语音支持区�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [获取语音服务试用订阅](https://azure.microsoft.com/try/cognitive-services/)
+* [获取语音服务试用版订阅](https://azure.microsoft.com/try/cognitive-services/)
 * [了解如何在 C# 中识别语音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)

@@ -1,22 +1,15 @@
 ---
-title: Azure 批处理池创建事件
-description: Batch 池的引用创建事件，创建池后发出该事件。 日志内容将公开有关池的常规信息。
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
+title: Azure Batch 池创建事件
+description: Batch 池创建事件（在池创建后发出）的参考。 日志内容将公开有关池的常规信息。
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: labrenne
-ms.openlocfilehash: dea025b274278aa5fed2900c95b4a274541ffef9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 755fbe548b4be729d20788597db05f4d9678ebea
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022183"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116547"
 ---
 # <a name="pool-create-event"></a>池创建事件
 
@@ -75,12 +68,12 @@ ms.locfileid: "77022183"
 |`maxTasksPerNode`|Int32|可在池中单个计算节点上并发运行的任务的最大数目。|
 |`vmFillType`|String|定义批处理服务如何在池中不同的计算节点之间分配任务。 有效值为 Spread 或 Pack。|
 
-###  <a name="cloudserviceconfiguration"></a><a name="bk_csconf"></a>云服务配置
+###  <a name="cloudserviceconfiguration"></a><a name="bk_csconf"></a>cloudServiceConfiguration
 
 |元素名称|类型|说明|
 |------------------|----------|-----------|
 |`osFamily`|String|要安装在池中虚拟机上的 Azure 来宾 OS 系列。<br /><br /> 可能的值包括：<br /><br /> **2** – OS 系列 2，等效于 Windows Server 2008 R2 SP1。<br /><br /> **3** – OS 系列 3，等效于Windows Server 2012。<br /><br /> **4** – OS 系列 4，等效于 Windows Server 2012 R2。<br /><br /> 有关详细信息，请参阅 [Azure 来宾 OS 版本](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases)。|
-|`targetOSVersion`|String|要安装在池中虚拟机上的 Azure 来宾 OS 版本。<br /><br /> 默认值为**\*** 指定指定族的最新操作系统版本。<br /><br /> 有关其他允许的值的信息，请参阅 [Azure 来宾 OS 版本](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases)。|
+|`targetOSVersion`|String|要安装在池中虚拟机上的 Azure 来宾 OS 版本。<br /><br /> 默认值为 **\*** ，用于指定特定系列的最新操作系统版本。<br /><br /> 有关其他允许的值的信息，请参阅 [Azure 来宾 OS 版本](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases)。|
 
 ###  <a name="virtualmachineconfiguration"></a><a name="bk_vmconf"></a> virtualMachineConfiguration
 
@@ -105,7 +98,7 @@ ms.locfileid: "77022183"
 |------------------|----------|-----------|
 |`enableAutomaticUpdates`|Boolean|指示是否对虚拟机启用自动更新。 如果未指定此属性，则默认值为 true。|
 
-###  <a name="networkconfiguration"></a><a name="bk_netconf"></a>网络配置
+###  <a name="networkconfiguration"></a><a name="bk_netconf"></a> networkConfiguration
 
 |元素名称|类型|说明|
 |------------------|--------------|----------|

@@ -1,23 +1,23 @@
 ---
 title: 容器组简介
-description: 了解 Azure 容器实例中的容器组 - 共享生命周期和资源（例如存储和网络）的实例集合。
+description: 了解 Azure 容器实例中的容器组，它是共享生命周期和资源（如 Cpu、存储和网络）的实例集合。
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: 73781418321c3932bf3e0190b646dcd3bb178195
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3efc4528863286da676fc7eb758176156c87a32a
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247210"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115646"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure 容器实例中的容器组
 
-Azure 容器实例中的顶层资源是容器组。** 本文介绍容器组的定义和它们支持的方案类型。
+Azure 容器实例中的顶层资源是容器组。  本文介绍容器组的定义和它们支持的方案类型。
 
 ## <a name="what-is-a-container-group"></a>什么是容器组？
 
-容器组是安排在同一主机上的容器集合。 容器组中的容器共享生命周期、资源、本地网络和存储卷。 它与 [Kubernetes][kubernetes-pod] 中的 *Pod* 这一概念相似。
+容器组是安排在同一主机上的容器集合。 容器组中的容器共享生命周期、资源、本地网络和存储卷。 它与 *Kubernetes* 中的 [Pod][kubernetes-pod] 这一概念相似。
 
 以下关系图显示了一个包含多个容器的容器组示例：
 
@@ -56,7 +56,10 @@ Azure 容器实例通过添加组中实例的[资源请求][resource-requests]�
     
 例如，在包含两个容器实例的组中（每个实例请求 1 个 CPU），一个容器运行的工作负荷可能需要运行比其他实例更多的 CPU。
 
-在这种情况下，可将容器实例的资源限制设置为 2 个 CPU。 此配置允许该容器实例最多使用整整 2 个 CPU（如果可用）。
+在这种情况下，你可以为容器实例设置最多2个 Cpu 的资源限制。 此配置允许容器实例最多使用2个 Cpu （如果可用）。
+
+> [!NOTE]
+> 容器组的资源由服务的底层基础结构使用。 你的容器将能够访问最多（而不是分配给组的所有资源）。 出于此原因，在为组中的容器请求资源时，请规划小型资源缓冲区。
 
 ### <a name="minimum-and-maximum-allocation"></a>最小和最大分配
 
@@ -76,9 +79,9 @@ Azure 容器实例通过添加组中实例的[资源请求][resource-requests]�
 
 可以指定要在容器组内装载的外部卷。 支持的卷包括：
 * [Azure 文件共享][azure-files]
-* [秘密][secret]
+* [私钥][secret]
 * [空目录][empty-directory]
-* [克隆 git 存储库][volume-gitrepo]
+* [克隆的 git 存储库][volume-gitrepo]
 
 可以将这些卷映射到组中单个容器内的特定路径。 
 

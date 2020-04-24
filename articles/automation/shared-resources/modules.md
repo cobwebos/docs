@@ -8,12 +8,12 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 995c87ca6f091e9ccf0b82af831bbf43ff17846f
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: c8d22e63be880c0cef0c4072e99ab85bf3250a1c
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82100832"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82114268"
 ---
 # <a name="manage-modules-in-azure-automation"></a>管理 Azure 自动化中的模块
 
@@ -22,7 +22,6 @@ Azure 自动化允许导入 PowerShell 模块，以便在 runbook 和 dsc 配置
 * [Azure PowerShell Az. Automation](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)
 * [Azure PowerShell AzureRM](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-6.13.0)
 * 适用`Orchestrator.AssetManagement.Cmdlets`于 Windows 的 Log Analytics 代理的内部模块
-* [AzureAutomationAuthoringToolkit](https://www.powershellgallery.com/packages/AzureAutomationAuthoringToolkit/0.2.3.9)
 * 其他 PowerShell 模块
 * 你创建的自定义模块 
 
@@ -40,12 +39,12 @@ Azure 自动化允许导入 PowerShell 模块，以便在 runbook 和 dsc 配置
 
 下表列出了在创建自动化帐户时，Azure 自动化默认情况下导入的模块。 自动化可以导入这些模块的更新版本。 但是，即使删除了较新版本，也无法从自动化帐户中删除原始版本。 请注意，这些默认模块包括多个 AzureRM 模块。 
 
-Az. Automation 模块在 runbook 和 DSC 配置中是首选的。 但是，Azure 自动化不会自动将根 Az 模块导入任何新的或现有的自动化帐户。 有关使用这些模块的详细信息，请参阅[迁移到 Az 模块](#migrating-to-az-modules)。
+Azure Automation 不会自动将根 Az 模块导入任何新的或现有的自动化帐户。 有关使用这些模块的详细信息，请参阅[迁移到 Az 模块](#migrating-to-az-modules)。
 
 > [!NOTE]
 > [在 Azure 自动化中包含在空闲时间启动/停止 VM 解决方案](../automation-solution-vm-management.md)的自动化帐户中，我们不建议更改模块和 runbook。
 
-|模块名称|Version|
+|模块名称|版本|
 |---|---|
 | AuditPolicyDsc | 1.1.0.0 |
 | Azure | 1.0.3 |
@@ -72,6 +71,10 @@ Az. Automation 模块在 runbook 和 DSC 配置中是首选的。 但是，Azure
 | xPowerShellExecutionPolicy | 1.1.0.0 |
 | xRemoteDesktopAdmin | 1.1.0.0 |
 
+## <a name="az-module-cmdlets"></a>Az module cmdlet
+
+对于 Az. Automation，大多数 cmdlet 与 AzureRM 模块的名称相同，只不过 AzureRm 前缀已更改为 Az。 有关不遵循此命名约定的 Az 模块列表，请参阅[异常列表](/powershell/azure/migrate-from-azurerm-to-az#update-cmdlets-modules-and-parameters)。
+
 ## <a name="internal-cmdlets"></a>内部 cmdlet
 
 下表定义了`Orchestrator.AssetManagement.Cmdlets`模块支持的内部 cmdlet。 在 runbook 和 DSC 配置中使用这些 cmdlet 可与自动化帐户中的 Azure 资产交互。 Cmdlet 旨在用于代替 Azure PowerShell cmdlet，以从加密的变量、凭据和加密连接检索机密。 
@@ -91,41 +94,47 @@ Az. Automation 模块在 runbook 和 DSC 配置中是首选的。 但是，Azure
 
 请注意，内部 cmdlet 的命名不同于 Az 和 AzureRM cmdlet。 内部 cmdlet 名称不包含名词中的 "Azure" 或 "Az" 等词，但应使用 "自动化" 一词。 建议在 Azure 沙盒中或在 Windows 混合辅助角色上执行 runbook 时，使用 Az 或 AzureRM cmdlet。 它们需要较少的参数，并在已执行的作业的上下文中运行。
 
-使用 Az 或 AzureRM cmdlet 操作 runbook 上下文外部的 Azure 自动化资源。 在这些情况下，你必须在使用 cmdlet 时隐式连接到 Azure，就像使用运行方式帐户向 Azure 进行身份验证一样。 
+建议使用 Az 或 AzureRM cmdlet 操作 runbook 上下文外部的 Azure Automation 资源。 
 
-## <a name="modules-supporting-get-automationpscredential"></a>支持 Get-automationpscredential 的模块
+## <a name="module-supporting-get-automationpscredential"></a>支持 Get-automationpscredential 的模块
 
-对于使用 Azure 自动化创作工具包的本地开发，该`Get-AutomationPSCredential` cmdlet 是程序集[AzureAutomationAuthoringToolkit](https://www.powershellgallery.com/packages/AzureAutomationAuthoringToolkit/0.2.3.9)的一部分。 对于使用自动化上下文的 Azure，该 cmdlet 在中`Orchestrator.AssetManagement.Cmdlets`。 若要了解有关在 Azure 自动化中使用凭据的详细信息，请参阅[Azure 自动化中的凭据资产](credentials.md)。
-
-请注意`Get-AutomationPsCredential` ，将`PSCredential`返回一个对象，该对象是与凭据配合使用的大多数 PowerShell cmdlet 所需的。 大多数情况下，应使用此 cmdlet，而不是使用[AzAutomationCredential](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationcredential?view=azps-3.8.0) cmdlet。 `Get-AzAutomationCredential`检索包含有关凭据的元数据的[CredentialInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.commands.automation.model.credentialinfo?view=azurerm-ps)对象。 此信息通常不会传递到另一个 cmdlet。
+`Get-AutomationPSCredential` Cmdlet 是模块`Orchestrator.AssetManagement.Cmdlets`的一部分。 此 cmdlet 将返回`PSCredential`一个对象，该对象是与凭据配合使用的大多数 PowerShell cmdlet 所需的。 若要了解有关在 Azure 自动化中使用凭据的详细信息，请参阅[Azure 自动化中的凭据资产](credentials.md)。
 
 ## <a name="migrating-to-az-modules"></a>迁移到 Az 模块
 
-在 Azure 自动化中使用 Az 模块时，需要考虑几个事项：
+### <a name="migration-considerations"></a>迁移注意事项
 
-* 建议不要在同一 Automation 帐户中运行 AzureRM 模块和 Az 模块，因为这样做会导致问题。 请参阅[将 Azure PowerShell 从 AzureRM 迁移到 Az](https://docs.microsoft.com/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.7.0)。 
+本部分包括在迁移到 Azure 自动化中的 Az 模块时要考虑的注意事项。 另请参阅[将 Azure PowerShell 从 AzureRM 迁移到 Az](https://docs.microsoft.com/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.7.0)。 
 
-* 在导入 Az 模块之前，请务必在单独的自动化帐户中仔细测试所有 runbook 和 DSC 配置。 
+#### <a name="use-of-azurerm-modules-and-az-modules-in-the-same-automation-account"></a>在同一 Automation 帐户中使用 AzureRM 模块和 Az 模块
 
-* 将 Az 模块导入到自动化帐户不会自动将模块导入 runbook 使用的 PowerShell 会话中。 在以下情况中，模块会导入到 PowerShell 会话中：
+ 建议不要在同一 Automation 帐户中运行 AzureRM 模块和 Az 模块。 当你确定要从 AzureRM 迁移到 Az 时，最好完全提交完整的迁移。 最重要的原因是，Azure 自动化通常会在自动化帐户中重新利用沙盒以节省启动时间。 如果未执行完整的模块迁移，则可以仅使用 AzureRM 模块启动作业，然后仅使用 Az module 启动另一作业。 沙盒即将崩溃，并收到一个错误，指出模块不兼容。 这种情况会导致任何给定的 runbook 或配置随机发生崩溃。 
 
-    * Runbook 从模块调用 cmdlet 时
-    * Runbook 使用[import-module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-7) cmdlet 显式导入模块时
-    * Runbook 导入另一个从属模块时
+#### <a name="import-of-az-modules-into-the-powershell-session"></a>将 Az 模块导入 PowerShell 会话
 
-完成模块的迁移后，请不要尝试使用自动化帐户上的 AzureRM 模块来启动 runbook。 此外，建议不要导入或更新帐户上的 AzureRM 模块。 请考虑迁移到 Az 的帐户，并仅运行 Az 模块。
+将 Az 模块导入到自动化帐户不会自动将模块导入 runbook 使用的 PowerShell 会话中。 在以下情况中，模块会导入到 PowerShell 会话中：
 
->[!IMPORTANT]
->创建新的自动化帐户时，Azure Automation 默认情况下会安装 AzureRM 模块。 你仍可以通过 AzureRM cmdlet 更新教程 runbook。 但是，不应运行这些 runbook。
+* Runbook 从模块调用 cmdlet 时
+* Runbook 使用[import-module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-7) cmdlet 显式导入模块时
+* Runbook 导入另一个从属模块时
+    
+#### <a name="testing-for-your-runbooks-and-dsc-configurations-prior-to-module-migration"></a>在模块迁移之前测试 runbook 和 DSC 配置
+
+在迁移到 Az 模块之前，请务必在单独的自动化帐户中仔细测试所有 runbook 和 DSC 配置。 
+
+#### <a name="updates-for-tutorial-runbooks"></a>教程 runbook 更新 
+
+创建新的自动化帐户时，即使在迁移到 Az 模块之后，Azure Automation 也会默认安装 AzureRM 模块。 你仍可以通过 AzureRM cmdlet 更新教程 runbook。 但是，不应运行这些 runbook。
 
 ### <a name="stop-and-unschedule-all-runbooks-that-use-azurerm-modules"></a>停止并取消使用 AzureRM 模块的所有 runbook
 
-若要确保不运行任何使用 AzureRM 模块的现有 runbook，请使用或者使用 set-azurermautomationschedule cmdlet 停止并取消所有受影响[的](https://docs.microsoft.com/powershell/module/azurerm.automation/remove-azurermautomationschedule?view=azurermps-6.13.0)runbook。 请务必单独检查每个计划，以确保将来可以根据需要将其重新安排到 runbook。
+若要确保不运行任何使用 AzureRM 模块的现有 runbook 或 DSC 配置，必须停止并取消所有受影响的 runbook 和配置。 首先，请确保查看每个 runbook 或 DSC 配置及其计划，以确保将来可以根据需要重新计划项。 
 
-```powershell
-Get-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "DailySchedule08" -ResourceGroupName "ResourceGroup01" 
-Remove-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "DailySchedule08" -ResourceGroupName "ResourceGroup01"
-```
+准备好删除计划时，可以使用 Azure 门户或[或者使用 set-azurermautomationschedule](https://docs.microsoft.com/powershell/module/azurerm.automation/remove-azurermautomationschedule?view=azurermps-6.13.0) cmdlet。 请参阅[删除计划](schedules.md#removing-a-schedule)。
+
+### <a name="remove-the-azurerm-modules"></a>删除 AzureRM 模块
+
+在导入 Az 模块之前，可以删除 AzureRM 模块。 但是，删除 AzureRM 模块可能会中断源控制同步，并导致仍然计划的任何脚本失败。 如果决定删除模块，请参阅[卸载 AzureRM](https://docs.microsoft.com/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.8.0#uninstall-azurerm)。
 
 ### <a name="import-the-az-modules"></a>导入 Az 模块
 
@@ -144,17 +153,11 @@ Remove-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "Daily
 
 ### <a name="test-your-runbooks"></a>测试 runbook
 
-将 Az 模块导入到自动化帐户后，可以开始编辑 runbook 以使用新的模块。 大多数 cmdlet 与 AzureRM 模块的名称相同，不同之处在于 AzureRm 前缀已更改为 Az。 有关不遵循此命名约定的模块列表，请参阅[异常列表](/powershell/azure/migrate-from-azurerm-to-az#update-cmdlets-modules-and-parameters)。
-
-若要测试 runbook 的修改以使用新的 cmdlet，一种方法是使用`Enable-AzureRmAlias -Scope Process` runbook 的开头。 通过将此命令添加到 runbook，脚本可以无需更改即可运行。 
+将 Az 模块导入自动化帐户后，便可以开始编辑 runbook 和 DSC 配置，以使用新的模块。 若要测试 runbook 的修改以使用新的 cmdlet，一种方法是使用`Enable-AzureRmAlias -Scope Process` runbook 的开头。 通过将此命令添加到 runbook，脚本可以无需更改即可运行。 
 
 ## <a name="authoring-modules"></a>创作模块
 
 建议你在编写 PowerShell 模块时遵循此部分中的注意事项，以便在 Azure 自动化中使用。
-
-### <a name="references-to-azurerm-and-az"></a>对 AzureRM 和 Az 的引用
-
-如果在模块中引用 Az 模块，请确保还未引用 AzureRM 模块。 不能同时使用这两个模块集。 
 
 ### <a name="version-folder"></a>版本文件夹
 

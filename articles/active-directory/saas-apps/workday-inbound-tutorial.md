@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/16/2019
+ms.date: 04/23/2020
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdf0cbfb91332d60516432a7a67fb10404d89113
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 298c99d44328dc79db1722b450ad74c3929d0c12
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81683848"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82114409"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教程：为 Workday 配置自动用户预配
 
-本教程的目标是显示将工作日工作日导入工作日配置文件到活动目录和 Azure 活动目录所需的步骤，并选择性地将电子邮件地址和用户名写入工作日。
+本教程的目的是说明从 Workday 将工作配置文件从 Workday 导入到 Active Directory 和 Azure Active Directory 中需要执行的步骤，并提供电子邮件地址和用户名的可选写回。
 
 ## <a name="overview"></a>概述
 
@@ -34,7 +34,7 @@ ms.locfileid: "81683848"
 
 * **将纯云用户预配到 Azure Active Directory** - 在未使用本地 Active Directory 的方案中，可以使用 Azure AD 用户预配服务将用户从 Workday 直接预配到 Azure Active Directory。
 
-* **将电子邮件地址和用户名写回工作日**- Azure AD 用户预配服务可以将电子邮件地址和用户名从 Azure AD 写回工作日。
+* 将**电子邮件地址和用户名写回到 workday** -Azure AD 用户预配服务可将电子邮件地址和用户名从 Azure AD 写入 workday。
 
 ### <a name="what-human-resources-scenarios-does-it-cover"></a>该服务涵盖哪些人力资源方案？
 
@@ -46,11 +46,11 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 * **员工离职** - 当某个员工在 Workday 离职时，Active Directory、Azure Active Directory、（可选）Office 365 和 [Azure AD 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)中会自动禁用其用户帐户。
 
-* **员工重新雇用**- 当员工在工作日重新雇用时，其旧帐户可以自动重新激活或重新预配（具体取决于您的偏好）到活动目录、Azure 活动目录以及可选的 Office 365 和[Azure AD 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
+* **员工 rehires** -当员工在 Workday 中 rehired 时，可以根据你的喜好自动重新激活或重新设置其旧帐户（取决于你的偏好） Active Directory、Azure Active Directory 和（可选） Office 365 和[Azure AD 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>此用户预配解决方案最适合哪些对象？
 
-此工作日用户预配解决方案非常适合：
+此 Workday 用户预配解决方案非常适合用于：
 
 * 需要使用预建的、基于云的解决方案进行 Workday 用户预配的组织
 
@@ -67,7 +67,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 本节介绍适用于常见混合环境的端到端用户预配解决方案体系结构。 有两个相关的流：
 
 * **权威 HR 数据流 - 从 Workday 到本地 Active Directory 域服务：** 在此流中，工作人员事件（如新雇员、换岗、离职等）首先发生在云 Workday HR 租户中，然后事件数据通过 Azure AD 和预配代理流入本地 Active Directory 域服务。 根据事件的不同，可能会导致在 AD 中创建/更新/启用/禁用操作。
-* **电子邮件和用户名回写流程 – 从本地活动目录到工作日：** 在活动目录中完成帐户创建后，将通过 Azure AD 连接与 Azure AD 同步，并且可以将电子邮件和用户名属性写回工作日。
+* **电子邮件和用户名写回流–从本地 Active Directory 到 Workday：** 帐户创建在 Active Directory 中完成后，会通过 Azure AD Connect 与 Azure AD 同步，并且可以将电子邮件和用户名属性写回到 Workday。
 
 ![概述](./media/workday-inbound-tutorial/wd_overview.png)
 
@@ -75,11 +75,11 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 1. HR 团队在 Workday HCM 中执行工作人员事务（入职者/换岗者/离职者或新雇员/换岗/离职）
 2. Azure AD 预配服务运行来自 Workday HR 的标识的计划同步，并确定需要进行处理以供与本地 Active Directory 域服务同步的更改。
-3. Azure AD 预配服务调用本地 Azure AD 连接预配代理，其中包含 AD 帐户创建/更新/启用/禁用操作的请求有效负载。
+3. Azure AD 预配服务使用包含 AD 帐户创建/更新/启用/禁用操作的请求负载调用本地 Azure AD Connect 预配代理。
 4. Azure AD Connect 预配代理使用服务帐户添加/更新 AD 帐户数据。
 5. Azure AD Connect / AD Sync 引擎运行增量同步以获取 AD 中的更新。
 6. Active Directory 域服务更新会与 Azure Active Directory 同步。
-7. 如果配置了工作日回写连接器，它将基于使用的匹配属性将电子邮件属性和用户名写回工作日。
+7. 如果配置了 Workday 写回连接器，则它会根据使用的匹配属性将回发电子邮件属性和用户名写入 Workday。
 
 ## <a name="planning-your-deployment"></a>计划部署
 
@@ -87,18 +87,18 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 本部分涵盖了计划的以下方面：
 
-* [先决条件](#prerequisites)
+* [必备条件](#prerequisites)
 * [选择要部署的预配连接器应用](#selecting-provisioning-connector-apps-to-deploy)
 * [Azure AD Connect 预配代理的规划部署](#planning-deployment-of-azure-ad-connect-provisioning-agent)
 * [与多个 Active Directory 域集成](#integrating-with-multiple-active-directory-domains)
 * [计划 Workday 到 Active Directory 的用户属性映射和转换](#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 在本教程中概述的方案假定您已具有以下各项：
 
-* 有效的 Azure AD 高级 P1 或更高订阅许可证，适用于将从工作日采购并预配到本地活动目录或 Azure 活动目录的每个用户。
-* Azure AD 全局管理员访问以配置预配代理
+* 每个用户都有效 Azure AD Premium P1 或更高版本的订阅许可证，该许可证将源自 Workday 并预配到本地 Active Directory 或 Azure Active Directory。
+* Azure AD 全局管理员访问权限来配置预配代理
 * 用于测试和集成目的的 Workday 实现租户
 * 在 Workday 中拥有管理员权限，可创建系统集成用户，并可做出更改以便出于测试目的测试员工数据
 * 为了将用户预配到 Active Directory，需要一个服务器带有 .NET 4.7.1 或更高版本的运行时并运行 Windows Server 2012 或更高版本，才能托管[本地预配代理](https://go.microsoft.com/fwlink/?linkid=847801)
@@ -112,9 +112,9 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 * **从 Workday 到 Active Directory 的用户预配** - 此应用可帮助将用户帐户从 Workday 预配到单个 Active Directory 域。 如果你有多个域，可以针对需要预配到的每个 Active Directory 域，从 Azure AD 应用库添加此应用的一个实例。
 
-* **工作日到 Azure AD 用户预配**- 虽然 Azure AD 连接是应该用于将活动目录用户同步到 Azure 活动目录的工具，但此应用可用于促进将仅云用户从工作日预配到单个 Azure 活动目录租户。
+* **Workday 到 Azure AD 用户预配**-当 Azure AD Connect 是应该用于同步 Active Directory 用户 Azure Active Directory 的工具时，此应用可用于简化从 Workday 到单个 Azure Active Directory 租户的仅限云的用户。
 
-* **工作日写回**- 此应用程序便于将用户的电子邮件地址从 Azure 活动目录写回到工作日。
+* **Workday 写回**-此应用便于将用户电子邮件地址的回写从 Azure Active Directory 到 Workday。
 
 > [!TIP]
 > 普通的“Workday”应用用于在 Workday 与 Azure Active Directory 之间设置单一登录。
@@ -132,7 +132,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 对于将用户从 Workday 预配到 AD 的解决方案，需要在具有至少 4 GB RAM、具有 .NET 4.7.1 运行时或更高版本，且运行 Windows 2012 R2 或更高版本的服务器上部署一个或多个预配代理。 在安装预配代理之前，必须考虑以下注意事项：
 
 * 确保运行预配代理的主机服务器具有对目标 AD 域的网络访问权限
-* 预配代理配置向导将代理注册到 Azure AD 租户，注册过程需要通过 TLS 端口 443 访问 *.msappproxy.net。 确保已启用允许此通信的出站防火墙规则。 代理支持[出站 HTTPS 代理配置](#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication)。
+* 设置代理配置向导将代理注册到 Azure AD 租户，并且注册过程需要通过 TLS 端口443访问 msappproxy.net。 确保已启用允许此通信的出站防火墙规则。 代理支持[出站 HTTPS 代理配置](#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication)。
 * 预配代理使用服务帐户与本地 AD 域通信。 建议在安装代理之前，创建一个具有域管理员权限的服务帐户和一个未过期的密码。  
 * 在预配代理配置过程中，可以选择应处理预配请求的域控制器。 如果在多个地理位置分布了域控制器，请将预配代理安装在与首选域控制器相同的站点中，以提高端到端解决方案的可靠性和性能
 * 为实现高可用性，可以部署多个预配代理并进行注册，以处理同一组本地 AD 域。
@@ -147,36 +147,36 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 根据 Active Directory 拓扑，需要决定要配置的用户预配连接器应用数和预配代理数。 下面列出了一些常见的部署模式，你可在计划部署时进行参考。
 
-#### <a name="deployment-scenario-1--single-workday-tenant---single-ad-domain"></a>部署方案#1 ：单工作日租户 ->单个 AD 域
+#### <a name="deployment-scenario-1--single-workday-tenant---single-ad-domain"></a>部署方案 #1：单一 Workday 租户-> 单一 AD 域
 
 在该方案中，你有一个 Workday 租户，且希望将用户预配到单个目标 AD 域。 下面是建议用于该部署的生产配置。
 
 |   |   |
 | - | - |
-| 不是。 预配代理数 | 3（针对高可用性和故障转移） |
-| 不是。 Workday 到 AD 用户预配应用数 | 1 |
+| 不能。 预配代理数 | 3（针对高可用性和故障转移） |
+| 不能。 Workday 到 AD 用户预配应用数 | 1 |
 
   ![方案 1](./media/workday-inbound-tutorial/dep_scenario1.png)
 
-#### <a name="deployment-scenario-2--single-workday-tenant---multiple-child-ad-domains"></a>部署方案#2 ：单工作日租户 - >多个子 AD 域
+#### <a name="deployment-scenario-2--single-workday-tenant---multiple-child-ad-domains"></a>部署方案 #2：单一 Workday 租户-> 多个子 AD 域
 
 此方案涉及到将用户从 Workday 预配到林中的多个目标 AD 子域。 下面是建议用于该部署的生产配置。
 
 |   |   |
 | - | - |
-| 不是。 预配代理数 | 3（针对高可用性和故障转移） |
-| 不是。 Workday 到 AD 用户预配应用数 | 每个子域一个应用 |
+| 不能。 预配代理数 | 3（针对高可用性和故障转移） |
+| 不能。 Workday 到 AD 用户预配应用数 | 每个子域一个应用 |
 
   ![方案 2](./media/workday-inbound-tutorial/dep_scenario2.png)
 
-#### <a name="deployment-scenario-3--single-workday-tenant---disjoint-ad-forests"></a>部署方案#3 ：单工作日租户 ->不相交的 AD 林
+#### <a name="deployment-scenario-3--single-workday-tenant---disjoint-ad-forests"></a>部署方案 #3：单一 Workday 租户-> 无交集 AD 林
 
 此方案涉及到将用户从 Workday 预配到非连续 AD 林中的域。 下面是建议用于该部署的生产配置。
 
 |   |   |
 | - | - |
-| 不是。 预配代理数 | 每个非连续 AD 林 3 个 |
-| 不是。 Workday 到 AD 用户预配应用数 | 每个子域一个应用 |
+| 不能。 预配代理数 | 每个非连续 AD 林 3 个 |
+| 不能。 Workday 到 AD 用户预配应用数 | 每个子域一个应用 |
 
   ![方案 3](./media/workday-inbound-tutorial/dep_scenario3.png)
 
@@ -211,11 +211,11 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 * **如何匹配 Workday 与 Active Directory 之间的用户？**
 
-  * *示例：具有特定工作日"Worker_ID"值的用户与"员工 ID"具有相同的值的活动目录用户匹配。如果在活动目录中找不到Worker_ID值，则创建新用户。*
+  * *示例：具有特定 Workday "Worker_ID" 值的用户将与 "雇员 Id" 值相同的 Active Directory 用户匹配。如果在 Active Directory 中找不到 Worker_ID 值，则创建一个新用户。*
   
 * **Active Directory 林是否已包含使匹配逻辑正常工作所需的用户 ID？**
 
-  * *示例：如果此设置是新的工日部署，建议使用正确的工作日Worker_ID值（或选择的唯一 ID 值）预填充 Active Directory，以保持匹配逻辑尽可能简单。*
+  * *示例：如果此安装程序是新的 Workday 部署，建议使用正确的 Workday Worker_ID 值（或所选的唯一 ID 值）预先填充 Active Directory 以使匹配逻辑尽可能简单。*
 
 如何设置和配置这些特殊的预配连接器应用，属于本教程余下部分的主题。 要选择配置哪些应用将取决于需要预配到哪些系统，以及环境中有多少个 Active Directory 域和 Azure AD 租户。
 
@@ -236,12 +236,12 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 **创建集成系统用户：**
 
-1. 使用管理员帐户登录到工作日租户。 在“Workday 应用程序”的搜索框中，输入“创建用户”，然后单击“创建集成系统用户”********。
+1. 使用管理员帐户登录到 Workday 租户。 在“Workday 应用程序”的搜索框中，输入“创建用户”，然后单击“创建集成系统用户”********。
 
    ![创建用户](./media/workday-inbound-tutorial/wd_isu_01.png "创建用户")
-2. 通过为新集成系统用户提供用户名和密码来完成**创建集成系统用户**任务。  
+2. 通过为新的集成系统用户提供用户名和密码来完成 "**创建集成系统用户**" 任务。  
   
-   * 取消选中 **"下一次登录时需要新密码**"选项，因为此用户将以编程方式登录。
+   * 选中 "**下次登录时需要新密码**" 选项，因为此用户将以编程方式登录。
    * 将“会话超时(分钟)”**** 保留为其默认值 0，这将阻止用户会话过早超时。
    * 选择选项“不允许 UI 会话”，因为它提供了额外的安全层，可防止拥有集成系统密码的用户登录 Workday****。
 
@@ -259,8 +259,8 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 2. 完成“创建安全组”**** 任务。 
 
    * Workday 中有两种类型的安全组：
-     * **无约束：** 安全组的所有成员都可以访问安全组保护的所有数据实例。
-     * **受限：** 所有安全组成员都可以对安全组可以访问的数据实例（行）子集进行上下文访问。
+     * 不**约束：** 安全组的所有成员都可以访问安全组保护的所有数据实例。
+     * **受约束：** 所有安全组成员都具有对安全组可以访问的数据实例（行）子集的上下文访问权限。
    * 请咨询 Workday 集成合作伙伴，从而为集成选择适当的安全组类型。
    * 在知道组类型之后，请从“租户安全组类型”的下拉列表中选择“集成系统安全组(不受约束)”或“集成系统安全组(受约束)”************。
 
@@ -281,19 +281,19 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
     ![域安全策略](./media/workday-inbound-tutorial/wd_isu_06.png "域安全策略")  
 2. 在“域”文本框中，搜索以下域，并将其逐个添加到筛选器中****。  
    * *外部帐户预配*
-   * *工作人员数据：工作人员*
+   * *工作人员数据：辅助角色*
    * 工作人员数据：公职人员报告**
    * *人员数据：工作联系人信息*
    * *工作人员数据：所有职位*
    * *工作人员数据：当前人员配备信息*
    * 工作人员数据：工作人员个人资料中的职称**
-   * *工作日帐户*
+   * *Workday 帐户*
    
      ![域安全策略](./media/workday-inbound-tutorial/wd_isu_07.png "域安全策略")  
 
      ![域安全策略](./media/workday-inbound-tutorial/wd_isu_08.png "域安全策略") 
 
-     单击“确定”。 
+     单击“确定”  。
 
 3. 在显示的报表中，选择“外部帐户预配”旁边显示的省略号 (...)，然后单击菜单选项“域”->“编辑安全策略权限”********
 
@@ -313,11 +313,11 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
    | ---------- | ---------- |
    | “获取”和“放置” | 工作人员数据：公职人员报告 |
    | “获取”和“放置” | 人员数据：工作联系人信息 |
-   | Get | 工作人员数据：工作人员 |
+   | Get | 工作人员数据：辅助角色 |
    | Get | 工作人员数据：所有职位 |
    | Get | 工作人员数据：当前人员配备信息 |
    | Get | 工作人员数据：工作人员个人资料中的职称 |
-   | “获取”和“放置” | 工作日帐户 |
+   | “获取”和“放置” | Workday 帐户 |
 
 ### <a name="configuring-business-process-security-policy-permissions"></a>配置业务流程安全策略权限
 
@@ -329,17 +329,18 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
     ![业务流程安全策略](./media/workday-inbound-tutorial/wd_isu_12.png "业务流程安全策略")  
 
-2. 在“业务流程类型”文本框中，搜索“联系人”并选择“联系人更改”业务流程，然后单击“确定”**************。
+2. 在 "**业务流程类型**" 文本框中，搜索 "*联系人*"，然后选择 "**工作联系人更改**业务流程"，然后单击 **"确定"**。
 
     ![业务流程安全策略](./media/workday-inbound-tutorial/wd_isu_13.png "业务流程安全策略")  
 
-3. 在“编辑业务流程安全策略”页面上，滚动到“维护联系人信息 (Web 服务)”部分********。
+3. 在 "**编辑业务流程安全策略**" 页上，滚动到 "**更改工作联系人信息（Web 服务）** " 部分。
+    
 
-    ![业务流程安全策略](./media/workday-inbound-tutorial/wd_isu_14.png "业务流程安全策略")  
-
-4. 选择新的集成系统安全组并将其添加到可以发起 Web 服务请求的安全组列表中。 单击“完成”****。 
+4. 选择新的集成系统安全组并将其添加到可以发起 Web 服务请求的安全组列表中。 
 
     ![业务流程安全策略](./media/workday-inbound-tutorial/wd_isu_15.png "业务流程安全策略")  
+
+5. 单击“完成”****。 
 
 ### <a name="activating-security-policy-changes"></a>激活安全策略更改
 
@@ -360,11 +361,11 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 * [添加预配连接器应用并下载预配代理](#part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent)
 * [安装和配置本地预配代理](#part-2-install-and-configure-on-premises-provisioning-agents)
-* [配置与工作日和活动目录的连接](#part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory)
+* [配置与 Workday 和 Active Directory 的连接](#part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory)
 * [配置属性映射](#part-4-configure-attribute-mappings)
 * [启用并启动用户预配](#enable-and-launch-user-provisioning)
 
-### <a name="part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent"></a>第 1 部分：添加预配连接器应用并下载预配代理
+### <a name="part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent"></a>第1部分：添加预配连接器应用并下载预配代理
 
 **若要配置 Workday 到 Active Directory 的预配：**
 
@@ -378,28 +379,28 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 5. 搜索“Workday 到 Active Directory 的预配”，然后从库中添加该应用。****
 
-6. 添加应用并显示应用详细信息屏幕后，选择**预配**。
+6. 添加应用并显示 "应用详细信息" 屏幕后，选择 "**设置**"。
 
-7. 将**预配****模式**更改为 **"自动**"。
+7. 将**设置****模式**更改为 "**自动**"。
 
-8. 单击显示的信息横幅以下载预配代理。 
+8. 单击显示的信息横幅以下载设置代理。 
 
    ![下载代理](./media/workday-inbound-tutorial/pa-download-agent.png "下载代理屏幕")
 
 
-### <a name="part-2-install-and-configure-on-premises-provisioning-agents"></a>第 2 部分：安装和配置本地预配代理
+### <a name="part-2-install-and-configure-on-premises-provisioning-agents"></a>第2部分：安装和配置本地设置代理
 
-要预配到本地活动目录，必须在具有 .NET 4.7.1+ 框架的服务器上安装预配代理，并且对所需的活动目录域具有网络访问权限。
+若要预配到本地 Active Directory，必须在具有 .NET 4.7.1 + Framework 的服务器上安装预配代理，并对所需 Active Directory 域进行网络访问。
 
 > [!TIP]
 > 可以使用[此处](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)提供的说明来检查服务器上的 .NET framework 版本。
 > 如果服务器未安装 .NET 4.7.1 或更高版本，可从[此处](https://support.microsoft.com/help/4033342/the-net-framework-4-7-1-offline-installer-for-windows)下载。  
 
-将下载的代理安装程序传输到服务器主机，然后按照以下步骤完成代理配置。
+将下载的代理安装程序传输到服务器主机并按照以下步骤完成代理配置。
 
-1. 登录到要安装新代理的 Windows 服务器。
+1. 登录到要在其中安装新代理的 Windows Server。
 
-1. 启动预配代理安装程序，同意条款，然后单击 **"安装**"按钮。
+1. 启动设置代理安装程序，同意条款，然后单击 "**安装**" 按钮。
 
    ![安装屏幕](./media/workday-inbound-tutorial/pa_install_screen_1.png "安装屏幕")
    
@@ -409,7 +410,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
    
 1. 使用全局管理员凭据对 Azure AD 实例进行身份验证。
 
-   ![管理员 Auth](./media/workday-inbound-tutorial/pa_install_screen_3.png "管理员 Auth")
+   ![管理员身份验证](./media/workday-inbound-tutorial/pa_install_screen_3.png "管理员身份验证")
 
    > [!NOTE]
    > Azure AD 管理员凭据仅用于连接到 Azure AD 租户。 代理不会将凭据存储在本地服务器上。
@@ -424,7 +425,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
    
 1. 配置域之后，安装程序会显示已配置的域的列表。 在此屏幕上，可以重复步骤 #5 和 #6 以添加更多域，或单击“下一步”以继续执行代理注册****。
 
-   ![已配置的域](./media/workday-inbound-tutorial/pa_install_screen_6.png "已配置的域")
+   ![配置的域](./media/workday-inbound-tutorial/pa_install_screen_6.png "配置的域")
 
    > [!NOTE]
    > 如果有多个 AD 域（例如 na.contoso.com、emea.contoso.com），请将每个域单独添加到列表中。
@@ -444,24 +445,27 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
    
 1. 请打开“服务”管理单元来验证是否已安装代理并确保其正在运行，并查找名为“Microsoft Azure AD Connect 预配代理”的服务
   
-   ![Services](./media/workday-inbound-tutorial/services.png)
+   ![服务](./media/workday-inbound-tutorial/services.png)
 
-### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory"></a>第 3 部分：在预配应用中，配置与工作日和活动目录的连接
-在此步骤中，我们在 Azure 门户中建立与工作日和活动目录的连接。 
+### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory"></a>第3部分：在预配应用程序中，配置与 Workday 和 Active Directory 的连接
+在此步骤中，我们将在 Azure 门户中建立与 Workday 和 Active Directory 的连接。 
 
-1. 在 Azure 门户中，返回第[1 部分](#part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent)中创建的"工作日"活动目录用户预配应用
+1. 在 Azure 门户中，返回到 Workday 以 Active Directory 在[第1部分](#part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent)中创建的用户预配应用
 
 1. 按如下所述完成“管理员凭据”部分：****
 
-   * **工作日用户名**– 输入工作日集成系统帐户的用户名，并附上租户域名。 它应该看起来像：**用户名\@tenant_name**
+   * **Workday 用户名**–输入 workday 集成系统帐户的用户名，并追加租户域名。 其外观应如下所示 **：\@用户名 tenant_name**
 
-   * **工作日密码 |** 输入工作日集成系统帐户的密码
+   * **Workday 密码–** 输入 Workday 集成系统帐户的密码
 
-   * **工作日 Web 服务 API URL |** 输入租户的工作日 Web 服务终结点的 URL。 此值应如下所示： https://wd3-impl-services1.workday.com/ccx/service/contoso4，其中*contoso4*替换为正确的租户名称 *，wd3-impl*替换为正确的环境字符串。
+   * **Workday Web 服务 API URL –** 输入租户的 Workday web 服务终结点的 URL。 此值应如下所示https://wd3-impl-services1.workday.com/ccx/service/contoso4：，其中*contoso4 需*替换为正确的租户名称， *wd3-impl*替换为正确的环境字符串。
 
      > [!NOTE]
-     > 默认情况下，如果 URL 中未指定版本信息，则应用使用工作日 Web 服务 v21.1。 要使用特定的工作日 Web 服务 API 版本，请使用 URL 格式：https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
-     > 示例： https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0
+     > 默认情况下，如果未在 URL 中指定任何版本信息，应用程序将使用 Workday Web Services （WWS） v 21.1。 若要使用特定的 WWS API 版本，请使用 URL 格式：https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
+     > 示例：https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0 <br>
+     
+     > [!NOTE]
+     > 如果你使用的是 WWS API v 30.0 及更高版本，则在启用预配作业之前，**请在 "** **属性映射-> 高级选项-> 编辑用于 Workday 的编辑属性列表**" 中引用[管理配置](#managing-your-configuration)和[Workday 属性引用](../app-provisioning/workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30)部分。  
 
    * **Active Directory 林 -** 向代理注册时使用的 Active Directory 域的“名称”。 使用下拉列表选择用于预配的目标域。 此值通常为如下所示的字符串：contoso.com**
 
@@ -471,26 +475,26 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
      > [!NOTE]
      > 如果未在属性映射中配置 parentDistinguishedName 属性，则此设置仅对用户帐户创建起作用**。 此设置不用于用户搜索或更新操作。 整个域子树属于搜索操作的范围。
 
-   * **通知电子邮件 |** 输入您的电子邮件地址，并选中"如果发生故障发送电子邮件"复选框。
+   * **通知电子邮件–** 输入你的电子邮件地址，并选中 "如果出现故障，则发送电子邮件" 复选框。
 
      > [!NOTE]
      > 如果预配作业进入[隔离](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)状态，Azure AD 预配服务将发送电子邮件通知。
 
-   * 单击“测试连接”按钮。**** 如果连接测试成功，请单击顶部的 **"保存**"按钮。 如果连接测试失败，请仔细检查代理设置上配置的 Workday 凭据和 AD 凭据是否有效。
+   * 单击“测试连接”按钮。**** 如果连接测试成功，请单击顶部的 "**保存**" 按钮。 如果连接测试失败，请仔细检查代理设置上配置的 Workday 凭据和 AD 凭据是否有效。
 
      ![Azure 门户](./media/workday-inbound-tutorial/wd_1.png)
 
    * 凭据成功保存后，“映射”部分或显示默认映射“将 Workday 工作人员同步到本地 Active Directory”********
 
-### <a name="part-4-configure-attribute-mappings"></a>第 4 部分：配置属性映射
+### <a name="part-4-configure-attribute-mappings"></a>第4部分：配置属性映射
 
 在本部分配置用户数据如何从 Workday 流入 Active Directory。
 
 1. 在“预配”选项卡的“映射”下，单击“将 Workday 工作人员同步到本地 Active Directory”********。
 
-1. 在 **"源对象范围"** 字段中，您可以通过定义一组基于属性的筛选器，选择工作日中哪些用户集应位于预配 AD 的范围内。 默认范围是“Workday 中的所有用户”。 示例筛选器：
+1. 在 "**源对象范围**" 字段中，可以通过定义一组基于属性的筛选器，选择 Workday 中要预配到 AD 的用户组。 默认范围是“Workday 中的所有用户”。 示例筛选器：
 
-   * 示例：工作 ID 在 1000000 和 2000000（不包括 2000000）之间的用户范围
+   * 示例：范围为工作人员 Id 介于1000000和2000000之间的用户（不包括2000000）
 
       * 属性：WorkerID
 
@@ -508,19 +512,19 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
    > 首次配置预配应用时，需要测试和验证属性映射和表达式，以确保它提供所需的结果。 Microsoft 建议使用“源对象范围”下的范围筛选器来测试 Workday 中少量测试用户的映射****。 验证确保映射正常工作后，可删除筛选器，也可逐渐扩大范围以包含更多用户。
 
    > [!CAUTION] 
-   > 预配引擎的默认行为是禁用/删除超出范围的用户。 这在您的工作日到 AD 集成中可能并不可取。 要重写此默认行为，请参阅跳过[删除超出范围的用户帐户](../app-provisioning/skip-out-of-scope-deletions.md)的文章
+   > 设置引擎的默认行为是禁用/删除超出作用域的用户。 在 Workday 中，这可能不适合于 AD 集成。 若要替代此默认行为，请参阅[跳过删除超出范围的用户帐户的](../app-provisioning/skip-out-of-scope-deletions.md)文章
   
-1. 在“目标对象操作”字段中，可全局筛选要对 Active Directory 执行的操作****。 **创建**和**更新**是最常见的。
+1. 在“目标对象操作”字段中，可全局筛选要对 Active Directory 执行的操作****。 **创建**和**更新**最常见。
 
-1. 在 **"属性映射"** 部分中，您可以定义各个工作日属性如何映射到活动目录属性。
+1. 在 "**属性映射**" 部分中，可以定义单独 Workday 属性映射到 Active Directory 属性的方式。
 
 1. 单击现有的属性映射可将其更新，单击屏幕底部的“添加新映射”可添加新的映射。**** 单个属性映射支持以下属性：
 
       * **映射类型**
 
-         * **直接**= 将工日属性的值写入 AD 属性，无需更改
+         * **直接**–将 Workday 属性的值写入 AD 属性，无更改
 
-         * **常量**- 将静态常量字符串值写入 AD 属性
+         * **常量**-将静态的常量字符串值写入 AD 属性
 
          * **表达式** – 可以基于一个或多个 Workday 属性将自定义值写入 AD 属性。 [有关详细信息，请参阅这篇有关表达式的文章](../app-provisioning/functions-for-customizing-application-data.md)。
 
@@ -529,7 +533,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
       * **默认值** – 可选。 如果源属性的值为空，映射将改为写入此值。
             最常见的配置是将此项留空。
 
-      * **目标属性**= 活动目录中的用户属性。
+      * **目标属性**– Active Directory 中的用户属性。
 
       * **使用此属性匹配对象** – 是否应使用此映射唯一标识 Workday 与 Active Directory 之间的用户。 该值通常是在 Workday 的“工作人员 ID”字段中设置的，它通常映射到 Active Directory 中的某个“员工 ID”属性。
 
@@ -537,11 +541,11 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
       * **应用此映射**
 
-         * **始终**= 在用户创建和更新操作上应用此映射
+         * **始终**–在用户的创建和更新操作中应用此映射
 
-         * **仅在创建期间**- 仅在用户创建操作上应用此映射
+         * **仅在创建过程中**-仅在用户创建操作上应用此映射
 
-1. 要保存映射，请单击属性映射部分顶部的 **"保存**"。
+1. 若要保存映射，请单击 "属性映射" 部分顶部的 "**保存**"。
 
    ![Azure 门户](./media/workday-inbound-tutorial/wd_2.png)
 
@@ -551,19 +555,19 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 * Active Directory 中的 userPrincipalName 属性是使用重复数据删除函数 [SelectUniqueValue](../app-provisioning/functions-for-customizing-application-data.md#selectuniquevalue) 生成的，该函数会检查目标 AD 域中是否存在生成的值，且仅在值唯一时才设置它**。  
 
-* [这里有关于写表达式的文档](../app-provisioning/functions-for-customizing-application-data.md)。 此部分中包括有关如何删除特殊字符的示例。
+* [此处提供了有关编写表达式的文档](../app-provisioning/functions-for-customizing-application-data.md)。 此部分中包括有关如何删除特殊字符的示例。
 
 | WORKDAY 属性 | ACTIVE DIRECTORY 属性 |  匹配 ID？ | 创建/更新 |
 | ---------- | ---------- | ---------- | ---------- |
 | **WorkerID**  |  EmployeeID | **是** | 仅在创建时写入 |
 | **PreferredNameData**    |  cn    |   |   仅在创建时写入 |
-| **选择\@唯一值（"加入"，加入（""，"\[名字\]"，\[姓氏\]\@），"contoso.com"），加入（""，"加入"，""，"中名，1，1），\[\]姓氏\[\]"，"contoso.com"），加入（""，\@加入（"，""，中名（\[名字\]，1，2），\[姓氏\]"，"contoso.com"）**   | userPrincipalName     |     | 仅在创建时写入 
-| **替换（中（替换（\[用户\]\[\\\\/\\\\\\\\\\\\\[\\\\\]ID\\\\，"）（;\\\\\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\\\）"，"，"，"，1，20，"（）"。 \\ &lt; \\ \\ &gt; \]\**（file:///\\ \$.）*$)", , "", , )**      |    sAMAccountName            |     |         仅在创建时写入 |
+| **SelectUniqueValue （Join （"\@"，联接（"."， \[FirstName\]， \[LastName\]），"contoso.com"），联接（"\@"，联接（"."，Mid （\[FirstName\]，1，1）， \[LastName\]），"contoso.com"），联接（"\@"，联接（"."，Mid （\[FirstName\]，1，2）， \[LastName\]），"contoso.com"））**   | userPrincipalName     |     | 仅在创建时写入 
+| **Replace （Replace\[（UserID\]，，，，，，\[\\\\/\\\\\\\\\\\\\[\\\\，\\）\\ （\\：;\\）\]\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\\\） "，，" "，，，），1，20），，" （[.） \\ &lt; \\ \\ &gt; \]\*file:///\\ \$*$)", , "", , )**      |    sAMAccountName            |     |         仅在创建时写入 |
 | **Switch(\[Active\], , "0", "True", "1", "False")** |  accountDisabled      |     | 创建 + 更新 |
-| **名字**   | givenName       |     |    创建 + 更新 |
-| **姓氏**   |   sn   |     |  创建 + 更新 |
+| **FirstName**   | givenName       |     |    创建 + 更新 |
+| **姓**   |   sn   |     |  创建 + 更新 |
 | **PreferredNameData**  |  displayName |     |   创建 + 更新 |
-| **公司**         | company   |     |  创建 + 更新 |
+| **上市公司**         | company   |     |  创建 + 更新 |
 | **SupervisoryOrganization**  | department  |     |  创建 + 更新 |
 | **ManagerReference**   | manager  |     |  创建 + 更新 |
 | **BusinessTitle**   |  title     |     |  创建 + 更新 | 
@@ -573,12 +577,12 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 | **CountryReferenceTwoLetter**    |  c  |     |         创建 + 更新 |
 | **CountryRegionReference** |  st     |     | 创建 + 更新 |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  创建 + 更新 |
-| **邮政编码**  |   postalCode  |     | 创建 + 更新 |
+| **PostalCode**  |   postalCode  |     | 创建 + 更新 |
 | **PrimaryWorkTelephone**  |  telephoneNumber   |     | 创建 + 更新 |
-| **传真**      | facsimileTelephoneNumber     |     |    创建 + 更新 |
+| **传入**      | facsimileTelephoneNumber     |     |    创建 + 更新 |
 | **移动**  |    mobile       |     |       创建 + 更新 |
 | **LocalReference** |  preferredLanguage  |     |  创建 + 更新 |                                               
-| **交换机（\[城市\]，"OU=标准用户，OU=用户，OU=默认，OU=位置，DC=contoso，DC_com"，"达拉斯"，"OU=标准用户，OU=用户，OU=达拉斯，OU=达拉斯，OU=位置，DC=contoso，DC_com"， "奥斯汀"，"OU=标准用户，OU=用户，OU=奥斯汀，OU=位置，DC=contoso，DC=com"，"西雅图"，"OU=标准用户，OU=用户，OU=西雅图，OU=西雅图，OU=位置，DC=contoso，DC_com"，"伦敦"，"OU=标准用户，OU=用户，OU=伦敦，OU=伦敦，OU=位置，DC=contoso"，DC_com**  | parentDistinguishedName     |     |  创建 + 更新 |
+| **Switch （\[市政府\]，"ou = 标准用户、OU = 用户、OU = 默认、OU = 位置、DC = contoso、DC = Com"、"达拉斯"、"ou = Standard Users，OU = Users，OU = 达拉斯，OU = 位置，DC = contoso，dc = Com"，"奥斯汀"，"ou = Standard Users，OU = Users，OU = 奥斯汀" OU = 位置、DC = contoso、dc = Com "、" 西雅图 "、" ou = 标准用户、OU = 用户、OU = 西雅图、OU = 位置、DC = contoso、dc = Com "、" 伦敦 "、" ou = 伦敦、OU = 位置、DC = contoso、dc = com "）**  | parentDistinguishedName     |     |  创建 + 更新 |
 
 属性映射配置完成后，即可[启用并启动用户预配服务](#enable-and-launch-user-provisioning)。
 
@@ -607,36 +611,36 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 5. 搜索“Workday 到 Azure AD 的预配”，然后从库中添加该应用。****
 
-6. 添加应用并显示应用详细信息屏幕后，选择**预配**。
+6. 添加应用并显示 "应用详细信息" 屏幕后，选择 "**设置**"。
 
-7. 将**预配****模式**更改为 **"自动**"。
+7. 将**设置****模式**更改为 "**自动**"。
 
 8. 按如下所述完成“管理员凭据”部分：****
 
-   * **工作日用户名**– 输入工作日集成系统帐户的用户名，并附上租户域名。 此值应类似于：username@contoso4
+   * **Workday 用户名**–输入 workday 集成系统帐户的用户名，并追加租户域名。 此值应类似于：username@contoso4
 
-   * **工作日密码 |** 输入工作日集成系统帐户的密码
+   * **Workday 密码–** 输入 Workday 集成系统帐户的密码
 
-   * **工作日 Web 服务 API URL |** 输入租户的工作日 Web 服务终结点的 URL。 此值应类似于：https://wd3-impl-services1.workday.com/ccx/service/contoso4；其中，contoso4 替换为正确的租户名，wd3-impl 替换为正确的环境字符串****。 如果不知道此 URL，请咨询 Workday 集成合作伙伴或支持代表，确定要使用的正确 URL。
+   * **Workday Web 服务 API URL –** 输入租户的 Workday web 服务终结点的 URL。 此值应类似于：https://wd3-impl-services1.workday.com/ccx/service/contoso4；其中，contoso4 替换为正确的租户名，wd3-impl 替换为正确的环境字符串****。 如果不知道此 URL，请咨询 Workday 集成合作伙伴或支持代表，确定要使用的正确 URL。
 
      > [!NOTE]
-     > 默认情况下，如果 URL 中未指定版本信息，则应用使用工作日 Web 服务 v21.1。 要使用特定的工作日 Web 服务 API 版本，请使用 URL 格式：https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
-     > 示例： https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0
+     > 默认情况下，如果未在 URL 中指定任何版本信息，应用程序将使用 Workday Web Services v 21.1。 若要使用特定 Workday Web 服务 API 版本，请使用 URL 格式：https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
+     > 示例：https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0
 
 
-   * **通知电子邮件 |** 输入您的电子邮件地址，并选中"如果发生故障发送电子邮件"复选框。
+   * **通知电子邮件–** 输入你的电子邮件地址，并选中 "如果出现故障，则发送电子邮件" 复选框。
 
    * 单击“测试连接”按钮。****
 
    * 如果连接测试成功，请单击顶部的“保存”按钮。**** 如果测试失败，请仔细检查 Workday 中的 Workday URL 和凭据是否有效。
 
-### <a name="part-2-configure-workday-and-azure-ad-attribute-mappings"></a>第 2 部分：配置工作日和 Azure AD 属性映射
+### <a name="part-2-configure-workday-and-azure-ad-attribute-mappings"></a>第2部分：配置 Workday 和 Azure AD 属性映射
 
 在本部分配置仅限云的用户的用户数据如何从 Workday 流入 Azure Active Directory。
 
 1. 在“预配”选项卡中的“映射”下面，单击“将工作人员同步到 Azure AD”。********
 
-2. 在 **"源对象范围"** 字段中，可以通过定义一组基于属性的筛选器，选择工作日中的哪些用户集应位于预配到 Azure AD 的范围内。 默认范围是“Workday 中的所有用户”。 示例筛选器：
+2. 在 "**源对象范围**" 字段中，可以通过定义一组基于属性的筛选器，选择 Workday 中要设置为 Azure AD 的用户组。 默认范围是“Workday 中的所有用户”。 示例筛选器：
 
    * 示例：将范围限定为工作人员 ID 为 1000000 到 2000000 的用户
 
@@ -654,15 +658,15 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 3. 在“目标对象操作”字段中，可全局筛选对 Azure AD 执行的操作。**** 最常见的操作是“创建”和“更新”********。
 
-4. 在 **"属性映射"** 部分中，您可以定义各个工作日属性如何映射到活动目录属性。
+4. 在 "**属性映射**" 部分中，可以定义单独 Workday 属性映射到 Active Directory 属性的方式。
 
 5. 单击现有的属性映射可将其更新，单击屏幕底部的“添加新映射”可添加新的映射。**** 单个属性映射支持以下属性：
 
    * **映射类型**
 
-      * **直接**= 将工日属性的值写入 AD 属性，无需更改
+      * **直接**–将 Workday 属性的值写入 AD 属性，无更改
 
-      * **常量**- 将静态常量字符串值写入 AD 属性
+      * **常量**-将静态的常量字符串值写入 AD 属性
 
       * **表达式** – 可以基于一个或多个 Workday 属性将自定义值写入 AD 属性。 [有关详细信息，请参阅这篇有关表达式的文章](../app-provisioning/functions-for-customizing-application-data.md)。
 
@@ -679,23 +683,23 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
    * **应用此映射**
 
-     * **始终**= 在用户创建和更新操作上应用此映射
+     * **始终**–在用户的创建和更新操作中应用此映射
 
-     * **仅在创建期间**- 仅在用户创建操作上应用此映射
+     * **仅在创建过程中**-仅在用户创建操作上应用此映射
 
-6. 要保存映射，请单击属性映射部分顶部的 **"保存**"。
+6. 若要保存映射，请单击 "属性映射" 部分顶部的 "**保存**"。
 
 属性映射配置完成后，即可[启用并启动用户预配服务](#enable-and-launch-user-provisioning)。
 
-## <a name="configuring-azure-ad-attribute-writeback-to-workday"></a>将 Azure AD 属性写回工作日
+## <a name="configuring-azure-ad-attribute-writeback-to-workday"></a>配置 Azure AD 特性写回到 Workday
 
-按照这些说明配置用户电子邮件地址和用户名的写回，从 Azure 活动目录到工作日。
+按照以下说明进行操作，配置从 Azure Active Directory 到 Workday 的用户电子邮件地址和用户名的写回。
 
 * [添加写回连接器应用并与 Workday 建立连接](#part-1-adding-the-writeback-connector-app-and-creating-the-connection-to-workday)
 * [配置写回属性映射](#part-2-configure-writeback-attribute-mappings)
 * [启用并启动用户预配](#enable-and-launch-user-provisioning)
 
-### <a name="part-1-adding-the-writeback-connector-app-and-creating-the-connection-to-workday"></a>第 1 部分：添加回写连接器应用并创建到工作日的连接
+### <a name="part-1-adding-the-writeback-connector-app-and-creating-the-connection-to-workday"></a>第1部分：添加写回连接器应用并创建到 Workday 的连接
 
 **配置 Workday 写回连接器：**
 
@@ -709,33 +713,33 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 5. 搜索“Workday 写回”，然后从库中添加该应用。****
 
-6. 添加应用并显示应用详细信息屏幕后，选择**预配**。
+6. 添加应用并显示 "应用详细信息" 屏幕后，选择 "**设置**"。
 
-7. 将**预配****模式**更改为 **"自动**"。
+7. 将**设置****模式**更改为 "**自动**"。
 
 8. 按如下所述完成“管理员凭据”部分：****
 
-   * **管理员用户名**– 输入工作日集成系统帐户的用户名，并附上租户域名。 应该看起来像：*用户名\@contoso4*
+   * **管理员用户名**–输入 Workday 集成系统帐户的用户名，并追加租户域名。 应类似于： *username\@contoso4 需*
 
    * **管理员密码 -** 输入 Workday 集成系统帐户的密码
 
-   * **租户 URL |** 输入租户的工作日 Web 服务终结点的 URL。 此值应类似于：https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources；其中，contoso4 替换为正确的租户名称，wd3-impl 替换为正确的环境字符串（如有必要）****。
+   * **租户 URL –** 输入租户的 Workday web 服务终结点的 URL。 此值应类似于：https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources；其中，contoso4 替换为正确的租户名称，wd3-impl 替换为正确的环境字符串（如有必要）****。
 
-   * **通知电子邮件 |** 输入您的电子邮件地址，并选中"如果发生故障发送电子邮件"复选框。
+   * **通知电子邮件–** 输入你的电子邮件地址，并选中 "如果出现故障，则发送电子邮件" 复选框。
 
    * 单击“测试连接”按钮。**** 如果连接测试成功，请单击顶部的“保存”按钮。**** 如果测试失败，请仔细检查 Workday 中的 Workday URL 和凭据是否有效。
 
-### <a name="part-2-configure-writeback-attribute-mappings"></a>第 2 部分：配置写回属性映射
+### <a name="part-2-configure-writeback-attribute-mappings"></a>第2部分：配置写回属性映射
 
-在此部分中，你将配置写回属性从 Azure AD 流到 Workday 的方式。 目前，连接器仅支持将电子邮件地址和用户名写入工作日。
+在此部分中，你将配置写回属性从 Azure AD 流到 Workday 的方式。 目前，连接器仅支持将电子邮件地址和用户名写回到 Workday。
 
 1. 在“预配”选项卡中的“映射”下面，单击“将 Azure Active Directory 用户同步到 Workday”********。
 
-2. 在 **"源对象范围"** 字段中，可以选择筛选 Azure 活动目录中的用户集应将其电子邮件地址写回工作日。 默认范围是“Azure AD 中的所有用户”。
+2. 在 "**源对象范围**" 字段中，可以根据需要筛选 Azure Active Directory 应将其电子邮件地址写回到 Workday 的用户组。 默认范围是“Azure AD 中的所有用户”。
 
 3. 在“属性映射”**** 部分中，更新匹配的 ID 以指明 Azure Active Directory 中存储着 Workday 工作人员 ID 或员工 ID 的属性。 常用的匹配方法是将 Workday 工作人员 ID 或员工 ID 同步到 Azure AD 中的 extensionAttribute1-15，然后使用 Azure AD 中的此属性来重新匹配 Workday 中的用户。
 
-4. 通常，将 Azure AD*用户主体名称*属性映射到工作日*用户 ID*属性，并将 Azure AD*邮件*属性映射到工作日*电子邮件地址*属性。 要保存映射，请单击属性映射部分顶部的 **"保存**"。
+4. 通常会将 Azure AD *userPrincipalName*特性映射到 workday *UserID*特性，并将 Azure AD *Mail*特性映射到 workday *EmailAddress*属性。 若要保存映射，请单击 "属性映射" 部分顶部的 "**保存**"。
 
 属性映射配置完成后，即可[启用并启动用户预配服务](#enable-and-launch-user-provisioning)。
 
@@ -748,7 +752,7 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
 
 1. 在“预配”选项卡中，将“预配状态”设置为“打开”。************
 
-2. 单击“ **保存**”。
+2. 单击 **“保存”** 。
 
 3. 此操作将启动初始同步；该过程会耗时数小时，具体时间取决于 Workday 租户中的用户数。 
 
@@ -775,7 +779,7 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
   * [预配代理的正式版是什么？](#what-is-the-ga-version-of-the-provisioning-agent)
   * [如何知道我的预配代理的版本？](#how-do-i-know-the-version-of-my-provisioning-agent)
   * [Microsoft 是否会自动拉取预配代理更新？](#does-microsoft-automatically-push-provisioning-agent-updates)
-  * [是否可以在同一运行 Azure AD 连接的服务器上安装预配代理？](#can-i-install-the-provisioning-agent-on-the-same-server-running-azure-ad-connect)
+  * [能否在运行 Azure AD Connect 的同一服务器上安装预配代理？](#can-i-install-the-provisioning-agent-on-the-same-server-running-azure-ad-connect)
   * [如何将预配代理配置为使用代理服务器来处理出站 HTTP 通信？](#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication)
   * [如何确保预配代理能够与 Azure AD 租户进行通信且防火墙不阻止代理所需的端口？](#how-do-i-ensure-that-the-provisioning-agent-is-able-to-communicate-with-the-azure-ad-tenant-and-no-firewalls-are-blocking-ports-required-by-the-agent)
   * [如何取消注册与我的预配代理相关联的域？](#how-do-i-de-register-the-domain-associated-with-my-provisioning-agent)
@@ -783,7 +787,7 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
   
 * **Workday 到 AD 属性映射和配置问题**
   * [如何备份或导出 Workday 预配属性映射和架构的工作副本？](#how-do-i-back-up-or-export-a-working-copy-of-my-workday-provisioning-attribute-mapping-and-schema)
-  * [我在工作日和活动目录中具有自定义属性。如何配置解决方案以使用我的自定义属性？](#i-have-custom-attributes-in-workday-and-active-directory-how-do-i-configure-the-solution-to-work-with-my-custom-attributes)
+  * [在 Workday 和 Active Directory 中有自定义属性。如何实现将解决方案配置为使用自定义属性？](#i-have-custom-attributes-in-workday-and-active-directory-how-do-i-configure-the-solution-to-work-with-my-custom-attributes)
   * [能否将用户的照片从 Workday 预配到 Active Directory？](#can-i-provision-users-photo-from-workday-to-active-directory)
   * [如何在用户同意公开使用后使用 Workday 中的手机号码？](#how-do-i-sync-mobile-numbers-from-workday-based-on-user-consent-for-public-usage)
   * [如何根据用户的部门/国家/地区/城市特性在 AD 中设置显示名的格式并处理区域差异问题？](#how-do-i-format-display-names-in-ad-based-on-the-users-departmentcountrycity-attributes-and-handle-regional-variances)
@@ -804,7 +808,7 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
 
 在新的 AD 帐户预配中，收尾步骤之一是传递分配给用户 AD 帐户的临时密码。 许多企业仍在使用传统方法来将临时密码传递给用户的经理，后者随后将密码移交给新员工/临时工。 此过程存在固有的安全漏洞，可使用 Azure AD 功能实现更好的方法。
 
-在雇佣过程中，HR 团队通常会运行人员背景检查并核验新员工的移动电话号码。 借助 Workday 到 AD 用户预配集成，可基于该项事实进行构建，并在第 1 天就为用户部署自助式密码重置功能。 这是通过宣传新员工从工作日从工作日到 AD 的"手机号码"属性，然后使用 Azure AD 连接从 AD 传播到 Azure AD 来实现的。 Azure AD 中显示“移动电话号码”之后，即可为用户帐户启用[自助式密码重置 (SSPR)](../authentication/howto-sspr-authenticationdata.md)，这样新员工在第 1 天新就可使用已注册且已验证的移动电话号码进行身份验证。
+在雇佣过程中，HR 团队通常会运行人员背景检查并核验新员工的移动电话号码。 借助 Workday 到 AD 用户预配集成，可基于该项事实进行构建，并在第 1 天就为用户部署自助式密码重置功能。 这是通过将新员工的 "Mobile Number" 属性从 Workday 传播到 AD，然后将 AD 从 AD 传播到 Azure AD 使用 Azure AD Connect 来实现的。 Azure AD 中显示“移动电话号码”之后，即可为用户帐户启用[自助式密码重置 (SSPR)](../authentication/howto-sspr-authenticationdata.md)，这样新员工在第 1 天新就可使用已注册且已验证的移动电话号码进行身份验证。
 
 #### <a name="does-the-solution-cache-workday-user-profiles-in-the-azure-ad-cloud-or-at-the-provisioning-agent-layer"></a>解决方案是否在 Azure AD 云端或预配代理层中缓存 Workday 用户个人资料？
 
@@ -812,19 +816,19 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
 
 #### <a name="does-the-solution-support-assigning-on-premises-ad-groups-to-the-user"></a>解决方案是否支持将本地 AD 组分配给用户？
 
-目前不支持此功能。 建议的解决方法是部署一个 PowerShell 脚本，该脚本查询 Microsoft 图形 API 终结点以访问[审核日志数据](https://docs.microsoft.com/graph/api/resources/azure-ad-auditlog-overview?view=graph-rest-beta)，并用它来触发组分配等方案。 可将此 PowerShell 脚本附加到任务计划程序，并将其部署到运行预配代理的框中。  
+目前不支持此功能。 建议的解决方法是部署 PowerShell 脚本，该脚本将查询 Microsoft Graph API 终结点以获取[审核日志数据](https://docs.microsoft.com/graph/api/resources/azure-ad-auditlog-overview?view=graph-rest-beta)，并使用该终结点触发组分配等方案。 可将此 PowerShell 脚本附加到任务计划程序，并将其部署到运行预配代理的框中。  
 
 #### <a name="which-workday-apis-does-the-solution-use-to-query-and-update-workday-worker-profiles"></a>解决方案使用哪些 Workday API 来查询和更新 Workday 工作人员个人资料？
 
 该解决方案当前使用以下 Workday API：
 
-* **"管理凭据**"部分中使用的**工作日 Web 服务 API URL**格式确定用于Get_Workers
-  * 如果 URL 格式为\#\#\#\#\.：https://工作\.日 com/ccx/服务/租户名称，则使用 API v21.1。 
-  * \#\#\#\#\.如果 URL 格式为：https://工作\.日 com/ccx/服务/租户名称\_/人力资源，则使用 API v21.1 
-  * 如果 URL 格式为：https://\#\#\#\#\.工作\.日 com/ccx/服务/租户名称\_/人力资源/v，\#\#\.\#则使用指定的 API 版本。 （示例：如果指定了 v34.0，则使用它。  
+* "**管理员凭据**" 部分中使用的**WORKDAY WEB 服务 API URL**格式确定用于 Get_Workers 的 API 版本
+  * 如果\#\#\#\#\.URL 格式为： https://workday\.com/ccx/service/tenantName，则使用 API v 21.1。 
+  * 如果 URL 格式为\#\#\#\#\.： https://workday\.com/ccx/service/tenantName/人力\_资源，则使用 API v 21。1 
+  * 如果\#\#\#\#\.URL 格式为： https://workday\.com/ccx/service/tenantName/\_人力资源/v\# \# \. \# ，则使用指定的 API 版本。 （示例：如果指定了 v 34.0，则使用它。）  
    
-* 工作日电子邮件回写功能使用Maintain_Contact_Information （v26.1） 
-* 工作日用户名回写功能使用Update_Workday_Account （v31.2） 
+* Workday 电子邮件写回功能使用 Change_Work_Contact_Information （30.0） 
+* Workday 用户名写回功能使用 Update_Workday_Account （31.2） 
 
 #### <a name="can-i-configure-my-workday-hcm-tenant-with-two-azure-ad-tenants"></a>能否使用两个 Azure AD 租户配置 Workday HCM 租户？
 
@@ -859,8 +863,8 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
 
 #### <a name="how-do-i-know-the-version-of-my-provisioning-agent"></a>如何知道我的预配代理的版本？
 
-* 登录到安装预配代理的 Windows 服务器。
-* 转到**控制面板** -> **卸载或更改程序**菜单
+* 登录到安装了预配代理的 Windows server。
+* 转到 **"控制面板" "** -> **卸载或更改程序**" 菜单
 * 查找与条目“Microsoft Azure AD Connect 预配代理”相对应的版本****
 
   ![Azure 门户](./media/workday-inbound-tutorial/pa_version.png)
@@ -869,9 +873,9 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
 
 是，Microsoft 会自动更新预配代理。 可通过停止 Windows 服务“Microsoft Azure AD Connect 代理更新程序”来禁用自动更新****。
 
-#### <a name="can-i-install-the-provisioning-agent-on-the-same-server-running-azure-ad-connect"></a>是否可以在同一运行 Azure AD 连接的服务器上安装预配代理？
+#### <a name="can-i-install-the-provisioning-agent-on-the-same-server-running-azure-ad-connect"></a>能否在运行 Azure AD Connect 的同一服务器上安装预配代理？
 
-可以，您可以在运行 Azure AD 连接的同一服务器上安装预配代理。
+是的，你可以在运行 Azure AD Connect 的同一服务器上安装设置代理。
 
 #### <a name="at-the-time-of-configuration-the-provisioning-agent-prompts-for-azure-ad-admin-credentials-does-the-agent-store-the-credentials-locally-on-the-server"></a>配置时，预配代理会提示输入 Azure AD 管理员凭据。 代理会将凭据存储在本地服务器上吗？
 
@@ -879,7 +883,7 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
 
 #### <a name="how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication"></a>如何将预配代理配置为使用代理服务器来处理出站 HTTP 通信？
 
-预配代理支持使用出站代理。 您可以通过编辑代理配置文件**C：\程序文件\微软 Azure AD 连接预配代理\AADConnect预配代理.exe.config**来配置它。在文件结尾端向结束`</configuration>`标记之前添加以下行。
+预配代理支持使用出站代理。 可以通过编辑**C:\Program Files\Microsoft Azure AD Connect 预配 Agent\AADConnectProvisioningAgent.exe.config**代理配置文件来配置该配置文件。将以下行添加到该文件的末尾，紧靠在结束`</configuration>`标记之前。
 将变量 [proxy-server] 和 [proxy-port] 替换为代理服务器名称和端口值。
 
 ```xml
@@ -896,12 +900,12 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
 
 #### <a name="how-do-i-ensure-that-the-provisioning-agent-is-able-to-communicate-with-the-azure-ad-tenant-and-no-firewalls-are-blocking-ports-required-by-the-agent"></a>如何确保预配代理能够与 Azure AD 租户进行通信且防火墙不阻止代理所需的端口？
 
-还可以通过从本地网络打开[连接器端口测试工具](https://aadap-portcheck.connectorporttest.msappproxy.net/)来检查是否打开了所有必需的端口。 绿色复选标记越多表示复原能力越强。
+还可以通过在本地网络中打开[连接器端口测试工具](https://aadap-portcheck.connectorporttest.msappproxy.net/)来检查是否已打开所有所需的端口。 绿色复选标记越多表示复原能力越强。
 
 为了确保工具提供正确的结果，请务必：
 
 * 在浏览器中通过安装有预配代理的服务器打开该工具。
-* 确保适用于预配代理的所有代理或防火墙也应用到该页面。 这可以通过去**设置 -> 互联网选项 -> 连接 -> LAN 设置**在 Internet 资源管理器中完成。 在该页面上，你会看到“为 LAN 使用代理服务器”字段。 选中此框，将代理地址输入“地址”字段。
+* 确保适用于预配代理的所有代理或防火墙也应用到该页面。 可以通过转到 "**设置-> Internet 选项-> 连接-> LAN 设置**"，在 internet Explorer 中完成此操作。 在该页面上，你会看到“为 LAN 使用代理服务器”字段。 选中此框，将代理地址输入“地址”字段。
 
 #### <a name="can-one-provisioning-agent-be-configured-to-provision-multiple-ad-domains"></a>能否将一个预配代理配置为预配多个 AD 域？
 
@@ -910,8 +914,8 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
 #### <a name="how-do-i-de-register-the-domain-associated-with-my-provisioning-agent"></a>如何取消注册与我的预配代理相关联的域？
 
 * 在 Azure 门户中，获取 Azure AD 租户的租户 ID**。
-* 登录到运行预配代理的 Windows 服务器。
-* 以 Windows 管理员身份打开电源外壳。
+* 登录到运行预配代理的 Windows server。
+* 以 Windows 管理员身份打开 PowerShell。
 * 切换到包含注册脚本的目录，并运行以下命令，将 \[租户 ID\] 参数替换为租户 ID 的值。
 
   ```powershell
@@ -920,7 +924,7 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
   Get-PublishedResources -TenantId "[tenant ID]"
   ```
 
-* 从显示的代理列表中复制资源中`id`字段的值，其*资源名称*等于 AD 域名。
+* 从显示的代理列表中，将`id`字段的值从其名称等于你的 AD *resourceName*域名的资源中复制。
 * 将 ID 值粘贴到此命令中，并在 PowerShell 中执行该命令。
 
   ```powershell
@@ -932,8 +936,8 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
 
 #### <a name="how-do-i-uninstall-the-provisioning-agent"></a>如何卸载预配代理？
 
-* 登录到安装预配代理的 Windows 服务器。
-* 转到**控制面板** -> **卸载或更改程序**菜单
+* 登录到安装了预配代理的 Windows server。
+* 转到 **"控制面板" "** -> **卸载或更改程序**" 菜单
 * 卸载以下程序：
   * Microsoft Azure AD Connect 预配代理
   * Microsoft Azure AD Connect 代理更新程序
@@ -975,7 +979,7 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
 * 单击“属性映射” 
 * 在“映射”下，选择“将 Workday 工作人员同步到本地 Active Directory”（或“将 Workday 工作人员同步到 Azure AD”）************。
 * 在“属性映射”页面上，向下滚动并选中“显示高级选项”框。  单击“编辑 Workday 属性列表”****
-* 在打开的边栏选项卡中，找到"移动"属性并单击该行，以便您可以编辑**API 表达式**![移动 GDPR](./media/workday-inbound-tutorial/mobile_gdpr.png)
+* 在打开的边栏选项卡中，找到 "Mobile" 特性并单击该行，以便可以编辑**API 表达式** ![Mobile GDPR](./media/workday-inbound-tutorial/mobile_gdpr.png)
 
 * 将 API 表达式替换为下列的新表达式，后者仅当 Workday 中的“公开使用标志”设置为“True”时，才会检索工作手机号码****。
 
@@ -989,9 +993,9 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
 
 #### <a name="how-do-i-format-display-names-in-ad-based-on-the-users-departmentcountrycity-attributes-and-handle-regional-variances"></a>如何根据用户的部门/国家/地区/城市特性在 AD 中设置显示名的格式并处理区域差异问题？
 
-在 AD 中配置*displayName*属性是常见要求，以便它还提供有关用户的部门和国家/地区的信息。 例如，如果 John Smith 就职于美国市场营销部门，则你希望他的 displayName 显示为“Smith, John (Marketing-US)”****。
+通常需要在 AD 中配置*displayName*属性，以便它还提供有关用户的部门和国家/地区的信息。 例如，如果 John Smith 就职于美国市场营销部门，则你希望他的 displayName 显示为“Smith, John (Marketing-US)”****。
 
-以下是如何处理构建*CN*或*显示名称*以包括公司、业务单位、城市或国家/地区等属性的此类要求。
+下面介绍如何处理这些要求，这些要求用于构造*CN*或*displayName*以包括公司、业务部门、城市或国家/地区之类的属性。
 
 * 每个 Workday 属性均通过基础 XPATH API 表达式进行检索，后者可在“属性映射”->“高级部分”->“编辑 Workday 属性列表”中进行配置****。 下面是 Workday 的 PreferredFirstName、PreferredLastName、Company 和 SupervisoryOrganization 属性的默认 XPATH API 表达式********。
 
@@ -1018,12 +1022,12 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
 
   咨询 Workday 团队，确认上述 API 表达式对 Workday 租户配置而言有效。 如有必要，可按[自定义 Workday 用户属性列表](#customizing-the-list-of-workday-user-attributes)部分中所述进行编辑。
 
-* 要生成正确的属性映射表达式，请确定哪个工作日属性"权威"表示用户的名字、姓氏、国家/地区和部门。 假设属性分别是 PreferredFirstName、PreferredLastName、CountryReferenceTwoLetter 和 SupervisoryOrganization********。 可使用此方法为 AD 的 displayName 属性构建表达式（如下所示），以获取显示名称，例如“Smith, John (Marketing-US)”****。
+* 若要生成正确的属性映射表达式，请标识哪个 Workday 属性 "权威" 代表用户的名字、姓氏、国家/地区和部门。 假设属性分别是 PreferredFirstName、PreferredLastName、CountryReferenceTwoLetter 和 SupervisoryOrganization********。 可使用此方法为 AD 的 displayName 属性构建表达式（如下所示），以获取显示名称，例如“Smith, John (Marketing-US)”****。
 
     ```
      Append(Join(", ",[PreferredLastName],[PreferredFirstName]), Join(""," (",[SupervisoryOrganization],"-",[CountryReferenceTwoLetter],")"))
     ```
-    获得正确的表达式后，编辑属性映射表并修改*显示名称*属性映射，如下所示：![显示名称映射](./media/workday-inbound-tutorial/wd_displayname_map.png)
+    获得正确的表达式后，编辑属性映射表并修改*displayname*属性映射，如下所示： ![displayName 映射](./media/workday-inbound-tutorial/wd_displayname_map.png)
 
 * 扩充上面的示例，假设你想要将 Workday 中的城市名称转换为速记值，再用它来构建显示名称，例如“Smith, John (CHI)”或“Doe, Jane (NYC)”，然后就可通过采用 Workday“Municipality”属性作为判定变量的 Switch 表达式来检索该结果******。
 
@@ -1054,7 +1058,7 @@ SelectUniqueValue(
 )
 ```
 
-上述表达式的工作原理：如果用户是约翰·史密斯，它首先尝试生成 JSmith，如果 JSmith 已经存在，则生成 JoSmith，如果存在，则生成 JohSmith。 该表达式还确保所生成的值满足与 samAccountName 相关的长度限制和特殊字符限制**。
+上述表达式的工作方式：如果用户为 John Smith，则它首先尝试生成 JSmith，如果 JSmith 已经存在，则它会生成 JoSmith （如果存在），它将生成 JohSmith。 该表达式还确保所生成的值满足与 samAccountName 相关的长度限制和特殊字符限制**。
 
 另请参阅：
 
@@ -1068,7 +1072,7 @@ SelectUniqueValue(
 
 ## <a name="troubleshooting-tips"></a>故障排除提示
 
-本部分提供具体指导，其中介绍如何使用 Azure AD 审核日志和 Windows Server 事件查看器日志来排查 Workday 集成方面的预配问题。 它基于教程中捕获的通用故障排除步骤和概念[：报告自动用户帐户预配](../app-provisioning/check-status-user-account-provisioning.md)
+本部分提供具体指导，其中介绍如何使用 Azure AD 审核日志和 Windows Server 事件查看器日志来排查 Workday 集成方面的预配问题。 它基于教程中捕获的一般故障排除步骤和概念构建[：有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)
 
 本部分涵盖了疑难解答的以下方面：
 
@@ -1080,7 +1084,7 @@ SelectUniqueValue(
 
 ### <a name="setting-up-windows-event-viewer-for-agent-troubleshooting"></a>设置 Windows 事件查看器来排查代理方面的问题
 
-* 登录到部署预配代理的 Windows 服务器计算机
+* 登录到部署预配代理的 Windows Server 计算机
 * 打开“Windows Server 事件查看器”桌面应用****。
 * 选择“Windows 日志”>“应用程序”。****
 * 使用“筛选当前日志…”**** 选项，以查看在源 AAD.Connect.ProvisioningAgent 下记录的所有事件，然后通过如下指定筛选器“-5”来排除事件 ID 为“5”的事件****。
@@ -1106,11 +1110,11 @@ SelectUniqueValue(
 
 当检测到 Workday 中存在新员工时（假设使用员工 ID 21023），Azure AD 预配服务会尝试为该员工创建一个新的 AD 用户帐户，并在此过程中如下创建 4 个审核日志记录，**：
 
-  [![审核日志创建操作](media/workday-inbound-tutorial/wd_audit_logs_02.png)](media/workday-inbound-tutorial/wd_audit_logs_02.png#lightbox)
+  [![审核日志创建 ops](media/workday-inbound-tutorial/wd_audit_logs_02.png)](media/workday-inbound-tutorial/wd_audit_logs_02.png#lightbox)
 
 单击任意审核日志记录时，会打开“活动详细信息”页面****。 下面是“活动详细信息”页面上显示的每个日志记录类型的相关内容****。
 
-* **工作日导入**记录：此日志记录显示从工作日获取的工作信息。 请使用日志记录的“其他详细信息”部分中的信息来排查从 Workday 提取数据时遇到的问题**。 下面显示了一个示例记录，还显示了有关如何解释每个字段的指针。
+* **Workday 导入**记录：此日志记录显示从 Workday 提取的辅助角色信息。 请使用日志记录的“其他详细信息”部分中的信息来排查从 Workday 提取数据时遇到的问题**。 下面显示了一个示例记录，还显示了有关如何解释每个字段的指针。
 
   ```JSON
   ErrorCode : None  // Use the error code captured here to troubleshoot Workday issues
@@ -1119,7 +1123,7 @@ SelectUniqueValue(
   SourceAnchor : a071861412de4c2486eb10e5ae0834c3 // set to the WorkdayID (WID) associated with the record
   ```
 
-* **AD 导入**记录：此日志记录显示从 AD 提取的帐户的信息。 由于初始用户创建期间没有 AD 帐户，因此活动状态原因将指示未在 Active Directory 中找到具有 Matching ID 属性值的帐户**。 请使用日志记录的“其他详细信息”部分中的信息来排查从 Workday 提取数据时遇到的问题**。 下面显示了一个示例记录，还显示了有关如何解释每个字段的指针。
+* **AD 导入**记录：此日志记录显示从 AD 获取的帐户的信息。 由于初始用户创建期间没有 AD 帐户，因此活动状态原因将指示未在 Active Directory 中找到具有 Matching ID 属性值的帐户**。 请使用日志记录的“其他详细信息”部分中的信息来排查从 Workday 提取数据时遇到的问题**。 下面显示了一个示例记录，还显示了有关如何解释每个字段的指针。
 
   ```JSON
   ErrorCode : None // Use the error code captured here to troubleshoot Workday issues
@@ -1139,7 +1143,7 @@ SelectUniqueValue(
 
   ![LDAP 结果](media/workday-inbound-tutorial/wd_event_viewer_04.png)
 
-* **同步规则操作**记录：此日志记录显示属性映射规则和已配置的范围筛选器的结果，以及处理传入工作日事件将执行的预配操作。 请使用日志记录的“其他详细信息”部分中的信息来排查同步操作问题**。 下面显示了一个示例记录，还显示了有关如何解释每个字段的指针。
+* **同步规则操作**记录：此日志记录显示属性映射规则和配置的范围筛选器的结果，以及将用于处理传入 Workday 事件的预配操作。 请使用日志记录的“其他详细信息”部分中的信息来排查同步操作问题**。 下面显示了一个示例记录，还显示了有关如何解释每个字段的指针。
 
   ```JSON
   ErrorCode : None // Use the error code captured here to troubleshoot sync issues
@@ -1150,7 +1154,7 @@ SelectUniqueValue(
 
   如果属性映射表达式或传入的 Workday 数据存在问题（例如，所需属性的值为空或为 null），则此阶段将失败，且 ErrorCode 将提供失败详细信息。
 
-* **AD 导出**记录：此日志记录显示 AD 帐户创建操作的结果以及进程中设置的属性值。 请使用日志记录的“其他详细信息”部分中的信息来排查帐户创建操作问题**。 下面显示了一个示例记录，还显示了有关如何解释每个字段的指针。 在“其他详细信息”部分中，“EventName”设置为“EntryExportAdd”，“JoiningProperty”设置为 Matching ID 属性的值，“SourceAnchor”设置为与记录关联的 WorkdayID (WID)，而“TargetAnchor”设置为新建用户的 AD“ObjectGuid”属性的值。 
+* **Ad 导出**记录：此日志记录显示 AD 帐户创建操作的结果和进程中设置的属性值。 请使用日志记录的“其他详细信息”部分中的信息来排查帐户创建操作问题**。 下面显示了一个示例记录，还显示了有关如何解释每个字段的指针。 在“其他详细信息”部分中，“EventName”设置为“EntryExportAdd”，“JoiningProperty”设置为 Matching ID 属性的值，“SourceAnchor”设置为与记录关联的 WorkdayID (WID)，而“TargetAnchor”设置为新建用户的 AD“ObjectGuid”属性的值。 
 
   ```JSON
   ErrorCode : None // Use the error code captured here to troubleshoot AD account creation issues
@@ -1205,9 +1209,9 @@ manager 属性是 AD 中的引用属性。 预配服务不会将 manager 属性�
 
 |#|错误场景 |可能的原因|推荐的解决方案|
 |--|---|---|---|
-|1.| 使用错误消息安装预配代理时出错：*服务"微软 Azure AD 连接预配代理"（AADConnect 预配代理）无法启动。验证您是否有足够的权限启动系统。* | 如果尝试在域控制器上安装预配代理，而组策略阻止服务启动，通常就会显示此错误。  如果正在运行代理的旧版本，并且在启动新的安装项之前未安装代理，则也会看见此消息。| 在非 DC 服务器上安装预配代理。 请务必在安装新代理之前卸载旧版本的代理。|
-|2.| Windows 服务“Microsoft Azure AD Connect Provisioning Agent”处于“正在启动”状态，且未切换到“正在运行”状态****。 | 作为安装的一部分，代理向导在服务器上创建一个本地帐户 **（NT 服务\\AADConnect 预配代理**），这是用于启动服务的登录帐户。 如果 Windows Server 上的安全策略阻止从本地帐户运行服务，则将遇到此错误。 | 请打开服务控制台**。 右键单击 Windows 服务"Microsoft Azure AD 连接预配代理"，并在登录选项卡中指定域管理员的帐户以运行该服务。 重启服务。 |
-|3.| 在步骤*Connect 活动目录中*使用 AD 域配置预配代理时，向导需要很长时间才能尝试加载 AD 架构并最终超时。 | 如果由于防火墙问题导致向导无法连接 AD 域控制器服务器，则通常会显示此错误。 | 在 *"连接活动目录"* 向导屏幕上，在提供 AD 域凭据的同时，有一个选项称为 *"选择域控制器优先级*"。 使用此选项可选择与代理服务器位于同一站点的域控制器，并确保防火墙规则均未阻止通信。 |
+|1.| 安装预配代理时出错，错误消息：*服务 "Microsoft Azure AD 连接预配代理" （AADConnectProvisioningAgent）无法启动。请确认您有足够的特权启动系统。* | 如果尝试在域控制器上安装预配代理，而组策略阻止服务启动，通常就会显示此错误。  如果正在运行代理的旧版本，并且在启动新的安装项之前未安装代理，则也会看见此消息。| 在非 DC 服务器上安装预配代理。 请务必在安装新代理之前卸载旧版本的代理。|
+|2.| Windows 服务“Microsoft Azure AD Connect Provisioning Agent”处于“正在启动”状态，且未切换到“正在运行”状态****。 | 作为安装的一部分，代理向导将在服务器上创建一个本地帐户（**NT Service\\AADConnectProvisioningAgent**），这是用于启动该服务的登录帐户。 如果 Windows Server 上的安全策略阻止从本地帐户运行服务，则将遇到此错误。 | 请打开服务控制台**。 右键单击 Windows 服务 "Microsoft Azure AD 连接设置代理"，然后在 "登录" 选项卡中指定域管理员帐户以运行服务。 重启服务。 |
+|3.| 当在步骤*连接 Active Directory*中配置 ad 域的预配代理时，向导会花费很长时间来尝试加载 ad 架构并最终超时。 | 如果由于防火墙问题导致向导无法连接 AD 域控制器服务器，则通常会显示此错误。 | 在 "*连接 Active Directory*向导" 屏幕上，提供 AD 域的凭据时，有一个名为 "*选择域控制器优先级*" 的选项。 使用此选项可选择与代理服务器位于同一站点的域控制器，并确保防火墙规则均未阻止通信。 |
 
 #### <a name="connectivity-errors"></a>连接错误
 
@@ -1215,7 +1219,7 @@ manager 属性是 AD 中的引用属性。 预配服务不会将 manager 属性�
 
 |#|错误场景 |可能的原因|推荐的解决方案|
 |--|---|---|---|
-|1.| 单击 **"测试连接**"时，会收到错误消息：*连接到活动目录时出错。请确保本地预配代理正在运行，并且配置了正确的活动目录域。* | 如果预配代理当前未运行或 Azure AD 与预配代理之间有防火墙阻止通信，则通常会显示此错误。 如果代理向导中未配置域，也可能显示此错误。 | 请打开 Windows 服务器上的服务控制台来确定代理正在运行**。 打开预配代理向导并确认向代理注册了正确的域。  |
+|1.| 单击 "**测试连接**" 时，会收到错误消息：*连接到 Active Directory 时出错。请确保本地预配代理正在运行，并且已配置正确的 Active Directory 域。* | 如果预配代理当前未运行或 Azure AD 与预配代理之间有防火墙阻止通信，则通常会显示此错误。 如果代理向导中未配置域，也可能显示此错误。 | 请打开 Windows 服务器上的服务控制台来确定代理正在运行**。 打开预配代理向导并确认向代理注册了正确的域。  |
 |2.| 预配作业在周末（周五至周六）进入隔离状态，且我们收到一封电子邮件通知，其中指出同步出错。 | 导致此错误的常见原因之一是所计划的 Workday 停机时间。 如果要使用 Workday 实现租户，则请注意，Workday 安排了在周末（通常是从周五晚上到周六早上）对其实现租户停机，在此期间，Workday 预配应用可能会进入隔离状态，因而无法连接到 Workday。 一旦 Workday 实现租户重新上线，该应用即恢复正常状态。 在极少数情况下，如果因租户刷新而出现集成系统用户密码更改，或者帐户处于锁定或过期状态，则也可能看到此错误。 | 请咨询 Workday 管理员或集成合作伙伴，了解 Workday 何时安排停机时间，从而忽略停机期间出现的警报消息，并在 Workday 实例重新联机后确认其是否可用。  |
 
 
@@ -1223,8 +1227,8 @@ manager 属性是 AD 中的引用属性。 预配服务不会将 manager 属性�
 
 |#|错误场景 |可能的原因|推荐的解决方案|
 |--|---|---|---|
-|1.| 在审核日志中导出操作失败，并显示消息*错误：操作错误-SvcErr：发生操作错误。尚未为目录服务配置高级引用。因此，目录服务无法对此林外部的对象发出引用。* | 如果*活动目录容器*OU 设置不正确，或者用于*父分母名称*的表达式映射出现问题，则通常会显示此错误。 | 请检查 Active Directory 容器 OU 参数是否有拼写错误**。 如果在属性映射中使用 parentDistinguishedName，请确保它始终计算得出 AD 域中的已知容器**。 检查审核日志中的导出事件，查看所生成的值**。 |
-|2.| 使用错误代码的审核日志中的导出操作失败 *：SystemForCrossDomain身份管理巴德响应*和消息*错误：约束冲突-AtrErr：请求中的值无效。属性的值不在可接受的值范围内。\n错误详细信息： CONSTRAINT_ATT_TYPE - 公司*. | 虽然此错误特定于 company 属性，但 CN 等其他属性也可能出现此错误****。 由于 AD 强制架构约束而出现此错误。 默认情况下，AD 中的属性（例如 company 和 CN）的字符数上限为 64 个字符****。 如果 Workday 中的值超过 64 个字符，则将看到此错误消息。 | 请检查审核日志中的导出事件，查看错误消息中报告的属性的值**。 考虑使用 [Mid](../app-provisioning/functions-for-customizing-application-data.md#mid) 函数截断来自 Workday 的值，或者将映射更改为不具有类似长度约束的 AD 属性。  |
+|1.| 审核日志中的导出操作失败，出现*以下消息错误： OperationsError-SvcErr：发生操作错误。没有为目录服务配置上级引用。因此，目录服务无法向此林之外的对象发出引用。* | 如果未正确设置*Active Directory 容器*OU 或用于*ParentDistinguishedName*的表达式映射存在问题，则通常会出现此错误。 | 请检查 Active Directory 容器 OU 参数是否有拼写错误**。 如果在属性映射中使用 parentDistinguishedName，请确保它始终计算得出 AD 域中的已知容器**。 检查审核日志中的导出事件，查看所生成的值**。 |
+|2.| 审核日志中的导出操作失败，错误代码为： *SystemForCrossDomainIdentityManagementBadResponse* ，消息*错误： ConstraintViolation-AtrErr：请求中的值无效。属性的值不在可接受的值范围内。\N 详细信息： CONSTRAINT_ATT_TYPE 公司*。 | 虽然此错误特定于 company 属性，但 CN 等其他属性也可能出现此错误****。 由于 AD 强制架构约束而出现此错误。 默认情况下，AD 中的属性（例如 company 和 CN）的字符数上限为 64 个字符****。 如果 Workday 中的值超过 64 个字符，则将看到此错误消息。 | 请检查审核日志中的导出事件，查看错误消息中报告的属性的值**。 考虑使用 [Mid](../app-provisioning/functions-for-customizing-application-data.md#mid) 函数截断来自 Workday 的值，或者将映射更改为不具有类似长度约束的 AD 属性。  |
 
 #### <a name="ad-user-account-update-errors"></a>AD 用户帐户更新错误
 
@@ -1254,7 +1258,7 @@ Azure AD 预配服务支持自定义列表或 Workday 属性，以包含人力�
 
 1. 下载并安装 [Workday Studio](https://community.workday.com/studio-download)。 需要使用 Workday 社区帐户来访问安装程序。
 
-2. 通过以下 URL 下载 Workday Human_Resources WSDL 文件：https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Human_Resources.wsdl
+2. 下载特定于你计划在[Workday Web 服务目录](https://community.workday.com/sites/default/files/file-hosting/productionapi/index.html)中使用的 WWS API 版本的 Workday **Human_Resources** WSDL 文件
 
 3. 启动 Workday Studio。
 
@@ -1268,13 +1272,13 @@ Azure AD 预配服务支持自定义列表或 Workday 属性，以包含人力�
 
 7. 将“操作”设置为 **Get_Workers******
 
-8.  单击“请求/响应”窗格下面的“配置”链接设置 Workday 凭据。**** 选中“身份验证”，并输入 Workday 集成系统帐户的用户名和密码。**** 请确保将用户名格式化为名称\@租户，并保留**WS-Security 用户名令牌**选项。
+8.  单击“请求/响应”窗格下面的“配置”链接设置 Workday 凭据。**** 选中“身份验证”，并输入 Workday 集成系统帐户的用户名和密码。**** 请确保将用户名的名称设置为 "\@租户"，并选择 " **WS 安全 UsernameToken** " 选项。
 
     ![Workday Studio](./media/workday-inbound-tutorial/wdstudio2.png)
 
 9. 选择“确定”  。
 
-10. 在“请求”窗格中，粘贴到下面的 XML 中，并将“Employee_ID”设置为 Workday 租户中某位真实用户的员工 ID。******** 选择一个已填充想要提取的属性的用户。
+10. 在 "**请求**" 窗格中，粘贴以下 XML。 将**Employee_ID**设置为 Workday 租户中实际用户的雇员 ID。 将**wd：版本**设置为你计划使用的 WWS 版本。 选择一个已填充想要提取的属性的用户。
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -1343,7 +1347,7 @@ Azure AD 预配服务支持自定义列表或 Workday 属性，以包含人力�
 
 8. 对于“类型”，请选择对应于属性的类型（最常用的选项是“字符串”）。********
 
-9. 对于“API 表达式”，请输入从 Workday Studio 复制的 XPath 表达式。**** 示例： `wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Birth_Date/text()`
+9. 对于“API 表达式”，请输入从 Workday Studio 复制的 XPath 表达式。**** 示例：`wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Birth_Date/text()`
 
 10. 选择“添加属性”。****
 
@@ -1363,7 +1367,7 @@ Azure AD 预配服务支持自定义列表或 Workday 属性，以包含人力�
 
 ### <a name="exporting-and-importing-your-configuration"></a>导出和导入配置
 
-请参阅文章[导出和导入预配配置](../app-provisioning/export-import-provisioning-configuration.md)
+请参阅[导出和导入预配配置](../app-provisioning/export-import-provisioning-configuration.md)一文
 
 ## <a name="managing-personal-data"></a>管理个人数据
 

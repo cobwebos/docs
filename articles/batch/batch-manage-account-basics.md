@@ -1,27 +1,17 @@
 ---
-title: 管理您的帐户 - Azure 批处理 |微软文档
-description: 了解 Azure 批处理帐户的组成内容
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: 3fbae545-245f-4c66-aee2-e25d7d5d36db
-ms.service: batch
-ms.workload: big-compute
-ms.tgt_pltfrm: na
+title: 管理帐户
+description: 了解什么是 Azure Batch 帐户
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ecae47f6aa0ab3f179632467b7da7805f06162d6
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: ce0c612e3434249c0c7d078949b10e0b9f6b1f10
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397264"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116003"
 ---
-# <a name="manage-your-batch-account"></a>管理您的批次帐户
+# <a name="manage-your-batch-account"></a>管理 Batch 帐户
 
 批处理帐户是批处理服务中唯一标识的实体。 所有处理都与一个 Batch 帐户相关联。
 
@@ -29,36 +19,36 @@ ms.locfileid: "80397264"
 
 可以在单个批处理帐户中运行多个批处理工作负荷，或者在相同订阅的不同 Azure 区域的批处理帐户之间分散工作负荷。
 
-## <a name="components-of-the-batch-account"></a>批处理帐户的组件
+## <a name="components-of-the-batch-account"></a>Batch 帐户的组件
 
-Batch 帐户使您能够在 Azure 中高效地运行大规模并行和高性能计算 （HPC） 批处理作业。 在您管理的帐户中：
+Batch 帐户允许在 Azure 中高效运行大规模并行和高性能计算（HPC） Batch 作业。 在你管理的帐户中：
 
 - 正在运行的应用程序
 
-- 池内池和节点的分配
+- 池和池中的节点分配
 
-- 任务的数量和类型 
+- 任务的数目和类型 
 
-- 数据的输入和输出。 您无需安装其他软件来管理任务。
+- 数据的输入和输出。 不需要安装其他软件来管理任务。
 
-- 创建 Batch 帐户时，系统会要求您为其分配名称。 此名称是其 ID，分配后无法更改。
+- 创建批处理帐户时，系统将要求你为该帐户分配一个名称。 此名称是其 ID，分配后无法更改。
 
-- 要更改帐户的名称，您需要将其删除并创建新的 Batch 帐户。
+- 若要更改帐户的名称，需要将其删除并创建新的 Batch 帐户。
 
-- 帐户是在要使用的订阅中创建的。
+- 此帐户是在要使用的订阅中创建的。
 
-- 使用 该帐户从订阅中的任何 Batch 帐户标识和检索主帐户密钥和辅助帐户密钥。
+- 使用该帐户从你的订阅中的任何 Batch 帐户标识并检索主要和辅助帐户密钥。
 
-- 该帐户维护有关池分配和核心配额的信息。  
+- 帐户维护有关池分配和核心配额的信息。  
 
-- 该帐户包含位置信息。
+- 帐户包含位置信息。
 
-- 该帐户标识您的存储帐户。
+- 帐户用于标识存储帐户。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 使用[Azure 门户](batch-account-create-portal.md)创建批处理帐户。
-- 以编程方式创建批处理帐户，例如使用[批处理管理 .NET 库](batch-management-dotnet.md)。
-- [配置或禁用对 Azure 批处理池中的计算节点的远程访问](pool-endpoint-configuration.md)。
+- 以编程方式创建批处理帐户，如使用[批处理管理 .net 库](batch-management-dotnet.md)。
+- [配置或禁用对 Azure Batch 池中计算节点的远程访问](pool-endpoint-configuration.md)。
 - [在 Batch 计算节点上运行作业准备和作业发布任务](batch-job-prep-release.md)
 

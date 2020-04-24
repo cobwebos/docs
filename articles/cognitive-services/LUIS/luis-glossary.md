@@ -10,27 +10,27 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 4f78b4c50f4cd65f3dc32c48cea81b705dc44de1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f764b0d42e08e68b45d49a5aae8542f05707ccde
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79220948"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82099353"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>对包含常见词汇和概念的术语表进行语言理解
 语言理解 (LUIS) 术语表解释使用 LUIS API 服务时可能遇到的术语。
 
 ## <a name="active-version"></a><a name="active-version"></a>活动版本
 
-活动 LUIS 版本是接收所有模型更改的版本。 在[LUIS](luis-reference-regions.md)门户中，如果要对非活动版本的版本进行更改，则需要首先将该版本设置为活动版本。
+活动 LUIS 版本是接收所有模型更改的版本。 在[LUIS](luis-reference-regions.md)门户中，如果要对非活动版本的版本进行更改，则需要先将该版本设置为 "活动"。
 
 ## <a name="authoring"></a><a name="authoring"></a>创作
 
-创作是使用[LUIS](luis-reference-regions.md)门户或[创作 API](https://go.microsoft.com/fwlink/?linkid=2092087)创建、管理和部署[LUIS 应用](#luis-app)的能力。
+创作是指使用[LUIS](luis-reference-regions.md)门户或[创作 api](https://go.microsoft.com/fwlink/?linkid=2092087)创建、管理和部署[LUIS 应用程序](#luis-app)的功能。
 
 ## <a name="authoring-key"></a><a name="authoring-key"></a>创作密钥
 
-以前名为“编程”密钥。 用于创作应用。 不用于生产级别的终结点查询。 有关详细信息，请参阅[密钥限制](luis-boundaries.md#key-limits)。
+以前名为“编程”密钥。 用于创作应用。 不用于生产级别的终结点查询。 有关详细信息，请参阅[密钥限制](luis-limits.md#key-limits)。
 
 ## <a name="batch-test-json-file"></a><a name="batch-test-json-file"></a>批处理测试 JSON 文件
 
@@ -45,17 +45,17 @@ ms.locfileid: "79220948"
 
 协作者/参与者不是应用的[所有者](#owner)，但具有相同权限，可以添加、编辑和删除意向、实体和话语。
 
-## <a name="contributor"></a><a name="contributor"></a>贡献
+## <a name="contributor"></a><a name="contributor"></a>参与者
 
 参与者与[协作者](#collaborator)相同。
 
-## <a name="descriptor"></a><a name="descriptor"></a>描述 符
+## <a name="descriptor"></a><a name="descriptor"></a>描述符
 
-描述[符是在训练](#features)时应用于模型的功能，包括[短语列表](#phrase-list)和[实体](#entity)。 
+描述符是在定型时间应用于模型的一种[功能](#features)，其中包括[短语列表](#phrase-list)和[实体](#entity)。
 
 ## <a name="domain"></a><a name="domain"></a>域
 
-在 LUIS 上下文中，域是一个知识领域****。 域特定于应用的知识领域。 这可以是一个宽泛领域，例如旅行代理应用。 旅行代理应用还可特定于公司的信息领域，例如特定的地理位置、语言和服务。
+在 LUIS 上下文中，域是一个知识领域  。 域特定于应用的知识领域。 这可以是一个宽泛领域，例如旅行代理应用。 旅行代理应用还可特定于公司的信息领域，例如特定的地理位置、语言和服务。
 
 ## <a name="endpoint"></a><a name="endpoint"></a>终结点
 
@@ -69,31 +69,31 @@ ms.locfileid: "79220948"
 
 在[批处理测试](luis-interactive-test.md#batch-testing)中，它是有关测试准确度的一个度量值。
 
-## <a name="false-negative-fn"></a><a name="false-negative"></a>假负数 （FN）
+## <a name="false-negative-fn"></a><a name="false-negative"></a>假负（FN）
 
 在[批处理测试](luis-interactive-test.md#batch-testing)中，数据点表示某些话语，其中，应用错误地预测了目标意向/实体的缺失。
 
-## <a name="false-positive-fp"></a><a name="false-positive"></a>误报 （FP）
+## <a name="false-positive-fp"></a><a name="false-positive"></a>假正（FP）
 
 在[批处理测试](luis-interactive-test.md#batch-testing)中，数据点表示某些话语，其中，应用错误地预测了目标意向/实体的存在。
 
-## <a name="features"></a><a name="features"></a>特征
+## <a name="features"></a><a name="features"></a>功能
 
 在机器学习中，[特征](luis-concept-feature.md)是系统观察到的数据的特征或特有属性。
 
-## <a name="intent"></a><a name="intent"></a>意图
+## <a name="intent"></a><a name="intent"></a>Intent
 
-[意图](luis-concept-intent.md)表示用户要执行的任务或操作。 系指用户输入的内容中所表达的目的或目标，比如预订航班、支付帐单或查找新闻文章。 在 LUIS 中，意向预测基于整个话语。 而实体是话语片段。
+[意向](luis-concept-intent.md)代表用户要执行的任务或操作。 系指用户输入的内容中所表达的目的或目标，比如预订航班、支付帐单或查找新闻文章。 在 LUIS 中，意向预测基于整个话语。 而实体是话语片段。
 
 ## <a name="labeling"></a><a name="labeling"></a>标记
 
-标记或标记是将意图[话语](#utterance)中的单词或短语与[实体](#entity)（数据类型）相关联的过程。
+标记或标记是将意图[查询文本](#utterance)中的词或短语与[实体](#entity)（数据类型）关联的过程。
 
 ## <a name="luis-app"></a><a name="luis-app"></a>LUIS 应用
 
-LUIS 应用程序是用于自然语言处理的语言模型的集合，包括[意图](#intent)、[实体](#entity)和标记[的话语](#utterance)。
+LUIS 应用是一系列用于自然语言处理的语言模型，包括[意向](#intent)、[实体](#entity)和标记[最谈话](#utterance)。
 
-## <a name="owner"></a><a name="owner"></a>所有者
+## <a name="owner"></a><a name="owner"></a>“所有者”
 
 每个应用都有一个所有者，即创建应用的人。 所有者可以添加[协作者](#collaborator)。
 
@@ -112,7 +112,7 @@ LUIS 应用程序是用于自然语言处理的语言模型的集合，包括[�
 
 [预生成的实体](luis-prebuilt-entities.md)是 LUIS 为常用信息类型提供的实体（例如数字、URL 和电子邮件）。 选择将预生成的实体添加到自己的应用程序。
 
-## <a name="precision"></a><a name="precision"></a>精度
+## <a name="precision"></a><a name="precision"></a>Precision
 在[批处理测试](luis-interactive-test.md#batch-testing)中，精度（也称为正预测值）是所检索的话语中相关话语的分数。
 
 ## <a name="programmatic-key"></a><a name="programmatic-key"></a>编程密钥
@@ -121,9 +121,9 @@ LUIS 应用程序是用于自然语言处理的语言模型的集合，包括[�
 
 ## <a name="publish"></a><a name="publish"></a>发布
 
-发布指在暂存或生产[终结点](#endpoint)上提供一个 LUIS 活动版本。  
+发布指在暂存或生产[终结点](#endpoint)上提供一个 LUIS 活动版本。
 
-## <a name="quota"></a><a name="quota"></a>配额
+## <a name="quota"></a><a name="quota"></a>限制
 
 LUIS 配额是 [Azure 订阅层](https://aka.ms/luis-price-tier)的限制。 可同时通过每秒请求数（HTTP 状态 429）和每月请求总数（HTTP 状态 403）来限制 LUIS 配额。
 
@@ -136,7 +136,7 @@ LUIS 配额是 [Azure 订阅层](https://aka.ms/luis-price-tier)的限制。 可
 ## <a name="sentiment-analysis"></a><a name="sentiment-analysis"></a>情绪分析
 情绪分析提供[文本分析](https://azure.microsoft.com/services/cognitive-services/text-analytics/)所提供的话语的正值或负值。
 
-## <a name="speech-priming"></a><a name="speech-priming"></a>语音启动
+## <a name="speech-priming"></a><a name="speech-priming"></a>语音填充
 
 语音启动允许使用 LUIS 模型预先准备语音服务。
 
@@ -169,7 +169,7 @@ LUIS 配额是 [Azure 订阅层](https://aka.ms/luis-price-tier)的限制。 可
 ## <a name="token"></a><a name="token"></a>令牌
 标记是实体中可标记的最小单位。 词汇切分基于应用程序的[区域性](luis-language-support.md#tokenization)。
 
-## <a name="train"></a><a name="train"></a>火车
+## <a name="train"></a><a name="train"></a>定型
 
 训练指让 LUIS 了解并习得自上次训练之后对活动版本所做的更改的过程。
 
@@ -181,7 +181,7 @@ LUIS 配额是 [Azure 订阅层](https://aka.ms/luis-price-tier)的限制。 可
 
 在[批处理测试](luis-interactive-test.md#batch-testing)中，数据点表示某些话语，其中，应用正确地预测了目标意向/实体的存在。
 
-## <a name="utterance"></a><a name="utterance"></a>单条话语
+## <a name="utterance"></a><a name="utterance"></a>话语
 
 话语是一条自然语言短语，例如“订 2 张下周二到西雅图的票”。 将话语示例添加到意向。
 

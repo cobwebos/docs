@@ -1,6 +1,6 @@
 ---
 title: Azure 事件网格事件架构
-description: 介绍所有事件都存在的属性和架构。事件由 5 个所需的字符串属性和 1 个 所需的数据对象构成。
+description: 介绍所有事件都存在的属性和架构。 事件由 5 个所需的字符串属性和 1 个 所需的数据对象构成。
 services: event-grid
 author: banisadr
 manager: timlt
@@ -8,21 +8,18 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 35cea2e6df311d2f4071686c21c8e4c36477abc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c45b8f634868024a84f9f3b75bb23031c09b40c
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79244831"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82113997"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure 事件网格事件架构
 
-本文介绍为所有事件提供的属性和架构。事件由 5 个所需的字符串属性和 1 个 所需的数据对象构成。 这些属性在任何发布服务器的所有事件中通用。 数据对象具有特定于每个发布者的属性。 对于系统主题，这些属性特定于资源提供程序，例如 Azure 存储或 Azure 事件中心。
+本文介绍为所有事件提供的属性和架构。 事件由 5 个所需的字符串属性和 1 个 所需的数据对象构成。 这些属性在任何发布服务器的所有事件中通用。 数据对象具有特定于每个发布者的属性。 对于系统主题，这些属性特定于资源提供程序，例如 Azure 存储或 Azure 事件中心。
 
-事件源会将事件发送到数组中的 Azure 事件网格（其中可包含多个事件对象）。 将事件发布到事件网格主题时，数组的总大小最大可为 1 MB。 数组中的每个事件都限制为 64 KB（正式版）或 1 MB（预览版）。 事件或数组超出大小限制时会收到响应“413 有效负载太大”****。
-
-> [!NOTE]
-> 正式版服务级别协议 (GA) 涵盖了大小高达 64 KB 的事件。 预览版中目前支持最大为 1 MB 的事件。 超过 64 KB 的事件以 64 KB 为增量计费。 
+事件源会将事件发送到数组中的 Azure 事件网格（其中可包含多个事件对象）。 将事件发布到事件网格主题时，数组的总大小最大可为 1 MB。 数组中的每个事件的大小限制为 1 MB。 事件或数组超出大小限制时会收到响应“413 有效负载太大”  。 不过，按 64 KB 增量对操作进行收费。 因此，超过 64 KB 的事件将产生操作费用，就好像它们是多个事件。 例如，130 KB 的事件将产生类似于3个不同事件的操作。
 
 事件网格会将事件发送给具有单个事件的数组中的订阅者。 此行为在将来可能会更改。
 
@@ -83,16 +80,16 @@ ms.locfileid: "79244831"
 
 所有事件均具有以下相同的顶级数据：
 
-| properties | 类型 | 必选 | 描述 |
+| 属性 | 类型 | 必须 | 说明 |
 | -------- | ---- | -------- | ----------- |
-| 主题 | 字符串 | 否，但如果包含，则必须与事件网格主题 Azure 资源管理器 ID 完全匹配。 如果未包括，事件网格将标记到事件上。 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
-| subject | 字符串 | 是 | 事件主题的发布者定义路径。 |
-| eventType | 字符串 | 是 | 此事件源的一个注册事件类型。 |
-| EventTime | 字符串 | 是 | 基于提供程序 UTC 时间的事件生成时间。 |
-| id | 字符串 | 是 | 事件的唯一标识符。 |
-| data | 对象 (object) | 否 | 特定于资源提供程序的事件数据。 |
-| dataVersion | 字符串 | 否，但将加盖空值。 | 数据对象的架构版本。 发布者定义架构版本。 |
-| metadataVersion | 字符串 | 不需要，但如果包含，则必须与事件网格架构`metadataVersion`完全匹配（目前，仅`1`）。 如果未包括，事件网格将标记到事件上。 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+| 主题 | string | 否，但如果包含，则必须与事件网格主题 Azure 资源管理器 ID 完全匹配。 如果不包含，事件网格将标记到事件上。 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| subject | string | 是 | 事件主题的发布者定义路径。 |
+| eventType | string | 是 | 此事件源的一个注册事件类型。 |
+| EventTime | string | 是 | 基于提供程序 UTC 时间的事件生成时间。 |
+| id | string | 是 | 事件的唯一标识符。 |
+| 数据 | object | 否 | 特定于资源提供程序的事件数据。 |
+| dataVersion | string | 否，但将使用空值进行标记。 | 数据对象的架构版本。 发布者定义架构版本。 |
+| metadataVersion | string | 不是必需的，但如果包含，则必须与事件网格架构 `metadataVersion` 完全匹配（目前仅为 `1`）。 如果不包含，事件网格将标记到事件上。 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 若要了解数据对象中的属性，请参阅事件源：
 
@@ -100,7 +97,7 @@ ms.locfileid: "79244831"
 * [容器注册表](event-schema-container-registry.md)
 * [Blob 存储](event-schema-blob-storage.md)
 * [事件中心](event-schema-event-hubs.md)
-* [物联网中心](event-schema-iot-hub.md)
+* [IoT 中心](event-schema-iot-hub.md)
 * [媒体服务](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 * [资源组（管理操作）](event-schema-resource-groups.md)
 * [服务总线](event-schema-service-bus.md)

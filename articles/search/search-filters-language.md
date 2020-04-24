@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 5dbf32610e54df4ff009d4cb0a0b080babb4ec73
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: b0ebbbb64e173e1501f08f8385b14c365759a804
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74112060"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116275"
 ---
 # <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中按语言筛选 
 
@@ -21,7 +21,7 @@ ms.locfileid: "74112060"
 
 请求中的查询参数用于限定搜索操作的范围，同时修剪无法提供与所需搜索体验兼容的内容的任何字段的结果。
 
-| 参数 | 目的 |
+| parameters | 目的 |
 |-----------|--------------|
 | **searchFields** | 将全文搜索限制为命名字段的列表。 |
 | **$select** | 修剪响应，以便只包含指定的字段。 默认情况下，会返回所有可检索字段。 使用 **$Select** 参数可以选择要返回哪些字段。 |
@@ -32,7 +32,7 @@ ms.locfileid: "74112060"
 
 在 Azure 认知搜索中，查询以单个索引为目标。 想要在单个搜索体验中提供特定于语言的字符串的开发人员通常会定义专用字段来存储值：一个字段用于存储英语字符串，一个字段用于存储法语字符串，等等。 
 
-在我们的示例（包括下面所示的[房地产示例](search-get-started-portal.md)）中，可以看到类似于以下屏幕截图的字段定义。 请注意此示例如何此索引中显示字段的语言分析器分配。 如果与旨在处理目标语言的语言规则的分析器搭配使用，包含字符串的字段可在全文搜索中更好地发挥作用。
+下面的示例来自[房地产示例](search-get-started-portal.md)，其中包含多个字符串字段，其中包含不同语言的内容。 请注意此索引中的字段的语言分析器分配。 如果与旨在处理目标语言的语言规则的分析器搭配使用，包含字符串的字段可在全文搜索中更好地发挥作用。
 
   ![](./media/search-filters-language/lang-fields.png)
 
@@ -58,9 +58,9 @@ parameters =
     };
 ```
 > [!Note]
-> 尽管查询不包含 $filter 自变量，但此用例与筛选概念密切相关，因此我们将它作为筛选方案进行演示。
+> 尽管查询中不存在 $filter 参数，但此用例与筛选器概念密切相关，因此它显示为筛选方案。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 + [Azure 认知搜索中的筛选器](search-filters.md)
 + [语言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)

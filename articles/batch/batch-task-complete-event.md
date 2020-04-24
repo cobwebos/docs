@@ -1,22 +1,14 @@
 ---
-title: Azure 批处理任务完成事件
+title: Azure Batch 任务完成事件
 description: 批处理任务完成事件参考。 无论退出代码如何，任务完成后都会发出此事件。
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: labrenne
-ms.openlocfilehash: 0fee5f071d5c7005e466bf4c3d0c1d0a7db24731
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e11eac04009def2bce4476ba2d77c798f25ca15
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022913"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116496"
 ---
 # <a name="task-complete-event"></a>任务完成事件
 
@@ -58,7 +50,7 @@ ms.locfileid: "77022913"
 |`taskType`|String|任务的类型。 它可以是“JobManager”（指示它是作业管理器任务），也可以是“User”（指示它并非作业管理器任务）。 对于作业准备任务、作业释放任务或开始任务，不会发出此事件。|
 |`systemTaskVersion`|Int32|这是任务上的内部重试计数器。 批处理服务可能会在内部重试任务来解决暂时性问题。 这些问题可能包括内部计划错误或尝试恢复处于错误状态的计算节点。|
 |[`nodeInfo`](#nodeInfo)|复杂类型|包含有关运行任务的计算节点的信息。|
-|[`multiInstanceSettings`](#multiInstanceSettings)|复杂类型|指定任务是需要多个计算节点的多实例任务。  有关详细信息[`multiInstanceSettings`](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task)，请参阅。|
+|[`multiInstanceSettings`](#multiInstanceSettings)|复杂类型|指定任务是需要多个计算节点的多实例任务。  有关详细信息，请参阅 [`multiInstanceSettings`](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task)。|
 |[`constraints`](#constraints)|复杂类型|应用到此任务的执行约束。|
 |[`executionInfo`](#executionInfo)|复杂类型|包含有关任务执行的信息。|
 
@@ -69,19 +61,19 @@ ms.locfileid: "77022913"
 |`poolId`|String|运行任务的池的 ID。|
 |`nodeId`|String|运行任务的节点的 ID。|
 
-###  <a name="multiinstancesettings"></a><a name="multiInstanceSettings"></a>多实例设置
+###  <a name="multiinstancesettings"></a><a name="multiInstanceSettings"></a> multiInstanceSettings
 
 |元素名称|类型|说明|
 |------------------|----------|-----------|
 |`numberOfInstances`|Int32|任务所需的计算节点数。|
 
-###  <a name="constraints"></a><a name="constraints"></a>约束
+###  <a name="constraints"></a><a name="constraints"></a> constraints
 
 |元素名称|类型|说明|
 |------------------|----------|-----------|
 |`maxTaskRetryCount`|Int32|可以重试任务的最大次数。 批处理服务在其退出代码非零时重试任务。<br /><br /> 请注意，此值专门用于控制重试的次数。 批处理服务将尝试任务一次，然后重试，直至达到此上限为止。 例如，如果最大重试计数为 3，则批处理任务最多尝试任务 4 次（一次是初始尝试，其余 3 次是重试）。<br /><br /> 如果最大重试计数为 0，则批处理服务不会重试任务。<br /><br /> 如果最大重试计数为 -1，则批处理服务会无限制地重试任务。<br /><br /> 默认值为 0（不重试）。|
 
-###  <a name="executioninfo"></a><a name="executionInfo"></a>执行信息
+###  <a name="executioninfo"></a><a name="executionInfo"></a> executionInfo
 
 |元素名称|类型|说明|
 |------------------|----------|-----------|

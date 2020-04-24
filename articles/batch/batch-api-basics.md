@@ -1,29 +1,19 @@
 ---
-title: 面向开发人员的概述 - Azure Batch | Microsoft Docs
+title: 开发人员概述
 description: 从开发的角度了解 Batch 服务的功能及其 API。
-services: batch
-documentationcenter: .net
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: 416b95f8-2d7b-4111-8012-679b0f60d204
-ms.service: batch
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-compute
 ms.date: 08/29/2019
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 4d6c4ff06783489ea7b6c3488cf6746d579b4c6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fdc04c49521c9d91ef836c4d1dba76091db8f16a
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247678"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115374"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>使用 Batch 开发大规模并行计算解决方案
 
-这篇 Azure Batch 服务核心组件的概述将介绍 Batch 开发人员可用来构建大规模并发计算解决方案的主要服务功能和资源。
+这篇 Azure Batch 服务核心组件的概述介绍 Batch 开发人员可用来构建大规模并发计算解决方案的主要服务功能和资源。
 
 不管是在开发可发出直接 [REST API][batch_rest_api] 调用的分布式计算应用程序或服务，还是使用某个 [Batch SDK](batch-apis-tools.md#azure-accounts-for-batch-development)，都可以使用本文中介绍的多种资源和功能。
 
@@ -38,7 +28,7 @@ ms.locfileid: "79247678"
 
 1. 将要处理的**数据文件**上传到 [Azure 存储][azure_storage]帐户。 Batch 包含访问 Azure Blob 存储的内置支持，在运行任务时，任务可以将这些文件下载到 [计算节点](#compute-node) 。
 2. 上传任务所要运行的 **应用程序文件** 。 这些文件可能是二进制文件或脚本及其依赖项，并由作业中的任务执行。 任务可以从存储帐户下载这些文件，或者，你可以使用 Batch 的 [应用程序包](#application-packages) 功能来管理和部署应用程序。
-3. 创建计算节点的 [池](#pool) 。 创建池时，可以指定池的计算节点数目、其大小和操作系统。 运行作业中的每个任务时，会将任务分配到池中的某个节点以执行。
+3. 创建计算节点[池](#pool)。 创建池时，可以指定池的计算节点数目、其大小和操作系统。 运行作业中的每个任务时，会将任务分配到池中的某个节点以执行。
 4. 创建[作业](#job)。 作业管理任务的集合。 你可以将每个作业关联到要运行该作业的任务的特定池。
 5. 将 [任务](#task) 添加到作业。 每个任务将运行上传的应用程序或脚本，以处理它从存储帐户下载的数据文件。 当每个任务完成时，可将其输出上传到 Azure 存储。
 6. 监视作业进度并从 Azure 存储检索任务输出。
@@ -54,10 +44,10 @@ ms.locfileid: "79247678"
 
 使用 Batch 服务的所有解决方案需要以下某些资源：帐户、计算节点、池、作业、任务。 其他资源（如作业计划和应用程序包）都很有用，但为可选功能。
 
-* [Account](#account)
+* [帐户](#account)
 * [计算节点](#compute-node)
 * [池](#pool)
-* [工作](#job)
+* [作业](#job)
   * [作业计划](#scheduled-jobs)
 * [任务](#task)
   * [启动任务](#start-task)
@@ -67,7 +57,7 @@ ms.locfileid: "79247678"
   * [任务依赖项](#task-dependencies)
 * [应用程序包](#application-packages)
 
-## <a name="account"></a>Account
+## <a name="account"></a>帐户
 
 批处理帐户是批处理服务中唯一标识的实体。 所有处理都与一个 Batch 帐户相关联。
 
@@ -89,7 +79,7 @@ Batch 支持以下类型的 Azure 存储帐户：
 
 有关存储帐户的详细信息，请参阅[Azure 存储帐户概述](../storage/common/storage-account-overview.md)。
 
-创建 Batch 帐户时可以将存储帐户与 Batch 帐户关联，也可以稍后关联。 选择存储帐户时，请考虑成本和性能要求。 例如，与 GPv1 相比，GPv2 和 blob 存储帐户选项支持更大的[容量和可伸缩性限制](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)。 （请与 Azure 支持联系以请求增加存储限制。这些帐户选项可以提高 Batch 解决方案的性能，这些解决方案包含大量从存储帐户读取或写入存储帐户的并行任务。
+创建 Batch 帐户时可以将存储帐户与 Batch 帐户关联，也可以稍后关联。 选择存储帐户时，请考虑成本和性能要求。 例如，与 GPv1 相比，GPv2 和 blob 存储帐户选项支持更大的[容量和可伸缩性限制](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)。 （请联系 Azure 支持部门，请求增加存储限制。）这些帐户选项可提高包含大量并行任务（读取或写入存储帐户）的 Batch 解决方案的性能。
 
 ## <a name="compute-node"></a>计算节点
 
@@ -145,7 +135,7 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
     * 与云服务中的辅助角色一样，可以指定 *OS 版本*（有关辅助角色的详细信息，请参阅[云服务概述](../cloud-services/cloud-services-choose-me.md)）。
     * 与辅助角色一样，对于 *OS 版本*，建议指定 `*`，使节点可自动升级，而无需采取措施来适应新的版本。 选择特定 OS 版本的主要用例是在允许更新版本之前执行向后兼容测试，以确保保持应用程序兼容性。 验证后，便可以更新池的 *OS 版本*并安装新的操作系统映像 – 所有正在运行的任务将会中断并重新排队。
 
-创建池时，需要选择适当的 **nodeAgentSkuId**，具体取决于 VHD 基本映像的 OS。 通过调用[列表支持的节点代理 SKU](https://docs.microsoft.com/rest/api/batchservice/list-supported-node-agent-skus)操作，可以获取可用节点代理 SKU ID 与其 OS 映像引用的映射。
+创建池时，需要选择适当的 **nodeAgentSkuId**，具体取决于 VHD 基本映像的 OS。 可以通过调用[列出支持的节点代理 sku](https://docs.microsoft.com/rest/api/batchservice/list-supported-node-agent-skus)操作来获取可用节点代理 sku id 到其 OS 映像引用的映射。
 
 #### <a name="custom-images-for-virtual-machine-pools"></a>虚拟机池的自定义映像
 
@@ -191,7 +181,7 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 
 默认配置指定每次在节点上运行一个任务，但在某些情况下，在一个节点上同时执行两个或多个任务可能更有利。 请参阅 [concurrent node tasks](batch-parallel-node-tasks.md)（并发节点任务）一文中的[示例方案](batch-parallel-node-tasks.md#example-scenario)，了解如何通过在每个节点上运行多个任务来受益。
 
-您还可以指定*填充类型*，该类型确定 Batch 是将任务均匀地跨到池中的所有节点，还是将每个节点与最大任务数打包，然后再将任务分配给另一个节点。
+你还可以指定一个*填充类型*，用于确定 Batch 是要将任务平均分散到池中的所有节点，还是在将任务分配给另一个节点之前，将每个节点打包到最大数量的任务。
 
 ### <a name="communication-status-for-compute-nodes"></a>计算节点的通信状态
 
@@ -342,7 +332,7 @@ Batch 提供作业准备任务来设置作业前的执行。 作业释放任务�
 使用任务依赖性，可以配置如下所述的方案：
 
 * *taskB* 依赖于 *taskA*（直到 *taskA* 完成，才开始执行 *taskB*）。
-* *任务 C*取决于*任务 A*和*任务 B*。
+* *taskc 同时*依赖于*taskA*和*taskB*。
 * *taskD* 在执行前依赖于某个范围的任务，例如任务 *1* 到 *10*。
 
 有关此功能的更深入信息，请查看 [Azure Batch 中的任务依赖关系](batch-task-dependencies.md)和 [azure-batch-samples][github_samples] GitHub 存储库中的 [TaskDependencies][github_sample_taskdeps] 代码示例。
@@ -367,19 +357,19 @@ Batch 服务在节点上公开文件系统的一部分作为 *根目录*。 任�
 
 ![计算节点目录结构][1]
 
-* **应用程序**：包含有关安装在计算节点上的应用程序包的详细信息。 任务可通过引用 `AZ_BATCH_APP_PACKAGE` 环境变量来访问此目录。
+* **应用程序**：包含有关计算节点上安装的应用程序包的详细信息。 任务可通过引用 `AZ_BATCH_APP_PACKAGE` 环境变量来访问此目录。
 
-* **fsmounts**：目录包含安装在计算节点上的任何文件系统。 任务可通过引用 `AZ_BATCH_NODE_MOUNTS_DIR` 环境变量来访问此目录。 有关详细信息，请参阅[在 Batch 池中装载虚拟文件系统](virtual-file-mount.md)。
+* **fsmounts**：目录包含计算节点上装入的所有文件系统。 任务可通过引用 `AZ_BATCH_NODE_MOUNTS_DIR` 环境变量来访问此目录。 有关详细信息，请参阅[在 Batch 池中装载虚拟文件系统](virtual-file-mount.md)。
 
 * **共享**：此目录允许对节点上运行的 *所有* 任务进行读取/写入访问。 在节点上运行的任何任务都可以创建、读取、更新和删除此目录中的文件。 任务可通过引用 `AZ_BATCH_NODE_SHARED_DIR` 环境变量来访问此目录。
 
 * **启动**：启动任务使用此目录作为它的工作目录。 由启动任务下载到的节点所有文件都存储在此处。 启动任务可以创建、读取、更新和删除此目录下的文件。 任务可通过引用 `AZ_BATCH_NODE_STARTUP_DIR` 环境变量来访问此目录。
 
-* **易失性**：此目录用于内部目的。 不保证此目录中的任何文件或者此目录本身在将来会存在。
+* **volatile**：此目录用于内部用途。 不保证此目录中的任何文件或者此目录本身在将来会存在。
 
-* **工作项**：此目录包含作业的目录及其在计算节点上的任务。
+* 工作**项：此**目录包含计算节点上作业及其任务的目录。
 
-* **任务**：在**工作项**目录中，为在节点上运行的每个任务创建一个目录。 可通过引用 `AZ_BATCH_TASK_DIR` 环境变量来访问该目录。
+* **任务**：**在工作项目录中**，为节点上运行的每个任务创建一个目录。 可通过引用 `AZ_BATCH_TASK_DIR` 环境变量来访问该目录。
 
     在每个任务目录中，Batch 服务将创建由 `AZ_BATCH_TASK_WORKING_DIR` 环境变量指定唯一路径的任务目录 (`wd`)。 此目录提供对任务的读/写访问权限。 任务可以创建、读取、更新和删除此目录下的文件。 此目录根据指定给任务的 *RetentionTime* 约束来保留。
 
@@ -530,7 +520,7 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
     有时必须从池中完全删除节点。
 * **禁用节点上的任务计划** ([REST][rest_offline] | [.NET][net_offline])
 
-    这实际上是使节点脱机，以便不再收到任何分配的任务，但允许节点继续运行并保留在池中。 这可让你执行进一步的调查以了解失败原因，却又会不丢失失败任务的数据，并且不让节点造成额外的任务失败。 例如，可以禁用节点上的任务计划，并从 [远程登录](#connecting-to-compute-nodes) 以检查节点的事件日志，或执行其他故障排除操作。 完成调查后，可以通过启用任务调度[（REST][rest_online] | [.NET）][net_online]使节点重新联机，或者执行前面讨论的其他操作之一。
+    这实际上是使节点脱机，以便不再收到任何分配的任务，但允许节点继续运行并保留在池中。 这可让你执行进一步的调查以了解失败原因，却又会不丢失失败任务的数据，并且不让节点造成额外的任务失败。 例如，可以禁用节点上的任务计划，并从 [远程登录](#connecting-to-compute-nodes) 以检查节点的事件日志，或执行其他故障排除操作。 完成调查后，可以通过启用任务计划（[REST][rest_online] | [.net][net_online]）或执行前面讨论的其他操作之一使节点重新联机。
 
 > [!IMPORTANT]
 > 可以使用本部分中所述的每项操作（重新启动、重置映像、删除和禁用任务计划），来指定当执行操作时要如何处理节点上当前正在运行的任务。 例如，禁用具有 Batch .NET 客户端库的节点上的任务计划时，可以指定 [DisableComputeNodeSchedulingOption][net_offline_option] 枚举值，以指定是要**终止**运行中的任务、将任务**重新排队**以在其他节点上计划，还是允许执行中的任务先完成再执行操作 (**TaskCompletion**)。

@@ -1,22 +1,16 @@
 ---
-title: 在经济高效低优先级的 VM 上运行工作负荷 - Azure Batch | Microsoft Docs
+title: 在经济高效的低优先级 Vm 上运行工作负荷
 description: 了解如何预配低优先级 VM，以降低 Azure Batch 工作负载的成本。
-services: batch
 author: mscurrell
-manager: evansma
-ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
-ms.service: batch
 ms.topic: article
-ms.workload: na
 ms.date: 03/19/2020
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 9f4b9ed9254eaf950311dd27d5716c4681707614
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec75dac7e5615cddf942ff7939ea7e95315f8699
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80053907"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116037"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>将低优先级 VM 与 Batch 配合使用
 
@@ -29,11 +23,11 @@ Azure Batch 可提供低优先级虚拟机 (VM) 来降低 Batch 工作负荷的�
 与专用 VM 相比，以显著低廉的价格提供低优先级 VM。 有关价格详细信息，请参阅 [Batch 定价](https://azure.microsoft.com/pricing/details/batch/)。
 
 > [!NOTE]
-> [Spot VM](https://azure.microsoft.com/pricing/spot/)现在可用于[单个实例 VM](https://docs.microsoft.com/azure/virtual-machines/linux/spot-vms)和 VM[规模集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot)。 竞价 VM 是低优先级 VM 的演变，但不同的是定价可能有所不同，在分配 Spot VM 时可以设置可选的最高价格。
+> [污点 vm](https://azure.microsoft.com/pricing/spot/)现在可用于[单实例 vm](https://docs.microsoft.com/azure/virtual-machines/linux/spot-vms)和[VM 规模集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot)。 污点 Vm 是低优先级 Vm 的演变，但不同之处在于，在分配专色 Vm 时可以设置一个可选的最大价格。
 >
-> Azure 批处理池将在 Spot VM 普遍可用后的几个月内开始支持 Spot VM，并推出[新版本的批处理 API 和工具](https://docs.microsoft.com/azure/batch/batch-apis-tools)。 Spot VM 支持可用后，低优先级 VM 将被弃用 - 将继续使用当前 API 和工具版本支持它们至少 12 个月，以便有足够的时间迁移到 Spot VM。 
+> Azure Batch 池会开始使用新版本的[批处理 api 和工具](https://docs.microsoft.com/azure/batch/batch-apis-tools)，在几个月内开始支持专色 vm。 一旦有了可用的虚拟机支持，将不推荐使用低优先级 Vm-在至少12个月内，它们将继续使用最新的 Api 和工具版本，以留出足够的时间迁移到虚拟机。 
 >
-> [云服务配置](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration)池不支持 Spot VM。 要使用 Spot VM，云服务池将需要迁移到[虚拟机配置](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)池。
+> [云服务配置](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration)池不支持污点 vm。 若要使用专色 Vm，需要将云服务池迁移到[虚拟机配置](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)池。
 
 
 ## <a name="use-cases-for-low-priority-vms"></a>低优先级 VM 的用例
@@ -168,7 +162,7 @@ VM 有时会被占用；如果发生占用情况，Batch 将执行以下操作�
 -   将已取代的 VM 的状态更新为“已取代”。****
 -   如果已取代的节点 VM 上有运行中的任务，这些任务将重新排队并重新运行。
 -   VM 被实际删除，导致 VM 本地存储的所有数据丢失。
--   池将不断地尝试用完低优先级节点的可用目标数量。 找到替换容量后，节点将保留其已保留的 I，但会重新初始化，在可用于任务计划之前，通过 **"创建****"和"启动"** 状态。
+-   池将不断地尝试用完低优先级节点的可用目标数量。 如果找到了替代容量，节点将保留其 Id，但会重新初始化，并通过**创建**和**启动**状态进行任务计划。
 -   Azure 门户以指标形式提供取代计数。
 
 ## <a name="metrics"></a>指标
@@ -191,4 +185,4 @@ VM 有时会被占用；如果发生占用情况，Batch 将执行以下操作�
 
 * 对于准备使用 Batch 的任何人，有必要阅读 [面向开发人员的 Batch 功能概述](batch-api-basics.md)了解基本信息。 本文中包含有关 Batch 服务资源（如池、节点、作业和任务）以及生成 Batch 应用程序时可以使用的许多 API 功能的更多详细信息。
 * 了解适用于生成批处理解决方案的[批处理 API 和工具](batch-apis-tools.md)。
-* 开始计划从低优先级 VM 到 Spot VM 的迁移。 如果将低优先级 VM 与**云服务配置**池一起使用，则计划迁移到**虚拟机配置**池。
+* 开始计划从低优先级 Vm 迁移到发现 Vm。 如果将低优先级 Vm 与**云服务配置**池一起使用，请计划迁移到**虚拟机配置**池。

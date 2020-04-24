@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: 语音助手文档
-summary: 使用语音服务的语音助理使开发人员能够为其应用程序和体验创建自然、类似人类的对话界面。
+summary: 使用语音服务的语音助手使开发人员可以为其应用程序和体验创建自然、人为的对话接口。
 metadata:
-  title: 语音助理文档 - 教程，API 参考 - Azure 认知服务 |微软文档
+  title: 语音助手文档-教程、API 参考-Azure 认知服务 |Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -11,14 +11,14 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: trbye
-  ms.openlocfilehash: cbef289ebc79e20b928db684af01a4eaeb1c0ce8
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.openlocfilehash: c4b1c6348e834f83e20c612678075405a14f1a9d
+  ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
   ms.translationtype: MT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81401435"
+  ms.lasthandoff: 04/23/2020
+  ms.locfileid: "82106196"
 landingContent:
-- title: 关于语音助理
+- title: 关于语音助手
   linkLists:
   - linkListType: overview
     links:
@@ -32,9 +32,13 @@ landingContent:
     links:
     - text: 语音助手常见问题解答
       url: faq-voice-assistants.md
-    - text: 语音助理定价
+    - text: 语音助手定价
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
-- title: 使用自定义命令进行开发
+  - linkListType: get-started
+    links:
+    - text: 构建示例语音助手并将其部署到 Azure 订阅（GitHub）
+      url: https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant
+- title: 用自定义命令进行开发
   linkLists:
   - linkListType: quickstart
     links:
@@ -56,7 +60,7 @@ landingContent:
       url: how-to-custom-speech-commands-confirmations.md
     - text: 添加单步更正
       url: how-to-custom-speech-commands-one-step-correction.md
-- title: 使用直线语音进行开发
+- title: 利用直接行语音进行开发
   linkLists:
   - linkListType: quickstart
     links:
@@ -70,7 +74,7 @@ landingContent:
     links:
     - text: 使用语音 SDK 为机器人启用语音
       url: tutorial-voice-enable-your-bot-speech-sdk.md
-- title: 使用自定义关键字进行开发
+- title: 用自定义关键字进行开发
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -78,5 +82,5 @@ landingContent:
       url: speech-devices-sdk-create-kws.md
   - linkListType: reference
     links:
-    - text: 自定义关键字命名指南
+    - text: 自定义关键字命名准则
       url: speech-devices-sdk-kws-guidelines.md

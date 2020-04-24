@@ -3,12 +3,12 @@ title: 新增功能 - 语言理解 (LUIS)
 description: 本文会经常更新有关 Azure 认知服务语言理解 API 的新闻。
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 6334b157f68f09f2b165c6073ba63f45a0caf3c4
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 8e3b6f729f69866cdb797cdfd1887de4f5e2be05
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538012"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82097721"
 ---
 # <a name="whats-new-in-language-understanding"></a>语言理解中的新增功能
 
@@ -18,11 +18,11 @@ ms.locfileid: "81538012"
 
 ### <a name="march-2020"></a>2020 年 3 月
 
-* TLS 1.2 现在对对此服务的所有 HTTP 请求强制执行。 有关详细信息，请参阅[Azure 认知服务安全性](../cognitive-services-security.md)。
+* 现在，将对此服务的所有 HTTP 请求强制执行 TLS 1.2。 有关详细信息，请参阅[Azure 认知服务安全性](../cognitive-services-security.md)。
 
 ### <a name="november-4-2019---ignite"></a>2019 年 11 月 4 日 - Ignite
 
-* 视频 -[使用 LUIS 和 Azure 认知服务的高级自然语言理解 （NLU） 模型 |BRK2188](https://www.youtube.com/watch?v=JdJEV2jV0_Y)
+* 视频-[使用 LUIS 和 Azure 认知服务的高级自然语言理解（NLU）模型 |BRK2188](https://www.youtube.com/watch?v=JdJEV2jV0_Y)
 
 * 提高开发人员工作效率
     * [预测终结点 V3](luis-migration-api-v3.md) 公开发布。
@@ -31,21 +31,21 @@ ms.locfileid: "81538012"
     * [阿拉伯语和印地语](luis-language-support.md)为公共预览版。
 * 预生成的模型
     * [预生成的域](luis-reference-prebuilt-domains.md)现在已为正式版 (GA)
-    * V3 不支持日本[预构建实体](luis-reference-prebuilt-entities.md#japanese-entity-support)- 年龄、货币、数字和百分比。
-    * 意大利[预构建实体](luis-reference-prebuilt-entities.md#italian-entity-support)- 年龄、货币、维度、数字和百分比分辨率从 V2 更改为。
-* [preview.luis.ai门户](https://preview.luis.ai)中的增强用户体验 - 改进的标签体验，支持构建和调试复杂模型。 尝试预览门户教程：
-    * [仅意向](tutorial-intents-only.md)
-    * [可分解机器学习实体](tutorial-machine-learned-entity.md)
+    * V3 中不支持日语[预建实体](luis-reference-prebuilt-entities.md#japanese-entity-support)-年龄、货币、数字和百分比。
+    * 意大利语[预生成实体](luis-reference-prebuilt-entities.md#italian-entity-support)-时间、货币、维度、数字和百分比解析从 V2 更改。
+* 增强了[preview.luis.ai 门户](https://preview.luis.ai)中的用户体验-改进标记体验，以启用生成和调试复杂模型。 尝试预览门户教程：
+    * [仅限意向](tutorial-intents-only.md)
+    * [可以分解机器学习的实体](tutorial-machine-learned-entity.md)
 * 高级语言理解功能 - [构建复杂的语言模型](luis-concept-entity-types.md)更为轻松。
 * 在模型级别定义机器学习功能，使模型能够用作其他模型的信号，例如，将实体用作意向和其他实体的功能。
-* 新的扩展的[限制](luis-boundaries.md) - 提高了短语列表和短语总数的限制，使用新模型作为功能限制。
+* 新的扩展的[限制](luis-limits.md) - 提高了短语列表和短语总数的限制，使用新模型作为功能限制。
 * 从深层次体系结构格式文本中提取信息，使聊天应用程序的功能更强大。
 
     ![机器学习实体映像](./media/whats-new/deep-entity-extraction-example.png)
 
 ### <a name="september-3-2019"></a>2019 年 9 月 3 日
 
-* Azure 创作资源 -[立即迁移](luis-migration-authoring.md)。
+* Azure 创作资源-[立即迁移](luis-migration-authoring.md)。
     * 每项 Azure 资源 500 个应用
     * 每个应用 100 个版本
 * 预构建实体的土耳其语支持
@@ -64,7 +64,7 @@ ms.locfileid: "81538012"
 
 ### <a name="june-24-2019"></a>2019 年 6 月 24 日
 
-* [OrdinalV2 预构建实体](luis-reference-prebuilt-ordinal-v2.md)，以支持排序，如下一个、上一个和最后一个。 仅限英语区域性。
+* [OrdinalV2 预先](luis-reference-prebuilt-ordinal-v2.md)生成的实体，以支持排序，如下一个、上一个和最后一个。 仅限英语区域性。
 
 ### <a name="may-6-2019---build-conference"></a>2019 年 5 月 6 日 - //Build 会议
 
@@ -82,9 +82,9 @@ ms.locfileid: "81538012"
 
 ## <a name="videos"></a>视频
 
-### <a name="2019-ignite-videos"></a>2019 点火器视频
+### <a name="2019-ignite-videos"></a>2019 Ignite 视频
 
-[使用 LUIS 和 Azure 认知服务的高级自然语言理解 （NLU） 模型 |BRK2188](https://www.youtube.com/watch?v=JdJEV2jV0_Y)
+[使用 LUIS 和 Azure 认知服务的高级自然语言理解（NLU）模型 |BRK2188](https://www.youtube.com/watch?v=JdJEV2jV0_Y)
 
 ### <a name="2019-build-videos"></a>2019 Build 视频
 

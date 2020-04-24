@@ -1,26 +1,15 @@
 ---
-title: PowerShell 入门 - Azure Batch | Microsoft Docs
+title: PowerShell 入门
 description: 快速介绍可用于管理 Batch 资源的 Azure PowerShell cmdlet。
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.devlang: NA
 ms.topic: conceptual
-ms.tgt_pltfrm: powershell
-ms.workload: big-compute
 ms.date: 01/15/2019
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 26691ca6b9d078ef18ac852c67fa2ac88dff2722
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79473c5fb63a5f5ad29194c65cd8094ea444dbd8
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022998"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115833"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>使用 PowerShell cmdlet 管理 Batch 资源
 
@@ -30,7 +19,7 @@ ms.locfileid: "77022998"
 
 本文基于 Az Batch 模块 1.0.0 中的 cmdlet。 建议经常更新 Azure PowerShell 模块以利用服务更新和增强功能。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * [下载并配置 Azure PowerShell 模块](/powershell/azure/overview)。 若要安装特定的 Azure Batch 模块，例如预发行模块，请参阅 [PowerShell 库](https://www.powershellgallery.com/packages/Az.Batch/1.0.0)。
 
@@ -50,7 +39,7 @@ ms.locfileid: "77022998"
 
 ### <a name="create-a-batch-account"></a>创建批处理帐户
 
-**New-AzBatchAccount** 可在指定的资源组中创建 Batch 帐户。 如果没有资源组，可以运行 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet 创建一个资源组。 在“位置”参数中指定一个 Azure 区域，如“美国中部”。**** 例如：
+**New-AzBatchAccount** 可在指定的资源组中创建 Batch 帐户。 如果没有资源组，可以运行 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet 创建一个资源组。 在“位置”参数中指定一个 Azure 区域，如“美国中部”。  例如：
 
 ```powershell
 New-AzResourceGroup –Name MyBatchResourceGroup –Location "Central US"
@@ -171,7 +160,7 @@ OData 筛选器的替代方法是使用 **Id** 参数。 若要查询 ID 为“m
 Get-AzBatchPool -Id "myPool" -BatchContext $context
 ```
 
-Id 参数仅支持全 ID 搜索 **;"Id"** 参数仅支持全 ID 搜索。不是通配符或 OData 样式的筛选器。
+**Id** 参数仅支持完整 ID 搜索，而不支持通配符或 OData 样式的筛选器。
 
 ### <a name="use-the-maxcount-parameter"></a>使用 MaxCount 参数
 
@@ -203,7 +192,7 @@ Get-AzBatchComputeNode -PoolId "myPool" -BatchContext $context | Restart-AzBatch
 
 应用程序包提供将应用程序部署到池中计算节点的简化方式。 使用批处理 PowerShell cmdlet，可以上传和管理批处理帐户中的应用程序包，以及将包版本部署到计算节点。
 
-**创建**应用程序：
+**创建** 应用程序：
 
 ```powershell
 New-AzBatchApplication -AccountName <account_name> -ResourceGroupName <res_group_name> -ApplicationId "MyBatchApplication"
@@ -248,7 +237,7 @@ Remove-AzBatchApplication -AccountName <account_name> -ResourceGroupName <res_gr
 
 在创建池时，可以指定一个或多个要部署的应用程序包。 如果创建池时指定包，该包会在节点加入池时部署到每个节点。 将节点重新启动或重置映像时，也会部署包。
 
-创建池时，请指定 `-ApplicationPackageReference` 选项，以便在池节点加入该池时，将应用程序包部署到这些节点。 首先，创建**PSIpIp包引用**对象，然后使用要部署到池的计算节点的应用程序 ID 和包版本对其进行配置：
+创建池时，请指定 `-ApplicationPackageReference` 选项，以便在池节点加入该池时，将应用程序包部署到这些节点。 首先，创建 **PSApplicationPackageReference** 对象，并使用应用程序 ID 和要部署到池中计算节点的包版本来配置该对象：
 
 ```powershell
 $appPackageReference = New-Object Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference

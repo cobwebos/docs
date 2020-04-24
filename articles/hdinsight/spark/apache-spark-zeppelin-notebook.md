@@ -1,28 +1,28 @@
 ---
 title: Zeppelin 笔记本和 Apache Spark 群集 - Azure HDInsight
-description: 逐步说明如何在 Azure HDInsight 上的 Apache Spark 群集中使用 Zeppelin 笔记本。
+description: 逐步说明如何在 Azure HDInsight 上的 Apache Spark 群集中使用 Zeppelin notebook。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/07/2020
-ms.openlocfilehash: 3c1369e813ba6518f6cd4b27082020ae36a24c82
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.date: 04/23/2020
+ms.openlocfilehash: e97ac14c91ec9fb05b25d422680d788b4498725f
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811205"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116717"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>在 Azure HDInsight 上的 Apache Spark 群集中使用 Apache Zeppelin 笔记本
 
-HDInsight Spark 集群包括[阿帕奇·泽佩林](https://zeppelin.apache.org/)笔记本。 使用笔记本运行 Apache [Spark](https://spark.apache.org/)作业。 本文介绍如何在 HDInsight 群集中使用 Zeppelin 笔记本。
+HDInsight Spark 群集包括[Apache Zeppelin](https://zeppelin.apache.org/)笔记本。 使用笔记本运行 Apache Spark 作业。 本文介绍如何在 HDInsight 群集中使用 Zeppelin 笔记本。
 
 ## <a name="prerequisites"></a>先决条件
 
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
-* 群集主存储的 URI 方案。 该方案适用于`wasb://`Azure Blob 存储、Azure`abfs://`数据湖存储第 2`adl://`代或 Azure 数据湖存储第 1 代。 如果为 Blob 存储启用了安全传输，则`wasbs://`URI 将为 。  有关详细信息，请参阅在[Azure 存储中要求安全传输](../../storage/common/storage-require-secure-transfer.md)。
+* 群集主存储的 URI 方案。 此方案适用`wasb://`于 Azure Blob 存储， `abfs://`适用于 Azure Data Lake Storage Gen2 或`adl://` Azure Data Lake Storage Gen1。 如果为 Blob 存储启用安全传输，则 URI 将为`wasbs://`。  有关详细信息，请参阅[在 Azure 存储中要求安全传输](../../storage/common/storage-require-secure-transfer.md)。
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>启动 Apache Zeppelin 笔记本
 
@@ -33,7 +33,7 @@ HDInsight Spark 集群包括[阿帕奇·泽佩林](https://zeppelin.apache.org/)
    >
    > `https://CLUSTERNAME.azurehdinsight.net/zeppelin`
 
-2. 创建新的笔记本。 从标题窗格中导航到 **"笔记本** > **创建新便笺**"。
+2. 创建新的笔记本。 从 "标题" 窗格中，导航到 "**笔记本** > **创建新便笺**"。
 
     ![创建新的 Zeppelin 笔记本](./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png "创建新的 Zeppelin 笔记本")
 
@@ -71,7 +71,7 @@ HDInsight Spark 集群包括[阿帕奇·泽佩林](https://zeppelin.apache.org/)
     hvac.registerTempTable("hvac")
     ```
 
-    按 **SHIFT + ENTER** 或为段落选择“播放”**** 按钮以运行代码片段。 段落右上角的状态应从“就绪”逐渐变成“挂起”、“正在运行”和“已完成”。 输出会显示在同一段落的底部。 屏幕截图如下所示：
+    按 **SHIFT + ENTER** 或为段落选择“播放”**** 按钮以运行代码片段。 段落右上角的状态应从“就绪”逐渐变成“挂起”、“正在运行”和“已完成”。 输出会显示在同一段落的底部。 屏幕快照如下图所示：
 
     ![基于原始数据创建临时表](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-load-data.png "基于原始数据创建临时表")
 
@@ -80,7 +80,7 @@ HDInsight Spark 集群包括[阿帕奇·泽佩林](https://zeppelin.apache.org/)
     > [!NOTE]  
     > 所有 HDInsight 版本中的 Zeppelin 笔记本均不支持 %spark2 解释器，HDInsight 4.0 及更高版本不支持 %sh 解释器。
 
-5. 现在可以针对 `hvac` 表运行 Spark SQL 语句。 将以下查询粘贴到新段落中。 查询检索建筑物 ID。 此外，给定日期每个建筑物的目标和实际温度之间的差异。 按**SHIFT = 输入**。
+5. 现在可以针对 `hvac` 表运行 Spark SQL 语句。 将以下查询粘贴到新段落中。 查询将检索建筑物 ID。 另外，每个建筑在给定日期的目标温度和实际温度之间的差异。 按 **Shift + Enter**。
 
     ```sql
     %sql
@@ -89,7 +89,7 @@ HDInsight Spark 集群包括[阿帕奇·泽佩林](https://zeppelin.apache.org/)
 
     开头的 **%Sql** 语句告诉笔记本要使用 Livy Scala 解释程序。
 
-6. 选择“条形图”图标以更改显示内容。****  **设置**， 在选择**条形图**后显示 ， 允许您选择**键**和**值**。  以下屏幕快照显示了输出。
+6. 选择“条形图”图标以更改显示内容。****  "**设置**"，在选择 "**条形图**" 后显示，允许您选择**键**和**值**。  以下屏幕快照显示了输出。
 
     ![使用 notebook1 运行 Spark SQL 语句](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "使用 notebook1 运行 Spark SQL 语句")
 
@@ -104,8 +104,8 @@ HDInsight Spark 集群包括[阿帕奇·泽佩林](https://zeppelin.apache.org/)
 
 8. 选择“条形图”图标以更改显示内容。****  然后选择“设置”并进行以下更改：****
 
-   * **组：** 添加**目标温度**。  
-   * **值：** 1. 删除 **date**。  2. 添加 **temp_diff**。  3.  将聚合器从“SUM”更改为“AVG”。********  
+   * **组：** 添加**targettemp**。  
+   * **值：** 2. 删除 **date**。  2. 添加 **temp_diff**。  3.  将聚合器从“SUM”更改为“AVG”。********  
 
      以下屏幕快照显示了输出。
 
@@ -113,7 +113,7 @@ HDInsight Spark 集群包括[阿帕奇·泽佩林](https://zeppelin.apache.org/)
 
 ## <a name="how-do-i-use-external-packages-with-the-notebook"></a>如何将外部包与笔记本配合使用？
 
-HDInsight 上的 Apache Spark 群集中的 Zepelin 笔记本可以使用群集中未包括的外部社区贡献包。 在[Maven 存储库](https://search.maven.org/)中搜索可用的包的完整列表。 也可以从其他源获取可用包的列表。 例如，[Spark 包](https://spark-packages.org/)中提供了社区贡献包的完整列表。
+HDInsight Apache Spark 群集中的 Zeppelin 笔记本可以使用未包含在群集中的、由社区贡献的外部包。 在[Maven 存储库](https://search.maven.org/)中搜索可用包的完整列表。 也可以从其他源获取可用包的列表。 例如，[Spark 包](https://spark-packages.org/)中提供了社区贡献包的完整列表。
 
 本文将介绍如何在 Jupyter 笔记本中使用 [spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) 包。
 
@@ -149,22 +149,22 @@ Zeppelin 笔记本的保存位置为群集头节点。 因此，如果删除该�
 
 ![下载笔记本](./media/apache-spark-zeppelin-notebook/zeppelin-download-notebook.png "下载笔记本")
 
-此操作将笔记本保存为下载位置中的 JSON 文件。
+此操作会将笔记本保存为下载位置的 JSON 文件。
 
-## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>用于`Shiro`配置企业安全包 （ESP） 群集中对 Zeppelin 解释器的访问
+## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>用于`Shiro`配置对企业安全性套餐（ESP）群集中 Zeppelin 解释器的访问
 
-如上所述，HDInsight `%sh` 4.0 以后不支持解释器。 此外，由于`%sh`解释器引入了潜在的安全问题，例如使用 shell 命令访问密钥表，因此也将其从 HDInsight 3.6 ESP 群集中删除。 这意味着`%sh`默认情况下，单击 **"创建新注释"** 或"解释器 UI"时，解释器不可用。
+如上所述，HDInsight 4.0 中`%sh`不支持解释器。 此外，由于`%sh`解释器使用 shell 命令引入了潜在的安全问题，例如 access keytabs，它也已从 HDINSIGHT 3.6 ESP 群集中删除。 这意味着`%sh` ，在默认情况下，在单击 "**创建新备注**" 或解释器 UI 时，解释器不可用。
 
-特权域用户可以使用该文件`Shiro.ini`来控制对解释器 UI 的访问。 只有这些用户可以创建新`%sh`的解释器并为每个新`%sh`解释器设置权限。 要控制使用该文件的访问`shiro.ini`，请使用以下步骤：
+特权域用户可以使用`Shiro.ini`文件来控制对解释器 UI 的访问。 只有这些用户可以创建新`%sh`的解释器并对每个`%sh`新的解释器设置权限。 若要使用`shiro.ini`文件控制访问，请使用以下步骤：
 
-1. 使用现有域组名称定义新角色。 在下面的示例中，`adminGroupName`是 AAD 中的一组特权用户。 不要在组名称中使用特殊字符或空格。 后`=`字符授予此角色的权限。 `*`表示组具有完全权限。
+1. 使用现有的域组名称定义新的角色。 在下面的示例中`adminGroupName` ，是 AAD 中的一组特权用户。 不要在组名称中使用特殊字符或空格。 后面`=`的字符将授予此角色的权限。 `*`表示组具有完全权限。
 
     ```
     [roles]
     adminGroupName = *
     ```
 
-2. 增加新的角色，以访问泽佩林口译员。 在下面的示例中，中的所有`adminGroupName`用户都可以访问 Zepelin 口译员，并可以创建新的口译员。 您可以在 括号之间放置多个角色`roles[]`，用逗号分隔。 然后，具有必要权限的用户可以访问 Zeppelin 解释器。
+2. 添加新的角色以访问 Zeppelin 解释器。 在下面的示例中，中`adminGroupName`的所有用户都有权访问 Zeppelin 解释器，并且可以创建新的解释器。 可以在中`roles[]`的方括号之间放置多个角色，用逗号分隔。 然后，具有必要权限的用户可以访问 Zeppelin 解释器。
 
     ```
     [urls]
@@ -173,9 +173,9 @@ Zeppelin 笔记本的保存位置为群集头节点。 因此，如果删除该�
 
 ## <a name="livy-session-management"></a>Livy 会话管理
 
-Zepelin 笔记本中的第一个代码段落会在群集中创建新的 Livy 会话。 此会话在您以后创建的所有 Zeppelin 笔记本中共享。 如果 Livy 会话因任何原因被终止，则作业不会从 Zepelin 笔记本上运行。
+Zeppelin 笔记本中的第一个代码段在群集中创建新的 Livy 会话。 此会话在以后创建的所有 Zeppelin 笔记本之间共享。 如果出于任何原因而终止 Livy 会话，则不会从 Zeppelin 笔记本中运行作业。
 
-在这种情况下，您必须执行以下步骤，然后才能从 Zepelin 笔记本开始运行作业。  
+在这种情况下，你必须执行以下步骤，然后才能开始从 Zeppelin 笔记本运行作业。  
 
 1. 在 Zeppelin 笔记本中，重新启动 Livy 解释程序。 为此，请选择右上角的登录用户名打开解释器设置，然后选择“解释器”****。
 
@@ -185,36 +185,36 @@ Zepelin 笔记本中的第一个代码段落会在群集中创建新的 Livy 会
 
     ![重启 Livy 解释器](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "重启 Zeppelin 解释器")
 
-3. 从现有的 Zeppelin 笔记本运行代码单元格。 此代码在 HDInsight 群集中创建新的 Livy 会话。
+3. 从现有的 Zeppelin 笔记本运行代码单元格。 此代码会在 HDInsight 群集中创建新的 Livy 会话。
 
 ## <a name="general-information"></a>常规信息
 
 ### <a name="validate-service"></a>验证服务
 
-要验证来自 Ambari 的服务，请`https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary`导航到 CLUSTERNAME 是群集名称的位置。
+若要从 Ambari 验证服务，请导航`https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary`到其中 CLUSTERNAME 是群集的名称。
 
-要验证从命令行的服务，SSH 到头节点。 使用 命令`sudo su zeppelin`将用户切换到泽佩林。 状态命令：
+若要从命令行验证服务，请通过 SSH 连接到头节点。 使用命令`sudo su zeppelin`将用户切换到 zeppelin。 状态命令：
 
-|命令 |说明 |
+|Command |说明 |
 |---|---|
 |`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh status`|服务状态。|
 |`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh --version`|服务版本。|
-|`ps -aux | grep zeppelin`|识别 PID。|
+|`ps -aux | grep zeppelin`|标识 PID。|
 
 ### <a name="log-locations"></a>日志位置
 
 |服务 |路径 |
 |---|---|
-|泽佩林-服务器|/usr/hdp/电流/泽佩林-服务器/|
-|服务器日志|/var/日志/泽佩林|
-|配置解释器`Shiro`， . site.xml， log4j|/usr/hdp/电流/泽佩林-服务器/conf 或 /etc/泽佩林/conf|
-|PID 目录|/var/运行/泽佩林|
+|zeppelin-服务器|/usr/hdp/current/zeppelin-server/|
+|服务器日志|/var/log/zeppelin|
+|配置解释器`Shiro`，，site .xml，log4j|/usr/hdp/current/zeppelin-server/conf 或/etc/zeppelin/conf|
+|PID 目录|/var/run/zeppelin|
 
 ### <a name="enable-debug-logging"></a>启用调试日志记录
 
-1. 导航到`https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary`CLUSTERNAME 是群集名称的位置。
+1. 导航到`https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary`其中，CLUSTERNAME 是群集的名称。
 
-1. 导航到**CONFIGS** > **高级zeppelin-log4j属性** > **log4j_properties_content**。
+1. 导航到**CONFIGS** > "配置" "**高级 zeppelin-属性** > " "**log4j_properties_content**"。
 
 1. 修改`log4j.appender.dailyfile.Threshold = INFO`为`log4j.appender.dailyfile.Threshold = DEBUG`。
 
@@ -224,29 +224,6 @@ Zepelin 笔记本中的第一个代码段落会在群集中创建新的 Livy 会
 
 ## <a name="next-steps"></a>后续步骤
 
-[概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
-
-### <a name="scenarios"></a>方案
-
-* [带 BI 的 Apache Spark：使用 HDInsight 中的 Spark 与 BI 工具进行交互式数据分析](apache-spark-use-bi-tools.md)
-* [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 结合 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](apache-spark-machine-learning-mllib-ipython.md)
-* [使用 HDInsight 中的 Apache Spark 分析网站日志](apache-spark-custom-library-website-log-analysis.md)
-
-### <a name="create-and-run-applications"></a>创建和运行应用程序
-
-* [使用 Scala 创建独立的应用程序](apache-spark-create-standalone-application.md)
-* [使用 Apache Livy 在 Apache Spark 群集中远程运行作业](apache-spark-livy-rest-interface.md)
-
-### <a name="tools-and-extensions"></a>工具和扩展
-
-* [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件创建和提交 Apache Spark Scala 应用程序](apache-spark-intellij-tool-plugin.md)
-* [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Apache Spark 应用程序](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
 * [在 HDInsight 的 Apache Spark 群集中可用于 Jupyter Notebook 的内核](apache-spark-jupyter-notebook-kernels.md)
-* [将外部包与 Jupyter 笔记本配合使用](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](apache-spark-jupyter-notebook-install-locally.md)
-
-### <a name="manage-resources"></a>管理资源
-
-* [管理 Azure HDInsight 中 Apache Spark 群集的资源](apache-spark-resource-manager.md)
-* [Track and debug jobs running on an Apache Spark cluster in HDInsight（跟踪和调试 HDInsight 中的 Apache Spark 群集上运行的作业）](apache-spark-job-debugging.md)

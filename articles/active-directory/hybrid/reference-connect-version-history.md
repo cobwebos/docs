@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/21/2020
+ms.date: 04/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1377023af9d4f153671f15e214516ac29536638
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 7704a758f53b6ba26b1c9cf9e9e2811f533601f0
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82100067"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82112195"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发行历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -47,6 +47,14 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 >如果已启用用于同步的 Azure AD Connect，则在运行某个较旧的版本时，你很快就会自动收到运行状况通知，警告你该版本即将弃用。
 >
 >请参阅[此文](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)，详细了解如何将 Azure AD Connect 升级到最新版本。
+
+## <a name="15290"></a>1.5.29.0
+
+### <a name="release-status"></a>版本状态
+04/23/2020：已发布以供下载
+
+### <a name="fixed-issues"></a>修复的问题
+此修补程序版本修复了生成1.5.20.0 中引入的一个问题，其中，具有 MFA 的租户管理员无法启用 DSSO。
 
 ## <a name="15220"></a>1.5.22.0
 
@@ -546,12 +554,12 @@ Azure AD Connect 版本 1.1.654.0（以及更高版本）中已添加了一项�
 *   删除特定对象上的所有 ACE，特定于 SELF 的 ACE 除外。 当涉及到 SELF 时，我们希望保持默认权限不变。
 *   分配以下特定权限：
 
-类型     | “属性”                          | 访问               | 应用于
+类型     | 名称                          | 访问               | 应用于
 ---------|-------------------------------|----------------------|--------------|
 Allow    | SYSTEM                        | 完全控制         | 此对象  |
-Allow    | 企业管理员             | 完全控制         | 此对象  |
-Allow    | 域管理员                 | 完全控制         | 此对象  |
-Allow    | 管理员                | 完全控制         | 此对象  |
+Allow    | Enterprise Admins             | 完全控制         | 此对象  |
+Allow    | Domain Admins                 | 完全控制         | 此对象  |
+Allow    | Administrators                | 完全控制         | 此对象  |
 Allow    | 企业域控制器 | 列出内容        | 此对象  |
 Allow    | 企业域控制器 | 读取所有属性  | 此对象  |
 Allow    | 企业域控制器 | 读取权限     | 此对象  |
@@ -571,7 +579,7 @@ Allow    | 经过身份验证的用户           | 读取权限     | 此对象 
 Set-ADSyncRestrictedPermissions -ObjectDN <$ObjectDN> -Credential <$Credential>
 ```
 
-其中 
+位置 
 
 **$ObjectDN** = 需要增强权限的 Active Directory 帐户。
 
@@ -890,7 +898,7 @@ CBool(
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
     |CertVersion|CertSignatureAlgorithmOid|Select|
-    |CertKeyAlgorithmParams|CertHashString|其中|
+    |CertKeyAlgorithmParams|CertHashString|位置|
     |||With|
 
 * 引入了以下架构更改来允许客户为流 sAMAccountName、domainNetBios 和组对象的 domainFQDN 以及用户对象的 distinguishedName 创建自定义同步规则：
@@ -1118,7 +1126,7 @@ AD FS 管理
 
 * 本版本中缺少针对 AD FS 的 issuerid 声明规则。 要将多个域与 Azure AD 联合，需使用 issuerid 声明规则。 如果使用 Azure AD Connect 管理本地 AD FS 部署，则升级到此版本将从 AD FS 配置中删除现有 issuerid 声明规则。 可在安装/升级后添加 issuerid 声明规则来解决此问题。 有关添加 issuerid 声明规则的详细信息，请参阅[与 Azure AD 联合的多域支持](how-to-connect-install-multiple-domains.md)一文。
 
-**已修复的问题：**
+**已解决的问题：**
 
 * 有时，由于无法创建密码符合组织密码策略指定的复杂性级别的本地服务帐户，安装 Azure AD Connect 失败。
 * 解决了当连接器空间中的某个对象既在一个联接规则的范围以外，同时又在另一个联接规则的范围以内时，无法重新评估联接规则的问题。 如果两个或更多个联接规则的联接条件互斥，则可能会发生此问题。
@@ -1178,7 +1186,7 @@ AD FS 管理
 ## <a name="111300"></a>1.1.130.0
 发布日期：2016 年 4 月
 
-**新功能：**
+**新增功能：**
 
 * 添加了对[目录扩展](how-to-connect-sync-feature-directory-extensions.md)的多值属性的支持。
 * 添加了将[自动升级](how-to-connect-install-automatic-upgrade.md)的更多配置变体视为符合升级要求的支持。
@@ -1276,7 +1284,7 @@ AD FS 管理
 ## <a name="1086670"></a>1.0.8667.0
 发布日期：2015 年 8 月
 
-**新增功能：**
+**新功能：**
 
 * Azure AD Connect 安装向导现已本地化为所有 Windows Server 语言。
 * 添加了在使用 Azure AD 密码管理时的帐户解锁支持。

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3e09741e841897032b8146dee67b79e0c26ea5cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 17a96479b80410cbfcb2a6061904491f95c45f10
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275146"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116258"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>使用 Azure 认知搜索索引器进行字段映射和转换
 
@@ -28,10 +28,7 @@ ms.locfileid: "80275146"
 * 需要对数据进行 Base64 编码或解码。 字段映射支持多个**映射函数**，包括用于 Base64 编码和解码的函数。
 
 > [!NOTE]
-> Azure 认知搜索索引器的字段映射功能提供一种简单的方法用于将数据字段映射到索引字段，并提供几个用于数据转换的选项。 较复杂的数据可能需要经过预处理，才能将形状调整为易于编制索引的形式。
->
-> Microsoft Azure 数据工厂是功能强大的基于云的解决方案，可用于导入和转换数据。 你也可以在编制索引之前编写代码来转换源数据。 有关代码示例，请参阅[为关系数据建模](search-example-adventureworks-modeling.md)和[为多级分面建模](search-example-adventureworks-multilevel-faceting.md)。
->
+> 索引器中的字段映射是将数据字段映射到索引字段的一种简单方法，可实现轻型数据转换。 更复杂的数据可能需要预先处理才能将其调整为有利于索引的形式。 可以考虑的一个选项是[Azure 数据工厂](https://docs.microsoft.com/zure/data-factory/)。
 
 ## <a name="set-up-field-mappings"></a>设置字段映射
 
@@ -123,7 +120,7 @@ api-key: [admin key]
 
 #### <a name="example---document-key-lookup"></a>示例 - 文档键查找
 
-Azure 认知搜索文档键中只能使用 URL 安全字符（因为客户必须能够使用[查找 API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) 来寻址文档）。 如果键的源字段包含 URL 不安全的字符，在编制索引时，你可以使用 `base64Encode` 函数来转换该字段。 但是，文档密钥（转换之前和之后）不能超过 1，024 个字符。
+Azure 认知搜索文档键中只能使用 URL 安全字符（因为客户必须能够使用[查找 API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) 来寻址文档）。 如果键的源字段包含 URL 不安全的字符，在编制索引时，你可以使用 `base64Encode` 函数来转换该字段。 但是，文档键（转换之前和之后）的长度不能超过1024个字符。
 
 在搜索时检索编码的键时，可以使用 `base64Decode` 函数获取原始键值，然后使用该值来检索源文档。
 
@@ -142,7 +139,7 @@ Azure 认知搜索文档键中只能使用 URL 安全字符（因为客户必须
 
 如果未包含映射函数的 parameters 属性，该属性的默认值为 `{"useHttpServerUtilityUrlTokenEncode" : true}`。
 
-Azure 认知搜索支持两种不同的 Base64 编码： 在编码和解码同一字段时，应使用相同的参数。 在决定要使用哪些参数时，请参阅 [base64 编码选项](#base64details)了解详细信息。
+Azure 认知搜索支持两种不同的 Base64 编码。 在编码和解码同一字段时，应使用相同的参数。 在决定要使用哪些参数时，请参阅 [base64 编码选项](#base64details)了解详细信息。
 
 <a name="base64DecodeFunction"></a>
 
@@ -182,7 +179,7 @@ Azure 认知搜索支持 URL 安全的 base64 编码和正常的 base64 编码�
 > [!WARNING]
 > 如果使用 `base64Encode` 来生成密钥值，则必须将 `useHttpServerUtilityUrlTokenEncode` 设置为 true。 只能将 URL 安全的 base64 编码用于密钥值。 请参阅[命名规则（Azure 认知搜索）](https://docs.microsoft.com/rest/api/searchservice/naming-rules)，了解对密钥值中字符的整套限制。
 
-Azure 认知搜索中的 .NET 库采用完整的 .NET 框架来提供内置编码。 `useHttpServerUtilityUrlTokenEncode` 和 `useHttpServerUtilityUrlTokenDecode` 选项利用了此内置功能。 如果使用 .NET Core 或其他框架，建议将这些选项设置为 `false` 并直接调用框架的编码和解码函数。
+Azure 认知搜索中的 .NET 库采用完整的 .NET 框架来提供内置编码。 `useHttpServerUtilityUrlTokenEncode`和`useHttpServerUtilityUrlTokenDecode`选项利用此内置功能。 如果使用 .NET Core 或其他框架，建议将这些选项设置为 `false` 并直接调用框架的编码和解码函数。
 
 下表比较了对字符串 `00>00?00` 进行不同的 base64 编码的结果。 若要确定 base64 函数所需的其他处理（如有），请对字符串 `00>00?00` 应用库编码函数，然后比较输出和预期的输出 `MDA-MDA_MDA`。
 
@@ -246,8 +243,6 @@ Azure SQL 数据库不具有能自然映射到 Azure 认知搜索中 `Collection
   }]
 ```
 
-有关将关系数据转换为索引集合字段的详细示例，请参阅[为关系数据建模](search-example-adventureworks-modeling.md)。
-
 <a name="urlEncodeFunction"></a>
 
 ### <a name="urlencode-function"></a>urlEncode 函数
@@ -298,13 +293,13 @@ Azure SQL 数据库不具有能自然映射到 Azure 认知搜索中 `Collection
  
  <a name="fixedLengthEncodeFunction"></a>
  
- ### <a name="fixedlengthencode-function"></a>固定长度编码功能
+ ### <a name="fixedlengthencode-function"></a>fixedLengthEncode 函数
  
- 此函数将任何长度的字符串转换为固定长度字符串。
+ 此函数将任意长度的字符串转换为固定长度的字符串。
  
- ### <a name="example---map-document-keys-that-are-too-long"></a>示例 - 映射太长的文档键
+ ### <a name="example---map-document-keys-that-are-too-long"></a>示例-映射过长的文档键
  
-当遇到抱怨文档密钥长度超过 1024 个字符的错误时，可以应用此功能来缩短文档密钥的长度。
+当面对的错误抱怨文档键的长度超过1024个字符时，可应用此函数以减少文档键的长度。
 
  ```JSON
 

@@ -1,22 +1,14 @@
 ---
-title: Azure 批处理任务启动事件
-description: 批处理任务启动事件的参考信息。 当任务已计划由计划程序在计算节点上启动时，会发出此事件。
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
+title: Azure Batch 任务开始事件
+description: Batch 任务开始事件的参考信息。 当任务已计划由计划程序在计算节点上启动时，会发出此事件。
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: labrenne
-ms.openlocfilehash: bed3749e29867298f3e8258a08448b7b094055ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e897cb02163d11657c915d31ee5564e5bbd7407
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022811"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116394"
 ---
 # <a name="task-start-event"></a>任务开始事件
 
@@ -65,19 +57,19 @@ ms.locfileid: "77022811"
 |`poolId`|String|运行任务的池的 ID。|
 |`nodeId`|String|运行任务的节点的 ID。|
 
-###  <a name="multiinstancesettings"></a><a name="multiInstanceSettings"></a>多实例设置
+###  <a name="multiinstancesettings"></a><a name="multiInstanceSettings"></a> multiInstanceSettings
 
 |元素名称|类型|说明|
 |------------------|----------|-----------|
 |`numberOfInstances`|Int|任务所需的计算节点数。|
 
-###  <a name="constraints"></a><a name="constraints"></a>约束
+###  <a name="constraints"></a><a name="constraints"></a> constraints
 
 |元素名称|类型|说明|
 |------------------|----------|-----------|
 |`maxTaskRetryCount`|Int32|可以重试任务的最大次数。 批处理服务在其退出代码非零时重试任务。<br /><br /> 请注意，此值专门用于控制重试的次数。 批处理服务将尝试任务一次，然后重试，直至达到此上限为止。 例如，如果最大重试计数为 3，则批处理任务最多尝试任务 4 次（一次是初始尝试，其余 3 次是重试）。<br /><br /> 如果最大重试计数为 0，则批处理服务不会重试任务。<br /><br /> 如果最大重试计数为 -1，则批处理服务会无限制地重试任务。<br /><br /> 默认值为 0（不重试）。|
 
-###  <a name="executioninfo"></a><a name="executionInfo"></a>执行信息
+###  <a name="executioninfo"></a><a name="executionInfo"></a> executionInfo
 
 |元素名称|类型|说明|
 |------------------|----------|-----------|

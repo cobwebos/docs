@@ -1,36 +1,26 @@
 ---
-title: 创建任务以准备&计算节点上完成作业 - Azure 批处理
+title: 创建任务以在计算节点上准备 & 完成的作业
 description: 使用作业级准备任务最大程度地减少 Azure Batch 计算节点的数据传输，在完成作业时执行释放任务来清理节点。
-services: batch
-documentationcenter: .net
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: 63d9d4f1-8521-4bbb-b95a-c4cad73692d3
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 02/17/2020
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: d9f6f015c210592d5d8053b1b34d5357bb357629
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c9c88994a65d4d2cb8c8373d2bbb4aa2877fe465
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77586778"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116054"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>在 Batch 计算节点上运行作业准备和作业发布任务
 
- Azure Batch 作业在执行其任务之前，通常需要经过某种形式的设置，并且需要在其任务完成时进行作业后维护。 可能需要将常见的任务输入数据下载到计算节点，或者在作业完成之后，将任务输出数据上传到 Azure 存储。 可以使用“作业准备”**** 和“作业释放”**** 任务来执行这些操作。
+ Azure Batch 作业在执行其任务之前，通常需要经过某种形式的设置，并且需要在其任务完成时进行作业后维护。 可能需要将常见的任务输入数据下载到计算节点，或者在作业完成之后，将任务输出数据上传到 Azure 存储。 可以使用“作业准备”  和“作业释放”  任务来执行这些操作。
 
 ## <a name="what-are-job-preparation-and-release-tasks"></a>什么是作业准备和作业释放任务？
 在运行作业的任务之前，作业准备任务在计划要运行至少一个任务的所有计算节点上运行。 作业完成后，作业释放任务会在池中至少运行了一个任务的每个节点上运行。 与普通的 Batch 任务一样，可以指定在运行作业准备或释放任务时要调用的命令行。
 
-作业准备和释放任务可以提供许多熟悉的 Batch 任务功能，例如文件下载（[资源文件][net_job_prep_resourcefiles]），提升权限的执行，自定义环境变量，最大执行持续时间，重试计数和文件保留时间。
+作业准备和释放任务提供许多熟悉的 Batch 任务功能，例如文件下载（[资源文件][net_job_prep_resourcefiles]）、提升权限的执行、自定义环境变量、最大执行持续时间、重试计数和文件保留时间。
 
-以下部分介绍如何使用 [Batch .NET][api_net] 库中的 [JobPreparationTask][net_job_prep] 和 [JobReleaseTask][net_job_release] 类。
+以下部分介绍如何使用 [Batch .NET][net_job_prep] 库中的 [JobPreparationTask][net_job_release] 和 [JobReleaseTask][api_net] 类。
 
 > [!TIP]
 > 作业准备和释放任务在“共享池”环境中特别有用。在这些环境中，计算节点池在任务运行之间保留，并由许多作业使用。
@@ -42,11 +32,11 @@ ms.locfileid: "77586778"
 
 **下载常用的任务数据**
 
-Batch 作业通常需要一组通用的数据作为作业任务的输入。 例如，在每日风险分析计算中，市场数据特定于作业，同时也是作业中所有任务通用的数据。 这些市场数据（大小通常为若干 GB）应该只下载到每个计算节点一次，以供节点上运行的任意任务使用。 在执行作业的其他任务之前，使用“作业准备任务”**** 将此数据下载到每个节点。
+Batch 作业通常需要一组通用的数据作为作业任务的输入。 例如，在每日风险分析计算中，市场数据特定于作业，同时也是作业中所有任务通用的数据。 这些市场数据（大小通常为若干 GB）应该只下载到每个计算节点一次，以供节点上运行的任意任务使用。 在执行作业的其他任务之前，使用“作业准备任务”  将此数据下载到每个节点。
 
 **删除作业和任务输出**
 
-在“共享池”环境中，作业之间的池计算节点不会解除，因此可能需要删除运行之间的作业数据。 可能需要保留节点上的磁盘空间，或符合组织的安全策略。 使用“作业释放任务”**** 删除作业准备任务下载的数据或者在任务执行期间生成的数据。
+在“共享池”环境中，作业之间的池计算节点不会解除，因此可能需要删除运行之间的作业数据。 可能需要保留节点上的磁盘空间，或符合组织的安全策略。 使用“作业释放任务”  删除作业准备任务下载的数据或者在任务执行期间生成的数据。
 
 **日志保留期**
 
@@ -60,23 +50,23 @@ Batch 作业通常需要一组通用的数据作为作业任务的输入。 例�
 ## <a name="job-preparation-task"></a>作业准备任务
 
 
-在执行作业的任务之前，Batch 将在计划运行任务的每个计算节点上执行作业准备任务。 默认情况下，Batch 在等待作业准备任务完成，然后再运行计划在节点上执行的任务。 但可以将该服务配置为不要等待。 如果节点重新启动，作业准备任务将再次运行。 您还可以禁用此行为。 如果作业准备任务和作业管理器任务配置了作业，则作业准备任务在作业管理器任务之前运行，就像所有其他任务一样。 作业准备任务始终首先运行。
+在执行作业的任务之前，Batch 在每个计划运行任务的计算节点上执行作业准备任务。 默认情况下，Batch 会等待作业准备任务完成，然后才在节点上运行计划执行的任务。 但可以将该服务配置为不要等待。 如果节点重启，作业准备任务将重新运行。 此可以禁用此行为。 如果你的作业配置了作业准备任务和作业管理器任务，那么作业准备任务将在作业管理器任务之前运行，就像它对所有其他任务所做的一样。 作业准备任务始终首先运行。
 
 作业准备任务只会在计划运行任务的节点上运行。 例如，这可以防止未分配任务的节点不必要地执行准备任务， 当作业的任务数小于池中的节点数时，可能会出现这种情况。 此外，这也适用于在任务计数小于可能的并行任务总数的情况下启用[并行任务执行](batch-parallel-node-tasks.md)，从而留出一些空闲节点的情况。 不在空闲节点上运行作业准备任务可以节省数据传输费用。
 
 > [!NOTE]
-> [JobPreparationTask][net_job_prep_cloudjob] 与 [CloudPool.StartTask][pool_starttask] 的不同之处在于，JobPreparationTask 在每个作业启动时执行，而 StartTask 只在计算节点首次加入池或重新启动时执行。
+> [JobPreparationTask][net_job_prep_cloudjob] 与 [CloudPool.StartTask][pool_starttask] 的不同之处在于，JobPreparationTask 在每个作业启动时执行，而 StartTask 只在计算节点首次加入池或重启时执行。
 >
 
 
 >## <a name="job-release-task"></a>作业释放任务
 
-将作业标记为完成后，作业释放任务会在池中至少运行了一个任务的每个节点上执行。 可以通过发出终止请求将作业标记为已完成。 然后，Batch 服务会将作业状态设置为正在终止** 终止与作业关联的任何活动任务或正在运行的任务，并运行作业释放任务。 然后，该作业将进入已完成** 状态。
+将作业标记为完成后，作业释放任务会在池中至少运行了一个任务的每个节点上执行。 可以通过发出终止请求将作业标记为已完成。 然后，Batch 服务会将作业状态设置为正在终止  终止与作业关联的任何活动任务或正在运行的任务，并运行作业释放任务。 然后，该作业将进入已完成  状态。
 
 > [!NOTE]
 > 作业删除操作也会执行作业释放任务。 但是，如果已经终止了某个作业，则以后删除该作业时，释放任务不会再次运行。
 
-作业发布任务最多可以运行 15 分钟，然后由 Batch 服务终止。 有关详细信息，请参阅 REST [API 参考文档](https://docs.microsoft.com/rest/api/batchservice/job/add#jobreleasetask)。
+作业释放任务最多可以运行15分钟，然后批处理服务将终止。 有关详细信息，请参阅[REST API 参考文档](https://docs.microsoft.com/rest/api/batchservice/job/add#jobreleasetask)。
 > 
 > 
 

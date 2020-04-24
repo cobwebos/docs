@@ -4,12 +4,12 @@ description: 从包含意向和实体的话语文本中提取数据。 了解可
 author: diberry
 ms.topic: conceptual
 ms.date: 01/23/2020
-ms.openlocfilehash: 1c1a744c06e5347625fb96518bd809481ee797e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3cea4a46564210ad8c37fdeda68e24337091d0bb
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79221080"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100288"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>从包含意向和实体的话语文本中提取数据
 使用 LUIS 可以从用户的自然语言陈述中获取信息。 信息以一种程序、应用程序或聊天机器人能够使用其来采取操作的方式进行提取。 在以下部分中，通过 JSON 示例了解从意向和实体返回了什么数据。
@@ -17,7 +17,7 @@ ms.locfileid: "79221080"
 最难提取的数据是机器学习的数据，因为它不是确切的文本匹配。 机器学习[实体](luis-concept-entity-types.md)的数据提取需要作为[创作周期](luis-concept-app-iteration.md)的一部分，直到你确信已接收到所需的数据。
 
 ## <a name="data-location-and-key-usage"></a>数据位置和密钥用法
-LUIS 从已发布的[终结点](luis-glossary.md#endpoint)提供数据。 HTTPS 请求（POST 或 GET）包含陈述以及一些可选配置，例如暂存或生产环境****。
+LUIS 从已发布的[终结点](luis-glossary.md#endpoint)提供数据。 HTTPS 请求（POST 或 GET）包含陈述以及一些可选配置，例如暂存或生产环境  。
 
 #### <a name="v2-prediction-endpoint-request"></a>[V2 预测终结点请求](#tab/V2)
 
@@ -31,12 +31,12 @@ LUIS 从已发布的[终结点](luis-glossary.md#endpoint)提供数据。 HTTPS 
 
 * * *
 
-在编辑 LUIS 应用时，`appID` 可在该 LUIS 应用的“设置”**** 页上找到，也可在 URL 中找到（在 `/apps/` 之后）。 `subscription-key` 是用于查询应用的终结点密钥。 虽然可以在学习 LUIS 时使用免费的创作/初学者密钥，但是将终结点密钥更改为支持[所需 LUIS 用法](luis-boundaries.md#key-limits)的密钥非常重要。 `timezoneOffset` 的单位是分钟。
+在编辑 LUIS 应用时，`appID` 可在该 LUIS 应用的“设置”  页上找到，也可在 URL 中找到（在 `/apps/` 之后）。 `subscription-key` 是用于查询应用的终结点密钥。 虽然可以在学习 LUIS 时使用免费的创作/初学者密钥，但是将终结点密钥更改为支持[所需 LUIS 用法](luis-limits.md#key-limits)的密钥非常重要。 `timezoneOffset` 的单位是分钟。
 
-HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模型确定的所有意向和实体信息****。 终结点 URL 位于 [LUIS](luis-reference-regions.md) 网站的“管理”**** 部分的“密钥和终结点”**** 页上。
+HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模型确定的所有意向和实体信息  。 终结点 URL 位于 [LUIS](luis-reference-regions.md) 网站的“管理”  部分的“密钥和终结点”  页上。
 
 ## <a name="data-from-intents"></a>意向中的数据
-主数据是评分最高的意向名称****。 终结点响应为：
+主数据是评分最高的意向名称  。 终结点响应为：
 
 #### <a name="v2-prediction-endpoint-response"></a>[V2 预测终结点响应](#tab/V2)
 
@@ -73,7 +73,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 * * *
 
-|数据对象|数据类型|数据位置|“值”|
+|数据对象|数据类型|数据位置|值|
 |--|--|--|--|
 |Intent|String|topScoringIntent.intent|"GetStoreInfo"|
 
@@ -135,7 +135,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 意向按评分从高到低排序。
 
-|数据对象|数据类型|数据位置|“值”|Score|
+|数据对象|数据类型|数据位置|值|Score|
 |--|--|--|--|:--|
 |Intent|String|intents[0].intent|"GetStoreInfo"|0.984749258|
 |Intent|String|intents[1].intent|"None"|0.0168218873|
@@ -196,7 +196,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 * * *
 
-|域|数据对象|数据类型|数据位置|“值”|
+|域|数据对象|数据类型|数据位置|值|
 |--|--|--|--|--|
 |实用程序|Intent|String|intents[0].intent|"<b>Utilities</b>.ShowNext"|
 |通信|Intent|String|intents[1].intent|<b>Communication</b>.StartOver"|
@@ -208,7 +208,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 陈述中的单个单词或短语可以匹配多个实体。 在这种情况下，会返回每个匹配实体及其评分。
 
-所有实体都返回在终结点响应中的“实体”数组中****：
+所有实体都返回在终结点响应中的“实体”数组中  ：
 
 #### <a name="v2-prediction-endpoint-response"></a>[V2 预测终结点响应](#tab/V2)
 
@@ -255,11 +255,11 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 ## <a name="composite-entity-data"></a>复合实体数据
 
-[复合实体](reference-entity-composite.md)由其他实体组成，如预构建实体、简单、正则表达式和列表实体。 各种单独的实体构成整个实体。
+[复合实体](reference-entity-composite.md)由其他实体构成，例如预生成实体、简单实体、正则表达式实体和列表实体。 各种单独的实体构成整个实体。
 
 ## <a name="list-entity-data"></a>列表实体数据
 
-[列表实体](reference-entity-list.md)表示一组固定的、封闭的相关单词及其同义词。 LUIS 不会为列表实体发现更多值。 使用“建议”功能根据当前列表查看有关新词的建议****。 如果存在多个具有相同值的列表实体，则终结点查询中会返回其中每个实体。
+[列表实体](reference-entity-list.md)表示一组固定、封闭的相关单词及其同义词。 LUIS 不会为列表实体发现更多值。 使用“建议”功能根据当前列表查看有关新词的建议  。 如果存在多个具有相同值的列表实体，则终结点查询中会返回其中每个实体。
 
 ## <a name="prebuilt-entity-data"></a>预构建实体数据
 [预构建](luis-concept-entity-types.md)实体是基于正则表达式匹配项、使用开源 [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) 项目发现的。 预构建实体返回在实体数组中，并使用前缀为 `builtin::` 的类型名称。 以下文本是一个示例陈述，其中包含返回的预构建实体：
@@ -540,7 +540,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 ### <a name="names-of-people"></a>人的姓名
 
-人的姓名可能会带有些许格式，具体取决于语言和区域性。 使用预构建的**[personName](luis-reference-prebuilt-person.md)** 实体或具有名字和姓氏[角色](luis-concept-roles.md)**[的简单实体](luis-concept-entity-types.md#simple-entity)**。
+人的姓名可能会带有些许格式，具体取决于语言和区域性。 使用预生成的**[personName](luis-reference-prebuilt-person.md)** 实体或具有名字和姓氏[角色](luis-concept-roles.md)的**[简单实体](luis-concept-entity-types.md#simple-entity)**。
 
 如果使用简单实体，请确保给出的示例在话语的不同部分、在不同长度的话语中以及在所有意向（包括“None”意向）的话语中使用姓氏和名字。 定期[查看](luis-how-to-review-endoint-utt.md)终结点陈述以标记未能正确预测的任何名称。
 
@@ -550,7 +550,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 ### <a name="new-and-emerging-names"></a>新出现的名称
 
-一些应用需要能够找到新出现的名称，例如产品或公司。 这些类型的名称是最难提取的数据类型。 从**[一个简单的实体](luis-concept-entity-types.md#simple-entity)** 开始，然后添加[短语列表](luis-concept-feature.md)。 定期[查看](luis-how-to-review-endoint-utt.md)终结点陈述以标记未能正确预测的任何名称。
+一些应用需要能够找到新出现的名称，例如产品或公司。 这些类型的名称是最难提取的数据类型。 从一个**[简单的实体](luis-concept-entity-types.md#simple-entity)** 开始并添加[短语列表](luis-concept-feature.md)。 定期[查看](luis-how-to-review-endoint-utt.md)终结点陈述以标记未能正确预测的任何名称。
 
 ## <a name="pattern-roles-data"></a>模式角色数据
 角色是实体间的上下文差别。
@@ -679,7 +679,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 ## <a name="patternany-entity-data"></a>Pattern.any 实体数据
 
-[Pattern.any](reference-entity-pattern-any.md)是一个可变长度占位符，仅用于模式的模板陈述中，用于标记实体的开始和结束位置。
+[Pattern。 any](reference-entity-pattern-any.md)是仅在模式的模板查询文本中使用的可变长度占位符，用于标记实体开始和结束的位置。
 
 ## <a name="sentiment-analysis"></a>情绪分析
 如果配置了情绪分析，LUIS json 响应会包含情绪分析内容。 请在[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)文档中详细了解情绪分析。

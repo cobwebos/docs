@@ -1,25 +1,15 @@
 ---
-title: 在计算节点上安装应用程序包 - Azure Batch | Microsoft Docs
+title: 在计算节点上安装应用程序包
 description: 使用 Azure Batch 的应用程序包功能轻松管理要安装在 Batch 计算节点上的多个应用程序和版本。
-services: batch
-documentationcenter: .net
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: 3b6044b7-5f65-4a27-9d43-71e1863d16cf
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 04/26/2019
-ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30301832381bdc7b5f001eec2c449c571f9fd671
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7824d3e2d8cfb7b52041e59a9007688c4ef1cafa
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79086220"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115612"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>使用 Batch 应用程序包将应用程序部署到计算节点
 
@@ -82,7 +72,7 @@ Batch 中的应用程序包含一个或多个应用程序包，指定应用程�
 
 
 
-![Azure 门户中的"未配置存储帐户"警告][9]
+![Azure 门户中的 "未配置存储帐户" 警告][9]
 
 Batch 服务使用关联的存储帐户存储应用程序包。 链接两个帐户后，Batch 便能将存储在链接之存储帐户中的包自动部署到计算节点。 若要将存储帐户链接到 Batch 帐户，请单击“警告”窗口中的“存储帐户”，然后再次单击“存储帐户”。************
 
@@ -92,9 +82,9 @@ Batch 服务使用关联的存储帐户存储应用程序包。 链接两个帐�
 
 > [!IMPORTANT] 
 > - 目前无法将应用程序包用于配置有[防火墙规则](../storage/common/storage-network-security.md)的 Azure 存储帐户。
-> - **将分层命名空间**设置为 **"已启用"** 的 Azure 存储帐户不能用于应用程序包。
+> - 将**分层命名空间**设置为 "**已启用**" 的 Azure 存储帐户不能用于应用程序包。
 
-Batch 服务使用 Azure 存储将应用程序包存储为块 blob。 对于块 Blob 数据，您[按正常情况收费][storage_pricing]，并且每个包的大小不能超过最大块 Blob 大小。 有关详细信息，请参阅[存储帐户的 Azure 存储可伸缩性和性能目标](../storage/blobs/scalability-targets.md)。 请务必考虑应用程序包的大小和数目，并定期删除过时的包以降低成本。
+Batch 服务使用 Azure 存储将应用程序包存储为块 blob。 对于块 blob 数据[按正常方式收费][storage_pricing]，并且每个包的大小不能超过最大块 blob 大小。 有关详细信息，请参阅[存储帐户的 Azure 存储可伸缩性和性能目标](../storage/blobs/scalability-targets.md)。 请务必考虑应用程序包的大小和数目，并定期删除过时的包以降低成本。
 
 ### <a name="view-current-applications"></a>查看当前应用程序
 若要查看 Batch 帐户中的应用程序，请在查看“Batch 帐户”**** 时，单击左侧菜单中的“应用程序”**** 菜单项。
@@ -109,7 +99,7 @@ Batch 服务使用 Azure 存储将应用程序包存储为块 blob。 对于块 
 
 * **包**：与此应用程序关联的版本号。
 * **默认版本**：如果在指定池的应用程序时未指出版本，系统将安装此应用程序版本。 此设置是可选的。
-* **允许更新**：该值指定是否允许更新、删除和添加包。 如果此值设置为“否”****，将禁用对应用程序包执行更新和删除操作。 只能添加新的应用程序包版本。 默认值为 **"是**"。
+* **允许更新**：该值指定是否允许更新、删除和添加包。 如果此值设置为“否”****，将禁用对应用程序包执行更新和删除操作。 只能添加新的应用程序包版本。 默认值为 **"是"**。
 
 如果希望在计算节点上查看应用程序包的文件结构，请导航到门户中的批处理帐户。 从批处理帐户导航到“池”****。 选择包含你感兴趣的计算节点的池。
 
@@ -133,7 +123,7 @@ Batch 服务使用 Azure 存储将应用程序包存储为块 blob。 对于块 
 ### <a name="add-a-new-application"></a>添加新的应用程序
 若要创建新应用程序，请添加应用程序包并指定新的唯一应用程序 ID。 使用新应用程序 ID 添加的第一个应用程序包也会创建新的应用程序。
 
-单击 **"应用程序** > **添加**"。
+单击“应用程序”   >   “添加”。
 
 ![Azure 门户中的新建应用程序边栏选项卡][5]
 
@@ -173,14 +163,14 @@ Batch 服务使用 Azure 存储将应用程序包存储为块 blob。 对于块 
 
 ![Azure 门户中的添加应用程序包边栏选项卡][8]
 
-如您所见，字段与 **"新建应用程序"** 窗口的字段匹配，但禁用**了应用程序 ID**框。 如前面创建新应用程序一样，指定新包的“版本”****，浏览到“应用程序包”****.zip 文件，并单击“确定”**** 上传包。
+如您所见，这些字段与 "**新建应用程序**" 窗口中的字段相匹配，但 "**应用程序 ID** " 框处于禁用状态。 如前面创建新应用程序一样，指定新包的“版本”****，浏览到“应用程序包”****.zip 文件，并单击“确定”**** 上传包。
 
 ### <a name="update-or-delete-an-application-package"></a>更新或删除应用程序包
 要更新或删除现有的应用程序包，请打开应用程序的详细信息，单击“包”****，单击要修改的应用程序包数据列中的**省略号**，并选择要执行的操作。
 
 ![在 Azure 门户中更新或删除包][7]
 
-**更新**
+**Update**
 
 单击“更新”**** 时，“更新包”**** 窗口随即出现。 此窗口与“新建应用程序包”**** 窗口相似，只不过包选择字段已启用，因此可以指定要上传的新 ZIP 文件。
 
@@ -369,12 +359,12 @@ foreach (ApplicationSummary app in applications)
 [2]: ./media/batch-application-packages/app_pkg_02.png "Azure 门户中的应用程序磁贴"
 [3]: ./media/batch-application-packages/app_pkg_03.png "Azure 门户中的应用程序边栏选项卡"
 [4]: ./media/batch-application-packages/app_pkg_04.png "Azure 门户中的应用程序详细信息边栏选项卡"
-[5]: ./media/batch-application-packages/app_pkg_05.png "Azure 门户中的新应用程序边栏选项卡"
+[5]: ./media/batch-application-packages/app_pkg_05.png "Azure 门户中的 "新建应用程序" 边栏选项卡"
 [7]: ./media/batch-application-packages/app_pkg_07.png "Azure 门户中的更新或删除包下拉列表"
 [8]: ./media/batch-application-packages/app_pkg_08.png "Azure 门户中的新建应用程序包边栏选项卡"
 [9]: ./media/batch-application-packages/app_pkg_09.png "未链接存储帐户警报"
 [10]: ./media/batch-application-packages/app_pkg_10.png "在 Azure 门户中选择存储帐户边栏选项卡"
-[11]: ./media/batch-application-packages/app_pkg_11.png "在 Azure 门户中更新包边栏选项卡"
+[11]: ./media/batch-application-packages/app_pkg_11.png "Azure 门户中的更新包边栏选项卡"
 [12]: ./media/batch-application-packages/app_pkg_12.png "Azure 门户中的删除包确认对话框"
-[13]: ./media/batch-application-packages/package-file-structure.png "在 Azure 门户中计算节点信息"
-[14]: ./media/batch-application-packages/package-file-structure-node.png "Azure 门户中显示的计算节点上的文件"
+[13]: ./media/batch-application-packages/package-file-structure.png "Azure 门户中的计算节点信息"
+[14]: ./media/batch-application-packages/package-file-structure-node.png "计算节点上 Azure 门户中显示的文件"

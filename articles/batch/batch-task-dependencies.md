@@ -1,25 +1,15 @@
 ---
-title: 创建任务依赖项以运行任务 - Azure 批处理
+title: 创建任务依赖项以运行任务 - Azure Batch
 description: 在 Azure Batch 中创建依赖于其他任务的完成的任务，以处理 MapReduce 样式和类似的大数据工作负荷。
-services: batch
-documentationcenter: .net
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: b8d12db5-ca30-4c7d-993a-a05af9257210
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ca771117e889afc8e143c4ca4626ab2d3bb4da2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b3bc37a3d004f077e2e780d096b7bb2a8e5f773
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022896"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116479"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>创建任务依赖关系，以运行依赖于其他任务的任务
 
@@ -67,7 +57,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 此代码片段创建任务 ID 为“Flowers”的依赖任务。 “Flowers”任务依赖于“Rain”和“Sun”任务。 “Flowers”任务将计划为仅在“Rain”和“Sun”任务已成功完成后才在计算节点上运行。
 
 > [!NOTE]
-> 默认情况下，当任务处于“已完成”**** 状态并且其“退出代码”**** 为 `0` 时，该任务视为已成功完成。 在 Batch .NET 中，这意味着 [CloudTask][net_cloudtask].[State][net_taskstate] 属性值为 `Completed`，CloudTask 的 [TaskExecutionInformation][net_taskexecutioninformation].[ExitCode][net_exitcode] 属性值为 `0`。 有关如何更改此设置，请参阅[依赖项操作](#dependency-actions)部分。
+> 默认情况下，当任务处于“已完成”  状态并且其“退出代码”  为 `0` 时，该任务视为已成功完成。 在 Batch .NET 中，这意味着 [CloudTask][net_cloudtask].[State][net_taskstate] 属性值为 `Completed`，CloudTask 的 [TaskExecutionInformation][net_taskexecutioninformation].[ExitCode][net_exitcode] 属性值为 `0`。 有关如何更改此设置，请参阅[依赖项操作](#dependency-actions)部分。
 > 
 > 
 
@@ -86,7 +76,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 > 在本部分的示例中，仅在父任务成功完成时才运行依赖任务。 此行为是依赖任务的默认行为。 可以通过指定一个依赖关系操作来重写默认行为，在父任务失败后运行依赖任务。 有关详细信息，请参阅[依赖关系操作](#dependency-actions)部分。
 
 ### <a name="one-to-one"></a>一对一
-在一对一关系中，任务依赖于一个父任务的成功完成。 若要创建该依赖关系，请在填充 [CloudTask][net_cloudtask] 的 [DependsOn][net_dependson] 属性时，为 [TaskDependencies][net_taskdependencies].[OnId][net_onid] 静态方法提供单个任务 ID。
+在一对一关系中，任务依赖于一个父任务的成功完成。 若要创建该依赖关系，请在填充 [CloudTask][net_taskdependencies] 的 [DependsOn][net_onid] 属性时，为 [TaskDependencies][net_dependson].[OnId][net_cloudtask] 静态方法提供单个任务 ID。
 
 ```csharp
 // Task 'taskA' doesn't depend on any other tasks
@@ -100,7 +90,7 @@ new CloudTask("taskB", "cmd.exe /c echo taskB")
 ```
 
 ### <a name="one-to-many"></a>一对多
-在一对多关系中，任务依赖于多个父任务的完成。 若要创建该依赖关系，请在填充 [CloudTask][net_cloudtask] 的 [DependsOn][net_dependson] 属性时，为 [TaskDependencies][net_taskdependencies].[OnIds][net_onids] 静态方法提供任务 ID 的集合。
+在一对多关系中，任务依赖于多个父任务的完成。 若要创建该依赖关系，请在填充 [CloudTask][net_taskdependencies] 的 [DependsOn][net_onids] 属性时，为 [TaskDependencies][net_dependson].[OnIds][net_cloudtask] 静态方法提供任务 ID 的集合。
 
 ```csharp
 // 'Rain' and 'Sun' don't depend on any other tasks
@@ -117,12 +107,12 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 
 ### <a name="task-id-range"></a>任务 ID 范围
 在依赖于一系列父任务的关系中，任务依赖于其 ID 位于某个范围内的任务的完成。
-若要创建该依赖关系，请在填充 [CloudTask][net_cloudtask] 的 [DependsOn][net_dependson] 属性时，为 [TaskDependencies][net_taskdependencies].[OnIdRange][net_onidrange] 静态方法提供该范围内的第一个和最后一个任务 ID。
+若要创建该依赖关系，请在填充 [CloudTask][net_taskdependencies] 的 [DependsOn][net_onidrange] 属性时，为 [TaskDependencies][net_dependson].[OnIdRange][net_cloudtask] 静态方法提供该范围内的第一个和最后一个任务 ID。
 
 > [!IMPORTANT]
 > 将任务 ID 范围用于依赖项时，只有 ID 表示整数值的任务将由范围选定。 因此范围 `1..10` 将选择任务 `3` 和 `7`，而不是 `5flamingoes`。 
 > 
-> 在评估范围依赖项时，前导零不重要，因此，带字符串标识符 `4`、`04` 和 `004` 的任务都将处于范围内，它们将全部视为任务 `4`，因此，要完成的第一个任务将满足依赖项**。
+> 在评估范围依赖项时，前导零不重要，因此，带字符串标识符 `4`、`04` 和 `004` 的任务都将处于范围内，它们将全部视为任务 *，因此，要完成的第一个任务将满足依赖项*`4`。
 > 
 > 范围内的每个任务必须通过成功完成或者已完成但出现了映射到设置为 **Satisfy** 的某个依赖关系操作的失败，来满足该依赖关系。 有关详细信息，请参阅[依赖关系操作](#dependency-actions)部分。
 >
@@ -155,10 +145,10 @@ new CloudTask("4", "cmd.exe /c echo 4")
 依赖关系操作基于父任务的退出条件。 可为以下任一退出条件指定依赖关系操作；对于 .NET，请参阅 [ExitConditions][net_exitconditions] 类了解详细信息：
 
 - 发生预处理错误时。
-- 发生文件上传错误时。 如果任务退出，并返回通过“exitCodes”或“exitCodeRanges”指定的退出代码，然后遇到文件上传错误，则优先执行退出代码指定的操作********。
-- 任务退出并返回“ExitCodes”属性定义的退出代码时****。
-- 任务退出并返回处于“ExitCodeRanges”属性指定的范围内的退出代码时****。
-- 如果任务退出，并返回非由“ExitCodes”或“ExitCodeRanges”定义的退出代码，或者如果任务退出，并返回预处理错误，而“PreProcessingError”属性未设置，或者如果任务失败，并返回文件上传错误，而“FileUploadError”属性未设置，则为默认情况****************。 
+- 发生文件上传错误时。 如果任务退出，并返回通过“exitCodes”或“exitCodeRanges”指定的退出代码，然后遇到文件上传错误，则优先执行退出代码指定的操作   。
+- 任务退出并返回“ExitCodes”属性定义的退出代码时  。
+- 任务退出并返回处于“ExitCodeRanges”属性指定的范围内的退出代码时  。
+- 如果任务退出，并返回非由“ExitCodes”或“ExitCodeRanges”定义的退出代码，或者如果任务退出，并返回预处理错误，而“PreProcessingError”属性未设置，或者如果任务失败，并返回文件上传错误，而“FileUploadError”属性未设置，则为默认情况     。 
 
 若要在 .NET 中指定依赖关系操作，请为退出条件设置 [ExitOptions][net_exitoptions].[DependencyAction][net_dependencyaction] 属性。 **DependencyAction** 属性采用以下两个值之一：
 
@@ -214,7 +204,7 @@ new CloudTask("B", "cmd.exe /c echo B")
 使用 Batch 的[应用程序包](batch-application-packages.md)功能，可以轻松地部署任务在计算节点上执行的应用程序并对其进行版本控制。
 
 ### <a name="installing-applications-and-staging-data"></a>安装应用程序和暂存数据
-有关准备节点以运行任务的方法概述，请参阅 Azure Batch 论坛中的 [Installing applications and staging data on Batch compute nodes][forum_post]（在批处理计算节点上安装应用程序和暂存数据）。 此帖子由某个 Azure Batch 团队成员编写，是一篇很好的入门教程，介绍如何使用不同的方法将应用程序、任务输入数据和其他文件复制到计算节点。
+有关准备节点以运行任务的方法概述，请参阅 Azure Batch 论坛中的 [Installing applications and staging data on Batch compute nodes][forum_post]（在 Batch 计算节点上安装应用程序和暂存数据）。 此帖子由某个 Azure Batch 团队成员编写，是一篇很好的入门教程，介绍如何使用不同的方法将应用程序、任务输入数据和其他文件复制到计算节点。
 
 [forum_post]: https://social.msdn.microsoft.com/Forums/en-US/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
 [github_taskdependencies]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies
@@ -238,4 +228,4 @@ new CloudTask("B", "cmd.exe /c echo B")
 
 [1]: ./media/batch-task-dependency/01_one_to_one.png "关系图：一对一依赖关系"
 [2]: ./media/batch-task-dependency/02_one_to_many.png "关系图：一对多依赖关系"
-[3]: ./media/batch-task-dependency/03_task_id_range.png "图表：任务 ID 范围依赖项"
+[3]: ./media/batch-task-dependency/03_task_id_range.png "关系图：任务 ID 范围依赖关系"

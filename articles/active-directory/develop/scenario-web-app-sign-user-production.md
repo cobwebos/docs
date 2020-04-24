@@ -11,20 +11,29 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 9c5fd444c55a20441325088912a07eb051219b84
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: a8e275a41637950139598ac7c4f2513841bb4d0d
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881462"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82112501"
 ---
-# <a name="web-app-that-signs-in-users-move-to-production"></a>在用户中签名的 Web 应用：移动到生产
+# <a name="web-app-that-signs-in-users-move-to-production"></a>用于登录用户的 Web 应用：移到生产环境
 
 现在你已了解如何获取用于调用 Web API 的令牌，接下来学习如何将其移到生产环境。
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>后续步骤
+
+### <a name="troubleshooting"></a>疑难解答
+
+> [!NOTE]
+> 当用户首次登录到 web 应用程序时，他们将需要同意。 但是，在某些组织中，用户可以看到如下所示的消息：
+>
+> *AppName 需要具有访问组织中只有管理员才能授予的资源的权限。请让管理员向此应用授予权限，然后才能使用该应用。*
+>
+> 这是因为你的租户管理员已**禁止**用户同意。 在这种情况下，需要与租户管理员联系，以便他们对应用程序所需的范围进行管理员同意。
 
 ### <a name="same-site"></a>同一站点
 
@@ -38,9 +47,9 @@ ms.locfileid: "80881462"
 Web 应用登录用户后，它就可以代表已登录用户调用 Web API。 从 Web 应用调用 Web API 是以下方案的目标：
 
 > [!div class="nextstepaction"]
-> [用于调用 Web API 的 Web 应用](scenario-web-app-call-api-overview.md)
+> [调用 Web API 的 Web 应用](scenario-web-app-call-api-overview.md)
 
-## <a name="deep-dive-aspnet-core-web-app-tutorial"></a>深度潜水：ASP.NET核心网络应用程序教程
+## <a name="deep-dive-aspnet-core-web-app-tutorial"></a>深入探讨： ASP.NET Core web 应用教程
 
 了解如何在此 ASP.NET Core 教程中通过其他方法登录用户： 
 
@@ -53,9 +62,9 @@ Web 应用登录用户后，它就可以代表已登录用户调用 Web API。 �
 - 多个组织
 - 工作或学校帐户或个人 Microsoft 帐户
 - [Azure AD B2C](https://aka.ms/aadb2c)
-- 国家云
+- 国家/地区云
 
-## <a name="sample-code-java-web-app"></a>示例代码：Java Web 应用程序
+## <a name="sample-code-java-web-app"></a>示例代码： Java web 应用
 
 通过 GitHub 上的此示例详细了解 Java Web 应用： 
 

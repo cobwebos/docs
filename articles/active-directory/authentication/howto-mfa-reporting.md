@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8665e58dc84a2ea9b5f2ed70a41bbdd0aa3aa9b
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 2df562d65ad064efb1be337e0b68cb8638536981
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82099149"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82112756"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure 多重身份验证中的报告
 
@@ -129,13 +129,13 @@ Azure 多重身份验证提供了几个可通过 Azure 门户访问的报告，�
 使用后面的 PowerShell 标识已注册 MFA 的用户。 这一组命令会排除已禁用的用户，因为这些帐户不能针对 Azure AD 进行身份验证。
 
 ```powershell
-Get-MsolUser -All | Where-Object {$._StrongAuthenticationMethods -ne $null -and $._BlockCredential -eq $False} | Select-Object -Property UserPrincipalName
+Get-MsolUser -All | Where-Object {$_.StrongAuthenticationMethods -ne $null -and $_.BlockCredential -eq $False} | Select-Object -Property UserPrincipalName
 ```
 
 使用后面的 PowerShell 标识未注册 MFA 的用户。 这一组命令会排除已禁用的用户，因为这些帐户不能针对 Azure AD 进行身份验证。
 
 ```powershell
-Get-MsolUser -All | Where-Object {$._StrongAuthenticationMethods.Count -eq 0 -and $._BlockCredential -eq $False} | Select-Object -Property UserPrincipalName
+Get-MsolUser -All | Where-Object {$_.StrongAuthenticationMethods.Count -eq 0 -and $_.BlockCredential -eq $False} | Select-Object -Property UserPrincipalName
 ```
 
 标识注册的用户和输出方法。 
@@ -152,7 +152,7 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 
 下表可用于通过多因素身份验证活动报表的下载版本排查多重身份验证问题。 它们不会直接显示在 Azure 门户中。
 
-| 调用结果 | 描述 | 广泛说明 |
+| 调用结果 | 说明 | 广泛说明 |
 | --- | --- | --- |
 | SUCCESS_WITH_PIN | 已输入 PIN | 用户已输入 PIN。  如果身份验证成功，则他们输入的 PIN 是正确的。 如果身份验证被拒绝，则他们输入的 PIN 不正确，或用户设置为 "标准" 模式。 |
 | SUCCESS_NO_PIN | 仅输入 # | 如果用户被设置为“PIN”模式并且身份验证被拒绝，这表示用户没有输入自己的 PIN，而只输入了 #。   如果用户被设置为“标准”模式并且身份验证成功，这表示用户只输入了 #，而这在“标准”模式下是正确的做法。 |

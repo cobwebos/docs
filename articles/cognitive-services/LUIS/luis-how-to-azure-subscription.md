@@ -4,12 +4,12 @@ description: 首次使用语言理解 (LUIS) 时，不需要创建创作密钥�
 services: cognitive-services
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: ea2799e7b8bb18ad4a729a70ae1477cde9f97e95
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: d9235b6ef1c7cddbfbbd36f8382439d781af6d5f
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754336"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101019"
 ---
 # <a name="create-luis-resources"></a>创建 LUIS 资源
 
@@ -38,9 +38,9 @@ ms.locfileid: "80754336"
 
 试用（初学者）密钥是为你提供的。 它用作身份验证密钥，用来查询预测终结点运行时，每月最多可以进行 1000 次查询。
 
-它在 LUIS 门户中的“用户设置”页和“管理 -> Azure 资源”页上均可见。********
+它在 LUIS 门户中的“用户设置”页和“管理 -> Azure 资源”页上均可见。  
 
-准备好发布预测终结点时，[请创建](#create-luis-resources)和[分配](#assign-a-resource-to-an-app)创作和预测运行时键，以替换启动键功能。
+准备好发布预测终结点时，请[创建](#create-luis-resources)和[分配](#assign-a-resource-to-an-app)创作和预测运行时密钥，以替换 starter 密钥功能。
 
 <a name="create-resources-in-the-azure-portal"></a>
 
@@ -70,7 +70,7 @@ ms.locfileid: "80754336"
     az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
     ```
 
-1. 在名为 `my-resource-group` 的现有资源组中为 `westus` 区域创建一个类型为 `LUIS`、名称为 `my-luis-prediction-resource` 的 **LUIS 预测终结点资源**。__ 如果需要比免费层更高的吞吐量，请将 `F0` 更改为 `S0`。 详细了解[定价层和吞吐量](luis-boundaries.md#key-limits)。
+1. 在名为 `my-resource-group` 的现有资源组中为 `westus` 区域创建一个类型为 `LUIS`、名称为 `my-luis-prediction-resource` 的 **LUIS 预测终结点资源**。__ 如果需要比免费层更高的吞吐量，请将 `F0` 更改为 `S0`。 详细了解[定价层和吞吐量](luis-limits.md#key-limits)。
 
     ```azurecli
     az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
@@ -83,7 +83,7 @@ ms.locfileid: "80754336"
 
 可以在 LUIS 中为单个应用或所有应用分配创作资源。 以下过程将所有应用分配给单个创作资源。
 
-1. 登录到 LUIS[门户](https://www.luis.ai)。
+1. 登录到[LUIS 门户](https://www.luis.ai)。
 1. 在右上角的导航栏中选择用户帐户，然后选择“设置”。****
 1. 在“用户设置”页上选择“添加创作资源”，然后选择现有的创作资源。******** 选择“保存”。 
 
@@ -111,7 +111,7 @@ ms.locfileid: "80754336"
 
     此 POST API 需要以下设置：
 
-    |标头|值|
+    |Header|值|
     |--|--|
     |`Authorization`|`Authorization` 的值为 `Bearer {token}`。 请注意，单词 `Bearer` 和空格前面必须是令牌值。|
     |`Ocp-Apim-Subscription-Key`|你的创作密钥。|
@@ -124,9 +124,9 @@ ms.locfileid: "80754336"
 
     |类型|设置|值|
     |--|--|--|
-    |标头|`Authorization`|`Authorization` 的值为 `Bearer {token}`。 请注意，单词 `Bearer` 和空格前面必须是令牌值。|
-    |标头|`Ocp-Apim-Subscription-Key`|你的创作密钥。|
-    |标头|`Content-type`|`application/json`|
+    |Header|`Authorization`|`Authorization` 的值为 `Bearer {token}`。 请注意，单词 `Bearer` 和空格前面必须是令牌值。|
+    |Header|`Ocp-Apim-Subscription-Key`|你的创作密钥。|
+    |Header|`Content-type`|`application/json`|
     |Querystring|`appid`|LUIS 应用 ID。
     |Body||{"AzureSubscriptionId":"ddda2925-af7f-4b05-9ba1-2155c5fe8a8e",<br>"ResourceGroup": "resourcegroup-2",<br>"AccountName": "luis-uswest-S0-2"}|
 
@@ -142,7 +142,7 @@ ms.locfileid: "80754336"
 
 ## <a name="reset-authoring-key"></a>重置创作密钥
 
-**对于[创作资源迁移](luis-migration-authoring.md)的应用**：如果创作密钥被泄露，请重置该创作资源的 **"密钥"** 页上的 Azure 门户中的密钥。
+**对于[创作资源已迁移](luis-migration-authoring.md)的应用程序**：如果你的创作密钥已泄露，请重置该创作资源的 "**密钥**" 页上的 "Azure 门户中的密钥。
 
 **对于尚未迁移的应用**：可在 LUIS 门户的所有应用中重置此密钥。 如果通过创作 API 创作应用，则需将 Ocp-Apim-Subscription-Key 的值更改为新密钥。
 

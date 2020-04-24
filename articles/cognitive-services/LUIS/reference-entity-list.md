@@ -3,25 +3,25 @@ title: 列出实体类型 - LUIS
 description: 列表实体表示一组固定、封闭的相关单词及其同义词。 LUIS 不会为列表实体发现更多值。 使用“建议”功能根据当前列表查看有关新词的建议。
 ms.topic: reference
 ms.date: 03/12/2020
-ms.openlocfilehash: 795d16bc2e0c4223ff3ac283a72493923d3ab355
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 273fabae38f6682cfaaffcdcc19e62adc41b7a47
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79297231"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82097568"
 ---
 # <a name="list-entity"></a>列表实体
 
-列表实体表示一组固定、封闭的相关单词及其同义词。 LUIS 不会为列表实体发现更多值。 使用“建议”功能根据当前列表查看有关新词的建议****。 如果存在多个具有相同值的列表实体，则终结点查询中会返回其中每个实体。
+列表实体表示一组固定、封闭的相关单词及其同义词。 LUIS 不会为列表实体发现更多值。 使用“建议”功能根据当前列表查看有关新词的建议  。 如果存在多个具有相同值的列表实体，则终结点查询中会返回其中每个实体。
 
 列表实体不进行机器学习。 它是确切的文本匹配。 LUIS 将任何列表中某个项的任何匹配项标记为响应中的实体。
 
-**如果文本数据具有以下特征，则非常适合使用该实体：**
+**如果文本数据具有以下特征，则非常适合使用此实体：**
 
 * 是已知的集。
 * 不经常更改。 如果需要经常更改列表或希望列表自行扩展，则使用短语列表提升的简单实体是更好的选择。
-* 此集不超出此实体类型的最大 LUIS [边界](luis-boundaries.md)。
-* 话语中的文本与同义词或规范名称不区分大小写。 LUIS 不会使用超出匹配范围的列表。 模糊匹配、词干、复数和其他变体不会使用列表实体解析。 若要管理变体，请考虑使用带有可选文本语法的[模式](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance)。
+* 此集不超出此实体类型的最大 LUIS [边界](luis-limits.md)。
+* 查询文本中的文本是与同义词或规范名称不区分大小写的匹配项。 LUIS 不会使用超出匹配项的列表。 模糊匹配、词干分析、复数和其他变体不会使用列表实体进行解析。 若要管理变体，请考虑使用带有可选文本语法的[模式](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance)。
 
 ![列表实体](./media/luis-concept-entities/list-entity.png)
 
@@ -56,8 +56,8 @@ ms.locfileid: "79297231"
 
 |列表项|项同义词|
 |---|---|
-|`Seattle`|`sea-tac`, `sea`, `98101`, `206`, `+1` |
-|`Paris`|`cdg`, `roissy`, `ory`, `75001`, `1`, `+33`|
+|`Seattle`|`sea-tac`、`sea`、`98101`、`206`、`+1` |
+|`Paris`|`cdg`、`roissy`、`ory`、`75001`、`1`、`+33`|
 
 `book 2 tickets to paris`
 
@@ -125,7 +125,7 @@ ms.locfileid: "79297231"
 
 * * *
 
-|数据对象|实体名称|“值”|
+|数据对象|实体名称|值|
 |--|--|--|
 |列表实体|`Cities`|`paris`|
 

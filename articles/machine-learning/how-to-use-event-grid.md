@@ -10,55 +10,55 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 03/11/2020
-ms.openlocfilehash: fe6125682f669e453100488b7e0afc4c49409588
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a1440dcda27a487c89be4ac63e624a2bb6b393a
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79129715"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82111872"
 ---
 # <a name="create-event-driven-machine-learning-workflows-preview"></a>创建事件驱动的机器学习工作流（预览）
 
-[Azure 事件网格](https://docs.microsoft.com/azure/event-grid/)支持 Azure 机器学习事件。 您可以在工作区中订阅和使用事件，如运行状态更改、运行完成、模型注册、模型部署和数据漂移检测。
+[Azure 事件网格](https://docs.microsoft.com/azure/event-grid/)支持 Azure 机器学习事件。 你可以在工作区中订阅和使用事件，例如运行状态更改、运行完成、模型注册、模型部署和数据偏移检测。
 
-有关事件类型的详细信息，请参阅[Azure 机器学习与事件网格](concept-event-grid-integration.md)和 Azure[机器学习事件网格架构](/azure/event-grid/event-schema-machine-learning)的集成。
+有关事件类型的详细信息，请参阅[Azure 机器学习与事件网格的集成](concept-event-grid-integration.md)和[Azure 机器学习事件网格架构](/azure/event-grid/event-schema-machine-learning)。
 
 使用事件网格实现常见方案，例如：
 
-* 在运行失败时发送电子邮件并完成运行
-* 注册模型后使用 azure 函数
+* 在运行失败和运行完成后发送电子邮件
+* 在注册模型后使用 Azure 函数
 * 将 Azure 机器学习中的事件流式传输到各种终结点
-* 检测到漂移时触发 ML 管道
+* 检测到偏移时触发 ML 管道
 
 > [!NOTE] 
-> 目前，仅在运行状态**失败**时运行状态更改事件
+> 目前，只有当运行状态为 **failed** 时才会触发 runStatusChanged 事件
 >
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * 对要为其创建事件的 Azure 机器学习工作区具备参与者或所有者访问权限。
 
-### <a name="configure-eventgrid-using-the-azure-portal"></a>使用 Azure 门户配置事件网格
+### <a name="configure-eventgrid-using-the-azure-portal"></a>使用 Azure 门户配置 EventGrid
 
 1. 打开 [Azure 门户](https://portal.azure.com)并转到 Azure 机器学习工作区。
 
-1. 在左侧栏中选择“事件”，然后选择“事件订阅”____****。 
+1. 在左侧栏中选择“事件”，然后选择“事件订阅”   。 
 
     ![select-events-in-workspace.png](./media/how-to-use-event-grid/select-event.png)
 
-1. 选择要使用的事件类型。 例如，以下屏幕截图中已选择“模型注册”、“模型部署”、“运行完成”以及“检测到数据集偏移”________________：
+1. 选择要使用的事件类型。 例如，以下屏幕截图中已选择“模型注册”、“模型部署”、“运行完成”以及“检测到数据集偏移”     ：
 
     ![add-event-type](./media/how-to-use-event-grid/add-event-type-updated.png)
 
-1. 选择要将事件发布到的终结点。 以下屏幕截图中选择的终结点是“事件中心”____：
+1. 选择要将事件发布到的终结点。 以下屏幕截图中选择的终结点是“事件中心”  ：
 
     ![select-event-handler](./media/how-to-use-event-grid/select-event-handler.png)
 
-确认选择后，请单击“创建”____。 配置完成后，这些事件将被推送到终结点。
+确认选择后，请单击“创建”  。 配置完成后，这些事件将被推送到终结点。
 
 
-### <a name="configure-eventgrid-using-the-cli"></a>使用 CLI 配置事件网格
+### <a name="configure-eventgrid-using-the-cli"></a>使用 CLI 配置 EventGrid
 
-您可以安装最新的 Azure [CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)，也可以使用作为 Azure 订阅的一部分提供的 Azure 云外壳。
+你可以安装最新的[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)，或使用作为你的 Azure 订阅的一部分提供的 Azure Cloud Shell。
 
 若要安装事件网格扩展，请在 CLI 中使用以下命令：
 
@@ -66,7 +66,7 @@ ms.locfileid: "79129715"
 az add extension --name eventgrid
 ```
 
-以下示例演示如何选择 Azure 订阅并为 Azure 机器学习创建新的事件订阅：
+下面的示例演示如何选择 Azure 订阅，并为 Azure 机器学习创建新的事件订阅：
 
 ```azurecli-interactive
 # Select the Azure subscription that contains the workspace
@@ -83,19 +83,17 @@ az eventgrid event-subscription create \
 
 ## <a name="filter-events"></a>筛选事件
 
-设置事件时，可以将筛选器应用于仅对特定事件数据触发。 在下面的示例中，对于运行状态更改的事件，您可以按运行类型进行筛选。 仅当满足条件时，才会触发该事件。 请参阅[Azure 机器学习事件网格架构](/azure/event-grid/event-schema-machine-learning)，了解可以筛选的事件数据。 
+设置事件时，你可以应用筛选器来仅针对特定的事件数据触发。 在下面的示例中，对于运行状态更改事件，你可以按运行类型进行筛选。 仅当满足条件时才会触发该事件。 请参阅 [Azure 机器学习事件网格架构](/azure/event-grid/event-schema-machine-learning)，了解可用作筛选依据的事件数据。 
 
-1. 转到 Azure 门户，选择新订阅或现有订阅。 
+1. 转到 Azure 门户，选择一个新订阅或现有订阅。 
 
-1. 选择筛选器选项卡并向下滚动到"高级"筛选器。 在 **"键**和**值**"中提供了要筛选的属性类型。 在这里，您可以看到事件仅在运行类型是管道运行或管道步骤运行时触发。  
+1. 选择“筛选器”选项卡，向下滚动到“高级筛选器”。 对于 "**键**" 和 "**值**"，提供要按其进行筛选的属性类型。 在这里，你可以看到，只有当运行类型为管道运行或管道步骤运行时，事件才会触发。  
 
-    :::image type="content" source="media/how-to-use-event-grid/select-event-filters.png" alt-text="筛选器事件":::
+    :::image type="content" source="media/how-to-use-event-grid/select-event-filters.png" alt-text="筛选事件":::
 
-## <a name="sample-scenarios"></a>示例方案
+## <a name="sample-send-email-alerts"></a>示例：发送电子邮件警报
 
-### <a name="use-a-logic-app-to-send-email-alerts"></a>使用逻辑应用发送电子邮件警报
-
-使用 [Azure 逻辑应用](https://docs.microsoft.com/azure/logic-apps/)配置所有事件的电子邮件。 使用条件进行自定义并指定接收方，让合作团队能互相协作并收到通知。
+使用[Azure 逻辑应用](https://docs.microsoft.com/azure/logic-apps/)为所有事件配置电子邮件。 使用条件进行自定义并指定接收方，让合作团队能互相协作并收到通知。
 
 1. 在 Azure 门户中转到 Azure 机器学习工作区，并从左侧栏中选择“事件”选项卡。 在此处选择“逻辑应用”____。 
 
@@ -109,7 +107,7 @@ az eventgrid event-subscription create \
 
     ![select-event-runcomplete](./media/how-to-use-event-grid/select-event-runcomplete.png)
 
-1. 您可以在上述部分中使用筛选方法，或添加筛选器以仅触发事件类型子集的逻辑应用。 以下屏幕截图中采用的前缀筛选条件是 /datadriftID/runs/________。
+1. 你可以使用上面部分中的筛选方法，或者添加筛选器，以仅对事件类型的子集触发逻辑应用。 以下屏幕截图中采用的前缀筛选条件是 /datadriftID/runs/________。
 
     ![filter-events](./media/how-to-use-event-grid/filtering-events.png)
 
@@ -126,7 +124,7 @@ az eventgrid event-subscription create \
     ![confirm-logic-app-create](./media/how-to-use-event-grid/confirm-logic-app-create.png)
 
 
-### <a name="use-a-logic-app-to-trigger-retraining-workflows-when-data-drift-occurs"></a>使用逻辑应用在发生数据偏移时触发重新训练工作流
+## <a name="sample-trigger-retraining-when-data-drift-occurs"></a>示例：在发生数据偏移时触发重新训练
 
 模型会在一定时间后过时，并在运行该模型的上下文中失去效用。 要判断是否应重新训练某个模型，一种方法是检测数据偏移。 
 
@@ -173,11 +171,11 @@ az eventgrid event-subscription create \
 
 ![view-in-workspace](./media/how-to-use-event-grid/view-in-workspace.png)
 
-### <a name="use-azure-functions-to-deploy-a-model-based-on-tags"></a>使用 Azure Functions 基于标记部署模型
+## <a name="sample-deploy-a-model-based-on-tags"></a>示例：基于标记部署模型
 
 Azure 机器学习模型对象包含一些参数，可以基于这些参数进行部署，例如模型名称、版本、标记和属性。 模型注册事件可触发终结点，你可使用 Azure 函数基于这些参数的值部署模型。
 
-例如，[https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid)请参阅存储库，然后按照**readme**文件中的步骤操作。
+有关示例，请参阅 [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) 存储库，并执行自述文件中的步骤  。
 
 ## <a name="next-steps"></a>后续步骤
 
