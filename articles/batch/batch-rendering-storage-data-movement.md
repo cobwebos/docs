@@ -1,5 +1,5 @@
 ---
-title: 用于渲染的存储和数据移动选项 - Azure Batch
+title: 用于呈现的存储和数据移动
 description: 了解用于渲染资产和输出文件工作负载的多种存储与数据移动选项。
 services: batch
 ms.service: batch
@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 1076fc152ddf2c3a2d4f2346262ca90215d68ddf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 497f3b3b42d98c08b06744eaa976ae188443b90d
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75390383"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115663"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>用于渲染资产和输出文件的存储与数据移动选项
 
@@ -132,6 +132,6 @@ Blobfuse 是适用于 Azure Blob 存储的虚拟文件系统驱动程序，用�
 
 有关存储选项的详细信息，请参阅深度文档：
 
-* [Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)
+* [Azure blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)
 * [Blobfuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux)
 * [Azure 文件](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)

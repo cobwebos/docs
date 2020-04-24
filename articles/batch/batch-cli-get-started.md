@@ -1,25 +1,15 @@
 ---
-title: Azure 批处理 CLI 入门 | Microsoft 文档
+title: 批处理 Azure CLI 入门
 description: Azure CLI 中用于管理 Azure Batch 服务资源的 Batch 命令简介
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: fcd76587-1827-4bc8-a84d-bba1cd980d85
-ms.service: batch
 ms.topic: conceptual
-ms.tgt_pltfrm: multiple
-ms.workload: big-compute
 ms.date: 07/24/2018
-ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30f71432ca008b87bddfb253f23ae3cef0ac390d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5fe73770dbe8dfe6d69cb08e1fbf44d42bff9e54
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77020176"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117363"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>使用 Azure CLI 管理 Batch 资源
 
@@ -83,7 +73,7 @@ az login
 
 可以使用两个选项对 Batch 帐户进行身份验证：
 
-- **通过使用 Azure 活动目录 （Azure AD） 身份验证** 
+- **通过使用 Azure Active Directory （Azure AD）身份验证** 
 
     将 Azure CLI 与 Batch 配合使用时，通过 Azure AD 进行身份验证是默认设置，建议用于大多数方案。 
     
@@ -97,7 +87,7 @@ az login
     az batch account login -g myresource group -n mybatchaccount
     ```
 
-- **通过使用共享密钥身份验证**
+- **使用共享密钥身份验证**
 
     [“共享密钥”身份验证](/rest/api/batchservice/authenticate-requests-to-the-azure-batch-service#authentication-via-shared-key)通过帐户访问密钥对适用于 Batch 服务的 Azure CLI 命令进行身份验证。
 
@@ -113,7 +103,7 @@ az login
 
 ## <a name="use-azure-batch-cli-extension-commands"></a>使用 Azure Batch CLI 扩展命令
 
-通过安装 Azure Batch CLI 扩展，可以在不编写代码的情况下，使用 Azure CLI 来运行端到端的 Batch 作业。 可以执行扩展支持的 Batch 命令，以便使用 JSON 模板通过 Azure CLI 来创建池、作业和任务。 也可使用扩展 CLI 命令将作业输入文件上传到与 Batch 帐户关联的 Azure 存储帐户，以及从其下载作业输出文件。 有关详细信息，请参阅使用[Azure 批处理 CLI 模板和文件传输](batch-cli-templates.md)。
+通过安装 Azure Batch CLI 扩展，可以在不编写代码的情况下，使用 Azure CLI 来运行端到端的 Batch 作业。 可以执行扩展支持的 Batch 命令，以便使用 JSON 模板通过 Azure CLI 来创建池、作业和任务。 也可使用扩展 CLI 命令将作业输入文件上传到与 Batch 帐户关联的 Azure 存储帐户，以及从其下载作业输出文件。 有关详细信息，请参阅[使用 AZURE BATCH CLI 模板和文件传输](batch-cli-templates.md)。
 
 ## <a name="script-examples"></a>脚本示例
 
@@ -151,7 +141,7 @@ az batch task list --job-id job001
 
 下表介绍 Batch 服务支持的 OData 子句：
 
-| 子句 | 描述 |
+| 子句 | 说明 |
 |---|---|
 | `--select-clause [select-clause]` | 返回每个实体的属性子集。 |
 | `--filter-clause [filter-clause]` | 仅返回与指定的 OData 表达式匹配的实体。 |

@@ -10,12 +10,12 @@ metadata:
   author: malopMSFT
   ms.author: allensu
   ms.date: 09/16/2019
-  ms.openlocfilehash: a22284524891c71ec206ef100de9a736cb1a5714
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 1674d92736f7808cd7fc5cc983bc72cea4126868
+  ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77587645"
+  ms.lasthandoff: 04/23/2020
+  ms.locfileid: "82100254"
 landingContent:
 - title: 关于 Azure 专用链接
   linkLists:
@@ -53,13 +53,3 @@ landingContent:
       url: /powershell/module/az.network
     - text: REST
       url: /rest/api/virtualnetwork/privatelinkservices
-- title: 探索 Azure 专用链接
-  linkLists:
-  - linkListType: video
-    links:
-    - text: Azure 专用链接
-      url: https://www.youtube.com/watch?reload=9&v=nuFEVvewUgQ
-    - text: 使用专用链接建立与 Azure PaaS 服务的专用连接
-      url: https://www.youtube.com/watch?v=aVFV1_ZwAEY
-    - text: 'Azure 网络 - #11 - Azure 专用链接'
-      url: https://www.youtube.com/watch?v=PWKM5KXjWno

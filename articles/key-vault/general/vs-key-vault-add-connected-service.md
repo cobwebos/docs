@@ -9,12 +9,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 68f8607db25b70ea5e6bfe21a7d6e002aeb127d6
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: af0065db087595167ca71bb79b968cc4ad339acd
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81429767"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116836"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>使用 Visual Studio 连接服务将 Key Vault 添加到 Web 应用程序
 
@@ -24,48 +24,48 @@ ms.locfileid: "81429767"
 
 ## <a name="prerequisites"></a>先决条件
 
-- **Azure 订阅**。 如果您没有订阅，请注册[一个免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
-- **Visual Studio 2019 版本 16.3** 或更高版本，或者装有“Web 开发”工作负荷的 **Visual Studio 2017 版本 15.7**。**** [立即下载](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
-- 对于包含 Visual Studio 2017 的 ASP.NET（非 Core），需要安装 .NET Framework 4.7.1 或更高版本的开发工具，默认情况下未安装这些工具。 若要安装这些工具，请启动 Visual Studio 安装程序，依次选择“修改”、“单个组件”，在右侧展开“ASP.NET 和 Web 开发”，然后选择“.NET Framework 4.7.1 开发工具”。****************
+- **一个 Azure 订阅**。 如果没有订阅，请注册[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+- **Visual Studio 2019 版本 16.3** 或更高版本，或者装有“Web 开发”工作负荷的 **Visual Studio 2017 版本 15.7**。  [立即下载](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
+- 对于包含 Visual Studio 2017 的 ASP.NET（非 Core），需要安装 .NET Framework 4.7.1 或更高版本的开发工具，默认情况下未安装这些工具。 若要安装这些工具，请启动 Visual Studio 安装程序，依次选择“修改”、“单个组件”，在右侧展开“ASP.NET 和 Web 开发”，然后选择“.NET Framework 4.7.1 开发工具”。    
 - 已打开一个 ASP.NET 4.7.1（或更高版本）或 ASP.NET Core 2.0（或更高版本）的 Web 项目。
 
 ## <a name="add-key-vault-support-to-your-project"></a>将 Key Vault 支持添加到项目
 
 在开始之前，请确保已登录 Visual Studio： 登录时使用的帐户与用于 Azure 订阅的帐户相同。 然后打开 ASP.NET 4.7.1 或更高版本或 ASP.NET Core 2.0 Web 项目，执行以下步骤：
 
-1. 在“解决方案资源管理器”中，右键单击要将 Key Vault 支持添加到的项目，然后选择“添加” > “连接服务”。************
+1. 在“解决方案资源管理器”中，右键单击要将 Key Vault 支持添加到的项目，然后选择“添加” > “连接服务”。   
    此时会显示“连接服务”页，其中包含可添加到项目的服务。
-1. 在可用服务的菜单中，选择“使用 Azure Key Vault 来保护机密”。****
+1. 在可用服务的菜单中，选择“使用 Azure Key Vault 来保护机密”。 
 
    ![选择“使用 Azure Key Vault 来保护机密”](../media/vs-key-vault-add-connected-service/KeyVaultConnectedService1.PNG)
 
-1. 选择要使用的订阅，然后选择新的或现有的 Key Vault。 如果选择新的 Key Vault，则会显示“编辑”链接。**** 选中该链接，以便配置新的 Key Vault。
+1. 选择要使用的订阅，然后选择新的或现有的 Key Vault。 如果选择新的 Key Vault，则会显示“编辑”链接。  选中该链接，以便配置新的 Key Vault。
 
    ![选择订阅](../media/vs-key-vault-add-connected-service/key-vault-connected-service-select-vault.png)
 
-1. 在“编辑 Azure Key Vault”中，输入需要用于 Key Vault 的名称。****
+1. 在“编辑 Azure Key Vault”中，输入需要用于 Key Vault 的名称。 
 
-1. 选择现有**资源组**，或选择使用自动生成的唯一名称创建新的资源组。  如果要创建具有其他名称的新组，可以使用[Azure 门户](https://portal.azure.com)，然后关闭页面并重新启动以重新加载资源组的列表。
-1. 选择要在其中创建 Key Vault 的“位置”。**** 如果 Web 应用程序托管在 Azure 中，请选择托管 Web 应用程序的区域，以获得最佳性能。
-1. 选择**定价层**。 有关详细信息，请参阅 [Key Vault 定价](https://azure.microsoft.com/pricing/details/key-vault/)。
-1. 选择 **"确定"** 以接受配置选项。
-1. 在 Visual Studio 的“Azure Key Vault”选项卡中选择现有 Key Vault 或配置新的 Key Vault 以后，请选择“添加”，以便添加连接的服务。********
-1. 选择“管理存储在此 Key Vault 中的机密”链接，打开 Key Vault 的“机密”页。******** 如果已关闭该页或项目，可以在 [Azure 门户](https://portal.azure.com)中通过选择“安全性”**** 下的“所有服务”**** 导航到它，选择 **Key Vault**，然后选择你的 Key Vault。
-1. 在您创建的关键保管库的"密钥保管库"部分中，选择 **"机密**"，然后**生成/导入**。
+1. 选择现有**资源组**，或选择使用自动生成的唯一名称创建新的资源组。  如果想要使用不同的名称创建新组，可以使用 [Azure 门户](https://portal.azure.com)，然后关闭页面并重启，以重新加载资源组列表。
+1. 选择要在其中创建 Key Vault 的“位置”。  如果 Web 应用程序托管在 Azure 中，请选择托管 Web 应用程序的区域，以获得最佳性能。
+1. 选择一个**定价层**。 有关详细信息，请参阅 [Key Vault 定价](https://azure.microsoft.com/pricing/details/key-vault/)。
+1. 选择“确定”，接受配置选项。 
+1. 在 Visual Studio 的“Azure Key Vault”选项卡中选择现有 Key Vault 或配置新的 Key Vault 以后，请选择“添加”，以便添加连接的服务。  
+1. 选择“管理存储在此 Key Vault 中的机密”链接，打开 Key Vault 的“机密”页。   如果已关闭该页或项目，可以在 [Azure 门户](https://portal.azure.com)中通过选择“安全性”  下的“所有服务”  导航到它，选择 **Key Vault**，然后选择你的 Key Vault。
+1. 在创建的 Key Vault 的“Key Vault”部分，依次选择“机密”、“生成/导入”。  
 
    ![生成/导入机密](../media/vs-key-vault-add-connected-service/azure-generate-secrets.png)
 
-1. 输入一个机密（例如 *MySecret*），并为其提供任何字符串值作为测试，然后选择“创建”按钮。****
+1. 输入一个机密（例如 *MySecret*），并为其提供任何字符串值作为测试，然后选择“创建”按钮。 
 
    ![创建机密](../media/vs-key-vault-add-connected-service/azure-create-a-secret.png)
 
-1. （可选）输入另一个机密，但这一次通过将其命名为“Secrets--MySecret”** 将其放入某个类别。 此语法指定的类别“Secrets”包含机密“MySecret”。
+1. （可选）输入另一个机密，但这一次通过将其命名为“Secrets--MySecret”  将其放入某个类别。 此语法指定的类别“Secrets”包含机密“MySecret”。
 
 现在，可以在代码中访问机密。 后续步骤根据使用的是 ASP.NET 4.7.1 还是 ASP.NET Core 而有所不同。
 
 ## <a name="access-your-secrets-in-code-aspnet-core"></a>在代码中访问机密 (ASP.NET Core)
 
-1. 在解决方案资源管理器中右键单击项目，然后选择“管理 NuGet 包”。**** 在 **"浏览"** 选项卡中，查找并安装这两个 NuGet 包[：Microsoft.Azure.Services.App 身份验证](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)和 .NET 核心 2，添加[Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)或 .NET 核心 3，添加[Microsoft.Azure.KeyVault.Core](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core)。
+1. 在解决方案资源管理器中右键单击项目，然后选择“管理 NuGet 包”。  在“浏览”选项卡中  ，找到并安装这两个 NuGet 包：[Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)；对于 .NET Core 2，请添加 [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)，或者对于 .NET Core 3，请添加 [Microsoft.Azure.KeyVault.Core](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core)。
 
 1. 对于 .NET Core 2，请选择 `Program.cs` 选项卡，然后将 Program 类中的 `BuildWebHost` 定义更改为以下内容：
 
@@ -125,7 +125,7 @@ ms.locfileid: "81429767"
    1. 添加配置变量。
 
       ```csharp
-      private static readonly IConfiguration _configuration;
+      private static IConfiguration _configuration;
       ```
 
    1. 添加此构造函数，或将现有的构造函数替换为：
@@ -172,7 +172,7 @@ ms.locfileid: "81429767"
        ViewBag.Message = "Key vault value = " + ConfigurationManager.AppSettings["mysecret"];
    }
    ```
-1. 在调试器本地运行应用，切换到“关于”选项卡，确认是否显示了 Key Vault 中的值。****
+1. 在调试器本地运行应用，切换到“关于”选项卡，确认是否显示了 Key Vault 中的值。 
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -180,20 +180,20 @@ ms.locfileid: "81429767"
 
 1. 在门户顶部的“搜索”框中输入资源组的名称。 在搜索结果中看到在本快速入门中使用的资源组后，将其选中。
 2. 选择“删除资源组”  。
-3. 在“键入资源组名称”框中，输入资源组的名称，然后选择“删除”********。
+3. 在“键入资源组名称”框中，输入资源组的名称，然后选择“删除”   。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 如果运行 Key Vault 的 Microsoft 帐户不是用于登录 Visual Studio 的帐户（例如，Key Vault 在工作帐户中运行，但 Visual Studio 使用的是私人帐户），则 Program.cs 文件中会出现一条错误，指出 Visual Studio 无法访问 Key Vault。 解决此问题：
 
 1. 转到 [Azure 门户](https://portal.azure.com)并打开 Key Vault。
 
-1. 依次选择“访问策略”、“添加访问策略”，然后选择用作主体的用于登录的帐户。********
+1. 依次选择“访问策略”、“添加访问策略”，然后选择用作主体的用于登录的帐户。  
 
-1. 在可视化工作室中，选择 **"文件** > **帐户设置**"。
-在“所有帐户”部分选择“添加帐户”。******** 使用选作访问策略主体的帐户登录。
+1. 在 Visual Studio 中，选择“文件” > “帐户设置”。  
+在“所有帐户”部分选择“添加帐户”。   使用选作访问策略主体的帐户登录。
 
-1. 选择**工具** > **选项**，然后查找**Azure 服务身份验证**。 然后选择刚刚添加到 Visual Studio 的帐户。
+1. 选择“工具” > “选项”，找到“Azure 服务身份验证”。    然后选择刚刚添加到 Visual Studio 的帐户。
 
 现在，在调试应用程序时，Visual Studio 将连接到 Key Vault 所在的帐户。
 
@@ -289,4 +289,4 @@ ms.locfileid: "81429767"
 
 如果已根据本教程完成上述操作，则为你设置的 Key Vault 权限适合与你自己的 Azure 订阅配合运行，但可能不适合于生产方案。 可以创建托管标识来管理应用的 Key Vault 访问权限。 请参阅[使用托管标识提供 Key Vault 身份验证](/azure/key-vault/managed-identity)。
 
-通过阅读[密钥保管库开发人员指南](developers-guide.md)，了解有关密钥保管库开发的更多内容。
+在 [Key Vault 开发人员指南](developers-guide.md)中了解如何使用 Key Vault 进行开发。

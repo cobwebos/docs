@@ -4,12 +4,12 @@ description: 有关 Azure 容器实例服务的常见问题解答
 author: dkkapur
 ms.topic: article
 ms.date: 04/10/2020
-ms.openlocfilehash: 8730dcb24af61730d7f93ea37a53cf87435eb9f9
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 4fca198356c8db006c4190e0f16b20f78dc1d477
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261612"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115221"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>有关 Azure 容器实例的常见问题解答
 
@@ -35,17 +35,17 @@ ms.locfileid: "81261612"
 
 #### <a name="windows-server-2016-base-images"></a>Windows Server 2016 基础映像
 
-* [纳米服务器](https://hub.docker.com/_/microsoft-windows-nanoserver) `10.0.14393.x`： ，`sac2016`
-* [Windows 服务器核心](https://hub.docker.com/_/microsoft-windows-servercore)： `ltsc2016`，`10.0.14393.x`
+* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver)： `10.0.14393.x`，`sac2016`
+* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore)： `ltsc2016`，`10.0.14393.x`
 
 > [!NOTE]
 > 不支持基于半年频道版本 1709 或 1803 的 Windows 映像。
 
 #### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 和客户端基础映像（预览版）
 
-* [纳米服务器](https://hub.docker.com/_/microsoft-windows-nanoserver) `1809`：`10.0.17763.914`或更早
-* [Windows 服务器核心](https://hub.docker.com/_/microsoft-windows-servercore)： `ltsc2019`、 、`1809`或`10.0.17763.914`更早
-* [窗口](https://hub.docker.com/_/microsoft-windows) `1809`：`10.0.17763.914`或更早
+* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver)： `1809` `10.0.17763.914`或更早版本
+* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore)： `ltsc2019`、 `1809` `10.0.17763.914`或更早版本
+* [Windows](https://hub.docker.com/_/microsoft-windows)： `1809` `10.0.17763.914`或更早版本
 
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>应在容器中使用哪个 .NET 或 .NET Core 映像层？ 
 
@@ -55,9 +55,12 @@ ms.locfileid: "81261612"
 
 ### <a name="how-many-cores-and-memory-should-i-allocate-for-my-containers-or-the-container-group"></a>应为容器或容器组分配多少核心和内存？
 
-这实际上取决于工作负荷。 请从较小的数量着手，并测试容器的性能如何。 [监视 CPU 和内存资源用量](container-instances-monitor.md)，然后根据在容器中部署的进程类型增加核心或内存。 
+这实际上取决于工作负荷。 请从较小的数量着手，并测试容器的性能如何。 [监视 CPU 和内存资源用量](container-instances-monitor.md)，然后根据在容器中部署的进程类型增加核心或内存。
 
 另外，请务必检查所部署到的区域的[资源可用性](container-instances-region-availability.md#availability---general)，以确定每个容器组的可用 CPU 核心数和内存上限。 
+
+> [!NOTE]
+> 容器组的资源由服务的底层基础结构使用。 你的容器将能够访问最多（而不是分配给组的所有资源）。 出于此原因，在为组中的容器请求资源时，请规划小型资源缓冲区。
 
 ### <a name="what-underlying-infrastructure-does-aci-run-on"></a>ACI 在哪个底层基础结构上运行？
 
@@ -98,4 +101,4 @@ Azure 容器实例旨在用作无服务器按需容器服务，因此，我们�
 ## <a name="next-steps"></a>后续步骤
 
 * [详细了解](container-instances-overview.md) Azure 容器实例。
-* [解决](container-instances-troubleshooting.md)Azure 容器实例中的常见问题。
+* [排查](container-instances-troubleshooting.md)Azure 容器实例中的常见问题。

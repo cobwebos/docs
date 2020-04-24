@@ -1,24 +1,14 @@
 ---
-title: 高可用性和灾难恢复 - Azure 批处理
-description: 了解如何为区域中断设计批处理应用程序。 工作负载应故障转移到另一个区域，或拆分为两个或多个区域。
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.workload: ''
-ms.tgt_pltfrm: na
+title: 高可用性和灾难恢复 - Azure Batch
+description: 了解如何针对区域性中断设计 Batch 应用程序。 工作负荷应该故障转移到另一个区域，或者在两个或更多个区域之间拆分。
 ms.topic: article
 ms.date: 01/29/2019
-ms.author: labrenne
-ms.openlocfilehash: 84b0cce9557b4ae05586579f175cd0f5db14fdfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: da46753906e27a94e3c76fcaf9c4a26861bba6c8
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77026075"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117431"
 ---
 # <a name="design-your-application-for-high-availability"></a>针对高可用性设计应用程序
 
@@ -49,5 +39,5 @@ Azure Batch 是一项区域性服务。 Batch 在所有 Azure 区域提供，但
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解有关使用[Azure 门户](batch-account-create-portal.md)[、Azure CLI、PowerShell](cli-samples.md)或[PowerShell](batch-powershell-cmdlets-get-started.md)[批处理管理 API](batch-management-dotnet.md)创建批处理帐户的更多信息。
+- 详细了解如何创建具有[Azure 门户](batch-account-create-portal.md)、 [Azure CLI](cli-samples.md)、 [PowerShell](batch-powershell-cmdlets-get-started.md)或[批处理管理 API](batch-management-dotnet.md)的 batch 帐户。
 - 默认配额与某个 Batch 帐户相关联；[此文](batch-quota-limit.md)详述了默认配额值并介绍了如何才能提高配额。

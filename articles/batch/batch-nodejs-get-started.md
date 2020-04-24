@@ -1,28 +1,21 @@
 ---
-title: 教程 - 使用用于 Node.js 的 Azure Batch 客户端库 | Microsoft Docs
+title: 教程-使用适用于 node.js 的 Azure Batch 客户端库
 description: 了解 Azure Batch 的基本概念，并使用 Node.js 构建简单的解决方案。
-services: batch
-author: shwetams
-manager: evansma
 ms.assetid: ''
-ms.service: batch
-ms.devlang: nodejs
 ms.topic: conceptual
-ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: shg
-ms.openlocfilehash: c112fb0b2d0eb3b8a66731948f48c8038a2296f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ccf0778938c873a5510f1408bf31d95c9d6ee873
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77023644"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116853"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>用于 Node.js 的批处理 SDK 入门
 
 了解使用 [Azure Batch Node.js SDK](/javascript/api/overview/azure/batch) 在 Node.js 中生成批处理客户端的基础知识。 我们采用分步方式来了解一个批处理应用程序的方案，并通过 Node.js 客户端设置该方案。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 本文假设你有 Node.js 的实践知识并熟悉 Linux， 同时还假设已设置 Azure 帐户并具有创建批处理和存储服务所需的访问权限。
 
 我们建议在完成本文概述的步骤之前，先阅读 [Azure Batch 技术概述](batch-technical-overview.md)。
@@ -67,7 +60,7 @@ node.js 客户端通过一个准备任务（稍后详细介绍）和一系列其
 
 ### <a name="step-2-create-an-azure-batch-account"></a>步骤 2：创建 Azure Batch 帐户
 
-可以从[Azure 门户](batch-account-create-portal.md)或命令行[（PowerShell](batch-powershell-cmdlets-get-started.md) /[Azure CLI）](/cli/azure)创建它。
+可以从[Azure 门户](batch-account-create-portal.md)或命令行（[PowerShell](batch-powershell-cmdlets-get-started.md) /[Azure CLI](/cli/azure)）创建它。
 
 下面是通过 Azure CLI 创建该帐户的命令。
 

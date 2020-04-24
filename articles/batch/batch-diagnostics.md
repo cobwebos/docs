@@ -1,25 +1,15 @@
 ---
-title: 指标、警报和诊断日志 - Azure Batch | Microsoft Docs
+title: 指标、警报和诊断日志
 description: 记录并分析 Azure Batch 帐户资源（诸如池和任务）的诊断日志事件。
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: ''
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: big-compute
 ms.date: 12/05/2018
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 68d5976a5a79dbde88b7f80b02b39793ffc86de9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f75a8302c8ba368138e6c8edee6c6069c5031d8
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78254862"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117295"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>用于诊断评估和监视的 Batch 指标、警报和日志
 
@@ -40,17 +30,17 @@ ms.locfileid: "78254862"
 
 ### <a name="view-metrics"></a>查看指标
 
-在 Azure 门户中查看 Batch 帐户的指标。 帐户的“概述”页默认显示关键的节点、核心和任务指标。**** 
+在 Azure 门户中查看 Batch 帐户的指标。 帐户的“概述”页默认显示关键的节点、核心和任务指标。  
 
 查看所有 Batch 帐户指标： 
 
-1. 在门户中，单击 **"所有服务** > **批处理帐户**"，然后单击批处理帐户的名称。
-2. 在“监视”下，单击“指标”。********
-3. 选择一个或多个指标。 如果需要，请使用“订阅”、“资源组”、“资源类型”和“资源”下拉菜单选择其他资源指标。****************
+1. 在门户中，单击“所有服务” **“Batch 帐户”，然后单击 Batch 帐户的名称。**  >  
+2. 在“监视”下，单击“指标”。  
+3. 选择一个或多个指标。 如果需要，请使用“订阅”、“资源组”、“资源类型”和“资源”下拉菜单选择其他资源指标。    
     * 对于基于计数的指标（如“专用核心计数”或“低优先级节点计数”），请使用“平均”聚合。 对于基于事件的指标（如“池重设大小完成事件数”），请使用“计数”聚合。
 
 > [!WARNING]
-> 不要使用"Sum"聚合，该聚合汇总汇总了图表期间接收的所有数据点的值
+> 不要使用 "Sum" 聚合，这会增加在图表时间段内收到的所有数据点的值
 > 
 > 
 
@@ -66,17 +56,17 @@ ms.locfileid: "78254862"
 
 ## <a name="batch-metric-alerts"></a>Batch 指标警报
 
-（可选）配置准实时指标警报。当指定指标的值超过分配的阈值时，会触发这些警报。** 当警报状态为“已激活”（超过阈值并满足警报条件）以及“已解决”（再次超过阈值，并且不再满足条件）时，警报将生成所选的[通知](../monitoring-and-diagnostics/insights-alerts-portal.md)。 建议不要使用基于单一数据点的警报，因为指标可能会出现乱序送达、数据丢失和/或数据重复。 警报应当使用阈值来应对这些不一致。
+（可选）配置准实时指标警报。当指定指标的值超过分配的阈值时，会触发这些警报。  当警报状态为“已激活”（超过阈值并满足警报条件）以及“已解决”（再次超过阈值，并且不再满足条件）时，警报将生成所选的[通知](../monitoring-and-diagnostics/insights-alerts-portal.md)。 建议不要使用基于单一数据点的警报，因为指标可能会出现乱序送达、数据丢失和/或数据重复。 警报应当使用阈值来应对这些不一致。
 
 例如，你可能想要配置一个当低优先级核心计数降到特定级别时触发的指标警报，以便能够调整池的组成部分。 建议设置 10 分钟或 10 分钟以上的周期，如果平均低优先级核心计数在整个周期内低于阈值，则触发警报。 建议不要基于 1-5 分钟的周期发出警报，因为指标可能仍在聚合。
 
 在门户中配置指标警报：
 
-1. 单击 **"所有服务** > **批次帐户**"，然后单击批处理帐户的名称。
-2. 在“监视”下，单击“警报规则” > “添加指标警报”。************
+1. 单击“所有服务”   >   “Batch 帐户”，然后单击 Batch 帐户的名称。
+2. 在“监视”下，单击“警报规则” **“添加指标警报”。**   >  
 3. 选择一个指标、一个警报条件（例如，在某个时间段内当某个指标超过特定的值时）和一个或多个通知。
 
-还可以使用 [REST API](https://docs.microsoft.com/rest/api/monitor/) 配置准实时警报。 有关详细信息，请参阅[警报概述](../azure-monitor/platform/alerts-overview.md)。 要在警报中包含作业、任务或池特定信息，请参阅[使用 Azure 监视器警报响应事件](../azure-monitor/learn/tutorial-response.md)中的搜索查询信息
+还可以使用 [REST API](https://docs.microsoft.com/rest/api/monitor/) 配置准实时警报。 有关详细信息，请参阅[警报概述](../azure-monitor/platform/alerts-overview.md)。 若要在警报中包含作业、任务或特定于池的信息，请参阅[响应带有 Azure Monitor 警报的事件](../azure-monitor/learn/tutorial-response.md)中的搜索查询信息
 
 ## <a name="batch-diagnostics"></a>Batch 诊断
 
@@ -96,7 +86,7 @@ ms.locfileid: "78254862"
 
 * 将 Batch 诊断日志事件流式传输到 [Azure 事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)。 数据中心每秒可以接受数百万事件，然后可以使用任何实时分析提供程序转换并存储这些事件。 
 
-* 将诊断日志发送到[Azure 监视器日志](../log-analytics/log-analytics-overview.md)，您可以在其中分析日志或导出它们以在 Power BI 或 Excel 中进行分析。
+* 将诊断日志发送到[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)，您可以在其中对这些日志进行分析，或者将其导出以在 Power BI 或 Excel 中进行分析。
 
 > [!NOTE]
 > 使用 Azure 服务存储或处理诊断日志数据可能会产生额外的费用。 
@@ -104,13 +94,13 @@ ms.locfileid: "78254862"
 
 ### <a name="enable-collection-of-batch-diagnostic-logs"></a>启用 Batch 诊断日志的收集
 
-1. 在门户中，单击 **"所有服务** > **批处理帐户**"，然后单击批处理帐户的名称。
+1. 在门户中，单击 "**所有服务** > " "**Batch 帐户**"，然后单击 Batch 帐户的名称。
 2. 在“监视”下，单击“诊断日志” > “启用诊断”。************
 3. 在“诊断设置”中，输入设置的名称，并选择日志目标（现有存储帐户、事件中心或 Azure Monitor 日志）。**** 选择“ServiceLog”和/或“AllMetrics”。********
 
     选择存储帐户时，请选择性地设置保留策略。 如果未指定保留天数，则数据在存储帐户的生存期内会一直保留。
 
-4. 单击“保存”。****
+4. 单击 **“保存”** 。
 
     ![Batch 诊断](media/batch-diagnostics/diagnostics-portal.png)
 

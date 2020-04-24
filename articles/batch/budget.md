@@ -1,21 +1,14 @@
 ---
-title: 成本分析和预算 - Azure Batch
-description: 了解如何进行成本分析，并为用于运行 Batch 工作负荷的基础计算资源和软件许可证设置预算。
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
+title: 成本分析和预算
+description: 了解如何获取成本分析并设置用于运行 Batch 工作负荷的基础计算资源和软件许可证的预算。
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: big-compute
 ms.date: 07/19/2019
-ms.author: labrenne
-ms.openlocfilehash: 819b5e16f4730e9a1998234288e181772f7c1996
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c3c3203882d003d7fbb5f9d5092a1c93886f313a
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022709"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117482"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Azure Batch 的成本分析和预算
 
@@ -50,7 +43,7 @@ Batch 池使用网络资源。 具体而言，对于 **VirtualMachineConfigurati
 1. 在 Azure 门户的左侧导航栏中，选择“成本管理 + 计费”。****
 1. 在“我的订阅”部分选择你的订阅。****
 1. 转到左侧导航栏中“成本管理”部分下的“成本分析”，此时会显示如下所示的视图：********
-1. 选择“添加筛选器”。**** 在第一个下拉列表中，选择 **"资源**![选择资源筛选器"](./media/batch-budget/resource-filter.png)
+1. 选择“添加筛选器”。**** 在第一个下拉箭头中 **，选择** ![资源筛选器](./media/batch-budget/resource-filter.png)
 1. 在第二个下拉列表中选择 Batch 池。 选择池后，成本分析将类似于以下分析。
     ![池的成本分析](./media/batch-budget/pool-cost-analysis.png)
 
@@ -81,7 +74,7 @@ Batch 池使用网络资源。 具体而言，对于 **VirtualMachineConfigurati
 
 ### <a name="reserved-virtual-machine-instances"></a>虚拟机预留实例
 
-如果打算长时间使用 Batch，则可以通过使用[Azure 预留](../cost-management-billing/reservations/save-compute-costs-reservations.md)来节省 VM 的成本。 预留费率明显低于即用即付费率。 在不预留的情况下使用虚拟机实例将按即用即付费率收费。 如果你购买了预留实例，则会应用预留折扣，你不再需要按即用即付费率付费。
+如果你想要使用批处理长时间，则可以使用[Azure 保留空间](../cost-management-billing/reservations/save-compute-costs-reservations.md)来节省 vm 的成本。 预留费率明显低于即用即付费率。 在不预留的情况下使用虚拟机实例将按即用即付费率收费。 如果你购买了预留实例，则会应用预留折扣，你不再需要按即用即付费率付费。
 
 ### <a name="automatic-scaling"></a>自动缩放
 

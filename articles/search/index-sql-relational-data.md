@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3b973dd05d23d190c77986ca9bf6d39656739cd8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2ebeb7f6fee77c43c9da97b922fc215d75196145
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72790093"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117563"
 ---
 # <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-cognitive-search"></a>如何为 Azure 认知搜索中要导入和编制索引的 SQL 关系数据建模
 
@@ -96,7 +96,7 @@ ON Rooms$.HotelID = Hotels$.HotelID
    GO
    ```
 
-   以下屏幕截图显示了生成的视图，底部是 *Rooms* nvarchar 字段。 “客房”字段仅存在于 HotelRooms 视图中。**
+   以下屏幕截图显示了生成的视图，底部是 *Rooms* nvarchar 字段。 “客房”字段仅存在于 HotelRooms 视图中。 
 
    ![HotelRooms 视图](media/index-sql-relational-data/hotelsrooms-view.png "HoteRooms 视图")
 
@@ -107,7 +107,7 @@ ON Rooms$.HotelID = Hotels$.HotelID
 此行集现已准备好导入 Azure 认知搜索。
 
 > [!NOTE]
-> 此方法假设嵌入的 JSON 低于 [SQL Server 的最大列大小限制](https://docs.microsoft.com/sql/sql-server/maximum-capacity-specifications-for-sql-server)。 如果数据不适合，可以尝试编程方法，如[示例：为 Azure 认知搜索建模 AdventureWorks 清单数据库](search-example-adventureworks-modeling.md)。
+> 此方法假设嵌入的 JSON 低于 [SQL Server 的最大列大小限制](https://docs.microsoft.com/sql/sql-server/maximum-capacity-specifications-for-sql-server)。 
 
  ## <a name="use-a-complex-collection-for-the-many-side-of-a-one-to-many-relationship"></a>为一对多关系的“多”端使用复杂集合
 

@@ -1,5 +1,5 @@
 ---
-title: 为 Azure 服务总线配置 IP 防火墙规则
+title: 配置 Azure 服务总线的 IP 防火墙规则
 description: 如何使用防火墙规则允许从特定 IP 地址连接到 Azure 服务总线。
 services: service-bus
 documentationcenter: ''
@@ -11,41 +11,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 24591c20ed707d9541eece0698ecd6e6b5ddee35
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 9601689bbce9566b52664058911e9c45647152d6
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878181"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116812"
 ---
-# <a name="configure-ip-firewall-rules-for-azure-service-bus"></a>为 Azure 服务总线配置 IP 防火墙规则
-默认情况下，只要请求附带有效的身份验证和授权，服务总线命名空间即可从 Internet 访问。 使用 IP 防火墙，您可以进一步将其限制为[CIDR（无类域间路由）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)表示法中的一组 IPv4 地址或 IPv4 地址范围。
+# <a name="configure-ip-firewall-rules-for-azure-service-bus"></a>配置 Azure 服务总线的 IP 防火墙规则
+默认情况下，只要请求附带有效的身份验证和授权，就可以从 internet 访问服务总线命名空间。 使用 IP 防火墙，你可以将其进一步限制为仅一组 IPv4 地址或[CIDR （无类别域间路由）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)表示法中的 ipv4 地址范围。
 
-此功能在 Azure 服务总线应仅从某些已知站点访问的情况下非常有用。 防火墙规则使您能够配置规则以接受来自特定 IPv4 地址的流量。 例如，如果将服务总线与 Azure[快速路由][express-route]一起使用 ，则可以创建**防火墙规则**，仅允许来自本地基础结构 IP 地址或公司 NAT 网关地址的流量。 
+此功能在 Azure 服务总线应只能从特定的已知站点进行访问的情况下很有用。 防火墙规则使你可以配置规则以接受来自特定 IPv4 地址的流量。 例如，如果你将服务总线与[Azure Express Route][express-route]一起使用，则可以创建**防火墙规则**，以便仅允许来自企业 NAT 网关的本地基础结构 IP 地址或地址的流量。 
 
 > [!IMPORTANT]
-> 防火墙和虚拟网络仅在服务总线的**高级**层中受支持。 如果升级到**首选层**不是一个选项，我们建议您保持共享访问签名 （SAS） 令牌的安全，并仅与授权用户共享。 有关 SAS 身份验证的信息，请参阅[身份验证和授权](service-bus-authentication-and-authorization.md#shared-access-signature)。
+> 防火墙和虚拟网络仅在服务总线的**高级**层中受支持。 如果不提供升级到**顶级**层的选项，我们建议你保持共享访问签名（SAS）令牌的安全并与仅授权用户共享。 有关 SAS 身份验证的信息，请参阅[身份验证和授权](service-bus-authentication-and-authorization.md#shared-access-signature)。
 
 ## <a name="ip-firewall-rules"></a>IP 防火墙规则
-IP 防火墙规则在服务总线命名空间级别应用。 因此，这些规则适用于通过任何受支持协议从客户端发出的所有连接。 如果某 IP 地址与服务总线命名空间上的允许 IP 规则不匹配，则将拒绝来自该地址的任何连接尝试并将其标记为“未经授权”。 响应不会提及 IP 规则。 IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决定了将执行接受操作还是执行拒绝操作。
+在服务总线命名空间级别应用 IP 防火墙规则。 因此，这些规则适用于通过任何受支持协议从客户端发出的所有连接。 如果某 IP 地址与服务总线命名空间上的允许 IP 规则不匹配，则将拒绝来自该地址的任何连接尝试并将其标记为“未经授权”。 响应不会提及 IP 规则。 IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决定了将执行接受操作还是执行拒绝操作。
+
+>[!WARNING]
+> 实施防火墙规则可以组织其他 Azure 服务与服务总线进行交互。
+>
+> 实施 IP 筛选（防火墙规则）时，受信任的 Microsoft 服务不受支持，但很快就会变得可用。
+>
+> 不适用于 IP 筛选的常见 Azure 方案（请注意，该列表内容并不详尽）****-
+> - 与 Azure 事件网格的集成
+> - Azure IoT 中心路由
+> - Azure IoT Device Explorer
+>
+> 需要在虚拟网络上安装以下 Microsoft 服务
+> - Azure 应用服务
+> - Azure Functions
 
 ## <a name="use-azure-portal"></a>使用 Azure 门户
-本节介绍如何使用 Azure 门户为服务总线命名空间创建 IP 防火墙规则。 
+本部分说明如何使用 Azure 门户为服务总线命名空间创建 IP 防火墙规则。 
 
-1. 导航到[Azure 门户](https://portal.azure.com)中的**服务总线命名空间**。
-2. 在左侧菜单上，选择 **"网络**"选项。 默认情况下，选择"**所有网络**"选项。 服务总线命名空间接受来自任何 IP 地址的连接。 此默认设置等效于接受 0.0.0.0/0 IP 地址范围的规则。 
+1. 在[Azure 门户](https://portal.azure.com)中导航到**服务总线命名空间**。
+2. 在左侧菜单中，选择 "**网络**" 选项。 默认情况下，选择 "**所有网络**" 选项。 Service Bus 命名空间接受来自任何 IP 地址的连接。 此默认设置等效于接受 0.0.0.0/0 IP 地址范围的规则。 
 
-    ![防火墙 - 选择的所有网络选项](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
-1. 选择页面顶部的 **"选定网络**"选项。 在 **"防火墙"** 部分中，按照以下步骤操作：
-    1. 选择 **"添加客户端 IP 地址**"选项，使当前客户端 IP 有权访问命名空间。 
-    2. 对于**地址范围**，在 CIDR 表示法中输入特定的 IPv4 地址或 IPv4 地址范围。 
-    3. 指定是否要**允许受信任的 Microsoft 服务绕过此防火墙**。 
+    !["防火墙-所有网络" 选项已选中](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
+1. 选择页面顶部的 "**所选网络**" 选项。 在 "**防火墙**" 部分中，执行以下步骤：
+    1. 选择 "**添加客户端 ip 地址**" 选项，为当前客户端 ip 授予对命名空间的访问权限。 
+    2. 对于 "**地址范围**"，请输入特定的 ipv4 地址或 CIDR 表示法中的 ipv4 地址范围。 
+    3. 指定是否**允许受信任的 Microsoft 服务跳过此防火墙**。 
 
-        ![防火墙 - 选择的所有网络选项](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
-3. 选择 **"在**工具栏上保存"以保存设置。 等待几分钟，确认显示在门户通知上。
+        !["防火墙-所有网络" 选项已选中](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
+3. 在工具栏上选择 "**保存**"，保存设置。 等待几分钟让确认显示在门户通知上。
 
 ## <a name="use-resource-manager-template"></a>使用 Resource Manager 模板
-本节具有创建虚拟网络和防火墙规则的示例 Azure 资源管理器模板。
+本部分提供一个示例 Azure 资源管理器模板，用于创建虚拟网络和防火墙规则。
 
 
 以下资源管理器模板支持向现有服务总线命名空间添加虚拟网络规则。

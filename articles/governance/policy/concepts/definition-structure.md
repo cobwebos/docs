@@ -3,30 +3,30 @@ title: 策略定义结构的详细信息
 description: 描述如何使用策略定义为组织中的 Azure 资源建立约定。
 ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0a7c4e05270ff242fa97b253b27a5de92895368a
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 329692c7220810af1d47fe7036e727bb49284810
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460998"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117278"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
-Azure 策略为资源建立约定。 策略定义描述资源合规性[条件](#conditions)以及满足条件时要达到的效果。 条件将资源属性[字段](#fields)与所需值进行比较。 使用[别名](#aliases)访问资源属性字段。 资源属性字段是单值字段或多个值的[数组](#understanding-the--alias)。 条件计算在数组上是不同的。
-了解有关[条件](#conditions)的更多。
+Azure Policy 为资源建立约定。 策略定义描述资源符合性[条件](#conditions)以及满足条件时会实现的效果。 条件将资源属性[字段](#fields)与所需值进行比较。 使用[别名](#aliases)访问资源属性字段。 资源属性字段是单值字段，或者是由多个值组成的[数组](#understanding-the--alias)。 数组上的条件计算有所不同。
+详细了解[条件](#conditions)。
 
 通过定义约定，可以控制成本并更轻松地管理资源。 例如，可指定仅允许特定类型的虚拟机。 或者，可要求所有资源都拥有特定标记。 策略由所有子资源继承。 如果将策略应用到资源组，则会将其应用到该资源组中的所有资源。
 
-策略定义架构如下所示：[https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json)
+策略定义架构可在此处找到：[https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json)
 
-使用 JSON 创建策略定义。 策略定义包含以下项的元素：
+使用 JSON 创建策略定义。 策略定义包含以下各项的元素：
 
-- mode
-- parameters
+- 模式
+- 参数
 - 显示名称
 - description
 - 策略规则
-  - 逻辑评估
+  - 逻辑求值
   - 效果
 
 例如，以下 JSON 说明限制资源部署位置的策略：
@@ -65,7 +65,7 @@ Azure 策略为资源建立约定。 策略定义描述资源合规性[条件](#
 
 所有 Azure Policy 示例均位于 [Azure Policy 示例](../samples/index.md)中。
 
-## <a name="mode"></a>“模式”
+## <a name="mode"></a>Mode
 
 **模式**的配置取决于策略是针对 Azure 资源管理器属性还是资源提供程序属性。
 
@@ -76,23 +76,23 @@ Azure 策略为资源建立约定。 策略定义描述资源合规性[条件](#
 - `all`：评估资源组和所有资源类型
 - `indexed`：仅评估支持标记和位置的资源类型
 
-例如，资源`Microsoft.Network/routeTables`支持标记和位置，并在这两种模式下进行评估。 但是，无法`Microsoft.Network/routeTables/routes`标记资源，并且无法在`Indexed`模式下进行评估。
+例如，资源 `Microsoft.Network/routeTables` 支持标记和位置，在两种模式下进行评估。 但是，资源 `Microsoft.Network/routeTables/routes` 无法标记，不在 `Indexed` 模式下进行评估。
 
-大多数情况下，建议将“mode”设置为 ****`all`。 通过门户创建的所有策略定义使用 `all` 模式。 如果使用 PowerShell 或 Azure CLI，则可以手动指定 **mode** 参数。 如果策略定义不包含 **mode** 值，为提供后向兼容性，在 Azure PowerShell 中默认为 `all`，在 Azure CLI 中默认为 `null`。 `null` 模式等同于使用 `indexed` 来支持后向兼容性。
+大多数情况下，建议将“mode”设置为  `all`。 通过门户创建的所有策略定义使用 `all` 模式。 如果使用 PowerShell 或 Azure CLI，则可以手动指定 **mode** 参数。 如果策略定义不包含 **mode** 值，为提供后向兼容性，在 Azure PowerShell 中默认为 `all`，在 Azure CLI 中默认为 `null`。 `null` 模式等同于使用 `indexed` 来支持后向兼容性。
 
-在创建强制执行标记或位置的策略时，应该使用 `indexed`。 虽然并不是必需的，但是它会阻止不支持标记和位置的资源，使其不会在符合性结果中显示为不兼容。 资源组是一个例外****。 在资源组上强制执行位置或标记的策略应将“mode”**** 设为 `all`，并专门针对 `Microsoft.Resources/subscriptions/resourceGroups` 类型。 请在[强制执行资源组标记](../samples/enforce-tag-rg.md)查看相关示例。 如需支持标记的资源的列表，请参阅 [Azure 资源的标记支持](../../../azure-resource-manager/management/tag-support.md)。
+在创建强制执行标记或位置的策略时，应该使用 `indexed`。 虽然并不是必需的，但是它会阻止不支持标记和位置的资源，使其不会在符合性结果中显示为不兼容。 资源组是一个例外  。 在资源组上强制执行位置或标记的策略应将“mode”  设为 `all`，并专门针对 `Microsoft.Resources/subscriptions/resourceGroups` 类型。 请在[强制执行资源组标记](../samples/enforce-tag-rg.md)查看相关示例。 如需支持标记的资源的列表，请参阅 [Azure 资源的标记支持](../../../azure-resource-manager/management/tag-support.md)。
 
 ### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes" />资源提供程序模式（预览）
 
-预览期间当前支持以下资源提供程序模式：
+预览期间目前支持以下资源提供程序模式：
 
-- `Microsoft.ContainerService.Data`用于管理[Azure 库伯内斯服务](../../../aks/intro-kubernetes.md)上的入场控制器规则。 使用此资源提供程序模式的策略**必须**使用[强制重新策略](./effects.md#enforceregopolicy)效果。
-- `Microsoft.Kubernetes.Data`用于在 Azure 上管理自管理的 AKS 引擎库伯奈斯群集。
-  使用此资源提供程序模式的策略**必须**使用[强制OPA约束](./effects.md#enforceopaconstraint)效果。
-- `Microsoft.KeyVault.Data`用于在[Azure 密钥保管库](../../../key-vault/general/overview.md)中管理保管库和证书。
+- `Microsoft.ContainerService.Data`用于管理[Azure Kubernetes 服务](../../../aks/intro-kubernetes.md)上的许可控制器规则。 使用此资源提供程序模式的策略**必须**使用[EnforceRegoPolicy](./effects.md#enforceregopolicy)效果。
+- `Microsoft.Kubernetes.Data`用于在 Azure 上管理自助托管的 AKS 引擎 Kubernetes 群集。
+  使用此资源提供程序模式的策略**必须**使用[EnforceOPAConstraint](./effects.md#enforceopaconstraint)效果。
+- `Microsoft.KeyVault.Data`用于管理[Azure Key Vault](../../../key-vault/general/overview.md)中的保管库和证书。
 
 > [!NOTE]
-> 资源提供程序模式仅支持内置策略定义，并且在预览版中不支持计划。
+> 资源提供程序模式仅支持内置策略定义，并在预览时不支持计划。
 
 ## <a name="parameters"></a>参数
 
@@ -106,22 +106,22 @@ Azure 策略为资源建立约定。 策略定义描述资源合规性[条件](#
 
 参数有下述可以在策略定义中使用的属性：
 
-- **名称**： 参数的名称。 由策略规则中的 `parameters` 部署函数使用。 有关详细信息，请参阅[使用参数值](#using-a-parameter-value)。
-- `type`：确定参数是**字符串**、**数组**、**对象**、**布尔、****整数**、**浮点**还是**日期时间**。
-- `metadata`：定义主要由 Azure 门户用于显示用户友好信息的子属性：
-  - `description`：参数用于什么的说明。 可以用来提供可接受值的示例。
-  - `displayName`：参数门户中显示的友好名称。
-  - `version`：（可选）跟踪有关策略定义内容版本的详细信息。
+- **名称**：参数的名称。 由策略规则中的 `parameters` 部署函数使用。 有关详细信息，请参阅[使用参数值](#using-a-parameter-value)。
+- `type`：确定参数是否为**字符串**、**数组**、**对象**、**布尔值**、**整数**、**浮点数**或**日期时间**。
+- `metadata`：定义主要由 Azure 门户用来显示用户友好信息的子属性：
+  - `description`：有关参数用途的说明。 可以用来提供可接受值的示例。
+  - `displayName`：在门户中为参数显示的友好名称。
+  - `version`：（可选）跟踪有关策略定义的内容版本的详细信息。
 
     > [!NOTE]
-    > Azure 策略服务使用`version``preview`和`deprecated`属性来表示对内置策略定义或计划与状态的更改级别。 的`version`格式是： `{Major}.{Minor}.{Patch}`。 特定状态（如_弃用_或_预览_）作为`version`**布尔斯**追加到属性或其他属性中。
+    > Azure 策略服务使用`version`、 `preview`和`deprecated`属性来传达对内置策略定义或计划和状态的更改级别。 的格式`version`为： `{Major}.{Minor}.{Patch}`。 特定状态（如不_推荐使用_或_预览版_）将作为`version` **布尔值**追加到属性或其他属性中。
 
-  - `category`：（可选）确定在 Azure 门户中显示策略定义的类别。
+  - `category`：（可选）确定在哪个类别下显示策略定义 Azure 门户。
   - `strongType`：（可选）通过门户分配策略定义时使用。 提供上下文感知列表。 有关详细信息，请参阅 [strongType](#strongtype)。
-  - `assignPermissions`：（可选） 设置为_true，_ 以便 Azure 门户在策略分配期间创建角色分配。 如果希望分配处于分配作用域之外的权限，则此属性非常有用。 策略中的每个角色定义（或计划中所有策略中的每个角色定义）有一个角色分配。 参数值必须是有效的资源或作用域。
-- `defaultValue`：（可选）如果未给出值，则设置赋值中的参数值。
+  - `assignPermissions`：（可选）将设置为_true_ ，以便 Azure 门户在策略分配过程中创建角色分配。 如果希望分配处于分配作用域之外的权限，则此属性非常有用。 策略中的每个角色定义（或计划中所有策略中的每个角色定义）有一个角色分配。 参数值必须是有效的资源或作用域。
+- `defaultValue`：（可选）如果未指定任何值，则设置赋值中的参数的值。
   在更新已分配的现有策略定义时必须使用此项。
-- `allowedValues`：（可选） 提供参数在赋值期间接受的值数组。
+- `allowedValues`：（可选）提供参数数组，该参数在赋值期间接受。
 
 例如，可以定义策略定义来限制资源的部署位置。 **allowedLocations** 可以是该策略定义的一个参数。 每次分配策略定义来限制接受的值时，会使用此参数。 使用 **strongType** 可以在通过门户完成分配时提供增强的体验：
 
@@ -159,13 +159,13 @@ Azure 策略为资源建立约定。 策略定义描述资源合规性[条件](#
 
 ### <a name="strongtype"></a>strongType
 
-在 `metadata` 属性中，可以使用 **strongType** 提供 Azure 门户中的选项多选列表。 **强类型**可以是受支持_的资源类型_或允许的值。 要确定_资源类型_是否对**强类型**有效，请使用[Get-AzResource提供程序](/powershell/module/az.resources/get-azresourceprovider)。
+在 `metadata` 属性中，可以使用 **strongType** 提供 Azure 门户中的选项多选列表。 **strongType**可以是受支持的_资源类型_或允许的值。 若要确定_资源类型_是否对**strongType**有效，请使用[AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider)。
 
-**支持 Get-AzResourceProvider**未返回的某些_资源类型_。 它们是：
+支持**AzResourceProvider**不返回的某些_资源类型_。 它们是：
 
 - `Microsoft.RecoveryServices/vaults/backupPolicies`
 
-**强类型**允许的非_资源类型_值是：
+**StrongType**的非_资源类型_允许值为：
 
 - `location`
 - `resourceTypes`
@@ -258,14 +258,14 @@ Azure 策略为资源建立约定。 策略定义描述资源合规性[条件](#
 - `"greaterOrEquals": "dateValue"` | `"greaterOrEquals": "stringValue"` | `"greaterOrEquals": intValue`
 - `"exists": "bool"`
 
-对于**较少的****"小于或相等"、****更大**和**更大的 OrEquals，** 如果属性类型与条件类型不匹配，则引发错误。 使用`InvariantCultureIgnoreCase`进行字符串比较。
+对于**less**、 **lessOrEquals**、**大于**和**greaterOrEquals**，如果属性类型与条件类型不匹配，则会引发错误。 使用`InvariantCultureIgnoreCase`对字符串进行比较。
 
 使用 like**** 和 notLike**** 条件时，请在值中指定通配符 `*`。
 值不应包含多个通配符 `*`。
 
-当使用 match**** 和 notMatch**** 条件时，请提供 `#` 来匹配数字，提供 `?` 来匹配字母，提供 `.` 来匹配任何字符，并提供任何其他字符来匹配该实际字符。 虽然**匹配**和**不匹配**区分大小写，但评估_字符串Value_的所有其他条件都不区分大小写。 “matchInsensitively”和“notMatchInsensitively”中提供了不区分大小写的替代方案********。
+当使用 match**** 和 notMatch**** 条件时，请提供 `#` 来匹配数字，提供 `?` 来匹配字母，提供 `.` 来匹配任何字符，并提供任何其他字符来匹配该实际字符。 虽然**match**和**notMatch**区分大小写，但计算_stringValue_的所有其他条件都是不区分大小写的。 “matchInsensitively”和“notMatchInsensitively”中提供了不区分大小写的替代方案********。
 
-**\[在\*别名\]** 数组字段值中，数组中的每个元素都使用逻辑**和**元素之间单独计算。 有关详细信息，请参阅[评估\[\*\]别名](../how-to/author-policies-for-arrays.md#evaluating-the--alias)。
+在别名数组字段值中，数组中的每个元素都是使用逻辑**and**在元素之间单独计算的。 ** \] \[ \* ** 有关详细信息，请参阅[计算\[ \* \]别名](../how-to/author-policies-for-arrays.md#evaluating-the--alias)。
 
 ### <a name="fields"></a>字段
 
@@ -285,11 +285,11 @@ Azure 策略为资源建立约定。 策略定义描述资源合规性[条件](#
 - `tags`
 - `tags['<tagName>']`
   - 此括号语法支持具有标点符号的标记名称，例如连字符、句点或空格。
-  - **\<其中标记名称\>** 是标记的名称，用于验证 其条件。
+  - 其中** \<tagName\> **是要验证其条件的标记的名称。
   - 示例：`tags['Acct.CostCenter']`，其中 Acct.CostCenter 是标记的名称****。
 - `tags['''<tagName>''']`
   - 此括号语法通过双撇号进行转义，可支持在其中包含撇号的标记名称。
-  - **其中'tagName'\<\>** 是用于验证其条件的标记的名称。
+  - 其中 **，\<"\>tagName"** 是要验证其条件的标记的名称。
   - 示例：`tags['''My.Apostrophe.Tag''']`，其中 'My.Apostrophe.Tag' **** 是标记的名称。
 - 属性别名 - 有关列表，请参阅[别名](#aliases)。
 
@@ -330,7 +330,7 @@ Azure 策略为资源建立约定。 策略定义描述资源合规性[条件](#
 **value** 可与任何支持的[条件](#conditions)配对。
 
 > [!WARNING]
-> 如果模板函数__ 的结果是一个错误，则策略评估会失败。 评估失败是一种隐式**拒绝**。 有关详细信息，请参阅[避免模板失败](#avoiding-template-failures)。 使用**DoNotEnforce** [的强制模式](./assignment-structure.md#enforcement-mode)，在测试和验证新的策略定义时，防止评估失败对新资源或更新的资源的影响。
+> 如果模板函数__ 的结果是一个错误，则策略评估会失败。 评估失败是一种隐式**拒绝**。 有关详细信息，请参阅[避免模板失败](#avoiding-template-failures)。 使用**DoNotEnforce**的[enforcementMode](./assignment-structure.md#enforcement-mode) ，以防止测试和验证新策略定义时对新的或更新的资源进行失败的评估的影响。
 
 #### <a name="value-examples"></a>Value 示例
 
@@ -412,7 +412,7 @@ Azure 策略为资源建立约定。 策略定义描述资源合规性[条件](#
 
 ### <a name="count"></a>Count
 
-可以使用 **计数** 表达式来构成条件，用于统计资源有效负载中有多少个数组成员满足条件表达式。 常见方案是检查是“至少有一个”、“正好有一个”、“所有”还是“没有”数组成员满足条件。 **count**计算条件表达式的每个[\[\*\]别名](#understanding-the--alias)数组成员并求和真实结果，然后将_该结果_与表达式运算符进行比较。
+可以使用 **计数** 表达式来构成条件，用于统计资源有效负载中有多少个数组成员满足条件表达式。 常见方案是检查是“至少有一个”、“正好有一个”、“所有”还是“没有”数组成员满足条件。 **count**计算一个条件表达式的每个[ \[ \* \]别名](#understanding-the--alias)数组成员，并为_true_结果求和，然后将结果与表达式运算符进行比较。 **计数**表达式最多可添加到单个**policyRule**定义的3倍。
 
 **count** 表达式的结构为：
 
@@ -430,14 +430,14 @@ Azure 策略为资源建立约定。 策略定义描述资源合规性[条件](#
 
 以下属性与 **count** 结合使用：
 
-- **count.field（** 必需）：包含数组的路径，并且必须是数组别名。 如果缺少数组，表达式将评估为 _false_，而不考虑条件表达式。
-- **计数.where（** 可选）：用于单独计算**count.field**的每个[\[\*\]别名](#understanding-the--alias)数组成员的条件表达式。 如果未提供此属性，具有“field”路径的所有数组成员将评估为 _true_。 可在此属性中使用任何[条件](../concepts/definition-structure.md#conditions)。
+- **count. field** （必需）：包含数组的路径，必须是数组别名。 如果缺少数组，表达式将评估为 _false_，而不考虑条件表达式。
+- **count。 where** （可选）：用于分别计算**count**的每个[ \[ \* \] alias](#understanding-the--alias)数组成员的条件表达式。 如果未提供此属性，具有“field”路径的所有数组成员将评估为 _true_。 可在此属性中使用任何[条件](../concepts/definition-structure.md#conditions)。
   可在此属性中使用[逻辑运算符](#logical-operators)来创建复杂的评估要求。
-- 条件（必需）：该值与满足**count.where**条件表达式的项数进行比较。 **\> \<** 应使用数字[条件](../concepts/definition-structure.md#conditions)。
+- condition （必需）：将值与满足计数的项的数目进行比较 **。 where**条件表达式。 ** \<\> ** 应使用数字[条件](../concepts/definition-structure.md#conditions)。
 
 #### <a name="count-examples"></a>Count 示例
 
-示例 1：检查数组是否为空
+示例1：检查数组是否为空
 
 ```json
 {
@@ -448,7 +448,7 @@ Azure 策略为资源建立约定。 策略定义描述资源合规性[条件](#
 }
 ```
 
-示例 2：仅检查一个数组成员以满足条件表达式
+示例2：检查是否只有一个数组成员满足条件表达式
 
 ```json
 {
@@ -463,7 +463,7 @@ Azure 策略为资源建立约定。 策略定义描述资源合规性[条件](#
 }
 ```
 
-示例 3：检查至少一个数组成员以满足条件表达式
+示例3：检查是否至少有一个数组成员满足条件表达式
 
 ```json
 {
@@ -478,7 +478,7 @@ Azure 策略为资源建立约定。 策略定义描述资源合规性[条件](#
 }
 ```
 
-示例 4：检查所有对象数组成员是否符合条件表达式
+示例4：检查所有对象数组成员是否满足条件表达式
 
 ```json
 {
@@ -493,7 +493,7 @@ Azure 策略为资源建立约定。 策略定义描述资源合规性[条件](#
 }
 ```
 
-示例 5：检查所有字符串数组成员是否符合条件表达式
+示例5：检查所有字符串数组成员是否满足条件表达式
 
 ```json
 {
@@ -508,7 +508,7 @@ Azure 策略为资源建立约定。 策略定义描述资源合规性[条件](#
 }
 ```
 
-示例 6：使用**内部值的字段**检查所有数组成员是否符合条件表达式**value**
+示例 6 **：使用**值内部**值**检查所有数组成员是否满足条件表达式
 
 ```json
 {
@@ -523,7 +523,7 @@ Azure 策略为资源建立约定。 策略定义描述资源合规性[条件](#
 }
 ```
 
-示例 7：检查至少一个数组成员是否与条件表达式中的多个属性匹配
+示例7：检查是否至少有一个数组成员与条件表达式中的多个属性相匹配
 
 ```json
 {
@@ -554,14 +554,14 @@ Azure 策略为资源建立约定。 策略定义描述资源合规性[条件](#
 
 Azure Policy 支持以下类型的效果：
 
-- **追加 ：** 将定义的字段集添加到请求
+- **Append**：将定义的字段集添加到请求
 - **Audit**：会在活动日志中生成一个警告事件，但不会使请求失败
 - **AuditIfNotExists**：如果相关资源不存在，则会在活动日志中生成一个警告事件
 - **Deny**：会在活动日志中生成一个事件，并使请求失败
 - **DeployIfNotExists**：如果相关资源尚不存在，则会部署该资源
 - **Disabled**：不评估资源是否符合策略规则
-- **实施OPA约束**（预览）：使用门卫 v3 配置开放策略代理准入控制器，用于 Azure 上的自管理的 Kubernetes 群集（预览）
-- **执行重新策略**（预览）：在 Azure Kubernetes 服务中配置具有门卫 v2 的开放策略代理准入控制器
+- **EnforceOPAConstraint** （预览版）：为 Azure 上的自托管 Kubernetes 群集配置打开策略代理招生控制器和网关控制器 v3 （预览版）
+- **EnforceRegoPolicy** （预览版）：在 Azure Kubernetes 服务中配置打开策略代理招生控制器和网关守卫 v2
 - **Modify**：在资源中添加、更新或删除定义的标记
 
 有关每种效果、评估顺序、属性和示例的完整详细信息，请参阅[了解 Azure Policy 效果](effects.md)。
@@ -581,25 +581,25 @@ Azure Policy 支持以下类型的效果：
 - variables()
 
 > [!NOTE]
-> 这些函数在**部署中的**模板部署`details.deployment.properties.template`部分仍然可用。
+> 在 DeployIfNotExists 策略定义的模板部署`details.deployment.properties.template`部分中，这些函数仍可用**deployIfNotExists** 。
 
-以下函数可用于策略规则，但与 Azure 资源管理器模板中的使用不同：
+以下函数可在策略规则中使用，但不同于 Azure 资源管理器模板中的使用：
 
-- `utcNow()`- 与资源管理器模板不同，可以在默认值之外使用。
+- `utcNow()`-与资源管理器模板不同，此值可在 defaultValue 之外使用。
   - 以通用 ISO 8601 日期/时间格式“yyyy-MM-ddTHH:mm:ss.fffffffZ”返回设置为当前日期和时间的字符串
 
-以下函数仅在策略规则中可用：
+以下函数仅适用于策略规则：
 
 - `addDays(dateTime, numberOfDaysToAdd)`
   - **dateTime**：[必需] 字符串 - 通用 ISO 8601 日期/时间格式“yyyy-MM-ddTHH:mm:ss.fffffffZ”的字符串
   - **numberOfDaysToAdd**：[必需] 整数 - 要添加的天数
 - `field(fieldName)`
-  - **字段名称**： [必需] 字符串 - 要检索的[字段](#fields)的名称
-  - 从"If 条件"正在评估的资源中返回该字段的值
+  - **fieldName**： [必需] 字符串-要检索的[字段](#fields)的名称
+  - 返回由 If 条件计算的资源中该字段的值
   - `field` 主要用于 **AuditIfNotExists** 和 **DeployIfNotExists**，以引用所评估资源上的字段。 可以在 [DeployIfNotExists 示例](effects.md#deployifnotexists-example)中看到这种用法的示例。
 - `requestContext().apiVersion`
-  - 返回触发策略评估的请求的 API 版本（例如： `2019-09-01`。
-    这将是 PUT/PATCH 请求中使用的 API 版本，用于评估资源创建/更新。 在现有资源的合规性评估期间，始终使用最新的 API 版本。
+  - 返回触发了策略评估的请求的 API 版本（例如： `2019-09-01`）。
+    这将是用于在创建/更新资源时进行评估的 PUT/PATCH 请求中使用的 API 版本。 在对现有资源的符合性评估过程中始终使用最新的 API 版本。
   
 #### <a name="policy-function-example"></a>策略函数示例
 
@@ -625,15 +625,15 @@ Azure Policy 支持以下类型的效果：
 
 别名列表始终不断增长。 若要找出 Azure Policy 当前支持哪些别名，请使用以下方法之一：
 
-- 可视化工作室代码的 Azure 策略扩展（推荐）
+- 适用于 Visual Studio Code 的 Azure 策略扩展（推荐）
 
-  使用[可视化工作室代码的 Azure 策略扩展](../how-to/extension-for-vscode.md)来查看和发现资源属性的别名。
+  使用[适用于 Visual Studio Code 的 Azure 策略扩展](../how-to/extension-for-vscode.md)来查看和发现资源属性的别名。
 
   ![适用于 Visual Studio Code 的 Azure Policy 扩展](../media/extension-for-vscode/extension-hover-shows-property-alias.png)
 
 - Azure Resource Graph
 
-  使用`project`运算符显示资源的**别名**。
+  使用`project`运算符可显示资源的**别名**。
 
   ```kusto
   Resources
@@ -682,15 +682,15 @@ Azure Policy 支持以下类型的效果：
 
 ### <a name="understanding-the--alias"></a>了解 [*] 别名
 
-几个可用的别名具有显示为"正常"名称的版本，另一个名称已**\[\*** 附加到该名称。 例如：
+可用的几个别名具有显示为 "normal" 名称的版本，以及** \[ \* **附加到该名称的另一个别名。 例如：
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
 “normal”别名表示单一值字段。 如果整个值集必须确切定义（不能多定义，也不能少定义），则此字段将用于完全匹配比较方案。
 
-**\[别名\*** 可以比较数组中每个元素的值和每个元素的特定属性。 使用这种方法可以比较“if none of”、“if any of”或“if all of”方案的元素属性。 对于更复杂的方案，请使用 [count](#count) 条件表达式。 使用**\[\*ipRules，** 一个示例将验证每个_操作_都是_Deny，_ 但不担心存在多少规则或 IP_值_是什么。
-此示例规则检查**\[\*\]ipRules .value**到**10.0.4.1**的任何匹配项，并且仅在找不到至少匹配项时应用**效果类型**：
+** \[别名可以与数组中每个元素的值和每个元素的特定属性\* **进行比较。 使用这种方法可以比较“if none of”、“if any of”或“if all of”方案的元素属性。 对于更复杂的方案，请使用 [count](#count) 条件表达式。 使用**ipRules\[\***，一个示例将验证每个_操作_是否为_Deny_，但不必担心存在多少个规则或 IP_值_是多少。
+此示例规则检查**\[\*\]ipRules**到**10.0.4.1**的所有匹配项，并且仅当找不到至少一个匹配项时应用**effectType** ：
 
 ```json
 "policyRule": {
@@ -719,7 +719,7 @@ Azure Policy 支持以下类型的效果：
 使用计划可组合多个相关策略定义，以简化分配和管理，因为可将组作为单个项使用。 例如，可以将相关标记策略组合为单个计划。 将应用计划，而非单独分配每个策略。
 
 > [!NOTE]
-> 一旦分配了计划，则无法更改计划级别参数。 因此，建议在定义参数时设置**默认值**。
+> 分配计划后，不能更改计划级别参数。 因此，建议在定义参数时设置**defaultValue** 。
 
 下面的示例演示如何创建用于处理 `costCenter` 和 `productName` 这两个标记的计划。 它使用两个内置策略来应用默认标记值。
 
@@ -798,7 +798,7 @@ Azure Policy 支持以下类型的效果：
 
 - 查看[Azure 策略示例](../samples/index.md)中的示例。
 - 查看[了解策略效果](effects.md)。
-- 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
-- 了解如何[获取合规性数据](../how-to/get-compliance-data.md)。
-- 了解如何[修复不合规资源](../how-to/remediate-resources.md)。
+- 了解如何以[编程方式创建策略](../how-to/programmatically-create.md)。
+- 了解如何[获取相容性数据](../how-to/get-compliance-data.md)。
+- 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

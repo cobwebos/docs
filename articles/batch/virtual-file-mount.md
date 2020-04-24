@@ -1,26 +1,19 @@
 ---
 title: 在池中装载虚拟文件系统 - Azure Batch | Microsoft Docs
 description: 了解如何在 Batch 池中装载虚拟文件系统。
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-ms.service: batch
-ms.workload: big-compute
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/13/2019
 ms.author: labrenne
-ms.openlocfilehash: bdf0b3bfc955d8a2e2ce1b363c8699ca719b957c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 703b65f0a1571659d7be479776dd8fdf02d86731
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77918999"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117023"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>在 Batch 池中装载虚拟文件系统
 
-Azure Batch 现在支持在 Batch 池中的 Windows 或 Linux 计算节点上装载云存储或外部文件系统。 当某个计算节点加入池时，将会装载虚拟文件系统并将其视为该节点上的本地驱动器。 您可以装载文件系统，如 Azure 文件、Azure Blob 存储、网络文件系统 （NFS），包括[Avere vFXT 缓存](../avere-vfxt/avere-vfxt-overview.md)或通用 Internet 文件系统 （CIFS）。
+Azure Batch 现在支持在 Batch 池中的 Windows 或 Linux 计算节点上装载云存储或外部文件系统。 当某个计算节点加入池时，将会装载虚拟文件系统并将其视为该节点上的本地驱动器。 可以装载文件系统，例如 Azure 文件、Azure Blob 存储、网络文件系统（NFS），包括[Avere vFXT 缓存](../avere-vfxt/avere-vfxt-overview.md)或常见 Internet 文件系统（CIFS）。
 
 本文介绍如何使用[适用于 .NET 的 Batch 管理库](https://docs.microsoft.com/dotnet/api/overview/azure/batch?view=azure-dotnet)在计算节点池上装载虚拟文件系统。
 
@@ -33,7 +26,7 @@ Azure Batch 现在支持在 Batch 池中的 Windows 或 Linux 计算节点上装
 
 将文件系统安装到池中而不是让任务从大型数据集检索自身的数据，可使任务更方便、更高效地访问所需的数据。
 
-假设有多个任务（例如渲染电影）需要访问一组公用数据。 每个任务每次渲染场景文件中的一个或多个帧。 如果装载包含场景文件的驱动器，则计算节点可以更方便地访问共享的数据。 此外，可以根据并发访问数据的计算节点数所需的性能和规模（吞吐量和 IOPS），单独选择和缩放基础文件系统。 例如[，Avere vFXT](../avere-vfxt/avere-vfxt-overview.md)分布式内存缓存可用于支持具有数千个并发渲染节点的大型电影比例渲染，从而访问驻留在本地的源数据。 或者，对于已驻留在基于云的 Blob 存储中的数据[，Blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md)可用于将此数据装载为本地文件系统。 Blobfuse 仅在 Linux 节点上可用，但是，[Azure 文件](https://azure.microsoft.com/blog/a-new-era-for-azure-files-bigger-faster-better/)提供类似的工作流，并可在 Windows 和 Linux 上使用。
+假设有多个任务（例如渲染电影）需要访问一组公用数据。 每个任务每次渲染场景文件中的一个或多个帧。 如果装载包含场景文件的驱动器，则计算节点可以更方便地访问共享的数据。 此外，可以根据并发访问数据的计算节点数所需的性能和规模（吞吐量和 IOPS），单独选择和缩放基础文件系统。 例如，可以使用[Avere vFXT](../avere-vfxt/avere-vfxt-overview.md)分布式内存中缓存来支持大的动画规模呈现，其中包含数千个并发呈现节点，并访问驻留在本地的源数据。 或者，对于已驻留在基于云的 Blob 存储中的数据，可以使用[blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md)将此数据作为本地文件系统进行装载。 Blobfuse 仅在 Linux 节点上可用，但是，[Azure 文件](https://azure.microsoft.com/blog/a-new-era-for-azure-files-bigger-faster-better/)提供类似的工作流，并可在 Windows 和 Linux 上使用。
 
 ## <a name="mount-a-virtual-file-system-on-a-pool"></a>在池中装载虚拟文件系统  
 
@@ -43,9 +36,9 @@ Azure Batch 现在支持在 Batch 池中的 Windows 或 Linux 计算节点上装
 
 所有装载配置对象都需要以下基本参数。 某些装载配置具有特定于所用文件系统的参数，代码示例中将更详细地介绍这些参数。
 
-- **帐户名称或源**：要装载虚拟文件共享，您需要存储帐户或其源的名称。
-- **相对装载路径或源**：文件系统的位置安装在计算节点上，相对于通过 在`fsmounts``AZ_BATCH_NODE_MOUNTS_DIR`节点上访问的标准目录。 确切的位置根据节点上使用的操作系统而异。 例如，Ubuntu 节点上的物理位置将映射到 `mnt\batch\tasks\fsmounts`，而 CentOS 节点上的物理位置将映射到 `mnt\resources\batch\tasks\fsmounts`。
-- **装载选项或 Blobfuse 选项**：这些选项描述用于安装文件系统的特定参数。
+- **帐户名或源**：若要装载虚拟文件共享，需要存储帐户或其源的名称。
+- **相对装载路径或源**：在计算节点上装载的文件系统的位置，相对于节点上`fsmounts`通过`AZ_BATCH_NODE_MOUNTS_DIR`访问的标准目录。 确切的位置根据节点上使用的操作系统而异。 例如，Ubuntu 节点上的物理位置将映射到 `mnt\batch\tasks\fsmounts`，而 CentOS 节点上的物理位置将映射到 `mnt\resources\batch\tasks\fsmounts`。
+- **装载选项或 blobfuse 选项**：这些选项描述用于装载文件系统的特定参数。
 
 创建 `MountConfiguration` 对象后，在创建池时将该对象分配到 `MountConfigurationList` 属性。 当某个节点加入池，或者节点重启或重置映像时，将会装载该文件系统。
 
@@ -85,7 +78,7 @@ new PoolAddParameter
 
 ### <a name="azure-blob-file-system"></a>Azure Blob 文件系统
 
-另一个选项是使用 Azure Blob 存储通过[blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md)。 装载 Blob 文件系统需要使用存储帐户的 `AccountKey` 或 `SasKey`。 有关获取这些密钥的信息，请参阅[管理存储帐户访问密钥](../storage/common/storage-account-keys-manage.md)或使用[共享访问签名 （SAS）。](../storage/common/storage-dotnet-shared-access-signature-part-1.md) 有关使用 blobfuse 的详细信息，请参阅 blobfuse [故障排除常见问题解答](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)。 若要获取对 blobfuse 装载目录的默认访问权限，请以**管理员**身份运行该任务。 blobfuse 在用户空间中装载目录；创建池时，将以 root 身份装载 blobfuse。 在 Linux 中，所有**管理员**任务都以 root 身份运行。 [FUSE 参考页](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html)中介绍了 FUSE 模块的所有选项。
+另一种方法是通过[blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md)使用 Azure Blob 存储。 装载 Blob 文件系统需要使用存储帐户的 `AccountKey` 或 `SasKey`。 有关获取这些密钥的信息，请参阅[管理存储帐户访问密钥](../storage/common/storage-account-keys-manage.md)或[使用共享访问签名（SAS）](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。 有关使用 blobfuse 的详细信息，请参阅 blobfuse [故障排除常见问题解答](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)。 若要获取对 blobfuse 装载目录的默认访问权限，请以**管理员**身份运行该任务。 blobfuse 在用户空间中装载目录；创建池时，将以 root 身份装载 blobfuse。 在 Linux 中，所有**管理员**任务都以 root 身份运行。 [FUSE 参考页](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html)中介绍了 FUSE 模块的所有选项。
 
 除了故障排除指南以外，还可以借助“blobfuse 中的问题”GitHub 存储库来检查当前的 blobfuse 问题并获取解决方法。 有关详细信息，请参阅 [blobfuse 问题](https://github.com/Azure/azure-storage-fuse/issues)。
 
@@ -113,7 +106,7 @@ new PoolAddParameter
 
 ### <a name="network-file-system"></a>网络文件系统
 
-还可以将网络文件系统 (NFS) 装载到池节点，使 Azure Batch 节点能够轻松访问传统的文件系统。 此类文件系统可能是部署在云中的单个 NFS 服务器，或通过虚拟网络访问的本地 NFS 服务器。 或者，利用[Avere vFXT](../avere-vfxt/avere-vfxt-overview.md)分布式内存缓存解决方案，该解决方案提供与本地存储的无缝连接，按需将数据读取到其缓存中，并提供高性能和扩展到基于云的计算节点。
+还可以将网络文件系统 (NFS) 装载到池节点，使 Azure Batch 节点能够轻松访问传统的文件系统。 此类文件系统可能是部署在云中的单个 NFS 服务器，或通过虚拟网络访问的本地 NFS 服务器。 另外，还可以利用[Avere vFXT](../avere-vfxt/avere-vfxt-overview.md)分布式内存中缓存解决方案，该解决方案提供与本地存储的无缝连接，将数据按需读取到其缓存中，并提供高性能和扩展到基于云的计算节点。
 
 ```csharp
 new PoolAddParameter
@@ -161,7 +154,7 @@ new PoolAddParameter
 
 ## <a name="diagnose-mount-errors"></a>诊断装载错误
 
-如果某个装载配置失败，则池中的计算节点也会失败，并且节点状态将变为不可用。 要诊断装载配置失败，[`ComputeNodeError`](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror)请检查该属性以查找有关错误的详细信息。
+如果某个装载配置失败，则池中的计算节点也会失败，并且节点状态将变为不可用。 若要诊断装入配置失败，请检查[`ComputeNodeError`](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror)属性以获取有关错误的详细信息。
 
 若要获取日志文件进行调试，请使用 [OutputFiles](batch-task-output-files.md) 上传 `*.log` 文件。 `*.log` 文件包含有关位于 `AZ_BATCH_NODE_MOUNTS_DIR` 处的文件系统装入点的信息。 每个装入点的装载日志文件格式为 `<type>-<mountDirOrDrive>.log`。 例如，位于名为 `test` 的装载目录中的 `cifs` 装入点将包含名为 `cifs-test.log` 的装载日志文件。
 
@@ -175,7 +168,7 @@ new PoolAddParameter
 | Credativ | Debian | 9 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-ads | linux-data-science-vm | linuxdsvm | :heavy_check_mark: <br>注意：与 CentOS 7.4 兼容。 </br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-azure-batch | centos-container | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-azure-batch | centos-container-rdma | 7.4 | :heavy_check_mark: <br>注意：支持A_8或 9 个存储</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| microsoft-azure-batch | centos-container-rdma | 7.4 | :heavy_check_mark: <br>注意：支持 A_8 或9个存储</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-azure-batch | ubuntu-server-container | 16.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-dsvm | linux-data-science-vm-ubuntu | linuxdsvmubuntu | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | OpenLogic | CentOS | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -188,4 +181,4 @@ new PoolAddParameter
 - 详细了解如何在 [Windows](../storage/files/storage-how-to-use-files-windows.md) 或 [Linux](../storage/files/storage-how-to-use-files-linux.md) 中装载 Azure 文件共享。
 - 了解如何使用和装载 [blobfuse](https://github.com/Azure/azure-storage-fuse) 虚拟文件系统。
 - 参阅[网络文件系统概述](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview)，了解 NFS 及其应用方案。
-- 请参阅[Microsoft SMB 协议和 CIFS 协议概述](https://docs.microsoft.com/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)，了解有关 CIFS 的详细信息。
+- 有关 CIFS 的详细信息，请参阅[MICROSOFT SMB 协议和 CIFS 协议概述](https://docs.microsoft.com/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)。
