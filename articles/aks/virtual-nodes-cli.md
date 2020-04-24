@@ -5,22 +5,22 @@ description: 了解如何通过 Azure CLI 创建使用虚拟节点运行 Pod 的
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: b3dec8a7d46226b9d6f4416c98332f0023c0c294
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 826c7f98b9540d84ac151e05cd81f2cc6042776c
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392588"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82128919"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>创建 Azure Kubernetes 服务 (AKS) 群集并将其配置为通过 Azure CLI 使用虚拟节点
 
-若要快速缩放 Azure Kubernetes 服务 (AKS) 群集中的应用程序工作负载，可以使用虚拟节点。 使用虚拟节点可快速预配 Pod，并且只需对其执行时间按秒付费。 无需等待 Kubernetes 群集自动缩放程序部署 VM 计算节点来运行其他 Pod。 虚拟节点仅受 Linux pod 和节点的支持。
+若要快速缩放 Azure Kubernetes 服务 (AKS) 群集中的应用程序工作负载，可以使用虚拟节点。 使用虚拟节点可快速预配 Pod，并且只需对其执行时间按秒付费。 无需等待 Kubernetes 群集自动缩放程序部署 VM 计算节点来运行其他 Pod。 只有 Linux pod 和节点支持虚拟节点。
 
 本文介绍如何创建和配置虚拟网络资源和 AKS 群集，然后启用虚拟节点。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
-虚拟节点在 Azure 容器实例 （ACI） 中运行的 Pod 和 AKS 群集之间启用网络通信。 若要提供此通信，应创建虚拟网络子网并分配委派的权限。 虚拟节点仅适用于使用高级** 网络创建的 AKS 群集。 默认情况下，AKS 群集是使用基本** 网络创建的。 本文介绍如何创建虚拟网络和子网，然后部署使用高级网络的 AKS 群集。
+虚拟节点在 Azure 容器实例（ACI）和 AKS 群集中运行的 pod 之间启用网络通信。 若要提供此通信，应创建虚拟网络子网并分配委派的权限。 虚拟节点仅适用于使用高级** 网络创建的 AKS 群集。 默认情况下，AKS 群集是使用基本** 网络创建的。 本文介绍如何创建虚拟网络和子网，然后部署使用高级网络的 AKS 群集。
 
 如果以前没有使用过 ACI，请在订阅中注册服务提供程序。 可以使用 [az provider list][az-provider-list] 命令检查 ACI 提供程序注册的状态，如下面的示例所示：
 
@@ -46,28 +46,28 @@ az provider register --namespace Microsoft.ContainerInstance
 
 虚拟节点部署支持以下区域：
 
-* 澳大利亚东部（澳大利亚东部）
-* 美国中部（中部）
+* 澳大利亚东部（australiaeast）
+* 美国中部（centralus）
 * 美国东部 (eastus)
-* 东美国 2 （东2）
-* 日本东部（日本东部）
+* 美国东部2（eastus2）
+* 日本东部（japaneast）
 * 北欧 (northeurope)
-* 东南亚（东南亚）
-* 美国中西部（中西部）
+* 东南亚（southeastasia）
+* 美国中部（westcentralus）
 * 西欧 (westeurope)
 * 美国西部 (westus)
 * 美国西部 2 (westus2)
 
 ## <a name="known-limitations"></a>已知的限制
-虚拟节点功能在很大程度上取决于 ACI 的功能集。 虚拟节点尚不支持以下方案
+虚拟节点功能很大程度上依赖于 ACI 的功能集。 虚拟节点尚不支持以下方案
 
-* 使用服务主体提取 ACR 映像。 [解决方法](https://github.com/virtual-kubelet/virtual-kubelet/blob/master/providers/azure/README.md#Private-registry)是使用[库伯内斯的秘密](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)
-* [虚拟网络限制](../container-instances/container-instances-vnet.md)，包括 VNet 对等互连、Kubernetes 网络策略以及具有网络安全组的 Internet 的出站流量。
-* Init 容器
+* 使用服务主体拉取 ACR 映像。 [解决方法](https://github.com/virtual-kubelet/azure-aci/blob/master/README.md#private-registry)是使用[Kubernetes 机密](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)
+* [虚拟网络限制](../container-instances/container-instances-vnet.md)，包括 VNet 对等互连、Kubernetes 网络策略和网络安全组发送到 internet 的出站流量。
+* 初始化容器
 * [主机别名](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
-* ACI 中执行官[的论据](../container-instances/container-instances-exec.md#restrictions)
-* [守护进程不会](concepts-clusters-workloads.md#statefulsets-and-daemonsets)将窗格部署到虚拟节点
-* 虚拟节点支持调度 Linux pod。 您可以手动安装开源[虚拟库贝莱特 ACI](https://github.com/virtual-kubelet/azure-aci)提供程序，以将 Windows 服务器容器安排到 ACI。 
+* ACI 中 exec 的[参数](../container-instances/container-instances-exec.md#restrictions)
+* [Daemonset](concepts-clusters-workloads.md#statefulsets-and-daemonsets)不会将 pod 部署到虚拟节点
+* 虚拟节点支持 Linux pod 计划。 可以手动安装开源[Virtual KUBELET ACI](https://github.com/virtual-kubelet/azure-aci)提供程序，以便将 Windows Server 容器计划到 ACI。 
 
 ## <a name="launch-azure-cloud-shell"></a>启动 Azure Cloud Shell
 
@@ -79,7 +79,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 使用“[az group create][az-group-create]”命令创建资源组。 下面的示例*在西部*位置创建名为*myResourceGroup*的资源组。
+Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 使用“[az group create][az-group-create]”命令创建资源组。 以下示例在*westus*位置创建名为*myResourceGroup*的资源组。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus
@@ -110,7 +110,7 @@ az network vnet subnet create \
 
 ## <a name="create-a-service-principal-or-use-a-managed-identity"></a>创建服务主体或使用托管标识
 
-若要允许 AKS 群集与其他 Azure 资源交互，请使用 Azure Active Directory 服务主体。 可以通过 Azure CLI 或门户自动创建此服务主体，也可以预先创建一个服务主体并分配其他权限。 或者，您可以将托管标识用于权限，而不是服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
+若要允许 AKS 群集与其他 Azure 资源交互，请使用 Azure Active Directory 服务主体。 可以通过 Azure CLI 或门户自动创建此服务主体，也可以预先创建一个服务主体并分配其他权限。 或者，你可以将托管标识用于权限，而不是服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
 
 使用 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] 命令创建服务主体。 `--skip-assignment` 参数限制分配任何其他权限。
 
@@ -130,7 +130,7 @@ az ad sp create-for-rbac --skip-assignment
 }
 ```
 
-记下*应用程序 Id*和*密码*。 后续步骤会用到这些值。
+记下 *appId* 和 *password*。 后续步骤会用到这些值。
 
 ## <a name="assign-permissions-to-the-virtual-network"></a>分配对虚拟网络的权限
 
@@ -156,7 +156,7 @@ az role assignment create --assignee <appId> --scope <vnetId> --role Contributor
 az network vnet subnet show --resource-group myResourceGroup --vnet-name myVnet --name myAKSSubnet --query id -o tsv
 ```
 
-使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为 ** myAKSCluster 的群集。 替换为`<subnetId>`上一步骤中获取的 ID，然后`<appId>``<password>`用上一节中收集的值替换。
+使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为  myAKSCluster 的群集。 将`<subnetId>`替换为上一步中获取的 ID， `<appId>` `<password>`然后将替换为在上一节中收集的值。
 
 ```azurecli-interactive
 az aks create \
@@ -174,7 +174,7 @@ az aks create \
 
 几分钟后，该命令完成并返回有关群集的 JSON 格式的信息。
 
-## <a name="enable-virtual-nodes-addon"></a>启用虚拟节点附加组件
+## <a name="enable-virtual-nodes-addon"></a>启用虚拟节点加载项
 
 若要启用虚拟节点，现在使用 [az aks enable-addons][az-aks-enable-addons] 命令。 以下示例使用上一步中创建的名为 myVirtualNodeSubnet ** 的子网：
 
@@ -263,7 +263,7 @@ aci-helloworld-9b55975f-bnmfl   1/1       Running   0          4m        10.241.
 系统从被委派用于虚拟节点的 Azure 虚拟网络子网中为该 Pod 分配了一个内部 IP 地址。
 
 > [!NOTE]
-> 如果使用存储在 Azure 容器注册表中的映像，请[配置并使用 Kubernetes 机密][acr-aks-secrets]。 虚拟节点的当前限制是不能使用集成的 Azure AD 服务主体身份验证。 如果不使用机密，则在虚拟节点上计划的 Pod 将无法启动并报告错误 `HTTP response status code 400 error code "InaccessibleImage"`。
+> 如果使用存储在 Azure 容器注册表中的映像，请[配置并使用 Kubernetes 机密][acr-aks-secrets]。 虚拟节点当前的限制是不能使用集成 Azure AD 服务主体身份验证。 如果不使用机密，则在虚拟节点上计划的 Pod 将无法启动并报告错误 `HTTP response status code 400 error code "InaccessibleImage"`。
 
 ## <a name="test-the-virtual-node-pod"></a>测试虚拟节点 Pod
 
@@ -279,7 +279,7 @@ kubectl run --generator=run-pod/v1 -it --rm testvk --image=debian
 apt-get update && apt-get install -y curl
 ```
 
-现在使用 访问您的窗格的地址，`curl`如*http://10.241.0.4*。 提供上一个 `kubectl get pods` 命令中所示的你自己的内部 IP 地址：
+现在，使用`curl`访问 pod 的地址，例如*http://10.241.0.4*。 提供上一个 `kubectl get pods` 命令中所示的你自己的内部 IP 地址：
 
 ```console
 curl -L http://10.241.0.4
@@ -301,15 +301,15 @@ curl -L http://10.241.0.4
 
 如果不再想要使用虚拟节点，则可以使用 [az aks disable-addons][az aks disable-addons] 命令禁用它们。 
 
-如有必要，请转到[https://shell.azure.com](https://shell.azure.com)在浏览器中打开 Azure 云外壳。
+如有必要， [https://shell.azure.com](https://shell.azure.com)请在浏览器中打开并打开 Azure Cloud Shell。
 
-首先，删除在`aci-helloworld`虚拟节点上运行的窗格：
+首先，删除虚拟`aci-helloworld`节点上运行的 pod：
 
 ```console
 kubectl delete -f virtual-node.yaml
 ```
 
-以下示例命令禁用 Linux 虚拟节点：
+下面的示例命令禁用 Linux 虚拟节点：
 
 ```azurecli-interactive
 az aks disable-addons --resource-group myResourceGroup --name myAKSCluster --addons virtual-node
@@ -346,7 +346,7 @@ az network vnet subnet update --resource-group $RES_GROUP --vnet-name $AKS_VNET 
 - [使用 Kubernetes 水平 Pod 自动缩放程序][aks-hpa]
 - [使用 Kubernetes 群集自动缩放程序][aks-cluster-autoscaler]
 - [查看虚拟节点的自动缩放示例][virtual-node-autoscale]
-- [了解有关虚拟库贝莱特开源库的更多内容][virtual-kubelet-repo]
+- [阅读有关虚拟 Kubelet 开放源代码库的详细信息][virtual-kubelet-repo]
 
 <!-- LINKS - external -->
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get

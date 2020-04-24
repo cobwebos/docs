@@ -4,12 +4,12 @@ description: 了解如何启用和查看 Azure Kubernetes 服务 (AKS) 中 Kuber
 services: container-service
 ms.topic: article
 ms.date: 01/03/2019
-ms.openlocfilehash: f759f15cf98546cb95ba0adb5890885f85ca6aa1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 504d6a5216f3345f22a601c4ae084488aeb97c8d
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259378"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82128958"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>启用和查看 Azure Kubernetes 服务 (AKS) 中 Kubernetes 主节点的日志
 
@@ -17,17 +17,17 @@ ms.locfileid: "79259378"
 
 ## <a name="before-you-begin"></a>开始之前
 
-本文要求在 Azure 帐户中运行一个现有的 AKS 群集。 如果没有 AKS 群集，请使用 [Azure CLI][cli-quickstart] 或 [Azure 门户][portal-quickstart]创建一个群集。 Azure Monitor 日志适用于支持 RBAC 和不支持 RBAC 的 AKS 群集。
+本文要求在 Azure 帐户中运行一个现有的 AKS 群集。 如果还没有 AKS 群集，请使用 [Azure CLI][cli-quickstart] 或 [Azure 门户][portal-quickstart]创建一个。 Azure Monitor 日志适用于支持 RBAC 和不支持 RBAC 的 AKS 群集。
 
-## <a name="enable-diagnostics-logs"></a>启用诊断日志
+## <a name="enable-resource-logs"></a>启用资源日志
 
-为帮助收集和审查来自多个源的数据，Azure Monitor 日志提供了查询语言和分析引擎，该引擎可提供环境的见解。 工作区用于整理和分析数据，并可与 Application Insights 和安全中心等其他 Azure 服务集成。 若要使用不同的平台分析日志，可以选择将诊断日志发送到 Azure 存储帐户或事件中心。 有关详细信息，请参阅[什么是 Azure Monitor 日志？][log-analytics-overview]。
+为帮助收集和审查来自多个源的数据，Azure Monitor 日志提供了查询语言和分析引擎，该引擎可提供环境的见解。 工作区用于整理和分析数据，并可与 Application Insights 和安全中心等其他 Azure 服务集成。 若要使用其他平台分析日志，可以改为选择将资源日志发送到 Azure 存储帐户或事件中心。 有关详细信息，请参阅[什么是 Azure Monitor 日志？][log-analytics-overview]。
 
 Azure Monitor 日志是在 Azure 门户中启用和管理的。 若要为 AKS 群集中的 Kubernetes 主组件启用日志收集，请在 Web 浏览器中打开 Azure 门户并完成以下步骤：
 
 1. 选择 AKS 群集的资源组，例如 *myResourceGroup*。 不要选择包含单个 AKS 群集资源的资源组，例如 *MC_myResourceGroup_myAKSCluster_eastus*。
 1. 在左侧选择“诊断设置”。****
-1. 选择 AKS 群集（如*myAKS群集*），然后选择**添加诊断设置**。
+1. 选择 AKS 群集（如*myAKSCluster*），然后选择 "**添加诊断设置**"。
 1. 输入名称（例如 myAKSClusterLogs**），然后选择“发送到 Log Analytics”选项。****
 1. 选择现有工作区或者创建新的工作区。 如果创建工作区，请提供工作区名称、资源组和位置。
 1. 在可用日志列表中，选择要启用的日志。 常见日志包括 kube-apiserver**、kube-controller-manager** 和 kube-scheduler**。 你可以启用其他日志，例如 kube-audit** 和 cluster-autoscaler**。 启用 Log Analytics 工作区后，可以返回并更改收集的日志。
@@ -71,7 +71,7 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>查看收集的日志
 
-可能需要等待几分钟，诊断日志才会启用并显示在 Log Analytics 工作区中。 在 Azure 门户中，选择日志分析工作区的资源组（如*myResourceGroup），* 然后选择日志分析资源（如*myAKSLogs*）。
+可能需要等待几分钟，诊断日志才会启用并显示在 Log Analytics 工作区中。 在 Azure 门户中，选择 Log Analytics 工作区的资源组（例如*myResourceGroup*），然后选择 Log Analytics 资源，如*myAKSLogs*。
 
 ![选择 AKS 群集的 Log Analytics 工作区](media/view-master-logs/select-log-analytics-workspace.png)
 
@@ -98,18 +98,18 @@ AzureDiagnostics
 
 若要查看其他日志，可将针对 *Category* 名称的查询更新为 *kube-controller-manager* 或 *kube-scheduler*，具体取决于启用的其他日志。 然后，可以使用附加的 *where* 语句来具体化要查找的事件。
 
-有关如何查询和筛选日志数据的详细信息，请参阅[查看或分析使用日志分析日志搜索收集的数据][analyze-log-analytics]。
+有关如何查询和筛选日志数据的详细信息，请参阅[查看或分析利用 log analytics 日志搜索收集的数据][analyze-log-analytics]。
 
 ## <a name="log-event-schema"></a>日志事件架构
 
 为帮助分析日志数据，下表详细说明了用于每个事件的架构：
 
-| 字段名               | 描述 |
+| 字段名               | 说明 |
 |--------------------------|-------------|
-| *资源 Id*             | 生成日志的 Azure 资源 |
-| *时间*                   | 上传日志的时间戳 |
-| *类别*               | 生成日志的容器/组件的名称 |
-| *操作名称*          | Always *Microsoft.ContainerService/managedClusters/diagnosticLogs/Read* |
+| *resourceId*             | 生成日志的 Azure 资源 |
+| *time*                   | 上传日志的时间戳 |
+| *category*               | 生成日志的容器/组件的名称 |
+| *operationName*          | Always *Microsoft.ContainerService/managedClusters/diagnosticLogs/Read* |
 | *properties.log*         | 来自组件的日志的完整文本 |
 | *properties.stream*      | *stderr* 或 *stdout* |
 | *properties.pod*         | 日志的来源 pod 名称 |
@@ -117,7 +117,7 @@ AzureDiagnostics
 
 ## <a name="log-roles"></a>日志角色
 
-| 角色                     | 描述 |
+| Role                     | 说明 |
 |--------------------------|-------------|
 | *aksService*             | 审核日志中控制平面操作的显示名称（来自 hcpService） |
 | *masterclient*           | 审核日志中 MasterClientCertificate（通过 az aks get-credentials 获得的证书）的显示名称 |

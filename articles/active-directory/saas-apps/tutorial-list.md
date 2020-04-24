@@ -1,6 +1,6 @@
 ---
-title: SSO 和 SCIM 预配用于 Azure AD 的 SaaS 应用集成教程 |Microsoft Docs
-description: 配置 Azure Active Directory 单一登录（SSO）和 SCIM 预配与各种第三方软件即服务应用程序的集成。
+title: 有关与 Azure AD 结合使用的 SaaS 应用集成教程 | Microsoft Docs
+description: 将与各种第三方软件的 Azure Active Directory 单一登录集成配置为服务应用程序。
 services: active-directory
 documentationcenter: ''
 author: jeevansd
@@ -12,23 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/22/2019
+ms.date: 10/10/2019
 ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 267efd103c3cfdca1aa6d3db10977bac9739f641
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: be265eee32a739bdfc2d4c3b746e01cd0c5ec06a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274452"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "82130012"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>用于将 SaaS 应用程序与 Azure Active Directory 集成的教程
 
 为了帮助将支持云的[服务型软件(SaaS)](https://azure.microsoft.com/overview/what-is-saas/) 应用程序与 Azure Active Directory 集成，我们制作了一系列教程用于演示配置。
 
-有关已预先集成到 Azure AD 中的所有 SaaS 应用的列表，请参阅 [Active Directory 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)。 单击[此处](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)以请求将应用添加到应用程序库。 
+有关已预先集成到 Azure AD 中的所有 SaaS 应用的列表，请参阅 [Active Directory 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)。
+
+使用[应用程序网络门户](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)，请求将启用[SCIM](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)的应用程序添加到库中，以实现自动预配，或将启用 SAML/OIDC 的应用程序添加到 SSO 的库。
 
 ## <a name="quick-links"></a>快速链接
 
@@ -37,7 +39,7 @@ ms.locfileid: "72274452"
 | ![徽标](./media/tutorial-list/active-directory-saas-atlassian-cloud-tutorial.png)| [Atlassian Cloud](atlassian-cloud-tutorial.md)| [Atlassian 云-用户预配](atlassian-cloud-provisioning-tutorial.md)|
 | ![徽标](./media/tutorial-list/active-directory-saas-servicenow-tutorial.png)| [ServiceNow](servicenow-tutorial.md)|[ServiceNow - 用户预配](servicenow-provisioning-tutorial.md)|
 | ![徽标](./media/tutorial-list/active-directory-saas-slack-tutorial.png)| [Slack](slack-tutorial.md)|[Slack - 用户预配](slack-provisioning-tutorial.md)|
-| ![徽标](./media/tutorial-list/active-directory-saas-successfactors-tutorial.png)| [SuccessFactors](successfactors-tutorial.md)| |
+| ![徽标](./media/tutorial-list/active-directory-saas-successfactors-tutorial.png)| [SuccessFactors](successfactors-tutorial.md)| [SuccessFactors-用户预配](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-successfactors-inbound-provisioning-tutorial) |
 | ![徽标](./media/tutorial-list/active-directory-saas-workday-tutorial.png)| [Workday](workday-tutorial.md)| [Workday - 用户预配](workday-inbound-tutorial.md)|
 
 若要查找更多教程，请使用左侧的目录。
@@ -56,16 +58,53 @@ ms.locfileid: "72274452"
 
 | 徽标 | 有关单一登录的应用程序教程 |        |
 | :--- | :--- | :--- |
+| ![徽标](./media/tutorial-list/active-directory-saas-acquireio-tutorial.png)| [AcquireIO](acquireio-tutorial.md)|      |
+| ![徽标](./media/tutorial-list/active-directory-saas-aha-tutorial.png)| [Aha!](aha-tutorial.md)|      |
 | ![徽标](./media/tutorial-list/active-directory-saas-alertops-tutorial.png)| [AlertOps](alertops-tutorial.md)|      |
-| ![徽标](./media/tutorial-list/active-directory-saas-arcgisenterprise-tutorial.png)| [ArcGIS 企业](arcgisenterprise-tutorial.md)|     |
+| ![徽标](./media/tutorial-list/active-directory-saas-amplitude-tutorial.png)| [Amplitude](amplitude-tutorial.md)|      |
+| ![徽标](./media/tutorial-list/active-directory-saas-appraisd-tutorial.png)| [Appraisd](appraisd-tutorial.md)|      |
+| ![徽标](./media/tutorial-list/active-directory-saas-arcgisenterprise-tutorial.png)| [ArcGIS Enterprise](arcgisenterprise-tutorial.md)|     |
 | ![徽标](./media/tutorial-list/active-directory-saas-atlassian-cloud-tutorial.png)| [Atlassian Cloud](atlassian-cloud-tutorial.md)|     |
+| ![徽标](./media/tutorial-list/active-directory-saas-carbonite-endpoint-backup-tutorial.png)| [Carbonite Endpoint Backup](carbonite-endpoint-backup-tutorial.md)|     |
+| ![徽标](./media/tutorial-list/active-directory-saas-cakehr-tutorial.png)| [CakeHR](cakehr-tutorial.md)|     |
+| ![徽标](./media/tutorial-list/active-directory-saas-deskradar-tutorial.png)| [Deskradar](deskradar-tutorial.md)|     |
 | ![徽标](./media/tutorial-list/active-directory-saas-displayr-tutorial.png)| [Displayr](displayr-tutorial.md)|     |
+| ![徽标](./media/tutorial-list/active-directory-saas-dmarcian-tutorial.png)| [dmarcian](dmarcian-tutorial.md)|     |
+| ![徽标](./media/tutorial-list/active-directory-saas-docusign-tutorial.png)| [DocuSign](docusign-tutorial.md)|     |
+| ![徽标](./media/tutorial-list/active-directory-saas-dome9arc-tutorial.png)| [Dome9 Arc](dome9arc-tutorial.md)|     |
+| ![徽标](./media/tutorial-list/active-directory-saas-drift-tutorial.png)| [Drift](drift-tutorial.md)|     |
 | ![徽标](./media/tutorial-list/active-directory-saas-dropboxforbusiness-tutorial.png)| [Dropbox for Business](dropboxforbusiness-tutorial.md)|    |
+| ![徽标](./media/tutorial-list/active-directory-saas-elium-tutorial.png)| [Elium](elium-tutorial.md)|     |
+| ![徽标](./media/tutorial-list/active-directory-saas-envoy-tutorial.png)| [Envoy](envoy-tutorial.md)|     |
+| ![徽标](./media/tutorial-list/active-directory-saas-evernote-tutorial.png)| [Evernote](evernote-tutorial.md)|     |
+| ![徽标](./media/tutorial-list/active-directory-saas-expensein-tutorial.png)| [ExpenseIn](expensein-tutorial.md)|     |
+| ![徽标](./media/tutorial-list/active-directory-saas-foodee-tutorial.png)| [Foodee](foodee-tutorial.md)|     |
 | ![徽标](./media/tutorial-list/active-directory-saas-freedcamp-tutorial.png)| [Freedcamp](freedcamp-tutorial.md)|     |
 | ![徽标](./media/tutorial-list/active-directory-saas-freshservice-tutorial.png)| [Freshservice](freshservice-tutorial.md)|     |
+| ![徽标](./media/tutorial-list/active-directory-saas-harness-tutorial.png)| [Harness](harness-tutorial.md)|     |
+| ![徽标](./media/tutorial-list/active-directory-saas-helpscout-tutorial.png)| [Help Scout](helpscout-tutorial.md)|     |
+| ![徽标](./media/tutorial-list/active-directory-saas-hightail-tutorial.png)| [Hightail](hightail-tutorial.md)|     |
+| ![徽标](./media/tutorial-list/active-directory-saas-hrworks-single-sign-on-tutorial.png)| [HRworks Single Sign-On](hrworks-single-sign-on-tutorial.md)|     |
 | ![徽标](./media/tutorial-list/active-directory-saas-jamfprosamlconnector-tutorial.png)| [Jamf Pro](jamfprosamlconnector-tutorial.md)|     |
-| ![徽标](./media/tutorial-list/active-directory-saas-knowlwdge-anywhere-lms-tutorial.png)| [了解随处 LMS](knowledge-anywhere-lms-tutorial.md)|     |
+| ![徽标](./media/tutorial-list/active-directory-saas-kanbanize-tutorial.png)| [Kanbanize](kanbanize-tutorial.md)|     |
+| ![徽标](./media/tutorial-list/active-directory-saas-knowlwdge-anywhere-lms-tutorial.png)| [Knowledge Anywhere LMS](knowledge-anywhere-lms-tutorial.md)|     |
+| ![徽标](./media/tutorial-list/active-directory-saas-mondaycom-tutorial.png)| [monday.com](mondaycom-tutorial.md)|       |
+| ![徽标](./media/tutorial-list/active-directory-saas-myworkdrive-tutorial.png)| [MyWorkDrive](myworkdrive-tutorial.md)|       |
+| ![徽标](./media/tutorial-list/active-directory-saas-nuclino-tutorial.png)| [Nuclino](nuclino-tutorial.md)|       |
+| ![徽标](./media/tutorial-list/active-directory-saas-people-tutorial.png)| [人员](people-tutorial.md)|       |
+| ![徽标](./media/tutorial-list/active-directory-saas-purelyhr-tutorial.png)| [PurelyHR](purelyhr-tutorial.md)|       |
+| ![徽标](./media/tutorial-list/active-directory-saas-ringcentral-tutorial.png)| [RingCentral](ringcentral-tutorial.md)|       |
+| ![徽标](./media/tutorial-list/active-directory-saas-scalex-enterprise-tutorial.png)| [ScaleX Enterprise](scalex-enterprise-tutorial.md)|       |
 | ![徽标](./media/tutorial-list/active-directory-saas-soloinsight-cloudgate-sso-tutorial.png)| [Soloinsight-CloudGate SSO](soloinsight-cloudgate-sso-tutorial.md)|       |
+| ![徽标](./media/tutorial-list/active-directory-saas-target-process-tutorial.png)| [TargetProcess](target-process-tutorial.md)|       |
+| ![徽标](./media/tutorial-list/active-directory-saas-teamphoria-tutorial.png)| [Teamphoria](teamphoria-tutorial.md)|       |
+| ![徽标](./media/tutorial-list/active-directory-saas-textmagic-tutorial.png)| [TextMagic](textmagic-tutorial.md)|       |
+| ![徽标](./media/tutorial-list/active-directory-saas-velpicsaml-tutorial.png)| [Velpic SAML](velpicsaml-tutorial.md)|       |
+| ![徽标](./media/tutorial-list/active-directory-saas-wandera-tutorial.png)| [Wandera](wandera-tutorial.md)|       |
+| ![徽标](./media/tutorial-list/active-directory-saas-watch-by-colors-tutorial.png)| [Watch by Colors](watch-by-colors-tutorial.md)|       |
+| ![徽标](./media/tutorial-list/active-directory-saas-waywedo-tutorial.png)| [Way We Do](waywedo-tutorial.md)|       |
+| ![徽标](./media/tutorial-list/active-directory-saas-workplacebyfacebook-tutorial.png)| [Workplace by Facebook](workplacebyfacebook-tutorial.md)|       |
+| ![徽标](./media/tutorial-list/active-directory-saas-workteam-tutorial.png)| [Workteam](workteam-tutorial.md)|       |
 | ![徽标](./media/tutorial-list/active-directory-saas-xaitporter-tutorial.png)| [XaitPorter](xaitporter-tutorial.md)|       |
 | ![徽标](./media/tutorial-list/active-directory-saas-yodeck-tutorial.png)| [Yodeck](yodeck-tutorial.md)|        |
 | ![徽标](./media/tutorial-list/active-directory-saas-zendesk-tutorial.png)| [Zendesk](zendesk-tutorial.md)|        |
@@ -73,7 +112,7 @@ ms.locfileid: "72274452"
 | ![徽标](./media/tutorial-list/active-directory-saas-zscaler-beta-tutorial.png)| [Zscaler Beta](zscaler-beta-tutorial.md)|       |
 | ![徽标](./media/tutorial-list/active-directory-saas-zscaler-one-tutorial.png)| [Zscaler One](zscaler-one-tutorial.md)|       |
 | ![徽标](./media/tutorial-list/active-directory-saas-zscalerprivateaccess-tutorial.png)| [Zscaler Private Access (ZPA)](zscalerprivateaccess-tutorial.md)|        |
-| ![徽标](./media/tutorial-list/active-directory-saas-zscaler-three-tutorial.png)| [Zscaler 3](zscaler-three-tutorial.md)|       |
+| ![徽标](./media/tutorial-list/active-directory-saas-zscaler-three-tutorial.png)| [Zscaler Three](zscaler-three-tutorial.md)|       |
 | ![徽标](./media/tutorial-list/active-directory-saas-zscaler-two-tutorial.png)| [Zscaler Two](zscaler-two-tutorial.md)|        |
 | ![徽标](./media/tutorial-list/active-directory-saas-zscaler-zscloud-tutorial.png)| [Zscaler ZSCloud](zscaler-zscloud-tutorial.md)|         |
 

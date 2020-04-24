@@ -4,12 +4,12 @@ description: 介绍如何删除资源组和资源。 它介绍删除资源组时
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: db56cf0897cd90f1e6e51199032d0d9712530f1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c03296f8bec24da1fc85bae14e91ca742054d02
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274016"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82136475"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure 资源管理器资源组和资源删除
 
@@ -54,11 +54,14 @@ ms.locfileid: "79274016"
 
 对于其他错误代码，它会将删除操作视为失败。
 
+> [!IMPORTANT]
+> 删除资源组不可逆。
+
 ## <a name="delete-resource-group"></a>删除资源组
 
 使用以下方法之一删除资源组。
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name ExampleResourceGroup
@@ -74,7 +77,7 @@ az group delete --name ExampleResourceGroup
 
 1. 在[门户](https://portal.azure.com)中，选择要删除的资源组。
 
-1. 选择“删除资源组”****。
+1. 选择“删除资源组”  。
 
    ![删除资源组](./media/delete-resource-group/delete-group.png)
 
@@ -86,7 +89,7 @@ az group delete --name ExampleResourceGroup
 
 使用以下方法之一删除资源。
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Remove-AzResource `
@@ -108,7 +111,7 @@ az resource delete \
 
 1. 在[门户](https://portal.azure.com)中，选择要删除的资源。
 
-1. 选择 **"删除**"。 以下屏幕截图显示了虚拟机的管理选项。
+1. 选择“删除”。  以下屏幕截图显示了虚拟机的管理选项。
 
    ![删除资源](./media/delete-resource-group/delete-resource.png)
 

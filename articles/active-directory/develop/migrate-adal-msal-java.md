@@ -1,5 +1,5 @@
 ---
-title: ADAL 到 MSAL 迁移指南 （MSAL4j） |蔚蓝
+title: ADAL 到 MSAL 的迁移指南（MSAL4j） |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何将 Azure Active Directory 身份验证库 (ADAL) Java 应用迁移到 Microsoft 身份验证库 (MSAL)。
 services: active-directory
@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev
-ms.openlocfilehash: 7ba845e79074313f0ccf2c066ba016bd72d46efe
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 7729a30acb1b191378960887164bb4b32e225c36
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81534561"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82128008"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>适用于 Java 的 ADAL 到 MSAL 迁移指南
 
@@ -29,9 +29,9 @@ ms.locfileid: "81534561"
 
 MSAL 提供以下优势：
 
-- 由于它使用较新的 Microsoft 标识平台终结点，因此可以通过 Azure AD 业务对使用者 （B2C） 对更广泛的 Microsoft 标识（如 Azure AD 标识、Microsoft 帐户以及社交和本地帐户）进行身份验证。
+- 由于它使用较新的 Microsoft 标识平台终结点，因此你可以通过 Azure AD 企业到消费者（B2C）来验证一组更广泛的 Microsoft 标识，如 Azure AD 标识、Microsoft 帐户以及社交和本地帐户。
 - 用户将获得最佳单一登录体验。
-- 您的应用程序可以启用增量同意，并且支持条件访问更容易。
+- 你的应用程序可以启用增量许可，并支持条件性访问。
 
 MSAL for Java 是我们建议用于 Microsoft 标识平台的身份验证库。 我们不会对 ADAL4J 实现任何新的功能。 今后我们的所有努力都重在改进 MSAL。
 
@@ -42,6 +42,10 @@ MSAL for Java 是我们建议用于 Microsoft 标识平台的身份验证库。 
 ## <a name="scopes-not-resources"></a>范围不是资源
 
 ADAL4J 获取资源的令牌，而 MSAL for Java 则是获取范围的令牌。 许多 MSAL for Java 类需要 scopes 参数。 此参数是一个字符串列表，这些字符串声明所需的权限和请求的资源。 请参阅 [Microsoft Graph 的范围](https://docs.microsoft.com/graph/permissions-reference)查看示例范围。
+
+可以将`/.default`范围后缀添加到资源中，以帮助将应用从 v2.0 终结点（ADAL）迁移到 Microsoft 标识平台终结点（MSAL）。 例如，对于的资源值`https://graph.microsoft.com`，等效的作用域值为。 `https://graph.microsoft.com/.default`  如果资源不是 URL 格式，而是窗体`XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX`的资源 ID，则仍可以使用范围值。 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default`
+
+有关不同类型的作用域的详细信息，请参阅[Microsoft 标识平台中的权限和许可](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)和[接受 V1.0 令牌的 Web API 的范围](https://docs.microsoft.com/azure/active-directory/develop/msal-v1-app-scopes)。
 
 ## <a name="core-classes"></a>核心类
 
@@ -76,15 +80,15 @@ MSAL for Java 添加了[令牌缓存](msal-acquire-cache-tokens.md)，在可能�
 
 在 v1.0 中，如果你使用 `https://login.microsoftonline.com/common` 颁发机构，则用户可以使用任何 Azure Active Directory (AAD) 帐户（适用于任何组织）登录。
 
-如果您在 v2.0 中使用权限`https://login.microsoftonline.com/common`，用户可以与任何 AAD 组织，甚至 Microsoft 个人帐户 （MSA） 登录。 在 MSAL for Java 中，若要限制登录到任何 AAD 帐户，则需要使用 `https://login.microsoftonline.com/organizations` 颁发机构（与 ADAL4J 中的行为相同）。 若要指定颁发机构，请在创建 `PublicClientApplication` 类时，在 [PublicClientApplication.Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) 方法中设置 `authority` 参数。
+如果你使用的`https://login.microsoftonline.com/common`是 v2.0 中的权限，则用户可以使用任何 AAD 组织，甚至 Microsoft 个人帐户（MSA）登录。 在 MSAL for Java 中，若要限制登录到任何 AAD 帐户，则需要使用 `https://login.microsoftonline.com/organizations` 颁发机构（与 ADAL4J 中的行为相同）。 若要指定颁发机构，请在创建 `PublicClientApplication` 类时，在 [PublicClientApplication.Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) 方法中设置 `authority` 参数。
 
 ## <a name="v10-and-v20-tokens"></a>v1.0 和 v2.0 令牌
 
 v1.0 终结点（由 ADAL 使用）只发出 v1.0 令牌。
 
-v2.0 终结点（由 MSAL 使用）可以发出 v1.0 和 v2.0 令牌。 Web API 应用程序清单的属性使开发人员能够选择接受哪个版本的令牌。 请参阅`accessTokenAcceptedVersion`[应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)参考文档。
+v2.0 终结点（由 MSAL 使用）可以发出 v1.0 和 v2.0 令牌。 使用 web API 的应用程序清单的属性，开发人员可以选择接受的令牌版本。 请`accessTokenAcceptedVersion`参阅[应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)参考文档中的。
 
-有关 v1.0 和 v2.0 令牌的详细信息，请参阅[Azure 活动目录访问令牌](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)。
+有关1.0 和 v2.0 令牌的详细信息，请参阅[Azure Active Directory 访问令牌](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)。
 
 ## <a name="adal-to-msal-migration"></a>ADAL 到 MSAL 的迁移
 
