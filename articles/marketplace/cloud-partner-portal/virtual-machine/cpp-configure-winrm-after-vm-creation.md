@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 虚拟机创建后配置 WinRM |Azure 应用商店
+title: 创建 Azure 虚拟机后配置 WinRM |Azure Marketplace
 description: 介绍了在创建 Azure 托管虚拟机后如何配置 Windows 远程管理 (WinRM)。
 author: dsindona
 ms.service: marketplace
@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: dsindona
-ms.openlocfilehash: b80325594eedb87293c31de3236bb4690eb89e05
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 3a67371ce6f951a9e446ab639ea5b59248b79565
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273012"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82144137"
 ---
 # <a name="configure-winrm-after-virtual-machine-creation"></a>在创建虚拟机后配置 WinRM
 
 > [!IMPORTANT]
-> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 虚拟机产品的管理移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照创建 Azure[虚拟机产品/服务](https://aka.ms/CreateAzureVMoffer)中的说明进行操作，以管理迁移的优惠。
+> 从2020年4月13日开始，我们将开始将 Azure 虚拟机产品/服务的管理转移到合作伙伴中心。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[创建 Azure 虚拟机产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)中的说明来管理迁移的产品/服务。
 
 本文介绍了如何配置现有 Azure 托管虚拟机 (VM) 以启用基于 HTTPS 的 WinRM。  此配置仅适用于基于 Windows 的 VM，并且需要完成下面的两步过程：
 
@@ -27,9 +27,9 @@ ms.locfileid: "81273012"
 
 ## <a name="enabling-port-traffic"></a>启用端口流量
 
-WINRM 超过 HTTPS 协议使用端口 5986，默认情况下，在 Azure 应用商店上提供的预先配置的 Windows VM 上不会启用端口 5986。 若要启用此协议，请使用以下步骤通过 [Azure 门户](https://portal.azure.com)向网络安全组 (NSG) 中添加一个新规则。  有关 NSG 的详细信息，请参阅[安全组](https://docs.microsoft.com/azure/virtual-network/security-overview)。
+WinRM over HTTPS 协议使用端口5986，默认情况下，在 Azure Marketplace 中提供的预配置 Windows Vm 上不启用此端口。 若要启用此协议，请使用以下步骤通过 [Azure 门户](https://portal.azure.com)向网络安全组 (NSG) 中添加一个新规则。  有关 NSG 的详细信息，请参阅[安全组](https://docs.microsoft.com/azure/virtual-network/security-overview)。
 
-1. 导航到刀片**虚拟机>**   < *vm 名称*>  **> 设置/网络**。
+1. 导航到边栏选项卡**虚拟机 >**   <" *vm-名称*>   **> 设置/网络**"。
 2. 单击 NSG 名称（在此示例中为 **testvm11002**）以显示其属性：
 
     ![网络安全组属性](./media/nsg-properties.png)

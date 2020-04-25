@@ -1,5 +1,5 @@
 ---
-title: 为 Azure 应用商店创建与 Azure 兼容的 VHD
+title: 为 Azure Marketplace 创建与 Azure 兼容的 VHD
 description: 介绍如何为 Azure 市场中的虚拟机套餐创建 VHD。
 author: dsindona
 ms.service: marketplace
@@ -7,22 +7,22 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: dsindona
-ms.openlocfilehash: 99d2bc95c1dd837bfc3bcabcead28777b7e6f746
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 642c6964aaad8d6e8750fca67efb11eb3feaf19d
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273930"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147012"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>创建与 Azure 兼容的 VHD
 
 > [!IMPORTANT]
-> 从 2020 年 4 月 13 日开始，我们将开始向合作伙伴中心移动 Azure 虚拟机产品/ 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照创建 Azure[虚拟机技术资产](https://aka.ms/AzureVMTechAsset)中的说明进行操作，以管理迁移的优惠。
+> 从2020年4月13日开始，我们将开始向合作伙伴中心提供 Azure 虚拟机的移动管理。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[创建 Azure 虚拟机技术资产](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)中的说明来管理迁移的产品/服务。
 
 本文详细介绍为 Azure 市场中的虚拟机 (VM) 套餐创建虚拟硬盘 (VHD) 所要执行的步骤。  此外，还包含各项操作的最佳做法，例如，使用远程桌面协议 (RDP)、选择 VM 大小、安装最新的 Windows 更新，以及通用化 VHD 映像。  以下部分侧重于基于 Windows 的 VHD；有关创建基于 Linux 的 VHD 的详细信息，请参阅 [Azure 认可的 Linux 分发版](../../../virtual-machines/linux/endorsed-distros.md)。 
 
 > [!WARNING]
-> 强烈建议遵照本主题中的指导，使用 Azure 创建包含预配置的认可操作系统的 VM。  如果这与解决方案不兼容，则可以使用经批准的操作系统创建和配置本地 VM。  然后可以根据[准备好要上传到 Azure 的 Windows VHD 或 VHDX](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image) 中所述，对此 VM 进行配置并准备好上传。
+> 强烈建议遵照本主题中的指导，使用 Azure 创建包含预配置的认可操作系统的 VM。  如果这与你的解决方案不兼容，则可以使用已批准的操作系统创建和配置本地 VM。  然后可以根据[准备好要上传到 Azure 的 Windows VHD 或 VHDX](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image) 中所述，对此 VM 进行配置并准备好上传。
 
 
 ## <a name="select-an-approved-base"></a>选择批准的基础映像
@@ -30,8 +30,8 @@ ms.locfileid: "81273930"
 若要开始，请基于 Microsoft Azure 门户中的以下映像创建 VM：
 
 -    Windows Server（[2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016)、[2012 R2 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)、[2012 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)、[2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)）
--    [SQL 服务器 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) （企业， 标准， Web）
--    [SQL 服务器 2012 SP2（](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance)企业、标准、Web）
+-    [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) （Enterprise、Standard、Web）
+-    [SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) （企业版、标准版、Web 版）
 
 > [!TIP]
 > 如果使用最新 Azure 门户或 PowerShell，则在 2014 年 9 月 8 日及以后发布的 Windows Server 映像已得到批准。
@@ -52,7 +52,7 @@ Azure 还提供一系列已批准的 Linux 分发版。  有关最新列表，�
 
 5. 选择适当的虚拟映像后，提供以下值：
    * 在“基本信息”边栏选项卡中，输入虚拟机的**名称**（1-15 个字母数字字符）。**** （本示例使用 `DemoVm009`。）
-   * 输入**用户名**和强**密码**，用于在 VM 上创建本地帐户。  （此处`adminUser`使用。 密码必须长 8-123 个字符，并满足以下四个复杂性要求中的三个：一个小写字符、一个大写字符、一个数字和一个特殊字符。 有关详细信息，请参阅[用户名和密码要求](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-faq#what-are-the-username-requirements-when-creating-a-vm)。
+   * 输入**用户名**和强**密码**，用于在 VM 上创建本地帐户。  （使用`adminUser`此处。） 密码长度必须为8-123 个字符，并且必须满足以下四个复杂性要求中的3个：1个小写字符、1个大写字符、1个数字和1个特殊字符。 有关详细信息，请参阅[用户名和密码要求](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-faq#what-are-the-username-requirements-when-creating-a-vm)。
    * 选择创建的资源组（此处为 `DemoResourceGroup`）。
    * 选择 Azure 数据中心的**位置**（此处为 `West US`）。
    * 单击“确定”以保存这些值。**** 
@@ -64,7 +64,7 @@ Azure 还提供一系列已批准的 Linux 分发版。  有关最新列表，�
 
    ![新 VM 的“大小”边栏选项卡](./media/publishvm_015.png)
 
-7. 在“设置”边栏选项卡中，将“使用托管磁盘”选项设置为“否”。************  这样，便可以手动管理新 VHD。 （"**设置"** 边栏选项卡还允许您更改存储和网络选项的其他更改，例如，在**磁盘类型**中选择**高级 （SSD）。** 单击 **"确定"** 以继续。
+7. 在“设置”边栏选项卡中，将“使用托管磁盘”选项设置为“否”。************  这样，便可以手动管理新 VHD。 （"**设置**" 边栏选项卡还允许您更改其他更改存储和网络选项，例如，在 "**磁盘类型**" 中选择 "**高级（SSD）** "。） 单击 **"确定"** 继续。
 
     ![新 VM 的“设置”边栏选项卡](./media/publishvm_016.png)
 

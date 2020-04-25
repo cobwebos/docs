@@ -1,5 +1,5 @@
 ---
-title: Azure VHD 部署模板 |Azure 应用商店
+title: Azure VHD 部署模板 |Azure Marketplace
 description: 列出从用户虚拟硬盘部署新的 Azure 虚拟机所需的 Azure 资源管理器模板。
 author: dsindona
 ms.service: marketplace
@@ -7,19 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 506412c23288d58c2f59b91a300265ddd79428bf
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: f3e3dc6e0d73627f49ba04a8b861253bafcddfa9
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273913"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148053"
 ---
 # <a name="virtual-hard-disk-deployment-template"></a>虚拟硬盘部署模板
 
 > [!IMPORTANT]
-> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 虚拟机产品的管理移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[Azure VM 映像认证](https://aks.ms/CertifyVMimage)中的说明来管理迁移的优惠。
+> 从2020年4月13日开始，我们将开始将 Azure 虚拟机产品/服务的管理转移到合作伙伴中心。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[AZURE VM 映像证书](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-image-certification)中的说明来管理迁移的产品/服务。
 
-以下 Azure 资源管理器模板定义从本地虚拟硬盘 (VHD) 创建的新 Azure 虚拟机 (VM) 实例。  [从用户 VHD 部署 Azure VM](./cpp-deploy-vm-user-image.md) 一文中使用了此模板。 
+以下 Azure 资源管理器模板定义从本地虚拟硬盘 (VHD) 创建的新 Azure 虚拟机 (VM) 实例。  [从用户 VHD 部署 Azure VM](./cpp-deploy-vm-user-image.md) 一文中使用了此模板。
 
 ```json
 {

@@ -1,5 +1,5 @@
 ---
-title: 发布 Azure 容器映像产品 /服务 |Azure 应用商店
+title: 发布 Azure 容器映像产品/服务 |Azure Marketplace
 description: 如何发布 Azure 容器产品/服务。
 author: dsindona
 ms.service: marketplace
@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: dsindona
-ms.openlocfilehash: 8003bf1cb7905d5decf8a6267ea397f1b2c01222
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 58e096a3b25b16e54cf2f18935dcf4a2d44cd767
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270156"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146215"
 ---
 # <a name="publish-container-offer"></a>发布容器产品/服务
 
 > [!IMPORTANT]
-> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 容器产品的管理移动到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照["创建 Azure 容器产品/服务](https://aka.ms/CreateContainerOffer)"中的说明进行操作，以管理迁移的优惠。
+> 从2020年4月13日开始，我们开始将 Azure 容器产品/服务的管理转移到合作伙伴中心。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[创建 Azure 容器服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer)中的说明来管理迁移的产品/服务。
 
  使用“新建产品/服务”**** 页创建新产品/服务后，可以发布该产品/服务。 选择“发布”启动发布过程。****
 
@@ -30,11 +30,11 @@ ms.locfileid: "81270156"
 下表介绍了每个发布步骤。 还给出了完成每个步骤的估计时间。
 
 
-|  **发布步骤**           | **时间**    | **说明**                                                            |
+|  **发布步骤**           | **时间**    | **描述**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
 | 验证先决条件         | 15 分钟   | 验证套餐信息和套餐设置。                        |
 | 认证                  | 1 周 | Azure 认证团队对套餐进行分析。 针对病毒、恶意软件、安全合规性和安全问题对产品/服务进行扫描。 检查产品/服务，以了解它是否满足所有资格条件。 有关详细信息，请参阅[先决条件](./cpp-prerequisites.md)和[准备技术资产](./cpp-create-technical-assets.md)。 如果发现了问题，则提供反馈。 |
-| 打包 | 1 小时  | 产品/服务的技术资产打包供客户使用，并配置和设置引线系统。 |
+| 打包 | 1 小时  | 产品/服务的技术资产已打包供客户使用，并已配置并设置了线索系统。 |
 |  发布者签核             |  -        | 最终发布者在套餐上线之前进行复查和确认。 可以在所选订阅（在套餐信息步骤中）中部署套餐，以验证它是否符合所有要求。  选择“上线”，使套餐可以转移到下一步骤。**** |
 | 打包                 | 1 小时 | 在市场生产系统和区域中复制最终的产品/服务。 | 
 | 实时                           | 4 天 |发布套餐，将其复制到所需的区域，并使其可供公众使用。 |

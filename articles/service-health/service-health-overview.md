@@ -3,12 +3,12 @@ title: 服务运行状况概述 | Microsoft Docs
 description: 有关当前和将来的 Azure 服务问题及维护对 Azure 应用造成的影响的个性化信息。
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 280be9f0df1f94dad59c1af147d499860571f86e
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 2d98a909a45c9dd00b3174f495a15cd18ced11f9
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82097245"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146914"
 ---
 # <a name="service-health-overview"></a>服务运行状况概述
 
@@ -42,9 +42,15 @@ ms.locfileid: "82097245"
 
 ![管理服务问题 - 影响](./media/service-health-overview/azure-service-health-overview-4.png)
 
+## <a name="see-emerging-issues-which-may-impact-your-services"></a>查看可能影响你的服务的新兴问题
+
+在某些情况下，在向受影响的客户发送目标通信之前，可以将广泛的服务问题发布到[Azure 状态页](https://status.azure.com)。 为了确保 Azure 服务运行状况提供可能影响你的问题的综合视图，在服务运行状况*中，会*出现活动的 azure 状态页问题。 当某个事件在 Azure 状态页上处于活动状态时，服务运行状况中会出现一个新兴的问题横幅。 单击标题，查看问题的完整详细信息。
+
+![新兴服务问题](./media/service-health-overview/azure-service-health-emerging-issue.png)
+
 ## <a name="get-links-and-downloadable-explanations"></a>获取链接和可下载的说明 
 
-可以获取要在问题管理系统中使用的问题链接。 可以下载 PDF 文件（有时是 CSV 文件），以便与无法访问 Azure 门户的人员共享。   
+可以获取要在问题管理系统中使用的问题链接。 您可以下载 PDF 和有时是 CSV 文件，与无权访问 Azure 门户的人员共享。   
 
 ![管理服务问题 - 问题管理](./media/service-health-overview/azure-service-health-overview-3.png)
 
@@ -62,7 +68,7 @@ ms.locfileid: "82097245"
 
 ## <a name="configure-service-health-alerts"></a>配置服务运行状况警报
 
-服务运行状况与 Azure Monitor 集成，当业务关键型资源受到影响时，它可以通过电子邮件、短信和 Webhook 通知发出警报。 针对相应的服务运行状况事件设置活动日志警报。 使用“操作组”将该警报路由到组织中的相应人员。 有关详细信息，请参阅[配置服务运行状况的警报](../azure-monitor/platform/alerts-activity-log-service-notifications.md)
+服务运行状况与 Azure Monitor 集成，当业务关键型资源受到影响时，它可以通过电子邮件、短信和 Webhook 通知发出警报。 针对相应的服务运行状况事件设置活动日志警报。 使用“操作组”将该警报路由到组织中的相应人员。 有关详细信息，请参阅[配置服务运行状况警报](../azure-monitor/platform/alerts-activity-log-service-notifications.md)
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
 

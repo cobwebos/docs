@@ -5,12 +5,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中使用静态
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 3a71666a5391194e63566d61cb2d054eed4e271c
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 27b80b1f0b6728b5ad69edae51f0d42bfac351d0
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82100934"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82145501"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用静态公共 IP 地址创建入口控制器
 
@@ -25,7 +25,7 @@ ms.locfileid: "82100934"
 - [创建使用你自己的 TLS 证书的入口控制器][aks-ingress-own-tls]
 - [创建一个使用 Let's Encrypt 的入口控制器，以自动生成具有动态公共 IP 地址的 TLS 证书][aks-ingress-tls]
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
@@ -62,7 +62,7 @@ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eas
 > 以下示例为名为 *ingress-basic* 的入口资源创建 Kubernetes 命名空间。 根据需要为你自己的环境指定一个命名空间。 如果 AKS 群集未启用 RBAC，请将 `--set rbac.create=false` 添加到 Helm 命令中。
 
 > [!TIP]
-> 若要为对群集中容器的请求启用[客户端源 IP 保留][client-source-ip]，请将 `--set controller.service.externalTrafficPolicy=Local` 添加到 Helm install 命令中。 客户端源 IP 存储在 X-Forwarded-For** 下的请求头中。 使用启用了客户端源 IP 保留的入口控制器时，SSL 传递将不起作用。
+> 若要为对群集中容器的请求启用[客户端源 IP 保留][client-source-ip]，请将 `--set controller.service.externalTrafficPolicy=Local` 添加到 Helm install 命令中。 客户端源 IP 存储在 X-Forwarded-For** 下的请求头中。 使用启用了客户端源 IP 保存的入口控制器时，TLS 传递将不起作用。
 
 使用入口控制器的**IP 地址**和要用于 FQDN 前缀的**唯一名称**更新以下脚本：
 
@@ -287,7 +287,7 @@ certificate.cert-manager.io/tls-secret created
 
 将 web 浏览器打开到 Kubernetes 入口控制器的 FQDN，例如*https://demo-aks-ingress.eastus.cloudapp.azure.com*。
 
-由于这些示例使用 `letsencrypt-staging`，因此浏览器不信任颁发的 SSL 证书。 接受警告提示以继续运行应用程序。 证书信息显示这个*伪 LE 中间 X1* 证书是由 Let's Encrypt 颁发的。 此伪证书指出 `cert-manager` 正确处理了请求并接收了提供程序提供的证书：
+如这些示例所`letsencrypt-staging`示，颁发的 TLS/SSL 证书不受浏览器的信任。 接受警告提示以继续运行应用程序。 证书信息显示这个*伪 LE 中间 X1* 证书是由 Let's Encrypt 颁发的。 此伪证书指出 `cert-manager` 正确处理了请求并接收了提供程序提供的证书：
 
 ![Let's Encrypt 临时证书](media/ingress/staging-certificate.png)
 

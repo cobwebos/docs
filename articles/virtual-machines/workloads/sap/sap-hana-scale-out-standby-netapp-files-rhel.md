@@ -1,6 +1,6 @@
 ---
-title: SAP HANA 扩展，在 RHEL 上使用 Azure NetApp 文件进行待机。微软文档
-description: 红帽企业 Linux 上的 SAP NetWeaver 高可用性指南，用于 SAP 应用程序的 Azure NetApp 文件
+title: 在 RHEL 上通过 Azure NetApp 文件 SAP HANA 扩展Microsoft Docs
+description: 适用于 sap NetWeaver 的高可用性指南，适用于 SAP 应用程序的 Azure NetApp 文件 Red Hat Enterprise Linux
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -13,16 +13,16 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/06/2020
+ms.date: 04/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 78f60cbd20e7801f4af26372884275d7d6782777
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 4c86d7c84ba5d7692e010ad95f258b67aa7dcfac
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754151"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147640"
 ---
-# <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>使用红帽企业 Linux 上的 Azure NetApp 文件，在 Azure VM 上部署具有备用节点的 SAP HANA 横向扩展系统 
+# <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>使用 Red Hat Enterprise Linux 上的 Azure NetApp 文件在 Azure Vm 上使用备用节点部署 SAP HANA 扩展系统 
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
@@ -55,27 +55,27 @@ ms.locfileid: "80754151"
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
 
-本文介绍如何通过将[Azure NetApp 文件](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/)用于共享存储卷，在 Azure 红帽企业 Linux 虚拟机 （VM） 上具有待机状态的横向扩展配置中部署高可用性 SAP HANA 系统。  
+本文介绍了如何使用[Azure NetApp 文件](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/)作为共享存储卷，在 azure Red Hat Enterprise Linux 虚拟机（vm）上使用备用 azure 中的虚拟机（vm）部署扩展配置中的高可用性 SAP HANA 系统。  
 
-在示例配置、安装命令等中，HANA 实例为**03，HANA**系统 ID 为**HN1**。 这些示例基于 SAP 7.6 的 HANA 2.0 SP4 和红帽企业 Linux。 
+在示例配置和安装命令等中，HANA 实例为**03** ，HANA 系统 ID 为**HN1**。 这些示例基于 HANA 2.0 SP4 和 SAP 7.6 Red Hat Enterprise Linux。 
 
-在开始之前，请参阅以下 SAP 说明和文件：
+在开始之前，请参阅以下 SAP 说明和文章：
 
 * [Azure NetApp 文件文档][anf-azure-doc] 
 * SAP 说明[1928533]包括：  
-  * 支持部署 SAP 软件的 Azure VM 大小列表
+  * SAP 软件部署支持的 Azure VM 大小的列表
   * Azure VM 大小的重要容量信息
   * 支持的 SAP 软件、操作系统 (OS) 和数据库组合
-  * 微软 Azure 上 Windows 和 Linux 所需的 SAP 内核版本
-* SAP 说明[2015553]：列出 Azure 中 SAP 支持的 SAP 软件部署的先决条件
-* SAP 说明 [2002167] 已建议为红帽企业 Linux 设置操作系统设置
+  * Microsoft Azure 上的 Windows 和 Linux 所需的 SAP 内核版本
+* SAP 说明[2015553]：列出 AZURE 中 sap 支持的 sap 软件部署的先决条件
+* SAP 说明 [2002167] 为 Red Hat Enterprise Linux 建议使用 OS 设置
 * SAP 说明 [2009879] 包含适用于 Red Hat Enterprise Linux 的 SAP HANA 准则
-* SAP 注释[2178632]：包含有关 Azure 中为 SAP 报告的所有监视指标的详细信息
-* SAP 注释[2191498]： 包含 Azure 中 Linux 所需的 SAP 主机代理版本
-* SAP 注释[2243692]： 包含有关 Azure 中 Linux 上的 SAP 许可的信息
-* SAP 说明[1999351]： 包含用于 SAP 的 Azure 增强监视扩展的其他故障排除信息
-* SAP 说明[1900823]： 包含有关 SAP HANA 存储要求的信息
-* [SAP 社区 Wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes)： 包含 Linux 所需的所有 SAP 笔记
+* SAP 说明[2178632]：包含有关 Azure 中的 SAP 报告的所有监视指标的详细信息
+* SAP 说明[2191498]：包含 Azure 中的 Linux 所需的 SAP 主机代理版本
+* SAP 说明[2243692]：包含有关 Azure 中 Linux 上的 SAP 许可的信息
+* SAP 说明[1999351]：包含适用于 SAP 的 Azure 增强型监视扩展的其他疑难解答信息
+* SAP 说明[1900823]：包含有关 SAP HANA 存储要求的信息
+* [SAP 社区 Wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes)：包含适用于 Linux 的所有必需 SAP 说明
 * [针对 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机部署][deployment-guide]
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
@@ -83,185 +83,185 @@ ms.locfileid: "80754151"
   * [High Availability Add-On Overview](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)（高可用性附加产品概述）
   * [High Availability Add-On Administration](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)（高可用性附加产品管理）
   * [High Availability Add-On 参考](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
-  * [红帽企业 Linux 网络指南](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide)
-* 特定于 Azure 的 RHEL 文档：
+  * [Red Hat Enterprise Linux 网络指南](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide)
+* Azure 特定的 RHEL 文档：
   * [Install SAP HANA on Red Hat Enterprise Linux for Use in Microsoft Azure](https://access.redhat.com/solutions/3193782)（在 Red Hat Enterprise Linux 上安装要在 Microsoft Azure 中使用的 SAP HANA）
-* [使用 Azure NetApp 文件在 Microsoft Azure 上使用 NetApp SAP 应用程序][anf-sap-applications-azure]
+* [使用 Azure NetApp 文件 Microsoft Azure 上的 NetApp SAP 应用程序][anf-sap-applications-azure]
 
 
 ## <a name="overview"></a>概述
 
-实现 HANA 高可用性的一种方法是配置主机自动故障转移。 要配置主机自动故障转移，请将一个或多个虚拟机添加到 HANA 系统，并将其配置为备用节点。 当活动节点发生故障时，备用节点会自动接管。 在 Azure 虚拟机的显示配置中，通过使用[Azure NetApp 文件上的 NFS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/)实现自动故障转移。  
+实现 HANA 高可用性的一种方法是配置主机自动故障转移。 若要配置主机自动故障转移，请将一个或多个虚拟机添加到 HANA 系统，并将其配置为备用节点。 当活动节点发生故障时，备用节点会自动接管。 在 Azure 虚拟机的提供配置中，你可以通过[在 Azure NetApp 文件上使用 NFS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/)来实现自动故障转移。  
 
 > [!NOTE]
-> 备用节点需要访问所有数据库卷。 HANA 卷必须装入 NFSv4 卷。 NFSv4 协议中改进的基于文件租约的锁定机制用于`I/O`屏蔽。 
+> 备用节点需要访问所有数据库卷。 HANA 卷必须装载为 NFSv4 卷。 NFSv4 协议中经过改进的基于文件租约的锁定机制用于进行`I/O`防护。 
 
 > [!IMPORTANT]
-> 要构建支持的配置，必须将 HANA 数据和日志卷部署为 NFSv4.1 卷，并使用 NFSv4.1 协议装载它们。 NFSv3 不支持具有备用节点的 HANA 主机自动故障转移配置。
+> 若要生成受支持的配置，必须将 HANA 数据和日志卷部署为 NFSv 4.1 卷，并使用 NFSv 4.1 协议进行装载。 NFSv3 不支持带有备用节点的 HANA 主机自动故障转移配置。
 
 ![SAP NetWeaver 高可用性概述](./media/sap-hana-high-availability-rhel/sap-hana-scale-out-standby-netapp-files-rhel.png)
 
-在遵循 SAP HANA 网络建议的上图中，三个子网在一个 Azure 虚拟网络中表示： 
-* 用于客户端通信
-* 用于与存储系统通信
-* 用于内部 HANA 节点间通信
+在前面的关系图中，SAP HANA 网络建议后，三个子网会在一个 Azure 虚拟网络中表示： 
+* 有关客户端通信
+* 用于与存储系统进行通信
+* 对于内部 HANA 节点间通信
 
-Azure NetApp 卷位于单独的子网中，[委托给 Azure NetApp 文件](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)。  
+Azure NetApp 卷位于单独的子网中，[委托给 Azure Netapp 文件](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)。  
 
-对于此示例配置，子网是：  
+在此示例配置中，子网为：  
 
   - `client`10.9.1.0/26  
   - `storage`10.9.3.0/26  
   - `hana`10.9.2.0/26  
-  - `anf`10.9.0.0/26（委派子网到 Azure NetApp 文件）
+  - `anf`10.9.0.0/26 （委托子网到 Azure NetApp 文件）
 
 ## <a name="set-up-the-azure-netapp-files-infrastructure"></a>设置 Azure NetApp 文件基础结构 
 
-在继续设置 Azure NetApp 文件基础结构之前，请熟悉 Azure [NetApp 文件文档][anf-azure-doc]。 
+在继续安装 Azure NetApp 文件基础结构之前，请先熟悉[Azure Netapp 文件文档][anf-azure-doc]。 
 
-Azure NetApp 文件在多个[Azure 区域](https://azure.microsoft.com/global-infrastructure/services/?products=netapp)中可用。 检查所选 Azure 区域是否提供 Azure NetApp 文件。  
+Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-infrastructure/services/?products=netapp)中提供。 查看所选 Azure 区域是否提供 Azure NetApp 文件。  
 
-有关 Azure NetApp 文件（按 Azure 区域）的可用性的信息，请参阅[Azure NetApp 文件可用性（按 Azure 区域][anf-avail-matrix]）。  
+有关 azure 区域的 Azure NetApp 文件可用性的信息，请参阅 azure[区域的 Azure Netapp 文件可用性][anf-avail-matrix]。  
 
-在部署 Azure NetApp 文件之前，请通过注册[Azure NetApp 文件说明][anf-register]请求载入 Azure NetApp 文件。 
+部署 Azure NetApp 文件之前，请通过[注册 Azure netapp 文件说明][anf-register]，请求加入 Azure netapp 文件。 
 
 ### <a name="deploy-azure-netapp-files-resources"></a>部署 Azure NetApp 文件资源  
 
-以下说明假定您已部署[Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)。 Azure NetApp 文件资源和 VM（其中将装载 Azure NetApp 文件资源）必须部署在同一 Azure 虚拟网络或对等 Azure 虚拟网络中。  
+以下说明假定你已部署[Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)。 Azure NetApp 文件资源和将在其中装载 Azure NetApp 文件资源的 Vm 必须部署在同一 Azure 虚拟网络或对等互连 Azure 虚拟网络中。  
 
-1. 如果尚未部署资源，请请求载入 Azure [NetApp 文件](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)。  
+1. 如果尚未部署资源，请请求[加入 Azure NetApp 文件](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)。  
 
-2. 按照创建 NetApp 帐户中的说明在所选 Azure 区域中[创建 NetApp 帐户](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account)。  
+2. 按照[创建 netapp 帐户](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account)中的说明，在所选的 Azure 区域中创建一个 netapp 帐户。  
 
-3. 按照[设置 Azure NetApp 文件容量池](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool)中的说明设置 Azure NetApp 文件容量池。  
+3. 按照[设置 Azure Netapp 文件容量池](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool)中的说明设置 Azure netapp 文件容量池。  
 
-   本文中介绍的 HANA 体系结构使用*超服务级别*的单个 Azure NetApp 文件容量池。 对于 Azure 上的 HANA 工作负荷，我们建议使用 Azure NetApp 文件*超或**高级*[服务级别](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)。  
+   本文中提供的 HANA 体系结构在*超服务*级别使用单个 Azure NetApp 文件容量池。 对于 Azure 上的 HANA 工作负荷，建议使用 Azure NetApp 文件*Ultra*或*高级*[服务级别](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)。  
 
-4. 将子网委派给 Azure NetApp 文件，如[将子网委派到 Azure NetApp 文件](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)中的说明中所述。  
+4. 按照将[子网委托给 Azure Netapp 文件](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)中的说明，将子网委托给 Azure netapp 文件。  
 
-5. 按照为[Azure NetApp 文件创建 NFS 卷](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)中的说明部署 Azure NetApp 文件卷。  
+5. 按照[为 Azure Netapp 文件创建 NFS 卷](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)中的说明部署 Azure netapp 文件量。  
 
-   部署卷时，请确保选择**NFSv4.1**版本。 在指定的 Azure NetApp 文件[子网](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)中部署卷。 
+   部署卷时，请确保选择**nfsv 4.1**版本。 在指定的 Azure NetApp 文件[子网](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)中部署卷。 将自动分配 Azure NetApp 卷的 IP 地址。 
    
-   请记住，Azure NetApp 文件资源和 Azure VM 必须位于同一 Azure 虚拟网络或对等 Azure 虚拟网络中。 例如 **，HN1**-data-mnt00001、HN1 -log-mnt00001 等，是卷名称，nfs://10.9.0.4/ **HN1****HN1**-数据-mnt00001、nfs://10.9.0.4/**HN1**-log-mnt00001 等，是 Azure NetApp 文件卷的文件路径。  
+   请记住，Azure NetApp 文件资源和 Azure Vm 必须位于同一个 Azure 虚拟网络中，或者位于对等互连 Azure 虚拟网络中。 例如， **HN1**-Mnt00001、 **HN1**和 mnt00001 等，是卷名称和 nfs://10.9.0.4/**HN1**-data-mnt00001、nfs://10.9.0.4/**HN1**-mnt00001 等，是 Azure NetApp 文件卷的文件路径，等等。  
 
-   * 卷**HN1**-数据 mnt00001 （nfs://10.9.0.4/**HN1**-数据 mnt00001）
-   * 卷**HN1**-数据 mnt00002 （nfs://10.9.0.4/**HN1**-数据 mnt00002）
-   * 卷**HN1**-log-mnt00001 （nfs://10.9.0.4/**HN1**-log mnt00001）
-   * 卷**HN1**-log-mnt0002 （nfs://10.9.0.4/**HN1**-log mnt00002）
-   * 卷**HN1**-共享 （nfs://10.9.0.4/**HN1**-共享）
+   * volume **HN1**-mnt00001 （nfs://10.9.0.4/**HN1**-mnt00001）
+   * volume **HN1**-mnt00002 （nfs://10.9.0.4/**HN1**-mnt00002）
+   * volume **HN1**-mnt00001 （nfs://10.9.0.4/**HN1**-mnt00001）
+   * volume **HN1**-mnt00002 （nfs://10.9.0.4/**HN1**-mnt00002）
+   * volume **HN1**（nfs://10.9.0.4/**HN1**-shared）
    
-   在此示例中，我们为每个 HANA 数据和日志卷使用了单独的 Azure NetApp 文件卷。 要在较小或非生产性系统上进行成本优化的配置，可以将所有数据装载放在单个卷上，并且所有日志都安装在不同的单个卷上。  
+   在此示例中，我们为每个 HANA 数据和日志卷使用了单独的 Azure NetApp 文件量。 对于较小或非生产系统的更具成本优化的配置，可以将所有数据装载到单个卷上，将所有日志装载到不同的单个卷上。  
 
 ### <a name="important-considerations"></a>重要注意事项
 
-在创建 Azure NetApp 文件以使用备用节点方案进行 SAP HANA 横向扩展时，请注意以下重要注意事项：
+使用 "备用节点" 方案创建用于 SAP HANA 扩展的 Azure NetApp 文件时，请注意以下重要事项：
 
-- 最小容量池为 4 字节 （TiB）。  
-- 最小体积大小为 100 GB （GiB）。
-- Azure NetApp 文件和将装载 Azure NetApp 文件卷的所有虚拟机必须位于同一 Azure 虚拟网络中或同一区域中的[对等虚拟网络中](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)。  
-- 所选虚拟网络必须具有委派给 Azure NetApp 文件的子网。
-- Azure NetApp 文件卷的吞吐量是卷配额和服务级别的函数，如[Azure NetApp 文件的服务级别](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)中所述。 调整 HANA Azure NetApp 卷的量量时，请确保生成的吞吐量满足 HANA 系统要求。  
-- 使用 Azure NetApp 文件[导出策略](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)，可以控制允许的客户端、访问类型（读写、只读等）。 
-- Azure NetApp 文件功能尚未区域感知。 目前，该功能未部署在 Azure 区域中的所有可用性区域中。 请注意某些 Azure 区域的潜在延迟影响。  
+- 最小容量池为 4 tib （TiB）。  
+- 最小卷大小为 100 gb （GiB）。
+- Azure NetApp 文件以及将在其中装入 Azure NetApp 文件的所有虚拟机必须位于同一区域中的同一 Azure 虚拟网络或[对等互连虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)中。  
+- 所选虚拟网络必须具有委托给 Azure NetApp 文件的子网。
+- Azure NetApp 文件量的吞吐量是卷配额和服务级别的功能，如[Azure NetApp 文件的服务级别](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)中所述。 当调整 HANA Azure NetApp 卷的大小时，请确保生成的吞吐量符合 HANA 系统要求。  
+- 使用 Azure NetApp 文件[导出策略](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)，可以控制允许的客户端、访问类型（读写、只读，等等）。 
+- Azure NetApp 文件功能尚未识别区域。 目前，该功能未部署在 Azure 区域中的所有可用性区域中。 请注意某些 Azure 区域中潜在的延迟影响。  
 
 > [!IMPORTANT]
-> 对于 SAP HANA 工作负载，低延迟至关重要。 与 Microsoft 代表合作，确保虚拟机和 Azure NetApp 文件卷在接近的地方部署。  
+> 对于 SAP HANA 工作负荷，低延迟是至关重要的。 与你的 Microsoft 代表合作，以确保虚拟机和 Azure NetApp 文件卷在接近邻近性时进行部署。  
 
-### <a name="sizing-for-hana-database-on-azure-netapp-files"></a>Azure NetApp 文件上的 HANA 数据库的尺寸
+### <a name="sizing-for-hana-database-on-azure-netapp-files"></a>在 Azure NetApp 文件上调整 HANA 数据库的大小
 
-Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azure NetApp 文件的服务级别](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)中所述。 
+Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，如[Azure Netapp 文件的服务级别](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)中所述。 
 
-在 Azure 中为 SAP 设计基础结构时，请注意 SAP 的一些最低存储要求，这转化为最低吞吐量特征：
+在 Azure 中设计 SAP 基础结构时，请注意 SAP 所需的一些最低存储要求，这些要求转换为最小吞吐量特征：
 
-- 在 /hana/log 上读取写入，每秒 250 MB （MB/s），具有 1-MB I/O 大小。  
-- 读取 16 MB 和 64 MB I/O 大小的 /hana/数据至少 400 MB/s 的活动。  
-- 使用 16 MB 和 64 MB I/O 大小为 /hana/数据写入至少 250 MB/s 的活动。 
+- 每秒250兆字节/秒（MB/s）/hana/log 的读写，大小为 1 MB。  
+- 对于 16 MB 和 64-MB i/o 大小的/hana/data，至少读取 400 MB/s 的活动。  
+- 对于具有 16 MB 和 64-MB i/o 大小的/hana/data，至少 250 MB/s 的写入活动。 
 
-[Azure NetApp 文件吞吐量限制](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)每 1 TiB 的卷配额是：
-- 高级存储层 - 64 MiB/s  
-- 超存储层 - 128 MiB/s  
+每 1 TiB 的卷配额的[Azure NetApp 文件吞吐量限制](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)如下：
+- 高级存储层-64 MiB/秒  
+- 超存储层-128 MiB/秒  
 
-为了满足 SAP 数据和日志的最低吞吐量要求以及 /hana/共享的准则，建议的大小是：
+为了满足数据和日志的 SAP 最小吞吐量要求以及/hana/shared 的准则，建议的大小为：
 
 | 数据量(Volume) | 大小<br>高级存储层 | 大小<br>超存储层 | 支持的 NFS 协议 |
 | --- | --- | --- | --- |
-| /哈纳/日志/ | 4 TiB | 2 TiB | v4.1 |
-| /hana/data | 6.3 TiB | 3.2 TiB | v4.1 |
-| /hana/shared | 每 4 个辅助节点 1xRAM | 每 4 个辅助节点 1xRAM | v3 或 v4.1 |
+| /hana/log | 4 TiB | 2 TiB | 4。1 |
+| /hana/data | 6.3 TiB | 3.2 TiB | 4。1 |
+| /hana/shared | 每4个工作节点1xRAM | 每4个工作节点1xRAM | v3 或4。1 |
 
-使用 Azure NetApp 文件超存储层，本文中介绍的布局的 SAP HANA 配置是：
+本文使用 Azure NetApp 文件 Ultra 存储层提供的布局的 SAP HANA 配置如下：
 
 | 数据量(Volume) | 大小<br>超存储层 | 支持的 NFS 协议 |
 | --- | --- | --- |
-| /哈纳/日志/mnt00001 | 2 TiB | v4.1 |
-| /哈纳/日志/mnt00002 | 2 TiB | v4.1 |
-| /哈纳/数据/mnt00001 | 3.2 TiB | v4.1 |
-| /哈纳/数据/mnt00002 | 3.2 TiB | v4.1 |
-| /hana/shared | 2 TiB | v3 或 v4.1 |
+| /hana/log/mnt00001 | 2 TiB | 4。1 |
+| /hana/log/mnt00002 | 2 TiB | 4。1 |
+| /hana/data/mnt00001 | 3.2 TiB | 4。1 |
+| /hana/data/mnt00002 | 3.2 TiB | 4。1 |
+| /hana/shared | 2 TiB | v3 或4。1 |
 
 > [!NOTE]
-> 此处列出的 Azure NetApp 文件大小调整建议旨在满足 SAP 为其基础结构提供程序建议的最低要求。 在实际的客户部署和工作负载方案中，这些大小可能不够。 将这些建议作为起点，并根据特定工作负载的要求进行调整。  
+> 此处所述的 Azure NetApp 文件大小调整建议旨在满足 SAP 为其基础结构提供商建议的最低要求。 在实际的客户部署和工作负载情况下，这些大小可能不够用。 使用这些建议作为起点并根据具体工作负载的要求进行调整。  
 
 > [!TIP]
-> 您可以动态调整 Azure NetApp 文件卷的大小，而无需*卸载*卷、停止虚拟机或停止 SAP HANA。 此方法允许灵活性，以满足应用程序的预期和意外吞吐量需求。
+> 你可以动态调整 Azure NetApp 文件卷的大小，而无需*卸载*卷、停止虚拟机或停止 SAP HANA。 这种方法可以灵活地满足应用程序的预期和无法预料的吞吐量需求。
 
 ## <a name="deploy-linux-virtual-machines-via-the-azure-portal"></a>通过 Azure 门户部署 Linux 虚拟机
 
-首先，您需要创建 Azure NetApp 文件卷。 然后执行以下步骤：
-1. 在[Azure 虚拟网络中](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)创建[Azure 虚拟网络子网](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet)。 
-1. 部署 VM。 
-1. 创建其他网络接口，并将网络接口附加到相应的 VM。  
+首先，需要创建 Azure NetApp 文件卷。 然后执行以下步骤：
+1. 在[azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)中创建[azure 虚拟网络子网](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet)。 
+1. 部署 Vm。 
+1. 创建其他网络接口，并将网络接口附加到相应的 Vm。  
 
-   每个虚拟机都有三个网络接口，对应于三个 Azure 虚拟网络子网`client`（`storage`和`hana`。 
+   每个虚拟机都有三个网络接口，分别对应于三个 Azure 虚拟`client`网络`storage`子`hana`网（和）。 
 
-   有关详细信息，请参阅在[Azure 中使用多个网络接口卡创建 Linux 虚拟机](https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics)。  
+   有关详细信息，请参阅[在 Azure 中创建具有多个网络接口卡的 Linux 虚拟机](https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics)。  
 
 > [!IMPORTANT]
-> 对于 SAP HANA 工作负载，低延迟至关重要。 要实现低延迟，请与 Microsoft 代表合作，确保虚拟机和 Azure NetApp 文件卷在接近的地方部署。 当您使用 SAP HANA Azure NetApp 文件[加入新的 SAP HANA 系统](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u)时，提交必要的信息。 
+> 对于 SAP HANA 工作负荷，低延迟是至关重要的。 若要实现低延迟，请与 Microsoft 代表合作，以确保虚拟机和 Azure NetApp 文件卷在接近附近部署。 当你使用 SAP HANA Azure NetApp 文件[加入新 SAP HANA 系统](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u)时，请提交所需的信息。 
  
-接下来的说明假定您已经创建了资源组、Azure 虚拟网络和三个 Azure 虚拟网络子网：`client`和`storage``hana`。 部署 VM 时，请选择客户端子网，以便客户端网络接口是 VM 上的主接口。 您还需要通过存储子网网关配置到 Azure NetApp 文件委派子网的显式路由。 
+以下说明假定你已创建资源组、azure 虚拟网络和三个 azure 虚拟网络子网： `client`、 `storage`和。 `hana` 部署 Vm 时，请选择 "客户端子网"，使客户端网络接口成为 Vm 上的主接口。 还需要通过存储子网网关配置到 Azure NetApp 文件委托子网的显式路由。 
 
 > [!IMPORTANT]
-> 确保您选择的操作系统已针对您正在使用的特定 VM 类型对 SAP HANA 进行了 SAP 认证。 有关这些类型的 SAP HANA 认证 VM 类型和操作系统版本的列表，请访问[SAP HANA 认证的 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)站点。 单击列出的 VM 类型的详细信息，获取该类型支持的 SAP HANA 操作系统版本的完整列表。  
+> 请确保所选择的 OS 是通过 SAP 认证的，以便 SAP HANA 你使用的特定 VM 类型。 有关这些类型的 SAP HANA 认证的 VM 类型和操作系统版本的列表，请参阅[SAP HANA 认证的 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)站点。 单击列出的 VM 类型的详细信息，获取该类型 SAP HANA 支持的 OS 版本的完整列表。  
 
 1. 为 SAP HANA 创建可用性集。 请确保设置最大更新域。  
 
-2. 通过执行以下步骤创建三个虚拟机（hanadb1、hanadb2、hanadb3）：**hanadb1** **hanadb2** **hanadb3**  
+2. 通过执行以下步骤创建三个虚拟机（**hanadb1**、 **hanadb2**、 **hanadb3**）：  
 
-   a. 在 SAP HANA 支持的 Azure 库中使用红帽企业 Linux 映像。 在本示例中，我们使用 RHEL-SAP-HA 7.6 图像。  
+   a. 使用 SAP HANA 支持的 Azure 库中的 Red Hat Enterprise Linux 映像。 在此示例中，我们使用了 RHEL-SAP-HA 7.6 映像。  
 
-   b. 选择您之前为 SAP HANA 创建的可用性集。  
+   b. 选择之前为 SAP HANA 创建的可用性集。  
 
-   c. 选择客户端 Azure 虚拟网络子网。 选择[加速网络](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)。  
+   c. 选择客户端 Azure 虚拟网络子网。 选择 "[加速网络](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)"。  
 
-   部署虚拟机时，将自动生成网络接口名称。 在这些简单性说明中，我们将引用自动生成的网络接口，这些接口连接到客户端 Azure 虚拟网络子网，作为**hanadb1 客户端****、hanadb2 客户端**和**hanadb3 客户端**。 
+   部署虚拟机时，系统会自动生成网络接口名称。 在这些说明中，为简单起见，我们将引用附加到客户端 Azure 虚拟网络子网的自动生成的网络接口，如**hanadb1**、 **hanadb2**和**hanadb3**。 
 
-3. 为`storage`虚拟网络子网创建三个网络接口，每个虚拟机一个接口（在此示例中为**hanadb1 存储****、hanadb2 存储**和**hanadb3 存储**）。  
+3. 为`storage`虚拟网络子网（在本例中为**hanadb1**、 **hanadb2**和**hanadb3 存储**）创建三个网络接口，分别用于每个虚拟机。  
 
-4. 为`hana`虚拟网络子网创建三个网络接口，每个虚拟机一个接口（在此示例中为**hanadb1-hana、hanadb2-hana**和**hanadb3-hana）。** **hanadb2-hana**  
+4. 为`hana`虚拟网络子网创建三个网络接口，每个虚拟机一个（在此示例中，为**hanadb1**、 **hanadb2**和**hanadb3**）。  
 
-5. 通过执行以下步骤，将新创建的虚拟网络接口附加到相应的虚拟机：  
+5. 执行以下步骤，将新创建的虚拟网络接口附加到相应的虚拟机：  
 
-    a. 转到[Azure 门户](https://portal.azure.com/#home)中的虚拟机。  
+    a. 在[Azure 门户](https://portal.azure.com/#home)中，请参阅虚拟机。  
 
-    b. 在左侧窗格中，选择 **"虚拟机**"。 筛选虚拟机名称（例如**hanadb1），** 然后选择虚拟机。  
+    b. 在左窗格中，选择 "**虚拟机**"。 筛选虚拟机名称（例如， **hanadb1**），然后选择虚拟机。  
 
-    c. 在 **"概述"** 窗格中，选择 **"停止"** 以取消分配虚拟机。  
+    c. 在 "**概述**" 窗格中，选择 "**停止**" 以解除分配虚拟机。  
 
-    d. 选择 **"网络**"，然后附加网络接口。 在**附加网络接口**下拉列表中，为`storage`和`hana`子网选择已创建的网络接口。  
+    d. 选择 "**网络**"，然后连接网络接口。 在 "**附加网络接口**" 下拉列表中，选择已为`storage`和`hana`子网创建的网络接口。  
     
     e. 选择“保存”。  
  
-    f. 对剩余的虚拟机重复步骤 b 到 e（在我们的示例中 **，hanadb2**和**hanadb3）。**
+    f. 对于剩余的虚拟机（在我们的示例中为**hanadb2**和**hanadb3**），重复步骤 b 到 e。
  
-    g. 将虚拟机保留为停止状态。 接下来，我们将为所有新连接的网络接口启用[加速网络](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)。  
+    g. 使虚拟机暂时处于停止状态。 接下来，我们将为所有新连接的网络接口启用[加速网络](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)。  
 
-6. 通过执行以下步骤，为 和`storage``hana`子网的其他网络接口启用加速网络：  
+6. 通过执行以下步骤，为`storage`和`hana`子网的其他网络接口启用加速网络：  
 
-    a. 在[Azure 门户](https://portal.azure.com/#home)中打开[Azure 云外壳](https://azure.microsoft.com/features/cloud-shell/)。  
+    a. 在[Azure 门户](https://portal.azure.com/#home)中打开[Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) 。  
 
-    b. 执行以下命令，为附加网络接口启用加速网络，这些接口连接到`storage`和`hana`子网。  
+    b. 执行以下命令，为附加到`storage`和`hana`子网的其他网络接口启用加速网络。  
 
     <pre><code>
     az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb1-storage</b> --accelerated-networking true
@@ -274,23 +274,23 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
 
     </code></pre>
 
-7. 通过执行以下步骤启动虚拟机：  
+7. 执行以下步骤，启动虚拟机：  
 
-    a. 在左侧窗格中，选择 **"虚拟机**"。 筛选虚拟机名称（例如**hanadb1），** 然后选择它。  
+    a. 在左窗格中，选择 "**虚拟机**"。 筛选虚拟机名称（例如， **hanadb1**），然后选择它。  
 
-    b. 在 **"概述"** 窗格中，选择 **"开始**"。  
+    b. 在 "**概述**" 窗格中，选择 "**启动**"。  
 
 ## <a name="operating-system-configuration-and-preparation"></a>操作系统配置和准备
 
-下一节中的说明用以下内容之一进行预缀：
-* **[A]**： 适用于所有节点
-* **[1]**： 仅适用于节点 1
-* **[2]**： 仅适用于节点 2
-* **[3]**：仅适用于节点 3
+下一节中的说明以下列其中一项为前缀：
+* **[A]**：适用于所有节点
+* **[1]**：仅适用于节点1
+* **[2]**：仅适用于节点2
+* **[3]**：仅适用于节点3
 
-通过执行以下步骤配置和准备操作系统：
+通过执行以下步骤来配置和准备操作系统：
 
-1. **[A]** 维护虚拟机上的主机文件。 包括所有子网的条目。 此示例添加了`/etc/hosts`以下条目。  
+1. **[A]** 维护虚拟机上的主机文件。 包括所有子网的条目。 在此示例中，添加`/etc/hosts`了以下条目。  
 
     <pre><code>
     # Storage
@@ -309,8 +309,8 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
 
 3. **[A]** 添加网络路由，以便与 Azure NetApp 文件的通信通过存储网络接口进行。  
 
-   在此示例中，将用于`Networkmanager`配置其他网络路由。 以下说明假定存储网络接口为`eth1`。  
-   首先，确定设备`eth1`的连接名称。 在此示例中，设备的`eth1`连接名称为`Wired connection 1`。  
+   在此示例中， `Networkmanager`将使用来配置其他网络路由。 以下说明假定存储网络接口是`eth1`。  
+   首先，确定设备`eth1`的连接名称。 在此示例中，设备`eth1`的连接名称`Wired connection 1`为。  
 
     <pre><code>
     # Execute as root
@@ -321,7 +321,7 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
     #Wired connection 1  4b0789d1-6146-32eb-83a1-94d61f8d60a7  ethernet  eth1
     </code></pre>
 
-   然后通过`eth1`配置到 Azure NetApp 文件委派网络的其他路由。  
+   然后通过`eth1`将其他路由配置为委托网络的 Azure NetApp 文件。  
 
     <pre><code>
     # Add the following route 
@@ -337,7 +337,7 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
     yum install nfs-utils
     </code></pre>
 
-3. **[A]** 准备操作系统，以便使用 NFS 在 Azure NetApp 上运行 SAP HANA，如[使用 Azure NetApp 文件在 Microsoft Azure 上的 NetApp SAP 应用程序][anf-sap-applications-azure]中所述。 为 NetApp 配置设置创建配置文件 */etc/sysctl.d/netapp-hana.conf。*  
+3. **[A]** 如[使用 azure netapp 文件 Microsoft Azure 上的 NetApp SAP 应用程序][anf-sap-applications-azure]中所述，准备好使用 NFS 在 Azure netapp 上运行 SAP HANA 的操作系统。 为 NetApp 配置设置创建配置文件 */etc/sysctl.d/netapp-hana.conf* 。  
 
     <pre><code>
     vi /etc/sysctl.d/netapp-hana.conf
@@ -356,7 +356,7 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
     net.ipv4.tcp_sack = 1
     </code></pre>
 
-4. **[A]** 创建具有其他优化设置的配置文件 */etc/sysctl.d/ms-az.conf。*  
+4. **[A]** 使用其他优化设置创建配置文件 */etc/sysctl.d/ms-az.conf* 。  
 
     <pre><code>
     vi /etc/sysctl.d/ms-az.conf
@@ -369,7 +369,7 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
     vm.swappiness=10
     </code></pre>
 
-5. **[A]** 使用 Azure NetApp 文件 调整 Sunrpc 设置，如[Microsoft Azure 上的 NetApp SAP 应用程序][anf-sap-applications-azure]中的建议。  
+5. **[A]** 按照[使用 Azure NetApp 文件 Microsoft Azure 上的 NetApp SAP 应用程序][anf-sap-applications-azure]中的建议调整 sunrpc 设置。  
 
     <pre><code>
     vi /etc/modprobe.d/sunrpc.conf
@@ -377,16 +377,16 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
     options sunrpc tcp_max_slot_table_entries=128
     </code></pre>
 
-6. **[A]** 用于 HANA 配置的红帽。
+6. **[A]** 适用于 HANA 配置的 Red Hat。
 
-    配置 RHEL，如 SAP 说明<https://access.redhat.com/solutions/2447641>2292690、2455582、2593824 和 。 [2292690] [2455582] [2593824]
+    配置 RHEL，如 SAP 说明[2292690]、 [2455582]、 [2593824]和<https://access.redhat.com/solutions/2447641>中所述。
 
     > [!NOTE]
-    > 如果安装 HANA 2.0 SP04，则需要按照`compat-sap-c++-7`SAP 说明[2593824]中所述安装软件包，然后才能安装 SAP HANA。 
+    > 如果安装 HANA 2.0 SP04，则需要安装包`compat-sap-c++-7` （如 SAP 说明[2593824]中所述），然后才能安装 SAP HANA。 
 
 ## <a name="mount-the-azure-netapp-files-volumes"></a>装载 Azure NetApp 文件卷
 
-1. **[A]** 为 HANA 数据库卷创建装载点。  
+1. **[A]** 创建 HANA 数据库卷的装入点。  
 
     <pre><code>
     mkdir -p /hana/data/<b>HN1</b>/mnt00001
@@ -397,12 +397,15 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
     mkdir -p /usr/sap/<b>HN1</b>
     </code></pre>
 
-2. **[1]** 在**HN1**共享上为 /usr/sap 创建特定于节点的目录。  
+2. **[1]** 为**HN1**上的/usr/sap 创建节点特定的目录。  
 
     <pre><code>
     # Create a temporary directory to mount <b>HN1</b>-shared
     mkdir /mnt/tmp
+    # if using NFSv3 for this volume, mount with the following command
     mount <b>10.9.0.4</b>:/<b>HN1</b>-shared /mnt/tmp
+    # if using NFSv4.1 for this volume, mount with the following command
+    mount -t nfs -o sec=sys,vers=4.1 <b>10.9.0.4</b>:/<b>HN1</b>-shared /mnt/tmp
     cd /mnt/tmp
     mkdir shared usr-sap-<b>hanadb1</b> usr-sap-<b>hanadb2</b> usr-sap-<b>hanadb3</b>
     # unmount /hana/shared
@@ -410,10 +413,10 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
     umount /mnt/tmp
     </code></pre>
 
-3. **[A]** 验证 NFS 域设置。 确保域配置为默认的 Azure NetApp 文件域，即**`defaultv4iddomain.com`** 映射设置为**无人**。  
+3. **[A]** 验证 NFS 域设置。 请确保将域配置为默认的 Azure NetApp 文件域，即**`defaultv4iddomain.com`** ，映射设置为 "无**人**"。  
 
     > [!IMPORTANT]
-    > 请确保在 VM 上`/etc/idmapd.conf`设置 NFS 域，以匹配 Azure NetApp 文件上的默认**`defaultv4iddomain.com`** 域配置： 。 如果 NFS 客户端（即 VM）上的域配置与 NFS 服务器（即 Azure NetApp 配置）不匹配，则安装在 VM 上的 Azure NetApp 卷上的文件权限将显示为`nobody`。  
+    > 确保在 VM `/etc/idmapd.conf`上设置 NFS 域，使其与 Azure NetApp 文件上的默认域配置匹配： **`defaultv4iddomain.com`**。 如果 NFS 客户端（即 VM）上的域配置与 NFS 服务器（即 Azure NetApp 配置）之间存在不匹配的情况，则在 Vm 上装载的 Azure NetApp 卷上的文件权限将显示为`nobody`。  
 
     <pre><code>
     sudo cat /etc/idmapd.conf
@@ -425,7 +428,7 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
     Nobody-Group = <b>nobody</b>
     </code></pre>
 
-4. **[A]** `nfs4_disable_idmapping`验证 。 应将其设置为**Y**。要创建位于的位置`nfs4_disable_idmapping`的目录结构，请执行装载命令。 您将无法在 /sys/模块下手动创建目录，因为访问是为内核/驱动程序保留的。  
+4. **[A]** 验证`nfs4_disable_idmapping`。 它应设置为**Y**。若要创建所在的目录`nfs4_disable_idmapping`结构，请执行 mount 命令。 由于已为内核/驱动程序保留访问权限，因此无法在/sys/modules 下手动创建目录。  
 
     <pre><code>
     # Check nfs4_disable_idmapping 
@@ -439,7 +442,7 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
     echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
     </code></pre>
 
-   有关如何更改`nfs4_disable_idmapping`参数的更多详细信息，请参阅https://access.redhat.com/solutions/1749883。
+   有关如何更改`nfs4_disable_idmapping`参数的详细信息，请https://access.redhat.com/solutions/1749883参阅。
 
 6. **[A]** 装载共享的 Azure NetApp 文件卷。  
 
@@ -455,7 +458,7 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
     sudo mount -a 
     </code></pre>
 
-7. **[1]** 将节点特定的卷安装在**hanadb1**上。  
+7. **[1]** 在**hanadb1**上装入节点特定的卷。  
 
     <pre><code>
     sudo vi /etc/fstab
@@ -465,7 +468,7 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
     sudo mount -a 
     </code></pre>
 
-8. **[2]** 将节点特定的卷安装在**hanadb2**上。  
+8. **[2]** 在**hanadb2**上装入节点特定的卷。  
 
     <pre><code>
     sudo vi /etc/fstab
@@ -475,7 +478,7 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
     sudo mount -a 
     </code></pre>
 
-9. **[3]** 将节点特定的卷安装在**hanadb3**上。  
+9. **[3]** 在**hanadb3**上装载特定于节点的卷。  
 
     <pre><code>
     sudo vi /etc/fstab
@@ -485,7 +488,7 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
     sudo mount -a 
     </code></pre>
 
-10. **[A]** 验证所有 HANA 卷是否都装载了 NFS 协议版本**NFSv4**。  
+10. **[A]** 验证是否已使用 NFS 协议版本**NFSV4**装载所有 HANA 卷。  
 
     <pre><code>
     sudo nfsstat -m
@@ -507,26 +510,26 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
 
 ## <a name="installation"></a>安装  
 
-在此示例中，使用 Azure 的备用节点在横向扩展配置中部署 SAP HANA，我们使用了 HANA 2.0 SP4。  
+在此示例中，使用 Azure 的备用节点在扩展配置中部署 SAP HANA，我们使用了 HANA 2.0 SP4。  
 
-### <a name="prepare-for-hana-installation"></a>准备 HANA 安装
+### <a name="prepare-for-hana-installation"></a>准备安装 HANA
 
-1. **[A]** 在 HANA 安装之前，设置根密码。 安装完成后，可以禁用根密码。 执行为`root`命令`passwd`。  
+1. **[A]** 安装 HANA 之前，请设置 root 密码。 您可以在安装完成后禁用 root 密码。 Execute as `root`命令`passwd`。  
 
-2. **[1]** 验证您可以通过 SSH 登录到**hanadb2**和**hanadb3，** 而无需提示输入密码。  
+2. **[1]** 验证是否可以通过 SSH 登录到**hanadb2**和**hanadb3**，而不会提示输入密码。  
 
     <pre><code>
     ssh root@<b>hanadb2</b>
     ssh root@<b>hanadb3</b>
     </code></pre>
 
-3. **[A]** 安装 HANA 2.0 SP4 所需的其他软件包。 有关详细信息，请参阅 SAP 说明[2593824](https://launchpad.support.sap.com/#/notes/2593824)。 
+3. **[A]** 安装 HANA 2.0 SP4 所需的其他包。 有关详细信息，请参阅 SAP 说明[2593824](https://launchpad.support.sap.com/#/notes/2593824)。 
 
     <pre><code>
     yum install libgcc_s1 libstdc++6 compat-sap-c++-7 libatomic1 
     </code></pre>
 
-4. **[2]，[3]** 将 SAP HANA `data` `log`和目录的所有权更改为**hn1**adm。   
+4. **[2]，[3]** 将 SAP HANA `data`和`log`目录的所有权更改为**hn1**adm。   
 
     <pre><code>
     # Execute as root
@@ -534,7 +537,7 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
     sudo chown hn1adm:sapsys /hana/log/<b>HN1</b>
     </code></pre>
 
-5. **[A]** 暂时禁用防火墙，以便它不会干扰 HANA 安装。 完成 HANA 安装后，您可以重新启用它。 
+5. **[A]** 暂时禁用防火墙，使其不会干扰 HANA 安装。 在 HANA 安装完成后，可以重新启用它。 
    <pre><code>
     # Execute as root
     systemctl stop firewalld
@@ -543,50 +546,50 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
 
 ### <a name="hana-installation"></a>HANA 安装
 
-1. **[1]** 按照[SAP HANA 2.0 安装和更新指南](https://help.sap.com/viewer/2c1988d620e04368aa4103bf26f17727/2.0.04/en-US/7eb0167eb35e4e2885415205b8383584.html)中的说明安装 SAP HANA。 在此示例中，我们使用主节点、一个辅助节点和一个备用节点安装 SAP HANA 横向扩展。  
+1. **[1]** 按照[SAP HANA 2.0 安装和更新指南](https://help.sap.com/viewer/2c1988d620e04368aa4103bf26f17727/2.0.04/en-US/7eb0167eb35e4e2885415205b8383584.html)中的说明安装 SAP HANA。 在此示例中，我们将安装 master、一个辅助角色和一个备用节点 SAP HANA 扩展。  
 
-   a. 从 HANA 安装软件目录中启动**hdblcm**程序。 使用`internal_network`参数并传递子网的地址空间，该子网用于内部 HANA 节点间通信。  
+   a. 从 HANA 安装软件目录启动**hdblcm**程序。 使用`internal_network`参数并传递子网的地址空间，用于内部 HANA 节点间通信。  
 
     <pre><code>
     ./hdblcm --internal_network=10.9.2.0/26
     </code></pre>
 
-   b. 在提示符处，输入以下值：
+   b. 在提示符下，输入以下值：
 
-     * 对于**选择操作**：输入**1（** 用于安装）
-     * 对于**用于安装的其他组件**：输入**2、3**
-     * 对于安装路径：按 Enter（默认为 /hana/共享）
-     * 对于**本地主机名**：按 Enter 接受默认值
-     * 在 **"是否要将主机添加到系统？"：** 输入**y**
-     * 对于逗**号分隔主机名要添加**： 输入**hanadb2，hanadb3**
-     * 对于**根用户名**[根]：按 Enter 接受默认值
-     * 对于主机 hanadb2 的角色：输入**1（** 对于工作人员）
-     * 对于主机 hanadb2 的**主机故障转移组**[默认值]：按 Enter 接受默认值
-     * 对于主机 hanadb2 [<>]<assign automatically>的**存储分区编号**：按 Enter 接受默认值
-     * 对于主机 hanadb2 [默认]**的工作人员组**：按 Enter 接受默认值
-     * 对于主机 hanadb3**的选定角色**：输入**2（** 用于待机）
-     * 对于主机 hanadb3 的**主机故障转移组**[默认]：按 Enter 接受默认值
-     * 对于主机 hanadb3 [默认]**的工作人员组**：按 Enter 接受默认值
+     * 对于 "**选择操作**"：输入**1** （用于安装）
+     * 对于**安装的其他组件**：输入**2、3**
+     * 对于安装路径：按 Enter （默认为/hana/shared）
+     * 对于**本地主机名**：按 enter 接受默认值
+     * 在 "**是否要将主机添加到系统？**：输入**y** "
+     * **要添加逗号分隔的主机名**：输入**hanadb2、hanadb3**
+     * 对于**Root 用户名**[root]：按 enter 接受默认值
+     * 对于主机 hanadb2 的角色：输入**1** （适用于辅助角色）
+     * 对于主机 hanadb2 的**主机故障转移组**[默认值]：按 enter 接受默认值
+     * 对于主机 hanadb2 的**存储分区号**[<<assign automatically>>]：按 enter 接受默认值
+     * 对于主机 hanadb2 的**辅助角色组**[默认值]：按 enter 接受默认值
+     * 对于 "主机 hanadb3 的**Select 角色**"：输入**2** （用于备用）
+     * 对于主机 hanadb3 的**主机故障转移组**[默认值]：按 enter 接受默认值
+     * 对于主机 hanadb3 的**辅助角色组**[默认值]：按 enter 接受默认值
      * 对于**SAP HANA 系统 ID**：输入**HN1**
-     * 对于**实例编号**[00]： 输入**03**
-     * 对于**本地主机辅助角色组**[默认]：按 Enter 接受默认值
-     * 对于**选择系统使用情况 / 输入索引 [4]**： 输入**4** （用于自定义）
-     * 有关**数据卷的位置**[/hana/数据/HN1]：按 Enter 接受默认值
-     * 有关**日志卷的位置**[/哈纳/日志/HN1]：按 Enter 接受默认值
-     * 对于**限制最大内存分配？** [n]： 输入**n**
-     * 对于**主机 hanadb1 的证书主机名称1** [hanadb1]：按 Enter 接受默认值
-     * 对于**主机 hanadb2 的证书主机名称2** [hanadb2]：按 Enter 接受默认值
-     * 对于**主机 hanadb3 的证书主机名称3** [hanadb3]：按 Enter 接受默认值
-     * 对于**系统管理员 （hn1adm） 密码**：输入密码
+     * 对于**实例号**[00]：输入**03**
+     * 对于**本地主机辅助角色组**[默认值]：按 enter 接受默认值
+     * 对于 "**选择系统使用情况/输入索引 [4]**：输入**4** （对于自定义）"
+     * 对于**数据卷的位置**[/hana/data/HN1]：按 enter 以接受默认值
+     * 对于**日志卷的位置**[/hana/log/HN1]：按 enter 以接受默认值
+     * 是否**限制最大内存分配？** [n]：输入**n**
+     * 对于 Host hanadb1 [hanadb1] 的**证书主机名**：按 enter 以接受默认值
+     * 对于 Host hanadb2 [hanadb2] 的**证书主机名**：按 enter 以接受默认值
+     * 对于 Host hanadb3 [hanadb3] 的**证书主机名**：按 enter 以接受默认值
+     * 对于**系统管理员（hn1adm）密码**：输入密码
      * 对于**系统数据库用户（系统）密码**：输入系统的密码
-     * 对于**确认系统数据库用户（系统）密码**：输入系统的密码
-     * 对于**计算机重新启动后的重新启动系统？** [n]： 输入**n** 
-     * 对于**是否要继续 （y/n）：** 验证摘要，如果一切看起来良好，请输入**y**
+     * 对于 "**确认系统数据库用户（系统）" 密码**：输入系统的密码
+     * **计算机重启后是否重新启动系统？** [n]：输入**n** 
+     * 对于 "**是否要继续（y/n）**：验证摘要" 和 "如果一切正常"，请输入**y**
 
 
-2. **[1]** 验证全局  
+2. **[1]** 验证 global.asa  
 
-   显示全局.ini，并确保内部 SAP HANA 节点间通信的配置到位。 验证**通信**部分。 它应具有`hana`子网的地址空间，并且`listeninterface`应设置为`.internal`。 验证**internal_hostname_resolution**部分。 它应具有属于子网的 HANA 虚拟机的`hana`IP 地址。  
+   显示 global .ini，并确保内部 SAP HANA 节点间通信的配置已就位。 验证**通信**部分。 它应该具有`hana`子网的地址空间，并且`listeninterface`应设置为。 `.internal` 验证**internal_hostname_resolution**部分。 它应该具有属于`hana`子网的 HANA 虚拟机的 IP 地址。  
 
    <pre><code>
     sudo cat /usr/sap/<b>HN1</b>/SYS/global/hdb/custom/config/global.ini
@@ -601,7 +604,7 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
     <b>10.9.2.6</b> = <b>hanadb3</b>
    </code></pre>
 
-3. **[1]** 添加主机映射以确保客户端 IP 地址用于客户端通信。 添加`public_host_resolution`节 ，并从客户端子网添加相应的 IP 地址。  
+3. **[1]** 添加主机映射，以确保客户端 IP 地址用于客户端通信。 添加部分`public_host_resolution`，并从客户端子网添加相应的 IP 地址。  
 
    <pre><code>
     sudo vi /usr/sap/HN1/SYS/global/hdb/custom/config/global.ini
@@ -619,7 +622,7 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
     sudo -u <b>hn1</b>adm /usr/sap/hostctrl/exe/sapcontrol -nr <b>03</b> -function StartSystem HDB
    </code></pre>
 
-5. **[1]** 验证客户端接口是否将使用子网中的`client`IP 地址进行通信。  
+5. **[1]** 验证客户端接口是否将使用`client`子网中的 IP 地址进行通信。  
 
    <pre><code>
     # Execute as hn1adm
@@ -630,7 +633,7 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
     "<b>hanadb1</b>","net_publicname","<b>10.9.1.5</b>"
    </code></pre>
 
-   有关如何验证配置的信息，请参阅 SAP 注释[2183363 - SAP HANA 内部网络的配置](https://launchpad.support.sap.com/#/notes/2183363)。  
+   有关如何验证配置的信息，请参阅 SAP 说明[2183363-配置 SAP HANA 内部网络](https://launchpad.support.sap.com/#/notes/2183363)。  
 
 5. **[A]** 重新启用防火墙。  
    - 停止 HANA
@@ -644,10 +647,10 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
         systemctl enable firewalld
        </code></pre>
 
-   - 打开必要的防火墙端口
+   - 打开所需的防火墙端口
 
        > [!IMPORTANT]
-       > 创建防火墙规则以允许 HANA 节点间通信和客户端流量。 [所有 SAP 产品的 TCP/IP 端口](https://help.sap.com/viewer/ports)上均列出了所需端口。 以下命令只是一个示例。 在这种情况下，使用系统编号为 03。
+       > 创建防火墙规则以允许 HANA 节点之间的通信和客户端流量。 [所有 SAP 产品的 TCP/IP 端口](https://help.sap.com/viewer/ports)上均列出了所需端口。 以下命令只是一个示例。 在此方案中，使用了系统号03。
 
        <pre><code>
         # Execute as root
@@ -695,37 +698,37 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
         sudo firewall-cmd --zone=public --add-port=30302/tcp
        </code></pre>
 
-   - 开始 HANA
+   - 启动 HANA
        <pre><code>
         sudo -u <b>hn1</b>adm /usr/sap/hostctrl/exe/sapcontrol -nr <b>03</b> -function StartSystem HDB
        </code></pre>
 
-6. 要优化基础 Azure NetApp 文件存储的 SAP HANA，设置以下 SAP HANA 参数：
+6. 若要优化基础 Azure NetApp 文件存储的 SAP HANA，请设置以下 SAP HANA 参数：
 
    - `max_parallel_io_requests`**128**
-   - `async_read_submit`**上**
-   - `async_write_submit_active`**上**
-   - `async_write_submit_blocks`**所有**
+   - `async_read_submit` **on**
+   - `async_write_submit_active` **on**
+   - `async_write_submit_blocks`**全部**
 
-   有关详细信息，请参阅使用[Azure NetApp 文件 在 Microsoft Azure 上的 NetApp SAP 应用程序][anf-sap-applications-azure]。 
+   有关详细信息，请参阅[使用 Azure NetApp 文件 Microsoft Azure 上的 NETAPP SAP 应用程序][anf-sap-applications-azure]。 
 
-   从 SAP HANA 2.0 系统开始，您可以在 中`global.ini`设置参数。 有关详细信息，请参阅 SAP 说明[1999930](https://launchpad.support.sap.com/#/notes/1999930)。  
+   从 SAP HANA 2.0 系统开始，你可以在中`global.ini`设置参数。 有关详细信息，请参阅 SAP 说明[1999930](https://launchpad.support.sap.com/#/notes/1999930)。  
    
-   对于 SAP HANA 1.0 系统版本 SPS12 和更早版本，可以在安装过程中设置这些参数，如 SAP 说明[2267798](https://launchpad.support.sap.com/#/notes/2267798)中所述。  
+   对于 SAP HANA 1.0 systems SPS12 及更早版本，可以在安装过程中设置这些参数，如 SAP 说明[2267798](https://launchpad.support.sap.com/#/notes/2267798)中所述。  
 
-7. Azure NetApp 文件使用的存储具有 16 TB 的文件大小限制。 SAP HANA 不会隐式地意识到存储限制，并且在达到 16 TB 的文件大小限制时，它不会自动创建新的数据文件。 当 SAP HANA 尝试将文件扩展到 16 TB 以上时，该尝试将导致错误，并最终导致索引服务器崩溃。 
+7. Azure NetApp 文件使用的存储的文件大小限制为 16 tb。 SAP HANA 不会隐式识别存储限制，在达到 16 TB 的文件大小限制时，它不会自动创建新的数据文件。 随着 SAP HANA 尝试将文件增长到超过 16 TB，此尝试将导致错误，并最终导致索引服务器崩溃。 
 
    > [!IMPORTANT]
-   > 为防止 SAP HANA 尝试将数据文件增长到超出存储子系统[的 16 TB 限制](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-resource-limits)，在 中`global.ini`设置以下参数。  
+   > 若要防止 SAP HANA 尝试增长超过[16 TB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-resource-limits)存储子系统限制的数据文件，请在中`global.ini`设置以下参数。  
    > - datavolume_striping = true
    > - datavolume_striping_size_gb = 15000 有关详细信息，请参阅 SAP 说明[2400005](https://launchpad.support.sap.com/#/notes/2400005)。
-   > 请注意 SAP 注释[2631285](https://launchpad.support.sap.com/#/notes/2631285)。 
+   > 请注意 SAP 说明[2631285](https://launchpad.support.sap.com/#/notes/2631285)。 
 
 ## <a name="test-sap-hana-failover"></a>测试 SAP HANA 故障转移 
 
 1. 模拟 SAP HANA 辅助节点上的节点崩溃。 请执行以下操作： 
 
-   a. 在模拟节点崩溃之前，将以下命令运行为**hn1**dm 以捕获环境状态：  
+   a. 在模拟节点崩溃之前，请运行以下命令作为**hn1**adm 来捕获环境状态：  
 
    <pre><code>
     # Check the landscape status
@@ -748,13 +751,13 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
     hanadb3, 3, 50313, 50314, 0.3, HDB|HDB_STANDBY, GREEN
    </code></pre>
 
-   b. 要模拟节点崩溃，在辅助节点上运行以下命令作为根，在这种情况下为**hanadb2：**  
+   b. 若要模拟节点崩溃，请在辅助角色节点上以 root 身份运行以下命令，在本例中为**hanadb2** ：  
    
    <pre><code>
     echo b > /proc/sysrq-trigger
    </code></pre>
 
-   c. 监视系统故障转移完成情况。 故障转移完成后，捕获状态，该状态应如下所示：  
+   c. 监视系统故障转移完成。 故障转移完成后，请捕获状态，如下所示：  
 
     <pre><code>
     # Check the instance status
@@ -777,11 +780,11 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
    </code></pre>
 
    > [!IMPORTANT]
-   > 当节点遇到内核死机时，通过`kernel.panic`*在所有*HANA 虚拟机上设置为 20 秒，避免 SAP HANA 故障转移的延迟。 配置在 中`/etc/sysctl`完成。 重新启动虚拟机以激活更改。 如果未执行此更改，则当节点遇到内核死机时，故障转移可能需要 10 分钟或更长时间。  
+   > 节点遇到内核死机时，通过在*所有*HANA 虚拟机上`kernel.panic`设置为20秒来避免 SAP HANA 故障转移的延迟。 此配置在中`/etc/sysctl`完成。 重新启动虚拟机以激活更改。 如果未执行此更改，则当某个节点遇到内核死机时，故障转移可能需要10分钟或更长时间。  
 
-2. 通过执行以下操作终止名称服务器：
+2. 通过执行以下操作来终止名称服务器：
 
-   a. 在测试之前，通过将以下命令作为**hn1**adm 来检查环境的状态：  
+   a. 在测试之前，请通过运行以下命令作为**hn1**adm 来检查环境的状态：  
 
    <pre><code>
     #Landscape status 
@@ -803,13 +806,13 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
     hanadb1, 3, 50313, 50314, 0.3, HDB|HDB_WORKER, GREEN
    </code></pre>
 
-   b. 在活动主节点上以**hn1**dm 身份运行以下命令，在这种情况下，该节点为**hanadb1：**  
+   b. 在活动主节点上作为**hn1**adm 运行以下命令，在本例中为**hanadb1** ：  
 
     <pre><code>
         hn1adm@hanadb1:/usr/sap/HN1/HDB03> HDB kill
     </code></pre>
     
-    备用节点**hanadb3**将接管主节点。 以下是故障转移测试完成后的资源状态：  
+    备用节点**hanadb3**将作为主节点接管。 下面是故障转移测试完成后的资源状态：  
 
     <pre><code>
      # Check the instance status
@@ -831,13 +834,13 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
      | hanadb3 | yes    | info   |          |        |         0 |         1 | default  | default  | master 3   | master     | standby     | master      | standby | worker  | default | default |
     </code></pre>
 
-   c. 重新启动**hanadb1**上的 HANA 实例（即在同一虚拟机上，其中名称服务器已终止）。 **hanadb1**节点将重新加入环境，并将保留其备用角色。  
+   c. 重新启动**hanadb1** （即，在已终止名称服务器的同一虚拟机上）的 HANA 实例。 **Hanadb1**节点将重新加入环境，并保留其备用角色。  
 
    <pre><code>
     hn1adm@hanadb1:/usr/sap/HN1/HDB03> HDB start
    </code></pre>
 
-   在**HANadb1**上启动 SAP HANA 后，预期状态如下：  
+   在**hanadb1**上开始 SAP HANA 后，将需要以下状态：  
 
    <pre><code>
     # Check the instance status
@@ -859,13 +862,13 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
     | hanadb3 | yes    | info   |          |        |         0 |         1 | default  | default  | master 3   | master     | standby     | master      | standby | worker  | default | default |
    </code></pre>
 
-   d. 同样，在当前活动的主节点（即节点**hanadb3**上）上终止名称服务器。  
+   d. 同样，请在当前活动的主节点（即节点**hanadb3**）上终止名称服务器。  
    
    <pre><code>
     hn1adm@hanadb3:/usr/sap/HN1/HDB03> HDB kill
    </code></pre>
 
-   节点**hanadb1**将恢复主节点的角色。 故障转移测试完成后，状态将如下所示：
+   Node **hanadb1**将恢复主节点的角色。 故障转移测试完成后，状态将如下所示：
 
    <pre><code>
     # Check the instance status
@@ -887,13 +890,13 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
     | hanadb3 | no     | ignore |          |        |         0 |         0 | default  | default  | master 3   | slave      | standby     | standby     | standby | standby | default | -       |
    </code></pre>
 
-   e. 在**hanadb3**上启动 SAP HANA，它将准备作为备用节点。  
+   e. 启动**hanadb3**上的 SAP HANA，它将准备好用作备用节点。  
 
    <pre><code>
     hn1adm@hanadb3:/usr/sap/HN1/HDB03> HDB start
    </code></pre>
 
-   在**HANadb3**上启动 SAP HANA 后，状态如下所示：  
+   在**hanadb3**上开始 SAP HANA 后，状态如下所示：  
 
    <pre><code>
     # Check the instance status
@@ -923,4 +926,4 @@ Azure NetApp 文件卷的吞吐量是卷大小和服务级别的函数，如[Azu
 * [适用于 SAP 的 Azure 虚拟机规划和实施][planning-guide]
 * [适用于 SAP 的 Azure 虚拟机部署][deployment-guide]
 * [适用于 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
-* 要了解如何在 Azure VM 上建立高可用性并规划 SAP HANA 的灾难恢复，请参阅[Azure 虚拟机 （VM） 上的 SAP HANA 的高可用性][sap-hana-ha]。
+* 若要了解如何建立高可用性并规划 Azure Vm 上 SAP HANA 的灾难恢复，请参阅[Azure 虚拟机（vm）上的 SAP HANA 的高可用性][sap-hana-ha]。
