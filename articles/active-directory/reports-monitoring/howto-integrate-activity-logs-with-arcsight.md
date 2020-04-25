@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 监视器将日志与 ArcSight 集成 |微软文档
-description: 了解如何使用 Azure 监视器将 Azure 活动目录日志与 ArcSight 集成
+title: 使用 Azure Monitor 将日志与 ArcSight 集成 |Microsoft Docs
+description: 了解如何使用 Azure Monitor 将 Azure Active Directory 日志与 ArcSight 集成
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -17,12 +17,12 @@ ms.date: 04/19/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05002c1b11ef31b61fb4036f09dc8edcdafca767
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f03b146331069371106c1857f2acc68b566d3c5d
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75608374"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82129226"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>使用 Azure Monitor 将 Azure Active Directory 日志与 ArcSight 集成
 
@@ -30,7 +30,7 @@ ms.locfileid: "75608374"
 
 在本文中，你会了解如何使用 Azure Monitor 将 Azure AD 日志路由到 ArcSight。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要使用此功能，需满足以下条件:
 * 包含 Azure AD 活动日志的 Azure 事件中心。 了解如何[将活动日志流式传输到事件中心](quickstart-azure-monitor-stream-logs-to-event-hub.md)。 
@@ -53,7 +53,7 @@ ms.locfileid: "75608374"
     * 部署中的应用程序设置保留在 Azure Function App 的“应用程序设置”中。 
     * 使用适用于 ArcSight 连接器的 Azure AD 应用程序以及包含映射文件（CEF 格式）的存储帐户，在 Azure 中创建 ArcSight 的新资源组。
 
-4. 最后，完成配置指南**部署后配置**中的部署后步骤。 此部分说明如何在实施应用服务计划时执行其他配置以防止 Function App 在超时期限之后成为空闲状态、从事件中心配置诊断日志流式传输以及更新 SysLog NG 守护程序 SmartConnector 密钥存储证书以将它与新创建的存储帐户相关联。
+4. 最后，完成配置指南**部署后配置**中的部署后步骤。 本部分介绍如何在应用服务计划中执行其他配置，以防止函数应用在超时期限后进入空闲状态、配置从事件中心流式传输资源日志以及更新 SysLog NG Daemon SmartConnector 密钥存储帐户，以便将其与新创建的存储帐户相关联。
 
 5. 配置指南还说明如何在 Azure 中自定义连接器属性以及如何升级和卸载连接器。 还有一个部分是关于性能改进，包括升级到 [Azure 消耗计划](https://azure.microsoft.com/pricing/details/functions)以及在事件负载大于单个 Syslog NG 守护程序 SmartConnector 可以处理的负载时配置 ArcSight 负载均衡器。
 

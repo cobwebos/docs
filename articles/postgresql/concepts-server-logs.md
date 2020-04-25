@@ -6,14 +6,15 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: 2636e9a225002148e4cd79bb2176e0883aed623a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 70520b464bcb26ff8f1ea10f87bbf30537dc58a0
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280490"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131225"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的日志
+
 Azure Database for PostgreSQL 允许配置和访问 Postgres 的标准日志。 这些日志可用于识别、排除和修复配置错误和性能不佳问题。 可以配置和访问的日志信息包括错误、查询信息、autovacuum 记录、连接和检查点。 （无法访问事务日志）。
 
 审核日志是通过 Postgres 扩展 pgaudit 提供的。 有关详细信息，请访问[审核的概念](concepts-audit.md)一文。
@@ -46,7 +47,8 @@ Azure Database for PostgreSQL 为 .log 文件提供短期存储位置。 每隔 
 
 可以通过将参数 `logging_collector` 设置为 OFF 来停止生成 .log 文件。 如果使用 Azure Monitor 诊断设置，则我们建议禁用 .log 文件生成。 此配置可以减轻附加的日志记录对性能造成的影响。
 
-## <a name="diagnostic-logs"></a>诊断日志
+## <a name="resource-logs"></a>资源日志
+
 Azure Database for PostgreSQL 与 Azure Monitor 诊断日志设置相集成。 使用诊断设置可将 JSON 格式的 Postgres 日志发送到 Azure Monitor 日志用于分析和警报、发送到事件中心进行流式处理，或者发送到 Azure 存储进行存档。 
 
 > [!IMPORTANT]
@@ -54,20 +56,21 @@ Azure Database for PostgreSQL 与 Azure Monitor 诊断日志设置相集成。 �
 
 
 ### <a name="configure-diagnostic-settings"></a>配置诊断设置
+
 可以使用 Azure 门户、CLI、REST API 和 Powershell 为 Postgres 服务器启用诊断设置。 要选择的日志类别为“PostgreSQLLogs”。**** （如果使用[查询存储](concepts-query-store.md)，则还可以配置其他日志。）
 
-若要使用 Azure 门户启用诊断日志：
+使用 Azure 门户启用资源日志：
 
    1. 在门户上 Postgres 服务器的导航菜单中，转到“诊断设置”。**
-   2. 选择 *"添加诊断设置*"。
+   2. 选择 "*添加诊断设置*"。
    3. 为此设置命名。 
    4. 选择首选的终结点（存储帐户、事件中心、Log Analytics）。 
    5. 选择日志类型“PostgreSQLLogs”。****
    7. 保存设置。
 
-若要使用 Powershell、CLI 或 REST API 启用诊断日志，请访问[诊断设置](../azure-monitor/platform/diagnostic-settings.md)一文。
+若要使用 Powershell、CLI 或 REST API 启用资源日志，请访问[诊断设置](../azure-monitor/platform/diagnostic-settings.md)一文。
 
-### <a name="access-diagnostic-logs"></a>访问诊断日志
+### <a name="access-resource-logs"></a>访问资源日志
 
 访问日志的方式取决于所选的终结点。 有关 Azure 存储，请参阅[日志存储帐户](../azure-monitor/platform/resource-logs-collect-storage.md)一文。 有关事件中心，请参阅[流式传输 Azure 日志](../azure-monitor/platform/resource-logs-stream-event-hubs.md)一文。
 
@@ -94,7 +97,7 @@ AzureDiagnostics
 
 下表描述了 **PostgreSQLLogs** 类型的字段。 包括的字段以及它们的出现顺序可能有所不同，具体取决于你选择的输出终结点。 
 
-|**字段** | **说明** |
+|**字段** | **描述** |
 |---|---|
 | TenantId | 租户 ID |
 | SourceSystem | `Azure` |
@@ -110,7 +113,7 @@ AzureDiagnostics
 | OperationName | `LogEvent` |
 | errorLevel | 日志记录级别，示例：LOG、ERROR、NOTICE |
 | 消息 | 主要日志消息 | 
-| 域 | 服务器版本，示例：postgres-10 |
+| Domain | 服务器版本，示例：postgres-10 |
 | 详细信息 | 辅助日志消息（如果适用） |
 | ColumnName | 列名称（如果适用） |
 | SchemaName | 架构名称（如果适用） |

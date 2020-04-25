@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47fede0726ff1a540a71b9c42ca0c07117865d9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9b3857a5ae845f5cc48464152bb6ca600444c1b
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80331625"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82136696"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理安装
 
@@ -31,33 +31,33 @@ ms.locfileid: "80331625"
 
 下表是使用 Azure AD Connect Health 的要求列表。
 
-| 要求 | 描述 |
+| 要求 | 说明 |
 | --- | --- |
-| Azure AD Premium |Azure AD Connect Health 是 Azure AD Premium 的一个功能，它需要与 Azure AD Premium 配合使用。 <br /><br />有关详细信息，请参阅使用[Azure AD 高级版入门](../fundamentals/active-directory-get-started-premium.md) <br />若要免费试用 30 天，请参阅 [开始试用](https://azure.microsoft.com/trial/get-started-active-directory/)。 |
+| Azure AD Premium |Azure AD Connect Health 是 Azure AD Premium 的一个功能，它需要与 Azure AD Premium 配合使用。 <br /><br />有关详细信息，请参阅[Azure AD Premium](../fundamentals/active-directory-get-started-premium.md)入门 <br />若要免费试用 30 天，请参阅 [开始试用](https://azure.microsoft.com/trial/get-started-active-directory/)。 |
 | 必须是 Azure AD 的全局管理员才能开始使用 Azure AD Connect Health |默认情况下，只有全局管理员才能安装和配置运行状况代理、访问信息，以及在 Azure AD Connect Health 中执行任何操作。 有关详细信息，请参阅 [Administering your Azure AD directory](../fundamentals/active-directory-administer.md)（管理 Azure AD 目录）。 <br /><br /> 使用基于角色的访问控制可以允许组织中的其他用户访问 Azure AD Connect Health。 有关详细信息，请参阅 [Role Based Access Control for Azure AD Connect Health](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)（Azure AD Connect Health 基于角色的访问控制）。 <br /><br />**重要说明：** 在安装代理时使用的帐户必须是工作帐户或学校帐户， 而不能是 Microsoft 帐户。 有关详细信息，请参阅 [Sign up for Azure as an organization](../fundamentals/sign-up-organization.md)（以组织身份注册 Azure） |
 | Azure AD Connect Health 代理已安装在每台目标服务器上 | Azure AD Connect Health 要求在目标服务器上安装和配置 Health 代理，以便接收数据并提供监视和分析功能。 <br /><br />例如，要从 AD FS 基础结构获取数据，必须将代理安装在 AD FS 和 Web 应用程序代理服务器上。 同样，要获取 AD DS 本地基础结构的相关数据，必须将代理安装在域控制器上。 <br /><br /> |
 | Azure 服务终结点的出站连接 | 在安装期间和运行时，代理需要连接到 Azure AD Connect Health 服务终结点。 如果使用防火墙阻止出站连接，请确保在允许列表中添加以下终结点。 请参阅[出站连接终结点](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) |
 |基于 IP 地址的出站连接 | 若要了解如何基于 IP 地址在防火墙上进行筛选，请参阅 [Azure IP Ranges](https://www.microsoft.com/download/details.aspx?id=41653)（Azure IP 范围）。|
-| TLS 检查出站流量被过滤或禁用 | 如果网络层对出站流量进行 TLS 检查或终止，则代理注册步骤或数据上载操作可能会失败。 阅读有关如何[设置 TLS 检查的更多](https://technet.microsoft.com/library/ee796230.aspx)内容 |
+| 筛选或禁用出站流量的 TLS 检查 | 如果网络层上的出站流量存在 TLS 检查或终止，则代理注册步骤或数据上传操作可能会失败。 阅读有关[如何设置 TLS 检查的](https://technet.microsoft.com/library/ee796230.aspx)详细信息 |
 | 运行代理的服务器上的防火墙端口 |为了使代理能够与 Azure AD Health 服务终结点通信，代理要求打开以下防火墙端口。<br /><br /><li>TCP 端口 443</li><li>TCP 端口 5671</li> <br />请注意，代理的最新版本不再需要端口 5671。 升级到最新版本，此时仅需要端口 443。 了解有关[启用防火墙端口](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx)的更多信息 |
-| 如果启用了 IE 增强安全性，请允许以下网站 |如果在要安装代理的服务器上启用了“IE 增强的安全性”，则必须允许访问以下网站。<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>https：\//aadcdn.msftauth.net</li><li>Azure Active Directory 信任的组织联合服务器。 例如：https:\//sts.contoso.com</li> 阅读有关如何[配置 IE](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing)的更多内容。 如果您的网络内有代理，请参阅下面的注释。|
+| 如果启用了 IE 增强安全性，请允许以下网站 |如果在要安装代理的服务器上启用了“IE 增强的安全性”，则必须允许访问以下网站。<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>https：\//aadcdn.msftauth.net</li><li>Azure Active Directory 信任的组织联合服务器。 例如：https:\//sts.contoso.com</li> 阅读有关[如何配置 IE](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing)的详细信息。 如果网络中有一个代理，请参阅下面的说明。|
 | 确保已安装 PowerShell v4.0 或更高版本 | <li>Windows Server 2008 R2 附带 PowerShell v2.0，后者对代理来说不够用。 根据下面[在 Windows Server 2008 R2 服务器上的代理安装](#agent-installation-on-windows-server-2008-r2-servers)下的说明更新 PowerShell。</li><li>Windows Server 2012 附带 PowerShell v3.0，后者对代理来说不够用。  [更新](https://www.microsoft.com/download/details.aspx?id=40855) Windows Management Framework。</li><li>Windows Server 2012 R2 和更高版本附带足够使用的 PowerShell 最新版本。</li>|
 |禁用 FIPS|Azure AD Connect Health 代理不支持 FIPS。|
 
 
 > [!NOTE]
-> 如果环境高度锁定且受到严格限制，则除了上述"允许 IE 增强的安全配置"中列出的 URL 外，还需要将下面服务终结点列表中提及的 URL 列入白名单。 
+> 如果有高度锁定的环境，则需要将下面的服务终结点列表中提到的 Url 列入允许列表，以及上述 "允许的 IE 增强的安全配置" 中列出的 Url。 
 >
 
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Azure 服务终结点的出站连接
 
- 在安装期间和运行时，代理需要连接到 Azure AD Connect Health 服务终结点。 如果使用防火墙阻止出站连接，请确保默认情况下不会阻止以下 URL。 请勿禁用对这些 URL 的安全监视或检查，但就像允许其他 Internet 流量一样允许这些 URL。 它们允许与 Azure AD Connect Health 服务终结点通信。 了解如何[使用测试-AzureConnectHealth 连接来检查出站连接。](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install#test-connectivity-to-azure-ad-connect-health-service)
+ 在安装期间和运行时，代理需要连接到 Azure AD Connect Health 服务终结点。 如果使用防火墙阻止出站连接，请确保默认情况下不会阻止以下 URL。 请勿禁用对这些 URL 的安全监视或检查，但就像允许其他 Internet 流量一样允许这些 URL。 它们允许与 Azure AD Connect Health 服务终结点通信。 了解如何[通过 test-azureadconnecthealthconnectivity 检查出站连接](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install#test-connectivity-to-azure-ad-connect-health-service)。
 
 | 域环境 | 所需的 Azure 服务终结点 |
 | --- | --- |
 | 一般公众 | <li>&#42;.blob.core.windows.net </li><li>&#42;.aadconnecthealth.azure.com </li><li>&#42;.servicebus.windows.net - Port: 5671 </li><li>&#42;.adhybridhealth.azure.com/</li><li>https:\//management.azure.com </li><li>https:\//policykeyservice.dc.ad.msft.net/</li><li>https:\//login.windows.net</li><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *此终结点仅用于在注册过程中进行相关发现。</li> |
 | Azure 德国 | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li> <li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>https:\//www.office.de *此终结点仅用于在注册过程中进行相关发现。</li> |
-| Azure Government  | <li>&#42;.blob.core.usgovcloudapi.net </li> <li>&#42;.servicebus.usgovcloudapi.net </li> <li>&#42;.aadconnecthealth.microsoftazure.us </li> <li>https:\//management.usgovcloudapi.net </li><li>https:\//policykeyservice.aadcdi.azure.us </li><li>https:\//login.microsoftonline.us </li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *此终结点仅用于在注册过程中进行相关发现。</li> |
+| Azure Government | <li>&#42;.blob.core.usgovcloudapi.net </li> <li>&#42;.servicebus.usgovcloudapi.net </li> <li>&#42;.aadconnecthealth.microsoftazure.us </li> <li>https:\//management.usgovcloudapi.net </li><li>https:\//policykeyservice.aadcdi.azure.us </li><li>https:\//login.microsoftonline.us </li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *此终结点仅用于在注册过程中进行相关发现。</li> |
 
 
 ## <a name="download-and-install-the-azure-ad-connect-health-agent"></a>下载并安装 Azure AD Connect Health 代理
@@ -69,7 +69,7 @@ ms.locfileid: "80331625"
 * 适用于同步的 Azure AD Connect Health 使用入门
     * [下载并安装最新版 Azure AD Connect](https://go.microsoft.com/fwlink/?linkid=615771)。 在安装 Azure AD Connect 的过程中，会安装适用于同步的 Health 代理（1.0.9125.0 或更高版本）。
 * 适用于 AD DS 的 Azure AD Connect Health 使用入门
-    * [下载 AZURE AD 连接 AD DS 的运行状况代理](https://go.microsoft.com/fwlink/?LinkID=820540)。
+    * [下载 AD DS Azure AD Connect Health 代理](https://go.microsoft.com/fwlink/?LinkID=820540)。
     * [请参阅安装说明](#installing-the-azure-ad-connect-health-agent-for-ad-ds)。
 
 ## <a name="installing-the-azure-ad-connect-health-agent-for-ad-fs"></a>安装适用于 AD FS 的 Azure AD Connect Health 代理
@@ -140,7 +140,7 @@ ms.locfileid: "80331625"
 7. 在“操作”**** 窗格中，单击“编辑联合身份验证服务属性”****。
 8. 在 **“联合身份验证服务属性”** 对话框中，单击 **“事件”** 选项卡。
 9. 选中 **“成功审核”** 和 **“失败审核”** 复选框。
-10. 单击“确定”。
+10. 单击“确定”  。
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2012-r2"></a>在 Windows Server 2012 R2 上启用 AD FS 审核的步骤
 
@@ -255,12 +255,12 @@ ms.locfileid: "80331625"
 
 ![验证 Azure AD Connect Health](./media/how-to-connect-health-agent-install/aadconnect-health-adds-agent-install5.png)
 
-### <a name="quick-agent-installation-in-multiple-servers"></a>在多个服务器中快速安装代理
+### <a name="quick-agent-installation-in-multiple-servers"></a>在多个服务器中安装快速代理
 
 1. 使用密码在 Azure AD 中创建用户帐户。
-2. 通过门户在 Azure AD 连接运行状况中分配此本地 AAD 帐户**的所有者**角色。 按照[此处](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)的步骤操作。 将角色分配给所有服务实例。 
+2. 通过门户为 Azure AD Connect Health 中的本地 AAD 帐户分配**所有者**角色。 请按照[此处](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)的步骤操作。 将角色分配给所有服务实例。 
 3. 在本地域控制器中下载 .exe MSI 文件以进行安装。
-4. 运行以下脚本进行注册。 将参数替换为已创建的新用户帐户及其密码。 
+4. 运行以下脚本以进行注册。 将参数替换为创建的新用户帐户及其密码。 
 
 ```powershell
 AdHealthAddsAgentSetup.exe /quiet
@@ -270,12 +270,12 @@ $secpasswd = ConvertTo-SecureString "PASSWORD" -AsPlainText -Force
 $myCreds = New-Object System.Management.Automation.PSCredential ($userName, $secpasswd)
 import-module "C:\Program Files\Azure Ad Connect Health Adds Agent\PowerShell\AdHealthAdds"
  
-Register-AzureADConnectHealthADDSAgent -UserPrincipalName $USERNAME -Credential $myCreds
+Register-AzureADConnectHealthADDSAgent -Credential $myCreds
 
 ```
 
-1. 完成后，您可以通过执行以下一项或多项操作来删除本地帐户的访问权限： 
-    * 删除 AAD 连接运行状况的本地帐户的角色分配
+1. 完成后，可以通过执行下列一项或多项操作来删除本地帐户的访问权限： 
+    * 删除 AAD Connect Health 的本地帐户的角色分配
     * 旋转本地帐户的密码。 
     * 禁用 AAD 本地帐户
     * 删除 AAD 本地帐户  
@@ -319,7 +319,7 @@ Register-AzureADConnectHealthADDSAgent -UserPrincipalName $USERNAME -Credential 
 
 > [!NOTE]
 > 必须重新启动所有 Azure AD Connect Health 代理服务才能更新代理设置。 运行以下命令：<br />
-> 重新启动服务 AzureAD 连接运行状况*
+> Restart-Service AzureADConnectHealth *
 >
 >
 

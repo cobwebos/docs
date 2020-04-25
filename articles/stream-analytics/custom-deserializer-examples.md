@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 270e9a31c28e7209cfe43ea8307b928ed3257a35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4f4cc5cefe8090e9e95f80b8b74bf15591cb7887
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76845264"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133073"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>使用 .NET 自定义反序列化程序读取任何格式的输入
 
@@ -33,7 +33,7 @@ Azure 流分析作业可以通过自定义的 .NET 反序列化程序来读取�
 
 以下代码片段是流数据的反序列化。 
 
-可跳过的错误应使用通过 `UserDefinedOperator` 的 Initialize 方法传递的 `IStreamingDiagnostics` 来发出。 将所有异常视为错误，并重新创建反序列化程序。 出现特定数量的错误后，该作业将进入失败状态。
+可跳过的错误应使用通过 `IStreamingDiagnostics` 的 Initialize 方法传递的 `UserDefinedOperator` 来发出。 将所有异常视为错误，并重新创建反序列化程序。 出现特定数量的错误后，该作业将进入失败状态。
 
 `StreamDeserializer<T>` 将流反序列化为 `T` 类型的对象。 必须满足以下条件：
 
@@ -65,11 +65,11 @@ Azure 流分析作业可以通过自定义的 .NET 反序列化程序来读取�
 
 `StreamingDiagnostics` 是用户定义的运算符的诊断，包括序列化程序、反序列化程序和用户定义的函数。
 
-`WriteError` 将错误消息写入诊断日志，并将错误发送到诊断。
+`WriteError`将错误消息写入资源日志，并将错误发送到诊断。
 
-`briefMessage` 是简短的错误消息。 此消息显示在诊断中，供产品团队用于调试。 请不要包含敏感信息，并将消息保留在 200 个字符以下
+`briefMessage` 是简短的错误消息。 此消息将显示在 "诊断" 中，供产品团队用于调试目的。 请不要包含敏感信息，并将消息保留在 200 个字符以下
 
-`detailedMessage` 是详细的错误消息，只会添加到存储中的诊断日志。 此消息的长度应小于 2000 个字符。
+`detailedMessage`是详细的错误消息，仅添加到存储中的资源日志。 此消息的长度应小于 2000 个字符。
 
 ```csharp
     public abstract class StreamingDiagnostics
@@ -80,7 +80,7 @@ Azure 流分析作业可以通过自定义的 .NET 反序列化程序来读取�
 
 ## <a name="deserializer-examples"></a>反序列化程序示例
 
-本部分介绍如何编写适用于 Protobuf 和 CSV 的自定义反序列化程序。 有关其他示例（如事件中心捕获的 AVRO 格式），请访问[GitHub 上的 Azure 流分析](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers)。
+本部分介绍如何编写适用于 Protobuf 和 CSV 的自定义反序列化程序。 有关其他示例（如事件中心捕获的 AVRO 格式），请访问 [GitHub 上的 Azure 流分析](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers)。
 
 ### <a name="protocol-buffer-protobuf-format"></a>协议缓冲区 (Protobuf) 格式
 
@@ -112,7 +112,7 @@ message MessageBodyProto {
 }
 ```
 
-从 **Google.Protobuf.Tools** NuGet 运行 `protoc.exe` 会生成一个包含定义的 .cs 文件。 此处未显示生成的文件。
+从 `protoc.exe`Google.Protobuf.Tools**NuGet 运行** 会生成一个包含定义的 .cs 文件。 此处未显示生成的文件。
 
 以下代码片段是反序列化程序的实现，它假设生成的文件已包含在项目中。 此实现只是基于生成的文件的精简包装器。
 
@@ -238,7 +238,7 @@ namespace ExampleCustomCode.Serialization
 
 ### <a name="when-will-this-feature-be-available-in-all-azure-regions"></a>此功能何时在所有 Azure 区域中推出？
 
-此功能在 6[个区域](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples#region-support)可用。 如果你希望在其他区域使用此功能，可以[提交请求](https://aka.ms/ccodereqregion)。 此功能在所有 Azure 区域中的支持已在规划中。
+此功能在6个[区域](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples#region-support)中提供。 如果你希望在其他区域使用此功能，可以[提交请求](https://aka.ms/ccodereqregion)。 此功能在所有 Azure 区域中的支持已在规划中。
 
 ### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>是否可以从类似于 GetMetadataPropertyValue 函数的输入访问 MetadataPropertyValue？
 

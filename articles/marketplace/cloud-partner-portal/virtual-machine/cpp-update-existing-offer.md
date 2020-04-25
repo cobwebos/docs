@@ -1,5 +1,5 @@
 ---
-title: 更新 Azure 应用商店中的现有 VM 产品/服务
+title: 在 Azure Marketplace 中更新现有 VM 产品/服务
 description: 介绍如何更新 Azure 市场中的现有 VM 套餐。
 author: dsindona
 ms.service: marketplace
@@ -7,19 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: dsindona
-ms.openlocfilehash: a15ccb1de2a9ce0072d032e624ead3b4d730763b
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 934be24d07c01c76c8caf5e16af4b765df79c964
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273046"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142916"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>更新 Azure 市场中的现有 VM 套餐
 
 > [!IMPORTANT]
-> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 虚拟机产品的管理移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照创建 Azure[虚拟机产品/服务](https://aka.ms/CreateAzureVMoffer)中的说明进行操作，以管理迁移的优惠。
+> 从2020年4月13日开始，我们将开始将 Azure 虚拟机产品/服务的管理转移到合作伙伴中心。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[创建 Azure 虚拟机产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)中的说明来管理迁移的产品/服务。
 
-本文从不同的方面指导你在[云合作伙伴门户](https://cloudpartner.azure.com/)中更新虚拟机 (VM) 套餐，然后重新发布该套餐。 
+本文从不同的方面指导你在[云合作伙伴门户](https://cloudpartner.azure.com/)中更新虚拟机 (VM) 套餐，然后重新发布该套餐。
 
 你可能出于多种原因更新套餐，常见的原因包括：
 
@@ -32,7 +32,7 @@ ms.locfileid: "81273046"
 为了帮助你进行这些修改，门户中提供了“比较”和“历史记录”功能。********  
 
 >[!Note]
->云解决方案提供商 （CSP） 合作伙伴渠道选择加入现已可用。  有关通过 Microsoft CSP 合作伙伴渠道营销产品/服务的更多信息[，请参阅云解决方案提供商](../../cloud-solution-providers.md)。
+>现在提供了云解决方案提供商（CSP）合作伙伴渠道选择。  请参阅[云解决方案提供商](../../cloud-solution-providers.md)，了解有关通过 Microsoft CSP 合作伙伴渠道营销产品/服务的详细信息。
 
 ## <a name="unpermitted-changes-to-vm-offer-or-sku"></a>不允许对 VM 套餐或 SKU 进行的更改
 
@@ -59,7 +59,7 @@ ms.locfileid: "81273046"
 
 3.  在“SKU”选项卡中，单击与要更新的 VM 映像关联的 SKU。****
 
-4.  在 **"磁盘版本**"下，单击 **+新磁盘版本**以添加新 VM 映像。
+4.  在 "**磁盘版本**" 下，单击 " **+ 新磁盘版本**" 以添加新的 VM 映像。
 
 5.  提供新的 VM 映像**磁盘版本**。 此磁盘版本需遵循[语义版本](https://semver.org/)格式。 版本格式应为 X.Y.Z，X、Y 和 Z 是整数。 确认提供的新版本高于以往的所有版本；否则，重新发布后，新版本将不会在门户或 Azure 市场中显示。
 
@@ -78,7 +78,7 @@ ms.locfileid: "81273046"
 
 1.  登录到[云合作伙伴门户](https://cloudpartner.azure.com/)。
 
-2.  在 **"所有优惠**"下找到您要更新的优惠。
+2.  在 "**所有产品**" 下找到要更新的产品/服务。
 
 3.  在“SKU”选项卡中，单击要修改其可用性的 SKU。****
 
@@ -97,7 +97,7 @@ ms.locfileid: "81273046"
 
 1.  登录到[云合作伙伴门户](https://cloudpartner.azure.com/)。
 
-2.  在 **"所有优惠**"下找到您要更新的优惠。
+2.  在 "**所有产品**" 下找到要更新的产品/服务。
 
 3.  在“SKU”选项卡下，单击“添加新 SKU”并在弹出窗口中提供一个 **SKU ID**。********
 
@@ -112,7 +112,7 @@ ms.locfileid: "81273046"
 
 1.  登录到[云合作伙伴门户](https://cloudpartner.azure.com/)。
 
-2.  在 **"所有优惠**"下找到您要更新的优惠。
+2.  在 "**所有产品**" 下找到要更新的产品/服务。
 
 3.  转到“市场”选项卡，然后遵照[将虚拟机发布到 Azure 市场](./cpp-publish-offer.md)一文中的说明更改元数据。****
 
@@ -121,7 +121,7 @@ ms.locfileid: "81273046"
 
 ### <a name="update-pricing-on-published-offers"></a>更新已发布套餐的定价
 
-发布即用即付套餐后，无法直接提高 SKU 的定价。  （但是，您可以在同一产品/服务下创建新的 SKU，删除旧的 SKU，然后为新客户重新发布产品/服务。 相反，您可以使用以下步骤降低已发布产品/服务的价格：
+发布即用即付套餐后，无法直接提高 SKU 的定价。  （但是，你可以在同一个产品/服务下创建新的 SKU，删除旧的 SKU，然后为新客户重新发布产品/服务。） 与此相反，你可以使用以下步骤降低已发布产品/服务的价格：
 
 1.  登录到[云合作伙伴门户](https://cloudpartner.azure.com/)。
 
@@ -131,7 +131,7 @@ ms.locfileid: "81273046"
 
 4.  如果在 1x1 GUI 中设置了定价，可以直接在该 UI 中更改价格。 如果通过导入/导出电子表格设置了定价，则只能通过导入/导出功能降低价格。
 
-3.  单击“ **保存**”。
+3.  单击 **“保存”** 。
 
 4.  单击“发布”，启动发布更改的工作流。****
 

@@ -8,12 +8,12 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: a0125c556789b1a1a5b11dcd16b852d7f57b6c50
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: f4e318281da5cd704d9fbf13c96cbec0a2d1b1b6
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82099863"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82143782"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>使用“运行命令”在 Windows VM 中运行 PowerShell 脚本
 
@@ -58,7 +58,7 @@ The entity was not found in this Azure location
 |**EnableAdminAccount**|检查本地管理员帐户是否被禁用，如果是，则启用它。|
 |**IPConfig**| 显示绑定到 TCP/IP 的每个适配器的 IP 地址、子网掩码和默认网关的详细信息。|
 |**RDPSettings**|检查注册表设置和域策略设置。 提供策略操作建议（如果计算机属于某个域），或者将设置修改为默认值。|
-|**ResetRDPCert**|删除绑定到 RDP 侦听器的 SSL 证书，并将 RDP 侦听器安全性还原为默认值。 如果看到与证书有关的任何问题，请使用此脚本。|
+|**ResetRDPCert**|删除绑定到 RDP 侦听器的 TLS/SSL 证书，并将 RDP 侦听器安全性还原为默认值。 如果看到与证书有关的任何问题，请使用此脚本。|
 |**SetRDPPort**|为远程桌面连接设置默认的或用户指定的端口号。 为端口的入站访问启用防火墙规则。|
 
 ## <a name="azure-cli"></a>Azure CLI

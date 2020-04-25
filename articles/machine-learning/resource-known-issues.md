@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: eb8e06370ecbe2b104a19c4e420b5d3ae013a00e
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 58fd9225298b4322567f4feb02629e3ad4e0f00d
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116309"
+ms.locfileid: "82127566"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Azure 机器学习的已知问题和故障排除
 
@@ -40,6 +40,23 @@ ms.locfileid: "82116309"
 
 ## <a name="installation-and-import"></a>安装和导入
 
+* **Pip 安装：不保证依赖项与单行安装一致**： 
+
+   这是 pip 的已知限制，因为当你作为单行安装时，它不具有正常运行的依赖关系解析程序。 第一个唯一的依赖项是唯一的依赖项。 
+
+   在下面的代码`azure-ml-datadrift`中`azureml-train-automl` ，同时使用单行 pip 安装进行安装。 
+     ```
+       pip install azure-ml-datadrift, azureml-train-automl
+     ```
+   对于本示例，假设`azure-ml-datadrift`需要版本 > 1.0，并且`azureml-train-automl`需要版本 < 1.2。 如果的`azure-ml-datadrift`最新版本为1.3，则这两个包都将升级到1.3， `azureml-train-automl`而与较旧版本的包要求无关。 
+
+   若要确保为包安装适当的版本，请使用多行安装，如以下代码所示。 此处的顺序并不是问题，因为 pip 在下一行调用中显式降级。 因此，会应用适当的版本依赖项。
+    
+     ```
+        pip install azure-ml-datadrift
+        pip install azureml-train-automl 
+     ```
+     
 * **错误消息：无法卸载 'PyYAML'**
 
     适用于 Python 的 Azure 机器学习 SDK： PyYAML `distutils`是一个已安装的项目。 因此，在部分卸载的情况下，我们无法准确确定哪些文件属于它。 若要在忽略此错误的同时继续安装 SDK，请使用：
@@ -83,20 +100,6 @@ ms.locfileid: "82116309"
     * 添加 `azureml-dataprep` 版本 1.1.8 或更高版本。
     * 添加 `pyarrow` 版本 0.11 或更高版本。
     
-* **Pip 安装：上述不保证与单个线路安装一致**：这是一个已知的 Pip 限制，因为当你作为单行安装时，它不具有正常运行的依赖关系解析程序。 第一个唯一的依赖项是唯一的依赖项。 例如，如果你要安装需要版本 > 1.0 和 azureml-automl 的 azure ml，而该版本需要版本 < 1.2，并且如果最新版本为1.3，则当用户将包安装在一行上（如下所示）时，所有内容都将升级到1.3，即使 azureml-automl 包需要较旧的版本。 
-
-    * 对于单行安装，你将看到不一致的上述。
-    ```python
-       pip install azure-ml-datadrift, azureml-train-automl
-     ```
-   
-    * 若要确保为包安装适当的版本，请使用多行安装，如以下代码所示。 此处的顺序并不重要。
-    
-     ```python
-        pip install azure-ml-datadrift
-        pip install azureml-train-automl 
-     ```
-     
 ## <a name="create-and-manage-workspaces"></a>创建和管理工作区
 
 > [!WARNING]

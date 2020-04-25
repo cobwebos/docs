@@ -9,24 +9,24 @@ ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e1b2e2a80670cf0409f8f8477563b9a209cc8706
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4ac1a6e56cdbf47fd174d5244fc6ab51c63fb07
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77209199"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133885"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>通过 Visual Studio Code 部署 Azure IoT Edge 模块
 
 使用业务逻辑创建 IoT Edge 模块后，需要将其部署到设备后才能在边缘操作。 如果多个模块共同协作来收集和处理数据，可同时部署它们并声明用于连接它们的路由规则。
 
-本文介绍了如何创建 JSON 部署清单，然后使用此文件将部署推送至 IoT Edge 设备。 有关基于设备的共享标签创建针对多个设备的部署的信息，请参阅[使用 Visual Studio Code 大规模部署 IoT Edge 模块](how-to-deploy-monitor-vscode.md)。
+本文介绍了如何创建 JSON 部署清单，然后使用此文件将部署推送至 IoT Edge 设备。 有关基于设备的共享标签创建针对多个设备的部署的信息，请参阅[使用 Visual Studio Code 大规模部署 IoT Edge 模块](how-to-deploy-vscode-at-scale.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅中的 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
 * 已安装 IoT Edge 运行时的 [IoT Edge 设备](how-to-register-device.md#register-with-visual-studio-code)。
-* [视觉工作室代码](https://code.visualstudio.com/)。
+* [Visual Studio Code](https://code.visualstudio.com/)。
 * 适用于 Visual Studio Code 的 [Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview)。
 
 ## <a name="configure-a-deployment-manifest"></a>配置部署清单
@@ -105,15 +105,15 @@ ms.locfileid: "77209199"
 
 可使用适用于 Visual Studio Code 的 Azure IoT 扩展来执行与 IoT 中心相关的操作。 为让操作顺利进行，需登录 Azure 帐户并选择要使用的 IoT 中心。
 
-1. 在 Visual Studio Code 中打开“资源管理器”视图****。
+1. 在 Visual Studio Code 中打开“资源管理器”视图  。
 
-1. 在资源管理器底部，展开“Azure IoT 中心”部分****。
+1. 在资源管理器底部，展开“Azure IoT 中心”部分  。
 
    ![展开“Azure IoT 中心”部分](./media/how-to-deploy-modules-vscode/azure-iot-hub-devices.png)
 
-1. 单击“Azure IoT 中心”部分标题中的“...”********。 如果没有看到省略号，请将鼠标悬停在标题处。
+1. 单击“Azure IoT 中心”部分标题中的“...”   。 如果没有看到省略号，请将鼠标悬停在标题处。
 
-1. 选择“选择 IoT 中心”****。
+1. 选择“选择 IoT 中心”  。
 
 1. 如果尚未登录 Azure 帐户，请按照提示登录。
 
@@ -125,16 +125,16 @@ ms.locfileid: "77209199"
 
 应用使用模块信息配置的部署清单即可将模块部署至设备。
 
-1. 在 Visual Studio Code 资源管理器视图中，展开“Azure IoT 中心”**** 部分，然后展开“设备”**** 节点。
+1. 在 Visual Studio Code 资源管理器视图中，展开“Azure IoT 中心”  部分，然后展开“设备”  节点。
 
 1. 右键单击要使用部署清单配置的 IoT Edge 设备。
 
     > [!TIP]
-    > 若要确认已选择的设备为 IoT Edge 设备，请选择它以展开模块列表并验证是否存在“$ edgeHub”和“$ edgeAgent”********。 每个 IoT Edge 设备都包含这两个模块。
+    > 若要确认已选择的设备为 IoT Edge 设备，请选择它以展开模块列表并验证是否存在“$ edgeHub”和“$ edgeAgent”   。 每个 IoT Edge 设备都包含这两个模块。
 
-1. 选择“为单个设备创建部署”****。
+1. 选择“为单个设备创建部署”  。
 
-1. 导航至要使用的部署清单 JSON 文件，然后单击“选择 Edge 部署清单”****。
+1. 导航至要使用的部署清单 JSON 文件，然后单击“选择 Edge 部署清单”  。
 
    ![选择 Edge 部署清单](./media/how-to-deploy-modules-vscode/select-deployment-manifest.png)
 
@@ -142,12 +142,12 @@ ms.locfileid: "77209199"
 
 ## <a name="view-modules-on-your-device"></a>查看设备上的模块
 
-将模块部署至设备后，可在“Azure IoT 中心”部分中查看所有模块****。 选择 IoT Edge 设备旁边的箭头将其展开。 其中会显示当前正在运行的所有模块。
+将模块部署至设备后，可在“Azure IoT 中心”部分中查看所有模块  。 选择 IoT Edge 设备旁边的箭头将其展开。 其中会显示当前正在运行的所有模块。
 
-如果最近部署了新模块到设备，请将鼠标悬停在“Azure IoT 中心设备”部分标题处，并选择刷新图标以更新该视图****。
+如果最近部署了新模块到设备，请将鼠标悬停在“Azure IoT 中心设备”部分标题处，并选择刷新图标以更新该视图  。
 
 右键单击模块名称，查看并编辑此模块孪生。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[使用 Visual Studio Code 大规模部署和监视 IoT Edge 模块](how-to-deploy-monitor.md)
+了解如何[使用 Visual Studio Code 大规模部署和监视 IoT Edge 模块](how-to-deploy-at-scale.md)

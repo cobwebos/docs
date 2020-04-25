@@ -1,14 +1,14 @@
 ---
 title: 支持的资源管理器资源类型
 description: 提供 Azure Resource Graph 和更改历史记录支持的资源管理器资源类型的列表。
-ms.date: 04/23/2020
+ms.date: 04/24/2020
 ms.topic: reference
-ms.openlocfilehash: 021a0d595a34bc132aa0e67f2b5485ae9c321ef3
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 7092a6dccc2870c7fd7b6dc6feb3af16f0fd3b7a
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116632"
+ms.locfileid: "82141898"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph 表和资源类型引用
 
@@ -65,6 +65,7 @@ Azure Resource Graph 支持 **Azure 资源管理器**的下列[资源类型](../
 - automationaccounts/
 - automationaccounts/配置
 - automationaccounts/runbook
+- autonomoussystems/工作区
 - azconfig/configurationstores
 - azureactivedirectory/b2cdirectories
 - azuredata/datacontrollers
@@ -104,6 +105,7 @@ Azure Resource Graph 支持 **Azure 资源管理器**的下列[资源类型](../
 - 认知/syntheticsaccounts
 - cognitiveservices account/帐户
 - availabilitysets/计算
+- diskaccesses/计算
 - diskencryptionsets/计算
 - microsoft. 计算/磁盘
 - microsoft. 计算/库

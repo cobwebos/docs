@@ -1,5 +1,5 @@
 ---
-title: 使用对称密钥认证预配设备 - Azure IoT 边缘
+title: 使用对称密钥证明预配设备 - Azure IoT Edge
 description: 使用对称密钥证明通过设备预配服务测试 Azure IoT Edge 的自动设备预配
 author: kgremban
 manager: philmea
@@ -9,12 +9,12 @@ ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 139a2cafe137d000b991cbad8b8567e005ffc728
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: c6c2067526850ba972f002dc40bbd5d4cb24c9ba
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668674"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131015"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>使用对称密钥证明创建和预配 IoT Edge 设备
 
@@ -28,7 +28,7 @@ ms.locfileid: "80668674"
 
 对称密钥证明是一种通过设备预配服务实例对设备进行身份验证的简单方法。 此证明方法表示不熟悉设备预配或不具备严格安全要求的开发人员的“Hello world”体验。 使用 [TPM](../iot-dps/concepts-tpm-attestation.md) 或 [X.509 证书](../iot-dps/concepts-security.md#x509-certificates)的设备证明更加安全，且应该用于更严格的安全要求。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 一个有效的 IoT 中心
 * 一个物理设备或虚拟设备
@@ -37,13 +37,13 @@ ms.locfileid: "80668674"
 
 在 Azure 中创建 IoT 中心设备预配服务的新实例，并将其链接到 IoT 中心。 可以遵照[设置 IoT 中心 DPS](../iot-dps/quick-setup-auto-provision.md) 中的说明操作。
 
-运行设备预配服务后，从概述页复制“ID 范围”的值。**** 配置 IoT Edge 运行时时，需要使用此值。
+运行设备预配服务后，从概述页复制“ID 范围”的值。  配置 IoT Edge 运行时时，需要使用此值。
 
 ## <a name="choose-a-unique-registration-id-for-the-device"></a>选择设备的唯一注册 ID
 
 必须定义唯一注册 ID 来标识每个设备。 可以使用 MAC 地址、序列号或设备中的任何唯一信息。
 
-在此示例中，我们使用 MAC 地址和序列号的组合，组成以下字符串的注册 ID： `sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6`。
+在此示例中，我们使用 MAC 地址和序列号的组合，构成以下注册 ID 字符串：`sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6`。
 
 为设备创建一个唯一注册 ID。 有效字符为小写字母数字和短划线（“-”）。
 
@@ -51,29 +51,29 @@ ms.locfileid: "80668674"
 
 使用设备的注册 ID 在 DPS 中创建单个注册。
 
-在 DPS 中创建注册时，可以声明“初始设备孪生状态”。**** 在设备孪生中可以设置标记，以便按解决方案中所需的任何指标（例如区域、环境、位置或设备类型）将设备分组。 这些标记用于创建[自动部署](how-to-deploy-monitor.md)。
+在 DPS 中创建注册时，可以声明“初始设备孪生状态”。  在设备孪生中可以设置标记，以便按解决方案中所需的任何指标（例如区域、环境、位置或设备类型）将设备分组。 这些标记用于创建[自动部署](how-to-deploy-at-scale.md)。
 
 > [!TIP]
 > 也可以在使用对称密钥证明时创建组注册，这与创建单个注册时的考虑因素相同。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，导航到 IoT 中心设备预配服务的实例。
 
-1. 在“设置”下，选择“管理注册”。********
+1. 在“设置”下，选择“管理注册”。  
 
-1. 选择“添加个人注册”，然后完成以下步骤以配置注册：****  
+1. 选择“添加个人注册”，然后完成以下步骤以配置注册：   
 
-   1. 对于“机制”，请选择“对称密钥”。********
+   1. 对于“机制”，请选择“对称密钥”。  
 
-   1. 选中“自动生成密钥”复选框。****
+   1. 选中“自动生成密钥”复选框。 
 
-   1. 提供为设备创建的“注册 ID”。****
+   1. 提供为设备创建的“注册 ID”。 
 
-   1. 根据需要，为设备提供“IoT 中心设备 ID”。**** 可以使用设备 ID 将单个设备指定为模块部署的目标。 如果未提供设备 ID，则会使用注册 ID。
+   1. 根据需要，为设备提供“IoT 中心设备 ID”。  可以使用设备 ID 将单个设备指定为模块部署的目标。 如果未提供设备 ID，则会使用注册 ID。
 
-   1. 选择“True”，声明该注册适用于 IoT Edge 设备。**** 对于组注册，所有设备必须是 IoT Edge 设备，或者都不是 IoT Edge 设备。
+   1. 选择“True”，声明该注册适用于 IoT Edge 设备。  对于组注册，所有设备必须是 IoT Edge 设备，或者都不是 IoT Edge 设备。
 
    > [!TIP]
-   > 在 Azure CLI 中，您可以创建[注册](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment)或[注册组](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group)，并使用**启用边缘**的标志指定设备或设备组是 IoT Edge 设备。
+   > 在 Azure CLI 中，可以创建[注册](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment)[组或注册组](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group)，并使用启用了**边缘**的标志来指定设备或设备组是 IoT Edge 设备。
 
    1. 接受设备预配服务分配策略中有关**如何将设备分配到中心**的默认值，或选择特定于此注册的其他值。
 
@@ -185,7 +185,7 @@ provisioning:
       symmetric_key: "<SYMMETRIC_KEY>"
 ```
 
-请将 `<SCOPE_ID>`、`<REGISTRATION_ID>` 和 `<SYMMETRIC_KEY>` 的占位符值替换为前面收集的数据。 确保**预配：** 行没有前面的空格，并且嵌套项由两个空格缩进。
+请将 `<SCOPE_ID>`、`<REGISTRATION_ID>` 和 `<SYMMETRIC_KEY>` 的占位符值替换为前面收集的数据。 请确保**预配：** 行没有前面的空格，并且嵌套项按两个空格缩进。
 
 ### <a name="windows-device"></a>Windows 设备
 
@@ -261,4 +261,4 @@ iotedge list
 
 ## <a name="next-steps"></a>后续步骤
 
-使用设备预配服务注册过程可以在预配新设备的同时，设置设备 ID 和设备孪生标记。 可以在自动设备管理中，使用这些值将单个设备或设备组指定为目标。 了解如何[使用 Azure 门户大规模部署和监视 IoT Edge 模块](how-to-deploy-monitor.md)，或[使用 Azure CLI](how-to-deploy-monitor-cli.md) 执行此操作。
+使用设备预配服务注册过程可以在预配新设备的同时，设置设备 ID 和设备孪生标记。 可以在自动设备管理中，使用这些值将单个设备或设备组指定为目标。 了解如何[使用 Azure 门户大规模部署和监视 IoT Edge 模块](how-to-deploy-at-scale.md)，或[使用 Azure CLI](how-to-deploy-cli-at-scale.md) 执行此操作。

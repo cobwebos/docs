@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: cathys
 keywords: visualstudio
-ms.openlocfilehash: 20b510453cfaedf1ec8cd74012865f374545d0cd
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 8dc0fa53423a4b181ab50cd4c1552115de175c89
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82115331"
+ms.locfileid: "82133691"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 上的 Visual Studio 映像
 使用预配置的 Azure 虚拟机 (VM) 中的 Visual Studio 是从无到启动并运行的开发环境的简单快捷方法。 具有不同 Visual Studio 配置的系统映像位于 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure)。
@@ -31,7 +31,7 @@ ms.locfileid: "82115331"
 | 发行版本                                                                                                                                                | 版本              | 产品版本   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
 | [Visual Studio 2019：最新版本（版本16.5）](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enterprise、Community | 版本16.5。4    |
-| [Visual Studio 2019： RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019?tab=Overview)                         | Enterprise、Community | 版本16.0.13    |
+| [Visual Studio 2019： RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019?tab=Overview)                         | Enterprise | 版本16.0.13    |
 | [Visual Studio 2017：最新（版本 15.9）](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)           | Enterprise、Community | 版本15.9.22   |
 | [Visual Studio 2017：RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)                             | Enterprise、Community | 版本15.0.28  |
 | [Visual Studio 2015：最新 (Update 3)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)               | Enterprise、Community | 版本 14.0.25431.01 |

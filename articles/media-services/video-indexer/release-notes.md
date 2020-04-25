@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 07046d181e8e83e0271cb78cfb182df4e76980b5
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 8a9c1ba8e6316ea79941fbec1fbd339893afdb35
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82115510"
+ms.locfileid: "82131206"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒体服务视频索引器发行说明
 
@@ -65,7 +65,7 @@ ms.locfileid: "82115510"
     * 将 URL 替换为指向视频索引器小组件 Api 的 URL （例如， [insights 小组件](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget)）
     * 使用视频索引器网站生成新的嵌入 URL：
          
-         按 "**播放**" 转到视频页面-> 单击 " ** &lt;嵌入&gt; ** " > 将 URL 复制到应用程序中：
+         按 "**播放**" 转到视频页面-> 单击 " ** &lt; / &gt;嵌入**" 按钮-> 将 URL 复制到应用程序中：
    
     区域 Url 不受支持，将在未来几周内被阻止。
 

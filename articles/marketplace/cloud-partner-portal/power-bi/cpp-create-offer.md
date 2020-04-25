@@ -1,5 +1,5 @@
 ---
-title: 创建 Power BI 应用产品/服务 |Azure 应用商店
+title: 创建 Power BI 应用服务 |Azure Marketplace
 description: 如何针对 Microsoft AppSource 市场创建 Power BI 应用产品/服务。
 author: dsindona
 ms.service: marketplace
@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: c396468bff0edef5cfceccd3d3c3394662111c10
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: c8273025b92a74286d3f918289ef9f21bd992182
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984838"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82143129"
 ---
 # <a name="create-a-power-bi-app-offer"></a>创建 Power BI 应用产品/服务
 
 >[!Important]
->从 2020 年 4 月 13 日起，我们将开始将 Power BI 应用优惠的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[Power BI 应用创建概述](https://aka.ms/AzureCreatePBIServiceApp)中的说明进行操作，以管理迁移的优惠。
+>从2020年4月13日开始，我们开始将 Power BI 应用程序的管理转移到合作伙伴中心。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[Power BI 应用创建概述](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)中的说明来管理迁移的产品/服务。
 
 本文列出了为 [AppSource](https://appsource.microsoft.com) 创建新的 Power BI 应用产品/服务时要遵循的步骤。 每个产品/服务在 AppSource 中都显示为其自己的实体。 在[云合作伙伴门户](https://cloudpartner.azure.com/)中创建新产品/服务时，需要为产品/服务提供四组资产。
 
@@ -26,7 +26,7 @@ ms.locfileid: "80984838"
 |   资产组      | 说明                                                                         |
 | ----------------   | ----------------                                                                    |
 | 产品/服务设置     | 产品/服务的主要标识和名称。                                      |
-| 技术信息     | 用于在客户端的 Power BI 工作区中安装应用的安装程序 URL。 有关如何生成此 URL 的详细信息，请参阅 [Power BI 应用文档](https://go.microsoft.com/fwlink/?linkid=2028636)。 |
+| 技术信息     | 用于在客户端的 Power BI 工作区中安装应用程序的安装程序 URL。 有关如何生成此 URL 的详细信息，请参阅 [Power BI 应用文档](https://go.microsoft.com/fwlink/?linkid=2028636)。 |
 | 店面详细信息 | 包含营销、法律和潜在客户管理资产。 营销资产包括产品/服务说明和徽标。 法律资产包括隐私政策、使用条款和其他法律文档。 潜在客户管理策略允许指定如何处理 AppSource 用户门户中的潜在客户。 |
 | 联系人           | 包含支持联系人和政策信息。                                     |
 

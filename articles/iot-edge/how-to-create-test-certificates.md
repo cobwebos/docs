@@ -4,16 +4,16 @@ description: 创建测试证书，并了解如何将其安装在 Azure IoT Edge 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/14/2020
+ms.date: 04/23/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 364846f6cef196f6cefa7872af48f262b387db4f
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 9540913cd86b74fd51e96aa9d1d1dd34c5d60631
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393817"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82129795"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>创建演示证书用于测试 IoT Edge 设备功能
 
@@ -29,12 +29,12 @@ IoT Edge 设备需要使用证书来保护运行时、模块和任何下游设�
 
 按照以下步骤创建用于测试 IoT Edge 方案的演示证书：
 
-1. 为设备上的证书生成[设置脚本](#set-up-scripts)。
-2. [创建](#create-root-ca-certificate)用于对方案的所有其他证书进行签名的根 CA 证书。
-3. 生成要测试的方案所需的证书：
-   * [创建 IoT 边缘设备标识证书](#create-iot-edge-device-identity-certificates)，以使用 IoT 中心设备配置服务测试自动预配。
-   * [创建 IoT Edge 设备 CA 证书](#create-iot-edge-device-ca-certificates)以测试生产方案或网关方案。
-   * [创建下游设备证书](#create-downstream-device-certificates)，以在网关方案中测试向 IoT 中心验证下游设备。
+1. [设置脚本](#set-up-scripts)，以便在设备上生成证书。
+2. [创建根 CA 证书](#create-root-ca-certificate)，用于签署适用于方案的所有其他证书。
+3. 针对要测试的方案生成所需的证书：
+   * [创建 IoT Edge 设备标识证书](#create-iot-edge-device-identity-certificates)，以便测试通过 IoT 中心设备预配服务进行的自动预配。
+   * [创建 IoT Edge 设备 CA 证书](#create-iot-edge-device-ca-certificates)，以便测试生产方案或网关方案。
+   * [创建下游设备证书](#create-downstream-device-certificates)，以便在网关方案中测试向 IoT 中心进行的下游设备身份验证。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -57,13 +57,13 @@ GitHub 上的 IoT Edge 存储库包含可用于创建演示证书的证书生成
 
 可通过多种方式安装 OpenSSL，包括以下选项：
 
-* **更简单：** 下载并安装任何[第三方 OpenSSL 二进制文件](https://wiki.openssl.org/index.php/Binaries)，例如，从[SourceForge 上的 OpenSSL](https://sourceforge.net/projects/openssl/)下载和安装。 将 openssl.exe 的完整路径添加到 PATH 环境变量。
+* **更轻松：** 下载并安装任何[第三方 OpenSSL 二进制文件](https://wiki.openssl.org/index.php/Binaries)，例如从 [SourceForge 上的 OpenSSL](https://sourceforge.net/projects/openssl/) 下载并安装。 将 openssl.exe 的完整路径添加到 PATH 环境变量。
 
-* **建议方法：** 在计算机上下载 OpenSSL 源代码并自行生成二进制文件，或者通过 [vcpkg](https://github.com/Microsoft/vcpkg) 生成。 下面列出的说明使用 vcpkg 下载源代码，并在 Windows 计算机上编译和安装 OpenSSL，所用的步骤都很简单。
+* **推荐：** 在计算机上下载 OpenSSL 源代码并自行生成二进制文件，或者通过 [vcpkg](https://github.com/Microsoft/vcpkg) 生成。 下面列出的说明使用 vcpkg 下载源代码，并在 Windows 计算机上编译和安装 OpenSSL，所用的步骤都很简单。
 
    1. 导航到要安装 vcpkg 的目录。 按照说明下载并安装 [vcpkg](https://github.com/Microsoft/vcpkg)。
 
-   2. 安装 vcpkg 后，请从 PowerShell 提示符运行以下命令，以安装适用于 Windows x64 的 OpenSSL 包。 此安装通常需要大约 5 分钟才能完成。
+   2. 安装 vcpkg 后，在 PowerShell 提示符下运行以下命令以安装适用于 Windows x64 的 OpenSSL 包。 此安装通常需要大约 5 分钟才能完成。
 
       ```powershell
       .\vcpkg install openssl:x64-windows
@@ -84,7 +84,7 @@ Azure IoT Edge Git 存储库包含可用于生成测试证书的脚本。
    git clone https://github.com/Azure/iotedge.git
    ```
 
-3. 导航到要在其中工作的目录。 在本文中，我们将调用此目录*\<WRKDIR>*。 所有证书和密钥将此工作目录中创建。
+3. 导航到要在其中工作的目录。 整篇文章将此目录称为 *\<WRKDIR>* 。 所有证书和密钥将此工作目录中创建。
 
 4. 将克隆的存储库中的配置文件和脚本文件复制到该工作目录。
 
@@ -125,7 +125,7 @@ Azure IoT Edge Git 存储库包含可用于生成测试证书的脚本。
    git clone https://github.com/Azure/iotedge.git
    ```
 
-2. 导航到要在其中工作的目录。 我们将在整个文章中引用此目录作为*\<WRKDIR>*。 所有证书和密钥文件都将在此目录中创建。
+2. 导航到要在其中工作的目录。 在整篇文章中，此目录称为 *\<WRKDIR>* 。 所有证书和密钥文件都将在此目录中创建。
   
 3. 将克隆的 IoT Edge 存储库中的配置文件和脚本文件复制到该工作目录。
 
@@ -187,7 +187,7 @@ Azure IoT Edge Git 存储库包含可用于生成测试证书的脚本。
 设备 CA 证书负责为设备上运行的模块创建证书。
 IoT Edge 设备在连接到下游设备时，也要通过此证书验证自身的身份。
 
-设备 CA 证书位于 IoT 边缘设备上 config.yaml 文件的 **"证书"** 部分中。
+设备 CA 证书位于 IoT Edge 设备上的 config.yaml 文件的 **Certificate** 节。
 
 在继续执行本部分所述的步骤之前，请执行[设置脚本](#set-up-scripts)和[创建根 CA 证书](#create-root-ca-certificate)部分所述的步骤。
 
@@ -206,9 +206,9 @@ IoT Edge 设备在连接到下游设备时，也要通过此证书验证自身�
    * `<WRKDIR>\certs\iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
    * `<WRKDIR>\private\iot-edge-device-MyEdgeDeviceCA.key.pem`
 
-传递到这些脚本中的网关设备名称不应与 config.yaml 中的"主机名"参数或 IoT 中心中的设备的 ID 相同。
+传递到这些脚本中的网关设备名称不应与 config.yaml 中的“hostname”参数相同，也不应与 IoT 中心的设备 ID 相同。
 脚本将“.ca”字符串追加到 网关设备名称 以防止用户在两个位置使用相同的名称来设置 IoT Edge 时出现名称冲突，从而帮助避免产生任何问题。
-但最好避免使用相同的名称。
+但是，最好避免使用相同的名称
 
 ### <a name="linux"></a>Linux
 
@@ -225,15 +225,15 @@ IoT Edge 设备在连接到下游设备时，也要通过此证书验证自身�
    * `<WRKDIR>/certs/iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
    * `<WRKDIR>/private/iot-edge-device-MyEdgeDeviceCA.key.pem`
 
-传递到这些脚本中的网关设备名称不应与 config.yaml 中的"主机名"参数或 IoT 中心中的设备的 ID 相同。
+传递到这些脚本中的网关设备名称不应与 config.yaml 中的“hostname”参数相同，也不应与 IoT 中心的设备 ID 相同。
 脚本将“.ca”字符串追加到 网关设备名称 以防止用户在两个位置使用相同的名称来设置 IoT Edge 时出现名称冲突，从而帮助避免产生任何问题。
-但最好避免使用相同的名称。
+但是，最好避免使用相同的名称
 
-## <a name="create-iot-edge-device-identity-certificates"></a>创建 IoT 边缘设备标识证书
+## <a name="create-iot-edge-device-identity-certificates"></a>创建 IoT Edge 设备标识证书
 
-设备标识证书用于通过[Azure IoT 中心设备配置服务 （DPS）](../iot-dps/index.yml)预配 IoT Edge 设备。
+设备标识证书用于通过 [Azure IoT 中心设备预配服务 (DPS)](../iot-dps/index.yml) 来预配 IoT Edge 设备。
 
-设备标识证书位于 IoT Edge 设备上的 config.yaml 文件的**预配**部分中。
+设备标识证书位于 IoT Edge 设备上的 config.yaml 文件的 **Provisioning** 节。
 
 在继续执行本部分所述的步骤之前，请执行[设置脚本](#set-up-scripts)和[创建根 CA 证书](#create-root-ca-certificate)部分所述的步骤。
 
@@ -245,9 +245,9 @@ IoT Edge 设备在连接到下游设备时，也要通过此证书验证自身�
 New-CACertsEdgeDeviceIdentity "<name>"
 ```
 
-传递给此命令的名称将是 IoT 中心中的 IoT 边缘设备的设备 ID。
+传递给此命令的名称将是 IoT 中心的 IoT Edge 设备的设备 ID。
 
-新的设备标识命令创建多个证书和密钥文件，包括三个在 DPS 中创建单个注册和安装 IoT Edge 运行时时将使用的文件：
+新的设备标识命令会创建多个证书和密钥文件，其中包括在 DPS 中创建单个注册和安装 IoT Edge 运行时将使用的三个证书和密钥文件：
 
 * `<WRKDIR>\certs\iot-edge-device-identity-<name>-full-chain.cert.pem`
 * `<WRKDIR>\certs\iot-edge-device-identity-<name>.cert.pem`
@@ -261,9 +261,9 @@ New-CACertsEdgeDeviceIdentity "<name>"
 ./certGen.sh create_edge_device_identity_certificate "<name>"
 ```
 
-传递给此命令的名称将是 IoT 中心中的 IoT 边缘设备的设备 ID。
+传递给此命令的名称将是 IoT 中心的 IoT Edge 设备的设备 ID。
 
-该脚本创建多个证书和密钥文件，包括三个在 DPS 中创建单个注册和安装 IoT Edge 运行时时将使用的文件：
+此脚本会创建多个证书和密钥文件，其中包括在 DPS 中创建单个注册和安装 IoT Edge 运行时将使用的三个证书和密钥文件：
 
 * `<WRKDIR>\certs\iot-edge-device-identity-<name>-full-chain.cert.pem`
 * `<WRKDIR>/certs/iot-edge-device-identity-<name>.cert.pem`
@@ -313,7 +313,7 @@ IoT 设备还需要其设备证书的副本，以便可以在 IoT 中心进行�
 3. 从每个证书中检索 SHA1 指纹（在 IoT 中心上下文中称为“指纹”）。 指纹是由 40 个十六进制字符组成的字符串。 使用以下 openssl 命令查看证书并查找指纹：
 
    ```PowerShell
-   openssl x509 -in <WRKDIR>\certs\iot-device-<device name>-primary.cert.pem -text -fingerprint | sed 's/[:]//g'
+   openssl x509 -in <WRKDIR>\certs\iot-device-<device name>-primary.cert.pem -text -fingerprint
    ```
 
    运行此命令两次，一次针对主要证书，另一次针对辅助证书。 使用自签名的 X.509 证书注册新 IoT 设备时，为这两个证书提供指纹。

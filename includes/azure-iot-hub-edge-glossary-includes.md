@@ -4,15 +4,15 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: dobett
-ms.openlocfilehash: c95bca125ea70cf32acad0d5ea67c3ad195ed704
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 30b8facfef6d90a444bd61d0ce041ed7dfef324e
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67173069"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131586"
 ---
 ## <a name="automatic-device-management"></a>自动设备管理
-Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的任务自动化，包括在大型设备阵列的整个生命周期内对其进行管理。 使用自动设备管理，可以根据设备的属性将一组设备指定为目标、定义所需的配置，并在设备进入管理范畴时让 IoT 中心更新这些设备。  包括[自动设备配置](../articles/iot-hub/iot-hub-auto-device-config.md)和 [IoT Edge 自动部署](../articles/iot-edge/how-to-deploy-monitor.md)。
+Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的任务自动化，包括在大型设备阵列的整个生命周期内对其进行管理。 使用自动设备管理，可以根据设备的属性将一组设备指定为目标、定义所需的配置，并在设备进入管理范畴时让 IoT 中心更新这些设备。  包括[自动设备配置](../articles/iot-hub/iot-hub-auto-device-config.md)和 [IoT Edge 自动部署](../articles/iot-edge/how-to-deploy-at-scale.md)。
 
 ## <a name="iot-edge"></a>IoT Edge
 Azure IoT Edge 支持在本地设备进行 Azure 服务和解决方案特定代码的云驱动部署。 IoT Edge 设备可以聚合其他设备的数据，以在数据发送到云之前执行计算和分析。 有关详细信息，请参阅 [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/)。
@@ -39,7 +39,7 @@ IoT Edge 运行时部件负责模块间通信、上游（流向 IoT 中心）和
 没有下游设备的 IoT Edge 设备。 
 
 ## <a name="iot-edge-module"></a>IoT Edge 模块
-IoT Edge 模块是可部署到 IoT Edge 设备的 Docker 容器。 它执行特定的任务，例如从设备引入消息、转换消息，或者将消息发送到 IoT 中心。 它与其他模块进行通信并将数据发送到 IoT Edge 运行时。 [了解开发 IoT 边缘模块的要求和工具](https://docs.microsoft.com/azure/iot-edge/module-development)。
+IoT Edge 模块是可部署到 IoT Edge 设备的 Docker 容器。 它执行特定的任务，例如从设备引入消息、转换消息，或者将消息发送到 IoT 中心。 它与其他模块进行通信并将数据发送到 IoT Edge 运行时。 [了解开发 IoT Edge 模块的要求和工具](https://docs.microsoft.com/azure/iot-edge/module-development)。
 
 ## <a name="iot-edge-module-identity"></a>IoT Edge 模块标识
 IoT 中心模块标识注册表中的记录详细说明，模块用来向 Edge 中心或 IoT 中心进行身份验证的存在和安全凭证。
@@ -60,4 +60,4 @@ IoT Edge 运行时包括 Microsoft 分发用于安装在 IoT Edge 设备上的�
 在一个设备的模块孪生上复制 IoT Edge 清单内容的操作。 基础 API 是泛型“应用配置”，仅将 IoT Edge 清单作为输入。
 
 ## <a name="iot-edge-target-condition"></a>IoT Edge 目标条件
-在 IoT Edge 部署中，目标条件是设备孪生标记上的任何布尔条件，用于选择部署的目标设备，例如**tag.环境 = prod**。持续评估目标条件，以包括任何满足要求的新设备或删除不再执行要求的设备。 了解有关[目标条件](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition)的详细信息
+在 IoT Edge 部署中，目标条件是设备孪生的标记上的任何布尔条件，用于选择部署的目标设备，例如**tag。环境 = 生产**。持续评估目标条件，以包括满足要求的所有新设备或删除不再需要的设备。 了解有关[目标条件](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition)的详细信息

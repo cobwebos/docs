@@ -8,31 +8,31 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 305632a0faa1eb7e217e86d36c5159e557df7aaf
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
-ms.translationtype: MT
+ms.openlocfilehash: 5652df0cf142af2ff96590368892530abcb3d667
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409258"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133230"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure 流分析输出的故障排除
 
-本文介绍了 Azure 流分析输出连接的常见问题、如何排除输出问题以及如何更正问题。 许多故障排除步骤都需要为流分析作业启用诊断日志。 如果未启用诊断日志，请参阅[使用诊断日志对 Azure 流分析进行故障排除](stream-analytics-job-diagnostic-logs.md)。
+本文介绍 Azure 流分析输出连接的常见问题，以及如何解决输出问题，以及如何解决问题。 许多故障排除步骤都需要为流分析作业启用资源和其他诊断日志。 如果未启用资源日志，请参阅[使用资源日志对 Azure 流分析进行故障排除](stream-analytics-job-diagnostic-logs.md)。
 
 ## <a name="output-not-produced-by-job"></a>不是由作业生成的输出
 
 1.  使用每项输出对应的“测试连接”按钮来验证与输出的连接****。
 
-2.  查看 **"监视器"** 选项卡上的[**监视指标**](stream-analytics-monitoring.md)。由于这些值是聚合的，因此指标将延迟几分钟。
-   * 如果输入事件大于 0，则作业能够读取输入数据。 如果输入事件不大于 0，则作业的输入出现问题。 请参阅[排除输入连接故障](stream-analytics-troubleshoot-input.md)，了解如何排除输入连接问题。
-   * 如果数据转换错误大于 0 并爬升，请参阅[Azure 流分析数据错误](data-errors.md)，了解有关数据转换错误的详细信息。
-   * 如果运行时错误大于 0，则作业可以接收数据，但在处理查询时生成错误。 若要查找错误，请转到[审核日志](../azure-resource-manager/management/view-activity-logs.md)并筛选“失败”** 状态。
-   * 如果输入事件大于 0，并且输出事件等于 0，则以下之一为 true：
+2.  查看 "**监视**" 选项卡上的 "[**监视指标**](stream-analytics-monitoring.md)"。由于值会进行聚合，因此指标会延迟几分钟。
+   * 如果输入事件大于0，则作业可以读取输入数据。 如果输入事件不大于0，则作业的输入有问题。 若要了解如何解决输入连接问题，请参阅[输入连接故障排除](stream-analytics-troubleshoot-input.md)。
+   * 如果数据转换错误大于0并上升，请参阅[Azure 流分析数据错误](data-errors.md)，了解有关数据转换错误的详细信息。
+   * 如果运行时错误大于0，则作业可以接收数据，但在处理查询时，会生成错误。 若要查找错误，请转到[审核日志](../azure-resource-manager/management/view-activity-logs.md)并筛选“失败”** 状态。
+   * 如果大于大于0且等于等于0，则满足以下条件之一：
       * 查询处理导致生成零个输出事件。
-      * 事件或字段可能格式错误，导致查询处理后输出为零。
+      * 事件或字段的格式可能不正确，在查询处理后生成零个输出。
       * 由于连接或身份验证原因，作业无法将数据推送到输出接收器。
 
-   对于前文所述的所有这些错误，操作日志消息会解释其他详细信息（包括发生了什么情况），但如果查询逻辑筛选掉了所有事件，则不提供这些详细信息。 如果处理多个事件生成错误，则每 10 分钟聚合一次错误。
+   对于前文所述的所有这些错误，操作日志消息会解释其他详细信息（包括发生了什么情况），但如果查询逻辑筛选掉了所有事件，则不提供这些详细信息。 如果处理多个事件时出现错误，将每10分钟聚合一次错误。
 
 ## <a name="job-output-is-delayed"></a>作业输出延迟
 
@@ -89,12 +89,12 @@ ms.locfileid: "80409258"
 
 ## <a name="get-help"></a>获取帮助
 
-有关进一步帮助，请尝试我们的[Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+若要获得进一步的帮助，请尝试我们的[Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure 流分析简介](stream-analytics-introduction.md)
-* [使用 Azure 流分析开始](stream-analytics-real-time-fraud-detection.md)
+* [开始使用 Azure 流分析](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
 * [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

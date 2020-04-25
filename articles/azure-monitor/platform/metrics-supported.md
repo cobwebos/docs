@@ -1,38 +1,38 @@
 ---
 title: Azure Monitor 按资源类型支持的指标
-description: 可在 Azure Monitor 中为每种资源类型使用的指标的列表。
+description: 可在 Azure 监视器中为每种资源类型使用的指标的列表。
 author: rboucher
 services: azure-monitor
 ms.topic: reference
 ms.date: 04/06/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 80e38893d764f35511793d8b31f596dcbf16dd42
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: f2e3c03ba599128cc4552f64637ebd63efcb4578
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991886"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82128454"
 ---
-# <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor 支持的指标
+# <a name="supported-metrics-with-azure-monitor"></a>Azure 监视器支持的指标
 
 > [!NOTE]
-> 此列表大部分是从 Azure 监视器指标 REST API 自动生成的。 通过 Github 对此列表所做的任何修改都可以在没有警告的情况下写入。 有关如何进行永久更新的详细信息，请与本文的作者联系。
+> 此列表主要从 Azure Monitor 度量值自动生成 REST API。 通过 Github 对此列表所做的任何修改都可以进行编写，而不会发出警告。 请与本文的作者联系，以获取有关如何进行永久更新的详细信息。
 
 Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指标图表、通过 REST API 访问指标，或者使用 PowerShell 或 CLI 查询指标。 
 
-本文是 Azure 监视器的整合指标管道当前可用的所有平台（即自动收集）指标的完整列表。 该列表上次更新于 2020 年 3 月 27 日。 在此日期之后更改或添加的指标可能不会显示在下面。 要以编程方式查询和访问指标列表，请使用[2018-01-01 api 版本](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
+本文列出了当前可用于 Azure Monitor 的合并指标管道的所有平台（即，自动收集的）指标。 此列表是最近一次更新的，27日，2020。 此日期之后更改或添加的指标可能不会出现在下面。 若要以编程方式查询和访问指标列表，请使用[2018-01-01 api 版本](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
 
-其他指标可在门户或旧版 API 中使用。 此处**未**列出在 Azure 虚拟机、服务交换矩阵和云服务中运行的来宾操作系统（来宾操作系统）的指标。 这些必须通过运行在操作系统或作为操作系统的一个或多个代理进行收集。 您可以使用当前处于公共预览的[自定义指标](metrics-custom-overview.md)API 将代理指标发送到平台指标数据库。 然后，您可以绘制图表、警报，并以其他方式使用来宾 os 指标（如平台指标）。 有关详细信息，请参阅[监视代理概述](agents-overview.md)。    
+其他指标可在门户或旧版 API 中使用。 此处**未**列出在 Azure 虚拟机、Service Fabric 和云服务中运行的来宾操作系统（来宾 os）的指标。 它们必须通过一个或多个代理收集，这些代理在或作为操作系统的一部分运行。 你可以使用[自定义指标](metrics-custom-overview.md)API （当前为公共预览版）将代理指标发送到平台指标数据库。 然后，你可以对诸如平台指标之类的来宾 os 指标进行图表、警报和其他使用。 有关详细信息，请参阅[监视代理概述](agents-overview.md)。    
 
-指标按命名空间组织。 有关属于它们的服务和命名空间的列表，请参阅[Azure 服务的资源提供程序](../../azure-resource-manager/management/azure-services-resource-providers.md)。 
+度量值按命名空间组织。 有关服务及其所属命名空间的列表，请参阅[Azure 服务的资源提供程序](../../azure-resource-manager/management/azure-services-resource-providers.md)。 
 
 > [!NOTE]
 > 当前不支持通过诊断设置发送多维指标。 多维指标将按平展后的单维指标导出，并跨维值聚合。
 >
 > ** 例如：可以基于每个队列级别浏览和绘制事件中心上的“传入消息”指标。 但是，当通过诊断设置导出时，该指标将表示为事件中心的所有队列中的所有传入消息。
 >
-> 有关可通过诊断设置导出的平台指标列表，请参阅[本文](metrics-supported-export-diagnostic-settings.md)。
+> 有关通过诊断设置导出的平台指标列表，请参阅[此文](metrics-supported-export-diagnostic-settings.md)。
 
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
@@ -45,11 +45,11 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |virtual_bytes_metric|虚拟字节|字节|平均值|虚拟字节数。|ServerResourceType|
 |TotalConnectionRequests|连接请求总数|Count|平均值|连接请求总数。 这些请求是到达的请求。|ServerResourceType|
 |SuccessfullConnectionsPerSec|每秒成功连接数|每秒计数|平均值|连接成功完成速率。|ServerResourceType|
-|TotalConnectionFailures|连接失败总数|Count|平均值|失败的连接尝试总数。|ServerResourceType|
-|CurrentUserSessions|当前用户会话数|Count|平均值|当前已建立的用户会话数。|ServerResourceType|
-|QueryPoolBusyThreads|查询池繁忙线程数|Count|平均值|查询线程池中的繁忙线程数。|ServerResourceType|
-|CommandPoolJobQueueLength|命令池作业队列长度|Count|平均值|命令线程池队列中的作业数。|ServerResourceType|
-|ProcessingPoolJobQueueLength|处理池作业队列长度|Count|平均值|处理线程池的队列中的非 I/O 作业数。|ServerResourceType|
+|TotalConnectionFailures|连接失败总数|计数|平均值|失败的连接尝试总数。|ServerResourceType|
+|CurrentUserSessions|当前用户会话数|计数|平均值|当前已建立的用户会话数。|ServerResourceType|
+|QueryPoolBusyThreads|查询池繁忙线程数|计数|平均值|查询线程池中的繁忙线程数。|ServerResourceType|
+|CommandPoolJobQueueLength|命令池作业队列长度|计数|平均值|命令线程池队列中的作业数。|ServerResourceType|
+|ProcessingPoolJobQueueLength|处理池作业队列长度|计数|平均值|处理线程池的队列中的非 I/O 作业数。|ServerResourceType|
 |CurrentConnections|连接: 当前连接数|Count|平均值|当前已建立的客户端连接的数量。|ServerResourceType|
 |CleanerCurrentPrice|内存: 清理器当前价格|Count|平均值|内存的当前价格，$/字节/时间，标准化为 1000。|ServerResourceType|
 |CleanerMemoryShrinkable|内存: 可收缩的清理器内存|字节|平均值|受后台清理器执行的清除影响的内存量（字节）。|ServerResourceType|
@@ -66,21 +66,21 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |RowsReadPerSec|处理: 每秒读取的行数|每秒计数|平均值|从所有关系数据库中读取行的速率。|ServerResourceType|
 |RowsConvertedPerSec|处理: 每秒转换的行数|每秒计数|平均值|在处理过程中转换行的速率。|ServerResourceType|
 |RowsWrittenPerSec|处理: 每秒写入的行数|每秒计数|平均值|在处理过程中写入行的速率。|ServerResourceType|
-|CommandPoolBusyThreads|线程: 命令池繁忙线程数|Count|平均值|命令线程池中的繁忙线程数。|ServerResourceType|
-|CommandPoolIdleThreads|线程: 命令池空闲线程数|Count|平均值|命令线程池中的空闲线程数。|ServerResourceType|
-|LongParsingBusyThreads|线程: 长分析繁忙线程数|Count|平均值|长分析线程池中的繁忙线程数。|ServerResourceType|
-|LongParsingIdleThreads|线程: 长分析空闲线程数|Count|平均值|长分析线程池中的空闲线程数。|ServerResourceType|
-|LongParsingJobQueueLength|线程: 长分析作业队列长度|Count|平均值|长分析线程池队列中的作业数。|ServerResourceType|
-|ProcessingPoolBusyIOJobThreads|线程: 处理池繁忙 I/O 作业线程数|Count|平均值|处理线程池中正在运行 I/O 作业的线程数。|ServerResourceType|
-|ProcessingPoolBusyNonIOThreads|线程: 处理池繁忙非 I/O 线程数|Count|平均值|处理线程池中正在运行非 I/O 作业的线程数。|ServerResourceType|
-|ProcessingPoolIOJobQueueLength|线程: 处理池 I/O 作业队列长度|Count|平均值|处理线程池队列中的 I/O 作业数。|ServerResourceType|
-|ProcessingPoolIdleIOJobThreads|线程: 处理池空闲 I/O 作业线程数|Count|平均值|处理线程池中可用于 I/O 作业的空闲线程数。|ServerResourceType|
-|ProcessingPoolIdleNonIOThreads|线程: 处理池空闲非 I/O 线程数|Count|平均值|处理线程池中专用于非 I/O 作业的空闲线程数。|ServerResourceType|
-|QueryPoolIdleThreads|线程: 查询池空闲线程数|Count|平均值|处理线程池中可用于 I/O 作业的空闲线程数。|ServerResourceType|
-|QueryPoolJobQueueLength|线程: 查询池作业队列长度|Count|平均值|查询线程池队列中的作业数。|ServerResourceType|
-|ShortParsingBusyThreads|线程: 短分析繁忙线程数|Count|平均值|短分析线程池中的繁忙线程数。|ServerResourceType|
+|CommandPoolBusyThreads|线程: 命令池繁忙线程数|计数|平均值|命令线程池中的繁忙线程数。|ServerResourceType|
+|CommandPoolIdleThreads|线程: 命令池空闲线程数|计数|平均值|命令线程池中的空闲线程数。|ServerResourceType|
+|LongParsingBusyThreads|线程: 长分析繁忙线程数|计数|平均值|长分析线程池中的繁忙线程数。|ServerResourceType|
+|LongParsingIdleThreads|线程: 长分析空闲线程数|计数|平均值|长分析线程池中的空闲线程数。|ServerResourceType|
+|LongParsingJobQueueLength|线程: 长分析作业队列长度|计数|平均值|长分析线程池队列中的作业数。|ServerResourceType|
+|ProcessingPoolBusyIOJobThreads|线程: 处理池繁忙 I/O 作业线程数|计数|平均值|处理线程池中正在运行 I/O 作业的线程数。|ServerResourceType|
+|ProcessingPoolBusyNonIOThreads|线程: 处理池繁忙非 I/O 线程数|计数|平均值|处理线程池中正在运行非 I/O 作业的线程数。|ServerResourceType|
+|ProcessingPoolIOJobQueueLength|线程: 处理池 I/O 作业队列长度|计数|平均值|处理线程池队列中的 I/O 作业数。|ServerResourceType|
+|ProcessingPoolIdleIOJobThreads|线程: 处理池空闲 I/O 作业线程数|计数|平均值|处理线程池中可用于 I/O 作业的空闲线程数。|ServerResourceType|
+|ProcessingPoolIdleNonIOThreads|线程: 处理池空闲非 I/O 线程数|计数|平均值|处理线程池中专用于非 I/O 作业的空闲线程数。|ServerResourceType|
+|QueryPoolIdleThreads|线程: 查询池空闲线程数|计数|平均值|处理线程池中可用于 I/O 作业的空闲线程数。|ServerResourceType|
+|QueryPoolJobQueueLength|线程: 查询池作业队列长度|计数|平均值|查询线程池队列中的作业数。|ServerResourceType|
+|ShortParsingBusyThreads|线程: 短分析繁忙线程数|计数|平均值|短分析线程池中的繁忙线程数。|ServerResourceType|
 |ShortParsingIdleThreads|线程: 短分析空闲线程数|Count|平均值|短分析线程池中的空闲线程数。|ServerResourceType|
-|ShortParsingJobQueueLength|线程: 短分析作业队列长度|Count|平均值|短分析线程池队列中的作业数。|ServerResourceType|
+|ShortParsingJobQueueLength|线程: 短分析作业队列长度|计数|平均值|短分析线程池队列中的作业数。|ServerResourceType|
 |memory_thrashing_metric|内存抖动|百分比|平均值|平均内存抖动。|ServerResourceType|
 |mashup_engine_qpu_metric|M 引擎 QPU|Count|平均值|糅合引擎进程的 QPU 使用率|ServerResourceType|
 |mashup_engine_memory_metric|M 引擎内存|字节|平均值|糅合引擎进程的内存使用率|ServerResourceType|
@@ -92,24 +92,24 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|TotalRequests|网关请求总数（已弃用）|Count|总计|网关请求数 - 请改用包含 GatewayResponseCodeCategory 维度的多维请求指标|Location,Hostname|
-|SuccessfulRequests|成功的网关请求数（已弃用）|Count|总计|成功的网关请求数 - 请改用包含 GatewayResponseCodeCategory 维度的多维请求指标|Location,Hostname|
-|UnauthorizedRequests|未经授权的网关请求数（已弃用）|Count|总计|未经授权的网关请求数 - 请改用包含 GatewayResponseCodeCategory 维度的多维请求指标|Location,Hostname|
+|TotalRequests|网关请求总数（已弃用）|计数|总计|网关请求数 - 请改用包含 GatewayResponseCodeCategory 维度的多维请求指标|Location,Hostname|
+|SuccessfulRequests|成功的网关请求数（已弃用）|计数|总计|成功的网关请求数 - 请改用包含 GatewayResponseCodeCategory 维度的多维请求指标|Location,Hostname|
+|UnauthorizedRequests|未经授权的网关请求数（已弃用）|计数|总计|未经授权的网关请求数 - 请改用包含 GatewayResponseCodeCategory 维度的多维请求指标|Location,Hostname|
 |FailedRequests|失败的网关请求数（已弃用）|Count|总计|网关请求失败数 - 请改用包含 GatewayResponseCodeCategory 维度的多维请求指标|Location,Hostname|
 |OtherRequests|其他网关请求数（已弃用）|Count|总计|其他网关请求数 - 请改用包含 GatewayResponseCodeCategory 维度的多维请求指标|Location,Hostname|
 |Duration|网关请求的总持续时间|毫秒|平均值|网关请求的总持续时间，以毫秒为单位|Location,Hostname|
 |BackendDuration|后端请求持续时间|毫秒|平均值|后端请求持续时间（毫秒）|Location,Hostname|
 |容量|容量|百分比|平均值|ApiManagement 服务的利用率指标|位置|
-|EventHubTotalEvents|事件中心事件总数|Count|总计|发送到事件中心的事件数|位置|
-|EventHubSuccessfulEvents|成功的事件中心事件数|Count|总计|成功的事件中心事件数|位置|
-|EventHubTotalFailedEvents|失败的事件中心事件数|Count|总计|失败的事件中心事件数|位置|
-|EventHubRejectedEvents|拒绝的事件中心事件数|Count|总计|拒绝的事件中心事件（配置不当或未授权）数|位置|
-|EventHubThrottledEvents|限制的事件中心事件数|Count|总计|限制的事件中心事件数|位置|
+|EventHubTotalEvents|事件中心事件总数|计数|总计|发送到事件中心的事件数|位置|
+|EventHubSuccessfulEvents|成功的事件中心事件数|计数|总计|成功的事件中心事件数|位置|
+|EventHubTotalFailedEvents|失败的事件中心事件数|计数|总计|失败的事件中心事件数|位置|
+|EventHubRejectedEvents|拒绝的事件中心事件数|计数|总计|拒绝的事件中心事件（配置不当或未授权）数|位置|
+|EventHubThrottledEvents|限制的事件中心事件数|计数|总计|限制的事件中心事件数|位置|
 |EventHubTimedoutEvents|超时的事件中心事件数|Count|总计|超时的事件中心事件数|位置|
-|EventHubDroppedEvents|删除的事件中心事件数|Count|总计|由于达到队列大小限制而跳过的事件数|位置|
+|EventHubDroppedEvents|删除的事件中心事件数|计数|总计|由于达到队列大小限制而跳过的事件数|位置|
 |EventHubTotalBytesSent|事件中心事件大小|字节|总计|事件中心事件的总大小，以字节为单位|位置|
 |Requests|Requests|Count|总计|包含多个维度的网关请求指标|Location,Hostname,LastErrorReason,BackendResponseCode,GatewayResponseCode,BackendResponseCodeCategory,GatewayResponseCodeCategory|
-|网络连接|资源网络连接状态（预览）|Count|总计|API 管理服务中从属资源类型的网络连接状态|位置，资源类型|
+|网络连接|资源的网络连接状态（预览）|Count|总计|API 管理服务中依赖资源类型的网络连接状态|位置，ResourceType|
 
 
 ## <a name="microsoftappconfigurationconfigurationstores"></a>Microsoft.AppConfiguration/configurationStores
@@ -142,10 +142,10 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |TomcatResponseAvgTime|Tomcat 请求平均时间|毫秒|平均值|Tomcat 请求平均时间|AppName,Pod|
 |TomcatRequestMaxTime|Tomcat 请求最大时间|毫秒|最大值|Tomcat 请求最大时间|AppName,Pod|
 |TomcatErrorCount|Tomcat 全局错误|Count|总计|Tomcat 全局错误|AppName,Pod|
-|TomcatSessionActiveMaxCount|Tomcat 会话最大活动计数|Count|总计|Tomcat 会话最大活动计数|AppName,Pod|
+|TomcatSessionActiveMaxCount|Tomcat 会话最大活动计数|计数|总计|Tomcat 会话最大活动计数|AppName,Pod|
 |TomcatSessionAliveMaxTime|Tomcat 会话最大活动时间|毫秒|最大值|Tomcat 会话最大活动时间|AppName,Pod|
-|TomcatSessionActiveCurrentCount|Tomcat 会话活动计数|Count|总计|Tomcat 会话活动计数|AppName,Pod|
-|TomcatSessionCreatedCount|Tomcat 创建的会话数|Count|总计|Tomcat 创建的会话数|AppName,Pod|
+|TomcatSessionActiveCurrentCount|Tomcat 会话活动计数|计数|总计|Tomcat 会话活动计数|AppName,Pod|
+|TomcatSessionCreatedCount|Tomcat 创建的会话数|计数|总计|Tomcat 创建的会话数|AppName,Pod|
 |TomcatSessionExpiredCount|Tomcat 过期的会话数|Count|总计|Tomcat 过期的会话数|AppName,Pod|
 |TomcatSessionRejectedCount|Tomcat 拒绝的会话数|Count|总计|Tomcat 拒绝的会话数|AppName,Pod|
 
@@ -154,7 +154,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|TotalJob|作业总数|Count|总计|作业总数|Runbook,Status|
+|TotalJob|作业总数|计数|总计|作业总数|Runbook,Status|
 |TotalUpdateDeploymentRuns|更新部署运行总数|Count|总计|软件更新部署运行总数|SoftwareUpdateConfigurationName,Status|
 |TotalUpdateDeploymentMachineRuns|更新部署计算机运行总数|Count|总计|软件更新部署运行中的软件更新部署计算机运行总数|SoftwareUpdateConfigurationName,Status,TargetComputer,SoftwareUpdateConfigurationRunId|
 
@@ -163,35 +163,35 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|CoreCount|专用核心计数|Count|总计|批处理帐户中的专用核心总数|无|
-|TotalNodeCount|专用节点计数|Count|总计|批处理帐户中的专用节点总数|无|
-|LowPriorityCoreCount|低优先级核心计数|Count|总计|批处理帐户中的低优先级核心总数|无|
-|TotalLowPriorityNodeCount|低优先级节点计数|Count|总计|批处理帐户中的低优先级节点总数|无|
-|CreatingNodeCount|正在创建的节点计数|Count|总计|正在创建的节点数目|无|
-|StartingNodeCount|正在启动的节点计数|Count|总计|正在启动的节点数目|无|
-|WaitingForStartTaskNodeCount|正在等待启动任务的节点计数|Count|总计|正在等待启动任务完成的节点数目|无|
-|StartTaskFailedNodeCount|启动任务失败的节点计数|Count|总计|启动任务失败的节点数目|无|
-|IdleNodeCount|空闲节点计数|Count|总计|空闲节点数目|无|
-|OfflineNodeCount|脱机节点计数|Count|总计|脱机节点数目|无|
-|RebootingNodeCount|正在重新启动的节点计数|Count|总计|正在重新启动的节点数目|无|
-|ReimagingNodeCount|正在重置映像的节点计数|Count|总计|正在重置映像的节点数目|无|
-|RunningNodeCount|正在运行的节点计数|Count|总计|正在运行的节点数目|无|
-|LeavingPoolNodeCount|正在退出池的节点计数|Count|总计|正在退出池的节点数目|无|
-|UnusableNodeCount|不可用的节点计数|Count|总计|不可用的节点数目|无|
-|PreemptedNodeCount|已占用节点计数|Count|总计|已占用节点数|无|
-|TaskStartEvent|任务启动事件数|Count|总计|已启动的任务总数|池 Id，作业 Id|
-|TaskCompleteEvent|任务完成事件数|Count|总计|已完成的任务总数|池 Id，作业 Id|
-|TaskFailEvent|任务失败事件数|Count|总计|处于失败状态的已完成任务总数|池 Id，作业 Id|
-|PoolCreateEvent|池创建事件数|Count|总计|已创建的池总数|poolId|
-|PoolResizeStartEvent|池调整大小启动事件数|Count|总计|已启动的池调整大小活动总数|poolId|
-|PoolResizeCompleteEvent|池调整大小完成事件数|Count|总计|已完成的池调整大小活动总数|poolId|
-|PoolDeleteStartEvent|池删除启动事件数|Count|总计|已启动的池删除活动总数|poolId|
-|PoolDeleteCompleteEvent|池删除完成事件数|Count|总计|已完成的池删除活动总数|poolId|
-|JobDeleteCompleteEvent|作业删除完成事件数|Count|总计|已成功删除的作业总数。|jobId|
-|JobDeleteStartEvent|作业删除启动事件数|Count|总计|已请求删除的作业总数。|jobId|
-|JobDisableCompleteEvent|作业禁用完成事件数|Count|总计|已成功禁用的作业总数。|jobId|
-|JobDisableStartEvent|作业禁用启动事件数|Count|总计|已请求禁用的作业总数。|jobId|
-|JobStartEvent|作业启动事件数|Count|总计|已成功启动的作业总数。|jobId|
+|CoreCount|专用核心计数|计数|总计|批处理帐户中的专用核心总数|无|
+|TotalNodeCount|专用节点计数|计数|总计|批处理帐户中的专用节点总数|无|
+|LowPriorityCoreCount|低优先级核心计数|计数|总计|批处理帐户中的低优先级核心总数|无|
+|TotalLowPriorityNodeCount|低优先级节点计数|计数|总计|批处理帐户中的低优先级节点总数|无|
+|CreatingNodeCount|正在创建的节点计数|计数|总计|正在创建的节点数目|无|
+|StartingNodeCount|正在启动的节点计数|计数|总计|正在启动的节点数目|无|
+|WaitingForStartTaskNodeCount|正在等待启动任务的节点计数|计数|总计|正在等待启动任务完成的节点数目|无|
+|StartTaskFailedNodeCount|启动任务失败的节点计数|计数|总计|启动任务失败的节点数目|无|
+|IdleNodeCount|空闲节点计数|计数|总计|空闲节点数目|无|
+|OfflineNodeCount|脱机节点计数|计数|总计|脱机节点数目|无|
+|RebootingNodeCount|正在重新启动的节点计数|计数|总计|正在重新启动的节点数目|无|
+|ReimagingNodeCount|正在重置映像的节点计数|计数|总计|正在重置映像的节点数目|无|
+|RunningNodeCount|正在运行的节点计数|计数|总计|正在运行的节点数目|无|
+|LeavingPoolNodeCount|正在退出池的节点计数|计数|总计|正在退出池的节点数目|无|
+|UnusableNodeCount|不可用的节点计数|计数|总计|不可用的节点数目|无|
+|PreemptedNodeCount|已占用节点计数|计数|总计|已占用节点数|无|
+|TaskStartEvent|任务启动事件数|计数|总计|已启动的任务总数|poolId，jobId|
+|TaskCompleteEvent|任务完成事件数|计数|总计|已完成的任务总数|poolId，jobId|
+|TaskFailEvent|任务失败事件数|计数|总计|处于失败状态的已完成任务总数|poolId，jobId|
+|PoolCreateEvent|池创建事件数|计数|总计|已创建的池总数|poolId|
+|PoolResizeStartEvent|池调整大小启动事件数|计数|总计|已启动的池调整大小活动总数|poolId|
+|PoolResizeCompleteEvent|池调整大小完成事件数|计数|总计|已完成的池调整大小活动总数|poolId|
+|PoolDeleteStartEvent|池删除启动事件数|计数|总计|已启动的池删除活动总数|poolId|
+|PoolDeleteCompleteEvent|池删除完成事件数|计数|总计|已完成的池删除活动总数|poolId|
+|JobDeleteCompleteEvent|作业删除完成事件数|计数|总计|已成功删除的作业总数。|jobId|
+|JobDeleteStartEvent|作业删除启动事件数|计数|总计|已请求删除的作业总数。|jobId|
+|JobDisableCompleteEvent|作业禁用完成事件数|计数|总计|已成功禁用的作业总数。|jobId|
+|JobDisableStartEvent|作业禁用启动事件数|计数|总计|已请求禁用的作业总数。|jobId|
+|JobStartEvent|作业启动事件数|计数|总计|已成功启动的作业总数。|jobId|
 |JobTerminateCompleteEvent|作业终止完成事件数|Count|总计|已成功终止的作业总数。|jobId|
 |JobTerminateStartEvent|作业终止启动事件数|Count|总计|已请求终止的作业总数。|jobId|
 
@@ -200,19 +200,19 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|提交的作业|提交的作业|Count|总计|提交的作业数|Scenario,ClusterName|
-|已完成的作业|已完成的作业|Count|总计|已完成的作业数|Scenario,ClusterName,ResultType|
-|节点总数|节点总数|Count|平均值|节点总数|Scenario,ClusterName|
-|活动节点数|活动节点数|Count|平均值|正在运行的节点数目|Scenario,ClusterName|
-|空闲节点数|空闲节点数|Count|平均值|空闲节点数目|Scenario,ClusterName|
-|不可用的节点数|不可用的节点数|Count|平均值|不可用的节点数目|Scenario,ClusterName|
-|占用的节点数|占用的节点数|Count|平均值|已占用节点数|Scenario,ClusterName|
-|正在退出的节点数|正在退出的节点数|Count|平均值|正在退出的节点数|Scenario,ClusterName|
-|核心总数|核心总数|Count|平均值|核心总数|Scenario,ClusterName|
-|活动核心数|活动核心数|Count|平均值|活动核心数|Scenario,ClusterName|
-|空闲核心数|空闲核心数|Count|平均值|空闲核心数|Scenario,ClusterName|
-|不可用的核心数|不可用的核心数|Count|平均值|不可用的核心数|Scenario,ClusterName|
-|占用的核心数|占用的核心数|Count|平均值|占用的核心数|Scenario,ClusterName|
+|提交的作业|提交的作业|计数|总计|提交的作业数|Scenario,ClusterName|
+|已完成的作业|已完成的作业|计数|总计|已完成的作业数|Scenario,ClusterName,ResultType|
+|节点总数|节点总数|计数|平均值|节点总数|Scenario,ClusterName|
+|活动节点数|活动节点数|计数|平均值|正在运行的节点数目|Scenario,ClusterName|
+|空闲节点数|空闲节点数|计数|平均值|空闲节点数目|Scenario,ClusterName|
+|不可用的节点数|不可用的节点数|计数|平均值|不可用的节点数目|Scenario,ClusterName|
+|占用的节点数|占用的节点数|计数|平均值|已占用节点数|Scenario,ClusterName|
+|正在退出的节点数|正在退出的节点数|计数|平均值|正在退出的节点数|Scenario,ClusterName|
+|核心总数|核心总数|计数|平均值|核心总数|Scenario,ClusterName|
+|活动核心数|活动核心数|计数|平均值|活动核心数|Scenario,ClusterName|
+|空闲核心数|空闲核心数|计数|平均值|空闲核心数|Scenario,ClusterName|
+|不可用的核心数|不可用的核心数|计数|平均值|不可用的核心数|Scenario,ClusterName|
+|占用的核心数|占用的核心数|计数|平均值|占用的核心数|Scenario,ClusterName|
 |正在退出的核心数|正在退出的核心数|Count|平均值|正在退出的核心数|Scenario,ClusterName|
 |配额利用率百分比|配额利用率百分比|Count|平均值|已利用的配额百分比|Scenario,ClusterName,VmFamilyName,VmPriority|
 
@@ -227,12 +227,12 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |StorageUsage|存储使用率|字节|平均值|存储使用率|节点|
 |IOReadBytes|IO 读取字节数|字节|总计|IO 读取字节数|节点|
 |IOWriteBytes|IO 写入字节数|字节|总计|IO 写入字节数|节点|
-|ConnectionAccepted|已接受的连接数|Count|总计|已接受的连接数|节点|
-|ConnectionHandled|已处理的连接数|Count|总计|已处理的连接数|节点|
-|ConnectionActive|活动连接数|Count|平均值|活动连接数|节点|
-|RequestHandled|已处理的请求数|Count|总计|已处理的请求数|节点|
-|ProcessedBlocks|已处理的块数|Count|总计|已处理的块数|节点|
-|ProcessedTransactions|已处理的事务数|Count|总计|已处理的事务数|节点|
+|ConnectionAccepted|已接受的连接数|计数|总计|已接受的连接数|节点|
+|ConnectionHandled|已处理的连接数|计数|总计|已处理的连接数|节点|
+|ConnectionActive|活动连接数|计数|平均值|活动连接数|节点|
+|RequestHandled|已处理的请求数|计数|总计|已处理的请求数|节点|
+|ProcessedBlocks|已处理的块数|计数|总计|已处理的块数|节点|
+|ProcessedTransactions|已处理的事务数|计数|总计|已处理的事务数|节点|
 |PendingTransactions|挂起的事务数|Count|平均值|挂起的事务数|节点|
 |QueuedTransactions|已排队的事务数|Count|平均值|已排队的事务数|节点|
 
@@ -262,166 +262,166 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |percentProcessorTime|CPU|百分比|最大值||ShardId|
 |cacheLatency|缓存延迟毫秒数（预览）|Count|平均值||ShardId|
 |错误|错误|Count|最大值||ShardId,ErrorType|
-|connectedclients0|连接的客户端数(分片 0)|Count|最大值||无|
-|totalcommandsprocessed0|总操作数(分片 0)|Count|总计||无|
-|cachehits0|缓存命中数(分片 0)|Count|总计||无|
-|cachemisses0|缓存未命中数(分片 0)|Count|总计||无|
-|getcommands0|Get 数(分片 0)|Count|总计||无|
-|setcommands0|Set 数(分片 0)|Count|总计||无|
-|operationsPerSecond0|每秒操作数（分片 0）|Count|最大值||无|
-|evictedkeys0|逐出的密钥数(分片 0)|Count|总计||无|
-|totalkeys0|总密钥数（分片 0）|Count|最大值||无|
-|expiredkeys0|过期的密钥数(分片 0)|Count|总计||无|
-|usedmemory0|已用内存量(分片 0)|字节|最大值||无|
-|usedmemoryRss0|已用内存 RSS (分片 0)|字节|最大值||无|
-|serverLoad0|服务器负载(分片 0)|百分比|最大值||无|
-|cacheWrite0|缓存写入量(分片 0)|每秒字节数|最大值||无|
-|cacheRead0|缓存读取量(分片 0)|每秒字节数|最大值||无|
-|percentProcessorTime0|CPU (分片 0)|百分比|最大值||无|
-|connectedclients1|连接的客户端数(分片 1)|Count|最大值||无|
-|totalcommandsprocessed1|总操作数(分片 1)|Count|总计||无|
-|cachehits1|缓存命中数(分片 1)|Count|总计||无|
-|cachemisses1|缓存未命中数(分片 1)|Count|总计||无|
-|getcommands1|Get 数(分片 1)|Count|总计||无|
-|setcommands1|Set 数(分片 1)|Count|总计||无|
-|operationsPerSecond1|每秒操作数（分片 1）|Count|最大值||无|
-|evictedkeys1|逐出的密钥数(分片 1)|Count|总计||无|
-|totalkeys1|总密钥数（分片 1）|Count|最大值||无|
-|expiredkeys1|过期的密钥数(分片 1)|Count|总计||无|
-|usedmemory1|已用内存量(分片 1)|字节|最大值||无|
-|usedmemoryRss1|已用内存 RSS (分片 1)|字节|最大值||无|
-|serverLoad1|服务器负载(分片 1)|百分比|最大值||无|
-|cacheWrite1|缓存写入量(分片 1)|每秒字节数|最大值||无|
-|cacheRead1|缓存读取量(分片 1)|每秒字节数|最大值||无|
-|percentProcessorTime1|CPU (分片 1)|百分比|最大值||无|
-|connectedclients2|连接的客户端数(分片 2)|Count|最大值||无|
-|totalcommandsprocessed2|总操作数(分片 2)|Count|总计||无|
-|cachehits2|缓存命中数(分片 2)|Count|总计||无|
-|cachemisses2|缓存未命中数(分片 2)|Count|总计||无|
-|getcommands2|Get 数(分片 2)|Count|总计||无|
-|setcommands2|Set 数(分片 2)|Count|总计||无|
-|operationsPerSecond2|每秒操作数（分片 2）|Count|最大值||无|
-|evictedkeys2|逐出的密钥数(分片 2)|Count|总计||无|
-|totalkeys2|总密钥数（分片 2）|Count|最大值||无|
-|expiredkeys2|过期的密钥数(分片 2)|Count|总计||无|
-|usedmemory2|已用内存量(分片 2)|字节|最大值||无|
-|usedmemoryRss2|已用内存 RSS (分片 2)|字节|最大值||无|
-|serverLoad2|服务器负载(分片 2)|百分比|最大值||无|
-|cacheWrite2|缓存写入量(分片 2)|每秒字节数|最大值||无|
-|cacheRead2|缓存读取量(分片 2)|每秒字节数|最大值||无|
-|percentProcessorTime2|CPU (分片 2)|百分比|最大值||无|
-|connectedclients3|连接的客户端数(分片 3)|Count|最大值||无|
-|totalcommandsprocessed3|总操作数(分片 3)|Count|总计||无|
-|cachehits3|缓存命中数(分片 3)|Count|总计||无|
-|cachemisses3|缓存未命中数(分片 3)|Count|总计||无|
-|getcommands3|Get 数(分片 3)|Count|总计||无|
-|setcommands3|Set 数(分片 3)|Count|总计||无|
-|operationsPerSecond3|每秒操作数（分片 3）|Count|最大值||无|
-|evictedkeys3|逐出的密钥数(分片 3)|Count|总计||无|
-|totalkeys3|总密钥数（分片 3）|Count|最大值||无|
-|expiredkeys3|过期的密钥数(分片 3)|Count|总计||无|
-|usedmemory3|已用内存量(分片 3)|字节|最大值||无|
-|usedmemoryRss3|已用内存 RSS (分片 3)|字节|最大值||无|
-|serverLoad3|服务器负载(分片 3)|百分比|最大值||无|
-|cacheWrite3|缓存写入量(分片 3)|每秒字节数|最大值||无|
-|cacheRead3|缓存读取量(分片 3)|每秒字节数|最大值||无|
-|percentProcessorTime3|CPU (分片 3)|百分比|最大值||无|
-|connectedclients4|连接的客户端数(分片 4)|Count|最大值||无|
-|totalcommandsprocessed4|总操作数(分片 4)|Count|总计||无|
-|cachehits4|缓存命中数(分片 4)|Count|总计||无|
-|cachemisses4|缓存未命中数(分片 4)|Count|总计||无|
-|getcommands4|Get 数(分片 4)|Count|总计||无|
-|setcommands4|Set 数(分片 4)|Count|总计||无|
-|operationsPerSecond4|每秒操作数（分片 4）|Count|最大值||无|
-|evictedkeys4|逐出的密钥数(分片 4)|Count|总计||无|
-|totalkeys4|总密钥数（分片 4）|Count|最大值||无|
-|expiredkeys4|过期的密钥数(分片 4)|Count|总计||无|
-|usedmemory4|已用内存量(分片 4)|字节|最大值||无|
-|usedmemoryRss4|已用内存 RSS (分片 4)|字节|最大值||无|
-|serverLoad4|服务器负载(分片 4)|百分比|最大值||无|
-|cacheWrite4|缓存写入量(分片 4)|每秒字节数|最大值||无|
-|cacheRead4|缓存读取量(分片 4)|每秒字节数|最大值||无|
-|percentProcessorTime4|CPU (分片 4)|百分比|最大值||无|
-|connectedclients5|连接的客户端数(分片 5)|Count|最大值||无|
-|totalcommandsprocessed5|总操作数(分片 5)|Count|总计||无|
-|cachehits5|缓存命中数(分片 5)|Count|总计||无|
-|cachemisses5|缓存未命中数(分片 5)|Count|总计||无|
-|getcommands5|Get 数(分片 5)|Count|总计||无|
-|setcommands5|Set 数(分片 5)|Count|总计||无|
-|operationsPerSecond5|每秒操作数（分片 5）|Count|最大值||无|
-|evictedkeys5|逐出的密钥数(分片 5)|Count|总计||无|
-|totalkeys5|总密钥数（分片 5）|Count|最大值||无|
-|expiredkeys5|过期的密钥数(分片 5)|Count|总计||无|
-|usedmemory5|已用内存量(分片 5)|字节|最大值||无|
-|usedmemoryRss5|已用内存 RSS (分片 5)|字节|最大值||无|
-|serverLoad5|服务器负载(分片 5)|百分比|最大值||无|
-|cacheWrite5|缓存写入量(分片 5)|每秒字节数|最大值||无|
-|cacheRead5|缓存读取量(分片 5)|每秒字节数|最大值||无|
-|percentProcessorTime5|CPU (分片 5)|百分比|最大值||无|
-|connectedclients6|连接的客户端数(分片 6)|Count|最大值||无|
-|totalcommandsprocessed6|总操作数(分片 6)|Count|总计||无|
-|cachehits6|缓存命中数(分片 6)|Count|总计||无|
-|cachemisses6|缓存未命中数(分片 6)|Count|总计||无|
-|getcommands6|Get 数(分片 6)|Count|总计||无|
-|setcommands6|Set 数(分片 6)|Count|总计||无|
-|operationsPerSecond6|每秒操作数（分片 6）|Count|最大值||无|
-|evictedkeys6|逐出的密钥数(分片 6)|Count|总计||无|
-|totalkeys6|总密钥数（分片 6）|Count|最大值||无|
-|expiredkeys6|过期的密钥数(分片 6)|Count|总计||无|
-|usedmemory6|已用内存量(分片 6)|字节|最大值||无|
-|usedmemoryRss6|已用内存 RSS (分片 6)|字节|最大值||无|
-|serverLoad6|服务器负载(分片 6)|百分比|最大值||无|
-|cacheWrite6|缓存写入量(分片 6)|每秒字节数|最大值||无|
-|cacheRead6|缓存读取量(分片 6)|每秒字节数|最大值||无|
-|percentProcessorTime6|CPU (分片 6)|百分比|最大值||无|
-|connectedclients7|连接的客户端数(分片 7)|Count|最大值||无|
-|totalcommandsprocessed7|总操作数(分片 7)|Count|总计||无|
-|cachehits7|缓存命中数(分片 7)|Count|总计||无|
-|cachemisses7|缓存未命中数(分片 7)|Count|总计||无|
-|getcommands7|Get 数(分片 7)|Count|总计||无|
-|setcommands7|Set 数(分片 7)|Count|总计||无|
-|operationsPerSecond7|每秒操作数（分片 7）|Count|最大值||无|
-|evictedkeys7|逐出的密钥数(分片 7)|Count|总计||无|
-|totalkeys7|总密钥数（分片 7）|Count|最大值||无|
-|expiredkeys7|过期的密钥数(分片 7)|Count|总计||无|
-|usedmemory7|已用内存量(分片 7)|字节|最大值||无|
-|usedmemoryRss7|已用内存 RSS (分片 7)|字节|最大值||无|
-|serverLoad7|服务器负载(分片 7)|百分比|最大值||无|
-|cacheWrite7|缓存写入量(分片 7)|每秒字节数|最大值||无|
-|cacheRead7|缓存读取量(分片 7)|每秒字节数|最大值||无|
-|percentProcessorTime7|CPU (分片 7)|百分比|最大值||无|
-|connectedclients8|连接的客户端数(分片 8)|Count|最大值||无|
-|totalcommandsprocessed8|总操作数(分片 8)|Count|总计||无|
-|cachehits8|缓存命中数(分片 8)|Count|总计||无|
-|cachemisses8|缓存未命中数(分片 8)|Count|总计||无|
-|getcommands8|Get 数(分片 8)|Count|总计||无|
-|setcommands8|Set 数(分片 8)|Count|总计||无|
-|operationsPerSecond8|每秒操作数（分片 8）|Count|最大值||无|
-|evictedkeys8|逐出的密钥数(分片 8)|Count|总计||无|
-|totalkeys8|总密钥数（分片 8）|Count|最大值||无|
-|expiredkeys8|过期的密钥数(分片 8)|Count|总计||无|
-|usedmemory8|已用内存量(分片 8)|字节|最大值||无|
-|usedmemoryRss8|已用内存 RSS (分片 8)|字节|最大值||无|
-|serverLoad8|服务器负载(分片 8)|百分比|最大值||无|
-|cacheWrite8|缓存写入量(分片 8)|每秒字节数|最大值||无|
-|cacheRead8|缓存读取量(分片 8)|每秒字节数|最大值||无|
-|percentProcessorTime8|CPU (分片 8)|百分比|最大值||无|
-|connectedclients9|连接的客户端数(分片 9)|Count|最大值||无|
-|totalcommandsprocessed9|总操作数(分片 9)|Count|总计||无|
-|cachehits9|缓存命中数(分片 9)|Count|总计||无|
-|cachemisses9|缓存未命中数(分片 9)|Count|总计||无|
-|getcommands9|Get 数(分片 9)|Count|总计||无|
-|setcommands9|Set 数(分片 9)|Count|总计||无|
-|operationsPerSecond9|每秒操作数（分片 9）|Count|最大值||无|
-|evictedkeys9|逐出的密钥数(分片 9)|Count|总计||无|
-|totalkeys9|总密钥数（分片 9）|Count|最大值||无|
-|expiredkeys9|过期的密钥数(分片 9)|Count|总计||无|
-|usedmemory9|已用内存量(分片 9)|字节|最大值||无|
-|usedmemoryRss9|已用内存 RSS (分片 9)|字节|最大值||无|
-|serverLoad9|服务器负载(分片 9)|百分比|最大值||无|
-|cacheWrite9|缓存写入量(分片 9)|每秒字节数|最大值||无|
-|cacheRead9|缓存读取量(分片 9)|每秒字节数|最大值||无|
-|percentProcessorTime9|CPU (分片 9)|百分比|最大值||无|
+|connectedclients0|连接的客户端数(分片 0)|Count|最大值||None|
+|totalcommandsprocessed0|总操作数(分片 0)|Count|总计||None|
+|cachehits0|缓存命中数(分片 0)|Count|总计||None|
+|cachemisses0|缓存未命中数(分片 0)|Count|总计||None|
+|getcommands0|Get 数(分片 0)|Count|总计||None|
+|setcommands0|Set 数(分片 0)|Count|总计||None|
+|operationsPerSecond0|每秒操作数（分片 0）|Count|最大值||None|
+|evictedkeys0|逐出的密钥数(分片 0)|Count|总计||None|
+|totalkeys0|总密钥数（分片 0）|Count|最大值||None|
+|expiredkeys0|过期的密钥数(分片 0)|Count|总计||None|
+|usedmemory0|已用内存量(分片 0)|字节|最大值||None|
+|usedmemoryRss0|已用内存 RSS (分片 0)|字节|最大值||None|
+|serverLoad0|服务器负载(分片 0)|百分比|最大值||None|
+|cacheWrite0|缓存写入量(分片 0)|每秒字节数|最大值||None|
+|cacheRead0|缓存读取量(分片 0)|每秒字节数|最大值||None|
+|percentProcessorTime0|CPU (分片 0)|百分比|最大值||None|
+|connectedclients1|连接的客户端数(分片 1)|Count|最大值||None|
+|totalcommandsprocessed1|总操作数(分片 1)|Count|总计||None|
+|cachehits1|缓存命中数(分片 1)|Count|总计||None|
+|cachemisses1|缓存未命中数(分片 1)|Count|总计||None|
+|getcommands1|Get 数(分片 1)|Count|总计||None|
+|setcommands1|Set 数(分片 1)|Count|总计||None|
+|operationsPerSecond1|每秒操作数（分片 1）|Count|最大值||None|
+|evictedkeys1|逐出的密钥数(分片 1)|Count|总计||None|
+|totalkeys1|总密钥数（分片 1）|Count|最大值||None|
+|expiredkeys1|过期的密钥数(分片 1)|Count|总计||None|
+|usedmemory1|已用内存量(分片 1)|字节|最大值||None|
+|usedmemoryRss1|已用内存 RSS (分片 1)|字节|最大值||None|
+|serverLoad1|服务器负载(分片 1)|百分比|最大值||None|
+|cacheWrite1|缓存写入量(分片 1)|每秒字节数|最大值||None|
+|cacheRead1|缓存读取量(分片 1)|每秒字节数|最大值||None|
+|percentProcessorTime1|CPU (分片 1)|百分比|最大值||None|
+|connectedclients2|连接的客户端数(分片 2)|Count|最大值||None|
+|totalcommandsprocessed2|总操作数(分片 2)|Count|总计||None|
+|cachehits2|缓存命中数(分片 2)|Count|总计||None|
+|cachemisses2|缓存未命中数(分片 2)|Count|总计||None|
+|getcommands2|Get 数(分片 2)|Count|总计||None|
+|setcommands2|Set 数(分片 2)|Count|总计||None|
+|operationsPerSecond2|每秒操作数（分片 2）|Count|最大值||None|
+|evictedkeys2|逐出的密钥数(分片 2)|Count|总计||None|
+|totalkeys2|总密钥数（分片 2）|Count|最大值||None|
+|expiredkeys2|过期的密钥数(分片 2)|Count|总计||None|
+|usedmemory2|已用内存量(分片 2)|字节|最大值||None|
+|usedmemoryRss2|已用内存 RSS (分片 2)|字节|最大值||None|
+|serverLoad2|服务器负载(分片 2)|百分比|最大值||None|
+|cacheWrite2|缓存写入量(分片 2)|每秒字节数|最大值||None|
+|cacheRead2|缓存读取量(分片 2)|每秒字节数|最大值||None|
+|percentProcessorTime2|CPU (分片 2)|百分比|最大值||None|
+|connectedclients3|连接的客户端数(分片 3)|Count|最大值||None|
+|totalcommandsprocessed3|总操作数(分片 3)|Count|总计||None|
+|cachehits3|缓存命中数(分片 3)|Count|总计||None|
+|cachemisses3|缓存未命中数(分片 3)|Count|总计||None|
+|getcommands3|Get 数(分片 3)|Count|总计||None|
+|setcommands3|Set 数(分片 3)|Count|总计||None|
+|operationsPerSecond3|每秒操作数（分片 3）|Count|最大值||None|
+|evictedkeys3|逐出的密钥数(分片 3)|Count|总计||None|
+|totalkeys3|总密钥数（分片 3）|Count|最大值||None|
+|expiredkeys3|过期的密钥数(分片 3)|Count|总计||None|
+|usedmemory3|已用内存量(分片 3)|字节|最大值||None|
+|usedmemoryRss3|已用内存 RSS (分片 3)|字节|最大值||None|
+|serverLoad3|服务器负载(分片 3)|百分比|最大值||None|
+|cacheWrite3|缓存写入量(分片 3)|每秒字节数|最大值||None|
+|cacheRead3|缓存读取量(分片 3)|每秒字节数|最大值||None|
+|percentProcessorTime3|CPU (分片 3)|百分比|最大值||None|
+|connectedclients4|连接的客户端数(分片 4)|Count|最大值||None|
+|totalcommandsprocessed4|总操作数(分片 4)|Count|总计||None|
+|cachehits4|缓存命中数(分片 4)|Count|总计||None|
+|cachemisses4|缓存未命中数(分片 4)|Count|总计||None|
+|getcommands4|Get 数(分片 4)|Count|总计||None|
+|setcommands4|Set 数(分片 4)|Count|总计||None|
+|operationsPerSecond4|每秒操作数（分片 4）|Count|最大值||None|
+|evictedkeys4|逐出的密钥数(分片 4)|Count|总计||None|
+|totalkeys4|总密钥数（分片 4）|Count|最大值||None|
+|expiredkeys4|过期的密钥数(分片 4)|Count|总计||None|
+|usedmemory4|已用内存量(分片 4)|字节|最大值||None|
+|usedmemoryRss4|已用内存 RSS (分片 4)|字节|最大值||None|
+|serverLoad4|服务器负载(分片 4)|百分比|最大值||None|
+|cacheWrite4|缓存写入量(分片 4)|每秒字节数|最大值||None|
+|cacheRead4|缓存读取量(分片 4)|每秒字节数|最大值||None|
+|percentProcessorTime4|CPU (分片 4)|百分比|最大值||None|
+|connectedclients5|连接的客户端数(分片 5)|Count|最大值||None|
+|totalcommandsprocessed5|总操作数(分片 5)|Count|总计||None|
+|cachehits5|缓存命中数(分片 5)|Count|总计||None|
+|cachemisses5|缓存未命中数(分片 5)|Count|总计||None|
+|getcommands5|Get 数(分片 5)|Count|总计||None|
+|setcommands5|Set 数(分片 5)|Count|总计||None|
+|operationsPerSecond5|每秒操作数（分片 5）|Count|最大值||None|
+|evictedkeys5|逐出的密钥数(分片 5)|Count|总计||None|
+|totalkeys5|总密钥数（分片 5）|Count|最大值||None|
+|expiredkeys5|过期的密钥数(分片 5)|Count|总计||None|
+|usedmemory5|已用内存量(分片 5)|字节|最大值||None|
+|usedmemoryRss5|已用内存 RSS (分片 5)|字节|最大值||None|
+|serverLoad5|服务器负载(分片 5)|百分比|最大值||None|
+|cacheWrite5|缓存写入量(分片 5)|每秒字节数|最大值||None|
+|cacheRead5|缓存读取量(分片 5)|每秒字节数|最大值||None|
+|percentProcessorTime5|CPU (分片 5)|百分比|最大值||None|
+|connectedclients6|连接的客户端数(分片 6)|Count|最大值||None|
+|totalcommandsprocessed6|总操作数(分片 6)|Count|总计||None|
+|cachehits6|缓存命中数(分片 6)|Count|总计||None|
+|cachemisses6|缓存未命中数(分片 6)|Count|总计||None|
+|getcommands6|Get 数(分片 6)|Count|总计||None|
+|setcommands6|Set 数(分片 6)|Count|总计||None|
+|operationsPerSecond6|每秒操作数（分片 6）|Count|最大值||None|
+|evictedkeys6|逐出的密钥数(分片 6)|Count|总计||None|
+|totalkeys6|总密钥数（分片 6）|Count|最大值||None|
+|expiredkeys6|过期的密钥数(分片 6)|Count|总计||None|
+|usedmemory6|已用内存量(分片 6)|字节|最大值||None|
+|usedmemoryRss6|已用内存 RSS (分片 6)|字节|最大值||None|
+|serverLoad6|服务器负载(分片 6)|百分比|最大值||None|
+|cacheWrite6|缓存写入量(分片 6)|每秒字节数|最大值||None|
+|cacheRead6|缓存读取量(分片 6)|每秒字节数|最大值||None|
+|percentProcessorTime6|CPU (分片 6)|百分比|最大值||None|
+|connectedclients7|连接的客户端数(分片 7)|Count|最大值||None|
+|totalcommandsprocessed7|总操作数(分片 7)|Count|总计||None|
+|cachehits7|缓存命中数(分片 7)|Count|总计||None|
+|cachemisses7|缓存未命中数(分片 7)|Count|总计||None|
+|getcommands7|Get 数(分片 7)|Count|总计||None|
+|setcommands7|Set 数(分片 7)|Count|总计||None|
+|operationsPerSecond7|每秒操作数（分片 7）|Count|最大值||None|
+|evictedkeys7|逐出的密钥数(分片 7)|Count|总计||None|
+|totalkeys7|总密钥数（分片 7）|Count|最大值||None|
+|expiredkeys7|过期的密钥数(分片 7)|Count|总计||None|
+|usedmemory7|已用内存量(分片 7)|字节|最大值||None|
+|usedmemoryRss7|已用内存 RSS (分片 7)|字节|最大值||None|
+|serverLoad7|服务器负载(分片 7)|百分比|最大值||None|
+|cacheWrite7|缓存写入量(分片 7)|每秒字节数|最大值||None|
+|cacheRead7|缓存读取量(分片 7)|每秒字节数|最大值||None|
+|percentProcessorTime7|CPU (分片 7)|百分比|最大值||None|
+|connectedclients8|连接的客户端数(分片 8)|Count|最大值||None|
+|totalcommandsprocessed8|总操作数(分片 8)|Count|总计||None|
+|cachehits8|缓存命中数(分片 8)|Count|总计||None|
+|cachemisses8|缓存未命中数(分片 8)|Count|总计||None|
+|getcommands8|Get 数(分片 8)|Count|总计||None|
+|setcommands8|Set 数(分片 8)|Count|总计||None|
+|operationsPerSecond8|每秒操作数（分片 8）|Count|最大值||None|
+|evictedkeys8|逐出的密钥数(分片 8)|Count|总计||None|
+|totalkeys8|总密钥数（分片 8）|Count|最大值||None|
+|expiredkeys8|过期的密钥数(分片 8)|Count|总计||None|
+|usedmemory8|已用内存量(分片 8)|字节|最大值||None|
+|usedmemoryRss8|已用内存 RSS (分片 8)|字节|最大值||None|
+|serverLoad8|服务器负载(分片 8)|百分比|最大值||None|
+|cacheWrite8|缓存写入量(分片 8)|每秒字节数|最大值||None|
+|cacheRead8|缓存读取量(分片 8)|每秒字节数|最大值||None|
+|percentProcessorTime8|CPU (分片 8)|百分比|最大值||None|
+|connectedclients9|连接的客户端数(分片 9)|Count|最大值||None|
+|totalcommandsprocessed9|总操作数(分片 9)|Count|总计||None|
+|cachehits9|缓存命中数(分片 9)|Count|总计||None|
+|cachemisses9|缓存未命中数(分片 9)|Count|总计||None|
+|getcommands9|Get 数(分片 9)|Count|总计||None|
+|setcommands9|Set 数(分片 9)|Count|总计||None|
+|operationsPerSecond9|每秒操作数（分片 9）|Count|最大值||None|
+|evictedkeys9|逐出的密钥数(分片 9)|Count|总计||None|
+|totalkeys9|总密钥数（分片 9）|Count|最大值||None|
+|expiredkeys9|过期的密钥数(分片 9)|Count|总计||None|
+|usedmemory9|已用内存量(分片 9)|字节|最大值||None|
+|usedmemoryRss9|已用内存 RSS (分片 9)|字节|最大值||None|
+|serverLoad9|服务器负载(分片 9)|百分比|最大值||None|
+|cacheWrite9|缓存写入量(分片 9)|每秒字节数|最大值||None|
+|cacheRead9|缓存读取量(分片 9)|每秒字节数|最大值||None|
+|percentProcessorTime9|CPU (分片 9)|百分比|最大值||None|
 
 
 
@@ -442,8 +442,8 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |网络传出|网络传出|字节|总计|虚拟机在所有网络接口上发出的字节数（传出流量）。|无|
 |Disk Read Bytes/Sec|磁盘读取|每秒字节数|平均值|监视期间从磁盘读取的平均字节数。|无|
 |Disk Write Bytes/Sec|磁盘写入|每秒字节数|平均值|监视期间向磁盘写入的平均字节数。|无|
-|磁盘读取操作次数/秒|磁盘读取操作次数/秒|每秒计数|平均值|磁盘读取 IOPS。|无|
-|磁盘写入操作次数/秒|磁盘写入操作次数/秒|每秒计数|平均值|磁盘写入 IOPS。|无|
+|磁盘读取操作次数/秒|磁盘读取操作次数/秒|每秒计数|平均值|磁盘读取 IOPS。|None|
+|磁盘写入操作次数/秒|磁盘写入操作次数/秒|每秒计数|平均值|磁盘写入 IOPS。|None|
 
 
 ## <a name="microsoftclassiccomputedomainnamesslotsroles"></a>Microsoft.ClassicCompute/domainNames/slots/roles
@@ -464,7 +464,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|UsedCapacity|已用容量|字节|平均值|帐户使用的容量|无|
+|UsedCapacity|已用容量|字节|平均值|帐户使用的容量|None|
 |事务|事务|Count|总计|向存储服务或指定的 API 操作发出的请求数。 此数值包括成功和失败的请求数，以及引发错误的请求数。 针对不同类型的响应数使用 ResponseType 维度。|ResponseType,GeoType,ApiName,Authentication|
 |流入量|流入量|字节|总计|流入的数据量（以字节为单位）。 此数字包括从外部客户端到 Azure 存储流入的数据量，以及流入 Azure 中的数据量。|GeoType,ApiName,Authentication|
 |流出量|流出量|字节|总计|流出的数据量（以字节为单位）。 此数字包括从外部客户端到 Azure 存储流出的数据量，以及流出 Azure 中的数据量。 因此，此数字不反映计费的流出量。|GeoType,ApiName,Authentication|
@@ -478,8 +478,8 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |---|---|---|---|---|---|
 |BlobCapacity|Blob 容量|字节|平均值|存储帐户的 Blob 服务使用的存储量（以字节为单位）。|BlobType,Tier|
 |BlobCount|Blob 计数|Count|平均值|存储帐户的 Blob 服务中的 Blob 数。|BlobType,Tier|
-|ContainerCount|Blob 容器计数|Count|平均值|存储帐户的 Blob 服务中的容器数。|无|
-|IndexCapacity|索引容量|字节|平均值|ADLS Gen2 (层次结构)索引所使用的存储量(按字节计)。|无|
+|ContainerCount|Blob 容器计数|计数|平均值|存储帐户的 Blob 服务中的容器数。|None|
+|IndexCapacity|索引容量|字节|平均值|ADLS Gen2 (层次结构)索引所使用的存储量(按字节计)。|None|
 |事务|事务|Count|总计|向存储服务或指定的 API 操作发出的请求数。 此数值包括成功和失败的请求数，以及引发错误的请求数。 针对不同类型的响应数使用 ResponseType 维度。|ResponseType,GeoType,ApiName,Authentication|
 |流入量|流入量|字节|总计|流入的数据量（以字节为单位）。 此数字包括从外部客户端到 Azure 存储流入的数据量，以及流入 Azure 中的数据量。|GeoType,ApiName,Authentication|
 |流出量|流出量|字节|总计|流出的数据量（以字节为单位）。 此数字包括从外部客户端到 Azure 存储流出的数据量，以及流出 Azure 中的数据量。 因此，此数字不反映计费的流出量。|GeoType,ApiName,Authentication|
@@ -492,8 +492,8 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
 |TableCapacity|表容量|字节|平均值|存储帐户的表服务使用的存储量（以字节为单位）。|无|
-|TableCount|表计数|Count|平均值|存储帐户的表服务中的表数。|无|
-|TableEntityCount|表实体计数|Count|平均值|存储帐户的表服务中的表实体数。|无|
+|TableCount|表计数|计数|平均值|存储帐户的表服务中的表数。|None|
+|TableEntityCount|表实体计数|Count|平均值|存储帐户的表服务中的表实体数。|None|
 |事务|事务|Count|总计|向存储服务或指定的 API 操作发出的请求数。 此数值包括成功和失败的请求数，以及引发错误的请求数。 针对不同类型的响应数使用 ResponseType 维度。|ResponseType,GeoType,ApiName,Authentication|
 |流入量|流入量|字节|总计|流入的数据量（以字节为单位）。 此数字包括从外部客户端到 Azure 存储流入的数据量，以及流入 Azure 中的数据量。|GeoType,ApiName,Authentication|
 |流出量|流出量|字节|总计|流出的数据量（以字节为单位）。 此数字包括从外部客户端到 Azure 存储流出的数据量，以及流出 Azure 中的数据量。 因此，此数字不反映计费的流出量。|GeoType,ApiName,Authentication|
@@ -506,9 +506,9 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
 |FileCapacity|文件容量|字节|平均值|存储帐户的文件服务使用的存储量（以字节为单位）。|FileShare|
-|FileCount|文件计数|Count|平均值|存储帐户的文件服务中的文件数。|FileShare|
-|FileShareCount|文件共享计数|Count|平均值|存储帐户的文件服务中的文件共享数。|无|
-|FileShareSnapshotCount|文件共享快照计数|Count|平均值|存储帐户文件服务中共享上存在的快照数。|FileShare|
+|FileCount|文件计数|计数|平均值|存储帐户的文件服务中的文件数。|FileShare|
+|FileShareCount|文件共享计数|Count|平均值|存储帐户的文件服务中的文件共享数。|None|
+|FileShareSnapshotCount|文件共享快照计数|Count|平均值|存储帐户的文件服务中的共享上存在的快照数。|FileShare|
 |FileShareSnapshotSize|文件共享快照大小|字节|平均值|存储帐户的文件服务中的快照使用的存储量（以字节为单位）。|FileShare|
 |FileShareQuota|文件共享配额大小|字节|平均值|Azure 文件服务可使用的存储量上限（以字节为单位）。|FileShare|
 |事务|事务|Count|总计|向存储服务或指定的 API 操作发出的请求数。 此数值包括成功和失败的请求数，以及引发错误的请求数。 针对不同类型的响应数使用 ResponseType 维度。|ResponseType,GeoType,ApiName,Authentication,FileShare|
@@ -523,8 +523,8 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
 |QueueCapacity|队列容量|字节|平均值|存储帐户的队列服务使用的存储量（以字节为单位）。|无|
-|QueueCount|队列计数|Count|平均值|存储帐户的队列服务中的队列数。|无|
-|QueueMessageCount|队列消息计数|Count|平均值|存储帐户的队列服务中的队列消息的大致数目。|无|
+|QueueCount|队列计数|计数|平均值|存储帐户的队列服务中的队列数。|None|
+|QueueMessageCount|队列消息计数|Count|平均值|存储帐户的队列服务中的队列消息的大致数目。|None|
 |事务|事务|Count|总计|向存储服务或指定的 API 操作发出的请求数。 此数值包括成功和失败的请求数，以及引发错误的请求数。 针对不同类型的响应数使用 ResponseType 维度。|ResponseType,GeoType,ApiName,Authentication|
 |流入量|流入量|字节|总计|流入的数据量（以字节为单位）。 此数字包括从外部客户端到 Azure 存储流入的数据量，以及流入 Azure 中的数据量。|GeoType,ApiName,Authentication|
 |流出量|流出量|字节|总计|流出的数据量（以字节为单位）。 此数字包括从外部客户端到 Azure 存储流出的数据量，以及流出 Azure 中的数据量。 因此，此数字不反映计费的流出量。|GeoType,ApiName,Authentication|
@@ -537,21 +537,21 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|TotalCalls|总调用数|Count|总计|调用总数。|ApiName,OperationName,Region|
-|SuccessfulCalls|成功调用数|Count|总计|成功调用数。|ApiName,OperationName,Region|
-|TotalErrors|错误总数|Count|总计|引发错误响应（HTTP 响应代码 4xx 或 5xx）的调用总数。|ApiName,OperationName,Region|
-|BlockedCalls|阻止的调用数|Count|总计|超过速率或配额限制的调用数。|ApiName,OperationName,Region|
+|TotalCalls|总调用数|计数|总计|调用总数。|ApiName,OperationName,Region|
+|SuccessfulCalls|成功调用数|计数|总计|成功调用数。|ApiName,OperationName,Region|
+|TotalErrors|错误总数|计数|总计|引发错误响应（HTTP 响应代码 4xx 或 5xx）的调用总数。|ApiName,OperationName,Region|
+|BlockedCalls|阻止的调用数|计数|总计|超过速率或配额限制的调用数。|ApiName,OperationName,Region|
 |ServerErrors|服务器错误数|Count|总计|引发服务内部错误（HTTP 响应代码 5xx）的调用数。|ApiName,OperationName,Region|
 |ClientErrors|客户端错误数|Count|总计|引发客户端错误（HTTP 响应代码 4xx）的调用数。|ApiName,OperationName,Region|
 |DataIn|数据输入|字节|总计|传入数据的大小（字节）。|ApiName,OperationName,Region|
 |DataOut|数据输出|字节|总计|传出数据的大小（字节）。|ApiName,OperationName,Region|
 |延迟|延迟|毫秒|平均值|延迟（毫秒）。|ApiName,OperationName,Region|
 |TotalTokenCalls|令牌调用总数|Count|总计|令牌调用的总数。|ApiName,OperationName,Region|
-|CharactersTranslated|转换的字符|Count|总计|传入的文本请求中的字符总数。|ApiName,OperationName,Region|
-|CharactersTrained|训练的字符数|Count|总计|训练的字符总数。|ApiName,OperationName,Region|
+|CharactersTranslated|转换的字符|计数|总计|传入的文本请求中的字符总数。|ApiName,OperationName,Region|
+|CharactersTrained|训练的字符数|计数|总计|训练的字符总数。|ApiName,OperationName,Region|
 |SpeechSessionDuration|语音会话持续时间|秒|总计|语音会话的总持续时间（以秒计）。|ApiName,OperationName,Region|
-|TotalTransactions|总事务|Count|总计|事务总数。|无|
-|已处理的图像|已处理的图像|Count|总计| 用于图像处理的事务数。|Api 名称、功能名称、通道、区域|
+|TotalTransactions|总事务|Count|总计|事务总数。|None|
+|ProcessedImages|已处理图像|Count|总计| 用于处理图像的事务数。|ApiName、功能区、频道、区域|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
@@ -563,19 +563,19 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |磁盘读取字节数|磁盘读取字节数|字节|总计|监视期间从磁盘读取的字节数|无|
 |磁盘写入字节数|磁盘写入字节数|字节|总计|监视期间向磁盘写入的字节数|无|
 |磁盘读取操作次数/秒|磁盘读取操作次数/秒|每秒计数|平均值|磁盘读取 IOPS|无|
-|磁盘写入操作次数/秒|磁盘写入操作次数/秒|每秒计数|平均值|磁盘写入 IOPS|无|
-|剩余 CPU 信用额度|剩余 CPU 信用额度|Count|平均值|可用来集中使用的总信用点数|无|
-|已用 CPU 信用额度|已用 CPU 信用额度|Count|平均值|虚拟机使用的总信用点数|无|
-|每磁盘读取字节数/秒|数据磁盘读取字节/秒[（已弃用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|监视期间每秒从单个磁盘读取的字节数|SlotId|
-|每磁盘写入字节数/秒|数据磁盘写入字节/秒[（已弃用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|监视期间每秒写入到单个磁盘的字节数|SlotId|
-|每磁盘读取操作数/秒|数据磁盘读取操作/秒[（已弃用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|监视期间从单个磁盘执行的读取 IOPS|SlotId|
-|每磁盘写入操作数/秒|数据磁盘写入操作/秒[（已弃用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|监视期间从单个磁盘执行的写入 IOPS|SlotId|
-|每磁盘 QD|数据磁盘[QD（已弃用）](portal-disk-metrics-deprecation.md)=（portal-disk-metrics-deprecation.md）|Count|平均值|数据磁盘队列深度(或队列长度)|SlotId|
-|OS 每磁盘读取字节数/秒|OS 磁盘读取字节/秒[（已弃用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|OS 磁盘监视期间每秒从单个磁盘读取的字节数|无|
-|OS 每磁盘写入字节数/秒|OS 磁盘写入字节/秒[（已弃用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|OS 磁盘监视期间每秒写入到单个磁盘的字节数|无|
-|OS 每磁盘读取操作数/秒|OS 磁盘读取操作/秒[（已弃用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|OS 磁盘监视期间从单个磁盘执行的读取 IOPS|无|
-|OS 每磁盘写入操作数/秒|OS 磁盘写入操作/秒[（已弃用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|OS 磁盘监视期间从单个磁盘执行的写入 IOPS|无|
-|OS 每磁盘 QD|OS 磁盘[QD（已弃用）](portal-disk-metrics-deprecation.md)|Count|平均值|OS 磁盘队列深度(或队列长度)|无|
+|磁盘写入操作次数/秒|磁盘写入操作次数/秒|每秒计数|平均值|磁盘写入 IOPS|None|
+|剩余 CPU 信用额度|剩余 CPU 信用额度|Count|平均值|可用来集中使用的总信用点数|None|
+|已用 CPU 信用额度|已用 CPU 信用额度|Count|平均值|虚拟机使用的总信用点数|None|
+|每磁盘读取字节数/秒|数据磁盘读取字节数/秒[（不推荐使用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|监视期间每秒从单个磁盘读取的字节数|SlotId|
+|每磁盘写入字节数/秒|数据磁盘写入字节数/秒[（不推荐使用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|监视期间每秒写入到单个磁盘的字节数|SlotId|
+|每磁盘读取操作数/秒|数据磁盘读取操作数/秒[（不推荐使用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|监视期间从单个磁盘执行的读取 IOPS|SlotId|
+|每磁盘写入操作数/秒|数据磁盘写入操作数/秒[（不推荐使用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|监视期间从单个磁盘执行的写入 IOPS|SlotId|
+|每磁盘 QD|Data Disk QD [（已弃用）](portal-disk-metrics-deprecation.md)] （portal-disk-metrics-deprecation.md）|Count|平均值|数据磁盘队列深度(或队列长度)|SlotId|
+|OS 每磁盘读取字节数/秒|OS 磁盘读取字节数/秒[（不推荐使用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|OS 磁盘监视期间每秒从单个磁盘读取的字节数|无|
+|OS 每磁盘写入字节数/秒|OS 磁盘写入字节数/秒[（不推荐使用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|OS 磁盘监视期间每秒写入到单个磁盘的字节数|无|
+|OS 每磁盘读取操作数/秒|OS 磁盘读取操作数/秒[（不推荐使用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|OS 磁盘监视期间从单个磁盘执行的读取 IOPS|None|
+|OS 每磁盘写入操作数/秒|OS 磁盘写入操作数/秒[（不推荐使用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|OS 磁盘监视期间从单个磁盘执行的写入 IOPS|None|
+|OS 每磁盘 QD|OS Disk QD [（已弃用）](portal-disk-metrics-deprecation.md)|Count|平均值|OS 磁盘队列深度(或队列长度)|None|
 |数据磁盘读取字节数/秒|数据磁盘读取字节数/秒（预览版）|每秒计数|平均值|监视期间每秒从单个磁盘读取的字节数|LUN|
 |数据磁盘写入字节数/秒|数据磁盘写入字节数/秒（预览版）|每秒计数|平均值|监视期间每秒写入到单个磁盘的字节数|LUN|
 |数据磁盘读取操作数/秒|数据磁盘读取操作数/秒（预览版）|每秒计数|平均值|监视期间从单个磁盘执行的读取 IOPS|LUN|
@@ -587,15 +587,15 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |OS 磁盘写入操作次数/秒|OS 磁盘写入操作数/秒（预览版）|每秒计数|平均值|OS 磁盘监视期间从单个磁盘执行的写入 IOPS|无|
 |OS 磁盘队列深度|OS 磁盘队列深度（预览版）|Count|平均值|OS 磁盘队列深度(或队列长度)|无|
 |入站流数|入站流数|Count|平均值|入站流数是入站方向的当前流（传入 VM 的流量）的数目|无|
-|出站流数|出站流数|Count|平均值|出站流数是出站方向的当前流（传出 VM 的流量）的数目|无|
-|入站流最大创建速率|入站流最大创建速率|每秒计数|平均值|入站流（传入 VM 的流量）的最大创建速率|无|
+|出站流数|出站流数|Count|平均值|出站流数是出站方向的当前流（传出 VM 的流量）的数目|None|
+|入站流最大创建速率|入站流最大创建速率|每秒计数|平均值|入站流（传入 VM 的流量）的最大创建速率|None|
 |出站流最大创建速率|出站流最大创建速率|每秒计数|平均值|出站流（传出 VM 的流量）的最大创建速率|无|
 |高级数据磁盘缓存读取命中|高级数据磁盘缓存读取命中（预览版）|百分比|平均值|高级数据磁盘缓存读取命中|LUN|
 |高级数据磁盘缓存读取未命中|高级数据磁盘缓存读取未命中（预览版）|百分比|平均值|高级数据磁盘缓存读取未命中|LUN|
 |高级 OS 磁盘缓存读取命中|高级 OS 磁盘缓存读取命中（预览版）|百分比|平均值|高级 OS 磁盘缓存读取命中|无|
-|高级 OS 磁盘缓存读取未命中|高级 OS 磁盘缓存读取未命中（预览版）|百分比|平均值|高级 OS 磁盘缓存读取未命中|无|
-|网络传入流量总计|网络传入流量总计|字节|总计|虚拟机在所有网络接口上收到的字节数（传入流量）|无|
-|网络传出流量总计|网络传出流量总计|字节|总计|虚拟机在所有网络接口上发出的字节数（传出流量）|无|
+|高级 OS 磁盘缓存读取未命中|高级 OS 磁盘缓存读取未命中（预览版）|百分比|平均值|高级 OS 磁盘缓存读取未命中|None|
+|网络传入流量总计|网络传入流量总计|字节|总计|虚拟机在所有网络接口上收到的字节数（传入流量）|None|
+|网络传出流量总计|网络传出流量总计|字节|总计|虚拟机在所有网络接口上发出的字节数（传出流量）|None|
 
 
 ## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
@@ -609,18 +609,18 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |磁盘写入字节数|磁盘写入字节数|字节|总计|监视期间向磁盘写入的字节数|VMName|
 |磁盘读取操作次数/秒|磁盘读取操作次数/秒|每秒计数|平均值|磁盘读取 IOPS|VMName|
 |磁盘写入操作次数/秒|磁盘写入操作次数/秒|每秒计数|平均值|磁盘写入 IOPS|VMName|
-|剩余 CPU 信用额度|剩余 CPU 信用额度|Count|平均值|可用来集中使用的总信用点数|无|
-|已用 CPU 信用额度|已用 CPU 信用额度|Count|平均值|虚拟机使用的总信用点数|无|
-|每磁盘读取字节数/秒|数据磁盘读取字节/秒[（已弃用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|监视期间每秒从单个磁盘读取的字节数|SlotId|
-|每磁盘写入字节数/秒|数据磁盘写入字节/秒[（已弃用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|监视期间每秒写入到单个磁盘的字节数|SlotId|
-|每磁盘读取操作数/秒|数据磁盘读取操作/秒[（已弃用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|监视期间从单个磁盘执行的读取 IOPS|SlotId|
-|每磁盘写入操作数/秒|数据磁盘写入操作/秒[（已弃用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|监视期间从单个磁盘执行的写入 IOPS|SlotId|
-|每磁盘 QD|数据磁盘[QD（已弃用）](portal-disk-metrics-deprecation.md)|Count|平均值|数据磁盘队列深度(或队列长度)|SlotId|
-|OS 每磁盘读取字节数/秒|OS 磁盘读取字节/秒[（已弃用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|OS 磁盘监视期间每秒从单个磁盘读取的字节数|无|
-|OS 每磁盘写入字节数/秒|OS 磁盘写入字节/秒[（已弃用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|OS 磁盘监视期间每秒写入到单个磁盘的字节数|无|
-|OS 每磁盘读取操作数/秒|OS 磁盘读取操作/秒[（已弃用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|OS 磁盘监视期间从单个磁盘执行的读取 IOPS|无|
-|OS 每磁盘写入操作数/秒|OS 磁盘写入操作/秒[（已弃用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|OS 磁盘监视期间从单个磁盘执行的写入 IOPS|无|
-|OS 每磁盘 QD|OS 磁盘[QD（已弃用）](portal-disk-metrics-deprecation.md)|Count|平均值|OS 磁盘队列深度(或队列长度)|无|
+|剩余 CPU 信用额度|剩余 CPU 信用额度|Count|平均值|可用来集中使用的总信用点数|None|
+|已用 CPU 信用额度|已用 CPU 信用额度|Count|平均值|虚拟机使用的总信用点数|None|
+|每磁盘读取字节数/秒|数据磁盘读取字节数/秒[（不推荐使用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|监视期间每秒从单个磁盘读取的字节数|SlotId|
+|每磁盘写入字节数/秒|数据磁盘写入字节数/秒[（不推荐使用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|监视期间每秒写入到单个磁盘的字节数|SlotId|
+|每磁盘读取操作数/秒|数据磁盘读取操作数/秒[（不推荐使用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|监视期间从单个磁盘执行的读取 IOPS|SlotId|
+|每磁盘写入操作数/秒|数据磁盘写入操作数/秒[（不推荐使用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|监视期间从单个磁盘执行的写入 IOPS|SlotId|
+|每磁盘 QD|数据磁盘 QD [（已弃用）](portal-disk-metrics-deprecation.md)|Count|平均值|数据磁盘队列深度(或队列长度)|SlotId|
+|OS 每磁盘读取字节数/秒|OS 磁盘读取字节数/秒[（不推荐使用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|OS 磁盘监视期间每秒从单个磁盘读取的字节数|无|
+|OS 每磁盘写入字节数/秒|OS 磁盘写入字节数/秒[（不推荐使用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|OS 磁盘监视期间每秒写入到单个磁盘的字节数|无|
+|OS 每磁盘读取操作数/秒|OS 磁盘读取操作数/秒[（不推荐使用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|OS 磁盘监视期间从单个磁盘执行的读取 IOPS|None|
+|OS 每磁盘写入操作数/秒|OS 磁盘写入操作数/秒[（不推荐使用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|OS 磁盘监视期间从单个磁盘执行的写入 IOPS|None|
+|OS 每磁盘 QD|OS Disk QD [（已弃用）](portal-disk-metrics-deprecation.md)|Count|平均值|OS 磁盘队列深度(或队列长度)|None|
 |数据磁盘读取字节数/秒|数据磁盘读取字节数/秒（预览版）|每秒计数|平均值|监视期间每秒从单个磁盘读取的字节数|LUN,VMName|
 |数据磁盘写入字节数/秒|数据磁盘写入字节数/秒（预览版）|每秒计数|平均值|监视期间每秒写入到单个磁盘的字节数|LUN,VMName|
 |数据磁盘读取操作数/秒|数据磁盘读取操作数/秒（预览版）|每秒计数|平均值|监视期间从单个磁盘执行的读取 IOPS|LUN,VMName|
@@ -653,19 +653,19 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |磁盘读取字节数|磁盘读取字节数|字节|总计|监视期间从磁盘读取的字节数|无|
 |磁盘写入字节数|磁盘写入字节数|字节|总计|监视期间向磁盘写入的字节数|无|
 |磁盘读取操作次数/秒|磁盘读取操作次数/秒|每秒计数|平均值|磁盘读取 IOPS|无|
-|磁盘写入操作次数/秒|磁盘写入操作次数/秒|每秒计数|平均值|磁盘写入 IOPS|无|
-|剩余 CPU 信用额度|剩余 CPU 信用额度|Count|平均值|可用来集中使用的总信用点数|无|
-|已用 CPU 信用额度|已用 CPU 信用额度|Count|平均值|虚拟机使用的总信用点数|无|
-|每磁盘读取字节数/秒|数据磁盘读取字节/秒[（已弃用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|监视期间每秒从单个磁盘读取的字节数|SlotId|
-|每磁盘写入字节数/秒|数据磁盘写入字节/秒[（已弃用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|监视期间每秒写入到单个磁盘的字节数|SlotId|
-|每磁盘读取操作数/秒|数据磁盘读取操作/秒[（已弃用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|监视期间从单个磁盘执行的读取 IOPS|SlotId|
-|每磁盘写入操作数/秒|数据磁盘写入操作/秒[（已弃用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|监视期间从单个磁盘执行的写入 IOPS|SlotId|
-|每磁盘 QD|数据磁盘[QD（已弃用）](portal-disk-metrics-deprecation.md)|Count|平均值|数据磁盘队列深度(或队列长度)|SlotId|
-|OS 每磁盘读取字节数/秒|OS 磁盘读取字节/秒[（已弃用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|OS 磁盘监视期间每秒从单个磁盘读取的字节数|无|
-|OS 每磁盘写入字节数/秒|OS 磁盘写入字节/秒[（已弃用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|OS 磁盘监视期间每秒写入到单个磁盘的字节数|无|
-|OS 每磁盘读取操作数/秒|OS 磁盘读取操作/秒[（已弃用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|OS 磁盘监视期间从单个磁盘执行的读取 IOPS|无|
-|OS 每磁盘写入操作数/秒|OS 磁盘写入操作/秒[（已弃用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|OS 磁盘监视期间从单个磁盘执行的写入 IOPS|无|
-|OS 每磁盘 QD|OS 磁盘[QD（已弃用）](portal-disk-metrics-deprecation.md)|Count|平均值|OS 磁盘队列深度(或队列长度)|无|
+|磁盘写入操作次数/秒|磁盘写入操作次数/秒|每秒计数|平均值|磁盘写入 IOPS|None|
+|剩余 CPU 信用额度|剩余 CPU 信用额度|Count|平均值|可用来集中使用的总信用点数|None|
+|已用 CPU 信用额度|已用 CPU 信用额度|Count|平均值|虚拟机使用的总信用点数|None|
+|每磁盘读取字节数/秒|数据磁盘读取字节数/秒[（不推荐使用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|监视期间每秒从单个磁盘读取的字节数|SlotId|
+|每磁盘写入字节数/秒|数据磁盘写入字节数/秒[（不推荐使用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|监视期间每秒写入到单个磁盘的字节数|SlotId|
+|每磁盘读取操作数/秒|数据磁盘读取操作数/秒[（不推荐使用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|监视期间从单个磁盘执行的读取 IOPS|SlotId|
+|每磁盘写入操作数/秒|数据磁盘写入操作数/秒[（不推荐使用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|监视期间从单个磁盘执行的写入 IOPS|SlotId|
+|每磁盘 QD|数据磁盘 QD [（已弃用）](portal-disk-metrics-deprecation.md)|Count|平均值|数据磁盘队列深度(或队列长度)|SlotId|
+|OS 每磁盘读取字节数/秒|OS 磁盘读取字节数/秒[（不推荐使用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|OS 磁盘监视期间每秒从单个磁盘读取的字节数|无|
+|OS 每磁盘写入字节数/秒|OS 磁盘写入字节数/秒[（不推荐使用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|OS 磁盘监视期间每秒写入到单个磁盘的字节数|无|
+|OS 每磁盘读取操作数/秒|OS 磁盘读取操作数/秒[（不推荐使用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|OS 磁盘监视期间从单个磁盘执行的读取 IOPS|None|
+|OS 每磁盘写入操作数/秒|OS 磁盘写入操作数/秒[（不推荐使用）](portal-disk-metrics-deprecation.md)|每秒计数|平均值|OS 磁盘监视期间从单个磁盘执行的写入 IOPS|None|
+|OS 每磁盘 QD|OS Disk QD [（已弃用）](portal-disk-metrics-deprecation.md)|Count|平均值|OS 磁盘队列深度(或队列长度)|None|
 |数据磁盘读取字节数/秒|数据磁盘读取字节数/秒（预览版）|每秒计数|平均值|监视期间每秒从单个磁盘读取的字节数|LUN|
 |数据磁盘写入字节数/秒|数据磁盘写入字节数/秒（预览版）|每秒计数|平均值|监视期间每秒写入到单个磁盘的字节数|LUN|
 |数据磁盘读取操作数/秒|数据磁盘读取操作数/秒（预览版）|每秒计数|平均值|监视期间从单个磁盘执行的读取 IOPS|LUN|
@@ -677,15 +677,15 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |OS 磁盘写入操作次数/秒|OS 磁盘写入操作数/秒（预览版）|每秒计数|平均值|OS 磁盘监视期间从单个磁盘执行的写入 IOPS|无|
 |OS 磁盘队列深度|OS 磁盘队列深度（预览版）|Count|平均值|OS 磁盘队列深度(或队列长度)|无|
 |入站流数|入站流数|Count|平均值|入站流数是入站方向的当前流（传入 VM 的流量）的数目|无|
-|出站流数|出站流数|Count|平均值|出站流数是出站方向的当前流（传出 VM 的流量）的数目|无|
-|入站流最大创建速率|入站流最大创建速率|每秒计数|平均值|入站流（传入 VM 的流量）的最大创建速率|无|
+|出站流数|出站流数|Count|平均值|出站流数是出站方向的当前流（传出 VM 的流量）的数目|None|
+|入站流最大创建速率|入站流最大创建速率|每秒计数|平均值|入站流（传入 VM 的流量）的最大创建速率|None|
 |出站流最大创建速率|出站流最大创建速率|每秒计数|平均值|出站流（传出 VM 的流量）的最大创建速率|无|
 |高级数据磁盘缓存读取命中|高级数据磁盘缓存读取命中（预览版）|百分比|平均值|高级数据磁盘缓存读取命中|LUN|
 |高级数据磁盘缓存读取未命中|高级数据磁盘缓存读取未命中（预览版）|百分比|平均值|高级数据磁盘缓存读取未命中|LUN|
 |高级 OS 磁盘缓存读取命中|高级 OS 磁盘缓存读取命中（预览版）|百分比|平均值|高级 OS 磁盘缓存读取命中|无|
-|高级 OS 磁盘缓存读取未命中|高级 OS 磁盘缓存读取未命中（预览版）|百分比|平均值|高级 OS 磁盘缓存读取未命中|无|
-|网络传入流量总计|网络传入流量总计|字节|总计|虚拟机在所有网络接口上收到的字节数（传入流量）|无|
-|网络传出流量总计|网络传出流量总计|字节|总计|虚拟机在所有网络接口上发出的字节数（传出流量）|无|
+|高级 OS 磁盘缓存读取未命中|高级 OS 磁盘缓存读取未命中（预览版）|百分比|平均值|高级 OS 磁盘缓存读取未命中|None|
+|网络传入流量总计|网络传入流量总计|字节|总计|虚拟机在所有网络接口上收到的字节数（传入流量）|None|
+|网络传出流量总计|网络传出流量总计|字节|总计|虚拟机在所有网络接口上发出的字节数（传出流量）|None|
 
 ## <a name="microsoftcontainerinstancecontainergroups"></a>Microsoft.ContainerInstance/containerGroups
 
@@ -693,26 +693,26 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |---|---|---|---|---|---|
 |CpuUsage|CPU 使用率|Count|平均值|所有核心的 CPU 使用率（以 millicore 为单位）。|containerName|
 |MemoryUsage|内存用量|字节|平均值|总内存使用量（以字节为单位）。|containerName|
-|NetworkBytesReceivedPerSecond|每秒接收到的网络字节数|字节|平均值|每秒接收到的网络字节数。|无|
-|NetworkBytesTransmittedPerSecond|每秒传输的网络字节数|字节|平均值|每秒传输的网络字节数。|无|
+|NetworkBytesReceivedPerSecond|每秒接收到的网络字节数|字节|平均值|每秒接收到的网络字节数。|None|
+|NetworkBytesTransmittedPerSecond|每秒传输的网络字节数|字节|平均值|每秒传输的网络字节数。|None|
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft.ContainerRegistry/registries
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|TotalPullCount|提取总数|Count|平均值|映像提取总次数|无|
+|TotalPullCount|提取总数|计数|平均值|映像提取总次数|无|
 |SuccessfulPullCount|成功提取计数|Count|平均值|成功的映像提取次数|无|
-|TotalPushCount|推送总数|Count|平均值|映像推送总次数|无|
-|SuccessfulPushCount|成功推送计数|Count|平均值|成功的映像推送次数|无|
-|RunDuration|运行持续时间|毫秒|总计|运行持续时间，以毫秒为单位|无|
+|TotalPushCount|推送总数|Count|平均值|映像推送总次数|None|
+|SuccessfulPushCount|成功推送计数|Count|平均值|成功的映像推送次数|None|
+|RunDuration|运行持续时间|毫秒|总计|运行持续时间，以毫秒为单位|None|
 
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft.ContainerService/managedClusters
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|kube_node_status_allocatable_cpu_cores|托管群集中可用 CPU 内核的总数|Count|平均值|托管群集中可用 CPU 内核的总数|无|
-|kube_node_status_allocatable_memory_bytes|托管群集中可用内存的总量|字节|平均值|托管群集中可用内存的总量|无|
+|kube_node_status_allocatable_cpu_cores|托管群集中可用 CPU 内核的总数|计数|平均值|托管群集中可用 CPU 内核的总数|None|
+|kube_node_status_allocatable_memory_bytes|托管群集中可用内存的总量|字节|平均值|托管群集中可用内存的总量|None|
 |kube_pod_status_ready|就绪状态下的 Pod 数|Count|平均值|就绪状态下的 Pod 数|namespace,pod|
 |kube_node_status_condition|各种节点条件的状态|Count|平均值|各种节点条件的状态|condition,status,status2,node|
 |kube_pod_status_phase|依据阶段的 Pod 数|Count|平均值|依据阶段的 Pod 数|phase,namespace,pod|
@@ -737,9 +737,9 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |BytesUploadedToCloudPerShare|已上传的云字节数（共享）|字节|平均值|报告期间从共享上传到 Azure 的总字节数。|共享|
 |TotalCapacity|总容量|字节|平均值|总容量|无|
 |AvailableCapacity|可用容量|字节|平均值|报告期间可用容量(以字节为单位)。|无|
-|CloudUploadThroughput|云上传吞吐量|每秒字节数|平均值|报告期间到 Azure 的云上传吞吐量。|无|
-|CloudReadThroughput|云下载吞吐量|每秒字节数|平均值|报告期间到 Azure 的云下载吞吐量。|无|
-|BytesUploadedToCloud|已上传的云字节数（设备）|字节|平均值|报告期间从设备上传到 Azure 的总字节数。|无|
+|CloudUploadThroughput|云上传吞吐量|每秒字节数|平均值|报告期间到 Azure 的云上传吞吐量。|None|
+|CloudReadThroughput|云下载吞吐量|每秒字节数|平均值|报告期间到 Azure 的云下载吞吐量。|None|
+|BytesUploadedToCloud|已上传的云字节数（设备）|字节|平均值|报告期间从设备上传到 Azure 的总字节数。|None|
 |HyperVVirtualProcessorUtilization|Edge 计算 - CPU 百分比|百分比|平均值|CPU 使用量的百分比|InstanceName|
 |HyperVMemoryUtilization|Edge 计算 - 内存使用|百分比|平均值|正在使用的 RAM 量|InstanceName|
 
@@ -748,15 +748,15 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|按分类划分的资产分配|按分类分列的资产分配|Count|总计|指示分配了特定分类的资产数，即它们与该标签一起分类。|分类，来源|
-|按存储类型分配资产|按存储类型分配资产|Count|总计|指示具有特定存储类型的资产数。|StorageType|
-|具有分类的资产数量|具有至少一个分类的资产数量|Count|平均值|指示具有至少一个标记分类的资产数。|无|
-|扫描取消|扫描已取消|Count|总计|指示已取消的扫描数。|无|
-|扫描完成|扫描已完成|Count|总计|指示成功完成的扫描数。|无|
-|扫描失败|扫描失败|Count|总计|指示扫描失败数。|无|
-|扫描时间|扫描时间|秒|总计|指示总扫描时间（以秒为单位）。|无|
-|目录活动用户|每日活跃用户|Count|总计|每日活动用户数|无|
-|目录使用|按操作分配使用情况|Count|总计|指示用户对目录的操作数，即访问、搜索、术语表。|Operation|
+|AssetDistributionByClassification|按分类分类的资产分布|Count|总计|指示已分配特定分类的资产的数量，即，使用该标签进行分类。|分类，源|
+|AssetDistributionByStorageType|按存储类型的资产分布|Count|总计|指示具有特定存储类型的资产的数量。|StorageType|
+|NumberOfAssetsWithClassifications|至少具有一个分类的资产数量|Count|平均值|指示至少具有一个标记分类的资产的数量。|None|
+|ScanCancelled|扫描已取消|Count|总计|指示取消的扫描数。|None|
+|ScanCompleted|扫描已完成|计数|总计|指示已成功完成的扫描数。|None|
+|ScanFailed|扫描失败|Count|总计|指示扫描失败的次数。|None|
+|ScanTimeTaken|扫描花费的时间|秒|总计|指示扫描总时间（以秒为单位）。|None|
+|CatalogActiveUsers|每日活动用户|Count|总计|每日活动用户数|None|
+|CatalogUsage|按操作的用量分布|Count|总计|指示用户对目录所做的操作的数量，即访问、搜索、词汇表。|Operation|
 
 
 ## <a name="microsoftdatafactorydatafactories"></a>Microsoft.DataFactory/datafactories
@@ -777,7 +777,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |ActivityFailedRuns|失败的活动运行数指标|Count|总计||ActivityType,PipelineName,FailureType,Name|
 |ActivitySucceededRuns|成功的活动运行数指标|Count|总计||ActivityType,PipelineName,FailureType,Name|
 |ActivityCancelledRuns|已取消的活动运行指标数|Count|总计||ActivityType,PipelineName,FailureType,Name|
-|TriggerFailedRuns|失败的触发器运行数指标|Count|总计||Name,FailureType|
+|TriggerFailedRuns|失败的触发器运行数指标|计数|总计||Name,FailureType|
 |TriggerSucceededRuns|成功的触发器运行数指标|Count|总计||Name,FailureType|
 |TriggerCancelledRuns|已取消的触发器运行指标数|Count|总计||Name,FailureType|
 |IntegrationRuntimeCpuPercentage|集成运行时 CPU 利用率|百分比|平均值||IntegrationRuntimeName,NodeName|
@@ -785,22 +785,22 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |IntegrationRuntimeAverageTaskPickupDelay|集成运行时队列持续时间|秒|平均值||IntegrationRuntimeName|
 |IntegrationRuntimeQueueLength|集成运行时队列长度|Count|平均值||IntegrationRuntimeName|
 |IntegrationRuntimeAvailableNodeNumber|集成运行时可用节点计数|Count|平均值||IntegrationRuntimeName|
-|MaxAllowedResourceCount|允许的最大实体计数|Count|最大值||无|
-|MaxAllowedFactorySizeInGbUnits|允许的最大工厂大小（以 GB 为单位）|Count|最大值||无|
+|MaxAllowedResourceCount|允许的最大实体计数|Count|最大值||None|
+|MaxAllowedFactorySizeInGbUnits|允许的最大工厂大小（以 GB 为单位）|Count|最大值||None|
 |ResourceCount|实体总数|Count|最大值||无|
-|FactorySizeInGbUnits|总工厂大小（以 GB 为单位）|Count|最大值||无|
+|FactorySizeInGbUnits|总工厂大小（以 GB 为单位）|计数|最大值||None|
 
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.DataLakeAnalytics/accounts
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|JobEndedSuccess|成功作业数|Count|总计|成功作业计数。|无|
-|JobEndedFailure|失败作业数|Count|总计|失败作业计数。|无|
-|JobEndedCancelled|取消的作业数|Count|总计|取消的作业计数。|无|
-|JobAUEndedSuccess|成功 AU 时间|秒|总计|成功作业的总 AU 时间。|无|
-|JobAUEndedFailure|失败的 AU 时间|秒|总计|失败作业的总 AU 时间。|无|
-|JobAUEndedCancelled|已取消的 AU 时间|秒|总计|取消的作业的总 AU 时间。|无|
-|作业阶段|阶段中的作业|Count|总计|每个阶段的作业数。|无|
+|JobEndedSuccess|成功作业数|Count|总计|成功作业计数。|None|
+|JobEndedFailure|失败作业数|Count|总计|失败作业计数。|None|
+|JobEndedCancelled|取消的作业数|Count|总计|取消的作业计数。|None|
+|JobAUEndedSuccess|成功 AU 时间|秒|总计|成功作业的总 AU 时间。|None|
+|JobAUEndedFailure|失败的 AU 时间|秒|总计|失败作业的总 AU 时间。|None|
+|JobAUEndedCancelled|已取消的 AU 时间|秒|总计|取消的作业的总 AU 时间。|None|
+|JobStage|阶段中的作业|Count|总计|每个阶段中的作业数。|None|
 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.DataLakeStore/accounts
@@ -810,7 +810,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |TotalStorage|总存储|字节|最大值|帐户中存储的数据总量。|无|
 |DataWritten|写入的数据量|字节|总计|写入帐户的数据总量。|无|
 |DataRead|读取的数据量|字节|总计|从帐户中读取的数据总量。|无|
-|WriteRequests|写入请求数|Count|总计|帐户的数据写入请求计数。|无|
+|WriteRequests|写入请求数|计数|总计|帐户的数据写入请求计数。|无|
 |ReadRequests|读取请求数|Count|总计|帐户的数据读取请求计数。|无|
 
 
@@ -818,29 +818,29 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|共享计数|已发送共享|Count|最大值|账户中已发送的共享数|ShareName|
-|共享订阅计数|已接收股份|Count|最大值|账户中已接收的股数|共享订阅名称|
-|成功共享同步|已发送的共享成功快照|Count|Count|帐户中已发送的已发送共享成功快照数|无|
-|失败的共享同步|发送的共享失败快照|Count|Count|帐户中发送的共享失败快照数|无|
-|成功共享订阅同步|已接收的共享成功快照|Count|Count|帐户中已接收的已接收共享成功快照数|无|
-|失败的共享订阅同步|收到的共享失败快照|Count|Count|帐户中已接收的共享失败快照数|无|
+|ShareCount|已发送共享|Count|最大值|帐户中已发送共享的数目|ShareName|
+|ShareSubscriptionCount|已接收共享|Count|最大值|帐户中接收的共享数|ShareSubscriptionName|
+|SucceededShareSynchronizations|已发送共享成功快照|Count|Count|帐户中已发送共享成功快照数|无|
+|FailedShareSynchronizations|已发送共享失败快照|Count|Count|帐户中已发送共享失败快照数|无|
+|SucceededShareSubscriptionSynchronizations|已收到共享成功快照|Count|Count|帐户中已收到共享成功快照数|无|
+|FailedShareSubscriptionSynchronizations|已接收共享失败快照|Count|Count|帐户中收到的共享失败快照数|无|
 
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|cpu_percent|CPU 百分比|百分比|平均值|CPU 百分比|无|
-|memory_percent|内存百分比|百分比|平均值|内存百分比|无|
-|io_consumption_percent|IO 百分比|百分比|平均值|IO 百分比|无|
-|storage_percent|存储空间百分比|百分比|平均值|存储空间百分比|无|
-|storage_used|已用的存储量|字节|平均值|已用的存储量|无|
-|storage_limit|存储限制|字节|最大值|存储限制|无|
-|serverlog_storage_percent|服务器日志存储空间百分比|百分比|平均值|服务器日志存储空间百分比|无|
-|serverlog_storage_usage|服务器日志已用的存储量|字节|平均值|服务器日志已用的存储量|无|
-|serverlog_storage_limit|服务器存储空间上限|字节|平均值|服务器存储空间上限|无|
-|active_connections|活动连接数|Count|平均值|活动连接数|无|
-|connections_failed|失败的连接数|Count|总计|失败的连接数|无|
+|cpu_percent|CPU 百分比|百分比|平均值|CPU 百分比|None|
+|memory_percent|内存百分比|百分比|平均值|内存百分比|None|
+|io_consumption_percent|IO 百分比|百分比|平均值|IO 百分比|None|
+|storage_percent|存储空间百分比|百分比|平均值|存储空间百分比|None|
+|storage_used|已用的存储量|字节|平均值|已用的存储量|None|
+|storage_limit|存储限制|字节|最大值|存储限制|None|
+|serverlog_storage_percent|服务器日志存储空间百分比|百分比|平均值|服务器日志存储空间百分比|None|
+|serverlog_storage_usage|服务器日志已用的存储量|字节|平均值|服务器日志已用的存储量|None|
+|serverlog_storage_limit|服务器存储空间上限|字节|平均值|服务器存储空间上限|None|
+|active_connections|活动连接数|Count|平均值|活动连接数|None|
+|connections_failed|失败的连接数|Count|总计|失败的连接数|None|
 |seconds_behind_master|复制延迟（秒）|Count|最大值|复制延迟（秒）|无|
 |backup_storage_used|已用的备份存储|字节|平均值|已用的备份存储|无|
 |network_bytes_egress|网络传出|字节|总计|跨活动连接数的网络传出|无|
@@ -851,18 +851,18 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|cpu_percent|CPU 百分比|百分比|平均值|CPU 百分比|无|
-|memory_percent|内存百分比|百分比|平均值|内存百分比|无|
-|io_consumption_percent|IO 百分比|百分比|平均值|IO 百分比|无|
-|storage_percent|存储空间百分比|百分比|平均值|存储空间百分比|无|
-|storage_used|已用的存储量|字节|平均值|已用的存储量|无|
-|storage_limit|存储限制|字节|最大值|存储限制|无|
-|serverlog_storage_percent|服务器日志存储空间百分比|百分比|平均值|服务器日志存储空间百分比|无|
-|serverlog_storage_usage|服务器日志已用的存储量|字节|平均值|服务器日志已用的存储量|无|
-|serverlog_storage_limit|服务器存储空间上限|字节|最大值|服务器存储空间上限|无|
-|active_connections|活动连接数|Count|平均值|活动连接数|无|
-|connections_failed|失败的连接数|Count|总计|失败的连接数|无|
-|seconds_behind_master|复制延迟（秒）|Count|最大值|复制延迟（秒）|无|
+|cpu_percent|CPU 百分比|百分比|平均值|CPU 百分比|None|
+|memory_percent|内存百分比|百分比|平均值|内存百分比|None|
+|io_consumption_percent|IO 百分比|百分比|平均值|IO 百分比|None|
+|storage_percent|存储空间百分比|百分比|平均值|存储空间百分比|None|
+|storage_used|已用的存储量|字节|平均值|已用的存储量|None|
+|storage_limit|存储限制|字节|最大值|存储限制|None|
+|serverlog_storage_percent|服务器日志存储空间百分比|百分比|平均值|服务器日志存储空间百分比|None|
+|serverlog_storage_usage|服务器日志已用的存储量|字节|平均值|服务器日志已用的存储量|None|
+|serverlog_storage_limit|服务器存储空间上限|字节|最大值|服务器存储空间上限|None|
+|active_connections|活动连接数|Count|平均值|活动连接数|None|
+|connections_failed|失败的连接数|Count|总计|失败的连接数|None|
+|seconds_behind_master|复制延迟（秒）|Count|最大值|复制延迟（秒）|None|
 |backup_storage_used|已用的备份存储|字节|平均值|已用的备份存储|无|
 |network_bytes_egress|网络传出|字节|总计|跨活动连接数的网络传出|无|
 |network_bytes_ingress|网络传入|字节|总计|跨活动连接数的网络传入|无|
@@ -872,53 +872,53 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|cpu_percent|CPU 百分比|百分比|平均值|CPU 百分比|无|
-|memory_percent|内存百分比|百分比|平均值|内存百分比|无|
-|io_consumption_percent|IO 百分比|百分比|平均值|IO 百分比|无|
-|storage_percent|存储空间百分比|百分比|平均值|存储空间百分比|无|
-|storage_used|已用的存储量|字节|平均值|已用的存储量|无|
+|cpu_percent|CPU 百分比|百分比|平均值|CPU 百分比|None|
+|memory_percent|内存百分比|百分比|平均值|内存百分比|None|
+|io_consumption_percent|IO 百分比|百分比|平均值|IO 百分比|None|
+|storage_percent|存储空间百分比|百分比|平均值|存储空间百分比|None|
+|storage_used|已用的存储量|字节|平均值|已用的存储量|None|
 |storage_limit|存储限制|字节|最大值|存储限制|无|
 |serverlog_storage_percent|服务器日志存储空间百分比|百分比|平均值|服务器日志存储空间百分比|无|
 |serverlog_storage_usage|服务器日志已用的存储量|字节|平均值|服务器日志已用的存储量|无|
 |serverlog_storage_limit|服务器存储空间上限|字节|最大值|服务器存储空间上限|无|
-|active_connections|活动连接数|Count|平均值|活动连接数|无|
-|connections_failed|失败的连接数|Count|总计|失败的连接数|无|
+|active_connections|活动连接数|计数|平均值|活动连接数|无|
+|connections_failed|失败的连接数|计数|总计|失败的连接数|无|
 |backup_storage_used|已用的备份存储|字节|平均值|已用的备份存储|无|
 |network_bytes_egress|网络传出|字节|总计|跨活动连接数的网络传出|无|
-|network_bytes_ingress|网络传入|字节|总计|跨活动连接数的网络传入|无|
-|pg_replica_log_delay_in_seconds|副本滞后时间|秒|最大值|复制延迟（秒）|无|
-|pg_replica_log_delay_in_bytes|副本的最大滞后时间|字节|最大值|滞后时间最长的副本的滞后量（字节）|无|
+|network_bytes_ingress|网络传入|字节|总计|跨活动连接数的网络传入|None|
+|pg_replica_log_delay_in_seconds|副本滞后时间|秒|最大值|复制延迟（秒）|None|
+|pg_replica_log_delay_in_bytes|副本的最大滞后时间|字节|最大值|滞后时间最长的副本的滞后量（字节）|None|
 
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>Microsoft.DBforPostgreSQL/serversv2
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|cpu_percent|CPU 百分比|百分比|平均值|CPU 百分比|无|
-|memory_percent|内存百分比|百分比|平均值|内存百分比|无|
-|iops|IOPS|Count|平均值|每秒 IO 操作次数|无|
-|storage_percent|存储空间百分比|百分比|平均值|存储空间百分比|无|
-|storage_used|已用的存储量|字节|平均值|已用的存储量|无|
-|active_connections|活动连接数|Count|平均值|活动连接数|无|
-|network_bytes_egress|网络传出|字节|总计|跨活动连接数的网络传出|无|
-|network_bytes_ingress|网络传入|字节|总计|跨活动连接数的网络传入|无|
+|cpu_percent|CPU 百分比|百分比|平均值|CPU 百分比|None|
+|memory_percent|内存百分比|百分比|平均值|内存百分比|None|
+|iops|IOPS|Count|平均值|每秒 IO 操作次数|None|
+|storage_percent|存储空间百分比|百分比|平均值|存储空间百分比|None|
+|storage_used|已用的存储量|字节|平均值|已用的存储量|None|
+|active_connections|活动连接数|Count|平均值|活动连接数|None|
+|network_bytes_egress|网络传出|字节|总计|跨活动连接数的网络传出|None|
+|network_bytes_ingress|网络传入|字节|总计|跨活动连接数的网络传入|None|
 
 
-## <a name="microsoftdbforpostgresqlsingleservers"></a>微软.DBforPostgreSQL/单服务器
+## <a name="microsoftdbforpostgresqlsingleservers"></a>DBforPostgreSQL/singleservers
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|cpu_percent|CPU 百分比|百分比|平均值|CPU 百分比|无|
-|memory_percent|内存百分比|百分比|平均值|内存百分比|无|
-|iops|IOPS|Count|平均值|每秒 IO 操作次数|无|
-|storage_percent|存储空间百分比|百分比|平均值|存储空间百分比|无|
-|storage_used|已用的存储量|字节|平均值|已用的存储量|无|
-|active_connections|活动连接数|Count|平均值|活动连接数|无|
-|network_bytes_egress|网络传出|字节|总计|跨活动连接数的网络传出|无|
+|cpu_percent|CPU 百分比|百分比|平均值|CPU 百分比|None|
+|memory_percent|内存百分比|百分比|平均值|内存百分比|None|
+|iops|IOPS|Count|平均值|每秒 IO 操作次数|None|
+|storage_percent|存储空间百分比|百分比|平均值|存储空间百分比|None|
+|storage_used|已用的存储量|字节|平均值|已用的存储量|None|
+|active_connections|活动连接数|Count|平均值|活动连接数|None|
+|network_bytes_egress|网络传出|字节|总计|跨活动连接数的网络传出|None|
 |network_bytes_ingress|网络传入|字节|总计|跨活动连接数的网络传入|无|
-|connections_failed|失败的连接数|Count|总计|失败的连接数|无|
-|connections_succeeded|成功连接|Count|总计|成功连接|无|
-|maximum_used_transactionIDs|最大已使用事务 ID|Count|平均值|最大已使用事务 ID|无|
+|connections_failed|失败的连接数|计数|总计|失败的连接数|无|
+|connections_succeeded|成功的连接|Count|总计|成功的连接|无|
+|maximum_used_transactionIDs|最大已用事务 Id|计数|平均值|最大已用事务 Id|无|
 
 
 
@@ -928,73 +928,73 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|d2c.telemetry.ingress.allProtocol|遥测消息发送尝试次数|Count|总计|尝试发送到 IoT 中心的、设备到云的遥测消息数|无|
-|d2c.telemetry.ingress.success|已发送的遥测消息数|Count|总计|成功发送到 IoT 中心的、设备到云的遥测消息数|无|
-|c2d.commands.egress.complete.success|已完成的 C2D 消息传递次数|Count|总计|设备成功完成的云到设备消息传递次数|无|
-|c2d.commands.egress.abandon.success|丢弃的 C2D 消息数|Count|总计|设备丢弃的云到设备消息数|无|
-|c2d.commands.egress.reject.success|拒绝的 C2D 消息数|Count|总计|设备拒绝的云到设备消息数|无|
-|C2DMessagesExpired|过期的 C2D 消息数（预览版）|Count|总计|过期的云到设备消息数|无|
-|devices.totalDevices|（已弃用）设备总数|Count|总计|已注册到 IoT 中心的设备数目|无|
-|devices.connectedDevices.allProtocol|（已弃用）连接设备数 |Count|总计|已连接到 IoT 中心的设备数目|无|
-|d2c.telemetry.egress.success|路由：已发送的遥测消息数|Count|总计|已使用 IoT 中心路由将消息成功发送到所有终结点的次数。 如果消息路由到多个终结点，每次成功发送后，此值将逐一增加。 如果消息多次路由到同一终结点，每次成功发送后，此值将逐一增加。|无|
-|d2c.telemetry.egress.dropped|路由：已删除的遥测消息数 |Count|总计|由于死终结点，IoT 中心路由删除消息的次数。 此值不会计算已发送到回退路由的消息，因为已删除的消息未发送到该位置。|无|
-|d2c.telemetry.egress.orphaned|路由：已孤立的遥测消息数 |Count|总计|由于消息不匹配任何传递规则（包括回退规则），IoT 中心路由孤立消息的次数。 |无|
-|d2c.telemetry.egress.invalid|路由：不兼容的遥测消息数|Count|总计|由于与终结点不兼容，IoT 中心路由未能发送消息的次数。 此值不包括重试次数。|无|
-|d2c.telemetry.egress.fallback|路由：发送到回退的消息数|Count|总计|IoT 中心路由将消息发送到与回退路由相关联的终结点的次数。|无|
-|d2c.endpoints.egress.eventHubs|路由：已发送到事件中心的消息数|Count|总计|IoT 中心路由成功将消息发送到事件中心终结点的次数。|无|
-|d2c.endpoints.latency.eventHubs|路由：事件中心的消息延迟|毫秒|平均值|消息进入 IoT 中心与消息进入事件中心终结点之间的平均延迟时间（毫秒）。|无|
-|d2c.endpoints.egress.serviceBusQueues|路由：已发送到服务总线队列的消息数|Count|总计|IoT 中心路由成功将消息发送到服务总线队列终结点的次数。|无|
-|d2c.endpoints.latency.serviceBusQueues|路由：服务总线队列的消息延迟|毫秒|平均值|消息进入 IoT 中心与遥测消息进入服务总线队列终结点之间的平均延迟时间（毫秒）。|无|
-|d2c.endpoints.egress.serviceBusTopics|路由：发送到服务总线主题的消息数|Count|总计|IoT 中心路由将消息成功发送到服务总线主题终结点的次数。|无|
-|d2c.endpoints.latency.serviceBusTopics|路由：服务总线主题的消息延迟|毫秒|平均值|消息进入 IoT 中心与遥测消息进入服务总线主题终结点之间的平均延迟时间（毫秒）。|无|
-|d2c.endpoints.egress.builtIn.events|路由：发送到消息/事件的消息数|Count|总计|IoT 中心路由成功将消息发送到内置终结点（消息/事件）的次数。|无|
-|d2c.endpoints.latency.builtIn.events|路由：消息/事件的消息延迟|毫秒|平均值|消息进入 IoT 中心与遥测消息进入内置终结点（消息/事件）之间的平均延迟时间（毫秒）。|无|
-|d2c.endpoints.egress.storage|路由：发送到存储器的消息数|Count|总计|IoT 中心路由成功将消息发送到存储器终结点的次数。|无|
-|d2c.endpoints.latency.storage|路由：存储器的消息延迟|毫秒|平均值|消息进入 IoT 中心与遥测消息进入存储器终结点之间的平均延迟时间（毫秒）。|无|
-|d2c.endpoints.egress.storage.bytes|路由：发送到存储器的数据数|字节|总计|IoT 中心路由发送到存储器终结点的数据量（字节）。|无|
-|d2c.endpoints.egress.storage.blobs|路由：发送到存储器的 blob 数|Count|总计|IoT 中心路由将 blob 发送到存储器终结点的次数。|无|
+|d2c.telemetry.ingress.allProtocol|遥测消息发送尝试次数|Count|总计|尝试发送到 IoT 中心的、设备到云的遥测消息数|None|
+|d2c.telemetry.ingress.success|已发送的遥测消息数|Count|总计|成功发送到 IoT 中心的、设备到云的遥测消息数|None|
+|c2d.commands.egress.complete.success|已完成的 C2D 消息传递次数|Count|总计|设备成功完成的云到设备消息传递次数|None|
+|c2d.commands.egress.abandon.success|丢弃的 C2D 消息数|Count|总计|设备丢弃的云到设备消息数|None|
+|c2d.commands.egress.reject.success|拒绝的 C2D 消息数|Count|总计|设备拒绝的云到设备消息数|None|
+|C2DMessagesExpired|过期的 C2D 消息数（预览版）|Count|总计|过期的云到设备消息数|None|
+|devices.totalDevices|（已弃用）设备总数|Count|总计|已注册到 IoT 中心的设备数目|None|
+|devices.connectedDevices.allProtocol|（已弃用）连接设备数 |Count|总计|已连接到 IoT 中心的设备数目|None|
+|d2c.telemetry.egress.success|路由：已发送的遥测消息数|Count|总计|已使用 IoT 中心路由将消息成功发送到所有终结点的次数。 如果消息路由到多个终结点，每次成功发送后，此值将逐一增加。 如果消息多次路由到同一终结点，每次成功发送后，此值将逐一增加。|None|
+|d2c.telemetry.egress.dropped|路由：已删除的遥测消息数 |Count|总计|由于死终结点，IoT 中心路由删除消息的次数。 此值不会计算已发送到回退路由的消息，因为已删除的消息未发送到该位置。|None|
+|d2c.telemetry.egress.orphaned|路由：已孤立的遥测消息数 |Count|总计|由于消息不匹配任何传递规则（包括回退规则），IoT 中心路由孤立消息的次数。 |None|
+|d2c.telemetry.egress.invalid|路由：不兼容的遥测消息数|Count|总计|由于与终结点不兼容，IoT 中心路由未能发送消息的次数。 此值不包括重试次数。|None|
+|d2c.telemetry.egress.fallback|路由：发送到回退的消息数|Count|总计|IoT 中心路由将消息发送到与回退路由相关联的终结点的次数。|None|
+|d2c.endpoints.egress.eventHubs|路由：已发送到事件中心的消息数|Count|总计|IoT 中心路由成功将消息发送到事件中心终结点的次数。|None|
+|d2c.endpoints.latency.eventHubs|路由：事件中心的消息延迟|毫秒|平均值|消息进入 IoT 中心与消息进入事件中心终结点之间的平均延迟时间（毫秒）。|None|
+|d2c.endpoints.egress.serviceBusQueues|路由：已发送到服务总线队列的消息数|Count|总计|IoT 中心路由成功将消息发送到服务总线队列终结点的次数。|None|
+|d2c.endpoints.latency.serviceBusQueues|路由：服务总线队列的消息延迟|毫秒|平均值|消息进入 IoT 中心与遥测消息进入服务总线队列终结点之间的平均延迟时间（毫秒）。|None|
+|d2c.endpoints.egress.serviceBusTopics|路由：发送到服务总线主题的消息数|Count|总计|IoT 中心路由将消息成功发送到服务总线主题终结点的次数。|None|
+|d2c.endpoints.latency.serviceBusTopics|路由：服务总线主题的消息延迟|毫秒|平均值|消息进入 IoT 中心与遥测消息进入服务总线主题终结点之间的平均延迟时间（毫秒）。|None|
+|d2c.endpoints.egress.builtIn.events|路由：发送到消息/事件的消息数|Count|总计|IoT 中心路由成功将消息发送到内置终结点（消息/事件）的次数。|None|
+|d2c.endpoints.latency.builtIn.events|路由：消息/事件的消息延迟|毫秒|平均值|消息进入 IoT 中心与遥测消息进入内置终结点（消息/事件）之间的平均延迟时间（毫秒）。|None|
+|d2c.endpoints.egress.storage|路由：发送到存储器的消息数|Count|总计|IoT 中心路由成功将消息发送到存储器终结点的次数。|None|
+|d2c.endpoints.latency.storage|路由：存储器的消息延迟|毫秒|平均值|消息进入 IoT 中心与遥测消息进入存储器终结点之间的平均延迟时间（毫秒）。|None|
+|d2c.endpoints.egress.storage.bytes|路由：发送到存储器的数据数|字节|总计|IoT 中心路由发送到存储器终结点的数据量（字节）。|None|
+|d2c.endpoints.egress.storage.blobs|路由：发送到存储器的 blob 数|Count|总计|IoT 中心路由将 blob 发送到存储器终结点的次数。|None|
 |EventGridDeliveries|事件网格传送（预览版）|Count|总计|发布到事件网格的 IoT 中心事件的数量。 使用 Result 维度表示成功和失败请求的数量。 EventType 维度显示事件的类型 (https://aka.ms/ioteventgrid)。|ResourceId,Result,EventType|
 |EventGridLatency|事件网格延迟（预览）|毫秒|平均值|从生成 IoT 中心事件到将事件发布到事件网格的平均延迟（毫秒）。 此数值是所有事件类型的平均。 若要查看特定事件类型的延迟，请使用 EventType 维度。|ResourceId,EventType|
-|路由交付|路由交付（预览）|毫秒|总计|IoT 中心尝试使用路由将消息传递到所有终结点的次数。 要查看成功或失败的尝试次数，请使用"结果"维度。 要查看失败原因（如无效、删除或孤立），请使用故障原因类别维度。 您还可以使用终结点名称和终结点类型维度来了解传递到不同终结点的消息数。 每次传递尝试的指标值都会增加一个，包括邮件是否传递到多个终结点，或者邮件是否多次传递到同一终结点。|资源 Id、终结点类型、终结点名称、失败原因类别、结果、路由源|
-|路由交付延迟|路由传递延迟（预览）|毫秒|平均值|消息入口到 IoT 中心和遥测消息进入终结点之间的平均延迟（毫秒）。 您可以使用端点名称和终结点类型维度来了解不同终结点的延迟。|资源 Id、终结点类型、终结点名称、路由源|
-|d2c.twin.read.success|设备的成功克隆读取数|Count|总计|由设备发起的所有成功的克隆读取的计数。|无|
-|d2c.twin.read.failure|设备的失败克隆读取数|Count|总计|由设备发起的所有失败的克隆读取的计数。|无|
-|d2c.twin.read.size|设备的克隆读取的响应大小|字节|平均值|由设备发起的所有成功的克隆读取的平均大小、最小大小和最大大小。|无|
-|d2c.twin.update.success|设备的成功克隆更新数|Count|总计|由设备发起的所有成功的克隆更新的计数。|无|
-|d2c.twin.update.failure|设备的失败克隆更新数|Count|总计|由设备发起的所有失败的克隆更新的计数。|无|
-|d2c.twin.update.size|设备的克隆更新的大小|字节|平均值|由设备发起的所有成功的克隆更新的平均大小、最小大小和最大大小。|无|
-|c2d.methods.success|成功的直接方法调用数|Count|总计|所有成功的直接方法调用的计数。|无|
-|c2d.methods.failure|失败的直接方法调用数|Count|总计|所有失败的直接方法调用的计数。|无|
-|c2d.methods.requestSize|直接方法调用的请求大小|字节|平均值|所有成功的直接方法请求的平均大小、最小大小和最大大小。|无|
-|c2d.methods.responseSize|直接方法调用的响应大小|字节|平均值|所有成功的直接方法响应的平均大小、最小大小和最大大小。|无|
-|c2d.twin.read.success|后端的成功克隆读取数|Count|总计|由后端发起的所有成功的克隆读取的计数。|无|
-|c2d.twin.read.failure|后端的失败克隆读取数|Count|总计|由后端发起的所有失败的克隆读取的计数。|无|
+|RoutingDeliveries|路由传递（预览）|毫秒|总计|IoT 中心尝试使用路由将消息传送到所有终结点的次数。 若要查看成功或失败的尝试次数，请使用 "结果" 维度。 若要查看失败的原因，例如无效、已删除或孤立，请使用 FailureReasonCategory 维度。 你还可以使用 "终结点" 和 "EndpointType" 维度来了解传递到不同终结点的消息数。 对于每次传递尝试，指标值将增加1，包括如果消息传递到多个终结点，或者将消息多次传递到同一终结点，则为。|ResourceId、EndpointType、终结点 Id、FailureReasonCategory、Result、RoutingSource|
+|RoutingDeliveryLatency|路由传送延迟（预览版）|毫秒|平均值|消息进入到 IoT 中心和遥测消息进入终结点之间的平均延迟（毫秒）。 您可以使用终结点和 EndpointType 维度来了解不同终结点的延迟。|ResourceId、EndpointType、终结点、RoutingSource|
+|d2c.twin.read.success|设备的成功克隆读取数|Count|总计|由设备发起的所有成功的克隆读取的计数。|None|
+|d2c.twin.read.failure|设备的失败克隆读取数|Count|总计|由设备发起的所有失败的克隆读取的计数。|None|
+|d2c.twin.read.size|设备的克隆读取的响应大小|字节|平均值|由设备发起的所有成功的克隆读取的平均大小、最小大小和最大大小。|None|
+|d2c.twin.update.success|设备的成功克隆更新数|Count|总计|由设备发起的所有成功的克隆更新的计数。|None|
+|d2c.twin.update.failure|设备的失败克隆更新数|Count|总计|由设备发起的所有失败的克隆更新的计数。|None|
+|d2c.twin.update.size|设备的克隆更新的大小|字节|平均值|由设备发起的所有成功的克隆更新的平均大小、最小大小和最大大小。|None|
+|c2d.methods.success|成功的直接方法调用数|Count|总计|所有成功的直接方法调用的计数。|None|
+|c2d.methods.failure|失败的直接方法调用数|计数|总计|所有失败的直接方法调用的计数。|None|
+|c2d.methods.requestSize|直接方法调用的请求大小|字节|平均值|所有成功的直接方法请求的平均大小、最小大小和最大大小。|None|
+|c2d.methods.responseSize|直接方法调用的响应大小|字节|平均值|所有成功的直接方法响应的平均大小、最小大小和最大大小。|None|
+|c2d.twin.read.success|后端的成功克隆读取数|计数|总计|由后端发起的所有成功的克隆读取的计数。|None|
+|c2d.twin.read.failure|后端的失败克隆读取数|计数|总计|由后端发起的所有失败的克隆读取的计数。|None|
 |c2d.twin.read.size|后端的克隆读取的响应大小|字节|平均值|由后端发起的所有成功的克隆读取的平均大小、最小大小和最大大小。|无|
-|c2d.twin.update.success|后端的成功克隆更新数|Count|总计|由后端发起的所有成功的克隆更新的计数。|无|
-|c2d.twin.update.failure|后端的失败克隆更新数|Count|总计|由后端发起的所有失败的克隆更新的计数。|无|
-|c2d.twin.update.size|后端的克隆更新的大小|字节|平均值|由后端发起的所有成功的克隆更新的平均大小、最小大小和最大大小。|无|
-|twinQueries.success|成功的克隆查询|Count|总计|所有成功的克隆查询的计数。|无|
-|twinQueries.failure|失败的克隆查询|Count|总计|所有失败的克隆查询的计数。|无|
-|twinQueries.resultSize|克隆查询结果大小|字节|平均值|所有成功的克隆查询的结果大小的平均值、最小值和最大值。|无|
-|jobs.createTwinUpdateJob.success|克隆更新作业创建成功数|Count|总计|克隆更新作业创建成功的所有次数。|无|
-|jobs.createTwinUpdateJob.failure|克隆更新作业创建失败数|Count|总计|克隆更新作业创建失败的所有次数。|无|
-|jobs.createDirectMethodJob.success|方法调用作业的创建成功数|Count|总计|直接方法调用作业创建成功的所有次数。|无|
-|jobs.createDirectMethodJob.failure|方法调用作业的创建失败数|Count|总计|直接方法调用作业创建失败的所有次数。|无|
-|jobs.listJobs.success|对列出作业的成功调用数|Count|总计|对列出作业的所有成功调用的计数。|无|
-|jobs.listJobs.failure|对列出作业的失败调用数|Count|总计|对列出作业的所有失败调用的计数。|无|
-|jobs.cancelJob.success|成功的作业取消数|Count|总计|用来取消作业的调用成功的次数。|无|
-|jobs.cancelJob.failure|失败的作业取消数|Count|总计|用来取消作业的调用失败的次数。|无|
-|jobs.queryJobs.success|成功的作业查询数|Count|总计|对查询作业的所有成功调用的计数。|无|
-|jobs.queryJobs.failure|失败的作业查询数|Count|总计|对查询作业的所有失败调用的计数。|无|
-|jobs.completed|已完成的作业|Count|总计|所有已完成的作业的计数。|无|
-|jobs.failed|失败的作业数|Count|总计|所有失败的作业的计数。|无|
-|d2c.telemetry.ingress.sendThrottle|限制错误数|Count|总计|由于设备吞吐量限制而导致的限制错误数|无|
-|dailyMessageQuotaUsed|已使用的消息总数|Count|平均值|今天使用的消息总数|无|
-|deviceDataUsage|设备数据用量总计|字节|总计|从与 IotHub 相连的任意设备传出的字节，以及传入到与 IotHub 相连的任意设备的字节|无|
-|deviceDataUsageV2|设备数据使用总量（预览）|字节|总计|从与 IotHub 相连的任意设备传出的字节，以及传入到与 IotHub 相连的任意设备的字节|无|
-|totalDeviceCount|设备总数（预览）|Count|平均值|已注册到 IoT 中心的设备数目|无|
-|connectedDeviceCount|已连接设备数（预览）|Count|平均值|已连接到 IoT 中心的设备数目|无|
-|配置|配置指标|Count|总计|配置操作的指标|无|
+|c2d.twin.update.success|后端的成功克隆更新数|Count|总计|由后端发起的所有成功的克隆更新的计数。|None|
+|c2d.twin.update.failure|后端的失败克隆更新数|计数|总计|由后端发起的所有失败的克隆更新的计数。|无|
+|c2d.twin.update.size|后端的克隆更新的大小|字节|平均值|由后端发起的所有成功的克隆更新的平均大小、最小大小和最大大小。|None|
+|twinQueries.success|成功的克隆查询|Count|总计|所有成功的克隆查询的计数。|None|
+|twinQueries.failure|失败的克隆查询|Count|总计|所有失败的克隆查询的计数。|None|
+|twinQueries.resultSize|克隆查询结果大小|字节|平均值|所有成功的克隆查询的结果大小的平均值、最小值和最大值。|None|
+|jobs.createTwinUpdateJob.success|克隆更新作业创建成功数|Count|总计|克隆更新作业创建成功的所有次数。|None|
+|jobs.createTwinUpdateJob.failure|克隆更新作业创建失败数|Count|总计|克隆更新作业创建失败的所有次数。|None|
+|jobs.createDirectMethodJob.success|方法调用作业的创建成功数|Count|总计|直接方法调用作业创建成功的所有次数。|None|
+|jobs.createDirectMethodJob.failure|方法调用作业的创建失败数|Count|总计|直接方法调用作业创建失败的所有次数。|None|
+|jobs.listJobs.success|对列出作业的成功调用数|Count|总计|对列出作业的所有成功调用的计数。|None|
+|jobs.listJobs.failure|对列出作业的失败调用数|Count|总计|对列出作业的所有失败调用的计数。|None|
+|jobs.cancelJob.success|成功的作业取消数|Count|总计|用来取消作业的调用成功的次数。|None|
+|jobs.cancelJob.failure|失败的作业取消数|Count|总计|用来取消作业的调用失败的次数。|None|
+|jobs.queryJobs.success|成功的作业查询数|Count|总计|对查询作业的所有成功调用的计数。|None|
+|jobs.queryJobs.failure|失败的作业查询数|Count|总计|对查询作业的所有失败调用的计数。|None|
+|jobs.completed|已完成的作业|Count|总计|所有已完成的作业的计数。|None|
+|jobs.failed|失败的作业数|Count|总计|所有失败的作业的计数。|None|
+|d2c.telemetry.ingress.sendThrottle|限制错误数|Count|总计|由于设备吞吐量限制而导致的限制错误数|None|
+|dailyMessageQuotaUsed|已使用的消息总数|Count|平均值|今天使用的消息总数|None|
+|deviceDataUsage|设备数据用量总计|字节|总计|从与 IotHub 相连的任意设备传出的字节，以及传入到与 IotHub 相连的任意设备的字节|None|
+|deviceDataUsageV2|设备数据使用总量（预览）|字节|总计|从与 IotHub 相连的任意设备传出的字节，以及传入到与 IotHub 相连的任意设备的字节|None|
+|totalDeviceCount|设备总数（预览）|Count|平均值|已注册到 IoT 中心的设备数目|None|
+|connectedDeviceCount|已连接设备数（预览）|Count|平均值|已连接到 IoT 中心的设备数目|None|
+|配置|配置指标|Count|总计|配置操作的指标|None|
 
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft.Devices/provisioningServices
@@ -1012,65 +1012,65 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|AddRegion|添加的区域数|Count|Count|添加的区域数|区域|
+|AddRegion|添加的区域数|Count|计数|添加的区域数|区域|
 |AvailableStorage|可用存储|字节|总计|按 5 分钟粒度报告的可用存储总量|CollectionName,DatabaseName,Region|
 |CassandraConnectionClosures|Cassandra 连接关闭数|Count|总计|已关闭的 Cassandra 连接数，按 1 分钟粒度报告|APIType,Region,ClosureReason|
-|卡桑德拉键空格删除|卡桑德拉·基空间已删除|Count|Count|卡桑德拉·基空间已删除|资源名称、ApiKind、ApiKind 资源类型、操作类型|
-|卡桑德拉基空间吞吐量更新|卡桑德拉键空间吞吐量更新|Count|Count|卡桑德拉键空间吞吐量更新|资源名称，ApiKind，ApiKind 资源类型，吞吐量请求|
-|卡桑德拉基空间更新|卡桑德拉键空间更新|Count|Count|卡桑德拉键空间更新|资源名称，ApiKind，ApiKind 资源类型，吞吐量请求|
+|CassandraKeyspaceDelete|已删除 Cassandra 密钥空间|Count|计数|已删除 Cassandra 密钥空间|Context.resourcename、/Apikind/、ApiKindResourceType、OperationType|
+|CassandraKeyspaceThroughputUpdate|已更新 Cassandra 密钥空间吞吐量|Count|计数|已更新 Cassandra 密钥空间吞吐量|Context.resourcename、/Apikind/、ApiKindResourceType、IsThroughputRequest|
+|CassandraKeyspaceUpdate|Cassandra 密钥空间更新|Count|Count|Cassandra 密钥空间更新|Context.resourcename、/Apikind/、ApiKindResourceType、IsThroughputRequest|
 |CassandraRequestCharges|Cassandra 请求费用|Count|总计|发出的 Cassandra 请求所消耗的 RU 数|APIType,DatabaseName,CollectionName,Region,OperationType,ResourceType|
-|CassandraRequests|Cassandra 请求数|Count|Count|发出的 Cassandra 请求数|APIType,DatabaseName,CollectionName,Region,OperationType,ResourceType,ErrorCode|
-|卡桑德拉表删除|卡桑德拉表已删除|Count|Count|卡桑德拉表已删除|资源名称、子资源名称、ApiKind、ApiKind 资源类型、操作类型|
-|卡桑德拉表通量更新|卡桑德拉表吞吐量已更新|Count|Count|卡桑德拉表吞吐量已更新|资源名称、子资源名称、ApiKind、Apikind 资源类型、吞吐量请求|
-|卡桑德拉表更新|卡桑德拉表已更新|Count|Count|卡桑德拉表已更新|资源名称、子资源名称、ApiKind、Apikind 资源类型、吞吐量请求|
-|CreateAccount|创建的帐户数|Count|Count|创建的帐户数|无|
+|CassandraRequests|Cassandra 请求数|Count|计数|发出的 Cassandra 请求数|APIType,DatabaseName,CollectionName,Region,OperationType,ResourceType,ErrorCode|
+|CassandraTableDelete|已删除 Cassandra 表|Count|Count|已删除 Cassandra 表|Context.resourcename、ChildResourceName、/Apikind/、ApiKindResourceType、OperationType|
+|CassandraTableThroughputUpdate|已更新 Cassandra 表吞吐量|Count|Count|已更新 Cassandra 表吞吐量|Context.resourcename、ChildResourceName、/Apikind/、ApiKindResourceType、IsThroughputRequest|
+|CassandraTableUpdate|已更新 Cassandra 表|Count|Count|已更新 Cassandra 表|Context.resourcename、ChildResourceName、/Apikind/、ApiKindResourceType、IsThroughputRequest|
+|CreateAccount|创建的帐户数|Count|Count|创建的帐户数|None|
 |DataUsage|数据使用情况|字节|总计|按 5 分钟粒度报告的总数据用量|CollectionName,DatabaseName,Region|
-|DeleteAccount|删除的帐户数|Count|Count|删除的帐户数|无|
+|DeleteAccount|删除的帐户数|Count|Count|删除的帐户数|None|
 |DocumentCount|文档计数|Count|总计|按 5 分钟粒度报告的文档总数|CollectionName,DatabaseName,Region|
 |DocumentQuota|文档配额|字节|总计|按 5 分钟粒度报告的存储配额总量|CollectionName,DatabaseName,Region|
-|格雷姆林数据库删除|格林林数据库已删除|Count|Count|格林林数据库已删除|资源名称、ApiKind、ApiKind 资源类型、操作类型|
-|格雷姆林数据库吞吐量更新|格雷姆林数据库吞吐量更新|Count|Count|格雷姆林数据库吞吐量更新|资源名称，ApiKind，ApiKind 资源类型，吞吐量请求|
-|格雷姆林数据库更新|格雷姆林数据库已更新|Count|Count|格雷姆林数据库已更新|资源名称，ApiKind，ApiKind 资源类型，吞吐量请求|
-|格雷姆林图删除|格林林图形已删除|Count|Count|格林林图形已删除|资源名称、子资源名称、ApiKind、ApiKind 资源类型、操作类型|
-|格雷姆林图吞吐量更新|格雷姆林图形吞吐量已更新|Count|Count|格雷姆林图形吞吐量已更新|资源名称、子资源名称、ApiKind、Apikind 资源类型、吞吐量请求|
-|格雷姆林图形更新|格雷姆林图形更新|Count|Count|格雷姆林图形更新|资源名称、子资源名称、ApiKind、Apikind 资源类型、吞吐量请求|
+|GremlinDatabaseDelete|Gremlin 数据库已删除|Count|Count|Gremlin 数据库已删除|Context.resourcename、/Apikind/、ApiKindResourceType、OperationType|
+|GremlinDatabaseThroughputUpdate|已更新 Gremlin 数据库吞吐量|Count|Count|已更新 Gremlin 数据库吞吐量|Context.resourcename、/Apikind/、ApiKindResourceType、IsThroughputRequest|
+|GremlinDatabaseUpdate|已更新 Gremlin 数据库|Count|Count|已更新 Gremlin 数据库|Context.resourcename、/Apikind/、ApiKindResourceType、IsThroughputRequest|
+|GremlinGraphDelete|已删除 Gremlin 关系图|Count|Count|已删除 Gremlin 关系图|Context.resourcename、ChildResourceName、/Apikind/、ApiKindResourceType、OperationType|
+|GremlinGraphThroughputUpdate|已更新 Gremlin Graph 吞吐量|Count|Count|已更新 Gremlin Graph 吞吐量|Context.resourcename、ChildResourceName、/Apikind/、ApiKindResourceType、IsThroughputRequest|
+|GremlinGraphUpdate|已更新 Gremlin 图|Count|Count|已更新 Gremlin 图|Context.resourcename、ChildResourceName、/Apikind/、ApiKindResourceType、IsThroughputRequest|
 |IndexUsage|索引使用情况|字节|总计|按 5 分钟粒度报告的总索引用量|CollectionName,DatabaseName,Region|
 |MetadataRequests|元数据请求|Count|Count|元数据请求的计数。 Cosmos DB 为每个帐户维护系统元数据集合，允许你免费枚举集合、数据库及其配置等等。|DatabaseName,CollectionName,Region,StatusCode,Role|
-|蒙戈收集删除|蒙戈集合已删除|Count|Count|蒙戈集合已删除|资源名称、子资源名称、ApiKind、ApiKind 资源类型、操作类型|
-|蒙戈收集吞吐量更新|蒙戈收集吞吐量已更新|Count|Count|蒙戈收集吞吐量已更新|资源名称、子资源名称、ApiKind、Apikind 资源类型、吞吐量请求|
-|蒙戈收集更新|蒙戈集合已更新|Count|Count|蒙戈集合已更新|资源名称、子资源名称、ApiKind、Apikind 资源类型、吞吐量请求|
-|蒙戈DB数据库更新|蒙戈数据库已更新|Count|Count|蒙戈数据库已更新|资源名称，ApiKind，ApiKind 资源类型，吞吐量请求|
-|蒙戈数据库删除|蒙戈数据库已删除|Count|Count|蒙戈数据库已删除|资源名称、ApiKind、ApiKind 资源类型、操作类型|
-|蒙戈数据库吞吐量更新|蒙戈数据库吞吐量已更新|Count|Count|蒙戈数据库吞吐量已更新|资源名称，ApiKind，ApiKind 资源类型，吞吐量请求|
-|MongoRequestCharge|Mongo 请求费用|Count|总计|Mongo 已消耗的请求单位|数据库名称、集合名称、区域、命令名称、错误代码、状态|
-|MongoRequests|Mongo 请求|Count|Count|已发出的 Mongo 请求数|数据库名称、集合名称、区域、命令名称、错误代码、状态|
+|MongoCollectionDelete|Mongo 集合已删除|Count|Count|Mongo 集合已删除|Context.resourcename、ChildResourceName、/Apikind/、ApiKindResourceType、OperationType|
+|MongoCollectionThroughputUpdate|已更新 Mongo 集合吞吐量|Count|Count|已更新 Mongo 集合吞吐量|Context.resourcename、ChildResourceName、/Apikind/、ApiKindResourceType、IsThroughputRequest|
+|MongoCollectionUpdate|Mongo 集合已更新|Count|Count|Mongo 集合已更新|Context.resourcename、ChildResourceName、/Apikind/、ApiKindResourceType、IsThroughputRequest|
+|MongoDBDatabaseUpdate|已更新 Mongo 数据库|Count|Count|已更新 Mongo 数据库|Context.resourcename、/Apikind/、ApiKindResourceType、IsThroughputRequest|
+|MongoDatabaseDelete|Mongo 数据库已删除|Count|Count|Mongo 数据库已删除|Context.resourcename、/Apikind/、ApiKindResourceType、OperationType|
+|MongoDatabaseThroughputUpdate|已更新 Mongo 数据库吞吐量|Count|Count|已更新 Mongo 数据库吞吐量|Context.resourcename、/Apikind/、ApiKindResourceType、IsThroughputRequest|
+|MongoRequestCharge|Mongo 请求费用|Count|总计|Mongo 已消耗的请求单位|DatabaseName、CollectionName、Region、CommandName、ErrorCode、Status|
+|MongoRequests|Mongo 请求|Count|Count|已发出的 Mongo 请求数|DatabaseName、CollectionName、Region、CommandName、ErrorCode、Status|
 |MongoRequestsCount|Mongo 请求速率|每秒计数|平均值|每秒 Mongo 请求计数|DatabaseName,CollectionName,Region,CommandName,ErrorCode|
 |MongoRequestsDelete|Mongo 删除请求速率|每秒计数|平均值|每秒 Mongo 删除请求数|DatabaseName,CollectionName,Region,CommandName,ErrorCode|
 |MongoRequestsInsert|Mongo 插入请求速率|每秒计数|平均值|每秒 Mongo 插入计数|DatabaseName,CollectionName,Region,CommandName,ErrorCode|
 |MongoRequestsQuery|Mongo 查询请求速率|每秒计数|平均值|每秒 Mongo 查询请求数|DatabaseName,CollectionName,Region,CommandName,ErrorCode|
 |MongoRequestsUpdate|Mongo 更新请求速率|每秒计数|平均值|每秒 Mongo 更新请求数|DatabaseName,CollectionName,Region,CommandName,ErrorCode|
-|标准化的RU消费|标准化 RU 消耗|百分比|最大值|每分钟最大 RU 消耗百分比|CollectionName,DatabaseName,Region|
+|NormalizedRUConsumption|规范化 RU 消耗量|百分比|最大值|每分钟最大 RU 消耗百分比|CollectionName,DatabaseName,Region|
 |ProvisionedThroughput|预配的吞吐量|Count|最大值|预配的吞吐量|DatabaseName,CollectionName|
-|RegionFailover|故障转移的区域数|Count|Count|故障转移的区域数|无|
+|RegionFailover|故障转移的区域数|Count|Count|故障转移的区域数|None|
 |RemoveRegion|删除的区域数|Count|Count|删除的区域数|区域|
 |ReplicationLatency|P99 复制延迟|毫秒|平均值|启用了异地复制的帐户的源和目标区域之间的 P99 复制延迟|SourceRegion,TargetRegion|
-|服务器侧延迟|服务器端延迟|毫秒|平均值|服务器端延迟|数据库名称、集合名称、区域、连接模式、操作类型、公共 API 类型|
-|ServiceAvailability|服务可用性|百分比|平均值|一小时、一天或一月粒度的帐户请求可用性|无|
-|Sql容器删除|Sql 容器已删除|Count|Count|Sql 容器已删除|资源名称、子资源名称、ApiKind、ApiKind 资源类型、操作类型|
-|Sql容器吞吐量更新|Sql 容器吞吐量已更新|Count|Count|Sql 容器吞吐量已更新|资源名称、子资源名称、ApiKind、Apikind 资源类型、吞吐量请求|
-|Sql容器更新|Sql 容器已更新|Count|Count|Sql 容器已更新|资源名称、子资源名称、ApiKind、Apikind 资源类型、吞吐量请求|
-|Sql数据库删除|Sql 数据库已删除|Count|Count|Sql 数据库已删除|资源名称、ApiKind、ApiKind 资源类型、操作类型|
-|Sql数据库吞吐量更新|Sql 数据库吞吐量已更新|Count|Count|Sql 数据库吞吐量已更新|资源名称，ApiKind，ApiKind 资源类型，吞吐量请求|
-|Sql数据库更新|Sql 数据库已更新|Count|Count|Sql 数据库已更新|资源名称，ApiKind，ApiKind 资源类型，吞吐量请求|
-|表表删除|Azure 表已删除|Count|Count|Azure 表已删除|资源名称、ApiKind、ApiKind 资源类型、操作类型|
-|表表吞吐量更新|Azure 表吞吐量已更新|Count|Count|Azure 表吞吐量已更新|资源名称，ApiKind，ApiKind 资源类型，吞吐量请求|
-|表表更新|Azure 表表已更新|Count|Count|Azure 表表已更新|资源名称，ApiKind，ApiKind 资源类型，吞吐量请求|
-|TotalRequestUnits|总请求单位数|Count|总计|已消耗的请求单位|数据库名称、集合名称、区域、状态代码、操作类型、状态|
-|TotalRequests|请求总数|Count|Count|已发出的请求数|数据库名称、集合名称、区域、状态代码、操作类型、状态|
+|ServerSideLatency|服务器端延迟|毫秒|平均值|服务器端延迟|DatabaseName、CollectionName、Region、ConnectionMode、OperationType、PublicAPIType|
+|ServiceAvailability|服务可用性|百分比|平均值|一小时、一天或一月粒度的帐户请求可用性|None|
+|SqlContainerDelete|Sql 容器已删除|Count|Count|Sql 容器已删除|Context.resourcename、ChildResourceName、/Apikind/、ApiKindResourceType、OperationType|
+|SqlContainerThroughputUpdate|已更新 Sql 容器吞吐量|Count|Count|已更新 Sql 容器吞吐量|Context.resourcename、ChildResourceName、/Apikind/、ApiKindResourceType、IsThroughputRequest|
+|SqlContainerUpdate|已更新 Sql 容器|Count|Count|已更新 Sql 容器|Context.resourcename、ChildResourceName、/Apikind/、ApiKindResourceType、IsThroughputRequest|
+|SqlDatabaseDelete|Sql 数据库已删除|Count|Count|Sql 数据库已删除|Context.resourcename、/Apikind/、ApiKindResourceType、OperationType|
+|SqlDatabaseThroughputUpdate|Sql 数据库吞吐量已更新|Count|Count|Sql 数据库吞吐量已更新|Context.resourcename、/Apikind/、ApiKindResourceType、IsThroughputRequest|
+|SqlDatabaseUpdate|Sql 数据库已更新|Count|Count|Sql 数据库已更新|Context.resourcename、/Apikind/、ApiKindResourceType、IsThroughputRequest|
+|TableTableDelete|已删除 AzureTable 表|Count|Count|已删除 AzureTable 表|Context.resourcename、/Apikind/、ApiKindResourceType、OperationType|
+|TableTableThroughputUpdate|已更新 AzureTable 表吞吐量|Count|Count|已更新 AzureTable 表吞吐量|Context.resourcename、/Apikind/、ApiKindResourceType、IsThroughputRequest|
+|TableTableUpdate|已更新 AzureTable 表|Count|Count|已更新 AzureTable 表|Context.resourcename、/Apikind/、ApiKindResourceType、IsThroughputRequest|
+|TotalRequestUnits|总请求单位数|Count|总计|已消耗的请求单位|DatabaseName、CollectionName、Region、StatusCode、OperationType、Status|
+|TotalRequests|请求总数|Count|Count|已发出的请求数|DatabaseName、CollectionName、Region、StatusCode、OperationType、Status|
 |UpdateAccountKeys|更新的帐户密钥数|Count|Count|更新的帐户密钥数|KeyType|
 |UpdateAccountNetworkSettings|更新的帐户网络设置数|Count|Count|更新的帐户网络设置数|无|
-|UpdateAccountReplicationSettings|更新的帐户复制设置数|Count|Count|更新的帐户复制设置数|无|
-|更新诊断设置|帐户诊断设置已更新|Count|Count|帐户诊断设置已更新|诊断设置名称，资源组名称|
+|UpdateAccountReplicationSettings|更新的帐户复制设置数|计数|Count|更新的帐户复制设置数|无|
+|UpdateDiagnosticsSettings|帐户诊断设置已更新|计数|Count|帐户诊断设置已更新|DiagnosticSettingsName、ResourceGroupName|
 
 
 
@@ -1089,7 +1089,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |---|---|---|---|---|---|
 |PublishSuccessCount|发布的事件数|Count|总计|发布到此主题的事件总数|主题|
 |PublishFailCount|发布失败的事件数|Count|总计|未能发布到此主题的事件总数|Topic,ErrorType,Error|
-|PublishSuccessLatencyInMs|发布成功延迟|毫秒|总计|发布成功延迟（毫秒）|无|
+|PublishSuccessLatencyInMs|发布成功延迟|毫秒|总计|发布成功延迟（毫秒）|None|
 |MatchedEventCount|匹配的事件数|Count|总计|与此事件订阅匹配的事件总数|Topic,EventSubscriptionName,DomainEventSubscriptionName|
 |DeliveryAttemptFailCount|发送失败的事件数|Count|总计|未能发送到此事件订阅的事件总数|Topic,EventSubscriptionName,DomainEventSubscriptionName,Error,ErrorType|
 |DeliverySuccessCount|发送的事件数|Count|总计|发送到此事件订阅的事件总数|Topic,EventSubscriptionName,DomainEventSubscriptionName|
@@ -1101,10 +1101,10 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|PublishSuccessCount|发布的事件数|Count|总计|发布到此主题的事件总数|无|
+|PublishSuccessCount|发布的事件数|Count|总计|发布到此主题的事件总数|None|
 |PublishFailCount|发布失败的事件数|Count|总计|未能发布到此主题的事件总数|ErrorType,Error|
-|UnmatchedEventCount|不匹配的事件数|Count|总计|不匹配本主题任何事件订阅的事件总数|无|
-|PublishSuccessLatencyInMs|发布成功延迟|毫秒|总计|发布成功延迟（毫秒）|无|
+|UnmatchedEventCount|不匹配的事件数|Count|总计|不匹配本主题任何事件订阅的事件总数|None|
+|PublishSuccessLatencyInMs|发布成功延迟|毫秒|总计|发布成功延迟（毫秒）|None|
 |MatchedEventCount|匹配的事件数|Count|总计|与此事件订阅匹配的事件总数|EventSubscriptionName|
 |DeliveryAttemptFailCount|发送失败的事件数|Count|总计|未能发送到此事件订阅的事件总数|Error,ErrorType,EventSubscriptionName|
 |DeliverySuccessCount|发送的事件数|Count|总计|发送到此事件订阅的事件总数|EventSubscriptionName|
@@ -1112,14 +1112,14 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |DroppedEventCount|删除的事件数|Count|总计|与此事件订阅匹配的已删除事件总数|DropReason,EventSubscriptionName|
 |DeadLetteredCount|死信事件数|Count|总计|与此事件订阅匹配的死信事件总数|DeadLetterReason,EventSubscriptionName|
 
-## <a name="microsofteventgridsystemtopics"></a>微软.事件网格/系统主题
+## <a name="microsofteventgridsystemtopics"></a>EventGrid/systemTopics
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|PublishSuccessCount|发布的事件数|Count|总计|发布到此主题的事件总数|无|
+|PublishSuccessCount|发布的事件数|Count|总计|发布到此主题的事件总数|None|
 |PublishFailCount|发布失败的事件数|Count|总计|未能发布到此主题的事件总数|ErrorType,Error|
-|UnmatchedEventCount|不匹配的事件数|Count|总计|不匹配本主题任何事件订阅的事件总数|无|
-|PublishSuccessLatencyInMs|发布成功延迟|毫秒|总计|发布成功延迟（毫秒）|无|
+|UnmatchedEventCount|不匹配的事件数|Count|总计|不匹配本主题任何事件订阅的事件总数|None|
+|PublishSuccessLatencyInMs|发布成功延迟|毫秒|总计|发布成功延迟（毫秒）|None|
 |MatchedEventCount|匹配的事件数|Count|总计|与此事件订阅匹配的事件总数|EventSubscriptionName|
 |DeliveryAttemptFailCount|发送失败的事件数|Count|总计|未能发送到此事件订阅的事件总数|Error,ErrorType,EventSubscriptionName|
 |DeliverySuccessCount|发送的事件数|Count|总计|发送到此事件订阅的事件总数|EventSubscriptionName|
@@ -1131,9 +1131,9 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|MatchedEventCount|匹配的事件数|Count|总计|与此事件订阅匹配的事件总数|无|
-|DeliveryAttemptFailCount|发送失败的事件数|Count|总计|未能发送到此事件订阅的事件总数|Error,ErrorType|
-|DeliverySuccessCount|发送的事件数|Count|总计|发送到此事件订阅的事件总数|无|
+|MatchedEventCount|匹配的事件数|Count|总计|与此事件订阅匹配的事件总数|None|
+|DeliveryAttemptFailCount|发送失败的事件数|计数|总计|未能发送到此事件订阅的事件总数|Error,ErrorType|
+|DeliverySuccessCount|发送的事件数|Count|总计|发送到此事件订阅的事件总数|None|
 |DestinationProcessingDurationInMs|目标处理持续时间|毫秒|平均值|目标处理持续时间（毫秒）|无|
 |DroppedEventCount|删除的事件数|Count|总计|与此事件订阅匹配的已删除事件总数|DropReason|
 |DeadLetteredCount|死信事件数|Count|总计|与此事件订阅匹配的死信事件总数|DeadLetterReason|
@@ -1143,9 +1143,9 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
 |PublishSuccessCount|发布的事件数|Count|总计|发布到此主题的事件总数|无|
-|PublishFailCount|发布失败的事件数|Count|总计|未能发布到此主题的事件总数|ErrorType,Error|
-|UnmatchedEventCount|不匹配的事件数|Count|总计|不匹配本主题任何事件订阅的事件总数|无|
-|PublishSuccessLatencyInMs|发布成功延迟|毫秒|总计|发布成功延迟（毫秒）|无|
+|PublishFailCount|发布失败的事件数|计数|总计|未能发布到此主题的事件总数|ErrorType,Error|
+|UnmatchedEventCount|不匹配的事件数|Count|总计|不匹配本主题任何事件订阅的事件总数|None|
+|PublishSuccessLatencyInMs|发布成功延迟|毫秒|总计|发布成功延迟（毫秒）|None|
 
 
 
@@ -1164,30 +1164,30 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |OutgoingMessages|传出消息数|Count|总计|Microsoft.EventHub 传出的消息数。|EntityName|
 |IncomingBytes|传入字节数。|字节|总计|Microsoft.EventHub 传入的字节数。|EntityName|
 |OutgoingBytes|传出字节数。|字节|总计|Microsoft.EventHub 传出的字节数。|EntityName|
-|ActiveConnections|ActiveConnections|Count|平均值|Microsoft.EventHub 的活动连接总数。|无|
+|ActiveConnections|ActiveConnections|Count|平均值|Microsoft.EventHub 的活动连接总数。|None|
 |ConnectionsOpened|打开的连接数。|Count|平均值|Microsoft.EventHub 打开的连接数。|EntityName|
 |ConnectionsClosed|已关闭的连接数。|Count|平均值|Microsoft.EventHub 已关闭的连接数。|EntityName|
 |CaptureBacklog|捕获积压工作(backlog)。|Count|总计|捕获有关 Microsoft.EventHub 的积压工作(backlog)。|EntityName|
 |CapturedMessages|已捕获的消息数。|Count|总计|Microsoft.EventHub 已捕获的消息数。|EntityName|
 |CapturedBytes|已捕获的字节数。|字节|总计|Microsoft.EventHub 已捕获的字节数。|EntityName|
 |大小|大小|字节|平均值|EventHub 的大小（以字节为单位）。|EntityName|
-|INREQS|传入的请求数（已弃用）|Count|总计|命名空间的传入发送请求总数（已弃用）|无|
-|SUCCREQ|成功的请求数（已弃用）|Count|总计|命名空间的成功请求总数（已弃用）|无|
-|FAILREQ|失败的请求数（已弃用）|Count|总计|命名空间的失败请求总数（已弃用）|无|
-|SVRBSY|服务器繁忙错误数（已弃用）|Count|总计|命名空间的服务器繁忙错误总数（已弃用）|无|
-|INTERR|内部服务器错误数（已弃用）|Count|总计|命名空间的内部服务器错误总数（已弃用）|无|
-|MISCERR|其他错误（已弃用）|Count|总计|命名空间的失败请求总数（已弃用）|无|
-|INMSGS|传入的消息数（已过时）（已弃用）|Count|总计|命名空间的传入消息总数。 此指标已弃用。 请改用传入消息指标（已弃用）|无|
-|EHINMSGS|传入消息（已弃用）|Count|总计|命名空间的传入消息总数（已弃用）|无|
+|INREQS|传入的请求数（已弃用）|Count|总计|命名空间的传入发送请求总数（已弃用）|None|
+|SUCCREQ|成功的请求数（已弃用）|Count|总计|命名空间的成功请求总数（已弃用）|None|
+|FAILREQ|失败的请求数（已弃用）|Count|总计|命名空间的失败请求总数（已弃用）|None|
+|SVRBSY|服务器繁忙错误数（已弃用）|Count|总计|命名空间的服务器繁忙错误总数（已弃用）|None|
+|INTERR|内部服务器错误数（已弃用）|Count|总计|命名空间的内部服务器错误总数（已弃用）|None|
+|MISCERR|其他错误（已弃用）|Count|总计|命名空间的失败请求总数（已弃用）|None|
+|INMSGS|传入的消息数（已过时）（已弃用）|Count|总计|命名空间的传入消息总数。 此指标已弃用。 请改用传入消息指标（已弃用）|None|
+|EHINMSGS|传入消息（已弃用）|Count|总计|命名空间的传入消息总数（已弃用）|None|
 |OUTMSGS|传出的消息数（已过时）（已弃用）|Count|总计|命名空间的传出消息总数。 此指标已弃用。 请改用传出消息指标（已弃用）|无|
-|EHOUTMSGS|传出消息（已弃用）|Count|总计|命名空间的传出消息总数（已弃用）|无|
-|EHINMBS|传入字节数（已过时）（已弃用）|字节|总计|命名空间的事件中心传入消息吞吐量。 此指标已弃用。 请改用传入字节指标（已弃用）|无|
-|EHINBYTES|传入字节（已弃用）|字节|总计|命名空间的事件中心传入消息吞吐量（已弃用）|无|
-|EHOUTMBS|传出字节数（已过时）（已弃用）|字节|总计|命名空间的事件中心传出消息吞吐量。 此指标已弃用。 请改用传出字节指标（已弃用）|无|
-|EHOUTBYTES|传出字节（已弃用）|字节|总计|命名空间的事件中心传出消息吞吐量（已弃用）|无|
-|EHABL|存档积压工作消息数（已弃用）|Count|总计|命名空间积压工作中的事件中心存档消息数（已弃用）|无|
-|EHAMSGS|存档消息数（已弃用）|Count|总计|命名空间中的事件中心存档消息数（已弃用）|无|
-|EHAMBS|存档消息吞吐量（已弃用）|字节|总计|命名空间中的事件中心存档消息吞吐量（已弃用）|无|
+|EHOUTMSGS|传出消息（已弃用）|Count|总计|命名空间的传出消息总数（已弃用）|None|
+|EHINMBS|传入字节数（已过时）（已弃用）|字节|总计|命名空间的事件中心传入消息吞吐量。 此指标已弃用。 请改用传入字节指标（已弃用）|None|
+|EHINBYTES|传入字节（已弃用）|字节|总计|命名空间的事件中心传入消息吞吐量（已弃用）|None|
+|EHOUTMBS|传出字节数（已过时）（已弃用）|字节|总计|命名空间的事件中心传出消息吞吐量。 此指标已弃用。 请改用传出字节指标（已弃用）|None|
+|EHOUTBYTES|传出字节（已弃用）|字节|总计|命名空间的事件中心传出消息吞吐量（已弃用）|None|
+|EHABL|存档积压工作消息数（已弃用）|Count|总计|命名空间积压工作中的事件中心存档消息数（已弃用）|None|
+|EHAMSGS|存档消息数（已弃用）|Count|总计|命名空间中的事件中心存档消息数（已弃用）|None|
+|EHAMBS|存档消息吞吐量（已弃用）|字节|总计|命名空间中的事件中心存档消息吞吐量（已弃用）|None|
 
 ## <a name="microsofteventhubclusters"></a>Microsoft.EventHub/clusters
 
@@ -1198,20 +1198,20 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |UserErrors|用户错误数。|Count|总计|Microsoft.EventHub 用户错误数。|OperationResult|
 |QuotaExceededErrors|超过限额错误。|Count|总计|Microsoft.EventHub 的超过限额错误数。|OperationResult|
 |ThrottledRequests|限制的请求数。|Count|总计|Microsoft.EventHub 限制的请求数。|OperationResult|
-|IncomingRequests|传入请求数|Count|总计|Microsoft.EventHub 传入的请求数。|无|
-|IncomingMessages|传入消息数|Count|总计|Microsoft.EventHub 传入的消息数。|无|
-|OutgoingMessages|传出消息数|Count|总计|Microsoft.EventHub 传出的消息数。|无|
-|IncomingBytes|传入字节数。|字节|总计|Microsoft.EventHub 传入的字节数。|无|
-|OutgoingBytes|传出字节数。|字节|总计|Microsoft.EventHub 传出的字节数。|无|
-|ActiveConnections|ActiveConnections|Count|平均值|Microsoft.EventHub 的活动连接总数。|无|
-|ConnectionsOpened|打开的连接数。|Count|平均值|Microsoft.EventHub 打开的连接数。|无|
-|ConnectionsClosed|已关闭的连接数。|Count|平均值|Microsoft.EventHub 已关闭的连接数。|无|
-|CaptureBacklog|捕获积压工作(backlog)。|Count|总计|捕获有关 Microsoft.EventHub 的积压工作(backlog)。|无|
-|CapturedMessages|已捕获的消息数。|Count|总计|Microsoft.EventHub 已捕获的消息数。|无|
-|CapturedBytes|已捕获的字节数。|字节|总计|Microsoft.EventHub 已捕获的字节数。|无|
-|CPU|CPU|百分比|最大值|事件中心群集的 CPU 使用率（百分比）|角色|
-|AvailableMemory|可用内存|百分比|最大值|事件中心群集的可用内存，以总内存量的百分比表示。|角色|
-|大小|EventHub 的大小（以字节为单位）。|字节|平均值|EventHub 的大小（以字节为单位）。|角色|
+|IncomingRequests|传入请求数|Count|总计|Microsoft.EventHub 传入的请求数。|None|
+|IncomingMessages|传入消息数|Count|总计|Microsoft.EventHub 传入的消息数。|None|
+|OutgoingMessages|传出消息数|Count|总计|Microsoft.EventHub 传出的消息数。|None|
+|IncomingBytes|传入字节数。|字节|总计|Microsoft.EventHub 传入的字节数。|None|
+|OutgoingBytes|传出字节数。|字节|总计|Microsoft.EventHub 传出的字节数。|None|
+|ActiveConnections|ActiveConnections|Count|平均值|Microsoft.EventHub 的活动连接总数。|None|
+|ConnectionsOpened|打开的连接数。|Count|平均值|Microsoft.EventHub 打开的连接数。|None|
+|ConnectionsClosed|已关闭的连接数。|Count|平均值|Microsoft.EventHub 已关闭的连接数。|None|
+|CaptureBacklog|捕获积压工作(backlog)。|Count|总计|捕获有关 Microsoft.EventHub 的积压工作(backlog)。|None|
+|CapturedMessages|已捕获的消息数。|Count|总计|Microsoft.EventHub 已捕获的消息数。|None|
+|CapturedBytes|已捕获的字节数。|字节|总计|Microsoft.EventHub 已捕获的字节数。|None|
+|CPU|CPU|百分比|最大值|事件中心群集的 CPU 使用率（百分比）|Role|
+|AvailableMemory|可用内存|百分比|最大值|事件中心群集的可用内存，以总内存量的百分比表示。|Role|
+|大小|EventHub 的大小（以字节为单位）。|字节|平均值|EventHub 的大小（以字节为单位）。|Role|
 
 
 ## <a name="microsofthdinsightclusters"></a>Microsoft.HDInsight/clusters
@@ -1227,9 +1227,9 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|ObservedMetricValue|观察到的指标值|Count|平均值|执行自动缩放时计算的值|MetricTriggerSource|
-|MetricThreshold|指标阈值|Count|平均值|自动缩放运行时已配置的自动缩放阈值。|MetricTriggerRule|
-|ObservedCapacity|观察到的容量|Count|平均值|自动缩放执行时报告的容量。|无|
+|ObservedMetricValue|观察到的指标值|计数|平均值|执行自动缩放时计算的值|MetricTriggerSource|
+|MetricThreshold|指标阈值|计数|平均值|自动缩放运行时已配置的自动缩放阈值。|MetricTriggerRule|
+|ObservedCapacity|观察到的容量|计数|平均值|自动缩放执行时报告的容量。|无|
 |ScaleActionsInitiated|启动的缩放操作|Count|总计|缩放操作的方向。|ScaleDirection|
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft.Insights/Components
@@ -1239,14 +1239,14 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |availabilityResults/availabilityPercentage|可用性|百分比|平均值|已成功完成的可用性测试百分比|availabilityResult/name,availabilityResult/location|
 |availabilityResults/count|可用性测试|Count|Count|可用性测试计数|availabilityResult/name,availabilityResult/location,availabilityResult/success|
 |availabilityResults/duration|可用性测试持续时间|毫秒|平均值|可用性测试持续时间|availabilityResult/name,availabilityResult/location,availabilityResult/success|
-|browserTimings/networkDuration|页面加载网络连接时间|毫秒|平均值|用户请求和网络连接之间的时间。 包括 DNS 查找和传输连接。|无|
-|browserTimings/processingDuration|客户端处理时间|毫秒|平均值|从接收文档的最后一个字节到 DOM 加载完之间的时间。 可能仍在处理异步请求。|无|
-|browserTimings/receiveDuration|接收响应时间|毫秒|平均值|第一个和最后一个字节之间的时间，或直至断开连接的时间。|无|
-|browserTimings/sendDuration|发送请求时间|毫秒|平均值|网络连接和接收第一个字节之间的时间。|无|
-|browserTimings/totalDuration|浏览器页面加载时间|毫秒|平均值|从用户请求一直到 DOM、样式表、脚本和映像加载完之间的时间。|无|
-|dependencies/count|依赖项调用|Count|Count|应用程序对外部资源所进行的调用计数。|依赖项/类型、依赖项/性能桶、依赖项/成功、依赖项/目标、依赖项/结果代码、操作/综合、云/角色实例、云/角色名称|
-|dependencies/duration|依赖项持续时间|毫秒|平均值|应用程序对外部资源所进行的调用持续时间。|依赖项/类型、依赖项/性能桶、依赖项/成功、依赖项/目标、依赖项/结果代码、操作/综合、云/角色实例、云/角色名称|
-|dependencies/failed|依赖项调用失败次数|Count|Count|应用程序对外部资源所进行的依赖项调用失败的计数。|依赖项/类型、依赖项/性能桶、依赖项/成功、依赖项/目标、依赖项/结果代码、操作/综合、云/角色实例、云/角色名称|
+|browserTimings/networkDuration|页面加载网络连接时间|毫秒|平均值|用户请求和网络连接之间的时间。 包括 DNS 查找和传输连接。|None|
+|browserTimings/processingDuration|客户端处理时间|毫秒|平均值|从接收文档的最后一个字节到 DOM 加载完之间的时间。 可能仍在处理异步请求。|None|
+|browserTimings/receiveDuration|接收响应时间|毫秒|平均值|第一个和最后一个字节之间的时间，或直至断开连接的时间。|None|
+|browserTimings/sendDuration|发送请求时间|毫秒|平均值|网络连接和接收第一个字节之间的时间。|None|
+|browserTimings/totalDuration|浏览器页面加载时间|毫秒|平均值|从用户请求一直到 DOM、样式表、脚本和映像加载完之间的时间。|None|
+|dependencies/count|依赖项调用|Count|Count|应用程序对外部资源所进行的调用计数。|依赖项/类型、依赖项/performanceBucket、依赖项/成功、依赖项/目标、依赖项/resultCode、操作/合成、cloud/roleInstance、云/对象类型|
+|dependencies/duration|依赖项持续时间|毫秒|平均值|应用程序对外部资源所进行的调用持续时间。|依赖项/类型、依赖项/performanceBucket、依赖项/成功、依赖项/目标、依赖项/resultCode、操作/合成、cloud/roleInstance、云/对象类型|
+|dependencies/failed|依赖项调用失败次数|Count|Count|应用程序对外部资源所进行的依赖项调用失败的计数。|依赖项/类型、依赖项/performanceBucket、依赖项/成功、依赖项/目标、依赖项/resultCode、操作/合成、cloud/roleInstance、云/对象类型|
 |pageViews/count|页面视图|Count|Count|页面视图计数。|operation/synthetic,cloud/roleName|
 |pageViews/duration|页面视图加载时间|毫秒|平均值|页面视图加载时间|operation/synthetic,cloud/roleName|
 |performanceCounters/requestExecutionTime|HTTP 请求执行时间|毫秒|平均值|最近的请求执行时间。|cloud/roleInstance|
@@ -1263,24 +1263,24 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |requests/failed|失败的请求|Count|Count|标记为失败的 HTTP 请求的计数。 在大多数情况下这些请求的响应代码 >= 400 且不等于 401。|request/performanceBucket,request/resultCode,request/success,operation/synthetic,cloud/roleInstance,cloud/roleName|
 |requests/rate|服务器请求速率|每秒计数|平均值|每秒服务器请求速率|request/performanceBucket,request/resultCode,operation/synthetic,cloud/roleInstance,request/success,cloud/roleName|
 |exceptions/count|例外|Count|Count|所有未捕获异常的已合并计数。|cloud/roleName,cloud/roleInstance,client/type|
-|exceptions/browser|浏览器异常|Count|Count|浏览器中所引发未捕获异常的计数。|client/isServer,cloud/roleName|
-|exceptions/server|服务器异常|Count|Count|服务器应用程序中引发的未捕获的异常计数。|client/isServer,cloud/roleName,cloud/roleInstance|
+|exceptions/browser|浏览器异常|Count|计数|浏览器中所引发未捕获异常的计数。|client/isServer,cloud/roleName|
+|exceptions/server|服务器异常|Count|计数|服务器应用程序中引发的未捕获的异常计数。|client/isServer,cloud/roleName,cloud/roleInstance|
 |traces/count|跟踪|Count|Count|跟踪文档计数|trace/severityLevel,operation/synthetic,cloud/roleName,cloud/roleInstance|
 
 
-## <a name="microsoftiotcentraliotapps"></a>微软.物联网/物联网
+## <a name="microsoftiotcentraliotapps"></a>IoTCentral/IoTApps
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|connectedDeviceCount|连接设备总数|Count|平均值|连接到 IoT 中心的设备数量|无|
-|c2d.属性.阅读.成功|成功的设备属性从 IoT 中心读取|Count|总计|从 IoT 中央启动的所有成功属性读取的计数|无|
-|c2d.属性.读取.失败|从 IoT 中心读取失败的设备属性|Count|总计|从 IoT 中央启动的所有失败属性读取的计数|无|
-|d2c.属性.阅读.成功|成功的设备属性从设备读取|Count|总计|从设备启动的所有成功属性读取的计数|无|
-|d2c.属性.读取.失败|从设备读取失败的设备属性|Count|总计|从设备启动的所有失败属性读取的计数|无|
-|c2d.属性.更新.成功|从 IoT 中心成功更新设备属性|Count|总计|从 IoT 中央启动的所有成功属性更新的计数|无|
-|c2d.属性.更新.失败|来自 IoT 中心的设备属性更新失败|Count|总计|从 IoT 中央启动的所有失败属性更新的计数|无|
-|d2c.属性.更新.成功|成功从设备更新设备属性|Count|总计|从设备启动的所有成功属性更新的计数|无|
-|d2c.属性.更新.失败|设备更新失败|Count|总计|从设备启动的所有失败属性更新的计数|无|
+|connectedDeviceCount|连接的设备总数|计数|平均值|连接到 IoT Central 的设备数|无|
+|c2d。成功|成功从 IoT Central 读取设备属性|计数|总计|从 IoT Central 启动的所有成功的属性读取的计数|无|
+|c2d。读取失败|从 IoT Central 读取失败的设备属性|计数|总计|从 IoT Central 启动的所有失败的属性读取的计数|无|
+|d2c。成功|设备属性从设备读取成功|计数|总计|从设备启动的所有成功的属性读取的计数|无|
+|d2c。读取失败|设备属性读取失败|Count|总计|从设备启动的所有失败的属性读取的计数|无|
+|c2d。成功|IoT Central 中的设备属性更新成功|Count|总计|从 IoT Central 启动的所有成功属性更新的计数|无|
+|c2d。失败|IoT Central 中的设备属性更新失败|计数|总计|从 IoT Central 启动的所有失败属性更新的计数|无|
+|d2c。成功|设备的成功更新设备属性|计数|总计|从设备启动的所有成功属性更新的计数|无|
+|d2c。失败|设备的设备属性更新失败|计数|总计|从设备启动的所有失败属性更新的计数|无|
 
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
@@ -1297,134 +1297,134 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|CacheUtilization|缓存利用率|百分比|平均值|群集范围内的使用率级别|无|
-|QueryDuration|查询持续时间|毫秒|平均值|查询持续时间（以秒为单位）|QueryStatus|
-|IngestionUtilization|引入利用率|百分比|平均值|群集中已使用引入槽的比率|无|
-|KeepAlive|保持活动状态|Count|平均值|完整性检查表示群集响应查询|无|
+|CacheUtilization|缓存利用率|百分比|平均值|群集范围内的使用率级别|None|
+|QueryDuration|查询持续时间|毫秒|平均值|查询的持续时间（秒）|QueryStatus|
+|IngestionUtilization|引入利用率|百分比|平均值|群集中已使用引入槽的比率|None|
+|KeepAlive|保持活动状态|Count|平均值|完整性检查表示群集响应查询|None|
 |IngestionVolumeInMB|引入量 (MB)|Count|总计|已引入群集的数据总量 (MB)|数据库|
-|IngestionLatencyInSeconds|引入延迟（秒）|秒|平均值|从源（例如消息位于事件中心）到群集的引入时间（秒）|无|
+|IngestionLatencyInSeconds|引入延迟（秒）|秒|平均值|从源（例如消息位于事件中心）到群集的引入时间（秒）|None|
 |EventsProcessedForEventHubs|处理的事件数（适用于事件中心/IoT 中心）|Count|总计|从事件中心/IoT 中心引入时，由群集处理的事件数|EventStatus|
 |IngestionResult|引入结果|Count|Count|引入操作的数量|IngestionResultDetails|
-|CPU|CPU|百分比|平均值|CPU 使用率级别|无|
-|ContinuousExportNumOfRecordsExported|连续导出 – 导出的记录数|Count|总计|导出的记录数，在导出操作期间对每个写入的存储项目激发|连续导出名称，数据库|
-|ExportUtilization|导出利用率|百分比|最大值|导出利用率|无|
-|ContinuousExportPendingCount|连续导出挂起计数|Count|最大值|做好执行准备的挂起的连续导出作业数|无|
-|ContinuousExportMaxLatenessMinutes|连续导出最大延迟|Count|最大值|群集中连续导出作业报告的延迟（以分钟）为|无|
+|CPU|CPU|百分比|平均值|CPU 使用率级别|None|
+|ContinuousExportNumOfRecordsExported|连续导出 – 导出的记录数|Count|总计|导出的记录数，在导出操作期间对每个写入的存储项目激发|ContinuousExportName，数据库|
+|ExportUtilization|导出利用率|百分比|最大值|导出利用率|None|
+|ContinuousExportPendingCount|连续导出挂起计数|Count|最大值|做好执行准备的挂起的连续导出作业数|None|
+|ContinuousExportMaxLatenessMinutes|连续导出最大迟到|Count|最大值|群集中的连续导出作业报告的迟到（分钟）|None|
 |ContinuousExportResult|连续导出结果|Count|Count|指示连续导出是成功还是失败|ContinuousExportName,Result,Database|
-|StreamingIngestDuration|流引入持续时间|毫秒|平均值|流引入持续时间（毫秒）|无|
-|StreamingIngestDataRate|流引入数据速率|Count|平均值|流引入数据速率（MB/秒）|无|
-|SteamingIngestRequestRate|流引入请求速率|Count|RateRequestsPerSecond|流引入请求速率（每秒请求数）|无|
+|StreamingIngestDuration|流引入持续时间|毫秒|平均值|流引入持续时间（毫秒）|None|
+|StreamingIngestDataRate|流引入数据速率|计数|平均值|流引入数据速率（MB/秒）|None|
+|SteamingIngestRequestRate|流引入请求速率|Count|RateRequestsPerSecond|流引入请求速率（每秒请求数）|None|
 |StreamingIngestResults|流引入结果|Count|平均值|流引入结果|结果|
-|TotalNumberOfConcurrentQueries|并发查询总数|Count|总计|并发查询总数|无|
-|TotalNumberOfThrottledQueries|受限制的查询总数|Count|总计|受限制的查询总数|无|
+|TotalNumberOfConcurrentQueries|并发查询总数|Count|总计|并发查询总数|None|
+|TotalNumberOfThrottledQueries|受限制的查询总数|Count|总计|受限制的查询总数|None|
 |TotalNumberOfThrottledCommands|受限制的命令总数|Count|总计|受限制的命令总数|CommandType|
-|TotalNumberOfExtents|盘区总数|Count|总计|数据盘区总数|无|
-|InstanceCount|实例计数|Count|平均值|实例计数总数|无|
+|TotalNumberOfExtents|盘区总数|计数|总计|数据盘区总数|None|
+|InstanceCount|实例计数|计数|平均值|实例总数|None|
 
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/workflows
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|RunsStarted|已启动的运行数|Count|总计|已启动的工作流运行数目。|无|
-|RunsCompleted|已完成的运行数|Count|总计|已完成的工作流运行数目。|无|
-|RunsSucceeded|成功的运行数|Count|总计|成功的工作流运行数目。|无|
-|RunsFailed|失败的运行数|Count|总计|失败的工作流运行数目。|无|
-|RunsCancelled|取消的运行数|Count|总计|已取消的工作流运行数目。|无|
-|RunLatency|运行延迟|秒|平均值|已完成的工作流运行的延迟。|无|
-|RunSuccessLatency|运行成功延迟|秒|平均值|已成功的工作流运行的延迟。|无|
-|RunThrottledEvents|运行限制事件数|Count|总计|工作流操作或触发器限制事件数目。|无|
-|RunStartThrottledEvents|运行启动限制事件|Count|总计|工作流运行启动限制事件数。|无|
-|RunFailurePercentage|运行失败百分比|百分比|总计|失败的工作流运行百分比。|无|
-|ActionsStarted|启动的操作数 |Count|总计|已启动的工作流操作数目。|无|
-|ActionsCompleted|完成的操作数 |Count|总计|已完成的工作流操作数目。|无|
-|ActionsSucceeded|成功的操作数 |Count|总计|成功的工作流操作数目。|无|
-|ActionsFailed|失败的操作数 |Count|总计|失败的工作流操作数目。|无|
-|ActionsSkipped|跳过的操作数 |Count|总计|已跳过的工作流操作数目。|无|
-|ActionLatency|操作延迟 |秒|平均值|已完成的工作流操作的延迟。|无|
-|ActionSuccessLatency|操作成功延迟 |秒|平均值|已成功的工作流操作的延迟。|无|
-|ActionThrottledEvents|操作限制事件数|Count|总计|工作流操作限制事件数目。|无|
-|TriggersStarted|启动的触发器数 |Count|总计|已启动的工作流触发器数目。|无|
-|TriggersCompleted|完成的触发器数 |Count|总计|已完成的工作流触发器数目。|无|
-|TriggersSucceeded|成功的触发器数 |Count|总计|成功的工作流触发器数目。|无|
-|TriggersFailed|失败的触发器数 |Count|总计|失败的工作流触发器数目。|无|
-|TriggersSkipped|跳过的触发器数|Count|总计|已跳过的工作流触发器数目。|无|
-|TriggersFired|激发的触发器数 |Count|总计|已激发的工作流触发器数目。|无|
-|TriggerLatency|触发器延迟 |秒|平均值|已完成的工作流触发器的延迟。|无|
-|TriggerFireLatency|触发器激发延迟 |秒|平均值|已激发的工作流触发器的延迟。|无|
-|TriggerSuccessLatency|触发器成功延迟 |秒|平均值|已成功的工作流触发器的延迟。|无|
-|TriggerThrottledEvents|触发器限制事件数|Count|总计|工作流触发器限制事件数目。|无|
-|BillableActionExecutions|计费的操作执行数|Count|总计|计费的工作流操作执行数目。|无|
-|BillableTriggerExecutions|计费的触发器执行数|Count|总计|计费的工作流触发器执行数目。|无|
-|TotalBillableExecutions|计费的执行总数|Count|总计|计费的工作流执行数目。|无|
-|BillingUsageNativeOperation|本机操作执行的计费使用情况|Count|总计|已计费的本机操作执行次数。|无|
-|BillingUsageStandardConnector|标准连接器执行的计费使用情况|Count|总计|已计费的标准连接器执行次数。|无|
-|BillingUsageStorageConsumption|存储使用执行的计费使用情况|Count|总计|已计费的存储使用执行次数。|无|
+|RunsStarted|已启动的运行数|Count|总计|已启动的工作流运行数目。|None|
+|RunsCompleted|已完成的运行数|Count|总计|已完成的工作流运行数目。|None|
+|RunsSucceeded|成功的运行数|Count|总计|成功的工作流运行数目。|None|
+|RunsFailed|失败的运行数|Count|总计|失败的工作流运行数目。|None|
+|RunsCancelled|取消的运行数|Count|总计|已取消的工作流运行数目。|None|
+|RunLatency|运行延迟|秒|平均值|已完成的工作流运行的延迟。|None|
+|RunSuccessLatency|运行成功延迟|秒|平均值|已成功的工作流运行的延迟。|None|
+|RunThrottledEvents|运行限制事件数|计数|总计|工作流操作或触发器限制事件数目。|None|
+|RunStartThrottledEvents|运行启动限制事件|Count|总计|工作流运行启动限制事件数。|None|
+|RunFailurePercentage|运行失败百分比|百分比|总计|失败的工作流运行百分比。|None|
+|ActionsStarted|启动的操作数 |Count|总计|已启动的工作流操作数目。|None|
+|ActionsCompleted|完成的操作数 |Count|总计|已完成的工作流操作数目。|None|
+|ActionsSucceeded|成功的操作数 |Count|总计|成功的工作流操作数目。|None|
+|ActionsFailed|失败的操作数 |Count|总计|失败的工作流操作数目。|None|
+|ActionsSkipped|跳过的操作数 |Count|总计|已跳过的工作流操作数目。|None|
+|ActionLatency|操作延迟 |秒|平均值|已完成的工作流操作的延迟。|None|
+|ActionSuccessLatency|操作成功延迟 |秒|平均值|已成功的工作流操作的延迟。|None|
+|ActionThrottledEvents|操作限制事件数|Count|总计|工作流操作限制事件数目。|None|
+|TriggersStarted|启动的触发器数 |Count|总计|已启动的工作流触发器数目。|None|
+|TriggersCompleted|完成的触发器数 |Count|总计|已完成的工作流触发器数目。|None|
+|TriggersSucceeded|成功的触发器数 |Count|总计|成功的工作流触发器数目。|None|
+|TriggersFailed|失败的触发器数 |Count|总计|失败的工作流触发器数目。|None|
+|TriggersSkipped|跳过的触发器数|Count|总计|已跳过的工作流触发器数目。|None|
+|TriggersFired|激发的触发器数 |Count|总计|已激发的工作流触发器数目。|None|
+|TriggerLatency|触发器延迟 |秒|平均值|已完成的工作流触发器的延迟。|None|
+|TriggerFireLatency|触发器激发延迟 |秒|平均值|已激发的工作流触发器的延迟。|None|
+|TriggerSuccessLatency|触发器成功延迟 |秒|平均值|已成功的工作流触发器的延迟。|None|
+|TriggerThrottledEvents|触发器限制事件数|Count|总计|工作流触发器限制事件数目。|None|
+|BillableActionExecutions|计费的操作执行数|Count|总计|计费的工作流操作执行数目。|None|
+|BillableTriggerExecutions|计费的触发器执行数|Count|总计|计费的工作流触发器执行数目。|None|
+|TotalBillableExecutions|计费的执行总数|Count|总计|计费的工作流执行数目。|None|
+|BillingUsageNativeOperation|本机操作执行的计费使用情况|Count|总计|已计费的本机操作执行次数。|None|
+|BillingUsageStandardConnector|标准连接器执行的计费使用情况|Count|总计|已计费的标准连接器执行次数。|None|
+|BillingUsageStorageConsumption|存储使用执行的计费使用情况|Count|总计|已计费的存储使用执行次数。|None|
 
 ## <a name="microsoftlogicintegrationserviceenvironments"></a>Microsoft.Logic/integrationServiceEnvironments
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|RunsStarted|已启动的运行数|Count|总计|已启动的工作流运行数目。|无|
-|RunsCompleted|已完成的运行数|Count|总计|已完成的工作流运行数目。|无|
-|RunsSucceeded|成功的运行数|Count|总计|成功的工作流运行数目。|无|
-|RunsFailed|失败的运行数|Count|总计|失败的工作流运行数目。|无|
-|RunsCancelled|取消的运行数|Count|总计|已取消的工作流运行数目。|无|
-|RunLatency|运行延迟|秒|平均值|已完成的工作流运行的延迟。|无|
-|RunSuccessLatency|运行成功延迟|秒|平均值|已成功的工作流运行的延迟。|无|
-|RunThrottledEvents|运行限制事件数|Count|总计|工作流操作或触发器限制事件数目。|无|
-|RunStartThrottledEvents|运行启动限制事件|Count|总计|工作流运行启动限制事件数。|无|
-|RunFailurePercentage|运行失败百分比|百分比|总计|失败的工作流运行百分比。|无|
-|ActionsStarted|启动的操作数 |Count|总计|已启动的工作流操作数目。|无|
-|ActionsCompleted|完成的操作数 |Count|总计|已完成的工作流操作数目。|无|
-|ActionsSucceeded|成功的操作数 |Count|总计|成功的工作流操作数目。|无|
-|ActionsFailed|失败的操作数 |Count|总计|失败的工作流操作数目。|无|
-|ActionsSkipped|跳过的操作数 |Count|总计|已跳过的工作流操作数目。|无|
+|RunsStarted|已启动的运行数|Count|总计|已启动的工作流运行数目。|None|
+|RunsCompleted|已完成的运行数|Count|总计|已完成的工作流运行数目。|None|
+|RunsSucceeded|成功的运行数|Count|总计|成功的工作流运行数目。|None|
+|RunsFailed|失败的运行数|Count|总计|失败的工作流运行数目。|None|
+|RunsCancelled|取消的运行数|Count|总计|已取消的工作流运行数目。|None|
+|RunLatency|运行延迟|秒|平均值|已完成的工作流运行的延迟。|None|
+|RunSuccessLatency|运行成功延迟|秒|平均值|已成功的工作流运行的延迟。|None|
+|RunThrottledEvents|运行限制事件数|Count|总计|工作流操作或触发器限制事件数目。|None|
+|RunStartThrottledEvents|运行启动限制事件|Count|总计|工作流运行启动限制事件数。|None|
+|RunFailurePercentage|运行失败百分比|百分比|总计|失败的工作流运行百分比。|None|
+|ActionsStarted|启动的操作数 |Count|总计|已启动的工作流操作数目。|None|
+|ActionsCompleted|完成的操作数 |Count|总计|已完成的工作流操作数目。|None|
+|ActionsSucceeded|成功的操作数 |Count|总计|成功的工作流操作数目。|None|
+|ActionsFailed|失败的操作数 |Count|总计|失败的工作流操作数目。|None|
+|ActionsSkipped|跳过的操作数 |计数|总计|已跳过的工作流操作数目。|无|
 |ActionLatency|操作延迟 |秒|平均值|已完成的工作流操作的延迟。|无|
 |ActionSuccessLatency|操作成功延迟 |秒|平均值|已成功的工作流操作的延迟。|无|
-|ActionThrottledEvents|操作限制事件数|Count|总计|工作流操作限制事件数目。|无|
-|TriggersStarted|启动的触发器数 |Count|总计|已启动的工作流触发器数目。|无|
-|TriggersCompleted|完成的触发器数 |Count|总计|已完成的工作流触发器数目。|无|
-|TriggersSucceeded|成功的触发器数 |Count|总计|成功的工作流触发器数目。|无|
-|TriggersFailed|失败的触发器数 |Count|总计|失败的工作流触发器数目。|无|
-|TriggersSkipped|跳过的触发器数|Count|总计|已跳过的工作流触发器数目。|无|
-|TriggersFired|激发的触发器数 |Count|总计|已激发的工作流触发器数目。|无|
-|TriggerLatency|触发器延迟 |秒|平均值|已完成的工作流触发器的延迟。|无|
-|TriggerFireLatency|触发器激发延迟 |秒|平均值|已激发的工作流触发器的延迟。|无|
-|TriggerSuccessLatency|触发器成功延迟 |秒|平均值|已成功的工作流触发器的延迟。|无|
-|TriggerThrottledEvents|触发器限制事件数|Count|总计|工作流触发器限制事件数目。|无|
-|IntegrationServiceEnvironmentWorkflowProcessorUsage|集成服务环境的工作流处理器使用情况|百分比|平均值|集成服务环境的工作流处理器使用情况。|无|
-|IntegrationServiceEnvironmentWorkflowMemoryUsage|集成服务环境的工作流内存使用情况|百分比|平均值|集成服务环境的工作流内存使用情况。|无|
-|IntegrationServiceEnvironmentConnectorProcessorUsage|集成服务环境的连接器处理器使用情况|百分比|平均值|集成服务环境的连接器处理器使用情况。|无|
-|IntegrationServiceEnvironmentConnectorMemoryUsage|集成服务环境的连接器内存使用情况|百分比|平均值|集成服务环境的连接器内存使用情况。|无|
+|ActionThrottledEvents|操作限制事件数|Count|总计|工作流操作限制事件数目。|None|
+|TriggersStarted|启动的触发器数 |Count|总计|已启动的工作流触发器数目。|None|
+|TriggersCompleted|完成的触发器数 |Count|总计|已完成的工作流触发器数目。|None|
+|TriggersSucceeded|成功的触发器数 |Count|总计|成功的工作流触发器数目。|None|
+|TriggersFailed|失败的触发器数 |Count|总计|失败的工作流触发器数目。|None|
+|TriggersSkipped|跳过的触发器数|Count|总计|已跳过的工作流触发器数目。|None|
+|TriggersFired|激发的触发器数 |Count|总计|已激发的工作流触发器数目。|None|
+|TriggerLatency|触发器延迟 |秒|平均值|已完成的工作流触发器的延迟。|None|
+|TriggerFireLatency|触发器激发延迟 |秒|平均值|已激发的工作流触发器的延迟。|None|
+|TriggerSuccessLatency|触发器成功延迟 |秒|平均值|已成功的工作流触发器的延迟。|None|
+|TriggerThrottledEvents|触发器限制事件数|Count|总计|工作流触发器限制事件数目。|None|
+|IntegrationServiceEnvironmentWorkflowProcessorUsage|集成服务环境的工作流处理器使用情况|百分比|平均值|集成服务环境的工作流处理器使用情况。|None|
+|IntegrationServiceEnvironmentWorkflowMemoryUsage|集成服务环境的工作流内存使用情况|百分比|平均值|集成服务环境的工作流内存使用情况。|None|
+|IntegrationServiceEnvironmentConnectorProcessorUsage|集成服务环境的连接器处理器使用情况|百分比|平均值|集成服务环境的连接器处理器使用情况。|None|
+|IntegrationServiceEnvironmentConnectorMemoryUsage|集成服务环境的连接器内存使用情况|百分比|平均值|集成服务环境的连接器内存使用情况。|None|
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft.MachineLearningServices/workspaces
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|已取消的运行|已取消的运行|Count|总计|为此工作区取消的运行数|Scenario,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
+|已取消运行|已取消运行|Count|总计|为此工作区取消的运行数|Scenario,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
 |取消请求的运行|取消请求的运行|Count|总计|为此工作区请求取消的运行数|Scenario,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
 |已完成的运行数|已完成的运行数|Count|总计|已成功为此工作区完成的运行数|Scenario,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
-|失败的运行次数|失败的运行次数|Count|总计|此工作区失败的运行数|Scenario,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
-|完成运行|完成运行|Count|总计|为此工作区进入最终状态的运行数|Scenario,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
-|未响应运行|未响应运行|Count|总计|未对此工作区响应的运行数|Scenario,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
-|未启动运行|未启动运行|Count|总计|此工作区处于未启动状态的运行次数|Scenario,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
-|准备运行|准备运行|Count|总计|为此工作区准备的运行数|Scenario,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
-|预配运行|预配运行|Count|总计|为此工作区预配的运行数|Scenario,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
-|排队运行|排队运行|Count|总计|为此工作区排队的运行数|Scenario,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
-|已启动的运行数|已启动的运行数|Count|总计|为此工作区启动的运行数|Scenario,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
-|开始运行|开始运行|Count|总计|为此工作区启动的运行数|Scenario,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
-|错误|错误|Count|总计|此工作区中的运行错误数|场景|
-|警告|警告|Count|总计|此工作区中的运行警告数|场景|
-|成功的模型注册数|成功的模型注册数|Count|总计|此工作区中成功的模型注册数|场景|
+|失败的运行次数|失败的运行次数|计数|总计|此工作区失败的运行数|Scenario,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
+|正在完成运行|正在完成运行|Count|总计|为此工作区进入的运行已完成状态的数目|Scenario,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
+|未响应运行|未响应运行|Count|总计|此工作区的运行数未响应|Scenario,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
+|未开始运行|未开始运行|Count|总计|此工作区未启动的运行数|Scenario,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
+|正在准备运行|正在准备运行|计数|总计|正在为此工作区准备的运行数|Scenario,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
+|预配运行|预配运行|计数|总计|为此工作区预配的运行数|Scenario,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
+|排队运行|排队运行|计数|总计|为此工作区排队的运行数|Scenario,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
+|已启动的运行数|已启动的运行数|计数|总计|为此工作区启动的运行数|Scenario,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
+|正在启动运行|正在启动运行|Count|总计|为此工作区启动的运行数|Scenario,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
+|错误|错误|Count|总计|此工作区中的运行错误数|方案|
+|警告|警告|Count|总计|此工作区中的运行警告数|方案|
+|成功的模型注册数|成功的模型注册数|Count|总计|此工作区中成功的模型注册数|方案|
 |失败的模型注册数|失败的模型注册数|Count|总计|此工作区中失败的模型注册数|Scenario,StatusCode|
-|已启动的模型部署数|已启动的模型部署数|Count|总计|此工作区中已启动的模型部署数|场景|
-|成功的模型部署数|成功的模型部署数|Count|总计|此工作区中成功的模型部署数|场景|
+|已启动的模型部署数|已启动的模型部署数|Count|总计|此工作区中已启动的模型部署数|方案|
+|成功的模型部署数|成功的模型部署数|Count|总计|此工作区中成功的模型部署数|方案|
 |失败的模型部署数|失败的模型部署数|Count|总计|此工作区中失败的模型部署数|Scenario,StatusCode|
 |节点总数|节点总数|Count|平均值|节点总数。 此总数包括一些活动节点、空闲节点、不可用的节点、占用的节点和正在退出的节点|Scenario,ClusterName|
 |活动节点数|活动节点数|Count|平均值|活动节点数。 这些节点是正在运行作业的节点。|Scenario,ClusterName|
 |空闲节点数|空闲节点数|Count|平均值|空闲节点数。 空闲节点是指未运行任何作业，但可以接受新作业（如果可用）的节点。|Scenario,ClusterName|
-|不可用的节点数|不可用的节点数|Count|平均值|不可用的节点数。 不可用的节点是由于存在某种不可解决的问题而无法正常运行的节点。 Azure 将回收这些节点。|Scenario,ClusterName|
+|不可用的节点数|不可用的节点数|计数|平均值|不可用的节点数。 不可用的节点是由于存在某种不可解决的问题而无法正常运行的节点。 Azure 将回收这些节点。|Scenario,ClusterName|
 |占用的节点数|占用的节点数|Count|平均值|占用的节点数。 这些节点是已从可用节点池中取出的低优先级节点。|Scenario,ClusterName|
 |正在退出的节点数|正在退出的节点数|Count|平均值|正在退出的节点数。 正在退出的节点是指刚刚完成了作业处理，将进入空闲状态的节点。|Scenario,ClusterName|
 |核心总数|核心总数|Count|平均值|核心总数|Scenario,ClusterName|
@@ -1442,7 +1442,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|使用情况|使用情况|Count|Count|API 调用计数|ApiCategory,ApiName,ResultType,ResponseCode|
+|用法|用法|Count|Count|API 调用计数|ApiCategory,ApiName,ResultType,ResponseCode|
 |可用性|可用性|百分比|平均值|API 可用性|ApiCategory,ApiName|
 
 ## <a name="microsoftmediamediaservicesstreamingendpoints"></a>Microsoft.Media/mediaservices/streamingEndpoints
@@ -1458,50 +1458,50 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|AssetQuota|资产配额|Count|平均值|当前媒体服务帐户允许的资产数量|无|
-|AssetCount|资产计数|Count|平均值|已在当前媒体服务帐户中创建的资产数量|无|
-|AssetQuotaUsedPercentage|资产配额已用百分比|百分比|平均值|当前媒体服务帐户中的资产已用百分比|无|
-|ContentKeyPolicyQuota|内容密钥策略配额|Count|平均值|当前媒体服务帐户允许的内容密钥策略数量|无|
-|ContentKeyPolicyCount|内容密钥策略计数|Count|平均值|当前媒体服务帐户中已创建的内容密钥策略数量|无|
-|ContentKeyPolicyQuotaUsedPercentage|内容密钥策略配额已用百分比|百分比|平均值|当前媒体服务帐户中的内容密钥策略已用百分比|无|
-|StreamingPolicyQuota|流式处理策略配额|Count|平均值|当前媒体服务帐户允许的流式处理策略数量|无|
-|StreamingPolicyCount|流式处理策略计数|Count|平均值|当前媒体服务帐户中已创建的流式处理策略数量|无|
-|StreamingPolicyQuotaUsedPercentage|流式处理策略配额已用百分比|百分比|平均值|当前媒体服务帐户中的流式处理策略已用百分比|无|
+|AssetQuota|资产配额|Count|平均值|当前媒体服务帐户允许的资产数量|None|
+|AssetCount|资产计数|Count|平均值|已在当前媒体服务帐户中创建的资产数量|None|
+|AssetQuotaUsedPercentage|资产配额已用百分比|百分比|平均值|当前媒体服务帐户中的资产已用百分比|None|
+|ContentKeyPolicyQuota|内容密钥策略配额|Count|平均值|当前媒体服务帐户允许的内容密钥策略数量|None|
+|ContentKeyPolicyCount|内容密钥策略计数|Count|平均值|当前媒体服务帐户中已创建的内容密钥策略数量|None|
+|ContentKeyPolicyQuotaUsedPercentage|内容密钥策略配额已用百分比|百分比|平均值|当前媒体服务帐户中的内容密钥策略已用百分比|None|
+|StreamingPolicyQuota|流式处理策略配额|Count|平均值|当前媒体服务帐户允许的流式处理策略数量|None|
+|StreamingPolicyCount|流式处理策略计数|Count|平均值|当前媒体服务帐户中已创建的流式处理策略数量|None|
+|StreamingPolicyQuotaUsedPercentage|流式处理策略配额已用百分比|百分比|平均值|当前媒体服务帐户中的流式处理策略已用百分比|None|
 
 
-## <a name="microsoftmixedrealityremoterenderingaccounts"></a>微软.混合现实/远程渲染帐户
+## <a name="microsoftmixedrealityremoterenderingaccounts"></a>MixedReality/remoteRenderingAccounts
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|资产转换|资产转换|Count|总计|转换的资产总数|应用程序Id，资源 Id，SDKversion|
-|活动呈现会话|活动渲染会话|Count|总计|活动呈现会话总数|应用程序 Id、资源 Id、会话类型、SDKversion|
+|AssetsConverted|已转换资产|Count|总计|已转换资产的总数|AppId、ResourceId、SDKVersion|
+|ActiveRenderingSessions|活动呈现会话|Count|总计|活动呈现会话总数|AppId、ResourceId、SessionType、SDKVersion|
 
 ## <a name="microsoftnetappnetappaccountscapacitypoolsvolumes"></a>Microsoft.NetApp/netAppAccounts/capacityPools/volumes
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|AverageReadLatency|平均读取延迟|毫秒|平均值|每个操作的平均读取延迟（毫秒）|无|
-|AverageWriteLatency|平均写入延迟|毫秒|平均值|每个操作的平均写入延迟（毫秒）|无|
-|VolumeLogicalSize|体积消耗大小|字节|平均值|卷的逻辑大小（所用字节数）|无|
-|VolumeSnapshotSize|卷快照大小|字节|平均值|卷中所有快照的大小|无|
-|ReadIops|读取 IOPS|每秒计数|平均值|每秒读取输入/输出操作数|无|
-|WriteIops|写入 IOPS|每秒计数|平均值|每秒写入输入/输出操作数|无|
+|AverageReadLatency|平均读取延迟|毫秒|平均值|每个操作的平均读取延迟（毫秒）|None|
+|AverageWriteLatency|平均写入延迟|毫秒|平均值|每个操作的平均写入延迟（毫秒）|None|
+|VolumeLogicalSize|卷消耗大小|字节|平均值|卷的逻辑大小（所用字节数）|None|
+|VolumeSnapshotSize|卷快照大小|字节|平均值|卷中所有快照的大小|None|
+|ReadIops|读取 IOPS|每秒计数|平均值|每秒读取输入/输出操作数|None|
+|WriteIops|写入 IOPS|每秒计数|平均值|每秒写入输入/输出操作数|None|
 
 ## <a name="microsoftnetappnetappaccountscapacitypools"></a>Microsoft.NetApp/netAppAccounts/capacityPools
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|VolumePoolAllocatedUsed|分配给卷大小的池|字节|平均值|分配池已使用的大小|无|
-|VolumePoolTotalLogicalSize|池消耗大小|字节|平均值|属于该池的所有卷的总逻辑大小|无|
+|VolumePoolAllocatedUsed|分配到卷大小的池|字节|平均值|分配池已使用的大小|None|
+|VolumePoolTotalLogicalSize|池消耗大小|字节|平均值|属于该池的所有卷的总逻辑大小|None|
 
 ## <a name="microsoftnetworknetworkinterfaces"></a>Microsoft.Network/networkInterfaces
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|BytesSentRate|发送的字节数|字节|总计|网络接口发送的字节数|无|
-|BytesReceivedRate|接收的字节数|字节|总计|网络接口接收的字节数|无|
-|PacketsSentRate|发送的数据包数|Count|总计|网络接口发送的数据包数|无|
-|PacketsReceivedRate|已接收的数据包数|Count|总计|网络接口接收的数据包数|无|
+|BytesSentRate|发送的字节数|字节|总计|网络接口发送的字节数|None|
+|BytesReceivedRate|接收的字节数|字节|总计|网络接口接收的字节数|None|
+|PacketsSentRate|发送的数据包数|Count|总计|网络接口发送的数据包数|None|
+|PacketsReceivedRate|已接收的数据包数|Count|总计|网络接口接收的数据包数|None|
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft.Network/loadBalancers
 
@@ -1520,37 +1520,37 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|QueryVolume|查询量|Count|总计|为 DNS 区域提供服务的查询数|无|
-|RecordSetCount|记录集计数|Count|最大值|DNS 区域中的记录集数|无|
-|RecordSetCapacityUtilization|记录集容量使用率|百分比|最大值|DNS 区域利用的记录集容量的百分比|无|
+|QueryVolume|查询量|Count|总计|为 DNS 区域提供服务的查询数|None|
+|RecordSetCount|记录集计数|Count|最大值|DNS 区域中的记录集数|None|
+|RecordSetCapacityUtilization|记录集容量使用率|百分比|最大值|DNS 区域利用的记录集容量的百分比|None|
 
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft.Network/publicIPAddresses
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|PacketsInDDoS|入站数据包 DDoS|每秒计数|最大值|入站数据包 DDoS|无|
-|PacketsDroppedDDoS|丢弃的入站数据包 DDoS|每秒计数|最大值|丢弃的入站数据包 DDoS|无|
-|PacketsForwardedDDoS|转发的入站数据包 DDoS|每秒计数|最大值|转发的入站数据包 DDoS|无|
-|TCPPacketsInDDoS|入站 TCP 数据包 DDoS|每秒计数|最大值|入站 TCP 数据包 DDoS|无|
-|TCPPacketsDroppedDDoS|丢弃的入站 TCP 数据包 DDoS|每秒计数|最大值|丢弃的入站 TCP 数据包 DDoS|无|
-|TCPPacketsForwardedDDoS|转发的入站 TCP 数据包 DDoS|每秒计数|最大值|转发的入站 TCP 数据包 DDoS|无|
-|UDPPacketsInDDoS|入站 UDP 数据包 DDoS|每秒计数|最大值|入站 UDP 数据包 DDoS|无|
-|UDPPacketsDroppedDDoS|丢弃的入站 UDP 数据包 DDoS|每秒计数|最大值|丢弃的入站 UDP 数据包 DDoS|无|
-|UDPPacketsForwardedDDoS|转发的入站 UDP 数据包 DDoS|每秒计数|最大值|转发的入站 UDP 数据包 DDoS|无|
-|BytesInDDoS|入站字节 DDoS|每秒字节数|最大值|入站字节 DDoS|无|
-|BytesDroppedDDoS|丢弃的入站字节 DDoS|每秒字节数|最大值|丢弃的入站字节 DDoS|无|
-|BytesForwardedDDoS|转发的入站字节 DDoS|每秒字节数|最大值|转发的入站字节 DDoS|无|
-|TCPBytesInDDoS|入站 TCP 字节 DDoS|每秒字节数|最大值|入站 TCP 字节 DDoS|无|
-|TCPBytesDroppedDDoS|丢弃的入站 TCP 字节 DDoS|每秒字节数|最大值|丢弃的入站 TCP 字节 DDoS|无|
-|TCPBytesForwardedDDoS|转发的入站 TCP 字节 DDoS|每秒字节数|最大值|转发的入站 TCP 字节 DDoS|无|
-|UDPBytesInDDoS|入站 UDP 字节 DDoS|每秒字节数|最大值|入站 UDP 字节 DDoS|无|
-|UDPBytesDroppedDDoS|丢弃的入站 UDP 字节 DDoS|每秒字节数|最大值|丢弃的入站 UDP 字节 DDoS|无|
-|UDPBytesForwardedDDoS|转发的入站 UDP 字节 DDoS|每秒字节数|最大值|转发的入站 UDP 字节 DDoS|无|
-|IfUnderDDoSAttack|是否遭到 DDoS 攻击|Count|最大值|是否遭到 DDoS 攻击|无|
-|DDoSTriggerTCPPackets|触发 DDoS 缓解的入站 TCP 数据包|每秒计数|最大值|触发 DDoS 缓解的入站 TCP 数据包|无|
-|DDoSTriggerUDPPackets|触发 DDoS 缓解的入站 UDP 数据包|每秒计数|最大值|触发 DDoS 缓解的入站 UDP 数据包|无|
-|DDoSTriggerSYNPackets|触发 DDoS 缓解的入站 SYN 数据包|每秒计数|最大值|触发 DDoS 缓解的入站 SYN 数据包|无|
+|PacketsInDDoS|入站数据包 DDoS|每秒计数|最大值|入站数据包 DDoS|None|
+|PacketsDroppedDDoS|丢弃的入站数据包 DDoS|每秒计数|最大值|丢弃的入站数据包 DDoS|None|
+|PacketsForwardedDDoS|转发的入站数据包 DDoS|每秒计数|最大值|转发的入站数据包 DDoS|None|
+|TCPPacketsInDDoS|入站 TCP 数据包 DDoS|每秒计数|最大值|入站 TCP 数据包 DDoS|None|
+|TCPPacketsDroppedDDoS|丢弃的入站 TCP 数据包 DDoS|每秒计数|最大值|丢弃的入站 TCP 数据包 DDoS|None|
+|TCPPacketsForwardedDDoS|转发的入站 TCP 数据包 DDoS|每秒计数|最大值|转发的入站 TCP 数据包 DDoS|None|
+|UDPPacketsInDDoS|入站 UDP 数据包 DDoS|每秒计数|最大值|入站 UDP 数据包 DDoS|None|
+|UDPPacketsDroppedDDoS|丢弃的入站 UDP 数据包 DDoS|每秒计数|最大值|丢弃的入站 UDP 数据包 DDoS|None|
+|UDPPacketsForwardedDDoS|转发的入站 UDP 数据包 DDoS|每秒计数|最大值|转发的入站 UDP 数据包 DDoS|None|
+|BytesInDDoS|入站字节 DDoS|每秒字节数|最大值|入站字节 DDoS|None|
+|BytesDroppedDDoS|丢弃的入站字节 DDoS|每秒字节数|最大值|丢弃的入站字节 DDoS|None|
+|BytesForwardedDDoS|转发的入站字节 DDoS|每秒字节数|最大值|转发的入站字节 DDoS|None|
+|TCPBytesInDDoS|入站 TCP 字节 DDoS|每秒字节数|最大值|入站 TCP 字节 DDoS|None|
+|TCPBytesDroppedDDoS|丢弃的入站 TCP 字节 DDoS|每秒字节数|最大值|丢弃的入站 TCP 字节 DDoS|None|
+|TCPBytesForwardedDDoS|转发的入站 TCP 字节 DDoS|每秒字节数|最大值|转发的入站 TCP 字节 DDoS|None|
+|UDPBytesInDDoS|入站 UDP 字节 DDoS|每秒字节数|最大值|入站 UDP 字节 DDoS|None|
+|UDPBytesDroppedDDoS|丢弃的入站 UDP 字节 DDoS|每秒字节数|最大值|丢弃的入站 UDP 字节 DDoS|None|
+|UDPBytesForwardedDDoS|转发的入站 UDP 字节 DDoS|每秒字节数|最大值|转发的入站 UDP 字节 DDoS|None|
+|IfUnderDDoSAttack|是否遭到 DDoS 攻击|Count|最大值|是否遭到 DDoS 攻击|None|
+|DDoSTriggerTCPPackets|触发 DDoS 缓解的入站 TCP 数据包|每秒计数|最大值|触发 DDoS 缓解的入站 TCP 数据包|None|
+|DDoSTriggerUDPPackets|触发 DDoS 缓解的入站 UDP 数据包|每秒计数|最大值|触发 DDoS 缓解的入站 UDP 数据包|None|
+|DDoSTriggerSYNPackets|触发 DDoS 缓解的入站 SYN 数据包|每秒计数|最大值|触发 DDoS 缓解的入站 SYN 数据包|None|
 |VipAvailability|数据路径可用性|Count|平均值|每个持续时间的 IP 地址的平均可用性|端口|
 |ByteCount|字节计数|Count|总计|时间段内传输的字节总数|Port,Direction|
 |PacketCount|数据包计数|Count|总计|时间段内传输的数据包总数|Port,Direction|
@@ -1573,28 +1573,28 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |ApplicationRuleHit|应用程序规则命中次数|Count|总计|应用程序规则的命中次数|Status,Reason,Protocol|
 |NetworkRuleHit|网络规则命中次数|Count|总计|网络规则的命中次数|Status,Reason,Protocol|
 |FirewallHealth|防火墙运行状况|百分比|平均值|防火墙运行状况|Status,Reason|
-|DataProcessed|已处理的数据|字节|总计|防火墙处理的数据总量|无|
-|SNATPortUtilization|SNAT 端口利用率|百分比|平均值|SNAT 端口利用率|无|
+|DataProcessed|已处理的数据|字节|总计|防火墙处理的数据总量|None|
+|SNATPortUtilization|SNAT 端口利用率|百分比|平均值|SNAT 端口利用率|None|
 
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationGateways
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|吞吐量|吞吐量|每秒字节数|平均值|应用程序网关每秒提供的字节数|无|
+|吞吐量|吞吐量|每秒字节数|平均值|应用程序网关每秒提供的字节数|None|
 |UnhealthyHostCount|不正常的主机计数|Count|平均值|不正常的后端主机数|BackendSettingsPool|
 |HealthyHostCount|正常的主机计数|Count|平均值|正常的后端主机数|BackendSettingsPool|
 |TotalRequests|请求总数|Count|总计|应用程序网关已提供服务的成功请求计数|BackendSettingsPool|
 |AvgRequestCountPerHealthyHost|每个正常主机每分钟的请求数|Count|平均值|池中每个正常后端主机每分钟的平均请求计数|BackendSettingsPool|
 |FailedRequests|失败的请求数|Count|总计|应用程序网关已提供服务的失败请求计数|BackendSettingsPool|
 |ResponseStatus|响应状态|Count|总计|应用程序网关返回的 Http 响应状态|HttpStatusGroup|
-|CurrentConnections|当前连接|Count|总计|使用应用程序网关建立的当前连接计数|无|
-|新连接数秒|每秒新连接数|每秒计数|平均值|使用应用程序网关建立每秒新连接|无|
-|CpuUtilization|CPU 使用率|百分比|平均值|应用程序网关的当前 CPU 利用率|无|
-|CapacityUnits|当前容量单位数|Count|平均值|已消耗的请求单位数|无|
-|固定可计费容量单位|固定计费容量单位|Count|平均值|将收取的最低容量单位|无|
-|估计已计费容量单位|估计计费容量单位|Count|平均值|将收取的估计容量单位|无|
-|ComputeUnits|当前计算单位数|Count|平均值|消耗的计算单位数|无|
+|CurrentConnections|当前连接|Count|总计|使用应用程序网关建立的当前连接计数|None|
+|NewConnectionsPerSecond|新连接数/秒|每秒计数|平均值|与应用程序网关建立的每秒新连接数|None|
+|CpuUtilization|CPU 使用率|百分比|平均值|应用程序网关的当前 CPU 利用率|None|
+|CapacityUnits|当前容量单位数|Count|平均值|已消耗的请求单位数|None|
+|FixedBillableCapacityUnits|固定的可计费容量单位|Count|平均值|要收取的最小容量单位|None|
+|EstimatedBilledCapacityUnits|估计的计费容量单位|Count|平均值|要支付的估计容量单位|None|
+|ComputeUnits|当前计算单位数|Count|平均值|消耗的计算单位数|None|
 |BackendResponseStatus|后端响应状态|Count|总计|后端成员生成的 HTTP 响应代码数。 这不包括应用程序网关生成的任何响应代码。|BackendServer,BackendPool,BackendHttpSetting,HttpStatusGroup|
 |TlsProtocol|客户端 TLS 协议|Count|总计|与应用程序网关建立了连接的客户端发起的 TLS 和非 TLS 请求数。 若要查看 TLS 协议分布，请按“TLS 协议”维度进行筛选。|Listener,TlsProtocol|
 |BytesSent|发送的字节数|字节|总计|应用程序网关向客户端发送的字节总数|侦听器|
@@ -1604,17 +1604,17 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |BackendConnectTime|后端连接时间|毫秒|平均值|与后端服务器建立连接所花费的时间|Listener,BackendServer,BackendPool,BackendHttpSetting|
 |BackendFirstByteResponseTime|后端第一个字节响应时间|毫秒|平均值|从开始与后端服务器建立连接，到收到响应标头的第一个字节的间隔时间，大致相当于后端服务器的处理时间|Listener,BackendServer,BackendPool,BackendHttpSetting|
 |BackendLastByteResponseTime|后端最后一个字节响应时间|毫秒|平均值|从开始与后端服务器建立连接，到收到响应正文的最后一个字节的间隔时间|Listener,BackendServer,BackendPool,BackendHttpSetting|
-|MatchedCount|Web 应用程序防火墙 v1 总规则分发|Count|总计|Web 应用程序防火墙 v1 传入流量的总规则分发|RuleGroup,RuleId|
-|BlockedCount|Web 应用程序防火墙 v1 阻止请求规则分发|Count|总计|Web 应用程序防火墙 v1 阻止的请求规则分发|RuleGroup,RuleId|
-|BlockedReqCount|Web 应用程序防火墙 v1 阻止的请求计数|Count|总计|Web 应用程序防火墙 v1 阻止的请求计数|无|
+|MatchedCount|Web 应用程序防火墙 v1 规则分发总数|Count|总计|Web 应用程序防火墙 v1 传入流量的规则分配总数|RuleGroup,RuleId|
+|BlockedCount|Web 应用程序防火墙 v1 阻止的请求规则分发|Count|总计|Web 应用程序防火墙 v1 阻止的请求规则分发|RuleGroup,RuleId|
+|BlockedReqCount|Web 应用程序防火墙 v1 阻止的请求计数|Count|总计|Web 应用程序防火墙 v1 阻止的请求计数|None|
 
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.Network/virtualNetworkGateways
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|AverageBandwidth|网关 S2S 带宽|每秒字节数|平均值|网关站点到站点的平均带宽（字节/秒）|无|
-|P2SBandwidth|网关 P2S 带宽|每秒字节数|平均值|网关点到站点的平均带宽（字节/秒）|无|
+|AverageBandwidth|网关 S2S 带宽|每秒字节数|平均值|网关站点到站点的平均带宽（字节/秒）|None|
+|P2SBandwidth|网关 P2S 带宽|每秒字节数|平均值|网关点到站点的平均带宽（字节/秒）|None|
 |P2SConnectionCount|P2S 连接计数|Count|最大值|网关的点到站点连接计数|协议|
 |TunnelAverageBandwidth|隧道带宽|每秒字节数|平均值|隧道带宽平均值（以字节/秒为单位）|ConnectionName,RemoteIP|
 |TunnelEgressBytes|隧道流出字节|字节|总计|隧道的传出字节数|ConnectionName,RemoteIP|
@@ -1648,22 +1648,22 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |GlobalReachBitsOutPerSecond|GlobalReachBitsOutPerSecond|每秒计数|平均值|每秒流出 Azure 的位数|PeeredCircuitSKey|
 |BgpAvailability|BGP 可用性|百分比|平均值|从 MSEE 到所有对等方的 BGP 可用性。|PeeringType,Peer|
 |ArpAvailability|Arp 可用性|百分比|平均值|从 MSEE 到所有对等方的 ARP 可用性。|PeeringType,Peer|
-|QosDropBitsInPerSecond|DroppedInBitsPerSecond|每秒计数|平均值|每秒丢弃的数据流入位数|无|
-|QosDropBitsOutPerSecond|DroppedOutBitsPerSecond|每秒计数|平均值|每秒丢弃的数据流出位数|无|
+|QosDropBitsInPerSecond|DroppedInBitsPerSecond|每秒计数|平均值|每秒丢弃的数据流入位数|None|
+|QosDropBitsOutPerSecond|DroppedOutBitsPerSecond|每秒计数|平均值|每秒丢弃的数据流出位数|None|
 
 ## <a name="microsoftnetworkexpressroutecircuitspeerings"></a>Microsoft.Network/expressRouteCircuits/peerings
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|BitsInPerSecond|BitsInPerSecond|每秒计数|平均值|每秒流入 Azure 的位数|无|
-|BitsOutPerSecond|BitsOutPerSecond|每秒计数|平均值|每秒流出 Azure 的位数|无|
+|BitsInPerSecond|BitsInPerSecond|每秒计数|平均值|每秒流入 Azure 的位数|None|
+|BitsOutPerSecond|BitsOutPerSecond|每秒计数|平均值|每秒流出 Azure 的位数|None|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft.Network/connections
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|BitsInPerSecond|BitsInPerSecond|每秒计数|平均值|每秒流入 Azure 的位数|无|
-|BitsOutPerSecond|BitsOutPerSecond|每秒计数|平均值|每秒流出 Azure 的位数|无|
+|BitsInPerSecond|BitsInPerSecond|每秒计数|平均值|每秒流入 Azure 的位数|None|
+|BitsOutPerSecond|BitsOutPerSecond|每秒计数|平均值|每秒流出 Azure 的位数|None|
 
 ## <a name="microsoftnetworkexpressroutegateways"></a>Microsoft.Network/expressRouteGateways
 
@@ -1685,8 +1685,8 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|ProbesFailedPercent|失败的探测百分比|百分比|平均值|失败的连接监视探测百分比|无|
-|AverageRoundtripMs|平均往返时间（毫秒）|毫秒|平均值|源和目标之间发送的连接监视探测的平均网络往返时间（毫秒）|无|
+|ProbesFailedPercent|失败的探测百分比|百分比|平均值|失败的连接监视探测百分比|None|
+|AverageRoundtripMs|平均往返时间（毫秒）|毫秒|平均值|源和目标之间发送的连接监视探测的平均网络往返时间（毫秒）|None|
 |ChecksFailedPercent|检查失败百分比（预览版）|百分比|平均值|连接监视检查失败百分比|SourceAddress,SourceName,SourceResourceId,SourceType,Protocol,DestinationAddress,DestinationName,DestinationResourceId,DestinationType,DestinationPort,TestGroupName,TestConfigurationName|
 |RoundTripTimeMs|往返时间（毫秒）（预览版）|毫秒|平均值|连接监视检查的往返时间（以毫秒为单位）|SourceAddress,SourceName,SourceResourceId,SourceType,Protocol,DestinationAddress,DestinationName,DestinationResourceId,DestinationType,DestinationPort,TestGroupName,TestConfigurationName|
 
@@ -1706,84 +1706,84 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |WebApplicationFirewallRequestCount|Web 应用程序防火墙请求计数|Count|总计|Web 应用程序防火墙所处理的客户端请求数|PolicyName,RuleName,Action|
 
 
-## <a name="microsoftnetworkprivatednszones"></a>微软.网络/私人Dns区
+## <a name="microsoftnetworkprivatednszones"></a>PrivateDnsZones/网络
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|QueryVolume|查询量|Count|总计|为专用 DNS 区域服务的查询数|无|
-|RecordSetCount|记录集计数|Count|最大值|专用 DNS 区域中的记录集数|无|
-|RecordSetCapacityUtilization|记录集容量使用率|百分比|最大值|专用 DNS 区域使用的记录集容量百分比|无|
-|虚拟网络链接计数|虚拟网络链路计数|Count|最大值|链接到专用 DNS 区域的虚拟网络数|无|
-|虚拟网络链接容量利用率|虚拟网络链路容量利用率|百分比|最大值|专用 DNS 区域使用的虚拟网络链路容量百分比|无|
-|虚拟网络与注册链接计数|虚拟网络注册链接计数|Count|最大值|连接到启用自动注册的专用 DNS 区域的虚拟网络数|无|
-|具有注册容量的虚拟网络|虚拟网络注册链路容量利用率|百分比|最大值|具有专用 DNS 区域使用自动注册容量的虚拟网络链路百分比|无|
+|QueryVolume|查询量|计数|总计|为专用 DNS 区域提供的查询数|None|
+|RecordSetCount|记录集计数|计数|最大值|专用 DNS 区域中的记录集数|None|
+|RecordSetCapacityUtilization|记录集容量使用率|百分比|最大值|专用 DNS 区域使用的记录集容量百分比|None|
+|VirtualNetworkLinkCount|虚拟网络链接计数|计数|最大值|链接到专用 DNS 区域的虚拟网络数|None|
+|VirtualNetworkLinkCapacityUtilization|虚拟网络链路容量利用率|百分比|最大值|专用 DNS 区域使用的虚拟网络链接容量的百分比|None|
+|VirtualNetworkWithRegistrationLinkCount|虚拟网络注册链接计数|计数|最大值|已启用自动注册的专用 DNS 区域链接到的虚拟网络数|None|
+|VirtualNetworkWithRegistrationCapacityUtilization|虚拟网络注册链接容量利用率|百分比|最大值|专用 DNS 区域使用自动注册容量的虚拟网络链接百分比|None|
 
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft.NotificationHubs/Namespaces/NotificationHubs
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|registration.all|注册操作|Count|总计|所有成功的注册操作（创建、更新、查询和删除）的计数。 |无|
-|registration.create|注册创建操作数|Count|总计|所有成功的注册创建操作的计数。|无|
-|registration.update|注册更新操作数|Count|总计|所有成功的注册更新操作的计数。|无|
-|registration.get|注册读取操作数|Count|总计|所有成功的注册查询操作的计数。|无|
-|registration.delete|注册删除操作数|Count|总计|所有成功的注册删除操作的计数。|无|
-|incoming|传入消息数|Count|总计|所有成功的发送 API 调用的计数。 |无|
-|incoming.scheduled|已发送的已安排推送通知数|Count|总计|已取消的已安排推送通知数|无|
-|incoming.scheduled.cancel|已取消的已安排推送通知数|Count|总计|已取消的已安排推送通知数|无|
-|scheduled.pending|挂起的已安排通知数|Count|总计|挂起的已安排通知数|无|
-|installation.all|安装管理操作数|Count|总计|安装管理操作数|无|
-|installation.get|获取安装操作数|Count|总计|获取安装操作数|无|
-|installation.upsert|创建或更新安装操作数|Count|总计|创建或更新安装操作数|无|
-|installation.patch|修补安装操作数|Count|总计|修补安装操作数|无|
-|installation.delete|删除安装操作数|Count|总计|删除安装操作数|无|
-|outgoing.allpns.success|成功的通知数|Count|总计|所有成功的通知的计数。|无|
-|outgoing.allpns.invalidpayload|有效负载错误数|Count|总计|因为 PNS 返回了“有效负载不正确”错误而失败的推送的计数。|无|
-|outgoing.allpns.pnserror|外部通知系统错误数|Count|总计|因为与 PNS 通信时遇到问题（不包括身份验证问题）而失败的推送的计数。|无|
-|outgoing.allpns.channelerror|通道错误数|Count|总计|因为通道无效、没有与正确的应用相关联、受限制或已过期而失败的推送的计数。|无|
-|outgoing.allpns.badorexpiredchannel|坏通道或已过期通道错误数|Count|总计|因为注册中的通道/令牌/registrationId 已过期或无效而失败的推送的计数。|无|
-|outgoing.wns.success|WNS 成功的通知数|Count|总计|所有成功的通知的计数。|无|
-|outgoing.wns.invalidcredentials|WNS 授权错误数（凭据无效）|Count|总计|因为 PNS 未接受所提供的凭据或者凭据被阻止而失败的推送的计数。 （Windows Live 不能识别凭据）。|无|
-|outgoing.wns.badchannel|WNS 坏通道错误|Count|总计|因为注册中的 ChannelURI 不可识别（WNS 状态：404 找不到）而失败的推送的计数。|无|
-|outgoing.wns.expiredchannel|WNS 已过期通道错误|Count|总计|因为 ChannelURI 已过期（WNS 状态：410 不存在）而失败的推送的计数。|无|
-|outgoing.wns.throttled|WNS 受限的通知数|Count|总计|因为 WNS 限制了此应用（WNS 状态：406 不可接受）而失败的推送的计数。|无|
-|outgoing.wns.tokenproviderunreachable|WNS 授权错误数（无法访问）|Count|总计|无法访问 Windows Live。|无|
-|outgoing.wns.invalidtoken|WNS 授权错误数（令牌无效）|Count|总计|提供给 WNS 的令牌无效（WNS 状态：401 未经授权）。|无|
-|outgoing.wns.wrongtoken|WNS 授权错误数（令牌错误）|Count|总计|提供给 WNS 的令牌有效，但它是用于另一应用程序的（WNS 状态：403 禁止访问）。 如果注册中的 ChannelURI 与另一应用相关联，则可能会发生此情况。 请检查客户端应用是否与其凭据位于通知中心内的同一应用相关联。|无|
-|outgoing.wns.invalidnotificationformat|WNS 无效的通知格式|Count|总计|通知格式无效（WNS 状态：400）。 请注意，WNS 并不会拒绝所有无效的有效负载。|无|
-|outgoing.wns.invalidnotificationsize|WNS 无效通知大小错误|Count|总计|通知有效负载太大（WNS 状态：413）。|无|
-|outgoing.wns.channelthrottled|WNS 通道受限|Count|总计|通知因为注册中的 ChannelURI 受限而被丢弃（WNS 响应标头：X-WNS-NotificationStatus:channelThrottled）。|无|
-|outgoing.wns.channeldisconnected|WNS 通道断开连接|Count|总计|通知因为注册中的 ChannelURI 受限而被丢弃（WNS 响应标头：X-WNS-DeviceConnectionStatus: disconnected）。|无|
-|outgoing.wns.dropped|WNS 丢弃的通知数|Count|总计|通知因为注册中的 ChannelURI 受限而被丢弃（X-WNS-NotificationStatus 为 dropped，但 X-WNS-DeviceConnectionStatus 不是 disconnected）。|无|
-|outgoing.wns.pnserror|WNS 错误数|Count|总计|与 WNS 通信时发生错误，因而未传递通知。|无|
-|outgoing.wns.authenticationerror|WNS 身份验证错误数|Count|总计|与 Windows Live 通信时因凭据无效或令牌错误而发生错误，因为未传递通知。|无|
-|outgoing.apns.success|APNS 成功的通知数|Count|总计|所有成功的通知的计数。|无|
-|outgoing.apns.invalidcredentials|APNS 授权错误数|Count|总计|因为 PNS 未接受所提供的凭据或者凭据被阻止而失败的推送的计数。|无|
-|outgoing.apns.badchannel|APNS 坏通道错误|Count|总计|因令牌无效而失败的推送的计数（APNS 状态代码：8）。|无|
-|outgoing.apns.expiredchannel|APNS 已过期通道错误|Count|总计|由 APNS 反馈通道致其无效的令牌的计数。|无|
-|outgoing.apns.invalidnotificationsize|APNS 无效通知大小错误|Count|总计|因有效负载太大而失败的推送的计数（APNS 状态代码：7）。|无|
-|outgoing.apns.pnserror|APNS 错误数|Count|总计|因为与 APNS 通信时发生错误而失败的推送的计数。|无|
-|outgoing.gcm.success|GCM 成功的通知数|Count|总计|所有成功的通知的计数。|无|
-|outgoing.gcm.invalidcredentials|GCM 授权错误数（凭据无效）|Count|总计|因为 PNS 未接受所提供的凭据或者凭据被阻止而失败的推送的计数。|无|
-|outgoing.gcm.badchannel|GCM 坏通道错误|Count|总计|因为注册中的 registrationId 不可识别而失败的推送的计数（GCM 结果：无效的注册）。|无|
-|outgoing.gcm.expiredchannel|GCM 已过期通道错误|Count|总计|因为注册中的 registrationId 已过期而失败的推送的计数（GCM 结果：NotRegistered）。|无|
-|outgoing.gcm.throttled|GCM 受限的通知数|Count|总计|因为 GCM 限制了此应用而失败的推送的计数（GCM 状态代码：501-599 或结果：不可用）。|无|
-|outgoing.gcm.invalidnotificationformat|GCM 无效的通知格式|Count|总计|因为有效负载的格式不正确而失败的推送的计数（GCM 结果：InvalidDataKey 或 InvalidTtl）。|无|
-|outgoing.gcm.invalidnotificationsize|GCM 无效通知大小错误|Count|总计|因有效负载太大而失败的推送的计数（GCM 结果：MessageTooBig）。|无|
-|outgoing.gcm.wrongchannel|GCM 通道不正确错误|Count|总计|因为注册中的 registrationId 没有关联到当前应用而失败的推送的计数（GCM 结果：InvalidPackageName）。|无|
-|outgoing.gcm.pnserror|GCM 错误数|Count|总计|因为与 GCM 通信时发生错误而失败的推送的计数。|无|
-|outgoing.gcm.authenticationerror|GCM 身份验证错误数|Count|总计|因为 PNS 未接受所提供的凭据、凭据被阻止或者未在应用中正确配置 SenderId 而失败的推送的计数（GCM 结果：MismatchedSenderId）。|无|
-|outgoing.mpns.success|MPNS 成功的通知数|Count|总计|所有成功的通知的计数。|无|
-|outgoing.mpns.invalidcredentials|MPNS 无效的凭据|Count|总计|因为 PNS 未接受所提供的凭据或者凭据被阻止而失败的推送的计数。|无|
-|outgoing.mpns.badchannel|MPNS 坏通道错误|Count|总计|因为注册中的 ChannelURI 不可识别（MPNS 状态：404 找不到）而失败的推送的计数。|无|
-|outgoing.mpns.throttled|MPNS 受限的通知数|Count|总计|因为 MPNS 限制了此应用（MPNS 状态：406 不可接受）而失败的推送的计数。|无|
-|outgoing.mpns.invalidnotificationformat|MPNS 无效的通知格式|Count|总计|因通知的有效负载太大而失败的推送的计数。|无|
-|outgoing.mpns.channeldisconnected|MPNS 通道断开连接|Count|总计|因为注册中的 ChannelURI 断开连接（MPNS 状态：412 找不到）而失败的推送的计数。|无|
-|outgoing.mpns.dropped|MPNS 丢弃的通知数|Count|总计|被 MPNS 丢弃的推送的计数（MPNS 响应标头：X-NotificationStatus：QueueFull 或 Suppressed）。|无|
-|outgoing.mpns.pnserror|MPNS 错误数|Count|总计|因为与 MPNS 通信时发生错误而失败的推送的计数。|无|
-|outgoing.mpns.authenticationerror|MPNS 身份验证错误数|Count|总计|因为 PNS 未接受所提供的凭据或者凭据被阻止而失败的推送的计数。|无|
-|notificationhub.pushes|所有传出通知|Count|总计|通知中心的所有传出通知|无|
-|incoming.all.requests|所有传入请求数|Count|总计|通知中心的传入的请求数总计|无|
-|incoming.all.failedrequests|所有传入的失败请求数|Count|总计|通知中心的传入的失败请求数总计|无|
+|registration.all|注册操作|Count|总计|所有成功的注册操作（创建、更新、查询和删除）的计数。 |None|
+|registration.create|注册创建操作数|Count|总计|所有成功的注册创建操作的计数。|None|
+|registration.update|注册更新操作数|Count|总计|所有成功的注册更新操作的计数。|None|
+|registration.get|注册读取操作数|Count|总计|所有成功的注册查询操作的计数。|None|
+|registration.delete|注册删除操作数|Count|总计|所有成功的注册删除操作的计数。|None|
+|incoming|传入消息数|Count|总计|所有成功的发送 API 调用的计数。 |None|
+|incoming.scheduled|已发送的已安排推送通知数|计数|总计|已取消的已安排推送通知数|None|
+|incoming.scheduled.cancel|已取消的已安排推送通知数|Count|总计|已取消的已安排推送通知数|None|
+|scheduled.pending|挂起的已安排通知数|Count|总计|挂起的已安排通知数|None|
+|installation.all|安装管理操作数|Count|总计|安装管理操作数|None|
+|installation.get|获取安装操作数|Count|总计|获取安装操作数|None|
+|installation.upsert|创建或更新安装操作数|Count|总计|创建或更新安装操作数|None|
+|installation.patch|修补安装操作数|Count|总计|修补安装操作数|None|
+|installation.delete|删除安装操作数|Count|总计|删除安装操作数|None|
+|outgoing.allpns.success|成功的通知数|Count|总计|所有成功的通知的计数。|None|
+|outgoing.allpns.invalidpayload|有效负载错误数|Count|总计|因为 PNS 返回了“有效负载不正确”错误而失败的推送的计数。|None|
+|outgoing.allpns.pnserror|外部通知系统错误数|Count|总计|因为与 PNS 通信时遇到问题（不包括身份验证问题）而失败的推送的计数。|None|
+|outgoing.allpns.channelerror|通道错误数|Count|总计|因为通道无效、没有与正确的应用相关联、受限制或已过期而失败的推送的计数。|None|
+|outgoing.allpns.badorexpiredchannel|坏通道或已过期通道错误数|Count|总计|因为注册中的通道/令牌/registrationId 已过期或无效而失败的推送的计数。|None|
+|outgoing.wns.success|WNS 成功的通知数|Count|总计|所有成功的通知的计数。|None|
+|outgoing.wns.invalidcredentials|WNS 授权错误数（凭据无效）|Count|总计|因为 PNS 未接受所提供的凭据或者凭据被阻止而失败的推送的计数。 （Windows Live 不能识别凭据）。|None|
+|outgoing.wns.badchannel|WNS 坏通道错误|Count|总计|因为注册中的 ChannelURI 不可识别（WNS 状态：404 找不到）而失败的推送的计数。|None|
+|outgoing.wns.expiredchannel|WNS 已过期通道错误|Count|总计|因为 ChannelURI 已过期（WNS 状态：410 不存在）而失败的推送的计数。|None|
+|outgoing.wns.throttled|WNS 受限的通知数|Count|总计|因为 WNS 限制了此应用（WNS 状态：406 不可接受）而失败的推送的计数。|None|
+|outgoing.wns.tokenproviderunreachable|WNS 授权错误数（无法访问）|Count|总计|无法访问 Windows Live。|None|
+|outgoing.wns.invalidtoken|WNS 授权错误数（令牌无效）|Count|总计|提供给 WNS 的令牌无效（WNS 状态：401 未经授权）。|None|
+|outgoing.wns.wrongtoken|WNS 授权错误数（令牌错误）|Count|总计|提供给 WNS 的令牌有效，但它是用于另一应用程序的（WNS 状态：403 禁止访问）。 如果注册中的 ChannelURI 与另一应用相关联，则可能会发生此情况。 请检查客户端应用是否与其凭据位于通知中心内的同一应用相关联。|None|
+|outgoing.wns.invalidnotificationformat|WNS 无效的通知格式|Count|总计|通知格式无效（WNS 状态：400）。 请注意，WNS 并不会拒绝所有无效的有效负载。|None|
+|outgoing.wns.invalidnotificationsize|WNS 无效通知大小错误|Count|总计|通知有效负载太大（WNS 状态：413）。|None|
+|outgoing.wns.channelthrottled|WNS 通道受限|Count|总计|通知因为注册中的 ChannelURI 受限而被丢弃（WNS 响应标头：X-WNS-NotificationStatus:channelThrottled）。|None|
+|outgoing.wns.channeldisconnected|WNS 通道断开连接|Count|总计|通知因为注册中的 ChannelURI 受限而被丢弃（WNS 响应标头：X-WNS-DeviceConnectionStatus: disconnected）。|None|
+|outgoing.wns.dropped|WNS 丢弃的通知数|Count|总计|通知因为注册中的 ChannelURI 受限而被丢弃（X-WNS-NotificationStatus 为 dropped，但 X-WNS-DeviceConnectionStatus 不是 disconnected）。|None|
+|outgoing.wns.pnserror|WNS 错误数|Count|总计|与 WNS 通信时发生错误，因而未传递通知。|None|
+|outgoing.wns.authenticationerror|WNS 身份验证错误数|Count|总计|与 Windows Live 通信时因凭据无效或令牌错误而发生错误，因为未传递通知。|None|
+|outgoing.apns.success|APNS 成功的通知数|Count|总计|所有成功的通知的计数。|None|
+|outgoing.apns.invalidcredentials|APNS 授权错误数|Count|总计|因为 PNS 未接受所提供的凭据或者凭据被阻止而失败的推送的计数。|None|
+|outgoing.apns.badchannel|APNS 坏通道错误|Count|总计|因令牌无效而失败的推送的计数（APNS 状态代码：8）。|None|
+|outgoing.apns.expiredchannel|APNS 已过期通道错误|Count|总计|由 APNS 反馈通道致其无效的令牌的计数。|None|
+|outgoing.apns.invalidnotificationsize|APNS 无效通知大小错误|Count|总计|因有效负载太大而失败的推送的计数（APNS 状态代码：7）。|None|
+|outgoing.apns.pnserror|APNS 错误数|Count|总计|因为与 APNS 通信时发生错误而失败的推送的计数。|None|
+|outgoing.gcm.success|GCM 成功的通知数|Count|总计|所有成功的通知的计数。|None|
+|outgoing.gcm.invalidcredentials|GCM 授权错误数（凭据无效）|Count|总计|因为 PNS 未接受所提供的凭据或者凭据被阻止而失败的推送的计数。|None|
+|outgoing.gcm.badchannel|GCM 坏通道错误|Count|总计|因为注册中的 registrationId 不可识别而失败的推送的计数（GCM 结果：无效的注册）。|None|
+|outgoing.gcm.expiredchannel|GCM 已过期通道错误|Count|总计|因为注册中的 registrationId 已过期而失败的推送的计数（GCM 结果：NotRegistered）。|None|
+|outgoing.gcm.throttled|GCM 受限的通知数|Count|总计|因为 GCM 限制了此应用而失败的推送的计数（GCM 状态代码：501-599 或结果：不可用）。|None|
+|outgoing.gcm.invalidnotificationformat|GCM 无效的通知格式|Count|总计|因为有效负载的格式不正确而失败的推送的计数（GCM 结果：InvalidDataKey 或 InvalidTtl）。|None|
+|outgoing.gcm.invalidnotificationsize|GCM 无效通知大小错误|Count|总计|因有效负载太大而失败的推送的计数（GCM 结果：MessageTooBig）。|None|
+|outgoing.gcm.wrongchannel|GCM 通道不正确错误|Count|总计|因为注册中的 registrationId 没有关联到当前应用而失败的推送的计数（GCM 结果：InvalidPackageName）。|None|
+|outgoing.gcm.pnserror|GCM 错误数|Count|总计|因为与 GCM 通信时发生错误而失败的推送的计数。|None|
+|outgoing.gcm.authenticationerror|GCM 身份验证错误数|Count|总计|因为 PNS 未接受所提供的凭据、凭据被阻止或者未在应用中正确配置 SenderId 而失败的推送的计数（GCM 结果：MismatchedSenderId）。|None|
+|outgoing.mpns.success|MPNS 成功的通知数|Count|总计|所有成功的通知的计数。|None|
+|outgoing.mpns.invalidcredentials|MPNS 无效的凭据|Count|总计|因为 PNS 未接受所提供的凭据或者凭据被阻止而失败的推送的计数。|None|
+|outgoing.mpns.badchannel|MPNS 坏通道错误|Count|总计|因为注册中的 ChannelURI 不可识别（MPNS 状态：404 找不到）而失败的推送的计数。|None|
+|outgoing.mpns.throttled|MPNS 受限的通知数|Count|总计|因为 MPNS 限制了此应用（MPNS 状态：406 不可接受）而失败的推送的计数。|None|
+|outgoing.mpns.invalidnotificationformat|MPNS 无效的通知格式|Count|总计|因通知的有效负载太大而失败的推送的计数。|None|
+|outgoing.mpns.channeldisconnected|MPNS 通道断开连接|Count|总计|因为注册中的 ChannelURI 断开连接（MPNS 状态：412 找不到）而失败的推送的计数。|None|
+|outgoing.mpns.dropped|MPNS 丢弃的通知数|Count|总计|被 MPNS 丢弃的推送的计数（MPNS 响应标头：X-NotificationStatus：QueueFull 或 Suppressed）。|None|
+|outgoing.mpns.pnserror|MPNS 错误数|计数|总计|因为与 MPNS 通信时发生错误而失败的推送的计数。|None|
+|outgoing.mpns.authenticationerror|MPNS 身份验证错误数|计数|总计|因为 PNS 未接受所提供的凭据或者凭据被阻止而失败的推送的计数。|None|
+|notificationhub.pushes|所有传出通知|计数|总计|通知中心的所有传出通知|None|
+|incoming.all.requests|所有传入请求数|计数|总计|通知中心的传入的请求数总计|None|
+|incoming.all.failedrequests|所有传入的失败请求数|计数|总计|通知中心的传入的失败请求数总计|None|
 
 ## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.OperationalInsights/workspaces
 
@@ -1819,9 +1819,9 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |Average_Total Rx Errors|Rx 错误数总计|Count|平均值|Average_Total Rx Errors|Computer,ObjectName,InstanceName,CounterPath,SourceSystem|
 |Average_Total Tx Errors|Tx 错误数总计|Count|平均值|Average_Total Tx Errors|Computer,ObjectName,InstanceName,CounterPath,SourceSystem|
 |Average_Total Collisions|冲突数总计|Count|平均值|Average_Total Collisions|Computer,ObjectName,InstanceName,CounterPath,SourceSystem|
-|Average_Avg. 磁盘秒数/读取|平均磁盘秒/读取|Count|平均值|Average_Avg. 磁盘秒数/读取|Computer,ObjectName,InstanceName,CounterPath,SourceSystem|
-|Average_Avg. 磁盘秒数/传输|平均磁盘秒/传输|Count|平均值|Average_Avg. 磁盘秒数/传输|Computer,ObjectName,InstanceName,CounterPath,SourceSystem|
-|Average_Avg. 磁盘秒数/写入|平均磁盘秒/写入|Count|平均值|Average_Avg. 磁盘秒数/写入|Computer,ObjectName,InstanceName,CounterPath,SourceSystem|
+|Average_Avg. 磁盘秒数/读取|Avg. Disk sec/Read|Count|平均值|Average_Avg. 磁盘秒数/读取|Computer,ObjectName,InstanceName,CounterPath,SourceSystem|
+|Average_Avg. 磁盘秒数/传输|Avg. Disk sec/Transfer|Count|平均值|Average_Avg. 磁盘秒数/传输|Computer,ObjectName,InstanceName,CounterPath,SourceSystem|
+|Average_Avg. 磁盘秒数/写入|Avg. Disk sec/Write|Count|平均值|Average_Avg. 磁盘秒数/写入|Computer,ObjectName,InstanceName,CounterPath,SourceSystem|
 |Average_Physical Disk Bytes/sec|物理磁盘字节数/秒|Count|平均值|Average_Physical Disk Bytes/sec|Computer,ObjectName,InstanceName,CounterPath,SourceSystem|
 |Average_Pct Privileged Time|特权时间百分比|Count|平均值|Average_Pct Privileged Time|Computer,ObjectName,InstanceName,CounterPath,SourceSystem|
 |Average_Pct User Time|用户时间百分比|Count|平均值|Average_Pct User Time|Computer,ObjectName,InstanceName,CounterPath,SourceSystem|
@@ -1841,7 +1841,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |Average_Processes|进程|Count|平均值|Average_Processes|Computer,ObjectName,InstanceName,CounterPath,SourceSystem|
 |Average_Size Stored In Paging Files|分页文件中存储的大小|Count|平均值|Average_Size Stored In Paging Files|Computer,ObjectName,InstanceName,CounterPath,SourceSystem|
 |Average_Uptime|运行时间|Count|平均值|Average_Uptime|Computer,ObjectName,InstanceName,CounterPath,SourceSystem|
-|Average_Users|用户|Count|平均值|Average_Users|Computer,ObjectName,InstanceName,CounterPath,SourceSystem|
+|Average_Users|用户|计数|平均值|Average_Users|Computer,ObjectName,InstanceName,CounterPath,SourceSystem|
 |Average_Current Disk Queue Length|Current Disk Queue Length|Count|平均值|Average_Current Disk Queue Length|Computer,ObjectName,InstanceName,CounterPath,SourceSystem|
 |Average_Available MBytes|可用兆字节数|Count|平均值|Average_Available MBytes|Computer,ObjectName,InstanceName,CounterPath,SourceSystem|
 |Average_% Committed Bytes In Use|提交的在用字节数百分比|Count|平均值|Average_% Committed Bytes In Use|Computer,ObjectName,InstanceName,CounterPath,SourceSystem|
@@ -1880,19 +1880,19 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |memory_thrashing_metric|内存抖动|百分比|平均值|平均内存抖动。|无维度|
 
 
-## <a name="microsoftprojectbabylonaccounts"></a>微软.项目巴比伦/帐户
+## <a name="microsoftprojectbabylonaccounts"></a>ProjectBabylon/帐户
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|按分类划分的资产分配|按分类分列的资产分配|Count|总计|指示分配了特定分类的资产数，即它们与该标签一起分类。|分类，来源，资源Id|
-|按存储类型分配资产|按存储类型分配资产|Count|总计|指示具有特定存储类型的资产数。|存储类型，资源 Id|
-|目录活动用户|每日活跃用户|Count|总计|每日活动用户数|ResourceId|
-|目录使用|按操作分配使用情况|Count|总计|指示用户对目录的操作数，即访问、搜索、术语表。|操作，资源 Id|
-|具有分类的资产数量|具有至少一个分类的资产数量|Count|平均值|指示具有至少一个标记分类的资产数。|ResourceId|
-|扫描取消|扫描已取消|Count|总计|指示已取消的扫描数。|ResourceId|
-|扫描完成|扫描已完成|Count|总计|指示成功完成的扫描数。|ResourceId|
-|扫描失败|扫描失败|Count|总计|指示扫描失败数。|ResourceId|
-|扫描时间|扫描时间|秒|总计|指示总扫描时间（以秒为单位）。|ResourceId|
+|AssetDistributionByClassification|按分类分类的资产分布|Count|总计|指示已分配特定分类的资产的数量，即，使用该标签进行分类。|分类、源、ResourceId|
+|AssetDistributionByStorageType|按存储类型的资产分布|Count|总计|指示具有特定存储类型的资产的数量。|StorageType，ResourceId|
+|CatalogActiveUsers|每日活动用户|Count|总计|每日活动用户数|ResourceId|
+|CatalogUsage|按操作的用量分布|Count|总计|指示用户对目录所做的操作的数量，即访问、搜索、词汇表。|操作，ResourceId|
+|NumberOfAssetsWithClassifications|至少具有一个分类的资产数量|Count|平均值|指示至少具有一个标记分类的资产的数量。|ResourceId|
+|ScanCancelled|扫描已取消|Count|总计|指示取消的扫描数。|ResourceId|
+|ScanCompleted|扫描已完成|Count|总计|指示已成功完成的扫描数。|ResourceId|
+|ScanFailed|扫描失败|Count|总计|指示扫描失败的次数。|ResourceId|
+|ScanTimeTaken|扫描花费的时间|秒|总计|指示扫描总时间（以秒为单位）。|ResourceId|
 
 
 
@@ -1902,7 +1902,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
 |ListenerConnections-Success|ListenerConnections-Success|Count|总计|Microsoft.Relay 的侦听程序成功连接数。|EntityName,OperationResult|
-|ListenerConnections-ClientError|ListenerConnections-ClientError|Count|总计|关于 Microsoft.Relay 的侦听程序连接的客户端错误。|EntityName,OperationResult|
+|ListenerConnections-ClientError|ListenerConnections-ClientError|计数|总计|关于 Microsoft.Relay 的侦听程序连接的客户端错误。|EntityName,OperationResult|
 |ListenerConnections-ServerError|ListenerConnections-ServerError|Count|总计|关于 Microsoft.Relay 的侦听程序连接的服务器错误。|EntityName,OperationResult|
 |SenderConnections-Success|SenderConnections-Success|Count|总计|Microsoft.Relay 的发送方成功连接数。|EntityName,OperationResult|
 |SenderConnections-ClientError|SenderConnections-ClientError|Count|总计|关于 Microsoft.Relay 的发送方连接的客户端错误。|EntityName,OperationResult|
@@ -1920,9 +1920,9 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|SearchLatency|搜索延迟|秒|平均值|搜索服务的平均搜索延迟|无|
-|SearchQueriesPerSecond|每秒搜索查询数|每秒计数|平均值|搜索服务的每秒搜索查询数|无|
-|ThrottledSearchQueriesPercentage|限制的搜索查询百分比|百分比|平均值|为搜索服务限制的搜索查询百分比|无|
+|SearchLatency|搜索延迟|秒|平均值|搜索服务的平均搜索延迟|None|
+|SearchQueriesPerSecond|每秒搜索查询数|每秒计数|平均值|搜索服务的每秒搜索查询数|None|
+|ThrottledSearchQueriesPercentage|限制的搜索查询百分比|百分比|平均值|为搜索服务限制的搜索查询百分比|None|
 
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
@@ -1936,14 +1936,14 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |IncomingRequests|传入请求数|Count|总计|Microsoft.ServiceBus 传入的请求数。|EntityName|
 |IncomingMessages|传入消息数|Count|总计|Microsoft.ServiceBus 传入的消息数。|EntityName|
 |OutgoingMessages|传出消息数|Count|总计|Microsoft.ServiceBus 传出的消息数。|EntityName|
-|ActiveConnections|ActiveConnections|Count|总计|Microsoft.ServiceBus 的活动连接总数。|无|
+|ActiveConnections|ActiveConnections|Count|总计|Microsoft.ServiceBus 的活动连接总数。|None|
 |ConnectionsOpened|打开的连接数。|Count|平均值|Microsoft.ServiceBus 打开的连接数。|EntityName|
 |ConnectionsClosed|已关闭的连接数。|Count|平均值|Microsoft.ServiceBus 已关闭的连接数。|EntityName|
 |大小|大小|字节|平均值|队列/主题的大小（以字节为单位）。|EntityName|
-|消息|队列/主题中的消息计数。|Count|平均值|队列/主题中的消息计数。|EntityName|
-|ActiveMessages|队列/主题中的活动消息计数。|Count|平均值|队列/主题中的活动消息计数。|EntityName|
-|DeadletteredMessages|队列/主题中的死信消息计数。|Count|平均值|队列/主题中的死信消息计数。|EntityName|
-|ScheduledMessages|队列/主题中的计划消息计数。|Count|平均值|队列/主题中的计划消息计数。|EntityName|
+|Messages|队列/主题中的消息计数。|Count|平均值|队列/主题中的消息计数。|EntityName|
+|ActiveMessages|队列/主题中的活动消息计数。|计数|平均值|队列/主题中的活动消息计数。|EntityName|
+|DeadletteredMessages|队列/主题中的死信消息计数。|计数|平均值|队列/主题中的死信消息计数。|EntityName|
+|ScheduledMessages|队列/主题中的计划消息计数。|计数|平均值|队列/主题中的计划消息计数。|EntityName|
 |NamespaceCpuUsage|CPU|百分比|最大值|服务总线高级命名空间 CPU 使用率指标。|副本|
 |NamespaceMemoryUsage|内存用量|百分比|最大值|服务总线高级命名空间内存使用率指标。|副本|
 |CPUXNS|CPU（已弃用）|百分比|最大值|服务总线高级命名空间 CPU 使用率指标。 此指标已弃用。 请改用 CPU 指标 (NamespaceCpuUsage)。|副本|
@@ -1962,8 +1962,8 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |MemoryUtilization|MemoryUtilization|百分比|平均值|此容器的 CPU 利用率，以 AllocatedCpu 的百分比表示|ApplicationName,ServiceName,CodePackageName,ServiceReplicaName|
 |ApplicationStatus|ApplicationStatus|Count|平均值|Service Fabric 网格应用程序的状态|ApplicationName,Status|
 |ServiceStatus|ServiceStatus|Count|平均值|Service Fabric 网格应用程序中某个服务的运行状态|ApplicationName,Status,ServiceName|
-|ServiceReplicaStatus|ServiceReplicaStatus|Count|平均值|Service Fabric 网格应用程序中某个服务副本的运行状态|ApplicationName,Status,ServiceName,ServiceReplicaName|
-|ContainerStatus|ContainerStatus|Count|平均值|Service Fabric 网格应用程序中的容器状态|ApplicationName,ServiceName,CodePackageName,ServiceReplicaName,Status|
+|ServiceReplicaStatus|ServiceReplicaStatus|计数|平均值|Service Fabric 网格应用程序中某个服务副本的运行状态|ApplicationName,Status,ServiceName,ServiceReplicaName|
+|ContainerStatus|ContainerStatus|计数|平均值|Service Fabric 网格应用程序中的容器状态|ApplicationName,ServiceName,CodePackageName,ServiceReplicaName,Status|
 |RestartCount|RestartCount|Count|平均值|Service Fabric 网格应用程序中某个容器的重启计数|ApplicationName,Status,ServiceName,ServiceReplicaName,CodePackageName|
 
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft.SignalRService/SignalR
@@ -1971,11 +1971,11 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
 |ConnectionCount|连接计数|Count|最大值|用户连接量。|终结点|
-|MessageCount|消息计数|Count|总计|消息总量。|无|
-|InboundTraffic|入站流量|字节|总计|服务的入站流量|无|
-|OutboundTraffic|出站流量|字节|总计|服务的出站流量|无|
-|UserErrors|用户错误数|百分比|最大值|用户错误数的百分比|无|
-|SystemErrors|系统错误数|百分比|最大值|系统错误数的百分比|无|
+|MessageCount|消息计数|Count|总计|消息总量。|None|
+|InboundTraffic|入站流量|字节|总计|服务的入站流量|None|
+|OutboundTraffic|出站流量|字节|总计|服务的出站流量|None|
+|UserErrors|用户错误数|百分比|最大值|用户错误数的百分比|None|
+|SystemErrors|系统错误数|百分比|最大值|系统错误数的百分比|None|
 
 
 
@@ -1983,101 +1983,101 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|cpu_percent|CPU 百分比|百分比|平均值|CPU 百分比|无|
-|physical_data_read_percent|数据 IO 百分比|百分比|平均值|数据 IO 百分比|无|
-|log_write_percent|日志 IO 百分比|百分比|平均值|日志 IO 百分比。 不适用于数据仓库。|无|
-|dtu_consumption_percent|DTU 百分比|百分比|平均值|DTU 百分比。 适用于基于 DTU 的数据库。|无|
-|存储|已用数据空间|字节|最大值|已用数据空间。 不适用于数据仓库。|无|
-|connection_successful|成功的连接数|Count|总计|成功的连接数|无|
-|connection_failed|失败的连接数|Count|总计|失败的连接数|无|
-|blocked_by_firewall|被防火墙阻止|Count|总计|被防火墙阻止|无|
-|deadlock|死锁数|Count|总计|死锁数。 不适用于数据仓库。|无|
-|storage_percent|已用数据空间百分比|百分比|最大值|已用数据空间百分比。 不适用于数据仓库或超大规模数据库。|无|
-|xtp_storage_percent|内存中 OLTP 存储百分比|百分比|平均值|内存中 OLTP 存储百分比。 不适用于数据仓库。|无|
-|workers_percent|辅助角色百分比|百分比|平均值|辅助角色百分比。 不适用于数据仓库。|无|
-|sessions_percent|会话百分比|百分比|平均值|会话百分比。 不适用于数据仓库。|无|
-|dtu_limit|DTU 限制|Count|平均值|DTU 限制。 适用于基于 DTU 的数据库。|无|
-|dtu_used|已用的 DTU|Count|平均值|已用 DTU。 适用于基于 DTU 的数据库。|无|
-|cpu_limit|CPU 限制|Count|平均值|CPU 限制。 适用于基于 vCore 的数据库。|无|
-|cpu_used|已用 CPU|Count|平均值|已用 CPU。 适用于基于 vCore 的数据库。|无|
-|dwu_limit|DWU 限制|Count|最大值|DWU 限制。 仅适用于数据仓库。|无|
-|dwu_consumption_percent|DWU 百分比|百分比|最大值|DWU 百分比。 仅适用于数据仓库。|无|
-|dwu_used|已用的 DWU|Count|最大值|已用 DWU。 仅适用于数据仓库。|无|
-|cache_hit_percent|缓存命中百分比|百分比|最大值|缓存命中百分比。 仅适用于数据仓库。|无|
-|cache_used_percent|缓存使用百分比|百分比|最大值|缓存使用百分比。 仅适用于数据仓库。|无|
-|sqlserver_process_core_percent<sup>1</sup> |SQL Server 进程核心百分比|百分比|最大值|SQL Server 进程的 CPU 使用率百分比，由操作系统测量。|无|
-|sqlserver_process_memory_percent<sup>1</sup> |SQL Server 进程内存百分比|百分比|最大值|SQL Server 进程的内存使用百分比，由操作系统测量。|无|
-|tempdb_data_size<sup>2</sup> |Tempdb 数据文件大小 (KB)|Count|最大值|Tempdb 数据文件大小 (KB)。|无|
-|tempdb_log_size<sup>2</sup> |Tempdb 日志文件大小 (KB)|Count|最大值|Tempdb 日志文件大小 (KB)。|无|
-|tempdb_log_used_percent<sup>2</sup> |Tempdb 日志已用百分比|百分比|最大值|Tempdb 日志已用百分比。|无|
-|local_tempdb_usage_percent|本地 tempdb 百分比|百分比|平均值|本地 tempdb 百分比。 仅适用于数据仓库。|无|
-|app_cpu_billed|计费的应用 CPU|Count|总计|计费的应用 CPU。 适用于无服务器数据库。|无|
-|app_cpu_percent|应用 CPU 百分比|百分比|平均值|应用 CPU 百分比。 适用于无服务器数据库。|无|
-|app_memory_percent|应用内存百分比|百分比|平均值|应用内存百分比。 适用于无服务器数据库。|无|
-|allocated_data_storage|已分配的数据空间|字节|平均值|已分配的数据存储。 不适用于数据仓库。|无|
-|memory_usage_percent|内存百分比|百分比|最大值|内存百分比。 仅适用于数据仓库。|无|
-|dw_backup_size_gb|数据存储大小|Count|总计|数据存储大小由数据的大小和事务日志组成。 指标计入账单的"存储"部分。 仅适用于数据仓库。|无|
-|dw_snapshot_size_gb|快照存储大小|Count|总计|快照存储大小是快照捕获的增量更改的大小，用于创建用户定义和自动还原点。 指标计入账单的"存储"部分。 仅适用于数据仓库。|无|
-|dw_geosnapshot_size_gb|灾难恢复存储大小|Count|总计|灾难恢复存储大小在帐单中反映为"灾难恢复存储"。 仅适用于数据仓库。|无|
-|wlg_allocation_relative_to_system_percent|按系统百分比分配工作负载组|百分比|最大值|为每个工作负载组分配的资源相对于整个系统的百分比。 仅适用于数据仓库。|工作负载组名称，已用户定义|
-|wlg_allocation_relative_to_wlg_effective_cap_percent|按上限资源百分比分配工作负载组|百分比|最大值|相对于每个工作负载组的指定上限资源的分配的资源百分比。 仅适用于数据仓库。|工作负载组名称，已用户定义|
-|wlg_active_queries|工作负载组活动查询|Count|总计|工作负荷组中的活动查询。 仅适用于数据仓库。|工作负载组名称，已用户定义|
-|wlg_queued_queries|工作负载组排队查询|Count|总计|在工作负荷组中排队的查询。 仅适用于数据仓库。|工作负载组名称，已用户定义|
-|active_queries|活动查询|Count|总计|跨所有工作负荷组的活动查询。 仅适用于数据仓库。|无|
-|queued_queries|排队查询|Count|总计|跨所有工作负荷组的排队查询。 仅适用于数据仓库。|无|
-|wlg_active_queries_timeouts|工作负载组查询超时|Count|总计|已为工作负荷组超时的查询。 仅适用于数据仓库。|工作负载组名称，已用户定义|
-|wlg_effective_min_resource_percent|有效最小资源百分比|百分比|最大值|考虑到服务级别最小值，为工作负载组保留和隔离的资源的最小百分比。 仅适用于数据仓库。|工作负载组名称，已用户定义|
-|wlg_effective_cap_resource_percent|有效上限资源百分比|百分比|最大值|考虑到分配给其他工作负荷组的有效最小资源百分比，对工作负载组允许的资源百分比硬限制。 仅适用于数据仓库。|工作负载组名称，已用户定义|
-|full_backup_size_bytes|完整备份存储大小|字节|最大值|累积的完整备份存储大小。 适用于基于 vCore 的数据库。 不适用于超大规模数据库。|无|
-|diff_backup_size_bytes|差异备份存储大小|字节|最大值|累积的差异备份存储大小。 适用于基于 vCore 的数据库。 不适用于超大规模数据库。|无|
-|log_backup_size_bytes|日志备份存储大小|字节|最大值|累积的日志备份存储大小。 适用于基于 vCore 的超大规模数据库。|无|
-|snapshot_backup_size_bytes|快照备份存储大小|字节|最大值|累积快照备份存储大小。 应用于超大规模数据库。|无|
-|base_blob_size_bytes|基本 Blob 存储大小|字节|最大值|基本 blob 存储大小。 应用于超大规模数据库。|无|
+|cpu_percent|CPU 百分比|百分比|平均值|CPU 百分比|None|
+|physical_data_read_percent|数据 IO 百分比|百分比|平均值|数据 IO 百分比|None|
+|log_write_percent|日志 IO 百分比|百分比|平均值|日志 IO 百分比。 不适用于数据仓库。|None|
+|dtu_consumption_percent|DTU 百分比|百分比|平均值|DTU 百分比。 适用于基于 DTU 的数据库。|None|
+|存储|已用数据空间|字节|最大值|已用数据空间。 不适用于数据仓库。|None|
+|connection_successful|成功的连接数|Count|总计|成功的连接数|None|
+|connection_failed|失败的连接数|Count|总计|失败的连接数|None|
+|blocked_by_firewall|被防火墙阻止|Count|总计|被防火墙阻止|None|
+|deadlock|死锁数|Count|总计|死锁数。 不适用于数据仓库。|None|
+|storage_percent|已用数据空间百分比|百分比|最大值|已用数据空间百分比。 不适用于数据仓库或超大规模数据库。|None|
+|xtp_storage_percent|内存中 OLTP 存储百分比|百分比|平均值|内存中 OLTP 存储百分比。 不适用于数据仓库。|None|
+|workers_percent|辅助角色百分比|百分比|平均值|辅助角色百分比。 不适用于数据仓库。|None|
+|sessions_percent|会话百分比|百分比|平均值|会话百分比。 不适用于数据仓库。|None|
+|dtu_limit|DTU 限制|Count|平均值|DTU 限制。 适用于基于 DTU 的数据库。|None|
+|dtu_used|已用的 DTU|Count|平均值|已用 DTU。 适用于基于 DTU 的数据库。|None|
+|cpu_limit|CPU 限制|Count|平均值|CPU 限制。 适用于基于 vCore 的数据库。|None|
+|cpu_used|已用 CPU|Count|平均值|已用 CPU。 适用于基于 vCore 的数据库。|None|
+|dwu_limit|DWU 限制|Count|最大值|DWU 限制。 仅适用于数据仓库。|None|
+|dwu_consumption_percent|DWU 百分比|百分比|最大值|DWU 百分比。 仅适用于数据仓库。|None|
+|dwu_used|已用的 DWU|Count|最大值|已用 DWU。 仅适用于数据仓库。|None|
+|cache_hit_percent|缓存命中百分比|百分比|最大值|缓存命中百分比。 仅适用于数据仓库。|None|
+|cache_used_percent|缓存使用百分比|百分比|最大值|缓存使用百分比。 仅适用于数据仓库。|None|
+|sqlserver_process_core_percent<sup>1</sup> |SQL Server 进程核心百分比|百分比|最大值|SQL Server 进程的 CPU 使用率百分比（由操作系统度量）。|None|
+|sqlserver_process_memory_percent<sup>1</sup> |SQL Server 进程内存百分比|百分比|最大值|SQL Server 进程的内存使用率百分比（由操作系统度量）。|None|
+|tempdb_data_size<sup>2</sup> |Tempdb 数据文件大小 (KB)|Count|最大值|Tempdb 数据文件大小 (KB)。|None|
+|tempdb_log_size<sup>2</sup> |Tempdb 日志文件大小 (KB)|Count|最大值|Tempdb 日志文件大小 (KB)。|None|
+|tempdb_log_used_percent<sup>2</sup> |Tempdb 日志已用百分比|百分比|最大值|Tempdb 日志已用百分比。|None|
+|local_tempdb_usage_percent|本地 tempdb 百分比|百分比|平均值|本地 tempdb 百分比。 仅适用于数据仓库。|None|
+|app_cpu_billed|计费的应用 CPU|Count|总计|计费的应用 CPU。 适用于无服务器数据库。|None|
+|app_cpu_percent|应用 CPU 百分比|百分比|平均值|应用 CPU 百分比。 适用于无服务器数据库。|None|
+|app_memory_percent|应用内存百分比|百分比|平均值|应用内存百分比。 适用于无服务器数据库。|None|
+|allocated_data_storage|已分配的数据空间|字节|平均值|已分配的数据存储。 不适用于数据仓库。|None|
+|memory_usage_percent|内存百分比|百分比|最大值|内存百分比。 仅适用于数据仓库。|None|
+|dw_backup_size_gb|数据存储大小|Count|总计|数据存储大小由你的数据和事务日志的大小组成。 此指标将计入帐单的 "存储" 部分。 仅适用于数据仓库。|None|
+|dw_snapshot_size_gb|快照存储大小|Count|总计|快照存储大小是由快照捕获的增量更改的大小，以创建用户定义的还原点和自动还原点。 此指标将计入帐单的 "存储" 部分。 仅适用于数据仓库。|None|
+|dw_geosnapshot_size_gb|灾难恢复存储大小|Count|总计|灾难恢复存储大小在帐单中反映为 "灾难恢复存储"。 仅适用于数据仓库。|None|
+|wlg_allocation_relative_to_system_percent|按系统百分比分配的工作负荷组|百分比|最大值|每个工作负荷组相对于整个系统的资源分配百分比。 仅适用于数据仓库。|WorkloadGroupName,IsUserDefined|
+|wlg_allocation_relative_to_wlg_effective_cap_percent|按上限资源百分比分配的工作负荷组|百分比|最大值|每个工作负荷组相对于指定 cap 资源的资源分配百分比。 仅适用于数据仓库。|WorkloadGroupName,IsUserDefined|
+|wlg_active_queries|工作负荷组活动查询|Count|总计|工作负荷组内的活动查询。 仅适用于数据仓库。|WorkloadGroupName,IsUserDefined|
+|wlg_queued_queries|工作负荷组排队查询|Count|总计|工作负荷组内排队的查询。 仅适用于数据仓库。|WorkloadGroupName,IsUserDefined|
+|active_queries|活动查询|Count|总计|跨所有工作负荷组的活动查询。 仅适用于数据仓库。|None|
+|queued_queries|排队的查询|Count|总计|跨所有工作负荷组的排队查询。 仅适用于数据仓库。|None|
+|wlg_active_queries_timeouts|工作负荷组查询超时|Count|总计|工作负荷组的查询已超时。 仅适用于数据仓库。|WorkloadGroupName,IsUserDefined|
+|wlg_effective_min_resource_percent|有效的最小资源百分比|百分比|最大值|为工作负荷组预留和隔离的资源的最小百分比，考虑最小服务级别。 仅适用于数据仓库。|WorkloadGroupName,IsUserDefined|
+|wlg_effective_cap_resource_percent|有效上限资源百分比|百分比|最大值|对工作负荷组所允许的资源百分比进行硬性限制，考虑为其他工作负荷组分配的有效的最小资源百分比。 仅适用于数据仓库。|WorkloadGroupName,IsUserDefined|
+|full_backup_size_bytes|完整备份存储大小|字节|最大值|累积的完整备份存储大小。 适用于基于 vCore 的数据库。 不适用于超大规模数据库。|None|
+|diff_backup_size_bytes|差异备份存储大小|字节|最大值|累积的差异备份存储大小。 适用于基于 vCore 的数据库。 不适用于超大规模数据库。|None|
+|log_backup_size_bytes|日志备份存储大小|字节|最大值|累积的日志备份存储大小。 适用于基于 vCore 和超大规模的数据库。|None|
+|snapshot_backup_size_bytes|快照备份存储大小|字节|最大值|累积快照备份存储大小。 适用于超大规模数据库。|None|
+|base_blob_size_bytes|基本 blob 存储大小|字节|最大值|基本 blob 存储大小。 适用于超大规模数据库。|None|
 
-<sup>1</sup>此指标可用于使用 vCore 购买模型的数据库，该模型具有 2 个 vCore 和更高版本，或者 200 DTU 和更高版本可用于基于 DTU 的采购模型。 
+<sup>1</sup>此指标适用于使用 vCore 购买模型（带有2个 vcore 和更高版本）的数据库，或用于基于 DTU 的购买模型的 200 dtu 和更高版本。 
 
-<sup>2</sup>此指标可用于使用 vCore 购买模型的数据库，该模型具有 2 个 vCore 和更高版本，或者 200 DTU 和更高版本可用于基于 DTU 的采购模型。 此指标当前不适用于超大规模数据库或数据仓库。
+<sup>2</sup>对于使用 vCore 购买模型的数据库，此指标适用于具有 2 vcore 和更高版本的数据库，或者用于基于 DTU 的购买模型的 200 DTU 和更高版本。 此指标当前不适用于超大规模数据库或数据仓库。
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|cpu_percent|CPU 百分比|百分比|平均值|CPU 百分比|无|
+|cpu_percent|CPU 百分比|百分比|平均值|CPU 百分比|None|
 |database_cpu_percent|CPU 百分比|百分比|平均值|CPU 百分比|DatabaseResourceId|
-|physical_data_read_percent|数据 IO 百分比|百分比|平均值|数据 IO 百分比|无|
+|physical_data_read_percent|数据 IO 百分比|百分比|平均值|数据 IO 百分比|None|
 |database_physical_data_read_percent|数据 IO 百分比|百分比|平均值|数据 IO 百分比|DatabaseResourceId|
-|log_write_percent|日志 IO 百分比|百分比|平均值|日志 IO 百分比|无|
+|log_write_percent|日志 IO 百分比|百分比|平均值|日志 IO 百分比|None|
 |database_log_write_percent|日志 IO 百分比|百分比|平均值|日志 IO 百分比|DatabaseResourceId|
-|dtu_consumption_percent|DTU 百分比|百分比|平均值|DTU 百分比。 适用于基于 DTU 的弹性池。|无|
+|dtu_consumption_percent|DTU 百分比|百分比|平均值|DTU 百分比。 适用于基于 DTU 的弹性池。|None|
 |database_dtu_consumption_percent|DTU 百分比|百分比|平均值|DTU 百分比|DatabaseResourceId|
-|storage_percent|已用数据空间百分比|百分比|平均值|已用数据空间百分比|无|
-|workers_percent|辅助角色百分比|百分比|平均值|辅助角色百分比|无|
+|storage_percent|已用数据空间百分比|百分比|平均值|已用数据空间百分比|None|
+|workers_percent|辅助角色百分比|百分比|平均值|辅助角色百分比|None|
 |database_workers_percent|辅助角色百分比|百分比|平均值|辅助角色百分比|DatabaseResourceId|
-|sessions_percent|会话百分比|百分比|平均值|会话百分比|无|
+|sessions_percent|会话百分比|百分比|平均值|会话百分比|None|
 |database_sessions_percent|会话百分比|百分比|平均值|会话百分比|DatabaseResourceId|
-|eDTU_limit|eDTU 限制|Count|平均值|eDTU 限制。 适用于基于 DTU 的弹性池。|无|
-|storage_limit|数据最大大小|字节|平均值|数据最大大小|无|
-|eDTU_used|已用的 eDTU|Count|平均值|已用 eDTU。 适用于基于 DTU 的弹性池。|无|
+|eDTU_limit|eDTU 限制|Count|平均值|eDTU 限制。 适用于基于 DTU 的弹性池。|None|
+|storage_limit|数据最大大小|字节|平均值|数据最大大小|None|
+|eDTU_used|已用的 eDTU|Count|平均值|已用 eDTU。 适用于基于 DTU 的弹性池。|None|
 |database_eDTU_used|已用的 eDTU|Count|平均值|已用的 eDTU|DatabaseResourceId|
-|storage_used|已用数据空间|字节|平均值|已用数据空间|无|
+|storage_used|已用数据空间|字节|平均值|已用数据空间|None|
 |database_storage_used|已用数据空间|字节|平均值|已用数据空间|DatabaseResourceId|
-|xtp_storage_percent|内存中 OLTP 存储百分比|百分比|平均值|内存中 OLTP 存储百分比|无|
-|cpu_limit|CPU 限制|Count|平均值|CPU 限制。 适用于基于 vCore 的弹性池。|无|
+|xtp_storage_percent|内存中 OLTP 存储百分比|百分比|平均值|内存中 OLTP 存储百分比|None|
+|cpu_limit|CPU 限制|Count|平均值|CPU 限制。 适用于基于 vCore 的弹性池。|None|
 |database_cpu_limit|CPU 限制|Count|平均值|CPU 限制|DatabaseResourceId|
-|cpu_used|已用 CPU|Count|平均值|已用 CPU。 适用于基于 vCore 的弹性池。|无|
+|cpu_used|已用 CPU|Count|平均值|已用 CPU。 适用于基于 vCore 的弹性池。|None|
 |database_cpu_used|已用 CPU|Count|平均值|已用 CPU|DatabaseResourceId|
-|sqlserver_process_core_percent<sup>1</sup>|SQL Server 进程核心百分比|百分比|最大值|SQL Server 进程的 CPU 使用率百分比，由操作系统测量。 适用于弹性池。 |无|
-|sqlserver_process_memory_percent<sup>1</sup>|SQL Server 进程内存百分比|百分比|最大值|SQL Server 进程的内存使用百分比，由操作系统测量。 适用于弹性池。 |无|
-|tempdb_data_size<sup>2</sup>|Tempdb 数据文件大小 (KB)|Count|最大值|Tempdb 数据文件大小 (KB)。|无|
-|tempdb_log_size<sup>2</sup>|Tempdb 日志文件大小 (KB)|Count|最大值|Tempdb 日志文件大小 (KB)。 |无|
-|tempdb_log_used_percent<sup>2</sup>|Tempdb 日志已用百分比|百分比|最大值|Tempdb 日志已用百分比。|无|
-|allocated_data_storage|已分配的数据空间|字节|平均值|已分配的数据空间|无|
+|sqlserver_process_core_percent<sup>1</sup>|SQL Server 进程核心百分比|百分比|最大值|SQL Server 进程的 CPU 使用率百分比（由操作系统度量）。 适用于弹性池。 |None|
+|sqlserver_process_memory_percent<sup>1</sup>|SQL Server 进程内存百分比|百分比|最大值|SQL Server 进程的内存使用率百分比（由操作系统度量）。 适用于弹性池。 |None|
+|tempdb_data_size<sup>2</sup>|Tempdb 数据文件大小 (KB)|Count|最大值|Tempdb 数据文件大小 (KB)。|None|
+|tempdb_log_size<sup>2</sup>|Tempdb 日志文件大小 (KB)|Count|最大值|Tempdb 日志文件大小 (KB)。 |None|
+|tempdb_log_used_percent<sup>2</sup>|Tempdb 日志已用百分比|百分比|最大值|Tempdb 日志已用百分比。|None|
+|allocated_data_storage|已分配的数据空间|字节|平均值|已分配的数据空间|None|
 |database_allocated_data_storage|已分配的数据空间|字节|平均值|已分配的数据空间|DatabaseResourceId|
-|allocated_data_storage_percent|分配的数据空间百分比|百分比|最大值|分配的数据空间百分比|无|
+|allocated_data_storage_percent|分配的数据空间百分比|百分比|最大值|分配的数据空间百分比|None|
 
-<sup>1</sup>此指标可用于使用 vCore 购买模型的数据库，该模型具有 2 个 vCore 和更高版本，或者 200 DTU 和更高版本可用于基于 DTU 的采购模型。 
+<sup>1</sup>此指标适用于使用 vCore 购买模型（带有2个 vcore 和更高版本）的数据库，或用于基于 DTU 的购买模型的 200 dtu 和更高版本。 
 
-<sup>2</sup>此指标可用于使用 vCore 购买模型的数据库，该模型具有 2 个 vCore 和更高版本，或者 200 DTU 和更高版本可用于基于 DTU 的采购模型。 此指标当前不适用于超大规模数据库。
+<sup>2</sup>对于使用 vCore 购买模型的数据库，此指标适用于具有 2 vcore 和更高版本的数据库，或者用于基于 DTU 的购买模型的 200 DTU 和更高版本。 此指标当前不适用于超大规模数据库。
 
 
 ## <a name="microsoftsqlservers"></a>Microsoft.Sql/servers
@@ -2094,13 +2094,13 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|virtual_core_count|虚拟核心计数|Count|平均值|虚拟核心计数|无|
-|avg_cpu_percent|CPU 平均百分比|百分比|平均值|CPU 平均百分比|无|
-|reserved_storage_mb|预留的存储空间|Count|平均值|预留的存储空间|无|
-|storage_space_used_mb|已使用的存储空间|Count|平均值|已使用的存储空间|无|
-|io_requests|IO 请求计数|Count|平均值|IO 请求计数|无|
-|io_bytes_read|已读取的 IO 字节数|字节|平均值|已读取的 IO 字节数|无|
-|io_bytes_written|已写入的 IO 字节数|字节|平均值|已写入的 IO 字节数|无|
+|virtual_core_count|虚拟核心计数|Count|平均值|虚拟核心计数|None|
+|avg_cpu_percent|CPU 平均百分比|百分比|平均值|CPU 平均百分比|None|
+|reserved_storage_mb|预留的存储空间|Count|平均值|预留的存储空间|None|
+|storage_space_used_mb|已使用的存储空间|Count|平均值|已使用的存储空间|None|
+|io_requests|IO 请求计数|Count|平均值|IO 请求计数|None|
+|io_bytes_read|已读取的 IO 字节数|字节|平均值|已读取的 IO 字节数|None|
+|io_bytes_written|已写入的 IO 字节数|字节|平均值|已写入的 IO 字节数|None|
 
 
 
@@ -2108,7 +2108,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|UsedCapacity|已用容量|字节|平均值|帐户使用的容量|无|
+|UsedCapacity|已用容量|字节|平均值|帐户使用的容量|None|
 |事务|事务|Count|总计|向存储服务或指定的 API 操作发出的请求数。 此数值包括成功和失败的请求数，以及引发错误的请求数。 针对不同类型的响应数使用 ResponseType 维度。|ResponseType,GeoType,ApiName,Authentication|
 |流入量|流入量|字节|总计|流入的数据量（以字节为单位）。 此数字包括从外部客户端到 Azure 存储流入的数据量，以及流入 Azure 中的数据量。|GeoType,ApiName,Authentication|
 |流出量|流出量|字节|总计|流出的数据量（以字节为单位）。 此数字包括从外部客户端到 Azure 存储流出的数据量，以及流出 Azure 中的数据量。 因此，此数字不反映计费的流出量。|GeoType,ApiName,Authentication|
@@ -2121,9 +2121,9 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
 |BlobCapacity|Blob 容量|字节|平均值|存储帐户的 Blob 服务使用的存储量（以字节为单位）。|BlobType,Tier|
-|BlobCount|Blob 计数|Count|平均值|存储帐户的 Blob 服务中的 Blob 数。|BlobType,Tier|
-|ContainerCount|Blob 容器计数|Count|平均值|存储帐户的 Blob 服务中的容器数。|无|
-|IndexCapacity|索引容量|字节|平均值|ADLS Gen2 (层次结构)索引所使用的存储量(按字节计)。|无|
+|BlobCount|Blob 计数|计数|平均值|存储帐户的 Blob 服务中的 Blob 数。|BlobType,Tier|
+|ContainerCount|Blob 容器计数|计数|平均值|存储帐户的 Blob 服务中的容器数。|无|
+|IndexCapacity|索引容量|字节|平均值|ADLS Gen2 (层次结构)索引所使用的存储量(按字节计)。|None|
 |事务|事务|Count|总计|向存储服务或指定的 API 操作发出的请求数。 此数值包括成功和失败的请求数，以及引发错误的请求数。 针对不同类型的响应数使用 ResponseType 维度。|ResponseType,GeoType,ApiName,Authentication|
 |流入量|流入量|字节|总计|流入的数据量（以字节为单位）。 此数字包括从外部客户端到 Azure 存储流入的数据量，以及流入 Azure 中的数据量。|GeoType,ApiName,Authentication|
 |流出量|流出量|字节|总计|流出的数据量（以字节为单位）。 此数字包括从外部客户端到 Azure 存储流出的数据量，以及流出 Azure 中的数据量。 因此，此数字不反映计费的流出量。|GeoType,ApiName,Authentication|
@@ -2135,9 +2135,9 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|TableCapacity|表容量|字节|平均值|存储帐户的表服务使用的存储量（以字节为单位）。|无|
-|TableCount|表计数|Count|平均值|存储帐户的表服务中的表数。|无|
-|TableEntityCount|表实体计数|Count|平均值|存储帐户的表服务中的表实体数。|无|
+|TableCapacity|表容量|字节|平均值|存储帐户的表服务使用的存储量（以字节为单位）。|None|
+|TableCount|表计数|Count|平均值|存储帐户的表服务中的表数。|None|
+|TableEntityCount|表实体计数|Count|平均值|存储帐户的表服务中的表实体数。|None|
 |事务|事务|Count|总计|向存储服务或指定的 API 操作发出的请求数。 此数值包括成功和失败的请求数，以及引发错误的请求数。 针对不同类型的响应数使用 ResponseType 维度。|ResponseType,GeoType,ApiName,Authentication|
 |流入量|流入量|字节|总计|流入的数据量（以字节为单位）。 此数字包括从外部客户端到 Azure 存储流入的数据量，以及流入 Azure 中的数据量。|GeoType,ApiName,Authentication|
 |流出量|流出量|字节|总计|流出的数据量（以字节为单位）。 此数字包括从外部客户端到 Azure 存储流出的数据量，以及流出 Azure 中的数据量。 因此，此数字不反映计费的流出量。|GeoType,ApiName,Authentication|
@@ -2151,8 +2151,8 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |---|---|---|---|---|---|
 |FileCapacity|文件容量|字节|平均值|存储帐户的文件服务使用的存储量（以字节为单位）。|FileShare|
 |FileCount|文件计数|Count|平均值|存储帐户的文件服务中的文件数。|FileShare|
-|FileShareCount|文件共享计数|Count|平均值|存储帐户的文件服务中的文件共享数。|无|
-|FileShareSnapshotCount|文件共享快照计数。|Count|平均值|存储帐户文件服务中共享上存在的快照数。|FileShare|
+|FileShareCount|文件共享计数|Count|平均值|存储帐户的文件服务中的文件共享数。|None|
+|FileShareSnapshotCount|文件共享快照计数。|Count|平均值|存储帐户的文件服务中的共享上存在的快照数。|FileShare|
 |FileShareSnapshotSize|文件共享快照大小|字节|平均值|存储帐户的文件服务中的快照使用的存储量（以字节为单位）。|FileShare|
 |FileShareQuota|文件共享配额大小|字节|平均值|Azure 文件服务可使用的存储量上限（以字节为单位）。|FileShare|
 |事务|事务|Count|总计|向存储服务或指定的 API 操作发出的请求数。 此数值包括成功和失败的请求数，以及引发错误的请求数。 针对不同类型的响应数使用 ResponseType 维度。|ResponseType,GeoType,ApiName,Authentication,FileShare|
@@ -2166,9 +2166,9 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|QueueCapacity|队列容量|字节|平均值|存储帐户的队列服务使用的存储量（以字节为单位）。|无|
-|QueueCount|队列计数|Count|平均值|存储帐户的队列服务中的队列数。|无|
-|QueueMessageCount|队列消息计数|Count|平均值|存储帐户的队列服务中的队列消息的大致数目。|无|
+|QueueCapacity|队列容量|字节|平均值|存储帐户的队列服务使用的存储量（以字节为单位）。|None|
+|QueueCount|队列计数|Count|平均值|存储帐户的队列服务中的队列数。|None|
+|QueueMessageCount|队列消息计数|Count|平均值|存储帐户的队列服务中的队列消息的大致数目。|None|
 |事务|事务|Count|总计|向存储服务或指定的 API 操作发出的请求数。 此数值包括成功和失败的请求数，以及引发错误的请求数。 针对不同类型的响应数使用 ResponseType 维度。|ResponseType,GeoType,ApiName,Authentication|
 |流入量|流入量|字节|总计|流入的数据量（以字节为单位）。 此数字包括从外部客户端到 Azure 存储流入的数据量，以及流入 Azure 中的数据量。|GeoType,ApiName,Authentication|
 |流出量|流出量|字节|总计|流出的数据量（以字节为单位）。 此数字包括从外部客户端到 Azure 存储流出的数据量，以及流出 Azure 中的数据量。 因此，此数字不反映计费的流出量。|GeoType,ApiName,Authentication|
@@ -2184,17 +2184,17 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|ClientIOPS|总客户端 IOPS|Count|平均值|由缓存处理的客户端文件操作的速率。|无|
-|ClientLatency|平均客户端延迟|毫秒|平均值|存储缓存中客户端文件操作的平均延迟。|无|
-|ClientReadIOPS|客户端读取 IOPS|每秒计数|平均值|每秒的客户端读取操作数。|无|
-|ClientReadThroughput|平均缓存读取吞吐量|每秒字节数|平均值|客户端读取数据传输速率。|无|
-|ClientWriteIOPS|客户端写入 IOPS|每秒计数|平均值|每秒的客户端写入操作数。|无|
-|ClientWriteThroughput|平均缓存写入吞吐量|每秒字节数|平均值|客户端写入数据传输速率。|无|
-|ClientMetadataReadIOPS|客户端元数据读取 IOPS|每秒计数|平均值|发送到缓存的客户端文件操作（不包括不会修改持久状态的数据读取）的速率。|无|
-|ClientMetadataWriteIOPS|客户端元数据写入 IOPS|每秒计数|平均值|发送到缓存的客户端文件操作（不包括修改持久状态的数据写入）的速率。|无|
-|ClientLockIOPS|客户端锁定 IOPS|每秒计数|平均值|每秒的客户端文件锁定操作数。|无|
-|StorageTargetHealth|存储目标运行状况|Count|平均值|缓存和存储目标之间的连接测试的布尔结果。|无|
-|运行时间|运行时间|Count|平均值|缓存和监视系统之间的连接测试的布尔结果。|无|
+|ClientIOPS|总客户端 IOPS|Count|平均值|由缓存处理的客户端文件操作的速率。|None|
+|ClientLatency|平均客户端延迟|毫秒|平均值|存储缓存中客户端文件操作的平均延迟。|None|
+|ClientReadIOPS|客户端读取 IOPS|每秒计数|平均值|每秒的客户端读取操作数。|None|
+|ClientReadThroughput|平均缓存读取吞吐量|每秒字节数|平均值|客户端读取数据传输速率。|None|
+|ClientWriteIOPS|客户端写入 IOPS|每秒计数|平均值|每秒的客户端写入操作数。|None|
+|ClientWriteThroughput|平均缓存写入吞吐量|每秒字节数|平均值|客户端写入数据传输速率。|None|
+|ClientMetadataReadIOPS|客户端元数据读取 IOPS|每秒计数|平均值|发送到缓存的客户端文件操作（不包括不会修改持久状态的数据读取）的速率。|None|
+|ClientMetadataWriteIOPS|客户端元数据写入 IOPS|每秒计数|平均值|发送到缓存的客户端文件操作（不包括修改持久状态的数据写入）的速率。|None|
+|ClientLockIOPS|客户端锁定 IOPS|每秒计数|平均值|每秒的客户端文件锁定操作数。|None|
+|StorageTargetHealth|存储目标运行状况|Count|平均值|缓存和存储目标之间的连接测试的布尔结果。|None|
+|运行时间|运行时间|Count|平均值|缓存和监视系统之间的连接测试的布尔结果。|None|
 |StorageTargetIOPS|总 StorageTarget IOPS|Count|平均值|缓存发送到特定 StorageTarget 的所有文件操作的速率。|StorageTarget|
 |StorageTargetWriteIOPS|StorageTarget 写入 IOPS|Count|平均值|缓存发送到特定 StorageTarget 的文件写入操作的速率。|StorageTarget|
 |StorageTargetAsyncWriteThroughput|StorageTarget 异步写入吞吐量|每秒字节数|平均值|缓存以异步方式向特定 StorageTarget 写入数据的速率。 这些写入是不会导致客户端阻塞的机会性写入。|StorageTarget|
@@ -2272,55 +2272,55 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|业务流程管道运行已结束|管道运行结束|Count|总计|成功、失败或已取消的业务流程管道运行计数|结果，失败类型，管道|
-|业务流程活动运行已结束|活动运行结束|Count|总计|成功、失败或已取消的业务流程活动计数|结果、失败类型、活动类型、活动类型、管道|
-|业务流程触发已结束|触发器已结束|Count|总计|成功、失败或已取消的业务流程触发器计数|结果，失败类型，触发器|
-|SQLOnDemandLogin 尝试|登录尝试|Count|总计|成功或失败的登录尝试数|结果|
-|SQLOnDemand 查询已结束|查询已结束|Count|总计|成功、失败或已取消的查询计数|结果|
-|SQLOnDemand 查询处理字节|已处理的数据|字节|总计|查询处理的数据量|无|
+|OrchestrationPipelineRunsEnded|管道运行已结束|Count|总计|成功、失败或取消的业务流程管道运行计数|Result、FailureType、管道|
+|OrchestrationActivityRunsEnded|已结束活动运行|Count|总计|已成功、失败或取消的业务流程活动的计数|Result，FailureType，Activity，ActivityType，管道|
+|OrchestrationTriggersEnded|触发器结束|Count|总计|成功、失败或取消的业务流程触发器的计数|Result、FailureType、Trigger|
+|SQLOnDemandLoginAttempts|登录尝试|Count|总计|成功或失败的登录尝试计数|结果|
+|SQLOnDemandQueriesEnded|查询结束|Count|总计|已成功、失败或已取消的查询计数|结果|
+|SQLOnDemandQueryProcessedBytes|已处理的数据|字节|总计|查询处理的数据量|None|
 
-## <a name="microsoftsynapseworkspacesbigdatapools"></a>微软.Synapse/工作区/大数据池
-
-|指标|指标显示名称|单位|聚合类型|说明|维度|
-|---|---|---|---|---|---|
-|火花作业已结束|已结束的应用程序|Count|总计|已结束应用程序计数|作业类型，作业结果|
-|核心容量|核心容量|Count|最大值|核心容量|无|
-|内存容量GB|内存容量 （GB）|Count|最大值|内存容量 （GB）|无|
-
-## <a name="microsoftsynapseworkspacessqlpools"></a>微软.Synapse/工作区/sqlPools
+## <a name="microsoftsynapseworkspacesbigdatapools"></a>Synapse/工作区/bigDataPools
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|DWU 限制|DWU 限制|Count|最大值|SQL 池的服务级别目标|无|
-|DWUused|已用的 DWU|Count|最大值|表示整个 SQL 池使用的高级表示形式。 按 DWU 限制 = DWU 百分比衡量|无|
-|DWUused百分比|DWU 使用百分比|百分比|最大值|表示整个 SQL 池使用的高级表示形式。 通过在 CPU 百分比和数据 IO 百分比之间获取最大值来测量|无|
-|连接被防火墙阻止|被防火墙阻止的连接|Count|总计|防火墙规则阻止的连接计数。 重新访问 SQL 池的访问控制策略，并在计数较高时监视这些连接|无|
-|自适应缓存百分比|自适应缓存命中百分比|百分比|最大值|测量工作负载使用自适应缓存的用量程度。 使用此指标与缓存命中百分比指标一起确定是为其他容量进行缩放还是重新运行工作负载以滋润缓存|无|
-|自适应缓存使用百分比|自适应缓存使用百分比|百分比|最大值|测量工作负载使用自适应缓存的用量程度。 使用此指标与缓存使用的百分比指标一起使用，以确定是为其他容量进行缩放，还是重新运行工作负载以滋润缓存|无|
-|本地温度百分比|本地天分贝使用百分比|百分比|最大值|跨所有计算节点的本地 tempdb 利用率 - 每五分钟发出一次值|无|
-|内存使用百分比|内存使用百分比|百分比|最大值|SQL 池中所有节点的内存利用率|无|
-|连接|连接|Count|总计|对 SQL 池的登录总数计数|结果|
-|WLG主动查询|工作负载组活动查询|Count|总计|工作负荷组中的活动查询。 使用此指标未筛选和未拆分将显示系统上运行的所有活动查询|用户定义，工作负载组|
-|WLG主动查询超时|工作负载组查询超时|Count|总计|已超时的工作负载组的查询。此指标报告的查询超时仅在查询开始执行后进行（不包括由于锁定或资源等待而导致的等待时间）|用户定义，工作负载组|
-|按系统百分比划分的 WLG 分配|按系统百分比分配工作负载组|百分比|最大值|相对于整个系统的资源分配的百分比|用户定义，工作负载组|
-|WLG 分配（按最大资源百分比）|按最大资源百分比分配工作负载组|百分比|最大值|显示资源相对于每个工作负荷组的有效上限资源百分比分配的百分比。 此指标提供工作负载组的有效利用|用户定义，工作负载组|
-|WLG 有效卡普资源百分比|有效上限资源百分比|百分比|最大值|工作负载组的有效上限资源百分比。 如果存在具有min_percentage_resource> 0 的其他工作负载组，则effective_cap_percentage_resource按比例降低|用户定义，工作负载组|
-|wlg_effective_min_resource_percent|有效最小资源百分比|百分比|最小值|允许考虑服务级别和工作负载组设置的有效最小资源百分比设置。 有效min_percentage_resource可在较低服务级别下调整得更高|用户定义，工作负载组|
-|WLGQueued 查询|工作负载组排队查询|Count|总计|达到最大并发限制后排队的请求的累积计数|用户定义，工作负载组|
+|SparkJobsEnded|结束应用程序|Count|总计|已结束的应用程序计数|JobType、Jobresult.txt|
+|CoresCapacity|核心容量|Count|最大值|核心容量|None|
+|MemoryCapacityGB|内存容量（GB）|Count|最大值|内存容量（GB）|None|
+
+## <a name="microsoftsynapseworkspacessqlpools"></a>Synapse/工作区/sqlPools
+
+|指标|指标显示名称|单位|聚合类型|说明|维度|
+|---|---|---|---|---|---|
+|DWULimit|DWU 限制|Count|最大值|SQL 池的服务级别目标|None|
+|DWUUsed|已用的 DWU|Count|最大值|表示在 SQL 池中使用的高级表示形式。 按 DWU 限制 * DWU 百分比度量|None|
+|DWUUsedPercent|DWU 已用百分比|百分比|最大值|表示在 SQL 池中使用的高级表示形式。 使用 CPU 百分比和数据 IO 百分比之间的最大值进行度量|None|
+|ConnectionsBlockedByFirewall|防火墙阻止的连接|Count|总计|防火墙规则阻止的连接数。 重新访问 SQL 池的访问控制策略，并监视这些连接（如果计数较高）|None|
+|AdaptiveCacheHitPercent|自适应缓存命中百分比|百分比|最大值|度量工作负荷使用自适应缓存的程度。 使用此指标和缓存命中率百分比度量来确定是要扩展以增加容量还是重新运行工作负荷以冻结缓存|None|
+|AdaptiveCacheUsedPercent|自适应缓存已用百分比|百分比|最大值|度量工作负荷使用自适应缓存的程度。 使用此指标和缓存已用百分比度量来确定是要扩展以增加容量还是重新运行工作负荷以冻结缓存|None|
+|LocalTempDBUsedPercent|本地 tempdb 已用百分比|百分比|最大值|跨所有计算节点的本地 tempdb 利用率-每五分钟发出一次值|None|
+|MemoryUsedPercent|已用内存百分比|百分比|最大值|SQL 池中所有节点的内存使用率|None|
+|连接|连接|Count|总计|SQL 池的总登录数计数|结果|
+|WLGActiveQueries|工作负荷组活动查询|Count|总计|工作负荷组内的活动查询。 使用未筛选的此指标并撤消显示在系统上运行的所有活动查询|IsUserDefined、WorkloadGroup|
+|WLGActiveQueriesTimeouts|工作负荷组查询超时|Count|总计|查询已超时的工作负荷组。此指标报告的查询超时仅在开始执行查询后（不包括由于锁定或资源等待而导致的等待时间）|IsUserDefined、WorkloadGroup|
+|WLGAllocationBySystemPercent|按系统百分比分配的工作负荷组|百分比|最大值|资源相对于整个系统的百分比分配|IsUserDefined、WorkloadGroup|
+|WLGAllocationByMaxResourcePercent|按最大资源百分比分配的工作负荷组|百分比|最大值|显示相对于每个工作负荷组的有效上限资源百分比的资源分配百分比。 此指标提供工作负荷组的有效利用率|IsUserDefined、WorkloadGroup|
+|WLGEffectiveCapResourcePercent|有效上限资源百分比|百分比|最大值|工作负荷组的有效上限资源百分比。 如果有其他工作负荷组 min_percentage_resource > 0，effective_cap_percentage_resource 按比例降低|IsUserDefined、WorkloadGroup|
+|wlg_effective_min_resource_percent|有效的最小资源百分比|百分比|最小值|考虑服务级别和工作负荷组设置所允许的有效的最小资源百分比设置。 可在较低的服务级别调整有效 min_percentage_resource|IsUserDefined、WorkloadGroup|
+|WLGQueuedQueries|工作负荷组排队查询|计数|总计|达到最大并发限制后排队的请求累计计数|IsUserDefined、WorkloadGroup|
 
 ## <a name="microsofttimeseriesinsightsenvironments"></a>Microsoft.TimeSeriesInsights/environments
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|IngressReceivedMessages|入口收到的消息数|Count|总计|从所有事件中心或 IoT 中心事件源读取的消息的计数|无|
-|IngressReceivedInvalidMessages|入口收到的无效消息数|Count|总计|从所有事件中心或 IoT 中心事件源读取的无效消息的计数|无|
-|IngressReceivedBytes|入口收到的字节数|字节|总计|从所有事件源读取的字节数的计数|无|
-|IngressStoredBytes|入口存储的字节数|字节|总计|已成功处理且可用于查询的事件的总大小|无|
-|IngressStoredEvents|入口存储的事件数|Count|总计|已成功处理并可供查询的平展事件的计数|无|
-|IngressReceivedMessagesTimeLag|入口收到的消息数时间延迟|秒|最大值|消息在事件源中排队与消息在入口中处理之间的时间差异|无|
-|IngressReceivedMessagesCountLag|入口收到的消息数计数延迟|Count|平均值|上次排队的消息在事件源分区中的序列号与在入口中进行处理的消息的序列号之间的差异|无|
-|WarmStorageMaxProperties|暖存储最大属性数|Count|最大值|S1/S2 SKU 环境允许使用的最大属性数，以及 PAYG SKU 暖存储允许的最大属性数|无|
-|WarmStorageUsedProperties|暖存储已用属性数 |Count|最大值|S1/S2 SKU 环境已使用的属性数，以及 PAYG SKU 暖存储已使用的属性数|无|
+|IngressReceivedMessages|入口收到的消息数|Count|总计|从所有事件中心或 IoT 中心事件源读取的消息的计数|None|
+|IngressReceivedInvalidMessages|入口收到的无效消息数|Count|总计|从所有事件中心或 IoT 中心事件源读取的无效消息的计数|None|
+|IngressReceivedBytes|入口收到的字节数|字节|总计|从所有事件源读取的字节数的计数|None|
+|IngressStoredBytes|入口存储的字节数|字节|总计|已成功处理且可用于查询的事件的总大小|None|
+|IngressStoredEvents|入口存储的事件数|Count|总计|已成功处理并可供查询的平展事件的计数|None|
+|IngressReceivedMessagesTimeLag|入口收到的消息数时间延迟|秒|最大值|消息在事件源中排队与消息在入口中处理之间的时间差异|None|
+|IngressReceivedMessagesCountLag|入口收到的消息数计数延迟|Count|平均值|上次排队的消息在事件源分区中的序列号与在入口中进行处理的消息的序列号之间的差异|None|
+|WarmStorageMaxProperties|暖存储最大属性数|Count|最大值|S1/S2 SKU 环境允许使用的最大属性数，以及 PAYG SKU 暖存储允许的最大属性数|None|
+|WarmStorageUsedProperties|暖存储已用属性数 |Count|最大值|S1/S2 SKU 环境已使用的属性数，以及 PAYG SKU 暖存储已使用的属性数|None|
 
 
 
@@ -2328,39 +2328,39 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|IngressReceivedMessages|入口收到的消息数|Count|总计|从事件源中读取的消息的计数|无|
-|IngressReceivedInvalidMessages|入口收到的无效消息数|Count|总计|从事件源中读取的无效消息的计数|无|
-|IngressReceivedBytes|入口收到的字节数|字节|总计|从事件源读取的字节数的计数|无|
-|IngressStoredBytes|入口存储的字节数|字节|总计|已成功处理且可用于查询的事件的总大小|无|
-|IngressStoredEvents|入口存储的事件数|Count|总计|已成功处理并可供查询的平展事件的计数|无|
-|IngressReceivedMessagesTimeLag|入口收到的消息数时间延迟|秒|最大值|消息在事件源中排队与消息在入口中处理之间的时间差异|无|
-|IngressReceivedMessagesCountLag|入口收到的消息数计数延迟|Count|平均值|上次排队的消息在事件源分区中的序列号与在入口中进行处理的消息的序列号之间的差异|无|
-|WarmStorageMaxProperties|暖存储最大属性数|Count|最大值|S1/S2 SKU 环境允许使用的最大属性数，以及 PAYG SKU 暖存储允许的最大属性数|无|
-|WarmStorageUsedProperties|暖存储已用属性数 |Count|最大值|S1/S2 SKU 环境已使用的属性数，以及 PAYG SKU 暖存储已使用的属性数|无|
+|IngressReceivedMessages|入口收到的消息数|Count|总计|从事件源中读取的消息的计数|None|
+|IngressReceivedInvalidMessages|入口收到的无效消息数|Count|总计|从事件源中读取的无效消息的计数|None|
+|IngressReceivedBytes|入口收到的字节数|字节|总计|从事件源读取的字节数的计数|None|
+|IngressStoredBytes|入口存储的字节数|字节|总计|已成功处理且可用于查询的事件的总大小|None|
+|IngressStoredEvents|入口存储的事件数|Count|总计|已成功处理并可供查询的平展事件的计数|None|
+|IngressReceivedMessagesTimeLag|入口收到的消息数时间延迟|秒|最大值|消息在事件源中排队与消息在入口中处理之间的时间差异|None|
+|IngressReceivedMessagesCountLag|入口收到的消息数计数延迟|Count|平均值|上次排队的消息在事件源分区中的序列号与在入口中进行处理的消息的序列号之间的差异|None|
+|WarmStorageMaxProperties|暖存储最大属性数|Count|最大值|S1/S2 SKU 环境允许使用的最大属性数，以及 PAYG SKU 暖存储允许的最大属性数|None|
+|WarmStorageUsedProperties|暖存储已用属性数 |Count|最大值|S1/S2 SKU 环境已使用的属性数，以及 PAYG SKU 暖存储已使用的属性数|None|
 
 ## <a name="microsoftvmwarecloudsimplevirtualmachines"></a>Microsoft.VMwareCloudSimple/virtualMachines
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|DiskReadBytesPerSecond|Disk Read Bytes/Sec|每秒字节数|平均值|由于读取操作超过采样期限而限制的平均磁盘吞吐量。|无|
-|DiskWriteBytesPerSecond|Disk Write Bytes/Sec|每秒字节数|平均值|由于写入操作超过采样期限而限制的平均磁盘吞吐量。|无|
-|磁盘读取字节数|磁盘读取字节数|字节|总计|由于读取操作超过采样期限而限制的总磁盘吞吐量。|无|
-|磁盘写入字节数|磁盘写入字节数|字节|总计|由于写入操作超过采样期限而限制的总磁盘吞吐量。|无|
-|DiskReadOperations|磁盘读取操作次数|Count|总计|上一个采样周期的 IO 读取操作次数。 请注意，这些操作的大小可能是可变的。|无|
-|DiskWriteOperations|磁盘写入操作次数|Count|总计|上一个采样周期的 IO 写入操作次数。 请注意，这些操作的大小可能是可变的。|无|
-|磁盘读取操作次数/秒|磁盘读取操作次数/秒|每秒计数|平均值|上一个采样周期的平均 IO 读取操作次数。 请注意，这些操作的大小可能是可变的。|无|
-|磁盘写入操作次数/秒|磁盘写入操作次数/秒|每秒计数|平均值|上一个采样周期的平均 IO 写入操作次数。 请注意，这些操作的大小可能是可变的。|无|
-|DiskReadLatency|磁盘读取延迟|毫秒|平均值|总读取延迟。 设备和内核读取延迟之和。|无|
-|DiskWriteLatency|磁盘写入延迟|毫秒|平均值|总写入延迟。 设备和内核写入延迟之和。|无|
-|NetworkInBytesPerSecond|网络输入字节数/秒|每秒字节数|平均值|收到的流量的平均网络吞吐量。|无|
-|NetworkOutBytesPerSecond|网络输出字节数/秒|每秒字节数|平均值|传输的流量的平均网络吞吐量。|无|
-|网络传入|网络传入|字节|总计|收到的流量的总网络吞吐量。|无|
-|网络传出|网络传出|字节|总计|传输的流量的总网络吞吐量。|无|
-|MemoryUsed|已用内存量|字节|平均值|VM 已使用的计算机内存量。|无|
-|MemoryGranted|授予的内存量|字节|平均值|由主机授予 VM 的内存量。 在至少使用主机一次之前，不会向主机授予内存；如果 VMkernel 需要内存，则授予的内存可能会换出或消逝。|无|
-|MemoryActive|活动的内存量|字节|平均值|VM 在过去的小段时间范围内使用的内存量。 这是 VM 当前所需的“真正”内存量。 此外，未使用的内存可能会换出或消逝，而不会影响来宾的性能。|无|
-|CPU 百分比|CPU 百分比|百分比|平均值|CPU 利用率。 此值按 100% 的量（表示系统上的所有处理器核心）报告。 例如，使用四核系统的 50% CPU 的双向 VM 将完全占用两个核心。|无|
-|PercentageCpuReady|已就绪 CPU 百分比|毫秒|总计|就绪时间是指在过去的更新间隔内，等待 CPU 可供使用所花费的时间。|无|
+|DiskReadBytesPerSecond|Disk Read Bytes/Sec|每秒字节数|平均值|由于读取操作超过采样期限而限制的平均磁盘吞吐量。|None|
+|DiskWriteBytesPerSecond|Disk Write Bytes/Sec|每秒字节数|平均值|由于写入操作超过采样期限而限制的平均磁盘吞吐量。|None|
+|磁盘读取字节数|磁盘读取字节数|字节|总计|由于读取操作超过采样期限而限制的总磁盘吞吐量。|None|
+|磁盘写入字节数|磁盘写入字节数|字节|总计|由于写入操作超过采样期限而限制的总磁盘吞吐量。|None|
+|DiskReadOperations|磁盘读取操作次数|Count|总计|上一个采样周期的 IO 读取操作次数。 请注意，这些操作的大小可能是可变的。|None|
+|DiskWriteOperations|磁盘写入操作次数|Count|总计|上一个采样周期的 IO 写入操作次数。 请注意，这些操作的大小可能是可变的。|None|
+|磁盘读取操作次数/秒|磁盘读取操作次数/秒|每秒计数|平均值|上一个采样周期的平均 IO 读取操作次数。 请注意，这些操作的大小可能是可变的。|None|
+|磁盘写入操作次数/秒|磁盘写入操作次数/秒|每秒计数|平均值|上一个采样周期的平均 IO 写入操作次数。 请注意，这些操作的大小可能是可变的。|None|
+|DiskReadLatency|磁盘读取延迟|毫秒|平均值|总读取延迟。 设备和内核读取延迟之和。|None|
+|DiskWriteLatency|磁盘写入延迟|毫秒|平均值|总写入延迟。 设备和内核写入延迟之和。|None|
+|NetworkInBytesPerSecond|网络输入字节数/秒|每秒字节数|平均值|收到的流量的平均网络吞吐量。|None|
+|NetworkOutBytesPerSecond|网络输出字节数/秒|每秒字节数|平均值|传输的流量的平均网络吞吐量。|None|
+|网络传入|网络传入|字节|总计|收到的流量的总网络吞吐量。|None|
+|网络传出|网络传出|字节|总计|传输的流量的总网络吞吐量。|None|
+|MemoryUsed|已用内存量|字节|平均值|VM 已使用的计算机内存量。|None|
+|MemoryGranted|授予的内存量|字节|平均值|由主机授予 VM 的内存量。 在至少使用主机一次之前，不会向主机授予内存；如果 VMkernel 需要内存，则授予的内存可能会换出或消逝。|None|
+|MemoryActive|活动的内存量|字节|平均值|VM 在过去的小段时间范围内使用的内存量。 这是 VM 当前所需的“真正”内存量。 此外，未使用的内存可能会换出或消逝，而不会影响来宾的性能。|None|
+|CPU 百分比|CPU 百分比|百分比|平均值|CPU 利用率。 此值按 100% 的量（表示系统上的所有处理器核心）报告。 例如，使用四核系统的 50% CPU 的双向 VM 将完全占用两个核心。|None|
+|PercentageCpuReady|已就绪 CPU 百分比|毫秒|总计|就绪时间是指在过去的更新间隔内，等待 CPU 可供使用所花费的时间。|None|
 
 ## <a name="microsoftwebserverfarms"></a>Microsoft.Web/serverfarms
 
@@ -2388,7 +2388,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 > **文件系统使用情况**是一个向全球推出的新指标，除非我们已将你加入专用预览版的允许列表，否则你不会获得数据。
 
 > [!IMPORTANT]
-> **将弃用平均响应时间**，以避免与指标聚合混淆。 使用**响应时间**作为替换。
+> 将弃用**平均响应时间**，以避免与指标聚合混淆。 使用**响应时间**作为替代。
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
@@ -2407,11 +2407,11 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |Http5xx|Http 服务器错误|Count|总计|Http 服务器错误|实例|
 |MemoryWorkingSet|内存工作集|字节|平均值|内存工作集|实例|
 |AverageMemoryWorkingSet|平均内存工作集|字节|平均值|平均内存工作集|实例|
-|ResponseTime|响应时间|秒|总计|响应时间|实例|
-|AverageResponseTime|平均响应时间（已弃用）|秒|平均值|平均响应时间|实例|
+|HttpResponseTime|响应时间|秒|总计|响应时间|实例|
+|AverageResponseTime|平均响应时间（不推荐使用）|秒|平均值|平均响应时间|实例|
 |AppConnections|连接|Count|平均值|连接|实例|
 |控点|句柄计数|Count|平均值|句柄计数|实例|
-|线程数|线程计数|Count|平均值|线程计数|实例|
+|线程|线程计数|Count|平均值|线程计数|实例|
 |PrivateBytes|专用字节|字节|平均值|专用字节|实例|
 |IoReadBytesPerSecond|IO 每秒读取字节数|每秒字节数|总计|IO 每秒读取字节数|实例|
 |IoWriteBytesPerSecond|IO 每秒写入字节数|每秒字节数|总计|IO 每秒写入字节数|实例|
@@ -2427,7 +2427,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |Gen1Collections|第 1 代垃圾回收|Count|总计|第 1 代垃圾回收|实例|
 |Gen2Collections|第 2 代垃圾回收|Count|总计|第 2 代垃圾回收|实例|
 |HealthCheckStatus|运行状况检查状态|Count|平均值|运行状况检查状态|实例|
-|FileSystemUsage|文件系统使用情况|字节|平均值|文件系统使用情况|无|
+|FileSystemUsage|文件系统使用情况|字节|平均值|文件系统使用情况|None|
 
 ## <a name="microsoftwebsites-functions"></a>Microsoft.Web/sites (Functions)
 
@@ -2458,7 +2458,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |Gen1Collections|第 1 代垃圾回收|Count|总计|第 1 代垃圾回收|实例|
 |Gen2Collections|第 2 代垃圾回收|Count|总计|第 2 代垃圾回收|实例|
 |HealthCheckStatus|运行状况检查状态|Count|平均值|运行状况检查状态|实例|
-|FileSystemUsage|文件系统使用情况|字节|平均值|文件系统使用情况|无|
+|FileSystemUsage|文件系统使用情况|字节|平均值|文件系统使用情况|None|
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft.Web/sites/slots
 
@@ -2485,7 +2485,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |FunctionExecutionCount|函数执行计数|Count|总计|函数执行计数|实例|
 |AppConnections|连接|Count|平均值|连接|实例|
 |控点|句柄计数|Count|平均值|句柄计数|实例|
-|线程数|线程计数|Count|平均值|线程计数|实例|
+|线程|线程计数|Count|平均值|线程计数|实例|
 |PrivateBytes|专用字节|字节|平均值|专用字节|实例|
 |IoReadBytesPerSecond|IO 每秒读取字节数|每秒字节数|总计|IO 每秒读取字节数|实例|
 |IoWriteBytesPerSecond|IO 每秒写入字节数|每秒字节数|总计|IO 每秒写入字节数|实例|
@@ -2501,7 +2501,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |Gen1Collections|第 1 代垃圾回收|Count|总计|第 1 代垃圾回收|实例|
 |Gen2Collections|第 2 代垃圾回收|Count|总计|第 2 代垃圾回收|实例|
 |HealthCheckStatus|运行状况检查状态|Count|平均值|运行状况检查状态|实例|
-|FileSystemUsage|文件系统使用情况|字节|平均值|文件系统使用情况|无|
+|FileSystemUsage|文件系统使用情况|字节|平均值|文件系统使用情况|None|
 
 ## <a name="microsoftwebhostingenvironmentsmultirolepools"></a>Microsoft.Web/hostingEnvironments/multiRolePools
 
@@ -2525,18 +2525,18 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |DiskQueueLength|磁盘队列长度|Count|平均值|磁盘队列长度|实例|
 |HttpQueueLength|Http 队列长度|Count|平均值|Http 队列长度|实例|
 |ActiveRequests|活动请求数|Count|总计|活动请求数|实例|
-|TotalFrontEnds|前端总数|Count|平均值|前端总数|无|
-|SmallAppServicePlanInstances|小型应用服务计划工作线程数|Count|平均值|小型应用服务计划工作线程数|无|
-|MediumAppServicePlanInstances|中型应用服务计划工作线程数|Count|平均值|中型应用服务计划工作线程数|无|
-|LargeAppServicePlanInstances|大型应用服务计划工作线程数|Count|平均值|大型应用服务计划工作线程数|无|
+|TotalFrontEnds|前端总数|Count|平均值|前端总数|None|
+|SmallAppServicePlanInstances|小型应用服务计划工作线程数|Count|平均值|小型应用服务计划工作线程数|None|
+|MediumAppServicePlanInstances|中型应用服务计划工作线程数|Count|平均值|中型应用服务计划工作线程数|None|
+|LargeAppServicePlanInstances|大型应用服务计划工作线程数|Count|平均值|大型应用服务计划工作线程数|None|
 
 ## <a name="microsoftwebhostingenvironmentsworkerpools"></a>Microsoft.Web/hostingEnvironments/workerPools
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|WorkersTotal|工作线程总数|Count|平均值|工作线程总数|无|
-|WorkersAvailable|可用工作线程数|Count|平均值|可用工作线程数|无|
-|WorkersUsed|使用的工作线程数|Count|平均值|使用的工作线程数|无|
+|WorkersTotal|工作线程总数|Count|平均值|工作线程总数|None|
+|WorkersAvailable|可用工作线程数|Count|平均值|可用工作线程数|None|
+|WorkersUsed|使用的工作线程数|Count|平均值|使用的工作线程数|None|
 |CpuPercentage|CPU 百分比|百分比|平均值|CPU 百分比|实例|
 |MemoryPercentage|内存百分比|百分比|平均值|内存百分比|实例|
 ## <a name="next-steps"></a>后续步骤

@@ -1,6 +1,6 @@
 ---
-title: 在 SQL 数据库边缘预览中使用 ONNX 部署和进行预测
-description: 了解如何训练模型、将其转换为 ONNX、将其部署到 Azure SQL 数据库边缘预览，然后使用上载的 ONNX 模型在数据上运行本机预测。
+title: 在 SQL 数据库边缘预览版中通过 ONNX 进行部署和预测
+description: 了解如何定型模型，如何将其转换为 ONNX，将其部署到 Azure SQL 数据库边缘预览版，并使用上传的 ONNX 模型对数据运行本机预测。
 keywords: 部署 sql 数据库边缘
 services: sql-database-edge
 ms.service: sql-database-edge
@@ -8,37 +8,37 @@ ms.subservice: machine-learning
 ms.topic: conceptual
 author: dphansen
 ms.author: davidph
-ms.date: 03/26/2020
-ms.openlocfilehash: aff9346595d3b8985d3558658af32d05f88c0554
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.date: 04/23/2020
+ms.openlocfilehash: aa2bf5473bf5bd76cfdad39310ce793ab3921652
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365446"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82129279"
 ---
-# <a name="deploy-and-make-predictions-with-an-onnx-model-in-sql-database-edge-preview"></a>在 SQL 数据库边缘预览中使用 ONNX 模型部署和预测
+# <a name="deploy-and-make-predictions-with-an-onnx-model-in-sql-database-edge-preview"></a>使用 SQL 数据库边缘预览版中的 ONNX 模型进行部署和预测
 
-在此快速入门中，您将学习如何训练模型、将其转换为 ONNX、将其部署到 Azure SQL 数据库边缘预览，然后使用上载的 ONNX 模型在数据上运行本机预测。 有关详细信息，请参阅[SQL 数据库边缘预览中的机器学习和 AI 与 ONNX。](onnx-overview.md)
+在本快速入门中，你将了解如何定型模型，如何将其转换为 ONNX，如何将其部署到 Azure SQL 数据库边缘预览版，并使用上传的 ONNX 模型对数据运行本机预测。 有关详细信息，请参阅[在 SQL 数据库边缘预览中通过 ONNX 进行机器学习和 AI](onnx-overview.md)。
 
-这个快速入门是基于**scikit学习**，并使用[波士顿住房数据集](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html)。
+本快速入门基于**scikit-learn-了解**并使用[波士顿机架数据集](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
-* 如果尚未部署 Azure SQL 数据库边缘模块，请按照[使用 Azure 门户部署 SQL 数据库边缘预览](deploy-portal.md)的步骤。
+* 如果尚未部署 Azure SQL 数据库边缘模块，请按照[使用 Azure 门户部署 SQL 数据库边缘预览](deploy-portal.md)中的步骤操作。
 
-* 安装[Azure 数据工作室](https://docs.microsoft.com/sql/azure-data-studio/download)。
+* 安装[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download)。
 
-* 打开 Azure 数据工作室，按照以下步骤安装此快速入门所需的包：
+* 打开 Azure Data Studio 并按照以下步骤安装此快速入门所需的包：
 
-    1. 打开连接到 Python 3 内核[的新笔记本](https://docs.microsoft.com/sql/azure-data-studio/sql-notebooks)。 
-    1. 单击 **"管理包**"，在 **"添加新"** 下，搜索**学习的 scikit，** 然后安装学习工具包。 
-    1. 此外，安装**设置工具**，**数字**， **onnxml工具**， **onnxruntime，** **skl2onnx，** **pyodbc，** 和**sqlalchemy**包.
+    1. 打开连接到 Python 3 内核的[新笔记本](https://docs.microsoft.com/sql/azure-data-studio/sql-notebooks)。 
+    1. 单击 "**管理包**" 并在 "**添加新**项" 下，搜索**scikit-learn**，并安装 scikit-learn-了解包。 
+    1. 同时，安装**setuptools**、 **numpy**、 **onnxmltools**、 **onnxruntime**、 **skl2onnx**、 **pyodbc**和**sqlalchemy**程序包。
     
-* 对于下面的每个脚本部分，请在 Azure 数据工作室笔记本中的单元格中输入它并运行该单元格。
+* 对于下面的每个脚本部分，请将其输入到 Azure Data Studio 笔记本中的单元格中，然后运行单元。
 
 ## <a name="train-a-pipeline"></a>训练管道
 
-拆分数据集以使用要素来预测房屋的中值。
+将数据集拆分为使用功能来预测房子的中间值。
 
 ```python
 import numpy as np
@@ -54,16 +54,12 @@ boston = load_boston()
 boston
 
 df = pd.DataFrame(data=np.c_[boston['data'], boston['target']], columns=boston['feature_names'].tolist() + ['MEDV'])
-
-# x contains all predictors (features)
-x = df.drop(['MEDV'], axis = 1)
-
-# y is what we are trying to predict - the median value
-y = df.iloc[:,-1]
-
+ 
+target_column = 'MEDV'
+ 
 # Split the data frame into features and target
-x_train = df.drop(['MEDV'], axis = 1)
-y_train = df.iloc[:,-1]
+x_train = pd.DataFrame(df.drop([target_column], axis = 1))
+y_train = pd.DataFrame(df.iloc[:,df.columns.tolist().index(target_column)])
 
 print("\n*** Training dataset x\n")
 print(x_train.head())
@@ -101,7 +97,7 @@ print(y_train.head())
 Name: MEDV, dtype: float64
 ```
 
-创建管道以训练线性回归模型。 您还可以使用其他回归模型。
+创建一个管道来训练 LinearRegression 模型。 您还可以使用其他回归模型。
 
 ```python
 from sklearn.compose import ColumnTransformer
@@ -125,7 +121,7 @@ model = Pipeline(
 model.fit(x_train, y_train)
 ```
 
-检查模型的准确性，然后计算 R2 分数和均方误差。
+检查模型的准确性，然后计算 R2 评分和平均平方误差。
 
 ```python
 # Score the model
@@ -146,7 +142,7 @@ print('*** Scikit-learn MSE: {}'.format(sklearn_mse))
 
 ## <a name="convert-the-model-to-onnx"></a>将模型转换为 ONNX
 
-将数据类型转换为支持的 SQL 数据类型。 其他数据帧也需要此转换。
+将数据类型转换为支持的 SQL 数据类型。 还需要对其他 dataframes 进行此转换。
 
 ```python
 from skl2onnx.common.data_types import FloatTensorType, Int64TensorType, DoubleTensorType
@@ -169,7 +165,7 @@ def convert_dataframe_schema(df, drop=None, batch_axis=False):
     return inputs
 ```
 
-使用`skl2onnx`将线性回归模型转换为 ONNX 格式并将其保存在本地。
+使用`skl2onnx`将 LinearRegression 模型转换为 ONNX 格式，并将其保存在本地。
 
 ```python
 # Convert the scikit model to onnx format
@@ -179,12 +175,12 @@ onnx_model_path = 'boston1.model.onnx'
 onnxmltools.utils.save_model(onnx_model, onnx_model_path)
 ```
 
-## <a name="test-the-onnx-model"></a>测试 ONNX 型号
+## <a name="test-the-onnx-model"></a>测试 ONNX 模型
 
-将模型转换为 ONNX 格式后，对模型进行评分，以显示性能很少或没有下降。
+将模型转换为 ONNX 格式后，对模型进行评分，使其不会降低性能。
 
 > [!NOTE]
-> ONNX 运行时使用浮点而不是双精度值，因此可能存在小差异。
+> ONNX 运行时使用浮动，而不是双精度型，因此可能会出现小差异。
 
 ```python
 import onnxruntime as rt
@@ -221,9 +217,9 @@ R2 Scores are equal
 MSE are equal
 ```
 
-## <a name="insert-the-onnx-model"></a>插入 ONNX 型号
+## <a name="insert-the-onnx-model"></a>插入 ONNX 模型
 
-将模型存储在 Azure SQL 数据库边缘、`models`数据库中`onnx`的表中。 在连接字符串中，指定**服务器地址**、**用户名**和**密码**。
+将模型存储在 Azure SQL 数据库中的数据库`models` `onnx`的表中。 在 "连接字符串" 中，指定**服务器地址**、**用户名**和**密码**。
 
 ```python
 import pyodbc
@@ -283,9 +279,9 @@ conn.commit()
 
 将数据加载到 Azure SQL 数据库边缘。
 
-首先，创建两个表**features**，特征**和目标，** 以存储波士顿住房数据集的子集。
+首先，创建两个表：**功能**和**目标**，以存储波士顿机架数据集的子集。
 
-* **要素**包含用于预测目标中位数的所有数据。 
+* **功能**包含用于预测目标值的所有数据。 
 * **目标**包含数据集中每个记录的中值。 
 
 ```python
@@ -341,7 +337,7 @@ print(x_train.head())
 print(y_train.head())
 ```
 
-最后，使用`sqlalchemy`将`x_train`和`y_train`熊猫数据框分别插入`features`到`target`表中和 ， 
+最后，使用`sqlalchemy`将`x_train`和`y_train` pandas dataframes 分别插入表`features`和。 `target` 
 
 ```python
 db_connection_string = 'mssql+pyodbc://' + username + ':' + password + '@' + server + '/' + database + '?driver=ODBC+Driver+17+for+SQL+Server'
@@ -350,14 +346,14 @@ x_train.to_sql(features_table_name, sql_engine, if_exists='append', index=False)
 y_train.to_sql(target_table_name, sql_engine, if_exists='append', index=False)
 ```
 
-现在，您可以在数据库中查看数据。
+现在您可以查看数据库中的数据了。
 
 ## <a name="run-predict-using-the-onnx-model"></a>使用 ONNX 模型运行预测
 
-使用 Azure SQL 数据库边缘中的模型，使用上载的 ONNX 模型在数据上运行本机预测。
+使用 Azure SQL 数据库边缘的模型，使用上传的 ONNX 模型对数据运行本机预测。
 
 > [!NOTE]
-> 将笔记本内核更改为 SQL 以运行剩余的单元。
+> 将笔记本内核更改为 SQL 以运行剩余的单元格。
 
 ```sql
 USE onnx
@@ -393,4 +389,4 @@ FROM PREDICT(MODEL = @model, DATA = predict_input) WITH (variable1 FLOAT) AS p
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 SQL 数据库边缘使用 ONNX 的机器学习和 AI](onnx-overview.md)
+* [在 SQL 数据库边缘中通过 ONNX 机器学习和 AI](onnx-overview.md)

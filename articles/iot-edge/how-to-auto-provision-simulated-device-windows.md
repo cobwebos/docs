@@ -1,5 +1,5 @@
 ---
-title: 使用 DPS 自动预配 Windows 设备 - Azure IoT 边缘 |微软文档
+title: 使用 DPS 自动预配 Windows 设备 - Azure IoT Edge | Microsoft Docs
 description: 使用 Windows 计算机上的模拟设备通过设备预配服务测试 Azure IoT Edge 的自动设备预配
 author: kgremban
 manager: philmea
@@ -8,18 +8,18 @@ ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fc051e2a0ebbdae7c62ff8a249747d118d3c2ce4
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 8278d9f2129ab8b213cf1b561f4b82b56dffc8da
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668680"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131040"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>在 Windows 上使用虚拟 TPM 创建和预配模拟 IoT Edge 设备
 
 可以使用[设备预配服务](../iot-dps/index.yml)自动预配 Azure IoT Edge 设备，就像预配未启用 Edge 的设备一样。 如果你不熟悉自动预配过程，请在继续操作之前查看[自动预配的概念](../iot-dps/concepts-auto-provisioning.md)。
 
-DPS 在个人注册和组注册中都支持 IoT Edge 设备的对称密钥证明。 对于组注册，如果选中"是 IoT 边缘设备"选项在对称密钥证明中为 true，则在该注册组下注册的所有设备都将标记为 IoT Edge 设备。
+DPS 在个人注册和组注册中都支持 IoT Edge 设备的对称密钥证明。 对于组注册，如果在对称密钥证明中选中 "IoT Edge 设备" 选项为 true，则在该注册组中注册的所有设备将标记为 "IoT Edge 设备"。
 
 本文介绍如何使用以下步骤，在模拟 IoT Edge 设备上测试自动预配：
 
@@ -31,7 +31,7 @@ DPS 在个人注册和组注册中都支持 IoT Edge 设备的对称密钥证明
 > [!TIP]
 > 本文介绍了如何通过在虚拟设备上使用 TPM 证明来测试自动预配，但是在使用物理 TPM 硬件时，它大部分也同样适用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 一台 Windows 开发计算机。 本文使用 Windows 10。
 * 活动的 IoT 中心。
@@ -43,7 +43,7 @@ DPS 在个人注册和组注册中都支持 IoT Edge 设备的对称密钥证明
 
 在 Azure 中创建 IoT 中心设备预配服务的新实例，并将其链接到 IoT 中心。 可以遵照[设置 IoT 中心 DPS](../iot-dps/quick-setup-auto-provision.md) 中的说明操作。
 
-运行设备预配服务后，从概述页复制“ID 范围”的值。**** 配置 IoT Edge 运行时时，需要使用此值。
+运行设备预配服务后，从概述页复制“ID 范围”的值。  配置 IoT Edge 运行时时，需要使用此值。
 
 > [!TIP]
 > 如果使用的是物理 TPM 设备，则需要确定**认可密钥**，该密钥对于每个 TPM 芯片都是唯一的，并且可以从与之关联的 TPM 芯片制造商处获得。 例如，可以通过创建认可密钥的 SHA-256 哈希来为 TPM 设备派生唯一的**注册 ID**。
@@ -52,20 +52,20 @@ DPS 在个人注册和组注册中都支持 IoT Edge 设备的对称密钥证明
 
 ## <a name="simulate-a-tpm-device"></a>模拟 TPM 设备
 
-在 Windows 开发计算机上创建模拟 TPM 设备。 检索设备的**注册 ID**和**背书密钥**，并使用它们在 DPS 中创建单个注册条目。
+在 Windows 开发计算机上创建模拟 TPM 设备。 检索设备的“注册 ID”和“认可密钥”，并使用它们在 DPS 中创建个人注册条目。  
 
-在 DPS 中创建注册时，可以声明“初始设备孪生状态”。**** 在设备孪生中可以设置标记，以便按解决方案中所需的任何指标（例如区域、环境、位置或设备类型）将设备分组。 这些标记用于创建[自动部署](how-to-deploy-monitor.md)。
+在 DPS 中创建注册时，可以声明“初始设备孪生状态”。  在设备孪生中可以设置标记，以便按解决方案中所需的任何指标（例如区域、环境、位置或设备类型）将设备分组。 这些标记用于创建[自动部署](how-to-deploy-at-scale.md)。
 
 选择要用来创建模拟设备的 SDK 语言，并遵循本文中的步骤，直到创建了个人注册为止。
 
-创建个人注册时，请选择“True”****，将 Windows 开发计算机上的模拟 TPM 设备声明为“IoT Edge设备”****。
+创建个人注册时，请选择“True”  ，将 Windows 开发计算机上的模拟 TPM 设备声明为“IoT Edge设备”  。
 
 > [!TIP]
-> 在 Azure CLI 中，您可以创建[注册](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment)或[注册组](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group)，并使用**启用边缘**的标志指定设备或设备组是 IoT Edge 设备。
+> 在 Azure CLI 中，可以创建[注册](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment)[组或注册组](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group)，并使用启用了**边缘**的标志来指定设备或设备组是 IoT Edge 设备。
 
 模拟设备和个人注册指南：
 
-* [C](../iot-dps/quick-create-simulated-device.md)
+* [Ansi-c](../iot-dps/quick-create-simulated-device.md)
 * [Java](../iot-dps/quick-create-simulated-device-tpm-java.md)
 * [C#](../iot-dps/quick-create-simulated-device-tpm-csharp.md)
 * [Node.js](../iot-dps/quick-create-simulated-device-tpm-node.md)
@@ -133,4 +133,4 @@ iotedge list
 
 ## <a name="next-steps"></a>后续步骤
 
-使用设备预配服务注册过程可以在预配新设备的同时，设置设备 ID 和设备孪生标记。 可以在自动设备管理中，使用这些值将单个设备或设备组指定为目标。 了解如何使用 Azure 门户或使用[Azure CLI](how-to-deploy-monitor-cli.md) [大规模部署和监视 IoT 边缘模块](how-to-deploy-monitor.md)
+使用设备预配服务注册过程可以在预配新设备的同时，设置设备 ID 和设备孪生标记。 可以在自动设备管理中，使用这些值将单个设备或设备组指定为目标。 了解如何使用 Azure 门户或[使用 Azure CLI](how-to-deploy-cli-at-scale.md) [按比例部署和监视 IoT Edge 模块](how-to-deploy-at-scale.md)

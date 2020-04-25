@@ -7,14 +7,8 @@
       href: Overview.md
 - name: 快速入门
   items:
-    - name: 使用客户端 SDK
-      items:
-        - name: .NET SDK
-          href: Quickstarts/csharp-sdk.md
-        - name: Python SDK
-          href: QuickStarts/python-sdk.md
-        - name: Go SDK
-          href: QuickStarts/go-sdk.md
+    - name: 使用客户端库
+      href: Quickstarts/client-libraries.md
     - name: 使用 REST API
       items:
         - name: 在图像中检测人脸
@@ -51,7 +45,7 @@
       href: concepts/face-detection.md
     - name: 人脸识别
       href: concepts/face-recognition.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 检测人脸
       href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
@@ -107,7 +101,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/430315-face-api'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'

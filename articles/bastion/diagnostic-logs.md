@@ -1,54 +1,54 @@
 ---
-title: 启用和使用 Azure 堡垒诊断日志
-description: 在本文中，了解如何启用和使用 Azure 堡垒诊断日志。
+title: 启用和使用 Azure 堡垒资源日志
+description: 本文介绍如何启用和使用 Azure 堡垒诊断日志。
 services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: 97f0cdb1e93ef2ad06d2daa04b2f4893fd5dfac2
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 4b71dba02a311b8fa6a16645364f90d7632693a2
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619266"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131274"
 ---
-# <a name="enable-and-work-with-bastion-diagnostic-logs"></a>启用和使用堡垒诊断日志
+# <a name="enable-and-work-with-bastion-resource-logs"></a>启用和使用堡垒资源日志
 
-当用户使用 Azure Bastion 连接到工作负荷时，Bastion 可以记录远程会话的诊断。 然后，可以使用诊断来查看哪些用户连接到哪些工作负荷、在什么时间、从何处以及其他此类相关日志记录信息。 为了使用诊断，必须在 Azure 堡垒上启用诊断日志。 本文可帮助您启用诊断日志，然后查看日志。
+当用户使用 Azure 堡垒连接到工作负荷时，堡垒可以记录远程会话的诊断。 然后，你可以使用诊断来查看哪些用户连接到哪些工作负荷、在何处以及其他此类相关日志记录信息。 若要使用诊断，必须在 Azure 堡垒上启用诊断日志。 本文将帮助您启用诊断日志，然后查看日志。
 
-## <a name="enable-the-diagnostics-log"></a><a name="enable"></a>启用诊断日志
+## <a name="enable-the-resource-log"></a><a name="enable"></a>启用资源日志
 
-1. 在[Azure 门户](https://portal.azure.com)中，导航到 Azure 堡垒资源，并从 Azure 堡垒页中选择 **"诊断"设置**。
+1. 在[Azure 门户](https://portal.azure.com)中，导航到 azure 堡垒资源，并从 azure 堡垒页面中选择 "**诊断设置**"。
 
    ![诊断设置](./media/diagnostic-logs/1diagnostics-settings.png)
-2. 选择**诊断设置**，然后选择 **"添加诊断设置**"以添加日志的目标。
+2. 选择 "**诊断设置**"，然后选择 " **+ 添加诊断设置**" 以添加日志的目标。
 
    ![添加诊断设置](./media/diagnostic-logs/2add-diagnostic-setting.png)
-3. 在 **"诊断设置"** 页上，选择要用于存储诊断日志的存储帐户类型。
+3. 在 "**诊断设置**" 页上，选择要用于存储诊断日志的存储帐户的类型。
 
    ![选择存储位置](./media/diagnostic-logs/3add-storage-account.png)
-4. 完成设置后，它将类似于此示例：
+4. 完成设置后，它将类似于以下示例：
 
    ![示例设置](./media/diagnostic-logs/4example-settings.png)
 
 ## <a name="view-diagnostics-log"></a><a name="view"></a>查看诊断日志
 
-要访问诊断日志，可以直接使用启用诊断设置时指定的存储帐户。
+若要访问诊断日志，可以直接使用在启用诊断设置时指定的存储帐户。
 
-1. 导航到存储帐户资源，然后导航到**容器**。 您将看到在存储帐户 blob 容器中创建的**见解日志-堡垒审核日志 blob。**
+1. 导航到存储帐户资源，然后导航到 "**容器**"。 你会看到在存储帐户 blob 容器中创建的**bastionauditlogs** blob。
 
    ![诊断设置](./media/diagnostic-logs/1-navigate-to-logs.png)
-2. 导航到容器内部时，在博客中可以看到各种文件夹。 这些文件夹指示 Azure 堡垒资源的资源层次结构。
+2. 导航到容器中时，会在博客中看到各种文件夹。 这些文件夹指示 Azure 堡垒资源的资源层次结构。
 
    ![添加诊断设置](./media/diagnostic-logs/2-resource-h.png)
-3. 导航到要访问/查看其诊断日志的 Azure Bastion 资源的完整层次结构。 诊断日志的"y"、"m=""d=""h="和"m="分别指示诊断日志的年份、月份、日、小时和分钟。
+3. 导航到要访问/查看其诊断日志的 Azure 堡垒资源的完整层次结构。 "Y ="、"m ="、"d ="、"h =" 和 "m =" 分别表示资源日志的年、月、日、小时和分钟。
 
    ![选择存储位置](./media/diagnostic-logs/3-resource-location.png)
-4. 查找 Azure Bastion 创建的 json 文件，该文件包含导航到的时间段的诊断日志数据。
+4. 找到由 Azure 堡垒创建的 json 文件，其中包含导航到的时间段的诊断日志数据。
 
-5. 从存储 Blob 容器下载 json 文件。 json 文件的示例条目如下所示供参考：
+5. 从存储 blob 容器下载 json 文件。 下面显示了 json 文件中的一个示例条目供参考：
 
    ```json
    { 

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 42abeba310e7a30364f93e998f12129a2d3c1f15
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 4226a625918be378b14e14c55fe4dd4ca5c398d5
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82114286"
+ms.locfileid: "82136679"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>在 Azure 自动化中管理凭据
 
@@ -41,7 +41,7 @@ ms.locfileid: "82114286"
 
 ## <a name="activities-used-to-access-credentials"></a>用于访问凭据的活动
 
-下表中的活动用于在 runbook 和 DSC 配置中访问凭据。
+下表中的活动用于在图形 runbook 和 DSC 配置中访问凭据。 有关使用活动的示例，请参阅[Azure 自动化中的图形创作](../automation-graphical-authoring-intro.md#activities)。
 
 | 活动 | 说明 |
 |:--- |:--- |

@@ -1,5 +1,5 @@
 ---
-title: 创建 Azure IoT 边缘模块技术资产 |Azure 应用商店
+title: 创建 Azure IoT Edge 模块技术资产 |Azure Marketplace
 description: 创建 IoT Edge 模块的技术资产。
 author: dsindona
 ms.service: marketplace
@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: b36d03695c107054549fba716f4cc27ecb7bba26
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 1a523872bb15981958eeb1678caa1d911a9cbbba
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983477"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142409"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>准备 IoT Edge 模块技术资产
 
 >[!Important]
->从 2020 年 4 月 13 日起，我们将开始将 IoT Edge 模块产品的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[创建 IoT Edge 模块产品/服务](https://aka.ms/AzureIoTTechAsset)中的说明进行操作，以管理迁移的优惠。
+>从2020年4月13日开始，我们将开始向合作伙伴中心移动 IoT Edge 模块的管理。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[创建 IoT Edge 模块提供](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-iot-edge-module-asset)中的说明来管理迁移的产品/服务。
 
 本文介绍在 Azure 市场中发布 IoT Edge 模块技术资产之前，这些资源需要满足的要求。
 
@@ -41,7 +41,7 @@ IoT Edge 模块必须支持以下平台选项之一。
 支持 IoT Edge 所支持的全部第 1 层平台（已在 [Azure IoT Edge 支持](https://docs.microsoft.com/azure/iot-edge/support)中记录）。 我们之所以推荐此选项，是因为它提供更好的客户体验。 后面将会展示满足此条件的模块。 使用此平台选项的模块必须：
 
 - 提供一个 `latest` 标记和一个版本标记（例如 `1.0.1`），这些标记是使用 GitHub [manifest-tool](https://github.com/estesp/manifest-tool) 生成的清单标记。
-- 使用[“市场”选项卡](./cpp-marketplace-tab.md)添加[已认证的兼容 IoT Edge 设备](https://aka.ms/iot-edge-certified)的链接。 此链接将解析为 `https://aka.ms/iot-edge-certified`，客户可在此网站中浏览或搜索已认证的设备。 此网站也称为 [Azure IoT Edge 认证](https://catalog.azureiotsolutions.com/)设备目录。
+- 使用 " [Marketplace" 选项卡](./cpp-marketplace-tab.md)可将链接添加到[IoT Edge 认证](https://catalog.azureiotsolutions.com/alldevices?filters={%2218%22:[%221%22]})的网站，客户可以在其中浏览或搜索认证设备。 此网站也称为 [Azure IoT Edge 认证](https://catalog.azureiotsolutions.com/)设备目录。
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>IoT Edge 支持的一部分第 1 层平台
   
@@ -70,9 +70,9 @@ IoT Edge 模块必须支持以下平台选项之一。
 IoT Edge 模块必须能够使用[云合作伙伴门户的“SKU”选项卡](./cpp-skus-tab.md)中提供的默认设置启动。 可使用以下默认设置：
 
 - 默认**路由**
-- 默认**双对所需属性**
+- 默认的成对**所需属性**
 - 默认**环境变量**
-- 默认**创建选项**
+- 默认**createOptions**
 
 如果默认值所需的参数（例如客户服务器的 IP 地址）不起作用，请添加一个参数作为默认值。 将此值括在方括号中并采用大写。 此示例设置以下默认环境变量：
 
@@ -82,11 +82,11 @@ IoT Edge 模块必须能够使用[云合作伙伴门户的“SKU”选项卡](./
 
 #### <a name="configuration-documentation"></a>配置文档
 
-必须清楚地记录 IoT Edge 模块的所有配置设置（如何使用其路由、双所需属性、环境变量、创建选项等）。提供指向文档的链接，或者文档必须是您的产品/sku 说明的一部分。
+IoT Edge 模块的所有配置设置都必须清楚地记录在文档中（如何使用其路由、createOptions 的所需属性、环境变量、等）。提供文档的链接，或文档必须是产品/服务/sku 说明的一部分。
 
 ### <a name="tags-and-versioning"></a>标记和版本控制
 
-客户必须能够轻松部署模块并自动从市场获取更新（在开发人员方案中）。他们还必须能够使用和冻结他们测试的精确版本（在生产方案中）。
+客户必须能够轻松部署模块并自动从 marketplace 获取更新（在开发人员方案中）。它们还必须能够使用和冻结其测试的确切版本（在生产方案中）。
 
 为了达到这些客户的期望并在市场中发布，IoT Edge 模块必须满足以下要求：
 
@@ -104,8 +104,8 @@ IoT Edge 模块必须能够使用[云合作伙伴门户的“SKU”选项卡](./
 
  在 IoT 模块 SDK 中使用以下方法将 `ProductInfo` 设置到此标识符：
 
-- [C\#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo) 
-- [C](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
+- [Ansi-c\#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo) 
+- [Ansi-c](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Python](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.productinfo?view=azure-java-stable)
 

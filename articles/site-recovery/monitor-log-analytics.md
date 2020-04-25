@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 监视器日志监视 Azure 站点恢复
+title: 利用 Azure Monitor 日志监视 Azure Site Recovery
 description: 了解如何使用 Azure Monitor 日志 (Log Analytics) 监视 Azure Site Recovery
 author: rayne-wiselman
 manager: carmonm
@@ -7,28 +7,28 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: f20d0d38a7fbd831d3e97a69373bac04b9b330aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0b3f5963572368cb9c884984418140b4bbc0dea3
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74133418"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131193"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>使用 Azure Monitor 日志监视 Site Recovery
 
 本文介绍如何使用 [Azure Monitor 日志](../azure-monitor/platform/data-platform-logs.md)和 [Log Analytics](../azure-monitor/log-query/log-query-overview.md) 监视 Azure [Site Recovery](site-recovery-overview.md) 复制的计算机。
 
-Azure Monitor 日志提供一个日志数据平台用于收集活动和诊断日志，以及其他监视数据。 在 Azure Monitor 日志中，可以使用 Log Analytics 编写和测试日志查询，并以交互方式分析日志数据。 可以可视化和查询日志结果，并配置警报来根据监视的数据采取措施。
+Azure Monitor 日志提供了一个日志数据平台，该平台收集活动和资源日志以及其他监视数据。 在 Azure Monitor 日志中，可以使用 Log Analytics 编写和测试日志查询，并以交互方式分析日志数据。 可以可视化和查询日志结果，并配置警报来根据监视的数据采取措施。
 
 对于 Site Recovery，Azure Monitor 日志可帮助你执行以下操作：
 
 - **监视 Site Recovery 运行状况和状态**。 例如，可以监视复制运行状况、测试故障转移状态、Site Recovery 事件、受保护计算机的恢复点目标 (RPO)，以及磁盘/数据更改率。
 - **为 Site Recovery 设置警报**。 例如，可以针对计算机运行状况、测试故障转移状态或 Site Recovery 作业状态配置警报。
 
-Azure 到**Azure**复制使用 Azure 监视器日志与站点恢复 **，VMware VM/物理服务器对 Azure**复制支持。
+在**azure 到 azure**的复制和**VMware VM/物理服务器到 azure**的复制中，支持使用 Site Recovery Azure Monitor 日志。
 
 > [!NOTE]
-> 要获取 VMware 和物理计算机的改动数据日志和上载速率日志，需要在进程服务器上安装 Microsoft 监视代理。 此代理将复制计算机的日志发送到工作区。 此功能仅适用于 9.30 移动代理版本。
+> 若要获取 VMware 和物理计算机的改动数据日志和上传速率日志，需要在进程服务器上安装 Microsoft monitoring agent。 此代理将复制计算机的日志发送到工作区。 此功能仅适用于9.30 移动代理版本。
 
 ## <a name="before-you-start"></a>开始之前
 
@@ -36,17 +36,17 @@ Azure 到**Azure**复制使用 Azure 监视器日志与站点恢复 **，VMware 
 
 - 至少一台在恢复服务保管库中受保护的计算机。
 - 用于存储 Site Recovery 日志的 Log Analytics 工作区。 [了解](../azure-monitor/learn/quick-create-workspace.md)如何设置工作区。
-- 基本了解如何在 Log Analytics 中编写、运行和分析日志查询。 [了解详情](../azure-monitor/log-query/get-started-portal.md)。
+- 基本了解如何在 Log Analytics 中编写、运行和分析日志查询。 [了解详细信息](../azure-monitor/log-query/get-started-portal.md)。
 
 在开始之前，我们建议查看[常见监视问题](monitoring-common-questions.md)。
 
 ## <a name="configure-site-recovery-to-send-logs"></a>配置 Site Recovery 以发送日志
 
-1. 在保管库中，单击 **"诊断设置** > **添加诊断设置**"。
+1. 在保管库中，单击 "**诊断设置** > " "**添加诊断设置**"。
 
-    ![选择诊断日志记录](./media/monitoring-log-analytics/add-diagnostic.png)
+    ![选择资源日志记录](./media/monitoring-log-analytics/add-diagnostic.png)
 
-2. 在**诊断设置**中，指定名称，然后选中"**发送到日志分析**"复选框。
+2. 在 "**诊断设置**" 中，指定一个名称，并选中 "**发送到 Log Analytics**" 框。
 3. 选择 Azure Monitor 日志订阅和 Log Analytics 工作区。
 4. 在切换中选择**Azure 诊断**。
 5. 在日志列表中，选择带有 **AzureSiteRecovery** 前缀的所有日志。 然后单击“确定”****。
@@ -55,23 +55,23 @@ Azure 到**Azure**复制使用 Azure 监视器日志与站点恢复 **，VMware 
 
 Site Recovery 日志将开始馈送到选定工作区中的某个表 (**AzureDiagnostics**) 内。
 
-## <a name="configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs"></a>在进程服务器上配置 Microsoft 监视代理以发送改动和上载速率日志
+## <a name="configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs"></a>在进程服务器上配置 Microsoft monitoring agent 以发送改动和上传速率日志
 
-您可以捕获本地 VMware/物理计算机的数据改动率信息和源数据上传速率信息。 为此，需要在进程服务器上安装 Microsoft 监视代理。
+你可以在本地捕获 VMware/物理计算机的数据更改率信息和源数据上传速率信息。 若要启用此操作，需要在进程服务器上安装 Microsoft monitoring agent。
 
-1. 转到日志分析工作区，然后单击 **"高级设置**"。
-2. 单击 **"已连接源"** 页面，然后进一步选择**Windows 服务器**。
-3. 在进程服务器上下载 Windows 代理（64 位）。 
+1. 中转到 Log Analytics 工作区，并单击 "**高级设置**"。
+2. 单击 "**连接的源**" 页，然后选择 " **Windows 服务器**"。
+3. 在进程服务器上下载 Windows 代理（64位）。 
 4. [获取工作区 ID 和密钥](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)
-5. [配置代理以使用 TLS 1.2](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
-6. 通过提供获取的工作区 ID 和密钥[来完成代理安装](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)。
-7. 安装完成后，转到日志分析工作区，然后单击 **"高级设置**"。 转到 **"数据"** 页，然后进一步单击**Windows 性能计数器**。 
-8. 单击 **"+"** 添加以下两个计数器，采样间隔为 300 秒：
+5. [将代理配置为使用 TLS 1。2](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
+6. 通过提供获得的工作区 ID 和密钥[完成代理安装](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)。
+7. 安装完成后，请跳到 Log Analytics 工作区，并单击 "**高级设置**"。 中转到 "**数据**" 页，然后单击 " **Windows 性能计数器**"。 
+8. 单击 **"+"** 添加以下两个计数器，其采样间隔为300秒：
 
         ASRAnalytics(*)\SourceVmChurnRate 
         ASRAnalytics(*)\SourceVmThrpRate 
 
-改动率和上载速率数据将开始馈送到工作区中。
+改动和上传速率数据将开始送入工作区。
 
 
 ## <a name="query-the-logs---examples"></a>查询日志 - 示例
@@ -84,7 +84,7 @@ Site Recovery 日志将开始馈送到选定工作区中的某个表 (**AzureDia
 
 ### <a name="query-replication-health"></a>查询复制运行状况
 
-此查询为所有受保护的 Azure VM 的当前复制运行状况绘制饼图，细分为三种状态：正常、警告或严重状态。
+此查询绘制了所有受保护 Azure Vm 的当前复制运行状况的饼图，分为三种状态：正常、警告或严重。
 
 ```
 AzureDiagnostics  
@@ -111,7 +111,7 @@ AzureDiagnostics 
 
 ### <a name="query-rpo-time"></a>查询 RPO 时间
 
-此查询绘制了与站点恢复一起复制的 Azure VM 的条形图，按恢复点目标 （RPO） 细分：不到 15 分钟，15-30 分钟，超过 30 分钟。
+此查询绘制使用 Site Recovery 进行复制的 Azure Vm 的条形图，并按恢复点目标（RPO）细分：在15-30 分钟到超过30分钟的时间不到15分钟。
 
 ```
 AzureDiagnostics 
@@ -192,9 +192,9 @@ AzureDiagnostics  
 ```
 ![查询计算机 RPO](./media/monitoring-log-analytics/example2.png)
 
-### <a name="query-data-change-rate-churn-and-upload-rate-for-an-azure-vm"></a>查询 Azure VM 的数据更改率（转换）和上载速率
+### <a name="query-data-change-rate-churn-and-upload-rate-for-an-azure-vm"></a>Azure VM 的查询数据更改率（变动）和上传速率
 
-此查询为特定的 Azure VM（ContosoVM123）绘制趋势图，表示数据更改速率（每秒写入字节数）和数据上载速率。 
+此查询绘制特定 Azure VM （ContosoVM123）的趋势图，该图表示数据更改率（每秒写入的字节数）和数据上传速率。 
 
 ```
 AzureDiagnostics   
@@ -209,12 +209,12 @@ Category contains "Upload", "UploadRate", "none") 
 ```
 ![查询数据更改率](./media/monitoring-log-analytics/example3.png)
 
-### <a name="query-data-change-rate-churn-and-upload-rate-for-a-vmware-or-physical-machine"></a>VMware 或物理计算机的查询数据更改率（流失）和上载速率
+### <a name="query-data-change-rate-churn-and-upload-rate-for-a-vmware-or-physical-machine"></a>查询数据更改率（变动）以及 VMware 或物理计算机的上传速率
 
 > [!Note]
-> 请确保在进程服务器上设置监视代理以获取这些日志。 请参阅[配置监视代理的步骤](#configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs)。
+> 请确保在进程服务器上设置监视代理以提取这些日志。 请参阅[配置监视代理的步骤](#configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs)。
 
-此查询为复制项目**win-9r7sfh9qlru**的特定**磁盘 0**绘制趋势图，该图表示数据更改速率（每秒写入字节数）和数据上载速率。 您可以在恢复服务保管库中复制项目的**磁盘**边栏选项卡上找到磁盘名称。 要在查询中使用的实例名称是计算机的 DNS 名称，后跟 * 和磁盘名称，如本示例所示。
+此查询为复制项**9r7sfh9qlru**的特定磁盘**disk0**绘制一个趋势图，该图表示数据更改率（每秒写入的字节数）和数据上传速率。 可以在恢复服务保管库中的复制项的 "**磁盘**" 边栏选项卡上找到磁盘名称。 要在查询中使用的实例名称是计算机的 DNS 名称后跟 _ 和磁盘名称，如本示例中所示。
 
 ```
 Perf
@@ -224,7 +224,7 @@ Perf
 | project TimeGenerated ,CounterName, Churn_MBps = todouble(CounterValue)/5242880 
 | render timechart
 ```
-进程服务器每 5 分钟将此数据推送到日志分析工作区。 这些数据点表示 5 分钟计算的平均值。
+进程服务器每5分钟将此数据推送到 Log Analytics 工作区。 这些数据点表示平均计算时间为5分钟。
 
 ### <a name="query-disaster-recovery-summary-azure-to-azure"></a>查询灾难恢复摘要（Azure 到 Azure）
 

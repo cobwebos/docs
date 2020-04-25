@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 59f5733009424c60f2b9c48e68d70bbc29ad7095
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 7f47dd05035772744fb212ef8914b25979af61e2
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81263363"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137155"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>使用 AzCopy 和文件存储传输数据 
 
@@ -21,7 +21,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 在开始之前，请参阅 [AzCopy 入门](storage-use-azcopy-v10.md)一文下载 AzCopy 并熟悉该工具。
 
 > [!TIP]
-> 本文中的示例将路径参数与单引号 （''） 括起来。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
+> 本文中的示例将路径参数括在单引号（' '）中。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
 
 ## <a name="create-file-shares"></a>创建文件共享
 
@@ -47,14 +47,14 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 > * 上传特定的文件
 
 > [!TIP]
-> 您可以使用可选标志调整上载操作。 下面是一些示例。
+> 可以通过使用可选标志来调整上传操作。 下面是几个示例。
 >
-> |场景|标志|
+> |方案|标志|
 > |---|---|
-> |复制访问控制列表 （ACL） 以及文件。|**--保留-smb 权限**=\[真\|假\]|
-> |复制 SMB 属性信息以及文件。|**--保存-smb-info**=\[\|真假\]|
-> |将文件上载为追加 Blob 或页面 Blob。|**--Blob 类型**=\[块\|Blob\|页面 Blob 追加 Blob\]|
-> |上载到特定访问层（如存档层）。|**--块 blob 层**=\[\|无\|冷\|清存档\]|
+> |将访问控制列表（Acl）与文件一起复制。|**--保留-smb 权限**=\[true\|\]|
+> |复制 SMB 属性信息和文件。|**--保留-smb-信息**=\[true\|\]|
+> |将文件上传为追加 Blob 或页 Blob。|**--blob 类型**=\[BlockBlob\|PageBlob\|AppendBlob\]|
+> |上传到特定访问层（如存档层）。|**--块 blob-第**=\[None\|热\|酷\|存档\]|
 > 
 > 有关完整列表，请参阅[选项](storage-ref-azcopy-copy.md#options)。
 
@@ -105,7 +105,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 #### <a name="specify-multiple-complete-file-names"></a>指定多个完整文件名
 
-结合 `--include-path` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 使用分号 (`;`) 分隔各个文件名。
+结合 [ 选项使用 ](storage-ref-azcopy-copy.md)azcopy copy`--include-path` 命令。 使用分号 (`;`) 分隔各个文件名。
 
 |    |     |
 |--------|-----------|
@@ -142,13 +142,13 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 > * 下载特定的文件
 
 > [!TIP]
-> 您可以使用可选标志调整下载操作。 下面是一些示例。
+> 可以通过使用可选标志来调整下载操作。 下面是几个示例。
 >
-> |场景|标志|
+> |方案|标志|
 > |---|---|
-> |复制访问控制列表 （ACL） 以及文件。|**--保留-smb 权限**=\[真\|假\]|
-> |复制 SMB 属性信息以及文件。|**--保存-smb-info**=\[\|真假\]|
-> |自动解压缩文件。|**--解压缩**=\[gzip\|放气\]|
+> |将访问控制列表（Acl）与文件一起复制。|**--保留-smb 权限**=\[true\|\]|
+> |复制 SMB 属性信息和文件。|**--保留-smb-信息**=\[true\|\]|
+> |自动解压缩文件。|**--解压缩**|
 > 
 > 有关完整列表，请参阅[选项](storage-ref-azcopy-copy.md#options)。
 
@@ -228,14 +228,14 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 > * 将所有文件共享、目录和文件复制到另一个存储帐户
 
 > [!TIP]
-> 您可以使用可选标志调整复制操作。 下面是一些示例。
+> 可以通过使用可选标志来调整复制操作。 下面是几个示例。
 >
-> |场景|标志|
+> |方案|标志|
 > |---|---|
-> |复制访问控制列表 （ACL） 以及文件。|**--保留-smb 权限**=\[真\|假\]|
-> |复制 SMB 属性信息以及文件。|**--保存-smb-info**=\[\|真假\]|
-> |将文件复制为追加 Blob 或页面 Blob。|**--Blob 类型**=\[块\|Blob\|页面 Blob 追加 Blob\]|
-> |复制到特定访问层（如存档层）。|**--块 blob 层**=\[\|无\|冷\|清存档\]|
+> |将访问控制列表（Acl）与文件一起复制。|**--保留-smb 权限**=\[true\|\]|
+> |复制 SMB 属性信息和文件。|**--保留-smb-信息**=\[true\|\]|
+> |将文件复制为追加 Blob 或页 Blob。|**--blob 类型**=\[BlockBlob\|PageBlob\|AppendBlob\]|
+> |复制到特定访问层（如存档层）。|**--块 blob-第**=\[None\|热\|酷\|存档\]|
 > 
 > 有关完整列表，请参阅[选项](storage-ref-azcopy-copy.md#options)。
 
@@ -279,13 +279,13 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 如果将 `--delete-destination` 标志设置为 `true`，AzCopy 将删除文件且不提供提示。 若要在 AzCopy 删除文件之前显示提示，请将 `--delete-destination` 标志设置为 `prompt`。
 
 > [!TIP]
-> 您可以使用可选标志调整同步操作。 下面是一些示例。
+> 可以通过使用可选标志来调整同步操作。 下面是几个示例。
 >
-> |场景|标志|
+> |方案|标志|
 > |---|---|
-> |指定下载时应严格验证 MD5 哈希。|**--检查-md5**=\[无\|检查日志\|仅失败如果\|不同故障，如果失败或缺失\]|
-> |根据模式排除文件。|**--排除路径**|
-> |指定希望同步相关日志条目的详细程度。|**--日志级**=\[警告\|错误\|信息\|无\]|
+> |指定下载时应如何验证严格的 MD5 哈希。|**--check-md5**=\[NoCheck\|LogOnly\|FailIfDifferent\|FailIfDifferentOrMissing\]|
+> |基于模式排除文件。|**--排除-路径**|
+> |指定您希望与同步相关的日志条目的详细程度。|**--日志级别**=\[警告\|错误\|信息\|无\]|
 > 
 > 有关完整列表，请参阅[选项](storage-ref-azcopy-sync.md#options)。
 
@@ -309,14 +309,14 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 
 ### <a name="update-a-file-share-to-match-the-contents-of-a-share-snapshot"></a>更新文件共享以匹配共享快照的内容
 
-此命令中显示的第一个文件共享是源。 在 URI 的末尾，追加字符串`&sharesnapshot=`后跟快照的**DateTime**值。 
+此命令中显示的第一个文件共享是源。 在 URI 的末尾，附加字符串`&sharesnapshot=` ，后跟快照的**DateTime**值。 
 
 |    |     |
 |--------|-----------|
 | **语法** | `azcopy sync 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>&sharesnapsot<snapshot-ID>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
 | **示例** | `azcopy sync 'https://mysourceaccount.file.core.windows.net/myfileShare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D&sharesnapshot=2020-03-03T20%3A24%3A13.0000000Z' 'https://mydestinationaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
 
-要了解有关共享快照的详细信息，请参阅[Azure 文件的共享快照概述](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files)。
+若要了解有关共享快照的详细信息，请参阅[Azure 文件的共享快照概述](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files)。
 
 ## <a name="next-steps"></a>后续步骤
 

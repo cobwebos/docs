@@ -1,18 +1,18 @@
 ---
 title: 使用 InfluxData Telegraf 代理收集 Linux VM 的自定义指标
-description: 有关如何在 Azure 中的 Linux VM 上部署 InfluxData Telegraf 代理并将代理配置为将指标发布到 Azure 监视器的说明。
+description: 说明如何在 Azure 中的 Linux VM 上部署 InfluxData Telegraf 代理，以及如何配置代理，以便将指标发布到 Azure Monitor。
 author: anirudhcavale
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 0ed9144116c1d716124025ef0aae39e7783c5934
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5ea32fb198a61391e1be3648d1d2d2e829a7214
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77655457"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137257"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>使用 InfluxData Telegraf 代理收集 Linux VM 的自定义指标
 
@@ -24,11 +24,14 @@ ms.locfileid: "77655457"
 
  ![Telegraph 代理概述](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
 
+> [!NOTE]  
+> 所有区域都不支持自定义指标。 [此处](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#supported-regions)列出了支持的区域
+
 ## <a name="send-custom-metrics"></a>发送自定义指标 
 
-在本教程中，我们将部署运行 Ubuntu 16.04 LTS 操作系统的 Linux VM。 大多数 Linux 操作系统支持 Telegraf 代理。 Debian 和 RPM 软件包均可在[InfluxData 下载门户](https://portal.influxdata.com/downloads)上提供未打包的 Linux 二进制文件。 有关其他安装说明和选项，请参阅此 [Telegraf 安装指南](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/)。 
+在本教程中，我们将部署运行 Ubuntu 16.04 LTS 操作系统的 Linux VM。 大多数 Linux 操作系统支持 Telegraf 代理。 Debian 和 RPM 包在[InfluxData 下载门户](https://portal.influxdata.com/downloads)上都与未封装的 Linux 二进制文件一起使用。 有关其他安装说明和选项，请参阅此 [Telegraf 安装指南](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/)。 
 
-登录到 Azure[门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
 创建新的 Linux VM： 
 
@@ -38,7 +41,7 @@ ms.locfileid: "77655457"
 1. 提供一个 VM 名称，例如 **MyTelegrafVM**。  
 1. 将磁盘类型保留为“SSD”。**** 然后提供**用户名**，例如 **azureuser**。 
 1. 对于“身份验证类型”****，请选择“密码”****。 然后输入一个密码，稍后将使用该密码通过 SSH 连接到此 VM。 
-1. 选择“创建新的资源组”。**** 然后提供一个名称，例如 **myResourceGroup**。 选择你的“位置”。**** 然后选择 **"确定**"。 
+1. 选择“创建新的资源组”。**** 然后提供一个名称，例如 **myResourceGroup**。 选择你的“位置”。**** 然后选择“确定”。  
 
     ![创建 Ubuntu VM](./media/collect-custom-metrics-linux-telegraf/create-vm.png)
 
@@ -46,23 +49,23 @@ ms.locfileid: "77655457"
 
     ![虚拟机大小 Telegraph 代理概述](./media/collect-custom-metrics-linux-telegraf/vm-size.png)
 
-1. 在**Network** > **网络网络安全组中** > 的 **"设置"** 页上**选择公共入站端口**，选择**HTTP**和**SSH （22）。** 将剩余的字段保留默认设置，然后选择“确定”。**** 
+1. 在**网络** > **网络安全组** > 的 "**设置**" 页上，**选择 "公用入站端口**"，选择**HTTP**和**SSH （22）**。 将剩余的字段保留默认设置，然后选择“确定”。**** 
 
 1. 在“摘要”页上，选择“创建”以启动 VM 部署****。 
 
 1. VM 将固定到 Azure 门户仪表板。 完成部署后，VM 摘要会自动打开。 
 
-1. 在 VM 窗格中，导航到 **"标识"** 选项卡。确保 VM 的标识设置为**On**。 
+1. 在 "VM" 窗格中，导航到 "**标识**" 选项卡。确保 VM 的 "系统分配的标识" 设置为 **"开**"。 
  
     ![Telegraf VM 标识预览](./media/collect-custom-metrics-linux-telegraf/connect-to-VM.png)
  
 ## <a name="connect-to-the-vm"></a>连接到 VM 
 
-创建与 VM 的 SSH 连接。 选择 VM 的概述页面上的“连接”按钮。**** 
+创建与 VM 的 SSH 连接。 选择 VM 的概述页面上的“连接”按钮。  
 
 ![Telegraf VM 概述页](./media/collect-custom-metrics-linux-telegraf/connect-VM-button2.png)
 
-在“连接到虚拟机”**** 页面中，保留默认选项，以使用 DNS 名称通过端口 22 进行连接。 在**使用 VM 本地帐户登录**时，将显示连接命令。 选择相应的按钮来复制该命令。 下面的示例展示了 SSH 连接命令的样式： 
+在“连接到虚拟机”**** 页面中，保留默认选项，以使用 DNS 名称通过端口 22 进行连接。 在**使用 VM 本地帐户登录**时，将显示一个连接命令。 选择相应的按钮来复制该命令。 下面的示例展示了 SSH 连接命令的样式： 
 
 ```cmd
 ssh azureuser@XXXX.XX.XXX 
@@ -80,7 +83,7 @@ wget https://dl.influxdata.com/telegraf/releases/telegraf_1.8.0~rc1-1_amd64.deb
 # install the package 
 sudo dpkg -i telegraf_1.8.0~rc1-1_amd64.deb
 ```
-Telegraf 的配置文件定义 Telegraf 的操作。 默认情况下，在路径 **/etc/telegraf/telegraf.conf**上安装示例配置文件。 示例配置文件列出了所有可能的输入和输出插件。但是，我们将创建一个自定义配置文件，并让代理通过运行以下命令来使用它： 
+Telegraf 的配置文件定义 Telegraf 的操作。 默认情况下，在路径 **/etc/telegraf/telegraf.conf**上安装示例配置文件。 示例配置文件将列出所有可能的输入和输出插件。但是，我们将创建一个自定义配置文件，并通过运行以下命令让代理使用它： 
 
 ```cmd
 # generate the new Telegraf config file in the current directory 
@@ -105,9 +108,9 @@ sudo systemctl start telegraf
 
 ## <a name="plot-your-telegraf-metrics-in-the-azure-portal"></a>在 Azure 门户中绘制 Telegraf 指标 
 
-1. 打开[Azure 门户](https://portal.azure.com)。 
+1. 打开 [Azure 门户](https://portal.azure.com)。 
 
-1. 导航到新的 **"监视器"** 选项卡。然后选择**指标**。  
+1. 导航到 "新建**监视器**" 选项卡。然后选择 "**指标**"。  
 
      ![监视 - 指标（预览）](./media/collect-custom-metrics-linux-telegraf/metrics.png)
 
@@ -121,7 +124,7 @@ sudo systemctl start telegraf
 
 ## <a name="additional-configuration"></a>其他配置 
 
-前面的演练提供了有关如何配置 Telegraf 代理以从几个基本输入插件收集指标的信息。Telegraf 代理支持 150 多个输入插件，其中一些支持其他配置选项。 InfluxData 发布了一个[受支持插件的列表](https://docs.influxdata.com/telegraf/v1.7/plugins/inputs/)以及有关[如何配置它们](https://docs.influxdata.com/telegraf/v1.7/administration/configuration/)的说明。  
+上述演练提供有关如何将 Telegraf 代理配置为从几个基本输入插件收集指标的信息。Telegraf 代理支持的输入插件超过150个，其中有一些支持附加的配置选项。 InfluxData 发布了一个[受支持插件的列表](https://docs.influxdata.com/telegraf/v1.7/plugins/inputs/)以及有关[如何配置它们](https://docs.influxdata.com/telegraf/v1.7/administration/configuration/)的说明。  
 
 另外，在本演练中，我们还使用 Telegraf 代理发出了在其上部署了代理的 VM 的相关指标。 Telegraf 代理也可用作其他资源的指标的收集器和转发器。 若要了解如何将代理配置为发出其他 Azure 资源的指标，请参阅 [Azure Monitor Custom Metric Output for Telegraf](https://github.com/influxdata/telegraf/blob/fb704500386214655e2adb53b6eb6b15f7a6c694/plugins/outputs/azure_monitor/README.md)（针对 Telegraf 的 Azure Monitor 自定义指标输出）。  
 

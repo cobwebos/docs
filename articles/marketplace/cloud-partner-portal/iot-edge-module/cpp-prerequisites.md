@@ -1,5 +1,5 @@
 ---
-title: Azure IoT 边缘模块先决条件 |Azure 应用商店
+title: Azure IoT Edge 模块必备组件 |Azure Marketplace
 description: 发布 IoT Edge 模块的先决条件。
 author: dsindona
 ms.service: marketplace
@@ -7,19 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 9a54b31725d14a3ff54bd2d945cd69f4b8769b87
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: d1bfc29a0cb031421b4017454bc8a2cdd8be09f9
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983171"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142372"
 ---
 # <a name="iot-edge-module-publishing-prerequisites"></a>IoT Edge 模块发布先决条件
 
 >[!Important]
->从 2020 年 4 月 13 日起，我们将开始将 IoT Edge 模块产品的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[创建 IoT Edge 模块产品/服务](https://aka.ms/AzureCreateIoT)中的说明进行操作，以管理迁移的优惠。
+>从2020年4月13日开始，我们将开始向合作伙伴中心移动 IoT Edge 模块的管理。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[创建 IoT Edge 模块提供](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation)中的说明来管理迁移的产品/服务。
 
-本文介绍了发布新 IoT Edge 模块产品/服务的先决条件。  如果尚未这样做，请查看[IoT Edge 模块发布指南](../..//iot-edge-module.md)。
+本文介绍了发布新 IoT Edge 模块产品/服务的先决条件。  如果尚未执行此操作，请查看[IoT Edge 模块发布指南](../..//iot-edge-module.md)。
 
 
 ## <a name="publishing-prerequisites"></a>发布先决条件
@@ -27,8 +27,8 @@ ms.locfileid: "80983171"
 若要将 IoT Edge 模块发布到 Azure 市场，必须满足以下先决条件：
 
 <!-- P2: It would be great to point to the terms of use of CPP here. This can often be a blocker for big companies and these terms of use are not anonymously visible yet.-->
-- 访问[云合作伙伴门户](https://cloudpartner.azure.com/)。 有关详细信息，请参阅 [Azure 市场和 AppSource 发布指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)。
-- 与[Azure 应用商店条款](https://azure.microsoft.com/support/legal/marketplace-terms/)的协议
+- 对[云合作伙伴门户](https://cloudpartner.azure.com/)的访问权限。 有关详细信息，请参阅 [Azure 市场和 AppSource 发布指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)。
+- [Azure Marketplace 条款](https://azure.microsoft.com/support/legal/marketplace-terms/)协议
 - 将 IoT Edge 模块技术资产承载在 Azure 容器注册表中。  有关详细信息，请参阅[如何准备你的 IoT Edge 模块技术资产](./cpp-create-technical-assets.md)
 - 使你的 IoT Edge 模块元数据就绪可用。 例如，准备以下资产：
     - 标题
@@ -42,4 +42,4 @@ ms.locfileid: "80983171"
 
 ## <a name="next-steps"></a>后续步骤
 
-一旦[您准备好 IoT Edge 模块技术资产](./cpp-create-technical-assets.md)，您将准备好[创建 IoT Edge 模块产品](./cpp-create-offer.md)。 
+[准备好 IoT Edge 模块技术资产](./cpp-create-technical-assets.md)后，便可以[创建 IoT Edge 模块产品](./cpp-create-offer.md)。 

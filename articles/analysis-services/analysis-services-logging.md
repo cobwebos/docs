@@ -1,24 +1,24 @@
 ---
 title: Azure Analysis Services 诊断日志记录 | Microsoft Docs
-description: 介绍如何设置 Azure 资源诊断日志记录以监视 Azure Analysis Services 服务器。
+description: 描述如何设置日志记录以监视 Azure Analysis Services 服务器。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 0f13f297facedceb50920c0f6afca63fe1df0b48
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71a81c4a3a57c206540e20f7c7e58949c552e582
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266177"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82128925"
 ---
 # <a name="setup-diagnostic-logging"></a>设置诊断日志记录
 
-监视服务器性能对于任何 Analysis Services 解决方案都至关重要。 使用[Azure 资源日志](../azure-monitor/platform/platform-logs-overview.md)，可以监视日志并将其发送到[Azure 存储](https://azure.microsoft.com/services/storage/)，将它们流式传输到 Azure[事件中心](https://azure.microsoft.com/services/event-hubs/)，并将它们导出到[Azure 监视器日志](../azure-monitor/azure-monitor-log-hub.md)。
+监视服务器性能对于任何 Analysis Services 解决方案都至关重要。 Azure Analysis services 与 Azure Monitor 集成。 利用[Azure Monitor 资源日志](../azure-monitor/platform/platform-logs-overview.md)，可监视日志并将其发送到 azure[存储](https://azure.microsoft.com/services/storage/)，将其流式传输到[azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，并将其导出到[Azure Monitor 日志](../azure-monitor/azure-monitor-log-hub.md)。
 
-![存储、事件中心或 Azure Monitor 日志的诊断日志记录](./media/analysis-services-logging/aas-logging-overview.png)
+![资源日志记录到存储、事件中心或 Azure Monitor 日志](./media/analysis-services-logging/aas-logging-overview.png)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -66,15 +66,15 @@ ms.locfileid: "79266177"
 
 ### <a name="all-metrics"></a>所有指标
 
-"指标"类别将相同的[服务器指标](analysis-services-monitor.md#server-metrics)记录到 Azure Metrics 表。 如果使用查询[横向扩展](analysis-services-scale-out.md)，并且需要为每个读取副本分隔指标，请改用 Azure 诊断表，其中**操作名称**等于**LogMetric**。
+"指标" 类别将相同的[服务器指标](analysis-services-monitor.md#server-metrics)记录到 AzureMetrics 表中。 如果使用的是查询[横向扩展](analysis-services-scale-out.md)，并且需要为每个读取副本单独使用度量值，请改用 AzureDiagnostics 表，其中**OperationName**等于**LogMetric**。
 
 ## <a name="setup-diagnostics-logging"></a>设置诊断日志记录
 
 ### <a name="azure-portal"></a>Azure 门户
 
-1. 在 [Azure 门户](https://portal.azure.com)中找到服务器，单击左侧导航栏中的“诊断日志”，然后单击“启用诊断”********。
+1. 在[Azure 门户](https://portal.azure.com)> 服务器 "中，单击左侧导航栏中的"**诊断设置**"，然后单击"**启用诊断**"。
 
-    ![在 Azure 门户中启用 Azure Cosmos DB 的诊断日志记录](./media/analysis-services-logging/aas-logging-turn-on-diagnostics.png)
+    ![在 Azure 门户中打开 Azure Cosmos DB 的资源日志记录](./media/analysis-services-logging/aas-logging-turn-on-diagnostics.png)
 
 2. 在“诊断设置”**** 中，指定以下选项： 
 
@@ -84,23 +84,23 @@ ms.locfileid: "79266177"
     * **流式传输到事件中心**。 要使用此选项，需要一个可连接到的现有事件中心命名空间和事件中心。 若要了解详细信息，请参阅[使用 Azure 门户创建事件中心命名空间和事件中心](../event-hubs/event-hubs-create.md)。 然后在门户中返回到此页，选择事件中心命名空间和策略名称。
     * 发送到 Azure Monitor（Log Analytics 工作区）****。 若要使用此选项，可以使用现有工作区或者在门户中[新建工作区](../azure-monitor/learn/quick-create-workspace.md)资源。 有关查看日志的详细信息，请参阅本文中的[在 Log Analytics 工作区中查看日志](#view-logs-in-log-analytics-workspace)。
 
-    * **发动机**. 选择此选项以记录 Xevent。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后会自动删除日志。
-    * **服务**。 选择此选项以记录服务级别事件。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后会自动删除日志。
-    * **指标**. 选择此选项可在[指标](analysis-services-monitor.md#server-metrics)中存储详细数据。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后会自动删除日志。
+    * **引擎**。 选择此选项以记录 Xevent。 如果要存档到存储帐户，则可以选择资源日志的保留期。 保留期到期后会自动删除日志。
+    * **服务**。 选择此选项以记录服务级别事件。 如果要存档到存储帐户，则可以选择资源日志的保留期。 保留期到期后会自动删除日志。
+    * **指标**。 选择此选项可在[指标](analysis-services-monitor.md#server-metrics)中存储详细数据。 如果要存档到存储帐户，则可以选择资源日志的保留期。 保留期到期后会自动删除日志。
 
-3. 单击“保存”。****
+3. 单击 **“保存”** 。
 
     如果收到错误，指出“无法更新诊断 \<工作区名称> 的诊断。 订阅 \<订阅 ID> 未注册为使用 microsoft.insights”， 请遵照[排查 Azure 诊断问题](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)中的说明注册帐户，然后重试此过程。
 
-    若要更改在将来的任意时间点保存诊断日志的方式，可以随时返回此页以修改设置。
+    如果你想要更改资源日志在将来的任意时间点如何保存，你可以返回到此页以修改设置。
 
 ### <a name="powershell"></a>PowerShell
 
 以下基本命令可以帮助你开始使用。 如需有关使用 PowerShell 为存储帐户设置日志记录的逐步指导，请参阅本文稍后部分的教程。
 
-若要使用 PowerShell 启用指标和诊断日志记录，请使用以下命令：
+若要使用 PowerShell 启用指标和资源日志记录，请使用以下命令：
 
-- 若要允许在存储帐户中存储诊断日志，请使用以下命令：
+- 若要在存储帐户中存储资源日志，请使用以下命令：
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
@@ -108,7 +108,7 @@ ms.locfileid: "79266177"
 
    存储帐户 ID 是需要将日志发送到的存储帐户的资源 ID。
 
-- 要允许将诊断日志流式传输到事件中心，请使用以下命令：
+- 若要启用资源日志流式传输到事件中心，请使用以下命令：
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
@@ -120,7 +120,7 @@ ms.locfileid: "79266177"
    {service bus resource ID}/authorizationrules/{key name}
    ``` 
 
-- 若要允许将诊断日志发送到 Log Analytics 工作区，请使用以下命令：
+- 若要启用向 Log Analytics 工作区发送资源日志，请使用以下命令：
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
@@ -158,7 +158,7 @@ ms.locfileid: "79266177"
 
 ![Azure 门户中的“日志搜索”选项](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
-在查询生成器中，展开**日志管理** > **Azure 诊断**。 AzureDiagnostics 包括引擎和服务事件。 注意即时创建了一个查询。 EventClass\_s 字段包含 xEvent 名称，如果使用 Xevent 进行本地日志记录，你可能觉得该名称很眼熟。 单击“EventClass\_s”或某个事件名称，Log Analytics 工作区将继续构造查询****。 请务必保存查询以便稍后重复使用。
+在查询生成器中，展开 " **LogManagement** > **AzureDiagnostics**"。 AzureDiagnostics 包括引擎和服务事件。 注意即时创建了一个查询。 EventClass\_s 字段包含 xEvent 名称，如果使用 Xevent 进行本地日志记录，你可能觉得该名称很眼熟。 单击“EventClass\_s”或某个事件名称，Log Analytics 工作区将继续构造查询****。 请务必保存查询以便稍后重复使用。
 
 ### <a name="example-queries"></a>查询示例
 
@@ -215,7 +215,7 @@ window
 
 在此快速教程中，你将在 Analysis Services 服务器所在订阅和资源组中创建存储帐户。 然后使用 Set-AzDiagnosticSetting 启用诊断日志记录，将输出发送到新的存储帐户。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 要完成本教程，必须备好以下资源：
 
 * 现有 Azure Analysis Services 服务器。 有关创建服务器资源的说明，请参阅[在 Azure 门户中创建服务器](analysis-services-create-server.md)或[使用 PowerShell 创建 Azure Analysis Services 服务器](analysis-services-create-powershell.md)。
@@ -326,6 +326,6 @@ Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
 
 ## <a name="next-steps"></a>后续步骤
 
-深入了解 [Azure 资源诊断日志记录](../azure-monitor/platform/platform-logs-overview.md)
+详细了解[Azure Monitor 资源日志记录](../azure-monitor/platform/platform-logs-overview.md)。
 
 请参阅 PowerShell 帮助中的 [Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting)。

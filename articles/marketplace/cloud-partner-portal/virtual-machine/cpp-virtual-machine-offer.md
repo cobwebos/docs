@@ -1,5 +1,5 @@
 ---
-title: Azure 应用商店中的虚拟机产品/服务
+title: Azure Marketplace 中的虚拟机产品/服务
 description: 在 Azure 市场中发布 VM 套餐的过程概述。
 author: dsindona
 ms.service: marketplace
@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: dsindona
-ms.openlocfilehash: 0f2ae9fe6f006b5418ebee82b08a44188b7c58d3
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: b857cf8b7485beb884adf77d99f82d965f55a0ad
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273063"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142802"
 ---
 # <a name="virtual-machine-offer"></a>虚拟机套餐
 
 > [!IMPORTANT]
-> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 虚拟机产品的管理移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照创建 Azure[虚拟机产品/服务](https://aka.ms/CreateAzureVMoffer)中的说明进行操作，以管理迁移的优惠。
+> 从2020年4月13日开始，我们将开始将 Azure 虚拟机产品/服务的管理转移到合作伙伴中心。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[创建 Azure 虚拟机产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)中的说明来管理迁移的产品/服务。
 
 |    |    |
 |-----------------------------------------------------------------|------------------------------------------|

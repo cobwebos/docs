@@ -1,6 +1,6 @@
 ---
 title: Azure IoT 中心术语词汇表 | Microsoft Docs
-description: 开发人员指南 - 解释 Azure IoT 中心文章中使用的一些常用术语的词汇表。
+description: 开发人员指南-说明 Azure IoT 中心文章中使用的一些常用术语的术语表。
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 5c59ddf046e7ffe936b097878d5d049b43ea8aec
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 73981cb0f124e1577690f893ead60e6375f16298
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81729013"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133146"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT 中心术语表
 
@@ -28,7 +28,7 @@ ms.locfileid: "81729013"
 
 ## <a name="automatic-device-management"></a>自动设备管理
 
-Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的任务自动化，包括在大型设备阵列的整个生命周期内对其进行管理。 使用自动设备管理，可以根据设备的属性将一组设备指定为目标、定义所需的配置，并在设备进入管理范畴时让 IoT 中心更新这些设备。  包括[自动设备配置](iot-hub-auto-device-config.md)和 [IoT Edge 自动部署](../iot-edge/how-to-deploy-monitor.md)。
+Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的任务自动化，包括在大型设备阵列的整个生命周期内对其进行管理。 使用自动设备管理，可以根据设备的属性将一组设备指定为目标、定义所需的配置，并在设备进入管理范畴时让 IoT 中心更新这些设备。  包括[自动设备配置](iot-hub-auto-device-config.md)和 [IoT Edge 自动部署](../iot-edge/how-to-deploy-at-scale.md)。
 
 ## <a name="automatic-device-configuration"></a>自动设备配置
 
@@ -48,7 +48,7 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 
 ## <a name="azure-iot-explorer"></a>Azure IoT 资源管理器
 
-[Azure IoT 资源管理器](https://github.com/Azure/azure-iot-explorer)用于查看设备发送的遥测数据、使用设备属性和调用命令。 您还可以使用资源管理器与设备进行交互和测试，以及管理即插即用设备。
+[Azure IoT 浏览器](https://github.com/Azure/azure-iot-explorer)用于查看设备正在发送的遥测数据，使用设备属性和调用命令。 你还可以使用资源管理器与设备交互和测试设备，并管理即插即用设备。
 
 ## <a name="azure-iot-service-sdks"></a>Azure IoT 服务 SDK
 
@@ -60,7 +60,7 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 
 ## <a name="azure-portal"></a>Azure 门户
 
-[Microsoft Azure 门户](https://portal.azure.com)是可以预配和管理 Azure 资源的中心位置。 该门户使用_边栏选项卡_组织其内容。
+[Microsoft Azure 门户](https://portal.azure.com)是一个中心位置，可在其中预配和管理 Azure 资源。 该门户使用_边栏选项卡_组织其内容。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -68,11 +68,11 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 
 ## <a name="azure-resource-manager"></a>Azure 资源管理器
 
-[Azure 资源管理器](../azure-resource-manager/management/overview.md)使您能够作为一个组处理解决方案中的资源。 可以通过一个协调操作为解决方案部署、更新或删除资源。
+[Azure 资源管理器](../azure-resource-manager/management/overview.md)使你能够以组的形式处理解决方案中的资源。 可以通过一个协调操作为解决方案部署、更新或删除资源。
 
 ## <a name="azure-service-bus"></a>Azure 服务总线
 
-[Service Bus](../service-bus/index.md)提供与企业消息传递和中继通信的云通信，帮助您将本地解决方案与云连接起来。 某些 IoT 中心教程使用服务总线[队列](../service-bus-messaging/service-bus-messaging-overview.md)。
+[服务总线](../service-bus/index.md)为启用了云的通信提供了企业消息传递和中继通信，帮助你将本地解决方案与云连接起来。 某些 IoT 中心教程使用服务总线[队列](../service-bus-messaging/service-bus-messaging-overview.md)。
 
 ## <a name="azure-storage"></a>Azure 存储
 
@@ -140,7 +140,7 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 
 ## <a name="device-condition"></a>设备条件
 
-引用设备状态信息，如[设备应用](#device-app)报告当前正在使用的连接方法。 [设备应用](#device-app)还可以报告其功能。 可以使用设备孪生查询条件和功能的信息。
+指设备[应用](#device-app)报告的设备状态信息，例如当前使用的连接方法。 [设备应用](#device-app)还可以报告其功能。 可以使用设备孪生查询条件和功能的信息。
 
 ## <a name="device-data"></a>设备数据
 
@@ -148,7 +148,7 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 
 ## <a name="device-explorer"></a>设备资源管理器
 
-设备资源管理器已替换为[Azure IoT 资源管理器](https://github.com/Azure/azure-iot-explorer)，该资源管理器用于查看设备发送的遥测数据、使用设备属性和调用命令。 您还可以使用资源管理器与设备进行交互和测试，以及管理即插即用设备。
+已将设备资源管理器替换为[Azure IoT 浏览器](https://github.com/Azure/azure-iot-explorer)，用于查看设备正在发送的遥测数据，使用设备属性和调用命令。 你还可以使用资源管理器与设备交互和测试设备，并管理即插即用设备。
 
 ## <a name="device-identity"></a>设备标识
 
@@ -168,7 +168,7 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 
 ## <a name="device-provisioning"></a>设备预配
 
-设备预配是向解决方案中的存储添加初始[设备数据](#device-data)的过程。 要使新设备连接到集线器，必须向 IoT 中心[标识注册表](#identity-registry)添加设备 ID 和密钥。 在预配过程中，可能需要初始化其他解决方案存储中的设备特定数据。
+设备预配是将初始[设备数据](#device-data)添加到解决方案中的存储的过程。 若要使新设备能够连接到中心，必须将设备 ID 和密钥添加到 IoT 中心[标识注册表](#identity-registry)。 在预配过程中，可能需要初始化其他解决方案存储中的设备特定数据。
 
 ## <a name="device-twin"></a>设备孪生
 
@@ -188,11 +188,11 @@ IoT 中心公开了多个[终结点](iot-hub-devguide-endpoints.md)，以便使�
 
 ## <a name="event-hub-compatible-endpoint"></a>与事件中心兼容的终结点
 
-若要读取发送到 IoT 中心的[设备到云](#device-to-cloud)消息，可以连接到中心上的终结点，并使用任何事件中心兼容的方法读取这些消息。 事件中心兼容的方法包括使用[事件中心 SDK](../event-hubs/event-hubs-programming-guide.md)和[Azure 流分析](../stream-analytics/stream-analytics-introduction.md)。
+若要读取发送到 IoT 中心的[设备到云](#device-to-cloud)消息，可以连接到中心上的终结点，并使用任何事件中心兼容的方法读取这些消息。 与事件中心兼容的方法包括使用[事件中心 sdk](../event-hubs/event-hubs-programming-guide.md)和[Azure 流分析](../stream-analytics/stream-analytics-introduction.md)。
 
 ## <a name="field-gateway"></a>现场网关
 
-现场网关支持无法直接连接到[IoT 中心](#iot-hub)且通常随设备在本地部署的设备的连接。 有关详细信息，请参阅什么是[Azure IoT 中心？](about-iot-hub.md)
+现场网关为无法直接连接到[IoT 中心](#iot-hub)的设备启用连接，并且通常在本地与设备一起部署。 有关详细信息，请参阅[什么是 Azure IoT 中心？](about-iot-hub.md)
 
 ## <a name="free-account"></a>免费帐户
 
@@ -214,7 +214,7 @@ IoT 中心公开了多个[终结点](iot-hub-devguide-endpoints.md)，以便使�
 
 ## <a name="iot-hub"></a>IoT 中心
 
-IoT 中心是完全托管的 Azure 服务，用于支持数百万台设备和解决方案后端之间可靠、安全的双向通信。 有关详细信息，请参阅什么是[Azure IoT 中心？](about-iot-hub.md) 使用 [Azure 订阅](#subscription)可以创建 IoT 中心来处理 IoT 消息传送工作负荷。
+IoT 中心是完全托管的 Azure 服务，用于支持数百万台设备和解决方案后端之间可靠、安全的双向通信。 有关详细信息，请参阅[什么是 Azure IoT 中心？](about-iot-hub.md) 使用 [Azure 订阅](#subscription)可以创建 IoT 中心来处理 IoT 消息传送工作负荷。
 
 ## <a name="iot-hub-metrics"></a>IoT 中心指标
 
@@ -238,7 +238,7 @@ Azure IoT 解决方案加速器将多个 Azure 服务一起打包到解决方案
 
 ## <a name="job"></a>作业
 
-解决方案后端可以使用[作业](iot-hub-devguide-jobs.md)来安排和跟踪在 IoT 中心注册的一组设备上的活动。 活动包括更新设备孪生[所需属性](#desired-properties)、更新设备孪生[标记](#tags)和调用[直接方法](#direct-method)。 [IoT 中心](#iot-hub)还用于在[标识注册表](#identity-registry)中[导入和导出](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)内容。
+解决方案后端可以使用[作业](iot-hub-devguide-jobs.md)来计划和跟踪在 IoT 中心注册的一组设备上的活动。 活动包括更新设备克隆[所需属性](#desired-properties)、更新设备克隆[标记](#tags)，以及调用[直接方法](#direct-method)。 [IoT 中心](#iot-hub)还用于在[标识注册表](#identity-registry)中[导入和导出](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)内容。
 
 ## <a name="modules"></a>模块
 
@@ -256,11 +256,11 @@ Azure IoT 解决方案加速器将多个 Azure 服务一起打包到解决方案
 
 ## <a name="mqtt"></a>MQTT
 
-[MQTT](https://mqtt.org/)是[IoT 中心](#iot-hub)支持的消息传递协议之一，用于与设备通信。 有关 IoT 中心支持的消息传递协议的详细信息，请参阅[使用 IoT 中心发送和接收消息](iot-hub-devguide-messaging.md)。
+[MQTT](https://mqtt.org/)是[IoT 中心](#iot-hub)支持的用于与设备进行通信的消息传递协议之一。 有关 IoT 中心支持的消息传递协议的详细信息，请参阅[使用 IoT 中心发送和接收消息](iot-hub-devguide-messaging.md)。
 
 ## <a name="operations-monitoring"></a>操作监视
 
-IoT 中心[操作监视](iot-hub-operations-monitoring.md)使您能够实时监视 IoT 中心上的操作状态。 [IoT 中心](#iot-hub)跟踪多个操作类别的事件。 可以选择将一个或多个类别的事件发送到 IoT 中心终结点进行处理。 可以监视数据中是否有错误，或根据数据模式设置更复杂的处理行为。
+IoT 中心[操作监视](iot-hub-operations-monitoring.md)可让你实时监视 IoT 中心上的操作状态。 [IoT 中心](#iot-hub)跨多个类别的操作跟踪事件。 可以选择将一个或多个类别的事件发送到 IoT 中心终结点进行处理。 可以监视数据中是否有错误，或根据数据模式设置更复杂的处理行为。
 
 ## <a name="physical-device"></a>物理设备
 
@@ -272,7 +272,7 @@ IoT 中心[操作监视](iot-hub-operations-monitoring.md)使您能够实时监�
 
 ## <a name="protocol-gateway"></a>协议网关
 
-协议网关通常部署在云中，并为连接到[IoT 中心](#iot-hub)的设备提供协议转换服务。 有关详细信息，请参阅什么是[Azure IoT 中心？](about-iot-hub.md)
+协议网关通常部署在云中，为连接到[IoT 中心](#iot-hub)的设备提供协议转换服务。 有关详细信息，请参阅[什么是 Azure IoT 中心？](about-iot-hub.md)
 
 ## <a name="quotas-and-throttling"></a>配额和限制
 
@@ -329,7 +329,7 @@ Azure 订阅是发生计费的地方。 创建的每个 Azure 资源或使用的
 
 在与[设备孪生](iot-hub-devguide-device-twins.md)相关的语境中，系统属性为只读，其中包括与设备使用情况相关的信息，例如上次活动时间和连接状态。
 
-## <a name="tags"></a>Tags
+## <a name="tags"></a>标记
 
 在与[设备孪生](iot-hub-devguide-device-twins.md)相关的语境中，标记是指由解决方案后端以 JSON 文档形式存储和检索的设备元数据。 标记对于设备上的应用程序不可见。
 

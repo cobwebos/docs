@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 04/15/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 61fb8b53d7d109fefc002b387702a240353f0dca
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: bfe0c6fcc0d1d22807bfb59b146050fb307892a0
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82117601"
+ms.locfileid: "82133160"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure 资源管理器资源提供程序操作
 
@@ -4284,7 +4284,7 @@ Azure 服务：[事件网格](../event-grid/index.yml)
 > |  | **域/privateLinkResources** |  |
 > | 操作 | EventGrid/域/privateLinkResources/read | 获取或列出域的 PrivateLinkResources |
 > |  | **域/提供商/logDefinitions/** |  |
-> | 操作 | Microsoft.EventGrid/domains/providers/Microsoft.Insights/logDefinitions/read | 允许访问诊断日志 |
+> | 操作 | Microsoft.EventGrid/domains/providers/Microsoft.Insights/logDefinitions/read | 允许访问资源日志 |
 > |  | **域/提供商/metricDefinitions/** |  |
 > | 操作 | Microsoft.EventGrid/domains/providers/Microsoft.Insights/metricDefinitions/read | 获取域的可用指标 |
 > |  | **域/主题** |  |
@@ -4352,7 +4352,7 @@ Azure 服务：[事件网格](../event-grid/index.yml)
 > | 操作 | EventGrid/systemTopics/providers/diagnosticSettings/read | 获取系统主题的诊断设置 |
 > | 操作 | EventGrid/systemTopics/providers/diagnosticSettings/write | 创建或更新系统主题的诊断设置 |
 > |  | **systemTopics/providers/logDefinitions/** |  |
-> | 操作 | EventGrid/systemTopics/providers/logDefinitions/read | 允许访问诊断日志 |
+> | 操作 | EventGrid/systemTopics/providers/logDefinitions/read | 允许访问资源日志 |
 > |  | **systemTopics/providers/metricDefinitions/** |  |
 > | 操作 | EventGrid/systemTopics/providers/metricDefinitions/read | 获取系统主题的可用指标 |
 > |  | **本节** |  |
@@ -4376,7 +4376,7 @@ Azure 服务：[事件网格](../event-grid/index.yml)
 > | 操作 | Microsoft.EventGrid/topics/providers/Microsoft.Insights/diagnosticSettings/read | 获取主题的诊断设置 |
 > | 操作 | Microsoft.EventGrid/topics/providers/Microsoft.Insights/diagnosticSettings/write | 创建或更新主题的诊断设置 |
 > |  | **主题/提供者/logDefinitions/** |  |
-> | 操作 | Microsoft.EventGrid/topics/providers/Microsoft.Insights/logDefinitions/read | 允许访问诊断日志 |
+> | 操作 | Microsoft.EventGrid/topics/providers/Microsoft.Insights/logDefinitions/read | 允许访问资源日志 |
 > |  | **主题/提供者/metricDefinitions/** |  |
 > | 操作 | Microsoft.EventGrid/topics/providers/Microsoft.Insights/metricDefinitions/read | 获取主题的可用指标 |
 > |  | **topictypes** |  |
@@ -8402,7 +8402,7 @@ Azure 服务： [azure 资源管理器](../azure-resource-manager/index.yml)
 > | 操作 | Microsoft.Resources/deploymentScripts/delete | 删除部署脚本 |
 > |  | **deploymentScripts/logs** |  |
 > | 操作 | Microsoft.Resources/deploymentScripts/logs/read | 获取或列出部署脚本日志 |
-> |  | **links** |  |
+> |  | **链接** |  |
 > | 操作 | Microsoft.Resources/links/read | 获取或列出资源链接。 |
 > | 操作 | Microsoft.Resources/links/write | 创建或更新资源链接。 |
 > | 操作 | Microsoft.Resources/links/delete | 删除资源链接。 |

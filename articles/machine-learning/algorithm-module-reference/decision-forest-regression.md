@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/22/2020
-ms.openlocfilehash: 63d90a5239e6bf350d8a6b66f35157e4c7d15aee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: bb7ebee67d65ab37dc037437b7c35d8c19c53096
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79456533"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137019"
 ---
 # <a name="decision-forest-regression-module"></a>“决策林回归”模块
 
-本文介绍 Azure 机器学习设计器（预览版）中的一个模块。
+本文介绍了 Azure 机器学习设计器（预览版）中的一个模块。
 
 使用此模块，可以基于决策树的集成创建回归模型。
 
@@ -32,35 +32,35 @@ ms.locfileid: "79456533"
 
 - 在训练和预测期间的计算和内存使用效率都很高。
 
-- 可以表示非线性决策边界。
+- 它们可以表示非线性决策边界。
 
 - 它们执行集成的特征选择和分类，并且在存在干扰性特征时具有弹性。
 
 此回归模型由决策树的集成组成。 回归决策林中的每个树都将高斯分布输出为预测。 聚合是通过树的集成执行的，用于查找与模型中所有树的组合分布最接近的高斯分布。
 
-有关此算法的理论框架及其实现的详细信息，请参阅本文：[决策林：分类、回归、密度估计、多管理系统学习和半监督学习的统一框架](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
+有关此算法及其实现的理论框架的详细信息，请参阅以下文章：[决策林：用于分类、回归、密度估算、流形学习和半监督式学习的统一框架](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>如何配置决策林回归模型
 
-1. 将**决策林回归**模块添加到管道。 可以在设计器中在“机器学习”****、“初始化模型”**** 和“回归”**** 下找到此模块。
+1. 将**决策林回归**模块添加到管道。 可以在设计器中在“机器学习”  、“初始化模型”  和“回归”  下找到此模块。
 
-2. 打开模块属性，对于“重新采样方法”，请选择用于创建各个树的方法****。  你可以选择“装袋”或“复制”。********
+2. 打开模块属性，对于“重新采样方法”，请选择用于创建各个树的方法  。  你可以选择“装袋”或“复制”。  
 
-    - **装袋**： 装袋也称为*引导*聚合。 回归决策林中的每个树都将高斯分布输出为预测。 聚合的目的是找到这样一个高斯分布：其前两个矩与通过组合各个树返回的所有分布来形成的混合高斯分布的矩相匹配。
+    - **装袋**：装袋也称为“启动聚合”  。 回归决策林中的每个树都将高斯分布输出为预测。 聚合的目的是找到这样一个高斯分布：其前两个矩与通过组合各个树返回的所有分布来形成的混合高斯分布的矩相匹配。
 
-         有关详细信息，请参阅[Bootstrap 聚合](https://wikipedia.org/wiki/Bootstrap_aggregating)的维基百科条目。
+         有关详细信息，请参阅关于[启动聚合](https://wikipedia.org/wiki/Bootstrap_aggregating)的维基百科条目。
 
-    - **复制**：在复制中，每个树都接受完全相同的输入数据的培训。 确定每个树节点使用哪个拆分谓词仍然是随机的，并且树将多种多样。
+    - **复制**：在复制中，每个树都用完全相同的输入数据进行训练。 确定每个树节点使用哪个拆分谓词仍然是随机的，并且树将多种多样。
 
-         有关使用**复制**选项的培训过程的详细信息，请参阅[计算机视觉和医疗图像分析的决策林。克里米尼西和J.肖特顿斯普林格2013.](https://research.microsoft.com/projects/decisionforests/).
+         有关包含**复制**选项的训练过程的详细信息，请参阅[适用于计算机视觉和医疗图像分析的决策林。Criminisi 和 J. Shotton。Springer 2013。](https://research.microsoft.com/projects/decisionforests/)
 
-3. 通过设置“创建训练器模式”选项来指定如何训练模型。****
+3. 通过设置“创建训练程序模式”选项，指定要如何对模型进行训练  。
 
-    - **单一参数**
+    - “单个参数” 
 
-      如果知道自己想要如何配置模型，可以提供一组特定的值作为参数。 你可能已通过试验了解了这些值，或者已采用它们作为指南。
+      如果你知道自己想要如何配置模型，可以提供一组特定的值作为参数。 你可能已通过试验了解了这些值，或者已采用它们作为指南。
 
-    - **参数范围**：如果不确定最佳参数，并且想要运行参数扫描，请选择此选项。 选择要迭代的值范围，[调谐模型 Hyper 参数](tune-model-hyperparameters.md)迭代您提供的所有可能组合设置，以确定生成最佳结果的超参数。 
+    - **参数范围**：如果你不确定最佳参数，并想要运行参数扫描，请选择此选项。 选择要循环访问的值的范围，[调整模型超参数](tune-model-hyperparameters.md)循环访问提供的设置的所有可能组合，以确定产生最佳结果的超参数。 
 
 
 
@@ -78,9 +78,19 @@ ms.locfileid: "79456533"
      通过增加此值，可以增加创建新规则的阈值。 例如，使用默认值 1 时，即使是单个案例也可以导致创建新规则。 如果将值增加到 5，则训练数据将必须包含至少五个满足相同条件的事例。
 
 
-9. 连接一个带标签的数据集，选择包含不超过两个结果的单个标签列，并连接到[训练模型](./train-model.md)。
+9. 训练模型：
 
-    - 如果将“创建训练程序模式”选项设置为“单个参数”，请使用[训练模型](./train-model.md)模块来训练模型********。
+    + 如果将“创建训练程序模式”设置为“单个参数”，请连接标记的数据集和[训练模型](train-model.md)模块********。  
+  
+    + 如果将 "**创建训练培训模式**" 设置为 "**参数范围**"，请使用[优化模型超参数](tune-model-hyperparameters.md)连接标记的数据集并为模型定型。  
+  
+    > [!NOTE]
+    > 
+    > 如果将参数范围传递到[定型模型](train-model.md)，则它仅使用单个参数列表中的默认值。  
+    > 
+    > 如果将一组参数值传递到[优化模型超参数](tune-model-hyperparameters.md)模块，则在它需要每个参数的一系列设置时，它将忽略这些值，并使用学习器的默认值。  
+    > 
+    > 如果选择 "**参数范围**" 选项并为任何参数输入单个值，则会在整个扫描中使用您指定的单个值，即使其他参数在一系列值中发生变化。
 
    
 
@@ -90,7 +100,7 @@ ms.locfileid: "79456533"
 
 训练完成后：
 
-+ 要保存已定型模型的快照，请选择训练模块，然后切换到右侧面板中的 **"输出"** 选项卡。 单击图标**注册模型**。  您可以在模块树中找到已保存的模型作为模块。 
++ 若要保存训练的模型的快照，请选择训练模块，然后在右侧面板中切换到 "**输出**" 选项卡。 单击图标 "**注册模型**"。  您可以在模块树中找到保存的模型作为模块。 
 
 ## <a name="next-steps"></a>后续步骤
 

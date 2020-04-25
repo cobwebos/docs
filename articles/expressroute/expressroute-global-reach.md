@@ -1,27 +1,27 @@
 ---
-title: Azure 快速路由：使用全球覆盖连接到 Microsoft 云
+title: Azure ExpressRoute：使用 Global Reach 连接到 Microsoft 云
 description: 本文介绍 ExpressRoute Global Reach。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 04/24/2020
 ms.author: cherylmc
-ms.openlocfilehash: f574576044b7e4ddd34289b5cc45fe5ca353f180
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c326a556530fd778c1178f11b79d2aba613b4c1
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77538498"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82136577"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
-ExpressRoute 是用来将本地网络连接到 Microsoft 云的一种专用且可复原的方式。 您可以通过专用数据中心或公司网络访问许多 Microsoft 云服务，如 Azure 和 Office 365。 例如，你可能在旧金山有一家分公司，其 ExpressRoute 线路位于硅谷，在伦敦有另一家分公司，其 ExpressRoute 线路位于同一城市。 这两个分公司都可以与美国西部和英国南部的 Azure 资源高速连接。 但是，分公司不能直接相互交换数据。 换句话说，10.0.1.0/24 可以将数据发送到 10.0.3.0/24 和 10.0.4.0/24，但不能发送到 10.0.2.0/24。
+ExpressRoute 是用来将本地网络连接到 Microsoft 云的一种专用且可复原的方式。 你可以从专用数据中心或公司网络访问多个 Microsoft 云服务，例如 Azure 和 Office 365。 例如，你可能在旧金山有一家分公司，其 ExpressRoute 线路位于硅谷，在伦敦有另一家分公司，其 ExpressRoute 线路位于同一城市。 这两个分公司都可以与美国西部和英国南部的 Azure 资源高速连接。 但是，分公司不能直接相互交换数据。 换句话说，10.0.1.0/24 可以将数据发送到 10.0.3.0/24 和 10.0.4.0/24，但不能发送到 10.0.2.0/24。
 
 ![不带时][1]
 
 使用 **ExpressRoute Global Reach**，可以将 ExpressRoute 线路链接到一起，以在本地网络之间建立专用网络。 在上面的示例中，通过添加 ExpressRoute Global Reach，你的旧金山分公司 (10.0.1.0/24) 便可以通过现有的 ExpressRoute 线路和 Microsoft 的全球网络直接与你的伦敦分公司 (10.0.2.0/24) 交换数据。 
 
-![与][2]
+![利用][2]
 
 ## <a name="use-case"></a>用例
 ExpressRoute Global Reach 旨在补充服务提供商的 WAN 实施，并连接你在世界各地的分公司。 例如，如果你的服务提供商主要在美国运营并且已连接你在美国的所有分公司，但服务提供商不在日本和香港运营，则可以使用 ExpressRoute Global Reach 与本地服务提供商合作，Microsoft 将使用 ExpressRoute 和我们的全球网络将你在那里的分公司连接到美国的分公司。
@@ -49,9 +49,9 @@ ExpressRoute Global Reach 旨在补充服务提供商的 WAN 实施，并连接�
 在以上国家/地区中，必须在 [ExpressRoute 对等互连位置](expressroute-locations.md)创建 ExpressRoute 线路。 若要在[不同的地缘政治区域](expressroute-locations.md)之间启用 ExpressRoute Global Reach，你的线路必须是高级 SKU。
 
 ## <a name="next-steps"></a>后续步骤
-1. [详细了解 ExpressRoute Global Reach](expressroute-faqs.md)
-2. [如何启用 ExpressRoute Global Reach](expressroute-howto-set-global-reach.md)
-3. [将 ExpressRoute 线路链接到 Azure 虚拟网络](expressroute-howto-linkvnet-arm.md)
+1. [查看 Global Reach 常见问题](expressroute-faqs.md#globalreach)
+2. [了解如何启用 Global Reach](expressroute-howto-set-global-reach.md)
+3. [了解如何将 ExpressRoute 线路链接到虚拟网络](expressroute-howto-linkvnet-arm.md)
 
 
 <!--Image References-->

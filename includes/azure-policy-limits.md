@@ -4,14 +4,14 @@ description: include 文件
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/25/2020
+ms.date: 04/23/2020
 ms.author: dacoulte
-ms.openlocfilehash: 19b43c857058b3af50db3bc1b42ec1ae558ee884
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 04e607296478520298a2febab61a7edac911a59c
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80272945"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82132263"
 ---
 Azure Policy 的每个对象类型都有一个最大计数。 _作用域_条目是指订阅或[管理组](../articles/governance/management-groups/overview.md)。
 
@@ -26,4 +26,4 @@ Azure Policy 的每个对象类型都有一个最大计数。 _作用域_条目�
 | 计划定义 | 参数 | 100 |
 | 策略或计划分配 | 排除项 (notScopes) | 400 |
 | 策略规则 | 嵌套式条件语句 | 512 |
-| 修正任务 | 资源 | 1000 |
+| 修正任务 | 资源 | 500 |

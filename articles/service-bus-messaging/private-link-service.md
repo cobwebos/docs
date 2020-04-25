@@ -7,12 +7,12 @@ ms.author: spelluru
 ms.date: 03/13/2020
 ms.service: service-bus-messaging
 ms.topic: article
-ms.openlocfilehash: f456137b61a96f555b2604e7871516fd1d38ab42
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 33e6ce1d5feb50080b00fcbecdeb9e512980eab6
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116700"
+ms.locfileid: "82141950"
 ---
 # <a name="integrate-azure-service-bus-with-azure-private-link-preview"></a>将 Azure 服务总线与 Azure 专用链接集成（预览版）
 
@@ -25,7 +25,7 @@ ms.locfileid: "82116700"
 >[!WARNING]
 > 实现专用终结点可阻止其他 Azure 服务与 Service Bus 交互。
 >
-> 实现虚拟网络时，受信任的 Microsoft 服务不受支持。
+> 使用虚拟网络时不支持受信任的 Microsoft 服务。
 >
 > 不适用于虚拟网络常见 Azure 方案（请注意，该列表内容并不详尽）****-
 > - 与 Azure 事件网格的集成
@@ -71,7 +71,7 @@ ms.locfileid: "82116700"
     1. 选择要在其中创建专用终结点的**Azure 订阅**。 
     2. 选择专用终结点资源的**资源组**。
     3. 输入专用终结点的**名称**。 
-    5. 选择专用终结点的**区域**。 专用终结点必须与虚拟网络位于同一区域中，但可以在与所连接到的专用链接资源不同的区域中。 
+    5. 选择专用终结点的**区域**。 专用终结点必须与虚拟网络位于同一区域中，但可以与连接到的专用链接资源位于不同的区域中。 
     6. 选择页面底部的 "**下一步：资源 >** " 按钮。
 
         ![创建专用终结点-基本页](./media/private-link-service/create-private-endpoint-basics-page.png)
@@ -85,7 +85,7 @@ ms.locfileid: "82116700"
         
             ![创建专用终结点-资源页](./media/private-link-service/create-private-endpoint-resource-page.png)
     2. 如果选择 "**按资源 ID 或别名连接到 Azure 资源**"，请执行以下步骤：
-        1. 输入**资源 ID**或**别名**。 它可以是某些与你共享的资源 ID 或别名。
+        1. 输入**资源 ID**或**别名**。 它可以是某人与你共享的资源 ID 或别名。 获取资源 ID 的最简单方法是导航到 Azure 门户中的服务总线命名空间，并从中`/subscriptions/`复制 URI 的一部分。 有关示例，请参阅下图。 
         2. 对于**目标子资源**，请输入**命名空间**。 这是专用终结点可以访问的子资源的类型。 
         3. 可有可无输入**请求消息**。 资源所有者在管理专用终结点连接时看到此消息。 
         4. 然后，选择页面底部的 "**下一步：配置 >** " 按钮。 

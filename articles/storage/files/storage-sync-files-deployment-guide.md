@@ -7,65 +7,65 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f2c4e762ebf10a5ca2120c13a52750a7781d60b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d179697707b8190515e8c0e6dee2defa8881c03
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79268062"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137716"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 文件同步
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
 
 强烈建议先阅读[规划 Azure 文件部署](storage-files-planning.md)和[规划 Azure 文件同步部署](storage-sync-files-planning.md)，再按照本文中的步骤进行操作。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * 要部署 Azure 文件同步的同一区域中的 Azure 文件共享。有关详细信息，请参阅：
     - Azure 文件同步的[适用地区](storage-sync-files-planning.md#azure-file-sync-region-availability)。
     - [创建文件共享](storage-how-to-create-file-share.md)，了解创建文件共享的分步说明。
-* 至少有一个受支持的 Windows 服务器或 Windows 服务器群集实例，以便与 Azure 文件同步同步。有关受支持版本的 Windows 服务器的详细信息，请参阅[与 Windows 服务器的互操作性](storage-sync-files-planning.md#windows-file-server-considerations)。
-* Az PowerShell 模块可与 PowerShell 5.1 或 PowerShell 6+ 一起使用。 您可以在任何受支持的系统上（包括非 Windows 系统）上使用 Az PowerShell 模块进行 Azure 文件同步，但服务器注册 cmdlet 必须始终在正在注册的 Windows Server 实例上运行（这可以直接或通过 PowerShell 完成）远程）。 在 Windows 服务器 2012 R2 上，您可以验证是否至少正在运行 PowerShell 5.1。\*通过查看 **$PSVersionTable**对象的**PSVersion**属性的值：
+* 至少有一个受支持的 Windows Server 或 Windows Server 群集实例与 Azure 文件同步同步。有关受支持的 Windows Server 版本的详细信息，请参阅[与 Windows server 的互操作性](storage-sync-files-planning.md#windows-file-server-considerations)。
+* Az PowerShell 模块可与 PowerShell 5.1 或 PowerShell 6 + 一起使用。 您可以在任何支持的系统（包括非 Windows 系统）上使用 Az PowerShell module for Azure 文件同步，但必须始终在要注册的 Windows Server 实例上运行服务器注册 cmdlet （可以直接或通过 PowerShell 远程处理来执行）。 在 Windows Server 2012 R2 上，可以验证是否至少运行了 PowerShell 5.1。\*通过查看 **$PSVersionTable**对象的**PSVersion**属性的值：
 
     ```powershell
     $PSVersionTable.PSVersion
     ```
 
-    与 Windows Server 2012 R2 的全新安装一样，如果 PSVersion 值低于 5.1.\*，可通过下载并安装 [Windows Management Framework (WMF) 5.1](https://www.microsoft.com/download/details.aspx?id=54616) 轻松升级。 要下载和安装 Windows Server 2012 R2 的相应软件包是**Win8.1AndW2K12R2-KB\*\*\*\*\*\*\*-x64.msu**。 
+    与 Windows Server 2012 R2 的全新安装一样，如果 PSVersion 值低于 5.1.\*，可通过下载并安装 [Windows Management Framework (WMF) 5.1](https://www.microsoft.com/download/details.aspx?id=54616) 轻松升级。 为 Windows Server 2012 R2 下载和安装的合适包是**win 8.1\*\*\*\*\*\*\*andw2k12r2-KB-x64**。 
 
-    PowerShell 6+ 可与任何受支持的系统一起使用，并且可以通过其[GitHub 页面](https://github.com/PowerShell/PowerShell#get-powershell)下载。 
-
-    > [!Important]  
-    > 如果您计划使用服务器注册 UI，而不是直接从 PowerShell 注册，则必须使用 PowerShell 5.1。
-
-* 如果您已选择使用 PowerShell 5.1，请确保至少安装了 .NET 4.7.2。 详细了解[.NET 框架版本和系统上的依赖项](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies)。
+    PowerShell 6 + 可用于任何受支持的系统，并且可以通过其[GitHub 页面](https://github.com/PowerShell/PowerShell#get-powershell)下载。 
 
     > [!Important]  
-    > 如果要在 Windows 服务器核心上安装 .NET 4.7.2+，则必须使用`quiet`和`norestart`标志进行安装，否则安装将失败。 例如，如果安装 .NET 4.8，该命令将如下所示：
+    > 如果你计划使用服务器注册 UI，而不是直接从 PowerShell 注册，则必须使用 PowerShell 5.1。
+
+* 如果已选择使用 PowerShell 5.1，请确保至少安装了 .NET 4.7.2。 详细了解系统上的[.NET Framework 版本和依赖关系](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies)。
+
+    > [!Important]  
+    > 如果在 Windows Server Core 上安装 .NET 4.7.2 +，则必须用`quiet`和`norestart`标志安装，否则安装将失败。 例如，如果安装 .NET 4.8，则命令将如下所示：
     > ```PowerShell
     > Start-Process -FilePath "ndp48-x86-x64-allos-enu.exe" -ArgumentList "/q /norestart" -Wait
     > ```
 
-* Az PowerShell 模块，可通过此处的说明进行安装：[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
+* Az PowerShell 模块，可按照此处的说明进行安装：[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
      
     > [!Note]  
-    > 安装 Az PowerShell 模块时，现在会自动安装 Az.StorageSync 模块。
+    > 安装 Az PowerShell 模块后，将自动安装 Az Storagesync.sys 模块。
 
 ## <a name="prepare-windows-server-to-use-with-azure-file-sync"></a>准备 Windows Server，用于 Azure 文件同步
 对于要与 Azure 文件同步配合使用的每个服务器（包括故障转移群集中的服务器节点），请禁用“Internet Explorer 增强的安全性配置”。**** 只需在最初注册服务器时禁用。 可在注册服务器后重新启用。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 > [!Note]  
-> 如果要在 Windows 服务器核心上部署 Azure 文件同步，则可以跳过此步骤。
+> 如果要在 Windows Server Core 上部署 Azure 文件同步，则可以跳过此步骤。
 
 1. 打开服务器管理器。
 2. 单击“本地服务器”****：  
     ![服务器管理器 UI 左侧的“本地服务器”](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-1.PNG)
 3. 在“属性”子窗格上，选择“IE 增强的安全性配置”的链接********。  
     ![服务器管理器 UI 中的“IE 增强的安全性配置”窗格](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-2.PNG)
-4. 在**Internet 资源管理器增强安全配置**对话框中，为**管理员**和**用户**选择 **"关闭**"：  
+4. 在 " **Internet Explorer 增强的安全配置**" 对话框中，为 "**管理员**" 和 "**用户**" 选择 "**关闭**"：  
     ![选定“关”的“Internet Explorer 增强的安全性配置”弹出窗口](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-3.png)
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 若要禁用“Internet Explorer 增强的安全性配置”，请在权限提升的 PowerShell 会话中执行以下命令：
 
 ```powershell
@@ -94,22 +94,22 @@ if ($installType -ne "Server Core") {
 Azure 文件同步的部署过程首先会将一个“存储同步服务”资源放入所选订阅的资源组中。**** 我们建议尽量少预配这些资源。 将在服务器与此资源之间创建信任关系，一个服务器只能注册到一个存储同步服务。 因此，我们建议根据需要部署尽量多的存储同步服务，以隔离服务器组。 请记住，不同存储同步服务中的服务器不能彼此同步。
 
 > [!Note]
-> 存储同步服务从已部署到的订阅和资源组中继承访问权限。 我们建议仔细检查谁有权访问该服务。 具有写访问权限的实体可以开始从已注册到此存储同步服务的服务器同步新的文件集，使数据流向这些实体可以访问的 Azure 存储。
+> 存储同步服务将从它已部署到的订阅和资源组继承访问权限。 我们建议仔细检查谁有权访问该服务。 具有写访问权限的实体可以开始从已注册到此存储同步服务的服务器同步新的文件集，使数据流向这些实体可以访问的 Azure 存储。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
-要部署存储同步服务，请转到[Azure 门户](https://portal.azure.com/)，单击"*创建资源*"，然后搜索 Azure 文件同步。在搜索结果中，选择**Azure 文件同步**，然后选择 **"创建**"以打开 **"部署存储同步**"选项卡。
+若要部署存储同步服务，请单击 " [Azure 门户](https://portal.azure.com/)"，再单击 "*创建资源*"，然后搜索 Azure 文件同步。在搜索结果中，选择 " **Azure 文件同步**"，然后选择 "**创建**" 以打开 "**部署存储同步**" 选项卡。
 
 在打开的窗格中，输入以下信息：
 
 - 名称：存储同步服务的唯一名称（按订阅）****。
 - 订阅：需要在其中创建存储同步服务的订阅****。 根据组织的配置策略，可能有权访问一个或多个订阅。 Azure 订阅是对每项云服务（如 Azure 文件）计费的最基本容器。
-- **资源组**：资源组是 Azure 资源的逻辑组，如存储帐户或存储同步服务。 您可以创建新的资源组或使用现有资源组进行 Azure 文件同步。（我们建议将资源组用作容器，以逻辑方式隔离组织的资源，例如对特定项目的人力资源或资源进行分组。
-- **位置**：要在其中部署 Azure 文件同步的区域。此列表中只有支持的区域可用。
+- **资源组**：资源组是 Azure 资源（如存储帐户或存储同步服务）的逻辑组。 你可以创建新的资源组或使用现有资源组进行 Azure 文件同步。（建议使用资源组作为容器以逻辑方式将资源隔离到组织，例如对 HR 资源或特定项目的资源进行分组。）
+- **位置**：要在其中部署 Azure 文件同步的区域。此列表中仅提供受支持的区域。
 
 完成后，选择“创建”部署存储同步服务****。
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
-使用`<Az_Region>`自己的`<RG_Name>`值替换`<my_storage_sync_service>`和 ，然后使用以下命令创建和部署存储同步服务：
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+使用`<Az_Region>`你`<RG_Name>`自己的`<my_storage_sync_service>`值替换、和，然后使用以下命令创建并部署存储同步服务：
 
 ```powershell
 $hostType = (Get-Host).Name
@@ -164,15 +164,15 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 可从 [Microsoft 下载中心](https://go.microsoft.com/fwlink/?linkid=858257)下载代理。 下载完成后，双击 MSI 包，开始安装 Azure 文件同步代理。
 
 > [!Important]  
-> 如果要对故障转移群集使用 Azure 文件同步，则 必须在群集中的每个节点上安装 Azure 文件同步代理。 必须注册群集中的每个节点才能使用 Azure 文件同步。
+> 如果要对故障转移群集使用 Azure 文件同步，则 必须在群集中的每个节点上安装 Azure 文件同步代理。 群集中的每个节点都必须注册才能使用 Azure 文件同步。
 
 建议执行以下操作：
 - 保留默认安装路径(C:\Program Files\Azure\StorageSyncAgent)，以简化故障排除和服务器维护。
-- 启用 Microsoft 更新，使 Azure 文件同步保持最新。 Azure 文件同步代理的所有更新（包括功能更新和修补程序）都可从 Microsoft 更新进行。 我们建议将最新的更新安装到 Azure 文件同步。有关详细信息，请参阅[Azure 文件同步更新策略](storage-sync-files-planning.md#azure-file-sync-agent-update-policy)。
+- 启用 Microsoft 更新，使 Azure 文件同步保持最新。 Azure 文件同步代理的所有更新（包括功能更新和修补程序）都可从 Microsoft 更新进行。 建议将最新更新安装到 Azure 文件同步。有关详细信息，请参阅[Azure 文件同步更新策略](storage-sync-files-planning.md#azure-file-sync-agent-update-policy)。
 
 Azure 文件同步代理安装完成后，服务器注册 UI 自动打开。 在注册之前，必须创建存储同步服务；请参阅下一部分了解如何创建存储同步服务。
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 执行以下 PowerShell 代码，以下载适用于所用 OS 的 Azure 文件同步代理版本，并将其安装在系统上。
 
 > [!Important]  
@@ -229,7 +229,7 @@ Remove-Item -Path ".\StorageSyncAgent.msi" -Recurse -Force
 
 选择相应的信息之后，选择“注册”完成服务器注册****。 在注册过程中，系统会提示进行其他登录。
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 $registeredServer = Register-AzStorageSyncServer -ParentObject $storageSync
 ```
@@ -245,7 +245,7 @@ $registeredServer = Register-AzStorageSyncServer -ParentObject $storageSync
 > 可对同步组中的任何云终结点或服务器终结点进行更改，并将文件同步到同步组中的其他终结点。 如果直接对云终结点（Azure 文件分享）进行更改，首先需要通过 Azure 文件同步更改检测作业来发现更改。 每 24 小时仅针对云终结点启动一次更改检测作业。 有关详细信息，请参阅 [Azure 文件常见问题解答](storage-files-faq.md#afs-change-detection)。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
-要创建同步组，请在[Azure 门户](https://portal.azure.com/)中转到存储同步服务，然后选择 "**同步组**"
+若要创建同步组，请在[Azure 门户](https://portal.azure.com/)中，请前往你的存储同步服务，然后选择 " **+ 同步组**"：
 
 ![在 Azure 门户中创建新的同步组](media/storage-sync-files-deployment-guide/create-sync-group-1.png)
 
@@ -256,7 +256,7 @@ $registeredServer = Register-AzStorageSyncServer -ParentObject $storageSync
 - 存储帐户：如果选择“选择存储账户”，另一个窗格随即出现，可在其中选择包含要同步的 Azure 文件共享的存储帐户********。
 - **Azure 文件共享**：要与其同步的 Azure 文件共享的名称。
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 若要创建同步组，请执行以下 PowerShell。 请记得将 `<my-sync-group>` 替换为同步组的所需名称。
 
 ```powershell
@@ -307,20 +307,20 @@ New-AzStorageSyncCloudEndpoint `
 服务器终结点代表已注册服务器上的特定位置，例如服务器卷中的文件夹。 服务器终结点必须是已注册的服务器（而不是装载的共享）上的路径；若要使用云分层，该路径必须在非系统卷上。 不支持网络附加存储 (NAS)。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
-要添加服务器终结点，请转到新创建的同步组，然后选择 **"添加服务器终结点**"。
+若要添加服务器终结点，请前往新创建的同步组，然后选择 "**添加服务器终结点**"。
 
 ![在“同步组”窗格中添加一个新的服务器终结点](media/storage-sync-files-deployment-guide/create-sync-group-2.png)
 
-在 **"添加服务器终结点**"窗格中，输入以下信息以创建服务器终结点：
+在 "**添加服务器终结点**" 窗格中，输入以下信息以创建服务器终结点：
 
-- **已注册服务器**：要创建服务器终结点的服务器或群集的名称。
-- **路径**：要作为同步组的一部分同步的 Windows 服务器路径。
+- **已注册服务器**：要在其中创建服务器终结点的服务器或群集的名称。
+- **路径**：要作为同步组的一部分进行同步的 Windows Server 路径。
 - 云分层：启用或禁用云分层的开关****。 通过云分层可以将不常使用或访问的文件分层到 Azure 文件。
-- **卷可用空间**：服务器终结点所在的卷上要保留的可用空间量。 例如，如果有一个服务器终结点的卷上的卷可用空间设置为 50%，则约有一半数据会分层为 Azure 文件。 不管是否启用云分层，Azure 文件共享在同步组中始终具有完整的数据副本。
+- **卷可用**空间：要在服务器终结点所在的卷上保留的可用空间量。 例如，如果有一个服务器终结点的卷上的卷可用空间设置为 50%，则约有一半数据会分层为 Azure 文件。 不管是否启用云分层，Azure 文件共享在同步组中始终具有完整的数据副本。
 
-要添加服务器终结点，请选择"**创建**"。 现在，文件在 Azure 文件共享和 Windows Server 之间保持保存。 
+若要添加服务器终结点，请选择 "**创建**"。 现在，文件在 Azure 文件共享和 Windows Server 之间保持保存。 
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 执行以下 PowerShell 命令创建服务器终结点（请务必将 `<your-server-endpoint-path>` 和 `<your-volume-free-space>` 替换为所需值）。
 
 ```powershell
@@ -361,14 +361,14 @@ if ($cloudTieringDesired) {
 ### <a name="portal"></a>门户
 如果要将 Azure 文件同步配置为使用防火墙和虚拟网络设置，请执行以下操作：
 
-1. 从 Azure 门户导航到要保护的存储帐户。
-1. 选择左侧**菜单上的防火墙和虚拟网络**按钮。
-1. 选择"**允许从 进行访问****"下的选定网络**。
-1. 确保您的服务器 IP 或虚拟网络列在相应的部分下。
-1. 确保**选中允许受信任的 Microsoft 服务访问此存储帐户**。
-1. 选择 **"保存"** 以保存设置。
+1. 在 Azure 门户中，导航到要保护的存储帐户。
+1. 选择左侧菜单中的 "**防火墙和虚拟网络**" 按钮。
+1. 在 "**允许访问**" 下选择**所选网络**。
+1. 确保你的服务器 IP 或虚拟网络列在相应的部分下。
+1. 请确保选中 "**允许受信任的 Microsoft 服务访问此存储帐户**"。
+1. 选择 "**保存**" 以保存设置。
 
-![配置防火墙和虚拟网络设置以配合 Azure 文件同步](media/storage-sync-files-deployment-guide/firewall-and-vnet.png)
+![配置防火墙和虚拟网络设置以使用 Azure 文件同步](media/storage-sync-files-deployment-guide/firewall-and-vnet.png)
 
 ## <a name="onboarding-with-azure-file-sync"></a>使用 Azure 文件同步进行载入
 若要通过 Azure 文件同步在不停机的情况下首次进行载入，同时保持完整的文件保真度和访问控制列表 (ACL)，则建议采用的步骤如下所述：
@@ -381,66 +381,66 @@ if ($cloudTieringDesired) {
 6. 在初始上传完成后，在剩余的每台服务器上安装 Azure 文件同步代理。
 7. 在剩余的每台服务器上创建新的文件共享。
 8. 使用云分层策略在新的文件共享中创建服务器终结点（如果需要）。 （此步骤要求有额外的存储可供初始设置使用。）
-9. 让 Azure 文件同步代理快速还原完整命名空间，而无需实际数据传输。 在完成完整的命名空间同步后，同步引擎将根据服务器终结点的云分层策略填充本地磁盘空间。 
+9. 让 Azure 文件同步代理可以快速还原完整的命名空间，而无需实际进行数据传输。 在完成完整的命名空间同步后，同步引擎将根据服务器终结点的云分层策略填充本地磁盘空间。 
 10. 确保同步完成，并根据需要测试拓扑。 
 11. 将用户和应用程序重定向到此新共享。
 12. 还可以选择删除服务器上任何重复的共享。
  
 如果没有可用于初始载入的额外存储空间，并且希望附加到现有的共享，则可以在 Azure 文件共享中预先播种数据。 当且仅当可以接受停机并且绝对可以保证在初始载入过程中服务器共享上不会发生数据更改时，才建议使用此方法。 
  
-1. 确保任何服务器上的数据在载入过程中无法更改。
-2. 使用 SMB 上的任何数据传输工具预占 Azure 文件与服务器数据共享，例如 Robocopy、直接 SMB 复制。 由于 AzCopy 不通过 SMB 上传数据，因此不能使用它进行预先播种。
+1. 确保任何服务器上的数据在载入过程中都不会更改。
+2. 使用任何数据传输工具通过 SMB 对 Azure 文件共享进行预 seed，例如 Robocopy、直接 SMB 副本。 由于 AzCopy 不通过 SMB 上传数据，因此不能使用它进行预先播种。
 3. 使用所需的指向现有共享的服务器终结点创建 Azure 文件同步拓扑。
 4. 让同步服务在所有终结点上完成对帐过程。 
 5. 在对帐完成后，你可以打开共享进行更改。
  
-目前，种子预设定方法有一些局限性： 
+目前，预播种方法有一些限制- 
 - 不能保持文件的完全保真度。 例如，文件会丢失 ACL 和时间戳。
 - 在同步拓扑完全启动并运行之前更改服务器上的数据可能会导致各个服务器终结点上发生冲突。  
-- 创建云终结点后，Azure 文件同步运行一个过程，用于在开始初始同步之前检测云中的文件。完成此过程所需要的时间因网络速度、可用带宽以及文件和文件夹数量等各种因素而异。 对于预览版，粗略估计，检测流程以大约每秒 10 个文件的速度运行。因此，当在云中预先播种数据时，即使预先播种运行速度很快，获得完全运行的系统所需的总体时间也会更长。
+- 创建云终结点后，在开始初始同步之前，Azure 文件同步会运行一个进程来检测云中的文件。完成此过程所花的时间取决于各种因素，如网络速度、可用带宽以及文件和文件夹的数目。 对于预览版，粗略估计，检测流程以大约每秒 10 个文件的速度运行。因此，当在云中预先播种数据时，即使预先播种运行速度很快，获得完全运行的系统所需的总体时间也会更长。
 
-## <a name="self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service"></a>通过早期版本和 VSS 进行自助服务恢复（卷卷卷影影复制服务）
+## <a name="self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service"></a>通过以前的版本和 VSS 进行自助还原（卷影复制服务）
 
 > [!IMPORTANT]
-> 以下信息只能与存储同步代理的版本 9（或以上）一起使用。 低于 9 的版本将没有存储同步自助服务 cmdlet。
+> 以下信息仅可用于存储同步代理的版本9（或更高版本）。 低于9的版本将不具有 StorageSyncSelfService cmdlet。
 
-早期版本是一种 Windows 功能，允许您利用卷的服务器端 VSS 快照向 SMB 客户端显示文件的可恢复版本。
-这支持一个强大的方案，通常称为自助服务还原，直接针对信息工作者，而不是依赖于从 IT 管理员的还原。
+以前的版本是一项 Windows 功能，可用于利用卷的服务器端 VSS 快照将文件的可恢复版本提供给 SMB 客户端。
+这将为信息工作者（而不是从 IT 管理员的还原）直接为信息工作者提供一种功能强大的方案（通常称为自助还原）。
 
-VSS 快照和早期版本独立于 Azure 文件同步工作。但是，必须将云分层设置为兼容模式。 许多 Azure 文件同步服务器终结点可以存在于同一卷上。 您必须对每个卷进行以下 PowerShell 调用，该卷甚至有一个服务器终结点，您计划或正在其中使用云分层。
+VSS 快照和先前版本的工作方式与 Azure 文件同步无关。但是，必须将云分层设置为兼容模式。 许多 Azure 文件同步服务器终结点可存在于同一个卷上。 你必须为每个卷进行以下 PowerShell 调用，此 PowerShell 调用甚至有一个服务器终结点，你打算或使用云分层。
 
 ```powershell
-Import-Module ‘<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll’
+Import-Module '<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll'
 Enable-StorageSyncSelfServiceRestore [-DriveLetter] <string> [[-Force]] 
 ```
 
-VSS 快照是整个卷的快照。 默认情况下，给定卷最多可存在 64 个快照，并授予足够的空间来存储快照。 VSS 会自动处理此问题。 默认快照计划每天（星期一到星期五）拍摄两个快照。 该计划可通过 Windows 计划任务进行配置。 上面的 PowerShell cmdlet 执行两件事：
-1. 它将 Azure 文件同步云分层的指定卷与以前的版本兼容，并保证可以从以前的版本还原文件，即使它分层到服务器上的云。 
-2. 它启用默认 VSS 计划。 然后，您可以决定稍后对其进行修改。 
+VSS 快照是整个卷。 默认情况下，给定卷最多可以有64个快照，因为有足够的空间来存储快照。 VSS 会自动处理这种情况。 默认快照计划从星期一到星期五每天拍摄两个快照。 可以通过 Windows 计划任务来配置该计划。 上述 PowerShell cmdlet 执行两项操作：
+1. 它将 Azure 文件配置为在指定的卷上同步云分层，以与以前的版本兼容，并确保可以从以前的版本中还原文件，即使已将该文件分层到服务器上的云中。 
+2. 它启用默认 VSS 计划。 然后，你可以决定稍后修改它。 
 
 > [!Note]  
 > 此处需要注意两个要点：
->- 如果使用 -Force 参数，并且当前启用了 VSS，则它将覆盖当前的 VSS 快照计划并将其替换为默认计划。 请确保在运行 cmdlet 之前保存自定义配置。
-> - 如果在群集节点上使用此 cmdlet，还必须在群集中的所有其他节点上运行它！ 
+>- 如果使用-Force 参数，且当前启用了 VSS，则它将覆盖当前 VSS 快照计划，并将其替换为默认计划。 确保在运行 cmdlet 之前保存自定义配置。
+> - 如果在群集节点上使用此 cmdlet，则还必须在群集中的所有其他节点上运行该 cmdlet！ 
 
-为了查看是否启用了自助服务还原兼容性，可以运行以下 cmdlet。
+若要查看是否已启用自助恢复兼容性，你可以运行以下 cmdlet。
 
 ```powershell
-    Get-StorageSyncSelfServiceRestore [[-Driveletter] <string>]
+Get-StorageSyncSelfServiceRestore [[-Driveletter] <string>]
 ```
 
-它将列出服务器上的所有卷以及每个卷的云分层兼容天数。 此数字根据每个卷的最大可能的快照和默认快照计划自动计算。 因此，默认情况下，向信息工作者显示的所有早期版本都可用于从中还原。 如果更改默认计划以拍摄更多快照，则情况也是如此。
-但是，如果更改计划的方式将导致卷上的可用快照早于兼容天数值，则用户将无法使用此较旧的快照（以前的版本）从中还原。
+它将列出服务器上的所有卷，以及每个卷的云分层兼容日期数。 此数字是基于每个卷的最大可能快照数和默认快照计划自动计算的。 因此，默认情况下，提供给信息工作者的所有先前版本都可用于从还原。 如果更改默认计划以拍摄更多快照，则情况也是如此。
+但是，如果您更改计划的方式将导致卷上的可用快照超过兼容日期值，则用户将无法使用此旧快照（以前的版本）还原。
 
 > [!Note]
-> 启用自助服务还原可能会影响 Azure 存储消耗和账单。 此影响仅限于当前在服务器上分层的文件。 启用此功能可确保云中有一个可以通过早期版本 （VSS 快照） 条目引用的文件版本。
+> 启用自助服务还原可能会影响 Azure 存储消耗和计费。 此影响仅限于服务器上当前分层的文件。 启用此功能可确保云中提供的文件版本可通过早期版本（VSS 快照）项进行引用。
 >
-> 如果禁用该功能，Azure 存储消耗量将缓慢下降，直到兼容的天数窗口过去。 没有办法加快速度。 
+> 如果禁用该功能，则 Azure 存储消耗将慢慢降低，直到达到 "兼容日期" 窗口。 没有办法加速。 
 
-每个卷（64）的默认最大 VSS 快照数以及获取快照的默认计划，会导致信息工作者最多可以还原 45 天的以前版本，具体取决于可在卷上存储多少 VSS 快照。
+每个卷的默认最大 VSS 快照数（64）以及要采用的默认计划，将导致信息工作者可以从其还原的以前版本中的最大值为45天，具体取决于你可以在卷上存储多少个 VSS 快照。
 
-如果最大值每个卷的 64 个 VSS 快照不是正确的设置，您可以通过[注册表项更改该值](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies)。
-要使新限制生效，您需要重新运行 cmdlet，以便在以前启用的每个卷上启用以前的版本兼容性，并且使用 -Force 标志来考虑每个卷的新最大 VSS 快照数。 这将导致新计算的兼容天数。 请注意，此更改将仅对新分层文件生效，并覆盖您可能所做的 VSS 计划上的任何自定义项。
+如果最大值。64每个卷的 VSS 快照不是正确的设置，你可以[通过注册表项更改](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies)该值。
+要使新的限制生效，你需要重新运行 cmdlet，以便在以前启用它的每个卷上启用以前版本的兼容性，并使用-Force 标志将新的每个卷的最大 VSS 快照数考虑在内。 这将导致新计算的兼容天数。 请注意，此更改只会对新的分层文件生效，并覆盖你可能已执行的 VSS 计划中的任何自定义。
 
 ## <a name="migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync"></a>将 DFS 复制 (DFS-R) 部署迁移至 Azure 文件同步
 若要将 DFS-R 部署迁移至 Azure 文件同步，请执行以下操作：

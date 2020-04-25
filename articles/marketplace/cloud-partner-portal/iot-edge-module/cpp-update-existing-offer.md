@@ -1,5 +1,5 @@
 ---
-title: 更新现有的 Azure IoT 边缘模块产品 /服务 |Azure 应用商店
+title: 更新现有 Azure IoT Edge 模块产品 |Azure Marketplace
 description: 如何更新 Azure 市场中的现有 IoT Edge 模块套餐。
 author: dsindona
 ms.service: marketplace
@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 019711f35d249e6684013feddb6b453d509f66d4
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 17cce766f2d56766a9fcf260416d8bbf3e43d0c5
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985348"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142248"
 ---
 # <a name="update-an-existing-iot-edge-module-offer"></a>更新现有的 IoT Edge 模块套餐
 
 >[!Important]
->从 2020 年 4 月 13 日起，我们将开始将 IoT Edge 模块产品的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[创建 IoT Edge 模块产品/服务](https://aka.ms/AzureCreateIoT)中的说明进行操作，以管理迁移的优惠。
+>从2020年4月13日开始，我们将开始向合作伙伴中心移动 IoT Edge 模块的管理。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[创建 IoT Edge 模块提供](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation)中的说明来管理迁移的产品/服务。
 
 本文从不同的方面逐步讲解如何在[云合作伙伴门户](https://cloudpartner.azure.com/)中更新 IoT Edge 模块套餐，然后重新发布该套餐。
 
@@ -32,7 +32,7 @@ ms.locfileid: "80985348"
 
 ## <a name="unpermitted-changes-to-iot-edge-module-offer-or-sku"></a>不允许对 IoT Edge 模块套餐或 SKU 进行的更改
 
-IoT Edge 模块产品/服务或 SKU 的一些属性在 Azure 应用商店中实时运行后无法更改。 不能更改以下设置：
+产品/服务或 SKU 在 Azure Marketplace 上生活后，不能更改 IoT Edge 模块产品或 SKU 的属性。 不能更改以下设置：
 
 -  套餐的“套餐 ID”和“发布者 ID”********
 -  现有 SKU 的“SKU ID”****
@@ -45,7 +45,7 @@ IoT Edge 模块产品/服务或 SKU 的一些属性在 Azure 应用商店中实�
 
 ### <a name="update-the-iot-edge-module-image-version-for-a-sku"></a>更新 SKU 的 IoT Edge 模块映像版本
 
-物联网边缘模块映像通常使用安全修补程序、其他功能等定期更新。 在这种情况下，需要使用以下步骤来更新 SKU 引用的 IoT Edge 模块映像：
+使用安全修补程序、附加功能等定期更新 IoT Edge 模块映像是很常见的。 在这种情况下，需要使用以下步骤来更新 SKU 引用的 IoT Edge 模块映像：
 
 1.  登录到[云合作伙伴门户](https://cloudpartner.azure.com/)。
 
@@ -69,7 +69,7 @@ IoT Edge 模块产品/服务或 SKU 的一些属性在 Azure 应用商店中实�
 
 3.  在“SKU”选项卡下，选择“添加新 SKU”并在弹出窗口中提供一个 **SKU ID**。********
 
-4.  使用[将 IoT 边缘模块](./cpp-publish-offer.md)发布到 Azure 应用商店中描述的步骤重新发布 IoT 边缘模块。
+4.  使用将[IoT Edge 模块发布到 Azure Marketplace](./cpp-publish-offer.md)中所述的步骤，重新发布 IoT Edge 模块。
 
 5.  选择“发布”，启动发布新 SKU 的工作流。****
 
@@ -80,9 +80,9 @@ IoT Edge 模块产品/服务或 SKU 的一些属性在 Azure 应用商店中实�
 
 1.  登录到[云合作伙伴门户](https://cloudpartner.azure.com/)。
 
-2.  在 **"所有优惠**"下，找到您要更新的报价。
+2.  在 "**所有产品**" 下，找到要更新的产品/服务。
 
-3.  转到**应用商店**选项卡。使用["将 IoT 边缘"模块](./cpp-publish-offer.md)中的说明发布到 Azure 应用商店一文进行元数据更改。
+3.  请参阅 " **marketplace** " 选项卡。按照将[IoT Edge 模块发布到 Azure marketplace 一](./cpp-publish-offer.md)文中的说明进行元数据更改。
 
 4.  选择“发布”，启动发布更改的工作流。****
 

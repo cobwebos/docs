@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/19/2020
-ms.openlocfilehash: 7d51e3007b7773e28d846f8d30178426f5668cfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cfe35f81526a729092edf522f693ccd18494d1ec
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77920053"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137818"
 ---
 # <a name="multiclass-boosted-decision-tree"></a>多类提升决策树
 
-本文介绍 Azure 机器学习设计器（预览版）中的一个模块。
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
 使用此模块，可以根据提升决策树算法创建机器学习模型。
 
@@ -26,17 +26,17 @@ ms.locfileid: "77920053"
 
 ## <a name="how-to-configure"></a>配置方式 
 
-此模块创建一个未训练的分类模型。 由于分类是一种监督式学习方法，所以，你需要一个标记的数据集，其中包含一个标签列，该列在所有行中都有一个值**。
+此模块创建一个未训练的分类模型。 由于分类是一种监督式学习方法，所以，你需要一个标记的数据集，其中包含一个标签列，该列在所有行中都有一个值  。
 
 可以使用[训练模型](././train-model.md)来训练这种类型的模型。 
 
-1.  将“多类提升决策树”模块添加到管道****。
+1.  将“多类提升决策树”模块添加到管道  。
 
-1.  通过设置 **"创建培训师模式"** 选项，指定您希望如何训练模型。
+1.  通过设置“创建训练程序模式”选项，指定所希望的模型训练方式  。
 
-    + **单一参数**：如果您知道如何配置模型，则可以提供一组特定的值作为参数。
+    + **单个参数**：如果知道自己想要如何配置模型，可以提供一组特定的值作为参数。
     
-    + **参数范围**：如果不确定最佳参数，并且想要运行参数扫描，请选择此选项。 选择要迭代的值范围，[调谐模型 Hyper 参数](tune-model-hyperparameters.md)迭代您提供的所有可能组合设置，以确定生成最佳结果的超参数。  
+    + **参数范围**：如果你不确定最佳参数，并想要运行参数扫描，请选择此选项。 选择要循环访问的值的范围，[调整模型超参数](tune-model-hyperparameters.md)循环访问提供的设置的所有可能组合，以确定产生最佳结果的超参数。  
 
 1. “每个树的最大叶数”限制可在任何树中创建的终端节点（叶）的最大数目****。
     
@@ -56,8 +56,19 @@ ms.locfileid: "77920053"
 
          The random seed is set by default to 42. Successive runs using different random seeds can have different results.
 
-> [!Note]
-> 如果将“创建训练程序模式”设置为“单个参数”，请连接标记的数据集和[训练模型](./train-model.md)模块********。
+1. 训练模型：
+
+    + 如果将“创建训练程序模式”设置为“单个参数”，请连接标记的数据集和[训练模型](train-model.md)模块********。  
+  
+    + 如果将 "**创建训练培训模式**" 设置为 "**参数范围**"，请使用[优化模型超参数](tune-model-hyperparameters.md)连接标记的数据集并为模型定型。  
+  
+    > [!NOTE]
+    > 
+    > 如果将参数范围传递到[定型模型](train-model.md)，则它仅使用单个参数列表中的默认值。  
+    > 
+    > 如果将一组参数值传递到[优化模型超参数](tune-model-hyperparameters.md)模块，则在它需要每个参数的一系列设置时，它将忽略这些值，并使用学习器的默认值。  
+    > 
+    > 如果选择 "**参数范围**" 选项并为任何参数输入单个值，则会在整个扫描中使用您指定的单个值，即使其他参数在一系列值中发生变化。
 
 ## <a name="next-steps"></a>后续步骤
 

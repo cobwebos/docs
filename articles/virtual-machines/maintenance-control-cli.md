@@ -1,57 +1,26 @@
 ---
-title: 维护控制
-description: 了解如何使用维护控制控制何时将维护应用于 Azure VM。
+title: 使用 CLI 对 Azure 虚拟机进行维护控制
+description: 了解如何使用维护控制和 CLI 控制将维护应用于 Azure Vm 的时间。
 author: cynthn
 ms.service: virtual-machines
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 11/21/2019
+ms.date: 04/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 58c0964d170f49066802b955f09dab01eaf998a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4843b4769e31748fd5f624005792c604db18f11e
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79250174"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137495"
 ---
-# <a name="preview-control-updates-with-maintenance-control-and-the-azure-cli"></a>预览：使用维护控制和 Azure CLI 进行控制更新
+# <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>控制包含维护控制的更新和 Azure CLI
 
-使用维护控制管理不需要重新启动的平台更新。 Azure 经常更新其基础结构以提高可靠性、性能、安全性或启动新功能。 大多数更新对用户都是透明的。 某些敏感工作负载（如游戏、媒体流和金融交易）甚至无法容忍几秒钟的 VM 冻结或断开连接以进行维护。 维护控制允许您选择等待平台更新并在 35 天滚动窗口中应用它们。 
-
-通过维护控制，您可以决定何时将更新应用于隔离的 VM 和 Azure 专用主机。
-
-通过维护控制，您可以：
-- 批量更新到一个更新包中。
-- 最多等待 35 天才能应用更新。 
-- 使用 Azure 函数自动为维护窗口执行平台更新。
-- 维护配置跨订阅和资源组工作。 
-
-> [!IMPORTANT]
-> 维护控制当前处于公共预览版中。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
->
-
-## <a name="limitations"></a>限制
-
-- VM 必须位于[专用主机](./linux/dedicated-hosts.md)上，或者使用[隔离的 VM 大小](./linux/isolation.md)创建。
-- 35 天后，将自动应用更新。
-- 用户必须具有**资源参与者**访问权限。
-
-
-## <a name="install-the-maintenance-extension"></a>安装维护扩展
-
-如果选择在本地安装[Azure CLI，](https://docs.microsoft.com/cli/azure/install-azure-cli)则需要版本 2.0.76 或更高版本。
-
-在`maintenance`本地或云壳中安装预览 CLI 扩展。 
-
-```azurecli-interactive
-az extension add -n maintenance
-```
-
+维护控制允许您决定何时将更新应用于隔离的 Vm 和 Azure 专用主机。 本主题介绍用于维护控制的 Azure CLI 选项。 有关使用维护控制、其限制和其他管理选项的好处的详细信息，请参阅[使用维护控制管理平台更新](maintenance-control.md)。
 
 ## <a name="create-a-maintenance-configuration"></a>创建维护配置
 
-用于`az maintenance configuration create`创建维护配置。 本示例创建名为*myConfig*的维护配置，该配置范围为主机。 
+使用`az maintenance configuration create`创建维护配置。 此示例将创建一个名为*myconfig.xml*的维护配置，范围为主机。 
 
 ```azurecli-interactive
 az group create \
@@ -61,14 +30,14 @@ az maintenance configuration create \
    -g myMaintenanceRG \
    --name myConfig \
    --maintenanceScope host\
-   --location  eastus
+   --location eastus
 ```
 
-从输出复制配置 ID 以以后使用。
+复制输出中的配置 ID 以供以后使用。
 
-使用`--maintenanceScope host`可确保维护配置用于控制对主机的更新。
+使用`--maintenanceScope host`可确保使用维护配置控制主机的更新。
 
-如果尝试创建具有相同名称的配置，但在不同的位置，将出现错误。 配置名称必须对订阅是唯一的。
+如果尝试创建具有相同名称但位于不同位置的配置，则会出现错误。 配置名称在你的订阅中必须是唯一的。
 
 您可以使用`az maintenance configuration list`查询可用的维护配置。
 
@@ -78,11 +47,11 @@ az maintenance configuration list --query "[].{Name:name, ID:id}" -o table
 
 ## <a name="assign-the-configuration"></a>分配配置
 
-用于`az maintenance assignment create`将配置分配给隔离的 VM 或 Azure 专用主机。
+使用`az maintenance assignment create`将配置分配给独立 VM 或 Azure 专用主机。
 
-### <a name="isolated-vm"></a>隔离的 VM
+### <a name="isolated-vm"></a>独立 VM
 
-使用配置的 ID 将配置应用于 VM。 指定`--resource-type virtualMachines``--resource-name`的 VM 的名称和 中的 VM 以及`--resource-group``--location`中的 VM 的位置。 
+使用配置的 ID 将配置应用到 VM。 指定`--resource-type virtualMachines`并提供 vm 的名称`--resource-name`，并为中`--resource-group`的 vm 指定资源组，并为 vm 指定 vm 的`--location`位置。 
 
 ```azurecli-interactive
 az maintenance assignment create \
@@ -97,9 +66,9 @@ az maintenance assignment create \
 
 ### <a name="dedicated-host"></a>专用主机
 
-要将配置应用于专用主机，您需要包含`--resource-type hosts``--resource-parent-name`具有主机组的名称 和`--resource-parent-type hostGroups`。 
+若要将配置应用到专用主机，你需要包含`--resource-type hosts`， `--resource-parent-name`并且具有主机组的名称和。 `--resource-parent-type hostGroups` 
 
-参数`--resource-id`是主机的 ID。 您可以使用[az vm 主机获取实例视图](/cli/azure/vm/host#az-vm-host-get-instance-view)来获取专用主机的 ID。
+参数`--resource-id`是主机的 ID。 你可以使用[az vm host get-help](/cli/azure/vm/host#az-vm-host-get-instance-view)获取专用主机的 ID。
 
 ```azurecli-interactive
 az maintenance assignment create \
@@ -116,9 +85,9 @@ az maintenance assignment create \
 
 ## <a name="check-configuration"></a>检查配置
 
-您可以验证配置是否正确应用，或者检查当前使用`az maintenance assignment list`应用的配置。
+可以验证是否正确应用了配置，或查看当前使用`az maintenance assignment list`的配置。
 
-### <a name="isolated-vm"></a>隔离的 VM
+### <a name="isolated-vm"></a>独立 VM
 
 ```azurecli-interactive
 az maintenance assignment list \
@@ -147,11 +116,11 @@ az maintenance assignment list \
 
 ## <a name="check-for-pending-updates"></a>检查挂起的更新
 
-用于`az maintenance update list`查看是否有挂起的更新。 更新 -- 订阅是包含 VM 的订阅的 ID。
+使用`az maintenance update list`查看是否有挂起的更新。 Update--订阅为包含 VM 的订阅的 ID。
 
-如果没有更新，该命令将返回一条错误消息，其中包含文本： `Resource not found...StatusCode: 404`。
+如果没有更新，则该命令将返回一条错误消息，其中包含以下文本： `Resource not found...StatusCode: 404`。
 
-如果有更新，则仅返回一个更新，即使有多个更新挂起。 此更新的数据将在对象中返回：
+如果有更新，则只会返回一个更新，即使存在多个挂起的更新。 此更新的数据将在对象中返回：
 
 ```text
 [
@@ -166,9 +135,9 @@ az maintenance assignment list \
 ]
   ```
 
-### <a name="isolated-vm"></a>隔离的 VM
+### <a name="isolated-vm"></a>独立 VM
 
-检查隔离 VM 的挂起更新。 在此示例中，输出被格式化为可读性表。
+检查独立 VM 的挂起更新。 在此示例中，输出的格式为表格以便于阅读。
 
 ```azurecli-interactive
 az maintenance update list \
@@ -181,7 +150,7 @@ az maintenance update list \
 
 ### <a name="dedicated-host"></a>专用主机
 
-检查专用主机的挂起更新。 在此示例中，输出被格式化为可读性表。 将资源的值替换为您自己的值。
+检查专用主机的挂起更新。 在此示例中，输出的格式为表格以便于阅读。 将资源的值替换为自己的值。
 
 ```azurecli-interactive
 az maintenance update list \
@@ -197,11 +166,11 @@ az maintenance update list \
 
 ## <a name="apply-updates"></a>应用更新
 
-用于`az maintenance apply update`应用挂起的更新。 成功后，此命令将返回 JSON，其中包含更新的详细信息。
+使用`az maintenance apply update`应用挂起的更新。 成功时，此命令将返回包含更新详细信息的 JSON。
 
-### <a name="isolated-vm"></a>隔离的 VM
+### <a name="isolated-vm"></a>独立 VM
 
-创建将更新应用于隔离 VM 的请求。
+创建将更新应用到隔离 VM 的请求。
 
 ```azurecli-interactive
 az maintenance applyupdate create \
@@ -215,7 +184,7 @@ az maintenance applyupdate create \
 
 ### <a name="dedicated-host"></a>专用主机
 
-将更新应用于专用主机。
+将更新应用到专用主机。
 
 ```azurecli-interactive
 az maintenance applyupdate create \
@@ -230,9 +199,9 @@ az maintenance applyupdate create \
 
 ## <a name="check-the-status-of-applying-updates"></a>检查应用更新的状态 
 
-您可以使用 检查更新的进度`az maintenance applyupdate get`。 
+你可以使用`az maintenance applyupdate get`查看更新的进度。 
 
-可以使用`default`作为更新名称查看上次更新的结果，或替换为`myUpdateName`运行`az maintenance applyupdate create`时返回的更新的名称。
+你可以使用`default`作为更新名称来查看上次更新的结果，或将替换`myUpdateName`为运行`az maintenance applyupdate create`时返回的更新的名称。
 
 ```text
 Status         : Completed
@@ -244,9 +213,9 @@ ute/virtualMachines/DXT-test-04-iso/providers/Microsoft.Maintenance/applyUpdates
 Name           : default
 Type           : Microsoft.Maintenance/applyUpdates
 ```
-上次更新时间将是更新完成的时间，由您启动，或者由平台启动，以防未使用自我维护窗口。 如果从未通过维护控制应用更新，则将显示默认值。
+LastUpdateTime 将是完成更新的时间，这是由你或平台在未使用的情况下启动的。 如果从未使用过维护控制来应用更新，它将显示默认值。
 
-### <a name="isolated-vm"></a>隔离的 VM
+### <a name="isolated-vm"></a>独立 VM
 
 ```azurecli-interactive
 az maintenance applyupdate get \
@@ -276,7 +245,7 @@ az maintenance applyupdate get \
 
 ## <a name="delete-a-maintenance-configuration"></a>删除维护配置
 
-用于`az maintenance configuration delete`删除维护配置。 删除配置会从关联的资源中删除维护控制。
+使用`az maintenance configuration delete`删除维护配置。 删除配置将从关联的资源中删除维护控制。
 
 ```azurecli-interactive
 az maintenance configuration delete \
@@ -286,4 +255,4 @@ az maintenance configuration delete \
 ```
 
 ## <a name="next-steps"></a>后续步骤
-要了解更多信息，请参阅[维护和更新](maintenance-and-updates.md)。
+若要了解详细信息，请参阅[维护和更新](maintenance-and-updates.md)。

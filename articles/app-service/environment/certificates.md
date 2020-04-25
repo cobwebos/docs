@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ba1d06ce83d50b6f0db84d1e423e66eae98f665d
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: dffa9571706c067834e47a656ec1d47cb884fb48
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477495"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82128709"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>证书和应用服务环境 
 
@@ -22,7 +22,7 @@ ASE 是单租户系统。 由于它是单一租户，某些只能在 ASE 中使�
 
 ## <a name="ilb-ase-certificates"></a>ILB ASE 证书 
 
-如果使用外部 ASE，则可以通过 [应用名称].[ASE 名称].p.azurewebsites.net 访问应用。 默认情况下，所有 ASE 甚至 ILB ASE，都是使用遵循该格式的证书创建的。 创建 ILB ASE 后，可以基于创建 ILB ASE 时指定的域名来访问应用。 为了使应用支持 TLS，您需要上载证书。 使用内部证书颁发机构、从外部颁发者购买证书或使用自签名证书获取有效的 TLS/SSL 证书。 
+如果使用外部 ASE，则可以通过 [应用名称].[ASE 名称].p.azurewebsites.net 访问应用。 默认情况下，所有 ASE 甚至 ILB ASE，都是使用遵循该格式的证书创建的。 创建 ILB ASE 后，可以基于创建 ILB ASE 时指定的域名来访问应用。 为了使应用程序支持 TLS，你需要上载证书。 使用内部证书颁发机构、从外部颁发者购买证书或使用自签名证书获取有效的 TLS/SSL 证书。 
 
 可以使用两个选项配置 ILB ASE 的证书。  可为 ILB ASE 设置通配符默认证书，或者在 ASE 中的单个 Web 应用上设置证书。  无论做出哪种选择，都必须正确配置以下证书属性：
 
@@ -58,7 +58,7 @@ ASE 是单租户系统。 由于它是单一租户，某些只能在 ASE 中使�
 - 基于 IP 的 SSL，仅在外部 ASE 中受支持。  ILB ASE 不支持基于 IP 的 SSL。
 - KeyVault 托管的证书 
 
-上传和管理这些证书的说明在[Azure 应用服务 中添加 TLS/SSL 证书](../configure-ssl-certificate.md)中提供。  如果只需将证书配置为与分配到 Web 应用的自定义域名相匹配，则遵照这些说明操作即可。 若要上传使用默认域名的 ILB ASE Web 应用的证书，则需要根据前文所述，在证书的 SAN 中指定 scm 站点。 
+有关上载和管理这些证书的说明，请访问在[Azure App Service 中添加 TLS/SSL 证书](../configure-ssl-certificate.md)。  如果只需将证书配置为与分配到 Web 应用的自定义域名相匹配，则遵照这些说明操作即可。 若要上传使用默认域名的 ILB ASE Web 应用的证书，则需要根据前文所述，在证书的 SAN 中指定 scm 站点。 
 
 ## <a name="tls-settings"></a>TLS 设置 
 
@@ -84,7 +84,7 @@ ASE 是单租户系统。 由于它是单一租户，某些只能在 ASE 中使�
 
 若要执行测试，可以创建自签名证书，并使用以下 PowerShell 命令生成 *.cer* 文件： 
 
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com
+    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
     $certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
     $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText

@@ -1,6 +1,6 @@
 ---
 title: 监视工作负荷 - Azure 门户
-description: 使用 Azure 门户监视同步 SQL
+description: 使用 Azure 门户监视 Synapse SQL
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -10,21 +10,21 @@ ms.subservice: ''
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0658a775e40c1fc433c7c2e1d853493544e74ee4
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 327174974affb3b2511eac60755aa1bf047b3b5e
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743216"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133471"
 ---
 # <a name="monitor-workload---azure-portal"></a>监视工作负荷 - Azure 门户
 
-本文介绍如何使用 Azure 门户监视工作负荷。 这包括设置 Azure 监视器日志，以便使用[Synapse SQL](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/)的日志分析来调查查询执行和工作负载趋势。
+本文介绍如何使用 Azure 门户监视工作负荷。 这包括设置 Azure Monitor 日志，使用 log analytics for [SYNAPSE SQL](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/)来调查查询执行和工作负荷趋势。
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅：如果没有 Azure 订阅，请先创建一个[免费帐户](https://azure.microsoft.com/free/)。
-- SQL 池：我们将为 SQL 池收集日志。 如果没有预配 SQL 池，请参阅[创建 SQL 池](load-data-from-azure-blob-storage-using-polybase.md)中的说明。
+- Azure 订阅：如果没有 Azure 订阅，请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+- SQL 池：我们将收集 SQL 池的日志。 如果尚未预配 SQL 池，请参阅[创建 sql 池](load-data-from-azure-blob-storage-using-polybase.md)中的说明。
 
 ## <a name="create-a-log-analytics-workspace"></a>创建 Log Analytics 工作区
 
@@ -38,9 +38,9 @@ ms.locfileid: "80743216"
 
 有关工作区的更多详细信息，请访问以下[文档](../../azure-monitor/learn/quick-create-workspace.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsond#create-a-workspace)。
 
-## <a name="turn-on-diagnostic-logs"></a>启用诊断日志
+## <a name="turn-on-resource-logs"></a>启用资源日志
 
-将诊断设置配置为从 SQL 池发出日志。 日志由遥测视图组成，等效于最常用的性能故障排除 DMV。 目前支持以下视图：
+配置诊断设置以从 SQL 池发出日志。 日志由与最常用的性能故障排除 Dmv 有关的遥测视图组成。 目前支持以下视图：
 
 - [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -48,7 +48,7 @@ ms.locfileid: "80743216"
 - [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-![启用诊断日志](./media/sql-data-warehouse-monitor-workload-portal/enable_diagnostic_logs.png)
+![启用资源日志](./media/sql-data-warehouse-monitor-workload-portal/enable_diagnostic_logs.png)
 
 可将日志发送到 Azure 存储、流分析或 Log Analytics。 本教程选择了“Log Analytics”。
 

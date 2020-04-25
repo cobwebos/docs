@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/01/2020
 ms.author: victorh
-ms.openlocfilehash: 0e5a683c95e213a0fc37ec4f559e89abfecf034a
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 8acf04d26d0c69c426eb86f8a26a9f243c6f5ad2
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758905"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82136628"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>有关应用程序网关的常见问题解答
 
@@ -28,11 +28,11 @@ Azure 应用程序网关以服务形式提供应用程序传送控制器 (ADC)�
 
 ### <a name="what-features-does-application-gateway-support"></a>应用程序网关支持哪些功能？
 
-应用程序网关支持自动缩放、TLS 卸载和端到端 TLS、Web 应用程序防火墙 （WAF）、基于 Cookie 的会话关联性、基于 URL 路径的路由、多站点托管和其他功能。 有关支持的功能的完整列表，请参阅[应用程序网关简介](application-gateway-introduction.md)。
+应用程序网关支持自动缩放、TLS 卸载和端到端 TLS、web 应用程序防火墙（WAF）、基于 cookie 的会话相关性、基于 URL 路径的路由、多站点托管以及其他功能。 有关支持的功能的完整列表，请参阅[应用程序网关简介](application-gateway-introduction.md)。
 
 ### <a name="how-do-application-gateway-and-azure-load-balancer-differ"></a>应用程序网关与 Azure 负载均衡器有何不同？
 
-应用程序网关是第 7 层负载均衡器，这意味着，它只处理 Web 流量（HTTP、HTTPS、WebSocket 和 HTTP/2）。 它支持诸如 TLS 终止、基于 Cookie 的会话关联和负载平衡流量的循环等功能。 负载均衡器在第 4 层对流量进行负载均衡（TCP 或 UDP）。
+应用程序网关是第 7 层负载均衡器，这意味着，它只处理 Web 流量（HTTP、HTTPS、WebSocket 和 HTTP/2）。 它支持 TLS 终止、基于 cookie 的会话相关性和用于负载平衡流量的轮循机制等功能。 负载均衡器在第 4 层对流量进行负载均衡（TCP 或 UDP）。
 
 ### <a name="what-protocols-does-application-gateway-support"></a>应用程序网关支持哪些协议？
 
@@ -48,7 +48,7 @@ Azure 应用程序网关以服务形式提供应用程序传送控制器 (ADC)�
 
 ### <a name="in-what-regions-is-application-gateway-available"></a>应用程序网关已在哪些区域推出？
 
-应用程序网关已在国际版 Azure 的所有区域推出。 它还在[Azure 中国 21Vianet](https://www.azure.cn/)和[Azure 政府](https://azure.microsoft.com/overview/clouds/government/)中提供。
+应用程序网关已在国际版 Azure 的所有区域推出。 它还在[Azure 中国世纪互联](https://www.azure.cn/)和[azure 政府](https://azure.microsoft.com/overview/clouds/government/)版中提供。
 
 ### <a name="is-this-deployment-dedicated-for-my-subscription-or-is-it-shared-across-customers"></a>此部署是专门于订阅，还是在所有客户之间共享？
 
@@ -96,9 +96,9 @@ Keep-Alive 超时  控制应用程序网关在重新使用或关闭它之前将�
 
 单个子网不支持同时使用 Standard_v2 和标准应用程序网关。
 
-### <a name="does-application-gateway-v2-support-user-defined-routes-udr"></a>应用程序网关 v2 是否支持用户定义的路由 （UDR）？
+### <a name="does-application-gateway-v2-support-user-defined-routes-udr"></a>应用程序网关 v2 是否支持用户定义的路由（UDR）？
 
-是，但仅限于特定方案。 有关详细信息，请参阅[应用程序网关配置概述](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)。
+是，但仅限特定方案。 有关详细信息，请参阅[应用程序网关配置概述](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)。
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>应用程序网关是否支持 x-forwarded-for 标头？
 
@@ -112,15 +112,24 @@ Keep-Alive 超时  控制应用程序网关在重新使用或关闭它之前将�
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>使用应用程序网关时，能否将 Exchange 服务器用作后端？
 
-不是。 应用程序网关不支持电子邮件协议，例如 SMTP、IMAP 和 POP3。
+不能。 应用程序网关不支持电子邮件协议，例如 SMTP、IMAP 和 POP3。
 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>是否有从 v1 SKU 迁移到 v2 SKU 的指导？
 
 是的。 有关详细信息，请参阅[将 Azure 应用程序网关和 Web 应用程序防火墙从 v1 迁移到 v2](migrate-v1-v2.md)。
 
-### <a name="will-the-application-gateway-v1-sku-continue-to-be-supported"></a>应用程序网关 v1 SKU 是否继续受支持？
+### <a name="will-the-application-gateway-v1-sku-continue-to-be-supported"></a>是否继续支持应用程序网关 v1 SKU？
 
-是的。 应用程序网关 v1 SKU 将继续受支持。 但是，强烈建议您迁移到 v2 以利用该 SKU 中的功能更新。 有关详细信息，请参阅[自动缩放和区域冗余应用程序网关 v2](application-gateway-autoscaling-zone-redundant.md)。
+是的。 应用程序网关 v1 SKU 将继续受支持。 不过，强烈建议迁移到 v2 以利用该 SKU 中的功能更新。 有关详细信息，请参阅自动[缩放和区域冗余应用程序网关 v2](application-gateway-autoscaling-zone-redundant.md)。
+
+### <a name="does-application-gateway-v2-support-proxying-requests-with-ntlm-authentication"></a>应用程序网关 V2 是否支持通过 NTLM 身份验证的代理请求？
+
+不能。 应用程序网关 V2 尚不支持通过 NTLM 身份验证的代理请求。
+
+### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>应用程序网关关联 cookie 是否支持 SameSite 属性？
+是的， [Chromium 浏览器](https://www.chromium.org/Home) [v80 更新](https://chromiumdash.appspot.com/schedule)引入了对 HTTP cookie 的强制要求，无 SameSite 特性被视为 SameSite = 宽松。 这意味着，浏览器不会将应用程序网关关联 cookie 发送到第三方上下文中。 
+
+若要支持此方案，应用程序网关会注入名为*ApplicationGatewayAffinityCORS*的另一个 cookie 以及现有的*ApplicationGatewayAffinity* cookie。  这些 cookie 类似，但*ApplicationGatewayAffinityCORS* cookie 添加了另外两个属性： *SameSite = None;安全*。 即使对于跨域请求，这些属性也会保留粘滞会话。 有关详细信息，请参阅[基于 cookie 的相似性部分](configuration-overview.md#cookie-based-affinity)。
 
 ## <a name="performance"></a>性能
 
@@ -140,7 +149,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="does-manual-or-automatic-scale-up-or-scale-down-cause-downtime"></a>手动或自动纵向扩展或缩减是否会导致停机？
 
-不是。 实例将跨升级域和容错域分布。
+否。 实例将跨升级域和容错域分布。
 
 ### <a name="does-application-gateway-support-connection-draining"></a>应用程序网关是否支持连接排出？
 
@@ -162,7 +171,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="can-i-deploy-anything-else-in-the-application-gateway-subnet"></a>是否可以在应用程序网关子网中部署其他任何组件？
 
-不是。 但可以在子网中部署其他应用程序网关。
+不能。 但可以在子网中部署其他应用程序网关。
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>应用程序网关子网是否支持网络安全组？
 
@@ -194,7 +203,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="do-custom-probes-support-wildcards-or-regex-on-response-data"></a>自定义探测是否支持对响应数据使用通配符或正则表达式？
 
-不是。 
+不能。 
 
 ### <a name="how-are-routing-rules-processed-in-application-gateway"></a>如何在应用程序网关中处理路由规则？
 
@@ -210,13 +219,36 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>能否同时对公共和专用侦听器使用同一个端口？
 
-不是。
+不能。
 
 ### <a name="does-application-gateway-support-ipv6"></a>应用程序网关是否支持 IPv6？
 
 应用程序网关 v2 目前不支持 IPv6。 它只能使用 IPv4 在双堆栈 VNet 中运行，但网关子网仅限 IPv4。 应用程序网关 v1 不支持双堆栈 VNet。 
 
-## <a name="configuration---tls"></a>配置 - TLS
+### <a name="how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address"></a>如何在只有专用前端 IP 地址的情况下使用应用程序网关 V2？
+
+应用程序网关 V2 目前不支持专用 IP 模式。 它支持以下组合
+* 专用 IP 和公共 IP
+* 仅公共 IP
+
+但若要将应用程序网关 V2 仅用于专用 IP，则可按以下过程操作：
+1. 使用公共和专用前端 IP 地址创建应用程序网关
+2. 不要为公共前端 IP 地址创建任何侦听器。 应用程序网关不会侦听公共 IP 地址上的任何流量，但前提是没有为其创建侦听器。
+3. 为应用程序网关子网创建并附加一个[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview)，使用以下配置（按优先级顺序排列）：
+    
+    a. 允许的流量来自使用 **GatewayManager** 服务标记的“源”，其“目标”为“任意”****，“目标端口”为 **65200-65535**。 此端口范围是进行 Azure 基础结构通信所必需的。 这些端口通过证书身份验证进行保护（锁定）。 如果没有适当的证书，外部实体（包括网关用户管理员）将无法对这些终结点做出任何更改
+    
+    b. 允许的流量来自使用 **AzureLoadBalancer** 服务标记的“源”，“目标”和“目标端口”为“任意”****
+    
+    c. 拒绝的所有入站流量来自使用 **Internet** 服务标记的“源”，“目标”和“目标端口”为“任意”。**** 在入站规则中为此规则指定最低优先级**
+    
+    d. 保留默认规则（例如允许入站 VirtualNetwork），这样就不会阻止在专用 IP 地址上进行的访问
+    
+    e. 不能阻止出站 Internet 连接。 否则会面临日志记录、指标等问题。
+
+仅适用于专用 ip 的 NSG 配置示例![：仅适用于专用 ip 的应用程序网关 V2 NSG 配置](./media/application-gateway-faq/appgw-privip-nsg.png)
+
+## <a name="configuration---tls"></a>配置-TLS
 
 ### <a name="what-certificates-does-application-gateway-support"></a>应用程序网关支持哪些证书？
 
@@ -255,13 +287,13 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 - TLS_RSA_WITH_3DES_EDE_CBC_SHA
 - TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA
 
-有关如何自定义 TLS 选项的信息，请参阅[在应用程序网关上配置 TLS 策略版本和密码套件](application-gateway-configure-ssl-policy-powershell.md)。
+有关如何自定义 TLS 选项的信息，请参阅[在应用程序网关上配置 tls 策略版本和密码套件](application-gateway-configure-ssl-policy-powershell.md)。
 
 ### <a name="does-application-gateway-support-reencryption-of-traffic-to-the-backend"></a>应用程序网关是否支持重新加密发往后端的流量？
 
-是的。 应用程序网关支持 TLS 卸载和端到端 TLS，后者重新加密到后端的流量。
+是的。 应用程序网关支持 TLS 卸载和端到端 TLS，重新加密到后端的流量。
 
-### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>我可以配置 TLS 策略来控制 TLS 协议版本吗？
+### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>能否配置 TLS 策略来控制 TLS 协议版本？
 
 是的。 可将应用程序网关配置为拒绝 TLS1.0、TLS1.1 和 TLS1.2。 默认情况下，SSL 2.0 和 3.0 已禁用且不可配置。
 
@@ -280,7 +312,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="how-many-tlsssl-certificates-does-application-gateway-support"></a>应用程序网关支持多少个 TLS/SSL 证书？
 
-应用程序网关最多支持 100 个 TLS/SSL 证书。
+应用程序网关最多支持100的 TLS/SSL 证书。
 
 ### <a name="how-many-authentication-certificates-for-backend-reencryption-does-application-gateway-support"></a>应用程序网关支持使用多少个身份验证证书进行后端重新加密？
 
@@ -288,7 +320,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="does-application-gateway-natively-integrate-with-azure-key-vault"></a>应用程序网关是否原生与 Azure Key Vault 集成？
 
-是，应用程序网关 v2 SKU 支持 Key Vault。 有关详细信息，请参阅[使用密钥保管库证书的 TLS 终止](key-vault-certs.md)。
+是，应用程序网关 v2 SKU 支持 Key Vault。 有关详细信息，请参阅[采用 Key Vault 证书的 TLS 终止](key-vault-certs.md)。
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>如何配置 .com 和 .net 站点的 HTTPS 侦听器？ 
 
@@ -310,11 +342,11 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="does-detection-mode-block-traffic"></a>检测模式是否会阻止流量？
 
-不是。 检测模式仅记录触发 WAF 规则的流量。
+不能。 检测模式仅记录触发 WAF 规则的流量。
 
 ### <a name="can-i-customize-waf-rules"></a>我可以自定义 WAF 规则吗？
 
-是的。 有关详细信息，请参阅自定义[WAF 规则组和规则](application-gateway-customize-waf-rules-portal.md)。
+是的。 有关详细信息，请参阅[自定义 WAF 规则组和规则](application-gateway-customize-waf-rules-portal.md)。
 
 ### <a name="what-rules-are-currently-available-for-waf"></a>WAF 目前支持哪些规则？
 
@@ -338,7 +370,7 @@ WAF 目前支持 CRS [2.2.9](../web-application-firewall/ag/application-gateway-
 
 ### <a name="what-is-an-ingress-controller"></a>什么是入口控制器？
 
-Kubernetes 允许创建 `deployment` 和 `service` 资源，以便在群集内部公开一组 Pod。 为了在外部公开同一服务，定义了[`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/)提供负载平衡、TLS 终止和基于名称的虚拟托管的资源。
+Kubernetes 允许创建 `deployment` 和 `service` 资源，以便在群集内部公开一组 Pod。 若要从外部公开同一服务， [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/)定义了一个资源，它提供了负载平衡、TLS 终止和基于名称的虚拟托管。
 为了满足此 `Ingress` 资源，需要一个入口控制器来侦听对 `Ingress` 资源进行的任何更改并配置负载均衡器策略。
 
 借助应用程序网关入口控制器，可将 [Azure 应用程序网关](https://azure.microsoft.com/services/application-gateway/)用作 [Azure Kubernetes 服务](https://azure.microsoft.com/services/kubernetes-service/)（也称为 AKS 群集）的入口。
@@ -353,11 +385,11 @@ Kubernetes 允许创建 `deployment` 和 `service` 资源，以便在群集内�
 
 应用程序网关提供三种日志： 
 
-* **应用程序网关访问日志**：访问日志包含提交到应用程序网关前端的每个请求。 数据包括调用方的 IP、请求的 URL、响应延迟、返回代码和进出字节。它包含每个应用程序网关的一条记录。
-* **应用程序网关性能日志**：性能日志捕获每个应用程序网关的性能信息。 信息包括吞吐量（以字节为单位）、服务的请求总数、失败的请求计数，以及正常和不正常的后端实例计数。
-* **应用程序网关防火墙日志**：对于使用 WAF 配置的应用程序网关，防火墙日志包含通过检测模式或预防模式记录的请求。
+* **ApplicationGatewayAccessLog**：访问日志包含提交到应用程序网关前端的每个请求。 数据包括调用方的 IP、请求的 URL、响应延迟、返回代码，以及传入和传出的字节数。每个应用程序网关包含一条记录。
+* **ApplicationGatewayPerformanceLog**：性能日志捕获每个应用程序网关的性能信息。 信息包括吞吐量（以字节为单位）、服务的请求总数、失败的请求计数，以及正常和不正常的后端实例计数。
+* **ApplicationGatewayFirewallLog**：对于使用 WAF 配置的应用程序网关，防火墙日志包含通过检测模式或阻止模式记录的请求。
 
-所有日志每 60 秒收集一次。 有关详细信息，请参阅[应用程序网关的后端运行状况、诊断日志和指标](application-gateway-diagnostics.md)。
+所有日志每60秒收集一次。 有关详细信息，请参阅[应用程序网关的后端运行状况、诊断日志和指标](application-gateway-diagnostics.md)。
 
 ### <a name="how-do-i-know-if-my-backend-pool-members-are-healthy"></a>如何知道后端池成员是否正常？
 
@@ -373,7 +405,7 @@ Kubernetes 允许创建 `deployment` 和 `service` 资源，以便在群集内�
 
 ### <a name="can-i-set-alerts-with-application-gateway"></a>是否可以使用应用程序网关设置警报？
 
-是的。 在应用程序网关中，警报是针对指标配置的。 有关详细信息，请参阅[应用程序网关指标](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics)并[接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)。
+是的。 在应用程序网关中，警报是针对指标配置的。 有关详细信息，请参阅[应用程序网关度量值](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics)和[接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)。
 
 ### <a name="how-do-i-analyze-traffic-statistics-for-application-gateway"></a>如何分析应用程序网关的流量统计信息？
 
@@ -405,19 +437,19 @@ Kubernetes 允许创建 `deployment` 和 `service` 资源，以便在群集内�
     
     a. 允许的流量来自使用 **GatewayManager** 服务标记的“源”，其“目标”为“任意”****，“目标端口”为 **65200-65535**。 此端口范围是进行 Azure 基础结构通信所必需的。 这些端口通过证书身份验证进行保护（锁定）。 如果没有适当的证书，外部实体（包括网关用户管理员）将无法对这些终结点做出任何更改
     
-    b. 允许来自源的流量作为**AzureLoad平衡器**服务标记，目标端口为 **"任意"**
+    b. 允许来自源的流量作为**AzureLoadBalancer**服务标记，将目标端口作为**任何**
     
-    c. 拒绝从源作为**Internet**服务标记的所有入站流量，将目标端口作为**Any**。 在入站规则中为此规则指定最低优先级**
+    c. 将源中的所有入站流量拒绝为**Internet**服务标记，将目标端口视为**任意**。 在入站规则中为此规则指定最低优先级**
     
-    d. 保留默认规则，如允许虚拟网络入站，以便不会阻止对专用 IP 地址的访问
+    d. 保留默认规则，例如允许 VirtualNetwork 入站，以便不阻止对专用 IP 地址的访问
     
-    e. 不能阻止出站 Internet 连接。 否则，您将面临日志记录、指标等问题。
+    e. 不能阻止出站 Internet 连接。 否则，你将面临日志记录、指标等问题。
 
-仅用于专用 IP 访问的 NSG![配置示例：仅用于专用 IP 访问的应用程序网关 V2 NSG 配置](./media/application-gateway-faq/appgw-privip-nsg.png)
+仅适用于专用 ip 的 NSG 配置示例![：仅适用于专用 ip 的应用程序网关 V2 NSG 配置](./media/application-gateway-faq/appgw-privip-nsg.png)
 
-### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>应用程序网关关联 Cookie 是否支持同一网站属性？
-是的，[铬浏览器](https://www.chromium.org/Home) [v80 更新](https://chromiumdash.appspot.com/schedule)引入了没有 SameSite 属性的 HTTP Cookie 的任务，应视为 SameSite_Lax。 这意味着浏览器不会在第三方上下文中发送应用程序网关关联 Cookie。 为了支持此方案，应用程序网关除了注入现有的*应用程序网关关联*Cookie 外，还注入了另一个称为*应用程序网关 AffinityCORS*的 Cookie。  这些 Cookie 类似，但*应用程序网关AffinityCORS* Cookie 还有两个属性 *：SameSite_无;安全*。 这些属性即使在跨源请求中也能保持粘滞会话。 有关详细信息，请参阅[基于 Cookie 的关联部分](configuration-overview.md#cookie-based-affinity)。
+### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>应用程序网关关联 cookie 是否支持 SameSite 属性？
+是的， [Chromium 浏览器](https://www.chromium.org/Home) [v80 更新](https://chromiumdash.appspot.com/schedule)引入了对 HTTP cookie 的强制要求，无 SameSite 特性被视为 SameSite = 宽松。 这意味着，浏览器不会将应用程序网关关联 cookie 发送到第三方上下文中。 若要支持此方案，应用程序网关会注入名为*ApplicationGatewayAffinityCORS*的另一个 cookie 以及现有的*ApplicationGatewayAffinity* cookie。  这些 cookie 类似，但*ApplicationGatewayAffinityCORS* cookie 添加了另外两个属性： *SameSite = None;安全*。 即使对于跨域请求，这些属性也会保留粘滞会话。 有关详细信息，请参阅[基于 cookie 的相似性部分](configuration-overview.md#cookie-based-affinity)。
 
 ## <a name="next-steps"></a>后续步骤
 
-要了解有关应用程序网关的更多内容，请参阅[什么是 Azure 应用程序网关？](overview.md)
+若要了解有关应用程序网关的详细信息，请参阅[什么是 Azure 应用程序的网关？](overview.md)。

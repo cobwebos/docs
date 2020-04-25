@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 应用商店中创建虚拟机产品/服务
+title: 在 Azure Marketplace 中创建虚拟机产品/服务
 description: 列出了为 Azure 市场创建新的虚拟机 (VM) 产品/服务所需执行的步骤。
 author: dsindona
 ms.service: marketplace
@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: 9d06809df2774224b61fd3fb643ab628dd2890f6
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: a25f6877f1fb4940fb1de127b81d83975c8e835c
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273981"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142703"
 ---
 # <a name="create-virtual-machine-offer"></a>创建虚拟机产品/服务
 
 > [!IMPORTANT]
-> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 虚拟机产品的管理移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照创建 Azure[虚拟机产品/服务](https://aka.ms/CreateAzureVMoffer)中的说明进行操作，以管理迁移的优惠。
+> 从2020年4月13日开始，我们将开始将 Azure 虚拟机产品/服务的管理转移到合作伙伴中心。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[创建 Azure 虚拟机产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)中的说明来管理迁移的产品/服务。
 
 本部分列出了为 Azure 市场创建新的虚拟机 (VM) 产品/服务请求所需执行的步骤。  每个套餐在 Azure 市场中都显示为其自身的实体并且与一个或多个 SKU 相关联。  VM 产品/服务由以下资产组和支持服务组成： 
 
@@ -25,7 +25,7 @@ ms.locfileid: "81273981"
 
 其中：
 
-|  **资产组**   |  **说明**  |
+|  **资产组**   |  **描述**  |
 |  ---------------   |  ---------------  |
 |    SKU            |  产品/服务的最小可购买单位。 单个产品/服务（产品分类）可以具有多个与之关联的 SKU，以便区分所支持的功能、VM 映像类型和计费模型。 |
 |  市场       | 包含营销、法律和潜在顾客管理资产以及规范。  <ul><li> 营销资产包括套餐名称、说明和徽标</li> <li> 法律资产包括隐私政策、使用条款和其他法律文档</li>  <li> 潜在顾客管理政策允许你指定如何处理来自 Azure 市场最终用户门户的潜在顾客。</li> </ul> |
@@ -36,7 +36,7 @@ ms.locfileid: "81273981"
 
 ## <a name="new-offer-form"></a>“新建套餐”窗体
 
-登录[云合作伙伴门户](https://cloudpartner.azure.com/)后，单击左侧菜单栏上的 **"新优惠**"项。 在结果菜单中，单击“虚拟机”**** 以显示“新建产品/服务”**** 窗体，并启动为新的 VM 产品/服务定义资产的过程。 
+登录到[云合作伙伴门户](https://cloudpartner.azure.com/)后，在左侧菜单栏中单击 " **+ 新产品/服务**" 项。 在结果菜单中，单击“虚拟机”**** 以显示“新建产品/服务”**** 窗体，并启动为新的 VM 产品/服务定义资产的过程。 
 <!-- not all publishers see corevm or azure apps test, you need to be whitelisted to see them. we should hide those in these images. -->
 
 ![新建虚拟机产品/服务用户界面选择](./media/publishvm_003.png)
