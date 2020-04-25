@@ -3,23 +3,23 @@ title: 语音转文本 API 参考 (REST) - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用语音转文本 REST API。 本文介绍授权选项、查询选项，以及如何构建请求和接收响应。
 services: cognitive-services
-author: trevorbye
+author: yinhew
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.author: trbye
-ms.openlocfilehash: fbb4d114d1fee21d7950e53b06fc16c96b5c930b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/23/2020
+ms.author: yinhew
+ms.openlocfilehash: 005824b0953be741f47c027d121dbe073adca3ba
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81400180"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131287"
 ---
 # <a name="speech-to-text-rest-api"></a>语音转文本 REST API
 
-作为[语音 SDK](speech-sdk.md) 的一种替代方法，语音服务允许使用 REST API 转换语音转文本。 每个可访问的终结点都与某个区域相关联。 应用程序需要所用终结点的订阅密钥。 REST API 非常有限，只有在[语音 SDK](speech-sdk.md)不能的情况下才应使用它。
+作为[语音 SDK](speech-sdk.md) 的一种替代方法，语音服务允许使用 REST API 转换语音转文本。 每个可访问的终结点都与某个区域相关联。 应用程序需要所用终结点的订阅密钥。 REST API 非常有限，只应在[语音 SDK](speech-sdk.md)不能使用的情况下使用。
 
 使用语音转文本 REST API 之前，请先了解：
 
@@ -38,7 +38,7 @@ REST API 的终结点具有以下格式：
 https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
 ```
 
-替换`<REGION_IDENTIFIER>`与匹配此表中订阅区域的标识符：
+替换`<REGION_IDENTIFIER>`为与此表中的订阅区域匹配的标识符：
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
@@ -51,20 +51,21 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 
 | 参数 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `language` | 标识所要识别的口语。 请参阅[支持的语言](language-support.md#speech-to-text)。 | 必选 |
+| `language` | 标识所要识别的口语。 请参阅[支持的语言](language-support.md#speech-to-text)。 | 必需 |
 | `format` | 指定结果格式。 接受的值为 `simple` 和 `detailed`。 简单结果包括 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 详细响应包括多个具有置信度值的结果，以及四种不同的表示形式。 默认设置为 `simple`。 | 可选 |
 | `profanity` | 指定如何处理识别结果中的不雅内容。 接受的值为 `masked`（将亵渎内容替换为星号）、`removed`（删除结果中的所有亵渎内容）或 `raw`（包含结果中的亵渎内容）。 默认设置为 `masked`。 | 可选 |
-| `cid` | 使用[自定义语音门户](how-to-custom-speech.md)创建自定义模型时，可以通过 **"部署"** 页上的**终结点 ID**使用自定义模型。 使用**终结点 ID**作为查询字符串参数`cid`的参数。 | 可选 |
+| `pronunciationScoreParams` | 指定用于在识别结果中显示发音评分的参数，这些参数可评估语音输入的发音质量，并显示准确性、熟练、完整性等。此参数是 base64 编码的 json，其中包含多个详细参数。 有关如何生成此参数的详细说明，请参阅[发音评估参数](#pronunciation-assessment-parameters)。 | 可选 |
+| `cid` | 使用[自定义语音门户](how-to-custom-speech.md)创建自定义模型时，可以通过在 "**部署**" 页中找到的**终结点 ID**来使用自定义模型。 使用**终结点 ID**作为`cid`查询字符串参数的参数。 | 可选 |
 
 ## <a name="request-headers"></a>请求标头
 
 下表列出了语音转文本请求的必需和可选标头。
 
-|标头| 说明 | 必需/可选 |
+|Header| 说明 | 必需/可选 |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | 语音服务订阅密钥。 | 此标头或 `Authorization` 是必需的。 |
 | `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 此标头或 `Ocp-Apim-Subscription-Key` 是必需的。 |
-| `Content-type` | 描述所提供音频数据的格式和编解码器。 接受的值为 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 必选 |
+| `Content-type` | 描述所提供音频数据的格式和编解码器。 接受的值为 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 必需 |
 | `Transfer-Encoding` | 指定要发送分块的音频数据，而不是单个文件。 仅当要对音频数据进行分块时才使用此标头。 | 可选 |
 | `Expect` | 如果使用分块传输，则发送 `Expect: 100-continue`。 语音服务将确认初始请求并等待附加的数据。| 如果发送分块的音频数据，则是必需的。 |
 | `Accept` | 如果提供此标头，则值必须是 `application/json`。 语音服务以 JSON 格式提供结果。 某些请求框架提供不兼容的默认值。 最好始终包含 `Accept`。 | 可选，但建议提供。 |
@@ -79,7 +80,39 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 | OGG    | OPUS  | 16 位  | 16 kHz，单声道 |
 
 >[!NOTE]
->通过语音服务中的 REST API 和 WebSocket 支持上述格式。 [语音 SDK](speech-sdk.md)目前支持带有 PCM 编解码器[以及其他格式](how-to-use-codec-compressed-audio-input-streams.md)的 WAV 格式。
+>通过语音服务中的 REST API 和 WebSocket 支持上述格式。 [语音 SDK](speech-sdk.md)当前支持带有 PCM 编解码器和[其他格式](how-to-use-codec-compressed-audio-input-streams.md)的 WAV 格式。
+
+## <a name="pronunciation-assessment-parameters"></a>发音评估参数
+
+此表列出了发音评估的必需参数和可选参数。
+
+| 参数 | 说明 | 必需/可选 |
+|-----------|-------------|---------------------|
+| ReferenceText | 将对发音进行计算的文本。 | 必需 |
+| GradingSystem | 用于分数校准的点系统。 接受的值为 `FivePoint` 和 `HundredMark`。 默认设置为 `FivePoint`。 | 可选 |
+| 粒度 | 计算粒度。 接受的值`Phoneme`为，其中显示了全文本、单词和音素级别`Word`上的分数，其中显示了整个文本和 word 级别`FullText`的分数，只显示了完整文本级别的分数。 默认设置为 `Phoneme`。 | 可选 |
+| 维度 | 定义输出条件。 接受的值`Basic`为，只显示精确度评分， `Comprehensive`显示更多维度上的分数（例如，熟练分数和完整文本级别的完整性分数，word 级别上的错误类型）。 检查[响应参数](#response-parameters)以查看不同分数维度和 word 错误类型的定义。 默认设置为 `Basic`。 | 可选 |
+| EnableMiscue | 启用 miscue 计算。 启用此功能后，会将发音为的单词与引用文本进行比较，并根据比较结果标记为省略/插入。 接受的值为 `False` 和 `True`。 默认设置为 `False`。 | 可选 |
+| ScenarioId | 指示自定义点系统的 GUID。 | 可选 |
+
+下面是一个示例 JSON，其中包含发音评估参数：
+
+```json
+{
+  "ReferenceText": "Good morning.",
+  "GradingSystem": "HundredMark",
+  "Granularity": "FullText",
+  "Dimension": "Comprehensive"
+}
+```
+
+下面的示例代码演示如何将发音评估参数生成到 URL 查询参数中：
+
+```csharp
+var pronunciationScoreParamsJson = $"{{\"ReferenceText\":\"Good morning.\",\"GradingSystem\":\"HundredMark\",\"Granularity\":\"FullText\",\"Dimension\":\"Comprehensive\"}}";
+var pronunciationScoreParamsBytes = Encoding.UTF8.GetBytes(pronunciationScoreParamsJson);
+var pronunciationScoreParams = Convert.ToBase64String(pronunciationScoreParamsBytes);
+```
 
 ## <a name="sample-request"></a>示例请求
 
@@ -101,7 +134,7 @@ Expect: 100-continue
 
 | HTTP 状态代码 | 说明 | 可能的原因 |
 |------------------|-------------|-----------------|
-| `100` | 继续 | 已接受初始请求。 继续发送剩余的数据。 （与块传输一起使用） |
+| `100` | 继续 | 已接受初始请求。 继续发送剩余的数据。 （与分块传输一起使用） |
 | `200` | OK | 请求成功；响应正文是一个 JSON 对象。 |
 | `400` | 错误的请求 | 语言代码未提供、不是支持的语言、音频文件无效等。 |
 | `401` | 未授权 | 指定区域中的订阅密钥或授权令牌无效，或终结点无效。 |
@@ -111,7 +144,7 @@ Expect: 100-continue
 
 分块传输 (`Transfer-Encoding: chunked`) 有助于降低识别延迟。 它允许语音服务在传输音频文件时开始处理该文件。 REST API 不提供部分结果或临时结果。
 
-此代码示例演示如何以块的形式发送音频。 只有第一个区块应该包含音频文件的标头。 `request`是`HttpWebRequest`连接到相应 REST 终结点的对象。 `audioFile` 是音频文件在磁盘上的路径。
+此代码示例演示如何以块的形式发送音频。 只有第一个区块应该包含音频文件的标头。 `request`是连接`HttpWebRequest`到适当 REST 终结点的对象。 `audioFile` 是音频文件在磁盘上的路径。
 
 ```csharp
 var request = (HttpWebRequest)HttpWebRequest.Create(requestUri);
@@ -150,13 +183,13 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 | 参数 | 说明  |
 |-----------|--------------|
 |`RecognitionStatus`|状态，例如 `Success` 表示成功识别。 请参阅下表。|
-|`DisplayText`|大写后识别的文本，标点符号，反文本规范化（将口语文本转换为较短的形式，如200表示"200"或"史密斯博士"为"史密斯医生"），以及亵渎性掩盖。 仅在成功时提供。|
+|`DisplayText`|大小写、标点、反向文本规范化（口述文本转换为较短的窗体，例如 200 "200" 或 "Dr. smith"）和猥亵屏蔽的已识别文本。 仅在成功时提供。|
 |`Offset`|在音频流中开始识别语音的时间（以 100 纳秒为单位）。|
 |`Duration`|在音频流中识别语音的持续时间（以 100 纳秒为单位）。|
 
 `RecognitionStatus` 字段可包含以下值：
 
-| 状态 | 说明 |
+| 状态 | 描述 |
 |--------|-------------|
 | `Success` | 识别成功并且存在 `DisplayText` 字段。 |
 | `NoMatch` | 在音频流中检测到语音，但没有匹配目标语言的字词。 通常表示识别语言不同于讲话用户所用的语言。 |
@@ -178,6 +211,11 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 | `ITN` | 已识别文本的反向文本规范化（“规范”）形式，已应用电话号码、数字、缩写（“doctor smith”缩写为“dr smith”）和其他转换。 |
 | `MaskedITN` | 可根据请求提供应用了亵渎内容屏蔽的 ITN 形式。 |
 | `Display` | 已识别文本的显示形式，其中添加了标点符号和大小写形式。 此参数与将格式设置为 `simple` 时提供的 `DisplayText` 相同。 |
+| `AccuracyScore` | 指示给定语音的读音准确性的分数。 |
+| `FluencyScore` | 指示给定语音的熟练的分数。 |
+| `CompletenessScore` | 该分数指示给定语音的完整性，方法是计算要向整个输入的单词的比率。 |
+| `PronScore` | 指示给定语音的发音质量的总体分数。 这是通过`AccuracyScore` `FluencyScore`和`CompletenessScore`权重计算得出的。 |
+| `ErrorType` | 此值指示与相对应的字是省略、插入还是不正确`ReferenceText`。 可能的值`None`为（表示此词上无错误） `Omission`、 `Insertion`和`Mispronunciation`。 |
 
 ## <a name="sample-responses"></a>示例响应
 
@@ -213,6 +251,45 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
         "ITN" : "rewind me to buy 5 pencils",
         "MaskedITN" : "rewind me to buy 5 pencils",
         "Display" : "Rewind me to buy 5 pencils.",
+      }
+  ]
+}
+```
+
+使用发音评估进行识别的典型响应：
+
+```json
+{
+  "RecognitionStatus": "Success",
+  "Offset": "400000",
+  "Duration": "11000000",
+  "NBest": [
+      {
+        "Confidence" : "0.87",
+        "Lexical" : "good morning",
+        "ITN" : "good morning",
+        "MaskedITN" : "good morning",
+        "Display" : "Good morning.",
+        "PronScore" : 84.4,
+        "AccuracyScore" : 100.0,
+        "FluencyScore" : 74.0,
+        "CompletenessScore" : 100.0,
+        "Words": [
+            {
+              "Word" : "Good",
+              "AccuracyScore" : 100.0,
+              "ErrorType" : "None",
+              "Offset" : 500000,
+              "Duration" : 2700000
+            },
+            {
+              "Word" : "morning",
+              "AccuracyScore" : 100.0,
+              "ErrorType" : "None",
+              "Offset" : 5300000,
+              "Duration" : 900000
+            }
+        ]
       }
   ]
 }

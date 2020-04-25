@@ -7,6 +7,9 @@
 - name: 快速入门
   expanded: true
   items:
+    - name: ARM 模板
+      displayName: Resource Manager
+      href: quickstart-cluster-template.md
     - name: 创建 .NET 应用程序
       href: service-fabric-quickstart-dotnet.md
     - name: 部署 Linux 容器应用程序

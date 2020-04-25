@@ -44,6 +44,9 @@
     - name: 查看和管理客户
       displayName: my customers
       href: ./how-to/view-manage-customers.md
+    - name: 删除对委派的访问权限
+      displayName: 'delete, undelegate'
+      href: ./how-to/remove-delegation.md
     - name: Azure Monitor 集成
       items:
         - name: 大规模使用 Azure Monitor 日志

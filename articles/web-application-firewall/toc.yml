@@ -107,7 +107,7 @@
           href: ./ag/bot-protection.md
         - name: 将策略与现有的应用程序网关关联
           href: ./ag/associate-waf-policy-existing-gateway.md
-        - name: 诊断日志
+        - name: 资源日志
           href: ./ag/web-application-firewall-logs.md
         - name: 排查 WAF 问题
           href: ./ag/web-application-firewall-troubleshoot.md
