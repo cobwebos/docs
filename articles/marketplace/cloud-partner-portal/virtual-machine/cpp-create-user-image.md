@@ -1,5 +1,5 @@
 ---
-title: 为 Azure 应用商店创建用户 VM 映像
+title: 为 Azure Marketplace 创建用户 VM 映像
 description: 列出创建用户 VM 映像所需的步骤和参考。
 author: dsindona
 ms.service: marketplace
@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 6bbee7f53cb9a61b72bdbbd941a3a0401f5b913b
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 9d82d50769925480d461c122096c3919d7e8940d
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273947"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146569"
 ---
 # <a name="create-a-user-vm-image"></a>创建用户 VM 映像
 
 > [!IMPORTANT]
-> 从 2020 年 4 月 13 日开始，我们将开始向合作伙伴中心移动 Azure 虚拟机产品/ 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照创建 Azure[虚拟机技术资产](https://aka.ms/AzureVMTechAsset)中的说明进行操作，以管理迁移的优惠。
+> 从2020年4月13日开始，我们将开始向合作伙伴中心提供 Azure 虚拟机的移动管理。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[创建 Azure 虚拟机技术资产](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)中的说明来管理迁移的产品/服务。
 
 本文介绍了从通用化 VHD 创建非托管映像所需的两个常规步骤。  将提供参考资料来指导你完成每个步骤：捕获映像并通用化该映像。
 

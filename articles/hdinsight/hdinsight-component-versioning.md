@@ -1,27 +1,27 @@
 ---
 title: Apache Hadoop 组件和版本 - Azure HDInsight
-description: 在 Azure HDInsight 中了解 Apache Hadoop 组件和版本。
+description: 了解 Azure HDInsight 中的 Apache Hadoop 组件和版本。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 02/26/2020
-ms.openlocfilehash: 337d36d8f5e7a7b69b98de2f68ff372d4914f905
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.date: 04/09/2020
+ms.openlocfilehash: e27b65346ba8d48e36d080d66754db9605259e2b
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82084764"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82144408"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight 提供了哪些 Apache Hadoop 组件和版本？
 
-了解 Microsoft Azure HDInsight 中的[Apache Hadoop](https://hadoop.apache.org/)环境组件和版本以及企业安全包。 另外，还将了解如何检查 HDInsight 中的 Hadoop 组件版本。
+了解 Microsoft Azure HDInsight 和企业安全性套餐中[Apache Hadoop](https://hadoop.apache.org/)环境组件和版本。 另外，还将了解如何检查 HDInsight 中的 Hadoop 组件版本。
 
 ## <a name="apache-hadoop-components-available-with-different-hdinsight-versions"></a>随不同 HDInsight 版本提供的 Apache Hadoop 组件
 
-Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 2017 年 4 月 4 日，Azure HDInsight 使用的默认群集版本为 3.6。
+Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 2017年4月4日，Azure HDInsight 使用的默认群集版本为3.6。
 
 下表列出了与 HDInsight 群集版本关联的组件版本：
 
@@ -33,7 +33,7 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 2017 年 4
 | Apache Hadoop 和 YARN | 3.1.1         | 2.7.3                       |
 | Apache Tez             | 0.9.1         | 0.7.0                       |
 | Apache Pig             | 0.16.0        | 0.16.0                      |
-| Apache Hive            | 3.1.0         | 2.1.0（非ESP群集），1.2.1（ESP群集）                |
+| Apache Hive            | 3.1.0         | 1.2.1 （ESP 交互式查询上的2.1.0） |
 | Apache Tez Hive2       | -             | 0.8.4                       |
 | Apache Ranger          | 1.1.0         | 0.7.0                       |
 | Apache HBase           | 2.0.2         | 1.1.2                       |
@@ -55,7 +55,7 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 2017 年 4
 
 ## <a name="check-for-current-hadoop-component-version-information"></a>检查当前的 Hadoop 组件版本信息
 
-与 HDInsight 群集版本关联的 Hadoop 环境组件版本可能会随着 HDInsight 的更新而更改。 若要检查 Hadoop 组件并验证正在为群集使用哪些版本，请使用 Ambari REST API。 **GetComponentInformation** 命令检索有关服务组件的信息。 有关详细信息，请参阅 [Apache Ambari 文档](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)。
+与 HDInsight 群集版本关联的 Hadoop 环境组件版本可能会随 HDInsight 的更新而更改。 若要检查 Hadoop 组件并验证正在为群集使用哪些版本，请使用 Ambari REST API。 **GetComponentInformation** 命令检索有关服务组件的信息。 有关详细信息，请参阅 [Apache Ambari 文档](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)。
 
 ### <a name="release-notes"></a>发行说明
 
@@ -65,29 +65,29 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 2017 年 4
 
 ### <a name="support-expiration-and-retirement-for-hdinsight-versions"></a>支持 HDInsight 版本的到期和停用
 
-**支持过期**意味着 Microsoft 将不再为指定的 HDInsight 版本提供支持。 并且它将不再可以通过 Azure 门户进行群集创建。 但是，这些版本仍可以使用 Azure CLI 或各种 SDK 创建。
+**支持到期**意味着 Microsoft 将不再为指定的 HDInsight 版本提供支持。 并且它将不再通过用于创建群集的 Azure 门户提供。 但是，仍可以使用 Azure CLI 或各种 Sdk 来创建这些版本。
 
-**停用**HDInsight 版本意味着现有群集将继续以现有方式运行。 但是，无法通过任何方法（包括 CLI 和 SDK）创建此版本的新群集。 其他控制平面功能（如手动缩放和自动缩放）在版本停用后也可能无法正常工作。 支持不适用于已停用的版本。
+HDInsight 版本的**停**用意味着现有群集将继续按原样运行。 但是，不能通过任何方式（包括 CLI 和 Sdk）创建此版本的新群集。 其他控制平面功能（如手动缩放和自动缩放）在版本停用后也可能不起作用。 支持不适用于停用的版本。
 
 下表列出了 HDInsight 版本。 还提供了支持到期日期和停用日期（如果已知这些日期）。
 
 ### <a name="available-versions"></a>可用版本
 
-下表列出了 Azure 门户中可用的 HDInsight 版本以及其他部署方法（如 PowerShell 和 .NET SDK）。
+下表列出了 Azure 门户中可用的 HDInsight 版本以及 PowerShell 和 .NET SDK 等其他部署方法。
 
 | HDInsight 版本 | VM OS | 发布日期 | 支持到期日期 | 停用日期 | 高可用性 |  在 Azure 门户中的可用性 |
 | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 |Ubuntu 16.0.4 LTS |2018 年 9 月 24 日 | | |是 |是 |
 | HDInsight 3.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日 | 2020 年 12 月 31 日 |2020 年 12 月 31 日 |是 |是 |
 
-Spark 2.1，2.2 &卡夫卡 1.0 支持将于 2020 年 6 月 30 日到期。
+Spark 2.1，2.2 & Kafka 1.0 支持将在年6月 30 2020 日过期。
 
 > [!NOTE]  
 > 在对某个版本的支持到期后，不能通过 Microsoft Azure 门户获得该版本。 但是，可继续使用 Windows PowerShell [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) 命令中的 `Version` 参数和 .NET SDK 获取群集版本，直到版本停用的那天为止。
 
 ### <a name="retired-versions"></a>已停用的版本
 
-下表列出了 Azure 门户中**不可用的**HDInsight 版本。
+下表列出了 Azure 门户中**没有**的 HDInsight 版本。
 
 | HDInsight 版本 | HDP 版本 | VM OS | 发布日期 | 支持到期日期 | 停用日期 | 高可用性 |  在 Azure 门户上的可用性 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -110,9 +110,9 @@ Enterprise Security 是一种可选包，可在 HDInsight 群集上作为创建�
 
 - 与 Active Directory 集成进行身份验证。
 
-    过去，您使用本地管理员用户和本地 SSH 用户创建了 HDInsight 群集。 本地管理员用户可以访问所有文件、文件夹、表和列。  借助企业安全包，您可以通过将 HDInsight 与活动目录集成，实现基于角色的访问控制。 其中包括本地活动目录、Azure 活动目录域服务。 或 IaaS 虚拟机上的活动目录。 群集上的域管理员可以授予用户使用自己的公司（域）用户名和密码。
+    过去，你创建了包含本地管理员用户和本地 SSH 用户的 HDInsight 群集。 本地管理员用户可以访问所有文件、文件夹、表和列。  使用企业安全性套餐，可以通过将 HDInsight 与 Active Directory 集成来启用基于角色的访问控制。 其中包括本地 Active Directory Azure Active Directory 域服务。 或 Active Directory。 群集上的域管理员可以授予用户使用其自己的公司（域）用户名和密码的权限。
 
-    有关详细信息，请参阅：
+    有关更多信息，请参阅：
 
     - [已加入域的 HDInsight 群集的 Apache Hadoop 安全性简介](./domain-joined/hdinsight-security-overview.md)
     - [在 HDInsight 中计划 Azure 已加入域的 Apache Hadoop 群集](./domain-joined/apache-domain-joined-architecture.md)
@@ -124,7 +124,7 @@ Enterprise Security 是一种可选包，可在 HDInsight 群集上作为创建�
   - 与 Apache Ranger 集成以对 Hive、Spark SQL 和 Yarn 队列授权。
   - 可以对文件和文件夹设置访问控制。
 
-    有关详细信息，请参阅：
+    有关更多信息，请参阅：
 
   - [在已加入域的 HDInsight 中配置 Apache Hive 策略](./domain-joined/apache-domain-joined-run-hive.md)
 
@@ -144,18 +144,18 @@ Enterprise Security 是一种可选包，可在 HDInsight 群集上作为创建�
 
 Enterprise Security 包支持使用 Azure Data Lake Storage 作为主存储和附加存储。
 
-### <a name="pricing-and-service-level-agreement-sla"></a>定价和服务级别协议 （SLA）
+### <a name="pricing-and-service-level-agreement-sla"></a>定价和服务级别协议（SLA）
 
 有关 Enterprise Security 包的定价和 SLA 的信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。
 
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>HDInsight 群集版本的服务级别协议
 
-服务级别协议 （SLA） 定义为_支持窗口_。 支持窗口是 HDInsight 版本受`Microsoft Customer Service and Support`支持的时间段。 如果版本已通过_支持到期日期_，则 HDInsight 群集位于支持窗口之外。 支持 HDInsight 版本 X（在较新的 X+1 版本可用后）支持过期，其后一版为：  
+服务级别协议（SLA）定义为 "支持"_窗口_。 支持窗口是支持 HDInsight 版本的时间段`Microsoft Customer Service and Support`。 如果版本具有已通过的_支持过期日期_，则 HDInsight 群集不在支持范围内。 支持 HDInsight 版本 X 的过期（在更新的 X + 1 版本可用之后）为后面的版本：  
 
 - 公式 1：发布 HDInsight 群集版本 X 的日期加 180 天。
 - 公式 2：在 Azure 门户中提供 HDInsight 群集版本 X+1 的日期加 90 天。
 
-_停用日期_是无法在 HDInsight 上创建群集版本的日期。 从 2017 年 7 月 31 日起，您无法在 HDInsight 群集的停用日期后调整其大小。
+_停用日期_是指在此后不能在 HDInsight 上创建群集版本的日期。 从2017年7月31日开始，不能在 HDInsight 群集停用日期之后调整它的大小。
 
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>群集的默认节点配置和虚拟机大小
 
@@ -165,4 +165,4 @@ _停用日期_是无法在 HDInsight 上创建群集版本的日期。 从 2017 
 
 - [为 HDInsight 上的 Apache Hadoop、Spark 和其他组件设置群集](hdinsight-hadoop-provision-linux-clusters.md)
 - [使用 Windows 电脑在 HDInsight 上的 Apache Hadoop 中工作](hdinsight-hadoop-windows-tools.md)
-- [霍顿工程发行笔记与 Azure HDInsight 版本关联](./hortonworks-release-notes.md)
+- [与 Azure HDInsight 版本相关的 Hortonworks 发行说明](./hortonworks-release-notes.md)

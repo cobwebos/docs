@@ -3,12 +3,12 @@ title: Azure Functions Java 开发人员参考
 description: 了解如何使用 Java 开发函数。
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 4b1f39ff4fd48a3ed99b34391e9cc6efdad86a5d
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 19a290fe7717d7838e8fcd1d1f5cddb3f54eb812
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673008"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82145330"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 开发人员指南
 
@@ -32,15 +32,15 @@ Azure Functions 运行时支持 [Java SE 8 LTS (zulu8.31.0.2-jre8.0.181-win_x64)
 
 + [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions)
 + [Eclipse](functions-create-maven-eclipse.md)
-+ [因泰利](functions-create-maven-intellij.md)
++ [IntelliJ](functions-create-maven-intellij.md)
 
 以上文章链接介绍了如何使用所选的 IDE 创建前几个函数。 
 
 ### <a name="project-scaffolding"></a>项目基架
 
-如果更喜欢从终端进行命令行开发，搭建基于 Java 的函数项目的最简单方法是使用 `Apache Maven` 原型。 Azure 函数的 Java Maven 原型在以下组_Id_下发布：_工件 Id_ [：com.microsoft.azure：azure 函数原型](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/)。 
+如果更喜欢从终端进行命令行开发，搭建基于 Java 的函数项目的最简单方法是使用 `Apache Maven` 原型。 适用于 Azure Functions 的 Java Maven 原型发布在以下_groupId_： artifactId： [：](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/)_artifactId_： 
 
-以下命令使用此原型生成新的 Java 函数项目：
+以下命令使用以下原型生成新的 Java 函数项目：
 
 ```
 mvn archetype:generate \
@@ -50,11 +50,11 @@ mvn archetype:generate \
 
 若要开始使用此原型，请参阅 [Java 快速入门](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)。 
 
-## <a name="create-kotlin-functions-preview"></a>创建科特林函数（预览）
+## <a name="create-kotlin-functions-preview"></a>创建 Kotlin 函数（预览）
 
-还有一个马文原型来生成科特林函数。 此原型，当前处于预览状态，以以下_组 Id：__工件_Id：com.microsoft.azure：azure[函数-科特林原型发布](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/)。 
+还有一个用于生成 Kotlin 函数的 Maven 原型。 目前处于预览阶段的这一原型在以下_groupId_下发布：_artifactId_： [kotlin-原型](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/)。 
 
-以下命令使用此原型生成新的 Java 函数项目：
+以下命令使用以下原型生成新的 Java 函数项目：
 
 ```
 mvn archetype:generate \
@@ -62,7 +62,7 @@ mvn archetype:generate \
     -DarchetypeArtifactId=azure-functions-kotlin-archetype
 ```
 
-要开始使用此原型，请参阅[科特林快速入门](functions-create-first-kotlin-maven.md)。
+若要开始使用此原型，请参阅[Kotlin 快速入门](functions-create-first-kotlin-maven.md)。
 
 ## <a name="folder-structure"></a>文件夹结构
 
@@ -117,7 +117,7 @@ public class Function {
 }
 ```
 
-下面是 azure`function.json`[函数-maven-插件](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-maven-plugin)对应生成的 ：
+下面是`function.json` [maven-插件](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-maven-plugin)生成的对应项：
 
 ```json
 {
@@ -145,7 +145,7 @@ public class Function {
 
 若要进行本地 Java 函数应用开发，请从 [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) 下载并使用[适用于 Azure 的 Azul Zulu Enterprise](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java 8 JDK。 将函数应用部署到云时，Azure Functions 使用 Azul Java 8 JDK 运行时。
 
-[具有](https://azure.microsoft.com/support/)[限定的支持计划](https://azure.microsoft.com/support/plans/)提供了对 JdK 和函数应用问题的 Azure 支持。
+有关 Jdk 和函数应用问题的[Azure 支持](https://azure.microsoft.com/support/)可通过[合格的支持计划](https://azure.microsoft.com/support/plans/)获得。
 
 ## <a name="customize-jvm"></a>自定义 JVM
 
@@ -159,6 +159,9 @@ public class Function {
 
 可以在名为 `JAVA_OPTS` 的应用设置中提供其他参数。 可以在 Azure 门户或 Azure CLI 中将应用设置添加到已部署至 Azure 的函数应用。
 
+> [!IMPORTANT]  
+> 在消耗计划中，还必须添加值为0的 WEBSITE_USE_PLACEHOLDER 设置，才能使自定义操作生效。 此设置确实可增加 Java 函数的冷启动时间。
+
 ### <a name="azure-portal"></a>Azure 门户
 
 在 [Azure 门户](https://portal.azure.com)中，使用[“应用程序设置”选项卡](functions-how-to-use-azure-function-app-settings.md#settings)添加 `JAVA_OPTS` 设置。
@@ -167,20 +170,26 @@ public class Function {
 
 可以使用 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) 命令来设置 `JAVA_OPTS`，如以下示例所示：
 
+#### <a name="consumption-plan"></a>[消耗计划](#tab/consumption)
 ```azurecli-interactive
-az functionapp config appsettings set --name <APP_NAME> \
---resource-group <RESOURCE_GROUP> \
---settings "JAVA_OPTS=-Djava.awt.headless=true"
+az functionapp config appsettings set \
+--settings "JAVA_OPTS=-Djava.awt.headless=true" \
+"WEBSITE_USE_PLACEHOLDER=0" \
+--name <APP_NAME> --resource-group <RESOURCE_GROUP>
 ```
-此示例将启用无外设模式。 请将 `<APP_NAME>` 替换为函数应用的名称，将 `<RESOURCE_GROUP>` 替换为资源组的名称。
+#### <a name="dedicated-plan--premium-plan"></a>[专用计划/高级计划](#tab/dedicated+premium)
+```azurecli-interactive
+az functionapp config appsettings set \
+--settings "JAVA_OPTS=-Djava.awt.headless=true" \
+--name <APP_NAME> --resource-group <RESOURCE_GROUP>
+```
+---
 
-> [!WARNING]  
-> 在[消耗计划](functions-scale.md#consumption-plan)中，必须添加值为 `0` 的 `WEBSITE_USE_PLACEHOLDER` 设置。  
-此设置确实可增加 Java 函数的冷启动时间。
+此示例将启用无外设模式。 请将 `<APP_NAME>` 替换为函数应用的名称，将 `<RESOURCE_GROUP>` 替换为资源组的名称。 
 
 ## <a name="third-party-libraries"></a>第三方库 
 
-Azure Functions 支持使用第三方库。 默认情况下，项目`pom.xml`文件中指定的所有依赖项在[`mvn package`](https://github.com/Microsoft/azure-maven-plugins/blob/master/azure-functions-maven-plugin/README.md#azure-functionspackage)目标期间会自动捆绑。 对于未在 `pom.xml` 文件中指定为依赖项的库，请将它们放在函数根目录的 `lib` 目录中。 放置在 `lib` 目录中的依赖项将在运行时添加到系统类加载器中。
+Azure Functions 支持使用第三方库。 默认情况下，在项目`pom.xml`文件中指定的所有依赖项都将[`mvn package`](https://github.com/Microsoft/azure-maven-plugins/blob/master/azure-functions-maven-plugin/README.md#azure-functionspackage)在目标期间自动捆绑在一起。 对于未在 `pom.xml` 文件中指定为依赖项的库，请将它们放在函数根目录的 `lib` 目录中。 放置在 `lib` 目录中的依赖项将在运行时添加到系统类加载器中。
 
 默认情况下，类路径上提供了 `com.microsoft.azure.functions:azure-functions-java-library` 依赖项，不需要将其包含在 `lib` 目录中。 此外，[azure-functions-java-worker](https://github.com/Azure/azure-functions-java-worker/wiki/Azure-Java-Functions-Worker-Dependencies) 会将[此处](https://github.com/Azure/azure-functions-java-worker)列出的依赖项添加到类路径。
 
@@ -447,14 +456,17 @@ public class Function {
 
 ```
 
+> [!NOTE]
+> 对于优化的冷启动体验，AppSetting FUNCTIONS_EXTENSION_VERSION 的值应为 ~ 2 或 ~ 3。
+
 ## <a name="next-steps"></a>后续步骤
 
 有关 Azure Functions Java 开发的详细信息，请参阅以下资源：
 
 * [Azure Functions 最佳做法](functions-best-practices.md)
 * [Azure Functions developer reference（Azure Functions 开发人员参考）](functions-reference.md)
-* [Azure 函数触发器和绑定](functions-triggers-bindings.md)
-* 本地开发和调试与[视觉工作室代码](https://code.visualstudio.com/docs/java/java-azurefunctions)[，IntelliJ，](functions-create-maven-intellij.md)和[Eclipse](functions-create-maven-eclipse.md)
+* [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
+* [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions)、 [IntelliJ](functions-create-maven-intellij.md)和[Eclipse](functions-create-maven-eclipse.md)进行本地开发和调试
 * [使用 Visual Studio Code 远程调试 Java Azure Functions](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)
 * [适用于 Azure Functions 的 Maven 插件](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-functions-maven-plugin/README.md) 
 * 通过 `azure-functions:add` 目标简化函数创建并准备临时目录以用于 [ZIP 文件部署](deployment-zip-push.md)。

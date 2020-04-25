@@ -1,5 +1,5 @@
 ---
-title: 从用户 VHD 部署 Azure VM |Azure 应用商店
+title: 从用户 VHD 部署 Azure VM |Azure Marketplace
 description: 介绍如何部署用户 VHD 映像以创建 Azure VM 实例。
 author: dsindona
 ms.service: marketplace
@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 79754b4ce7c3dfe2a5c549f4a39ef3160be423d8
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: e3bad2dc63f6a75f52c537aabfa6e85d1846ef15
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273879"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147937"
 ---
 # <a name="deploy-an-azure-vm-from-a-user-vhd"></a>从用户 VHD 中部署 Azure VM
 
 > [!IMPORTANT]
-> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 虚拟机产品的管理移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[Azure VM 映像认证](https://aks.ms/CertifyVMimage)中的说明来管理迁移的优惠。
+> 从2020年4月13日开始，我们将开始将 Azure 虚拟机产品/服务的管理转移到合作伙伴中心。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[AZURE VM 映像证书](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-image-certification)中的说明来管理迁移的产品/服务。
 
 本文介绍如何使用提供的 Azure 资源管理器模板和 Azure PowerShell 脚本，部署通用 VHD 映像以创建新的 Azure VM 资源。
 
@@ -27,7 +27,7 @@ ms.locfileid: "81273879"
 
 将用于 [VHD 部署](cpp-deploy-json-template.md)的 Azure 资源管理器模板复制到名为 `VHDtoImage.json` 的本地文件。  编辑此文件以提供以下参数的值。 
 
-|  **参数**             |   **说明**                                                              |
+|  **Parameter**             |   **描述**                                                              |
 |  -------------             |   ---------------                                                              |
 | ResourceGroupName          | 现有 Azure 资源组名称。  通常使用与密钥保管库相关联的同一 RG  |
 | TemplateFile               | `VHDtoImage.json` 文件的完整路径                                    |

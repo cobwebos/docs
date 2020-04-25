@@ -4,44 +4,45 @@ titlesuffix: Azure Virtual Network
 description: 了解如何创建、更改或删除公共 IP 地址前缀。
 services: virtual-network
 documentationcenter: na
-author: anavinahar
+author: asudbring
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
-ms.author: anavin
-ms.openlocfilehash: 5f0c2d9757f3652b0f83b8c36d89c855f7a92fdd
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.author: allensu
+ms.openlocfilehash: 720496c56cdae69e3b7415ac4d4d05d5796fbff9
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383868"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146366"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>创建、更改或删除公共 IP 地址前缀
 
 了解公共 IP 地址前缀，以及如何创建、更改和删除此类地址。 公共 IP 地址前缀是基于指定的公共 IP 地址数量的连续地址范围。 地址会分配给你的订阅。 创建公共 IP 地址资源时，可以从前缀分配一个静态公共 IP 地址，并将该地址关联到虚拟机、负载均衡器或其他资源，以启用 Internet 连接。 如果不熟悉公共 IP 地址前缀，请参阅[公共 IP 地址前缀概述](public-ip-address-prefix.md)
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 在完成本文任何部分中的步骤之前，请完成以下任务：
 
 - 如果还没有 Azure 帐户，请注册[免费试用帐户](https://azure.microsoft.com/free)。
-- 如果使用门户，请打开 https://portal.azure.com，并使用 Azure 帐户登录。
+- 如果使用门户，请打开 https://portal.azure.com ，并使用 Azure 帐户登录。
 - 如果使用 PowerShell 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 本教程需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 - 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/bash) 中的命令，或从计算机运行 CLI。 本教程需要 Azure CLI 2.0.41 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
 
-必须将登录到或与 Azure 连接的帐户分配给[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或分配给[权限](#permissions)中列出的相应操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+必须将登录或连接到 Azure 的帐户分配到[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或分配给分配了[权限](#permissions)中列出的相应操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 公共 IP 地址前缀会产生费用。 有关详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/ip-addresses)。
 
 ## <a name="create-a-public-ip-address-prefix"></a>创建公共 IP 地址前缀
 
 1. 在门户左上角的顶部选择“+ 创建资源”****。
-2. 在 *"搜索市场"* 框中输入*公共 ip 前缀*。 当“公共 IP 地址前缀”**** 出现在搜索结果中时，请选择它。
+2. 在 "*搜索 Marketplace* " 框中输入*公共 ip 前缀*。 当“公共 IP 地址前缀”**** 出现在搜索结果中时，请选择它。
 3. 在“公共 IP 地址前缀”**** 下，选择“创建”****。
 4. 在“创建公共 IP 地址前缀”**** 下为以下设置输入或选择值，然后选择“创建”****：
 
@@ -55,7 +56,7 @@ ms.locfileid: "81383868"
 
 **命令**
 
-|工具|Command|
+|工具|命令|
 |---|---|
 |CLI|[az network public-ip prefix create](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create)|
 |PowerShell|[New-AzPublicIpPrefix](/powershell/module/az.network/new-azpublicipprefix)|
@@ -76,7 +77,7 @@ ms.locfileid: "81383868"
 
 或者，可以使用下面的 CLI 和 PS 命令以及 -public-ip-prefix (CLI)和 -PublicIpPrefix (PS) 参数来创建公共 IP 地址资源。 
 
-|工具|Command|
+|工具|命令|
 |---|---|
 |CLI|[az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)|
 |PowerShell|[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress?view=azps-2.0.0)|
@@ -91,7 +92,7 @@ ms.locfileid: "81383868"
 
 **命令**
 
-|工具|Command|
+|工具|命令|
 |---|---|
 |CLI|[az network public-ip prefix list](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-list) 用于列出公共 IP 地址；[az network public-ip prefix show](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show) 用于显示设置；[az network public-ip prefix update](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-update) 用于更新；[az network public-ip prefix delete](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-delete) 用于删除|
 |PowerShell|[Get-AzPublicIpPrefix](/powershell/module/az.network/get-azpublicipprefix) 用于检索公共 IP 地址对象并查看其设置；[Set-AzPublicIpPrefix](/powershell/module/az.network/set-azpublicipprefix) 用于更新设置；[Remove-AzPublicIpPrefix](/powershell/module/az.network/remove-azpublicipprefix) 用于删除|

@@ -1,5 +1,5 @@
 ---
-title: 创建 Azure 密钥保管库证书 |Azure 应用商店
+title: 创建 Azure Key Vault 证书 |Azure Marketplace
 description: 介绍如何从 Azure 部署的 VHD 注册 VM。
 author: dsindona
 ms.service: marketplace
@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 09e82b9905104df9b1902b0f64f6cfdf812aabb8
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 9981f8eda174bbe04b54933528d20d270d360824
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273998"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148259"
 ---
 # <a name="create-certificates-for-azure-key-vault"></a>创建 Azure Key Vault 证书
 
 > [!IMPORTANT]
-> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 虚拟机产品的管理移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[Azure VM 映像认证](https://aks.ms/CertifyVMimage)中的说明来管理迁移的优惠。
+> 从2020年4月13日开始，我们将开始将 Azure 虚拟机产品/服务的管理转移到合作伙伴中心。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[AZURE VM 映像证书](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-image-certification)中的说明来管理迁移的产品/服务。
 
 本文介绍如何预配自签名证书，建立 Windows 远程管理 (WinRM) 到 Azure 托管虚拟机 (VM) 的连接需要使用这些证书。 此过程包括三个步骤：
 
@@ -35,7 +35,7 @@ ms.locfileid: "81273998"
 
 编辑并运行以下 Azure Powershell 脚本，以在本地文件夹中创建证书文件 (.pfx)。  需要替换以下参数的值：
 
-|  **参数**        |   **说明**                                                               |
+|  **Parameter**        |   **描述**                                                               |
 |  -------------        |   ---------------                                                               |
 | `$certroopath` | 用于保存 .pfx 文件的本地文件夹  |
 | `$location`    | Azure 标准地理位置之一  |
@@ -79,9 +79,9 @@ ms.locfileid: "81273998"
 
 ## <a name="create-the-key-vault"></a>创建 Key Vault
 
-将 [Key Vault 部署模板](./cpp-key-vault-deploy-template.md)的内容复制到本地计算机上的文件中。 （在下面的示例脚本中，此资源为`C:\certLocation\keyvault.json`.） 编辑并运行以下 Azure Powershell 脚本以创建 Azure 密钥保管库实例和关联的资源组。  需要替换以下参数的值：
+将 [Key Vault 部署模板](./cpp-key-vault-deploy-template.md)的内容复制到本地计算机上的文件中。 （在下面的示例脚本中，此资源`C:\certLocation\keyvault.json`为。） 编辑并运行以下 Azure Powershell 脚本以创建 Azure Key Vault 实例和关联的资源组。  需要替换以下参数的值：
 
-|  **参数**        |   **说明**                                                               |
+|  **Parameter**        |   **描述**                                                               |
 |  -------------        |   ---------------                                                               |
 | `$postfix`            | 附加到部署标识符的任意数字字符串                     |
 | `$rgName`             | 要创建的 Azure 资源组 (RG) 名称                                        |

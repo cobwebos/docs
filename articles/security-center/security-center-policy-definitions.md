@@ -1,6 +1,6 @@
 ---
-title: Azure 策略定义在 Azure 安全中心中监视 |微软文档
-description: 本文提供了可在 Azure 安全中心中监视的 Azure 策略定义的列表。
+title: Azure 安全中心中监视的 azure 策略定义 |Microsoft Docs
+description: 本文提供了可在 Azure 安全中心监视的 Azure 策略定义的列表。
 services: security-center
 author: memildin
 manager: rkarlin
@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.author: memildin
-ms.openlocfilehash: 5550f8feb2b93537bdcc508aa0da062681fe9aab
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 00a5c8e824575b8928aed7e0b0018219e9a51039
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673869"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147107"
 ---
 # <a name="azure-security-policies-monitored-by-security-center"></a>安全中心监视的 Azure 安全策略
 
@@ -21,21 +21,21 @@ ms.locfileid: "80673869"
 
 ## <a name="built-in-policy-definitions"></a>内置策略定义
 
-要了解安全中心监视的内置策略，请参阅下表：
+若要了解安全中心监视的内置策略，请参阅下表：
 
-[!INCLUDE [azure-policy-samples-init-asc](../../includes/azure-policy-samples-init-asc.md)]
+[!INCLUDE [azure-policy-samples-init-asc](../../includes/policy/samples/custom/init-asc.md)]
 
-## <a name="built-in-policy-initiatives"></a>内置政策举措
+## <a name="built-in-policy-initiatives"></a>内置策略计划
 
-要了解安全中心监视的内置计划，请参阅下表：
+若要了解安全中心监视的内置计划，请参阅下表：
 
-[!INCLUDE [azure-policy-samples-policyset-security-center](../../includes/azure-policy-samples-policyset-security-center.md)]
+[!INCLUDE [azure-policy-samples-policyset-security-center](../../includes/policy/samples/bycat/policysets-security-center.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，您了解了安全中心中的 Azure 策略安全策略定义。 要了解更多信息，请参阅以下文章。
+本文介绍了安全中心的 Azure 策略安全策略定义。 若要了解详细信息，请参阅以下文章。
 
-* [Azure 安全中心规划和操作指南](security-center-planning-and-operations-guide.md)：了解如何在 Azure 安全中心中规划和了解设计注意事项。
+* [Azure 安全中心规划和操作指南](security-center-planning-and-operations-guide.md)：了解如何规划和了解 Azure 安全中心的设计注意事项。
 * [Azure 安全中心的安全性运行状况监视](security-center-monitoring.md)：了解如何监视 Azure 资源的运行状况。
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)：了解如何管理和响应安全警报。
 * [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md)：了解如何监视合作伙伴解决方案的运行状态。

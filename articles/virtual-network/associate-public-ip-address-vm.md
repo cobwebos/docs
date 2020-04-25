@@ -4,20 +4,21 @@ titlesuffix: Azure Virtual Network
 description: 了解如何将公共 IP 地址关联到虚拟机。
 services: virtual-network
 documentationcenter: ''
-author: KumudD
+author: asudbring
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
-ms.author: kumud
-ms.openlocfilehash: 5acda69ce08bc493d5349b084d1cfafc8432145b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 2170a4d5f66cf6d1f699ae943f2a80b1b8127e39
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75647452"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146590"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>将公共 IP 地址关联到虚拟机
 
@@ -27,23 +28,23 @@ ms.locfileid: "75647452"
 
 ## <a name="azure-portal"></a>Azure 门户
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 浏览或搜索要将公共 IP 地址添加到的虚拟机，然后将其选中。
-3. 在“设置”下选择“网络”，然后选择要将公共 IP 地址添加到的网络接口，如下图所示：********
+3. 在“设置”下选择“网络”，然后选择要将公共 IP 地址添加到的网络接口，如下图所示：  
 
    ![选择网络接口](./media/associate-public-ip-address-vm/select-nic.png)
 
    > [!NOTE]
    > 公共 IP 地址将关联到 VM 上附加的网络接口。 上图中的 VM 只有一个网络接口。 如果 VM 有多个网络接口，它们都会显示，你需要选择要将公共 IP 地址关联到的网络接口。
 
-4. 选择“IP 配置”，然后选择一种 IP 配置，如下图所示：****
+4. 选择“IP 配置”，然后选择一种 IP 配置，如下图所示： 
 
    ![选择 IP 配置](./media/associate-public-ip-address-vm/select-ip-configuration.png)
 
    > [!NOTE]
    > 公共 IP 地址将关联到网络接口的 IP 配置。 上图中的网络接口只有一种 IP 配置。 如果网络接口有多种 IP 配置，它们都会出现在列表中，你需要选择要将公共 IP 地址关联到的 IP 配置。
 
-5. 依次选择“已启用”、“IP 地址(配置所需的设置)”。********** 选择一个现有的公共 IP 地址，此时会自动关闭“选择公共 IP 地址”框。**** 如果未列出任何可用的公共 IP 地址，则需要创建一个。 若要了解如何创建，请参阅[创建公共 IP 地址](virtual-network-public-ip-address.md#create-a-public-ip-address)。 如下图所示选择“保存”，然后关闭 IP 配置框。****
+5. 依次选择“已启用”、“IP 地址(配置所需的设置)”。   选择一个现有的公共 IP 地址，此时会自动关闭“选择公共 IP 地址”框。  如果未列出任何可用的公共 IP 地址，则需要创建一个。 若要了解如何创建，请参阅[创建公共 IP 地址](virtual-network-public-ip-address.md#create-a-public-ip-address)。 如下图所示选择“保存”，然后关闭 IP 配置框。 
 
    ![启用公共 IP 地址](./media/associate-public-ip-address-vm/enable-public-ip-address.png)
 
@@ -55,13 +56,13 @@ ms.locfileid: "75647452"
    ![查看分配的公共 IP 地址](./media/associate-public-ip-address-vm/view-assigned-public-ip-address.png)
 
    > [!NOTE]
-   > 地址是从每个 Azure 区域中使用的地址池分配的。 要查看每个区域中使用的地址池的列表，请参阅[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 分配的地址可能是用于该区域的池中的任何地址。 如果需要从区域中的特定池分配地址，请使用[公共 IP 地址前缀](public-ip-address-prefix.md)。
+   > 地址是从每个 Azure 区域中使用的地址池分配的。 若要查看每个区域中使用的地址池列表，请参阅[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 分配的地址可能是用于该区域的池中的任何地址。 如果需要从区域中的特定池分配地址，请使用[公共 IP 地址前缀](public-ip-address-prefix.md)。
 
 7. 使用网络安全组中的安全规则[允许将网络流量发往 VM](#allow-network-traffic-to-the-vm)。
 
 ## <a name="azure-cli"></a>Azure CLI
 
-安装[Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)，或使用 Azure 云外壳。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置为与帐户一起使用。 在随后的 CLI 命令中选择“尝试”按钮。**** 选择“尝试”会调用一个可用于登录到 Azure 帐户的 Cloud Shell。****
+安装[Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)，或使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置为与帐户一起使用。 在随后的 CLI 命令中选择“尝试”按钮。**** 选择“尝试”会调用一个可用于登录到 Azure 帐户的 Cloud Shell。****
 
 1. 如果在 Bash 本地使用 CLI，请使用 `az login` 登录到 Azure。
 2. 公共 IP 地址将关联到 VM 上附加的网络接口的 IP 配置。 使用 [az network nic-ip-config update](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-update) 命令将公共 IP 地址关联到 IP 配置。 以下示例将现有公共 IP 地址 *myVMPublicIP* 关联到资源组 *myResourceGroup* 中现有网络接口 *myVMVMNic* 的 IP 配置 *ipconfigmyVM*。
@@ -81,7 +82,7 @@ ms.locfileid: "75647452"
      ```
 
      > [!NOTE]
-     > 以上命令使用你可能想要自定义的多个设置的默认值创建一个公共 IP 地址。 若要详细了解所有的公共 IP 地址设置，请参阅[创建公共 IP 地址](virtual-network-public-ip-address.md#create-a-public-ip-address)。 地址是从每个 Azure 区域使用的公共 IP 地址池分配的。 要查看每个区域中使用的地址池的列表，请参阅[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
+     > 以上命令使用你可能想要自定义的多个设置的默认值创建一个公共 IP 地址。 若要详细了解所有的公共 IP 地址设置，请参阅[创建公共 IP 地址](virtual-network-public-ip-address.md#create-a-public-ip-address)。 地址是从每个 Azure 区域使用的公共 IP 地址池分配的。 若要查看每个区域中使用的地址池列表，请参阅[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
 
    - 如果你不知道附加到 VM 的网络接口的名称，请使用 [az vm nic list](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-list) 命令查看名称。 例如，以下命令会列出附加到资源组 *myResourceGroup* 中 VM *myVM* 的网络接口的名称：
 
@@ -110,13 +111,13 @@ ms.locfileid: "75647452"
    ```
 
    > [!NOTE]
-   > 地址是从每个 Azure 区域中使用的地址池分配的。 要查看每个区域中使用的地址池的列表，请参阅[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 分配的地址可能是用于该区域的池中的任何地址。 如果需要从区域中的特定池分配地址，请使用[公共 IP 地址前缀](public-ip-address-prefix.md)。
+   > 地址是从每个 Azure 区域中使用的地址池分配的。 若要查看每个区域中使用的地址池列表，请参阅[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 分配的地址可能是用于该区域的池中的任何地址。 如果需要从区域中的特定池分配地址，请使用[公共 IP 地址前缀](public-ip-address-prefix.md)。
 
 4. 使用网络安全组中的安全规则[允许将网络流量发往 VM](#allow-network-traffic-to-the-vm)。
 
 ## <a name="powershell"></a>PowerShell
 
-安装[PowerShell](/powershell/azure/install-az-ps)或使用 Azure 云外壳。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 shell。 它预安装有 PowerShell，并配置为与帐户一起使用。 在随后的 PowerShell 命令中选择“尝试”按钮。**** 选择“尝试”会调用一个可用于登录到 Azure 帐户的 Cloud Shell。****
+安装[PowerShell](/powershell/azure/install-az-ps)，或使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 shell。 它预安装有 PowerShell，并配置为与帐户一起使用。 在随后的 PowerShell 命令中选择“尝试”按钮。**** 选择“尝试”会调用一个可用于登录到 Azure 帐户的 Cloud Shell。****
 
 1. 如果在本地使用 PowerShell，请使用 `Connect-AzAccount` 登录到 Azure。
 2. 公共 IP 地址将关联到 VM 上附加的网络接口的 IP 配置。 使用 [Get-AzVirtualNetwork](/powershell/module/Az.Network/Get-AzVirtualNetwork) 和 [Get-AzVirtualNetworkSubnetConfig](/powershell/module/Az.Network/Get-AzVirtualNetworkSubnetConfig) 命令获取网络接口所在的虚拟网络和子网。 接下来，使用 [Get-AzNetworkInterface](/powershell/module/Az.Network/Get-AzNetworkInterface) 命令获取网络接口，并使用 [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) 命令获取现有的公共 IP 地址。 然后使用 [Set-AzNetworkInterfaceIpConfig](/powershell/module/Az.Network/Set-AzNetworkInterfaceIpConfig) 命令将公共 IP 地址关联到 IP 配置，并使用 [Set-AzNetworkInterface](/powershell/module/Az.Network/Set-AzNetworkInterface) 命令将新 IP 配置写入到网络接口。
@@ -132,14 +133,14 @@ ms.locfileid: "75647452"
    $nic | Set-AzNetworkInterface
    ```
 
-   - 如果没有现有的公共 IP 地址，请使用 [New-AzPublicIpAddress](/powershell/module/Az.Network/New-AzPublicIpAddress) 命令创建一个。 例如，以下命令在*东部*区域名为*myResourceGroup*的资源组中创建一个名为*myVMPublicIP* *的动态*公共 IP 地址。
+   - 如果没有现有的公共 IP 地址，请使用 [New-AzPublicIpAddress](/powershell/module/Az.Network/New-AzPublicIpAddress) 命令创建一个。 例如，以下命令在*eastus*区域中名为*myResourceGroup*的资源组中创建名为*myVMPublicIP*的*动态*公共 IP 地址。
   
      ```azurepowershell-interactive
      New-AzPublicIpAddress -Name myVMPublicIP -ResourceGroupName myResourceGroup -AllocationMethod Dynamic -Location eastus
      ```
 
      > [!NOTE]
-     > 以上命令使用你可能想要自定义的多个设置的默认值创建一个公共 IP 地址。 若要详细了解所有的公共 IP 地址设置，请参阅[创建公共 IP 地址](virtual-network-public-ip-address.md#create-a-public-ip-address)。 地址是从每个 Azure 区域使用的公共 IP 地址池分配的。 要查看每个区域中使用的地址池的列表，请参阅[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
+     > 以上命令使用你可能想要自定义的多个设置的默认值创建一个公共 IP 地址。 若要详细了解所有的公共 IP 地址设置，请参阅[创建公共 IP 地址](virtual-network-public-ip-address.md#create-a-public-ip-address)。 地址是从每个 Azure 区域使用的公共 IP 地址池分配的。 若要查看每个区域中使用的地址池列表，请参阅[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
 
    - 如果你不知道附加到 VM 的网络接口的名称，请使用 [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM) 命令查看名称。 例如，以下命令会列出附加到资源组 *myResourceGroup* 中 VM *myVM* 的网络接口的名称：
 
@@ -203,7 +204,7 @@ ms.locfileid: "75647452"
    ```
 
    > [!NOTE]
-   > 地址是从每个 Azure 区域中使用的地址池分配的。 要查看每个区域中使用的地址池的列表，请参阅[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 分配的地址可能是用于该区域的池中的任何地址。 如果需要从区域中的特定池分配地址，请使用[公共 IP 地址前缀](public-ip-address-prefix.md)。
+   > 地址是从每个 Azure 区域中使用的地址池分配的。 若要查看每个区域中使用的地址池列表，请参阅[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 分配的地址可能是用于该区域的池中的任何地址。 如果需要从区域中的特定池分配地址，请使用[公共 IP 地址前缀](public-ip-address-prefix.md)。
 
 4. 使用网络安全组中的安全规则[允许将网络流量发往 VM](#allow-network-traffic-to-the-vm)。
 

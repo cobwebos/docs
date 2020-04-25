@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 73f79145f63e0d8afee7596f1f8231a054ef1c2e
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: a407461e20eefe29dd410ac6ed547b33287a5be8
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82097687"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82145410"
 ---
 # <a name="troubleshoot-runbook-errors"></a>Runbook 错误疑难解答
 
@@ -180,11 +180,11 @@ At line:16 char:1
 
 ### <a name="cause"></a>原因
 
-此错误是使用 runbook 中的 AzureRM 和 Az module cmdlet 导致的。 如果在导入 AzureRM 模块之前导入 Az 模块，则会发生这种情况。
+此错误的原因可能是在 runbook 中使用 AzureRM 到 Az 模块的不完整迁移。 这可能会导致 Azure 自动化仅使用 AzureRM 模块启动 runbook 作业，然后仅使用 Az 模块启动另一作业，从而导致沙箱崩溃。 
 
 ### <a name="resolution"></a>解决方法
 
-不能在同一 runbook 中导入和使用 Az 和 AzureRM cmdlet。 若要了解有关 Azure 自动化中 Az cmdlet 的详细信息，请参阅[在 Azure 自动化中管理模块](../shared-resources/modules.md)。
+不建议在同一 runbook 中使用 Az 和 AzureRM cmdlet。 若要了解有关正确使用这些模块的详细信息，请参阅[迁移到 Az 模块](../shared-resources/modules.md#migrating-to-az-modules)。
 
 ## <a name="scenario-the-runbook-fails-with-the-error-a-task-was-canceled"></a><a name="task-was-cancelled"></a>场景：Runbook 失败且出现错误：取消了一个任务
 
@@ -581,7 +581,7 @@ Exception was thrown - Cannot invoke method. Method invocation is supported only
 * 使用[AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0)启动 runbook，而不是使用[启动作业](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/start-job?view=powershell-7)。
 * 尝试在混合 Runbook 辅助角色上运行 runbook。
 
-若要了解有关此行为以及 Azure 自动化 runbook 的其他行为的详细信息，请参阅[Runbook 行为](../automation-runbook-execution.md#runbook-behavior)。
+若要了解有关此行为以及 Azure 自动化 runbook 的其他行为的详细信息，请参阅[在 Azure 自动化中执行 Runbook](../automation-runbook-execution.md)。
 
 ## <a name="scenario-linux-hybrid-runbook-worker-receives-a-prompt-for-a-password-when-signing-a-runbook"></a>方案： Linux 混合 Runbook 辅助角色在对 Runbook 进行签名时接收密码提示
 
@@ -645,11 +645,11 @@ Operation returned an invalid status code 'Forbidden'
 
 #### <a name="not-using-run-as-account"></a>不使用运行方式帐户
 
-按照[步骤 5-添加身份验证来管理 Azure 资源](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell#add-authentication-to-manage-azure-resources)中的步骤操作，以确保使用运行方式帐户访问 Key Vault。 
+按照[步骤 5-添加身份验证来管理 Azure 资源](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell#add-authentication-to-manage-azure-resources)，以确保使用运行方式帐户访问 Key Vault。 
 
 #### <a name="insufficient-permissions"></a>权限不足
 
-按照 "[向 Key Vault 添加权限](https://docs.microsoft.com/azure/automation/manage-runas-account#add-permissions-to-key-vault)" 中的步骤操作，以确保运行方式帐户有足够的权限访问 Key Vault。 
+[将权限添加到 Key Vault](https://docs.microsoft.com/azure/automation/manage-runas-account#add-permissions-to-key-vault) ，以确保运行方式帐户有足够的权限访问 Key Vault。 
 
 ## <a name="my-problem-isnt-listed-above"></a><a name="other"></a>上面未列出我的问题
 
@@ -669,7 +669,7 @@ Operation returned an invalid status code 'Forbidden'
 
 ### <a name="issues-using-az-modules"></a>使用 Az 模块时出现问题
 
-不支持在同一 Automation 帐户中使用 Az 模块和 AzureRM 模块。 有关更多详细信息，请参阅[runbook 中的 Az 模块](https://docs.microsoft.com/azure/automation/az-modules)。
+使用不完整的 runbook 模块从 AzureRM 迁移到 Az 可能导致沙盒崩溃和 runbook 失败。 请参阅[在 runbook 中使用模块](../automation-runbook-execution.md#using-modules-in-your-runbooks)。
 
 ### <a name="inconsistent-behavior-in-runbooks"></a>Runbook 中的行为不一致
 
@@ -688,10 +688,6 @@ Operation returned an invalid status code 'Forbidden'
 
 有关将参数传递到 webhook 的帮助，请参阅[从 Webhook 启动 runbook](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters-used-when-the-webhook-starts-a-runbook)。
 
-### <a name="using-az-modules"></a>使用 Az 模块
-
-不支持在同一 Automation 帐户中使用 Az 模块和 AzureRM 模块。 请参阅[runbook 中的 Az 模块](https://docs.microsoft.com/azure/automation/az-modules)。
-
 ### <a name="using-self-signed-certificates"></a>使用自签名证书
 
 若要使用自签名证书，请参阅[创建新证书](https://docs.microsoft.com/azure/automation/shared-resources/certificates#creating-a-new-certificate)。
@@ -702,6 +698,7 @@ Azure 沙箱会阻止访问所有进程外 COM 服务器。 例如，沙盒应�
 
 ## <a name="recommended-documents"></a>建议的文档
 
+* [在 Azure 自动化中执行 Runbook](../automation-runbook-execution.md)
 * [在 Azure 自动化中启动 Runbook](https://docs.microsoft.com/azure/automation/automation-starting-a-runbook)
 * [在 Azure 自动化中执行 Runbook](https://docs.microsoft.com/azure/automation/automation-runbook-execution)
 

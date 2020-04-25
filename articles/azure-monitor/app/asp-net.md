@@ -3,12 +3,12 @@ title: 使用 Azure Application Insights 为 ASP.NET 设置 Web 应用分析 | M
 description: 为托管在本地或 Azure 中的 ASP.NET 网站配置性能、可用性和用户行为分析工具。
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: bdd5b1131a0d2d3e2f53840d21cedce1577fde03
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: d3181c3d43f07c7cb920b9fe265a8420c1417a56
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536890"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82145285"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>为 ASP.NET 网站设置 Application Insights
 
@@ -30,33 +30,33 @@ ms.locfileid: "81536890"
 > [!IMPORTANT]
 > 此示例中的屏幕截图基于 Visual Studio 2017 版本 15.9.9 及更高版本。 添加 Application Insights 的体验因 Visual Studio 版本以及 ASP.NET 模板类型而异。 较早的版本可能有其他文本，如“配置 Application Insights”。
 
-在解决方案资源管理器中右键单击 Web 应用名称，然后选择 **"添加** > **应用程序见解遥测"**
+在解决方案资源管理器中右键单击 Web 应用名称，并选择“添加” > “Application Insights 遥测”  
 
 ![解决方案资源管理器的屏幕截图，其中突出显示了“配置 Application Insights”](./media/asp-net/add-telemetry-new.png)
 
-（根据所用的 Application Insights SDK 版本，系统可能会提示升级到最新的 SDK 版本。 如果出现提示，请选择“更新 SDK”。）****
+（根据所用的 Application Insights SDK 版本，系统可能会提示升级到最新的 SDK 版本。 如果出现提示，请选择“更新 SDK”。） 
 
 ![屏幕截图：有新版的 Microsoft Application Insights SDK 可用。 突出显示了“更新 SDK”](./media/asp-net/0002-update-sdk.png)
 
 Application Insights 配置屏幕：
 
-选择 **"开始"。**
+选择“入门”。 
 
 ![使用 Application Insights 页注册应用的屏幕截图](./media/asp-net/00004-start-free.png)
 
-如果想要设置用于存储数据的资源组或位置，请单击“配置设置”。**** 资源组用于控制对数据的访问。 例如，如果有多个应用构成了同一个系统的一部分，可在同一个资源组中放置这些应用的 Application Insights 数据。
+如果想要设置用于存储数据的资源组或位置，请单击“配置设置”。  资源组用于控制对数据的访问。 例如，如果有多个应用构成了同一个系统的一部分，可在同一个资源组中放置这些应用的 Application Insights 数据。
 
  选择“注册”  。
 
 ![使用 Application Insights 页注册应用的屏幕截图](./media/asp-net/00005-register-ed.png)
 
- 选择**项目** > **管理 NuGet** > **包包源：nuget.org>** 确认您拥有最新的稳定应用程序见解 SDK 版本。
+ 选择“项目”   > “管理 NuGet 包”   > “包源: nuget.org”  > 确认你具备 Application Insights SDK 的最新稳定版本。
 
  在调试期间以及发布应用后，遥测数据将发送到 [Azure 门户](https://portal.azure.com)。
 > [!NOTE]
 > 如果不希望在进行调试时向门户发送遥测，则请直接向应用添加 Application Insights SDK，但不要在门户中配置资源。 在调试时，可以在 Visual Studio 中查看遥测数据。 稍后可以返回此配置页，或者等到部署应用后，启用[在运行时打开遥测](../../azure-monitor/app/monitor-performance-live-website-now.md)。
 
-## <a name="step-2-run-your-app"></a><a name="run"></a>第 2 步：运行应用
+## <a name="step-2-run-your-app"></a><a name="run"></a>步骤2：运行你的应用
 使用 F5 运行应用。 打开不同的页以生成一些遥测数据。
 
 Visual Studio 中会显示已记录的事件数。
@@ -68,7 +68,7 @@ Visual Studio 中会显示已记录的事件数。
 
 ### <a name="see-your-telemetry-in-visual-studio"></a>在 Visual Studio 中查看遥测
 
-在 Visual Studio 中查看 Application Insights 数据。  选择**解决方案资源管理器** > **连接服务**>右键单击**应用程序见解**，然后单击 **"搜索实时遥测**"。
+在 Visual Studio 中查看 Application Insights 数据。  选择“解决方案资源管理器” > “连接的服务”，右键单击“Application Insights”，然后单击“搜索实时遥测”。    
 
 在 Visual Studio Application Insights 搜索窗口中，可以看到应用程序的服务器端生成的遥测数据。 使用这些筛选器进行试验，并单击任何事件以查看更多详细信息。
 
@@ -84,7 +84,7 @@ Visual Studio 中会显示已记录的事件数。
 
 还可以在 Application Insights Web 门户中查看遥测（除非选择仅安装 SDK）。 该门户中的图表、分析工具和跨组件视图比 Visual Studio 中的多。 此门户还提供警报。
 
-打开 Application Insights 资源。 登录到 [Azure 门户](https://portal.azure.com/)并在其中找到所需的资源，或者选择“解决方案资源管理器” > “连接的服务”，然后右键单击“Application Insights”并选择“打开 Application Insights 门户”，以转到相应的资源。************ > ****
+打开 Application Insights 资源。 登录到 [Azure 门户](https://portal.azure.com/)并在其中找到所需的资源，或者选择“解决方案资源管理器” > “连接的服务”，然后右键单击“Application Insights”并选择“打开 Application Insights 门户”，以转到相应的资源。     >  
 
 门户将从应用打开遥测视图。
 
@@ -104,21 +104,17 @@ Visual Studio 中会显示已记录的事件数。
 >
 >
 
-## <a name="youre-all-set"></a><a name="land"></a>你们都定了
+## <a name="youre-all-set"></a><a name="land"></a>一切已完成
 
-祝贺你！ 已在应用中安装 Application Insights 包，并将其配置为向 Azure 中的 Application Insights 服务发送遥测。
+祝贺！ 已在应用中安装 Application Insights 包，并将其配置为向 Azure 中的 Application Insights 服务发送遥测。
 
-接收应用遥测的 Azure 资源通过“检测密钥”** 进行标识。 可以在 ApplicationInsights.config 文件中找到该密钥。
+接收应用遥测的 Azure 资源通过“检测密钥”  进行标识。 可以在 ApplicationInsights.config 文件中找到该密钥。
 
 
 ## <a name="upgrade-to-future-sdk-versions"></a>升级到更高的 SDK 版本
-若要升级到 [SDK 的新版本](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases)，请打开 **NuGet 包管理器**，并筛选已安装的包。 选择“Microsoft.ApplicationInsights.Web”，并选择“升级”。********
+若要升级到 [SDK 的新版本](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases)，请打开 **NuGet 包管理器**，并筛选已安装的包。 选择“Microsoft.ApplicationInsights.Web”，并选择“升级”。  
 
 如果对 ApplicationInsights.config 执行了任何自定义操作，请在升级前保存相关副本。 然后，将更改合并到新版本中。
-
-## <a name="video"></a>视频
-
-* 有关[从头开始使用 .NET 应用程序配置 Application Insights](https://www.youtube.com/watch?v=blnGAVgMAfA) 的外部分步说明视频。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -131,7 +127,7 @@ Visual Studio 中会显示已记录的事件数。
 
 * **[浏览器和页面加载数据](../../azure-monitor/app/javascript.md)** - 在网页中插入代码片段。
 * **[获取更详细的依赖关系和异常监视](../../azure-monitor/app/monitor-performance-live-website-now.md)** - 在服务器上安装状态监视器。
-* **[编写自定义事件以](../../azure-monitor/app/api-custom-events-metrics.md)** 计数、时间或测量用户操作的代码。
+* **[为自定义事件编写代码](../../azure-monitor/app/api-custom-events-metrics.md)** 可对用户操作进行计数、计时或度量。
 * **[获取日志数据](../../azure-monitor/app/asp-net-trace-logs.md)** - 将日志数据与你的遥测相关联。
 
 ### <a name="analysis"></a>分析
@@ -143,7 +139,7 @@ Visual Studio 中会显示已记录的事件数。
 
 * [可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)：创建测试来确保站点在 Web 上可见。
 * [智能诊断](../../azure-monitor/app/proactive-diagnostics.md)：这些测试可自动运行，因此不需要进行任何设置。 它们会告诉你应用是否具有异常的失败请求速率。
-* [指标警报](../../azure-monitor/app/alerts.md)：设置警报，以便在指标超过阈值时发出警告。 可以在编码到应用中的自定义指标中设置它们。
+* [指标警报](../../azure-monitor/app/alerts.md)：设置警报可在某个指标超过阈值时发出警告。 可以在编码到应用中的自定义指标中设置它们。
 
 ### <a name="automation"></a>自动化
 

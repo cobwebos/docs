@@ -1,16 +1,16 @@
 ---
-title: 网络资源的最佳实践
+title: 网络资源的最佳做法
 titleSuffix: Azure Kubernetes Service
 description: 了解 Azure Kubernetes 服务 (AKS) 中虚拟网络资源和连接的群集运算符的最佳实践
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: 1eed6f1f82a8a91b2335760e99ea6b895d15547e
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: d887f084ae329be30579b3400b4dc6cfb22c64ca
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392717"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82145472"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的网络连接和安全的最佳做法
 
@@ -21,7 +21,7 @@ ms.locfileid: "81392717"
 > [!div class="checklist"]
 > * 比较 AKS 中的 kubenet 和 Azure CNI 网络模式
 > * 计划所需的 IP 地址和连接
-> * 使用负载均衡器、入口控制器或 Web 应用程序防火墙 （WAF） 分发流量
+> * 使用负载均衡器、入口控制器或 Web 应用程序防火墙 (WAF) 分配流量
 > * 安全地连接到群集节点
 
 ## <a name="choose-the-appropriate-network-model"></a>选择合适的网络模型
@@ -43,9 +43,9 @@ ms.locfileid: "81392717"
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
-有关 AKS 服务主体委托的详细信息，请参阅[委托对其他 Azure 资源的访问权限][sp-delegation]。 您还可以使用分配给托管标识的系统来访问权限，而不是服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
+有关 AKS 服务主体委托的详细信息，请参阅[委托对其他 Azure 资源的访问权限][sp-delegation]。 你还可以使用系统分配的托管标识作为权限，而不是使用服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
 
-每个节点和 Pod 在接收自己的 IP 地址时，请规划 AKS 子网的地址范围。 子网必须大到足以为每个部署的节点、Pod 和网络资源提供 IP 地址。 每个 AKS 群集必须位于自己的子网中。 要允许连接到 Azure 中的本地网络或对等互连网络，请勿使用与现有网络资源重叠的 IP 地址范围。 每个节点使用 kubenet 和 Azure CNI 网络运行的 Pod 数量存在默认限制。 要处理横向扩展事件或群集升级，还需要其他 IP 地址，以便在分配的子网中使用。 如果您使用 Windows Server 容器（当前在 AKS 中预览），此附加地址空间尤其重要，因为这些节点池需要升级才能应用最新的安全修补程序。 有关 Windows 服务器节点的详细信息，请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
+每个节点和 Pod 在接收自己的 IP 地址时，请规划 AKS 子网的地址范围。 子网必须大到足以为每个部署的节点、Pod 和网络资源提供 IP 地址。 每个 AKS 群集必须位于自己的子网中。 要允许连接到 Azure 中的本地网络或对等互连网络，请勿使用与现有网络资源重叠的 IP 地址范围。 每个节点使用 kubenet 和 Azure CNI 网络运行的 Pod 数量存在默认限制。 若要处理 scale out 事件或群集升级，还需要可用于分配的子网的其他 IP 地址。 如果使用 Windows Server 容器（当前在 AKS 中为预览版），则此额外的地址空间尤其重要，因为这些节点池需要升级才能应用最新的安全修补程序。 有关 Windows Server 节点的详细信息，请参阅[在 AKS 中升级节点池][nodepool-upgrade]。
 
 若要计算所需的 IP 地址，请参阅[在 AKS 中配置 Azure CNI 网络][advanced-networking]。
 
@@ -99,7 +99,7 @@ spec:
 
 入口控制器是在 AKS 节点上运行的守护程序并监视传入请求。 然后根据入口资源中定义的规则分配流量。 最佳常见的入口控制器基于 [NGINX]。 AKS 不会限制于特定的控制器，因此可以使用其他控制器，例如 [Contour][contour]、[HAProxy][haproxy] 或 [Traefik][traefik]。
 
-必须在 Linux 节点上计划入口控制器。 Windows 服务器节点（当前在 AKS 中处于预览状态）不应运行入口控制器。 在 YAML 清单或 Helm 图表部署中使用节点选择器来指示资源应在基于 Linux 的节点上运行。 有关详细信息，请参阅[使用节点选择器来控制在 AKS 中安排窗格的位置][concepts-node-selectors]。
+必须在 Linux 节点上计划入口控制器。 Windows Server 节点（当前在 AKS 中为预览版）不应运行入口控制器。 使用 YAML 清单中的节点选择器或 Helm 图表部署来指示该资源应在基于 Linux 的节点上运行。 有关详细信息，请参阅[使用节点选择器控制在 AKS 中计划 pod 的位置][concepts-node-selectors]。
 
 入口有许多方案，包括以下操作指南：
 
@@ -110,7 +110,7 @@ spec:
 
 ## <a name="secure-traffic-with-a-web-application-firewall-waf"></a>使用 Web 应用程序防火墙 (WAF) 保护流量
 
-**最佳做法指南** - 要扫描传入流量是否存在潜在攻击，请使用 Web 应用程序防火墙 (WAF)，例如 [Barracuda WAF for Azure][barracuda-waf] 或 Azure 应用程序网关。 这些更高级的网络资源还可以将流量路由到 HTTP 和 HTTPS 连接或基本 SSL 终端之外。
+**最佳做法指南** - 要扫描传入流量是否存在潜在攻击，请使用 Web 应用程序防火墙 (WAF)，例如 [Barracuda WAF for Azure][barracuda-waf] 或 Azure 应用程序网关。 这些更高级的网络资源还可以将流量路由到 HTTP 和 HTTPS 连接之外，或者只路由基本 TLS 终止。
 
 将流量分配到服务和应用程序的入口控制器通常是 AKS 群集中的 Kubernetes 资源。 控制器作为守护程序在 AKS 节点上运行，并使用一些节点资源（例如 CPU、内存和网络带宽）。 在较大的环境中，通常需要将部分流量路由或 TLS 终端卸载到 AKS 群集之外的网络资源。 还需要扫描传入流量是否存在潜在攻击。
 
@@ -166,7 +166,7 @@ AKS 中的大多数操作都可以使用 Azure 管理工具或通过 Kubernetes 
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
 [app-gateway-ingress]: https://github.com/Azure/application-gateway-kubernetes-ingress
-[Nginx]: https://www.nginx.com/products/nginx/kubernetes-ingress-controller
+[nginx]: https://www.nginx.com/products/nginx/kubernetes-ingress-controller
 [contour]: https://github.com/heptio/contour
 [haproxy]: https://www.haproxy.org
 [traefik]: https://github.com/containous/traefik

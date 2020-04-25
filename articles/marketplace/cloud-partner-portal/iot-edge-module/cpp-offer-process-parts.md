@@ -1,5 +1,5 @@
 ---
-title: Azure IoT 边缘模块提供发布概述 |Azure 应用商店
+title: Azure IoT Edge 模块提供发布概述 |Azure Marketplace
 description: 在 Azure 市场中发布 IoT Edge 模块套餐的过程概述。
 author: dsindona
 ms.service: marketplace
@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 20c76cec82944568c1b16694bef2838626b90b03
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: e9116e5cdb3bd9ed61205ceabd4d51c96c6aadc2
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983341"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82144673"
 ---
 # <a name="iot-edge-module-offer-publishing-overview"></a>IoT Edge 模块套餐发布概述
 
 >[!Important]
->从 2020 年 4 月 13 日起，我们将开始将 IoT Edge 模块产品的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[创建 IoT Edge 模块产品/服务](https://aka.ms/AzureCreateIoT)中的说明进行操作，以管理迁移的优惠。
+>从2020年4月13日开始，我们将开始向合作伙伴中心移动 IoT Edge 模块的管理。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[创建 IoT Edge 模块提供](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation)中的说明来管理迁移的产品/服务。
 
 <table> <tr> <td>本部分介绍如何将新的 Azure IoT Edge 模块产品/服务发布到 Microsoft <a href="https://azuremarketplace.microsoft.com">Azure 市场</a>。 IoT Edge 模块是可在 IoT Edge 设备上运行的与 Docker 兼容的容器。 Azure IoT Edge 模块是由 IoT Edge 托管的最小计算单位，可以包含 Azure 服务或自定义解决方案代码。 </td> <td><img src="./media/iotedge-icon1.png"  alt="Azure IoT Edge module icon" /></td> </tr> </table>
 
@@ -37,7 +37,7 @@ ms.locfileid: "80983341"
 
 以下文章介绍了 IoT Edge 模块套餐的关键组成部分。
 
-- [先决条件](./cpp-prerequisites.md) <br>此文列出了在创建或发布 IoT Edge 模块套餐之前所要满足的技术和业务要求。
+- [必备条件](./cpp-prerequisites.md) <br>此文列出了在创建或发布 IoT Edge 模块套餐之前所要满足的技术和业务要求。
 - [准备 IoT Edge 模块技术资产](./cpp-create-technical-assets.md) <br>此文介绍了如何准备 IoT Edge 模块的技术资产。 在 Azure 市场中发布 IoT Edge 模块之前，这些资产必须满足所有所需技术条件。
 - [创建 IoT Edge 模块产品/服务](./cpp-create-offer.md) <br>此文列出了使用[云合作伙伴门户](https://cloudpartner.azure.com)创建新 IoT Edge 模块套餐项所要执行的步骤。
 - [发布 IoT Edge 模块套餐](./cpp-publish-offer.md)<br> 此文介绍了如何提交套餐，以便在 Azure 市场中发布。

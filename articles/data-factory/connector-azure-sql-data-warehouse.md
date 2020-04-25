@@ -11,29 +11,22 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/25/2020
-ms.openlocfilehash: 7fb1560fb9be809d816dde7dd69f1ec8afe5649f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: e469a38f4730eb0f9d8debe71bde9a56dd152028
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417579"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146402"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Synapse Analytics（前称为 Azure SQL 数据仓库）中复制和转换数据 
 
-> [!div class="op_single_selector" title1="选择您正在使用的数据工厂服务版本："]
-> * [版本1](v1/data-factory-azure-sql-data-warehouse-connector.md)
+> [!div class="op_single_selector" title1="选择要使用的数据工厂服务的版本："]
+> * [Version1](v1/data-factory-azure-sql-data-warehouse-connector.md)
 > * [当前版本](connector-azure-sql-data-warehouse.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 Azure 同步分析复制数据，以及使用数据流转换 Azure 数据湖存储 Gen2 中的数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
-
-
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
-
-本文概述了如何使用 Azure 数据工厂中的复制活动将数据从 Azure SQL 数据仓库复制到 Azure SQL 数据仓库，并使用数据流转换 Azure 数据湖存储 Gen2 中的数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
-
-本文概述了如何使用 Azure 数据工厂中的复制活动从 Azure 同步分析复制数据，以及使用数据流转换 Azure 数据湖存储 Gen2 中的数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
+本文概述如何使用 Azure 数据工厂中的复制活动将数据从和复制到 Azure Synapse Analytics，并使用数据流转换 Azure Data Lake Storage Gen2 中的数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -42,7 +35,7 @@ ms.locfileid: "81417579"
 - 带有[支持的源或接收器矩阵](copy-activity-overview.md)表的[复制活动](copy-activity-overview.md)
 - [映射数据流](concepts-data-flow-overview.md)
 - [查找活动](control-flow-lookup-activity.md)
-- [获取元数据活动](control-flow-get-metadata-activity.md)
+- [GetMetadata 活动](control-flow-get-metadata-activity.md)
 
 对于复制活动，此 Azure Synapse Analytics 连接器支持以下功能：
 
@@ -67,20 +60,20 @@ ms.locfileid: "81417579"
 
 Azure Synapse Analytics 链接服务支持以下属性：
 
-| properties            | 说明                                                  | 必选                                                     |
+| 属性            | 说明                                                  | 必需                                                     |
 | :------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| type                | type 属性必须设置为 **AzureSqlDW**。             | 是                                                          |
+| 类型                | type 属性必须设置为 **AzureSqlDW**。             | 是                                                          |
 | connectionString    | 为 **connectionString** 属性指定连接到 Azure Synapse Analytics 实例所需的信息。 <br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以将密码/服务主体密钥放在 Azure 密钥保管库中，如果是 SQL 身份验证，则从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅表下方的 JSON 示例和[将凭据存储在 Azure 密钥保管库中](store-credentials-in-key-vault.md)一文。 | 是                                                          |
 | servicePrincipalId  | 指定应用程序的客户端 ID。                         | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的。 |
 | servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的。 |
 | tenant              | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的。 |
-| connectVia          | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure 集成运行时或自承载集成运行时（如果数据存储位于专用网络）。 如果未指定，则使用默认 Azure Integration Runtime。 | 否                                                           |
+| connectVia          | 要用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure 集成运行时或自承载集成运行时（如果数据存储位于专用网络）。 如果未指定，则使用默认 Azure Integration Runtime。 | 否                                                           |
 
 有关各种身份验证类型，请参阅关于先决条件和 JSON 示例的以下各部分：
 
 - [SQL 身份验证](#sql-authentication)
 - Azure AD 应用程序令牌身份验证：[服务主体](#service-principal-authentication)
-- Azure AD 应用程序令牌身份验证[：Azure 资源的托管标识](#managed-identity)
+- Azure AD 应用程序令牌身份验证： [Azure 资源的托管标识](#managed-identity)
 
 >[!TIP]
 >如果遇到错误（错误代码为“UserErrorFailedToConnectToSqlServer”，且消息如“数据库的会话限制为 XXX 且已达到。”），请将 `Pooling=false` 添加到连接字符串中，然后重试。
@@ -141,7 +134,7 @@ Azure Synapse Analytics 链接服务支持以下属性：
     - 应用程序密钥
     - 租户 ID
 
-2. 如果尚未这样做，则在 Azure 门户上为 Azure SQL 服务器**[预配 Azure 活动目录管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**。 Azure AD 管理员可以是 Azure AD 用户或 Azure AD 组。 如果为具有托管标识的组授予管理员角色，请跳过步骤 3 和 4。 管理员将拥有对数据库的完全访问权限。
+2. 在 Azure 门户上为 Azure SQL server**[预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**（如果尚未这样做）。 Azure AD 管理员可以是 Azure AD 用户或 Azure AD 组。 如果为具有托管标识的组授予管理员角色，请跳过步骤 3 和 4。 管理员将拥有对数据库的完全访问权限。
 
 3. 为服务主体**[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**。 使用 SSMS 等工具连接到要从中复制数据或要将数据复制到其中的数据仓库，其 Azure AD 标识至少具有 ALTER ANY USER 权限。 运行以下 T-SQL：
   
@@ -188,7 +181,7 @@ Azure Synapse Analytics 链接服务支持以下属性：
 
 若要使用托管标识身份验证，请执行以下步骤：
 
-1. 如果尚未这样做，则在 Azure 门户上为 Azure SQL 服务器**[预配 Azure 活动目录管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**。 Azure AD 管理员可以是 Azure AD 用户或 Azure AD 组。 如果为具有托管标识的组授予管理员角色，请跳过步骤 3 和 4。 管理员将拥有对数据库的完全访问权限。
+1. 在 Azure 门户上为 Azure SQL server**[预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**（如果尚未这样做）。 Azure AD 管理员可以是 Azure AD 用户或 Azure AD 组。 如果为具有托管标识的组授予管理员角色，请跳过步骤 3 和 4。 管理员将拥有对数据库的完全访问权限。
 
 2. 为数据工厂托管标识**[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**。 使用 SSMS 等工具连接到要从中复制数据或要将数据复制到其中的数据仓库，其 Azure AD 标识至少具有 ALTER ANY USER 权限。 运行以下 T-SQL。 
   
@@ -196,7 +189,7 @@ Azure Synapse Analytics 链接服务支持以下属性：
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER;
     ```
 
-3. **授予数据工厂托管标识所需的权限**，就像您通常对 SQL 用户和其他人所做的一样。 运行以下代码，或者参考[此处](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)的更多选项。 若要使用 PolyBase 来加载数据，请了解[必需的数据库权限](#required-database-permission)。
+3. **向数据工厂托管标识授予**对 SQL 用户和其他用户通常所需的权限。 运行以下代码，或者参考[此处](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)的更多选项。 若要使用 PolyBase 来加载数据，请了解[必需的数据库权限](#required-database-permission)。
 
     ```sql
     EXEC sp_addrolemember db_owner, [your Data Factory name];
@@ -204,7 +197,7 @@ Azure Synapse Analytics 链接服务支持以下属性：
 
 5. 在 Azure 数据工厂中**配置 Azure Synapse Analytics 链接服务**。
 
-**例子：**
+**示例：**
 
 ```json
 {
@@ -228,9 +221,9 @@ Azure Synapse Analytics 链接服务支持以下属性：
 
 Azure Synapse Analytics 数据集支持以下属性：
 
-| properties  | 说明                                                  | 必选                    |
+| 属性  | 说明                                                  | 必需                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| type      | 数据集**的类型**属性必须设置为**AzureSqlDWTable**。 | 是                         |
+| 类型      | 数据集的**type**属性必须设置为**AzureSqlDWTable**。 | 是                         |
 | 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | 表 | 表/视图的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | tableName | 具有架构的表/视图的名称。 支持此属性是为了向后兼容。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 对于源为“No”，对于接收器为“Yes” |
@@ -264,13 +257,13 @@ Azure Synapse Analytics 数据集支持以下属性：
 
 若要从 Azure Synapse Analytics 复制数据，请将复制活动源中的 **type** 属性设置为 **SqlDWSource**。 复制活动**源**部分支持以下属性：
 
-| properties                     | 说明                                                  | 必选 |
+| 属性                     | 说明                                                  | 必需 |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
-| type                         | 复制活动源**的类型**属性必须设置为**SqlDWSource**。 | 是      |
+| 类型                         | 复制活动源的**type**属性必须设置为**SqlDWSource**。 | 是      |
 | sqlReaderQuery               | 使用自定义 SQL 查询读取数据。 示例：`select * from MyTable`。 | 否       |
 | sqlReaderStoredProcedureName | 从源表读取数据的存储过程的名称。 最后一个 SQL 语句必须是存储过程中的 SELECT 语句。 | 否       |
 | storedProcedureParameters    | 存储过程的参数。<br/>允许的值为名称或值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 | 否       |
-| isolationLevel | 指定 SQL 源的事务锁定行为。 允许的值是：**已读提交**（默认）、**未提交**、**可重复读取**、**可序列化**、**快照**。 有关详细信息，请参阅[此文档](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel)。 | 否 |
+| isolationLevel | 指定 SQL 源的事务锁定行为。 允许的值为： **ReadCommitted** （默认值）、 **ReadUncommitted**、 **RepeatableRead**、 **Serializable**、 **Snapshot**。 有关更多详细信息，请参阅[此文档](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel)。 | 否 |
 
 **示例：使用 SQL 查询**
 
@@ -373,15 +366,15 @@ Azure 数据工厂支持通过三种方式将数据载入 SQL 数据仓库。
 
 要向 Azure SQL 数据仓库复制数据，请将复制活动中的接收器类型设置为 **SqlDWSink**。 复制活动**接收器**部分支持以下属性：
 
-| properties          | 说明                                                  | 必选                                      |
+| 属性          | 说明                                                  | 必需                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| type              | 复制活动接收器**的类型**属性必须设置为**SqlDWSink**。 | 是                                           |
-| allowPolyBase     | 指示是否使用 PolyBase 将数据载入 SQL 数据仓库。 `allowCopyCommand` 和 `allowPolyBase` 不能同时为 true。 <br/><br/>有关约束和详细信息，请参阅[使用 PolyBase 将数据加载到 Azure SQL 数据仓库](#use-polybase-to-load-data-into-azure-sql-data-warehouse)部分。<br/><br/>允许的值为 **"真****"和"假**"（默认值）。 | 不是。<br/>使用 PolyBase 时适用。     |
-| polyBaseSettings  | `allowPolybase` 属性设置为 **true** 时可以指定的一组属性。 | 不是。<br/>使用 PolyBase 时适用。 |
-| allowCopyCommand | 指示是否使用 [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)（预览版）将数据载入 SQL 数据仓库。 `allowCopyCommand` 和 `allowPolyBase` 不能同时为 true。 <br/><br/>有关约束和详细信息，请参阅[使用 COPY 语句将数据载入 Azure SQL 数据仓库](#use-copy-statement)部分。<br/><br/>允许的值为 **"真****"和"假**"（默认值）。 | 不是。<br>使用 COPY 时适用。 |
-| copyCommandSettings | `allowCopyCommand` 属性设置为 TRUE 时可以指定的一组属性。 | 不是。<br/>使用 COPY 时适用。 |
-| writeBatchSize    | **每批**要插入到 SQL 表中的行数。<br/><br/>允许的值为 **integer**（行数）。 默认情况下，数据工厂会根据行大小动态确定适当的批大小。 | 不是。<br/>使用批量插入时适用。     |
-| writeBatchTimeout | 超时前等待批量插入操作完成的时间。<br/><br/>允许的值是**时间跨度**。 示例：“00:30:00”（30 分钟）。 | 不是。<br/>使用批量插入时适用。        |
+| 类型              | 复制活动接收器的**type**属性必须设置为**SqlDWSink**。 | 是                                           |
+| allowPolyBase     | 指示是否使用 PolyBase 将数据载入 SQL 数据仓库。 `allowCopyCommand` 和 `allowPolyBase` 不能同时为 true。 <br/><br/>有关约束和详细信息，请参阅[使用 PolyBase 将数据加载到 Azure SQL 数据仓库](#use-polybase-to-load-data-into-azure-sql-data-warehouse)部分。<br/><br/>允许的值为**True**和**False** （默认值）。 | 否。<br/>使用 PolyBase 时适用。     |
+| polyBaseSettings  | `allowPolybase` 属性设置为 **true** 时可以指定的一组属性。 | 不能。<br/>使用 PolyBase 时适用。 |
+| allowCopyCommand | 指示是否使用 [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)（预览版）将数据载入 SQL 数据仓库。 `allowCopyCommand` 和 `allowPolyBase` 不能同时为 true。 <br/><br/>有关约束和详细信息，请参阅[使用 COPY 语句将数据载入 Azure SQL 数据仓库](#use-copy-statement)部分。<br/><br/>允许的值为**True**和**False** （默认值）。 | 否。<br>使用 COPY 时适用。 |
+| copyCommandSettings | `allowCopyCommand` 属性设置为 TRUE 时可以指定的一组属性。 | 不能。<br/>使用 COPY 时适用。 |
+| writeBatchSize    | **每批**要插入到 SQL 表中的行数。<br/><br/>允许的值为 **integer**（行数）。 默认情况下，数据工厂会根据行大小动态确定适当的批大小。 | 不能。<br/>使用批量插入时适用。     |
+| writeBatchTimeout | 超时前等待批量插入操作完成的时间。<br/><br/>允许的值为**timespan**。 示例：“00:30:00”（30 分钟）。 | 不能。<br/>使用批量插入时适用。        |
 | preCopyScript     | 每次运行时，将数据写入到 Azure SQL 数据仓库之前，指定复制活动要运行的 SQL 查询。 使用此属性清理预加载的数据。 | 否                                            |
 | tableOption | 指定是否根据源架构自动创建接收器表（如果不存在）。 在复制活动中配置暂存复制后，无法自动创建表。 允许的值为：`none`（默认值）、`autoCreate`。 |否 |
 | disableMetricsCollection | 数据工厂收集指标（如 SQL 数据仓库 DWU），以获取复制性能优化和建议。 如果你担心此行为，请指定 `true` 将其关闭。 | 否（默认值为 `false`） |
@@ -404,26 +397,26 @@ Azure 数据工厂支持通过三种方式将数据载入 SQL 数据仓库。
 
 ## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>使用 PolyBase 将数据加载到 Azure SQL 数据仓库
 
-使用 [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) 是以高吞吐量将大量数据载入 Azure Synapse Analytics 的有效方法。 使用 PolyBase 而非默认 BULKINSERT 机制可以实现吞吐量的巨大增加。 有关用例的演练，请参阅将 1 [TB 加载到 Azure 同步分析](v1/data-factory-load-sql-data-warehouse.md)中。
+使用 [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) 是以高吞吐量将大量数据载入 Azure Synapse Analytics 的有效方法。 使用 PolyBase 而非默认 BULKINSERT 机制可以实现吞吐量的巨大增加。 有关用例的演练，请参阅将[1 TB 负载到 Azure Synapse Analytics 中](v1/data-factory-load-sql-data-warehouse.md)。
 
-* 如果源数据位于**Azure Blob、Azure 数据湖存储第 1 代或 Azure 数据湖存储第 2 代**中，并且**格式与 PolyBase 兼容**，则可以使用复制活动直接调用 PolyBase，让 Azure SQL 数据仓库从源中提取数据。 有关详细信息，请参阅**[使用 PolyBase 直接复制](#direct-copy-by-using-polybase)**。
-* 如果 PolyBase 最初不支持源数据存储和格式，请改用**[使用 PolyBase 的暂存复制](#staged-copy-by-using-polybase)** 功能。 暂存复制功能也能提供更高的吞吐量。 它会自动将数据转换为与 PolyBase 兼容的格式，将数据存储在 Azure Blob 存储中，然后调用 PolyBase 将数据加载到 SQL 数据仓库中。
+* 如果源数据位于**Azure Blob 中、Azure Data Lake Storage Gen1 或 Azure Data Lake Storage Gen2**并且**格式与 PolyBase 兼容**，则可以使用复制活动直接调用 POLYBASE，使 Azure SQL 数据仓库从源中提取数据。 有关详细信息，请参阅**[使用 PolyBase 直接复制](#direct-copy-by-using-polybase)**。
+* 如果 PolyBase 最初不支持源数据存储和格式，请改用**[使用 PolyBase 的暂存复制](#staged-copy-by-using-polybase)** 功能。 暂存复制功能也能提供更高的吞吐量。 它自动将数据转换为 PolyBase 兼容的格式，并将数据存储在 Azure Blob 存储中，然后调用 PolyBase 将数据加载到 SQL 数据仓库。
 
 >[!TIP]
 >详细了解[有关如何使用 PolyBase 的最佳做法](#best-practices-for-using-polybase)。
 
 在复制活动中的 `polyBaseSettings` 下支持以下 PolyBase 设置：
 
-| properties          | 说明                                                  | 必选                                      |
+| 属性          | 说明                                                  | 必需                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| rejectValue       | 指定在查询失败之前可以拒绝的行数或百分比。<br/><br/>在[创建外部表（转接-SQL）](https://msdn.microsoft.com/library/dn935021.aspx)的参数部分中了解有关 PolyBase 拒绝选项的详细信息。 <br/><br/>允许的值为 0（默认值）、1、2 等。 | 否                                            |
-| rejectType        | 指定 **rejectValue** 选项是文本值还是百分比。<br/><br/>允许的值是**值**（默认）和**百分比**。 | 否                                            |
+| rejectValue       | 指定在查询失败之前可以拒绝的行数或百分比。<br/><br/>详细了解[CREATE EXTERNAL TABLE （transact-sql）](https://msdn.microsoft.com/library/dn935021.aspx)的 "参数" 部分中的 PolyBase 拒绝选项。 <br/><br/>允许的值为 0（默认值）、1、2 等。 | 否                                            |
+| rejectType        | 指定 **rejectValue** 选项是文本值还是百分比。<br/><br/>允许的值为值（默认**值**）和**百分比**。 | 否                                            |
 | rejectSampleValue | 确定在 PolyBase 重新计算被拒绝行的百分比之前要检索的行数。<br/><br/>允许的值为 1、2 等。 | 如果 **rejectType** 是 **percentage**，则为“是” |
-| useTypeDefault    | 指定在 PolyBase 从文本文件中检索数据时如何处理带分隔符的文本文件中的缺失值。<br/><br/>有关此属性的详细信息，请参阅[创建外部文件格式 (Transact SQL)](https://msdn.microsoft.com/library/dn935026.aspx) 中的参数部分。<br/><br/>允许的值为 **"真****"和"假**"（默认值）。<br><br> | 否                                            |
+| useTypeDefault    | 指定在 PolyBase 从文本文件中检索数据时如何处理带分隔符的文本文件中的缺失值。<br/><br/>有关此属性的详细信息，请参阅[创建外部文件格式 (Transact SQL)](https://msdn.microsoft.com/library/dn935026.aspx) 中的参数部分。<br/><br/>允许的值为**True**和**False** （默认值）。<br><br> | 否                                            |
 
 ### <a name="direct-copy-by-using-polybase"></a>使用 PolyBase 直接复制
 
-SQL 数据仓库 PolyBase 直接支持 Azure Blob、Azure 数据湖存储第 1 代和 Azure 数据湖存储第 2 代。 如果源数据满足本部分所述的条件，请使用 PolyBase 从源数据存储直接复制到 Azure Synapse Analytics。 否则，请改用[使用 PolyBase 的暂存复制](#staged-copy-by-using-polybase)。
+SQL 数据仓库 PolyBase 直接支持 Azure Blob、Azure Data Lake Storage Gen1 和 Azure Data Lake Storage Gen2。 如果源数据满足本部分所述的条件，请使用 PolyBase 从源数据存储直接复制到 Azure Synapse Analytics。 否则，请改用[使用 PolyBase 的暂存复制](#staged-copy-by-using-polybase)。
 
 > [!TIP]
 > 若要将数据有效复制到 SQL 数据仓库，请通过 [Azure Data Factory makes it even easier and convenient to uncover insights from data when using Data Lake Store with SQL Data Warehouse](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/)（将 Data Lake Store 与 SQL 数据仓库配合使用时，Azure 数据工厂能够更轻松且方便地分析数据）了解详细信息。
@@ -449,11 +442,11 @@ SQL 数据仓库 PolyBase 直接支持 Azure Blob、Azure 数据湖存储第 1 �
    4. 将 `nullValue` 保留为默认值或设置为“空字符串”（“”），并将 `treatEmptyAsNull` 保留为默认值或设置为 true****。
    5. `encodingName` 保留为默认值或设置为 **utf-8**。
    6. `quoteChar`、`escapeChar` 和 `skipLineCount` 未指定。 PolyBase 支持跳过可以在 ADF 中配置为 `firstRowAsHeader` 的标头行。
-   7. `compression`可以是**无压缩****、GZip**或**Deflate**。
+   7. `compression`不能为**压缩**、 **GZip**或**Deflate**。
 
 3. 如果源为文件夹，则必须将复制活动中的 `recursive` 设置为 true。
 
-4. `wildcardFolderPath``wildcardFilename` `modifiedDateTimeStart`，`modifiedDateTimeEnd`和`additionalColumns`未指定。
+4. `wildcardFolderPath`未`wildcardFilename`指定`modifiedDateTimeStart`、 `modifiedDateTimeEnd` 、 `additionalColumns`和。
 
 >[!NOTE]
 >如果源为文件夹，请注意，PolyBase 会从文件夹及其所有子文件夹中检索文件，但不从文件名以下划线 (_) 或句点 (.) 开头的文件中检索数据，详见[此文档 - LOCATION 参数](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest#arguments-2)。
@@ -571,11 +564,11 @@ ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data typ
 解决方案是在复制活动接收器 -> PolyBase 设置中取消选中“使用类型默认值”选项（为 false）。**** “[USE_TYPE_DEFAULT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest#arguments
 )”是 PolyBase 本机配置，用于指定 PolyBase 从文本文件检索数据时如何处理分隔文本文件中的缺失值。 
 
-**`tableName`在 Azure 同步分析中**
+**`tableName`在 Azure Synapse 分析中**
 
 下表举例说明如何在 JSON 数据集中指定 **tableName** 属性。 其中显示了架构和表名称的多个组合。
 
-| DB 架构 | 表名称 | **表名称**JSON 属性               |
+| DB 架构 | 表名称 | **tableName**JSON 属性               |
 | --------- | ---------- | ----------------------------------------- |
 | dbo       | MyTable    | MyTable 或 dbo.MyTable 或 [dbo].[MyTable] |
 | dbo1      | MyTable    | dbo1.MyTable 或 [dbo1].[MyTable]          |
@@ -621,8 +614,8 @@ SQL 数据仓库 [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/c
 
 2. 格式设置如下：
 
-   1. 对于**Parquet：**`compression`可以**没有压缩**，**斯内皮**，或**GZip。**
-   2. 对于**ORC**：`compression`不能**没有压缩**，**```zlib```** 或**Snappy**。
+   1. 对于**Parquet**： `compression`不能为**compression**、 **Snappy**或**GZip**。
+   2. 对于**ORC**： `compression`不能为**压缩**、 **```zlib```** 或**Snappy**。
    3. 对于“带分隔符的文本”：****
       1. `rowDelimiter` 显式设置为**单字符**或“\r\n”，不支持默认值。****
       2. `nullValue` 保留默认值或设置为**空字符串** ("")。
@@ -633,11 +626,11 @@ SQL 数据仓库 [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/c
 
 3. 如果源为文件夹，则必须将复制活动中的 `recursive` 设置为 true。
 
-4. `wildcardFolderPath``wildcardFilename` `modifiedDateTimeStart`，`modifiedDateTimeEnd`和`additionalColumns`未指定。
+4. `wildcardFolderPath`未`wildcardFilename`指定`modifiedDateTimeStart`、 `modifiedDateTimeEnd` 、 `additionalColumns`和。
 
 在复制活动中的 `allowCopyCommand` 下支持以下 COPY 语句设置：
 
-| properties          | 说明                                                  | 必选                                      |
+| 属性          | 说明                                                  | 必需                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | defaultValues | 为 SQL 数据仓库中的每个目标列指定默认值。  属性中的默认值将覆盖数据仓库中设置的 DEFAULT 约束，标识列不能有默认值。 | 否 |
 | additionalOptions | 将直接在 [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)的“With”子句中传递给 SQL DW COPY 语句的其他选项。 根据需要将值括在引号中，以符合 COPY 语句要求。 | 否 |
@@ -702,47 +695,47 @@ SQL 数据仓库 [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/c
 
 ## <a name="mapping-data-flow-properties"></a>映射数据流属性
 
-在映射数据流中转换数据时，可以从 Azure 同步分析读取和写入表。 有关详细信息，请参阅映射数据流的[源转换](data-flow-source.md)和[接收器转换](data-flow-sink.md)。
+在映射数据流中转换数据时，可以从 Azure Synapse Analytics 读取和写入表。 有关详细信息，请参阅映射数据流中的[源转换](data-flow-source.md)和[接收器转换](data-flow-sink.md)。
 
 ### <a name="source-transformation"></a>源转换
 
-特定于 Azure 同步分析的设置可在源转换的 **"源选项**"选项卡中提供。 
+源转换的 "**源选项**" 选项卡中提供了特定于 Azure Synapse Analytics 的设置。 
 
-**输入：** 选择是将源指向表（等效```Select * from <table-name>```项）还是输入自定义 SQL 查询。
+**输入：** 选择是将源指向表（等效于```Select * from <table-name>```）还是输入自定义 SQL 查询。
 
-**查询**：如果在输入字段中选择"查询"，请输入源的 SQL 查询。 此设置将覆盖您在数据集中选择的任何表。 **此处不支持"按订单"** 子句，但您可以设置完整的 SELECT FROM 语句。 您还可以使用用户定义的表函数。 **从 udfGetData（） 中选择 *** 是 SQL 中的 UDF，用于返回表。 此查询将生成一个源表，可用于数据流。 使用查询也是减少用于测试或查找的行的好方法。 
+**查询**：如果在输入字段中选择 "查询"，则输入源的 SQL 查询。 此设置将重写您在数据集中选择的任何表。 此处不支持**Order By**子句，但你可以设置完整的 SELECT FROM 语句。 你还可以使用用户定义的表函数。 **select * From udfGetData （）** 是返回表的 SQL 中的 UDF。 此查询将生成可以在数据流中使用的源表。 使用查询也是减少用于测试或查找的行的好方法。 
 
 * SQL 示例：```Select * from MyTable where customerId > 1000 and customerId < 2000```
 
-**批处理大小**：输入批处理大小以将大数据块块到读取中。 在数据流中，ADF 将使用此设置来设置 Spark 列缓存。 这是一个选项字段，如果选项字段留空，将使用 Spark 默认值。
+**批大小**：输入用于将大型数据拆分为读取的批大小。 在数据流中，ADF 将使用此设置来设置 Spark 纵栏式缓存。 此选项字段将在默认情况下使用 Spark 默认值。
 
-**隔离级别**：映射数据流的 SQL 源的默认值为未提交。 您可以在此处将隔离级别更改为以下值之一：
+**隔离级别**：映射数据流中 SQL 源的默认值为 "未提交读"。 可以将此处的隔离级别更改为以下值之一：
 * 已提交读
-* 读取未提交
+* 未提交读
 * 可重复的读取
 * 可序列化
 * 无（忽略隔离级别）
 
 ![隔离级别](media/data-flow/isolationlevel.png "隔离级别")
 
-### <a name="sink-transformation"></a>水槽变换
+### <a name="sink-transformation"></a>接收器转换
 
-特定于 Azure 同步分析的设置可在接收器转换的 **"设置"** 选项卡中提供。
+特定于 Azure Synapse Analytics 的设置可在接收器转换的 "**设置**" 选项卡中找到。
 
-**更新方法：** 确定数据库目标上允许的操作。 默认值是仅允许插入。 要更新、更新或删除行，需要更改行转换来标记这些操作的行。 对于更新、升级和删除，必须设置键列或列以确定要更改的行。
+**更新方法：** 确定对数据库目标允许哪些操作。 默认值为仅允许插入。 若要更新、upsert 或删除行，需要更改行转换才能标记这些操作的行。 对于更新、upsert 和删除，必须设置一个或多个键列，以确定要更改的行。
 
-**表操作：** 确定在写入之前是从目标表重新创建或删除所有行。
-* 无：对表不执行任何操作。
-* 重新创建：该表将被删除并重新创建。 动态创建新表时是必需的。
-* 截取：将删除目标表中的所有行。
+**表操作：** 确定在写入之前是否在目标表中重新创建或删除所有行。
+* None：不会对表执行任何操作。
+* 重新创建：该表将被删除并重新创建。 如果动态创建新表，则为必需。
+* 截断：目标表中的所有行都将被删除。
 
-**启用暂存：** 确定在写入 Azure 同步分析时是否使用[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15)
+**启用暂存：** 确定在写入 Azure Synapse 分析时是否使用[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15)
 
-**批处理大小**：控制每个存储桶中写入的行数。 较大的批处理大小可改善压缩和内存优化，但在缓存数据时存在内存异常风险。
+**批大小**：控制正在每个存储桶中写入的行数。 较大的批处理大小会提高压缩和内存优化，但在缓存数据时可能会导致内存不足异常。
 
-**前 SQL 和后 SQL 脚本**：输入将在（预处理）和之后（后处理）数据写入 Sink 数据库之前执行的多行 SQL 脚本
+**Pre 和 POST sql 脚本**：输入将在之前（预处理）和之后（后处理）数据写入接收器数据库时执行的多行 sql 脚本
 
-![SQL 处理脚本的后处理脚本](media/data-flow/prepost1.png "SQL 处理脚本")
+![pre 和 post SQL 处理脚本](media/data-flow/prepost1.png "SQL 处理脚本")
 
 ## <a name="data-type-mapping-for-azure-synapse-analytics"></a>Azure Synapse Analytics 的数据类型映射
 
@@ -755,7 +748,7 @@ SQL 数据仓库 [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/c
 | :------------------------------------ | :----------------------------- |
 | bigint                                | Int64                          |
 | binary                                | Byte[]                         |
-| bit                                   | Boolean                        |
+| bit                                   | 布尔                        |
 | char                                  | String, Char[]                 |
 | date                                  | DateTime                       |
 | Datetime                              | DateTime                       |

@@ -1,23 +1,23 @@
 ---
-title: 从 Azure 应用商店部署 VM
-description: 说明如何从 Azure 应用商店预配置的虚拟机部署虚拟机。
+title: 从 Azure Marketplace 部署 VM
+description: 说明如何从 Azure Marketplace 预配置虚拟机部署虚拟机。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 6e39f1c70cd94c14b12e54817941ea9106aacfdd
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 2fb04e2e953e2bcbe479f7685b8042fdc7ea1767
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273862"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146990"
 ---
 # <a name="deploy-a-virtual-machine-from-the-azure-marketplace"></a>从 Azure 市场部署虚拟机
 
 > [!IMPORTANT]
-> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 虚拟机产品的管理移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[Azure VM 映像认证](https://aks.ms/CertifyVMimage)中的说明来管理迁移的优惠。
+> 从2020年4月13日开始，我们将开始将 Azure 虚拟机产品/服务的管理转移到合作伙伴中心。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[AZURE VM 映像证书](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-image-certification)中的说明来管理迁移的产品/服务。
 
 本文介绍如何使用提供的 Azure PowerShell 脚本从 Azure 市场部署预配置的虚拟机 (VM)。  此脚本还公开 VM 上的 WinRM HTTP 和 HTTPS 终结点。  它需要你已按照[创建 Azure Key Vault 证书](./cpp-create-key-vault-cert.md)中所述，将证书上传到了 Azure Key Vault。 
 
@@ -27,7 +27,7 @@ ms.locfileid: "81273862"
 
 Azure VM 部署快速入门模板现以联机文件 [azuredeploy.json](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-vm-winrm-keyvault-windows/azuredeploy.json) 形式提供。  它包含以下参数：
 
-|  **参数**        |   **说明**                                 |
+|  **Parameter**        |   **描述**                                 |
 |  -------------        |   ---------------                                 |
 | newStorageAccountName    | 存储帐户的名称                       |
 | dnsNameForPublicIP    | 公共 IP 的 DNS 名称。 必须为小写。    |

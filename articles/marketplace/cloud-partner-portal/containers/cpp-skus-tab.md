@@ -1,5 +1,5 @@
 ---
-title: Azure 容器映像的 SKU |Azure 应用商店
+title: Azure 容器映像的 Sku |Azure Marketplace
 description: 配置 Azure 容器的 SKU。
 author: dsindona
 ms.service: marketplace
@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: dsindona
-ms.openlocfilehash: 9c5cf218632c720fd042cc5f5d4ed95d5096b5b5
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 5f37d157e11b8cd7cf093fa558e81d9a1ce345a9
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270190"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146191"
 ---
 # <a name="container-skus-tab"></a>“容器 SKU”选项卡
 
 > [!IMPORTANT]
-> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 容器产品的管理移动到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照["创建 Azure 容器产品/服务](https://aka.ms/CreateContainerOffer)"中的说明进行操作，以管理迁移的优惠。
+> 从2020年4月13日开始，我们开始将 Azure 容器产品/服务的管理转移到合作伙伴中心。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[创建 Azure 容器服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer)中的说明来管理迁移的产品/服务。
 
 在“新建套餐”页的“SKU”选项卡中，可以创建一个或多个 SKU 并将其关联到新套餐。********  可以使用不同的 SKU 按功能集、计费模型或其他特征来区分解决方案。
 
@@ -48,14 +48,14 @@ SKU 元数据包含用于列出容器的店面显示信息。
 
 ![容器元数据](./media/containers-image-repository.png)
     
-上一个屏幕捕获中**的图像存储库详细信息**包含以下字段。  必填字段用星号 (*) 表示。
+上一个屏幕捕获中的**映像存储库详细信息**包含以下字段。  必填字段用星号 (*) 表示。
 
--   **订阅\*ID** - 存在 ACR 的 Azure 订阅 ID。
--   **资源组名称\***- ACR 的资源组名称。
--   **注册表项\***- ACR 名称。
--   **存储库名称\***- 存储库名称。 设置此名称后，无法更改此值。 请使用唯一名称以避免与你的帐户中的其他产品/服务冲突。
--   **用户名\***- 与 ACR 映像关联的用户名（管理员用户名）。
--   **密码\***- 与 ACR 映像关联的密码。
+-   **订阅 id\* ** -包含 ACR 的 Azure 订阅 ID。
+-   **资源组名称\* ** -ACR 的资源组名称。
+-   **注册表名称\* ** -ACR 名称。
+-   存储库名称-存储库名称。 **\* ** 设置此名称后，无法更改此值。 请使用唯一名称以避免与你的帐户中的其他产品/服务冲突。
+-   **Username\* ** -与 ACR 图像关联的用户名（管理员用户名）。
+-   **密码\* ** -与 ACR 图像关联的密码。
 
     >[!NOTE]
     >必须指定用户名和密码，以确保合作伙伴在发布过程中能够访问所述的 ACR。
@@ -65,7 +65,7 @@ SKU 元数据包含用于列出容器的店面显示信息。
 
 在发布容器映像时，可以提供一个或多个映像标记和 SHA 摘要。
 
-**图像标记\*或摘要**
+**Image 标记\*或 Digest**
  
 - 此标记或摘要必须包括一个 `latest` 标记和一个版本标记（例如，从 `xx.xx.xx-` 开始，其中 xx 是一个数字）。 它们应是面向多个平台的[清单标记](https://github.com/estesp/manifest-tool)。 还必须添加清单标记引用的所有标记，使我们能够上传这些映像。 
 - 可以使用标记添加容器的多个版本。 所有清单标记（`latest` 除外）必须以 `X.Y-` 或 `X.Y.Z-` 开头，其中，X、Y、Z 为整数。 <br/> 例如，如果 `latest` 标记指向 `1.0.1-linux-x64`、`1.0.1-linux-arm32` 和 `1.0.1-windows-arm32`，则需要在此处添加这些标记。

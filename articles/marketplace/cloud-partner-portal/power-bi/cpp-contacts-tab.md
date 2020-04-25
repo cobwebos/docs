@@ -1,5 +1,5 @@
 ---
-title: Power BI 应用产品/服务联系人信息 |Azure 应用商店
+title: Power BI 应用服务的联系人信息 |Azure Marketplace
 description: 配置 Power BI 应用产品/服务在 Microsoft AppSource 市场中的“联系人”字段。
 author: dsindona
 ms.service: marketplace
@@ -7,19 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: b7365babd9a6cdba28da59a9113edf32d2974fb0
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: f3c6f3b07f878bac6e67be90947fb7109b840a3c
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984821"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146750"
 ---
 # <a name="power-bi-app-contacts-tab"></a>Power BI 应用联系人选项卡
 
 >[!Important]
->从 2020 年 4 月 13 日起，我们将开始将 Power BI 应用优惠的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[Power BI 应用创建概述](https://aka.ms/AzureCreatePBIServiceApp)中的说明进行操作，以管理迁移的优惠。
+>从2020年4月13日开始，我们开始将 Power BI 应用程序的管理转移到合作伙伴中心。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[Power BI 应用创建概述](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)中的说明来管理迁移的产品/服务。
 
-使用“新建产品/服务”**** 页的“联系人”**** 选项卡为产品/服务提供技术和用户支持资源。 它分为两个部分：**工程和****客户支持**。
+使用“新建产品/服务”**** 页的“联系人”**** 选项卡为产品/服务提供技术和用户支持资源。 它分为两部分：**工程**和**客户支持**。
 
 ![“联系人”选项卡](media/contacts-tab.png)
 
@@ -33,7 +33,7 @@ ms.locfileid: "80984821"
 | *工程联系人* | 作为 AppSource 与你的组织之间的技术联系人。    |
 | **名称\***              | 作为技术或工程支持的人员或组的名称。 |
 | **电子邮件\***             | 此技术联系人的电子邮件地址。                                  |
-| **电话\***             | 技术支持的电话号码。                                       |
+| **移动\***             | 技术支持的电话号码。                                       |
 | *支持联系人*     | 接收 AppSource 内客户提交的支持工单。            |
 | **名称\***              | 作为客户支持的人员或组的名称。              |
 | **电子邮件\***             | 客户支持的电子邮件地址。                                        |

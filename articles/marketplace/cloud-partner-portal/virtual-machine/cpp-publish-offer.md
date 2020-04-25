@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 应用商店中发布虚拟机产品/服务
+title: 在 Azure Marketplace 中发布虚拟机产品/服务
 description: 列出了在 Azure 市场中发布现有的虚拟机产品/服务所需的步骤。
 author: dsindona
 ms.service: marketplace
@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: dsindona
-ms.openlocfilehash: bb875a5c4ab1b898b64fe22140414e5d5b7830b8
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: f66ce0c15e976898d5022bf5705a82fe0969ec07
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273777"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147659"
 ---
 # <a name="publish-a-virtual-machine-offer"></a>发布虚拟机产品/服务
 
 > [!IMPORTANT]
-> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 虚拟机产品的管理移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照创建 Azure[虚拟机产品/服务](https://aka.ms/CreateAzureVMoffer)中的说明进行操作，以管理迁移的优惠。
+> 从2020年4月13日开始，我们将开始将 Azure 虚拟机产品/服务的管理转移到合作伙伴中心。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[创建 Azure 虚拟机产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)中的说明来管理迁移的产品/服务。
 
  在门户中定义产品/服务并创建关联的技术资产后，最后一个步骤是提交产品/服务进行发布。 下图描述了进行“推出”的发布过程的主要步骤：
 
@@ -27,13 +27,13 @@ ms.locfileid: "81273777"
 <!-- we need to tell them that if an offer seems stuck in a step, to know that they should file a support ticket (link to support ticket doc) -->
 
 
-|  **发布步骤**           | **时间**    | **说明**                                                            |
+|  **发布步骤**           | **时间**    | **描述**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
 | 验证先决条件         | 15 分钟   | 验证套餐信息和套餐设置。                        |
 | 体验版验证（可选） | 2 小时 | 如果你已选择启用体验版，则 Microsoft 会验证体验版配置、其部署以及通过所选区域的复制。 |
 | 认证                  | 3 天 | Azure 认证团队对套餐进行分析。 此步骤将针对病毒、恶意软件、安全合规性和安全问题执行扫描。 如果发现了问题，则提供反馈。 |
 | 设置                   | 4 天   | 在市场生产系统中复制 VM 产品/服务。               |
-| 打包以及潜在顾客开发注册 | \< 1 小时  | 产品/服务的技术资产打包供客户使用，并配置和设置引线系统。 |
+| 打包以及潜在顾客开发注册 | \< 1 小时  | 产品/服务的技术资产已打包供客户使用，并已配置并设置了线索系统。 |
 |  发布者签收             |  -        | 最终发布者在套餐上线之前进行复查和确认。 可以在所选订阅（在套餐信息步骤中）中部署套餐，以验证它是否符合所有要求。  |
 | 设置                   | 4 天 | 在市场生产系统和区域中复制最终完成的 VM 产品/服务。 | 
 | 实时                           | 4 天 | 发布 VM 产品/服务，将其复制到所需的区域，并使其可供公众使用。 |

@@ -1,5 +1,5 @@
 ---
-title: Azure 和动态 365 咨询服务服务优惠 |Azure 应用商店
+title: Azure 和 Dynamics 365 咨询服务服务 |Azure Marketplace
 description: 有关在云合作伙伴门户中定义和发布 Azure 或 Dynamics 365 咨询服务产品/服务的指导。
 author: qianw211
 ms.service: marketplace
@@ -7,19 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: dace05715828395aed3953b42bf7926df292bbdb
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: bdc2537d21fd88c677d07ebdb5170cdf14c7489d
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981335"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146698"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Azure 和 Dynamics 365 咨询服务产品/服务
 
 >[!Important]
->从 2020 年 4 月 13 日起，我们将开始将您的咨询服务优惠的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[咨询服务创建概述](https://aka.ms/AzureCreateConsultingService)中的说明来管理迁移的优惠。
+>从2020年4月13日开始，我们将开始向合作伙伴中心迁移咨询服务的管理。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[咨询服务创建概述](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-consulting-service-offer)中的说明来管理迁移的产品/服务。
 
-本文介绍了如何将咨询服务产品/服务发布到 Microsoft <a href="https://azuremarketplace.microsoft.com">Azure 市场</a>或 <a href="https://appsource.microsoft.com">AppSource</a>。 基于微软<a href="https://dynamics.microsoft.com">动态365、Power</a> <a href="https://powerbi.microsoft.com">BI</a>和<a href="https://powerapps.microsoft.com">电源应用</a>的解决方案可以列在AppSource上。 基于其他 Microsoft <a href="https://azure.microsoft.com/services">Azure 服务</a>的其他套餐可以在 Azure 市场中列出。
+本文介绍了如何将咨询服务产品/服务发布到 Microsoft <a href="https://azuremarketplace.microsoft.com">Azure 市场</a>或 <a href="https://appsource.microsoft.com">AppSource</a>。 基于 Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365</a>、 <a href="https://powerbi.microsoft.com">Power BI</a>和<a href="https://powerapps.microsoft.com">Power Apps</a>的解决方案可在 AppSource 上列出。 基于其他 Microsoft <a href="https://azure.microsoft.com/services">Azure 服务</a>的其他套餐可以在 Azure 市场中列出。
 
 ## <a name="publishing-benefits"></a>发布的好处
 
@@ -37,16 +37,16 @@ ms.locfileid: "80981335"
 - [咨询服务先决条件](./cpp-consulting-service-prerequisites.md)列出了发布咨询服务产品/服务的要求：
  
     - Microsoft Azure
-    - 动态 365 客户互动 
-    - 动态 365 财务&运营 
+    - Dynamics 365 客户参与 
+    - Dynamics 365 财务 & 操作 
     - Dynamics 365 Customer Insights
     - Dynamics 365 Business Central 
     - Power BI 
     - Power Apps
     - Power Automate
 - [创建新产品/服务](./cpp-consulting-service-create-offer.md)列出了通过使用云合作伙伴门户创建咨询服务产品/服务项时需要执行的步骤：
-    - [定义优惠设置](./cpp-consulting-service-define-offer-settings.md)。
-    - [输入网店详细信息以及是在 Azure 应用商店中发布还是在 AppSource 上发布。](./cpp-consulting-service-storefront-details.md)
+    - [定义产品/服务设置](./cpp-consulting-service-define-offer-settings.md)。
+    - [输入店面详细信息，以及是要在 Azure Marketplace 还是在 AppSource 上发布。](./cpp-consulting-service-storefront-details.md)
 - [发布产品/服务](./cpp-consulting-service-publish-offer.md)介绍了如何提交产品/服务进行发布。
 
 ## <a name="next-steps"></a>后续步骤

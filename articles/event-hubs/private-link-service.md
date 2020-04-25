@@ -7,12 +7,12 @@ ms.author: spelluru
 ms.date: 03/12/2020
 ms.service: event-hubs
 ms.topic: article
-ms.openlocfilehash: 110d4b94eda8315c20f4baa70256f7e5ed378530
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: fb8fc93174345d0bdb09e4308a4206a65ed2270a
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106468"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148201"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link-preview"></a>将 Azure 事件中心与 Azure 专用链接集成（预览版）
 使用 azure 专用链接服务，可以通过虚拟网络中的**专用终结点**访问 azure 服务（例如，Azure 事件中心、azure 存储和 Azure Cosmos DB）以及 azure 托管的客户/合作伙伴服务。
@@ -29,7 +29,7 @@ ms.locfileid: "82106468"
 >[!WARNING]
 > 启用专用终结点可阻止其他 Azure 服务与事件中心交互。
 >
-> 实现虚拟网络时，受信任的 Microsoft 服务不受支持。
+> 使用虚拟网络时不支持受信任的 Microsoft 服务。
 >
 > 不适用于虚拟网络常见 Azure 方案（请注意，该列表内容并不详尽）****-
 > - Azure Monitor （诊断设置）
@@ -44,7 +44,7 @@ ms.locfileid: "82106468"
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>使用 Azure 门户添加专用终结点
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 若要将事件中心命名空间与 Azure 专用链接集成，需要以下实体或权限：
 
@@ -72,7 +72,7 @@ ms.locfileid: "82106468"
     1. 选择要在其中创建专用终结点的**Azure 订阅**。 
     2. 选择专用终结点资源的**资源组**。
     3. 输入专用终结点的**名称**。 
-    5. 选择专用终结点的**区域**。 专用终结点必须与虚拟网络位于同一区域中，但可以在与所连接到的专用链接资源不同的区域中。 
+    5. 选择专用终结点的**区域**。 专用终结点必须与虚拟网络位于同一区域中，但可以与连接到的专用链接资源位于不同的区域中。 
     6. 选择页面底部的 "**下一步：资源 >** " 按钮。
 
         ![创建专用终结点-基本页](./media/private-link-service/create-private-endpoint-basics-page.png)
@@ -86,7 +86,7 @@ ms.locfileid: "82106468"
         
             ![创建专用终结点-资源页](./media/private-link-service/create-private-endpoint-resource-page.png)    
     2. 如果选择 "**按资源 ID 或别名连接到 Azure 资源**"，请执行以下步骤：
-        1. 输入**资源 ID**或**别名**。 它可以是某些与你共享的资源 ID 或别名。
+        1. 输入**资源 ID**或**别名**。 它可以是某人与你共享的资源 ID 或别名。 获取资源 ID 的最简单方法是导航到 Azure 门户中的事件中心命名空间，并从中`/subscriptions/`复制 URI 的一部分。 有关示例，请参阅下图。 
         2. 对于**目标子资源**，请输入**命名空间**。 这是专用终结点可以访问的子资源的类型。
         3. 可有可无输入**请求消息**。 资源所有者在管理专用终结点连接时看到此消息。
         4. 然后，选择页面底部的 "**下一步：配置 >** " 按钮。

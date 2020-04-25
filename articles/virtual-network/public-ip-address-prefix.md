@@ -1,26 +1,27 @@
 ---
-title: Azure 公共 IP 地址前缀 | Microsoft Docs
+title: Azure 公共 IP 地址前缀
 description: 了解 Azure 公共 IP 地址前缀的涵义以及如何借助该前缀向资源分配可预测的公共 IP 地址。
 services: virtual-network
 documentationcenter: na
-author: anavinahar
-manager: narayan
+author: asudbring
+manager: KumudD
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2020
-ms.author: anavin
-ms.openlocfilehash: 9604d5567e74ef470c3e798b6a3df9e48d6fde5d
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.author: allensu
+ms.openlocfilehash: 0f71f845ef3209146ead79cafae2f3aa5c8c6d7d
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985297"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82144508"
 ---
 # <a name="public-ip-address-prefix"></a>公共 IP 地址前缀
 
@@ -56,7 +57,7 @@ ms.locfileid: "80985297"
 ## <a name="constraints"></a>约束
 
 - 不能指定前缀的 IP 地址。 Azure 将根据指定的大小分配前缀的 IP 地址。
-- 默认情况下，您可以创建最多 16 个 IP 地址或 /28 的前缀。 查看[网络限制可增加请求](https://docs.microsoft.com/azure/azure-portal/supportability/networking-quota-requests)和[Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)以了解更多信息。
+- 默认情况下，可以创建最多为16个 IP 地址的前缀或/28。 查看[网络限制增加请求](https://docs.microsoft.com/azure/azure-portal/supportability/networking-quota-requests)和[Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)以获取详细信息。
 - 创建前缀后，无法更改该范围。
 - 仅使用标准 SKU 创建的静态公共 IP 地址可从前缀范围进行分配。 若要详细了解公共 IP 地址 SKU，请参阅[公共 IP 地址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)。
 - 范围中的地址只能分配到 Azure 资源管理器资源。 这些地址不能分配到通过经典部署模型创建的资源。

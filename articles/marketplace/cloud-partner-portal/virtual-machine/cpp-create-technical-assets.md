@@ -1,5 +1,5 @@
 ---
-title: 为 Azure 应用商店创建虚拟机产品/服务的技术资产
+title: 为 Azure Marketplace 的虚拟机产品/服务创建技术资产
 description: 介绍如何为 Azure 市场中的虚拟机套餐创建技术资产。
 author: dsindona
 ms.service: marketplace
@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: dsindona
-ms.openlocfilehash: a62af1d8d751d36150c236280077cde8f6547385
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: c6ca017e18a83f0745140cba15d9c894e5a21c32
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273964"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148137"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>为虚拟机套餐创建技术资产
 
 > [!IMPORTANT]
-> 从 2020 年 4 月 13 日开始，我们将开始向合作伙伴中心移动 Azure 虚拟机产品/ 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照创建 Azure[虚拟机技术资产](https://aka.ms/AzureVMTechAsset)中的说明进行操作，以管理迁移的优惠。
+> 从2020年4月13日开始，我们将开始向合作伙伴中心提供 Azure 虚拟机的移动管理。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[创建 Azure 虚拟机技术资产](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)中的说明来管理迁移的产品/服务。
 
 本部分引导你为 Azure 市场虚拟机 (VM) 套餐创建并配置技术资产。  VM 包含两个组件：解决方案虚拟硬盘 (VHD)，以及可选的关联数据磁盘。  
 
@@ -37,10 +37,10 @@ ms.locfileid: "81273964"
 
 ## <a name="fundamental-technical-knowledge"></a>基础技术知识
 
-设计、构建和测试这些资产需要时间，需要对 Azure 平台和用于构建产品/服务的技术进行技术知识。 除了解决方案领域之外，您的工程团队还应了解以下 Microsoft 技术： 
+设计、构建和测试这些资产需要一定的时间，并需要 Azure 平台和用于构建产品/服务的技术的技术知识。 除解决方案域外，工程团队还应了解以下 Microsoft 技术： 
 -    基本了解 [Azure 服务](https://azure.microsoft.com/services/) 
 -    如何[设计和架构 Azure 应用程序](https://azure.microsoft.com/solutions/architecture/)
--    [Azure 虚拟机](https://azure.microsoft.com/services/virtual-machines/)[、Azure 存储](https://azure.microsoft.com/services/?filter=storage)和 Azure[网络](https://azure.microsoft.com/services/?filter=networking)的工作知识
+-    Azure[虚拟机](https://azure.microsoft.com/services/virtual-machines/)、 [Azure 存储](https://azure.microsoft.com/services/?filter=storage)和[azure 网络](https://azure.microsoft.com/services/?filter=networking)的工作知识
 -    [Azure 资源管理器](https://azure.microsoft.com/features/resource-manager/)的实践知识
 -    [JSON](https://www.json.org/)的工作知识
 

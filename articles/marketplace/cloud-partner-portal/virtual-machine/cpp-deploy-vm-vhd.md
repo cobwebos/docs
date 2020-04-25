@@ -1,5 +1,5 @@
 ---
-title: 从 VHD 为 Azure 应用商店部署 VM
+title: 从适用于 Azure Marketplace 的 Vhd 部署 VM
 description: 介绍如何从 Azure 部署的 VHD 注册 VM。
 author: qianw211
 ms.service: marketplace
@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: dsindona
-ms.openlocfilehash: f13e4066137e0d76612040d9f6e5ff3d0aa399c8
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: b02fda545ac135735186885d7db597885bf6cc21
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273892"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147965"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>从 VHD 部署 VM
 
 > [!IMPORTANT]
-> 从 2020 年 4 月 13 日开始，我们将开始向合作伙伴中心移动 Azure 虚拟机产品/ 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照创建 Azure[虚拟机技术资产](https://aka.ms/AzureVMTechAsset)中的说明进行操作，以管理迁移的优惠。
+> 从2020年4月13日开始，我们将开始向合作伙伴中心提供 Azure 虚拟机的移动管理。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[创建 Azure 虚拟机技术资产](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)中的说明来管理迁移的产品/服务。
 
 本部分介绍如何从 Azure 部署的虚拟硬盘 (VHD) 部署虚拟机 (VM)。  其中列出了所需的工具，以及如何使用这些工具创建用户 VM 映像，然后使用 PowerShell 脚本将其部署到 Azure。
 
@@ -26,7 +26,7 @@ ms.locfileid: "81273892"
 若要详细了解 VM 映像，请参阅以下博客文章：
 
 - [VM 映像](https://azure.microsoft.com/blog/vm-image-blog-post/)
-- [VM 映像电源外壳"如何"](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/)
+- [VM 映像 PowerShell "操作方法"](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/)
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
@@ -34,7 +34,7 @@ ms.locfileid: "81273892"
 
 遵照以下说明安装 Azure PowerShell 和 Azure CLI（如果尚未这样做）：
 
-- [安装 Azure 电源外壳](https://docs.microsoft.com/powershell/azure/install-Az-ps)
+- [安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)
 - [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 
@@ -58,11 +58,11 @@ ms.locfileid: "81273892"
 
    <table> <tr> <td valign="top"> <img src="./media/publishvm_023.png" alt="Custom deployment property page 1"> </td> <td valign="top"> <img src="./media/publishvm_024.png" alt="Custom deployment property page 2"> </td> </tr> </table> <br/> 
 
-   |  **参数**              |   **说明**                                                            |
+   |  **Parameter**              |   **描述**                                                            |
    |  -------------              |   ---------------                                                            |
    | 用户存储帐户名称   | 通用化 VHD 所在的存储帐户名称                    |
    | 用户存储容器名称 | 通用化 VHD 所在的容器名称                          |
-   | 公共 IP 的 DNS 名称      | 公共 IP DNS 名称。 DNS 名称是 VM 的，在部署产品/服务后，您将在 Azure 门户中定义此名称。  |
+   | 公共 IP 的 DNS 名称      | 公共 IP DNS 名称。 DNS 名称为 VM，一旦部署该产品/服务，你将在 Azure 门户中定义此名称。  |
    | 管理员用户名             | 新 VM 的管理员帐户的用户名                                  |
    | 管理员密码              | 新 VM 的管理员帐户的密码                                  |
    | 操作系统类型                     | VM 操作系统： `Windows` \|`Linux`                                    |

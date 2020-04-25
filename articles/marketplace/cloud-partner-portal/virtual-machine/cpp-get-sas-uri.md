@@ -1,5 +1,5 @@
 ---
-title: 获取基于 Microsoft Azure 的 VM 映像的共享访问签名 URI |Azure 应用商店
+title: 获取基于 Microsoft Azure 的 VM 映像的共享访问签名 URI |Azure Marketplace
 description: 介绍如何获取 VM 映像的共享访问签名 (SAS) URI。
 author: dsindona
 ms.service: marketplace
@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: 2fdbc2a11bd963057b465a629757f2be51ae4061
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 46b3764fe2a1e09875f2b92a461591b6ff08540f
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273845"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147891"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>获取 VM 映像的共享访问签名 URI
 
 > [!IMPORTANT]
-> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 虚拟机产品的管理移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照获取 VM[映像的共享访问签名 URI](https://aka.ms/GetSASURI)中的说明进行操作，以管理迁移的优惠。
+> 从2020年4月13日开始，我们将开始将 Azure 虚拟机产品/服务的管理转移到合作伙伴中心。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[获取 VM 映像的共享访问签名 URI](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-sas-uri-issues)中的说明来管理已迁移的产品/服务。
 
 在发布过程中，必须为 SKU 关联的每个虚拟硬盘 (VHD) 提供统一资源标识符 (URI)。 Microsoft 需要在认证过程中访问这些 VHD。 本文介绍如何生成每个 VHD 的共享访问签名 (SAS) URI。 将在云合作伙伴门户上的“SKU”选项卡中输入此 URI。****
 
@@ -123,7 +123,7 @@ ms.locfileid: "81273845"
 
 使用以下查检表检查并验证生成的每个 SAS URI。  验证：
 
-- URI 的形式为： `<blob-service-endpoint-url>` + `/vhds/` + `<vhd-name>?` +`<sas-connection-string>`
+- URI 的格式为： `<blob-service-endpoint-url>` + `/vhds/` + `<vhd-name>?` +`<sas-connection-string>`
 - URI 包含 VHD 映像文件名（包括扩展名“.vhd”）。
 - URI 的中间位置会显示 `sp=rl`。 此字符串指示指定了 `Read` 和 `List` 访问权限。
 - 该位置的后面还会显示 `sr=c`。 此字符串指示指定了容器级访问权限。

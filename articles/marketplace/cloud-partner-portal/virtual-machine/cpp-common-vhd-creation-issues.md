@@ -1,5 +1,5 @@
 ---
-title: Azure 应用商店 VHD 创建 （FAQ） 期间的常见问题
+title: 为 Azure Marketplace 创建 VHD 时的常见问题（FAQ）
 description: 有关创建 VHD 和相关操作的常见问题解答。
 author: dsindona
 ms.service: marketplace
@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/02/2018
 ms.author: dsindona
-ms.openlocfilehash: 988121effb35949cce442ba9458789105e88feec
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: df219ad7428eed5283c7a30a232308dca84fd25f
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273437"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146975"
 ---
 # <a name="common-issues-during-vhd-creation-faq"></a>创建 VHD 期间出现的常见问题 (FAQ)
 
 > [!IMPORTANT]
-> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 虚拟机产品的管理移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[创建 VHD 常见问题解答](https://aka.ms/VHDcreationIssues)中的说明进行操作，以管理迁移的优惠。
+> 从2020年4月13日开始，我们将开始将 Azure 虚拟机产品/服务的管理转移到合作伙伴中心。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[创建 VHD 常见问题](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-issues-during-vhd-creation)中的说明来管理迁移的产品/服务。
 
 以下常见问题解答 (FAQ) 涵盖了在为 VM 套餐创建虚拟硬盘 (VHD) 和虚拟机 (VM) 期间遇到的常见问题。 
 
@@ -76,7 +76,7 @@ Azure 市场目前不支持基于托管存储或 Azure 高级存储中的映像�
 
 一般来说是不可以的。  Azure VM 支持的操作系统和标准服务均为 64 位。  但是，从技术角度看，为了向后兼容，大多数 64 位操作系统都支持运行 32 位版本的应用程序。  但是，不支持在 VM 解决方案中使用 32 位应用程序，因此，我们强烈建议不要使用 32 位版本。**  请将应用程序重新编译为 64 位项目。
 
-有关详细信息，请参阅以下文章：
+有关详细信息，请参阅下列文章：
 - [运行 32 位应用程序](https://docs.microsoft.com/windows/desktop/WinProg64/running-32-bit-applications)
 - [Azure 虚拟机对 32 位操作系统的支持](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines)
 - [Microsoft Azure 虚拟机的 Microsoft 服务器软件支持](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)

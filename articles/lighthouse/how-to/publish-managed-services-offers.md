@@ -1,45 +1,45 @@
 ---
-title: 向 Azure 应用商店发布托管服务产品/服务
-description: 了解如何发布托管服务产品，将客户主板到 Azure 委派的资源管理。
-ms.date: 04/08/2020
+title: 将托管服务产品/服务发布到 Azure Marketplace
+description: 了解如何发布加入客户到 Azure 委派的资源管理的托管服务产品/服务。
+ms.date: 04/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 247f711188fa10de19cece27f164fdfa71612d1b
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 19c4d1a4bd0ffd7c0162cbf7f20c49a5b219b9bc
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991903"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146744"
 ---
-# <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>向 Azure 应用商店发布托管服务产品/服务
+# <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>将托管服务产品/服务发布到 Azure Marketplace
 
 > [!IMPORTANT]
-> 从 2020 年 4 月 13 日起，我们将开始将托管服务优惠的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[创建新托管服务产品/服务产品/服务的说明](../../marketplace/partner-center-portal/create-new-managed-service-offer.md)进行操作，以管理迁移的优惠。
+> 从2020年4月13日开始，我们将开始将托管服务产品/服务的管理迁移到合作伙伴中心。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[创建新的托管服务产品](../../marketplace/partner-center-portal/create-new-managed-service-offer.md)中的说明来管理迁移的产品/服务。
 
-在本文中，您将了解如何使用[云合作伙伴门户](https://cloudpartner.azure.com/)向[Azure 应用商店](https://azuremarketplace.microsoft.com)发布公共或私有托管服务产品/ 然后，购买产品/服务的客户将能够将订阅和资源组用于[Azure 委派的资源管理](../concepts/azure-delegated-resource-management.md)。
+本文介绍如何使用[云合作伙伴门户](https://cloudpartner.azure.com/)向[Azure Marketplace](https://azuremarketplace.microsoft.com)发布公共或专用托管服务产品/服务。 然后，购买产品/服务的客户可以加入[Azure 委托资源管理](../concepts/azure-delegated-resource-management.md)的订阅和资源组。
 
 ## <a name="publishing-requirements"></a>发布要求
 
-您需要[在合作伙伴中心](../../marketplace/partner-center-portal/create-account.md)中拥有有效的帐户才能创建和发布产品/服务。 如果您还没有帐户，[注册过程](https://aka.ms/joinmarketplace)将引导您完成在合作伙伴中心创建帐户并注册商业市场计划的步骤。
+你需要[在合作伙伴中心](../../marketplace/partner-center-portal/create-account.md)拥有有效的帐户来创建和发布产品/服务。 如果你还没有帐户，则[注册过程](https://aka.ms/joinmarketplace)将指导你完成在合作伙伴中心创建帐户和注册商业市场计划的步骤。
 
-根据[托管服务提供认证要求](https://docs.microsoft.com/legal/marketplace/certification-policies#7004-business-requirements)，您必须具有[银云或金云平台能力级别](https://docs.microsoft.com/partner-center/learn-about-competencies)或 Azure 专家[MSP](https://partner.microsoft.com/membership/azure-expert-msp)才能发布托管服务产品/服务。
+根据[托管服务提供的认证要求](https://docs.microsoft.com/legal/marketplace/certification-policies#7004-business-requirements)，你必须拥有[银牌或金牌云平台资格认证级别](https://docs.microsoft.com/partner-center/learn-about-competencies)，或是[Azure 专家 MSP](https://partner.microsoft.com/membership/azure-expert-msp)才能发布托管服务产品/服务。
 
 你的 Microsoft 合作伙伴网络 (MPN) ID 将[自动关联](../../billing/billing-partner-admin-link-started.md)你发布的产品/服务，以跟踪你在客户参与中的影响。
 
 > [!NOTE]
 > 如果不想将产品/服务发布到 Azure 市场，可使用 Azure 资源管理器模板手动载入客户。 有关详细信息，请参阅[将客户载入到 Azure 委派资源管理](onboard-customer.md)。
 
-发布托管服务产品/服务产品/服务类似于向 Azure 应用商店发布任何其他类型的产品/服务。 要了解常规发布过程，请参阅[Azure 应用商店和 AppSource 发布指南](../../marketplace/marketplace-publishers-guide.md)。 还应查看[商业市场认证策略](https://docs.microsoft.com/legal/marketplace/certification-policies)，特别是[托管服务](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)部分。
+发布托管服务产品/服务类似于将任何其他类型的产品/服务发布到 Azure Marketplace。 若要了解常规发布过程，请参阅[Azure Marketplace 和 AppSource 发布指南](../../marketplace/marketplace-publishers-guide.md)。 还应查看[商业市场认证策略](https://docs.microsoft.com/legal/marketplace/certification-policies)，特别是[托管服务](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)部分。
 
-客户添加产品/服务后，他们将能够委派一个或多个订阅或资源组，然后这些订阅或资源组将[注册用于 Azure 委派的资源管理](#the-customer-onboarding-process)。
+客户添加你的产品/服务后，他们将能够委托一个或多个订阅或资源组，这些订阅或资源组将[载入 Azure 委托资源管理](#the-customer-onboarding-process)。
 
 > [!IMPORTANT]
-> Each plan in a Managed service offer includes a **Manifest Details** section, where you define the Azure Active Directory (Azure AD) entities in your tenant that will have access to the delegated resource groups and/or subscriptions for customers who purchase that plan. 请务必注意，您包括的任何组（或用户或服务主体）对于购买计划的每个客户都将具有相同的权限。 要分配不同的组以与每个客户合作，您需要发布每个客户独有的单独[私人计划](../../marketplace/private-offers.md)。
+> 托管服务产品/服务中的每个计划都包含 "**清单详细信息**" 部分，你可以在其中定义租户中的 Azure Active Directory （Azure AD）实体，这些实体将有权访问委派的资源组和/或订阅（适用于购买该计划的客户）。 需要注意的是，包含的任何组（或用户或服务主体）将对每个购买计划的客户都具有相同的权限。 若要分配不同的组来与每个客户合作，你需要发布单独的[私有计划](../../marketplace/private-offers.md)，该计划对每个客户都是专用的。
 
 ## <a name="create-your-offer"></a>创建产品/服务
 
 1. 登录到[云合作伙伴门户](https://cloudpartner.azure.com/)。
 2. 从左侧导航菜单中，选择“新建产品/服务”，然后选择“托管服务”********。
-3. 您将看到一个**编辑器**部分，包括要填写的四个部分：**产品/服务设置**、**计划**、**市场****和支持**。 请继续阅读，了解如何填写这些部分。
+3. 你将看到你的产品/服务的 "**编辑**" 部分，其中包含四个部分用于填写：**提供设置**、**计划**、 **Marketplace**和**支持**。 请继续阅读，了解如何填写这些部分。
 
 ### <a name="enter-offer-settings"></a>输入产品/服务设置
 
@@ -65,14 +65,14 @@ ms.locfileid: "80991903"
 
 |字段  |说明  |
 |---------|---------|
-|**Title**     | 要显示的计划的易记名称。 最大长度为 50 个字符。        |
+|**标题**     | 要显示的计划的易记名称。 最大长度为 50 个字符。        |
 |**摘要**     | 标题下显示的计划的简洁说明。 最大长度为 100 个字符。        |
-|**说明**     | 更详细地介绍计划的说明文本。         |
+|**描述**     | 更详细地介绍计划的说明文本。         |
 |**计费模式**     | 此处显示两种计费模式，但必须为托管服务产品选择“自带许可”****。 这意味着你将直接向客户收取与此产品/服务相关的费用，而 Microsoft 不向你收取任何费用。   |
-|**这是私人计划吗？**     | 指示该 SKU 是专用还是公共 SKU。 默认值为“否”（即公共 SKU）****。 如果保留此选择，则你的计划将不仅限于特定客户（或特定数量的客户）；发布公用计划后，无法再将其更改为专用计划。 要使此计划仅对特定客户可用，请选择“是”****。 执行此操作时，需要提供客户的订阅 ID 来确定客户身份。 可逐一输入（最多 10 个订阅），也可上传一个 .csv 文件（最多 20,000 个订阅）。 请确保在此处包含你自己的订阅，以便测试和验证该产品/服务。 有关详细信息，请参阅[专用 SKU 和计划](../../marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)。  |
+|**这是否是私有计划？**     | 指示该 SKU 是专用还是公共 SKU。 默认值为“否”（即公共 SKU）****。 如果保留此选择，则你的计划将不仅限于特定客户（或特定数量的客户）；发布公用计划后，无法再将其更改为专用计划。 要使此计划仅对特定客户可用，请选择“是”****。 执行此操作时，需要提供客户的订阅 ID 来确定客户身份。 可逐一输入（最多 10 个订阅），也可上传一个 .csv 文件（最多 20,000 个订阅）。 请确保在此处包含你自己的订阅，以便测试和验证该产品/服务。 有关详细信息，请参阅[专用 SKU 和计划](../../marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)。  |
 
 > [!IMPORTANT]
-> 计划一旦公开发布，您就无法将其更改为私有。 要控制哪些客户可以接受您的报价并委派资源，请使用私人计划。 使用公共计划时，您无法将可用性限制为特定客户，甚至限制特定数量的客户（尽管如果您选择这样做，您可以完全停止销售计划）。 只有在发布产品/服务时，在**角色定义**中包含"**授权"** 设置为["托管服务注册分配删除角色"时](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)，才能在客户接受产品/服务后取消对[委派的访问权限](onboard-customer.md#remove-access-to-a-delegation)。 您也可以联系客户，要求他们[删除您的访问权限](view-manage-service-providers.md#add-or-remove-service-provider-offers)。
+> 一旦某个计划作为公共计划发布，则不能将其更改为 "专用"。 若要控制哪些客户可以接受您的产品/服务和委托资源，请使用私有计划。 使用公用计划，您不能将可用性限制为特定客户或甚至是特定数量的客户（不过，如果您选择这样做，您可以完全停止销售计划）。 仅当你在发布产品/服务时，如果你在将**角色定义**设置为 "[托管服务注册分配](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)" "角色 **"，则**可以在客户接受产品/服务后[删除对委派的访问权限](remove-delegation.md)。 你还可以联系客户并要求他们[删除你的访问权限](view-manage-service-providers.md#add-or-remove-service-provider-offers)。
 
 #### <a name="manifest-details"></a>清单详细信息
 
@@ -92,15 +92,15 @@ ms.locfileid: "80991903"
 
 对于每个授权，你需要提供以下信息****。 然后，可根据需要多次选择“新授权”，以添加更多用户和角色定义****。
 
-- **Azure AD 对象 ID**：用户、用户组或应用程序的 Azure AD 标识符，这些权限将被授予客户资源的某些权限（如角色定义所述）。
-- **Azure AD 对象显示名称**：一个友好名称，用于帮助客户了解此授权的目的。 在委派资源时，客户将看到此名称。
-- **角色定义**：从列表中选择一个可用的 Azure AD 内置角色。 此角色将确定“Azure AD 对象 ID”字段中的用户对客户资源拥有的权限****。 有关这些角色的说明，请参阅[Azure 委派资源管理的](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management)[内置角色](../../role-based-access-control/built-in-roles.md)和角色支持。
+- **Azure AD 对象 ID**：用户、用户组或应用程序的 Azure AD 标识符，将向客户的资源授予特定权限（如角色定义所述）。
+- **Azure AD 对象显示名称**：一个友好名称，可帮助客户了解此授权的用途。 在委派资源时，客户将看到此名称。
+- **角色定义**：从列表中选择一个可用 Azure AD 内置角色。 此角色将确定“Azure AD 对象 ID”字段中的用户对客户资源拥有的权限****。 有关这些角色的说明，请参阅[Azure 委托资源管理](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management)的[内置角色](../../role-based-access-control/built-in-roles.md)和角色支持。
   > [!NOTE]
-  > 由于适用的新内置角色已添加到 Azure 中，它们将在此处可用，尽管在出现之前可能会有一些延迟。
-- **可分配角色**：仅在您在此授权**的角色定义**中选择"用户访问管理员"时，才需要此角色。 如果是这样，则必须在此处添加一个或多个可分配角色。 “Azure AD 对象 ID”字段中的用户能够将这些“可分配角色”分配给[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)，这是[部署可修正的策略](deploy-policy-remediation.md)所必需的********。 请注意，通常与用户访问管理员角色关联的其他权限均不适用于此用户。 如果未在此处选择一个或多个角色，则你的提交将无法通过认证。 （如果未为此用户的角色定义选择"用户访问管理员"，则此字段不起作用。
+  > 将适用的新内置角色添加到 Azure 时，它们将在此处可用，但可能会出现一些延迟后出现。
+- 可**分配角色**：只有在此授权的**角色定义**中选择了 "用户访问管理员" 时，才需要执行此操作。 如果是这样，则必须在此处添加一个或多个可分配角色。 “Azure AD 对象 ID”字段中的用户能够将这些“可分配角色”分配给[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)，这是[部署可修正的策略](deploy-policy-remediation.md)所必需的********。 请注意，通常与用户访问管理员角色关联的其他权限均不适用于此用户。 如果未在此处选择一个或多个角色，则你的提交将无法通过认证。 （如果没有为此用户的角色定义选择用户访问管理员，则此字段不起作用。）
 
 > [!TIP]
-> 为确保在需要时可以[删除对委派的访问](onboard-customer.md#remove-access-to-a-delegation)，请包括一个**授权，** 其中**的角色定义**设置为[托管服务注册分配删除角色](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)。 如果未分配此角色，则只能由客户租户中的用户删除委派资源。
+> 若要确保在需要时可以[删除对委派的访问权限](remove-delegation.md)，请包括将**角色定义**设置为[托管服务注册分配删除角色](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)的**授权**。 如果未分配此角色，则只能由客户租户中的用户删除委派资源。
 
 完成这些信息后，可以根据需要多次选择“新建计划”以创建其他计划****。 完成后，选择“保存”，然后继续填写“市场”部分********。
 
@@ -112,18 +112,18 @@ ms.locfileid: "80991903"
 
 |字段  |说明  |
 |---------|---------|
-|**Title**     |  套餐的标题，通常是较长的正式名称。 此标题将在市场中突出显示。 最大长度为 50 个字符。 大多数情况下，此名称应与你在“产品/服务设置”部分输入的名称相同********。       |
+|**标题**     |  套餐的标题，通常是较长的正式名称。 此标题将在市场中突出显示。 最大长度为 50 个字符。 大多数情况下，此名称应与你在“产品/服务设置”部分输入的名称相同********。       |
 |**摘要**     | 产品/服务用途或功能的简要说明。 通常显示在标题下方。 最大长度为 100 个字符。        |
 |**长摘要**     | 产品/服务用途或功能的详细摘要。 最大长度为 256 个字符。        |
-|**说明**     | 有关产品/服务的详细信息。 此字段不得超过 3000 个字符，且支持简单的 HTML 格式。 必须在说明中的某个位置包含“托管服务”字样。       |
-|**营销标识符**     | 唯一的 URL 友好标识符。 此标识符只能包含小写字母数字字符和破折号。 它将用于此优惠的应用商店 URL 中。 例如，如果发布者 ID 为 contoso，营销标识符为 sampleApp，则产品/服务在 Azure 市场中的 URL 为 https://azuremarketplace.microsoft.com/marketplace/apps/contoso-sampleApp******。        |
+|**描述**     | 有关产品/服务的详细信息。 此字段不得超过 3000 个字符，且支持简单的 HTML 格式。 必须在说明中的某个位置包含“托管服务”字样。       |
+|**营销标识符**     | 唯一的 URL 友好标识符。 此标识符只能包含小写字母数字字符和短划线。 它将用于此产品/服务的 Marketplace Url。 例如，如果发布者 ID 为 contoso，营销标识符为 sampleApp，则产品/服务在 Azure 市场中的 URL 为 ****`https://azuremarketplace.microsoft.com/marketplace/apps/contoso-sampleApp`。       |
 |**预览订阅 ID**     | 添加 1 到 100 个订阅标识符。 在产品/服务上线之前，与这些订阅关联的客户将可在 Azure 市场中查看此产品/服务。 建议在此处包含你自己的订阅，以便在向客户提供产品/服务之前，可预览其在 Azure 市场中的显示方式。  （在此预览期间，Microsoft 支持和工程团队也将能够查看你的产品/服务。）   |
 |**有用链接**     | 与你的产品/服务相关的 URL，例如文档、发行说明、常见问题解答等等。        |
 |**建议的类别（最多 5 个）**     | 适用于你的产品/服务的一个或多个类别（最多 5 个）。 这些类别可帮助客户在 Azure 市场和 Azure 门户中发现你的产品/服务。        |
 
 在“营销项目”部分，可上传徽标和其他资产，使其与产品/服务一起显示****。 可选择性地上传屏幕截图或视频链接，帮助客户了解你的产品/服务。
 
-需要四个徽标大小：**小 （40x40）**、**中等 （90x90）**、**大 （115x115）** 和**宽 （255x115）**。 请遵守徽标适用的下述准则：
+需要四种徽标大小：**小（40x40）**、**中（90x90）**、**大（115x115）** 和**宽（255x115）**。 请遵守徽标适用的下述准则：
 
 - Azure 设计具有简单的调色板。 限制徽标上的主要和次要颜色数。
 - 门户的主题颜色为白色和黑色。 请勿将这些颜色用作徽标的背景色。 使用可使徽标在门户中更为突出的颜色。 建议使用简单的主颜色。
@@ -161,12 +161,12 @@ ms.locfileid: "80991903"
 客户添加你的产品/服务后，他们将能够[委托一个或多个特定订阅或资源组](view-manage-service-providers.md#delegate-resources)，然后将加入这些订阅或资源组以进行 Azure 委托资源管理。 如果客户已接受产品/服务但尚未委托任何资源，则他们会在 Azure 门户[“服务提供商”****](view-manage-service-providers.md)页中“提供商产品/服务”部分的顶部看到备注****。
 
 > [!IMPORTANT]
-> 委派必须由客户租户中的非来宾帐户完成，该帐户具有已加入的订阅[的所有者内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)（或包含正在装机的资源组）。 若要查看所有可以委托订阅的用户，客户租户中的用户可以在 Azure 门户中选择订阅，打开“访问控制(IAM)”****，然后[查看具有“所有者”角色的所有用户](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)。
+> 委托必须由客户租户中的非来宾帐户完成，此帐户具有载入订阅的[所有者内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)（或包含正在载入的资源组）。 若要查看所有可以委托订阅的用户，客户租户中的用户可以在 Azure 门户中选择订阅，打开“访问控制(IAM)”****，然后[查看具有“所有者”角色的所有用户](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)。
 
-一旦客户委派订阅（或订阅中的一个或多个资源组 **），Microsoft.托管服务**资源提供程序将注册该订阅，租户中的用户将能够根据产品/服务中的授权访问委派的资源。
+一旦客户委托了订阅（或订阅中的一个或多个资源组），就会为该订阅注册**ManagedServices**资源提供程序，租户中的用户将能够根据你的产品/服务中的授权访问委派的资源。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[商业市场](../../marketplace/partner-center-portal/commercial-marketplace-overview.md)。
+- 了解[商用 Marketplace](../../marketplace/partner-center-portal/commercial-marketplace-overview.md)。
 - 了解[跨租户管理体验](../concepts/cross-tenant-management-experience.md)。
 - 在 Microsoft Azure 门户中转到“我的客户”，以[查看和管理客户](view-manage-customers.md)****。

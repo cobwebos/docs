@@ -1,5 +1,5 @@
 ---
-title: Azure 容器映像产品 / |Azure 应用商店
+title: Azure 容器映像服务 |Azure Marketplace
 description: 概述了在 Azure 市场中发布容器产品/服务的过程。
 author: dsindona
 ms.service: marketplace
@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: dsindona
-ms.openlocfilehash: cd9f98d42efcb35dbab4f3c0a06c5a11360e36b6
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 81908de5c2fb3960684ed6cf37952e8815d8a5d5
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270343"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148301"
 ---
 # <a name="containers"></a>容器
 
 > [!IMPORTANT]
-> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 容器产品的管理移动到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照["创建 Azure 容器产品/服务](https://aka.ms/CreateContainerOffer)"中的说明进行操作，以管理迁移的优惠。
+> 从2020年4月13日开始，我们开始将 Azure 容器产品/服务的管理转移到合作伙伴中心。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[创建 Azure 容器服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer)中的说明来管理迁移的产品/服务。
 
 <table> <tr> <td>本部分介绍了如何将容器映像发布到 <a href="https://azuremarketplace.microsoft.com">Azure 市场</a>。  
 容器产品/服务类型支持预配为 <a href="https://docs.microsoft.com/azure/aks/index">Azure Kubernetes 服务</a>实例或 <a href="https://docs.microsoft.com/azure/container-instances/container-instances-overview">Azure 容器实例</a>并托管在 <a href="https://docs.microsoft.com/azure/container-registry">Azure 容器注册表</a>存储库中的 Docker 容器映像。 </td> <td><img src="./media/container-icon.png"  alt="Azure container icon" /></td> </tr> </table>

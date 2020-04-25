@@ -1,5 +1,5 @@
 ---
-title: 为 Azure 应用商店验证 VM 映像
+title: 认证 Azure Marketplace 的 VM 映像
 description: 介绍如何测试 VM 映像并提交该映像以供 Azure 市场认证。
 author: dsindona
 ms.service: marketplace
@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: dsindona
-ms.openlocfilehash: ce1e001b9cafff83a3f9bf546d6903cc4a4f450f
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 81dec159a8a84adce97750666baba455ae3fdd93
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273488"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147072"
 ---
 # <a name="certify-your-vm-image"></a>认证 VM 映像
 
 > [!IMPORTANT]
-> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 虚拟机产品的管理移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[Azure VM 映像认证](https://aks.ms/CertifyVMimage)中的说明来管理迁移的优惠。
+> 从2020年4月13日开始，我们将开始将 Azure 虚拟机产品/服务的管理转移到合作伙伴中心。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[AZURE VM 映像证书](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-image-certification)中的说明来管理迁移的产品/服务。
 
 创建并部署虚拟机 (VM) 后，必须测试 VM 映像，并提交该映像以供 Azure 市场认证。 本文介绍可在何处获取“Azure 认证”的认证测试工具、如何使用此工具来认证 VM 映像，以及如何将认证结果上传到 VHD 所在的 Azure 容器。** 
 

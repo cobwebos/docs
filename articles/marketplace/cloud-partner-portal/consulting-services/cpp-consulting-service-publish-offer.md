@@ -1,23 +1,23 @@
 ---
-title: Azure 和 Dynamics 365 咨询服务提供发布 |Azure 应用商店
-description: 在 Azure 应用商店或 AppSource 的云合作伙伴门户中发布 Azure 或 Dynamics 365 咨询服务产品。
+title: Azure 和 Dynamics 365 咨询服务提供发布 |Azure Marketplace
+description: 在 Azure Marketplace 或 AppSource 的云合作伙伴门户中发布 Azure 或 Dynamics 365 咨询服务产品/服务。
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 3a06bae941c75e43a0e4ea2b66cc420e7a2467c3
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: c602bbee128c3338d841cb4564add26ba1c9e841
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985076"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146633"
 ---
 # <a name="publish-a-consulting-service-offer"></a>发布咨询服务产品/服务
 
 >[!Important]
->从 2020 年 4 月 13 日起，我们将开始将您的咨询服务优惠的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[咨询服务创建概述](https://aka.ms/AzureCreateConsultingService)中的说明来管理迁移的优惠。
+>从2020年4月13日开始，我们将开始向合作伙伴中心迁移咨询服务的管理。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[咨询服务创建概述](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-consulting-service-offer)中的说明来管理迁移的产品/服务。
 
 填写“套餐设置”、“店面详细信息”和“联系人”后，选择“发布”并提供电子邮件地址****************。 当 Microsoft 准备好发布套餐时，会向你发送一封电子邮件，可在其中预览该套餐上线之前的外观。 随时可以返回门户检查套餐的状态。
 

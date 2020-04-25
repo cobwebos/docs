@@ -7,20 +7,20 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 03/01/2020
-ms.openlocfilehash: 3e7e5919a3f862f5cad243654972683d1879c4ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/24/2020
+ms.openlocfilehash: a89b2ce8070d1e000f6d3d673aa17bc48897dcf8
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78251088"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147841"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>将 Data Lake Storage Gen1 与 Azure HDInsight 群集配合使用
 
 > [!Note]
 > 使用 [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md) 部署新的 HDInsight 群集以提高性能并获得新功能。
 
-要分析 HDInsight 群集中的数据，可以在[Azure 存储](../storage/common/storage-introduction.md)[、Azure 数据湖存储第 1 代](../data-lake-store/data-lake-store-overview.md)或 Azure[数据存储湖存储第 2 代](../storage/blobs/data-lake-storage-introduction.md)中存储数据。 使用所有存储选项都能安全地删除用于计算的 HDInsight 群集，而不会丢失用户数据。
+若要分析 HDInsight 群集中的数据，可以将数据存储在[`Azure Storage`](../storage/common/storage-introduction.md)中， [Azure Data Lake Storage 第1代](../data-lake-store/data-lake-store-overview.md)或[Azure Data Lake Storage 第2代](../storage/blobs/data-lake-storage-introduction.md)。 使用所有存储选项都能安全地删除用于计算的 HDInsight 群集，而不会丢失用户数据。
 
 在本文中，你将了解如何将 Data Lake Storage Gen1 与 HDInsight 群集配合使用。 若要了解如何配合使用 Azure 存储和 HDInsight 群集，请参阅[配合使用 Azure 存储和 Azure HDInsight 群集](hdinsight-hadoop-use-blob-storage.md)。 若要深入了解如何创建 HDInsight 群集，请参阅[在 HDInsight 中创建 Apache Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
@@ -31,18 +31,18 @@ ms.locfileid: "78251088"
 
 ## <a name="availability-for-hdinsight-clusters"></a>HDInsight 群集的可用性
 
-Apache Hadoop 支持默认文件系统的概念。 默认文件系统意指默认方案和授权。 它还可用于解析相对路径。 在 HDInsight 群集创建过程中，可指定 Azure 存储中的 Blob 容器作为默认文件系统，也可借助 HDInsight 3.5 和更新版本，选择 Azure 存储或 Azure Data Lake Storage Gen1 作为默认文件系统，但有一些例外。 请注意，群集和存储帐户必须托管在同一区域中。
+Apache Hadoop 支持默认文件系统的概念。 默认文件系统意指默认方案和授权。 它还可用于解析相对路径。 在 HDInsight 群集创建过程中，请将 Azure 存储中的 blob 容器指定为默认文件系统。 或者使用 HDInsight 3.5 和更新版本，可以选择 Azure 存储或 Azure Data Lake Storage Gen1 作为默认文件系统，但有一些例外情况。 群集和存储帐户必须位于同一区域。
 
 HDInsight 群集可通过以下两种方式使用 Data Lake Storage Gen1：
 
 * 作为默认存储
 * 作为附加存储，将 Azure 存储 Blob 作为默认存储。
 
-目前，只有部分 HDInsight 群集类型/版本支持使用 Data Lake Storage Gen1 作为默认存储和附加存储帐户：
+目前，只有某些 HDInsight 群集类型/版本支持使用 Data Lake Storage Gen1 作为默认存储和其他存储帐户：
 
 | HDInsight 群集类型 | 将 Data Lake Storage Gen1 用作默认存储 | 将 Data Lake Storage Gen1 用作附加存储| 说明 |
 |------------------------|------------------------------------|---------------------------------------|------|
-| HDInsight 版本 4.0 | 否 | 否 |HDInsight 4.0 不支持 ADLS Gen1 |
+| HDInsight 版本4。0 | 否 | 否 |HDInsight 4.0 不支持 ADLS Gen1 |
 | HDInsight 版本 3.6 | 是 | 是 | HBase 除外|
 | HDInsight 版本 3.5 | 是 | 是 | HBase 除外|
 | HDInsight 版本 3.4 | 否 | 是 | |
@@ -53,7 +53,7 @@ HDInsight 群集可通过以下两种方式使用 Data Lake Storage Gen1：
 > [!WARNING]  
 > Azure Data Lake Storage Gen1 不支持 HDInsight HBase
 
-将数据存储库 Gen1 用作其他存储帐户不会影响性能或从群集读取或写入 Azure 存储的能力。
+使用 Data Lake Storage Gen1 作为附加存储帐户不会影响性能。 或者从群集读取或写入 Azure 存储的功能。
 
 ## <a name="use-data-lake-storage-gen1-as-default-storage"></a>将 Data Lake Storage Gen1 用作默认存储
 
@@ -62,9 +62,9 @@ HDInsight 群集可通过以下两种方式使用 Data Lake Storage Gen1：
 * Cluster1 可以使用路径 `adl://mydatalakestore/cluster1storage`
 * Cluster2 可以使用路径 `adl://mydatalakestore/cluster2storage`
 
-请注意，这两个群集使用的是同一个 Data Lake Storage Gen1 帐户 **mydatalakestore**。 每个群集都有权访问 Data Lake Storage 中其自身的根文件系统。 Azure 门户部署体验将特别提示为根路径使用 **/clusters/\<clustername>** 等文件夹名称。
+请注意，这两个群集使用的是同一个 Data Lake Storage Gen1 帐户 **mydatalakestore**。 每个群集都有权访问 Data Lake Storage 中其自身的根文件系统。 Azure 门户部署体验提示你使用文件夹名称，例如根路径的 **/clusters/\<clustername>** 。
 
-为了能够使用 Data Lake Storage Gen1 作为默认存储，必须授予服务主体对以下路径的访问权限：
+若要使用 Data Lake Storage Gen1 作为默认存储，则必须授予服务主体对以下路径的访问权限：
 
 * Data Lake Storage Gen1 帐户根目录。  例如：adl://mydatalakestore/。
 * 所有群集文件夹的文件夹。  例如：adl://mydatalakestore/clusters。
@@ -74,7 +74,7 @@ HDInsight 群集可通过以下两种方式使用 Data Lake Storage Gen1：
 
 ### <a name="extracting-a-certificate-from-azure-keyvault-for-use-in-cluster-creation"></a>从 Azure Keyvault 提取证书以在创建群集时使用
 
-如果要将 Azure 数据湖存储 Gen1 设置为新群集的默认存储，并且服务主体的证书存储在 Azure 密钥保管库中，则需要执行一些附加步骤才能将证书转换为正确的格式。 以下代码片段演示了如何执行转换操作。
+如果服务主体的证书存储在 Azure Key Vault 中，则必须将该证书转换为正确的格式。 下面的代码段演示如何执行转换。
 
 首先，从 Key Vault 下载证书并提取 `SecretValueText`。
 
@@ -108,13 +108,13 @@ New-AzResourceGroupDeployment `
 
 ## <a name="use-data-lake-storage-gen1-as-additional-storage"></a>将 Data Lake Storage Gen1 用作附加存储
 
-也可将 Data Lake Storage Gen1 用作群集的附加存储。 在这种情况下，群集的默认存储可以是 Azure 存储 Blob，也可以是 Data Lake Storage 帐户。 如果针对数据存储中存储的数据作为附加存储运行 HDInsight 作业，则必须使用文件完全限定的路径。 例如：
+也可将 Data Lake Storage Gen1 用作群集的附加存储。 在这种情况下，群集的默认存储可以是 Azure 存储 Blob，也可以是 Data Lake Storage 帐户。 针对作为附加存储 Data Lake Storage 中存储的数据运行 HDInsight 作业时，请使用完全限定的路径。 例如：
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
-请注意，当前在 URL 中没有 **cluster_root_path**。 这是因为在这种情况下，Data Lake 存储不是默认存储，因此您只需提供文件的路径。
+URL 中现在没有**cluster_root_path** 。 这是因为在这种情况下 Data Lake Storage 不是默认存储。 因此，只需提供文件的路径即可。
 
-为了能够使用 Data Lake Storage Gen1 作为附加存储，只需授予服务主体对存储文件的路径位置的访问权限。  例如：
+若要使用 Data Lake Storage Gen1 作为附加存储，请向服务主体授予对存储文件的路径的访问权限。  例如：
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
@@ -122,7 +122,7 @@ New-AzResourceGroupDeployment `
 
 ## <a name="use-more-than-one-data-lake-storage-accounts"></a>使用多个 Data Lake Storage 帐户
 
-通过向 HDInsight 群集授予对一个或多个 Data Lake Storage 帐户中数据的访问权限，可以添加 Data Lake Storage 帐户作为附加帐户，以及添加多个 Data Lake Storage 帐户。 请参阅配置 Data Lake Storage 访问权限。
+添加 Data Lake Storage 帐户作为附加帐户，并添加多个 Data Lake Storage 帐户。 为 HDInsight 群集权限授予一个或多个 Data Lake Storage 帐户中的数据。 请参阅配置 Data Lake Storage 访问权限。
 
 ## <a name="configure-data-lake-storage-access"></a>配置 Data Lake Storage 访问权限
 
@@ -131,7 +131,7 @@ New-AzResourceGroupDeployment `
 > [!NOTE]  
 > 如果要将 Azure Data Lake Storage Gen1 用作 HDInsight 群集的附加存储，强烈建议在创建该群集时按本文说明进行此项操作。 将 Azure Data Lake Storage Gen1 作为附加存储添加到现有的 HDInsight 群集是不受支持的方案。
 
-有关数据存储第 1 代的访问控制模型的基本知识的详细信息，请参阅[Azure 数据存储湖存储 Gen1 中的访问控制](../data-lake-store/data-lake-store-access-control.md)。
+有关访问控制模型的详细信息，请参阅[Azure Data Lake Storage Gen1 中的访问控制](../data-lake-store/data-lake-store-access-control.md)。
 
 ## <a name="access-files-from-the-cluster"></a>从群集访问文件
 
@@ -157,11 +157,11 @@ New-AzResourceGroupDeployment `
 
 ### <a name="data-access-examples"></a>数据访问示例
 
-示例基于到群集的头节点的 [ssh 连接](./hdinsight-hadoop-linux-use-ssh-unix.md)。 示例使用所有三个 URI 方案。 `CLUSTERNAME`替换为`DATALAKEACCOUNT`相关值。
+示例基于到群集的头节点的 [ssh 连接](./hdinsight-hadoop-linux-use-ssh-unix.md)。 示例使用所有三个 URI 方案。 将`DATALAKEACCOUNT`和`CLUSTERNAME`替换为相关值。
 
 #### <a name="a-few-hdfs-commands"></a>一些 hdfs 命令
 
-1. 在本地存储上创建一个简单的文件。
+1. 在本地存储中创建文件。
 
     ```bash
     touch testFile.txt
@@ -212,9 +212,9 @@ LOCATION 'adl:///example/data/';
 LOCATION '/example/data/';
 ```
 
-## <a name="identify-storage-path-from-ambari"></a>识别来自安巴里的存储路径
+## <a name="identify-storage-path-from-ambari"></a>从 Ambari 标识存储路径
 
-要标识配置的默认存储的完整路径，请导航到**HDFS** > **配置**，并在筛选器`fs.defaultFS`输入框中输入。
+若要确定配置的默认存储的完整路径，请导航到**HDFS** > 配置 **，然后在**"筛选器" 输入框中输入`fs.defaultFS` 。
 
 ## <a name="create-hdinsight-clusters-with-access-to-data-lake-storage-gen1"></a>创建具有 Data Lake Storage Gen1 访问权限的 HDInsight 群集
 
@@ -227,7 +227,7 @@ LOCATION '/example/data/';
 
 ## <a name="refresh-the-hdinsight-certificate-for-data-lake-storage-gen1-access"></a>刷新用于访问 Data Lake Storage Gen1 的 HDInsight 证书
 
-以下 PowerShell 代码示例从本地文件或 Azure Key Vault 读取证书，并使用新证书更新 HDInsight 群集以访问 Azure Data Lake Storage Gen1。 提供自己的 HDInsight 群集名称、资源组名称、订阅 ID、应用 ID、该证书的本地路径。 出现提示时键入密码。
+以下 PowerShell 代码示例从本地文件或 Azure Key Vault 读取证书，并使用新证书更新 HDInsight 群集以访问 Azure Data Lake Storage Gen1。 提供你自己的 HDInsight 群集名称、资源组名称、订阅 ID `app ID`，以及证书的本地路径。 出现提示时键入密码。
 
 ```powershell-interactive
 $clusterName = '<clustername>'
@@ -301,14 +301,11 @@ Invoke-AzResourceAction `
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何将 HDFS 兼容的 Azure Data Lake Storage Gen1 与 HDInsight 配合使用。 这样可以生成可缩放的长期存档数据采集解决方案，并使用 HDInsight 来解锁所存储结构化和非结构化数据内的信息。
+本文介绍了如何将 HDFS 兼容的 Azure Data Lake Storage Gen1 与 HDInsight 配合使用。 此存储允许你构建可自适应的长期存档数据采集解决方案。 并使用 HDInsight 来解锁所存储结构化和非结构化数据内的信息。
 
-有关详细信息，请参阅：
+有关更多信息，请参阅：
 
-* [开始使用 Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * [通过 Azure PowerShell 创建使用 Data Lake Storage Gen1 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [将数据上传到 HDInsight](hdinsight-upload-data.md)
-* [将 Apache Hive 和 HDInsight 配合使用](hadoop/hdinsight-use-hive.md)
 * [使用 Azure 存储共享访问签名来限制使用 HDInsight 访问数据](hdinsight-storage-sharedaccesssignature-permissions.md)
-* [教程：使用 Azure HDInsight 中的交互式查询提取、转换和加载数据](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)

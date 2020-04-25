@@ -4,15 +4,15 @@ description: 本文介绍如何从 Azure Analysis Services 数据库备份和还
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/24/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 83da2024ab74b705b45a5891f6b40251020dad31
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 2866ec860cbc9037aa6b57389b35f17ec71a7c9d
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80408654"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82145459"
 ---
 # <a name="backup-and-restore"></a>备份和还原
 
@@ -22,6 +22,9 @@ ms.locfileid: "80408654"
 > 创建存储帐户可能会导致新的计费服务。 若要了解详细信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 > 
 > 
+
+> [!NOTE]
+> 如果该存储帐户位于不同的区域，则必须将防火墙设置配置为允许从**所有网络**进行访问。 不支持为包含白名单 IP 地址并允许受信任的 Microsoft 服务异常的选定网络配置防火墙设置。
 
 备份以 .abf 扩展名保存。 对于内存中表格模型，将存储模型数据和元数据。 对于 DirectQuery 表格模型，将仅存储模型元数据。 备份可以进行压缩和加密，具体取决于选择的选项。
 
@@ -55,7 +58,7 @@ ms.locfileid: "80408654"
 
 1. 在 SSMS 中，右键单击某个数据库，转到“备份”****。
 
-2. 在**备份数据库** > **备份文件中**，单击"**浏览**"。
+2. 在 "**备份数据库** > **备份文件**" 中，单击 "**浏览**"。
 
 3. 在“文件另存为”**** 对话框中，验证文件夹路径，并键入备份文件的名称。 
 

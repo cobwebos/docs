@@ -1,6 +1,6 @@
 ---
-title: 按 Azure SQL 托管实例代理执行 SSIS 包
-description: 了解如何按 Azure SQL 托管实例代理执行 SSIS 包。
+title: 使用 Azure SQL 数据库托管实例代理运行 SSIS 包
+description: 了解如何使用 Azure SQL 数据库托管实例代理来运行 SSIS 包。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -9,92 +9,108 @@ ms.topic: conceptual
 ms.author: lle
 author: lle
 ms.date: 04/14/2020
-ms.openlocfilehash: b3b7a25149a9d075c81b30307ade2beb71907637
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: fcbfeb5ab3a3a80fdb8f7e355f290451d4afe804
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81394717"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82144804"
 ---
-# <a name="execute-ssis-packages-by-azure-sql-managed-instance-agent"></a>按 Azure SQL 托管实例代理执行 SSIS 包
-本文介绍如何使用 Azure SQL 托管实例代理运行 SQL 服务器集成服务 （SSIS） 包。 此功能提供类似行为，就像在预环境中按 SQL Server 代理计划 SSIS 包一样。
+# <a name="run-ssis-packages-by-using-azure-sql-database-managed-instance-agent"></a>使用 Azure SQL 数据库托管实例代理运行 SSIS 包
+本文介绍如何使用 Azure SQL 数据库托管实例代理运行 SQL Server Integration Services （SSIS）包。 此功能提供的行为类似于在本地环境中使用 SQL Server 代理安排 SSIS 包的时间。
 
-使用此功能，可以运行存储在 Azure SQL 托管实例或文件系统（如 Azure 文件）SSISDB 中的 SSIS 包。
+利用此功能，你可以运行存储在 Azure SQL 数据库托管实例或文件系统（如 Azure 文件）中的 SSISDB 中的 SSIS 包。
 
-## <a name="prerequisites"></a>先决条件
-要使用此功能，请下载并安装最新版本的 SSMS，即版本 18.5 或更高版本。 从[此网站](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)下载它。
+## <a name="prerequisites"></a>必备条件
+若要使用此功能，请[下载](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)并安装最新版本的 SQL SERVER MANAGEMENT STUDIO （SSMS），即18.5 版。
 
-还需要在 Azure 数据工厂中预配 Azure-SSIS 集成运行时，该运行时使用 Azure SQL 托管实例作为终结点服务器。 如果尚未预配它，请按照[教程](tutorial-create-azure-ssis-runtime-portal.md)中的说明进行预配。 
+还需要在 Azure 数据工厂中[预配 AZURE SSIS 集成运行时](tutorial-create-azure-ssis-runtime-portal.md)。 它使用 Azure SQL 数据库托管实例作为终结点服务器。 
 
-## <a name="run-ssis-packages-in-ssisdb-by-azure-sql-managed-instance-agent"></a>按 Azure SQL 托管实例代理在 SSISDB 中运行 SSIS 包
-在此步骤中，使用 Azure SQL 托管实例代理调用存储在 Azure SQL 托管实例中的 SSISDB 中的 SSIS 包。
-1. 在最新版本的 SSMS 中，连接到 Azure SQL 托管实例。
-2. 创建新的代理作业和新的作业步骤。
+## <a name="run-an-ssis-package-in-ssisdb"></a>在 SSISDB 中运行 SSIS 包
+在此过程中，将使用 Azure SQL 数据库托管实例代理来调用在 SSISDB 中存储的 SSIS 包。
 
-![新代理作业](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
+1. 在最新版本的 SSMS 中，连接到 Azure SQL 数据库托管实例。
+1. 创建新的代理作业和新的作业步骤。 在 " **SQL Server 代理**" 下，右键单击 "**作业**" 文件夹，然后选择 "**新建作业**"。
 
-3. 在 **"新建作业步骤"** 页中，选择**SQL 服务器集成服务包**类型。
+   ![用于创建新代理作业的选项](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
 
-![新的 SSIS 作业步骤](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
+1. 在 "**新建作业步骤**" 页上，选择 " **SQL Server Integration Services 包**" 作为 "类型"。
 
-4. 在 **"包"** 选项卡中，选择**SSIS 目录**作为包源类型。
-5. 由于 SSISDB 位于同一 Azure SQL 托管实例中，因此无需指定身份验证。
-6. 从 SSISDB 指定 SSIS 包。
+   ![用于创建新 SSIS 作业步骤的选项](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
 
-![包源类型 - SSIS 目录](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb.png)
+1. 在 "**包**" 选项卡上，选择 " **SSIS 目录**" 作为 "包源类型"。
+1. 由于 SSISDB 位于 Azure SQL 数据库托管实例中，因此不需要指定身份验证。
+1. 指定 SSISDB 中的 SSIS 包。
 
-7. 在 **"配置"** 选项卡中，可以指定**参数**值、覆盖**连接管理器**中的值、覆盖**属性**并选择**日志记录级别**。
+   ![包选项卡，其中包含包源类型选项](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb.png)
 
-![包源类型 - SSIS 目录配置](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb-configuration.png)
+1. 在 "**配置**" 选项卡上，您可以：
+  
+   - 在 "**参数**" 下指定参数值。
+   - 在 "**连接管理器**" 下覆盖值。
+   - 重写属性，然后在 "**高级**" 下选择日志记录级别。
 
-8. 完成上述所有配置后，单击 **"确定"** 以保存代理作业配置。
-9. 启动代理作业以执行 SSIS 包。
+   ![带有包源类型选择的 "配置" 选项卡](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb-configuration.png)
 
-
-## <a name="run-ssis-packages-in-file-system-by-azure-sql-managed-instance-agent"></a>由 Azure SQL 托管实例代理在文件系统中运行 SSIS 包
-在此步骤中，您可以使用 Azure SQL 托管实例代理调用存储在文件系统中运行的 SSIS 包。
-1. 在最新版本的 SSMS 中，连接到 Azure SQL 托管实例。
-2. 创建新的代理作业和新的作业步骤。
-
-   ![新代理作业](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
-
-3. 在 **"新建作业步骤"** 页中，选择**SQL 服务器集成服务包**类型。
-
-   ![新的 SSIS 作业步骤](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
-
-4. 在 **"包"** 选项卡中，选择**文件系统**作为包源类型。
-
-   ![包源类型 - 文件系统](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-file-system.png)
-
-   1. 如果包上载到 Azure 文件，请选择**Azure 文件共享**作为文件源类型。
-      - 包路径是**\\<storage account name>.file.core.windows.net\<文件共享名\<>包名称>.dtsx**
-      - 在**包文件访问凭据**中键入 Azure 文件帐户名和帐户密钥以访问 Azure 文件。 域设置为**Azure**。
-   2. 如果包上载到网络共享，请选择 **"网络共享**"作为文件源类型。
-      - 包路径是包文件的**UNC 路径**及其 dtsx 扩展名。
-      - 键入相应的**域**、**用户名**和**密码**以访问网络共享包文件。
-   3. 如果您的包文件使用密码加密，请选择 **"加密密码**"并键入密码。
-
- 5. 在 **"配置"** 选项卡中，如果需要配置文件来执行 SSIS 包，请键入**配置文件路径**。
- 6. 在 **"执行"选项**选项卡中，您可以选择是使用**窗口身份验证**还是**使用 32 位运行时**来执行 SSIS 包。
- 7. 在 **"日志记录"** 选项卡中，您可以选择**日志记录路径**和相应的日志记录访问凭据来存储日志文件。 默认情况下，日志记录路径将与包文件夹路径相同，日志记录访问凭据将与包访问凭据相同。
- 8. 在 **"设置值"** 选项卡中，可以在**属性路径**和**值**中键入以覆盖包属性。
- 例如，要覆盖用户变量的值，请输入其路径，其格式为以下： **\Package.变量[用户：：<variable name>]值**。
- 9. 完成上述所有配置后，单击 **"确定"** 以保存代理作业配置。
- 10. 启动代理作业以执行 SSIS 包。
+1. 选择 **"确定"** 以保存代理作业配置。
+1. 启动代理作业来运行 SSIS 包。
 
 
- ## <a name="cancel-ssis-package-execution"></a>取消 SSIS 包执行
- 要取消 Azure SQL 托管代理作业中的包执行，应遵循以下步骤，而不是直接停止代理作业。
- 1. 从**msdb.dbo.sysjobs**查找 SQL 代理**作业 ID。**
- 2. 根据作业 ID 查找相应的 SSIS**执行 ID，** 通过以下查询：
-    ```sql
-    select * from ssisdb.internal.execution_parameter_values_noncatalog where  parameter_value = 'SQL_Agent_Job_{jobId}' order by execution_id desc
-    ```
- 3. 在 SSIS 目录下选择 **"活动操作**"。
+## <a name="run-an-ssis-package-in-the-file-system"></a>在文件系统中运行 SSIS 包
+在此过程中，将使用 Azure SQL 数据库托管实例代理来运行存储在文件系统中的 SSIS 包。
 
-    ![包源类型 - 文件系统](./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png)
+1. 在最新版本的 SSMS 中，连接到 Azure SQL 数据库托管实例。
+1. 创建新的代理作业和新的作业步骤。 在 " **SQL Server 代理**" 下，右键单击 "**作业**" 文件夹，然后选择 "**新建作业**"。
 
- 4. 停止基于**执行 ID 的**相应操作。
+   ![用于创建新代理作业的选项](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
+
+1. 在 "**新建作业步骤**" 页上，选择 " **SQL Server Integration Services 包**" 作为 "类型"。
+
+   ![用于创建新 SSIS 作业步骤的选项](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
+
+1. 在 "**包**" 选项卡上：
+
+   1. 对于 "**包源**"，请选择 "**文件系统**"。
+   
+   1. 对于**文件源类型**：   
+
+      - 如果将包上传到 Azure 文件，请选择 " **azure 文件共享**"。
+
+        ![文件源类型的选项](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-file-system.png)
+      
+        包路径为** \\ <storage account name>file.core.windows.net\<文件共享名称>\<包名称>. .dtsx**。
+      
+        在 "**包文件访问凭据**" 下，输入用于访问 azure 文件的 azure 文件帐户名和帐户密钥。 域设置为**Azure**。
+
+      - 如果将包上传到网络共享，请选择 "**网络共享**"。
+      
+        包路径是包文件的 UNC 路径，扩展名为 .dtsx。
+      
+        输入相应的域、用户名和密码以访问网络共享包文件。
+   1. 如果使用密码对包文件进行加密，请选择 "**加密密码**"，然后输入密码。
+1. 如果需要配置文件来运行 SSIS 包，请在 "**配置**" 选项卡上输入配置文件路径。
+1. 在 "**执行选项**" 选项卡上，可以选择是使用**Windows 身份验证**还是**32 位运行时**来运行 SSIS 包。
+1. 在 "**日志记录**" 选项卡上，可以选择日志记录路径和相应的日志记录访问凭据以存储日志文件。 默认情况下，日志记录路径与包文件夹路径相同，日志记录访问凭据与包访问凭据相同。
+1. 在 "**设置值**" 选项卡上，可以输入属性路径和值以替代包属性。
+ 
+   例如，若要覆盖用户变量的值，请按以下格式输入其路径： **\Package.Variables [user：<variable name>：]。值**。
+1. 选择 **"确定"** 以保存代理作业配置。
+1. 启动代理作业来运行 SSIS 包。
+
+
+## <a name="cancel-ssis-package-execution"></a>取消 SSIS 包执行
+若要从 Azure SQL 数据库托管实例代理作业取消包执行，请执行以下步骤，而不是直接停止代理作业：
+
+1. 查找**sysjobs**中的 SQL 代理**jobId** 。
+1. 使用以下查询，基于作业 ID 查找相应的 SSIS **executionId** ：
+   ```sql
+   select * from ssisdb.internal.execution_parameter_values_noncatalog where  parameter_value = 'SQL_Agent_Job_{jobId}' order by execution_id desc
+   ```
+1. 右键单击 SSISDB 目录，然后选择 "**活动操作**"。
+
+   ![SSISDB 目录的快捷菜单上的 "活动操作"](./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png)
+
+1. 基于**executionId**停止相应的操作。
 
 ## <a name="next-steps"></a>后续步骤
- 您还可以使用 Azure 数据工厂计划 SSIS 包。 有关分步说明，请参阅[Azure 数据工厂事件触发器](how-to-create-event-trigger.md)。 
+你还可以使用 Azure 数据工厂来计划 SSIS 包。 有关分步说明，请参阅[Azure 数据工厂事件触发器](how-to-create-event-trigger.md)。 

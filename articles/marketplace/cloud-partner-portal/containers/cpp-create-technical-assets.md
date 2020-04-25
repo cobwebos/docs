@@ -1,5 +1,5 @@
 ---
-title: 创建 Azure 容器映像技术资产 |Azure 应用商店
+title: 创建 Azure 容器映像技术资产 |Azure Marketplace
 description: 为 Azure 容器创建技术资产。
 author: dsindona
 ms.service: marketplace
@@ -7,21 +7,21 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: dsindona
-ms.openlocfilehash: 1116bd03cf0ef734b74b387ff8f3cff74b29b215
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 68db606c9a01c4b1122f9b0cce620762485ca40a
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270309"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148266"
 ---
 # <a name="prepare-your-container-technical-assets"></a>准备容器技术资产
 
 > [!IMPORTANT]
-> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 容器产品的管理移动到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照["准备 Azure 容器技术资产"](https://aka.ms/CreateContainerTechAssets)中的说明进行操作，以管理迁移的优惠。
+> 从2020年4月13日开始，我们开始将 Azure 容器产品/服务的管理转移到合作伙伴中心。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[准备 Azure 容器技术资产](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer)中的说明来管理迁移的产品/服务。
 
 本文介绍了在 Azure 市场中配置容器产品/服务的步骤和要求。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 查看 [Azure 容器实例](https://docs.microsoft.com/azure/container-instances)文档，其中提供了快速入门、教程和示例。
 
@@ -33,7 +33,7 @@ ms.locfileid: "81270309"
 
 -    基本了解 [Azure 服务](https://azure.microsoft.com/services/) 
 -    如何[设计和架构 Azure 应用程序](https://azure.microsoft.com/solutions/architecture/)
--    [Azure 虚拟机](https://azure.microsoft.com/services/virtual-machines/)[、Azure 存储](https://azure.microsoft.com/services/?filter=storage)和 Azure[网络](https://azure.microsoft.com/services/?filter=networking)的工作知识
+-    Azure[虚拟机](https://azure.microsoft.com/services/virtual-machines/)、 [Azure 存储](https://azure.microsoft.com/services/?filter=storage)和[azure 网络](https://azure.microsoft.com/services/?filter=networking)的工作知识
 -    [Azure 资源管理器](https://azure.microsoft.com/features/resource-manager/)的实践知识
 -    [JSON](https://www.json.org/)的工作知识
 
@@ -58,8 +58,8 @@ ms.locfileid: "81270309"
 
 有关详细信息，请参阅以下主题：
 
-* [教程：创建容器映像以部署到 Azure 容器实例](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
-* [教程：使用 Azure 容器注册表任务在云中构建和部署容器映像](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task)
+* [教程：创建用于部署到 Azure 容器实例的容器映像](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
+* [教程：通过 Azure 容器注册表任务在云中构建和部署容器映像](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/22/2020
+ms.date: 04/24/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fe7b375ebafb1e8194b29061430d956e48f2c441
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: bf8c797edec143d09739272917b5781a239280ba
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82100748"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147741"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -111,6 +111,7 @@ Azure for SAP HANA 的唯一性是将 Azure 分开的一个产品/服务。 为�
 
 ## <a name="change-log"></a>更改日志
 
+- 04/24/2020：在[Azure vm 上具有和 ON SLES 的备用节点 SAP HANA 向外扩展的](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)更改，请参阅 SAP HANA 在 azure vm 上通过[和 on rhel 向外扩展，其中包含 on rhel](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)的 azure vm 上的和高可用性，以及在 rhel 上通过 AZURE Vm 上的[sap NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)实现[高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
 - 04/22/2020：在[SLES 上的 Azure vm 上更改 SAP HANA 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)，以从`is-managed`说明中删除元属性，因为它与将群集置于或退出维护模式冲突
 - 04/21/2020：已将 SQL Azure DB 添加为适用于 SAP 的 DBMS （Hybris） Commerce 平台1811和更高版本，本文介绍[了 Azure 部署支持的 sap 软件](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure)以及[在 Microsoft Azure 上运行的 sap 认证和配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications)
 - 04/16/2020：在文章中添加了 SAP HANA 作为 SAP （Hybris）商务平台的受支持 DBMS，其中包含了[Azure 部署支持的 sap 软件](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure)以及[在 Microsoft Azure 上运行的 sap 认证和配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications)

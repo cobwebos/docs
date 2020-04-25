@@ -1,5 +1,5 @@
 ---
-title: 更新现有的 Azure 容器产品 /服务 |Azure 应用商店
+title: 更新现有的 Azure 容器产品 |Azure Marketplace
 description: 如何更新 Azure 市场中的现有容器产品/服务。
 author: dsindona
 ms.service: marketplace
@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: dsindona
-ms.openlocfilehash: 650ef45e56184b67efba67810580d9d6e763a4d0
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: cc378dcc1d5f777f4e81825e2f99dedd37a87f96
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81271261"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82143821"
 ---
 # <a name="update-an-existing-container-offer"></a>更新现有的容器组
 
 > [!IMPORTANT]
-> 从 2020 年 4 月 13 日开始，我们将开始将 Azure 容器产品的管理移动到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照["创建 Azure 容器产品/服务](https://aka.ms/CreateContainerOffer)"中的说明进行操作，以管理迁移的优惠。
+> 从2020年4月13日开始，我们开始将 Azure 容器产品/服务的管理转移到合作伙伴中心。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[创建 Azure 容器服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer)中的说明来管理迁移的产品/服务。
 
 本文分步介绍了在[云合作伙伴门户](https://cloudpartner.azure.com/)中更新容器产品/服务的各个方面。
 
@@ -70,12 +70,12 @@ ms.locfileid: "81271261"
 
 1. 登录到[云合作伙伴门户](https://cloudpartner.azure.com/)。
 2. 在“所有产品/服务”下，找到要更新的产品/服务。****
-3. 转到 **"应用商店"** 选项卡。使用["发布"容器提供](./cpp-publish-offer.md)文章中的说明进行元数据更改。
+3. 请参阅 " **Marketplace** " 选项卡。使用[发布容器产品](./cpp-publish-offer.md)/服务一文中的说明进行元数据更改。
 4. 选择“发布”，启动发布更改的工作流。****
 
 ## <a name="compare-feature"></a>“比较”功能
 
-对已发布的产品/服务进行更改时，可以使用 **"比较**"功能审核所做的更改。
+当你对已发布的产品/服务进行更改时，可以使用 "**比较**" 功能审核你所做的更改。
 
 ### <a name="to-use-the-compare-feature"></a>若要使用“比较”功能，请执行以下操作：
 

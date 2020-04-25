@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 04/24/2020
-ms.openlocfilehash: 9723fc3ab68785c6e444647f427fcf9788792cea
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 27f86a3fa34f8029e59d11066de9ea5a25a8c5ad
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82115680"
+ms.locfileid: "82147982"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>适用于 Azure 逻辑应用的连接器
 
@@ -48,17 +48,17 @@ ms.locfileid: "82115680"
 
   连接器分类为“标准”或“企业”连接器。 [企业连接器](#enterprise-connectors)提供对 SAP、IBM MQ 和 IBM 3270 等企业系统的访问，但会产生额外的费用。 若要确定某个连接器是标准还是企业连接器，请参阅[连接器概述](https://docs.microsoft.com/connectors)下每个连接器的参考页中的技术详细信息。
 
-  > [!IMPORTANT]
-  > 从**2020**开始，Google 到其[数据安全和隐私策略](https://www.blog.google/technology/safety-security/project-strobe/)的更改可能会影响使用[Gmail 连接器](https://docs.microsoft.com/connectors/gmail/)的逻辑应用。 如果逻辑应用使用 gmail 连接器和 Gmail 使用者帐户（电子邮件地址以@gmail.com或@googlemail.com结尾），则逻辑应用只能使用 Google 批准的触发器、操作和连接器。 从**2020 年6月15日**起，将禁用任何不符合的工作流。 有关详细信息，请参阅[Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
-
   也可以使用这些类别来识别连接器，不过，某些连接器可能属于多个类别。 例如，SAP 既是企业连接器，也是本地连接器：
 
   |   |   |
   |---|---|
-  | [**托管的连接器**](#managed-api-connectors) | 创建使用 Azure Blob 存储、Office 365、Dynamics、Power BI、OneDrive、Salesforce、SharePoint Online 等服务的逻辑应用。 |
+  | [**托管连接器**](#managed-api-connectors) | 创建使用 Azure Blob 存储、Office 365、Dynamics、Power BI、OneDrive、Salesforce、SharePoint Online 等服务的逻辑应用。 |
   | [**本地连接器**](#on-premises-connectors) | 安装并设置[本地数据网关][gateway-doc]后，这些连接器可以帮助逻辑应用访问 SQL Server、SharePoint Server、Oracle DB、文件共享等本地系统。 |
   | [**集成帐户连接器**](#integration-account-connectors) | 创建和付费购买集成帐户时可以使用这些连接器，它们会转换和验证 XML、编码和解码平面文件，以及使用 AS2、EDIFACT 和 X12 协议处理企业到企业 (B2B) 消息。 |
   |||
+
+  > [!IMPORTANT]
+  > 如果要使用 Gmail 连接器，则只有 G Suite 业务帐户才能在逻辑应用中使用此连接器而不进行限制。 如果你有 Gmail 使用者帐户，则只能将此连接器与特定的 Google 批准服务一起使用，也可以[创建 google 客户端应用以用于通过 Gmail 连接器进行身份验证](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 有关详细信息，请参阅[Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
 
 <a name="integration-service-environment"></a>
 

@@ -1,14 +1,14 @@
 ---
-title: ASP.NET核心应用程序的 Azure 应用程序见解 |微软文档
+title: ASP.NET Core 应用程序的 Azure 应用程序见解 |Microsoft Docs
 description: 监视 ASP.NET Core Web 应用程序的可用性、性能和使用情况。
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 1a9a81d76df7f14fb99b8521e7bfa2edff6c9e9e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: e8ace92c39ed6b7bdcca0bae14cc0ae95aced2c2
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687373"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82145259"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>适用于 ASP.NET Core 应用程序的 Application Insights
 
@@ -28,7 +28,7 @@ ms.locfileid: "81687373"
 * **IDE**：Visual Studio、VS Code 或命令行。
 
 > [!NOTE]
-> 如果您使用的是ASP.NET酷睿 3.X 以及应用程序见解，请使用[2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0)版本或更高版本。 这是支持ASP.NET酷3.X的唯一版本。
+> 如果使用 ASP.NET Core 1.x 以及 Application Insights，请使用[2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0)版本或更高版本。 这是支持 ASP.NET Core 1.x 的唯一版本。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -141,7 +141,7 @@ ms.locfileid: "81687373"
 
 ### <a name="eventcounter"></a>EventCounter
 
-`EventCounterCollectionModule`默认情况下启用，它将从 .NET Core 3.X 应用收集一组默认计数器。 [事件计数器](eventcounters.md)教程列出了收集的默认计数器集。 它还包含有关自定义列表的说明。
+`EventCounterCollectionModule`默认情况下启用，它将从 .NET Core 2.x 应用程序收集默认的计数器集。 [EventCounter](eventcounters.md)教程列出了收集的默认计数器集。 它还包含有关自定义列表的说明。
 
 ## <a name="enable-client-side-telemetry-for-web-applications"></a>为 Web 应用程序启用客户端遥测
 
@@ -201,12 +201,12 @@ public void ConfigureServices(IServiceCollection services)
 
 |设置 | 说明 | 默认
 |---------------|-------|-------
-|启用性能计数器收集模块  | 启用/禁用`PerformanceCounterCollectionModule` | 是
-|启用请求跟踪遥测模块   | 启用/禁用`RequestTrackingTelemetryModule` | 是
-|启用事件计数器收集模块   | 启用/禁用`EventCounterCollectionModule` | 是
-|启用依赖跟踪遥测模块   | 启用/禁用`DependencyTrackingTelemetryModule` | 是
-|启用应用服务检测数据模块  |  启用/禁用`AppServicesHeartbeatTelemetryModule` | true
-|启用 Azure 实例元数据数据模块   |  启用/禁用`AzureInstanceMetadataTelemetryModule` | true
+|EnablePerformanceCounterCollectionModule  | 启用/禁用`PerformanceCounterCollectionModule` | 是
+|EnableRequestTrackingTelemetryModule   | 启用/禁用`RequestTrackingTelemetryModule` | 是
+|EnableEventCounterCollectionModule   | 启用/禁用`EventCounterCollectionModule` | 是
+|EnableDependencyTrackingTelemetryModule   | 启用/禁用`DependencyTrackingTelemetryModule` | 是
+|EnableAppServicesHeartbeatTelemetryModule  |  启用/禁用`AppServicesHeartbeatTelemetryModule` | true
+|EnableAzureInstanceMetadataTelemetryModule   |  启用/禁用`AzureInstanceMetadataTelemetryModule` | true
 |EnableQuickPulseMetricStream | Enable/Disable LiveMetrics feature | true
 |EnableAdaptiveSampling | 启用/禁用自适应采样 | true
 |EnableHeartbeat | 启用/禁用检测信号功能，该功能定期（默认间隔为 15 分钟）发送名为“HeartBeatState”的自定义指标，其中包含有关运行时等的信息，例如 .NET 版本、Azure 环境信息（如果适用）等。 | true
@@ -285,7 +285,7 @@ Application Insights 使用遥测模块自动收集有关特定工作负荷的�
 * `QuickPulseTelemetryModule` - 收集遥测数据以便在实时指标门户中显示。
 * `AppServicesHeartbeatTelemetryModule` - 收集有关托管应用程序的 Azure 应用服务环境的检测信号（以自定义指标的形式发送）。
 * `AzureInstanceMetadataTelemetryModule` - 收集有关托管应用程序的 Azure VM 环境的检测信号（以自定义指标的形式发送）。
-* `EventCounterCollectionModule`- 收集[事件计数器。](eventcounters.md) 此模块是一项新功能，可在 SDK 版本 2.8.0 及更高版本中提供。
+* `EventCounterCollectionModule`-收集[EventCounters。](eventcounters.md) 此模块是一项新功能，可在 SDK 版本2.8.0 和更高版本中使用。
 
 若要配置任何默认的 `TelemetryModule`，请按以下示例中所示使用 `IServiceCollection` 中的扩展方法 `ConfigureTelemetryModule<T>`。
 
@@ -323,7 +323,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-从 2.12.2 版本[`ApplicationInsightsServiceOptions`](#using-applicationinsightsserviceoptions)开始，包含禁用任何默认模块的简单选项。
+从2.12.2 版本开始， [`ApplicationInsightsServiceOptions`](#using-applicationinsightsserviceoptions)包含禁用任何默认模块的简单选项。
 
 ### <a name="configuring-a-telemetry-channel"></a>配置遥测通道
 
@@ -363,11 +363,11 @@ using Microsoft.ApplicationInsights.Channel;
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-### <a name="does-application-insights-support-aspnet-core-3x"></a>应用程序见解是否支持ASP.NET核心 3.X？
+### <a name="does-application-insights-support-aspnet-core-3x"></a>Application Insights 是否支持 ASP.NET Core 2.x？
 
-是的。 请更新到 [Application Insights SDK for ASP.NET Core](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) 2.8.0 或更高版本。 旧版本的 SDK 不支持 ASP.NET酷睿 3.X。
+是的。 请更新到 [Application Insights SDK for ASP.NET Core](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) 2.8.0 或更高版本。 旧版本的 SDK 不支持 ASP.NET Core 1.x。
 
-此外，如果使用[此处](#enable-application-insights-server-side-telemetry-visual-studio)基于 Visual Studio 的说明，请更新到最新版本的 Visual Studio 2019 (16.3.0) 以完成加入。 早期版本的 Visual Studio 不支持ASP.NET酷睿 3.X 应用的自动载入。
+此外，如果使用[此处](#enable-application-insights-server-side-telemetry-visual-studio)基于 Visual Studio 的说明，请更新到最新版本的 Visual Studio 2019 (16.3.0) 以完成加入。 Visual Studio 的早期版本不支持 ASP.NET Core 1.x 应用程序的自动载入。
 
 ### <a name="how-can-i-track-telemetry-thats-not-automatically-collected"></a>如何跟踪不会自动收集的遥测数据？
 
@@ -400,11 +400,11 @@ public class HomeController : Controller
 
 ### <a name="some-visual-studio-templates-used-the-useapplicationinsights-extension-method-on-iwebhostbuilder-to-enable-application-insights-is-this-usage-still-valid"></a>某些 Visual Studio 模板使用 IWebHostBuilder 中的 UseApplicationInsights() 扩展方法来启用 Application Insights。 这种用法是否仍然有效？
 
-尽管 `UseApplicationInsights()` 扩展方法仍受支持，但它在 Application Insights SDK 版本 2.8.0 中已标记为弃用。 在下一个 SDK 主要版本中，将会删除此方法。 启用 Application Insights 遥测的建议方式是使用 `AddApplicationInsightsTelemetry()`，因为它提供用于控制某个配置的重载。 此外，在 ASP.NET 酷睿 3.X 应用中，`services.AddApplicationInsightsTelemetry()`是启用应用程序见解的唯一方法。
+尽管 `UseApplicationInsights()` 扩展方法仍受支持，但它在 Application Insights SDK 版本 2.8.0 中已标记为弃用。 在下一个 SDK 主要版本中，将会删除此方法。 启用 Application Insights 遥测的建议方式是使用 `AddApplicationInsightsTelemetry()`，因为它提供用于控制某个配置的重载。 此外，在 ASP.NET Core 1.x 应用程序中， `services.AddApplicationInsightsTelemetry()`是启用 application insights 的唯一方法。
 
 ### <a name="im-deploying-my-aspnet-core-application-to-web-apps-should-i-still-enable-the-application-insights-extension-from-web-apps"></a>我正在将 ASP.NET Core 应用程序部署到 Web 应用。 是否仍要从 Web 应用启用 Application Insights 扩展？
 
-如果 SDK 安装在生成时间（如本文所示）中所示，则无需从应用服务门户启用[应用程序见解扩展](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps)。 即使安装了扩展，在检测到已将 SDK 添加到应用程序时，该扩展也仍会回退。 如果从扩展启用 Application Insights，则无需安装和更新 SDK。 但是，遵照本文中的说明启用 Application Insights 会更灵活，原因如下：
+如果 SDK 按本文中所示的生成时间安装，则不需要从应用服务门户启用[Application Insights 扩展](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps)。 即使安装了扩展，在检测到已将 SDK 添加到应用程序时，该扩展也仍会回退。 如果从扩展启用 Application Insights，则无需安装和更新 SDK。 但是，遵照本文中的说明启用 Application Insights 会更灵活，原因如下：
 
    * Application Insights 遥测功能将在以下位置或模式下继续运行：
        * 所有操作系统，包括 Windows、Linux 和 Mac。
@@ -418,7 +418,7 @@ public class HomeController : Controller
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>是否可以使用状态监视器之类的工具来启用 Application Insights 监视？
 
-不是。 [状态监视器](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now)和[状态监视器 v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) 目前仅支持 ASP.NET 4.x。
+不能。 [状态监视器](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now)和[状态监视器 v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) 目前仅支持 ASP.NET 4.x。
 
 ### <a name="is-application-insights-automatically-enabled-for-my-aspnet-core-20-application"></a>系统是否会自动为 ASP.NET Core 2.0 应用程序启用 Application Insights？
 
@@ -428,7 +428,7 @@ public class HomeController : Controller
 
 是的。 SDK 的功能支持在所有平台中是相同的，不过存在以下例外情况：
 
-* SDK 在 Linux 上收集[事件计数器，](https://docs.microsoft.com/azure/azure-monitor/app/eventcounters)因为[性能计数器](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters)仅在 Windows 中受支持。 大多数指标都是相同的。
+* SDK 收集 Linux 上的[事件计数器](https://docs.microsoft.com/azure/azure-monitor/app/eventcounters)，因为只有 Windows 支持[性能计数器](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters)。 大多数指标是相同的。
 * 尽管默认已启用 `ServerTelemetryChannel`，但如果应用程序在 Linux 或 MacOS 中运行，出现网络问题时，通道不会自动创建本地存储文件夹来暂时保留遥测数据。 由于这种限制，在出现暂时性的网络或服务器时，遥测数据将会丢失。 若要解决此问题，请为通道配置一个本地文件夹：
 
 ```csharp
@@ -447,23 +447,18 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
     }
 ```
 
-### <a name="is-this-sdk-supported-for-the-new-net-core-3x-worker-service-template-applications"></a>新的 .NET Core 3.X 辅助服务模板应用程序是否支持此 SDK？
+### <a name="is-this-sdk-supported-for-the-new-net-core-3x-worker-service-template-applications"></a>新的 .NET Core 2.x 辅助角色服务模板应用程序是否支持此 SDK？
 
-此 SDK`HttpContext`需要 ，因此不适用于任何非 HTTP 应用程序，包括 .NET Core 3.X 辅助服务应用程序。 有关如何使用新发布的 Microsoft.ApplicationInsights.WorkerService SDK 在此类应用程序中启用 Application Insights，请参阅[此文档](worker-service.md)。
+此 SDK 需要`HttpContext`，因此不能在任何非 HTTP 应用程序中使用，包括 .net Core 2.X 辅助角色服务应用程序。 有关如何使用新发布的 Microsoft.ApplicationInsights.WorkerService SDK 在此类应用程序中启用 Application Insights，请参阅[此文档](worker-service.md)。
 
 ## <a name="open-source-sdk"></a>开源 SDK
 
-[阅读并贡献代码](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates)。
-
-## <a name="video"></a>视频
-
-- 查看此外部分步视频，从头开始[使用 .NET 核心和可视化工作室配置应用程序见解](https://www.youtube.com/watch?v=NoS9UhcR4gA&t)。
-- 查看此外部分步视频，从头开始[使用 .NET 核心和可视化工作室代码配置应用程序见解](https://youtu.be/ygGt84GDync)。
+[阅读并参与编写代码](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [浏览用户流](../../azure-monitor/app/usage-flows.md)以了解用户如何浏览你的应用。
-* [配置快照集合](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger)以查看引发异常时源代码和变量的状态。
+* [探索用户流](../../azure-monitor/app/usage-flows.md)，了解用户如何在应用中导航。
+* [配置快照集合](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger)，以查看引发异常时源代码和变量的状态。
 * [使用 API](../../azure-monitor/app/api-custom-events-metrics.md) 发送自己的事件和指标，以获取应用性能和使用情况的详细视图。
 * 使用[可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)从世界各地不断检查应用。
-* [ASP.NET核心中的依赖注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)
+* [ASP.NET Core 中的依赖项注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)

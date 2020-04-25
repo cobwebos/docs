@@ -1,5 +1,5 @@
 ---
-title: Azure IoT 边缘模块的市场描述 |Azure 应用商店
+title: Azure IoT Edge 模块的 Marketplace 说明 |Azure Marketplace
 description: 创建 IoT Edge 模块的市场说明。
 author: dsindona
 ms.service: marketplace
@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: df51a408cc47908a240ceb66bf510fe3df3ce87f
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: b4a3aa4e92fcabf354de7d550ec53ead5872596d
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983392"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82144777"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>IoT Edge 模块“市场”选项卡
 
 >[!Important]
->从 2020 年 4 月 13 日起，我们将开始将 IoT Edge 模块产品的管理转移到合作伙伴中心。 迁移后，您将在合作伙伴中心创建和管理您的优惠。 按照[创建 IoT Edge 模块产品/服务](https://aka.ms/AzureCreateIoT)中的说明进行操作，以管理迁移的优惠。
+>从2020年4月13日开始，我们将开始向合作伙伴中心移动 IoT Edge 模块的管理。 迁移后，你将在合作伙伴中心创建和管理你的产品/服务。 按照[创建 IoT Edge 模块提供](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation)中的说明来管理迁移的产品/服务。
 
 在“新建套餐”页的“市场”选项卡中，可向潜在客户提供营销、销售和法律信息与协议，以及管理从市场生成的潜在顾客。******** 这个较长的窗体划分为四个部分：“概述”、“营销项目”、“潜在顾客管理”和“法律条款”。****************
 
@@ -30,16 +30,16 @@ ms.locfileid: "80983392"
 
 下表描述了这些字段的用途和内容。 必填字段用星号 (*) 表示。
 
-|  **字段**                |     **说明**                                                          |
+|  **字段**                |     **描述**                                                          |
 |  ---------                |     ---------------                                                          |
-| **Title\***                 | 套餐的标题。 将在市场中突出显示。  最大长度为 50 个字符。 <!--ADD PICTURE IN ACTION-->|
-| **总结\***               | 套餐的简短摘要。 最大长度为 100 个字符。 <!--ADD PICTURE IN ACTION-->|
+| **标题\***                 | 套餐的标题。 将在市场中突出显示。  最大长度为 50 个字符。 <!--ADD PICTURE IN ACTION-->|
+| **小结\***               | 套餐的简短摘要。 最大长度为 100 个字符。 <!--ADD PICTURE IN ACTION-->|
 | **长摘要\***          | 套餐的较长摘要（不过，其内容可与“摘要”相同）。****  最大长度为 256 个字符。 <!--ADD PICTURE IN ACTION-->|
 | **说明\***           | 套餐的说明。  最大长度为 3000 个字符，支持简单 HTML 格式。<br/> 必须在底部包含“最低硬件要求”段落。** 例如： <br/> <p><u>最低硬件要求：</u>Linux x64 和 arm32 OS，1 GB RAM，500 Mb 存储</p>
-| **营销标识符\***  | 与此套餐关联的唯一 URL，通常包含组织名称和解决方案名称，最大长度为 50 个字符。  例如： <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
+| **市场营销标识符\***  | 与此套餐关联的唯一 URL，通常包含组织名称和解决方案名称，最大长度为 50 个字符。  例如： <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
 | **预览订阅 ID** | 为预览版添加 1 到 100 个订阅标识符。 在套餐发布之后、上线之前，这些已加入允许列表的订阅将有权访问该套餐。 |
 | **有用链接**          | 可能最适合与该套餐关联的企业和技术类别的多项选择。  最多允许添加 10 个类别。 请务必至少添加一个文档链接，以及 [Azure IoT 设备目录](https://catalog.azureiotsolutions.com/)中兼容的 IoT Edge 设备的一个链接。 |
-| **建议类别\*** | 最多选择 5 个类别。 这些类别将显示在产品详细信息页上。 在浏览器页中，所有 IoT Edge 模块将显示在“物联网”\>“IoT Edge 模块”类别下。**|
+| **建议的类别\*** | 最多选择 5 个类别。 这些类别将显示在产品详细信息页上。 在浏览器页中，所有 IoT Edge 模块将显示在“物联网”\>“IoT Edge 模块”类别下。**|
 |  |  |
 
 
@@ -85,13 +85,13 @@ ms.locfileid: "80983392"
 
 ![虚拟机“新建套餐”窗体中“市场”选项卡的“营销项目”部分](./media/publishvm_009.png)
 
-|  **字段**                |     **说明**                                                          |
+|  **字段**                |     **描述**                                                          |
 |  ---------                |     ---------------                                                          |
 | *徽标*  | 参阅上面的屏幕截图，了解徽标的用法和使用位置。  |
-| **小\***                 | 40x40 像素 PNG 格式                                                     |
-| **中型\***                | 90x90 像素 PNG 格式                                                     |
-| **大\***                 | 115x115 像素 PNG 格式                                                  |
-| **宽\***                  | 255x115 像素 PNG 格式                                                   |
+| **小型\***                 | 40x40 像素 PNG 格式                                                     |
+| **中\***                | 90x90 像素 PNG 格式                                                     |
+| **大型\***                 | 115x115 像素 PNG 格式                                                  |
+| **种类\***                  | 255x115 像素 PNG 格式                                                   |
 | **主图**                  | 815x290 像素 PNG 格式  此徽标是可选的，但是，一旦上传主图，就无法将其删除。 |
 | *屏幕截图*  | 屏幕截图显示在产品详细信息页上。 它们能够十分直观地展示 IoT Edge 模块的作用及其工作原理。 例如，可以显示体系结构关系图或用例插图。 屏幕截图是可选的，最多可为每个 SKU 上传 5 个屏幕快照。 |
 | **名称**                  | 名称或标题。 最大长度为 100 个字符。                             |
@@ -165,11 +165,11 @@ As an example, the following hero icon is for the Azure Container Service.
 
 在此部分可以提供每个套餐所需的两个法律文档：“隐私政策”和“使用条款”。
 
-|  **字段**                    |     **说明**                                                          |
+|  **字段**                    |     **描述**                                                          |
 |  ---------                    |     ---------------                                                          |
-| **隐私政策 URL\***      | 已发布的隐私政策的 URL                                            |
-| **使用标准缺点\***  | 是否使用标准的 Microsoft 合同模板。  有关详细信息，请参阅[标准合同](https://docs.microsoft.com/azure/marketplace/standard-contract)。   |
-| **使用条款\***            | *使用条款*作为内联简单 HTML 或指向您发布的使用条款页面的链接     |
+| **隐私策略 URL\***      | 已发布的隐私政策的 URL                                            |
+| **使用标准 Constract\***  | 是否使用标准 Microsoft 合同模板。  有关详细信息，请参阅[标准协定](https://docs.microsoft.com/azure/marketplace/standard-contract)。   |
+| **使用条款\***            | *使用条款*为内联简单 HTML 或链接到已发布的使用条款页面     |
 |  |  |
 
 
