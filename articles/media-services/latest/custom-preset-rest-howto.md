@@ -13,15 +13,15 @@ ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
 ms.openlocfilehash: 30e22cb786e5dc2a667fe41ca8edf398cf0b7613
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "65761800"
 ---
 # <a name="how-to-encode-with-a-custom-transform---rest"></a>如何对自定义转换进行编码 - REST
 
-使用 Azure 媒体服务进行编码时，您可以根据行业最佳实践快速启动推荐的内置预设之一，如[流式处理文件](stream-files-tutorial-with-rest.md#create-a-transform)教程所示。 也可以构建自定义预设以针对特定方案或设备要求。
+使用 Azure 媒体服务进行编码时，可以根据[流式传输文件](stream-files-tutorial-with-rest.md#create-a-transform)教程中演示的行业最佳做法，使用推荐的内置预设之一快速入门。 也可以构建自定义预设以针对特定方案或设备要求。
 
 ## <a name="considerations"></a>注意事项
 
@@ -33,7 +33,7 @@ ms.locfileid: "65761800"
 ## <a name="prerequisites"></a>先决条件 
 
 - [创建媒体服务帐户](create-account-cli-how-to.md)。 <br/>请务必记住资源组名称和媒体服务帐户名称。 
-- [为 Azure 媒体服务 REST API 调用配置 Postman。](media-rest-apis-with-postman.md)<br/>确保遵循[获取 Azure AD 令牌](media-rest-apis-with-postman.md#get-azure-ad-token)主题中的最后一步。 
+- [配置 Postman 以便进行 Azure 媒体服务 REST API 调用](media-rest-apis-with-postman.md)。<br/>确保遵循[获取 Azure AD 令牌](media-rest-apis-with-postman.md#get-azure-ad-token)主题中的最后一步。 
 
 ## <a name="define-a-custom-preset"></a>定义自定义预设
 
@@ -135,7 +135,7 @@ ms.locfileid: "65761800"
 
 在此示例中，我们基于前面定义的自定义预设创建**转换**。 创建转换时，应首先使用 [Get](https://docs.microsoft.com/rest/api/media/transforms/get) 检查是否已存在转换。 如果存在转换，请重新使用它。 
 
-在下载的 Postman 集合中，选择 **"转换"和"作业**->**创建或更新转换**"。
+在下载的 Postman 集合中，选择“转换和作业”  ->“创建或更新转换”  。
 
 **PUT** HTTP 请求方法类似于：
 
@@ -143,11 +143,11 @@ ms.locfileid: "65761800"
 PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName?api-version={{api-version}}
 ```
 
-选择“正文”**** 选项卡，并将正文替换为[之前定义](#define-a-custom-preset)的 json 代码。 要使媒体服务将转换应用于指定的视频或音频，需要在该转换下提交作业。
+选择“正文”  选项卡，并将正文替换为[之前定义](#define-a-custom-preset)的 json 代码。 要使媒体服务将转换应用于指定的视频或音频，需要在该转换下提交作业。
 
-选择 **"发送**"。 
+选择“发送”。  
 
-要使媒体服务将转换应用于指定的视频或音频，需要在该转换下提交作业。 有关演示如何在转换下提交作业的完整示例，请参阅[教程：流式传输视频文件 - REST](stream-files-tutorial-with-rest.md)。
+要使媒体服务将转换应用于指定的视频或音频，需要在该转换下提交作业。 有关演示如何在转换下提交作业的完整示例，请参阅[教程：对视频文件进行流式处理 - REST](stream-files-tutorial-with-rest.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

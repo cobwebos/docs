@@ -10,10 +10,10 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 02/09/2018
 ms.openlocfilehash: 5042d89f1cb5e928444e4b3c9a23db7bb1d66585
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60508794"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>使用针对 Visual Studio Code 的 Azure Data Lake 工具
@@ -26,11 +26,11 @@ ms.locfileid: "60508794"
 
 适用于 VS Code 的 Azure Data Lake 工具支持 Windows、Linux 和 macOS。U-SQL 本地运行和本地调试仅适用于 Windows。
 
-- [视觉工作室代码](https://www.visualstudio.com/products/code-vs.aspx)
+- [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx)
 
 对于 MacOS 和 Linux：
 - [.NET Core SDK 2.0](https://www.microsoft.com/net/download/core)
-- [单声道 5.2.x](https://www.mono-project.com/download/)
+- [Mono 5.2. x](https://www.mono-project.com/download/)
 
 ## <a name="install-azure-data-lake-tools"></a>安装 Azure Data Lake 工具
 
@@ -46,7 +46,7 @@ ms.locfileid: "60508794"
 
    数秒后，“安装”按钮会变为“重载”。********
 4. 选择“重载”，激活“Azure Data Lake 工具”扩展********。
-5. 选择“重载窗口”以进行确认。**** 您可以在 **"扩展"** 窗格中查看**Azure 数据湖工具**。
+5. 选择“重载窗口”以进行确认。**** 可以在 "**扩展**" 窗格中查看**Azure Data Lake 工具**。
 
  
 ## <a name="activate-azure-data-lake-tools"></a>激活 Azure Data Lake 工具
@@ -121,10 +121,10 @@ ms.locfileid: "60508794"
 3. 将打开 xxx_settings.json，其中显示了以下属性：
 
    - **account**：Azure 订阅下需要编译和运行 U-SQL 作业的 Azure Data Lake Analytics 帐户。 需要先配置此计算机帐户，然后才能编译和运行 U-SQL 作业。
-   - **数据库**：您的帐户下的数据库。 默认值为**主**。
-   - **架构**：数据库下的架构。 默认值为**dbo**。
+   - **数据库**：帐户下的数据库。 默认值为**master**。
+   - **架构**：数据库中的架构。 默认值为**dbo**。
    - **optionalSettings**：
-        - **优先级**：优先级范围为 1 到 1000，其中 1 为最高优先级。 默认值为“1000”****。
+        - **优先级**：优先级范围是从1到1000，1是最高优先级。 默认值为“1000”****。
         - **degreeOfParallelism**：并行度范围是 1 到 150。 默认值是 Azure Data Lake Analytics 帐户中允许的最大并行度。 
 
    ![JSON 文件的内容](./media/data-lake-analytics-data-lake-tools-for-vscode/default-context-setting.png)
@@ -135,7 +135,7 @@ ms.locfileid: "60508794"
 **将 Git 设为忽略**
 
 1. 按 Ctrl+Shift+P 打开命令面板。 
-2. 输入**ADL：设置 Git 忽略**。
+2. 输入**ADL： Set Git Ignore**。
 
    - 如果 VS Code 工作文件夹中没有 .gitIgnore 文件，则会在该文件夹中创建一个名为 .gitIgnore 的文件********。 默认情况下会将四个项（usqlCodeBehindReference、usqlCodeBehindGenerated、.cache 和 obj）添加到该文件****************。 可以按需进行更多更新。
    - 如果 VS Code 工作文件夹中已有一个 .gitIgnore 文件，则该工具会向 .gitIgnore 文件中添加四个项（usqlCodeBehindReference、usqlCodeBehindGenerated、.cache、obj）（如果该文件中尚未包括这四个项）************************。
@@ -172,7 +172,7 @@ Azure Data Lake 工具支持多种自定义代码。 有关说明，请参阅[�
 1.  按 Ctrl+Shift+P 打开命令面板。
 2.  输入“ADL: Register Assembly (Advanced)”****。 
 3.  指定本地程序集路径。 
-4.  会显示 JSON 文件。 检查并根据需要编辑程序集依赖项和资源参数。 说明显示在 **"输出"** 窗口中。 若要继续进行程序集注册，请保存 (Ctrl+S) JSON 文件。
+4.  会显示 JSON 文件。 检查并根据需要编辑程序集依赖项和资源参数。 说明将显示在 "**输出**" 窗口中。 若要继续进行程序集注册，请保存 (Ctrl+S) JSON 文件。
 
     ![使用程序集依赖项和资源参数的 JSON 文件](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-register-assembly-advance.png)
     
@@ -370,7 +370,7 @@ Azure Data Lake 工具支持多种自定义代码。 有关说明，请参阅[�
 
 **通过 ADL: Download File (Advanced) 命令下载文件**
 1. 右键单击脚本编辑器，然后选择“下载文件(高级)”****。
-2. VS Code 显示 JSON 文件。 可以输入文件路径，以便同时下载多个文件。 说明显示在 **"输出"** 窗口中。 若要继续下载文件，请保存（按 Ctrl+S）JSON 文件。
+2. VS Code 显示 JSON 文件。 可以输入文件路径，以便同时下载多个文件。 说明将显示在 "**输出**" 窗口中。 若要继续下载文件，请保存（按 Ctrl+S）JSON 文件。
 
     ![附带文件下载路径的 JSON 文件](./media/data-lake-analytics-data-lake-tools-for-vscode/download-multi-files.png)
 
@@ -477,7 +477,7 @@ Data Lake 工具会在 Azure 门户中打开 Azure 存储路径。 可以从 Web
  
     ![IntelliSense 对象类型](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-auto-complete-objects.png)
  
--   **智能感知自动完成数据湖分析元数据**： 数据湖工具在本地下载数据湖分析元数据信息。 IntelliSense 功能自动填充 Data Lake Analytics 元数据的对象。 这些对象包括数据库、架构、表、视图、表值函数、过程和 C# 程序集。
+-   **Data Lake Analytics 元数据上的 IntelliSense 自动完成**： Data Lake 工具在本地下载 Data Lake Analytics 元数据信息。 IntelliSense 功能自动填充 Data Lake Analytics 元数据的对象。 这些对象包括数据库、架构、表、视图、表值函数、过程和 C# 程序集。
  
     ![IntelliSense 元数据](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-auto-complete-metastore.png)
 

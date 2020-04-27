@@ -18,17 +18,17 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c851b5ef024e6584e6f8c93995208b08a91fbb60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "62095483"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect 同步：处理 userCertificate 属性导致的 LargeObject 错误
 
 Azure AD 针对 **userCertificate** 属性的最大证书值数目限制为 **15** 个。 如果 Azure AD Connect 将包含超过 15 个值的对象导出到 Azure AD，Azure AD 将返回 **LargeObject** 错误和以下消息：
 
->*预配对象太大。修剪此对象上的属性值数。将在下一个同步周期中重试该操作..."*
+>*“预配的对象太大。请减少此对象上属性值的数目。在下一同步周期内将重试该操作...”*
 
 LargeObject 错误可能由其他 AD 属性导致。 若要确认该错误是否确实由 userCertificate 属性导致，需要在本地 AD 中或[同步服务管理器 Metaverse 搜索](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-mvsearch)中验证该对象。
 
@@ -83,19 +83,19 @@ LargeObject 错误可能由其他 AD 属性导致。 若要确认该错误是否
 
 1. 转到“操作”选项卡，确认是否不存在状态为“正在进行”的操作。******
 
-### <a name="step-2-find-the-existing-outbound-sync-rule-for-usercertificate-attribute"></a>步骤 2. 查找 userCertificate 属性的现有出站同步规则
+### <a name="step-2-find-the-existing-outbound-sync-rule-for-usercertificate-attribute"></a>步骤 2。 查找 userCertificate 属性的现有出站同步规则
 应已启用并配置一个现有的同步规则用于将 User 对象的 userCertificate 属性导出到 Azure AD。 请找到此同步规则，确定其**优先顺序**和**范围筛选器**配置：
 
 1. 转到“开始”→“同步规则编辑器”，启动“同步规则编辑器”。****
 
 2. 使用以下值配置搜索筛选器：
 
-    | 特性 | “值” |
+    | 属性 | 值 |
     | --- | --- |
-    | 方向 |**出境** |
-    | MV 对象类型 |**人** |
+    | 方向 |**出站** |
+    | MV 对象类型 |**人员** |
     | 连接器 |*Azure AD 连接器的名称* |
-    | 连接器对象类型 |**用户** |
+    | 连接器对象类型 |**user** |
     | MV 属性 |**userCertificate** |
 
 3. 如果使用 Azure AD 连接器的 OOB（现成）同步规则来导出 User 对象的 userCertficiate 属性，应取回“Out to AAD – User ExchangeOnline”规则。**
@@ -105,23 +105,23 @@ LargeObject 错误可能由其他 AD 属性导致。 若要确认该错误是否
 7. 在编辑屏幕中选择“范围筛选器”选项卡。****
 8. 记下范围筛选器配置。 如果使用的是 OOB 同步规则，应该正好有**一个包含两个子句的范围筛选器组**，其中包括：
 
-    | 特性 | 运算符 | “值” |
+    | 属性 | 运算符 | Value |
     | --- | --- | --- |
-    | sourceObjectType | EQUAL | 用户 |
+    | sourceObjectType | EQUAL | User |
     | cloudMastered | NOTEQUAL | True |
 
-### <a name="step-3-create-the-outbound-sync-rule-required"></a>步骤 3. 创建所需的出站同步规则
+### <a name="step-3-create-the-outbound-sync-rule-required"></a>步骤 3。 创建所需的出站同步规则
 新同步规则的**范围筛选器**必须与现有同步规则相同，其**优先顺序**必须高于现有同步规则。 这可以确保将新同步规则应用到与现有同步规则相同的一组对象，并重写 userCertificate 属性的现有同步规则。 若要创建同步规则，请执行以下操作：
 1. 在同步规则编辑器中，单击“添加新规则”按钮。****
-2. 在 **"描述"选项卡**下， 提供以下配置：
+2. 在 "**说明" 选项卡**下面提供以下配置：
 
-    | 特性 | “值” | 详细信息 |
+    | 属性 | 值 | 详细信息 |
     | --- | --- | --- |
-    | “属性” | *提供名称* | 例如“Out to AAD – Custom override for userCertificate”** |
-    | 描述 | *提供说明* | 例如“If userCertificate attribute has more than 15 values, export NULL”** |
+    | 名称 | *提供名称* | 例如“Out to AAD – Custom override for userCertificate”** |
+    | 说明 | *提供说明* | 例如“If userCertificate attribute has more than 15 values, export NULL”** |
     | 连接的系统 | *选择 Azure AD 连接器* |
-    | 连接的系统对象类型 | **用户** | |
-    | Metaverse 对象类型 | **人** | |
+    | 连接的系统对象类型 | **user** | |
+    | Metaverse 对象类型 | **person** | |
     | 链接类型 | **联接** | |
     | 优先级 | *选择介于 1 和 99 之间的数字* | 选择的数字不能由任何现有同步规则使用，并且值必须小于现有的同步规则（因此优先顺序更高）。 |
 
@@ -129,7 +129,7 @@ LargeObject 错误可能由其他 AD 属性导致。 若要确认该错误是否
 4. 跳过“联接规则”选项卡。****
 5. 转到“转换”选项卡，使用以下配置添加一个新的转换：****
 
-    | 特性 | “值” |
+    | 属性 | 值 |
     | --- | --- |
     | 流类型 |**表达式** |
     | 目标属性 |**userCertificate** |
@@ -137,7 +137,7 @@ LargeObject 错误可能由其他 AD 属性导致。 若要确认该错误是否
     
 6. 单击“添加”按钮创建同步规则。****
 
-### <a name="step-4-verify-the-new-sync-rule-on-an-existing-object-with-largeobject-error"></a>步骤 4. 验证针对出现 LargeObject 错误的现有对象实施的新同步规则
+### <a name="step-4-verify-the-new-sync-rule-on-an-existing-object-with-largeobject-error"></a>步骤 4。 验证针对出现 LargeObject 错误的现有对象实施的新同步规则
 在将创建的同步规则应用到其他对象之前，可以执行此步骤来验证是否可对出现 LargeObject 错误的现有 AD 对象正常运行该规则：
 1. 在 Synchronization Service Manager 中转到“操作”选项卡。****
 2. 选择最近的“导出到 Azure AD”操作，并单击出现 LargeObject 错误的对象之一。
@@ -145,7 +145,7 @@ LargeObject 错误可能由其他 AD 属性导致。 若要确认该错误是否
 4. 在“预览”弹出屏幕中选择“完全同步”，并单击“提交预览”。********
 5. 关闭“预览”屏幕和“连接器空间对象属性”屏幕。
 6. 在 Synchronization Service Manager 中转到“连接器”选项卡。****
-7. 右键单击**Azure AD**连接器并选择 **"运行..."**
+7. 右键单击**Azure AD**连接器，然后选择 "**运行 ...** "
 8. 在“运行连接器”弹出窗口中选择“导出”步骤，并单击“确定”。********
 9. 等待完成导出到 Azure AD，并确认此特定对象未出现其他 LargeObject 错误。
 
@@ -157,9 +157,9 @@ LargeObject 错误可能由其他 AD 属性导致。 若要确认该错误是否
 4. 等待完全同步步骤完成。
 5. 如果有多个 AD 连接器，请针对剩余的 AD 连接器重复上述步骤。 通常，如果有多个本地目录，则需要多个连接器。
 
-### <a name="step-6-verify-there-are-no-unexpected-changes-waiting-to-be-exported-to-azure-ad"></a>步骤 6. 验证是否没有意外的更改正在等待导出到 Azure AD
+### <a name="step-6-verify-there-are-no-unexpected-changes-waiting-to-be-exported-to-azure-ad"></a>步骤 6。 验证是否没有意外的更改正在等待导出到 Azure AD
 1. 在 Synchronization Service Manager 中转到“连接器”选项卡。****
-2. 右键单击**Azure AD**连接器并选择**搜索连接器空间**。
+2. 右键单击**Azure AD**连接器，并选择 "**搜索连接器空间**"。
 3. 在“搜索连接器空间”弹出窗口中：
     1. 将“范围”设置为“挂起的导出”。****
     2. 选中所有 3 个复选框，包括“添加”、“修改”和“删除”。************
@@ -169,7 +169,7 @@ LargeObject 错误可能由其他 AD 属性导致。 若要确认该错误是否
 ### <a name="step-7-export-the-changes-to-azure-ad"></a>步骤 7. 将更改导出到 Azure AD
 要将更改导出到 Azure AD，请执行以下操作：
 1. 在 Synchronization Service Manager 中转到“连接器”选项卡。****
-2. 右键单击**Azure AD**连接器并选择 **"运行..."**
+2. 右键单击**Azure AD**连接器，然后选择 "**运行 ...** "
 4. 在“运行连接器”弹出窗口中选择“导出”步骤，并单击“确定”。********
 5. 等待完成导出到 Azure AD，并确认不存在其他 LargeObject 错误。
 
@@ -182,5 +182,5 @@ LargeObject 错误可能由其他 AD 属性导致。 若要确认该错误是否
 > 前面的步骤仅适用于使用内置计划程序的较新 Azure AD Connect 版本 (1.1.xxx.x)。 如果操作的是使用 Windows 任务计划程序的较旧 Azure AD Connect 版本 (1.0.xxx.x)，或者使用自己的自定义计划程序（不常见）来触发定期同步，则需要相应地禁用这种同步。
 
 ## <a name="next-steps"></a>后续步骤
-详细了解[将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
 

@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: 9ff961638aa170948d51793a21e86d18dd7e1d80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "69016794"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>如何生成平滑流式处理 Windows 应用商店应用程序  
 
-借助适用于 Windows 8 的平滑流式处理客户端 SDK，开发人员可以生成支持按需付费、直播平滑流式处理内容的 Windows 应用商店应用程序。 除了播放平滑流式处理内容这一基本功能以外，该 SDK 还提供其他丰富功能，例如 Microsoft PlayReady 保护、质量级别限制、实时 DVR、音频流切换、收听状态更新（如质量级别更改）和错误事件，等等。 有关支持的功能的详细信息，请参阅[发行说明](https://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes)。 有关详细信息，请参阅[适用于 Windows 8 的播放器框架](https://playerframework.codeplex.com/)。 
+借助适用于 Windows 8 的平滑流式处理客户端 SDK，开发人员可以生成支持点播付费、实时平滑流式处理内容的 Windows 应用商店应用程序。 除了播放平滑流式处理内容这一基本功能以外，该 SDK 还提供其他丰富功能，例如 Microsoft PlayReady 保护、质量级别限制、实时 DVR、音频流切换、收听状态更新（如质量级别更改）和错误事件，等等。 有关支持的功能的详细信息，请参阅 [发行说明](https://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes)。 有关详细信息，请参阅 [适用于 Windows 8 的播放器框架](https://playerframework.codeplex.com/)。 
 
 本教程包含四个课时：
 
@@ -49,11 +49,11 @@ ms.locfileid: "69016794"
 
 ## <a name="lesson-1-create-a-basic-smooth-streaming-store-application"></a>第 1 课：创建基本的平滑流式处理应用商店应用程序
 
-在本课中，将要使用 MediaElement 控件创建一个 Windows 应用商店应用程序，以播放平滑流内容。  运行的应用程序如下所示：
+本课涉及使用 MediaElement 控件创建一个 Windows 应用商店应用程序，以播放平滑流内容。  运行的应用程序如下所示：
 
 ![平滑流式处理 Windows 应用商店应用程序示例][PlayerApplication]
 
-有关开发 Windows 应用商店应用程序的详细信息，请参阅[开发适用于 Windows 8 的极佳应用](https://msdn.microsoft.com/windows/apps/br229512.aspx)。 本课包含以下过程：
+有关开发 Windows 应用商店应用程序的详细信息，请参阅 [开发适用于 Windows 8 的极佳应用](https://msdn.microsoft.com/windows/apps/br229512.aspx)。 本课包含以下过程：
 
 1. 创建 Windows 应用商店项目
 2. 设计用户界面 (XAML)
@@ -63,38 +63,38 @@ ms.locfileid: "69016794"
 ### <a name="to-create-a-windows-store-project"></a>创建 Windows Store 项目
 
 1. 运行 Visual Studio；支持版本 2012 到 2015。
-1. 从 **"文件"** 菜单中，单击 **"新建**"，然后单击"**项目**"。
+1. 在“文件”  菜单中，单击“新建”  ，并单击“项目”  。
 1. 在“新建项目”对话框中，键入或选择以下值：
 
-    | “属性” | “值” |
+    | 名称 | Value |
     | --- | --- |
     | 模板组 |已安装/模板/Visual C#/Windows 应用商店 |
-    | 模板 |空白应用程序(XAML) |
-    | “属性” |SSPlayer |
+    | 模板 |空白应用 (XAML) |
+    | 名称 |SSPlayer |
     | 位置 |C:\SSTutorials |
     | 解决方案名称 |SSPlayer |
-    | 创建解决方案的目录 |(选定) |
+    | 创建解决方案的目录 |（选定） |
 
-1. 单击“确定”。
+1. 单击 **“确定”** 。
 
 ### <a name="to-add-a-reference-to-the-smooth-streaming-client-sdk"></a>添加对平滑流式处理客户端 SDK 的引用
 
-1. 在解决方案资源管理器中，右键单击“SSPlayer”****，并单击“添加引用”****。
+1. 在解决方案资源管理器中，右键单击“SSPlayer”  ，并单击“添加引用”  。
 1. 键入或选择以下值：
 
-    | “属性” | “值” |
+    | 名称 | Value |
     | --- | --- |
     | 引用组 |Windows/扩展 |
     | 参考 |选择适用于 Windows 8 和 Microsoft Visual C++ 运行时程序包的 Microsoft 平滑流式处理客户端 SDK |
 
-1. 单击“确定”。 
+1. 单击 **“确定”** 。 
 
 添加引用后，必须选择目标平台（x64 或 x86），添加引用对于任何 CPU 平台配置都不起作用。  在解决方案资源管理器中，会看到这些添加的引用出现了对应的黄色警告标记。
 
 ### <a name="to-design-the-player-user-interface"></a>设计播放器用户界面
 
-1. 在解决方案资源管理器中，双击“MainPage.xaml”**** 以在设计视图中将它打开。
-2. 找到**&lt;&gt;网格**和**&gt;/Grid 标记 XAML 文件，并在两个标记之间粘贴以下代码： &lt;**
+1. 在解决方案资源管理器中，双击“MainPage.xaml”  以在设计视图中将其打开。
+2. 在该 XAML 文件中找到 &lt;Grid&gt; 和 &lt;/Grid&gt; 标记，并在这两个标记之间粘贴以下代码   ：
 
    ```xml
          <Grid.RowDefinitions>
@@ -140,7 +140,7 @@ ms.locfileid: "69016794"
             <TextBox x:Name="txtStatus" FontSize="10" Width="700" VerticalAlignment="Center"/>
          </StackPanel>
    ```
-   MediaElement 控件用于播放媒体。 在下一课，我们将使用名为 sliderProgress 的滚动条控件来控制媒体进度。
+   MediaElement 控件用于播放媒体。 在下一课中，我们使用名为 sliderProgress 的滚动条控件来控制媒体进度。
 3. 按 **CTRL+S** 保存文件。
 
 MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用平滑流式处理支持，必须按文件扩展名和 MIME 类型注册平滑流式处理字节流处理程序。  若要注册，可以使用 Windows.Media 命名空间的 MediaExtensionManager.RegisterByteStreamHandler 方法。
@@ -149,7 +149,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
 
 ### <a name="to-modify-the-code-behind-file"></a>修改代码隐藏文件
 
-1. 在解决方案资源管理器中，右键单击“MainPage.xaml”****，并单击“查看代码”****。
+1. 在解决方案资源管理器中，右键单击“MainPage.xaml”  ，并单击“查看代码”  。
 2. 在该文件的顶部，添加以下 using 语句：
    
         using Windows.Media;
@@ -160,7 +160,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
    
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "text/xml");
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "application/vnd.ms-sstr+xml");
-5. 在 MainPage**** 类的末尾，粘贴以下代码：
+5. 在 MainPage 类的末尾，粘贴以下代码  ：
    ```csharp
          # region UI Button Click Events
          private void btnPlay_Click(object sender, RoutedEventArgs e)
@@ -204,7 +204,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
          }
          # endregion
    ```
-   现已定义 sliderProgress_PointerPressed 事件处理程序。  要使它正常工作，还需要执行其他操作，本教程的下一课将予以介绍。
+   现已定义 sliderProgress_PointerPressed 事件处理程序。  要使它正常工作，还需要执行其他操作，本教程的下一课会进行介绍。
 6. 按 **CTRL+S** 保存文件。
 
 完成的代码隐藏文件应如下所示：
@@ -213,20 +213,20 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
 
 ### <a name="to-compile-and-test-the-application"></a>编译和测试应用程序
 
-1. 在“生成”**** 菜单中，单击“配置管理器”****。
-2. 更改“活动解决方案平台”**** 以匹配开发平台。
+1. 在“生成”  菜单中，单击“配置管理器”  。
+2. 更改“活动解决方案平台”  以匹配开发平台。
 3. 按 **F6** 编译项目。 
-4. 按**F5**以运行应用程序。
+4. 按 **F5** 运行应用程序。
 5. 在应用程序的顶部，可以使用默认的平滑流式处理 URL，或输入一个不同的 URL。 
-6. 单击“设置源”****。 由于已按默认启用“自动播放”****，因此媒体会自动播放。  可以使用“播放”****、“暂停”**** 和“停止”**** 按钮控制媒体。  可以使用垂直滚动条控制媒体音量。  但是，用于控制媒体进度的水平滚动条功能尚未完全实现。 
+6. 单击“设置源”  。 由于已按默认启用“自动播放”  ，因此媒体会自动播放。  可以使用“播放”  、“暂停”  和“停止”  按钮控制媒体。  可以使用垂直滚动条控制媒体音量。  但是，用于控制媒体进度的水平滚动条功能尚未完全实现。 
 
-第 1 课到此结束。  在本课中，已学习如何使用 MediaElement 控件来播放平滑流式处理内容。  在下一课，将要添加一个滚动条，用于控制平滑流式处理内容的进度。
+第 1 课到此结束。  在本课中，已学习如何使用 MediaElement 控件来播放平滑流式处理内容。  在下一课中，需要要添加滚动条，以控制平滑流式处理内容的进度。
 
-## <a name="lesson-2-add-a-slider-bar-to-control-the-media-progress"></a>第2 课：添加滚动条以控制媒体进度
+## <a name="lesson-2-add-a-slider-bar-to-control-the-media-progress"></a>第 2 课：添加滚动条以控制媒体进度
 
-在第 1 课，已使用 MediaElement XAML 控件创建了一个 Windows 应用商店应用程序，用于播放平滑流式处理媒体内容。  该应用程序带有基本的媒体功能，例如开始、停止和暂停。  在本课中，将要在该应用程序中添加一个滚动条控件。
+在第 1 课，已使用 MediaElement XAML 控件创建了一个 Windows 应用商店应用程序，用于播放平滑流式处理媒体内容。  该应用程序带有基本的媒体功能，例如开始、停止和暂停。  本课涉及在该应用程序中添加一个滚动条控件。
 
-在本教程中，我们将使用一个计时器，基于 MediaElement 控件的当前位置更新该滚动条的位置。  在播放实况内容时，滚动条开始时间和结束时间也需要更新。  可以在自适应源更新事件中更好地处理此操作。
+在本教程中，我们使用一个计时器，基于 MediaElement 控件的当前位置更新该滚动条的位置。  播放实况内容时，滚动条开始时间和结束时间也需要更新。  可以在自适应源更新事件中更好地处理此操作。
 
 媒体源是生成媒体数据的对象。  源解析程序采用 URL 或字节流，并为该内容创建相应的媒体源。  源解析程序是应用程序创建媒体源的标准途径。 
 
@@ -241,7 +241,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
 
 ### <a name="to-register-the-smooth-streaming-byte-stream-handler-and-pass-the-propertyset"></a>注册平滑流式处理字节流处理程序并传递属性集
 
-1. 在解决方案资源管理器中，右键单击“MainPage.xaml”****，并单击“查看代码”****。
+1. 在解决方案资源管理器中，右键单击“MainPage.xaml”  ，并单击“查看代码”  。
 2. 在该文件的开头，添加以下 using 语句：
 
    ```csharp
@@ -253,7 +253,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
          private Windows.Foundation.Collections.PropertySet propertySet = new Windows.Foundation.Collections.PropertySet();             
          private IAdaptiveSourceManager adaptiveSourceManager;
    ```
-4. 在 **MainPage** 构造函数中的 **this.Initialize Components();** 行以及在上一课编写的注册代码行的后面添加以下代码：
+4. 在 MainPage 构造函数中的 this.Initialize Components(); 行以及在上一课编写的注册代码行的后面添加以下代码   ：
 
    ```csharp
         // Gets the default instance of AdaptiveSourceManager which manages Smooth 
@@ -286,7 +286,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
 
 ### <a name="to-add-the-adaptive-source-manager-level-event-handler"></a>添加自适应源管理器级别事件处理程序
 
-1. 在解决方案资源管理器中，右键单击“MainPage.xaml”****，并单击“查看代码”****。
+1. 在解决方案资源管理器中，右键单击“MainPage.xaml”  ，并单击“查看代码”  。
 2. 在 **MainPage** 类中，添加以下数据成员：
 
    ```csharp
@@ -314,7 +314,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
 
 ### <a name="to-add-adaptive-source-level-event-handlers"></a>添加自适应源级别事件处理程序
 
-1. 在解决方案资源管理器中，右键单击“MainPage.xaml”****，并单击“查看代码”****。
+1. 在解决方案资源管理器中，右键单击“MainPage.xaml”  ，并单击“查看代码”  。
 2. 在 **MainPage** 类中，添加以下数据成员：
 
    ```csharp
@@ -361,11 +361,11 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
    ```
 5. 按 **CTRL+S** 保存文件。
 
-相同的事件也可以在自适应源管理器级别使用，因此可用于处理应用程序中所有媒体元素通用的功能。 每个 AdaptiveSource 包含其自身的事件，所有 AdaptiveSource 事件将级联在 AdaptiveSourceManager 下面。
+相同的事件也可以在自适应源管理器级别使用，因此可用于处理应用中所有媒体元素通用的功能。 每个 AdaptiveSource 包含其自身的事件，所有的 AdaptiveSource 事件将级联在 AdaptiveSourceManager 之下。
 
 ### <a name="to-add-media-element-event-handlers"></a>添加媒体元素事件处理程序
 
-1. 在解决方案资源管理器中，右键单击“MainPage.xaml”****，并单击“查看代码”****。
+1. 在解决方案资源管理器中，右键单击“MainPage.xaml”  ，并单击“查看代码”  。
 2. 在 **MainPage** 类的末尾，添加以下事件处理程序：
 
    ```csharp
@@ -401,7 +401,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
 
 ### <a name="to-add-slider-bar-related-code"></a>添加与滚动条相关的代码
 
-1. 在解决方案资源管理器中，右键单击“MainPage.xaml”****，并单击“查看代码”****。
+1. 在解决方案资源管理器中，右键单击“MainPage.xaml”  ，并单击“查看代码”  。
 2. 在该文件的开头，添加以下 using 语句：
 
    ```csharp
@@ -507,7 +507,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
    ```
 
    > [!NOTE]
-   > CoreDispatcher 用于从非 UI 线程对 UI 线程作出更改。 如果调度程序线程出现瓶颈，开发人员可以选择使用他们想要更新的 UI 元素提供的调度程序。  例如：
+   > CoreDispatcher 用于从非 UI 线程对 UI 线程进行更改。 如果调度程序线程出现瓶颈，开发人员可以选择使用他们想要更新的 UI 元素提供的调度程序。  例如：
 
    ```csharp
          await sliderProgress.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { TimeSpan 
@@ -517,7 +517,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
 
          sliderProgress.Maximum = absvalue; }); 
    ```
-6. 在 **mediaElement_AdaptiveSourceStatusUpdated** 方法的末尾，添加以下代码：
+6. 在 mediaElement_AdaptiveSourceStatusUpdated 方法的末尾，添加以下代码  ：
 
    ```csharp
          setSliderStartTime(args.StartTime);
@@ -535,15 +535,15 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
 ### <a name="to-compile-and-test-the-application"></a>编译和测试应用程序
 
 1. 按 **F6** 编译项目。 
-2. 按**F5**以运行应用程序。
+2. 按 **F5** 运行应用程序。
 3. 在应用程序的顶部，可以使用默认的平滑流式处理 URL，或输入一个不同的 URL。 
-4. 单击“设置源”****。 
+4. 单击“设置源”  。 
 5. 测试滚动条。
 
 已完成第 2 课。  在本课中，已将一个滑块添加到应用程序。 
 
 ## <a name="lesson-3-select-smooth-streaming-streams"></a>第 3 课：选择平滑流式处理流
-平滑流式处理可以流送包含观看者可选择的多语言音频曲目的内容。  在本课中，将要学习如何使观看者能够选择流。 本课包含以下过程：
+平滑流式处理可以使用可由观看者选择的多个语言音轨来流式传输内容。  在本课中，你将要学习如何使观看者能够选择流。 本课包含以下过程：
 
 1. 修改 XAML 文件
 2. 修改代码隐藏文件
@@ -551,7 +551,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
 
 ### <a name="to-modify-the-xaml-file"></a>修改 XAML 文件
 
-1. 在解决方案资源管理器中，右键单击“MainPage.xaml”****，并单击“查看设计器”****。
+1. 在解决方案资源管理器中，右键单击“MainPage.xaml”  ，并单击“查看设计器”  。
 2. 找到 &lt;Grid.RowDefinitions&gt;，并按如下所示修改 RowDefinitions：
 
    ```xml
@@ -594,7 +594,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
 
 ### <a name="to-modify-the-code-behind-file"></a>修改代码隐藏文件
 
-1. 在解决方案资源管理器中，右键单击“MainPage.xaml”****，并单击“查看代码”****。
+1. 在解决方案资源管理器中，右键单击“MainPage.xaml”  ，并单击“查看代码”  。
 2. 在 SSPlayer 命名空间中添加一个新类：
 
    ```csharp
@@ -794,7 +794,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
         getStreams(manifestObject);
         refreshAvailableStreamsListBoxItemSource();
    ```
-    因此，当 MediaElement 清单准备就绪时，该代码将获取可用流的列表，并将该列表的内容填充到 UI 列表框。
+    因此，当 MediaElement 清单准备就绪时，该代码会获取可用流的列表，并将该列表的内容填充到 UI 列表框。
 6. 在 MainPage 类中，找到 UI 按钮单击事件区域，并添加以下函数定义：
    ```csharp
         private void btnChangeStream_Click(object sender, RoutedEventArgs e)
@@ -812,16 +812,16 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
 ### <a name="to-compile-and-test-the-application"></a>编译和测试应用程序
 
 1. 按 **F6** 编译项目。 
-2. 按**F5**以运行应用程序。
+2. 按 **F5** 运行应用程序。
 3. 在应用程序的顶部，可以使用默认的平滑流式处理 URL，或输入一个不同的 URL。 
-4. 单击“设置源”****。 
+4. 单击“设置源”  。 
 5. 默认语言为 audio_eng。 尝试在 audio_eng 和 audio_es 之间切换。 每次选择一个新流时，都必须单击“提交”按钮。
 
-已完成第 3 课。  在本课中，已添加了用于选择流的功能。
+已完成第 3 课。  本课中添加了用于选择流的功能。
 
-## <a name="lesson-4-select-smooth-streaming-tracks"></a>第 4 课：选择平滑流道
+## <a name="lesson-4-select-smooth-streaming-tracks"></a>第 4 课：选择平滑流式处理曲目
 
-平滑流式处理演播内容可能包含以不同质量级别（比特率）和分辨率编码的多个视频文件。 在本课中，将要学习如何使用户能够选择曲目。 本课包含以下过程：
+平滑流式处理演播内容可能包含以不同质量级别（比特率）和分辨率编码的多个视频文件。 在本课中，你将要学习如何使用户能够选择曲目。 本课包含以下过程：
 
 1. 修改 XAML 文件
 2. 修改代码隐藏文件
@@ -829,8 +829,8 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
 
 ### <a name="to-modify-the-xaml-file"></a>修改 XAML 文件
 
-1. 在解决方案资源管理器中，右键单击“MainPage.xaml”****，并单击“查看设计器”****。
-2. 找到名为 **gridStreamAndBitrateSelection** 的 &lt;Grid&gt; 标记，并在该标记的末尾追加以下代码：
+1. 在解决方案资源管理器中，右键单击“MainPage.xaml”  ，并单击“查看设计器”  。
+2. 找到名为 gridStreamAndBitrateSelection 的 &lt;Grid&gt; 标记，并在该标记的末尾追加以下代码  ：
    ```xml
          <StackPanel Name="spBitRateSelection" Grid.Row="1" Grid.Column="1">
          <StackPanel Orientation="Horizontal">
@@ -847,11 +847,11 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
          </ListBox>
          </StackPanel>
    ```
-3. 按**CTRL+S**保存更改
+3. 按 **CTRL+S** 保存更改
 
 ### <a name="to-modify-the-code-behind-file"></a>修改代码隐藏文件
 
-1. 在解决方案资源管理器中，右键单击“MainPage.xaml”****，并单击“查看代码”****。
+1. 在解决方案资源管理器中，右键单击“MainPage.xaml”  ，并单击“查看代码”  。
 2. 在 SSPlayer 命名空间中添加一个新类：
    ```csharp
         #region class Track
@@ -1016,10 +1016,10 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
 ### <a name="to-compile-and-test-the-application"></a>编译和测试应用程序
 
 1. 按 **F6** 编译项目。 
-2. 按**F5**以运行应用程序。
+2. 按 **F5** 运行应用程序。
 3. 在应用程序的顶部，可以使用默认的平滑流式处理 URL，或输入一个不同的 URL。 
-4. 单击“设置源”****。 
-5. 默认情况下，已选中视频流的所有曲目。 要体验比特率的变化，可以先选择最低的可用比特率，再选择最高的可用比特率。 每次更改后都必须单击“提交”。  可以看到视频质量的变化。
+4. 单击“设置源”  。 
+5. 默认情况下，已选中视频流的所有曲目。 如果要体验比特率的变化，可以先选择最低的可用比特率，再选择最高的可用比特率。 每次更改后都必须单击“提交”。  可以看到视频质量的变化。
 
 已完成第 4 课。  在本课中，已添加了用于选择曲目的功能。
 

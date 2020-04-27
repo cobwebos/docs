@@ -1,6 +1,6 @@
 ---
 title: 有关 SQL Server Stretch Database 服务的所有主题 | Microsoft 文档
-description: 位于 https://azure.microsoft.com/documentation/articles/ 且名为 SQL Server Stretch Database 的 Azure 服务的所有主题的表格，包括标题和说明。
+description: 位于 https://azure.microsoft.com/documentation/articles/ 的有关名为 SQL Server Stretch Database 的 Azure 服务的所有主题的表格，包括标题和说明。
 services: sql-server-stretch-database
 documentationcenter: ''
 ms.assetid: b1718024-84d6-4f5c-a912-3a99edb3f632
@@ -14,47 +14,47 @@ ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
 ms.openlocfilehash: 81f1ac3280381ef08a1daf1fa4e041227a07aeaf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "66003032"
 ---
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>有关 Azure SQL Server Stretch Database 服务的所有主题
-本主题列出的每个主题都可以直接应用于 Azure **SQL Server Stretch Database** 服务。 可使用 **Ctrl+F** 来搜索此网页的关键字，以便查找当前感兴趣的主题。
+本主题列出的每个主题都可以直接应用于 Azure **SQL Server Stretch Database** 服务。 可以使用 **Ctrl+F** 来搜索此网页的关键字，以便查找当前感兴趣的主题。
 
 ## <a name="get-started"></a>入门
-| &nbsp; | Title | 描述 |
+| &nbsp; | 标题 | 说明 |
 | ---:|:--- |:--- |
-| 1 |[通过运行 Stretch Database 顾问标识适用于 Stretch Database 的数据库以及表](sql-server-stretch-database-identify-databases.md) |了解如何识别符合 Stretch Database 条件的数据库和表。 |
+| 1 |[通过运行延伸数据库顾问来识别符合延伸数据库条件的数据库和表](sql-server-stretch-database-identify-databases.md) |了解如何识别符合延伸数据库条件的数据库和表。 |
 | 2 |[Stretch Database 的限制](sql-server-stretch-database-limitations.md) |了解 Stretch Database 的限制。 |
-| 3 |[拉伸数据库概述](sql-server-stretch-database-overview.md) |了解 Stretch Database 如何透明、安全地将冷数据迁移到 Microsoft Azure 云。 |
-| 4 |[通过运行“启用数据库延伸向导”开始](sql-server-stretch-database-wizard.md) |了解如何通过运行“为数据库启用延伸向导”，来为 Stretch Database 配置数据库。 |
+| 3 |[延伸数据库概述](sql-server-stretch-database-overview.md) |了解 Stretch Database 如何透明、安全地将冷数据迁移到 Microsoft Azure 云。 |
+| 4 |[通过运行“为数据库启用延伸向导”开始操作](sql-server-stretch-database-wizard.md) |了解如何通过运行“为数据库启用延伸向导”，来为延伸数据库配置数据库。 |
 
 ## <a name="enable"></a>启用
-| &nbsp; | Title | 描述 |
+| &nbsp; | 标题 | 说明 |
 | ---:|:--- |:--- |
-| 5 |[为数据库启用 Stretch Database](sql-server-stretch-database-enable-database.md) |了解如何为 Stretch Database 配置数据库。 |
-| 6 |[为表启用 Stretch Database](sql-server-stretch-database-enable-table.md) |了解如何为 Stretch Database 配置表。 |
+| 5 |[为数据库启用延伸数据库](sql-server-stretch-database-enable-database.md) |了解如何为延伸数据库配置数据库。 |
+| 6 |[为表启用延伸数据库](sql-server-stretch-database-enable-table.md) |了解如何为延伸数据库配置表。 |
 | 7 |[使用筛选器函数来选择要迁移的行 (Stretch Database)](sql-server-stretch-database-predicate-function.md) |了解如何使用筛选器函数来选择要迁移的行。 |
 
 ## <a name="manage"></a>管理
-| &nbsp; | Title | 描述 |
+| &nbsp; | 标题 | 说明 |
 | ---:|:--- |:--- |
-| 8 |[禁用 Stretch Database 和移回远程数据](sql-server-stretch-database-disable.md) |了解如何为表禁用 Stretch Database 并选择性地移回远程数据。 |
-| 9 |[Stretch Database 的管理和故障排除](sql-server-stretch-database-manage.md) |如何对 Stretch Database 进行管理和故障排除。 |
-| 10 |[数据迁移的监视和故障排除 (Stretch Database)](sql-server-stretch-database-monitor.md) |了解如何监视数据迁移状态。 |
+| 8 |[禁用延伸数据库和移回远程数据](sql-server-stretch-database-disable.md) |了解如何为表禁用延伸数据库并选择性地移回远程数据。 |
+| 9 |[延伸数据库的管理和故障排除](sql-server-stretch-database-manage.md) |如何对延伸数据库进行管理和故障排除。 |
+| 10 个 |[数据迁移的监视和故障排除 (Stretch Database)](sql-server-stretch-database-monitor.md) |了解如何监视数据迁移状态。 |
 | 11 |[暂停和恢复数据迁移 (Stretch Database)](sql-server-stretch-database-pause.md) |了解如何暂停或继续将数据迁移到 Azure。 |
 
 ## <a name="security"></a>安全性
-| &nbsp; | Title | 描述 |
+| &nbsp; | 标题 | 说明 |
 | ---:|:--- |:--- |
 | 12 |[为 Azure 上的 Stretch Database 启用透明数据加密 (TDE)](sql-server-stretch-database-encryption-tde.md) |为 Azure 上的 SQL Server Stretch Database 启用透明数据加密 (TDE) |
 | 13 |[为 Azure 上的 Stretch Database 启用透明数据加密 (TDE) (Transact-SQL)](sql-server-stretch-database-tde-tsql.md) |为 Azure TSQL 上的 SQL Server Stretch Database 启用透明数据加密 (TDE) |
 
 ## <a name="backup-and-recovery"></a>备份和恢复
-| &nbsp; | Title | 描述 |
+| &nbsp; | 标题 | 说明 |
 | ---:|:--- |:--- |
-| 14 |[备份已启用延伸数据库](sql-server-stretch-database-backup.md) |了解如何备份启用了延伸的数据库。 |
-| 15 |[还原已启用延伸的数据库](sql-server-stretch-database-restore.md) |了解如何还原启用了延伸的数据库。 |
+| 14 |[备份启用了延伸的数据库](sql-server-stretch-database-backup.md) |了解如何备份启用了 Stretch 的数据库。 |
+| 15 |[还原已启用延伸的数据库](sql-server-stretch-database-restore.md) |了解如何还原启用了 Stretch 的数据库。 |
 

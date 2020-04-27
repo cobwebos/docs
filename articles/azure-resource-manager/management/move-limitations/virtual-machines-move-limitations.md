@@ -3,12 +3,12 @@ title: 将 Azure VM 移到新的订阅或资源组
 description: 使用 Azure 资源管理器将虚拟机移到新的资源组或订阅。
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: df34268b7741f76621c290e9979cf24d828ddc09
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 144888c4a66ef68448ae8bc863f6aef0923dfb69
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478665"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160113"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>针对虚拟机的移动指南
 
@@ -18,30 +18,33 @@ ms.locfileid: "80478665"
 
 以下方案尚不受支持：
 
-* 无法将可用区域中的托管磁盘移动到其他订阅。
+* 可用性区域中的托管磁盘不能移动到其他订阅。
 * 无法移动具有标准 SKU 负载均衡器或标准 SKU 公共 IP 的虚拟机规模集。
 * 无法跨资源组或订阅移动基于附加了计划的市场资源创建的虚拟机。 在当前订阅中取消预配虚拟机，并在新的订阅中重新部署虚拟机。
 * 如果没有移动虚拟网络中的所有资源，则无法将现有虚拟网络中的虚拟机移到新订阅。
-* 低优先级虚拟机和低优先级虚拟机规模集无法跨资源组或订阅移动。
+* 低优先级虚拟机和低优先级虚拟机规模集不能在资源组或订阅之间移动。
 * 可用性集中的虚拟机不能单独移动。
 
 ## <a name="virtual-machines-with-azure-backup"></a>使用 Azure 备份的虚拟机
 
-要移动配置 Azure 备份的虚拟机，必须从保管库中删除还原点。
+若要移动配置了 Azure 备份的虚拟机，你必须从保管库中删除还原点。
 
-如果为虚拟机启用[了软删除](../../../backup/backup-azure-security-feature-cloud.md)，则在保留这些还原点时无法移动虚拟机。 [禁用软删除](../../../backup/backup-azure-security-feature-cloud.md#disabling-soft-delete)或删除还原点后等待 14 天。
+如果为虚拟机启用[软删除](../../../backup/backup-azure-security-feature-cloud.md)，则在保留这些还原点时，你无法移动虚拟机。 请在删除还原点后[禁用软删除](../../../backup/backup-azure-security-feature-cloud.md#disabling-soft-delete)或等待14天。
 
 ### <a name="portal"></a>门户
 
-1. 选择配置为备份的虚拟机。
+1. 暂时停止备份并保留备份数据。
+2. 若要移动配置了 Azure 备份的虚拟机，请执行以下步骤：
 
-1. 在左侧窗格中，选择 **"备份**"。
+   1. 查找虚拟机的位置。
+   2. 使用以下命名模式查找资源组： `AzureBackupRG_<location of your VM>_1`。 例如， *AzureBackupRG_westus2_1*
+   3. 在 Azure 门户中，选中 "**显示隐藏的类型**"。
+   4. 查找类型为 " **restorePointCollections** " 的资源，该资源具有命名模式`AzureBackup_<name of your VM that you're trying to move>_###########`。
+   5. 删除此资源。 此操作仅删除即时恢复点，不删除保管库中的备份数据。
+   6. 删除操作完成后，可以移动虚拟机。
 
-1. 选择 **"停止备份**"。
-
-1. 选择 **"删除回数据**"。
-
-1. 删除完成后，您可以将保管库和虚拟机移动到目标订阅。 移动后，您可以继续备份。
+3. 将 VM 移动到目标资源组。
+4. 恢复备份。
 
 ### <a name="powershell"></a>PowerShell
 

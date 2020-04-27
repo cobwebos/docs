@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: spelluru
 ms.openlocfilehash: 5b5c973a8daa8776efb0909092c569ea46902265
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "66307312"
 ---
 # <a name="server-side-geo-disaster-recovery-in-azure-event-grid"></a>Azure 事件网格中的服务器端异地灾难恢复
@@ -26,11 +26,11 @@ ms.locfileid: "66307312"
 
 ## <a name="recovery-point-objective-rpo"></a>恢复点目标 (RPO)
 - **元数据 RPO**：0 分钟。 每当在事件网格中创建某个资源时，该资源会立即跨区域复制。 发生故障转移时，不会丢失任何元数据。
-- **数据 RPO：** 如果您的系统状况良好，并在区域故障转移时赶上现有流量，则事件的 RPO 约为 5 分钟。
+- **数据 RPO**：如果系统正常，并且在发生区域故障转移时能够跟上现有流量的进度，则事件 RPO 大约为 5 分钟。
 
 ## <a name="recovery-time-objective-rto"></a>恢复时间目标 (RTO)
-- **元数据 RTO**：虽然通常发生得更快，但在 60 分钟内，事件网格将开始接受主题和订阅的创建/更新/删除调用。
-- **数据 RTO**： 与元数据一样，它通常发生得更快，但在 60 分钟内，事件网格将在区域故障转移后开始接受新的流量。
+- **元数据 RTO**：事件网格在 60 分钟内即会开始接受对主题和订阅发出的创建/更新/删除调用，不过，此间隔通常要短得多。
+- **数据 RTO**：与元数据类似，其发生速度通常要快得多，不过，在发生区域性故障转移后，事件网格在 60 分钟内即会开始接受新流量。
 
 > [!NOTE]
 > 事件网格中元数据 GeoDR 的成本为：$0。

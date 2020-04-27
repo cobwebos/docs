@@ -39,6 +39,9 @@
         - name: Python
           href: /azure/databricks/languages/python
           maintainContext: true
+        - name: Koalas
+          href: /azure/databricks/languages/koalas
+          maintainContext: true
         - name: R
           items:
             - name: R 指南
@@ -1058,6 +1061,8 @@
             - name: 机密工作流示例
               href: /azure/databricks/security/secrets/example-secret-workflow
               maintainContext: true
+        - name: GDPR 最佳做法
+          href: /azure/databricks/security/privacy/gdpr-delta
         - name: 加密群集工作器节点之间的流量
           href: /azure/databricks/security/encryption/encrypt-otw
         - name: 为笔记本启用客户管理的密钥
@@ -1611,8 +1616,24 @@
               href: /azure/databricks/dev-tools/api/latest/examples
               maintainContext: true
             - name: 身份验证
-              href: /azure/databricks/dev-tools/api/latest/authentication
-              maintainContext: true
+              items:
+                - name: 个人访问令牌
+                  href: /azure/databricks/dev-tools/api/latest/authentication
+                  maintainContext: true
+                - name: Azure Active Directory (AAD) 令牌
+                  items:
+                    - name: AAD 令牌身份验证概述
+                      href: /azure/databricks/dev-tools/api/latest/aad/index
+                      maintainContext: true
+                    - name: 使用 AAD 身份验证库获取 AAD 令牌
+                      href: /azure/databricks/dev-tools/api/latest/aad/app-aad-token
+                      maintainContext: true
+                    - name: 使用服务主体获取 AAD 令牌
+                      href: /azure/databricks/dev-tools/api/latest/aad/service-prin-aad-token
+                      maintainContext: true
+                    - name: 排查 AAD 访问令牌问题
+                      href: /azure/databricks/dev-tools/api/latest/aad/troubleshoot-aad-token
+                      maintainContext: true
             - name: 群集
               href: /azure/databricks/dev-tools/api/latest/clusters
               maintainContext: true

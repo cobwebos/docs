@@ -13,14 +13,14 @@ ms.topic: article
 ms.date: 09/04/2018
 ms.author: spelluru
 ms.openlocfilehash: f8c57b9e1fabbd04a7d9c92484b0f52f074c2577
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "65872425"
 ---
 # <a name="test-your-app-in-azure"></a>在 Azure 中测试应用 
-本文提供有关使用开发测试实验室在 Azure 中测试应用程序的步骤。 首先，在实验室中设置一个文件共享，并将其作为驱动器装载到实验室中的本地开发计算机和 VM 上。 然后，使用 Visual Studio 2019 将应用部署到文件共享，以便在实验室中的 VM 上运行应用。  
+本文提供有关使用开发测试实验室在 Azure 中测试应用程序的步骤。 首先，在实验室中设置一个文件共享，并将其作为驱动器装载到实验室中的本地开发计算机和 VM 上。 然后，使用 Visual Studio 2019 将你的应用部署到文件共享，以便可以在实验室中的 VM 上运行应用。  
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -58,13 +58,13 @@ ms.locfileid: "65872425"
 
     ![选择实验室 VM](media/test-app-in-azure/select-lab-vm.png)
 2. 在工具栏上选择“连接”以连接到 VM。**** 
-3. [安装 Azure 电源外壳](/powershell/azure/install-az-ps)。
+3. [安装 Azure PowerShell](/powershell/azure/install-az-ps)。
 4. 请遵照“装载文件共享”部分的说明操作。 
 
 ## <a name="publish-your-app-from-visual-studio"></a>从 Visual Studio 发布应用
 本部分介绍如何将应用从 Visual Studio 发布到云中的测试 VM。
 
-1. 使用 Visual Studio 2019 创建桌面/Web 应用程序。
+1. 使用 Visual Studio 2019 创建桌面 web 应用程序。
 2. 生成应用。
 3. 若要发布应用，请在“解决方案资源管理器”中右键单击相应的项目，然后选择“发布”。******** 
 4. 在“发布向导”中，输入映射到文件共享的**驱动器**。****
@@ -84,7 +84,7 @@ ms.locfileid: "65872425"
 
 1. 导航到实验室中 VM 的“虚拟机”页。 
 2. 在工具栏上选择“启动”以启动 VM（如果它处于停止状态）。**** 可以针对 VM 设置自动启动和自动关闭策略，以免每次测试时都要启动和停止。 
-3. 选择“连接”****。
+3. 选择“**连接**”。
 
     ![虚拟机页](media/test-app-in-azure/virtual-machine-page.png)
 4. 在虚拟机中启动“文件资源管理器”，然后选择“此电脑”找到自己的文件共享。********

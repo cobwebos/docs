@@ -131,6 +131,8 @@
               href: hdinsight-hadoop-linux-use-ssh-unix.md
             - name: 使用 SSH 隧道
               href: hdinsight-linux-ambari-ssh-tunnel.md
+            - name: 将 SCP 与 HDInsight 配合使用
+              href: ./use-scp.md
             - name: 限制数据访问
               href: hdinsight-storage-sharedaccesssignature-permissions.md
             - name: 授权用户访问 Apache Ambari 视图
@@ -225,6 +227,8 @@
           items:
             - name: 排查脚本操作问题
               href: ./troubleshoot-script-action.md
+            - name: 资源创建失败
+              href: ./troubleshoot-resource-creation-fails.md
     - name: 参考
       items:
         - name: Azure PowerShell

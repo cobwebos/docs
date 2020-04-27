@@ -20,7 +20,7 @@
       href: features-linux.md
     - name: Windows
       href: features-windows.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: Azure 磁盘加密
       items:
@@ -123,5 +123,7 @@
       href: update-linux-agent.md
     - name: 导出扩展
       href: export-templates.md
-    - name: 故障排除
+    - name: 疑难解答
       href: troubleshoot.md
+    - name: 启用了 Python 3 的 Linux 系统的问题
+      href: issues-using-vm-extensions-python-3.md

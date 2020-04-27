@@ -4,7 +4,7 @@
   items:
     - name: 什么是成本管理和计费？
       href: ../cost-management-billing-overview.md
-- name: 操作方法指南
+- name: 操作指南
   expanded: true
   items:
     - name: 免费帐户
@@ -99,7 +99,7 @@
           href: ea-portal-vm-reservations.md
         - name: 排查 Azure EA 门户访问问题
           href: ea-portal-troubleshoot.md
-- name: 故障排除
+- name: 疑难解答
   items:
     - name: 找不到任何订阅
       href: no-subscriptions-found.md
@@ -107,7 +107,7 @@
       href: billing-troubleshoot-azure-payment-issues.md
     - name: 银行卡被拒绝
       href: troubleshoot-declined-card.md
-    - name: 注册问题
+    - name: Azure 帐户注册问题
       href: troubleshoot-azure-sign-up.md
     - name: 订阅登录问题
       href: troubleshoot-sign-in-issue.md

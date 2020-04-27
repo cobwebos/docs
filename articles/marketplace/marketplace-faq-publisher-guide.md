@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 4b166af219c8983e5765ef4c884ced7eb0689f54
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: 1cd536f4a7c3751e2b85f40e582c1eb1c5bf2c74
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106672"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160505"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft 商业市场常见问题解答
 
@@ -57,8 +57,9 @@ Azure 市场提供 Microsoft 和合作伙伴为扩展 Azure 产品和服务而�
 可通过以下方式购买 Azure 市场套餐：
 
 * [基于 web 的店面](https://azuremarketplace.microsoft.com/marketplace/apps)
-* [Azure 门户](https://portal.azure.com) <br>
-[!Note] 需要一个 Azure 帐户。 如果没有，则会重定向到 "**欢迎使用 Azure** " 页面以创建一个。  
+* [Azure 门户](https://portal.azure.com) <br> 
+>[!Note]
+>需要一个 Azure 帐户。 如果没有，则会重定向到 "**欢迎使用 Azure** " 页面以创建一个。  
 * [Azure 命令行接口（CLI）](/cli/azure/?view=azure-cli-latest)
 
 >[!Note]
@@ -157,7 +158,7 @@ Azure 应用（解决方案模板和托管应用）：**
 
 **是否需要存档付款方式（例如信用卡），才能部署免费层套餐或自带许可 (BYOL) 套餐？**
 
-不是。 部署免费层或 BYOL 套餐无需付款方式。 但是，部署免费试用套餐则需要付款方式。 附带“立即获取”或“免费软件试用”按钮的商品将部署到选定的 Azure 订阅中********。  这些列表使用所选帐户的已注册付款方式进行计费。 Azure 使用费将与软件许可证费用分开计费。
+否。 部署免费层或 BYOL 套餐无需付款方式。 但是，部署免费试用套餐则需要付款方式。 附带“立即获取”或“免费软件试用”按钮的商品将部署到选定的 Azure 订阅中********。  这些列表使用所选帐户的已注册付款方式进行计费。 Azure 使用费将与软件许可证费用分开计费。
 
 **如果企业协议 (EA) 间接客户对于在 Azure 市场上销售的套餐的定价有问题，那么他们该与谁联系？**
 
@@ -177,7 +178,7 @@ Azure 应用（解决方案模板和托管应用）：**
 
 **批量许可折扣是否适用于 Azure 市场购买内容？**
 
-不是。 拥有 Azure 市场中解决方案的发布者可以定价。  标准 Microsoft 批量许可折扣不适用于 Azure 市场购买内容。
+否。 拥有 Azure 市场中解决方案的发布者可以定价。  标准 Microsoft 批量许可折扣不适用于 Azure 市场购买内容。
 
 **可在哪里查看 Azure 市场订阅详细信息和计费信息？**
 
@@ -336,7 +337,7 @@ Microsoft 需要使用开发人员中心帐户代表发布者向客户计收“�
 
 **在何处可获得设置潜在顾客目标的帮助？**
 
-通过选择产品/服务类型和潜在客户管理，在合作伙伴中心了解详细信息[-获取客户主管](./partner-center-portal/commercial-marketplace-get-customer-leads.md)文档，或提交支持票证。 [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport)
+通过选择产品/服务类型和潜在客户管理，在[合作伙伴中心获取详细信息-获取客户主管](./partner-center-portal/commercial-marketplace-get-customer-leads.md)文档，或通过 "[帮助和支持](https://partner.microsoft.com/support/v2/?stage=1)" 提交支持票证。
 
 **是否必须在配置潜在顾客目标后，才能在市场上发布套餐？**
 
@@ -433,7 +434,7 @@ Azure 市场目前不支持对虚拟机按节点计费。 发布者仍可根据 
 
     ![选择区域](media/marketplace-publishers-guide/FAQ-choose-geo.png)
 
-1.  将弹出一个列表，其中包含要销售到的所有可用国家/地区。  单击要使此 SKU 可用的每个国家/地区旁边的复选框。 单击“确定”。 
+1.  将弹出一个列表，其中包含要销售到的所有可用国家/地区。  单击要使此 SKU 可用的每个国家/地区旁边的复选框。 单击" **确定**"。
 
     ![选择国家/地区列表](media/marketplace-publishers-guide/FAQ-select-countries.png)
 

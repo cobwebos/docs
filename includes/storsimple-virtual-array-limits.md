@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 658fd9178495f14274c85eab2129c9dcd3be7693
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67172981"
 ---
-| **限制标识符** | **限制** | **注释** |
+| **限制标识符** | **限制** | **备注** |
 | --- | --- | --- |
 | 总容量（包括云） |每个虚拟设备最高 64 TB |可将整个 StorSimple 虚拟数组故障转移到另一个空数组。 如果尝试还原到同一设备，请确保该设备上有足够的空间，以便能够完成此操作。 超过 32 TB 后，无法还原到同一设备。 |
 | 每个设备的存储帐户凭据数目上限 |1 | |

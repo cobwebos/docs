@@ -1,5 +1,5 @@
 ---
-title: Azure AD 连接：在安装过程中解决源锚点问题 |微软文档
+title: Azure AD Connect：在安装期间排查源定位点问题 | Microsoft Docs
 description: 本主题提供在安装期间排查源定位点问题的步骤。
 services: active-directory
 author: billmath
@@ -11,10 +11,10 @@ ms.date: 04/19/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.openlocfilehash: fac33a01afc2efc1ab06c4783c11f7a089bb6208
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "62114148"
 ---
 # <a name="troubleshooting-source-anchor-issues-during-installation"></a>在安装期间排查源定位点问题
@@ -46,4 +46,4 @@ ms.locfileid: "62114148"
 
 
 ## <a name="next-steps"></a>后续步骤
-详细了解[将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

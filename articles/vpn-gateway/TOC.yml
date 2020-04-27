@@ -210,7 +210,7 @@
       items:
         - name: 基于指标设置警报
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
-        - name: 基于诊断日志设置警报
+        - name: 基于资源日志设置警报
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
     - name: 配置数据包捕获
       href: packet-capture.md

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 42561570e24aec5edd33248ef1738e53175e480e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60632283"
 ---
 # <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>更换 StorSimple 设备上的电源和散热模块
@@ -50,7 +50,7 @@ Microsoft Azure StorSimple 设备中的电源和散热模块 (PCM) 由电源和�
 > 移除 PCM 之前，请验证是否具有正确的更换件（用于主机箱的 764 W 或者用于 EBOD 机箱的 580 W）。
 
 #### <a name="to-remove-a-pcm"></a>拆卸 PCM
-1. 在 Azure 经典门户中，单击“设置”>“监视器”>“硬件运行状况”****。 检查**共享组件**下的 PCM 组件的状态，以确定哪些 PCM 出现故障：
+1. 在 Azure 经典门户中，单击“设置”>“监视器”>“硬件运行状况”****。 检查 "**共享组件**" 下的 PCM 组件的状态，以确定哪个 pcm 发生了故障：
    
    * 如果 PCM 0 中的电源发生故障，则“PCM 0 中的电源”**** 状态会显示为红色。
    * 如果 PCM 1 中的电源发生故障，则“PCM 1 中的电源”**** 状态会显示为红色。
@@ -61,7 +61,7 @@ Microsoft Azure StorSimple 设备中的电源和散热模块 (PCM) 由电源和�
    
      **图 1** 设备的前面板  
    
-   | Label | 描述 |
+   | Label | 说明 |
    |:--- |:--- |
    | 1 |“静音”按钮 |
    | 2 |系统电源 |
@@ -74,7 +74,7 @@ Microsoft Azure StorSimple 设备中的电源和散热模块 (PCM) 由电源和�
    
      **图 2** PCM 背面（带指示器 LED）
    
-   | Label | 描述 |
+   | Label | 说明 |
    |:--- |:--- |
    | 1 |交流电源故障 |
    | 2 |风扇故障 |
@@ -88,7 +88,7 @@ Microsoft Azure StorSimple 设备中的电源和散热模块 (PCM) 由电源和�
    
      **图 3** 设备背面（带插件模块） 
    
-   | Label | 描述 |
+   | Label | 说明 |
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |PCM 1 |

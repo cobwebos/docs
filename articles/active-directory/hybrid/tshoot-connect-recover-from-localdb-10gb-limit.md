@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4d420c64c5834f7d3cb11d2f5f59e3ed85a54891
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60386918"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect：如何从 LocalDB 10 GB 的限制恢复
@@ -29,9 +29,9 @@ Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。 可�
 ## <a name="symptoms"></a>症状
 有两种常见的症状：
 
-* Azure AD Connect Synchronization Service **可以运行**但无法同步，并出现“stopped-database-disk-full”** 错误。
+* Azure AD Connect Synchronization Service **可以运行**但无法同步，并出现“stopped-database-disk-full”  错误。
 
-* Azure AD Connect Synchronization Service **无法启动**。 尝试启动该服务时失败且出现事件 6323 和错误消息“服务器遇到错误，因为 SQL Server 磁盘空间不足”。**
+* Azure AD Connect Synchronization Service **无法启动**。 尝试启动该服务时失败且出现事件 6323 和错误消息“服务器遇到错误，因为 SQL Server 磁盘空间不足”。 
 
 ## <a name="short-term-recovery-steps"></a>短期恢复步骤
 本部分提供的步骤用于回收 DB 空间，该空间是 Azure AD Connect Synchronization Service 恢复运行所必需的。 步骤包括：
@@ -45,7 +45,7 @@ Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。 可�
 
 1. 以管理员身份登录到 Azure AD Connect 服务器。
 
-2. 转到“服务控制管理器”****。
+2. 转到“服务控制管理器”  。
 
 3. 检查 **Microsoft Azure AD Sync** 的状态。
 
@@ -66,7 +66,7 @@ Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。 可�
 * 用作 Azure AD Connect Synchronization Service 操作上下文的 Sync Service 帐户。
 * 安装期间创建的本地组 ADSyncAdmins。
 
-1. 备份数据库，方法是将 `%ProgramFiles%\Microsoft Azure AD Sync\Data` 下的 **ADSync.mdf** 和 **ADSync_log.ldf** 文件复制到安全位置。
+1. 备份数据库，方法是将 **下的**ADSync.mdf**和**ADSync_log.ldf`%ProgramFiles%\Microsoft Azure AD Sync\Data` 文件复制到安全位置。
 
 2. 启动新的 PowerShell 会话。
 
@@ -83,11 +83,11 @@ Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。 可�
 
 1. 转到“开始”→ Synchronization Service，以便启动 **Synchronization Service Manager**。
 
-2. 转到“操作”**** 选项卡。
+2. 转到“操作”  选项卡。
 
-3. 在“操作”下面，选择“清除运行…”********
+3. 在“操作”下面，选择“清除运行…”  
 
-4. 可以选择“清除所有运行”或“清除 \<date> 之前的运行…”选项。******** 建议一开始清除超过两天的运行历史记录数据。 如果仍遇到 DB 大小问题，则选择“清除所有运行”选项。****
+4. 可以选择“清除所有运行”或“清除 **date> 之前的运行…”选项。** **\<** 建议一开始清除超过两天的运行历史记录数据。 如果仍遇到 DB 大小问题，则选择“清除所有运行”选项。 
 
 ### <a name="shorten-retention-period-for-run-history-data"></a>缩短运行历史记录数据的保留期
 此步骤是为了在多次同步周期后降低遇到 10 GB 限制问题的可能性。
@@ -104,4 +104,4 @@ Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。 可�
 * 有关如何通过交叉迁移进行 Azure AD Connect 升级的说明，请参阅 [Azure AD Connect：从旧版升级到最新版本](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version#swing-migration)一文。
 
 ## <a name="next-steps"></a>后续步骤
-详细了解[将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)。
+了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

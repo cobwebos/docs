@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 11b6553fe8aceef0d3d15977998dd870c275128a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61294215"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>启用 Azure 开发测试实验室中自己的实验室中的已授权映像
@@ -28,9 +28,9 @@ ms.locfileid: "61294215"
 ## <a name="determining-whether-a-licensed-image-is-available-to-users"></a>确定已授权映像是否对用户可用
 允许用户从已授权映像创建 VM 的第一步是确保已接受已授权映像的条款和条件。 以下步骤显示如何查看已授权映像的产品/服务状态，必要时接受其条款和条件。
 
-1. 登录到 Azure[门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
-1. 选择**所有服务**，然后从列表中选择**DevTest 实验室**。
+1. 选择 "**所有服务**"，然后从列表中选择 "**开发测试实验室**"。
 
 1. 从实验室列表，选择所需的实验室。  
 
@@ -77,7 +77,7 @@ ms.locfileid: "61294215"
    >
 
 
-1. 选择“保存”。**** 
+1. 选择“保存”  。 
 
     在市场映像列表中，该映像现在显示“已接受条款”**** 且可供用户用于创建虚拟机。
 

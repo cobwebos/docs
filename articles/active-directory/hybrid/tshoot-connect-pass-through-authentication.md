@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae83cea866367fa6a6596caa683d0287bea96c29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60456092"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>对 Azure Active Directory 直通身份验证进行故障排除
@@ -28,7 +28,7 @@ ms.locfileid: "60456092"
 本文可帮助你找到有关 Azure AD 直通身份验证常见问题的故障排除信息。
 
 >[!IMPORTANT]
->如果使用直通身份验证时遇到用户登录问题，请在回退仅限云的全局管理员帐户后，再禁用此功能或卸载直通身份验证代理。 了解如何[添加仅云全局管理员帐户](../active-directory-users-create-azure-portal.md)。 此步骤至关重要，可确保你不被锁定在租户外部。
+>如果使用直通身份验证时遇到用户登录问题，请在回退仅限云的全局管理员帐户后，再禁用此功能或卸载直通身份验证代理。 了解如何[添加仅限云的全局管理员帐户](../active-directory-users-create-azure-portal.md)。 此步骤至关重要，可确保你不被锁定在租户外部。
 
 ## <a name="general-issues"></a>常规问题
 
@@ -44,7 +44,7 @@ ms.locfileid: "60456092"
 
 如果用户无法使用直通身份验证进行登录，可能会在 Azure AD 登录屏幕上看到下列面向用户的错误之一： 
 
-|错误|描述|解决方法
+|错误|说明|解决方法
 | --- | --- | ---
 |AADSTS80001|无法连接到 Active Directory|确保代理服务器是需要验证其密码的用户所在的 AD 林的成员，并且能够连接到 Active Directory。  
 |AADSTS8002|连接到 Active Directory 时超时|检查以确保 Active Directory 可用，并且可以响应代理的请求。
@@ -58,7 +58,7 @@ ms.locfileid: "60456092"
 
 ![Azure Active Directory 管理中心 - 登录报表](./media/tshoot-connect-pass-through-authentication/pta4.png)
 
-导航到[Azure 活动目录管理中心](https://aad.portal.azure.com/)上的**Azure 活动目录** -> **登录，** 然后单击特定用户的登录活动。 查找“登录错误代码”**** 字段。 使用下表将该字段的值映射到某个失败原因和解决方法：
+导航到[Azure Active Directory 管理中心](https://aad.portal.azure.com/) **Azure Active Directory** -> **登录**，并单击特定用户的登录活动。 查找“登录错误代码”**** 字段。 使用下表将该字段的值映射到某个失败原因和解决方法：
 
 |登录错误代码|登录失败原因|解决方法
 | --- | --- | ---
@@ -73,7 +73,7 @@ ms.locfileid: "60456092"
 | 80011 | 身份验证代理无法检索到解密密钥。 | 如果可始终重现该问题，请安装并注册新的身份验证代理。 并卸载当前的代理。
 
 >[!IMPORTANT]
->通过身份验证代理通过调用[Win32 登录用户 API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx)来验证其针对活动目录的用户名和密码，从而验证 Azure AD 用户。 因此，如果您在 Active Directory 中设置了"登录到"设置以限制工作站登录访问，则必须将托管直通身份验证代理的服务器添加到"登录到"服务器列表中。 如果不这样做，将阻止用户登录到 Azure AD。
+>传递身份验证代理通过在 Active Directory 通过调用[Win32 LOGONUSER API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx)来验证其用户名和密码，对 Azure AD 用户进行身份验证。 因此，如果已将 Active Directory 中的 "登录到" 设置设置为限制工作站登录访问，则必须将承载直通身份验证代理的服务器添加到 "登录到" 服务器的列表。 否则，会阻止用户登录 Azure AD。
 
 ## <a name="authentication-agent-installation-issues"></a>身份验证代理安装问题
 

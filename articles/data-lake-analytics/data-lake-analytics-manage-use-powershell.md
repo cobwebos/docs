@@ -10,10 +10,10 @@ ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.openlocfilehash: 4273828c9c2bdb75fcbc1de45da55c5a03dd615f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "66156423"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Data Lake Analytics
@@ -121,7 +121,7 @@ Test-AdlAnalyticsAccount -Name $adla
 ## <a name="manage-data-sources"></a>管理数据源
 Azure Data Lake Analytics 当前支持以下数据源：
 
-* [Azure 数据湖存储](../data-lake-store/data-lake-store-overview.md)
+* [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
 * [Azure 存储](../storage/common/storage-introduction.md)
 
 每个 Data Lake Analytics 帐户都有一个默认的 Data Lake Store 帐户。 默认 Data Lake Store 帐户用于存储作业元数据和作业审核日志。 
@@ -243,7 +243,7 @@ Get-AdlJob -Account $adla -State Accepted,Compiling,New,Paused,Scheduling,Start
 使用 `-Result` 参数检测结束作业是否成功完成。 它具有下列值：
 
 * 已取消
-* 失败
+* Failed
 * 无
 * 已成功
 
@@ -557,5 +557,5 @@ foreach ($sub in $subs)
 
 ## <a name="next-steps"></a>后续步骤
 * [Microsoft Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
-* 使用[Azure 门户](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [Azure CLI](data-lake-analytics-get-started-cli.md)开始使用数据湖分析
-* 使用[Azure 门户](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [CLI](data-lake-analytics-manage-use-cli.md)管理 Azure 数据湖分析 
+* 使用[Azure 门户](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | 开始使用 Data Lake Analytics[Azure CLI](data-lake-analytics-get-started-cli.md)
+* 使用[Azure 门户](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [CLI](data-lake-analytics-manage-use-cli.md)管理 Azure Data Lake Analytics 

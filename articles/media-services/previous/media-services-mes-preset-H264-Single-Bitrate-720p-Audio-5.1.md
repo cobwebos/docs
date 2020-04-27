@@ -1,6 +1,6 @@
 ---
 title: H264 单比特率 720p Audio 5.1 | Microsoft Docs
-description: 本主题概述了**H264 单比特率 720p 音频 5.1**任务预设。
+description: 本主题概述“H264 单比特率 720p Audio 5.1”任务预设  。
 author: Juliako
 manager: femila
 editor: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: aad0a5f0e521d0608c1797ea8c1225c48240b391
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "61129538"
 ---
 # <a name="h264-single-bitrate-720p-audio-51"></a>H264 单比特率 720p Audio 5.1

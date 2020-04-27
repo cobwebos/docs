@@ -26,6 +26,8 @@
       href: learn/automation-tutorial-runbook-textual-python2.md
 - name: 概念
   items:
+    - name: 自动化帐户身份验证概述
+      href: automation-security-overview.md
     - name: Runbook 执行概述
       href: automation-runbook-execution.md
     - name: 混合 Runbook 辅助角色概述
@@ -48,6 +50,8 @@
           href: automation-create-standalone-account.md
         - name: 使用资源管理器模板创建自动化帐户
           href: automation-create-account-template.md
+        - name: 使用 Amazon Web Services 配置身份验证
+          href: automation-config-aws-account.md
         - name: 管理自动化运行方式帐户
           href: manage-runas-account.md
         - name: 管理角色权限和安全性
@@ -156,6 +160,8 @@
               href: automation-dsc-diagnostics.md
             - name: 排查 DSC 的问题
               href: troubleshoot/desired-state-configuration.md
+            - name: Azure DSC 扩展版本历史记录
+              href: automation-dsc-extension-history.md
         - name: 更改跟踪和库存
           items:
             - name: 概述
@@ -248,8 +254,6 @@
           href: automation-create-alert-triggered-runbook.md
         - name: 管理 Office 365 服务
           href: manage-office-365.md
-        - name: 使用 Amazon Web Services 对 Runbook 进行身份验证
-          href: automation-config-aws-account.md
         - name: 使用自动化 Runbook 部署 AWS VM
           href: automation-scenario-aws-deployment.md
         - name: 使用 Runbook 部署资源管理器模板

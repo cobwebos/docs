@@ -34,6 +34,8 @@
       href: security-baselines-overview.md
     - name: Azure Cache for Redis 安全基线
       href: ../../azure-cache-for-redis/security-baseline.md
+    - name: 备份安全基线
+      href: ../../backup/security-baseline.md
     - name: Batch 安全基线
       href: ../../batch/security-baseline.md
     - name: 容器注册表安全基线
@@ -56,3 +58,5 @@
       href: ../../postgresql/security-baseline.md
     - name: SQL 数据库安全基线
       href: ../../sql-database/security-baseline.md
+    - name: 存储安全基线
+      href: ../../storage/common/security-baseline.md

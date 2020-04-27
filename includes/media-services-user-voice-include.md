@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: 5c7686d8501baf17a63a5317f0d136adb6ac7812
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "69014687"
 ---
 使用 [用户之声](https://go.microsoft.com/fwlink/?linkid=698785&clcid=0x409) 论坛提供反馈意见，并提出有关如何改进 Azure 媒体服务的建议。 还可以直接转到以下类别之一：
 
-* [Azure 媒体播放器](https://feedback.azure.com/forums/169396-media-services/category/109320-azure-media-player/)
+* [Azure Media Player](https://feedback.azure.com/forums/169396-media-services/category/109320-azure-media-player/)
 * [客户端 SDK 库](https://feedback.azure.com/forums/169396-media-services/category/144435-client-sdks/)
 * [编码和处理](https://feedback.azure.com/forums/169396-media-services/category/144411-encoding-and-processing/)
 * [实时传送视频流](https://feedback.azure.com/forums/169396-media-services/category/144414-live-streaming/)

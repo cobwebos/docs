@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: 164bedffcf9a1aca9f1fa46dea254fb928abcf04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "69637269"
 ---
 # <a name="using-twilio-for-voice-voip-and-sms-messaging-in-azure"></a>在 Azure 中使用 Twilio for Voice、VoIP 和 SMS 消息传递
@@ -34,7 +34,7 @@ Twilio 是一种 API 平台，借助于该平台，开发人员能够轻松地�
 通过向 Twilio Web 服务 API 发出 HTTP 请求，开发人员可以发送短信或发起传出电话呼叫。 对于传出呼叫，开发人员必须还指定一个 URL，该 URL 返回有关在其连接后如何处理该传出呼叫的 TwiML 说明。
 
 ### <a name="embedding-voip-capabilities-in-ui-code-javascript-ios-or-android"></a>在 UI 代码中嵌入 VoIP 功能（JavaScript、iOS 或 Android）
-Twilio 提供一个客户端 SDK，它可以将任何桌面 Web 浏览器、iOS 应用程序或 Android 应用程序转换为 VoIP 电话。 在本文中，我们将重点介绍如何在浏览器中使用 VoIP 呼叫。 除了在浏览器中运行*的 Twilio JavaScript SDK*外，还必须使用服务器端应用程序（我们的 node.js 应用程序）向 JavaScript 客户端发出"功能令牌"。 可以[在 Twilio 开发人员博客][voipnode]上了解有关如何将 VoIP 用于 node.js 的更多信息。
+Twilio 提供一个客户端 SDK，它可以将任何桌面 Web 浏览器、iOS 应用程序或 Android 应用程序转换为 VoIP 电话。 在本文中，我们将重点介绍如何在浏览器中使用 VoIP 呼叫。 除了在浏览器中运行的*Twilio JAVASCRIPT SDK*外，还必须使用服务器端应用程序（我们的 node.js 应用程序）向 JavaScript 客户端发出 "功能标记"。 可以[在 Twilio 开发人员博客][voipnode]上了解有关如何将 VoIP 用于 node.js 的更多信息。
 
 <a id="signup"/>
 
@@ -247,7 +247,7 @@ app.post('/sms', (request, response) => {
 [signup]: https://ahoy.twilio.com/azure
 [azure_new_site]: app-service/app-service-web-get-started-nodejs.md
 [twilio_console]: https://www.twilio.com/console
-[Npm]: https://npmjs.org
+[npm]: https://npmjs.org
 [express]: https://expressjs.com
 [voipnode]: https://www.twilio.com/blog/2013/04/introduction-to-twilio-client-with-node-js.html
 [docs]: https://www.twilio.com/docs/libraries/reference/twilio-node/

@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：ADSyncConfig PowerShell 参考 |Microsoft Docs
+title: Azure AD Connect：ADSyncConfig PowerShell 参考 | Microsoft Docs
 description: 本文档提供 ADSyncConfig.psm1 PowerShell 模块的参考信息。
 author: billmath
 manager: daveba
@@ -11,10 +11,10 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 554bb99121190198982f64deb6ee0674aa8831ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60381189"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect：ADSyncConfig PowerShell 参考
@@ -32,7 +32,7 @@ ms.locfileid: "60381189"
 Get-ADSyncADConnectorAccount
 ```
 
-### <a name="description"></a>DESCRIPTION
+### <a name="description"></a>说明
 此函数使用 AAD Connect 中显示的“Get-ADSyncConnector”cmdlet 从连接参数中检索显示 AD Connector 帐户的表。
 
 ### <a name="examples"></a>示例
@@ -53,7 +53,7 @@ Get-ADSyncADConnectorAccount
 Get-ADSyncObjectsWithInheritanceDisabled [-SearchBase] <String> [[-ObjectClass] <String>] [<CommonParameters>]
 ```
 
-### <a name="description"></a>DESCRIPTION
+### <a name="description"></a>说明
 从 SearchBase 参数开始在 AD 中搜索并返回按 ObjectClass 参数筛选的所有对象，这些对象具有当前禁用的 ACL 继承。
 
 ### <a name="examples"></a>示例
@@ -97,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-objectclass"></a>-ObjectClass
-要搜索的对象的类可以是"*"（适用于任何对象类）、"用户"、组、容器等。默认情况下，此函数将搜索"组织单位"对象类。
+要搜索的对象类，可以是“*”（适用于任何对象类）、“user”、“group”、“container”等。默认情况下，此函数将搜索“organizationalUnit”对象类。
 
 ```yaml
 Type: String
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="set-adsyncbasicreadpermissions"></a>Set-ADSyncBasicReadPermissions
 
@@ -134,7 +134,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### <a name="description"></a>DESCRIPTION
+### <a name="description"></a>说明
 Set-ADSyncBasicReadPermissions 函数将为 AD 同步帐户提供所需的权限，其中包括以下内容：
 1.
 读取所有后代计算机对象的所有属性的属性访问权限
@@ -254,8 +254,8 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-whatif"></a>-WhatIf
-显示在此 cmdlet 运行的情况下将会发生什么。
-此 cmdlet 未运行。
+显示运行该 cmdlet 时会发生什么情况。
+cmdlet 未运行。
 
 ```yaml
 Type: SwitchParameter
@@ -286,7 +286,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="set-adsyncexchangehybridpermissions"></a>Set-ADSyncExchangeHybridPermissions
 
@@ -307,7 +307,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### <a name="description"></a>DESCRIPTION
+### <a name="description"></a>说明
 Set-ADSyncExchangeHybridPermissions 函数将为 AD 同步帐户提供所需的权限，其中包括以下内容：
 1.
 读取/写入所有后代用户对象的所有属性的属性访问权限
@@ -421,8 +421,8 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-whatif"></a>-WhatIf
-显示在此 cmdlet 运行的情况下将会发生什么。
-此 cmdlet 未运行。
+显示运行该 cmdlet 时会发生什么情况。
+cmdlet 未运行。
 
 ```yaml
 Type: SwitchParameter
@@ -453,7 +453,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="set-adsyncexchangemailpublicfolderpermissions"></a>Set-ADSyncExchangeMailPublicFolderPermissions
 
@@ -475,7 +475,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-A
  [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### <a name="description"></a>DESCRIPTION
+### <a name="description"></a>说明
 Set-ADSyncExchangeMailPublicFolderPermissions 函数将为 AD 同步帐户提供所需的权限，其中包括以下内容：
 1.
 读取所有后代 publicfolder 对象的所有属性的属性访问权限
@@ -583,8 +583,8 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-whatif"></a>-WhatIf
-显示在此 cmdlet 运行的情况下将会发生什么。
-此 cmdlet 未运行。
+显示运行该 cmdlet 时会发生什么情况。
+cmdlet 未运行。
 
 ```yaml
 Type: SwitchParameter
@@ -615,7 +615,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="set-adsyncmsdsconsistencyguidpermissions"></a>Set-ADSyncMsDsConsistencyGuidPermissions
 
@@ -636,7 +636,7 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
  [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### <a name="description"></a>DESCRIPTION
+### <a name="description"></a>说明
 Set-ADSyncMsDsConsistencyGuidPermissions 函数将为 AD 同步帐户提供所需的权限，其中包括以下内容：
 1.
 读取/写入所有后代用户对象的 mS-DS-ConsistencyGuid 属性的属性访问权限
@@ -744,8 +744,8 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-whatif"></a>-WhatIf
-显示在此 cmdlet 运行的情况下将会发生什么。
-此 cmdlet 未运行。
+显示运行该 cmdlet 时会发生什么情况。
+cmdlet 未运行。
 
 ```yaml
 Type: SwitchParameter
@@ -776,7 +776,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="set-adsyncpasswordhashsyncpermissions"></a>Set-ADSyncPasswordHashSyncPermissions
 
@@ -796,7 +796,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName <String> -ADConnec
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### <a name="description"></a>DESCRIPTION
+### <a name="description"></a>说明
 Set-ADSyncPasswordHashSyncPermissions 函数将为 AD 同步帐户提供所需的权限，其中包括以下内容：
 1.
 复制目录更改
@@ -865,8 +865,8 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-whatif"></a>-WhatIf
-显示在此 cmdlet 运行的情况下将会发生什么。
-此 cmdlet 未运行。
+显示运行该 cmdlet 时会发生什么情况。
+cmdlet 未运行。
 
 ```yaml
 Type: SwitchParameter
@@ -897,7 +897,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="set-adsyncpasswordwritebackpermissions"></a>Set-ADSyncPasswordWritebackPermissions
 
@@ -918,7 +918,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobject
  [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### <a name="description"></a>DESCRIPTION
+### <a name="description"></a>说明
 Set-ADSyncPasswordWritebackPermissions 函数将为 AD 同步帐户提供所需的权限，其中包括以下内容：
 1.
 重置后代用户对象的密码
@@ -1030,8 +1030,8 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-whatif"></a>-WhatIf
-显示在此 cmdlet 运行的情况下将会发生什么。
-此 cmdlet 未运行。
+显示运行该 cmdlet 时会发生什么情况。
+cmdlet 未运行。
 
 ```yaml
 Type: SwitchParameter
@@ -1062,7 +1062,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="set-adsyncrestrictedpermissions"></a>Set-ADSyncRestrictedPermissions
 
@@ -1078,14 +1078,14 @@ Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <
  [-DisableCredentialValidation] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### <a name="description"></a>DESCRIPTION
+### <a name="description"></a>说明
 Set-ADSyncRestrictedPermissions 函数将增强所提供帐户的权限。
 限制权限操作包括以下步骤：
 1.
-在指定对象上禁用继承
+禁用指定对象上的继承
 2.
-删除特定对象上的所有 ACE，特定于 SELF 的 ACE 除外。
-当涉及到 SELF 时，我们希望保持默认权限不变。
+删除特定对象上的所有 ACE，但特定于 SELF 的 ACE 除外。
+我们希望在处理 SELF 时默认权限保持不变。
 3.
 分配以下特定权限：
 
@@ -1130,7 +1130,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-credential"></a>-Credential
-管理员凭据，拥有限制 ADConnectorAccountDN 帐户权限的必要特权。 这通常为企业或域管理员。 使用管理员帐户的完全限定的域名以避免查找帐户失败。
+管理员凭据，拥有限制 ADConnectorAccountDN 帐户权限的必要特权。 这通常是企业管理员或域管理员。 使用管理员帐户的完全限定域名来避免帐户查找失败。
 示例：CONTOSO\admin
 
 ```yaml
@@ -1161,8 +1161,8 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-whatif"></a>-WhatIf
-显示在此 cmdlet 运行的情况下将会发生什么。
-此 cmdlet 未运行。
+显示运行该 cmdlet 时会发生什么情况。
+cmdlet 未运行。
 
 ```yaml
 Type: SwitchParameter
@@ -1193,7 +1193,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="set-adsyncunifiedgroupwritebackpermissions"></a>Set-ADSyncUnifiedGroupWritebackPermissions
 

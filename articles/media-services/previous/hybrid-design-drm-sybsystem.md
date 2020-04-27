@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: juliako
-ms.openlocfilehash: d2f4ddfbff791fbfeb2eb006a628c0fdeb4fdce1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 44095cb85c62fd40032263d96ad678bdeb5effc0
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74975187"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159397"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>DRM 子系统的混合设计 
 
@@ -49,7 +49,7 @@ DRM 支持包括 DRM 加密（动态加密）和许可证传送，其中的 Azur
 
 作为综合性云视频平台的一部分，Azure 媒体服务 DRM 在设计上考虑到了灵活性和模块性。 可以针对下表中所述的任意不同组合使用 Azure 媒体服务（后面提供了表中使用的简写的说明）。 
 
-|**内容托管和来源**|**内容加密**|**DRM 许可证交付**|
+|**内容托管和来源**|**内容加密**|**DRM 许可证传送**|
 |---|---|---|
 |AMS|AMS|AMS|
 |AMS|AMS|第三方|
@@ -93,9 +93,9 @@ DRM 支持包括 DRM 加密（动态加密）和许可证传送，其中的 Azur
 
 ## <a name="scenarios-and-samples"></a>方案和示例
 
-根据上一节中的解释，以下五种混合方案使用相应的**内容关键**-**资产交付策略**配置组合（上一列中提及的示例如下表）：
+根据上一部分中的说明，以下五种混合方案使用各自的**内容密钥**-**资产传送策略**配置组合（表中最后一列中提到的示例）：
 
-|**内容托管和来源**|**DRM 加密**|**DRM 许可证交付**|**配置内容密钥**|**配置资产传送策略**|**示例**|
+|**内容托管和来源**|**DRM 加密**|**DRM 许可证传送**|**配置内容密钥**|**配置资产传送策略**|**示例**|
 |---|---|---|---|---|---|
 |AMS|AMS|AMS|是|是|示例 1|
 |AMS|AMS|第三方|是|是|示例 2|
@@ -107,31 +107,31 @@ DRM 支持包括 DRM 加密（动态加密）和许可证传送，其中的 Azur
 
 ### <a name="sample-1"></a>示例 1
 
-* 源（基）URL：https://willzhanmswest.streaming.mediaservices.windows.net/1efbd6bb-1e66-4e53-88c3-f7e5657a9bbd/RussianWaltz.ism/manifest 
-* PlayReady LA_URL（DASH 和平滑流式处理）：https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/ 
-* Widevine LA_URL (DASH)：https://willzhanmswest.keydelivery.mediaservices.windows.net/Widevine/?kid=78de73ae-6d0f-470a-8f13-5c91f7c4 
-* FairPlay LA_URL (HLS)：https://willzhanmswest.keydelivery.mediaservices.windows.net/FairPlay/?kid=ba7e8fb0-ee22-4291-9654-6222ac611bd8 
+* 源（基）URL：`https://willzhanmswest.streaming.mediaservices.windows.net/1efbd6bb-1e66-4e53-88c3-f7e5657a9bbd/RussianWaltz.ism/manifest` 
+* PlayReady LA_URL（DASH 和平滑流式处理）：`https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/` 
+* Widevine LA_URL (DASH)：`https://willzhanmswest.keydelivery.mediaservices.windows.net/Widevine/?kid=78de73ae-6d0f-470a-8f13-5c91f7c4` 
+* FairPlay LA_URL (HLS)：`https://willzhanmswest.keydelivery.mediaservices.windows.net/FairPlay/?kid=ba7e8fb0-ee22-4291-9654-6222ac611bd8` 
 
 ### <a name="sample-2"></a>示例 2
 
 * 源（基）URL：https://willzhanmswest.streaming.mediaservices.windows.net/1a670626-4515-49ee-9e7f-cd50853e41d8/Microsoft_HoloLens_TransformYourWorld_816p23.ism/Manifest 
-* PlayReady LA_URL（DASH 和平滑流式处理）：http://willzhan12.cloudapp.net/PlayReady/RightsManager.asmx 
+* PlayReady LA_URL（DASH 和平滑流式处理）：`http://willzhan12.cloudapp.net/PlayReady/RightsManager.asmx` 
 
 ### <a name="sample-3"></a>示例 3
 
 * 源 URL：https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500.ism/manifest 
-* PlayReady LA_URL（DASH 和平滑流式处理）：https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/ 
+* PlayReady LA_URL（DASH 和平滑流式处理）：`https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/` 
 
 ### <a name="sample-4"></a>示例 4
 
 * 源 URL：https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500.ism/manifest 
-* PlayReady LA_URL（DASH 和平滑流式处理）：https://willzhan12.cloudapp.net/playready/rightsmanager.asmx 
+* PlayReady LA_URL（DASH 和平滑流式处理）：`https://willzhan12.cloudapp.net/playready/rightsmanager.asmx` 
 
 ## <a name="additional-notes"></a>附加说明
 
 * Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 总而言之，Azure 媒体服务 DRM 组件非常灵活，只需根据本主题中所述适当配置内容密钥和资产传送策略，即可在混合方案中使用这些组件。
 

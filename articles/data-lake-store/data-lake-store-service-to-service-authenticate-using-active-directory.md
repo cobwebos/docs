@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 3fbf2f2540e8f1ca84aad2759b9a1fc790e4065d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "66241371"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 服务到服务身份验证
@@ -43,7 +43,7 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。
 
 遵循以上链接的说明时，请确保为应用程序类型选择“Web 应用/API”，如以下屏幕截图所示****：
 
-![创建 Web 应用](./media/data-lake-store-authenticate-using-active-directory/azure-active-directory-create-web-app.png "创建 Web 应用")
+![创建 web 应用](./media/data-lake-store-authenticate-using-active-directory/azure-active-directory-create-web-app.png "创建 Web 应用")
 
 ## <a name="step-2-get-application-id-authentication-key-and-tenant-id"></a>步骤 2：获取应用程序 ID、身份验证密钥和租户 ID
 以编程方式登录时，需要应用程序的 ID。 如果应用程序在其自己的凭据下运行，则还需要身份验证密钥。
@@ -55,10 +55,10 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。
 ## <a name="step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder"></a>步骤 3：将 Azure AD 应用程序分配给 Azure Data Lake Storage Gen1 帐户文件或文件夹
 
 
-1. 登录到 Azure[门户](https://portal.azure.com)。 打开要与之前创建的 Azure Active Directory 应用程序相关联的 Data Lake Storage Gen1 帐户。
+1. 登录到[Azure 门户](https://portal.azure.com)。 打开要与之前创建的 Azure Active Directory 应用程序相关联的 Data Lake Storage Gen1 帐户。
 2. 在 Data Lake Storage Gen1 帐户边栏选项卡中，单击“数据资源管理器”****。
    
-    ![在数据存储湖存储第 1 代帐户中创建目录](./media/data-lake-store-authenticate-using-active-directory/adl.start.data.explorer.png "在 Azure Data Lake 帐户中创建目录")
+    ![在 Data Lake Storage Gen1 帐户中创建目录](./media/data-lake-store-authenticate-using-active-directory/adl.start.data.explorer.png "在 Azure Data Lake 帐户中创建目录")
 3. 在“数据资源管理器”**** 边栏选项卡中，单击要为其提供 Azure AD 应用程序访问权限的文件或文件夹，并单击“访问”****。 若要配置对文件的访问，必须在“文件预览”**** 边栏选项卡中单击“访问”****。
    
     ![对 Data Lake 文件系统设置 ACL](./media/data-lake-store-authenticate-using-active-directory/adl.acl.1.png "对 Data Lake 文件系统设置 ACL")
@@ -68,7 +68,7 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。
 5. 单击“添加”**** 图标打开“添加自定义访问”**** 边栏选项卡。 在此边栏选项卡中，单击“选择用户或组”****，并在“选择用户或组”**** 边栏选项卡中，查找之前创建的 Azure Active Directory 应用程序。 如果搜索范围中存在大量的组，请使用顶部的文本框筛选组名称。 单击要添加的组，并单击“选择”****。
    
     ![添加组](./media/data-lake-store-authenticate-using-active-directory/adl.acl.3.png "添加组")
-6. 单击“选择权限”****，选择权限以及是将这些权限分配为默认 ACL、访问 ACL 还是同时分配为这两类。 单击“确定”。
+6. 单击“选择权限”****，选择权限以及是将这些权限分配为默认 ACL、访问 ACL 还是同时分配为这两类。 单击" **确定**"。
    
     ![分配权限给组](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "分配权限给组")
    
@@ -100,7 +100,7 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。
     ![OAuth 令牌终结点](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "OAuth 令牌终结点")   
 
 ## <a name="next-steps"></a>后续步骤
-在本文中，您创建了 Azure AD Web 应用程序，并收集了使用 .NET SDK、Java、Python、REST API 等创作的客户端应用程序中所需的信息。现在，您可以继续以下文章，其中讨论如何使用 Azure AD 本机应用程序首先使用 Data Lake 存储 Gen1 进行身份验证，然后在存储上执行其他操作。
+本文介绍了如何创建 Azure AD web 应用程序，并使用 .NET SDK、Java、Python、REST API 等在你创作的客户端应用程序中收集了所需的信息。你现在可以继续阅读以下文章，这些文章讨论了如何使用 Azure AD 的本机应用程序先使用 Data Lake Storage Gen1 进行身份验证，然后在存储中执行其他操作。
 
 * [使用 Java 进行 Data Lake Storage Gen1 服务到服务身份验证](data-lake-store-service-to-service-authenticate-java.md)
 * [使用 .NET SDK 进行 Data Lake Storage Gen1 服务到服务身份验证](data-lake-store-service-to-service-authenticate-net-sdk.md)

@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 05/20/2018
 ms.openlocfilehash: 5a2935d559a967151c5bdc01c4b0806fe52179b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60629688"
 ---
 # <a name="troubleshoot-an-abnormal-recurring-job"></a>对异常的定期作业进行疑难解答
@@ -33,7 +33,7 @@ ms.locfileid: "60629688"
 
 ### <a name="case-1-you-have-the-url-for-the-recurring-job"></a>案例 1：拥有定期作业的 URL
 
-通过**工具** > **数据湖** > **作业视图**，您可以粘贴作业 URL 以在可视化工作室中打开作业视图。 选择“查看相关作业”**** 以打开相关作业视图。
+通过 "**工具** > "**Data Lake** > "作业"**视图**，你可以粘贴作业 URL，以便在 Visual Studio 中打开作业视图。 选择“查看相关作业”**** 以打开相关作业视图。
 
 ![Data Lake Analytics 工具中的“查看相关作业”链接](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/view-related-job.png)
  

@@ -16,10 +16,10 @@ ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 18409f93ab50f7d031ec78a55b9eaf8ad1b85a49
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "70101415"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure 虚拟机上的 SAP Business One
@@ -37,7 +37,7 @@ Business One 支持两种不同的数据库：
 - [Windows 上的 Azure 虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
 - [Linux 上的 Azure 虚拟机](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
 - [使用 PowerShell 执行 Azure 网络创建和虚拟网络管理](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-virtual-network)
-- [使用 CLI 的 Azure 网络和虚拟网络](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
+- [带有 CLI 的 Azure 网络和虚拟网络](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
 - [使用 Azure CLI 管理 Azure 磁盘](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
 
 即使只对 Business one 感兴趣，[NetWeaver 的 Azure 虚拟机规划和实施](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)文档也是很好的信息源。
@@ -150,7 +150,7 @@ SQL Server 的 DBMS 端的粗略大小估算值为：
 对于这些组件，存储注意事项不是主要关注的问题。 不过，你需要有一个可靠的平台。 因此，应该对此 VM 使用 Azure 高级存储，即使对于基本 VHD 也是如此。 使用 [SAP Business One 硬件需求指南](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf)中给出的数据调整 VM 的大小。 对于 Azure，需要关注文档第 2.4 章中所述的要求并按照这些要求计算。 在计算要求时，需要将它们针对以下文档进行比较，以便找到理想的 VM：
 
 - [Azure 中 Windows 虚拟机的大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
-- [SAP 注释#1928533](https://launchpad.support.sap.com/#/notes/1928533)
+- [SAP 说明 #1928533](https://launchpad.support.sap.com/#/notes/1928533)
 
 将所需的 CPU 数和内存量与 Microsoft 记录的数量进行比较。 选择 VM 时也要考虑网络吞吐量。
 

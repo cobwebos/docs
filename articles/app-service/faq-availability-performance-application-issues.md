@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 433f5885c7f057226e78c4ae57e03d7619004d21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 021e680a2ca5f7c00f113c4a17421b2648ca6230
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259859"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159977"
 ---
-# <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的应用程序性能常见问题解答
+# <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure 中 Web 应用的应用程序性能常见问题解答
 
 > [!NOTE]
-> 以下某些准则可能仅适用于 Windows 或 Linux 应用服务。 例如，默认情况下，Linux 应用程序服务以 64 位模式运行。
+> 下面的某些准则可能仅适用于 Windows 或 Linux 应用服务。 例如，默认情况下，Linux 应用服务在64位模式下运行。
 >
 
 本文包含有关针对 [Azure 应用服务的 Web 应用功能](https://azure.microsoft.com/services/app-service/web/)的应用程序性能问题的常见问题 (FAQ) 解答。
@@ -46,9 +46,9 @@ ms.locfileid: "79259859"
 
 查看 Web 应用的事件日志：
 
-1. 登录到 [Kudu 网站](https://*yourwebsitename*.scm.azurewebsites.net)。
-2. 在菜单中，选择**调试控制台** > **CMD**。
-3. 选择 **LogFiles** 文件夹。
+1. 登录到**Kudu 网站**（`https://*yourwebsitename*.scm.azurewebsites.net`）。
+2. 在菜单中，选择 "**调试控制台** > **CMD**"。
+3. 选择“LogFiles”  文件夹。
 4. 若要查看事件日志，请选择 **eventlog.xml** 旁的铅笔图标。
 5. 若要下载日志，请运行 PowerShell cmdlet `Save-AzureWebSiteLog -Name webappname`。
 
@@ -56,10 +56,10 @@ ms.locfileid: "79259859"
 
 捕获 Web 应用的用户模式内存转储:
 
-1. 登录到 [Kudu 网站](https://*yourwebsitename*.scm.azurewebsites.net)。
+1. 登录到**Kudu 网站**（`https://*yourwebsitename*.scm.azurewebsites.net`）。
 2. 选择“进程资源管理器”**** 菜单。
 3. 右键单击 **w3wp.exe** 进程或 Web 作业进程。
-4. 选择**下载内存转储** > **完全转储**。
+4. 选择 "**下载内存转储** > " "**完全转储**"。
 
 ## <a name="how-do-i-view-process-level-info-for-my-web-app"></a>如何查看 Web 应用的进程级信息？
 
@@ -69,7 +69,7 @@ ms.locfileid: "79259859"
     1. 打开 Web 应用的“进程资源管理器”****。
     2. 若要查看详细信息，请选择 **w3wp.exe** 进程。
 *   在 Kudu 控制台中：
-    1. 登录到 [Kudu 网站](https://*yourwebsitename*.scm.azurewebsites.net)。
+    1. 登录到**Kudu 网站**（`https://*yourwebsitename*.scm.azurewebsites.net`）。
     2. 选择“进程资源管理器”**** 菜单。
     3. 对于 **w3wp.exe** 进程，选择“属性”****。
 
@@ -93,7 +93,7 @@ ms.locfileid: "79259859"
 
 1. 在 Azure 门户中，转到你的 Web 应用。
 2. 选择**配置**
-3. 选择**常规设置**。
+3. 选择 "**常规设置**"。
 4. 对于“始终可用”****，选择“打开”****。
 
 ## <a name="how-do-i-turn-on-failed-request-tracing"></a>如何打开失败请求跟踪？
@@ -101,9 +101,9 @@ ms.locfileid: "79259859"
 打开失败请求跟踪：
 
 1. 在 Azure 门户中，转到你的 Web 应用。
-3. 选择**所有设置** > **诊断日志**。
+3. 选择 "**所有设置** > " "**诊断日志**"。
 4. 对于“失败请求跟踪”****，选择“打开”****。
-5. 选择“保存”。****
+5. 选择“保存”  。
 6. 在 Web 应用边栏选项卡，选择“工具”****。
 7. 选择“Visual Studio Online”****。
 8. 如果设置不是“打开”****，则选择“打开”****。
@@ -142,8 +142,8 @@ ms.locfileid: "79259859"
     </tracing>
     ```
 13. 若要下载失败请求跟踪，请在[门户](https://portal.azure.com)中，转到你的网站。
-15. 选择**工具** > **库杜** > **围棋**。
-18. 在菜单中，选择**调试控制台** > **CMD**。
+15. 选择 "**工具** > **Kudu** > **"。**
+18. 在菜单中，选择 "**调试控制台** > **CMD**"。
 19. 选择 **LogFiles** 文件夹，然后选择名称以 **W3SVC** 开头的文件夹。
 20. 若要查看 XML 文件，请选择铅笔图标。
 
@@ -174,7 +174,7 @@ Web 作业旨在用于后台处理。 可以在 Web 作业中根据需要执行�
 
 如果使用应用服务的本地缓存功能，则应用服务实例的日志文件和数据文件夹的文件夹结构会受影响。 使用本地缓存时，会在存储日志文件和数据文件夹中创建子文件夹。 子文件夹使用命名模式“唯一标识符”+ 时间戳。 每个子文件夹都对应于一个 VM 实例，其中的 Web 应用正在运行或已运行。
 
-要确定是否使用本地缓存，请检查应用服务**应用程序设置**选项卡。如果使用本地缓存，则应用设置`WEBSITE_LOCAL_CACHE_OPTION`设置为`Always`。
+若要确定是否正在使用本地缓存，请检查应用服务**应用程序设置**选项卡。如果正在使用本地缓存，则将应用设置`WEBSITE_LOCAL_CACHE_OPTION`设置为`Always`。
 
 如果未使用本地缓存并且遇到此问题，请提交支持请求。
 

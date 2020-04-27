@@ -1,6 +1,6 @@
 ---
-title: HB 系列和 HC 系列 VM 的已知问题 - Azure 虚拟机 |微软文档
-description: 了解 Azure 中 HB 系列 VM 大小的已知问题。
+title: HB-ACCT-WC 系列和 HC 系列 Vm 的已知问题-Azure 虚拟机 |Microsoft Docs
+description: 了解 Azure 中 HB-ACCT-WC 系列 VM 大小的已知问题。
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -13,35 +13,35 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
 ms.openlocfilehash: 8d4b57fb2fee3849e102868c86fe3cab465fc70d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67707779"
 ---
 # <a name="known-issues-with-hb-series-and-hc-series-vms"></a>HB 系列和 HC 系列 VM 的已知问题
 
-本文提供了使用 HB 系列和 HC 系列 VM 时最常见的问题和解决方案。
+本文提供使用 HB-ACCT-WC 系列和 HC 系列 Vm 时最常见的问题和解决方案。
 
-## <a name="dram-on-hb-series"></a>HB 系列的 DRAM
+## <a name="dram-on-hb-series"></a>HB-ACCT-WC 系列上的 DRAM
 
-HB 系列 VM 此时只能向来宾 VM 公开 228 GB 的 RAM。 这是因为 Azure 虚拟机管理程序的已知限制，以防止将页面分配给为来宾 VM 保留的 AMD CCX （NUMA 域） 的本地 DRAM。
+HB-ACCT-WC 系列 Vm 此时只能向来宾 Vm 公开 228 GB 的 RAM。 这是因为 Azure 虚拟机监控程序的已知限制阻止将页面分配到为来宾 VM 保留的 AMD CCX （NUMA 域）的本地 DRAM。
 
 ## <a name="accelerated-networking"></a>加速网络
 
-此时未启用 Azure 加速网络，但会随着预览期的进行而启用。 当此功能受支持时，我们将通知客户。
+此时未启用 Azure 加速网络，但将在预览期间完成。 当支持此功能时，我们将通知客户。
 
 ## <a name="qp0-access-restriction"></a>qp0 访问限制
 
-为了防止可能导致安全漏洞的低级硬件访问，来宾 VM 无法访问队列对 0。 这应仅影响通常与 ConnectX-5 NIC 的管理关联的操作，并运行某些 InfiniBand 诊断（如 ibdiagnet）的操作，但不会影响最终用户应用程序本身。
+若要防止可能导致安全漏洞的低级别硬件访问，来宾 Vm 将无法访问队列对0。 这只会影响通常与 ConnectX-5 NIC 的管理相关的操作，并运行一些不受影响的诊断（如 ibdiagnet），而不是最终用户应用程序本身。
 
-## <a name="ud-transport"></a>UD 运输
+## <a name="ud-transport"></a>UD 传输
 
-在启动时，HB 和 HC 系列不支持动态连接传输 （DCT）。 随着时间的推移，将对 DCT 的支持实施。 支持可靠连接 （RC） 和不可靠的数据图 （UD） 传输。
+启动时，HB-ACCT-WC 和 HC 不支持动态连接的传输（DCT）。 将随着时间的推移实现对 DCT 的支持。 支持可靠连接（RC）和不可靠的数据报（UD）传输。
 
 ## <a name="gss-proxy"></a>GSS 代理
 
-GSS 代理在 CentOS/RHEL 7.5 中存在已知 Bug，当与 NFS 一起使用时，该 Bug 可以表现为显著的性能和响应性损失。 这可以通过：
+GSS Proxy 在 CentOS/RHEL 7.5 中有一个已知 bug，在与 NFS 一起使用时，它们可以表现为显著的性能和响应能力。 可以通过以下方式缓解这一点：
 
 ```console
 sed -i 's/GSS_USE_PROXY="yes"/GSS_USE_PROXY="no"/g' /etc/sysconfig/nfs
@@ -49,11 +49,11 @@ sed -i 's/GSS_USE_PROXY="yes"/GSS_USE_PROXY="no"/g' /etc/sysconfig/nfs
 
 ## <a name="cache-cleaning"></a>缓存清理
 
-在 HPC 系统上，在分配下一个用户相同的节点之前，在作业完成后清理内存通常很有用。 在 Linux 中运行应用程序后，您可能会发现可用内存会减少，而缓冲区内存会增加，尽管没有运行任何应用程序。
+在 HPC 系统上，在为下一个用户分配同一个节点之前，在作业完成之后清理内存通常非常有用。 在 Linux 中运行应用程序后，您可能会发现，当您的缓冲区内存增加时，您的可用内存会减少，而不运行任何应用程序。
 
-![命令提示符的屏幕截图](./media/known-issues/cache-cleaning-1.png)
+![命令提示符屏幕截图](./media/known-issues/cache-cleaning-1.png)
 
-使用`numactl -H`将显示使用（可能全部）缓冲内存的 NUMAnode。s。 在 Linux 中，用户可以通过三种方式清理缓存，将缓冲或缓存的内存返回到"空闲"。 您需要是 root 或具有 sudo 权限。
+使用`numactl -H`将显示使用哪个 NUMAnode 缓冲内存（可能全部）。 在 Linux 中，用户可以通过三种方式清理缓存，以将缓冲或缓存的内存返回到 "免费"。 你需要是根或具有 sudo 权限。
 
 ```console
 echo 1 > /proc/sys/vm/drop_caches [frees page-cache]
@@ -61,11 +61,11 @@ echo 2 > /proc/sys/vm/drop_caches [frees slab objects e.g. dentries, inodes]
 echo 3 > /proc/sys/vm/drop_caches [cleans page-cache and slab objects]
 ```
 
-![命令提示符的屏幕截图](./media/known-issues/cache-cleaning-2.png)
+![命令提示符屏幕截图](./media/known-issues/cache-cleaning-2.png)
 
 ## <a name="kernel-warnings"></a>内核警告
 
-在 Linux 下启动 HB 系列 VM 时，您可能会看到以下内核警告消息。
+在 Linux 下启动 HB-ACCT-WC 系列 VM 时，可能会看到以下内核警告消息。
 
 ```console
 [  0.004000] WARNING: CPU: 4 PID: 0 at arch/x86/kernel/smpboot.c:376 topology_sane.isra.3+0x80/0x90
@@ -85,8 +85,8 @@ echo 3 > /proc/sys/vm/drop_caches [cleans page-cache and slab objects]
 [  0.004000] ---[ end trace 73fc0e0825d4ca1f ]---
 ```
 
-您可以忽略此警告。 这是由于 Azure 虚拟机管理程序的已知限制，该限制将随着时间的推移得到解决。
+您可以忽略此警告。 这是因为将在一段时间内解决的 Azure 虚拟机监控程序的已知限制。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 Azure[中高性能计算](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)的更多详细信息。
+详细了解 Azure 中的[高性能计算](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)。

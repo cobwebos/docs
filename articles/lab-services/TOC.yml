@@ -20,10 +20,28 @@
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates'
     - name: Azure PowerShell
       href: samples-powershell.md
+      items:
+        - name: 将外部用户添加到实验室
+          href: scripts/add-external-user-to-lab.md
+        - name: 将市场映像添加到实验室
+          href: scripts/add-marketplace-images-to-lab.md
+        - name: 从 VHD 创建自定义映像
+          href: scripts/create-custom-image-from-vhd.md
+        - name: 在实验室中创建自定义角色
+          href: scripts/create-custom-role-in-lab.md
+        - name: 在实验室中设置允许的 VM 大小
+          href: scripts/set-allowed-vm-sizes-in-lab.md
     - name: Azure PowerShell - Az.DevTestLabs2 模块
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library'
     - name: Azure CLI
       href: samples-cli.md
+      items:
+        - name: 创建并验证 VM 的可用性
+          href: scripts/create-verify-virtual-machine-in-lab-cli.md
+        - name: 启动 VM
+          href: scripts/start-connect-virtual-machine-in-lab-cli.md
+        - name: 停止和删除 VM
+          href: scripts/stop-delete-virtual-machine-in-lab-cli.md
 - name: 概念
   items:
     - name: 开发测试实验室概念
@@ -44,7 +62,7 @@
           href: devtest-lab-training-lab.md
         - name: 用于使用可认领 VM 的方案
           href: devtest-lab-use-claim-capabilities.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 配置实验室
       items:
@@ -237,7 +255,7 @@
               href: devtest-lab-guidance-governance-application-migration-integration.md
     - name: 在 Azure 中测试应用
       href: test-app-azure.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 排查 VM 和环境创建失败问题
           href: troubleshoot-vm-environment-creation-failures.md
@@ -263,7 +281,7 @@
       href: 'https://azure.microsoft.com/pricing/details/devtest-lab/'
     - name: MSDN 论坛
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDevTestLabs'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-devtest-labs'
     - name: 视频
       href: 'https://azure.microsoft.com/resources/videos/index/?services=devtest-lab'

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 061194422a8c1bc449dbef0c4f04bb8e1db10dea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68965286"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>StorSimple 设备的技术规格和符合性
@@ -35,7 +35,7 @@ StorSimple 设备有两个 100-240V 双风扇且符合 SBB 标准的电源散热
 
 EBOD 机箱使用 580 W PCM，而主机箱使用 764 W PCM。 下表列出了与 PCM 相关的技术规格。
 
-| 规格 | 580 W PCM（EBOD 机箱） | 764 W PCM（主机箱） |
+| 规范 | 580 W PCM（EBOD 机箱） | 764 W PCM（主机箱） |
 | --- | --- | --- |
 | 最大输出功率 |580 W |764 |
 | 频率 |50/60 Hz |50/60 Hz |
@@ -54,7 +54,7 @@ EBOD 机箱使用 580 W PCM，而主机箱使用 764 W PCM。 下表列出了与
 
 下表列出了各种型号的 StorSimple 设备的典型功耗数据（实际值可能与已发布的数值不同）。
 
-| 条件 | 240 V 交流 | 240 V 交流 | 240 V 交流 | 110 V 交流 | 110 V 交流 | 110 V 交流 |
+| Conditions | 240 V 交流 | 240 V 交流 | 240 V 交流 | 110 V 交流 | 110 V 交流 | 110 V 交流 |
 | --- | --- | --- | --- | --- | --- | --- |
 |  风扇转速缓慢，驱动器处于闲置状态 |1.45 A |0.31 kW |1057.76 BTU/小时 |3.19 A |0.34 kW |1160.13 BTU/小时 |
 |  风扇转速缓慢，驱动器访问中 |1.54 A |0.33 kW |1126.01 BTU/小时 |3.27 A |0.36 kW |1228.37 BTU/小时 |
@@ -83,7 +83,7 @@ StorSimple 设备 8100 和 8600 都是硬盘驱动器和固态硬盘的混合。
 | 总可用容量* |~ 15 TB |~ 38 TB |
 | 最大解决方案容量（包括云） |200 TB |500 TB |
 
-<sup>* </sup>- *总可用容量包括可用于数据、元数据和缓冲区的容量。您可以在 8100 设备上预配本地固定卷，最多为 8100 TB，在较大的 8600 设备上预配高达 22.5 TB 的卷。有关详细信息，请访问[StorSimple 本地固定卷](storsimple-8000-local-volume-faq.md)。*
+<sup>* </sup>- *总可用容量包括数据、元数据和缓冲区的可用容量。可以在8100设备上预配高达 8.5 TB 的本地固定卷，或者在较大的8600设备上预配高达 22.5 TB 的卷。有关详细信息，请参阅[StorSimple 本地固定卷](storsimple-8000-local-volume-faq.md)。*
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>机箱尺寸和重量规格
 
@@ -119,7 +119,7 @@ StorSimple 设备 8100 和 8600 都是硬盘驱动器和固态硬盘的混合。
 
 | 机箱 | 环境温度范围 | 环境相对湿度 | 最大湿球温度 |
 | --- | --- | --- | --- |
-| 可运行 |5°C - 35°C(41°F - 95°F) |20% - 80% 非冷凝- |28°C (82°F) |
+| 操作 |5°C - 35°C(41°F - 95°F) |20% - 80% 非冷凝- |28°C (82°F) |
 | 不可运行 |-40°C - 70°C(40°F - 158°F) |5% - 100% 非冷凝 |29°C (84°F) |
 
 ### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>气流、海拔高度、撞击、震动、方向、安全和 EMC
@@ -175,11 +175,11 @@ Microsoft Azure StorSimple 设备满足以下 EMC 评级要求。
 
 ## <a name="ac-power-cord-compliance"></a>交流电源线符合性
 
-插头和完整的电源线组件必须符合适用于设备使用的国家/地区的标准，并且必须具有该国家/地区可接受的安全批准。 下表列出了美国和欧洲的标准。
+插头和完整电源线组装人员必须满足使用设备的国家/地区的标准，并且必须具有该国家/地区可接受的安全审批。 下表列出了美国和欧洲的标准。
 
 ### <a name="ac-power-cords---usa-must-be-nrtl-listed"></a>交流电源线 - 美国（必须在 NRTL 登记）
 
-| 组件 | 规格 |
+| 组件 | 规范 |
 | --- | --- |
 | 电源线类型 |SV 或 SVT，最小 18 AWG，3 芯，最长 2.0 米 |
 | 插头 |NEMA 5-15P 接地型连接插头，额定电压电流为 120 V，10 A；或者是 IEC 320 C14，额定电压电流为 250 V，10 A |
@@ -187,7 +187,7 @@ Microsoft Azure StorSimple 设备满足以下 EMC 评级要求。
 
 ### <a name="ac-power-cords---europe"></a>交流电源线 - 欧洲
 
-| 组件 | 规格 |
+| 组件 | 规范 |
 | --- | --- |
 | 电源线类型 |谐振线，H05-VVF-3G1.0 |
 | 插座 |IEC 320 C-13，250 V，10 A |

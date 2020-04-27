@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: 0827311218202de447e5cf27356e00c4da020e94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "61472985"
 ---
 # <a name="debug-azure-data-lake-analytics-code-locally"></a>在本地调试 Azure Data Lake Analytics 代码
 
 与在 Azure Data Lake Analytics 服务中一样，可以使用针对 Visual Studio 的 Azure Data Lake 工具在本地工作站上运行和调试 Azure Data Lake Analytics 代码。
 
-了解如何[在本地计算机上运行 U-SQL 脚本](data-lake-analytics-data-lake-tools-local-run.md)。
+了解如何[在本地计算机上运行 SQL 脚本](data-lake-analytics-data-lake-tools-local-run.md)。
 
 ## <a name="debug-scripts-and-c-assemblies-locally"></a>在本地调试脚本和 C# 程序集
 
@@ -51,5 +51,5 @@ ms.locfileid: "61472985"
 ## <a name="next-steps"></a>后续步骤
 
 - 有关更复杂的查询示例，请参阅[使用 Azure Data Lake Analytics 分析网站日志](data-lake-analytics-analyze-weblogs.md)。
-- 要查看作业详细信息，请参阅[使用作业浏览器和作业视图进行 Azure 数据湖分析作业](data-lake-analytics-data-lake-tools-view-jobs.md)。
-- 要使用顶点执行视图，请参阅[在可视化工作室使用数据湖工具中的顶点执行视图](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)。
+- 若要查看作业详细信息，请参阅[使用作业浏览器和作业视图 Azure Data Lake Analytics 作业](data-lake-analytics-data-lake-tools-view-jobs.md)。
+- 若要使用顶点执行视图，请参阅[在 Data Lake Tools For Visual Studio 中使用顶点执行视图](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)。

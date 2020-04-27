@@ -9,13 +9,13 @@ ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.openlocfilehash: f0dae5ae79234ea29e6b17627fc07abcb3b5dfcb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "68847154"
 ---
-# <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>快速入门：使用 PowerShell 将存储事件路由到 Web 终结点
+# <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>快速入门：利用 PowerShell 将存储事件路由到 Web 终结点
 
 Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 Azure PowerShell 订阅 Blob 存储事件，然后触发事件并查看结果。 
 
@@ -60,9 +60,9 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
-可在常规用途 v2 存储帐户和 Blob 存储帐户中使用 Blob 存储事件。 常规用途 v2 存储帐户支持所有存储服务（包括 Blob、文件、队列和表）的所有功能****。 **Blob 存储帐户**是一个专用存储帐户，用于将非结构化数据存储为 Azure 存储中的 Blob（对象）。 Blob 存储帐户类似于常规用途存储帐户，并且具有现在使用的所有卓越的耐用性、可用性、伸缩性和性能功能，包括用于块 blob 和追加 blob 的 100% API 一致性。 有关详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。
+可在常规用途 v2 存储帐户和 Blob 存储帐户中使用 Blob 存储事件。 常规用途 v2 存储帐户支持所有存储服务（包括 Blob、文件、队列和表）的所有功能  。 Blob 存储帐户是一个专用存储帐户，用于将非结构化数据作为 Blob（对象）存储到 Azure 存储中  。 Blob 存储帐户类似于常规用途存储帐户，并且具有现在使用的所有卓越的耐用性、可用性、伸缩性和性能功能，包括用于块 blob 和追加 blob 的 100% API 一致性。 有关详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。
 
-使用 [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) 创建具有 LRS 复制的 Blob 存储帐户，然后检索定义要使用的存储帐户的存储帐户上下文。 对存储帐户执行操作时，引用上下文而不是重复提供凭据。 本示例创建一个名为 gridstorage 的存储帐户，其中启用了本地冗余存储 (LRS)****。 
+使用 [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) 创建具有 LRS 复制的 Blob 存储帐户，然后检索定义要使用的存储帐户的存储帐户上下文。 对存储帐户执行操作时，引用上下文而不是重复提供凭据。 本示例创建一个名为 gridstorage 的存储帐户，其中启用了本地冗余存储 (LRS)  。 
 
 > [!NOTE]
 > 存储帐户名称位于全局命名空间，因此需要向此脚本中提供的名称追加某些随机字符。
@@ -103,7 +103,7 @@ New-AzResourceGroupDeployment `
 
 ## <a name="subscribe-to-your-storage-account"></a>订阅存储帐户
 
-订阅主题以告诉事件网格要跟踪哪些事件。以下示例订阅您创建的存储帐户，并将 Web 应用的 URL 作为事件通知的终结点传递。 Web 应用的终结点必须包括后缀 `/api/updates/`。
+订阅主题是为了告知事件网格要跟踪哪些事件。以下示例订阅所创建的存储帐户，并将 Web 应用中的 URL 作为事件通知的终结点传递。 Web 应用的终结点必须包括后缀 `/api/updates/`。
 
 ```powershell
 $storageId = (Get-AzStorageAccount -ResourceGroupName $resourceGroup -AccountName $storageName).Id
@@ -172,5 +172,5 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 了解如何创建主题和事件订阅以后，即可进一步学习 Blob 存储事件以及事件网格的功能：
 
-- [对 Blob 存储事件做出反应](storage-blob-event-overview.md)
+- [响应 Blob 存储事件](storage-blob-event-overview.md)
 - [关于事件网格](../../event-grid/overview.md)

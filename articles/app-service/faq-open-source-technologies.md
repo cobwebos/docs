@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 33590f9fc7e6c4d46123cbc7088086a3197d52ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3a7a00e59db677e156037c007537ab1b54c1cfaf
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74672429"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159960"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的开放源代码技术常见问题解答
 
@@ -26,15 +26,15 @@ ms.locfileid: "74672429"
 
 打开 PHP 日志记录：
 
-1. 登录到 [Kudu 网站](https://*yourwebsitename*.scm.azurewebsites.net)。
-2. 在顶部菜单中，选择**调试控制台** > **CMD**。
-3. 选择“站点”**** 文件夹。
-4. 选择“wwwroot”**** 文件夹。
-5. 选择图标**+**，然后选择 **"新建文件**"。
+1. 登录到**Kudu 网站**（`https://*yourwebsitename*.scm.azurewebsites.net`）。
+2. 在顶部菜单中，选择“调试控制台”   > “CMD”  。
+3. 选择“站点”  文件夹。
+4. 选择“wwwroot”  文件夹。
+5. 选择 **+** 图标，然后选择“新建文件”  。
 6. 将文件名设置为 **.user.ini**。
 7. 选择 **.user.ini** 旁的铅笔图标。
 8. 在文件中，添加以下代码：`log_errors=on`
-9. 选择“保存”。****
+9. 选择“保存”。 
 10. 选择 **wp-config.php** 旁的铅笔图标。
 11. 将文本更改为以下代码：
     ```php
@@ -52,16 +52,16 @@ ms.locfileid: "74672429"
 
 若要更改 Node.js 应用程序的版本，可以使用以下选项之一：
 
-* 在 Azure 门户中，使用“应用设置”****。
+* 在 Azure 门户中，使用“应用设置”  。
   1. 在 Azure 门户中，转到你的 Web 应用。
-  2. 在“设置”**** 边栏选项卡中，选择“应用程序设置”****。
-  3. 在“应用设置”**** 中，可以包含 WEBSITE_NODE_DEFAULT_VERSION 作为键，并将所需 Node.js 版本作为值。
-  4. 转到 [Kudu 控制台](https://*yourwebsitename*.scm.azurewebsites.net)。
+  2. 在“设置”  边栏选项卡中，选择“应用程序设置”  。
+  3. 在“应用设置”  中，可以包含 WEBSITE_NODE_DEFAULT_VERSION 作为键，并将所需 Node.js 版本作为值。
+  4. 中转到你的**Kudu 控制台**（`https://*yourwebsitename*.scm.azurewebsites.net`）。
   5. 若要检查 Node.js 版本，请输入以下命令：  
      ```
      node -v
      ```
-* 修改 iisnode.yml 文件。 在 iisnode.yml 文件中更改 Node.js 版本只会设置 iisnode 使用的运行时环境。 Kudu cmd 和其他对象仍使用在 Azure 门户的“应用设置”**** 中设置的 Node.js 版本。
+* 修改 iisnode.yml 文件。 在 iisnode.yml 文件中更改 Node.js 版本只会设置 iisnode 使用的运行时环境。 Kudu cmd 和其他对象仍使用在 Azure 门户的“应用设置”  中设置的 Node.js 版本。
 
   若要手动设置 iisnode.yml，请在应用根文件夹中创建 iisnode.yml 文件。 在该文件中，包含以下行：
   ```yml
@@ -91,7 +91,7 @@ ms.locfileid: "74672429"
 
 ## <a name="how-do-i-debug-a-nodejs-app-thats-hosted-in-app-service"></a>如何调试应用服务中承载的 Node.js 应用？
 
-1.  转到 [Kudu 控制台](https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole)。
+1.  中转到你的**Kudu 控制台**（`https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole`）。
 2.  转到应用程序日志文件夹 (D:\home\LogFiles\Application)。
 3.  在 logging_errors.txt 文件中，检查是否存在内容。
 
@@ -109,22 +109,22 @@ ms.locfileid: "74672429"
 
 * 文件夹位置：D:\home\site\wwwroot\bin\apache-tomcat-8.0.33\logs
 * 相关文件：
-    * catalina.yyyy-mm-dd.log**
-    * host-manager.yyyy-mm-dd.log**
-    * localhost.yyyy-mm-dd.log**
-    * manager.yyyy-mm-dd.log**
-    * site_access_log.yyyy-mm-dd.log**
+    * catalina.yyyy-mm-dd.log 
+    * host-manager.yyyy-mm-dd.log 
+    * localhost.yyyy-mm-dd.log 
+    * manager.yyyy-mm-dd.log 
+    * site_access_log.yyyy-mm-dd.log 
 
 
-对于门户“应用设置”**** 部署：
+对于门户“应用设置”  部署：
 
 * 文件夹位置：D:\home\LogFiles
 * 相关文件：
-    * catalina.yyyy-mm-dd.log**
-    * host-manager.yyyy-mm-dd.log**
-    * localhost.yyyy-mm-dd.log**
-    * manager.yyyy-mm-dd.log**
-    * site_access_log.yyyy-mm-dd.log**
+    * catalina.yyyy-mm-dd.log 
+    * host-manager.yyyy-mm-dd.log 
+    * localhost.yyyy-mm-dd.log 
+    * manager.yyyy-mm-dd.log 
+    * site_access_log.yyyy-mm-dd.log 
 
 ## <a name="how-do-i-troubleshoot-jdbc-driver-connection-errors"></a>如何对 JDBC 驱动程序连接错误进行故障排除？
 
@@ -138,7 +138,7 @@ The web application[ROOT] registered the JDBC driver [com.mysql.jdbc.Driver] but
 
 1. 从 app/lib 文件夹中删除 sqljdbc*.jar 文件。
 2. 如果使用自定义 Tomcat 或 Azure 市场 Tomcat Web 服务器，请将此 .jar 文件复制到 Tomcat lib 文件夹中。
-3. 如果要从 Azure 门户启用 Java（选择**Java 1.8** > **Tomcat 服务器**），请复制与应用并行的文件夹中的 sqljdbc.* jar 文件。 然后，将以下类路径设置添加到 web.config 文件：
+3. 如果从 Azure 门户启用 Java（选择“Java 1.8”   > “Tomcat 服务器”  ），则在与应用平行的文件夹中复制 sqljdbc.* jar 文件。 然后，将以下类路径设置添加到 web.config 文件：
 
     ```xml
     <httpPlatform>
@@ -169,9 +169,9 @@ The process cannot access the file because it is being used by another process.
 
 ## <a name="where-do-i-find-the-log-files-for-jetty"></a>可在何处找到 Jetty 的日志文件？
 
-对于市场和自定义部署，日志文件位于 D:\home\site\wwwroot\bin\jetty-distribution-9.1.2.v20140210\logs 文件夹中。 请注意，文件夹位置取决于所使用的 Jetty 版本。 例如，此处提供的路径适用于 Jetty 9.1.2。 查找 jetty_YYYY_MM_DD.stderrout.log**。
+对于市场和自定义部署，日志文件位于 D:\home\site\wwwroot\bin\jetty-distribution-9.1.2.v20140210\logs 文件夹中。 请注意，文件夹位置取决于所使用的 Jetty 版本。 例如，此处提供的路径适用于 Jetty 9.1.2。 查找 jetty_YYYY_MM_DD.stderrout.log  。
 
-对于门户应用设置部署，日志文件位于 D:\home\LogFiles 中。 查找*YYYY_MM_DD*.stderrout.log jetty_
+对于门户应用设置部署，日志文件位于 D:\home\LogFiles 中。 查找 jetty_YYYY_MM_DD.stderrout.log 
 
 ## <a name="can-i-send-email-from-my-azure-web-app"></a>是否可以从 Azure Web 应用发送电子邮件？
 

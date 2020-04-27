@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7bf064ff01693f7a65c756a99c435d7f1a39840e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61409169"
 ---
 # <a name="install-updates-on-your-storsimple-virtual-array---azure-portal"></a>在 StorSimple 虚拟阵列上安装更新 - Azure 门户
@@ -49,7 +49,7 @@ ms.locfileid: "61409169"
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>下载更新或修补程序
 
-1. 启动 Internet 资源管理器并[https://catalog.update.microsoft.com](https://catalog.update.microsoft.com)导航到 。
+1. 启动 Internet Explorer 并导航到[https://catalog.update.microsoft.com](https://catalog.update.microsoft.com)。
 
 2. 如果这是你在此计算机上首次使用 Microsoft 更新目录，请在系统提示是否安装 Microsoft 更新目录外接程序时单击“安装”。****
 
@@ -59,11 +59,11 @@ ms.locfileid: "61409169"
    
     ![搜索目录](./media/storsimple-virtual-array-install-update/download1.png)
 
-4. 单击 **“添加”**。 该更新随即添加到购物篮中。
+4. 单击 **“添加”** 。 该更新随即添加到购物篮中。
 
 5. 单击“查看购物篮”。****
 
-6. 单击“下载”****。 指定或**浏览**到下载项要保存到的本地位置。 更新随即会下载到指定的位置，放置在与更新名称相同的子文件夹中。 也可以将该文件夹复制到可通过设备访问的网络共享位置。
+6. 单击 **“下载”** 。 指定或**浏览**到下载项要保存到的本地位置。 更新随即会下载到指定的位置，放置在与更新名称相同的子文件夹中。 也可以将该文件夹复制到可通过设备访问的网络共享位置。
 
 7. 打开复制的文件夹，会看到 Microsoft 更新独立程序包文件 `WindowsTH-KB3011067-x64`。 此文件用于安装更新或修补程序。
 
@@ -75,11 +75,11 @@ ms.locfileid: "61409169"
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>安装更新或修补程序
 
-1. 在本地 Web UI 中，转到**维护** > **软件更新**。
+1. 在本地 web UI 中，请参阅**维护** > **软件更新**。
    
     ![更新设备](./media/storsimple-virtual-array-install-update/update1m.png)
 
-2. 在“更新文件路径”**** 中，输入更新或修补程序的文件名。 也可以浏览到网络共享上的更新或修补程序安装文件。 单击 **“应用”**。
+2. 在“更新文件路径”**** 中，输入更新或修补程序的文件名。 也可以浏览到网络共享上的更新或修补程序安装文件。 单击“应用”  。
    
     ![更新设备](./media/storsimple-virtual-array-install-update/update2m.png)
 
@@ -91,7 +91,7 @@ ms.locfileid: "61409169"
    
     ![更新设备](./media/storsimple-virtual-array-install-update/update5m.png)
 
-5. 重新启动完成后，会转到“登录”**** 页。 要验证设备软件是否已更新，请转到**维护** > **软件更新**。 Update 0.3 显示的软件版本应为 **10.0.0.0.0.10288.0**。
+5. 重新启动完成后，会转到“登录”**** 页。 若要验证是否已更新设备软件，请在本地 web UI 中，请参阅**维护** > **软件更新**。 Update 0.3 显示的软件版本应为 **10.0.0.0.0.10288.0**。
    
    > [!NOTE]
    > 我们在本地 Web UI 和 Azure 门户中报告的软件版本稍有不同。 例如，针对同一版本，本地 Web UI 报告 **10.0.0.0.0.10288**，而 Azure 门户则报告 **10.0.10288.0**。

@@ -16,10 +16,10 @@ ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 4767f7bb5ba02c838c0e21721e55a6564a14acd1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "69016654"
 ---
 # <a name="comparison-of-azure-on-demand-media-encoders"></a>Azure 点播媒体编码器之间的对比  
@@ -35,7 +35,7 @@ ms.locfileid: "69016654"
 |在编码时应用条件逻辑<br/>（例如，如果输入是 HD，执行 5.1 音频编码）|否|是|
 |隐藏式字幕|否|[是](media-services-premium-workflow-encoder-formats.md#closed_captioning)|
 |[Dolby® 专业响度校正](https://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> （使用 Dialogue Intelligence™）|否|是|
-|反交错、反转电视电影|Basic|广播质量|
+|反交错、反转电视电影|基本|广播质量|
 |检测和删除黑色边框 <br/>（左右黑边、上下黑边）|否|是|
 |生成缩略图|[是](media-services-dotnet-generate-thumbnail-with-mes.md)|[是](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)|
 |剪裁/修整并拼接视频|[是](media-services-advanced-encoding-with-mes.md#trim_video)|是|
@@ -46,8 +46,8 @@ ms.locfileid: "69016654"
 ## <a name="billing-meter-used-by-each-encoder"></a><a id="billing"></a>每个编码器使用的计费表
 | 媒体处理器名称 | 适用定价 | 说明 |
 | --- | --- | --- |
-| **Media Encoder Standard** |编码器 |将基于作为输出生成的所有媒体文件的总持续时间（以分钟为单位）对编码任务进行收费，按照“编码器”列下[此处][1]指定的费率。 |
-| **媒体编码器高级工作流** |高级编码器 |将基于作为输出生成的所有媒体文件的总持续时间（以分钟为单位）对编码任务进行收费，按照“高级编码器”列下[此处][1]指定的费率。 |
+| **Media Encoder Standard** |编码器 |编码任务会根据 ENCODER 列下作为输出生成的所有媒体文件的总持续时间（分钟）计费，费率已在[此处][1]指定。 |
+| **媒体编码器高级工作流** |高级编码器 |编码任务会根据 PREMIUM ENCODER 列下作为输出生成的所有媒体文件的总持续时间（分钟）计费，费率已在[此处][1]指定。 |
 
 ## <a name="input-containerfile-formats"></a>输入容器/文件格式
 | 输入容器/文件格式 | 媒体编码器标准版 | 媒体编码器高级工作流 |
@@ -99,9 +99,9 @@ ms.locfileid: "69016654"
 | MP3 (MPEG-1 Audio Layer 3) |是 |是 |
 | Windows Media 音频 |是 |是 |
 | WAV/PCM |是 |是 |
-| [Flac](https://en.wikipedia.org/wiki/FLAC)</a> |是 |否 |
+| [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |是 |否 |
 | [Opus](https://en.wikipedia.org/wiki/Opus_\(audio_format\)) |是 |否 |
-| [沃尔比斯](https://en.wikipedia.org/wiki/Vorbis)</a> |是 |否 |
+| [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |是 |否 |
 
 ## <a name="output-containerfile-formats"></a>输出容器/文件格式
 | 输出容器/文件格式 | 媒体编码器标准版 | 媒体编码器高级工作流 |

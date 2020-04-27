@@ -1,6 +1,6 @@
 ---
 title: 筛选器和动态清单 | Microsoft Docs
-description: 本主题介绍如何创建筛选器，以便客户端能够使用它们来流式传输流的特定部分。 媒体服务将创建动态清单来存档此选择性的流。
+description: 本主题介绍如何创建筛选器，以便客户端能够使用它们来流式传输流的特定部分。 媒体服务会创建动态清单来存档此选择性的流。
 services: media-services
 documentationcenter: ''
 author: cenkdin
@@ -15,30 +15,30 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 1234263fa800a17d0a5c235df54ca2751e3094bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "69015849"
 ---
 # <a name="filters-and-dynamic-manifests"></a>筛选器和动态清单
 
 > [!div class="op_single_selector" title1="选择所使用的媒体服务版本："]
-> * [版本 2](media-services-dynamic-manifest-overview.md)
-> * [版本 3](../latest/filters-dynamic-manifest-overview.md)
+> * [第 2 版](media-services-dynamic-manifest-overview.md)
+> * [第 3 版](../latest/filters-dynamic-manifest-overview.md)
 
-从 2.17 版开始，可使用媒体服务为资产定义筛选器。 这些筛选器是服务器端规则，可让客户选择执行如下操作：只播放一段视频（而非播放完整视频），或只指定客户设备可以处理的一部分音频和视频再现内容（而非与该资产相关的所有再现内容）。 通过按客户请求创建的**动态清单**可以实现对资产进行这种筛选，并基于指定的筛选器流式传输视频。
+从 2.17 版开始，可使用媒体服务为资产定义筛选器。 这些筛选器是服务器端规则，可让客户选择执行如下操作：只播放一段视频（而非播放完整视频），或只指定客户设备可以处理的一部分音频和视频再现内容（而非与该资产相关的所有再现内容）。 通过按客户请求创建的动态清单  可以实现对资产进行筛选，并基于指定的筛选器流式传输视频。
 
 本主题讨论一些常见方案，在这些方案中使用筛选器对于客户很有利，并链接到演示如何以编程方式创建筛选器的主题。
 
 ## <a name="overview"></a>概述
 将内容传送到客户（流式传输直播活动或视频点播）时，目标是：将优质视频传递到处于不同网络条件下的各种设备。 若要实现此目标，请执行以下操作：
 
-* 将流编码成多比特率（[自适应比特率](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)）视频流（这会负责处理质量和网络条件），并 
-* 使用媒体服务[动态打包](media-services-dynamic-packaging-overview.md)将流动态地重新打包成不同的协议（这会负责不同设备上的流式处理）。 媒体服务支持传送以下自适应比特率流式处理技术：HTTP Live Streaming (HLS)、平滑流式处理和 MPEG DASH。 
+* 将流编码成多比特率（[自适应比特率](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)）视频流（这将会负责处理质量和网络条件），并 
+* 使用媒体服务[动态打包](media-services-dynamic-packaging-overview.md)将流动态地重新打包成不同的协议（这将会负责不同设备上的流式处理）。 媒体服务支持以下自适应比特率流式处理技术的传送：HTTP Live Streaming (HLS)、平滑流式处理和 MPEG DASH。 
 
 ### <a name="manifest-files"></a>清单文件
-将资产编码为以自适应比特率流式处理时，会创建一个**清单**（播放列表）文件（此文件基于文本或 XML）。 **清单**文件包含流元数据，例如：轨迹类型（音频、视频或文本）、轨迹名称、开始和结束时间、比特率（质量）、轨迹语言、演播窗口（持续时间固定的滑动窗口）和视频编解码器 (FourCC)。 此文件还会通过提供有关下一个可播放视频片段及其位置的信息，来指示播放器检索下一个片段。 片段（或段）实际上是视频内容的“区块”。
+将资产编码为以自适应比特率流式处理时，会创建一个清单（播放列表）文件（此文件基于文本或 XML）  。 清单文件包含流元数据，例如：轨迹类型（音频、视频或文本）、轨迹名称、开始和结束时间、比特率（质量）、轨迹语言、演播窗口（持续时间固定的滑动窗口）和视频编解码器 (FourCC)  。 此文件还会通过提供有关下一个可播放视频片段及其位置的信息，来指示播放器检索下一个片段。 片段（或段）实际上是视频内容的“区块”。
 
 下面是清单文件的一个示例： 
 
@@ -73,14 +73,14 @@ ms.locfileid: "69015849"
     </SmoothStreamingMedia>
 
 ### <a name="dynamic-manifests"></a>动态清单
-在客户端需要比默认资产的清单文件中描述的内容更加具有灵活性时，这里具有[方案](media-services-dynamic-manifest-overview.md#scenarios)。 例如：
+在某些[情况](media-services-dynamic-manifest-overview.md#scenarios)下，默认资产的清单文件中描述的内容无法满足客户端所需的灵活性。 例如：
 
 * 特定于设备：只传送内容播放设备所支持的指定再现内容和/或指定的语言轨道（“再现内容筛选”）。 
 * 缩小清单以显示直播活动的子剪辑（“子剪辑筛选”）。
 * 修剪视频开头（“修剪视频”）。
 * 调整演播窗口，以便在播放器中提供长度有限的 DVR 窗口（“调整演播窗口”）。
 
-为实现这种灵活性，媒体服务会根据预定义的 **筛选器** 提供 [动态清单](media-services-dynamic-manifest-overview.md#filters)。  在定义筛选器后，客户端会使用筛选器来流式传输视频的特定再现内容或子剪辑。 客户端会在流 URL 中指定筛选器。 筛选器可应用到[动态打包](media-services-dynamic-packaging-overview.md)支持的自适应比特率流式处理协议：HLS、MPEG-DASH 和平滑流式处理。 例如：
+为实现这种灵活性，媒体服务会根据预定义的 **筛选器** 提供 [动态清单](media-services-dynamic-manifest-overview.md#filters)。  定义筛选器后，客户端会使用筛选器来流式传输视频的特定再现内容或子剪辑。 客户端将在流 URL 中指定筛选器。 筛选器可应用到[动态打包](media-services-dynamic-packaging-overview.md)支持的自适应比特率流式处理协议：HLS、MPEG-DASH 和平滑流式处理。 例如：
 
 包含筛选器的 MPEG DASH URL
 
@@ -98,7 +98,7 @@ ms.locfileid: "69015849"
 > 
 > 
 
-### <a name="filters"></a><a id="filters"></a>过滤 器
+### <a name="filters"></a><a id="filters"></a>筛选器
 有两种类型的资产筛选器： 
 
 * 全局筛选器（可以应用到 Azure 媒体服务帐户中所有的资产，拥有帐户的生存期）和 
@@ -125,7 +125,7 @@ ms.locfileid: "69015849"
 ![再现内容筛选][renditions1]
 
 ## <a name="removing-language-tracks"></a>删除语言轨迹
-您的资产可能包括多种语言，如英语、西班牙语、法语等。通常，Player SDK 管理器默认了每个用户选择的音轨选择和可用的音轨。 开发此类播放器 SDK 相当有挑战性，因为各个设备特定的播放器框架之间需要不同的实现。 此外，在某些平台上，Player API 是有限的，并且不包含用户无法选择或更改默认音轨的音频选择功能。使用资产筛选器，您可以通过创建仅包含所需音频语言的筛选器来控制行为。
+你的资产可能包含多种音频语言，例如英语、西班牙语、法语等。通常，播放机 SDK 管理器默认音频轨选择和每个用户选择的可用音频轨迹。 开发此类播放器 SDK 相当有挑战性，因为各个设备特定的播放器框架之间需要不同的实现。 此外，在某些平台上，播放器 Api 受到限制，且不包含音频选择功能，用户无法选择或更改默认音频轨。使用资产筛选器，可以通过创建只包含所需音频语言的筛选器来控制行为。
 
 ![语言轨迹筛选][language_filter]
 
@@ -165,7 +165,7 @@ ms.locfileid: "69015849"
 ## <a name="create-filters-programmatically"></a>以编程方式创建筛选器
 以下文章讨论与筛选器相关的媒体服务实体。 本文还演示如何以编程方式创建筛选器。  
 
-[使用 REST API 创建筛选器](media-services-rest-dynamic-manifest.md)。
+[用 REST Api 创建筛选器](media-services-rest-dynamic-manifest.md)。
 
 ## <a name="combining-multiple-filters-filter-composition"></a>组合多个筛选器（筛选器组合）
 也可以在一个 URL 中组合多个筛选器。 

@@ -9,22 +9,22 @@ ms.topic: article
 ms.date: 06/13/2019
 ms.author: alkohli
 ms.openlocfilehash: 760f5c6c929aa082993683d7a466a71c6484289a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67148343"
 ---
 # <a name="troubleshoot-data-copy-issues-in-azure-data-box-disk"></a>排查 Azure Data Box Disk 中的数据复制问题
 
-本文适用于 Microsoft Azure 数据盒磁盘，并介绍如何在将数据复制到磁盘时看到的任何问题进行故障排除。 本文还介绍了使用拆分复制工具时出现的问题。
+本文适用于 Microsoft Azure Data Box Disk，并介绍了如何排查在将数据复制到磁盘时遇到的任何问题。 本文还介绍了使用拆分复制工具时出现的问题。
 
 
 ## <a name="data-copy-issues-when-using-a-linux-system"></a>使用 Linux 系统时的数据复制问题
 
 本节详细介绍了使用 Linux 客户端将数据复制到磁盘时遇到的一些主要问题。
 
-### <a name="issue-drive-getting-mounted-as-read-only"></a>问题：驱动器以只读装
+### <a name="issue-drive-getting-mounted-as-read-only"></a>问题：将驱动器装载为只读
  
 **原因** 
 
@@ -36,7 +36,7 @@ ms.locfileid: "67148343"
 
 虽然重新装载成功，但不会保留数据。
 
-**分辨率**
+**解决方法**
 
 在 Linux 系统上执行以下步骤：
 
@@ -70,13 +70,13 @@ ms.locfileid: "67148343"
 8. 卸载并重新装载以验证文件持久性。
 9. 继续复制数据。
  
-### <a name="issue-error-with-data-not-persisting-after-copy"></a>问题：复制后数据未保留的错误
+### <a name="issue-error-with-data-not-persisting-after-copy"></a>问题：复制后数据不存在时出错
  
 **原因** 
 
 如果看到驱动器在卸载后没有数据（尽管数据已复制到其中），则可能在将驱动器装载为只读后将驱动器重新装载为读写。
 
-**分辨率**
+**解决方法**
  
 如果是这种情况，请参阅[将驱动器装载为只读](#issue-drive-getting-mounted-as-read-only)的解决方法。
 
@@ -91,7 +91,7 @@ ms.locfileid: "67148343"
 |---------|---------|
 |[信息] 正在检索卷: m 的 BitLocker 密码 <br>[错误] 检索卷 m: 的 BitLocker 密钥时捕获到异常<br> 序列未包含任何元素。|如果目标 Data Box 磁盘处于脱机状态，则会引发此错误。 <br> 使用 `diskmgmt.msc` 工具将磁盘联机。|
 |[错误] 引发异常：WMI 操作失败：<br> Method=UnlockWithNumericalPassword，ReturnValue=2150694965， <br>Win32Message=所提供的恢复密码的格式无效。 <br>BitLocker 恢复密码有 48 位。 <br>请验证恢复密码的格式是否正确，然后重试。|使用 Data Box 磁盘解锁工具首先解锁磁盘，然后重试该命令。 有关详细信息，请转到 <li> [为 Windows 客户端解锁 Data Box 磁盘。](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client) </li><li> [为 Linux 客户端解锁 Data Box 磁盘。](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client) </li>|
-|[错误] 引发了异常：目标驱动器上存在 DriveManifest.xml 文件。 <br> 这表明可能已使用不同的日志文件准备了目标驱动器。 <br>若要向同一驱动器添加更多数据，请使用之前的日志文件。 要删除现有数据并重用新导入作业的目标驱动器，请删除驱动器上的*DriveManifest.xml。* 使用新的日志文件重新运行此命令。| 当尝试将同一组驱动器用于多个导入会话时会收到此错误。 <br> 将一组驱动器仅用于一个拆分和复制会话。|
+|[错误] 引发了异常：目标驱动器上存在 DriveManifest.xml 文件。 <br> 这表明可能已使用不同的日志文件准备了目标驱动器。 <br>若要向同一驱动器添加更多数据，请使用之前的日志文件。 若要删除现有数据并将目标驱动器重新用于新的导入作业，请在驱动器上删除*DriveManifest* 。 使用新的日志文件重新运行此命令。| 当尝试将同一组驱动器用于多个导入会话时会收到此错误。 <br> 将一组驱动器仅用于一个拆分和复制会话。|
 |[错误] 引发了异常：CopySessionId importdata-sept-test-1 引用了以前的复制会话，无法将其重复用于新的复制会话。|当尝试为新作业使用与以前成功完成的作业相同的名称时，会报告此错误。<br> 为新作业分配唯一的名称。|
 |[信息] 目标文件或目录名称超出了 NTFS 长度限制。 |当目标文件因为文件路径太长而被重命名时，会报告此消息。<br> 修改 `config.json` 文件中的 disposition 选项来控制此行为。|
 |[错误] 引发了异常：JSON 转义序列不正确。 |当 Config.json 具有无效格式时，会报告此消息。 <br> 在保存文件之前使用 [JSONlint](https://jsonlint.com/) 验证 `config.json`。|

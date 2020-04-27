@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5308badf439254062a8aefca1840eb21bc234ace
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60580327"
 ---
 # <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>通过 StorSimple Device Manager 更改 StorSimple 虚拟阵列设备管理员密码
@@ -48,7 +48,7 @@ ms.locfileid: "60580327"
    
    1. 向下滚动到“设备管理员密码”部分。**** 提供包含 8 至 15 个字符的管理员密码。
    2. 确认该密码。
-   3. 单击边栏选项卡顶部的 **"保存**"。
+   3. 单击边栏选项卡顶部的 "**保存**"。
 
 现在将更新设备管理员密码。 可以使用此修改后的密码在本地访问设备。
 
@@ -60,7 +60,7 @@ ms.locfileid: "60580327"
 
 #### <a name="to-change-the-device-administrator-password-via-the-local-web-ui"></a>通过本地 Web UI 更改设备管理员密码
 
-1. 在本地 Web UI 中，单击设备的**维护** > **密码更改**。
+1. 在本地 web UI 中，单击设备的 "**维护** > **密码更改**"。
    
     ![更改 password1](./media/storsimple-virtual-array-change-device-admin-password/image40.png)
 2. 输入**当前密码**。

@@ -19,6 +19,8 @@
   items:
     - name: 导入证书
       href: tutorial-import-certificate.md
+    - name: 配置证书轮换
+      href: tutorial-rotate-certificates.md
 - name: 概念
   items:
     - name: Key Vault 证书入门

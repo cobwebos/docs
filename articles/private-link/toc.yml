@@ -24,6 +24,8 @@
       href: private-endpoint-overview.md
     - name: 专用链接服务
       href: private-link-service-overview.md
+    - name: 专用终结点 DNS 集成
+      href: private-endpoint-dns.md
 - name: 如何
   items:
     - name: 专门连接到存储帐户
@@ -38,7 +40,7 @@
       href: disable-private-link-service-network-policy.md
     - name: 管理专用终结点
       href: manage-private-endpoint.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 排查专用终结点连接问题
           href: troubleshoot-private-endpoint-connectivity.md
@@ -80,7 +82,7 @@
       href: 'https://azure.microsoft.com/pricing/details/private-link/'
     - name: 定价计算器
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-network'
     - name: 常见问题解答
       href: private-link-faq.md

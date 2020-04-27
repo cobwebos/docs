@@ -9,10 +9,10 @@ ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.openlocfilehash: 7fd88383e909ebd6be64c22721b813946e37179e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60616481"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>访问 Azure Data Lake Analytics 的诊断日志
@@ -25,7 +25,7 @@ ms.locfileid: "60616481"
 
 ## <a name="enable-logging"></a>启用日志记录
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录到[Azure 门户](https://portal.azure.com)。
 
 2. 打开 Data Lake Analytics 帐户，并从“监视”____ 部分选择“诊断日志”****。 接下来，选择“打开诊断”____。
 
@@ -41,12 +41,12 @@ ms.locfileid: "60616481"
 
      * 选择“流式传输到事件中心”**** 将日志数据流式传输到 Azure 事件中心。 如果具有用于实时分析传入日志的下游处理管道，请使用此选项。 若选择此选项，必须提供要使用的 Azure 事件中心的详细信息。
 
-     * 选择 __"发送到日志分析__"以将数据发送到 Azure 监视器服务。 如果要使用 Azure 监视器日志收集和分析日志，请使用此选项。
+     * 选择 "__发送到 Log Analytics__ "，将数据发送到 Azure Monitor 服务。 如果要使用 Azure Monitor 日志来收集和分析日志，请使用此选项。
    * 指定是要获取审核日志还是请求日志，或者两者。  请求日志捕获每个 API 请求。 审核日志记录由该 API 请求触发的所有操作。
 
    * 对于“存档到存储帐户”____，指定数据将保留的天数。
 
-   * 单击“保存”。____
+   * 单击“保存”  。
 
         > [!NOTE]
         > 单击“保存”____ 按钮之前，必须选择“存档到存储帐户”____、“流式传输到事件中心”____ 或“发送到 Log Analytics”____。
@@ -93,7 +93,7 @@ ms.locfileid: "60616481"
 
 ### <a name="request-logs"></a>请求日志
 
-此处是 JSON 格式的请求日志中的一个示例条目。 每个 Blob 都有一个称为**记录**的根对象，其中包含日志对象数组。
+此处是 JSON 格式的请求日志中的一个示例条目。 每个 blob 都有一个名为 "**记录**" 的根对象，其中包含一组日志对象。
 
     {
     "records":
@@ -125,32 +125,32 @@ ms.locfileid: "60616481"
 
 #### <a name="request-log-schema"></a>请求日志架构
 
-| “属性” | 类型 | 说明 |
+| 名称 | 类型 | 说明 |
 | --- | --- | --- |
-| time |String |日志时间戳（采用 UTC） |
-| resourceId |String |操作发生所在的资源的标识符 |
-| category |String |日志类别。 例如，“请求”****。 |
-| operationName |String |被记录的操作的名称。 例如，GetAggregatedJobHistory。 |
-| resultType |String |操作状态，例如，200。 |
-| callerIpAddress |String |作出请求的客户端 的IP 地址 |
-| correlationId |String |日志的标识符。 此值可用于分组相关的日志条目。 |
-| identity |Object |生成日志的标识 |
+| time |字符串 |日志时间戳（采用 UTC） |
+| resourceId |字符串 |操作发生所在的资源的标识符 |
+| category |字符串 |日志类别。 例如，“请求”****。 |
+| operationName |字符串 |被记录的操作的名称。 例如，GetAggregatedJobHistory。 |
+| resultType |字符串 |操作状态，例如，200。 |
+| callerIpAddress |字符串 |作出请求的客户端 的IP 地址 |
+| correlationId |字符串 |日志的标识符。 此值可用于分组相关的日志条目。 |
+| identity |对象 |生成日志的标识 |
 | properties |JSON |请参阅下节（请求日志属性架构），了解详细信息 |
 
 #### <a name="request-log-properties-schema"></a>请求日志属性架构
 
-| “属性” | 类型 | 说明 |
+| 名称 | 类型 | 说明 |
 | --- | --- | --- |
-| HttpMethod |String |用于此操作的 HTTP 方法。 例如 GET。 |
-| 路径 |String |操作执行所在的路径 |
+| HttpMethod |字符串 |用于此操作的 HTTP 方法。 例如 GET。 |
+| 路径 |字符串 |操作执行所在的路径 |
 | RequestContentLength |int |HTTP 请求的内容长度 |
-| ClientRequestId |String |唯一标识此请求的标识符 |
-| StartTime |String |服务器接收请求的时间 |
-| EndTime |String |服务器发送响应的时间 |
+| ClientRequestId |字符串 |唯一标识此请求的标识符 |
+| StartTime |字符串 |服务器接收请求的时间 |
+| EndTime |字符串 |服务器发送响应的时间 |
 
 ### <a name="audit-logs"></a>审核日志
 
-此处是 JSON 格式的审核日志中的一个示例条目。 每个 Blob 都有一个称为**记录**的根对象，其中包含日志对象数组。
+此处是 JSON 格式的审核日志中的一个示例条目。 每个 blob 都有一个名为 "**记录**" 的根对象，其中包含一组日志对象。
 
     {
     "records":
@@ -177,15 +177,15 @@ ms.locfileid: "60616481"
 
 #### <a name="audit-log-schema"></a>审核日志架构
 
-| “属性” | 类型 | 说明 |
+| 名称 | 类型 | 说明 |
 | --- | --- | --- |
-| time |String |日志时间戳（采用 UTC） |
-| resourceId |String |操作发生所在的资源的标识符 |
-| category |String |日志类别。 例如，“审核”****。 |
-| operationName |String |被记录的操作的名称。 例如，JobSubmitted。 |
-| resultType |String |作业状态的字状态 (operationName)。 |
-| resultSignature |String |作业状态的其他详细信息 (operationName)。 |
-| identity |String |请求操作的用户。 例如，susan@contoso.com 。 |
+| time |字符串 |日志时间戳（采用 UTC） |
+| resourceId |字符串 |操作发生所在的资源的标识符 |
+| category |字符串 |日志类别。 例如，“审核”****。 |
+| operationName |字符串 |被记录的操作的名称。 例如，JobSubmitted。 |
+| resultType |字符串 |作业状态的字状态 (operationName)。 |
+| resultSignature |字符串 |作业状态的其他详细信息 (operationName)。 |
+| identity |字符串 |请求操作的用户。 例如，susan@contoso.com 。 |
 | properties |JSON |请参阅下节（审核日志属性架构），了解详细信息 |
 
 > [!NOTE]
@@ -195,22 +195,22 @@ ms.locfileid: "60616481"
 
 #### <a name="audit-log-properties-schema"></a>审核日志属性架构
 
-| “属性” | 类型 | 说明 |
+| 名称 | 类型 | 说明 |
 | --- | --- | --- |
-| JobId |String |分配给作业的 ID |
-| JobName |String |提供给作业的名称 |
-| JobRunTime |String |用于处理作业的运行时 |
-| SubmitTime |String |提交作业的时间（采用 UTC） |
-| StartTime |String |作业提交后开始运行的时间（采用 UTC） |
-| EndTime |String |作业结束时间 |
-| 并行度 |String |在提交期间为此作业请求的 Data Lake Analytics 单元数 |
+| JobId |字符串 |分配给作业的 ID |
+| JobName |字符串 |提供给作业的名称 |
+| JobRunTime |字符串 |用于处理作业的运行时 |
+| SubmitTime |字符串 |提交作业的时间（采用 UTC） |
+| StartTime |字符串 |作业提交后开始运行的时间（采用 UTC） |
+| EndTime |字符串 |作业结束时间 |
+| 并行度 |字符串 |在提交期间为此作业请求的 Data Lake Analytics 单元数 |
 
 > [!NOTE]
 > **SubmitTime**、**StartTime**、**EndTime** 和 **Parallelism** 提供有关操作的信息。 仅当该操作已启动或已完成时，这些项才包含值。 例如，operationName**** 含有值 JobSubmitted**** 后，SubmitTime**** 将仅包含一个值。
 
 ## <a name="process-the-log-data"></a>处理日志数据
 
-Azure Data Lake Analytics 提供如何处理和分析日志数据的示例。 您可以在 中找到示例。 [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample)
+Azure Data Lake Analytics 提供如何处理和分析日志数据的示例。 可以在[https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample)中找到该示例。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)

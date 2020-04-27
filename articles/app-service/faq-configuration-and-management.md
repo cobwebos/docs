@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 810219bca5c75e3ee7e65c6b7302531bca89788d
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 867c011cb3086cab736d17501e72bc477d0d2889
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81869965"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159994"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure Web 应用配置及管理常见问题解答
 
@@ -35,14 +35,14 @@ ms.locfileid: "81869965"
 若要了解如何为应用服务 Web 应用购买和设置自定义域，请参阅[在应用服务中配置和配置自定义域名](manage-custom-dns-buy-domain.md)。
 
 
-## <a name="how-do-i-upload-and-configure-an-existing-tlsssl-certificate-for-my-web-app"></a>如何为 Web 应用上载和配置现有的 TLS/SSL 证书？
+## <a name="how-do-i-upload-and-configure-an-existing-tlsssl-certificate-for-my-web-app"></a>如何实现上传和配置 web 应用的现有 TLS/SSL 证书？
 
-要了解如何上载和设置现有的自定义 TLS/SSL 证书，请参阅[向应用服务应用添加 TLS/SSL 证书](configure-ssl-certificate.md)。
+若要了解如何上传和设置现有的自定义 TLS/SSL 证书，请参阅[将 TLS/ssl 证书添加到应用服务应用](configure-ssl-certificate.md)。
 
 
-## <a name="how-do-i-purchase-and-configure-a-new-tlsssl-certificate-in-azure-for-my-web-app"></a>如何为 Web 应用在 Azure 中购买和配置新的 TLS/SSL 证书？
+## <a name="how-do-i-purchase-and-configure-a-new-tlsssl-certificate-in-azure-for-my-web-app"></a>如何实现在 Azure 中为 web 应用购买和配置新的 TLS/SSL 证书？
 
-要了解如何为应用服务 Web 应用购买和设置 TLS/SSL 证书，请参阅[向应用服务应用添加 TLS/SSL 证书](configure-ssl-certificate.md)。
+若要了解如何为应用服务 web 应用购买和设置 TLS/SSL 证书，请参阅[将 tls/ssl 证书添加到应用服务应用](configure-ssl-certificate.md)。
 
 
 ## <a name="how-do-i-move-application-insights-resources"></a>如何移动 Application Insights 资源？
@@ -63,9 +63,9 @@ ms.locfileid: "81869965"
 2. 在“应用设置”**** 下，添加此设置：
     * 键 = WEBSITE_TIME_ZONE
     * 值 = *所需时区*
-3. 选择“保存”。 
+3. 选择“保存”  。
 
-对于在 Windows 上运行的应用服务，请参阅[默认时区](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones)一文中的“时区”**** 列了解接受的值。 对于在 Linux 上运行的应用程序服务，将[TZ 数据库名称](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)设置为时区值。 下面是 TZ 数据库名称的示例：美国/Adak。
+对于在 Windows 上运行的应用服务，请参阅[默认时区](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones)一文中的“时区”**** 列了解接受的值。 对于在 Linux 上运行的应用服务，将[TZ 数据库名称](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)设置为时区值。 下面是 TZ 数据库名称的示例：中美洲/Adak。
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>为何我的连续 Web 作业有时会失败？
 
@@ -84,7 +84,7 @@ ms.locfileid: "81869965"
 
 ## <a name="how-do-i-get-a-reserved-or-dedicated-inbound-ip-address-for-my-web-app"></a>如何获取 Web 应用的保留或专用入站 IP 地址？
 
-要为向 Azure 应用网站进行的入站呼叫设置专用或预留的 IP 地址，请安装和配置基于 IP 的 TLS/SSL 证书。
+若要为 Azure 应用网站上的入站调用设置专用或保留 IP 地址，请安装和配置基于 IP 的 TLS/SSL 证书。
 
 请注意，若要将专用或保留 IP 地址用于入站调用，应用服务计划必须处于基本或更高服务计划中。
 
@@ -125,7 +125,7 @@ PCI DSS 版本 3.1 认证要求禁用传输层安全性 (TLS) 1.0。 当前，�
 
 查看 Web 作业日志：
 
-1. 登录到 [Kudu 网站](https://*yourwebsitename*.scm.azurewebsites.net)。
+1. 登录到**Kudu 网站**（`https://*yourwebsitename*.scm.azurewebsites.net`）。
 2. 选择 Web 作业。
 3. 选择“切换输出”**** 按钮。
 4. 若要下载输出文件，请选择“下载”**** 链接。
@@ -147,7 +147,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 ## <a name="how-do-i-add-a-url-rewrite-rule"></a>如何添加 URL 重写规则？
 
-若要添加 URL 重写规则，请使用 **wwwroot** 文件夹中的相关配置条目创建一个 web.config 文件。 有关详细信息，请参阅[Azure 应用服务：了解 URL 重写](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)。
+若要添加 URL 重写规则，请使用 **wwwroot** 文件夹中的相关配置条目创建一个 web.config 文件。 有关详细信息，请参阅[Azure 应用 Services：了解 URL 重写](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)。
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>如何控制应用服务的入站流量？
 
@@ -282,7 +282,7 @@ Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Gr
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>如何将默认的 *.azurewebsites.net 域重定向到我的 Azure Web 应用的自定义域？
 
-在 Azure 中使用 Web 应用创建新网站时，会向站点分配默认的 sitename.azurewebsites.net** 域。 如果将自定义主机名添加到您的网站，并且不希望用户能够访问默认的 *.azurewebsites.net 域，则可以重定向默认 URL。 若要了解如何将所有流量从网站的默认域重定向到自定义域，请参阅[在 Azure Web 应用中将默认域重定向到自定义域](https://zainrizvi.io/blog/block-default-azure-websites-domain/)。
+在 Azure 中使用 Web 应用创建新网站时，会向站点分配默认的 sitename.azurewebsites.net** 域。 如果将自定义主机名添加到站点，并且不希望用户能够访问默认的 *. azurewebsites.net 域，则可以重定向默认的 URL。 若要了解如何将所有流量从网站的默认域重定向到自定义域，请参阅[在 Azure Web 应用中将默认域重定向到自定义域](https://zainrizvi.io/blog/block-default-azure-websites-domain/)。
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>如何确定应用服务中安装的 .NET 版本？
 

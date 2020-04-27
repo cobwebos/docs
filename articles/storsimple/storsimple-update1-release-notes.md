@@ -16,10 +16,10 @@ ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 11138857e33eec0f854ddb61956ea24c858c49a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60531016"
 ---
 # <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>适用于 StorSimple 8000 系列设备的 Update 1.2 发行说明
@@ -64,7 +64,7 @@ Update 1.2 可应用于任何运行 Release (GA)、Update 0.1、Update 0.2 或 U
 ## <a name="issues-fixed-in-update-12"></a>在 Update 1.2 中修复的问题
 下表提供在 Update 1.2、1.1 和 1 中已修复问题的摘要。    
 
-| 不是。 | Feature | 问题 | 更新中已修复 | 适用于物理设备 | 适用于虚拟设备 |
+| 否。 | 功能 | 问题 | 更新中已修复 | 适用于物理设备 | 适用于虚拟设备 |
 | --- | --- | --- | --- | --- | --- |
 | 1 |Windows PowerShell for StorSimple |用户远程使用 Windows PowerShell for StorSimple 访问 StorSimple 设备，再启动安装向导时，只要输入 Data 0 IP 就会发生崩溃。 这个 bug 现已在 Update 1 中修复。 |更新 1 |是 |是 |
 | 2 |恢复出厂设置 |在某些情况下，执行恢复出厂设置时，StorSimple 设备会卡住并显示此消息：**正在进行恢复出厂设置 (阶段 8)**。 如果在该 cmdlet 正在运行时按下 CTRL+C，就会发生这种情况。 这个 bug 现已修复。 |更新 1 |是 |否 |
@@ -82,7 +82,7 @@ Update 1.2 可应用于任何运行 Release (GA)、Update 0.1、Update 0.2 或 U
 ## <a name="known-issues-in-update-12"></a>Update 1.2 中的已知问题
 下表提供了此版本中已知问题的摘要。
 
-| 不是。 | Feature | 问题 | 注释/解决方法 | 适用于物理设备 | 适用于虚拟设备 |
+| 否。 | 功能 | 问题 | 注释/解决方法 | 适用于物理设备 | 适用于虚拟设备 |
 | --- | --- | --- | --- | --- | --- |
 | 1 |磁盘仲裁 |在极少数情况下，如果 8600 设备的 EBOD 机箱中的大部分磁盘断开连接，导致没有磁盘仲裁，然后存储池会脱机。 即使磁盘重新连接，存储池也将保持脱机状态。 |需要重新启动设备。 如果问题仍然存在，请联系 Microsoft 支持部门以了解后续步骤。 |是 |否 |
 | 2 |错误的控制器 ID |更换控制器后，控制器 0 可能显示为控制器 1。 在更换控制器的过程中，从对等节点加载映像时，控制器 ID 刚开始可能显示为对等控制器的 ID。 在极少数情况下，此行为也可能在系统重新启动后出现。 |不需要任何用户操作。 控制器更换过程完成后，这种情况会自动解决。 |是 |否 |

@@ -9,10 +9,10 @@ ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
 ms.openlocfilehash: c7211bc805f4ed1d026faedbfdc9d53d3c1dfd93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68721292"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>如何通过 Ruby 使用队列存储
@@ -46,7 +46,7 @@ require "azure"
 ```
 
 ## <a name="setup-an-azure-storage-connection"></a>设置 Azure 存储连接
-Azure 模块将读取环境变量**AZURE\_存储\_帐户**和**\_AZURE\_存储ACCESS_KEY**以获取有关连接到 Azure 存储帐户所需的信息。 如果未设置这些环境变量，则在使用 **Azure::QueueService** 前必须通过以下代码指定帐户信息：
+Azure 模块将读取环境变量**\_azure 存储\_帐户**和**Azure\_存储\_ACCESS_KEY**以获取连接到 azure 存储帐户所需的信息。 如果未设置这些环境变量，则在使用 **Azure::QueueService** 前必须通过以下代码指定帐户信息：
 
 ```ruby
 Azure.config.storage_account_name = "<your azure storage account>"
@@ -55,7 +55,7 @@ Azure.config.storage_access_key = "<your Azure storage access key>"
 
 从 Azure 门户中的经典或 Resource Manager 存储帐户中获取这些值：
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 导航到要使用的存储帐户。
 3. 在右侧的“设置”边栏选项卡中，单击“访问密钥”****。
 4. 在出现的“访问密钥”边栏选项卡中，将看到访问密钥 1 和访问密钥 2。 可以使用其中任意一个。 
@@ -86,7 +86,7 @@ azure_queue_service.create_message("test-queue", "test message")
 ```
 
 ## <a name="how-to-peek-at-the-next-message"></a>如何：扫视下一条消息
-可调用 **peek\_messages()** 方法，查看队列前面的消息，而不必从队列中将其删除。 默认情况下，**查看\_消息（）** 会查看单个消息。 也可以指定要扫视的消息数。
+可调用 **peek\_messages()** 方法，查看队列前面的消息，而不必从队列中将其删除。 默认情况下 **，\_速览消息（）** 查看单个消息。 也可以指定要扫视的消息数。
 
 ```ruby
 result = azure_queue_service.peek_messages("test-queue",
@@ -97,9 +97,9 @@ result = azure_queue_service.peek_messages("test-queue",
 可通过两个步骤从队列中删除消息。
 
 1. 在调用 **list\_messages()** 时，默认情况下会获取队列中的下一条消息。 也可以指定要获取的消息数。 从 **list\_messages()** 返回的消息变得对从此队列读取消息的任何其他代码不可见。 将传递以秒为单位的可见性超时值作为参数。
-2. 要完成从队列中删除消息，还必须调用**delete_message（）**。
+2. 若要完成从队列中删除消息，还必须调用**delete_message （）**。
 
-此删除消息的两步过程可确保当代码因硬件或软件故障而无法处理消息时，其他代码实例可以获取同一消息并重试。 代码在消息处理后立即调用**删除\_消息（）。**
+此删除消息的两步过程可确保当代码因硬件或软件故障而无法处理消息时，其他代码实例可以获取同一消息并重试。 代码在处理消息后立即调用**delete\_message （）** 。
 
 ```ruby
 messages = azure_queue_service.list_messages("test-queue", 30)
@@ -152,6 +152,6 @@ azure_queue_service.delete_queue("test-queue")
 现在，已了解有关队列存储的基础知识，可单击下面的链接来了解更复杂的存储任务。
 
 * 访问[Azure 存储团队博客](https://blogs.msdn.com/b/windowsazurestorage/)
-* 访问 GitHub 上的 Ruby 存储库[的 Azure SDK](https://github.com/WindowsAzure/azure-sdk-for-ruby)
+* 访问 GitHub 上的[AZURE SDK For Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby)存储库
 
 若要了解 Azure 队列服务（本文所述）和 Azure 服务总线队列（[如何使用服务总线队列](https://azure.microsoft.com/develop/ruby/how-to-guides/service-bus-queues/)文章中所述）之间的比较，请参阅 [Azure 队列和服务总线队列 - 比较与对照](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)

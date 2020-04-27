@@ -1,5 +1,5 @@
 ---
-title: 高性能计算 - Azure 虚拟机 |微软文档
+title: 高性能计算-Azure 虚拟机 |Microsoft Docs
 description: 了解 Azure 上的高性能计算。
 services: virtual-machines
 documentationcenter: ''
@@ -13,19 +13,19 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
 ms.openlocfilehash: 10549abfbdacf1fc1ae6b99f4cab20a290c32a2d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67707824"
 ---
 # <a name="optimization-for-linux"></a>针对 Linux 进行优化
 
-本文展示了优化操作系统映像的一些关键技术。 了解有关启用[InfiniBand](enable-infiniband.md)和优化操作系统映像的更多详细信息。
+本文介绍了几种优化 OS 映像的关键技术。 详细了解如何[启用](enable-infiniband.md)"不允许" 和 "优化 OS 映像"。
 
-## <a name="update-lis"></a>更新 LIS
+## <a name="update-lis"></a>更新 .LIS
 
-如果使用自定义映像进行部署（例如，较旧的操作系统（如 CentOS/RHEL 7.4 或 7.5），则更新 VM 上的 LIS。
+如果使用自定义映像（例如，CentOS/RHEL 7.4 或7.5 等较早的 OS）进行部署，请在 VM 上更新 .LIS。
 
 ```bash
 wget https://aka.ms/lis
@@ -42,7 +42,7 @@ pushd LISISO
 echo 1 >/proc/sys/vm/zone_reclaim_mode
 ```
 
-要使这种情况在 VM 重新启动后持续：
+要使其在 VM 重新启动后保持不变：
 
 ```bash
 echo "vm.zone_reclaim_mode = 1" >> /etc/sysctl.conf sysctl -p
@@ -62,9 +62,9 @@ iptables -nL
 sed -i -e's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 ```
 
-## <a name="disable-cpupower"></a>禁用 cpu 电源
+## <a name="disable-cpupower"></a>禁用 cpupower
 
-禁用 cpu 电源。
+禁用 cpupower。
 
 ```bash
 service cpupower status
@@ -75,6 +75,6 @@ sudo systemctl disable cpupower
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解有关启用[InfiniBand](enable-infiniband.md)和优化操作系统映像的更多详细信息。
+* 详细了解如何[启用无法实现](enable-infiniband.md)和优化操作系统映像。
 
-* 在 Azure 上了解有关[HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)的更多详细信息。
+* 了解有关 Azure 上的[HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)的详细信息。

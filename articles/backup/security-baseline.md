@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b18463720b63f62a2ae4b19a3bdbae6862bc9985
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 9be6c174e30514ef81cd5fa020d50ffa238317be
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82120725"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160881"
 ---
 # <a name="azure-security-baseline-for-backup"></a>用于备份的 Azure 安全基准
 
@@ -140,7 +140,7 @@ ms.locfileid: "82120725"
 
 **指南**：对于控制平面审核日志记录，启用 Azure 活动日志诊断设置，并将日志发送到 Log Analytics 工作区、azure 事件中心或 azure 存储帐户以进行存档。 使用 Azure 活动日志数据，可以确定在 Azure 资源的控制平面级别执行的任何写入操作（PUT、POST、DELETE）的 "操作内容、操作人员和操作时间"。
 
-此外，通过 Azure Monitor 引入日志来聚合由 Azure 备份生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区查询和执行分析，并使用存储帐户进行长期/存档存储。 或者，你可以将和机载数据启用到 Azure Sentinel 或第三方安全事件和事件管理（SIEM）。 
+此外，通过 Azure Monitor 引入日志来聚合由 Azure 备份生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区查询和执行分析，并使用存储帐户进行长期/存档存储。 或者，你可以将和机载数据启用到 Azure Sentinel 或第三方安全事件和事件管理（SIEM）。
 
 - [如何对 Azure 活动日志启用诊断设置](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
 
@@ -248,7 +248,7 @@ ms.locfileid: "82120725"
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
-**指南**： AZURE ACTIVE DIRECTORY （AD）具有内置角色，必须显式分配这些角色并可查询。 使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组成员的帐户。 
+**指南**： AZURE ACTIVE DIRECTORY （AD）具有内置角色，必须显式分配这些角色并可查询。 使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组成员的帐户。
 
 支持文档：
 
@@ -310,7 +310,7 @@ ms.locfileid: "82120725"
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：对所有管理任务使用专用计算机（特权访问工作站）
 
-**指南**：将特权访问工作站（PAW）与 Azure 多重身份验证（MFA）结合使用，配置为登录并配置支持 Azure 备份的资源。 
+**指南**：将特权访问工作站（PAW）与 Azure 多重身份验证（MFA）结合使用，配置为登录并配置支持 Azure 备份的资源。
 
 - [特权访问工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
@@ -358,7 +358,7 @@ ms.locfileid: "82120725"
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期查看和协调用户访问权限
 
-**指南**： AZURE ACTIVE DIRECTORY （AD）提供日志以帮助你发现陈旧的帐户。 此外，使用 Azure 标识访问评审来有效地管理组成员身份、访问企业应用程序和角色分配。 可以定期查看用户访问权限，以确保只有正确的用户才能继续访问。 
+**指南**： AZURE ACTIVE DIRECTORY （AD）提供日志以帮助你发现陈旧的帐户。 此外，使用 Azure 标识访问评审来有效地管理组成员身份、访问企业应用程序和角色分配。 可以定期查看用户访问权限，以确保只有正确的用户才能继续访问。
 
 - [了解 Azure AD 报告](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
 
@@ -630,7 +630,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看可用于 Azure 备�
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：监视未经批准的 Azure 资源
 
-**指南**：使用 Azure 策略对可在订阅中创建的资源类型施加限制。 
+**指南**：使用 Azure 策略对可在订阅中创建的资源类型施加限制。
 
 使用 Azure 资源关系图在其订阅中查询/发现资源。  确保环境中存在的所有 Azure 资源都已获得批准。
 
@@ -836,7 +836,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看可用于 Azure 备�
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据公开
 
-**指南**：通过实现凭据扫描器来识别代码中的凭据。 凭据扫描器还鼓励将发现的凭据迁移到更安全的位置，例如 Azure Key Vault。 
+**指南**：通过实现凭据扫描器来识别代码中的凭据。 凭据扫描器还鼓励将发现的凭据迁移到更安全的位置，例如 Azure Key Vault。
 
 - [如何设置凭据扫描器](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
@@ -858,11 +858,11 @@ Microsoft 对基础平台进行了扫描和修补。 查看可用于 Azure 备�
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预扫描要上载到非计算 Azure 资源的文件
 
-**指南**：在支持 azure 服务（例如，azure 备份）的底层主机上启用了 Microsoft 反恶意软件，但它不会在你的内容上运行。 
+**指南**：在支持 azure 服务（例如，azure 备份）的底层主机上启用了 Microsoft 反恶意软件，但它不会在你的内容上运行。
 
-预先扫描上传到非计算 Azure 资源的任何文件，例如应用服务、Data Lake Storage、Blob 存储等。 
+预先扫描上传到非计算 Azure 资源的任何文件，例如应用服务、Data Lake Storage、Blob 存储等。
 
-使用 Azure 安全中心的数据服务威胁检测来检测已上传到存储帐户的恶意软件。 
+使用 Azure 安全中心的数据服务威胁检测来检测已上传到存储帐户的恶意软件。
 
 - [了解适用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
 
@@ -950,7 +950,7 @@ Azure Key Vault 中的备份客户托管密钥。
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件计分和优先级过程
 
-**指南**：安全中心为每个警报分配一个严重性，以帮助你确定应该首先调查的警报的优先级。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。 
+**指南**：安全中心为每个警报分配一个严重性，以帮助你确定应该首先调查的警报的优先级。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
 此外，清楚地标记订阅（例如 生产、非生产），并创建一个命名系统来明确识别和分类 Azure 资源。
 

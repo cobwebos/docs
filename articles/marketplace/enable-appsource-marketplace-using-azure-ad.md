@@ -7,16 +7,16 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: d2f33fc8b1bdd15b53ad9130b5cc598dd6d5ee1a
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 324f8def5ddafb15156a31fe5addabadcee6f115
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81684633"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160607"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>使用 Azure Active Directory 启用 AppSource 和市场列表
 
- Azure Active Directory (Azure AD) 是一种云标识服务，它使用 Microsoft 帐户进行身份验证。 Azure AD 使用行业标准框架。 [了解有关 Azure 活动目录 的更多内容](https://azure.microsoft.com/services/active-directory)。
+ Azure Active Directory (Azure AD) 是一种云标识服务，它使用 Microsoft 帐户进行身份验证。 Azure AD 使用行业标准框架。 [详细了解 Azure Active Directory](https://azure.microsoft.com/services/active-directory)。
 
 ## <a name="azure-ad-benefits"></a>Azure AD 优势
 
@@ -31,21 +31,21 @@ Microsoft AppSource 和 Azure 市场客户使用产品内体验来搜索列表�
 
 AppSource 和 Azure 市场的各种[列表选项和产品/服务类型](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)对 Azure AD 实现有不同的要求。 有关详细信息，请参阅下表：
 
-| **优惠类型**    | **是否需要 Azure AD SSO？**  |  |   |  |
+| **产品类型**    | **是否需要 Azure AD SSO？**  |  |   |  |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
 |  | 与我联系 | 试用 | 体验版 | 事务处理 |
-| 虚拟机 | 空值 | 否 | 否 | 否 |
-| Azure 应用（解决方案模板）  | 空值 | 空值 | 空值 | 空值 |
-| 托管应用  | 空值 | 空值 | 空值 | 否 |
+| 虚拟机 | 不适用 | 否 | 否 | 否 |
+| Azure 应用（解决方案模板）  | 不适用 | 不适用 | 不适用 | 不适用 |
+| 托管应用  | 不适用 | 不适用 | 不适用 | 否 |
 | SaaS  | 否 | 是 | 是 | 是 |
-| 容器  | 空值 | 空值 | 空值 | 否 |
-| 咨询服务  | 否 | 空值 | 空值 | 空值 |
+| 容器  | 不适用 | 不适用 | 不适用 | 否 |
+| 咨询服务  | 否 | 不适用 | 不适用 | 不适用 |
 
 有关 SaaS 技术需求的详细信息，请参阅 [SaaS 应用程序产品/服务发布指南](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)。
 
 ## <a name="azure-ad-integration"></a>Azure AD 集成
 
-- 有关如何通过将 Azure AD 集成到列表中来启用单一登录的信息，请参阅[针对开发者的 Azure Active Directory]( https://aka.ms/aaddev)。
+- 有关如何通过将 Azure AD 集成到列表中来启用单一登录的信息，请参阅[针对开发者的 Azure Active Directory]( https://docs.microsoft.com/azure/active-directory/develop/)。
 - 若要获取有关 Azure AD 单一登录的详细信息，请参阅[Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
 ## <a name="enable-a-trial-listing"></a>启用试用列表
@@ -73,7 +73,7 @@ AppSource 和 Azure 市场的各种[列表选项和产品/服务类型](https://
 如果对使用 Azure AD 联合单一登录不熟悉，请执行以下步骤：
 
 1. 在市场中注册应用。
-1. 使用[OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code)或[OpenID 连接](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code)使用 Azure AD 开发 SSO。
+1. 使用[OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code)或[OpenID connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code)开发 Azure AD 的 SSO。
 1. 启用 Azure AD 中的多租户支持功能，以提供一键式试用体验。
 
 ### <a name="single-tenant-solutions"></a>单租户解决方案
@@ -81,7 +81,7 @@ AppSource 和 Azure 市场的各种[列表选项和产品/服务类型](https://
 使用 Azure AD 支持以下操作之一：
 
 - 使用 [Azure AD B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) 将访客用户添加到目录。
-- 使用"**联系我**"发布选项手动为客户设置试用版。
+- 使用 "**联系我**" 发布选项手动设置客户的试用版。
 - 开发针对每个用户的体验版。
 - 生成使用 SSO 的多租户示例演示应用。
 
@@ -89,8 +89,8 @@ AppSource 和 Azure 市场的各种[列表选项和产品/服务类型](https://
 
 如果尚未注册， 
 
-- [了解](https://azuremarketplace.microsoft.com/sell)市场。
+- [了解](https://azuremarketplace.microsoft.com/sell)marketplace。
 
-要在合作伙伴中心注册，请开始创建新产品/服务或处理现有产品/服务：
+若要在合作伙伴中心注册，请开始创建新产品/服务或使用现有产品/服务：
 
-- [登录合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)创建或完成您的优惠。
+- [登录到合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)，创建或完成产品/服务。

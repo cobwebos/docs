@@ -219,7 +219,7 @@
           href: stream-analytics-troubleshoot-output.md
         - name: 查询逻辑
           href: stream-analytics-troubleshoot-query.md
-        - name: 活动日志和诊断日志
+        - name: 活动和资源日志
           href: stream-analytics-job-diagnostic-logs.md
         - name: 数据错误
           href: data-errors.md
@@ -601,7 +601,7 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=stream-analytics'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-stream-analytics'
     - name: 视频
       href: 'https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest'

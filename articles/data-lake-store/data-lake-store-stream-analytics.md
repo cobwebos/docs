@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: twooley
 ms.openlocfilehash: d3dbacd58b3bda3fbf8ee8ad5f175eccc2cb2a24
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60194806"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>使用 Azure 流分析将 Azure 存储 Blob 中的数据流式传输至 Azure Data Lake Storage Gen1 中
@@ -25,11 +25,11 @@ ms.locfileid: "60194806"
 ## <a name="prerequisites"></a>先决条件
 在开始阅读本教程前，必须具有：
 
-* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **Azure 存储帐户**。 将用此帐户的 blob 容器来输入流分析作业的数据。 在本教程中，假设有一个名为 **storageforasa** 的存储帐户，并且在该帐户中有一个名为 **storageforasacontainer** 的容器。 创建容器后，将示例数据文件上传到其中。 
   
-* **Data Lake Storage Gen1 帐户**。 使用 Azure 门户，按照[Azure 数据湖存储第 1 代开始](data-lake-store-get-started-portal.md)的说明进行操作。 假设有名为“myadlsg1”的 Data Lake Storage Gen1 帐户****。 
+* **Data Lake Storage Gen1 帐户**。 按照[使用 Azure 门户中的 Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)中的说明进行操作。 假设有名为“myadlsg1”的 Data Lake Storage Gen1 帐户****。 
 
 ## <a name="create-a-stream-analytics-job"></a>创建流分析作业
 首先创建流分析作业，其中包括输入源和输出目标。 在本教程中，源是 Azure blob 容器，目标是 Data Lake Storage Gen1。
@@ -64,7 +64,7 @@ ms.locfileid: "60194806"
    * 对于“分隔符”****，选择“制表符”****。
    * 对于“编码”****，选择“UTF-8”****。
 
-     单击 **“创建”**。 现在门户将添加该输入并测试与其的连接。
+     单击“创建”。  现在门户将添加该输入并测试与其的连接。
 
 
 ## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>为作业创建 Data Lake Storage Gen1 输出
@@ -92,11 +92,11 @@ ms.locfileid: "60194806"
    * 对于“分隔符”****，选择“制表符”****。
    * 对于“编码”****，选择“UTF-8”****。
     
-     单击 **“创建”**。 现在门户将添加该输出并测试与其的连接。
+     单击“创建”。  现在门户将添加该输出并测试与其的连接。
     
 ## <a name="run-the-stream-analytics-job"></a>运行流分析作业
 
-1. 要运行流分析作业，必须从 **"查询"** 选项卡运行查询。在本教程中，您可以通过用作业输入和输出别名替换占位符来运行示例查询，如下图所示。
+1. 若要运行流分析作业，必须从 "**查询**" 选项卡运行查询。对于本教程，可以通过将占位符替换为作业输入和输出别名来运行示例查询，如下面的屏幕截图中所示。
 
     ![运行查询](./media/data-lake-store-stream-analytics/run.query.png "运行查询")
 

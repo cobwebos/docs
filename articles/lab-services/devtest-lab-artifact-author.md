@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/30/2019
 ms.author: spelluru
 ms.openlocfilehash: 69b83590fb9b25c68d231b732b985ba633bb6884
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "66399203"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>为开发测试实验室虚拟机创建自定义项目
@@ -53,7 +53,7 @@ ms.locfileid: "66399203"
       }
     }
 
-| 元素名称 | 必需？ | 描述 |
+| 元素名称 | 必需？ | 说明 |
 | --- | --- | --- |
 | $schema |否 |JSON 架构文件的位置。 JSON 架构文件可帮助测试定义文件的有效性。 |
 | title |是 |实验室中显示的项目的名称。 |
@@ -76,7 +76,7 @@ ms.locfileid: "66399203"
       }
     }
 
-| 元素名称 | 必需？ | 描述 |
+| 元素名称 | 必需？ | 说明 |
 | --- | --- | --- |
 | type |是 |参数值的类型。 请参阅以下允许类型列表。 |
 | displayName |是 |在实验室中显示给用户的参数的名称。 |
@@ -89,8 +89,8 @@ ms.locfileid: "66399203"
 * bool（任何有效的 JSON 布尔值）
 * 数组（任何有效的 JSON 数组）
 
-## <a name="secrets-as-secure-strings"></a>机密作为安全字符串
-将机密声明为安全字符串。 下面是在`parameters`**工件文件.json**文件部分中声明安全字符串参数的语法：
+## <a name="secrets-as-secure-strings"></a>安全字符串形式的机密
+将机密声明为安全字符串。 下面是在`parameters` **artifactfile.json**文件的部分中声明安全字符串参数的语法：
 
 ```json
 
@@ -102,7 +102,7 @@ ms.locfileid: "66399203"
     },
 ```
 
-对于项目安装命令，请运行使用 Convert 到 SecureString 命令创建的安全字符串的 PowerShell 脚本。 
+对于 "项目安装" 命令，请运行 PowerShell 脚本，该脚本采用通过使用 Convertto-html-SecureString 命令创建的安全字符串。 
 
 ```json
   "runCommand": {
@@ -110,9 +110,9 @@ ms.locfileid: "66399203"
   }
 ```
 
-有关完整的示例工件file.json 和工件.ps1（PowerShell 脚本），请参阅[GitHub 上的此示例](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes)。
+有关完整示例 artifactfile.json 和项目 ps1 （PowerShell 脚本），请参阅[GitHub 上的此示例](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes)。
 
-需要注意的另一个重要点是，在捕获输出以进行用户调试时，不要将机密记录到控制台。 
+需要注意的另一个重要事项是，为用户调试捕获输出时不将机密记录到控制台。 
 
 ## <a name="artifact-expressions-and-functions"></a>项目表达式和函数
 可以使用表达式和函数构建项目安装命令。

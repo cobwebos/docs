@@ -1,6 +1,6 @@
 ---
 title: 为企业采用 Azure 开发测试实验室
-description: 本文提供了在企业中使用 Azure 开发人员测试实验室的规范性指南。
+description: 本文提供在企业中使用 Azure 开发测试实验室的说明性指导。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,31 +14,31 @@ ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 32e828f420d41d7a67e4f41ac8a4a0698711ce2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "64916409"
 ---
 # <a name="devtest-labs-in-the-enterprise"></a>企业中的开发测试实验室
-企业正在迅速采用云，因为具有敏捷性、灵活性和经济性[等优点](/azure/architecture/cloud-adoption/business-strategy/cloud-migration-business-case)。 第一步通常是开发和测试工作负载。 Azure 开发人员测试实验室提供的[功能](devtest-lab-concepts.md)使企业受益并支持[关键开发/测试方案](devtest-lab-guidance-get-started.md)。
+企业正在快速采用云，因为其[优势](/azure/architecture/cloud-adoption/business-strategy/cloud-migration-business-case)包括灵活性、灵活性和经济性。 第一步是开发和测试工作负荷。 Azure 开发测试实验室提供了一些[功能](devtest-lab-concepts.md)，可使企业和支持[关键的开发/测试方案](devtest-lab-guidance-get-started.md)。
 
-将工作负载迁移到云的企业的常见问题包括：
+将工作负荷迁移到云的企业的常见问题包括：
 
 - [保护开发/测试资源](devtest-lab-guidance-governance-policy-compliance.md)
-- [管理和理解成本](devtest-lab-guidance-governance-cost-ownership.md)
-- 为开发人员实现自助服务，同时不影响企业安全性和合规性
-- 自动化和扩展开发人员测试实验室，以涵盖其他方案
+- [管理和了解成本](devtest-lab-guidance-governance-cost-ownership.md)
+- 为开发人员启用自助服务，不会影响企业安全性和合规性
+- 自动执行和扩展开发测试实验室以涵盖附加方案
 - [将基于开发测试实验室的解决方案扩展到数千个资源](devtest-lab-guidance-scale.md)
-- [开发人员测试实验室的大规模部署](devtest-lab-guidance-orchestrate-implementation.md)
-- [从概念证明开始](devtest-lab-guidance-orchestrate-implementation.md)
+- [开发测试实验室的大规模部署](devtest-lab-guidance-orchestrate-implementation.md)
+- [概念证明入门](devtest-lab-guidance-orchestrate-implementation.md)
 
 ## <a name="intended-audience"></a>目标受众
-本文档适用于负责建立和审查部署和监督运营的企业 IT 规划人员、架构师和经理。 这些文章强调整个流程和建议的设计原则。 目标是促进安全、稳定的开发/测试环境，最终推动在组织内采用 Azure DevTest 实验室。
+本文档适用于负责建立和审查部署和监督操作的企业 IT 规划人员、架构师和管理人员。 本文重点介绍总体过程和建议的设计原则。 目标是促进安全稳定的开发/测试环境，最终推动在组织中采用 Azure 开发测试实验室。
 
 ## <a name="enterprise-customers"></a>企业客户
 
-许多当前的 DevTest Labs 企业客户成功使用 DevTest Labs 进行开发和测试其组织中的工作负荷。 [了解详情](https://azure.microsoft.com/case-studies/?term=DevTest+labs)。
+许多当前开发测试实验室企业客户成功使用开发测试实验室进行开发，并在其组织中测试工作负荷。 [了解详细信息](https://azure.microsoft.com/case-studies/?term=DevTest+labs)。
 
 ## <a name="next-steps"></a>后续步骤
-- [企业参考体系结构](devtest-lab-reference-architecture.md)
+- [企业的参考体系结构](devtest-lab-reference-architecture.md)

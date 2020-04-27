@@ -11,12 +11,12 @@ metadata:
   author: rohinkoul
   ms.author: rohink
   ms.date: 08/19/2019
-  ms.openlocfilehash: eb0172894a1cc03e465ada78575c9b7b1f76141a
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 2159cd10327d5a2d58ed012d7e2572e9f8ec387b
+  ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "76937997"
+  ms.lasthandoff: 04/24/2020
+  ms.locfileid: "82130748"
 landingContent:
 - title: 关于流量管理器
   linkLists:
@@ -72,11 +72,11 @@ landingContent:
       url: traffic-manager-point-internet-domain.md
     - text: 性能注意事项
       url: traffic-manager-performance-considerations.md
-- title: 故障排除
+- title: 疑难解答
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 启用诊断日志记录
+    - text: 启用资源日志记录
       url: traffic-manager-diagnostic-logs.md
     - text: 排查降级状态问题
       url: traffic-manager-troubleshooting-degraded.md

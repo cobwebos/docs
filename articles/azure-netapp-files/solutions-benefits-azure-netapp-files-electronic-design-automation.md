@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 8a287ec5cd33c9f2a96af7ad8162f7c8f54df118
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: fcede16619e8488796adc6f4c60af30643c1aadf
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134164"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160147"
 ---
 # <a name="benefits-of-using-azure-netapp-files-for-electronic-design-automation"></a>使用 Azure NetApp 文件实现电子设计自动化的好处
 
@@ -31,7 +31,7 @@ ms.locfileid: "82134164"
 
 |    方案    |    卷    |    客户端<br> SLES15 D16s_v3  |
 |----------------|---------------|--------------------------------|
-|    一种         |    1          |    1                           |
+|    一个         |    1          |    1                           |
 |    两种         |    6          |    24                          |
 |    三级       |    12         |    24                          |
 
@@ -77,7 +77,7 @@ ms.locfileid: "82134164"
 
 功能阶段包含初始规范和逻辑设计。 逻辑设计转换为物理芯片时，会发生物理阶段。 在注销和磁带传出阶段，最终检查已完成，设计将交付到 foundry 进行制造。  
 
-功能阶段包含顺序和随机读写 i/o。 功能阶段是元数据密集型，如文件状态和访问调用。 尽管元数据操作实际上没有大小，但读写操作的范围介于 1 K 和 16 K 之间。大多数读数介于 4 K 和 16 K 之间。 大多数写入量为 4 K 或更小。  物理阶段由完全按顺序读取和写入操作组成，混合了 32 K 和 64 K OP 大小。  
+功能阶段包含顺序和随机读写 i/o。 功能阶段是元数据密集型，如文件状态和访问调用。 尽管元数据操作实际上没有大小，但读写操作的范围介于 1 K 和 16 K 之间。大多数读数介于 4 K 和 16 K 之间。 大多数写入量为 4 K 或更小。 物理阶段包含完全按顺序读取和写入操作，混合了 32 K 和 64 K OP 大小。  
 
 在上面的图形中，大部分吞吐量都来自工作负荷的顺序物理阶段。 I/o 来自小型随机和元数据密集型功能阶段。 这两个阶段都是并行发生的。 
 

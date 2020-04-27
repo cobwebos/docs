@@ -33,8 +33,14 @@
       href: azure-netapp-files-cost-model.md
     - name: Azure NetApp 文件网络规划指南
       href: azure-netapp-files-network-topologies.md
-    - name: 使用 Azure NetApp 文件的解决方案体系结构
-      href: azure-netapp-files-solution-architectures.md
+    - name: 解决方案
+      items:
+        - name: 使用 Azure NetApp 文件的解决方案体系结构
+          href: azure-netapp-files-solution-architectures.md
+        - name: 将 Azure NetApp 文件与 Oracle Database 配合使用的好处
+          href: solutions-benefits-azure-netapp-files-oracle-database.md
+        - name: 使用 Azure NetApp 文件实现电子设计自动化的好处
+          href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
     - name: 有关 Azure NetApp 文件的常见问题解答
       href: azure-netapp-files-faqs.md
 - name: 操作指南
@@ -65,6 +71,8 @@
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
     - name: 开发
       items:
+        - name: REST
+          href: azure-netapp-files-develop-with-rest-api.md
         - name: Azure NetApp 文件 SDK 和 CLI 工具
           href: azure-netapp-files-sdk-cli.md
         - name: 排查 Azure NetApp 文件资源提供程序错误

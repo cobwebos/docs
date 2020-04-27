@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ee8802aeb2a760e255ab4f5e99010dfedc45e0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67108299"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>登录 Microsoft 应用程序时出现的问题
@@ -33,7 +33,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 -   对于 Microsoft 或第三方发布的可供任何人免费使用的应用程序，可以通过**用户许可**授予用户访问权限。 这意味着他们使用其 Azure AD 工作或学校帐户登录到应用程序，并允许它访问其帐户上一些受限制的数据集。
 
--   对于 Microsoft 或第三方自由发布的供任何人使用的应用程序，用户也可以通过**管理员同意**获得访问权限。 这意味着管理员已确定组织中的所有人都可以使用此应用程序，因此他们使用全局管理员帐户可以登录到应用程序并向组织中所有人授予访问权限。
+-   对于 Microsoft 或第三方免费发布以便任何人使用的应用程序，也可以通过**管理员同意**向用户授予访问权限。 这意味着管理员已确定组织中的所有人都可以使用此应用程序，因此他们使用全局管理员帐户可以登录到应用程序并向组织中所有人授予访问权限。
 
 要解决问题，请从[对于应用程序访问要考虑的常规问题区域](#general-problem-areas-with-application-access-to-consider)开始，并阅读演练：对 Microsoft 应用程序访问进行故障排除的步骤了解详细信息。
 
@@ -45,7 +45,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 -   [组问题](#problems-with-groups)
 
--   [条件访问策略的问题](#problems-with-conditional-access-policies)
+-   [条件访问策略问题](#problems-with-conditional-access-policies)
 
 -   [应用程序许可问题](#problems-with-application-consent)
 
@@ -61,13 +61,13 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
   * 请确保在 Azure Active Directory 中**用户的帐户存在**。 [检查在 Azure Active Directory 中是否存在用户帐户](#problems-with-the-users-account)
 
-  * 确保用户帐户已**启用**登录。[检查用户帐户状态](#problems-with-the-users-account)
+  * 请确保**已启用**用户帐户登录。[检查用户的帐户状态](#problems-with-the-users-account)
 
   * 确保用户的**密码未过期或遗忘**。 [重置用户的密码](#reset-a-users-password)或[启用自助服务密码重置](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
   * 确保**多重身份验证**未阻止用户访问。 [检查用户的多重身份验证状态](#check-a-users-multi-factor-authentication-status)或[检查用户的身份验证联系信息](#check-a-users-authentication-contact-info)
 
-  * 确保**条件访问策略**或**标识保护**策略不会阻止用户访问。 [检查特定的条件访问策略](#problems-with-conditional-access-policies)或[检查特定应用程序的条件访问策略](#check-a-specific-applications-conditional-access-policy)或[禁用特定条件访问策略](#disable-a-specific-conditional-access-policy)
+  * 确保**条件访问策略**或**标识保护**策略不会阻止用户访问。 [检查特定的条件访问策略](#problems-with-conditional-access-policies)或[检查特定应用程序的条件性访问](#check-a-specific-applications-conditional-access-policy)策略，或者[禁用特定的条件性访问策略](#disable-a-specific-conditional-access-policy)
 
   * 确保用户的**身份验证联系信息**是最新的以允许强制执行多重身份验证或条件访问策略。 [检查用户的多重身份验证状态](#check-a-users-multi-factor-authentication-status)或[检查用户的身份验证联系信息](#check-a-users-authentication-contact-info)
 
@@ -101,7 +101,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 -   [重置用户的密码](#reset-a-users-password)
 
--   [启用自助服务密码重置](#enable-self-service-password-reset)
+-   [启用自助式密码重置](#enable-self-service-password-reset)
 
 -   [检查用户的多重身份验证状态](#check-a-users-multi-factor-authentication-status)
 
@@ -111,19 +111,19 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 -   [检查用户的已分配许可证](#check-a-users-assigned-licenses)
 
--   [向用户分配许可证](#assign-a-user-a-license)
+-   [为用户分配许可证](#assign-a-user-a-license)
 
 ### <a name="check-if-a-user-account-exists-in-azure-active-directory"></a>检查在 Azure Active Directory 中是否存在用户帐户
 
 若要检查是否存在某个用户帐户，请执行以下步骤：
 
-1.  打开[**Azure 门户**](https://portal.azure.com/)并作为**全局管理员登录。**
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”  身份登录。
 
 2.  在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
 
-4.  单击导航菜单中的 **"用户"和"组**"。
+4.  单击导航菜单中的 "**用户和组**"。
 
 5.  单击“所有用户”****。
 
@@ -135,19 +135,19 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 若要检查用户帐户的状态，请执行以下步骤：
 
-1.  打开[**Azure 门户**](https://portal.azure.com/)并作为**全局管理员登录。**
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”  身份登录。
 
 2.  在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
 
-4.  单击导航菜单中的 **"用户"和"组**"。
+4.  单击导航菜单中的 "**用户和组**"。
 
 5.  单击“所有用户”****。
 
 6.  **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
-7.  单击**配置文件**。
+7.  单击 "**配置文件**"。
 
 8.  在“设置”**** 下，确保“阻止登录”**** 设置为“否”****。
 
@@ -155,13 +155,13 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 若要重置用户的密码，请执行以下步骤：
 
-1.  打开[**Azure 门户**](https://portal.azure.com/)并作为**全局管理员登录。**
+1.  打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
 
 2.  在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
 
-4.  单击导航菜单中的 **"用户"和"组**"。
+4.  单击导航菜单中的 "**用户和组**"。
 
 5.  单击“所有用户”****。
 
@@ -187,13 +187,13 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 若要检查用户的多重身份验证状态，请执行以下步骤：
 
-1. 打开[**Azure 门户**](https://portal.azure.com/)并作为**全局管理员登录。**
+1. 打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
 
 2. 在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
 
 3. 在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
 
-4. 单击导航菜单中的 **"用户"和"组**"。
+4. 单击导航菜单中的 "**用户和组**"。
 
 5. 单击“所有用户”****。
 
@@ -211,19 +211,19 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 若要检查用于多重身份验证、条件访问、标识保护和密码重置的用户身份验证联系信息，请执行以下步骤：
 
-1.  打开[**Azure 门户**](https://portal.azure.com/)并作为**全局管理员登录。**
+1.  打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
 
 2.  在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
 
-4.  单击导航菜单中的 **"用户"和"组**"。
+4.  单击导航菜单中的 "**用户和组**"。
 
 5.  单击“所有用户”****。
 
 6.  **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
-7.  单击**配置文件**。
+7.  单击 "**配置文件**"。
 
 8.  向下滚动到“身份验证联系信息”****。
 
@@ -233,13 +233,13 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 若要检查用户的组成员身份，请执行以下步骤：
 
-1.  打开[**Azure 门户**](https://portal.azure.com/)并作为**全局管理员登录。**
+1.  打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
 
 2.  在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
 
-4.  单击导航菜单中的 **"用户"和"组**"。
+4.  单击导航菜单中的 "**用户和组**"。
 
 5.  单击“所有用户”****。
 
@@ -251,13 +251,13 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 若要检查用户的已分配许可证，请执行以下步骤：
 
-1.  打开[**Azure 门户**](https://portal.azure.com/)并作为**全局管理员登录。**
+1.  打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
 
 2.  在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
 
-4.  单击导航菜单中的 **"用户"和"组**"。
+4.  单击导航菜单中的 "**用户和组**"。
 
 5.  单击“所有用户”****。
 
@@ -269,13 +269,13 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 若要将许可证分配给用户，请执行以下步骤：
 
-1.  打开[**Azure 门户**](https://portal.azure.com/)并作为**全局管理员登录。**
+1.  打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
 
 2.  在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
 
-4.  单击导航菜单中的 **"用户"和"组**"。
+4.  单击导航菜单中的 "**用户和组**"。
 
 5.  单击“所有用户”****。
 
@@ -283,7 +283,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 7.  单击“许可证”**** 查看当前已分配给用户的许可证。
 
-8.  单击"**分配"** 按钮。
+8.  单击 "**分配**" 按钮。
 
 9.  从可用产品列表中选择**一个或多个产品**。
 
@@ -309,13 +309,13 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 若要检查组的成员身份，请执行以下步骤：
 
-1.  打开[**Azure 门户**](https://portal.azure.com/)并作为**全局管理员登录。**
+1.  打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
 
 2.  在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
 
-4.  单击导航菜单中的 **"用户"和"组**"。
+4.  单击导航菜单中的 "**用户和组**"。
 
 5.  单击“所有组”****。
 
@@ -327,13 +327,13 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 若要检查动态组的成员身份条件，请执行以下步骤：
 
-1.  打开[**Azure 门户**](https://portal.azure.com/)并作为**全局管理员登录。**
+1.  打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
 
 2.  在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
 
-4.  单击导航菜单中的 **"用户"和"组**"。
+4.  单击导航菜单中的 "**用户和组**"。
 
 5.  单击“所有组”****。
 
@@ -347,13 +347,13 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 若要检查组的已分配许可证，请执行以下步骤：
 
-1.  打开[**Azure 门户**](https://portal.azure.com/)并作为**全局管理员登录。**
+1.  打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
 
 2.  在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
 
-4.  单击导航菜单中的 **"用户"和"组**"。
+4.  单击导航菜单中的 "**用户和组**"。
 
 5.  单击“所有组”****。
 
@@ -365,13 +365,13 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 若要重新处理组的已分配许可证，请执行以下步骤：
 
-1. 打开[**Azure 门户**](https://portal.azure.com/)并作为**全局管理员登录。**
+1. 打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
 
 2. 在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
 
 3. 在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
 
-4. 单击导航菜单中的 **"用户"和"组**"。
+4. 单击导航菜单中的 "**用户和组**"。
 
 5. 单击“所有组”****。
 
@@ -390,13 +390,13 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 若要将许可证分配给组，请执行以下步骤：
 
-1. 打开[**Azure 门户**](https://portal.azure.com/)并作为**全局管理员登录。**
+1. 打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
 
 2. 在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
 
 3. 在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
 
-4. 单击导航菜单中的 **"用户"和"组**"。
+4. 单击导航菜单中的 "**用户和组**"。
 
 5. 单击“所有组”****。
 
@@ -404,7 +404,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 7. 单击“许可证”**** 查看当前已分配给组的许可证。
 
-8. 单击"**分配"** 按钮。
+8. 单击 "**分配**" 按钮。
 
 9. 从可用产品列表中选择**一个或多个产品**。
 
@@ -423,22 +423,22 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 若要检查或验证单个条件访问策略，请执行以下操作：
 
-1. 打开[**Azure 门户**](https://portal.azure.com/)并作为**全局管理员登录。**
+1. 打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
 
 2. 在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
 
 3. 在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
 
-4. 单击导航菜单中的 **"企业应用程序**"。
+4. 单击导航菜单中的 "**企业应用程序**"。
 
-5. 单击**条件访问**导航项。
+5. 单击 "**条件访问**导航" 项。
 
 6. 单击要检查的策略。
 
 7. 检查不存在任何可能会阻止用户访问的特定条件、分配或其他设置。
 
    >[!NOTE]
-   >您可能希望暂时禁用此策略，以确保它不会影响登录。为此，请将 **"启用策略**"切换设置为 **"否**"，然后单击"**保存**"按钮。
+   >你可能希望暂时禁用此策略，以确保它不会影响登录。为此，请将 "**启用策略**" 切换为 "**否**"，然后单击 "**保存**" 按钮。
    >
    >
 
@@ -446,13 +446,13 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 若要检查或验证单个应用程序当前配置的条件访问策略，请执行以下操作：
 
-1.  打开[**Azure 门户**](https://portal.azure.com/)并作为**全局管理员登录。**
+1.  打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
 
 2.  在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
 
-4.  单击导航菜单中的 **"企业应用程序**"。
+4.  单击导航菜单中的 "**企业应用程序**"。
 
 5.  单击“所有应用程序”****。
 
@@ -463,14 +463,14 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
      >
      >
 
-7.  单击**条件访问**导航项。
+7.  单击 "**条件访问**导航" 项。
 
 8.  单击要检查的策略。
 
 9.  检查不存在任何可能会阻止用户访问的特定条件、分配或其他设置。
 
      >[!NOTE]
-     >您可能希望暂时禁用此策略，以确保它不会影响登录。为此，请将 **"启用策略**"切换设置为 **"否**"，然后单击"**保存**"按钮。
+     >你可能希望暂时禁用此策略，以确保它不会影响登录。为此，请将 "**启用策略**" 切换为 "**否**"，然后单击 "**保存**" 按钮。
      >
      >
 
@@ -478,15 +478,15 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 若要检查或验证单个条件访问策略，请执行以下操作：
 
-1.  打开[**Azure 门户**](https://portal.azure.com/)并作为**全局管理员登录。**
+1.  打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
 
 2.  在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
 
-4.  单击导航菜单中的 **"企业应用程序**"。
+4.  单击导航菜单中的 "**企业应用程序**"。
 
-5.  单击**条件访问**导航项。
+5.  单击 "**条件访问**导航" 项。
 
 6.  单击要检查的策略。
 

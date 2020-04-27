@@ -168,13 +168,15 @@
         - name: 大规模部署
           items:
             - name: Azure 门户
-              href: how-to-deploy-monitor.md
+              href: how-to-deploy-at-scale.md
             - name: Azure CLI
-              href: how-to-deploy-monitor-cli.md
+              href: how-to-deploy-cli-at-scale.md
             - name: Visual Studio Code
-              href: how-to-deploy-monitor-vscode.md
+              href: how-to-deploy-vscode-at-scale.md
     - name: 监视和诊断部署
       items:
+        - name: 监视 IoT Edge 部署
+          href: how-to-monitor-iot-edge-deployments.md
         - name: EdgeAgent 直接方法
           href: how-to-edgeagent-direct-method.md
     - name: 使用 IoT Edge 设备作为网关
@@ -265,7 +267,7 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=iot-edge'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-iot-edge'
     - name: 技术案例研究
       href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'

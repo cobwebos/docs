@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: d8717b8f365e692b5f27bf8a04d65c5147b8f31b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "65603211"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>使用 Power BI 分析 Azure Data Lake Storage Gen1 中的数据
@@ -25,9 +25,9 @@ ms.locfileid: "65603211"
 ## <a name="prerequisites"></a>先决条件
 在开始阅读本教程前，必须具有：
 
-* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Data Lake Storage Gen1 帐户**。 请遵循[通过 Azure 门户开始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 中的说明进行操作。 本文假定已创建名为“myadlsg1”的 Data Lake Storage Gen1 帐户，且已向其上传了示例数据文件 (Drivers.txt)********。 可从 [Azure Data Lake Git Repository](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)（Azure Data Lake Git 存储库）下载此示例文件。
-* **电源 BI 桌面**。 可从 [Microsoft 下载中心](https://www.microsoft.com/en-us/download/details.aspx?id=45331) 进行下载。 
+* **Power BI Desktop**。 可从 [Microsoft 下载中心](https://www.microsoft.com/en-us/download/details.aspx?id=45331) 进行下载。 
 
 ## <a name="create-a-report-in-power-bi-desktop"></a>在 Power BI Desktop 中创建报表
 1. 在计算机上启动 Power BI Desktop。
@@ -37,16 +37,16 @@ ms.locfileid: "65603211"
 3. 如果出现一个对话框显示连接器处于开发阶段，选择继续。
 4. 在“Azure Data Lake Store”**** 对话框中，提供 Data Lake Storage Gen1 帐户的 URL，并单击“确定”****。
    
-    ![数据湖存储第 1 代的 URL](./media/data-lake-store-power-bi/get-data-lake-store-account-url.png "数据湖存储第 1 代的 URL")
+    ![Data Lake Storage Gen1 的 URL](./media/data-lake-store-power-bi/get-data-lake-store-account-url.png "Data Lake Storage Gen1 的 URL")
 5. 在下一个对话框中，单击“登录”**** 以登录到 Data Lake Storage Gen1 帐户。 将重定向到组织的登录页面。 按照提示登录到该帐户。
    
-    ![登录数据存储第 1 代](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "登录数据存储第 1 代")
+    ![登录 Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "登录 Data Lake Storage Gen1")
 6. 登录成功后，单击“连接”****。
    
     ![连接到 Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "连接到 Data Lake Storage Gen1")
 7. 下一个对话框中会显示已上传至 Data Lake Storage Gen1 帐户的文件。 验证信息，并单击“加载”****。
    
-    ![加载来自数据存储第 1 代的数据](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "加载来自数据存储第 1 代的数据")
+    ![从 Data Lake Storage Gen1 加载数据](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "从 Data Lake Storage Gen1 加载数据")
 8. 数据成功加载到 Power BI 后，“字段”**** 选项卡会出现以下字段。
    
     ![已导入的字段](./media/data-lake-store-power-bi/imported-fields.png "已导入的字段")
@@ -74,18 +74,18 @@ ms.locfileid: "65603211"
 14. 查询更新后，“字段”**** 选项卡会显示可用于可视化的新字段。
     
     ![已更新的字段](./media/data-lake-store-power-bi/updated-query-fields.png "已更新的字段")
-15. 让我们创建一个饼图来表示给定国家/地区的每个城市的驱动因素。 为此，请如下进行选择。
+15. 让我们创建一个饼图来表示给定国家/地区的每个城市中的驱动程序。 为此，请如下进行选择。
     
     1. 在“可视化”选项卡中，单击饼图符号。
        
         ![创建饼图](./media/data-lake-store-power-bi/create-pie-chart.png "创建饼图")
-    2. 我们将使用的列是第**4 列**（城市名称）和**列 7（** 国家/地区的名称）。 如下所示，从“字段”**** 选项卡将这些列拖动到“可视化”**** 选项卡。
+    2. 我们要使用的列是**列 4** （城市名称）和**列 7** （国家/地区名称）。 如下所示，从“字段”**** 选项卡将这些列拖动到“可视化”**** 选项卡。
        
         ![创建视觉效果](./media/data-lake-store-power-bi/create-visualizations.png "创建视觉效果")
     3. 此时饼图应如下所示。
        
         ![饼图](./media/data-lake-store-power-bi/pie-chart.png "创建视觉效果")
-16. 通过从页面级别筛选器中选择特定国家/地区，您现在可以查看所选国家/地区每个城市的驱动程序数。 例如，在“可视化”**** 选项卡中的“页面级别筛选器”**** 中，选择“巴西”****。
+16. 通过从页面级别筛选器中选择特定的国家/地区，你现在可以看到所选国家/地区的每个城市中的驱动程序数。 例如，在“可视化”**** 选项卡中的“页面级别筛选器”**** 中，选择“巴西”****。
     
     ![选择国家/地区](./media/data-lake-store-power-bi/select-country.png "选择一个国家/地区")
 17. 饼图会自动更新，显示巴西各个城市中的司机。

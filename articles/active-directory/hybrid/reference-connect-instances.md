@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c342eac5460d8d52422b0497b1283f367660eb3c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "66298821"
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect：有关实例的特殊注意事项
@@ -39,7 +39,7 @@ Azure AD Connect 最常用于全球范围内的 Azure AD 和 Office 365 实例�
 
 德国 Microsoft 云中当前不存在的功能：
 
-* **密码写回**可用于预览 Azure AD Connect 版本 1.1.570.0 及之后。
+* **密码写回**可用于 Azure AD Connect 版本1.1.570.0 和更晚后的预览版。
 * 其他 Azure AD Premium 服务不可用。
 
 ## <a name="microsoft-azure-government"></a>Microsoft Azure 政府
@@ -51,16 +51,16 @@ DirSync 的早期版本支持该云。 从 Azure AD Connect 的 1.1.180 版本�
 | --- |
 | \*.microsoftonline.com |
 | \*.microsoftonline.us |
-| \*.windows.net（自动 Azure 政府租户检测需要） |
+| \*windows.net （需要自动进行 Azure 政府租户检测） |
 | \*.gov.us.microsoftonline.com |
 | + 证书吊销列表 |
 
 > [!NOTE]
-> 从 Azure AD Connect 版本 1.1.647.0 开始，如果 *.windows.net在代理服务器上打开，则不再需要在注册表中设置 Azure 实例值。 但是，对于不允许从 Azure AD Connect 服务器进行 Internet 连接的客户，可以使用以下手动配置。
+> 从 Azure AD Connect 版本1.1.647.0 中，不再需要设置注册表中的 AzureInstance 值，因为在代理服务器上打开了 windows.net。 但是，对于不允许其 Azure AD Connect 服务器建立 Internet 连接的客户，可以使用以下手动配置。
 
 ### <a name="manual-configuration"></a>手动配置
 
-以下手动配置步骤用于确保 Azure AD 连接使用 Azure 政府同步终结点。
+以下手动配置步骤用于确保 Azure AD Connect 使用 Azure 政府同步终结点。
 
 1. 开始 Azure AD Connect 安装。
 2. 出现第一页时（应在其中接受 EULA），请不要继续，而是让安装向导保持运行。
@@ -68,4 +68,4 @@ DirSync 的早期版本支持该云。 从 Azure AD Connect 的 1.1.180 版本�
 4. 返回 Azure AD Connect 安装向导，接受 EULA，并继续。 在安装过程中，请确保使用**自定义配置**安装路径（而不是快速安装），然后照常继续安装。
 
 ## <a name="next-steps"></a>后续步骤
-详细了解[将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

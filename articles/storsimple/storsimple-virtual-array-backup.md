@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a61dcca1f78b6ba444a2deefcf6b8bb4fd5c5087
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60581233"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>备份 StorSimple 虚拟阵列上的共享或卷
@@ -58,7 +58,7 @@ StorSimple 虚拟阵列具有一个默认备份策略，该策略从每天的指
    
     ![导航到“备份策略”](./media/storsimple-virtual-array-backup/changebuschedule5.png)
 
-4. 单击“保存”。****
+4. 单击“保存”  。
 
 ### <a name="take-a-manual-backup"></a>创建手动备份
 
@@ -108,7 +108,7 @@ StorSimple 虚拟阵列具有一个默认备份策略，该策略从每天的指
    
      ![筛选备份](./media/storsimple-virtual-array-backup/viewbackups2.png)
 
-3. 单击 **“应用”**。 已筛选的备份列表会显示在“备份目录”**** 边栏选项卡中。 请注意，在给定的时间只能显示 100 个备份元素。
+3. 单击“应用”  。 已筛选的备份列表会显示在“备份目录”**** 边栏选项卡中。 请注意，在给定的时间只能显示 100 个备份元素。
    
     ![已更新的备份目录](./media/storsimple-virtual-array-backup/viewbackups3.png)
 

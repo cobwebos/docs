@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
 ms.openlocfilehash: 433c6b7d70cea9406b67d65e23cc357939cb5aa0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61437270"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Hive on HDInsight 和 Azure Data Lake Storage Gen1 性能优化指南
@@ -25,11 +25,11 @@ ms.locfileid: "61437270"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **Data Lake Storage Gen1 帐户**。 有关如何创建一个说明的说明，请参阅[开始使用 Azure 数据存储第 1 代](data-lake-store-get-started-portal.md)
+* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Data Lake Storage Gen1 帐户**。 有关如何创建一个的说明，请参阅[Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
 * 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集****。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
 * **在 HDInsight 上运行 Hive**。  若要了解有关在 HDInsight 上运行 Hive 作业的信息，请参阅[在 HDInsight 上使用 Hive](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
-* **Data Lake Storage Gen1 的性能优化指南**。  有关一般性能概念，请参阅[数据存储库第 1 代性能调优指南](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)
+* **Data Lake Storage Gen1 的性能优化指南**。  有关一般的性能概念，请参阅[Data Lake Storage Gen1 性能优化指南](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)
 
 ## <a name="parameters"></a>参数
 
@@ -59,7 +59,7 @@ ms.locfileid: "61437270"
 
 通过减小 Tez 容器可增加并行度，I/O 密集型工作负荷可以从中受益。 这样可为用户提供更多容器，从而提高并发性。  但是，某些 Hive 查询（例如 MapJoin）需要占用大量内存。  如果任务没有足够的内存，则在运行时会出现“内存不足”异常。  如果收到“内存不足”异常，则应增加内存。   
 
-正在运行的并发任务数或平行度将受到总 YARN 内存量的限制。  YARN 容器数将决定可运行多少个并发任务。  若要查找每个节点的 YARN 内存量，可以转到 Ambari。  导航到 YARN 并查看"配置"选项卡。 YARN 内存将显示在此窗口中。  
+正在运行的并发任务数或平行度将受到总 YARN 内存量的限制。  YARN 容器数将决定可运行多少个并发任务。  若要查找每个节点的 YARN 内存量，可以转到 Ambari。  导航到 YARN 并查看 "配置" 选项卡。 YARN 内存显示在此窗口中。  
 
         Total YARN memory = nodes * YARN memory per node
         # of YARN containers = Total YARN memory / Tez container size
@@ -81,7 +81,7 @@ ms.locfileid: "61437270"
 
 若要查看是否受到限制，需要在客户端上启用调试日志记录。 下面介绍执行该操作的方法：
 
-1. 将以下属性放在 Hive 配置中的 log4j 属性中。这可以从 Ambari 视图完成：log4j.logger.com.microsoft.azure.datalake.store_DEBUG 重新启动所有节点/服务，使配置生效。
+1. 将以下属性放入 Hive config 中的 log4j 属性。这可以从 Ambari view： log4j 中完成。 datalake = DEBUG 重新启动所有节点/服务，以使配置生效。
 
 2. 如果受到限制，会在 Hive 日志文件中看到 HTTP 429 错误代码。 Hive 日志文件位于 /tmp/&lt;用户&gt;/hive.log 中
 

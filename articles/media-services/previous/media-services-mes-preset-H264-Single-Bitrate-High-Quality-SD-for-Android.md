@@ -1,6 +1,6 @@
 ---
 title: H264 单比特率高品质 SD (Android) | Microsoft Docs
-description: 本主题概述了适用于 Android 任务预设的**H264 单比特率高质量 SD。**
+description: 本主题概述了 H264 单比特率高品质 SD (Android) 任务预设  。
 author: Juliako
 manager: femila
 editor: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 217c4874f0375aeb4d80162af1b8453a3f7f625f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "61463508"
 ---
 # <a name="h264-single-bitrate-high-quality-sd-for-android"></a>H264 单比特率高品质 SD (Android)
