@@ -7,16 +7,16 @@ keywords: 更改, 跟踪, 自动化
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 60ca1ef3d5c14a0f3dea5b662fc5c95184e6574d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 89f5e00c75b6b85c9a14de02504136907cde62b5
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75420640"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604699"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>排查环境中的更改错误
 
-本教程介绍如何排查 Azure 虚拟机上的更改错误。 启用更改跟踪即可在计算机上跟踪对软件、文件、Linux 守护程序、Windows 服务和 Windows 注册表项的更改。
+本教程介绍如何排查 Azure 虚拟机上的更改错误。 启用更改跟踪后，可以在计算机上跟踪对软件、文件、Linux 守护程序、Windows 服务和 Windows 注册表项的更改。
 确定这些配置更改有助于查明环境中的操作问题。
 
 本教程介绍如何执行下列操作：
@@ -30,7 +30,7 @@ ms.locfileid: "75420640"
 > * 查看更改
 > * 配置警报
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要：
 
@@ -47,14 +47,16 @@ ms.locfileid: "75420640"
 就本教程来说，首先需为 VM 启用更改跟踪和清单。 如果以前已为 VM 启用其他自动化解决方案，则此步骤不是必需的。
 
 1. 在左侧菜单上选择“虚拟机”，然后从列表中选择一个 VM。 
-1. 在左侧菜单的“操作”部分单击“清单”。   此时会打开“更改跟踪”  页。
+1. 在左侧菜单上的“操作”下选择“清单”。   “清单”页随即打开。
 
-![启用更改](./media/automation-tutorial-troubleshoot-changes/enableinventory.png) 此时会打开“更改跟踪”屏幕。  配置要使用的位置、Log Analytics 工作区和自动化帐户，然后单击“启用”。  如果这些字段灰显，则意味着已为 VM 启用其他自动化解决方案，因此必须使用同一工作区和自动化帐户。
+![启用更改](./media/automation-tutorial-troubleshoot-changes/enableinventory.png)
+
+配置要使用的位置、Log Analytics 工作区和自动化帐户，然后单击“启用”。  如果这些字段灰显，则意味着已为 VM 启用其他自动化解决方案，因此必须使用同一工作区和自动化帐户。
 
 [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) 工作区用于收集由功能和服务（如清单）生成的数据。
 工作区提供了一个位置来查看和分析来自多个数据源的数据。
 
-在载入期间，VM 预配了 Microsoft Monitoring Agent (MMA) 和混合辅助角色。
+在加入期间，将使用适用于 Windows 的 Log Analytics 代理和混合 Runbook 辅助角色预配 VM。
 此代理用于与 VM 通信并获取有关已安装软件的信息。
 
 启用解决方案最多可能需要 15 分钟。 在此期间，不应关闭浏览器窗口。
@@ -66,8 +68,8 @@ ms.locfileid: "75420640"
 ## <a name="using-change-tracking-in-azure-monitor-logs"></a>使用 Azure Monitor 日志中的更改跟踪
 
 更改跟踪生成发送到 Azure Monitor 日志的日志数据。
-若要通过运行查询来搜索日志，请选择“更改跟踪”窗口顶部的“Log Analytics”。  
-更改跟踪数据存储在 **ConfigurationChange** 类型下。
+若要通过运行查询来搜索日志，请在“更改跟踪”页面顶部选择“Log Analytics”。 
+更改跟踪数据存储在 `ConfigurationChange` 类型下。
 以下示例 Log Analytics 查询返回所有已停止的 Windows 服务。
 
 ```loganalytics
@@ -81,49 +83,48 @@ ConfigurationChange
 
 可以使用更改跟踪来跟踪 VM 上的配置更改。 以下步骤演示了如何配置注册表项和文件的跟踪。
 
-若要选择要收集和跟踪的文件和注册表项，请选择“更改跟踪”页顶部的“编辑设置”。  
+若要选择要收集和跟踪的文件和注册表项，请在“更改跟踪”页面顶部选择“编辑设置”。 
 
 > [!NOTE]
 > 清单和更改跟踪使用相同的集合设置，而设置在工作区级别配置。
 
-如接下来的三部分所述，在“工作区配置”  窗口中，添加要跟踪的 Windows 注册表项、Windows 文件或 Linux 文件。
+如接下来的三部分所述，在“工作区配置”页面上，添加要跟踪的 Windows 注册表项、Windows 文件或 Linux 文件。
 
 ### <a name="add-a-windows-registry-key"></a>添加 Windows 注册表项
 
-1. 在“Windows 注册表”  选项卡上，选择“添加”  。
-    “添加 Windows 注册表以跟踪更改”  窗口随即打开。
+1. 在“Windows 注册表”  选项卡上，选择“添加”  。 
 
-1. 在“添加用于更改跟踪的 Windows 注册表”中，输入要求该项进行跟踪的信息，然后单击“保存”  
+1. 在“添加要进行更改跟踪的 Windows 注册表”页面上，输入要跟踪的项的信息，然后单击“保存”  。
 
-|properties  |说明  |
+|属性  |说明  |
 |---------|---------|
 |已启用     | 确定是否应用了设置        |
 |项名称     | 要跟踪的文件的友好名称        |
 |组     | 一个组名，用于对文件进行逻辑分组        |
-|Windows 注册表项   | 用于查看文件的路径，例如“HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup”      |
+|Windows 注册表项   | 用于查看文件的路径，例如：“HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup”      |
 
 ### <a name="add-a-windows-file"></a>添加 Windows 文件
 
-1. 在“Windows 文件”  选项卡上，选择“添加”  。 “添加 Windows 文件以跟踪更改”  窗口随即打开。
+1. 在“Windows 文件”  选项卡上，选择“添加”  。 
 
-1. 在“添加用于更改跟踪的 Windows 文件”中，输入要求该文件或目录进行跟踪的信息，然后单击“保存”  
+1. 在“添加要进行更改跟踪的 Windows 文件”页面上，输入要跟踪的文件或目录的信息，然后单击“保存”  。
 
-|properties  |说明  |
+|属性  |说明  |
 |---------|---------|
 |已启用     | 确定是否应用了设置        |
 |项名称     | 要跟踪的文件的友好名称        |
 |组     | 一个组名，用于对文件进行逻辑分组        |
 |输入路径     | 用于查看文件的路径，例如：“c:\temp\\\*.txt”<br>还可以使用环境变量，例如“%winDir%\System32\\\*.*”         |
 |递归     | 在查找要跟踪的项时，确定是否使用递归。        |
-|上传所有设置的文件内容| 针对已跟踪的更改启用或关闭文件内容上传功能。 可用选项：“True”或“False”   。|
+|上传所有设置的文件内容| 针对已跟踪的更改启用或关闭文件内容上传功能。 可用选项：**True** 或 **False**。|
 
 ### <a name="add-a-linux-file"></a>添加 Linux 文件
 
-1. 在“Linux 文件”  选项卡上，选择“添加”  。 “添加 Linux 文件以跟踪更改”  窗口随即打开。
+1. 在“Linux 文件”  选项卡上，选择“添加”  。 
 
-1. 在“添加用于更改跟踪的 Linux 文件”中，输入要求该文件或目录进行跟踪的信息，然后单击“保存”  
+1. 在“添加要进行更改跟踪的 Linux 文件”页面上，输入要跟踪的文件或目录的信息，然后单击“保存”  。
 
-|properties  |说明  |
+|属性  |说明  |
 |---------|---------|
 |已启用     | 确定是否应用了设置        |
 |项名称     | 要跟踪的文件的友好名称        |
@@ -133,24 +134,24 @@ ConfigurationChange
 |递归     | 在查找要跟踪的项时，确定是否使用递归。        |
 |使用 Sudo     | 此设置确定在检查该项时是否使用 Sudo。         |
 |链接     | 此设置确定在遍历目录时如何处理符号链接。<br> **忽略** - 忽略符号链接，不包括引用的文件/目录<br>**追随** - 在递归期间追随符号链接，并且包括引用的文件/目录<br>**管理** - 追随符号链接并允许修改返回内容的处置方式      |
-|上传所有设置的文件内容| 针对已跟踪的更改启用或关闭文件内容上传功能。 可用选项：“True”或“False”   。|
+|上传所有设置的文件内容| 针对已跟踪的更改启用或关闭文件内容上传功能。 可用选项：True 或 False。|
 
    > [!NOTE]
-   > 不建议使用“管理”链接选项。 不支持文件内容检索。
+   > 不建议使用“管理链接”选项。  不支持文件内容检索。
 
 ## <a name="enable-activity-log-connection"></a>启用活动日志连接
 
-在 VM 的“更改跟踪”页中，选择“管理活动日志连接”。   此任务打开“Azure 活动日志”页。  选择“连接”，  将更改跟踪连接到 VM 的 Azure 活动日志。
+在 VM 的“更改跟踪”页中，选择“管理活动日志连接”。  此任务将打开“Azure 活动日志”页。 单击“连接”  ，将更改跟踪连接到 VM 的 Azure 活动日志。
 
-启用此设置后，导航到 VM 的“概览”页，然后选择“停止”以停止 VM。   出现提示时，选择“是”  即可停止 VM。 将 VM 解除分配以后，请选择“启动”以重启 VM。 
+启用此设置后，导航到 VM 的“概览”页，然后选择“停止”以停止 VM。  出现提示时，选择“是”  即可停止 VM。 将 VM 解除分配以后，请选择“启动”以重启 VM。 
 
-停止和启动 VM 时，会在活动日志中记录一个事件。 导航回到“更改跟踪”页。  选择页面底部的“事件”选项卡。  一段时间后，事件会显示在图表和表中。 与前面的步骤一样，可以选择每个事件来查看其详细信息。
+停止和启动 VM 时，会在活动日志中记录一个事件。 导航回“更改跟踪”页。 选择页面底部的“事件”选项卡。  一段时间后，事件会显示在图表和表中。 与前面的步骤一样，可以选择每个事件来查看其详细信息。
 
 ![在门户中查看更改详细信息](./media/automation-tutorial-troubleshoot-changes/viewevents.png)
 
 ## <a name="view-changes"></a>查看更改
 
-启用更改跟踪和清单解决方案以后，即可在“更改跟踪”页查看结果。 
+启用更改跟踪和清单解决方案后，可以在“更改跟踪”页上查看结果。
 
 在 VM 中的“操作”下选择“更改跟踪”。  
 
@@ -165,7 +166,7 @@ ConfigurationChange
 
 可以在结果中看到对系统进行了多项更改，包括对服务和软件的更改。 可以使用页面顶部的筛选器，按“更改类型”或时间范围筛选结果。 
 
-选择 **WindowsServices** 更改会打开“更改详细信息”窗口。  “更改详细信息”窗口显示更改详细信息以及更改前后的值。 在此实例中，软件保护服务已停止。
+选择一个“WindowsServices”  更改。 此选择将打开“更改详细信息”页，其中会显示更改详细信息以及更改前后的值。 在此实例中，软件保护服务已停止。
 
 ![在门户中查看更改详细信息](./media/automation-tutorial-troubleshoot-changes/change-details.png)
 
@@ -175,11 +176,11 @@ ConfigurationChange
 
 若要为已停止的服务添加警报，请在 Azure 门户中转至“监视”  。 在“共享服务”  下，选择“警报”  ，并单击“+ 新建警报规则” 
 
-单击“选择”  以选择资源。 在“选择资源”  页上，从“按资源类型筛选”  下拉列表中选择“Log Analytics”  。 选择 Log Analytics 工作区，然后选择“完成”。 
+单击“选择”  以选择资源。 在“选择资源”页上，从“按资源类型筛选”下拉菜单中选择“Log Analytics”。   选择 Log Analytics 工作区，然后选择“完成”。 
 
 ![选择资源](./media/automation-tutorial-troubleshoot-changes/select-a-resource.png)
 
-在“配置信号逻辑”  页上单击“添加条件”  ，在表中选择“自定义日志搜索”  。 在“搜索查询”文本框中输入以下查询：
+在“配置信号逻辑”页上单击“添加条件”，在表中选择“自定义日志搜索”。   在“搜索查询”文本框中输入以下查询：
 
 ```loganalytics
 ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName == "W3SVC" and SvcState == "Stopped" | summarize by Computer
@@ -201,7 +202,7 @@ ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName ==
 
 ![添加操作组](./media/automation-tutorial-troubleshoot-changes/add-action-group.png)
 
-在“电子邮件/短信/推送/语音”  窗格中，输入一个名称。 选中“电子邮件”  复选框，然后输入有效的电子邮件地址。 单击“电子邮件/短信/推送/语音”页上的“确定”，然后单击“添加操作组”页上的“确定”。    
+在“电子邮件/短信/推送/语音”窗格中，输入一个名称。 选中“电子邮件”  复选框，然后输入有效的电子邮件地址。 在窗格中单击“确定”，然后在“添加操作组”页上单击“确定”。  
 
 若要自定义警报电子邮件的主题，请在“创建规则”下的“自定义操作”下选择“电子邮件主题”。    完成后，请选择“创建警报规则”。  此警报会指出更新部署成功的时间以及哪些计算机是该更新部署运行的一部分。
 

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 04/03/2020
+ms.date: 04/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a4c2cddbc9086c80922fcf9c5d96cd197ab4778
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5f4dc7223d64fd299da70375329260f7b4f8b322
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81425276"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82083319"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-securitytmws"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Trend Micro Web Security (TMWS) 的集成
 
@@ -87,7 +87,7 @@ ms.locfileid: "81425276"
     b. 在“回复 URL”文本框中键入 URL：`https://auth.iws-hybrid.trendmicro.com/simplesaml/module.php/saml/sp/saml2-acs.php/ics-sp`
 
     > [!NOTE]
-    > 标识符非实际值。 请使用实际标识符更新此值。 请联系 [Trend Micro Web Security (TMWS) 客户端支持团队](https://success.trendmicro.com/contact-support-north-america)获取“标识符”值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 标识符非实际值。 请使用实际标识符更新此值。 可以在 Azure AD 的“身份验证方法”屏幕的“Azure 管理门户的服务提供商设置”区域下获取这些值，只需单击“管理”>“目录服务”即可。   
 
 1. Trend Micro Web Security (TMWS) 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
@@ -173,7 +173,41 @@ ms.locfileid: "81425276"
 
 ## <a name="configure-trend-micro-web-security-sso"></a>配置 Trend Micro Web Security SSO
 
-若要在 Trend Micro Web Security (TMWS) 端配置单一登录，需要将下载的证书 (Base64) 以及从 Azure 门户复制的相应 URL 发送给 [Trend Micro Web Security (TMWS) 支持团队](https://success.trendmicro.com/contact-support-north-america)。   他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+1. 登录到 TMWS 管理控制台，转到“管理” > “用户和身份验证” > “目录服务”。   
+
+1. 在屏幕的上部区域单击此处。
+
+1. 在出现的“身份验证方法”屏幕上，单击“Azure AD”  。
+
+1. 单击“开启”  或“关闭”  来决定当组织的 AD 用户的数据未同步到 TMWS 时，是否允许这些用户通过 TMWS 访问网站。
+
+    > [!NOTE]
+    > 未从 Azure AD 同步的用户只能通过已知的 TMWS 网关或组织的专用端口进行身份验证。
+
+1. 在“标识提供者设置”  部分中，执行以下步骤：
+
+    a. 在“服务 URL”字段中，粘贴从 Azure 门户复制的“登录 URL”值   。
+
+    b. 在“登录名属性”  字段中，粘贴 Azure 门户提供的源属性为“user.onpremisessamaccountname”的“用户声明名称”。 
+
+    c. 在“公共 SSL 证书”  字段中，使用从 Azure 门户下载的“证书(Base64)”  。
+
+1. 在“同步设置”  部分中，执行以下步骤：
+
+    a. 在“租户”  字段中，使用来自 Azure 门户的“目录(租户) ID”  或“自定义域名”  值。
+
+    b. 在“应用程序 ID”字段中，使用来自 Azure 门户的“应用程序(客户端)ID”值。  
+
+    c. 在“客户端机密”  字段中，使用来自 Azure 门户的“客户端机密”  。
+
+    d. 在“同步计划”  字段中，选择手动或按计划与 Azure AD 同步。 如果选择“手动”，则每当存在 Active Directory 用户信息更改时，请记得返回到“目录服务”屏幕并执行手动同步，使 TMWS 中的信息保持最新。
+
+    e. 单击“测试连接”  ，检查 Azure AD 服务是否可以成功连接。 
+    
+    f. 单击“保存”  。
+ 
+ > [!NOTE]
+ > 有关如何通过 Azure AD 配置 Trend Micro Web 安全性的详细信息，请参阅[此](https://docs.trendmicro.com/en-us/enterprise/trend-micro-web-security-online-help/administration_001/directory-services/azure-active-directo/configuring-azure-ad.aspx)文档。
 
 ## <a name="test-sso"></a>测试 SSO 
 

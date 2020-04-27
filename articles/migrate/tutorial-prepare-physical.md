@@ -1,19 +1,15 @@
 ---
 title: 准备好要通过 Azure Migrate 进行评估/迁移的物理服务器
 description: 了解如何准备好要通过 Azure Migrate 进行评估/迁移的物理服务器。
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/19/2019
-ms.author: raynew
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 5f9048b08b3e77a0c8d5ae9a9d10c614a4e0af61
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 539e25f8b6cc92674fef567de6e6de16d0a9394a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336686"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535275"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>准备评估物理服务器并将其迁移到 Azure
 
@@ -35,21 +31,18 @@ ms.locfileid: "80336686"
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 
-## <a name="prepare-azure"></a>准备 Azure
+## <a name="prepare-azure-for-server-assessment"></a>准备 Azure 进行服务器评估
 
-### <a name="azure-permissions"></a>Azure 权限
-
-需要为 Azure Migrate 部署设置权限。
+设置 Azure 以便使用 Azure Migrate。 
 
 **任务** | **详细信息** 
 --- | --- 
-**创建 Azure Migrate 项目** | Azure 帐户需要“参与者”或“所有者”权限才能创建项目。 | 
-**注册资源提供程序** | Azure Migrate 使用轻型 Azure Migrate 设备通过 Azure Migrate 服务器评估来发现并评估 Hyper-V VM。<br/><br/> 在设备注册过程中，资源提供程序会注册到在设备中选择的订阅。 [了解详细信息](migrate-appliance-architecture.md#appliance-registration)。<br/><br/> 需要订阅的“参与者”或“所有者”角色才能注册资源提供程序。
-**创建 Azure AD 应用** | 注册设备时，Azure Migrate 会创建一个 Azure Active Directory (Azure AD) 应用，用于设备上运行的代理与其在 Azure 上运行的各自服务之间的通信。 [了解详细信息](migrate-appliance-architecture.md#appliance-registration)。<br/><br/> 你需要具有创建 Azure AD 应用的权限（在“应用程序开发人员”角色中提供）。
+**创建 Azure Migrate 项目** | Azure 帐户需要“参与者”或“所有者”权限才能创建项目。 
+**注册资源提供程序（仅限评估）** | Azure Migrate 使用轻型 Azure Migrate 设备通过“Azure Migrate:服务器评估”来发现并评估计算机。<br/><br/> 在设备注册过程中，资源提供程序会注册到在设备中选择的订阅。 [了解详细信息](migrate-appliance-architecture.md#appliance-registration)。<br/><br/> 需要订阅的“参与者”或“所有者”角色才能注册资源提供程序。
+**创建 Azure AD 应用（仅限评估）** | 注册设备时，Azure Migrate 会创建一个 Azure Active Directory (Azure AD) 应用，方便在设备上运行的代理与其在 Azure 上运行的相应服务通信。 [了解详细信息](migrate-appliance-architecture.md#appliance-registration)。<br/><br/> 你需要具有创建 Azure AD 应用的权限（在“应用程序开发人员”角色中提供）。
 
 
-
-### <a name="assign-permissions-to-create-project"></a>分配创建项目的权限
+### <a name="assign-permissions-to-create-project"></a>分配创建项目的权限 
 
 请检查你是否有权创建 Azure Migrate 项目。
 
@@ -60,7 +53,7 @@ ms.locfileid: "80336686"
     - 如果你不是订阅所有者，请让所有者分配该角色。
 
 
-### <a name="assign-permissions-to-register-the-appliance"></a>分配注册设备的权限
+### <a name="assign-permissions-to-register-the-appliance"></a>分配注册设备的权限 
 
 可以使用以下方法之一为 Azure Migrate 分配权限，以便在注册设备期间创建 Azure AD 应用：
 
@@ -89,6 +82,39 @@ ms.locfileid: "80336686"
 租户/全局管理员可将“应用程序开发人员”角色分配到帐户。 [了解详细信息](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
 
 
+## <a name="prepare-azure-for-physical-server-migration"></a>准备 Azure 进行物理服务器迁移
+
+使用“服务器迁移”功能准备 Azure 进行物理服务器迁移。
+
+**任务** | **详细信息**
+--- | ---
+**创建 Azure Migrate 项目** | Azure 帐户需要“参与者”或“所有者”权限才能创建项目。
+**验证 Azure 帐户的权限** | Azure 帐户需要有权创建 VM 并将数据写入 Azure 托管磁盘。
+**创建 Azure 网络** | 在 Azure 中设置网络。
+
+
+### <a name="assign-permissions-to-create-project"></a>分配创建项目的权限
+
+1. 在 Azure 门户中打开订阅，然后选择“访问控制(IAM)”。 
+2. 在“检查访问权限”中找到相关的帐户，然后单击它以查看权限。 
+3. 你应该拥有“参与者”或“所有者”权限。  
+    - 如果你刚刚创建了免费的 Azure 帐户，那么你就是订阅的所有者。
+    - 如果你不是订阅所有者，请让所有者分配该角色。
+
+
+### <a name="assign-azure-account-permissions"></a>分配 Azure 帐户权限
+
+将“虚拟机参与者”角色分配给 Azure 帐户。 这提供了执行以下操作的权限：
+
+    - 在所选资源组中创建 VM。
+    - 在所选虚拟网络中创建 VM。
+    - 写入 Azure 托管磁盘。 
+
+### <a name="create-an-azure-network"></a>创建 Azure 网络
+
+[设置](../virtual-network/manage-virtual-network.md#create-a-virtual-network) Azure 虚拟网络 (VNet)。 复制到 Azure 时，会创建 Azure VM 并将其加入到在设置迁移时指定的 Azure VNet。
+
+
 ## <a name="prepare-for-physical-server-assessment"></a>准备物理服务器评估
 
 若要准备物理服务器评估，需验证物理服务器设置，并验证设备部署设置：
@@ -104,7 +130,7 @@ ms.locfileid: "80336686"
 在设置 Azure Migrate 设备并在下一篇教程中开始评估之前，需要准备好设备部署。
 
 1. [验证](migrate-appliance.md#appliance---physical)物理服务器的设备要求。
-2. [查看](migrate-appliance.md#url-access)设备需要访问的 Azure URL。
+2. 查看设备在[公有](migrate-appliance.md#public-cloud-urls)和[政府](migrate-appliance.md#government-cloud-urls)云中需要访问的各个 Azure URL。
 3. [查看](migrate-appliance.md#collected-data---vmware)设备在发现和评估期间要收集的数据。
 4. [请注意](migrate-support-matrix-physical.md#port-access)端口访问要求进行物理服务器评估。
 
@@ -113,17 +139,23 @@ ms.locfileid: "80336686"
 
 Azure Migrate 需要拥有发现本地服务器的权限。
 
-- **Windows：** 在要包括在发现中的所有 Windows 服务器上设置本地用户帐户。需要将用户帐户添加到以下组：       - 远程管理用户       - 性能监视器用户       - 性能日志用户
+- **Windows：** 在要包括在发现中的所有 Windows 服务器上设置一个本地用户帐户。 需要将该用户帐户添加到以下组：- 远程管理用户 - 性能监视器用户 - 性能日志用户
 - **Linux：** 需要在要发现的 Linux 服务器上拥有根帐户。
 
 ## <a name="prepare-for-physical-server-migration"></a>为物理服务器迁移做准备
 
 查看物理服务器迁移的要求。
 
+> [!NOTE]
+> 迁移物理计算机时，“Azure Migrate:服务器迁移”使用与 Azure Site Recovery 服务中基于代理的灾难恢复功能相同的复制体系结构，并且某些组件共享相同的代码库。 某些内容可能链接到 Site Recovery 文档。
+
 - [查看](migrate-support-matrix-physical-migration.md#physical-server-requirements)物理服务器迁移要求。
-- “Azure Migrate:服务器迁移使用复制服务器进行物理服务器迁移：
+- “Azure Migrate:服务器迁移”使用复制服务器进行物理服务器迁移：
     - [查看](migrate-replication-appliance.md#appliance-requirements)复制设备的部署要求，以及用于在设备上安装 MySQL 的[选项](migrate-replication-appliance.md#mysql-installation)。
-    - 查看复制设备的 [URL](migrate-replication-appliance.md#url-access) 和 [port] (migrate-replication-appliance.md#port-access) 访问要求。
+    - 查看复制设备访问公有云和政府云时所需的 [Azure URL](migrate-appliance.md#url-access)。
+    - 查看复制设备的[端口] (migrate-replication-appliance.md#port-access)访问要求。
+
+
 
 
 ## <a name="next-steps"></a>后续步骤
