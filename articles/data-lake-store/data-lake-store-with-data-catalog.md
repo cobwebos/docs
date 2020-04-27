@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: fd887560c0011fb1ec2141e33f02f7e3d8a39c81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60196488"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>在 Azure 数据目录中从 Azure Data Lake Storage Gen1 注册数据
@@ -25,9 +25,9 @@ ms.locfileid: "60196488"
 ## <a name="prerequisites"></a>先决条件
 在开始阅读本教程前，必须具有：
 
-* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **为 Data Lake Storage Gen1 启用 Azure 订阅**。 请参阅[说明](data-lake-store-get-started-portal.md)。
-* **Data Lake Storage Gen1 帐户**。 使用 Azure 门户，按照[Azure 数据湖存储第 1 代开始](data-lake-store-get-started-portal.md)的说明进行操作。 在本教程中，创建一个名为 datacatalogstore 的 Data Lake Storage Gen1 帐户****。
+* **Data Lake Storage Gen1 帐户**。 按照[使用 Azure 门户中的 Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)中的说明进行操作。 在本教程中，创建一个名为 datacatalogstore 的 Data Lake Storage Gen1 帐户****。
 
     创建帐户后，将示例数据集上传到其中。 在本教程中，上传 [Azure Data Lake Git存储库](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/)中 **AmbulanceDota** 文件夹下的所有.csv文件。 可以使用各种客户端（[Azure 存储资源管理器](https://storageexplorer.com/)将数据上传到 blob 容器。
 * **Azure 数据目录**。 组织必须已具有为组织创建的 Azure数据目录。 每个组织只允许有一个目录。
@@ -41,7 +41,7 @@ ms.locfileid: "60196488"
 
     ![注册数据源](./media/data-lake-store-with-data-catalog/register-data-source.png "注册数据源")
 1. 在下一页上，单击“启动应用程序”****。 这会在计算机上下载应用程序清单文件。 双击此清单文件以启动应用程序。
-1. 在"欢迎"页上，单击"**登录**"并输入凭据。
+1. 在欢迎页上，单击 "**登录**"，然后输入你的凭据。
 
     ![欢迎屏幕](./media/data-lake-store-with-data-catalog/welcome.screen.png "欢迎屏幕")
 1. 在“选择数据源”页上，选择“Azure Data Lake Store”，并单击“下一步”********。
@@ -52,9 +52,9 @@ ms.locfileid: "60196488"
     ![连接到数据源](./media/data-lake-store-with-data-catalog/connect-to-source.png "连接到数据源")
 1. 下一个页面可以分为以下几部分。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 “服务器层次结构”框表示 Data Lake Storage Gen1 帐户文件夹结构****。 “$Root”表示 Data Lake Storage Gen1 帐户的根，而“AmbulanceData”表示 Data Lake Storage Gen1 帐户的根中创建的文件夹********。
+    a. “服务器层次结构”框表示 Data Lake Storage Gen1 帐户文件夹结构****。 “$Root”表示 Data Lake Storage Gen1 帐户的根，而“AmbulanceData”表示 Data Lake Storage Gen1 帐户的根中创建的文件夹********。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 **可用对象**框中列出 **AmbulanceData** 文件夹下的文件和文件夹。
+    b. **可用对象**框中列出 **AmbulanceData** 文件夹下的文件和文件夹。
 
     c. “要注册的对象”**** 框中列出要在 Azure 数据目录中注册的文件和文件夹。
 
@@ -65,7 +65,7 @@ ms.locfileid: "60196488"
 
     ![查看数据结构](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "查看数据结构")
 
-    单击“注册”****。
+    单击“注册”  。
 1. 以下屏幕截图表示数据已成功注册到数据目录中。
 
     ![注册完成](./media/data-lake-store-with-data-catalog/registration-complete.png "查看数据结构")

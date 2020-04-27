@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: b-juche
 ms.openlocfilehash: c58ceef57b984f46b86bb2a8577c53b75082b78b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "65794616"
 ---
 # <a name="resize-a-capacity-pool-or-a-volume"></a>重设容量池或卷的大小
@@ -26,7 +26,7 @@ ms.locfileid: "65794616"
 
 ## <a name="resize-the-capacity-pool"></a>重设容量池大小 
 
-您可以以 1-TiB 增量或递减来更改容量池大小。 但是，容量池大小不能小于 4 TiB。 重设容量池大小会更改购买的 Azure NetApp 文件容量。
+可以按 1-TiB 的增量或减量来更改容量池大小。 但是，容量池大小不能小于 4 TiB。 重设容量池大小会更改购买的 Azure NetApp 文件容量。
 
 1. 在“管理 NetApp 帐户”边栏选项卡中，单击要重设大小的容量池。 
 2. 右键单击容量池名称，或单击容量池所在行末尾的“...”图标以显示上下文菜单。 

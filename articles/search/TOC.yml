@@ -68,6 +68,8 @@
           href: cognitive-search-tutorial-blob.md
         - name: Python
           href: cognitive-search-tutorial-blob-python.md
+    - name: 从 Power Apps 查询
+      href: search-howto-powerapps.md
 - name: 示例
   items:
     - name: 'C# 示例'
@@ -232,10 +234,8 @@
           items:
             - name: 创建建议器
               href: index-add-suggesters.md
-            - name: 添加建议或自动完成
+            - name: 添加自动完成和建议
               href: search-autocomplete-tutorial.md
-        - name: 从 Power Apps 查询
-          href: search-howto-powerapps.md
         - name: 语法参考
           items:
             - name: 简化的查询语法
@@ -256,8 +256,8 @@
           href: search-query-troubleshoot-collection-filters.md
         - name: 了解集合筛选器
           href: search-query-understand-collection-filters.md
-        - name: 多层 facet 的示例
-          href: search-example-adventureworks-multilevel-faceting.md
+        - name: 按语言筛选
+          href: search-filters-language.md
     - name: 结果
       items:
         - name: 处理结果
@@ -455,10 +455,6 @@
           href: 'https://wolterskluwereap.azurewebsites.net/'
         - name: JFK 文件演示
           href: 'https://aka.ms/jfkfiles'
-        - name: NYC 作业演示
-          href: 'https://aka.ms/azjobsdemo'
-        - name: 搜索用例
-          href: 'https://searchsamples.azurewebsites.net/'
     - name: 培训
       items:
         - name: 简介 (Microsoft Learn)

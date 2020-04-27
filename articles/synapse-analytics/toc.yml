@@ -20,8 +20,8 @@
       href: quickstart-synapse-studio.md
     - name: 创建池
       items:
-        - name: 使用 Web 工具创建 Apache Spark 池
-          href: ./spark/apache-spark-notebook-create-spark-use-sql.md
+        - name: 使用 Web 工具创建 Apache Spark 笔记本
+          href: quickstart-apache-spark-notebook.md
         - name: 使用 Azure 门户创建 Apache Spark 池
           href: quickstart-create-apache-spark-pool.md
         - name: 创建 SQL 池
@@ -320,8 +320,6 @@
           href: troubleshoot/troubleshoot-synapse-studio.md
         - name: 使用 PowerShell 排查 Synapse Analytics Studio 的问题
           href: troubleshoot/troubleshoot-synapse-studio-powershell.md
-        - name: 与 Power BI 集成
-          items: null
 - name: 如何
   items:
     - name: 安全
