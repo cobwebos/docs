@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
-ms.openlocfilehash: 5e31ed905f05070c8715a63ef3386b0006df0a75
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2402e72d2ef9fcda46f2f40bff48759262ee30e0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76840615"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189039"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
 
@@ -54,7 +54,7 @@ ms.locfileid: "76840615"
 
 1. 使用 Login-AzAccount 登录 Azure****。 
 
-2. 使用 Select-AzSubscription 选择所需订阅****。 
+2. 使用 Select-AzSubscription 选择所需订阅  。 
 
 3. 若要列出分配给特定用户的所有角色，请使用 **Get-AzRoleAssignment -SignInName [user email] -IncludeClassicAdministrators**。 
 
@@ -126,7 +126,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="can-i-use-an-existing-workspace"></a>是否可以使用现有的的工作区？
 
-是的。 如果选择现有的工作区，请确保已将此工作区迁移到新的查询语言。 如果不想要升级该工作区，则需要创建新的工作区。 有关新查询语言的详细信息，请参阅 Azure[监视器日志升级到新的日志搜索](../log-analytics/log-analytics-log-search-upgrade.md)。
+是的。 如果选择现有的工作区，请确保已将此工作区迁移到新的查询语言。 如果不想要升级该工作区，则需要创建新的工作区。 有关新查询语言的详细信息，请参阅[Azure Monitor 日志升级到新的日志搜索](../log-analytics/log-analytics-log-search-upgrade.md)。
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>是否可将 Azure 存储帐户放在一个订阅中，并将 Log Analytics 工作区放在另一个订阅中？
 
@@ -134,7 +134,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>是否可将原始日志存储在不同的订阅中？
 
-不是。 可将原始日志存储在为流日志启用了 NSG 的任何存储帐户中。 但存储帐户和原始日志必须位于同一订阅和区域中。
+是的。 你可以将 NSG 流日志配置为发送到位于不同订阅中的存储帐户，前提是你具有适当的权限，并且该存储帐户与 NSG 位于同一区域。 NSG 和目标存储帐户还必须共享同一个 Azure Active Directory 租户。
 
 ## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>如果由于“未找到”错误而无法为流量分析配置 NSG，该如何解决？
 
@@ -264,7 +264,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 - 单击“新建警报规则”以创建警报
 - 请参阅[日志警报文档](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)以创建警报
 
-## <a name="how-do-i-check-which-vms-are-receiving-most-on-premise-traffic"></a>如何检查哪些 VM 接收的本地流量最大
+## <a name="how-do-i-check-which-vms-are-receiving-most-on-premise-traffic"></a>如何实现检查哪些 Vm 正在接收大多数本地流量
 
             AzureNetworkAnalytics_CL
             | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
@@ -275,7 +275,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
             | make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by vm
             | render timechart
 
-  对于 IP：
+  对于 Ip：
 
             AzureNetworkAnalytics_CL
             | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
@@ -286,9 +286,9 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
             | make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by IP
             | render timechart
 
-对于时间，使用格式 ： yyyy-mm-dd 00：00：00
+对于时间，请使用格式： yyyy-mm-dd 00:00:00
 
-## <a name="how-do-i-check-standard-deviation-in-traffic-recieved-by-my-vms-from-on-premise-machines"></a>如何检查 VM 从内部机器接收的流量的标准偏差
+## <a name="how-do-i-check-standard-deviation-in-traffic-recieved-by-my-vms-from-on-premise-machines"></a>如何实现检查我的 Vm 从本地计算机接收的流量的标准偏差
 
             AzureNetworkAnalytics_CL
             | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
@@ -299,7 +299,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
             | summarize deviation = stdev(traffic)  by vm
 
 
-对于 IP：
+对于 Ip：
 
             AzureNetworkAnalytics_CL
             | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
@@ -309,7 +309,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
             | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d
             | summarize deviation = stdev(traffic)  by IP
             
-## <a name="how-do-i-check-which-ports-are-reachable-or-bocked-between-ip-pairs-with-nsg-rules"></a>如何检查具有 NSG 规则的 IP 对之间可到达的端口（或博波）
+## <a name="how-do-i-check-which-ports-are-reachable-or-bocked-between-ip-pairs-with-nsg-rules"></a>如何实现检查 IP 对与 NSG 规则之间可访问（或 bocked）的端口
 
             AzureNetworkAnalytics_CL
             | where SubType_s == "FlowLog" and TimeGenerated between (startTime .. endTime)
@@ -324,8 +324,8 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 地图页面包含两个主要部分：
     
-- **横幅**： 地理地图顶部的横幅提供用于选择流量分布筛选器的按钮（例如，部署、来自国家/地区/地区的流量和恶意）。 选择某按钮时，将在地图上应用相应的筛选器。 例如，如果选择“活动”按钮，则地图会突出显示部署中的活动数据中心。
-- **地图**：在横幅下方，地图部分显示 Azure 数据中心和国家/地区之间的流量分布。
+- **横幅**：地理地图顶部的横幅提供了用于选择流量分布筛选器的按钮（例如，部署、来自国家/地区的流量以及恶意）。 选择某按钮时，将在地图上应用相应的筛选器。 例如，如果选择“活动”按钮，则地图会突出显示部署中的活动数据中心。
+- **Map**：在横幅下面，map 部分显示了 Azure 数据中心和国家/地区之间的流量分布。
     
 ### <a name="keyboard-navigation-on-the-banner"></a>标题中的键盘导航
     

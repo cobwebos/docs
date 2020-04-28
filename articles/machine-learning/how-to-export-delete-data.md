@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: lobrien
 ms.author: laobri
-ms.date: 03/06/2020
+ms.date: 04/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4abef0146b4bf0cfaa254d196b0ca68f0d8ac883
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 50234eb356314039b8023f0442207ae0b762676e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218294"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82191628"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>导出或删除机器学习服务工作区数据
 
@@ -38,7 +38,7 @@ ms.locfileid: "79218294"
 
 若要删除数据，可以使用 HTTP DELETE 谓词进行以下 API 调用。 它们是通过在请求中放置 `Authorization: Bearer <arm-token>` 标头进行授权的，其中 `<arm-token>` 是 `https://management.core.windows.net/` 终结点的 AAD 访问令牌。  
 
-要了解如何获取此令牌并调用 Azure 终结点，请参阅[使用 REST 来管理 ML 资源和](how-to-manage-rest.md)Azure REST API[文档](https://docs.microsoft.com/rest/api/azure/)。  
+若要了解如何获取此令牌并调用 Azure 终结点，请参阅[使用 REST 管理 ML 资源](how-to-manage-rest.md)和[azure REST API 文档](https://docs.microsoft.com/rest/api/azure/)。  
 
 在下面的示例中，请将 {} 中的文本替换为决定了相关资源的实例名称。
 
@@ -94,7 +94,7 @@ ms.locfileid: "79218294"
 
 若要导出数据，可以使用 HTTP GET 谓词进行以下 API 调用。 它们是通过在请求中放置 `Authorization: Bearer <arm-token>` 标头进行授权的，其中，`<arm-token>` 是终结点 `https://management.core.windows.net/` 的 AAD 访问令牌。  
 
-要了解如何获取此令牌并调用 Azure 终结点，请参阅[使用 REST 来管理 ML 资源和](how-to-manage-rest.md)Azure REST API[文档](https://docs.microsoft.com/rest/api/azure/)。   
+若要了解如何获取此令牌并调用 Azure 终结点，请参阅[使用 REST 管理 ML 资源](how-to-manage-rest.md)和 [Azure REST API 文档](https://docs.microsoft.com/rest/api/azure/)。   
 
 在下面的示例中，请将 {} 中的文本替换为决定了相关资源的实例名称。
 
@@ -246,18 +246,9 @@ ms.locfileid: "79218294"
 
 1. 在列表中，选择要删除的单个管道草案。
 
-1. 选择 **"删除**"。
+1. 选择“删除”。 
 
 ### <a name="delete-datasets-in-the-designer"></a>在设计器中删除数据集
 
 若要在设计器中删除数据集，请使用 Azure 门户或存储资源管理器导航到已连接的存储帐户，删除其中的数据集。 在设计器中注销数据集只会删除存储中的引用点。
 
-## <a name="export-data-in-the-designer"></a>在设计器中导出数据
-
-在创建了试验的设计器中，导出已添加的数据：
-
-1. 在左侧选择“数据集”。****
-
-1. 在列表中，选择要导出的数据集
-
-    ![下载数据](./media/how-to-export-delete-data/unregister-dataset.png)

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
-ms.openlocfilehash: 3b855c3bed75945f44b55463bdacd049b7930aa7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 694cc83ffce20a8744d7452a8f6d67c9ce23641c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61447057"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187222"
 ---
 # <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>向远程监视解决方案加速器 Web UI 中的仪表板上添加自定义面板
 
@@ -90,7 +90,7 @@ import {
 npm start
 ```
 
-前面的命令在 本地运行[http://localhost:3000/dashboard](http://localhost:3000/dashboard)UI。 导航到“仪表板”页查看新面板****。
+上述命令在本地 (`http://localhost:3000/dashboard`) 运行 UI。 导航到“仪表板”页查看新面板****。
 
 ## <a name="next-steps"></a>后续步骤
 

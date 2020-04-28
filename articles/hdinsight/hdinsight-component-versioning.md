@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,hdiseo17may2017
+ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/09/2020
-ms.openlocfilehash: e27b65346ba8d48e36d080d66754db9605259e2b
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 87c3e2439d1b4bef4a58663e3ea06d8bb7cb9b19
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82144408"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192529"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight 提供了哪些 Apache Hadoop 组件和版本？
 
@@ -112,7 +112,7 @@ Enterprise Security 是一种可选包，可在 HDInsight 群集上作为创建�
 
     过去，你创建了包含本地管理员用户和本地 SSH 用户的 HDInsight 群集。 本地管理员用户可以访问所有文件、文件夹、表和列。  使用企业安全性套餐，可以通过将 HDInsight 与 Active Directory 集成来启用基于角色的访问控制。 其中包括本地 Active Directory Azure Active Directory 域服务。 或 Active Directory。 群集上的域管理员可以授予用户使用其自己的公司（域）用户名和密码的权限。
 
-    有关更多信息，请参阅：
+    有关详细信息，请参见:
 
     - [已加入域的 HDInsight 群集的 Apache Hadoop 安全性简介](./domain-joined/hdinsight-security-overview.md)
     - [在 HDInsight 中计划 Azure 已加入域的 Apache Hadoop 群集](./domain-joined/apache-domain-joined-architecture.md)
@@ -124,7 +124,7 @@ Enterprise Security 是一种可选包，可在 HDInsight 群集上作为创建�
   - 与 Apache Ranger 集成以对 Hive、Spark SQL 和 Yarn 队列授权。
   - 可以对文件和文件夹设置访问控制。
 
-    有关更多信息，请参阅：
+    有关详细信息，请参见:
 
   - [在已加入域的 HDInsight 中配置 Apache Hive 策略](./domain-joined/apache-domain-joined-run-hive.md)
 

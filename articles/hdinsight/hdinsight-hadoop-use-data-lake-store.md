@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,hdiseo17may2017
+ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: a89b2ce8070d1e000f6d3d673aa17bc48897dcf8
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: b45af924b75392374265ca41bd4dc1627edd4e01
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82147841"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82190803"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>将 Data Lake Storage Gen1 与 Azure HDInsight 群集配合使用
 
@@ -303,7 +303,7 @@ Invoke-AzResourceAction `
 
 本文介绍了如何将 HDFS 兼容的 Azure Data Lake Storage Gen1 与 HDInsight 配合使用。 此存储允许你构建可自适应的长期存档数据采集解决方案。 并使用 HDInsight 来解锁所存储结构化和非结构化数据内的信息。
 
-有关更多信息，请参阅：
+有关详细信息，请参见:
 
 * [快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * [通过 Azure PowerShell 创建使用 Data Lake Storage Gen1 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)

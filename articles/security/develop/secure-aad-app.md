@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
 ms.author: terrylan
-ms.openlocfilehash: 58deae64bdde27580b85b00a1c87ba115e24478a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 5b04bbbbe5425e65f3ed4ff82d9700dec6dd2c39
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159892"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188321"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>开发 Azure AD 应用程序的安全应用程序
 ## <a name="overview"></a>概述
@@ -35,7 +35,7 @@ ms.locfileid: "82159892"
 - 部署 Azure Web 应用，该应用专用于前端防火墙访问。 
 - 使用 OWASP Top 10 规则集的防火墙创建和配置 Azure 应用程序网关实例。 
 - 使用 Azure 服务对传输中的数据和静态数据启用加密。 
-- 设置 Azure 策略和安全中心来评估 compliancies。 
+- 设置 Azure 策略和安全中心以评估符合性。 
 
 开发和部署此应用后，你将设置以下示例 web 应用以及所述的配置和安全措施。
 
@@ -547,7 +547,7 @@ Azure 会创建默认策略，指定管理员需要双重身份验证才能登�
          
    *添加应用程序网关诊断*
 
-   4. 在 "**诊断设置**" 页上，选择你创建的 "Log Analytics" 工作区，然后选择要收集并发送到 Azure Sentinel 的所有指标。 选择“保存”  。
+   4. 在 "**诊断设置**" 页上，选择你创建的 "Log Analytics" 工作区，然后选择要收集并发送到 Azure Sentinel 的所有指标。 选择“保存”。 
 
    ![Azure Sentinel 连接器设置](./media/secure-aad-app/sentinel-connector-settings.png)
 

@@ -6,24 +6,24 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 4f2e8b2a691a6b17b5ed075745d556db4e330535
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: e5d9d4f215752d95ee1d676e8a5b126b6d0d3ab2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81682469"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82190616"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>使用 Apache Spark 读取和写入 Apache HBase 数据
 
-通常使用 Apache HBase 的低级别 API（扫描、获取和放置）或者通过 Apache Phoenix 使用 SQL 语法来查询 Apache HBase。 阿帕奇还提供阿帕奇火花HBase连接器。 连接器是查询和修改 HBase 存储的数据的一种方便且性能的替代方法。
+通常使用 Apache HBase 的低级别 API（扫描、获取和放置）或者通过 Apache Phoenix 使用 SQL 语法来查询 Apache HBase。 Apache 还提供 Apache Spark HBase 连接器。 连接器是用于查询和修改 HBase 存储的数据的一种方便、高性能的替代方法。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 在同一[虚拟网络中](./hdinsight-plan-virtual-network-deployment.md)部署的两个单独的 HDInsight 群集。 一个HBase 和一个至少安装了 Spark 2.1 (HDInsight 3.6) 的 Spark。 有关详细信息，请参阅[使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-portal.md)。
+* 同一[虚拟网络](./hdinsight-plan-virtual-network-deployment.md)中部署了两个单独的 HDInsight 群集。 一个HBase 和一个至少安装了 Spark 2.1 (HDInsight 3.6) 的 Spark。 有关详细信息，请参阅[使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-portal.md)。
 
-* 群集主存储的 URI 方案。 此方案将针对 Azure Blob 存储`abfs://`、Azure 数据存储第 2 代或 Azure 数据存储第 1 代adl://wasb://。 如果为 Blob 存储启用了安全传输，则`wasbs://`URI 将为 。  另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
+* 群集主存储的 URI 方案。 此方案将 wasb://用于 Azure Blob 存储， `abfs://`适用于 Azure Data Lake Storage Gen1 的 Azure Data Lake Storage Gen2 或 adl://。 如果为 Blob 存储启用安全传输，则 URI 将为`wasbs://`。  另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
 
 ## <a name="overall-process"></a>整体进程
 
@@ -150,7 +150,7 @@ exit
     |}""".stripMargin
     ```
 
-    该代码执行以下操作：  
+    代码执行以下操作：  
 
      a. 定义名为 `Contacts` 的 HBase 表的目录架构。  
      b. 将 rowkey 标识为 `key`，并将 Spark 中使用的列名映射到 HBase 中使用的列族、列名和列类型。  

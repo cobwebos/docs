@@ -5,18 +5,18 @@ author: suhuruli
 ms.topic: conceptual
 ms.date: 11/20/2017
 ms.author: suhuruli
-ms.openlocfilehash: 9f60b9d9b919a72250038ede2a2bd53278df79cb
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 1798d57f9fc4004fd2c7d1f1901fcddf850626c2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309004"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193320"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>设置 Windows 开发人员计算机上的 Linux Service Fabric 群集
 
 本文档介绍如何在 Windows 开发计算机上设置本地 Linux Service Fabric。 设置本地 Linux 群集有助于快速测试在 Windows 计算机上开发的面向 Linux 群集的应用程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 基于 Linux 的 Service Fabric 群集不在 Windows 本机上运行。 为了运行本地 Service Fabric 群集，我们提供了预配置的 Docker 容器映像。 准备事项：
 
 * 至少 4 GB RAM
@@ -64,7 +64,7 @@ ms.locfileid: "81309004"
     >例如，添加 `RUN apt-get install nodejs -y` 可以支持将 `nodejs` 应用程序用作来宾可执行文件。
     
     >[!TIP]
-    > 默认情况下，这样会拉取具有最新 Service Fabric 版本的映像。 有关特定修订，请访问 Docker[中心](https://hub.docker.com/r/microsoft/service-fabric-onebox/)页面
+    > 默认情况下，这样会拉取具有最新 Service Fabric 版本的映像。 如需特定的修订版本，请访问 [Docker 中心](https://hub.docker.com/r/microsoft/service-fabric-onebox/)页。
 
 3. 若要通过 `Dockerfile` 生成可重用的映像，请打开终端并运行 `cd` 切换到 `Dockerfile` 所在的目录，然后运行：
 
@@ -89,7 +89,7 @@ ms.locfileid: "81309004"
     >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest`
     >
 
-5. 群集需要很短的时间才能启动，您可以使用以下命令查看日志，也可以跳转到仪表板以查看群集运行状况[http://localhost:19080](http://localhost:19080)：
+5. 群集需要一小段时间来启动，可以使用以下命令查看日志，或者通过 `http://localhost:19080` 跳转到仪表板来查看群集运行状况：
 
     ```powershell 
     docker logs sftestcluster

@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 80ce7f893b4828125cd9b63ffe33b7c0d873e899
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: cd41c162d44320fc19af904118f202423e68e96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82146894"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195343"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集
 
@@ -39,9 +39,9 @@ Data Lake Storage Gen2 能够以默认存储和附加存储帐户的形式用作
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在左上角，单击“创建资源”****。
 1. 在 "搜索" 框中，键入**user user** ，然后单击 "**用户分配的托管标识**"。
-1. 单击“**创建**”。
+1. 单击“创建”。 
 1. 输入托管标识的名称，选择正确的订阅、资源组和位置。
-1. 单击“**创建**”。
+1. 单击“创建”。 
 
 有关 Azure HDInsight 中托管标识的工作方式的详细信息，请参阅[Azure hdinsight 中的托管标识](hdinsight-managed-identities.md)。
 
@@ -54,7 +54,7 @@ Data Lake Storage Gen2 能够以默认存储和附加存储帐户的形式用作
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在左上角，单击“创建资源”****。
 1. 在搜索框中，键入 **storage**，然后单击 **Storage account**。
-1. 单击“**创建**”。
+1. 单击“创建”。 
 1. 在“创建存储帐户”**** 屏幕上：
     1. 选择正确的订阅和资源组。
     1. 输入 Data Lake Storage Gen2 帐户的名称。

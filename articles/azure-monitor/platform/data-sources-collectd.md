@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
-ms.openlocfilehash: b8c09d4ac5d0856eb0d448a1cabd9adc567850c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f3b928e657b5c061e624281e1d5a8805283a657
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670604"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186418"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Azure Monitor 中的 Linux 代理上通过 CollectD 收集数据
 [CollectD](https://collectd.org/) 是一个开源 Linux 守护程序，它定期从应用程序级和系统级信息中收集性能指标。 示例应用程序包括 Java 虚拟机 (JVM)、MySQL Server 和 Nginx。 本文介绍了如何在 Azure Monitor 中通过 CollectD 收集性能数据。
@@ -63,14 +63,14 @@ CollectD 配置使用默认的 `write_http` 插件通过端口 26000 将性能�
     </filter>
 
 > [!NOTE]
-> 默认情况下，CollectD 设置为在 10 秒[间隔](https://collectd.org/wiki/index.php/Interval)内读取值。 由于这直接影响发送到 Azure 监视器日志的数据量，您可能需要在 CollectD 配置中调整此间隔，才能在监视要求与 Azure 监视器日志的相关成本和使用情况之间取得良好的平衡。
+> 默认情况下，CollectD 设置为以10秒的[间隔](https://collectd.org/wiki/index.php/Interval)读取值。 由于这会直接影响发送到 Azure Monitor 日志的数据量，因此您可能需要在 CollectD 配置中调整此时间间隔，以便在监视要求和相关成本与 Azure Monitor 日志的使用情况之间取得良好的平衡。
 
 ## <a name="versions-supported"></a>支持的版本
 - Azure Monitor 当前支持 CollectD 4.8 版及更高版本。
 - 要收集 CollectD 指标，需要 Log Analytics Linux 代理 v1.1.0-217 或更高版本。
 
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 下面是在 Azure Monitor 中配置 CollectD 数据收集的基本步骤。
 
 1. 将 CollectD 配置为使用 write_http 插件将数据发送到 Log Analytics Linux 代理。  
@@ -100,14 +100,15 @@ CollectD 配置使用默认的 `write_http` 插件通过端口 26000 将性能�
 
 3. 使用以下命令重新启动 CollectD 和 Log Analytics Linux 代理。
 
-    sudo service collectd restart  sudo /opt/microsoft/omsagent/bin/service_control restart
+        sudo service collectd restart
+        sudo /opt/microsoft/omsagent/bin/service_control restart
 
 ## <a name="collectd-metrics-to-azure-monitor-schema-conversion"></a>CollectD 指标到 Azure Monitor 架构的转换
 为了在 Log Analytics Linux 代理已收集的基础结构指标与 CollectD 收集的新指标之间维护一个熟悉的模型，将使用以下架构映射：
 
 | CollectD 指标字段 | Azure Monitor 字段 |
 |:--|:--|
-| `host` | Computer |
+| `host` | 计算机 |
 | `plugin` | 无 |
 | `plugin_instance` | Instance Name<br>如果 **plugin_instance** 为 null**，则 InstanceName="_Total"** |
 | `type` | ObjectName |

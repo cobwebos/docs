@@ -5,14 +5,14 @@ author: markjbrown
 ms.author: mjbrown
 ms.topic: conceptual
 ms.service: cosmos-db
-ms.date: 09/26/2019
+ms.date: 04/20/2020
 ms.reviewer: sngun
-ms.openlocfilehash: adf1db2d737de7004b5ab71c8e0e44d61d1da8c9
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 9b1c3435222ada52c01f21c2c242dc886f566a81
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81768513"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192844"
 ---
 # <a name="use-cases-for-built-in-analytics-with-azure-cosmos-db"></a>将内置分析与 Azure Cosmos DB 配合使用的用例
 
@@ -29,9 +29,9 @@ Azure Cosmos DB 中的内置分析可用于：
 
 Azure Cosmos DB 使用本机内置的 Apache Spark 来支持混合事务/分析处理 (HTAP) 方案。 Azure Cosmos DB 消除了传统系统存在的操作与分析隔离。
 
-## <a name="globally-distributed-data-lake-without-requiring-any-etl"></a>全球分布式数据湖，无需任何 ETL
+## <a name="globally-distributed-data-lake-without-requiring-any-etl"></a>全球分布式 data lake，无需任何 ETL
 
-Azure Cosmos DB 具有本机内置的 Apache Spark，提供了一种快速、简单且可扩展的方式来构建提供单个系统映像的全球分布式数据湖。 全球分布的多模型数据无需投资昂贵的 ETL 管道并按需扩展，从而彻底改变了数据团队分析其数据集的方式。
+使用本机内置 Apache Spark，Azure Cosmos DB 可提供一种快速、简单且可扩展的方式来构建提供单个系统映像的全球分布式 data lake。 全球分布的多模型数据无需投资昂贵的 ETL 管道，并按需缩放，revolutionizing 数据团队分析其数据集的方式。
 
 ## <a name="time-series-analytics-over-historic-data"></a>基于历史数据的时序分析
 
@@ -41,19 +41,19 @@ Azure Cosmos DB 具有本机内置的 Apache Spark，提供了一种快速、简
 
 ## <a name="globally-distributed-machine-learning-and-ai"></a>全球分布式机器学习和 AI
 
-随着企业应对快速增长的数据量和不断增长的各种数据类型和格式，在全球 PB 范围内获得更深入、更准确的见解的能力几乎是不可能的。 Azure Cosmos DB 具有本机内置的 Apache Spark，提供全球分布式分析平台，提供广泛的机器学习算法库。 您可以使用交互式 Jupyter 笔记本来构建和训练模型以及群集管理功能。 这些功能使您能够按需预配高度调谐和自动弹性 Spark 群集。
+随着企业面临迅速增长的数据量，以及扩展各种数据类型和格式的数据，获得更深入、更准确的见解的能力会在全球范围内扩展到 pb 级。 使用本机内置 Apache Spark，Azure Cosmos DB 提供了一个全局分布式分析平台，它提供了大量的机器学习算法库。 您可以使用交互式 Jupyter 笔记本来构建和训练模型以及群集管理功能。 这些功能使你能够按需预配高度优化的自动弹性 Spark 群集。
 
-## <a name="deep-learning-on-multi-model-globally-distributed-data"></a>对多模型全球分布式数据的深入了解
+## <a name="deep-learning-on-multi-model-globally-distributed-data"></a>深入了解多模型全局分布的数据
 
 随着数据量和复杂性的不断增大，深度学习是提供大数据预测分析解决方案的理想方式。 使用深度学习，企业可以运用强大的非结构化和半结构化数据来实现利用 AI、自然语言处理等技术的用例。
 
 ## <a name="reporting-integrating-with-power-apps-power-bi"></a>报告（与 Power Apps、Power BI 集成）
 
-Power BI 提供交互式可视化和自助式商业智能功能，使最终用户能够自行创建报告和仪表板。 使用内置的 Spark 连接器可将 Power BI Desktop 连接到 Azure Cosmos DB 中的 Apache Spark 群集。 此连接器允许您使用直接查询在 Azure Cosmos DB 中卸载处理到 Apache Spark，当您有大量不想加载到 Power BI 的数据或要执行接近实时分析的数据时，这非常出色。
+Power BI 提供交互式可视化和自助式商业智能功能，使最终用户能够自行创建报告和仪表板。 使用内置的 Spark 连接器可将 Power BI Desktop 连接到 Azure Cosmos DB 中的 Apache Spark 群集。 此连接器可让你使用直接查询将处理卸载到 Azure Cosmos DB 中的 Apache Spark，这非常适用于你要将大量数据加载到 Power BI，或者想要执行近乎实时分析。
 
-## <a name="iot-analytics-at-global-scale"></a>全球规模的物联网分析
+## <a name="iot-analytics-at-global-scale"></a>全球范围的 IoT 分析
 
-增加网络传感器后生成的数据可为以往不透明的系统和流程带来前所未有的可见性。 关键是在这个信息洪流中寻找可操作的见解，而不管 IoT 设备在全球的分布位置如何。 Azure Cosmos DB 允许 IOT 公司在世界各地实时分析高速传感器和时间序列数据。 它可以让你充分利用互联世界的真正价值，提供更好的客户体验、运营效率和新的收入机会。
+增加网络传感器后生成的数据可为以往不透明的系统和流程带来前所未有的可见性。 关键是在此 torrent 信息中查找可操作的见解，而不考虑 IoT 设备在全球分布的位置。 Azure Cosmos DB 使 IOT 公司能够在世界各地实时分析高速传感器，并实时分析时序数据。 它可以让你充分利用互联世界的真正价值，提供更好的客户体验、运营效率和新的收入机会。
 
 ## <a name="stream-processing-and-event-analytics"></a>流处理和事件分析 
 
@@ -63,14 +63,14 @@ Power BI 提供交互式可视化和自助式商业智能功能，使最终用�
 
 除了运行预定义的查询来创建有关销售、生产力或股票价格的静态仪表板以外，还可以交互方式浏览数据。 交互式分析允许提出问题、查看结果、根据响应更改初始问题，或更深入地钻取结果。 Azure Cosmos DB 中的 Apache Spark 通过快速响应和做出调整来支持交互式查询。
 
-## <a name="data-exploration-using-jupyter-notebooks"></a>使用朱派特笔记本进行数据探索
+## <a name="data-exploration-using-jupyter-notebooks"></a>使用 Jupyter 笔记本进行数据浏览
 
-当您有一个新的数据集时，在深入了解正在运行的模型和测试之前，您需要检查数据。 换句话说，您需要执行探索性数据分析。 数据探索可以为多个决策提供信息。 例如，您可以查找详细信息，例如适合在数据上使用的方法、数据是否符合某些建模假设、是否应清理数据、重组等。通过使用 Azure Cosmos DB 的本机内置 Jupyter 笔记本和 Apache Spark，您可以对事务和分析数据进行快速有效的探索性数据分析。
+如果有新的数据集，则在深入了解正在运行的模型和测试之前，需要检查数据。 换句话说，您需要执行探索数据分析。 数据浏览可以通知多种决定。 例如，您可以找到一些详细信息，例如适用于您的数据的方法、数据是否符合某些建模假设、是否应清除数据、是否进行重新构建等。通过使用 Azure Cosmos DB 的本机内置 Jupyter 笔记本和 Apache Spark，你可以对事务数据和分析数据进行快速、高效的探索数据分析。
 
 ## <a name="next-steps"></a>后续步骤
 
-要开始使用这些用例，请访问以下文章：
+若要开始使用这些用例，请转到以下文章：
 
-* [Azure 宇宙 DB 中的内置犹太笔记本](cosmosdb-jupyter-notebooks.md)
+* [Azure Cosmos DB 中的内置 Jupyter 笔记本](cosmosdb-jupyter-notebooks.md)
 * [如何为 Azure Cosmos 帐户启用笔记本](enable-notebooks.md)
-* [创建笔记本以分析和可视化数据](create-notebook-visualize-data.md)
+* [创建用于分析和可视化数据的笔记本](create-notebook-visualize-data.md)

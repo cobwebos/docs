@@ -3,16 +3,16 @@ title: 使用 PowerShell 升级 Service Fabric 应用
 description: 本文逐步指导使用 PowerShell 部署 Service Fabric 应用程序、更改代码以及推出升级版本。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: b113b5a1042518e3b0d86e53796c5fe49afed418
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d277df6959ea3e7985514f81faed520f163c6012
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75426785"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195878"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>使用 PowerShell 升级 Service Fabric 应用程序
 > [!div class="op_single_selector"]
-> * [电源外壳](service-fabric-application-upgrade-tutorial-powershell.md)
+> * [PowerShell](service-fabric-application-upgrade-tutorial-powershell.md)
 > * [Visual Studio](service-fabric-application-upgrade-tutorial.md)
 > 
 > 
@@ -23,7 +23,7 @@ ms.locfileid: "75426785"
 
 可使用托管或本机 API、PowerShell、Azure CLI、Java 或 REST 执行受监视的应用程序升级。 有关使用 Visual Studio 执行升级的说明，请参阅[使用 Visual Studio 升级应用程序](service-fabric-application-upgrade-tutorial.md)。
 
-使用 Service Fabric 监视的滚动升级，应用程序管理员可以配置 Service Fabric 用于确定应用程序运行状况是否正常的运行状况评估策略。 此外，管理员可以将运行状况评估失败时执行的操作配置为执行（例如，执行自动回滚）。本节介绍使用 PowerShell 的一个 SDK 示例的受监视升级。 
+使用 Service Fabric 监视的滚动升级，应用程序管理员可以配置 Service Fabric 用于确定应用程序运行状况是否正常的运行状况评估策略。 此外，管理员还可以配置当运行状况评估失败时要采取的措施（例如，执行自动回滚）。本部分演练使用 PowerShell 对其中一个 SDK 示例进行受监视的升级。 
 
 ## <a name="step-1-build-and-deploy-the-visual-objects-sample"></a>步骤 1：构建和部署 Visual Objects 示例
 单击右键应用程序项目 **VisualObjectsApplication**，并选择“**发布**”命令生成并发布应用程序。  有关详细信息，请参阅 [Service Fabric 应用程序升级教程](service-fabric-application-upgrade-tutorial.md)。  或者，也可以使用 PowerShell 来部署应用程序。
@@ -35,10 +35,10 @@ ms.locfileid: "75426785"
 
 在 Visual Studio 中构建项目后，可以使用 PowerShell 命令 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) 将应用程序包复制到 ImageStore。 如果要在本地验证应用包，请使用 [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) cmdlet。 下一个步骤是使用 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype) cmdlet 将应用程序注册到 Service Fabric 运行时。 接下来的一步骤是使用 [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) cmdlet 启动应用程序实例。  这三个步骤类似于使用 Visual Studio 中的“**部署**”菜单项。  完成预配后，应从映像存储区中清除复制的应用程序包以减少占用的资源。  如果不再需要某一应用程序类型，它应出于同样的原因将其注销。 有关详细信息，请按照[使用 PowerShell 部署和删除应用程序](service-fabric-application-upgrade-tutorial-powershell.md)。
 
-现在可以使用 [Service Fabric Explorer 查看群集和应用程序](service-fabric-visualizing-your-cluster.md)。 该应用程序具有一个 Web 服务，可以通过在地址栏中[http://localhost:8081/visualobjects](http://localhost:8081/visualobjects)键入来导航到 Internet 资源管理器中。  应在屏幕上看到一些四处移动的浮动视觉对象。  此外，可使用 [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) 检查应用程序状态。
+现在可以使用 [Service Fabric Explorer 查看群集和应用程序](service-fabric-visualizing-your-cluster.md)。 应用程序具有一个 Web 服务，可通过在 Internet Explorer 地址栏中键入 `http://localhost:8081/visualobjects` 导航到该 Web 服务。  应在屏幕上看到一些四处移动的浮动视觉对象。  此外，可使用 [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) 检查应用程序状态。
 
-## <a name="step-2-update-the-visual-objects-sample"></a>步骤 2：更新可视对象示例
-你可能会注意到，使用步骤 1 中部署的版本，视觉对象不会旋转。 让我们将此应用程序升级到可视对象也会旋转的版本。
+## <a name="step-2-update-the-visual-objects-sample"></a>步骤 2：更新视觉对象示例
+你可能会注意到，使用步骤 1 中部署的版本，视觉对象不会旋转。 让我们将此应用程序升级到视觉对象也会旋转的版本。
 
 选择 VisualObjects 解决方案中的 VisualObjects.ActorService 项目，并打开该项目中的 StatefulVisualObjectActor.cs 文件。 在该文件内，导航到 `MoveObject` 方法，注释掉 `this.State.Move()`，并取消注释 `this.State.Move(true)`。 此项更改可在升级服务后旋转对象。
 
@@ -61,14 +61,14 @@ ms.locfileid: "75426785"
  <ServiceManifestRefServiceManifestName="VisualObjects.ActorService" ServiceManifestVersion="2.0" />
 ```
 
-现在请生成项目，方法是选择 **ActorService** 项目，并单击右键并选择 Visual Studio 中的“**生成**”选项。 如果选择“**全部重新生成**”，应该更新所有项目的版本，因为代码已更改。 接下来，将更新的应用程序打包，方法是右键单击“***VisualObjectsApplication***”，选择 Service Fabric 菜单，然后选择“**打包**”。 此操作将创建可部署的应用程序包。  更新的应用程序已准备就绪，可供部署。
+现在请生成项目，方法是选择 **ActorService** 项目，并单击右键并选择 Visual Studio 中的“**生成**”选项。 如果选择“**全部重新生成**”，应该更新所有项目的版本，因为代码已更改。 接下来，将更新的应用程序打包，方法是右键单击“***VisualObjectsApplication***”，选择 Service Fabric 菜单，并选择“**打包**”。 此操作创建可部署的应用程序包。  更新的应用程序已准备就绪，可供部署。
 
 ## <a name="step-3--decide-on-health-policies-and-upgrade-parameters"></a>步骤 3：确定运行状况策略和升级参数
-请熟悉[应用程序升级参数](service-fabric-application-upgrade-parameters.md)和[升级过程](service-fabric-application-upgrade.md)，充分了解所应用的各种升级参数、超时和运行状况条件。 对于本演练，服务运行状况评估标准设置为默认值（即推荐值），这意味着在升级后所有服务和实例均应为*运行状况正常*。  
+请熟悉[应用程序升级参数](service-fabric-application-upgrade-parameters.md)和[升级过程](service-fabric-application-upgrade.md)，充分了解所应用的各种升级参数、超时和运行状况条件。 对于本演练，服务运行状况评估条件设置为默认值（即推荐值），这意味着在升级后所有服务和实例均应为*运行状况正常*。  
 
 但是，让我们将 *HealthCheckStableDuration* 增加到 180 秒（这样该服务在进行下一个更新域的升级之前将至少保持 120 秒的运行状况正常）。  我们还将 *UpgradeDomainTimeout* 设置为 1200 秒，将 *UpgradeTimeout* 设置为 3000 秒。
 
-最后，将 *UpgradeFailureAction* 设置为 rollback。 此选项要求 Service Fabric 在升级期间如果遇到任何问题时，将应用程序回滚到旧版。 因此在开始升级（步骤 4）时指定了以下参数：
+最后，将 *UpgradeFailureAction* 设置为 rollback。 此选项要求 Service Fabric 在升级期间遇到任何问题时，将应用程序回退到前一版本。 因此在开始升级（步骤 4）时指定了以下参数：
 
 FailureAction = Rollback
 
@@ -78,7 +78,7 @@ UpgradeDomainTimeoutSec = 1200
 
 UpgradeTimeout = 3000
 
-## <a name="step-4-prepare-application-for-upgrade"></a>步骤 4：准备应用程序升级
+## <a name="step-4-prepare-application-for-upgrade"></a>步骤 4：为升级准备应用程序
 现在，应用程序已生成并准备好进行升级。 如果以管理员身份打开 PowerShell 窗口并键入 [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps)，会看到已部署好的 1.0.0.0 应用程序类型的名为 **VisualObjects** 的应用程序。  
 
 应用程序包存储在解压 Service Fabric SDK 的位置，其相对路径为 *Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug*。 该目录中应会出现一个“Package”文件夹，这是存储应用程序包的位置。 请检查时间戳，确保它是最新版本（可能还需要相应地修改路径）。
@@ -124,13 +124,13 @@ Get-ServiceFabricApplicationUpgrade fabric:/VisualObjects
 可以练习从版本 2 升级到版本 3，或者从版本 2 升级到版本 1。 从版本 2 过渡到版本 1 也被视为升级。 尝试练习使用超时和运行状况策略，以便加深对它的熟悉。 部署到 Azure 群集时，需要正确设置参数。 最好保守地设置超时。
 
 ## <a name="next-steps"></a>后续步骤
-[使用 Visual Studio 升级应用程序](service-fabric-application-upgrade-tutorial.md)会引导您使用 Visual Studio 进行应用程序升级。
+[使用 Visual Studio 升级应用程序](service-fabric-application-upgrade-tutorial.md)逐步讲解了如何使用 Visual Studio 进行应用程序升级。
 
 使用[升级参数](service-fabric-application-upgrade-parameters.md)来控制应用程序的升级方式。
 
-通过学习如何使用[数据序列化](service-fabric-application-upgrade-data-serialization.md)，使应用程序升级兼容。
+了解如何使用[数据序列化](service-fabric-application-upgrade-data-serialization.md)，使应用程序在升级后保持兼容。
 
 参考[高级主题](service-fabric-application-upgrade-advanced.md)，了解如何在升级应用程序时使用高级功能。
 
-通过参考[故障排除应用程序升级](service-fabric-application-upgrade-troubleshooting.md)中的步骤，修复应用程序升级中的常见问题。
+参考[对应用程序升级进行故障排除](service-fabric-application-upgrade-troubleshooting.md)中的步骤来解决应用程序升级时的常见问题。
 

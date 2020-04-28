@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: a1674f51d5b877a1296e9a457c6acf61a507c82e
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: ed14d3fb1cd3d9d8af37088811ce62b050778a95
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82131390"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189797"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>针对网络安全组进行流日志记录简介
 
@@ -51,7 +51,7 @@ ms.locfileid: "82131390"
 - 日志是通过 Azure 平台收集的，并且不会以任何方式影响客户资源或网络性能。
 - 日志以 JSON 格式编写，并基于每个 NSG 规则显示出站和入站流。
 - 每条日志记录都包含流量适用的网络接口（NIC）、5元组信息、流量决策 & （仅限版本2）的吞吐量信息。 有关完整详细信息，请参阅下面的_日志格式_。
-- 流日志具有保留功能，允许在创建日志后自动将其删除一年
+- 流日志具有保留功能，允许在创建日志后自动删除日志。 **注意**：只有在使用[常规用途 v2 存储帐户（GPv2）](https://docs.microsoft.com/azure/storage/common/storage-account-overview#types-of-storage-accounts)时，保留才可用。 
 
 **核心概念**
 
@@ -365,13 +365,13 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 ## <a name="troubleshooting-common-issues"></a>排查常见问题
 
-### <a name="i-could-not-enable-nsg-flow-logs"></a>**无法启用 NSG 流日志**
+**无法启用 NSG 流日志**
 
 - **Microsoft Insights**资源提供程序未注册
 
 如果收到 _AuthorizationFailed_ 或 _GatewayAuthenticationFailed_ 错误，则表明你可能尚未在订阅上启用 Microsoft Insights 资源提供程序。 [按照说明](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal#register-insights-provider)启用 Microsoft Insights 提供程序。
 
-### <a name="i-have-enabled-nsg-flow-logs-but-do-not-see-data-in-my-storage-account"></a>**我已经启用 NSG 流日志，但在存储帐户中看不到数据**
+**我已经启用 NSG 流日志，但在存储帐户中看不到数据**
 
 - **设置时间**
 
@@ -381,21 +381,21 @@ NSG 流日志可能需要长达 5 分钟的时间才能显示在存储帐户中�
 
 有时，由于 VM 处于不可用状态，或者应用程序网关或其他设备上的上游筛选器阻止了 NSG 的流量，因此，你将看不到日志。
 
-### <a name="i-want-to-automate-nsg-flow-logs"></a>**我想自动执行 NSG 流日志**
+**我想自动执行 NSG 流日志**
 
 NSG 流日志当前不支持通过 ARM 模板进行自动化操作。 有关详细信息，请阅读[功能公告](https://azure.microsoft.com/updates/arm-template-support-for-nsg-flow-logs/)。
 
 ## <a name="faq"></a>常见问题解答
 
-### <a name="what-does-nsg-flow-logs-do"></a>**NSG 流日志有什么作用？**
+**NSG 流日志有什么作用？**
 
 可以通过[网络安全组 (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview) 来合并和管理 Azure 网络资源。 使用 NSG 流日志可以通过 NSG 记录有关所有流量的 5 元组流信息。 原始流日志将写入 Azure 存储帐户，在存储帐户中，可以根据需要进一步处理、分析、查询或导出这些日志。
 
-### <a name="does-using-flow-logs-impact-my-network-latency-or-performance"></a>**使用流日志是否会影响网络延迟或性能？**
+**使用流日志是否会影响网络延迟或性能？**
 
 流日志数据收集到网络流量的路径之外，因此不会影响网络吞吐量或延迟。 你可以创建或删除流日志，而不会对网络性能产生任何影响。
 
-### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-firewall"></a>**如何实现在防火墙后面使用存储帐户的 NSG 流日志？**
+**如何实现在防火墙后面使用存储帐户的 NSG 流日志？**
 
 若要在防火墙后面使用存储帐户，你必须为受信任的 Microsoft 服务提供例外，以便访问你的存储帐户：
 
@@ -407,11 +407,11 @@ NSG 流日志当前不支持通过 ARM 模板进行自动化操作。 有关详�
 
 可以在数分钟后检查存储日志，应该会看到时间戳已更新，或者会看到新的 JSON 文件已创建。
 
-### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-service-endpoint"></a>**如何实现将 NSG 流日志用于服务终结点后面的存储帐户？**
+**如何实现将 NSG 流日志用于服务终结点后面的存储帐户？**
 
 NSG 流日志与服务终结点兼容，无需任何额外的配置。 请参阅教程，了解如何在虚拟网络中[启用服务终结点](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint)。
 
-### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>**流日志版本 1 & 2 之间有何区别？**
+**流日志版本 1 & 2 之间有何区别？**
 
 流日志版本 2 引入了“流状态”的概念，并会存储有关传输的字节和数据包的信息。__ [了解更多](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file)
 

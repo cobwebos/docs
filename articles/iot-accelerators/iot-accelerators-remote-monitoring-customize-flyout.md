@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
-ms.openlocfilehash: ccb1a7ff6abbc68f42c7632a8ba7a392b2c48794
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3820b34a9c79f3b514327fa45a05eebaf8a2a1ca
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61447108"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193167"
 ---
 # <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>向远程监视解决方案加速器 Web UI 添加自定义浮出控件
 
@@ -35,7 +35,7 @@ ms.locfileid: "61447108"
 
 应先完成下列文章中的步骤，再继续操作：
 
-- [向远程监视解决方案加速器 Web UI 添加自定义页面](iot-accelerators-remote-monitoring-customize-page.md)。
+- [将自定义页面添加到远程监视解决方案加速器 WEB UI](iot-accelerators-remote-monitoring-customize-page.md)。
 - [向远程监视解决方案加速器 Web UI 添加自定义服务](iot-accelerators-remote-monitoring-customize-service.md)
 - [向远程监视解决方案加速器 Web UI 添加自定义网格](iot-accelerators-remote-monitoring-customize-grid.md)
 
@@ -133,7 +133,7 @@ export class BasicPage extends Component {
 npm start
 ```
 
-前面的命令在 本地运行[http://localhost:3000/dashboard](http://localhost:3000/dashboard)UI。 导航到“示例”页，单击“打开浮出控件”********。
+上述命令在本地 (`http://localhost:3000/dashboard`) 运行 UI。 导航到“示例”页，单击“打开浮出控件”********。
 
 ## <a name="next-steps"></a>后续步骤
 

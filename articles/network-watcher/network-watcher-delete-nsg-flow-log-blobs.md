@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2019
 ms.author: damendo
-ms.openlocfilehash: 6d535bcc2e0831baae658796f76c8087d74c6a85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 948347f38b4b0fefe1e61cc4560eaa46e1bfd6f0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77587203"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187964"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>在网络观察程序中删除网络安全组流日志存储 blob
 
-目前存在一个问题，即：网络观察程序的[网络安全组 (NSG) 流日志](network-watcher-nsg-flow-logging-overview.md)未根据保留策略设置自动从 Blob 存储中删除。 你现在必须运行一个 PowerShell 脚本来手动删除存储帐户中的流日志，如本文所述。
+如果需要从存储帐户手动删除流日志，可以使用以下 PowerShell 脚本。
+此脚本仅删除比用户指定的现有保留策略旧的存储 blob。
 
 ## <a name="run-powershell-script-to-delete-nsg-flow-logs"></a>运行 PowerShell 脚本来删除 NSG 流日志
  
@@ -125,9 +126,9 @@ Write-Output ('Retention policy for all NSGs evaluated and completed successfull
 ```
 
 1. 根据需要在脚本中输入以下参数：
-   - **订阅 Id** [必需]：要从中删除 NSG 流日志 blob 的订阅 ID。
-   - **位置**[必需]：要为其删除 NSG 流日志 blob 的 NSG 区域_的位置字符串_。 可以在 Azure 门户上或 [GitHub](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23) 上查看此信息。
-   - **确认**[可选]：如果要手动确认删除每个存储 Blob，请传递确认标志。
+   - **SubscriptionId** [必需]：要从中删除 NSG 流日志 blob 的订阅 ID。
+   - **Location** [必需]：要为其删除 NSG 流日志 blob 的 NSG 的区域_位置字符串_。 可以在 Azure 门户上或 [GitHub](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23) 上查看此信息。
+   - **Confirm** [可选]：如果要手动确认每个存储 blob 的删除，请传递 confirm 标志。
 
 1. 运行保存的脚本，如以下示例中所示，其中脚本文件保存为 **Delete-NsgFlowLogsBlobs.ps1**：
    ```
@@ -135,6 +136,6 @@ Write-Output ('Retention policy for all NSGs evaluated and completed successfull
    ```
     
 ## <a name="next-steps"></a>后续步骤
-- 客户可以使用[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)或[Azure 自动化](https://azure.microsoft.com/services/automation/)自动运行脚本
+- 客户可使用[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)或[azure 自动化](https://azure.microsoft.com/services/automation/)自动运行脚本
 - 如需详细了解 NSG 日志记录，请参阅[网络安全组 (NSG) 的 Azure Monitor 日志](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
 

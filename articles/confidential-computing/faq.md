@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: 2bd9430fc6f48d72faa2c1850af0bb8432a7c5f5
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: e9cb691ef60f612672078a9ef84db904c79cbc87
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82149497"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189439"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Azure 机密计算常见问题
 
@@ -32,7 +32,7 @@ ms.locfileid: "82149497"
 
 1. **所有 OS 映像是否适用于 Azure 机密计算？**
 
-   不能。 只能在第2代虚拟机上部署虚拟机。 我们为 Ubuntu Server 18.04、Ubuntu Server 16.04 和 Windows Server 2016 Datacenter 提供第2代支持。 阅读有关[Linux](../virtual-machines/linux/generation-2.md)和[Windows](../virtual-machines/windows/generation-2.md)上的第2代 vm 的详细信息
+   否。 只能在第2代虚拟机上部署虚拟机。 我们为 Ubuntu Server 18.04、Ubuntu Server 16.04 和 Windows Server 2016 Datacenter 提供第2代支持。 阅读有关[Linux](../virtual-machines/linux/generation-2.md)和[Windows](../virtual-machines/windows/generation-2.md)上的第2代 vm 的详细信息
 
 1. **DCsv2 虚拟机在门户中灰显，无法选择其中的虚拟机**
 
@@ -47,7 +47,7 @@ ms.locfileid: "82149497"
 
 1. **DCsv2 系列和 DC 系列 Vm 之间有何区别？**
 
-   DC 系列 Vm 在具有 SGX 的老式6核 Intel 处理器上运行。 它们的内存总量更少，小于小于（Enclave 页框架）内存，并且在更少的区域中可用。 这些 Vm 仅适用于美国东部，欧洲西部提供两种大小： Standard_DC2s 和 Standard_DC4s。 它们不会成为 GA，只能部署到[机密计算 DC 系列 VM [预览版]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) Marketplace 实例
+   在采用 Intel SGX 的老式6核 Intel 处理器上运行 DC 系列 Vm。 它们的内存总量更少，小于小于（Enclave 页框架）内存，并且在更少的区域中可用。 这些 Vm 仅适用于美国东部，欧洲西部提供两种大小： Standard_DC2s 和 Standard_DC4s。 它们不会成为 GA，只能部署到[机密计算 DC 系列 VM [预览版]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) Marketplace 实例
 
 1. **DCsv2 虚拟机是否全局可用？**
 

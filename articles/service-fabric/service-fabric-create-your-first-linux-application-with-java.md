@@ -3,12 +3,12 @@ title: 在 Linux 上创建 Azure Service Fabric Reliable Actors Java 应用程�
 description: 了解如何在五分钟内创建并部署一个 Java Service Fabric Reliable Actors 应用程序。
 ms.topic: conceptual
 ms.date: 06/18/2018
-ms.openlocfilehash: 82d4446d76254657adfe64ed41386c06a0a873eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d09666bad7b4e03b8598191d99a9db717c277d4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75458162"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193558"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>在 Linux 上创建第一个 Java Service Fabric Reliable Actors 应用程序
 > [!div class="op_single_selector"]
@@ -19,7 +19,7 @@ ms.locfileid: "75458162"
 
 借助本快速入门，只需几分钟即可在 Linux 开发环境中创建第一个 Azure Service Fabric Java 应用程序。  完成后，即拥有一个在本地开发群集上运行的简单 Java 单一服务应用程序。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 开始之前，请安装 Service Fabric SDK、Service Fabric CLI、Yeoman，设置 Java 开发环境，并在 [Linux 开发环境](service-fabric-get-started-linux.md)中设置开发群集。 如果使用 Mac OS X，则可[使用 Docker 在 Mac 上设置开发环境](service-fabric-get-started-mac.md)。
 
 另请安装 [Service Fabric CLI](service-fabric-cli.md)。
@@ -34,7 +34,7 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
 ## <a name="basic-concepts"></a>基本概念
 若要开始使用 Reliable Actors，只需了解几个基本概念：
 
-* **演员服务**。 可以在 Service Fabric 基础结构中部署的 Reliable Services 中封装了 Reliable Actors。 执行组件服务在命名的服务实例中激活。
+* **执行组件服务**。 可以在 Service Fabric 基础结构中部署的 Reliable Services 中封装了 Reliable Actors。 执行组件服务在命名的服务实例中激活。
 * **执行组件注册**。 与 Reliable Services 一样，Reliable Actor 服务也需要注册到 Service Fabric 运行时。 此外，需要将执行组件类型注册到执行组件运行时。
 * **执行组件接口**。 执行组件接口用于定义执行组件的强类型公共接口。 在 Reliable Actor 模型术语中，执行组件接口用于定义执行组件可以理解并处理的消息类型。 其他执行组件或客户端应用程序使用此执行组件接口将消息“发送”到（异步方式）此执行组件。 Reliable Actors 可实现多个接口。
 * **ActorProxy 类**。 客户端应用程序使用 ActorProxy 类调用通过执行组件接口公开的方法。 ActorProxy 类提供两个重要功能：
@@ -103,7 +103,7 @@ HelloWorldActorApplication/
 ### <a name="actor-interface"></a>执行组件接口
 包含执行组件的接口定义。 此接口定义执行组件实现和调用执行组件的客户端所共享的执行组件协定，因此合理的做法是在独立于执行组件实现的某个位置定义接口，并且其他多个服务或客户端应用程序可以共享接口。
 
-`HelloWorldActorInterface/src/reliableactor/HelloWorldActor.java`:
+`HelloWorldActorInterface/src/reliableactor/HelloWorldActor.java`设置用户帐户 ：
 
 ```java
 public interface HelloWorldActor extends Actor {
@@ -117,7 +117,7 @@ public interface HelloWorldActor extends Actor {
 ### <a name="actor-service"></a>执行组件服务
 包含执行组件实现和执行组件注册代码。 执行组件类实现执行组件接口。 这是执行组件的工作位置。
 
-`HelloWorldActor/src/reliableactor/HelloWorldActorImpl`:
+`HelloWorldActor/src/reliableactor/HelloWorldActorImpl`设置用户帐户 ：
 
 ```java
 @ActorServiceAttribute(name = "HelloWorldActorService")
@@ -153,7 +153,7 @@ public class HelloWorldActorImpl extends FabricActor implements HelloWorldActor 
 ### <a name="actor-registration"></a>执行组件注册
 执行组件服务必须使用 Service Fabric 运行时中的服务类型注册。 为了使执行组件服务能够运行执行组件实例，还必须向执行组件服务注册执行组件类型。 `ActorRuntime` 注册方法将为执行组件执行此操作。
 
-`HelloWorldActor/src/reliableactor/HelloWorldActorHost`:
+`HelloWorldActor/src/reliableactor/HelloWorldActorHost`设置用户帐户 ：
 
 ```java
 public class HelloWorldActorHost {
@@ -204,8 +204,8 @@ Service Fabric Java 依赖项从 Maven 提取。 若要生成和使用 Service F
 
 这些命令的参数可以在应用程序包内的已生成清单中找到。
 
-应用程序部署完以后，请打开浏览器并导航到 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)，其地址为 [http://localhost:19080/Explorer](http://localhost:19080/Explorer)。
-然后，展开“应用程序”**** 节点，注意现在有一个条目是用于你的应用程序类型，另一个条目用于该类型的第一个实例。
+应用程序部署完以后，请打开浏览器并导航到 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)，其地址为 `http://localhost:19080/Explorer`。
+然后，展开“应用程序”  节点，注意现在有一个条目是用于你的应用程序类型，另一个条目用于该类型的第一个实例。
 
 > [!IMPORTANT]
 > 必须将证书配置为向 Service Fabric 运行时验证应用程序，才能将应用程序部署到 Azure 中的安全 Linux 群集。 这样可便于 Reliable Actors 服务与基础 Service Fabric 运行时 API 通信。 若要了解详细信息，请参阅[将 Reliable Services 应用程序配置为在 Linux 群集上运行](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)。  
@@ -236,7 +236,7 @@ Service Fabric Java 依赖项从 Maven 提取。 若要生成和使用 Service F
 
     ![在 Service Fabric Explorer 中查找主副本][sfx-primary]
 
-3. 在“节点”中，单击上一步找到的节点，然后从“操作”菜单中选择“停用(重启)”********。 此操作重启运行主要服务副本的节点，并强制故障转移到在其他节点上运行的其中一个次要副本。  该次要副本将提升为主要副本，并在其他节点上创建另一次要副本，然后主要副本开始执行读/写操作。 节点重启时，请注意来自测试客户端的输出，并注意虽然发生故障转移，但计数器仍继续递增。
+3. 在“节点”中，单击上一步找到的节点，然后从“操作”菜单中选择“停用(重启)”   。 此操作重启运行主要服务副本的节点，并强制故障转移到在其他节点上运行的其中一个次要副本。  该次要副本将提升为主要副本，并在其他节点上创建另一次要副本，然后主要副本开始执行读/写操作。 节点重启时，请注意来自测试客户端的输出，并注意虽然发生故障转移，但计数器仍继续递增。
 
 ## <a name="remove-the-application"></a>删除应用程序
 使用模板中提供的卸载脚本可从群集的映像存储区删除应用程序实例、注销应用程序包并删除应用程序包。
@@ -245,10 +245,10 @@ Service Fabric Java 依赖项从 Maven 提取。 若要生成和使用 Service F
 ./uninstall.sh
 ```
 
-在 Service Fabric Explorer 中，可看到应用程序和应用程序类型不再显示在“应用程序”节点中****。
+在 Service Fabric Explorer 中，可看到应用程序和应用程序类型不再显示在“应用程序”节点中  。
 
 ## <a name="service-fabric-java-libraries-on-maven"></a>Maven 上的 Service Fabric Java 库
-Service Fabric Java 库已托管在 Maven 中。 可以在项目的 ``pom.xml`` 或 ``build.gradle`` 中添加依赖项，以便使用 mavenCentral**** 提供的 Service Fabric Java 库。 
+Service Fabric Java 库已托管在 Maven 中。 可以在项目的 ``pom.xml`` 或 ``build.gradle`` 中添加依赖项，以便使用 mavenCentral  提供的 Service Fabric Java 库。 
 
 ### <a name="actors"></a>执行组件
 
@@ -271,7 +271,7 @@ Service Fabric Java 库已托管在 Maven 中。 可以在项目的 ``pom.xml`` 
   }
   ```
 
-### <a name="services"></a>Services
+### <a name="services"></a>服务
 
 针对应用程序的 Service Fabric Reliable Services 支持。
 
@@ -340,7 +340,7 @@ Service Fabric Java 库已托管在 Maven 中。 可以在项目的 ``pom.xml`` 
 * [使用 Eclipse 在 Linux 上创建第一个 Service Fabric Java 应用程序](service-fabric-get-started-eclipse.md)
 * [了解有关 Reliable Actors 的详细信息](service-fabric-reliable-actors-introduction.md)
 * [使用 Service Fabric CLI 与 Service Fabric 群集交互](service-fabric-cli.md)
-* 了解[服务交换矩阵支持选项](service-fabric-support.md)
+* 了解 [Service Fabric 支持选项](service-fabric-support.md)
 * [Service Fabric CLI 入门](service-fabric-cli.md)
 
 <!-- Images -->

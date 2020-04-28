@@ -3,12 +3,12 @@ title: 在 Linux 上设置开发环境
 description: 在 Linux 上安装运行时和 SDK 并创建本地开发群集。 完成此设置后，便可以开始生成应用程序。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 6cedd97144a3fd32d9af8582e24ad5c12914e575
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 000d615d779ed14eb1698cf297075480a07c71ef
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81682620"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193405"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上准备开发环境
 > [!div class="op_single_selector"]
@@ -179,7 +179,7 @@ RHEL | - | OpenJDK 1.8 | Implicit from npm | 最新 |
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-2. 打开 Web 浏览器并转到[服务结构资源管理器](http://localhost:19080/Explorer)`http://localhost:19080/Explorer`（）。 群集启动后，可以看到 Service Fabric Explorer 仪表板。 群集完全设置可能需要几分钟时间。 如果浏览器无法打开该 URL 或者 Service Fabric Explorer 未显示系统已准备就绪，请等待几分钟，然后重试。
+2. 打开 web 浏览器并中转到**Service Fabric Explorer** （`http://localhost:19080/Explorer`）。 群集启动后，可以看到 Service Fabric Explorer 仪表板。 群集完全设置可能需要几分钟时间。 如果浏览器无法打开该 URL 或者 Service Fabric Explorer 未显示系统已准备就绪，请等待几分钟，然后重试。
 
     ![Linux 上的 Service Fabric Explorer][sfx-linux]
 
@@ -261,11 +261,11 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
 > 
 > 在 Ubuntu 上，建议直接从 Eclipse 站点进行安装，而不是使用包安装程序（`apt` 或 `apt-get`）。 这样做可确保获取最新版 Eclipse。 可以安装面向 Java 开发人员或 Java EE 开发人员的 Eclipse IDE。
 
-1. 在 Eclipse 中，请确保已安装 Eclipse Neon 或更高版本，以及 Buildship 2.2.1 版或更高版本。 通过选择"**关于 Eclipse** > **安装详细信息****的帮助"，** > 检查已安装组件的版本。 可以按 [Eclipse Buildship：适用于 Gradle 的 Eclipse 插件][buildship-update]中的说明更新 Buildship。
+1. 在 Eclipse 中，请确保已安装 Eclipse Neon 或更高版本，以及 Buildship 2.2.1 版或更高版本。 通过选择 "**帮助** > " "**关于 Eclipse** > **安装详细信息**" 检查已安装组件的版本。 可以按 [Eclipse Buildship：适用于 Gradle 的 Eclipse 插件][buildship-update]中的说明更新 Buildship。
 
-2. 要安装服务交换矩阵插件，请选择 **"帮助** > **安装新软件**"。
+2. 若要安装 Service Fabric 插件，请选择 "**帮助** > " "**安装新软件**"。
 
-3. 在"**使用"** 框中，输入**\/https： /dl.microsoft.com/eclipse**。
+3. 在 "**使用**" 框中，输入**https\/：/dl.microsoft.com/eclipse**。
 
 4. 选择 **添加** 。
 
@@ -275,7 +275,7 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
 
 6. 执行安装步骤。 然后接受最终用户许可协议。
 
-如果已安装 Service Fabric Eclipse 插件，请确保使用最新版本。 通过选择 **"有关 Eclipse** > **安装详细信息****的帮助"** > 进行检查。 然后在已安装的插件列表中搜索服务结构。如果较新版本可用，请选择 **"更新**"。
+如果已安装 Service Fabric Eclipse 插件，请确保使用最新版本。 通过选择 " **Help** > **有关 Eclipse** > **安装详细信息**的帮助" 进行检查。 然后，在已安装的插件列表中搜索 Service Fabric。如果有较新版本可用，请选择 "**更新**"。
 
 有关详细信息，请参阅[使用适用于 Eclipse 的 Service Fabric 插件开发 Java 应用程序](service-fabric-get-started-eclipse.md)。
 

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 3765c70b27fb98518f71a55f00acfe5b831044ec
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: d5edfab0963ec3fca24969d7a54038066ba08765
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82146673"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188389"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure 机器学习的企业安全性
 
@@ -78,7 +78,7 @@ ms.locfileid: "82146673"
 如果内置角色不符合你的需求，可以创建自定义角色。 只有针对工作区上和机器学习计算的操作支持自定义角色。 自定义角色对工作区及其中的计算资源拥有读取、写入或删除权限。 可以使角色在特定工作区级别、特定资源组级别或特定订阅级别可用。 有关详细信息，请参阅[管理 Azure 机器学习工作区中的用户和角色](how-to-assign-roles.md)。
 
 > [!WARNING]
-> Azure Active Directory 企业到企业协作，目前不支持 Azure 机器学习。
+> Azure Active Directory 企业到企业协作支持 Azure 机器学习，但目前不支持 Azure Active Directory 的企业到消费者协作。
 
 ### <a name="securing-compute-targets-and-data"></a>保护计算目标和数据
 
@@ -112,7 +112,7 @@ Azure 机器学习依赖于其他 Azure 服务提供计算资源。 计算资源
 > [!TIP]
 > 你可以将虚拟网络和专用链接组合在一起，以保护你的工作区和其他 Azure 资源之间的通信。 但是，某些组合需要 Enterprise edition 工作区。 使用下表了解需要 Enterprise edition 的方案：
 >
-> | 方案 | Enterprise</br>edition | Basic</br>edition |
+> | 方案 | Enterprise</br>edition | 基本</br>edition |
 > | ----- |:-----:|:-----:| 
 > | 无虚拟网络或专用链接 | ✔ | ✔ |
 > | 无专用链接的工作区。 虚拟网络中的其他资源（Azure 容器注册表除外） | ✔ | ✔ |
@@ -385,10 +385,7 @@ Microsoft 还建议不要在环境变量中存储敏感信息（如帐户密钥�
 
 * [用 TLS 保护 Azure 机器学习 web 服务](how-to-secure-web-service.md)
 * [使用部署为 web 服务的机器学习模型](how-to-consume-web-service.md)
-* [如何运行批量预测](how-to-use-parallel-run-step.md)
-* [用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)
-* [为生产环境中的模型收集数据](how-to-enable-data-collection.md)
-* [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
+* [将 Azure 机器学习与 Azure 防火墙配合使用](how-to-access-azureml-behind-firewall.md)
 * [通过 Azure 虚拟网络使用 Azure 机器学习](how-to-enable-virtual-network.md)
 * [有关构建建议系统的最佳实践](https://github.com/Microsoft/Recommenders)
 * [在 Azure 上生成实时建议 API](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/real-time-recommendation)

@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: a230d4f775207afc37172dae9f0709d66a6d1aa1
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 832caaed0816e3dd7d177f634209dea42e5312c7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116615"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192674"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>将 Apache Ambari Hive 视图与 HDInsight 中的 Apache Hadoop 配合使用
 
@@ -146,7 +146,7 @@ add jar /myudfs.jar;
 create temporary function myawesomeudf as 'com.myudfs.Awesome';
 ```
 
-然后可在查询中使用 UDF。 例如，`SELECT myawesomeudf(name) FROM people;`。
+然后可在查询中使用 UDF。 例如，`SELECT myawesomeudf(name) FROM people;` 。
 
 有关如何在 HDInsight 中将 UDF 与 Hive 配合使用的详细信息，请参阅以下文章：
 

@@ -1,49 +1,49 @@
 ---
-title: 使用 Azure AD DS 的企业安全性 - Azure HDInsight
-description: 了解如何使用 Azure 活动目录域服务设置和配置 HDInsight 企业安全包群集。
+title: Azure AD DS 的企业安全性-Azure HDInsight
+description: 了解如何使用 Azure Active Directory 域服务设置和配置 HDInsight 企业安全性套餐群集。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: seodec18
+ms.custom: seodec18,seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: c045378b6e69a9bb1b696d3390dadf84a50bd3b7
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 2b4756990162817087b0904a764b97526c3545d6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687274"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186645"
 ---
-# <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>HDInsight 中具有 Azure 活动目录域服务的企业安全包配置
+# <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>在 HDInsight 中企业安全性套餐配置与 Azure Active Directory 域服务
 
-企业安全包 （ESP） 群集在 Azure HDInsight 群集上提供多用户访问。 具有 ESP 的 HDInsight 群集连接到域。 此连接允许域用户使用其域凭据与群集进行身份验证并运行大数据作业。
+企业安全性套餐（ESP）群集在 Azure HDInsight 群集上提供多用户访问权限。 使用 ESP 的 HDInsight 群集连接到域。 此连接允许域用户使用其域凭据向群集进行身份验证，并运行大数据作业。
 
-在本文中，您将了解如何使用 Azure 活动目录域服务 （Azure AD DS） 使用 ESP 配置 HDInsight 群集。
+本文介绍如何使用 Azure Active Directory 域服务（Azure AD DS）配置使用 ESP 的 HDInsight 群集。
 
 > [!NOTE]  
-> ESP 通常可用于 HDInsight 3.6 和 4.0 中，适用于这些群集类型：Apache Spark、交互式、Hadoop 和 HBase。 Apache Kafka 群集类型的 ESP 处于预览状态，仅提供尽力支持。 不支持在 ESP GA 日期（2018 年 10 月 1 日之前创建的 ESP 群集）。
+> ESP 在 HDInsight 3.6 和4.0 中已正式发布，适用于以下群集类型： Apache Spark、交互式、Hadoop 和 HBase。 Apache Kafka 群集类型的 ESP 仅限预览，并且仅支持最大努力。 在 ESP GA 日期（2018年10月1日）之前创建的 ESP 群集不受支持。
 
 ## <a name="enable-azure-ad-ds"></a>启用 Azure AD DS
 
 > [!NOTE]  
-> 只有租户管理员才具有启用 Azure AD DS 的权限。 如果群集存储是 Azure 数据存储第 1 代或第 2 代，则仅对需要使用基本 Kerberos 身份验证访问群集的用户禁用 Azure 多重身份验证。
+> 只有租户管理员有权启用 Azure AD DS。 如果群集存储 Azure Data Lake Storage Gen1 或 Gen2，则必须仅针对将需要使用基本 Kerberos 身份验证来访问群集的用户禁用 Azure 多重身份验证。
 >
-> *仅当*特定用户访问 HDInsight 群集虚拟网络的 IP 范围时，才能使用[受信任的 IP](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips)或[条件访问](../../active-directory/conditional-access/overview.md)来禁用多因素身份验证。 如果使用条件访问，请确保 HDInsight 虚拟网络上的 Active Directory 服务终结点已启用。
+> 你可以使用 "[受信任的 ip](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) " 或 "[条件性访问](../../active-directory/conditional-access/overview.md)"，仅在访问 HDInsight 群集的虚拟网络的 IP 范围时*才*为特定用户禁用多重身份验证。 如果使用条件访问，请确保已在 HDInsight 虚拟网络上启用 Active Directory 服务终结点。
 >
-> 如果群集存储是 Azure Blob 存储，则不要禁用多重身份验证。
+> 如果群集存储是 Azure Blob 存储，请不要禁用多重身份验证。
 
-启用 Azure AD DS 是使用 ESP 创建 HDInsight 群集的先决条件。 有关详细信息，请参阅使用[Azure 门户启用 Azure 活动目录域服务](../../active-directory-domain-services/tutorial-create-instance.md)。
+启用 Azure AD DS 是创建具有 ESP 的 HDInsight 群集之前的先决条件。 有关详细信息，请参阅[使用 Azure 门户启用 Azure Active Directory 域服务](../../active-directory-domain-services/tutorial-create-instance.md)。
 
-启用 Azure AD DS 后，默认情况下，所有用户和对象都开始从 Azure 活动目录 （Azure AD） 同步到 Azure AD DS。 同步操作的时长取决于 Azure AD 中对象的数目。 对于数十万个对象，同步可能需要几天时间。
+启用 Azure AD DS 后，默认情况下，所有用户和对象开始从 Azure Active Directory （Azure AD）同步到 Azure AD DS。 同步操作的时长取决于 Azure AD 中对象的数目。 对于几百个对象，同步可能需要几天。
 
-与 Azure AD DS 一起使用的域名必须为 39 个字符或更少，才能使用 HDInsight。
+用于 Azure AD DS 的域名必须是39个字符或更少，才能与 HDInsight 配合使用。
 
-您可以选择仅同步需要访问 HDInsight 群集的组。 这种仅同步特定组的选项称为“范围有限的同步”。** 有关说明，请参阅[将范围化同步从 Azure AD 配置到托管域](../../active-directory-domain-services/scoped-synchronization.md)。
+你可以选择只同步需要访问 HDInsight 群集的组。 这种仅同步特定组的选项称为“范围有限的同步”。** 有关说明，请参阅[将范围内的同步从 Azure AD 配置到托管域](../../active-directory-domain-services/scoped-synchronization.md)。
 
-启用安全 LDAP 时，将域名放在主题名称中。 和证书中的主体替代名称。 如果您的域名*contoso100.onmicrosoft.com，* 请确保证书主题名称和主题替代名称中存在确切的名称。 有关详细信息，请参阅[为 Azure AD DS 托管域配置安全 LDAP](../../active-directory-domain-services/tutorial-configure-ldaps.md)。
+启用安全 LDAP 时，请将域名置于 "使用者名称" 中。 证书中的使用者可选名称。 如果你的域名为*contoso100.onmicrosoft.com*，请确保你的证书使用者名称和使用者备用名称中存在确切的名称。 有关详细信息，请参阅[为 Azure AD DS 托管域配置安全 LDAP](../../active-directory-domain-services/tutorial-configure-ldaps.md)。
 
-下面的示例创建一个自签名证书。 域名*contoso100.onmicrosoft.com*在（主题名称）`Subject`和`DnsName`（主题替代名称）中。
+下面的示例创建一个自签名证书。 域名*contoso100.onmicrosoft.com*同时`Subject`在（使用者名称）和`DnsName` （使用者备用名称）中。
 
 ```powershell
 $lifetime=Get-Date
@@ -52,83 +52,83 @@ New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
   -Type SSLServerAuthentication -DnsName *.contoso100.onmicrosoft.com, contoso100.onmicrosoft.com
 ```
 
-## <a name="check-azure-ad-ds-health-status"></a>检查 Azure AD DS 运行状况状态
+## <a name="check-azure-ad-ds-health-status"></a>检查 Azure AD DS 运行状态
 
-通过在 **"管理"** 类别中选择**运行状况**，查看 Azure 活动目录域服务的运行状况。 确保 Azure AD DS 的状态为绿色（正在运行），并且同步已完成。
+通过选择 "**管理**" 类别中的 "**运行状况**"，查看 Azure Active Directory 域服务的运行状况状态。 请确保 Azure AD DS 的状态为绿色（正在运行），并且同步已完成。
 
 ![Azure AD DS 运行状况](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-health.png)
 
-## <a name="create-and-authorize-a-managed-identity"></a>创建和授权托管标识
+## <a name="create-and-authorize-a-managed-identity"></a>创建并授权托管标识
 
-使用*用户分配的托管标识*简化安全域服务操作。 将**HDInsight 域服务参与者**角色分配给托管标识时，它可以读取、创建、修改和删除域服务操作。
+使用*用户分配的托管标识*简化安全域服务的操作。 将**HDInsight 域服务参与者**角色分配给托管标识时，它可以读取、创建、修改和删除域服务操作。
 
-HDInsight 企业安全包需要某些域服务操作，如创建 OEM 和服务主体。 您可以在任何订阅中创建托管标识。 有关托管标识的详细信息，请参阅[Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 有关托管标识在 Azure HDInsight 中的工作方式的详细信息，请参阅[Azure HDInsight 中的托管标识](../hdinsight-managed-identities.md)。
+HDInsight 企业安全性套餐需要某些域服务操作（例如创建 Ou 和服务主体）。 可以在任何订阅中创建托管标识。 有关一般托管标识的详细信息，请参阅[Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 有关 Azure HDInsight 中托管标识的工作方式的详细信息，请参阅[Azure hdinsight 中的托管标识](../hdinsight-managed-identities.md)。
 
-要设置 ESP 群集，请创建用户分配的托管标识（如果尚未创建）。 请参阅[`Create, list, delete, or assign a role to a user-assigned managed identity by using the Azure portal`](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。
+若要设置 ESP 群集，请创建用户分配的托管标识（如果尚未安装）。 请参阅 [`Create, list, delete, or assign a role to a user-assigned managed identity by using the Azure portal`](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。
 
-接下来，将**HDInsight 域服务参与者**角色分配给 Azure AD DS**访问控件**中的托管标识。 您需要 Azure AD DS 管理员权限才能分配此角色。
+接下来，将**HDInsight 域服务参与者**角色分配给 Azure AD DS 的**访问控制**中的托管标识。 需要 Azure AD DS 管理员权限才能进行此角色分配。
 
 ![Azure Active Directory 域服务访问控制](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-configure-managed-identity.png)
 
-分配**HDInsight 域服务参与者**角色可确保此标识具有在 Azure`on behalf of`AD DS 域上执行域服务操作的适当 （ ） 访问权限。 这些操作包括创建和删除 O。
+分配**HDInsight 域服务参与者**角色可确保此标识具有对 Azure AD DS`on behalf of`域上的执行域服务操作的适当（）访问权限。 这些操作包括创建和删除 Ou。
 
-为托管标识指定角色后，Azure AD DS 管理员将管理谁使用它。 首先，管理员在门户中选择托管标识。 然后在 **"概述**"下选择**访问控制 （IAM）。** 管理员将**托管标识操作员**角色分配给希望创建 ESP 群集的用户或组。
+为托管标识指定角色后，Azure AD DS 管理员管理使用该角色的人员。 首先，管理员在门户中选择托管标识。 然后选择 "**概述**" 下的 "**访问控制（IAM）** "。 管理员将管理的**标识操作员**角色分配给要创建 ESP 群集的用户或组。
 
-例如，Azure AD DS 管理员可以将此角色分配给**sjmsi**托管标识**的市场营销团队**组。 下图中显示了一个示例。 此分配可确保组织中的正确人员可以使用托管标识创建 ESP 群集。
+例如，Azure AD DS 管理员可以将此角色分配给**sjmsi**托管标识的**MarketingTeam**组。 下图中显示了一个示例。 此分配可确保组织中的适当人员可以使用托管标识创建 ESP 群集。
 
 ![HDInsight 托管标识操作者角色分配](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-managed-identity-operator-role-assignment.png)
 
 ## <a name="network-considerations"></a>网络注意事项
 
 > [!NOTE]  
-> Azure AD DS 必须部署在基于 Azure 资源管理器的虚拟网络中。 Azure AD DS 不支持经典虚拟网络。 有关详细信息，请参阅使用[Azure 门户启用 Azure 活动目录域服务](../../active-directory-domain-services/tutorial-create-instance-advanced.md#create-and-configure-the-virtual-network)。
+> 必须在基于 Azure 资源管理器的虚拟网络中部署 Azure AD DS。 Azure AD DS 不支持经典虚拟网络。 有关详细信息，请参阅[使用 Azure 门户启用 Azure Active Directory 域服务](../../active-directory-domain-services/tutorial-create-instance-advanced.md#create-and-configure-the-virtual-network)。
 
-启用 Azure AD DS。 然后，本地域名系统 （DNS） 服务器在活动目录虚拟机 （VM） 上运行。 将 Azure AD DS 虚拟网络配置为使用这些自定义 DNS 服务器。 要查找正确的 IP 地址，请选择 **"管理**类别中**的属性**"，然后查看**VIRTUAL 网络 上的 IP 地址**。
+启用 Azure AD DS。 然后，本地域名系统（DNS）服务器在 Active Directory 虚拟机（Vm）上运行。 将 Azure AD DS 虚拟网络配置为使用这些自定义 DNS 服务器。 若要查找正确的 IP 地址，请在 "**管理**" 类别中选择 "**属性**"，然后在 "**虚拟网络"** 下的 "IP 地址"
 
 ![查找本地 DNS 服务器的 IP 地址](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-dns1.png)
 
-更改 Azure AD DS 虚拟网络中 DNS 服务器的配置。 要使用这些自定义 IP，请在 **"设置"** 类别中选择**DNS 服务器**。 然后选择 **"自定义"** 选项，在文本框中输入第一个 IP 地址，然后选择 **"保存**"。 使用相同的步骤添加更多 IP 地址。
+更改 Azure AD DS 虚拟网络中的 DNS 服务器配置。 若要使用这些自定义 Ip，请选择 "**设置**" 类别中的 " **DNS 服务器**"。 然后选择 "**自定义**" 选项，在文本框中输入第一个 IP 地址，然后选择 "**保存**"。 使用相同的步骤添加更多 IP 地址。
 
-![更新虚拟网络 DNS 配置](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-vnet-configuration.png)
+![正在更新虚拟网络 DNS 配置](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-vnet-configuration.png)
 
-将 Azure AD DS 实例和 HDInsight 群集放在同一 Azure 虚拟网络中会更方便。 如果计划使用不同的虚拟网络，则必须对这些虚拟网络进行对等，以便域控制器对 HDInsight VM 可见。 有关详细信息，请参阅[虚拟网络对等互连](../../virtual-network/virtual-network-peering-overview.md)。
+将 Azure AD DS 实例和 HDInsight 群集放在同一 Azure 虚拟网络中会更方便。 如果计划使用不同的虚拟网络，则必须对这些虚拟网络对等互连，以便域控制器对 HDInsight Vm 可见。 有关详细信息，请参阅[虚拟网络对等互连](../../virtual-network/virtual-network-peering-overview.md)。
 
-对等虚拟网络后，将 HDInsight 虚拟网络配置为使用自定义 DNS 服务器。 并输入 Azure AD DS 专用 IP 作为 DNS 服务器地址。 当两个虚拟网络使用相同的 DNS 服务器时，您的自定义域名将解析为正确的 IP，并且可以从 HDInsight 访问。 例如，如果您的域名是`contoso.com`，则在此步骤之后，`ping contoso.com`应解析为正确的 Azure AD DS IP。
+对等互连虚拟网络后，将 HDInsight 虚拟网络配置为使用自定义 DNS 服务器。 并输入 Azure AD DS 专用 Ip 作为 DNS 服务器地址。 当两个虚拟网络都使用相同的 DNS 服务器时，你的自定义域名将解析为正确的 IP，并且可从 HDInsight 访问。 例如，如果你的域名为`contoso.com`，则在此步骤之后， `ping contoso.com`应解析为正确的 Azure AD DS IP。
 
-![为对等虚拟网络配置自定义 DNS 服务器](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
+![为对等互连虚拟网络配置自定义 DNS 服务器](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
 
-如果您在 HDInsight 子网中使用网络安全组 （NSG） 规则，则应允许对入站和出站流量[所需的 IP。](../hdinsight-management-ip-addresses.md)
+如果你在 HDInsight 子网中使用网络安全组（NSG）规则，则应该允许入站和出站流量[所需的 ip](../hdinsight-management-ip-addresses.md) 。
 
-要测试网络设置，请将 Windows VM 加入 HDInsight 虚拟网络/子网并 ping 域名。 （它应该解析为 IP。运行**ldp.exe**以访问 Azure AD DS 域。 然后，将此 Windows VM 加入域，以确认客户端和服务器之间所需的所有 RPC 调用是否成功。
+若要测试网络设置，请将 Windows VM 加入 HDInsight 虚拟网络/子网，并 ping 域名。 （应将其解析为 IP。）运行**ldp.exe**以访问 Azure AD DS 域。 然后，将此 Windows VM 加入到域中，以确认客户端和服务器之间的所有必需 RPC 调用都成功。
 
-使用**nslookup**确认对存储帐户的网络访问。 或者您可以使用的任何外部数据库（例如，外部 Hive 元存储或游侠数据库）。 如果 NSG 保护 Azure AD DS，请确保 Azure AD DS 子网的 NSG 规则中允许[所需的端口](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers)。 如果此 Windows VM 的域加入成功，则可以继续执行下一步并创建 ESP 群集。
+使用**nslookup**确认对你的存储帐户的网络访问。 或者您可能使用的任何外部数据库（例如，external Hive 元存储或 Ranger DB）。 如果 NSG 保护 Azure AD DS，请确保在 Azure AD DS 子网的 NSG 规则中允许[所需的端口](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers)。 如果此 Windows VM 的域加入成功，则可以继续执行下一步，并创建 ESP 群集。
 
 ## <a name="create-an-hdinsight-cluster-with-esp"></a>使用 ESP 创建 HDInsight 群集
 
-正确设置上述步骤后，下一步是创建启用 ESP 的 HDInsight 群集。 创建 HDInsight 群集时，您可以在 **"安全 + 网络"** 选项卡上启用企业安全包。对于用于部署的 Azure 资源管理器模板，请使用门户体验一次。 然后下载 **"审核 + 创建**"页上的预填充模板，以供将来重复使用。
+正确设置前面的步骤后，下一步是创建启用了 ESP 的 HDInsight 群集。 创建 HDInsight 群集时，可以在 "**安全 + 网络**" 选项卡上启用企业安全性套餐。对于用于部署的 Azure 资源管理器模板，请使用一次门户体验。 然后，在 "**评审 + 创建**" 页上下载预填充的模板以供将来重复使用。
 
-您还可以在群集创建期间启用[HDInsight ID 代理](identity-broker.md)功能。 ID 代理功能允许您使用多重身份验证登录到 Ambari，并获取所需的 Kerberos 票证，而无需在 Azure AD DS 中进行密码哈希。
+你还可以在创建群集期间启用[HDINSIGHT ID 代理](identity-broker.md)功能。 ID 代理功能允许使用多重身份验证登录到 Ambari，并获取所需的 Kerberos 票证，而不需要 Azure AD DS 中的密码哈希。
 
 > [!NOTE]  
-> ESP 群集名称的前六个字符在环境中必须是唯一的。 例如，如果在不同的虚拟网络中有多个 ESP 群集，请选择一个命名约定，以确保群集名称上的前六个字符是唯一的。
+> ESP 群集名称的前六个字符在环境中必须是唯一的。 例如，如果在不同的虚拟网络中有多个 ESP 群集，请选择一种命名约定，以确保群集名称上的前六个字符是唯一的。
 
-![Azure HDInsight 企业安全包的域验证](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp.png)
+![Azure HDInsight 企业安全性套餐的域验证](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp.png)
 
-启用 ESP 后，将自动检测和验证与 Azure AD DS 相关的常见错误配置。 修复这些错误后，可以继续执行下一步。
+启用 ESP 后，会自动检测并验证与 Azure AD DS 相关的常见错误配置。 修复这些错误后，你可以继续下一步。
 
-![Azure HDInsight 企业安全包失败域验证](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp-error.png)
+![Azure HDInsight 企业安全性套餐域验证失败](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp-error.png)
 
 使用 ESP 创建 HDInsight 群集时，必须提供以下参数：
 
-* **群集管理员用户**：从同步的 Azure AD DS 实例中选择群集的管理员。 此域帐户必须已同步并在 Azure AD DS 中可用。
+* **群集管理员用户**：从同步的 Azure AD DS 实例中选择群集的管理员。 此域帐户必须已同步并且在 Azure AD DS 中可用。
 
-* **群集访问组**：要同步并有权访问群集的用户的安全组应在 Azure AD DS 中可用。 例如，HiveUsers 组。 有关详细信息，请参阅[在 Azure Active Directory 中创建组并添加成员](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
+* **群集访问组**：要同步其用户并有权访问群集的安全组应在 Azure AD DS 中可用。 例如，HiveUsers 组。 有关详细信息，请参阅[在 Azure Active Directory 中创建组并添加成员](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
-* **LDAPS URL**：`ldaps://contoso.com:636`一个示例是 。
+* **LDAPS URL**：例如`ldaps://contoso.com:636`。
 
-创建新群集时，可以从**用户分配的托管标识**下拉列表选择您创建的托管标识。
+创建新群集时，可以从 "**用户分配的托管标识**" 下拉列表中选择你创建的托管标识。
 
-![Azure HDInsight ESP 活动目录域服务托管标识](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-identity.png).
+![Azure HDInsight ESP Active Directory 域服务托管标识](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-identity.png).
 
 ## <a name="next-steps"></a>后续步骤
 

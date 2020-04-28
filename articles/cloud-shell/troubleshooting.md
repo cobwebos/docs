@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 0b1b22095c77344ed71762d3d51b12f19d9f1811
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b06deadae15a8176a49bed88a53884df2b71e473
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79458046"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189456"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的故障排除和限制
 
@@ -31,8 +31,8 @@ ms.locfileid: "79458046"
 
 ### <a name="error-running-azuread-cmdlets-in-powershell"></a>在 PowerShell 中运行 AzureAD cmdlet 时出错
 
-- **详细信息**：在云外壳`Get-AzureADUser`中运行 AzureAD cmdlet 时，可能会看到一个错误`You must call the Connect-AzureAD cmdlet before calling any other cmdlets`： 。 
-- **分辨率**：运行`Connect-AzureAD`cmdlet。 以前，云壳在 PowerShell 启动期间自动运行此 cmdlet。 为了加快启动时间，cmdlet 不再自动运行。 您可以通过在 PowerShell 中添加到`Connect-AzureAD`$PROFILE文件来选择还原以前的行为。
+- **详细信息**：运行 Cloud Shell `Get-AzureADUser`中的 AzureAD cmdlet 时，可能会看到错误： `You must call the Connect-AzureAD cmdlet before calling any other cmdlets`。 
+- **解决方法**：运行`Connect-AzureAD` cmdlet。 以前，Cloud Shell 在 PowerShell 启动过程中自动运行此 cmdlet。 为了加快开始时间，该 cmdlet 不再自动运行。 你可以选择通过将添加`Connect-AzureAD`到 PowerShell 中的 $PROFILE 文件来还原以前的行为。
 
 ### <a name="early-timeouts-in-firefox"></a>FireFox 中的提前超时
 
@@ -41,13 +41,13 @@ ms.locfileid: "79458046"
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>在锁定的网络环境中禁用 Cloud Shell
 
-- **详细信息**：管理员可能希望禁止其用户访问 Cloud Shell。 云外壳利用对`ux.console.azure.com`域的访问（可能会被拒绝），从而停止对云外壳入口点的任何访问，包括portal.azure.com、shell.azure.com、可视化工作室代码 Azure 帐户扩展和docs.microsoft.com。 在美国政府云中，入口点是`ux.console.azure.us`;没有相应的shell.azure.us。
-- **解决方法**：限制对`ux.console.azure.com`环境的访问`ux.console.azure.us`或通过网络设置进行访问。 Azure 门户中仍将存在云外壳图标，但不会成功连接到服务。
+- **详细信息**：管理员可能希望禁止其用户访问 Cloud Shell。 Cloud Shell 利用访问`ux.console.azure.com`域的权限，可以拒绝对 Cloud Shell 的 s 的任何访问，包括 portal.azure.com、shell.azure.com、Visual Studio Code azure 帐户扩展和 docs.microsoft.com。 在美国政府版云中，入口点为`ux.console.azure.us`;没有相应的 shell.azure.us。
+- **解决方法**：将网络`ux.console.azure.com`设置`ux.console.azure.us`的访问权限限制为你的环境。 Azure 门户中仍然存在 Cloud Shell 图标，但无法成功连接到该服务。
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>存储对话框 - 错误：403 RequestDisallowedByPolicy
 
-- **详细信息**：通过云外壳创建存储帐户时，由于管理员放置的 Azure 策略，它不成功。错误消息将包括：`The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
-- **解决方法**：与 Azure 管理员联系，让其删除或更新拒绝存储创建的 Azure Policy。
+- **详细信息**：通过 Cloud Shell 创建存储帐户时，由于管理员所放置的 Azure 策略分配，此操作不成功。错误消息将包括：`The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
+- **解决方法**：请联系 azure 管理员以删除或更新 azure 策略分配，拒绝存储创建。
 
 ### <a name="storage-dialog---error-400-disallowedoperation"></a>存储对话框 - 错误：400 DisallowedOperation
 
@@ -59,7 +59,7 @@ ms.locfileid: "79458046"
 - **解决方法**：检查是否已将网络设置配置为允许向域（*.console.azure.com）发送 https 请求和 websocket 请求。
 
 ### <a name="set-your-cloud-shell-connection-to-support-using-tls-12"></a>将 Cloud Shell 连接设置为支持使用 TLS 1.2
- - **详细信息**：要定义连接到云外壳的 TLS 版本，必须设置特定于浏览器的设置。
+ - **详细信息**：若要定义连接 CLOUD SHELL 的 TLS 版本，必须设置特定于浏览器的设置。
  - **解决方法**：导航至浏览器的安全设置，然后选中“使用 TLS 1.2”旁边的复选框。
 
 ## <a name="bash-troubleshooting"></a>Bash 故障排除
@@ -94,9 +94,9 @@ Azure Cloud Shell 有以下已知限制：
 
 ### <a name="quota-limitations"></a>配额限制
 
-Azure 云外壳限制每个区域每个租户 20 个并发用户。 如果尝试打开比限制更多的同步会话，您将看到"租户用户超出配额"错误。 如果您有合法需要开设的会话数量超过此（例如，对于培训课程），请在预期使用之前联系支持人员，请求增加配额。
+Azure Cloud Shell 的每个区域每个租户的用户数限制为20个。 如果尝试打开的会话数超过限制，将显示 "租户用户超过配额" 错误。 如果你合理地需要打开多个会话（例如培训会话），请在预期使用提前联系支持人员以请求增加配额。
 
-云外壳是作为免费服务提供的，旨在配置 Azure 环境，而不是通用计算平台。 过多的自动使用可能会被视为违反 Azure 服务条款，并可能导致云壳访问被阻止。
+Cloud Shell 提供为免费服务，设计用于配置你的 Azure 环境，而不是作为一般用途的计算平台。 在违反 Azure 服务条款的情况中，可能会考虑过多的自动使用情况，并可能导致 Cloud Shell 访问被阻止。
 
 ### <a name="system-state-and-persistence"></a>系统状态和持久性
 
@@ -168,7 +168,7 @@ Azure Cloud Shell 非常重视你的个人数据，Azure Cloud Shell 服务捕�
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-### <a name="export"></a>Export
+### <a name="export"></a>导出
 若要导出 Cloud Shell 为你保存的用户设置（如首选 shell、字号和字体类型），请运行以下命令****。
 
 1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
@@ -211,7 +211,7 @@ PowerShell：
   Invoke-WebRequest -Method Delete -Uri https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -Headers @{Authorization = "Bearer $token"}
   ```
 ## <a name="azure-government-limitations"></a>Azure 政府限制
-Azure 政府中的 Azure 云外壳只能通过 Azure 门户访问。
+仅可通过 Azure 门户访问 Azure 政府版中的 Azure Cloud Shell。
 
 >[!Note]
-> 当前不支持连接到 GCC-High 或政府 DoD 云以进行在线交换。
+> 当前不支持连接到 GCC-高或政府版 DoD 云以进行 Exchange Online。

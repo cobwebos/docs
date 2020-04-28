@@ -1,18 +1,19 @@
 ---
-title: 霍顿工程发行笔记与 Azure HDInsight 版本关联
-description: 在 Azure HDInsight 中了解 Apache Hadoop 组件和版本。
+title: 与 Azure HDInsight 版本相关的 Hortonworks 发行说明
+description: 了解 Azure HDInsight 中的 Apache Hadoop 组件和版本。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
+ms.custom: seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: cd14390419d5833e5d071f2cd410260421247387
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: aa20e048db2b68d8f953b06745570759de5f2e9c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82087655"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82190565"
 ---
 # <a name="hortonworks-release-notes-associated-with-hdinsight-versions"></a>与 HDInsight 版本相关的 Hortonworks 发行说明
 
@@ -20,7 +21,7 @@ ms.locfileid: "82087655"
 
 ## <a name="current-versions"></a>当前版本
 
-* HDInsight 集群版本 4.0 使用基于[霍顿工程数据平台 3.0](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html)的 Hadoop 发行版。
+* HDInsight 群集版本4.0 使用基于[Hortonworks 数据平台 3.0](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html)的 Hadoop 分发版。
 
 * HDInsight 群集版本 3.6 使用基于 [Hortonworks 数据平台 2.6](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.0/bk_release-notes/content/ch_relnotes.html) 的 Hadoop 分发版。
 

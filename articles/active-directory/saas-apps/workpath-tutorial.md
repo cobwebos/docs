@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2e9f22df8df77c3d59990d26b0f63f134f537d4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c224f1e3b7ce53df9bfb24b0c9a9ac14f15996fe
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75561779"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867725"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workpath"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Workpath 集成
 
@@ -96,7 +96,7 @@ ms.locfileid: "75561779"
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<subdomain>.workpath.com/`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 若要获取这些值，请联系 [Workpath 客户端支持团队](https://help.workpath.com/)。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 若要获取这些值，请联系 [Workpath 客户端支持团队](https://www.workpath.com/en/company/)。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 1. Workpath 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
@@ -149,7 +149,7 @@ ms.locfileid: "75561779"
 
 ## <a name="configure-workpath-sso"></a>配置 Workpath SSO
 
-若要在 Workpath 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Workpath 支持团队](https://help.workpath.com/)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Workpath 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Workpath 支持团队](https://www.workpath.com/en/company/)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-workpath-test-user"></a>创建 Workpath 测试用户
 

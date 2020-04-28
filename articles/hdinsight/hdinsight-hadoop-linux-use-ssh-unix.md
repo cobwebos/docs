@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
+ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 02/28/2020
-ms.openlocfilehash: 427a3fbebe858d50d774ebfa7de4576985135abf
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 476f265d9658d08ef62647e707c0594af8cda480
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82099166"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192019"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>使用 SSH 连接到 HDInsight (Apache Hadoop)
 
@@ -61,7 +61,7 @@ SSH 密钥使用[公钥加密](https://en.wikipedia.org/wiki/Public-key_cryptogr
 
 * 可将大多数客户端配置为使用__默认密钥__。 例如，在 Linux 和 Unix 环境中，`ssh` 客户端会在 `~/.ssh/id_rsa` 位置查找私钥。
 
-* 可以指定__私钥的路径__。 在 `ssh` 客户端中，可使用 `-i` 参数指定私钥的路径。 例如 `ssh -i ~/.ssh/id_rsa sshuser@myedge.mycluster-ssh.azurehdinsight.net`。
+* 可以指定__私钥的路径__。 在 `ssh` 客户端中，可使用 `-i` 参数指定私钥的路径。 例如，`ssh -i ~/.ssh/id_rsa sshuser@myedge.mycluster-ssh.azurehdinsight.net` 。
 
 * 如果将__多个私钥__用于不同的服务器，可以考虑使用 [ssh-agent (https://en.wikipedia.org/wiki/Ssh-agent)](https://en.wikipedia.org/wiki/Ssh-agent) 之类的实用工具。 在建立 SSH 会话时，可以通过 `ssh-agent` 实用工具自动选择要使用的密钥。
 
@@ -158,7 +158,7 @@ sudo service sshd restart
     ```
 
 > [!IMPORTANT]  
-> 前面的示例假定你使用的是密码身份验证，或者系统会自动进行证书身份验证。 如果使用 SSH 密钥对进行身份验证，且系统不会自动使用证书，则请使用 `-i` 参数指定私钥。 例如 `ssh -i ~/.ssh/mykey sshuser@clustername-ssh.azurehdinsight.net`。
+> 前面的示例假定你使用的是密码身份验证，或者系统会自动进行证书身份验证。 如果使用 SSH 密钥对进行身份验证，且系统不会自动使用证书，则请使用 `-i` 参数指定私钥。 例如，`ssh -i ~/.ssh/mykey sshuser@clustername-ssh.azurehdinsight.net` 。
 
 连接后，提示将发生变化，以指示 SSH 用户名和连接到的节点。 例如，在以 `sshuser` 身份连接到主头节点时，提示符为 `sshuser@<active-headnode-name>:~$`。
 

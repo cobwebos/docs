@@ -4,14 +4,14 @@ description: 如何创建 Azure HPC 缓存实例
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 04/15/2020
+ms.date: 04/23/2020
 ms.author: v-erkel
-ms.openlocfilehash: efa9037b345cdfc5f165e9c5e0c1831ea97b52ed
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: 4ff31ca6a171beece1672802367f08768676efbc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106485"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195003"
 ---
 # <a name="create-an-azure-hpc-cache"></a>创建 Azure HPC 缓存
 
@@ -29,7 +29,7 @@ ms.locfileid: "82106485"
 
 * 位置 - 选择其中一个[支持的区域](hpc-cache-overview.md#region-availability)。
 * 虚拟网络 - 可选择现有虚拟网络或创建新的虚拟网络。
-* 子网 - 选择或创建至少包含 64 个 IP 地址 (/24) 的子网，它将仅用于此 Azure HPC 缓存实例。
+* 子网-选择或创建至少包含64个 IP 地址（/24）的子网。 此子网必须仅用于此 Azure HPC 缓存实例。
 
 ## <a name="set-cache-capacity"></a>设置缓存容量
 <!-- referenced from GUI - update aka.ms link if you change this header text -->
@@ -45,15 +45,15 @@ ms.locfileid: "82106485"
 
 选择可用吞吐量值和缓存存储大小之一。
 
-请记住，实际的数据传输速率取决于工作负荷、网络速度和存储目标的类型。 你选择的值设置整个缓存系统的最大吞吐量，但其中一些用于开销任务。 例如，如果客户端请求尚未存储在缓存中的文件，或者该文件被标记为过期，则缓存将使用其部分吞吐量从后端存储中提取该文件。
+请记住，实际的数据传输速率取决于工作负荷、网络速度和存储目标的类型。 你选择的值设置整个缓存系统的最大吞吐量，但其中一些用于开销任务。 例如，如果客户端请求尚未存储在缓存中的文件，或者该文件被标记为过时，则缓存将使用其某些吞吐量从后端存储提取该文件。
 
-Azure HPC 缓存会管理缓存和预加载哪些文件，以最大限度地提高缓存命中率。 当不经常访问缓存内容时，会不断评估缓存内容，并将文件移动到长期存储。 选择一种缓存存储大小，该大小可以轻松地保留活动的工作文件集，并具有额外的空间来存储元数据和其他开销。
+Azure HPC 缓存会管理缓存和预加载哪些文件，以最大限度地提高缓存命中率。 会持续评估缓存内容，并在不经常访问文件的情况下将文件移动到长期存储。 选择可轻松保留活动的工作文件集的缓存存储大小，以及用于元数据和其他开销的额外空间。
 
 ![缓存大小调整页的屏幕截图](media/hpc-cache-create-capacity.png)
 
 ## <a name="enable-azure-key-vault-encryption-optional"></a>启用 Azure Key Vault 加密（可选）
 
-如果缓存位于支持客户管理的加密密钥的区域，则 "**磁盘加密密钥**" 页将出现在 "**缓存**" 和 "**标记**" 选项卡之间。 在发布时，此选项在美国东部、美国中南部和美国西部2受支持。
+如果缓存位于支持客户管理的加密密钥的区域，则 "**磁盘加密密钥**" 页将出现在 "**缓存**" 和 "**标记**" 选项卡之间。 在发布时，美国东部、美国中南部和美国西部2支持此选项。
 
 如果要管理用于缓存存储的加密密钥，请在 "**磁盘加密密钥**" 页上提供 Azure Key Vault 信息。 密钥保管库必须位于与缓存相同的区域和订阅中。
 

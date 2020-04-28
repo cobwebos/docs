@@ -6,19 +6,20 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
+ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: cd6ba50cf81b93da887134e89d75313acb6bd936
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 220e73536a892e798139ca54913e09e097c22432
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81869857"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82191934"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>将 Azure 存储与 Azure HDInsight 群集配合使用
 
-您可以将数据存储在[Azure 存储](../storage/common/storage-introduction.md)[、Azure 数据湖存储第 1 代](../data-lake-store/data-lake-store-overview.md)或 Azure[数据存储湖存储第 2 代](../storage/blobs/data-lake-storage-introduction.md)中。 或这些选项的组合。 这些存储选项使您能够安全地删除用于计算的 HDInsight 群集，而不会丢失用户数据。
+可以将数据存储在[Azure 存储](../storage/common/storage-introduction.md)中， [Azure Data Lake Storage 第1代](../data-lake-store/data-lake-store-overview.md)或[Azure Data Lake Storage 第2代](../storage/blobs/data-lake-storage-introduction.md)。 或这些选项的组合。 使用这些存储选项，可以安全地删除用于计算的 HDInsight 群集，而不会丢失用户数据。
 
-Apache Hadoop 支持默认文件系统的概念。 默认文件系统意指默认方案和授权。 它还可用于解析相对路径。 在 HDInsight 群集创建过程中，可以将 Azure 存储中的 Blob 容器指定为默认文件系统。 或者使用 HDInsight 3.6，您可以选择 Azure 存储或 Azure 数据存储第 1 代/Azure 数据存储第 2 代作为默认文件系统，但有一些例外。 有关对将 Data Lake Storage Gen 1 同时用作默认存储和链接存储的支持能力，请参阅 [HDInsight 群集的可用性](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters)。
+Apache Hadoop 支持默认文件系统的概念。 默认文件系统意指默认方案和授权。 它还可用于解析相对路径。 在 HDInsight 群集创建过程中，可以将 Azure 存储中的 blob 容器指定为默认文件系统。 对于 HDInsight 3.6，你可以选择 Azure 存储或 Azure Data Lake Storage 第1代/第2代 Azure Data Lake Storage 第2代为默认文件系统，但有一些例外情况。 有关对将 Data Lake Storage Gen 1 同时用作默认存储和链接存储的支持能力，请参阅 [HDInsight 群集的可用性](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters)。
 
 本文介绍如何配合使用 Azure 存储和 HDInsight 群集。 若要了解 Data Lake Storage Gen 1 与 HDInsight 群集如何配合工作，请参阅[将 Azure Data Lake Storage 与 Azure HDInsight 群集配合使用](hdinsight-hadoop-use-data-lake-store.md)。 若要深入了解如何创建 HDInsight 群集，请参阅[在 HDInsight 中创建 Apache Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
@@ -38,9 +39,9 @@ Apache Hadoop 支持默认文件系统的概念。 默认文件系统意指默�
 > [!NOTE]  
 > 存档访问层是一个离线层，具有几小时的检索延迟，不建议与 HDInsight 一起使用。 有关详细信息，请参阅[存档访问层](../storage/blobs/storage-blob-storage-tiers.md#archive-access-tier)。
 
-## <a name="access-files-from-within-cluster"></a>从群集中访问文件
+## <a name="access-files-from-within-cluster"></a>从群集内访问文件
 
-可以通过多种方法从 HDInsight 群集访问 Data Lake Storage 中的文件。 URI 方案提供未加密的访问（带*wasb：* 前缀）和 TLS 加密访问（带*wasb）。* 建议尽量使用 *wasbs* ，即使在访问位于同一 Azure 区域内的数据时也是如此。
+可以通过多种方法从 HDInsight 群集访问 Data Lake Storage 中的文件。 URI 方案提供了使用*wasb：* 前缀的未加密访问和 TLS 加密访问（使用*wasbs*）。 建议尽量使用 *wasbs* ，即使在访问位于同一 Azure 区域内的数据时也是如此。
 
 * **使用完全限定的名称**。 使用此方法时，需要提供要访问的文件的完整路径。
 
@@ -68,7 +69,7 @@ Apache Hadoop 支持默认文件系统的概念。 默认文件系统意指默�
 
 #### <a name="a-few-hdfs-commands"></a>一些 hdfs 命令
 
-1. 在本地存储上创建文件。
+1. 在本地存储中创建文件。
 
     ```bash
     touch testFile.txt
@@ -131,44 +132,44 @@ Microsoft 提供以下用于操作 Azure 存储的工具：
 | [Azure 门户](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
 | [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
 | [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
-| [阿兹比贝](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
+| [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
 
-## <a name="identify-storage-path-from-ambari"></a>识别来自安巴里的存储路径
+## <a name="identify-storage-path-from-ambari"></a>从 Ambari 标识存储路径
 
 * 若要标识已配置的默认存储的完整路径，请导航到
 
-    **HDFS** > **配置**并输入`fs.defaultFS`筛选器输入框。
+    **HDFS** > 配置 **，并在**筛选器输入框中输入。 `fs.defaultFS`
 
 * 若要检查是否已将 wasb 存储配置为辅助存储器，请导航到
 
-    **HDFS** > **配置**并输入`blob.core.windows.net`筛选器输入框。
+    **HDFS** > 配置 **，并在**筛选器输入框中输入。 `blob.core.windows.net`
 
-要使用 Ambari REST API 获取路径，请参阅[获取默认存储](./hdinsight-hadoop-manage-ambari-rest-api.md#get-the-default-storage)。
+若要使用 Ambari REST API 获取路径，请参阅[获取默认存储](./hdinsight-hadoop-manage-ambari-rest-api.md#get-the-default-storage)。
 
 ## <a name="blob-containers"></a>Blob 容器
 
-要使用 blob，请先创建[Azure 存储帐户](../storage/common/storage-create-storage-account.md)。 作为此步骤的一部分，您可以指定创建存储帐户的 Azure 区域。 群集和存储帐户必须位于同一区域。 Hive 元存储 SQL Server 数据库和 Apache Oozie 元存储 SQL Server 数据库必须位于同一区域。
+若要使用 blob，请先创建一个[Azure 存储帐户](../storage/common/storage-create-storage-account.md)。 作为此步骤的一部分，请指定在其中创建存储帐户的 Azure 区域。 群集和存储帐户必须位于同一区域。 Hive 元存储 SQL Server 数据库和 Apache Oozie 元存储 SQL Server 数据库必须位于同一区域。
 
-无论所创建的每个 Blob 位于何处，它都属于 Azure 存储帐户中的某个容器。 此容器可能是 HDInsight 之外创建的现有 Blob。 或者，它可能是为 HDInsight 群集创建的容器。
+无论所创建的每个 Blob 位于何处，它都属于 Azure 存储帐户中的某个容器。 此容器可以是在 HDInsight 外部创建的现有 blob。 也可以是为 HDInsight 群集创建的容器。
 
-默认的 Blob 容器存储群集特定的信息，如作业历史记录和日志。 请不要多个 HDInsight 群集之间共享默认的 Blob 容器。 此操作可能会损坏作业历史记录。 建议为每个群集使用不同的容器。 将共享数据放在为所有相关群集指定的链接存储帐户上，而不是默认存储帐户上。 有关配置链接存储帐户的详细信息，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。 但是，在删除原始的 HDInsight 群集后，可以重用默认存储容器。 对于 HBase 群集，实际上可以通过使用已删除的 HBase 群集使用的默认 Blob 容器创建新的 HBase 群集来保留 HBase 表架构和数据
+默认的 Blob 容器存储群集特定的信息，如作业历史记录和日志。 请不要多个 HDInsight 群集之间共享默认的 Blob 容器。 此操作可能会损坏作业历史记录。 建议为每个群集使用不同的容器。 将共享数据放在为所有相关群集（而不是默认存储帐户）指定的链接存储帐户上。 有关配置链接存储帐户的详细信息，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。 但是，在删除原始的 HDInsight 群集后，可以重用默认存储容器。 对于 HBase 群集，实际上可以通过使用已删除的 HBase 群集使用的默认 blob 容器创建新的 HBase 群集来保留 HBase 表架构和数据
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
 ## <a name="use-additional-storage-accounts"></a>使用其他存储帐户
 
-创建 HDInsight 群集时，可以指定要与其关联的 Azure 存储帐户。 此外，您可以在创建过程中从同一 Azure 订阅或不同的 Azure 订阅中添加其他存储帐户。 或在创建群集后。 有关添加其他存储帐户的说明，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。
+创建 HDInsight 群集时，可以指定要与其关联的 Azure 存储帐户。 此外，在创建过程中，你可以从同一 Azure 订阅或不同 Azure 订阅添加其他存储帐户。 或在创建群集后。 有关添加其他存储帐户的说明，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
 > [!WARNING]  
 > 不支持在 HDInsight 群集之外的其他位置使用别的存储帐户。
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍如何将与 HDFS 兼容的 Azure 存储和 HDInsight 配合使用。 此存储允许您构建适应性强、长期的存档数据采集解决方案，并使用 HDInsight 解锁存储的结构化和非结构化数据中的信息。
+本文介绍如何将与 HDFS 兼容的 Azure 存储和 HDInsight 配合使用。 此存储允许你构建可自适应的长期存档数据获取解决方案，并使用 HDInsight 来解锁所存储结构化和非结构化数据内的信息。
 
-有关详细信息，请参阅：
+有关详细信息，请参见:
 
-* [开始使用 Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
+* [Azure HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [Azure Data Lake Storage 入门](../data-lake-store/data-lake-store-get-started-portal.md)
 * [将数据上传到 HDInsight](hdinsight-upload-data.md)
 * [使用 Azure 存储共享访问签名来限制使用 HDInsight 访问数据](hdinsight-storage-sharedaccesssignature-permissions.md)

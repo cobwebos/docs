@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: cc955adffbe7df5809f9c4c860877ad22df3e99b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5608d71c4a91c9b46b8ed7de13c9d4c06a3f195f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74158282"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82194595"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR 服务身份验证
 
@@ -40,29 +40,29 @@ ms.locfileid: "74158282"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，必须满意以下先决条件：
 
 * 在 [GitHub](https://github.com/) 上创建的帐户
 * [Git](https://git-scm.com/)
 * [.NET Core SDK](https://www.microsoft.com/net/download/windows)
-* [配置 Azure 云外壳](https://docs.microsoft.com/azure/cloud-shell/quickstart)
-* 下载或克隆[AzureSignalR 示例](https://github.com/aspnet/AzureSignalR-samples)GitHub 存储库。
+* [Azure Cloud Shell 配置](https://docs.microsoft.com/azure/cloud-shell/quickstart)
+* 下载或克隆 [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) GitHub 存储库。
 
 ## <a name="create-an-oauth-app"></a>创建 OAuth 应用
 
 1. 打开 web 浏览器，导航到 `https://github.com` 并登录帐户。
 
-2. 对于您的帐户，导航到**设置** > **开发人员设置**，然后单击**注册新应用程序**，或**OAuth 应用程序下的"新 OAuth** *应用程序*"。
+2. 对于帐户，请导航到 "**设置** > " "**开发人员设置**"，然后单击 "**注册新应用程序**" 或 " *oauth 应用*" 下的**新 OAuth 应用**。
 
 3. 为新 OAuth 应用使用以下设置，然后单击“注册应用程序”****：
 
-    | 设置名称 | 建议的值 | 描述 |
+    | 设置名称 | 建议的值 | 说明 |
     | ------------ | --------------- | ----------- |
     | 应用程序名称 | Azure SignalR 聊天** | GitHub 用户应能识别并信任他们要用于身份验证的应用。   |
     | 主页 URL | `http://localhost:5000/home` | |
-    | 应用程序说明 | *使用具有 GitHub 身份验证的 Azure SignalR 服务的聊天室示例* | 有效的应用程序说明可帮助应用程序用户理解所用的身份验证上下文。 |
+    | 应用程序说明 | *使用带有 GitHub 身份验证的 Azure SignalR 服务的聊天室示例* | 有效的应用程序说明可帮助应用程序用户理解所用的身份验证上下文。 |
     | 授权回调 URL | `http://localhost:5000/signin-github` | 这是 OAuth 应用程序最重要的设置。 它是身份验证成功后 GitHub 返回用户的回调 URL。 在本教程中，必须使用 AspNet.Security.OAuth.GitHub 包的默认回调 URL“/signin-github”****。  |
 
 4. 新的 OAuth 应用注册完成后，使用以下命令将客户端 ID 和客户端密码添加到机密管理器****。 将 Your_GitHub_Client_Id 和 Your_GitHub_Client_Secret 替换为 OAuth 应用的值****。
@@ -377,7 +377,7 @@ ms.locfileid: "74158282"
 
 ## <a name="deploy-the-app-to-azure"></a>将应用部署到 Azure
 
-在本节中，您将使用 Azure 云外壳中的 Azure 命令行接口 （CLI） 在[Azure 应用服务](https://docs.microsoft.com/azure/app-service/)中创建新的 Web 应用，以在 Azure 中托管ASP.NET应用程序。 Web 应用将配置为使用本地 Git 部署。 还将使用 SignalR 连接字符串、GitHub OAuth 应用密码和部署用户配置 Web 应用。
+在本部分中，将使用 Azure Cloud Shell 中的 Azure 命令行接口（CLI）在[Azure App Service](https://docs.microsoft.com/azure/app-service/)中创建新的 web 应用，以便在 Azure 中托管 ASP.NET 应用程序。 Web 应用将配置为使用本地 Git 部署。 还将使用 SignalR 连接字符串、GitHub OAuth 应用密码和部署用户配置 Web 应用。
 
 本部分中的步骤使用 Azure CLI 的 signalr 扩展**。 执行以下命令，安装 Azure CLI 的 signalr 扩展**：
 
@@ -460,7 +460,7 @@ az webapp config appsettings set --name $WebAppName \
     --settings "GitHubClientSecret=$GitHubClientSecret"
 ```
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 | -------------------- | --------------- |
 | GitHubClientId | 为此变量分配 GitHub OAuth 应用的机密客户端 ID。 |
 | GitHubClientSecret | 为此变量分配 GitHub OAuth 应用的机密密码。 |
@@ -495,7 +495,7 @@ az webapp deployment source config-local-git --name $WebAppName \
     --query [url] -o tsv
 ```
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 | -------------------- | --------------- |
 | DeploymentUserName | 选择新的部署用户名。 |
 | DeploymentUserPassword | 为新的部署用户选择密码。 |
@@ -539,14 +539,14 @@ az webapp deployment source config-local-git --name $WebAppName \
 
 需要执行的最后一步是更新 GitHub OAuth 应用的“主页 URL”和“授权回调 URL”，指向新的托管应用********。
 
-1. 在[https://github.com](https://github.com)浏览器中打开并导航到您的帐户的**设置** > **开发人员设置** > **Oauth 应用程序**。
+1. 在[https://github.com](https://github.com)浏览器中打开并导航到帐户的 "**设置** > " "**开发人员设置** > " "**Oauth 应用**"。
 
 2. 单击身份验证应用并更新“主页 URL”和“授权回调 URL”，如下所示********：
 
     | 设置 | 示例 |
     | ------- | ------- |
-    | 主页 URL | https://signalrtestwebapp22665120.azurewebsites.net/home |
-    | 授权回调 URL | https://signalrtestwebapp22665120.azurewebsites.net/signin-github |
+    | 主页 URL | `https://signalrtestwebapp22665120.azurewebsites.net/home` |
+    | 授权回调 URL | `https://signalrtestwebapp22665120.azurewebsites.net/signin-github` |
 
 3. 导航到 Web 应用 URL，并测试应用程序。
 
@@ -563,7 +563,7 @@ az webapp deployment source config-local-git --name $WebAppName \
 
 登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。****
 
-在 **"按名称筛选..."** 文本框中，键入资源组的名称。 本文的说明使用名为“SignalRTestResources”的资源组**。 在结果列表中的资源组上，单击“...”，然后单击“删除资源组”********。
+在 "**按名称筛选 ...** " 文本框中，键入资源组的名称。 本文的说明使用名为“SignalRTestResources”的资源组**。 在结果列表中的资源组上，单击“...”，然后单击“删除资源组”********。
 
 ![删除](./media/signalr-concept-authenticate-oauth/signalr-delete-resource-group.png)
 

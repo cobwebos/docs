@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 10c66ba175484d8b95f26ef9330753151a92969b
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: 631c9b37cf1fec0d39c3c362c6bc303a576d6b7c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106026"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187324"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>在 Azure 自动化中，在非工作时间启动/停止 Vm 解决方案
 
@@ -104,11 +104,11 @@ ms.locfileid: "82106026"
 
 所有父 runbook 都包含`WhatIf`参数。 如果设置为 True，则参数支持详细说明 runbook 在没有参数的情况下运行时执行的确切行为，并验证是否针对正确的 Vm。 仅当`WhatIf`参数设置为 False 时，runbook 才执行其定义的操作。
 
-|Runbook | 参数 | 描述|
+|Runbook | 参数 | 说明|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | 从父 runbook 调用。 对于自动停止方案，此 runbook 针对每个资源创建警报。|
-|AutoStop_CreateAlert_Parent | VMList<br> WhatIf：True 或 False  | 在目标订阅或资源组中的 VM 上创建或更新 Azure 警报规则。 <br> `VMList`是以逗号分隔的 Vm 列表。 例如 `vm1, vm2, vm3`。<br> `WhatIf`启用 runbook 逻辑验证而不执行。|
-|AutoStop_Disable | None | 禁用自动停止警报和默认计划。|
+|AutoStop_CreateAlert_Parent | VMList<br> WhatIf：True 或 False  | 在目标订阅或资源组中的 VM 上创建或更新 Azure 警报规则。 <br> `VMList`是以逗号分隔的 Vm 列表。 例如，`vm1, vm2, vm3` 。<br> `WhatIf`启用 runbook 逻辑验证而不执行。|
+|AutoStop_Disable | 无 | 禁用自动停止警报和默认计划。|
 |AutoStop_VM_Child | WebHookData | 从父 runbook 调用。 警报规则调用此 runbook 以停止经典 VM。|
 |AutoStop_VM_Child_ARM | WebHookData |从父 runbook 调用。 警报规则调用此 runbook 以停止 VM。  |
 |ScheduledStartStop_Base_Classic | CloudServiceName<br> Action：Start 或 Stop<br> VMList  | 通过云服务在经典 VM 组中执行操作启动或停止。 |
@@ -148,7 +148,7 @@ ms.locfileid: "82106026"
 >[!NOTE]
 >对于变量`External_WaitTimeForVMRetryInSeconds`，默认值已从600更新为2100。 
 
-在所有方案中，变量`External_Start_ResourceGroupNames`、 `External_Stop_ResourceGroupNames`和`External_ExcludeVMNames`对于目标 vm 都是必需的，但**AutoStop_CreateAlert_Parent**、 **SequencedStartStop_Parent**和**ScheduledStartStop_Parent** runbook 的以逗号分隔的 VM 列表除外。 也就是说，你的 Vm 必须属于目标资源组才能执行启动和停止操作。 此逻辑的工作方式类似于 Azure Policy，因为可以在订阅或资源组中设定目标，并且具有新创建的 VM 继承的操作。 此方法避免了必须为每个 VM 维护一个单独计划和管理规模启动和停止操作。
+在所有方案中，变量`External_Start_ResourceGroupNames`、 `External_Stop_ResourceGroupNames`和`External_ExcludeVMNames`对于目标 vm 都是必需的，但**AutoStop_CreateAlert_Parent**、 **SequencedStartStop_Parent**和**ScheduledStartStop_Parent** runbook 的以逗号分隔的 VM 列表除外。 也就是说，你的 Vm 必须属于目标资源组才能执行启动和停止操作。 此逻辑的工作方式类似于 Azure 策略，因为可以将订阅或资源组作为目标，并具有新创建的 Vm 继承的操作。 此方法避免了必须为每个 VM 维护一个单独计划和管理规模启动和停止操作。
 
 ### <a name="schedules"></a>计划
 
@@ -156,7 +156,7 @@ ms.locfileid: "82106026"
 
 不要启用所有计划，因为这样做可能会创建重叠的计划操作。 最好确定要执行的优化，并相应地进行修改。 请参阅概述部分的示例方案以查看进一步解释。
 
-|计划名称 | 频率 | 描述|
+|计划名称 | 频率 | 说明|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | 每隔 8 小时 | 每8小时运行一次**AutoStop_CreateAlert_Parent** runbook，后者将停止、 `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames`和`External_ExcludeVMNames`变量中基于 VM 的值。 或者，可以使用`VMList`参数指定以逗号分隔的 vm 列表。|
 |Scheduled_StopVM | 用户定义，每天 | 使用指定**ScheduledStopStart_Parent**时间每天的参数`Stop`运行 ScheduledStopStart_Parent runbook。自动停止满足变量资产定义的规则的所有 Vm。启用相关计划**StartVM**的计划。|

@@ -3,19 +3,19 @@ title: 将策略设计为代码工作流
 description: 了解如何设计工作流，以将 Azure Policy 定义部署为代码，并自动验证资源。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0914ba6510c9d2ef87d3f83417f97340d42c8bce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd77fdd4011c3e1e83f8dfa9f30045bb72881c25
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74267268"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187726"
 ---
 # <a name="design-policy-as-code-workflows"></a>将策略设计为代码工作流
 
 在使用云监管的历程中，你希望将通过 Azure 门户或各种 SDK 手动管理每个策略定义的做法，过渡到可在整个企业中运用的、更易于管理且可重用的方法。 在云中大规模管理系统的两种主流方法是：
 
-- 基础结构作为代码：将定义环境的内容（从资源管理器模板到 Azure 策略定义到 Azure 蓝图）的所有内容视为源代码的做法。
-- DevOps：人员、流程和产品的结合，以实现持续向最终用户交付价值。
+- 基础结构即代码：将定义环境的内容（从资源管理器模板，到 Azure Policy 定义，再到 Azure 蓝图的所有内容）视为源代码的做法。
+- DevOps：人员、过程和产品的联合，可以实现向最终用户持续提供价值。
 
 策略即代码是这些思路的组合。 从根本上讲，此方法是在源代码管理中保留策略定义，每当发生更改，就会对这种更改进行测试和验证。 但是，不应将此方法视为对基础结构即代码或 DevOps 策略参与的延伸。
 
@@ -25,7 +25,7 @@ ms.locfileid: "74267268"
 
 策略即代码的一般建议工作流如下图所示：
 
-![策略即代码工作流概述](../media/policy-as-code/policy-as-code-workflow.png)
+:::image type="content" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="策略即代码工作流概述" border="false":::
 
 ### <a name="create-and-update-policy-definitions"></a>创建和更新策略定义
 
@@ -85,14 +85,14 @@ ms.locfileid: "74267268"
 
 ### <a name="test-and-validate-the-updated-definition"></a>测试和验证更新的定义
 
-自动化过程提取新建或更新的策略定义或者计划定义，并对 Azure 中的对象进行更新后，可以开始测试所做的更改。 然后，应将这些定义所属的策略或计划，分配到离生产环境最远的环境中的资源。 此环境通常是“开发”环境。__
+自动化过程提取新建或更新的策略定义或者计划定义，并对 Azure 中的对象进行更新后，可以开始测试所做的更改。 然后，应将这些定义所属的策略或计划，分配到离生产环境最远的环境中的资源。 此环境通常是“开发”环境。 
 
 分配应该对 [enforcementMode](./assignment-structure.md#enforcement-mode) 使用 _disabled_ 值，以便不会阻止资源的创建和更新，但仍会审核现有资源是否符合更新的策略定义。 即使使用 enforcementMode，我们也建议分配范围是专门用于验证策略的资源组或订阅。
 
 > [!NOTE]
 > 尽管强制模式非常有用，但它并不能取代在各种条件下对策略定义进行全面测试的做法。 应针对 `PUT` 和 `PATCH` REST API 调用、合规和不合规的资源以及极端情况（例如资源中缺少属性）测试策略定义。
 
-部署分配后，使用 Policy SDK [获取新分配的合规性数据](../how-to/get-compliance-data.md)。 用于测试策略和分配的环境应包含合规和不合规的资源。 与针对代码的合理单元测试一样，需要测试资源是否符合预期，同时不会出现误报或漏报。 如果仅针对预期结果进行测试和验证，则策略可能会产生意外且不可识别的影响。 有关详细信息，请参阅[评估新 Azure 策略的影响](./evaluate-impact.md)。
+部署分配后，使用 Policy SDK [获取新分配的合规性数据](../how-to/get-compliance-data.md)。 用于测试策略和分配的环境应包含合规和不合规的资源。 与针对代码的合理单元测试一样，需要测试资源是否符合预期，同时不会出现误报或漏报。 如果仅针对预期结果进行测试和验证，则策略可能会产生意外且不可识别的影响。 有关详细信息，请参阅[评估新的 Azure 策略定义的影响](./evaluate-impact.md)。
 
 ### <a name="enable-remediation-tasks"></a>启用修正任务
 
@@ -129,5 +129,5 @@ ms.locfileid: "74267268"
 - 了解[策略分配结构](./assignment-structure.md)。
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
 - 了解如何[获取合规性数据](../how-to/get-compliance-data.md)。
-- 了解如何[修复不合规资源](../how-to/remediate-resources.md)。
+- 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

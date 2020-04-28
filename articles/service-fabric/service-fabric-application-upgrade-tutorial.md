@@ -3,16 +3,16 @@ title: Service Fabric 应用升级教程
 description: 本文逐步指导使用 Visual Studio 部署 Service Fabric 应用程序、更改代码以及推出升级版本。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: db814b972db1aee56be0858c9ff5d1c382640642
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: acde2f4e51bee29d2eefb0d5fbb54fbe421a41f1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75464821"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195861"
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>使用 Visual Studio 进行 Service Fabric 应用程序升级的教程
 > [!div class="op_single_selector"]
-> * [电源外壳](service-fabric-application-upgrade-tutorial-powershell.md)
+> * [PowerShell](service-fabric-application-upgrade-tutorial-powershell.md)
 > * [Visual Studio](service-fabric-application-upgrade-tutorial.md)
 > 
 > 
@@ -22,7 +22,7 @@ ms.locfileid: "75464821"
 Azure Service Fabric 确保只升级已更改的服务，并在整个升级过程中监视应用程序的运行状况，从而可以简化云应用程序的升级过程。 它还能在应用程序发生任何问题时自动回滚到旧版本。 Service Fabric 应用程序升级造成的*停机时间为零*，因为可以在不停机的情况下升级应用程序。 本教程介绍如何从 Visual Studio 完成滚动升级。
 
 ## <a name="step-1-build-and-publish-the-visual-objects-sample"></a>步骤 1：构建和发布可视对象示例
-首先，从 GitHub 下载[可视对象](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Actors/VisualObjects)应用程序。 然后，右键单击应用程序项目 **VisualObjects**，并从 Service Fabric 菜单项中选择“发布”**** 命令生成并发布应用程序。
+首先，从 GitHub 下载[可视对象](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Actors/VisualObjects)应用程序。 然后，右键单击应用程序项目 **VisualObjects**，并从 Service Fabric 菜单项中选择“发布”  命令生成并发布应用程序。
 
 ![Service Fabric 应用程序的上下文菜单][image1]
 
@@ -30,7 +30,7 @@ Azure Service Fabric 确保只升级已更改的服务，并在整个升级过�
 
 ![发布 Service Fabric 应用程序][image2]
 
-现在，可在对话框中单击“**发布**”。 可以使用 [Service Fabric Explorer 查看群集和应用程序](service-fabric-visualizing-your-cluster.md)。 Visual Objects 应用程序具有一个 Web 服务，您可以通过[http://localhost:8081/visualobjects/](http://localhost:8081/visualobjects/)键入浏览器的地址栏来访问该服务。  应会在屏幕上看到 10 个四处移动的浮动可视对象。
+现在，可在对话框中单击“**发布**”。 可以使用 [Service Fabric Explorer 查看群集和应用程序](service-fabric-visualizing-your-cluster.md)。 “可视对象”应用程序有一个 Web 服务，在浏览器的地址栏中输入 `http://localhost:8081/visualobjects/` 即可转到该服务。  应会在屏幕上看到 10 个四处移动的浮动可视对象。
 
 **注意：** 如果部署到 `Cloud.xml` 配置文件 (Azure Service Fabric)，则可以在 **http://{ServiceFabricName}.{Region}.cloudapp.azure.com:8081/visualobjects/** 访问应用程序。 请确保在负载均衡器中配置了 `8081/TCP`（在与 Service Fabric 实例相同的资源组中找到负载均衡器）。
 
@@ -63,15 +63,15 @@ Azure Service Fabric 确保只升级已更改的服务，并在整个升级过�
 可以尝试通过更改版本来练习本文所述的操作：从版本 2.0.0 升级到版本 3.0.0，或者从版本 2.0.0 降级到版本 1.0.0。 尝试练习使用超时和运行状况策略，以便加深对它的熟悉。 与部署到本地群集不同，在部署到 Azure 群集时，可能需要使用不同的参数。 们建议保守设置超时值。
 
 ## <a name="next-steps"></a>后续步骤
-[使用 PowerShell 升级应用程序](service-fabric-application-upgrade-tutorial-powershell.md)会引导您使用 PowerShell 进行应用程序升级。
+[使用 PowerShell 升级应用程序](service-fabric-application-upgrade-tutorial-powershell.md)逐步讲解了如何使用 PowerShell 进行应用程序升级。
 
 使用[升级参数](service-fabric-application-upgrade-parameters.md)来控制应用程序的升级方式。
 
-通过学习如何使用[数据序列化](service-fabric-application-upgrade-data-serialization.md)，使应用程序升级兼容。
+了解如何使用[数据序列化](service-fabric-application-upgrade-data-serialization.md)，使应用程序在升级后保持兼容。
 
 参考[高级主题](service-fabric-application-upgrade-advanced.md)，了解如何在升级应用程序时使用高级功能。
 
-通过参考[故障排除应用程序升级](service-fabric-application-upgrade-troubleshooting.md)中的步骤，修复应用程序升级中的常见问题。
+参考[对应用程序升级进行故障排除](service-fabric-application-upgrade-troubleshooting.md)中的步骤来解决应用程序升级时的常见问题。
 
 [image1]: media/service-fabric-application-upgrade-tutorial/upgrade7.png
 [image2]: media/service-fabric-application-upgrade-tutorial/upgrade1.png

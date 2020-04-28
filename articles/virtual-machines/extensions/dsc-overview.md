@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: c03487b100ddb066416072c6c06773890db86e0a
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 82d268eedd73b8de670da93ad3a601b5e75e6444
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82115306"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188529"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 扩展处理程序简介
 
@@ -188,15 +188,15 @@ az vm extension set \
 
 - **配置参数**：如果配置函数采用参数，请使用 **argumentName1=value1,argumentName2=value2** 格式在此处输入。 此格式与 PowerShell cmdlet 或资源管理器模板中接受的配置参数格式不同。
 
-- **配置数据 PSD1 文件**：这是可选字段。 如果配置要求 .psd1 中有配置数据文件，请使用此字段来选择数据字段，然后将它上传到用户 Blob 存储。 配置数据文件在 Blob 存储中受 SAS 令牌的保护。
+- **配置数据 PSD1 文件**：你的配置需要 PSD1 中的配置数据文件，请使用此字段选择数据文件并将其上传到你的用户 blob 存储。 配置数据文件在 Blob 存储中受 SAS 令牌的保护。
 
-- **WMF 版本**：指定应在 VM 上安装的 Windows Management Framework (WMF) 版本。 将此属性设置为“latest”可安装最新版本的 WMF。 目前，此属性的可能值只有“4.0”、“5.0”、“5.1”和“latest”。 这些可能值将来可能会更新。 默认值为 **latest**。
+- **WMF 版本**：指定应在 VM 上安装的 Windows Management Framework (WMF) 版本。 将此属性设置为“latest”可安装最新版本的 WMF。 目前，此属性的可能值只有“4.0”、“5.0”、“5.1”和“latest”。 这些可能值将来可能会更新。 默认值为 "**最新**"。
 
 - **数据收集**：确定扩展是否将收集遥测数据。 有关详细信息，请参阅 [Azure DSC 扩展数据集合](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/)。
 
 - **版本**：指定要安装的 DSC 扩展的版本。 有关版本信息，请参阅 [DSC 扩展版本历史记录](/powershell/scripting/dsc/getting-started/azuredscexthistory)。
 
-- **自动升级次要版本**：此字段映射到 cmdlet 中的“AutoUpdate”  开关，使扩展能够在安装过程中自动更新到最新版本。 “是”  将指示扩展处理程序使用最新可用版本，“否”  将强制安装指定的版本  。 既不选择“是”  也不选择“否”  相当于选择“否”  。
+- **自动升级次要版本**：此字段映射到 cmdlet 中的“AutoUpdate”**** 开关，使扩展能够在安装过程中自动更新到最新版本。 “是”**** 将指示扩展处理程序使用最新可用版本，“否”**** 将强制安装指定的版本****。 既不选择“是”**** 也不选择“否”**** 相当于选择“否”****。
 
 ## <a name="logs"></a>日志
 

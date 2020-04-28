@@ -1,20 +1,20 @@
 ---
-title: 评估新 Azure 策略的影响
+title: 评估新的 Azure 策略定义的影响
 description: 了解在将新策略定义引入 Azure 环境时要遵循的过程。
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 562fa2378356ddc1eac48b6ea5c160ebf655d525
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 394f87c0328bce46d4c7177a336a7861991ad0e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74463519"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187743"
 ---
-# <a name="evaluate-the-impact-of-a-new-azure-policy"></a>评估新 Azure 策略的影响
+# <a name="evaluate-the-impact-of-a-new-azure-policy-definition"></a>评估新的 Azure 策略定义的影响
 
 Azure Policy 是一个功能强大的工具，可用于根据企业标准和法规需求管理 Azure 资源。 当用户、过程或管道创建或者更新资源时，Azure Policy 会评审请求。 当策略定义效果为 [Append](./effects.md#deny) 或 [DeployIfNotExists](./effects.md#deployifnotexists) 时，Policy 会更改请求或对其进行补充。 当策略定义效果为 [Audit](./effects.md#audit) 或 [AuditIfNotExists](./effects.md#auditifnotexists) 时，Policy 会导致创建活动日志项。 当策略定义效果为 [Deny](./effects.md#deny) 时，Policy 会停止请求的创建或更改。
 
-如果你确认策略已正确定义，则完全可按预期实现这些结果。 不过，在允许新策略更改或阻止工作之前，必须先验证该策略是否按意图运行。 验证必须确保只将目标资源判定为不合规，而不会在结果中错误地包含不合规的资源（称为“误报”）。__
+如果你确认策略已正确定义，则完全可按预期实现这些结果。 不过，在允许新策略更改或阻止工作之前，必须先验证该策略是否按意图运行。 验证必须确保只将目标资源判定为不合规，而不会在结果中错误地包含不合规的资源（称为“误报”）。 
 
 验证新策略定义的建议方法是执行以下步骤：
 
@@ -33,10 +33,10 @@ Azure Policy 是一个功能强大的工具，可用于根据企业标准和法�
 
 ## <a name="audit-existing-resources"></a>审核现有资源
 
-在寻求使用新的策略定义管理新的或更新的资源之前，最好是了解该定义如何评估有限的现有资源子集，例如某个测试资源组。 在策略分配上使用_禁用_（DoNot强制）[强制模式](./assignment-structure.md#enforcement-mode)
-，以防止创建触发或创建活动日志条目[。](./effects.md)
+在寻求使用新的策略定义管理新的或更新的资源之前，最好是了解该定义如何评估有限的现有资源子集，例如某个测试资源组。 在策略分配中使用值为“已禁用”的[强制模式](./assignment-structure.md#enforcement-mode) (DoNotEnforce) 可防止触发该[效果](./effects.md)或创建活动日志项。
+ 
 
-此步骤使你有机会在不影响工作流的情况下，评估对现有资源使用新策略后的合规性结果。 检查是否未将任何合规的资源标记为不合规（误报），并且已正确标记预期不合规的所有资源。__
+此步骤使你有机会在不影响工作流的情况下，评估对现有资源使用新策略后的合规性结果。 检查是否未将任何合规的资源标记为不合规（误报），并且已正确标记预期不合规的所有资源。 
 按预期验证资源的初始子集后，逐渐将评估扩展到所有现有资源。
 
 以这种方式评估现有资源还有机会在全面实施新策略之前修正不合规的资源。 如果策略定义效果为 _DeployIfNotExists_，可以手动或通过[修正任务](../how-to/remediate-resources.md)完成此清理过程。
@@ -46,9 +46,9 @@ Azure Policy 是一个功能强大的工具，可用于根据企业标准和法�
 验证新策略定义可针对现有资源正确报告信息后，可以在创建或更新资源时查看该策略的影响。 如果策略定义支持效果参数化，请使用[审核](./effects.md#audit)。 此配置可让你监视资源的创建和更新，以确定新策略定义是否在 Azure 活动日志中对某个不合规的资源触发一个项，且不影响现有的工作或请求。
 
 建议同时更新并创建与策略定义匹配的新资源，以确定 _Audit_ 效果是否按预期正常触发。 请当心触发 _Audit_ 效果的新策略定义不应该影响到的资源请求。
-这些受影响资源是另一个误报示例，在全面实施该策略定义之前必须先将其修复。__
+这些受影响资源是另一个误报示例，在全面实施该策略定义之前必须先将其修复。 
 
-如果在此测试阶段策略定义发生更改，我们建议重新开始验证过程并审核现有资源。 在新的或更新的资源中对误报的策略定义进行更改也有可能会影响现有资源。__
+如果在此测试阶段策略定义发生更改，我们建议重新开始验证过程并审核现有资源。 在新的或更新的资源中对误报的策略定义进行更改也有可能会影响现有资源。 
 
 ## <a name="deploy-your-policy-to-resources"></a>将策略部署到资源
 
@@ -72,5 +72,5 @@ Azure Policy 是一个功能强大的工具，可用于根据企业标准和法�
 - 了解[策略分配结构](./assignment-structure.md)。
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
 - 了解如何[获取合规性数据](../how-to/get-compliance-data.md)。
-- 了解如何[修复不合规资源](../how-to/remediate-resources.md)。
+- 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

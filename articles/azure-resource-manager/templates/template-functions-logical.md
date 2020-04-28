@@ -2,23 +2,23 @@
 title: 模板函数 - 逻辑
 description: 介绍 Azure 资源管理器模板中用于确定逻辑值的函数。
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: f058baa32e5f93a4177913287a5e9873fa7a9acb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/27/2020
+ms.openlocfilehash: 0072593e7d7830e75e2386bcfdd2907a873c7a87
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156304"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192308"
 ---
 # <a name="logical-functions-for-arm-templates"></a>ARM 模板的逻辑函数
 
-资源管理器提供了多个功能，用于在 Azure 资源管理器 （ARM） 模板中进行比较。
+资源管理器提供了几个用于在 Azure 资源管理器（ARM）模板中进行比较的函数。
 
-* [和](#and)
+* [and](#and)
 * [bool](#bool)
 * [if](#if)
-* [不](#not)
-* [或](#or)
+* [not](#not)
+* [or](#or)
 
 ## <a name="and"></a>and
 
@@ -26,7 +26,7 @@ ms.locfileid: "80156304"
 
 检查所有参数值是否均为 true。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -36,7 +36,7 @@ ms.locfileid: "80156304"
 
 ### <a name="return-value"></a>返回值
 
-如果所有值均为 true，则返回 True；否则返回 False********。
+如果所有值均为 true，则返回 True；否则返回 False   。
 
 ### <a name="examples"></a>示例
 
@@ -66,7 +66,7 @@ ms.locfileid: "80156304"
 
 前述示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -78,7 +78,7 @@ ms.locfileid: "80156304"
 
 将参数转换为布尔值。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -119,7 +119,7 @@ ms.locfileid: "80156304"
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | trueString | Bool | True |
 | falseString | Bool | False |
@@ -132,7 +132,7 @@ ms.locfileid: "80156304"
 
 根据条件为 true 或 false 返回值。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -142,7 +142,7 @@ ms.locfileid: "80156304"
 
 ### <a name="return-value"></a>返回值
 
-如果第一个参数为 True，则返回第二个参数；否则返回第三个参数****。
+如果第一个参数为 True，则返回第二个参数；否则返回第三个参数  。
 
 ### <a name="remarks"></a>备注
 
@@ -177,7 +177,7 @@ ms.locfileid: "80156304"
 
 前述示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | yesOutput | String | 是 |
 | noOutput | String | 否 |
@@ -237,7 +237,7 @@ ms.locfileid: "80156304"
 
 将布尔值转换为其相反值。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -245,7 +245,7 @@ ms.locfileid: "80156304"
 
 ### <a name="return-value"></a>返回值
 
-参数为 False 时返回 True********。 参数为 True 时返回 False********。
+参数为 False 时返回 True   。 参数为 True 时返回 False   。
 
 ### <a name="examples"></a>示例
 
@@ -275,7 +275,7 @@ ms.locfileid: "80156304"
 
 前述示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -295,11 +295,12 @@ ms.locfileid: "80156304"
             "value": "[not(equals(1, 2))]"
         }
     }
+}
 ```
 
 前述示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 
@@ -309,7 +310,7 @@ ms.locfileid: "80156304"
 
 检查任何参数值是否为 true。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -319,7 +320,7 @@ ms.locfileid: "80156304"
 
 ### <a name="return-value"></a>返回值
 
-如果任何值为 true，则返回 True；否则返回 False********。
+如果任何值为 true，则返回 True；否则返回 False   。
 
 ### <a name="examples"></a>示例
 
@@ -349,7 +350,7 @@ ms.locfileid: "80156304"
 
 前述示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -357,8 +358,5 @@ ms.locfileid: "80156304"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 Azure 资源管理器模板中各部分的说明，请参阅[创作 Azure 资源管理器模板](template-syntax.md)。
-* 要合并多个模板，请参阅[使用 Azure 资源管理器使用链接模板](linked-templates.md)。
-* 要迭代创建资源类型时指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
-* 要查看如何部署已创建的模板，请参阅[使用 Azure 资源管理器模板部署应用程序](deploy-powershell.md)。
+* 有关 Azure 资源管理器模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
 

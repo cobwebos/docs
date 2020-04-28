@@ -1,22 +1,23 @@
 ---
-title: Azure HDInsight 中的开源软件支持
+title: Azure HDInsight 中的开放源代码软件支持
 description: Microsoft Azure 为开源技术提供常规级别的支持。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
+ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: f93be73af4bbbd159ffc01804617892251d96347
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 65f21450f194175af37c6c198468978392cee462
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81772166"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195156"
 ---
-# <a name="open-source-software-support-in-azure-hdinsight"></a>Azure HDInsight 中的开源软件支持
+# <a name="open-source-software-support-in-azure-hdinsight"></a>Azure HDInsight 中的开放源代码软件支持
 
-Microsoft Azure HDInsight 服务使用围绕 Apache Hadoop 形成的开源技术环境。 Microsoft Azure 为开源技术提供常规级别的支持。 有关详细信息，请参阅 [Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)的“支持范围”部分。**** HDInsight 服务为内置组件提供附加的支持级别。
+Microsoft Azure HDInsight 服务使用围绕 Apache Hadoop 形成的开源技术的环境。 Microsoft Azure 为开源技术提供常规级别的支持。 有关详细信息，请参阅 [Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)的“支持范围”部分。**** HDInsight 服务为内置组件提供附加的支持级别。
 
 ## <a name="components"></a>组件
 
@@ -26,9 +27,9 @@ Microsoft Azure HDInsight 服务使用围绕 Apache Hadoop 形成的开源技术
 
 这些组件预先安装在 HDInsight 群集上，并提供在群集的核心功能。 以下组件属于此类别：
 
-* [阿帕奇·哈多普·阿亚尔](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)资源管理器。
+* [APACHE HADOOP YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)资源管理器。
 * Hive 查询语言 [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)。
-* [阿帕奇·马胡](https://mahout.apache.org/)
+* [Apache Mahout](https://mahout.apache.org/)。
 
 [在 HDInsight 中可以使用哪些 Apache Hadoop 组件和版本？](hdinsight-component-versioning.md)中提供了群集组件的完整列表。
 
@@ -43,7 +44,7 @@ Microsoft Azure HDInsight 服务使用围绕 Apache Hadoop 形成的开源技术
 >
 > Apache 项目还在 [Apache 网站](https://apache.org)上提供了项目站点， 例如 [Hadoop](https://hadoop.apache.org/)。
 
-## <a name="component-usage"></a>组件使用情况
+## <a name="component-usage"></a>组件用法
 
 HDInsight 服务提供多种方式来使用自定义组件。 不论在群集上使用组件或安装组件的方式为何，均适用相同级别的支持。 下表描述了在 HDInsight 群集上使用自定义组件的最常见方式：
 

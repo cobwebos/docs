@@ -1,43 +1,43 @@
 ---
-title: 模板函数 - 日期
-description: 描述要在 Azure 资源管理器模板中使用用于日期的函数。
+title: 模板函数-日期
+description: 描述要在 Azure 资源管理器模板中使用的用于处理日期的函数。
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.openlocfilehash: 364b41e9e92cb248a7bd2fac5a41eb535adbf440
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.date: 04/27/2020
+ms.openlocfilehash: 0c31b26361a262a502b2a9e0fb068391846cab4b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82084781"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192291"
 ---
 # <a name="date-functions-for-arm-templates"></a>ARM 模板的日期函数
 
-资源管理器提供以下功能，用于在 Azure 资源管理器 （ARM） 模板中处理日期：
+资源管理器提供了以下函数，用于处理 Azure 资源管理器（ARM）模板中的日期：
 
-* [日期时间添加](#datetimeadd)
+* [dateTimeAdd](#datetimeadd)
 * [utcNow](#utcnow)
 
-## <a name="datetimeadd"></a>日期时间添加
+## <a name="datetimeadd"></a>dateTimeAdd
 
 `dateTimeAdd(base, duration, [format])`
 
-将持续时间添加到基值。 预期 ISO 8601 格式。
+将持续时间添加到基数值。 需要 ISO 8601 格式。
 
 ### <a name="parameters"></a>参数
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| base | 是 | 字符串 | 添加的开始日期时间值。 使用[ISO 8601 时间戳格式](https://en.wikipedia.org/wiki/ISO_8601)。 |
-| duration | 是 | 字符串 | 要添加到基的值的时间值。 它可以是负值。 使用[ISO 8601 持续时间格式](https://en.wikipedia.org/wiki/ISO_8601#Durations)。 |
-| format | 否 | 字符串 | 日期时间结果的输出格式。 如果未提供，则使用基值的格式。 使用[标准格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
+| base | 是 | 字符串 | 加法的开始日期时间值。 使用[ISO 8601 时间戳格式](https://en.wikipedia.org/wiki/ISO_8601)。 |
+| duration | 是 | 字符串 | 要添加到基的时间值。 该值可以为负值。 使用[ISO 8601 持续时间格式](https://en.wikipedia.org/wiki/ISO_8601#Durations)。 |
+| format | 否 | 字符串 | 日期时间结果的输出格式。 如果未提供，则使用基本值的格式。 使用[标准格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
 
 ### <a name="return-value"></a>返回值
 
-将工期值添加到基值时产生的日期时间值。
+向基值添加 duration 值后得到的日期时间值。
 
 ### <a name="examples"></a>示例
 
-以下示例模板显示了添加时间值的不同方法。
+下面的示例模板显示了添加时间值的不同方法。
 
 ```json
 {
@@ -72,13 +72,13 @@ ms.locfileid: "82084781"
 }
 ```
 
-当使用 的基本时间`2020-04-07 14:53:14Z`部署前面的模板时，输出为：
+当使用的基本时间部署上述模板时`2020-04-07 14:53:14Z`，输出为：
 
 | 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
-| 添加3年 | 字符串 | 2023年4月7日 下午2：53：14 |
-| 减去9天 | 字符串 | 2020年3月29日 下午2：53：14 |
-| 添加1小时 | 字符串 | 2020年4月7日 下午3：53：14 |
+| add3Years | 字符串 | 4/7/2023 2:53:14 PM |
+| subtract9Days | 字符串 | 3/29/2020 2:53:14 PM |
+| add1Hour | 字符串 | 4/7/2020 3:53:14 PM |
 
 下一个示例模板演示如何设置自动化计划的开始时间。
 
@@ -242,3 +242,7 @@ ms.locfileid: "82084781"
     }
 }
 ```
+
+## <a name="next-steps"></a>后续步骤
+
+* 有关 Azure 资源管理器模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。

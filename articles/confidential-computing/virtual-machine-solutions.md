@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 8db477f87f344b28e8941e185c70c81d9b860a72
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: e574ac33e5f7da814c4bd813fc1c083c7cb4c2c9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82149471"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187879"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Azure 虚拟机上的解决方案
 
-本文介绍了如何部署 Azure 机密计算虚拟机（Vm），这些虚拟机（Vm）运行由[Intel 软件扩展防护](https://software.intel.com/sgx)（intel SGX）支持的 intel 处理器。 
+本文介绍如何部署运行 intel[软件防护扩展](https://software.intel.com/sgx)（intel SGX）支持的 intel 处理器的 Azure 机密计算虚拟机（vm）。 
 
 ## <a name="azure-confidential-computing-vm-sizes"></a>Azure 机密计算 VM 大小
 
@@ -148,5 +148,5 @@ Azure 资源管理器是 Azure 的部署和管理服务。 它提供一个管理
 
 本文介绍了创建机密计算虚拟机时所需的条件和配置。 现在，你可以转到 Azure Marketplace 部署 DCsv2 系列 VM。
 
-[!div class=”nextstepaction”]
-[在 Azure Marketplace 中部署 DCsv2 系列虚拟机](quick-create-marketplace.md)
+> [!div class="nextstepaction"]
+> [在 Azure Marketplace 中部署 DCsv2 系列虚拟机](quick-create-marketplace.md)
