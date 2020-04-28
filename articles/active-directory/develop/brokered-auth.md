@@ -14,10 +14,10 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
 ms.openlocfilehash: a734589178438fd65d9a2d156fd91fc82807f578
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76697891"
 ---
 # <a name="brokered-authentication-in-android"></a>Android 中的中介身份验证
@@ -33,7 +33,7 @@ ms.locfileid: "76697891"
   -  通过 Android AccountManager 和帐户设置
   - “工作帐户”- 自定义帐户类型
 
-在 Android 上，微软身份验证代理是[微软身份验证器应用](https://play.google.com/store/apps/details?id=com.azure.authenticator)和[Intune 公司门户](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)中包含的组件
+在 Android 上，Microsoft Authentication Broker 是包含在[Microsoft Authenticator 应用](https://play.google.com/store/apps/details?id=com.azure.authenticator)和[Intune 公司门户](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)中的组件
 
 > [!TIP]
 > 每次只有一个托管中介的应用程序作为中介处于活动状态。 作为中介处于活动状态的应用程序由设备上的安装顺序确定。 要安装的第一个中介或设备上的最后一个中介将成为活动中介。
@@ -44,7 +44,7 @@ ms.locfileid: "76697891"
 
 ## <a name="installing-apps-that-host-a-broker"></a>安装托管中介的应用
 
-代理托管应用可以在任何时候由设备所有者从其应用商店（通常是 Google Play 商店）安装。 但是，某些 API（资源）受条件访问策略的保护，这些策略要求设备：
+代理托管的应用可由设备所有者从其应用商店（通常是 Google Play 商店）进行安装。 但是，某些 API（资源）受条件访问策略的保护，这些策略要求设备：
 
 - 已注册（已加入工作区），和/或
 - 已在设备管理中注册，或

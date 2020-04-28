@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
 ms.openlocfilehash: 21866bb7dab3d5a093ffc4655161b80853eadfc5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77084060"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>适用于 Android 的 ADAL 到 MSAL 迁移指南
@@ -30,8 +30,8 @@ ADAL 适用于 Azure Active Directory v1.0 终结点。 Microsoft 身份验证�
 
 支持：
   - 组织标识 (Azure Active Directory)
-  - 非组织标识，如Outlook.com、Xbox Live 等
-  - （仅限 B2C）与谷歌、Facebook、推特和亚马逊联合登录
+  - 非组织标识，如 Outlook.com、Xbox Live 等
+  - （仅限 B2C）与 Google、Facebook、Twitter 和 Amazon 联合登录
 
 - 与以下协议的标准兼容：
   - OAuth v2.0
@@ -63,7 +63,7 @@ MSAL 公共 API 引入了重要的更改，其中包括：
 
 不需更改现有应用注册即可使用 MSAL。 若要利用增量/渐进式许可，可能需要查看注册，以识别要增量请求的特定范围。 下面是有关范围和增量许可的详细信息。
 
-在门户中的应用注册中，您将看到一个**API 权限**选项卡。这提供了应用当前配置为请求访问的 API 和权限（作用域）的列表。 其中还显示与每个 API 权限关联的范围名称列表。
+在门户中的应用注册中，你将看到 " **API 权限**" 选项卡。这将提供应用当前配置为请求访问权限的 Api 和权限（作用域）的列表。 其中还显示与每个 API 权限关联的范围名称列表。
 
 ### <a name="user-consent"></a>用户同意
 
@@ -86,7 +86,7 @@ MSAL 公共 API 引入了重要的更改，其中包括：
 如果目前使用的是 ADAL 且不需要使用增量许可，则开始使用 MSAL 的最简单方法是使用新的 `AcquireTokenParameter` 对象并设置资源 ID 值来发出 `acquireToken` 请求。
 
 > [!CAUTION]
-> 无法同时设置作用域和资源 ID。尝试同时设置两者将导致 。 `IllegalArgumentException`
+> 不能同时设置作用域和资源 id。尝试同时设置这两个将导致`IllegalArgumentException`。
 
  这与使用 v1 时的行为相同。 在应用注册中请求的所有权限是用户首次交互期间从用户请求的。
 
@@ -101,8 +101,8 @@ MSAL 公共 API 引入了重要的更改，其中包括：
 
 用于向 MSAL 发出请求的参数对象支持：
 
-- `Scope`：要请求授权并接收访问令牌的范围列表。
-- `ExtraScopesToConsent`：要在请求其他资源的访问令牌时为其请求授权的其他作用域列表。 使用此范围列表可以最大程度地减少请求用户授权的次数。 这意味着可以减少用户授权或许可提示的次数。
+- `Scope`：你要为其请求授权的作用域的列表，并收到访问令牌。
+- `ExtraScopesToConsent`：你希望在请求其他资源的访问令牌时请求授权的作用域的其他列表。 使用此范围列表可以最大程度地减少请求用户授权的次数。 这意味着可以减少用户授权或许可提示的次数。
 
 ## <a name="migrate-from-authenticationcontext-to-publicclientapplications"></a>从 AuthenticationContext 迁移到 PublicClientApplications
 
@@ -127,7 +127,7 @@ MSAL 不提供用于启用或禁用颁发机构验证的标志。 颁发机构�
 
 如果尝试使用 Microsoft 未知的颁发机构，并且未在配置中包含该颁发机构，将会收到 `UnknownAuthorityException`。
 
-### <a name="logging"></a>Logging
+### <a name="logging"></a>日志记录
 现在可在配置中以声明方式配置日志记录，如下所示：
 
  ```
@@ -240,7 +240,7 @@ MSAL 中提供异常层次结构，每个异常具有自身的一组关联的特
 
 MSAL 异常列表
 
-|异常  | 描述  |
+|异常  | 说明  |
 |---------|---------|
 | `MsalException`     | MSAL 引发的默认选择异常。  |
 | `MsalClientException`     | 当错误在客户端上发生时引发。 |

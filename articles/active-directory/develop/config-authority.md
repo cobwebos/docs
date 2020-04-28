@@ -1,5 +1,5 @@
 ---
-title: 配置标识提供程序 （MSAL iOS/macOS） |蔚蓝
+title: 配置标识提供者（MSAL iOS/macOS） |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何在适用于 iOS 和 macOS 的 MSAL 中使用不同的颁发机构，例如 B2C、主权云和来宾用户。
 services: active-directory
@@ -14,13 +14,13 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: 4810de772e44be22ee5bd4a9fb6ef0ef756e62f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77085213"
 ---
-# <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>如何：为 iOS 和 macOS 配置 MSAL 以使用不同的标识提供程序
+# <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>如何：将适用于 iOS 和 macOS 的 MSAL 配置为使用不同的标识提供者
 
 本文介绍如何在适用于 iOS 和 macOS 的 Microsoft 身份验证库 (MSAL) 应用中配置不同的颁发机构，例如 Azure Active Directory (Azure AD)、企业到消费者 (B2C)、主权云和来宾用户。  在整篇文章中，基本上可将颁发机构看作是标识提供者。
 

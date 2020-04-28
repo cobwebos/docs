@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
 ms.openlocfilehash: 08579f7ba952bb4ebcba1595508612affb852528
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75980381"
 ---
 # <a name="manage-azure-media-services-v3-accounts"></a>管理 Azure 媒体服务 v3 帐户
@@ -24,7 +24,7 @@ ms.locfileid: "75980381"
 
 ## <a name="moving-a-media-services-account-between-subscriptions"></a>在订阅之间移动媒体服务帐户 
 
-如果需要将媒体服务帐户移到新订阅，需要先将包含媒体服务帐户的整个资源组移到新订阅。 必须移动所有附加资源：Azure 存储帐户、Azure CDN 配置文件等。有关详细信息，请参阅[将资源移动到新资源组或订阅](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。 与 Azure 中的任何资源一样，资源组移动可能需要一些时间才能完成。
+如果需要将媒体服务帐户移到新订阅，需要先将包含媒体服务帐户的整个资源组移到新订阅。 必须移动所有附加的资源： Azure 存储帐户、Azure CDN 配置文件等。有关详细信息，请参阅[将资源移到新的资源组或订阅](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。 与 Azure 中的任何资源一样，资源组移动可能需要一些时间才能完成。
 
 > [!NOTE]
 > 媒体服务 v3 支持多租户模型。

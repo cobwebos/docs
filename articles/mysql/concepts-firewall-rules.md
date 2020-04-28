@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.openlocfilehash: a82d2317314c79a82fe80c5a25afc950fb728815
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76155190"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Azure Database for MySQL 服务器防火墙规则
@@ -37,10 +37,10 @@ ms.locfileid: "76155190"
 ## <a name="connecting-from-azure"></a>从 Azure 连接
 建议找到任何应用程序或服务的传出 IP 地址，并显式允许访问这些单个 IP 地址或范围。 例如，可以查找 Azure 应用服务的传出 IP 地址，或使用绑定到虚拟机或其他资源的公共 IP（请参阅下面的内容，了解如何通过服务终结点与虚拟机的专用 IP 进行连接）。 
 
-如果某个固定的传出 IP 地址不适用于 Azure 服务，可以考虑启用来自所有 Azure 数据中心 IP 地址的连接。 可以从 Azure 门户启用此设置，方法是：从“连接安全性”**** 窗格将“允许访问 Azure 服务”**** 选项设为“启用”**** 并点击“保存”****。 在 Azure CLI 中，起始和结束地址为 0.0.0.0 的防火墙规则设置执行等效操作。 如果不允许该连接尝试，则该请求将不会访问 Azure Database for MySQL 服务器。
+如果某个固定的传出 IP 地址不适用于 Azure 服务，可以考虑启用来自所有 Azure 数据中心 IP 地址的连接。 可以从 Azure 门户启用此设置，方法是：从“连接安全性”  窗格将“允许访问 Azure 服务”  选项设为“启用”  并点击“保存”  。 在 Azure CLI 中，起始和结束地址为 0.0.0.0 的防火墙规则设置执行等效操作。 如果不允许该连接尝试，则该请求将不会访问 Azure Database for MySQL 服务器。
 
 > [!IMPORTANT]
-> “允许访问 Azure 服务”选项将防火墙配置为允许来自 Azure 的所有连接，包括来自其他客户的订阅的连接。**** 选择该选项时，请确保登录名和用户权限将访问权限限制为仅已授权用户使用。
+> “允许访问 Azure 服务”选项将防火墙配置为允许来自 Azure 的所有连接，包括来自其他客户的订阅的连接。  选择该选项时，请确保登录名和用户权限将访问权限限制为仅已授权用户使用。
 > 
 
 ![在门户中配置“允许访问 Azure 服务”](./media/concepts-firewall-rules/allow-azure-services.png)
@@ -58,16 +58,16 @@ ms.locfileid: "76155190"
 
 * 登录名未授权或使用了错误的密码：**** 如果某个登录名对 Azure Database for MySQL 服务器没有权限或者使用的密码不正确，则与 Azure Database for MySQL 服务器的连接会被拒绝。 创建防火墙设置仅向客户端提供尝试连接到服务器的机会；每个客户端必须提供必需的安全凭据。
 
-* 动态 IP 地址：**** 如果 Internet 连接使用动态 IP 寻址，并且在通过防火墙时遇到问题，可尝试以下解决方法之一：
+* **动态 IP 地址：** 如果 Internet 连接使用动态 IP 寻址，并且在通过防火墙时遇到问题，则可以尝试以下解决方法之一：
 
    * 向 Internet 服务提供商 (ISP) 询问分配给客户端计算机、用于访问 Azure Database for MySQL 服务器的 IP 地址范围，然后将该 IP 地址范围作为防火墙规则添加。
 
-   * 改为获取客户端计算机的静态 IP 地址，并将该 IP 地址作为防火墙规则添加。
+   * 改为获取用户的客户端计算机的静态 IP 地址，并将该 IP 地址作为防火墙规则添加。
 
-* **服务器的 IP 似乎是公开的：** MySQL 服务器的 Azure 数据库的连接通过可公开访问的 Azure 网关路由。 但是，实际的服务器 IP 受防火墙保护。 有关详细信息，请访问[连接体系结构文章](concepts-connectivity-architecture.md)。 
+* **服务器的 IP 似乎是公共的：** 与 Azure Database for MySQL 服务器的连接通过可公开访问的 Azure 网关进行路由。 但是，实际的服务器 IP 受防火墙保护。 有关详细信息，请参阅[连接体系结构文章](concepts-connectivity-architecture.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用 Azure 门户为 MySQL 防火墙规则创建和管理 Azure 数据库](./howto-manage-firewall-using-portal.md)
+* [使用 Azure 门户创建和管理 Azure Database for MySQL 防火墙规则](./howto-manage-firewall-using-portal.md)
 * [使用 Azure CLI 创建和管理 Azure Database for MySQL 防火墙规则](./howto-manage-firewall-using-cli.md)
 - [Azure Database for MySQL 中的 VNet 服务终结点](./concepts-data-access-and-security-vnet.md)

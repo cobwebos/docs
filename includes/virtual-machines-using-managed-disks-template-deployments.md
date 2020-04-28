@@ -9,10 +9,10 @@ ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
 ms.openlocfilehash: 126b488d2bb59e2904bee646301240efe6fe71a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76038034"
 ---
 本文档逐步讲解在使用 Azure 资源管理器模板预配虚拟机时托管磁盘与非托管磁盘之间的差异。 该示例可以帮助你将使用非托管磁盘的现有模板更新为托管磁盘。 为方便参考，我们将使用 [101-vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) 模板作为指导。 你可以查看使用[托管磁盘](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json)的模板，以及使用[非托管磁盘](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json)的早期版本，因此可以根据需要直接对两者进行比较。
@@ -94,16 +94,16 @@ ms.locfileid: "76038034"
 
 ### <a name="default-managed-disk-settings"></a>默认的托管磁盘设置
 
-要使用托管磁盘创建 VM，不再需要创建存储帐户资源。 参考下面的模板示例，需要注意与以前的未操作磁盘示例的一些区别：
+若要使用托管磁盘创建 VM，则不再需要创建存储帐户资源。 请参考下面的模板示例，需要注意，这与前面的非托管磁盘示例有些不同：
 
-- 是`apiVersion`支持托管磁盘的版本。
-- `osDisk`不再`dataDisks`引用 VHD 的特定 URI。
-- 部署时不指定其他属性，磁盘将使用基于 VM 大小的存储类型。 例如，如果您使用的是支持高级存储的 VM 大小（其名称中的大小为"s"，如Standard_D2s_v3），则默认情况下将配置高级磁盘。 可以使用磁盘的 sku 设置来指定存储类型来更改此设置。
-- 如果未指定磁盘的名称，则采用 OS 磁盘和`<VMName>_OsDisk_1_<randomstring>``<VMName>_disk<#>_<randomstring>`每个数据磁盘的格式。
-  - 如果从自定义映像创建 VM，则从自定义映像资源中定义的磁盘属性检索存储帐户类型和磁盘名称的默认设置。 可以通过在模板中指定这些值来覆盖这些值。
-- 默认情况下，Azure 磁盘加密被禁用。
-- 默认情况下，磁盘缓存为 OS 磁盘的读/写，数据磁盘为"无"。
-- 在下面的示例中，仍然存在存储帐户依赖项，尽管这仅用于存储诊断，并且不需要磁盘存储。
+- `apiVersion` 是一个支持托管磁盘的版本。
+- `osDisk` 和 `dataDisks` 不再引用 VHD 的特定 URI。
+- 如果部署时未指定其他属性，磁盘将根据 VM 大小使用某个存储类型。 例如，如果你使用的是支持高级存储的 VM 大小（其名称中包含“s”的大小，例如 Standard_D2s_v3），则默认情况下将配置高级磁盘。 若要更改此行为，可以使用磁盘的 SKU 设置来指定存储类型。
+- 如果没有为磁盘指定名称，则 OS 磁盘采用格式 `<VMName>_OsDisk_1_<randomstring>`，每个数据磁盘采用格式 `<VMName>_disk<#>_<randomstring>`。
+  - 如果正在基于自定义映像创建 VM，则会从在自定义映像资源中定义的磁盘属性中检索存储帐户类型和磁盘名称的默认设置。 可以通过在模板中指定这些值来替代它们。
+- 默认情况下，Azure 磁盘加密处于禁用状态。
+- 默认情况下，缓存对于 OS 磁盘为“读/写”，对于数据磁盘则为“无”。
+- 下面的示例中仍然存在一个存储帐户依赖项，但这仅用于诊断的存储，磁盘存储并不需要。
 
 ```json
 {
@@ -231,10 +231,10 @@ ms.locfileid: "76038034"
 
 以下为创建标准 SSD 盘时资源管理器模板中所需的参数：
 
-* Microsoft.Compute 的 apiVersion** 必须设置为 `2018-04-01`（或更高）
-* 将 managedDisk.storageAccountType 指定为 `StandardSSD_LRS`**
+* Microsoft.Compute 的 apiVersion  必须设置为 `2018-04-01`（或更高）
+* 将 managedDisk.storageAccountType 指定为  `StandardSSD_LRS`
 
-以下示例显示了使用标准 SSD 盘的 VM 的 properties.storageProfile.osDisk 部分**：
+以下示例显示了使用标准 SSD 盘的 VM 的 properties.storageProfile.osDisk 部分  ：
 
 ```json
 "osDisk": {

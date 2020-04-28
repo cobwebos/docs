@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 0104547a432f7f78d74731e11926bcd82088cef7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76264027"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>企业推送架构指南
@@ -65,15 +65,15 @@ ms.locfileid: "76264027"
 1. [服务总线 Pub/Sub 编程] - 此教程说明了使用服务总线主题/订阅的详细信息、如何创建命名空间以包含主题/订阅、如何通过它们发送和接收消息。
 2. [通知中心 - Windows 通用教程] - 此教程说明了如何设置 Windows 应用商店应用以及如何使用通知中心注册，并接收通知。
 
-### <a name="sample-code"></a>示例代码
+### <a name="sample-code"></a>代码示例
 
-完整的示例代码可在[通知中心示例]中找到。 它分为三个组件：
+完整的示例代码可在 [通知中心示例]中找到。 它分为三个组件：
 
 1. **EnterprisePushBackendSystem**
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 该项目使用**WindowsAzure.ServiceBus** NuGet 包，并且基于[服务总线 Pub/Sub 编程]。
+    a. 此项目使用 WindowsAzure.ServiceBus NuGet 包，并基于[服务总线 Pub/Sub 编程]构建  。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 此应用程序是一个简单的 C# 控制台应用，可模拟启动要传送到移动应用的消息的 LoB 系统。
+    b. 此应用程序是一个简单的 C# 控制台应用，可模拟启动要传送到移动应用的消息的 LoB 系统。
 
     ```csharp
     static void Main(string[] args)
@@ -106,7 +106,7 @@ ms.locfileid: "76264027"
     }
     ```
 
-    d.单击“下一步”。 `SendMessage` 用于将消息发送到此服务总线主题。 出于本示例的目的，此代码只定期向此主题发送一组随机消息。 通常会有在事件发生时发送消息的后端系统。
+    d. `SendMessage` 用于将消息发送到此服务总线主题。 出于本示例的目的，此代码只定期向此主题发送一组随机消息。 通常会有在事件发生时发送消息的后端系统。
 
     ```csharp
     public static void SendMessage(string connectionString)
@@ -140,9 +140,9 @@ ms.locfileid: "76264027"
     ```
 2. **ReceiveAndSendNotification**
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 这个项目使用*WindowsAzure.ServiceBus*和**Microsoft.Web.WebJobs.发布**NuGet包，并且基于[服务总线 Pub/Sub编程]。
+    a. 此项目使用 WindowsAzure.ServiceBus 和 Microsoft.Web.WebJobs.Publish NuGet 包，并基于[服务总线 Pub/Sub 编程]构建   。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 以下控制台应用作为 [Azure WebJob] 运行，因为它必须连续运行以侦听来自 LoB/后端系统的消息。 此应用程序是移动后端的一部分。
+    b. 以下控制台应用作为 [Azure WebJob] 运行，因为它必须连续运行以侦听来自 LoB/后端系统的消息。 此应用程序是移动后端的一部分。
 
     ```csharp
     static void Main(string[] args)
@@ -174,7 +174,7 @@ ms.locfileid: "76264027"
     }
     ```
 
-    d.单击“下一步”。 `ReceiveMessageAndSendNotification` 用于使用其订阅从主题中读取消息，如果读取成功，则会制作要使用 Azure 通知中心发送到移动应用程序的通知（在示例方案中为 Windows 本机 toast 通知）。
+    d. `ReceiveMessageAndSendNotification` 用于使用其订阅从主题中读取消息，如果读取成功，则会制作要使用 Azure 通知中心发送到移动应用程序的通知（在示例方案中为 Windows 本机 toast 通知）。
 
     ```csharp
     static void ReceiveMessageAndSendNotification(string connectionString)
@@ -226,23 +226,23 @@ ms.locfileid: "76264027"
     }
     ```
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 要将此应用发布为 WebJob，请右键单击 Visual Studio 中的解决方案，然后选择“发布为 WebJob”********
+    e. 要将此应用发布为 WebJob，请右键单击 Visual Studio 中的解决方案，然后选择“发布为 WebJob”  
 
     ![][2]
 
-    f. 选择发布配置文件并创建新的 Azure 网站（如果它尚未存在），该网站会托管此 WebJob，拥有该网站后，单击“发布”****。
+    f. 选择发布配置文件并创建新的 Azure 网站（如果它尚未存在），该网站会托管此 WebJob，拥有该网站后，单击“发布”  。
 
     ![][3]
 
-    g. 将该作业配置为“连续运行”，以便在登录到 [Azure 门户]时，可看到如下内容：
+    g. 将该作业配置为“连续运行”，以便在登录到 [Azure 门户]时应看到如下内容：
 
     ![][4]
 
 3. **EnterprisePushMobileApp**
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 此应用程序一个 Windows 应用商店应用程序，它从作为移动后端的一部分运行的 WebJob 接收 toast 通知并显示。 此代码基于[通知中心 - Windows 通用教程]构建。  
+    a. 此应用程序一个 Windows 应用商店应用程序，它从作为移动后端的一部分运行的 WebJob 接收 toast 通知并显示。 此代码基于[通知中心 - Windows 通用教程]构建。  
 
-    b.保留“数据库类型”设置，即设置为“共享”。 确保应用程序已启用接收 toast 通知。
+    b. 确保应用程序已启用接收 toast 通知。
 
     c. 确保在应用启动时（替换 `HubName` 和 `DefaultListenSharedAccessSignature` 值后）调用以下通知中心注册代码：
 
@@ -267,12 +267,12 @@ ms.locfileid: "76264027"
 ### <a name="running-the-sample"></a>运行示例
 
 1. 确保 WebJob 成功运行并且计划为“连续运行”。
-2. 运行**企业应用，** 启动 Windows 应用商店应用。
-3. 运行 EnterprisePushBackendSystem 控制台应用程序，这可模拟 LoB 后端并开始发送消息，应该出现如下图所示的 toast 通知****：
+2. 运行 **EnterprisePushMobileApp**，这可启动 Windows 应用商店应用。
+3. 运行 EnterprisePushBackendSystem 控制台应用程序，这可模拟 LoB 后端并开始发送消息，应该出现如下图所示的 toast 通知  ：
 
     ![][5]
 
-4. 这些消息最初会发送到由 Web 作业中的服务总线订阅监视的服务总线主题。 收到消息后，将创建通知并将其发送到移动应用。 转到 [Azure 门户]中 Web 作业的“日志”链接时，可以仔细查看 Web 作业日志来确认处理：
+4. 这些消息最初会发送到由 Web 作业中的服务总线订阅监视的服务总线主题。 收到消息后，将创建通知并将其发送到移动应用。 转到 [Azure 门户] 中 Web 作业的“日志”链接时，可以仔细查看 Web 作业日志来确认处理：
 
     ![][6]
 

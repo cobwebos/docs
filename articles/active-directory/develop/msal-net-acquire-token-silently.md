@@ -1,5 +1,5 @@
 ---
-title: 从缓存获取令牌 （MSAL.NET）
+title: 从缓存中获取令牌（MSAL.NET）
 titleSuffix: Microsoft identity platform
 description: 了解如何使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 以无提示方式获取访问令牌。
 services: active-directory
@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 90189a1d7fd6421b7a24940e8c6ed615fa0df6d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77084838"
 ---
 # <a name="get-a-token-from-the-token-cache-using-msalnet"></a>使用 MSAL.NET 从令牌缓存获取令牌

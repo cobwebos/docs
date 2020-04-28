@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
 ms.openlocfilehash: 496b890cc49b6b6b9f15213a48472447f801b1c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76045118"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT 设备 SDK 平台支持
@@ -30,7 +30,7 @@ Microsoft 致力于持续扩展支持 Azure IoT 中心的设备的应用领域�
 
 ## <a name="microsoft-sdks-and-device-platform-support"></a>Microsoft SDK 和设备平台支持
 
-Microsoft 在 GitHub 上发布针对以下语言的开源 SDK：C、.NET （C#）、Node.js、Java 和 Python。 本部分列出了 SDK 及其依赖项。 满足这些依赖项的任何设备平台都支持这些 SDK。
+Microsoft 在 GitHub 上发布适用于以下语言的开源 SDK：C、.NET (C#)、Node.js、Java 和 Python。 本部分列出了 SDK 及其依赖项。 满足这些依赖项的任何设备平台都支持这些 SDK。
 
 对于列出的每个 SDK，Microsoft 将会：
 
@@ -44,7 +44,7 @@ Microsoft 在 GitHub 上发布针对以下语言的开源 SDK：C、.NET （C#�
 
 [Azure IoT 中心 C 设备 SDK](https://github.com/Azure/azure-iot-sdk-c) 已使用以下配置进行测试，并支持这些配置。
 
-| OS                  | TLS 库                  | 其他需求                                                                     |
+| 操作系统                  | TLS 库                  | 其他要求                                                                     |
 |---------------------|------------------------------|---------------------------------------------------------------------------------------------|
 | Linux               | OpenSSL、WolfSSL 或 BearSSL | Berkeley 套接字</br></br>可移植操作系统接口 (POSIX)                       |
 | iOS 12.2            | OpenSSL                      | 在 OSX 10.13.4 中仿真的 XCode                                                               |
@@ -57,7 +57,7 @@ Microsoft 在 GitHub 上发布针对以下语言的开源 SDK：C、.NET （C#�
 
 [Azure IoT 中心 Python 设备 SDK](https://github.com/Azure/azure-iot-sdk-python) 已使用以下配置进行测试，并支持这些配置。
 
-| OS                  | 编译器                          |
+| 操作系统                  | 编译器                          |
 |---------------------|-----------------------------------|
 | Linux               | Python 2.7.*、3.5 或更高版本 |
 | MacOS High Sierra   | Python 2.7.*、3.5 或更高版本 |
@@ -69,7 +69,7 @@ Microsoft 在 GitHub 上发布针对以下语言的开源 SDK：C、.NET （C#�
 
 [Azure IoT 中心 .NET (C#) 设备 SDK](https://github.com/Azure/azure-iot-sdk-csharp) 已使用以下配置进行测试，并支持这些配置。
 
-| OS                                   | Standard                                                   |
+| 操作系统                                   | 标准                                                   |
 |--------------------------------------|------------------------------------------------------------|
 | Linux                                | .NET Core 2.1                                              |
 | Windows 10 桌面版和 Server SKU   | .NET Core 2.1、.NET Framework 4.5.1 或 .NET Framework 4.7 |
@@ -80,7 +80,7 @@ Microsoft 在 GitHub 上发布针对以下语言的开源 SDK：C、.NET （C#�
 
 [Azure IoT 中心 Node.js 设备 SDK](https://github.com/Azure/azure-iot-sdk-node) 已使用以下配置进行测试，并支持这些配置。
 
-| OS                  | Node 版本    |
+| 操作系统                  | Node 版本    |
 |---------------------|-----------------|
 | Linux               | LTS 和最新版 |
 | Windows 10 系列   | LTS 和最新版 |
@@ -89,7 +89,7 @@ Microsoft 在 GitHub 上发布针对以下语言的开源 SDK：C、.NET （C#�
 
 [Azure IoT 中心 Java 设备 SDK](https://github.com/Azure/azure-iot-sdk-java) 已使用以下配置进行测试，并支持这些配置。
 
-| OS                     | Java 版本 |
+| 操作系统                     | Java 版本 |
 |------------------------|--------------|
 | Android API 28         | Java 8       |
 | Linux x64             | Java 8       |
@@ -99,7 +99,7 @@ Microsoft 在 GitHub 上发布针对以下语言的开源 SDK：C、.NET （C#�
 
 Microsoft 与各行业的合作伙伴合作，为多种微处理器体系结构提供开发工具包。 这些合作伙伴已将 Azure IoT C SDK 移植到其平台。 合作伙伴创建并维护 SDK 的平台抽象层 (PAL)。 Microsoft 与以下合作伙伴合作提供扩展支持。
 
-| Partner             | 设备                            | 链接                     | 支持 |
+| 合作伙伴             | 设备                            | 链接                     | 支持 |
 |---------------------|------------------------------------|--------------------------|---------|
 | Espressif           | ESP32 <br/> ESP8266                              | [Esp-azure](https://github.com/espressif/esp-azure)                | [GitHub](https://github.com/espressif/esp-azure)  
 | Qualcomm            | Qualcomm MDM9206 LTE IoT 调制解调器     | [Qualcomm LTE for IoT SDK](https://developer.qualcomm.com/software/lte-iot-sdk)（用于 IoT SDK 的 Qualcomm LTE） | [论坛](https://developer.qualcomm.com/forums/software/lte-iot-sdk)   |
@@ -116,7 +116,7 @@ Microsoft 与许多合作伙伴合作，通过 Azure IoT 测试和认证的设�
 
 * 若要浏览 Azure IoT 认证的设备，请参阅 [Microsoft Azure IoT 认证设备目录](https://catalog.azureiotsolutions.com/)。
 
-* 要了解有关 Azure 认证 IoT 生态系统的更多详细信息，请参阅[加入 IoT 认证生态系统](https://catalog.azureiotsolutions.com/register)。
+* 若要了解有关 Azure IoT 认证生态系统的详细信息，请参阅[加入 IoT 认证生态系统](https://catalog.azureiotsolutions.com/register)。
 
 ## <a name="connecting-to-iot-hub-without-an-sdk"></a>在不使用 SDK 的情况下连接到 IoT 中心
 

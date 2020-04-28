@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 955e13b88037aa42b59707698549b1c980720990
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76840598"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>使用 Power BI 可视化网络安全组流日志
@@ -44,7 +44,7 @@ ms.locfileid: "76840598"
 
 ## <a name="setup"></a>设置
 
-在开始之前，必须在帐户中的一个或多个网络安全组上启用网络安全组流日志记录。 有关启用网络安全流日志的说明，请参阅以下文章：[Introduction to flow logging for Network Security Groups](network-watcher-nsg-flow-logging-overview.md)（网络安全组流日志记录简介）。
+在开始之前，必须在帐户中的一个或多个网络安全组上启用网络安全组流日志记录。 有关如何启用网络安全流日志的说明，请参阅以下文章：[Introduction to flow logging for Network Security Groups](network-watcher-nsg-flow-logging-overview.md)（网络安全组流日志记录简介）。
 
 此外，必须在计算机上安装 Power BI Desktop 客户端，并在计算机上提供足够的可用空间用于下载和加载存储帐户中的日志数据。
 
@@ -59,7 +59,7 @@ ms.locfileid: "76840598"
 
       ![Power BI 主界面][2]
 
-1. 输入存储帐户的访问密钥。 在 Azure 门户中导航到存储帐户，并从“设置”菜单中选择“访问密钥”，即可找到有效的访问密钥。**** 单击“连接”，并应用更改。****
+1. 输入存储帐户的访问密钥。 在 Azure 门户中导航到存储帐户，并从“设置”菜单中选择“访问密钥”，即可找到有效的访问密钥。  单击“连接”，并应用更改。 
 
     ![访问密钥][3]
 
@@ -103,13 +103,13 @@ ms.locfileid: "76840598"
 
 ![slicers][13]
 
-## <a name="conclusion"></a>结束语
+## <a name="conclusion"></a>结论
 
 本方案表明，我们可以使用网络观察程序和 Power BI 提供的网络安全组流日志来可视化和了解流量。 使用提供的模板，Power BI 可以直接从存储中下载日志并在本地对其进行处理。 加载模板所需的时间根据请求的文件数和下载文件的大小而异。
 
 可以根据需要任意自定义此模板。 在 Power BI 中使用网络安全组流日志的方式多种多样。 
 
-## <a name="notes"></a>说明
+## <a name="notes"></a>注释
 
 * 日志默认存储在 `https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/` 中
 

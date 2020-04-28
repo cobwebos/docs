@@ -1,5 +1,5 @@
 ---
-title: 适用于 iOS & macOS 差异的 MSAL |蔚蓝
+title: MSAL for iOS & macOS 差异 |Microsoft
 titleSuffix: Microsoft identity platform
 description: 介绍 iOS 与 macOS 之间的 Microsoft 身份验证库 (MSAL) 使用差异。
 services: active-directory
@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: 62b79ee7398286b8e6c8ed8612bd001595e1f6ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77084976"
 ---
 # <a name="microsoft-authentication-library-for-ios-and-macos-differences"></a>适用于 iOS 的 Microsoft 身份验证库和适用于 macOS 的 Microsoft 身份验证库的差异
@@ -40,9 +40,9 @@ ms.locfileid: "77084976"
 
 在 macOS 10.15+ 中，MSAL 的行为在 iOS 和 macOS 之间是相同的。 MSAL 使用[密钥链访问组](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc)进行密钥链共享。 
 
-### <a name="conditional-access-authentication-differences"></a>条件访问身份验证差异
+### <a name="conditional-access-authentication-differences"></a>条件性访问身份验证差异
 
-对于条件访问方案，当您将 MSAL 用于 iOS 时，用户提示将会减少。 这是因为 iOS 使用代理应用程序（Microsoft 身份验证器），这在某些情况下无需提示用户。
+对于条件访问方案，使用适用于 iOS 的 MSAL 时，用户将会出现更少的提示。 这是因为，iOS 使用 broker 应用（Microsoft Authenticator），这在某些情况下不再需要提示用户。
 
 ### <a name="project-setup-differences"></a>项目设置差异
 

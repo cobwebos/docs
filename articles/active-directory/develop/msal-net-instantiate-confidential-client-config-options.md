@@ -1,5 +1,5 @@
 ---
-title: 实例化机密客户端应用 （MSAL.NET） |蔚蓝
+title: 实例化机密客户端应用（MSAL.NET） |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何通过适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 使用配置选项实例化机密客户端应用程序。
 services: active-directory
@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 1a520c5a1002e401f880fba84f8fc02a0a678133
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77084734"
 ---
 # <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>通过 MSAL.NET 使用配置选项实例化机密客户端应用程序
@@ -28,9 +28,9 @@ ms.locfileid: "77084734"
 
 - 客户端 ID（表示 GUID 的字符串）
 - 标识提供者 URL（为实例命名）和应用程序的登录受众。 这两个参数统称为颁发机构。
-- 租户 ID：如果你编写的业务线应用程序（也称为单租户应用程序）专用于自己的组织。
+- 如果你仅在为组织编写业务线应用程序（也称为单租户应用程序），则为租户 ID。
 - 应用程序机密（客户端机密字符串）；对于机密客户端应用，需要获取证书（类型为 X509Certificate2）。
-- 对于 Web 应用或者公共客户端应用（特别是当你的应用需要使用中转站时），还将需要设置 redirectUri，标识提供者将在其中使用安全令牌联系你的应用程序。
+- 对于 Web 应用，有时对于公共客户端应用（特别是当你的应用需要使用中转站时），还将需要设置 redirectUri，标识提供者将在其中使用安全令牌联系你的应用程序。
 
 ## <a name="configure-the-application-from-the-config-file"></a>根据配置文件配置应用程序
 MSAL.NET 中选项的属性名称与 ASP.NET Core 中 `AzureADOptions` 的属性名称匹配，因此不需编写任何粘附代码。
@@ -60,7 +60,7 @@ MSAL.NET 中选项的属性名称与 ASP.NET Core 中 `AzureADOptions` 的属性
 
 从 MSAL.NET v3.x 开始，可以根据配置文件配置机密客户端应用程序。
 
-在需要配置和实例化应用程序的类中，需声明 `ConfidentialClientApplicationOptions` 对象。  使用 [Microsoft.Extensions.Configuration.Binder nuget 包](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder) 中的 `IConfigurationRoot.Bind()` 方法，将从源读取的配置（包括 appconfig.json 文件）绑定到应用程序选项的实例：
+在需要配置和实例化应用程序的类中，需声明 `ConfidentialClientApplicationOptions` 对象。  使用 `IConfigurationRoot.Bind()`Microsoft.Extensions.Configuration.Binder nuget 包[ 中的 ](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder) 方法，将从源读取的配置（包括 appconfig.json 文件）绑定到应用程序选项的实例：
 
 ```csharp
 using Microsoft.Identity.Client;

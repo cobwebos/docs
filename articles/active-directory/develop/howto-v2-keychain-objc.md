@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: d94bf7ffe955c9ec9ee2a2e7f7c4dbaaa28df270
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77085861"
 ---
 # <a name="configure-keychain"></a>配置密钥链
@@ -32,7 +32,7 @@ ms.locfileid: "77085861"
 
 iOS 上的 MSAL 默认使用 `com.microsoft.adalcache` 访问组。 它是 MSAL 和 Azure AD 身份验证库 (ADAL) SDK 使用的共享访问组，可确保在同一家发行商的多个应用之间提供最佳单一登录 (SSO) 体验。
 
-在 iOS 上`com.microsoft.adalcache`，在 **"项目设置** > **功能** > **钥匙串共享**"下的 XCode 中将钥匙串组添加到应用的权利
+在 iOS 上，请在 XCode 中的“Project settings”（项目设置）`com.microsoft.adalcache`“Capabilities”（功能） **“Keychain sharing”（密钥链共享）下，将**  密钥链组添加到应用的权利中 >    >  
 
 ### <a name="macos"></a>macOS
 
@@ -46,7 +46,7 @@ macOS 上的 MSAL 默认使用 `com.microsoft.identity.universalstorage` 访问�
 
 若要使用不同的密钥链访问组，可以在创建 `MSALPublicClientApplicationConfig` 时传递自定义组，然后再创建 `MSALPublicClientApplication`，如下所示：
 
-# <a name="objective-c"></a>[目标C](#tab/objc)
+# <a name="objective-c"></a>[Objective-C](#tab/objc)
 
 ```objc
 MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"your-client-id"
@@ -62,7 +62,7 @@ MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] 
 // and only shared with other applications declaring the same access group
 ```
 
-# <a name="swift"></a>[迅速](#tab/swift)
+# <a name="swift"></a>[Swift](#tab/swift)
 
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "your-client-id",
@@ -84,13 +84,13 @@ do {
 
 如果你不想要在多个应用之间共享 SSO 状态，或不想使用任何密钥链访问组，请通过传递应用程序捆绑 ID 作为 keychainGroup，来禁用密钥链共享：
 
-# <a name="objective-c"></a>[目标C](#tab/objc)
+# <a name="objective-c"></a>[Objective-C](#tab/objc)
 
 ```objc
 config.cacheConfig.keychainSharingGroup = [[NSBundle mainBundle] bundleIdentifier];
 ```
 
-# <a name="swift"></a>[迅速](#tab/swift)
+# <a name="swift"></a>[Swift](#tab/swift)
 
 ```swift
 if let bundleIdentifier = Bundle.main.bundleIdentifier {

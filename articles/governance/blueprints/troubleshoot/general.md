@@ -1,13 +1,13 @@
 ---
 title: 排查常见错误
-description: 了解如何解决创建、分配和删除蓝图（如策略违规和蓝图参数函数）的问题。
+description: 了解如何排查创建、分配和删除蓝图等问题，例如，策略违规和蓝图参数函数。
 ms.date: 01/15/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: 7306e344a479008a87164a954c4444d375950b0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76157077"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>排查使用 Azure 蓝图时出现的错误
@@ -18,11 +18,11 @@ ms.locfileid: "76157077"
 
 将蓝图分配到作用域是许多错误产生的原因。 分配失败时，蓝图会提供失败部署的详细信息。 此信息会指出存在的问题，以便可以修复问题并确保后续部署成功进行。
 
-1. 在左侧窗格中，选择“所有服务”****。 搜索并选择“蓝图”****。
+1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”  。
 
-1. 从左侧的页面选择 **"已分配的蓝图**"，并使用搜索框筛选蓝图分配以查找失败的分配。 还可以按“预配状态”列对分配表进行排序，集中查看失败的分配项****。
+1. 从左侧页面中选择 "**分配的蓝图**"，然后使用 "搜索" 框筛选蓝图分配，查找失败的分配。 还可以按“预配状态”列对分配表进行排序，集中查看失败的分配项****。
 
-1. 左键单击具有 _"失败"_ 状态的蓝图或右键单击并选择 **"查看分配详细信息**"。
+1. 左键单击状态为 "_失败_" 的蓝图，或右键单击并选择 "**查看分配详细信息**"。
 
 1. 蓝图分配页面顶部有一个红色横幅警告，指出此分配已失败。 单击横幅任意位置可获取更多详细信息。
 
@@ -47,7 +47,7 @@ ms.locfileid: "76157077"
 
 更改蓝图，使其不与错误详细信息中的策略冲突。 如果无法进行此更改，替代方法是更改策略分配的作用域，以使蓝图不再与策略冲突。
 
-### <a name="scenario-blueprint-parameter-is-a-function"></a><a name="escape-function-parameter"></a>方案：蓝图参数是函数
+### <a name="scenario-blueprint-parameter-is-a-function"></a><a name="escape-function-parameter"></a>方案：蓝图参数是一个函数
 
 #### <a name="issue"></a>问题
 
@@ -67,20 +67,20 @@ ms.locfileid: "76157077"
 
 #### <a name="issue"></a>问题
 
-删除蓝图分配未完成。
+无法完成蓝图分配的删除。
 
 #### <a name="cause"></a>原因
 
-删除时，蓝图分配可能会陷入非终端状态。 当由蓝图分配创建的资源仍然等待删除或未将状态代码返回到 Azure 蓝图时，将造成此状态。
+删除时，蓝图分配可能会停滞为非终止状态。 如果蓝图分配创建的资源仍处于挂起状态，或者不会将状态代码返回到 Azure 蓝图，则会导致此状态。
 
 #### <a name="resolution"></a>解决方法
 
-处于非终端状态的蓝图分配在_6 小时_超时后自动标记为 **"失败**"。 超时调整蓝图分配状态后，可以重试删除。
+在_6 小时_超时后，非终端状态的蓝图分配自动标记为 "**失败**"。 超时调整了蓝图分配的状态后，可以重试删除。
 
 ## <a name="next-steps"></a>后续步骤
 
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
-- 通过[Azure 论坛](https://azure.microsoft.com/support/forums/)从 Azure 专家那里获得答案。
-- 与[@AzureSupport](https://twitter.com/azuresupport)— 正式的 Microsoft Azure 帐户连接，通过将 Azure 社区连接到正确的资源（答案、支持和专家），从而改善客户体验。
-- 如需更多帮助，可以提交 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **"获取支持**"。
+- 通过[Azure 论坛](https://azure.microsoft.com/support/forums/)获取 azure 专家的解答。
+- 联系[@AzureSupport](https://twitter.com/azuresupport) –官方 Microsoft Azure 帐户，通过将 Azure 社区连接到适当的资源来改进客户体验：答案、支持和专家。
+- 如需更多帮助，可以提交 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 "**获取支持**"。

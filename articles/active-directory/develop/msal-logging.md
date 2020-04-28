@@ -1,5 +1,5 @@
 ---
-title: 登录 MSAL 应用 |蔚蓝
+title: MSAL 应用中的日志记录 |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何在 Microsoft 身份验证库 (MSAL) 应用程序中进行日志记录。
 services: active-directory
@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 58697cc535357710c6889f05060b5e04e129ae7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77084895"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL 应用程序中的日志记录
@@ -28,10 +28,10 @@ ms.locfileid: "77084895"
 
 MSAL 提供多个日志记录详细级别：
 
-- 错误：指示出现问题并生成错误。 用于调试并确定问题。
-- 警告： 不一定存在错误或故障，但用于诊断和查明问题。
-- 信息：MSAL 将记录用于信息目的的事件，而不需要用于调试。
-- 详细：默认值。 MSAL 将记录库行为的完整详细信息。
+- 错误：指示出现问题并已生成错误。 用于调试并确定问题。
+- 警告：不一定会出现错误或故障，只是为了诊断和指出问题。
+- 信息：MSAL 将要记录的事件可为用户提供信息，不一定用于调试。
+- 详细：默认。 MSAL 将记录库行为的完整详细信息。
 
 ## <a name="personal-and-organizational-data"></a>个人和组织数据
 
@@ -48,7 +48,7 @@ MSAL 提供多个日志记录详细级别：
 
 在 MSAL 3.x 中，日志记录是在创建应用时使用 `.WithLogging` 生成器修饰符按应用程序设置的。 该方法采用以下可选参数：
 
-- `Level` 用于确定所需的日志记录级别。 将其设置为“Errors”时，就只会获得错误
+- `Level` 用于确定你需要哪种级别的日志记录。 将其设置为“Errors”时，就只会获得错误
 - `PiiLoggingEnabled` 在设置为 true 的情况下可以记录个人和组织数据。 默认情况下，此项设置为 false，不允许应用程序记录个人数据。
 - `LogCallback` 设置为一个执行日志记录的委托。 如果 `PiiLoggingEnabled` 为 true，则此方法会接收消息两次：第一次时 `containsPii` 参数为 false，消息没有个人数据；第二次时 `containsPii` 参数为 true，消息可能包含个人数据。 在某些情况下（消息不含个人数据），消息是相同的。
 - `DefaultLoggingEnabled` 为平台启用默认日志记录。 默认为 false。 如果将它设置为 true，它会在桌面/UWP 应用程序中使用事件跟踪，在 iOS 上使用 NSLog，在 Android 上使用 logcat。
@@ -124,7 +124,7 @@ Logger.getInstance().setEnablePII(false);
 Logger.getInstance().setEnableLogcatLog(true);
 ```
 
-## <a name="javascript"></a>[Javascript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
  可以在 MSAL.js (JavaScript) 中启用日志记录，方法是在配置过程中传递一个记录器对象，以便创建 `UserAgentApplication` 实例。 此记录器对象具有以下属性：
 
@@ -156,7 +156,7 @@ var msalConfig = {
 var UserAgentApplication = new Msal.UserAgentApplication(msalConfig);
 ```
 
-## <a name="objective-c"></a>[目标C](#tab/objc)
+## <a name="objective-c"></a>[Objective-C](#tab/objc)
 
 ## <a name="msal-for-ios-and-macos-logging-objc"></a>适用于 iOS 和 macOS 的 MSAL 日志记录 - ObjC
 
@@ -210,7 +210,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = NO;
 
 若要在使用适用于 iOS 和 macOS 的 MSAL 进行日志记录时设置日志记录级别，请使用以下值之一：
 
-|级别  |描述 |
+|Level  |说明 |
 |---------|---------|
 | `MSALLogLevelNothing`| 禁用所有日志记录 |
 | `MSALLogLevelError` | 默认级别，仅在发生错误时输出信息 |
@@ -234,7 +234,7 @@ MSAL 日志消息的消息部分采用 `TID = <thread_id> MSAL <sdk_ver> <OS> <O
 
 提供关联 ID 和时间戳有助于跟踪问题。 时间戳和关联 ID 信息在日志消息中提供。 只能从 MSAL 日志记录消息中可靠地检索这些信息。
 
-## <a name="swift"></a>[迅速](#tab/swift)
+## <a name="swift"></a>[Swift](#tab/swift)
 
 ## <a name="msal-for-ios-and-macos-logging-swift"></a>适用于 iOS 和 macOS 的 MSAL 日志记录 - Swift
 
@@ -287,7 +287,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = false
 
 若要在使用适用于 iOS 和 macOS 的 MSAL 进行日志记录时设置日志记录级别，请使用以下值之一：
 
-|级别  |描述 |
+|Level  |说明 |
 |---------|---------|
 | `MSALLogLevelNothing`| 禁用所有日志记录 |
 | `MSALLogLevelError` | 默认级别，仅在发生错误时输出信息 |

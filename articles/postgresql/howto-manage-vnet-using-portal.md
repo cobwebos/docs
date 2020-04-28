@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 413c3a7b6fdcda996d3db548fb53f358eb8c71e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75978281"
 ---
 # <a name="create-and-manage-vnet-service-endpoints-and-vnet-rules-in-azure-database-for-postgresql---single-server-by-using-the-azure-portal"></a>使用 Azure 门户在 Azure Database for PostgreSQL（单一服务器）中创建并管理 VNet 服务终结点和 VNet 规则
@@ -23,18 +23,18 @@ ms.locfileid: "75978281"
 
 ## <a name="create-a-vnet-rule-and-enable-service-endpoints-in-the-azure-portal"></a>在 Azure 门户中创建 VNet 规则和启用服务终结点
 
-1. 在 PostgreSQL 服务器页上的“设置”标题下，单击“连接安全性”****，打开 Azure Database for PostgreSQL 的“连接安全性”窗格。 
+1. 在 PostgreSQL 服务器页上的“设置”标题下，单击“连接安全性”  ，打开 Azure Database for PostgreSQL 的“连接安全性”窗格。 
 
-2. 确保将“允许访问 Azure 服务”控件设置为“关闭”。****
+2. 确保将“允许访问 Azure 服务”控件设置为“关闭”。 
 
 > [!Important]
-> 如果将此控件设置为“启用”，则 Azure PostgreSQL 数据库服务器接受来自任何子网的通信。 从安全角度来看，将此控件设置为“启用”可能会导致过度访问。 Microsoft Azure 虚拟网络服务终结点功能与 PostgreSQL Azure 数据库的虚拟网络规则功能协调，可共同减少安全表面积。
+> 如果将此控件设置为“启用”，则 Azure PostgreSQL 数据库服务器接受来自任何子网的通信。 从安全角度来看，将此控件设置为“启用”可能会导致过度访问。 "Microsoft Azure 虚拟网络服务终结点" 功能与 Azure Database for PostgreSQL 的虚拟网络规则功能一起，共同降低了安全面。
 
-3. 接下来，单击“+ 添加现有虚拟网络”****。 若无现有 VNet，可以单击“+ 新建虚拟网络”**** 来创建一个。 请参阅[快速入门：使用 Azure 门户创建虚拟网络](../virtual-network/quick-create-portal.md)
+3. 接下来，单击“+ 添加现有虚拟网络”  。 若无现有 VNet，可以单击“+ 新建虚拟网络”  来创建一个。 请参阅[快速入门：使用 Azure 门户创建虚拟网络](../virtual-network/quick-create-portal.md)
 
    ![Azure 门户 - 单击“连接安全性”](./media/howto-manage-vnet-using-portal/1-connection-security.png)
 
-4. 输入 VNet 规则名称，选择订阅、虚拟网络和子网名称，再单击“启用”****。 这会使用 Microsoft.SQL**** 服务标记自动对子网启用 VNet 服务终结点。
+4. 输入 VNet 规则名称，选择订阅、虚拟网络和子网名称，再单击“启用”  。 这会使用 Microsoft.SQL  服务标记自动对子网启用 VNet 服务终结点。
 
    ![Azure 门户 - 配置 VNet](./media/howto-manage-vnet-using-portal/2-configure-vnet.png)
 
@@ -49,16 +49,16 @@ ms.locfileid: "75978281"
     VNet 和 Azure 服务资源可以位于相同或不同的订阅中。 如果 VNet 和 Azure 服务资源位于不同的订阅中，资源应在相同的 Active Directory (AD) 租户下。 确保两个订阅都注册了 **Microsoft.Sql** 资源提供程序。 有关详细信息，请参阅[资源管理器注册][resource-manager-portal]
 
    > [!IMPORTANT]
-   > 强烈建议在配置服务终结点前，先阅读本文介绍的服务终结点配置和注意事项。 **虚拟网络服务终结点：**[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)是属性值包含一个或多个正式 Azure 服务类型名称的子网。 VNet 服务终结点使用服务类型名称 Microsoft.Sql****，可引用名为“SQL 数据库”的 Azure 服务。 此服务标记也适用于 Azure SQL 数据库、Azure Database for PostgreSQL 和 MySQL 服务。 请务必要注意，对 VNet 服务终结点应用 Microsoft.Sql**** 服务标记时，它会为所有 Azure 数据库服务配置服务终结点流量，其中包括 Azure SQL 数据库、Azure Database for PostgreSQL 和子网上的 Azure Database for MySQL 服务器。 
+   > 强烈建议在配置服务终结点前，先阅读本文介绍的服务终结点配置和注意事项。 虚拟网络服务终结点  ：[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 VNet 服务终结点使用服务类型名称 Microsoft.Sql  ，可引用名为“SQL 数据库”的 Azure 服务。 此服务标记也适用于 Azure SQL 数据库、Azure Database for PostgreSQL 和 MySQL 服务。 请务必要注意，对 VNet 服务终结点应用 Microsoft.Sql  服务标记时，它会为所有 Azure 数据库服务配置服务终结点流量，其中包括 Azure SQL 数据库、Azure Database for PostgreSQL 和子网上的 Azure Database for MySQL 服务器。 
    > 
 
-5. 启用后，单击“确定”**** 即可看到 VNet 服务终结点与 VNet 规则一起启用。
+5. 启用后，单击“确定”  即可看到 VNet 服务终结点与 VNet 规则一起启用。
 
    ![VNet 服务终结点已启用，且 VNet 规则已创建](./media/howto-manage-vnet-using-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png)
 
 ## <a name="next-steps"></a>后续步骤
 - 同样，可以将脚本编写为[使用 Azure CLI 为 Azure Database for PostgreSQL 启用 VNet 服务终结点和创建 VNET 规则](howto-manage-vnet-using-cli.md)。
-- 有关连接到 PostgreSQL 服务器的 Azure 数据库的帮助，请参阅[PostgreSQL Azure 数据库的连接库](./concepts-connection-libraries.md)
+- 有关连接到 Azure Database for PostgreSQL 服务器的帮助，请参阅 [Azure Database for PostgreSQL 的连接库](./concepts-connection-libraries.md)
 
 <!-- Link references, to text, Within this same GitHub repo. --> 
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

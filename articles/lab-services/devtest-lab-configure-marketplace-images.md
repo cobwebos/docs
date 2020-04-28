@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 2dc3aa000cefc0e65305b58f8fdce93b94bfd35f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76169551"
 ---
 # <a name="configure-azure-marketplace-image-settings-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中配置 Azure 市场映像设置
 开发测试实验室支持基于 Azure 市场映像创建 VM，具体取决于配置的 Azure 市场映像在实验室中的使用方式。 本文演示如何指定在实验室中创建 VM 时可使用哪些 Azure 市场映像（如果有的话）。 这可确保团队仅有权访问所需的市场映像。 
 
 ## <a name="select-which-azure-marketplace-images-are-allowed-when-creating-a-vm"></a>选择允许使用的 Azure 市场映像（创建 VM 时）
-1. 登录到 Azure[门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 2. 选择“所有服务”****，并从列表中选择“开发测试实验室”****。
 3. 从实验室列表，选择所需的实验室。 
-4. 在实验室的边栏选项卡上，选择 **"配置"和"策略**"。
+4. 在实验室的边栏选项卡中，选择 "**配置和策略**"。
 5. 在实验室的“配置和策略”**** 边栏选项卡上，选择“虚拟机基础映像”**** 下的“市场映像”****。
 6. 指定是否希望所有限定的 Azure 市场映像可用作新 VM 的基础。 如果选择“是”****，则在实验室中允许符合以下所有条件的所有 Azure 市场映像：
    

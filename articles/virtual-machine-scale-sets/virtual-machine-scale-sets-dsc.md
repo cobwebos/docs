@@ -1,6 +1,6 @@
 ---
-title: 将所需状态配置与虚拟机缩放集一起使用
-description: 使用具有 Azure 所需状态配置扩展的虚拟机缩放集来配置虚拟机。
+title: 将 Desired State Configuration 与虚拟机规模集配合使用
+description: 将虚拟机规模集与 Azure Desired State Configuration 扩展配合使用来配置虚拟机。
 author: zjalexander
 tags: azure-service-management,azure-resource-manager
 ms.assetid: c8f047b5-0e6c-4ef3-8a47-f1b284d32942
@@ -10,14 +10,14 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 04/05/2017
 ms.author: zachal
 ms.openlocfilehash: a93a8a9c27be5a1736a50e6c4c4b830980b7d974
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76278076"
 ---
 # <a name="using-virtual-machine-scale-sets-with-the-azure-dsc-extension"></a>将虚拟机规模集与 Azure DSC 扩展配合使用
-[虚拟机规模集](virtual-machine-scale-sets-overview.md)可与 [Azure 期望状态配置 (DSC)](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 扩展处理程序配合使用。 虚拟机规模集提供部署和管理大量虚拟机的方法，并且可根据负载情况实现弹性扩大和缩小。 VM 联机时，DSC 用于配置 VM，使它们能够运行生产软件。
+[虚拟机规模集](virtual-machine-scale-sets-overview.md)可与 [Azure 期望状态配置 (DSC)](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 扩展处理程序配合使用。 虚拟机规模集提供部署和管理大量虚拟机的方法，并且可根据负载情况实现弹性横向缩减和扩展。 VM 联机时，DSC 用于配置 VM，使它们能够运行生产软件。
 
 ## <a name="differences-between-deploying-to-virtual-machines-and-virtual-machine-scale-sets"></a>部署到虚拟机和部署到虚拟机规模集之间的区别
 虚拟机规模集的基础模板结构与单一 VM 略有不同。 具体而言，单一 VM 是在“virtualMachines”节点下扩展部署。 其中有一个 "type": "extensions" 条目，用于将 DSC 添加到模板中

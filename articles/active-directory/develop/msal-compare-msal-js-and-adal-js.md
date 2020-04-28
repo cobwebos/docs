@@ -14,10 +14,10 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 7238a78279528b4522d09178d00bf916f14bad88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76696412"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>MSAL JS 与 ADAL JS 的差异
@@ -48,7 +48,7 @@ ms.locfileid: "76696412"
 
 在 v1.0 中，使用 `https://login.microsoftonline.com/common` 颁发机构可让用户使用任何 Azure AD 帐户（适用于任何组织）登录。
 
-在 v2.0 中，使用 `https://login.microsoftonline.com/common` 颁发机构可让用户使用任何 Azure AD 组织帐户或 Microsoft 个人帐户 (MSA) 登录。 若要限制为只能登录到 Azure AD 帐户（与 ADAL.js 中的行为类似），需要使用 `https://login.microsoftonline.com/organizations`。 有关详细信息，请参阅[使用 MSAL.js 初始化](msal-js-initializing-client-applications.md)中的 `authority` 配置选项。
+在 v2.0 中，使用 `https://login.microsoftonline.com/common` 颁发机构可让用户使用任何 Azure AD 组织帐户或 Microsoft 个人帐户 (MSA) 登录。 若要限制为只能登录到 Azure AD 帐户（与 ADAL.js 中的行为类似），需要使用 `https://login.microsoftonline.com/organizations`。 有关详细信息，请参阅`authority`使用 MSAL.js 初始化[中的 ](msal-js-initializing-client-applications.md) 配置选项。
 
 ### <a name="scopes-for-acquiring-tokens"></a>用于获取令牌的范围
 * 身份验证请求中用于获取令牌的范围而不是资源参数
@@ -61,7 +61,7 @@ ms.locfileid: "76696412"
 
     可以使用 API 的 URI 按“应用 ID URI/范围”格式请求任何资源 API 的范围。例如：https:\//mytenant.onmicrosoft.com/myapi/api.read
 
-    仅适用于 MS 图形 API，范围值`user.read`映射到 https：/graph.microsoft.com/User.Read，\/可以互换使用。
+    仅对于 MS 图形 API，范围值`user.read`映射到 https：\//graph.microsoft.com/User.Read，可互换使用。
 
     ```javascript
     var request = {

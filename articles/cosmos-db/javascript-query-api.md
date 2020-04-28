@@ -8,10 +8,10 @@ ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
 ms.openlocfilehash: 7b7ad470b3330224e80a7160fc1a37bb5ee1cde8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76901834"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 JavaScript 查询 API
@@ -20,7 +20,7 @@ ms.locfileid: "76901834"
 
 ## <a name="supported-javascript-functions"></a>支持的 JavaScript 函数
 
-| **函数** | **说明** |
+| **Function** | **说明** |
 |---------|---------|
 |`chain() ... .value([callback] [, options])`|发起一个必须用 value() 终止的连锁调用。|
 |`filter(predicateFunction [, options] [, callback])`|使用返回 true/false 的谓词函数对输入进行筛选，以便将输入文档筛选出或筛选到结果集。 此函数与 SQL 中的 WHERE 子句行为相似。|
@@ -33,7 +33,7 @@ ms.locfileid: "76901834"
 
 当其中包含谓词和/或选择器函数时，以下 JavaScript 构造将自动优化以在 Azure Cosmos DB 索引上直接运行：
 
-- 简单运算符`=``+``-``*`： `/` `%` `|` `^` `&` `==` `!=` `===` `!===` `<` `>` `<=` `>=` `||` `&&` `<<` `>>` `>>>!``~`
+- 简单运算符：`=` `+` `-` `*` `/` `%` `|` `^` `&` `==` `!=` `===` `!===` `<` `>` `<=` `>=` `||` `&&` `<<` `>>` `>>>!` `~`
 - 文本（包括对象文本）：{}
 - var, return
 

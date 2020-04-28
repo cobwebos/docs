@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中的租户之间共享库图像
+title: 跨 Azure 中的租户共享库映像
 description: 了解如何使用共享映像库跨 Azure 租户共享 VM 映像。
 author: cynthn
 ms.service: virtual-machine-scale-sets
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: cynthn
 ms.openlocfilehash: a29999102ad8a10d8965145b31a7d804675e0e57
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76276341"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>跨 Azure 租户共享库 VM 映像

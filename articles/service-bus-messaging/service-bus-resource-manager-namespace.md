@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/21/2019
 ms.author: spelluru
 ms.openlocfilehash: 5febdd63ab6f854ca3244f8449f6f715a75e735f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76264469"
 ---
 # <a name="create-a-service-bus-namespace-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建服务总线命名空间
@@ -34,11 +34,11 @@ ms.locfileid: "76264469"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-如果没有 Azure 订阅，请先[创建一个免费帐户](https://azure.microsoft.com/free/)。"
+如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="create-a-service-bus-namespace"></a>创建服务总线命名空间
 
-在本快速入门中，使用 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/)中的[现有资源管理器模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-servicebus-create-namespace/azuredeploy.json)：
+在本快速入门中，使用 [Azure 快速启动模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-servicebus-create-namespace/azuredeploy.json)中的[现有资源管理器模板](https://azure.microsoft.com/resources/templates/)：
 
 [!code-json[create-azure-service-bus-namespace](~/quickstart-templates/101-servicebus-create-namespace/azuredeploy.json)]
 
@@ -62,8 +62,8 @@ ms.locfileid: "76264469"
 
     资源组名称是追加了 **rg** 的服务总线命名空间名称。
 
-2. 选择“复制”以复制 PowerShell 脚本。****
-3. 右键单击 shell 控制台并选择“粘贴”****。
+2. 选择“复制”以复制 PowerShell 脚本。 
+3. 右键单击 shell 控制台并选择“粘贴”  。
 
 创建事件中心需要花费片刻时间。
 
@@ -82,9 +82,9 @@ Write-Host "Press [ENTER] to continue ..."
 
 在本教程中，请使用 Azure PowerShell 来部署模板。 如需其他模板部署方法，请参阅：
 
-* [通过使用 Azure 门户](../azure-resource-manager/templates/deploy-portal.md)。
-* [通过使用 Azure CLI](../azure-resource-manager/templates/deploy-cli.md)。
-* [通过使用 REST API](../azure-resource-manager/templates/deploy-rest.md)。
+* [使用 Azure 门户](../azure-resource-manager/templates/deploy-portal.md)。
+* [使用 Azure CLI](../azure-resource-manager/templates/deploy-cli.md)。
+* [使用 REST API](../azure-resource-manager/templates/deploy-rest.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

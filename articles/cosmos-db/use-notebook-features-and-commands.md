@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: dech
 ms.openlocfilehash: 61d46bbf0ccdeb5cd2e95e36e19f1aa81cfeeb48
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76513393"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-preview"></a>在 Azure Cosmos DB 中使用内置笔记本命令和功能（预览版）
@@ -20,7 +20,7 @@ Azure Cosmos DB 中的内置 Jupyter 笔记本使你可以从 Azure 门户分析
 ## <a name="install-a-new-package"></a>安装新包
 为 Azure Cosmos 帐户启用笔记本支持后，可以打开新的笔记本并安装包。
 
-在新的代码单元中，插入并运行以下代码，将 ``PackageToBeInstalled`` 替换为所需的 Python 包。
+在新的代码单元中，插入并运行以下代码，并``PackageToBeInstalled``将替换为所需的 Python 包。
 ```python
 import sys
 !{sys.executable} -m pip install PackageToBeInstalled –user
@@ -32,14 +32,14 @@ import sys
 
 ## <a name="run-a-sql-query"></a>运行 SQL 查询
 
-可以使用 ``%%sql`` 幻命令针对帐户中的任何容器运行[SQL 查询](sql-query-getting-started.md)。 使用语法：
+可以使用``%%sql``神奇命令针对帐户中的任何容器运行[SQL 查询](sql-query-getting-started.md)。 使用语法：
 
 ```bash
 %%sql --database {database_id} --container {container_id}
 {Query text}
 ```
 
-- 将 ``{database_id}`` 和 ``{container_id}`` 替换为你的 Cosmos 帐户中的数据库和容器的名称。 如果未提供 ``--database`` 和 ``--container`` 参数，则将在[默认数据库和容器](#set-default-database-for-queries)上执行查询。
+- 将``{database_id}``和``{container_id}``替换为你的 Cosmos 帐户中的数据库和容器的名称。 如果未``--database``提供``--container``和参数，则将对[默认数据库和容器](#set-default-database-for-queries)执行查询。
 - 您可以运行 Azure Cosmos DB 中有效的任何 SQL 查询。 查询文本必须在新行上。
 
 例如： 
@@ -47,18 +47,18 @@ import sys
 %%sql --database RetailDemo --container WebsiteData
 SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c
 ```
-在单元格中运行 ```%%sql?```，查看笔记本中的 sql 魔术命令的帮助文档。
+在```%%sql?```单元格中运行，查看笔记本中 sql 魔术命令的帮助文档。
 
 ## <a name="run-a-sql-query-and-output-to-a-pandas-dataframe"></a>运行 SQL 查询并输出到 Pandas 数据帧
 
-可以将 ``%%sql`` 查询的结果输出到[Pandas 数据帧](https://pandas.pydata.org/pandas-docs/stable/getting_started/dsintro.html#dataframe)中。 使用语法： 
+可以将``%%sql``查询的结果输出到[Pandas 数据帧](https://pandas.pydata.org/pandas-docs/stable/getting_started/dsintro.html#dataframe)中。 使用语法： 
 
 ```bash
 %%sql --database {database_id} --container {container_id} --output {outputDataFrameVar}
 {Query text}
 ```
-- 将 ``{database_id}`` 和 ``{container_id}`` 替换为你的 Cosmos 帐户中的数据库和容器的名称。 如果未提供 ``--database`` 和 ``--container`` 参数，则将在[默认数据库和容器](#set-default-database-for-queries)上执行查询。
-- 将 ``{outputDataFrameVar}`` 替换为将包含结果的数据帧变量的名称。
+- 将``{database_id}``和``{container_id}``替换为你的 Cosmos 帐户中的数据库和容器的名称。 如果未``--database``提供``--container``和参数，则将对[默认数据库和容器](#set-default-database-for-queries)执行查询。
+- 替换``{outputDataFrameVar}``为将包含结果的数据帧变量的名称。
 - 您可以运行 Azure Cosmos DB 中有效的任何 SQL 查询。 查询文本必须在新行上。 
 
 例如：
@@ -83,14 +83,14 @@ df_cosmos.head(10)
 9   Viewed  14.00   Cape Verde  Flip Flop Shoes
 ```
 ## <a name="upload-json-items-to-a-container"></a>将 JSON 项上载到容器
-可以使用 ``%%upload`` 幻命令将数据从 JSON 文件上传到指定的 Azure Cosmos 容器。 使用以下命令上传项目：
+可以使用``%%upload``魔棒命令将数据从 JSON 文件上传到指定的 Azure Cosmos 容器。 使用以下命令上传项目：
 
 ```bash
 %%upload --databaseName {database_id} --containerName {container_id} --url {url_location_of_file}
 ```
 
-- 将 ``{database_id}`` 和 ``{container_id}`` 替换为 Azure Cosmos 帐户中的数据库和容器的名称。 如果未提供 ``--database`` 和 ``--container`` 参数，则将在[默认数据库和容器](#set-default-database-for-queries)上执行查询。
-- 将 ``{url_location_of_file}`` 替换为 JSON 文件的位置。 该文件必须是有效 JSON 对象的数组，并且应可通过公共 Internet 访问。
+- 将``{database_id}``和``{container_id}``替换为 Azure Cosmos 帐户中的数据库和容器的名称。 如果未``--database``提供``--container``和参数，则将对[默认数据库和容器](#set-default-database-for-queries)执行查询。
+- 替换``{url_location_of_file}``为 JSON 文件的位置。 该文件必须是有效 JSON 对象的数组，并且应可通过公共 Internet 访问。
 
 例如：
 
@@ -107,23 +107,23 @@ Total RUs consumed : 25022.58
 使用输出统计信息，可以计算用于上传项的有效 RU/秒。 例如，如果在38秒内消耗了 25000 RU，则有效的 RU/s 为 25000 RU/38 秒 = 658 RU/秒。
 
 ## <a name="set-default-database-for-queries"></a>设置查询的默认数据库
-你可以设置默认的数据库 ```%%sql``` 命令将用于笔记本。 将 ```{database_id}``` 替换为数据库的名称。
+你可以设置将用于笔记本```%%sql```的默认数据库命令。 将 ```{database_id}``` 替换为数据库的名称。
 
 ```bash
 %database {database_id}
 ```
-在单元格中运行 ```%database?``` 以查看笔记本中的文档。
+在```%database?```单元格中运行，查看笔记本中的文档。
 
 ## <a name="set-default-container-for-queries"></a>设置查询的默认容器
-你可以设置默认容器 ```%%sql``` 命令将用于笔记本。 将 ```{container_id}``` 替换为你的容器的名称。
+你可以设置将用于笔记本```%%sql```的默认容器命令。 将```{container_id}```替换为容器的名称。
 
 ```bash
 %container {container_id}
 ```
-在单元格中运行 ```%container?``` 以查看笔记本中的文档。
+在```%container?```单元格中运行，查看笔记本中的文档。
 
 ## <a name="use-built-in-nteract-data-explorer"></a>使用内置的 nteract 数据资源管理器
-您可以使用内置的[nteract 数据资源管理](https://blog.nteract.io/designing-the-nteract-data-explorer-f4476d53f897)器来筛选和可视化数据帧。 若要启用此功能，请将选项 ``pd.options.display.html.table_schema`` 设置为 ``True`` 并 ``pd.options.display.max_rows`` 到所需的值（可以将 ``pd.options.display.max_rows`` 设置为 ``None`` 以显示所有结果）。
+您可以使用内置的[nteract 数据资源管理](https://blog.nteract.io/designing-the-nteract-data-explorer-f4476d53f897)器来筛选和可视化数据帧。 若要启用此功能，请将``pd.options.display.html.table_schema``选项``True``设置``pd.options.display.max_rows``为，并将设置为所需``pd.options.display.max_rows``的``None``值（可将设置为以显示所有结果）。
 
 ```python
 import pandas as pd
@@ -137,7 +137,7 @@ df_cosmos.groupby("Item").size()
 ## <a name="use-the-built-in-python-sdk"></a>使用内置的 Python SDK
 安装了适用于[SQL API Azure Cosmos DB PYTHON SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)的版本4，并将其包含在 Azure Cosmos 帐户的笔记本环境中。
 
-使用内置 ``cosmos_client`` 实例运行任何 SDK 操作。 
+使用内置``cosmos_client``实例运行任何 SDK 操作。 
 
 例如：
 
@@ -156,8 +156,8 @@ container = database.create_container_if_not_exists(id='WebsiteData', partition_
 > [!IMPORTANT]
 > 内置 Python SDK 仅支持 SQL （核心） API 帐户。 对于其他 Api，你将需要安装对应于 API 的[相关 Python 驱动程序](#install-a-new-package)。 
 
-## <a name="create-a-custom-instance-of-cosmos_client"></a>创建的自定义实例 ``cosmos_client``
-为了获得更大的灵活性，你可以创建 ``cosmos_client`` 的自定义实例，以便执行以下操作：
+## <a name="create-a-custom-instance-of-cosmos_client"></a>创建的自定义实例``cosmos_client``
+为了获得更大的灵活性，你可以创建的``cosmos_client``自定义实例，以便：
 
 - 自定义[连接策略](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?view=azure-python-preview)
 - 针对不同于你所在的 Azure Cosmos 帐户运行操作
@@ -187,7 +187,7 @@ endpoint = os.environ["COSMOS_ENDPOINT"]
 primary_key = os.environ["COSMOS_KEY"]
 ```
 > [!IMPORTANT]
-> ``COSMOS_ENDPOINT`` 和 ``COSMOS_KEY`` 环境变量仅适用于 SQL API。 对于其他 Api，请在 Azure Cosmos 帐户的 "**连接字符串**" 或 "**密钥**" 边栏选项卡中找到终结点和密钥。  
+> ``COSMOS_ENDPOINT``和``COSMOS_KEY``环境变量仅适用于 SQL API。 对于其他 Api，请在 Azure Cosmos 帐户的 "**连接字符串**" 或 "**密钥**" 边栏选项卡中找到终结点和密钥。  
 
 ## <a name="reset-notebooks-workspace"></a>重置笔记本工作区
 若要将 "笔记本" 工作区重置为默认设置，请在命令栏上选择 "**重置工作区**"。 这将删除任何自定义的已安装包，并重新启动 Jupyter 服务器。 你的笔记本、文件和 Azure Cosmos 资源将不会受到影响。  

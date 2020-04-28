@@ -4,10 +4,10 @@ description: 说明如何在部署 Azure 资源管理器模板时解决无效模
 ms.topic: troubleshooting
 ms.date: 03/08/2018
 ms.openlocfilehash: 65cd69d67933d117b51f37b587b276aec2bd635a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76154051"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>解决无效模板错误
@@ -62,7 +62,7 @@ Message=Deployment template validation failed: 'The template resource {resource-
 for type {resource-type} has incorrect segment lengths.
 ```
 
-根级别的资源其名称中的段必须比资源类型中的段少一个。 段之间用斜杠隔开。 在下面的示例中，类型有两个段，名称有一个段，因此为有效名称****。
+根级别的资源其名称中的段必须比资源类型中的段少一个。 段之间用斜杠隔开。 在下面的示例中，类型有两个段，名称有一个段，因此为有效名称  。
 
 ```json
 {

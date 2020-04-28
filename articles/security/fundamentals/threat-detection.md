@@ -16,44 +16,44 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: 3c1c385a87fc302d180729ec2e4bcd1c4a315f6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75981462"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure 高级威胁检测
 
-Azure 通过 Azure 活动目录 （Azure AD）、Azure 监视器日志和 Azure 安全中心等服务提供内置的高级威胁检测功能。 安全服务和功能的此集合提供了一种简单快速了解 Azure 部署运行状况的方法。
+Azure 通过诸如 Azure Active Directory （Azure AD）、Azure Monitor 日志和 Azure 安全中心等服务，提供内置的高级威胁检测功能。 安全服务和功能的此集合提供了一种简单快速了解 Azure 部署运行状况的方法。
 
 Azure 提供多种安全性配置和自定义选项，以满足应用部署的要求。 本文介绍如何满足这些要求。
 
 ## <a name="azure-active-directory-identity-protection"></a>Azure Active Directory 标识保护
 
-[Azure AD 标识保护](../../active-directory/identity-protection/overview.md)是[Azure 活动目录高级 P2](../../active-directory/active-directory-whatis.md)版本功能，提供可能影响组织标识的风险检测和潜在漏洞的概述。 标识保护使用通过[Azure AD 异常活动报告](../../active-directory/active-directory-reporting-azure-portal.md)提供的现有 Azure AD 异常检测功能，并引入新的风险检测类型来检测实时异常。
+[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md)是一种[Azure Active Directory Premium 的 P2](../../active-directory/active-directory-whatis.md) edition 功能，它提供了可能影响组织标识的风险检测和潜在漏洞的概述。 标识保护使用现有 Azure AD 异常检测功能，这些功能通过[Azure AD 异常活动报告](../../active-directory/active-directory-reporting-azure-portal.md)提供，并引入了新的风险检测类型来检测实时异常。
 
 ![“Azure AD 标识保护”示意图](./media/threat-detection/azure-threat-detection-fig1.png)
 
-身份保护使用自适应机器学习算法和启发式方法来检测可能指示身份已遭到破坏的异常和风险检测。 使用此数据，标识保护将生成报告和警报，以便您可以调查这些风险检测并采取适当的补救或缓解措施。
+Identity Protection 使用自适应机器学习算法和试探法来检测可能指示标识已泄露的异常和风险检测。 使用此数据，Identity Protection 会生成报告和警报，以便您可以调查这些风险检测并采取适当的补救措施或缓解措施。
 
-Azure Active Directory 标识保护不只是一个监视和报告工具。 根据风险检测，身份保护会为每个用户计算用户风险级别，以便您可以配置基于风险的策略以自动保护组织的身份。
+Azure Active Directory 标识保护不只是一个监视和报告工具。 根据风险检测，Identity Protection 计算每个用户的用户风险级别，以便可以配置基于风险的策略来自动保护组织的标识。
 
-除了 Azure 活动目录和[EMS](../../active-directory/active-directory-conditional-access-azure-portal.md)提供的其他[条件访问控件](../../active-directory/active-directory-conditional-access-azure-portal.md)外，这些基于风险的策略还可以自动阻止或提供自适应修正操作，包括密码重置和多重身份验证实施。
+除了 Azure Active Directory 和[EMS](../../active-directory/active-directory-conditional-access-azure-portal.md)提供的其他[条件性访问控制](../../active-directory/active-directory-conditional-access-azure-portal.md)以外，这些基于风险的策略可以自动阻止或提供自适应补救措施，包括重置密码和强制实施多重身份验证。
 
 ### <a name="identity-protection-capabilities"></a>“标识保护”功能
 
-Azure Active Directory 标识保护不只是一个监视和报告工具。 若要保护组织的标识，可以配置基于风险的策略，该策略可在达到指定风险级别时自动响应检测到的问题。 除了 Azure 活动目录和 EMS 提供的其他条件访问控件外，这些策略还可以自动阻止或启动自适应修正操作，包括密码重置和多重身份验证实施。
+Azure Active Directory 标识保护不只是一个监视和报告工具。 若要保护组织的标识，可以配置基于风险的策略，该策略可在达到指定风险级别时自动响应检测到的问题。 除了 Azure Active Directory 和 EMS 提供的其他条件性访问控制以外，这些策略可以自动阻止或启动自适应更正操作，包括密码重置和强制实施多重身份验证。
 
 Azure 标识保护可帮助保护帐户和标识的一些示例包括：
 
-[检测风险检测和风险帐户](../../active-directory/identity-protection/overview.md)
--   使用机器学习和启发式规则检测六种风险检测类型。
+[检测风险检测和有风险的帐户](../../active-directory/identity-protection/overview.md)
+-   使用机器学习和启发式规则检测6种风险检测类型。
 -   计算用户风险级别。
 -   提供自定义建议，通过突显漏洞来改善整体安全状况。
 
 [调查风险检测](../../active-directory/identity-protection/overview.md)
--   发送风险检测通知。
--   使用相关和上下文信息调查风险检测。
+-   发送风险检测的通知。
+-   使用相关的上下文信息来调查风险检测。
 -   提供基本工作流来跟踪调查。
 -   提供轻松使用补救措施，例如密码重置。
 
@@ -78,15 +78,15 @@ PIM 可帮助用户进行以下操作：
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor 日志
 
-[Azure 监视器日志](../../azure-monitor/index.yml)是 Microsoft 基于云的 IT 管理解决方案，可帮助您管理和保护本地和云基础结构。 由于 Azure 监视器日志是作为基于云的服务实现的，因此只需对基础结构服务的投资最少，即可快速启动和运行日志。 自动提供新增安全功能，从而节省持续维护和升级成本。
+[Azure Monitor 日志](../../azure-monitor/index.yml)是 Microsoft 基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。 由于 Azure Monitor 日志是作为一项基于云的服务实现的，因此你可以通过在基础结构服务中的最小投资来快速启动和运行。 自动提供新增安全功能，从而节省持续维护和升级成本。
 
-除了自行提供有价值的服务外，Azure 监视器日志还可以与系统中心组件（如[系统中心操作管理器](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/)）集成，以便将现有的安全管理投资扩展到云中。 系统中心和 Azure 监视器日志可以协同工作，以提供完整的混合管理体验。
+除了自行提供有价值的服务外，Azure Monitor 日志还可与 System Center 组件集成，如[System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/)，将现有的安全管理投资扩展到云中。 System Center 和 Azure Monitor 日志可协同工作，以提供完整的混合管理体验。
 
 ### <a name="holistic-security-and-compliance-posture"></a>安全性与符合性总体情况
 
-[Log Analytics 安全和审核仪表板](../../security-center/security-center-intro.md)借助内置搜索查询找到需要关注的重要问题，从而提供有关组织的 IT 安全态势的全面观点。 安全和审核仪表板是 Azure 监视器日志中与安全性相关的一切内容的主屏幕。 它提供计算机安全状态的高级洞见。 还可以查看过去 24 小时、7 天或任何自定义时间范围的所有事件。
+[Log Analytics 安全和审核仪表板](../../security-center/security-center-intro.md)借助内置搜索查询找到需要关注的重要问题，从而提供有关组织的 IT 安全态势的全面观点。 安全和审核仪表板是 Azure Monitor 日志中与安全性相关的所有内容的主屏幕。 它提供计算机安全状态的高级洞见。 还可以查看过去 24 小时、7 天或任何自定义时间范围的所有事件。
 
-Azure 监视器日志可帮助您快速轻松地了解任何环境的整体安全状况，所有这些都在 IT 操作的上下文中，包括软件更新评估、反恶意软件评估和配置基线。 可访问现成的安全日志数据，简化安全性和符合性审核过程。
+Azure Monitor 日志可帮助你快速轻松地了解任何环境的总体安全状态，这一切都在 IT 操作的上下文中（包括软件更新评估、反恶意软件评估和配置基线）。 可访问现成的安全日志数据，简化安全性和符合性审核过程。
 
 ![Log Analytics 安全和审核仪表板](./media/threat-detection/azure-threat-detection-fig3.jpg)
 
@@ -103,25 +103,25 @@ Log Analytics 安全和审核仪表板有四个主要类别：
 -   **常见安全查询**：列出了可用于监视环境的最常见安全查询。 如果选择了任何查询，“搜索”窗格将打开并显示该查询的结果。
 
 ### <a name="insight-and-analytics"></a>见解与分析
-在 Azure[监视器日志](../../log-analytics/log-analytics-queries.md)的中心是由 Azure 托管的存储库。
+[Azure Monitor 日志](../../log-analytics/log-analytics-queries.md)的中心是由 Azure 托管的存储库。
 
 ![见解与分析关系图](./media/threat-detection/azure-threat-detection-fig4.png)
 
 通过配置数据源和向订阅添加解决方案，将连接的源中的数据收集到存储库。
 
-![Azure 监视器日志仪表板](./media/threat-detection/azure-threat-detection-fig5.png)
+!["Azure Monitor 日志" 仪表板](./media/threat-detection/azure-threat-detection-fig5.png)
 
 数据源和解决方案分别创建具有自身属性集的单独记录类型，但是用户仍可在对存储库的查询中同时对它们进行分析。 可以使用相同的工具和方法来处理由不同的源收集的各种数据。
 
 
-与 Azure 监视器日志的大部分交互都通过 Azure 门户进行，该门户在任何浏览器中运行，并允许您访问配置设置和多个工具来分析和处理收集的数据。 在门户中，可以使用：
+大多数与 Azure Monitor 日志的交互都是通过 Azure 门户，它在任何浏览器中运行，并提供对配置设置和多个工具的访问权限，用于分析和处理收集的数据。 在门户中，可以使用：
 * [日志搜索](../../log-analytics/log-analytics-queries.md)，可在其中构造查询以分析收集的数据。
 * [仪表板](../../azure-monitor/learn/tutorial-logs-dashboards.md)，可以使用最有价值搜索的图形视图对其进行自定义。
 * [解决方案](../../monitoring/monitoring-solutions.md)，可提供其他功能和分析工具。
 
 ![分析工具](./media/threat-detection/azure-threat-detection-fig6.png)
 
-解决方案向 Azure 监视器日志添加功能。 它们主要在云中运行，并提供日志分析存储库中收集的数据分析。 解决方案还可以定义要收集的新记录类型，这些类型可以通过日志搜索或使用解决方案在日志分析仪表板中提供的其他用户界面进行分析。
+解决方案将功能添加到 Azure Monitor 日志。 它们主要在云中运行，并提供对 log analytics 存储库中收集的数据的分析。 解决方案还可以定义要收集的新记录类型，这些记录类型可以使用日志搜索进行分析，也可以通过使用解决方案在 log analytics 仪表板中提供的其他用户界面进行分析。
 
 安全和审核仪表板是这些类型的解决方案的一个示例。
 
@@ -202,13 +202,13 @@ Azure 安全中心也通过异常检测确定威胁。 与行为分析（依赖�
 
 Azure 安全中心与全世界的安全性研究和数据科学团队合作，持续监视威胁态势的变化情况。 其中包括以下计划：
 
--   **威胁情报监控**：威胁情报包括机制、指标、影响和现有或新出现的威胁的可操作建议。 此信息在安全社区共享，Microsoft 会持续监视内部和外部源提供的威胁情报源。
+-   **威胁情报监视**：威胁情报包括有关现有或新兴威胁的机制、指示器、影响和可操作建议。 此信息在安全社区共享，Microsoft 会持续监视内部和外部源提供的威胁情报源。
 
 -   **信号共享**：安全团队的见解会跨 Microsoft 的一系列云服务和本地服务、服务器、客户端终结点设备进行共享和分析。
 
 -   **Microsoft 安全专家**：持续接触 Microsoft 的各个工作在专业安全领域（例如取证和 Web 攻击检测）的团队。
 
--   **检测调优**：算法针对真实的客户数据集运行，安全研究人员与客户合作验证结果。 通过检出率和误报率优化机器学习算法。
+-   **检测优化**：针对实际的客户数据集运行算法，安全研究人员与客户一起验证结果。 通过检出率和误报率优化机器学习算法。
 
 将这些措施结合起来，形成新的改进型检测方法，让用户能够即时受益。 用户不需采取任何措施。
 
@@ -216,7 +216,7 @@ Azure 安全中心与全世界的安全性研究和数据科学团队合作，�
 
 ### <a name="virtual-machines-microsoft-antimalware"></a>虚拟机：Microsoft 反恶意软件
 
-适用于 Azure 的[Microsoft 反恶意软件](antimalware.md)是应用程序和租户环境的单代理解决方案，旨在在后台运行，无需人工干预。 可以根据应用程序工作负荷的需求，选择默认的基本安全性或高级的自定义配置（包括反恶意软件监视）来部署保护。 Azure 反恶意软件是为 Azure 虚拟机提供的安全选项，自动安装在所有 Azure PaaS 虚拟机上。
+适用于 Azure 的[Microsoft 反恶意软件](antimalware.md)是一种适用于应用程序和租户环境的单代理解决方案，可在后台运行而无需人工干预。 可以根据应用程序工作负荷的需求，选择默认的基本安全性或高级的自定义配置（包括反恶意软件监视）来部署保护。 Azure 反恶意软件是为 Azure 虚拟机提供的安全选项，自动安装在所有 Azure PaaS 虚拟机上。
 
 #### <a name="microsoft-antimalware-core-features"></a>Microsoft 反恶意软件核心功能
 
@@ -384,6 +384,6 @@ Web 应用程序防火墙提供以下优点：
 
 ## <a name="next-steps"></a>后续步骤
 
-- [响应当今的威胁](../../security-center/security-center-alerts-overview.md#respond-threats)：帮助识别针对 Azure 资源的活动威胁，并提供快速响应所需的见解。
+- [应对今天的威胁](../../security-center/security-center-alerts-overview.md#respond-threats)：帮助确定面向 Azure 资源的活动威胁，并提供快速响应所需的见解。
 
 - [Azure SQL 数据库威胁检测](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-your-built-in-security-expert/)：可帮助解决有关数据库潜在威胁的问题。

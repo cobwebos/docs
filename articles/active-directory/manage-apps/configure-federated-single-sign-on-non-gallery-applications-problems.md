@@ -16,10 +16,10 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7894bfada4d363e89f526280e2925b4f4c6180a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76711890"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-a-non-gallery-application"></a>配置非库应用程序的联合单一登录时遇到的问题
@@ -46,7 +46,7 @@ Azure AD 会根据所选值或 SAML AuthRequest 中应用程序要求的格式�
 
 若要从 Azure AD 下载应用程序元数据或证书，请执行以下步骤：
 
-1. 打开[**Azure 门户**](https://portal.azure.com/)，以**全局管理员**或**共同管理员**身份登录。
+1. 打开[**Azure 门户**](https://portal.azure.com/)，并以 "**全局管理员**" 或 "**共同管理员**" 身份登录。
 
 2. 在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
 
@@ -56,7 +56,7 @@ Azure AD 会根据所选值或 SAML AuthRequest 中应用程序要求的格式�
 
 5. 单击“所有应用程序”****，查看所有应用程序的列表。
 
-   * 如果您没有看到要在此处显示的应用程序，请使用 **"所有应用程序列表**"顶部的 **"筛选器"** 控件，并将 **"显示**"选项设置为 **"所有应用程序"。**
+   * 如果看不到要在此处显示的应用程序，请使用 "**所有应用程序" 列表**顶部的 "**筛选器**" 控件，并将 "**显示**" 选项设置为 "**所有应用程序"。**
 
 6. 选择已配置单一登录的应用程序。
 

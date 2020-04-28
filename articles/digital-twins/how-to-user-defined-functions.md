@@ -1,5 +1,5 @@
 ---
-title: 如何创建用户定义的函数 - 在 Azure 数字孪生 |微软文档
+title: 如何在 Azure 数字孪生中创建用户定义的函数 |Microsoft Docs
 description: 如何在 Azure 数字孪生中创建用户定义的函数、匹配程序和角色分配。
 ms.author: alinast
 author: alinamstanciu
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: 232d85789c25e905873286eba6fda32c327a6e25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76276940"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>如何在 Azure 数字孪生中创建用户定义函数
@@ -69,7 +69,7 @@ YOUR_MANAGEMENT_API_URL/matchers
 }
 ```
 
-| “值” | 替换为 |
+| 值 | 替换为 |
 | --- | --- |
 | YOUR_SPACE_IDENTIFIER | 托管实例的服务器区域 |
 
@@ -109,7 +109,7 @@ function process(telemetry, executionContext) {
 --USER_DEFINED_BOUNDARY--
 ```
 
-| “值” | 替换为 |
+| 值 | 替换为 |
 | --- | --- |
 | USER_DEFINED_BOUNDARY | 多部分内容边界名称 |
 | YOUR_SPACE_IDENTIFIER | 空间标识符  |
@@ -193,28 +193,28 @@ function process(telemetry, executionContext) {
 }
 ```
 
-有关更复杂的用户定义的函数代码示例，请阅读[占用快速入门](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js)。
+有关更复杂的用户定义函数代码示例，请阅读 "[占有快速入门](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js)"。
 
 ## <a name="create-a-role-assignment"></a>创建角色分配
 
-创建角色分配，以便用户定义函数依据其运行。 如果用户定义的函数不存在角色分配，则它将没有与管理 API 交互的适当权限，也没有对图形对象执行操作的权限。 用户定义的函数可以执行的操作是通过 Azure 数字孪生管理 API 中基于角色的访问控制来指定和定义的。 例如，用户定义函数可通过指定特定角色或特定访问控制路径来限制这些操作的范围。 有关详细信息，请阅读[基于角色的访问控制](./security-role-based-access-control.md)文档。
+创建角色分配，以便用户定义函数依据其运行。 如果用户定义的函数不存在角色分配，则它将没有与管理 API 交互的适当权限，也没有对图形对象执行操作的权限。 用户定义的函数可以执行的操作是通过 Azure 数字孪生管理 API 中基于角色的访问控制来指定和定义的。 例如，用户定义函数可通过指定特定角色或特定访问控制路径来限制这些操作的范围。 有关详细信息，请参阅[基于角色的访问控制](./security-role-based-access-control.md)文档。
 
 1. [查询所有角色的系统 API](./security-create-manage-role-assignments.md#retrieve-all-roles) 以获取要分配给用户定义函数的角色 ID。 可通过发出经过身份验证的 HTTP GET 请求执行此操作，以便：
 
     ```URL
     YOUR_MANAGEMENT_API_URL/system/roles
     ```
-   保留所需的角色 ID。 它将作为下面的 JSON 正文属性**角色 Id** `YOUR_DESIRED_ROLE_IDENTIFIER`传递。
+   保留所需的角色 ID。 它将作为 JSON 正文属性**roleId** （`YOUR_DESIRED_ROLE_IDENTIFIER`）进行传递。
 
-1. **objectId** `YOUR_USER_DEFINED_FUNCTION_ID`（ ） 将是前面创建的用户定义的函数 ID。
-1. 通过查询空格来**path**查找路径`YOUR_ACCESS_CONTROL_PATH`（ ） 的值`fullpath`。
+1. **objectId** （`YOUR_USER_DEFINED_FUNCTION_ID`）将是之前创建的用户定义函数 ID。
+1. 通过使用`fullpath`查询空格来查找`YOUR_ACCESS_CONTROL_PATH` **path** （）的值。
 1. 复制返回的 `spacePaths` 值。 稍后你将使用该值。 向以下对象发出经过身份验证的 HTTP GET 请求：
 
     ```URL
     YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
     ```
 
-    | “值” | 替换为 |
+    | 值 | 替换为 |
     | --- | --- |
     | YOUR_SPACE_NAME | 要使用的空间名称 |
 
@@ -234,11 +234,11 @@ function process(telemetry, executionContext) {
     }
     ```
 
-    | “值” | 替换为 |
+    | 值 | 替换为 |
     | --- | --- |
     | YOUR_DESIRED_ROLE_IDENTIFIER | 所需角色的标识符 |
     | YOUR_USER_DEFINED_FUNCTION_ID | 要使用的用户定义的函数 ID |
-    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | 指定用户定义的函数类型的 ID （`UserDefinedFunctionId`） |
+    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | 指定用户定义函数类型（`UserDefinedFunctionId`）的 ID |
     | YOUR_ACCESS_CONTROL_PATH | 访问控制路径 |
 
 >[!TIP]
@@ -246,7 +246,7 @@ function process(telemetry, executionContext) {
 
 ## <a name="send-telemetry-to-be-processed"></a>发送要处理的遥测数据
 
-空间智能图中定义的传感器发送遥测。 反过来，遥测会触发已上传的用户定义函数的执行。 数据处理器将选取遥测数据。 然后，为调用用户定义的函数创建执行计划。
+空间智能图中定义的传感器发送遥测。 反过来，遥测会触发已上传的用户定义函数的执行。 数据处理器将选取遥测数据。 然后，为用户定义函数的调用创建执行计划。
 
 1. 为生成读数的传感器检索匹配程序。
 1. 根据成功进行计算的匹配程序，检索相关联的用户定义函数。

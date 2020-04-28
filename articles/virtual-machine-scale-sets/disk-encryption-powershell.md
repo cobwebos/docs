@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: mbaldwin
 ms.openlocfilehash: bd7f92c104e06896f4b3c8bb2adef45983cf5d4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76278988"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-azure-powershell"></a>通过 Azure PowerShell 对虚拟机规模集中的操作系统和附加的数据磁盘进行加密
 
-Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Azure 资源。  本文介绍如何使用 Azure PowerShell 创建和加密虚拟机规模集。 有关将 Azure 磁盘加密应用于虚拟机缩放集的详细信息，请参阅[虚拟机缩放集的 Azure 磁盘加密](disk-encryption-overview.md)。
+Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Azure 资源。  本文介绍如何使用 Azure PowerShell 创建和加密虚拟机规模集。 有关如何将 Azure 磁盘加密应用到虚拟机规模集的详细信息，请参阅[虚拟机规模集的 Azure 磁盘加密](disk-encryption-overview.md)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -25,7 +25,7 @@ Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Az
 
 Azure 密钥保管库可以存储能够在应用程序和服务中安全实现的密钥、机密或密码。 使用软件保护将加密密钥存储在 Azure 密钥保管库中，或者，可在已通过 FIPS 140-2 级别 2 标准认证的硬件安全模块 (HSM) 中导入或生成密钥。 这些加密密钥用于加密和解密附加到 VM 的虚拟磁盘。 可以控制这些加密密钥，以及审核对它们的使用。
 
-使用[新 AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault)创建密钥保管库。 若要将 Key Vault 用于磁盘加密，请设置 *EnabledForDiskEncryption* 参数。 以下示例还会定义资源组名称、Key Vault 名称和位置的变量。 请提供自己的唯一 Key Vault 名称：
+使用 [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault) 创建一个密钥保管库。 若要将 Key Vault 用于磁盘加密，请设置 *EnabledForDiskEncryption* 参数。 以下示例还会定义资源组名称、Key Vault 名称和位置的变量。 请提供自己的唯一 Key Vault 名称：
 
 ```azurepowershell-interactive
 $rgName="myResourceGroup"
@@ -106,7 +106,7 @@ Set-AzVmssDiskEncryptionExtension -ResourceGroupName $rgName -VMScaleSetName $vm
 >  disk-encryption-keyvault 参数值的语法是完整的标识符字符串：</br>
 /subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]</br></br>
 > key-encryption-key 参数值的语法是 KEK 的完整 URI，如下所示：</br>
-https：//[钥匙库名称]vault.azure.net/键/[kekname]/[kek-唯一id]
+https：//[keyvault]. kekname/keys/[]/[kek]
 
 ## <a name="check-encryption-progress"></a>查看加密进度
 

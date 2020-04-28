@@ -15,10 +15,10 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 3d4e45d1bf53bab4d1f9c45367f9d051f1668e2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76309006"
 ---
 ### <a name="authenticationresult-properties-in-msalnet"></a>MSAL.NET 中的 AuthenticationResult 属性
@@ -44,7 +44,7 @@ MSAL.NET 通过 `IAccount` 接口定义了帐户的概念。 此中断性变更�
 
 `AccountId` 类使用下表中显示的属性标识特定租户中的帐户。
 
-| properties | 描述 |
+| properties | 说明 |
 |----------|-------------|
 | `TenantId` | GUID 的字符串表示形式，是帐户所在租户的 ID。 |
 | `ObjectId` | GUID 的字符串表示形式，是拥有租户中的帐户的用户的 ID。 |
@@ -52,15 +52,15 @@ MSAL.NET 通过 `IAccount` 接口定义了帐户的概念。 此中断性变更�
 
 `IAccount` 接口表示单个帐户的相关信息。 同一用户可以存在于不同的租户中，这意味着一个用户可以有多个帐户。 其成员显示在下表中。
 
-| properties | 描述 |
+| properties | 说明 |
 |----------|-------------|
-| `Username` | 一个字符串，包含 UserPrincipalName (UPN) 格式的可显示值，例如 john.doe@contoso.com。 此字符串可以为 null，这不同于 HomeAccountId 和 HomeAccountId.Identifier，后两者不会为 null。 此属性替换 MSAL.NET 旧版本中 `IUser` 的 `DisplayableId` 属性。 |
-| `Environment` | 一个字符串，包含此帐户的标识提供者，例如 `login.microsoftonline.com`。 此属性替换 `IUser` 的 `IdentityProvider` 属性，不同之处是 `IdentityProvider` 还包含除云环境以外的租户信息。 而此处的该值仅仅是主机。 |
+| `Username` | 一个字符串，包含 UserPrincipalName (UPN) 格式的可显示值，例如 john.doe@contoso.com。 此字符串可以为 null，这不同于 HomeAccountId 和 HomeAccountId.Identifier，后两者不会为 null。 此属性替换 MSAL.NET 旧版本中 `DisplayableId` 的 `IUser` 属性。 |
+| `Environment` | 一个字符串，包含此帐户的标识提供者，例如 `login.microsoftonline.com`。 此属性替换 `IdentityProvider` 的 `IUser` 属性，不同之处是 `IdentityProvider` 还包含除云环境以外的租户信息。 而此处的该值仅仅是主机。 |
 | `HomeAccountId` | 用户的主帐户的帐户 ID。 此属性唯一标识 Azure AD 租户的用户。 |
 
 ### <a name="use-the-token-to-call-a-protected-api"></a>使用令牌调用受保护的 API
 
-在 MSAL 在 `result` 中返回 `AuthenticationResult` 后，将它添加到 HTTP 授权标头，然后再调用该令牌以访问受保护的 Web API。
+在 MSAL 在 `AuthenticationResult` 中返回 `result` 后，将它添加到 HTTP 授权标头，然后再调用该令牌以访问受保护的 Web API。
 
 ```csharp
 httpClient = new HttpClient();

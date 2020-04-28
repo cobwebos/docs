@@ -16,10 +16,10 @@ ms.date: 06/15/2018
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 0bc363b87a9f5b2f013c0bae75a07d79a3a7a830
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75981390"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>排查在 Azure 中新建 Windows VM 时遇到的部署问题
@@ -51,7 +51,7 @@ ms.locfileid: "75981390"
 
 **N<sup>2</sup>：** 如果 OS 是专用的 Windows，但是以通用设置上传的，则会发生预配失败错误，并且 VM 会卡在 OOBE 屏幕上，因为新 VM 是以原始计算机名称、用户名和密码运行的。
 
-**分辨率**
+**解决方法**
 
 若要解决这两个错误，请[使用 Add-AzVhd 上传原始 VHD](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd)、可用的本地设置、以及与该 OS（通用/专用）相同的设置。 若要以通用设置上传，请记得先运行 sysprep。
 
@@ -61,7 +61,7 @@ ms.locfileid: "75981390"
 
 **N<sup>4</sup>：** 如果 OS 是专用的 Windows，但是以专用设置捕获的，则会发生预配失败错误，因为新 VM 是以原始计算机名称、用户名和密码运行的。 此外，标记为专用的原始 VM 不可用。
 
-**分辨率**
+**解决方法**
 
 若要解决这两个错误，请从门户中删除当前映像，并[从当前 VHD 重新捕获映像](../windows/create-vm-specialized.md)，该映像具有与该 OS（通用/专用）相同的设置。
 
@@ -75,9 +75,9 @@ ms.locfileid: "75981390"
 * 以更小的 VM 大小重试请求。
 * 如果无法更改请求的 VM 大小：
   * 停止可用性集中的所有 VM。
-    单击**资源组资源组** > *your resource group* > *your virtual machine* > **资源** > *可用性集* > **虚拟机** > **停止**虚拟机 。
+    单击“资源组”  资源组 >  *“资源”*  > 可用性集  “虚拟机” > *虚拟机* > “停止”。   >    >  
   * 所有 VM 都停止后，创建所需大小的新 VM。
-  * 先启动新 VM，选择每个已停止的 VM，并单击“启动”。****
+  * 先启动新 VM，选择每个已停止的 VM，并单击“启动”。 
 
 **原因 2：** 群集没有可用的资源。
 

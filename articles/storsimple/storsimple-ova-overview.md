@@ -1,5 +1,5 @@
 ---
-title: 微软 Azure Stor 简单虚拟阵列概述
+title: Microsoft Azure StorSimple 虚拟阵列概述
 description: 介绍 StorSimple 虚拟阵列，它是一个集成式存储解决方案，用于管理本地虚拟阵列与 Microsoft Azure 云存储之间的存储任务。
 author: alkohli
 ms.assetid: 169c639b-1124-46a5-ae69-ba9695525b77
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 32781a83aec996b23f161f5fe695f39a0de38685
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76273875"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>StorSimple 虚拟阵列简介
@@ -57,7 +57,7 @@ StorSimple 在几分钟内将用户和服务器连接到 Azure 存储，无需�
 
 下表介绍了 StorSimple 虚拟阵列解决方案提供的某些主要优势。
 
-| Feature | 优势 |
+| Feature | 好处 |
 | --- | --- |
 | 透明集成 |虚拟阵列支持 iSCSI 或 SMB 协议。 本地层和云层之间的数据移动是无缝的，并且对用户透明。 |
 | 降低存储成本 |借助 StorSimple，预配足够的本地存储来满足对最常使用的热门数据的当前需求。 随着存储需求的增长，StorSimple 将冷数据分层到经济高效的云存储中。 在发送到云之前对数据进行重复数据删除和压缩，以进一步降低存储要求和开支。 |
@@ -69,7 +69,7 @@ StorSimple 在几分钟内将用户和服务器连接到 Azure 存储，无需�
 
 下面以表格形式列出了受支持的 StorSimple 工作负荷的摘要。
 
-|方案     |工作负荷     |支持      |限制               | 适用版本|
+|方案     |工作负载     |支持      |限制               | 适用版本|
 |-------------|-------------|---------------|---------------------------|--------------------|
 |远程办公室/分支机构 (ROBO)  |文件共享     |是      |请参阅[文件服务器的最大限制](storsimple-ova-limits.md)。<br></br>请参阅[受支持的 SMB 版本的系统要求](storsimple-ova-system-requirements.md)。| 所有版本     |
 |云存档  |存档文件共享     |是      |请参阅[文件服务器的最大限制](storsimple-ova-limits.md)。<br></br>请参阅[受支持的 SMB 版本的系统要求](storsimple-ova-system-requirements.md)。| 所有版本     |
@@ -96,23 +96,23 @@ StorSimple 虚拟阵列尤其适合以下工作流：
 ![基于云的存储管理](./media/storsimple-ova-overview/cloud-based-storage-management.png)
 
 ### <a name="location-independent-backup"></a>与位置无关的备份
-借助虚拟阵列，云快照提供卷或共享的与位置无关的时间点副本。 云快照默认处于启用状态，并且无法禁用。 所有卷和共享都通过单个每日备份策略同时备份，并且您可以随时执行其他临时备份。
+借助虚拟阵列，云快照提供卷或共享的与位置无关的时间点副本。 云快照默认处于启用状态，并且无法禁用。 所有卷和共享通过单个每日备份策略同时备份，你可以在必要时执行其他即席备份。
 
 ### <a name="data-protection-and-disaster-recovery"></a>数据保护和灾难恢复
 虚拟阵列支持以下数据保护和灾难恢复方案：
 
 * **卷或共享存储** - 使用还原作为恢复卷或共享的新工作流。 使用此方法恢复整个卷或共享。
-* **项目级恢复** - 共享允许对最近备份的简化访问。 您可以轻松地从云中可用的特殊 *.backup*文件夹中恢复单个文件。 此还原功能是用户驱动的，不需要任何管理干预。
+* **项目级恢复** - 共享允许对最近备份的简化访问。 可以轻松地从云中提供的特殊*备份*文件夹恢复单个文件。 此还原功能是用户驱动的，不需要任何管理干预。
 * **灾难恢复** - 使用故障转移功能可将所有卷或共享恢复到新的虚拟阵列。 创建新的虚拟阵列并向 StorSimple Device Manager 服务注册它，然后故障转移原始虚拟阵列。 然后，新的虚拟阵列会采用预配的资源。
 
 ## <a name="storsimple-virtual-array-components"></a>StorSimple 虚拟阵列组件
 
 虚拟阵列包括以下组件：
 
-* [虚拟阵列](#virtual-array)– 基于虚拟化环境或虚拟机配置的虚拟机的混合云存储设备。
-* [StorSimple 设备管理器服务](#storsimple-device-manager-service)– Azure 门户的扩展，允许您从单个 Web 界面管理一个或多个 StorSimple 设备，可以从不同的地理位置访问这些设备。 可使用 StorSimple Device Manager 服务创建和管理服务、查看和管理设备和警报以及管理卷、共享和现有快照。
-* [本地 Web 用户界面](#local-web-user-interface)– 用于配置设备的基于 Web 的 UI，以便设备可以连接到本地网络，然后将设备注册到 StorSimple 设备管理器服务。 
-* [命令行接口](#command-line-interface)– 可用于在虚拟阵列上启动支持会话的 Windows PowerShell 接口。
+* [虚拟阵列](#virtual-array)–基于虚拟化环境或虚拟机监控程序中预配的虚拟机的混合云存储设备。
+* [StorSimple 设备管理器 service](#storsimple-device-manager-service) – Azure 门户的扩展，使你可以从可从不同地理位置访问的单个 web 界面管理一台或多台 StorSimple 设备。 可使用 StorSimple Device Manager 服务创建和管理服务、查看和管理设备和警报以及管理卷、共享和现有快照。
+* [本地 web 用户界面](#local-web-user-interface)-一种基于 WEB 的 UI，用于配置设备，以便它可以连接到本地网络，然后向 StorSimple 设备管理器服务注册设备。 
+* [命令行接口](#command-line-interface)-一种 Windows PowerShell 接口，可用于在虚拟阵列上启动支持会话。
   以下各节更详细地介绍了其中的每个组件，并解释该解决方案如何排列数据、分配存储并促进存储管理和数据保护。
 
 ### <a name="virtual-array"></a>虚拟阵列
@@ -168,7 +168,7 @@ Microsoft Azure StorSimple 提供一个基于 Web 的用户界面（StorSimple D
 * [计划和按需备份](#scheduled-and-on-demand-backups)
 
 ### <a name="automatic-storage-tiering"></a>自动存储分层
-虚拟阵列使用新的分层机制管理虚拟阵列和云上存储的数据。 只有两个层：本地虚拟阵列和 Azure 云存储。 StorSimple 虚拟阵列根据热映射将数据自动排列为层，热映射跟踪当前使用情况、年限和与其他数据的关系。 使用最频繁（最热）的数据存储在本地，不太频繁使用的数据和非活动数据则自动迁移到云中。 （所有备份都存储在云中。随着使用模式的变化，StorSimple 会调整和重新排列数据和存储分配。 例如，随着时间的推移，一些信息可能不太频繁使用。 随着数据的使用频率逐渐减少，将其向外分层到云。 如果同一数据再次变得频繁使用，将其向内分层到存储阵列。
+虚拟阵列使用新的分层机制管理虚拟阵列和云上存储的数据。 只有两个层：本地虚拟阵列和 Azure 云存储。 StorSimple 虚拟阵列根据热映射将数据自动排列为层，热映射跟踪当前使用情况、年限和与其他数据的关系。 使用最频繁（最热）的数据存储在本地，不太频繁使用的数据和非活动数据则自动迁移到云中。 （所有备份都存储在云中。）StorSimple 会随着使用模式的变化调整和重新排列数据和存储分配。 例如，随着时间的推移，一些信息可能不太频繁使用。 随着数据的使用频率逐渐减少，将其向外分层到云。 如果同一数据再次变得频繁使用，将其向内分层到存储阵列。
 
 特定分层共享或卷的数据保证拥有自己的本地层空间（大约为该共享或卷的总预配空间的 10%）。 尽管这降低了该共享或卷所在的虚拟阵列上的可用存储，但它确保了单个共享或卷的分层不会受到其他共享或卷的分层需求的影响。 因此一个共享或卷上的非常繁忙的工作负荷无法将所有其他工作负荷强制施加到云。
 
@@ -208,7 +208,7 @@ StorSimple 数据保护功能支持创建按需备份。 此外，默认备份�
  - 提醒用户设置，可在其中配置用户电子邮件地址。 此信息可以由管理员清除。 
  - 可访问驻留在共享上的数据的用户。 会显示可访问共享数据的用户列表，并可供导出。 删除共享时也会删除此列表。
 
-有关详细信息，请查看[信任中心的 Microsoft 隐私政策](https://www.microsoft.com/trustcenter)。
+有关详细信息，请[在信任中心查看 Microsoft 隐私策略](https://www.microsoft.com/trustcenter)。
 
 ## <a name="next-steps"></a>后续步骤
 

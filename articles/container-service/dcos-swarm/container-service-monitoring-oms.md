@@ -8,10 +8,10 @@ ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
 ms.openlocfilehash: 1ab8d1cf3eb38a17f0b3d6c8137e37237498a527
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76277318"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>（已弃用）使用 Log Analytics 监视 Azure 容器服务 DC/OS 群集
@@ -41,7 +41,7 @@ Log Analytics 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你
 
    ![](media/container-service-monitoring-oms/image2.png)
 
-2. 单击 **“安装”**。 将看到包含版本信息并带有“安装包”**** 或“高级安装”**** 按钮的弹出窗口。 单击“高级安装”****，可转到 **OMS 特定的配置属性**页面。
+2. 单击“安装”  。 将看到包含版本信息并带有“安装包”**** 或“高级安装”**** 按钮的弹出窗口。 单击“高级安装”****，可转到 **OMS 特定的配置属性**页面。
 
    ![](media/container-service-monitoring-oms/image3.png)
 

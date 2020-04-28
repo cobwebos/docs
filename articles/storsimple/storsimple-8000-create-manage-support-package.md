@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 9ca033f6f786c0142261dafa31b93b71a8b3336a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76277076"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>创建和管理 StorSimple 8000 系列支持包
@@ -43,7 +43,7 @@ StorSimple 支持包是一种易于使用的机制，用于收集所有相关日
    2. 在打开的对话框中，输入设备管理员密码。 默认密码为 _Password1_。
      
       ![“PowerShell 凭据”对话框](./media/storsimple-8000-create-manage-support-package/IC740962.png)
-   3. 选择“确定”。
+   3. 选择“确定”  。
    4. 在命令提示符处，输入：
      
       `Enter-PSSession $MS`
@@ -64,9 +64,9 @@ StorSimple 支持包是一种易于使用的机制，用于收集所有相关日
 
 可将以下参数用于 Export-HcsSupportPackage cmdlet。
 
-| 参数 | 必需/可选 | 描述 |
+| 参数 | 必需/可选 | 说明 |
 | --- | --- | --- |
-| `-Path` |必选 |用于提供在其中放置支持包的网络共享文件夹的位置。 |
+| `-Path` |必需 |用于提供在其中放置支持包的网络共享文件夹的位置。 |
 | `-EncryptionPassphrase` |必选 |用于提供一个密码，以便加密支持包。 |
 | `-Credential` |可选 |用于提供网络共享文件夹的访问凭据。 |
 | `-Force` |可选 |用于跳过加密密码确认步骤。 |

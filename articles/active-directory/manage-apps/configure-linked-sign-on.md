@@ -1,6 +1,6 @@
 ---
-title: Azure AD 应用的链接登录 - 微软标识平台
-description: 在 Microsoft 标识平台 （Azure AD） 中将链接的单一登录 （SSO） 配置到 Azure AD 企业应用程序
+title: Azure AD 应用的链接登录-Microsoft 标识平台
+description: 将链接的单一登录（SSO）配置到 Microsoft 标识平台（Azure AD）中的 Azure AD 企业应用程序
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -13,25 +13,25 @@ ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dfe4aeb17f482cc9d4126efc6d65d3f7d173536b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77063537"
 ---
 # <a name="configure-linked-sign-on"></a>配置链接登录
 
-添加库或非库 Web 应用程序时，可供您使用的单一登录选项之一是[链接登录](what-is-single-sign-on.md)。 选择此选项可向组织的 Azure AD 访问面板或 Office 365 门户中的应用程序添加链接。 可以使用此方法向当前使用 Active 目录联合服务（或其他联合身份验证服务）的自定义 Web 应用程序添加链接，而不是 Azure AD 进行身份验证。 或者，可以添加特定 SharePoint 页面或想要在用户访问面板上显示的其他网页的深层链接。
+添加库或非库 web 应用程序时，可以使用的单一登录选项之一是[链接登录](what-is-single-sign-on.md)。 选择此选项可在组织的 Azure AD 访问面板或 Office 365 门户中添加指向应用程序的链接。 可以使用此方法将链接添加到当前使用 Active Directory 联合身份验证服务（或其他联合身份验证服务）而不是 Azure AD 进行身份验证的自定义 web 应用程序。 或者，可以添加特定 SharePoint 页面或想要在用户访问面板上显示的其他网页的深层链接。
 
 ## <a name="before-you-begin"></a>开始之前
 
 如果尚未将应用程序添加到 Azure AD 租户，请参阅[添加库应用](add-gallery-app.md)或[添加非库应用](add-non-gallery-app.md)。
 
-### <a name="open-the-app-and-select-linked-sign-on"></a>打开应用并选择链接登录
+### <a name="open-the-app-and-select-linked-sign-on"></a>打开应用并选择 "链接登录"
 
 1. 以 Azure AD 租户的云应用程序管理员或应用程序管理员的身份登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 导航到**Azure 活动目录** > **企业应用程序**。 此时会显示 Azure AD 租户中应用程序的随机示例。 
+1. 导航到**Azure Active Directory** > **企业应用程序**。 此时会显示 Azure AD 租户中应用程序的随机示例。 
 
 1. 在“应用程序类型”菜单中选择“所有应用程序”，然后选择“应用”************。
 
@@ -39,13 +39,13 @@ ms.locfileid: "77063537"
 
 1. 在“管理”部分选择“单一登录”。******** 
 
-1. 选择**链接**。
+1. 选择 "**链接**"。
 
-1. 输入要链接到的应用程序的 URL。 键入 URL 并选择 **"保存**"。 
+1. 输入要链接到的应用程序的 URL。 键入 URL，然后选择 "**保存**"。 
  
-1. 您可以将用户和组分配给应用程序，这将导致应用程序显示在[Office 365 应用启动器](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)或针对这些用户的[Azure AD 访问面板](end-user-experiences.md)中。
+1. 你可以将用户和组分配给应用程序，这会导致应用程序出现在[Office 365 应用程序启动器](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)中或这些用户的[Azure AD 访问面板](end-user-experiences.md)中。
 
-1. 选择“保存”。****
+1. 选择“保存”。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: 使用存储资源管理器将 VHD 文件上载到 Azure 开发人员测试实验室
+title: 使用存储资源管理器将 VHD 文件上传到 Azure 开发测试实验室
 description: 使用 Microsoft Azure 存储资源管理器将 VHD 文件上传到实验室的存储帐户
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: defafdd5809b7e537b3b9abb78f8cb63d0033c16
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76170372"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>使用 Microsoft Azure 存储资源管理器将 VHD 文件上传到实验室的存储帐户
@@ -35,9 +35,9 @@ ms.locfileid: "76170372"
 
 1. 使用 Azure 门户获取实验室的存储帐户名称：
 
-    1. 登录到 Azure[门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+    1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
     
-    1. 选择**所有服务**，然后从列表中选择**DevTest 实验室**。
+    1. 选择 "**所有服务**"，然后从列表中选择 "**开发测试实验室**"。
     
     1. 从实验室列表，选择所需的实验室。  
     
@@ -113,7 +113,7 @@ ms.locfileid: "76170372"
     
     1. 返回到“上传文件”**** 对话框时，将“Blob 类型”**** 更改为“页 Blob”****。
     
-    1. 选择 **"上传**"。
+    1. 选择 "**上传**"。
 
         ![选择文件][9]  
     

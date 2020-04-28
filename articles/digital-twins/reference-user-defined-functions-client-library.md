@@ -1,6 +1,6 @@
 ---
-title: 用户定义的函数客户端库引用 - Azure 数字孪生 |微软文档
-description: Azure 数字双月用户定义的函数客户端库参考文档。
+title: 用户定义函数客户端库引用-Azure 数字孪生 |Microsoft Docs
+description: Azure 数字孪生用户定义函数客户端库参考文档。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: bd6095daca51ddca0cfb4b34ca86e763df9a3d02
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76276815"
 ---
 # <a name="user-defined-functions-client-library-reference"></a>用户定义函数客户端库参考
@@ -74,7 +74,7 @@ ms.locfileid: "76276815"
 | 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
 | *spaceId*  | `guid` | 空间标识符 |
-| *值名称* | `string` | 空间属性名称 |
+| *valueName* | `string` | 空间属性名称 |
 
 ### <a name="getsensorhistoryvaluessensorid-datatype--value"></a>getSensorHistoryValues(sensorId, dataType) ⇒ `value[]`
 
@@ -96,7 +96,7 @@ ms.locfileid: "76276815"
 | 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | 空间标识符 |
-| *值名称* | `string` | 空间属性名称 |
+| *valueName* | `string` | 空间属性名称 |
 
 ### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces(spaceId) ⇒ `space[]`
 
@@ -136,7 +136,7 @@ ms.locfileid: "76276815"
 
 | 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| *设备 Id* | `guid` | 设备标识符 |
+| *deviceId* | `guid` | 设备标识符 |
 
 ### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace(childSpaceId) ⇒ `space`
 
@@ -187,7 +187,7 @@ ms.locfileid: "76276815"
 | 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | 空间标识符 |
-| *属性名称* | `string` | 空间属性名称 |
+| *propertyName* | `string` | 空间属性名称 |
 
 ### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>getSensorExtendedProperty(sensorId, propertyName) ⇒ `extendedProperty`
 
@@ -198,7 +198,7 @@ ms.locfileid: "76276815"
 | 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | 传感器标识符 |
-| *属性名称* | `string` | 传感器属性名称 |
+| *propertyName* | `string` | 传感器属性名称 |
 
 ### <a name="getdeviceextendedpropertydeviceid-propertyname--extendedproperty"></a>getDeviceExtendedProperty(deviceId, propertyName) ⇒ `extendedProperty`
 
@@ -208,8 +208,8 @@ ms.locfileid: "76276815"
 
 | 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| *设备 Id* | `guid` | 设备标识符 |
-| *属性名称* | `string` | 设备属性名称 |
+| *deviceId* | `guid` | 设备标识符 |
+| *propertyName* | `string` | 设备属性名称 |
 
 ### <a name="setsensorvaluesensorid-datatype-value"></a>setSensorValue(sensorId, dataType, value)
 
@@ -221,7 +221,7 @@ ms.locfileid: "76276815"
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | 传感器标识符 |
 | *dataType*  | `string` | 传感器数据类型 |
-| *value*  | `string` | “值” |
+| *value*  | `string` | 值 |
 
 ### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue(spaceId, dataType, value)
 
@@ -233,7 +233,7 @@ ms.locfileid: "76276815"
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | 空间标识符 |
 | *dataType* | `string` | 数据类型 |
-| *value* | `string` | “值” |
+| *value* | `string` | 值 |
 
 ### <a name="logmessage"></a>log(message)
 
@@ -294,7 +294,7 @@ ms.locfileid: "76276815"
 
 | 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| *属性名称* | `string` | 扩展属性的名称 |
+| *propertyName* | `string` | 扩展属性的名称 |
 
 #### <a name="valuevaluename--value"></a>Value(valueName) ⇒ `value`
 
@@ -302,7 +302,7 @@ ms.locfileid: "76276815"
 
 | 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| *值名称* | `string` | 值的名称 |
+| *valueName* | `string` | 值的名称 |
 
 #### <a name="historyvaluename--value"></a>History(valueName) ⇒ `value[]`
 
@@ -310,7 +310,7 @@ ms.locfileid: "76276815"
 
 | 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| *值名称* | `string` | 值的名称 |
+| *valueName* | `string` | 值的名称 |
 
 #### <a name="notifypayload"></a>Notify(payload)
 
@@ -354,7 +354,7 @@ ms.locfileid: "76276815"
 
 | 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| *属性名称* | `string` | 扩展属性的名称 |
+| *propertyName* | `string` | 扩展属性的名称 |
 
 #### <a name="notifypayload"></a>Notify(payload)
 
@@ -402,7 +402,7 @@ ms.locfileid: "76276815"
 
 | 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| *属性名称* | `string` | 扩展属性的名称 |
+| *propertyName* | `string` | 扩展属性的名称 |
 
 #### <a name="value--value"></a>Value() ⇒ `value`
 
@@ -420,7 +420,7 @@ ms.locfileid: "76276815"
 | ------ | ------------------- | ------------ |
 | *payload* | `string` | 要包含在通知中的 JSON 有效负载 |
 
-### <a name="value"></a>“值”
+### <a name="value"></a>值
 
 ```JSON
 {

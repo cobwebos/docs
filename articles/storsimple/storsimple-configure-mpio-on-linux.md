@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alkohli
 ms.openlocfilehash: 5dadd231335e93839e947077168f32dbfe96eb45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76278365"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>在运行 CentOS 的 StorSimple 主机上配置 MPIO
@@ -255,7 +255,7 @@ StorSimple 设备应该：
 ### <a name="step-5-verify-multipathing"></a>步骤 5：验证多路径
 1. 首先确保与 StorSimple 设备建立 iSCSI 连接，如下所示：
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 发现 StorSimple 设备。 键入：
+   a. 发现 StorSimple 设备。 键入：
       
     ```
     iscsiadm -m discovery -t sendtargets -p  <IP address of network interface on the device>:<iSCSI port on StorSimple device>
@@ -270,7 +270,7 @@ StorSimple 设备应该：
 
     复制上述输出中 StorSimple 设备的 IQN，即 `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`。
 
-   b.保留“数据库类型”设置，即设置为“共享”。 使用目标 IQN 连接到该设备。 此处，StorSimple 设备即是 iSCSI 目标。 键入：
+   b. 使用目标 IQN 连接到该设备。 此处，StorSimple 设备即是 iSCSI 目标。 键入：
 
     ```
     iscsiadm -m node --login -T <IQN of iSCSI target>
@@ -338,13 +338,13 @@ A. 请确保这两个路径位于同一子网且可路由。 如果网络接口�
 
 Q. 列出可用路径时，未看到任何输出。
 
-A. 通常，看不到任何多路径路径会暗示多路径守护进程存在问题，而且这里很可能存在任何问题。 `multipath.conf`
+A. 通常情况下，不会看到任何多路径路径会给出有关多路径后台程序的问题，很有可能是该`multipath.conf`文件中存在问题。
 
-在连接到目标后，您实际上可以看到某些磁盘还值得一试，因为来自多路径列表的任何响应也可能意味着您没有任何磁盘。
+还需要检查是否可以在连接到目标后实际看到某些磁盘，因为多路径列表中没有响应也可能意味着没有任何磁盘。
 
 * 使用以下命令重新扫描 SCSI 总线：
   
-    `$ rescan-scsi-bus.sh`（sg3_utils包的一部分）
+    `$ rescan-scsi-bus.sh`（sg3_utils 包的一部分）
 * 键入以下命令：
   
     `$ dmesg | grep sd*`
@@ -358,7 +358,7 @@ A. 通常，看不到任何多路径路径会暗示多路径守护进程存在�
   
     `cat /sys/block/<DISK>/device/model`
   
-    这将返回一个字符串，这将确定它是否是 StorSimple 磁盘。
+    这将返回一个字符串，该字符串将确定它是否为 StorSimple 磁盘。
 
 有一个不太可能的原因是 iscsid pid 已过时。 使用以下命令从 iSCSI 会话注销：
 
@@ -410,10 +410,10 @@ A. 若要验证设备是否已列入允许列表，请使用以下故障排除�
     dm-3 devnode blacklisted, unmonitored
 
 
-有关详细信息，请访问[故障排除以进行多路径。](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot)
+有关详细信息，请参阅多[路径故障排除](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot)。
 
 ## <a name="list-of-useful-commands"></a>有用命令列表
-| 类型 | 命令 | 描述 |
+| 类型 | Command | 说明 |
 | --- | --- | --- |
 | **iSCSI** |`service iscsid start` |启动 iSCSI 服务 |
 | &nbsp; |`service iscsid stop` |停止 iSCSI 服务 |
@@ -428,7 +428,7 @@ A. 若要验证设备是否已列入允许列表，请使用以下故障排除�
 | **多路径** |`service multipathd start` |启动多路径后台程序 |
 | &nbsp; |`service multipathd stop` |停止多路径后台程序 |
 | &nbsp; |`service multipathd restart` |重新启动多路径后台程序 |
-| &nbsp; |`chkconfig multipathd on` </br> 或 </br> `mpathconf -with_chkconfig y` |使多路径后台程序在引导时启动 |
+| &nbsp; |`chkconfig multipathd on` </br> OR </br> `mpathconf -with_chkconfig y` |使多路径后台程序在引导时启动 |
 | &nbsp; |`multipathd -k` |启动交互式控制台进行故障排除 |
 | &nbsp; |`multipath -l` |列出多路径连接和设备 |
 | &nbsp; |`mpathconf --enable` |在 `/etc/mulitpath.conf` 中创建示例 mulitpath.conf 文件 |

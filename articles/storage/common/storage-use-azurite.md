@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.openlocfilehash: 5e1fce0852a4e820d7ee0af626ce3fddf6773750
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76029923"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>使用 Azurite 模拟器进行本地 Azure 存储开发和测试（预览）
@@ -29,39 +29,39 @@ Azurite 是未来的存储仿真器平台。 Azurite 取代了 [Azure 存储仿�
 
 ## <a name="install-and-run-the-azurite-visual-studio-code-extension"></a>安装并运行 Azurite Visual Studio Code 扩展
 
-在 Visual Studio Code 中选择“扩展”窗格，然后在“扩展: 市场”中搜索 *Azurite*。********
+在 Visual Studio Code 中选择“扩展”窗格，然后在“扩展: 市场”中搜索 *Azurite*。  
 
 ![Visual Studio Code 扩展市场](media/storage-use-azurite/azurite-vs-code-extension.png)
 
-或者，在浏览器中导航到 [VS Code 扩展市场](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite)。 选择“安装”按钮打开 Visual Studio Code，并直接转到 Azurite 扩展页。****
+或者，在浏览器中导航到 [VS Code 扩展市场](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite)。 选择“安装”按钮打开 Visual Studio Code，并直接转到 Azurite 扩展页。 
 
-可以通过单击 VS Code 状态栏中的“[Azurite Blob 服务]”或“[Azurite 队列服务]”，或者在 VS Code 命令面板中发出以下命令，快速启动或关闭 Azurite。******** 若要打开命令面板，请在 VS Code 中按 **F1**。
+可以通过单击 VS Code 状态栏中的“[Azurite Blob 服务]”或“[Azurite 队列服务]”，或者在 VS Code 命令面板中发出以下命令，快速启动或关闭 Azurite。   若要打开命令面板，请在 VS Code 中按 **F1**。
 
 该扩展支持以下 Visual Studio Code 命令：
 
-   * **阿祖瑞特：开始**- 开始所有阿祖瑞特服务
-   * **阿祖瑞特：关闭**- 关闭所有阿祖雷特服务
-   * **Azurite： 清洁**- 重置所有 Azurite 服务持久性数据
-   * **Azurite： 启动 Blob 服务**- 启动 Blob 服务
-   * **Azurite： 关闭 Blob 服务**- 关闭 Blob 服务
-   * **Azurite： 清洁 Blob 服务**- 清洁 Blob 服务
-   * **Azurite： 启动队列服务**- 启动队列服务
-   * **Azurite： 关闭队列服务**- 关闭队列服务
-   * **Azurite： 清洁队列服务**- 清洁队列服务
+   * **Azurite:Start** - 启动所有 Azurite 服务
+   * **Azurite:Close** - 关闭所有 Azurite 服务
+   * **Azurite:Clean** - 重置所有 Azurite 服务永久性数据
+   * **Azurite:Start Blob Service** - 启动 Blob 服务
+   * **Azurite:Close Blob Service** - 关闭 Blob 服务
+   * **Azurite:Clean Blob Service** - 清理 Blob 服务
+   * **Azurite:Start Queue Service** - 启动队列服务
+   * **Azurite:Close Queue Service** - 关闭队列服务
+   * **Azurite:Clean Queue Service** - 清理队列服务
 
-若要在 Visual Studio Code 中配置 Azurite，请选择“扩展”窗格。 选择 **Azurite** 所对应的“管理”****(齿轮)图标。 选择“配置扩展设置”。****
+若要在 Visual Studio Code 中配置 Azurite，请选择“扩展”窗格。 选择 **Azurite** 所对应的“管理”  (齿轮)图标。 选择“配置扩展设置”。 
 
 ![Azurite - 配置扩展设置](media/storage-use-azurite/azurite-configure-extension-settings.png)
 
 支持以下设置：
 
-   * **Azurite： Blob 主机**- Blob 服务侦听终结点。 默认设置为 127.0.0.1。
-   * **Azurite： Blob 端口**- Blob 服务侦听端口。 默认端口为 10000。
-   * **Azurite：调试**- 将调试日志输出到 Azurite 通道。 默认值为“false”****。
-   * **Azurite：位置**- 工作区位置路径。 默认值为 Visual Studio Code 的工作文件夹。
-   * **Azurite： 队列主机**- 队列服务侦听终结点。 默认设置为 127.0.0.1。
-   * **Azurite： 队列端口**- 队列服务侦听端口。 默认端口为 10001。
-   * **Azurite： 静默**- 静音模式禁用访问日志。 默认值为“false”****。
+   * **Azurite:Blob 主机** - Blob 服务的侦听终结点。 默认设置为 127.0.0.1。
+   * **Azurite:Blob 端口** - Blob 服务的侦听端口。 默认端口为 10000。
+   * **Azurite:调试** - 将调试日志输出到 Azurite 通道。 默认值是 **false**秒。
+   * **Azurite:位置** - 工作区位置路径。 默认值为 Visual Studio Code 的工作文件夹。
+   * **Azurite:队列主机** - 队列服务的侦听终结点。 默认设置为 127.0.0.1。
+   * **Azurite:队列端口** - 队列服务的侦听端口。 默认端口为 10001。
+   * **Azurite:无提示** - 无提示模式会禁用访问日志。 默认值是 **false**秒。
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>使用 NPM 安装并运行 Azurite
 
@@ -91,7 +91,7 @@ docker run -p 10000:10000 -p 10001:10001 mcr.microsoft.com/azure-storage/azurite
 
 **指定工作区位置**：
 
-在以下示例中，`-v c:/azurite:/data` 参数指定“c:/azurite”** 作为 Azurite 永久性数据的位置。 必须在运行 Docker 命令之前创建目录“c:/azurite”**。
+在以下示例中，`-v c:/azurite:/data` 参数指定“c:/azurite”  作为 Azurite 永久性数据的位置。 必须在运行 Docker 命令之前创建目录“c:/azurite”  。
 
 ```console
 docker run -p 10000:10000 -p 10001:10001 -v c:/azurite:/data mcr.microsoft.com/azure-storage/azurite
@@ -164,7 +164,7 @@ C:\Azurite> azurite [--blobHost <IP address>] [--blobPort <port address>]
     [-s | --silent] [-h | --help]
 ```
 
-**-d** 是 **--debug** 的简写，**-l** 开关是 **--location** 的简写，**-s** 是 **--silent** 的简写，**-h** 是 **--help** 的简写。
+**-d** 是 **--debug** 的简写， **-l** 开关是 **--location** 的简写， **-s** 是 **--silent** 的简写， **-h** 是 **--help** 的简写。
 
 ### <a name="blob-listening-host"></a>Blob 侦听主机
 
@@ -351,7 +351,7 @@ set AZURITE_ACCOUNTS="account1:key1:key2;account2:key1:key2"
 
 ### <a name="storage-explorer"></a>存储资源管理器
 
-在 Azure 存储资源管理器中，单击“添加帐户”图标连接到 Azurite，然后选择“附加到本地仿真器”并单击“连接”。************
+在 Azure 存储资源管理器中，单击“添加帐户”图标连接到 Azurite，然后选择“附加到本地仿真器”并单击“连接”。   
 
 ## <a name="differences-between-azurite-and-azure-storage"></a>Azurite 与 Azure 存储之间的差别
 
@@ -381,7 +381,7 @@ Azurite 的服务终结点不同于 Azure 存储帐户的终结点。 本地计�
 
 Azurite 不是可缩放的存储服务，且不支持大量并发客户端。 它不提供性能方面的保证。 Azurite 用于开发和测试目的。
 
-### <a name="error-handling"></a>错误处理
+### <a name="error-handling"></a>错误处理。
 
 Azurite 的错误处理逻辑与 Azure 存储相符，但存在一些差别。 例如，错误消息可能不同，而错误状态代码是一致的。
 

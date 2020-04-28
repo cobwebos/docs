@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 78e0500057baf407f1d26afe29d9df1e525cbf3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76153762"
 ---
 # <a name="additional-documentation"></a>其他文档
@@ -33,4 +33,4 @@ ms.locfileid: "76153762"
 
 ## <a name="vfxt-creation-and-management-documentation"></a>vFXT 的创建和管理文档
 
-在 GitHub：vfxt.py 的[云群集管理](https://github.com/Azure/AvereSDK/blob/master/docs/README.md)中提供了使用 vfxt.py的完整指南，该指南是基于脚本的云群集创建和管理实用程序。
+GitHub 上提供了使用 vfxt.py （一种基于脚本的云群集创建和管理实用工具）的完整指南：[使用 vfxt.py 的云群集管理](https://github.com/Azure/AvereSDK/blob/master/docs/README.md)。

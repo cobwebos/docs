@@ -1,7 +1,7 @@
 ---
-title: ADAL 到 MSAL 迁移指南 （MSAL iOS/macOS） |蔚蓝
+title: ADAL 到 MSAL 的迁移指南（MSAL iOS/macOS） |Microsoft
 titleSuffix: Microsoft identity platform
-description: 了解 iOS/macOS 的 MSAL 和用于目标 C 的 Azure AD 身份验证库 （ADAL） 之间的差异。ObjC）以及如何迁移到 MSAL 的 iOS/macOS。
+description: 了解适用于 iOS/macOS 的 MSAL 与 ObjectiveC 的 Azure AD 身份验证库之间的差异（ADAL）。ObjC）以及如何迁移到适用于 iOS/macOS 的 MSAL。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,17 +14,17 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: 6050bdc8c2600998b9804b04b62102e74612719f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77085171"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>将应用程序迁移到适用于 iOS 和 macOS 的 MSAL
 
 创建的 Azure Active Directory 身份验证库 ([ADAL Objective-C](https://github.com/AzureAD/azure-activedirectory-library-for-objc)) 通过 v1.0 终结点使用 Azure Active Directory 帐户。
 
-用于 iOS 和 macOS （MSAL） 的 Microsoft 身份验证库旨在通过 Microsoft 标识平台（正式）与所有 Microsoft 标识（如 Azure 活动目录 （Azure AD） 帐户、个人 Microsoft 帐户和 Azure AD B2C 帐户配合使用Azure AD v2.0 终结点）。
+适用于 iOS 和 macOS 的 Microsoft 身份验证库（MSAL）构建用于通过 Microsoft 标识平台（正式为 Azure AD v2.0 终结点）处理所有 Microsoft 标识，例如 Azure Active Directory （Azure AD）帐户、个人 Microsoft 帐户和 Azure AD B2C 帐户。
 
 Microsoft 标识平台与 Azure Active Directory v1.0 之前存在一些重要差异。 本文重点描述这些差异，并提供有关将应用从 ADAL 迁移到 MSAL 的指导。
 
@@ -33,7 +33,7 @@ Microsoft 标识平台与 Azure Active Directory v1.0 之前存在一些重要�
 ### <a name="who-can-sign-in"></a>谁可以登录
 
 * ADAL 仅支持工作和学校帐户（也称为 Azure AD 帐户）。
-* MSAL 支持个人 Microsoft 帐户 （MSA 帐户），如Hotmail.com、Outlook.com和Live.com。
+* MSAL 支持个人 Microsoft 帐户（MSA 帐户），例如 Hotmail.com、Outlook.com 和 Live.com。
 * MSAL 支持工作和学校帐户，并支持 Azure AD B2C 帐户。
 
 ### <a name="standards-compliance"></a>标准合规性
@@ -131,16 +131,16 @@ MSAL 引入了一些令牌获取调用更改：
 
 MSAL 更明确地区分应用可以处理的错误，以及需要用户干预的错误。 开发人员必须处理的错误数有限：
 
-* `MSALErrorInteractionRequired`：用户必须执行交互式请求。 这可能是由于各种原因造成的，例如身份验证会话过期、条件访问策略已更改、刷新令牌过期或已吊销、缓存中没有有效令牌等。
-* `MSALErrorServerDeclinedScopes`：请求未完全完成，并且某些作用域未被授予访问权限。 此错误的可能原因是用户拒绝许可一个或多个范围的权限。
+* `MSALErrorInteractionRequired`：用户必须执行交互式请求。 这可能是由于各种原因导致的，例如身份验证会话过期、条件性访问策略已更改、刷新令牌已过期或已被吊销、缓存中没有有效的令牌，等等。
+* `MSALErrorServerDeclinedScopes`：请求未完全完成并且某些范围未被授予访问权限。 此错误的可能原因是用户拒绝许可一个或多个范围的权限。
 
-处理[`MSALError`列表中](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128)的所有其他错误是可选的。 可以使用这些错误中的信息来改善用户体验。
+处理[ `MSALError`列表](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128)中的所有其他错误是可选的。 可以使用这些错误中的信息来改善用户体验。
 
 有关 MSAL 错误处理的详细信息，请参阅[使用 MSAL 处理异常和错误](msal-handling-exceptions.md)。
 
 ### <a name="broker-support"></a>中介支持
 
-从版本 0.3.0 开始，MSAL 使用 Microsoft Authenticator 应用为中介身份验证提供支持。 Microsoft 身份验证器还支持条件访问方案。 条件访问方案的示例包括设备合规性策略，这些策略要求用户通过 Intune 注册设备或向 AAD 注册以获得令牌。 和移动应用程序管理 （MAM） 条件访问策略，这需要验证合规性，然后才能获取令牌。
+从版本 0.3.0 开始，MSAL 使用 Microsoft Authenticator 应用为中介身份验证提供支持。 Microsoft Authenticator 还支持条件访问方案。 条件访问方案的示例包括要求用户通过 Intune 注册设备或使用 AAD 注册以获取令牌的设备符合性策略。 和移动应用管理（MAM）条件访问策略，在应用可以获取令牌之前需要符合性证明。
 
 若要为应用程序启用中介：
 
@@ -165,7 +165,7 @@ MSAL 更明确地区分应用可以处理的错误，以及需要用户干预的
     </array>
     ```
 
-4. 将以下内容添加到 AppDelegate.m 文件以处理回调：目标 C：
+4. 将以下内容添加到 AppDelegate 文件以处理回调：目标-C：
     
     ```objc
     - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options`
@@ -184,7 +184,7 @@ MSAL 更明确地区分应用可以处理的错误，以及需要用户干预的
 
 ### <a name="business-to-business-b2b"></a>企业到企业 (B2B)
 
-在 ADAL 中，您可以`ADAuthenticationContext`为每个应用为其请求令牌的租户创建单独的实例。 这不再是 MSAL 中的要求。 在 MSAL 中，您可以通过指定用于获取`MSALPublicClientApplication`Token和获取TokenSilent调用的不同权限来创建 的 单个实例并将其用于任何 AAD 云和组织。
+在 ADAL 中， `ADAuthenticationContext`为应用请求令牌的每个租户创建单独的实例。 这在 MSAL 中不再是必需的。 在 MSAL 中，可以创建的单个实例`MSALPublicClientApplication` ，并通过为 AcquireToken 和 acquireTokenSilent 调用指定不同的颁发机构来将其用于任何 AAD 云和组织。
 
 ## <a name="sso-in-partnership-with-other-sdks"></a>在与其他 SDK 的合作方案中实现 SSO
 
@@ -203,7 +203,7 @@ SSO 是通过 iOS 密钥链共享实现的，只能在通过同一 Apple 开发�
 iOS 上的 MSAL 还支持其他两种类型的 SSO：
 
 * 通过 Web 浏览器实现的 SSO。 适用于 iOS 的 MSAL 支持 `ASWebAuthenticationSession`，它通过设备上的其他应用与具体 Safari 浏览器之间共享的 Cookie 提供 SSO。
-* 通过身份验证中介实现的 SSO。 在 iOS 设备上，Microsoft Authenticator 充当身份验证中介。 它可以遵循条件访问策略（如要求兼容的设备），并为注册设备提供 SSO。 MSAL SDK 从版本 0.3.0 开始默认支持中介。
+* 通过身份验证中介实现的 SSO。 在 iOS 设备上，Microsoft Authenticator 充当身份验证中介。 它可以遵循条件性访问策略，例如需要相容设备，并为已注册的设备提供 SSO。 MSAL SDK 从版本 0.3.0 开始默认支持中介。
 
 ## <a name="intune-mam-sdk"></a>Intune MAM SDK
 
@@ -321,8 +321,8 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 
 若要启用令牌缓存，请执行以下操作：
 1. 确保应用程序已正确签名
-2. 转到 Xcode 项目设置>**功能"选项卡** > **启用钥匙串共享**
-3. 单击**+** 并输入以下**钥匙串组**条目：3.a 对于 iOS，`com.microsoft.adalcache`输入 3.b 对于 macOS 输入`com.microsoft.identity.universalstorage`
+2. 转到 Xcode 项目设置 >“功能”选项卡   >   “启用密钥链共享”
+3. 单击 **+** 并输入以下“密钥链组”  条目：3.a 对于 iOS，输入 `com.microsoft.adalcache` 3.b 对于 macOS，输入 `com.microsoft.identity.universalstorage`
 
 ### <a name="create-msalpublicclientapplication-and-switch-to-its-acquiretoken-and-acquiretokesilent-calls"></a>创建 MSALPublicClientApplication 并切换到其 acquireToken 和 acquireTokeSilent 调用
 

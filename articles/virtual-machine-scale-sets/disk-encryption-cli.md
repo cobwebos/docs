@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 557d5c023acbc7987d58c9e78bfe11e25f314879
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76279075"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 对虚拟机规模集中的 OS 和附加数据磁盘进行加密
@@ -21,11 +21,11 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-a-scale-set"></a>创建规模集
 
-使用 [az group create](/cli/azure/group) 创建资源组，才能创建规模集。 下面的示例在*东部*位置创建名为*myResourceGroup*的资源组：
+使用 [az group create](/cli/azure/group) 创建资源组，才能创建规模集。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -60,7 +60,7 @@ az vmss extension set \
 
 Azure 密钥保管库可以存储能够在应用程序和服务中安全实现的密钥、机密或密码。 使用软件保护将加密密钥存储在 Azure 密钥保管库中，或者，可在已通过 FIPS 140-2 级别 2 标准认证的硬件安全模块 (HSM) 中导入或生成密钥。 这些加密密钥用于加密和解密附加到 VM 的虚拟磁盘。 可以控制这些加密密钥，以及审核对它们的使用。
 
-定义自己的唯一 keyvault_name**。 然后，在规模集所在的同一订阅和区域中，通过 [az keyvault create](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-create) 创建 KeyVault，并设置 --enabled-for-disk-encryption 访问策略**。
+定义自己的唯一 keyvault_name  。 然后，在规模集所在的同一订阅和区域中，通过 [az keyvault create](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-create) 创建 KeyVault，并设置 --enabled-for-disk-encryption 访问策略  。
 
 ```azurecli-interactive
 # Provide your own unique Key Vault name
@@ -74,7 +74,7 @@ az keyvault create --resource-group myResourceGroup --name $keyvault_name --enab
 
 仅当你要将现有的 Key Vault 用于磁盘加密时，才需要执行此步骤。 如果在上一部分中创建了 Key Vault，请跳过此步骤。
 
-定义自己的唯一 keyvault_name**。 然后，通过 [az keyvault update](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-update) 更新 KeyVault 并设置 --enabled-for-disk-encryption 访问策略**。
+定义自己的唯一 keyvault_name  。 然后，通过 [az keyvault update](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-update) 更新 KeyVault 并设置 --enabled-for-disk-encryption 访问策略  。
 
 ```azurecli-interactive
 # Provide your own unique Key Vault name
@@ -102,7 +102,7 @@ az vmss encryption enable \
 
 启动加密过程可能需要一到两分钟时间。
 
-因为之前步骤中创建的规模集上的升级策略设置为自动，所以 VM 实例将自动启动加密过程**。 在升级策略设为手动的规模集上，通过 [az vmss update-instances](/cli/azure/vmss#az-vmss-update-instances) 在 VM 实例上启动加密策略。
+因为之前步骤中创建的规模集上的升级策略设置为自动，所以 VM 实例将自动启动加密过程  。 在升级策略设为手动的规模集上，通过 [az vmss update-instances](/cli/azure/vmss#az-vmss-update-instances) 在 VM 实例上启动加密策略。
 
 ### <a name="enable-encryption-using-kek-to-wrap-the-key"></a>使用 KEK 启用加密以包装密钥
 
@@ -126,7 +126,7 @@ az vmss encryption enable \
 >  disk-encryption-keyvault 参数值的语法是完整的标识符字符串：</br>
 /subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]</br></br>
 > key-encryption-key 参数值的语法是 KEK 的完整 URI，如下所示：</br>
-https：//[钥匙库名称]vault.azure.net/键/[kekname]/[kek-唯一id]
+https：//[keyvault]. kekname/keys/[]/[kek]
 
 ## <a name="check-encryption-progress"></a>查看加密进度
 
@@ -136,7 +136,7 @@ https：//[钥匙库名称]vault.azure.net/键/[kekname]/[kek-唯一id]
 az vmss encryption show --resource-group myResourceGroup --name myScaleSet
 ```
 
-加密 VM 实例后，状态代码将报告 EncryptionState/encrypted，如下面的示例输出所示**：
+加密 VM 实例后，状态代码将报告 EncryptionState/encrypted，如下面的示例输出所示  ：
 
 ```bash
 [

@@ -14,10 +14,10 @@ ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a5518d516848ba7c006827faa41ff76bbca35d0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76897053"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>影响 Azure AD Connect 性能的因素
@@ -29,13 +29,13 @@ Azure AD Connect 将 Active Directory 同步到 Azure AD。 此服务器是将�
 | 拓扑| Azure AD Connect 必须在网络上管理的终结点和组件的分布。 |
 | 缩放| 要由 Azure AD Connect 管理的用户、组和 OU 等对象的数量。 |
 | 硬件| 用于 Azure AD Connect 的硬件（物理或虚拟）以及各个硬件组件（包括 CPU、内存、网络和硬盘配置）的相关性能容量。 |
-| Configuration| Azure AD Connect 处理目录和信息的方式。 |
+| 配置| Azure AD Connect 处理目录和信息的方式。 |
 | 加载| 对象更改的频率。 一小时、一日或一周内的负载各不相同。 可能需要根据峰值负载或平均负载进行设计，具体取决于组件。 |
 
 本文档旨在介绍影响 Azure AD Connect 预配引擎性能的因素。 大规模或复杂的组织（预配超过 10 万个对象的组织）如果遇到此处所述的任何性能问题，可使用建议方法来优化其 Azure AD Connect 实现。 其他 Azure AD Connect 组件（例如 [Azure AD Connect Health](how-to-connect-health-agent-install.md)）以及代理不在本文讨论范围之内。
 
 > [!IMPORTANT]
-> Microsoft 不支持通过未正式记录的方法修改或操作 Azure AD Connect。 这些操作中的任何一个都可能导致 Azure AD 连接同步的不一致或不受支持的状态。因此，Microsoft 无法为此类部署提供技术支持。
+> Microsoft 不支持通过未正式记录的方法修改或操作 Azure AD Connect。 其中的任何操作都可能会导致 Azure AD Connect 同步出现不一致或不受支持状态。因此，Microsoft 无法提供这种部署的技术支持。
 
 ## <a name="azure-ad-connect-component-factors"></a>Azure AD Connect 组件因素
 
@@ -43,7 +43,7 @@ Azure AD Connect 将 Active Directory 同步到 Azure AD。 此服务器是将�
 
 ![AzureADConnentInternal](media/plan-connect-performance-factors/AzureADConnentInternal.png)
 
-预配引擎连接到每个 Active Directory 林且连接到 Azure AD。 从每个目录读取信息的过程称为“导入”。 导出是指从预配引擎更新目录。 同步则评估规定对象在预配引擎内的流动方式的规则。 若要深入了解，请参阅 [Azure AD Connect 同步：了解体系结构](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)。
+预配引擎连接到每个 Active Directory 林且连接到 Azure AD。 从每个目录读取信息的过程称为“导入”。 导出是指从预配引擎更新目录。 同步则评估规定对象在预配引擎内的流动方式的规则。 若要深入了解，可参阅 [Azure AD Connect 同步：了解体系结构](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)。
 
 Azure AD Connect 使用以下临时区域、规则和过程，以实现从 Active Directory 到 Azure AD 的同步：
 
@@ -190,4 +190,4 @@ Azure AD 使用限制来防止云服务受到拒绝服务 (DoS) 攻击。 目前
 - 在 Azure AD 中监视 [Azure AD Connect 同步运行状况](how-to-connect-health-agent-install.md)。
 
 ## <a name="next-steps"></a>后续步骤
-详细了解[将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

@@ -4,10 +4,10 @@ description: 查找 Azure 资源管理器模板示例以在不同配置中部署
 ms.topic: article
 ms.date: 03/07/2019
 ms.openlocfilehash: a8f3c81c539562a3c56e4822cf6e4df77d04928f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75981651"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>适用于 Azure 容器实例的 Azure 资源管理器模板
@@ -21,13 +21,13 @@ ms.locfileid: "75981651"
 | | |
 |-|-|
 | **应用程序** ||
-| [Wordpress][app-wp] | 在容器组中创建 WordPress 网站及其 MySQL 数据库。 WordPress 站点内容和 MySQL 数据库会保存到 Azure 文件共享中。 还创建一个应用程序网关，以公开对 WordPress 的公用网络访问。 |
+| [WordPress][app-wp] | 在容器组中创建 WordPress 网站及其 MySQL 数据库。 WordPress 站点内容和 MySQL 数据库会保存到 Azure 文件共享中。 还创建一个应用程序网关，以公开对 WordPress 的公用网络访问。 |
 | [带有 SQL Server 和 IIS 的 MS NAV][app-nav] | 使用全功能自包含 Dynamics NAV/Dynamics 365 Business Central 环境部署单个 Windows 容器。 |
 | **卷** ||
 | [emptyDir][vol-emptydir] | 部署两个共享 emptyDir 卷的 Linux 容器。 |
-| [吉特雷波][vol-gitrepo] | 部署一个克隆 GitHub 存储库的 Linux 容器并将其作为卷装入。 |
-| [秘密][vol-secret] | 部署装有 PFX 证书的 Linux 容器作为机密卷。 |
-| **网络连接** ||
+| [gitRepo][vol-gitrepo] | 部署一个克隆 GitHub 存储库的 Linux 容器并将其作为卷装入。 |
+| [私钥][vol-secret] | 部署装有 PFX 证书的 Linux 容器作为机密卷。 |
+| **联网** ||
 | [公开 UDP 的容器][net-udp] | 部署公开 UDP 端口的 Windows 或 Linux 容器。 |
 | [具有公共 IP 的 Linux 容器][net-publicip] | 部署可通过公共 IP 访问的单个 Linux 容器。 |
 | [使用虚拟网络部署容器组（预览版）][net-vnet] | 部署新的虚拟网络、子网、网络配置文件和容器组。 |
@@ -40,7 +40,7 @@ ms.locfileid: "75981651"
 
 [Azure CLI][deploy-cli]
 
-[Azure 电源外壳][deploy-powershell]
+[Azure PowerShell][deploy-powershell]
 
 [Azure 门户][deploy-portal]
 

@@ -1,6 +1,6 @@
 ---
 title: Azure 通知中心示例
-description: 可用 Azure 通知中心示例的列表。
+description: 可用的 Azure 通知中心示例列表。
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -14,10 +14,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/28/2019
 ms.openlocfilehash: eb382a66ac901853d28b4d63d31a30ed2f65b96c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76263925"
 ---
 # <a name="azure-notification-hubs-samples"></a>Azure 通知中心示例
@@ -34,4 +34,4 @@ ms.locfileid: "76263925"
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅**目录教程部分**中的教程。
+请参阅目录中 "**教程**" 部分的教程。

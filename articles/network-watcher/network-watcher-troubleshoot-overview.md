@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
 ms.openlocfilehash: 199b4fc762919c2e3988f477c14d09fc23b0136b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76840683"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>在 Azure 网络观察程序中进行资源故障排除简介
@@ -73,7 +73,7 @@ ms.locfileid: "76840683"
 | ConnectionIsMarkedDisconnected | 连接标记为“断开连接” |否|
 | ConnectionNotConfiguredOnGateway | 未在基础服务上配置连接。 | 是 |
 | ConnectionMarkedStandby | 底层服务标记为备用。| 是|
-| 身份验证 | 预共享密钥不匹配 | 是|
+| Authentication | 预共享密钥不匹配 | 是|
 | PeerReachability | 无法访问对等网关。 | 是|
 | IkePolicyMismatch | 对等网关中的 IKE 策略不受 Azure 支持。 | 是|
 | WfpParse Error | 分析 WFP 日志时出错。 |是|
@@ -84,13 +84,13 @@ ms.locfileid: "76840683"
 
 |  |  |
 |---------|---------|
-|**网关类型**   |         |
+|网关类型    |         |
 |VPN      | 支持        |
 |ExpressRoute | 不支持 |
-|**VPN 类型** | |
+|VPN 类型  | |
 |基于路由 | 支持|
 |基于策略 | 不支持|
-|**连接类型**||
+|连接类型 ||
 |IPSec| 支持|
 |VNet2Vnet| 支持|
 |ExpressRoute| 不支持|
@@ -105,7 +105,7 @@ ms.locfileid: "76840683"
 > [!NOTE]
 > 在某些情况下，仅部分日志文件写入到存储中。
 
-有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 可以使用的另一个工具是存储资源管理器。 有关存储资源管理器的详细信息，请参阅以下链接：[存储资源管理器](https://storageexplorer.com/)
+有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 可以使用的另一个工具是存储资源管理器。 有关存储资源管理器的详细信息可以在此链接中找到：[存储资源管理器](https://storageexplorer.com/)
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 

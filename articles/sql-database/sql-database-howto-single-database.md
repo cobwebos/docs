@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 01/14/2020
 ms.openlocfilehash: 4283e1a2c92b7fe738fb57a8103cea1deb0015a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76027717"
 ---
 # <a name="how-to-use-a-single-database-in-azure-sql-database"></a>如何在 Azure SQL 数据库中使用单一数据库
@@ -60,14 +60,14 @@ ms.locfileid: "76027717"
 ## <a name="database-sharding"></a>数据库分片
 
 - [升级弹性数据库客户端库](sql-database-elastic-scale-upgrade-client-library.md)。
-- [创建分片应用程序](sql-database-elastic-scale-get-started.md)。
+- [创建分片应用](sql-database-elastic-scale-get-started.md)。
 - [查询水平分片的数据](sql-database-elastic-query-getting-started.md)。
 - 运行[多分片查询](sql-database-elastic-scale-multishard-querying.md)。
 - [移动分片数据](sql-database-elastic-scale-configure-deploy-split-and-merge.md)。
 - 在数据库分片中[配置安全性](sql-database-elastic-scale-split-merge-security-configuration.md)。
 - 向当前的数据库分片集[添加分片](sql-database-elastic-scale-add-a-shard.md)。
-- [修复分片映射问题](sql-database-elastic-database-recovery-manager.md)。
-- [迁移分片数据库](sql-database-elastic-convert-to-use-elastic-tools.md)。
+- [解决分片映射问题](sql-database-elastic-database-recovery-manager.md)。
+- [迁移分片 DB](sql-database-elastic-convert-to-use-elastic-tools.md)。
 - [创建计数器](sql-database-elastic-database-perf-counters.md)。
 - [使用实体框架](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md)查询分片的数据。
 - [使用 Dapper 框架](sql-database-elastic-scale-working-with-dapper.md)查询分片的数据。

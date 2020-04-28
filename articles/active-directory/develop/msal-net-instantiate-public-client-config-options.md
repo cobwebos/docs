@@ -1,5 +1,5 @@
 ---
-title: 实例化公共客户端应用 （MSAL.NET） |蔚蓝
+title: 实例化公用客户端应用（MSAL.NET） |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何通过适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 使用配置选项实例化公共客户端应用程序。
 services: active-directory
@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 1dd06e139f931bbf8554f05f05c5d9b9ccf200e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77083598"
 ---
 # <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>通过 MSAL.NET 使用配置选项实例化公共客户端应用程序
@@ -28,8 +28,8 @@ ms.locfileid: "77083598"
 
 - 客户端 ID（表示 GUID 的字符串）
 - 标识提供者 URL（为实例命名）和应用程序的登录受众。 这两个参数统称为颁发机构。
-- 租户 ID：如果你编写的业务线应用程序（也称为单租户应用程序）专用于自己的组织。
-- 对于 Web 应用或者公共客户端应用（特别是当你的应用需要使用中转站时），还将需要设置 redirectUri，标识提供者将在其中使用安全令牌联系你的应用程序。
+- 如果你仅在为组织编写业务线应用程序（也称为单租户应用程序），则为租户 ID。
+- 对于 Web 应用，有时对于公共客户端应用（特别是当你的应用需要使用中转站时），还将需要设置 redirectUri，标识提供者将在其中使用安全令牌联系你的应用程序。
 
 
 .NET Core 控制台应用程序可以具有以下 *appsettings.json* 配置文件：

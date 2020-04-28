@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/10/2019
 ms.openlocfilehash: aa638b86b0788b8c274f9dcb3c04c1fc385b4ae1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76279033"
 ---
 # <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>将 Azure 磁盘加密与虚拟机规模集扩展排序配合使用
@@ -156,8 +156,8 @@ Azure 磁盘加密等扩展可以按指定顺序添加到 Azure 虚拟机规模�
 
 
 ## <a name="next-steps"></a>后续步骤
-- 了解有关扩展排序的更多：[虚拟机缩放集中的序列扩展预配](virtual-machine-scale-sets-extension-sequencing.md)。
-- 了解有关`provisionAfterExtensions`属性的更多[：Microsoft.计算虚拟机规模集/扩展模板引用](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions)。
+- 详细了解扩展排序：[在虚拟机规模集中对扩展预配进行排序](virtual-machine-scale-sets-extension-sequencing.md)。
+- 详细了解 `provisionAfterExtensions` 属性：[Microsoft.Compute virtualMachineScaleSets/extensions 模板参考](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions)。
 - [适用于虚拟机规模集的 Azure 磁盘加密](disk-encryption-overview.md)
 - [使用 Azure CLI 加密虚拟机规模集](disk-encryption-cli.md)
 - [使用 Azure PowerShell 加密虚拟机规模集](disk-encryption-powershell.md)

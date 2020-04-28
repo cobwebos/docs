@@ -1,5 +1,5 @@
 ---
-title: 将数据从 Blob 存储复制到 SQL 数据库 - Azure
+title: 将数据从 Blob 存储复制到 SQL 数据库-Azure
 description: 本教程演示如何使用 Azure 数据工厂管道中的复制活动将数据从 Blob 存储复制到 SQL 数据库。
 services: data-factory
 documentationcenter: ''
@@ -14,10 +14,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: cc2f0a513219a671dd8a75ee00af4fc9d4c6a68a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75979727"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>教程：使用数据工厂将数据从 Blob 存储复制到 SQL 数据库
@@ -25,7 +25,7 @@ ms.locfileid: "75979727"
 > * [概述与先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [复制向导](data-factory-copy-data-wizard-tutorial.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
-> * [电源外壳](data-factory-copy-activity-tutorial-using-powershell.md)
+> * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager 模板](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
@@ -53,7 +53,7 @@ ms.locfileid: "75979727"
 ## <a name="collect-blob-storage-account-name-and-key"></a>收集 Blob 存储帐户名和密钥
 要完成本教程，需使用 Azure 存储帐户的帐户名和帐户密钥。 记下 Azure 存储帐户的**帐户名**和**帐户密钥**。
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 单击左侧菜单上的“所有服务”****，并选择“存储帐户”****。
 
     ![浏览存储帐户](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/browse-storage-accounts.png)
@@ -91,7 +91,7 @@ ms.locfileid: "75979727"
     John, Doe
     Jane, Doe
     ```
-2. 使用 Azure[存储资源管理器](https://storageexplorer.com/)等工具创建**adf 教程**容器并将**emp.txt**文件上载到容器。
+2. 使用[Azure 存储资源管理器](https://storageexplorer.com/)等工具创建**adftutorial**容器，并将**emp**文件上传到该容器。
 
 3. 使用以下 SQL 脚本在 Azure SQL 数据库中创建 **emp** 表。  
 
@@ -116,7 +116,7 @@ ms.locfileid: "75979727"
 
 * [复制向导](data-factory-copy-data-wizard-tutorial.md)
 * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
-* [电源外壳](data-factory-copy-activity-tutorial-using-powershell.md)
+* [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 * [Azure Resource Manager 模板](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)

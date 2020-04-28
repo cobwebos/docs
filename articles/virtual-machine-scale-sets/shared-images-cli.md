@@ -1,5 +1,5 @@
 ---
-title: 使用共享 VM 映像在 Azure 中创建缩放集
+title: 使用共享 VM 映像在 Azure 中创建规模集
 description: 了解如何使用 Azure CLI 在 Azure 中创建用于部署虚拟机规模集的共享 VM 映像。
 author: axayjo
 tags: azure-resource-manager
@@ -10,10 +10,10 @@ ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: ''
 ms.openlocfilehash: 83b3d5c904a65b28482acf8b685c939493c8c03b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76276270"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-cli-20"></a>通过 Azure CLI 2.0 创建和使用虚拟机规模集的共享映像
@@ -27,7 +27,7 @@ ms.locfileid: "76276270"
 [!INCLUDE [virtual-machines-common-shared-images-cli](../../includes/virtual-machines-common-shared-images-cli.md)]
 
 ## <a name="create-a-scale-set-from-the-custom-vm-image"></a>从自定义 VM 映像创建规模集
-使用 创建具有[`az vmss create`](/cli/azure/vmss#az-vmss-create)的缩放集。 不要使用 *UbuntuLTS* 或 *CentOS* 之类的平台映像，而应指定自定义 VM 映像的名称。 以下示例创建名为 *myScaleSet* 的规模集，该规模集使用上一步骤中创建的名为 *myImage* 的自定义映像：
+使用[`az vmss create`](/cli/azure/vmss#az-vmss-create)创建规模集。 不要使用 *UbuntuLTS* 或 *CentOS* 之类的平台映像，而应指定自定义 VM 映像的名称。 以下示例创建名为 *myScaleSet* 的规模集，该规模集使用上一步骤中创建的名为 *myImage* 的自定义映像：
 
 ```azurecli-interactive
 az vmss create \
@@ -45,7 +45,7 @@ az vmss create \
 
 
 ## <a name="clean-up-resources"></a>清理资源
-要删除规模集和其他资源，请删除资源组及其所有资源，使用[az 组删除](/cli/azure/group)。 `--no-wait` 参数会使光标返回提示符处，不会等待操作完成。 `--yes` 参数将确认是否希望删除资源，不会显示询问是否删除的额外提示。
+若要删除规模集和其他资源，请通过[az group delete](/cli/azure/group)删除资源组及其所有资源。 `--no-wait` 参数会使光标返回提示符处，无需等待操作完成。 `--yes` 参数将确认是否希望删除资源，而不会有额外提示。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --no-wait --yes

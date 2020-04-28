@@ -4,10 +4,10 @@ description: 使用 Visual Studio 创建 Azure 资源组项目，并将资源部
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.openlocfilehash: 5127732ac0c33d4b27f70bd616fb23aaec5c871f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76152725"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>通过 Visual Studio 创建和部署 Azure 资源组
@@ -18,18 +18,18 @@ ms.locfileid: "76152725"
 
 ## <a name="create-azure-resource-group-project"></a>创建 Azure 资源组项目
 
-在本部分，我们将使用“Web 应用”模板创建 Azure 资源组项目****。
+在本部分，我们将使用“Web 应用”模板创建 Azure 资源组项目  。
 
-1. 在可视化工作室中，选择 **"文件**>**新项目**>**"。**
-1. 选择“Azure 资源组”项目模板和“下一步”********。
+1. 在 Visual Studio 中，选择“文件” **“新建”** “项目”>  >  。
+1. 选择“Azure 资源组”项目模板和“下一步”   。
 
     ![创建项目](./media/create-visual-studio-deployment-project/create-project.png)
 
-1. 为你的项目命名。 其他默认设置可能没问题，但请查看它们，使它们适用于你的环境。 完成后，选择“创建”。****
+1. 为你的项目命名。 其他默认设置可能没问题，但请查看它们，使它们适用于你的环境。 完成后，选择“创建”。 
 
     ![创建项目](./media/create-visual-studio-deployment-project/name-project.png)
 
-1. 选择要部署到 Azure 资源管理器的模板。 可以看到，系统根据要部署的项目类型提供了许多不同的选项。 就本文来说，请选择“Web 应用”模板和“确定”********。
+1. 选择要部署到 Azure 资源管理器的模板。 可以看到，系统根据要部署的项目类型提供了许多不同的选项。 就本文来说，请选择“Web 应用”模板和“确定”   。
 
     ![选择模板](./media/create-visual-studio-deployment-project/select-project.png)
 
@@ -41,7 +41,7 @@ ms.locfileid: "76152725"
 
     由于选择了“Web 应用”模板，因此会看到以下文件：
 
-   | 文件名 | 描述 |
+   | 文件名 | 说明 |
    | --- | --- |
    | Deploy-AzureResourceGroup.ps1 |一个 PowerShell 脚本，运行 PowerShell 命令以部署到 Azure 资源管理器。 Visual Studio 使用此 PowerShell 脚本来部署模板。 |
    | WebSite.json |资源管理器模板，定义要部署到 Azure 的基础结构，以及在部署期间可以提供的参数。 它还定义各资源之间的依赖关系，以便资源管理器按正确的顺序部署资源。 |
@@ -53,9 +53,9 @@ ms.locfileid: "76152725"
 
 可以通过修改资源管理器模板（描述要部署的资源）来自定义部署项目。 若要了解资源管理器模板的元素，请参阅[创作 Azure 资源管理器模板](template-syntax.md)。
 
-1. 若要使用模板，请打开“WebSite.json”****。
+1. 若要使用模板，请打开“WebSite.json”  。
 
-1. Visual Studio 编辑器提供了工具来帮助编辑资源管理器模板。 “JSON 大纲”窗口可让你轻松查看模板中定义的元素****。
+1. Visual Studio 编辑器提供了工具来帮助编辑资源管理器模板。 “JSON 大纲”窗口可让你轻松查看模板中定义的元素  。
 
    ![显示 JSON 大纲](./media/create-visual-studio-deployment-project/show-json-outline.png)
 
@@ -63,11 +63,11 @@ ms.locfileid: "76152725"
 
    ![导航 JSON](./media/create-visual-studio-deployment-project/navigate-json.png)
 
-1. 可以通过选择“JSON 大纲”窗口顶部的“添加资源”**** 按钮，或右键单击“资源”****，并选择“添加新资源”****，来添加资源。
+1. 可以通过选择“JSON 大纲”窗口顶部的“添加资源”  按钮，或右键单击“资源”  ，并选择“添加新资源”  ，来添加资源。
 
    ![添加资源](./media/create-visual-studio-deployment-project/add-resource.png)
 
-1. 选择“存储帐户”**** 并为其命名。 提供一个名称，该名称不超过 11 个字符，并且只包含数字和小写字母。
+1. 选择“存储帐户”  并为其命名。 提供一个名称，该名称不超过 11 个字符，并且只包含数字和小写字母。
 
    ![添加存储](./media/create-visual-studio-deployment-project/add-storage.png)
 
@@ -94,7 +94,7 @@ ms.locfileid: "76152725"
 
    ![显示 Intellisense](./media/create-visual-studio-deployment-project/show-intellisense.png)
 
-   可以将 numberOfWorkers 设置为 1，并保存文件****。
+   可以将 numberOfWorkers 设置为 1，并保存文件  。
 
    ```json
    "properties": {
@@ -103,7 +103,7 @@ ms.locfileid: "76152725"
    }
    ```
 
-1. 打开 WebSite.parameters.json 文件****。 可以使用参数文件在部署期间传递值，这些值可以自定义正在部署的资源。 给托管计划命名，并保存文件。
+1. 打开 WebSite.parameters.json 文件  。 可以使用参数文件在部署期间传递值，这些值可以自定义正在部署的资源。 给托管计划命名，并保存文件。
 
    ```json
    {
@@ -139,15 +139,15 @@ ms.locfileid: "76152725"
 
 对于 AzureRM 模块脚本，请使用 Visual Studio：
 
-1. 在部署项目节点的快捷菜单上，选择 **"部署** > **新建**"。
+1. 在部署项目节点的快捷菜单中，选择“部署”   > “新建”  。
 
     ![新建部署菜单项](./media/create-visual-studio-deployment-project/deploy.png)
 
-1. 此时将显示 **“部署到资源组”** 对话框。 在 **“资源组”** 下拉框中，选择现有资源组，或创建一个新的资源组。 选择“部署”****。
+1. 此时会显示“部署到资源组”对话框  。 在“资源组”  下拉框中，选择现有资源组或创建新资源组。 选择“部署”。 
 
     ![部署到资源组对话框](./media/create-visual-studio-deployment-project/show-deployment.png)
 
-1. 在“输出”**** 窗口中可查看部署状态。 完成部署后，最后一条消息指示部署成功，其内容与下面的消息类似：
+1. 在“输出”  窗口中可查看部署状态。 完成部署后，最后一条消息指示部署成功，其内容与下面的消息类似：
 
    ```output
    18:00:58 - Successfully deployed template 'website.json' to resource group 'ExampleAppDeploy'.
@@ -157,7 +157,7 @@ ms.locfileid: "76152725"
 
 让我们检查结果。
 
-1. 在浏览器中，打开 [Azure 门户](https://portal.azure.com/)并登录到帐户。 要查看资源组，请选择“资源组”****，并选择已部署到的资源组。
+1. 在浏览器中，打开 [Azure 门户](https://portal.azure.com/)并登录到帐户。 要查看资源组，请选择“资源组”  ，并选择已部署到的资源组。
 
 1. 将显示所有已部署的资源。 请注意，存储帐户的名称并不完全是添加资源时指定的名称。 存储帐户必须是唯一的。 模板自动向所提供的名称添加一个字符串，以便创建唯一名称。
 
@@ -167,19 +167,19 @@ ms.locfileid: "76152725"
 
 此时，已为应用部署基础结构，但尚未在项目中部署实际代码。
 
-1. 将项目添加到 Visual Studio 解决方案。 右键单击解决方案，然后选择"**添加新** > **项目**"。
+1. 将项目添加到 Visual Studio 解决方案。 右键单击解决方案，选择“添加”   > “新建项目”  。
 
     ![添加项目](./media/create-visual-studio-deployment-project/add-project.png)
 
-1. 添加“ASP.NET Core Web 应用程序”****。
+1. 添加“ASP.NET Core Web 应用程序”  。
 
     ![添加 Web 应用](./media/create-visual-studio-deployment-project/add-app.png)
 
-1. 为你的 web 应用命名，然后选择“创建”****。
+1. 为你的 web 应用命名，然后选择“创建”  。
 
     ![为 web 应用命名](./media/create-visual-studio-deployment-project/name-web-app.png)
 
-1. 选择“Web 应用程序”和“创建”********。
+1. 选择“Web 应用程序”和“创建”   。
 
     ![选择 Web 应用程序](./media/create-visual-studio-deployment-project/select-project-type.png)
 
@@ -187,7 +187,7 @@ ms.locfileid: "76152725"
 
     ![显示项目](./media/create-visual-studio-deployment-project/show-projects.png)
 
-1. 现在，需要确保资源组项目与此新项目之间建立链接。 返回到资源组项目 (ExampleAppDeploy)。 右键单击“引用”****，选择“添加引用”****。
+1. 现在，需要确保资源组项目与此新项目之间建立链接。 返回到资源组项目 (ExampleAppDeploy)。 右键单击“引用”  ，选择“添加引用”  。
 
     ![添加引用](./media/create-visual-studio-deployment-project/add-new-reference.png)
 
@@ -195,7 +195,7 @@ ms.locfileid: "76152725"
 
    ![添加引用](./media/create-visual-studio-deployment-project/add-reference.png)
 
-   通过添加引用，可以将 Web 应用项目链接到资源组项目中，并自动设置一些属性。 可以在“属性”**** 窗口中看到针对该引用的属性。 “包含文件路径”**** 包含创建包所在的路径。 请记下文件夹 (ExampleApp) 和文件 (package.zip)。 用户需要知道这些值，因为在部署应用时需提供这些值作为参数。
+   通过添加引用，可以将 Web 应用项目链接到资源组项目中，并自动设置一些属性。 可以在“属性”  窗口中看到针对该引用的属性。 “包含文件路径”  包含创建包所在的路径。 请记下文件夹 (ExampleApp) 和文件 (package.zip)。 用户需要知道这些值，因为在部署应用时需提供这些值作为参数。
 
    ![查看引用](./media/create-visual-studio-deployment-project/see-reference.png)
 
@@ -203,15 +203,15 @@ ms.locfileid: "76152725"
 
     ![添加资源](./media/create-visual-studio-deployment-project/add-resource-2.png)
 
-1. 这次选择“用于 Web 应用的 Web 部署”****。
+1. 这次选择“用于 Web 应用的 Web 部署”  。
 
     ![添加 Web 部署](./media/create-visual-studio-deployment-project/add-web-deploy.png)
 
    保存模板。
 
-1. 你的模板中有一些新的参数。 它们是在先前的步骤中添加进来的。 不需要为 _artifactsLocation 或 _artifactsLocationSasToken 提供值，因为这些值自动生成********。 但是，必须将文件夹和文件名称设置为包含部署包的路径。 这些参数的名称以 PackageFolder 和 PackageFileName 结尾********。 名称的第一部分是添加的 Web 部署资源的名称。 在本文中，它们被命名为 ExampleAppPackageFolder 和 ExampleAppPackageFileName********。
+1. 你的模板中有一些新的参数。 它们是在先前的步骤中添加进来的。 不需要为 _artifactsLocation 或 _artifactsLocationSasToken 提供值，因为这些值自动生成   。 但是，必须将文件夹和文件名称设置为包含部署包的路径。 这些参数的名称以 PackageFolder 和 PackageFileName 结尾   。 名称的第一部分是添加的 Web 部署资源的名称。 在本文中，它们被命名为 ExampleAppPackageFolder 和 ExampleAppPackageFileName   。
 
-   打开 Website.parameters.json 并将这些参数设置为你在引用属性中看到的值****。 将 ExampleAppPackageFolder 设置为文件夹的名称****。 将 ExampleAppPackageFileName 设置为 zip 文件的名称****。
+   打开 Website.parameters.json 并将这些参数设置为你在引用属性中看到的值  。 将 ExampleAppPackageFolder 设置为文件夹的名称  。 将 ExampleAppPackageFileName 设置为 zip 文件的名称  。
 
    ```json
    {
@@ -237,7 +237,7 @@ ms.locfileid: "76152725"
 
 ### <a name="az-module-script"></a>Az 模块脚本
 
-如果你正在使用 Az 模块脚本，那么需要对模板做一个小的更改。 此脚本将斜杠添加到生成工件位置，但模板并不需要该斜杠。 打开 WebSite.json 并找到 MSDeploy 扩展的属性。 它有一个名为 packageUri 的属性****。 删除生成工件位置和包文件夹之间的斜杠。
+如果你正在使用 Az 模块脚本，那么需要对模板做一个小的更改。 此脚本将斜杠添加到生成工件位置，但模板并不需要该斜杠。 打开 WebSite.json 并找到 MSDeploy 扩展的属性。 它有一个名为 packageUri 的属性  。 删除生成工件位置和包文件夹之间的斜杠。
 
 它看起来应该如下所示：
 
@@ -245,7 +245,7 @@ ms.locfileid: "76152725"
 "packageUri": "[concat(parameters('_artifactsLocation'), parameters('ExampleAppPackageFolder'), '/', parameters('ExampleAppPackageFileName'), parameters('_artifactsLocationSasToken'))]",
 ```
 
-请注意，在前面的示例中，在 parameters('_artifactsLocation') 和 parameters('ExampleAppPackageFolder') 之间没有 `'/',`********。
+请注意，在前面的示例中，在 parameters('_artifactsLocation') 和 parameters('ExampleAppPackageFolder') 之间没有 `'/',`  。
 
 重新生成项目。 生成项目可确保需部署的文件添加到暂存文件夹中。
 
@@ -259,11 +259,11 @@ ms.locfileid: "76152725"
 
 对于 AzureRM 模块脚本，请使用 Visual Studio：
 
-1. 若要重新部署，请选择“部署”****，以及以前部署的资源组。
+1. 若要重新部署，请选择“部署”  ，以及以前部署的资源组。
 
     ![重新部署项目](./media/create-visual-studio-deployment-project/redeploy.png)
 
-1. 为“生成工件存储帐户”选择部署此资源组时所用的存储帐户****。
+1. 为“生成工件存储帐户”选择部署此资源组时所用的存储帐户  。
 
    ![重新部署 web 部署](./media/create-visual-studio-deployment-project/redeploy-web-app.png)
 
@@ -362,7 +362,7 @@ ms.locfileid: "76152725"
 
 1. 重新部署项目。
 
-1. 部署完成后，请在门户中查看你的仪表板。 选择“仪表板”**** 并选择你部署的仪表板。
+1. 部署完成后，请在门户中查看你的仪表板。 选择“仪表板”  并选择你部署的仪表板。
 
    ![自定义仪表板](./media/create-visual-studio-deployment-project/view-custom-dashboards.png)
 
@@ -376,11 +376,11 @@ ms.locfileid: "76152725"
 
 不再需要 Azure 资源时，请通过删除资源组来清理部署的资源。
 
-1. 在 Azure 门户上的左侧菜单中选择“资源组”****。
+1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
 
 1. 选择资源组名称。
 
-1. 在顶部菜单中选择“删除资源组”。****
+1. 在顶部菜单中选择“删除资源组”。 
 
 ## <a name="next-steps"></a>后续步骤
 

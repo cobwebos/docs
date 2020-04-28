@@ -16,10 +16,10 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 89b16a8479f8975d101b8a4e26dcb1885d9730bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77063374"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>将 Azure Active Directory 与应用程序集成入门指南
@@ -77,7 +77,7 @@ ms.locfileid: "77063374"
 使用 Microsoft Azure AD 应用程序代理，可以从任何位置和任何设备安全访问专用网络中的应用程序。 在环境中安装应用程序代理连接器后，可以使用 Azure AD 轻松配置该连接器。
 
 ### <a name="integrating-custom-applications"></a>集成自定义应用程序
-如果要编写新应用程序，并希望帮助开发人员利用 Azure AD 的强大功能，请参阅[指导开发人员](../active-directory-applications-guiding-developers-for-lob-applications.md)。
+如果正在编写新应用程序，并希望帮助开发人员利用 Azure AD 的强大功能，请参阅[指导开发人员](../active-directory-applications-guiding-developers-for-lob-applications.md)。
 
 如果想要将自定义应用程序添加到 Azure 应用程序库，请参阅[使用 Azure AD 自助 SAML 配置加入自己的应用](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)。
 
@@ -91,11 +91,11 @@ ms.locfileid: "77063374"
 * [共享帐户](../active-directory-sharing-accounts.md)
 
 ## <a name="next-steps"></a>后续步骤
-若要了解详细信息，可以从 [GitHub](https://aka.ms/deploymentplans) 下载 Azure Active Directory 部署计划。 对于库应用程序，您可以通过[Azure 门户](https://portal.azure.com)下载单一登录、条件访问和用户预配的部署计划。 
+若要了解详细信息，可以从 [GitHub](https://aka.ms/deploymentplans) 下载 Azure Active Directory 部署计划。 对于库应用程序，你可以通过[Azure 门户](https://portal.azure.com)下载单一登录、条件性访问和用户预配的部署计划。 
 
 若要从 Azure 门户下载部署计划，请执行以下操作：
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
-2. 选择**企业应用程序** | **选择应用** | **部署计划**。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+2. 选择 "**企业应用程序** | " "选择**应用** | **部署计划**"。
 
 通过完成[部署计划调查](https://aka.ms/DeploymentPlanFeedback)来提供有关部署计划的反馈。

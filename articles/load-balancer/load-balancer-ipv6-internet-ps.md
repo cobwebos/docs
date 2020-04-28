@@ -15,21 +15,21 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: e5f9762533dc2ad47f855714822ba39c645bf847
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76045471"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>开始使用用于 Resource Manager 的 PowerShell 创建具有 IPv6 的面向 Internet 的负载均衡器
 
 > [!div class="op_single_selector"]
-> * [电源外壳](load-balancer-ipv6-internet-ps.md)
+> * [PowerShell](load-balancer-ipv6-internet-ps.md)
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [模板](load-balancer-ipv6-internet-template.md)
 
 >[!NOTE] 
->本文介绍了一个介绍性的 IPv6 功能，允许基本负载均衡器同时提供 IPv4 和 IPv6 连接。 适用于[Azure VNET 的 IPv6](../virtual-network/ipv6-overview.md)集成了 IPv6 连接，包括 IPv6 网络安全组规则、IPv6 用户定义的路由、IPv6 基本和标准负载平衡等关键功能。  Azure VNET 的 IPv6 是 Azure 中 IPv6 应用程序的建议标准。 [有关 Azure VNET 电源壳部署，请参阅 IPv6](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) 
+>本文介绍了一项简介性的 IPv6 功能，该功能允许基本负载均衡器提供 IPv4 和 IPv6 连接。 [适用于 Azure VNET 的 IPv6](../virtual-network/ipv6-overview.md) 现在提供综合性 IPv6 连接，可以将 IPv6 连接与虚拟网络集成，包含 IPv6 网络安全组规则、IPv6 用户定义路由、IPv6 基本和标准负载均衡等关键功能。  适用于 Azure VNET 的 IPv6 是建议用于 Azure 中的 IPv6 应用程序的标准。 请参阅[适用于 Azure VNET PowerShell 部署的 IPv6](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) 
 
 Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负载均衡器可以在云服务或负载均衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 Azure Load Balancer 还可以在多个端口和/或多个 IP 地址上显示这些服务。
 
@@ -56,12 +56,12 @@ Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
 若要部署负载均衡器，需要创建并配置以下对象：
 
 * 前端 IP 配置 - 包含传入网络流量的公共 IP 地址。
-* 后端地址池 - 包含用于虚拟机从负载均衡器接收网络流量的网络接口 （NIC）。
+* 后端地址池 - 包含从负载均衡器接收网络流量的虚拟机网络接口 (NIC)。
 * 负载均衡规则 - 包含将负载均衡器上的公共端口映射到后端地址池中的端口的规则。
 * 入站 NAT 规则 - 包含将负载均衡器上的公共端口映射到后端地址池中特定虚拟机的端口的规则。
 * 探测器 - 包含用于检查后端地址池中虚拟机实例的可用性的运行状况探测器。
 
-有关详细信息，请参阅[Azure 负载均衡器组件](./concepts-limitations.md#load-balancer-components)。
+有关详细信息，请参阅 [Azure 负载均衡器组件](./concepts-limitations.md#load-balancer-components)。
 
 ## <a name="set-up-powershell-to-use-resource-manager"></a>将 PowerShell 设置为使用 Resource Manager
 
@@ -102,7 +102,7 @@ Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
     $vnet = New-AzvirtualNetwork -Name VNet -ResourceGroupName NRP-RG -Location 'West US' -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
     ```
 
-2. 为前端 IP 地址池创建 Azure 公共 IP 地址 (PIP) 资源。 在运行以下命令之前，请确保`-DomainNameLabel`更改 的值。 该值在 Azure 区域中必须是唯一的。
+2. 为前端 IP 地址池创建 Azure 公共 IP 地址 (PIP) 资源。 运行以下命令之前，请务必更改 `-DomainNameLabel` 的值。 该值在 Azure 区域中必须唯一。
 
     ```azurepowershell-interactive
     $publicIPv4 = New-AzPublicIpAddress -Name 'pub-ipv4' -ResourceGroupName NRP-RG -Location 'West US' -AllocationMethod Static -IpAddressVersion IPv4 -DomainNameLabel lbnrpipv4

@@ -1,6 +1,6 @@
 ---
-title: 教程：使用 Azure 活动目录配置用于自动用户预配的线束 |微软文档
-description: 了解如何将 Azure 活动目录配置为自动预配和取消配置用户帐户以使用工具。
+title: 教程：通过 Azure Active Directory 为自动用户预配配置工具 |Microsoft Docs
+description: 了解如何配置 Azure Active Directory 以便自动预配和取消设置要提供的用户帐户。
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,168 +16,168 @@ ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
 ms.openlocfilehash: 518d86fff04a23f1c1e63c44c53485b99f30637d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77057800"
 ---
-# <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>教程：为自动用户预配配置线束
+# <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>教程：为自动用户预配配置工具
 
-在本文中，您将了解如何配置 Azure 活动目录 （Azure AD） 以自动预配和取消将用户或组预配到"线束"。
+本文介绍如何配置 Azure Active Directory （Azure AD）以自动预配和取消设置要控制的用户或组。
 
 > [!NOTE]
-> 本文介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的重要信息和常见问题解答，请参阅[使用 Azure 活动目录 自动预配和取消预配到 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
+> 本文介绍了在 Azure AD 用户预配服务的基础上构建的连接器。 有关此服务的重要信息以及常见问题的答案，请参阅[利用 Azure Active Directory 自动执行用户预配和取消预配到 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
 >
 > 此连接器目前提供预览版。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="prerequisites"></a>先决条件
 
-本文中概述的方案假定您已经具备以下先决条件：
+本文中所述的方案假定你已具备以下先决条件：
 
 * Azure AD 租户
-* [线束租户](https://harness.io/pricing/)
-* 具有*管理员*权限的线束中的用户帐户
+* [工具租户](https://harness.io/pricing/)
+* 使用*管理员*权限的环境中的用户帐户
 
-## <a name="assign-users-to-harness"></a>将用户分配给线束
+## <a name="assign-users-to-harness"></a>将用户分配到工具
 
-Azure 活动目录使用称为*分配*的概念来确定哪些用户应接收对选定应用的访问权限。 在自动用户预配的上下文中，只有分配给 Azure AD 中应用程序的用户或组才会同步。
+Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户预配的上下文中，只同步已分配到 Azure AD 中的应用程序的用户或组。
 
-在配置和启用自动用户预配之前，请决定 Azure AD 中的哪些用户或组需要访问线束。 然后，您可以按照[将用户或组分配给企业应用](../manage-apps/assign-user-or-group-access-portal.md)中的说明将这些用户或组分配给 Harness。
+在配置和启用自动用户预配之前，决定 Azure AD 中的哪些用户或组需要访问功能。 然后，你可以按照[向企业应用分配用户或组](../manage-apps/assign-user-or-group-access-portal.md)中的说明分配这些用户或组。
 
-## <a name="important-tips-for-assigning-users-to-harness"></a>将用户分配给线束的重要提示
+## <a name="important-tips-for-assigning-users-to-harness"></a>将用户分配到工具的重要提示
 
-* 我们建议您为 Harness 分配单个 Azure AD 用户以测试自动用户预配配置。 稍后可以分配其他用户或组。
+* 建议分配单个 Azure AD 用户来测试自动用户预配配置。 稍后可以分配其他用户或组。
 
-* 将用户分配给线束时，必须在 **"分配"** 对话框中选择任何有效的特定于应用程序的角色（如果可用）。 具有*默认访问权限*角色的用户从预配中排除。
+* 将用户分配到工具时，必须在**分配**对话框中选择任何特定于应用程序的有效角色（如果可用）。 将从设置中排除具有*默认访问*角色的用户。
 
-## <a name="set-up-harness-for-provisioning"></a>设置用于预配的线束
+## <a name="set-up-harness-for-provisioning"></a>设置用于预配的工具
 
-1. 登录到[您的线束管理控制台](https://app.harness.io/#/login)，然后转到**持续安全** > **访问管理**。
+1. 登录到你的[工具管理控制台](https://app.harness.io/#/login)，然后再进入 "**持续安全** > **访问管理**"。
 
-    ![线束管理控制台](media/harness-provisioning-tutorial/admin.png)
+    ![工具管理控制台](media/harness-provisioning-tutorial/admin.png)
 
-1. 选择**API 密钥**。
+1. 选择 " **API 密钥**"。
 
-    ![线束 API 密钥链接](media/harness-provisioning-tutorial/apikeys.png)
+    ![工具 API 密钥链接](media/harness-provisioning-tutorial/apikeys.png)
 
-1. 选择 **"添加 API 密钥**"。 
+1. 选择 "**添加 API 密钥**"。 
 
-    ![线束添加 API 键链接](media/harness-provisioning-tutorial/addkey.png)
+    ![工具添加 API 密钥链接](media/harness-provisioning-tutorial/addkey.png)
 
-1. 在 **"添加 Api 键**"窗格中，执行以下操作：
+1. 在 "**添加 Api 密钥**" 窗格中，执行以下操作：
 
-    ![线束添加 Api 键窗格](media/harness-provisioning-tutorial/title.png)
+    ![工具添加 Api 密钥窗格](media/harness-provisioning-tutorial/title.png)
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在 **"名称"** 框中，提供键的名称。  
-   b.保留“数据库类型”设置，即设置为“共享”。 在"从下拉列表中**继承的权限**"列表中，选择一个选项。 
+   a. 在 "**名称**" 框中，为密钥提供名称。  
+   b. 在 "**继承自**" 下拉列表中，选择一个选项。 
    
-1. 选择“提交”****。
+1. 选择“提交”。 
 
-1. 复制**密钥**，以便以后在本教程中使用。
+1. 复制**密钥**以便以后在本教程中使用。
 
-    ![线束创建令牌](media/harness-provisioning-tutorial/token.png)
+    ![工具创建令牌](media/harness-provisioning-tutorial/token.png)
 
-## <a name="add-harness-from-the-gallery"></a>从库中添加线束
+## <a name="add-harness-from-the-gallery"></a>从库中添加工具
 
-在为使用 Azure AD 自动用户预配配置使用线束之前，需要将线束从 Azure AD 应用程序库添加到托管 SaaS 应用程序列表中。
+在配置用于 Azure AD 的自动用户预配的工具之前，需要将 Azure AD 应用程序库中的工具集添加到托管 SaaS 应用程序列表。
 
 1. 在 [Azure 门户](https://portal.azure.com) 的左窗格中，选择“Azure Active Directory”****。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-1. 选择**企业应用程序** > **所有应用程序**。
+1. 选择 "**企业应用程序** > " "**所有应用程序**"。
 
     ![“所有应用程序”链接](common/enterprise-applications.png)
 
-1. 要添加新应用程序，请选择窗格顶部的 **"新建应用程序**"按钮。
+1. 若要添加新应用程序，请选择窗格顶部的 "**新建应用程序**" 按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-1. 在搜索框中，在结果列表中输入**线束**，然后选择 **"添加**"按钮以添加应用程序。 **Harness**
+1. 在搜索框中，输入 "**工具**"，在结果列表中选择 "**工具**"，然后选择 "**添加**" 按钮添加该应用程序。
 
-    ![结果列表中的线束](common/search-new-app.png)
+    ![结果列表中的工具](common/search-new-app.png)
 
-## <a name="configure-automatic-user-provisioning-to-harness"></a>将自动用户配置配置为线束 
+## <a name="configure-automatic-user-provisioning-to-harness"></a>配置自动用户预配以进行配 
 
-本节将指导您完成将 Azure AD 预配服务配置为根据 Azure AD 中的用户或组分配在 Harness 中创建、更新和禁用用户或组的步骤。
+本部分将指导你完成配置 Azure AD 预配服务，以便基于 Azure AD 中的用户或组分配来创建、更新和禁用环境中的用户或组的步骤。
 
 > [!TIP]
-> 您也可以按照[线束单登录教程](https://docs.microsoft.com/azure/active-directory/saas-apps/harness-tutorial)中的说明，选择启用基于 SAML 的单位登录。 您可以独立于自动用户预配配置单一登录，尽管这两个功能相辅相成。
+> 还可以按照 "[工具单一登录" 教程](https://docs.microsoft.com/azure/active-directory/saas-apps/harness-tutorial)中的说明，选择启用基于 SAML 的单一登录。 你可以独立于自动用户预配配置单一登录，尽管这两个功能互相补充。
 
 > [!NOTE]
-> 要了解有关线束 SCIM 终结点的更多信息，请参阅线束[API 密钥](https://docs.harness.io/article/smloyragsm-api-keys)一文。
+> 若要了解有关工具 SCIM 终结点的详细信息，请参阅工具[API 密钥](https://docs.harness.io/article/smloyragsm-api-keys)这篇文章。
 
-要在 Azure AD 中配置线束的自动用户预配，请执行以下操作：
+若要为 Azure AD 中的工具配置自动用户预配，请执行以下操作：
 
-1. 在[Azure 门户](https://portal.azure.com)中，选择**企业应用程序** > **所有应用程序**。
+1. 在[Azure 门户](https://portal.azure.com)中，选择 "**企业应用程序** > " "**所有应用程序**"。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
 1. 在应用程序列表中，选择“Harness”。****
 
-    ![应用程序列表中的线束链接](common/all-applications.png)
+    ![应用程序列表中的 "工具" 链接](common/all-applications.png)
 
-1. 选择**预配**。
+1. 选择 "**预配**"。
 
-    ![预配按钮](common/provisioning.png)
+    !["设置" 按钮](common/provisioning.png)
 
-1. 在**预配模式**下拉列表中，选择 **"自动**"。
+1. 在 "**预配模式**" 下拉列表中，选择 "**自动**"。
 
-    !["预配模式"下拉列表](common/provisioning-automatic.png)
+    !["预配模式" 下拉列表](common/provisioning-automatic.png)
 
-1. 在 **"管理员凭据"** 下，执行以下操作：
+1. 在 "**管理员凭据**" 下，执行以下操作：
 
     ![租户 URL + 令牌](common/provisioning-testconnection-tenanturltoken.png)
  
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在 **"租户 URL"** 框中**`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`**，输入 。  
-   b.保留“数据库类型”设置，即设置为“共享”。 在 **"秘密令牌"** 框中，输入您保存在"设置资源调配工具"部分步骤 6 中保存的 SCIM 身份验证令牌值。  
-   c. 选择 **"测试连接**"以确保 Azure AD 可以连接到线束。 如果连接失败，请确保您的线束帐户具有*管理员*权限，然后重试。
+   a. 在 "**租户 URL** " 框中**`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`**，输入。  
+   b. 在 "**机密令牌**" 框中，输入你在 "设置用于预配的工具" 部分的步骤6中保存的 SCIM Authentication 令牌值。  
+   c. 选择 "**测试连接**" 以确保 Azure AD 可以连接到工具。 如果连接失败，请确保你的工具帐户具有*管理员*权限，然后重试。
 
-1. 在 **"通知电子邮件**"框中，输入应接收预配错误通知的个人或组的电子邮件地址，然后选择"在**发生故障时发送电子邮件通知**"复选框。
+1. 在 "**通知电子邮件**" 框中，输入应接收预配错误通知的人员或组的电子邮件地址，然后选中 "**发生故障时发送电子邮件通知**" 复选框。
 
-    !["通知电子邮件"框](common/provisioning-notification-email.png)
+    !["通知电子邮件" 框](common/provisioning-notification-email.png)
 
-1. 选择“保存”。****
+1. 选择“保存”。 
 
-1. 在 **"映射**"下，选择**将 Azure 活动目录用户同步到线束**。
+1. 在 "**映射**" 下，选择 "**同步用户要利用的 Azure Active Directory**。
 
-    ![利用"将 Azure 活动目录用户同步到线束"链接](media/harness-provisioning-tutorial/usermappings.png)
+    ![利用 "将 Azure Active Directory 用户同步到工具" 链接](media/harness-provisioning-tutorial/usermappings.png)
 
-1. 在**属性映射**下，查看从 Azure AD 同步到线束的用户属性。 选择为 *"匹配"* 的属性用于匹配 Harness 中的用户帐户以进行更新操作。 选择“保存”，提交所有更改****。
+1. 在 "**属性映射**" 下，查看从 Azure AD 同步到工具的用户属性。 选为 "*匹配*" 的属性用于匹配用于更新操作的工具中的用户帐户。 选择“保存”，提交所有更改****。
 
-    ![线束用户"属性映射"窗格](media/harness-provisioning-tutorial/userattributes.png)
+    ![工具用户 "属性映射" 窗格](media/harness-provisioning-tutorial/userattributes.png)
 
-1. 在 **"映射**"下，选择**将 Azure 活动目录组同步以进行利用**。
+1. 在 "**映射**" 下，选择 "**同步 Azure Active Directory 组" 以进行控制**。
 
-    ![利用"将 Azure 活动目录组同步到线束"链接](media/harness-provisioning-tutorial/groupmappings.png)
+    ![利用 "将 Azure Active Directory 组同步到工具" 链接](media/harness-provisioning-tutorial/groupmappings.png)
 
-1. 在**属性映射**下，查看从 Azure AD 同步到线束的组属性。 选择为 *"匹配属性"* 的属性用于匹配线束中的组以进行更新操作。 选择“保存”，提交所有更改****。
+1. 在 "**属性映射**" 下，查看从 Azure AD 同步到工具的组属性。 选为 "*匹配*" 属性的属性用于匹配用于更新操作的工具中的组。 选择“保存”，提交所有更改****。
 
-    ![线束组"属性映射"窗格](media/harness-provisioning-tutorial/groupattributes.png)
+    ![工具组 "属性映射" 窗格](media/harness-provisioning-tutorial/groupattributes.png)
 
-1. 要配置范围筛选器，请参阅[使用范围筛选器的基于属性的应用程序预配](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。
+1. 若要配置范围筛选器，请参阅[基于属性的应用程序预配和范围筛选器](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。
 
-1. 在 **"设置"** 下，要启用线束的 Azure AD 预配服务，请将**预配状态**开关切换为 **"打开**"。
+1. 在 "设置" 下，为 "**设置**" 启用 "Azure AD 预配服务"，将**设置状态**切换到 **"打开**"。
 
-    ![预配状态开关切换为"开"](common/provisioning-toggle-on.png)
+    ![预配状态切换切换到 "打开"](common/provisioning-toggle-on.png)
 
-1. 在 **"范围**"下拉列表中的 **"设置**"下，选择要如何同步要预配到线束的用户或组。
+1. 在 "**设置**" 下的 "**作用域**" 下拉列表中，选择要将正在设置的用户或组同步到的方式。
 
     ![预配范围](common/provisioning-scope.png)
 
-1. 准备好预配时，请选择"**保存**"。
+1. 准备好进行预配时，请选择 "**保存**"。
 
-    ![预配保存按钮](common/provisioning-configuration-save.png)
+    !["设置" "保存" 按钮](common/provisioning-configuration-save.png)
 
-此操作将开始预配的用户或组的初始同步。 初始同步执行的时间比以后的同步长。 只要 Azure AD 预配服务正在运行，大约每 40 分钟发生一次同步。 要监视进度，请转到 **"同步详细信息"** 部分。 还可以遵循指向预配活动报表的链接，该报表描述 Azure AD 预配服务在线束上执行的所有操作。
+此操作将启动正在设置的用户或组的初始同步。 初始同步执行的时间比更新时间长。 只要 Azure AD 预配服务正在运行，就大约每40分钟执行一次同步。 若要监视进度，请参阅 "**同步详细信息**" 部分。 你还可以跟踪到预配活动报告的链接，该报告描述了在工具上 Azure AD 预配服务执行的所有操作。
 
-有关如何读取 Azure AD 预配日志的详细信息，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
+有关如何读取 Azure AD 设置日志的详细信息，请参阅有关[自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [什么是使用 Azure 活动目录的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤
 

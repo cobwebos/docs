@@ -1,5 +1,5 @@
 ---
-title: 已知的 Safari 浏览器问题 （MSAL.js） |蔚蓝
+title: 已知的 Safari 浏览器问题（MSAL） |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解将适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 与 Safari 浏览器配合使用时的已知问题。
 services: active-directory
@@ -14,10 +14,10 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: edb995e31c2872c1541e29fee09dd66aafc8f9e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76696106"
 ---
 # <a name="known-issues-on-safari-browser-with-msaljs"></a>将 Safari 浏览器与 MSAL.js 配合使用时的已知问题 
@@ -34,7 +34,7 @@ MSAL.js 使用隐藏的 Iframe 在 `acquireTokenSilent` 调用过程中执行无
 
 ### <a name="work-around"></a>变通方法
 
-默认情况下，会在 Safari 浏览器上启用 ITP 设置。 您可以通过导航到 **"首选项** -> **隐私**"并取消选中 **"防止跨站点跟踪**"选项来禁用此设置。
+默认情况下，会在 Safari 浏览器上启用 ITP 设置。 可以禁用此设置，方法是：导航到“首选项”   -> “隐私”  ，然后取消选中“防止跨站点跟踪”选项。 
 
 ![safari 设置](./media/msal-js-known-issue-safari-browser/safari.png)
 

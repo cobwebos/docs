@@ -1,5 +1,5 @@
 ---
-title: 如何从 Azure 开发人员测试实验室删除和导出个人数据
+title: 如何从 Azure 开发测试实验室删除和导出个人数据
 description: 了解如何从 Azure 开发测试实验室服务中删除和导出个人数据，以帮助履行一般数据保护条例 (GDPR) 中规定的义务。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: c87e2fb534480bbf9bbe625d67782e5a11eda18c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76169684"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>从 Azure 开发测试实验室中导出或删除个人数据
@@ -42,8 +42,8 @@ ms.locfileid: "76169684"
 **当前日历月的估计成本趋势：**
 ![当前日历月的估计成本趋势](./media/personal-data-delete-export/estimated-cost-trend-per-month.png)
 
-**按资源估算的月至今成本：**
-![按资源估算的月至今成本](./media/personal-data-delete-export/estimated-month-to-date-cost-by-resource.png)
+**按资源估计的本月截止到现在的成本：**
+![按资源划分的本月截止到现在的成本](./media/personal-data-delete-export/estimated-month-to-date-cost-by-resource.png)
 
 
 ## <a name="why-do-we-need-this-personal-data"></a>我们为何需要这些个人数据？
@@ -55,10 +55,10 @@ ms.locfileid: "76169684"
 例如，如果你删除了 VM 或电子邮件地址，则删除该资源后，开发测试实验室服务会将此数据匿名化 30 天。 删除后保留 30 天的策略旨在确保向实验室管理员提供准确的每月成本预测。
 
 ## <a name="how-can-i-request-an-export-on-my-personal-data"></a>如何请求导出个人数据？
-您可以使用 Azure 门户或 PowerShell 导出个人和实验室使用情况数据。 数据导出为两个不同的 CSV 文件：
+你可以使用 Azure 门户或 PowerShell 导出个人和实验室使用情况数据。 数据将导出为两个不同的 CSV 文件：
 
-- **disks.csv** - 包含有关不同 VM 正在使用的磁盘的信息
-- **虚拟机.csv** - 包含有关实验室中 VM 的信息。
+- **磁盘 .csv** -包含有关不同 vm 正在使用的磁盘的信息
+- **virtualmachines** -包含有关实验室中的 vm 的信息。
 
 ### <a name="azure-portal"></a>Azure 门户
 实验室用户可以请求导出开发测试实验室服务存储的个人数据。 若要请求导出，请在实验室的“概述”页上导航到“个人数据”选项。******** 选择“请求导出”按钮，开始在实验室管理员的存储帐户中创建可下载的 Excel 文件。**** 然后，可以联系实验室管理员查看此数据。
@@ -144,76 +144,76 @@ else
 }
 ```
 
-上述示例中的关键组件包括：
+上述示例中的关键组件是：
 
-- 调用 AzureRm 资源操作命令。
+- AzureRmResourceAction 命令。
    
     ```
     Invoke-AzureRmResourceAction -Action 'exportLabResourceUsage' -ResourceId $resourceId -Parameters $actionParameters -Force
     ```
 - 两个操作参数
-    - **blob 存储绝对Sasuri** - 具有共享访问签名 （SAS） 令牌的存储帐户 URI。 在 PowerShell 脚本中，可以传入此值，而不是存储密钥。
-    - **使用开始日期**- 提取数据的开始日期，结束日期为执行操作的当前日期。 粒度在日级，因此即使您添加时间信息，也会忽略该信息。
+    - **blobStorageAbsoluteSasUri** -具有共享访问签名（SAS）令牌的存储帐户 URI。 在 PowerShell 脚本中，可以传递此值，而不是存储密钥。
+    - **usageStartDate** -要提取数据的开始日期，结束日期是执行操作的当前日期。 粒度为日级别，因此即使添加了时间信息，它也会被忽略。
 
-### <a name="exported-data---a-closer-look"></a>导出的数据 - 仔细观察
-现在，让我们仔细看看导出的数据。 如前所述，一旦数据成功导出，将有两个 CSV 文件。 
+### <a name="exported-data---a-closer-look"></a>导出的数据-详细了解
+现在，让我们详细了解导出的数据。 如前所述，数据成功导出后，将有两个 CSV 文件。 
 
-**虚拟机.csv**包含以下数据列：
+**Virtualmachines**包含下列数据列：
 
-| 列名称 | 描述 |
+| 列名称 | 说明 |
 | ----------- | ----------- | 
-| SubscriptionId | 实验室存在的订阅标识符。 |
-| 拉布伊德 | 实验室的唯一 GUID 标识符。 |
-| 实验室名称 | 实验室的名称。 |
-| 实验室资源Id | 完全合格的实验室资源 ID。 |
+| SubscriptionId | 实验室所在的订阅标识符。 |
+| LabUId | 实验室的唯一 GUID 标识符。 |
+| LabName | 实验室的名称。 |
+| LabResourceId | 完全限定的实验室资源 ID。 |
 | ResourceGroupName | 包含 VM 的资源组的名称 | 
-| ResourceId | VM 完全限定的资源 ID。 |
-| 资源库ID | VM 的 GUID |
-| “属性” | 虚拟机名称。 |
-| CreatedTime | 创建 VM 的日期和时间。 |
-| DeletedDate | 删除 VM 的日期和时间。 如果为空，则尚未发生删除。 |
-| 资源所有者 | VM 的所有者。 如果该值为空，则该值要么是可声明 VM，要么是由服务主体创建的。 |
-| 定价层 | VM 的定价层 |
-| 资源状态 | VM 的可用性状态。 如果 VM 已删除，则处于活动状态（如果仍然存在或处于非活动状态）。 |
-| 计算资源 Id | 完全合格的虚拟机计算资源标识符。 |
-| 可索赔 | 如果 VM 是可声明的 VM，则设置为 true | 
-| 环境Id | 在其中创建虚拟机的环境资源标识符。 当 VM 不是作为环境资源的一部分创建时，它是空的。 |
-| ExpirationDate | VM 的到期日期。 如果尚未设置到期日期，则将其设置为空。
-| 库图像参考版本 |  VM 基本映像的版本。 |
-| 画廊图片参考提供 | 提供 VM 基本映像。 |
-| 画廊图片参考发布者 | VM 基本映像的发布者。 |
-| 画廊图片参考库 | VM 基本映像的 Sku |
-| 库图像参考类型 | VM 基本映像的操作系统类型 |
-| 自定义图像 Id | VM 基本自定义映像的完全限定 ID。 |
+| ResourceId | VM 的完全限定的资源 ID。 |
+| ResourceUId | VM 的 GUID |
+| 名称 | 虚拟机名称。 |
+| CreatedTime | VM 的创建日期时间。 |
+| DeletedDate | VM 的删除日期时间。 如果此为空，则尚未执行删除操作。 |
+| ResourceOwner | VM 的所有者。 如果该值为空，则它可以是可认领 VM，也可以由服务主体创建。 |
+| PricingTier | VM 的定价层 |
+| ResourceStatus | VM 的可用性状态。 处于活动状态，如果已删除 VM，则为; 如果仍存在，则为非活动状态。 |
+| ComputeResourceId | 完全限定的虚拟机计算资源标识符。 |
+| 可认领 | 如果 VM 是可认领 VM，则设置为 true | 
+| EnvironmentId | 在其中创建虚拟机的环境资源标识符。 如果未将 VM 创建为环境资源的一部分，则为空。 |
+| ExpirationDate | VM 的到期日期。 如果尚未设置过期日期，则将其设置为空。
+| GalleryImageReferenceVersion |  VM 基本映像的版本。 |
+| GalleryImageReferenceOffer | VM 基本映像的产品/服务。 |
+| GalleryImageReferencePublisher | VM 基本映像的发布者。 |
+| GalleryImageReferenceSku | VM 基本映像的 Sku |
+| GalleryImageReferenceOsType | VM 基本映像的 OS 类型 |
+| CustomImageId | VM 基本自定义映像的完全限定 ID。 |
 
-**磁盘.csv**中包含的数据列如下所示：
+下面**列出了在 node.js 中包含**的数据列：
 
-| 列名称 | 描述 | 
+| 列名称 | 说明 | 
 | ----------- | ----------- | 
-| SubscriptionId | 包含实验室的订阅 ID |
-| 拉布伊德 | 实验室 GUID |
-| 实验室名称 | 实验室名称 | 
-| 实验室资源Id | 实验室完全合格的资源 ID | 
+| SubscriptionId | 包含实验室的订阅的 ID |
+| LabUId | 实验室的 GUID |
+| LabName | 实验室的名称 | 
+| LabResourceId | 实验室的完全限定的资源 ID | 
 | ResourceGroupName | 包含实验室的资源组的名称 | 
-| ResourceId | VM 完全限定的资源 ID。 |
-| 资源库ID | VM 的 GUID |
- |“属性” | 连接磁盘的名称 |
-| CreatedTime |创建数据磁盘的日期和时间。 |
-| DeletedDate | 删除数据磁盘的日期和时间。 |
-| 资源状态 | 资源的状态。 如果资源存在，则处于活动状态。 删除时处于非活动状态。 |
-| 磁盘Blob名称 | 数据磁盘的 Blob 名称。 |
-| 磁盘大小GB | 数据磁盘的大小。 |
-| DiskType | 数据磁盘的类型。 0 表示标准，1 表示高级。 |
-| 租赁ByVmId | 已附加到数据磁盘的 VM 的资源 ID。 |
+| ResourceId | VM 的完全限定的资源 ID。 |
+| ResourceUId | VM 的 GUID |
+ |名称 | 附加的磁盘的名称 |
+| CreatedTime |数据磁盘的创建日期和时间。 |
+| DeletedDate | 数据磁盘的删除日期和时间。 |
+| ResourceStatus | 资源的状态。 如果资源存在，则为 "活动"。 非活动（删除时）。 |
+| DiskBlobName | 数据磁盘的 Blob 名称。 |
+| DiskSizeGB | 数据磁盘的大小。 |
+| DiskType | 数据磁盘的类型。 对于标准，1表示高级。 |
+| LeasedByVmId | 数据磁盘附加到的 VM 的资源 ID。 |
 
 
 > [!NOTE]
-> 如果您正在处理多个实验室，并且想要获取总体信息，则两个关键列是**LabUID**和**ResourceUID，** 它们是跨订阅的唯一 ID。
+> 如果要处理多个实验室并想要获取整体信息，两个关键列是**LabUID**和**ResourceUId**，它们是订阅之间的唯一 id。
 
-可以使用 SQL Server、Power BI 等工具操作和可视化导出的数据。当您要向可能使用与 Azure 订阅相同的 Azure 订阅的管理团队报告实验室的使用情况时，此功能特别有用。
+导出的数据可以使用工具（如 SQL Server、Power BI 等）进行操作和可视化。当你想要将实验室的使用情况报告给你的管理团队时，此功能特别有用。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章： 
 
 - [设置实验室的策略](devtest-lab-get-started-with-lab-policies.md)
-- [常见问题](devtest-lab-faq.md)
+- [常见问题解答](devtest-lab-faq.md)

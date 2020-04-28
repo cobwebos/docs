@@ -1,5 +1,5 @@
 ---
-title: Azure 宇宙 DB：大批量执行器 .NET API、SDK &资源
+title: Azure Cosmos DB：批量执行程序 .NET API、SDK 和资源
 description: 了解有关批量执行程序 .NET API 和 SDK 的所有信息，包括发布日期、停用日期和 Azure Cosmos DB 批量执行程序 .NET SDK 各版本之间所做的更改。
 author: tknandu
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 01/16/2020
 ms.author: ramkris
 ms.openlocfilehash: 1a8040fc397b526b540ce9343baa985cab49e2b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76169398"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET 批量执行程序库：下载信息 
@@ -28,8 +28,8 @@ ms.locfileid: "76169398"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 资源提供程序](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [批量执行器 - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [批量执行器 - Java](sql-api-sdk-bulk-executor-java.md)
+> * [批量执行程序 - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [批量执行程序 - Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
@@ -45,25 +45,25 @@ ms.locfileid: "76169398"
 
 ## <a name="release-notes"></a>发行说明
 
-### <a name="241-preview"></a><a name="2.4.1-preview"/>2.4.1 预览
+### <a name="241-preview"></a><a name="2.4.1-preview"/>2.4.1-预览
 
-* 在 BulkDelete 的响应中固定总时间，以正确测量总时间，包括任何重试。
+* 修复了 BulkDelete 响应中的 TotalElapsedTime，以正确度量包括任何重试的总时间。
 
-### <a name="240-preview"></a><a name="2.4.0-preview"/>2.4.0 预览版
+### <a name="240-preview"></a><a name="2.4.0-preview"/>2.4.0-预览
 
-* 将 SDK 依赖项更改为 >= 2.5.1
+* 已将 SDK 依赖关系更改为 >= 2.5。1
 
-### <a name="230-preview2"></a><a name="2.3.0-preview2"/>2.3.0-预览2
+### <a name="230-preview2"></a><a name="2.3.0-preview2"/>2.3.0-preview2
 
-* 添加了对图形批量执行器的支持，以在顶点和边上接受 ttl
+* 添加了对 graph 大容量执行程序的支持，以接受顶点和边缘上的 ttl
 
-### <a name="220-preview2"></a><a name="2.2.0-preview2"/>2.2.0-预览2
+### <a name="220-preview2"></a><a name="2.2.0-preview2"/>2.2.0-preview2
 
-* 修复了在网关模式下运行时 Azure Cosmos DB 的弹性缩放期间导致异常的问题。 此修复程序使其在功能上等效于 1.4.1 版本。
+* 修复了一个问题：在网关模式下运行时，在弹性缩放 Azure Cosmos DB 期间导致异常。 此修补程序使其在功能上等效于1.4.1 版本。
 
-### <a name="210-preview2"></a><a name="2.1.0-preview2"/>2.1.0-预览2
+### <a name="210-preview2"></a><a name="2.1.0-preview2"/>2.1.0-preview2
 
-* 添加了对 SQL API 帐户接受分区密钥、文档 ID 副本以删除的支持。 此更改使其在功能上等效于 1.4.0 版本。
+* 添加了对 SQL API 帐户的 BulkDelete 支持，以接受分区键、要删除的文档 id 元组。 此更改使其在功能上等效于1.4.0 版本。
 
 ### <a name="200-preview2"></a><a name="2.0.0-preview2"/>2.0.0-preview2
 
@@ -71,61 +71,61 @@ ms.locfileid: "76169398"
 
 ### <a name="200-preview"></a><a name="2.0.0-preview"/>2.0.0-preview
 
-* 添加了 .NET 标准 2.0 作为支持的目标框架之一，以使批量执行器库与 .NET Core 应用程序一起工作。
+* 添加了 .NET Standard 2.0 作为受支持的目标框架之一，使批量执行器库可用于 .NET Core 应用程序。
 
 ### <a name="188"></a><a name="1.8.8"/>1.8.8
 
-* 修复了 MongoBulk Executor 上通过添加填充和在某些情况下超出最大文档大小限制意外增加文档大小的问题。
+* 解决了在 MongoBulkExecutor 上，添加填充并在某些情况下会超出最大文档大小限制的问题。
 
 ### <a name="187"></a><a name="1.8.7"/>1.8.7
 
-* 修复了 BulkDeleteAsync 在集合嵌套分区密钥路径时的问题。
+* 修复了在集合具有嵌套分区键路径时 BulkDeleteAsync 的问题。
 
 ### <a name="186"></a><a name="1.8.6"/>1.8.6
 
-* MongoBulkExecutor 现在实现了 IIIIA，并且预计在使用后释放它。
+* MongoBulkExecutor 现在实现 IDisposable，并应在使用后将其释放。
 
 ### <a name="185"></a><a name="1.8.5"/>1.8.5
 
-* 在 SDK 版本上删除了锁。 包现在依赖于 SDK >= 2.5.1。
+* 已在 SDK 版本上删除锁。 包现在依赖于 SDK >= 2.5.1。
 
 ### <a name="184"></a><a name="1.8.4"/>1.8.4
 
-* 使用具有数值的 POCO 对象列表调用 BulkImport 时修复标识符的处理。
+* 修复了使用具有数字值的 POCO 对象的列表调用 BulkImport 时的标识符处理。
 
 ### <a name="183"></a><a name="1.8.3"/>1.8.3
 
-* 在 BulkDelete 的响应中固定总时间，以正确测量总时间，包括任何重试。
+* 修复了 BulkDelete 响应中的 TotalElapsedTime，以正确度量包括任何重试的总时间。
 
 ### <a name="182"></a><a name="1.8.2"/>1.8.2
 
-* 修复了某些方案中的高 CPU 消耗。
-* 现在，使用跟踪源进行跟踪。 用户可以为`BulkExecutorTrace`源定义侦听器。
-* 修复了在发送大小接近 2Mb 的文档时可能导致锁定的罕见情况。
+* 修复了在某些情况下 CPU 消耗较高的情况。
+* 跟踪现在使用 TraceSource。 用户可以为`BulkExecutorTrace`源定义侦听器。
+* 修复了在发送文档大小接近2Mb 时可能导致锁定的罕见情况。
 
 ### <a name="160"></a><a name="1.6.0"/>1.6.0
 
-* 更新了批量执行器，现在使用最新版本的 Azure Cosmos DB .NET SDK （2.4.0）
+* 已将批量执行程序更新为现在使用最新版本的 Azure Cosmos DB .NET SDK （2.4.0）
 
 ### <a name="150"></a><a name="1.5.0"/>1.5.0
 
-* 添加了对图形批量执行器的支持，以在顶点和边上接受 ttl
+* 添加了对 graph 大容量执行程序的支持，以接受顶点和边缘上的 ttl
 
 ### <a name="141"></a><a name="1.4.1"/>1.4.1
 
-* 修复了在网关模式下运行时 Azure Cosmos DB 的弹性缩放期间导致异常的问题。
+* 修复了一个问题：在网关模式下运行时，在弹性缩放 Azure Cosmos DB 期间导致异常。
 
 ### <a name="140"></a><a name="1.4.0"/>1.4.0
 
-* 添加了对 SQL API 帐户接受分区密钥、文档 ID 副本以删除的支持。
+* 添加了对 SQL API 帐户的 BulkDelete 支持，以接受分区键、要删除的文档 id 元组。
 
 ### <a name="130"></a><a name="1.3.0"/>1.3.0
 
-* 修复了导致批量执行器使用的用户代理中的格式问题。
+* 修复了一个问题，该问题导致大容量执行程序使用的用户代理中出现格式问题。
 
 ### <a name="120"></a><a name="1.2.0"/>1.2.0
 
-* 改进批量执行器导入和更新 API，以透明地适应 Cosmos 容器的弹性缩放，当存储超过当前容量而不引发异常时。
+* 在存储超过当前容量而不引发异常时，对批量执行器导入和更新 Api 进行了改进，以透明地适应 Cosmos 容器的弹性缩放。
 
 ### <a name="112"></a><a name="1.1.2"/>1.1.2
 
@@ -133,7 +133,7 @@ ms.locfileid: "76169398"
 
 ### <a name="111"></a><a name="1.1.1"/>1.1.1
 
-* 修复了一个问题，导致批量执行器在导入到固定集合时引发 JSRT 错误。
+* 修复了一个问题，该问题导致大容量执行程序在导入到固定集合时引发 JSRT 错误。
 
 ### <a name="110"></a><a name="1.1.0"/>1.1.0
 

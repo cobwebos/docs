@@ -17,10 +17,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b43d2de0a366d7e69a025b2e4e2998dccda2038e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76756205"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>为 Azure AD 应用程序代理连接器创建无人参与安装脚本
@@ -34,7 +34,7 @@ ms.locfileid: "76756205"
 * 将连接器安装与注册集成为另一个过程的一部分。
 * 创建包含连接器代码但未注册的标准服务器映像。
 
-要使[应用程序代理连接器](application-proxy-connectors.md)正常工作，必须使用应用程序管理员和密码将其注册到 Azure AD 目录。 通常在连接器安装期间出现弹出窗口对话框时输入此信息，但是可改为使用 PowerShell 自动执行此过程。
+要使[应用程序代理连接器](application-proxy-connectors.md)正常工作，必须使用应用程序管理员和密码将其注册到 Azure AD 的目录。 通常在连接器安装期间出现弹出窗口对话框时输入此信息，但是可改为使用 PowerShell 自动执行此过程。
 
 无人参与安装包括两个步骤。 第一步，安装连接器。 第二步，向 Azure AD 注册连接器。 
 
@@ -53,7 +53,7 @@ ms.locfileid: "76756205"
 * 使用离线创建的令牌注册连接器
 
 ### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>使用 Windows PowerShell 凭据对象注册连接器
-1. 创建包含目录管理用户名和密码的 Windows PowerShell 凭据对象 `$cred`。 运行以下命令，替换*\<\>用户名和密码*： * \<\>*
+1. 创建包含目录管理用户名和密码的 Windows PowerShell 凭据对象 `$cred`。 运行以下命令，并替换* \<用户名\> *和* \<密码\>*：
    
         $User = "<username>"
         $PlainPassword = '<password>'
@@ -66,7 +66,7 @@ ms.locfileid: "76756205"
 ### <a name="register-the-connector-using-a-token-created-offline"></a>使用离线创建的令牌注册连接器
 1. 通过 AuthenticationContext 类使用以下代码片段或 PowerShell cmdlet 中的值创建离线令牌：
 
-    **使用 C#：**
+    **使用 c #：**
 
         using System;
         using System.Diagnostics;
@@ -121,7 +121,7 @@ ms.locfileid: "76756205"
             tenantID = authResult.TenantId;
         }
 
-    **使用电源外壳：**
+    **使用 PowerShell：**
 
         # Locate AzureAD PowerShell Module
         # Change Name of Module to AzureAD after what you have installed

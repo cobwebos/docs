@@ -1,5 +1,5 @@
 ---
-title: 使用可视化工作室 （ASP.NET） 开始使用 Azure 表存储
+title: 通过 Visual Studio 开始使用 Azure 表存储（ASP.NET）
 description: 在使用 Visual Studio 连接服务连接到存储帐户后，如何开始在 Visual Studio 的 ASP.NET 项目中使用 Azure 表存储
 services: storage
 author: ghogen
@@ -14,10 +14,10 @@ ms.date: 12/21/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: c49df689ae859c93046c19af043aa2001dbb5481
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75979632"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>开始使用 Azure 表存储和 Visual Studio 连接服务 (ASP.NET)
@@ -115,7 +115,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     }
     ```
 
-1. 在 **CreateTable** 方法中，获取表示存储帐户信息的 **CloudStorageAccount** 对象。 使用以下代码从 Azure 服务配置获取存储连接字符串和存储帐户信息：（将*&lt;存储帐户名称>* 更改为要访问的 Azure 存储帐户的名称。
+1. 在 **CreateTable** 方法中，获取表示存储帐户信息的 **CloudStorageAccount** 对象。 使用以下代码从 azure 服务配置中获取存储连接字符串和存储帐户信息：（将* &lt;存储帐户名称>* 更改为你要访问的 Azure 存储帐户的名称。）
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -170,7 +170,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     <li>@Html.ActionLink("Create table", "CreateTable", "Tables")</li>
     ```
 
-1. 运行应用程序，然后选择 **"创建表"** 以查看类似于以下屏幕截图的结果：
+1. 运行应用程序，并选择 "**创建表**" 以查看类似于以下屏幕截图的结果：
   
     ![创建表](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
 
@@ -178,7 +178,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
 
 ## <a name="add-an-entity-to-a-table"></a>将实体添加到表
 
-*实体*使用派生自\#**表实体**的自定义类映射到 C 对象。 要将实体添加到表，请创建用于定义实体的属性的类。 本部分介绍如何定义可将客户的名字和姓氏分别用作行键和分区键的实体类。 实体的分区键和行键共同唯一地标识表中的实体。 查询分区键相同的实体的速度快于查询分区键不同的实体的速度，但使用不同的分区键可实现更高的并行操作可伸缩性。 对于应存储在表服务中的任何属性，该属性必须是公开设置和检索值的受支持类型的公共属性。
+*实体*使用派生自\# **TableEntity**的自定义类映射到 C 对象。 要将实体添加到表，请创建用于定义实体的属性的类。 本部分介绍如何定义可将客户的名字和姓氏分别用作行键和分区键的实体类。 实体的分区键和行键共同唯一地标识表中的实体。 查询分区键相同的实体的速度快于查询分区键不同的实体的速度，但使用不同的分区键可实现更高的并行操作可伸缩性。 对于应存储在表服务中的任何属性，该属性必须是公开设置和检索值的受支持类型的公共属性。
 实体类*必须*声明公共无参数构造函数。
 
 > [!NOTE]
@@ -204,7 +204,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     }
     ```
 
-1. 在 **AddEntity** 方法中，获取表示存储帐户信息的 **CloudStorageAccount** 对象。 使用以下代码从 Azure 服务配置获取存储连接字符串和存储帐户信息：（将*&lt;存储帐户名称>* 更改为要访问的 Azure 存储帐户的名称。
+1. 在 **AddEntity** 方法中，获取表示存储帐户信息的 **CloudStorageAccount** 对象。 使用以下代码从 azure 服务配置中获取存储连接字符串和存储帐户信息：（将* &lt;存储帐户名称>* 更改为你要访问的 Azure 存储帐户的名称。）
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -272,7 +272,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     <li>@Html.ActionLink("Add entity", "AddEntity", "Tables")</li>
     ```
 
-1. 运行应用程序，然后选择 **"添加实体**"以查看类似于以下屏幕截图的结果：
+1. 运行应用程序，并选择 "**添加实体**" 以查看类似于以下屏幕截图的结果：
   
     ![添加实体](./media/vs-storage-aspnet-getting-started-tables/add-entity-results.png)
 
@@ -299,7 +299,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     }
     ```
 
-1. 在 **AddEntities** 方法中，获取表示存储帐户信息的 **CloudStorageAccount** 对象。 使用以下代码从 Azure 服务配置获取存储连接字符串和存储帐户信息：（将*&lt;存储帐户名称>* 更改为要访问的 Azure 存储帐户的名称。
+1. 在 **AddEntities** 方法中，获取表示存储帐户信息的 **CloudStorageAccount** 对象。 使用以下代码从 azure 服务配置中获取存储连接字符串和存储帐户信息：（将* &lt;存储帐户名称>* 更改为你要访问的 Azure 存储帐户的名称。）
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -392,7 +392,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     <li>@Html.ActionLink("Add entities", "AddEntities", "Tables")</li>
     ```
 
-1. 运行应用程序，然后选择 **"添加实体**"以查看类似于以下屏幕截图的结果：
+1. 运行应用程序，并选择 "**添加实体**" 以查看类似于以下屏幕截图的结果：
   
     ![添加实体](./media/vs-storage-aspnet-getting-started-tables/add-entities-results.png)
 
@@ -419,7 +419,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     }
     ```
 
-1. 在 **GetSingle** 方法中，获取表示存储帐户信息的 **CloudStorageAccount** 对象。 使用以下代码从 Azure 服务配置获取存储连接字符串和存储帐户信息：（将*&lt;存储帐户名称>* 更改为要访问的 Azure 存储帐户的名称。
+1. 在 **GetSingle** 方法中，获取表示存储帐户信息的 **CloudStorageAccount** 对象。 使用以下代码从 azure 服务配置中获取存储连接字符串和存储帐户信息：（将* &lt;存储帐户名称>* 更改为你要访问的 Azure 存储帐户的名称。）
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -494,7 +494,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     <li>@Html.ActionLink("Get single", "GetSingle", "Tables")</li>
     ```
 
-1. 运行应用程序，然后选择 **"获取单"** 以查看类似于以下屏幕截图的结果：
+1. 运行应用程序，并选择 "**获取单个**" 以查看类似于以下屏幕截图的结果：
   
     ![获取单个实体](./media/vs-storage-aspnet-getting-started-tables/get-single-results.png)
 
@@ -519,7 +519,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     }
     ```
 
-1. 在 **GetPartition** 方法中，获取表示存储帐户信息的 **CloudStorageAccount** 对象。 使用以下代码从 Azure 服务配置获取存储连接字符串和存储帐户信息：（将*&lt;存储帐户名称>* 更改为要访问的 Azure 存储帐户的名称。
+1. 在 **GetPartition** 方法中，获取表示存储帐户信息的 **CloudStorageAccount** 对象。 使用以下代码从 azure 服务配置中获取存储连接字符串和存储帐户信息：（将* &lt;存储帐户名称>* 更改为你要访问的 Azure 存储帐户的名称。）
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -538,7 +538,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. 实例化 **TableQuery** 对象，指定 **Where** 子句中的查询。 使用"将[一批实体添加到表](#add-a-batch-of-entities-to-a-table)"一节中提供的**CustomerEntity**类和数据，以下代码段查询**分区键**（客户姓氏）的值为"Smith"的所有实体的表：
+1. 实例化 **TableQuery** 对象，指定 **Where** 子句中的查询。 以下代码片段使用[向表添加一批实体](#add-a-batch-of-entities-to-a-table)部分提供的**CustomerEntity**类和数据，在表中查询**PartitionKey** （客户的姓氏）值为 "Smith" 的所有实体：
 
     ```csharp
     TableQuery<CustomerEntity> query = 
@@ -604,7 +604,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     <li>@Html.ActionLink("Get partition", "GetPartition", "Tables")</li>
     ```
 
-1. 运行应用程序，然后选择 **"获取分区**"以查看类似于以下屏幕截图的结果：
+1. 运行应用程序，并选择 "**获取分区**" 以查看类似于以下屏幕截图的结果：
   
     ![获取分区](./media/vs-storage-aspnet-getting-started-tables/get-partition-results.png)
 
@@ -629,7 +629,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     }
     ```
 
-1. 在 **DeleteEntity** 方法中，获取表示存储帐户信息的 **CloudStorageAccount** 对象。 使用以下代码从 Azure 服务配置获取存储连接字符串和存储帐户信息：（将*&lt;存储帐户名称>* 更改为要访问的 Azure 存储帐户的名称。
+1. 在 **DeleteEntity** 方法中，获取表示存储帐户信息的 **CloudStorageAccount** 对象。 使用以下代码从 azure 服务配置中获取存储连接字符串和存储帐户信息：（将* &lt;存储帐户名称>* 更改为你要访问的 Azure 存储帐户的名称。）
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -704,12 +704,12 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     <li>@Html.ActionLink("Delete entity", "DeleteEntity", "Tables")</li>
     ```
 
-1. 运行应用程序，然后选择 **"删除实体**"以查看类似于以下屏幕截图的结果：
+1. 运行应用程序，并选择 "**删除实体**" 以查看类似于以下屏幕截图的结果：
   
     ![获取单个实体](./media/vs-storage-aspnet-getting-started-tables/delete-entity-results.png)
 
 ## <a name="next-steps"></a>后续步骤
 查看更多功能指南，以了解在 Azure 中存储数据的其他方式。
 
-  * [开始使用 Azure Blob 存储和可视化工作室连接服务（ASP.NET）](../storage/vs-storage-aspnet-getting-started-blobs.md)
+  * [Azure blob 存储和 Visual Studio 连接的服务入门（ASP.NET）](../storage/vs-storage-aspnet-getting-started-blobs.md)
   * [开始使用 Azure 队列存储和 Visual Studio 连接服务 (ASP.NET)](../storage/vs-storage-aspnet-getting-started-queues.md)

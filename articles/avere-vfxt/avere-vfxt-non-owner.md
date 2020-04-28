@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.openlocfilehash: 1b411fe465a67f8ea5421ac0dc93348b4e92e8ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76153269"
 ---
 # <a name="authorize-non-owners-to-deploy-avere-vfxt"></a>授权非所有者部署 Avere vFXT
@@ -72,7 +72,7 @@ ms.locfileid: "76153269"
 
    `az role assignment create --assignee <USERNAME> --scope /subscriptions/<SUBSCRIPTION_ID> --role 'avere-create-cluster'`
 
-完成此过程后，角色为为其分配订阅的任何用户授予以下权限：
+完成此过程后，该角色向任何用户分配了订阅的以下权限：
 
 * 创建和配置网络基础结构
 * 创建群集控制器

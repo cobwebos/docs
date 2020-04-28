@@ -1,6 +1,6 @@
 ---
 title: 使用模板创建 Azure IoT 中心 (PowerShell) | Microsoft Docs
-description: 如何使用 Azure 资源管理器模板使用 Azure PowerShell 创建 IoT 中心。
+description: 如何使用 Azure 资源管理器模板创建包含 Azure PowerShell 的 IoT 中心。
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: a1f878361a96c5584f43b31135d79ff799f66efa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75976625"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>使用 Azure 资源管理器模板创建 IoT 中心 (PowerShell)
@@ -21,7 +21,7 @@ ms.locfileid: "75976625"
 
 了解如何使用 Azure 资源管理器模板创建 IoT 中心和使用者组。 Resource Manager 模板为 JSON 文件，用于定义针对解决方案进行部署时所需的资源。 有关开发资源管理器模板的详细信息，请参阅 [Azure 资源管理器文档](https://docs.microsoft.com/azure/azure-resource-manager/)。
 
-如果没有 Azure 订阅，请先[创建一个免费帐户](https://azure.microsoft.com/free/)。"
+如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -33,7 +33,7 @@ ms.locfileid: "75976625"
 
 可通过多种方法来部署模板。  在本教程中，将使用 Azure PowerShell。
 
-要运行 PowerShell 脚本，请选择 **"尝试"** 以打开 Azure 云外壳。 要粘贴脚本，请右键单击 shell，然后选择"粘贴"：
+若要运行 PowerShell 脚本，请选择 "**尝试**" 以打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择 "粘贴"：
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -47,7 +47,7 @@ New-AzResourceGroupDeployment `
     -iotHubName $iotHubName
 ```
 
-正如你在 PowerShell 脚本中所见，使用的模板来自 Azure 快速入门模板。 要使用您自己的模板文件，您需要首先将模板文件上载到 Cloud 外壳，然后使用`-TemplateFile`开关指定文件名。  有关示例，请参阅[部署模板](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell#deploy-the-template)。
+正如你在 PowerShell 脚本中所见，使用的模板来自 Azure 快速入门模板。 若要使用自己的，需要首先将模板文件上传到 Cloud shell，然后使用`-TemplateFile`开关指定文件名。  有关示例，请参阅[部署模板](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell#deploy-the-template)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,10 +8,10 @@ ms.date: 05/27/2017
 ms.author: dimart
 ms.custom: mvc
 ms.openlocfilehash: 1ec7ece6f5afd1bbd2613ae08af04b82e8a156b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76277913"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>（已弃用）用于通过 Azure DevOps 在使用 ACS 引擎和 Docker Swarm 模式的 Azure 容器服务中部署多容器应用程序的完整 CI/CD 管道
@@ -67,7 +67,7 @@ ms.locfileid: "76277913"
 
 在 Azure DevOps 项目与 Azure 帐户之间建立连接。
 
-1. 在左侧，单击 **"新服务终结点** > **Azure 资源管理器**"。
+1. 在左侧，单击 "**新建服务终结点** > " "**Azure 资源管理器**。
 2. 若要授权 Azure DevOps 使用你的 Azure 帐户，请选择“订阅”，然后单击“确定”********。
 
     ![Azure DevOps - 授权 Azure](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-azure.PNG)
@@ -76,7 +76,7 @@ ms.locfileid: "76277913"
 
 在 Azure DevOps 项目与 GitHub 帐户之间建立连接。
 
-1. 在左侧，单击 **"新服务终结点** > **GitHub**"。
+1. 在左侧，单击 "**新建服务终结点** > **GitHub**"。
 2. 要授权 Azure DevOps 使用 GitHub 帐户，请单击“Authorize”，并遵循打开的窗口中所述的过程。****
 
     ![Azure DevOps - 授权 GitHub](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-github.png)
@@ -194,9 +194,9 @@ ms.locfileid: "76277913"
 
 ### <a name="initial-release-setup"></a>初始发布设置
 
-1. 要创建发布管道，请单击 **"发布** > **"**
+1. 若要创建发布管道，请**单击 "** > 发布 **+ 发布**"
 
-2. 要配置项目源，请单击 **"项目** > **链接项目"源**。 在此处，请将此新发布管道链接到在上一步骤中定义的生成。 之后便可以在发布过程中使用 docker-compose.yml 文件。
+2. 若要配置项目源，请单击 "**项目** > " "**链接项目源**"。 在此处，请将此新发布管道链接到在上一步骤中定义的生成。 之后便可以在发布过程中使用 docker-compose.yml 文件。
 
     ![Azure DevOps - 发布项目](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-artefacts.png) 
 
@@ -248,6 +248,6 @@ ms.locfileid: "76277913"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关使用 Azure DevOps 的 CI/CD 的详细信息，请参阅[Azure 管道文档](/azure/devops/pipelines/?view=azure-devops)一文。
+* 有关与 Azure DevOps 的 CI/CD 的详细信息，请参阅[Azure Pipelines 文档](/azure/devops/pipelines/?view=azure-devops)文章。
 * 有关 ACS 引擎的详细信息，请参阅[ACS 引擎 GitHub 存储库](https://github.com/Azure/acs-engine)。
 * 有关 Docker Swarm 模式的详细信息，请参阅[Docker Swarm 模式概述](https://docs.docker.com/engine/swarm/)。

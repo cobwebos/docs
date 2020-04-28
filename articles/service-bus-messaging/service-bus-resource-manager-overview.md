@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/11/2018
 ms.author: spelluru
 ms.openlocfilehash: 9bc784ee57b9bde393408cbefa9a197aebc59b08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76264452"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建服务总线资源
@@ -207,7 +207,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path t
 
 ### <a name="create-the-deployment"></a>创建部署
 
-若要创建新部署，请运行 `New-AzResourceGroupDeployment` cmdlet，并在出现提示时提供必需的参数。 参数包括部署的名称、资源组的名称，以及模板文件的路径或 URL。 如果未指定**Mode**参数，则使用**增量**的默认值。 有关详细信息，请参阅[增量部署和完整部署](../azure-resource-manager/templates/deployment-modes.md)。
+若要创建新部署，请运行 `New-AzResourceGroupDeployment` cmdlet，并在出现提示时提供必需的参数。 参数包括部署的名称、资源组的名称，以及模板文件的路径或 URL。 如果未指定**Mode**参数，将使用默认值**增量**。 有关详细信息，请参阅[增量部署和完整部署](../azure-resource-manager/templates/deployment-modes.md)。
 
 以下命令会提示在 PowerShell 窗口中输入三个参数：
 

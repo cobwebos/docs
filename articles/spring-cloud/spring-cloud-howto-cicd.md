@@ -1,31 +1,31 @@
 ---
-title: Azure 春云的 CI/CD
-description: Azure 春云的 CI/CD
+title: 适用于 Azure 春季云的 CI/CD
+description: 适用于 Azure 春季云的 CI/CD
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: brendm
 ms.openlocfilehash: f329fb5472c5a2eab6f22a2e81b19d90e7045330
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76278514"
 ---
-# <a name="cicd-for-azure-spring-cloud"></a>Azure 春云的 CI/CD
+# <a name="cicd-for-azure-spring-cloud"></a>适用于 Azure 春季云的 CI/CD
 
-持续集成和持续交付工具使开发人员能够以最小的工作量和风险快速将更新部署到现有应用程序。 Azure DevOps 可帮助您组织和控制这些关键作业。 目前，Azure 春云不提供特定的 Azure DevOps 插件。  但是，您可以使用[Azure CLI 任务](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli?view=azure-devops)将春云应用程序与 DevOps 集成。 本文将介绍如何使用 Azure 春云的 Azure CLI 任务与 Azure DevOps 集成。
+通过持续集成和持续交付工具，开发人员可快速将更新部署到现有应用程序，并将其工作量和风险降到最低。 Azure DevOps 可帮助你组织和控制这些关键作业。 目前，Azure 春季云不提供特定的 Azure DevOps 插件。  但是，可以使用[Azure CLI 任务](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli?view=azure-devops)将春季云应用程序与 DevOps 集成。 本文介绍如何将 Azure CLI 任务与 Azure 春季 Cloud 结合使用来与 Azure DevOps 集成。
 
 ## <a name="create-an-azure-resource-manager-service-connection"></a>创建 Azure 资源管理器服务连接
 
-阅读[本文](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure?view=azure-devops)，了解如何创建 Azure 资源管理器服务连接到 Azure DevOps 项目。 请务必选择与 Azure Spring 云服务实例相同的订阅。
+阅读[本文](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure?view=azure-devops)，了解如何创建 azure 资源管理器服务连接到 azure DevOps 项目。 请确保选择用于 Azure 春季云服务实例的同一订阅。
 
 ## <a name="azure-cli-task-templates"></a>Azure CLI 任务模板
 
 ### <a name="deploy-artifacts"></a>部署项目
 
-您可以使用一系列`tasks`生成和部署项目。 此代码段首先定义 Maven 任务以生成应用程序，然后是使用 Azure SpringCloud Azure CLI 扩展名部署 JAR 文件的第二个任务。
+你可以使用一系列的`tasks`来生成和部署项目。 此代码段首先定义用于生成应用程序的 Maven 任务，接下来是使用 Azure 春季云 Azure CLI 扩展部署 JAR 文件的第二个任务。
 
 ```yaml
 steps:
@@ -44,7 +44,7 @@ steps:
 
 ### <a name="deploy-from-source"></a>从源部署
 
-无需单独的生成步骤即可直接部署到 Azure。
+无需单独的生成步骤便可直接部署到 Azure。
 
 ```yaml
 - task: AzureCLI@1

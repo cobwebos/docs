@@ -4,10 +4,10 @@ description: 介绍如何在 Azure 资源管理器模板中定义参数。
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.openlocfilehash: 89c6984c587e8dae59c1825a99d4f8da1c06dafb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76122417"
 ---
 # <a name="parameters-in-azure-resource-manager-templates"></a>Azure 资源管理器模板中的参数
@@ -152,7 +152,7 @@ ms.locfileid: "76122417"
 
 以下示例演示了使用参数的方案。
 
-|模板  |描述  |
+|模板  |说明  |
 |---------|---------|
 |[包含用于默认值的函数的参数](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | 演示了为参数定义默认值时如何使用模板函数。 该模板不部署任何资源。 它构造参数值并返回这些值。 |
 |[参数对象](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | 演示了将对象用于参数。 该模板不部署任何资源。 它构造参数值并返回这些值。 |

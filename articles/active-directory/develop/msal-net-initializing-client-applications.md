@@ -1,5 +1,5 @@
 ---
-title: 初始化MSAL.NET客户端应用程序 |蔚蓝
+title: 初始化 MSAL.NET 客户端应用程序 |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 初始化公共客户端和机密客户端应用程序。
 services: active-directory
@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 57ce6ab31421cd4016f7e204eeabce82f2f7e6a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77083985"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>使用 MSAL.NET 初始化客户端应用程序
@@ -39,7 +39,7 @@ ms.locfileid: "77083985"
 
 ### <a name="initializing-a-public-client-application-from-code"></a>通过代码初始化公共客户端应用程序
 
-以下代码实例化公共客户端应用程序、在 Microsoft Azure 公共云中登录的用户及其工作帐户和学校帐户或其个人 Microsoft 帐户。
+下面的代码实例化公用客户端应用程序、在 Microsoft Azure 公有云中登录用户，以及他们的工作和学校帐户或个人 Microsoft 帐户。
 
 ```csharp
 IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
@@ -48,7 +48,7 @@ IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
 
 ### <a name="initializing-a-confidential-client-application-from-code"></a>通过代码初始化机密客户端应用程序
 
-同样，以下代码会实例化一个机密应用程序（位于`https://myapp.azurewebsites.net`的 Web 应用），以处理 Microsoft Azure 公共云中的用户及其工作帐户和学校帐户或其个人 Microsoft 帐户中的令牌。 标识提供者通过共享客户端机密标识该应用程序：
+同样，以下代码将实例化机密应用程序（位于中的 Web 应用`https://myapp.azurewebsites.net`），用于处理来自 Microsoft Azure 公有云中用户的令牌、其工作和学校帐户，或者其个人 Microsoft 帐户。 标识提供者通过共享客户端机密标识该应用程序：
 
 ```csharp
 string redirectUri = "https://myapp.azurewebsites.net";
@@ -96,7 +96,7 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
 
 可在公共客户端或机密客户端应用程序生成器中设置的修饰符包括：
 
-|修饰符 | 描述|
+|修饰符 | 说明|
 |--------- | --------- |
 |`.WithAuthority()` 7 个重写 | 将应用程序默认颁发机构设置为 Azure AD 颁发机构，有时还可以选择 Azure 云、受众、租户（租户 ID 或域名），或直接提供颁发机构 URI。|
 |`.WithAdfsAuthority(string)` | 将应用程序默认颁发机构设置为 ADFS 颁发机构。|
@@ -115,15 +115,15 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
 
 可在 Xamarin.iOS 上的公共客户端应用程序生成器中设置的修饰符包括：
 
-|修饰符 | 描述|
+|修饰符 | 说明|
 |--------- | --------- |
-|`.WithIosKeychainSecurityGroup()` | **仅限 Xamarin.iOS：** 设置 iOS 密钥链安全组（用于缓存持久性）。|
+|`.WithIosKeychainSecurityGroup()` | **仅限 Xamarin.iOS**：设置 iOS 密钥链安全组（为实现缓存持久性）。|
 
 ### <a name="modifiers-specific-to-confidential-client-applications"></a>特定于机密客户端应用程序的修饰符
 
 可在机密客户端应用程序生成器中设置的修饰符包括：
 
-|修饰符 | 描述|
+|修饰符 | 说明|
 |--------- | --------- |
 |`.WithCertificate(X509Certificate2 certificate)` | 设置用于在 Azure AD 中识别应用程序的证书。|
 |`.WithClientSecret(string clientSecret)` | 设置用于在 Azure AD 中识别应用程序的客户端机密（应用密码）。|
@@ -141,7 +141,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-有趣的是，国家云的编程现在已经简化。 如果希望应用程序是国家云中的多租户应用程序，则可以编写，例如：
+有趣的是，针对国家云的编程现在已简化。 如果你希望你的应用程序成为全国云中的多租户应用程序，可以编写，例如：
 
 ```csharp
 IPublicClientApplication app;

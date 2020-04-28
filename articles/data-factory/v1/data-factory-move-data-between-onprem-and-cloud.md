@@ -1,5 +1,5 @@
 ---
-title: 移动数据 - 数据管理网关
+title: 移动数据数据管理的网关
 description: 设置数据网关，在本地和云之间移动数据。 使用 Azure 数据工厂中的数据管理网关移动数据。
 services: data-factory
 documentationcenter: ''
@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: be797f76988c924503e11b6f66cce899b515e3a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75982196"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>使用数据管理网关在本地源与云之间移动数据
@@ -47,12 +47,12 @@ ms.locfileid: "75982196"
 
 * **Azure 订阅**。  如果没有订阅，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[免费使用](https://azure.microsoft.com/pricing/free-trial/)一文。
 * **Azure 存储帐户**。 在本教程中，将 Blob 存储用作**目标/接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-account-create.md)一文获取创建步骤。
-* **SQL 服务器**。 在本教程中，将本地 SQL Server 数据库用作**源**数据存储。
+* **SQL Server**。 在本教程中，将本地 SQL Server 数据库用作**源**数据存储。
 
 ## <a name="create-data-factory"></a>创建数据工厂
 本步骤使用 Azure 门户创建名为 **ADFTutorialOnPremDF** 的 Azure 数据工厂实例。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 单击“创建资源”****，并依次单击“智能 + 分析”****、“数据工厂”****。
 
    ![新建 -> DataFactory](./media/data-factory-move-data-between-onprem-and-cloud/NewDataFactoryMenu.png)  
@@ -63,7 +63,7 @@ ms.locfileid: "75982196"
    > [!IMPORTANT]
    > Azure 数据工厂的名称必须全局唯一。 如果收到错误：**数据工厂名称“ADFTutorialOnPremDF”不可用**，请更改该数据工厂名称（例如改为“yournameADFTutorialOnPremDF”），并尝试再次创建。 执行本教程中的剩余步骤时，请使用此名称取代 ADFTutorialOnPremDF。
    >
-   > 将来，数据工厂的名称可能会注册为**DNS**名称，从而公开可见。
+   > 数据工厂名称可能在将来被注册为**DNS**名称，因此将公开可见。
    >
    >
 4. 选择要在其中创建数据工厂的 **Azure 订阅** 。
@@ -71,7 +71,7 @@ ms.locfileid: "75982196"
 6. 在“新建数据工厂”页中单击“创建”********。
 
    > [!IMPORTANT]
-   > 要创建数据工厂实例，您必须是订阅/资源组级别的["数据工厂参与者"](../../role-based-access-control/built-in-roles.md#data-factory-contributor)角色的成员。
+   > 若要创建数据工厂实例，你必须是订阅/资源组级别的[数据工厂参与者](../../role-based-access-control/built-in-roles.md#data-factory-contributor)角色的成员。
    >
    >
 7. 完成创建后，将看到如下图所示的“数据工厂”页****：
@@ -82,7 +82,7 @@ ms.locfileid: "75982196"
 1. 在“数据工厂”页中，单击“编写和部署”磁贴启动数据工厂的“编辑器”************。
 
     ![“编写和部署”磁贴](./media/data-factory-move-data-between-onprem-and-cloud/author-deploy-tile.png)
-2. 在数据工厂编辑器中，单击 **...有关工具栏的详细信息**，然后单击 **"新建数据网关**"。 此外，也可以在树视图中，右键单击“数据网关”****，并单击“新建数据网关”****。
+2. 在数据工厂编辑器中，单击 " **..."**，然后单击 "**新建数据网关**"。 此外，也可以在树视图中，右键单击“数据网关”****，并单击“新建数据网关”****。
 
    ![工具栏上的“新建数据网关”](./media/data-factory-move-data-between-onprem-and-cloud/NewDataGateway.png)
 3. 在“创建”页中，输入 adftutorialgateway 作为名称，并单击“确定”****************。     
@@ -98,20 +98,20 @@ ms.locfileid: "75982196"
    >
    > 如果使用 Chrome，请转到 [Chrome 网上应用店](https://chrome.google.com/webstore/)，使用“ClickOnce”关键字进行搜索，选择 ClickOnce 扩展之一并安装它。
    >
-   > 对于 Firefox，请执行相同的操作（安装外接程序）。 单击工具栏上的 **"打开菜单**"按钮（右上角**有三条水平线**），单击 **"附加"，** 使用"点击一次"关键字搜索，选择 ClickOnce 扩展名之一，然后安装它。    
+   > 对于 Firefox，请执行相同的操作（安装外接程序）。 单击工具栏上的 "**打开菜单**" 按钮（右上角的**三条横线**），单击 "**加载项**"，用 "clickonce" 关键字进行搜索，选择一个 ClickOnce 扩展并安装它。    
    >
    >
 
     ![网关 -“配置”页](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
 
-    此方法是执行以下操作最简单的方法（一键式操作）：下载、安装、配置和注册网关，只需一步操作即可完成。 可以看到计算机上已安装了 **Microsoft 数据管理网关配置管理器**应用程序。 您还可以在文件夹中找到可执行的**ConfigManager.exe：C：\****程序文件\微软数据管理网关\2.0_共享**。
+    此方法是执行以下操作最简单的方法（一键式操作）：下载、安装、配置和注册网关，只需一步操作即可完成。 可以看到计算机上已安装了 **Microsoft 数据管理网关配置管理器**应用程序。 还可以在文件夹中找到可执行文件**ConfigManager** ： **C:\Program Files\Microsoft 数据管理 Gateway\2.0\Shared**。
 
     此外，还可使用此页中的链接手动下载和安装网关，并使用“新建密钥文”本框中显示的密钥对其进行注册****。
 
     有关网关的所有详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文。
 
    > [!NOTE]
-   > 必须是本地计算机的管理员，才能成功安装和配置数据管理网关。 您可以将其他用户添加到**数据管理网关用户**本地 Windows 组。 此组的成员可以使用数据管理网关配置管理器工具来配置网关。
+   > 必须是本地计算机的管理员，才能成功安装和配置数据管理网关。 你可以将其他用户添加到**数据管理网关用户**"本地 Windows 组。 此组的成员可以使用数据管理网关配置管理器工具来配置网关。
    >
    >
 5. 等待几分钟，或一直等待直到看到以下通知消息：
@@ -129,7 +129,7 @@ ms.locfileid: "75982196"
    * 在一天中的特定时间安装**计划更新**。
    * 查看网关的**上次更新时间**。
    * 指定可以安装网关更新的时间点。
-8. 切换到 **"设置"** 选项卡。**证书**部分中指定的证书用于加密/解密您在门户上指定的本地数据存储的凭据。 （可选）单击“更改”**** 以改为使用自己的证书。 默认情况下，网关使用由数据工厂服务自动生成的证书。
+8. 切换到 "**设置**" 选项卡。"**证书**" 部分中指定的证书用于对在门户上指定的本地数据存储的凭据进行加密/解密。 （可选）单击“更改”**** 以改为使用自己的证书。 默认情况下，网关使用由数据工厂服务自动生成的证书。
 
     ![网关证书配置](./media/data-factory-move-data-between-onprem-and-cloud/gateway-certificate.png)
 
@@ -210,7 +210,7 @@ ms.locfileid: "75982196"
 
 ### <a name="create-input-dataset"></a>创建输入数据集
 
-1. 在**数据工厂编辑器中**，单击 **...更多**，单击命令栏上的 **"新建数据集**"，然后单击**SQL Server 表**。
+1. 在**数据工厂编辑器**中，单击 " **..."详细信息**，请单击命令栏上的 "**新建数据集**"，然后单击 " **SQL Server 表**"。
 2. 将右窗格中的 JSON 替换为以下文本：
 
     ```JSON   
@@ -240,7 +240,7 @@ ms.locfileid: "75982196"
    请注意以下几点：
 
    * **type** 设置为 **SqlServerTable**。
-   * **表名称**设置为**emp**。
+   * **tableName**设置为**emp**。
    * **linkedServiceName** 设置为 **SqlServerLinkedService**（在本演练前面部分中已创建此链接服务。）。
    * 对于不是由 Azure 数据工厂中的另一管道生成的输入数据集，必须将 **external** 设置为 **true**。 表示该输入数据是在 Azure 数据工厂服务外部生成的。 可以使用**策略**部分中的 **externalData** 元素选择性地指定任何外部数据策略。    
 
@@ -277,9 +277,9 @@ ms.locfileid: "75982196"
    * **type** 设置为 **AzureBlob**。
    * **linkedServiceName** 设置为 **AzureStorageLinkedService**（已在步骤 2 中创建此链接服务）。
    * **folderPath** 设置为 **adftutorial/outfromonpremdf**，其中 outfromonpremdf 为 adftutorial 容器中的文件夹。 如果不存在 **adftutorial** 容器，则创建该容器。
-   * **可用性**设置为**每小时**（**频率**设置为**小时**，**间隔**设置为**1**）。  数据工厂服务每小时在 Azure SQL 数据库的 **emp** 表中生成输出数据切片。
+   * **可用性**设置为**每小时**（**frequency**设置为**hour** ， **interval**设置为**1**）。  数据工厂服务每小时在 Azure SQL 数据库的 **emp** 表中生成输出数据切片。
 
-   如果不为**输出表**指定**文件名**，**则文件夹 Path**中生成的文件以以下格式命名：（`Data.<Guid>.txt`例如： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.）。
+   如果未指定**输出表**的**文件名**，则**folderPath**中生成的文件将按以下格式命名： `Data.<Guid>.txt` （例如：0a405f8a-93ff-4c6f-b3be-f69616f1df7a）。
 
    若要根据 **SliceStart** 时间动态设置 **folderPath** 和 **fileName**，请使用 partitionedBy 属性。 在以下示例中，folderPath 使用 SliceStart（所处理的切片的开始时间）中的年、月和日，fileName 使用 SliceStart 中的小时。 例如，如果切片生成于 2014-10-20T08:00:00，folderName 将设置为 wikidatagateway/wikisampledataout/2014/10/20，fileName 设置为 08.csv。
 
@@ -302,7 +302,7 @@ ms.locfileid: "75982196"
 ## <a name="create-pipeline"></a>创建管道
 本步骤创建**管道**，其中包含使用 **EmpOnPremSQLTable** 作为输入、使用 **OutputBlobTable** 作为输出的**复制活动**。
 
-1. 在数据工厂编辑器中，单击 **...更多**，然后单击 **"新建管道**"。
+1. 在 "数据工厂编辑器" 中，单击 **.。。再单击 "****新建管道**"。
 2. 将右窗格中的 JSON 替换为以下文本：    
 
     ```JSON   
@@ -358,7 +358,7 @@ ms.locfileid: "75982196"
 
    * 在 activities 节中，只有一个活动的 **type** 设置为 **Copy**。
    * 活动的 **Input** 设置为 **EmpOnPremSQLTable**，**output** 设置为 **OutputBlobTable**。
-   * 在**typeProperties**部分中 **，SqlSource**被指定为**源类型****，BlobSink**指定为**接收器类型**。
+   * 在**typeProperties**节中， **SqlSource**指定为**源类型**， **BlobSink**指定为**接收器类型**。
    * 为 **SqlSource** 的 **sqlReaderQuery** 属性指定 SQL 查询 `select * from emp`。
 
    开始和结束日期时间必须采用 [ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如：2014-10-14T16:32:41Z。 **结束** 时间是可选的，但本教程使用该时间。
@@ -371,7 +371,7 @@ ms.locfileid: "75982196"
 3. 单击命令栏上的“部署”**** 来部署数据集（表为矩形数据集）。 确认“管道”**** 节点下的树视图中显示管道。  
 4. 现在，单击 X 两次，关闭页面，以返回到 ADFTutorialOnPremDF 的“数据工厂”页************。
 
-祝贺你！**** 现已成功创建 Azure 数据工厂、链接服务、数据集和管道，并已计划好管道。
+祝贺你！  现已成功创建 Azure 数据工厂、链接服务、数据集和管道，并已计划好管道。
 
 #### <a name="view-the-data-factory-in-a-diagram-view"></a>在图示视图中查看数据工厂
 1. 在“Azure 门户”**** 中，单击主页上 **ADFTutorialOnPremDF** 数据工厂的“关系图”**** 磁贴。 :

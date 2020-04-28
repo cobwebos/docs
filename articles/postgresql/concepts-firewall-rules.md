@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.openlocfilehash: 5d462be1caa3787cb7ff9a455be595ec5784eefe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76157264"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的防火墙规则
@@ -65,7 +65,7 @@ ms.locfileid: "76157264"
 
    * 改为获取客户端计算机的静态 IP 地址，然后将该静态 IP 地址作为防火墙规则添加。
 
-* **服务器的 IP 似乎是公开的：** 与 PostgreSQL 服务器的 Azure 数据库的连接通过可公开访问的 Azure 网关路由。 但是，实际的服务器 IP 受防火墙保护。 有关详细信息，请访问[连接体系结构文章](concepts-connectivity-architecture.md)。 
+* **服务器的 IP 似乎是公共的：** 与 Azure Database for PostgreSQL 服务器的连接通过可公开访问的 Azure 网关进行路由。 但是，实际的服务器 IP 受防火墙保护。 有关详细信息，请访问[连接体系结构一文](concepts-connectivity-architecture.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 有关如何创建服务器级和数据库级防火墙规则的文章，请参阅：

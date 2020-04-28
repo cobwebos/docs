@@ -1,7 +1,7 @@
 ---
 title: 搜索 CSV Blob
 titleSuffix: Azure Cognitive Search
-description: 使用分隔文本解析模式从 Azure Blob 存储中提取和导入 CSV。
+description: 使用 delimitedText 分析模式从 Azure Blob 存储提取和导入 CSV。
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: bf600890bfed570e712a159005b8ef5267298cc0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76122315"
 ---
 # <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>如何使用 Azure 认知搜索中的 delimitedText 分析模式和 Blob 索引器为 CSV blob 编制索引
@@ -84,6 +84,6 @@ ms.locfileid: "76122315"
       "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } }
     }
 
-## <a name="help-us-make-azure-cognitive-search-better"></a>帮助我们改进 Azure 认知搜索
+## <a name="help-us-make-azure-cognitive-search-better"></a>帮助我们改善 Azure 认知搜索
 如果有功能请求或改进建议，请在 [UserVoice](https://feedback.azure.com/forums/263029-azure-search/) 上提供相关意见。
 

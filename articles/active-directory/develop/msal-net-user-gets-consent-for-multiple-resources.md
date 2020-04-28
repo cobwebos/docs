@@ -1,5 +1,5 @@
 ---
-title: 获得多个资源的同意 （MSAL.NET） |蔚蓝
+title: 获取几个资源的许可（MSAL.NET） |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解用户如何使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 获得多个资源的预先同意。
 services: active-directory
@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 94c9a2b6a46262ad293da9ca3ba493d6f898c870
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77085839"
 ---
 # <a name="user-gets-consent-for-several-resources-using-msalnet"></a>用户使用 MSAL.NET 获得多个资源的同意
@@ -28,10 +28,10 @@ Microsoft 标识平台终结点不允许你一次获取多个资源的令牌。 
 
 例如，如果你有两个资源（每个资源有两个范围）：
 
-- https：\//mytenant.onmicrosoft.com/customerapi （带`customer.read`2`customer.write`个作用域和 ）
-- https：\//mytenant.onmicrosoft.com/vendorapi （带`vendor.read`2`vendor.write`个作用域和 ）
+- https：\//mytenant.onmicrosoft.com/customerapi （包含2个`customer.read`范围`customer.write`和）
+- https：\//mytenant.onmicrosoft.com/vendorapi （包含2个`vendor.read`范围`vendor.write`和）
 
-应该使用具有 *extraScopesToConsent* 参数的 `.WithExtraScopeToConsent` 修饰符，如以下示例所示：
+应该使用具有 `.WithExtraScopeToConsent`extraScopesToConsent*参数的* 修饰符，如以下示例所示：
 
 ```csharp
 string[] scopesForCustomerApi = new string[]

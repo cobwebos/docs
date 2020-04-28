@@ -5,14 +5,14 @@ ms.service: cloud-services
 ms.topic: include
 ms.date: 11/25/2018
 ms.openlocfilehash: 5deba9d8968f71ef1b21517e74e6af4c39aa9271
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76279403"
 ---
 > [!WARNING]
-> 为现有角色启用诊断时，将禁用部署包时已设置的所有扩展。 其中包括:
+> 为现有角色启用诊断时，将禁用部署包时已设置的所有扩展。 其中包括：
 >
 > * Microsoft 监视代理诊断
 > * Microsoft Azure 安全监视

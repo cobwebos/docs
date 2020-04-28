@@ -1,14 +1,14 @@
 ---
-title: 跨区域的安全部署 - Azure 部署管理器
+title: 跨区域安全部署-Azure 部署管理器
 description: 介绍如何使用 Azure 部署管理器在多个区域部署服务。 其中介绍了安全部署实践，可在部署到所有区域前验证部署的稳定性。
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: 424cd79a6c63200e1f101cf178b1fd2c9083161e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76152521"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>使用 Azure 部署管理器启用安全部署实践（公共预览版）
@@ -17,7 +17,7 @@ ms.locfileid: "76152521"
 
 部署管理器是资源管理器的一项功能。 它将在部署过程中为你提供帮助。 如果有需要部署到多个区域的复杂服务，请使用部署管理器。 通过分阶段推出服务，你可以在服务已部署到所有区域之前发现潜在的问题。 如果不需要分阶段推出的额外预防措施，请使用资源管理器的标准[部署选项](deploy-portal.md)。 部署管理器与支持资源管理器部署的所有现有第三方工具无缝集成，例如持续集成和持续交付 (CI/CD) 产品/服务。
 
-Azure 部署管理器处于预览状态。 通过提供[反馈](https://aka.ms/admfeedback)来帮助我们改进功能。
+Azure 部署管理器处于预览阶段。 提供[反馈](https://aka.ms/admfeedback)，帮助我们改进功能。
 
 要使用部署管理器，需要创建四个文件：
 
@@ -31,15 +31,15 @@ Azure 部署管理器处于预览状态。 通过提供[反馈](https://aka.ms/a
 其他资源：
 
 - [Azure 部署管理器 REST API 参考](https://docs.microsoft.com/rest/api/deploymentmanager/)。
-- [教程：将 Azure 部署管理器与资源管理器模板一起使用](./deployment-manager-tutorial.md)。
-- [教程：在 Azure 部署管理器 中使用运行状况检查](./deployment-manager-tutorial-health-check.md)。
+- [教程：将 Azure 部署管理器用于资源管理器模板](./deployment-manager-tutorial.md)。
+- [教程：使用 Azure 部署管理器中的运行状况检查](./deployment-manager-tutorial-health-check.md)。
 - [Azure 部署管理器示例](https://github.com/Azure-Samples/adm-quickstart)。
 
-## <a name="identity-and-access"></a>标识和访问
+## <a name="identity-and-access"></a>身份标识和访问控制
 
 利用资源管理器，[用户分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)可执行部署操作。 请开始部署之前创建此标识。 它必须有权访问要将服务部署到的订阅并具有足够权限来完成部署。 有关通过角色授予的操作的详细信息，请参阅 [Azure 资源的内置角色](../../role-based-access-control/built-in-roles.md)。
 
-标识必须驻留在与推出相同的位置。
+标识必须与部署位于同一位置。
 
 ## <a name="topology-template"></a>拓扑模板
 
@@ -112,7 +112,7 @@ Azure 部署管理器处于预览状态。 通过提供[反馈](https://aka.ms/a
 
 有关详细信息，请参阅 [serviceTopologies 模板引用](/azure/templates/Microsoft.DeploymentManager/serviceTopologies)。
 
-### <a name="services"></a>Services
+### <a name="services"></a>服务
 
 以下示例显示了服务资源的一般格式。 在每个服务中，需要提供用于部署服务的位置和 Azure 订阅 ID。 要部署到多个区域，请为每个区域定义一个服务。 该服务依赖于服务拓扑。
 
@@ -193,7 +193,7 @@ Azure 部署管理器处于预览状态。 通过提供[反馈](https://aka.ms/a
 
 ### <a name="steps"></a>步骤
 
-可以定义在部署操作之前或之后执行的步骤。 目前，只有步骤`wait`和"运行状况检查"步骤可用。
+可以定义在部署操作之前或之后执行的步骤。 目前，只有`wait`步骤和 "healthCheck" 步骤可用。
 
 wait 步骤将先暂停部署，然后才能继续部署。 此步骤允许在部署下一个服务单位之前验证服务是否按预期运行。 以下示例显示了 wait 步骤的一般格式。
 
@@ -214,7 +214,7 @@ wait 步骤将先暂停部署，然后才能继续部署。 此步骤允许在�
 
 持续时间属性使用 [ISO 8601 标准](https://en.wikipedia.org/wiki/ISO_8601#Durations)。 前面的示例指定了一分钟的等待时间。
 
-有关运行状况检查步骤的详细信息，请参阅[将运行状况集成推出引入 Azure 部署管理器](./deployment-manager-health-check.md)和[教程：在 Azure 部署管理器 中使用运行状况检查](./deployment-manager-tutorial-health-check.md)。
+有关运行状况检查步骤的详细信息，请参阅在[azure 中引入运行状况集成部署管理器](./deployment-manager-health-check.md)和[教程：使用 azure 部署管理器中的运行状况检查](./deployment-manager-tutorial-health-check.md)。
 
 有关详细信息，请参阅[步骤模板引用](/azure/templates/Microsoft.DeploymentManager/steps)。
 

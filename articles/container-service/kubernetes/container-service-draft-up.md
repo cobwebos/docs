@@ -8,10 +8,10 @@ ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
 ms.openlocfilehash: 8d688d2918c9100019d033e93e9a3dca9e492de2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76271134"
 ---
 # <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>（已弃用）结合使用 Draft 与 Azure 容器服务和 Azure 容器注册表，生成应用程序并将其部署到 Kubernetes
@@ -29,7 +29,7 @@ ms.locfileid: "76271134"
 ## <a name="create-an-azure-container-registry"></a>创建 Azure 容器注册表
 可以轻松[创建新的 Azure 容器注册表](../../container-registry/container-registry-get-started-azure-cli.md)，步骤如下：
 
-1. 创建 Azure 资源组以管理 ACS 中的 ACR 注册表和库伯奈斯群集。
+1. 创建 Azure 资源组来管理你的 ACR 注册表和 ACS 中的 Kubernetes 群集。
       ```azurecli
       az group create --name draft --location eastus
       ```
@@ -202,7 +202,7 @@ kubernetes                    10.0.0.1       <none>          443/TCP            
 
 ### <a name="map-the-ingress-ip-to-a-custom-subdomain"></a>将入口 IP 映射到自定义子域
 
-Draft 每创建一个 Helm 图表（即每个正在处理的应用程序），就为其创建一个版本。 每个获取生成的名称，该名称被**草稿**用作您控制的根_部署域_之上的_子域_。 （在此示例中，我们用作`squillace.io`部署域。要启用此子域行为，必须在部署域的 DNS`'*.draft'`条目中创建 A 记录，以便将每个生成的子域路由到 Kubernetes 群集的入口控制器。 
+Draft 每创建一个 Helm 图表（即每个正在处理的应用程序），就为其创建一个版本。 每个帐户都将获取一个生成的名称，该名称由**草稿**用作所控制的根_部署域_顶层的_子域_。 （在此示例中，我们`squillace.io`使用作为部署域。）若要启用此子域行为，必须`'*.draft'`在部署域的 DNS 条目中创建 A 记录，以便每个生成的子域都路由到 Kubernetes 群集的入口控制器。 
 
 域提供商有其自己的方法来分配 DNS 服务器；若要[将域的名称服务器委托给 Azure DNS](../../dns/dns-delegate-domain-azure-dns.md)，请执行以下步骤：
 

@@ -9,10 +9,10 @@ ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: f65220a04a709bae5a6892bfd4105195cee35741
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75978415"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>设置 Azure 导入/导出工具
@@ -24,7 +24,7 @@ Microsoft Azure 导入/导出工具是可与 Microsoft Azure 导入/导出服务
 
 -   通过某个已完成的导出作业收到驱动器后，可以使用此工具修复这些驱动器上已损坏或丢失的任何文件。  
 
-## <a name="prerequisites"></a>先决条件  
+## <a name="prerequisites"></a>必备条件  
 若要为导出作业准备驱动器，需要满足以下先决条件：  
 
 -   必须拥有一个有效的 Azure 订阅。  
@@ -249,9 +249,9 @@ Examples:
 
 ## <a name="next-steps"></a>后续步骤
 
-* [为导入作业准备硬盘](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [为导入作业准备硬盘驱动器](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
 * [预览导出作业的驱动器使用情况](../storage-import-export-tool-previewing-drive-usage-export-v1.md)   
 * [使用复制日志文件查看作业状态](../storage-import-export-tool-reviewing-job-status-v1.md)   
 * [修复导入作业](../storage-import-export-tool-repairing-an-import-job-v1.md)   
 * [修复导出作业](../storage-import-export-tool-repairing-an-export-job-v1.md)   
-* [排除 Azure 导入/导出工具的故障](storage-import-export-tool-troubleshooting-v1.md)
+* [排查 Azure 导入/导出工具问题](storage-import-export-tool-troubleshooting-v1.md)

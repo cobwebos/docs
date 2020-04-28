@@ -1,6 +1,6 @@
 ---
-title: Azure 通知中心常见问题 （FAQ） |微软文档
-description: 有关在 Azure 通知中心上设计和实现解决方案的常见问题解答。
+title: Azure 通知中心常见问题（Faq） |Microsoft Docs
+description: 有关设计和实现 Azure 通知中心相关解决方案的常见问题解答。
 services: notification-hubs
 documentationcenter: mobile
 author: sethmanheim
@@ -18,13 +18,13 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
 ms.openlocfilehash: 3212520f37d33a2d8fb1b071506f688b9f75f15c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76263823"
 ---
-# <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>使用 Azure 通知中心推送通知：常见问题解答
+# <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>使用 Azure 通知中心推送通知：常见问题
 
 ## <a name="general"></a>常规
 
@@ -37,28 +37,28 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 可以在[通知中心定价]页上找到最新的定价详细信息。 通知中心根据命名空间级别计费。 （有关命名空间的定义，请参阅“通知中心的资源结构是怎样的？”）通知中心提供三个层：
 
 * **免费**：此层是探索推送功能的极佳起点。 不建议对生产应用使用此层。 在每个命名空间中，每个月可以预配 500 个设备和执行 100 万次推送，但无法享受服务级别协议 (SLA) 保证。
-* **基本**：建议将此层（或标准层）用于较小型的生产应用。 在每个命名空间中，每个月可以预配 200,000 个设备和执行 1000 万次推送（基准）。
-* **标准：** 建议将此层用于中型、大型生产应用。 在每个命名空间中，每个月可以预配 1000 万个设备和执行 1000 万次推送（基准）。 包含丰富的遥测数据（提供有关推送状态的其他数据）。
+* **基本**：建议将此层（或标准层）用于较小型的生产应用。 在每个命名空间中，每个月可以预配 200,000 个设备和执行 1,000 万次推送（基准）。
+* **标准**：建议将此层用于中型到大型生产应用。 在每个命名空间中，每个月可以预配 1,000 万个设备和执行 1,000 万次推送（基准）。 包含丰富的遥测数据（提供有关推送状态的其他数据）。
 
 标准层功能：
 
-* **丰富的遥测功能**：可以使用通知中心的消息遥测来跟踪所有推送请求和用于调试的平台通知系统反馈。
-* **多租户**：您可以在命名空间级别使用平台通知系统凭据。 此选项可让你轻松地将租户拆分到相同命名空间内的中心。
+* **丰富的遥测功能**：可以根据消息遥测使用通知中心来跟踪任何推送请求和平台通知系统反馈，以便进行调试。
+* **多租户**：可在命名空间级别使用平台通知系统凭据。 此选项可让你轻松地将租户拆分到相同命名空间内的中心。
 * **计划推送**：可以计划随时发出通知。
-* **批量操作**：启用注册导出/导入功能，如[注册导出/导入]文档中所述。
+* **批量操作**：如[注册信息导出/导入]文档中所述启用注册信息导出/导入功能。
 
 ### <a name="what-is-the-notification-hubs-sla"></a>什么是通知中心 SLA？
 
 对于基本和标准通知中心层，正确配置的应用程序可在 99.9% 的时间发送推送通知或执行注册管理操作。 若要详细了解 SLA，请访问[通知中心 SLA](https://azure.microsoft.com/support/legal/sla/notification-hubs/) 页。
 
 > [!NOTE]
-> 由于推送通知依赖于第三方平台通知系统，如 Apple 的推送通知服务 （APN） 和 Google 的 Firebase 云消息 （FCM），因此没有 SLA 保证传递这些消息。 在通知中心将批处理发送到平台通知系统（有 SLA 保证）后，平台通知系统将负责执行推送（无 SLA 保证）。
+> 由于推送通知依赖于第三方平台通知系统（如 Apple 的推送通知服务（APNs）和 Google 的 Firebase 云消息传送（FCM）），因此不会提供这些消息的 SLA 保证。 在通知中心将批处理发送到平台通知系统（有 SLA 保证）后，平台通知系统将负责执行推送（无 SLA 保证）。
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>如何将中心升级或降级到不同层的命名空间？
 
-转到**[Azure 门户]** > **通知中心命名空间**或**通知中心**。 选择要更新的资源，转到“定价层”。**** 请注意以下要求：
+转到 **[Azure 门户]**  > **通知中心命名空间**或**通知中心**。 选择要更新的资源，转到“定价层”。  请注意以下要求：
 
-* 更新的定价层将应用到正在使用的命名空间中的*所有*中心。
+* 更新的定价层应用到正在使用的命名空间中的*所有*中心。
 * 如果设备计数超出所要降级到的层的限制，则需要删除设备才能降级。
 
 ## <a name="design-and-development"></a>设计和开发
@@ -69,7 +69,7 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 
 ### <a name="which-client-platforms-do-you-support"></a>支持哪些客户端平台？
 
-[iOS，](notification-hubs-ios-apple-push-notification-apns-get-started.md)[安卓，](notification-hubs-android-push-notification-google-fcm-get-started.md) [Windows环球](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)， [Windows手机](notification-hubs-windows-mobile-push-notifications-mpns.md)， [Android中国 （通过百度）](notification-hubs-baidu-china-android-notifications-get-started.md)， Xamarin[（iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md)和安卓， 和[Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari). 有关详细信息，请转到[通知中心入门教程]页。
+[IOS](notification-hubs-ios-apple-push-notification-apns-get-started.md)、 [Android](notification-hubs-android-push-notification-google-fcm-get-started.md)、 [Windows 通用](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)、 [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)、 [Android China （通过百度）](notification-hubs-baidu-china-android-notifications-get-started.md)、Xamarin （[iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md)和 Android）和[Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari)支持推送通知。 有关详细信息，请转到[通知中心入门教程]页。
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>是否支持短信、电子邮件或 Web 通知？
 
@@ -127,7 +127,7 @@ PNS 对于传递通知不提供任何 SLA 保证。 但是，大多数推送通�
 
 #### <a name="geo-distribution"></a>地理分布
 
-在推送通知方案中，地理分布并非总是关键所在。 向设备发送推送通知的各种 PNS（例如，APN 或 FCM）分布不均匀。
+在推送通知方案中，地理分布并非总是关键所在。 将推送通知传递到设备的各种 Pns （例如 APNs 或 FCM）不会均匀分布。
 
 如果有一个在全球范围内使用的应用程序，可以在全球不同的 Azure 区域使用通知中心服务在命名空间中创建中心。
 
@@ -191,7 +191,7 @@ Azure 通知中心提供多项可用于故障排除的功能，尤其是针对�
 
 ### <a name="what-telemetry-features-are-available"></a>遥测功能有哪些？
 
-Azure 通知中心支持在 [Azure 门户]中查看遥测数据。 可以在[通知中心指标]页上找到有关可用指标的详细信息。
+Azure 通知中心允许在 [Azure 门户]中查看遥测数据。 可以在[通知中心指标]页上找到有关可用指标的详细信息。
 
 还可以通过编程方式访问指标。 有关详细信息，请参阅以下文章：
 
@@ -200,7 +200,7 @@ Azure 通知中心支持在 [Azure 门户]中查看遥测数据。 可以在[通
 - [Azure 监视 REST API 演练](../azure-monitor/platform/rest-api-walkthrough.md)
 
 > [!NOTE]
-> 成功通知仅意味着推送通知已传递到外部 PNS（例如，适用于 iOS 和 macOS 的 APN 或适用于 Android 设备的 FCM）。 PNS 负责将通知传递到目标设备。 PNS 通常不会向第三方公开传递指标。  
+> 成功的通知仅意味着推送通知已传递到外部 PNS （例如，Apn 用于 iOS，macOS 或 FCM 适用于 Android 设备）。 PNS 负责将通知传递到目标设备。 PNS 通常不会向第三方公开传递指标。  
 
 [Azure 门户]: https://portal.azure.com
 [通知中心定价]: https://azure.microsoft.com/pricing/details/notification-hubs/

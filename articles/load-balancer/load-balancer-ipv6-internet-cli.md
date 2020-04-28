@@ -1,7 +1,7 @@
 ---
 title: 创建使用 IPv6 的公共负载均衡器 - Azure CLI
 titleSuffix: Azure Load Balancer
-description: 使用此学习路径，开始使用 Azure CLI 使用 IPv6 创建公共负载均衡器。
+description: 通过此学习路径使用 Azure CLI 着手创建使用 IPv6 的公共负载均衡器。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
 ms.openlocfilehash: bff6a7ca6eb1a6859ec25d488f564c66946a780b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76045408"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>使用 Azure CLI 创建使用 IPv6 的公共负载均衡器
 
 >[!NOTE] 
->本文介绍了一个介绍性的 IPv6 功能，允许基本负载均衡器同时提供 IPv4 和 IPv6 连接。 适用于[Azure VNET 的 IPv6](../virtual-network/ipv6-overview.md)集成了 IPv6 连接，包括 IPv6 网络安全组规则、IPv6 用户定义的路由、IPv6 基本和标准负载平衡等关键功能。  Azure VNET 的 IPv6 是 Azure 中 IPv6 应用程序的建议标准。 [有关 Azure VNET 电源壳部署，请参阅 IPv6](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) 
+>本文介绍了一项简介性的 IPv6 功能，该功能允许基本负载均衡器提供 IPv4 和 IPv6 连接。 [适用于 Azure VNET 的 IPv6](../virtual-network/ipv6-overview.md) 现在提供综合性 IPv6 连接，可以将 IPv6 连接与虚拟网络集成，包含 IPv6 网络安全组规则、IPv6 用户定义路由、IPv6 基本和标准负载均衡等关键功能。  适用于 Azure VNET 的 IPv6 是建议用于 Azure 中的 IPv6 应用程序的标准。 请参阅[适用于 Azure VNET PowerShell 部署的 IPv6](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) 
 
 Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负载均衡器可以在云服务或负载均衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 负载均衡器还可以在多个端口和/或多个 IP 地址上显示这些服务。
 
@@ -282,7 +282,7 @@ Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
     ```
 
     > [!WARNING]
-    > 本示例为 VM 使用了明文用户名和密码。 以明文形式使用这些凭据时请保持适当的谨慎。 有关 PowerShell 中处理凭据的更安全的方法，请参阅[`Get-Credential`](https://technet.microsoft.com/library/hh849815.aspx)cmdlet。
+    > 本示例为 VM 使用了明文用户名和密码。 以明文形式使用这些凭据时请保持适当的谨慎。 有关在 PowerShell 中更安全处理凭据的方法，请参阅 [`Get-Credential`](https://technet.microsoft.com/library/hh849815.aspx) cmdlet。
 
 2. 创建可用性集：
 

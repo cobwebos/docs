@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 开发人员测试实验室中部署嵌套模板环境
-description: 了解如何部署嵌套 Azure 资源管理器模板以使用 Azure 开发人员测试实验室提供环境。
+title: 在 Azure 开发测试实验室中部署嵌套模板环境
+description: 了解如何部署嵌套的 Azure 资源管理器模板以提供 Azure 开发测试实验室环境。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,22 +13,22 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: e83bc4e77a44f20d55fa3b56bc81aefd1d25bb03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76168824"
 ---
-# <a name="deploy-nested-azure-resource-manager-templates-for-testing-environments"></a>为测试环境部署嵌套 Azure 资源管理器模板
-嵌套部署允许您从主资源管理器模板中执行其他 Azure 资源管理器模板。 它使您能够将部署分解为一组针对的目标和特定于目的的模板。 它在测试、重用和可读性方面提供了优势。 在[部署 Azure 资源时使用链接模板](../azure-resource-manager/templates/linked-templates.md)的文章提供了此解决方案的良好概述，并包含多个代码示例。 本文提供了特定于 Azure 开发人员测试实验室的示例。 
+# <a name="deploy-nested-azure-resource-manager-templates-for-testing-environments"></a>部署用于测试环境的嵌套 Azure 资源管理器模板
+嵌套部署允许您从主资源管理器模板内执行其他 Azure 资源管理器模板。 它使你能够将部署分解为一组目标和特定用途的模板。 它提供测试、重复使用和可读性方面的优势。 [部署 Azure 资源时使用链接模板](../azure-resource-manager/templates/linked-templates.md)一文提供了此解决方案的更好概述，其中包含多个代码示例。 本文提供了特定于 Azure 开发测试实验室的示例。 
 
 ## <a name="key-parameters"></a>关键参数
-虽然可以从头开始创建自己的资源管理器模板，但我们建议您在 Visual Studio 中使用[Azure 资源组项目](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)，这样可以轻松地开发和调试模板。 将嵌套部署资源添加到 azuredeploy.json 时，Visual Studio 会添加多个项以使模板更加灵活。 这些项目包括包含辅助模板和参数文件的子文件夹、主模板文件中的变量名称以及新文件的存储位置的两个参数。 **_artifactsLocation**和 **_artifactsLocationSasToken**是 DevTest 实验室使用的关键参数。 
+虽然你可以从头开始创建自己的资源管理器模板，但是我们建议你在 Visual Studio 中使用[Azure 资源组项目](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)，这可以轻松地开发和调试模板。 将嵌套的部署资源添加到 azuredeploy.json 时，Visual Studio 会添加多个项，使模板更加灵活。 这些项包括具有辅助模板和参数文件的子文件夹、主模板文件中的变量名称，以及新文件的存储位置的两个参数。 **_ArtifactsLocation**和 **_ArtifactsLocationSasToken**是开发测试实验室使用的关键参数。 
 
-如果您不熟悉 DevTest Labs 如何使用环境，请参阅[使用 Azure 资源管理器模板创建多 VM 环境和 PaaS 资源](devtest-lab-create-environment-from-arm.md)。 模板存储在链接到 DevTest 实验室实验室的存储库中。 使用这些模板创建新环境时，文件将移动到实验室中的 Azure 存储容器中。 为了能够识别和复制嵌套文件，DevTest Labs 标识_artifactsLocation，并_artifactsLocationSasToken参数并将子文件夹复制到存储容器。 然后，它会自动将位置和共享访问签名 （SaS） 令牌插入到参数中。 
+如果你不熟悉开发测试实验室如何适用于环境，请参阅[使用 Azure 资源管理器模板创建多 VM 环境和 PaaS 资源](devtest-lab-create-environment-from-arm.md)。 模板存储在链接到开发测试实验室中的实验室的存储库中。 使用这些模板创建新环境时，文件将移入实验室中的 Azure 存储容器。 为了能够识别和复制嵌套文件，开发测试实验室会标识 _artifactsLocation 和 _artifactsLocationSasToken 参数，并将子文件夹复制到存储容器。 然后，它会自动将位置和共享访问签名（SaS）令牌插入参数中。 
 
 ## <a name="nested-deployment-example"></a>嵌套部署示例
-下面是嵌套部署的简单示例：
+下面是一个简单的嵌套部署示例：
 
 ```json
 
@@ -66,17 +66,17 @@ ms.locfileid: "76168824"
 "outputs": {}
 ```
 
-存储库中包含此模板的文件夹有一个子文件夹`nestedtemplates`，其中包含文件**NestOne.json**和**NestOne.parameter.json**。 在**azuredeploy.json**中，模板的 URI 使用项目位置、嵌套模板文件夹、嵌套模板文件名生成。 同样，使用嵌套模板的项目位置、嵌套模板文件夹和参数文件构建参数的 URI。 
+包含此模板的存储库中的文件夹包含一个`nestedtemplates`包含文件**NestOne**和**NestOne**的子文件夹。 在**azuredeploy.json**中，模板的 URI 是使用项目位置、嵌套模板文件夹和嵌套模板文件名生成的。 同样，使用嵌套模板的项目位置、嵌套模板文件夹和参数文件生成参数的 URI。 
 
-以下是 Visual Studio 中相同项目结构的图像： 
+下面是 Visual Studio 中同一个项目结构的图像： 
 
 ![Visual Studio 中的项目结构](./media/deploy-nested-template-environments/visual-studio-project-structure.png)
 
-您可以在主文件夹中添加其他文件夹，但不能比单个级别更深。 
+你可以在主文件夹中添加其他文件夹，但不能将其添加到一个级别。 
 
 ## <a name="next-steps"></a>后续步骤
 有关环境的详细信息，请参阅以下文章： 
 
 - [使用 Azure 资源管理器模板创建多 VM 环境和 PaaS 资源](devtest-lab-create-environment-from-arm.md)
 - [在 Azure 开发测试实验室中配置和使用公共环境](devtest-lab-configure-use-public-environments.md)
-- [在 Azure 开发人员测试实验室中将环境连接到实验室的虚拟网络](connect-environment-lab-virtual-network.md)
+- [在 Azure 开发测试实验室中将环境连接到实验室的虚拟网络](connect-environment-lab-virtual-network.md)

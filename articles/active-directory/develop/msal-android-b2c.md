@@ -1,5 +1,5 @@
 ---
-title: Azure AD B2C （MSAL 安卓） |蔚蓝
+title: Azure AD B2C （MSAL Android） |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解将 Azure AD B2C 与适用于 Android 的 Microsoft 身份验证库 (MSAL.Android) 配合使用时的具体注意事项。
 services: active-directory
@@ -14,10 +14,10 @@ ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
 ms.openlocfilehash: 0998bb04b0dfc69db4696f2e390cfe259eba6718
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76696515"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>将适用于 Android 的 MSAL 与 B2C 配合使用
@@ -139,7 +139,7 @@ pca.acquireTokenSilentAsync(parameters);
 
 ## <a name="specify-a-policy"></a>指定策略
 
-由于 B2C 中的策略以单独的颁发机构表示，因此，可以通过在构造 `acquireToken` 或 `acquireTokenSilent` 参数时指定 `fromAuthority` 子句，来调用除默认策略以外的策略。  例如：
+由于 B2C 中的策略以单独的颁发机构表示，因此，可以通过在构造 `fromAuthority` 或 `acquireToken` 参数时指定 `acquireTokenSilent` 子句，来调用除默认策略以外的策略。  例如：
 
 ```java
 AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
@@ -153,7 +153,7 @@ AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
 
 ## <a name="handle-password-change-policies"></a>处理密码更改策略
 
-本地帐户注册或登录用户流显示“忘记了密码?”**** 链接。 单击此链接不会自动触发密码重置用户流。
+本地帐户注册或登录用户流显示“忘记了密码?”  链接。 单击此链接不会自动触发密码重置用户流。
 
 而是会将错误代码 `AADB2C90118` 返回给应用。 应用应该通过运行一个可重置密码的特定用户流来处理此错误代码。
 

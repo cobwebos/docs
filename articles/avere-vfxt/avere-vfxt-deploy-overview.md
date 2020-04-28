@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 78140fea74272dff6056bebfbd44ed9d55b0e1db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76153677"
 ---
 <!-- filename is linked to in the marketplace template, make sure it gets a redirect if we rename it -->
@@ -27,7 +27,7 @@ ms.locfileid: "76153677"
 
 Azure 市场中的 Azure 资源管理器模板会收集必需的信息并自动部署整个群集。
 
-vFXT 群集启动并运行后，在使用它之前仍有一些配置步骤需要执行。 如果创建新的 Blob 存储容器，则需要将数据移动到该容器。 如果使用 NAS 存储系统，则需要在创建群集后添加它。 您需要将客户端连接到群集。
+VFXT 群集启动并运行后，在使用之前仍需执行一些配置步骤。 如果创建了新的 Blob 存储容器，则需要将数据移动到其中。 如果使用 NAS 存储系统，则需要在创建群集后添加该存储系统。 需要将客户端连接到群集。
 
 下面是所有步骤的概述。
 
@@ -41,24 +41,24 @@ vFXT 群集启动并运行后，在使用它之前仍有一些配置步骤需要
 
    群集创建涉及以下步骤，所有这些步骤都是通过市场模板执行的：
 
-   * 根据需要创建新的网络基础设施和资源组
+   * 根据需要创建新的网络基础结构和资源组
    * 创建群集控制器
 
      群集控制器是驻留在 Avere vFXT 群集所在的同一虚拟网络中的简单 VM，它具有创建和管理群集时所需的自定义软件。 该控制器可创建 vFXT 节点并组建群集，此外，还提供一个命令行接口，用于在群集的整个生存期内对其进行管理。
 
-     如果在部署期间创建新的虚拟网络或子网，则控制器将具有公共 IP 地址。 这意味着控制器可以充当从虚拟网络外部连接到群集的跳转主机。
+     如果在部署过程中创建新的虚拟网络或子网，控制器将具有公共 IP 地址。 这意味着，控制器可以充当用于从虚拟网络外部连接到群集的跳转主机。
 
-   * 创建群集节点 VM
+   * 创建群集节点 Vm
 
    * 从各个节点创建群集
 
-   * 或者，创建新的 Blob 容器并将其配置为群集的后端存储
+   * （可选）创建新的 Blob 容器，并将其配置为群集的后端存储
 
-   在[部署 vFXT 群集](avere-vfxt-deploy.md)中详细介绍了群集创建。
+   [部署 vFXT 群集](avere-vfxt-deploy.md)中详细介绍了群集创建。
 
 1. 配置群集
 
-   连接到 Avere vFXT 配置接口（Avere 控制面板）以自定义群集的设置。 选择加入支持监视，如果使用硬件存储或其他 Blob 容器，请添加存储系统。
+   连接到 Avere vFXT 配置接口（Avere 控制面板）以自定义群集的设置。 选择启用支持监视，如果使用硬件存储或其他 Blob 容器，则添加存储系统。
 
    * [访问 vFXT 群集](avere-vfxt-cluster-gui.md)
    * [启用支持](avere-vfxt-enable-support.md)
@@ -70,10 +70,10 @@ vFXT 群集启动并运行后，在使用它之前仍有一些配置步骤需要
 
 1. 添加数据（如果需要）
 
-   由于 Avere vFXT 是可扩展的多客户端缓存，因此将数据移动到新的后端存储容器的最佳方式是使用多客户端多线程文件复制策略。
+   由于 Avere vFXT 是可伸缩的多客户端缓存，将数据移动到新的后端存储容器的最佳方式是使用多客户端多线程文件复制策略。
 
-   如果需要将工作集数据移动到新的 Blob 容器或其他后端存储系统，请按照[将数据移动到 vFXT 群集](avere-vfxt-data-ingest.md)中的说明操作。
+   如果需要将工作集数据移到新的 Blob 容器或其他后端存储系统，请按照将[数据移动到 vFXT 群集](avere-vfxt-data-ingest.md)中的说明进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 
-继续[准备创建 Avere vFXT](avere-vfxt-prereqs.md)以完成先决条件任务。
+继续[准备创建 Avere vFXT](avere-vfxt-prereqs.md)以完成必备任务。

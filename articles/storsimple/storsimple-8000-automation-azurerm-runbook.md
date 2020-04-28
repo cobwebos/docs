@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: alkohli
 ms.openlocfilehash: 727bebe0c190ed4dff4408884c45fe166ad541a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76276970"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>使用 Azure 自动化 Runbook 管理 StorSimple 设备
@@ -171,18 +171,18 @@ ms.locfileid: "76276970"
 
 ### <a name="import-publish-and-run-automation-runbook"></a>导入、发布和运行自动化 Runbook
 
-1. 在 Azure 门户中创建 Azure 运行方式自动化帐户。 为此，请转到“Azure 市场”&gt;“所有”，并搜索“自动化”。******** 选择**自动化帐户**。
+1. 在 Azure 门户中创建 Azure 运行方式自动化帐户。 为此，请转到“Azure 市场”&gt;“所有”，并搜索“自动化”。******** 选择 "**自动化帐户**"。
 
     ![search-automation](./media/storsimple-8000-automation-azurerm-runbook/automation1.png)
 
 2. 在“添加自动化帐户”边栏选项卡中：****
 
-   1. 提供自动化帐户**的名称**。
+   1. 提供自动化帐户的**名称**。
    2. 选择已链接到 StorSimple 设备管理器服务的**订阅**。
    3. 创建新的资源组，或选择现有的资源组。
    4. 选择一个**位置**（请尽量选择运行服务的位置）。
    5. 保留选择默认的“创建运行方式帐户”选项。****
-   6. （可选）选中“固定到仪表板”。**** 单击 **“创建”**。
+   6. （可选）选中“固定到仪表板”。**** 单击“创建”。 
 
        ![create-automation-account](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
 
@@ -194,11 +194,11 @@ ms.locfileid: "76276970"
 
 4. 在新建的帐户中，转到“共享资源”>“模块”并单击“+ 添加模块”。********
 
-5. 在“添加模块”边栏选项卡中，浏览到压缩的模块所在的位置，选择并打开该模块。**** 单击“确定”。
+5. 在“添加模块”边栏选项卡中，浏览到压缩的模块所在的位置，选择并打开该模块。**** 单击“确定”。 
 
     ![add-module](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
 
-6. 转到“过程自动化”>“Runbook”并单击“+ 添加 Runbook”。**** 在“添加 Runbook”边栏选项卡中，单击“导入现有的 Runbook”。******** 指向 **Runbook 文件**的 Windows PowerShell 脚本文件。 系统会自动选择 Runbook 类型。 提供 Runbook 的名称，并选择性地提供说明。 单击 **“创建”**。
+6. 转到“过程自动化”>“Runbook”并单击“+ 添加 Runbook”。**** 在“添加 Runbook”边栏选项卡中，单击“导入现有的 Runbook”。******** 指向 **Runbook 文件**的 Windows PowerShell 脚本文件。 系统会自动选择 Runbook 类型。 提供 Runbook 的名称，并选择性地提供说明。 单击“创建”。 
 
     ![add-module](./media/storsimple-8000-automation-azurerm-runbook/import-runbook.png)
 

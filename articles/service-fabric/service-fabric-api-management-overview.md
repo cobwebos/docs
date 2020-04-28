@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.date: 06/22/2017
 ms.author: vturecek
 ms.openlocfilehash: 2a331715d4e4538cfdda8d958ff549a81b627b79
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76028549"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>有关 Azure Service Fabric 与 API 管理的概述
 
-云应用程序通常都需要使用前端网关，为用户、设备或其他应用程序提供同一个入口点。 在 Service Fabric 中，网关可以是任何无状态服务，如[ASP.NET核心应用程序](service-fabric-reliable-services-communication-aspnetcore.md)，也可以是专为流量入口设计的另一个服务，如[事件中心](https://docs.microsoft.com/azure/event-hubs/)[、IoT 中心](https://docs.microsoft.com/azure/iot-hub/)或[Azure API 管理](https://docs.microsoft.com/azure/api-management/)。
+云应用程序通常都需要使用前端网关，为用户、设备或其他应用程序提供同一个入口点。 在 Service Fabric 中，网关可以是任意无状态服务（如 [ASP.NET Core 应用程序](service-fabric-reliable-services-communication-aspnetcore.md)），也可以是其他专为流量入口设计的服务（如[事件中心](https://docs.microsoft.com/azure/event-hubs/)、[IoT 中心](https://docs.microsoft.com/azure/iot-hub/)或 [Azure API 管理](https://docs.microsoft.com/azure/api-management/)）。
 
 本文介绍了如何将 Azure API 管理用作 Service Fabric 应用程序的网关。 API 管理直接与 Service Fabric 集成，以便可以使用一组丰富的路由规则向后端 Service Fabric 服务发布 API。
 
@@ -55,7 +55,7 @@ Azure API 管理可与无状态服务、有状态服务和任何分区方案的�
 
 ## <a name="send-traffic-to-a-stateful-service"></a>将流量发送到有状态服务
 
-与无状态服务方案类似，流量可以转发到有状态服务实例。 在此示例中，API 管理操作包含使用 Service Fabric 后端的入站处理策略，用于将请求映射到特定有状态服务实例** 的特定分区。 每个请求映射到的分区是通过 lambda 方法并根据传入 HTTP 请求中的一些输入（如 URL 路径中的值）计算得出。 可以将策略配置为仅将请求发送到主要副本，也可以配置为发送到读取操作的随机副本。
+与无状态服务方案类似，流量可以转发到有状态服务实例。 在此示例中，API 管理操作包含使用 Service Fabric 后端的入站处理策略，用于将请求映射到特定有状态服务实例  的特定分区。 每个请求映射到的分区是通过 lambda 方法并根据传入 HTTP 请求中的一些输入（如 URL 路径中的值）计算得出。 可以将策略配置为仅将请求发送到主要副本，也可以配置为发送到读取操作的随机副本。
 
 **示例**
 
@@ -86,7 +86,7 @@ Azure API 管理可与无状态服务、有状态服务和任何分区方案的�
 
 ## <a name="send-traffic-to-multiple-stateful-services"></a>将流量发送到多个有状态服务
 
-与无状态服务示例类似，API 管理操作可以将请求映射到多个有状态**** 服务实例。在此方案中，可能还需要对每个有状态服务实例执行分区解析。
+与无状态服务示例类似，API 管理操作可以将请求映射到多个有状态  服务实例。在此方案中，可能还需要对每个有状态服务实例执行分区解析。
 
 为此，API 管理操作包含使用 Service Fabric 后端的入站处理策略，用于根据从传入 HTTP 请求中检索到的值，将请求映射到 Service Fabric 后端中的有状态服务实例。 除了可以映射到特定服务实例外，还可以将请求映射到服务实例中的特定分区，并视需要映射到分区内的主要副本或随机次要副本。
 

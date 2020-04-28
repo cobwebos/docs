@@ -1,5 +1,5 @@
 ---
-title: 创建弹性访问控制管理策略 - Azure AD
+title: 创建弹性访问控制管理策略-Azure AD
 description: 本文档为组织提供了策略方面的指导，组织可采用这些策略来提供复原能力，以降低意外中断期间的锁定风险
 services: active-directory
 author: martincoetzer
@@ -13,10 +13,10 @@ ms.date: 01/29/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0ca5817e744ff81efcd549bc328d7ce5eeedb2d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76908728"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>使用 Azure Active Directory 创建可复原的访问控制管理策略
@@ -38,8 +38,8 @@ ms.locfileid: "76908728"
 本文档有四个要点：
 
 * 使用紧急访问帐户避免管理员锁定。
-* 使用条件访问 （CA） 而不是每个用户 MFA 实现 MFA。
-* 通过使用多个条件访问 （CA） 控件来缓解用户锁定。
+* 使用条件性访问（CA）而不是按用户 MFA 实现 MFA。
+* 通过使用多个条件访问（CA）控件来缓解用户锁定。
 * 通过为每个用户预配多种身份验证方法或等效项来缓解用户锁定风险。
 
 ## <a name="before-a-disruption"></a>中断前
@@ -59,11 +59,11 @@ ms.locfileid: "76908728"
 
 ### <a name="mitigating-user-lockout"></a>缓解用户锁定风险
 
- 要降低用户锁定的风险，请使用具有多个控件的条件访问策略，以便用户选择如何访问应用和资源。 通过为用户提供多种选择，例如，使用 MFA 登录**或**从受管理设备登录**或**从公司网络登录，用户可以在其中一种访问控制不可用时，使用其他选项来继续工作。
+ 若要降低用户锁定的风险，请使用具有多个控件的条件性访问策略，使用户能够选择如何访问应用和资源。 通过为用户提供多种选择，例如，使用 MFA 登录**或**从受管理设备登录**或**从公司网络登录，用户可以在其中一种访问控制不可用时，使用其他选项来继续工作。
 
 #### <a name="microsoft-recommendations"></a>Microsoft 的建议
 
-在组织的现有条件访问策略中包含以下访问控件：
+在组织现有的条件性访问策略中合并以下访问控制：
 
 1. 为每个用户预配依赖于不同信道的多种身份验证方法，例如基于 Internet 的 Microsoft Authenticator 应用、在设备上生成的 OATH 令牌和手机短信。
 2. 在 Windows 10 设备上部署 Windows Hello for Business，以便直接通过设备登录满足 MFA 要求。
@@ -78,23 +78,23 @@ ms.locfileid: "76908728"
 
 **CA 缓解策略集：**
 
-* 策略 1：阻止对目标组外部人员的访问
-  * 用户和组：包括所有用户。 排除 AppUsers、CoreAdmins 和 EmergencyAccess
+* 策略1：阻止访问目标组以外的人员
+  * 用户和组：包含所有用户。 排除 AppUsers、CoreAdmins 和 EmergencyAccess
   * 云应用：包括所有应用
   * 条件：（无）
-  * 授予控制：块
-* 策略 2：授予需要 MFA 或受信任设备的应用用户访问权限。
-  * 用户和组：包括应用用户。 排除 CoreAdmins 和 EmergencyAccess
+  * 授予控制权限：阻止
+* 策略2：向需要 MFA 或受信任设备的 AppUsers 授予访问权限。
+  * 用户和组：包括 AppUsers。 排除 CoreAdmins 和 EmergencyAccess
   * 云应用：包括所有应用
   * 条件：（无）
-  * 授予控制：授予访问权限，需要多重身份验证，要求设备符合要求。 对于多个控件：需要其中一个选定的控件。
+  * 授权控制：授予访问权限，需要多重身份验证，要求设备符合要求的设备。 对于多个控件：需要一个选定的控件。
 
 ### <a name="contingencies-for-user-lockout"></a>用户锁定应急计划
 
 或者，组织也可以创建应急策略。 若要创建应急策略，就必须在业务连续性、运营成本、财务成本和安全风险之间定义权衡标准。 例如，可以仅针对一部分用户、一部分应用、一部分客户端或一部分位置激活应急策略。 在未实施缓解方法的中断期间，应急策略将为管理员和最终用户提供对应用和资源的访问权限。
 了解你在中断期间可能面临的风险有助于降低风险，是规划过程中的关键环节。 若要创建应急计划，请首先确定组织的以下业务要求：
 
-1. 提前确定任务关键型应用：即使风险/安全状况较低，您也必须允许哪些应用访问？ 为这些应用生成一个列表，确保你的其他利益干系人（业务部门、安全部门、法律部门、领导层）都同意：即使所有访问控制都失效，这些应用仍必须继续运行。 你最终可能会对应用进行以下分类：
+1. 提前确定你的任务关键型应用程序：你必须为其提供访问权限的应用是什么，甚至具有更低的风险/安全状态？ 为这些应用生成一个列表，确保你的其他利益干系人（业务部门、安全部门、法律部门、领导层）都同意：即使所有访问控制都失效，这些应用仍必须继续运行。 你最终可能会对应用进行以下分类：
    * **类别 1 任务关键应用**：不可用时间不能超过几分钟，例如直接影响组织收入的应用。
    * **类别 2 重要应用**：需要在几小时内访问其业务。
    * **类别 3 低优先级应用**：可以承受几天的中断。
@@ -110,7 +110,7 @@ ms.locfileid: "76908728"
 
 #### <a name="microsoft-recommendations"></a>Microsoft 的建议
 
-应急条件访问策略是一种**禁用的策略**，它省略了 Azure MFA、第三方 MFA、基于风险或基于设备的控件。 当组织决定激活你的应急计划时，管理员可以启用该策略并禁用基于控制的常规策略。
+应急条件性访问策略是一个**禁用的策略**，该策略忽略 Azure MFA、第三方 MFA、基于风险的控件或基于设备的控件。 当组织决定激活你的应急计划时，管理员可以启用该策略并禁用基于控制的常规策略。
 
 >[!IMPORTANT]
 > 启用应急计划时，禁用对用户强制执行安全措施的策略（即使只是暂时的）会对你的安全状况造成威胁。
@@ -123,7 +123,7 @@ ms.locfileid: "76908728"
   * 如果组织使用 Microsoft Cloud App Security，请考虑回退到使用 MCAS 的策略，MCAS 允许只读访问但不允许上传。
 * 请将策略命名，以确保在中断期间能够轻松找到它们。 在策略名称中包含以下元素：
   * 策略的标签编号。**
-  * 要显示的文本。此策略仅用于紧急情况。 例如：**在 EMERGENCY 中启用**
+  * 要显示的文本。此策略仅用于紧急情况。 例如：**在紧急情况下启用**
   * 策略应用到的中断。** 例如：**在 MFA 中断期间**
   * 一个序号，用于指示策略的激活顺序。**
   * 策略应用到的应用。**
@@ -136,72 +136,72 @@ ms.locfileid: "76908728"
 EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
 ```
 
-以下示例：**示例 A - 用于恢复对任务关键型协作应用的访问的应急 CA 策略**是典型的企业应急方案。 在此场景中，组织通常要求对所有 Exchange Online 和 SharePoint Online 访问执行 MFA，此示例中的中断是指客户的 MFA 提供程序发生中断（无论是 Azure MFA、本地 MFA 提供程序还是第三方 MFA）。 此策略仅在特定目标用户从受信任的公司网络访问应用时才允许其从受信任的 Windows 设备访问这些应用，从而缓解此中断带来的影响。 它还将紧急帐户和核心管理员排除在这些限制之外。 然后，目标用户将会获取 Exchange Online 和 SharePoint Online 的访问权限，而其他用户仍由于服务中断而无法访问应用。 此示例需要一个名为 **CorpNetwork** 的网络位置和一个包含目标用户的安全组 **ContingencyAccess**，一个包含核心管理员的名为 **CoreAdmins** 的组，以及一个包含紧急访问帐户的名为 **EmergencyAccess** 的组。 该应急策略需要四个策略来提供所需的访问权限。 
+下面的示例：**一个用于还原对关键任务的协作应用程序的访问的应急 CA 策略示例**，是典型的公司应急措施。 在此场景中，组织通常要求对所有 Exchange Online 和 SharePoint Online 访问执行 MFA，此示例中的中断是指客户的 MFA 提供程序发生中断（无论是 Azure MFA、本地 MFA 提供程序还是第三方 MFA）。 此策略仅在特定目标用户从受信任的公司网络访问应用时才允许其从受信任的 Windows 设备访问这些应用，从而缓解此中断带来的影响。 它还将紧急帐户和核心管理员排除在这些限制之外。 然后，目标用户将会获取 Exchange Online 和 SharePoint Online 的访问权限，而其他用户仍由于服务中断而无法访问应用。 此示例需要一个名为 **CorpNetwork** 的网络位置和一个包含目标用户的安全组 **ContingencyAccess**，一个包含核心管理员的名为 **CoreAdmins** 的组，以及一个包含紧急访问帐户的名为 **EmergencyAccess** 的组。 该应急策略需要四个策略来提供所需的访问权限。 
 
 **示例 A - 用于恢复对任务关键型协作应用的访问权限的应急 CA 策略：**
 
-* 策略 1：需要域加入的设备进行交换和共享点
-  * 名称： EM001 - 紧急启用：MFA 中断[1/4] - 交换共享点 - 需要混合 Azure AD 联接
-  * 用户和组：包括应急访问。 排除 CoreAdmins 和 EmergencyAccess
-  * 云应用程序：在线交换和在线共享点
-  * 条件： 任何
-  * 授予控制：需要加入域
-  * 状态： 已禁用
-* 策略 2：阻止 Windows 以外的平台
-  * 名称： EM002 - 紧急启用：MFA 中断[2/4] - 交换共享点 - 阻止访问，但 Windows 除外
-  * 用户和组：包括所有用户。 排除 CoreAdmins 和 EmergencyAccess
-  * 云应用程序：在线交换和在线共享点
-  * 条件：设备平台包括所有平台，不包括 Windows
-  * 授予控制：块
-  * 状态： 已禁用
-* 策略 3：阻止公司网络以外的网络
-  * 名称： EM003 - 紧急启用：MFA 中断[3/4] - 交换共享点 - 阻止访问，但公司网络除外
-  * 用户和组：包括所有用户。 排除 CoreAdmins 和 EmergencyAccess
-  * 云应用程序：在线交换和在线共享点
-  * 条件：位置包括任何位置，不包括公司网络
-  * 授予控制：块
-  * 状态： 已禁用
-* 策略 4：显式阻止 EAS
-  * 名称： EM004 - 紧急启用：MFA 中断[4/4] - 交换 - 所有用户的模块 EAS
+* 策略1：需要适用于 Exchange 和 SharePoint 的已加入域的设备
+  * 名称： EM001-在紧急情况下启用： MFA 中断 [1/4]-Exchange SharePoint-需要混合 Azure AD 联接
+  * 用户和组：包括 ContingencyAccess。 排除 CoreAdmins 和 EmergencyAccess
+  * 云应用： Exchange Online 和 SharePoint Online
+  * 条件：任意
+  * 授权控制：需要加入域
+  * 状态：已禁用
+* 策略2：阻止 Windows 以外的平台
+  * 名称： EM002-在紧急情况下启用： MFA 中断 [2/4]-Exchange SharePoint-阻止访问，Windows 除外
+  * 用户和组：包含所有用户。 排除 CoreAdmins 和 EmergencyAccess
+  * 云应用： Exchange Online 和 SharePoint Online
+  * 条件：设备平台包括所有平台，排除 Windows
+  * 授予控制权限：阻止
+  * 状态：已禁用
+* 策略3：阻止除 CorpNetwork 以外的网络
+  * 名称： EM003-在紧急情况下启用： MFA 中断 [3/4]-Exchange SharePoint-阻止访问，企业网络除外
+  * 用户和组：包含所有用户。 排除 CoreAdmins 和 EmergencyAccess
+  * 云应用： Exchange Online 和 SharePoint Online
+  * 条件：位置包含任何位置，排除 CorpNetwork
+  * 授予控制权限：阻止
+  * 状态：已禁用
+* 策略4：显式阻止 EAS
+  * 名称： EM004-在紧急情况下启用： MFA 中断 [4/4]-Exchange-阻止所有用户使用 EAS
   * 用户和组：包括所有用户
-  * 云应用：包括在线交换
-  * 条件：客户端应用：交换活动同步
-  * 授予控制：块
-  * 状态： 已禁用
+  * 云应用：包括 Exchange Online
+  * 条件：客户端应用： Exchange Active Sync
+  * 授予控制权限：阻止
+  * 状态：已禁用
 
 激活顺序：
 
 1. 从现有 MFA 策略中排除 ContingencyAccess、CoreAdmins 和 EmergencyAccess。 确保 ContingencyAccess 中的用户能够访问 SharePoint Online 和 Exchange Online。
-2. 启用策略 1：验证不在排除组中的域加入设备上的用户能够访问联机交换和联机共享点。 确保排除组中的用户能够从任意设备访问 SharePoint Online 和 Exchange。
-3. 启用策略 2：验证不在排除组中的用户无法从其移动设备访问 SharePoint 联机和联机交换。 确保排除组中的用户能够从任意设备 (Windows/iOS/Android) 访问 SharePoint 和 Exchange。
-4. 启用策略 3：验证不在排除组中的用户无法从公司网络访问 SharePoint 和 Exchange，即使使用域加入的计算机也是如此。 确保排除组中的用户能够从任意网络访问 SharePoint 和 Exchange。
-5. 启用策略 4：验证所有用户无法从移动设备上的本机邮件应用程序获取 Exchange Online。
+2. 启用策略1：验证不在排除组中的已加入域的设备上的用户是否能够访问 Exchange Online 和 SharePoint Online。 确保排除组中的用户能够从任意设备访问 SharePoint Online 和 Exchange。
+3. 启用策略2：验证不在排除组中的用户是否无法从其移动设备访问 SharePoint Online 和 Exchange Online。 确保排除组中的用户能够从任意设备 (Windows/iOS/Android) 访问 SharePoint 和 Exchange。
+4. 启用策略3：验证不在排除组中的用户是否无法访问 SharePoint 和 Exchange 企业网络（即使已加入域的计算机）。 确保排除组中的用户能够从任意网络访问 SharePoint 和 Exchange。
+5. 启用策略4：验证所有用户不能从移动设备上的本机邮件应用程序中获取 Exchange Online。
 6. 禁用 SharePoint Online 和 Exchange Online 的现有 MFA 策略。
 
 在下一个示例（**示例 B - 允许移动设备访问 Salesforce 的应急 CA 策略**）中，将恢复业务应用的访问权限。 在此场景中，客户通常要求使用移动设备访问 Salesforce（配置为使用 Azure AD 进行单一登录）的销售员工只能使用合规的设备进行访问。 此示例中的中断是指评估设备符合性时出现问题，在销售团队需要访问 Salesforce 以完成交易的敏感时间发生中断。 这些应急策略将授权关键用户从移动设备访问 Salesforce，以便他们可以继续完成交易而不会中断业务。 在此示例中，**SalesforceContingency** 包含需要保留访问权限的所有销售员工，**SalesAdmins** 包含必要的 Salesforce 管理员。
 
 **示例 B - 应急 CA 策略：**
 
-* 策略 1：阻止不在销售应急团队中的每个人
-  * 名称： EM001 - 紧急启用：设备合规性中断[1/2] - 销售人员 - 阻止除销售队伍紧急之外的所有用户
-  * 用户和组：包括所有用户。 排除 SalesAdmins 和 SalesforceContingency
-  * 云应用：销售队伍。
+* 策略1：阻止不在 SalesContingency 团队中的每个人
+  * 名称： EM001-在紧急情况下启用：设备合规性中断 [1/2]-Salesforce-阻止所有用户（SalesforceContingency 除外）
+  * 用户和组：包含所有用户。 排除 SalesAdmins 和 SalesforceContingency
+  * 云应用： Salesforce。
   * 条件：无
-  * 授予控制：块
-  * 状态： 已禁用
-* 策略 2：阻止销售团队访问移动以外的任何平台（以减少攻击的表面区域）
-  * 名称： EM002 - 支持 EMERGENCY： 设备合规性中断[2/2] - 销售人员 - 阻止除 iOS 和安卓之外的所有平台
-  * 用户和组：包括销售队伍应急。 排除 SalesAdmins
-  * 云应用：销售队伍
-  * 条件：设备平台包括所有平台，不包括 iOS 和安卓
-  * 授予控制：块
-  * 状态： 已禁用
+  * 授予控制权限：阻止
+  * 状态：已禁用
+* 策略2：通过移动以外的任何平台阻止销售团队（以降低攻击面）
+  * 名称： EM002-在紧急情况下启用：设备一致性中断 [2/2]-Salesforce-阻止除 iOS 和 Android 之外的所有平台
+  * 用户和组：包括 SalesforceContingency。 排除 SalesAdmins
+  * 云应用： Salesforce
+  * 条件：设备平台包括所有平台，排除 iOS 和 Android
+  * 授予控制权限：阻止
+  * 状态：已禁用
 
 激活顺序：
 
 1. 从 Salesforce 的现有设备符合性策略中排除 SalesAdmins 和 SalesforceContingency。 确保 SalesforceContingency 组中的用户能够访问 Salesforce。
-2. 启用策略 1：验证 Sales 应急计划外部的用户无法访问 Salesforce。 确保 SalesAdmins 和 SalesforceContingency 中的用户能够访问 Salesforce。
-3. 启用策略 2：验证 Sales 应急组中的用户无法从其 Windows/Mac 笔记本电脑访问 Salesforce，但仍可以从其移动设备访问。 确保 SalesAdmin 仍可以从任意设备访问 Salesforce。
+2. 启用策略1：验证 SalesContingency 之外的用户无法访问 Salesforce。 确保 SalesAdmins 和 SalesforceContingency 中的用户能够访问 Salesforce。
+3. 启用策略2：验证 SalesContingency 组中的用户是否无法从其 Windows/Mac 便携式计算机访问 Salesforce，但仍可从其移动设备进行访问。 确保 SalesAdmin 仍可以从任意设备访问 Salesforce。
 4. 禁用 Salesforce 的现有设备符合性策略。
 
 ### <a name="deploy-password-hash-sync-even-if-you-are-federated-or-use-pass-through-authentication"></a>即使你是联合用户或使用直通身份验证，也可以部署密码哈希同步
@@ -233,7 +233,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 1. 作为变更控制策略的一部分，记录每项变更和之前的状态，以便在访问控制完全正常运行后立即回滚你实施的所有应急计划。
 2. 假设恶意参与者在你禁用 MFA 时试图通过密码喷射或网络钓鱼攻击来获取密码。 此外，不良参与者可能已经拥有以前未授权访问任何资源，但可能在此时段试图访问这些资源的密码。 对于高级管理人员等关键用户，可以在为其禁用 MFA 之前重置密码，从而在一定程度上缓解此风险。
 3. 存档所有登录活动，以确定在 MFA 被禁用期间，哪些人访问了哪些内容。
-4. [在此窗口期间报告的所有风险检测进行会审](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)。
+4. 会审此窗口期间[报告的所有风险检测](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)。
 
 ## <a name="after-a-disruption"></a>中断后
 
@@ -243,19 +243,19 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 2. 禁用应急策略。 
 3. 回滚在中断期间所做的并进行了记录的任何其他更改。
 4. 如果使用了紧急访问帐户，请记住重新生成凭据并以物理方式保护新凭据的详细信息，以作为紧急访问帐户过程的一部分。
-5. 继续对可疑活动中断后[报告的所有风险检测进行会审](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)。
+5. 继续会审发生可疑活动中断后[报告的所有风险检测](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)。
 6. 撤销[使用 PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) 针对一组用户颁发的所有刷新令牌。 撤销所有刷新令牌对于在中断期间使用的特权帐户非常重要，这样做将迫使它们重新进行身份验证并满足已还原策略的控制要求。
 
 ## <a name="emergency-options"></a>紧急选项
 
- 如果发生紧急情况，并且您的组织以前未实施缓解或应急计划，则请按照[用户锁定备用的意外情况](#contingencies-for-user-lockout)部分中的建议进行操作，如果这些建议已经使用条件访问策略来强制实施 MFA。
+ 在紧急情况下，如果你的组织以前未实施缓解或应变计划，请在 "[用户锁定的紧急](#contingencies-for-user-lockout)情况" 部分中执行建议，前提是他们已使用条件性访问策略来强制执行 MFA。
 如果你的组织使用的是每用户 MFA 旧策略，则可以考虑以下替代方法：
 
 1. 如果有公司网络出站 IP 地址，则可以将它们添加为受信任的 IP，以便仅对公司网络启用身份验证。
    1. 如果没有出站 IP 地址清单，或需要在公司网络内外均启用访问，则可通过指定 0.0.0.0/1 和 128.0.0.0/1 将整个 IPv4 地址空间添加为可信 IP。
 
 >[!IMPORTANT]
- > 如果将受信任的 IP 地址扩展到取消阻止访问，将不会生成与 IP 地址关联的风险检测（例如，不可能的旅行或不熟悉的位置）。
+ > 如果你放宽了受信任的 IP 地址以取消阻止访问，将不会生成与 IP 地址（例如，不可能的旅行或不熟悉的位置）关联的风险检测。
 
 >[!NOTE]
  > 只有使用 [Azure AD Premium 许可证](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing)才能为 Azure MFA 配置[受信任的 IP](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings)。
@@ -269,5 +269,5 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 * [如何配置联接到混合 Azure Active Directory 的设备](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
 * [Windows Hello for Business 部署指南](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
   * [密码指南 - Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
-* [Azure 活动目录条件访问中有哪些条件？](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
-* [Azure 活动目录条件访问中有哪些访问控件？](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)
+* [Azure Active Directory 条件访问中的条件是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
+* [Azure Active Directory 条件访问中的访问控制是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)
