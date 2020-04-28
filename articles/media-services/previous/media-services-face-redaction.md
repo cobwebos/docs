@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒体分析进行面部修订 | Microsoft Docs
-description: Azure 媒体编辑机是一个 Azure 媒体分析媒体处理器，在云中提供可扩展的面红字。 本文演示如何使用 Azure 媒体分析对人脸进行编辑。
+description: Azure 媒体编修器是一种在云中提供可缩放的人脸密文的 Azure 媒体分析媒体处理器。 本文演示如何通过 Azure 媒体分析为人脸标记。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 6a1b7a76ef1efda51f09ac733b3d434235ff40ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74900304"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>使用 Azure 媒体分析进行面部修订 
@@ -191,7 +191,7 @@ ms.locfileid: "74900304"
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，使用 连接信息填充 app.config 文件，如使用[.NET 的媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
+设置开发环境，并在 app.config 文件中填充连接信息，如[通过 .net 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
 
 #### <a name="example"></a>示例
 

@@ -4,10 +4,10 @@ description: 了解如何进行 Durable Functions 单元测试。
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.openlocfilehash: 86733f8b5b80799bad3e52c643ed27465dfc7641
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74231229"
 ---
 # <a name="durable-functions-unit-testing"></a>Durable Functions 单元测试
@@ -15,9 +15,9 @@ ms.locfileid: "74231229"
 单元测试是现代软件开发实践中的重要组成部分。 单元测试可验证业务逻辑行为，防止将来引入无法察觉的中断性变更。 Durable Functions 的复杂性很容易增大，因此，引入单元测试有助于避免中断性变更。 以下部分介绍如何对三种函数类型执行单元测试 - 业务流程客户端、业务流程协调程序和活动函数。
 
 > [!NOTE]
-> 本文提供了针对 Durable Functions 1.x 的 Durable Functions 应用的单元测试指南。 它尚未更新，以考虑到 Durable Functions 2.x 中引入的更改。 有关不同版本之间的差异的详细信息，请参阅[持久函数版本](durable-functions-versions.md)一文。
+> 本文提供了针对 Durable Functions 1.x 的 Durable Functions 应用的单元测试指南。 它尚未更新，以考虑到 Durable Functions 2.x 中引入的更改。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 学习本文中的示例需要了解以下概念和框架：
 

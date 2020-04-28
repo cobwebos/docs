@@ -4,10 +4,10 @@ description: 本文介绍两个客户端角色以及提供给这些角色的权�
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: abca19e686d39338fcaa2e0b0c8126913135170b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75451904"
 ---
 # <a name="role-based-access-control-for-service-fabric-clients"></a>适用于 Service Fabric 客户端的基于角色的访问控制
@@ -50,7 +50,7 @@ Azure Service Fabric 针对连接到 Service Fabric 群集的客户端支持两�
 * **FinishInfrastructureTask**：完成基础结构任务                             
 * **InvokeInfrastructureCommand**：基础结构任务管理命令                              
 * **ActivateNode**：激活一个节点                             
-* **DeactivateNode**停用一个节点                             
+* **DeactivateNode**：停用一个节点                             
 * **DeactivateNodesBatch**：停用多个节点                             
 * **RemoveNodeDeactivations**：在多个节点上还原停用操作                             
 * **GetNodeDeactivationStatus**：检查停用状态                             
@@ -60,7 +60,7 @@ Azure Service Fabric 针对连接到 Service Fabric 群集的客户端支持两�
 * **FileDownload**：启动映像存储客户端文件下载（群集外部）                             
 * **InternalList**：映像存储客户端文件列表操作（内部）                             
 * **Delete**：映像存储客户端删除操作                              
-* **上传**：映像存储客户端上传操作                             
+* **Upload**：映像存储客户端上传操作                             
 * **NodeControl**：启动、停止和重新启动节点                             
 * **MoveReplicaControl**：将副本从一个节点移到另一个节点                             
 
@@ -92,7 +92,7 @@ Azure Service Fabric 针对连接到 Service Fabric 群集的客户端支持两�
 在群集清单文件中，可以根据需要向客户端提供管理功能。 可以更改默认设置，方法是在[创建群集](service-fabric-cluster-creation-via-portal.md)过程中转到“**结构设置**”选项，并在“**名称**”、“**管理员**”、“**用户**”和“**值**”字段中提供上述设置。
 
 ## <a name="next-steps"></a>后续步骤
-[服务结构群集安全性](service-fabric-cluster-security.md)
+[Service Fabric 群集安全性](service-fabric-cluster-security.md)
 
 [创建 Service Fabric 群集](service-fabric-cluster-creation-via-portal.md)
 

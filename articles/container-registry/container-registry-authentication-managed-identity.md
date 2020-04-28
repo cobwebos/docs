@@ -4,10 +4,10 @@ description: 通过使用用户分配或系统分配的托管 Azure 标识，提
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: 9b8bed78629d3a9739ec00772ad5c8216a04c122
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74456491"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>使用 Azure 托管标识向 Azure 容器注册表验证身份 
@@ -21,7 +21,7 @@ ms.locfileid: "74456491"
 > * 授予标识对 Azure 容器注册表的访问权限
 > * 使用托管标识访问注册表并拉取容器映像 
 
-为了创建 Azure 资源，本文要求运行 Azure CLI 版本 2.0.55 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级，请参阅[安装 Azure CLI][azure-cli]。
+为了创建 Azure 资源，本文要求运行 Azure CLI 版本 2.0.55 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
 
 若要设置容器注册表并向其推送容器映像，还必须在本地安装 Docker。 Docker 提供的包可在任何 [macOS][docker-mac]、[Windows][docker-windows] 或 [Linux][docker-linux] 系统上轻松配置 Docker。
 
@@ -35,7 +35,7 @@ Azure 资源的托管标识可在 Azure Active Directory (Azure AD) 中为 Azure
 
 * *系统托管标识*，对于特定资源（如单个虚拟机）是唯一的，并且在该资源的生存期内持久保存。
 
-为 Azure 资源设置托管标识后，便可以根据需要授予该标识对另一资源的访问权限，这一点与所有安全主体一样。 例如，为托管标识分配角色，该角色对 Azure 中的专用注册表具有拉取、推送和拉取或其他权限。 （有关注册表角色的完整列表，请参阅[Azure 容器注册表角色和权限](container-registry-roles.md)。您可以授予对一个或多个资源的标识访问权限。
+为 Azure 资源设置托管标识后，便可以根据需要授予该标识对另一资源的访问权限，这一点与所有安全主体一样。 例如，为托管标识分配角色，该角色对 Azure 中的专用注册表具有拉取、推送和拉取或其他权限。 （有关完整的注册表角色列表，请参阅 [Azure 容器注册表角色和权限](container-registry-roles.md)。）可以授予标识对一个或多个资源的访问权限。
 
 然后使用该标识向[支持 Azure AD 身份验证的任何服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)进行身份验证，而无需在代码中放入任何凭据。 若要使用该标识从虚拟机访问 Azure 容器注册表，请向 Azure 资源管理器验证身份。 选择如何使用托管标识进行身份验证，具体取决于你的方案：
 
@@ -150,7 +150,7 @@ az vm identity assign --resource-group myResourceGroup --name myDockerVM --ident
 resourceID=$(az acr show --resource-group myResourceGroup --name myContainerRegistry --query id --output tsv)
 ```
 
-使用 [az role assignment create][az-role-assignment-create] 命令向标识分配 AcrPull 角色。 此角色将提供对注册表的[拉取权限](container-registry-roles.md)。 若要同时提供拉取和推送权限，请分配 ACRPush 角色。
+使用 [az role assignment create][az-role-assignment-create] 命令向注册表分配 AcrPull 角色。 此角色将提供对注册表的[拉取权限](container-registry-roles.md)。 若要同时提供拉取和推送权限，请分配 ACRPush 角色。
 
 ```azurecli
 az role assignment create --assignee $spID --scope $resourceID --role acrpull
@@ -188,7 +188,7 @@ docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 az vm identity assign --resource-group myResourceGroup --name myDockerVM 
 ```
 
-使用 [az vm show][az-vm-show] 将变量设置为 VM 标识的值 `principalId`（服务主体 ID），以便在后续步骤中使用。
+使用 [az vm show][az-vm-show] 命令将变量设置为 VM 标识的值 `principalId`（服务主体 ID），以便在后续步骤中使用。
 
 ```azurecli-interactive
 spID=$(az vm show --resource-group myResourceGroup --name myDockerVM --query identity.principalId --out tsv)

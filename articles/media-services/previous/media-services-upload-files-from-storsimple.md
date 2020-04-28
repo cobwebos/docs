@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: c77b700cab4afd411c3a2df824ee8335cb394cda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "64868314"
 ---
 # <a name="upload-files-into-an-azure-media-services-account-from-azure-storsimple"></a>将文件从 Azure StorSimple 上传到 Azure 媒体服务帐户中  
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本，[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本的[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 >
 > 
 > Azure StorSimple 数据管理器目前以个人预览版提供。 
@@ -32,7 +32,7 @@ ms.locfileid: "64868314"
 
 ## <a name="overview"></a>概述
 
-在媒体服务中，可以将数字文件上传到资产中。 资产可以包含视频、音频、图像、缩略图集合、文本轨道和隐藏字幕文件（以及有关这些文件的元数据）。上传文件后，您的内容将安全地存储在云中，以便进一步处理和流式传输。
+在媒体服务中，可以将数字文件上传到资产中。 资产可以包含视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件（以及有关这些文件的元数据）。文件上传完成后，你的内容将安全地存储在云中，以便进行进一步处理和流式处理。
 
 [Azure StorSimple](https://docs.microsoft.com/azure/storsimple/) 使用云存储作为本地解决方案的扩展，可跨本地存储和云存储自动将数据分层。 在将数据发送到云之前，StorSimple 设备会删除数据中的重复项并压缩数据，因此能够以极高的效率将大型文件发送到云中。 [StorSimple 数据管理器](../../storsimple/storsimple-data-manager-overview.md)服务提供相应的 API，让你从 StorSimple 提取数据并以 AMS 资产的形式呈现数据。
 
@@ -45,9 +45,9 @@ ms.locfileid: "64868314"
 
     开始运行该作业时，将创建存储队列。 此队列填充了可以使用的转换后 blob 的相关消息。 此队列的名称与作业定义的名称相同。 可以使用此队列确定资产何时就绪，并调用要针对资产运行的媒体服务操作。 例如，可以使用此队列来触发包含所需媒体服务代码的 Azure 函数。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
-[使用 .NET SDK 在数据管理器中触发作业](../../storsimple/storsimple-data-manager-dotnet-jobs.md)
+[使用 .NET SDK 触发数据管理器中的作业](../../storsimple/storsimple-data-manager-dotnet-jobs.md)
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

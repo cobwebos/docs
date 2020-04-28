@@ -4,10 +4,10 @@ description: 了解如何使用 Azure Active Directory 服务主体从 Azure 容
 ms.topic: article
 ms.date: 04/23/2018
 ms.openlocfilehash: b1bc8119c495dea99c6bdc4923db198d041a1e9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74456518"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>使用 Azure 容器注册表从 Azure 容器实例进行身份验证
@@ -45,7 +45,7 @@ az container create \
 可以在 GitHub 上找到前面的 Azure CLI 示例脚本以及 Azure PowerShell 所对应的版本：
 
 * [Azure CLI][acr-scripts-cli]
-* [Azure 电源外壳][acr-scripts-psh]
+* [Azure PowerShell][acr-scripts-psh]
 
 ## <a name="next-steps"></a>后续步骤
 

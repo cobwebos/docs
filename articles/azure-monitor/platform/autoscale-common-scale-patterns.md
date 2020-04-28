@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: a77cf1704c20abb77d432eab16569071208f6da8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75396097"
 ---
 # <a name="overview-of-common-autoscale-patterns"></a>常见自动缩放模式的概述
@@ -24,7 +24,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 
 拥有 Web 应用（/VMSS/云服务角色）并且
 
-- 要基于 CPU 进行扩大/缩小。
+- 要基于 CPU 进行横向扩展/横向缩减。
 - 此外，你希望确保实例数最小。
 - 同时，希望确保为可以扩展到的实例数设置最大限制。
 
@@ -35,7 +35,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 拥有 Web 应用（/VMSS/云服务角色）并且
 
 - 默认情况下想要 3 个实例（在工作日）
-- 不希望在周末有流量，因此希望在周末减少到 1 个实例。
+- 不希望在周末有流量，因此希望在周末纵向缩减到 1 个实例。
 
 ![在工作日与周末以不同方式缩放][3]
 

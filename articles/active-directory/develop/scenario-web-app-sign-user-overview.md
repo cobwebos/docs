@@ -1,5 +1,5 @@
 ---
-title: 从 Web 应用登录用户 - 微软身份平台 |蔚蓝
+title: 从 Web 应用登录用户-Microsoft 标识平台 |Microsoft
 description: 了解如何构建用于登录用户的 Web 应用（概述）
 services: active-directory
 author: jmprieur
@@ -12,13 +12,13 @@ ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 65d254cec5735c54e19f5adfde57fb6aed776a2c
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80881479"
 ---
-# <a name="scenario-web-app-that-signs-in-users"></a>方案：在用户中签名的 Web 应用
+# <a name="scenario-web-app-that-signs-in-users"></a>方案：用于登录用户的 Web 应用
 
 了解生成一个可以通过 Microsoft 标识平台登录用户的 Web 应用所需的一切。
 
@@ -33,28 +33,28 @@ ms.locfileid: "80881479"
 如果需要创建第一个可移植 (ASP.NET Core) Web 应用来登录用户，请按以下快速入门操作：
 
 > [!div class="nextstepaction"]
-> [快速入门：ASP.NET核心 Web 应用程序，在用户中签名](quickstart-v2-aspnet-core-webapp.md)
+> [快速入门：用于登录用户的 ASP.NET Core Web 应用](quickstart-v2-aspnet-core-webapp.md)
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 如果想了解如何向现有 ASP.NET Web 应用程序添加登录，请尝试以下快速入门：
 
 > [!div class="nextstepaction"]
-> [快速入门：ASP.NET在用户中签名的 Web 应用](quickstart-v2-aspnet-webapp.md)
+> [快速入门：用于登录用户的 ASP.NET Web 应用](quickstart-v2-aspnet-webapp.md)
 
 # <a name="java"></a>[Java](#tab/java)
 
 如果是 Java 开发人员，请尝试以下快速入门：
 
 > [!div class="nextstepaction"]
-> [快速入门：将 Microsoft 的登录添加到 Java Web 应用](quickstart-v2-java-webapp.md)
+> [快速入门：向 Java Web 应用添加 Microsoft 登录功能](quickstart-v2-java-webapp.md)
 
 # <a name="python"></a>[Python](#tab/python)
 
 如果使用 Python 进行开发，请尝试以下快速入门：
 
 > [!div class="nextstepaction"]
-> [快速入门：将 Microsoft 登录添加到 Python Web 应用](quickstart-v2-python-webapp.md)
+> [快速入门：向 Python Web 应用添加 Microsoft 登录功能](quickstart-v2-python-webapp.md)
 
 ---
 

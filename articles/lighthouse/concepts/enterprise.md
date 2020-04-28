@@ -4,10 +4,10 @@ description: Azure Lighthouse 的功能可以简化使用多个 Azure AD 租户�
 ms.date: 09/25/2019
 ms.topic: conceptual
 ms.openlocfilehash: 91089a6fb1a965191489e87027ef508c7ebe2aa2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75749212"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>企业应用场景中的 Azure Lighthouse
@@ -24,7 +24,7 @@ Azure Lighthouse 的最常见应用场景包括：服务提供商使用 [Azure L
 
 跨多个租户集中处理管理操作时，需要确定哪个租户包含要对其他租户执行管理操作的用户。 换言之，需要确定哪个租户是其他租户的管理租户。
 
-例如，假设您的组织具有单个租户，我们将调用*租户 A*。然后，您的组织将获取两个额外的租户，*租户 B*和*租户 C，* 并且您有业务原因要求您将它们作为单独的租户进行维护。
+例如，假设你的组织有一个租户，我们将调用*租户 a*。然后，你的组织会获得两个其他租户：*租户 B*和*租户 C*，你的业务理由要求你将它们维护为单独的租户。
 
 你的组织希望在所有租户中使用相同的策略定义、备份实践和安全流程。 由于已有用户（包括用户组和服务主体）负责在租户 A 中执行这些任务，因此，你可以登记租户 B 和租户 C 中的所有订阅，使租户 A 中的这些用户可以执行这些任务。
 

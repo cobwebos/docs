@@ -1,5 +1,5 @@
 ---
-title: 教程- 升级 Azure 服务结构网格应用程序
+title: 教程-升级 Azure Service Fabric 网格应用程序
 description: 本教程是一个系列的第四部分，介绍如何直接从 Visual Studio 升级 Azure Service Fabric 网格应用程序。
 author: dkkapur
 ms.topic: conceptual
@@ -7,10 +7,10 @@ ms.date: 11/29/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 7cdb8868f760ef0f35ab90c06b411110f871738c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75351719"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>教程：了解如何使用 Visual Studio 升级 Service Fabric 应用程序
@@ -55,13 +55,13 @@ ms.locfileid: "75351719"
 
 2. 在“WebFrontEnd”**** > “服务资源”**** 下打开 WebFrontEnd**** 项目的 service.yaml**** 文件。
 
-    请注意，在 `resources:` 部分中，`cpu:` 将设置为 `"[parameters('WebFrontEnd_cpu')]"`。 如果项目`'WebFrontEnd_cpu`是为云构建的，则 的值将从**环境** > **云** > **参数.yaml**文件获取，并且将为`1.5`。 如果项目正在构建以在本地运行，则该值将从**环境** > **本地** > **参数.yaml**文件获取，并且将为"0.5"。
+    请注意，在 `resources:` 部分中，`cpu:` 将设置为 `"[parameters('WebFrontEnd_cpu')]"`。 如果`'WebFrontEnd_cpu`为云生成项目，则将从**环境** > **Cloud** > **yaml**文件中获取的值，并将为`1.5`。 如果正在生成项目以在本地运行，则将从**环境** > **本地** > **yaml**文件中获取该值，并将是 "0.5"。
 
 > [!Tip]
 > 默认情况下，与 profile.yaml 文件对等的参数文件将用于提供该 profile.yaml 文件的值。
 > 例如，“环境”>“云”>“parameters.yaml”提供了“环境”>“云”>“profile.yaml”的参数值。
 >
-> 您可以通过将以下内容添加到配置文件.yaml 文件来覆盖此情况：`parametersFilePath=”relative or full path to the parameters file”`例如，或者`parametersFilePath=”C:\MeshParms\CustomParameters.yaml”``parametersFilePath=”..\CommonParameters.yaml”`
+> 可以通过将以下内容添加到 yaml 文件来替代此项：`parametersFilePath=”relative or full path to the parameters file”`例如，或`parametersFilePath=”C:\MeshParms\CustomParameters.yaml”``parametersFilePath=”..\CommonParameters.yaml”`
 
 ## <a name="modify-the-model"></a>修改模型
 

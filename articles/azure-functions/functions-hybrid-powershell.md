@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 9/5/2019
 ms.author: eamono
 ms.openlocfilehash: 36fc4c873dccfe9fa814bddccd829ed04207f095
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74226939"
 ---
 # <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>在 Azure Functions 和应用服务混合连接中使用 PowerShell 管理混合环境
@@ -50,33 +50,33 @@ cmd.exe /C $Cmd
 
 应用服务混合连接功能只能在“基本”、“标准”和“隔离”定价计划中使用。 使用 PowerShell 创建函数应用时，请创建或选择上述计划中的一项。
 
-1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单上选择“+ 创建资源”，然后选择“函数应用”。********
+1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单上选择“+ 创建资源”，然后选择“函数应用”。  
 
-1. 对于“托管计划”，请选择“应用服务计划”，然后选择“应用服务计划/位置”。************
+1. 对于“托管计划”，请选择“应用服务计划”，然后选择“应用服务计划/位置”。   
 
-1. 选择“新建”，**** 键入一个**应用服务计划**名称，在靠近自己或靠近函数访问的其他服务的[区域](https://azure.microsoft.com/regions/)中选择一个**位置**，然后选择“定价层”。****
+1. 选择“新建”，  键入一个**应用服务计划**名称，在靠近自己或靠近函数访问的其他服务的[区域](https://azure.microsoft.com/regions/)中选择一个**位置**，然后选择“定价层”。 
 
-1. 选择“S1 标准”计划，然后选择“应用”。****
+1. 选择“S1 标准”计划，然后选择“应用”。 
 
-1. 选择“确定”以创建该计划，然后配置以下屏幕截图后面紧跟的表中指定的剩余“函数应用”设置：********
+1. 选择“确定”以创建该计划，然后配置以下屏幕截图后面紧跟的表中指定的剩余“函数应用”设置：  
 
     ![PowerShell Core 函数应用](./media/functions-hybrid-powershell/create-function-powershell-app.png)  
 
-    | 设置      | 建议的值  | 描述                                        |
+    | 设置      | 建议的值  | 说明                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **应用名称** | 全局唯一名称 | 用于标识新 Function App 的名称。 有效的字符是 `a-z`、`0-9` 和 `-`。  | 
-    | **订阅** | 订阅 | 要在其下创建此新函数应用的订阅。 |
-    | **资源组** |  myResourceGroup | 要在其中创建 Function App 的新资源组的名称。 还可以使用建议的值。 |
-    | **操作系统** | 首选操作系统 | 选择“Windows”。 |
+    | **订阅** | 你的订阅 | 要在其下创建此新函数应用的订阅。 |
+    | **资源组** |  MyResourceGroup | 要在其中创建 Function App 的新资源组的名称。 还可以使用建议的值。 |
+    | 操作系统  | 首选操作系统 | 选择“Windows”。 |
     | **运行时堆栈** | 首选语言 | 选择 PowerShell Core。 |
     | **存储** |  全局唯一名称 |  创建函数应用使用的存储帐户。 存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。 也可以使用现有帐户。
-    | **Application Insights** | 默认 | 在最近的受支持的区域中，创建一个具有相同应用名称** 的 Application Insights 资源。 通过展开此设置，可以更改 **"新建资源"名称**，或在要存储数据的 Azure[地理](https://azure.microsoft.com/global-infrastructure/geographies/)区域中选择其他**位置**。 |
+    | **Application Insights** | 默认 | 在最近的受支持的区域中，创建一个具有相同应用名称  的 Application Insights 资源。 通过展开此设置，你可以更改**新的资源名称**，或在要存储数据的[Azure 地理](https://azure.microsoft.com/global-infrastructure/geographies/)区域中选择其他**位置**。 |
 
 1. 验证设置后，选择“创建”。****
 
 1. 选择门户右上角的“通知”图标，然后等待“部署成功”消息。****
 
-1. 选择“转到资源”****，查看新的函数应用。 还可选择“固定到仪表板”****。 固定可以更轻松地从仪表板返回此函数应用资源。
+1. 选择“转到资源”  ，查看新的函数应用。 还可选择“固定到仪表板”  。 固定可以更轻松地从仪表板返回此函数应用资源。
 
 ## <a name="create-a-hybrid-connection-for-the-function-app"></a>为函数应用创建混合连接
 
@@ -91,15 +91,15 @@ cmd.exe /C $Cmd
 1. 输入混合连接的相关信息，如以下屏幕截图后面的内容所示。 可以选择让“终结点主机”设置与本地服务器的主机名匹配。这样，在以后运行远程命令时，就可以更容易地记住此服务器。**** 端口与此前在服务器上定义的默认 Windows 远程管理服务端口匹配。
   ![添加混合连接](./media/functions-hybrid-powershell/add-hybrid-connection.png)  
 
-    **混合连接名称**： Contoso 混合本地服务器
+    **混合连接名称**： ContosoHybridOnPremisesServer
     
     **终结点主机**：finance1
     
-    **端点端口**： 5986
+    **终结点端口**：5986
     
-    **服务总线命名空间**： 创建新
+    **空间空间命名空间**：新建
     
-    **位置**： 选择可用位置
+    **位置**：选取可用位置
     
     **名称**：contosopowershellhybrid
 
@@ -248,11 +248,11 @@ Invoke-Command -ComputerName $HybridEndpoint `
 * $HybridEndpoint
 * $RemoteServer
 
-在上面的两个方案中，可以在 Azure Functions 和混合连接中使用 PowerShell 连接和管理本地环境。 我们鼓励您在功能中了解有关[混合连接](../app-service/app-service-hybrid-connections.md)和[PowerShell](./functions-reference-powershell.md)的更多。
+在上面的两个方案中，可以在 Azure Functions 和混合连接中使用 PowerShell 连接和管理本地环境。 建议[在函数中](./functions-reference-powershell.md)详细了解[混合连接](../app-service/app-service-hybrid-connections.md)和 PowerShell。
 
-您还可以使用 Azure[虚拟网络](./functions-create-vnet.md)通过 Azure 函数连接到本地环境。
+还可以通过 Azure Functions 使用 Azure[虚拟网络](./functions-create-vnet.md)连接到本地环境。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"] 
-> [了解有关使用 PowerShell 功能的更多详细信息](functions-reference-powershell.md)
+> [了解有关使用 PowerShell 函数的详细信息](functions-reference-powershell.md)

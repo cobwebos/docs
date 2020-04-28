@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.openlocfilehash: 35957a1e8a3d6c3d9be06d9d44dbcd47efa0e6ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74173157"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure 备份服务器和 DPM - 常见问题解答
@@ -35,7 +35,7 @@ ms.locfileid: "74173157"
 
 ### <a name="why-cant-i-add-an-external-dpm-server-after-installing-ur7-and-latest-azure-backup-agent"></a>在安装 UR7 以及最新 Azure 备份代理之后，为何无法添加外部 DPM 服务器？
 
-对于通过云对数据源进行保护的 DPM 服务器（使用 Update Rollup 7 之前的更新汇总），必须在安装 UR7 及最新 Azure 备份代理之后等待至少一天，然后才能开始“添加外部 DPM 服务器”****。 需要一天的时间才能将 DPM 保护组的元数据上传到 Azure。 首次上传保护组元数据时通过一个每晚执行的作业实现。
+对于通过云对数据源进行保护的 DPM 服务器（使用 Update Rollup 7 之前的更新汇总），必须在安装 UR7 及最新 Azure 备份代理之后等待至少一天，然后才能开始“添加外部 DPM 服务器”  。 需要一天的时间才能将 DPM 保护组的元数据上传到 Azure。 首次上传保护组元数据时通过一个每晚执行的作业实现。
 
 ## <a name="vmware-and-hyper-v-backup"></a>VMware 和 Hyper-V 备份
 

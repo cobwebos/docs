@@ -4,10 +4,10 @@ description: 在 Azure 服务发生时，通过短信、电子邮件或 webhook 
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.openlocfilehash: d318adc76959ac24f4be9946167965a83053f632
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75749320"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>创建有关服务通知的活动日志警报
@@ -32,7 +32,7 @@ ms.locfileid: "75749320"
 - 选择现有操作组。
 - 创建新操作组（可以用于将来的警报）。
 
-要了解有关操作组的更多详细信息，请参阅[创建和管理操作组](../azure-monitor/platform/action-groups.md)。
+若要了解有关操作组的详细信息，请参阅[创建和管理操作组](../azure-monitor/platform/action-groups.md)。
 
 有关如何使用 Azure 资源管理器模板配置服务运行状况通知警报的信息，请参阅[资源管理器模板](../azure-monitor/platform/alerts-activity-log.md)。
 
@@ -72,9 +72,9 @@ ms.locfileid: "75749320"
 
 1. 通过提供接收方来定义接收方的列表：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **名称**：输入接收方的名称、别名或标识符。
+    a. **名称**：输入接收方的名称、别名或标识符。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 **操作类型**：选择短信、电子邮件、Webhook、Azure 应用等。
+    b. **操作类型**：选择短信、电子邮件、Webhook、Azure 应用等。
 
     c. **详细信息**：根据所选操作类型，输入电话号码、电子邮件地址、Webhook URI 等。
 
@@ -197,11 +197,11 @@ ms.locfileid: "75749320"
 * 如果要暂时停止或恢复接收警报的通知，可“禁用”或“启用”它。
 
 ## <a name="next-steps"></a>后续步骤
-- 了解[设置 Azure 服务运行状况警报的最佳做法](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUa)。
-- 了解如何为[Azure 服务运行状况设置移动推送通知](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw)。
-- 了解如何[为现有问题管理系统配置 Webhook 通知](service-health-alert-webhook-guide.md)。
+- 了解[设置 Azure 服务运行状况警报的最佳实践](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUa)。
+- 了解如何[为 Azure 服务运行状况设置移动推送通知](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw)。
+- 了解如何[为现有问题管理系统配置 webhook 通知](service-health-alert-webhook-guide.md)。
 - 了解[服务运行状况通知](service-notifications.md)。
 - 了解[通知速率限制](../azure-monitor/platform/alerts-rate-limiting.md)。
 - 查看[活动日志警报 webhook 架构](../azure-monitor/platform/activity-log-alerts-webhook.md)。
 - 获取[活动日志警报概述](../azure-monitor/platform/alerts-overview.md)，了解如何接收警报。
-- 了解有关[操作组](../azure-monitor/platform/action-groups.md)的更多。
+- 了解有关[操作组](../azure-monitor/platform/action-groups.md)的详细信息。

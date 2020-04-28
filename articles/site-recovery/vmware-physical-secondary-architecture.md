@@ -1,5 +1,5 @@
 ---
-title: 具有 Azure 站点恢复的辅助站点的体系结构-VMware/物理灾难恢复
+title: 体系结构-VMware/物理灾难恢复到具有 Azure Site Recovery 的辅助站点
 description: 本文概述使用 Azure Site Recovery 将本地 VMware VM 或物理 Windows/Linux 服务器灾难恢复到辅助 VMware 站点时使用的组件和体系结构。
 author: rayne-wiselman
 manager: carmonm
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: b0a46dcf8fe298494a53713f122b1bda8ce07e5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73954575"
 ---
 # <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>将 VMware/物理服务器复制到辅助本地站点的体系结构
@@ -21,7 +21,7 @@ ms.locfileid: "73954575"
 
 ## <a name="architectural-components"></a>体系结构组件
 
-**地区** | **组件** | **详细信息**
+**区域** | 组件  | **详细信息**
 --- | --- | ---
 **Azure** | 使用 InMage Scout 部署此方案。 | 若要获取 InMage Scout，需要 Azure 订阅。<br/><br/> 创建恢复服务保管库后，可以下载 InMage Scout 并安装最新的更新，以设置部署。
 **进程服务器** | 位于主站点 | 可以部署进程服务器来处理缓存、压缩和数据优化操作。<br/><br/> 它还可以将安装的统一代理推送到要保护的计算机。

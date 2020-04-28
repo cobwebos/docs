@@ -4,10 +4,10 @@ description: 升级运行 Service Fabric 群集的 Service Fabric 代码和/或�
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.openlocfilehash: c3ffcbd4296385623ff5e2c1ee001c27598ff3fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75451808"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>升级群集的 Service Fabric 版本
@@ -54,7 +54,7 @@ ms.locfileid: "75451808"
 修复造成回滚的问题后，需要按照与之前完全相同的步骤重新启动升级。
 
 ## <a name="set-custom-health-polices-for-upgrades"></a>为升级设置自定义运行状况策略
-可以为结构升级指定自定义运行状况策略。 如果将群集设置为"自动结构升级"，则这些策略将应用于[自动结构升级的第 1 阶段](service-fabric-cluster-upgrade.md#fabric-upgrade-behavior-during-automatic-upgrades)。
+可以为结构升级指定自定义运行状况策略。 如果已将群集设置为自动结构升级，则这些策略会应用到[自动结构升级的阶段 1](service-fabric-cluster-upgrade.md#fabric-upgrade-behavior-during-automatic-upgrades) 中。
 如果已将群集设置为手动结构升级，则在每次选择新版本时应用这些策略，来触发系统启动群集中的结构升级。 如果未重写这些策略，则会使用默认设置。
 
 可以在“结构升级”边栏选项卡中选择高级升级设置来指定自定义运行状况策略或查看当前设置。 查看以下图片了解操作方法。 

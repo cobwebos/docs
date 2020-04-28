@@ -12,10 +12,10 @@ ms.date: 05/06/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.openlocfilehash: 5b70b109f43e80fc3ec68f52aef2dba6823033bb
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882125"
 ---
 # <a name="single-page-application-call-a-web-api"></a>单页应用程序：调用 Web API
@@ -53,4 +53,4 @@ MSAL Angular 包装器器利用 HTTP 拦截器自动以无提示方式获取访�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [移到生产环境](scenario-spa-production.md)
+> [转移到生产环境](scenario-spa-production.md)

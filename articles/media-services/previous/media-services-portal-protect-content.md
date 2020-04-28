@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 0c2a9612fab6c685cbc690aa9bbc12d1c7b7b746
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74978196"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>使用 Azure 门户配置内容保护策略
 
 > [!NOTE]
-> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅[Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。   > 媒体服务 v2 中未添加任何新功能或功能。 <br/>查看最新版本，[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅[Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。   > 未向 Media Services v2 添加新功能或功能。 <br/>查看最新版本的[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 >
 
  使用 Azure 媒体服务，可以在媒体从离开计算机到存储、处理和传送的整个过程中确保其安全。 可以通过媒体服务传送按高级加密标准 (AES)（使用 128 位加密密钥）动态加密的内容。 也可借助 PlayReady 和/或 Widevine 数字版权管理 (DRM) 以及 Apple FairPlay，将其与通用加密 (CENC) 配合使用。 
@@ -38,7 +38,7 @@ ms.locfileid: "74978196"
 
 1. 在[门户](https://portal.azure.com/)中选择媒体服务帐户。
 
-1. 选择 **"设置** > **内容保护**"。
+1. 选择 "**设置** > " "**内容保护**"。
 
     ![内容保护](./media/media-services-portal-content-protection/media-services-content-protection001.png)
 
@@ -73,7 +73,7 @@ PlayReady 许可证模板设置在 PlayReady 许可证上启用的功能。 有�
 ## <a name="widevine-license-template"></a>Widevine 许可证模板
 Widevine 许可证模板设置在 Widevine 许可证上启用的功能。
 
-### <a name="basic"></a>Basic
+### <a name="basic"></a>基本
 如果选择“基本”****，将使用所有默认值创建模板。
 
 ### <a name="advanced"></a>高级
@@ -90,7 +90,7 @@ Widevine 许可证模板设置在 Widevine 许可证上启用的功能。
 若要利用动态加密，请将源文件编码为一组自适应比特率 MP4 文件。
 
 ### <a name="select-an-asset-that-you-want-to-encrypt"></a>选择要加密的资产
-要查看所有资产，请选择 **"设置** > **资产**"。
+若要查看所有资产，请选择 "**设置** > **资产**"。
 
 ![“资产”选项](./media/media-services-portal-content-protection/media-services-content-protection007.png)
 
@@ -105,17 +105,17 @@ Widevine 许可证模板设置在 Widevine 许可证上启用的功能。
 #### <a name="drm"></a>DRM
 1. 选择“DRM”后，会看到不同的内容保护策略（必须通过此点进行配置）和一组流式处理协议：****
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **将 PlayReady 和 Widevine 应用于 MPEG-DASH** 即可通过 PlayReady 和 Widevine DRM 动态加密 MPEG-DASH 流。
+    a. **将 PlayReady 和 Widevine 应用于 MPEG-DASH** 即可通过 PlayReady 和 Widevine DRM 动态加密 MPEG-DASH 流。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 **将 PlayReady 和 Widevine 应用于 MPEG-DASH + 将 FairPlay 应用于 HLS** 即可通过 PlayReady 和 Widevine DRM 动态加密 MPEG-DASH 流。 此选项还使用 FairPlay 加密 HLS 流。
+    b. **将 PlayReady 和 Widevine 应用于 MPEG-DASH + 将 FairPlay 应用于 HLS** 即可通过 PlayReady 和 Widevine DRM 动态加密 MPEG-DASH 流。 此选项还使用 FairPlay 加密 HLS 流。
 
     c. **仅将 PlayReady 应用于平滑流式处理、HLS 和 MPEG-DASH** 即可通过 PlayReady DRM 动态加密平滑流式处理、HLS 和 MPEG-DASH 流。
 
-    d.单击“下一步”。 **仅将 Widevine 应用于 MPEG-DASH** 即可通过 Widevine DRM 动态加密 MPEG-DASH。
+    d. **仅将 Widevine 应用于 MPEG-DASH** 即可通过 Widevine DRM 动态加密 MPEG-DASH。
     
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 **仅将 FairPlay 应用于 HLS** 即可通过 FairPlay 动态加密 HLS 流。
+    e. **仅将 FairPlay 应用于 HLS** 即可通过 FairPlay 动态加密 HLS 流。
 
-1. 若要启用 FairPlay 加密，请在“内容保护全局设置”边栏选项卡上选择“FairPlay 配置”。******** 然后选择**应用证书**，然后输入**应用程序密钥**。
+1. 若要启用 FairPlay 加密，请在“内容保护全局设置”边栏选项卡上选择“FairPlay 配置”。******** 然后选择**应用证书**，并输入**应用程序**密钥。
 
     ![加密类型](./media/media-services-portal-content-protection/media-services-content-protection009.png)
 

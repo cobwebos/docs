@@ -1,5 +1,5 @@
 ---
-title: 从 Azure 逻辑应用连接到发送网格
+title: 从 Azure 逻辑应用连接到 SendGrid
 description: 使用 Azure 逻辑应用自动执行任务和工作流，用以在 SendGrid 中发送电子邮件以及管理邮件列表
 services: logic-apps
 ms.suite: integration
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/24/2018
 tags: connectors
 ms.openlocfilehash: 998020c5e39c8d50e8a14c74c43b7b435752f43d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74789301"
 ---
 # <a name="send-emails-and-manage-mailing-lists-in-sendgrid-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用在 SendGrid 中发送电子邮件以及管理邮件列表
@@ -35,7 +35,7 @@ ms.locfileid: "74789301"
 
    你的 API 密钥授权逻辑应用创建连接并访问你的 SendGrid 帐户。
 
-* [有关如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
+* 有关[如何创建逻辑应用的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知识
 
 * 要在其中访问 SendGrid 帐户的逻辑应用。 若要使用 SendGrid 操作，请使用其他触发器（例如**定期**触发器）启动逻辑应用。
 
@@ -49,10 +49,10 @@ ms.locfileid: "74789301"
 
    * 在要添加操作的最后一个步骤下，选择“新建步骤”。**** 
 
-     -或-
+     \- 或 -
 
    * 在要在其中添加操作的两个步骤之间，将鼠标指针移到步骤之间的箭头上。 
-   选择显示的加号**+**（），然后选择 **"添加操作**"。
+   选择出现的加号（**+**），然后选择 "**添加操作**"。
 
 1. 在搜索框中，输入“sendgrid”作为筛选器。 在操作列表下，选择所需的操作。
 

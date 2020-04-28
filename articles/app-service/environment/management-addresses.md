@@ -8,15 +8,15 @@ ms.date: 11/13/2019
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 7d7f97552e8faadee1af928a9ce4e1eea2df476e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74687118"
 ---
 # <a name="app-service-environment-management-addresses"></a>应用服务环境管理地址
 
-应用服务环境 (ASE) 是在 Azure 虚拟网络 (VNet) 中运行的 Azure 应用服务的单租户部署。  尽管 ASE 确实在 VNet 中运行，但仍必须能够从 Azure 应用服务用来管理服务的多个专用 IP 地址访问 ASE。  使用 ASE 时，管理流量将遍历用户控制的网络。 如果此流量被阻塞或被错误路由，则 ASE 将会挂起。 有关 ASE 网络依赖项的详细信息，请阅读[网络注意事项和应用服务环境][networking]。 有关 ASE 的一般信息，可以从[应用服务环境简介][intro]开始。
+应用服务环境 (ASE) 是在 Azure 虚拟网络 (VNet) 中运行的 Azure 应用服务的单租户部署。  尽管 ASE 确实在 VNet 中运行，但仍必须能够从 Azure 应用服务用来管理服务的多个专用 IP 地址访问 ASE。  使用 ASE 时，管理流量将遍历用户控制的网络。 如果此流量被阻塞或被错误路由，则 ASE 将会挂起。 有关 ASE 网络依赖项的详细信息，请阅读[网络注意事项和应用服务环境][networking]。 有关 ASE 的一般信息，请先阅读[应用服务环境简介][intro]。
 
 所有 ASE 都有一个公用 VIP，管理流量将从其中进入。 来自这些地址的传入管理流量将传入到 ASE 的公共 VIP 上的端口 454 和 455。 本文档列出了发往 ASE 的管理流量的应用服务源地址。 这些地址也位于名为 AppServiceManagement 的 IP 服务标记中。
 
@@ -31,7 +31,7 @@ ms.locfileid: "74687118"
 
 ## <a name="configuring-a-network-security-group"></a>配置网络安全组
 
-如果使用网络安全组，则不需要考虑单个地址的分配，也无需维护自己的配置。 名为 AppServiceManagement 的 IP 服务标记将与所有地址保持同步。 若要在 NSG 中使用此 IP 服务标记，请转到门户，打开网络安全组 UI，并选择“入站安全规则”。 如果入站管理流量存在现有的规则，请编辑该规则。 如果未对 ASE 创建此 NSG，或者此 NSG 是全新的，请选择“添加”。**** 在“源”下拉列表中，选择“服务标记”。****  在"源服务"标记下，选择 **"应用程序服务管理**"。 将源端口范围设置为 \*，将“目标”设置为“任何”，将目标端口范围设置为 **454-455**，将“协议”设置为“TCP”，将“操作”设置为“允许”。************ 若要启用该规则，需要设置优先级。 
+如果使用网络安全组，则不需要考虑单个地址的分配，也无需维护自己的配置。 名为 AppServiceManagement 的 IP 服务标记将与所有地址保持同步。 若要在 NSG 中使用此 IP 服务标记，请转到门户，打开网络安全组 UI，并选择“入站安全规则”。 如果入站管理流量存在现有的规则，请编辑该规则。 如果未对 ASE 创建此 NSG，或者此 NSG 是全新的，请选择“添加”。**** 在“源”下拉列表中，选择“服务标记”。****  在 "源服务" 标记下，选择 " **AppServiceManagement**"。 将源端口范围设置为 \*，将“目标”设置为“任何”，将目标端口范围设置为 **454-455**，将“协议”设置为“TCP”，将“操作”设置为“允许”。************ 若要启用该规则，需要设置优先级。 
 
 ![使用服务标记创建 NSG][1]
 

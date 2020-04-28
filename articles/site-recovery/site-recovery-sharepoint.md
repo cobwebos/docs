@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
 ms.openlocfilehash: d74e28ce470c23bbc8ee2081532a198c260ccea5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74706366"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>使用 Azure Site Recovery 为多层 SharePoint 应用程序设置灾难恢复
 
-本文详细介绍了如何使用[Azure 站点恢复](site-recovery-overview.md)来保护 SharePoint 应用程序。
+本文详细介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 保护 SharePoint 应用程序。
 
 
 ## <a name="overview"></a>概述
@@ -29,7 +29,7 @@ Microsoft SharePoint 是一个功能强大的应用程序，可帮助小组或�
 
 本文详细介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 保护 SharePoint 应用程序。 内容包括如何将三层 SharePoint 应用程序复制到 Azure、如何执行灾难恢复演练，以及如何将应用程序故障转移到 Azure 的最佳做法。
 
-您可以观看有关将多层应用程序恢复到 Azure 的以下视频。
+可观看以下视频，了解如何将多层应用程序恢复到 Azure。
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/Disaster-Recovery-of-load-balanced-multi-tier-applications-using-Azure-Site-Recovery/player]
 
@@ -63,7 +63,7 @@ Site Recovery 与应用程序无关，应与在受支持的计算机上运行的
 **方案** | **到辅助站点** | **到 Azure**
 --- | --- | ---
 **Hyper-V** | 是 | 是
-**Vmware** | 是 | 是
+**VMware** | 是 | 是
 **物理服务器** | 是 | 是
 **Azure** | NA | 是
 
@@ -102,7 +102,7 @@ Site Recovery 与应用程序无关，应与在受支持的计算机上运行的
 用于面向 Internet 的站点，请在 Azure 订阅中[创建“优先级”类型的流量管理器配置文件](../traffic-manager/traffic-manager-create-profile.md)。 然后按以下方式配置 DNS 和流量管理器配置文件。
 
 
-| **哪里** | **源** | **目标**|
+| **其中** | **源** | **目标**|
 | --- | --- | --- |
 | 公共 DNS | SharePoint 站点的公共 DNS <br/><br/> 例如：sharepoint.contoso.com | 流量管理器 <br/><br/> contososharepoint.trafficmanager.net |
 | 本地 DNS | sharepointonprem.contoso.com | 本地场中的公共 IP |
@@ -136,7 +136,7 @@ Site Recovery 与应用程序无关，应与在受支持的计算机上运行的
 
 可以单击下面的“部署到 Azure”按钮，将最常用的 Azure Site Recovery 脚本部署到自动化帐户。 使用任何已发布的脚本时，请确保遵循脚本中的指导。
 
-[![部署到 Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+[![“部署到 Azure”](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 1. 将操作前脚本添加到“组 1”，以故障转移 SQL 可用性组。 使用示例脚本中发布的“ASR-SQL-FailoverAG”脚本。 确保遵循脚本中的指导，并相应地在脚本中进行所需的更改。
 

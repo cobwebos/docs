@@ -1,5 +1,5 @@
 ---
-title: 使用可视化工作室（云服务）开始使用队列存储
+title: 通过 Visual Studio 开始使用队列存储（云服务）
 description: 在使用 Visual Studio 连接服务连接到存储帐户后，如何开始在 Visual Studio 的云服务项目中使用 Azure 队列存储
 services: storage
 author: ghogen
@@ -14,10 +14,10 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 603bb2b9a862ad4ed2cbde63e2d82b9a82fbeaa1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72298775"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-cloud-services-projects"></a>开始使用 Azure 队列存储和 Visual Studio 连接服务（云服务项目）
@@ -26,7 +26,7 @@ ms.locfileid: "72298775"
 ## <a name="overview"></a>概述
 本文介绍通过使用 Visual Studio 中的“添加连接服务”对话框在云服务项目中创建或引用 Azure 存储帐户之后，如何开始在 Visual Studio 中使用 Azure 队列存储。****
 
-我们将向你展示如何使用代码创建队列。 此外，我们将展示如何执行基本的队列操作，例如添加、修改、读取和删除队列消息。 这些示例以 C# 代码编写，并使用[.NET 的 Microsoft Azure 存储客户端库](https://msdn.microsoft.com/library/azure/dn261237.aspx)。
+我们将向你展示如何使用代码创建队列。 此外，我们将展示如何执行基本的队列操作，例如添加、修改、读取和删除队列消息。 示例是用 c # 代码编写的，并使用了[适用于 .net 的 Microsoft Azure 存储客户端库](https://msdn.microsoft.com/library/azure/dn261237.aspx)。
 
 执行“添加连接服务”操作会安装相应的 NuGet 程序包，以访问项目中的 Azure 存储，并将存储帐户的连接字符串添加到项目配置文件中。****
 
@@ -58,7 +58,7 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过�
         // Get a reference to a queue named "messageQueue"
         CloudQueue messageQueue = queueClient.GetQueueReference("messageQueue");
 
-**注：** 在以下示例中的代码前面使用上述所有代码。
+**注意：** 在以下示例中，在代码的前面使用以上所有代码。
 
 ## <a name="create-a-queue-in-code"></a>使用代码创建队列
 若要在代码中创建队列，只需添加对 **CreateIfNotExists** 的调用。
@@ -78,7 +78,7 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过�
     messageQueue.AddMessage(message);
 
 ## <a name="read-a-message-in-a-queue"></a>读取队列中的消息
-您可以通过调用**PeekMessage**方法查看队列前面的消息，而无需将其从队列中删除。
+通过调用**PeekMessage**方法，可以查看队列前面的消息，而不必从队列中将其删除。
 
     // Peek at the next message
     CloudQueueMessage peekedMessage = messageQueue.PeekMessage();
@@ -86,7 +86,7 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过�
 ## <a name="read-and-remove-a-message-in-a-queue"></a>读取和删除队列中的消息
 代码分两步从队列中删除消息（取消对消息的排队）。
 
-1. 调用**GetMessage**获取队列中的下一条消息。 从**GetMessage**返回的消息将对此队列中读取消息的任何其他代码不可见。 默认情况下，此消息将持续 30 秒不可见。
+1. 调用**GetMessage**可获取队列中的下一条消息。 从**GetMessage**返回的消息变得对从此队列读取消息的任何其他代码不可见。 默认情况下，此消息将持续 30 秒不可见。
 2. 若要完成从队列中删除消息，请调用 **DeleteMessage**。
 
 此删除消息的两步过程可确保，如果代码因硬件或软件故障而无法处理消息，则代码的其他实例可以获取相同消息并重试。 以下代码会在处理消息后立即调用 **DeleteMessage**。
@@ -104,7 +104,7 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过�
 可以通过两种方式自定义队列中的消息检索。
 
 * 可以获取一批消息（最多 32 条）。
-* 可以设置更长或更短的不可见超时时间，从而允许代码使用更多或更少的时间来完全处理每个消息。 以下代码示例使用 **GetMessages** 方法在一次调用中获取 20 条消息。 然后，它使用 **foreach** 循环处理每条消息。 它还将每条消息的不可见超时时间设置为 5 分钟。 请注意，所有邮件的 5 分钟开始，因此在调用**GetMessages**后 5 分钟后，任何未删除的消息都将再次可见。
+* 可以设置更长或更短的不可见超时时间，从而允许代码使用更多或更少的时间来完全处理每个消息。 以下代码示例使用 **GetMessages** 方法在一次调用中获取 20 条消息。 然后，它使用 **foreach** 循环处理每条消息。 它还将每条消息的不可见超时时间设置为 5 分钟。 请注意，5分钟会同时为所有消息启动，因此在调用**GetMessages**5 分钟后，任何尚未删除的消息都将再次变得可见。
 
 下面是一个示例：
 
@@ -130,7 +130,7 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过�
     Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 
 ## <a name="use-the-async-await-pattern-with-common-azure-queue-apis"></a>将 Async-Await 模式与公用 Azure 队列 API 配合使用
-此示例演示如何将 Async-Await 模式与公用 Azure 队列 API 配合使用。 该示例调用每个给定方法的异步版本，这可以通过每种方法的**Async**后修复来看到。 使用异步方法时，async-await 模式将暂停本地执行，直到调用完成。 此行为允许当前的线程执行其他工作，这有助于避免性能瓶颈并提高应用程序的整体响应能力。 有关在 .NET 中使用 Async-Await 模式的更多详细信息，请参阅[异步和等待（C# 和可视化基本）](https://msdn.microsoft.com/library/hh191443.aspx)
+此示例演示如何将 Async-Await 模式与公用 Azure 队列 API 配合使用。 该示例调用每个给定方法的异步版本，这可以通过每个方法的**异步**后修复来查看。 使用异步方法时，async-await 模式将暂停本地执行，直到调用完成。 此行为允许当前的线程执行其他工作，这有助于避免性能瓶颈并提高应用程序的整体响应能力。 有关在 .NET 中使用 Async Await 模式的更多详细信息[，请参阅 async And Await （c # 和 Visual Basic）](https://msdn.microsoft.com/library/hh191443.aspx)
 
     // Create a message to put in the queue
     CloudQueueMessage cloudQueueMessage = new CloudQueueMessage("My message");

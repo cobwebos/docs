@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 08/16/2019
 ms.author: stevelas
 ms.openlocfilehash: d238de30e458261a11c941c03ac127c732ca8d3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74456441"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure 容器注册表中的异地复制
@@ -69,7 +69,7 @@ docker push contosowesteu.azurecr.io/public/products/web:1.2
 
 若要为高级注册表配置异地复制，可通过 https://portal.azure.com 登录到 Azure 门户。
 
-导航到 Azure 容器注册表，然后选择“复制”****：
+导航到 Azure 容器注册表，然后选择“复制”  ：
 
 ![Azure 门户容器注册表 UI 中的副本](media/container-registry-geo-replication/registry-services.png)
 
@@ -81,13 +81,13 @@ docker push contosowesteu.azurecr.io/public/products/web:1.2
 * 绿色六边形表示可能的复制区域
 * 灰色六边形表示尚不可复制的 Azure 区域
 
-若要配置副本，请选择一个绿色六边形，然后选择“创建”****：
+若要配置副本，请选择一个绿色六边形，然后选择“创建”  ：
 
  ![Azure 门户中的“创建副本”UI](media/container-registry-geo-replication/create-replication.png)
 
-若要创建其他副本，请选择表示其他区域的绿色六边形，然后单击“创建”****。
+若要创建其他副本，请选择表示其他区域的绿色六边形，然后单击“创建”  。
 
-ACR 将开始在配置的副本间同步映像。 完成后，门户将显示“就绪”**。 门户中的副本状态不会自动更新。 使用刷新按钮查看更新状态。
+ACR 将开始在配置的副本间同步映像。 完成后，门户将显示“就绪”  。 门户中的副本状态不会自动更新。 使用刷新按钮查看更新状态。
 
 ## <a name="considerations-for-using-a-geo-replicated-registry"></a>使用异地复制注册表的注意事项
 
@@ -102,8 +102,8 @@ ACR 将开始在配置的副本间同步映像。 完成后，门户将显示“
 
 若要在 Azure 门户中删除副本，请执行以下操作：
 
-1. 导航到 Azure 容器注册表，然后选择**复制**。
-1. 选择副本的名称，然后选择“删除”****。 确认要删除该副本。
+1. 导航到 Azure 容器注册表，然后选择“复制”  。
+1. 选择副本的名称，然后选择“删除”  。 确认要删除该副本。
 
 > [!NOTE]
 > 无法删除注册表的*主区域*（即创建注册表的位置）中的注册表副本。 只能通过删除注册表本身来删除主副本。

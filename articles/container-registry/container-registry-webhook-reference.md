@@ -4,10 +4,10 @@ description: Azure 容器注册表中 Webhook 请求的 JSON 有效负载参考�
 ms.topic: article
 ms.date: 03/05/2019
 ms.openlocfilehash: 8354ef9db24d5825238155ac567d5d829f9b0d7f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74455974"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Azure 容器注册表 Webhook 参考
@@ -44,7 +44,7 @@ ms.locfileid: "74455974"
 |[目标](#target)|复杂类型|触发 Webhook 事件的事件目标。|
 |[请求](#request)|复杂类型|生成 Webhook 事件的请求。|
 
-### <a name="target"></a><a name="target"></a>目标
+### <a name="target"></a><a name="target"></a>靶
 
 |元素|类型|说明|
 |------------------|----------|-----------|
@@ -55,7 +55,7 @@ ms.locfileid: "74455974"
 |`repository`|String|存储库名称。|
 |`tag`|String|映像标记名称。|
 
-### <a name="request"></a><a name="request"></a>请求
+### <a name="request"></a><a name="request"></a>需要
 
 |元素|类型|说明|
 |------------------|----------|-----------|
@@ -88,7 +88,7 @@ ms.locfileid: "74455974"
 }
 ```
 
-触发映像**推送**事件 Webhook 的示例 [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/) 命令：
+触发映像[推送](https://docs.docker.com/engine/reference/commandline/cli/)事件 Webhook 的示例 **Docker CLI** 命令：
 
 ```bash
 docker push myregistry.azurecr.io/hello-world:v1
@@ -107,7 +107,7 @@ docker push myregistry.azurecr.io/hello-world:v1
 |`action`|String|触发 Webhook 事件的操作。|
 |[目标](#helm_target)|复杂类型|触发 Webhook 事件的事件目标。|
 
-### <a name="target"></a><a name="helm_target"></a>目标
+### <a name="target"></a><a name="helm_target"></a>靶
 
 |元素|类型|说明|
 |------------------|----------|-----------|
@@ -138,7 +138,7 @@ docker push myregistry.azurecr.io/hello-world:v1
 }
 ```
 
-触发 **chart_push** 事件 Webhook 的示例 [Azure CLI](/cli/azure/acr) 命令：
+触发 [chart_push](/cli/azure/acr) 事件 Webhook 的示例 **Azure CLI** 命令：
 
 ```azurecli
 az acr helm push wordpress-5.4.0.tgz --name MyRegistry
@@ -158,7 +158,7 @@ az acr helm push wordpress-5.4.0.tgz --name MyRegistry
 |[目标](#delete_target)|复杂类型|触发 Webhook 事件的事件目标。|
 |[请求](#delete_request)|复杂类型|生成 Webhook 事件的请求。|
 
-### <a name="target"></a><a name="delete_target"></a>目标
+### <a name="target"></a><a name="delete_target"></a>靶
 
 |元素|类型|说明|
 |------------------|----------|-----------|
@@ -166,7 +166,7 @@ az acr helm push wordpress-5.4.0.tgz --name MyRegistry
 |`digest`|String|内容摘要，由注册表 V2 HTTP API 规范定义。|
 |`repository`|String|存储库名称。|
 
-### <a name="request"></a><a name="delete_request"></a>请求
+### <a name="request"></a><a name="delete_request"></a>需要
 
 |元素|类型|说明|
 |------------------|----------|-----------|
@@ -196,7 +196,7 @@ az acr helm push wordpress-5.4.0.tgz --name MyRegistry
   }
 ```
 
-触发**删除**事件 Webhook 的示例 [Azure CLI](/cli/azure/acr) 命令：
+触发[删除](/cli/azure/acr)事件 Webhook 的示例 **Azure CLI** 命令：
 
 ```azurecli
 # Delete repository
@@ -219,7 +219,7 @@ az acr repository delete --name MyRegistry --image MyRepository:MyTag
 |`action`|String|触发 Webhook 事件的操作。|
 |[目标](#chart_delete_target)|复杂类型|触发 Webhook 事件的事件目标。|
 
-### <a name="target"></a><a name="chart_delete_target"></a>目标
+### <a name="target"></a><a name="chart_delete_target"></a>靶
 
 |元素|类型|说明|
 |------------------|----------|-----------|
@@ -250,7 +250,7 @@ az acr repository delete --name MyRegistry --image MyRepository:MyTag
 }
 ```
 
-触发 **chart_delete** 事件 Webhook 的示例 [Azure CLI](/cli/azure/acr) 命令：
+触发 [chart_delete](/cli/azure/acr) 事件 Webhook 的示例 **Azure CLI** 命令：
 
 ```azurecli
 az acr helm delete wordpress --version 5.4.0 --name MyRegistry

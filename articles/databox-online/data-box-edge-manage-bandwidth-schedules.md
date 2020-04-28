@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: alkohli
 ms.openlocfilehash: f7b762d5502986c306de240519688aa639f58445
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60756776"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-edge"></a>使用 Azure 门户管理 Azure Data Box Edge 上的带宽计划  
@@ -44,7 +44,7 @@ ms.locfileid: "60756776"
    2. 如果此计划应该全天运行，请选中“全天”选项。****
    3. “带宽速率”是指设备在执行涉及到云的操作时使用的带宽，以每秒兆位数 (Mbps) 表示。**** 为此字段提供介于 20 和 1,000,000,007 之间的数字。
    4. 如果不希望限制数据上传和下载带宽，请选中“无限制”。****
-   5. 选择“添加”****。
+   5. 选择 **添加** 。
 
       ![添加计划](media/data-box-edge-manage-bandwidth-schedules/add-schedule-2.png)
 

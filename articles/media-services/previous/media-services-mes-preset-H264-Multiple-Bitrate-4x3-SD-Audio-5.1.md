@@ -1,6 +1,6 @@
 ---
 title: H264 多比特率 4x3 SD Audio 5.1 | Microsoft 文档
-description: 本主题概述了“H264 多比特率 4x3 SD Audio 5.1”任务预设****。
+description: 本主题概述了“H264 多比特率 4x3 SD Audio 5.1”任务预设  。
 author: Juliako
 manager: femila
 editor: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 7f5ea80a055c34cddeab042c33071c6f5799a443
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61463661"
 ---
 # <a name="h264-multiple-bitrate-4x3-sd-audio-51"></a>H264 多比特率 4x3 SD Audio 5.1
@@ -26,7 +26,7 @@ ms.locfileid: "61463661"
   
  本主题介绍 XML 和 JSON 格式的 `H264 Multiple Bitrate 4x3 SD Audio 5.1` 预设。  
   
- 此预设产生一组 5 GOP 对齐的 MP4 文件，范围从 1600 kbps 到 400 kbps，以及 AAC 5.1 音频。 有关此预设的配置文件、比特率、采样率等的详细信息，请观察下面定义的 XML 或 JSON。 有关每个元素的含义以及每个元素的有效值的说明，请参阅[媒体编码器标准架构](media-services-mes-schema.md)。  
+ 此预设产生一组 5 GOP 对齐的 MP4 文件，范围从 1600 kbps 到 400 kbps，以及 AAC 5.1 音频。 有关此预设的配置文件、比特率、采样率等的详细信息，请观察下面定义的 XML 或 JSON。 有关每个元素的含义及其有效值的说明，请参阅 [Media Encoder Standard 架构](media-services-mes-schema.md)。  
   
 > [!NOTE]
 >  跨层修改 `Width` 和 `Height` 值时，请确保纵横比保持一致。 例如：1920x1080、1280x720、1080x576、640x360。 不应使用混合的纵横比，例如：1280x720、720x480、640x360。  

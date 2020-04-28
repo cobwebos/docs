@@ -5,17 +5,17 @@ ms.topic: article
 ms.date: 09/25/2019
 ms.custom: mvc
 ms.openlocfilehash: 07cdbfb27aaf9076e726ebda861ed24996e10135
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74533392"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>排查 Azure 容器实例中的常见问题
 
 本文展示了如何排查管理容器或向 Azure 容器实例部署容器时出现的常见问题。 另请参阅[常见问题解答](container-instances-faq.md)。
 
-如果需要更多支持，请参阅 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)中可用的****“帮助 + 支持”选项。
+如果需要更多支持，请参阅 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)中可用的  “帮助 + 支持”选项。
 
 ## <a name="issues-during-container-group-deployment"></a>容器组部署过程中的问题
 ### <a name="naming-conventions"></a>命名约定
@@ -186,7 +186,7 @@ mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 month
 
 #### <a name="cached-images"></a>缓存的映像
 
-Azure 容器实例使用缓存机制来帮助加快在常见[Windows 基本映像](container-instances-faq.md#what-windows-base-os-images-are-supported)（包括`nanoserver:1809`和`servercore:ltsc2019` `servercore:1809`） 上构建的映像的容器启动时间。 常用的 Linux 映像（例如 `ubuntu:1604` 和 `alpine:3.6`）也会缓存。 若要获取缓存的映像和标记的最新列表，请使用[列出缓存的映像][list-cached-images] API。
+Azure 容器实例使用缓存机制来帮助加快使用常见[Windows 基准映像](container-instances-faq.md#what-windows-base-os-images-are-supported)（包括`nanoserver:1809`、 `servercore:ltsc2019`和`servercore:1809`）生成的映像的容器启动时间。 常用的 Linux 映像（例如 `ubuntu:1604` 和 `alpine:3.6`）也会缓存。 若要获取缓存的映像和标记的最新列表，请使用[列出缓存的映像][list-cached-images] API。
 
 > [!NOTE]
 > 在 Azure 容器实例中使用基于 Windows Server 2019 的映像处于预览状态。

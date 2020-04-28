@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9a3e2df956aaa4f9fd0af83dd2a18e04d731c714
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74232346"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory 标识保护术语表
@@ -45,7 +45,7 @@ Azure Active Directory 中的活动记录。
 必须通过基于条件（例如密码或证书等）的身份验证方式来验证个人或实体。
 
 ### <a name="identity-risk-detection"></a>标识风险检测
-Azure AD 事件被标识保护标记为异常，并可能表示标识已泄露。
+Azure AD 由 Identity Protection 标记为异常的事件，并且可能表示标识已泄露。
 
 ### <a name="ignored-risk-detection"></a>已忽略（风险检测）
 “标识保护”用户手动设置的风险检测状态，表示此风险检测已关闭，无需采取补救措施。
@@ -59,7 +59,7 @@ Azure AD 事件被标识保护标记为异常，并可能表示标识已泄露�
 ### <a name="leaked-credentials"></a>已泄漏凭据
 研究人员发现当前用户凭据（用户名和密码）公开发布在黑暗网络 (Dark Web) 时触发的风险检测。
 
-### <a name="mitigation"></a>缓解操作
+### <a name="mitigation"></a>缓解
 限制或消除攻击者利用遭到入侵的标识或设备的能力，且无需将标识或设备还原到安全状态。 缓解措施不能解决以前与标识或设备关联的风险检测。
 
 ### <a name="multi-factor-authentication"></a>多重身份验证
@@ -72,7 +72,7 @@ Azure AD 事件被标识保护标记为异常，并可能表示标识已泄露�
 安全策略的一部分，定义策略中包含或排除的实体（组、用户、应用、设备平台、设备状态、IP 范围、客户端类型）。
 
 ### <a name="policy-rule"></a>策略规则
-安全策略中描述将触发策略的情况以及触发策略时执行的操作的部分。
+安全策略的一部分，用于描述触发策略的情况，以及在触发策略时执行的操作。
 
 ### <a name="prevention"></a>预防
 防止通过滥用疑似或已知遭到入侵的标识或设备来损害组织的措施。 预防措施无法保护设备或标识的安全，且无法解决以前的风险检测。
@@ -158,6 +158,6 @@ Azure AD 事件被标识保护标记为异常，并可能表示标识已泄露�
 ### <a name="vulnerability"></a>漏洞
 Azure Active Directory 中导致目录容易遭到入侵或威胁的配置或状态。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [Azure Active Directory 标识保护](../active-directory-identityprotection.md)

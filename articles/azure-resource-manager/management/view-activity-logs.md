@@ -4,10 +4,10 @@ description: 使用活动日志查看用户操作和错误。 显示 Azure 门�
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: 9511090099894fad6708843f106570ed029f0c1a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75478131"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>查看活动日志以监视对资源的操作
@@ -30,11 +30,11 @@ ms.locfileid: "75478131"
 
 若要通过门户查看活动日志，请执行以下步骤：
 
-1. 在 Azure 门户菜单上，选择“监视”或在任何页面中搜索并选择“监视”********。
+1. 在 Azure 门户菜单上，选择“监视”或在任何页面中搜索并选择“监视”   。
 
     ![选择“监视”](./media/view-activity-logs/select-monitor-from-menu.png)
 
-1. 选择**活动日志**。
+1. 选择“活动日志”  。
 
     ![选择“活动日志”](./media/view-activity-logs/select-activity-log.png)
 
@@ -42,11 +42,11 @@ ms.locfileid: "75478131"
 
     ![查看最近操作的摘要](./media/view-activity-logs/audit-summary.png)
 
-1. 若要快速运行一组预定义的筛选器，请选择“快速见解”****。
+1. 若要快速运行一组预定义的筛选器，请选择“快速见解”  。
 
     ![选择“快速见解”](./media/view-activity-logs/select-quick-insights.png)
 
-1. 选择一个选项。 例如，选择“失败的部署”**** 以查看部署中的错误。
+1. 选择一个选项。 例如，选择“失败的部署”  以查看部署中的错误。
 
     ![选择“失败的部署”](./media/view-activity-logs/select-failed-deployments.png)
 
@@ -54,11 +54,11 @@ ms.locfileid: "75478131"
 
     ![查看筛选器](./media/view-activity-logs/view-filters.png)
 
-1. 若要专注于特定操作，请更改筛选器或应用新的筛选器。 例如，下图显示了“时间跨度”的新值，且“资源类型”设置为存储帐户********。
+1. 若要专注于特定操作，请更改筛选器或应用新的筛选器。 例如，下图显示了“时间跨度”的新值，且“资源类型”设置为存储帐户   。
 
     ![设置筛选器选项](./media/view-activity-logs/set-filter.png)
 
-1. 如果稍后需要重新运行该查询，请选择“固定当前筛选器”****。
+1. 如果稍后需要重新运行该查询，请选择“固定当前筛选器”  。
 
     ![固定筛选器](./media/view-activity-logs/pin-filters.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "75478131"
 
     ![为筛选器命名](./media/view-activity-logs/name-filters.png)
 
-1. 该筛选器将显示在仪表板中。 在 Azure 门户菜单上，选择“仪表板”****。
+1. 该筛选器将显示在仪表板中。 在 Azure 门户菜单上，选择“仪表板”  。
 
     ![在仪表板上显示筛选器](./media/view-activity-logs/activity-log-on-dashboard.png)
 
@@ -82,7 +82,7 @@ ms.locfileid: "75478131"
 
     ![显示更改](./media/view-activity-logs/show-changes.png)
 
-要了解有关更改历史记录的更多信息，请参阅[获取资源更改](../../governance/resource-graph/how-to/get-resource-changes.md)。
+若要了解有关更改历史记录的详细信息，请参阅[获取资源更改](../../governance/resource-graph/how-to/get-resource-changes.md)。
 
 ## <a name="powershell"></a>PowerShell
 

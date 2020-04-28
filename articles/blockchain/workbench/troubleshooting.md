@@ -5,20 +5,20 @@ ms.date: 10/14/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: ef4bce4dfba77aafa9b86c6877c153534b54636e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74324304"
 ---
-# <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Azure 区块链工作台预览故障排除
+# <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Azure 区块链工作台预览疑难解答
 
 PowerShell 脚本用于协助开发人员进行调试或提供支持。 此脚本生成摘要并收集进行故障排除所需的详细日志。 收集的日志包括：
 
 * Blockchain 网络，例如 Ethereum
 * Blockchain Workbench 微服务
 * Application Insights
-* Azure 监视（Azure 监视器日志）
+* Azure 监视（Azure Monitor 日志）
 
 可以根据此信息确定后续步骤和问题的根本原因。
 
@@ -42,21 +42,21 @@ collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>
 ```
 此脚本接受以下参数：
 
-| 参数  | 描述 | 必选 |
+| 参数  | 说明 | 必需 |
 |---------|---------|----|
 | 订阅 ID | SubscriptionID，用于创建或定位所有资源。 | 是 |
 | ResourceGroupName | Blockchain Workbench 部署时所在的 Azure 资源组的名称。 | 是 |
 | OutputDirectory | 用于创建输出 .ZIP 文件的路径。 如果未指定，则默认为当前目录。 | 否 |
 | LookbackHours | 拉取遥测数据时要使用的小时数。 默认值为 24 小时。 最大值为 90 小时 | 否 |
-| OmsSubscriptionId | 部署 Azure 监视器日志的订阅 ID。 仅当区块链网络的 Azure 监视器日志部署在区块链工作台的资源组之外时，才传递此参数。| 否 |
-| OmsResourceGroup |部署 Azure 监视器日志的资源组。 仅当区块链网络的 Azure 监视器日志部署在区块链工作台的资源组之外时，才传递此参数。| 否 |
-| OmsWorkspaceName | Log Analytics 工作区名称。 仅当区块链网络的 Azure 监视器日志部署在区块链工作台的资源组之外时，才传递此参数 | 否 |
+| OmsSubscriptionId | 部署 Azure Monitor 日志的订阅 ID。 仅当区块链网络的 Azure Monitor 日志部署在区块链工作台的资源组之外时才传递此参数。| 否 |
+| OmsResourceGroup |部署 Azure Monitor 日志的资源组。 仅当区块链网络的 Azure Monitor 日志部署在区块链工作台的资源组之外时才传递此参数。| 否 |
+| OmsWorkspaceName | Log Analytics 工作区名称。 仅当区块链网络的 Azure Monitor 日志部署在区块链工作台的资源组外时传递此参数 | 否 |
 
 ## <a name="what-is-collected"></a>收集什么内容？
 
 输出 ZIP 文件包含以下文件夹结构：
 
-| 文件夹或文件 | 描述  |
+| 文件夹或文件 | 说明  |
 |---------|---------|
 | \Summary.txt | 系统摘要 |
 | \Metrics\blockchain | 有关区块链的指标 |

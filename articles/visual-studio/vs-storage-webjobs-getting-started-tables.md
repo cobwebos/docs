@@ -1,5 +1,5 @@
 ---
-title: 使用可视化工作室（WebJob 项目）开始使用 Azure 存储
+title: 使用 Visual Studio （Web 作业项目）与 Azure 存储入门
 description: 在使用 Visual Studio 连接服务连接到存储帐户后，如何开始在 Visual Studio 的 Azure WebJobs 项目中使用 Azure 表存储
 services: storage
 author: ghogen
@@ -14,10 +14,10 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: e4d8299c06bfa5b0f33bff8fa592a2fa549c695c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74707606"
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Azure 存储入门（Azure WebJob 项目）
@@ -33,7 +33,7 @@ Azure 表存储服务使用户可以存储大量结构化数据。 该服务是�
 
 ## <a name="how-to-add-entities-to-a-table"></a>如何向表中添加实体
 
-要将实体添加到表，请使用具有**ICollector\<T>** 或**IAsyncCollector\<T>** 参数的**表**属性，**其中 T**指定要添加的实体的架构。 属性构造函数使用指定表名称的字符串参数。
+若要将实体添加到表中，请将**table**属性**与\<ICollector t>** 或**\<IAsyncCollector t>** 参数一起使用，其中**t**指定想要添加的实体的架构。 属性构造函数使用指定表名称的字符串参数。
 
 下面的代码示例将 **Person** 实体添加到名为 *Ingress* 的表。
 
@@ -88,7 +88,7 @@ public class Person
 
 ## <a name="how-to-read-multiple-entities-from-a-table"></a>如何从表中读取多个实体
 
-要读取表，请使用具有**IQuery\<T>** 参数的**表**属性，其中**T**类型派生自**表实体**或实现**ITableEntity**。
+若要读取表，请将**table**属性与**IQueryable\<t>** 参数一起使用，其中类型**t**从**TableEntity**派生或实现**ITableEntity**。
 
 下面的代码示例读取并记录 **Ingress** 表中的所有行：
 

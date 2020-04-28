@@ -4,10 +4,10 @@ description: 使用 Azure Active Directory 服务主体允许访问专用容器�
 ms.topic: article
 ms.date: 10/04/2019
 ms.openlocfilehash: 37da784c8e95a5f5b924532e4a019552924a1a3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74455409"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>使用服务主体的 Azure 容器注册表身份验证
@@ -16,7 +16,7 @@ ms.locfileid: "74455409"
 
 ## <a name="what-is-a-service-principal"></a>什么是服务主体？
 
-Azure AD“服务主体”** 提供对订阅中的 Azure 资源的访问权限。 可以将服务主体视为某个服务的用户标识，其中，“服务”是需要访问资源的任何应用程序、服务或平台。 可以为服务主体配置作用域仅限于你指定的那些资源的访问权限。 然后，将应用程序或服务配置为使用服务主体的凭据来访问这些资源。
+Azure AD“服务主体”  提供对订阅中的 Azure 资源的访问权限。 可以将服务主体视为某个服务的用户标识，其中，“服务”是需要访问资源的任何应用程序、服务或平台。 可以为服务主体配置作用域仅限于你指定的那些资源的访问权限。 然后，将应用程序或服务配置为使用服务主体的凭据来访问这些资源。
 
 在 Azure 容器注册表的上下文中，你可以创建对 Azure 中的专用注册表具有拉取、推送和拉取或其他权限的 Azure AD 服务主体。 有关完整列表，请参阅 [Azure 容器注册表的角色和权限](container-registry-roles.md)。
 
@@ -30,9 +30,9 @@ Azure AD“服务主体”** 提供对订阅中的 Azure 资源的访问权限�
 
 在**无外设方案**中，应当使用服务主体来提供注册表访问。 即，任何必须以自动或其他无人参与方式来推送或拉取容器映像的应用程序、服务或脚本。 例如：
 
-  * *拉：* 将容器从注册表部署到业务流程系统，包括库伯奈斯、DC/OS 和 Docker Swarm。 还可以从容器注册表拉取到相关的 Azure 服务，例如 [Azure Kubernetes 服务 (AKS)](../aks/cluster-container-registry-integration.md)、[Azure 容器实例](container-registry-auth-aci.md)、[应用服务](../app-service/index.yml)、[Batch](../batch/index.yml)、[Service Fabric](/azure/service-fabric/)，等等。
+  * *拉取*：将容器从注册表部署到业务流程系统（包括 Kubernetes、DC/OS 和 Docker Swarm）。 还可以从容器注册表拉取到相关的 Azure 服务，例如 [Azure Kubernetes 服务 (AKS)](../aks/cluster-container-registry-integration.md)、[Azure 容器实例](container-registry-auth-aci.md)、[应用服务](../app-service/index.yml)、[Batch](../batch/index.yml)、[Service Fabric](/azure/service-fabric/)，等等。
 
-  * *推送*：使用连续集成和部署解决方案（如 Azure 管道或 Jenkins）生成容器映像并将其推送到注册表。
+  * *Push*：构建容器映像并使用持续集成和部署解决方案（例如 Azure Pipelines 或 Jenkins）将它们推送到注册表。
 
 若要对注册表进行个人访问，例如手动将容器映像拉取到开发工作站时，我们建议改用你自己的 [Azure AD 标识](container-registry-authentication.md#individual-login-with-azure-ad)进行注册表访问（例如使用 [az acr login][az-acr-login]）。
 
@@ -43,7 +43,7 @@ Azure AD“服务主体”** 提供对订阅中的 Azure 资源的访问权限�
 可以在 GitHub 上找到前面的 Azure CLI 示例脚本以及 Azure PowerShell 所对应的版本：
 
 * [Azure CLI][acr-scripts-cli]
-* [Azure 电源外壳][acr-scripts-psh]
+* [Azure PowerShell][acr-scripts-psh]
 
 ## <a name="authenticate-with-the-service-principal"></a>使用服务主体进行身份验证
 
@@ -62,7 +62,7 @@ Azure AD“服务主体”** 提供对订阅中的 Azure 资源的访问权限�
 
 可以使用通过 Azure 容器注册表进行身份验证的任何 Azure 服务的服务主体凭据。  许多情况下可以使用服务主体凭据来代替注册表的管理员凭据。
 
-例如，使用凭据将映像从 Azure 容器注册表拉到 Azure[容器实例](container-registry-auth-aci.md)。
+例如，使用凭据将 Azure 容器注册表中的映像提取到[Azure 容器实例](container-registry-auth-aci.md)。
 
 ### <a name="use-with-docker-login"></a>在 docker login 中使用
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 8e12d58c0077084c181d111b0b017665b74b9157
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74231251"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Durable Functions 的零停机时间部署
@@ -27,11 +27,11 @@ Durable Functions 的[可靠执行模型](durable-functions-checkpointing-and-re
 
 | 策略 |  何时使用 | 优点 | 缺点 |
 | -------- | ------------ | ---- | ---- |
-| [版本管理](#versioning) |  不经常出现[中断性变更](durable-functions-versioning.md)的应用程序。 | 易于实施。 |  函数应用的内存大小和函数数目增加。<br/>代码复制。 |
+| [版本控制](#versioning) |  不经常出现[中断性变更](durable-functions-versioning.md)的应用程序。 | 易于实施。 |  函数应用的内存大小和函数数目增加。<br/>代码复制。 |
 | [带槽的状态检查](#status-check-with-slot) | 不存在长时间运行（超过 24 小时）的业务流程或经常重叠业务流程的系统。 | 简单的基本代码。<br/>不需要额外的函数应用管理。 | 需要额外的存储帐户或任务中心管理。<br/>需要有几段时间没有任何业务流程运行。 |
 | [应用程序路由](#application-routing) | 在所有时间段都有业务流程运行的系统，例如，业务流程持续时间超过 24 小时的时段，或经常重叠业务流程的时段。 | 处理持续运行具有中断性变更的业务流程的新系统版本。 | 需要智能应用程序路由器。<br/>可能超出订阅允许的最大函数应用数目。 默认值为 100。 |
 
-## <a name="versioning"></a>版本管理
+## <a name="versioning"></a>版本控制
 
 定义新版本函数，并在函数应用中保留旧版本。 如图中所示，函数的版本将成为其名称的一部分。 由于保留了以前的函数版本，运行中的业务流程实例可以继续引用它们。 同时，对新业务流程实例的请求将调用最新版本，业务流程客户端函数可以从应用设置引用该版本。
 
@@ -110,7 +110,7 @@ public static async Task<IActionResult> StatusCheck(
 }
 ```
 
-接下来，将过渡门限配置为等到没有任何业务流程运行为止。 有关详细信息，请参阅[使用门发布部署控制](/azure/devops/pipelines/release/approvals/gates?view=azure-devops)
+接下来，将过渡门限配置为等到没有任何业务流程运行为止。 有关详细信息，请参阅[使用入口发布部署控制](/azure/devops/pipelines/release/approvals/gates?view=azure-devops)
 
 ![部署门限](media/durable-functions-zero-downtime-deployment/deployment-gate.png)
 

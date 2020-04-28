@@ -1,6 +1,6 @@
 ---
 title: 通过 CLI 使用 Azure 媒体服务创建筛选器 | Microsoft Docs
-description: 本文演示如何使用 CLI 使用 Azure 媒体服务 v3 创建筛选器。
+description: 本文介绍如何使用 CLI 通过 Azure 媒体服务 v3 创建筛选器。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,10 +15,10 @@ ms.date: 06/13/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 74516aa921e45917f327a193a1c972b021c9c8ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74896074"
 ---
 # <a name="creating-filters-with-cli"></a>使用 CLI 创建筛选器 
@@ -32,7 +32,7 @@ ms.locfileid: "74896074"
 > [!NOTE]
 > 请确保查看 [presentationTimeRange](filters-concept.md#presentationtimerange)。
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 - [创建媒体服务帐户](create-account-cli-how-to.md)。 请务必记住资源组名称和媒体服务帐户名称。 
 
@@ -130,6 +130,6 @@ az ams streaming-locator create -a amsAccount -g resourceGroup -n streamingLocat
 
 [流视频](stream-files-tutorial-with-api.md) 
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 [Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)

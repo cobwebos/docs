@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: juliako
 ms.openlocfilehash: ab99b974aed6f8cd5e1da2ee9b427f593b405889
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73571235"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>媒体服务中的转换和作业
@@ -50,11 +50,11 @@ ms.locfileid: "73571235"
 **转换**可帮助你一次性创建脚本（步骤 1），然后使用该脚本提交作业（步骤 2）。
 
 > [!NOTE]
-> 属于日期/时间类型的转换**** 和作业**** 的属性始终采用 UTC 格式。
+> 属于日期/时间类型的转换  和作业  的属性始终采用 UTC 格式。
 
 ## <a name="transforms"></a>转换
 
-**转换**可用来配置对视频进行编码或分析的常见任务。 每个**转换**都描述了用于处理视频或音频文件的任务配方或工作流。 单个转换可以应用多个规则。 例如，转换可以指定以给定的比特率将每个视频编码成 MP4 文件，并从该视频的第一帧生成缩略图。 针对要包含在转换中的每个规则，请添加一个 TransformOutput 条目。 使用预设来告知转换要如何处理输入媒体文件。
+**转换**可用来配置对视频进行编码或分析的常见任务。 每个**转换**描述了用于处理视频或音频文件的脚本或任务工作流。 单个转换可以应用多个规则。 例如，转换可以指定以给定的比特率将每个视频编码成 MP4 文件，并从该视频的第一帧生成缩略图。 针对要包含在转换中的每个规则，请添加一个 TransformOutput 条目。 使用预设来告知转换要如何处理输入媒体文件。
 
 ### <a name="viewing-schema"></a>查看架构
 
@@ -66,7 +66,7 @@ ms.locfileid: "73571235"
 
 ### <a name="updating-transforms"></a>更新转换
 
-如果需要更新[转换](https://docs.microsoft.com/rest/api/media/transforms)，请使用“更新”操作。**** 此操作旨在对底层 TransformOutputs 的说明或优先级进行更改。 建议在所有正在进行的作业都完成后执行这类更新。 如果你想要重写脚本，则需要创建新的转换。
+如果需要更新[转换](https://docs.microsoft.com/rest/api/media/transforms)，请使用“更新”操作。  此操作旨在对底层 TransformOutputs 的说明或优先级进行更改。 建议在所有正在进行的作业都完成后执行这类更新。 如果你想要重写脚本，则需要创建新的转换。
 
 ### <a name="transform-object-diagram"></a>转换对象关系图
 
@@ -78,7 +78,7 @@ ms.locfileid: "73571235"
 
 ## <a name="jobs"></a>作业
 
-**作业**是针对媒体服务的实际请求，目的是将**转换**应用到给定的输入视频或音频内容。 创建转换后，可以使用媒体服务 API 或任何已发布的 SDK 来提交作业。 Job 指定输入视频位置和输出位置等信息****。 您可以使用以下条件指定输入视频的位置：HTTPS URL、SAS URL 或[资产](https://docs.microsoft.com/rest/api/media/assets)。  
+**作业**是针对媒体服务的实际请求，目的是将**转换**应用到给定的输入视频或音频内容。 创建转换后，可以使用媒体服务 API 或任何已发布的 SDK 来提交作业。 Job 指定输入视频位置和输出位置等信息  。 可以使用以下各项指定输入视频的位置：HTTPS URL、SAS URL 或[资产](https://docs.microsoft.com/rest/api/media/assets)。  
 
 ### <a name="job-input-from-https"></a>来自 HTTPS 的作业输入
 
@@ -88,13 +88,13 @@ ms.locfileid: "73571235"
 
 如果输入内容已在资产中，或者内容已存储在本地文件中，请使用[资产作为作业输入](job-input-from-local-file-how-to.md)。 如果你打算发布输入资产以供流式传输或下载（例如，要发布 MP4 文件以供下载，同时想要执行语音转文本或人脸检测），这也是一个不错的选择。 此方法支持多文件资产（例如，在本地编码的 MBR 流集）。
 
-### <a name="checking-job-progress"></a>检查作业进度
+### <a name="checking-job-progress"></a>正在检查作业进度
 
 使用事件网格监视事件可以获取作业的进度和状态。 有关详细信息，请参阅[使用事件网格监视事件](job-state-events-cli-how-to.md)。
 
 ### <a name="updating-jobs"></a>更新作业
 
-[作业](https://docs.microsoft.com/rest/api/media/jobs)实体上的"更新"操作可用于在提交作业后修改*说明*和*优先级*属性。 仅当作业仍处于排队状态时，对优先级** 属性所做的更改才有效。 如果作业已开始处理或已完成，则更改优先级不起作用。
+[作业实体上](https://docs.microsoft.com/rest/api/media/jobs)的更新操作可用于在提交作业后修改*说明*和*优先级*属性。 仅当作业仍处于排队状态时，对优先级** 属性所做的更改才有效。 如果作业已开始处理或已完成，则更改优先级不起作用。
 
 ### <a name="job-object-diagram"></a>作业对象关系图
 
@@ -114,7 +114,7 @@ ms.locfileid: "73571235"
 
 查看 [Azure 媒体服务社区](media-services-community.md)文章，了解可以提出问题、提供反馈和获取有关媒体服务的更新的不同方法。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [错误代码](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
 * [媒体服务实体的筛选、排序和分页](entities-overview.md)
@@ -124,6 +124,6 @@ ms.locfileid: "73571235"
 - 在开始开发之前，请查看[使用媒体服务 v3 API 进行开发](media-services-apis-overview.md)（包括有关访问 API、命名约定等的信息）
 - 查看以下教程：
 
-    - [教程：基于 URL 对远程文件进行编码并流式传输视频](stream-files-tutorial-with-rest.md)
-    - [教程：上传、编码和流式传输视频](stream-files-tutorial-with-api.md)
-    - [教程：使用媒体服务 v3 分析视频](analyze-videos-tutorial-with-api.md)
+    - [教程：根据 URL 编码远程文件并流式传输视频](stream-files-tutorial-with-rest.md)
+    - [教程：上传、编码和流式处理视频](stream-files-tutorial-with-api.md)
+    - [教程：使用媒体服务 v3 来分析视频](analyze-videos-tutorial-with-api.md)

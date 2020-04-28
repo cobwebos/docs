@@ -1,5 +1,5 @@
 ---
-title: 使用分页获取更多项目或记录
+title: 获取更多的项或具有分页的记录
 description: 在 Azure 逻辑应用中将分页设置为超过连接器操作的默认页面大小限制
 services: logic-apps
 ms.suite: integration
@@ -7,19 +7,19 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 04/11/2019
 ms.openlocfilehash: 75d9660eb35b5d7ddc644d177c11ae489e2853dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74792112"
 ---
 # <a name="get-more-data-items-or-records-by-using-pagination-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用分页获取更多数据、项或记录
 
-在 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)中使用连接器操作检索数据、项或记录时，获取的结果集可能太大，以致操作无法一次性返回所有结果。 某些操作的结果数可能会超过连接器的默认页面大小。 在这种情况下，操作仅会返回结果的第一页。 例如，SQL Server 连接器的“获取行”操作的默认页面大小为 2048，但是可能因其他设置而有所不同****。
+在 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)中使用连接器操作检索数据、项或记录时，获取的结果集可能太大，以致操作无法一次性返回所有结果。 某些操作的结果数可能会超过连接器的默认页面大小。 在这种情况下，操作仅会返回结果的第一页。 例如，SQL Server 连接器的“获取行”操作的默认页面大小为 2048，但是可能因其他设置而有所不同  。
 
-某些操作允许启用分页设置，使逻辑应用能够检索更多的结果（不能超过分页限制），但在操作完成时会以单个消息的形式返回这些结果。** 使用分页时，必须指定阈值，即要让操作返回的目标结果数。** 在达到指定的阈值之前，操作会不断地检索结果。 如果总项数小于指定的阈值，操作将检索所有结果。
+某些操作允许启用分页设置，使逻辑应用能够检索更多的结果（不能超过分页限制），但在操作完成时会以单个消息的形式返回这些结果。  使用分页时，必须指定阈值，即要让操作返回的目标结果数。  在达到指定的阈值之前，操作会不断地检索结果。 如果总项数小于指定的阈值，操作将检索所有结果。
 
-启用分页设置会根据连接器的页面大小检索结果页面。 此行为意味着，获取的结果数有时会超过指定的阈值。 例如，使用 SQL Server 的支持分页设置的“获取行”操作时：****
+启用分页设置会根据连接器的页面大小检索结果页面。 此行为意味着，获取的结果数有时会超过指定的阈值。 例如，使用 SQL Server 的支持分页设置的“获取行”操作时： 
 
 * 该操作的默认页面大小为每页 2048 条记录。
 * 假设你有 10,000 条记录，并指定 5000 条记录作为最小值。
@@ -33,8 +33,8 @@ ms.locfileid: "74792112"
 * [HTTP](https://docs.microsoft.com/azure/connectors/connectors-native-http)
 * [IBM DB2](https://docs.microsoft.com/connectors/db2/)
 * [Microsoft Teams](https://docs.microsoft.com/connectors/teams/)
-* [甲骨文数据库](https://docs.microsoft.com/connectors/oracle/)
-* [销售队伍](https://docs.microsoft.com/connectors/salesforce/)
+* [Oracle Database](https://docs.microsoft.com/connectors/oracle/)
+* [Salesforce](https://docs.microsoft.com/connectors/salesforce/)
 * [SharePoint](https://docs.microsoft.com/connectors/sharepointonline/)
 * [SQL Server](https://docs.microsoft.com/connectors/sql/)
 
@@ -46,19 +46,19 @@ ms.locfileid: "74792112"
 
 ## <a name="turn-on-pagination"></a>启用分页
 
-若要确定某个操作是否支持逻辑应用设计器中的分页，请在“分页”设置中检查该操作的设置。**** 此示例演示如何在 SQL Server 的“获取行”操作中启用分页。****
+若要确定某个操作是否支持逻辑应用设计器中的分页，请在“分页”设置中检查该操作的设置。  此示例演示如何在 SQL Server 的“获取行”操作中启用分页。 
 
-1. 在该操作的右上角选择省略号 (**...**) 按钮，然后选择“设置”。****
+1. 在该操作的右上角选择省略号 ( **...** ) 按钮，然后选择“设置”。 
 
    ![打开操作的设置](./media/logic-apps-exceed-default-page-size-with-pagination/sql-action-settings.png)
 
-   如果该操作支持分页，它会显示“分页”设置。****
+   如果该操作支持分页，它会显示“分页”设置。 
 
-1. 将“分页”设置从“关”更改为“开”。************ 在“阈值”属性中，指定一个整数值，作为操作要返回的目标结果数。****
+1. 将“分页”设置从“关”更改为“开”。    在“阈值”属性中，指定一个整数值，作为操作要返回的目标结果数。 
 
    ![指定要返回的最小结果数](./media/logic-apps-exceed-default-page-size-with-pagination/sql-action-settings-pagination.png)
 
-1. 准备就绪后，选择“完成”****。
+1. 准备就绪后，选择“完成”  。
 
 ## <a name="workflow-definition---pagination"></a>工作流定义 - 分页
 

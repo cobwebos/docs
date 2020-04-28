@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
 ms.openlocfilehash: b096b9352be65033f2fb782b118e815dc16b43b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73838319"
 ---
 # <a name="customize-a-language-model-with-video-indexer"></a>自定义视频索引器中的语言模型
 
-视频索引器支持通过与 Microsoft [自定义语音服务](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/)集成实现自动语音识别。 可通过上传自适应文本（这些文本来自引擎需要适应词汇的领域）来自定义语言模型。 训练模型后，自适应文本中出现的新字词获得了默认的发音，能够得到识别，并且语言模型将学习可能出现的新字词顺序。 英语、西班牙语、法语、德语、意大利语、中文（简体）、日语、俄语、巴西葡萄牙语、印地语和韩语都支持自定义语言模型。 
+视频索引器支持通过与 Microsoft [自定义语音服务](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/)集成实现自动语音识别。 可通过上传自适应文本（这些文本来自引擎需要适应词汇的领域）来自定义语言模型。 训练模型后，自适应文本中出现的新字词获得了默认的发音，能够得到识别，并且语言模型将学习可能出现的新字词顺序。 英语、西班牙语、法语、德语、意大利语、简体中文、日语、俄语、巴西葡萄牙语、印地语和韩语支持自定义语言模型。 
 
 下面，我们将使用一个非常特殊的单词“Kubernetes”为例（其语境为 Azure Kubernetes 服务）。 对于视频索引器而言，这是一个新单词，被识别为“communities”。 你需要对模型进行训练，使它将该单词识别为“Kubernetes”。 在其他情况下该单词存在，但语言模型未预料到它会出现在某个特定的上下文中。 例如，非专用语言模型不会将“container service”这个由 2 个单词组成的序列识别为特定的词组。
 

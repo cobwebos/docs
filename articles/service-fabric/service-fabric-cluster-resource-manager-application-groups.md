@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 988c7ce52125800c16aa785d5b1458604a927ecd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75452148"
 ---
 # <a name="introduction-to-application-groups"></a>应用程序组简介
@@ -99,12 +99,12 @@ await fc.ApplicationManager.CreateApplicationAsync(ad);
 - 应用程序实例中的服务数每次都会发生更改 
 - 服务存在，但不会消耗资源 
 
-为应用程序实例保留资源需要指定两个附加参数：MinimumNodes 和 NodeReservationCapacity****
+为应用程序实例保留资源需要指定两个附加参数：MinimumNodes 和 NodeReservationCapacity  
 
-- MinimumNodes**** - 定义应用程序实例应在其上运行的最小节点数。  
-- NodeReservationCapacity**** - 此设置是应用程序的各项指标。 应用程序中的服务在节点上运行，该值是为该节点上的该应用程序保留的该指标的量。
+- MinimumNodes  - 定义应用程序实例应在其上运行的最小节点数。  
+- NodeReservationCapacity  - 此设置是应用程序的各项指标。 应用程序中的服务在节点上运行，该值是为该节点上的该应用程序保留的该指标的量。
 
-结合使用 MinimumNodes 和 NodeReservationCapacity 可以保证为群集中的应用程序保留最小负载********。 如果群集中存在的剩余容量比所需要的总预留容量小，则无法创建应用程序。 
+结合使用 MinimumNodes 和 NodeReservationCapacity 可以保证为群集中的应用程序保留最小负载   。 如果群集中存在的剩余容量比所需要的总预留容量小，则无法创建应用程序。 
 
 下面是容量预留的一个示例：
 
@@ -206,7 +206,7 @@ Update-ServiceFabricApplication –Name fabric:/MyApplication1 –RemoveApplicat
 - 若要了解群集 Resource Manager 如何管理和均衡群集中的负载，请查看有关[平衡负载](service-fabric-cluster-resource-manager-balancing.md)的文章
 - 从头开始并[获取 Service Fabric 群集 Resource Manager 简介](service-fabric-cluster-resource-manager-introduction.md)
 - 有关在一般情况下指标的工作原理的详细信息，请参阅 [Service Fabric 负载指标](service-fabric-cluster-resource-manager-metrics.md)
-- 群集 Resource Manager 提供许多用于描述群集的选项。 要了解有关它们的更多，请查看本文介绍[服务结构群集](service-fabric-cluster-resource-manager-cluster-description.md)
+- 群集 Resource Manager 提供许多用于描述群集的选项。 若要详细了解这些选项，请查看这篇[介绍 Service Fabric 群集](service-fabric-cluster-resource-manager-cluster-description.md)的文章
 
 [Image1]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-max-nodes.png
 [Image2]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-reserved-capacity.png

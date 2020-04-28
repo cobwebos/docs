@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 站点恢复中向恢复计划添加脚本
+title: 在 Azure Site Recovery 中将脚本添加到恢复计划
 description: 了解如何将 VMM 脚本添加到恢复计划中，以便在 VMM 云中对 Hyper-V VM 进行灾难恢复。
 author: rajani-janaki-ram
 manager: rochakm
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 6902876e066649ae4dff4134fb8cc462f30dd0b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74084872"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>将 VMM 脚本添加到还原计划
 
 本文介绍了如何创建 System Center Virtual Machine Manager (VMM) 脚本且如何在 [Azure Site Recovery](site-recovery-overview.md) 中将其添加到还原计划中。
 
-在本文底部或[Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)上发布任何评论或问题。
+请将任何评论或问题发布到本文底部，或者发布到[Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -29,7 +29,7 @@ ms.locfileid: "74084872"
     - 如果发生错误，则不运行脚本的剩余部分。
     - 如果在运行未计划的故障转移时发生错误，将继续执行恢复计划。
     - 如果在运行计划的故障转移时发生错误，则将停止恢复计划。 请修复脚本，检查它是否按预期运行，然后重新运行还原计划。
-        - `Write-Host` 命令在还原计划脚本中不起作用。 如果在脚本中使用 `Write-Host`，则脚本将失败。 若要创建输出，请创建转而运行主脚本的代理脚本。 为确保所有输出都管道输出，请使用 命令**\>**。
+        - `Write-Host` 命令在还原计划脚本中不起作用。 如果在脚本中使用 `Write-Host`，则脚本将失败。 若要创建输出，请创建转而运行主脚本的代理脚本。 若要确保所有输出均已输送，请使用** \> **命令。
         - 如果脚本未在 600 秒内返回，则脚本超时。
         - 如果向 STDERR 写入了内容，则脚本归类为失败。 此信息显示在脚本执行详细信息中。
 
@@ -49,9 +49,9 @@ ms.locfileid: "74084872"
 
   1. 使用与 VMM 服务帐户处于同一用户权限级别的用户帐户测试脚本。 使用这些用户权限验证经过测试的独立脚本按在还原计划中运行的方式运行。 在 VMM 服务器上，将执行策略设置为绕过，如下所示：
 
-     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 以管理员身份打开 64 位 Windows PowerShell 控制台****。
+     a. 以管理员身份打开 64 位 Windows PowerShell 控制台****。
      
-     b.保留“数据库类型”设置，即设置为“共享”。 输入 Set-executionpolicy bypass****。 有关详细信息，请参阅[使用 Set-ExecutionPolicy cmdlet](https://technet.microsoft.com/library/ee176961.aspx)。
+     b. 输入 Set-executionpolicy bypass****。 有关详细信息，请参阅[使用 Set-ExecutionPolicy cmdlet](https://technet.microsoft.com/library/ee176961.aspx)。
 
      > [!IMPORTANT]
      > 仅在 64 位 PowerShell 控制台中设置 Set-executionpolicy bypass****。 若为 32 位 PowerShell 控制台设置此项，脚本不会运行。

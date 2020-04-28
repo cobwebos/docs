@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 25389348476552298ddb947ccb59acb8b3d5bc57
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80881242"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>如何：在 macOS 和 iOS 上配置 SSO
@@ -65,11 +65,11 @@ MSAL 支持通过 iOS 密钥链访问组进行 SSO 共享。
 
 为使 Microsoft 标识平台知道哪些应用程序可以共享令牌，这些应用程序需要共享相同的客户端 ID 或应用程序 ID。 这是在门户中注册第一个应用程序时提供的唯一标识符。
 
-Microsoft 标识平台根据应用的**重定向 URI** 来辨别使用相同应用程序 ID 的应用。 每个应用程序可以在登记门户中注册多个重定向 URI。 套件中的每个应用程序具有不同的重定向 URI。 例如：
+Microsoft 标识平台根据应用的**重定向 URI** 来辨别使用相同应用程序 ID 的应用。 每个应用程序可以在登记门户中注册多个重定向 URI。 套件中的每个应用都具有不同的重定向 URI。 例如：
 
-App1 重定向 URI：`msauth.com.contoso.mytestapp1://auth`  
-App2 重定向 URI：`msauth.com.contoso.mytestapp2://auth`  
-App3 重定向 URI：`msauth.com.contoso.mytestapp3://auth`  
+App1 重定向 URI： `msauth.com.contoso.mytestapp1://auth`  
+App2 重定向 URI： `msauth.com.contoso.mytestapp2://auth`  
+App3 重定向 URI： `msauth.com.contoso.mytestapp3://auth`  
 
 > [!IMPORTANT]
 > 重定向 URI 的格式必须与 MSAL 支持的格式兼容，[MSAL 重定向 URI 格式要求](redirect-uris-ios.md#msal-redirect-uri-format-requirements)中阐述了此格式。
@@ -94,15 +94,15 @@ App3 重定向 URI：`msauth.com.contoso.mytestapp3://auth`
 </plist>
 ```
 
-#### <a name="add-a-new-keychain-group"></a>添加新的钥匙串组
+#### <a name="add-a-new-keychain-group"></a>添加新密钥链组
 
-向项目**功能**添加新的键串组。 钥匙串组应为：
-* `com.microsoft.adalcache`在 iOS 上 
-* `com.microsoft.identity.universalstorage`在macOS上。
+向项目**功能**添加新密钥链组。 密钥链组应为：
+* iOS 上的 `com.microsoft.adalcache` 
+* macOS 上的 `com.microsoft.identity.universalstorage`。
 
-![钥匙串示例](media/single-sign-on-macos-ios/keychain-example.png)
+![密钥链示例](media/single-sign-on-macos-ios/keychain-example.png)
 
-有关详细信息，请参阅[钥匙串组](howto-v2-keychain-objc.md)。
+有关详细信息，请参阅[密钥链组](howto-v2-keychain-objc.md)。
 
 ## <a name="configure-the-application-object"></a>配置应用程序对象
 
@@ -141,7 +141,7 @@ do {
 
 ## <a name="sso-through-authentication-broker-on-ios"></a>在 iOS 上通过身份验证中介实现 SSO
 
-MSAL 通过 Microsoft Authenticator 提供中介身份验证支持。 Microsoft 身份验证器为 AAD 注册设备提供 SSO，还可帮助您的应用程序遵循条件访问策略。
+MSAL 通过 Microsoft Authenticator 提供中介身份验证支持。 Microsoft Authenticator 为 AAD 注册的设备提供 SSO，还可以帮助你的应用程序遵循条件性访问策略。
 
 以下步骤说明如何使用身份验证中介为应用启用 SSO：
 

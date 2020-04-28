@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/27/2017
 ms.openlocfilehash: 918516a5629f8570d54c641ffc29f2367937266f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74792370"
 ---
 # <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中解码 X12 消息
@@ -24,7 +24,7 @@ ms.locfileid: "74792370"
 下面是需要准备好的项：
 
 * Azure 帐户；可以创建[免费帐户](https://azure.microsoft.com/free)
-* 已定义并与 Azure 订阅关联的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)。 必须拥有集成帐户，才能使用解码 X12 消息连接器。
+* 已定义的、与 Azure 订阅关联的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)。 必须拥有集成帐户，才能使用解码 X12 消息连接器。
 * 已在集成帐户中至少定义了两个[合作伙伴](logic-apps-enterprise-integration-partners.md)
 * 已在集成帐户中定义了 [X12 协议](logic-apps-enterprise-integration-x12.md)
 
@@ -34,7 +34,7 @@ ms.locfileid: "74792370"
 
 2. 解码 X12 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加触发器，然后将操作添加到逻辑应用。
 
-3.  在搜索框中，输入“x12”作为筛选器。 选择**X12 - 解码 X12 消息**。
+3.  在搜索框中，输入“x12”作为筛选器。 选择“X12 - 解码 X12 消息”。 
    
     ![搜索“x12”](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage1.png)  
 
@@ -49,7 +49,7 @@ ms.locfileid: "74792370"
     | 连接名称 * |为连接输入任何名称。 |
     | 集成帐户 * |输入集成帐户的名称。 确保集成帐户和逻辑应用位于同一 Azure 位置。 |
 
-5.  完成后，连接详细信息应如此示例所示。 若要完成连接创建，请选择“创建”****。
+5.  完成后，连接详细信息应如此示例所示。 若要完成连接创建，请选择“创建”  。
    
     ![集成帐户连接详细信息](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage5.png) 
 
@@ -103,5 +103,5 @@ X12 解码连接器执行以下任务：
 请参阅 [Swagger 详细信息](/connectors/x12/)。 
 
 ## <a name="next-steps"></a>后续步骤
-[了解有关 Enterprise Integration Pack 的详细信息](../logic-apps/logic-apps-enterprise-integration-overview.md "了解企业集成包") 
+[了解有关 Enterprise Integration Pack 的详细信息](../logic-apps/logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack") 
 

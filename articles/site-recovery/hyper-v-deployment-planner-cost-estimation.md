@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: bced6a9e6c59dc32657dbabef986e29e0447b28b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60947184"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery 部署规划器成本估算报表 
@@ -56,7 +56,7 @@ Azure Site Recovery 部署规划器报表以[建议](hyper-v-deployment-planner-
 
 **网络**：符合 DR 需要的 ExpressRoute 和站点到站点 VPN 成本。 
 
-**Azure 站点恢复许可证**：所有兼容 VM 的站点恢复许可证成本。 如果在详细的成本分析表中手动输入了一个 VM，则还会包括该 VM 的 Site Recovery 许可证成本。
+**Azure Site Recovery 许可证**：所有兼容 vm 的 Site Recovery 许可证成本。 如果在详细的成本分析表中手动输入了一个 VM，则还会包括该 VM 的 Site Recovery 许可证成本。
 
 ### <a name="overall-dr-costs-by-states"></a>按状态估算的总体 DR 成本
 总 DR 成本按两种不同的状态（“复制”和“DR 演练”）分类。
@@ -78,7 +78,7 @@ Azure Site Recovery 部署规划器报表以[建议](hyper-v-deployment-planner-
 
 **VPN 网关类型**：选择 Azure VPN 网关（如果环境中有）。 默认为不可用。
 
-**目标区域**：为 DR 指定的 Azure 区域。 报表中使用的计算、存储、网络和许可证价格基于该区域的 Azure 定价。 
+**目标区域**：指定用于 DR 的 Azure 区域。 报表中使用的计算、存储、网络和许可证价格基于该区域的 Azure 定价。 
 
 ### <a name="vm-running-on-azure"></a>在 Azure 上运行的 VM
 也许你有一个域控制器、DNS VM 或 SQL Server VM，其 Always On 可用性组在适用于 DR 的 Azure 上运行。 在考虑总 DR 成本中的计算成本时，可以提供 VM 的数目和大小。 
@@ -90,7 +90,7 @@ Azure Site Recovery 部署规划器报表以[建议](hyper-v-deployment-planner-
 此表显示 Windows 和非 Windows VM 数及其 DR 演练计算成本。
 
 ### <a name="settings"></a>设置 
-**使用托管磁盘**：此设置指定是否在 DR 演练时使用托管磁盘。 默认值为 **"是**"。 如果已将 **-UseManagedDisks** 设置为“No”，则会使用非托管磁盘价格来计算成本。****
+**使用托管磁盘**：此设置指定是否在 DR 演练时使用托管磁盘。 默认值为 **"是"**。 如果已将 **-UseManagedDisks** 设置为“No”，则会使用非托管磁盘价格来计算成本。****
 
 **货币**：生成报表时使用的货币。
 
@@ -107,19 +107,19 @@ Azure Site Recovery 部署规划器报表以[建议](hyper-v-deployment-planner-
 
 1. 根据与此配置相符的大致 VM 大小和 VM 数填充以下列： 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **VM 数量**
+    a. **Vm 数**
 
-    b.保留“数据库类型”设置，即设置为“共享”。 **IaaS 大小（您的选择）**
+    b. **IaaS 大小（你的选择）**
 
     c. **存储类型(标准/高级)**
 
-    d.单击“下一步”。 **VM 总存储大小(GB)**
+    d. **VM 总存储大小(GB)**
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 **一年中的 DR-钻头数量**
+    e. **一年的 DR 演练次数**
 
-    f. **每个 DR 钻取持续时间（天）**
+    f. **每次 DR 演练的持续时间（天）**
 
-    g. **操作系统类型**
+    g. **OS 类型**
 
     h. **数据冗余**
 
@@ -149,7 +149,7 @@ Azure Site Recovery 部署规划器报表以[建议](hyper-v-deployment-planner-
 
 **数据冗余**：可以是本地冗余存储、异地冗余存储或读取访问异地冗余存储。 默认为本地冗余存储。 可以根据特定 VM 的存储帐户来更改类型，也可以将新类型应用到所有 VM。 更改顶部行的类型，然后选择“应用到所有项”。**** 根据所选数据冗余的价格来计算复制的存储成本。 
 
-**Azure 混合使用权益**：可以在适用情况下将 Azure 混合使用权益应用到 Windows VM。 默认值为 **"是**"。 可以更改特定 VM 的设置，也可以更新所有 VM。 选择“应用到所有项”。****
+**Azure 混合使用权益**：可以在适用情况下将 Azure 混合使用权益应用到 Windows VM。 默认值为 **"是"**。 可以更改特定 VM 的设置，也可以更新所有 VM。 选择“应用到所有项”。****
 
 **总 Azure 使用量**：用于 DR 的计算、存储和 Site Recovery 许可证成本。 此项会根据你的选择显示每月或每年的成本。
 
@@ -157,7 +157,7 @@ Azure Site Recovery 部署规划器报表以[建议](hyper-v-deployment-planner-
 
 **总 DR 演练成本(平均)**：DR 演练的计算和存储成本。
 
-**Azure 站点恢复许可证成本**：站点恢复许可证成本。
+**Azure Site Recovery 许可证成本**： Site Recovery 许可成本。
 
 ## <a name="supported-target-regions"></a>支持的目标区域
 Site Recovery 部署规划器为以下 Azure 区域提供成本估算。 如果你的区域没有列在这下面，可以使用定价最接近你的区域的任何区域：
@@ -167,7 +167,7 @@ eastus、eastus2、westus、centralus、northcentralus、southcentralus、northe
 ## <a name="supported-currencies"></a>支持的货币
 Site Recovery 部署规划器可以使用以下任何货币生成成本报表。
 
-|货币|“属性”||货币|“属性”||货币|“属性”|
+|货币|名称||货币|名称||货币|名称|
 |---|---|---|---|---|---|---|---|
 |ARS|阿根廷比索 ($)||AUD|澳大利亚元 ($)||BRL|巴西雷亚尔 (R$)|
 |CAD|加拿大元 ($)||CHF|瑞士法郎 (chf)||DKK|丹麦克朗 (kr)|

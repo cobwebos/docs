@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: b4d78b339bab02b5c44a31939e0da769dc21c3ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75452164"
 ---
 # <a name="throttling-the-service-fabric-cluster-resource-manager"></a>限制 Service Fabric 群集资源管理器
@@ -84,4 +84,4 @@ Service Fabric 具有两种机制用于限制副本移动数。 Service Fabric 5
 
 ## <a name="next-steps"></a>后续步骤
 - 若要了解群集 Resource Manager 如何管理和均衡群集中的负载，请查看有关[平衡负载](service-fabric-cluster-resource-manager-balancing.md)的文章
-- 群集 Resource Manager 提供许多用于描述群集的选项。 要了解有关它们的更多，请查看本文介绍[服务结构群集](service-fabric-cluster-resource-manager-cluster-description.md)
+- 群集 Resource Manager 提供许多用于描述群集的选项。 若要详细了解这些选项，请查看这篇[介绍 Service Fabric 群集](service-fabric-cluster-resource-manager-cluster-description.md)的文章

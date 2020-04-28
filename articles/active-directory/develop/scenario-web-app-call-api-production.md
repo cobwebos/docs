@@ -12,13 +12,13 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 6404d00b87b9ee745b9e3a92c646404e574417c1
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80881655"
 ---
-# <a name="a-web-app-that-calls-web-apis-move-to-production"></a>调用 Web API 的 Web 应用：移动到生产
+# <a name="a-web-app-that-calls-web-apis-move-to-production"></a>调用 Web API 的 Web 应用：移到生产环境
 
 现在你已了解如何获取用于调用 Web API 的令牌，接下来了解如何移到生产环境。
 
@@ -35,7 +35,7 @@ ms.locfileid: "80881655"
 - 调用自己的 Web API。
 
 > [!div class="nextstepaction"]
-> [ASP.NET核心网络应用教程](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial#scope-of-this-tutorial)
+> [ASP.NET Core Web 应用教程](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial#scope-of-this-tutorial)
 
 <!--- Removing this diagram as it's already shown from the next step linked tutorial
 

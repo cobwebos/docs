@@ -1,5 +1,5 @@
 ---
-title: 使用可视化工作室（ASP.NET核心）开始使用表存储
+title: 使用 Visual Studio （ASP.NET Core）开始使用表存储
 description: 在使用 Visual Studio 连接服务连接到存储帐户后，如何开始在 Visual Studio 的 ASP.NET Core 项目中使用 Azure 表存储
 services: storage
 author: ghogen
@@ -14,19 +14,19 @@ ms.date: 11/14/2017
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: d209f8117b1e061877daf2f8d316bd01ed4f84cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72298810"
 ---
 # <a name="how-to-get-started-with-azure-table-storage-and-visual-studio-connected-services"></a>如何开始使用 Azure 表存储和 Visual Studio 连接服务
 
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
-本文介绍通过使用 Visual Studio 中的“连接服务”**** 功能在 ASP.NET Core 项目中创建或引用 Azure 存储帐户之后，如何开始在 Visual Studio 中使用 Azure 表存储。 执行“连接服务”**** 操作会安装相应的 NuGet 程序包，以访问项目中的 Azure 存储，并将存储帐户的连接字符串添加到项目配置文件中。 （有关 Azure 存储的一般信息，请参阅[存储文档](https://azure.microsoft.com/documentation/services/storage/)。
+本文介绍通过使用 Visual Studio 中的“连接服务”**** 功能在 ASP.NET Core 项目中创建或引用 Azure 存储帐户之后，如何开始在 Visual Studio 中使用 Azure 表存储。 执行“连接服务”**** 操作会安装相应的 NuGet 程序包，以访问项目中的 Azure 存储，并将存储帐户的连接字符串添加到项目配置文件中。 （有关 Azure 存储的常规信息，请参阅[存储文档](https://azure.microsoft.com/documentation/services/storage/)。）
 
-Azure 表存储服务使用户可以存储大量结构化数据。 该服务是一个 NoSQL 数据存储，接受来自 Azure 云内部和外部的通过验证的呼叫。 Azure 表最适合存储结构化非关系型数据。 有关使用 Azure 表存储的更多常规信息，请参阅[使用 .NET 开始使用 Azure 表存储](../storage/storage-dotnet-how-to-use-tables.md)。
+Azure 表存储服务使用户可以存储大量结构化数据。 该服务是一个 NoSQL 数据存储，接受来自 Azure 云内部和外部的通过验证的呼叫。 Azure 表最适合存储结构化非关系型数据。 有关使用 Azure 表存储的更多常规信息，请参阅[通过 .net 开始使用 Azure 表存储](../storage/storage-dotnet-how-to-use-tables.md)。
 
 若要开始，首先在你的存储帐户中创建一个表。 然后本文将演示如何运用 C# 创建表，以及如何执行基本的表操作，如添加、修改、读取和删除表项。  代码使用适用于 .NET 的 Azure 存储客户端库。 有关 ASP.NET 的详细信息，请参阅 [ASP.NET](https://www.asp.net)。
 

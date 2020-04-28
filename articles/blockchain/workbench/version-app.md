@@ -1,19 +1,19 @@
 ---
-title: 区块链应用版本控制 - Azure 区块链工作台
-description: 如何在 Azure 区块链工作台预览中使用应用程序版本。
+title: 区块链应用版本控制-Azure 区块链工作台
+description: 如何在 Azure 区块链工作台预览版中使用应用程序版本。
 ms.date: 11/20/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: 45219790cf0cd064e0fcd456e262b2f93aa03ac9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74323915"
 ---
-# <a name="azure-blockchain-workbench-preview-application-versioning"></a>Azure 区块链工作台预览应用程序版本控制
+# <a name="azure-blockchain-workbench-preview-application-versioning"></a>Azure 区块链工作台预览版应用程序版本控制
 
-您可以创建和使用 Azure 区块链工作台预览应用的多个版本。 如果上传了同一应用程序的多个版本，则会提供版本历史记录并且用户可以选择要使用哪个版本。
+你可以创建和使用 Azure 区块链工作台预览应用的多个版本。 如果上传了同一应用程序的多个版本，则会提供版本历史记录并且用户可以选择要使用哪个版本。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

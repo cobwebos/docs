@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
 ms.openlocfilehash: b34fdc36bd0b1ce294a92b2ae8fa5da01568e5a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74787363"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用调用 REST 终结点
@@ -22,7 +22,7 @@ ms.locfileid: "74787363"
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* 描述目标 REST 终结点的斯瓦格（非 OpenAPI）文件的 URL
+* 用于描述目标 REST 终结点的 Swagger（非 OpenAPI）文件的 URL
 
   通常，REST 终结点必须符合此条件，才能让连接器正常工作：
 
@@ -42,15 +42,15 @@ ms.locfileid: "74787363"
 
 此内置触发器将一个 HTTP 请求发送到用于描述 REST API 的 Swagger 文件的 URL，并返回包含该文件的内容的响应。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。 在逻辑应用设计器中打开空白逻辑应用。
+1. 登录到 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开空白逻辑应用。
 
-1. 在设计器的搜索框中，输入“swagger”作为筛选器。 在“触发器”列表中选择“HTTP + Swagger”触发器。********
+1. 在设计器的搜索框中，输入“swagger”作为筛选器。 在“触发器”列表中选择“HTTP + Swagger”触发器。  
 
    ![选择 HTTP + Swagger 触发器](./media/connectors-native-http-swagger/select-http-swagger-trigger.png)
 
-1. 在“SWAGGER 终结点 URL”框中，输入 Swagger 文件的 URL，然后选择“下一步”。********
+1. 在“SWAGGER 终结点 URL”框中，输入 Swagger 文件的 URL，然后选择“下一步”。  
 
-   此示例使用位于美国西部区域的 Swagger URL 用于[认知服务面部 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)：
+   此示例使用位于美国西部区域的 Swagger URL 来[人脸 API 认知服务](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)：
 
    `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
@@ -62,35 +62,35 @@ ms.locfileid: "74787363"
 
 1. 提供要包含在终结点调用中的触发器参数的值（根据所选的操作而异）。 设置重复周期，以确定触发器调用终结点的频率。
 
-   本示例将触发器重命名为"HTTP + 摇摆触发器：面 - 检测"，以便步骤具有更具描述性的名称。
+   此示例将触发器重命名为“HTTP + Swagger trigger:Face - Detect”，使步骤名称更具描述性。
 
    ![操作详细信息](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
 
-1. 若要添加其他可用参数，请打开“添加新参数”列表，并选择所需的参数。****
+1. 若要添加其他可用参数，请打开“添加新参数”列表，并选择所需的参数。 
 
-   有关可用于 HTTP + 斯瓦格的身份验证类型的详细信息，请参阅[将身份验证添加到出站调用](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
+   有关 HTTP + Swagger 可用的身份验证类型的详细信息，请参阅[向出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
 
 1. 继续使用触发器激发时运行的操作生成逻辑应用的工作流。
 
-1. 完成后，请记得保存逻辑应用。 在设计器工具栏上，选择“保存”****。
+1. 完成后，请记得保存逻辑应用。 在设计器工具栏上选择“保存”。 
 
 ## <a name="add-an-http--swagger-action"></a>添加 HTTP + Swagger 操作
 
 此内置操作对用于描述 REST API 的 Swagger 文件的 URL 发出一个 HTTP 请求，并返回包含该文件的内容的响应。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。 在逻辑应用设计器中打开逻辑应用。
+1. 登录到 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开逻辑应用。
 
-1. 在要添加 HTTP + Swagger 操作的步骤下，选择“新建步骤”。****
+1. 在要添加 HTTP + Swagger 操作的步骤下，选择“新建步骤”。 
 
-   若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 选择显示的加号**+**（），然后选择 **"添加操作**"。
+   若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 选择出现的加号 ( **+** )，然后选择“添加操作”。 
 
-1. 在设计器的搜索框中，输入“swagger”作为筛选器。 在“操作”列表中选择“HTTP + Swagger”操作。********
+1. 在设计器的搜索框中，输入“swagger”作为筛选器。 在“操作”列表中选择“HTTP + Swagger”操作。  
 
     ![选择 HTTP + Swagger 操作](./media/connectors-native-http-swagger/select-http-swagger-action.png)
 
-1. 在“SWAGGER 终结点 URL”框中，输入 Swagger 文件的 URL，然后选择“下一步”。********
+1. 在“SWAGGER 终结点 URL”框中，输入 Swagger 文件的 URL，然后选择“下一步”。  
 
-   此示例使用位于美国西部区域的 Swagger URL 用于[认知服务面部 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)：
+   此示例使用位于美国西部区域的 Swagger URL 来[人脸 API 认知服务](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)：
 
    `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
@@ -102,15 +102,15 @@ ms.locfileid: "74787363"
 
 1. 提供要包含在终结点调用中的操作参数的值（根据所选的操作而异）。
 
-   此示例没有参数，但将操作重命名为"HTTP + 摇摆操作：面 - 识别"，以便步骤具有更具描述性的名称。
+   此示例未使用参数，而是将操作重命名为“HTTP + Swagger action:Face - Identify”，使步骤名称更具描述性。
 
    ![操作详细信息](./media/connectors-native-http-swagger/http-swagger-action-operation-details.png)
 
-1. 若要添加其他可用参数，请打开“添加新参数”列表，并选择所需的参数。****
+1. 若要添加其他可用参数，请打开“添加新参数”列表，并选择所需的参数。 
 
-   有关可用于 HTTP + 斯瓦格的身份验证类型的详细信息，请参阅[将身份验证添加到出站调用](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
+   有关 HTTP + Swagger 可用的身份验证类型的详细信息，请参阅[向出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
 
-1. 完成后，请记得保存逻辑应用。 在设计器工具栏上，选择“保存”****。
+1. 完成后，请记得保存逻辑应用。 在设计器工具栏上选择“保存”。 
 
 <a name="host-swagger"></a>
 
@@ -120,20 +120,20 @@ ms.locfileid: "74787363"
 
 1. [创建 Azure 存储帐户](../storage/common/storage-create-storage-account.md)。
 
-1. 现在，为 Blob 启用 CORS。 在存储帐户的菜单中选择“CORS”。**** 在“Blob 服务”选项卡上指定值，然后选择“保存”。********
+1. 现在，为 Blob 启用 CORS。 在存储帐户的菜单中选择“CORS”。  在“Blob 服务”选项卡上指定值，然后选择“保存”。  
 
-   | properties | “值” |
+   | 属性 | Value |
    |----------|-------|
-   | **允许的域** | `*` |
-   | **允许的方法** | `GET`, `HEAD`, `PUT` |
-   | **允许的标题** | `*` |
-   | **公开的标题** | `*` |
+   | **允许的源** | `*` |
+   | **允许的方法** | `GET`、`HEAD`、`PUT` |
+   | **允许的标头** | `*` |
+   | **公开的标头** | `*` |
    | **最大期限**（以秒为单位） | `200` |
    |||
 
    此示例使用 [Azure 门户](https://portal.azure.com)，不过，你也可以使用 [Azure 存储资源管理器](https://storageexplorer.com/)之类的工具，或使用此示例 [PowerShell 脚本](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1)自动配置此设置。
 
-1. [创建 blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md)。 在容器的“概述”窗格中，选择“更改访问级别”。******** 在“公共访问级别”列表中，选择“Blob (仅限对 Blob 进行匿名读取访问)”，然后选择“确定”。************
+1. [创建 Blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md)。 在容器的“概述”窗格中，选择“更改访问级别”。   在“公共访问级别”列表中，选择“Blob (仅限对 Blob 进行匿名读取访问)”，然后选择“确定”。   
 
 1. 通过 [Azure 门户](https://portal.azure.com)或 [Azure 存储资源管理器](https://storageexplorer.com/)[将 Swagger 文件上传到 Blob容器](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob)。
 
@@ -147,12 +147,12 @@ ms.locfileid: "74787363"
 
 | 属性名称 | 类型 | 说明 |
 |---------------|------|-------------|
-| headers | 对象 (object) | 请求中的标头 |
-| body | 对象 (object) | JSON 对象 | 包含请求中正文内容的对象 |
+| headers | object | 请求中的标头 |
+| body | object | JSON 对象 | 包含请求中正文内容的对象 |
 | 状态代码 | int | 请求中的状态代码 |
 |||
 
-| 状态代码 | 描述 |
+| 状态代码 | 说明 |
 |-------------|-------------|
 | 200 | OK |
 | 202 | 已接受 |

@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.custom: mvc
 ms.openlocfilehash: f3f8693d1a9a12e7c35d126ab3e3ca53448e5e40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74533658"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure 容器实例和容器协调器
@@ -52,7 +52,7 @@ Azure 容器实例支持分层的协调方法，提供全部所需的调度和�
 
 ## <a name="sample-implementation-virtual-nodes-for-azure-kubernetes-service-aks"></a>示例实现：Azure Kubernetes 服务 (AKS) 的虚拟节点
 
-可以使用在 Azure 容器实例中动态创建的虚拟节点，来快速缩放 [Azure Kubernetes 服务](../aks/intro-kubernetes.md) (AKS) 群集中的应用程序工作负载。** ACI 和 AKS 群集中运行的 Pod 可以借助虚拟节点进行网络通信。 
+可以使用在 Azure 容器实例中动态创建的虚拟节点，来快速缩放 [Azure Kubernetes 服务](../aks/intro-kubernetes.md) (AKS) 群集中的应用程序工作负载。  ACI 和 AKS 群集中运行的 Pod 可以借助虚拟节点进行网络通信。 
 
 目前虚拟节点支持 Linux 容器实例。 可通过 [Azure CLI](https://go.microsoft.com/fwlink/?linkid=2047538) 或 [Azure门户](https://go.microsoft.com/fwlink/?linkid=2047545)开始使用虚拟节点。
 

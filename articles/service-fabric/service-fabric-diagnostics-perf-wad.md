@@ -1,15 +1,15 @@
 ---
-title: 使用 Windows Azure 诊断进行性能监视
+title: 使用 Windows Azure 诊断监视性能
 description: 使用 Windows Azure 诊断来收集有关 Azure Service Fabric 群集的性能计数器。
 author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 0819ca02d088aeb9ada5de1269467f70242bbcca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75609904"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>使用 Windows Azure 诊断扩展进行性能监视
@@ -189,9 +189,9 @@ ms.locfileid: "75609904"
     New-AzResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
-1. 升级完成后（需要 15-45 分钟，具体取决于是否为首次部署以及资源组的大小），WAD 应收集性能计数器，并将其发送到与群集关联的存储帐户中的 WADPerformanceCountersTable 表中。 通过将[AI Sink 添加到资源管理器模板，](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)在应用程序见解中查看性能计数器。
+1. 升级完成后（需要 15-45 分钟，具体取决于是否为首次部署以及资源组的大小），WAD 应收集性能计数器，并将其发送到与群集关联的存储帐户中的 WADPerformanceCountersTable 表中。 通过[将 AI 接收器添加到资源管理器模板](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)，在 Application Insights 中查看性能计数器。
 
 ## <a name="next-steps"></a>后续步骤
 * 收集群集的更多性能计数器。 有关应收集的计数器列表，请参阅[性能指标](service-fabric-diagnostics-event-generation-perf.md)。
 * [将监视和诊断与 Windows VM 和 Azure 资源管理器模板配合使用](../virtual-machines/windows/extensions-diagnostics-template.md)，以进一步修改 `WadCfg`，包括配置向其发送诊断数据的其他存储帐户。
-* 访问[WadCfg 生成器](https://azure.github.io/azure-diagnostics-tools/config-builder/)，从头开始构建模板，并确保语法正确。（https://azure.github.io/azure-diagnostics-tools/config-builder/)从头开始构建模板，并确保语法正确。
+* 请访问[diagnostics.wadcfg 生成器](https://azure.github.io/azure-diagnostics-tools/config-builder/)，从头开始生成模板，并确保语法正确。（https://azure.github.io/azure-diagnostics-tools/config-builder/)若要从头开始生成模板，请确保语法正确。

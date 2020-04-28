@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 站点恢复运行 VMware 灾难恢复的部署规划器
+title: 运行部署规划器，通过 Azure Site Recovery 运行 VMware 灾难恢复
 description: 本文介绍如何运行用于从 VMware 灾难恢复到 Azure 的 Azure Site Recovery 部署规划器。
 author: mayurigupta13
 manager: rochakm
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: mayg
 ms.openlocfilehash: 044e5c5df8e0af67e4717b864de1e31fc2520408
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73953283"
 ---
-# <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>运行 VMware 灾难恢复的部署计划
+# <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>为 VMware 灾难恢复运行部署规划器
 本文为适用于 VMware 到 Azure 生产部署的 Azure Site Recovery Deployment Planner 用户指南。
 
 
@@ -65,7 +65,7 @@ ms.locfileid: "73953283"
 ASRDeploymentPlanner.exe -Operation StartProfiling /?
 ```
 
-| 参数名称 | 描述 |
+| 参数名称 | 说明 |
 |---|---|
 | -Operation | StartProfiling |
 | -Server | 要分析其 VM 的 vCenter 服务器/vSphere ESXi 主机的完全限定域名或 IP 地址。|
@@ -145,7 +145,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Direc
 
 `ASRDeploymentPlanner.exe -Operation GenerateReport /?`
 
-|参数名称 | 描述 |
+|参数名称 | 说明 |
 |-|-|
 | -Operation | GenerateReport |
 | -Server |  vCenter/vSphere 服务器完全限定域名或 IP 地址（使用的名称或 IP 地址与分析时使用的相同），其中包含需要生成其报告的已分析 VM。 请注意，如果在分析时使用了 vCenter 服务器，则不能使用 vSphere 服务器来生成报告，反之亦然。|
@@ -159,11 +159,11 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Direc
 |-Protocol|（可选）用于连接到 vCenter 的指定协议，即“http”或“https”。 默认协议为 https。|
 | -DesiredRPO | （可选）以分钟为单位的所需恢复点目标。 默认值为 15 分钟。|
 | -Bandwidth | 以 Mbps 为单位的带宽。 一个参数，用于计算指定的带宽可实现的 RPO。 |
-| -StartDate | （可选）采用 MM-DD-YYYY:HH:MM 格式（24 小时制）的开始日期和时间。 “StartDate”必须与“EndDate”一起指定。**** 如果指定 StartDate，会根据从 StartDate 到 EndDate 收集的分析数据生成报告。 |
-| -EndDate | （可选）采用 MM-DD-YYYY:HH:MM 格式（24 小时制）的结束日期和时间。 “EndDate”必须与“StartDate”一起指定。**** 如果指定 EndDate，会根据从 StartDate 到 EndDate 收集的分析数据生成报告。 |
+| -StartDate | （可选）采用 MM-DD-YYYY:HH:MM 格式（24 小时制）的开始日期和时间。 “StartDate”必须与“EndDate”一起指定。   如果指定 StartDate，会根据从 StartDate 到 EndDate 收集的分析数据生成报告。 |
+| -EndDate | （可选）采用 MM-DD-YYYY:HH:MM 格式（24 小时制）的结束日期和时间。 “EndDate”必须与“StartDate”一起指定。   如果指定 EndDate，会根据从 StartDate 到 EndDate 收集的分析数据生成报告。 |
 | -GrowthFactor | （可选）增长系数，以百分比表示。 默认值为 30%。 |
 | -UseManagedDisks | （可选）UseManagedDisks - 是/否。 默认值为“是”。 计算可放置到单个存储帐户中的虚拟机数量时要考虑到：对虚拟机进行的故障转移/测试性故障转移是在托管磁盘而不是非托管磁盘上完成的。 |
-|-SubscriptionId |（可选）订阅 GUID。 请注意，当你需要根据订阅、与订阅相关联的套餐使用“指定的货币”**** 中的特定目标 Azure 区域的最新价格生成成本估算报告时，此参数是必需的。|
+|-SubscriptionId |（可选）订阅 GUID。 请注意，当你需要根据订阅、与订阅相关联的套餐使用“指定的货币”  中的特定目标 Azure 区域的最新价格生成成本估算报告时，此参数是必需的。|
 |-TargetRegion|（可选）充当复制目标的 Azure 区域。 由于 Azure 的成本因区域而异，因此可使用此参数来生成特定目标 Azure 区域的报表。<br>默认值为 WestUS2 或上次使用的目标区域。<br>请参阅[支持的目标区域](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-target-regions)的列表。|
 |-OfferId|（可选）与给定订阅关联的套餐。 默认值为 MS-AZR-0003P（即用即付）。|
 |-Currency|（可选）在生成的报表中显示的成本所采用的货币。 默认为美元 ($) 或上次使用的货币。<br>请参阅[支持的货币](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-currencies)的列表。|
@@ -242,7 +242,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Dire
 
 * [本地摘要](site-recovery-vmware-deployment-planner-analyze-report.md#on-premises-summary)
 * [建议](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations)
-* [VM<->存储放置](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement)
+* [VM<->存储位置](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement)
 * [兼容的 VM](site-recovery-vmware-deployment-planner-analyze-report.md#compatible-vms)
 * [不兼容的 VM](site-recovery-vmware-deployment-planner-analyze-report.md#incompatible-vms)
 * [成本估算](site-recovery-vmware-deployment-planner-cost-estimation.md)
@@ -257,7 +257,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Dire
 
 `ASRDeploymentPlanner.exe -Operation GetThroughput /?`
 
-|参数名称 | 描述 |
+|参数名称 | 说明 |
 |-|-|
 | -Operation | GetThroughput |
 |-Virtualization|指定虚拟化类型（VMware 或 Hyper-V）。|

@@ -1,20 +1,20 @@
 ---
-title: 与 Java 的安全服务远程通信
+title: 使用 Java 保护服务远程处理通信
 description: 了解如何保护 Azure Service Fabric 群集中运行的 Java 可靠服务的基于服务远程处理的通信。
 author: PavanKunapareddyMSFT
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: pakunapa
 ms.openlocfilehash: adefeadf939d398268624343d82c18cbf5ec87cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75609632"
 ---
 # <a name="secure-service-remoting-communications-in-a-java-service"></a>保护 Java 服务的服务远程处理通信
 > [!div class="op_single_selector"]
-> * [C# 在 Windows 上](service-fabric-reliable-services-secure-communication.md)
+> * [Windows 上的 C#](service-fabric-reliable-services-secure-communication.md)
 > * [Linux 上的 Java](service-fabric-reliable-services-secure-communication-java.md)
 >
 >
@@ -23,7 +23,7 @@ ms.locfileid: "75609632"
 
 若要在 Java 服务中使用服务远程处理时帮助保护服务，请遵循以下步骤：
 
-1. 创建接口 `HelloWorldStateless`，用于定义可供服务的远程过程调用使用的方法。 服务将使用 `microsoft.serviceFabric.services.remoting.fabricTransport.runtime` 包中声明的 `FabricTransportServiceRemotingListener`。 这是可以提供远程处理功能的 `CommunicationListener` 实现。
+1. 创建接口 `HelloWorldStateless`，用于定义可供服务的远程过程调用使用的方法。 服务将使用 `FabricTransportServiceRemotingListener` 包中声明的 `microsoft.serviceFabric.services.remoting.fabricTransport.runtime`。 这是可以提供远程处理功能的 `CommunicationListener` 实现。
 
     ```java
     public interface HelloWorldStateless extends Service {

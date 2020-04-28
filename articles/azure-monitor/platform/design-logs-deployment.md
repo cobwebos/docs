@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: e493b07814821496f941a4b81402ba0b49acbede
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7cc2b7871c7141a0e466bf8620351c5beed0c684
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248822"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82165682"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>设计 Azure Monitor 日志部署
 
@@ -25,7 +25,7 @@ Log Analytics 工作区可提供：
 
 * 数据存储的地理位置。
 * 遵循建议的设计策略之一授予不同的用户访问权限，以实现数据隔离。
-* 设置（如[定价层](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier)、[保留和](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)[数据上限](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#manage-your-maximum-daily-data-volume)）的配置范围。
+* 设置配置的范围，例如[定价层级](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier)、[保留期](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)和[数据上限](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#manage-your-maximum-daily-data-volume)。
 
 本文提供设计和迁移注意事项的详细概述、访问控制概述，我们为 IT 组织推荐的设计实施方案的介绍。
 
@@ -41,9 +41,9 @@ Log Analytics 工作区可提供：
 
 当今的 IT 组织会遵循集中式、分散式或介于两者之间的混合结构建模。 因此，经常使用以下工作区部署模型映射到其中一个组织结构：
 
-* **集中式**：所有日志都存储在中央工作区中，由单个团队管理，Azure 监视器提供每个团队的不同访问。 在此方案中，可以轻松管理和搜索各个资源，以及交叉关联日志。 根据从订阅中的多个资源收集的数据量，工作区可能会明显增大，对不同的用户保持访问控制会增大管理开销。 此模型称为"集线器和分支"。
-* **分散**：每个团队都有自己自己拥有和管理的资源组中创建的工作区，并且日志数据按资源隔离。 在此方案中，工作区可以保持安全性，访问控制与资源访问权限保持一致，但难以交叉关联日志。 需要大范围查看多种资源的用户无法以有效的方式分析数据。
-* **混合**：安全审核合规性要求使此方案更加复杂，因为许多组织并行实现两种部署模型。 这通常会导致复杂、大开销且难以维护的配置，并使日志覆盖范围出现差异。
+* **集中式**：所有日志存储在中心工作区并由单个团队进行管理，Azure Monitor 为每个团队提供差异访问权限。 在此方案中，可以轻松管理和搜索各个资源，以及交叉关联日志。 根据从订阅中的多个资源收集的数据量，工作区可能会明显增大，对不同的用户保持访问控制会增大管理开销。 此模型称为“中心和分支”。
+* **分散式**：每个团队在其拥有和管理的资源组中创建自己的工作区，日志数据按资源隔离。 在此方案中，工作区可以保持安全性，访问控制与资源访问权限保持一致，但难以交叉关联日志。 需要大范围查看多种资源的用户无法以有效的方式分析数据。
+* **混合**：安全审核合规性要求进一步使此方案变得复杂，因为许多组织同时实施这两种部署模型。 这通常会导致复杂、大开销且难以维护的配置，并使日志覆盖范围出现差异。
 
 使用 Log Analytics 代理收集数据时，需要了解以下各项以规划代理部署：
 
@@ -52,7 +52,7 @@ Log Analytics 工作区可提供：
 
 如果使用 System Center Operations Manager 2012 R2 或更高版本：
 
-* 每个操作管理器管理组只能[连接到一个工作区](../platform/om-agents.md)。 
+* 每个 Operations Manager 管理组只能[连接到一个工作区](../platform/om-agents.md)。 
 * 向管理组报告的 Linux 计算机必须配置为直接向 Log Analytics 工作区报告。 如果 Linux 计算机已直接向工作区报告，而你想要使用 Operations Manager 来监视这些计算机，请遵循[向 Operations Manager 管理组报告](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group)的步骤。 
 * 可以在 Windows 计算机上安装 Log Analytics Windows 代理，并使其向与某个工作区集成的 Operations Manager 以及另一个工作区报告。
 
@@ -62,7 +62,7 @@ Log Analytics 工作区可提供：
 
 用户有权访问的数据由下表中列出的因素组合决定。 后续部分会描述每种因素。
 
-| 因素 | 描述 |
+| 因素 | 说明 |
 |:---|:---|
 | [访问模式](#access-mode) | 用户访问工作区的方法。  定义可用数据的范围，以及应用的访问控制模式。 |
 | [访问控制模式](#access-control-mode) | 工作区中的设置，用于定义是要在工作区级别还是资源级别应用权限。 |
@@ -75,11 +75,11 @@ Log Analytics 工作区可提供：
 
 用户可通过两个选项访问数据：
 
-* **工作区上下文**：您可以查看工作区中所有您有权使用的所有日志。 在此模式下，只能查询该工作区中所有表内的所有数据。 使用工作区作为范围来访问日志时（例如，在 Azure 门户上的“Azure Monitor”菜单中选择“日志”时），将使用此访问模式********。
+* **工作区-上下文**：你可以查看拥有权限的工作区中的所有日志。 在此模式下，只能查询该工作区中所有表内的所有数据。 使用工作区作为范围来访问日志时（例如，在 Azure 门户上的“Azure Monitor”菜单中选择“日志”时），将使用此访问模式********。
 
     ![工作区中的 Log Analytics 上下文](./media/design-logs-deployment/query-from-workspace.png)
 
-* **资源上下文**：当您访问特定资源、资源组或订阅的工作区时（例如，当您从 Azure 门户中的资源菜单中选择 **"日志"** 时，只能查看有权访问的所有表中的资源的日志。 在此模式下，只能查询与该资源关联的数据。 此模式还支持粒度 RBAC。
+* **资源上下文**：当你访问特定资源、资源组或订阅的工作区时，例如，当你从 Azure 门户中的资源菜单中选择**日志**时，只能查看你有权访问的所有表中的资源的日志。 在此模式下，只能查询与该资源关联的数据。 此模式还支持粒度 RBAC。
 
     ![资源中的 Log Analytics 上下文](./media/design-logs-deployment/query-from-resource.png)
 
@@ -129,7 +129,7 @@ Azure Monitor 根据执行日志搜索时所在的上下文自动确定正确的
 
 Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 每个工作区的默认引入速率阈值设置为 **6 GB/分钟**。 这是一个近似值，因为实际大小在数据类型之间可能会有所不同，具体取决于日志长度及其压缩率。 此限制不适用于从代理或[数据收集器 API](data-collector-api.md) 发送的数据。
 
-如果以更高速率将数据发送到单个工作区，则某些数据将丢弃，并且在继续超过阈值的情况下，每 6 小时将向工作区中的“操作”** 表发送一个事件。 如果引入量继续超过速率限制，或者希望很快达到该限制，则可以通过建立支持请求来请求增加工作区。
+如果以更高速率将数据发送到单个工作区，则某些数据将丢弃，并且在继续超过阈值的情况下，每 6 小时将向工作区中的“操作”** 表发送一个事件。 如果引入卷继续超出速率限制，或者你预计会在某个时间到达，则可以通过向LAIngestionRate@microsoft.com发送电子邮件或打开支持请求来请求增加工作区。
  
 若要在工作区中收到此类事件的通知，请根据大于零的结果数，使用以下具有警报逻辑的查询创建[日志警报规则](alerts-log.md)。
 

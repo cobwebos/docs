@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 站点恢复中设置进程服务器 VMware/物理故障恢复
+title: 在 Azure Site Recovery 中设置进程服务器 VMware/物理故障回复
 description: 本文介绍如何在 Azure 中设置进程服务器，以便将 Azure VM 故障回复到 VMware。
 services: site-recovery
 author: Rajeswari-Mamilla
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: ramamill
 ms.openlocfilehash: 16214fa07b14c8db2f32fa2c69739b7fa3dc1907
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74083955"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>在 Azure 中设置进程服务器以便进行故障回复
@@ -28,16 +28,16 @@ ms.locfileid: "74083955"
 
 ## <a name="deploy-a-process-server-in-azure"></a>在 Azure 中部署进程服务器
 
-1. 在站点**恢复基础结构**> **管理** > **配置服务器**>保管库中，选择配置服务器。
-2. 在服务器页中，单击“+ 进程服务器”****
-3. 在“添加进程服务器”**** 页中，选择在 Azure 中部署进程服务器。
+1. 在保管库 >“Site Recovery 基础结构”  > “管理”   > “配置服务器”  中，选择配置服务器。
+2. 在服务器页中，单击“+ 进程服务器” 
+3. 在“添加进程服务器”  页中，选择在 Azure 中部署进程服务器。
 4. 指定 Azure 设置，包括用于故障转移的订阅、资源组、用于故障转移的 Azure 区域以及 Azure VM 所位于的虚拟网络。 如果使用多个 Azure 网络，则需要在每个 Azure 网络中部署进程服务器。
 
    ![添加进程服务器库项](./media/vmware-azure-set-up-process-server-azure/add-ps-page-1.png)
 
 4. 在**服务器名称**、**用户名**和**密码**中指定进程服务器的名称以及将为其分配服务器上的管理员权限的凭据。
 5. 指定要用于服务器 VM 磁盘的存储帐户、进程服务器 VM 将位于的子网以及 VM 启动时将分配的服务器 IP 地址。
-6. 单击“确定”**** 按钮开始部署进程服务器 VM。 进程服务器将部署在Standard_A8_v2 SKU 上。 确保此 VM SKU 可用于您的订阅。
+6. 单击“确定”  按钮开始部署进程服务器 VM。 将在 Standard_A8_v2 SKU 上部署进程服务器。 请确保此 VM SKU 适用于你的订阅。
 
 >
 

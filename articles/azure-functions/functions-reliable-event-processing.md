@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: cshoe
 ms.openlocfilehash: e4f35495d8a01146068cffb9159c29c46c3c0d29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75561861"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions 可靠事件处理
@@ -46,12 +46,12 @@ Azure Functions 在循环执行以下步骤的同时使用事件中心事件：
 2. 收到新消息（默认分批接收）时，宿主会尝试对消息批触发函数。
 3. 如果该函数完成执行（出现或未出现异常），则指针将会递进，并将一个检查点保存到存储帐户。
 4. 如果某种状况阻止该函数完成执行，则宿主无法递进指针。 如果指针未递进，则后面的检查会结束相同消息的处理。
-5. 重复步骤 2⁄4
+5. 重复步骤 2-4
 
 此行为揭示了几个要点：
 
-- 未经处理的异常可能导致丢失消息。** 导致异常的执行会继续递进指针。
-- 函数保证至少传送一次。** 代码和相关系统可能需要[考虑到同一消息可能会接收两次这一事实](./functions-idempotent.md)。
+- 未经处理的异常可能导致丢失消息。  导致异常的执行会继续递进指针。
+- 函数保证至少传送一次。  代码和相关系统可能需要[考虑到同一消息可能会接收两次这一事实](./functions-idempotent.md)。
 
 ## <a name="handling-exceptions"></a>处理异常
 
@@ -127,8 +127,8 @@ Azure 逻辑应用随附了不同服务的内置连接器，提供有状态业�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更多信息，请参见以下资源：
+有关详细信息，请参阅以下资源：
 
 - [Azure Functions 错误处理](./functions-bindings-error-pages.md)
-- [使用事件网格自动调整上传图像的大小](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json&tabs=dotnet)
+- [使用事件网格自动调整已上传图像的大小](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json&tabs=dotnet)
 - [创建与 Azure 逻辑应用集成的函数](./functions-twitter-email.md)

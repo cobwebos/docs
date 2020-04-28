@@ -4,21 +4,21 @@ description: 了解 Azure 容器注册表的基本、标准和高级服务层 (S
 ms.topic: article
 ms.date: 11/05/2019
 ms.openlocfilehash: 1ebe5339b7523a4463dee45b126244d7ec5b2e4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74456266"
 ---
 # <a name="azure-container-registry-skus"></a>Azure 容器注册表 SKU
 
 Azure 容器注册表 (ACR) 分为多个服务层级（称为“SKU”）。 这些 SKU 提供可预测的定价和多个选项，用来适应你在 Azure 中的专用 Docker 注册表的容量和使用模式。
 
-| SKU | 描述 |
+| SKU | 说明 |
 | --- | ----------- |
-| **Basic** | 供开发者了解 Azure 容器注册表的入口点（已优化过成本）。 基本注册表的编程功能（例如 Azure Active Directory [身份验证集成](container-registry-authentication.md#individual-login-with-azure-ad)、[映像删除][container-registry-delete]和 [Webhook][container-registry-webhook]）与标准注册表和高级注册表相同。 但其附带的存储和映像吞吐量最适合使用较少的场景。 |
-| **标准** | 标准注册表的功能与基本注册表相同。不同之处在于，前者附带更多的存储和映像吞吐量。 标准注册表应能够满足大部分生产方案的需求。 |
-| **溢价** | 高级注册表附带的存储和并发操作数最多，支持大容量方案。 除了更高的映像吞吐量外，Premium 还添加了用于跨多个区域管理单个注册表[的异地复制][container-registry-geo-replication]、图像标记签名[的内容信任](container-registry-content-trust.md)、[防火墙和虚拟网络（预览）](container-registry-vnet.md)等功能，以限制对注册表的访问。 |
+| **基本** | 供开发者了解 Azure 容器注册表的入口点（已优化过成本）。 基本注册表的编程功能（例如 Azure Active Directory [身份验证集成](container-registry-authentication.md#individual-login-with-azure-ad)、[映像删除][container-registry-delete]和 [Webhook][container-registry-webhook]）与标准注册表和高级注册表相同。 但其附带的存储和映像吞吐量最适合使用较少的场景。 |
+| **Standard** | 标准注册表的功能与基本注册表相同。不同之处在于，前者附带更多的存储和映像吞吐量。 标准注册表应能够满足大部分生产方案的需求。 |
+| **高级** | 高级注册表附带的存储和并发操作数最多，支持大容量方案。 除了更高的映像吞吐量之外，高级版还添加了[异地复制][container-registry-geo-replication]功能，以管理跨多个区域的单个注册表、图像标记签名的[内容信任](container-registry-content-trust.md)、[防火墙和虚拟网络（预览版）](container-registry-vnet.md) ，以限制对注册表的访问。 |
 
 基本 SKU、标准 SKU 和高级 SKU 均提供相同的编程功能。 它们也全都从完全由 Azure 托管的[映像存储][container-registry-storage]中受益。 选择的 SKU 级别越高，性能和可缩放性就越高。 使用多个服务层级，你可以从“基本”层级开始，然后随着注册表使用量增长转换到“标准”和“高级”层级。
 
@@ -42,7 +42,7 @@ az acr update --name myregistry --sku Premium
 
 ### <a name="azure-portal"></a>Azure 门户
 
-在 Azure 门户中的容器注册表“概述”**** 中，选择“更新”****，然后从“SKU”下拉列表中选择一个新 SKU****。
+在 Azure 门户中的容器注册表“概述”  中，选择“更新”  ，然后从“SKU”下拉列表中选择一个新 SKU  。
 
 ![在 Azure 门户中更新容器注册表 SKU][update-registry-sku]
 

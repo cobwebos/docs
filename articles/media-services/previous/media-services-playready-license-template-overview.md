@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: fb0630f3f7a4acebcfe5dcad343030c9d1184263
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74976394"
 ---
 # <a name="media-services-playready-license-template-overview"></a>媒体服务 PlayReady 许可证模板概述
@@ -32,7 +32,7 @@ Azure 媒体服务现在提供了用于交付 PlayReady 许可证的服务。 �
 * 要在客户端的永久性存储区保存的许可证。 永久性许可证通常用于允许脱机播放内容。
 * 播放器必须具有的要播放内容的最低安全级别。 
 * 音频\视频内容的输入控件的输出保护级别。 
-* 有关详细信息，请参阅[PlayReady 合规性规则](https://www.microsoft.com/playready/licensing/compliance/)文档中的"输出控件"部分 （3.5）。
+* 有关详细信息，请参阅 [PlayReady 符合性规则](https://www.microsoft.com/playready/licensing/compliance/)文档中的“输出控件”部分 (3.5)。
 
 > [!NOTE]
 > 目前，只能配置 PlayReady 许可证的 PlayRight。 此权限是必需的。 PlayRight 赋予客户端播放内容的权限。 还可以使用 PlayRight 配置特定于播放的限制。 有关详细信息，请参阅 [PlayReadyPlayRight](media-services-playready-license-template-overview.md#PlayReadyPlayRight)。

@@ -1,5 +1,5 @@
 ---
-title: 从 Azure 逻辑应用连接到项目联机
+title: 从 Azure 逻辑应用连接到 Project Online
 description: 使用 Azure 逻辑应用自动执行任务和工作流，用以监视、创建和管理 Project Online 项目、任务和资源
 services: logic-apps
 ms.suite: integration
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/24/2018
 tags: connectors
 ms.openlocfilehash: 116922e018410f260b33f4dfd76e5983fbbcc0a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74789318"
 ---
 # <a name="manage-project-online-projects-tasks-and-resources-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Project Online 项目、任务和资源
@@ -31,7 +31,7 @@ Project Online 提供了强大的项目管理功能，可以帮助你规划、�
 
 * Project Online，可通过 [Office 365 帐户](https://www.office.com/)获得 
 
-* [有关如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
+* 有关[如何创建逻辑应用的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知识
 
 * 要在其中访问 Project Online 数据的逻辑应用。 若要使用 Project Online 触发器启动，请[创建空白的逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 Project Online 操作，请使用其他触发器（例如**定期**触发器）启动逻辑应用。
 
@@ -46,7 +46,7 @@ Project Online 提供了强大的项目管理功能，可以帮助你规划、�
    * 对于空白逻辑应用，请在搜索框中输入“Project Online”作为筛选器。 
    在触发器列表下，选择所需的触发器。 
 
-     -或-
+     \- 或 -
 
    * 对于现有逻辑应用，请在要添加操作的步骤下，选择“新建步骤”****。 在搜索框中输入“Project Online”作为筛选器。 在操作列表下，选择所需的操作。
 

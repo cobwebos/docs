@@ -4,10 +4,10 @@ description: 介绍如何识别 Service Fabric 应用程序所需的计算节点
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: cd5a5c55ff873e4891ac63361d0c4a0b56d70109
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75377202"
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Service Fabric 应用程序的容量规划
@@ -49,7 +49,7 @@ Number of Nodes = (DB_Size * RF)/Node_Size
 ![用于成本计算的电子表格][Image1]
 
 ## <a name="next-steps"></a>后续步骤
-查看 [Service Fabric 服务分区][10]，了解有关对服务进行分区的详细信息。
+查看[为 Service Fabric 服务分区][10]，了解有关为服务分区的详细信息。
 
 <!--Image references-->
 [Image1]: ./media/SF-Cost.png

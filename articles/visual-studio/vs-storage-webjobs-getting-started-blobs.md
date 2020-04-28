@@ -1,5 +1,5 @@
 ---
-title: 使用可视化工作室（WebJob 项目）开始使用 Blob 存储
+title: 使用 Visual Studio （Web 作业项目）开始使用 blob 存储
 description: 在使用 Visual Studio 连接服务连接到 Azure 存储后，如何开始使用 WebJob 项目中的 Blob 存储
 services: storage
 author: ghogen
@@ -14,10 +14,10 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 90aa824b7df575eb2783ece5bd88322f0b55f0a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72299976"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>开始使用 Azure Blob 存储和 Visual Studio 连接服务（WebJob 项目）
@@ -79,7 +79,7 @@ ms.locfileid: "72299976"
 ## <a name="types-that-you-can-bind-to-blobs"></a>可绑定到 Blob 的类型
 可对以下类型使用 **BlobTrigger** 属性：
 
-* **字符串**
+* **string**
 * **TextReader**
 * **流**
 * **ICloudBlob**

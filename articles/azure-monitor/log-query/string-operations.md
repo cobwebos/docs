@@ -7,17 +7,17 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: a394fee7178b2e3e167c8bd905ab175b25d1d813
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75397472"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用字符串
 
 
 > [!NOTE]
-> 在完成本教程之前，应完成[Azure 监视器日志分析](get-started-portal.md)入门以及[Azure 监视器日志查询入门](get-started-queries.md)。
+> 完成本教程之前，应先完成 [Azure Monitor 日志分析入门](get-started-portal.md)和 [Azure Monitor 日志查询入门](get-started-queries.md)。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -46,7 +46,7 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 ## <a name="string-comparisons"></a>字符串比较
 
-运算符       |描述                         |区分大小写|示例（生成 `true`）
+操作员       |说明                         |区分大小写|示例（生成 `true`）
 ---------------|------------------------------------|--------------|-----------------------
 `==`           |等于                              |是           |`"aBc" == "aBc"`
 `!=`           |不等于                          |是           |`"abc" != "ABC"`
@@ -93,7 +93,7 @@ countof(text, search [, kind])
 ### <a name="arguments"></a>参数：
 - `text` - 输入字符串 
 - `search` - 用于在文本内部匹配的纯字符串或正则表达式。
-- `kind` - _正常_ | _正则表达式_（默认值：正常）。
+- `kind` - _normal_ | _regex_（默认值：normal）。
 
 ### <a name="returns"></a>返回
 
@@ -130,7 +130,7 @@ print countof("abcabc", "a.c", "regex");  // result: 2
 extract(regex, captureGroup, text [, typeLiteral])
 ```
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
 - `regex` - 正则表达式。
 - `captureGroup` - 指示待提取的捕获组的正整数常量。 0 代表整个匹配项，1 代表正则表达式中第一个“(括号)”匹配的值，2 及以上数字代表后续括号。
@@ -161,7 +161,7 @@ Heartbeat
 | project ComputerIP, last_octet, next_ip
 ```
 
-以下示例在字符串 *Trace* 中搜索“Duration”的定义。 匹配项强制转换为 *real* 并与时间常量 (1 s) 相乘，该常量将 Duration 强制转换为 timespan 类型。**
+以下示例在字符串 *Trace* 中搜索“Duration”的定义。 匹配项强制转换为 *real* 并与时间常量 (1 s) 相乘，该常量将 Duration 强制转换为 timespan 类型。 
 ```Kusto
 let Trace="A=12, B=34, Duration=567, ...";
 print Duration = extract("Duration=([0-9.]+)", 1, Trace, typeof(real));  //result: 567
@@ -237,7 +237,7 @@ print parseurl("http://user:pass@contoso.com/icecream/buy.aspx?a=1&b=2#tag")
 replace(regex, rewrite, input_text)
 ```
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
 - `regex` - 作为匹配依据的正则表达式。 可在“(括号)”中包含捕获组。
 - `rewrite` - 由匹配正则表达式匹配的任何匹配项的替换正则表达式。 使用 \0 引用整个匹配项，使用 \1 引用第一个捕获组，使用 \2 等引用后续捕获组。

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/21/2018
 ms.openlocfilehash: 6346055f1169bfa533d5dbfe441ecf27fb0d78a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75397750"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>从 Splunk 到 Azure Monitor 日志查询
@@ -70,8 +70,8 @@ ms.locfileid: "75397750"
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **搜索** | <code>search Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" earliest=-24h</code> |
-| Azure Monitor | **找到** | <code>find Session.Id=="c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time()> ago(24h)</code> |
+| Splunk | **search** | <code>search Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" earliest=-24h</code> |
+| Azure Monitor | **find** | <code>find Session.Id=="c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time()> ago(24h)</code> |
 | | |
 
 ### <a name="filter"></a>“筛选器”
@@ -79,7 +79,7 @@ Azure Monitor 日志查询从包含筛选器的表格结果集开始。 在 Splu
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **搜索** | <code>Event.Rule="330009.2" Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" _indextime>-24h</code> |
+| Splunk | **search** | <code>Event.Rule="330009.2" Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" _indextime>-24h</code> |
 | Azure Monitor | **where** | <code>Office_Hub_OHubBGTaskError<br>&#124; where Session_Id == "c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time() > ago(24h)</code> |
 | | |
 
@@ -89,8 +89,8 @@ Azure Monitor 日志查询还支持将 `take` 用作 `limit` 的别名。 在 Sp
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **头** | <code>Event.Rule=330009.2<br>&#124; head 100</code> |
-| Azure Monitor | **限制** | <code>Office_Hub_OHubBGTaskError<br>&#124; limit 100</code> |
+| Splunk | **head** | <code>Event.Rule=330009.2<br>&#124; head 100</code> |
+| Azure Monitor | **limit** | <code>Office_Hub_OHubBGTaskError<br>&#124; limit 100</code> |
 | | |
 
 
@@ -100,7 +100,7 @@ Azure Monitor 日志查询还支持将 `take` 用作 `limit` 的别名。 在 Sp
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **头** |  <code>Event.Rule="330009.2"<br>&#124; sort Event.Sequence<br>&#124; head 20</code> |
+| Splunk | **head** |  <code>Event.Rule="330009.2"<br>&#124; sort Event.Sequence<br>&#124; head 20</code> |
 | Azure Monitor | **返回页首** | <code>Office_Hub_OHubBGTaskError<br>&#124; top 20 by Event_Sequence</code> |
 | | |
 
@@ -112,8 +112,8 @@ Splunk 还有一个 `eval` 函数，该函数不能与 `eval` 运算符进行比
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **Eval** |  <code>Event.Rule=330009.2<br>&#124; eval state= if(Data.Exception = "0", "success", "error")</code> |
-| Azure Monitor | **扩展** | <code>Office_Hub_OHubBGTaskError<br>&#124; extend state = iif(Data_Exception == 0,"success" ,"error")</code> |
+| Splunk | **eval** |  <code>Event.Rule=330009.2<br>&#124; eval state= if(Data.Exception = "0", "success", "error")</code> |
+| Azure Monitor | **extend** | <code>Office_Hub_OHubBGTaskError<br>&#124; extend state = iif(Data_Exception == 0,"success" ,"error")</code> |
 | | |
 
 
@@ -122,7 +122,7 @@ Azure Monitor 使用 `project-rename` 运算符重命名字段。 `project-renam
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **重 命名** |  <code>Event.Rule=330009.2<br>&#124; rename Date.Exception as execption</code> |
+| Splunk | **rename** |  <code>Event.Rule=330009.2<br>&#124; rename Date.Exception as execption</code> |
 | Azure Monitor | **project-rename** | <code>Office_Hub_OHubBGTaskError<br>&#124; project-rename exception = Date_Exception</code> |
 | | |
 
@@ -134,8 +134,8 @@ Splunk 似乎没有类似于 `project-away` 的运算符。 可以使用 UI 来�
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **表** |  <code>Event.Rule=330009.2<br>&#124; table rule, state</code> |
-| Azure Monitor | **项目**<br>**project-away** | <code>Office_Hub_OHubBGTaskError<br>&#124; project exception, state</code> |
+| Splunk | **table** |  <code>Event.Rule=330009.2<br>&#124; table rule, state</code> |
+| Azure Monitor | **project**<br>**project-away** | <code>Office_Hub_OHubBGTaskError<br>&#124; project exception, state</code> |
 | | |
 
 
@@ -145,19 +145,19 @@ Splunk 似乎没有类似于 `project-away` 的运算符。 可以使用 UI 来�
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **统计** |  <code>search (Rule=120502.*)<br>&#124; stats count by OSEnv, Audience</code> |
-| Azure Monitor | **总结** | <code>Office_Hub_OHubBGTaskError<br>&#124; summarize count() by App_Platform, Release_Audience</code> |
+| Splunk | **stats** |  <code>search (Rule=120502.*)<br>&#124; stats count by OSEnv, Audience</code> |
+| Azure Monitor | **summarize** | <code>Office_Hub_OHubBGTaskError<br>&#124; summarize count() by App_Platform, Release_Audience</code> |
 | | |
 
 
 
-### <a name="join"></a>联接
+### <a name="join"></a>Join
 Splunk 中的联接具有很强的限制。 子查询限制为 10000 条结果（在部署配置文件中设置），联接形式数目也有限制。
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **加入** |  <code>Event.Rule=120103* &#124; stats by Client.Id, Data.Alias \| join Client.Id max=0 [search earliest=-24h Event.Rule="150310.0" Data.Hresult=-2147221040]</code> |
-| Azure Monitor | **加入** | <code>cluster("OAriaPPT").database("Office PowerPoint").Office_PowerPoint_PPT_Exceptions<br>&#124; where  Data_Hresult== -2147221040<br>&#124; join kind = inner (Office_System_SystemHealthMetadata<br>&#124; summarize by Client_Id, Data_Alias)on Client_Id</code>   |
+| Splunk | **join** |  <code>Event.Rule=120103* &#124; stats by Client.Id, Data.Alias \| join Client.Id max=0 [search earliest=-24h Event.Rule="150310.0" Data.Hresult=-2147221040]</code> |
+| Azure Monitor | **join** | <code>cluster("OAriaPPT").database("Office PowerPoint").Office_PowerPoint_PPT_Exceptions<br>&#124; where  Data_Hresult== -2147221040<br>&#124; join kind = inner (Office_System_SystemHealthMetadata<br>&#124; summarize by Client_Id, Data_Alias)on Client_Id</code>   |
 | | |
 
 
@@ -167,8 +167,8 @@ Splunk 中的联接具有很强的限制。 子查询限制为 10000 条结果�
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **排序** |  <code>Event.Rule=120103<br>&#124; sort Data.Hresult<br>&#124; reverse</code> |
-| Azure Monitor | **订单由** | <code>Office_Hub_OHubBGTaskError<br>&#124; order by Data_Hresult,  desc</code> |
+| Splunk | **sort** |  <code>Event.Rule=120103<br>&#124; sort Data.Hresult<br>&#124; reverse</code> |
+| Azure Monitor | **order by** | <code>Office_Hub_OHubBGTaskError<br>&#124; order by Data_Hresult,  desc</code> |
 | | |
 
 
@@ -178,8 +178,8 @@ Splunk 中的联接具有很强的限制。 子查询限制为 10000 条结果�
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **mv 展开** |  `mvexpand foo` |
-| Azure Monitor | **mv 展开** | `mvexpand foo` |
+| Splunk | **mvexpand** |  `mvexpand foo` |
+| Azure Monitor | **mvexpand** | `mvexpand foo` |
 | | |
 
 
@@ -190,8 +190,8 @@ Splunk 中的联接具有很强的限制。 子查询限制为 10000 条结果�
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **字段** |  <code>Event.Rule=330009.2<br>&#124; fields App.Version, App.Platform</code> |
-| Azure Monitor | **方面** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; facet by App_Branch, App_Version</code> |
+| Splunk | **fields** |  <code>Event.Rule=330009.2<br>&#124; fields App.Version, App.Platform</code> |
+| Azure Monitor | **facets** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; facet by App_Branch, App_Version</code> |
 | | |
 
 
@@ -202,7 +202,7 @@ Splunk 中的联接具有很强的限制。 子查询限制为 10000 条结果�
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **德杜普** |  <code>Event.Rule=330009.2<br>&#124; dedup device_id sortby -batterylife</code> |
+| Splunk | **dedup** |  <code>Event.Rule=330009.2<br>&#124; dedup device_id sortby -batterylife</code> |
 | Azure Monitor | **summarize arg_max()** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; summarize arg_max(batterylife, *) by device_id</code> |
 | | |
 

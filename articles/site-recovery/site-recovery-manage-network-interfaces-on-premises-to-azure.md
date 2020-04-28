@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 站点恢复管理本地灾难恢复的网络适配器
+title: 通过 Azure Site Recovery 管理用于本地灾难恢复的网络适配器
 description: 介绍如何使用 Azure Site Recovery 管理网络接口，以实现本地到 Azure 的灾难恢复
 author: mayurigupta13
 manager: rochakm
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: 2a4752b501e40f9e8a4f3bc82cb2533c11f9e526
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73954591"
 ---
-# <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>管理 VM 网络接口，以便本地灾难恢复到 Azure
+# <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>管理用于本地灾难恢复到 Azure 的 VM 网络接口
 
 Azure 中的虚拟机 (VM) 必须附加有至少一个网络接口。 它可以附加 VM 的大小所能够支持的网络接口数量。
 
@@ -28,11 +28,11 @@ Azure 中的虚拟机 (VM) 必须附加有至少一个网络接口。 它可以�
 
 对于 VMware 和物理机，以及 Hyper-V（不带 System Center Virtual Machine Manager）虚拟机，可为单个虚拟机指定目标虚拟网络。 对于带 Virtual Machine Manager 的 Hyper-V 虚拟机，使用[网络映射](site-recovery-network-mapping.md)映射某个源 Virtual Machine Manager 服务器上的 VM 网络，并以 Azure 网络为定向目标。
 
-1. 在恢复服务保管库中的“复制的项”**** 下，选择任何复制的项以访问其设置。
+1. 在恢复服务保管库中的“复制的项”  下，选择任何复制的项以访问其设置。
 
-2. 选择“计算和网络”**** 选项卡可访问复制项目的网络设置。
+2. 选择“计算和网络”  选项卡可访问复制项目的网络设置。
 
-3. 在“网络属性”**** 下，从可用网络接口的列表中选择虚拟网络。
+3. 在“网络属性”  下，从可用网络接口的列表中选择虚拟网络。
 
     ![网络设置](./media/site-recovery-manage-network-interfaces-on-premises-to-azure/compute-and-network.png)
 
@@ -42,13 +42,13 @@ Azure 中的虚拟机 (VM) 必须附加有至少一个网络接口。 它可以�
 
 ## <a name="select-the-target-interface-type"></a>选择目标接口类型
 
-在“计算和网络”**** 窗格中的“网络接口”**** 部分下，可查看和编辑网络接口设置。 还可指定目标网络接口类型。
+在“计算和网络”  窗格中的“网络接口”  部分下，可查看和编辑网络接口设置。 还可指定目标网络接口类型。
 
-- 故障转移需使用主网络接口****。
-- 所有其他选定的网络接口（若有）为“辅助”**** 网络接口。
-- 选择“不使用”**** 以避免在故障转移时创建某个网络接口。
+- 故障转移需使用主网络接口  。
+- 所有其他选定的网络接口（若有）为“辅助”  网络接口。
+- 选择“不使用”  以避免在故障转移时创建某个网络接口。
 
-默认情况下，启用复制时，Site Recovery 会选择本地服务器上所有检测到的网络接口。 它会将其中一个标记为“主要”****，所有其他的标记为“辅助”****。 本地服务器上后续添加的任何接口均默认标记为“不使用”****。 添加更多网络接口时，请确保选择正确的 Azure 虚拟机目标大小，以确保可容纳所有所需的网络接口。
+默认情况下，启用复制时，Site Recovery 会选择本地服务器上所有检测到的网络接口。 它会将其中一个标记为“主要”  ，所有其他的标记为“辅助”  。 本地服务器上后续添加的任何接口均默认标记为“不使用”  。 添加更多网络接口时，请确保选择正确的 Azure 虚拟机目标大小，以确保可容纳所有所需的网络接口。
 
 ## <a name="modify-network-interface-settings"></a>修改网络接口设置
 
@@ -62,11 +62,11 @@ Azure 中的虚拟机 (VM) 必须附加有至少一个网络接口。 它可以�
 
     ![网络接口设置](./media/site-recovery-manage-network-interfaces-on-premises-to-azure/network-interface-settings.png)
 
-4. 选择“确定”**** 以完成编辑，然后返回“计算和网络”**** 窗格。
+4. 选择“确定”  以完成编辑，然后返回“计算和网络”  窗格。
 
 5. 为其他网络接口重复步骤 1-4。
 
-6. 选择“保存”****，保存全部更改。
+6. 选择“保存”  ，保存全部更改。
 
 ## <a name="next-steps"></a>后续步骤
   [深入了解](../virtual-network/virtual-network-network-interface-vm.md) Azure 虚拟机的网络接口。

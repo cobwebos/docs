@@ -1,15 +1,15 @@
 ---
-title: 基于 WCF 的安全服务通信
+title: 保护基于 WCF 的服务通信
 description: 了解如何保护 Azure Service Fabric 群集中运行的 Reliable Services 的基于 WCF 的通信。
 author: suchiagicha
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
 ms.openlocfilehash: ca5eafa4612503a13f80b7f238e4827979c0358b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75614156"
 ---
 # <a name="secure-wcf-based-communications-for-a-service"></a>保护服务的基于 WCF 的通信
@@ -54,7 +54,7 @@ ms.locfileid: "75614156"
         return b;
     }
     ```
-2. 在客户端中，在前面[示例](service-fabric-reliable-services-communication-wcf.md)中创建的 `WcfCommunicationClient` 类保持不变。 但是，需要重写 `WcfCommunicationClientFactory` 的 `CreateClientAsync` 方法：
+2. 在客户端中，在前面`WcfCommunicationClient`示例[中创建的 ](service-fabric-reliable-services-communication-wcf.md) 类保持不变。 但是，需要重写 `CreateClientAsync` 的 `WcfCommunicationClientFactory` 方法：
 
     ```csharp
     public class SecureWcfCommunicationClientFactory<TServiceContract> : WcfCommunicationClientFactory<TServiceContract> where TServiceContract : class

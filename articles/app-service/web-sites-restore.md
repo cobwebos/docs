@@ -6,16 +6,16 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: 1295080d0eec7a4e88029cdadd85863f5f40d034
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74689247"
 ---
 # <a name="restore-an-app-in-azure"></a>在 Azure 中还原应用
 本文将演示如何在 [Azure 应用服务](../app-service/overview.md) 中还原已事先备份的应用（请参阅[在 Azure 中备份应用](manage-backup.md)）。 可以根据需要将应用及其链接的数据库还原到以前的状态，或者基于原始应用的备份之一创建新的应用。 Azure 应用服务支持用于备份和还原的以下数据库：
 - [SQL 数据库](https://azure.microsoft.com/services/sql-database/)
-- [MySQL 的 Azure 数据库](https://azure.microsoft.com/services/mysql)
+- [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
 - [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql)
 - [MySQL 应用内产品](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
 
@@ -50,7 +50,7 @@ ms.locfileid: "74689247"
    
     可选择“现有应用”将应用备份还原到同一资源组中的其他应用****。 使用此选项之前，应已使用应用备份中定义的镜像数据库配置在资源组中创建了其他应用。 还可以创建“新”**** 应用来将内容还原到其中。
 
-4. 单击“确定”。
+4. 单击“确定”。 
 
 <a name="StorageAccount"></a>
 
@@ -82,7 +82,7 @@ ms.locfileid: "74689247"
 相关示例如下所示：
 
 - [Azure CLI 示例](samples-cli.md)
-- [Azure 电源外壳示例](samples-powershell.md)
+- [Azure PowerShell 示例](samples-powershell.md)
 
 <!-- ## Next Steps
 You can backup and restore App Service apps using REST API. -->

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure AD 连接的服务诊断错误（可视化工作室）
+title: 诊断 Azure AD 连接服务的错误（Visual Studio）
 description: Active Directory 连接服务可检测到不兼容的身份验证类型
 author: ghogen
 manager: jillfra
@@ -11,10 +11,10 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.openlocfilehash: 4b39aa77ea3895a606ad34a3bc9b70dba924a23f
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80886086"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>使用 Azure Active Directory 连接服务诊断错误
@@ -52,7 +52,7 @@ ms.locfileid: "80886086"
 * 单个用户帐户
 * 组织帐户
 
-为了检测 MVC 项目中的 Windows 身份验证，连接服务将在 `web.config` 文件中查找 `authentication` 元素。
+为了检测 MVC 项目中的 Windows 身份验证，连接服务将在 `authentication` 文件中查找 `web.config` 元素。
 
 ```xml
 <configuration>
@@ -62,7 +62,7 @@ ms.locfileid: "80886086"
 </configuration>
 ```
 
-为了检测 Web API 项目中的 Windows 身份验证，连接服务将在项目的 `.csproj` 文件中查找 `IISExpressWindowsAuthentication` 元素：
+为了检测 Web API 项目中的 Windows 身份验证，连接服务将在项目的 `IISExpressWindowsAuthentication` 文件中查找 `.csproj` 元素：
 
 ```xml
 <Project>

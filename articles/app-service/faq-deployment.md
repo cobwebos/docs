@@ -1,6 +1,6 @@
 ---
 title: 部署常见问题解答 - Azure 应用服务 | Microsoft Docs
-description: 获取有关 Azure 应用服务的 Web 应用功能的部署常见问题解答。
+description: 获取 Azure 应用服务 Web 应用功能的部署相关常见问题解答。
 author: genlin
 manager: dcscontentpm
 tags: top-support-issue
@@ -10,30 +10,30 @@ ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: 25f43051f11d42c4f8565039d3168f2ae162eb37
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74671691"
 ---
-# <a name="deployment-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的部署常见问题解答
+# <a name="deployment-faqs-for-web-apps-in-azure"></a>Azure 中 Web 应用的部署常见问题解答
 
-本文包含有关针对 [Azure 应用服务的 Web 应用功能](https://azure.microsoft.com/services/app-service/web/)的部署问题的常见问题 (FAQ) 解答。
+本文对 [Azure 应用服务 Web 应用功能](https://azure.microsoft.com/services/app-service/web/)的部署相关常见问题 (FAQ) 进行了解答。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="i-am-just-getting-started-with-app-service-web-apps-how-do-i-publish-my-code"></a>我刚刚开始使用应用服务 Web 应用。 如何发布我的代码？
+## <a name="i-am-just-getting-started-with-app-service-web-apps-how-do-i-publish-my-code"></a>我刚开始使用应用服务 Web 应用。 如何发布代码？
 
-以下是一些用于发布 Web 应用代码的选项：
+可通过以下几种方式发布 Web 应用代码：
 
-*   使用 Visual Studio 进行部署。 如果具有 Visual Studio 解决方案，则右键单击 Web 应用程序项目，然后选择“发布”****。
-*   使用 FTP 客户端进行部署。 在 Azure 门户中，下载要将代码部署到的 Web 应用的发布配置文件。 然后使用相同的发布配置文件 FTP 凭据将文件上传到 \site\wwwroot。
+*   使用 Visual Studio 进行部署。 如果具有 Visual Studio 解决方案，则右键单击 Web 应用程序项目，然后选择“发布”  。
+*   使用 FTP 客户端进行部署。 在 Azure 门户中，下载要向其部署代码的 Web 应用的发布配置文件。 然后，使用相同的发布配置文件 FTP 凭据将文件上传到 \site\wwwroot。
 
 有关详细信息，请参阅[将应用部署到应用服务](deploy-local-git.md)。
 
-## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this-error"></a>我在尝试从 Visual Studio 进行部署时看到错误消息。 如何解决此错误？
+## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this-error"></a>尝试从 Visual Studio 进行部署时，收到了一条错误消息。 如何解决此错误？
 
-如果看到以下消息，则你可能在使用较旧版本的 SDK：“在部署资源组‘YourResourceGroup’中的资源‘YourResourceName’期间出错: MissingRegistrationForLocation: 未注册位置‘美国中部’中资源类型‘组件’的订阅。 重新注册此提供程序，以便访问此位置。 
+如果看到以下消息，则你可能在使用较旧版本的 SDK：“在部署资源组‘YourResourceGroup’中的资源‘YourResourceName’期间出错: MissingRegistrationForLocation: 未注册位置‘美国中部’中资源类型‘组件’的订阅。 重新注册此提供程序以便有权访问此位置。 " 
 
 若要解决此错误，请升级到[最新 SDK](https://azure.microsoft.com/downloads/)。 如果你看到此消息并且具有最新 SDK，请提交支持请求。
 

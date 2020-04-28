@@ -11,25 +11,25 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.openlocfilehash: d42d905bf35c015213e76bc50c4bc339a5c4a062
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80886103"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>我的 MVC 项目（Visual Studio Azure Active Directory 连接服务）发生了什么情况？
 
 > [!div class="op_single_selector"]
 > - [入门](vs-active-directory-dotnet-getting-started.md)
-> - [发生了什么事](vs-active-directory-dotnet-what-happened.md)
+> - [发生了什么情况](vs-active-directory-dotnet-what-happened.md)
 
-本文标识在使用 Visual Studio 添加[Azure 活动目录连接服务](vs-active-directory-add-connected-service.md)时对 mVC 项目ASP.NET的确切更改。
+本文介绍在[使用 Visual Studio 添加 Azure Active Directory 连接服务](vs-active-directory-add-connected-service.md)时，对 ASP.NET MVC 项目所做的具体更改。
 
 有关使用连接服务的信息，请参阅[入门](vs-active-directory-dotnet-getting-started.md)。
 
 ## <a name="added-references"></a>添加的引用
 
-影响项目文件（*.NET引用）和`packages.config`（NuGet引用）。
+影响项目文件（*.NET 引用）和 `packages.config`（NuGet 引用）。
 
 | 类型 | 参考 |
 | --- | --- |
@@ -44,7 +44,7 @@ ms.locfileid: "80886103"
 | .NET; NuGet | System.IdentityModel.Tokens.Jwt |
 | .NET        | System.Runtime.Serialization |
 
-选择了“读取目录数据”**** 选项时的其他引用：
+选择了“读取目录数据”  选项时的其他引用：
 
 | 类型 | 参考 |
 | --- | --- |
@@ -69,7 +69,7 @@ ms.locfileid: "80886103"
 ## <a name="project-file-changes"></a>项目文件更改
 
 - 将属性 `IISExpressSSLPort` 设置为不同的数字。
-- 将属性 `WebProject_DirectoryAccessLevelKey` 设置为 0 或 1（如果选择了“读取目录数据”**** 选项）。
+- 将属性 `WebProject_DirectoryAccessLevelKey` 设置为 0 或 1（如果选择了“读取目录数据”  选项）。
 - 将属性 `IISUrl` 设置为 `https://localhost:<port>/`，其中 `<port>` 匹配 `IISExpressSSLPort` 值。
 
 ## <a name="webconfig-or-appconfig-changes"></a>web.config 或 app.config 发生更改
@@ -86,9 +86,9 @@ ms.locfileid: "80886103"
     </appSettings>
     ```
 
-- 在 `System.IdentityModel.Tokens.Jwt` 和 `Microsoft.IdentityModel.Protocol.Extensions` 的 `<runtime><assemblyBinding>` 节点下添加了 `<dependentAssembly>` 元素。
+- 在 `<dependentAssembly>` 和 `<runtime><assemblyBinding>` 的 `System.IdentityModel.Tokens.Jwt` 节点下添加了 `Microsoft.IdentityModel.Protocol.Extensions` 元素。
 
-选择了“读取目录数据”**** 选项时的其他更改：
+选择了“读取目录数据”  选项时的其他更改：
 
 - 在 `<appSettings>` 下添加了以下配置条目：
 
@@ -120,13 +120,13 @@ ms.locfileid: "80886103"
     </entityFramework>
     ```
 
-- 在 `Microsoft.Data.Services.Client`、`Microsoft.Data.Edm` 和 `Microsoft.Data.OData` 的 `<runtime><assemblyBinding>` 节点下添加了 `<dependentAssembly>` 元素。
+- 在 `<dependentAssembly>`、`<runtime><assemblyBinding>` 和 `Microsoft.Data.Services.Client` 的 `Microsoft.Data.Edm` 节点下添加了 `Microsoft.Data.OData` 元素。
 
 ## <a name="code-changes-and-additions"></a>代码更改和添加
 
-- 向 `Controllers/HomeController.cs` 和任何其他现有控制器添加了 `[Authorize]` 属性。
+- 向 `[Authorize]` 和任何其他现有控制器添加了 `Controllers/HomeController.cs` 属性。
 
-- 添加了身份验证启动类 `App_Start/Startup.Auth.cs`，其中包含 Azure AD 身份验证的启动逻辑。 如果选择了“读取目录数据”**** 选项，则此文件还包含用于接收 OAuth 代码以及用 OAuth 代码交换访问令牌的代码。
+- 添加了身份验证启动类 `App_Start/Startup.Auth.cs`，其中包含 Azure AD 身份验证的启动逻辑。 如果选择了“读取目录数据”  选项，则此文件还包含用于接收 OAuth 代码以及用 OAuth 代码交换访问令牌的代码。
 
 - 添加了控制器类 `Controllers/AccountController.cs`，其中包含 `SignIn` 和 `SignOut` 方法。
 
@@ -138,7 +138,7 @@ ms.locfileid: "80886103"
 
 - 添加了 `Connected Services/AzureAD/ConnectedService.json`（Visual Studio 2017）或 `Service References/Azure AD/ConnectedService.json`（Visual Studio 2015），其中包含 Visual Studio 用来跟踪连接服务添加的信息。
 
-- 如果选择了“读取目录数据”选项，则已将 `Models/ADALTokenCache.cs` 和 `Models/ApplicationDbContext.cs` 添加到支持令牌缓存。**** 另外添加了一个控制器和视图，以演示如何使用 Azure 图形 API `Controllers/UserProfileController.cs`、`Views/UserProfile/Index.cshtml` 和 `Views/UserProfile/Relogin.cshtml` 访问用户配置文件信息
+- 如果选择了“读取目录数据”选项，则已将 **和** 添加到支持令牌缓存。`Models/ADALTokenCache.cs``Models/ApplicationDbContext.cs` 另外添加了一个控制器和视图，以演示如何使用 Azure 图形 API `Controllers/UserProfileController.cs`、`Views/UserProfile/Index.cshtml` 和 `Views/UserProfile/Relogin.cshtml` 访问用户配置文件信息
 
 ### <a name="file-backup-visual-studio-2015"></a>文件备份 (Visual Studio 2015)
 
@@ -156,11 +156,11 @@ ms.locfileid: "80886103"
 ## <a name="changes-on-azure"></a>对 Azure 的更改
 
 - 在添加连接服务时选择的域中创建了 Azure AD 应用程序。
-- 更新了应用，以便在选择了“读取目录数据”选项时包含“读取目录数据”**** 权限。
+- 更新了应用，以便在选择了“读取目录数据”选项时包含“读取目录数据”  权限。
 
-[了解有关 Azure 活动目录 的更多内容](https://azure.microsoft.com/services/active-directory/)。
+[详细了解 Azure Active Directory](https://azure.microsoft.com/services/active-directory/)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure 活动目录的身份验证方案](authentication-scenarios.md)
+- [Azure Active Directory 的身份验证方案](authentication-scenarios.md)
 - [向 ASP.NET Web 应用添加 Microsoft 登录功能](quickstart-v2-aspnet-webapp.md)

@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 37fd131e570fa9f50df2479503b35407d67410cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60637529"
 ---
 # <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>使用按需流式处理操作导入一个 Postman 集合 
 
-本文包含 Postman**** 集合的定义，该集合包含调用 Azure 媒体服务 REST API 的分组 HTTP 请求。 有关如何配置 Postman **** 以用于调用媒体服务 REST API 的信息，请参阅[配置 Postman 以便进行媒体服务 REST API 调用](media-rest-apis-with-postman.md)教程。
+本文包含 Postman  集合的定义，该集合包含调用 Azure 媒体服务 REST API 的分组 HTTP 请求。 有关如何配置 Postman  以用于调用媒体服务 REST API 的信息，请参阅[配置 Postman 以便进行媒体服务 REST API 调用](media-rest-apis-with-postman.md)教程。
 
 ```json
 {

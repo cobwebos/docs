@@ -5,21 +5,21 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.custom: mvc
 ms.openlocfilehash: d2b4e20520cad28c5d62118f6c9d10fcc43ac89e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74533620"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>教程：使用资源管理器模板部署多容器组
 
 > [!div class="op_single_selector"]
 > * [YAML](container-instances-multi-container-yaml.md)
-> * [资源管理器](container-instances-multi-container-group.md)
+> * [Resource Manager](container-instances-multi-container-group.md)
 
 Azure 容器实例支持使用[容器组](container-instances-container-groups.md)将多个容器部署到单台主机上。 当生成应用程序 sidecar 以用于日志记录、监视或用于某些其他配置（其中服务需要第二个附加进程）时，容器组很有用。
 
-在本教程中，我们将按步骤运行简单的双容器挎斗配置，只需使用 Azure CLI 部署 Azure 资源管理器模板即可。 学习如何：
+在本教程中，我们将按步骤运行简单的双容器挎斗配置，只需使用 Azure CLI 部署 Azure 资源管理器模板即可。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 配置多容器组模板
@@ -31,13 +31,13 @@ Azure 容器实例支持使用[容器组](container-instances-container-groups.m
 > [!NOTE]
 > 多容器组当前仅限于 Linux 容器。 
 
-如果没有 Azure 订阅，请先创建[一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。"
+如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="configure-a-template"></a>配置模板
 
-首先将以下 JSON 复制到一个名为 `azuredeploy.json` 的新文件中。 在 Azure 云外壳中，可以使用可视化工作室代码在工作目录中创建文件：
+首先将以下 JSON 复制到一个名为 `azuredeploy.json` 的新文件中。 在 Azure Cloud Shell 中，可以使用 Visual Studio Code 在工作目录中创建文件：
 
 ```
 code azuredeploy.json
@@ -222,7 +222,7 @@ Connection: keep-alive
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你使用了 Azure 资源管理器模板在 Azure 容器实例中部署多容器组。 你已了解如何执行以下操作：
+在本教程中，你使用了 Azure 资源管理器模板在 Azure 容器实例中部署多容器组。 你已了解如何：
 
 > [!div class="checklist"]
 > * 配置多容器组模板

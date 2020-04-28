@@ -1,24 +1,24 @@
 ---
-title: 服务结构的 Azure 文件卷驱动程序
+title: 适用于 Service Fabric 的 Azure 文件存储卷驱动程序
 description: Service Fabric 支持使用 Azure 文件备份容器中的卷。
 ms.topic: conceptual
 ms.date: 6/10/2018
 ms.openlocfilehash: 514a0cb12359d58e38ebc30ae12cdb277757f2b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75750037"
 ---
-# <a name="azure-files-volume-driver-for-service-fabric"></a>服务结构的 Azure 文件卷驱动程序
+# <a name="azure-files-volume-driver-for-service-fabric"></a>适用于 Service Fabric 的 Azure 文件存储卷驱动程序
 
-Azure 文件卷驱动程序是[Docker 卷插件](https://docs.docker.com/engine/extend/plugins_volume/)，它为 Docker 容器提供基于[Azure 文件的](/azure/storage/files/storage-files-introduction)卷。 它打包为 Service Fabric 应用程序，可以部署到 Service Fabric 群集，为群集中的其他 Service Fabric 容器应用程序提供卷。
+Azure 文件存储卷驱动程序是一个 [Docker 卷插件](https://docs.docker.com/engine/extend/plugins_volume/)，可为 Docker 容器提供基于 [Azure 文件存储](/azure/storage/files/storage-files-introduction)的卷。 它将打包为 Service Fabric 应用程序，可以部署到 Service Fabric 群集以为群集内的其他 Service Fabric 容器应用程序提供卷。
 
 > [!NOTE]
-> Azure 文件卷插件的版本 6.5.661.9590 已发布，以便获得一般版本。
+> Azure 文件存储卷插件版本6.5.661.9590 已正式发布。
 >
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * Windows 版 Azure 文件卷插件仅适用于 [Windows Server 1709 版](/windows-server/get-started/whats-new-in-windows-server-1709)、[Windows 10 1709 版](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1709)或更高版本的操作系统。
 
 * Linux 版 Azure 文件卷插件适用于 Service Fabric 支持的所有操作系统版本。
@@ -127,7 +127,7 @@ Azure 文件卷驱动程序是[Docker 卷插件](https://docs.docker.com/engine/
 #### <a name="deploy-the-application-on-a-local-development-cluster"></a>在本地开发群集上部署应用程序
 执行[上面](/azure/service-fabric/service-fabric-containers-volume-logging-drivers#manual-deployment-for-standalone-clusters)的步骤 1-3。
 
- Azure 文件卷插件应用程序的默认服务实例计数为 -1，这表示有一个服务实例会部署到群集中的每个节点。 但在本地开发群集上部署 Azure 文件卷插件应用程序时，服务实例计数应指定为 1。 可以通过 InstanceCount 应用程序参数完成此操作****。 因此，在本地开发群集上创建 Azure 文件存储卷插件应用程序的命令为：
+ Azure 文件卷插件应用程序的默认服务实例计数为 -1，这表示有一个服务实例会部署到群集中的每个节点。 但在本地开发群集上部署 Azure 文件卷插件应用程序时，服务实例计数应指定为 1。 可以通过 InstanceCount 应用程序参数完成此操作  。 因此，在本地开发群集上创建 Azure 文件存储卷插件应用程序的命令为：
 
 ```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.661.9590  -ApplicationParameter @{ListenPort='19100';InstanceCount='1'}
@@ -138,7 +138,7 @@ sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type
 ```
 
 ## <a name="configure-your-applications-to-use-the-volume"></a>配置应用程序以使用卷
-以下代码片段演示如何在应用程序清单文件中指定基于 Azure 文件存储的卷。 相关特定元素为 Volume 标记****：
+以下代码片段演示如何在应用程序清单文件中指定基于 Azure 文件存储的卷。 相关特定元素为 Volume 标记  ：
 
 ```xml
 ?xml version="1.0" encoding="UTF-8"?>
@@ -172,15 +172,15 @@ sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type
 </ApplicationManifest>
 ```
 
-Azure 文件卷插件的驱动程序名称是**sfazure 文件**。 此值为应用程序清单中 Volume 标记元素的 Driver 属性而设置********。
+Azure 文件卷插件的驱动程序名称为 sfazurefile  。 此值为应用程序清单中 Volume 标记元素的 Driver 属性而设置   。
 
-在上述代码片段的 Volume 标记中，Azure 文件存储卷插件需要以下属性****：
+在上述代码片段的 Volume 标记中，Azure 文件存储卷插件需要以下属性  ：
 - **Source** - 这是卷的名称。 用户可以为其卷选取任何名称。
 - **Destination** - 此属性是卷在运行的容器中映射到的位置。 因此，目标不能为容器中的现有位置
 
-如上文代码段中的 DriverOption 元素所示，Azure 文件卷插件支持以下驱动程序选项****：
+如上文代码段中的 DriverOption 元素所示，Azure 文件卷插件支持以下驱动程序选项  ：
 - **shareName** - 为容器提供卷的“Azure 文件”文件共享的名称。
-- **存储帐户名称**- 包含 Azure 文件共享的 Azure 存储帐户的名称。
+- **storageAccountName** - 包含“Azure 文件”文件共享的 Azure 存储帐户的名称。
 - **storageAccountKey** - 包含“Azure 文件”文件共享的 Azure 存储帐户的访问密钥。
 - **storageAccountFQDN** - 与存储帐户关联的域名。 如果未指定 storageAccountFQDN，则将使用 storageAccountName 的默认后缀 (.file.core.windows.net) 形成域名。  
 
@@ -198,7 +198,7 @@ Azure 文件卷插件的驱动程序名称是**sfazure 文件**。 此值为应�
     ```
 
 ## <a name="using-your-own-volume-or-logging-driver"></a>使用自己的卷或日志记录驱动程序
-Service Fabric 还允许使用您自己的自定义[卷](https://docs.docker.com/engine/extend/plugins_volume/)或[日志记录](https://docs.docker.com/engine/admin/logging/overview/)驱动程序。 如果群集上未安装 Docker 卷/日志记录驱动程序，可使用 RDP/SSH 协议手动安装。 还可使用这些协议，通过[虚拟机规模集启动脚本](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/)或 [SetupEntryPoint 脚本](/azure/service-fabric/service-fabric-application-model)执行安装操作。
+Service Fabric 还允许使用自己的自定义[卷](https://docs.docker.com/engine/extend/plugins_volume/)或[日志记录](https://docs.docker.com/engine/admin/logging/overview/)驱动程序。 如果群集上未安装 Docker 卷/日志记录驱动程序，可使用 RDP/SSH 协议手动安装。 还可使用这些协议，通过[虚拟机规模集启动脚本](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/)或 [SetupEntryPoint 脚本](/azure/service-fabric/service-fabric-application-model)执行安装操作。
 
 以下是安装 [Azure 的 Docker 卷驱动程序](https://docs.docker.com/docker-for-azure/persistent-data-volumes/)的一个脚本实例：
 
@@ -210,7 +210,7 @@ docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:1
     DEBUG=1
 ```
 
-在应用程序中，要使用已安装的卷或日志记录驱动程序，则必须在应用程序清单中 ContainerHostPolicies 下方的 Volume 和 LogConfig 元素中指定相应的值************。
+在应用程序中，要使用已安装的卷或日志记录驱动程序，则必须在应用程序清单中 ContainerHostPolicies 下方的 Volume 和 LogConfig 元素中指定相应的值    。
 
 ```xml
 <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="hyperv">
@@ -227,7 +227,7 @@ docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:1
 </ContainerHostPolicies>
 ```
 
-指定卷插件时，Service Fabric 使用指定的参数自动创建卷。 “Volume”元素的“Source”标记是卷的名称，“Driver”标记指定卷驱动程序插件************。 “Destination”标记是“Source”在运行的容器中映射到的位置********。 因此，目标不能为容器中的现有位置。 使用 DriverOption 标记可指定选项，如下所示****：
+指定卷插件时，Service Fabric 使用指定的参数自动创建卷。 “Volume”元素的“Source”标记是卷的名称，“Driver”标记指定卷驱动程序插件    。 “Destination”标记是“Source”在运行的容器中映射到的位置   。 因此，目标不能为容器中的现有位置。 使用 DriverOption 标记可指定选项，如下所示  ：
 
 ```xml
 <Volume Source="myvolume1" Destination="c:\testmountlocation4" Driver="azure" IsReadOnly="true">
@@ -237,7 +237,7 @@ docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:1
 
 应用程序支持参数卷中前面的清单代码段所示（查找 `MyStorageVar` 有关用法示例）。
 
-如果指定了 Docker 日志记录驱动程序，则需要部署代理（或容器）以处理群集中的日志。 DriverOption 标记可用于指定日志记录驱动程序的选项****。
+如果指定了 Docker 日志记录驱动程序，则需要部署代理（或容器）以处理群集中的日志。 DriverOption 标记可用于指定日志记录驱动程序的选项  。
 
 ## <a name="next-steps"></a>后续步骤
 * 要查看容器示例（包括卷驱动程序），请访问 [Service Fabric 容器示例](https://github.com/Azure-Samples/service-fabric-containers)

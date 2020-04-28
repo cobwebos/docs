@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 638b650e485ad3e83bd6021639a7e55b540d9cdc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75451729"
 ---
 # <a name="service-fabric-events"></a>Service Fabric 事件 
@@ -25,7 +25,7 @@ Service Fabric 平台会为群集内发生的关键操作活动写入多个结�
 若要查看平台公开的事件的完整列表，请参阅 [Service Fabric 事件列表](service-fabric-diagnostics-event-generation-operational.md)。
 
 下面是群集中你应会看到其事件的一些场景的示例。 
-* 节点生命周期事件：当节点启动、发生故障、缩小/扩大、重启、被激活/被停用时，这些事件将会公开以显示发生了什么情况，并帮助查明是计算机本身发生故障还是存在通过 SF 调用 API 来修改节点状态的 API。
+* 节点生命周期事件：当节点启动、发生故障、横向缩减/扩展、重启、被激活/被停用时，这些事件将会公开以显示发生了什么情况，并帮助查明是计算机本身发生故障还是存在通过 SF 调用 API 来修改节点状态的 API。
 * 群集升级：当群集升级时（SF 版本或配置更改），将会看到升级启动、滚动通过每个升级域以及完成（或回滚）。 
 * 应用程序升级：与群集升级类似，当升级滚动完成时会生成一套完整的事件。 这些事件可用来了解升级是何时计划的、升级的当前状态以及整个事件序列。 这有助于回看哪些升级已成功实施或是否触发了回滚。
 * 应用程序/服务部署/删除：针对创建或删除的每个应用程序、服务和容器都存在对应的事件，并且在缩小或扩大（例如，增加副本的数量）时非常有用
@@ -36,7 +36,7 @@ Service Fabric 平台会为群集内发生的关键操作活动写入多个结�
 ## <a name="how-to-access-events"></a>如何访问事件
 
 可以通过以下几种不同的方式访问 Service Fabric 事件：
-* 事件通过标准通道（如 ETW/Windows 事件日志）进行记录，并且可由任何支持这些事件的监视工具（如 Azure Monitor 日志）进行可视化。 默认情况下，在门户中创建的群集已启用诊断并让 Windows Azure 诊断代理将事件发送到 Azure 表存储，但你仍需要将此群集与 Log Analytics 资源集成。 阅读有关配置 Azure[诊断代理](service-fabric-diagnostics-event-aggregation-wad.md)以修改群集的诊断配置以获取更多日志或性能计数器以及[Azure 监视器日志集成的更多内容](service-fabric-diagnostics-event-analysis-oms.md)
+* 事件通过标准通道（如 ETW/Windows 事件日志）进行记录，并且可由任何支持这些事件的监视工具（如 Azure Monitor 日志）进行可视化。 默认情况下，在门户中创建的群集已启用诊断并让 Windows Azure 诊断代理将事件发送到 Azure 表存储，但你仍需要将此群集与 Log Analytics 资源集成。 详细了解如何配置[Azure 诊断代理](service-fabric-diagnostics-event-aggregation-wad.md)来修改群集的诊断配置，以获取更多日志或性能计数器以及[Azure Monitor 日志集成](service-fabric-diagnostics-event-analysis-oms.md)
 * EventStore 服务的 Rest API 允许直接查询群集或通过 Service Fabric 客户端库进行查询。 请参阅[通过 EventStore API 查询群集事件](service-fabric-diagnostics-eventstore-query.md)。
 
 ## <a name="next-steps"></a>后续步骤

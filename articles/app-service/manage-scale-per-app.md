@@ -8,10 +8,10 @@ ms.date: 05/13/2019
 ms.author: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: f1ca4958fe2608d0c040ef5b93827a7e71a4151c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74672357"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>在 Azure 应用服务上使用按应用缩放进行高密度托管
@@ -20,10 +20,10 @@ ms.locfileid: "74672357"
 
 使用应用服务时，可以通过缩放应用服务应用在其中运行的[应用服务计划](overview-hosting-plans.md)来缩放应用。 当多个应用在同一个应用服务计划中运行时，每个横向扩展实例会在计划中运行所有应用。
 
-可在应用服务计划级别启用按应用缩放**，以便在独立于托管应用的应用服务计划的情况下缩放应用。 这样，可以将一个应用服务计划扩展到 10 个实例，而将一个应用设置为仅用 5 个。
+可在应用服务计划级别启用按应用缩放  ，以便在独立于托管应用的应用服务计划的情况下缩放应用。 这样，可以将一个应用服务计划扩展到 10 个实例，而将一个应用设置为仅用 5 个。
 
 > [!NOTE]
-> 按应用缩放仅适用于标准****、高级****、高级 V2**** 和独立**** 定价层。
+> 按应用缩放仅适用于标准  、高级  、高级 V2  和独立  定价层。
 >
 
 将应用分配给可用的应用服务计划，尽量实现跨实例的均衡分布。 尽管不能保证均衡分布，但平台会确保同一应用的两个实例不会托管在同一个应用服务计划实例上。
@@ -134,7 +134,7 @@ Set-AzWebApp $newapp
 1. 将 **numberOfWorkers** 属性设置为 **1**，创建新应用并将其分配给该应用服务计划。
    - 使用此配置会产生可能的最高密度。
 1. 可按应用独立配置辅助角色数，根据需要授予其他资源。 例如：
-   - 使用率高的应用可通过将 **numberOfWorkers** 设置为 ** 3** 来提高该应用的处理能力。
+   - 使用率高的应用可通过将 **numberOfWorkers** 设置为  **3** 来提高该应用的处理能力。
    - 使用率低的应用可将 **numberOfWorkers** 属性设置为 **1**。
 
 ## <a name="next-steps"></a>后续步骤

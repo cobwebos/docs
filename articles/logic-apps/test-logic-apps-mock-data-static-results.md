@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2019
 ms.openlocfilehash: b71aae91f4a065b70537a300aa0bd7016edfd4b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74790280"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>通过设置静态结果来使用模拟数据测试逻辑应用
@@ -25,7 +25,7 @@ ms.locfileid: "74790280"
 
 * Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。
 
-* [有关如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
 * 要在其中设置静态结果的逻辑应用
 
@@ -37,30 +37,30 @@ ms.locfileid: "74790280"
 
 1. 针对要在其中设置静态结果的操作执行以下步骤： 
 
-   1. 在该操作的右上角选择省略号 (*...*) 按钮，然后选择“静态结果”，例如：****
+   1. 在该操作的右上角选择省略号 ( *...* ) 按钮，然后选择“静态结果”，例如： 
 
       ![选择“静态结果”>“启用静态结果”](./media/test-logic-apps-mock-data-static-results/select-static-result.png)
 
-   1. 选择“启用静态结果”。**** 对于必需的 (*) 属性，请指定要为操作响应返回的模拟输出值。
+   1. 选择“启用静态结果”。  对于必需的 (*) 属性，请指定要为操作响应返回的模拟输出值。
 
       例如，下面是 HTTP 操作的必需属性：
 
-      | properties | 描述 |
+      | 属性 | 说明 |
       |----------|-------------|
       | **状态** | 要返回的操作状态 |
       | **状态代码** | 要返回的特定状态代码 |
-      | **头** | 要返回的标头内容 |
+      | **标头** | 要返回的标头内容 |
       |||
 
       ![选择“启用静态结果”](./media/test-logic-apps-mock-data-static-results/enable-static-result.png)
 
-      要以 JavaScript 对象表示法 （JSON） 格式输入模拟数据，请选择 **"切换到 JSON 模式**"（![选择"](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)切换到 JSON 模式"）。
+      若要以 JavaScript 对象表示法 (JSON) 格式输入模拟数据，请选择“切换到 JSON 模式”（![选择“切换到 JSON 模式”](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)）。 
 
-   1. 对于可选属性，请打开“选择可选字段”列表，然后选择要模拟的属性。****
+   1. 对于可选属性，请打开“选择可选字段”列表，然后选择要模拟的属性。 
 
       ![选择可选属性](./media/test-logic-apps-mock-data-static-results/optional-properties.png)
 
-1. 准备好保存时，选择“完成”。****
+1. 准备好保存时，选择“完成”。 
 
    在该操作的右上角，标题栏现在会显示量杯图标（![静态结果的图标](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)），表示已启用静态结果。
 
@@ -76,25 +76,25 @@ ms.locfileid: "74790280"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，在逻辑应用设计器中打开你的逻辑应用（如果尚未打开）。
 
-1. 在逻辑应用的主菜单中选择“概述”****。
+1. 在逻辑应用的主菜单中选择“概述”  。
 
-1. 在“运行历史记录”部分，选择所需的逻辑应用运行。****
+1. 在“运行历史记录”部分，选择所需的逻辑应用运行。 
 
 1. 在逻辑应用的工作流中，找到并展开包含所需输出的操作。
 
-1. 选择“显示原始输出”链接。****
+1. 选择“显示原始输出”链接。 
 
 1. 复制所需的完整 JavaScript 对象表示法 (JSON) 对象或特定的子节，例如 outputs 节，或者只是 headers 节。
 
-1. 遵循[设置静态结果](#set-up-static-results)中的步骤打开操作的“静态结果”框。****
+1. 遵循[设置静态结果](#set-up-static-results)中的步骤打开操作的“静态结果”框。 
 
-1. “静态结果”框打开后，选择以下任一步骤：****
+1. “静态结果”框打开后，选择以下任一步骤： 
 
-   * 要粘贴完整的 JSON 对象，请选择 **"切换到 JSON 模式**"（![选择"切换到](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)JSON 模式"）：
+   * 若要粘贴完整的 JSON 对象，请选择“切换到 JSON 模式”（![选择“切换到 JSON 模式”](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)）： 
 
      ![为完整对象选择“切换到 JSON 模式”](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-complete.png)
 
-   * 若只要粘贴某个 JSON 节，请在该节的标签旁边，选择该节对应的“切换到 JSON 模式”，例如：****
+   * 若只要粘贴某个 JSON 节，请在该节的标签旁边，选择该节对应的“切换到 JSON 模式”，例如： 
 
      ![为输出选择“切换到 JSON 模式”](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-outputs.png)
 
@@ -102,7 +102,7 @@ ms.locfileid: "74790280"
 
    ![JSON 模式](./media/test-logic-apps-mock-data-static-results/json-editing-mode.png)
 
-1. 完成后，选择“完成”****。 或者，要返回到设计器，请选择 **"切换编辑器模式**"（![选择"切换编辑器模式](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png)"）。
+1. 完成后，选择“完成”  。 或者，若要返回设计器，请选择“切换编辑器模式”（![选择“切换编辑器模式”](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png)）。 
 
 <a name="find-runs-mock-data"></a>
 
@@ -110,15 +110,15 @@ ms.locfileid: "74790280"
 
 在逻辑应用的运行历史记录中，标识其中的操作使用静态结果的运行。 若要查找这些运行，请执行以下步骤：
 
-1. 在逻辑应用的主菜单中选择“概述”****。 
+1. 在逻辑应用的主菜单中选择“概述”  。 
 
-1. 在右窗格中的“运行历史记录”下，找到“静态结果”列。******** 
+1. 在右窗格中的“运行历史记录”下，找到“静态结果”列。   
 
-   包含操作和结果的任何运行的“静态结果”列已设置为“已启用”，例如：********
+   包含操作和结果的任何运行的“静态结果”列已设置为“已启用”，例如：  
 
    ![运行历史记录 -“静态结果”列](./media/test-logic-apps-mock-data-static-results/run-history.png)
 
-1. 若要查看使用静态结果的操作，请选择“静态结果”列设置为“已启用”的所需运行。********
+1. 若要查看使用静态结果的操作，请选择“静态结果”列设置为“已启用”的所需运行。  
 
    使用静态结果的操作会显示量杯图标（![静态结果的图标](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)），例如：
 
@@ -132,7 +132,7 @@ ms.locfileid: "74790280"
 
    ![禁用静态结果](./media/test-logic-apps-mock-data-static-results/disable-static-results.png)
 
-1. 选择**禁用静态结果** > **完成**。
+1. 选择“禁用静态结果” > “完成”。  
 
    ![禁用静态结果](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
 
@@ -142,4 +142,4 @@ ms.locfileid: "74790280"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解有关[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)的更多信息
+* 详细了解 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)

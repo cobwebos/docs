@@ -1,5 +1,5 @@
 ---
-title: 我的ASP.NET 5 项目（可视化工作室连接的服务）发生了什么
+title: 我的 ASP.NET 5 项目发生了什么情况（Visual Studio 连接服务）
 description: 介绍在 Visual Studio ASP.NET 5 项目中使用 Visual Studio 连接服务连接到 Azure 存储帐户后会发生什么情况
 services: storage
 author: ghogen
@@ -14,10 +14,10 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: be99465a48aaf680834f313e03384a9f0c211502
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72300013"
 ---
 # <a name="what-happened-to-my-aspnet-5-project-visual-studio-azure-storage-connected-services"></a>我的 ASP.NET 5 项目（Visual Studio Azure 存储连接服务）发生了什么情况？
@@ -31,7 +31,7 @@ Azure 存储 NuGet 包已添加到 Visual Studio 项目。
 * **Microsoft.WindowsAzure.Configuration**
 * **Microsoft.WindowsAzure.Storage**
 * **Newtonsoft.Json**
-* **系统.数据**
+* **System.object**
 * **System.Spatial**
 
 此外，NuGet 包 **Microsoft.Framework.Configuration.Json** 已添加。

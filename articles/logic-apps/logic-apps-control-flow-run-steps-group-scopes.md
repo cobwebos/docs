@@ -1,19 +1,19 @@
 ---
-title: 按范围对操作进行分组和运行
-description: 创建基于 Azure 逻辑应用中的组状态运行的作用域操作
+title: 按范围分组和运行操作
+description: 基于 Azure 逻辑应用中的组状态创建运行范围内的操作
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
 ms.openlocfilehash: b84db69f79b1611347a4c55d929e5426141e7ac6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74791487"
 ---
-# <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用作用域，根据组状态运行操作
+# <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>使用 Azure 逻辑应用中的作用域基于组状态运行操作
 
 若要仅在另一组操作成功或失败后运行操作，请在范围** 内对这些操作进行分组。 如果你希望将各个操作组织为逻辑组，评估该组的状态并执行基于作用域状态的操作，则此结构非常有用。 当某个作用域中的所有操作都完成运行后，该作用域也确定了其自己的状态。 例如，当希望实现[异常和错误处理](../logic-apps/logic-apps-exception-handling.md#scopes)时可以使用作用域。 
 
@@ -33,7 +33,7 @@ ms.locfileid: "74791487"
 
 * 一个必应地图密钥。 若要获取此密钥，请参阅<a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">Get a Bing Maps key</a>（获取必应地图密钥）。
 
-* [有关如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
+* 有关[如何创建逻辑应用的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知识
 
 ## <a name="create-sample-logic-app"></a>创建示例逻辑应用
 
@@ -48,7 +48,7 @@ ms.locfileid: "74791487"
 
 你可以随时保存逻辑应用，因此请频繁保存你的工作。
 
-1. 如果尚未登录到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>，请进行登录。 创建空白逻辑应用。
+1. 如果尚未登录，请登录到<a href="https://portal.azure.com" target="_blank">Azure 门户</a>。 创建空白逻辑应用。
 
 1. 使用以下设置添加**计划 - 定期**触发器：**时间间隔** = 1 并且**频率** =“Minute”
 
@@ -61,10 +61,10 @@ ms.locfileid: "74791487"
 
    1. 如果尚没有必应地图连接，则会要求你创建一个连接。
 
-      | 设置 | “值” | 描述 |
+      | 设置 | 值 | 说明 |
       | ------- | ----- | ----------- |
       | **连接名称** | BingMapsConnection | 提供连接的名称。 | 
-      | **API 密钥** | <*您的 Bing 地图键*> | 输入以前接收的必应地图密钥。 | 
+      | **API 密钥** | <*必应地图-密钥*> | 输入以前接收的必应地图密钥。 | 
       ||||  
 
    1. 根据此图像下方的表中所示设置**获取路线**操作：
@@ -73,13 +73,13 @@ ms.locfileid: "74791487"
 
       有关这些参数的详细信息，请参阅 [Calculate a route](https://msdn.microsoft.com/library/ff701717.aspx)（计算路线）。
 
-      | 设置 | “值” | 描述 |
+      | 设置 | 值 | 说明 |
       | ------- | ----- | ----------- |
-      | **航点 1** | <*开始*> | 输入路线的起点。 | 
-      | **航点 2** | <*结束*> | 输入路线的目的地。 | 
+      | **航点 1** | <*start*> | 输入路线的起点。 | 
+      | **航点 2** | <*端面*> | 输入路线的目的地。 | 
       | **避免** | 无 | 输入路线上需要避免的项目，例如高速公路、收费站等。 有关可能的值，请参阅[计算路由](https://msdn.microsoft.com/library/ff701717.aspx)。 | 
       | **优化** | timeWithTraffic | 选择一个参数来优化路线，例如距离、时间（在使用当前交通信息的情况下），等等。 此示例使用以下值：timeWithTraffic | 
-      | **距离单位** | <*您的偏好*> | 输入要用来计算路线的距离单位。 此示例使用以下值：Mile | 
+      | **距离单位** | <*首选项*> | 输入要用来计算路线的距离单位。 此示例使用以下值：Mile | 
       | **旅行模式** | 驾车 | 输入路线的旅行模式。 此示例使用以下值：Driving | 
       | **运输日期/时间** | 无 | 仅适用于运输模式。 | 
       | **运输日期/时间类型** | 无 | 仅适用于运输模式。 | 
@@ -96,7 +96,7 @@ ms.locfileid: "74791487"
 
    1. 在中间的框中选择此运算符：大于****
 
-   1. 在最右侧的列中，输入此比较值，该值以秒为单位，等效于 10 分钟 **：600**
+   1. 在最右边的列中，输入此比较值（以秒为单位），相当于10分钟： **600**
 
       完成后，条件如以下示例所示：
 
@@ -130,7 +130,7 @@ ms.locfileid: "74791487"
 
       ![选择“旅行期间 - 交通”](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-2.png)
 
-   1. 字段解析为 JSON 格式后，添加**逗号**（```,```） 后跟```60```数字，以便将 **"流量持续时间流量**"中的值从秒转换为分钟。 
+   1. 在字段解析为 JSON 格式后，请添加**comma**一个逗号```,```（），后跟```60```数字，以便将**流量 Duration 流量**中的值从秒转换为分钟。 
    
       ```
       div(body('Get_route')?['travelDurationTraffic'],60)
@@ -143,7 +143,7 @@ ms.locfileid: "74791487"
    1. 完成后，选择“确定”****。
 
    <!-- markdownlint-disable MD038 -->
-   1. 解解表达式后，使用此前导空格添加此文本：``` minutes```
+   1. 表达式解析后，添加以下带前导空格的文本：``` minutes```
   
        “正文”**** 字段现在如下例所示：
 

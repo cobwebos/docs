@@ -7,15 +7,15 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: 065bbc62d65d7e91728b10cd9f95b2e73ea03abc
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878725"
 ---
-# <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>将逻辑应用资源移动到其他 Azure 资源组、区域或订阅
+# <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>将逻辑应用资源移到其他 Azure 资源组、区域或订阅
 
-要将逻辑应用或相关资源迁移到其他 Azure 资源组、区域或订阅，可以多种方式完成这些任务，例如 Azure 门户、Azure PowerShell、Azure CLI 和 REST API。 在移动资源之前，请查看以下注意事项： 
+若要将逻辑应用或相关资源迁移到其他 Azure 资源组、区域或订阅，可通过多种方式完成这些任务，如 Azure 门户、Azure PowerShell、Azure CLI 和 REST API。 在移动资源之前，请查看以下注意事项： 
 
 * 只能在 Azure 资源组或订阅之间移动[特定的逻辑应用资源类型](../azure-resource-manager/management/move-support-resources.md#microsoftlogic)。
 
@@ -23,9 +23,9 @@ ms.locfileid: "80878725"
 
 * 移动资源时，Azure 将创建新的资源 ID。 因此，请确保改用新的 ID，并更新与所要移动的资源关联的任何脚本或工具。
 
-* 在订阅、资源组或区域之间迁移逻辑应用后，必须重新创建或重新授权任何需要开放身份验证 （OAuth） 的连接。
+* 在订阅、资源组或区域之间迁移逻辑应用后，必须重新创建或重新授权需要开放身份验证（OAuth）的任何连接。
 
-* 只能将[集成服务环境 （ISE）](connect-virtual-network-vnet-isolated-environment-overview.md)移动到同一 Azure 区域或 Azure 订阅中存在的另一个资源组。 不能将 ISE 移动到存在于其他 Azure 区域或 Azure 订阅中的资源组。 此外，在此类移动之后，必须更新逻辑应用工作流、集成帐户、连接等中对 ISE 的所有引用。
+* 只能将[integration service 环境（ISE）](connect-virtual-network-vnet-isolated-environment-overview.md)转移到同一 azure 区域或 azure 订阅中的另一个资源组。 不能将 ISE 移到另一个 Azure 区域或 Azure 订阅中存在的资源组。 此外，在此类移动之后，必须在逻辑应用工作流、集成帐户、连接等中更新对 ISE 的所有引用。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -55,7 +55,7 @@ ms.locfileid: "80878725"
 
 ## <a name="move-resources-between-resource-groups"></a>在资源组之间移动资源
 
-要将资源（如逻辑应用、集成帐户或[集成服务环境 （ISE））](connect-virtual-network-vnet-isolated-environment-overview.md)移动到其他 Azure 资源组，可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API。 以下步骤使用 Azure 门户。当资源的区域相同时，可以使用此方法。 有关其他步骤和常规准备工作，请参阅[将资源移到新的资源组或订阅](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
+若要将资源（如逻辑应用、集成帐户或[integration services 环境（ISE））](connect-virtual-network-vnet-isolated-environment-overview.md)移到另一个 Azure 资源组，可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API。 以下步骤使用 Azure 门户。当资源的区域相同时，可以使用此方法。 有关其他步骤和常规准备工作，请参阅[将资源移到新的资源组或订阅](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 
 在组之间实际移动资源之前，可以测试是否能够成功地将资源移到另一个组。 有关详细信息，请参阅[验证移动](../azure-resource-manager/management/move-resource-group-and-subscription.md#validate-move)。
 

@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/28/2018
 ms.custom: seodec18
 ms.openlocfilehash: 999511c4759ee761f028a61fbfaa0310ac93d9b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74672421"
 ---
 # <a name="how-to-prepare-for-an-inbound-ip-address-change"></a>如何为入站 IP 地址更改做准备
@@ -27,17 +27,17 @@ ms.locfileid: "74672421"
 
 ## <a name="find-the-new-inbound-ip-address-in-the-azure-portal"></a>在 Azure 门户中找到新的入站 IP 地址
 
-为应用提供的新入站 IP 地址位于门户的“虚拟 IP 地址”**** 字段中。 这个新 IP 地址和旧 IP 地址现在都已连接到你的应用，之后旧 IP 地址将断开连接。
+为应用提供的新入站 IP 地址位于门户的“虚拟 IP 地址”  字段中。 这个新 IP 地址和旧 IP 地址现在都已连接到你的应用，之后旧 IP 地址将断开连接。
 
-1.  打开[Azure 门户](https://portal.azure.com)。
+1.  打开 [Azure 门户](https://portal.azure.com)。
 
-2.  在左侧导航菜单中选择“应用服务”。****
+2.  在左侧导航菜单中选择“应用服务”。 
 
 3.  从列表中选择自己的应用服务应用。
 
 1.  如果应用是一个函数应用，请参阅[函数应用入站 IP 地址](../azure-functions/ip-addresses.md#function-app-inbound-ip-address)。
 
-4.  在“设置”**** 标题下，单击左侧导航栏中的“属性”****，找到标有“虚拟 IP 地址”**** 的部分。
+4.  在“设置”  标题下，单击左侧导航栏中的“属性”  ，找到标有“虚拟 IP 地址”  的部分。
 
 5. 复制 IP 地址并重新配置域记录或 IP 机制。
 

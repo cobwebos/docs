@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 08/23/2017
 ms.author: rapatchi
 ms.openlocfilehash: b5e126ebdf3b89470472391c59d378c7a6d39b86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75609802"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>更新旧式 Java Service Fabric 应用程序，以便从 Maven 提取 Java 库
-我们最近已将 Service Fabric Java 二进制文件从 Service Fabric Java SDK 移至 Maven 托管。 现在，你可以使用 mavencentral**** 来提取最新的 Service Fabric Java 依赖项。 本快速入门介绍如何更新现有的 Java 应用程序（此前使用 Yeoman 模板或 Eclipse 创建，可与 Service Fabric Java SDK 配合使用），使之与基于 Maven 的版本兼容。
+我们最近已将 Service Fabric Java 二进制文件从 Service Fabric Java SDK 移至 Maven 托管。 现在，你可以使用 mavencentral  来提取最新的 Service Fabric Java 依赖项。 本快速入门介绍如何更新现有的 Java 应用程序（此前使用 Yeoman 模板或 Eclipse 创建，可与 Service Fabric Java SDK 配合使用），使之与基于 Maven 的版本兼容。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 1. 首先需卸载现有的 Java SDK。
 
    ```bash
@@ -35,7 +35,7 @@ ms.locfileid: "75609802"
 > 卸载 Service Fabric Java SDK 后，Yeoman 将无法使用。 请遵循[此处](service-fabric-create-your-first-linux-application-with-java.md)提到的先决条件，以便启动和运行 Service Fabric Yeoman Java 模板生成器。
 
 ## <a name="service-fabric-java-libraries-on-maven"></a>Maven 上的 Service Fabric Java 库
-Service Fabric Java 库已托管在 Maven 中。 可以在项目的 ``pom.xml`` 或 ``build.gradle`` 中添加依赖项，以便使用 mavenCentral**** 提供的 Service Fabric Java 库。
+Service Fabric Java 库已托管在 Maven 中。 可以在项目的 ``pom.xml`` 或 ``build.gradle`` 中添加依赖项，以便使用 mavenCentral  提供的 Service Fabric Java 库。
 
 ### <a name="actors"></a>执行组件
 
@@ -58,7 +58,7 @@ Service Fabric Java 库已托管在 Maven 中。 可以在项目的 ``pom.xml`` 
   }
   ```
 
-### <a name="services"></a>Services
+### <a name="services"></a>服务
 
 针对应用程序的 Service Fabric 无状态服务支持。
 
@@ -158,7 +158,7 @@ task copyDeps <<{
     }
 }
 ```
-现在，若要从 Maven 提取依赖项，更新的**** ``build.gradle`` 需包含如下所示的相应部分：
+现在，若要从 Maven 提取依赖项，更新的  ``build.gradle`` 需包含如下所示的相应部分 -
 ```
 repositories {
         mavenCentral()
@@ -232,7 +232,7 @@ dependencies {
 .
 .
 ```
-现在，若要从 Maven 提取依赖项，更新的**** ``build.gradle`` 需包含如下所示的相应部分：
+现在，若要从 Maven 提取依赖项，更新的  ``build.gradle`` 需包含如下所示的相应部分 -
 ```
 repositories {
     mavenCentral()
@@ -304,7 +304,7 @@ task copyDeps<< {
     }
 }
 ```
-现在，若要从 Maven 提取依赖项，更新的**** ``build.gradle`` 需包含如下所示的相应部分：
+现在，若要从 Maven 提取依赖项，更新的  ``build.gradle`` 需包含如下所示的相应部分 -
 ```
 repositories {
     mavenCentral()
@@ -404,7 +404,7 @@ task copyDeps<< {
         }
 }
 ```
-现在，若要从 Maven 提取依赖项，更新的**** ``build.gradle`` 需包含如下所示的相应部分：
+现在，若要从 Maven 提取依赖项，更新的  ``build.gradle`` 需包含如下所示的相应部分 -
 ```
 repositories {
     mavenCentral()

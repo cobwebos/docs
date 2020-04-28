@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 站点恢复设置 Citrix XenDesktop/XenApp 灾难恢复
+title: 设置 Citrix XenDesktop/XenApp 灾难恢复 Azure Site Recovery
 description: 本文介绍了如何使用 Azure Site Recovery 为 Citrix XenDesktop 和 XenApp 部署设置灾难恢复。
 author: ponatara
 manager: abhemraj
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
 ms.openlocfilehash: 29fbe5389da924a2ecc660aa5ce5c4bb0a0902b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74084555"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>为多层 Citrix XenApp 和 XenDesktop 部署设置灾难恢复
@@ -57,7 +57,7 @@ Citrix XenApp 和 XenDesktop 场通常具有以下部署模式：
 **方案** | **到辅助站点** | **到 Azure**
 --- | --- | ---
 **Hyper-V** | 不在范围内 | 是
-**Vmware** | 不在范围内 | 是
+**VMware** | 不在范围内 | 是
 **物理服务器** | 不在范围内 | 是
 
 ### <a name="versions"></a>版本
@@ -156,7 +156,7 @@ Citrix XenApp 和 XenDesktop 场通常具有以下部署模式：
    >[!NOTE]     
    >包含手动操作或脚本操作的步骤 4、6 和 7 仅适用于具有 MCS/PVS 目录的本地 XenApp 环境。
 
-4. 组 3 手动或脚本操作：关闭主 VDA VM。
+4. 组3手动或脚本操作：关闭主 VDA VM。
 主 VDA VM 在故障转移到 Azure 时将处于运行状态。 若要使用 Azure 宿主创建新的 MCS 目录，Master VDA VM 需处于“已停止”（已解除分配）状态。 从 Azure 门户关闭 VM。
 
 5. 故障转移组4：传递控制器和 StoreFront 服务器 VM

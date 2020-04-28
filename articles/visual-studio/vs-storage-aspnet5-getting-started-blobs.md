@@ -1,5 +1,5 @@
 ---
-title: 使用可视化工作室（ASP.NET核心）开始使用 blob 存储
+title: 使用 Visual Studio （ASP.NET Core）开始使用 blob 存储
 description: 在使用 Visual Studio 连接服务创建存储帐户后，如何开始在 Visual Studio ASP.NET Core 项目中使用 Azure Blob 存储
 services: storage
 author: ghogen
@@ -14,17 +14,17 @@ ms.date: 11/14/2017
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 81df41470c893f569fd17345e8bdf4b29641ec64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "72298836"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>开始使用 Azure Blob 存储和 Visual Studio 连接服务 (ASP.NET Core)
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
-本文介绍通过使用 Visual Studio 中的“连接服务”**** 功能在 ASP.NET Core 项目中创建或引用 Azure 存储帐户之后，如何开始在 Visual Studio 中使用 Azure Blob 存储。 执行“连接服务”**** 操作会安装相应的 NuGet 程序包，以访问项目中的 Azure 存储，并将存储帐户的连接字符串添加到项目配置文件中。 （有关 Azure 存储的一般信息，请参阅[存储文档](https://azure.microsoft.com/documentation/services/storage/)。
+本文介绍通过使用 Visual Studio 中的“连接服务”**** 功能在 ASP.NET Core 项目中创建或引用 Azure 存储帐户之后，如何开始在 Visual Studio 中使用 Azure Blob 存储。 执行“连接服务”**** 操作会安装相应的 NuGet 程序包，以访问项目中的 Azure 存储，并将存储帐户的连接字符串添加到项目配置文件中。 （有关 Azure 存储的常规信息，请参阅[存储文档](https://azure.microsoft.com/documentation/services/storage/)。）
 
 Azure Blob 存储是一项可存储大量非结构化数据的服务，用户可在世界任何地方通过 HTTP 或 HTTPS 访问这些数据。 单个 Blob 可以是任意大小。 Blob 可以是图像、音频和视频文件、原始数据以及文档文件等。 本文介绍通过使用 Visual Studio 中的“连接服务”**** 在 ASP.NET Core 项目中创建 Azure 存储帐户之后，如何开始使用 blob 存储。
 

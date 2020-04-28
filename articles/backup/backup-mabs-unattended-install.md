@@ -4,10 +4,10 @@ description: 使用 PowerShell 脚本可以无提示方式安装 Azure 备份服
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: 1539089e713bcf8e959707c6ff4a608f062a7c00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74172244"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>运行 Azure 备份服务器的无人参与安装
@@ -18,9 +18,9 @@ ms.locfileid: "74172244"
 
 ## <a name="install-backup-server"></a>安装备份服务器
 
-1. 在承载 Azure 备份服务器 V2 或更高版本的服务器上，创建一个文本文件。 （您可以在记事本或其他文本编辑器中创建该文件。将文件保存为 MABSSetup.ini。
+1. 在承载 Azure 备份服务器 V2 或更高版本的服务器上，创建一个文本文件。 （可以在记事本或其他文本编辑器中创建该文件。）将该文件保存为 MABSSetup.ini。
 
-2. 将以下代码粘贴在 MABSSetup.ini 文件中。 将括号内的文本 （）\<\>替换为环境中的值。 以下文本是一个示例：
+2. 将以下代码粘贴在 MABSSetup.ini 文件中。 将括号 (\< \>) 内的文本替换为来自你环境的值。 以下文本是一个示例：
 
    ```text
    [OPTIONS]
@@ -43,23 +43,23 @@ ms.locfileid: "74172244"
    UseExistingSQL=<1/0 use or do not use existing SQL>
    ```
 
-3. 保存文件。 然后在安装服务器上的提升的命令提示符处，输入以下命令：
+3. 保存文件。 然后在安装服务器上的提升的命令提示符下，输入以下命令：
 
    ```cmd
    start /wait <cdlayout path>/Setup.exe /i  /f <.ini file path>/setup.ini /L <log path>/setup.log
    ```
 
 可以将以下这些标志用于安装：</br>
-/f****：.ini 文件路径</br>
-/l****：日志路径</br>
-/i****：安装路径</br>
-/x****：卸载路径</br>
+/f：.ini 文件路径 </br>
+**/l**：日志路径</br>
+**/i**：安装路径</br>
+**/x**：卸载路径</br>
 
 ## <a name="next-steps"></a>后续步骤
 
-安装备份服务器之后，了解如何准备服务器或开始保护工作负载。
+安装备份服务器之后，了解如何准备服务器或开始保护工作负荷。
 
-- [准备备份服务器工作负载](backup-azure-microsoft-azure-backup.md)
+- [准备备份服务器工作负荷](backup-azure-microsoft-azure-backup.md)
 - [使用备份服务器备份 VMware 服务器](backup-azure-backup-server-vmware.md)
 - [使用备份服务器备份 SQL Server](backup-azure-sql-mabs.md)
-- [将新式备份存储添加到备份服务器](backup-mabs-add-storage.md)
+- [将 Modern Backup Storage 添加到备份服务器](backup-mabs-add-storage.md)

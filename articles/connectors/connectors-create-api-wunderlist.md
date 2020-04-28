@@ -1,5 +1,5 @@
 ---
-title: 从 Azure 逻辑应用连接到 Wunder 列表
+title: 从 Azure 逻辑应用连接到奇妙清单
 description: 使用 Azure 逻辑应用自动执行任务和工作流，用以监视和管理你的 Wunderlist 帐户中的列表、任务、提醒和其他内容
 services: logic-apps
 ms.suite: integration
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 5ac13595bd77238aaede5fa3bdc3a35ef69e8504
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74789114"
 ---
 # <a name="monitor-and-manage-wunderlist-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 Wunderlist
@@ -33,7 +33,7 @@ ms.locfileid: "74789114"
 
    你的凭据授权逻辑应用创建连接并访问你的 Wunderlist 帐户。
 
-* [有关如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
+* 有关[如何创建逻辑应用的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知识
 
 * 要在其中访问 Yammer 帐户的逻辑应用。 若要使用 Wunderlist 触发器启动，请[创建空白的逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 Wunderlist 操作，请使用其他触发器（例如**定期**触发器）启动逻辑应用。
 
@@ -48,16 +48,16 @@ ms.locfileid: "74789114"
    * 对于空白逻辑应用，请在搜索框中输入“wunderlist”作为筛选器。 
    在触发器列表下，选择所需的触发器。 
 
-     -或-
+     \- 或 -
 
    * 对于现有逻辑应用： 
    
      * 在要添加操作的最后一个步骤下，选择“新建步骤”。**** 
 
-       -或-
+       \- 或 -
 
      * 在要在其中添加操作的两个步骤之间，将鼠标指针移到步骤之间的箭头上。 
-     选择显示的加号**+**（），然后选择 **"添加操作**"。
+     选择出现的加号（**+**），然后选择 "**添加操作**"。
      
        在搜索框中，输入“wunderlist”作为筛选器。 
        在操作列表下，选择所需的操作。

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
 ms.openlocfilehash: 4990d815721ddbdde8e6eb6ebf8d6d3b49adc700
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74173385"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>使用 REST API 还原 Azure 虚拟机
@@ -31,7 +31,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="responses"></a>响应
 
-|“属性”  |类型  |说明  |
+|名称  |类型  |说明  |
 |---------|---------|---------|
 |200 正常     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
 
@@ -125,13 +125,13 @@ X-Powered-By: ASP.NET
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
 ```
 
-`{containerName}` 和 `{protectedItemName}` 是按[此处](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)所述构造的。 `{fabricName}` 是“Azure”，`{recoveryPointId}` 是[上述](#example-response)恢复点的 `{name}` 字段。
+`{containerName}` 和 `{protectedItemName}` 是按[此处](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)所述构造的。 `{fabricName}` 是“Azure”，`{recoveryPointId}` 是`{name}`上述[恢复点的 ](#example-response) 字段。
 
 ### <a name="create-request-body"></a>创建请求正文
 
 若要触发从 Azure VM 备份还原磁盘的操作，需在请求正文中包含以下组成部分。
 
-|“属性”  |类型  |说明  |
+|名称  |类型  |说明  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -165,7 +165,7 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 它将返回两个响应：创建另一个操作时为 202（已接受），该操作完成时为 200（确定）。
 
-|“属性”  |类型  |说明  |
+|名称  |类型  |说明  |
 |---------|---------|---------|
 |202 已接受     |         |     已接受    |
 
@@ -191,7 +191,7 @@ Location: https://management.azure.com/subscriptions//subscriptions/00000000-000
 X-Powered-By: ASP.NET
 ```
 
-然后通过简单的 GET 命令并使用 location 标头或 Azure-AsyncOperation 标头跟踪生成的操作**。
+然后通过简单的 GET 命令并使用 location 标头或 Azure-AsyncOperation 标头跟踪生成的操作  。
 
 ```http
 GET https://management.azure.com/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2019-05-13

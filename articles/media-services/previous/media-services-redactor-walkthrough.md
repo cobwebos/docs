@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
 ms.openlocfilehash: a8db8de6ef062dcf757f3d264379677d6550ea3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "69997680"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>使用 Azure 媒体分析进行面部修订演练
@@ -72,7 +72,7 @@ ms.locfileid: "69997680"
     ![面部修订](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
 
 3. （可选）编辑 annotations.json 文件，例如增加边界框边界。 
-4. 右键单击第一步中的输出资产，选择“Redactor”，在“修正”**** 模式下运行。 
+4. 右键单击第一步中的输出资产，选择“Redactor”，在“修正”  模式下运行。 
 
     ![面部修订](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough007.png)
 

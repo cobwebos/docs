@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 48c09a6100586c0c99f3d54f9708c770488c681f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61463814"
 ---
 #  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>创建生成 fMP4 区块的编码任务
@@ -38,14 +38,14 @@ ms.locfileid: "61463814"
 
 - 创建编码作业。
 - 获取对 **Media Encoder Standard** 编码器的引用。
-- 向作业添加一个编码任务，指定使用“自适应流式处理”预设。**** 
+- 向作业添加一个编码任务，指定使用“自适应流式处理”预设。  
 - 创建一个输出资产，其中将包含 fMP4 区块和 .ism 文件。
 - 添加事件处理程序以检查作业进度。
 - 提交作业。
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，使用 连接信息填充 app.config 文件，如使用[.NET 的媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
+设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
 
 #### <a name="example"></a>示例
 

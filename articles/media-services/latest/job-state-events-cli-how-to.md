@@ -12,15 +12,15 @@ ms.topic: article
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: 619d40ab56715b4444d8e5649c7fb3401b3f57ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71937283"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>使用 Azure CLI 创建并通过事件网格监视 Azure 媒体服务事件
 
-Azure 事件网格是针对云的事件处理服务。 此服务使用[事件订阅](../../event-grid/concepts.md#event-subscriptions)将事件消息路由到订阅者。 媒体服务事件包含响应数据中的更改所需的所有信息。 可以识别媒体服务事件，因为 eventType 属性以“Microsoft.Media”开头。 有关详细信息，请参阅[媒体服务事件架构](media-services-event-schemas.md)。
+Azure 事件网格是针对云的事件处理服务。 此服务使用[事件订阅](../../event-grid/concepts.md#event-subscriptions)将事件消息路由到订阅服务器。 媒体服务事件包含响应数据中的更改所需的所有信息。 可以识别媒体服务事件，因为 eventType 属性以“Microsoft.Media”开头。 有关详细信息，请参阅[媒体服务事件架构](media-services-event-schemas.md)。
 
 本文将使用 Azure CLI 订阅 Azure 媒体服务帐户的事件。 然后，触发事件以查看结果。 通常，你会将事件发送到处理事件数据并执行操作的终结点。 在本文中，将事件发送到收集并显示消息的 Web 应用。
 
@@ -39,7 +39,7 @@ Azure 事件网格是针对云的事件处理服务。 此服务使用[事件订
 
 在订阅媒体服务帐户的事件之前，先创建事件消息的终结点。 通常情况下，终结点基于事件数据执行操作。 在本文中，将部署用于显示事件消息的[预建 Web 应用](https://github.com/Azure-Samples/azure-event-grid-viewer)。 所部署的解决方案包括应用服务计划、应用服务 Web 应用和 GitHub 中的源代码。
 
-1. 选择“部署到 Azure”**** 将解决方案部署到你的订阅。 在 Azure 门户中，为参数提供值。
+1. 选择“部署到 Azure”  将解决方案部署到你的订阅。 在 Azure 门户中，为参数提供值。
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
@@ -59,7 +59,7 @@ az account set --subscription mySubscriptionId
 
 ## <a name="subscribe-to-media-services-events"></a>订阅媒体服务事件
 
-订阅一篇文章，告诉事件网格要跟踪哪些事件。以下示例订阅您创建的媒体服务帐户，并传递您创建的网站的 URL 作为事件通知的终结点。 
+订阅项目，告诉事件网格要跟踪哪些事件。以下示例订阅你创建的媒体服务帐户，并将所创建网站的 URL 作为事件通知的终结点传递。 
 
 将 `<event_subscription_name>` 替换为事件订阅的唯一名称。 对于 `<resource_group_name>` 和 `<ams_account_name>`，使用在创建媒体服务帐户时使用的值。 对于 `<endpoint_URL>`，请提供你的 Web 应用的 URL，并将 `api/updates` 添加到主页 URL。 在订阅时指定终结点，然后事件网格就会负责将事件路由到该终结点。 
 
