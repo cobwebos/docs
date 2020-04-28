@@ -4,10 +4,10 @@ description: 在 Azure Service Fabric 上创建第一个 Linux 容器应用程�
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.openlocfilehash: f2f8c7884323667f843382b02c73a570e58617f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75457955"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>在 Linux 上创建第一个 Service Fabric 容器应用程序
@@ -20,9 +20,9 @@ ms.locfileid: "75457955"
 > [!NOTE]
 > 本文适用于 Linux 开发环境。  Service Fabric 群集运行时和 Docker 运行时必须在同一 OS 上运行。  不能在 Windows 群集上运行 Linux 容器。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * 一台运行以下软件的开发计算机：
-  * [服务结构 SDK 和工具](service-fabric-get-started-linux.md)。
+  * [Service Fabric SDK 和工具](service-fabric-get-started-linux.md)。
   * [适用于 Linux 的 Docker CE](https://docs.docker.com/engine/installation/#prior-releases)。 
   * [Service Fabric CLI](service-fabric-cli.md)
 
@@ -111,7 +111,7 @@ helloworldapp                 latest              86838648aab6        2 minutes 
 docker run -d -p 4000:80 --name my-web-site helloworldapp
 ```
 
-name 用于为运行的容器（而不是容器 ID）命名。**
+name 用于为运行的容器（而不是容器 ID）命名。 
 
 连接到正在运行的容器。 打开 Web 浏览器并指向端口 4000 上返回的 IP 地址，例如“http:\//localhost:4000”。 此时会看到标题“Hello World!” 显示在浏览器中。
 
@@ -171,10 +171,10 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 
 ## <a name="configure-container-repository-authentication"></a>配置容器存储库身份验证
 
-请参阅[容器存储库身份验证](configure-container-repository-credentials.md)，了解如何为容器映像下载配置不同类型的身份验证。
+若要了解如何为容器映像下载配置不同类型的身份验证，请参阅[容器存储库身份验证](configure-container-repository-credentials.md)。
 
 ## <a name="configure-isolation-mode"></a>配置隔离模式
-使用 6.3 运行时版本时，Linux 容器支持 VM 隔离，从而支持两种容器隔离模式：process 和 Hyper-V。 使用 Hyper-V 隔离模式时，内核将在每个容器与容器主机之间隔离。 Hyper-V 隔离使用[透明容器](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker)实现。 在应用程序清单文件中的 `ServicePackageContainerPolicy` 元素内，为 Linux 群集指定了隔离模式。 可以指定的隔离模式为 `process`、`hyperv` 和 `default`。 默认为 process 隔离模式。 以下代码片段演示如何在应用程序清单文件中指定隔离模式。
+使用 6.3 运行时版本时，Linux 容器支持 VM 隔离，从而支持两种容器隔离模式：process 和 Hyper-V。 使用 Hyper-V 隔离模式时，内核将在每个容器与容器主机之间隔离。 Hyper-v 隔离是使用 "[清除容器](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker)" 实现的。 在应用程序清单文件中的 `ServicePackageContainerPolicy` 元素内，为 Linux 群集指定了隔离模式。 可以指定的隔离模式为 `process`、`hyperv` 和 `default`。 默认为 process 隔离模式。 以下代码片段演示如何在应用程序清单文件中指定隔离模式。
 
 ```xml
 <ServiceManifestImport>
@@ -370,7 +370,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 若要将其他容器服务添加到使用 yeoman 创建的应用程序，请执行以下步骤：
 
 1. 将目录更改为现有应用程序的根目录。 例如，如果 `MyApplication` 是 Yeoman 创建的应用程序，则使用 `cd ~/YeomanSamples/MyApplication`。
-2. 运行 
+2. `yo azuresfcontainer:AddService`运行
 
 <a id="manually"></a>
 
@@ -445,7 +445,7 @@ Service Fabric 运行时为下载和解压缩容器映像分配了 20 分钟的�
  <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
 ```
 
-**** ContainersRetentionCount 设置指定在容器故障时需保留的容器数。 如果指定一个负值，则会保留所有故障容器。 未指定**容器保留计数**属性时，将不会保留任何容器。 **** ContainersRetentionCount 属性还支持应用程序参数，因此用户可以为测试性群集和生产群集指定不同的值。 使用此功能时可使用放置约束，将容器服务的目标设置为特定的节点，防止将容器服务移至其他节点。 使用此功能保留的容器必须手动删除。
+**** ContainersRetentionCount 设置指定在容器故障时需保留的容器数。 如果指定一个负值，则会保留所有故障容器。 如果未指定**ContainersRetentionCount**属性，则不会保留任何容器。 **** ContainersRetentionCount 属性还支持应用程序参数，因此用户可以为测试性群集和生产群集指定不同的值。 使用此功能时可使用放置约束，将容器服务的目标设置为特定的节点，防止将容器服务移至其他节点。 使用此功能保留的容器必须手动删除。
 
 ## <a name="start-the-docker-daemon-with-custom-arguments"></a>使用自定义参数启动 Docker 守护程序
 

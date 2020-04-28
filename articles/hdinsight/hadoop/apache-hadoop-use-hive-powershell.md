@@ -1,6 +1,6 @@
 ---
 title: 在 HDInsight 中将 Apache Hive 与 PowerShell 配合使用 - Azure
-description: 使用 PowerShell 在 Azure HDInsight 中使用 Apache Hadoop 中运行 Apache Hive 查询
+description: 使用 PowerShell 在 Azure HDInsight 的 Apache Hadoop 中运行 Apache Hive 查询
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,22 +9,22 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
 ms.openlocfilehash: deaa934b257fab74830d75e308a283e7608dc590
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75552587"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>使用 PowerShell 运行 Apache Hive 查询
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-本文档提供了使用 Azure PowerShell 在 HDInsight 群集上的 Apache Hadoop 中运行 Apache Hive 查询的示例。
+本文档举例说明如何使用 Azure PowerShell 在 Apache Hadoop on HDInsight 群集中运行 Apache Hive 查询。
 
 > [!NOTE]  
 > 本文档未详细描述示例中使用的 HiveQL 语句的作用。 有关此示例中使用的 HiveQL 的信息，请参阅[将 Apache Hive 与 HDInsight 上的 Apache Hadoop 配合使用](hdinsight-use-hive.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * HDInsight 中的 Apache Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
 
@@ -37,8 +37,8 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Hive 查询�
 在远程 HDInsight 群集上运行 Hive 查询时，将使用以下 Cmdlet：
 
 * `Connect-AzAccount`：在 Azure 订阅中进行 Azure PowerShell 身份验证。
-* `New-AzHDInsightHiveJobDefinition`：使用指定的 HiveQL 语句创建“作业定义”**。
-* `Start-AzHDInsightJob`：将作业定义发送到 HDInsight 并启动作业。 将返回作业对象**。
+* `New-AzHDInsightHiveJobDefinition`：使用指定的 HiveQL 语句创建“作业定义”  。
+* `Start-AzHDInsightJob`：将作业定义发送到 HDInsight 并启动作业。 将返回作业对象  。
 * `Wait-AzHDInsightJob`：使用作业对象来检查作业的状态。 它等到作业完成或超出等待时间。
 * `Get-AzHDInsightJobOutput`：用于检索作业的输出。
 * `Invoke-AzHDInsightHiveJob`：用于运行 HiveQL 语句。 此 cmdlet 将阻止查询完成，然后返回结果。
@@ -54,7 +54,7 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Hive 查询�
 
         .\hivejob.ps1
 
-    脚本运行时，系统会提示您输入群集名称和 HTTPS/群集管理员帐户凭据。 可能还会提示登录到 Azure 订阅。
+    脚本运行时，系统会提示输入群集名称和 HTTPS/群集管理员帐户凭据。 可能还会提示登录到 Azure 订阅。
 
 3. 作业完成时，它会返回类似以下文本的信息：
 
@@ -80,7 +80,7 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Hive 查询�
    >
    > 有关 **Here-Strings** 的详细信息，请参阅<a href="https://technet.microsoft.com/library/ee692792.aspx" target="_blank">使用 Windows PowerShell Here-Strings</a>。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 如果作业完成时未返回任何信息，请查看错误日志。 若要查看此作业的错误信息，请将以下内容添加到 `hivejob.ps1` 文件的末尾，保存并重新运行该文件。
 

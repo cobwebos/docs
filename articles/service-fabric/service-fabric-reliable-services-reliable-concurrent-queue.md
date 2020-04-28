@@ -4,10 +4,10 @@ description: ReliableConcurrentQueue 是一个高吞吐量队列，它允许并�
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.openlocfilehash: a7115db8259fde0e87e53557ecef730f8e82d2fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75462739"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Azure Service Fabric 中的可靠并发队列简介
@@ -29,12 +29,12 @@ ms.locfileid: "75462739"
 
 可靠并发队列的一个使用示例是[消息队列](https://en.wikipedia.org/wiki/Message_queue)方案。 在该方案中，一个或多个消息生成者会创建项并将其添加到队列中，同时还会有一个或多个消息使用者从队列拉取消息并对其进行处理。 多个生成者和使用者可以独立操作，使用并发事务来处理队列。
 
-## <a name="usage-guidelines"></a>使用准则
+## <a name="usage-guidelines"></a>使用指南
 * 队列希望队列中的项的保留期较短。 换句话说，项呆在队列中的时间不宜过长。
 * 队列不保证严格的 FIFO 排序。
 * 队列不读取自己的写入。 项在事务中排队时，该项对于同一事务中的取消排队者来说为不可见。
-* 取消排队不是相互隔离的。 如果项 A 在事务 txnA 中取消排队，则即使 txnA 尚未提交，项 A 也不会对并发事务 txnB 可见。**********  如果 txnA 中止，A 会立刻变得对 txnB 可见。******
-* 可以先使用 TryDequeueAsync**，再中止事务，从而实现 TryPeekAsync** 行为。 可以在“编程模式”部分中找到此行为的示例。
+* 取消排队不是相互隔离的。 如果项 A 在事务 txnA 中取消排队，则即使 txnA 尚未提交，项 A 也不会对并发事务 txnB 可见。       如果 txnA 中止，A 会立刻变得对 txnB 可见。   
+* 可以先使用 TryDequeueAsync  ，再中止事务，从而实现 TryPeekAsync  行为。 可以在“编程模式”部分中找到此行为的示例。
 * 计数是非事务性的。 可以通过计数来了解队列中的元素数目，但计数只代表一个时间点的情况，可靠性不强。
 * 在事务处于活动状态时，不应对取消排队项执行开销高昂的处理，以避免可能对系统性能产生影响的长时间运行事务。
 
@@ -51,7 +51,7 @@ IReliableConcurrentQueue<int> queue = await this.StateManager.GetOrAddAsync<IRel
 ### <a name="enqueueasync"></a>EnqueueAsync
 下面是使用 EnqueueAsync 的一些代码片段及其预期输出。
 
-- 案例 1：单个排队任务**
+- 案例 1：单个排队任务 
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -70,7 +70,7 @@ using (var txn = this.StateManager.CreateTransaction())
 > 20, 10
 
 
-- 案例 2：并行排队任务**
+- 案例 2：并行排队任务 
 
 ```
 // Parallel Task 1
@@ -99,7 +99,7 @@ using (var txn = this.StateManager.CreateTransaction())
 下面是使用 TryDequeueAsync 的一些代码片段及预期输出。 假定已在队列中填充以下项：
 > 10, 20, 30, 40, 50, 60
 
-- 案例 1：单个取消排队任务**
+- 案例 1：单个取消排队任务 
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -114,7 +114,7 @@ using (var txn = this.StateManager.CreateTransaction())
 
 假定任务已成功完成，且没有并发事务在修改队列。 由于无法推断队列中项的顺序，可能会采用任意顺序取消任意三个项的排队。 队列会尝试让项保持原有的（排队）顺序，但在出现并发操作或错误的情况下，也可能会强制其重新排序。  
 
-- 案例 2：并行取消排队任务**
+- 案例 2：并行取消排队任务 
 
 ```
 // Parallel Task 1
@@ -138,11 +138,11 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-假定任务已成功完成且是以并行方式运行的，同时没有其他并发事务在修改队列。 由于无法推断队列中项的顺序，列表 dequeue1 和 dequeue2 均会包含采用任意顺序的任意两个项。****
+假定任务已成功完成且是以并行方式运行的，同时没有其他并发事务在修改队列。 由于无法推断队列中项的顺序，列表 dequeue1 和 dequeue2 均会包含采用任意顺序的任意两个项。  
 
-同一项不会出现在两个列表中。** 因此，如果 dequeue1 包含 10、30，则 dequeue2 就会包含 20、40。********
+同一项不会出现在两个列表中。  因此，如果 dequeue1 包含 10、30，则 dequeue2 就会包含 20、40。    
 
-- 案例 3：通过中止事务排定取消排队任务顺序**
+- 案例 3：通过中止事务排定取消排队任务顺序 
 
 中止正在取消排队的事务，项就会重新回到队列头。 项回到队列头的顺序是不确定的。 请看以下代码：
 
@@ -164,7 +164,7 @@ using (var txn = this.StateManager.CreateTransaction())
 > 
 > 20, 10
 
-事务未成功提交的所有案例均是如此。**
+事务未成功提交的所有案例均是如此。 
 
 ## <a name="programming-patterns"></a>编程模式
 此部分介绍一些编程模式，在使用 ReliableConcurrentQueue 时可能会用到这些模式。
@@ -264,7 +264,7 @@ while(!cancellationToken.IsCancellationRequested)
 ```
 
 ### <a name="best-effort-drain"></a>尽力清空
-考虑到数据结构的并发特性，不保证队列会被清空。  即使队列中没有正在进行的用户操作，对 TryDequeueAsync 的特定调用也可能不会返回以前排队和提交的项。  排队的项最终必定会变得对取消排队操作可见，** 但在没有带外通信机制的情况下，独立的使用者无法知道队列是否已达到稳定状态，即使系统已停止所有生成者且不允许新的排队操作。 因此，清空操作只能尽力而为，其执行情况如下所示。
+考虑到数据结构的并发特性，不保证队列会被清空。  即使队列中没有正在进行的用户操作，对 TryDequeueAsync 的特定调用也可能不会返回以前排队和提交的项。  排队的项最终必定会变得对取消排队操作可见，  但在没有带外通信机制的情况下，独立的使用者无法知道队列是否已达到稳定状态，即使系统已停止所有生成者且不允许新的排队操作。 因此，清空操作只能尽力而为，其执行情况如下所示。
 
 用户应停止所有后续的生成者和使用者任务，等待正在进行的事务提交或中止，并尝试清空队列。  如果用户知道队列中预期的项数，则可以设置一个通知，通知所有项都已取消排队。
 
@@ -303,7 +303,7 @@ do
 ```
 
 ### <a name="peek"></a>速览
-可靠并发队列不提供 TryPeekAsync** API。 用户可以先使用 TryDequeueAsync**，再中止事务，从而获取速览语义。 在以下示例中，仅当项的值大于 10 时，才会处理取消排队操作。**
+可靠并发队列不提供 TryPeekAsync  API。 用户可以先使用 TryDequeueAsync  ，再中止事务，从而获取速览语义。 在以下示例中，仅当项的值大于 10 时，才会处理取消排队操作。 
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -336,7 +336,7 @@ using (var txn = this.StateManager.CreateTransaction())
 * [Reliable Services 快速启动](service-fabric-reliable-services-quick-start.md)
 * [使用 Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [Reliable Services 通知](service-fabric-reliable-services-notifications.md)
-* [可靠的服务备份和恢复（灾难恢复）](service-fabric-reliable-services-backup-restore.md)
+* [Reliable Services 备份和还原（灾难恢复）](service-fabric-reliable-services-backup-restore.md)
 * [可靠状态管理器配置](service-fabric-reliable-services-configuration.md)
 * [Service Fabric Web API 服务入门](service-fabric-reliable-services-communication-webapi.md)
 * [Reliable Services 编程模型的高级用法](service-fabric-reliable-services-advanced-usage.md)

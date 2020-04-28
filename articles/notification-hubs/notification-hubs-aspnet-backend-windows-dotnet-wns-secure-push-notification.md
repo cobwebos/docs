@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: db42cf7f886855af77073963e6f04ac088ca5612
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75530725"
 ---
 # <a name="securely-push-notifications-from-azure-notification-hubs"></a>从 Azure 通知中心安全地推送通知
@@ -159,7 +159,7 @@ ms.locfileid: "75530725"
     using Windows.UI.Notifications;
     using Windows.Data.Xml.Dom;
     ```
-11. 在解决方案资源管理器中，在**NotifyUserWindowsPhone（Windows Phone 8.1）** 项目中，右键单击 **"参考"，** 然后单击"**添加参考..."** 在"参考管理器"对话框中，选中**PushBackground组件**旁边的复选框，然后单击"**确定**"。
+11. 在解决方案资源管理器的**NotifyUserWindowsPhone （Windows Phone 8.1）** 项目中，右键单击 "**引用**"，然后单击 "**添加引用 ...**"。在 "引用管理器" 对话框中，选中 " **PushBackgroundComponent**" 旁边的框，然后单击 **"确定"**。
 12. 在“解决方案资源管理器”中，双击 **NotifyUserWindowsPhone (Windows Phone 8.1)** 项目中的“**Package.appxmanifest**”。 在“**通知**”下，将“****”设置为“****”。
 
     ![][3]
@@ -168,7 +168,7 @@ ms.locfileid: "75530725"
 15. 在“**应用设置**”下的 **Package.appxmanifest** 中，在“**入口点**”字段中键入 **PushBackgroundComponent.PushBackgroundTask**。
 
     ![][13]
-16. 在 **"文件"** 菜单中，单击"**全部保存**"。
+16. 在 "**文件**" 菜单中，单击 "**全部保存**"。
 
 ## <a name="run-the-application"></a>运行应用程序
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 283ad2c63bb59771dab7881522e737f773ab1705
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75463371"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>迁移应用程序之前了解云服务与 Service Fabric 之间的差异。
@@ -81,7 +81,7 @@ Service Fabric 提供服务发现机制（称为“命名服务”），用于�
 ![Service Fabric 直接通信][8]
 
 ## <a name="parity"></a>Parity
-[云服务在控制程度与易用性上与服务交换矩阵类似，但现在它是一种旧服务，并且服务交换矩阵被推荐用于新开发](https://docs.microsoft.com/azure/app-service/overview-compare);以下是 API 比较：
+[云服务在控制度和易用性方面与 Service Fabric 相似，但它现在是一种旧 Service Fabric 服务，建议用于新开发](https://docs.microsoft.com/azure/app-service/overview-compare);下面是一个 API 比较：
 
 
 | **云服务 API** | **Service Fabric API** | **说明** |

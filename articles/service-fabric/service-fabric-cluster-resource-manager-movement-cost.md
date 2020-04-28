@@ -1,15 +1,15 @@
 ---
-title: 服务结构群集资源管理器：移动成本
-description: 了解 Service Fabric 服务的移动成本，以及如何指定它以满足任何体系结构需求，包括动态配置。
+title: Service Fabric 群集资源管理器：移动成本
+description: 了解 Service Fabric 服务的移动成本，以及如何将其指定为适合任何结构需求（包括动态配置）。
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: af3e01d0d5a605c052be24eed8e14ee3449e2c79
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75563337"
 ---
 # <a name="service-movement-cost"></a>服务移动成本
@@ -19,7 +19,7 @@ ms.locfileid: "75563337"
 
 群集资源管理器提供两种方式来计算和限制成本，同时尝试管理群集。 第一种机制只需计算它所进行的每次移动。 如果生成的两个解决方案的均衡值（分数）大致相同，则群集资源管理器倾向于采用成本（移动总量）最低的解决方案。
 
-此策略适用。 但是，对于默认负载或静态负载，在任何复杂的系统中不太可能所有移动都一样。 有些移动的成本可能要昂贵得多。
+此策略很适用。 但是，对于默认负载或静态负载，在任何复杂的系统中不太可能所有移动都一样。 有些移动的成本可能要昂贵得多。
 
 ## <a name="setting-move-costs"></a>设置移动成本 
 可在服务创建时为其指定默认的移动成本：
@@ -67,11 +67,11 @@ this.Partition.ReportMoveCost(MoveCost.Medium);
 ```
 
 ## <a name="impact-of-move-cost"></a>移动成本的影响
-移动成本有五个级别：零、低、中、高和非常高。 下列规则适用：
+MoveCost 有五个级别：Zero、Low、Medium、High 和 VeryHigh。 以下规则适用：
 
 * MoveCost 是相互的，但 Zero 和 VeryHigh 除外。 
-* 零移动成本表示移动不会产生成本，不应计入解决方案的分数。
-* 将移动成本设置为 High 或 VeryHigh 并不能确保副本不会被移动。****
+* “零”移动成本表示移动不会产生成本，不应计入解决方案的分数。
+* 将移动成本设置为 High 或 VeryHigh 并不能确保副本不会被移动。  
 * 移动成本为 VeryHigh 的副本进行移动的前提是在群集中存在约束冲突，该冲突无法通过任何其他方式解决（即使需要移动许多其他的副本来解决冲突）
 
 
@@ -85,7 +85,7 @@ MoveCost 可帮助我们在达成对等的均衡时，查找整体导致最少�
 
 - 服务必须移动的状态或数据量。
 - 客户端断开连接的成本。 移动主要副本的成本通常比移动次要副本的成本更高。
-- 中断某些进行中操作的成本。 某些数据存储级别的操作，或者为了响应客户端调用而执行的操作，成本都很高。 在特定的时间点后，除非有必要，否则我们不会停止这些操作。 因此，执行该操作时，将增加此服务对象的移动成本，以减小其移动的可能性。 当操作完成之后，可以将成本设置恢复正常。
+- 中断某些进行中操作的成本。 某些数据存储级别的操作，或者为了响应客户端调用而执行的操作，成本都很高。 在特定的时间点后，除非有必要，否则我们不会停止这些操作。 因此，当操作正在进行时，提高该服务对象的移动成本可以降低其移动的可能性。 当操作完成之后，可以将成本重新设置为正常。
 
 > [!IMPORTANT]
 > 应慎重考虑使用 VeryHigh 移动成本，因为它会极大地限制群集资源管理器在群集中查找全局最佳放置解决方案的功能。 移动成本为 VeryHigh 的副本进行移动的前提是在群集中存在约束冲突，该冲突无法通过任何其他方式解决（即使需要移动许多其他的副本来解决冲突）
@@ -102,7 +102,7 @@ ClusterManifest.xml：
         </Section>
 ```
 
-通过 ClusterConfig.json 进行独立部署或将 Template.json 用于 Azure 托管群集：
+通过用于独立部署的 ClusterConfig.json 或用于 Azure 托管群集的 Template.json：
 
 ```json
 "fabricSettings": [
@@ -120,6 +120,6 @@ ClusterManifest.xml：
 
 ## <a name="next-steps"></a>后续步骤
 - Service Fabric 群集资源管理器使用指标管理群集中的消耗和容量。 有关指标以及如何配置指标的详细信息，请查看[在 Service Fabric 中使用指标管理资源消耗和负载](service-fabric-cluster-resource-manager-metrics.md)。
-- 若要了解群集 Resource Manager 如何管理和均衡群集中的负载，请查看[均衡 Service Fabric 群集](service-fabric-cluster-resource-manager-balancing.md)。
+- 有关群集 Resource Manager 如何在群集中管理和均衡负载的详细信息，请查看[均衡 Service Fabric 群集](service-fabric-cluster-resource-manager-balancing.md)。
 
 [Image1]:./media/service-fabric-cluster-resource-manager-movement-cost/service-most-cost-example.png

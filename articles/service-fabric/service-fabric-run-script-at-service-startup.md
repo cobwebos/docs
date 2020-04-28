@@ -6,19 +6,19 @@ ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: atsenthi
 ms.openlocfilehash: a25f16f08ab8ae9564363f179d19d4b30c5315fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75464286"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>以本地用户或系统帐户身份运行服务启动脚本
 在启动 Service Fabric 服务可执行文件之前，可能需要进行某种配置或设置工作。  例如，配置环境变量。 可以在服务的服务清单中指定要在服务可执行文件启动前运行的脚本。 通过为服务安装程序入口点配置 RunAs 策略，可以更改在其下运行安装程序可执行文件的帐户。  使用单独的安装程序入口点，可在短时间内运行高权限配置，因此服务主机可执行文件不需要长时间使用高权限运行。
 
-安装程序入口点（[服务清单](service-fabric-application-and-service-manifests.md)中的 **SetupEntryPoint**）是特权入口点，默认情况下以与 Service Fabric 相同的凭据（通常是 *NetworkService* 帐户）先于任何其他入口点运行。 **EntryPoint** 指定的可执行文件通常是长时间运行的服务主机。 **EntryPoint** 可执行文件在 **SetupEntryPoint** 可执行文件成功退出后运行。 如果总是终止或崩溃，则将监视并重启所产生的进程（再次从 **SetupEntryPoint** 开始）。 
+安装程序入口点（**服务清单**中的 [SetupEntryPoint](service-fabric-application-and-service-manifests.md)）是特权入口点，默认情况下以与 Service Fabric 相同的凭据（通常是 *NetworkService* 帐户）先于任何其他入口点运行。 **EntryPoint** 指定的可执行文件通常是长时间运行的服务主机。 **EntryPoint** 可执行文件在 **SetupEntryPoint** 可执行文件成功退出后运行。 如果总是终止或崩溃，则将监视并重启所产生的进程（再次从 **SetupEntryPoint** 开始）。 
 
 ## <a name="configure-the-service-setup-entry-point"></a>配置服务安装程序入口点
-下面是无状态服务的一个简单服务清单示例，该示例在服务 **SetupEntryPoint** 中指定了安装程序脚本 *MySetup.bat*。  **Arguments** 用于在脚本运行时将参数传递给脚本。
+下面是无状态服务的一个简单服务清单示例，该示例在服务 *SetupEntryPoint* 中指定了安装程序脚本 **MySetup.bat**。  **Arguments** 用于在脚本运行时将参数传递给脚本。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -131,7 +131,7 @@ ms.locfileid: "75464286"
 ```
 
 > [!NOTE]
-> 对于 Linux 群集，若要以根**** 身份运行服务或安装程序入口点，可以将 AccountType**** 指定为 LocalSystem****。
+> 对于 Linux 群集，若要以根  身份运行服务或安装程序入口点，可以将 AccountType  指定为 LocalSystem  。
 
 ## <a name="run-a-script-from-the-setup-entry-point"></a>从安装程序入口点运行脚本
 现在将启动脚本添加到项目，以便在管理员特权下运行。 

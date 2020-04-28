@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: gwallace
 ms.openlocfilehash: e38cecfe206f21f9189493e7ed6e8f0cadda9cd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "75463567"
 ---
-Azure 客户每月可解锁 25,000 封免费电子邮件。 这些 25，000 封免费每月电子邮件将让您访问高级报告和分析[以及所有][all APIs]API（Web、SMTP、事件、分析等）。 有关 SendGrid 提供的其他服务的信息，请访问 [SendGrid 解决方案][SendGrid Solutions]页。
+Azure 客户每月可解锁 25,000 封免费电子邮件。 这些25000免费的每月电子邮件将让你访问高级报告和分析以及[所有 api][all APIs] （WEB、SMTP、事件、分析等）。 有关 SendGrid 提供的其他服务的信息，请访问 [SendGrid 解决方案][SendGrid Solutions]页。
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>注册 SendGrid 帐户
-1. 登录到 Azure[门户][Azure portal]。
-2. 在 Azure 门户菜单或主页中，选择 **"创建资源**"。
+1. 登录 [Azure 门户][Azure portal]。
+2. 在 "Azure 门户" 菜单或 "主页" 中，选择 "**创建资源**"。
 
     ![command-bar-new][command-bar-new]
-3. 搜索并选择 **"发送网格**"。
+3. 搜索并选择 " **SendGrid**"。
 
     ![sendgrid-store][sendgrid-store]
 4. 完成注册表单，并选择“创建”****。
@@ -26,7 +26,7 @@ Azure 客户每月可解锁 25,000 封免费电子邮件。 这些 25，000 封�
     ![sendgrid-create][sendgrid-create]
 5. 输入“名称”**** 标识 Azure 设置中的 SendGrid 服务。 名称的长度必须介于 1 到 100 个字符之间，并只能包含字母字符、短划线、句点和下划线。 名称在订阅的 Azure 应用商店项目的列表中必须是唯一的。
 6. 输入并确认“密码”****。
-7. 选择您的**订阅**。
+7. 选择**订阅**。
 8. 新建“资源组”**** 或使用现有资源组。
 9. 在“定价层”**** 对话框中，选择要注册的 SendGrid 计划。
 
@@ -34,11 +34,11 @@ Azure 客户每月可解锁 25,000 封免费电子邮件。 这些 25，000 封�
 10. 如果有“促销代码”****，请输入。
 11. 输入“联系信息”****。
 12. 查看并接受“法律条款”****。
-13. 确认购买后，您将看到 **"部署成功"** 弹出窗口，您将看到列出的帐户。
+13. 确认你的购买后，你会看到 "**部署成功**" 弹出窗口，你会看到你的帐户已列出。
 
     ![all-resources][all-resources]
 
-    完成购买并单击“管理”**** 按钮启动电子邮件验证过程后，用户将收到一封来自 SendGrid 的电子邮件，要求验证其帐户。 如果您没有收到此电子邮件，或验证您的帐户时遇到问题，请参阅我们的常见问题解答。
+    完成购买并单击“管理”**** 按钮启动电子邮件验证过程后，用户将收到一封来自 SendGrid 的电子邮件，要求验证其帐户。 如果你没有收到此电子邮件，或验证你的帐户时遇到问题，请参阅我们的常见问题解答。
 
     ![manage][manage]
 

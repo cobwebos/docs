@@ -4,10 +4,10 @@ description: 介绍如何在 Azure 资源管理器模板中定义变量。
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.openlocfilehash: cf135959d30702ea58b7a1d4fdd82625a39245d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75483812"
 ---
 # <a name="variables-in-azure-resource-manager-template"></a>Azure 资源管理器模板中的变量
@@ -85,7 +85,7 @@ ms.locfileid: "75483812"
 
 以下示例演示了使用变量的方案。
 
-|模板  |描述  |
+|模板  |说明  |
 |---------|---------|
 | [变量定义](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | 演示不同类型的变量。 该模板不部署任何资源。 它构造变量值并返回这些值。 |
 | [配置变量](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | 演示如何使用定义配置值的变量。 该模板不部署任何资源。 它构造变量值并返回这些值。 |

@@ -1,5 +1,5 @@
 ---
-title: 示例 API 管理策略 - 向后端服务添加功能
+title: API 管理策略示例-向后端服务添加功能
 titleSuffix: Azure API Management
 description: Azure API 管理策略示例 - 演示如何向后端服务添加功能。 例如，接受位置的名称而不是天气预报 API 中的纬度和经度。
 services: api-management
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: e286f77009a17870332ed5caf1c66c18dd21d020
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75442470"
 ---
 # <a name="add-capabilities-to-a-backend-service"></a>向后端服务添加功能
@@ -26,7 +26,7 @@ ms.locfileid: "75442470"
 
 ## <a name="policy"></a>策略
 
-将代码粘贴到“入站”块中****。
+将代码粘贴到“入站”块中  。
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Call out to an HTTP endpoint and cache the response.policy.xml)]
 

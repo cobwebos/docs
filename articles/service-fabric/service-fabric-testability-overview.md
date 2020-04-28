@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: anmola
 ms.openlocfilehash: d5c770a4d823ebe9b2700b081c407c54dd1d18a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75465568"
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>故障分析服务介绍
@@ -49,9 +49,9 @@ Service Fabric 让编写和管理分布式可扩展应用程序的工作变得�
 1. 从客户端发出关闭节点请求。
 1. 将请求发送到正确的节点。
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 如果找不到该节点，则请求失败。
+    a. 如果找不到该节点，则请求失败。
    
-    b.保留“数据库类型”设置，即设置为“共享”。 如果找到该节点，则它应该仅返回节点是否关闭。
+    b. 如果找到该节点，则它应该仅返回节点是否关闭。
 
 从测试角度看，为了验证故障，需要知道当引入故障时，故障实际发生的情况。 Service Fabric 提供的保证是当命令抵达节点时，该节点要么即将关闭，要么已经关闭。 在任何一种情况下，测试都应能够正确推断状态，并且在其验证中正确得出成功或失败的结论。 未采用 Service Fabric 来实现的提供相同故障的系统会遇到大量的网络、硬件和软件问题，这些问题会妨碍其提供上述保证。 在出现上述问题时，Service Fabric 将重新配置群集状态以解决问题，因此，故障分析服务仍然能够提供正确的保证。
 
@@ -83,7 +83,7 @@ Service Fabric 让编写和管理分布式可扩展应用程序的工作变得�
 
 故障分析服务功能位于 Microsoft.ServiceFabric NuGet 包中的 System.Fabric 命名空间中。 要使用故障分析服务功能，请在项目中作为一个引用包含 nuget 程序包。
 
-**电源外壳**
+**PowerShell**
 
 若要使用 PowerShell，必须安装 Service Fabric SDK。 安装 SDK 后，ServiceFabric PowerShell 模块会自动加载以供使用。
 

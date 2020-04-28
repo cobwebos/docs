@@ -1,15 +1,15 @@
 ---
-title: 使用证书保护 Windows 上的群集
+title: 使用证书在 Windows 上保护群集
 description: 保护 Azure Service Fabric 独立群集或本地群集内部的通信，以及客户端与群集之间的通信。
 author: dkkapur
 ms.topic: conceptual
 ms.date: 10/15/2017
 ms.author: dekapur
 ms.openlocfilehash: 5a18f957dfb7143f403d5ac30ea184023021f12c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75613918"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>使用 X.509 证书在 Windows 上保护独立群集
@@ -118,8 +118,8 @@ ms.locfileid: "75613918"
 
 | **CertificateInformation 设置** | **说明** |
 | --- | --- |
-| ClusterCertificate |建议用于测试环境。 需要使用此证书来保护群集节点之间的通信。 可以使用两个不同的证书（一个主证书和一个辅助证书）进行升级。 在 Thumbprint 部分设置主证书的指纹，在 ThumbprintSecondary 变量中设置辅助证书的指纹。 |
-| ClusterCertificateCommonNames |建议用于生产环境。 需要使用此证书来保护群集节点之间的通信。 可以使用一个或两个群集证书公用名称。 CertificateIssuerThumbprint 对应此证书的颁发者的指纹。 如果要使用具有相同常见名称的多个证书，可以指定多个颁发者指纹。|
+| ClusterCertificate |建议用于测试环境。 需要使用此证书保护群集上节点之间的通信。 可以使用两个不同的证书（一个主证书和一个辅助证书）进行升级。 在 Thumbprint 部分设置主证书的指纹，在 ThumbprintSecondary 变量中设置辅助证书的指纹。 |
+| ClusterCertificateCommonNames |建议用于生产环境。 需要使用此证书保护群集上节点之间的通信。 可以使用一个或两个群集证书公用名称。 CertificateIssuerThumbprint 对应此证书的颁发者的指纹。 如果要使用具有相同常见名称的多个证书，可以指定多个颁发者指纹。|
 | ClusterCertificateIssuerStores |建议用于生产环境。 此证书与群集证书的颁发者相对应。 可以在此节下提供颁发者公用名称和相应的存储名称，而不是在 ClusterCertificateCommonNames 下指定颁发者指纹。  这样可以轻松滚动更新群集颁发者证书。 如果使用多个群集证书，可以指定多个颁发者。 空的 IssuerCommonName 会将 X509StoreNames 下指定的相应存储中的所有证书加入允许列表。|
 | ServerCertificate |建议用于测试环境。 当客户端尝试连接到此群集时，系统会向客户端提供此证书。 为方便起见，可以选择对 ClusterCertificate 和 ServerCertificate 使用相同的证书。 可以使用两个不同的服务器证书（一个主证书和一个辅助证书）进行升级。 在 Thumbprint 部分设置主证书的指纹，在 ThumbprintSecondary 变量中设置辅助证书的指纹。 |
 | ServerCertificateCommonNames |建议用于生产环境。 当客户端尝试连接到此群集时，系统会向客户端提供此证书。 CertificateIssuerThumbprint 对应此证书的颁发者的指纹。 如果要使用具有相同常见名称的多个证书，可以指定多个颁发者指纹。 为方便起见，可以选择对 ClusterCertificateCommonNames 和 ServerCertificateCommonNames 使用相同的证书。 可以使用一个或两个服务器证书公用名称。 |
@@ -253,14 +253,14 @@ ms.locfileid: "75613918"
 对于用于测试的群集，可以选择使用自签名证书。
 
 ## <a name="optional-create-a-self-signed-certificate"></a>可选：创建自签名证书
-创建能够得到适当保护的自签名证书的一种方法是，使用位于 C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure 目录的 Service Fabric SDK 文件夹中的 CertSetup.ps1 脚本。 编辑此文件以更改证书的默认名称。 （查找值 CN_ServiceFabricDevClusterCert。将此脚本运行`.\CertSetup.ps1 -Install`为 。
+创建能够得到适当保护的自签名证书的一种方法是，使用位于 C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure 目录的 Service Fabric SDK 文件夹中的 CertSetup.ps1 脚本。 编辑此文件以更改证书的默认名称。 （查找值 CN=ServiceFabricDevClusterCert。）以 `.\CertSetup.ps1 -Install` 的方式运行此脚本。
 
 现在，请将证书导出到使用受保护密码的 .pfx 文件。 首先获取证书的指纹。 
-1. 从“开始”**** 菜单，运行“管理计算机证书”****。 
+1. 从“开始”  菜单，运行“管理计算机证书”  。 
 
 2. 转到 **Local Computer\Personal** 文件夹，找到创建的证书。 
 
-3. 双击证书将其打开，选择“详细信息”选项卡，然后向下滚动到“指纹”字段********。 
+3. 双击证书将其打开，选择“详细信息”选项卡，然后向下滚动到“指纹”字段   。 
 
 4. 删除空格，将指纹值复制到以下 PowerShell 命令中。 
 
@@ -278,10 +278,10 @@ ms.locfileid: "75613918"
    Write-Host $cert.ToString($true)
    ```
 
-如果订阅了 Azure，也可按照[使用 Azure 资源管理器创建 Service Fabric 群集](service-fabric-cluster-creation-via-arm.md)中的步骤进行操作。
+此外，如果你有 Azure 订阅，请按照[使用 Azure 资源管理器创建 Service Fabric 群集](service-fabric-cluster-creation-via-arm.md)中的步骤进行操作。
 
 ## <a name="install-the-certificates"></a>安装证书
-获取证书后，可将其安装在群集节点上。 节点上需安装最新版本的 Windows PowerShell 3.x。 每个节点上，针对群集证书和服务器证书以及任何辅助证书重复这些步骤。
+获取证书后，可将其安装在群集节点上。 节点上需安装最新的 Windows PowerShell 3.x。 每个节点上，针对群集证书和服务器证书以及任何辅助证书重复这些步骤。
 
 1. 将 .pfx 文件复制到节点。
 
@@ -292,7 +292,7 @@ ms.locfileid: "75613918"
     $PfxFilePath ="C:\mypfx.pfx"
     Import-PfxCertificate -Exportable -CertStoreLocation Cert:\LocalMachine\My -FilePath $PfxFilePath -Password (ConvertTo-SecureString -String $pswd -AsPlainText -Force)
     ```
-3. 接下来，通过运行以下脚本设置对此证书的访问控制，以便在网络服务帐户下运行的 Service Fabric 进程可以使用它。 为服务帐户提供证书和网络**服务**的经验打印。 通过在 **"开始** > **管理"计算机证书**中打开证书并查看**所有任务** > **管理私钥**，可以检查证书上的 ACL 是否正确。
+3. 现在通过运行以下脚本设置对此证书的访问控制，以便在网络服务帐户下运行的 Service Fabric 进程可以使用它。 为服务帐户提供证书指纹以及**网络服务**。 可检查证书上的 ACL 是否正确，方法是在“开始”   > “管理计算机证书”  中打开证书，并查看“所有任务”   > “管理私钥”  。
    
     ```powershell
     param
@@ -345,17 +345,17 @@ $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $Tru
 Connect-ServiceFabricCluster $ConnectArgs
 ```
 
-然后可运行其他 PowerShell 命令处理此群集。 例如，可以运行 [Get-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) 显示此安全群集上的节点列表。
+然后可以运行其他 PowerShell 命令来使用此群集。 例如，可以运行 [Get-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) 显示此安全群集上的节点列表。
 
 
-若要删除群集，请连接到已下载 Service Fabric 包的群集上的节点、打开命令行，并转到包文件夹。 现在，运行以下命令：
+若要删除群集，请连接到已下载 Service Fabric 包的群集上的节点、打开命令行，并转到包文件夹。 现在运行以下命令：
 
 ```powershell
 .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json
 ```
 
 > [!NOTE]
-> 证书配置不正确会导致在部署时看不到群集。 要自行诊断安全问题，请查看事件查看器组**应用程序和服务日志** > **Microsoft 服务结构**。
+> 证书配置不正确会导致在部署时看不到群集。 若要对安全性问题进行自我诊断，请查看事件查看器组（**应用程序和服务日志** > **Microsoft-Service Fabric**）。
 > 
 > 
 

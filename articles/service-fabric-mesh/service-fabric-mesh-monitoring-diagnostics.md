@@ -1,5 +1,5 @@
 ---
-title: Azure 服务结构网格应用中的监视和诊断
+title: Azure Service Fabric 网格应用中的监视和诊断
 description: 了解在 Azure Service Fabric 网格中如何监控和诊断应用程序。
 author: srrengar
 ms.topic: conceptual
@@ -7,10 +7,10 @@ ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 247a1de4d00668371337295616d31caf101f0cc5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75498144"
 ---
 # <a name="monitoring-and-diagnostics"></a>监视和诊断
@@ -31,7 +31,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --app-name <nameOfApp> 
 ```
 
 > [!NOTE]
-> 可使用“az mesh service-replica”命令获取副本名称。 副本名称从 0 递增整数。
+> 可使用“az mesh service-replica”命令获取副本名称。 副本名称是从0递增的整数。
 
 以下是用于查看投票应用程序中 VotingWeb.Code 容器的日志的示例：
 
@@ -41,40 +41,40 @@ az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzV
 
 ## <a name="container-metrics"></a>容器指标 
 
-网格环境公开了一些指标，指示容器的性能。 以下指标可通过 Azure 门户和 Azure 监视器 CLI 获得：
+网格环境公开了一些指标，用于指示容器的执行方式。 以下指标可通过 Azure 门户和 Azure monitor CLI 获得：
 
-| 指标 | 描述 | 单位|
+| 指标 | 说明 | 单位|
 |----|----|----|
-| CpuUtilization | 实际 Cpu/分配 Cpu 以百分比表示 | % |
-| MemoryUtilization | 实际 Mem/已分配 Mem 的百分比 | % |
-| AllocatedCpu | 根据 Azure 资源管理器模板分配的 Cpu | 米利科茨 |
-| AllocatedMemory | 根据 Azure 资源管理器模板分配的内存 | MB |
-| ActualCpu | CPU 使用率 | 米利科茨 |
+| CpuUtilization | ActualCpu/AllocatedCpu 作为百分比 | % |
+| MemoryUtilization | ActualMem/AllocatedMem 作为百分比 | % |
+| AllocatedCpu | 按 Azure 资源管理器模板分配的 Cpu | Millicores |
+| AllocatedMemory | 按 Azure 资源管理器模板分配的内存 | MB |
+| ActualCpu | CPU 使用率 | Millicores |
 | ActualMemory | 内存使用率 | MB |
-| ContainerStatus | 0 - 无效：容器状态未知 <br> 1 - 挂起：容器已计划启动 <br> 2 - 启动：容器正在启动中 <br> 3 - 已启动：容器已成功启动 <br> 4 - 停止：容器正在停止 <br> 5 - 已停止：容器已成功停止 | 空值 |
-| ApplicationStatus | 0 - 未知：状态不可检索 <br> 1 - 就绪：应用程序已成功运行 <br> 2 - 升级：正在进行升级 <br> 3 - 创建：正在创建应用程序 <br> 4 - 删除：正在删除应用程序 <br> 5 - 失败：应用程序无法部署 | 空值 |
-| ServiceStatus | 0 - 无效：该服务当前没有运行状况 <br> 1 - 确定：服务正常  <br> 2 - 警告：可能有问题需要调查 <br> 3 - 错误：有一些问题需要调查 <br> 4 - 未知：状态不可检索 | 空值 |
-| ServiceReplicaStatus | 0 - 无效：副本当前没有运行状况 <br> 1 - 确定：服务正常  <br> 2 - 警告：可能有问题需要调查 <br> 3 - 错误：有一些问题需要调查 <br> 4 - 未知：状态不可检索 | 空值 | 
-| RestartCount | 重新启动的容器数 | 空值 |
+| ContainerStatus | 0-无效：容器状态未知 <br> 1-挂起：容器已计划启动 <br> 2-正在启动：容器处于启动过程中 <br> 3-已启动：容器已成功启动 <br> 4-正在停止：正在停止容器 <br> 5-已停止：容器已成功停止 | 不适用 |
+| ApplicationStatus | 0-未知：状态不可检索 <br> 1-准备就绪：应用程序正在成功运行 <br> 2-正在升级：正在进行升级 <br> 3-正在创建：正在创建应用程序 <br> 4-正在删除：正在删除应用程序 <br> 5-失败：应用程序部署失败 | 不适用 |
+| ServiceStatus | 0-无效：服务当前没有运行状况状态 <br> 1-正常：服务正常  <br> 2-警告：可能有问题需要调查 <br> 3-错误：需要调查的内容有误 <br> 4-未知：状态不可检索 | 不适用 |
+| ServiceReplicaStatus | 0-无效：副本当前不具有运行状况状态 <br> 1-正常：服务正常  <br> 2-警告：可能有问题需要调查 <br> 3-错误：需要调查的内容有误 <br> 4-未知：状态不可检索 | 不适用 | 
+| RestartCount | 容器重启次数 | 不适用 |
 
 > [!NOTE]
-> 服务状态和服务副本状态值与服务结构中的[运行状况状态](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet)相同。 
+> ServiceStatus 和 ServiceReplicaStatus 值与 Service Fabric 中的[HealthState](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet)相同。 
 
-每个指标都在不同的维度上可用，因此您可以看到不同级别的聚合。 当前维度列表如下：
+每个指标都可以在不同的维度上使用，因此可以在不同级别查看聚合。 维度的当前列表如下所示：
 
 * ApplicationName
 * ServiceName
-* 服务副本名称
-* 代码包名称
+* ServiceReplicaName
+* CodePackageName
 
 > [!NOTE]
-> 代码包名称维度不适用于 Linux 应用程序。 
+> CodePackageName 维度不适用于 Linux 应用程序。 
 
-每个维度对应于[服务结构应用程序模型](service-fabric-mesh-service-fabric-resources.md#applications-and-services)的不同组件
+每个维度对应于[Service Fabric 应用程序模型](service-fabric-mesh-service-fabric-resources.md#applications-and-services)的不同组件
 
-### <a name="azure-monitor-cli"></a>Azure 监视器 CLI
+### <a name="azure-monitor-cli"></a>Azure Monitor CLI
 
-[Azure 监视器 CLI 文档中](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)提供了完整的命令列表，但我们在下面提供了一些有用的示例 
+[AZURE MONITOR CLI 文档](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)中提供了完整命令列表，但我们提供了以下几个有用的示例 
 
 在每个示例中，资源 ID 遵循此模式
 
@@ -86,24 +86,24 @@ az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzV
 ```cli
     az monitor metrics list --resource <resourceId> --metric "CpuUtilization"
 ```
-* 每个服务副本的内存利用率
+* 每个服务副本的内存使用率
 ```cli
     az monitor metrics list --resource <resourceId> --metric "MemoryUtilization" --dimension "ServiceReplicaName"
 ``` 
 
-* 在 1 小时窗口中重新启动每个容器 
+* 在1小时内为每个容器重启 
 ```cli
     az monitor metrics list --resource <resourceId> --metric "RestartCount" --start-time 2019-02-01T00:00:00Z --end-time 2019-02-01T01:00:00Z
 ``` 
 
-* 在 1 小时窗口中，名为"投票 Web"的服务的平均 CPU 利用率
+* 1小时窗口内名为 "VotingWeb" 的服务的平均 CPU 使用率
 ```cli
     az monitor metrics list --resource <resourceId> --metric "CpuUtilization" --start-time 2019-02-01T00:00:00Z --end-time 2019-02-01T01:00:00Z --aggregation "Average" --filter "ServiceName eq 'VotingWeb'"
 ``` 
 
 ### <a name="metrics-explorer"></a>指标资源管理器
 
-指标资源管理器是门户中的边栏选项卡，您可以在其中可视化网格应用程序的所有指标。 此边栏选项卡可在门户中的应用程序页面和 Azure 监视器边栏选项卡中访问，后者可用于查看支持 Azure 监视器的所有 Azure 资源的指标。 
+指标资源管理器是门户中的一个边栏选项卡，可以在其中可视化网格应用程序的所有指标。 此边栏选项卡可在门户和 Azure monitor 边栏选项卡的应用程序页面中访问，后者可用于查看支持 Azure Monitor 的所有 Azure 资源的指标。 
 
 ![指标资源管理器](./media/service-fabric-mesh-monitoring-diagnostics/metricsexplorer.png)
 
@@ -118,4 +118,4 @@ In addition to the metrics explorer, we also have a dashboard available out of t
 
 ## <a name="next-steps"></a>后续步骤
 * 若要详细了解 Service Fabric 网格，请阅读 [Service Fabric 网格概述](service-fabric-mesh-overview.md)。
-* 要了解有关 Azure 监视器指标命令的更多详细信息，请查看[Azure 监视器 CLI 文档](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)。
+* 若要详细了解 Azure Monitor 指标命令，请查看[AZURE MONITOR CLI 文档](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)。

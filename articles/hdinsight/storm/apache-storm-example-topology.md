@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/27/2019
 ms.openlocfilehash: 302ba583f11b15be98832316b1ea05c7f9be931f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75530657"
 ---
 # <a name="example-apache-storm-topologies-and-components-for-apache-storm-on-hdinsight"></a>Apache Storm on HDInsight 的示例 Apache Storm 拓扑和组件
 
 下面是由 Microsoft 创建和维护的、可配合 [Apache Storm](https://storm.apache.org/) on HDInsight 使用的示例的列表。 这些示例涵盖各种主题，从创建基本 C# 和 Java 拓扑，到使用 Azure 服务（例如事件中心、Cosmos DB、SQL 数据库、[Apache HBase](https://hbase.apache.org/) on HDInsight 和 Azure 存储）。 一些示例还演示了如何使用非 Azure 或甚至非 Microsoft 的技术，例如 SignalR 和 Socket.IO。
 
-| 描述 | 演示 | 语言/框架 |
+| 说明 | 演示 | 语言/框架 |
 |:--- |:--- |:--- |
 | [从 Apache Storm 写入 Azure Data Lake Storage](apache-storm-write-data-lake-store.md) |写入 Azure Data Lake Storage |Java |
 | [事件中心 Spout 和 Bolt 源](https://github.com/apache/storm/tree/master/external/storm-eventhubs) |事件中心 Spout 和 Bolt 的源 |Java |

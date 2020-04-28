@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: srrengar
 ms.openlocfilehash: 8c4721584e74bd7f7111c516f2d16bd190392bb5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75614360"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>向 Service Fabric 应用程序添加日志记录
@@ -96,8 +96,8 @@ internal sealed class ServiceEventSource : EventSource
 
 ASP.NET Core 日志记录（[Microsoft.Extensions.Logging NuGet 包](https://www.nuget.org/packages/Microsoft.Extensions.Logging)）是一个日志记录框架，可为应用程序提供标准日志记录 API。 可以将对其他日志记录后端的支持插入到 ASP.NET Core 日志记录。 这可以为处理应用程序中的日志记录提供各种支持，而无需更改大量代码。
 
-1. 将**Microsoft.扩展.将**NuGet 包添加到要检测的项目。 此外，还添加任何提供程序包。 有关详细信息，请参阅 [Logging in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging)（ASP.NET Core 中的日志记录）。
-2. 为 Microsoft 添加**using.****扩展.登录到**服务文件。
+1. 将 **Microsoft.Extensions.Logging** NuGet 包添加到要检测的项目。 此外，还添加任何提供程序包。 有关详细信息，请参阅 [Logging in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging)（ASP.NET Core 中的日志记录）。
+2. 在服务文件中添加一条针对 **Microsoft.Extensions.Logging** 的 **using** 指令。
 3. 在服务类中定义一个专用变量。
 
    ```csharp
@@ -161,7 +161,7 @@ ASP.NET Core 日志记录（[Microsoft.Extensions.Logging NuGet 包](https://www
 5. 可以像在不使用 Serilog 的情况下运行 ASP.NET Core 一样检测代码。
 
    >[!NOTE]
-   >建议不要在前面的示例中使用静态 `Log.Logger`**。 Service Fabric 可在单个进程中托管同一服务类型的多个实例。 如果使用静态 `Log.Logger`，属性扩充器的最后一个写入者会显示所有正在运行的实例的值。 这是 _logger 变量为何是服务类的专用成员变量的原因之一。 另外，必须将 `_logger` 提供给可跨服务使用的通用代码使用。
+   >建议不要在前面的示例中使用静态  `Log.Logger`。 Service Fabric 可在单个进程中托管同一服务类型的多个实例。 如果使用静态 `Log.Logger`，属性扩充器的最后一个写入者会显示所有正在运行的实例的值。 这是 _logger 变量为何是服务类的专用成员变量的原因之一。 另外，必须将 `_logger` 提供给可跨服务使用的通用代码使用。
 
 ## <a name="next-steps"></a>后续步骤
 

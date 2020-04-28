@@ -1,5 +1,5 @@
 ---
-title: 自动缩放在 Azure 服务结构网格中运行的应用
+title: 自动缩放 Azure Service Fabric 网格中运行的应用
 description: 了解如何为 Service Fabric 网格应用程序的服务配置自动缩放策略。
 author: dkkapur
 ms.topic: conceptual
@@ -7,14 +7,14 @@ ms.date: 12/07/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: fb72806dd7ba838ba7170bda409715bc074e1d99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75461970"
 ---
 # <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>创建 Service Fabric 网格应用程序的自动缩放策略
-将应用程序部署到 Service Fabric 网格的主要优点之一是使您能够轻松地将服务扩展到或外扩展。这应用于处理服务上不同数量的负载，或提高可用性。 可以手动向内缩放或向外缩放服务，或者设置自动缩放策略。
+将应用程序部署到 Service Fabric 网格的一个主要优点是可以轻松地放大或缩小服务。这应该用于处理服务上的不同负载量，或提高可用性。 可以手动向内缩放或向外缩放服务，或者设置自动缩放策略。
 
 [自动缩放](service-fabric-mesh-scalability.md#autoscaling-service-instances)允许动态缩放服务实例的数量（水平缩放）。 自动缩放提供了很大的弹性并可以预配或删除基于 CPU 或内存使用率的服务实例。
 

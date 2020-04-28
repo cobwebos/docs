@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 30b9b8393007033a7c2e6798cd57d9cf0128820d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75464698"
 ---
 # <a name="performance-metrics"></a>性能指标
@@ -18,15 +18,15 @@ ms.locfileid: "75464698"
 
 ## <a name="nodes"></a>Nodes
 
-对于群集中的计算机，建议收集以下性能计数器，以便更好地了解每台计算机上的负载，并制定相应的群集缩放决策。
+对于群集中的计算机，建议收集以下性能计数器，以便更好地了解每台计算机上的负载，并做出相应的群集缩放决策。
 
 | 计数器类别 | 计数器名称 |
 | --- | --- |
 | 逻辑磁盘 | 逻辑磁盘可用空间 |
-| PhysicalDisk(per Disk) | 平均磁盘读取队列长度 |
-| PhysicalDisk(per Disk) | 平均磁盘写入队列长度 |
-| PhysicalDisk(per Disk) | 平均磁盘秒/读取 |
-| PhysicalDisk(per Disk) | 平均磁盘秒/写入 |
+| PhysicalDisk(per Disk) | 平均值磁盘读取队列长度 |
+| PhysicalDisk(per Disk) | 平均值磁盘写入队列长度 |
+| PhysicalDisk(per Disk) | 平均值磁盘秒数/读取 |
+| PhysicalDisk(per Disk) | 平均值磁盘秒数/写入 |
 | PhysicalDisk(per Disk) | 磁盘读取数/秒 |
 | PhysicalDisk(per Disk) | 磁盘读取字节数/秒 |
 | PhysicalDisk(per Disk) | 磁盘写入数/秒 |
@@ -36,9 +36,9 @@ ms.locfileid: "75464698"
 | Processor(Total) | 处理器时间百分比 |
 | Process (per service) | 处理器时间百分比 |
 | Process (per service) | ID 进程 |
-| Process (per service) | 专用字节 |
+| Process (per service) | 专用字节数 |
 | Process (per service) | 线程计数 |
-| Process (per service) | 虚拟字节 |
+| Process (per service) | 虚拟字节数 |
 | Process (per service) | 工作集 |
 | Process (per service) | 工作集 - 专用 |
 | Network Interface(all-instances) | 读取的字节数 |
@@ -69,7 +69,7 @@ ms.locfileid: "75464698"
 
 ### <a name="service-fabrics-custom-performance-counters"></a>Service Fabric 的自定义性能计数器
 
-Service Fabric 生成大量自定义性能计数器。 如果已安装 SDK，可以在 Windows 计算机上的“性能监视器”应用程序（“开始”>“性能监视器”）中看到完整列表。 
+Service Fabric 生成大量自定义性能计数器。 如果已安装 SDK，可以在 Windows 计算机上的“性能监视器”应用程序（“开始”>“性能监视器”）中看到综合列表。 
 
 在要部署到群集的应用程序中，如果使用的是 Reliable Actors，请添加 `Service Fabric Actor` 和 `Service Fabric Actor Method` 类别的计数器（请参阅 [Service Fabric Reliable Actors 诊断](service-fabric-reliable-actors-diagnostics.md)）。
 

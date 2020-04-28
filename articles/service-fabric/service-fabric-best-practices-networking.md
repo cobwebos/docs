@@ -1,22 +1,22 @@
 ---
 title: Azure Service Fabric 网络最佳做法
-description: 使用 Azure 服务结构管理网络连接的最佳做法和设计注意事项。
+description: 使用 Azure Service Fabric 管理网络连接的最佳做法和设计注意事项。
 author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: de2a74ad2d61de18d2150b72be3251e5b5583f2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75551788"
 ---
 # <a name="networking"></a>网络
 
 在创建和管理 Azure Service Fabric 群集时，可以为节点和应用程序提供网络连接。 网络资源包括 IP 地址范围、虚拟网络、负载均衡器和网络安全组。 本文介绍针对这些资源的最佳做法。
 
-查看 Azure[服务结构网络模式](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking)，了解如何创建使用以下功能的群集：现有虚拟网络或子网、静态公共 IP 地址、仅内部负载均衡器或内部和外部负载均衡器。
+查看 Azure [Service Fabric 网络模式](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking)，了解如何创建使用以下功能的群集：现有的虚拟网络或子网、静态公共 IP 地址、仅限内部的负载均衡器，或者内部和外部负载均衡器。
 
 ## <a name="infrastructure-networking"></a>基础结构网络
 使用加速网络使虚拟机的性能最大化，方法是：在资源管理器模板中声明 enableAcceleratedNetworking 属性。以下代码片段是关于虚拟机规模集 NetworkInterfaceConfigurations 的，后者可以启用加速网络：
@@ -39,7 +39,7 @@ ms.locfileid: "75551788"
 ```
 可以在[使用加速网络的 Linux](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) 上以及[使用加速网络的 Windows](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell) 上预配 Service Fabric 群集。
 
-Azure 虚拟机系列 SKU 支持加速网络：D/DSv2、D/DSv3、E/ESv3、F/FS、FSv2 和 Ms/Mms。 加速网络已使用 Standard_DS8_v3 SKU 在 2019 年 1 月 23 日针对 Service Fabric Windows 群集成功进行测试，以及使用 Standard_DS12_v2 在 2019 年 1 月 29 日针对 Service Fabric Linux 群集成功进行测试。
+以下 Azure 虚拟机系列 SKU 支持加速网络：D/DSv2、D/DSv3、E/ESv3、F/FS、FSv2 以及 Ms/Mms。 加速网络已使用 Standard_DS8_v3 SKU 在 2019 年 1 月 23 日针对 Service Fabric Windows 群集成功进行测试，以及使用 Standard_DS12_v2 在 2019 年 1 月 29 日针对 Service Fabric Linux 群集成功进行测试。
 
 若要在现有的 Service Fabric 群集上启用加速网络，需要首先[通过添加虚拟机规模集来横向扩展 Service Fabric 群集](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out)，以便执行以下操作：
 1. 预配已启用加速网络的 NodeType
@@ -51,7 +51,7 @@ Azure 虚拟机系列 SKU 支持加速网络：D/DSv2、D/DSv3、E/ESv3、F/FS�
 
 * Service Fabric 群集可以部署到现有的虚拟网络中，只需执行 [Service Fabric 网络模式](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking)中介绍的步骤即可。
 
-* 对于限制群集的入站和出站流量的节点类型，建议使用网络安全组 (NSG)。 确保在 NSG 中打开所需的端口。 例如：![服务结构 NSG 规则][NSGSetup]
+* 对于限制群集的入站和出站流量的节点类型，建议使用网络安全组 (NSG)。 确保在 NSG 中打开所需的端口。 例如： ![Service Fabric NSG 规则][NSGSetup]
 
 * Service Fabric 系统服务所在的主节点类型不需通过外部负载均衡器公开，可以通过[内部负载均衡器](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking#internal-only-load-balancer)公开
 
@@ -69,6 +69,6 @@ Azure 虚拟机系列 SKU 支持加速网络：D/DSv2、D/DSv3、E/ESv3、F/FS�
 
 * 在运行 Windows Server 的 VM 或计算机上创建群集：[创建适用于 Windows Server 的 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)
 * 在运行 Linux 的 VM 或计算机上创建群集：[创建 Linux 群集](service-fabric-cluster-creation-via-portal.md)
-* 了解[服务交换矩阵支持选项](service-fabric-support.md)
+* 了解[Service Fabric 支持选项](service-fabric-support.md)
 
 [NSGSetup]: ./media/service-fabric-best-practices/service-fabric-nsg-rules.png

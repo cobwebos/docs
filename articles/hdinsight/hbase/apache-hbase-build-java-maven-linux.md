@@ -1,5 +1,5 @@
 ---
-title: 使用 Apache Maven 为 Azure HDInsight 构建 Java HBase 客户端
+title: 使用 Apache Maven 生成适用于 Azure HDInsight 的 Java HBase 客户端
 description: 了解如何使用 Apache Maven 构建基于 Java 的 Apache HBase 应用程序，然后将其部署到 Azure HDInsight 上的 HBase。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seodec18
 ms.date: 12/24/2019
 ms.openlocfilehash: 3e9b23ce450e45dfedcee8b20e09b1c2b52b6e68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75495778"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>构建适用于 Apache HBase 的 Java 应用程序
@@ -25,7 +25,7 @@ ms.locfileid: "75495778"
 
 * HDInsight 上的 Apache HBase 群集。 请参阅 [Apache HBase 入门](./apache-hbase-tutorial-get-started-linux.md)。
 
-* [Java 开发人员工具包 （JDK） 版本 8](https://aka.ms/azure-jdks).
+* [Java 开发人员工具包 (JDK) 版本 8](https://aka.ms/azure-jdks)。
 
 * 根据 Apache 要求正确[安装](https://maven.apache.org/install.html)的 [Apache Maven](https://maven.apache.org/download.cgi)。  Maven 是 Java 项目的项目生成系统。
 
@@ -57,9 +57,9 @@ cd C:\HDI
     mkdir conf
     ```
 
-    此命令会在当前位置创建名为 `hbaseapp` 的目录，其中包含基本 Maven 项目。 第二条命令将工作目录更改为 `hbaseapp`。 第三条命令创建稍后要使用的新目录 `conf`。 `hbaseapp` 目录包含以下项：
+    该命令会在当前位置创建名为 `hbaseapp` 的目录，其中包含基本 Maven 项目。 第二条命令将工作目录更改为 `hbaseapp`。 第三条命令创建稍后要使用的新目录 `conf`。 `hbaseapp` 目录包含以下项：
 
-    * `pom.xml`： 项目对象模型 （[POM](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)） 包含用于生成项目的信息和配置详细信息。
+    * `pom.xml`：项目对象模型 ([POM](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html))，其中包含用于生成项目的信息和配置详细信息。
     * `src\main\java\com\microsoft\examples`：包含应用程序代码。
     * `src\test\java\com\microsoft\examples`：包含应用程序的测试。
 
@@ -72,7 +72,7 @@ cd C:\HDI
 
 ## <a name="update-the-project-object-model"></a>更新项目对象模型
 
-有关 pom.xml 文件的完整参考，请参阅 https://maven.apache.org/pom.html。  输入以下命令打开 `pom.xml`：
+有关 pom.xml 文件的完整参考，请参阅 https://maven.apache.org/pom.html 。  输入以下命令打开 `pom.xml`：
 
 ```cmd
 notepad pom.xml
@@ -95,7 +95,7 @@ notepad pom.xml
 </dependency>
 ```  
 
-此部分指示项目需要 **hbase-client** 和 **phoenix-core** 组件。 在编译时，会从默认 Maven 存储库下载这些依赖项。 可以使用 [Maven 中央存储库](https://search.maven.org/artifact/org.apache.hbase/hbase-client/1.1.2/jar)搜索来了解有关此依赖项的详细信息。
+此部分指示项目需要 **hbase-client** 和 **phoenix-core** 组件。 在编译时，会从默认 Maven 存储库下载这些依赖项。 可以使用 [Maven 中央存储库](https://search.maven.org/artifact/org.apache.hbase/hbase-client/1.1.2/jar) 搜索来了解有关此依赖性的详细信息。
 
 > [!IMPORTANT]  
 > hbase-client 的版本号必须与 HDInsight 群集随附的 Apache HBase 版本匹配。 可以使用下表来查找正确的版本号。

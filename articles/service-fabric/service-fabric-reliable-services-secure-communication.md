@@ -1,20 +1,20 @@
 ---
-title: 与 C 的安全服务远程通信#
+title: 使用 C# 保护服务远程处理通信
 description: 了解如何保护 Azure Service Fabric 群集中运行的 C# Reliable Services 的基于服务远程处理的通信。
 author: suchiagicha
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
 ms.openlocfilehash: ee2f1d70f4094ccc7d80edbfaf16509b5124f607
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75609615"
 ---
 # <a name="secure-service-remoting-communications-in-a-c-service"></a>保护 C# 服务的服务远程处理通信
 > [!div class="op_single_selector"]
-> * [C# 在 Windows 上](service-fabric-reliable-services-secure-communication.md)
+> * [Windows 上的 C#](service-fabric-reliable-services-secure-communication.md)
 > * [Linux 上的 Java](service-fabric-reliable-services-secure-communication-java.md)
 >
 >
@@ -23,7 +23,7 @@ ms.locfileid: "75609615"
 
 若要在 C# 服务中使用服务远程处理时帮助保护服务，请遵循以下步骤：
 
-1. 创建接口 `IHelloWorldStateful`，用于定义可供服务的远程过程调用使用的方法。 服务将使用 `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime` 命名空间中声明的 `FabricTransportServiceRemotingListener`。 这是可以提供远程处理功能的 `ICommunicationListener` 实现。
+1. 创建接口 `IHelloWorldStateful`，用于定义可供服务的远程过程调用使用的方法。 服务将使用 `FabricTransportServiceRemotingListener` 命名空间中声明的 `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime`。 这是可以提供远程处理功能的 `ICommunicationListener` 实现。
 
     ```csharp
     public interface IHelloWorldStateful : IService
@@ -141,7 +141,7 @@ ms.locfileid: "75609615"
             };
         }
         ```
-3. 在安全服务上使用远程堆栈（而不是使用 `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` 类）调用方法来创建服务代理时，请使用 `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory`。 传入包含 `SecurityCredentials` 的 `FabricTransportRemotingSettings`。
+3. 在安全服务上使用远程堆栈（而不是使用 `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` 类）调用方法来创建服务代理时，请使用 `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory`。 传入包含 `FabricTransportRemotingSettings` 的 `SecurityCredentials`。
 
     ```csharp
 

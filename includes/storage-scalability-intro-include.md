@@ -9,10 +9,10 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 8c5c0c8f649e7cbab2c16688717de1aaabfb93c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "75477143"
 ---
 本参考详细介绍了 Azure 存储的可伸缩性和性能目标。 以下所列的可伸缩性和性能目标为高端目标，但却是能够实现的。 在任何情况下，存储帐户实现的请求速率和带宽取决于存储对象大小、使用的访问模式、应用程序执行的工作负荷类型。

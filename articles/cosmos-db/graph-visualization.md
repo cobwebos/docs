@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.openlocfilehash: 1cabe57a0e7f2869a30973c8bbc8b4b38f664d81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75500019"
 ---
 # <a name="visualize-graph-data-stored-in-azure-cosmos-db-gremlin-api-with-data-visualization-solutions"></a>使用数据可视化解决方案可视化在 Azure Cosmos DB Gremlin API 中存储的图数据
@@ -32,7 +32,7 @@ ms.locfileid: "75500019"
 
 ![Cambridge Intelligence 徽标](./media/graph-visualization/ci-logo.png)
 
-[剑桥智能的](https://cambridge-intelligence.com/products/)图形可视化工具包现在支持 Azure 宇宙 DB。 Azure Cosmos DB 支持下面的两个可视化工具包：
+[剑桥智能的](https://cambridge-intelligence.com/products/)图形可视化工具包现在支持 Azure Cosmos DB。 Azure Cosmos DB 支持下面的两个可视化工具包：
 
 - [面向 JavaScript 开发人员的 KeyLines](https://cambridge-intelligence.com/keylines/)
 

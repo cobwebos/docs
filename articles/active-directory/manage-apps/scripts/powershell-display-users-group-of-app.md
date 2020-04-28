@@ -1,6 +1,6 @@
 ---
-title: PowerShell 示例 - 列出应用程序代理应用&组的用户
-description: PowerShell 示例列出了分配给特定 Azure 活动目录 （Azure AD） 应用程序代理应用程序的所有用户和组。
+title: PowerShell 示例-列出应用程序代理应用 & 组的用户
+description: PowerShell 示例，列出分配给特定 Azure Active Directory （Azure AD）应用程序代理应用程序的所有用户和组。
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -13,15 +13,15 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aab5ac5d4712dd9e72fc0b9665d740859b5a6775
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75483383"
 ---
 # <a name="display-users-and-groups-assigned-to-an-application-proxy-application"></a>显示分配给应用程序代理应用程序的用户和组
 
-此 PowerShell 脚本示例列出分配给特定 Azure 活动目录 （Azure AD） 应用程序代理应用程序的用户和组。
+此 PowerShell 脚本示例列出了分配给特定 Azure Active Directory （Azure AD）应用程序代理应用程序的用户和组。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -29,7 +29,7 @@ ms.locfileid: "75483383"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-此示例需要用于图形模块 （AzureAD）[的 AzureAD V2 电源外壳](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)，或[用于图形模块预览版本的 AzureAD V2 电源外壳](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)（AzureAD 预览版）。
+此示例需要用于图形模块（AzureAD）的[AzureAD V2 powershell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)或[graph 模块预览版本](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)（AzureADPreview）的 AzureAD v2 powershell。
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -37,7 +37,7 @@ ms.locfileid: "75483383"
 
 ## <a name="script-explanation"></a>脚本说明
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [Get-AzureADUser](https://docs.microsoft.com/powershell/module/AzureAD/get-azureaduser?view=azureadps-2.0)| 获取用户。 |
 | [Get-AzureADGroup](https://docs.microsoft.com/powershell/module/AzureAD/get-azureadgroup?view=azureadps-2.0)| 获取组。 |
@@ -47,6 +47,6 @@ ms.locfileid: "75483383"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure AD 电源外壳模块的详细信息，请参阅[Azure AD PowerShell 模块概述](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)。
+有关 Azure AD PowerShell 模块的详细信息，请参阅[Azure AD powershell 模块概述](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)。
 
-有关应用程序代理的其他 PowerShell 示例，请参阅[Azure AD 应用程序代理的 Azure AD PowerShell 示例](../application-proxy-powershell-samples.md)。
+有关应用程序代理的其他 PowerShell 示例，请参阅[Azure AD 应用程序代理的 Azure AD powershell 示例](../application-proxy-powershell-samples.md)。

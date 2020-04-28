@@ -4,10 +4,10 @@ description: 介绍 Service Fabric 的常见网络模式以及如何使用 Azure
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.openlocfilehash: 065c311fffe409b20e02a3fddf1e9e7e6a82a2a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75466289"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric 网络模式
@@ -24,7 +24,7 @@ Service Fabric 在标准的虚拟机规模集中运行。 可在虚拟机规模�
 
 与其他网络功能相比，Service Fabric 的独特之处体现在一个方面。 [Azure 门户](https://portal.azure.com)在内部使用 Service Fabric 资源提供程序连接到群集，以获取有关节点和应用程序的信息。 Service Fabric 资源提供程序需要对管理终结点上的 HTTP 网关端口（默认为 19080）具有可公开访问的入站访问权限。 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 使用该管理终结点来管理群集。 Service Fabric 资源提供程序还使用此端口来查询有关群集的信息，以便在 Azure 门户中显示。 
 
-如果无法通过 Service Fabric 资源提供程序访问端口 19080，门户中会显示一条类似于“找不到节点”** 的消息，并且节点和应用程序列表显示为空。 如果想要在 Azure 门户中查看群集，负载均衡器必须公开一个公共 IP 地址，并且网络安全组必须允许端口 19080 上的传入流量。 如果设置不满足这些要求，Azure 门户不会显示群集的状态。
+如果无法通过 Service Fabric 资源提供程序访问端口 19080，门户中会显示一条类似于“找不到节点”  的消息，并且节点和应用程序列表显示为空。 如果想要在 Azure 门户中查看群集，负载均衡器必须公开一个公共 IP 地址，并且网络安全组必须允许端口 19080 上的传入流量。 如果设置不满足这些要求，Azure 门户不会显示群集的状态。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -100,7 +100,7 @@ DnsSettings              : {
             },*/
     ```
 
-2. 注释掉 `Microsoft.Compute/virtualMachineScaleSets` 的 `nicPrefixOverride` 属性，因为你使用的是现有子网，并且已在步骤 1 中禁用了此变量。
+2. 注释掉 `nicPrefixOverride` 的 `Microsoft.Compute/virtualMachineScaleSets` 属性，因为你使用的是现有子网，并且已在步骤 1 中禁用了此变量。
 
     ```json
             /*"nicPrefixOverride": "[parameters('subnet0Prefix')]",*/
@@ -143,7 +143,7 @@ DnsSettings              : {
     },*/
     ```
 
-5. 从 `Microsoft.Compute/virtualMachineScaleSets` 的 `dependsOn` 属性中注释掉虚拟网络，避免非得要创建新的虚拟网络：
+5. 从 `dependsOn` 的 `Microsoft.Compute/virtualMachineScaleSets` 属性中注释掉虚拟网络，避免非得要创建新的虚拟网络：
 
     ```json
     "apiVersion": "[variables('vmssApiVersion')]",
@@ -229,7 +229,7 @@ DnsSettings              : {
     }, */
     ```
 
-5. 从 `Microsoft.Network/loadBalancers` 的 `dependsOn` 属性中注释掉 IP 地址，避免非得要创建新的 IP 地址：
+5. 从 `dependsOn` 的 `Microsoft.Network/loadBalancers` 属性中注释掉 IP 地址，避免非得要创建新的 IP 地址：
 
     ```json
     "apiVersion": "[variables('lbIPApiVersion')]",
@@ -243,7 +243,7 @@ DnsSettings              : {
     "properties": {
     ```
 
-6. 在 `Microsoft.Network/loadBalancers` 资源中，将 `frontendIPConfigurations` 的 `publicIPAddress` 元素更改为引用现有的静态 IP 地址而不是新建的 IP 地址：
+6. 在 `Microsoft.Network/loadBalancers` 资源中，将 `publicIPAddress` 的 `frontendIPConfigurations` 元素更改为引用现有的静态 IP 地址而不是新建的 IP 地址：
 
     ```json
                 "frontendIPConfigurations": [
@@ -259,7 +259,7 @@ DnsSettings              : {
                     ],
     ```
 
-7. 在 `Microsoft.ServiceFabric/clusters` 资源中，将 `managementEndpoint` 更改为静态 IP 地址的 DNS FQDN。 如果使用安全群集，请确保将 *http://* 更改为 *https://*。 （请注意，此步骤仅适用于 Service Fabric 群集。 如果使用虚拟机规模集，请跳过此步骤。）
+7. 在 `Microsoft.ServiceFabric/clusters` 资源中，将 `managementEndpoint` 更改为静态 IP 地址的 DNS FQDN。 如果使用安全群集，请确保将 *http://* 更改为 *https://* 。 （请注意，此步骤仅适用于 Service Fabric 群集。 如果使用虚拟机规模集，请跳过此步骤。）
 
     ```json
                     "fabricSettings": [],
@@ -327,7 +327,7 @@ DnsSettings              : {
     }, */
     ```
 
-4. 删除 `Microsoft.Network/loadBalancers` 的 IP 地址 `dependsOn` 属性，避免非得要创建新的 IP 地址。 添加虚拟网络 `dependsOn` 属性，因为负载均衡器现在依赖于虚拟网络中的子网：
+4. 删除 `dependsOn` 的 IP 地址 `Microsoft.Network/loadBalancers` 属性，避免非得要创建新的 IP 地址。 添加虚拟网络 `dependsOn` 属性，因为负载均衡器现在依赖于虚拟网络中的子网：
 
     ```json
                 "apiVersion": "[variables('lbApiVersion')]",
@@ -361,7 +361,7 @@ DnsSettings              : {
                     ],
     ```
 
-6. 在 `Microsoft.ServiceFabric/clusters` 资源中，将 `managementEndpoint` 更改为指向内部负载均衡器地址。 如果使用安全群集，请确保将 *http://* 更改为 *https://*。 （请注意，此步骤仅适用于 Service Fabric 群集。 如果使用虚拟机规模集，请跳过此步骤。）
+6. 在 `Microsoft.ServiceFabric/clusters` 资源中，将 `managementEndpoint` 更改为指向内部负载均衡器地址。 如果使用安全群集，请确保将 *http://* 更改为 *https://* 。 （请注意，此步骤仅适用于 Service Fabric 群集。 如果使用虚拟机规模集，请跳过此步骤。）
 
     ```json
                     "fabricSettings": [],
@@ -382,7 +382,7 @@ DnsSettings              : {
 <a id="internalexternallb"></a>
 ## <a name="internal-and-external-load-balancer"></a>内部和外部负载均衡器
 
-本方案从现有的单节点类型外部负载均衡器着手，添加一个相同节点类型的内部负载均衡器。 附加到后端地址池的后端端口只能分配给单个负载均衡器。 选择哪个负载均衡器使用应用程序端口，哪个负载均衡器使用管理终结点（端口 19000 和 19080）。 如果将管理终结点放在内部负载均衡器上，请记住[本文前面](#allowing-the-service-fabric-resource-provider-to-query-your-cluster)讨论的 Service Fabric 资源提供程序限制。 本示例将管理终结点保留在外部负载均衡器上。 还需要添加一个端口号为 80 的应用程序端口，并将其放在内部负载均衡器上。
+本方案从现有的单节点类型外部负载均衡器着手，添加一个相同节点类型的内部负载均衡器。 附加到后端地址池的后端端口只能分配给单个负载均衡器。 选择哪个负载均衡器使用应用程序端口，哪个负载均衡器使用管理终结点（端口 19000 和 19080）。 如果将管理终结点放在内部负载均衡器上，请记住[前文所述](#allowing-the-service-fabric-resource-provider-to-query-your-cluster)的 Service Fabric 资源提供程序限制。 本示例将管理终结点保留在外部负载均衡器上。 还需要添加一个端口号为 80 的应用程序端口，并将其放在内部负载均衡器上。
 
 在双节点类型的群集中，一个节点类型位于外部负载均衡器上。 另一个节点类型位于内部负载均衡器上。 要使用双节点类型的群集，请在门户创建的双节点类型模板（附带两个负载均衡器）中，将第二个负载均衡器切换为内部负载均衡器。 有关详细信息，请参阅[仅限内部的负载均衡器](#internallb)部分。
 
@@ -572,7 +572,7 @@ DnsSettings              : {
             },
     ```
 
-6. 在 `Microsoft.Compute/virtualMachineScaleSets` 资源的 `networkProfile` 中，添加内部后端地址池：
+6. 在 `networkProfile` 资源的 `Microsoft.Compute/virtualMachineScaleSets` 中，添加内部后端地址池：
 
     ```json
     "loadBalancerBackendAddressPools": [

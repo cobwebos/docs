@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.custom: seodec18
 ms.openlocfilehash: 1cf8898e5fd63e35447f6580e13347ba6d7fc413
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75485437"
 ---
 # <a name="track-asynchronous-azure-operations"></a>跟踪异步 Azure 操作
@@ -36,7 +36,7 @@ ms.locfileid: "75485437"
 
 但是，并非每个异步操作都会返回所有这些值。 例如，可能需要对一个操作计算 Azure-AsyncOperation 标头值，对另一个操作计算 Location 标头值。 
 
-检索这些标头值与检索请求的任何标头值一样。 例如，在 C# 中，可以使用以下代码从名为 `response` 的 `HttpWebResponse` 对象检索标头值：
+检索这些标头值与检索请求的任何标头值一样。 例如，在 C# 中，可以使用以下代码从名为 `HttpWebResponse` 的 `response` 对象检索标头值：
 
 ```cs
 response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
@@ -76,12 +76,12 @@ response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
 * 失败
 * 已取消
 
-所有其他值表示该操作仍在运行。 资源提供程序可以返回自定义的值，用于指示其状态。 例如，当请求已收到且正在运行时，用户会收到“已接受”****。
+所有其他值表示该操作仍在运行。 资源提供程序可以返回自定义的值，用于指示其状态。 例如，当请求已收到且正在运行时，用户会收到“已接受”  。
 
 ## <a name="example-requests-and-responses"></a>示例请求和响应
 
 ### <a name="start-virtual-machine-202-with-azure-asyncoperation"></a>启动虚拟机（Azure-AsyncOperation 标头出现 202 响应）
-此示例演示如何确定虚拟机的“启动”**** 操作的状态。 初始请求采用以下格式：
+此示例演示如何确定虚拟机的“启动”  操作的状态。 初始请求采用以下格式：
 
 ```HTTP
 POST 
@@ -113,7 +113,7 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft
 
 ### <a name="deploy-resources-201-with-azure-asyncoperation"></a>部署资源（Azure-AsyncOperation 标头出现 201 响应）
 
-此示例演示将资源部署到 Azure 时，如何确定“部署”**** 操作的状态。 初始请求采用以下格式：
+此示例演示将资源部署到 Azure 时，如何确定“部署”  操作的状态。 初始请求采用以下格式：
 
 ```HTTP
 PUT
@@ -153,7 +153,7 @@ https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{res
 
 ### <a name="create-storage-account-202-with-location-and-retry-after"></a>创建存储帐户（Location 和 Retry-After 标头出现 202 响应）
 
-此示例演示如何确定存储帐户的“创建”**** 操作的状态。 初始请求采用以下格式：
+此示例演示如何确定存储帐户的“创建”  操作的状态。 初始请求采用以下格式：
 
 ```HTTP
 PUT

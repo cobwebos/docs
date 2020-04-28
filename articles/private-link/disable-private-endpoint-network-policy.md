@@ -8,19 +8,19 @@ ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: b5ab62e7ab57d32a11a45713519633034deb6a5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75453019"
 ---
 # <a name="disable-network-policies-for-private-endpoints"></a>对专用终结点禁用网络策略
 
 专用终结点不支持网络安全组 (NSG) 等网络策略。 若要在给定的子网上部署专用终结点，需要在该子网上进行显式禁用设置。 此设置仅适用于专用终结点。 对于子网中的其他资源，访问权限基于网络安全组 (NSG) 安全规则定义进行控制。 
  
-使用门户创建专用终结点时，会在创建过程中自动禁用此设置。 使用其他客户端进行的部署需要额外的步骤来更改此设置。 您可以使用 Azure 门户中的云外壳禁用设置，或者 Azure PowerShell、Azure CLI 的本地安装或使用 Azure 资源管理器模板。  
+使用门户创建专用终结点时，会在创建过程中自动禁用此设置。 使用其他客户端进行的部署需要额外的步骤来更改此设置。 你可以从 Azure 门户中使用 cloud shell，或者 Azure PowerShell、Azure CLI 的本地安装或使用 Azure 资源管理器模板来禁用此设置。  
  
-以下示例介绍了如何对名为 *myVirtualNetwork* 的虚拟网络禁用 `PrivateEndpointNetworkPolicies`，此时*默认*子网托管在名为 *myResourceGroup* 的资源组中。
+以下示例介绍了如何对名为 `PrivateEndpointNetworkPolicies`myVirtualNetwork*的虚拟网络禁用*，此时*默认*子网托管在名为 *myResourceGroup* 的资源组中。
 
 ## <a name="using-azure-powershell"></a>使用 Azure PowerShell
 本部分介绍如何使用 Azure PowerShell 禁用子网专用终结点策略。
@@ -70,5 +70,5 @@ az network vnet subnet update \
 } 
 ```
 ## <a name="next-steps"></a>后续步骤
-- 了解有关[Azure 专用终结点](private-endpoint-overview.md)的更多
+- 详细了解 [Azure 专用终结点](private-endpoint-overview.md)
  

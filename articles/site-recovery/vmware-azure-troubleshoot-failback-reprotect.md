@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: b577b82585ffad0547818b4f19554a2f39cb830c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75498104"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>排查从 Azure 到本地的故障回复问题
@@ -29,7 +29,7 @@ ms.locfileid: "75498104"
 - 如果无法从进程服务器访问配置服务器，请使用 Telnet 在端口 443 上检查与配置服务器的连接。 也可以尝试从进程服务器 ping 配置服务器。 连接到配置服务器后，进程服务器也应会发出检测信号。
 - 作为物理本地服务器保护的 Windows Server 2008 R2 SP1 服务器无法从 Azure 故障回复到本地站点。
 - 在以下情况下无法进行故障回复：
-    - 已将计算机迁移到 Azure。 [了解详情](migrate-overview.md#what-do-we-mean-by-migration)。
+    - 已将计算机迁移到 Azure。 [了解详细信息](migrate-overview.md#what-do-we-mean-by-migration)。
     - 已将 VM 移到另一个资源组。
     - 已删除 Azure VM。
     - 已对 VM 禁用保护。
@@ -43,7 +43,7 @@ ms.locfileid: "75498104"
 
 ### <a name="error-code-95226"></a>错误代码 95226
 
-重新保护失败，因为 Azure 虚拟机无法访问本地配置服务器****。
+重新保护失败，因为 Azure 虚拟机无法访问本地配置服务器  。
 
 在下述情况中会发生此错误：
 
@@ -53,7 +53,7 @@ ms.locfileid: "75498104"
 若要解决此问题，请执行下列操作：
 
 * 检查 Azure VM 网络是否允许 Azure VM 与本地配置服务器进行通信。 可以设置本地数据中心的站点到站点 VPN，或在 Azure VM 的虚拟网络上配置具有专用对等互连的 Azure ExpressRoute 连接。
-* 如果 VM 可以与本地配置服务器通信，请登录到 VM。 然后检查 InMage Scout 应用程序服务。 如果看到该服务未运行，请手动启动该服务。 检查服务启动类型是否已设置为“自动”****。
+* 如果 VM 可以与本地配置服务器通信，请登录到 VM。 然后检查 InMage Scout 应用程序服务。 如果看到该服务未运行，请手动启动该服务。 检查服务启动类型是否已设置为“自动”  。
 
 ### <a name="error-code-78052"></a>错误代码 78052
 
@@ -69,7 +69,7 @@ ms.locfileid: "75498104"
 
 ### <a name="error-code-78093"></a>错误代码 78093
 
-**VM 未运行、处于挂起状态或无法访问。**
+VM 未运行，它处于挂起状态或无法访问  。
 
 若要解决此问题，请执行下列操作：
 
@@ -80,7 +80,7 @@ ms.locfileid: "75498104"
 
 ### <a name="error-code-8061"></a>错误代码 8061
 
-无法通过 ESXi 主机访问数据存储****。
+无法通过 ESXi 主机访问数据存储  。
 
 针对故障回复检查[主目标先决条件和支持的数据存储](vmware-azure-prepare-failback.md#deploy-a-separate-master-target-server)。
 
@@ -91,7 +91,7 @@ ms.locfileid: "75498104"
 
 ### <a name="error-code-8038"></a>错误代码 8038
 
-**由于错误，无法启动本地虚拟机。**
+**由于错误导致本地虚拟机无法启动。**
 
 当本地 VM 在一个没有预配足够内存的主机上启动时，会发生此问题。 
 

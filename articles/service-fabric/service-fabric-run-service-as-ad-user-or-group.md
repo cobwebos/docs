@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/29/2018
 ms.author: dekapur
 ms.openlocfilehash: d440aadb66562e32331c9725a9367c12440a315d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75464249"
 ---
 # <a name="run-a-service-as-an-active-directory-user-or-group"></a>以 Active Directory 用户或组身份运行服务
@@ -37,7 +37,7 @@ ms.locfileid: "75464249"
 ```
 
 > [!NOTE] 
-> 如果将 RunAs 策略应用到服务，且服务清单声明使用 HTTP 协议的终结点资源，则还必须指定 SecurityAccessPolicy****。  有关详细信息，请参阅[为 HTTP 和 HTTPS 终结点分配安全访问策略](service-fabric-assign-policy-to-endpoint.md)。 
+> 如果将 RunAs 策略应用到服务，且服务清单声明使用 HTTP 协议的终结点资源，则还必须指定 SecurityAccessPolicy  。  有关详细信息，请参阅[为 HTTP 和 HTTPS 终结点分配安全访问策略](service-fabric-assign-policy-to-endpoint.md)。 
 >
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->

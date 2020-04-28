@@ -7,10 +7,10 @@ ms.author: mamccrea
 ms.date: 05/15/2019
 ms.topic: conceptual
 ms.openlocfilehash: 1d3a02d3778f9b4113767c5f755d675aeadd901b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75479236"
 ---
 # <a name="explore-azure-stream-analytics-with-visual-studio-code-preview"></a>使用 Visual Studio Code（预览版）浏览 Azure 流分析
@@ -32,16 +32,16 @@ ms.locfileid: "75479236"
 可使用作业视图从 Visual Studio 中与 Azure 流分析作业进行交互。
 
 
-1. 单击 Visual Studio Code 活动栏上的 **Azure** 图标，然后展开“流分析”节点****。 你的作业应显示在你的订阅下。
+1. 单击 Visual Studio Code 活动栏上的 **Azure** 图标，然后展开“流分析”节点  。 你的作业应显示在你的订阅下。
 
    ![打开流分析资源管理器](./media/vscode-explore-jobs/open-explorer.png)
 
 2. 展开作业节点，可以打开并查看作业查询、配置、输入、输出和函数。 
 
-3. 右键单击作业节点，然后选择“在门户中打开作业视图”**** 节点以在 Azure 门户中打开作业视图。
+3. 右键单击作业节点，然后选择“在门户中打开作业视图”  节点以在 Azure 门户中打开作业视图。
 
    ![在门户中打开作业视图](./media/vscode-explore-jobs/open-job-view.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 Visual Studio Code 中创建 Azure 流分析云作业（预览）](quick-create-vs-code.md)
+* [在 Visual Studio Code（预览版）中创建 Azure 流分析云作业](quick-create-vs-code.md)

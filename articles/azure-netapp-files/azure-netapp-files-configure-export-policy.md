@@ -1,6 +1,6 @@
 ---
-title: 为 NFS 卷配置导出策略 - Azure NetApp 文件
-description: 描述如何配置导出策略以使用 Azure NetApp 文件控制对 NFS 卷的访问
+title: 配置 NFS 卷的导出策略-Azure NetApp 文件
+description: 介绍如何使用 Azure NetApp 文件配置导出策略，以控制对 NFS 卷的访问
 services: azure-netapp-files
 author: b-juche
 ms.author: b-juche
@@ -9,10 +9,10 @@ ms.workload: storage
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.openlocfilehash: b96fca3a5627a1c6c96c8db5c1c209a51c5e102a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75551552"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>为 NFS 卷配置导出策略
@@ -21,10 +21,10 @@ ms.locfileid: "75551552"
 
 ## <a name="steps"></a>步骤 
 
-1.  单击 Azure NetApp 文件导航窗格中的**导出策略**。 
+1.  在 Azure NetApp 文件导航窗格中单击 "**导出策略**"。 
 
 2.  为以下字段指定信息来创建导出策略规则：   
-    *  **指数**   
+    *  **编入**   
         指定规则的索引号。  
         导出策略最多可以包含五个规则。 规则将按照它们在索引号列表中的顺序进行评估。 首先将评估索引号较小的规则。 例如，索引号为 1 的规则将在索引号为 2 的规则前进行评估。 
 

@@ -1,15 +1,15 @@
 ---
 title: 资源管理器体系结构
-description: 有关 Azure 服务结构群集资源管理器服务的概述和体系结构信息。
+description: 有关 Azure Service Fabric 群集资源管理器服务的概述和体系结构信息。
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 94ed906533d108081d620e9b183ecfee249d85ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75551686"
 ---
 # <a name="cluster-resource-manager-architecture-overview"></a>群集 Resource Manager 体系结构概述
@@ -56,7 +56,7 @@ Service Fabric 群集资源管理器是在群集中运行的中心服务。 它�
 </center>
 
 ## <a name="next-steps"></a>后续步骤
-- 群集 Resource Manager 提供许多用于描述群集的选项。 要了解有关它们的更多，请查看本文介绍[服务结构群集](./service-fabric-cluster-resource-manager-cluster-description.md)
+- 群集 Resource Manager 提供许多用于描述群集的选项。 若要详细了解这些选项，请查看这篇[介绍 Service Fabric 群集](./service-fabric-cluster-resource-manager-cluster-description.md)的文章
 - 群集资源管理器的主要职责是重新均衡群集，并强制执行放置规则。 有关如何配置这些行为的详细信息，请参阅[均衡 Service Fabric 群集](./service-fabric-cluster-resource-manager-balancing.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-1.png

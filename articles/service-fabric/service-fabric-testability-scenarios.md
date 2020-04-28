@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/1/2019
 ms.author: motanv
 ms.openlocfilehash: 206b02024ad052a12e87cfdf1773815027e8aec4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75465530"
 ---
 # <a name="testability-scenarios"></a>可测试性方案
@@ -234,7 +234,7 @@ class Test
 ```
 
 
-**电源外壳**
+**PowerShell**
 
 ```powershell
 $connection = "localhost:19000"

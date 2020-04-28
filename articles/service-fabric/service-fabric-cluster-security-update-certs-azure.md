@@ -4,10 +4,10 @@ description: 介绍如何向 Service Fabric 群集添加新的证书、滚动更
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: a3c92e1b39261af32085e4d9b6cb2462d5c0eb64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75458350"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>在 Azure 中添加或删除 Service Fabric 群集的证书
@@ -42,13 +42,13 @@ Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日
 执行这些步骤的前提是，熟悉资源管理器的工作原理，并已使用资源管理器模板至少部署了一个 Service Fabric 群集，同时已准备好在设置此群集时使用的模板。 此外，还有一个前提就是，可以熟练使用 JSON。
 
 > [!NOTE]
-> 如果您正在寻找一个示例模板和参数，您可以使用这些模板和参数来遵循这些模板和参数，或者作为起点，然后从这个[git-repo](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample)下载它。 
+> 如需可参考或入手的示例模板和参数，请从此 [git-repo](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample) 下载。 
 > 
 > 
 
 ### <a name="edit-your-resource-manager-template"></a>编辑 资源管理器模板
 
-为了便于参考，示例 5-VM-1-NodeTypes-Secure_Step2.JSON 包含我们将进行的所有编辑。 该示例可在[git-repo](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample)上。
+为了便于参考，示例 5-VM-1-NodeTypes-Secure_Step2.JSON 包含我们将进行的所有编辑。 该示例在[git-](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample)存储库中提供。
 
 **请确保执行所有步骤**
 
@@ -106,7 +106,7 @@ Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日
          }
     ``` 
 
-4. 更改**所有** **Microsoft.计算/虚拟机Scale设置**资源定义 - 查找 Microsoft.计算/虚拟机规模集资源定义。 滚动到 "publisher": "Microsoft.Azure.ServiceFabric"，位于 "virtualMachineProfile" 下。
+4. 对**所有** **Microsoft. compute/virtualMachineScaleSets**资源定义进行更改-查找 virtualMachineScaleSets 资源定义。 滚动到 "publisher": "Microsoft.Azure.ServiceFabric"，位于 "virtualMachineProfile" 下。
 
     在 Service Fabric 发布服务器设置中，应看到类似如下的内容。
     

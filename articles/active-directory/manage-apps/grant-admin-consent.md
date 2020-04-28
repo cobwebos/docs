@@ -13,10 +13,10 @@ ms.author: mimart
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c515fef4997720435c64bd5f3ae7b18f8921fc5d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75480913"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>向应用程序授予租户范围的管理员许可
@@ -25,7 +25,7 @@ ms.locfileid: "75480913"
 
 有关许可应用程序的详细信息，请参阅 [Azure Active Directory 许可框架](../develop/consent-framework.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 授予租户范围的管理员许可需要以[全局管理员](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)、[应用程序管理员](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)或[云应用程序管理员](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator)的身份登录。
 
@@ -39,29 +39,29 @@ ms.locfileid: "75480913"
 
 ### <a name="grant-admin-consent-in-enterprise-apps"></a>在企业应用中授予管理员许可
 
-如果应用程序已在租户中预配，则你可以通过“企业应用程序”授予租户范围的管理员许可。** 例如，如果已至少许可一个用户登录到某个应用程序，则可以在租户中预配该应用。 有关详细信息，请参阅[如何以及为何将应用程序添加到 Azure Active Directory](../develop/active-directory-how-applications-are-added.md)。
+如果应用程序已在租户中预配，则你可以通过“企业应用程序”授予租户范围的管理员许可。  例如，如果已至少许可一个用户登录到某个应用程序，则可以在租户中预配该应用。 有关详细信息，请参阅[如何以及为何将应用程序添加到 Azure Active Directory](../develop/active-directory-how-applications-are-added.md)。
 
-若要向“企业应用程序”中列出的应用授予租户范围的管理员许可：****
+若要向“企业应用程序”中列出的应用授予租户范围的管理员许可： 
 
-1. 以[全局管理员](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)、[应用程序管理员](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)或[云应用程序管理员](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator)的身份登录到[Azure 门户](https://portal.azure.com)。
-2. 依次选择“Azure Active Directory”、“企业应用程序”。********
+1. 以[全局管理员](https://portal.azure.com)、[应用程序管理员](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)或[云应用程序管理员](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)的身份登录到 [Azure 门户](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator)。
+2. 依次选择“Azure Active Directory”、“企业应用程序”。  
 3. 选择要向其授予租户范围的管理员许可的应用程序。
-4. 选择“权限”，然后单击“授予管理员许可”。********
+4. 选择“权限”，然后单击“授予管理员许可”。  
 5. 仔细查看应用程序所需的权限。
-6. 如果你同意应用程序所需的权限，请授予许可。 否则，请单击“取消”或关闭窗口。****
+6. 如果你同意应用程序所需的权限，请授予许可。 否则，请单击“取消”或关闭窗口。 
 
 ### <a name="grant-admin-consent-in-app-registrations"></a>在应用注册中授予管理员许可
 
-对于组织开发的应用程序，或已直接在 Azure AD 租户中注册的应用程序，还可以通过 Azure 门户中的“应用注册”授予租户范围的管理员许可。****
+对于组织开发的应用程序，或已直接在 Azure AD 租户中注册的应用程序，还可以通过 Azure 门户中的“应用注册”授予租户范围的管理员许可。 
 
-若要通过“应用注册”授予租户范围的管理员许可：****
+若要通过“应用注册”授予租户范围的管理员许可： 
 
-1. 以[全局管理员](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)、[应用程序管理员](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)或[云应用程序管理员](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator)的身份登录到[Azure 门户](https://portal.azure.com)。
-2. 依次选择“Azure Active Directory”、“应用注册”。********
+1. 以[全局管理员](https://portal.azure.com)、[应用程序管理员](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)或[云应用程序管理员](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)的身份登录到 [Azure 门户](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator)。
+2. 依次选择“Azure Active Directory”、“应用注册”。  
 3. 选择要向其授予租户范围的管理员许可的应用程序。
-4. 选择“API 权限”，然后单击“授予管理员许可”。********
+4. 选择“API 权限”，然后单击“授予管理员许可”。  
 5. 仔细查看应用程序所需的权限。
-6. 如果你同意应用程序所需的权限，请授予许可。 否则，请单击“取消”或关闭窗口。****
+6. 如果你同意应用程序所需的权限，请授予许可。 否则，请单击“取消”或关闭窗口。 
 
 ## <a name="construct-the-url-for-granting-tenant-wide-admin-consent"></a>构建用于授予租户范围的管理员许可的 URL
 
@@ -80,9 +80,9 @@ ms.locfileid: "75480913"
 
 ## <a name="next-steps"></a>后续步骤
 
-[配置最终用户如何同意应用程序](configure-user-consent.md)
+[配置最终用户同意应用程序的方式](configure-user-consent.md)
 
-[配置管理员同意工作流](configure-admin-consent-workflow.md)
+[配置管理员许可工作流](configure-admin-consent-workflow.md)
 
 [Microsoft 标识平台中的权限和许可](../develop/active-directory-v2-scopes.md)
 

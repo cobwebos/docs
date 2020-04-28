@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
 ms.openlocfilehash: bcaf45af4c02dad22e2cc611fa7ea5a32ad3a853
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75443885"
 ---
 # <a name="azure-operational-security-overview"></a>Azure 操作安全性概述
@@ -30,13 +30,13 @@ ms.locfileid: "75443885"
 
 IT 运营团队负责管理数据中心基础结构、应用程序和数据，包括这些系统的稳定性和安全性。 但是，若要获得日益增多的复杂 IT 环境的安全洞察信息，通常需要组织从多个安全性和管理系统收集数据。
 
-[Microsoft Azure 监视器日志](/azure/operations-management-suite/operations-management-suite-overview)是一种基于云的 IT 管理解决方案，可帮助您管理和保护本地和云基础结构。 其核心功能由在 Azure 中运行的以下服务提供。 Azure 包含多个服务，这些服务可帮助你管理和保护本地和云基础结构。 每项服务都提供特定的管理功能。 可合并服务，实现不同的管理方案。 
+[Microsoft Azure 监视器日志](/azure/operations-management-suite/operations-management-suite-overview)是一种基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。 其核心功能由在 Azure 中运行的以下服务提供。 Azure 包含多个服务，这些服务可帮助你管理和保护本地和云基础结构。 每项服务都提供特定的管理功能。 可合并服务，实现不同的管理方案。 
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
 [Azure Monitor](/azure/azure-monitor/overview) 可将来自托管源的数据收集到中央数据存储中。 这些数据可能包括事件、性能数据或通过 API 提供的自定义数据。 收集数据后，可分析、导出数据或发出警报。
 
-可整合来自各种源的数据，并将 Azure 服务中的数据合并到现有的本地环境。 Azure 监视器日志还清楚地将数据收集与对该数据执行的操作分开，以便所有操作都可用于所有类型的数据。
+可整合来自各种源的数据，并将 Azure 服务中的数据合并到现有的本地环境。 Azure Monitor 日志还清楚地将数据收集与对数据执行的操作进行分隔，以便所有操作都可用于所有类型的数据。
 
 ### <a name="automation"></a>自动化
 
@@ -94,7 +94,7 @@ Azure AD 中还包括了整套[标识管理功能](/azure/security/security-iden
 >[!Note]
 >若要深入了解安全中心中的角色和允许的操作，请参阅 [Azure 安全中心中的权限](/azure/security-center/security-center-permissions)。
 
-安全中心使用 Microsoft Monitoring Agent。 这与 Azure 监视器服务使用的代理相同。 通过此代理收集的数据存储在与 Azure 订阅关联的现有 Log Analytics [工作区](/azure/log-analytics/log-analytics-manage-access)或新工作区中，具体取决于 VM 的地理位置。
+安全中心使用 Microsoft Monitoring Agent。 此代理与 Azure Monitor 服务使用的相同。 通过此代理收集的数据存储在与 Azure 订阅关联的现有 Log Analytics [工作区](/azure/log-analytics/log-analytics-manage-access)或新工作区中，具体取决于 VM 的地理位置。
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
@@ -191,6 +191,6 @@ Microsoft Azure 等云平台消除了传统的瓶颈，帮助将基础结构商�
 
 若要了解有关安全和审核解决方案的信息，请参阅以下文章：
 
-- [安全性和合规性](https://azure.microsoft.com/overview/trusted-cloud/)
+- [安全和符合性](https://azure.microsoft.com/overview/trusted-cloud/)
 - [Azure 安全中心](/azure/security-center/security-center-intro)
 - [Azure Monitor](/azure/azure-monitor/overview)

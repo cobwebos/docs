@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.openlocfilehash: de6f24ea66ef41b5ee4bfdda5948de9639f10a51
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75485398"
 ---
 # <a name="manage-azure-resources-by-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure 资源
@@ -46,7 +46,7 @@ $ctx = $storageAccount.Context
 
 ### <a name="deploy-a-template"></a>部署模板
 
-以下脚本通过部署快速入门模板来创建存储帐户。 有关详细信息，请参阅[快速入门：使用 Visual Studio 代码创建 Azure 资源管理器模板](../templates/quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell)。
+以下脚本通过部署快速入门模板来创建存储帐户。 有关详细信息，请参阅[快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板](../templates/quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell)。
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -125,7 +125,7 @@ $lockId = (Get-AzResourceLock -ResourceGroupName $resourceGroupName -ResourceNam
 Remove-AzResourceLock -LockId $lockId
 ```
 
-有关详细信息，请参阅使用[Azure 资源管理器锁定资源](lock-resources.md)。
+更多信息请参阅 [使用 Azure Resource Manager 锁定资源](lock-resources.md)。
 
 ## <a name="tag-resources"></a>标记资源
 
@@ -133,11 +133,11 @@ Remove-AzResourceLock -LockId $lockId
 
 ## <a name="manage-access-to-resources"></a>管理对资源的访问
 
-[基于角色的访问控制 （RBAC）](../../role-based-access-control/overview.md)是管理对 Azure 中资源的访问的方式。 有关详细信息，请参阅[使用 RBAC 和 Azure PowerShell 管理访问权限](../../role-based-access-control/role-assignments-powershell.md)。
+可以在 Azure 中通过[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 这种方式管理对资源的访问。 有关详细信息，请参阅[使用 RBAC 和 Azure PowerShell 管理访问权限](../../role-based-access-control/role-assignments-powershell.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 若要了解 Azure 资源管理器，请参阅 [Azure 资源管理器概述](overview.md)。
 - 若要了解资源管理器模板语法，请参阅[了解 Azure 资源管理器模板的结构和语法](../templates/template-syntax.md)。
-- 要了解如何开发模板，请参阅分[步教程](/azure/azure-resource-manager/)。
+- 若要了解如何开发模板，请参阅[分步教程](/azure/azure-resource-manager/)。
 - 若要查看 Azure 资源管理器模板架构，请参阅[模板参考](/azure/templates/)。

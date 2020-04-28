@@ -1,15 +1,15 @@
 ---
 title: Azure Service Fabric 中的指标碎片整理
-description: 了解如何使用碎片整理或打包作为服务结构中指标的策略。 此技术对于非常大的服务很有用。
+description: 了解如何对 Service Fabric 中的指标使用碎片整理或打包作为策略。 此技术对于大型服务很有用。
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: bba459be4408f4a4bc438bb33b0570a91e84f2cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75563354"
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Service Fabric 中指标和负载的重整
@@ -89,7 +89,7 @@ ClusterManifest.xml：
 
 
 ## <a name="next-steps"></a>后续步骤
-- 群集 Resource Manager 提供许多用于描述群集的选项。 要了解有关它们的更多，请查看本文介绍[服务结构群集](service-fabric-cluster-resource-manager-cluster-description.md)
-- 指标是 Service Fabric 群集资源管理器在群集中管理消耗和容量的方式。 要了解有关指标以及如何配置指标的更多[，请查看本文](service-fabric-cluster-resource-manager-metrics.md)
+- 群集 Resource Manager 提供许多用于描述群集的选项。 若要详细了解这些选项，请查看这篇[介绍 Service Fabric 群集](service-fabric-cluster-resource-manager-cluster-description.md)的文章
+- 指标是 Service Fabric 群集资源管理器在群集中管理消耗和容量的方式。 若要详细了解指标及其配置方式，请查看[本文](service-fabric-cluster-resource-manager-metrics.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-defragmentation-metrics/balancing-defrag-compared.png

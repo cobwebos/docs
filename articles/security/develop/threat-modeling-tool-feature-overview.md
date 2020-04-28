@@ -1,5 +1,5 @@
 ---
-title: 微软威胁建模工具功能概述 - Azure
+title: Microsoft Threat Modeling Tool 功能概述-Azure
 description: 了解威胁建模工具中提供的所有功能
 author: jegeib
 ms.author: jegeib
@@ -8,10 +8,10 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
 ms.openlocfilehash: 88eea0eb2bceb0f6322381a94d4339cbdfa662c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75552111"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>威胁建模工具功能概述
@@ -41,11 +41,11 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 | Label                               | 详细信息      |
 | --------------------------------------- | ------------ |
-| **文件** | <ul><li>打开、保存和关闭文件</li><li>登录和注销 OneDrive 帐户。</li><li>共享链接（视图和编辑）。</li><li>查看文件信息。</li><li>将新模板应用于现有模型。</li></ul> |
+| **File** | <ul><li>打开、保存和关闭文件</li><li>登录和注销 OneDrive 帐户。</li><li>共享链接（视图和编辑）。</li><li>查看文件信息。</li><li>将新模板应用于现有模型。</li></ul> |
 | **编辑** | 撤消和重做操作，以及复制、粘贴和删除。 |
-| **视图** | <ul><li>在“分析”**** 和“设计”**** 视图之间进行切换。</li><li>打开已关闭的窗口（例如模具、元素属性和消息）。</li><li>将布局重置为默认设置。</li></ul> |
-| **图** | 添加和删除关系图，及浏览关系图的“选项卡”。 |
-| **报告** | 创建与他人共享的 HTML 报告。 |
+| **查看** | <ul><li>在“分析”**** 和“设计”**** 视图之间进行切换。</li><li>打开已关闭的窗口（例如模具、元素属性和消息）。</li><li>将布局重置为默认设置。</li></ul> |
+| **结构图** | 添加和删除关系图，及浏览关系图的“选项卡”。 |
+| **报表** | 创建与他人共享的 HTML 报告。 |
 | **帮助** | 查看帮助使用工具的指南。 |
 
 符号是指顶级菜单的快捷方式：
@@ -174,7 +174,7 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 选择威胁后，可以使用三种不同的功能：
 
-| Feature                               | 信息      |
+| 功能                               | 信息      |
 | --------------------------------------- | ------------ |
 | **已读指示器** | <p>将威胁标记为已读，可帮助你跟踪已查看的项。</p><p>![已读/未读指示器](./media/threat-modeling-tool-feature-overview/readmode.png)</p> |
 | **交互焦点** | <p>关系图中属于威胁的交互会突出显示。</p><p>![交互焦点](./media/threat-modeling-tool-feature-overview/interactionfocus.png)</p> |
@@ -194,7 +194,7 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 ## <a name="reports"></a>报表
 
-完成优先级更改并更新每个已发生威胁的状态后，就可以保存文件和/或打印报表。 转到**报表** > **创建完整报表**。 为报表命名，然后应会看到类似于下图的信息：
+完成优先级更改并更新每个已发生威胁的状态后，就可以保存文件和/或打印报表。 中转到**报表** > "**创建完整报表**"。 为报表命名，然后应会看到类似于下图的信息：
 
 ![报表](./media/threat-modeling-tool-feature-overview/report.png)
 

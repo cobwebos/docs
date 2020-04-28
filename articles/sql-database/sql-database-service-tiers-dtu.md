@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
 ms.openlocfilehash: 2f316e57e407a0588e77f56d6e1fbe8c19ba5fee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75562113"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>基于 DTU 的购买模型中的服务层
@@ -31,7 +31,7 @@ ms.locfileid: "75562113"
 
 选择服务层级首要考虑的是业务连续性、存储和性能需求。
 
-||Basic|Standard|Premium|
+||基本|Standard|Premium|
 | :-- | --: |--:| --:|
 |目标工作负荷|开发和生产|开发和生产|开发和生产|
 |运行时间 SLA|99.99%|99.99%|99.99%|
@@ -50,24 +50,24 @@ ms.locfileid: "75562113"
 >
 
 > [!NOTE]
-> 您可以在基本服务层获取免费 Azure SQL 数据库，并结合 Azure 免费帐户来浏览 Azure。 有关信息，请参阅[使用 Azure 免费帐户创建托管的云数据库](https://azure.microsoft.com/free/services/sql-database/)。
+> 可以结合 Azure 免费帐户在基本服务层获取免费的 Azure SQL 数据库，以探索 Azure。 有关信息，请参阅[使用 Azure 免费帐户创建托管的云数据库](https://azure.microsoft.com/free/services/sql-database/)。
 
 ## <a name="single-database-dtu-and-storage-limits"></a>单一数据库 DTU 和存储限制
 
-单一数据库的计算大小以数据库事务单位 (DTU) 表示，弹性池则以弹性数据库事务单位 (eDTU) 表示。 有关 DTU 和 eDTU 的更多，请参阅[基于 DTU 的采购模型](sql-database-purchase-models.md#dtu-based-purchasing-model)。
+单一数据库的计算大小以数据库事务单位 (DTU) 表示，弹性池则以弹性数据库事务单位 (eDTU) 表示。 有关 Dtu 和 Edtu 的详细信息，请参阅[基于 DTU 的购买模型](sql-database-purchase-models.md#dtu-based-purchasing-model)。
 
-||Basic|Standard|Premium|
+||基本|Standard|Premium|
 | :-- | --: | --: | --: |
 | 最大存储大小 | 2 GB | 1 TB | 4 TB  |
 | 最大 DTU | 5 | 3000 | 4000 | 
 |||||
 
 > [!IMPORTANT]
-> 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅在[Azure SQL 数据库中管理文件空间](sql-database-file-space-management.md)。
+> 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)。
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>弹性池 eDTU、存储和共用数据库限制
 
-| | **Basic** | **标准** | **溢价** |
+| | **基本** | **Standard** | **Premium** |
 | :-- | --: | --: | --: |
 | 每个数据库的最大存储大小  | 2 GB | 1 TB | 1 TB |
 | 每个池的最大存储大小 | 156 GB | 4 TB | 4 TB |
@@ -77,9 +77,9 @@ ms.locfileid: "75562113"
 |||||
 
 > [!IMPORTANT]
-> 除中国东部、华北、德国中部、德国东北部、美国中西部、美国 DoD 地区和美国政府中心外，高级级别中目前所有区域都提供超过 1 TB 的存储。 在这些区域，高级层中的最大存储限制为 1 TB。  有关详细信息，请参阅[P11-P15 当前限制](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。  
+> 高级层中的存储空间超过 1 TB 目前在除：中国东部、中国北部、德国中部、德国北部、美国中部、US DoD 地区和美国政府中心以外的所有地区都可用。 在这些区域，高级层中的最大存储限制为 1 TB。  有关详细信息，请参阅[P11-P15 当前限制](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。  
 > [!IMPORTANT]
-> 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅在[Azure SQL 数据库中管理文件空间](sql-database-file-space-management.md)。
+> 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 AZURE SQL 数据库中的文件空间](sql-database-file-space-management.md)。
 
 ## <a name="dtu-benchmark"></a>DTU 基准
 
@@ -109,7 +109,7 @@ ms.locfileid: "75562113"
 
 工作负荷由九种事务类型组成，如下表中所示。 每种事务旨在强调数据库引擎和系统硬件中的特定一组系统特征，与其他事务形成高反差。 此方法可更方便地评估不同组件对总体性能的影响。 例如，事务“Read Heavy”将从磁盘生成大量的读取操作。
 
-| 事务类型 | 描述 |
+| 事务类型 | 说明 |
 | --- | --- |
 | Read Lite |SELECT；在内存中；只读 |
 | Read Medium |SELECT；大多数在内存中；只读 |
@@ -171,8 +171,8 @@ ms.locfileid: "75562113"
 | 服务等级 | 吞吐量度量值 | 响应时间要求 |
 | --- | --- | --- |
 | Premium |每秒事务数 |0.5 秒时达到 95% |
-| Standard |每分钟事务数 |1.0 秒时达到 90% |
-| Basic |每小时事务数 |2.0 秒时达到 80% |
+| 标准 |每分钟事务数 |1.0 秒时达到 90% |
+| 基本 |每小时事务数 |2.0 秒时达到 80% |
 
 ## <a name="next-steps"></a>后续步骤
 

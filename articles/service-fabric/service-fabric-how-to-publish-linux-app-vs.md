@@ -1,35 +1,35 @@
 ---
-title: 创建a.Net核心应用并将其发布到远程 Linux 群集
-description: 创建和发布 .Net Core 应用程序，从 Visual Studio 创建远程 Linux 群集
+title: 创建 .Net Core 应用并将其发布到远程 Linux 群集
+description: 从 Visual Studio 创建和发布面向远程 Linux 群集 .Net Core 应用
 author: peterpogorski
 ms.topic: troubleshooting
 ms.date: 5/20/2019
 ms.author: pepogors
 ms.openlocfilehash: c30eedb6782e4172d677f16e27441f28c78cdd89
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75614343"
 ---
-# <a name="use-visual-studio-to-create-and-publish-net-core-applications-targeting-a-remote-linux-service-fabric-cluster"></a>使用 Visual Studio 创建和发布面向远程 Linux 服务交换矩阵群集的 .Net Core 应用程序
-借助 Visual Studio 工具，您可以开发和发布面向 Linux 服务交换矩阵群集的服务交换矩阵 .Net Core 应用程序。 SDK 版本必须为 3.4 或以上，才能从 Visual Studio 部署针对 Linux 服务交换矩阵群集的 .Net Core 应用程序。
+# <a name="use-visual-studio-to-create-and-publish-net-core-applications-targeting-a-remote-linux-service-fabric-cluster"></a>使用 Visual Studio 创建和发布面向远程 Linux Service Fabric 群集的 .Net Core 应用程序
+使用 Visual Studio 工具，你可以开发和发布面向 Linux Service Fabric 群集的 Service Fabric .Net Core 应用程序。 SDK 版本必须为3.4 或更高版本，才能从 Visual Studio 部署面向 Linux Service Fabric 群集的 .Net Core 应用程序。
 
 > [!Note]
 > Visual Studio 不支持调试面向 Linux 的 Service Fabric 应用程序。
 >
 
-## <a name="create-a-service-fabric-application-targeting-net-core"></a>创建面向 .Net 核心的服务交换矩阵应用程序
-1. 以管理员身份启动 Visual Studio。****
-2. 使用**文件>"新>项目创建项目**"。
-3. 在 **"新项目**"对话框中，选择**云->服务结构应用程序**。
+## <a name="create-a-service-fabric-application-targeting-net-core"></a>创建 Service Fabric 应用程序目标 .Net Core
+1. 以管理员身份启动 Visual Studio。 
+2. 通过单击“文件”->“新建”->“项目”来创建项目。 
+3. 在“新建项目”对话框中，选择“云”->“Service Fabric 应用程序”。  
 ![create-application]
-4. 命名应用程序，然后单击 **"确定**"。
-5. 在“新建 Service Fabric 服务”页中，选择要在“.NET Core 部分”创建的服务类型。********
+4. 命名应用程序，并单击“确定”  。
+5. 在“新建 Service Fabric 服务”页中，选择要在“.NET Core 部分”创建的服务类型。  
 ![create-service]
 
 ## <a name="deploy-to-a-remote-linux-cluster"></a>部署到远程 Linux 群集
-1. 在“解决方案资源管理器”中，右键单击该应用程序并选择“生成”。****
+1. 在“解决方案资源管理器”中，右键单击该应用程序并选择“生成”。 
 ![build-application]
 2. 应用程序的生成过程完成后，右键单击服务，然后选择编辑 **csproj 文件**。
 ![edit-csproj]
@@ -53,16 +53,16 @@ ms.locfileid: "75614343"
     </ExeHost> 
     </EntryPoint>
 ```
-6. 在“解决方案资源管理器”中，右键单击该应用程序并选择“发布”。**** 此时会显示“发布”对话框。****
-7. 在“连接终结点”中，选择要将其作为目标的远程 Service Fabric Linux 群集的终结点****。
+6. 在“解决方案资源管理器”中，右键单击该应用程序并选择“发布”。  此时会显示“发布”对话框。 
+7. 在“连接终结点”中，选择要将其作为目标的远程 Service Fabric Linux 群集的终结点  。
 ![publish-application]
 
 <!--Image references-->
-[创建应用程序]:./media/service-fabric-how-to-vs-remote-linux-cluster/create-application-remote-linux.png
-[创建服务]:./media/service-fabric-how-to-vs-remote-linux-cluster/create-service-remote-linux.png
+[create-application]:./media/service-fabric-how-to-vs-remote-linux-cluster/create-application-remote-linux.png
+[create-service]:./media/service-fabric-how-to-vs-remote-linux-cluster/create-service-remote-linux.png
 [build-application]:./media/service-fabric-how-to-vs-remote-linux-cluster/build-application-remote-linux.png
 [edit-csproj]:./media/service-fabric-how-to-vs-remote-linux-cluster/edit-csproj-remote-linux.png
 [publish-application]:./media/service-fabric-how-to-vs-remote-linux-cluster/publish-remote-linux.png
 
 ## <a name="next-steps"></a>后续步骤
-* 了解[使用 .Net 核心开始使用服务交换矩阵](https://azure.microsoft.com/resources/samples/service-fabric-dotnet-core-getting-started/)
+* 了解[Service Fabric 与 .Net Core](https://azure.microsoft.com/resources/samples/service-fabric-dotnet-core-getting-started/)入门

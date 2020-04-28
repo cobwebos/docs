@@ -1,5 +1,5 @@
 ---
-title: 托管磁盘 - Azure 资源管理器模板 - Linux VM
+title: 托管磁盘-Azure 资源管理器模板-Linux Vm
 description: 详细介绍如何在 Azure 资源管理器模板中将托管磁盘用于 Linux VM
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,10 +13,10 @@ ms.date: 06/01/2017
 ms.author: jaboes
 ms.subservice: disks
 ms.openlocfilehash: 9b6cb890c972b8fa86b823571511250cead08898
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75458561"
 ---
 # <a name="using-managed-disks-in-azure-resource-manager-templates"></a>在 Azure 资源管理器模板中使用托管磁盘

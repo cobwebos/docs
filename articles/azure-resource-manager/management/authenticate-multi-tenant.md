@@ -4,10 +4,10 @@ description: 介绍了 Azure 资源管理器如何跨租户处理身份验证请
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.openlocfilehash: 7a13ba6f6cbfc10c52484c45e4011da7a0d8ee4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75478820"
 ---
 # <a name="authenticate-requests-across-tenants"></a>跨租户对请求进行身份验证
@@ -18,7 +18,7 @@ ms.locfileid: "75478820"
 
 请求具有以下身份验证标头值：
 
-| 标头名称 | 描述 | 示例值 |
+| 标头名称 | 说明 | 示例值 |
 | ----------- | ----------- | ------------ |
 | 授权 | 主令牌 | Bearer &lt;primary-token&gt; |
 | x-ms-authorization-auxiliary | 辅助令牌 | Bearer &lt;auxiliary-token1&gt;、EncryptedBearer &lt;auxiliary-token2&gt;、Bearer &lt;auxiliary-token3&gt; |

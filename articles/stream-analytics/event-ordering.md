@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.openlocfilehash: c0a108565a6a0f62c6252113f984e8b10967c5db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75461189"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>为 Azure 流分析配置事件排序策略
@@ -20,9 +20,9 @@ ms.locfileid: "75461189"
 
 ## <a name="event-time-and-arrival-time"></a>事件时间和抵达时间
 
-流分析作业可以根据事件时间或抵达时间处理事件。**** **事件/应用程序时间**是事件有效负载中的时间戳（生成事件的时间）。 **抵达时间**是输入源（事件中心/IoT 中心/Blob 存储）收到事件时的时间戳。 
+流分析作业可以根据事件时间或抵达时间处理事件。   **事件/应用程序时间**是事件有效负载中的时间戳（生成事件的时间）。 **抵达时间**是输入源（事件中心/IoT 中心/Blob 存储）收到事件时的时间戳。 
 
-默认情况下，流分析按抵达时间处理事件，但你可以通过在查询中使用 [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) 子句，来按事件时间处理事件。**** 仅当按事件时间处理事件时，延期抵达和失序策略才适用。 配置这些设置时，应考虑方案的延迟要求和正确性要求。 
+默认情况下，流分析按抵达时间处理事件，但你可以通过在查询中使用 [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) 子句，来按事件时间处理事件。   仅当按事件时间处理事件时，延期抵达和失序策略才适用。 配置这些设置时，应考虑方案的延迟要求和正确性要求。 
 
 ## <a name="what-is-late-arrival-policy"></a>什么是延期抵达策略？
 
@@ -37,8 +37,8 @@ ms.locfileid: "75461189"
 如果事件根据配置的策略延期抵达或失序抵达，你可以丢弃此类事件（不会由流分析处理），或者调整其事件时间。
 
 让我们看看这些策略的运作方式示例。
-<br> **延迟到达政策：15**秒
-<br> 订单**外策略：8**秒
+<br> **延期抵达策略：** 15 秒
+<br> **失序策略：** 8 秒
 
 | 事件编号 | 事件时间 | 到达时间 | System.Timestamp | 说明 |
 | --- | --- | --- | --- | --- |
@@ -66,7 +66,7 @@ ms.locfileid: "75461189"
 
 ## <a name="i-see-inputpartitionnotprogressing-in-my-activity-log"></a>我在活动日志中看到 InputPartitionNotProgressing
 
-你的输入源（事件中心/IoT 中心）可能包含多个分区。 只有在合并的所有分区都至少位于时间点 t1 之后，Azure 流分析才生成时间戳 t1 的输出。 例如，假定查询从具有两个分区的事件中心分区读取。 其中一个分区 P1 包含时间点 t1 之前的事件。 另一个分区 P2 包含时间点 t1 + x 之前的事件。 那么，只有到达时间点 t1 时，才生成输出。 但是，如果显式指定了 Partition by PartitionId 子句，这两个分区会独立地继续运行。 
+你的输入源（事件中心/IoT 中心）可能包含多个分区。 只有在合并的所有分区都至少位于时间点 t1 之后，Azure 流分析才生成时间戳 t1 的输出。 例如，假设查询从包含两个分区的事件中心分区读取数据。 其中一个分区 P1 包含时间点 t1 之前的事件。 另一个分区 P2 包含时间点 t1 + x 之前的事件。 那么，只有到达时间点 t1 时，才生成输出。 但是，如果显式指定了 Partition by PartitionId 子句，这两个分区会独立地继续运行。 
 
 如果将相同输入流中的多个分区组合在一起，则延期抵达容限就是每个分区等待新数据的最长时间。 如果事件中心只包含一个分区，或者 IoT 中心未收到输入，则在该分区达到延期抵达容限阈值之前，其时间线不会递进。 这会根据延期抵达容限阈值延迟输出。 在这种情况下，可能会出现以下消息：
 <br><code>

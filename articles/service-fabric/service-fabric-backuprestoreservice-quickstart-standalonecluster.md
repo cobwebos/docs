@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 5/24/2019
 ms.author: hrushib
 ms.openlocfilehash: 938cbbde9f53c52350ef64715f6c61c4aa961057
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75526237"
 ---
 # <a name="periodic-backup-and-restore-in-a-standalone-service-fabric"></a>在独立 Service Fabric 中定期备份和还原
@@ -44,7 +44,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
 - 暂时暂停备份
 - 备份的保留期管理（即将推出）
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * 具有 Fabric 6.4 或更高版本的 Service Fabric 群集。 有关下载所需包的步骤，请参阅[文章](service-fabric-cluster-creation-for-windows-server.md)。
 * 用于加密机密的 X.509 证书，连接到存储以存储备份时需要此机密。 请参阅[文章](service-fabric-windows-cluster-x509-security.md)，了解如何获取或创建一个自签名的 X.509 证书。
 
@@ -64,7 +64,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
 ```
 
 ## <a name="enabling-backup-and-restore-service"></a>启用备份和还原服务
-首先，需要在群集中启用备份和还原服务__。 获取要部署的群集的模板。 可使用[示例模板](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)。 通过以下步骤启用备份和还原服务__：
+首先，需要在群集中启用备份和还原服务  。 获取要部署的群集的模板。 可使用[示例模板](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)。 通过以下步骤启用备份和还原服务  ：
 
 1. 检查在群集配置文件中 `apiversion` 是否设置为了 `10-2017`，如果没有，请按以下代码片段所示进行更新：
 
@@ -77,7 +77,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
     }
     ```
 
-2. 现在，通过在 `properties` 部分下添加以下 `addonFeatures` 部分来启用备份和还原服务，如以下代码片段所示__： 
+2. 现在，通过在 _部分下添加以下_ 部分来启用备份和还原服务，如以下代码片段所示`addonFeatures``properties`： 
 
     ```json
         "properties": {
@@ -89,7 +89,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
 
     ```
 
-3. 配置 X.509 证书以用于加密凭据。 此步骤非常重要，可确保在保留之前对提供用于连接存储的凭据（如果有）进行加密。 通过在 `fabricSettings` 部分下添加以下 `BackupRestoreService` 部分来配置加密证书，如以下代码片段所示： 
+3. 配置 X.509 证书以用于加密凭据。 此步骤非常重要，可确保在保留之前对提供用于连接存储的凭据（如果有）进行加密。 通过在 `BackupRestoreService` 部分下添加以下 `fabricSettings` 部分来配置加密证书，如以下代码片段所示： 
 
     ```json
     "properties": {
@@ -106,7 +106,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
     }
     ```
 
-4. 通过前述更改更新群集配置文件后，应用更改并等待部署/升级完成。 完成后，备份和还原服务开始在群集中运行__。 此服务的 URI 为 `fabric:/System/BackupRestoreService`，并且此服务可位于 Service Fabric Explorer 中系统服务部分下。 
+4. 通过前述更改更新群集配置文件后，应用更改并等待部署/升级完成。 完成后，备份和还原服务开始在群集中运行  。 此服务的 URI 为 `fabric:/System/BackupRestoreService`，并且此服务可位于 Service Fabric Explorer 中系统服务部分下。 
 
 
 
@@ -215,7 +215,7 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 ### <a name="list-backups"></a>列出备份
 
-可使用 GetBackups API 来枚举属于应用程序的可靠有状态服务和 Reliable Actors 的所有分区的关联备份__。 根据需要，可为应用程序、服务或分区枚举备份。
+可使用 GetBackups API 来枚举属于应用程序的可靠有状态服务和 Reliable Actors 的所有分区的关联备份  。 根据需要，可为应用程序、服务或分区枚举备份。
 
 #### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用Microsoft.ServiceFabric.Powershell.Http 模块的 PowerShell
 

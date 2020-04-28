@@ -1,13 +1,13 @@
 ---
-title: 查找 Azure 服务结构网格示例
-description: 下面是可用服务结构网格示例应用程序的索引。 这些示例中的源代码展示了如何使用 Service Fabric 资源模型实现特定的方案。
+title: 查找 Azure Service Fabric 网格示例
+description: 下面是可用 Service Fabric 网格示例应用程序的索引。 这些示例中的源代码展示了如何使用 Service Fabric 资源模型实现特定的方案。
 ms.date: 12/03/2018
 ms.topic: conceptual
 ms.openlocfilehash: c944ddc26f2e2d099cf9552acb8287c363d0c768
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75461903"
 ---
 # <a name="find-service-fabric-mesh-samples"></a>查找 Service Fabric 网格示例
@@ -22,5 +22,5 @@ ms.locfileid: "75461903"
 | [适用于 Azure 文件卷的计数器应用](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/counter/readme.md) | 通过将基于 Azure 文件的卷装载在容器内来存储状态。 <br><br> **注意：** 此模板需要一个已预配了[说明](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)的“Azure 文件”文件共享 | [源代码](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter) | Visual Studio 网格工具 |
 | [TodoListApp](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/todolist) | 创建一个具有前端和后端服务且使用基于 DNS 的解析的应用程序。 在[此处](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore)用作教程 | [源代码](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/todolistapp) | Visual Studio 网格工具 |
 | [视觉对象应用](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/visualobjects) | 缩放和升级应用程序中的微服务。 | [源代码](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/visualobjects) |  Visual Studio 网格工具 |
-| [投票应用程序](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/voting) | 创建一个具有前端和后端服务且使用基于 DNS 的解析的应用程序 | [源代码](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/votingapp) | 适用于 Windows 版本的可视化工作室网格工具，VS 代码/点网 CLI 可用于 Linux 版本 |
+| [投票应用](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/voting) | 创建一个具有前端和后端服务且使用基于 DNS 的解析的应用程序 | [源代码](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/votingapp) | 适用于 Windows 版本、VS Code/dotnet CLI 的 Visual Studio 网格工具可用于 Linux 版本 |
 | [适用于 Service Fabric 可靠卷的计数器应用](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/counter/readme.sfreliablevolume.md)| 通过将基于 Service Fabric 可靠磁盘的卷装载在容器内来存储状态。| [源代码](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter) | Visual Studio 网格工具 |

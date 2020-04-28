@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.openlocfilehash: d54506b94f076f0a3d967f88bd4e2960a1ca6396
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75530895"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>排查 Azure Cache for Redis 中的数据丢失问题
@@ -27,9 +27,9 @@ ms.locfileid: "75530895"
 
 如果你发现密钥在缓存中消失，请检查以下可能原因：
 
-| 原因 | 描述 |
+| 原因 | 说明 |
 |---|---|
-| [密钥到期时间](#key-expiration) | 密钥因设置了超时而被删除。 |
+| [密钥过期](#key-expiration) | 密钥因设置了超时而被删除。 |
 | [密钥逐出](#key-eviction) | 在内存压力较大的情况下删除了密钥。 |
 | [密钥删除](#key-deletion) | 显式删除命令删除了密钥。 |
 | [异步复制](#async-replication) | 由于数据复制延迟，副本上未提供密钥。 |
@@ -50,11 +50,11 @@ expired_keys:46583
 db0:keys=3450,expires=2,avg_ttl=91861015336
 ```
 
-此外，可以查看缓存的诊断指标，确定密钥丢失的时间以及已过期密钥的高峰之间是否存在某种关联。 有关如何使用密钥空间通知或 **MONITOR** 调试此类问题的信息，请参阅[调试 Redis 密钥空间缺失](https://gist.github.com/JonCole/4a249477142be839b904f7426ccccf82#appendix)附录。
+此外，可以查看缓存的诊断指标，确定密钥丢失的时间以及已过期密钥的高峰之间是否存在某种关联。 有关如何使用密钥空间通知或 [MONITOR](https://gist.github.com/JonCole/4a249477142be839b904f7426ccccf82#appendix) 调试此类问题的信息，请参阅**调试 Redis 密钥空间缺失**附录。
 
 ### <a name="key-eviction"></a>密钥逐出
 
-Azure Cache for Redis 需要使用内存空间来存储数据。 在必要时，它将清除密钥以释放可用内存。 如果 [INFO](https://redis.io/commands/info) 命令中的 **used_memory** 或 **used_memory_rss** 值即将达到配置的 **maxmemory** 设置，Azure Cache for Redis 将会根据[缓存策略](https://redis.io/topics/lru-cache)从内存中开始逐出密钥。
+Azure Cache for Redis 需要使用内存空间来存储数据。 在必要时，它将清除密钥以释放可用内存。 如果 **INFO** 命令中的 **used_memory** 或 [used_memory_rss](https://redis.io/commands/info) 值即将达到配置的 **maxmemory** 设置，Azure Cache for Redis 将会根据[缓存策略](https://redis.io/topics/lru-cache)从内存中开始逐出密钥。
 
 可以使用 [INFO](https://redis.io/commands/info) 命令来监视逐出的密钥数。
 
@@ -64,7 +64,7 @@ Azure Cache for Redis 需要使用内存空间来存储数据。 在必要时，
 evicted_keys:13224
 ```
 
-此外，可以查看缓存的诊断指标，确定密钥丢失的时间以及已逐出密钥的高峰之间是否存在某种关联。 有关如何使用密钥空间通知或 **MONITOR** 调试此类问题的信息，请参阅[调试 Redis 密钥空间缺失](https://gist.github.com/JonCole/4a249477142be839b904f7426ccccf82#appendix)附录。
+此外，可以查看缓存的诊断指标，确定密钥丢失的时间以及已逐出密钥的高峰之间是否存在某种关联。 有关如何使用密钥空间通知或 [MONITOR](https://gist.github.com/JonCole/4a249477142be839b904f7426ccccf82#appendix) 调试此类问题的信息，请参阅**调试 Redis 密钥空间缺失**附录。
 
 ### <a name="key-deletion"></a>密钥删除
 
@@ -80,13 +80,13 @@ cmdstat_hdel:calls=1,usec=47,usec_per_call=47.00
 
 ### <a name="async-replication"></a>异步复制
 
-标准或高级层中的任何 Azure Cache for Redis 实例都配置有一个主节点和至少一个副本。 数据将通过一个后台进程以异步方式从主节点复制到副本。 [redis.io](https://redis.io/topics/replication) 网站概括性地介绍了 Redis 数据复制的工作原理。 如果客户端频繁写入 Redis，可能会发生部分数据丢失，因为需要保证这种复制在瞬间完成。 例如，如果在客户端向主节点写入密钥之后、后台进程有机会将此密钥发送到副本之前主节点关闭，那么，在副本接管为新的主节点时，密钥就会丢失。****
+标准或高级层中的任何 Azure Cache for Redis 实例都配置有一个主节点和至少一个副本。 数据将通过一个后台进程以异步方式从主节点复制到副本。 [redis.io](https://redis.io/topics/replication) 网站概括性地介绍了 Redis 数据复制的工作原理。 如果客户端频繁写入 Redis，可能会发生部分数据丢失，因为需要保证这种复制在瞬间完成。 例如，如果在客户端向主节点写入密钥之后、后台进程有机会将此密钥发送到副本之前主节点关闭，那么，在副本接管为新的主节点时，密钥就会丢失。  
 
 ## <a name="major-or-complete-loss-of-keys"></a>密钥严重丢失或完全丢失
 
 如果大部分或所有密钥在缓存中消失，请检查以下可能原因：
 
-| 原因 | 描述 |
+| 原因 | 说明 |
 |---|---|
 | [密钥刷新](#key-flushing) | 已手动清除密钥。 |
 | [选择了错误的数据库](#incorrect-database-selection) | Azure Cache for Redis 设置为使用非默认数据库。 |

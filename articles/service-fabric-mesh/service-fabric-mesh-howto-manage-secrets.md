@@ -1,13 +1,13 @@
 ---
-title: 管理 Azure 服务结构网格应用程序机密
+title: 管理 Azure Service Fabric 网格应用程序机密
 description: 管理应用程序机密，以便可以安全地创建并部署 Service Fabric 网格应用程序。
 ms.date: 4/2/2019
 ms.topic: conceptual
 ms.openlocfilehash: d7946092a0bebe374404870fcd711ad33cc98b11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75461928"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>管理 Service Fabric 网格应用程序机密
@@ -18,14 +18,14 @@ Service Fabric 网格支持将机密作为 Azure 资源。 Service Fabric 网格
 * 存储在**机密**资源容器中的一个或多个**机密/值**资源。 每个**机密/值**资源都由版本号予以区分。 无法修改**机密/值**资源的版本，只能追加新版本。
 
 管理机密包括以下步骤：
-1. 使用内联价值类型和机密存储Ref 内容类型定义在 Azure 资源模型 YAML 或 JSON 文件中声明网格**机密**资源。
-2. 声明将存储在**机密**资源中的 Azure 资源模型 YAML 或 JSON 文件中的网格**机密/值**资源（从步骤 1）。
+1. 使用 inlinedValue 类型和 SecretsStoreRef contentType 定义在 Azure 资源模型 YAML 或 JSON 文件中声明网格**机密**资源。
+2. 在 Azure 资源模型 YAML 或 JSON 文件（步骤1）中声明要存储在**密码**资源中的网格**机密/值**资源。
 3. 修改网格应用程序以引用网格机密值。
 4. 部署或滚动升级网格应用程序以使用机密值。
 5. 使用 Azure "az" CLI 命令进行 Secure Store Service 生命周期管理。
 
 ## <a name="declare-a-mesh-secrets-resource"></a>声明网格机密资源
-使用内联价值类型定义在 Azure 资源模型 JSON 或 YAML 文件中声明网格机密资源。 网格机密资源支持源自 Secure Store Service 的机密。 
+使用 inlinedValue 类型定义在 Azure 资源模型 JSON 或 YAML 文件中声明了网格机密资源。 网格机密资源支持源自 Secure Store Service 的机密。 
 >
 下面是有关如何在 JSON 文件中声明网格机密资源的示例：
 
@@ -202,7 +202,7 @@ az mesh deployment create –-<template-file> or --<template-uri>
 
 例如：
 - az mesh deployment create --c:\MyMeshTemplates\SecretTemplate1.txt
-- az 网格部署创建 --https：\//www.fabrikam.com/MyMeshTemplates/SecretTemplate1.txt
+- az 网格部署 create--https：\//www.fabrikam.com/MyMeshTemplates/SecretTemplate1.txt
 
 ### <a name="show-a-secret"></a>显示机密
 返回机密的说明（但不是值）。

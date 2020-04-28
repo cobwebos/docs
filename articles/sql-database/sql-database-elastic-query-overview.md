@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 12/05/2019
 ms.openlocfilehash: 827fab0661a58bfa7d28452960ea6df64d18bf84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74873737"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL 数据库弹性查询概述（预览版）
@@ -55,7 +55,7 @@ ms.locfileid: "74873737"
 
 弹性查询的客户方案的特征包括以下拓扑：
 
-* **垂直分区 - 跨数据库查询**（拓扑 1）：数据在数据层中的多个数据库之间垂直分区。 通常，不同的表集驻留在不同的数据库上。 这意味着不同数据库上的架构是不同的。 例如，清单的所有表都位于一个数据库上，而与会计相关的所有表都位于第二个数据库上。 采用此拓扑的常见使用案例需要使用一个查询跨多个数据库中的表进行查询或编译报表。
+* **垂直分区 - 跨数据库查询**（拓扑 1）：在数据层中的多个数据库之间对数据进行垂直分区。 通常，不同的表集驻留在不同的数据库上。 这意味着不同数据库上的架构是不同的。 例如，清单的所有表都位于一个数据库上，而与会计相关的所有表都位于第二个数据库上。 采用此拓扑的常见使用案例需要使用一个查询跨多个数据库中的表进行查询或编译报表。
 * **水平分区 - 分片**（拓扑 2）：对数据进行水平分区以将行分布到扩大的数据层上。 使用此方法时，所有参与数据库中的架构是相同的。 此方法也称为“分片”。 可以使用 (1) 弹性数据库客户端库或 (2) 自我分片来执行和管理分片。 可使用弹性查询跨多个分片查询或编译报表。 分片通常是弹性池中的数据库。 可将弹性查询视为一次性查询弹性池的所有数据库的高效方式，前提是数据库共享通用架构。
 
 > [!NOTE]
@@ -88,7 +88,7 @@ ms.locfileid: "74873737"
 
 * [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx) mymasterkey
 * [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx) mycredential
-* **RDBMS** 类型的 [CREATE/DROP 外部数据源](https://msdn.microsoft.com/library/dn935022.aspx) mydatasource
+* [RDBMS](https://msdn.microsoft.com/library/dn935022.aspx) 类型的 **CREATE/DROP 外部数据源** mydatasource
 * [CREATE/DROP EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx) mytable
 
 运行 DDL 语句后，可以访问远程表“mytable”就像它是本地表一样。 Azure SQL 数据库会自动打开与远程数据库的连接，处理远程数据库上的请求并返回结果。
@@ -110,7 +110,7 @@ ms.locfileid: "74873737"
 * [CREATE MASTER KEY](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql) mymasterkey
 * [CREATE DATABASE SCOPED CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql) mycredential
 * 使用弹性数据库客户端库创建表示数据层的[分片映射](sql-database-elastic-scale-shard-map-management.md)。
-* **SHARD_MAP_MANAGER** 类型的 [CREATE/DROP 外部数据源](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql) mydatasource
+* [SHARD_MAP_MANAGER](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql) 类型的 **CREATE/DROP 外部数据源** mydatasource
 * [CREATE/DROP EXTERNAL TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) mytable
 
 执行这些步骤后，便可以访问水平分区的表“mytable”就像它是本地表一样。 Azure SQL 数据库会自动打开与远程数据库（在其中表以物理方式存储）的多个并行连接，处理远程数据库上的请求并返回结果。

@@ -1,21 +1,21 @@
 ---
 title: 适用于 Windows Server 的 Azure Service Fabric 独立包
-description: 适用于 Windows Server 的 AzureService Fabric 独立包的说明和内容。
+description: 适用于 Windows Server 的 Azure{1}{2}Service Fabric 独立包的说明和内容。
 author: maburlik
 ms.topic: conceptual
 ms.date: 8/10/2017
 ms.author: maburlik
 ms.openlocfilehash: 1bb73fa69717f067139067f127a0d50af4878d6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75451849"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>适用于 Windows Server 的 Service Fabric 独立包的内容
 在[下载的](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric 独立包中，可找到以下文件：
 
-| **文件名称** | **简短描述** |
+| **文件名** | **简短说明** |
 | --- | --- |
 | CreateServiceFabricCluster.ps1 |PowerShell 脚本，用于通过 ClusterConfig.json 中的设置创建群集。 |
 | RemoveServiceFabricCluster.ps1 |PowerShell 脚本，用于通过 ClusterConfig.json 中的设置删除群集。 |
@@ -29,11 +29,11 @@ ms.locfileid: "75451849"
 | Readme.txt |发行说明和基本安装说明的链接。 这是本文中说明的子集。 |
 | ThirdPartyNotice.rtf |包中的第三方软件的通知。 |
 | Tools\Microsoft.Azure.ServiceFabric.WindowsServer.SupportPackage.zip |StandaloneLogCollector.exe，它按需运行，以便收集跟踪日志并将其上传到 Microsoft 以提供支持。 |
-| Tools\ServiceFabricUpdateService.zip |用于为不具有 Internet 访问权限的群集启用自动代码升级的工具。 可在[此处](service-fabric-cluster-upgrade-windows-server.md)查看更多详细信息|
+| Tools\ServiceFabricUpdateService.zip |用于为不具有 Internet 访问权限的群集启用自动代码升级的工具。 在[此处](service-fabric-cluster-upgrade-windows-server.md)可以找到更多详细信息|
 
 **模板** 
 
-| **文件名称** | **简短描述** |
+| **文件名** | **简短说明** |
 | --- | --- |
 | ClusterConfig.Unsecure.DevCluster.json |群集配置示例文件，其中包含非安全型三节点式单计算机（或虚拟机）开发群集的设置，这些设置包括群集中每个节点的信息。 |
 | ClusterConfig.Unsecure.MultiMachine.json |群集配置示例文件，其中包含非安全型多计算机（或虚拟机）群集的设置，这些设置包括群集中每个计算机的信息。 |
@@ -44,11 +44,11 @@ ms.locfileid: "75451849"
 | ClusterConfig.gMSA.Windows.MultiMachine.json |群集配置示例文件，其中包含安全型多计算机（或虚拟机）群集的所有设置，这些设置包括安全群集中每个节点的信息。 使用[组托管服务帐户](https://technet.microsoft.com/library/jj128431(v=ws.11).aspx)保护该群集。 |
 
 ## <a name="cluster-configuration-samples"></a>群集配置示例
-最新版本的群集配置模板可以在 GitHub 页面：[独立群集配置示例](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)中找到。
+可在以下 GitHub 页面找到最新版本的群集配置模板：[独立群集配置示例](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)。
 
 ## <a name="independent-runtime-package"></a>独立运行时包
 在从[下载链接 - Service Fabric 运行时 - Windows Server](https://go.microsoft.com/fwlink/?linkid=839354) 部署群集的过程中，会自动下载最新的运行时包。
 
 ## <a name="related"></a>相关内容
 * [创建独立 Azure Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)
-* [Service Fabric 群集安全方案](service-fabric-windows-cluster-windows-security.md)
+* [Service Fabric 群集安全性方案](service-fabric-windows-cluster-windows-security.md)

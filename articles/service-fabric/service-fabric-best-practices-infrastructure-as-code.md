@@ -1,15 +1,15 @@
 ---
 title: Azure Service Fabric 基础结构即代码最佳做法
-description: 将 Azure 服务结构作为基础结构作为代码管理的最佳做法和设计注意事项。
+description: 以基础结构即代码方式管理 Azure Service Fabric 的最佳做法和设计注意事项。
 author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: 1c044d5fd973d3c577088a887f2fac413d2ab79d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75551805"
 ---
 # <a name="infrastructure-as-code"></a>基础结构即代码
@@ -104,7 +104,7 @@ microservices_sfpkg.close()
 ```
 使用带 Service Fabric 的 OS 自动升级时，将推出新的 OS 映像（每次一个更新域），以维持 Service Fabric 中运行的服务的高可用性。 若要利用 Service Fabric 中的自动 OS 升级，必须将群集配置为使用银级持久性层或更高层级。
 
-确保以下注册表项设置为 false，以防止窗口主机启动不协调的更新：HKEY_LOCAL_MACHINE_SOFTWARE_策略\Microsoft_Windows_WindowsUpdate_AU。
+确保将以下注册表项设置为 false，以防止 windows 主机启动不协调更新： HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU。
 
 下面是计算虚拟机规模集资源管理器模板属性，用于将 WindowsUpdate 注册表项设置为 false：
 ```json
@@ -135,4 +135,4 @@ Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion <"msi_code_version">
 
 * 在运行 Windows Server 的 VM 或计算机上创建群集：[创建适用于 Windows Server 的 Service Fabric 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 * 在运行 Linux 的 VM 或计算机上创建群集：[创建 Linux 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
-* 了解[服务交换矩阵支持选项](service-fabric-support.md)
+* 了解[Service Fabric 支持选项](service-fabric-support.md)

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
 ms.openlocfilehash: 84c2bad1004029fe61dcfc19321957a170284587
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75612251"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix 查询服务器 REST SDK
@@ -71,7 +71,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 下面是一些相关属性：
 
-| properties | 描述 |
+| properties | 说明 |
 | -- | -- |
 | AutoCommit | 一个布尔值，表示是否为 Phoenix 事务启用 `autoCommit`。 |
 | ReadOnly | 一个布尔值，表示连接是否为只读。 |
@@ -82,9 +82,9 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 下面是 `TransactionIsolation` 值：
 
-| 隔离值 | 描述 |
+| 隔离值 | 说明 |
 | -- | -- |
-| 0 | 不支持事务。 |
+| 0 | 事务不受支持。 |
 | 1 | 可能出现脏读、不可重复读和幻读。 |
 | 2 | 可以防止脏读，但会出现不可重复读和幻读。 |
 | 4 | 可以防止脏读和不可重复读，但会出现幻读。 |
@@ -94,7 +94,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 HBase 与任何其他 RDBMS 一样，在表中存储数据。 Phoenix 使用标准的 SQL 查询来创建新表，同时定义主键和列类型。
 
-此示例和所有以后的示例，使用实例化`PhoenixClient`对象，如实例[化新的 PhoenixClient 对象](#instantiate-new-phoenixclient-object)。
+此示例和所有更高的示例使用实例`PhoenixClient`化[新的 PhoenixClient 对象](#instantiate-new-phoenixclient-object)中定义的实例化对象。
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -170,7 +170,7 @@ finally
 var states = new List<string> { "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" };
 ```
 
-表的`StateProvince`列值将用于以后的选择操作。
+该表的`StateProvince`列值将在以后的选择操作中使用。
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -277,7 +277,7 @@ finally
 }
 ```
 
-执行插入语句的结构类似于创建新表。 在块的`try`末尾，显式提交事务。 此示例重复插入事务 300 次。 以下示例演示更有效的批插入过程。
+执行插入语句的结构类似于创建新表。 在`try`块的末尾，将显式提交事务。 此示例重复插入事务 300 次。 以下示例演示更有效的批插入过程。
 
 ## <a name="batch-insert-data"></a>批插入数据
 

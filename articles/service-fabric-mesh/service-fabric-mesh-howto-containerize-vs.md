@@ -1,15 +1,15 @@
 ---
 title: 容器化用于 Service Fabric 网格的现有 .NET 应用
-description: 将服务结构网格容器业务流程支持添加到使用完整 .NET 框架ASP.NET和控制台项目。
+description: 向使用完整 .NET framework 的 ASP.NET 和控制台项目添加 Service Fabric 网格容器业务流程支持。
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/08/2018
 ms.topic: conceptual
 ms.openlocfilehash: d67ea5bb7df5910ec87e69adf3c414c303bf0182
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75462049"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>容器化用于 Service Fabric 网格的现有 .NET 应用
@@ -23,7 +23,7 @@ ms.locfileid: "75462049"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 如果没有 Azure 订阅，则可以在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* 如果没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 * 请确保已[设置开发环境](service-fabric-mesh-howto-setup-developer-environment-sdk.md)。 这包括安装 Service Fabric 运行时、SDK、Docker、Visual Studio 2017 以及创建本地群集。
 

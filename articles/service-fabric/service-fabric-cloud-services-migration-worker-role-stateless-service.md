@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: caf067f793ca2086bc068907e86a82266627d128
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75463340"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>将 Web 角色和辅助角色转换成 Service Fabric 无状态服务的指南
@@ -40,7 +40,7 @@ ms.locfileid: "75463340"
 ## <a name="entry-point-api-and-lifecycle"></a>入口点 API 和生命周期
 辅助角色和 Service Fabric 服务 API 提供类似的入口点： 
 
-| **入口点** | **辅助角色** | **服务交换矩阵服务** |
+| **入口点** | **辅助角色** | **Service Fabric 服务** |
 | --- | --- | --- |
 | Processing |`Run()` |`RunAsync()` |
 | VM 启动 |`OnStart()` |空值 |
@@ -109,7 +109,7 @@ Service Fabric 为侦听客户端请求的服务提供可选的通信设置入�
 ## <a name="application-api-and-environment"></a>应用程序 API 和环境
 云服务环境 API 提供当前 VM 实例的信息和功能，以及有关其他 VM 角色实例的信息。 Service Fabric 提供有关其运行时的信息，以及有关服务当前运行所在的节点的某些信息。 
 
-| **环境任务** | **云服务** | **服务结构** |
+| **环境任务** | **云服务** | **Service Fabric** |
 | --- | --- | --- |
 | 配置设置和更改通知 |`RoleEnvironment` |`CodePackageActivationContext` |
 | 本地存储 |`RoleEnvironment` |`CodePackageActivationContext` |

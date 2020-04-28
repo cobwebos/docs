@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/01/2018
 ms.author: clemensv
 ms.openlocfilehash: d71386b86bf7133bb73ddce2e65c3b88743009ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75462023"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-node"></a>开始在 Node 中使用中继混合连接 HTTP 请求
@@ -35,9 +35,9 @@ ms.locfileid: "75462023"
 4. 编写客户端（发送方）控制台应用程序，用于发送消息。
 5. 运行应用程序。
 
-## <a name="prerequisites"></a>先决条件
-- [Node.js](https://nodejs.org/en/).
-- Azure 订阅。 如果没有，请先[创建一个免费帐户](https://azure.microsoft.com/free/)。"
+## <a name="prerequisites"></a>必备条件
+- [Node.js](https://nodejs.org/en/)。
+- Azure 订阅。 如果没有，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="create-a-namespace-using-the-azure-portal"></a>使用 Azure 门户创建命名空间
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]

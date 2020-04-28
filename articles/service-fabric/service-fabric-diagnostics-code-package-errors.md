@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 05/09/2019
 ms.author: grzuber
 ms.openlocfilehash: 344fef70522240da2236a020c96308c472c9c545
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75463112"
 ---
 # <a name="diagnose-common-code-package-errors-by-using-service-fabric"></a>使用 Service Fabric 诊断常见代码包错误
@@ -41,7 +41,7 @@ Service Fabric 可能会出于各种原因而终止代码包。 例如，它可�
 >[!NOTE]
 > 如果进程或容器终止并返回了退出代码，但该代码不是下表中所列的代码，则该进程或容器不是由 Service Fabric 终止的。
 
-退出代码 | 描述
+退出代码 | 说明
 --------- | -----------
 7147 | 表示 Service Fabric 已通过向进程或容器发送 Ctrl+C 信号正常将其关闭。
 7148 | 表示 Service Fabric 终止了进程或容器。 有时，此错误代码表示在发送 Ctrl+C 信号后，进程或容器未及时做出响应，因此必须将其终止。
@@ -56,7 +56,7 @@ Service Fabric 可能会出于各种原因而终止代码包。 例如，它可�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解有关[诊断其他常见方案的更多详细信息](service-fabric-diagnostics-common-scenarios.md)。
+* 详细了解如何[诊断其他常见方案](service-fabric-diagnostics-common-scenarios.md)。
 * 阅读 [Azure Monitor 概述](../operations-management-suite/operations-management-suite-overview.md)，详细了解 Azure Monitor 日志及其提供的功能。
 * 详细了解可帮助进行检测和诊断的 Azure Monitor 日志[警报](../log-analytics/log-analytics-alerts.md)。
 * 熟悉 Azure Monitor 日志中提供的[日志搜索和查询](../log-analytics/log-analytics-log-searches.md)功能。
