@@ -17,10 +17,10 @@ ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5948fba67d3f071d77192f9ad89bc696fdc0c3cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79253450"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>使用应用程序代理通过 Kerberos 约束委派单一登录到应用程序
@@ -30,15 +30,15 @@ ms.locfileid: "79253450"
 可以在 Active Directory 中提供应用程序代理连接器权限来模拟用户，以使用集成 Windows 身份验证 (IWA) 实现应用程序的单一登录。 连接器使用此权限来代表用户发送和接收令牌。
 
 ## <a name="how-single-sign-on-with-kcd-works"></a>使用 KCD 的单一登录的工作原理
-此图解释了当用户尝试访问使用 IWA 的本地应用程序时流的。
+此图说明了当用户尝试访问使用 IWA 的本地应用程序时的流程。
 
 ![Microsoft AAD 身份验证流程示意图](./media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
 
-1. 用户输入 URL 以通过应用程序代理访问内部部署应用程序。
+1. 用户输入 URL 以通过应用程序代理访问本地应用程序。
 2. 应用程序代理将请求重定向到 Azure AD 身份验证服务，以进行预身份验证。 此时，Azure AD 将应用所有适用的身份验证和授权策略，例如多重身份验证。 如果用户通过验证，Azure AD 将创建令牌并将其发送给用户。
 3. 用户将令牌传递给应用程序代理。
-4. 应用程序代理验证令牌并从中检索用户主体名称 （UPN），然后连接器通过双身份验证的安全通道提取 UPN 和服务主体名称 （SPN）。
-5. 连接器执行 Kerberos 约束委派 （KCD） 与内部部署 AD 协商，模拟用户获取到应用程序的 Kerberos 令牌。
+4. 应用程序代理会验证令牌并从中检索用户主体名称（UPN），然后连接器通过双重的已验证安全通道提取 UPN 和服务主体名称（SPN）。
+5. 连接器对本地 AD 执行 Kerberos 约束委派（KCD）协商，模拟用户以获取应用程序的 Kerberos 令牌。
 6. Active Directory 将应用程序的 Kerberos 令牌发送到连接器。
 7. 连接器使用从 AD 收到的 Kerberos 令牌，将原始请求发送到应用程序服务器。
 8. 应用程序将响应发送到连接器，该响应随后返回到应用程序代理服务，最后返回到用户。
@@ -46,7 +46,7 @@ ms.locfileid: "79253450"
 ## <a name="prerequisites"></a>先决条件
 开始为 IWA 应用程序使用 SSO 之前，请确保已在环境中完成以下设置和配置：
 
-* 应用（例如 SharePoint Web 应用）已设置为使用 Windows 集成身份验证。 有关详细信息，请参阅[启用对 Kerberos 身份验证的支持](https://technet.microsoft.com/library/dd759186.aspx)，或有关 SharePoint，请参阅[SharePoint 2013 中的 Kerberos 身份验证计划](https://technet.microsoft.com/library/ee806870.aspx)。
+* 应用（例如 SharePoint Web 应用）已设置为使用 Windows 集成身份验证。 有关详细信息，请参阅[启用对 Kerberos 身份验证的支持](https://technet.microsoft.com/library/dd759186.aspx)或 for sharepoint，请参阅[在 SharePoint 2013 中计划 Kerberos 身份验证](https://technet.microsoft.com/library/ee806870.aspx)。
 * 所有应用都有[服务主体名称](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spns-setspn-syntax-setspn-exe.aspx)。
 * 运行连接器的服务器以及运行应用的服务器都已加入域且属于同一个域或信任域。 有关加入域的详细信息，请参阅 [Join a Computer to a Domain](https://technet.microsoft.com/library/dd807102.aspx)（将计算机加入域）。
 * 运行连接器的服务器有权读取用户的 TokenGroupsGlobalAndUniversal 属性。 这是默认设置，可能受环境强化安全性影响。
@@ -55,20 +55,20 @@ ms.locfileid: "79253450"
 根据应用程序代理连接器和应用程序服务器是否位于同一域中，Active Directory 配置有所不同。
 
 #### <a name="connector-and-application-server-in-the-same-domain"></a>连接器和应用程序服务器位于同一域中
-1. 在活动目录中，转到**工具** > **用户和计算机**。
+1. 在 Active Directory 中，请参阅 "**工具** > " "**用户和计算机**"。
 2. 选择运行连接器的服务器。
-3. 右键单击并选择**属性** > **委派**。
+3. 右键单击并选择 "**属性** > " "**委派**"。
 4. 选择“仅信任此计算机来委派指定的服务”。**** 
-5. 选择 **"使用任何身份验证协议**"。
+5. 选择 "**使用任何身份验证协议**"。
 6. 在“可以由此帐户提供委托凭据的服务”下面，添加应用程序服务器的 SPN 标识值。**** 这样，应用程序代理连接器便可以针对列表中定义的应用程序在 AD 中模拟用户。
 
    ![“连接器 SVR 属性”窗口屏幕截图](./media/application-proxy-configure-single-sign-on-with-kcd/Properties.jpg)
 
 #### <a name="connector-and-application-server-in-different-domains"></a>连接器和应用程序服务器位于不同的域中
 1. 有关跨域使用 KCD 的先决条件列表，请参阅 [Kerberos Constrained Delegation across domains](https://technet.microsoft.com/library/hh831477.aspx)（跨域 Kerberos 约束委托）。
-2. 使用`principalsallowedtodelegateto`Web 应用程序的服务帐户（计算机或专用域用户帐户）的属性启用来自应用程序代理（连接器）的 Kerberos 身份验证委派。 应用程序服务器在 的上下文中运行，`webserviceaccount`委派服务器为`connectorcomputeraccount`。 在 域控制器（运行 Windows Server 2012 R2 或更高版本）的域`webserviceaccount`上运行以下命令。 对两个帐户使用平面名称（非 UPN）。
+2. 使用 web `principalsallowedtodelegateto`应用程序的服务帐户（计算机或专用的域用户帐户）的属性，可从应用程序代理（连接器）启用 Kerberos 身份验证委托。 应用程序服务器在的上下文中运行`webserviceaccount` ，并且委托服务器为。 `connectorcomputeraccount` 在域中的域控制器（运行 Windows Server 2012 R2 或更高版本）上运行以下命令`webserviceaccount`。 为两个帐户使用平面名称（非 UPN）。
 
-   `webserviceaccount`如果是计算机帐户，请使用以下命令：
+   如果`webserviceaccount`是计算机帐户，请使用以下命令：
 
    ```powershell
    $connector= Get-ADComputer -Identity connectorcomputeraccount -server dc.connectordomain.com
@@ -78,7 +78,7 @@ ms.locfileid: "79253450"
    Get-ADComputer webserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
    ```
 
-   `webserviceaccount`如果是用户帐户，请使用以下命令：
+   如果`webserviceaccount`是用户帐户，请使用以下命令：
 
    ```powershell
    $connector= Get-ADComputer -Identity connectorcomputeraccount -server dc.connectordomain.com
@@ -122,14 +122,14 @@ Azure AD 应用程序代理的 Kerberos 委托流程从 Azure AD 在云中验证
 非 Windows 应用通常使用用户名或 SAM 帐户名而非域电子邮件地址。 如果你的应用程序是这种情况，则需要配置委托的登录标识字段来将云标识连接到应用程序标识。 
 
 ## <a name="working-with-different-on-premises-and-cloud-identities"></a>使用不同的本地标识和云标识
-应用程序代理假设用户在云中与本地具有完全相同的标识。 但是在某些环境中，由于公司策略或应用程序依赖关系，组织可能必须使用备用标识进行登录。 在这种情况下，您仍可以使用 KCD 进行单一登录。 可以为每个应用程序配置委托的登录标识**** 来指定在执行单一登录时要使用的标识。  
+应用程序代理假设用户在云中与本地具有完全相同的标识。 但在某些环境中，由于公司策略或应用程序依赖关系，组织可能必须使用备用 Id 登录。 在这种情况下，你仍可以使用 KCD 进行单一登录。 可以为每个应用程序配置委托的登录标识**** 来指定在执行单一登录时要使用的标识。  
 
 此功能可让许多具有不同本地标识与云标识的组织从云单一登录到本地应用程序，而不需要用户输入不同的用户名与密码。 这包括如下所述的组织：
 
 * 在内部有多个域（joe@us.contoso.com、joe@eu.contoso.com），在云中有单个域 (joe@contoso.com)。
 * 在内部有不可路由的域名 (joe@contoso.usa)，在云中有合法域名。
 * 不使用内部域名 (joe)
-* 在内部和云中使用不同的别名。 例如：joe-johns@contoso.com 与 joej@contoso.com  
+* 在本地和云中使用不同的别名。 例如：joe-johns@contoso.com 与 joej@contoso.com  
 
 使用应用程序代理可以选择要用于获取 Kerberos 票证的标识。 此设置特定于应用程序。 其中一些选项适用于不接受电子邮件地址格式的系统，另一些选项适用于替代登录。
 

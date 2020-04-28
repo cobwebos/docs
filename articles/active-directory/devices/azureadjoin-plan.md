@@ -1,5 +1,5 @@
 ---
-title: 如何规划 Azure 活动目录加入实现
+title: 如何计划 Azure Active Directory 联接实现
 description: 介绍在环境中实现 Azure AD 联接设备的所需步骤。
 services: active-directory
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6bbecf0e365ba7a8424da775245181fa64c21f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78672698"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>操作方法：计划 Azure AD 联接实现
@@ -30,17 +30,17 @@ ms.locfileid: "78672698"
 
 ## <a name="plan-your-implementation"></a>规划实施
 
-要规划 Azure AD 联接实现，应熟悉：
+若要计划 Azure AD 联接实现，应熟悉以下内容：
 
 |   |   |
 |---|---|
-|![勾选标记][1]|查看方案|
-|![勾选标记][1]|查看标识基础结构|
-|![勾选标记][1]|评估设备管理|
-|![勾选标记][1]|了解有关应用程序和资源的注意事项|
-|![勾选标记][1]|了解预配选项|
-|![勾选标记][1]|配置企业状态漫游|
-|![勾选标记][1]|配置条件访问|
+|![检查][1]|查看方案|
+|![检查][1]|查看标识基础结构|
+|![检查][1]|评估设备管理|
+|![检查][1]|了解有关应用程序和资源的注意事项|
+|![检查][1]|了解预配选项|
+|![检查][1]|配置企业状态漫游|
+|![检查][1]|配置条件访问|
 
 ## <a name="review-your-scenarios"></a>查看方案 
 
@@ -78,7 +78,7 @@ Azure AD 联接适用于托管环境和联合环境。
 如果标识提供者不支持这些协议，则 Azure AD 联接无法本机运行。 
 
 >[!NOTE]
-> 目前，Azure AD 联接不适用于[以外部身份验证提供程序为主要身份验证方法的 AD FS 2019。](/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary) Azure AD 将默认密码身份验证作为主要方法，从而导致此方案中的身份验证失败
+> 目前，Azure AD 联接不适用于使用[外部身份验证提供程序配置的 AD FS 2019 作为主要身份验证方法](/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary)。 Azure AD 联接默认为密码身份验证作为主要方法，这会导致此方案中的身份验证失败
 
 
 ### <a name="smartcards-and-certificate-based-authentication"></a>智能卡和基于证书的身份验证
@@ -110,10 +110,10 @@ Azure AD 联接：
 
 ### <a name="management-platform"></a>管理平台
 
-Azure AD 联接设备的设备管理基于 MDM 平台（如 Intune 和 MDM CSP）。 Windows 10 提供适用于所有兼容 MDM 解决方案的内置 MDM 代理。
+Azure AD 联接设备的设备管理基于 MDM 平台（如 Intune）和 MDM Csp。 Windows 10 提供适用于所有兼容 MDM 解决方案的内置 MDM 代理。
 
 > [!NOTE]
-> Azure AD 联接设备不支持组策略，因为它们未连接到本地活动目录。 只能通过 MDM 管理 Azure AD 联接设备
+> Azure AD 联接的设备中不支持组策略，因为它们未连接到本地 Active Directory。 仅可通过 MDM 管理 Azure AD 联接的设备
 
 管理 Azure AD 联接设备有两种方法：
 
@@ -129,7 +129,7 @@ Azure AD 联接设备的设备管理基于 MDM 平台（如 Intune 和 MDM CSP�
 
 如果 MDM 解决方案不能通过 Azure AD 应用库获取，则可以按照 [Azure Active Directory integration with MDM](/windows/client-management/mdm/azure-active-directory-integration-with-mdm)（Azure Active Directory 与 MDM 集成）中概述的过程添加该解决方案。 
 
-通过共同管理，可以使用 SCCM 来管理设备的某些特性，同时通过 MDM 平台提供策略。 Microsoft Intune 通过 SCCM 启用共同管理。 有关 Windows 10 设备的共同管理的详细信息，请参阅[什么是共同管理？](/configmgr/core/clients/manage/co-management-overview) 如果使用除 Intune 之外的 MDM 产品，请与 MDM 提供商联系，了解适用的共同管理方案。
+通过共同管理，可以使用 SCCM 来管理设备的某些特性，同时通过 MDM 平台提供策略。 Microsoft Intune 通过 SCCM 启用共同管理。 有关适用于 Windows 10 设备的共同管理的详细信息，请参阅[什么是共同管理？](/configmgr/core/clients/manage/co-management-overview)。 如果使用除 Intune 之外的 MDM 产品，请与 MDM 提供商联系，了解适用的共同管理方案。
 
 **建议：** 请考虑用于 Azure AD 联接设备的仅限 MDM 管理。
 
@@ -244,7 +244,7 @@ Azure AD 联接设备的远程桌面连接需要主机是 Azure AD 联接或混�
 **若要添加 MDM 提供程序**：
 
 1. 在“Azure Active Directory 页”的“管理”部分，单击 `Mobility (MDM and MAM)`********。 
-1. 单击"**添加应用程序**"。
+1. 单击“添加应用程序”  。
 1. 从列表中选择 MDM 提供程序。
 
    ![添加应用程序](./media/azureadjoin-plan/04.png)
@@ -290,13 +290,13 @@ MAM 不适用于 Azure AD 联接。
 
 ![合规的设备](./media/azureadjoin-plan/46.png)
 
-您可以使用此实现[需要托管设备进行云应用访问与条件访问](../conditional-access/require-managed-devices.md)。
+你可以使用此实现来[要求使用条件访问的云应用访问的托管设备](../conditional-access/require-managed-devices.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [在第一次运行](azuread-joined-devices-frx.md)
-> 期间将[工作设备加入组织网络](/azure/active-directory/user-help/user-help-join-device-on-network)，使用 Azure AD 加入新的 Windows 10 设备
+> 期间将新的 Windows 10 设备加入 Azure AD 将[工作设备加入你组织的网络](/azure/active-directory/user-help/user-help-join-device-on-network)
 
 <!--Image references-->
 [1]: ./media/azureadjoin-plan/12.png

@@ -1,6 +1,6 @@
 ---
-title: 批准或拒绝访问请求 - Azure AD 授权管理
-description: 了解如何使用"我的访问"门户在 Azure 活动目录授权管理中批准或拒绝对访问包的请求。
+title: 批准或拒绝访问请求-Azure AD 的权利管理
+description: 了解如何使用 "我的访问门户" 批准或拒绝对 Azure Active Directory 授权管理中访问包的请求。
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,13 +17,13 @@ ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 20ec63efe16f1120ca6e7d07c8917d8ad2b3a0e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79261718"
 ---
-# <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>在 Azure AD 授权管理中批准或拒绝访问请求
+# <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>在 Azure AD 的权利管理中批准或拒绝访问请求
 
 可以使用 Azure AD 权利管理来配置策略，要求对访问包进行审批，并选择一个或多个审批者。 本文介绍指定的审批者如何批准或拒绝针对访问包的请求。
 
@@ -31,9 +31,9 @@ ms.locfileid: "79261718"
 
 若要批准或拒绝访问请求，第一步是找到并打开待审批的访问请求。 可通过两种方式打开访问请求。
 
-**先决条件角色：** 批准人
+**必备角色：** 审批者
 
-1. 查找来自 Microsoft Azure 的电子邮件，要求您批准或拒绝请求。 以下是示例电子邮件：
+1. 查找 Microsoft Azure 要求批准或拒绝请求的电子邮件。 以下是示例电子邮件：
 
     ![批准对访问包的请求的电子邮件](./media/entitlement-management-shared/approver-request-email.png)
 
@@ -43,7 +43,7 @@ ms.locfileid: "79261718"
 
 如果没有电子邮件，可以通过以下步骤来查找待审批的访问请求。
 
-1. 登录到 中的[https://myaccess.microsoft.com](https://myaccess.microsoft.com)"我的访问"门户。  （对于美国政府，"我的访问"门户链接中的域将为`myaccess.microsoft.us`.）
+1. 在上[https://myaccess.microsoft.com](https://myaccess.microsoft.com)登录到 "我的访问门户"。  （对于美国政府版，"我的 Access 门户" 链接中的`myaccess.microsoft.us`域将为。）
 
 1. 在左侧菜单中，单击“审批”即可看到待审批的访问请求列表。****
 
@@ -53,7 +53,7 @@ ms.locfileid: "79261718"
 
 打开待审批的访问请求以后，即可查看详细信息，这些信息有助于你进行批准或拒绝决策。
 
-**先决条件角色：** 批准人
+**必备角色：** 审批者
 
 1. 单击“查看”链接打开“访问请求”窗格。****
 

@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae932191c7b76590ea217386dfd729add5566f87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79261042"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>将连接器与 Azure AD Connect Sync Service Manager 配合使用
@@ -49,9 +49,9 @@ ms.locfileid: "79261042"
 删除操作适用于两种不同的用途。  
 ![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/connectordelete.png)
 
-“仅删除连接器空间”选项会删除所有数据，但保留配置。****
+“仅删除连接器空间”选项会删除所有数据，但保留配置。 
 
-“删除连接器和连接器空间”选项会删除数据以及配置。**** 不想再连接到林时可以使用此选项。
+“删除连接器和连接器空间”选项会删除数据以及所有配置。  不想再连接到林时可以使用此选项。
 
 这两个选项都会同步所有对象，并更新 Metaverse 对象。 这是一个长时间运行的操作。
 
@@ -65,11 +65,11 @@ ms.locfileid: "79261042"
 
 ![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearch.png)
 
-先选择一个“范围”。**** 可以基于数据（RDN、DN、定位点、子树）或对象状态（所有其他选项）进行搜索。  
+先选择一个“范围”。  可以基于数据（RDN、DN、定位点、子树）或对象状态（所有其他选项）进行搜索。  
 ![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
 例如，如果进行子树搜索，将获取某个 OU 中的所有对象。  
 ![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
-在此网格中，您可以选择对象、选择**属性**，然后从源连接器空间、元节和目标连接器空间[跟随它](tshoot-connect-object-not-syncing.md)。
+可以从此网格中选择一个对象，选择“属性”  ，并从源连接器空间到 Metaverse 再到目标连接器空间一直[跟踪对象](tshoot-connect-object-not-syncing.md)。
 
 ### <a name="changing-the-ad-ds-account-password"></a>更改 AD DS 帐户密码
 如果更改帐户密码，Synchronization Service 不再能将更改导入/导出到本地 AD。   可能会看到如下内容：
@@ -82,9 +82,9 @@ ms.locfileid: "79261042"
 
 1. 启动 Synchronization Service Manager（“开始”→ 同步服务）。
 </br>![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/startmenu.png)
-2. 转到“连接器”**** 选项卡。
+2. 转到“连接器”  选项卡。
 3. 选择配置为使用 AD DS 帐户的 AD 连接器。
-4. 在"操作"下，选择**属性**。
+4. 在“操作”下，选择“属性”  。
 5. 在弹出对话框中，选择“连接到 Active Directory 林”：
 6. 林名称指示相应的本地 AD。
 7. 用户名指示用于同步的 AD DS 帐户。
@@ -96,4 +96,4 @@ ms.locfileid: "79261042"
 ## <a name="next-steps"></a>后续步骤
 了解有关 [Azure AD Connect 同步](how-to-connect-sync-whatis.md)配置的详细信息。
 
-详细了解[将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)。
+了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

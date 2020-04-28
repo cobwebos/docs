@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: ed1f47ae99f6346a932d0fe94be7586dc25a672f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79262732"
 ---
 # <a name="using-web-browsers-msalnet"></a>使用 Web 浏览器 (MSAL.NET)
@@ -31,7 +31,7 @@ ms.locfileid: "79262732"
 必须知道，在以交互方式获取令牌时，对话框的内容不是由该库提供，而是由 STS（安全令牌服务）提供。 身份验证终结点将发回一些用于控制交互的 HTML 和 JavaScript 内容，这些内容在 Web 浏览器或 Web 控件中呈现。 让 STS 处理 HTML 交互可以带来诸多好处：
 
 - 应用程序和身份验证库永远不会存储密码（如果用户键入了密码）。
-- 启用重定向到其他标识提供程序（例如，使用工作学校帐户或 MSAL 的个人帐户登录，或使用 Azure AD B2C 的社交帐户登录）。
+- 允许重定向到其他标识提供者（例如，使用工作学校帐户登录，或使用 MSAL 或使用带有 Azure AD B2C 的社交帐户登录）。
 - 可让 STS 控制条件访问，例如，让用户在身份验证阶段执行多重身份验证 (MFA)（输入 Windows Hello PIN、在手机上接听来电，或者在手机上的身份验证应用中接收验证码）。 如果尚未设置所需的多重身份验证方法，用户可以在同一个对话框中及时设置该方法。  用户输入其手机号码后，系统会引导他们安装身份验证应用程序，然后用户扫描 QR 标记即可添加其帐户。 此服务器驱动的交互方式是一种极佳的体验！
 - 用户密码过期时，可让用户在同一个对话框中更改密码（分别提供旧密码和新密码的字段）。
 - 支持为 Azure AD 租户管理员/应用程序所有者控制的租户或应用程序（映像）设计品牌形象。
@@ -45,15 +45,15 @@ MSAL.NET 是一个多框架库，它包含框架特定的代码用于在 UI 控�
 
 ### <a name="at-a-glance"></a>速览
 
-| 框架        | 嵌入 | System | 默认 |
+| Framework        | 嵌入式 | 系统 | 默认 |
 | ------------- |-------------| -----| ----- |
-| .NET Classic     | 是 | 是^ | 嵌入 |
-| .NET Core     | 否 | 是^ | System |
-| .NET Standard | 否 | 是^ | System |
-| UWP | 是 | 否 | 嵌入 |
-| Xamarin.Android | 是 | 是  | System |
-| Xamarin.iOS | 是 | 是  | System |
-| Xamarin.Mac| 是 | 否 | 嵌入 |
+| .NET Classic     | 是 | 是^ | 嵌入式 |
+| .NET Core     | 否 | 是^ | 系统 |
+| .NET Standard | 否 | 是^ | 系统 |
+| UWP | 是 | 否 | 嵌入式 |
+| Xamarin.Android | 是 | 是  | 系统 |
+| Xamarin.iOS | 是 | 是  | 系统 |
+| Xamarin.Mac| 是 | 否 | 嵌入式 |
 
 ^ 需要“http://localhost”重定向 URI
 
@@ -142,7 +142,7 @@ var options = new SystemWebViewOptions()
 
 开发人员在使用面向 Xamarin 的 MSAL.NET 时，可以选择使用嵌入式 Web 视图或系统浏览器。 可以根据用户体验和安全考虑因素做出选择。
 
-目前，MSAL.NET 尚不支持 Android 和 iOS 代理。 因此，如果您需要提供单一登录 （SSO），系统浏览器可能仍是一个更好的选项。 MSAL.NET 正在规划支持在嵌入式 Web 浏览器中使用代理。
+目前，MSAL.NET 尚不支持 Android 和 iOS 代理。 因此，如果需要提供单一登录（SSO），系统浏览器可能仍是更好的选择。 MSAL.NET 正在规划支持在嵌入式 Web 浏览器中使用代理。
 
 ### <a name="differences-between-embedded-webview-and-system-browser"></a>嵌入式 Web 视图与系统浏览器之间的差异
 MSAL.NET 中嵌入式 Web 视图与系统浏览器之间一些视觉差异。
@@ -211,7 +211,7 @@ authResult = await App.PCA.AcquireTokenInteractive(App.Scopes)
 
 可以根据此方法返回的值以及自己的要求做出决定：
 
-- 可向用户返回自定义错误消息。 例如："请安装 Chrome 以继续认证" -OR-
+- 可向用户返回自定义错误消息。 例如： "请安装 Chrome 以继续进行身份验证"-或-
 - 可以回退到嵌入式 Web 视图选项，并以嵌入式 Web 视图的形式启动 UI。
 
 以下代码演示了嵌入式 Web 视图选项：

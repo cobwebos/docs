@@ -1,7 +1,7 @@
 ---
 title: 使用 PowerShell 管理自定义策略
 titleSuffix: Azure AD B2C
-description: 使用 Azure 活动目录 （Azure AD） PowerShell cmdlet 对 Azure AD B2C 自定义策略进行编程管理。 使用 PowerShell 创建、读取、更新和删除自定义策略。
+description: 使用 Azure Active Directory (Azure AD) PowerShell cmdlet 对 Azure AD B2C 自定义策略进行编程式管理。 使用 PowerShell 创建、读取、更新和删除自定义策略。
 author: msmimart
 manager: celestedg
 ms.service: active-directory
@@ -11,39 +11,39 @@ ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ebf0cfffa410d8dfe2f0e0b42a0fee0c16106fde
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78187400"
 ---
 # <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure AD B2C 自定义策略
 
-Azure PowerShell 为 Azure AD B2C 租户中的命令行和脚本自定义策略管理提供了多个 cmdlet。 了解如何使用 Azure AD PowerShell 模块：
+Azure PowerShell 提供了多个 cmdlet 来基于命令行和脚本对 Azure AD B2C 租户中的自定义策略进行管理。 了解如何使用 Azure AD PowerShell 模块执行以下操作：
 
-* 在 Azure AD B2C 租户中列出自定义策略
-* 从租户下载策略
-* 通过覆盖现有策略的内容更新现有策略
-* 将新策略上载到 Azure AD B2C 租户
+* 列出 Azure AD B2C 租户中的自定义策略
+* 从租户中下载策略
+* 通过覆盖现有策略的内容来更新现有策略
+* 将新策略上传到 Azure AD B2C 租户
 * 从租户中删除自定义策略
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* [Azure AD B2C 租户](tutorial-create-tenant.md)，以及具有[B2C IEF 策略管理员](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator)角色的目录中用户的凭据
-* 上载到租户的[自定义策略](custom-policy-get-started.md)
-* [用于图形**预览模块**的 Azure AD 电源外壳](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
+* [Azure AD B2C 租户](tutorial-create-tenant.md)，以及目录中具有 [B2C IEF 策略管理员](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator)角色的用户的凭据
+* 已上传到租户的[自定义策略](custom-policy-get-started.md)
+* [用于 Graph 的 Azure AD PowerShell **预览版模块**](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
 
 ## <a name="connect-powershell-session-to-b2c-tenant"></a>将 PowerShell 会话连接到 B2C 租户
 
-要使用 Azure AD B2C 租户中的自定义策略，首先需要使用[Connect-AzureAD][Connect-AzureAD]命令将 PowerShell 会话连接到租户。
+若要处理 Azure AD B2C 租户中的自定义策略，首先需要使用 [Connect-AzureAD][Connect-AzureAD] 命令将 PowerShell 会话连接到租户。
 
-执行以下命令，`{b2c-tenant-name}`用 Azure AD B2C 租户的名称替换。 使用在目录中分配[了 B2C IEF 策略管理员](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator)角色的帐户登录。
+执行以下命令，并将 `{b2c-tenant-name}` 替换为你的 Azure AD B2C 租户的名称。 使用目录中分配有 [B2C IEF 策略管理员](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator)角色的帐户进行登录。
 
 ```PowerShell
 Connect-AzureAD -Tenant "{b2c-tenant-name}.onmicrosoft.com"
 ```
 
-显示成功登录的示例命令输出：
+显示了成功登录的示例命令输出：
 
 ```Console
 PS C:\> Connect-AzureAD -Tenant "contosob2c.onmicrosoft.com"
@@ -55,13 +55,13 @@ azureuser@contoso.com AzureCloud  00000000-0000-0000-0000-000000000000 contosob2
 
 ## <a name="list-all-custom-policies-in-the-tenant"></a>列出租户中的所有自定义策略
 
-发现自定义策略允许 Azure AD B2C 管理员查看、管理和将业务逻辑添加到其操作中。 使用[获取 AzureADMSTrustFrameworkPolicy 命令][Get-AzureADMSTrustFrameworkPolicy]返回 Azure AD B2C 租户中自定义策略的 ID 列表。
+通过发现自定义策略，Azure AD B2C 管理员可以查看、管理业务逻辑以及将其添加到操作中。 使用 [Get-AzureADMSTrustFrameworkPolicy][Get-AzureADMSTrustFrameworkPolicy] 命令返回 Azure AD B2C 租户中的自定义策略的 ID 列表。
 
 ```PowerShell
 Get-AzureADMSTrustFrameworkPolicy
 ```
 
-命令输出示例：
+示例命令输出：
 
 ```Console
 PS C:\> Get-AzureADMSTrustFrameworkPolicy
@@ -77,13 +77,13 @@ B2C_1A_PasswordReset
 
 ## <a name="download-a-policy"></a>下载策略
 
-查看策略标识列表后，可以使用[Get-AzureMSTrustFrameworkPolicy][Get-AzureADMSTrustFrameworkPolicy]定位特定策略以下载其内容。
+查看策略 ID 的列表后，可以使用 [Get-AzureADMSTrustFrameworkPolicy][Get-AzureADMSTrustFrameworkPolicy] 指定特定策略来下载其内容。
 
 ```PowerShell
 Get-AzureADMSTrustFrameworkPolicy [-Id <policyId>]
 ```
 
-在此示例中，将下载具有 ID *B2C_1A_signup_signin*的策略：
+在此示例中，将下载 ID 为 *B2C_1A_signup_signin* 的策略：
 
 ```Console
 PS C:\> Get-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin
@@ -112,7 +112,7 @@ PS C:\> Get-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin
 </TrustFrameworkPolicy>
 ```
 
-要在本地编辑策略内容，请将命令输出管道到带有`-OutputFilePath`参数的文件，然后在您最喜爱的编辑器中打开该文件。
+若要在本地编辑策略内容，请使用 `-OutputFilePath` 参数通过管道将命令输出传递给文件，然后在你喜欢使用的编辑器中打开该文件。
 
 将输出发送到文件的示例命令：
 
@@ -123,9 +123,9 @@ Get-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin -OutputFilePath C:\RP
 
 ## <a name="update-an-existing-policy"></a>更新现有策略
 
-编辑已创建或下载的策略文件后，可以使用["设置-AzureADMSTrustFrameworkPolicy"][Set-AzureADMSTrustFrameworkPolicy]命令将更新的策略发布到 Azure AD B2C。
+编辑你已创建或下载的策略文件后，可以使用 [Set-AzureADMSTrustFrameworkPolicy][Set-AzureADMSTrustFrameworkPolicy] 命令将更新的策略发布到 Azure AD B2C。
 
-如果使用 Azure `Set-AzureADMSTrustFrameworkPolicy` AD B2C 租户中已存在的策略 ID 发出命令，则该策略的内容将被覆盖。
+如果你使用 Azure AD B2C 租户中已存在的策略的 ID 发出 `Set-AzureADMSTrustFrameworkPolicy` 命令，则将覆盖该策略的内容。
 
 ```PowerShell
 Set-AzureADMSTrustFrameworkPolicy [-Id <policyId>] -InputFilePath <inputpolicyfilePath> [-OutputFilePath <outputFilePath>]
@@ -138,13 +138,13 @@ Set-AzureADMSTrustFrameworkPolicy [-Id <policyId>] -InputFilePath <inputpolicyfi
 Set-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin -InputFilePath C:\B2C_1A_signup_signin.xml
 ```
 
-有关其他示例，请参阅[集 AzureADMSTrustFramework策略][Set-AzureADMSTrustFrameworkPolicy]策略策略引用。
+有关其他示例，请参阅 [Set-AzureADMSTrustFrameworkPolicy][Set-AzureADMSTrustFrameworkPolicy] 命令参考。
 
 ## <a name="upload-a-new-policy"></a>上传新策略
 
-当您对在生产中运行的自定义策略进行更改时，您可能希望发布多个版本的策略，以进行回退或 A/B 测试方案。 或者，您可能希望复制现有策略，修改它，进行一些小更改，然后将其上载为新策略供其他应用程序使用。
+当更改在生产环境中运行的自定义策略时，你可能想要发布策略的多个版本以用于回退或 A/B 测试方案。 或者，你可能想要创建现有策略的副本，对其进行少量更改，然后将其上传为新策略，供其他应用程序使用。
 
-使用["新建 AzureMSTrustFrameworkPolicy"][New-AzureADMSTrustFrameworkPolicy]命令上载新策略：
+使用 [New-AzureADMSTrustFrameworkPolicy][New-AzureADMSTrustFrameworkPolicy] 命令上传新策略：
 
 ```PowerShell
 New-AzureADMSTrustFrameworkPolicy -InputFilePath <inputpolicyfilePath> [-OutputFilePath <outputFilePath>]
@@ -159,9 +159,9 @@ New-AzureADMSTrustFrameworkPolicy -InputFilePath C:\SignUpOrSignInv2.xml
 
 ## <a name="delete-a-custom-policy"></a>删除自定义策略
 
-为了维护干净的操作生命周期，我们建议您定期删除未使用的自定义策略。 例如，在执行对一组新策略的迁移并验证新策略的功能后，您可能希望删除旧策略版本。 此外，如果您尝试发布一组自定义策略并收到错误，则删除作为失败版本的一部分创建的策略可能有意义。
+为了保持干净的操作生命周期，建议你定期删除不使用的自定义策略。 例如，你可能想要在迁移到一组新策略并验证新策略的功能之后删除旧策略版本。 此外，如果你尝试发布一组自定义策略并收到错误，则删除作为失败版本的一部分创建的策略可能会起作用。
 
-使用["删除 AzureADMSTrustFrameworkPolicy"命令][Remove-AzureADMSTrustFrameworkPolicy]从租户中删除策略。
+可以使用 [Remove-AzureADMSTrustFrameworkPolicy][Remove-AzureADMSTrustFrameworkPolicy] 命令从租户中删除策略。
 
 ```PowerShell
 Remove-AzureADMSTrustFrameworkPolicy -Id <policyId>
@@ -174,11 +174,11 @@ Remove-AzureADMSTrustFrameworkPolicy -Id <policyId>
 Remove-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin
 ```
 
-## <a name="troubleshoot-policy-upload"></a>排除策略上载故障
+## <a name="troubleshoot-policy-upload"></a>排查策略上传问题
 
-当您尝试发布新的自定义策略或更新现有策略时，不正确的 XML 格式和策略文件继承链中的错误可能会导致验证失败。
+当你尝试发布新的自定义策略或更新现有策略时，策略文件继承链中不正确的 XML 格式设置和错误可能会导致验证失败。
 
-例如，下面是尝试更新包含格式错误的 XML 的内容的策略（为了简洁起见，输出被截断）：
+例如，在更新策略时尝试使用格式不正确的 XML 内容（为简洁起见，截断了输出）：
 
 ```Console
 PS C:\> Set-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin -InputFilePath C:\B2C_1A_signup_signin.xml
@@ -191,11 +191,11 @@ Message: Validation failed: 1 validation error(s) found in policy "B2C_1A_SIGNUP
 ...
 ```
 
-有关对自定义策略进行故障排除的信息，请参阅[对 Azure AD B2C 自定义策略和标识体验框架进行故障排除](active-directory-b2c-guide-troubleshooting-custom.md)。
+有关自定义策略疑难解答的信息，请参阅[排查 Azure AD B2C 自定义策略和标识体验框架](active-directory-b2c-guide-troubleshooting-custom.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关使用 PowerShell 作为持续集成/持续传递 （CI/CD） 管道的一部分部署自定义策略的信息，请参阅[从 Azure DevOps 管道部署自定义策略](deploy-custom-policies-devops.md)。
+若要了解如何使用 PowerShell 将自定义策略部署为持续集成/持续交付（CI/CD）管道的一部分，请参阅[从 Azure DevOps 管道部署自定义策略](deploy-custom-policies-devops.md)。
 
 <!-- LINKS - External -->
 [Connect-AzureAD]: https://docs.microsoft.com/powershell/module/azuread/get-azureadmstrustframeworkpolicy

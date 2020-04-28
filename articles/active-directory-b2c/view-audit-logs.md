@@ -1,7 +1,7 @@
 ---
 title: 访问和查看审核日志
 titleSuffix: Azure AD B2C
-description: 如何以编程方式在 Azure 门户中访问 Azure AD B2C 审核日志。
+description: 如何在 Azure 门户中以编程方式访问 Azure AD B2C 审核日志。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -13,10 +13,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 83086fa2cb96eba423b9111134a0406d7256821f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79264214"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>访问 Azure AD B2C 审核日志
@@ -32,12 +32,12 @@ Azure Active Directory B2C (Azure AD B2C) 发出审核日志，其中包含有�
 
 审核日志中的“B2C”类别包含以下类型的活动****：
 
-|活动类型 |描述  |
+|活动类型 |说明  |
 |---------|---------|
-|授权 |涉及授权用户访问 B2C 资源（例如，管理员访问 B2C 策略列表）的活动。         |
+|Authorization |涉及授权用户访问 B2C 资源（例如，管理员访问 B2C 策略列表）的活动。         |
 |目录 |与管理员使用 Azure 门户登录时检索到的目录属性相关的活动。 |
 |应用程序 | 与 B2C 应用程序相关的创建、读取、更新和删除 (CRUD) 操作。 |
-|键 |与 B2C 密钥容器中存储的密钥相关的 CRUD 操作。 |
+|密钥 |与 B2C 密钥容器中存储的密钥相关的 CRUD 操作。 |
 |资源 |与 B2C 资源相关的 CRUD 操作。 例如，策略和标识提供者。
 |身份验证 |用户凭据和令牌颁发的验证。|
 
@@ -45,15 +45,15 @@ Azure Active Directory B2C (Azure AD B2C) 发出审核日志，其中包含有�
 
 ## <a name="example-activity"></a>示例活动
 
-Azure 门户中的此示例图像显示用户与外部标识提供程序登录时捕获的数据，在此示例中为 Facebook：
+Azure 门户中的此示例图像显示用户使用外部标识提供者（在本例中为 Facebook）登录时捕获的数据：
 
 ![Azure 门户中“审核日志活动详细信息”页的示例](./media/view-audit-logs/audit-logs-example.png)
 
 活动详细信息面板包含以下相关信息：
 
-|部分|字段|描述|
+|部分|字段|说明|
 |-------|-----|-----------|
-| 活动 | “属性” | 发生了哪项活动。 例如，“向应用程序颁发 id_token”（这将结束实际的用户登录）。** |
+| 活动 | 名称 | 发生了哪项活动。 例如，“向应用程序颁发 id_token”（这将结束实际的用户登录）。** |
 | 发起者（参与者） | ObjectId | 用户登录的 B2C 应用程序的**对象 ID**。 此标识符在 Azure 门户中不可见，但可以通过 Microsoft Graph API 访问它。 |
 | 发起者（参与者） | SPN | 用户登录的 B2C 应用程序的**应用程序 ID**。 |
 | 目标 | ObjectId | 正在登录的用户的**对象 ID**。 |
@@ -84,19 +84,19 @@ Azure 门户中的此示例图像显示用户与外部标识提供程序登录�
 
 ## <a name="get-audit-logs-with-the-azure-ad-reporting-api"></a>使用 Azure AD 报告 API 获取审核日志
 
-审核日志将发布到与 Azure Active Directory 其他活动相同的管道，因此可通过 [Azure Active Directory 报告 API](https://docs.microsoft.com/graph/api/directoryaudit-list)进行访问。 有关详细信息，请参阅使用[Azure 活动目录报告 API 入门](../active-directory/reports-monitoring/concept-reporting-api.md)。
+审核日志将发布到与 Azure Active Directory 其他活动相同的管道，因此可通过 [Azure Active Directory 报告 API](https://docs.microsoft.com/graph/api/directoryaudit-list)进行访问。 有关详细信息，请参阅[Azure Active Directory 报告 API 入门](../active-directory/reports-monitoring/concept-reporting-api.md)。
 
 ### <a name="enable-reporting-api-access"></a>启用报告 API 访问
 
-要允许基于脚本或应用程序的访问 Azure AD 报告 API，您需要在 Azure AD B2C 租户中注册具有以下 API 权限的应用程序。 您可以在 B2C 租户中的现有应用程序注册上启用这些权限，或者创建一个新权限，专门用于审核日志自动化。
+若要允许对 Azure AD 报告 API 进行基于脚本或应用程序的访问，需要使用以下 API 权限在 Azure AD B2C 租户中注册的应用程序。 你可以对 B2C 租户中的现有应用程序注册启用这些权限，或者创建专用于审核日志自动化的新权限。
 
-* Microsoft 图形 >>审核日志>审核日志.阅读.所有
+* Microsoft Graph > 应用程序权限 > 审核日志 > 审核日志
 
-按照以下文章中的步骤注册具有所需权限的应用程序：
+按照以下文章中的步骤操作，以注册具有所需权限的应用程序：
 
-[使用微软图形管理 Azure AD B2C](microsoft-graph-get-started.md)
+[用 Microsoft Graph 管理 Azure AD B2C](microsoft-graph-get-started.md)
 
-注册具有相应权限的应用程序后，请参阅本文后面的 PowerShell 脚本部分，了解如何使用脚本获取活动事件。
+使用适当的权限注册应用程序后，请参阅本文后面的 "PowerShell 脚本" 一节，了解如何使用脚本获取活动事件的示例。
 
 ### <a name="access-the-api"></a>访问 API
 
@@ -110,7 +110,7 @@ https://graph.microsoft.com/v1.0/auditLogs/directoryAudits?$filter=loggedByServi
 
 以下 PowerShell 脚本通过一个示例演示如何查询 Azure AD 报告 API。 查询 API 后，该脚本将以标准输出的形式列显记录的事件，然后将 JSON 输出写入到某个文件。
 
-您可以在[Azure 云外壳](overview.md)中尝试此脚本。 请务必使用自己的应用程序 ID、客户端密码和 Azure AD B2C 租户名称更新此脚本。
+可以在[Azure Cloud Shell](overview.md)中尝试此脚本。 请务必使用自己的应用程序 ID、客户端密码和 Azure AD B2C 租户名称更新此脚本。
 
 ```powershell
 # This script requires an application registration that's granted Microsoft Graph API permission
@@ -223,4 +223,4 @@ if ($oauth.access_token -ne $null) {
 
 ## <a name="next-steps"></a>后续步骤
 
-您可以自动执行其他管理任务，例如，[使用 Microsoft 图形管理 Azure AD B2C 用户帐户](manage-user-accounts-graph-api.md)。
+你可以自动执行其他管理任务，例如，[通过 Microsoft Graph 管理 Azure AD B2C 用户帐户](manage-user-accounts-graph-api.md)。

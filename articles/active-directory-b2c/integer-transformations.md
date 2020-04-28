@@ -1,7 +1,7 @@
 ---
 title: 自定义策略的整数声明转换示例
 titleSuffix: Azure AD B2C
-description: 对于 Azure 活动目录 B2C 的标识体验框架 （IEF） 架构，整数声明转换示例。
+description: Azure Active Directory B2C 的标识体验框架（IEF）架构的整数声明转换示例。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,10 +12,10 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ece25e95bbbe9f1a1fa591c29ea9ffda0fefd369
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78187672"
 ---
 # <a name="integer-claims-transformations"></a>整数声明转换

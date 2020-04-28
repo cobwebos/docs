@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂将数据复制到/从文件系统中复制数据
+title: 使用 Azure 数据工厂向/从文件系统复制数据
 description: 了解如何使用 Azure 数据工厂向或从本地文件系统复制数据。
 services: data-factory
 documentationcenter: ''
@@ -13,10 +13,10 @@ ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d298c83c0c1a0f33f28644e2e467ad5035300221
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79265930"
 ---
 # <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>使用 Azure 数据工厂向或从本地文件系统复制数据
@@ -45,7 +45,7 @@ ms.locfileid: "79265930"
 > 复制活动在将源文件成功复制到目标后不会删除该文件。 如果需要在成功复制后删除源文件，请创建一个自定义活动，以便删除该文件并在管道中使用复制活动。
 
 ## <a name="enabling-connectivity"></a>启用连接
-数据工厂支持通过**数据管理网关**连接到本地文件系统。 必须在数据工厂服务连接到任何支持的本地数据存储包括文件系统的本地环境中安装数据管理网关。 请参阅[使用数据管理网关在本地源和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文，了解数据管理网关和设置网关的分步说明。 除了数据管理网关之外，要与本地文件系统进行通信，不需要安装其他二进制文件。 必须安装并使用数据管理网关，即使文件系统在 Azure IaaS VM 中。 有关网关的详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)。
+数据工厂支持通过**数据管理网关**连接到本地文件系统和从本地文件系统进行连接。 必须在数据工厂服务连接到任何支持的本地数据存储包括文件系统的本地环境中安装数据管理网关。 请参阅[使用数据管理网关在本地源和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文，了解数据管理网关和设置网关的分步说明。 除了数据管理网关之外，要与本地文件系统进行通信，不需要安装其他二进制文件。 必须安装并使用数据管理网关，即使文件系统在 Azure IaaS VM 中。 有关网关的详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)。
 
 若要使用 Linux 文件共享，请在 Linux 服务器上安装 [Samba](https://www.samba.org/)，在 Windows 服务器上安装数据管理网关。 不支持在 Linux 服务器上安装数据管理网关。
 
@@ -54,29 +54,29 @@ ms.locfileid: "79265930"
 
 创建管道的最简单方法是使用**** 复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-您还可以使用以下工具创建管道：**可视化工作室****、Azure PowerShell、Azure****资源管理器模板** **、.NET API**和 REST **API**。 有关创建具有复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API**和**REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
 1. 创建**数据工厂**。 数据工厂可以包含一个或多个管道。
-2. 创建**链接服务**，将输入和输出数据存储链接到数据工厂。 例如，如果要将数据从 Azure Blob 存储复制到本地文件系统，可创建两个链接服务，将本地文件系统和 Azure 存储帐户链接到数据工厂。 有关特定于本地文件系统的链接服务属性，请参阅[链接服务属性](#linked-service-properties)部分。
-3. 创建**数据集**以表示复制操作的输入和输出数据。 在上一个步骤所述的示例中，创建了一个数据集来指定 Blob 容器和包含输入数据的文件夹。 创建了另一个数据集来指定文件系统中的文件夹和文件名（可选）。 有关特定于本地文件系统的数据集属性，请参阅[数据集属性](#dataset-properties)部分。
-4. 创建具有将数据集作为输入和数据集作为输出的复制活动的**管道**。 在前面所述的示例中，在复制活动中使用 BlobSource 作为源，FileSystemSink 作为接收器。 同样，如果从本地文件系统复制到 Azure Blob 存储，则在复制活动中使用 FileSystemSource 和 BlobSink。 有关特定于本地文件系统的复制活动属性，请参阅[复制活动属性](#copy-activity-properties)部分。 有关如何将数据存储用作源或接收器的详细信息，请单击前面章节中的相应数据存储链接。
+2. 创建**链接服务**以将输入和输出数据存储链接到数据工厂。 例如，如果要将数据从 Azure Blob 存储复制到本地文件系统，可创建两个链接服务，将本地文件系统和 Azure 存储帐户链接到数据工厂。 有关特定于本地文件系统的链接服务属性，请参阅[链接服务属性](#linked-service-properties)部分。
+3. 创建用于表示复制操作的输入和输出数据的**数据集**。 在上一个步骤所述的示例中，创建了一个数据集来指定 Blob 容器和包含输入数据的文件夹。 创建了另一个数据集来指定文件系统中的文件夹和文件名（可选）。 有关特定于本地文件系统的数据集属性，请参阅[数据集属性](#dataset-properties)部分。
+4. 创建包含复制活动的**管道**，该活动将数据集作为输入，并将数据集作为输出。 在前面所述的示例中，在复制活动中使用 BlobSource 作为源，FileSystemSink 作为接收器。 同样，如果从本地文件系统复制到 Azure Blob 存储，则在复制活动中使用 FileSystemSource 和 BlobSink。 有关特定于本地文件系统的复制活动属性，请参阅[复制活动属性](#copy-activity-properties)部分。 有关如何将数据存储用作源或接收器的详细信息，请单击前面章节中的相应数据存储链接。
 
 使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于向/从文件系统复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples-for-copying-data-to-and-from-file-system)部分。
 
 对于特定于文件系统的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息：
 
 ## <a name="linked-service-properties"></a>链接服务属性
-您可以使用本地**文件服务器**链接服务将本地文件系统链接到 Azure 数据工厂。 下表提供本地文件服务器链接服务特定的 JSON 元素的说明。
+你可以使用**本地文件服务器**链接服务将本地文件系统链接到 Azure 数据工厂。 下表提供本地文件服务器链接服务特定的 JSON 元素的说明。
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必需 |
 | --- | --- | --- |
 | type |确保类型属性设置为 **OnPremisesFileServer**。 |是 |
-| host |指定要复制的文件夹的根路径。 请对字符串中的特殊字符使用转义符“\”。 有关[示例，请参阅示例链接的服务和数据集定义](#sample-linked-service-and-dataset-definitions)。 |是 |
+| host |指定要复制的文件夹的根路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅[示例链接服务和数据集定义](#sample-linked-service-and-dataset-definitions)。 |是 |
 | userid |指定有权访问服务器的用户的 ID。 |否（如果选择 encryptedCredential） |
 | password |设置用户的密码 (userid)。 |否（如果选择 encryptedCredential） |
-| encryptedCredential |指定通过运行 New-AzDataFactoryEncryptValue cmdlet 可以获取的加密凭据。 |否（如果选择在纯文本中指定 userid 和密码） |
+| encryptedCredential |指定可以通过运行 AzDataFactoryEncryptValue cmdlet 获取的加密凭据。 |否（如果选择在纯文本中指定 userid 和密码） |
 | gatewayName |指定网关的名称，数据工厂应将其用于连接到本地文件服务器。 |是 |
 
 
@@ -127,9 +127,9 @@ ms.locfileid: "79265930"
 
 每个数据集类型的 typeProperties 部分不同。 它提供诸如数据存储中数据的位置和格式等信息。 **FileShare** 类型的数据集的 typeProperties 部分具有以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必需 |
 | --- | --- | --- |
-| folderPath |指定文件夹的子路径。 请对字符串中的特殊字符使用转义符“\'。 不支持通配符筛选器。 有关[示例，请参阅示例链接的服务和数据集定义](#sample-linked-service-and-dataset-definitions)。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
+| folderPath |指定文件夹的子路径。 请对字符串中的特殊字符使用转义符“\'。 不支持通配符筛选器。 有关示例，请参阅[示例链接服务和数据集定义](#sample-linked-service-and-dataset-definitions)。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
 | fileName |指定 **folderPath** 中的文件的名称（如果你想要引用该文件夹中的特定文件）。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 **fileName**，并且没有在活动接收器中指定 **preserveHierarchy**，所生成文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt`（示例：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt） |否 |
 | fileFilter |指定在 folderPath 中选择一部分文件而不是所有文件时要使用的筛选器。 <br/><br/>允许的值为：`*`（多个字符）和 `?`（单个字符）。<br/><br/>示例 1："fileFilter": "*.log"<br/>示例 2："fileFilter": 2014-1-?.txt"<br/><br/>注意：fileFilter 适用于 FileShare 输入数据集。 |否 |
 | partitionedBy |可使用 partitionedBy 指定时序数据的动态 folderPath/fileName。 例如，针对每小时数据参数化的 folderPath。 |否 |
@@ -179,15 +179,15 @@ ms.locfileid: "79265930"
 
 **FileSystemSource** 支持以下属性：
 
-| properties | 描述 | 允许的值 | 必选 |
+| properties | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | recursive |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True、False（默认值） |否 |
 
 **FileSystemSink** 支持以下属性：
 
-| properties | 描述 | 允许的值 | 必选 |
+| properties | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| copyBehavior |源为 BlobSource 或 FileSystem 时，请定义复制行为。 |**PreserveHierarchy：** 将文件层次结构保留到目标文件夹中。 也就是说，指向源文件夹的源文件相对路径与指向目标文件夹的目标文件相对路径相同。<br/><br/>**FlattenHierarchy：** 源文件夹中的所有文件在目标文件夹的第一个级别中创建。 创建目标文件时，自动生成名称。<br/><br/>**合并文件：** 将源文件夹中的所有文件合并到一个文件。 如果指定了文件名/blob 名称，则合并的文件名是指定的名称。 否则，它是自动生成的文件名。 |否 |
+| copyBehavior |源为 BlobSource 或 FileSystem 时，请定义复制行为。 |**PreserveHierarchy：** 将文件层次结构保留到目标文件夹中。 也就是说，指向源文件夹的源文件相对路径与指向目标文件夹的目标文件相对路径相同。<br/><br/>**FlattenHierarchy：** 源文件夹中的所有文件在目标文件夹的第一个级别中创建。 创建目标文件时，自动生成名称。<br/><br/>**MergeFiles：** 将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名/blob 名称，则合并的文件名是指定的名称。 否则，它是自动生成的文件名。 |否 |
 
 ### <a name="recursive-and-copybehavior-examples"></a>recursive 和 copyBehavior 示例
 本节介绍了 recursive 和 copyBehavior 属性值的不同组合的复制操作产生的行为。
@@ -205,13 +205,13 @@ ms.locfileid: "79265930"
 请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md)一文了解详细信息。
 
 ## <a name="json-examples-for-copying-data-to-and-from-file-system"></a>向/从文件系统复制数据的 JSON 示例
-以下示例提供了使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道的示例 JSON 定义。 它们演示如何将数据复制到本地文件系统和 Azure Blob 存储，以及如何从本地文件系统和 Azure Blob 存储复制数据。 但是，可使用 Azure 数据工厂中的复制活动将数据直接** 从任意源复制到[受支持的源和接收器](data-factory-data-movement-activities.md#supported-data-stores-and-formats)中列出的任意接收器。
+下面的示例提供示例 JSON 定义，可用于通过使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 它们演示如何将数据复制到本地文件系统和 Azure Blob 存储，以及如何从本地文件系统和 Azure Blob 存储复制数据。 但是，可使用 Azure 数据工厂中的复制活动将数据直接** 从任意源复制到[受支持的源和接收器](data-factory-data-movement-activities.md#supported-data-stores-and-formats)中列出的任意接收器。
 
 ### <a name="example-copy-data-from-an-on-premises-file-system-to-azure-blob-storage"></a>示例：将数据从本地文件系统复制到 Azure Blob 存储
 此示例演示如何将数据从本地文件系统复制到 Azure Blob 存储。 此示例具有以下数据工厂实体：
 
-* 类型[OnpremisesFileServer](#linked-service-properties)的链接服务。
-* [Azure 存储](data-factory-azure-blob-connector.md#linked-service-properties)类型的链接服务。
+* [OnPremisesFileServer](#linked-service-properties)类型的链接服务。
+* [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)类型的链接服务。
 * [FileShare](#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
 * [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)类型的输出[数据集](data-factory-create-datasets.md)。
 * 包含复制活动的[管道](data-factory-create-pipelines.md)，其使用 [FileSystemSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
@@ -379,9 +379,9 @@ ms.locfileid: "79265930"
 }
 ```
 
-**具有文件系统源和 Blob 接收器的管道中的复制活动：**
+**管道中具有文件系统源和 Blob 接收器的复制活动：**
 
-管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，**源**类型设置为**FileSystemSource**，并且**接收器**类型设置为**BlobSink**。
+管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，**源**类型设置为**FileSystemSource**，**接收器**类型设置为**BlobSink**。
 
 ```JSON
 {
@@ -432,10 +432,10 @@ ms.locfileid: "79265930"
 ### <a name="example-copy-data-from-azure-sql-database-to-an-on-premises-file-system"></a>示例：将数据从 Azure SQL 数据库复制到本地文件系统
 以下示例显示：
 
-* [AzureSqlDatabase](data-factory-azure-sql-connector.md#linked-service-properties)类型的链接服务。
-* 类型[OnpremisesFileServer](#linked-service-properties)的链接服务。
+* AzureSqlDatabase 类型的链接服务[。](data-factory-azure-sql-connector.md#linked-service-properties)
+* [OnPremisesFileServer](#linked-service-properties)类型的链接服务。
 * [AzureSqlTable](data-factory-azure-sql-connector.md#dataset-properties)类型的输入数据集。
-* FileShare 类型的输出[FileShare](#dataset-properties)数据集。
+* 类型为文件[共享](#dataset-properties)的输出数据集。
 * 具有使用[SqlSource](data-factory-azure-sql-connector.md#copy-activity-properties)和[FileSystemSink](#copy-activity-properties)的复制活动的管道。
 
 该示例每小时将时间序列数据从 Azure SQL 表复制到本地文件系统。 示例后续部分描述了这些示例中使用的 JSON 属性。

@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 42f3c7f3351bddab429489dccf28587549d76e18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78897853"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>通过 Gremlin SDK 使用 Azure Cosmos DB 资源令牌
@@ -20,14 +20,14 @@ ms.locfileid: "78897853"
 
 ## <a name="create-a-resource-token"></a>创建资源令牌
 
-Apache TinkerPop Gremlin SDK 没有用于创建资源令牌的 API。 术语“资源令牌”** 是一个 Azure Cosmos DB 概念。 若要创建资源令牌，请下载 [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)。 如果你的应用程序需要创建资源令牌并使用它们来访问图形数据库，则需要两个单独的 SDK。
+Apache TinkerPop Gremlin SDK 没有用于创建资源令牌的 API。 术语“资源令牌”  是一个 Azure Cosmos DB 概念。 若要创建资源令牌，请下载 [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)。 如果你的应用程序需要创建资源令牌并使用它们来访问图形数据库，则需要两个单独的 SDK。
 
 下面的大纲演示了资源标记之上的对象模型层次结构：
 
 - **Azure Cosmos DB 帐户** - 具有关联 DNS 的顶级实体（例如，`contoso.gremlin.cosmos.azure.com`）。
   - **Azure Cosmos DB 数据库**
-    - **用户**
-      - **权限**
+    - **User**
+      - 权限 
         - **令牌** - 表示允许或拒绝哪些操作的权限对象属性。
 
 资源令牌使用以下格式：`"type=resource&ver=1&sig=<base64 string>;<base64 string>;"`。 此字符串对于客户端是不透明的，应按原样使用，而无任何修改或解释。
@@ -95,11 +95,11 @@ builder.authProperties(authenticationProperties);
 
 ## <a name="limit"></a>限制
 
-使用单个 Gremlin 帐户，可以颁发无限数量的令牌。 但是，在 1 小时内最多只能同时使用 100 个令牌。 如果应用程序超过每小时的令牌限制，身份验证请求将被拒绝，并且您会收到以下错误消息："超出允许的资源令牌限制 100，可同时使用。 关闭使用特定令牌的活动连接以便为新令牌释放槽不起作用。 Azure Cosmos DB Gremlin 数据库引擎在身份验证请求之前的一小时内跟踪唯一令牌。
+使用单个 Gremlin 帐户，可以颁发无限数量的令牌。 但是，在 1 小时内最多只能同时使用 100 个令牌。 如果应用程序超过每小时令牌限制，身份验证请求将被拒绝，你将收到以下错误消息：“超出了允许的资源令牌限制，最多可以同时使用 100 个。” 关闭使用特定令牌的活动连接以便为新令牌释放槽不起作用。 Azure Cosmos DB Gremlin 数据库引擎在身份验证请求之前的一小时内跟踪唯一令牌。
 
 ## <a name="permission"></a>权限
 
-应用程序在使用资源令牌时遇到的常见错误是“授权标头中为相应请求提供的权限不足。 请使用另一个授权标头重试”。 当 Gremlin 遍历尝试写入边缘或顶点但资源令牌仅授予“读取”** 权限时，会返回此错误。 检查遍历是否包含以下任何步骤：.addV()**、.addE()**、.drop()** 或 .property()**。
+应用程序在使用资源令牌时遇到的常见错误是“授权标头中为相应请求提供的权限不足。 请使用另一个授权标头重试”。 当 Gremlin 遍历尝试写入边缘或顶点但资源令牌仅授予“读取”  权限时，会返回此错误。 检查遍历是否包含以下任何步骤：.addV()  、.addE()  、.drop()  或 .property()  。
 
 ## <a name="next-steps"></a>后续步骤
 * Azure Cosmos DB 中[基于角色的访问控制](role-based-access-control.md)

@@ -9,21 +9,21 @@ ms.topic: article
 ms.date: 02/12/2020
 ms.author: cherylmc
 ms.openlocfilehash: 63c6329ad62289cd127902c1438073b28fc8683e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77201843"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>配置 VNet 到 VNet 连接（经典）
 
 [!INCLUDE [deployment models](../../includes/vpn-gateway-classic-deployment-model-include.md)]
 
-本文介绍如何在虚拟网络之间创建 VPN 网关连接。 虚拟网络可以位于相同或不同的区域，也可以来自相同或不同的订阅。 本文中的步骤适用于经典部署模型和 Azure 门户。 也可使用不同的部署工具或部署模型来创建此配置，方法是从以下列表中选择另一选项：
+本文介绍如何在虚拟网络之间创建 VPN 网关连接。 虚拟网络可以位于相同或不同的区域，也可以来自相同或不同的订阅。 本文中的步骤适用于经典部署模型和 Azure 门户。 也可使用不同的部署工具或部署模型创建此配置，方法是从以下列表中选择另一选项：
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
-> * [电源外壳](vpn-gateway-vnet-vnet-rm-ps.md)
+> * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure 门户（经典）](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 > * [连接不同的部署模型 - Azure 门户](vpn-gateway-connect-different-deployment-models-portal.md)
@@ -43,9 +43,9 @@ ms.locfileid: "77201843"
 
 ![VNet 到 VNet 连接](./media/vpn-gateway-howto-vnet-vnet-portal-classic/aboutconnections.png)
 
-### <a name="why-connect-virtual-networks"></a><a name="why"></a>为什么要连接虚拟网络？
+### <a name="why-connect-virtual-networks"></a><a name="why"></a>为什么连接虚拟网络？
 
-你可能会出于以下原因而连接虚拟网络：
+出于以下原因可能要连接虚拟网络：
 
 * **跨区域地域冗余和地域存在**
 
@@ -91,7 +91,7 @@ ms.locfileid: "77201843"
 
 如果使用本文进行练习，可以使用以下示例值：
 
-**测试VNet1的值**
+**TestVNet1 的值**
 
 名称：TestVNet1<br>
 地址空间：10.11.0.0/16、10.12.0.0/16（可选）<br>
@@ -143,7 +143,7 @@ Azure 使用在每个本地网络站点中指定的设置来确定如何在 VNet
 1. 在 Azure 门户中找到 TestVNet1。 在页面的“VPN 连接”部分，单击“网关”。********
 
     ![无网关](./media/vpn-gateway-howto-vnet-vnet-portal-classic/nogateway.png)
-2. 在 **"新建 VPN 连接"** 页上，选择 **"站点到站点**"。
+2. 在 "**新建 VPN 连接**" 页上，选择 "**站点到站点**"。
 3. 单击“本地站点”以打开“本地站点”页面并配置设置。****
 4. 在“本地站点”页面上，为本地站点命名。**** 在示例中，我们将本地站点命名为“VNet4Local”。
 5. 对于“VPN 网关 IP 地址”，可以使用所需的任何 IP 地址，只要它采用有效格式即可。**** 通常，应该使用 VPN 设备的实际外部 IP 地址。 但是，对于经典 VNet 到 VNet 配置，请使用分配给 VNet 的网关的公共 IP 地址。 考虑到尚未创建该虚拟网络网关，因此，将指定任何有效的公共 IP 地址作为占位符。<br>请勿将此留空 - 就此配置来说，此项不是可选项。 稍后将返回到这些设置，使用 Azure 生成的相应虚拟网络网关 IP 地址对其进行配置。
@@ -160,7 +160,7 @@ Azure 使用在每个本地网络站点中指定的设置来确定如何在 VNet
 3. 网关子网名称自动以所需的名称“GatewaySubnet”进行填充。 ****“地址范围”包含分配给 VPN 网关服务的 IP 地址。 某些配置允许使用网关子网 /29，但最好使用 /28 或 /27 以适应将来可能需要为网关服务使用更多 IP 地址的配置。 在示例设置中，我们使用了 10.11.1.0/27。 调整地址空间，并单击“确定”。****
 4. 配置“网关大小”。**** 此设置指的是[网关 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
 5. 配置“路由类型”。**** 此配置的路由类型必须为“动态”。**** 无法更改路由类型，除非删除网关并创建一个新网关。
-6. 单击“确定”。
+6. 单击“确定”。 
 7. 在“新建 VPN 连接”页上，单击“确定”，开始创建虚拟网络网关********。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选的网关 SKU。
 
 ## <a name="step-5---configure-testvnet4-settings"></a><a name="vnet4settings"></a>第 5 步 - 配置 TestVNet4 设置
@@ -211,7 +211,7 @@ Azure 使用在每个本地网络站点中指定的设置来确定如何在 VNet
 
 1. 下载和安装最新版本的 Azure 服务管理 (SM) PowerShell cmdlet。 有关详细信息，请参阅使用[Azure PowerShell](#powershell)。
 
-2. 使用提升权限打开 PowerShell 控制台。 使用以下示例帮助您进行连接。 必须使用 PowerShell 服务管理模块在本地运行这些命令。 若要切换到服务管理，请使用以下命令：
+2. 通过提升的权限打开 PowerShell 控制台。 使用以下示例来帮助你进行连接。 必须使用 PowerShell 服务管理模块在本地运行这些命令。 若要切换到服务管理，请使用以下命令：
 
    ```powershell
    azure config mode asm
@@ -231,7 +231,7 @@ Azure 使用在每个本地网络站点中指定的设置来确定如何在 VNet
    ```powershell
    Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"
    ```
-6. 导出并查看网络配置文件。 在计算机上创建一个目录，然后将网络配置文件导出到该目录。 在此示例中，网络配置文件导出到**C：_AzureNet**。
+6. 导出并查看网络配置文件。 在计算机上创建一个目录，然后将网络配置文件导出到该目录。 在此示例中，网络配置文件导出到**C:\AzureNet**。
 
    ```powershell
    Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
@@ -270,7 +270,7 @@ Azure 使用在每个本地网络站点中指定的设置来确定如何在 VNet
 ## <a name="vnet-to-vnet-considerations-for-classic-vnets"></a><a name="faq"></a>经典 VNet 的 VNet 到 VNet 注意事项
 * 虚拟网络可以在相同或不同的订阅中。
 * 虚拟网络可以在相同或不同的 Azure 区域（位置）中。
-* 云服务或负载平衡终结点无法跨虚拟网络跨越，即使它们连接在一起也是如此。
+* 云服务或负载平衡终结点不能跨虚拟网络，即使它们连接在一起。
 * 将多个虚拟网络连接在一起不需要任何 VPN 设备。
 * VNet 到 VNet 通信支持连接 Azure 虚拟网络。 它不支持连接未部署到虚拟网络的虚拟机或云服务。
 * VNet 到 VNet 通信需要动态路由网关。 不支持 Azure 静态路由网关。

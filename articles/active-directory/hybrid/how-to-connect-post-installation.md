@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c204029557a73dc3f02015afb92c0fdbf0d4d50e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79261289"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>后续步骤以及如何管理 Azure AD Connect
@@ -35,7 +35,7 @@ ms.locfileid: "79261289"
 ### <a name="to-assign-an-azure-ad-premium-or-enterprise-mobility-suite-license"></a>分配 Azure AD Premium 或企业移动套件许可证
 
 1. 以管理员身份登录 Azure 门户。
-2. 在左侧，选择“Active Directory”****。
+2. 在左侧选择“Active Directory”。 
 3. 在“Active Directory”**** 页上，双击要设置的用户所在的目录。
 4. 在“目录”页的顶部，选择“许可证”。****
 5. 在“许可证”**** 页上，选择“Active Directory Premium”**** 或“企业移动套件”****，并单击“分配”****。
@@ -59,11 +59,11 @@ ms.locfileid: "79261289"
 2. 单击 **“配置”**。
 3. 在任务屏幕上，选择“自定义同步选项”****，然后单击“下一步”****。
 4. 输入 Azure AD 凭据
-5. 单击“下一步”****。 单击“下一步”****。  单击“下一步”****。
+5. 单击“下一步”。  单击“下一步”。   单击“下一步”。 
 5.  在“已准备好进行配置”屏幕上，确保已选中“配置完成后启动同步过程”复选框。********
 6.  单击 **“配置”**。
 
-有关 Azure AD 连接同步计划程序的详细信息，请参阅[Azure AD 连接计划程序](how-to-connect-sync-feature-scheduler.md)。
+有关 Azure AD Connect 同步计划程序的详细信息，请参阅[Azure AD Connect 计划程序](how-to-connect-sync-feature-scheduler.md)。
 
 ## <a name="additional-tasks-available-in-azure-ad-connect"></a>Azure AD Connect 中提供的其他任务
 在完成 Azure AD Connect 的初始安装后，随时可以从 Azure AD Connect 启动页或桌面快捷方式再次启动向导。  会发现，再次运行向导会以其他任务的形式提供一些新选项。  
@@ -72,7 +72,7 @@ ms.locfileid: "79261289"
 
 ![其他任务列表](./media/how-to-connect-post-installation/addtasks2.png)
 
-| 其他任务 | 描述 |
+| 其他任务 | 说明 |
 | --- | --- |
 |**隐私设置**|查看正在与 Microsoft 共享的遥测数据。|
 |**查看当前配置**|查看当前的 Azure AD Connect 解决方案。  包括常规设置、同步的目录和同步设置等。 |
@@ -85,4 +85,4 @@ ms.locfileid: "79261289"
 |**疑难解答**|有关排除 Azure AD Connect 问题的帮助信息|
 
 ## <a name="next-steps"></a>后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+详细了解如何[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)。

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b7def733a80aea1be77825bb9069217f5f43e003
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79261276"
 ---
 # <a name="more-details-about-features-in-preview"></a>有关预览版功能的详细信息
@@ -54,4 +54,4 @@ Office 365 组会在本地 AD DS 中表示为分发组。 本地 Exchange 服务
 ## <a name="next-steps"></a>后续步骤
 配置 [Azure AD Connect 的自定义安装](how-to-connect-install-custom.md)。
 
-详细了解[将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

@@ -15,10 +15,10 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e933c82229415a71182096a6aca9a2e535934d89
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77159040"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>配置 Azure AD 库应用程序密码单一登录时遇到的问题
@@ -89,7 +89,7 @@ ms.locfileid: "77159040"
 
 1.  在某个支持的浏览器中打开[访问面板](https://myapps.microsoft.com)，并在 Azure AD 中以“用户”**** 身份登录。
 
-2.  单击访问面板中的**密码 SSO 应用程序**。
+2.  在访问面板中单击**密码 SSO 应用程序**。
 
 3.  在出现询问是否安装该软件的提示时，选择“立即安装”****。
 
@@ -99,7 +99,7 @@ ms.locfileid: "77159040"
 
 6.  安装完成后，“重启”**** 浏览器会话。
 
-7.  登录到访问面板，看看是否可以**启动**密码 SSO 应用程序
+7.  登录到访问面板，并查看是否可以**启动**密码 SSO 应用程序
 
 也可以通过下面的直接链接下载适用于 Chrome 和 Firefox 的扩展：
 

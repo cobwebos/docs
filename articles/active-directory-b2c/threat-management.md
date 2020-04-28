@@ -12,10 +12,10 @@ ms.date: 09/26/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a438363b054361420222804dffac7973470e82e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78183595"
 ---
 # <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中管理对资源和数据的威胁
@@ -39,17 +39,17 @@ Azure AD B2C 使用复杂策略来锁定帐户。 将根据请求的 IP 和输�
 若要管理密码保护设置（包括锁定阈值），请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)
-1. 使用顶部菜单中的“目录 + 订阅”**** 筛选器来选择包含 Azure AD B2C 租户的目录。
-1. 在左侧菜单中，选择“Azure AD B2C”****。 或者，选择“所有服务”**** 并搜索并选择“Azure AD B2C”****。
-1. 在“安全性”下，选择“身份验证方法(预览版)”，然后选择“密码保护”。************
-1. 输入所需的密码保护设置，然后选择“保存”****。
+1. 使用顶部菜单中的“目录 + 订阅”  筛选器来选择包含 Azure AD B2C 租户的目录。
+1. 在左侧菜单中，选择“Azure AD B2C”  。 或者，选择“所有服务”  并搜索并选择“Azure AD B2C”  。
+1. 在“安全性”下，选择“身份验证方法(预览版)”，然后选择“密码保护”。   
+1. 输入所需的密码保护设置，然后选择“保存”  。
 
     ![Azure AD 设置中的 Azure 门户密码保护页](./media/threat-management/portal-02-password-protection.png)
-    <br />在“密码保护”设置中，将锁定阈值设置为 5。******
+    <br />在“密码保护”设置中，将锁定阈值设置为 5。 **
 
 ## <a name="view-locked-out-accounts"></a>查看锁定的帐户
 
-若要获取有关已锁定帐户的信息，可以检查 Active Directory [登录活动报表](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)。 在“状态”**** 下，选择“失败”****。 登录尝试失败，“登录错误代码”**** 为 `50053`，表示帐户已锁定：
+若要获取有关已锁定帐户的信息，可以检查 Active Directory [登录活动报表](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)。 在“状态”  下，选择“失败”  。 登录尝试失败，“登录错误代码”  为 `50053`，表示帐户已锁定：
 
 ![Azure AD 登录报表部分，显示锁定的帐户](./media/threat-management/portal-01-locked-account.png)
 

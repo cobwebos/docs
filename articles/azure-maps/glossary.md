@@ -15,7 +15,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "77657038"
 ---
-# <a name="glossary"></a>词汇表
+# <a name="glossary"></a>术语表
 
 下面的列表描述了与 Azure 地图服务一起使用的常见单词。
 

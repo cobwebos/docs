@@ -4,15 +4,15 @@ description: 了解如何使用 GPU 资源部署 Azure 容器实例，以运行�
 ms.topic: article
 ms.date: 02/19/2020
 ms.openlocfilehash: 0f1d21c62be5d7ae099faa2c6fcc440829bb451f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77525280"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>部署使用 GPU 资源的容器实例
 
-要在 Azure 容器实例上运行某些计算密集型工作负载，请使用“GPU 资源”部署[容器组](container-instances-container-groups.md)**。 组中的容器实例可以在运行容器工作负载（例如 CUDA 和深度学习应用程序）的同时访问一个或多个 NVIDIA Tesla GPU。
+要在 Azure 容器实例上运行某些计算密集型工作负载，请使用“GPU 资源”部署[容器组](container-instances-container-groups.md)  。 组中的容器实例可以在运行容器工作负载（例如 CUDA 和深度学习应用程序）的同时访问一个或多个 NVIDIA Tesla GPU。
 
 本文介绍如何在使用 [YAML 文件](container-instances-multi-container-yaml.md) 或[资源管理器模板](container-instances-multi-container-group.md)部署容器组时添加 GPU 资源。 使用 Azure 门户部署容器实例时，还可以指定 GPU 资源。
 
@@ -27,21 +27,21 @@ ms.locfileid: "77525280"
 
 以后还会不断增添对其他区域的支持。
 
-**受支持的操作系统类型**：仅限 Linux
+**支持的 OS 类型**：仅限 Linux
 
-**其他限制**：将容器组部署到[虚拟网络](container-instances-vnet.md)时，不能使用 GPU 资源。
+**其他限制**：在将容器组部署到[虚拟网络](container-instances-vnet.md)中时不能使用 GPU 资源。
 
 ## <a name="about-gpu-resources"></a>关于 GPU 资源
 
 > [!IMPORTANT]
-> GPU 资源仅应要求可用。 要请求访问 GPU 资源，请提交[Azure 支持请求][azure-support]。
+> GPU 资源仅在请求后可用。 若要请求访问 GPU 资源，请提交 [Azure 支持请求][azure-support]。
 
 ### <a name="count-and-sku"></a>计数和 SKU
 
-若要在容器实例中使用 GPU，请使用以下信息指定 GPU 资源**：
+若要在容器实例中使用 GPU，请使用以下信息指定 GPU 资源  ：
 
-* **计数**- GPU 的数量 **：1、2**或**2****4**。
-* **SKU** - GPU SKU：K80、P100 或**V100**。 **K80** **P100** 每个 SKU 都映射到以下支持 Azure GPU 的 VM 系列中的 NVIDIA Tesla GPU：
+* **计数** - GPU 数量：1、2 或 4    。
+* **SKU** -GPU SKU： **K80**、 **P100**或**V100**。 每个 SKU 都映射到以下支持 Azure GPU 的 VM 系列中的 NVIDIA Tesla GPU：
 
   | SKU | VM 系列 |
   | --- | --- |
@@ -65,7 +65,7 @@ ms.locfileid: "77525280"
 
   在此阶段，我们支持 CUDA 9.0。 例如，可以对 Docker 文件使用以下基础映像：
   * [nvidia/cuda:9.0-base-ubuntu16.04](https://hub.docker.com/r/nvidia/cuda/)
-  * [张力流/张力流： 1.12.0-gpu-py3](https://hub.docker.com/r/tensorflow/tensorflow)
+  * [tensorflow/tensorflow： 1.12.0-py3](https://hub.docker.com/r/tensorflow/tensorflow)
     
 ## <a name="yaml-example"></a>YAML 示例
 
@@ -91,7 +91,7 @@ properties:
   restartPolicy: OnFailure
 ```
 
-使用[az 容器创建][az-container-create]命令部署容器组，为`--file`参数指定 YAML 文件名。 需要提供支持 GPU 资源的资源组名称和容器组位置（例如 eastus）**。  
+用[az container create][az-container-create]命令部署容器组，并为`--file`参数指定 YAML 文件名。 需要提供支持 GPU 资源的资源组名称和容器组位置（例如 eastus）**。  
 
 ```azurecli
 az container create --resource-group myResourceGroup --file gpu-deploy-aci.yaml --location eastus
@@ -116,7 +116,7 @@ Done
 
 ## <a name="resource-manager-template-example"></a>资源管理器模板示例
 
-使用 GPU 资源部署容器组的另一种方式是使用[资源管理器模板](container-instances-multi-container-group.md)。 首先，创建名为 `gpudeploy.json` 的文件，再将以下 JSON 复制到其中。 本示例部署具有 V100 GPU 的容器实例，该实例针对 MNIST 数据集运行[TensorFlow](https://www.tensorflow.org/)训练作业。 请求的资源足以运行工作负载。
+使用 GPU 资源部署容器组的另一种方式是使用[资源管理器模板](container-instances-multi-container-group.md)。 首先，创建名为 `gpudeploy.json` 的文件，再将以下 JSON 复制到其中。 此示例使用 V100 GPU 部署一个容器实例，该 GPU 针对 MNIST 数据集运行[TensorFlow](https://www.tensorflow.org/)定型作业。 请求的资源足以运行工作负载。
 
 ```JSON
 {

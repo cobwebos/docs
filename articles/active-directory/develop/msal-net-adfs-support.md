@@ -1,5 +1,5 @@
 ---
-title: MSAL.NET中的 AD FS 支持 |蔚蓝
+title: MSAL.NET 中的 AD FS 支持 | Azure
 titleSuffix: Microsoft identity platform
 description: 了解适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 中的 Active Directory 联合身份验证服务 (AD FS) 支持。
 services: active-directory
@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 15af18177cea217612a4d5276d130abe02d339f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77160753"
 ---
 # <a name="active-directory-federation-services-support-in-msalnet"></a>MSAL.NET 中的 Active Directory 联合身份验证服务支持
@@ -25,8 +25,8 @@ ms.locfileid: "77160753"
 
 适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 支持根据 AD FS 使用两种身份验证方案：
 
-- MSAL.NET 与 Azure Active Directory 通信，后者本身已与 AD FS 联合。**
-- MSAL.NET 直接与 ADFS 机构通信。**** 只有 AD FS 2019 及更高版本才支持此功能。 本文重点介绍的方案之一是 [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) 支持
+- MSAL.NET 与 Azure Active Directory 通信，后者本身已与 AD FS 联合。 
+- MSAL.NET 直接与 ADFS 机构通信。  只有 AD FS 2019 及更高版本才支持此功能。 本文重点介绍的方案之一是 [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) 支持
 
 
 ## <a name="msal-connects-to-azure-ad-which-is-federated-with-ad-fs"></a>MSAL 连接到已与 AD FS 联合的 Azure AD

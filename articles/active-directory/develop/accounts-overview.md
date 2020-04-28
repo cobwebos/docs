@@ -14,17 +14,17 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: d0497ad68e7b29e6d8c83dd860ba8f509e229579
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77611882"
 ---
 # <a name="accounts--tenant-profiles-android"></a>帐户和租户配置文件 (Android)
 
 本文概述 Microsoft 标识平台中的 `account`。
 
-Microsoft 身份验证库 (MSAL) API 将术语“用户”替换成了术语“帐户”。**** 原因之一在于，一个用户（人或软件代理）可能具有或者使用多个帐户。 这些帐户可能位于用户自己的组织中，和/或位于用户所属的其他组织中。
+Microsoft 身份验证库 (MSAL) API 将术语“用户”替换成了术语“帐户”。   原因之一在于，一个用户（人或软件代理）可能具有或者使用多个帐户。 这些帐户可能位于用户自己的组织中，和/或位于用户所属的其他组织中。
 
 Microsoft 标识平台中的帐户包括：
 
@@ -69,7 +69,7 @@ Microsoft 标识平台中的帐户包括：
   - `tom@live.com` 的租户配置文件在上述每个租户中存在。
 - 其他租户中有关 Tom 和 Bob 的信息可能与记录系统中的信息不同。 他们在职务、办公地点等属性方面可能不同。 他们可能是每个组织（Azure Active Directory 租户）中的组和/或角色的成员。 我们将此信息称为 bob@contoso.com 租户配置文件。
 
-在示意图中，bob@contoso.com 和 tom@live.com 有权访问不同 Azure Active Directory 租户中的资源。 有关详细信息，请参阅在[Azure 门户中添加 Azure 活动目录 B2B 协作用户](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)。
+在示意图中，bob@contoso.com 和 tom@live.com 有权访问不同 Azure Active Directory 租户中的资源。 有关详细信息，请参阅[在 Azure 门户中添加 AZURE ACTIVE DIRECTORY B2B 协作用户](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)。
 
 ## <a name="accounts-and-single-sign-on-sso"></a>帐户和单一登录 (SSO)
 
@@ -97,7 +97,7 @@ IAccount account = app.getAccount("<tom@live.com woodgrovebank user object id>")
 除了请求访问令牌以外，MSAL 还始终从每个租户请求 ID 令牌。 为此，它始终请求以下范围：
 
 - openid
-- 个人资料
+- profile
 
 ID 令牌包含声明列表。 `Claims` 是有关帐户的名称/值对，用于发出请求。
 
@@ -121,7 +121,7 @@ String issuer = account.getClaims().get("iss"); // The tenant specific authority
 > 若要查看帐户对象中提供的声明列表，请参阅 [id_token 中的声明](https://docs.microsoft.com/azure/active-directory/develop/id-tokens#claims-in-an-id_token)
 
 > [!TIP]
-> 要在id_token中包括其他声明，请参阅["如何：向 Azure AD 应用提供可选声明"](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims)中的可选声明文档
+> 若要在 id_token 中包括其他声明，请参阅[如何：向 Azure AD 应用提供可选声明](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims)中的可选声明文档
 
 ### <a name="access-tenant-profile-claims"></a>访问租户配置文件声明
 

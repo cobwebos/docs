@@ -12,10 +12,10 @@ ms.date: 10/09/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ff9f57af92c50c0df6f628113bd9490ca83e1310
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78189287"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略管理 SSO 和令牌自定义
@@ -59,7 +59,7 @@ ms.locfileid: "78189287"
 - **颁发者 (iss) 声明** - 颁发者 (iss) 声明是通过 **IssuanceClaimPattern** 元数据项设置的。 适用的值为 `AuthorityAndTenantGuid` 和 `AuthorityWithTfp`。
 - **设置声明表示策略 ID** - 用于设置此值的选项为 `TFP`（信任框架策略）和 `ACR`（身份验证上下文引用）。 `TFP` 是建议使用的值。 将 **AuthenticationContextReferenceClaimPattern** 设置为值 `None`。
 
-    在 ClaimsSchema 元素中，添加此元素****：
+    在 ClaimsSchema 元素中，添加此元素  ：
 
     ```XML
     <ClaimType Id="trustFrameworkPolicy">
@@ -68,7 +68,7 @@ ms.locfileid: "78189287"
     </ClaimType>
     ```
 
-    在 OutputClaims 元素中，添加此元素****：
+    在 OutputClaims 元素中，添加此元素  ：
 
     ```XML
     <OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />
@@ -90,7 +90,7 @@ ms.locfileid: "78189287"
 
 ## <a name="session-behavior-and-sso"></a>会话行为和 SSO
 
-若要更改会话行为和 SSO 配置，需要在 [RelyingParty](relyingparty.md) 元素内添加 **UserJourneyBehaviors** 元素。  **UserJourneyBehaviors** 元素必须紧跟在 **DefaultUserJourney** 之后。 **UserJourneyBehavors** 元素的内部看起来应当如以下示例所示：
+若要更改会话行为和 SSO 配置，需要在 **RelyingParty** 元素内添加 [UserJourneyBehaviors](relyingparty.md) 元素。  **UserJourneyBehaviors** 元素必须紧跟在 **DefaultUserJourney** 之后。 **UserJourneyBehavors** 元素的内部看起来应当如以下示例所示：
 
 ```XML
 <UserJourneyBehaviors>

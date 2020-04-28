@@ -9,14 +9,14 @@ ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 608b148dc3929065df44530da65e695df19be03e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79486062"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>BGP 是否在所有 Azure VPN 网关 SKU 上受支持？
-除基本 SKU 外，所有 Azure VPN Gateawy SKU 都支持 BGP。
+除基本 SKU 外，所有 Azure VPN 网关 SKU 都支持 BGP。
 
 ### <a name="can-i-use-bgp-with-azure-policy-based-vpn-gateways"></a>能否将 BGP 用于基于 Azure Policy 的 VPN 网关？
 否，只有基于路由的 VPN 网关支持 BGP。
@@ -24,8 +24,8 @@ ms.locfileid: "79486062"
 ### <a name="can-i-use-private-asns-autonomous-system-numbers"></a>能否使用专用 ASN（自治系统编号）？
 能，可以将自己的公共 ASN 或专用 ASN 同时用于本地网络和 Azure 虚拟网络。
 
-### <a name="can-i-use-32-bit-4-byte-asns-autonomous-system-numbers"></a>我可以使用 32 位（4 字节）ASN（自治系统编号）吗？
-是的，Azure VPN 网关现在支持 32 位（4 字节）的 ASN。 请使用 PowerShell/CLI/SDK 使用十进制格式的 ASN 进行配置。
+### <a name="can-i-use-32-bit-4-byte-asns-autonomous-system-numbers"></a>能否使用 32 位（4 字节）ASN（自治系统编号）？
+能，Azure VPN 网关现在支持 32 位（4 字节）ASN。 请使用 PowerShell/CLI/SDK 配置使用十进制格式的 ASN。
 
 ### <a name="are-there-asns-reserved-by-azure"></a>是否存在由 Azure 保留的 ASN？
 是，Azure 保留了以下 ASN 用于内部和外部的对等互连：
@@ -92,7 +92,7 @@ Azure VPN 网关会将以下路由播发到本地 BGP 设备：
 是的。 
 
 ### <a name="what-address-does-azure-vpn-gateway-use-for-bgp-peer-ip"></a>Azure VPN 网关将哪个地址用于 BGP 对等节点 IP？
-Azure VPN 网关将从 GatewaySubnet 范围中为主动-待机 VPN 网关分配一个 IP 地址，或为主动-主动 VPN 网关分配两个 IP 地址。 您可以使用 PowerShell（获取-Az虚拟网络网关，查找"bgp对等地址"属性）或在 Azure 门户（在网关配置页面上的"配置 BGP ASN"属性下）获取分配的实际 BGP IP 地址（ es）。
+Azure VPN 网关将从 GatewaySubnet 范围中为主动-待机 VPN 网关分配一个 IP 地址，或为主动-主动 VPN 网关分配两个 IP 地址。 你可以使用 PowerShell （AzVirtualNetworkGateway、查找 "bgpPeeringAddress" 属性）或 Azure 门户（在 "网关配置" 页上的 "配置 BGP ASN" 属性下）来获取分配的实际 BGP IP 地址。
 
 ### <a name="what-are-the-requirements-for-the-bgp-peer-ip-addresses-on-my-vpn-device"></a>VPN 设备上的 BGP 对等节点 IP 地址的要求是什么？
 本地 BGP 对等节点地址**不能**与 VPN 到设备的公共 IP 地址或 VPN 网关的 Vnet 地址空间相同。 在 VPN 设备上对 BGP 对等节点 IP 使用不同的 IP 地址。 它可以是一个分配给设备上环回接口的地址，但请注意，它不能是 APIPA (169.254.x.x) 地址。 在表示该位置的相应本地网关中指定此地址。

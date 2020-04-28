@@ -1,5 +1,5 @@
 ---
-title: VPN 网关：适用于不同用户组的 Azure AD 租户：Azure AD 身份验证
+title: VPN 网关：不同用户组的 Azure AD 租户： Azure AD 身份验证
 description: 可以使用 P2S VPN 通过 Azure AD 身份验证连接到 VNet
 services: vpn-gateway
 author: anzaman
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: alzam
 ms.openlocfilehash: 118ea21cbdd2e0527659c7c1beb40d8e42fa1d10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77485572"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>为 P2S OpenVPN 协议连接创建 Azure Active Directory 租户
@@ -26,9 +26,9 @@ ms.locfileid: "77485572"
 
 ## <a name="6-enable-authentication-on-the-gateway"></a><a name="enable-authentication"></a>6. 在网关上启用身份验证
 
-在此步骤中，您将在 VPN 网关上启用 Azure AD 身份验证。
+在此步骤中，将在 VPN 网关上启用 Azure AD 身份验证。
 
-1. 通过运行以下命令在 VPN 网关上启用 Azure AD 身份验证。 请务必修改命令以反映您自己的环境：
+1. 通过运行以下命令，在 VPN 网关上启用 Azure AD 身份验证。 请确保修改这些命令以反映自己的环境：
 
     ```azurepowershell-interactive
     $gw = Get-AzVirtualNetworkGateway -Name <name of VPN gateway> -ResourceGroupName <Resource group>
@@ -36,7 +36,7 @@ ms.locfileid: "77485572"
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -AadTenantUri "https://login.microsoftonline.com/<your Directory ID>" -AadAudienceId "application ID from previous section" -AadIssuerUri "https://sts.windows.net/<your Directory ID>/" -VpnClientAddressPool 192.168.0.0/24
     ```
     > [!NOTE]
-    > 请勿在上面的命令中使用 Azure VPN 客户端的应用程序 ID：它将授予所有用户对 VPN 网关的访问权限。 使用注册的应用程序的 ID。
+    > 在上述命令中不要使用 Azure VPN 客户端的应用程序 ID：它将授予所有用户对 VPN 网关的访问权限。 使用注册的应用程序的 ID。
 
 2. 运行以下命令来创建并下载配置文件。 请更改 -ResourcGroupName 和 -Name 值，使之与你自己的值匹配。
 

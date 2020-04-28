@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：支持的拓扑 | Microsoft 文档
+title: Azure AD Connect：支持的拓扑 | Microsoft Docs
 description: 本主题详细说明 Azure AD Connect 的受支持和不受支持的拓扑
 services: active-directory
 documentationcenter: ''
@@ -17,32 +17,32 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9618e02f54fbb2a3b92771761c5fcf700d126b5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79253827"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect 的拓扑
-本文介绍使用 Azure AD Connect 同步作为关键集成解决方案的各种本地拓扑和 Azure Active Directory (Azure AD) 拓扑。 此外，介绍支持和不支持的配置。
+本文介绍了使用 Azure AD Connect 同步作为关键集成解决方案的各种本地拓扑和 Azure Active Directory (Azure AD) 拓扑。 此外，介绍支持和不支持的配置。
 
 
 下面是本文中的图片图例：
 
-| 描述 | 符号 |
+| 说明 | 符号 |
 | --- | --- |
 | 本地 Active Directory 林 |![本地 Active Directory 林](./media/plan-connect-topologies/LegendAD1.png) |
 | 包含筛选导入的本地 Active Directory |![包含筛选导入的 Active Directory](./media/plan-connect-topologies/LegendAD2.png) |
 | Azure AD Connect 同步服务器 |![Azure AD Connect 同步服务器](./media/plan-connect-topologies/LegendSync1.png) |
 | Azure AD Connect 同步服务器“暂存模式” |![Azure AD Connect 同步服务器“暂存模式”](./media/plan-connect-topologies/LegendSync2.png) |
-| 装有 Forefront Identity Manager (FIM) 2010 或 Microsoft Identity Manager (MIM) 2016 的 GALSync |![装有 FIM 2010 或 MIM 2016 的 GALSync](./media/plan-connect-topologies/LegendSync3.png) |
-| Azure AD Connect 同步服务器，详细说明 |![Azure AD Connect 同步服务器，详细说明](./media/plan-connect-topologies/LegendSync4.png) |
+| 装有 Forefront Identity Manager (FIM) 2010 或 Microsoft Identity Manager (MIM) 2016 的 GALSync |![使用 FIM 2010 或 MIM 2016 的 GALSync](./media/plan-connect-topologies/LegendSync3.png) |
+| Azure AD Connect 同步服务器（详细说明） |![Azure AD Connect 同步服务器（详细说明）](./media/plan-connect-topologies/LegendSync4.png) |
 | Azure AD |![Azure Active Directory](./media/plan-connect-topologies/LegendAAD.png) |
 | 不支持的方案 |![不支持的方案](./media/plan-connect-topologies/LegendUnsupported.png) |
 
 
 > [!IMPORTANT]
-> Microsoft 不支持在正式记录的配置或操作之外修改或操作 Azure AD Connect 同步。 这些配置或操作中的任何一种都可能导致 Azure AD 连接同步出现不一致或不受支持的状态。因此，Microsoft 无法为此类部署提供技术支持。
+> Microsoft 不支持在正式记录的配置或操作之外修改或操作 Azure AD Connect 同步。 其中的任何配置或操作都可能会导致 Azure AD Connect 同步出现不一致或不受支持状态。因此，Microsoft 无法提供这种部署的技术支持。
 
 
 ## <a name="single-forest-single-azure-ad-tenant"></a>单个林，单个 Azure AD 租户
@@ -53,18 +53,18 @@ ms.locfileid: "79253827"
 ### <a name="single-forest-multiple-sync-servers-to-one-azure-ad-tenant"></a>单个林，多个同步服务器连接到一个 Azure AD 租户
 ![单个林不支持的筛选拓扑](./media/plan-connect-topologies/SingleForestFilteredUnsupported.png)
 
-不支持多个 Azure AD Connect 同步服务器连接到同一个 Azure AD 租户（[暂存服务器](#staging-server)除外）。 即使将这些服务器配置为与一组互斥对象同步，也不支持这种拓扑。 如果无法从单个服务器连接到林中的所有域，或者想要将负载分散到多个服务器，则应该考虑这种拓扑。
+不支持多个 Azure AD Connect 同步服务器连接到同一个 Azure AD 租户（ [暂存服务器](#staging-server)除外）。 即使将这些服务器配置为与一组互斥对象同步，也不支持这种拓扑。 如果无法从单个服务器连接到林中的所有域，或者想要将负载分布到多个服务器，则应该考虑这种拓扑。
 
 ## <a name="multiple-forests-single-azure-ad-tenant"></a>多个林，单个 Azure AD 租户
 ![多个林和单个租户的拓扑](./media/plan-connect-topologies/MultiForestSingleDirectory.png)
 
 许多组织具有包含多个本地 Active Directory 林的环境。 有多种原因导致出现多个本地 Active Directory 林。 典型示例是使用帐户资源林的设计，以及合并和收购之后采用的设计。
 
-如果使用多个林，所有林必须可由单个 Azure AD Connect 同步服务器访问。 服务器必须加入域。 如果需要访问所有林，可将服务器放在外围网络（也称为 DMZ、外围安全区域或屏蔽子网）中。
+如果使用多个林，所有林必须可由单个 Azure AD Connect 同步服务器访问。 服务器必须加入域。 如果需要访问所有林，可将服务器放在外围网络（也称为外围网络、外围安全区域或屏蔽子网）中。
 
-Azure AD Connect 安装向导提供多个选项用于合并多个林中显示的用户。 目标是一个用户只在 Azure AD 中显示一次。 可以在安装向导的自定义安装路径中配置某些常见拓扑。 在“唯一标识用户”页上选择表示拓扑的相应选项。**** 只对用户配置合并。 复制的组不会与默认配置合并。
+Azure AD Connect 安装向导提供多个选项用于合并多个林中显示的用户。 目标是一个用户只在 Azure AD 中显示一次。 可以在安装向导的自定义安装路径中配置某些常见拓扑。 在“唯一标识你的用户”页上选择表示拓扑的相应选项。  只对用户配置合并。 复制的组不会与默认配置合并。
 
-有关单独的拓扑、[全网格](#multiple-forests-full-mesh-with-optional-galsync)和[帐户资源拓扑](#multiple-forests-account-resource-forest)的部分将讨论常见拓扑。
+有关独立的拓扑、[完整网格](#multiple-forests-full-mesh-with-optional-galsync)和[帐户资源拓扑](#multiple-forests-account-resource-forest)的部分讨论了常见拓扑。
 
 Azure AD Connect 同步中的默认配置假设：
 
@@ -73,7 +73,7 @@ Azure AD Connect 同步中的默认配置假设：
 * 托管用户邮箱的林具有 Exchange 全局地址列表 (GAL) 中可见属性的最佳数据质量。 如果用户没有邮箱，则任何林都可以用于提供这些属性值。
 * 如果有链接邮箱，则还有其他林中的某个帐户用于登录。
 
-如果环境不符合这些假设，将发生以下情况：
+如果环境不符合这些假设，则会发生以下情况：
 
 * 如果使用多个活动帐户或多个邮箱，同步引擎将选择其中一个并忽略其他帐户或邮箱。
 * 没有其他活动帐户的链接邮箱不会导出到 Azure AD。 用户帐户不会显示为任何组中的成员。 DirSync 中的链接邮箱始终显示为普通邮箱。 这项更改是有意而为的，目的是使用不同的行为来更好地支持多林方案。
@@ -83,7 +83,7 @@ Azure AD Connect 同步中的默认配置假设：
 ### <a name="multiple-forests-multiple-sync-servers-to-one-azure-ad-tenant"></a>多个林，多个同步服务器连接到单个 Azure AD 租户
 ![多个林和多个同步服务器不支持的拓扑](./media/plan-connect-topologies/MultiForestMultiSyncUnsupported.png)
 
-不支持多个 Azure AD Connect 同步服务器连接到单个 Azure AD 租户。 使用[暂存服务器](#staging-server)时例外。
+不支持多个 Azure AD Connect 同步服务器连接到单个 Azure AD 租户。 使用 [暂存服务器](#staging-server)时例外。
 
 此拓扑与下面的拓扑不同，不支持连接到单个 Azure AD 租户的**多个同步服务器**。
 
@@ -92,7 +92,7 @@ Azure AD Connect 同步中的默认配置假设：
 
 ![描述多个林和独立的拓扑](./media/plan-connect-topologies/MultiForestSeparateTopologies.png)
 
-在此环境中，所有本地林都被视为独立的实体。 没有用户出现在任何其他林中。 每个林都有其自己的 Exchange 组织，并且林之间没有任何 GALSync。 合并/收购之后或者如果组织中的每个业务单位独立运营，可能会出现这种拓扑。 在 Azure AD 中，这些林位于相同的组织中并与统一 GAL 一起出现。 在上图中，每个林中的每个对象会在 Metaverse 中出现一次，并在目标 Azure AD 租户中聚合。
+在此环境中，所有本地林都被视为独立的实体。 没有用户出现在任何其他林中。 每个林都有其自己的 Exchange 组织，并且林之间没有任何 GALSync。 合并/收购之后或者如果组织中的每个业务单位独立运营，可能会出现这种拓扑。 在 Azure AD 中，这些林位于相同的组织中并与统一的 GAL 一起出现。 在上图中，每个林中的每个对象会在 Metaverse 中出现一次，并在目标 Azure AD 租户中聚合。
 
 ### <a name="multiple-forests-match-users"></a>多个林：匹配用户
 对于所有这些方案，一种常见情况是分发组和安全组可以包含用户、联系人和外部安全主体 (FSP) 的混合形式。 可在 Active Directory 域服务 (AD DS) 中使用 FSP 来表示安全组中来自其他林的成员。 在 Azure AD 中，所有 FSP 解析为实际对象。
@@ -113,14 +113,14 @@ Azure AD Connect 同步中的默认配置假设：
 
 ![多个林的帐户资源林拓扑](./media/plan-connect-topologies/MultiForestAccountResource.png)
 
-在帐户资源林拓扑中，您有一个或多个具有活动用户帐户*的帐户*林。 您还有一个或多个具有禁用帐户*的资源*林。
+在帐户资源林拓扑中，有一个或多个包含活动用户帐户的 *帐户* 林。 此外，还有一个或多个包含已禁用帐户的 *资源* 林。
 
 在此方案中，一个（或多个）资源林信任所有帐户林。 资源林通常包含装有 Exchange 和 Lync 的扩展 Active Directory 架构。 所有 Exchange 和 Lync 服务以及其他共享服务都位于此林中。 用户在此林中具有一个禁用的用户帐户，并且邮箱被链接到帐户林。
 
 ## <a name="office-365-and-topology-considerations"></a>Office 365 和拓扑注意事项
 某些 Office 365 工作负荷对支持的拓扑实施一些限制：
 
-| 工作负荷 | 限制 |
+| 工作负载 | 限制 |
 | --------- | --------- |
 | Exchange Online | 有关 Exchange Online 支持的混合拓扑的详细信息，请参阅[具有多个 Active Directory 林的混合部署](https://technet.microsoft.com/library/jj873754.aspx)。 |
 | Skype for Business | 使用多个本地林时，只支持帐户资源林拓扑。 有关详细信息，请参阅 [Skype for Business Server 2015 的环境要求](https://technet.microsoft.com/library/dn933910.aspx)。 |
@@ -197,4 +197,4 @@ Azure AD 租户在设计上是隔离的。 不支持以下任务：
 
 了解有关 [Azure AD Connect 同步](how-to-connect-sync-whatis.md)配置的详细信息。
 
-了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+详细了解如何[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)。

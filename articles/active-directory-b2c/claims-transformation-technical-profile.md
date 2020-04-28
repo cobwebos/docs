@@ -1,5 +1,5 @@
 ---
-title: 定义索赔转换技术配置文件
+title: 定义声明转换技术配置文件
 titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 的自定义策略中定义声明转换技术配置文件。
 services: active-directory-b2c
@@ -12,10 +12,10 @@ ms.date: 02/13/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 84c1cf798e88e4067da8a495c1591143d2ee1bd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78189780"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义声明转换技术配置文件
@@ -26,7 +26,7 @@ ms.locfileid: "78189780"
 
 ## <a name="protocol"></a>协议
 
-"**Name****协议"** 元素的名称属性需要设置为`Proprietary`。 **handler** 属性必须包含 Azure AD B2C 使用的协议处理程序程序集的完全限定名称：`Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
+**协议**元素的`Proprietary` **Name**属性需要设置为。 **handler** 属性必须包含 Azure AD B2C 使用的协议处理程序程序集的完全限定名称：`Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
 
 以下示例演示了一个声明转换技术配置文件：
 
@@ -102,9 +102,9 @@ TransformationClaimType="collection" />
 
 ## <a name="metadata"></a>元数据
 
-| 特性 | 必选 | 描述 |
+| 特性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
-| 包括索赔解决索赔处理  | 否 | 对于输入和输出声明，指定[索赔解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true`或`false` （默认值）。 如果要在技术配置文件中使用声明解析器，则将此解决方案设置为`true`。 |
+| IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定技术配置文件中是否包含[声明解析](claim-resolver-overview.md)。 可能的值`true`：、 `false`  或（默认值）。 如果要使用技术配置文件中的声明解析程序，请将此项`true`设置为。 |
 
 ## <a name="use-a-validation-technical-profile"></a>使用验证技术配置文件
 

@@ -16,10 +16,10 @@ ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2c667409f2abb9f1cf89ae3b34f08e0f9eec067e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79138529"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>使用范围筛选器进行基于属性的应用程序预配
@@ -79,57 +79,57 @@ ms.locfileid: "79138529"
 
 7. 选择要匹配的源“属性名称”、“运算符”和“属性值”来定义子句************。 支持以下运算符：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **EQUALS**. 如果评估的属性与输入字符串值完全匹配（区分大小写），则子句返回“true”。
+   a. **等于**。 如果评估的属性与输入字符串值完全匹配（区分大小写），则子句返回“true”。
 
-   b.保留“数据库类型”设置，即设置为“共享”。 **不等于**。 如果评估的属性与输入字符串值不匹配（区分大小写），则子句返回“true”。
+   b. **不等于**。 如果评估的属性与输入字符串值不匹配（区分大小写），则子句返回“true”。
 
    c. **IS TRUE**。 如果评估的属性包含为 true 的布尔值，则子句返回“true”。
 
-   d.单击“下一步”。 **IS FALSE**。 如果评估的属性包含为 false 的布尔值，则子句返回“true”。
+   d. **IS FALSE**。 如果评估的属性包含为 false 的布尔值，则子句返回“true”。
 
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 **为 NULL**。 如果评估的属性为空，则子句返回“true”。
+   e. **为 NULL**。 如果评估的属性为空，则子句返回“true”。
 
-   f. **不为空**。 如果评估的属性不为空，则子句返回“true”。
+   f. **不为 NULL**。 如果评估的属性不为空，则子句返回“true”。
 
    g. **REGEX MATCH**。 如果评估的属性与正则表达式模式匹配，则子句返回“true”。 示例：([1-9][0-9]) 与介于 10 和 99 之间的任意数字匹配。
 
    h. **NOT REGEX MATCH**。 如果评估的属性与正则表达式模式不匹配，则子句返回“true”。
    
-   i. **Greater_Than** 如果计算的属性大于值，子句返回"true"。 在范围筛选器上指定的值必须是整数，用户的属性必须是整数 [0，1，2,...]。 
+   i. **Greater_Than。** 如果计算的属性大于值，则子句返回 "true"。 作用域筛选器上指定的值必须为整数，并且用户上的属性必须是整数 [0，1，2,...]。 
    
-   j. **Greater_Than_OR_EQUALS** 如果计算的属性大于或等于值，则子句返回"true"。 在范围筛选器上指定的值必须是整数，用户的属性必须是整数 [0，1，2,...]。 
+   j. **Greater_Than_OR_EQUALS。** 如果计算属性大于或等于值，则子句返回 "true"。 作用域筛选器上指定的值必须为整数，并且用户上的属性必须是整数 [0，1，2,...]。 
    
-   k. **包括。** 如果计算的属性包含字符串值（区分大小写），则子句返回"true"，[此处](https://docs.microsoft.com/dotnet/api/system.string.contains?view=netframework-4.8)所述。 
+   k. **涵盖.** 如果计算的属性包含字符串值（区分大小写），则子句返回 "true"，如[此处](https://docs.microsoft.com/dotnet/api/system.string.contains?view=netframework-4.8)所述。 
 
 
 >[!IMPORTANT] 
-> - 当前不支持 Is"成员"筛选器。
-> - 多值属性不支持 EQUALS 和"不 EQUALS"
+> - 当前不支持 IsMemberOf 筛选器。
+> - 多值属性不支持等于和不等于
 
 9. 可重复步骤 7-8 以添加其他范围子句。
 
 10. 在“范围筛选器标题”中，为范围筛选器添加名称****。
 
-11. 选择“确定”。
+11. 选择“确定”  。
 
 12. 在“范围筛选器”屏幕上再次选择“确定”。******** （可选）重复步骤 6-11 添加另一范围筛选器。
 
 13. 在“属性映射”屏幕上选择“保存”********。 
 
 >[!IMPORTANT] 
-> 保存新的范围筛选器将触发新的应用程序完全同步，其中将针对新的范围筛选器再次对源系统中的所有用户进行评估。 如果应用程序中的用户以前在预配范围内，但现在不在范围内，则会在应用程序中禁用或取消预配其帐户。 要重写此默认行为，请参阅[跳过删除超出作用域的用户帐户](../app-provisioning/skip-out-of-scope-deletions.md)。
+> 保存新的范围筛选器将触发新的应用程序完全同步，其中将针对新的范围筛选器再次对源系统中的所有用户进行评估。 如果应用程序中的用户以前在预配范围内，但现在不在范围内，则会在应用程序中禁用或取消预配其帐户。 若要替代此默认行为，请参阅[跳过对超出范围的用户帐户的删除](../app-provisioning/skip-out-of-scope-deletions.md)。
 
 
 ## <a name="common-scoping-filters"></a>常见范围筛选器
-| 目标属性| 运算符 | “值” | 描述|
+| 目标属性| 操作员 | 值 | 说明|
 |----|----|----|----|
-|userPrincipalName|REGEX 匹配|.\*@domain.com |具有域@domain.com的用户主体的所有用户都将在预配范围内|
-|userPrincipalName|不是正则表达式匹配|.\*@domain.com|具有域@domain.com的用户主体的所有用户都将退出预配范围|
-|department|EQUALS|销售额|销售部门的所有用户都在预配范围内|
-|工人ID|REGEX 匹配|(1[0-9][0-9][0-9][0-9][0-9][0-9])| 所有员工在 1000000 到 2000000 之间都有工作需要调配的余地。|
+|userPrincipalName|正则表达式匹配|.\*@domain.com |具有域@domain.com的 userPrincipal 的所有用户将处于预配范围内|
+|userPrincipalName|不匹配 REGEX|.\*@domain.com|具有域@domain.com的 userPrincipal 的所有用户将不在预配范围内|
+|department|EQUALS|销售额|销售部门的所有用户都处于预配范围内|
+|workerID|正则表达式匹配|(1[0-9][0-9][0-9][0-9][0-9][0-9])| 介于1000000和2000000之间的 workerIDs 的所有员工都处于预配的范围内。|
 
 ## <a name="related-articles"></a>相关文章
-* [自动向 SaaS 应用程序预配和取消预配](../app-provisioning/user-provisioning.md)
+* [自动执行用户预配和取消预配到 SaaS 应用程序](../app-provisioning/user-provisioning.md)
 * [为用户预配自定义属性映射](../app-provisioning/customize-application-attributes.md)
 * [为属性映射编写表达式](functions-for-customizing-application-data.md)
 * [帐户预配通知](../app-provisioning/user-provisioning.md)

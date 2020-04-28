@@ -1,5 +1,5 @@
 ---
-title: SCIM 2.0 协议合规性的已知问题 - Azure AD
+title: SCIM 2.0 协议符合性的已知问题-Azure AD
 description: 如何解决将支持 SCIM 2.0 的非库应用程序添加到 Azure AD 时面临的常见协议兼容性问题
 services: active-directory
 documentationcenter: ''
@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6dff0d4f8f0062c00351b60174c63d9c19bdfa15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77522928"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD 用户预配服务 SCIM 2.0 协议合规性的已知问题和解决方法
@@ -36,7 +36,7 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 
 ## <a name="scim-20-compliance-issues-and-status"></a>SCIM 2.0 合规性问题和状态
 
-| **SCIM 2.0 合规性问题** |  **固定？** | **修复日期**  |  
+| **SCIM 2.0 合规性问题** |  **小数点?** | **修复日期**  |  
 |---|---|---|
 | Azure AD 要求“/scim”位于应用程序的 SCIM 终结点 URL 的根路径中  | 是  |  2018 年 12 月 18 日 | 
 | 扩展属性在属性名称前使用圆点“.”表示法，而不使用冒号“:”表示法 |  是  | 2018 年 12 月 18 日  | 
@@ -45,7 +45,7 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>所述服务修补程序是否会自动应用于预先存在的 SCIM 应用？
 
-不是。 由于已构成对编码为与较旧行为配合使用的 SCIM 应用的重大更改，更改不会自动应用于现有应用。
+否。 由于已构成对编码为与较旧行为配合使用的 SCIM 应用的重大更改，更改不会自动应用于现有应用。
 
 修补程序发布后，更改会应用于 Azure 门户中配置的所有新的[非库 SCIM 应用](../manage-apps/configure-single-sign-on-non-gallery-applications.md)。
 
@@ -66,7 +66,7 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
  
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
 
-   ![获取工作](media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "获取工作") 
+   ![获取作业](media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "获取作业") 
 
 
 6. 在结果中，复制以“customappsso”或“scim”开头的完整“ID”字符串。

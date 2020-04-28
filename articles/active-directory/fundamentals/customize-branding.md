@@ -1,5 +1,5 @@
 ---
-title: 向组织的登录页面添加品牌 - Azure AD
+title: 将品牌添加到组织的登录页面-Azure AD
 description: 有关如何将组织的品牌添加到 Azure Active Directory 登录页面的说明。
 services: active-directory
 author: msaburnley
@@ -14,10 +14,10 @@ ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 441fdd14cc2c734b6ce532f3ad1d30663b2f56c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80049797"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>将品牌添加到组织的 Azure Active Directory 登录页面
@@ -32,7 +32,7 @@ ms.locfileid: "80049797"
 用户访问 www\.office.com 等站点时，自定义品牌不会立即显示。 相反，用户必须先登录才会显示自定义品牌。 用户登录后，品牌可能需要 15 分钟或更长时间才能出现。 
 
 > [!NOTE]
-> 所有品牌元素都是可选的。 例如，如果指定没有背景图像的横幅徽标，则登录页面将显示带有目标网站（例如 Office 365）默认背景图像的徽标。<br><br>此外，登录页面品牌不会延续到个人 Microsoft 帐户。 如果用户或企业访客使用个人 Microsoft 帐户登录，则其登录页面不会显示组织的品牌。
+> 所有品牌元素都是可选的。 例如，如果指定没有背景图像的横幅徽标，则登录页面将显示带有目标网站（例如 Office 365）默认背景图像的徽标。<br><br>此外，登录页品牌不会传输到 Microsoft 个人帐户。 如果用户或企业访客使用个人 Microsoft 帐户登录，则其登录页面不会显示组织的品牌。
 
 ### <a name="to-customize-your-branding"></a>自定义品牌
 1. 使用目录的全局管理员帐户登录到 [Azure 门户](https://portal.azure.com/)。
@@ -50,7 +50,7 @@ ms.locfileid: "80049797"
 
         ![配置公司品牌页面，其中常规设置已完成](media/customize-branding/configure-company-branding-general-settings.png)
 
-        - **语言。** 语言自动设置为默认语言，无法更改。
+        - **语言.** 语言自动设置为默认语言，无法更改。
         
         - **登录页面背景图像。** 选择要显示为登录页面背景的 .png 或 .jpg 图像文件。 
         
@@ -68,15 +68,15 @@ ms.locfileid: "80049797"
             
         ![配置公司品牌页面，其中高级设置已完成](media/customize-branding/configure-company-branding-advanced-settings.png)   
 
-        - **登录页背景颜色。** 指定在低带宽连接的情况下替代背景图像显示的十六进制颜色（例如，白色为 #FFFFFF）。 我们建议使用横幅徽标的主颜色或组织的颜色。
+        - **登录页背景色。** 指定在低带宽连接的情况下替代背景图像显示的十六进制颜色（例如，白色为 #FFFFFF）。 我们建议使用横幅徽标的主颜色或组织的颜色。
 
-        - **方形徽标图像。** 选择组织的徽标的 .png（首选）或 .jpg 图像，以便在新的 Windows 10 企业设备的设置过程中向用户显示。 此图像仅用于 Windows 身份验证，并且仅显示在使用 [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) 进行部署的租户上；或者在其他 Windows 10 体验中用于密码输入页面。 在某些情况下，它也可能出现在“同意”对话框中。
+        - **方形徽标图像。** 对于新的 Windows 10 企业版设备，请在安装过程中为用户显示你的组织徽标的 .png （首选）或 .jpg 图像。 此图像仅用于 Windows 身份验证，并且仅显示在使用 [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) 进行部署的租户上；或者在其他 Windows 10 体验中用于密码输入页面。 在某些情况下，它也可能出现在“同意”对话框中。
         
-            图像的大小不能大于 240x240 像素，并且文件大小必须小于 10 KB。 我们建议使用透明图像，因为背景可能与徽标背景不匹配。 我们还建议不要在图像周围添加填充，否则可能会使徽标看起来很小。
+            图像的大小不能大于240x240 像素像素，并且文件的大小必须小于 10 KB。 我们建议使用透明图像，因为背景可能与徽标背景不匹配。 我们还建议不要在图像周围添加填充，否则可能会使徽标看起来很小。
     
-        - **方形徽标，深色主题。** 与上面的方形徽标图像相同。 当在深色背景下使用（例如在开箱即用体验 (OOBE) 中使用已加入 Windows 10 Azure AD 的屏幕）时，此徽标图像取代方形徽标图像。  如果您的徽标在白色、深蓝色和黑色背景上看起来不错，则无需添加此图像。 
+        - **方形徽标，深色主题。** 与上面的方形徽标图像相同。 当在深色背景下使用（例如在开箱即用体验 (OOBE) 中使用已加入 Windows 10 Azure AD 的屏幕）时，此徽标图像取代方形徽标图像。  如果徽标在白色、深蓝和黑色背景上看起来很好，则不需要添加此图像。 
         
-        - **显示保持登录状态的选项。** 您可以选择让用户继续登录到 Azure AD，直到显式注销。如果选择 **"否**"，则此选项将处于隐藏状态，并且用户必须在每次关闭和重新打开浏览器时登录。
+        - **显示保持登录状态的选项。** 你可以选择让用户保持登录到 Azure AD，直到显式注销。如果选择 "**否**"，则隐藏此选项，用户必须在每次关闭并重新打开浏览器时登录。
         
             >[!Note]
             >SharePoint Online 和 Office 2010 的某些功能取决于用户能否选择保持登录状态。 如果将此选项设置为“否”，用户会在登录时可能看到其他意外的提示。****
@@ -101,7 +101,7 @@ ms.locfileid: "80049797"
 
 3. 在“配置公司品牌”页面上，根据本文的[自定义 Azure AD 登录页面](#customize-your-azure-ad-sign-in-page)部分中的说明添加、删除或更改任何信息****。
 
-4. 选择“保存”。****
+4. 选择“保存”。 
 
    最长可能需要一个小时才能显示用户对登录页的品牌元素所做的任何更改。
 
@@ -118,7 +118,7 @@ ms.locfileid: "80049797"
 
 3. 在“配置公司品牌”页面上，选择语言（例如法语），然后根据本文的[自定义 Azure AD 登录页面](#customize-your-azure-ad-sign-in-page)部分中的说明添加已翻译的信息****。
 
-4. 选择“保存”。****
+4. 选择“保存”。 
 
     “Contoso - 公司品牌”页面更新以显示新的法语配置****。
 
@@ -127,7 +127,7 @@ ms.locfileid: "80049797"
 ## <a name="add-your-custom-branding-to-pages"></a>将自定义品牌添加到页面
 通过使用文本 `?whr=yourdomainname` 修改 URL 的结尾，将自定义品牌添加到页面。 此修改适用于多个页面，包括多重身份验证 (MFA) 设置页面、自助服务密码重置 (SSPR) 设置页面和登录页面。
 
-**例子：**
+**示例：**
 
 **原始 URL：** https://aka.ms/MFASetup<br>
 **自定义 URL：**`https://account.activedirectory.windowsazure.com/proofup.aspx?whr=contoso.com`

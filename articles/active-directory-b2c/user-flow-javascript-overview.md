@@ -12,10 +12,10 @@ ms.date: 02/10/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 23d345ea9f22be5c4dac20e6e8784a8de079bccb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78185824"
 ---
 # <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的 JavaScript 和页面布局版本
@@ -24,25 +24,25 @@ ms.locfileid: "78185824"
 
 Azure AD B2C 提供一组打包的内容，其中包含的 HTML、CSS 和 JavaScript 适用于用户流中的用户界面元素和自定义策略。
 
-要为应用程序启用 JavaScript，
+若要为应用程序启用 JavaScript，请执行以下操作：
 
 * 使用 Azure 门户在用户流上启用它
-* 选择[页面布局](page-layout.md)
+* 选择一个[页面布局](page-layout.md)
 * 在请求中使用[b2clogin.com](b2clogin.md)
 
-如果要启用[JavaScript](javascript-samples.md)客户端代码，则 JavaScript 的基础元素必须是不可变的。 如果它们不是不可改变的，则任何更改都可能导致用户页面上出现意外行为。 要防止出现这些问题，请强制使用页面布局并指定页面布局版本，以确保基于 JavaScript 的内容定义不可变。 即使不打算启用 JavaScript，也可为页面指定页面布局版本。
+如果打算启用 [JavaScript](javascript-samples.md) 客户端代码，则 JavaScript 所基于的元素必须是不可变的。 如果它们不是不可变的，则任何更改都可能会导致用户页上出现意外行为。 为了防止这些问题，请强制使用页面布局，并指定页面布局版本，确保 JavaScript 所基于的内容定义是不可变的。 即使不打算启用 JavaScript，也可为页面指定页面布局版本。
 
 ## <a name="enable-javascript"></a>启用 JavaScript
 
-在用户流**属性**中，可以启用 JavaScript。 启用 JavaScript 还强制使用页面布局。 然后就可以设置用户流的页面布局版本，如下一部分所述。
+在用户流**属性**中，可以启用 JavaScript。 启用 JavaScript 也会强制使用页面布局。 然后就可以设置用户流的页面布局版本，如下一部分所述。
 
 ![用户流属性页面，突出显示了“启用 JavaScript”设置](media/user-flow-javascript-overview/javascript-settings.png)
 
 ## <a name="select-a-page-layout-version"></a>选择页面布局版本
 
-不管是否在用户流的属性中启用 JavaScript，都可以为用户流页面指定页面布局版本。 打开用户流并选择**页面布局**。 在“布局名称”下选择一个用户流页面，然后选择“页面布局版本”。********
+不管是否在用户流的属性中启用 JavaScript，都可以为用户流页面指定页面布局版本。 打开用户流，然后选择“页面布局”  。 在“布局名称”下选择一个用户流页面，然后选择“页面布局版本”。  
 
-有关不同页面布局版本的信息，请参阅[页面布局版本更改日志](page-layout.md)。
+若要了解不同的页面布局版本，请参阅[页面布局版本更改日志](page-layout.md)。
 
 ![门户中的页面布局设置，显示了页面布局版本下拉列表](media/user-flow-javascript-overview/page-layout-version.png)
 

@@ -12,15 +12,15 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: e245b58449ab773914fc60be056082b82f05035a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78184479"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中管理用户数据
 
- 本文讨论如何通过使用[Microsoft 图形 API](https://docs.microsoft.com/graph/use-the-api)提供的操作来管理 Azure 活动目录 B2C （Azure AD B2C） 中的用户数据。 管理用户数据包括从审核日志中删除或导出数据。
+ 本文介绍如何使用 [Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) 提供的操作在 Azure Active Directory B2C (Azure AD B2C) 中管理用户数据。 管理用户数据包括从审核日志中删除或导出数据。
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
@@ -34,10 +34,10 @@ Azure AD B2C 中的每个用户都分配有一个对象 ID。 对象 ID 可为�
 
 下面的示例演示了可能的数据删除流程：
 
-1. 用户进行登录，然后选择“删除我的数据”****。
+1. 用户进行登录，然后选择“删除我的数据”  。
 2. 从应用程序中选择删除应用程序管理部分中的数据。
 3. 应用程序会强制对 Azure AD B2C 进行身份验证。 Azure AD B2C 反过来向应用程序提供具有用户对象 ID 的令牌。
-4. 令牌由应用程序接收，对象 ID 用于通过调用 Microsoft 图形 API 删除用户数据。 Microsoft 图形 API 删除用户数据并返回状态代码 200 OK。
+4. 应用程序接收该令牌并使用对象 ID 通过调用 Microsoft Graph API 删除用户数据。 Microsoft Graph API 删除用户数据，并返回状态代码“200 正常”。
 5. 根据需要，应用程序使用对象 ID 或其他标识符在其他组织系统中安排删除用户数据。
 6. 应用程序确认数据删除，并向用户提供后续步骤。
 
@@ -53,8 +53,8 @@ Azure AD B2C 用户数据仅限于：
 在下面的导出数据流示例中，由应用程序执行的所述步骤也能由目录中的后端进程或具有管理员角色的用户执行：
 
 1. 用户登录到应用程序。 如果需要，Azure AD B2C 将使用 Azure 多重身份验证强制执行身份验证。
-2. 应用程序使用用户凭据调用 Microsoft 图形 API 操作来检索用户属性。 Microsoft 图形 API 以 JSON 格式提供属性数据。 可以将 ID 令牌内容设置为包括用户的所有个人数据，具体取决于架构。
-3. 应用程序检索用户审核活动。 Microsoft 图形 API 向应用程序提供事件数据。
+2. 应用程序使用用户凭据来调用 Microsoft Graph API 操作，以检索用户属性。 Microsoft Graph API 以 JSON 格式提供属性数据。 可以将 ID 令牌内容设置为包括用户的所有个人数据，具体取决于架构。
+3. 应用程序检索用户审核活动。 Microsoft Graph API 向应用程序提供事件数据。
 4. 应用程序聚合数据，并使其可供用户使用。
 
 ## <a name="next-steps"></a>后续步骤

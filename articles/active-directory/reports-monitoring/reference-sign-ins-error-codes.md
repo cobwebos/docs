@@ -18,21 +18,21 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6b4e21a23ebc455653b4d5b22ac18023b533728c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78190460"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>登录活动报告错误代码 
 
-使用[用户登录报告](concept-sign-ins.md)提供的信息，您可以找到问题的答案，例如：
+参考[用户登录报告](concept-sign-ins.md)提供的信息，可以找到一些问题的答案，例如：
 
 - 谁登录到了我的应用程序？
 - 已登录到哪些应用程序？
 - 哪些登录失败？为什么？
 
-当登录失败时，您将看到与失败对应的错误代码。 [查找错误代码的说明](https://login.microsoftonline.com/error)。
+登录失败时，会显示失败所对应的错误代码。 [找到错误代码的说明](https://login.microsoftonline.com/error)。
 
 
 

@@ -1,5 +1,5 @@
 ---
-title: 条件访问需要托管设备 - Azure 活动目录
+title: 条件性访问需要托管设备-Azure Active Directory
 description: 了解如何配置 Azure Active Directory (Azure AD) 基于设备的条件访问策略来要求使用受管理设备进行云应用访问。
 services: active-directory
 ms.service: active-directory
@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8a3c71534febc3cdb6429d3092225ebc73f6cbe7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79481477"
 ---
-# <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>如何：需要托管设备才能通过条件访问进行云应用访问
+# <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>如何：要求托管设备使用条件访问访问 cloud app
 
 在移动优先、云优先的世界中，使用 Azure Active Directory (Azure AD) 可以实现从任意位置以单一登录方式登录到应用和服务。 经授权的用户可以从一系列设备（包括移动设备和个人设备）访问云应用。 但是，许多环境中至少有几个应用会要求仅通过满足你的安全性和符合性标准的设备进行访问。 这些设备也称为受管理设备。 
 
@@ -26,14 +26,14 @@ ms.locfileid: "79481477"
 
 ## <a name="prerequisites"></a>先决条件
 
-需要托管设备进行云应用访问将**Azure AD 条件访问**和**Azure AD 设备管理**联系在一起。 如果尚不熟悉其中的某项功能，应该先阅读以下主题:
+需要将托管设备用于 cloud app access **Azure AD 结合使用条件访问**和**Azure AD 设备管理**。 如果尚不熟悉其中的某项功能，应该先阅读以下主题:
 
-- **[Azure 活动目录中的条件访问](../active-directory-conditional-access-azure-portal.md)**- 本文为您提供了条件访问和相关术语的概念概述。
+- **[Azure Active Directory 中的条件性访问](../active-directory-conditional-access-azure-portal.md)**-本文提供了有关条件访问和相关术语的概念性概述。
 - **[Azure Active Directory 中的设备管理简介](../devices/overview.md)** - 此文章概述了可以用来将设备置于组织控制下的各种选项。 
-- 有关 Windows **10 创建者更新（版本 1703）** 或更高版本的 Chrome 支持，请安装[Windows 10 帐户扩展名](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)。 当条件访问策略需要特定于设备的详细信息时，此扩展是必需的。
+- 对于**windows 10 创意者更新（版本1703）** 或更高版本中的 Chrome 支持，请安装[windows 10 帐户扩展](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)。 当条件访问策略需要特定于设备的详细信息时，此扩展是必需的。
 
 >[!NOTE] 
-> 我们建议使用基于 Azure AD 设备的条件访问策略，在初始设备身份验证后获得最佳实施。 这包括如果设备不符合合规性和设备代码流，则结束会话。
+> 建议使用基于 Azure AD 设备的条件性访问策略，以便在初始设备身份验证后获得最佳强制。 这包括在设备不符合和设备代码流时关闭会话。
 
 
 ## <a name="scenario-description"></a>方案描述
@@ -58,7 +58,7 @@ ms.locfileid: "79481477"
 - **加入 Azure AD 的设备** - 向 Azure AD 注册未加入本地 AD 的组织 Windows 10 设备。 
 - **加入混合 Azure AD 的设备** - 向 Azure AD 注册已加入本地 AD 的 Windows 10 或受支持的低级别设备。
 
-这三个选项在本文中讨论了[什么是设备标识？](../devices/overview.md)
+这三个选项在 "[什么是设备标识" 一](../devices/overview.md)文中进行了讨论。
 
 若要成为受管理设备，注册设备必须是**加入混合 Azure AD 的设备**或者是**已标记为合规的设备**。  
 
@@ -66,7 +66,7 @@ ms.locfileid: "79481477"
  
 ## <a name="require-hybrid-azure-ad-joined-devices"></a>要求使用加入混合 Azure AD 的设备
 
-在条件访问策略中，可以选择 **"需要混合 Azure AD 联接设备**"以声明只能使用托管设备访问选定的云应用。 
+在条件访问策略中，可以选择 "**需要混合 Azure AD 联接的设备**"，以表明仅可使用托管设备访问所选云应用。 
 
 ![基于设备的条件](./media/require-managed-devices/10.png)
 
@@ -74,7 +74,7 @@ ms.locfileid: "79481477"
 
 ![基于设备的条件](./media/require-managed-devices/45.png)
 
-怎样使加入混合 Azure AD 的设备成为受管理设备？  对于已加入本地 AD 的设备，假定使用管理解决方案（如**配置管理器**或**组策略 （GP））** 来强制执行对这些设备的控制。这些解决方案用于管理这些设备。 由于 Azure AD 无法确定是否已向设备应用这些方法中的任何一种，因此，在要求使用受管理设备的情况下，要求使用加入混合 Azure AD 的设备是一种相对较弱的机制。 如果加入本地域的设备同时也是加入混合 Azure AD 的设备，则由管理员判断应用于此类设备的方法是否强大到足以使其成为受管理设备。
+怎样使加入混合 Azure AD 的设备成为受管理设备？  对于加入到本地 AD 的设备，假定使用管理解决方案（如**Configuration Manager**或**组策略（GP））** 对这些设备进行控制。 由于 Azure AD 无法确定是否已向设备应用这些方法中的任何一种，因此，在要求使用受管理设备的情况下，要求使用加入混合 Azure AD 的设备是一种相对较弱的机制。 如果加入本地域的设备同时也是加入混合 Azure AD 的设备，则由管理员判断应用于此类设备的方法是否强大到足以使其成为受管理设备。
 
 ## <a name="require-device-to-be-marked-as-compliant"></a>要求将设备标记为合规
 
@@ -102,4 +102,4 @@ ms.locfileid: "79481477"
 
 ## <a name="next-steps"></a>后续步骤
 
-在环境中配置基于设备的条件访问策略之前，应了解[Azure 活动目录中的条件访问最佳做法](best-practices.md)。
+在环境中配置基于设备的条件性访问策略之前，应查看[Azure Active Directory 中的条件性访问的最佳做法](best-practices.md)。

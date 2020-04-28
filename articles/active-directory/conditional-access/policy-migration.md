@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 33b1f76dd1489e00115d0f805add8d754038df84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77185916"
 ---
 # <a name="conditional-access-classic-policy-migration"></a>条件访问经典策略迁移
@@ -33,17 +33,17 @@ Azure Active Directory 使用条件访问作为一种工具来统合信号、做
 
 ## <a name="classic-policies"></a>经典策略
 
-在 [Azure 门户](https://portal.azure.com)中，可以在“Azure Active Directory”**** > “安全性”**** > “条件访问”**** 下找到条件访问策略。 组织还可能有不使用此页创建的较旧的条件访问策略。 这些策略称为“经典策略”。** 经典策略是在以下位置创建的条件访问策略：
+在 [Azure 门户](https://portal.azure.com)中，可以在“Azure Active Directory”   > “安全性”   > “条件访问”  下找到条件访问策略。 组织还可能有不使用此页创建的较旧的条件访问策略。 这些策略称为“经典策略”。  经典策略是在以下位置创建的条件访问策略：
 
 - Azure 经典门户
 - Intune 经典门户
 - Intune 应用保护门户
 
-在“条件访问”页上，可以通过单击“管理”部分中的“[**经典策略**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies)”来访问经典策略。******** 
+在“条件访问”页上，可以通过单击“管理”部分中的“[**经典策略**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies)”来访问经典策略。   
 
 ![Azure AD 中的条件访问，显示经典策略视图](./media/policy-migration/71.png)
 
-“经典策略”视图提供了一个选项用于执行以下操作：****
+“经典策略”视图提供了一个选项用于执行以下操作： 
 
 - 筛选经典策略。
 - 禁用经典策略。
@@ -62,7 +62,7 @@ Azure Active Directory 使用条件访问作为一种工具来统合信号、做
  
 ## <a name="migration-considerations"></a>迁移注意事项
 
-在本文中，Azure AD 条件访问策略也称为*新策略*。
+在本文中，Azure AD 条件访问策略也称为“新策略”。 
 在禁用或删除经典策略之前，这些策略与新策略仍可同时运行。 
 
 在策略整合的上下文中，必须注意以下几个方面：
@@ -89,7 +89,7 @@ Azure Active Directory 使用条件访问作为一种工具来统合信号、做
 
 ![条件访问条件](./media/policy-migration/16.png)
  
-基于应用的 Office 365 交换在线策略，包括作为客户端应用条件**交换活动同步**，允许**支持**和**不支持**的设备平台。 尽管无法在相关的新策略中配置单个设备平台，但可以将支持状态限制为[受支持的设备平台](concept-conditional-access-conditions.md#device-platforms)。 
+Office 365 Exchange Online 的基于应用的经典策略（包括 **Exchange Active Sync** 作为客户端应用条件）允许**受支持**和**不受支持**的设备平台。 尽管无法在相关的新策略中配置单个设备平台，但可以将支持状态限制为[受支持的设备平台](concept-conditional-access-conditions.md#device-platforms)。 
 
 ![条件访问选择 Exchange ActiveSync](./media/policy-migration/65.png)
 
@@ -119,4 +119,4 @@ Azure Active Directory 使用条件访问作为一种工具来统合信号、做
 
 - [在仅限报告模式下进行条件访问来确定新策略决定的影响。](concept-conditional-access-report-only.md)
 - 若要了解如何配置条件访问策略，请参阅[条件访问常见策略](concept-conditional-access-policy-common.md)。
-- 如果已准备好为环境配置条件访问策略，请参阅"[如何：在 Azure 活动目录中规划条件访问部署](plan-conditional-access.md)"一文。 
+- 如果已准备好为环境配置条件访问策略，请参阅文章[如何：在 Azure Active Directory 中规划条件访问部署](plan-conditional-access.md)。 

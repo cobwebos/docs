@@ -1,5 +1,5 @@
 ---
-title: Azure AD 身份验证&国家云 |蔚蓝
+title: Azure AD 身份验证 & 国家云 |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解国家云的应用注册和身份验证终结点。
 services: active-directory
@@ -14,10 +14,10 @@ ms.author: negoe
 ms.reviewer: negoe,celested
 ms.custom: aaddev
 ms.openlocfilehash: 20a053369149dc29d6485c49bb091a75bb9fb591
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79262992"
 ---
 # <a name="national-clouds"></a>国家云
@@ -26,7 +26,7 @@ ms.locfileid: "79262992"
 
 包括全球云，Azure Active Directory (Azure AD) 部署在以下国家云中：  
 
-- Azure Government 
+- Azure Government
 - Azure 德国
 - Azure 中国世纪互联
 
@@ -70,15 +70,15 @@ ms.locfileid: "79262992"
 若要了解如何在国家云环境中调用 Microsoft Graph API，请转到[国家云部署中的 Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/deployments)。
 
 > [!IMPORTANT]
-> 全球服务的特定区域中的某些服务和功能可能并非在所有国家云中都可用。 要了解哪些服务可用，请访问[按区域提供的产品](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia,china-non-regional,china-east,china-east-2,china-north,china-north-2,germany-non-regional,germany-central,germany-northeast)。
+> 全球服务的特定区域中的某些服务和功能可能并非在所有国家云中都可用。 若要了解哪些服务可用，请访问[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia,china-non-regional,china-east,china-east-2,china-north,china-north-2,germany-non-regional,germany-central,germany-northeast)。
 
-要了解如何使用 Microsoft 标识平台构建应用程序，请按照 Microsoft[身份验证库 （MSAL） 教程](msal-national-cloud.md)操作。 具体来说，此应用程序将登录用户并获得访问令牌来调用 Microsoft Graph API。
+若要了解如何使用 Microsoft 标识平台构建应用程序，请按照[Microsoft 身份验证库（MSAL）教程](msal-national-cloud.md)操作。 具体而言，此应用将登录用户并获取访问令牌，以调用 Microsoft Graph API。
 
 ## <a name="next-steps"></a>后续步骤
 
 了解有关以下方面的详细信息：
 
-- [Azure 政府](https://docs.microsoft.com/azure/azure-government/)
-- [Azure 中国 21Vianet](https://docs.microsoft.com/azure/china/)
+- [Azure Government](https://docs.microsoft.com/azure/azure-government/)
+- [Azure 中国世纪互联](https://docs.microsoft.com/azure/china/)
 - [Azure 德国](https://docs.microsoft.com/azure/germany/)
 - [Azure AD 身份验证基础知识](authentication-scenarios.md)

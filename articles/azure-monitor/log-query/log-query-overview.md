@@ -1,5 +1,5 @@
 ---
-title: Azure 监视器中的日志查询概述 |微软文档
+title: Azure Monitor 中的日志查询概述 |Microsoft Docs
 description: 解答有关日志查询的常见问题，并帮助你开始使用日志查询。
 ms.subservice: logs
 ms.topic: conceptual
@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
 ms.openlocfilehash: 54a6f875bc33d24d412d2424c634d1019b4af399
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670111"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Azure Monitor 中的日志查询概述
@@ -23,8 +23,8 @@ Azure Monitor 中的某些功能（例如[见解](../insights/insights-overview.
 ## <a name="how-can-i-learn-how-to-write-queries"></a>如何学习查询编写方法？
 如果你想要直奔主题，可从以下教程着手：
 
-- [开始在 Azure 监视器 中的日志分析](get-started-portal.md)。
-- [开始在 Azure 监视器 中的日志查询](get-started-queries.md)。
+- [Azure Monitor 中的 Log Analytics 入门](get-started-portal.md)
+- [Azure Monitor 中的日志查询入门](get-started-queries.md)。
 
 掌握基础知识后，可从以下文章着手，使用自己的数据或者演示环境中的数据学完多篇课程： 
 
@@ -80,9 +80,9 @@ Log Analytics 是 Azure 门户中用于编写日志查询以及以交互方式�
 
 可以从 Azure 门户中的多个位置启动 Log Analytics。 Log Analytics 可用的数据范围由其启动方式决定。 有关更多详细信息，请参阅[查询范围](scope.md)。
 
-- 从“Azure Monitor”菜单或“Log Analytics 工作区”菜单中选择“日志”。************
-- 从 Application Insights 应用程序的“概述”页中选择“分析”。********
-- 从 Azure 资源的菜单中选择“日志”。****
+- 从“Azure Monitor”菜单或“Log Analytics 工作区”菜单中选择“日志”。   
+- 从 Application Insights 应用程序的“概述”页中选择“分析”。  
+- 从 Azure 资源的菜单中选择“日志”。 
 
 ![Log Analytics](media/log-query-overview/log-analytics.png)
 
@@ -92,10 +92,10 @@ Log Analytics 是 Azure 门户中用于编写日志查询以及以交互方式�
 除了在 Log Analytics 中以交互方式处理日志查询及其结果以外，还可以在 Azure Monitor 中的以下区域使用查询：
 
 - **警报规则。** [警报规则](../platform/alerts-overview.md)主动识别工作区中数据的问题。  每个警报规则均基于定期自动运行的日志搜索。  对结果进行检查，确定是否应创建警报。
-- **仪表 板。** 可以将任何查询的结果固定到 [Azure 仪表板](../learn/tutorial-logs-dashboards.md)，这使得你可以将日志和指标数据一起可视化，并且还可以将其与其他 Azure 用户共享。
+- **仪表板。** 可以将任何查询的结果固定到 [Azure 仪表板](../learn/tutorial-logs-dashboards.md)，这使得你可以将日志和指标数据一起可视化，并且还可以将其与其他 Azure 用户共享。
 - **视图。**  可以使用[视图设计器](../platform/view-designer.md)创建要包含在用户仪表板中的数据的可视化效果。  日志查询提供每个视图中[磁贴](../platform/view-designer-tiles.md)和[可视化部件](../platform/view-designer-parts.md)使用的数据。  
-- **出口。**  将日志数据从 Azure Monitor 导入到 Excel 或 [Power BI](../platform/powerbi.md) 中时，请创建日志查询来定义要导出的数据。
-- **电源外壳。** 可从命令行运行 PowerShell 脚本或运行使用 [Get-AzOperationalInsightsSearchResults](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresult) 的 Azure 自动化 runbook，从 Azure Monitor 中检索日志数据。  此 cmdlet 需要一个查询来确定要检索的数据。
+- **导出。**  将日志数据从 Azure Monitor 导入到 Excel 或 [Power BI](../platform/powerbi.md) 中时，请创建日志查询来定义要导出的数据。
+- **PowerShell。** 可从命令行运行 PowerShell 脚本或运行使用 [Get-AzOperationalInsightsSearchResults](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresult) 的 Azure 自动化 runbook，从 Azure Monitor 中检索日志数据。  此 cmdlet 需要一个查询来确定要检索的数据。
 - **Azure Monitor 日志 API。**  [Azure Monitor 日志 API](https://dev.loganalytics.io) 允许任何 REST API 客户端从工作区中检索日志数据。  API 请求包括针对 Azure Monitor 运行的查询，用于确定要检索的数据。
 
 

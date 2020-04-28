@@ -1,6 +1,6 @@
 ---
-title: 教程：配置 Insight4GRC，以便使用 Azure 活动目录进行自动用户预配 |微软文档
-description: 了解如何从 Azure AD 自动预配和取消预配用户帐户到 Insight4GRC。
+title: 教程：为 Insight4GRC 配置自动用户预配 Azure Active Directory |Microsoft Docs
+description: 了解如何自动将用户 Azure AD 帐户预配到 Insight4GRC 以及取消其预配。
 services: active-directory
 documentationcenter: ''
 author: Zhchia
@@ -16,65 +16,65 @@ ms.topic: article
 ms.date: 02/04/2020
 ms.author: Zhchia
 ms.openlocfilehash: 1404854e054c8fc4967ba863486969b8a87db526
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77621510"
 ---
-# <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>教程：配置 Insight4GRC 以进行自动用户预配
+# <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>教程：为 Insight4GRC 配置自动用户预配
 
-本教程介绍在 Insight4GRC 和 Azure 活动目录 （Azure AD） 中配置自动用户预配所需的步骤。 配置后，Azure AD 使用 Azure AD 预配服务自动预配和取消向[Insight4GRC](https://www.rsmuk.com/)预配和取消预配用户和组。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程介绍了需要在 Insight4GRC 和 Azure Active Directory （Azure AD）中执行的步骤，以配置自动用户预配。 配置后，Azure AD 使用 Azure AD 预配服务自动设置用户和组并取消其预配到[Insight4GRC](https://www.rsmuk.com/) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
 
 
-## <a name="capabilities-supported"></a>支持功能
+## <a name="capabilities-supported"></a>支持的功能
 > [!div class="checklist"]
 > * 在 Insight4GRC 中创建用户
-> * 在 Insight4GRC 中不再需要访问权限时删除用户
+> * 当用户不再需要访问权限时，删除 Insight4GRC 中的用户
 > * 使用户属性在 Azure AD 和 Insight4GRC 之间保持同步
-> * Insight4GRC 中的预配组和组成员身份
-> * [单次登录](https://docs.microsoft.com/azure/active-directory/saas-apps/insight4grc-tutorial)Insight4GRC（推荐）
+> * 在 Insight4GRC 中预配组和组成员身份
+> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/insight4grc-tutorial)到 Insight4GRC （推荐）
 
 ## <a name="prerequisites"></a>先决条件
 
 本教程中概述的方案假定你已具有以下先决条件：
 
 * [Azure AD 租户](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* Azure AD 中具有配置预配[权限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)的用户帐户（例如应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）。 
-* Insight4GRC 中的具有管理员权限的用户帐户。
+* Azure AD 中的一个用户帐户，有权配置预配（例如，应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）的[权限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)。 
+* Insight4GRC 中具有管理员权限的用户帐户。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
 1. 了解[预配服务的工作原理](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
-2. 确定谁将在[预配范围内](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。
-3. 确定要在[Azure AD 和 Insight4GRC 之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)哪些数据。 
+2. 确定将处于[预配范围内的](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)用户。
+3. 确定要[在 Azure AD 与 Insight4GRC 之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。 
 
-## <a name="step-2-configure-insight4grc-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 Insight4GRC 以支持使用 Azure AD 进行预配
+## <a name="step-2-configure-insight4grc-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 Insight4GRC 以支持 Azure AD 的预配
 
-在配置 Insight4GRC 以进行 Azure AD 自动用户预配之前，您需要在 Insight4GRC 上启用 SCIM 预配。
+将 Insight4GRC 配置为使用 Azure AD 进行自动用户预配之前，需要在 Insight4GRC 上启用 SCIM 设置。
 
-1. 要获得无记名令牌，最终客户需要联系[支持团队](mailto:support.ss@rsmuk.com)。
-2. 要获取 SCIM 终结点 URL，您需要准备好 Insight4GRC 域名，因为它将用于构造 SCIM 终结点 URL。 您可以检索 Insight4GRC 域名，作为使用 Insight4GRC 进行初始软件购买的一部分。
+1. 若要获取持有者令牌，最终客户需要联系[支持团队](mailto:support.ss@rsmuk.com)。
+2. 若要获取 SCIM 终结点 URL，你需要准备好 Insight4GRC 域名，因为它将用于构造 SCIM 终结点 URL。 您可以在首次购买软件时通过 Insight4GRC 检索 Insight4GRC 域名。
 
-## <a name="step-3-add-insight4grc-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 Insight4GRC
+## <a name="step-3-add-insight4grc-from-the-azure-ad-application-gallery"></a>步骤 3。 从 Azure AD 应用程序库添加 Insight4GRC
 
-从 Azure AD 应用程序库添加 Insight4GRC，开始管理对 Insight4GRC 的预配。 如果您以前为 SSO 设置了 Insight4GRC，则可以使用相同的应用程序。 但是，建议在最初测试集成时创建单独的应用。 在此处了解有关从库中添加应用程序[的更多详细信息](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)。 
+从 Azure AD 应用程序库中添加 Insight4GRC，开始管理预配到 Insight4GRC。 如果以前为 SSO 设置了 Insight4GRC，则可以使用相同的应用程序。 但建议您在最初测试集成时创建一个单独的应用程序。 在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)了解有关从库中添加应用程序的详细信息。 
 
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4. 定义谁将处于预配范围 
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4。 定义将在设置范围内的人员 
 
-Azure AD 预配服务允许您根据对应用程序的分配以及或基于用户/组的属性来限定谁将预配的范围。 如果选择根据分配将预配到应用的范围，[则可以使用以下步骤将](../manage-apps/assign-user-or-group-access-portal.md)用户和组分配给应用程序。 如果选择仅根据用户或组的属性预配谁的范围，则可以使用[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的范围筛选器。 
+Azure AD 预配服务允许你确定将根据分配给应用程序的人员，或基于用户/组属性进行预配的用户的范围。 如果选择将根据分配预配到你的应用的用户的范围，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 如果选择仅根据用户或组的属性设置的作用域，则可以使用[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的范围筛选器。 
 
-* 将用户和组分配给 Insight4GRC 时，必须选择**默认访问**以外的角色。 具有默认访问权限角色的用户从预配中排除，并且将在预配日志中标记为无效权限。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。 
+* 将用户和组分配到 Insight4GRC 时，必须选择 "**默认" 访问权限**以外的其他角色。 具有默认访问角色的用户将从预配中排除，并在预配日志中被标记为不有效。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)来添加其他角色。 
 
-* 从小开始。 在向所有人推出之前，先与一小部分用户和组进行测试。 将预配范围设置为分配的用户和组时，可以通过为应用分配一个或两个用户或组来控制这种情况。 当作用域设置为所有用户和组时，可以指定[基于属性的范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
+* 从小开始。 在向所有人推出之前，请使用少量的用户和组进行测试。 如果设置的作用域设置为 "分配的用户和组"，则可以通过将一个或两个用户或组分配到应用来对此进行控制。 当作用域设置为 "所有用户和组" 时，可以指定[基于属性的范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-insight4grc"></a>步骤 5。 将自动用户预配配置为 Insight4GRC 
+## <a name="step-5-configure-automatic-user-provisioning-to-insight4grc"></a>步骤 5。 配置 Insight4GRC 的自动用户预配 
 
-本节将指导您完成将 Azure AD 预配服务配置为根据 Azure AD 中的用户和/或组分配在 TestApp 中创建、更新和禁用用户和/或组的步骤。
+本部分将指导你完成以下步骤：配置 Azure AD 预配服务，以便基于 Azure AD 中的用户和/或组分配在 TestApp 中创建、更新和禁用用户和/或组。
 
-### <a name="to-configure-automatic-user-provisioning-for-insight4grc-in-azure-ad"></a>要在 Azure AD 中为 Insight4GRC 配置自动用户预配：
+### <a name="to-configure-automatic-user-provisioning-for-insight4grc-in-azure-ad"></a>若要在 Azure AD 中配置 Insight4GRC 的自动用户预配：
 
-1. 登录到 Azure[门户](https://portal.azure.com)。 选择**企业应用程序**，然后选择**所有应用程序**。
+1. 登录 [Azure 门户](https://portal.azure.com)。 选择 "**企业应用程序**"，并选择 "**所有应用程序**"。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -84,54 +84,54 @@ Azure AD 预配服务允许您根据对应用程序的分配以及或基于用�
 
 3. 选择“预配”**** 选项卡。
 
-    ![预配选项卡](common/provisioning.png)
+    ![设置选项卡](common/provisioning.png)
 
-4. 将**预配模式**设置为 **"自动**"。
+4. 将**预配模式**设置为 "**自动**"。
 
-    ![预配选项卡](common/provisioning-automatic.png)
+    ![设置选项卡](common/provisioning-automatic.png)
 
-5. 在 **"管理凭据"** 部分下，在租户 URL 中输入 SCIM 终结点**URL。** enpoint URL 应采用`https://<Insight4GRC Domain Name>.insight4grc.com/public/api/scim/v2 `**Insight4GRC 域名**是在前面步骤中检索的值的格式。 输入在**秘密令牌**中检索的承载令牌值。 单击 **"测试连接**"以确保 Azure AD 可以连接到 Insight4GRC。 如果连接失败，请确保您的 Insight4GRC 帐户具有管理员权限，然后重试。
+5. 在 "**管理员凭据**" 部分下，在 "**租户 url**" 中输入 SCIM 终结点 url。 终结点 URL 应采用格式`https://<Insight4GRC Domain Name>.insight4grc.com/public/api/scim/v2 ` ，其中**Insight4GRC 域名**是前面步骤中检索的值。 输入先前在**机密令牌**中检索的持有者令牌值。 单击 "**测试连接**" 以确保 Azure AD 可以连接到 Insight4GRC。 如果连接失败，请确保 Insight4GRC 帐户具有管理员权限，然后重试。
 
     ![预配](./media/insight4grc-provisioning-tutorial/provisioning.png)
 
-6. 在 **"通知电子邮件"** 字段中，输入应接收预配错误通知的个人或组的电子邮件地址，然后选中"**在发生故障时发送电子邮件通知**"复选框。
+6. 在 "**通知电子邮件**" 字段中，输入应接收预配错误通知的人员或组的电子邮件地址，并选中 "**发生故障时发送电子邮件通知**" 复选框。
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 选择“保存”。****
+7. 选择“保存”。 
 
-8. 在 **"映射**"部分下，选择**将 Azure 活动目录用户同步到 Insight4GRC**。
+8. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 Insight4GRC**"。
 
-9. 在**属性映射**部分中查看从 Azure AD 同步到 Insight4GRC 的用户属性。 选择为 **"匹配属性"** 的属性用于与 Insight4GRC 中的用户帐户匹配以进行更新操作。 如果选择更改[匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，则需要确保 Insight4GRC API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改****。
+9. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Insight4GRC 的用户属性。 选为 "**匹配**" 属性的特性用于匹配 Insight4GRC 中的用户帐户以执行更新操作。 如果选择更改[匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，将需要确保 Insight4GRC API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改****。
 
-   |特性|类型|
+   |Attribute|类型|
    |---|---|
-   |userName|String|
-   |externalId|String|
+   |userName|字符串|
+   |externalId|字符串|
    |活动|Boolean|
-   |title|String|
-   |name.givenName|String|
-   |name.familyName|String|
-   |emails[type eq "work"].value|String|
-   |phoneNumbers[type eq "work"].value|String|
+   |title|字符串|
+   |name.givenName|字符串|
+   |name.familyName|字符串|
+   |emails[type eq "work"].value|字符串|
+   |phoneNumbers[type eq "work"].value|字符串|
 
-10. 在 **"映射**"部分下，选择**将 Azure 活动目录组同步到 Insight4GRC**。
+10. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 组同步到 Insight4GRC**"。
 
-11. 在**属性映射**部分中查看从 Azure AD 同步到 Insight4GRC 的组属性。 选择为 **"匹配属性"** 的属性用于与 Insight4GRC 中的组匹配以进行更新操作。 选择“保存”按钮以提交任何更改****。
+11. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Insight4GRC 的组属性。 选为 "**匹配**" 属性的特性用于匹配 Insight4GRC 中的组以执行更新操作。 选择“保存”按钮以提交任何更改****。
 
-      |特性|类型|
+      |Attribute|类型|
       |---|---|
-      |displayName|String|
-      |externalId|String|
+      |displayName|字符串|
+      |externalId|字符串|
       |members|参考|
 
 10. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
-13. 要为 Insight4GRC 启用 Azure AD 预配服务，在 **"设置"** 部分将**预配状态**更改为 **"打开**"。
+13. 若要为 Insight4GRC 启用 Azure AD 预配服务，请在 "**设置**" 部分中将 "**预配状态**" 更改为 **"打开**"。
 
     ![预配状态已打开](common/provisioning-toggle-on.png)
 
-14. 通过在 **"设置"** 部分中选择"**范围"** 中所需的值，定义要预配到 Insight4GRC 的用户和/或组。
+14. 通过在 "**设置**" 部分的 "**范围**" 中选择所需的值，定义要预配到 Insight4GRC 的用户和/或组。
 
     ![预配范围](common/provisioning-scope.png)
 
@@ -139,19 +139,19 @@ Azure AD 预配服务允许您根据对应用程序的分配以及或基于用�
 
     ![保存预配配置](common/provisioning-configuration-save.png)
 
-此操作将开始 **"设置"** 部分中 **"范围**"中定义的所有用户和组的初始同步周期。 初始周期执行的时间比后续周期长，只要 Azure AD 预配服务运行，则大约每 40 分钟执行一次。 
+此操作将启动 "**设置**" 部分的 "**范围**" 中定义的所有用户和组的初始同步循环。 初始周期比后续循环长，只要 Azure AD 预配服务正在运行，就大约每40分钟执行一次。 
 
-## <a name="step-6-monitor-your-deployment"></a>步骤 6. 监视部署
-配置预配后，请使用以下资源监视部署：
+## <a name="step-6-monitor-your-deployment"></a>步骤 6。 监视部署
+配置预配后，请使用以下资源来监视部署：
 
-* 使用[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)确定已成功预配或未成功预配哪些用户。
-* 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)以查看预配周期的状态以及其接近完成程度。
-* 如果预配配置似乎处于不正常状态，则应用程序将进入隔离状态。 在此处了解有关隔离状态的更多[。](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)
+* 使用[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已成功设置或失败。
+* 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)，查看设置周期的状态以及完成操作的方式。
+* 如果预配配置似乎处于不正常状态，则应用程序将进入隔离区。 [在此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)。
-* [什么是使用 Azure 活动目录的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [管理企业应用的用户帐户设置](../app-provisioning/configure-automatic-user-provisioning-portal.md)。
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,16 +9,16 @@ ms.date: 02/14/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: a04ac0e7c634a0d1d1909e691fabfcec3c52ebc5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77471485"
 ---
-在“Azure VPN - 属性”**** 页面上，配置登录设置。
+在“Azure VPN - 属性”  页面上，配置登录设置。
 
-1. 将“启用以供用户登录?”**** 设置为“是”****。 此设置允许 AD 租户中的所有用户成功连接到 VPN。
-2. 如果希望仅允许对 Azure VPN 具有权限的用户登录，请将“需要进行用户分配?”**** 设置为“是”****。
+1. 将“启用以供用户登录?”  设置为“是”  。 此设置允许 AD 租户中的所有用户成功连接到 VPN。
+2. 如果希望仅允许对 Azure VPN 具有权限的用户登录，请将“需要进行用户分配?”  设置为“是”  。
 3. 保存所做更改。
 
    ![权限](./media/vpn-gateway-vwan-openvpn-sign-in/user2.jpg)

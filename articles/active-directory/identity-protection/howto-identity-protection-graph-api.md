@@ -1,6 +1,6 @@
 ---
-title: 用于 Azure 活动目录标识保护的 Microsoft 图形 API
-description: 了解如何从 Azure 活动目录中查询 Microsoft 图形风险检测和相关信息
+title: Azure Active Directory Identity Protection 的 Microsoft Graph API
+description: 了解如何从 Azure Active Directory 查询 Microsoft Graph 风险检测和关联信息
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -12,20 +12,20 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f6fd62ccab4d6e32b23835d280732797e133ada8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78671623"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory 标识保护和 Microsoft Graph 入门
 
-Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active Directory 标识保护](../active-directory-identityprotection.md) API 的主页。 有四个 API 公开有关风险用户和登录的信息。第一个 API，**风险检测**，允许您查询 Microsoft Graph，以获取有关检测的用户和登录链接风险检测以及相关信息的列表。 使用第二个 API **riskyUsers** 可以在 Microsoft Graph 中查询有关“标识保护”作为风险检测到的用户的信息。 第三个 API **signIn** 可以通过与风险状态、详细信息和级别相关的特定属性在 Microsoft Graph 中查询有关 Azure AD 登录的信息。 第四个**API，标识RiskEvents**，允许您查询 Microsoft 图形的风险[检测](../reports-monitoring/concept-risk-events.md)和相关信息列表。 标识RiskEvents API将于 2020 年 1 月 10 日弃用;我们建议您改用**风险检测**API。 本文可帮助你开始连接到 Microsoft Graph 并查询这些 API。 如需深入介绍、完整文档以及访问 Graph 浏览器，请参阅 [Microsoft Graph 站点](https://graph.microsoft.io/)或以下 API 的特定参考文档：
+Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active Directory 标识保护](../active-directory-identityprotection.md) API 的主页。 有四个 Api 公开了有关风险用户和登录的信息。使用第一个 API **riskDetection**，可以查询 Microsoft Graph 以获取用户和登录链接的风险检测的列表以及有关检测的相关信息。 使用第二个 API **riskyUsers** 可以在 Microsoft Graph 中查询有关“标识保护”作为风险检测到的用户的信息。 第三个 API **signIn** 可以通过与风险状态、详细信息和级别相关的特定属性在 Microsoft Graph 中查询有关 Azure AD 登录的信息。 使用第四个 API **identityRiskEvents**可以查询 Microsoft Graph 以获取[风险检测](../reports-monitoring/concept-risk-events.md)和相关信息的列表。 IdentityRiskEvents API 将于2020年1月10日弃用;建议改为使用**riskDetections** API。 本文可帮助你开始连接到 Microsoft Graph 并查询这些 API。 如需深入介绍、完整文档以及访问 Graph 浏览器，请参阅 [Microsoft Graph 站点](https://graph.microsoft.io/)或以下 API 的特定参考文档：
 
 * [riskDetection API](/graph/api/resources/riskdetection?view=graph-rest-beta)
 * [riskyUsers API](/graph/api/resources/riskyuser?view=graph-rest-beta)
 * [signIn API](/graph/api/resources/signin?view=graph-rest-beta)
-* [标识Risk事件 API](/graph/api/resources/identityriskevent?view=graph-rest-beta)*将于 2020 年 1 月 10 日弃用*
+* [IDENTITYRISKEVENTS API](/graph/api/resources/identityriskevent?view=graph-rest-beta) *将在2020年1月10日弃用*
 
 ## <a name="connect-to-microsoft-graph"></a>连接到 Microsoft Graph
 
@@ -68,13 +68,13 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
 
    ![创建应用程序](./media/howto-identity-protection-graph-api/44.png)
 
-   1. 在 **"名称**"文本框中，键入应用程序的名称（例如：Azure AD 风险检测 API 应用程序）。
+   1. 在 "**名称**" 文本框中，键入应用程序的名称（例如： Azure AD 风险检测 API 应用程序）。
 
    1. 在“类型”中，选择“Web 应用程序和/或 Web API”。********
 
-   1. 在**登录 URL**文本框中，键入`http://localhost`。
+   1. 在 "**登录 URL** " 文本框中，键入`http://localhost`。
 
-   1. 单击 **“创建”**。
+   1. 单击“创建”。 
 1. 若要打开“设置”页，在应用程序列表中，单击最新创建的应用注册****。 
 1. 复制**应用程序 ID**。
 
@@ -122,9 +122,9 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
 
    ![创建应用程序](./media/howto-identity-protection-graph-api/24.png)
 
-   1. 在 **"密钥描述**"文本框中，键入说明（例如 *，Azure AD 风险检测*）。
+   1. 在 "**密钥说明**" 文本框中，键入说明（例如， *Azure AD 风险检测*"）。
    1. 对于“持续时间”，请选择“1 年内”********。
-   1. 单击“保存”。****
+   1. 单击“ **保存**”。
    1. 复制此密钥值，然后将其粘贴到安全位置。   
    
    > [!NOTE]
@@ -198,7 +198,7 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
 
 ### <a name="get-all-of-the-offline-risk-detections-riskdetection-api"></a>获取所有脱机风险检测 (riskDetection API)
 
-使用身份保护登录风险策略，您可以在实时检测到风险时应用条件。 但是，脱机发现的检测如何呢？ 若要了解脱机发生了哪些检测，从而不会触发登录风险策略，可以查询 riskDetection API。
+使用 Identity Protection 登录风险策略，可以在实时检测到风险时应用条件。 但对于脱机发现的检测怎么办呢？ 若要了解脱机发生了哪些检测，从而不会触发登录风险策略，可以查询 riskDetection API。
 
 ```
 GET https://graph.microsoft.com/beta/riskDetections?$filter=detectionTimingType eq 'offline'
@@ -206,7 +206,7 @@ GET https://graph.microsoft.com/beta/riskDetections?$filter=detectionTimingType 
 
 ### <a name="get-all-of-the-users-who-successfully-passed-an-mfa-challenge-triggered-by-risky-sign-ins-policy-riskyusers-api"></a>获取成功通过了由风险登录策略触发的 MFA 质询的所有用户 (riskyUsers API)
 
-要了解基于身份保护的策略对组织的影响，您可以查询成功通过由风险登录策略触发的 MFA 质询的所有用户。 该信息可以帮助你了解“标识保护”可能错误地将哪些用户检测为存在风险，以及哪些合法用户可能正在执行人工智能认为有风险的操作。
+若要了解基于身份保护风险的策略对组织的影响，可以查询成功通过了风险登录策略触发的 MFA 质询的所有用户。 该信息可以帮助你了解“标识保护”可能错误地将哪些用户检测为存在风险，以及哪些合法用户可能正在执行人工智能认为有风险的操作。
 
 ```
 GET https://graph.microsoft.com/beta/riskyUsers?$filter=riskDetail eq 'userPassedMFADrivenByRiskBasedPolicy'
@@ -229,7 +229,7 @@ https://graph.microsoft.com/beta/identityRiskEvents?`$filter=userID eq '<userID>
 如需相关信息，请参阅：
 
 - [Azure Active Directory 标识保护](../active-directory-identityprotection.md)
-- [Azure 活动目录标识保护检测到的风险检测类型](../reports-monitoring/concept-risk-events.md)
+- [Azure Active Directory Identity Protection 检测到的风险检测类型](../reports-monitoring/concept-risk-events.md)
 - [Microsoft Graph](https://developer.microsoft.com/graph/)
 - [Microsoft Graph 概述](https://developer.microsoft.com/graph/docs)
 - [Azure AD 标识保护服务根](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityprotection_root)

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 3939594064b63c567720378b9d316acca64d3266
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77587679"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 FROM 子句
@@ -45,7 +45,7 @@ FROM <from_specification>
      | <container_expression> '[' "property_name" | array_index ']'  
 ```  
   
-## <a name="arguments"></a>自变量
+## <a name="arguments"></a>参数
   
 - `<from_source>`  
   
@@ -81,7 +81,7 @@ FROM <from_specification>
   
 - `<container_expression> '.' property_name`  
   
-  指定应通过访问`property_name`该属性检索文档。  
+  指定应通过访问`property_name`属性来检索文档。  
   
 - `<container_expression> '[' "property_name" | array_index ']'`  
   
@@ -147,7 +147,7 @@ FROM 子句可将源化简为更小的子集。 要在每个项中仅枚举子�
     ]
 ```
 
-上述查询使用数组作为源，但你也可以使用对象作为源。 该查询考虑将源中任何有效的已定义 JSON 值包含在结果中。 下面的示例将排除`Families`没有`address.state`值的值。
+上述查询使用数组作为源，但你也可以使用对象作为源。 该查询考虑将源中任何有效的已定义 JSON 值包含在结果中。 下面的示例将排除`Families`没有`address.state`值的。
 
 ```sql
     SELECT *
@@ -165,6 +165,6 @@ FROM 子句可将源化简为更小的子集。 要在每个项中仅枚举子�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [开始](sql-query-getting-started.md)
-- [选择子句](sql-query-select.md)
-- [WHERE 条款](sql-query-where.md)
+- [入门](sql-query-getting-started.md)
+- [SELECT 子句](sql-query-select.md)
+- [WHERE 子句](sql-query-where.md)

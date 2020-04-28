@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f9d8c0cd803424e117bd4dc7a3382b7b32df2d05
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78672705"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>本地资源的 SSO 在已加入 Azure AD 的设备上的工作原理
@@ -26,7 +26,7 @@ ms.locfileid: "78672705"
 
 ## <a name="prerequisites"></a>先决条件
 
- 如果 Azure AD 联接的计算机未连接到组织的网络，则需要 VPN 或其他网络基础结构。 本地 SSO 需要与本地 AD DS 域控制器进行视线通信。
+ 如果 Azure AD 联接的计算机未连接到组织的网络，则需要 VPN 或其他网络基础结构。 本地 SSO 要求与本地 AD DS 域控制器进行线路通信。
 
 ## <a name="how-it-works"></a>工作原理 
 
@@ -34,15 +34,15 @@ ms.locfileid: "78672705"
 
 已加入 Azure AD 的设备不了解你的本地 AD 环境，因为它们未加入其中。 但是，可以使用 Azure AD Connect 向这些设备提供本地 AD 的其他信息。
 
-同时具有 Azure AD 和本地 AD 的环境被称为混合环境。 如果具有混合环境，很可能已部署 Azure AD Connect 以将本地标识信息同步到云。 作为同步过程的一部分，Azure AD 连接将本地用户信息同步到 Azure AD。 当用户登录到混合环境中的已加入 Azure AD 的设备时：
+同时具有 Azure AD 和本地 AD 的环境被称为混合环境。 如果具有混合环境，很可能已部署 Azure AD Connect 以将本地标识信息同步到云。 作为同步过程的一部分，Azure AD Connect 将本地用户信息同步到 Azure AD。 当用户登录到混合环境中的已加入 Azure AD 的设备时：
 
 1. Azure AD 将用户所属本地域的名称发送回设备。
 1. 本地安全机构 (LSA) 服务在该设备允许进行 Kerberos 身份验证。
 
-在访问尝试访问在用户的本地环境中请求 Kerberos 的资源时，设备：
+在尝试访问用户本地环境中请求 Kerberos 的资源期间，设备：
 
 1. 向找到的 DC 发送本地域信息和用户凭据，以对用户进行身份验证。
-1. 接收用于访问已加入 AD 的资源的 Kerberos [票证授予票证 (TGT)](/windows/desktop/secauthn/ticket-granting-tickets)。 如果尝试获取 AAD 连接域的 TGT 失败（相关的 DCLocator 超时可能会导致延迟），则尝试凭据管理器条目，或者用户可能会收到请求目标资源凭据的身份验证弹出窗口。
+1. 接收用于访问已加入 AD 的资源的 Kerberos [票证授予票证 (TGT)](/windows/desktop/secauthn/ticket-granting-tickets)。 如果尝试获取 AAD connect 域的 TGT 失败（相关 Dc 定位程序超时可能会导致延迟）、凭据管理器条目被尝试或用户可能会收到针对目标资源的身份验证弹出请求凭据。
 
 当用户尝试访问针对 Windows 集成身份验证配置的所有应用时，它们将顺利进行 SSO****。
 

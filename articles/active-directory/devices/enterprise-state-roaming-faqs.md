@@ -1,5 +1,5 @@
 ---
-title: 企业状态漫游常见问题 - Azure 活动目录
+title: 企业状态漫游 FAQ-Azure Active Directory
 description: 有关 ESR 的常见问题
 services: active-directory
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ad76835b0c72b691e1ef8810f2c58dedb8f597d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78672379"
 ---
 # <a name="settings-and-data-roaming-faq"></a>设置和数据漫游常见问题
@@ -30,18 +30,18 @@ ms.locfileid: "78672379"
 * Internet Explorer 设置**，包括最近打开的选项卡和收藏夹。
 * Microsoft Edge 浏览器设置，如收藏夹和阅读列表**。
 * 密码**，包括 Internet 密码、Wi-fi 配置文件等。
-* *语言首选项*，包括键盘布局、系统语言、日期和时间等的设置。
+* *语言首选项*，其中包括键盘布局、系统语言、日期和时间等设置。
 * 轻松访问功能**，如高对比度主题、讲述人和放大镜。
 * *其他 Windows 设置*，例如鼠标设置。
 
 > [!NOTE]
-> 本文适用于 2015 年 7 月随 Windows 10 推出的基于 Windows 10 的基于 Microsoft 边缘旧版 HTML 的浏览器。 本文不适用于 2020 年 1 月 15 日发布的基于 Microsoft 边缘铬的新浏览器。 有关新 Microsoft 边缘的同步行为的详细信息，请参阅[文章"Microsoft 边缘同步](/deployedge/microsoft-edge-enterprise-sync)"。
+> 本文适用于在7月2015中通过 Windows 10 启动的 Microsoft Edge 旧版 HTML 浏览器。 本文不适用于2020年1月15日发布的新的基于 Chromium 的 Microsoft Edge 浏览器。 有关新 Microsoft Edge 的同步行为的详细信息，请参阅[Microsoft Edge 同步](/deployedge/microsoft-edge-enterprise-sync)文章。
 
-**应用程序数据**：通用 Windows 应用可将设置数据写入漫游文件夹，并且会自动同步写入到此文件夹中的任何数据。 各应用开发人员可根据需要设计应用，以利用此功能。 有关如何开发使用漫游的通用 Windows 应用的详细信息，请参阅[应用数据存储 API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx)和[Windows 8 应用数据漫游开发人员博客](https://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx)。
+**应用程序数据**：通用 Windows 应用可将设置数据写入漫游文件夹，并且会自动同步写入到此文件夹中的任何数据。 各应用开发人员可根据需要设计应用，以利用此功能。 有关如何开发使用漫游的通用 Windows 应用的详细信息，请参阅[appdata 存储 API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx)和[Windows 8 appdata 漫游开发人员博客](https://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx)。
 
 ## <a name="what-account-is-used-for-settings-sync"></a>哪些帐户可用于设置同步？
 
-在 Windows 8.1 中，设置同步始终使用使用者 Microsoft 帐户。 企业用户能够将 Microsoft 帐户连接到其 Active Directory 域帐户，以访问设置同步。在 Windows 10 中，此连接的 Microsoft 帐户功能正在替换为主/辅助帐户框架。
+在 Windows 8.1 中，设置同步始终使用使用者 Microsoft 帐户。 企业用户可以将 Microsoft 帐户连接到其 Active Directory 域帐户，以获取对设置同步的访问权限。在 Windows 10 中，此连接 Microsoft 帐户功能将替换为主/辅助帐户框架。
 
 主帐户是指用于登录 Windows 的帐户。 可以是 Microsoft 帐户、Azure Active Directory (Azure AD) 帐户、本地 Active Directory 帐户或本地帐户。 除了主帐户外，Windows 10 用户可向设备添加一个或多个辅助云帐户。 辅助帐户通常是 Microsoft 帐户、Azure AD 帐户或某些其他帐户（如 Gmail 或 Facebook）。 这些辅助帐户提供访问其他服务（如单一登录和 Windows 应用商店）的权限，但无法支持设置同步。
 
@@ -50,7 +50,7 @@ ms.locfileid: "78672379"
 设备上不同用户帐户之间的数据永远不会混合。 设置同步有两个规则：
 
 * Windows 设置始终通过主帐户漫游。
-* 通过用于获取应用的帐户来标记应用数据。 只有使用主帐户标记的应用才会同步。当应用通过 Windows 应用商店或移动设备管理 （MDM） 侧加载时，将确定应用所有权标记。
+* 通过用于获取应用的帐户来标记应用数据。 只有用主要帐户标记的应用才会同步。应用所有权标记是在应用程序通过 Windows 应用商店或移动设备管理（MDM）进行端加载时确定的。
 
 如果无法标识应用的所有者，它将通过主帐户漫游。 如果设备从 Windows 8 或 Windows 8.1 升级到 Windows 10，所有应用会被标记为由 Microsoft 帐户获取。 这是因为大多数用户通过 Windows 应用商店获取应用，而在 Windows 10 之前，未对 Azure AD 帐户提供 Windows 应用商店支持。 如果通过离线许可证安装应用，则应用会被标记为在设备上使用主帐户。
 
@@ -96,7 +96,7 @@ ms.locfileid: "78672379"
 
 将来，Microsoft 可能会探索如何将 UE-V 深度集成到 Windows，以及如何通过 Azure AD 云将 UE-V 扩展为漫游设置。
 
-## <a name="can-i-store-synced-settings-and-data-on-premises"></a>我可以在本地存储同步的设置和数据吗？
+## <a name="can-i-store-synced-settings-and-data-on-premises"></a>是否可以在本地存储已同步的设置和数据？
 
 企业状态漫游将所有已同步的数据存储在 Microsoft 云中。 UE-V 提供本地漫游解决方案。
 
@@ -121,7 +121,7 @@ Microsoft 提供几种不同的设置漫游解决方案，包括漫游用户配�
 同时使用企业状态漫游和 UE-V 时，以下规则适用：
 
 * 企业状态漫游是设备上的主漫游代理。 UE-V 用于填补“Win32 差距”。
-* 使用 UE-V 组策略时，应禁用适用于 Windows 设置和现代 UWP 应用数据的 UE-V 漫游。 企业状态漫游已涵盖了这些漫游。
+* 使用 UE-V 组策略时，应禁用适用于 Windows 的 UE-V 漫游设置和新式 UWP 应用数据。 企业状态漫游已涵盖了这些漫游。
 
 ## <a name="how-does-enterprise-state-roaming-support-virtual-desktop-infrastructure-vdi"></a>企业状态漫游如何支持虚拟桌面基础结构 (VDI)？
 

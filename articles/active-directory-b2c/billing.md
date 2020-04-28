@@ -11,10 +11,10 @@ ms.date: 10/25/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 30ecb1e6faa29482a8d69dd1d08e4f127f515596
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78190001"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的计费模型
@@ -46,7 +46,7 @@ Azure AD B2C 计费按日历月中发生身份验证活动的唯一用户数计�
 1. 以订阅所有者身份登录到 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择要升级到 MAU 计费的 Azure AD B2C 目录。****<br/>
     ![Azure 门户中的目录和订阅筛选器](./media/billing/portal-mau-01-select-b2c-directory.png)
-1. 在左侧菜单中，选择“Azure AD B2C”****。 或者，选择“所有服务”**** 并搜索并选择“Azure AD B2C”****。
+1. 在左侧菜单中，选择“Azure AD B2C”  。 或者，选择“所有服务”  并搜索并选择“Azure AD B2C”  。
 1. 在 Azure AD B2C 租户的“概述”页上，选择“资源名称”下面的链接。******** 随后你将定向到 Azure AD 租户中的 Azure AD B2C 资源。<br/>
     ![Azure 门户中突出显示的 Azure AD B2C 资源链接](./media/billing/portal-mau-02-b2c-resource-link.png)
 1. 在 Azure AD B2C 资源的“概述”页上的“计费单位”下，选择“按身份验证(更改为 MAU)”链接。************<br/>
@@ -91,15 +91,15 @@ Azure Active Directory B2C (Azure AD B2C) 产生的使用费将从 Azure 订阅�
 
 ### <a name="create-the-link"></a>创建链接
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含要使用的 Azure 订阅的目录（不是包含 Azure AD B2C 租户的目录）。******
 1. 选择“创建资源”，在“搜索市场”字段中输入 `Active Directory B2C`，然后选择“Azure Active Directory B2C”。************
-1. 选择 **"创建"**
+1. 选择**创建**
 1. 选择“将现有 Azure AD B2C 租户链接到我的 Azure 订阅”。****
 1. 从下拉列表中选择一个 **Azure AD B2C 租户**。 下拉列表中只显示你是其全局管理员且尚未链接到订阅的租户。 “Azure AD B2C 资源名称”字段中已预先填充所选 Azure AD B2C 租户的域名。****
 1. 选择你是其管理员的有效 Azure **订阅**。
 1. 在“资源组”下选择“新建”，然后指定“资源组位置”。************ 此处指定的资源组设置不会对 Azure AD B2C 租户位置、性能或计费状态造成影响。
-1. 选择 **“创建”**。
+1. 选择“创建”  。
     ![Azure 门户中的 Azure AD B2C 资源创建页](./media/billing/portal-01-create-b2c-resource-page.png)
 
 针对 Azure AD B2C 租户完成这些步骤后，将会根据 Azure Direct 或企业协议详细信息（如果适用）在 Azure 订阅中计费。
@@ -140,4 +140,4 @@ Azure AD B2C 中支持 Azure 云解决方案提供商 (CSP) 订阅。 可以使�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关最新的定价信息，请参阅[Azure 活动目录 B2C 定价](https://azure.microsoft.com/pricing/details/active-directory-b2c/)。
+有关最新定价信息，请参阅[定价 Azure Active Directory B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/)。

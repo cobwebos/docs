@@ -8,10 +8,10 @@ ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
 ms.openlocfilehash: 2af20a1ddf4239b7eec6cceabf2ff9711959c128
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77189110"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>（已弃用）在 Azure 容器服务 DC/OS 群集上使用 Vamp 通过 Canary 发布微服务
@@ -42,7 +42,7 @@ ms.locfileid: "77189110"
 
 ## <a name="set-up-vamp"></a>安装 Vamp
 
-现在您已经运行了 DC/OS 群集，可以从 DC/OS UI（http：\//本地主机：80）安装 Vamp。 
+现在，你已有一个正在运行的 DC/OS 群集，可以通过 DC/OS UI （http：\//localhost：80）安装 Vamp。 
 
 ![DC/OS UI](./media/container-service-dcos-vamp-canary-release/01_set_up_vamp.png)
 
@@ -133,7 +133,7 @@ Vamp 启动并运行后，请从蓝图部署一个服务。
 
 1. 转到“部署”。****
 
-2. 单击 **“添加”**。
+2. 单击 **“添加”** 。
 
 3. 粘贴以下蓝图 YAML。 此蓝图包含一个群集，该群集只包含一个要在后续步骤中更改的服务变体：
 
@@ -151,7 +151,7 @@ Vamp 启动并运行后，请从蓝图部署一个服务。
               webport: 8080/http # cluster endpoint, used for canary releasing
    ```
 
-4. 单击“保存”。**** Vamp 将启动部署。
+4. 单击“ **保存**”。 Vamp 将启动部署。
 
 该部署将列在“部署”页上。**** 单击该部署监视其状态。
 
@@ -211,7 +211,7 @@ Vamp 在 DC/OS 代理节点上部署了 sava 服务，从而在端口 9050 上�
               webport: 8080/http # cluster endpoint to update
    ```
   
-3. 单击“保存”。**** 该蓝图会存储，并列在“蓝图”页上。****
+3. 单击“ **保存**”。 该蓝图会存储，并列在“蓝图”页上。****
 
 4. 在 sava:1.1 蓝图中打开操作菜单，并单击“合并到”。****
 

@@ -12,10 +12,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 8248ca0abb1d633786b09b894bcd6b1089ab2d8c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260886"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的 OAuth 2.0 授权代码流
@@ -37,8 +37,8 @@ Azure AD B2C 扩展了标准 OAuth 2.0 流，使其功能远远超出了简单�
 1. 将 `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` 替换为之前在 Azure AD B2C 租户中注册的应用程序的应用程序 ID。
 1. 将 `{policy}` 替换为在租户中创建的策略的名称，例如 `b2c_1_sign_in`。
 
-## <a name="1-get-an-authorization-code"></a>1. 获取授权代码
-授权代码流始于客户端将用户定向到的 `/authorize` 终结点。 这是授权代码流中用户会执行操作的交互部分。 在此请求中，客户端指示在 `scope` 参数中需要从用户处获取的权限。 下面有三个示例（为方便阅读，提供了换行符），每个示例都使用不同的用户流。
+## <a name="1-get-an-authorization-code"></a>1.获取授权代码
+授权代码流始于客户端将用户定向到 `/authorize` 终结点。 这是授权代码流中用户会执行操作的交互部分。 在此请求中，客户端指示在 `scope` 参数中需要从用户处获取的权限。 下面有三个示例（为方便阅读，提供了换行符），每个示例都使用不同的用户流。
 
 
 ```HTTP
@@ -52,14 +52,14 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 ```
 
 
-| 参数 | 必需？ | 描述 |
+| 参数 | 必需？ | 说明 |
 | --- | --- | --- |
-|{tenant}| 必选 | Azure AD B2C 租户的名称|
-| {policy} | 必选 | 要运行的用户流。 指定在 Azure AD B2C 租户中创建的用户流的名称。 例如：`b2c_1_sign_in`、`b2c_1_sign_up` 或 `b2c_1_edit_profile`。 |
-| client_id |必选 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
-| response_type |必选 |响应类型，其中必须包括 `code` 的授权待码流。 |
-| redirect_uri |必选 |应用的重定向 URI，应用可通过此 URI 发送和接收身份验证响应。 它必须完全匹配在门户中注册的其中一个重定向 URI，但必须经 URL 编码。 |
-| scope |必选 |范围的空格分隔列表。 一个范围值可向 Azure Active Directory (Azure AD) 指示正在请求的两个权限。 使用客户端 ID 作为范围表示，应用需要可对自己的服务或 Web API（由同一客户端 ID 表示）使用的访问令牌。  `offline_access` 范围表示应用需要刷新令牌才能获取对资源的长生存期访问权限。 还可使用 `openid` 范围从 Azure AD B2C 请求 ID 令牌。 |
+|{tenant}| 必须 | Azure AD B2C 租户的名称|
+| {policy} | 必须 | 要运行的用户流。 指定在 Azure AD B2C 租户中创建的用户流的名称。 例如：`b2c_1_sign_in`、`b2c_1_sign_up` 或 `b2c_1_edit_profile`。 |
+| client_id |必须 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
+| response_type |必须 |响应类型，其中必须包括 `code` 的授权待码流。 |
+| redirect_uri |必须 |应用的重定向 URI，应用可通过此 URI 发送和接收身份验证响应。 它必须完全匹配在门户中注册的其中一个重定向 URI，但必须经 URL 编码。 |
+| scope |必须 |范围的空格分隔列表。 一个范围值可向 Azure Active Directory (Azure AD) 指示正在请求的两个权限。 使用客户端 ID 作为范围表示，应用需要可对自己的服务或 Web API（由同一客户端 ID 表示）使用的访问令牌。  `offline_access` 范围表示应用需要刷新令牌才能获取对资源的长生存期访问权限。 还可使用 `openid` 范围从 Azure AD B2C 请求 ID 令牌。 |
 | response_mode |建议 |用于将生成的授权代码发回应用的方法。 可以是 `query`、`form_post` 或 `fragment`。 |
 | state |建议 |请求中包含的值，可以是要使用的任何内容的字符串。 随机生成的唯一值通常用于防止跨网站请求伪造攻击。 它还可用于在身份验证请求发生前，对有关用户在应用中的状态信息进行编码。 例如，用户所处的页面或要执行的用户流。 |
 | prompt |可选 |需要的用户交互类型。 目前，唯一有效的值为 `login`，这会强制用户在该请求中输入其凭据。 单一登录不会生效。 |
@@ -76,10 +76,10 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...        // the auth
 &state=arbitrary_data_you_can_receive_in_the_response                // the value provided in the request
 ```
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 | --- | --- |
-| 代码 |应用程序请求的授权代码。 应用可以使用授权代码请求目标资源的访问令牌。 授权代码的生存期非常短。 通常，它们在约 10 分钟后过期。 |
-| state |请参阅上一部分的表中的完整说明。 如果请求中包含 `state` 参数，响应中应该出现相同的值。 应用需验证请求和响应中的 `state` 值是否相同。 |
+| code |应用请求的授权代码。 应用可以使用授权代码请求目标资源的访问令牌。 授权代码的生存期非常短。 通常，它们在约 10 分钟后过期。 |
+| state |请参阅上一部分的表中的完整说明。 如果请求中包含 `state` 参数，响应中就应该出现相同的值。 应用需验证请求和响应中的 `state` 值是否相同。 |
 
 错误响应也可能发送到重定向 URI，让应用能够对其进行适当处理：
 
@@ -90,14 +90,14 @@ error=access_denied
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 | --- | --- |
 | error |可用于分类发生的错误类型的错误代码字符串。 还可使用该字符串对错误作出响应。 |
-| error_description |可帮助用户识别身份验证错误根本原因的特定错误消息。 |
-| state |请参阅上表中的完整说明。 如果请求中包含 `state` 参数，响应中应该出现相同的值。 应用需验证请求和响应中的 `state` 值是否相同。 |
+| error_description |帮助识别身份验证错误根本原因的特定错误消息。 |
+| state |请参阅上表中的完整说明。 如果请求中包含 `state` 参数，响应中就应该出现相同的值。 应用需验证请求和响应中的 `state` 值是否相同。 |
 
-## <a name="2-get-a-token"></a>2. 获取令牌
-现在，已获取授权代码，可将 POST 请求发送到 `/token` 终结点，兑换 `code` 来获取所需资源的令牌。 在 Azure AD B2C 中，可以通过在请求中指定其他 API 的范围来像往常一样[请求其他 API](access-tokens.md#request-a-token)的访问令牌。
+## <a name="2-get-a-token"></a>2.获取令牌
+现在，已获取授权代码，可将 POST 请求发送到 `/token` 终结点，兑换 `code` 来获取所需资源的令牌。 在 Azure AD B2C 中，可以像往常一样通过在请求中指定其他 API 的范围来[为这些 API 请求访问令牌](access-tokens.md#request-a-token)。
 
 还可以按照将应用的客户端 ID 用作所请求范围（这将导致具有该客户端 ID 的访问令牌作为“受众”）的约定，为应用自己的后端 Web API 请求访问令牌：
 
@@ -110,16 +110,16 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 ```
 
-| 参数 | 必需？ | 描述 |
+| 参数 | 必需？ | 说明 |
 | --- | --- | --- |
-|{tenant}| 必选 | Azure AD B2C 租户的名称|
-|{policy}| 必选| 用于获取授权代码的用户流。 无法在此请求中使用不同的用户流。 |
-| client_id |必选 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。|
+|{tenant}| 必须 | Azure AD B2C 租户的名称|
+|{policy}| 必须| 用于获取授权代码的用户流。 无法在此请求中使用不同的用户流。 |
+| client_id |必须 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。|
 | client_secret | 是，在 Web 应用中 | 在 [Azure 门户](https://portal.azure.com/)中生成的应用程序机密。 客户端密码在此流中用于 Web 应用场景，在其中客户端可以安全地存储客户端密码。 对于本机应用（公共客户端）场景，客户端密码不能安全地存储，因此不能在此调用中使用。 如果使用客户端密码，请定期更改。 |
-| grant_type |必选 |授权的类型。 对于授权代码流，授权类型必须为 `authorization_code`。 |
+| grant_type |必须 |授权的类型。 对于授权代码流，授权类型必须为 `authorization_code`。 |
 | scope |建议 |范围的空格分隔列表。 一个范围值，该值向 Azure AD 指示正在请求的两个权限。 使用客户端 ID 作为范围表示，应用需要可对自己的服务或 Web API（由同一客户端 ID 表示）使用的访问令牌。  `offline_access` 范围表示应用需要刷新令牌才能获取对资源的长生存期访问权限。  还可使用 `openid` 范围从 Azure AD B2C 请求 ID 令牌。 |
-| 代码 |必选 |在流的第一个阶段获取的授权代码。 |
-| redirect_uri |必选 |在其中收到授权代码的应用程序的重定向 URI。 |
+| code |必须 |在流的第一个阶段获取的授权代码。 |
+| redirect_uri |必须 |在其中收到授权代码的应用程序的重定向 URI。 |
 
 成功令牌响应如下所示：
 
@@ -133,7 +133,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| 参数 | 描述 |
+| 参数 | 说明 |
 | --- | --- |
 | not_before |epoch 时间中令牌被视为有效的时间。 |
 | token_type |令牌类型值。 Azure AD 唯一支持的类型是 Bearer。 |
@@ -151,12 +151,12 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 }
 ```
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 | --- | --- |
 | error |可用于分类发生的错误类型的错误代码字符串。 还可使用该字符串对错误作出响应。 |
-| error_description |可帮助用户识别身份验证错误根本原因的特定错误消息。 |
+| error_description |帮助识别身份验证错误根本原因的特定错误消息。 |
 
-## <a name="3-use-the-token"></a>3. 使用令牌
+## <a name="3-use-the-token"></a>3.使用令牌
 现在你已成功获取访问令牌，可通过在 `Authorization` 标头中加入令牌的方式，在后端 Web API 请求中使用该令牌：
 
 ```HTTP
@@ -165,7 +165,7 @@ Host: mytaskwebapi.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 ```
 
-## <a name="4-refresh-the-token"></a>4. 刷新令牌
+## <a name="4-refresh-the-token"></a>4.刷新令牌
 访问令牌和 ID 令牌的生存期较短。 过期后，必须将其刷新才能继续访问资源。 若要执行此操作，请向 `/token` 终结点提交另一个 POST 请求。 这次提供的是 `refresh_token` 而不是 `code`：
 
 ```HTTP
@@ -176,16 +176,16 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| 参数 | 必需？ | 描述 |
+| 参数 | 必需？ | 说明 |
 | --- | --- | --- |
-|{tenant}| 必选 | Azure AD B2C 租户的名称|
-|{policy} |必选 |用于获取原始刷新令牌的用户流。 无法在此请求中使用不同的用户流。 |
-| client_id |必选 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
+|{tenant}| 必须 | Azure AD B2C 租户的名称|
+|{policy} |必须 |用于获取原始刷新令牌的用户流。 无法在此请求中使用不同的用户流。 |
+| client_id |必须 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
 | client_secret | 是，在 Web 应用中 | 在 [Azure 门户](https://portal.azure.com/)中生成的应用程序机密。 客户端密码在此流中用于 Web 应用场景，在其中客户端可以安全地存储客户端密码。 对于本机应用（公共客户端）场景，客户端密码不能安全地存储，因此不能在此调用中使用。 如果使用客户端密码，请定期更改。 |
-| grant_type |必选 |授权的类型。 对于授权代码流的此阶段，授权类型必须为 `refresh_token`。 |
+| grant_type |必须 |授权的类型。 对于授权代码流的此阶段，授权类型必须为 `refresh_token`。 |
 | scope |建议 |范围的空格分隔列表。 一个范围值，该值向 Azure AD 指示正在请求的两个权限。 使用客户端 ID 作为范围表示，应用需要可对自己的服务或 Web API（由同一客户端 ID 表示）使用的访问令牌。  `offline_access` 作用域表示应用需要刷新令牌才能获得访问资源的长生存期。  还可使用 `openid` 范围从 Azure AD B2C 请求 ID 令牌。 |
 | redirect_uri |可选 |在其中收到授权代码的应用程序的重定向 URI。 |
-| refresh_token |必选 |在流的第二个阶段获取的原始刷新令牌。 |
+| refresh_token |必须 |在流的第二个阶段获取的原始刷新令牌。 |
 
 成功令牌响应如下所示：
 
@@ -199,7 +199,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| 参数 | 描述 |
+| 参数 | 说明 |
 | --- | --- |
 | not_before |epoch 时间中令牌被视为有效的时间。 |
 | token_type |令牌类型值。 Azure AD 唯一支持的类型是 Bearer。 |
@@ -217,10 +217,10 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
 }
 ```
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 | --- | --- |
 | error |可用于分类发生的错误类型的错误代码字符串。 还可使用该字符串对错误作出响应。 |
-| error_description |可帮助用户识别身份验证错误根本原因的特定错误消息。 |
+| error_description |帮助识别身份验证错误根本原因的特定错误消息。 |
 
 ## <a name="use-your-own-azure-ad-b2c-directory"></a>使用自己的 Azure AD B2C 目录
 若要自行尝试这些请求，请完成以下步骤。 使用自己的值替换本文中使用的示例值。

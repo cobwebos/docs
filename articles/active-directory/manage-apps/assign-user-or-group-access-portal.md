@@ -1,5 +1,5 @@
 ---
-title: 将用户或组分配给 Azure AD 中的企业应用
+title: 将用户或组分配到 Azure AD 中的企业应用
 description: 如何选择企业应用，在 Azure Active Directory 中向其分配用户或组
 services: active-directory
 author: msmimart
@@ -13,75 +13,75 @@ ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 186e36e4625a60362c54972b16b53f0f3e6753fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79409186"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>在 Azure Active Directory 中向企业应用分配用户或组
 
-本文介绍如何从 Azure 门户或使用 PowerShell 将用户或组分配给 Azure 活动目录 （Azure AD） 中的企业应用程序。 将用户分配给应用程序时，应用程序将显示在用户的["我的应用"访问面板](https://myapps.microsoft.com/)中，以便轻松访问。 如果应用程序公开角色，您还可以向用户分配特定角色。
+本文介绍如何从 Azure 门户内或通过使用 PowerShell 将用户或组分配到 Azure Active Directory （Azure AD）中的企业应用程序。 将用户分配到应用程序时，应用程序会显示在用户的["我的应用访问面板](https://myapps.microsoft.com/)" 中，以便于访问。 如果应用程序公开角色，你还可以将特定角色分配给用户。
 
-为了更好地控制，某些类型的企业应用程序可以配置为[需要用户分配](#configure-an-application-to-require-user-assignment)。 
+为了更好地控制，可以将某些类型的企业应用程序配置为[要求用户分配](#configure-an-application-to-require-user-assignment)。 
 
-要[将用户或组分配给企业应用](#assign-users-or-groups-to-an-app-via-the-azure-portal)，您需要以全局管理员、应用程序管理员、云应用程序管理员或企业应用的分配所有者身份登录。
+若要[将用户或组分配到企业应用](#assign-users-or-groups-to-an-app-via-the-azure-portal)，需要以 "全局管理员"、"应用程序管理员"、"云应用程序管理员" 或 "企业应用程序分配的所有者" 身份登录。
 
 > [!NOTE]
-> 基于组的分配需要 Azure 活动目录高级 P1 或 P2 版本。 仅支持安全组支持基于组的分配。 当前不支持嵌套组成员身份和 Office 365 组。 有关本文中讨论的功能的更多许可要求，请参阅[Azure 活动目录定价页](https://azure.microsoft.com/pricing/details/active-directory)。 
+> 基于组的分配需要 Azure Active Directory Premium P1 或 P2 版本。 仅安全组支持基于组的分配。 当前不支持嵌套的组成员身份和 Office 365 组。 有关本文中所述功能的更多许可要求，请参阅[Azure Active Directory 定价页](https://azure.microsoft.com/pricing/details/active-directory)。 
 
-## <a name="configure-an-application-to-require-user-assignment"></a>将应用程序配置为需要用户分配
+## <a name="configure-an-application-to-require-user-assignment"></a>将应用程序配置为要求用户分配
 
-对于以下类型的应用程序，您可以选择要求用户在用户访问应用程序之前将其分配到该应用程序：
+使用以下类型的应用程序时，你可以选择要求用户先分配到应用程序，然后才能访问该应用程序：
 
-- 为基于 SAML 的身份验证为联合单一登录 （SSO） 配置的应用程序
-- 使用 Azure 活动目录预身份验证的应用程序代理应用程序
-- 在 Azure AD 应用程序平台上构建的应用程序，在用户或管理员同意该应用程序后使用 OAuth 2.0 / OpenID 连接身份验证。
+- 为联合单一登录（SSO）配置了基于 SAML 的身份验证的应用程序
+- 使用 Azure Active Directory 预身份验证的应用程序代理应用程序
+- 在用户或管理员同意该应用程序后，在 Azure AD 应用程序平台上构建的应用程序使用 OAuth 2.0/OpenID Connect 身份验证。
 
-当需要用户分配时，只有您显式分配给应用程序的用户才能登录。 他们可以访问其"我的应用"页面上的应用或使用直接链接。 
+需要用户分配时，只有显式分配给该应用程序的用户才能登录。 他们可以在 "我的应用" 页上或通过使用直接链接来访问应用程序。 
 
-当分配*不需要*时，由于您将此选项设置为 **"否**"，或者由于应用程序使用另一个 SSO 模式，如果任何用户具有指向应用程序的直接链接或应用程序**属性**页中的**用户访问 URL，** 则任何用户都可以访问该应用程序。 
+当*不需要*赋值时，由于已将此选项设置为 "**否**" 或应用程序使用另一个 SSO 模式，因此，如果应用程序在应用程序的 "**属性**" 页中具有指向应用程序或**用户访问 URL**的直接链接，则任何用户都将能够访问该应用程序。 
 
-此设置不会影响应用程序是否显示在"我的应用访问"面板上。 将用户或组分配给应用程序后，应用程序将显示在用户的"我的应用"访问面板上。 有关背景，请参阅[管理对应用的访问](what-is-access-management.md)。
+此设置不会影响应用程序是否出现在 "我的应用" 访问面板上。 向应用程序分配用户或组后，应用程序会显示在用户的 "我的应用" 访问面板上。 有关背景知识，请参阅[管理对应用的访问权限](what-is-access-management.md)。
 
 
-要要求应用程序的用户分配：
+需要对应用程序进行用户分配：
 
 1. 使用管理员帐户或应用程序所有者登录到[Azure 门户](https://portal.azure.com)。
 
-2. 选择**Azure 活动目录**。 在左侧导航菜单中，选择**企业应用程序**。
+2. 选择“Azure Active Directory”  。 在左侧导航菜单中，选择 "**企业应用程序**"。
 
-3. 从列表中选择应用程序。 如果看不到应用程序，请开始在搜索框中键入其名称。 或者使用筛选器控件选择应用程序类型、状态或可见性，然后选择 **"应用**"。
+3. 从列表中选择应用程序。 如果看不到该应用程序，请开始在搜索框中键入其名称。 或使用筛选器控件选择应用程序类型、状态或可见性，然后选择 "**应用**"。
 
-4. 在左侧导航菜单中，选择 **"属性**"。
+4. 在左侧导航菜单中，选择 "**属性**"。
 
-5. 确保**所需的用户分配？** 切换设置为 **"是**"。
+5. 请确保 "**需要进行用户分配"** 切换为 **"是"**。
 
    > [!NOTE]
-   > 如果 **"需要用户分配？"** 切换不可用，则可以使用 PowerShell 在服务主体上设置 AppRoleAssignment 需要属性。
+   > 如果 "**需要用户分配" 切换功能**不可用，则可以使用 PowerShell 设置服务主体上的 appRoleAssignmentRequired 属性。
 
-6. 选择屏幕顶部的 **"保存**"按钮。
+6. 选择屏幕顶部的 "**保存**" 按钮。
 
 ## <a name="assign-users-or-groups-to-an-app-via-the-azure-portal"></a>通过 Azure 门户将用户或组分配给应用
 
-1. 使用全局管理员、应用程序管理员或云应用程序管理员帐户或作为企业应用的分配所有者登录到[Azure 门户](https://portal.azure.com)。
-2. 选择**Azure 活动目录**。 在左侧导航菜单中，选择**企业应用程序**。
-3. 从列表中选择应用程序。 如果看不到应用程序，请开始在搜索框中键入其名称。 或者使用筛选器控件选择应用程序类型、状态或可见性，然后选择 **"应用**"。
-4. 在左侧导航菜单中，选择 **"用户"和"组**"。
+1. 使用 "全局管理员"、"应用程序管理员" 或 "云应用程序管理员" 帐户或 "企业应用的分配所有者" 登录到[Azure 门户](https://portal.azure.com)。
+2. 选择“Azure Active Directory”  。 在左侧导航菜单中，选择 "**企业应用程序**"。
+3. 从列表中选择应用程序。 如果看不到该应用程序，请开始在搜索框中键入其名称。 或使用筛选器控件选择应用程序类型、状态或可见性，然后选择 "**应用**"。
+4. 在左侧导航菜单中，选择 "**用户和组**"。
    > [!NOTE]
-   > 如果要将用户分配给 Microsoft 应用程序（如 Office 365 应用），其中一些应用将使用 PowerShell。 
+   > 如果要将用户分配到 Microsoft 应用程序（如 Office 365 应用程序），其中一些应用程序使用 PowerShell。 
 5. 选择“添加用户”按钮。****
-6. 在"**添加分配"** 窗格中，选择 **"用户"和"组**"。
-7. 选择要分配给应用程序的用户或组，或在搜索框中开始键入用户或组的名称。 您可以选择多个用户和组，您的选择将显示在 **"选定项目**"下。
-8. 完成后，单击 **"选择**"。
+6. 在 "**添加分配**" 窗格中，选择 "**用户和组**"。
+7. 选择要分配给应用程序的用户或组，或开始在搜索框中键入用户或组的名称。 你可以选择多个用户和组，并且你的选择将显示在 "**选定项**" 下。
+8. 完成后，单击 "**选择**"。
 
    ![将用户或组分配给应用](./media/assign-user-or-group-access-portal/assign-users.png)
 
-9. 在"**用户和组**"窗格中，从列表中选择一个或多个用户或组，然后选择窗格底部的 **"选择**"按钮。
-10. 如果应用程序支持它，则可以为用户或组分配角色。 在"**添加分配"** 窗格中，**选择"选择角色**"。 然后，在 **"选择角色"** 窗格中，选择要应用于所选用户或组的角色，然后在窗格底部选择 **"确定**"。 
+9. 在 "**用户和组**" 窗格中，从列表中选择一个或多个用户或组，然后选择窗格底部的 "**选择**" 按钮。
+10. 如果应用程序支持，则可以将角色分配给用户或组。 在 "**添加分配**" 窗格中，选择 "**选择角色**"。 然后，在 "**选择角色**" 窗格中，选择要应用于所选用户或组的角色，然后在窗格底部选择 **"确定"** 。 
 
     > [!NOTE]
-    > 如果应用程序不支持角色选择，则分配默认访问角色。 在这种情况下，应用程序管理用户具有的访问级别。
+    > 如果应用程序不支持角色选择，则分配默认访问角色。 在这种情况下，应用程序管理用户拥有的访问级别。
 
 2. 在“添加分配”窗格中，选择窗格底部的“分配”按钮。********
 
@@ -155,7 +155,7 @@ ms.locfileid: "79409186"
 
 ## <a name="related-articles"></a>相关文章
 
-- [了解有关最终用户访问应用程序的更多信息](end-user-experiences.md)
+- [详细了解最终用户对应用程序的访问](end-user-experiences.md)
 - [规划 Azure AD 访问面板部署](access-panel-deployment-plan.md)
 - [管理对应用的访问](what-is-access-management.md)
  

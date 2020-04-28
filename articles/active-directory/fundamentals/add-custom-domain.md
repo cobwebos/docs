@@ -14,15 +14,15 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: de91bd7e1e4c5f9909213f663dd3ede0f979d4de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79262147"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>使用 Azure Active Directory 门户添加自定义域名
 
-每个新的 Azure AD 租户都附带一个初始域名，*\<域名>.onmicrosoft.com。* 无法更改或删除初始域名，但可以添加组织的名称。 添加自定义域名有助于创建用户所熟悉的用户名，例如 *alain\@contoso.com*。
+每个新的 Azure AD 租户都附带了一个初始域名， * \<domainname>. onmicrosoft.com*。 无法更改或删除初始域名，但可以添加组织的名称。 添加自定义域名有助于创建用户所熟悉的用户名，例如 *alain\@contoso.com*。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -30,7 +30,7 @@ ms.locfileid: "79262147"
 
 ## <a name="create-your-directory-in-azure-ad"></a>在 Azure AD 中创建目录
 
-获取域名后，可以创建第一个 Azure AD 目录。 使用具有订阅“所有者”角色的帐户登录到目录的 Azure 门户。****
+获取域名后，可以创建第一个 Azure AD 目录。 使用具有订阅“所有者”角色的帐户登录到目录的 Azure 门户。 
 
 遵循[为组织创建新租户](active-directory-access-create-new-tenant.md#create-a-new-tenant-for-your-organization)中的步骤创建新目录。
 
@@ -40,9 +40,9 @@ ms.locfileid: "79262147"
 有关订阅角色的详细信息，请参阅 [Azure RBAC 角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles)。
 
 >[!TIP]
-> 如果你打算将本地 Windows Server AD 与 Azure AD 相联合，则需要在运行 Azure AD Connect 工具同步目录时选中“我计划将此域配置为使用本地 Active Directory 进行单一登录”****。
+> 如果你打算将本地 Windows Server AD 与 Azure AD 相联合，则需要在运行 Azure AD Connect 工具同步目录时选中“我计划将此域配置为使用本地 Active Directory 进行单一登录”  。
 >
-> 还需要在向导的“Azure AD 域”步骤中注册选择用于与本地目录进行联合的域名****。 若要大致了解该设置，请参阅[验证选择用于联合的 Azure AD 域](../hybrid/how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation)。 如果没有 Azure AD Connect 工具，可[在此处下载](https://go.microsoft.com/fwlink/?LinkId=615771)。
+> 还需要在向导的“Azure AD 域”步骤中注册选择用于与本地目录进行联合的域名  。 若要大致了解该设置，请参阅[验证选择用于联合的 Azure AD 域](../hybrid/how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation)。 如果没有 Azure AD Connect 工具，可[在此处下载](https://go.microsoft.com/fwlink/?LinkId=615771)。
 
 ## <a name="add-your-custom-domain-name-to-azure-ad"></a>将自定义域名添加到 Azure AD
 
@@ -50,18 +50,18 @@ ms.locfileid: "79262147"
 
 1. 使用目录的全局管理员帐户登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 在任意页面中搜索并选择“Azure Active Directory”。** 然后选择**自定义域名** > **添加自定义域**。
+1. 在任意页面中搜索并选择“Azure Active Directory”。  然后选择“自定义域名” **“添加自定义域”。**  >  
 
     ![“自定义域名”页，其中显示了“添加自定义域”](media/add-custom-domain/add-custom-domain.png)
 
-1. 在“自定义域名”中，输入组织的新名称（在本示例中为 *contoso.com*）。**** 选择“添加域”。****
+1. 在“自定义域名”中，输入组织的新名称（在本示例中为 **contoso.com**）。  选择“添加域”。 
 
     ![“自定义域名”页，其中显示了“添加自定义域”页](media/add-custom-domain/add-custom-domain-blade.png)
 
     >[!IMPORTANT]
-    >您必须包括 *.com* *、.net*或任何其他顶级扩展，才能正常工作。
+    >若要正常完成此过程，必须包含 *.com*、 *.net* 或其他任何顶级扩展名。
 
-    将添加未验证的域。 此时将出现“contoso.com”页，其中显示了 DNS 信息。**** 请保存此信息。 稍后需要使用此信息来创建 TXT 记录以配置 DNS。
+    将添加未验证的域。 此时将出现“contoso.com”页，其中显示了 DNS 信息。  请保存此信息。 稍后需要使用此信息来创建 TXT 记录以配置 DNS。
 
     ![包含 DNS 条目信息的“Contoso”页](media/add-custom-domain/contoso-blade-with-dns-info.png)
 
@@ -82,13 +82,13 @@ ms.locfileid: "79262147"
 
 1. 使用目录的全局管理员帐户登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 在任意页面中搜索并选择“Azure Active Directory”，然后选择“自定义域名”。******
+1. 在任意页面中搜索并选择“Azure Active Directory”，然后选择“自定义域名”。  
 
-1. 在“自定义域名”中选择自定义域名。**** 本示例选择了“contoso.com”。****
+1. 在“自定义域名”中选择自定义域名。  本示例选择了“contoso.com”。 
 
     ![“Fabrikam - 自定义域名”页，其中突出显示了“Contoso”](media/add-custom-domain/custom-blade-with-contoso-highlighted.png)
 
-1. 在“contoso.com”页上，选择“验证”以确保自定义域已正确注册并且在 Azure AD 中有效。********
+1. 在“contoso.com”页上，选择“验证”以确保自定义域已正确注册并且在 Azure AD 中有效。  
 
     ![包含 DNS 条目信息和“验证”按钮的“Contoso”页](media/add-custom-domain/contoso-blade-with-dns-info-verify.png)
 

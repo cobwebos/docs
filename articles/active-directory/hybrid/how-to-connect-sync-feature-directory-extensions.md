@@ -17,15 +17,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 80438319a6337dd6f28f9bdca8a428829b6cb0b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77917907"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同步：目录扩展
-通过目录扩展，可以使用本地 Active Directory 中的属性扩展 Azure AD 中的架构。 此功能允许使用继续在本地管理的属性来构建 LOB 应用。 这些属性可以通过[扩展使用](https://docs.microsoft.com/graph/extensibility-overview
-)。 您可以使用[Microsoft 图形资源管理器](https://developer.microsoft.com/graph/graph-explorer)查看可用属性。 您还可以使用此功能在 Azure AD 中创建动态组。
+通过目录扩展，可以使用本地 Active Directory 中的属性扩展 Azure AD 中的架构。 此功能允许使用继续在本地管理的属性来构建 LOB 应用。 可通过[扩展](https://docs.microsoft.com/graph/extensibility-overview
+)使用这些属性。 可以使用 [Microsoft Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)查看可用属性。 你还可以使用此功能在 Azure AD 中创建动态组。
 
 目前，没有任何 Office 365 工作负荷使用这些属性。
 
@@ -62,12 +62,12 @@ Azure AD 中的对象最多可以有 100 个目录扩展属性。 最大长度�
 
 这些属性的前面带有扩展名 \_{ApplicationId}\_ 前缀****。 对于 Azure AD 租户中的所有属性，ApplicationId 具有相同的值。 本主题中的所有其他方案都需要此值。
 
-## <a name="viewing-attributes-using-the-microsoft-graph-api"></a>使用 Microsoft 图形 API 查看属性
+## <a name="viewing-attributes-using-the-microsoft-graph-api"></a>使用 Microsoft Graph API 查看属性
 
-这些属性现在可以通过微软图形 API 使用 Microsoft[图形资源管理器](https://developer.microsoft.com/graph/graph-explorer#)。
+通过使用[Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer#)，现在可以通过 Microsoft Graph API 使用这些特性。
 
 >[!NOTE]
-> 在 Microsoft 图形 API 中，您需要要求返回属性。 显式选择如下所示的属性： `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division`.
+> 在 Microsoft Graph API 中，需要请求返回属性。 按如下所示显式选择属性`https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division`：。
 >
 > 有关详细信息，请参阅 [Microsoft Graph: Use query parameters](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter)（Microsoft Graph：使用查询参数）。
 
@@ -75,25 +75,25 @@ Azure AD 中的对象最多可以有 100 个目录扩展属性。 最大长度�
 
 一个更有用的方案是在动态安全或 Office 365 组中使用这些属性。
 
-1. 在 Azure AD 中创建新组。 给它一个好名字，并确保**成员资格类型**是**动态用户**。
+1. 在 Azure AD 中创建一个新组。 为其提供一个良好的名称，并确保**成员身份类型**为 "**动态用户**"。
 
-   ![具有新组的屏幕截图](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup1.png)
+   ![使用新组的屏幕截图](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup1.png)
 
-2. 选择以**添加动态查询**。 如果查看属性，则看不到这些扩展属性。 您需要首先添加它们。 单击 **"获取自定义扩展属性**"，输入应用程序 ID，然后单击 **"刷新属性**"。
+2. 选择以**添加动态查询**。 如果查看属性，则不会看到这些扩展属性。 需要首先添加它们。 单击 "**获取自定义扩展属性**"，输入应用程序 ID，然后单击 "**刷新属性**"。
 
-   ![已添加目录扩展的屏幕截图](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup2.png) 
+   ![添加了目录扩展的屏幕截图](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup2.png) 
 
-3. 打开属性下拉列表，并注意您添加的属性现在可见。
+3. 打开属性下拉，请注意，添加的属性现在可见。
 
-   ![UI 中显示新属性的屏幕截图](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup3.png)
+   ![新属性显示在 UI 中的屏幕截图](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup3.png)
 
-   完成表达式以满足您的要求。 在我们的示例中，规则设置为 **（用户.extension_9d98ed114c4840d298fad781915f27e4_division -eq "销售和营销"）。**
+   完成表达式以满足你的要求。 在我们的示例中，将规则设置为 **（user. extension_9d98ed114c4840d298fad781915f27e4_division-eq "销售和营销"）**。
 
-4. 创建组后，给 Azure AD 一些时间填充成员，然后查看成员。
+4. 创建组后，为 Azure AD 提供一段时间来填充成员，然后查看成员。
 
-   ![动态组中的成员的屏幕截图](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup4.png)  
+   ![包含动态组中成员的屏幕截图](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup4.png)  
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [Azure AD Connect 同步](how-to-connect-sync-whatis.md)配置的详细信息。
 
-详细了解[将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

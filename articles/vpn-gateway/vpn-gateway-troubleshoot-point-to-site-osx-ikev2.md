@@ -1,5 +1,5 @@
 ---
-title: Azure VPN 网关：对点到站点连接进行故障排除：Mac OS X 客户端
+title: Azure VPN 网关：排查点到站点连接问题：Mac OS X 客户端
 description: 对 P2S Mac OS X VPN 客户端连接进行故障排除的步骤
 services: vpn-gateway
 author: anzaman
@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 03/27/2018
 ms.author: alzam
 ms.openlocfilehash: f88053c93884e10e46a0f7d70106bda67b057562
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77425709"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>对 Mac OS X VPN 客户端的点到站点 VPN 连接进行故障排除
@@ -26,27 +26,27 @@ ms.locfileid: "77425709"
 
 
 ## <a name="troubleshoot-certificate-based-authentication"></a><a name="VPNClient"></a> 对基于证书的身份验证进行故障排除
-1. 检查 VPN 客户端设置。 通过按 Command + Shift 转到“网络设置”****，然后键入“VPN”检查 VPN 客户端设置。 从列表中，单击需要调查的 VPN 条目。
+1. 检查 VPN 客户端设置。 通过按 Command + Shift 转到“网络设置”  ，然后键入“VPN”检查 VPN 客户端设置。 从列表中，单击需要调查的 VPN 条目。
 
    ![IKEv2 基于证书的身份验证](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2cert1.jpg)
 2. 验证**服务器地址**是否是完整的 FQDN 并包括 cloudapp.net。
 3. **远程 ID** 应与服务器地址（网关 FQDN）相同。
 4. **本地 ID** 应与客户端证书的**使用者**相同。
-5. 单击“身份验证设置”**** 以打开“身份验证设置”页。
+5. 单击“身份验证设置”  以打开“身份验证设置”页。
 
    ![身份验证设置](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth2.jpg)
-6. 确认已从下拉列表中选择了“证书”****。
-7. 单击“选择”**** 按钮，并确认已选择正确的证书。 单击“确定”**** 保存所有更改。
+6. 确认已从下拉列表中选择了“证书”  。
+7. 单击“选择”  按钮，并确认已选择正确的证书。 单击“确定”  保存所有更改。
 
 ## <a name="troubleshoot-username-and-password-authentication"></a><a name="ikev2"></a>对用户名和密码身份验证进行故障排除
 
-1. 检查 VPN 客户端设置。 通过按 Command + Shift 转到“网络设置”****，然后键入“VPN”检查 VPN 客户端设置。 从列表中，单击需要调查的 VPN 条目。
+1. 检查 VPN 客户端设置。 通过按 Command + Shift 转到“网络设置”  ，然后键入“VPN”检查 VPN 客户端设置。 从列表中，单击需要调查的 VPN 条目。
 
    ![IKEv2 用户名密码](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2user3.jpg)
 2. 验证**服务器地址**是否是完整的 FQDN 并包括 cloudapp.net。
 3. **远程 ID** 应与服务器地址（网关 FQDN）相同。
 4. **本地 ID** 可以为空。
-5. 单击“身份验证设置”**** 按钮，并确认已从下拉列表中选择了“用户名”。
+5. 单击“身份验证设置”  按钮，并确认已从下拉列表中选择了“用户名”。
 
    ![身份验证设置](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth4.png)
 6. 请确保输入了正确的凭据。
@@ -55,12 +55,12 @@ ms.locfileid: "77425709"
 
 如果你尝试前面的步骤，并且所有内容均配置正确，请下载 [Wireshark](https://www.wireshark.org/#download) 并执行数据包捕获。
 
-1. 按 iskmp 筛选并查看 IKE_SA 数据包******。 应该能够在**有效负载：安全关联**下查看 SA 方案详细信息。 
+1. 按 iskmp 筛选并查看 IKE_SA 数据包   。 应该能够在**有效负载：安全关联**下查看 SA 方案详细信息。 
 2. 验证客户端和服务器是否具有公用集。
 
    ![数据包](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/packet5.jpg) 
   
-3. 如果网络跟踪上没有服务器响应，请验证在 Azure 门户网站上的 Azure 网关配置页上启用了 IKEv2 协议。
+3. 如果没有关于网络跟踪的任何服务器响应，请在 Azure 门户网站的 Azure 网关配置页中验证是否已启用 IKEv2 协议。
 
 ## <a name="next-steps"></a>后续步骤
 有关更多帮助，请参阅 [Microsoft 支持部门](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。

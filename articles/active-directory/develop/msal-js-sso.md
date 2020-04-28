@@ -1,5 +1,5 @@
 ---
-title: 单一登录 （MSAL.js） |蔚蓝
+title: 单一登录（MSAL） |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何使用适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 构建单一登录体验。
 services: active-directory
@@ -14,13 +14,13 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8080d4cf4c3f0091f7837b3fccead5474c42db55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79262849"
 ---
-# <a name="single-sign-on-with-msaljs"></a>使用 MSAL.js 的单一登录
+# <a name="single-sign-on-with-msaljs"></a>使用 MSAL.js 进行单一登录
 
 借助单一登录 (SSO)，用户只需输入其凭据一次即可登录，并建立可在多个应用程序中重复使用的会话，而无需再次进行身份验证。 这样可为用户提供无缝的体验，并减少重复提示用户输入凭据的次数。
 
@@ -116,7 +116,7 @@ userAgentApplication.loginRedirect(request);
 
 在某些情况下，应用程序有权通过另一应用程序中启动的身份验证访问经过身份验证的用户的上下文或 ID 令牌，并希望在不先通过 MSAL.js 登录的情况下，利用 SSO 获取令牌。
 
-例如：用户被登录到父 Web 应用程序，该应用程序承载另一个作为加载项或插件运行的 JavaScript 应用程序。
+此方案的示例如下：用户已登录到父 Web 应用程序，该应用程序托管作为加载项或插件运行的另一个 JavaScript 应用程序。
 
 可按如下所述实现此方案中的 SSO 体验：
 

@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 95f92d4e5616d7754c355610685701a8e089b84e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79265904"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>使用 Azure 数据工厂从 OData 源移动数据
@@ -30,7 +30,7 @@ ms.locfileid: "79265904"
 
 本文介绍如何使用 Azure 数据工厂中的复制活动从 OData 源移动数据。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。
 
-可以将数据从 OData 源复制到任何支持的接收器数据存储。 有关复制活动支持为接收器支持的数据存储的列表，请参阅[支持数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 数据工厂当前仅支持将数据从 OData 源移至其他数据存储，而不支持将数据从其他数据存储移至 OData 源。
+可以将数据从 OData 源复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 数据工厂当前仅支持将数据从 OData 源移至其他数据存储，而不支持将数据从其他数据存储移至 OData 源。
 
 ## <a name="supported-versions-and-authentication-types"></a>支持的版本和身份验证类型
 此 OData 连接器支持 OData 3.0 和 4.0 版，允许从云 OData 和本地 OData 源复制数据。 对于后者，需安装数据管理网关。 有关数据管理网关的详细信息，请参阅[在本地与云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文。
@@ -45,13 +45,13 @@ ms.locfileid: "79265904"
 
 创建管道的最简单方法是使用**** 复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-您还可以使用以下工具创建管道：**可视化工作室****、Azure PowerShell、Azure****资源管理器模板** **、.NET API**和 REST **API**。 有关创建具有复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API**和**REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
-1. 创建**链接服务**，将输入和输出数据存储链接到数据工厂。
-2. 创建**数据集**以表示复制操作的输入和输出数据。
-3. 创建具有将数据集作为输入和数据集作为输出的复制活动的**管道**。
+1. 创建**链接服务**以将输入和输出数据存储链接到数据工厂。
+2. 创建用于表示复制操作的输入和输出数据的**数据集**。
+3. 创建包含复制活动的**管道**，该活动将数据集作为输入，并将数据集作为输出。
 
 使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于从 OData 源复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 OData 源复制到 Azure Blob](#json-example-copy-data-from-odata-source-to-azure-blob) 部分。
 
@@ -60,7 +60,7 @@ ms.locfileid: "79265904"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供 OData 链接服务专属 JSON 元素的说明。
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必需 |
 | --- | --- | --- |
 | type |type 属性必须设置为：**OData** |是 |
 | url |OData 服务的 URL。 |是 |
@@ -68,7 +68,7 @@ ms.locfileid: "79265904"
 | username |如果使用基本身份验证，请指定用户名。 |是（仅在使用基本身份验证时适用） |
 | password |指定为用户名指定的用户帐户的密码。 |是（仅在使用基本身份验证时适用） |
 | authorizedCredential |如果使用 OAuth，请在数据工厂复制向导或编辑器中单击“授权”**** 按钮，并输入凭据，此时会自动生成此属性的值。 |是（仅在使用 OAuth 身份验证时适用） |
-| gatewayName |网关名称 - 数据工厂服务应使用此网关连接到本地 OData 服务。 仅指定从内部 OData 源复制数据时。 |否 |
+| gatewayName |网关名称 - 数据工厂服务应使用此网关连接到本地 OData 服务。 仅当从本地 OData 源复制数据时才指定。 |否 |
 
 ### <a name="using-basic-authentication"></a>使用基本身份验证
 ```json
@@ -145,9 +145,9 @@ ms.locfileid: "79265904"
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息****。 **ODataResource** 类型数据集（包括 OData 数据集）的 typeProperties 节具有以下属性
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必需 |
 | --- | --- | --- |
-| 路径 |OData 资源路径 |否 |
+| path |OData 资源路径 |否 |
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 有关可用于定义活动的节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
@@ -182,7 +182,7 @@ ms.locfileid: "79265904"
 | Edm.Int32 |Int32 |
 | Edm.Int64 |Int64 |
 | Edm.SByte |Int16 |
-| Edm.String |String |
+| Edm.String |字符串 |
 | Edm.Time |TimeSpan |
 | Edm.DateTimeOffset |DateTimeOffset |
 
@@ -190,13 +190,13 @@ ms.locfileid: "79265904"
 > OData 复杂数据类型，例如不支持对象。
 
 ## <a name="json-example-copy-data-from-odata-source-to-azure-blob"></a>JSON 示例：将数据从 OData 源复制到 Azure Blob
-此示例提供了使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道的示例 JSON 定义。 它们演示如何将数据从 OData 源复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。 此示例具有以下数据工厂实体：
+此示例提供示例 JSON 定义，可用于通过使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 它们演示如何将数据从 OData 源复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。 此示例具有以下数据工厂实体：
 
 1. [OData](#linked-service-properties) 类型的链接服务。
-2. [Azure 存储](data-factory-azure-blob-connector.md#linked-service-properties)类型的链接服务。
+2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)类型的链接服务。
 3. [ODataResource](#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
 4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)类型的输出[数据集](data-factory-create-datasets.md)。
-5. 具有复制活动的[管道](data-factory-create-pipelines.md)，使用[关系源](#copy-activity-properties)和[BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
+5. 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用[RelationalSource](#copy-activity-properties)和[BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
 此示例每小时将数据从针对 OData 源的查询复制到 Azure Blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
@@ -231,7 +231,7 @@ ms.locfileid: "79265904"
 }
 ```
 
-**O数据输入数据集：**
+**OData 输入数据集：**
 
 设置“external”: ”true”将告知数据工厂服务：数据集在数据工厂外部且不由数据工厂中的活动生成。
 
@@ -387,7 +387,7 @@ ms.locfileid: "79265904"
 要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
 
 ## <a name="repeatable-read-from-relational-sources"></a>从关系源进行可重复读取
-从关系数据源复制数据时，请注意可重复性，以免发生意外结果。 在 Azure 数据工厂中，可手动重新运行切片。 还可以为数据集配置重试策略，以便在出现故障时重新运行切片。 无论以哪种方式重新运行切片，都需要确保读取相同的数据，而与运行切片的次数无关。 请参阅[从关系源读取的可重复读取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
+从关系数据源复制数据时，请注意可重复性，以免发生意外结果。 在 Azure 数据工厂中，可手动重新运行切片。 还可以为数据集配置重试策略，以便在出现故障时重新运行切片。 无论以哪种方式重新运行切片，都需要确保读取相同的数据，而与运行切片的次数无关。 请参阅[从关系源进行可重复读取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
 
 ## <a name="performance-and-tuning"></a>性能和优化
 若要了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素及各种优化方法，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。

@@ -11,10 +11,10 @@ ms.date: 01/31/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c964a7bde0b7db9357c73fc79d2df3170075fcc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78186380"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
@@ -38,7 +38,7 @@ ms.locfileid: "78186380"
 
 **TrustFrameworkPolicy** 元素包含以下属性：
 
-| 特性 | 必选 | 描述 |
+| Attribute | 必选 | 说明 |
 |---------- | -------- | ----------- |
 | PolicySchemaVersion | 是 | 用于执行策略的架构版本。 值必须是 `0.3.0.0` |
 | TenantObjectId | 否 | Azure Active Directory B2C (Azure AD B2C) 租户的唯一对象标识符。 |
@@ -88,7 +88,7 @@ ms.locfileid: "78186380"
 
 **BasePolicy** 元素包含以下元素：
 
-| 元素 | 出现次数 | 描述 |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | --------|
 | TenantId | 1:1 | Azure AD B2C 租户的标识符。 |
 | PolicyId | 1:1 | 父策略的标识符。 |

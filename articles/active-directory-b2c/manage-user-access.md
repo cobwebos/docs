@@ -11,10 +11,10 @@ ms.date: 07/24/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: f04a3fea3801f917a3ae4aced04ef3824d1cfa82
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78184513"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中管理用户访问
@@ -34,11 +34,11 @@ ms.locfileid: "78184513"
 
 如果已将某个用户识别为未成年人，则你可以将 Azure AD B2C 中的用户流设置为以下三个选项之一：
 
-- **将签名的 JWT id_token 发回到应用程序**：在目录中注册用户，并将令牌返回到应用程序。 然后，应用程序将通过应用企业规则继续运行。 例如，应用程序可能继续采取家长同意过程。 若要使用此方法，请选择从应用程序接收 **ageGroup** 和 **consentProvidedForMinor** 声明。
+- **将已签名的 JWT id_token 发回到应用程序**：在目录中注册用户，并将令牌返回到应用程序。 然后，应用程序将通过应用企业规则继续运行。 例如，应用程序可能继续采取家长同意过程。 若要使用此方法，请选择从应用程序接收 **ageGroup** 和 **consentProvidedForMinor** 声明。
 
-- **将未签名的 JSON 令牌发送到应用程序**：Azure AD B2C 让应用程序知道用户是未成年人，并提供该用户的家长同意状态。 然后，应用程序将通过应用企业规则继续运行。 JSON 令牌不会在应用程序中成功完成身份验证。 应用程序必须根据 JSON 令牌中包含的声明处理未经身份验证的用户，这些声明可能包括 **name**、**email**、**ageGroup** 和 **consentProvidedForMinor**。
+- **将未签名的 JSON 令牌发送到应用程序**：Azure AD B2C 告知应用程序，用户是未成年人，并提供该用户的家长同意状态。 然后，应用程序将通过应用企业规则继续运行。 JSON 令牌不会在应用程序中成功完成身份验证。 应用程序必须根据 JSON 令牌中包含的声明处理未经身份验证的用户，这些声明可能包括 **name**、**email**、**ageGroup** 和 **consentProvidedForMinor**。
 
-- **阻止用户**：如果用户是未成年人，并且未提供家长同意，Azure AD B2C 可以通知用户他们被阻止。 不会颁发令牌，访问将被阻止，并且不会在注册旅程期间创建用户帐户。 若要实现此通知，可以提供适当的 HTML/CSS 内容页来告知用户，并显示相应的选项。 应用程序不需要对新的注册采取进一步的措施。
+- **阻止用户**：如果用户是未成年人，并且尚未提供家长同意，则 Azure AD B2C 可以告知该用户他们已被阻止。 不会颁发令牌，访问将被阻止，并且不会在注册旅程期间创建用户帐户。 若要实现此通知，可以提供适当的 HTML/CSS 内容页来告知用户，并显示相应的选项。 应用程序不需要对新的注册采取进一步的措施。
 
 ## <a name="get-parental-consent"></a>获得家长同意
 
@@ -46,17 +46,17 @@ ms.locfileid: "78184513"
 
 下面是收集家长同意的用户流示例：
 
-1. [Microsoft 图形 API](https://docs.microsoft.com/graph/use-the-api)操作将用户标识为次要用户，并将用户数据以未签名的 JSON 令牌的形式返回给应用程序。
+1. [Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) 操作将用户识别为未成年人，并将用户数据以未签名 JSON 令牌的形式返回给应用程序。
 
 2. 应用程序处理 JSON 令牌，并向未成年人显示一个屏幕，告知他们需要家长同意，并请求家长在线同意。
 
-3. Azure AD B2C 显示可让用户正常登录的登录旅程，并向应用程序颁发一个令牌，该令牌设置为包含 **legalAgeGroupClassification ="minorWithParentalConsent"**。 应用程序收集家长的电子邮件地址，并验证该家长是否为成年人。 为此，它会使用受信任的源，例如身份证颁发机构、执照验证或信用卡证明。 如果验证成功，则应用程序会提示未成年人使用 Azure AD B2C 用户流登录。 如果同意被拒绝（例如 **legalAgeGroupClassification ="minorWithoutParentalConsent"**），则 Azure AD B2C 会向应用程序返回 JSON 令牌（并非登录名），以重启同意过程。 可以选择性地自定义用户流，让未成年人或成年人重获未成年人帐户的访问权限，方法是向记录的未成年人电子邮件地址或成年人电子邮件地址发送一个注册码。
+3. Azure AD B2C 显示可让用户正常登录的登录旅程，并向应用程序颁发一个令牌，该令牌设置为包含 **legalAgeGroupClassification ="minorWithParentalConsent"** 。 应用程序收集家长的电子邮件地址，并验证该家长是否为成年人。 为此，它会使用受信任的源，例如身份证颁发机构、执照验证或信用卡证明。 如果验证成功，则应用程序会提示未成年人使用 Azure AD B2C 用户流登录。 如果同意被拒绝（例如 **legalAgeGroupClassification ="minorWithoutParentalConsent"** ），则 Azure AD B2C 会向应用程序返回 JSON 令牌（并非登录名），以重启同意过程。 可以选择性地自定义用户流，让未成年人或成年人重获未成年人帐户的访问权限，方法是向记录的未成年人电子邮件地址或成年人电子邮件地址发送一个注册码。
 
 4. 应用程序提供一个选项让未成年人撤消同意。
 
-5. 当未成年人或成人撤销同意时，微软图形 API 可用于更改**同意"为次要"****拒绝**。 或者，应用程序可以选择删除已撤消其同意的未成年人。 可以选择性地自定义用户流，让经过身份验证的未成年人（或使用未成年人帐户的家长）撤消同意。 Azure AD B2C 将 **consentProvidedForMinor** 记录为 **denied**。
+5. 未成年人或成人撤消同意时，可以使用 Microsoft Graph API 将 **consentProvidedForMinor** 更改为 **denied**。 或者，应用程序可以选择删除已撤消其同意的未成年人。 可以选择性地自定义用户流，让经过身份验证的未成年人（或使用未成年人帐户的家长）撤消同意。 Azure AD B2C 将 **consentProvidedForMinor** 记录为 **denied**。
 
-有关 **legalAgeGroupClassification**、**consentProvidedForMinor** 和 **ageGroup** 的详细信息，请参阅[用户资源类型](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user)。 有关自定义属性的详细信息，请参阅[使用自定义属性来收集有关用户的信息](user-flow-custom-attributes.md)。 使用 Microsoft 图形 API 处理扩展属性时，必须使用该属性的长版本，例如*extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth* *：2011-01-01T00：00：00：00：00Z*。
+有关 **legalAgeGroupClassification**、**consentProvidedForMinor** 和 **ageGroup** 的详细信息，请参阅[用户资源类型](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user)。 有关自定义属性的详细信息，请参阅[使用自定义属性来收集有关用户的信息](user-flow-custom-attributes.md)。 使用 Microsoft Graph API 解决扩展属性时，必须使用长版本的属性，例如“extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth”  ：2011-01-01T00:00:00Z  。
 
 ## <a name="gather-date-of-birth-and-countryregion-data"></a>收集出生日期和国家/地区数据
 
@@ -70,9 +70,9 @@ ms.locfileid: "78184513"
 
 2. 如果 country 元素中存在 **MinorConsent** 节点：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 计算用户必须在哪个日期出生，才能将其视为成年人。 例如，如果当前日期为 2015 年 3 月 14 日，**MinorConsent** 为 18，则出生日期必须晚于 2000 年 3 月 14。
+    a. 计算用户必须在哪个日期出生，才能将其视为成年人。 例如，如果当前日期为 2015 年 3 月 14 日，**MinorConsent** 为 18，则出生日期必须晚于 2000 年 3 月 14。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 将最小出生日期与实际出生日期相比较。 如果最小出生日期在用户的实际出生日期之前，则计算会返回 **Minor** 作为年龄组计算结果。
+    b. 将最小出生日期与实际出生日期相比较。 如果最小出生日期在用户的实际出生日期之前，则计算会返回 **Minor** 作为年龄组计算结果。
 
 3. 如果 country 元素中存在 **MinorNoConsentRequired** 节点，请使用 **MinorNoConsentRequired** 中的值重复步骤 2a 和 2b。 如果最小出生日期在用户的实际出生日期之前，则 2b 的输出将返回 **MinorNoConsentRequired**。
 

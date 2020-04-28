@@ -1,5 +1,5 @@
 ---
-title: 重定向 URI &回复 URL 限制 - 微软身份平台 |蔚蓝
+title: 重定向 URI 和回复 URL 限制 - Microsoft 标识平台 | Azure
 description: 回复 URL/重定向 URI 的局限性和限制
 author: SureshJa
 ms.author: sureshja
@@ -11,10 +11,10 @@ ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.openlocfilehash: 8fdc64632be8b5fcb3dca8de2ee833fef25719fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77656732"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>重定向 URI/答复 URL 限制和局限
@@ -24,23 +24,23 @@ ms.locfileid: "77656732"
  以下限制适用于回复 URL：
 
     * 回复 URL 必须以方案 `https` 开头。
-    * 回复 URL 区分大小写。 其大小写必须与正在运行的应用程序的 URL 路径的大小写匹配。 例如，如果应用程序在其路径中包括 `.../abc/response-oidc`，请不要在回复 URL 中指定 `.../ABC/response-oidc`。 由于 Web 浏览器将路径视为区分大小写，因此如果重定向到大小写不匹配的 `.../ABC/response-oidc` URL，则可能会排除与 `.../abc/response-oidc` 关联的 Cookie。
+    * 回复 URL 区分大小写。 其大小写必须与正在运行的应用程序的 URL 路径的大小写匹配。 例如，如果应用程序在其路径中包括 `.../abc/response-oidc`，请不要在回复 URL 中指定 `.../ABC/response-oidc`。 由于 Web 浏览器将路径视为区分大小写，因此如果重定向到大小写不匹配的 `.../abc/response-oidc` URL，则可能会排除与 `.../ABC/response-oidc` 关联的 Cookie。
     
 ## <a name="maximum-number-of-redirect-uris"></a>最大重定向 URI 数
 
 下表显示了注册应用时可添加的最大重定向 URI 数。
 
-| 正在登录的帐户 | 最大重定向 URI 数 | 描述 |
+| 正在登录的帐户 | 最大重定向 URI 数 | 说明 |
 |--------------------------|---------------------------------|-------------|
 | 任何组织的 Azure Active Directory (Azure AD) 租户中的 Microsoft 工作或学校帐户 | 256 | 应用程序清单中的 `signInAudience` 字段设置为 *AzureADMyOrg* 或 *AzureADMultipleOrgs* |
-| 个人 Microsoft 帐户、工作帐户和学校帐户 | 100 | `signInAudience`应用程序清单中的字段设置为*AzureADand个人 Microsoft 帐户* |
+| 个人 Microsoft 帐户、工作和学校帐户 | 100 | `signInAudience`应用程序清单中的字段设置为*AzureADandPersonalMicrosoftAccount* |
 
 ## <a name="maximum-uri-length"></a>最大 URI 长度
 
 对于要添加到应用注册中的每个重定向 URI，最多可以使用 256 个字符。
 
 ## <a name="supported-schemes"></a>支持的方案
-Azure AD 应用程序模型目前支持 HTTP 和 HTTPS 方案，用于在任何组织的 Azure Active Directory (Azure AD) 租户中登录 Microsoft 工作或学校帐户的应用程序。 也就是说，应用程序清单中的 `signInAudience` 字段设置为“AzureADMyOrg”** 或“AzureADMultipleOrgs”**。 对于在个人 Microsoft 帐户和工作帐户和学校帐户（`signInAudience`设置为*AzureADand个人 Microsoft 帐户*）中登录的应用，仅允许 HTTPS 方案。
+Azure AD 应用程序模型目前支持 HTTP 和 HTTPS 方案，用于在任何组织的 Azure Active Directory (Azure AD) 租户中登录 Microsoft 工作或学校帐户的应用程序。 也就是说，应用程序清单中的 `signInAudience` 字段设置为“AzureADMyOrg”** 或“AzureADMultipleOrgs”**。 对于登录到个人 Microsoft 帐户以及工作和学校帐户（ `signInAudience`设置为*AzureADandPersonalMicrosoftAccount*）的应用，只允许使用 HTTPS 方案。
 
 > [!NOTE]
 > 新的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验不允许开发人员在 UI 中添加使用 HTTP 方案的 URI。 对于登录工作或学校帐户的应用，仅支持通过应用清单编辑器添加 HTTP URI。 今后，新应用将无法在重定向 URI 中使用 HTTP 方案。 但是，在重定向 URI 中包含 HTTP 方案的早期应用将继续正常运行。 开发人员必须在重定向 URI 中使用 HTTPS 方案。
@@ -49,12 +49,12 @@ Azure AD 应用程序模型目前支持 HTTP 和 HTTPS 方案，用于在任何�
 
 通配符 URI（例如 `https://*.contoso.com`）可提供便利，但应避免使用。 在重定向 URI 中使用通配符会影响安全性。 根据 OAuth 2.0 规范（[RFC 6749 第 3.1.2 部分](https://tools.ietf.org/html/rfc6749#section-3.1.2)），重定向终结点 URI 必须是绝对 URI。 
 
-Azure AD 应用程序模型不支持配置为登录个人 Microsoft 帐户和工作或学校帐户的应用的通配符 URI。 但是，目前对于组织 Azure AD 租户中配置为使用工作或学校帐户登录的应用，允许使用通配符 URI。 
+Azure AD 应用程序模型不支持配置为登录个人 Microsoft 帐户和工作或学校帐户的应用的通配符 Uri。 但是，目前对于组织 Azure AD 租户中配置为使用工作或学校帐户登录的应用，允许使用通配符 URI。 
  
 > [!NOTE]
 > 新的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验不允许开发人员在 UI 中添加通配符 URI。 对于使用工作或学校帐户登录的应用，仅支持通过应用清单编辑器添加通配符 URI。 今后，新应用无法在重定向 URI 中使用通配符。 但是，在重定向 URI 中包含通配符的早期应用可继续正常运行。
 
-如果方案需要的重定向 URI 超过允许的最大值限制，而不是添加通配符重定向 URI，请考虑以下方法。
+如果你的方案需要的重定向 Uri 超过允许的最大限制，请考虑以下方法，而不是添加通配符重定向 URI。
 
 ### <a name="use-a-state-parameter"></a>使用状态参数
 

@@ -11,10 +11,10 @@ ms.date: 04/16/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 8358d3378ea892ebeef653bcb51243c9f1aa0b8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79259768"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中请求访问令牌
@@ -58,7 +58,7 @@ scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fapi%2Fread%20openid%20offline_acce
 
 ## <a name="request-a-token"></a>请求令牌
 
-若要请求访问令牌，需要一个授权代码。 下面是对 `/authorize` 终结点发出的授权代码请求的示例。 不支持将自定义域与访问令牌一起使用。 在请求 URL 中使用tenant-name.onmicrosoft.com域。
+若要请求访问令牌，需要一个授权代码。 下面是对 `/authorize` 终结点发出的授权代码请求的示例。 不支持将自定义域与访问令牌一起使用。 使用请求 URL 中的 tenant-name.onmicrosoft.com 域。
 
 在以下示例中，会替换这些值：
 

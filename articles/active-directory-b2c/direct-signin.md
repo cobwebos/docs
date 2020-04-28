@@ -11,10 +11,10 @@ ms.date: 06/18/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 9a02ad3ea43ae9d91489417bc314e3c23d54a958
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78188760"
 ---
 # <a name="set-up-direct-sign-in-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置直接登录
@@ -49,7 +49,7 @@ ms.locfileid: "78188760"
 
 如果已将应用程序的登录旅程配置为包括社交帐户（如 Facebook、LinkedIn 或 Google），则可以指定 `domain_hint` 参数。 此查询参数向 Azure AD B2C 提供有关应该用于登录的社交标识提供者的提示。 例如，如果应用程序指定 `domain_hint=facebook.com`，则登录会直接转到 Facebook 登录页。
 
-![注册登录页面，在 URL 中突出显示domain_hint查询参数](./media/direct-signin/domain-hint.png)
+![在 URL 中突出显示 domain_hint 查询参数时注册登录页](./media/direct-signin/domain-hint.png)
 
 如果使用自定义策略，则可以使用任何 `<ClaimsProvider>` 的 `<Domain>domain name</Domain>` XML 元素配置域名。
 

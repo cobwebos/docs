@@ -11,15 +11,15 @@ ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c11bc48742c398d2048a236c7d00af044971f845
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78185601"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的用户流
 
-Azure Active Directory B2C (Azure AD B2C) 可扩展的策略框架是服务的核心优势。 策略充分描述了标识体验，例如注册、登录或配置文件编辑。 若要帮助设置最常见的标识任务，Azure AD B2C 门户应包括名为“用户流”**** 的预定义且可配置的策略。
+Azure Active Directory B2C (Azure AD B2C) 可扩展的策略框架是服务的核心优势。 策略充分描述了标识体验，例如注册、登录或配置文件编辑。 若要帮助设置最常见的标识任务，Azure AD B2C 门户应包括名为“用户流”  的预定义且可配置的策略。
 
 ## <a name="what-are-user-flows"></a>什么是用户流？
 
@@ -61,7 +61,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 
 ## <a name="user-flow-versions"></a>用户流版本
 
-Azure 门户中一直在添加[新版本的用户流](user-flow-versions.md)。 当你开始使用 Azure AD B2C 时，系统会建议使用经过测试的用户流。 创建新用户流时，可从“建议”选项卡中选择所需的用户流。****
+Azure 门户中一直在添加[新版本的用户流](user-flow-versions.md)。 当你开始使用 Azure AD B2C 时，系统会建议使用经过测试的用户流。 创建新用户流时，可从“建议”选项卡中选择所需的用户流。 
 
 目前建议使用以下用户流：
 
@@ -71,7 +71,7 @@ Azure 门户中一直在添加[新版本的用户流](user-flow-versions.md)。 
 
 ## <a name="linking-user-flows"></a>链接用户流
 
-使用本地帐户的**注册或登录**用户流在体验的第一个页面上包含“忘记了密码?”链接****。 单击此链接不会自动触发密码重置用户流。
+使用本地帐户的**注册或登录**用户流在体验的第一个页面上包含“忘记了密码?”链接  。 单击此链接不会自动触发密码重置用户流。
 
 而是将错误代码 `AADB2C90118` 返回给应用程序。 应用程序需要通过运行一个可重置密码的特定用户流来处理此错误代码。 有关示例，请查看演示用户流链接方法的[简单 ASP.NET 示例](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI)。
 
@@ -81,8 +81,8 @@ Azure 门户中一直在添加[新版本的用户流](user-flow-versions.md)。 
 
 不保证在所有这些情况下都会验证电子邮件地址。 租户管理员可以在本地帐户的基本策略中禁用电子邮件验证。 即使启用了电子邮件地址验证，但如果地址来自社交标识提供者并且尚未更改，则也不会验证地址。
 
-只有**其他邮件**和**签名InNames**属性通过 Microsoft 图形 API 公开。 强身份验证详细信息属性中的电子邮件地址不可用。
+只有 **otherMails** 和 **signInNames** 属性通过 Microsoft Graph API 公开。 强身份验证详细信息属性中的电子邮件地址不可用。
 
 ## <a name="next-steps"></a>后续步骤
 
-要创建建议的用户流，请按照教程中的说明[：创建用户流](tutorial-create-user-flows.md)。
+若要创建建议的用户流，请遵照[教程：创建用户流](tutorial-create-user-flows.md)中的说明。

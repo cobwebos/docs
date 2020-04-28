@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/16/2019
 ms.openlocfilehash: 20e4827b1a86bff338646ef71f0dd732255c09c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77460018"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>在 HDInsight 上使用 Python 开发 Apache Storm 拓扑
@@ -28,15 +28,15 @@ ms.locfileid: "77460018"
 
 * 本地 Storm 开发环境（可选）。 仅当想要在本地运行拓扑时，才需要本地 Storm 环境。 有关详细信息，请参阅[设置开发环境](https://storm.apache.org/releases/current/Setting-up-development-environment.html)。
 
-* [Python 2.7 或更高](https://www.python.org/downloads/)。
+* [Python 2.7 或更高版本](https://www.python.org/downloads/)。
 
-* [Java 开发人员工具包 （JDK） 版本 8](https://aka.ms/azure-jdks).
+* [Java 开发人员工具包（JDK）版本 8](https://aka.ms/azure-jdks)。
 
 * 根据 Apache 要求正确[安装](https://maven.apache.org/install.html)的 [Apache Maven](https://maven.apache.org/download.cgi)。  Maven 是 Java 项目的项目生成系统。
 
 ## <a name="storm-multi-language-support"></a>Storm 多语言支持
 
-Apache Storm 设计为与使用任何编程语言编写的组件配合使用。 组件必须了解如何使用 Storm 的 Thrift 定义。 对于 Python，会以 Apache Storm 项目的一部分提供模块，让用户可以轻松与 Storm 进行交互。 您可以在 中找到此模块。 [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py)
+Apache Storm 设计为与使用任何编程语言编写的组件配合使用。 组件必须了解如何使用 Storm 的 Thrift 定义。 对于 Python，会以 Apache Storm 项目的一部分提供模块，让用户可以轻松与 Storm 进行交互。 可以在[https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py)中找到此模块。
 
 Storm 是在 Java 虚拟机 (JVM) 上运行的 Java 进程。 使用其他语言编写的组件作为子进程执行。 Storm 使用通过 stdin/stdout 发送的 JSON 消息与这些子进程通信。 有关组件间通信的更多详细信息，请参阅 [Multi-lang Protocol](https://storm.apache.org/releases/current/Multilang-protocol.html)（多语言协议）文档。
 
@@ -70,7 +70,7 @@ Flux 需要 Python 脚本位于包含拓扑的 jar 文件内的 `/resources` 目
 </resource>
 ```
 
-如前所述，有一个`storm.py`文件实现了 Storm 的节俭定义。 Flux 框架在生成项目时自动包含 `storm.py`，无需额外执行操作。
+如前文所述，有一个`storm.py`用于实现风暴的 Thrift 定义的文件。 Flux 框架在生成项目时自动包含 `storm.py`，无需额外执行操作。
 
 ## <a name="build-the-project"></a>生成项目
 
@@ -145,4 +145,4 @@ storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -l -R /topology.
 
 ## <a name="next-steps"></a>后续步骤
 
-有关将 Python 与 HDInsight 一起使用的其他方法，请参阅以下文档：[如何在 Apache Pig 和 Apache Hive 中使用 Python 用户定义函数 （UDF）。](../hadoop/python-udf-hdinsight.md)
+有关将 Python 与 HDInsight 配合使用的其他方式，请参阅以下文档：[如何在 Apache Pig 和 Apache Hive 中使用 Python 用户定义的函数（UDF）](../hadoop/python-udf-hdinsight.md)。

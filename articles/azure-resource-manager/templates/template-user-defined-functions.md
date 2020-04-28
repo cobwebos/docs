@@ -4,10 +4,10 @@ description: 介绍如何在 Azure 资源管理器模板中定义和使用用户
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: 2c09572a460aa028b23987033d2b77e2aad8a0cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78943215"
 ---
 # <a name="user-defined-functions-in-azure-resource-manager-template"></a>Azure 资源管理器模板中的用户定义函数
@@ -18,7 +18,7 @@ ms.locfileid: "78943215"
 
 ## <a name="define-the-function"></a>定义函数
 
-函数需要一个命名空间值以避免命名与模板函数发生冲突。 下面的示例显示了返回唯一名称的函数：
+函数需要一个命名空间值以避免命名与模板函数发生冲突。 下面的示例演示一个返回唯一名称的函数：
 
 ```json
 "functions": [
@@ -44,7 +44,7 @@ ms.locfileid: "78943215"
 
 ## <a name="use-the-function"></a>使用函数
 
-下面的示例显示了包含用户定义的函数的模板。 它使用该函数获取存储帐户的唯一名称。 模板具有一个名为**storageNamePrefix 的**参数，它作为参数传递给函数。
+下面的示例演示一个包含用户定义函数的模板。 它使用该函数获取存储帐户的唯一名称。 此模板有一个名为 **storageNamePrefix** 的参数，它将作为参数传递给该函数。
 
 ```json
 {

@@ -1,6 +1,6 @@
 ---
-title: 使用主域发现配置登录自动加速
-description: 了解如何为联合用户配置 Azure 活动目录身份验证的主页 Realm 发现策略，包括自动加速和域提示。
+title: 使用主领域发现配置登录自动加速
+description: 了解如何为联合用户配置用于 Azure Active Directory 身份验证的主领域发现策略，包括自动加速和域提示。
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,15 +16,15 @@ ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60bfc964ffc394b3f79c9d279158003f383b7331
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78943443"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>使用主领域发现策略为应用程序配置 Azure Active Directory 登录行为
 
-本文介绍了为联合用户配置 Azure 活动目录身份验证行为的介绍。 其中介绍了自动加速的配置，以及联合域中用户的身份验证限制。
+本文介绍了如何为联合用户配置 Azure Active Directory 身份验证行为。 其中介绍了自动加速的配置，以及联合域中用户的身份验证限制。
 
 ## <a name="home-realm-discovery"></a>主领域发现
 主领域发现 (HRD) 过程允许 Azure Active Directory (Azure AD) 确定登录时用户需要在何处进行身份验证。  登录 Azure AD 租户访问资源或 Azure AD 公共登录页时，用户需键入用户名 (UPN)。 Azure AD 以此来发现用户需要在何处登录。 
@@ -63,11 +63,11 @@ ms.locfileid: "78943443"
 
 域提示语法因所用协议而异，通常在应用程序中配置。
 
-**WS-联合**：查询字符串中的 whr_contoso.com。
+**WS 联合身份验证**：查询字符串中的里瓦
 
 **SAML**：包含域提示的 SAML 身份验证请求，或查询字符串 whr=contoso.com。
 
-**打开 ID 连接**：查询字符串domain_hint_contoso.com。 
+**OPEN ID Connect**：查询字符串 domain_hint = contoso .com。 
 
 如果域提示包含在应用程序的身份验证请求中，且租户与该域联合，则 Azure AD 尝试将登录重定向到为该域配置的 IdP。 
 
@@ -100,7 +100,7 @@ ms.locfileid: "78943443"
 
 服务主体中每次只有一个 HRD 策略处于活动状态。  
 
-您可以使用 Azure 活动目录 PowerShell cmdlet 创建和管理 HRD 策略。
+你可以使用 Azure Active Directory PowerShell cmdlet 来创建和管理 HRD 策略。
 
 以下是 HRD 策略定义示例：
     
@@ -195,7 +195,7 @@ New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPass
 ```
 
 
-要查看新策略并获取其**ObjectID，** 请运行以下命令：
+若要查看新策略并获取其**ObjectID**，请运行以下命令：
 
 ``` powershell
 Get-AzureADPolicy
@@ -209,7 +209,7 @@ Get-AzureADPolicy
 
 可以使用门户，或查询 [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)。 还可以转到 [Graph 浏览器工具](https://developer.microsoft.com/graph/graph-explorer)，并登录到 Azure AD 帐户，查看组织的所有服务主体。 
 
-由于您使用的是 PowerShell，因此可以使用以下 cmdlet 列出服务主体及其代表。
+因为你使用的是 PowerShell，你可以使用以下 cmdlet 列出服务主体及其 Id。
 
 ``` powershell
 Get-AzureADServicePrincipal
@@ -268,5 +268,5 @@ Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 ## <a name="next-steps"></a>后续步骤
 - 有关 Azure AD 中的身份验证工作原理的详细信息，请参阅 [Azure AD 的身份验证方案](../develop/authentication-scenarios.md)。
-- 有关用户单一登录的详细信息，请参阅 Azure[活动目录中的应用程序单一登录](what-is-single-sign-on.md)。
-- 请访问[Microsoft 标识平台](../develop/v2-overview.md)，了解所有与开发人员相关的内容的概述。
+- 有关用户单一登录的详细信息，请参阅[对应用程序的单一登录 Azure Active Directory](what-is-single-sign-on.md)。
+- 有关与开发人员相关的所有内容的概述，请访问[Microsoft 标识平台](../develop/v2-overview.md)。

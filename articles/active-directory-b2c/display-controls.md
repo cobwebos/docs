@@ -12,17 +12,17 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 4998fb19e42e123edd57bfcf10931d594ac4cb44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78188726"
 ---
 # <a name="display-controls"></a>显示控件
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**显示控件**是一个具有特殊功能的用户界面元素，可以与 Azure Active Directory B2C (Azure AD B2C) 后端服务进行交互。 它允许用户在后端调用[验证技术配置文件](validation-technical-profile.md)的页面上执行操作。 显示控件显示在页面上，由[自断言技术配置文件](self-asserted-technical-profile.md)引用。
+**显示控件**是一个具有特殊功能的用户界面元素，可以与 Azure Active Directory B2C (Azure AD B2C) 后端服务进行交互。 它允许用户在页面上执行某些操作，这些操作在后端调用[验证技术配置文件](validation-technical-profile.md)。 显示控件显示在页面上，由[自断言技术配置文件](self-asserted-technical-profile.md)引用。
 
 下图展示了一个自断言注册页面，其中包含两个用于验证主要电子邮件地址和辅助电子邮件地址的显示控件。
 
@@ -30,9 +30,9 @@ ms.locfileid: "78188726"
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
- 在[自断言技术配置文件](self-asserted-technical-profile.md)的[元数据](self-asserted-technical-profile.md#metadata)部分中，引用的 [ContentDefinition](contentdefinitions.md) 需要将 `DataUri` 设置为页面协定版本2.0.0 或更高版本。 例如：
+ 在[自断言技术配置文件](self-asserted-technical-profile.md#metadata)的[元数据](self-asserted-technical-profile.md)部分中，引用的 [ContentDefinition](contentdefinitions.md) 需要将 `DataUri` 设置为页面协定版本2.0.0 或更高版本。 例如：
 
 ```XML
 <ContentDefinition Id="api.selfasserted">
@@ -46,14 +46,14 @@ ms.locfileid: "78188726"
 
 **DisplayControl** 元素包含以下属性：
 
-| 特性 | 必选 | 描述 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于显示控件的一个标识符。 可以对它进行[引用](#referencing-display-controls)。 |
 | UserInterfaceControlType | 是 | 显示控件的类型。 当前支持的是 [VerificationControl](display-control-verification.md) |
 
 **DisplayControl** 元素包含以下元素：
 
-| 元素 | 出现次数 | 描述 |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | InputClaims | 0:1 | **InputClaims** 用于预填充要从用户那里收集的声明的值。 |
 | DisplayClaims | 0:1 | **DisplayClaims** 用于表示要从用户那里收集的声明。 |
@@ -78,7 +78,7 @@ ms.locfileid: "78188726"
 
 每种类型的显示控件都需要一组不同的显示声明、[输出声明](#output-claims)，以及要执行的[操作](#display-control-actions)。
 
-与在[自断言技术配置文件](self-asserted-technical-profile.md#display-claims)中定义的**显示声明**类似，显示声明表示在显示控件中要从用户那里收集的声明。 引用的 **ClaimType** 元素需要指定 Azure AD B2C 支持的某个用户输入类型的 **UserInputType** 元素，例如 `TextBox` 或 `DropdownSingleSelect`。 如果显示声明值是某个**操作**所必需的，请将 **Required** 属性设置为 `true` 来强制用户为该特定的显示声明提供一个值。
+与在**自断言技术配置文件**中定义的[显示声明](self-asserted-technical-profile.md#display-claims)类似，显示声明表示在显示控件中要从用户那里收集的声明。 引用的 **ClaimType** 元素需要指定 Azure AD B2C 支持的某个用户输入类型的 **UserInputType** 元素，例如 `TextBox` 或 `DropdownSingleSelect`。 如果显示声明值是某个**操作**所必需的，请将 **Required** 属性设置为 `true` 来强制用户为该特定的显示声明提供一个值。
 
 某些显示声明是某些类型的显示控件所必需的。 例如，**VerificationCode** 是 **VerificationControl** 类型的显示控件所必需的。 请使用 **ControlClaimType** 属性指定为该必需声明指定了哪个 DisplayClaim。 例如：
 
@@ -90,7 +90,7 @@ ms.locfileid: "78188726"
 
 显示控件的**输出声明**不会发送到下一个业务流程步骤。 它们仅暂时保存以用于当前显示控件会话。 这些暂时声明可在同一显示控件的不同操作之间共享。
 
-要将输出声明冒泡到下一个业务流程步骤，请使用引用此显示控件的实际自断言技术配置文件的 **"输出声明**"。
+若要将输出声明传播到下一个业务流程步骤，请使用引用此显示控件的实际自断言技术配置文件的 **OutputClaims**。
 
 ### <a name="display-control-actions"></a>显示控件操作
 
@@ -127,7 +127,7 @@ ms.locfileid: "78188726"
 
 ## <a name="referencing-display-controls"></a>引用显示控件
 
-显示控件在[自断言技术配置文件](self-asserted-technical-profile.md)的[显示声明](self-asserted-technical-profile.md#display-claims)中引用。
+显示控件在[自断言技术配置文件](self-asserted-technical-profile.md#display-claims)的[显示声明](self-asserted-technical-profile.md)中引用。
 
 例如：
 

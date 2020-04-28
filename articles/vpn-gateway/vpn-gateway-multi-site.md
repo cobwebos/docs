@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/11/2020
 ms.author: yushwang
 ms.openlocfilehash: a95cd6ea85a16b0e0bf5f67f5dfc20d57f11463b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77198083"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>将站点到站点连接添加到包含现有 VPN 网关连接的 VNet（经典）
@@ -21,7 +21,7 @@ ms.locfileid: "77198083"
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
-> * [电源外壳（经典）](vpn-gateway-multi-site.md)
+> * [PowerShell（经典）](vpn-gateway-multi-site.md)
 >
 >
 
@@ -45,11 +45,11 @@ ms.locfileid: "77198083"
 
 ## <a name="points-to-consider"></a>考虑的要点
 
-不可通过门户更改此虚拟网络。**** 需更改网络配置文件，而不是使用门户。 若在门户中进行更改，更改将覆盖此虚拟网络的多站点引用设置。
+**无法使用门户更改此虚拟网络。** 需更改网络配置文件，而不是使用门户。 如果在门户中进行更改，更改将覆盖此虚拟网络的多站点引用设置。
 
 在完成多站点过程后，便可轻松自如地使用网络配置文件。 但是，如果有多个人在处理网络配置，需要确保每个人都知道这个限制。 这并不意味着完全不能使用门户。 除了无法对此特定虚拟网络进行配置更改以外，可以使用它来完成其他任何操作。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 在开始配置之前，请确认满足以下条件：
 
@@ -63,20 +63,20 @@ ms.locfileid: "77198083"
 
 [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
-## <a name="1-create-a-site-to-site-vpn"></a>1. 创建站点到站点 VPN
-如果已有使用动态路由网关的站点到站点 VPN，那太好了！ 可以转到[导出虚拟网络配置设置](#export)。 否则，请执行以下操作：
+## <a name="1-create-a-site-to-site-vpn"></a>1.创建站点到站点 VPN
+如果已有使用动态路由网关的站点到站点 VPN，那太好了！ 可以转到 [导出虚拟网络配置设置](#export)。 否则，请执行以下操作：
 
-### <a name="if-you-already-have-a-site-to-site-virtual-network-but-it-has-a-static-policy-based-routing-gateway"></a>如果已有一个站点到站点虚拟网络，但该虚拟网络使用静态（基于策略的）路由网关：
-1. 将网关类型更改为动态路由。 多站点 VPN 需要动态（也称为基于路由的）路由网关。 要更改网关类型，首先需要删除现有网关，然后创建新网关。
+### <a name="if-you-already-have-a-site-to-site-virtual-network-but-it-has-a-static-policy-based-routing-gateway"></a>如果已有一个站点到站点虚拟网络，但该虚拟网络使用静态（基于策略）路由网关：
+1. 将网关类型更改为动态路由。 多站点 VPN 需要动态（也称为基于路由）路由网关。 如果要更改网关类型，首先需要删除现有网关，然后创建新网关。
 2. 配置新网关并创建 VPN 隧道。 有关说明，请参阅[指定 SKU 和 VPN 类型](vpn-gateway-howto-site-to-site-classic-portal.md#sku)。 请确保将“路由类型”指定为“动态”。
 
 ### <a name="if-you-dont-have-a-site-to-site-virtual-network"></a>如果没有站点到站点虚拟网络：
-1. 按照以下说明创建站点到站点虚拟网络：[创建使用站点到站点 VPN 连接的虚拟网络](vpn-gateway-site-to-site-create.md)。  
-2. 按照以下说明配置动态路由网关：[配置 VPN 网关](vpn-gateway-configure-vpn-gateway-mp.md)。 请务必为网关类型选择“**动态路由**”。
+1. 使用以下说明创建站点到站点虚拟网络：[创建具有站点到站点 VPN 连接的虚拟网络](vpn-gateway-site-to-site-create.md)。  
+2. 按照以下说明配置动态路由网关：[配置 VPN 网关](vpn-gateway-configure-vpn-gateway-mp.md)。 请务必为网关类型选择“动态路由”  。
 
-## <a name="2-export-the-network-configuration-file"></a><a name="export"></a>2. 导出网络配置文件
+## <a name="2-export-the-network-configuration-file"></a><a name="export"></a>2.导出网络配置文件
 
-使用提升权限打开 PowerShell 控制台。 若要切换到服务管理，请使用以下命令：
+使用提升的权限打开 PowerShell 控制台。 若要切换到服务管理，请使用以下命令：
 
 ```powershell
 azure config mode asm
@@ -94,8 +94,8 @@ Add-AzureAccount
 Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ```
 
-## <a name="3-open-the-network-configuration-file"></a>3. 打开网络配置文件
-打开上一步骤中下载的网络配置文件。 使用偏好的任何 xml 编辑器。 该文件的内容类似于：
+## <a name="3-open-the-network-configuration-file"></a>3.打开网络配置文件
+打开你在执行上一步时下载的网络配置文件。 使用偏好的任何 xml 编辑器。 该文件的内容类似于：
 
         <NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
           <VirtualNetworkConfiguration>
@@ -144,7 +144,7 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
           </VirtualNetworkConfiguration>
         </NetworkConfiguration>
 
-## <a name="4-add-multiple-site-references"></a>4. 添加多个站点引用
+## <a name="4-add-multiple-site-references"></a>4.添加多个站点引用
 在添加或删除站点引用信息时，会对 ConnectionsToLocalNetwork/LocalNetworkSiteRef 进行配置更改。 添加新的本地站点引用会触发 Azure 来创建新隧道。 在以下示例中，网络配置适用于单站点连接。 更改完后，请保存该文件。
 
 ```xml
@@ -166,10 +166,10 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
   </Gateway>
 ```
 
-## <a name="5-import-the-network-configuration-file"></a>5. 导入网络配置文件
+## <a name="5-import-the-network-configuration-file"></a>5.导入网络配置文件
 导入网络配置文件。 在导入这个包含更改的文件时，会添加新的隧道。 这些隧道将使用前面创建的动态网关。 可以使用 PowerShell 导入文件。
 
-## <a name="6-download-keys"></a>6. 下载密钥
+## <a name="6-download-keys"></a>6.下载密钥
 添加新的隧道后，使用 PowerShell cmdlet“Get-AzureVNetGatewayKey”获取每个隧道的 IPsec/IKE 预共享密钥。
 
 例如：
@@ -179,9 +179,9 @@ Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site1"
 Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site2"
 ```
 
-如果需要，也可以使用*获取虚拟网络网关共享密钥* REST API 来获取预共享密钥。
+如果需要，也可以使用 *获取虚拟网络网关共享密钥* REST API 来获取预共享密钥。
 
-## <a name="7-verify-your-connections"></a>7. 验证您的连接
+## <a name="7-verify-your-connections"></a>7.验证连接
 检查多站点隧道状态。 下载每个隧道的密钥后，需要验证连接。 使用“Get-AzureVnetConnection”获取虚拟网络隧道的列表，如下例所示。 VNet1 是 VNet 的名称。
 
 ```powershell

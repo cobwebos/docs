@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
 ms.openlocfilehash: c509d174787a58abeee33e039eb7bbbcbcb43f38
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79531728"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Azure 流分析 JavaScript 用户定义的聚合
@@ -78,7 +78,7 @@ function main() {
 
 ### <a name="function-alias"></a>函数别名
 
-函数别名是 UDA 标识符。 在流分析查询中调用时，始终结合“uda”使用 UDA 别名。 前缀。
+函数别名是 UDA 标识符。 在流分析查询中调用时，始终结合“uda”使用 UDA 别名。 前缀开头。
 
 ### <a name="function-type"></a>函数类型
 
@@ -122,9 +122,9 @@ computeResult() 方法基于当前状态返回聚合结果。 在时间窗口（
 现在，让我们执行以下步骤，在现有的 ASA 作业下创建一个 JavaScript UDA。
 
 1. 登录到 Azure 门户，并找到现有的流分析作业。
-1. 然后单击“作业拓扑”下的函数链接。****
-1. 单击“添加”图标添加新函数。****
-1. 在“新建函数”视图中，选择“JavaScript UDA”作为函数类型，然后，编辑器中会显示默认的 UDA 模板。****
+1. 然后单击“作业拓扑”下的函数链接。 
+1. 单击“添加”图标添加新函数。 
+1. 在“新建函数”视图中，选择“JavaScript UDA”作为函数类型，然后，编辑器中会显示默认的 UDA 模板。 
 1. 填入“TWA”作为 UDA 别名，并按如下所示更改函数实现：
 
     ```JavaScript
@@ -169,7 +169,7 @@ computeResult() 方法基于当前状态返回聚合结果。 在时间窗口（
 
 1. 单击“保存”按钮后，该 UDA 会显示在函数列表中。
 
-1. 单击新函数“TWA”，可以检查函数定义。
+1. 单击新函数“TWA”即可检查函数定义。
 
 ## <a name="calling-javascript-uda-in-asa-query"></a>在 ASA 查询中调用 JavaScript UDA
 
@@ -230,7 +230,7 @@ GROUP BY TumblingWindow(minute, 5)
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure 流分析简介](stream-analytics-introduction.md)
-* [使用 Azure 流分析开始](stream-analytics-real-time-fraud-detection.md)
+* [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
 * [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
