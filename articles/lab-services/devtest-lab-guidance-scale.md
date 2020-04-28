@@ -14,10 +14,10 @@ ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 3a48cef2210721bf7116b1c4ad1169779288f47d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75644828"
 ---
 # <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>纵向扩展 Azure 开发测试实验室基础结构
@@ -46,7 +46,7 @@ ms.locfileid: "75644828"
 通常，采用一个订阅的方法在大型企业中不易管理。 但是，限制订阅数可提供以下优势：
 
 - **预测**企业的成本。  使用单个订阅能使预算变得非常容易，因为所有资源都在一个池中。 使用此方法可以在计费周期内的任何给定时间更方便地决定何时行使成本控制措施。
-- VM、工件、公式、网络配置、权限、策略等的**可管理性**更容易，因为所有更新都只需要在一个订阅中，而不是跨多个订阅进行更新。
+- Vm、项目、公式、网络配置、权限、策略等的**可管理性**更简单，因为只需要在一个订阅中进行所有更新，而不是在多个订阅中进行更新。
 - 对于要求使用本地连接的企业而言，单个订阅中的**网络**工作可以大大简化。 使用其他订阅时，必须跨订阅连接虚拟网络（中心辐射模型），这就需要额外的配置、管理、IP 地址空间，等等。
 - 每个人在同一订阅中操作可以简化**团队协作** – 例如，可以更轻松地将 VM 重新分配给同事、共享资源团队，等等。
 
@@ -62,7 +62,7 @@ ms.locfileid: "75644828"
 ## <a name="roles-and-responsibilities"></a>角色和职责
 开发测试实验室概念证明包括三个界定了职责的主要角色 – 订阅所有者、开发测试实验室所有者、开发测试实验室用户和可选的参与者。
 
-- **订阅所有者**– 订阅所有者有权管理 Azure 订阅，包括分配用户、管理策略、创建&管理网络拓扑、请求增加配额等。有关详细信息，请参阅[本文](../role-based-access-control/rbac-and-directory-admin-roles.md)。
+- **订阅所有者**-订阅所有者有权管理 Azure 订阅，包括分配用户、管理策略、创建 & 管理网络拓扑、请求配额增加等。有关详细信息，请参阅[此文](../role-based-access-control/rbac-and-directory-admin-roles.md)。
 - **开发测试实验室所有者** – 开发测试实验室所有者对实验室拥有完全管理访问权限。 此人负责添加/删除用户、管理成本设置、常规实验室设置和其他基于 VM/项目的任务。 实验室所有者还拥有开发测试实验室用户的所有权限。
 - **开发测试实验室用户** – 开发测试实验室用户可以在实验室中创建和使用虚拟机。 这些人可以在他们创建的 VM 上执行一些很次要的管理功能（启动/停止/删除/配置其 VM）。 这些用户不能管理其他用户的 VM。
 

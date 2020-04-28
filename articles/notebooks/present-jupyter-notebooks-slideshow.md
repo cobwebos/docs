@@ -1,16 +1,16 @@
 ---
-title: 在 Azure 笔记本预览版上将 Jupyter 笔记本作为幻灯片呈现
-description: 了解如何在 Jupyter 笔记本中配置幻灯片模式的单元格，然后使用 RISE 扩展名显示幻灯片。
+title: 在 Azure Notebooks 预览中提供 Jupyter 笔记本作为幻灯片
+description: 了解如何在 Jupyter 笔记本中配置幻灯片放映模式的单元格，然后使用放大扩展显示幻灯片。
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.openlocfilehash: 05dd3d9c5580e208ecf6f9e6d762476b0b493a6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75647112"
 ---
-# <a name="run-a-notebook-slideshow-in-azure-notebooks-preview"></a>在 Azure 笔记本预览中运行笔记本幻灯片
+# <a name="run-a-notebook-slideshow-in-azure-notebooks-preview"></a>在 Azure Notebooks 预览中运行笔记本幻灯片
 
 Azure Notebooks 使用 Jupyter/IPython 幻灯片放映扩展 (RISE) 进行预配置，该扩展使你可以直接以幻灯片放映形式呈现笔记本。 在幻灯片放映中，单元格通常使用适合在大屏幕上呈现的字号一次显示一个，并且你仍可以运行代码而不是切换到单独的演示计算机。
 
@@ -88,13 +88,13 @@ Azure Notebooks 使用 Jupyter/IPython 幻灯片放映扩展 (RISE) 进行预配
     ![代码单元格输出出现在幻灯片放映中](media/slideshow/slideshow-run-code-cell-output.png)
 
     > [!Tip]
-    > 单元格输出被视为幻灯片放映中的单元格的一部分。 如果笔记本或幻灯片放映视图中运行单元格，则输出也会出现在其他视图中。 要清除输出，请使用 **"单元格** > **电流输出** > **清除"** 命令（对于当前单元格）或 **"所有** > **单元"输出** > **清除**（对于所有单元格）。
+    > 单元格输出被视为幻灯片放映中的单元格的一部分。 如果笔记本或幻灯片放映视图中运行单元格，则输出也会出现在其他视图中。 若要清除输出，请使用 **"单元** > **当前输出** > " "**清除**" 命令（对于当前单元格）或 "**所有输出** > 的**单元** > **格（对于**所有单元）"。
 
 1. 完成幻灯片放映后，使用“X”**** 可返回笔记本视图。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [如何：配置和管理项目](configure-manage-azure-notebooks-projects.md)
-- [如何：从笔记本中安装软件包](install-packages-jupyter-notebook.md)
-- [操作方式：处理数据文件](work-with-project-data-files.md)
+- [如何：从笔记本中安装包](install-packages-jupyter-notebook.md)
+- [如何：处理数据文件](work-with-project-data-files.md)
 - [如何：访问数据资源](access-data-resources-jupyter-notebooks.md)

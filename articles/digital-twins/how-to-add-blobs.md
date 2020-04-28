@@ -1,6 +1,6 @@
 ---
-title: 如何向对象添加 Blob - Azure 数字孪生 |微软文档
-description: 了解如何向 Azure 数字孪生中的用户、设备和空间添加 blob。
+title: 如何将 blob 添加到对象-Azure 数字孪生 |Microsoft Docs
+description: 了解如何在 Azure 数字孪生中向用户、设备和空间添加 blob。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.custom: seodec18
 ms.openlocfilehash: c85db05e6feeea43023c2391998f837348caed4e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75929661"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>将 Blob 添加到 Azure 数字孪生中的对象
@@ -51,16 +51,16 @@ JSON Blob 元数据符合以下模型：
   }
 ```
 
-| 特性 | 类型 | 说明 |
+| Attribute | 类型 | 说明 |
 | --- | --- | --- |
-| **parentId** | String | 要与 Blob 关联的父实体（空间、设备或用户） |
-| **name** |String | Blob 的用户友好名称 |
-| **type** | String | Blob 的类型 - 不能使用 *type* 和 *typeId*  |
+| **parentId** | 字符串 | 要与 Blob 关联的父实体（空间、设备或用户） |
+| **name** |字符串 | Blob 的用户友好名称 |
+| **type** | 字符串 | Blob 的类型 - 不能使用 *type* 和 *typeId*  |
 | **typeId** | Integer | Blob 类型 ID - 不能使用 *type* 和 *typeId* |
-| **subtype** | String | Blob 子类型 - 不能使用 *subtype* 和 *subtypeId* |
+| **subtype** | 字符串 | Blob 子类型 - 不能使用 *subtype* 和 *subtypeId* |
 | **subtypeId** | Integer | Blob 的子类型 ID - 不能使用 *subtype* 和 *subtypeId* |
-| **描述** | String | Blob 的自定义说明 |
-| **sharing** | String | 是否可以共享 Blob - enum [`None`, `Tree`, `Global`] |
+| **2008** | 字符串 | Blob 的自定义说明 |
+| **sharing** | 字符串 | 是否可以共享 Blob - enum [`None`, `Tree`, `Global`] |
 
 Blob 元数据始终提供为具有 **Content-Type** `application/json` 的第一个区块，或提供为 `.json` 文件。 文件数据在第二个区块中提供，可以是任何受支持的 MIME 类型。
 
@@ -106,20 +106,20 @@ Swagger 文档完整详细地介绍了这些模型架构。
 }
 ```
 
-| 特性 | 类型 | 说明 |
+| Attribute | 类型 | 说明 |
 | --- | --- | --- |
-| **id** | String | Blob 的唯一标识符 |
-| **name** |String | Blob 的用户友好名称 |
-| **parentId** | String | 要与 Blob 关联的父实体（空间、设备或用户） |
-| **type** | String | Blob 的类型 - 不能使用 *type* 和 *typeId*  |
+| **id** | 字符串 | Blob 的唯一标识符 |
+| **name** |字符串 | Blob 的用户友好名称 |
+| **parentId** | 字符串 | 要与 Blob 关联的父实体（空间、设备或用户） |
+| **type** | 字符串 | Blob 的类型 - 不能使用 *type* 和 *typeId*  |
 | **typeId** | Integer | Blob 类型 ID - 不能使用 *type* 和 *typeId* |
-| **subtype** | String | Blob 子类型 - 不能使用 *subtype* 和 *subtypeId* |
+| **subtype** | 字符串 | Blob 子类型 - 不能使用 *subtype* 和 *subtypeId* |
 | **subtypeId** | Integer | Blob 的子类型 ID - 不能使用 *subtype* 和 *subtypeId* |
-| **sharing** | String | 是否可以共享 Blob - enum [`None`, `Tree`, `Global`] |
-| **描述** | String | Blob 的自定义说明 |
-| **contentInfos** | Array | 指定包括版本的非结构化元数据信息 |
-| **全名** | String | Blob 的全名 |
-| **spacePaths** | String | 空间路径 |
+| **sharing** | 字符串 | 是否可以共享 Blob - enum [`None`, `Tree`, `Global`] |
+| **2008** | 字符串 | Blob 的自定义说明 |
+| **contentInfos** | 数组 | 指定包括版本的非结构化元数据信息 |
+| **fullName** | 字符串 | Blob 的全名 |
+| **spacePaths** | 字符串 | 空间路径 |
 
 Blob 元数据始终提供为具有 **Content-Type** `application/json` 的第一个区块，或提供为 `.json` 文件。 文件数据在第二个区块中提供，可以是任何受支持的 MIME 类型。
 
@@ -157,7 +157,7 @@ This is my blob content. In this case, some text, but I could also be uploading 
 --USER_DEFINED_BOUNDARY--
 ```
 
-| “值” | 替换为 |
+| 值 | 替换为 |
 | --- | --- |
 | USER_DEFINED_BOUNDARY | 多部分内容边界名称 |
 
@@ -190,15 +190,15 @@ curl -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs" \
  -F "text=PATH_TO_FILE;type=text/plain"
 ```
 
-| “值” | 替换为 |
+| 值 | 替换为 |
 | --- | --- |
 | YOUR_TOKEN | 有效的 OAuth 2.0 令牌 |
 | YOUR_SPACE_ID | 要与 Blob 关联的空间的 ID |
 | PATH_TO_FILE | 文本文件的路径 |
 
-[![cURL 示例](media/how-to-add-blobs/http-blob-post-through-curl-img.png)](media/how-to-add-blobs/http-blob-post-through-curl-img.png#lightbox)
+[![卷曲示例](media/how-to-add-blobs/http-blob-post-through-curl-img.png)](media/how-to-add-blobs/http-blob-post-through-curl-img.png#lightbox)
 
-成功的开空而回新 Blob 的 ID。
+成功的 POST 返回新 blob 的 ID。
 
 ## <a name="api-endpoints"></a>API 终结点
 
@@ -278,9 +278,9 @@ YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
      * `multipart/mixed`
      * `multipart/form-data`
 
-  此外，验证每个*多部分块*是否具有相应的**内容类型**。
+  另外，请验证每个*多部分块区*是否具有适当的相应**内容类型**。
 
-* 当在[空间智能图](concepts-objectmodel-spatialgraph.md)中将多个 Blob 分配给同一资源时，会出现第二个常见错误：
+* 如果将多个 blob 分配给[空间智能图](concepts-objectmodel-spatialgraph.md)中的同一资源，则会出现第二个常见错误：
 
   ```JSON
   {
@@ -294,9 +294,9 @@ YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
   > [!NOTE]
   > **消息**属性将因资源而异。 
 
-  空间图中的每个资源只能附加一个 blob（每种 blob）。 
+  空间图中的每个资源只能附加一个 blob （类型为）。 
 
-  要解决此错误，请使用相应的 API HTTP PATCH 操作更新现有 Blob。 这样做将替换现有 blob 数据与所需的数据。
+  若要解决此错误，请使用相应的 API HTTP 修补操作来更新现有 blob。 这样做会将现有 blob 数据替换为所需的数据。
 
 ## <a name="next-steps"></a>后续步骤
 

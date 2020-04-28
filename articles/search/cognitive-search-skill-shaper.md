@@ -1,7 +1,7 @@
 ---
 title: 整形程序认知技能
 titleSuffix: Azure Cognitive Search
-description: 从非结构化数据中提取元数据和结构化信息，并将其塑造成 Azure 认知搜索中的 AI 扩充管道中的复杂类型。
+description: 在 Azure 认知搜索中的 AI 扩充管道中，从非结构化数据中提取元数据和结构化信息，并将其整形为复杂类型。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,31 +9,31 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 384b79037bb30656934c5e4b596dac2b776593b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75754112"
 ---
 # <a name="shaper-cognitive-skill"></a>整形程序认知技能
 
-“整形程序”技能将多个输入整合成以后可在扩充管道中引用的[复杂类型](search-howto-complex-data-types.md)。**** **Shaper**技能允许您基本上创建一个结构，定义该结构的成员的名称，并将值分配给每个成员。 搜索方案中有用的合并字段示例包括将姓和名合并成单个结构、将城市和州合并成单个结构、或者将姓名和出生日期合并成单个结构，从而建立唯一标识。
+“整形程序”技能将多个输入整合成以后可在扩充管道中引用的[复杂类型](search-howto-complex-data-types.md)。  借助整形程序技能，可实质上创建结构、定义该结构的成员名称，并为每个成员分配值。  搜索方案中有用的合并字段示例包括将姓和名合并成单个结构、将城市和州合并成单个结构、或者将姓名和出生日期合并成单个结构，从而建立唯一标识。
 
-此外，[方案 3](#nested-complex-types) 中展示的**整形程序**技能为输入添加了一个可选的 *sourceContext* 属性。 *source* 和 *sourceContext* 属性是互斥的。 如果输入位于技能上下文中，则只需使用 *source*。 如果输入所在的上下文与技能上下文不同，则使用 *sourceContext*。** *sourceContext* 要求使用寻址为源的特定元素定义嵌套的输入。 
+此外，[方案 3](#nested-complex-types) 中展示的**整形程序**技能为输入添加了一个可选的 *sourceContext* 属性。 *source* 和 *sourceContext* 属性是互斥的。 如果输入位于技能上下文中，则只需使用 *source*。 如果输入所在的上下文与技能上下文不同，则使用 *sourceContext*。  *sourceContext* 要求使用寻址为源的特定元素定义嵌套的输入。 
 
-输出名称始终为“output”。 管道可在内部映射不同的名称，例如下图所示的“analyzedText”，但“整形程序”技能本身会在响应中返回“output”。**** 如果正在调试大量文档并发现存在命名差异，或者要生成自定义技能并自行构建响应，这一点非常重要。
+输出名称始终为“output”。 管道可在内部映射不同的名称，例如下图所示的“analyzedText”，但“整形程序”技能本身会在响应中返回“output”。  如果正在调试大量文档并发现存在命名差异，或者要生成自定义技能并自行构建响应，这一点非常重要。
 
 > [!NOTE]
-> “整形程序”技能未绑定到认知服务 API，使用它无需付费。**** 但是，你仍然应该[附加认知服务资源](cognitive-search-attach-cognitive-services.md)，以覆盖**免费**资源选项，该选项限制你每天进行少量的每日扩充。
+> “整形程序”技能未绑定到认知服务 API，使用它无需付费。  但是，你仍然应该[附加认知服务资源](cognitive-search-attach-cognitive-services.md)，以覆盖**免费**资源选项，该选项限制你每天进行少量的每日扩充。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ShaperSkill
 
 ## <a name="scenario-1-complex-types"></a>方案 1：复杂类型
 
-请思考这样一种情况：想要创建名为 analyzedText 的结构，该结构具有两个成员：分别为 text 和 sentiment******。 在索引中，多部分可搜索字段称为*复杂类型*，并且通常在源数据具有映射到它的相应复杂结构时创建该字段。
+请思考这样一种情况：想要创建名为 analyzedText 的结构，该结构具有两个成员：分别为 text 和 sentiment    。 在索引中，可搜索的多部分字段称为“复杂类型”，它通常是当源数据具有映射到它的相应复杂结构时创建的。 
 
-但是，创建复杂类型的另一种方法是通过“整形程序”技能。**** 通过在技能集中包含此技能，在技能集处理期间执行的内存中操作可以输出采用嵌套结构的数据形状，而此形状随后可映射到索引中的复杂类型。 
+但是，创建复杂类型的另一种方法是通过“整形程序”技能。  通过在技能集中包含此技能，在技能集处理期间执行的内存中操作可以输出采用嵌套结构的数据形状，而此形状随后可映射到索引中的复杂类型。 
 
 以下示例技能定义提供成员名称作为输入。 
 
@@ -90,7 +90,7 @@ Microsoft.Skills.Util.ShaperSkill
 
 ### <a name="skill-input"></a>技能输入
 
-为此“整形程序”技能提供可用输入的传入 JSON 文档可能如下所示：****
+为此“整形程序”技能提供可用输入的传入 JSON 文档可能如下所示： 
 
 ```json
 {
@@ -109,7 +109,7 @@ Microsoft.Skills.Util.ShaperSkill
 
 ### <a name="skill-output"></a>技能输出
 
-**沙珀**技能生成一个新的元素，称为*分析文本*与*文本**和情绪*的组合元素。 此输出符合索引架构。 它将在 Azure 认知搜索索引中导入和编制索引。
+整形程序  技能使用 *text* 和 *sentiment* 组合元素生成一个名为 *analyzedText* 的新元素。 此输出符合索引架构。 它将在 Azure 认知搜索索引中导入和编制索引。
 
 ```json
 {
@@ -133,7 +133,7 @@ Microsoft.Skills.Util.ShaperSkill
 
 在另一个示例中，假设处于管道处理的不同阶段，已提取书名以及该书不同页面上的章节标题。 现在可创建由这些不同输入组成的单个结构。
 
-此方案的**Shaper**技能定义可能类似于以下示例：
+此方案的“整形程序”技能定义可能如以下示例所示： 
 
 ```json
 {
@@ -159,7 +159,7 @@ Microsoft.Skills.Util.ShaperSkill
 ```
 
 ### <a name="skill-output"></a>技能输出
-在这种情况下 **，Shaper**会平展所有章节标题以创建单个数组。 
+在本例中，“整形程序”平整所有章节标题，以创建单个数组。  
 
 ```json
 {
@@ -187,7 +187,7 @@ Microsoft.Skills.Util.ShaperSkill
 
 假设你有某个书籍的标题、章节和内容，并已针对内容中的关键短语运行实体识别，现在需要将不同技能的结果聚合成包含章节名称、实体和关键短语的单个形状。
 
-此方案的**Shaper**技能定义可能类似于以下示例：
+此方案的“整形程序”技能定义可能如以下示例所示： 
 
 ```json
 {
@@ -224,7 +224,7 @@ Microsoft.Skills.Util.ShaperSkill
 ```
 
 ### <a name="skill-output"></a>技能输出
-在本例中，“整形程序”会创建一个复杂类型。**** 此结构存在于内存中。 若要将其保存到[知识存储](knowledge-store-concept-intro.md)，应在技能组中创建一个用于定义存储特征的投影。
+在本例中，“整形程序”会创建一个复杂类型。  此结构存在于内存中。 若要将其保存到[知识存储](knowledge-store-concept-intro.md)，应在技能组中创建一个用于定义存储特征的投影。
 
 ```json
 {
@@ -246,7 +246,7 @@ Microsoft.Skills.Util.ShaperSkill
 }
 ```
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 + [内置技能](cognitive-search-predefined-skills.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)

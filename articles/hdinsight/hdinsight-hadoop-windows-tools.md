@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/20/2019
 ms.openlocfilehash: 3ec50acc693452fe73d929effcea98b12fc5ff8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75933937"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>使用 Windows 电脑在 HDInsight 上的 Apache Hadoop 生态系统中工作
@@ -29,14 +29,14 @@ Azure PowerShell 是一个脚本编写环境，使用它可以通过 Windows 在
 
 * [使用 PowerShell 创建群集](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)。
 * [使用 PowerShell 运行 Apache Hive 查询](hadoop/apache-hadoop-use-hive-powershell.md)。
-* [使用 PowerShell 管理群集](hdinsight-administer-use-powershell.md)。
+* [通过 PowerShell 管理群集](hdinsight-administer-use-powershell.md)。
 
 请遵循[安装和配置 Azure Powershell](https://docs.microsoft.com/powershell/azure/install-az-ps) 的步骤来获取最新版本。
 
 ## <a name="utilities-you-can-run-in-a-browser"></a>可在浏览器中运行的实用工具
 
 以下实用工具提供可在浏览器中运行的 Web UI：
-* **[Azure 云外壳](https://docs.microsoft.com/azure/cloud-shell/overview)** 是一个交互式命令行外壳，在浏览器中运行，在 Azure 门户中运行。
+* **[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)** 是在浏览器中运行的交互式命令行 Shell，在 Azure 门户中运行。
 
 * **[Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md)** 是 Azure 门户中提供的管理和监视实用工具，可用于管理不同类型的作业，例如：
     * [将 Apache Ambari 与 REST API 配合使用](hdinsight-hadoop-manage-ambari-rest-api.md)
@@ -58,9 +58,9 @@ Azure PowerShell 是一个脚本编写环境，使用它可以通过 Windows 在
 可以配合使用 Visual Studio 和 .NET SDK 来管理群集及开发大数据应用程序。 可将其他 IDE 用于以下任务，但示例显示在 Visual Studio 中。
 
 可在 Visual Studio 中使用 .NET SDK 完成的任务示例：
-* [Azure HDInsight SDK . NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet).
+* [Azure HDINSIGHT SDK for .net](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)。
 * [使用 .NET SDK 运行 Apache Hive 查询](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)。
-* [使用C#用户定义的函数与阿帕奇蜂巢和阿帕奇猪流在阿帕奇哈多普](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)。
+* [将 c # 用户定义函数与 Apache Hadoop 上的 Apache Hive 和 Apache Pig 流式处理配合使用](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)。
 
 ## <a name="intellij-idea-and-eclipse-ide-for-spark-clusters"></a>用于 Spark 群集的 Intellij IDEA 和 Eclipse IDE
 
@@ -70,8 +70,8 @@ Azure PowerShell 是一个脚本编写环境，使用它可以通过 Windows 在
 * 本地开发和运行 Scala Spark 应用程序。
 
 以下文章介绍了相关信息：
-* Intellij IDEA：[使用用于 Intellij 插件的 Azure 工具包和 Scala SDK 创建 Apache Spark 应用程序。](spark/apache-spark-intellij-tool-plugin.md)
-* Eclipse IDE 或 Scala IDE：[创建 Apache Spark 应用程序和 Eclipse 的 Azure 工具包](spark/apache-spark-eclipse-tool-plugin.md)
+* Intellij 创意：[使用用于 Intellij 的 Azure 工具包插件和 SCALA SDK 创建 Apache Spark 应用程序。](spark/apache-spark-intellij-tool-plugin.md)
+* 用于 Eclipse 的 eclipse IDE 或 Scala IDE：[创建 Apache Spark 应用程序和 Azure Toolkit for Eclipse](spark/apache-spark-eclipse-tool-plugin.md)
 
 ## <a name="notebooks-on-spark-for-data-scientists"></a>Spark 上面向数据科研人员的 Notebook
 

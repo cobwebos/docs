@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: 7b2df6c8384e78094d80a17d8982b0db9edf73e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75933362"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-backup-policies"></a>使用 StorSimple Snapshot Manager 创建和管理备份策略
 ## <a name="overview"></a>概述
-备份策略创建在本地或云中备份卷数据的计划。 当创建备份策略时，还可以指定保留策略。 （您最多可以保留 64 个快照。有关备份策略的详细信息，请参阅[StorSimple 8000 系列的备份类型：混合云解决方案](storsimple-overview.md)。 [Backup types](storsimple-what-is-snapshot-manager.md#backup-types-and-backup-policies)
+备份策略创建在本地或云中备份卷数据的计划。 当创建备份策略时，还可以指定保留策略。 （最多可以保留64个快照。）有关备份策略的详细信息，请参阅 StorSimple 8000 系列中的[备份类型](storsimple-what-is-snapshot-manager.md#backup-types-and-backup-policies) [：混合云解决方案](storsimple-overview.md)。
 
 本教程介绍了如何完成以下操作：
 
@@ -58,7 +58,7 @@ ms.locfileid: "75933362"
    2. 在 **“设置”** 下选择 **“一次性”**、**“每日”**、**“每周”** 或 **“每月”**。
    3. 在 **“开始”** 文本框中，单击日历图标，然后选择一个开始日期。
    4. 在 **“高级设置”** 下，你可以设置可选的重复计划和结束日期。
-   5. 单击“确定”。
+   5. 单击“确定”。 
 
 创建备份策略后，**“结果”** 窗格中会显示以下信息：
 

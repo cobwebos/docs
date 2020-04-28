@@ -12,20 +12,20 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 55de5a5c604273225a85e49ca682980f83a951d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75767562"
 ---
 # <a name="what-are-baseline-policies"></a>什么是基线策略？
 
-基线策略是一组预定义的策略，可帮助组织防范多种常见攻击。 这些常见攻击包括密码喷洒、重放和网络钓鱼。 基线策略可在所有版本的 Azure AD 中使用。 Microsoft 之所以向所有用户提供这些基线保护策略，是因为在过去多年以来，基于身份的攻击不断增多。 这四个策略旨在确保所有组织在无需额外增加成本的情况下实现基线级别的安全性。
+基线策略是一组预定义的策略，可帮助组织防范多种常见攻击。 这些常见攻击可能包括密码喷射、重播和钓鱼。 基线策略可在所有版本的 Azure AD 中使用。 Microsoft 会将这些基线保护策略提供给所有人，因为基于身份的攻击在过去几年呈上升趋势。 这四个策略旨在确保所有组织在无需额外增加成本的情况下实现基线级别的安全性。
 
 管理自定义的条件访问策略需要 Azure AD Premium 许可证。
 
 > [!IMPORTANT]
-> 正在弃用基线策略。 有关详细信息[，请参阅 Azure 活动目录中的新增功能。](../fundamentals/whats-new.md#replacement-of-baseline-policies-with-security-defaults)
+> 不推荐使用基线策略。 有关详细信息，请参阅[Azure Active Directory 中的新增功能？](../fundamentals/whats-new.md#replacement-of-baseline-policies-with-security-defaults)
 
 ## <a name="baseline-policies"></a>基线策略
 
@@ -56,7 +56,7 @@ ms.locfileid: "75767562"
 * 条件访问管理员
 * 安全管理员
 * 支持管理员/密码管理员
-* 计费管理员
+* 帐务管理员
 * 用户管理员
 
 如果组织在脚本或代码中使用这些帐户，请考虑将其替换为[托管标识](../managed-identities-azure-resources/overview.md)。
@@ -65,14 +65,14 @@ ms.locfileid: "75767562"
 
 高特权管理员并不是攻击者的唯一目标。 恶意行动者往往针对普通用户。 获取访问权限后，这类恶意行动者可以代表原始帐户持有者请求访问特权信息，或者下载整个目录并针对整个组织展开网络钓鱼攻击。 增强对所有用户的保护的一种常用方法是在检测到有风险的登录时要求使用更强的帐户验证。
 
-**最终用户保护（预览版）** 是保护目录中所有用户的基线策略。 启用此策略需要所有用户在 14 天内注册 Azure 多重身份验证。 注册后，只会在检测到有风险的登录企图时，才提示用户执行 MFA。 在重置密码并解除风险之前，会封锁已遭到入侵的用户帐户。 
+**最终用户保护（预览版）** 是保护目录中所有用户的基线策略。 启用此策略需要所有用户在 14 天内注册 Azure 多重身份验证。 注册后，只会在检测到有风险的登录企图时，才提示用户执行 MFA。 系统会阻止被盗用的用户帐户，直至用户重置密码并消除风险为止。 
 
 > [!NOTE]
 > 任何之前标记为有风险的用户都将被阻止，直到密码重置和策略激活后风险解除。
 
 ### <a name="block-legacy-authentication-preview"></a>阻止旧式身份验证（预览版）
 
-旧版身份验证协议（例如：IMAP、SMTP、POP3）是较旧的邮件客户端通常用于进行身份验证的协议。 旧式协议不支持多重身份验证。 即使你创建了一个要求对目录执行多重身份验证的策略，恶意行动者也仍可以使用其中一种旧式协议进行身份验证，并绕过多重身份验证。
+旧的身份验证协议（例如： IMAP、SMTP、POP3）通常由较旧的邮件客户端用来进行身份验证。 旧式协议不支持多重身份验证。 即使你创建了一个要求对目录执行多重身份验证的策略，恶意行动者也仍可以使用其中一种旧式协议进行身份验证，并绕过多重身份验证。
 
 防范旧式协议发出的恶意身份验证请求入侵帐户的最佳方法是阻止这些请求。
 
@@ -92,8 +92,8 @@ ms.locfileid: "75767562"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅：
+有关详细信息，请参见:
 
 * [启用安全默认值](../fundamentals/concept-fundamentals-security-defaults.md)
-* [常用条件访问策略](concept-conditional-access-policy-common.md)
+* [常见的条件访问策略](concept-conditional-access-policy-common.md)
 * [保护标识基础结构的五个步骤](../../security/fundamentals/steps-secure-identity.md)

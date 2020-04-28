@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/03/2019
 ms.author: damaerte
 ms.openlocfilehash: 513c3da8031774f5f111ee357b5a3c43e1d09d95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75832474"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell 的概述
@@ -41,11 +41,11 @@ Cloud Shell 能够访问以执行 Azure 管理任务为宗旨构建的基于浏�
 
 ### <a name="choice-of-preferred-shell-experience"></a>选择偏好的 shell 体验
 用户可以在 Bash 或 PowerShell 之间进行选择。
-1. 选择**云壳**。
+1. 选择**Cloud Shell**。
 
-    ![云壳图标](media/overview/overview-cloudshell-icon.png)
+    ![Cloud Shell 图标](media/overview/overview-cloudshell-icon.png)
 
-2. 选择**Bash**或**PowerShell**。
+2. 选择 " **Bash** " 或 " **PowerShell**"。
 
     ![选择 Bash 或 PowerShell](media/overview/overview-choices.png)
 
@@ -73,12 +73,12 @@ Cloud Shell 是一个灵活的工具，可以通过以下项使用：
 * [Visual Studio Code Azure 帐户扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>连接 Microsoft Azure 文件存储
-云外壳计算机是临时的，但文件以两种方式保留：通过磁盘映像和通过名为 的`clouddrive`装载的文件共享。  首次启动时，Cloud Shell 将提示它会代你创建资源组、存储帐户和 Azure 文件共享。 这是一个一次性步骤，将来会针对所有会话自动附加。 单个文件共享可以映射，将由 Cloud Shell 中的 Bash 和 PowerShell 使用。
+Cloud Shell 计算机是临时的，但文件通过以下两种方式持久保存：通过磁盘映像，并通过名为的已`clouddrive`装载文件共享。  首次启动时，Cloud Shell 将提示它会代你创建资源组、存储帐户和 Azure 文件共享。 这是一个一次性步骤，将来会针对所有会话自动附加。 单个文件共享可以映射，将由 Cloud Shell 中的 Bash 和 PowerShell 使用。
 
-阅读详细信息，了解如何装载[新的或现有的存储帐户](persisting-shell-storage.md)，或了解[云壳中使用的持久性机制](persisting-shell-storage.md#how-cloud-shell-storage-works)。
+详细了解如何装载[新的或现有的存储帐户](persisting-shell-storage.md)，或了解[Cloud Shell 中使用的持久性机制](persisting-shell-storage.md#how-cloud-shell-storage-works)。
 
 > [!NOTE]
-> 云外壳存储帐户不支持 Azure 存储防火墙。
+> Cloud shell 存储帐户不支持 Azure 存储防火墙。
 
 ## <a name="concepts"></a>概念
 * Cloud Shell 在按会话按用户提供的临时主机上运行
@@ -95,5 +95,5 @@ Cloud Shell 是一个灵活的工具，可以通过以下项使用：
 托管 Cloud Shell 的计算机是免费的，先决条件是具有已装载的 Azure 文件共享。 将收取常规存储费用。
 
 ## <a name="next-steps"></a>后续步骤
-[云壳中的 Bash 快速启动](quickstart.md) <br>
+[Cloud Shell 快速入门中的 Bash](quickstart.md) <br>
 [Cloud Shell 中的 PowerShell 快速入门](quickstart-powershell.md)

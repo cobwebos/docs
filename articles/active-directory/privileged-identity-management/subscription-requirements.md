@@ -18,10 +18,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 70696cdb95fffc1e5faa46ca1b5f2180633ed63a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75932322"
 ---
 # <a name="license-requirements-to-use-privileged-identity-management"></a>使用 Privileged Identity Management 所要满足的许可证要求
@@ -44,7 +44,7 @@ ms.locfileid: "75932322"
 
 对于以下任务，不需要**** 使用 Azure AD Premium P2 许可证：
 
-- 具有设置 PIM、配置策略、接收警报和设置访问审核的全局管理员或特权角色管理员角色的用户不需要许可证。
+- 使用全局管理员或特权角色管理员角色（设置 PIM、配置策略、接收警报和设置访问评审）的用户不需要许可证。
 
 有关许可证的详细信息，请参阅[使用 Azure Active Directory 门户分配或删除许可证](../fundamentals/license-users-groups.md)。
 
@@ -63,9 +63,9 @@ ms.locfileid: "75932322"
 如果 Azure AD Premium P2、EMS E5 或试用许可证过期，则不再可以在目录中使用 Privileged Identity Management 功能：
 
 - 对 Azure AD 角色的永久角色分配会受到影响。
-- Azure 门户中的特权标识管理服务以及特权标识管理的图形 API cmdlet 和 PowerShell 接口将不再可供用户激活特权角色、管理特权访问或执行访问特权角色的审核。
+- Azure 门户中的 Privileged Identity Management 服务以及 Privileged Identity Management 的图形 API cmdlet 和 PowerShell 接口将不再可供用户用于激活特权角色、管理特权访问或执行特权角色的访问评审。
 - 将删除 Azure AD 角色的符合条件的角色分配，因为用户不再能够激活特权角色。
-- Azure AD 角色的任何正在进行的访问审核都将结束，特权标识管理配置设置将被删除。
+- Azure AD 角色的任何正在进行的访问评审都将结束，并且将删除 Privileged Identity Management 的配置设置。
 - 角色分配更改时，Privileged Identity Management 将不再发送电子邮件。
 
 ## <a name="next-steps"></a>后续步骤

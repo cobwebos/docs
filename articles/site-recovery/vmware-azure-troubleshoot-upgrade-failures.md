@@ -1,6 +1,6 @@
 ---
-title: 微软 Azure 站点恢复提供程序的故障排除升级
-description: 解决升级 Microsoft Azure 站点恢复提供程序时发生的常见问题。
+title: 排查 Microsoft Azure Site Recovery 提供程序的升级问题
+description: 解决 Microsoft Azure Site Recovery 提供程序升级时出现的常见问题。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/10/2019
 ms.author: raynew
 ms.openlocfilehash: b59f933fedd5f1d3ed3f7972b1a1fe653df31be2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75893899"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>排查 Microsoft Azure Site Recovery 提供程序升级故障
@@ -42,9 +42,9 @@ ms.locfileid: "75893899"
 
 1. 返回到下载的统一安装程序所在的文件夹，并运行 MicrosoftAzureSiteRecoveryUnifiedSetup.exe 以完成升级。 
 
-## <a name="upgrade-failure-due-to-the-3rd-party-folder-being-renamed"></a>升级失败，因为第三方文件夹被重命名
+## <a name="upgrade-failure-due-to-the-3rd-party-folder-being-renamed"></a>由于重命名第三方文件夹而导致升级失败
 
-要成功升级，不得重命名第三方文件夹。
+若要成功升级，不能重命名第三方文件夹。
 
 解决问题。
 

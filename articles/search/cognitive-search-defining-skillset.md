@@ -1,7 +1,7 @@
 ---
 title: 创建技能集
 titleSuffix: Azure Cognitive Search
-description: 定义数据提取、自然语言处理或图像分析步骤，以丰富和提取数据中的结构化信息，以便用于 Azure 认知搜索。
+description: 定义数据提取、自然语言处理或图像分析步骤，从 Azure 认知搜索使用的数据扩充和提取结构化信息。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 43251783cbcd6501562913b7b9cafb4f9f7cb3f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75754565"
 ---
-# <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中的 AI 扩充管道中创建技能集 
+# <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中的 AI 扩充管道中创建技能组 
 
-AI 富集提取和丰富数据，使其在 Azure 认知搜索中可搜索。 我们将提取和扩充步骤称作认知技能，这些技能将合并成索引编制期间所引用的技能集。**** 技能集可以使用[内置技能](cognitive-search-predefined-skills.md)或自定义技能（请参阅[示例：有关详细信息，在 AI 充实管道中创建自定义技能](cognitive-search-create-custom-skill-example.md)）。
+AI 扩充可提取和扩充数据，使之能够在 Azure 认知搜索中可供搜索。 我们将提取和扩充步骤称作认知技能，这些技能将合并成索引编制期间所引用的技能集。   技能组可以使用[内置技能](cognitive-search-predefined-skills.md)或自定义技能（请参阅[示例：在 AI 扩充管道中创建自定义技能](cognitive-search-create-custom-skill-example.md)来了解详细信息）。
 
-本文介绍如何对想要使用的技能创建扩充管道。 技能集附加到 Azure 认知搜索[索引器](search-indexer-overview.md)。 本文介绍的管道设计的一个部分是构造技能集本身。 
+本文介绍如何对想要使用的技能创建扩充管道。 技能组将附加到 Azure 认知搜索[索引器](search-indexer-overview.md)。 本文介绍的管道设计的一个部分是构造技能集本身。 
 
 > [!NOTE]
 > 管道设计的另一个部分是指定[下一步骤](#next-step)所述的索引器。 索引器定义包括对技能的引用，以及用于将目标索引中的输入连接到输出的字段映射。
@@ -42,13 +42,13 @@ AI 富集提取和丰富数据，使其在 Azure 认知搜索中可搜索。 我
 
 下图演示了一个虚构的扩充管道：
 
-![假想的浓缩管道](media/cognitive-search-defining-skillset/sample-skillset.png "假想的浓缩管道")
+![假设的扩充管道](media/cognitive-search-defining-skillset/sample-skillset.png "假设的扩充管道")
 
 
-对管道包含的内容进行适当的构思后，可以表达用于提供这些步骤的技能集。 在功能上，当您将索引器定义上载到 Azure 认知搜索时，将表示技能集。 若要详细了解如何上传索引器，请参阅[索引器文档](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
+对管道包含的内容进行适当的构思后，可以表达用于提供这些步骤的技能集。 在功能上，在将索引器定义上传到 Azure 认知搜索时，即会表达该技能组。 若要详细了解如何上传索引器，请参阅[索引器文档](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
 
 
-在图中，文档破解步骤会自动发生。** 从本质上讲，Azure 认知搜索知道如何打开已知文件并创建包含从每个文档中提取的文本*的内容*字段。 白框是内置的扩充器，“必应实体搜索”虚线框表示要创建的自定义扩充器。 如图所示，该技能集包含三个技能。
+在图中，文档破解步骤会自动发生。  实质上，Azure 认知搜索知道如何打开已知的文件，并创建一个内容字段，其中包含从每个文档中提取的文本。  白框是内置的扩充器，“必应实体搜索”虚线框表示要创建的自定义扩充器。 如图所示，该技能集包含三个技能。
 
 ## <a name="skillset-definition-in-rest"></a>REST 中的技能集定义
 
@@ -167,7 +167,7 @@ Content-Type: application/json
 
 * 每个技能应包含 ```"context"```。 上下文表示发生操作的级别。 在上面的技能中，上下文是整个文档，这意味着，针对每个文档调用实体识别技能一次。 输出也会在该级别生成。 更具体地说，将生成 ```"organizations"``` 作为 ```"/document"``` 的成员。 在下游技能中，可以使用 ```"/document/organizations"``` 的形式引用此新建信息。  如果未显式设置 ```"context"``` 字段，则默认上下文是文档。
 
-* 技能包含一个名为“text”的输入，其源输入设置为 ```"/document/content"```。 该技能（实体识别）对每个文档的内容字段运行，该字段是 Azure Blob 索引器创建的标准字段。** 
+* 技能包含一个名为“text”的输入，其源输入设置为 ```"/document/content"```。 该技能（实体识别）对每个文档的内容字段运行，该字段是 Azure Blob 索引器创建的标准字段。  
 
 * 该技能包含一个名为 ```"organizations"``` 的输出。 输出只会在处理期间存在。 若要将此输出链接到下游技能的输入，请以 ```"/document/organizations"``` 的形式引用输出。
 
@@ -227,9 +227,9 @@ Content-Type: application/json
     }
 ```
 
-此定义是一种[自定义技能](cognitive-search-custom-skill-web-api.md)，用于调用 Web API 作为丰富过程的一部分。 对于实体识别技能所识别到的每个组织，此技能调用 Web API 来查找该组织的说明。 扩充引擎会在内部协调处理何时调用 Web API，以及如何流式传输收到的信息。 但是，必须在 JSON 中提供调用此自定义 API 所需的初始化（例如所需的 uri、httpHeaders 和 inputs）。 有关为扩充管道创建自定义 Web API 的指导，请参阅[如何定义自定义接口](cognitive-search-custom-skill-interface.md)。
+此定义是在扩充过程中调用某个 Web API 的[自定义技能](cognitive-search-custom-skill-web-api.md)。 对于实体识别技能所识别到的每个组织，此技能调用 Web API 来查找该组织的说明。 扩充引擎会在内部协调处理何时调用 Web API，以及如何流式传输收到的信息。 但是，必须在 JSON 中提供调用此自定义 API 所需的初始化（例如所需的 uri、httpHeaders 和 inputs）。 有关为扩充管道创建自定义 Web API 的指导，请参阅[如何定义自定义接口](cognitive-search-custom-skill-interface.md)。
 
-请注意，“上下文”字段设置为包含星号的 ```"/document/organizations/*"```，这意味着，将对 ```"/document/organizations"``` 下的每个组织调用扩充步骤。** 
+请注意，“上下文”字段设置为包含星号的 ```"/document/organizations/*"```，这意味着，将对 ```"/document/organizations"``` 下的每个组织调用扩充步骤。  
 
 将为识别到的每个组织生成输出（在本例中为公司说明）。 引用下游步骤中的说明时（例如，在关键短语提取中），应该使用路径 ```"/document/organizations/*/description"``` 执行此操作。 
 
@@ -237,19 +237,19 @@ Content-Type: application/json
 
 技能集基于非结构化数据生成结构化信息。 请考虑以下示例：
 
-*在第四季度，微软去年收购的社交网络公司LinkedIn（LinkedIn）的收入达到11亿美元。通过此次收购，Microsoft 能够将LinkedIn功能与其 CRM 和 Office 功能相结合。股东们对迄今为止的进展感到兴奋。*
+*"In its fourth quarter, Microsoft logged $1.1 billion in revenue from LinkedIn, the social networking company it bought last year.The acquisition enables Microsoft to combine LinkedIn capabilities with its CRM and Office capabilities.Stockholders are excited with the progress so far."*
 
 可能的结果是下图所示的生成结构：
 
-![样品输出结构](media/cognitive-search-defining-skillset/enriched-doc.png "样品输出结构")
+![示例输出结构](media/cognitive-search-defining-skillset/enriched-doc.png "示例输出结构")
 
-到目前为止，此结构是仅内部的，仅内存，并且仅在 Azure 认知搜索索引中使用。 添加知识存储可以保存整形的扩充，以便在搜索外部使用。
+到目前为止，此结构仅限内部使用、仅限内存中使用，并仅限在 Azure 认知搜索索引中使用。 添加知识存储可以保存整形的扩充，以便在搜索外部使用。
 
 ## <a name="add-a-knowledge-store"></a>添加知识存储
 
-[知识存储](knowledge-store-concept-intro.md)是 Azure 认知搜索中的预览功能，用于保存丰富的文档。 创建的由 Azure 存储帐户支持的知识存储是扩充的数据要载入到的存储库。 
+[知识存储](knowledge-store-concept-intro.md)是 Azure 认知搜索中的一项预览版功能，用于保存扩充的文档。 创建的由 Azure 存储帐户支持的知识存储是扩充的数据要载入到的存储库。 
 
-知识存储定义将添加到技能集。 有关整个过程的演练，请参阅在 REST[中创建知识存储](knowledge-store-create-rest.md)。
+知识存储定义将添加到技能集。 有关整个过程的演练，请参阅[在 REST 中创建知识存储](knowledge-store-create-rest.md)。
 
 ```json
 "knowledgeStore": {

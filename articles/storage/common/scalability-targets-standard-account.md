@@ -10,10 +10,10 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 817e11fdf70c8043d2eb860fe15cc0a7907c6656
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75750646"
 ---
 # <a name="scalability-and-performance-targets-for-standard-storage-accounts"></a>标准存储帐户的可伸缩性和性能目标
@@ -24,7 +24,7 @@ ms.locfileid: "75750646"
 
 [!INCLUDE [azure-storage-account-limits-standard](../../../includes/azure-storage-account-limits-standard.md)]
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [Azure 存储资源提供程序的可伸缩性目标](../common/scalability-targets-resource-provider.md)
 - [Azure 订阅限制和配额](../../azure-resource-manager/management/azure-subscription-service-limits.md)

@@ -11,10 +11,10 @@ ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
 ms.openlocfilehash: 26bd6ddb9d8255b8e2510133fc4b6aa645f89f68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75615067"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>SQL 超大规模服务层级性能故障排除诊断
@@ -27,7 +27,7 @@ ms.locfileid: "75615067"
 
 以下等待类型（在 [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/) 中）描述了在主计算副本上限制日志速率的原因：
 
-|Wait 类型    |描述                         |
+|Wait 类型    |说明                         |
 |-------------          |------------------------------------|
 |RBIO_RG_STORAGE        | 如果由于页面服务器上的日志使用延迟而导致超大规模数据库主计算节点日志生成速率受到限制，则会发生此等待。         |
 |RBIO_RG_DESTAGE        | 如果由于长期日志存储的日志使用延迟而导致超大规模数据库计算节点日志生成速率受到限制，则会发生此等待。         |
@@ -65,7 +65,7 @@ ms.locfileid: "75615067"
 
 ## <a name="virtual-file-stats-and-io-accounting"></a>虚拟文件统计信息和 IO 记帐
 
-在 Azure SQL 数据库中，[sys.dm_io_virtual_file_stats()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF 是监视 SQL Server IO 的主要方式。 “超大规模”采用[分布式体系结构](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)，因此其 IO 特征有所不同。 本部分重点介绍如何对此 DMF 中所示的数据文件执行 IO（读取和写入）。 在超大规模数据库中，此 DMF 中显示的每个数据文件对应于一个远程页面服务器。 此处提到的 RBPEX 缓存是基于本地 SSD 的缓存，即计算副本上的非覆盖缓存。
+在 Azure SQL 数据库中，[sys.dm_io_virtual_file_stats()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF 是监视 SQL Server IO 的主要方式。 “超大规模”采用[分布式体系结构](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)，因此其 IO 特征有所不同。 本部分重点介绍如何对此 DMF 中所示的数据文件执行 IO（读取和写入）。 在超大规模数据库中，此 DMF 中显示的每个数据文件对应于一个远程页面服务器。 此处提到的 RBPEX 缓存是基于 SSD 的本地缓存，它是计算副本上的非覆盖缓存。
 
 ### <a name="local-rbpex-cache-usage"></a>本地 RBPEX 缓存使用情况
 
@@ -93,13 +93,13 @@ ms.locfileid: "75615067"
 - 在主计算副本上，日志写入计入 sys.dm_io_virtual_file_stats 的 file_id 2。 主计算副本上的日志写入将写入到日志登陆区域。
 - 提交时，辅助副本上的日志记录不会强化。 在“超大规模”中，日志服务以异步方式将日志应用到次要副本。 由于日志写入实际上不是在次要副本上发生的，因此，次要副本上的日志 IO 的任何记帐仅用于跟踪目的。
 
-## <a name="data-io-in-resource-utilization-statistics"></a>资源利用率统计中的数据 IO
+## <a name="data-io-in-resource-utilization-statistics"></a>资源利用率统计信息中的数据 IO
 
-在非超大规模数据库中，相对于[资源治理](/azure/sql-database/sql-database-resource-limits-database-server#resource-governance)数据 IOPS 限制的数据文件组合读取和写入 IOPS`avg_data_io_percent`在[列中dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)和[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)视图中报告。 在门户中报告的值与_数据 IO 百分比 相同_。 
+在非超大规模数据库中，对数据文件（相对于[资源调控](/azure/sql-database/sql-database-resource-limits-database-server#resource-governance)数据 IOPS 限制）的读取和写入 IOPS 进行了报告，并在`avg_data_io_percent`列中的和[sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)视图[dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)中报告。 相同的值在门户中报告为_数据 IO 百分比_。 
 
-在超大规模数据库中，此列报告数据 IOPS 相对于仅计算副本上的本地存储限制的数据 IOPS 利用率，特别是针对 RBPEX 和`tempdb`的 IO。 此列中的 100% 值表示资源治理正在限制本地存储 IOPS。 如果这与性能问题相关，请调整工作负载以生成较少的 IO，或增加数据库服务目标以增加资源治理_Max Data IOPS_ [限制](sql-database-vcore-resource-limits-single-databases.md)。 对于 RBPEX 读取和写入的资源治理，系统计算单个 8 KB I，而不是 SQL Server 引擎可能颁发的较大 I。 
+在超大规模数据库中，此列将报告相对于仅限计算副本上本地存储的限制的数据 IOPS 利用率，特别是针对 RBPEX `tempdb`和的 IO。 此列中的100% 值表示资源调控限制了本地存储 IOPS。 如果这与性能问题相关，请优化工作负荷以生成较少的 IO，或提高数据库服务目标以提高资源调控_最大数据 IOPS_ [限制](sql-database-vcore-resource-limits-single-databases.md)。 对于 RBPEX 读取和写入的资源管理，系统会统计单个 8 KB Io，而不是由 SQL Server 引擎颁发的较大 Io。 
 
-与远程页面服务器的数据 IO 不会在资源利用率视图或门户中报告，而是在[sys.dm_io_virtual_file_stats（） DMF](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/)中报告，如前面所述。
+不会在资源使用视图或门户中报告针对远程页面服务器的数据 IO，但会在[sys.databases （dm_io_virtual_file_stats （）](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF 中报告，如前文所述。
 
 
 ## <a name="additional-resources"></a>其他资源

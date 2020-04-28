@@ -1,16 +1,16 @@
 ---
-title: 使用 Azure 笔记本预览的项目导入和导出数据
-description: 了解如何将数据从外部源引入 Azure 笔记本预览项目，以及如何从项目导出数据。
+title: 通过 Azure Notebooks 预览在项目中导入和导出数据
+description: 了解如何从外部源将数据引入 Azure Notebooks 预览项目，以及如何从项目中导出数据。
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.openlocfilehash: e1d4a52ab7f4ad2ca3438af4bc87bec0b79f34d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75646970"
 ---
-# <a name="work-with-data-files-in-azure-notebooks-preview-projects"></a>使用 Azure 笔记本预览项目中的数据文件
+# <a name="work-with-data-files-in-azure-notebooks-preview-projects"></a>处理 Azure Notebooks 预览项目中的数据文件
 
 数据是许多 Jupyter Notebooks 的命脉，尤其是用于数据科学的笔记本。 使用 Azure Notebooks，可轻松从各种源导入项目，然后在笔记本中使用这些数据。 还可让笔记本生成存储在项目中的数据，然后下载这些数据供其他地方使用。
 
@@ -34,11 +34,11 @@ ms.locfileid: "75646970"
 
 1. 选择“上传”命令，然后“从 URL”或“从计算机”中为要导入的数据设计必要的详细信息************：
 
-   - **从 URL**：在 **"文件 URL"** 字段中输入源地址，在 **"文件名"** 字段中输入要分配给项目中笔记本的文件名。 然后选择“+ 添加文件”将 URL 添加到上传列表****。 对任何其他 URL 重复此过程，然后选择“完成”****。
+   - **从 URL**：在 "文件**url** " 字段中输入源地址，并在 **"文件名" 字段中**输入项目中要分配给笔记本的文件名。 然后选择“+ 添加文件”将 URL 添加到上传列表****。 对任何其他 URL 重复此过程，然后选择“完成”****。
 
      ![从 URL 弹出窗口上传](media/quickstarts/upload-from-url-popup.png)
 
-   - **从计算机**：将文件拖放到弹出窗口中，或选择 **"选择文件"，** 然后浏览并选择要导入的数据文件。 可删除或选择任意数量、类型和格式的文件，因为它是由笔记本中的代码打开文件和解析其数据。
+   - **从计算机**：将文件拖放到弹出窗口中，或选择 "**选择文件**"，然后浏览到并选择要导入的数据文件。 可删除或选择任意数量、类型和格式的文件，因为它是由笔记本中的代码打开文件和解析其数据。
 
      ![从计算机弹出窗口上传](media/quickstarts/upload-from-computer-popup.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "75646970"
 
 ### <a name="import-files-from-the-file-menu-in-a-notebook"></a>从笔记本中的“文件”菜单导入文件
 
-1. 在正在运行的笔记本中，选择 **"文件** > **上传**"命令：
+1. 在正在运行的笔记本中，选择 "**文件** > **上传**" 命令：
 
     ![笔记本中的文件“上传”菜单命令](media/file-menu-upload.png)
 
@@ -54,7 +54,7 @@ ms.locfileid: "75646970"
 
 1. 在出现的“上传状态”弹出窗口中，从下拉列表中选择“目标文件夹”********：
 
-    - 会话文件夹*~/*（ ）： 将文件上载到当前笔记本会话，但不会在项目中创建文件。 会话文件夹是项目文件夹的对等方，但在会话结束后不会持久化。 要访问代码中的会话文件，请在文件名前面加上相对路径“../”**。
+    - Session folder （*~/* ）：将文件上传到当前笔记本会话，但不会在项目中创建文件。 会话文件夹是项目文件夹的对等方，但在会话结束后不会持久化。 要访问代码中的会话文件，请在文件名前面加上相对路径“../”**。
 
         使用会话文件夹有助于进行实验，并避免长期将项目中可能需要或不需要的文件弄得杂乱无章。 此外，还可将文件上传到项目中具有相同文件名的会话文件夹中，而不会导致冲突，且无需重命名文件。 例如，假设项目中已有一个版本的“data.csv”，但希望尝试使用不同版本的“data.csv”****。 通过将文件上传到会话文件夹，可使用上传文件中的数据（在代码中使用“./data.csv”）而不是项目文件中的数据来运行笔记本**。
 
@@ -100,7 +100,7 @@ wget https://raw.githubusercontent.com/petroleum101/figures/db46e7f48b8aab67a0df
 
 ## <a name="export-files-from-the-data-menu-in-a-notebook"></a>从笔记本中的“数据”菜单导出文件
 
-1. 选择"**文件** > **下载"** 菜单命令：
+1. 选择 "**文件** > **下载**" 菜单命令：
 
     ![笔记本中的“数据下载”菜单命令](media/file-menu-download.png)
 

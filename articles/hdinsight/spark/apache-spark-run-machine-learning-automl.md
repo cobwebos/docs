@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.openlocfilehash: 6fc0d4cfe29e0fb189c44b307576bd08d2da8a31
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75638873"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>在 HDInsight 中的 Apache Spark 上使用自动化机器学习运行 Azure 机器学习工作负载
@@ -20,7 +20,7 @@ Azure 机器学习可简化和加速机器学习模型的生成、训练和部�
 
 ## <a name="install-azure-machine-learning-on-an-hdinsight-cluster"></a>在 HDInsight 群集上安装 Azure 机器学习
 
-有关自动机器学习的一般教程，请参阅[教程：使用自动机器学习构建回归模型](../../machine-learning/tutorial-auto-train-models.md)。
+有关自动化机器学习的一般教程，请参阅[教程：使用自动化机器学习生成回归模型](../../machine-learning/tutorial-auto-train-models.md)。
 所有新的 HDInsight-Spark 群集都预装了 AzureML-AutoML SDK。
 
 > [!Note]
@@ -71,10 +71,10 @@ dataflow_with_token = dprep.read_csv(
 
 ## <a name="experiment-submission"></a>试验提交
 
-在[自动机器学习配置](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)中，应设置该属性`spark_context`，使包在分布式模式下运行。 属性 `concurrent_iterations` 表示并行执行的最大迭代数，应设置为小于 Spark 应用的执行器核心数。
+在[自动机器学习配置](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)中，应将`spark_context`属性设置为在分布式模式下运行包。 属性 `concurrent_iterations` 表示并行执行的最大迭代数，应设置为小于 Spark 应用的执行器核心数。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关自动机器学习背后的动机的详细信息，请参阅[使用 Microsoft 自动化机器学习的速度发布模型！](https://azure.microsoft.com/blog/release-models-at-pace-using-microsoft-s-automl/)
+* 有关自动机器学习背后的动机的详细信息，请参阅[使用 Microsoft 的自动机器学习在步调上发布模型！](https://azure.microsoft.com/blog/release-models-at-pace-using-microsoft-s-automl/)
 * 有关如何使用 Azure ML 自动化 ML 功能的详细信息，请参阅 [Azure 机器学习中的全新自动化机器学习功能](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/)
 * [Microsoft Research 提供的 AutoML 项目](https://www.microsoft.com/research/project/automl/)

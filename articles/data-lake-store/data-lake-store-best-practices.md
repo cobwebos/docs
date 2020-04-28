@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
 ms.openlocfilehash: a8ca67d1ff3100aee02ed473c9cc2180de3973b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75638929"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>使用 Azure Data Lake Storage Gen1 的最佳做法
@@ -45,9 +45,9 @@ Azure Active Directory 服务主体通常可供 Azure HDInsight 之类的服务�
 
 ### <a name="enable-the-data-lake-storage-gen1-firewall-with-azure-service-access"></a>启用 Data Lake Storage Gen1 防火墙，允许 Azure 服务访问
 
-Data Lake Storage Gen1 支持启用防火墙并仅限 Azure 服务进行访问的选项。如果需要减少来自外部入侵者的攻击途径，建议使用这一选项。 防火墙可以通过**防火墙** > **启用防火墙 （ON）** > **允许访问 Azure 服务**选项在 Azure 门户中的数据存储存储 Gen1 帐户上启用。
+Data Lake Storage Gen1 支持启用防火墙并仅限 Azure 服务进行访问的选项。如果需要减少来自外部入侵者的攻击途径，建议使用这一选项。 可以通过**防火墙** > **Enable firewall （on）** > **允许访问 Azure 服务**选项，在 Azure 门户中的 Data Lake Storage Gen1 帐户上启用防火墙。
 
-![数据存储库第 1 代中的防火墙设置](./media/data-lake-store-best-practices/data-lake-store-firewall-setting.png "数据存储库第 1 代中的防火墙设置")
+![Data Lake Storage Gen1 中的防火墙设置](./media/data-lake-store-best-practices/data-lake-store-firewall-setting.png "Data Lake Storage Gen1 中的防火墙设置")
 
 启用防火墙以后，只有 Azure 服务（例如 HDInsight、数据工厂、SQL 数据仓库等）能够访问 Data Lake Storage Gen1。 由于 Azure 使用内部网络地址转换，因此 Data Lake Storage Gen1 防火墙不支持通过 IP 限制特定的服务，只能限制 Azure 外部的终结点，例如本地终结点。
 
@@ -100,11 +100,11 @@ Azure Data Lake Storage Gen1 去除了对 Blob 存储帐户的硬性 IO 限制�
 
 |  |Distcp  |Azure 数据工厂  |AdlCopy  |
 |---------|---------|---------|---------|
-|**缩放限制**     | 受辅助角色节点数限制        | 受最大云数据移动单位数限制        | 受分析单位数限制        |
+|**规模限制**     | 受辅助角色节点数限制        | 受最大云数据移动单位数限制        | 受分析单位数限制        |
 |**支持复制增量数据**     |   是      | 否         | 否         |
 |**内置业务流程**     |  否（使用 Oozie Airflow 或 cron 作业）       | 是        | 否（使用 Azure 自动化或 Windows 任务计划程序）         |
 |**支持的文件系统**     | ADL、HDFS、WASB、S3、GS、CFS        |很多，请参阅[连接器](../data-factory/connector-azure-blob-storage.md)。         | ADL 到 ADL、WASB 到 ADL（仅限同一区域）        |
-|**操作系统支持**     |任何运行 Hadoop 的 OS         | 空值          | Windows 10         |
+|**OS 支持**     |任何运行 Hadoop 的 OS         | 空值          | Windows 10         |
 
 ### <a name="use-distcp-for-data-movement-between-two-locations"></a>使用 Distcp 在两个位置之间进行数据移动
 
@@ -136,11 +136,11 @@ Data Lake Storage Gen1 提供详细的诊断日志和审核。 Data Lake Storage
 
 ### <a name="turn-on-debug-level-logging-in-hdinsight"></a>在 HDInsight 中启用调试级日志记录
 
-如果 Data Lake Storage Gen1 日志传送未启用，Azure HDInsight 还会提供一种启用 [Data Lake Storage Gen1 客户端日志记录](data-lake-store-performance-tuning-mapreduce.md)的方式，即 log4j。 您必须在**Ambari** > **YARN** > **配置** > **高级纱线日志4j 配置**中设置以下属性：
+如果 Data Lake Storage Gen1 日志传送未启用，Azure HDInsight 还会提供一种启用 [Data Lake Storage Gen1 客户端日志记录](data-lake-store-performance-tuning-mapreduce.md)的方式，即 log4j。 必须在**Ambari** > **YARN** > **Config** > **Advanced YARN-log4j 配置**中设置以下属性：
 
     log4j.logger.com.microsoft.azure.datalake.store=DEBUG
 
-设置属性并重启节点后，Data Lake Storage Gen1 诊断即会写入到节点上的 YARN 日志 (/tmp/\<user\>/yarn.log)，然后就可以监视各种重要的详细信息，例如错误或限制（HTTP 429 错误代码）。 在 Azure 监视器日志中也可以监视相同的信息，也可以监视在 Data Lake 存储 Gen1 帐户的[诊断](data-lake-store-diagnostic-logs.md)边栏选项卡中将日志运送到何处。 若要启用操作可见性并方便调试，建议至少启用 Data Lake Storage Gen1 的客户端日志记录或利用其日志传送选项。
+设置属性并重启节点后，Data Lake Storage Gen1 诊断即会写入到节点上的 YARN 日志 (/tmp/\<user\>/yarn.log)，然后就可以监视各种重要的详细信息，例如错误或限制（HTTP 429 错误代码）。 也可以在 Data Lake Storage Gen1 帐户的 "[诊断](data-lake-store-diagnostic-logs.md)" 边栏选项卡中 Azure Monitor 日志或日志传送到的任何位置监视相同的信息。 若要启用操作可见性并方便调试，建议至少启用 Data Lake Storage Gen1 的客户端日志记录或利用其日志传送选项。
 
 ### <a name="run-synthetic-transactions"></a>运行综合事务
 
@@ -182,7 +182,7 @@ Data Lake Storage Gen1 提供详细的诊断日志和审核。 Data Lake Storage
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)
-* [Azure 数据存储第 1 代中的访问控制](data-lake-store-access-control.md)
+* [Azure Data Lake Storage Gen1 中的访问控制](data-lake-store-access-control.md)
 * [Azure Data Lake Storage Gen1 中的安全性](data-lake-store-security-overview.md)
 * [优化 Azure Data Lake Storage Gen1 性能](data-lake-store-performance-tuning-guidance.md)
 * [将 HDInsight Spark 与 Azure Data Lake Storage Gen1 配合使用的性能优化指南](data-lake-store-performance-tuning-spark.md)

@@ -1,6 +1,6 @@
 ---
-title: 批处理 EDI 消息作为一个组
-description: 在 Azure 逻辑应用中使用批处理作为批处理、组或集合发送和接收 EDI 消息
+title: 将 EDI 消息作为一个组进行批处理
+description: 通过在 Azure 逻辑应用中使用批处理以批、组或集合的形式发送和接收 EDI 消息
 services: logic-apps
 author: divyaswarnkar
 ms.author: divswa
@@ -8,15 +8,15 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
 ms.openlocfilehash: 6fc0833f70e3e9cd98100f193b52e5a1bfa4d651
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75666663"
 ---
-# <a name="exchange-edi-messages-as-batches-or-groups-between-trading-partners-in-azure-logic-apps"></a>在 Azure 逻辑应用中的贸易伙伴之间将 EDI 消息作为批处理或组交换
+# <a name="exchange-edi-messages-as-batches-or-groups-between-trading-partners-in-azure-logic-apps"></a>在 Azure 逻辑应用中的贸易合作伙伴之间以批或组的形式交换 EDI 消息
 
-在业务到企业 （B2B） 方案中，合作伙伴通常分组或*批量*交换消息。 使用逻辑应用生成批处理解决方案时，可将消息发送到参与方，然后以批的形式统一处理这些消息。 本文以 X12 为例，介绍如何通过创建“批发送方”逻辑应用和“批接收方”逻辑应用来批处理 EDI 消息。 
+在企业到企业 (B2B) 方案中，合作伙伴通常以组或批的形式交换消息。  使用逻辑应用生成批处理解决方案时，可将消息发送到参与方，然后以批的形式统一处理这些消息。 本文以 X12 为例，介绍如何通过创建“批发送方”逻辑应用和“批接收方”逻辑应用来批处理 EDI 消息。 
 
 批处理 X12 消息的方式如同处理其他消息：使用批处理触发器将消息收集到某个批中，然后使用批处理操作将消息发送到批。 此外，在消息转到参与方或其他目标之前，X12 批处理包含一个 X12 编码步骤。 有关批处理触发器和操作的详细信息，请参阅[批处理消息](../logic-apps/logic-apps-batch-process-send-receive-messages.md)。
 
@@ -28,15 +28,15 @@ ms.locfileid: "75666663"
 
 * [“批发送方”](#sender)逻辑应用：将消息发送到前面创建的批接收方。 
 
-请确保批接收方和批发送方共享同一个 Azure 订阅和 Azure 区域。** 否则，在创建批发送方时无法选择批接收方，因为它们相互不可见。
+请确保批接收方和批发送方共享同一个 Azure 订阅和 Azure 区域。  否则，在创建批发送方时无法选择批接收方，因为它们相互不可见。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要按照此示例进行操作，需要以下这些项：
 
 * Azure 订阅。 如果没有订阅，可以[从免费的 Azure 帐户着手](https://azure.microsoft.com/free/)。 或者[注册即用即付订阅](https://azure.microsoft.com/pricing/purchase-options/)。
 
-* [有关如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
 * 与 Azure 订阅相关联的并链接到逻辑应用的现有[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
@@ -50,7 +50,7 @@ ms.locfileid: "75666663"
 
 ## <a name="create-x12-batch-receiver"></a>创建 X12 批接收方
 
-在将消息发送到某个批之前，该批必须存在且充当这些消息要发送到的目标。 因此，首先必须创建可以通过“批处理”触发器启动的“批接收方”逻辑应用。**** 这样，在创建“批发送方”逻辑应用时，便可以选择批接收方逻辑应用。 批接收方会持续收集消息，直到满足发布和处理这些消息的指定条件。 尽管批接收方不需要知道有关批发送方的任何信息，但批发送方必须知道要将消息发送到的目标。 
+在将消息发送到某个批之前，该批必须存在且充当这些消息要发送到的目标。 因此，首先必须创建可以通过“批处理”触发器启动的“批接收方”逻辑应用。  这样，在创建“批发送方”逻辑应用时，便可以选择批接收方逻辑应用。 批接收方会持续收集消息，直到满足发布和处理这些消息的指定条件。 尽管批接收方不需要知道有关批发送方的任何信息，但批发送方必须知道要将消息发送到的目标。 
 
 对于此批接收方，需指定批模式、名称、发布条件、X12 协议和其他设置。 
 
@@ -58,20 +58,20 @@ ms.locfileid: "75666663"
 
 2. [将逻辑应用链接到集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)。
 
-3. 在逻辑应用设计器中，添加**批**触发器，这会启动逻辑应用工作流。 在搜索框中，输入“批”作为筛选器。 选择此触发器：“批处理消息”****
+3. 在逻辑应用设计器中，添加**批**触发器，这会启动逻辑应用工作流。 在搜索框中，输入“批”作为筛选器。 选择此触发器：“批处理消息” 
 
    ![添加批触发器](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-receiver-trigger.png)
 
 4. 设置批接收方属性： 
 
-   | properties | “值” | 说明 | 
+   | properties | 值 | 说明 | 
    |----------|-------|-------|
    | **批处理模式** | 内联 |  |  
-   | **批名称** | TestBatch | 仅适用于“内联”批处理模式**** | 
-   | **发布条件** | 基于消息计数、基于计划 | 仅适用于“内联”批处理模式**** | 
-   | **消息计数** | 10 | 仅适用于“基于消息计数”发布条件**** | 
-   | **区间** | 10 | 仅适用于“基于计划”发布条件**** | 
-   | **频率** | minute | 仅适用于“基于计划”发布条件**** | 
+   | **批名称** | TestBatch | 仅适用于“内联”批处理模式  | 
+   | **发布条件** | 基于消息计数、基于计划 | 仅适用于“内联”批处理模式  | 
+   | **消息计数** | 10 | 仅适用于“基于消息计数”发布条件  | 
+   | 间隔  | 10 | 仅适用于“基于计划”发布条件  | 
+   | **频率** | minute | 仅适用于“基于计划”发布条件  | 
    ||| 
 
    ![提供批处理触发器详细信息](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-release-criteria.png)
@@ -81,29 +81,29 @@ ms.locfileid: "75666663"
 
 5. 现在，添加一个用于编码每个批的操作： 
 
-   1. 在批处理触发器下，选择“新建步骤”。****
+   1. 在批处理触发器下，选择“新建步骤”。 
 
-   2. 在搜索框中，输入“X12 批”作为筛选器，并选择以下操作（任何版本）：“批编码 <版本> - X12”****** 
+   2. 在搜索框中，输入“X12 批”作为筛选器，并选择以下操作（任何版本）：“批编码 <版本> - X12”  
 
       ![选择“X12 批编码”操作](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-encode-action.png)
 
-   3. 如果事先未连接到集成帐户，现在请创建连接。 提供连接的名称，选择集成帐户，然后选择“创建”。****
+   3. 如果事先未连接到集成帐户，现在请创建连接。 提供连接的名称，选择集成帐户，然后选择“创建”。 
 
       ![在批编码器与集成帐户之间创建连接](./media/logic-apps-scenario-EDI-send-batch-messages/batch-encoder-connect-integration-account.png)
 
    4. 设置批编码器操作的以下属性：
 
-      | properties | 描述 |
+      | properties | 说明 |
       |----------|-------------|
       | **X12 协议的名称** | 打开列表，并选择现有的协议。 <p>如果该列表为空，请确保[将逻辑应用链接到包含所需协议的集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)。 | 
-      | **BatchName** | 在此框中单击，显示动态内容列表后，选择“批名称”标记。**** | 
-      | **PartitionName** | 在此框中单击，显示动态内容列表后，选择“分区名称”标记。**** | 
-      | **项** | 关闭项详细信息，然后在此框中单击。 显示动态内容列表后，选择“已批处理的项”标记。**** | 
+      | **BatchName** | 在此框中单击，显示动态内容列表后，选择“批名称”标记。  | 
+      | **PartitionName** | 在此框中单击，显示动态内容列表后，选择“分区名称”标记。  | 
+      | **项** | 关闭项详细信息，然后在此框中单击。 显示动态内容列表后，选择“已批处理的项”标记。  | 
       ||| 
 
       ![“批编码”操作详细信息](./media/logic-apps-scenario-EDI-send-batch-messages/batch-encode-action-details.png)
 
-      对于“项”框：****
+      对于“项”框： 
 
       ![“批编码”操作项](./media/logic-apps-scenario-EDI-send-batch-messages/batch-encode-action-items.png)
 
@@ -115,19 +115,19 @@ ms.locfileid: "75666663"
 
 为确保批接收方按预期方式工作，可以添加一个 HTTP 操作用于测试，并将批处理的消息发送到[请求 Bin 服务](https://requestbin.com/)。 
 
-1. 在 X12 编码操作下，选择“新建步骤”。**** 
+1. 在 X12 编码操作下，选择“新建步骤”。  
 
-2. 在搜索框中，输入“http”作为筛选器。 选择此操作：“HTTP - HTTP”****
+2. 在搜索框中，输入“http”作为筛选器。 选择此操作：“HTTP - HTTP” 
     
    ![选择“HTTP”操作](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-add-http-action.png)
 
 3. 为 HTTP 操作设置属性：
 
-   | properties | 描述 | 
+   | properties | 说明 | 
    |----------|-------------|
-   | **方法** | 在此列表中选择“POST”。**** | 
+   | **方法** | 在此列表中选择“POST”。  | 
    | **Uri** | 生成请求 bin 的 URI，然后在此框中输入该 URI。 | 
-   | **正文** | 在此框中单击，动态内容列表打开后，选择“按协议名称进行批编码”部分显示的“正文”标记。******** <p>如果未显示“正文”标记，请在“按协议名称进行批编码”旁边选择“查看更多”。************ | 
+   | **正文** | 在此框中单击，动态内容列表打开后，选择“按协议名称进行批编码”部分显示的“正文”标记。   <p>如果未显示“正文”标记，请在“按协议名称进行批编码”旁边选择“查看更多”。    | 
    ||| 
 
    ![提供 HTTP 操作详细信息](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-add-http-action-details.png)
@@ -146,20 +146,20 @@ ms.locfileid: "75666663"
 
 * 确保已[创建批接收方](#receiver)，以便在创建批发送方时，可以选择现有的批接收方作为目标批。 尽管批接收方不需要知道有关批发送方的任何信息，但批发送方必须知道要将消息发送到何处。 
 
-* 请确保批接收方和批发送方共享同一个 Azure 区域和 Azure 订阅。** 否则，在创建批发送方时无法选择批接收方，因为它们相互不可见。
+* 请确保批接收方和批发送方共享同一个 Azure 区域和 Azure 订阅。  否则，在创建批发送方时无法选择批接收方，因为它们相互不可见。
 
 1. 创建名为“SendX12MessagesToBatch”的另一个逻辑应用 
 
-2. 在搜索框中，输入“收到 http 请求时”作为筛选器。 选择此触发器：“收到 HTTP 请求时”**** 
+2. 在搜索框中，输入“收到 http 请求时”作为筛选器。 选择此触发器：“收到 HTTP 请求时”  
    
    ![添加“请求”触发器](./media/logic-apps-scenario-EDI-send-batch-messages/add-request-trigger-sender.png)
 
 3. 添加用于将消息发送到批的操作。
 
-   1. 在 HTTP 请求操作下，选择“新建步骤”。****
+   1. 在 HTTP 请求操作下，选择“新建步骤”。 
 
    2. 在搜索框中，输入“批”作为筛选器。 
-   选择“操作”列表，然后选择此操作：“选择具有批处理触发器的逻辑应用工作流 - 将消息发送到批”********
+   选择“操作”列表，然后选择此操作：“选择具有批处理触发器的逻辑应用工作流 - 将消息发送到批”  
 
       ![选择“选择具有批处理触发器的逻辑应用工作流”](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-trigger.png)
 
@@ -167,16 +167,16 @@ ms.locfileid: "75666663"
 
       ![选择“批接收方”逻辑应用](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-receiver.png)
 
-   4. 选择此操作：“Batch_messages - <批接收方>”******
+   4. 选择此操作：“Batch_messages - <批接收方 **”  >**
 
       ![选择“Batch_messages”操作](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-messages-action.png)
 
 4. 设置批发送方的属性。
 
-   | properties | 描述 | 
+   | properties | 说明 | 
    |----------|-------------| 
    | **批名称** | 接收方逻辑应用定义的批名称，在本示例中为“TestBatch” <p>**重要说明**：批名称在运行时将接受验证，必须与接收方逻辑应用指定的名称相匹配。 更改批名称会导致批发送方失败。 | 
-   | **消息内容** | 要发送的消息内容，在本示例中为“正文”标记**** | 
+   | **消息内容** | 要发送的消息内容，在本示例中为“正文”标记  | 
    ||| 
    
    ![设置批属性](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-set-batch-properties.png)

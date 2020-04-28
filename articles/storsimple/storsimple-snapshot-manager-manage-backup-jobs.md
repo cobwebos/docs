@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: 094b996cd3227903995c7a74ef14ed8c0561f59d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75933335"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>使用 StorSimple Snapshot Manager查看和管理备份作业
@@ -26,7 +26,7 @@ ms.locfileid: "75933335"
 ## <a name="overview"></a>概述
 “范围”**** 窗格中的“作业”**** 节点，显示你发起的交互式或配置策略启动的“已计划”****、“最近 24 小时”**** 和“正在运行”**** 的备份任务。 
 
-本教程介绍如何使用“**作业**”节点显示已计划的、最近的和当前正在运行的备份作业的相关信息。 （作业列表和相应信息将显示在 **"结果"** 窗格中。此外，您可以右键单击列出的作业，并查看列出可用操作的上下文菜单。
+本教程介绍如何使用“**作业**”节点显示已计划的、最近的和当前正在运行的备份作业的相关信息。 （作业列表和相应的信息会显示在 "**结果**" 窗格中。）此外，还可以右键单击列出的作业，并查看列出可用操作的上下文菜单。
 
 ## <a name="view-scheduled-jobs"></a>查看已计划的作业
 使用以下过程查看已计划的备份作业。

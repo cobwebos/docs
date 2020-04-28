@@ -1,5 +1,5 @@
 ---
-title: 故障解决 Azure 站点到站点 VPN 间歇性断开
+title: 排查 Azure 站点到站点 VPN 间歇性断开连接的问题
 description: 了解如何排查站点到站点 VPN 定期连接断开的问题。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 82054099a5a496e99c49135ab98ee1163af19784
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75862554"
 ---
 # <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>故障排除：Azure 站点到站点 VPN 间歇性地断开连接
@@ -27,7 +27,7 @@ ms.locfileid: "75862554"
 
 检查 Azure 虚拟网络网关的类型：
 
-1. 转到[Azure 门户](https://portal.azure.com)。
+1. 转到 [Azure 门户](https://portal.azure.com)。
 2. 有关类型信息，请查看虚拟网络网关的**概述**页。
     
     ![网关的概述](media/vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently/gatewayoverview.png)
@@ -62,10 +62,10 @@ ms.locfileid: "75862554"
 
 ### <a name="step-7-check-whether-the-on-premises-vpn-device-has-perfect-forward-secrecy-enabled"></a>步骤 7 检查本地 VPN 设备是否已启用“完全向前保密”
 
-“完全向前保密”功能可能会导致断开连接问题****。 如果 VPN 设备启用**了完全正向保密**功能，请禁用该功能。 然后[更新虚拟网络网关 IPsec 策略](vpn-gateway-ipsecikepolicy-rm-powershell.md#managepolicy)。
+“完全向前保密”功能可能会导致断开连接问题  。 如果 VPN 设备已启用“完全向前保密”  ，请禁用该功能。 然后[更新虚拟网络网关 IPsec 策略](vpn-gateway-ipsecikepolicy-rm-powershell.md#managepolicy)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [配置站点到站点连接到虚拟网络](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-- [为站点到站点 VPN 连接配置 IPsec/IKE 策略](vpn-gateway-ipsecikepolicy-rm-powershell.md)
+- [配置与虚拟网络的站点到站点连接](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+- [配置站点到站点 VPN 连接的 IPsec/IKE 策略](vpn-gateway-ipsecikepolicy-rm-powershell.md)
 

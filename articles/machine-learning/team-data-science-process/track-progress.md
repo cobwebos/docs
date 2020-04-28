@@ -11,15 +11,15 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 8cf1e5a4d97b882e7a8d0c81041bbcde709760d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75864190"
 ---
 # <a name="track-the-progress-of-data-science-projects"></a>跟踪数据科学项目的进度
 
-数据科学组经理、团队领导和项目主管可以跟踪其项目的进度。  管理者想知道已经完成了哪些工作，谁做了这项工作，以及仍然从事哪些工作。   管理期望是成功的一个重要因素。
+数据科学组管理员、团队主管和项目主管可以跟踪其项目的进度。  经理想要了解已完成的工作、工作人员的工作，以及剩余的工作。   管理期望是成功的重要元素。
 
 ## <a name="azure-devops-dashboards"></a>Azure DevOps 仪表板
 
@@ -28,7 +28,7 @@ ms.locfileid: "75864190"
 有关如何在 Azure DevOps 中创建和自定义仪表板与小组件的说明，请参阅以下快速入门：
 
 - [添加和管理仪表板](/azure/devops/report/dashboards/dashboards)
-- [将小部件添加到仪表板](/azure/devops/report/dashboards/add-widget-to-dashboard)
+- [将小组件添加到仪表板](/azure/devops/report/dashboards/add-widget-to-dashboard)
 
 ## <a name="example-dashboard"></a>示例仪表板
 
@@ -50,4 +50,4 @@ ms.locfileid: "75864190"
 
 ## <a name="next-steps"></a>后续步骤
 
-[执行团队数据科学流程的演练](walkthroughs.md)列出了演示所有流程步骤的演练。 链接的方案说明了如何将云和本地资源管理到智能应用程序中。 
+[执行团队数据科学过程的演练](walkthroughs.md)列出了演示所有过程步骤的演练。 这些链接的方案说明了如何将云和本地资源管理到智能应用程序中。 

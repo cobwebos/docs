@@ -8,21 +8,21 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: rambala
 ms.openlocfilehash: 48ec26cc98310dfeb61aa17018c940b431cfbcee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75644250"
 ---
 # <a name="cross-network-connectivity"></a>跨网连接
 
 Fabrikam Inc. 的实际经营场所众多，并在美国东部部署了 Azure。 Fabrikam 通过 ExpressRoute 在其本地与 Azure 部署之间建立了后端连接。 同样，Contoso Ltd. 也有一定数量的经营场所，并在美国西部部署了 Azure。 Contoso 通过 ExpressRoute 在其本地与 Azure 部署之间建立了后端连接。  
 
-法布里卡姆公司收购康托索有限公司。合并后，法布里卡姆希望互连网络。 下图演示了该场景：
+Fabrikam Inc. 并购了 Contoso ltd.并购后，Fabrikam 希望建立网络互连。 下图演示了该场景：
 
  [![1]][1]
 
-上图中间的虚线箭头表示所需的网络互连。 具体来说，需要三种类型的交叉连接：1） 法布里卡姆和 Contoso VNets 交叉连接，2） 交叉区域本地和 VNets 交叉连接（即将 Fabrikam 本地网络连接到 Contoso VNet 并连接 Contoso本地网络到法布里卡姆 VNet），3） 法布里卡姆和康托索本地网络交叉连接。 
+上图中间的虚线箭头表示所需的网络互连。 具体而言，需要三种类型的交叉连接：1) Fabrikam 和 Contoso VNet 交叉连接；2) 本地区域和 VNet 交叉连接（即，将 Fabrikam 本地网络连接到 Contoso VNet，将 Contoso 本地网络连接到 Fabrikam VNet）；3) Fabrikam 和 Contoso 本地网络交叉连接。 
 
 下表显示了并购之前，Contoso Ltd. 的 ExpressRoute 专用对等互连路由表。
 
@@ -70,7 +70,7 @@ VNet 对等互连直接将两个虚拟网络链接到一起（在上面的两个
 
 我们可以将 ExpressRoute 线路连接到多个虚拟网络。 有关可连接到 ExpressRoute 线路的最大虚拟网络数量，请[参阅订阅和服务限制][Subscription limits]。 
 
-让我们将 Fabrikam ExpressRoute 线路连接到 Contoso 订阅 VNet，并将 Contoso ExpressRoute 线路连接到 Fabrikam 订阅 VNet，以便在虚拟网络与本地网络之间实现交叉连接。 若要将虚拟网络连接到其他订阅中的 ExpressRoute 线路，需要创建并使用授权。  请参阅文章：[将虚拟网络连接到 ExpressRoute 电路][Connect-ER-VNet]。
+让我们将 Fabrikam ExpressRoute 线路连接到 Contoso 订阅 VNet，并将 Contoso ExpressRoute 线路连接到 Fabrikam 订阅 VNet，以便在虚拟网络与本地网络之间实现交叉连接。 若要将虚拟网络连接到其他订阅中的 ExpressRoute 线路，需要创建并使用授权。  请参阅以下文章：[将虚拟网络连接到 ExpressRoute 线路][Connect-ER-VNet]。
 
 下图显示了配置 ExpressRoute 与虚拟网络之间的交叉连接后的网络体系结构。
 
@@ -84,11 +84,11 @@ VNet 对等互连直接将两个虚拟网络链接到一起（在上面的两个
 
 [![11]][11]
 
-下表显示了 Contoso 订阅 VM 已知的路由。 请注意表格中的“虚拟网络网关”项。** VM 会看到这两个本地网络的路由。
+下表显示了 Contoso 订阅 VM 已知的路由。 请注意表格中的“虚拟网络网关”项。  VM 会看到这两个本地网络的路由。
 
 [![12]][12]
 
-下表显示了 Fabrikam 订阅 VM 已知的路由。 请注意表格中的“虚拟网络网关”项。** VM 会看到这两个本地网络的路由。
+下表显示了 Fabrikam 订阅 VM 已知的路由。 请注意表格中的“虚拟网络网关”项。  VM 会看到这两个本地网络的路由。
 
 [![13]][13]
 

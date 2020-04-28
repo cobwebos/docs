@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: twooley
 ms.openlocfilehash: b33977ca5184ea07b5651be18e3a132d30ce4b39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75966056"
 ---
 # <a name="disaster-recovery-guidance-for-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 数据灾难恢复指南
@@ -26,7 +26,7 @@ Azure Data Lake Storage Gen1 提供本地冗余存储 (LRS)。 所以从现在�
 每个客户都应准备好自己的灾难恢复计划，这很重要。 阅读本文中的信息以生成你的灾难恢复计划。 下面是可以帮助自行创建计划的一些资源。
 
 * [Azure 应用程序的灾难恢复和高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
-* [Azure 弹性技术指南](../resiliency/resiliency-technical-guidance.md)
+* [Azure 复原技术指南](../resiliency/resiliency-technical-guidance.md)
 
 ### <a name="best-practices"></a>最佳做法
 我们建议按照与灾难恢复计划需求相符的频率，将关键数据复制到另一个区域中的另一个 Data Lake Storage Gen1 帐户。 可以使用多种方法复制数据，包括 [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md)、[Azure PowerShell](data-lake-store-get-started-powershell.md) 或 [Azure 数据工厂](../data-factory/connector-azure-data-lake-store.md)。 Azure 数据工厂是一个非常有用的服务，可以周期性地创建和部署数据移动管道。
@@ -42,6 +42,6 @@ Azure Data Lake Storage Gen1 提供本地冗余存储 (LRS)。 所以从现在�
 组织还可针对 Data Lake Storage Gen1 帐户启用[诊断日志记录](data-lake-store-diagnostic-logs.md)来收集数据访问审核跟踪，提供有关谁删除或更新了文件的信息。
 
 ## <a name="next-steps"></a>后续步骤
-* [开始使用 Azure 数据存储第 1 代](data-lake-store-get-started-portal.md)
+* [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
 * [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
 

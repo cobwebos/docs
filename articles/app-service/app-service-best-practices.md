@@ -8,10 +8,10 @@ ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
 ms.openlocfilehash: ded812d5d7a0440466e7284b56c90965ea00406e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75768480"
 ---
 # <a name="best-practices-for-azure-app-service"></a>有关 Azure 应用服务的最佳实践
@@ -31,7 +31,7 @@ ms.locfileid: "75768480"
 ## <a name="when-apps-consume-more-cpu-than-expected"></a><a name="CPUresources"></a>当应用占用的 CPU 比预期更多时
 如果通过监视或者参考服务建议，发现应用消耗的 CPU 超出预期，或者反复出现 CPU 高峰，请考虑向上缩放或向外缩放应用服务计划。 如果应用程序是有状态的，则纵向扩展是唯一选项；如果应用程序是无状态的，则横向扩展提供更高的灵活性和更大的缩放潜力。 
 
-有关"有状态"与"无状态"应用程序的详细信息，可以观看此视频：在[Azure 应用服务上规划可扩展的端到端多层应用程序](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid)。 有关应用服务缩放和自动缩放选项的详细信息，请参阅[在 Azure 应用服务中缩放 Web 应用](manage-scale-up.md)。  
+有关 "有状态" 与 "无状态" 应用程序的详细信息，请观看此视频：[在 Azure App Service 上规划可缩放的端到端多层应用程序](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid)。 有关应用服务缩放和自动缩放选项的详细信息，请参阅[在 Azure 应用服务中缩放 Web 应用](manage-scale-up.md)。  
 
 ## <a name="when-socket-resources-are-exhausted"></a><a name="socketresources"></a>当套接字资源耗尽时
 耗尽出站 TCP 连接的一个常见原因是使用的客户端库，未实施为重复使用 TCP 连接，或者使用了较高级别的协议（如 HTTP），因而未使用 Keep-Alive。 请查看应用服务计划中的应用引用的每个库，以确保在代码中配置或访问这些库时，能够有效地重复使用出站连接。 此外，请遵循有关正确执行创建和发布或清理操作的库指导文档，以避免连接泄漏。 在展开此类客户端库调查的过程中，可以通过向外扩展到多个实例来消除影响。
@@ -67,11 +67,11 @@ pm2 start /home/site/wwwroot/app.js --no-daemon -i 4
 
 
 ## <a name="next-steps"></a>后续步骤
-有关最佳实践的详细信息，请访问[应用服务诊断](https://docs.microsoft.com/azure/app-service/overview-diagnostics)，了解特定于您的资源的可操作最佳做法。
+有关最佳实践的详细信息，请访问[应用服务诊断](https://docs.microsoft.com/azure/app-service/overview-diagnostics)，以了解特定于资源的可操作最佳方案。
 
 - 在[Azure 门户](https://portal.azure.com)中导航到 Web 应用。
-- 单击 **"诊断并解决**左侧导航中的问题"，该导航将打开应用服务诊断。
-- 选择**最佳实践**主页磁贴。
-- 单击 **"最佳**配置&可用性的最佳做法"或 **"最佳配置的最佳做法**"，查看应用对这些最佳实践的当前状态。
+- 在左侧导航栏中单击 "**诊断和解决问题**"，这将打开应用服务诊断。
+- 选择**最佳方案**主页磁贴。
+- 若要查看应用的当前状态，请单击 "**可用性最佳实践 & 性能**" 或 "**最佳实践**" 以查看应用的当前状态。
 
-您还可以使用此链接直接打开资源的应用服务诊断： `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`。
+你还可以使用此链接为你的资源直接打开应用服务诊断： `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`。

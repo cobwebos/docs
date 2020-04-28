@@ -1,15 +1,15 @@
 ---
-title: 使用 Azure 站点恢复和 Azure PowerShell 从复制中排除 Azure VM 磁盘
+title: 使用 Azure Site Recovery 和 Azure PowerShell 复制时排除 Azure VM 磁盘
 description: 了解如何使用 Azure PowerShell 在 Azure Site Recovery 过程中排除 Azure 虚拟机的磁盘。
 author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 02/18/2019
 ms.openlocfilehash: 7355233bb7241571e3f3820aafac6952af245654
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75973678"
 ---
 # <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>对 Azure VM 进行 PowerShell 复制时排除磁盘
@@ -19,28 +19,28 @@ ms.locfileid: "75973678"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 开始之前：
 
 - 请确保了解[灾难恢复体系结构和组件](azure-to-azure-architecture.md)。
-- 查看所有组件[的支持要求](azure-to-azure-support-matrix.md)。
+- 查看所有组件的[支持要求](azure-to-azure-support-matrix.md)。
 - 确保有 AzureRm PowerShell 的“Az”模块。 若要安装或更新 PowerShell，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 - 确保已经创建恢复服务保管库并对虚拟机进行了至少一次保护。 如果尚未做这些事，请按[使用 Azure PowerShell 为 Azure 虚拟机设置灾难恢复](azure-to-azure-powershell.md)中介绍的过程操作。
-- 如果要查找有关将磁盘添加到启用的用于复制的 Azure VM 的信息，[请查看本文](azure-to-azure-enable-replication-added-disk.md)。
+- 若要查找有关将磁盘添加到已启用复制的 Azure VM 的信息，请[查看此文](azure-to-azure-enable-replication-added-disk.md)。
 
 ## <a name="why-exclude-disks-from-replication"></a>为什么要从复制中排除磁盘
 需要从复制中排除磁盘可能是因为：
 
-- 虚拟机已达到 Azure[站点恢复限制，以复制数据更改率](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)。
+- 虚拟机已达到 [Azure Site Recovery 对数据更改复制速率的限制](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)。
 
-- 在排除的磁盘上改动的数据并不重要或不需要复制。
+- 在排除的磁盘上改动的数据不重要或不需要复制。
 
 - 需要节省存储和网络资源，因此不复制此数据。
 
 ## <a name="how-to-exclude-disks-from-replication"></a>如何从复制中排除磁盘
 
-在我们的示例中，我们将具有一个操作系统和三个数据磁盘的虚拟机复制到美国西部 2 区域。 虚拟机的名称为“AzureDemoVM”**。 我们排除磁盘 1，保留磁盘 2 和 3。
+在本示例中，我们将包含一个操作系统的虚拟机和美国东部地区的三个数据磁盘复制到美国西部2区域。 虚拟机的名称为“AzureDemoVM”  。 我们排除磁盘 1，保留磁盘 2 和 3。
 
 ## <a name="get-details-of-the-virtual-machines-to-replicate"></a>获取要复制的虚拟机的详细信息
 
@@ -136,4 +136,4 @@ $TempASRJob = New-ASRReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -N
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[运行测试故障转移](site-recovery-test-failover-to-azure.md)。
+了解如何[运行测试性故障转移](site-recovery-test-failover-to-azure.md)。

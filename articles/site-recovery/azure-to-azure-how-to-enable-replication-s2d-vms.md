@@ -1,18 +1,18 @@
 ---
-title: 使用 Azure 站点恢复直接复制运行存储空间的 Azure VM
-description: 了解如何使用 Azure 站点恢复复制运行存储空间直接的 Azure VM。
+title: 使用 Azure Site Recovery 复制运行存储空间直通的 Azure VM
+description: 了解如何使用 Azure Site Recovery 复制运行存储空间直通的 Azure VM。
 author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 01/29/2019
 ms.openlocfilehash: 9f394fa8d618c97d74a47ff6e42a002f177cf7d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75973668"
 ---
-# <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>将运行存储空间的 Azure VM 直接复制到其他区域
+# <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>将运行存储空间直通的 Azure VM 复制到另一区域
 
 本文介绍了如何为运行存储空间直通的 Azure VM 启用灾难恢复。
 
@@ -20,13 +20,13 @@ ms.locfileid: "75973668"
 >存储空间直通群集仅支持故障一致恢复点。
 >
 
-[直接存储空间 （S2D）](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct)是软件定义的存储，它提供了在 Azure 上创建[来宾群集](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure)的方法。  Microsoft Azure 中的来宾群集是由 IaaS VM 组成的故障转移群集。 它允许托管 VM 工作负载跨来宾群集故障转移，实现应用程序更高的可用性 SLA，而不是单个 Azure VM 所能提供的。 在 VM 承载关键应用程序（如 SQL 或横向扩展文件服务器）的情况下，它非常有用。
+[存储空间直通 (S2D)](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) 是软件定义的存储，可便于在 Azure 上创建[来宾群集](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure)。  Microsoft Azure 中的来宾群集是由 IaaS Vm 组成的故障转移群集。 这样一来，托管的 VM 工作负载可以跨来宾群集进行故障转移，从而实现更高的应用程序可用性 SLA（与单一 Azure VM 相比）。 它适用于 VM 托管关键应用程序（如 SQL 或横向扩展文件服务器）的方案。
 
-## <a name="disaster-recovery-with-storage-spaces-direct"></a>直接存储空间的灾难恢复
+## <a name="disaster-recovery-with-storage-spaces-direct"></a>利用存储空间直通进行灾难恢复
 
 在典型方案中，为了提高横向扩展文件服务器等应用程序的复原能力，可能会在 Azure 上使用虚拟机来宾群集。 虽然这样可以提高应用程序可用性，但仍希望使用 Site Recovery 保护这些应用程序免受任何区域级别故障。 发生故障转移时，Site Recovery 将数据从一个 Azure 区域复制到另一个 Azure 区域，并调出灾难恢复区域中的群集。
 
-下图显示了直接使用存储空间的双节点 Azure VM 故障转移群集。
+下图展示了一个使用存储空间直通的双节点 Azure VM 故障转移群集。
 
 ![storagespacesdirect](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacedirect.png)
 
@@ -39,7 +39,7 @@ ms.locfileid: "75973668"
 **灾难恢复注意事项**
 
 1. 为群集设置[云见证](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp)时，请让见证一直位于灾难恢复区域中。
-2. 若要将虚拟机故障转移到与源区域不同的 DR 区域上的子网，那么需要在执行故障转移后更改群集 IP 地址。  要更改群集的 IP，您需要使用站点恢复[恢复计划脚本。](https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation)</br>
+2. 若要将虚拟机故障转移到与源区域不同的 DR 区域上的子网，那么需要在执行故障转移后更改群集 IP 地址。  必须使用 Site Recovery [恢复计划脚本](https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation)，才能更改群集 IP。</br>
 [示例脚本](https://github.com/krnese/azure-quickstart-templates/blob/master/asr-automation-recovery/scripts/ASR-Wordpress-ChangeMysqlConfig.ps1)使用自定义脚本扩展在 VM 中执行命令 
 
 ### <a name="enabling-site-recovery-for-s2d-cluster"></a>为 S2D 群集启用 Site Recovery：
@@ -66,21 +66,21 @@ ms.locfileid: "75973668"
 
 
 ### <a name="add-scripts-to-the-recovery-plan"></a>将脚本添加到恢复计划
-在故障转移后或测试故障转移期间，可能需要在 Azure 虚拟机上执行一些操作才能让应用程序正常工作。 可将某些故障转移后的操作自动化。 例如，在这里，我们附加负载均衡器和更改群集 IP。
+在故障转移后或测试故障转移期间，可能需要在 Azure 虚拟机上执行一些操作才能让应用程序正常工作。 可将某些故障转移后的操作自动化。 例如，此时将附加负载均衡器，并更改群集 IP。
 
 
 ### <a name="failover-of-the-virtual-machines"></a>虚拟机故障转移 
-使用站点恢复[恢复计划](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans)需要故障转移 VM 的两个节点 
+VM 的两个节点都需要使用 [Site Recovery 恢复计划](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans)进行故障转移 
 
 ![storagespacesdirect 保护](./media/azure-to-azure-how-to-enable-replication-s2d-vms/recoveryplan.PNG)
 
 ## <a name="run-a-test-failover"></a>运行测试故障转移
 1.  在 Azure 门户中，选择恢复服务保管库。
 2.  选择已创建的恢复计划。
-3.  选择“测试故障转移”****。
+3.  选择“测试故障转移”  。
 4.  若要启动测试故障转移过程，请选择恢复点和 Azure 虚拟网络。
 5.  当辅助环境启动时，执行验证。
-6.  完成验证后，选择“清理测试故障转移”清理测试故障转移环境。****
+6.  完成验证后，选择“清理测试故障转移”清理测试故障转移环境。 
 
 有关详细信息，请参阅[在 Site Recovery 中执行到 Azure 的测试故障转移](site-recovery-test-failover-to-azure.md)。
 
@@ -88,7 +88,7 @@ ms.locfileid: "75973668"
 
 1.  在 Azure 门户中，选择恢复服务保管库。
 2.  选择针对 SAP 应用程序创建的恢复计划。
-3.  选择“故障转移”。****
+3.  选择“故障转移”。 
 4.  若要启动故障转移过程，请选择恢复点。
 
 有关详细信息，请参阅 [Site Recovery 中的故障转移](site-recovery-failover.md)。

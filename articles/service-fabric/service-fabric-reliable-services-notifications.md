@@ -1,19 +1,19 @@
 ---
 title: Reliable Services 通知
-description: 服务结构可靠服务通知的概念文档，用于可靠状态管理器和可靠词典
+description: 针对可靠状态管理器和可靠字典的 Service Fabric Reliable Services 通知的概念性文档
 author: mcoskun
 ms.topic: conceptual
 ms.date: 6/29/2017
 ms.author: mcoskun
 ms.openlocfilehash: 1f3239ea1da252ccd84c6572b562756c8fd1677d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75639558"
 ---
 # <a name="reliable-services-notifications"></a>Reliable Services 通知
-通知可让客户端跟踪对它们感兴趣的对象所进行的更改。 两种类型的对象支持通知：*可靠状态管理器*和*可靠字典*。
+通知可让客户端跟踪对它们感兴趣的对象所进行的更改。 有两种类型的对象支持通知：可靠状态管理器  和可靠字典  。
 
 使用通知的常见原因如下：
 
@@ -26,9 +26,9 @@ ms.locfileid: "75639558"
 可靠状态管理器为以下事件提供通知：
 
 * 事务
-  * Commit
+  * 提交
 * 状态管理器
-  * “重新生成”
+  * 重新生成
   * 添加可靠状态
   * 删除可靠状态
 
@@ -38,7 +38,7 @@ ms.locfileid: "75639558"
 可靠状态管理器集合会在以下三种情况下重新生成：
 
 * 恢复：当副本启动时，它会从磁盘恢复其先前的状态。 恢复结束时，它会使用 **NotifyStateManagerChangedEventArgs** 触发事件，其中包含一组已恢复的可靠状态。
-* 完整副本：必须先生成副本，它才能加入配置集。 有时，这需要将主要副本中可靠状态管理器状态的完整副本应用到空闲的次要副本。 次要副本上的可靠状态管理器会使用 **NotifyStateManagerChangedEventArgs** 触发事件，其中包含一组它从主要副本获取的可靠状态。
+* 完整副本：必须先生成副本，然后它才能加入配置集。 有时，这需要将主要副本中可靠状态管理器状态的完整副本应用到空闲的次要副本。 次要副本上的可靠状态管理器会使用 **NotifyStateManagerChangedEventArgs** 触发事件，其中包含一组它从主要副本获取的可靠状态。
 * 还原：在灾难恢复方案中，副本的状态可通过 **RestoreAsync** 从备份还原。 在这种情况下，主要副本上的可靠状态管理器会使用 **NotifyStateManagerChangedEventArgs** 触发事件，其中包含一组它从备份还原的可靠状态。
 
 若要注册事务通知和/或状态管理器通知，需要在可靠状态管理器上注册 **TransactionChanged** 或 **StateManagerChanged** 事件。 注册这些事件处理程序的常见位置是有状态服务的构造函数。 在构造函数上注册时，也不会错过 **IReliableStateManager** 生存期内的更改所导致的任何通知。
@@ -103,7 +103,7 @@ public void OnStateManagerChangedHandler(object sender, NotifyStateManagerChange
 * 重新生成：在 **ReliableDictionary** 从过去恢复或复制的本地状态或备份恢复其状态后调用。
 * 清除：在通过 **ClearAsync** 方法清除 **ReliableDictionary** 的状态后调用。
 * 添加：在向 **ReliableDictionary** 添加项之后调用。
-* 更新：在更新 **IReliableDictionary** 中的项之后调用。
+* 更新：在更新 **IReliableDictionary** 中的项后调用。
 * 删除：在删除 **IReliableDictionary** 中的项之后调用。
 
 若要获取可靠字典通知，需在 **DictionaryChanged** 上注册 **IReliableDictionary** 事件处理程序。 注册这些事件处理程序的常见位置是在 **ReliableStateManager.StateManagerChanged** 添加通知中。
@@ -158,7 +158,7 @@ public async Task OnDictionaryRebuildNotificationHandlerAsync(
 
 * **NotifyDictionaryChangedAction.Rebuild**：**NotifyDictionaryRebuildEventArgs**
 * **NotifyDictionaryChangedAction.Clear**：**NotifyDictionaryClearEventArgs**
-* **通知词典更改操作.添加**：**通知字典项目添加事件**
+* **NotifyDictionaryChangedAction.Add**：**NotifyDictionaryItemAddedEventArgs**
 * **NotifyDictionaryChangedAction.Update**：**NotifyDictionaryItemUpdatedEventArgs**
 * **NotifyDictionaryChangedAction.Remove**：**NotifyDictionaryItemRemovedEventArgs**
 
@@ -202,13 +202,13 @@ public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEve
 
 * 通知会在执行操作的过程中触发。 例如，在还原操作的最后一个步骤触发还原通知。 处理通知事件之前，不会完成还原。
 * 由于通知会在应用操作的过程中触发，因此，客户端只会看见本地提交操作的通知。 而且因为操作只保证会在本地提交（亦即记录），所以它们不一定可在未来恢复。
-* 在恢复路径上，会针对每个应用的操作触发单个通知。 这表示，如果事务 T1 包含 Create(X)、Delete(X) 和 Create(X)，将依次收到一个针对 X 创建的通知，一个针对删除的通知，然后再收到一个针对创建的通知。
-* 对于包含多个操作的事务，操作将按用户在主要副本上收到它们的顺序应用。
-* 在处理错误进度的过程中，某些操作可能会恢复。 通知会针对这类恢复操作加以触发，将副本状态回滚到稳定的时间点。 恢复通知的一个重要区别，是具有重复键的事件会聚合在一起。 例如，如果恢复事务 T1，会看到一条针对 Delete(X) 的通知。
+* 在恢复路径上，会针对每个应用的操作触发单个通知。 这表示，如果事务 T1 包含 Create(X)、Delete(X) 和 Create(X)，你将依次收到一个针对 X 创建的通知，一个针对删除的通知，此后再收到一个针对创建的通知。
+* 对于包含多个操作的事务，操作按用户在主要副本上收到它们的顺序应用。
+* 在处理错误进度的过程中，某些操作可能会恢复。 通知会针对这类恢复操作加以触发，将副本状态回滚到稳定的时间点。 恢复通知的一个重要区别，是具有重复键的事件会聚合在一起。 例如，如果恢复事务 T1，可以看到一条针对 Delete(X) 的通知。
 
 ## <a name="next-steps"></a>后续步骤
-* [可靠的收藏](service-fabric-work-with-reliable-collections.md)
-* [可靠的服务快速启动](service-fabric-reliable-services-quick-start.md)
+* [Reliable Collections](service-fabric-work-with-reliable-collections.md)
+* [Reliable Services 快速启动](service-fabric-reliable-services-quick-start.md)
 * [Reliable Services 备份和还原（灾难恢复）](service-fabric-reliable-services-backup-restore.md)
-* [可靠集合的开发人员参考](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+* [Reliable Collections 的开发人员参考](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: 2c021a6d10c95b58ac444de8ea895ca01371a2b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75902458"
 ---
 # <a name="error-handling-in-api-management-policies"></a>API 管理策略中的错误处理
@@ -59,24 +59,24 @@ Azure API 管理中的策略分为 `inbound`、`backend`、`outbound`、`on-erro
 
 以下策略可以用在 `on-error` 策略节中。
 
--   [选择](api-management-advanced-policies.md#choose)
--   [设置变量](api-management-advanced-policies.md#set-variable)
+-   [choose](api-management-advanced-policies.md#choose)
+-   [set-variable](api-management-advanced-policies.md#set-variable)
 -   [find-and-replace](api-management-transformation-policies.md#Findandreplacestringinbody)
 -   [return-response](api-management-advanced-policies.md#ReturnResponse)
 -   [set-header](api-management-transformation-policies.md#SetHTTPheader)
 -   [set-method](api-management-advanced-policies.md#SetRequestMethod)
 -   [set-status](api-management-advanced-policies.md#SetStatus)
--   [发送请求](api-management-advanced-policies.md#SendRequest)
--   [单向发送请求](api-management-advanced-policies.md#SendOneWayRequest)
+-   [send-request](api-management-advanced-policies.md#SendRequest)
+-   [send-one-way-request](api-management-advanced-policies.md#SendOneWayRequest)
 -   [log-to-eventhub](api-management-advanced-policies.md#log-to-eventhub)
 -   [json-to-xml](api-management-transformation-policies.md#ConvertJSONtoXML)
 -   [xml-to-json](api-management-transformation-policies.md#ConvertXMLtoJSON)
 
 ## <a name="lasterror"></a>lastError
 
-当发生错误并控制跳转到策略部分`on-error`时，该错误将存储在[上下文中。LastError](api-management-policy-expressions.md#ContextVariables)属性，该`on-error`属性可通过节中的策略访问。 LastError 具有以下属性。
+发生错误并控制跳转到`on-error`策略节时，错误会存储在上下文中[。LastError](api-management-policy-expressions.md#ContextVariables)属性，可通过`on-error`节中的策略进行访问。 LastError 具有以下属性。
 
-| “属性”       | 类型   | 说明                                                                                               | 必选 |
+| 名称       | 类型   | 说明                                                                                               | 必选 |
 | ---------- | ------ | --------------------------------------------------------------------------------------------------------- | -------- |
 | `Source`   | 字符串 | 指定在其中发生错误的元素。 可以是策略或内置管道步骤名称。      | 是      |
 | `Reason`   | 字符串 | 计算机友好错误代码，可以用在错误处理中。                                       | 否       |
@@ -99,11 +99,11 @@ Azure API 管理中的策略分为 `inbound`、`backend`、`outbound`、`on-erro
 | 源        | 条件                                 | 原因                  | 消息                                                                                                                |
 | ------------- | ----------------------------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | 配置 | URI 与任何 API 或操作均不匹配 | OperationNotFound       | 无法匹配操作的传入请求。                                                                      |
-| authorization | 未提供订阅密钥             | SubscriptionKeyNotFound | 由于缺少订阅密钥，访问被拒绝。 请确保在向此 API 发出请求时包括订阅密钥。 |
-| authorization | 订阅密钥值无效         | SubscriptionKeyInvalid  | 由于订阅密钥无效，访问被拒绝。 请确保提供活动订阅的有效密钥。            |
-| 多个 | 下游连接（从客户端到 API 管理网关）在请求挂起时被客户端中止 | 客户端连接失败 | 多个 |
-| 多个 | 上游连接（从 API 管理网关到后端服务）未建立或被后端中止 | 后端连接失败 | 多个 |
-| 多个 | 在评估特定表达式期间发生了运行时异常 | 表达式价值评估失败 | 多个 |
+| 授权 | 未提供订阅密钥             | SubscriptionKeyNotFound | 由于缺少订阅密钥，访问被拒绝。 请确保在向此 API 发出请求时包括订阅密钥。 |
+| 授权 | 订阅密钥值无效         | SubscriptionKeyInvalid  | 由于订阅密钥无效，访问被拒绝。 请确保提供活动订阅的有效密钥。            |
+| 多个 | 请求处于挂起状态时，客户端终止了下游连接（从客户端到 API 管理网关） | ClientConnectionFailure | 多个 |
+| 多个 | 上游连接（从 API 管理网关到后端服务）未建立或已被后端中止 | BackendConnectionFailure | 多个 |
+| 多个 | 计算特定表达式时出现运行时异常 | ExpressionValueEvaluationFailure | 多个 |
 
 ## <a name="predefined-errors-for-policies"></a>针对策略的预定义错误
 
@@ -114,21 +114,21 @@ Azure API 管理中的策略分为 `inbound`、`backend`、`outbound`、`on-erro
 | rate-limit   | 超出速率限制                                             | RateLimitExceeded         | 超出速率限制                                                                                                               |
 | quota        | 超出配额                                                  | QuotaExceeded             | 超出调用卷配额。 配额会在 xx:xx:xx 复原。 -或- 超出带宽配额。 配额会在 xx:xx:xx 复原。 |
 | jsonp        | 回调参数值无效（包含错误字符） | CallbackParameterInvalid  | 回调参数 {callback-parameter-name} 的值不是有效的 JavaScript 标识符。                                          |
-| ip-filter    | 无法分析请求中的调用方 IP                          | FailedToParseCallerIP     | 无法确定调用方的 IP 地址。 访问被拒绝。                                                                        |
-| ip-filter    | 调用方 IP 不在允许列表中                                | CallerIpNotAllowed        | 不允许调用方 IP 地址 {ip-address}。 访问被拒绝。                                                                        |
-| ip-filter    | 调用方 IP 位于阻止列表中                                    | CallerIpBlocked           | 已阻止调用方 IP 地址。 访问被拒绝。                                                                                         |
-| check-header | 必需的标头不存在或缺少值               | HeaderNotFound            | 在请求中找不到标头 {header-name}。 访问被拒绝。                                                                    |
-| check-header | 必需的标头不存在或缺少值               | HeaderValueNotAllowed     | 不允许标头 {header-name} 的值 {header-value}。 访问被拒绝。                                                          |
-| validate-jwt | 请求中缺少 Jwt 令牌                                 | TokenNotFound             | 在请求中找不到 JWT。 访问被拒绝。                                                                                         |
-| validate-jwt | 签名验证失败                                     | TokenSignatureInvalid     | <jwt 库中的消息\>。 访问被拒绝。                                                                                          |
-| validate-jwt | 受众无效                                                | TokenAudienceNotAllowed   | <jwt 库中的消息\>。 访问被拒绝。                                                                                          |
-| validate-jwt | 颁发者无效                                                  | TokenIssuerNotAllowed     | <jwt 库中的消息\>。 访问被拒绝。                                                                                          |
-| validate-jwt | 令牌已到期                                                   | TokenExpired              | <jwt 库中的消息\>。 访问被拒绝。                                                                                          |
-| validate-jwt | 按 ID 无法解析签名密钥                            | TokenSignatureKeyNotFound | <jwt 库中的消息\>。 访问被拒绝。                                                                                          |
-| validate-jwt | 令牌中缺少必需的声明                          | TokenClaimNotFound        | JWT 令牌缺少以下声明: <c1\>、<c2\>、… 访问被拒绝。                                                            |
-| validate-jwt | 声明值不匹配                                           | TokenClaimValueNotAllowed | 不允许声明 {claim-name} 的值 {claim-value}。 访问被拒绝。                                                             |
+| ip-filter    | 无法分析请求中的调用方 IP                          | FailedToParseCallerIP     | 无法确定调用方的 IP 地址。 拒绝访问。                                                                        |
+| ip-filter    | 调用方 IP 不在允许列表中                                | CallerIpNotAllowed        | 不允许调用方 IP 地址 {ip-address}。 拒绝访问。                                                                        |
+| ip-filter    | 调用方 IP 位于阻止列表中                                    | CallerIpBlocked           | 已阻止调用方 IP 地址。 拒绝访问。                                                                                         |
+| check-header | 必需的标头不存在或缺少值               | HeaderNotFound            | 在请求中找不到标头 {header-name}。 拒绝访问。                                                                    |
+| check-header | 必需的标头不存在或缺少值               | HeaderValueNotAllowed     | 不允许标头 {header-name} 的值 {header-value}。 拒绝访问。                                                          |
+| validate-jwt | 请求中缺少 Jwt 令牌                                 | TokenNotFound             | 在请求中找不到 JWT。 拒绝访问。                                                                                         |
+| validate-jwt | 签名验证失败                                     | TokenSignatureInvalid     | <jwt 库中的消息\>。 拒绝访问。                                                                                          |
+| validate-jwt | 受众无效                                                | TokenAudienceNotAllowed   | <jwt 库中的消息\>。 拒绝访问。                                                                                          |
+| validate-jwt | 颁发者无效                                                  | TokenIssuerNotAllowed     | <jwt 库中的消息\>。 拒绝访问。                                                                                          |
+| validate-jwt | 令牌已到期                                                   | TokenExpired              | <jwt 库中的消息\>。 拒绝访问。                                                                                          |
+| validate-jwt | 按 ID 无法解析签名密钥                            | TokenSignatureKeyNotFound | <jwt 库中的消息\>。 拒绝访问。                                                                                          |
+| validate-jwt | 令牌中缺少必需的声明                          | TokenClaimNotFound        | JWT 令牌缺少以下声明: <c1\>、<c2\>、… 拒绝访问。                                                            |
+| validate-jwt | 声明值不匹配                                           | TokenClaimValueNotAllowed | 不允许声明 {claim-name} 的值 {claim-value}。 拒绝访问。                                                             |
 | validate-jwt | 其他验证失败                                       | JwtInvalid                | <jwt 库中的消息\>                                                                                                          |
-| 转发请求或发送请求 | 在配置的超时内未从后端接收 HTTP 响应状态代码和标头 | 超时 | 多个 |
+| 转发请求或发送请求 | 在配置的超时时间内未收到来自后端的 HTTP 响应状态代码和标头 | 超时 | 多个 |
 
 ## <a name="example"></a>示例
 

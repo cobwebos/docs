@@ -13,13 +13,13 @@ ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
 ms.openlocfilehash: 2c5b0556554d280e57b2df51875e1b057b5fb4a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75749899"
 ---
-#  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>由于 DHCP 客户端服务被禁用，因此无法对 Azure 虚拟机进行 RDP
+#  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>因 DHCP 客户端服务已禁用而无法通过 RDP 连接到 Azure 虚拟机
 
 本文介绍了在 Azure Windows 虚拟机 (VM) 中禁用 DHCP 客户端服务后无法通过远程桌面连接到该 VM 的问题。
 
@@ -27,15 +27,15 @@ ms.locfileid: "75749899"
 ## <a name="symptoms"></a>症状
 无法在 Azure 中与 VM 建立 RDP 连接，因为 DHCP 客户端服务在 VM 中被禁用。 在 Azure 门户中的[“启动诊断”](../troubleshooting/boot-diagnostics.md)中检查屏幕截图时，你看到 VM 正常启动并且在登录屏幕中等待凭据。 在使用事件查看器远程查看 VM 中的事件日志时， 发现 DHCP 客户端服务未启动或无法启动。 下面是示例日志：
 
-**日志名称**: 系统 </br>
-**源**: 服务控制管理器 </br>
-**日期**: 2015 年 12 月 16 日上午 11:19:36 </br>
-**事件 ID**: 7022 </br>
-**任务类别**: 无 </br>
-**级别**: 错误 </br>
-**关键字**: 经典</br>
-**用户**: 不适用 </br>
-**计算机**: myvm.cosotos.com</br>
+**日志名称**：系统 </br>
+**源**：服务控制管理器 </br>
+**日期**：2015/12/16 11:19:36 AM </br>
+**事件 ID**：7022 </br>
+**任务类别**：无 </br>
+**级别**：错误 </br>
+**关键字**：经典</br>
+**用户**：不适用 </br>
+**计算机**：myvm.cosotos.com</br>
 **说明**：DHCP 客户端服务在启动时挂起。</br>
 
 对于资源管理器 VM，可使用串行访问控制台功能，通过以下命令查询事件日志 7022：
@@ -180,9 +180,9 @@ DHCP 客户端服务未在 VM 上运行。
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>将 OS 磁盘附加到恢复 VM
 
-1. [将操作系统磁盘附加到恢复 VM。](../windows/troubleshoot-recovery-disks-portal.md)
+1. [将 OS 磁盘附加到恢复 VM](../windows/troubleshoot-recovery-disks-portal.md)。
 2. 开始与恢复 VM 建立远程桌面连接。 确保附加的磁盘在磁盘管理控制台中标记为“联机”。**** 请注意分配给附加的 OS 磁盘的驱动器号。
-3.  打开一个提升的命令提示实例 （**以管理员身份运行**）。 然后运行以下脚本。 此脚本假定分配给附加的 OS 磁盘的驱动器号为**F**。将字母替换为 VM 中的值。
+3.  打开提升的命令提示符实例（**以管理员身份运行**）。 然后运行以下脚本。 此脚本假设分配给附加 OS 磁盘的驱动器号为**F**。将相应的字母替换为 VM 中的值。
 
     ```
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM

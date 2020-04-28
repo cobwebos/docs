@@ -12,17 +12,17 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: f72ea6ed5f0eec076d181ef56c99c4f1308a7741
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75864156"
 ---
 # <a name="hdinsight-hadoop-data-science-walkthroughs-using-hive-on-azure"></a>在 Azure 上使用 Hive 进行 HDInsight Hadoop 数据科学演练 
 
 这些演练在 HDInsight Hadoop 群集中使用 Hive 执行预测分析。 它们遵循 Team Data Science Process 中所述的步骤。 有关 Team Data Science Process 的概述，请参阅[数据科学过程](overview.md)。 有关 Azure HDInsight 的简介，请参阅 [Azure HDInsight、Hadoop 技术堆栈和 Hadoop 群集简介](../../hdinsight/hadoop/apache-hadoop-introduction.md)。
 
-执行团队数据科学流程的其他数据科学演练按他们使用**的平台**分组。 有关这些示例的明细，请参阅[执行 Team Data Science Process 的演练](walkthroughs.md)。
+其他执行 Team Data Science Process 的数据科学演练按所使用的**平台**分组。 有关这些示例的明细，请参阅[执行 Team Data Science Process 的演练](walkthroughs.md)。
 
 
 ## <a name="predict-taxi-tips-using-hive-with-hdinsight-hadoop"></a>在 HDInsight Hadoop 中使用 Hive 预测出租车小费
@@ -36,7 +36,7 @@ ms.locfileid: "75864156"
 
 ## <a name="predict-advertisement-clicks-using-hive-with-hdinsight-hadoop"></a>在 HDInsight Hadoop 中使用 Hive 来预测广告点击量
 
-[在 1 TB 数据集演练中使用 Azure HDInsight Hadoop 群集](hive-criteo-walkthrough.md)使用公开可用的[Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/)单击数据集来预测是否支付了小费和预期金额。 该方案的实现方式是在 [Azure HDInsight Hadoop 群集](https://azure.microsoft.com/services/hdinsight/)中使用 Hive 来存储、探索及特征化工程数据与下游样本数据。 它使用 Azure 机器学习来生成、训练和评分一个用于预测用户是否点击了某个广告的二元分类模型。 演练的最后展示了如何将这些模型之一发布为 Web 服务。
+在[1 TB 数据集上使用 Azure HDInsight Hadoop 群集](hive-criteo-walkthrough.md)使用公开提供的[Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/)单击数据集，以预测是否支付了某个刀尖和预期量。 该方案的实现方式是在 [Azure HDInsight Hadoop 群集](https://azure.microsoft.com/services/hdinsight/)中使用 Hive 来存储、探索及特征化工程数据与下游样本数据。 它使用 Azure 机器学习来生成、训练和评分一个用于预测用户是否点击了某个广告的二元分类模型。 演练的最后展示了如何将这些模型之一发布为 Web 服务。
 
 
 ## <a name="next-steps"></a>后续步骤

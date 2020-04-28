@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: 38ef7774263e4b28b7c316fd0870ca8f7b89d6b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75931708"
 ---
 # <a name="use-storsimple-snapshot-manager-to-manage-the-backup-catalog"></a>使用 StorSimple Snapshot Manager 管理备份目录
@@ -92,8 +92,8 @@ StorSimple Snapshot Manager 的主要功能是允许以快照的形式创建 Sto
    
    1. 在 **“名称”** 文本框中，键入克隆的卷的名称。 该名称将显示在 **“卷”** 节点中。 
    2. （可选）选择“**驱动器**”，并从下拉列表中选择驱动器号。
-   3. （可选）选择**文件夹 （NTFS），** 然后键入文件夹路径或单击"浏览"并选择文件夹的位置。 
-   4. 单击 **“创建”**。
+   3. （可选）选择 "**文件夹（NTFS）**"，键入文件夹路径或单击 "浏览"，然后选择文件夹的位置。 
+   4. 单击“创建”。 
 5. 完成克隆过程后，必须初始化克隆的卷。 启动服务器管理器，并启动磁盘管理。 有关详细说明，请参阅[装载卷](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)。 完成初始化后，卷将列在 **“作用域”** 窗格中的 **“卷”** 节点下。  如果看不到列出的卷，刷新卷列表（右键单击“**卷**”节点，并单击“**刷新**”）。
 
 ## <a name="delete-a-backup"></a>删除备份
@@ -124,9 +124,9 @@ StorSimple Snapshot Manager 的主要功能是允许以快照的形式创建 Sto
 4. 按以下步骤完成 **“克隆云快照”** 对话框操作： 
    
    1. 在 **“名称”** 文本框中，键入克隆的卷的名称。 该名称将显示在 **“卷”** 节点中。 
-   2. （可选）选择**驱动器**，然后从下拉列表中选择驱动器号。 
+   2. 可有可无选择 "**驱动器**"，然后从下拉列表中选择驱动器号。 
    3. （可选） 选择“文件夹 (NTFS)”****，键入文件夹路径或单击“浏览”**** 并选择该文件夹的位置。 
-   4. 单击 **“创建”**。 
+   4. 单击“创建”。  
 5. 完成克隆过程后，必须初始化克隆的卷。 启动服务器管理器，并启动磁盘管理。 有关详细说明，请参阅[装载卷](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)。 完成初始化后，卷将列在 **“作用域”** 窗格中的 **“卷”** 节点下。 
    
      如果看不到列出的卷，刷新卷列表（右键单击“**卷**”节点，并单击“**刷新**”）。

@@ -9,10 +9,10 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: 02247adb9852a72b386feb2ef0924b0f1b3d6277
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75895237"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Hive 进行故障排除
@@ -39,7 +39,7 @@ ms.locfileid: "75895237"
     hive -f alltables.sql
     ```
 
-解决方法步骤中的代码假设新群集上的数据路径与旧群集上的相同。 如果数据路径不同，您可以手动编辑生成的`alltables.sql`文件以反映任何更改。
+解决方法步骤中的代码假设新群集上的数据路径与旧群集上的相同。 如果数据路径不同，则可以手动编辑生成`alltables.sql`的文件以反映任何更改。
 
 ### <a name="additional-reading"></a>其他阅读材料
 
@@ -63,7 +63,7 @@ ms.locfileid: "75895237"
    /var/log/hive/hivemetastore.log
    ```
 
-4. 要查看 Hive 服务器日志，请使用以下命令：
+4. 若要查看 Hive 服务器日志，请使用以下命令：
 
    ```apache
    /var/log/hive/hiveserver2.log
@@ -155,7 +155,7 @@ ms.locfileid: "75895237"
   1. 转到 Ambari。
   2. 转到 Tez 视图（隐藏在右上角的磁贴图标下面）。
   3. 选择想要查看的 DAG。
-  4. 选择“下载数据”****。
+  4. 选择“下载数据”  。
 
 ### <a name="additional-reading"></a><a name="additional-reading-end"></a>其他阅读材料
 
@@ -167,6 +167,6 @@ ms.locfileid: "75895237"
 
 - 通过 [Azure 社区支持](https://azure.microsoft.com/support/community/)获取 Azure 专家的解答。
 
-- 与[@AzureSupport](https://twitter.com/azuresupport)- 用于改善客户体验的官方 Microsoft Azure 帐户连接。 将 Azure 社区连接到正确的资源：答案、支持和专家。
+- 连接[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帐户来改善客户体验。 将 Azure 社区连接到正确的资源：答案、支持和专家。
 
 - 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”****，或打开“帮助 + 支持”**** 中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅包含对订阅管理和计费支持的访问权限，并且通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。

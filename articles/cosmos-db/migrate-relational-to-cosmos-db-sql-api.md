@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/12/2019
 ms.author: thvankra
 ms.openlocfilehash: 467e9627a2623779bd808ca5aebdf76d8a5eda42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75896631"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>将一对多关系数据迁移到 Azure Cosmos DB SQL API 帐户中
@@ -68,7 +68,7 @@ FROM Orders o;
 
 尽管我们无法将 OrderDetails 作为 JSON 数组嵌入到目标 Cosmos DB 文档中，但可以使用两个独立的复制活动来解决该问题。
 
-### <a name="copy-activity-1-sqljsontoblobtext"></a>复制活动#1：SqlJson 到 Blob文本
+### <a name="copy-activity-1-sqljsontoblobtext"></a>复制活动 #1：SqlJsonToBlobText
 
 对于源数据，我们使用 SQL 查询通过 SQL Server OPENJSON 和 FOR JSON PATH 功能获取结果集，该结果集以单列的形式提供，每行包含一个 JSON 对象（表示订单）：
 
@@ -99,7 +99,7 @@ SELECT [value] FROM OPENJSON(
 
 ![ADF 复制](./media/migrate-relational-to-cosmos-sql-api/adf2.png)
 
-### <a name="copy-activity-2-blobjsontocosmos"></a>复制活动#2：BlobJson 到宇宙
+### <a name="copy-activity-2-blobjsontocosmos"></a>复制活动 #2：BlobJsonToCosmos
 
 接下来，我们修改 ADF 管道：添加第二个复制活动，用于在 Azure Blob 存储中查找第一个活动创建的文本文件。 第二个复制活动将结果作为“JSON”源进行处理，将文本文件中找到的每个 JSON 行作为一个文档插入到 Cosmos DB 接收器中。
 
@@ -120,20 +120,20 @@ SELECT [value] FROM OPENJSON(
 
 ## <a name="azure-databricks"></a>Azure Databricks
 
-我们还可以使用[Azure 数据块](https://azure.microsoft.com/services/databricks/)中的 Spark 将数据从 SQL 数据库源复制到 Azure Cosmos DB 目标，而无需在 Azure Blob 存储中创建中间文本/JSON 文件。 
+我们还可以在[Azure Databricks](https://azure.microsoft.com/services/databricks/)中使用 Spark，将 SQL 数据库源中的数据复制到 Azure Cosmos DB 目标，而无需在 Azure Blob 存储中创建中间文本/JSON 文件。 
 
 > [!NOTE]
-> 为清楚和简单起见，下面的代码段明确内联包含虚拟数据库密码，但应始终使用 Azure 数据砖块机密。
+> 为清楚起见，以下代码片段中的代码片段显式嵌入了虚拟数据库密码，但你应始终使用 Azure Databricks 的机密。
 >
 
-首先，我们创建所需的 SQL[连接器](https://docs.databricks.com/data/data-sources/sql-databases-azure.html)和[Azure Cosmos DB 连接器](https://docs.databricks.com/data/data-sources/azure/cosmosdb-connector.html)库到 Azure 数据块群集。 重新启动群集以确保加载库。
+首先，创建所需的[SQL 连接器](https://docs.databricks.com/data/data-sources/sql-databases-azure.html)并将[Azure Cosmos DB 连接器](https://docs.databricks.com/data/data-sources/azure/cosmosdb-connector.html)库连接到 Azure Databricks 群集。 重新启动群集以确保加载库。
 
 ![Databricks](./media/migrate-relational-to-cosmos-sql-api/databricks1.png)
 
-接下来，我们介绍两个示例，用于 Scala 和 Python。 
+接下来，我们为 Scala 和 Python 提供了两个示例。 
 
 ### <a name="scala"></a>Scala
-在这里，我们将 SQL 查询的结果与"FOR JSON"输出到数据帧：
+在这里，我们将使用 "FOR JSON" 输出获取 SQL 查询的结果：
 
 ```scala
 // Connect to Azure SQL https://docs.databricks.com/data/data-sources/sql-databases-azure.html
@@ -153,7 +153,7 @@ display(orders)
 
 ![Databricks](./media/migrate-relational-to-cosmos-sql-api/databricks2.png)
 
-接下来，我们将连接到 Cosmos 数据库和集合：
+接下来，我们将连接到 Cosmos DB 数据库和集合：
 
 ```scala
 // Connect to Cosmos DB https://docs.databricks.com/data/data-sources/azure/cosmosdb-connector.html
@@ -178,7 +178,7 @@ val configMap = Map(
 val configCosmos = Config(configMap)
 ```
 
-最后，我们定义架构并使用from_json在将数据帧保存到 CosmosDB 集合之前应用数据帧。
+最后，定义架构，并在将数据帧保存到 CosmosDB 集合之前，使用 from_json 应用该架构。
 
 ```scala
 // Convert DataFrame to proper nested schema
@@ -213,7 +213,7 @@ CosmosDBSpark.save(ordersWithSchema, configCosmos)
 
 ### <a name="python"></a>Python
 
-作为替代方法，您可能需要在 Spark 中执行 JSON 转换（如果源数据库不支持"FOR JSON"或类似操作），或者您可能希望对非常大的数据集使用并行操作。 在这里，我们提出了一个PySpark示例。 首先在第一个单元中配置源数据库和目标数据库连接：
+作为替代方法，你可能需要在 Spark 中执行 JSON 转换（如果源数据库不支持 "FOR JSON" 或类似的操作），或者你可能希望对非常大的数据集使用并行操作。 这里提供了一个 PySpark 示例。 首先配置第一个单元中的源数据库和目标数据库连接：
 
 ```python
 import uuid
@@ -245,7 +245,7 @@ writeConfig = {
 }
 ```
 
-然后，我们将查询源数据库（在本例中为 SQL Server）的订单和订单详细信息记录，将结果放入 Spark 数据帧中。 我们还将创建一个列表，其中包含所有订单 ID，以及用于并行操作的线程池：
+接下来，我们将在源数据库（在本例中为 SQL Server）查询订单和订单详细信息记录，并将结果放入 Spark Dataframes。 我们还将创建一个列表，其中包含所有订单 Id 和并行操作的线程池：
 
 ```python
 import json
@@ -278,7 +278,7 @@ orderids = orders.select('OrderId').collect()
 pool = ThreadPool(10)
 ```
 
-然后，创建一个函数，用于将订单写入目标 SQL API 集合。 此函数将筛选给定订单 ID 的所有订单详细信息，将它们转换为 JSON 数组，并将数组插入到 JSON 文档中，我们将该文档写入该订单的目标 SQL API 集合中：
+然后，创建一个函数用于将订单写入目标 SQL API 集合。 此函数将筛选给定订单 ID 的所有订单详细信息，将其转换为 JSON 数组，然后将该数组插入 JSON 文档中，该文档将写入到目标 SQL API 集合中以实现此顺序：
 
 ```python
 def writeOrder(orderid):
@@ -330,13 +330,13 @@ def writeOrder(orderid):
   df.write.format("com.microsoft.azure.cosmosdb.spark").mode("append").options(**writeConfig).save()
 ```
 
-最后，我们将使用线程池上的映射函数调用上述函数，以并行执行，在之前创建的顺序 ID 列表中传递：
+最后，我们将使用线程池上的 map 函数调用上面的，以便并行执行，并传入前面创建的顺序 Id 列表：
 
 ```python
 #map order details to orders in parallel using the above function
 pool.map(writeOrder, orderids)
 ```
-在这两种方法中，在结束时，我们都应该在 Cosmos DB 集合中的每个订单文档中正确保存嵌入的订单详细信息：
+在这两种方法中，最终都应在 Cosmos DB 集合中的每个订单文档中正确保存嵌入的 OrderDetails：
 
 ![Databricks](./media/migrate-relational-to-cosmos-sql-api/databricks4.png)
 

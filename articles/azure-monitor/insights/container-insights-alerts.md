@@ -4,10 +4,10 @@ description: 本文介绍如何使用用于容器的 Azure Monitor 基于内存�
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 5d73f4399d10683597fb2a2e8a3a2ab4ba0d1165
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75730919"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>如何在用于容器的 Azure Monitor 中针对性能问题设置警报
@@ -18,8 +18,8 @@ ms.locfileid: "75730919"
 
 - 当群集节点上的 CPU 或内存利用率超过阈值时
 - 当控制器中任何容器上的 CPU 或内存利用率超过阈值时（与相应资源中设置的限制相比）
-- “未就绪”状态节点计数**
-- “失败”、“挂起”、“未知”、“正在运行”或“成功”Pod 阶段计数**********
+- “未就绪”状态节点计数 
+- “失败”、“挂起”、“未知”、“正在运行”或“成功”Pod 阶段计数     
 - 当群集节点上的可用磁盘空间超过阈值时 
 
 若要针对群集节点上的 CPU 或内存利用率过高或可用磁盘空间不足发出警报，请使用提供的查询来创建指标警报或指标度量警报。 指标警报的延迟要低于日志警报。 但是，日志警报提供高级查询和更精密的信息。 日志警报查询使用 *now* 运算符将某个日期时间与当前时间进行比较，并将时间推后一个小时。 （用于容器的 Azure Monitor 以协调世界时 (UTC) 格式存储所有日期。）
@@ -182,7 +182,7 @@ KubePodInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize) , ContainerName
 ```
 
-以下查询返回处于“就绪”和“未就绪”状态的所有节点和计数。****
+以下查询返回处于“就绪”和“未就绪”状态的所有节点和计数。  
 
 ```kusto
 let endDateTime = now();
@@ -209,7 +209,7 @@ KubeNodeInventory
             NotReadyCount = todouble(NotReadyCount) / ClusterSnapshotCount
 | order by ClusterName asc, Computer asc, TimeGenerated desc
 ```
-以下查询基于所有阶段返回 pod 阶段计数：*失败*、*挂起*、*未知*、*正在运行*或*成功*。  
+以下查询基于所有阶段返回 Pod 阶段计数：“失败”、“挂起”、“未知”、“正在运行”或“成功”。       
 
 ```kusto
 let endDateTime = now();
@@ -246,7 +246,7 @@ let endDateTime = now();
 ```
 
 >[!NOTE]
->若要针对特定的 Pod 阶段（例如“挂起”、“失败”或“未知”）发出警报，请修改查询的最后一行。****** 例如，若要针对“失败计数”发出警报，请使用：** <br/>`| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`
+>若要针对特定的 Pod 阶段（例如“挂起”、“失败”或“未知”）发出警报，请修改查询的最后一行。    例如，若要针对“失败计数”发出警报，请使用：  <br/>`| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`
 
 以下查询返回可用空间超过 90% 的已用群集节点磁盘。 若要获取群集 ID，请首先运行以下查询并从 `ClusterId` 属性中复制值：
 
@@ -277,23 +277,23 @@ InsightsMetrics
 
 ## <a name="create-an-alert-rule"></a>创建警报规则
 
-在 Azure Monitor 中，遵循以下步骤使用前面提供的日志搜索规则之一创建日志警报。 要使用 ARM 模板创建，请参阅[使用 Azure 资源模板创建示例日志警报](../platform/alerts-log.md#sample-log-alert-creation-using-azure-resource-template)。
+在 Azure Monitor 中，遵循以下步骤使用前面提供的日志搜索规则之一创建日志警报。 若要使用 ARM 模板创建，请参阅[使用 Azure 资源模板创建示例日志警报](../platform/alerts-log.md#sample-log-alert-creation-using-azure-resource-template)。
 
 >[!NOTE]
 >遵循以下过程针对容器资源利用率创建警报规则需要根据[切换日志警报的 API 首选项](../platform/alerts-log-api-switch.md)中所述，切换到新的日志警报 API。
 >
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
-2. 在 Azure 门户中，搜索并选择**日志分析工作区**。
-3. 在日志分析工作区列表中，选择支持容器 Azure 监视器的工作区。 
-4. 在左侧的窗格中，选择 **"日志"** 以打开 Azure 监视器日志页。 使用此页编写并执行 Azure Log Analytics 查询。
-5. 在 **"日志"** 页上，将前面提供的[查询](#resource-utilization-log-search-queries)之一粘贴到 **"搜索"查询**字段中，然后选择 **"运行"** 以验证结果。 如果不执行此步骤，则无法选择 **_New 警报**选项。
-6. 选择 **"新建警报**"以创建日志警报。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+2. 在 Azure 门户中，搜索并选择 " **Log Analytics 工作区**"。
+3. 在 Log Analytics 工作区列表中，选择支持容器 Azure Monitor 的工作区。 
+4. 在左侧窗格中，选择 "**日志**" 以打开 "Azure Monitor 日志" 页。 使用此页编写并执行 Azure Log Analytics 查询。
+5. 在 "**日志**" 页上，将前面提供的[查询](#resource-utilization-log-search-queries)之一粘贴到 "**搜索查询**" 字段，然后选择 "**运行**" 以验证结果。 如果不执行此步骤，则不能选择 " **+ 新建警报**" 选项。
+6. 选择 " **+ 新建警报**" 以创建日志警报。
 7. 在“条件”部分，选择预定义的自定义日志条件“每当自定义日志搜索为 \<logic undefined> 时”。******** 系统会自动选择“自定义日志搜索”信号类型，因为我们要直接从 Azure Monitor 日志页创建警报规则。****  
 8. 将前面提供的某个[查询](#resource-utilization-log-search-queries)粘贴到“搜索查询”字段中。****
 9. 按如下所述配置警报：
 
-    1. 从 **"基于**下拉列表"中，选择 **"指标度量**"。 指标度量将为查询中其值超过指定阈值的每个对象创建一个警报。
+    1. 从 "**基于**" 下拉列表中，选择 "**指标度量值**"。 指标度量将为查询中其值超过指定阈值的每个对象创建一个警报。
     1. 对于“条件”****，选择“大于”****，并输入 **75** 作为 CPU 和内存利用率警报的初始基线**阈值**。 对于磁盘空间不足警报，输入 **90**。 或输入符合条件的其他值。
     1. 在“触发警报的条件”部分选择“连续违规”。******** 从下拉列表中选择“大于”并输入 **2**。****
     1. 若要针对容器 CPU 或内存利用率配置警报，请在“聚合依据”下选择“容器名称”。******** 若要配置群集节点磁盘不足警报，请选择 **ClusterId**。
@@ -308,4 +308,4 @@ InsightsMetrics
 ## <a name="next-steps"></a>后续步骤
 
 - 请参阅[日志查询示例](container-insights-log-search.md#search-logs-to-analyze-data)，以查看预定义的查询，以及用于发警报、可视化或分析群集的评估或自定义示例。
-- 要了解有关 Azure 监视器以及如何监视库伯奈斯群集的其他方面，请参阅[查看库伯奈斯群集性能](container-insights-analyze.md)和[查看库伯奈斯群集运行状况](container-insights-health.md)。
+- 若要详细了解 Azure Monitor 以及如何监视 Kubernetes 群集的其他方面，请参阅[查看 Kubernetes 群集性能](container-insights-analyze.md)和[查看 Kubernetes 群集运行状况](container-insights-health.md)。

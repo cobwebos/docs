@@ -9,10 +9,10 @@ ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 22053bdc3a9836b76aa92303234a095cac6448ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75863836"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>在 Power BI 中可视化时序见解的数据
@@ -27,15 +27,15 @@ Azure 时序见解是可在云中存储、管理、查询和可视化时序数�
 
 最后，了解如何通过 Azure 时序见解可视化时序数据，然后使用 Power BI 的强大数据可视化功能和轻松共享功能增强这些数据。
 
-如果还没有[免费 Azure 订阅](https://azure.microsoft.com/free/)，请确保注册。
+如果还没有 Azure 订阅，请确保注册[免费订阅](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
 
 * 下载并安装最新版本的 [Power BI Desktop](https://powerbi.microsoft.com/downloads/)。
-* 拥有或创建[Azure 时间序列见解预览实例](time-series-insights-update-how-to-manage.md)
+* 具有或创建[Azure 时序见解预览版实例](time-series-insights-update-how-to-manage.md)
 
 > [!IMPORTANT]
-> 当前支持为**暖存储**配置的时序见解预览即*用即付*环境中支持 Power BI 连接器。
+> 目前，在为**热商店**配置的时序见解预览即*用即付*环境中目前支持 Power BI 连接器。
 
 ## <a name="connect-data-from-time-series-insights-to-power-bi"></a>将数据从时序见解连接到 Power BI
 
@@ -51,9 +51,9 @@ Azure 时序见解是可在云中存储、管理、查询和可视化时序数�
 开始操作：
 
 1. 打开时序见解预览版资源管理器并整理数据。
-1. 创建您满意的视图后，导航到 **"更多操作**"下拉菜单，然后选择"**连接到电源 BI**"。
+1. 创建满意的视图后，请导航到 "**更多操作**" 下拉菜单，并选择 "**连接到 Power BI**"。
 
-    [![时间序列见解预览资源管理器导出](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
+    [![时序见解预览浏览器导出](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
 
 1. 在此选项卡中设置参数：
 
@@ -69,36 +69,36 @@ Azure 时序见解是可在云中存储、管理、查询和可视化时序数�
 
        [![连接](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
 
-   1. 如果您尚未为**暖存储**配置时序见解实例，您将收到一条警告。
+   1. 如果尚未为**热商店**配置时序见解实例，则会收到警告。
 
-       [![暖存储警告](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
+       [![热存储警告](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
        > [!TIP]
-       > 您可以在 Azure 门户中为**暖存储**配置现有实例。
+       > 可以在 Azure 门户中为**热存储**配置现有实例。
 
 1. 选择“将查询复制到剪贴板”。****
 1. 现在启动 Power BI Desktop。
 1. 在 Power BI Desktop 中的“主页”选项卡上，选择左上角的“获取数据”，然后选择“更多”。************
 
-    [![家庭下拉列表](media/how-to-connect-power-bi/power-bi-home-drop-down.png)](media/how-to-connect-power-bi/power-bi-home-drop-down.png#lightbox)
+    [![主下拉列表](media/how-to-connect-power-bi/power-bi-home-drop-down.png)](media/how-to-connect-power-bi/power-bi-home-drop-down.png#lightbox)
 
 1. 搜索“时序见解”，依次选择“Azure 时序见解(Beta)”、“连接”。************
 
-    [![将 POWER BI 连接到时间序列见解](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
+    [![将 Power BI 连接到时序见解](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
 
     或者，导航到“Azure”选项卡，并依次选择“Azure 时序见解(Beta)”、“连接”。************
     
-1. 此时会显示一个消息对话框，要求授予连接到第三方资源的权限。 选择 **"继续**"。
+1. 此时会显示一个消息对话框，要求授予连接到第三方资源的权限。 选择 "**继续**"。
 
-    [![选择"创建自定义查询"](media/how-to-connect-power-bi/confirm-the-connection.png)](media/how-to-connect-power-bi/confirm-the-connection.png#lightbox)
+    [![选择 "创建自定义查询"](media/how-to-connect-power-bi/confirm-the-connection.png)](media/how-to-connect-power-bi/confirm-the-connection.png#lightbox)
 
 1. 在“数据源”下面的下拉菜单中，选择“创建自定义查询”。******** 将剪贴板中的内容粘贴到下面的“自定义查询(可选)”可选字段中，然后按“确定”。********
 
-    [![在自定义查询中传递并选择"确定"](media/how-to-connect-power-bi/custom-query-load.png)](media/how-to-connect-power-bi/custom-query-load.png#lightbox)  
+    [![传入自定义查询，然后选择 "确定"](media/how-to-connect-power-bi/custom-query-load.png)](media/how-to-connect-power-bi/custom-query-load.png#lightbox)  
 
 1. 随即会加载数据表。 按“加载”以载入 Power BI。****
 
-    [![查看表中加载的数据并选择"加载"](media/how-to-connect-power-bi/review-the-loaded-data-table.png)](media/how-to-connect-power-bi/review-the-loaded-data-table.png#lightbox)  
+    [![查看表中的已加载数据，然后选择 "加载"](media/how-to-connect-power-bi/review-the-loaded-data-table.png)](media/how-to-connect-power-bi/review-the-loaded-data-table.png#lightbox)  
 
 如果已完成这些步骤，请跳到下一部分。
 
@@ -118,7 +118,7 @@ Azure 时序见解是可在云中存储、管理、查询和可视化时序数�
 
     [![创建折线图](media/how-to-connect-power-bi/power-bi-line-chart.png)](media/how-to-connect-power-bi/power-bi-line-chart.png#lightbox)
 
-1.  要向画布添加另一个图表，请选择折线图外的画布上的任意位置，然后重复此过程。
+1.  若要向画布添加另一个图表，请在折线图外的画布上的任意位置选择，并重复此过程。
 
     [![创建要共享的其他图表](media/how-to-connect-power-bi/power-bi-additional-charts.png)](media/how-to-connect-power-bi/power-bi-additional-charts.png#lightbox)
 
@@ -133,12 +133,12 @@ Azure 时序见解是可在云中存储、管理、查询和可视化时序数�
 1. 在 Power BI Desktop 中选择“编辑查询”。****
 1. 按“高级编辑器”。****
 
-    [![编辑高级编辑器中的查询](media/how-to-connect-power-bi/power-bi-advanced-query-editing.png)](media/how-to-connect-power-bi/power-bi-advanced-query-editing.png#lightbox)
+    [![在高级编辑器中编辑查询](media/how-to-connect-power-bi/power-bi-advanced-query-editing.png)](media/how-to-connect-power-bi/power-bi-advanced-query-editing.png#lightbox)
 
 1. 根据需要修改 JSON 有效负载。
 1. 在 **Power Query 编辑器窗口**中，依次选择“完成”、“关闭并应用”。********
 
-该接口现在将反映您应用的所需更改。  
+接口现在将反映所需的更改。  
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -146,4 +146,4 @@ Azure 时序见解是可在云中存储、管理、查询和可视化时序数�
 
 * 详细了解 [Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-query-overview)。
 
-* 阅读[时间序列见解 GA 资源管理器](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart)和[时间序列见解预览资源管理器](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart)。
+* 阅读[时序见解 GA 资源管理器](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart)和[时序见解预览资源管理器](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart)。

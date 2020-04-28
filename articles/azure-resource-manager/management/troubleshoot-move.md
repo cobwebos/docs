@@ -4,10 +4,10 @@ description: 使用 Azure 资源管理器将资源移到新的资源组或订阅
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.openlocfilehash: 5a65f7daa0f5e3b1c8c6ddfdbecc0ff7d53e5afd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75891276"
 ---
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>排查将 Azure 资源移到新的资源组或订阅时遇到的问题
@@ -21,16 +21,16 @@ ms.locfileid: "75891276"
 * 若要升级免费试用版，请参阅[将免费试用版或 Microsoft Imagine Azure 订阅升级到即用即付](../../billing/billing-upgrade-azure-subscription.md)。
 * 若要更改即用即付帐户，请参阅[将 Azure 即用即付订阅更改为其他套餐](../../billing/billing-how-to-switch-azure-offer.md)。
 
-如果无法转换订阅，请[创建 Azure 支持请求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 为问题类型选择**订阅管理**。
+如果无法转换订阅，请[创建 Azure 支持请求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 选择“订阅管理”  作为问题类型。
 
 ## <a name="service-limitations"></a>服务限制
 
 有些服务在移动资源时需要注意额外的事项。 如果要移动以下服务，请务必查看指南和限制。
 
-* [应用程序服务](./move-limitations/app-service-move-limitations.md)
-* [Azure 开发人员服务](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
+* [应用服务](./move-limitations/app-service-move-limitations.md)
+* [Azure DevOps Services](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
 * [经典部署模型](./move-limitations/classic-model-move-limitations.md)
-* [网络连接](./move-limitations/networking-move-limitations.md)
+* [联网](./move-limitations/networking-move-limitations.md)
 * [恢复服务](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
 * [虚拟机](./move-limitations/virtual-machines-move-limitations.md)
 

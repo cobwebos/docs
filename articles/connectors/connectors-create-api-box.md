@@ -1,6 +1,6 @@
 ---
-title: 连接到框
-description: 使用 Azure 逻辑应用自动执行在 Box 中创建和管理文件的任务和工作流
+title: 连接到 Box
+description: 使用 Azure 逻辑应用自动执行创建和管理 Box 中的文件的任务和工作流
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/07/2016
 tags: connectors
 ms.openlocfilehash: c7f97ff33742eb545cbfbd7521ba135584851e5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75666765"
 ---
 # <a name="create-and-manage-files-in-box-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用在 Box 中创建和管理文件
@@ -36,7 +36,7 @@ ms.locfileid: "75666765"
 * 要在其中访问 Box 帐户的逻辑应用。 若要通过 Box 触发器启动逻辑应用，需要一个[空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 * 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识。
-如果您是逻辑应用的新功能，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)。
+如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)。
 
 ## <a name="connector-reference"></a>连接器参考
 

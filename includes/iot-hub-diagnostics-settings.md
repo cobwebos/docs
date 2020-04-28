@@ -9,17 +9,17 @@ ms.date: 02/20/2019
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 3778ec2fac13aee29ce361402a535ca70fd56c33
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75750711"
 ---
 ### <a name="enable-logging-with-diagnostics-settings"></a>通过诊断设置启用日志记录
 
 [!INCLUDE [updated-for-az](./updated-for-az.md)]
 
-1. 登录到 Azure[门户](https://portal.azure.com)并导航到 IoT 中心。
+1. 登录到[Azure 门户](https://portal.azure.com)并导航到 IoT 中心。
 
 2. 选择“诊断设置”****。
 

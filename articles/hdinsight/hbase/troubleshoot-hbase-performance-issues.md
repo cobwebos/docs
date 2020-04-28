@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
 ms.openlocfilehash: 93698fadcecf190dd8bbc24a9d03978899d3c5e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75887149"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>在 Azure HDInsight 上排查 Apache HBase 性能问题
@@ -79,29 +79,29 @@ ms.locfileid: "75887149"
 
 - 若要控制刷新，请使用以下设置：
 
-    - `Hbase.regionserver.maxlogs`： **140** （由于 WAL 限制而避免冲洗）
+    - `Hbase.regionserver.maxlogs`：**140**（避免因 WAL 限制而导致的刷新）
 
-    - `Hbase.regionserver.global.memstore.lowerLimit`： **0.55**
+    - `Hbase.regionserver.global.memstore.lowerLimit`：**0.55**
 
-    - `Hbase.regionserver.global.memstore.upperLimit`： **0.60**
+    - `Hbase.regionserver.global.memstore.upperLimit`：**0.60**
 
 - 用于线程池优化的 Phoenix 特定配置：
 
-    - `Phoenix.query.queuesize`： **10000**
+    - `Phoenix.query.queuesize`：**10000**
 
-    - `Phoenix.query.threadpoolsize`： **512**
+    - `Phoenix.query.threadpoolsize`：**512**
 
 - 其他 Phoenix 特定配置：
 
-    - `Phoenix.rpc.index.handler.count`： **50** （如果有大型或多个索引查找）
+    - `Phoenix.rpc.index.handler.count`：**50**（如果存在大型或众多的索引查找）
 
-    - `Phoenix.stats.updateFrequency`： **1 小时**
+    - `Phoenix.stats.updateFrequency`：**1 小时**
 
-    - `Phoenix.coprocessor.maxmetadatacachetimetolivems`： **1 小时**
+    - `Phoenix.coprocessor.maxmetadatacachetimetolivems`：**1 小时**
 
-    - `Phoenix.coprocessor.maxmetadatacachesize`**：50 MB**
+    - `Phoenix.coprocessor.maxmetadatacachesize`：**50 MB**
 
-- RPC 超时 **：3 分钟**
+- RPC 超时：**3 分钟**
 
    - RPC 超时包括 HBase RPC 超时、HBase 客户端扫描程序超时和 Phoenix 查询超时。 
    - 请确保在服务器端和客户端端将 `hbase.client.scanner.caching` 参数设置为相同的值。 如果两者不同，此设置会导致 `OutOfOrderScannerException`相关的客户端错误。 对于大型扫描，应将此设置指定为较小值。 我们将此值设置为 **100**。
@@ -118,10 +118,10 @@ ms.locfileid: "75887149"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果您的问题仍未解决，请访问以下渠道之一以寻求更多支持：
+如果问题仍未解决，请访问以下通道之一以获得更多支持：
 
 - 通过 [Azure 社区支持](https://azure.microsoft.com/support/community/)获取 Azure 专家的解答。
 
-- 连接到[@AzureSupport](https://twitter.com/azuresupport)。 这是用于改善客户体验的官方 Microsoft Azure 帐户。 它将 Azure 社区连接到正确的资源：答案、支持和专家。
+- 连接到[@AzureSupport](https://twitter.com/azuresupport)。 这是用于改善客户体验的官方 Microsoft Azure 帐户。 它将 Azure 社区连接到适当的资源：答案、支持和专家。
 
-- 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”****，或打开“帮助 + 支持”**** 中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅包括访问订阅管理和计费支持，并通过[Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。
+- 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”****，或打开“帮助 + 支持”**** 中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 你的 Microsoft Azure 订阅包括对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。

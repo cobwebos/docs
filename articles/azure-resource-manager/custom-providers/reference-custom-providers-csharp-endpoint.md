@@ -1,24 +1,24 @@
 ---
-title: 自定义提供程序 C# RESTful 终结点引用
-description: 为 Azure 自定义提供程序 C# RESTful 终结点提供基本参考。 终结点通过 Azure 函数应用提供。
+title: '自定义提供程序 c # RESTful 终结点引用'
+description: '提供 Azure 自定义提供程序 c # RESTful 终结点的基本参考。 终结点是通过 Azure function app 提供的。'
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: b6ecb22cb968e0d963242c8c2d5dd1a6cb24229c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75651171"
 ---
-# <a name="custom-provider-c-restful-endpoint-reference"></a>自定义提供程序 C# RESTful 终结点引用
+# <a name="custom-provider-c-restful-endpoint-reference"></a>自定义提供程序 c # RESTful 终结点引用
 
-本文是自定义提供程序 C# RESTful 终结点的基本参考。 如果不熟悉 Azure 自定义提供程序，请参阅[自定义资源提供程序概述](overview.md)。
+本文是对自定义提供程序 c # RESTful 终结点的基本参考。 如果不熟悉 Azure 自定义提供程序，请参阅[自定义资源提供程序概述](overview.md)。
 
-## <a name="azure-function-app-restful-endpoint"></a>Azure 函数应用 RESTful 终结点
+## <a name="azure-function-app-restful-endpoint"></a>Azure function app RESTful 终结点
 
-以下代码适用于 Azure 函数应用。 要了解如何设置 Azure 函数应用以使用 Azure 自定义提供程序，请参阅[有关为 Azure 自定义提供程序设置 Azure 函数的教程](./tutorial-custom-providers-function-setup.md)。
+以下代码适用于 Azure function app。 若要了解如何设置 Azure function app 以使用 Azure 自定义提供程序，请参阅[设置 Azure 自定义提供程序的 Azure Functions 教程](./tutorial-custom-providers-function-setup.md)。
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -256,6 +256,6 @@ public static async Task<HttpResponseMessage> RemoveCustomResource(HttpRequestMe
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure 自定义资源提供程序概述](overview.md)
-- [教程：创建 Azure 自定义资源提供程序并部署自定义资源](./create-custom-provider.md)
+- [教程：创建 Azure 自定义资源提供程序和部署自定义资源](./create-custom-provider.md)
 - [如何：将自定义操作添加到 Azure REST API](./custom-providers-action-endpoint-how-to.md)
-- [引用：自定义资源缓存引用](proxy-cache-resource-endpoint-reference.md)
+- [参考：自定义资源缓存引用](proxy-cache-resource-endpoint-reference.md)

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: tomfitz
 ms.openlocfilehash: 23a7c54a84ec083b8fa470f26582913fcc3d2ee6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75652198"
 ---
 # <a name="microsoftcommontagsbyresource-ui-element"></a>Microsoft.Common.TagsByResource UI 元素
@@ -50,7 +50,7 @@ ms.locfileid: "75652198"
 ## <a name="remarks"></a>备注
 
 - 必须至少指定 `resources` 数组中的一项。
-- `resources` 中的每个元素都必须是完全限定的资源类型。 这些元素显示在“资源”**** 下拉列表中，并且可供用户标记。
+- `resources` 中的每个元素都必须是完全限定的资源类型。 这些元素显示在“资源”  下拉列表中，并且可供用户标记。
 - 控件的输出进行了格式设置，以便于在 Azure 资源管理器模板中轻松分配标记值。 若要在模板中接收控件的输出，请在模板中包括参数，如以下示例中所示：
 
   ```json

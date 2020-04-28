@@ -1,6 +1,6 @@
 ---
-title: Azure 开发人员测试实验室中的应用程序迁移和集成
-description: 本文提供有关在应用程序迁移和集成上下文中治理 Azure DevTest Labs 基础结构的指导。
+title: Azure 开发测试实验室中的应用程序迁移和集成
+description: 本文提供了有关在应用程序迁移和集成环境中管理 Azure 开发测试实验室基础结构的指导。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,10 +14,10 @@ ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 14641e9096fa9366334e9f7460ae55cda0e6c2e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75644880"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure 开发测试实验室基础结构的监管 - 应用程序迁移和集成
@@ -64,7 +64,7 @@ ms.locfileid: "75644880"
 使用开发测试实验室在 Azure Pipelines 中创建自定义映像管道：
 
 - [Introduction: Get VMs ready in minutes by setting up an image factory in Azure DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/)（简介：通过在 Azure 开发测试实验室中设置映像工厂即可在几分钟内准备好虚拟机）
-- [图像工厂 = 第 2 部分！设置 Azure 管道和工厂实验室以创建 VM](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
+- [映像工厂–第2部分！安装 Azure Pipelines 和工厂实验室来创建 Vm](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
 - [Image Factory – Part 3: Save Custom Images and Distribute to Multiple Labs](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/)（映像工厂 – 第 3 部分：保存自定义映像并分发到多个实验室）
 - [Video: Custom Image Factory with Azure DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)（视频：Azure 开发测试实验室的自定义映像工厂）
 
@@ -117,7 +117,7 @@ ms.locfileid: "75644880"
 在考虑每个用户或每个实验室的虚拟机数量时，主要有三个考虑因素：
 
 - 团队在实验室资源上花费的总成本****。 运行很多计算机很容易。 为了控制成本，一种机制是限制每个用户和/或每个实验室的 VM 数量
-- 实验室中的虚拟机总数受可用[订阅级别配额](../azure-resource-manager/management/azure-subscription-service-limits.md)的影响。 其中一个上限是每个订阅 800 个资源组。 开发测试实验室当前为每个 VM 创建一个新的资源组（除非使用共享的公用 IP）。 如果订阅中有 10 个实验室，则每个实验室中可以容纳大约 79 个虚拟机（800 个上限 = 10 个实验室本身的 10 个资源组） = 每个实验室 79 个虚拟机。
+- 实验室中的虚拟机总数受可用[订阅级别配额](../azure-resource-manager/management/azure-subscription-service-limits.md)的影响。 其中一个上限是每个订阅 800 个资源组。 开发测试实验室当前为每个 VM 创建一个新的资源组（除非使用共享的公用 IP）。 如果订阅中有10个实验室，实验室可能会在每个实验室中容纳大约79的虚拟机（10个实验室自身的800上限–10个资源组） = 79 每个实验室的虚拟机数。
 - 举例来说，如果实验室通过 Express Route 连接到本地，则可以为 VNet/子网定义可用的 IP 地址空间****。 为了确保能够在实验室中创建 VM（出现“无法获取 IP 地址”错误时无法创建），实验室所有者可以根据可用的 IP 地址空间指定每个实验室的最大 VM 数量。
 
 ## <a name="use-resource-manager-templates"></a>使用 Resource Manager 模板

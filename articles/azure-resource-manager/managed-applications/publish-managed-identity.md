@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
 ms.openlocfilehash: dbf75262440474c5cb50a6d733ac7cba212b5f3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75651652"
 ---
 # <a name="azure-managed-application-with-managed-identity"></a>包含托管标识的 Azure 托管应用程序
@@ -21,7 +21,7 @@ ms.locfileid: "75651652"
 
 你的应用程序可以被授予两种类型的标识：
 
-- 系统分配的标识与你的应用程序相绑定，如果删除应用，标识也会被删除****。 一个应用只能具有一个系统分配的标识。
+- 系统分配的标识与你的应用程序相绑定，如果删除应用，标识也会被删除  。 一个应用只能具有一个系统分配的标识。
 - **用户分配的标识**是可以分配给应用的独立 Azure 资源。 一个应用可以具有多个用户分配的标识。
 
 ## <a name="how-to-use-managed-identity"></a>如何使用托管标识
@@ -46,7 +46,7 @@ ms.locfileid: "75651652"
 }
 ```
 
-创建具有**标识**的托管应用程序有两种常见方法：[创建 UIDefinition.json](./create-uidefinition-overview.md)和[Azure 资源管理器模板](../templates/template-syntax.md)。 对于简单的单一创建方案，应使用 CreateUIDefinition 来启用托管标识，因为它提供更丰富的体验。 但是，在处理需要自动化部署或多个托管应用程序部署的高级系统或复杂系统时，可以使用模板。
+可通过两种常用方法创建包含**标识**的托管应用程序：[CreateUIDefinition.json](./create-uidefinition-overview.md) 和 [Azure 资源管理器模板](../templates/template-syntax.md)。 对于简单的单一创建方案，应使用 CreateUIDefinition 来启用托管标识，因为它提供更丰富的体验。 但是，在处理需要自动化部署或多个托管应用程序部署的高级系统或复杂系统时，可以使用模板。
 
 ### <a name="using-createuidefinition"></a>使用 CreateUIDefinition
 
@@ -331,10 +331,10 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 请求正文参数：
 
-参数 | 必选 | 描述
+参数 | 必须 | 说明
 ---|---|---
-authorizationAudience | *不* | 目标资源的应用 ID URI。 它也是颁发的令牌的 `aud`（受众）声明。 默认值为“https://management.azure.com/”
-userAssignedIdentities | *不* | 要检索其令牌的用户分配托管标识的列表。 如果未指定，`listTokens` 将返回系统分配的托管标识的令牌。
+authorizationAudience | 否  | 目标资源的应用 ID URI。 它也是颁发的令牌的 `aud`（受众）声明。 默认值为“https://management.azure.com/”
+userAssignedIdentities | 否  | 要检索其令牌的用户分配托管标识的列表。 如果未指定，`listTokens` 将返回系统分配的托管标识的令牌。
 
 
 示例响应可能如下所示：
@@ -360,14 +360,14 @@ Content-Type: application/json
 
 响应将在 `value` 属性下包含令牌数组：
 
-参数 | 描述
+参数 | 说明
 ---|---
 access_token | 请求的访问令牌。
 expires_in | 访问令牌的有效秒数。
 expires_on | 访问令牌过期的时间范围。 此值以从纪元算起的秒数表示。
 not_before | 访问令牌生效的时间范围。 此值以从纪元算起的秒数表示。
 authorizationAudience | 请求其访问令牌的 `aud`（受众）。 这与 `listTokens` 请求中提供的值相同。
-resourceId | 颁发的令牌的 Azure 资源 ID。 此值为托管应用程序 ID 或用户分配的标识 ID。
+ResourceId | 颁发的令牌的 Azure 资源 ID。 此值为托管应用程序 ID 或用户分配的标识 ID。
 token_type | 令牌的类型。
 
 ## <a name="next-steps"></a>后续步骤

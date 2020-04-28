@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.openlocfilehash: 2146b1bd782aba5d98729a2d37d956744e469ba1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75860242"
 ---
 # <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>在 Azure 上选择实时分析和流式处理技术
@@ -25,8 +25,8 @@ Azure 流分析是 Azure 上提供的建议用于流分析的服务。 该服务
 * 数据可视化仪表板
 * 针对时态和空间模式或异常生成实时[警报](stream-analytics-set-up-alerts.md)
 * 提取、转换、加载 (ETL)
-* [事件采购模式](/azure/architecture/patterns/event-sourcing)
-* [物联网边缘](stream-analytics-edge.md)
+* [事件来源模式](/azure/architecture/patterns/event-sourcing)
+* [IoT Edge](stream-analytics-edge.md)
 
 将 Azure 流分析作业添加到应用程序，是在 Azure 中使用熟悉的 SQL 语言启动和运行流分析的最快捷方法。 Azure 流分析是一个作业服务，因此你无需花费时间来管理群集，也无需担心出现停机，因为它在作业级别提供 99.9% SLA。 还可以在作业级别进行计费，使创业成本降低（只需一个流单元），但流单元可缩放（最多可以购买 192 个）。 运行少量的流分析作业比运行并维护群集要经济高效得多。
 
@@ -54,5 +54,5 @@ Azure 流分析是 Microsoft 的专属技术，只能在 Azure 上使用。 如�
 
 * [使用 Azure 门户创建流分析作业](stream-analytics-quick-create-portal.md)
 * [使用 Azure PowerShell 创建流分析作业](stream-analytics-quick-create-powershell.md)
-* [使用可视化工作室创建流分析作业](stream-analytics-quick-create-vs.md)
-* [使用可视化工作室代码创建流分析作业](quick-create-vs-code.md)
+* [使用 Visual Studio 创建流分析作业](stream-analytics-quick-create-vs.md)
+* [使用 Visual Studio Code 创建流分析作业](quick-create-vs-code.md)

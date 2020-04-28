@@ -15,48 +15,48 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: b-juche
 ms.openlocfilehash: 0398cc6a5336141f51dde26ed7cf4cce8c2c0bb4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75832586"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Azure NetApp 文件的服务级别
-服务级别是容量池的属性。 服务级别根据分配给卷的配额，根据容量池中允许的最大吞吐量定义和区分。
+服务级别是容量池的属性。 根据分配给卷的配额，为容量池中的卷允许的最大吞吐量定义和区分服务级别。
 
 ## <a name="supported-service-levels"></a>支持的服务级别
 
-Azure NetApp 文件支持三个服务级别：*超*、*高级*和*标准*。 
+Azure NetApp 文件支持三个服务级别： *Ultra*、*高级*和*标准*。 
 
-* <a name="Ultra"></a>超存储
+* <a name="Ultra"></a>超存储器
 
-    Ultra 存储层提供高达 128 MiB/s 的吞吐量每 1 TiB 分配的容量配额。 
+    对于分配的卷配额，Ultra 存储层提供最多 128 MiB/秒的吞吐量。 
 
 * <a name="Premium"></a>高级存储
 
-    高级存储层提供最多 64 MiB/s 的吞吐量每 1 TiB 分配的卷配额。 
+    高级存储层提供了 64 MiB/秒的吞吐量，每 1 TiB 分配的卷配额。 
 
 * <a name="Standard"></a>标准存储
 
-    标准存储层提供最多 16 MiB/s 的吞吐量每 1 TiB 分配的卷配额。
+    标准存储层提供的吞吐量最高可达每1个 TiB 的卷配额。
 
 ## <a name="throughput-limits"></a>吞吐量限制
 
-卷的吞吐量限制由以下因素的组合决定：
+卷的吞吐量限制由以下因素的组合确定：
 * 卷所属的容量池的服务级别
 * 分配给卷的配额  
 
-这一概念如下图所示：
+下图演示了此概念：
 
-![服务级别图](../media/azure-netapp-files/azure-netapp-files-service-levels.png)
+![服务级别说明](../media/azure-netapp-files/azure-netapp-files-service-levels.png)
 
-在上面的示例 1 中，分配了 2 TiB 配额的高级存储层的容量池中的卷将被分配为 128 MiB/s （2 TiB = 64 MiB/s）。 无论容量池大小或实际体积消耗量如何，此方案都适用。
+在上面的示例1中，将为容量池中分配了 2 TiB 配额的容量池分配一个卷，吞吐量限制为 128 MiB/秒（2 TiB * 64 MiB/秒）。 无论容量池大小还是实际容量消耗，此方案都适用。
 
-在上面的示例 2 中，分配了 100 GiB 配额的高级存储层的容量池中的卷将分配 6.25 MiB/s （0.09765625 TiB = 64 MiB/s） 的吞吐量限制。 无论容量池大小或实际体积消耗量如何，此方案都适用。
+在上面的示例2中，将为容量池中具有分配了 100 GiB 配额的高级存储层的卷分配 6.25 MiB/秒的吞吐量限制（0.09765625 TiB * 64 MiB/秒）。 无论容量池大小还是实际容量消耗，此方案都适用。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 有关不同服务级别的价格，请参阅 [Azure NetApp 文件定价页](https://azure.microsoft.com/pricing/details/storage/netapp/)
-- 有关计算容量池中的容量消耗，请参阅[Azure NetApp 文件的成本模型](azure-netapp-files-cost-model.md) 
+- 有关容量池中容量消耗的计算，请参阅[Azure NetApp 文件的成本模型](azure-netapp-files-cost-model.md) 
 - [设置容量池](azure-netapp-files-set-up-capacity-pool.md)
-- 请参阅[Azure NetApp 文件的服务级别协议 （SLA）](https://azure.microsoft.com/support/legal/sla/netapp/)
+- 请参阅[Azure NetApp 文件服务级别协议（SLA）](https://azure.microsoft.com/support/legal/sla/netapp/)

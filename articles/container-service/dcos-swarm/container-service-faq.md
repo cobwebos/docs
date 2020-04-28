@@ -10,10 +10,10 @@ ms.date: 03/28/2017
 ms.author: mlearned
 ms.custom: H1Hack27Feb201
 ms.openlocfilehash: 317862b694b93de44422ac3c28575c732ffc5be5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75887914"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>（已弃用）容器服务常见问题解答
@@ -112,9 +112,9 @@ ssh userName@masterFQDN –A –p 22 
 
 有关详细信息，请参阅[连接到 Azure 容器服务群集](../../container-service/kubernetes/container-service-connect.md)。
 
-### <a name="my-dns-name-resolution-isnt-working-on-windows-what-should-i-do"></a>我的 DNS 名称解析在 Windows 上不正常工作。 我该怎么办？
+### <a name="my-dns-name-resolution-isnt-working-on-windows-what-should-i-do"></a>我的 DNS 名称解析在 Windows 上不正常工作。   应采取何种操作？
 
-Windows 上存在一些已知的 DNS 问题，其修复程序仍在主动淘汰中。请确保您使用的是最新的 acs 引擎和 Windows 版本（安装了[KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588)和[KB4089848），](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848)以便您的环境可以从中受益。 否则，请参阅下表了解缓解步骤：
+Windows 上存在一些已知的 DNS 问题，这些问题的修复仍处于活动状态。请确保使用的是最新版本的 acs 引擎和 Windows 版本（安装了[KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588)和[KB4089848](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848) ），以便你的环境可以从此获得权益。 否则，请参阅下表了解缓解步骤：
 
 | DNS 症状 | 解决方法  |
 |-------------|-------------|

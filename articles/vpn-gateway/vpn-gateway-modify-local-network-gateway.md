@@ -1,5 +1,5 @@
 ---
-title: 修改网关 IP 地址设置：电源外壳
+title: 修改网关 IP 地址设置： PowerShell
 description: 本文逐步介绍了如何使用 PowerShell 更改本地网关的 IP 地址前缀
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/19/2017
 ms.author: cherylmc
 ms.openlocfilehash: dbaef6e0c81a9230b24aa1e85e7fdc421444047d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75863989"
 ---
 # <a name="modify-local-network-gateway-settings-using-powershell"></a>使用 PowerShell 修改本地网络网关设置
@@ -21,12 +21,12 @@ ms.locfileid: "75863989"
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](vpn-gateway-modify-local-network-gateway-portal.md)
-> * [电源外壳](vpn-gateway-modify-local-network-gateway.md)
+> * [PowerShell](vpn-gateway-modify-local-network-gateway.md)
 > * [Azure CLI](vpn-gateway-modify-local-network-gateway-cli.md)
 >
 >
 
-## <a name="before-you-begin"></a><a name="before"></a>开始之前
+## <a name="before-you-begin"></a><a name="before"></a>准备工作
 
 安装最新版本的 Azure 资源管理器 PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 。
 

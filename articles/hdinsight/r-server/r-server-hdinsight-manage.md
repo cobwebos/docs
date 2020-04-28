@@ -9,21 +9,21 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.openlocfilehash: b2c16c27c0dfc0c30a99c52544cc4d2278eadfc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75647724"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>管理 Azure HDInsight 上的 ML Services 群集
 
-在本文中，您将了解如何在 Azure HDInsight 上管理现有的 ML 服务群集，以执行诸如添加多个并发用户、远程连接到 ML 服务群集、更改计算上下文等任务。
+本文介绍如何管理 Azure HDInsight 上的现有 ML 服务群集，以执行以下任务：添加多个并发用户、远程连接到 ML 服务群集、更改计算上下文等。
 
 ## <a name="prerequisites"></a>先决条件
 
 * HDInsight 上的机器学习服务群集。 参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择“机器学习服务”作为“群集类型”。********
 
-* 安全外壳 (SSH) 客户端：SSH 客户端可用于远程连接到 HDInsight 群集，并直接在群集上运行命令。 有关详细信息，请参阅将[SSH 与 HDInsight 一起使用。](../hdinsight-hadoop-linux-use-ssh-unix.md)
+* 安全外壳 (SSH) 客户端：SSH 客户端可用于远程连接到 HDInsight 群集，并直接在群集上运行命令。 有关详细信息，请参阅[将 SSH 与 HDInsight 配合使用。](../hdinsight-hadoop-linux-use-ssh-unix.md)
 
 ## <a name="enable-multiple-concurrent-users"></a>允许多个并发用户
 
@@ -106,7 +106,7 @@ ms.locfileid: "75647724"
 
 ## <a name="use-a-compute-context"></a>使用计算上下文
 
-借助计算上下文，用户可控制是在边缘节点上本地执行计算，还是将计算分布到 HDInsight 群集的节点之间。  有关使用 RStudio Server 设置计算上下文的示例，请参阅[使用 RStudio Server 在 Azure HDInsight 中的 ML 服务群集上执行 R 脚本](machine-learning-services-quickstart-job-rstudio.md)。
+借助计算上下文，用户可控制是在边缘节点上本地执行计算，还是将计算分布到 HDInsight 群集的节点之间。  有关使用 RStudio 服务器设置计算上下文的示例，请参阅在[Azure HDInsight 中使用 RStudio 服务器在 ML 服务群集上执行 R 脚本](machine-learning-services-quickstart-job-rstudio.md)。
 
 ## <a name="distribute-r-code-to-multiple-nodes"></a>将 R 代码分布到多个节点
 
@@ -192,7 +192,7 @@ ms.locfileid: "75647724"
 
    * 对于“名称”****，为脚本操作提供一个名称。
 
-     * 对于 Bash 脚本`https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`**URI，** 请输入 。 此脚本会在工作节点上安装其他 R 包
+     * 对于**Bash 脚本 URI**，输入`https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`。 此脚本会在工作节点上安装其他 R 包
 
    * 仅选中“辅助角色”所对应的复选框****。
 

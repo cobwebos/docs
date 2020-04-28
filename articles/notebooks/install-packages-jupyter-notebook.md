@@ -1,16 +1,16 @@
 ---
-title: 在聚居笔记本中安装软件包 - Azure 笔记本预览
-description: 了解如何在 Azure 上运行的 Jupyter 笔记本中安装 Python、R 和 F# 包。
+title: 在 Jupyter 笔记本中安装包-Azure Notebooks 预览
+description: '了解如何在 Azure 上运行的 Jupyter 笔记本中安装 Python、R 和 F # 包。'
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.openlocfilehash: f6359b4c010834ffaee00b6208d309997339f36e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75646222"
 ---
-# <a name="install-packages-from-within-azure-notebooks-preview"></a>从 Azure 笔记本预览中安装包
+# <a name="install-packages-from-within-azure-notebooks-preview"></a>从 Azure Notebooks 预览中安装包
 
 虽然可以在[项目级别为笔记本配置环境](configure-manage-azure-notebooks-projects.md#configure-the-project-environment)，但你可能希望直接在一个单独的笔记本内安装包。
 
@@ -76,4 +76,4 @@ open MathNet.Numerics
 ## <a name="next-steps"></a>后续步骤
 
 - [如何：配置和管理项目](configure-manage-azure-notebooks-projects.md)
-- [如何：展示幻灯片](present-jupyter-notebooks-slideshow.md)
+- [如何：显示幻灯片](present-jupyter-notebooks-slideshow.md)

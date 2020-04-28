@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/08/2020
 ms.openlocfilehash: b3c1abb7bff54e3e2d294b073b867c6c0e06f482
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75830065"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>使用 PowerShell 通过 HDInsight 上的 Apache Hadoop 运行 MapReduce 作业
@@ -21,7 +21,7 @@ ms.locfileid: "75830065"
 
 本文档提供使用 Azure PowerShell 在 HDInsight 上的 Hadoop 群集中运行 MapReduce 作业的示例。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * HDInsight 中的 Apache Hadoop 群集。 请参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)。
 
@@ -33,11 +33,11 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 MapReduce �
 
 在远程 HDInsight 群集上运行 MapReduce 作业时，将使用以下 Cmdlet。
 
-|Cmdlet | 描述 |
+|Cmdlet | 说明 |
 |---|---|
 |Connect-AzAccount|在 Azure 订阅中进行 Azure PowerShell 身份验证。|
-|New-AzHDInsightMapReduceJobDefinition|使用指定的 MapReduce 信息创建新的作业定义**。|
-|Start-AzHDInsightJob|将作业定义发送到 HDInsight 并启动作业。 将返回作业对象**。|
+|New-AzHDInsightMapReduceJobDefinition|使用指定的 MapReduce 信息创建新的作业定义  。|
+|Start-AzHDInsightJob|将作业定义发送到 HDInsight 并启动作业。 将返回作业对象  。|
 |Wait-AzHDInsightJob|使用作业对象来检查作业的状态。 它等到作业完成或超出等待时间。|
 |Get-AzHDInsightJobOutput|用于检索作业的输出。|
 
@@ -51,7 +51,7 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 MapReduce �
 
         .\mapreducejob.ps1
 
-    运行脚本时，系统会提示您获得 HDInsight 群集的名称和群集登录名。 还会提示针对 Azure 订阅进行身份验证。
+    运行该脚本时，系统会提示输入 HDInsight 群集的名称和群集登录名。 还会提示针对 Azure 订阅进行身份验证。
 
 3. 作业完成后，将收到类似于以下文本的输出：
 
@@ -74,14 +74,14 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 MapReduce �
 
 ### <a name="view-output"></a>查看输出
 
-若要查看作业生成的单词和计数，请在文本编辑器中打开 output.txt 文件****。
+若要查看作业生成的单词和计数，请在文本编辑器中打开 output.txt 文件  。
 
 > [!NOTE]  
 > MapReduce 作业的输出文件是固定不变的。 因此，如果重新运行此示例，将需要更改输出文件的名称。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
-如果作业完成时未返回任何信息，请查看该作业的错误。 要查看此作业的错误信息，请向**mapreducejob.ps1**文件的末尾添加以下命令。 然后保存文件并重新运行脚本。
+如果作业完成时未返回任何信息，请查看该作业的错误。 若要查看此作业的错误信息，请将以下命令添加到 **mapreducejob.ps1** 文件的末尾。 然后保存该文件，并重新运行脚本。
 
 ```powershell
 # Print the output of the WordCount job.

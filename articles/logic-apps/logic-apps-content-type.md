@@ -1,16 +1,16 @@
 ---
 title: 处理内容类型
-description: 了解如何在设计时间和 Azure 逻辑应用中的运行时间内处理工作流中的各种内容类型
+description: 了解如何在设计时和运行时在 Azure 逻辑应用中处理工作流中的各种内容类型
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/20/2018
 ms.openlocfilehash: ae0abe288edda2ce01311d8533b1f104409efce0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75666867"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>在 Azure 逻辑应用中处理内容类型
@@ -57,9 +57,9 @@ ms.locfileid: "75666867"
   
   如果没有架构，可以生成架构。 
   
-  1. 在请求触发器中，选择“使用示例有效负载生成架构”。****  
+  1. 在请求触发器中，选择“使用示例有效负载生成架构”。   
   
-  2. 在“输入或粘贴示例 JSON 有效负载”下，提供示例有效负载并选择“完成”。******** 例如： 
+  2. 在“输入或粘贴示例 JSON 有效负载”下，提供示例有效负载并选择“完成”。   例如： 
 
      ![提供示例 JSON 有效负载](./media/logic-apps-content-type/request-trigger.png)
 
@@ -140,9 +140,9 @@ ms.locfileid: "75666867"
 * `xml()`：将数据强制转换为 `application/xml`
 * `binary()`：将数据强制转换为 `application/octet-stream`
 * `string()`：将数据强制转换为 `text/plain`
-* `base64()`：将内容转换为基64编码字符串
-* `base64toString()`：将基64编码的字符串转换为`text/plain`
-* `base64toBinary()`：将基64编码的字符串转换为`application/octet-stream`
+* `base64()`：将内容转换为 base64 编码的字符串
+* `base64toString()`：将 base64 编码的字符串转换为 `text/plain`
+* `base64toBinary()`：将 base64 编码的字符串转换为 `application/octet-stream`
 * `dataUri()`：将字符串转换为数据 URI
 * `dataUriToBinary()`：将数据 URI 转换为二进制字符串
 * `dataUriToString()`：将数据 URI 转换为字符串
@@ -177,7 +177,7 @@ ms.locfileid: "75666867"
 
 * [triggerFormDataValue()](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue)
 * [triggerFormDataMultiValues()](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataMultiValues)
-* [形式数据值（）](../logic-apps/workflow-definition-language-functions-reference.md#formDataValue) 
+* [formDataValue()](../logic-apps/workflow-definition-language-functions-reference.md#formDataValue) 
 * [formDataMultiValues()](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues)
 
 或者，可以使用以下示例所示的表达式来手动访问数据：

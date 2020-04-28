@@ -1,6 +1,6 @@
 ---
-title: 在 Azure HDInsight 群集上排除缓慢或失败的作业
-description: 在 Azure HDInsight 群集上诊断和排除慢速或失败的作业。
+title: 排查 Azure HDInsight 群集上的作业速度缓慢或失败的问题
+description: 诊断并解决 Azure HDInsight 群集上的作业速度缓慢或失败的问题。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: be991b63784a2c72a51bfbdc8506f3b4695ed6c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75895320"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>排查 HDInsight 群集速度慢或作业失败问题
@@ -21,13 +21,13 @@ ms.locfileid: "75895320"
 
 若要诊断群集变慢或故障的原因，请收集有关环境的各个方面的信息，例如，关联的 Azure 服务、群集配置和作业执行信息。 一种有效的诊断方法是尝试在另一个群集上再现错误状态。
 
-* 第 1 步：收集有关问题的数据。
-* 第 2 步：验证 HDInsight 群集环境。
-* 第 3 步：查看群集的运行状况。
-* 步骤 4：查看环境堆栈和版本。
-* 第 5 步：检查群集日志文件。
-* 步骤 6：检查配置设置。
-* 步骤 7：重现其他群集上的故障。
+* 步骤1：收集有关问题的数据。
+* 步骤2：验证 HDInsight 群集环境。
+* 步骤3：查看群集的运行状况。
+* 步骤4：查看环境堆栈和版本。
+* 步骤5：检查群集日志文件。
+* 步骤6：检查配置设置。
+* 步骤7：在不同的群集上再现故障。
 
 ## <a name="step-1-gather-data-about-the-issue"></a>步骤 1：收集有关问题的数据
 
@@ -71,18 +71,18 @@ az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 
 ### <a name="service-details"></a>服务详细信息
 
-* 检查开源库版本。
+* 查看开源库版本。
 * 检查[Azure 服务中断](https://azure.microsoft.com/status/)。  
 * 检查 Azure 服务使用限制。 
 * 检查 Azure 虚拟网络子网配置。  
 
 ### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>使用 Ambari UI 查看群集配置设置
 
-可以在 Apache Ambari 中使用 Web UI 和 REST API 对 HDInsight 群集进行管理和监视。 基于 Linux 的 HDInsight 群集上已随附 Ambari。 在 Azure 门户的“HDInsight”页上选择“群集仪表板”窗格。****  选择“HDInsight 群集仪表板”窗格打开 Ambari UI，并输入群集登录凭据。****  
+可以在 Apache Ambari 中使用 Web UI 和 REST API 对 HDInsight 群集进行管理和监视。 基于 Linux 的 HDInsight 群集上已随附 Ambari。 在 Azure 门户的“HDInsight”页上选择“群集仪表板”窗格。   选择“HDInsight 群集仪表板”窗格打开 Ambari UI，并输入群集登录凭据。   
 
-![阿帕奇·安巴里仪表板概述](./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-overview.png)
+![Apache Ambari 仪表板概述](./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-overview.png)
 
-若要打开服务视图列表，请在 Azure 门户页上选择“Ambari 视图”。****  此列表的内容取决于安装的库。 例如，可能会显示“YARN 队列管理器”、“Hive 视图”和“Tez 视图”。  选择某个服务链接以查看配置和服务信息。
+若要打开服务视图列表，请在 Azure 门户页上选择“Ambari 视图”。   此列表的内容取决于安装的库。 例如，可能会显示“YARN 队列管理器”、“Hive 视图”和“Tez 视图”。  选择某个服务链接以查看配置和服务信息。
 
 #### <a name="check-for-azure-service-outages"></a>检查 Azure 服务中断
 
@@ -111,7 +111,7 @@ HDInsight 群集由虚拟机实例上运行的不同类型的节点组成。 可
 
 ### <a name="get-a-snapshot-of-the-cluster-health-using-the-ambari-ui-dashboard"></a>使用 Ambari UI 仪表板获取群集运行状况的快照
 
-[Ambari UI](#view-cluster-configuration-settings-with-the-ambari-ui)仪表板`https://<clustername>.azurehdinsight.net`（ ） 提供群集运行状况的概述，例如停机时间、内存、网络和 CPU 使用情况、HDFS 磁盘使用情况等。 使用 Ambari 的“主机”部分可以查看主机级别的资源。 还可以停止和重启服务。
+[Ambari UI 仪表板](#view-cluster-configuration-settings-with-the-ambari-ui) (`https://<clustername>.azurehdinsight.net`) 提供群集运行状况的概述，例如运行时间、内存、网络和 CPU 使用率、HDFS 磁盘使用率，等等。 使用 Ambari 的“主机”部分可以查看主机级别的资源。 还可以停止和重启服务。
 
 ### <a name="check-your-webhcat-service"></a>检查 WebHCat 服务
 
@@ -127,7 +127,7 @@ curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton/v
 
 Ambari 将显示一条警报，其中指出了 WebHCat 服务已在哪些主机上关闭。 可以通过在相应的主机上重启 WebHCat 服务使其恢复运行。
 
-![阿帕奇·安巴里重新启动WebHCat服务器](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat-server.png)
+![Apache Ambari Restart WebHCat 服务器](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat-server.png)
 
 如果 WebHCat 服务器仍未运行，请查看操作日志中的故障消息。 有关更多详细信息，请查看节点上提到的 `stderr` 和 `stdout` 文件。
 
@@ -172,7 +172,7 @@ Templeton 调用 YARN 来运行作业，Templeton 与 YARN 之间的通信可能
 
     如果打开 `/var/log/webhcat/webhcat.log` 日志文件并搜索“queued job”的话，可以看到执行时间过长（超过 2000 毫秒）的条目，以及等待时间不断增加的条目。
 
-    排队作业的等待时间之所以不断增加，是因为新作业的提交速率大于已完成的旧作业的提交速率。 在 YARN 内存使用率达到 100% 之后，joblauncher 队列不再能够从默认队列借用容量。**** 因此，joblauncher 队列中不再接受新作业。 此行为可能导致等待时间变得越来越长，从而导致超时错误，并继而引发其他许多错误。
+    排队作业的等待时间之所以不断增加，是因为新作业的提交速率大于已完成的旧作业的提交速率。 在 YARN 内存使用率达到 100% 之后，joblauncher 队列不再能够从默认队列借用容量。   因此，joblauncher 队列中不再接受新作业。 此行为可能导致等待时间变得越来越长，从而导致超时错误，并继而引发其他许多错误。
 
     下图显示了过度使用内存 (714.4%) 时的 joblauncher 队列。 只要默认队列中仍有可借用的容量，则此状态都是可接受的。 但是，当群集完全被占用并且 YARN 内存容量已被 100% 使用时，新作业必须等待，最终导致超时。
 
@@ -206,9 +206,9 @@ Templeton 调用 YARN 来运行作业，Templeton 与 YARN 之间的通信可能
 
 ## <a name="step-4-review-the-environment-stack-and-versions"></a>步骤 4：查看环境堆栈和版本
 
-Ambari UI 中的“堆栈和版本”页提供有关群集服务配置和服务版本历史记录的信息。****  错误的 Hadoop 服务库版本可能是群集故障的原因。  在 Ambari UI 中选择“管理”菜单，然后选择“堆栈和版本”。********  选择页面上的“版本”选项卡查看服务版本信息：****
+Ambari UI 中的“堆栈和版本”页提供有关群集服务配置和服务版本历史记录的信息。   错误的 Hadoop 服务库版本可能是群集故障的原因。  在 Ambari UI 中选择“管理”菜单，然后选择“堆栈和版本”。    选择页面上的“版本”选项卡查看服务版本信息： 
 
-![阿帕奇安巴里堆栈和版本](./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png)
+![Apache Ambari Stack 和版本](./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png)
 
 ## <a name="step-5-examine-the-log-files"></a>步骤 5：检查日志文件
 
@@ -222,13 +222,13 @@ Ambari UI 中的“堆栈和版本”页提供有关群集服务配置和服务�
 
 ### <a name="check-the-script-action-logs"></a>检查脚本操作日志
 
-使用 HDInsight [脚本操作](hdinsight-hadoop-customize-cluster-linux.md)可以手动或者根据指定在群集上运行脚本。 例如，可以使用脚本操作在群集上安装其他软件，或者更改配置设置的默认值。 检查脚本操作日志可以深入了解群集安装和配置期间发生的错误。  可以通过选择 Ambari UI 中的“操作”按钮，或者访问默认存储帐户中的日志，来查看脚本操作的状态。****
+使用 HDInsight [脚本操作](hdinsight-hadoop-customize-cluster-linux.md)可以手动或者根据指定在群集上运行脚本。 例如，可以使用脚本操作在群集上安装其他软件，或者更改配置设置的默认值。 检查脚本操作日志可以深入了解群集安装和配置期间发生的错误。  可以通过选择 Ambari UI 中的“操作”按钮，或者访问默认存储帐户中的日志，来查看脚本操作的状态。 
 
 脚本操作日志位于 `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE` 目录中。
 
 ### <a name="view-hdinsight-logs-using-ambari-quick-links"></a>使用 Ambari 快速链接查看 HDInsight 日志
 
-HDInsight Ambari UI 中包含一些“快速链接”部分。****  若要访问 HDInsight 群集中特定服务的日志链接，请打开该群集的 Ambari UI，然后在左侧列表中选择服务链接。 依次选择“快速链接”下拉列表、所需的 HDInsight 节点及其关联日志的链接。****
+HDInsight Ambari UI 中包含一些“快速链接”部分。   若要访问 HDInsight 群集中特定服务的日志链接，请打开该群集的 Ambari UI，然后在左侧列表中选择服务链接。 依次选择“快速链接”下拉列表、所需的 HDInsight 节点及其关联日志的链接。 
 
 例如，对于 HDFS 日志：
 
@@ -250,12 +250,12 @@ HDInsight 群集中预配置了相关服务（例如 Hadoop、Hive、HBase 等�
 
 ## <a name="step-7-reproduce-the-failure-on-a-different-cluster"></a>步骤 7：在不同的群集上再现故障
 
-若要帮助诊断群集错误的原因，请使用相同的配置启动新群集，然后逐个重新提交已失败作业的步骤。 先检查每个步骤的结果，然后再处理下一个步骤。 此方法为您提供了更正和重新运行单个失败步骤的机会。 此方法还有一个优点，那就是只会加载输入数据一次。
+若要帮助诊断群集错误的原因，请使用相同的配置启动新群集，然后逐个重新提交已失败作业的步骤。 先检查每个步骤的结果，然后再处理下一个步骤。 此方法使您有机会纠正并重新运行单个失败的步骤。 此方法还有一个优点，那就是只会加载输入数据一次。
 
 1. 使用与有故障群集相同的配置创建新的测试群集。
 2. 将第一个作业步骤提交到测试群集。
 3. 当此步骤完成处理时，请在步骤日志文件中查看错误。 连接到测试群集的主节点并在其中查看日志文件。 步骤日志文件只会在该步骤运行了一段时间、已完成或失败之后才显示。
-4. 如果第一个步骤成功，请运行下一个步骤。 如果出现错误，请在日志文件中调查错误。 如果代码中出现错误，请进行更正并重新运行步骤。
+4. 如果第一个步骤成功，请运行下一个步骤。 如果出现错误，请在日志文件中调查错误。 如果代码中有错误，请进行更正并重新运行该步骤。
 5. 继续运行，直到所有步骤都可完成运行且不出错。
 6. 完成调试测试群集后，请将其删除。
 

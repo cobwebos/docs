@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
 ms.openlocfilehash: 4598f71f9b611e68f8eb00676138784833c39f32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75891501"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple 安全性和数据保护
@@ -185,7 +185,7 @@ StorSimple 设备管理数据的方法是根据它们的使用频率，将它们
 
 ## <a name="protect-data-via-storage-accounts"></a>通过存储帐户保护数据
 
-每个 Microsoft Azure 订阅都可以创建一个或多个存储帐户。 （存储帐户提供了用于处理存储在 Azure 云中的数据的唯一命名空间。对存储帐户的访问由与该存储帐户关联的订阅和访问密钥控制。
+每个 Microsoft Azure 订阅都可以创建一个或多个存储帐户。 （存储帐户提供唯一的命名空间来处理 Azure 云中存储的数据。）与存储帐户相关联的订阅和访问密钥控制对存储帐户的访问权限。
 
 创建存储帐户时，Microsoft Azure 生成两个 512 位存储访问密钥，其中一个用于在 StorSimple 设备访问存储帐户时进行身份验证。 请注意，这两个密钥中只有一个投入使用。 另外一个密钥保留，让你能够定期轮换密钥。 要轮换密钥，可让辅助密钥成为活动密钥，并删除主密钥。 然后，可以创建一个新密钥，在下一次轮换时使用。 （出于安全原因，很多数据中心要求密钥轮换。）
 
@@ -242,7 +242,7 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 
 * [更改服务数据加密密钥](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 
-**问：** 我授权设备进行服务数据加密密钥更改，但却无法开始密钥更改过程。 我该怎么办？
+**问：** 我授权设备进行服务数据加密密钥更改，但却无法开始密钥更改过程。   应采取何种操作？
 
 **答：** 如果超时期限已过，需要重新授权设备进行服务数据加密密钥更改，并重新开始该过程。
 
@@ -250,11 +250,11 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 
 **答：** 4 小时时限仅适用于启动更改操作。 一旦在授权的 StorSimple 设备上开始更新过程，授权会保持有效，直至所有设备都已更新。
 
-**问：** 我们的 StorSimple 管理员离开了公司。 我该怎么办？
+**问：** 我们的 StorSimple 管理员离开了公司。   应采取何种操作？
 
 **答：** 请更改和重置用于访问 StorSimple 设备的密码，并更改服务数据加密密钥以确保新信息不会泄露给未获授权的人员。 有关说明，请转到：
 
-* [使用 StorSimple 设备管理器服务更改简单密码](storsimple-8000-change-passwords.md)
+* [使用 StorSimple 设备管理器服务更改 StorSimple 密码](storsimple-8000-change-passwords.md)
 * [更改服务数据加密密钥](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 * [为 StorSimple 设备配置 CHAP](storsimple-8000-configure-chap.md)
 
@@ -262,7 +262,7 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 
 **答：** 如果忘记了密码，应该创建一个新密码。 然后务必通知所有现有用户密码已更改，要求他们更新客户端以使用新密码。 有关说明，请转到：
 
-* [更改 StorSimple 快照管理器密码](storsimple-8000-change-passwords.md#set-the-storsimple-snapshot-manager-password)
+* [更改 StorSimple Snapshot Manager 密码](storsimple-8000-change-passwords.md#set-the-storsimple-snapshot-manager-password)
 * [对设备进行身份验证](storsimple-snapshot-manager-manage-devices.md#authenticate-a-device)
 
 **问：** 用于远程访问 Windows PowerShell for StorSimple 的证书已在设备上更改。 如何更新我的远程访问客户端？

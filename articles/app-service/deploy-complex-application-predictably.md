@@ -6,14 +6,14 @@ ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: 62d0bf776b2d0c97d95b992ed6a1fd2a356e467a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75967380"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>按可预见的方式在 Azure 中设置和部署微服务
-本教程演示如何通过使用 JSON 资源组模板和 PowerShell 脚本以一种可预见的方式，在 [Azure 应用服务](https://azure.microsoft.com/services/app-service/)中将由[微服务](https://en.wikipedia.org/wiki/Microservices)构成的应用程序设置并部署为单个单元。 
+本教程演示如何通过使用 JSON 资源组模板和 PowerShell 脚本以一种可预见的方式，在 [Azure 应用服务](https://en.wikipedia.org/wiki/Microservices)中由[微服务](https://azure.microsoft.com/services/app-service/)构成的应用程序设置并部署为单个单元。 
 
 在设置和部署由高度分离的微服务构成的高扩展性应用程序时，可重复性和可预见性对成功至关重要。 使用 [Azure 应用服务](https://azure.microsoft.com/services/app-service/)，可以创建包括 Web 应用、移动后端和 API 应用在内的微服务。 使用 [Azure 资源管理器](../azure-resource-manager/management/overview.md)，可以将所有微服务作为一个单元与资源依赖项（如数据库和源代码管理设置）一起进行管理。 现在，还可以使用 JSON 模板和简单的 PowerShell 脚本部署此类应用程序。 
 
@@ -42,7 +42,7 @@ ms.locfileid: "75967380"
 有关详细信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../powershell-azure-resource-manager.md)
 
 ### <a name="azure-resource-explorer"></a>Azure 资源浏览器
-使用此[预览工具](https://resources.azure.com)可以够浏览订阅中所有资源组的 JSON 定义和独立资源。 在工具中，可编辑资源的 JSON 定义、删除资源的整个层次结构及创建新资源。  此工具中随时提供的信息对于模板创作非常有用，因为它显示了您需要为特定类型的资源设置哪些属性、正确的值等。您甚至可以在[Azure 门户](https://portal.azure.com/)中创建资源组，然后在资源管理器工具中检查其 JSON 定义，以帮助您临时化资源组。
+使用此[预览工具](https://resources.azure.com)可以够浏览订阅中所有资源组的 JSON 定义和独立资源。 在工具中，可编辑资源的 JSON 定义、删除资源的整个层次结构及创建新资源。  此工具中随时可用的信息对模板创作非常有帮助，因为它会显示需要为特定类型的资源设置的属性、正确值等。甚至可以在[Azure 门户](https://portal.azure.com/)中创建资源组，然后在资源管理器工具中检查其 JSON 定义以帮助模板化资源组。
 
 ### <a name="deploy-to-azure-button"></a>“部署到 Azure”按钮
 如果将 GitHub 用于源代码管理，则可将一个[“部署到 Azure”按钮](https://azure.microsoft.com/blog/2014/11/13/deploy-to-azure-button-for-azure-websites-2/)放入 README.MD，这会对 Azure 启用统包部署 UI。 可为任何简单的应用执行此操作，同时可扩展这一操作，通过将 azuredeploy.json 文件放入存储库根来实现对整个资源组的部署。 “部署到 Azure”按钮将使用此包含资源组模板的 JSON 文件来创建资源组。 有关示例，请参阅会在本教程中使用的 [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) 示例。
@@ -182,8 +182,8 @@ ms.locfileid: "75967380"
 ## <a name="deploy-the-resource-group-template-yourself"></a>自己部署资源组模板
 “部署到 Azure”**** 按钮太好用了，但是只有当已将 azuredeploy.json 推送到 GitHub 时，它才允许部署 azuredeploy.json 中的资源组模板。 Azure.NET SDK 还提供了工具，使你能够直接从本地计算机部署任何 JSON 模板文件。 为此，请执行以下步骤：
 
-1. 在可视化工作室中，单击 **"文件** > **新项目** > **"。**
-2. 单击**可视化 C#** > **云** > **Azure 资源组**，然后单击"**确定**"。
+1. 在 Visual Studio 中，单击 "**文件** > " "**新建** > **项目**"。
+2. 单击 " **Visual c #** > **Cloud** > **Azure 资源组**"，然后单击 **"确定"**。
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-1-vsproject.png)
 3. 在“选择 Azure 模板”**** 中，选择“空白模板”****，并单击“确定”****。
@@ -209,7 +209,7 @@ ms.locfileid: "75967380"
 11. 找到 `location` 和 `isEnabled` 属性并对其进行如下设置。 对其他三个警报（紫色警报）执行相同的操作。
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-7-alerts.png)
-12. 现在可以开始部署了。 右键单击项目并选择 **"部署** > **新部署**"。
+12. 现在可以开始部署了。 右键单击该项目，然后选择 "**部署** > **新的部署**"。
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-8-newdeployment.png)
 13. 如果尚未执行该操作，则登录到 Azure 帐户。
@@ -220,7 +220,7 @@ ms.locfileid: "75967380"
     现在即可在一张不错的表中编辑在模板文件中定义的所有参数。 定义默认值的参数将已具有其默认值，并且定义允许值的列表的参数会显示为下拉列表。
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-10-parametereditor.png)
-15. 填写所有空参数，并使用 **repoUrl** 中的 [ToDoApp 的 GitHub 存储库地址](https://github.com/azure-appservice-samples/ToDoApp.git)。 然后，单击 **“保存”**。
+15. 填写所有空参数，并使用 **repoUrl** 中的 [ToDoApp 的 GitHub 存储库地址](https://github.com/azure-appservice-samples/ToDoApp.git)。 然后单击“保存”  。
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-11-parametereditorfilled.png)
     
@@ -251,20 +251,20 @@ ms.locfileid: "75967380"
 
 ## <a name="more-resources"></a>更多资源
 * [Azure 资源管理器模板语言](../azure-resource-manager/templates/template-syntax.md)
-* [编写 Azure 资源管理器模板](../azure-resource-manager/templates/template-syntax.md)
+* [创作 Azure 资源管理器模板](../azure-resource-manager/templates/template-syntax.md)
 * [Azure 资源管理器模板函数](../azure-resource-manager/templates/template-functions.md)
 * [使用 Azure 资源管理器模板部署应用程序](../azure-resource-manager/templates/deploy-powershell.md)
 * [将 Azure PowerShell 与 Azure 资源管理器配合使用](../azure-resource-manager/powershell-azure-resource-manager.md)
-* [在 Azure 中排除资源组部署的疑难解答](../azure-resource-manager/templates/common-deployment-errors.md)
+* [Azure 中的资源组部署疑难解答](../azure-resource-manager/templates/common-deployment-errors.md)
 
 ## <a name="next-steps"></a>后续步骤
 
 要了解本文中部署的资源类型的 JSON 语法和属性，请参阅：
 
-* [微软.Sql/服务器](/azure/templates/microsoft.sql/servers)
+* [Microsoft.Sql/servers](/azure/templates/microsoft.sql/servers)
 * [Microsoft.Sql/servers/databases](/azure/templates/microsoft.sql/servers/databases)
-* [微软.Sql/服务器/防火墙规则](/azure/templates/microsoft.sql/servers/firewallrules)
-* [微软.Web/服务器农场](/azure/templates/microsoft.web/serverfarms)
-* [微软.网站/网站](/azure/templates/microsoft.web/sites)
+* [Microsoft.Sql/servers/firewallRules](/azure/templates/microsoft.sql/servers/firewallrules)
+* [System.web/serverfarms](/azure/templates/microsoft.web/serverfarms)
+* [Microsoft. Web/站点](/azure/templates/microsoft.web/sites)
 * [Microsoft.Web/sites/slots](/azure/templates/microsoft.web/sites/slots)
-* [Microsoft.Insights/autoscalesettings](/azure/templates/microsoft.insights/autoscalesettings)
+* [Microsoft Insights/autoscalesettings](/azure/templates/microsoft.insights/autoscalesettings)

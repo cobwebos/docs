@@ -7,15 +7,15 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
 ms.openlocfilehash: 1fdee9a5d90fc065e198d880f9d0dea10804b881
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75972638"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>创建 Azure 资源管理器模板以自动化 Azure 逻辑应用的部署
 
-为了帮助你自动创建和部署逻辑应用，本文介绍了在为逻辑应用创建 [Azure 资源管理器模板](../azure-resource-manager/management/overview.md)时可用的方法。 有关包含工作流定义和部署所需其他资源的模板的结构和语法概述，请参阅[概述：使用 Azure 资源管理器模板自动部署逻辑应用](logic-apps-azure-resource-manager-templates-overview.md)。
+为了帮助你自动创建和部署逻辑应用，本文介绍了在为逻辑应用创建 [Azure 资源管理器模板](../azure-resource-manager/management/overview.md)时可用的方法。 有关包含工作流定义以及用于部署的其他资源的模板的结构和语法概述，请参阅[概述：使用 Azure 资源管理器模板将逻辑应用部署自动化](logic-apps-azure-resource-manager-templates-overview.md)。
 
 Azure 逻辑应用提供一个可以重复使用的[预生成逻辑应用 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json)，使用它不仅可以创建逻辑应用，还可以定义要对部署使用的资源和参数。 可以将此模板用于自己的业务方案，也可以根据需要自定义此模板。
 
@@ -25,8 +25,8 @@ Azure 逻辑应用提供一个可以重复使用的[预生成逻辑应用 Azure 
 有关 Azure 资源管理器模板的详细信息，请参阅以下主题：
 
 * [Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md)
-* [创作 Azure 资源管理器模板](../azure-resource-manager/templates/template-syntax.md)
-* [为云一致性开发 Azure 资源管理器模板](../azure-resource-manager/templates/templates-cloud-consistency.md)
+* [创作 Azure Resource Manager 模板](../azure-resource-manager/templates/template-syntax.md)
+* [开发用于实现云一致性的 Azure 资源管理器模板](../azure-resource-manager/templates/templates-cloud-consistency.md)
 
 <a name="visual-studio"></a>
 
@@ -34,7 +34,7 @@ Azure 逻辑应用提供一个可以重复使用的[预生成逻辑应用 Azure 
 
 若要创建最适合部署的有效参数化逻辑应用模板，请使用 Visual Studio（免费的社区版或更高版本）以及适用于 Visual Studio 的 Azure 逻辑应用工具。 然后，可以[在 Visual Studio 中创建逻辑应用](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)，或者[在 Azure 门户中找到某个现有逻辑应用并将其下载到 Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)。
 
-下载逻辑应用后，你将获得一个模板，其中包含逻辑应用和其他资源（例如连接）的定义。 该模板还会参数化或定义用于部署逻辑应用和其他资源的值的参数。** 可在单独的参数文件中提供这些参数的值。 这样，就可以根据部署需求更轻松地更改这些值。 有关详细信息，请参阅以下主题：
+下载逻辑应用后，你将获得一个模板，其中包含逻辑应用和其他资源（例如连接）的定义。 该模板还会参数化或定义用于部署逻辑应用和其他资源的值的参数。  可在单独的参数文件中提供这些参数的值。 这样，就可以根据部署需求更轻松地更改这些值。 有关详细信息，请参阅以下主题：
 
 * [使用 Visual Studio 创建逻辑应用](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [使用 Visual Studio 管理逻辑应用](../logic-apps/manage-logic-apps-with-visual-studio.md)
@@ -104,7 +104,7 @@ PS> Get-ParameterTemplate -TemplateFile $filename | Out-File '<parameters-file-n
 PS> Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileNameParameter
 ```
 
-| 参数 | 必选 | 描述 |
+| parameters | 必须 | 说明 |
 |------------|----------|-------------|
 | TemplateFile | 是 | 模板文件的文件路径 |
 | KeyVault | 否 | 一个枚举，描述如何处理可能的 Key Vault 值。 默认为 `None`。 |

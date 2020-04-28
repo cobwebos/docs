@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: evanhi
 ms.openlocfilehash: 7f475774828bcaecd471e13de994b156041323ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75651379"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>启用和请求对 Azure 托管应用程序的实时访问权限
@@ -74,7 +74,7 @@ JIT 访问允许你请求对托管应用程序资源的提升访问权限，以�
 
 1. 登录到[云合作伙伴发布门户](https://cloudpartner.azure.com)。
 
-1. 提供相应的值以在市场中发布托管应用程序。 选择 **"是****"以启用 JIT 访问？**
+1. 提供相应的值以在市场中发布托管应用程序。 对于“启用 JIT 访问?”，选择“是”。  
 
    ![启用实时访问](./media/request-just-in-time-access/marketplace-enable.png)
 
@@ -86,13 +86,13 @@ JIT 访问允许你请求对托管应用程序资源的提升访问权限，以�
 
 若要发送 JIT 访问请求，请执行以下操作：
 
-1. 针对你需要访问的托管应用程序选择“JIT 访问”****。
+1. 针对你需要访问的托管应用程序选择“JIT 访问”  。
 
-1. 选择“符合条件的角色”****，然后针对你需要的角色在“操作”列中选择“激活”****。
+1. 选择“符合条件的角色”  ，然后针对你需要的角色在“操作”列中选择“激活”  。
 
    ![激活访问请求](./media/request-just-in-time-access/send-request.png)
 
-1. 在“激活角色”**** 窗体上，选择要激活的角色的开始时间和持续时间。 选择“激活”**** 以发送请求。
+1. 在“激活角色”  窗体上，选择要激活的角色的开始时间和持续时间。 选择“激活”  以发送请求。
 
    ![激活访问权限](./media/request-just-in-time-access/activate-access.png) 
 
@@ -102,7 +102,7 @@ JIT 访问允许你请求对托管应用程序资源的提升访问权限，以�
 
    现在，你必须等待使用者[批准你的请求](approve-just-in-time-access.md#approve-requests)。
 
-1. 若要查看对托管应用程序的所有 JIT 请求的状态，请依次选择“JIT 访问”**** 和“请求历史记录”****。
+1. 若要查看对托管应用程序的所有 JIT 请求的状态，请依次选择“JIT 访问”  和“请求历史记录”  。
 
    ![查看状态](./media/request-just-in-time-access/view-status.png)
 

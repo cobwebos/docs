@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: evanhi
 ms.openlocfilehash: 4a3604a3256fb2d3f4253891bbc28c7685748cd2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75651015"
 ---
 # <a name="configure-and-approve-just-in-time-access-for-azure-managed-applications"></a>配置和批准对 Azure 托管应用程序的实时访问
@@ -35,33 +35,33 @@ ms.locfileid: "75651015"
 
 ## <a name="enable-during-deployment"></a>在部署期间启用
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
-1. 查找启用了 JIT 的托管应用程序的市场项。 选择 **“创建”**。
+1. 查找启用了 JIT 的托管应用程序的市场项。 选择“创建”  。
 
-1. 为新的托管应用程序提供值时，“JIT 配置”**** 步骤允许你为托管应用程序启用或禁用 JIT 访问。 对于“启用 JIT 访问”，选择“是”。******** 对于市场中在定义时便启用了 JIT 的托管应用程序，会默认选择此选项。
+1. 为新的托管应用程序提供值时，“JIT 配置”  步骤允许你为托管应用程序启用或禁用 JIT 访问。 对于“启用 JIT 访问”，选择“是”。   对于市场中在定义时便启用了 JIT 的托管应用程序，会默认选择此选项。
 
    ![配置访问权限](./media/approve-just-in-time-access/configure-jit-access.png)
 
-   只能在部署期间启用 JIT 访问。 如果选择“否”****，则发布者将永久可以访问托管资源组。 无法在以后启用 JIT 访问。
+   只能在部署期间启用 JIT 访问。 如果选择“否”  ，则发布者将永久可以访问托管资源组。 无法在以后启用 JIT 访问。
 
-1. 若要更改默认的审批设置，请选择“自定义 JIT 配置”****。
+1. 若要更改默认的审批设置，请选择“自定义 JIT 配置”  。
 
    ![自定义访问权限](./media/approve-just-in-time-access/customize-jit-access.png)
 
    默认情况下，启用了 JIT 的托管应用程序具有以下设置：
 
-   * 批准模式 = 自动
-   * 最长访问持续时间 = 8 小时
-   * 审批者 = 无
+   * 审批模式–自动
+   * 最长访问持续时间–8小时
+   * 审批者–无
 
-   当审批模式设置为“自动”**** 时，审批者针对每个请求都会收到通知，但请求会自动批准。 当设置为“手动”**** 时，审批者针对每个请求都会收到通知，并且必须由某个审批者批准请求。
+   当审批模式设置为“自动”  时，审批者针对每个请求都会收到通知，但请求会自动批准。 当设置为“手动”  时，审批者针对每个请求都会收到通知，并且必须由某个审批者批准请求。
 
    “激活最大持续时间”指定发布者可以请求访问托管资源组的最长时间。
 
-   审批者列表是可以批准 JIT 访问请求的 Azure Active Directory 用户。 若要添加审批者，请选择“添加批准者”**** 并搜索用户。
+   审批者列表是可以批准 JIT 访问请求的 Azure Active Directory 用户。 若要添加审批者，请选择“添加批准者”  并搜索用户。
 
-   更新设置后，选择“保存”****。
+   更新设置后，选择“保存”  。
 
 ## <a name="update-after-deployment"></a>在部署后更新
 
@@ -71,11 +71,11 @@ ms.locfileid: "75651015"
 
 1. 在门户中，选择“管理应用程序”。
 
-1. 选择“JIT 配置”**** 并根据需要更改设置。
+1. 选择“JIT 配置”  并根据需要更改设置。
 
    ![更改访问设置](./media/approve-just-in-time-access/change-settings.png)
 
-1. 完成后，选择“保存”****。
+1. 完成后，选择“保存”  。
 
 ## <a name="approve-requests"></a>审批请求
 
@@ -83,7 +83,7 @@ ms.locfileid: "75651015"
 
 若要通过托管应用程序批准请求，请执行以下操作：
 
-1. 为托管应用程序选择“JIT 访问”****，并选择“批准请求”****。
+1. 为托管应用程序选择“JIT 访问”  ，并选择“批准请求”  。
 
    ![审批请求](./media/approve-just-in-time-access/approve-requests.png)
  
@@ -91,19 +91,19 @@ ms.locfileid: "75651015"
 
    ![选择请求](./media/approve-just-in-time-access/select-request.png)
 
-1. 在窗体中，提供批准原因并选择“批准”****。
+1. 在窗体中，提供批准原因并选择“批准”  。
 
 若要通过 Azure AD Privileged Identity Management 批准请求，请执行以下操作：
 
-1. 选择“所有服务”****，然后开始搜索“Azure AD Privileged Identity Management”****。 从可用选项中选择它。
+1. 选择“所有服务”  ，然后开始搜索“Azure AD Privileged Identity Management”  。 从可用选项中选择它。
 
    ![搜索服务](./media/approve-just-in-time-access/search.png)
 
-1. 选择 **"批准请求**"。
+1. 选择“审批请求”  。
 
    ![选择“审批请求”](./media/approve-just-in-time-access/select-approve-requests.png)
 
-1. 选择“Azure 托管应用程序”****，然后选择要批准的请求。
+1. 选择“Azure 托管应用程序”  ，然后选择要批准的请求。
 
    ![选择请求](./media/approve-just-in-time-access/view-requests.png)
 

@@ -1,15 +1,15 @@
 ---
 title: Reliable Actors 计时器和提醒
-description: 介绍服务提供商和提醒服务结构可靠参与者，包括有关何时使用每个角色的指导。
+description: 介绍 Service Fabric Reliable Actors 的计时器和提醒，包括有关何时使用每项的指导。
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 02d6220b31ee9c991e8450759bf46759af6177a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75639609"
 ---
 # <a name="actor-timers-and-reminders"></a>执行组件计时器和提醒
@@ -216,9 +216,9 @@ ActorReminder reminder = getReminder("Pay cell phone bill");
 CompletableFuture reminderUnregistration = unregisterReminderAsync(reminder);
 ```
 
-如上所示， `UnregisterReminderAsync`(C#) 或 `unregisterReminderAsync`(Java) 方法接受 `IActorReminder`(C#) 或 `ActorReminder`(Java) 接口。 执行组件基类支持 `GetReminder`(C#) 或 `getReminder`(Java) 方法，该方法可用于通过传入提醒名称来检索 `IActorReminder`(C#) 或 `ActorReminder`(Java) 接口。 这十分方便，因为执行组件无需保存从 `RegisterReminder`(C#) 或 `registerReminder`(Java) 方法调用返回的 `IActorReminder`(C#) 或 `ActorReminder`(Java) 接口。
+如上所示， `UnregisterReminderAsync`(C#) 或 `unregisterReminderAsync`(Java) 方法接受 `IActorReminder`(C#) 或 `ActorReminder`(Java) 接口。 执行组件基类支持 `GetReminder`(C#) 或 `getReminder`(Java) 方法，该方法可用于通过传入提醒名称来检索 `IActorReminder`(C#) 或 `ActorReminder`(Java) 接口。 这十分方便，因为执行组件无需保存从 `IActorReminder`(C#) 或 `ActorReminder`(Java) 方法调用返回的 `RegisterReminder`(C#) 或 `registerReminder`(Java) 接口。
 
 ## <a name="next-steps"></a>后续步骤
 了解 Reliable Actor 事件和可重入性：
-* [参与者事件](service-fabric-reliable-actors-events.md)
+* [执行组件事件](service-fabric-reliable-actors-events.md)
 * [执行组件可重入性](service-fabric-reliable-actors-reentrancy.md)
