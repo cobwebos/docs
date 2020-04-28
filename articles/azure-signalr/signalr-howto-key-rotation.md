@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: 133edc64ac2f858a397a4a184c24497dae8af333
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67565733"
 ---
 # <a name="how-to-rotate-access-key-for-azure-signalr-service"></a>如何轮换 Azure SignalR 服务的访问密钥
@@ -25,11 +25,11 @@ ms.locfileid: "67565733"
 
 1. 转到 [Azure 门户](https://portal.azure.com/)并使用自己的凭据登录。
 
-1. 在要重新生成其密钥的 Azure SignalR 服务实例中找到“密钥”部分。****
+1. 在要重新生成其密钥的 Azure SignalR 服务实例中找到“密钥”部分。 
 
-1. 在导航菜单中选择“密钥”****。
+1. 在导航菜单中选择“密钥”  。
 
-1. 选择“重新生成主密钥”或“重新生成辅助密钥”。********
+1. 选择“重新生成主密钥”或“重新生成辅助密钥”。  
 
    此时将创建并显示新的密钥和相应的连接字符串。
 
@@ -59,4 +59,4 @@ ms.locfileid: "67565733"
 > [与 ASP.NET Core 标识集成](./signalr-concept-authenticate-oauth.md)
 
 > [!div class="nextstepaction"]
-> [使用身份验证构建无服务器实时应用](./signalr-tutorial-authenticate-azure-functions.md)
+> [生成带身份验证的无服务器实时应用](./signalr-tutorial-authenticate-azure-functions.md)

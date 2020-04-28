@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: sngun
 ms.openlocfilehash: 9dbbc914580d8d80a3f9b7d730574e24b44827c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70093730"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>如何将 Azure Kubernetes 与 Azure Cosmos DB（预览版）配合使用
@@ -29,7 +29,7 @@ ms.locfileid: "70093730"
 
 1. 安装最新版本的 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 可以下载特定于自己的操作系统的 Azure CLI 并进行安装。
 
-1. 安装[最新版本](https://github.com/Azure/aks-engine/releases)的 Azure Kubernetes 引擎。 [Azure Kubernetes 引擎](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-aks-engine)页面中提供了不同操作系统的安装说明。 您只需从链接文档**的安装 AKS 引擎**部分的步骤。下载后，提取 zip 文件。
+1. 安装[最新版本](https://github.com/Azure/aks-engine/releases)的 Azure Kubernetes 引擎。 [Azure Kubernetes 引擎](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-aks-engine)页面中提供了不同操作系统的安装说明。 只需安装链接文档的**AKS Engine**部分的步骤即可。下载后，提取 zip 文件。
 
    Azure Kubernetes 引擎 (aks-engine) 可以生成 Azure 资源管理器模板，用于 Azure 上的 Kubernetes 群集****。 aks-engine 的输入内容是群集定义文件，该文件描述所需的群集，包括业务流程协调程序、功能和代理。 输入文件的结构类似于 Azure Kubernetes 服务的公共 API。
 
@@ -139,17 +139,17 @@ ms.locfileid: "70093730"
 
    Azure Kubernetes 引擎使用一个群集定义，该定义对所需的 Azure Kubernetes 形状、大小和配置进行概述。 有几项功能可通过群集定义启用。 在本示例中，将使用以下参数：
 
-   * **订阅 id：** 启用 Azure 宇宙数据库蚀刻 API 的 Azure 订阅 ID。
+   * **订阅 id：** 已启用 Azure Cosmos DB etcd API 的 Azure 订阅 ID。
    * **客户端 id：** 服务主体的 appId。 `appId` 作为步骤 4 中的输出返回。
-   * **客户端机密：** 服务主体的密码或随机生成的密码。 该值在步骤 4 中返回为“password”参数中的输出。 
-   * **dnsPrefix：** 区域唯一 DNS 名称。 该值会成为主机名的一部分，例如 myprod1 和 staging。
-   * **位置：** 群集应部署到的位置，当前仅支持"中心"。
+   * **客户端密钥：** 服务主体的密码或随机生成的密码。 该值在步骤 4 中返回为“password”参数中的输出。 
+   * **dnsPrefix：** 区域唯一的 DNS 名称。 该值会成为主机名的一部分，例如 myprod1 和 staging。
+   * **位置：** 应将群集部署到的位置，当前仅支持 "centralus"。
 
    > [!Note]
    > 目前仅能在“centralus”区域中部署 Azure Cosmos etcd API。 
  
    * **api 模型：** 模板文件的完全限定路径。
-   * **力覆盖：** 此选项用于自动覆盖输出目录中的现有文件。
+   * **强制覆盖：** 此选项用于自动覆盖输出目录中的现有文件。
  
    以下命令展示的是一个示例部署：
 

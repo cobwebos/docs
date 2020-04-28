@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 18dbcbf93947306334ccc2c156d9266884198e19
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67594126"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 开发入门
@@ -86,7 +86,7 @@ ms.locfileid: "67594126"
     var msRestAzure = require('ms-rest-azure');
     var cdnManagementClient = require('azure-arm-cdn');
     ```
-2. 我们需要定义我们的方法将使用的一些常量。  添加以下内容。  请务必根据需要用您自己的值替换占位符（包括**&lt;角括号&gt;**）。
+2. 我们需要定义我们的方法将使用的一些常量。  添加以下内容。  请确保将占位符（包括** &lt;尖括号&gt;**）替换为所需的值。
    
     ``` javascript
     //Tenant app constants
@@ -119,7 +119,7 @@ ms.locfileid: "67594126"
     var cdnClient = new cdnManagementClient(credentials, subscriptionId);
     ```
    
-    请务必用正确的信息替换**&lt;角括号&gt;** 中的物料。  对于 `<redirect URI>`，请使用在 Azure AD 中注册应用程序时输入的重定向 URI。
+    请确保将** &lt;尖括号&gt; **中的项替换为正确的信息。  对于 `<redirect URI>`，请使用在 Azure AD 中注册应用程序时输入的重定向 URI。
 4. 我们的 Node.js 控制台应用程序会采用一些命令行参数。  让我们验证是否至少传递了一个参数。
    
    ```javascript

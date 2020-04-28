@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: c419ed7e01da2bb9833233a14a116bfd3148444a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67173400"
 ---
 配置警报规则，让系统将与设备上的资源使用情况相关的警报条件通知给你。 可以配置警报规则，以便监视设备的警报条件。 有关警报的更多详细信息，请参阅[在 Azure Monitor 中创建、查看和管理指标警报](../articles/azure-monitor/platform/alerts-metric.md)。

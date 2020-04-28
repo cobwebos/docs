@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: 065cb4daa9501ee658d364dad43b9e03798e4083
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67173364"
 ---
 作业将生成一个 JSON 输出文件，其中包含有关检测到的和跟踪的面部的元数据。 元数据包括指示面部位置的坐标，以及指示正在跟踪该人员的面部 ID 编号。 在正面面部长时间于帧中消失或重叠的情况下，面部 ID 编号很容易重置，导致某些人员被分配多个 ID。
@@ -17,18 +17,18 @@ ms.locfileid: "67173364"
 
 ### <a name="root-json-elements"></a>根 JSON 元素
 
-| 元素 | 描述 |
+| 元素 | 说明 |
 | --- | --- |
 | 版本 |这是指视频 API 的版本。 |
 | 时间刻度 |视频每秒的“刻度”数。 |
 | offset |这是时间戳的时间偏移量。 在版本 1.0 的视频 API 中，此属性始终为 0。 在我们将来支持的方案中，此值可能会更改。 |
 | 宽度、高度 |输出视频帧的宽度和高度，以像素为单位。|
 | 帧速率 |视频的每秒帧数。 |
-| [碎片](#fragments-json-elements) |元数据划分成称为“片段”的不同段。 每个片段包含开始时间、持续时间、间隔数字和事件。 |
+| [片段](#fragments-json-elements) |元数据划分成称为“片段”的不同段。 每个片段包含开始时间、持续时间、间隔数字和事件。 |
 
 ### <a name="fragments-json-elements"></a>片段 JSON 元素
 
-|元素|描述|
+|元素|说明|
 |---|---|
 | start |第一个事件的开始时间（以“刻度”为单位）。 |
 | duration |片段的长度（以“刻度”为单位）。 |

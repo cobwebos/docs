@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
 ms.openlocfilehash: dc4ff35ff04680e8635d54c25212c8ae639ae472
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60779695"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>摇一摇，摇一条推文 - 使用 Azure Functions 检索 Twitter 消息
@@ -30,7 +30,7 @@ ms.locfileid: "60779695"
 一个有效的 Azure 订阅。 如果没有订阅，可通过以下方法之一进行注册：
 
 * 激活 [30 天免费试用版 Microsoft Azure 帐户](https://azure.microsoft.com/free/)
-* 如果您是 MSDN 或 Visual Studio 订阅者，请声明[Azure 积分](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)
+* 如果你是 MSDN 或 Visual Studio 订阅者，请声明你的[Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)
 
 ## <a name="open-the-project-folder"></a>打开项目文件夹
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: e55964beff48df6ce24d99c01975d39b662f1612
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60576082"
 ---
 # <a name="change-the-device-mode-on-your-storsimple-device"></a>更改 StorSimple 设备上的设备模式
@@ -48,17 +48,17 @@ StorSimple 设备可以按正常、维护或恢复模式运行。 下面简要�
 可以只通过 Windows PowerShell for StorSimple 将系统置于维护模式。 在此模式下，所有的 I/O 请求都已暂停。 非易失性随机存取内存 (NVRAM) 或群集服务之类的服务也会停止。 在用户进入或退出此模式时，两个控制器都会重新启动。 退出维护模式时，所有服务将继续运行并且应该可以正常运行。 这可能需要几分钟的时间。
 
 > [!NOTE]
-> **仅在正常运行的设备上支持维护模式。在一个或两个控制器无法正常工作的设备上不支持它。**
+> **只有正常运行的设备才支持维护模式。在其中一个或两个控制器无法正常工作的设备上不受支持。**
 
 
 ### <a name="recovery-mode"></a>恢复模式
 
 恢复模式可以描述为“具有网络支持的 Windows 安全模式”。 恢复模式允许 Microsoft 支持团队参与，并允许其在系统上执行诊断。 恢复模式的主要目的是检索系统日志。
 
-如果系统进入恢复模式，应联系 Microsoft 支持部门以了解后续步骤。 有关详细信息，请转到联系[Microsoft 支持](storsimple-8000-contact-microsoft-support.md)。
+如果系统进入恢复模式，应联系 Microsoft 支持部门以了解后续步骤。 有关详细信息，请参阅[Contact Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。
 
 > [!NOTE]
-> **不能将设备置于恢复模式。如果设备处于不良状态，恢复模式会尝试使设备进入 Microsoft 支持人员可以检查该设备的状态。**
+> **不能将设备置于恢复模式。如果设备处于错误状态，则恢复模式会尝试让设备进入 Microsoft 支持部门人员可对其进行检查的状态。**
 
 ## <a name="determine-storsimple-device-mode"></a>确定 StorSimple 设备模式
 
@@ -72,7 +72,7 @@ StorSimple 设备可以按正常、维护或恢复模式运行。 下面简要�
 可以将 StorSimple 设备置于维护模式（从正常模式下），以便执行维护或安装维护模式更新。 执行以下过程，进入或退出维护模式。
 
 > [!IMPORTANT]
-> 进入维护模式前，请在 Azure 门户中访问设备的“设备设置”>“硬件运行状况”****，验证两个设备控制器是否运行正常。 如果两个控制器或其中一个控制器未正常运行，请联系 Microsoft 支持部门以了解后续步骤。 有关详细信息，请转到联系[Microsoft 支持](storsimple-8000-contact-microsoft-support.md)。
+> 进入维护模式前，请在 Azure 门户中访问设备的“设备设置”>“硬件运行状况”****，验证两个设备控制器是否运行正常。 如果两个控制器或其中一个控制器未正常运行，请联系 Microsoft 支持部门以了解后续步骤。 有关详细信息，请参阅[Contact Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。
  
 
 #### <a name="to-enter-maintenance-mode"></a>进入维护模式
@@ -125,7 +125,7 @@ StorSimple 设备可以按正常、维护或恢复模式运行。 下面简要�
 2. 在命令提示符处，键入：
    
     `Exit-HcsMaintenanceMode`
-3. 将显示一条警告消息和一条确认消息。 **类型 Y**以退出维护模式。
+3. 将显示一条警告消息和一条确认消息。 键入**Y**退出维护模式。
 4. 将重新启动两个控制器。 重新启动完成后，会显示串行控制台横幅，指示设备处于正常模式。 下面显示了示例输出。
 
 ```

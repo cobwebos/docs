@@ -15,10 +15,10 @@ ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
 ms.openlocfilehash: fa71f472294b91baebc2a6075ddb2b50123e545d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67593392"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>使用令牌身份验证保护 Azure CDN 资产
@@ -33,7 +33,7 @@ ms.locfileid: "67593392"
 
 令牌身份验证会验证请求是否由受信任的站点通过要求请求包含令牌值（该值包含关于请求者的编码信息）而生成。 内容只会在编码信息满足要求时提供给请求者，否则请求会被拒绝。 可使用以下一个或多个参数来设置需求：
 
-- 国家/地区：允许或拒绝源自其[国家/地区代码](/previous-versions/azure/mt761717(v=azure.100))指定的国家/地区的请求。
+- 国家/地区：允许或拒绝来自国家/地区[代码](/previous-versions/azure/mt761717(v=azure.100))所指定国家/地区的请求。
 - URL：仅允许与指定资产或路径相匹配的请求。
 - 主机：允许或拒绝在请求标头中使用指定主机的请求。
 - 引用网站：允许或拒绝来自指定引用网站的请求。
@@ -66,7 +66,7 @@ ms.locfileid: "67593392"
 
 2. 将鼠标指针悬停在“HTTP Large”**** 上，然后在浮出控件中选择“令牌身份验证”****。 然后即可设置加密密钥和加密参数，如下所示：
 
-   1. 创建一个或多个加密密钥。 加密密钥区分大小写，可以包含字母数字字符的任意组合。 不允许其他任何类型的字符，包括空格。 最大长度为 250 个字符。 为确保加密密钥是随机的，建议您使用[OpenSSL 工具](https://www.openssl.org/)创建加密密钥。 
+   1. 创建一个或多个加密密钥。 加密密钥区分大小写，可以包含字母数字字符的任意组合。 不允许其他任何类型的字符，包括空格。 最大长度为 250 个字符。 为了确保加密密钥是随机的，建议使用[OpenSSL 工具](https://www.openssl.org/)创建它们。 
 
       OpenSSL 工具采用以下语法：
 
@@ -86,7 +86,7 @@ ms.locfileid: "67593392"
 
       ![CDN 令牌身份验证设置密钥](./media/cdn-token-auth/cdn-token-auth-setupkey.png)
     
-   4. 使用加密工具设置加密参数并生成令牌。 使用加密工具，您可以根据过期时间、国家/地区、引用者、协议和客户端 IP（任意组合）允许或拒绝请求。 尽管可以组合用来构成令牌的参数数目与组合没有限制，但令牌的总长度限制为 512 个字符。 
+   4. 使用加密工具设置加密参数并生成令牌。 利用加密工具，你可以根据过期时间、国家/地区、引用者、协议和客户端 IP （任意组合）来允许或拒绝请求。 尽管可以组合用来构成令牌的参数数目与组合没有限制，但令牌的总长度限制为 512 个字符。 
 
       ![CDN 加密工具](./media/cdn-token-auth/cdn-token-auth-encrypttool.png)
 
@@ -96,7 +96,7 @@ ms.locfileid: "67593392"
       > <table>
       > <tr>
       >   <th>参数名称</th> 
-      >   <th>描述</th>
+      >   <th>说明</th>
       > </tr>
       > <tr>
       >    <td><b>ec_expire</b></td>
@@ -120,7 +120,7 @@ ms.locfileid: "67593392"
       > </tr>
       > <tr>
       >    <td><b>ec_country_allow</b></td> 
-      >    <td>仅允许来自一个或多个指定国家/地区的请求。 来自所有其他国家/地区的请求被拒绝。 为每个国家/地区使用双字母 [ISO 3166 国家/地区代码](/previous-versions/azure/mt761717(v=azure.100))，并用逗号分隔；请勿添加空格。 例如，如果仅允许来自美国和法国的访问，请输入 `US,FR`。</td>
+      >    <td>仅允许来自一个或多个指定国家/地区的请求。 来自所有其他国家/地区的请求将被拒绝。 为每个国家/地区使用双字母 [ISO 3166 国家/地区代码](/previous-versions/azure/mt761717(v=azure.100))，并用逗号分隔；请勿添加空格。 例如，如果仅允许来自美国和法国的访问，请输入 `US,FR`。</td>
       > </tr>
       > <tr>
       >    <td><b>ec_country_deny</b></td> 

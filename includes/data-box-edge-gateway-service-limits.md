@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: alkohli
 ms.openlocfilehash: 3010cdcf794fcadd1fbcbdc73ba33033a3ea07fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67173404"
 ---
 - 存储帐户的物理位置应当最靠近其中部署了设备的区域（可能与部署服务的区域不同）。

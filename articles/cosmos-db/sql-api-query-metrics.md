@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.openlocfilehash: ae1773ec1d470b9cff2efb00c200427b7b4c2fb4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "69614820"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>优化 Azure Cosmos DB 的查询性能
@@ -38,7 +38,7 @@ Azure Cosmos DB 提供了一个[用于查询数据的 SQL API](how-to-sql-query.
 
 SDK 针对查询执行提供了各种选项。 例如，在 .NET 中，`FeedOptions` 类中提供了以下选项。 下表介绍了这些选项以及它们如何影响查询执行时间。 
 
-| 选项 | 描述 |
+| 选项 | 说明 |
 | ------ | ----------- |
 | `EnableCrossPartitionQuery` | 对于需要跨多个分区执行的任何查询，都必须将其设置为 true。 这是一个显式标志，可用来在开发时有意识地进行性能权衡。 |
 | `EnableScanInQuery` | 如果已决定不使用索引编制，但仍然希望通过扫描方式运行查询，必须将其设置为 true。 只有针对所请求的筛选器路径禁用了索引编制时才适用。 | 
@@ -93,7 +93,7 @@ Expect: 100-continue
 {"query":"SELECT * FROM c WHERE c.city = 'Seattle'"}
 ```
 
-每个查询执行页面对应于一个标头为 `Accept: application/query+json` 的 REST API `POST`，SQL 查询在正文中。 每个查询都使用为了继续执行而在客户端与服务器之间回应的 `x-ms-continuation` 标记进行到服务器的一次或多次往返。 FeedOptions 中的配置选项将以请求标头的形式传递给服务器。 例如，`MaxItemCount` 对应于 `x-ms-max-item-count`。 
+每个查询执行页面对应于一个标头为 `POST` 的 REST API `Accept: application/query+json`，SQL 查询在正文中。 每个查询都使用为了继续执行而在客户端与服务器之间回应的 `x-ms-continuation` 标记进行到服务器的一次或多次往返。 FeedOptions 中的配置选项将以请求标头的形式传递给服务器。 例如，`MaxItemCount` 对应于 `x-ms-max-item-count`。 
 
 该请求返回以下响应（为便于阅读已将其截断）：
 
@@ -124,7 +124,7 @@ Date: Tue, 27 Jun 2017 21:59:49 GMT
 
 从查询返回的主要响应标头包括以下内容：
 
-| 选项 | 描述 |
+| 选项 | 说明 |
 | ------ | ----------- |
 | `x-ms-item-count` | 响应中返回的项数。 这取决于所提供的 `x-ms-max-item-count`、在最大响应有效负载大小内可以容纳的项数、预配的吞吐量以及查询执行时间。 |  
 | `x-ms-continuation:` | 用于继续执行查询的继续标记（如果有更多结果）。 | 
@@ -237,7 +237,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| 指标 | 单位 | 描述 | 
+| 指标 | 单位 | 说明 | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | 毫秒 | 查询执行时间 | 
 | `queryCompileTimeInMs` | 毫秒 | 查询编译时间  | 
@@ -259,7 +259,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 下面提供了一些示例查询，并说明了如何解释从查询执行返回的某些指标： 
 
-| 查询 | 示例指标 | 描述 | 
+| 查询 | 示例指标 | 说明 | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | 为匹配 TOP 子句而检索的文档数为 100+1。 查询时间主要花费在 `WriteOutputTime` 和 `DocumentLoadTime` 中，因为它是一个扫描。 | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount 现在较高（为匹配 TOP 子句为 500+1）。 | 

@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: d6c813dec3922334f7462b1226ea22371fd5f43b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68736291"
 ---
 # <a name="azure-data-catalog-terminology"></a>Azure 数据目录术语
@@ -23,7 +23,7 @@ Azure 数据目录是基于云的元数据存储库，可以在其中注册数�
 
 ## <a name="data-source"></a>数据源
 
-数据源是管理数据资产的系统或容器。 示例包括 SQL Server 数据库、Oracle 数据库、SQL 服务器分析服务数据库（表格或多维）和 SQL Server 报告服务服务器。
+数据源是管理数据资产的系统或容器。 示例包括 SQL Server 数据库、Oracle 数据库、SQL Server Analysis Services 数据库（表格或多维）以及 SQL Server Reporting Services 服务器。
 
 ## <a name="data-asset"></a>数据资产
 
@@ -65,9 +65,9 @@ Azure 数据目录中的数据配置文件是已注册数据资产相关的表�
 
 ## <a name="user-perspective"></a>用户视角
 
-在 Azure 数据目录中，任何用户都可以为已注册的数据资产提供描述性元数据。 每个用户对数据及其使用都有不同的观点。 例如，负责服务器的管理员可以提供该服务器的服务级别协议 (SLA) 或备份窗口的详细信息；数据专员可以提供数据支持的业务过程的文档链接；而分析员可以对其他分析师相关度最高的条款提供说明，这对需要发现和了解数据的用户非常有价值。
+在 Azure 数据目录中，任何用户都可以为已注册的数据资产提供描述性元数据。 每个用户对数据及其使用情况都有不同的透视。 例如，负责服务器的管理员可以提供该服务器的服务级别协议 (SLA) 或备份窗口的详细信息；数据专员可以提供数据支持的业务过程的文档链接；而分析员可以对其他分析师相关度最高的条款提供说明，这对需要发现和了解数据的用户非常有价值。
 
-每个角度都有其内在价值，使用 Azure 数据目录，每个用户可以提供对他们有意义的信息，而所有用户都可以使用这些信息来了解数据及其用途。
+其中每个透视都非常有用，使用 Azure 数据目录时，每个用户都可以提供有意义的信息，而所有用户都可以使用该信息来了解数据及其目的。
 
 ## <a name="expert"></a>专家
 

@@ -9,10 +9,10 @@ ms.date: 08/16/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: a58e408feadd10e6dbc9d6878b82a4d045918ea6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68781429"
 ---
 ## <a name="access-the-virtual-machine"></a>访问虚拟机
@@ -35,7 +35,7 @@ ms.locfileid: "68781429"
     az network nsg rule update --name SSH --nsg-name contoso-simulation-nsg -g contoso-simulation --access Allow -o table
     ```
 
-    仅在测试和开发期间启用 SSH 访问。 如果启用 SSH，[应尽快再次禁用它](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#disable-rdpssh-access-to-virtual-machines)。
+    仅在测试和开发期间启用 SSH 访问。 如果启用 SSH，[应尽快禁用它](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#disable-rdpssh-access-to-virtual-machines)。
 
 1. 在虚拟机上将 azureuser 帐户的密码更新为你知道的密码****。 运行以下命令时，选择自己的密码：
 

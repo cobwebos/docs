@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.openlocfilehash: 8a1c91c8a8a59af26386e70e68e7c4fd93f5eaa9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68726340"
 ---
 # <a name="how-to-use-blob-storage-from-xamarin"></a>如何通过 Xamarin 使用 Blob 存储
@@ -29,8 +29,8 @@ Xamarin 使开发人员能够通过共享的 C# 代码库来使用其本机用�
 请按以下步骤创建应用程序：
 
 1. 下载并安装 [Xamarin for Visual Studio](https://www.xamarin.com/download)（如果尚未这样做）。
-2. 打开 Visual Studio，创建空白应用（本机可移植）：“文件”>“新建”>“项目”>“跨平台”>“空白应用(本机可移植)”。****
-3. 右键单击“解决方案资源管理器”窗格中的解决方案，并选择“为解决方案管理 NuGet 包”****。 搜索 **WindowsAzure.Storage**，并将最新稳定版本安装到解决方案中的所有项目。
+2. 打开 Visual Studio，创建空白应用（本机可移植）：“文件”>“新建”>“项目”>“跨平台”>“空白应用(本机可移植)”。 
+3. 右键单击“解决方案资源管理器”窗格中的解决方案，并选择“为解决方案管理 NuGet 包”  。 搜索 **WindowsAzure.Storage**，并将最新稳定版本安装到解决方案中的所有项目。
 4. 生成并运行项目。
 
 现在，应该有了这样一个应用程序：单击某个按钮即可让计数器递增。
@@ -239,10 +239,10 @@ namespace XamarinApp.WinPhone
 
 本教程介绍了如何在 Xamarin 中创建使用 Azure 存储的跨平台应用程序，特别介绍了 Blob 存储中的一个方案。 但是，还可以进行更多操作，不光是使用 Blob 存储，还可以使用表、文件和队列存储。 请参阅以下文章以了解更多信息：
 
-* [使用 .NET 开始使用 Azure Blob 存储](storage-dotnet-how-to-use-blobs.md)
+* [通过 .NET 开始使用 Azure Blob 存储](storage-dotnet-how-to-use-blobs.md)
 * [Azure 文件简介](../files/storage-files-introduction.md)
 * [使用 .NET 针对 Azure 文件进行开发](../files/storage-dotnet-how-to-use-files.md)
-* [使用 .NET 开始使用 Azure 表存储](../../cosmos-db/table-storage-how-to-use-dotnet.md)
-* [使用 .NET 开始使用 Azure 队列存储](../queues/storage-dotnet-how-to-use-queues.md)
+* [通过 .NET 开始使用 Azure 表存储](../../cosmos-db/table-storage-how-to-use-dotnet.md)
+* [通过 .NET 开始使用 Azure 队列存储](../queues/storage-dotnet-how-to-use-queues.md)
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../../includes/storage-try-azure-tools-blobs.md)]

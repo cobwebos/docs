@@ -1,5 +1,5 @@
 ---
-title: 关于 Azure 监视器日志中的网络监视 |微软文档
+title: 关于 Azure Monitor 日志中的网络监视 |Microsoft Docs
 description: 概述了网络监视解决方案，包括 NPM，它们用来在云、本地和混合环境中管理网络。
 services: monitoring-and-diagnostics
 documentationcenter: na
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
 ms.openlocfilehash: 2912488286745bf8d2e567d09e445b0a44dc7c39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67672181"
 ---
 # <a name="network-monitoring-solutions"></a>网络监视解决方案 
@@ -51,7 +51,7 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 
 有关详细信息，请查看以下文章：
 
-* [在 Azure 监视器日志中配置网络性能监视器解决方案](../azure-monitor/insights/network-performance-monitor.md) 
+* [在 Azure Monitor 日志中配置网络性能监视器解决方案](../azure-monitor/insights/network-performance-monitor.md) 
 * [用例](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
 * 产品更新：
   * [2017 年 2 月](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/)
@@ -70,7 +70,7 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 
 ![显示各区域流量的地图](./media/network-monitoring-overview/expressroute-topology-map.png) 
 
-有关详细信息，请参阅以下文章：
+有关详细信息，请参阅下列文章：
 
 * [为 ExpressRoute 配置网络性能监视器](../expressroute/how-to-npm.md)
 * [博客文章](https://aka.ms/NPMExRmonitorGA)
@@ -86,7 +86,7 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 * 确定网络上可能会导致应用程序性能变差的热点
 * 使用针对 Microsoft Office 365、Dynamics 365、Skype for Business 和其他 Microsoft 服务的内置测试来监视 Office 365 应用程序的可访问性。
 
-有关详细信息，请参阅以下文章：
+有关详细信息，请参阅下列文章：
 
 * [配置用于监视服务终结点的网络性能监视器](../azure-monitor/insights/network-performance-monitor-service-connectivity.md#configuration)
 * [博客文章](https://aka.ms/svcendptmonitor)

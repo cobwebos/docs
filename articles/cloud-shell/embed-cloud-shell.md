@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/11/2017
 ms.author: damaerte
 ms.openlocfilehash: bbf6c1f3049265961559ea34c8b748b2b4d263b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60614308"
 ---
 # <a name="embed-azure-cloud-shell"></a>嵌入 Azure Cloud Shell
@@ -27,11 +27,11 @@ ms.locfileid: "60614308"
 
 常规尺寸按钮
 
-[![定期发布](https://shell.azure.com/images/launchcloudshell.png "启动 Azure Cloud Shell")](https://shell.azure.com)
+[![常规启动](https://shell.azure.com/images/launchcloudshell.png "启动 Azure Cloud Shell")](https://shell.azure.com)
 
 大型尺寸按钮
 
-[![大型发布](https://shell.azure.com/images/launchcloudshell@2x.png "启动 Azure Cloud Shell")](https://shell.azure.com)
+[![大启动](https://shell.azure.com/images/launchcloudshell@2x.png "启动 Azure Cloud Shell")](https://shell.azure.com)
 
 ## <a name="how-to"></a>操作说明
 
@@ -57,5 +57,5 @@ ms.locfileid: "60614308"
 |PowerShell                 |[shell.azure.com/powershell](https://shell.azure.com/powershell) |
 
 ## <a name="next-steps"></a>后续步骤
-[云壳中的 Bash 快速启动](quickstart.md)<br>
+[Cloud Shell 快速入门中的 Bash](quickstart.md)<br>
 [Cloud Shell 中的 PowerShell 快速入门](quickstart-powershell.md)

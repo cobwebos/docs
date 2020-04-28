@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/20/2019
 ms.author: alkohli
 ms.openlocfilehash: a9daf1d59b03d283be999aaab559c6d60f6405dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65953119"
 ---
 # <a name="manage-compute-on-your-azure-data-box-edge"></a>在 Azure Data Box Edge 中管理计算
@@ -31,7 +31,7 @@ ms.locfileid: "65953119"
 事件是在云环境中或者在设备上发生的、可能需要采取措施的情况。 例如，在共享中创建文件就是一个事件。 触发器引发这些事件。 对于 Data Box Edge，触发器可用于响应文件事件或计划。
 
 - **文件**：这些触发器用于响应文件事件，如创建文件、修改文件。
-- **计划**：这些触发器响应了可以使用开始日期、开始时间和重复间隔定义的计划。
+- **计划**：这些触发器是对你可以用开始日期、开始时间和重复间隔定义的计划的响应。
 
 
 ### <a name="add-a-trigger"></a>添加触发器
@@ -131,4 +131,4 @@ ms.locfileid: "65953119"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何通过[Azure 门户管理边缘计算网络](data-box-edge-extend-compute-access-modules.md)。
+- 了解如何[通过 Azure 门户管理边缘计算网络](data-box-edge-extend-compute-access-modules.md)。

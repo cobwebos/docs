@@ -1,6 +1,6 @@
 ---
 title: H264 单比特率 16x9 SD Audio 5.1 | Microsoft 文档
-description: 本主题概述了“H264 单比特率 16x9 SD Audio 5.1”任务预设****。
+description: 本主题概述了“H264 单比特率 16x9 SD Audio 5.1”任务预设  。
 author: Juliako
 manager: femila
 editor: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 730854f572e1e2ab21140f53d59b7593ad26cb05
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61463593"
 ---
 # <a name="h264-single-bitrate-16x9-sd-audio-51"></a>H264 单比特率 16x9 SD Audio 5.1

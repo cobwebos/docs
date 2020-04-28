@@ -7,15 +7,15 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: e9e9013d354585d04f205feb93a84d94c0f05905
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68950190"
 ---
 # <a name="how-to-document-data-sources-in-azure-data-catalog"></a>如何在 Azure 数据目录中记录数据源
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 **Microsoft Azure 数据目录**是一个完全托管的云服务，充当企业数据源的注册系统和发现系统。 换而言之，**Azure 数据目录**旨在帮助人们发现、了解**,和使用数据源，并帮助组织从其现有数据中获取更多价值。
 
 数据源向 **Azure 数据目录**注册时，该服务将复制其元数据并为其建立索引，但并不仅仅只是这样。 **Azure 数据目录**还允许用户提供自己的完整文档，以描述数据源的使用情况和常见方案。
@@ -33,7 +33,7 @@ ms.locfileid: "68950190"
 > 文档不包括在搜索索引中。
 >
 
-![文档选项卡和指向 Web 链接的超链接](media/data-catalog-documentation/data-catalog-documentation2.png)
+![文档选项卡和到 web 链接的超链接](media/data-catalog-documentation/data-catalog-documentation2.png)
 
 文档级别范围可以从描述数据资产的特性和值到容器中表架构的详细说明。 应根据业务需求提供相应的文档级别。 但通常情况下，记录数据资产存在以下几种利弊：
 

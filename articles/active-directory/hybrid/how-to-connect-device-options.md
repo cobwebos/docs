@@ -17,21 +17,21 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 96ddcdb67ef079cfa23902a1dcb03b0ec61077fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67109531"
 ---
 # <a name="azure-ad-connect-device-options"></a>Azure AD Connect：设备选项
 
 以下文档提供了有关 Azure AD Connect 中提供的各种设备选项的信息。 可使用 Azure AD Connect 配置以下两个操作： 
 * **混合 Azure AD 加入**：如果环境具有本地 AD 占用情况并且希望利用 Azure AD 的优势，则可实现混合 Azure AD 加入的设备。 这些设备同时加入到本地 Active Directory 和 Azure Active Directory。
-* **设备回写**：设备回写用于基于设备对 AD FS（2012 R2 或更高版本）保护设备启用条件访问
+* **设备写回**：设备写回用于启用基于设备的条件访问 AD FS （2012 R2 或更高版本）受保护的设备
 
 ## <a name="configure-device-options-in-azure-ad-connect"></a>在 Azure AD Connect 中配置设备选项
 
-1.  运行 Azure AD Connect。 在“其他任务”页中，选择“配置设备选项”********。  单击“下一步”****。
+1.  运行 Azure AD Connect。 在“其他任务”页中，选择“配置设备选项”********。  单击“下一步”。 
     ![配置设备选项](./media/how-to-connect-device-options/deviceoptions.png) 
 
     “概述”页显示详细信息****。

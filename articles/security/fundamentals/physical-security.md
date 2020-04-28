@@ -1,6 +1,6 @@
 ---
-title: Azure 数据中心的物理安全性 - 微软 Azure |微软文档
-description: 本文介绍了 Microsoft 保护 Azure 数据中心（包括物理基础结构、安全性和合规性产品）时所做的一些工作。
+title: Azure 数据中心的物理安全性-Microsoft Azure |Microsoft Docs
+description: 本文介绍 Microsoft 如何保护 Azure 数据中心，包括物理基础结构、安全性和符合性产品/服务。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,19 +16,19 @@ ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
 ms.openlocfilehash: 634f89b3123902d981ad07dd1404315387104322
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68726731"
 ---
 # <a name="azure-facilities-premises-and-physical-security"></a>Azure 设施、场地和物理安全性
-本文介绍 Microsoft 保护 Azure 基础结构的作用。
+本文介绍 Microsoft 如何保护 Azure 基础结构。
 
-## <a name="datacenter-infrastructure"></a>数据中心基础设施
+## <a name="datacenter-infrastructure"></a>数据中心基础结构
 Azure 由[全球分布式数据中心基础结构](https://azure.microsoft.com/global-infrastructure/)组成，该基础结构支持数千个联机服务，并跨越全球 100 多个高度安全的设施。
 
-该基础结构旨在使应用程序更靠近全球用户、预留数据的驻留位置，并为客户提供全面的符合性与复原选项。 Azure 在全球有 52 个区域，在 140 个国家/地区提供。
+该基础结构旨在使应用程序更靠近全球用户、预留数据的驻留位置，并为客户提供全面的符合性与复原选项。 Azure 在全球有52个区域，并在140个国家/地区可用。
 
 区域是指通过大规模弹性网络互连的一系列数据中心。 该网络默认包含内容分发、负载均衡、冗余和加密功能。 Azure 包含的全球区域比任何其他云提供商所包含的都多，因此允许你灵活地选择部署应用程序所需的位置。
 
@@ -71,7 +71,7 @@ Microsoft 使用最佳做法过程和[符合 NIST 800-88](https://csrc.nist.gov/
 在系统使用寿命结束时，Microsoft 操作人员会遵循严格的数据处理过程和硬件处置过程，确保不会将包含数据的硬件提供给不受信任的一方使用。 对于支持安全擦除方法的硬盘驱动器，我们会使用此方法。 对于无法擦除的硬盘驱动器，我们会使用销毁过程来销毁该驱动器，并避免恢复信息。 销毁过程可能包括解体、切碎、粉碎或焚烧。 我们根据资产类型确定处置方式。 我们会保留销毁记录。 所有 Azure 服务使用已批准的介质存储和处置管理服务。
 
 ## <a name="compliance"></a>合规性
-Azure 基础结构的设计和管理符合广泛的国际和行业特定标准，例如 ISO 27001、HIPAA、FedRAMP、SOC 1 和 SOC 2。 我们还满足特定国家或地区的标准，包括澳大利亚 IRAP、英国 G-Cloud 和新加坡 MTCS。 严苛的第三方审核（例如英国标准协会进行的审核）可验证 Azure 是否遵循严格的安全控制标准。
+Azure 基础结构的设计和管理符合广泛的国际和行业特定标准，例如 ISO 27001、HIPAA、FedRAMP、SOC 1 和 SOC 2。 我们还满足国家或地区特定的标准，包括澳大利亚 IRAP、英国 G-云和新加坡 MTCS。 严苛的第三方审核（例如英国标准协会进行的审核）可验证 Azure 是否遵循严格的安全控制标准。
 
 有关 Azure 遵守的合规标准的完整列表，请参阅[合规性产品](https://www.microsoft.com/trustcenter/compliance/complianceofferings)。
 

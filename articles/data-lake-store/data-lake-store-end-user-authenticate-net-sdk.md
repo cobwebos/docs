@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 215b839c21c2590c08ac2f4250086eaf97914ce1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "66243707"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>使用 .NET SDK 进行 Azure Data Lake Storage Gen1 最终用户身份验证
@@ -30,27 +30,27 @@ ms.locfileid: "66243707"
 本文介绍了如何使用 .NET SDK 进行 Azure Data Lake Storage Gen1 最终用户身份验证。 有关使用 .NET SDK 的 Data Lake Storage Gen1 服务到服务身份验证，请参阅[使用 .NET SDK 进行 Data Lake Storage Gen1 服务到服务身份验证](data-lake-store-service-to-service-authenticate-net-sdk.md)。
 
 ## <a name="prerequisites"></a>先决条件
-* **视觉工作室 2013 或以上**. 以下说明使用 Visual Studio 2019。
+* **Visual Studio 2013 或更高**版本。 以下说明使用 Visual Studio 2019。
 
-* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **创建 Azure Active Directory“本机”应用程序**。 必须已完成[使用 Azure Active Directory 进行 Data Lake Storage Gen1 最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)中的步骤。
 
 ## <a name="create-a-net-application"></a>创建 .NET 应用程序
-1. 在可视化工作室中，选择 **"新建****"** 和"**项目**"菜单。
-2. 选择**控制台应用 （.NET 框架），** 然后选择 **"下一步**"。
+1. 在 Visual Studio 中，选择 "**文件**" 菜单，选择 "**新建**"，然后选择 "**项目**"。
+2. 选择 "**控制台应用（.NET Framework）**"，然后选择 "**下一步**"。
 3. 在“项目名称”**** 中，输入 `CreateADLApplication`，然后选择“创建”****。
 
 4. 将 NuGet 包添加到项目。
 
    1. 在解决方案资源管理器中右键单击项目名称，单击“管理 NuGet 包” ****。
-   2. 在**NuGet 包管理器**选项卡中，请确保**包源**设置为**nuget.org**并选择了 **"包括预发布**"复选框。
+   2. 在 " **NuGet 包管理器**" 选项卡中，确保 "**包源**" 设置为**Nuget.org** ，并选中 "**包括预发行**版" 复选框。
    3. 搜索并安装以下 NuGet 包：
 
       * `Microsoft.Azure.Management.DataLake.Store` - 本教程使用 v2.1.3-预览版。
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - 本教程使用 v2.2.12。
 
-        ![添加 NuGet 源](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "创建新的 Azure 数据湖帐户")
+        ![添加 NuGet 源](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "创建新的 Azure Data Lake 帐户")
    4. 关闭**NuGet 包管理器**。
 
 5. 打开**Program.cs**
@@ -96,7 +96,7 @@ ms.locfileid: "66243707"
 
 对于以上代码片段，需要注意以下几个问题：
 
-* 上述代码片段使用 helper 函数 `GetTokenCache` 和 `GetCreds_User_Popup`。 这些帮助器函数的代码[可在 GitHub 上获得](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#gettokencache)。
+* 上述代码片段使用 helper 函数 `GetTokenCache` 和 `GetCreds_User_Popup`。 [GitHub 上](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#gettokencache)提供了这些帮助器函数的代码。
 * 为了帮助读者更快完成本教程，此代码片段使用了为所有 Azure 订阅默认提供的本机应用程序客户端 ID。 因此，可以**在应用程序中按原样使用此代码片段**。
 * 但是，如果想要使用自己的 Azure AD 域和应用程序客户端 ID，则必须创建一个 Azure AD 本机应用程序，并使用所创建的应用程序的 Azure AD 租户 ID、客户端 ID 和重定向 URI。 有关说明，请参阅[创建 Active Directory 应用程序，以便进行 Data Lake Storage Gen1 最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)。
 

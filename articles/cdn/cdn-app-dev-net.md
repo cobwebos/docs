@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 7e3ad3a5928b36c221bb83b1c4012c3c9e14f35d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67594181"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 开发入门
@@ -28,7 +28,7 @@ ms.locfileid: "67594181"
 > 
 > 
 
-可以使用[适用于 .NET 的 Azure CDN 库](/dotnet/api/overview/azure/cdn)来自动创建和管理 CDN 配置文件和终结点。  本教程介绍一个简单的 .NET 控制台应用程序的创建示例，演示几个可用的操作。  本教程不打算详细描述适用于 .NET 的 Azure CDN 库的所有方面。
+你可以使用[适用于 .net 的 Azure CDN 库](/dotnet/api/overview/azure/cdn)来自动创建和管理 CDN 配置文件和终结点。  本教程介绍一个简单的 .NET 控制台应用程序的创建示例，演示几个可用的操作。  本教程不打算详细描述适用于 .NET 的 Azure CDN 库的所有方面。
 
 需要 Visual Studio 2015 来完成本教程。  可免费下载 [Visual Studio Community 2015](https://www.visualstudio.com/products/visual-studio-community-vs.aspx)。
 
@@ -73,7 +73,7 @@ ms.locfileid: "67594181"
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using Microsoft.Rest;
     ```
-2. 我们需要定义我们的方法将使用的一些常量。  在 `Program` 类中，但在 `Main` 方法之前，添加以下内容。  请务必根据需要用您自己的值替换占位符（包括**&lt;角括号&gt;**）。
+2. 我们需要定义我们的方法将使用的一些常量。  在 `Program` 类中，但在 `Main` 方法之前，添加以下内容。  请确保将占位符（包括** &lt;尖括号&gt;**）替换为所需的值。
    
     ```csharp
     //Tenant app constants

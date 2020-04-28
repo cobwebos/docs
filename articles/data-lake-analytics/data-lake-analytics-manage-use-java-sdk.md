@@ -10,10 +10,10 @@ ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: b8c7d2ba1c782c3b6ae3034d6a9aab5eb19be954
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70813633"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>使用 Java 应用管理 Azure Data Lake Analytics
@@ -22,7 +22,7 @@ ms.locfileid: "70813633"
 本文介绍如何通过使用 Azure Java SDK 编写的应用管理 Azure Data Lake Analytics 帐户、数据源、用户和作业。 
 
 ## <a name="prerequisites"></a>先决条件
-* **Java 开发工具包 （JDK） 8（** 使用 Java 版本 1.8）。
+* **Java 开发工具包（JDK） 8** （使用 Java 1.8 版）。
 * **IntelliJ**或其他合适的 Java 开发环境。 本文档中的说明使用 IntelliJ。
 * 创建 Azure Active Directory (AAD) 应用程序，并检索其**客户端 ID**、**租户 ID** 和**密钥**。 有关 AAD 应用程序的详细信息和如何获取客户端 ID 的说明，请参阅 [使用门户创建 Active Directory 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。 创建应用程序并生成密钥后，可从门户获取回复 URI 和密钥。
 
@@ -78,7 +78,7 @@ ms.locfileid: "70813633"
 
 转到“文件”>“设置”>“生成”>“执行”>“部署”****。 选择“生成工具”>“Maven”>“导入”****。 然后选中“自动导入 Maven 项目”****。
 
-打开`Main.java`现有代码块，然后用以下代码替换现有代码块：
+打开`Main.java`并将现有代码块替换为以下代码：
 
 ```java
 import com.microsoft.azure.CloudException;

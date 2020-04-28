@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 97dc67d46b08bf5765c59806b45edd82f38720cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60347724"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory 直通身份验证：当前限制
@@ -34,7 +34,7 @@ ms.locfileid: "60347724"
 
 - 用户登录到基于 Web 浏览器的应用程序。
 - 用户使用旧版协议（例如 Exchange ActiveSync、EAS、SMTP、POP 和 IMAP）登录 Outlook 客户端。
-- 用户登录到支持[现代身份验证](https://www.microsoft.com/en-us/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview)的旧 Office 客户端应用程序和 Office 应用程序：Office 2013 和 2016 版本。
+- 用户登录到旧版 Office 客户端应用程序和支持[新式身份验证](https://www.microsoft.com/en-us/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview)的 office 应用程序： Office 2013 和2016版本。
 - 用户登录到旧版协议的应用程序，例如 PowerShell 1.0 版本等。
 - 适用于 Windows 10 设备的 Azure AD 联接。
 - 进行多重身份验证的应用密码。

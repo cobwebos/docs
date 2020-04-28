@@ -9,16 +9,16 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c1793a22c59cda279a9d8c4522bcec2606d25582
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67673234"
 ---
 在 Azure 门户中，可通过导航到连接来查看 Resource Manager VPN 网关的连接状态。 以下步骤演示导航到连接并进行验证的一种方法。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，单击“所有资源”，并导航到虚拟网络网关。****
-2. 在“虚拟网络网关”边栏选项卡中，单击“连接”。**** 可查看每个连接的状态。
-3. 单击想要验证的连接的名称，打开“概要”。**** 在“概要”中，可以查看有关连接的详细信息。 成功连接后 **，状态**为"成功"和"已连接"。
+1. 在 [Azure 门户](https://portal.azure.com)中，单击“所有资源”，并导航到虚拟网络网关。 
+2. 在“虚拟网络网关”边栏选项卡中，单击“连接”。  可查看每个连接的状态。
+3. 单击想要验证的连接的名称，打开“概要”。  在“概要”中，可以查看有关连接的详细信息。 成功连接后，“状态”为“已成功”和“已连接”。 
 
    ![使用 Azure 门户验证 VPN 网关连接](./media/vpn-gateway-verify-connection-portal-rm-include/connection-succeeded.png)

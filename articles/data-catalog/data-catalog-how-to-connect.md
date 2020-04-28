@@ -7,15 +7,15 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 1190a0f34206004b72730a6af85bbe5db7d9961a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68976772"
 ---
 # <a name="how-to-connect-to-data-sources"></a>如何连接到数据源
-## <a name="introduction"></a>介绍
-**Microsoft Azure 数据目录**是一个完全托管的云服务，充当企业数据源的注册系统和发现系统。 换句话说 **，Azure 数据目录**是帮助人们发现、理解和使用数据源，以及帮助组织从现有数据中获取更多价值。 此方案的一个重要方面在于使用数据 - 用户发现数据源并了解其用途后，下一步就是连接到数据源将其数据投入使用。
+## <a name="introduction"></a>简介
+**Microsoft Azure 数据目录**是一个完全托管的云服务，充当企业数据源的注册系统和发现系统。 换句话说， **Azure 数据目录**就是帮助人们发现、了解和使用数据源，并帮助组织从其现有数据中获取更多价值。 此方案的一个重要方面在于使用数据 - 用户发现数据源并了解其用途后，下一步就是连接到数据源将其数据投入使用。
 
 ## <a name="data-source-locations"></a>数据源位置
 在数据源注册期间，**Azure 数据目录**会接收有关数据源的元数据。 此元数据包括数据源位置的详细信息。 位置的详细信息因数据源而不同，但始终包含连接所需的信息。 例如，SQL Server 表的位置包括服务器名称、数据库名称、架构名称和表名，而 SQL Server Reporting Services 报表的位置包括服务器名称和报表的路径。 其他数据源类型的位置会反映源系统的结构和功能。
@@ -28,7 +28,7 @@ ms.locfileid: "68976772"
 
 使用列表视图时，菜单会显示在门户窗口顶部的搜索栏。
 
- ![在报表管理器中打开 SQL 服务器报告服务报告](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
+ ![在报表管理器中打开 SQL Server Reporting Services 报表](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
 
 ## <a name="supported-client-applications"></a>支持的客户端应用程序
 在 Azure 数据目录门户中为数据源 使用“打开方式...”菜单时，正确的客户端应用程序必须安装在客户端计算机上。
@@ -59,5 +59,5 @@ ms.locfileid: "68976772"
 ## <a name="summary"></a>总结
 使用 **Azure 数据目录**注册数据源，将结构性元数据和描述性元数据从数据源复制到目录服务，使数据可被发现。 注册并发现数据源后，用户可以从“Azure 数据目录”**** 门户使用“打开方式...”菜单， 或者使用用户自己选择的数据工具连接到数据源。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 * [Azure 数据目录入门](data-catalog-get-started.md)教程，了解有关如何连接到数据源的分步详细说明。

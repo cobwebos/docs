@@ -14,10 +14,10 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dc06abca08b2522ac57552e85f7c1bac3ef854af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68561873"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>使用 Azure Active Directory 编辑组信息
@@ -27,33 +27,33 @@ ms.locfileid: "68561873"
 ## <a name="to-edit-your-group-settings"></a>编辑组设置
 1. 使用目录的全局管理员帐户登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 选择“Azure Active Directory”，然后选择“组”********。
+2. 依次选择“Azure Active Directory”、“组”。  
 
-    此时会出现“组 - 所有组”页，其中显示了所有活动的组****。
+    此时会出现“组 - 所有组”页，其中显示了所有处于活动状态的组。 
 
-3. 在“组 - 所有组”页上，向“搜索”框中键入尽可能多的名称********。 出于本文的目的，我们正搜索“MDM 策略 - 西部”组****。
+3. 从“组 - 所有组”  页面上，在“搜索”  框中尽量完整地键入组名称。 对于本文而言，我们将搜索“MDM 策略 - 西部”  组。
 
-    搜索结果将显示在“搜索”框下，键入更多字符时搜索结果将更新****。
+    搜索结果将显示在“搜索”  框中，随着你键入更多的字符而进行更新。
 
-    ![所有组页面，搜索框中都有搜索文本](media/active-directory-groups-settings-azure-portal/search-for-specific-group.png)
+    ![“所有组”页面，其中的“搜索”框中具有搜索文本](media/active-directory-groups-settings-azure-portal/search-for-specific-group.png)
 
-4. 选择“MDM 策略 - 西部”，然后选择在“管理”区域选择“属性”************。
+4. 选择“MDM 策略 - 西部”  组，然后从“管理”区域中选择“属性”。  
 
     ![“组概述”页面，其中突出显示了“成员”选项和信息](media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
 
-5. 按所需更新“常规设置”信息，包括****：
+5. 根据需要更新“常规设置”  信息，包括：
 
     ![组的属性设置](media/active-directory-groups-settings-azure-portal/group-properties-settings.png)
 
-    - **组名称。** 编辑现有组名称。
+    - **组名称。** 编辑现有的组名称。
     
-    - **组描述。** 编辑现有组说明。
+    - **组说明。** 编辑现有的组说明。
 
-    - **组类型。** 创建组类型后将无法更改。 若要更改“组类型”，则必须删除该组并创建新组****。
+    - **组类型。** 创建组后无法更改组类型。 若要更改**组类型**，必须删除组并新建一个。
     
-    - **成员资格类型。** 更改成员身份类型。 有关各种可用成员资格类型的详细信息，请参阅[如何：创建基本组并使用 Azure 活动目录门户添加成员](active-directory-groups-create-azure-portal.md)。
+    - **成员身份类型。** 更改成员身份类型。 有关各种可用成员身份类型的详细信息，请参阅[如何：使用 Azure Active Directory 门户创建基本组并添加成员](active-directory-groups-create-azure-portal.md)。
     
-    - **对象 ID。** 无法更改对象 ID，但可将其复制以在组的 PowerShell 命令中使用。 有关 PowerShell cmdlet 的详细信息，请参阅[用于配置组设置的 Azure Active Directory cmdlet](../users-groups-roles/groups-settings-v2-cmdlets.md)。
+    - **对象 ID。** 无法更改对象 ID，但可以复制它以在用于组的 PowerShell 命令中使用。 有关使用 PowerShell cmdlet 的详细信息，请参阅[用于配置组设置的 Azure Active Directory cmdlet](../users-groups-roles/groups-settings-v2-cmdlets.md)。
 
 ## <a name="next-steps"></a>后续步骤
 这些文章提供了有关 Azure Active Directory 的更多信息。
@@ -62,7 +62,7 @@ ms.locfileid: "68561873"
 
 - [创建基本组并添加成员](active-directory-groups-create-azure-portal.md)
 
-- [如何在组中添加或移除成员](active-directory-groups-members-azure-portal.md)
+- [如何在组中添加或删除成员](active-directory-groups-members-azure-portal.md)
 
 - [管理组中用户的动态规则](../users-groups-roles/groups-create-rule.md)
 
@@ -70,4 +70,4 @@ ms.locfileid: "68561873"
 
 - [使用组管理对资源的访问权限](active-directory-manage-groups.md)
 
-- [将 Azure 订阅关联或添加到 Azure 活动目录](active-directory-how-subscriptions-associated-directory.md)
+- [将 Azure 订阅关联或添加到 Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)

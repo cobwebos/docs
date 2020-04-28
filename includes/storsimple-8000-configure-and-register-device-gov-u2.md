@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 7700f1c92aecab76dbc347814b7b161bc3d822a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67173006"
 ---
 ### <a name="to-configure-and-register-the-device"></a>配置和注册设备
 1. 访问 StorSimple 设备串行控制台上的 Windows PowerShell 接口。 有关说明，请参阅 [使用 PuTTY 连接到设备串行控制台](../articles/storsimple/storsimple-8000-deployment-walkthrough-gov-u2.md#use-putty-to-connect-to-the-device-serial-console) 。 **请务必严格遵照该步骤，否则将无法访问控制台。**
-2. 在打开的会话中，按 **"输入**一次"获取命令提示。
-3. 系统会提示选择要为设备设置的语言。 指定语言，然后按**Enter**。
+2. 在打开的会话中，按一次**enter**以获取命令提示符。
+3. 系统会提示选择要为设备设置的语言。 指定语言，然后按**enter**。
    
     ![StorSimple 配置和注册设备 1](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice1-gov-include.png)
 4. 在显示的串行控制台菜单中，选择选项 1“以完全访问权限登录”****。

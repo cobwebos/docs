@@ -14,16 +14,16 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eb306e1ecbbdf2142d88b837b9750bbd2166cfda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68561632"
 ---
 # <a name="sign-up-your-organization-to-use-azure-active-directory"></a>注册你的组织以使用 Azure Active Directory
 使用以下任一帐户注册 Azure Active Directory (Azure AD) 或新 Microsoft Azure 订阅：
 
-- **微软帐户。** 使用你的个人 Microsoft 帐户获取对 Azure 和所有面向使用者的 Microsoft 产品和云服务（如 Outlook (Hotmail)、Messenger、OneDrive、MSN、Xbox LIVE 或 Office 365）的访问权限。 注册 Outlook.com 邮箱会自动创建 Microsoft 帐户。 有关详细信息，请参阅 [Microsoft 帐户概述](https://account.microsoft.com/account)。
+- **Microsoft 帐户。** 使用你的个人 Microsoft 帐户获取对 Azure 和所有面向使用者的 Microsoft 产品和云服务（如 Outlook (Hotmail)、Messenger、OneDrive、MSN、Xbox LIVE 或 Office 365）的访问权限。 注册 Outlook.com 邮箱会自动创建 Microsoft 帐户。 有关详细信息，请参阅 [Microsoft 帐户概述](https://account.microsoft.com/account)。
 
 - **工作或学校帐户。** 使用与工作或学校相关的帐户获取对 Microsoft 提供的所有中小型企业云服务（如 Azure、Microsoft Intune 或 Office 365）的访问权限。 以组织身份注册其中某个服务后，Azure AD 会自动预配一个基于云的目录，以代表组织。 有关详细信息，请参阅[管理 Azure AD 目录](active-directory-administer.md)。
 

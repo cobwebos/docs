@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 数据目录中设置业务术语表
+title: 设置 Azure 数据目录中的业务术语表
 description: 操作指南文章重点说明了 Azure 数据目录中的业务术语表，用于定义和使用通用业务词汇来标记已注册的数据资产。
 author: JasonWHowell
 ms.author: jasonh
@@ -7,15 +7,15 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 1065abecb1f0ef57eb13b1ec3f194f07ae01eaee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68976794"
 ---
 # <a name="set-up-the-business-glossary-for-governed-tagging"></a>为管控标记设置业务术语表
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 Azure 数据目录可用于发现数据源，使用户能够轻松发现和理解执行分析和作出决策所需的数据源。 当用户能够找到并了解最广泛的可用数据源时，这些功能可以产生最大的影响。
 
@@ -32,15 +32,15 @@ Azure 数据目录可用于发现数据源，使用户能够轻松发现和理�
 
 ## <a name="glossary-availability-and-privileges"></a>术语表可用性和特权
 
-业务术语表仅在 Azure 数据目录标准版中可用。 数据目录的免费版不包含术语表，并且它不提供受治理标记的功能。
+业务术语表仅在 Azure 数据目录标准版中可用。 数据目录免费版不包括术语表，也不提供用于管辖标记的功能。
 
 可通过数据目录门户导航菜单中的“术语表”选项访问业务术语表****。  
 
-![数据目录 - 访问业务术语表](./media/data-catalog-how-to-business-glossary/01-portal-menu.png)
+![数据目录-访问业务术语表](./media/data-catalog-how-to-business-glossary/01-portal-menu.png)
 
 数据目录管理员和作为术语表管理员角色的成员可以在业务术语表中创建、编辑和删除术语表术语。 所有数据目录用户都可以查看术语定义，并可以使用术语表术语对资产进行标记。
 
-![数据目录 - 添加新术语表术语](./media/data-catalog-how-to-business-glossary/02-new-term.png)
+![数据目录-添加新的术语表术语](./media/data-catalog-how-to-business-glossary/02-new-term.png)
 
 ## <a name="creating-glossary-terms"></a>创建术语表术语
 
@@ -55,7 +55,7 @@ Azure 数据目录可用于发现数据源，使用户能够轻松发现和理�
 
 通过使用数据目录业务术语表，组织可将其业务词汇表现为术语层次结构，也可以创建能够更好地表现业务分类的术语类别。
 
-在给出的层次结构级别里，术语必须是唯一的。 不允许重复名称。 层次结构中的级别数没有限制，但是三个或更少级别的层次结构通常更易于理解。
+在给出的层次结构级别里，术语必须是唯一的。 不允许使用重复的名称。 层次结构中的级别数没有限制，但是三个或更少级别的层次结构通常更易于理解。
 
 可以选择在业务术语表中使用层次结构。 将术语表术语的父术语字段留空，这会在术语表中创建一个简单（而非分层）术语列表。  
 

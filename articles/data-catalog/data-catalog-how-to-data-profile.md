@@ -7,17 +7,17 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 04ac6c2bf0137289221a4ae6ed58d5a71ad21739
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68950219"
 ---
-# <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>如何在 Azure 数据目录中的数据配置文件数据源
+# <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>如何在 Azure 数据目录中进行数据配置文件数据源
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
-**Microsoft Azure 数据目录**是一个完全托管的云服务，充当企业数据源的注册系统和发现系统。 换句话说 **，Azure 数据目录**是帮助人们发现、理解和使用数据源，以及帮助组织从现有数据中获取更多价值。 数据源向 **Azure 数据目录**注册时，该服务将复制其元数据并为其建立索引，但并不仅仅只是这样。
+**Microsoft Azure 数据目录**是一个完全托管的云服务，充当企业数据源的注册系统和发现系统。 换句话说， **Azure 数据目录**就是帮助人们发现、了解和使用数据源，并帮助组织从其现有数据中获取更多价值。 数据源向 **Azure 数据目录**注册时，该服务将复制其元数据并为其建立索引，但并不仅仅只是这样。
 
 **Azure 数据目录**的“数据分析”**** 功能检查目录中受支持数据源的数据，并收集有关该数据的统计信息和信息。 想要包括数据资产的配置文件很简单。 注册数据资产时，在数据源注册工具中选择“包括数据配置文件”****。
 
@@ -51,7 +51,7 @@ ms.locfileid: "68950219"
 
 想要包括数据源的配置文件很简单。 注册数据资产时，在数据源注册工具的“要注册的对象”**** 面板中选择“包括数据配置文件”****。
 
-![包括数据配置文件复选框](media/data-catalog-data-profile/data-catalog-register-profile.png)
+!["包括数据配置文件" 复选框](media/data-catalog-data-profile/data-catalog-register-profile.png)
 
 若要了解有关如何注册数据源的详细信息，请参阅[如何注册数据源](data-catalog-how-to-register.md)和 [Azure 数据目录入门](data-catalog-get-started.md)。
 

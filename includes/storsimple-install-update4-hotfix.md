@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 0755c01fe8e13e8e39c0b453198f2b67c51a2bc4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67173149"
 ---
 #### <a name="to-download-hotfixes"></a>下载修补程序
 
 执行以下步骤，从 Microsoft 更新目录下载软件更新。
 
-1. 启动 Internet 资源管理器并[http://catalog.update.microsoft.com](https://catalog.update.microsoft.com)导航到 。
+1. 启动 Internet Explorer 并导航到[http://catalog.update.microsoft.com](https://catalog.update.microsoft.com)。
 2. 如果这是你在此计算机上首次使用 Microsoft 更新目录，请在系统提示是否安装 Microsoft 更新目录外接程序时单击“安装”。****
 
     ![安装目录](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
@@ -26,7 +26,7 @@ ms.locfileid: "67173149"
    
     ![搜索目录](./media/storsimple-install-update2-hotfix/HCS_SearchCatalog1-include.png)
 
-4. 单击“下载”****。 指定或**浏览**到下载项要保存到的本地位置。 单击要下载到指定位置和文件夹的文件。 也可以将该文件夹复制到可通过设备访问的网络共享位置。
+4. 单击 **“下载”** 。 指定或**浏览**到下载项要保存到的本地位置。 单击要下载到指定位置和文件夹的文件。 也可以将该文件夹复制到可通过设备访问的网络共享位置。
 5. 搜索上表中列出的任何其他修补程序 (**4011841**)，将相应的文件下载到上表中列出的特定文件夹。
 
 > [!NOTE]
@@ -39,7 +39,7 @@ ms.locfileid: "67173149"
 执行以下步骤安装和验证常规模式修补程序。 如果已使用 Azure 经典门户安装这些修补程序，请直接跳到[安装和验证维护模式修补程序](#to-install-and-verify-maintenance-mode-hotfixes)。
 
 1. 若要安装修补程序，请访问 StorSimple 设备串行控制台上的 Windows PowerShell 界面。 遵循 [Use PuTTy to connect to the serial console](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)（使用 PuTTy 连接到串行控制台）中的详细说明。 在命令提示符下，按 **Enter**。
-2. 选择选项 1，**使用完全访问权限登录**。 建议先在被动控制器中安装修补程序。
+2. 选择选项1，**使用完全访问权限登录**。 建议先在被动控制器中安装修补程序。
 3. 若要安装修补程序，请在命令提示符下键入：
    
     `Start-HcsHotfix -Path <path to update file> -Credential <credentials in domain\username format>`
@@ -107,7 +107,7 @@ ms.locfileid: "67173149"
      > 必须先通过 `Restart-HcsController` cmdlet 重启主动控制器，然后应用下一更新。
      
 7. 重复步骤 3-5，安装下载到 _FirstOrderUpdate_ 文件夹的 Cis/MDS 代理。 
-8. 重复步骤 3-5，安装第二级更新。 **对于二阶更新，只需运行 并`Start-HcsHotfix cmdlet`指向二阶更新所在的文件夹即可安装多个更新。cmdlet 将执行文件夹中可用的所有更新。** 如果更新已安装，则更新逻辑会删除该更新，不应用该更新。 
+8. 重复步骤 3-5，安装第二级更新。 **对于第二个订单更新，只需运行`Start-HcsHotfix cmdlet`并指向第二个订单更新所在的文件夹，即可安装多个更新。该 cmdlet 将执行文件夹中所有可用的更新。** 如果更新已安装，则更新逻辑会删除该更新，不应用该更新。 
 
 安装所有修补程序后，请使用 `Get-HcsSystem` cmdlet。 版本应为：
 
@@ -123,7 +123,7 @@ ms.locfileid: "67173149"
 
 若要安装磁盘固件更新，请遵循以下说明。
 
-1. 将设备置于维护模式。 **请注意，在维护模式下连接到设备时，不应使用 Windows PowerShell 远程处理。通过设备串行控制台连接时，而是在设备控制器上运行此 cmdlet。** 键入：
+1. 将设备置于维护模式。 **请注意，连接到处于维护模式的设备时，不应使用 Windows PowerShell 远程处理。改为在通过设备串行控制台连接时，在设备控制器上运行此 cmdlet。** 键入：
    
     `Enter-HcsMaintenanceMode`
    
