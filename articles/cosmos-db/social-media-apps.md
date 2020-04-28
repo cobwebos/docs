@@ -1,5 +1,5 @@
 ---
-title: Azure 宇宙 DB 设计模式：社交媒体应用
+title: Azure Cosmos DB 设计模式：社交媒体应用
 description: 利用 Azure Cosmos DB 的存储灵活性和其他 Azure 服务了解社交网络的设计模式。
 author: ealsur
 ms.service: cosmos-db
@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
 ms.openlocfilehash: 8428e417f5f86edca77edae6ca4b7ef84e5ff425
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73827301"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 进行社交
 
-生活在大规模互连的社会中，这意味着有时候你也成了社交网络中的一部分****。 使用社交网络与朋友、同事和家人保持联系，有时还会与有共同兴趣的人分享我们的激情。
+生活在大规模互连的社会中，这意味着有时候你也成了社交网络中的一部分  。 使用社交网络与朋友、同事和家人保持联系，有时还会与有共同兴趣的人分享我们的激情。
 
-作为工程师或开发者，你可能想知道这些网络如何存储和互连数据。 或者，你甚至可能承担着为特定利基市场创建或构建新社交网络的任务。 这时就会产生一个大问题：所有这些数据是如何存储的？
+作为工程师或开发人员，你可能想知道这些网络如何存储和互连数据。 或者，你甚至可能承担着为特定利基市场创建或构建新社交网络的任务。 这时就会产生一个大问题：所有这些数据是如何存储的？
 
 假设你正在创建一个新型时尚的社交网络，用户可以在此网络中发布带有相关媒体（如图片、视频，甚至音乐）的文章。 用户可以对帖子发表评论并打分以进行评级。 主网站登录页上将提供用户可见并可与之交互的帖子源。 这种方法听起来并不复杂，但为了简单起见，我们就此止步。 （可自行深入了解受关系影响的自定义用户馈送，但这超出了本文的目标。）
 
@@ -33,11 +33,11 @@ ms.locfileid: "73827301"
 
 为什么在此方案中 SQL 不是最佳选择？ 我们来看一下单个帖子的结构。 如果我想在网站或应用程序中显示帖子，可能不得不执行查询...通过联接八个表 (!) 来仅仅显示单个帖子。 现在请想象一下：一系列帖子动态地加载并显示在屏幕上。你可能就明白我的意思了。
 
-你可以使用一个功能足够强大的超大 SQL 实例来解决数以千计的查询，其中通过许多联接来呈现内容。 但当已经有一个更简单的解决方案存在时，为什么还要选择这种呢？
+可以使用一个功能足够强大的超大 SQL 实例来解决数以千计的查询，其中通过许多联接来呈现内容。 但当已经有一个更简单的解决方案存在时，为什么还要选择这种呢？
 
 ## <a name="the-nosql-road"></a>NoSQL 加载
 
-本文将指导如何使用 Azure 的 NoSQL 数据库 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 经济高效地对社交平台的数据进行建模。 还将介绍如何使用其他 Azure Cosmos DB 功能，如 [Gremlin API](../cosmos-db/graph-introduction.md)。 使用 [NoSQL](https://en.wikipedia.org/wiki/NoSQL) 方法以 JSON 格式存储数据并应用[非规范化](https://en.wikipedia.org/wiki/Denormalization)，就可以将以前的复杂帖子转换为单个[文档](https://en.wikipedia.org/wiki/Document-oriented_database)：
+本文将指导你使用 Azure 的 NoSQL 数据库 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 经济高效地对社交平台的数据进行建模。 还将介绍如何使用其他 Azure Cosmos DB 功能，如 [Gremlin API](../cosmos-db/graph-introduction.md)。 使用 [NoSQL](https://en.wikipedia.org/wiki/NoSQL) 方法以 JSON 格式存储数据并应用[非规范化](https://en.wikipedia.org/wiki/Denormalization)，就可以将以前的复杂帖子转换为单个[文档](https://en.wikipedia.org/wiki/Document-oriented_database)：
 
     {
         "id":"ew12-res2-234e-544f",
@@ -98,7 +98,7 @@ Azure Cosmos DB 的自动索引功能可确保为所有属性都编制索引。 
 
 可拥有“最新”的流，其中包含按创建日期排序的帖子。 或者可拥有一个“最热门”的流，其中包含过去 24 小时内点赞数较多的帖子。 甚至可以根据关注者和兴趣等逻辑为每个用户实现自定义流。 它仍然是一个帖子列表。 虽然如何生成这些列表还是一个问题，但读取性能不会受到阻碍。 在获得其中一个列表之后，使用 [IN 关键字](sql-query-keywords.md#in)向 Cosmos DB 发出单个查询以一次获取帖子页面。
 
-可以使用 [Azure 应用服务](https://azure.microsoft.com/services/app-service/) 的后台进程 - [Web 作业](../app-service/webjobs-create.md) - 来构建源流。 创建一个帖子后，可以通过使用 [Azure 存储](https://azure.microsoft.com/services/storage/) [队列](../storage/queues/storage-dotnet-how-to-use-queues.md)和 Web 作业（通过 [Azure Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 触发）触发后台处理，从而根据自己的自定义逻辑实现流内的帖子传播。
+可以使用 [Azure 应用服务](https://azure.microsoft.com/services/app-service/) 的后台进程 - [Web 作业](../app-service/webjobs-create.md) - 来构建源流。 创建一个帖子后，可以通过使用 [Azure 存储](https://azure.microsoft.com/services/storage/)[队列](../storage/queues/storage-dotnet-how-to-use-queues.md)和 Web 作业（通过 [Azure Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 触发）触发后台处理，从而根据自己的自定义逻辑实现流内的帖子传播。
 
 通过使用这种相同的技术创建最终一致性环境还可以以延迟方式处理评分和点赞。
 
@@ -129,7 +129,7 @@ Azure Cosmos DB 的自动索引功能可确保为所有属性都编制索引。 
 
 可以使用 Azure Cosmos DB [Gremlin API](../cosmos-db/graph-introduction.md) 存储实际的关注者图形，以创建每位用户的[顶点](http://mathworld.wolfram.com/GraphVertex.html)和[边缘](http://mathworld.wolfram.com/GraphEdge.html)，从中反映出“A 关注 B”关系。 使用 Gremlin API 不仅可以获取某位用户的关注者，而且还能创建更复杂的查询以推荐具有共同点的用户。 如果在图形中添加用户喜欢或感兴趣的内容类别，就可以开始布置智能内容发现、推荐关注用户感兴趣的内容和查找具有共同点的用户等体验。
 
-“用户统计信息”文档仍可用来在 UI 中创建卡或快速个人资料预览。
+仍然可以使用用户统计信息文档在 UI 或快速配置文件预览中创建卡片。
 
 ## <a name="the-ladder-pattern-and-data-duplication"></a>“阶梯”模式和数据重复
 
@@ -161,11 +161,11 @@ Azure Cosmos DB 的自动索引功能可确保为所有属性都编制索引。 
 
 最简单的一步称为 UserChunk，这是标识用户的最小信息块并可用于数据重复。 通过减少重复数据的大小直到只留下要“显示”的信息，可以降低大规模更新的可能性。
 
-中间步骤被称为用户。 这是会在 Cosmos DB 上的大多数依赖性能的查询上使用的完整数据，也是最常访问和最重要的数据。 它包括由 UserChunk 表示的信息。
+中间步骤称为用户。 这是会在 Cosmos DB 上的大多数依赖性能的查询上使用的完整数据，也是最常访问和最重要的数据。 它包括由 UserChunk 表示的信息。
 
-最复杂的一步是扩展用户。 它包括重要用户信息和其他不需要快速读取或最终使用的数据，如登录过程。 此数据可以存储在 Cosmos DB 外、Azure SQL 数据库或 Azure 存储表中。
+最复杂的一步是扩展用户。 它包括重要用户信息和其他不需要快速读取或最终使用的数据，如登录过程。 此数据可以存储在 Cosmos DB 外、Azure SQL 数据库或 Azure 表存储中。
 
-为什么要拆分用户，甚至将此信息存储在不同的位置？ 从性能角度考虑，文档越大，查询成本将越高。 保持文档精简，使其包含为社交网络执行所有依赖性能的查询的正确信息。 存储最终方案的其他额外信息，例如用于使用情况分析和大数据计划的完整配置文件编辑、登录和数据挖掘。 不必关心数据挖掘的数据收集过程是否较慢，因为它在 Azure SQL 数据库上运行。 尽管你的用户拥有快速而精简的体验，但你仍会感到担心。 Cosmos DB 中存储的用户如下列代码所示：
+为什么要拆分用户，甚至将此信息存储在不同的位置？ 因为，从性能角度考虑，文档越大，查询成本将越高。 保持文档精简，使其包含为社交网络执行所有依赖性能的查询的正确信息。 存储最终方案的其他额外信息，例如用于使用情况分析和大数据计划的完整配置文件编辑、登录和数据挖掘。 不必关心数据挖掘的数据收集过程是否较慢，因为它在 Azure SQL 数据库上运行。 尽管你的用户拥有快速而精简的体验，但你仍会感到担心。 Cosmos DB 中存储的用户如下列代码所示：
 
     {
         "id":"dse4-qwe2-ert4-aad2",
@@ -194,13 +194,13 @@ Azure Cosmos DB 的自动索引功能可确保为所有属性都编制索引。 
 
 幸运的是，用户将生成许多内容。 并且你应能够提供搜索和查找可能在其内容流中不直接显示的内容的能力，也许是由于未关注创建者，或者也许是因为只是想要尽力找到六个月之前发布的旧帖子。
 
-由于您使用的是 Azure Cosmos DB，因此在几分钟内可以轻松地使用[Azure 认知搜索](https://azure.microsoft.com/services/search/)实现搜索引擎，而无需键入任何代码，但搜索过程和 UI。
+由于使用的是 Azure Cosmos DB，因此你可以在几分钟内轻松地使用[Azure 认知搜索](https://azure.microsoft.com/services/search/)实现搜索引擎，而无需键入除搜索过程和 UI 之外的任何代码。
 
 为什么此过程如此简单？
 
-Azure 认知搜索实现他们所谓的[索引器](https://msdn.microsoft.com/library/azure/dn946891.aspx)，后台进程在数据存储库中挂钩，并自动添加、更新或删除索引中的对象。 它们支持 [Azure SQL 数据库索引器](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/)、[Azure Blobs 索引器](../search/search-howto-indexing-azure-blob-storage.md)和 [Azure Cosmos DB 索引器](../search/search-howto-index-documentdb.md)。 信息从 Cosmos DB 到 Azure 认知搜索的转换非常简单。 这两种技术都以 JSON 格式存储信息，因此只需[创建索引](../search/search-create-index-portal.md)并从要编制索引的文档中映射属性。 就这么简单！ 根据数据大小，可在几分钟内通过云基础结构中的最佳搜索即服务解决方案搜索所有内容。
+Azure 认知搜索实现其调用[索引器](https://msdn.microsoft.com/library/azure/dn946891.aspx)的内容、在数据存储库中挂钩的后台进程，以及自动添加、更新或删除索引中的对象。 它们支持 [Azure SQL 数据库索引器](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/)、[Azure Blobs 索引器](../search/search-howto-indexing-azure-blob-storage.md)和 [Azure Cosmos DB 索引器](../search/search-howto-index-documentdb.md)。 从 Cosmos DB 到 Azure 认知搜索的信息的过渡非常简单。 这两种技术都以 JSON 格式存储信息，因此只需[创建索引](../search/search-create-index-portal.md)并从要编制索引的文档中映射属性。 就这么简单！ 根据数据大小，可在几分钟内通过云基础结构中的最佳搜索即服务解决方案搜索所有内容。
 
-有关 Azure 认知搜索的详细信息，请访问[希奇克的搜索指南](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/)。
+有关 Azure 认知搜索的详细信息，可以访问[Hitchhiker 的指南进行搜索](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/)。
 
 ## <a name="the-underlying-knowledge"></a>基础知识
 
@@ -224,7 +224,7 @@ Azure 认知搜索实现他们所谓的[索引器](https://msdn.microsoft.com/li
 
 Cosmos DB 支持现成的动态分区。 它会根据给定的分区键自动创建分区，分区键在文档中定义为属性****。 定义正确的分区键操作必须在设计时完成。 有关详细信息，请参阅 [Azure Cosmos DB 分区](partitioning-overview.md)。
 
-对于社交体验，必须将分区策略与查询和写入方式保持一致。 （例如，在同一分区内读取是可取的，并且通过在多个分区上展开写入来避免"热点"。某些选项包括：基于时态键（天/月/周）、按内容类别、地理区域或按用户划分的分区。 这一切都取决于查询数据并在社交体验中显示数据的方式。
+对于社交体验，必须将分区策略与查询和写入方式保持一致。 （例如，需要在同一分区内进行读取，并通过在多个分区上分散写入来避免 "热点"。）某些选项包括：基于临时键（日/月/周）、按内容类别、地理区域或用户划分的分区。 这一切都取决于查询数据并在社交体验中显示数据的方式。
 
 Cosmos DB 以透明方式在所有分区中运行查询（包括[聚合](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)），因此无需在数据增长过程中添加任何逻辑。
 
@@ -248,7 +248,7 @@ Cosmos DB 以透明方式在所有分区中运行查询（包括[聚合](https:/
 
 ![社交网络中各 Azure 服务之间的交互关系图](./media/social-media-apps/social-media-apps-azure-solution.png)
 
-事实上，对于此类方案并没有万能方法。 正是由卓越服务组合所创造的协同效应，使我们能够构建出色的体验：Azure Cosmos DB 提供出色的社交应用程序的速度和自由性，Azure 认知搜索等一流搜索解决方案背后的智能，Azure 应用服务能够灵活地承载甚至不与语言无关的应用程序，而是强大的后台进程和可扩展的 Azure 存储和 Azure SQL 数据库，用于存储大量数据以及 Azure 机器学习的分析功能，创造知识和智能，为您的流程提供反馈，并帮助我们向正确的用户提供正确的内容。
+事实上，对于此类方案并没有万能方法。 这是通过结合强大服务创建的协作，使我们能够构建出色的体验： Azure Cosmos DB 提供强大的社交应用程序的速度和自由，它是一种面向 Azure 认知搜索之类的第一类搜索解决方案的智能，Azure 应用服务的灵活性，不仅是语言无关的应用程序，而且还具有强大的后台进程，以及可扩展的 Azure 存储和 Azure SQL 数据库（用于存储大量数据和 Azure 计算机的分析能力）了解如何创建可向你的流程提供反馈的知识和智能，并帮助我们向适当的用户提供适当的内容。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 08/20/2019
 ms.author: delhan
 ms.openlocfilehash: 83751538efe4f3d3af5928caa04b265b6c867442
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71153575"
 ---
 # <a name="how-to-reset-local-linux-password-on-azure-vms"></a>如何在 Azure VM 上重置本地 Linux 密码
@@ -43,7 +43,7 @@ ms.locfileid: "71153575"
     sudo su
     ```
 
-4.  运行 fdisk -l****，或查看系统日志以查找新附加的磁盘。 找到要装载的驱动器名称。 然后在临时 VM 上，查找相关的日志文件。
+4.  运行 fdisk -l  ，或查看系统日志以查找新附加的磁盘。 找到要装载的驱动器名称。 然后在临时 VM 上，查找相关的日志文件。
 
     ```bash
     grep SCSI /var/log/kern.log (ubuntu)
@@ -56,13 +56,13 @@ ms.locfileid: "71153575"
     kernel: [ 9707.100572] sd 3:0:0:0: [sdc] Attached SCSI disk
     ```
 
-5.  创建名为 tempmount**** 的装入点。
+5.  创建名为 tempmount  的装入点。
 
     ```bash
     mkdir /tempmount
     ```
 
-6.  在该装入点上装载 OS 磁盘。 通常需要安装*sdc1*或*sdc2*。 这将取决于 */etc*目录中的托管分区，这些分区来自损坏的计算机磁盘。
+6.  在该装入点上装载 OS 磁盘。 通常需要装载 sdc1  或 sdc2  。 这将取决于损坏的计算机磁盘的 /etc  目录中的托管分区。
 
     ```bash
     mount /dev/sdc1 /tempmount
@@ -103,7 +103,7 @@ ms.locfileid: "71153575"
 
 11. 在 Azure 门户中，从故障排除 VM 分离该磁盘。
 
-12. [更改受影响的 VM 的操作系统磁盘](troubleshoot-recovery-disks-portal-linux.md#swap-the-os-disk-for-the-vm)。
+12. [更改受影响 VM 的 OS 磁盘](troubleshoot-recovery-disks-portal-linux.md#swap-the-os-disk-for-the-vm)。
 
 ## <a name="next-steps"></a>后续步骤
 

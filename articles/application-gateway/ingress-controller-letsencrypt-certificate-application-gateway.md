@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 92e9747865f1a0910c8bae4001cc597ae9ea3da6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73957983"
 ---
 # <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>将 LetsEncrypt.org 的证书用在 AKS 群集的应用程序网关上
@@ -25,7 +25,7 @@ ms.locfileid: "73957983"
     请运行以下脚本来安装 `cert-manager` Helm Chart。 这会：
 
     - 在 AKS 上创建新的 `cert-manager` 命名空间
-    - 创建以下 CRD：证书、挑战、群集颁发者、颁发者、订单
+    - 创建以下 CRD：证书、质询、ClusterIssuer、颁发者、顺序
     - 安装 cert-manager Chart（来自 [docs.cert-manager.io](https://docs.cert-manager.io/en/latest/getting-started/install/kubernetes.html#steps)）
 
     ```bash
@@ -101,7 +101,7 @@ ms.locfileid: "73957983"
     注意注释 `certmanager.k8s.io/cluster-issuer: letsencrypt-staging`，它告知 cert-manager 处理标记的入口资源。
 
     > [!IMPORTANT] 
-    > 使用`<PLACEHOLDERS.COM>`您自己的域（或应用程序网关之一，例如"kh-aks-ingress.westeurope.cloudapp.azure.com"）在下面的 YAML 中进行更新
+    > 在`<PLACEHOLDERS.COM>`下面的 YAML 中更新你自己的域（或应用程序网关，例如 "kh-aks-ingress.westeurope.cloudapp.azure.com"）
 
     ```bash
     kubectl apply -f - <<EOF

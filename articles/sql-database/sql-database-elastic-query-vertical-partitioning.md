@@ -1,5 +1,5 @@
 ---
-title: 使用不同的架构跨云数据库查询
+title: 跨具有不同架构的云数据库进行查询
 description: 如何在垂直分区上设置跨数据库查询
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: d5983d25685242a696300f293231bbf987e8442d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73823735"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>在具有不同架构的云数据库中进行查询。（预览）
@@ -24,7 +24,7 @@ ms.locfileid: "73823735"
 
 垂直分区的数据库在不同的数据库中使用不同的表集。 这意味着不同数据库上的架构是不同的。 例如，清单的所有表都位于一个数据库上，而与会计相关的所有表都位于第二个数据库上。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 用户必须拥有 ALTER ANY EXTERNAL DATA SOURCE 权限。 此权限包含在 ALTER DATABASE 权限中。
 * 引用基础数据源需要 ALTER ANY EXTERNAL DATA SOURCE 权限。
@@ -36,7 +36,7 @@ ms.locfileid: "73823735"
 >
 
 1. [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx)
-2. [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
+2. [创建数据库范围的凭据](https://msdn.microsoft.com/library/mt270260.aspx)
 3. [CREATE EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)
 4. [创建外部表](https://msdn.microsoft.com/library/dn935021.aspx) 
 
@@ -50,7 +50,7 @@ ms.locfileid: "73823735"
     [;]
 
 > [!NOTE]
-> 确保 不包含`<username>`任何 **"\@服务器名称"** 后缀。 
+> 确保 `<username>` 不包含任何“**servername”\@** 后缀。 
 >
 
 ## <a name="create-external-data-sources"></a>创建外部数据源

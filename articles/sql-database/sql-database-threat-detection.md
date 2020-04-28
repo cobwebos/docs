@@ -11,10 +11,10 @@ ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 08/05/2019
 ms.openlocfilehash: 8eb8e4fccc17fe31def671cf6e8edb19d867b244
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73822509"
 ---
 # <a name="azure-sql-database-advanced-threat-protection-for-single-or-pooled-databases"></a>针对单一数据库或共用数据库的 Azure SQL 数据库高级威胁防护
@@ -27,12 +27,12 @@ ms.locfileid: "73822509"
 
 ## <a name="set-up-advanced-threat-protection-in-the-azure-portal"></a>在 Azure 门户中设置高级威胁防护
 
-1. 在 启动 Azure[https://portal.azure.com](https://portal.azure.com)门户。
-2. 导航到要保护的 Azure SQL 数据库服务器的配置页。 在安全设置中，选择“高级数据安全”****。
-3. 在“高级数据安全”**** 配置页：
+1. 在 [https://portal.azure.com](https://portal.azure.com) 中启动 Azure 门户。
+2. 导航到要保护的 Azure SQL 数据库服务器的配置页。 在安全设置中，选择“高级数据安全”  。
+3. 在“高级数据安全”  配置页：
 
    - 在服务器上启用高级数据安全。
-   - 在“高级威胁防护设置”中的“发送警报到”文本框中，提供检测到异常数据库活动时接收安全警报的电子邮件列表********。
+   - 在“高级威胁防护设置”中的“发送警报到”文本框中，提供检测到异常数据库活动时接收安全警报的电子邮件列表   。
   
    ![设置高级威胁防护](./media/sql-database-threat-detection/set_up_threat_detection.png)
 
@@ -47,7 +47,7 @@ ms.locfileid: "73822509"
 
 - 详细了解[高级威胁防护](sql-database-threat-detection-overview.md)。
 - 详细了解[托管实例中的高级威胁防护](sql-database-managed-instance-threat-detection.md)。  
-- 了解有关[高级数据安全性](sql-database-advanced-data-security.md)的更多。
+- 详细了解[高级数据安全](sql-database-advanced-data-security.md)。
 - 详细了解[审核](sql-database-auditing.md)
-- 了解有关[Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)详细信息
+- 详细了解 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
 - 有关定价的详细信息，请参阅 [SQL 数据库定价页](https://azure.microsoft.com/pricing/details/sql-database/)  

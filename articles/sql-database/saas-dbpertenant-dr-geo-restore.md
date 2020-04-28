@@ -12,10 +12,10 @@ ms.author: craigg
 ms.reviewer: sstein
 ms.date: 01/14/2019
 ms.openlocfilehash: 270fc157fa14efa19ed30d35b614fb769804b72e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73826457"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>使用异地还原通过数据库备份恢复多租户 SaaS 应用程序
@@ -29,7 +29,7 @@ ms.locfileid: "73826457"
 > [!NOTE]
 > 若要在恢复应用程序时尽可能将 RPO 和 RTO 降到最低，请使用异地复制，而不是异地还原。
 
-本教程将探讨还原和遣返工作流。 学习如何：
+本教程将探讨还原和遣返工作流。 你将学习如何执行以下操作：
 > [!div class="checklist"]
 > 
 > * 将数据库和弹性池配置信息同步到租户目录中。
@@ -42,7 +42,7 @@ ms.locfileid: "73826457"
 
 开始本教程之前，需具备以下先决条件：
 * 部署 Wingtip Tickets SaaS“每租户一个数据库”应用。 若要在五分钟内完成部署，请参阅[部署并探究 Wingtip Tickets SaaS“每租户一个数据库”应用程序](saas-dbpertenant-get-started-deploy.md)。 
-* 安装 Azure PowerShell 中的说明进行操作。 有关详细信息，请参阅[使用 Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
+* 安装 Azure PowerShell 中的说明进行操作。 有关详细信息，请参阅[Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)入门。
 
 ## <a name="introduction-to-the-geo-restore-recovery-pattern"></a>异地还原恢复模式简介
 

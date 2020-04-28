@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
 ms.openlocfilehash: 415f0e209e607a863d715b1a66a2435603a662f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73513713"
 ---
 # <a name="self-hosted-api-management-gateway-overview"></a>自承载 API 管理网关概述
@@ -51,7 +51,7 @@ ms.locfileid: "73513713"
 自承载网关是托管网关的容器化版本，两者的功能相当，但前者作为每个 API 管理服务的一部分部署到 Azure。 自承载网关在 Microsoft 容器注册表中以基于 Linux 的 Docker 容器的形式提供。 可将它部署到 Docker、Kubernetes，或者在桌面、服务器群集或云基础结构上运行的任何其他容器业务流程解决方案。
 
 > [!IMPORTANT]
-> 托管网关提供的某些功能在预览版中尚未提供。 最值得注意的是：登录到事件中心策略，服务交换矩阵集成，下游 HTTP/2。 我们尚未计划在自承载网关中提供内置缓存。
+> 托管网关提供的某些功能在预览版中尚未提供。 最有吸引力的功能：记录事件中心策略的日志、Service Fabric 集成、下游 HTTP/2。 我们尚未计划在自承载网关中提供内置缓存。
 
 ## <a name="connectivity-to-azure"></a>连接到 Azure
 

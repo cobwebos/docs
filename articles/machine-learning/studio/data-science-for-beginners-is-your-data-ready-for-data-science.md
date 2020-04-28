@@ -11,10 +11,10 @@ ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
 ms.openlocfilehash: ccc422dfb3105fd1e12569a84a4ebfd22182b225
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73837800"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>数据是否可用于数据科研？
@@ -29,16 +29,16 @@ ms.locfileid: "73837800"
 >
 
 ## <a name="other-videos-in-this-series"></a>本系列中的其他视频
-“适合初学者的数据科学”** 对数据科学进行简要介绍，共五个短视频。
+“适合初学者的数据科学”  对数据科学进行简要介绍，共五个短视频。
 
-* 视频 1：[数据科学可解答的 5 个问题（5 分 14 秒）](data-science-for-beginners-the-5-questions-data-science-answers.md) **
-* 视频 2：数据是否可用于数据科学？
-* 视频 3：[提出可用数据回答的问题（4 分钟 17 秒）](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) **
-* 视频 4：[使用简单的模型预测答案（7 分 42 秒）](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) **
-* 视频 5：[复制他人的工作以研究数据科学（3 分 18 秒）](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) **
+* 视频 1：[数据科学可解答的 5 个问题](data-science-for-beginners-the-5-questions-data-science-answers.md)（5 分 14 秒） 
+* 视频 2：数据是否可用于数据科研？
+* 视频 3：[提出可用数据回答的问题](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)（4 分钟 17 秒） 
+* 视频 4：[使用简单的模型预测答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md)（7 分 42 秒） 
+* 视频 5：[复制他人的工作以执行数据科学](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)（3 分 18 秒） 
 
-## <a name="transcript-is-your-data-ready-for-data-science"></a>脚本：数据是否可用于数据科学？
-欢迎观看“数据是否可用于数据科学？” “适合初学者的数据科学”** 系列中的第二个视频。  
+## <a name="transcript-is-your-data-ready-for-data-science"></a>脚本：数据是否可用于数据科研？
+欢迎观看“数据是否可用于数据科学？” “适合初学者的数据科学”  系列中的第二个视频。  
 
 必须先提供一些优质原材料供数据科学分析，它才能提供你所需的答案。 就像做披萨一样，开始制作前准备的原料越好，最终的产品越好。 
 
@@ -46,7 +46,7 @@ ms.locfileid: "73837800"
 在数据科学中，有一些需要汇总的要素，包括：
 
 * 相关
-* 连续
+* 已连接
 * 准确
 * 足够使用
 
@@ -100,7 +100,7 @@ ms.locfileid: "73837800"
 
 有了相关、连续、准确且充足的数据，就有了进行优质数据科学分析所需的全部要素。
 
-请务必观看 Microsoft Azure 机器学习工作室（经典）提供的“适合初学者的数据科学”中的其他四个视频**。
+请务必观看 Microsoft Azure 机器学习工作室（经典）提供的“适合初学者的数据科学”中的其他四个视频  。
 
 ## <a name="next-steps"></a>后续步骤
 * [使用机器学习工作室（经典）尝试第一个数据科学试验](create-experiment.md)

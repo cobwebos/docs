@@ -20,15 +20,15 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 06eb29f2f3245d3f4fd047fb86b2b57fb1f0989e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72793345"
 ---
 # <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>Azure 认知搜索中的 OData 全文搜索函数 - `search.ismatch` 和 `search.ismatchscoring`
 
-Azure 认知搜索支持使用 `search.ismatch` 和 `search.ismatchscoring` 函数在 [OData 筛选器表达式](query-odata-filter-orderby-syntax.md)上下文中进行全文搜索。 可以通过这些函数将全文搜索与严格的布尔筛选配合使用，所用方式在仅仅使用 [搜索 API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 的顶级 `search` 参数的情况下无法实现。
+Azure 认知搜索支持使用 [ 和 ](query-odata-filter-orderby-syntax.md) 函数在 `search.ismatch`OData 筛选器表达式`search.ismatchscoring`上下文中进行全文搜索。 可以通过这些函数将全文搜索与严格的布尔筛选配合使用，所用方式在仅仅使用 `search`搜索 API[ 的顶级 ](https://docs.microsoft.com/rest/api/searchservice/search-documents) 参数的情况下无法实现。
 
 > [!NOTE]
 > `search.ismatch` 和 `search.ismatchscoring` 函数只在[搜索 API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 的筛选器中受支持。 它们在[建议](https://docs.microsoft.com/rest/api/searchservice/suggestions) API 或[自动完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete) API 中不受支持。
@@ -51,7 +51,7 @@ query_type ::= "'full'" | "'simple'"
 search_mode ::= "'any'" | "'all'"
 ```
 
-下面还提供了交互式语法图：
+交互式语法图也可用：
 
 > [!div class="nextstepaction"]
 > [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#search_is_match_call)
@@ -72,9 +72,9 @@ search_mode ::= "'any'" | "'all'"
 | 参数名称 | 类型 | 说明 |
 | --- | --- | --- |
 | `search` | `Edm.String` | 搜索查询（采用[简单](query-simple-syntax.md)或[完整](query-lucene-syntax.md) Lucene 查询语法）。 |
-| `searchFields` | `Edm.String` | 要在其中进行搜索的可搜索字段的逗号分隔列表；默认为索引中的所有可搜索字段。 在 `search` 参数中使用[字段搜索](query-lucene-syntax.md#bkmk_fields)时，在 Lucene 查询中指定的字段会覆盖在此参数中指定的任何字段。 |
+| `searchFields` | `Edm.String` | 要在其中进行搜索的可搜索字段的逗号分隔列表；默认为索引中的所有可搜索字段。 在 [ 参数中使用](query-lucene-syntax.md#bkmk_fields)字段搜索`search`时，在 Lucene 查询中指定的字段会覆盖在此参数中指定的任何字段。 |
 | `queryType` | `Edm.String` | `'simple'` 或 `'full'`；默认为 `'simple'`。 指定 `search` 参数中使用的查询语言。 |
-| `searchMode` | `Edm.String` | `'any'` 或 `'all'`，默认为 `'any'`。 指示必须匹配 `search` 参数中的任意搜索词还是全部搜索词才能将文档视为匹配。 在 `search` 参数中使用 [Lucene 布尔运算符](query-lucene-syntax.md#bkmk_boolean)时，这些运算符的优先级高于该参数。 |
+| `searchMode` | `Edm.String` | `'any'` 或 `'all'`，默认为 `'any'`。 指示必须匹配 `search` 参数中的任意搜索词还是全部搜索词才能将文档视为匹配。 在 [ 参数中使用 ](query-lucene-syntax.md#bkmk_boolean)Lucene 布尔运算符`search`时，这些运算符的优先级高于该参数。 |
 
 所有上述参数均相当于[搜索 API 中的相应搜索请求参数](https://docs.microsoft.com/rest/api/searchservice/search-documents)。
 
@@ -86,7 +86,7 @@ search_mode ::= "'any'" | "'all'"
 
 ### <a name="searchismatchscoring"></a>search.ismatchscoring
 
-与 `search.ismatch` 函数一样，对于与作为参数传递的全文搜索查询匹配的文档，`search.ismatchscoring` 函数会返回 `true`。 它们之间的区别在于，与 `search.ismatchscoring` 查询匹配的文档的相关性分数与文档整体分数有关，而对于 `search.ismatch`，文档分数不会发生更改。 此函数的以下重载可用于与 `search.ismatch` 的参数相同的参数：
+与 `search.ismatchscoring` 函数一样，对于与作为参数传递的全文搜索查询匹配的文档，`search.ismatch` 函数会返回 `true`。 它们之间的区别在于，与 `search.ismatchscoring` 查询匹配的文档的相关性分数与文档整体分数有关，而对于 `search.ismatch`，文档分数不会发生更改。 此函数的以下重载可用于与 `search.ismatch` 的参数相同的参数：
 
 - `search.ismatchscoring(search)`
 - `search.ismatchscoring(search, searchFields)`
@@ -96,7 +96,7 @@ search_mode ::= "'any'" | "'all'"
 
 ## <a name="examples"></a>示例
 
-查找包含“waterfront”一词的文档。 此筛选器查询与包含 `search=waterfront` 的[搜索请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)相同。
+查找包含“waterfront”一词的文档。 此筛选器查询与包含 [ 的](https://docs.microsoft.com/rest/api/searchservice/search-documents)搜索请求`search=waterfront`相同。
 
     search.ismatchscoring('waterfront')
 
@@ -110,7 +110,7 @@ search_mode ::= "'any'" | "'all'"
 
 查找包含短语“ocean view”或评分等于 5 分的文档。 `search.ismatchscoring` 查询仅针对 `HotelName` 和 `Rooms/Description` 字段执行。
 
-仅与析取的第二个子句匹配的文档也将被返回，即 `Rating` 等于 5 分的酒店。 为了清楚地表明这些文档与表达式的任何得分部分都不匹配，它们返回的分数将为零。
+仅与析取的第二个子句匹配的文档也将被返回，即 `Rating` 等于 5 的酒店。 为了清楚地表明这些文档与表达式的任何得分部分都不匹配，它们返回的分数将为零。
 
     search.ismatchscoring('"ocean view"', 'Rooms/Description,HotelName') or Rating eq 5
 

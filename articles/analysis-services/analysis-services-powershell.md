@@ -8,10 +8,10 @@ ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 2c8f4c0541d97a189087af692658cfe794eaaf7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73572696"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>使用 PowerShell 管理 Azure Analysis Services
@@ -30,7 +30,7 @@ ms.locfileid: "73572696"
 
 ## <a name="resource-and-server-operations"></a>资源和服务器操作 
 
-安装模块 - [Az.分析服务](https://www.powershellgallery.com/packages/Az.AnalysisServices)   
+安装模块 - [Az.AnalysisServices](https://www.powershellgallery.com/packages/Az.AnalysisServices)   
 文档 - [Az.AnalysisServices reference](/powershell/module/az.analysisservices)
 
 ## <a name="database-operations"></a>数据库操作
@@ -44,9 +44,9 @@ SqlServer 模块提供任务特定的数据库管理 cmdlet，以及接受表格
 
 ### <a name="supported-cmdlets"></a>受支持的 cmdlet
 
-|Cmdlet|描述|
+|Cmdlet|说明|
 |------------|-----------------| 
-|[添加角色成员](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|向数据库角色添加成员。| 
+|[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|向数据库角色添加成员。| 
 |[Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase)|备份 Analysis Services 数据库。|  
 |[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|从数据库角色删除成员。|   
 |[Invoke-ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|执行 TMSL 脚本。|

@@ -1,5 +1,5 @@
 ---
-title: 服务到服务身份验证 - 数据存储第 1 代 = Java SDK
+title: 服务到服务身份验证-Data Lake Storage Gen1-Java SDK
 description: 了解如何使用 Azure Active Directory 和 Java 进行 Azure Data Lake Storage Gen1 服务到服务身份验证
 author: twooley
 ms.service: data-lake-store
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: f355da7cd9c035b4ed0845bbd374a93bfb4a7350
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73904540"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-java"></a>使用 Java 进行 Azure Data Lake Storage Gen1 服务到服务身份验证
@@ -27,11 +27,11 @@ ms.locfileid: "73904540"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **创建 Azure Active Directory“Web”应用程序**。 必须已完成[使用 Azure Active Directory 进行 Data Lake Storage Gen1 服务到服务身份验证](data-lake-store-service-to-service-authenticate-using-active-directory.md)中的步骤。
 
-* [马文](https://maven.apache.org/install.html). 本教程使用 Maven 生成项目和项目依赖项。 尽管无需使用 Maven 或 Gradle 等生成系统即可生成，但这些系统使得管理依赖项变得更加容易。
+* [Maven](https://maven.apache.org/install.html)。 本教程使用 Maven 生成项目和项目依赖项。 尽管可以在不使用 Maven 或 Gradle 等生成系统的情况下进行生成，但这些系统可以更轻松地管理依赖项。
 
 * （可选）[IntelliJ IDEA](https://www.jetbrains.com/idea/download/)、[Eclipse](https://www.eclipse.org/downloads/) 或类似的 IDE。
 
@@ -39,7 +39,7 @@ ms.locfileid: "73904540"
 
 1. 在命令行使用 [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) 或通过 IDE 创建一个 Maven 项目。 有关如何使用 IntelliJ 创建 Java 项目的说明，请参阅[此文](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html)。 有关如何使用 Eclipse 创建项目的说明，请参阅[此文](https://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm)。
 
-2. 将以下依赖项添加到 Maven pom.xml**** 文件。 在**\</project>** 标记之前添加以下代码段：
+2. 将以下依赖项添加到 Maven pom.xml**** 文件。 在** \</project>** 标记前面添加以下代码片段：
 
         <dependencies>
           <dependency>

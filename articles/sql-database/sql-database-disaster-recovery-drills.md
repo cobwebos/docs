@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
 ms.openlocfilehash: 3ca00a03976ae38b7956616b8287220a7bc5998c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73825852"
 ---
 # <a name="performing-disaster-recovery-drill"></a>执行灾难恢复演练
@@ -68,6 +68,6 @@ ms.locfileid: "73825852"
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解业务连续性方案，请参阅[连续性方案](sql-database-business-continuity.md)。
-* 要了解 Azure SQL 数据库自动备份，请参阅[SQL 数据库自动备份](sql-database-automated-backups.md)
-* 要了解如何使用自动备份进行恢复，请参阅[从服务启动的备份还原数据库](sql-database-recovery-using-backups.md)。
+* 若要了解 Azure SQL 数据库的自动备份，请参阅 [SQL 数据库自动备份](sql-database-automated-backups.md)
+* 若要了解如何使用自动备份进行恢复，请参阅[从服务启动的备份中还原数据库](sql-database-recovery-using-backups.md)。
 * 要了解更快的恢复选项，请参阅[活动异地复制](sql-database-active-geo-replication.md)和[自动故障转移组](sql-database-auto-failover-group.md)。

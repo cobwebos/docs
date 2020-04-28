@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.openlocfilehash: 44aadecfa80524345932c03abb51e8ebd040a902
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73666971"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>使用 Azure 门户和 PowerShell 监视和管理 Azure 数据工厂管道
@@ -46,7 +46,7 @@ ms.locfileid: "73666971"
 本部分还介绍数据集切片如何从一个状态转换为另一状态。   
 
 ### <a name="navigate-to-your-data-factory"></a>导航到数据工厂
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 在左侧菜单中，单击“数据工厂”****。 如未看到，请单击“更多服务 >”****，并在“智能 + 分析”**** 类别下单击“数据工厂”****。
 
    ![“浏览全部”->“数据工厂”](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
@@ -59,7 +59,7 @@ ms.locfileid: "73666971"
    ![“数据工厂”边栏选项卡](./media/data-factory-monitor-manage-pipelines/data-factory-blade.png)
 
 #### <a name="diagram-view-of-your-data-factory"></a>数据工厂的图示视图
-数据工厂的 **"图"** 视图提供了一个窗格来监视和管理数据工厂及其资产。 若要查看数据工厂的**图示**视图，请在数据工厂的主页上单击“图示”****。
+数据工厂的**图示**视图提供单个窗格来监视和管理数据工厂及其资产。 若要查看数据工厂的**图示**视图，请在数据工厂的主页上单击“图示”****。
 
 ![图示视图](./media/data-factory-monitor-manage-pipelines/diagram-view.png)
 
@@ -87,7 +87,7 @@ ms.locfileid: "73666971"
 
 <table>
 <tr>
-    <th align="left">状态</th><th align="left">子状态</th><th align="left">描述</th>
+    <th align="left">状态</th><th align="left">子状态</th><th align="left">说明</th>
 </tr>
 <tr>
     <td rowspan="8">等待</td><td>ScheduleTime</td><td>未到运行切片的时间。</td>
@@ -121,7 +121,7 @@ ms.locfileid: "73666971"
 <td>正在处理切片。</td>
 </tr>
 <tr>
-<td rowspan="4">失败</td><td>已超时</td><td>活动执行时间超过活动允许的时间。</td>
+<td rowspan="4">Failed</td><td>已超时</td><td>活动执行时间超过活动允许的时间。</td>
 </tr>
 <tr>
 <td>已取消</td><td>切片已由用户操作取消。</td>
@@ -173,7 +173,7 @@ ms.locfileid: "73666971"
 > [!NOTE] 
 > 图示视图不可用于暂停和恢复管道。 若想要使用用户界面，请使用监视和管理应用程序。 有关使用此应用的详细信息，请参阅文章[使用“监视和管理”应用监视和管理数据工厂管道](data-factory-monitor-manage-app.md)。 
 
-您可以使用**挂起-AzDataFactory 管道**电源 Shell cmdlet 暂停/挂起管道。 如果问题得以解决之前不准备运行管道，此 cmdlet 非常有用。 
+可以使用**AzDataFactoryPipeline** PowerShell cmdlet 暂停/挂起管道。 如果问题得以解决之前不准备运行管道，此 cmdlet 非常有用。 
 
 ```powershell
 Suspend-AzDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
@@ -217,7 +217,7 @@ Azure 数据工厂提供了通过 Azure 门户和 Azure PowerShell 调试和排�
 
 #### <a name="use-powershell-to-debug-an-error"></a>使用 PowerShell 调试错误
 1. 启动“PowerShell”****。
-2. 运行**获取-AzDataFactorySlice**命令以查看切片及其状态。 应看到“失败”**** 状态的切片。        
+2. 运行**AzDataFactorySlice**命令以查看切片及其状态。 应看到“失败”**** 状态的切片。        
 
     ```powershell   
     Get-AzDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
@@ -229,7 +229,7 @@ Azure 数据工厂提供了通过 Azure 门户和 Azure PowerShell 调试和排�
     ```
 
    将“StartDateTime”替换为管道的开始时间。**** 
-3. 现在，运行**Get-AzDataFactoryRun** cmdlet，获取有关为切片运行的活动的详细信息。
+3. 现在，运行**AzDataFactoryRun** cmdlet 以获取有关切片的活动运行的详细信息。
 
     ```powershell   
     Get-AzDataFactoryRun [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime]
@@ -267,7 +267,7 @@ Azure 数据工厂提供了通过 Azure 门户和 Azure PowerShell 调试和排�
     PipelineName            : EnrichGameLogsPipeline
     Type                    :
     ```
-5. 您可以使用从输出中看到的 Id 值运行**保存-AzDataFactoryLog** cmdlet，并使用 cmdlet 的 **-下载日志选项**下载日志文件。
+5. 你可以使用从输出中看到的 Id 值运行**AzDataFactoryLog** cmdlet，并使用 cmdlet 的 **-DownloadLogsoption**下载日志文件。
 
     ```powershell
     Save-AzDataFactoryLog -ResourceGroupName "ADF" -DataFactoryName "LogProcessingFactory" -Id "841b77c9-d56c-48d1-99a3-8c16c3e77d39" -DownloadLogs -Output "C:\Test"
@@ -288,9 +288,9 @@ Azure 数据工厂提供了通过 Azure 门户和 Azure PowerShell 调试和排�
 ![修复错误并验证](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
 
 ### <a name="use-azure-powershell"></a>使用 Azure PowerShell
-您可以使用 **"设置-AzDataFactorySlice 状态**cmdlet"重新运行故障。 有关 cmdlet 的语法和其他详细信息，请参阅["设置-AzDataFactorySlice 状态"](https://docs.microsoft.com/powershell/module/az.datafactory/set-azdatafactoryslicestatus)主题。
+可以通过使用**AzDataFactorySliceStatus** cmdlet 重新运行失败。 有关 cmdlet 的语法和其他详细信息，请参阅[AzDataFactorySliceStatus](https://docs.microsoft.com/powershell/module/az.datafactory/set-azdatafactoryslicestatus)主题。
 
-**例子：**
+**示例：**
 
 以下示例将 Azure 数据工厂“WikiADF”中表“DAWikiAggregatedData”的所有切片状态设置为“等待”。
 
@@ -309,7 +309,7 @@ Set-AzDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -Da
 
     ![新建警报](media/data-factory-monitor-manage-pipelines/v1alerts-image2.png)
 
-3.  定义**警报条件**。 （请确保在 **"按资源类型"字段中选择"筛选器"** 中**的数据工厂**。还可以为**维度**指定值。
+3.  定义**警报条件**。 （请确保在 "**按资源类型筛选**" 字段中选择**数据工厂**。）您还可以指定**维度**的值。
 
     ![定义警报条件 - 选择目标](media/data-factory-monitor-manage-pipelines/v1alerts-image3.png)
 

@@ -1,5 +1,5 @@
 ---
-title: 开始使用临时表
+title: 与时态表入门
 description: 了解如何开始使用 Azure SQL 数据库中的临时表。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 06/26/2019
 ms.openlocfilehash: 98fd2658f3fbcb0e7e29114d29f8dc6ed39eedf2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73820725"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Azure SQL 数据库中的临时表入门
@@ -108,7 +108,7 @@ WITH (DROP_EXISTING = ON);
 ## <a name="step-2-run-your-workload-regularly"></a>步骤 2：定期运行工作负荷
 临时表的主要优点是不需要以任何方式更改或调整网站就可以执行更改跟踪。 创建临时表后，每对数据进行修改时，会自动保存以前的行版本。 
 
-为了利用此特定方案的自动更改跟踪，让我们在每次用户结束其网站上的会话时更新 **"访问"** 列：
+若要对此特定方案使用自动更改跟踪，只需在每次用户结束网站上的会话时更新列**PagesVisited** ：
 
 ```
 UPDATE WebsiteUserInfo  SET [PagesVisited] = 5 

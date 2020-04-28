@@ -13,25 +13,25 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: 168ec65cfd0ff4e87c33324daa353b554111c8aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73838556"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>如何在 Azure 的 Java 应用程序中使用 Twilio 发起电话呼叫
-以下示例演示了如何使用 Twilio 从 Azure 中托管的网页发起呼叫。 生成的应用程序将提示用户电话呼叫值，如下图所示。
+以下示例演示了如何使用 Twilio 从 Azure 中托管的网页发起呼叫。 最终的应用程序将提示用户输入电话呼叫值，如以下屏幕截图所示。
 
 ![使用 Twilio 和 Java 的 Azure 呼叫窗体][twilio_java]
 
 需要执行以下操作来使用本主题中的代码：
 
-1. 获取 Twilio 帐户和身份验证令牌。 要开始使用 Twilio，请评估[https://www.twilio.com/pricing][twilio_pricing]定价。 您可以在 注册[https://www.twilio.com/try-twilio][try_twilio]。 有关 Twilio 提供的 API 的信息，[https://www.twilio.com/api][twilio_api]请参阅。
-2. 获取 Twilio JAR。 在[https://github.com/twilio/twilio-java][twilio_java_github]，您可以下载 GitHub 源并创建自己的 JAR，或下载预构建的 JAR（无论是否具有依赖项）。
+1. 获取 Twilio 帐户和身份验证令牌。 若要开始 Twilio，请评估价格[https://www.twilio.com/pricing][twilio_pricing]。 你可以注册[https://www.twilio.com/try-twilio][try_twilio]。 有关 Twilio 提供的 API 的信息，请参阅[https://www.twilio.com/api][twilio_api]。
+2. 获取 Twilio JAR。 在[https://github.com/twilio/twilio-java][twilio_java_github]中，你可以下载 GitHub 源并创建自己的 jar，或下载预生成的 jar （有或没有依赖项）。
    本主题中的代码使用预建的 TwilioJava-3.3.8-with-dependencies JAR 编写。
 3. 将 JAR 添加到 Java 生成路径。
 4. 如果使用 Eclipse 创建此 Java 应用程序，请使用 Eclipse 的部署程序集功能将 Twilio JAR 包含在应用程序部署文件 (WAR) 中。 如果不使用 Eclipse 创建此 Java 应用程序，请确保将 Twilio JAR 包含在与 Java 应用程序相同的 Azure 角色中，并将其添加到应用程序的类路径下。
-5. 确保 cacerts 密钥库包含带有 MD5 指纹 67:CB:9D:C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4（序列号为 35:DE:F4:CF，SHA1 指纹为 D2:32:09:AD:23:D3:14:23:21:74:E4:0D:7F:9D:62:13:97:86:63:3A）的 Equifax 安全证书颁发机构证书。 这是[https://api.twilio.com][twilio_api_service]服务的证书颁发机构 （CA） 证书，当您使用 Twilio API 时调用该证书。 有关将此 CA 证书添加到 JDK 的 cacert 存储的信息，请参阅[将证书添加到 Java CA 证书存储][add_ca_cert]。
+5. 确保 cacerts 密钥库包含带有 MD5 指纹 67:CB:9D:C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4（序列号为 35:DE:F4:CF，SHA1 指纹为 D2:32:09:AD:23:D3:14:23:21:74:E4:0D:7F:9D:62:13:97:86:63:3A）的 Equifax 安全证书颁发机构证书。 这是[https://api.twilio.com][twilio_api_service]服务的证书颁发机构（CA）证书，在使用 Twilio api 时调用。 有关将此 CA 证书添加到 JDK 的 cacert 存储的信息，请参阅[将证书添加到 Java CA 证书存储][add_ca_cert]。
 
 此外，如果不使用 Eclipse，我们强烈建议先熟悉[使用用于 Eclipse 的 Azure 工具包创建 Hello World 应用程序][azure_java_eclipse_hello_world]中的信息或熟悉用于在 Azure 中托管 Java 应用程序的其他方法。
 
@@ -160,7 +160,7 @@ ms.locfileid: "73838556"
     </body>
     </html>
 
-除了发起呼叫外，makecall.jsp 还可显示 Twilio 终结点、API 版本和呼叫状态。 例如以下屏幕截图：
+除了发起呼叫外，makecall.jsp 还可显示 Twilio 终结点、API 版本和呼叫状态。 下面的屏幕截图是一个示例：
 
 ![使用 Twilio 和 Java 的 Azure 呼叫响应][twilio_java_response]
 
@@ -180,11 +180,11 @@ ms.locfileid: "73838556"
 提供此代码是为了演示在 Azure 上通过 Java 使用 Twilio 的基本功能。 在生产中部署到 Azure 之前，可能希望添加更多错误处理或其他功能。 例如：
 
 * 可以使用 Azure 存储 Blob 或 SQL 数据库存储电话号码和呼叫文本，而不使用 Web 窗体。 有关通过 Java 使用 Azure Blob 存储 Blob 的信息，请参阅[如何从 Java 使用 Azure Blob 存储服务][howto_blob_storage_java]。 
-* 可以使用 **RoleEnvironment.getConfigurationSettings** 从部署的配置设置中检索 Twilio 帐户 ID 和身份验证令牌，而不是在 makecall.jsp 中对这些值进行硬编码。 有关**角色环境**类的信息，请参阅在[JSP 中使用 Azure 服务运行时库][azure_runtime_jsp]。
-* makecall.jsp 代码为**Url**变量分配 Twilio[https://twimlets.com/message][twimlet_message_url]提供的 URL。 此 URL 提供了一个 Twilio 标记语言 (TwiML) 响应，指示 Twilio 如何继续进行呼叫。 例如，返回的 TwiML 可以包含一个**&lt;&gt; Say**谓词，该谓词会导致文本与呼叫接收者通话。 可以构建自己的服务来响应 Twilio 的请求，而不使用 Twilio 提供的 URL；有关详细信息，请参阅[如何通过 Java 使用 Twilio 实现语音和短信功能][howto_twilio_voice_sms_java]。 有关 TwiML 的更多信息，请访问[https://www.twilio.com/docs/api/twiml][twiml]，有关**&lt;Say&gt;** 和其他 Twilio 动词的详细信息，请访问 。 [https://www.twilio.com/docs/api/twiml/say][twilio_say]
-* 在 上阅读 Twilio[https://www.twilio.com/docs/security][twilio_docs_security]安全准则。
+* 可以使用 **RoleEnvironment.getConfigurationSettings** 从部署的配置设置中检索 Twilio 帐户 ID 和身份验证令牌，而不是在 makecall.jsp 中对这些值进行硬编码。 有关**RoleEnvironment**类的信息，请参阅[在 JSP 中使用 Azure 服务运行时库][azure_runtime_jsp]。
+* Makecall.jsp 代码将 Twilio 提供的 URL [https://twimlets.com/message][twimlet_message_url]分配给**URL**变量。 此 URL 提供了一个 Twilio 标记语言 (TwiML) 响应，指示 Twilio 如何继续进行呼叫。 例如，返回的 TwiML 可以** &lt;包含一个&gt;谓词**，该谓词会导致向呼叫接收方口述文本。 可以构建自己的服务来响应 Twilio 的请求，而不使用 Twilio 提供的 URL；有关详细信息，请参阅[如何通过 Java 使用 Twilio 实现语音和短信功能][howto_twilio_voice_sms_java]。 有关 TwiML 的详细信息[https://www.twilio.com/docs/api/twiml][twiml]，请参阅** &lt;&gt; ** [https://www.twilio.com/docs/api/twiml/say][twilio_say]。有关详细信息，请参阅。
+* 阅读 Twilio 安全准则，网址[https://www.twilio.com/docs/security][twilio_docs_security]为。
 
-有关 Twilio 的其他信息，[https://www.twilio.com/docs][twilio_docs]请参阅。
+有关 Twilio 的其他信息，请[https://www.twilio.com/docs][twilio_docs]参阅。
 
 ## <a name="see-also"></a>另请参阅
 * [如何通过 Java 使用 Twilio 实现语音和短信功能][howto_twilio_voice_sms_java]

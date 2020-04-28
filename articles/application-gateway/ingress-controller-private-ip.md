@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 570f28ce559ff1c1180ffaacb781b9120b1890a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73795487"
 ---
 # <a name="use-private-ip-for-internal-routing-for-an-ingress-endpoint"></a>使用入口终结点的专用 IP 进行内部路由 
@@ -24,7 +24,7 @@ ms.locfileid: "73795487"
 可通过两种方法配置控制器以使用入口专用 IP
 
 ## <a name="assign-to-a-particular-ingress"></a>分配到特定入口
-要公开专用 IP 上的特定入口，请使用入口[`appgw.ingress.kubernetes.io/use-private-ip`](./ingress-controller-annotations.md#use-private-ip)中的注释。
+若要通过专用 IP 公开特定的入口，请在入口中使用注释 [`appgw.ingress.kubernetes.io/use-private-ip`](./ingress-controller-annotations.md#use-private-ip)。
 
 ### <a name="usage"></a>使用情况
 ```yaml
@@ -51,7 +51,7 @@ appgw.ingress.kubernetes.io/use-private-ip: "true"
 
 
 ## <a name="assign-globally"></a>全局分配
-如果要求是限制所有入口通过专用 IP 进行公开，请在 `helm` 配置中使用 `appgw.usePrivateIP: true`。
+如果要求是限制所有入口通过专用 IP 进行公开，请在 `appgw.usePrivateIP: true` 配置中使用 `helm`。
 
 ### <a name="usage"></a>使用情况
 ```yaml
@@ -66,4 +66,4 @@ appgw:
 如果 `usePrivateIP: true` 且没有分配任何专用 IP，则 AGIC 会死机并崩溃。
 
 > [!NOTE]
-> 应用程序网关 v2 SKU 要求公共 IP。 如果要求应用程序网关为私有，请将 附加到[`Network Security Group`](https://docs.microsoft.com/azure/virtual-network/security-overview)应用程序网关的子网以限制流量。
+> 应用程序网关 v2 SKU 要求公共 IP。 如果要求应用程序网关专用，请附加一个 [`Network Security Group`](https://docs.microsoft.com/azure/virtual-network/security-overview) 到应用程序网关的子网来限制流量。

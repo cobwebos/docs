@@ -9,15 +9,15 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: edfb2fe5cc37a00335ca7b5be851a88825b03eb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72792213"
 ---
 # <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>如何管理 Azure 认知搜索中的并发
 
-管理索引和数据源等 Azure 认知搜索资源时，务必安全地更新资源，尤其是应用程序的不同组件并发访问资源的情况下。 当两个客户端在没有协调的情况下并发更新资源时，可能出现争用条件。 为防止此情况，Azure 认知搜索提供“乐观并发模型”。** 对资源没有任何锁定。 相反，每个资源均带有一个 ETag 用于标识资源版本，便于创建避免意外覆盖的请求。
+管理索引和数据源等 Azure 认知搜索资源时，务必安全地更新资源，尤其是应用程序的不同组件并发访问资源的情况下。 当两个客户端在没有协调的情况下并发更新资源时，可能出现争用条件。 为防止此情况，Azure 认知搜索提供“乐观并发模型”。  对资源没有任何锁定。 相反，每个资源均带有一个 ETag 用于标识资源版本，便于创建避免意外覆盖的请求。
 
 > [!Tip]
 > [示例 C# 解决方案](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)中的概念代码阐释了并发控制如何在 Azure 认知搜索中工作。 该代码会创建调用并发控制的条件。 对大多数开发人员而言，读取[以下代码片段](#samplecode)可能就已足够，但若想运行它，请编辑 appsettings.json，以添加服务名称和管理员 API 密钥。 假设服务 URL 为 `http://myservice.search.windows.net`，服务名称是 `myservice`。
@@ -26,7 +26,7 @@ ms.locfileid: "72792213"
 
 乐观并发通过写入索引、索引器、数据源和 synonymMap 资源的 API 调用中的访问条件检查实现。
 
-所有资源均有一个[实体标记 (ETag)](https://en.wikipedia.org/wiki/HTTP_ETag)，它提供对象版本信息。** 通过先检查 ETag，确保资源的 ETag 与本地副本匹配，可避免典型工作流（获取、本地修改、更新）中的并发更新。
+所有资源均有一个[实体标记 (ETag) *，它提供对象版本信息。* ](https://en.wikipedia.org/wiki/HTTP_ETag) 通过先检查 ETag，确保资源的 ETag 与本地副本匹配，可避免典型工作流（获取、本地修改、更新）中的并发更新。
 
 + REST API 在请求头使用 [ETag](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)。
 + .NET SDK 通过 accessCondition 对象，对资源设置 [If-Match | If-Match-None 标头](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) 来设置 ETag。 从 [IResourceWithETag (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.iresourcewithetag) 继承的任何对象都具有 accessCondition 对象。
@@ -214,8 +214,8 @@ ms.locfileid: "72792213"
 + [GitHub 上的 REST API 示例](https://github.com/Azure-Samples/search-rest-api-getting-started)
 + [GitHub 上的 .NET SDK 示例](https://github.com/Azure-Samples/search-dotnet-getting-started)。 此解决方案包括“DotNetEtagsExplainer”项目，后者包含本文所示的代码。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
-[常见 HTTP 请求和响应标头](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
+[常见的 HTTP 请求和响应标头](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
 [HTTP 状态代码](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)
-[索引操作 （REST API）](https://docs.microsoft.com/rest/api/searchservice/index-operations)
+[索引操作 (REST API)](https://docs.microsoft.com/rest/api/searchservice/index-operations)

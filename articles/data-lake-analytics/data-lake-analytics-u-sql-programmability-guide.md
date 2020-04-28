@@ -10,10 +10,10 @@ ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.openlocfilehash: dc55615d7a5c6ae9a393ed4fd5f49cd92aedc0f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73162577"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL 可编程性指南
@@ -133,7 +133,7 @@ U-SQL 当前使用 .NET Framework 4.5 版本。 因此请确保自己的程序�
 
 每个上传的程序集 DLL、资源文件（如不同的运行时、本机程序集或配置文件）最大可为 400 MB。 部署的资源（通过 DEPLOY RESOURCE 或引用程序集部署）的总大小及其附加文件不能超过 3 GB。
 
-最后请注意，每个 U-SQL 数据库仅可包含任何给定程序集的一个版本。 例如，如果需要 NewtonSoft Json.NET库的版本 7 和版本 8，则需要将它们注册到两个不同的数据库中。 此外，每个脚本仅可引用给定程序集 DLL 的一个版本。 在这一方面，U-SQL 遵循 C# 程序集管理和版本控制语义。
+最后请注意，每个 U-SQL 数据库仅可包含任何给定程序集的一个版本。 例如，如果需要 Newtonsoft.json Json.NET 库的版本7和版本8，则需要将它们注册到两个不同的数据库中。 此外，每个脚本仅可引用给定程序集 DLL 的一个版本。 在这一方面，U-SQL 遵循 C# 程序集管理和版本控制语义。
 
 ## <a name="use-user-defined-functions-udf"></a>使用用户定义的函数 (UDF)
 U-SQL 用户定义的函数或 UDF 是编程例程，可接受参数、执行操作（例如复杂计算）并将操作的结果以值的形式返回。 UDF 的返回值只能是单个标量。 与任何其他 C# 标量函数相似，U-SQL UDF可在 U-SQL 基本脚本中进行调用。

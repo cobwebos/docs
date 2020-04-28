@@ -1,5 +1,5 @@
 ---
-title: 将 IoT 开发工具包连接到远程监视解决方案 - Azure |微软文档
+title: 将 IoT DevKit 连接到远程监视解决方案-Azure |Microsoft Docs
 description: 本操作方法指南介绍如何将 IoT DevKit AZ3166 设备上的传感器的遥测数据发送到远程监视解决方案加速器，以便进行监视和可视化。
 author: isabelcabezasm
 manager: ''
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
 ms.openlocfilehash: 6e9f9c89cf2e5e40d37a1532e688490aae294181
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73888863"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>将 IoT DevKit 设备连接到远程监视解决方案加速器
@@ -36,7 +36,7 @@ ms.locfileid: "73888863"
 
 1. 确保 IoT DevKit 未连接到计算机。 先启动 VS Code，然后将 DevKit 连接到计算机。
 
-1. 单击`F1`以打开命令调色板，键入并选择**Azure IoT 设备工作台：打开示例..."** 然后选择**IoT 开发人员工具包**作为板。
+1. 单击`F1`打开命令面板，键入并选择 " **Azure IoT 设备工作台：打开示例 ...**"。然后选择 " **IoT DevKit** as 板"。
 
 1. 找到“远程监视”****，然后单击“打开示例”****。 此时会打开一个新的 VS Code 窗口，其中显示项目文件夹：
 
@@ -46,7 +46,7 @@ ms.locfileid: "73888863"
 
 若要在 DevKit 设备上配置 IoT 中心设备连接字符串，请执行以下操作：
 
-1. 将 IoT 开发人员工具包切换到**配置模式**：
+1. 将 IoT DevKit 切换到**配置模式**：
 
     * 按住按钮 A****。
     * 按下然后松开“重置”**** 按钮。
@@ -55,7 +55,7 @@ ms.locfileid: "73888863"
 
     ![IoT DevKit 配置模式](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/devkit-configuration-mode.png)
 
-1. 按**F1**打开命令调色板，键入并选择**Azure IoT 设备工作台：配置设备设置...>配置设备连接字符串**。
+1. 按**F1**打开命令面板，键入并选择 " **Azure IoT 设备工作台：配置设备设置 ... > Config 设备连接字符串**"。
 
 1. 粘贴以前复制的连接字符串，然后按 **Enter** 对设备进行配置。
 
@@ -63,7 +63,7 @@ ms.locfileid: "73888863"
 
 若要生成并上传设备代码，请执行以下操作：
 
-1. 按`F1`以打开命令调色板，键入并选择**Azure IoT 设备工作台：上载设备代码**：
+1. 按`F1`打开命令面板，键入并选择 " **Azure IoT 设备工作台：上传设备代码**"：
 
 1. VS Code 会编译代码并将其上传到 DevKit 设备：
 
@@ -79,7 +79,7 @@ ms.locfileid: "73888863"
 
 当示例应用运行时，DevKit 设备会将遥测数据从其传感器通过 Wi-Fi 发送到解决方案加速器。 若要查看遥测数据，请执行以下操作：
 
-1. 转到解决方案仪表板，然后单击 **"设备资源管理器**"。
+1. 请在解决方案仪表板中，单击 " **Device Explorer**"。
 
 1. 单击 DevKit 设备的设备名称。 在右侧选项卡上，可以实时查看 DevKit 中的遥测数据：
 
@@ -87,7 +87,7 @@ ms.locfileid: "73888863"
 
 ### <a name="control-the-devkit-device"></a>控制 DevKit 设备
 
-借助远程监视解决方案加速器，可以远程控制自己的设备。 示例代码实现了三种方法，当您在 **"设备资源管理器"** 页上选择设备时，可以在 **"方法**"部分看到这些方法：
+借助远程监视解决方案加速器，可以远程控制自己的设备。 当你在 " **Device Explorer** " 页上选择设备时，示例代码可实现三**种方法：**
 
 ![IoT DevKit 方法](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-methods.png)
 

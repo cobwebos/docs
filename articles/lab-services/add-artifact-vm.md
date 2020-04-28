@@ -1,6 +1,6 @@
 ---
-title: 向 Azure 开发人员测试实验室中的 VM 添加项目 |微软文档
-description: 了解如何在 Azure DevTest 实验室的实验室中向虚拟机添加项目
+title: 将项目添加到 Azure 开发测试实验室中的 VM |Microsoft Docs
+description: 了解如何在 Azure 开发测试实验室中的实验室中将项目添加到虚拟机
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: spelluru
@@ -15,23 +15,23 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 27fec279582d845972b87ac635c87c16c239924e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73901315"
 ---
 # <a name="add-an-artifact-to-a-vm"></a>向 VM 添加项目
-创建 VM 时，可以将现有项目添加到其中。 这些项目可以来自[公共 DevTest Labs Git 存储库](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)，也可以来自您自己的 Git 存储库。 本文介绍如何在 Azure 门户中使用 Azure PowerShell 添加项目。 
+创建 VM 时，可以向其添加现有项目。 这些项目可以来自[公共开发测试实验室 Git 存储库](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)，也可以来自你自己的 Git 存储库。 本文说明如何使用 Azure PowerShell 在 Azure 门户中添加项目。 
 
 Azure 开发测试实验室项目可让你指定预配 VM 时执行的操作，如运行 Windows PowerShell 脚本、运行 Bash 命令和安装软件****。 使用项目参数** 可为特定方案自定义项目。
 
-要了解如何创建自定义项目，请参阅文章：[创建自定义工件](devtest-lab-artifact-author.md)。
+若要了解如何创建自定义项目，请参阅文章：[创建自定义项目](devtest-lab-artifact-author.md)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="use-azure-portal"></a>使用 Azure 门户 
-1. 登录到 Azure[门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 选择“所有服务”****，并从列表中选择“开发测试实验室”****。
 1. 从实验室列表中，选择要处理的 VM 所在的实验室。  
 1. 选择“我的虚拟机”。****
@@ -65,7 +65,7 @@ Azure 开发测试实验室项目可让你指定预配 VM 时执行的操作，�
 1. 选择“确定”**** 关闭“已选项目”**** 窗格。
 
 ## <a name="use-powershell"></a>使用 PowerShell
-以下脚本将指定的项目应用于指定的 VM。 [Invoke-AzResourceAction 命令](/powershell/module/az.resources/invoke-azresourceaction)是执行该操作的命令。  
+下面的脚本将指定的项目应用到指定的虚拟机。 [AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction)命令是执行操作的命令。  
 
 ```powershell
 #Requires -Module Az.Resources
@@ -164,9 +164,9 @@ if ($virtualMachine -ne $null) {
 ```
 
 ## <a name="next-steps"></a>后续步骤
-请参阅以下有关工件的文章：
+请参阅以下文章：
 
-- [为实验室指定必填项目](devtest-lab-mandatory-artifacts.md)
+- [指定实验室的必需项目](devtest-lab-mandatory-artifacts.md)
 - [创建自定义项目](devtest-lab-artifact-author.md)
 - [将项目存储库添加到实验室](devtest-lab-artifact-author.md)
 - [对项目故障进行诊断](devtest-lab-troubleshoot-artifact-failure.md)

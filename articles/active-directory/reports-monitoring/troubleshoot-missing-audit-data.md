@@ -1,5 +1,5 @@
 ---
-title: 排除活动日志中缺少的数据的故障 |微软文档
+title: 排查活动日志中缺少的数据问题 |Microsoft Docs
 description: 为你提供了一种解决方法，解决在 Azure Active Directory 活动日志中缺少数据的问题。
 services: active-directory
 documentationcenter: ''
@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c335a4d30846f7c1b4dbd6b6aedc4d100a9b43a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74014289"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>故障排除：Azure Active Directory 活动日志中缺少数据 
@@ -53,7 +53,7 @@ ms.locfileid: "74014289"
 
 我最近登录了 Azure 门户，本应在`Activity logs > Sign-ins`边栏选项卡中看到这些操作的登录日志，但却找不到。
 
- ![报表](./media/troubleshoot-missing-audit-data/02.png)
+ ![报告](./media/troubleshoot-missing-audit-data/02.png)
  
 ### <a name="cause"></a>原因
 
@@ -74,7 +74,7 @@ ms.locfileid: "74014289"
 
 无法在 Azure 门户中查看 30 天以上的登录和审核数据。 为什么？ 
 
- ![报表](./media/troubleshoot-missing-audit-data/03.png)
+ ![报告](./media/troubleshoot-missing-audit-data/03.png)
 
 ### <a name="cause"></a>原因
 
@@ -94,6 +94,6 @@ ms.locfileid: "74014289"
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure AD 报告保留期](reference-reports-data-retention.md)。
-* [Azure 活动目录报告延迟](reference-reports-latencies.md)。
-* [Azure 活动目录报告常见问题 。](reports-faq.md)
+* [Azure Active Directory 报告滞后](reference-reports-latencies.md)时间。
+* [Azure Active Directory 报表常见问题](reports-faq.md)。
 

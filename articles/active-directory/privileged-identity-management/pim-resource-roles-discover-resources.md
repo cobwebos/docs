@@ -1,5 +1,5 @@
 ---
-title: 在 PIM 中发现要管理的 Azure 资源 - Azure AD |微软文档
+title: 发现要在 PIM 中管理的 Azure 资源-Azure AD |Microsoft Docs
 description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中发现要管理的 Azure 资源。
 services: active-directory
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 87da43100c7494937ddc842e0f903ba3a360959e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74022891"
 ---
 # <a name="discover-azure-resources-to-manage-in-privileged-identity-management"></a>在 Privileged Identity Management 中发现要管理的 Azure 资源
@@ -29,13 +29,13 @@ ms.locfileid: "74022891"
 
 ## <a name="discover-resources"></a>发现资源
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
-1. 打开**Azure AD 特权标识管理**。
+1. 打开“Azure AD Privileged Identity Management”。 
 
-1. 选择“Azure 资源”****。
+1. 选择“Azure 资源”  。
 
-    如果这是首次将 Privileged Identity Management 用于 Azure 资源，则会显示“发现资源”**** 页。
+    如果这是首次将 Privileged Identity Management 用于 Azure 资源，则会显示“发现资源”  页。
 
     ![首次体验时没有列出资源的“发现资源”窗格](./media/pim-resource-roles-discover-resources/discover-resources-first-run.png)
 
@@ -43,24 +43,24 @@ ms.locfileid: "74022891"
 
     ![列出当前正在托管的资源的“发现资源”窗格](./media/pim-resource-roles-discover-resources/discover-resources.png)
 
-1. 选择“发现资源”以启动发现之旅****。
+1. 选择“发现资源”以启动发现之旅  。
 
     ![列出可托管的资源（如订阅和管理组）的“发现”窗格](./media/pim-resource-roles-discover-resources/discovery-pane.png)
 
-1. 在“发现”页上，使用“资源状态筛选器”和“选择资源类型”筛选你对其具有写入权限的管理组或订阅************。 最初从“所有”开始可能会最简单****。
+1. 在“发现”页上，使用“资源状态筛选器”和“选择资源类型”筛选你对其具有写入权限的管理组或订阅    。 最初从“所有”开始可能会最简单  。
 
     只能搜索并选择要使用 Privileged Identity Management 管理的管理组或订阅资源。 在 Privileged Identity Management 中管理管理组或订阅时，还可以管理其子资源。
 
 1. 选中要管理的任何非托管资源旁边的复选框。
 
-1. 选择“管理资源”以开始管理所选资源****。
+1. 选择“管理资源”以开始管理所选资源  。
 
     > [!NOTE]
     > 管理组或订阅已托管后，就无法取消托管。 这可防止其他资源管理员删除 Privileged Identity Management 设置。
 
     ![已选择资源并突出显示“管理资源”选项的“发现”窗格](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
 
-1. 如果看到确认加入要管理的所选资源的消息，请选择“是”****。
+1. 如果看到确认加入要管理的所选资源的消息，请选择“是”  。
 
     ![确认加入所选资源以进行管理的消息](./media/pim-resource-roles-discover-resources/discovery-manage-resource-message.png)
 

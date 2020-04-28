@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f0b938dc808d9b02ad4105d85a5b3125135c51d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74023084"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中为 Azure 资源角色配置安全警报
@@ -50,7 +50,7 @@ ms.locfileid: "74023084"
 
 ## <a name="configure-security-alert-settings"></a>配置安全警报设置
 
-从“警报”页转到“设置”****。
+从“警报”页转到“设置”  。
 
 ![突出显示了“设置”的“警报”页](media/pim-resource-roles-configure-alerts/rbac-navigate-settings.png)
 

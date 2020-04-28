@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 07/24/2019
 ms.author: osamaz
 ms.openlocfilehash: b8a454c2a104dfe8545cf734bf0b020b8f749bb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73889629"
 ---
 # <a name="connecting-azure-with-public-clouds"></a>将 Azure 与公有云进行连接
 
-许多企业因业务目标和技术目标而追求一种多云的策略。 其中包括成本、灵活性、功能可用性、冗余、数据主权等。此策略帮助他们充分利用两种云。 
+许多企业因业务目标和技术目标而追求一种多云的策略。 这些目标包括成本、灵活性、功能可用性、冗余、数据主权等。此策略有助于企业利用两种云的优势。 
 
 此方法也对企业提出了网络和应用程序体系结构方面的挑战。 这些挑战包括延迟和数据吞吐量。 为了应对这些挑战，客户希望能够直接连接到多个云。 一些服务提供商提供了一种为客户连接多个云提供商的解决方案。 在其他情况下，客户可以通过部署自己的路由器来连接多个公有云。
 ## <a name="connectivity-via-expressroute"></a>通过 ExpressRoute 进行连接
@@ -61,7 +61,7 @@ Layer3 提供商通常称为 IP VPN 或 MPLS VPN 提供商。 客户利用这些
 ## <a name="next-steps"></a>后续步骤
 如果遇到 ExpressRoute 和虚拟网络连接的其他任何问题，请参阅 [ExpressRoute 常见问题解答][ER-FAQ]。
 
-有关 Azure 和 Oracle 之间的连接[，请参阅设置 Azure 和 Oracle 云之间的直接连接][ER-OCI]
+请参阅在 Azure 和 oracle[云之间设置直接连接][ER-OCI]以连接 Azure 和 oracle
 
 <!--Link References-->
 [ER-FAQ]: https://docs.microsoft.com/azure/expressroute/expressroute-faqs

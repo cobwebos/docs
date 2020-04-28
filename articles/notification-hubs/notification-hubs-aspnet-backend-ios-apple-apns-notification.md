@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 通知中心向特定用户发送推送通知 |微软文档
+title: 使用 Azure 通知中心向特定用户发送推送通知 |Microsoft Docs
 description: 了解如何使用 Azure 通知中心向特定用户推送通知。
 documentationcenter: ios
 author: sethm
@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 48135ea614bbab4ca6649a83895ae5f632918c61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72387479"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定用户发送推送通知
@@ -49,7 +49,7 @@ ms.locfileid: "72387479"
 
 ## <a name="modify-your-ios-app"></a>修改 iOS 应用
 
-1. 打开在[通知中心入门 (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) 教程中创建的单页视图应用。
+1. 打开在[通知中心入门 (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) 教程中创建的“单页视图”应用。
 
    > [!NOTE]
    > 本节假定项目配置了空的组织名称。 如果未配置，需要在所有类名前面追加组织名称。
@@ -59,8 +59,8 @@ ms.locfileid: "72387479"
     ![在 Xcode 接口生成器中编辑情节提要][1]
 
    * **用户名**：包含占位符文本“*输入用户名*”的 UITextField，直接位于发送结果标签的下面并受左右边距的限制。
-   * **密码**：包含占位符文本“*输入密码*”的 UITextField，直接位于用户名文本字段的下面并受左右边距限制。 选中属性检查器中“*返回密钥*”下的“**安全文本输入**”选项。
-   * **登录**：直接位于密码文本字段下方的标签式 UIButton，并取消选中属性检查器中“*控件内容*”下的“**已启用**”选项
+   * **密码**：包含占位符文本“*输入密码*”的 UITextField，直接位于用户名文本字段的下面并受左右边距的限制。 选中属性检查器中“返回密钥”下的“安全文本输入”选项   。
+   * **登录**：直接位于密码文本字段下方的标签式 UIButton，并取消选中属性检查器中“控件内容”下的“已启用”选项  
    * **WNS**：标签和开关，用于已在中心设置 Windows 通知服务时，启用将通知发送到 Windows 通知服务。 请参阅 [Windows 入门](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)教程。
    * **GCM**：标签和开关，用于已在中心设置 Google Cloud Messaging 时，启用将通知发送到 Google Cloud Messaging。 请参阅 [Android 入门](notification-hubs-android-push-notification-google-gcm-get-started.md)教程。
    * **APNS**：标签和开关，用于启用将通知发送到 Apple 平台通知服务。
@@ -485,7 +485,7 @@ ms.locfileid: "72387479"
 
     ![iOS 测试应用程序][2]
 
-3. 应看到弹出窗口通知你注册成功。 单击“确定”。
+3. 应看到弹出窗口通知你注册成功。 单击“确定”。 
 
     ![显示的 iOS 测试通知][3]
 

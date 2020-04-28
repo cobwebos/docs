@@ -1,32 +1,32 @@
 ---
-title: Azure 数据湖存储第 1 代性能调优 - PowerShell
-description: 有关在将 Azure PowerShell 与 Azure 数据存储 Gen1 一起使用时如何提高性能的提示。
+title: Azure Data Lake Storage Gen1 性能优化-PowerShell
+description: 有关在将 Azure PowerShell 用于 Azure Data Lake Storage Gen1 时如何提高性能的提示。
 author: stewu
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: stewu
 ms.openlocfilehash: c975af1799d427651b76bb9fde5ff765afed3f86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73904564"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>将 PowerShell 与 Azure Data Lake Store Gen1 配合使用的性能优化指南
 
-本文介绍了在使用 PowerShell 处理数据湖存储 Gen1 时可以调整以获得更好性能的属性。
+本文介绍可以优化的属性，以便在使用 PowerShell 处理 Data Lake Storage Gen1 时获得更好的性能。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="performance-related-properties"></a>性能相关属性
 
-| properties            | 默认 | 描述 |
+| properties            | 默认 | 说明 |
 |---------------------|---------|-------------|
 | PerFileThreadCount  | 10      | 使用此参数可以选择用于上传或下载每个文件的并行线程数。 此数字表示可以针对每个文件分配的最大线程数，但根据具体的方案，获得的线程可能少于此数目（例如，如果只是上传 1 KB 的文件，则即使请求了 20 个线程，也只能获得 1 个线程）。  |
 | ConcurrentFileCount | 10      | 此参数专门为上传或下载文件夹。 此参数确定可上传或下载的并发文件数。 此数字表示一次性可上传或下载的最大并发文件数，但根据具体的方案，上传或下载的并发文件数可能少于此数目（例如，如果只是上传 2 个文件，则即使请求上传 15 个并发文件，也只能上传 2 个）。 |
 
-**例子：**
+**示例：**
 
 此命令针对每个文件使用 20 个线程以及 100 个并发文件，将 Data Lake Storage Gen1 中的文件下载到用户的本地驱动器。
 
@@ -44,21 +44,21 @@ Export-AzDataLakeStoreItem -AccountName "Data Lake Storage Gen1 account name" `
 
 接下来你可能会疑惑如何确定应为性能相关属性提供的值。 请参考下面的指导。
 
-* **步骤 1：确定总线程计数**- 首先计算要使用的线程总数。 一般指导原则是，应为每个物理核心使用 6 个线程。
+* **步骤1：确定总线程计数**-开始，计算要使用的总线程数。 一般指导原则是，应为每个物理核心使用 6 个线程。
 
     `Total thread count = total physical cores * 6`
 
-    **例子：**
+    **示例：**
 
     假设在包含 16 个核心 D14 VM 中运行 PowerShell 命令
 
     `Total thread count = 16 cores * 6 = 96 threads`
 
-* **第 2 步：计算 PerFileThreadCount** - 我们根据文件的大小计算我们的 PerFileThreadCount。 对于小于 2.5 GB 的文件，没有必要更改此参数，因为默认值 10 就已足够。 对于大于 2.5 GB 的文件，应为前 2.5 GB 使用 10 个线程作为基础，文件大小每增加 256 MB，就多使用 1 个线程。 如果要复制文件大小有很大变化的文件夹，请考虑根据类似的文件大小将这些文件分组。 文件大小有差异可能会导致性能不佳。 如果无法将类似大小的文件分组，应根据最大文件大小设置 PerFileThreadCount。
+* **步骤2：计算 PerFileThreadCount** -根据文件大小计算 PerFileThreadCount。 对于小于 2.5 GB 的文件，没有必要更改此参数，因为默认值 10 就已足够。 对于大于 2.5 GB 的文件，应为前 2.5 GB 使用 10 个线程作为基础，文件大小每增加 256 MB，就多使用 1 个线程。 如果要复制文件大小有很大变化的文件夹，请考虑根据类似的文件大小将这些文件分组。 文件大小有差异可能会导致性能不佳。 如果无法将类似大小的文件分组，应根据最大文件大小设置 PerFileThreadCount。
 
     `PerFileThreadCount = 10 threads for the first 2.5 GB + 1 thread for each additional 256 MB increase in file size`
 
-    **例子：**
+    **示例：**
 
     假设有 100 个文件，其大小范围为 1 GB 到 10 GB，可以在公式中使用 10 GB 作为最大文件大小，如下所示。
 
@@ -68,7 +68,7 @@ Export-AzDataLakeStoreItem -AccountName "Data Lake Storage Gen1 account name" `
 
     `Total thread count = PerFileThreadCount * ConcurrentFileCount`
 
-    **例子：**
+    **示例：**
 
     沿用前面使用的示例值
 

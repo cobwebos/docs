@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 5d0543a3a43d53e462a6406312faddf37d2653c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73795600"
 ---
 # <a name="add-health-probes-to-your-service"></a>向服务添加运行状况探测
 默认情况下，入口控制器将为公开的 Pod 预配 HTTP GET 探测。
-可以通过向`pod`规范添加[就绪或动态探测](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/)`deployment`/来自定义探测器属性。
+可以通过将[就绪情况或运行情况探测](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/)添加到 `deployment`/`pod` 规范来自定义探测属性。
 
 ## <a name="with-readinessprobe-or-livenessprobe"></a>使用 `readinessProbe` 或 `livenessProbe`
 ```yaml
@@ -50,12 +50,12 @@ Kubernetes API 参考：
 * [HttpGet 操作](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.14/#httpgetaction-v1-core)
 
 > [!NOTE]
-> * 配置了 `httpGet` 时，支持 `readinessProbe` 和 `livenessProbe`。
+> * 配置了 `readinessProbe` 时，支持 `livenessProbe` 和 `httpGet`。
 > * 当前不支持对 Pod 上公开的端口以外的端口进行探测。
 > * 不支持 `HttpHeaders`、`InitialDelaySeconds`、`SuccessThreshold`。
 
 ##  <a name="without-readinessprobe-or-livenessprobe"></a>不使用 `readinessProbe` 或 `livenessProbe`
-如果未提供上述探测，则入口控制器假设在为 `backend-path-prefix` 注释指定的 `Path` 上或在服务的 `ingress` 定义中指定的 `path` 上可以访问该服务。
+如果未提供上述探测，则入口控制器假设在为 `Path` 注释指定的 `backend-path-prefix` 上或在服务的 `path` 定义中指定的 `ingress` 上可以访问该服务。
 
 ## <a name="default-values-for-health-probe"></a>运行状况探测的默认值
 对于就绪情况/运行情况探测无法推断的任何属性，将设置默认值。

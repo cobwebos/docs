@@ -1,5 +1,5 @@
 ---
-title: 跨多个数据库的临时报告查询
+title: 跨多个数据库的即席报告查询
 description: 在多租户应用示例中针对多个 SQL 数据库运行特别报告查询。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: craigg
 ms.reviewer: sstein
 ms.date: 10/30/2018
 ms.openlocfilehash: c0d1829c52041446b4feb43d8af262265e2680fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73822186"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>针对多个 Azure SQL 数据库运行即席分析查询
@@ -33,7 +33,7 @@ ms.locfileid: "73822186"
 
 若要完成本教程，请确保已完成了以下先决条件：
 
-* 已部署 Wingtip Tickets SaaS 多租户数据库应用。 要在五分钟内部署，请参阅[部署和浏览翼尖票证 SaaS 多租户数据库应用程序](saas-multitenantdb-get-started-deploy.md)
+* 已部署 Wingtip Tickets SaaS 多租户数据库应用。 若要在五分钟内进行部署，请参阅[部署和浏览 Wingtip 票证 SaaS 多租户数据库应用程序](saas-multitenantdb-get-started-deploy.md)
 * Azure PowerShell 已安装。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 * 安装了 SQL Server Management Studio (SSMS)。 若要下载和安装 SSMS，请参阅[下载 SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
 

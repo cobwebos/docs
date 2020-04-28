@@ -1,6 +1,6 @@
 ---
-title: 使用 IntelliJ Azure 工具包调试火花作业（预览版） - HDInsight
-description: 在 Azure 工具包中使用 HDInsight 工具，用于 IntelliJ 调试应用程序的指导
+title: 用 IntelliJ 调试 Spark 作业 Azure 工具包（预览版）-HDInsight
+description: 在 Azure Toolkit for IntelliJ 中使用 HDInsight 工具调试应用程序的指南
 keywords: 远程调试 intellij, 远程调试 intellij, ssh, intellij, hdinsight, 调试 intellij, 调试
 author: hrasheed-msft
 ms.author: hrasheed
@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
 ms.openlocfilehash: 1a0a6cf5a26854539dc4bbb0ae0254bbf08dad1f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73494599"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>使用 Azure Toolkit for IntelliJ 进行失败 Spark 作业调试（预览）
@@ -22,9 +22,9 @@ ms.locfileid: "73494599"
 
 ## <a name="prerequisites"></a>先决条件
 
-* [甲骨文Java开发工具包](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。 本教程使用 Java 版本 8.0.202。
+* [Oracle Java 开发工具包](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。 本教程使用 Java 版本 8.0.202。
   
-* IntelliJ IDEA。 本文使用[IntelliJIDEA社区2019.1.3](https://www.jetbrains.com/idea/download/#section=windows)。
+* IntelliJ IDEA。 本文使用 [IntelliJ IDEA Community 版本2019.1.3](https://www.jetbrains.com/idea/download/#section=windows)。
   
 * Azure Toolkit for IntelliJ。 请参阅[安装 Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation?view=azure-java-stable)。
 
@@ -36,61 +36,61 @@ ms.locfileid: "73494599"
 
 请创建 spark2.3.2 项目以继续失败调试，并使用此文档中的失败任务调试示例文件。
 
-1. 打开 IntelliJ IDEA。 打开“新建项目”窗口。****
+1. 打开 IntelliJ IDEA。 打开“新建项目”窗口。 
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在左窗格中选择“Azure Spark/HDInsight”****。
+   a. 在左窗格中选择“Azure Spark/HDInsight”  。
 
-   b.保留“数据库类型”设置，即设置为“共享”。 从主窗口中选择“Spark 项目和失败任务调试示例(预览)(Scala)”。****
+   b. 从主窗口中选择“Spark 项目和失败任务调试示例(预览)(Scala)”。 
 
      ![Intellij 创建调试项目](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-projectfor-failure-debug.png)
 
-   c. 选择“下一步”。
+   c. 选择“**下一步**”。
 
-2. 在“新建项目”窗口中，执行以下操作****：
+2. 在“新建项目”  窗口中执行以下步骤：
 
-   ![Intellij 新项目选择火花版本](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-project.png)
+   ![Intellij 新项目选择 Spark 版本](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-project.png)
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 输入项目名称和项目位置。
+   a. 输入项目名称和项目位置。
 
-   b.保留“数据库类型”设置，即设置为“共享”。 在“项目 SDK”下拉列表中，选择适用于 **Spark 2.3.2** 群集的 **Java 1.8**。****
+   b. 在“项目 SDK”下拉列表中，选择适用于 **Spark 2.3.2** 群集的 **Java 1.8**。 
 
-   c. 在“Spark 版本”下拉列表中，选择“Spark 2.3.2(Scala 2.11.8)”。********
+   c. 在“Spark 版本”下拉列表中，选择“Spark 2.3.2(Scala 2.11.8)”。  
 
-   d.单击“下一步”。 选择“完成”****。
+   d. 选择“完成”。 
 
-3. 选择**src** > **主** > **scala**以在项目中打开代码。 此示例使用 **AgeMean_Div()** 脚本。
+3. 选择 **src** > **main** > **scala** 打开项目中的代码。 此示例使用 **AgeMean_Div()** 脚本。
 
 ## <a name="run-a-spark-scalajava-application-on-an-hdinsight-cluster"></a>在 HDInsight 群集中运行 Spark Scala/Java 应用程序
 
 执行以下步骤，创建一个 spark Scala/Java 应用程序，然后在 Spark 群集中运行该应用程序：
 
-1. 单击“添加配置”，打开“运行/调试配置”窗口。********
+1. 单击“添加配置”，打开“运行/调试配置”窗口。  
 
    ![HDI Intellij 添加配置](./media/apache-spark-intellij-tool-failure-debug/hdinsight-add-new-configuration.png)
 
-2. 在“运行/调试配置”对话框中，选择加号 (+)********。 然后选择“HDInsight 上的 Apache Spark”选项。****
+2. 在“运行/调试配置”对话框中，选择加号 (+)   。 然后选择“HDInsight 上的 Apache Spark”选项。 
 
    ![Intellij 添加新配置](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png)
 
-3. 切换到**群集中的远程运行**选项卡。输入**名称****、Spark 群集**和**主类名称**的信息。 工具支持使用“执行器”**** 进行调试。 **numExectors** 的默认值为 5，设置的值最好不要大于 3。 若要减少运行次数，可以将 **spark.yarn.maxAppAttempts** 添加到“作业配置”中并将值设置为 1。**** 单击“确定”按钮，保存配置。****
+3. 切换到“在群集中远程运行”选项卡。  为“名称”  、“Spark 群集”  和“Main 类名”  输入信息。 工具支持使用“执行器”  进行调试。 **numExectors** 的默认值为 5，设置的值最好不要大于 3。 若要减少运行次数，可以将 **spark.yarn.maxAppAttempts** 添加到“作业配置”中并将值设置为 1。  单击“确定”按钮，保存配置。 
 
-   ![Intellij 运行调试配置新](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png)
+   ![Intellij 运行调试配置](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png)
 
-4. 该配置现在以用户提供的名称保存。 若要查看配置详细信息，请选择配置名称。 若要进行更改，请选择“编辑配置”****。
+4. 现已使用提供的名称保存配置。 若要查看配置详细信息，请选择配置名称。 若要进行更改，请选择“编辑配置”。 
 
 5. 完成配置设置后，可以针对远程群集运行项目。
 
-   ![Intellij 调试远程火花作业远程运行按钮](./media/apache-spark-intellij-tool-failure-debug/hdinsight-local-run-configuration.png)
+   ![Intellij 调试远程 Spark 作业远程运行按钮](./media/apache-spark-intellij-tool-failure-debug/hdinsight-local-run-configuration.png)
 
 6. 可以在输出窗口中查看应用程序 ID。
 
-   ![Intellij 调试远程火花作业远程运行结果](./media/apache-spark-intellij-tool-failure-debug/hdinsight-remotely-run-result.png)
+   ![Intellij 调试远程 Spark 作业远程运行结果](./media/apache-spark-intellij-tool-failure-debug/hdinsight-remotely-run-result.png)
 
 ## <a name="download-failed-job-profile"></a>下载已失败作业的配置文件
 
 如果作业提交失败，可以将已失败作业的配置文件下载到本地计算机进行进一步的调试。
 
-1. 打开 **Microsoft Azure 存储资源管理器**，找到已失败作业所在群集的 HDInsight 帐户，将已失败作业的资源从相应的位置 (**\hdp\spark2-events\\.spark-failures\\\<应用程序 ID>**) 下载到本地文件夹。 “活动”**** 窗口会显示下载进度。
+1. 打开 **Microsoft Azure 存储资源管理器**，找到已失败作业所在群集的 HDInsight 帐户，将已失败作业的资源从相应的位置 ( **\hdp\spark2-events\\.spark-failures\\\<应用程序 ID>** ) 下载到本地文件夹。 “活动”  窗口会显示下载进度。
 
    ![Azure 存储资源管理器下载失败](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
 
@@ -100,15 +100,15 @@ ms.locfileid: "73494599"
 
 1. 打开原始项目，或者创建一个新项目并将其与原始源代码相关联。 目前仅支持对 spark2.3.2 版本进行失败调试。
 
-1. 在 IntelliJ IDEA 中，创建一个 **Spark 失败调试**配置文件，从以前下载的已失败作业的资源中选择与“Spark 作业失败上下文位置”字段对应的 FTD 文件。****
+1. 在 IntelliJ IDEA 中，创建一个 **Spark 失败调试**配置文件，从以前下载的已失败作业的资源中选择与“Spark 作业失败上下文位置”字段对应的 FTD 文件。 
 
-   ![克里特故障配置](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png)
+   ![创建故障配置](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png)
 
 1. 单击工具栏中的本地运行按钮，错误就会显示在“运行”窗口中。
 
-   ![运行故障配置1](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuraion-01.png)
+   ![运行失败-configuration1](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuraion-01.png)
 
-   ![运行故障配置2](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuration.png)
+   ![运行失败-configuration2](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuration.png)
 
 1. 按日志指示设置断点，然后单击本地调试按钮进行本地调试，就像 IntelliJ 中的正常 Scala/Java 项目一样。
 
@@ -116,7 +116,7 @@ ms.locfileid: "73494599"
 
 ## <a name="next-steps"></a><a name="seealso"></a>后续步骤
 
-* [概述：调试阿帕奇火花应用程序](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
+* [概述：调试 Apache Spark 应用程序](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 
 ### <a name="demo"></a>演示
 
@@ -125,9 +125,9 @@ ms.locfileid: "73494599"
 
 ### <a name="scenarios"></a>方案
 
-* [使用 BI 的 Apache Spark：使用 BI 工具在 HDInsight 中使用 Spark 进行交互式数据分析](apache-spark-use-bi-tools.md)
+* [使用 BI Apache Spark：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](apache-spark-use-bi-tools.md)
 * [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 结合 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](apache-spark-machine-learning-mllib-ipython.md)
 * [使用 HDInsight 中的 Apache Spark 分析网站日志](../hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>创建和运行应用程序

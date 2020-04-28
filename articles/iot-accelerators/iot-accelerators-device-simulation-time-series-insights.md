@@ -1,5 +1,5 @@
 ---
-title: 使用时间序列见解可视化模拟遥测 - Azure |微软文档
+title: 用时序见解可视化模拟遥测-Azure |Microsoft Docs
 description: 了解如何配置时序见解环境以浏览和分析设备模拟解决方案加速器所生成的遥测数据。
 author: dominicbetts
 manager: timlt
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 2bbd7911a40d6a256d478e2533ad2469b8fd6973
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73889346"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>使用时序见解可视化从设备模拟解决方案加速器发送的遥测数据
@@ -53,17 +53,17 @@ ms.locfileid: "73889346"
 
 ## <a name="create-a-new-time-series-insights-environment"></a>创建新的时序见解环境
 
-[Azure 时间序列见解](../../articles/time-series-insights/time-series-insights-overview.md)是一种完全托管的分析、存储和可视化服务，用于管理云中的 IoT 规模时间序列数据。 若要创建新的时序见解环境：
+[Azure 时序见解](../../articles/time-series-insights/time-series-insights-overview.md)是一种完全托管的分析、存储和可视化服务，用于在云中管理 IoT-缩放时序数据。 若要创建新的时序见解环境：
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
-1. 选择**创建资源** > **物联网** > **时间序列见解**：
+1. 选择 "**创建资源** > "**物联网** > **时序见解**：
 
     ![新建时序见解](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights.png)
 
 1. 若要在解决方案加速器所在的同一资源组中创建时序见解环境，请使用下表中的值：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
     | 环境名称 | 以下屏幕截图使用名称 Contoso-TSI****。 完成此步骤后，请选择自己的唯一名称。 |
     | 订阅 | 在下拉列表中选择自己的 Azure 订阅。 |
@@ -77,7 +77,7 @@ ms.locfileid: "73889346"
     > [!NOTE]
     > 向解决方案加速器所在的同一资源组中添加时序见解环境意味着删除解决方案加速器时将删除此环境。
 
-1. 单击 **“创建”**。 可能需要花费几分钟时间来创建环境。
+1. 单击“创建”。  可能需要花费几分钟时间来创建环境。
 
 ## <a name="create-event-source"></a>创建事件源
 
@@ -89,28 +89,28 @@ ms.locfileid: "73889346"
 
     ![查看事件源](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-sources.png)
 
-1. 单击 **"添加**" ：
+1. 单击 "**添加**"：
 
     ![添加事件源](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-sources-add.png)
 
 1. 若要将 IoT 中心配置为新事件源，请使用下表中的值：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
     | 事件源名称 | 以下屏幕截图使用名称 contoso-iot-hub****。 完成此步骤后，请使用自己的唯一名称。 |
-    | 源 | **物联网中心** |
+    | 源 | **IoT 中心** |
     | 导入选项 | **从可用的订阅使用 IoT 中心** |
     | 订阅 ID | 在下拉列表中选择自己的 Azure 订阅。 |
     | IoT 中心名称 | contoso-simulation7d894****。 从设备模拟解决方案加速器中使用 IoT 中心的名称。 |
-    | IoT 中心策略名称 | iothubowner**** |
+    | IoT 中心策略名称 | **iothubowner** |
     | IoT 中心策略密钥 | 此字段会自动填充。 |
     | IoT 中心使用者组 | devicesimulationtsi**** |
-    | 事件序列化格式 | **Json** |
+    | 事件序列化格式 | **JSON** |
     | 时间戳属性名称 | 留空 |
 
     ![创建事件源](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-source-create.png)
 
-1. 单击 **“创建”**。
+1. 单击“创建”。 
 
 > [!NOTE]
 > 可以[向其他用户授予访问](../../articles/time-series-insights/time-series-insights-data-access.md#grant-data-access)时序见解资源管理器的权限。
@@ -139,7 +139,7 @@ ms.locfileid: "73889346"
 
     ![时序见解资源管理器中的查询](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query1.png)
 
-1. 右键单击图表并选择 **"浏览事件**"
+1. 右键单击该图表，然后选择 "**浏览事件**"：
 
     ![时序见解资源管理器中的事件](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-explore-events.png)
 
@@ -151,7 +151,7 @@ ms.locfileid: "73889346"
 
     ![时序见解资源管理器中的透视](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-explorer-perspective.png)
 
-1. 单击**+** 以向透视图添加新查询：
+1. 单击**+** 以将新查询添加到透视：
 
     ![时序见解资源管理器中的“添加查询”](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-new-query.png)
 
@@ -167,7 +167,7 @@ ms.locfileid: "73889346"
 
 如果打算深入探索，请保留部署的解决方案加速器。
 
-如果不再需要解决方案加速器，请从预配解决方案页面将其从"[已预配解决方案"](https://www.azureiotsolutions.com/Accelerators#dashboard)页中删除，然后单击"**删除解决方案**"。
+如果不再需要解决方案加速器，请从 "[预配解决方案](https://www.azureiotsolutions.com/Accelerators#dashboard)" 页中将其删除，方法是选择它，然后单击 "**删除解决方案**"。
 
 如果已向解决方案加速器的资源组中添加时序见解环境，则在删除解决方案加速器时将自动删除此环境。 否则必须手动从 Azure 门户中删除此时序见解环境。
 

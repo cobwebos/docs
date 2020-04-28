@@ -1,6 +1,6 @@
 ---
-title: 安全最佳实践和模式 - 微软 Azure |微软文档
-description: 本文将您链接到不同 Azure 资源的安全最佳实践和模式。
+title: 安全最佳实践和模式-Microsoft Azure |Microsoft Docs
+description: 本文详细介绍了不同 Azure 资源的最佳安全方案和模式。
 services: azure-security
 documentationcenter: na
 author: TerryLanfear
@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 5/03/2019
 ms.author: terrylan
 ms.openlocfilehash: 0bf9b4d3aa1926343ad25000a05762a31d49617d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73889859"
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Azure 安全最佳实践和模式

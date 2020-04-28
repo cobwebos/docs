@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 虚拟机修复命令修复 Linux VM |微软文档
+title: 使用 Azure 虚拟机 repair 命令修复 Linux VM |Microsoft Docs
 description: 本文详细介绍如何使用 Azure 虚拟机修复命令将磁盘连接到另一个 Linux VM 来修复所有错误，然后重新生成原始 VM。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
 ms.openlocfilehash: 49fdfde402938ce8d0ee1b141a47e68c99c502e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73796206"
 ---
 # <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>使用 Azure 虚拟机修复命令修复 Linux VM
@@ -46,11 +46,11 @@ ms.locfileid: "73796206"
 
 1. 启动 Azure Cloud Shell
 
-   Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它包括预安装并配置为与帐户一起使用的常见 Azure 工具。
+   Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它包括预安装并配置为与帐户一起使用的常用 Azure 工具。
 
-   要打开云外壳，请选择从代码块的右上角**尝试它**。 您还可以通过 访问[https://shell.azure.com](https://shell.azure.com)在单独的浏览器选项卡中打开云外壳。
+   若要打开 Cloud Shell，请选择代码块右上角的 "**试用**"。 也可以在单独的浏览器标签页中通过转到 [https://shell.azure.com](https://shell.azure.com) 打开 Cloud Shell。
 
-   选择 **"复制"** 以复制代码块，然后将代码粘贴到云外壳中，然后选择 **"输入**"以运行它。
+   选择 "**复制**" 以复制代码块，然后将代码粘贴到 Cloud Shell 中，然后选择 " **Enter** " 以运行该代码。
 
    如果希望在本地安装并使用 CLI，则本快速入门需要 Azure CLI version 2.0.30 或更高版本。 运行 ``az --version`` 即可查找版本。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 

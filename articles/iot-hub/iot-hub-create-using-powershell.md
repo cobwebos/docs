@@ -1,6 +1,6 @@
 ---
 title: 使用 PowerShell cmdlet 创建 Azure IoT 中心 | Microsoft Docs
-description: 了解如何使用 PowerShell cmdlet 创建资源组，然后在资源组中创建 IoT 中心。 还了解如何删除集线器。
+description: 了解如何使用 PowerShell cmdlet 创建资源组，然后在资源组中创建 IoT 中心。 还了解如何删除中心。
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: robinsh
 ms.openlocfilehash: 9c49f7ac744ee516aefc1571d50264132035ba8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73890604"
 ---
 # <a name="create-an-iot-hub-using-the-new-aziothub-cmdlet"></a>使用 New-AzIotHub cmdlet 创建 IoT 中心
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 可以使用 Azure PowerShell cmdlet 创建和管理 Azure IoT 中心。 本教程介绍如何使用 PowerShell 创建 IoT 中心。
 

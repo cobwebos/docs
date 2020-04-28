@@ -1,6 +1,6 @@
 ---
-title: 我的 WebJob 项目（可视化工作室 Azure 存储）发生了什么？
-description: 描述使用 Visual Studio 连接的服务连接到存储帐户后 Azure WebJob 项目中发生的情况
+title: 我的 WebJob 项目（Visual Studio Azure 存储）发生了什么情况？
+description: 介绍使用 Visual Studio 连接服务连接到存储帐户后 Azure WebJob 项目中发生的情况
 services: storage
 author: ghogen
 manager: jillfra
@@ -14,10 +14,10 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 17861b7c25dfaf9bc9399e5261cdf2a5b43caf21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72298728"
 ---
 # <a name="what-happened-to-my-webjob-project-visual-studio-azure-storage-connected-service"></a>我的 WebJob 项目（Visual Studio Azure 存储连接服务）发生了什么情况？
@@ -31,7 +31,7 @@ Azure 存储 NuGet 包已添加到 Visual Studio 项目或在其中更新。
 * **Microsoft.WindowsAzure.ConfigurationManager**
 * **Microsoft.WindowsAzure.Storage**
 * **Newtonsoft.Json**
-* **系统.数据**
+* **System.object**
 * **System.Spatial**
 
 ## <a name="connection-string-for-azure-storage-added"></a>已添加 Azure 存储的连接字符串

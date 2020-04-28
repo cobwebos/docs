@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 事件网格发布事件域的事件
+title: 使用事件域向 Azure 事件网格发布事件
 description: 展示了如何使用事件域管理 Azure 事件网格中的大型主题集并向其发布事件。
 services: event-grid
 author: banisadr
@@ -8,10 +8,10 @@ ms.author: babanisa
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.openlocfilehash: 1d07227249806b7d54523af66817a170c19354ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "72786556"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>使用事件域管理主题和发布事件
@@ -48,7 +48,7 @@ az eventgrid domain create \
   -l <location>
 ```
 
-# <a name="powershell"></a>[电源外壳](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```azurepowershell-interactive
 # If you have not already installed the module, do it now.
 # This module is required for preview features.
@@ -96,7 +96,7 @@ az role assignment create \
   --scope /subscriptions/<sub-id>/resourceGroups/<my-resource-group>/providers/Microsoft.EventGrid/domains/<my-domain-name>/topics/demotopic1
 ```
 
-# <a name="powershell"></a>[电源外壳](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 以下 PowerShell 命令将 `alice@contoso.com` 限制为只能在主题 `demotopic1` 上创建或删除事件订阅：
 
 ```azurepowershell-interactive
@@ -126,7 +126,7 @@ az eventgrid event-subscription create \
   --endpoint https://contoso.azurewebsites.net/api/updates
 ```
 
-# <a name="powershell"></a>[电源外壳](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```azurepowershell-interactive
 New-AzureRmEventGridSubscription `
@@ -146,7 +146,7 @@ New-AzureRmEventGridSubscription `
 
 ## <a name="publish-events-to-an-event-grid-domain"></a>将事件发布到事件网格域
 
-将事件发布到域与[发布到自定义主题相同](./post-to-custom-topic.md)。 但是，不是发布到自定义主题，而是将所有事件发布到域终结点。 在 JSON 事件数据中，可以指定要将事件发送到的主题。 例如，以下事件数组会导致将包含 `"id": "1111"` 的事件发送到主题 `demotopic1`，将包含 `"id": "2222"` 的事件发送到主题 `demotopic2`：
+将事件发布到域与[发布到自定义主题](./post-to-custom-topic.md)相同。 但是，不是发布到自定义主题，而是将所有事件发布到域终结点。 在 JSON 事件数据中，可以指定要将事件发送到的主题。 例如，以下事件数组会导致将包含 `"id": "1111"` 的事件发送到主题 `demotopic1`，将包含 `"id": "2222"` 的事件发送到主题 `demotopic2`：
 
 ```json
 [{
@@ -192,7 +192,7 @@ az eventgrid domain key list \
   -n <my-domain>
 ```
 
-# <a name="powershell"></a>[电源外壳](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 若要使用 PowerShell 获取域终结点，请使用：
 
 ```azurepowershell-interactive

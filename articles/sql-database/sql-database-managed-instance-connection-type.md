@@ -10,10 +10,10 @@ ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
 ms.openlocfilehash: 46223d1701b930d93de7c49c1e216a41045dda16
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73819460"
 ---
 # <a name="azure-sql-database-managed-instance-connection-types"></a>Azure SQL 数据库托管实例连接类型
@@ -25,7 +25,7 @@ ms.locfileid: "73819460"
 Azure SQL 数据库托管实例支持以下两种连接类型：
 
 - **重定向（建议）：** 客户端直接与托管数据库的节点建立连接。 若要启用使用重定向的连接，必须打开防火墙和网络安全组以允许访问端口 1433 和 11000-11999。 数据包将直接发送到数据库，因此使用“通过代理重定向”可以改善延迟和吞吐量性能。
-- **代理（默认）：** 在此模式下，所有连接都使用代理网关组件。 若要启用连接，只需打开专用网络的端口 1433 和公共连接的端口 3342。 选择此模式可能导致延迟增大、吞吐量降低，具体取决于工作负荷的性质。 我们强烈建议使用“重定向”连接策略而不要使用“代理”连接策略，以最大程度地降低延迟和提高吞吐量。
+- **代理（默认值）：** 在此模式下，所有连接都使用代理网关组件。 若要启用连接，只需打开专用网络的端口 1433 和公共连接的端口 3342。 选择此模式可能导致延迟增大、吞吐量降低，具体取决于工作负荷的性质。 我们强烈建议使用“重定向”连接策略而不要使用“代理”连接策略，以最大程度地降低延迟和提高吞吐量。
 
 ## <a name="redirect-connection-type"></a>重定向连接类型
 

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 01280b6ee9dda15af3c0fc707a385501580c624c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72794305"
 ---
 # <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>用于使用 Active Directory 标识修剪 Azure 认知搜索结果的安全筛选器
@@ -30,7 +30,7 @@ ms.locfileid: "72794305"
 > [!NOTE]
 > 本文中的示例代码片段是用 C# 语言编写的。 可以 [在 GitHub 上](https://aka.ms/search-dotnet-howto)找到完整的源代码。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 Azure 认知搜索中的索引必须有一个[安全字段](search-security-trimming-for-azure-search.md)用于存储对文档拥有读取访问权限的组标识列表。 此用例假设某个安全对象项（例如个人的大学申请）与指定谁有权访问该项（招生人员）的安全字段之间存在一对一的对应关系。
 
@@ -42,12 +42,12 @@ Azure 认知搜索中的索引必须有一个[安全字段](search-security-trim
 
 此步骤将应用程序与 AAD 集成，以接受用户和组帐户的登录。 如果你不是组织中的 AAD 管理员，可能需要[创建新租户](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant)才能执行以下步骤。
 
-1. 转到[**应用程序注册门户**](https://apps.dev.microsoft.com) >  **融合应用** > **添加应用**。
-2. 输入应用程序的名称，单击“创建”。**** 
+1. 转到[**应用程序注册门户**](https://apps.dev.microsoft.com) >   选择“聚合应用” **“添加应用”。**  >  
+2. 输入应用程序的名称，单击“创建”。  
 3. 在“我的应用程序”页中选择新注册的应用程序。
-4. 在应用程序注册页上>**平台** > **添加平台**，选择Web **API。**
-5. 仍在应用程序注册页上，转到 > **Microsoft 图形权限** > **添加**。
-6. 在“选择权限”中添加以下委托权限，单击“确定”：****
+4. 在应用程序注册页上 > 选择“平台” **“添加平台”>“Web API”。**  >   
+5. 仍在应用程序注册页上，转到“Microsoft Graph 权限” **“添加”。**  >  
+6. 在“选择权限”中添加以下委托权限，单击“确定”： 
 
    + **Directory.ReadWrite.All**
    + **Group.ReadWrite.All**
@@ -98,7 +98,7 @@ await graph.Groups[newGroup.Id].Members.References.Request().AddAsync(newUser);
 ```
 
 ### <a name="step-4-cache-the-groups-identifiers"></a>步骤 4：缓存组标识符
-（可选）为了降低网络延迟，可以缓存用户与组之间的关联，以便在发出搜索请求后，可以从缓存返回组，免除与 AAD 之间的一次往返。 您可以使用[AAD 批处理 API](https://developer.microsoft.com/graph/docs/concepts/json_batching)向多个用户发送单个 Http 请求并生成缓存。
+（可选）为了降低网络延迟，可以缓存用户与组之间的关联，以便在发出搜索请求后，可以从缓存返回组，免除与 AAD 之间的一次往返。 可以使用 [AAD Batch API](https://developer.microsoft.com/graph/docs/concepts/json_batching) 发送包含多个用户的单个 Http 请求并生成缓存。
 
 Microsoft Graph 能够处理大量的请求。 如果发出无以数计的请求，Microsoft Graph 将会失败并返回 HTTP 状态代码 429。 有关详细信息，请参阅 [Microsoft Graph 限制](https://developer.microsoft.com/graph/docs/concepts/throttling)。
 
@@ -186,7 +186,7 @@ DocumentSearchResult<SecuredFiles> results = _indexClient.Documents.Search<Secur
 
 本演练已介绍如何使用 AAD 登录名筛选 Azure 认知搜索结果中的文档，以及修剪与请求中提供的筛选器不匹配的文档结果。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 + [使用 Azure 认知搜索筛选器进行基于标识的访问控制](search-security-trimming-for-azure-search.md)
 + [Azure 认知搜索中的筛选器](search-filters.md)

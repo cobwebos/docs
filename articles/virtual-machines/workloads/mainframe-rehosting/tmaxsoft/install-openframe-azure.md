@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 虚拟机上安装 TmaxSoft 开放帧
-description: 使用 Azure 虚拟机 （VM） 上的 TmaxSoft OpenFrame 环境重新托管 IBM z/OS 主机工作负载。
+title: 在 Azure 虚拟机上安装 TmaxSoft OpenFrame
+description: 使用 Azure 虚拟机（Vm）上的 TmaxSoft OpenFrame 环境 Rehost IBM z/OS 大型机工作负荷。
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
@@ -9,53 +9,53 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.openlocfilehash: 1ad6e52c421d9cfec4640d3a330b5507d6ed3e9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "72436048"
 ---
-# <a name="install-tmaxsoft-openframe-on-azure"></a>在 Azure 上安装 TmaxSoft 开放帧
+# <a name="install-tmaxsoft-openframe-on-azure"></a>在 Azure 上安装 TmaxSoft OpenFrame
 
-了解如何在 Azure 上设置适合开发、演示、测试或生产工作负载的 OpenFrame 环境。 本教程将引导您完成每一步。
+了解如何在 Azure 上设置适用于开发、演示、测试或生产工作负荷的 OpenFrame 环境。 本教程将指导你完成每个步骤。
 
-OpenFrame 包括多个组件，这些组件在 Azure 上创建大型机仿真环境。 例如，OpenFrame 在线服务将大型机中间件（如 IBM 客户信息控制系统 （CICS））和 OpenFrame Batch）与其 TJES 组件替换 IBM 主机的作业输入子系统 （JES）。
+OpenFrame 包括在 Azure 上创建大型机模拟环境的多个组件。 例如，OpenFrame 联机服务将 IBM 客户信息控制系统（CICS）和 OpenFrame 批处理等大型机中间件替换为其 TJES 组件，替代 IBM 主机的作业入口子系统（JES）。
 
-OpenFrame 适用于任何关系数据库，包括 Oracle 数据库、微软 SQL 服务器、IBM Db2 和 MySQL。 OpenFrame 的安装使用 TmaxSoft Tibero 关系数据库。 OpenFrame 和 Tibero 都在 Linux 操作系统上运行。 本教程安装 CentOS 7.3，尽管您可以使用其他支持的 Linux 发行版。OpenFrame 应用程序服务器和 Tibero 数据库安装在一台虚拟机 （VM） 上。
+OpenFrame 适用于任何关系数据库，包括 Oracle Database、Microsoft SQL Server、IBM Db2 和 MySQL。 此 OpenFrame 安装使用 TmaxSoft Tibero 关系数据库。 OpenFrame 和 Tibero 都在 Linux 操作系统上运行。 本教程将安装 CentOS 7.3，但你可以使用其他受支持的 Linux 分发版。OpenFrame 应用程序服务器和 Tibero 数据库安装在一个虚拟机（VM）上。
 
-本教程将引导您完成 OpenFrame 套件组件的安装。 有些必须单独安装。
+本教程将指导你完成安装 OpenFrame suite 组件。 有些必须单独安装。
 
-主要开放框架组件：
+主要 OpenFrame 组件：
 
 - 所需的安装包。
-- 蒂贝罗数据库。
-- OpenFrame 中的应用程序使用开放数据库连接 （ODBC） 与 Tibero 数据库进行通信。
-- OpenFrame Base，管理整个系统的中间件。
-- OpenFrame 批处理，替换大型机的批处理系统的解决方案。
-- TACF，一个控制用户访问系统和资源的服务模块。
-- ProSort，批量事务的排序工具。
-- OFCOBOL，一个解释大型机COBOL程序的编译器。
-- OFASM，一个解释大型机的汇编程序的编译器。
-- OpenFrame 服务器类型 C （OSC ），取代大型机中间件和 IBM CICS 的解决方案。
-- Java企业用户解决方案 （JEUS），一种经过 Java 企业版 6 认证的 Web 应用程序服务器。
-- OFGW，提供 3270 侦听器的 OpenFrame 网关组件。
-- OFManager，一种在 Web 环境中提供 OpenFrame 操作和管理功能的解决方案。
+- Tibero 数据库。
+- 开放式数据库连接（ODBC）由 OpenFrame 中的应用程序用来与 Tibero 数据库通信。
+- OpenFrame 基本，管理整个系统的中间件。
+- OpenFrame 批处理，取代了大型机的批处理系统的解决方案。
+- TACF，控制用户对系统和资源的访问的服务模块。
+- ProSort，一种用于批处理事务的排序工具。
+- OFCOBOL，一种解释大型机 COBOL 程序的编译器。
+- OFASM，一种解释大型机汇编程序程序的编译器。
+- OpenFrame Server Type C （.OSC），这是取代大型机中间件和 IBM CICS 的解决方案。
+- Java 企业用户解决方案（JEUS），是针对 Java Enterprise Edition 6 认证的 web 应用程序服务器。
+- OFGW，提供3270侦听器的 OpenFrame 网关组件。
+- OFManager，一种解决方案，用于在 web 环境中提供 OpenFrame 的操作和管理功能。
 
 其他必需的 OpenFrame 组件：
 
-- OSI，取代大型机中间件和IMS DC的解决方案。
-- TJES，提供大型机 JES 环境的解决方案。
-- OFTSAM，使 （V） SAM 文件能够在打开的系统中使用的解决方案。
-- OFHiDB，取代大型机的IMS DB的解决方案。
-- OFPLI，一个解释大型机PL/I程序的编译器。
-- PROTRIEVE，一个执行大型机语言CA-Easytrieve的解决方案。
-- OFMiner，一种分析大型机资产，然后将它们迁移到 Azure 的解决方案。
+- OSI，替代大型机中间件和 IMS DC 的解决方案。
+- TJES 是提供大型机 JES 环境的解决方案。
+- OFTSAM，这是启用（V） SAM 文件的解决方案，用于打开的系统。
+- OFHiDB，取代了大型机的 IMS DB 的解决方案。
+- OFPLI，一种解释大型机的 PL/I 程序的编译器。
+- PROTRIEVE，一种执行大型机语言 CA-Easytrieve 的解决方案。
+- OFMiner，一种解决方案，用于分析大型机资产，然后将其迁移到 Azure。
 
 ## <a name="architecture"></a>体系结构
 
 下图概述了本教程中安装的 OpenFrame 7.0 体系结构组件：
 
-![开放框架组件](media/openframe-02.png)
+![OpenFrame 组件](media/openframe-02.png)
 
 ## <a name="azure-system-requirements"></a>Azure 系统要求
 
@@ -64,31 +64,31 @@ OpenFrame 适用于任何关系数据库，包括 Oracle 数据库、微软 SQL 
 
 <table>
 <thead>
-    <tr><th>要求</th><th>描述</th></tr>
+    <tr><th>要求</th><th>说明</th></tr>
 </thead>
 <tbody>
-<tr><td>Azure 上支持 Linux 发行版
+<tr><td>Azure 上支持的 Linux 分发版
 </td>
 <td>
-Linux x86 2.6 （32 位， 64 位）<br/>
-红帽 7.x<br/>
-CentOS 7.x<br/>
+Linux x86 2.6 （32位，64位）<br/>
+Red Hat 7、windows<br/>
+CentOS 7、windows<br/>
 </td>
 </tr>
 <tr><td>硬件
 </td>
-<td>核心： 2 （最小）<br/>
-内存：4 GB（最小）<br/>
-交换空间：1 GB（最小）<br/>
-硬盘：100 GB（最小）<br/>
+<td>核心数：2（最低）<br/>
+内存： 4 GB （最低）<br/>
+交换空间： 1 GB （最小）<br/>
+硬盘： 100 GB （最低）<br/>
 </td>
 </tr>
 <tr><td>适用于 Windows 用户的可选软件
 </td>
-<td>PuTTY：本指南用于配置 VM 功能<br/>
-WinSCP：一个流行的SFTP客户端和FTP客户端，您可以使用<br/>
-用于 Windows 的 Eclipse：TmaxSoft 支持的开发平台<br/>
-（目前不支持微软视觉工作室）
+<td>PuTTY：在本指南中用于配置 VM 功能<br/>
+WinSCP：可使用的常用 SFTP 客户端和 FTP 客户端<br/>
+适用于 Windows 的 Eclipse： TmaxSoft 支持的开发平台<br/>
+（目前不支持 Microsoft Visual Studio）
 </td>
 </tr>
 </tbody>
@@ -98,116 +98,116 @@ WinSCP：一个流行的SFTP客户端和FTP客户端，您可以使用<br/>
 
 ## <a name="prerequisites"></a>先决条件
 
-计划花几天时间组装所有必需的软件并完成所有手动流程。
+计划花费几天时间来收集所有必需的软件并完成所有手动过程。
 
-在开始之前，执行以下操作：
+在开始之前，请执行以下操作：
 
-- 从 TmaxSoft 获取 OpenFrame 安装媒体。 如果您是现有 TmaxSoft 客户，请联系您的 TmaxSoft 代表以获取许可副本。 否则，请从[TmaxSoft](https://www.tmaxsoft.com/contact/)请求试用版。
+- 从 TmaxSoft 获取 OpenFrame 安装媒体。 如果你是现有的 TmaxSoft 客户，请联系你的 TmaxSoft 代表获得许可的副本。 否则，请从[TmaxSoft](https://www.tmaxsoft.com/contact/)请求试用版。
 
-- 通过向 发送电子邮件请求<support@tmaxsoft.com>OpenFrame 文档。
+- 通过向发送电子邮件来<support@tmaxsoft.com>请求 OpenFrame 文档。
 
-- 如果尚未订阅 Azure 订阅，则获取 Azure 订阅。 您还可以在开始之前创建[一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- 获取 Azure 订阅（如果还没有）。 你还可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-- 可选。 设置站点到站点 VPN 隧道或跳转框，将 Azure VM 的访问限制给组织中允许的用户。 此步骤不是必需的，但它是最佳做法。
+- 可选。 设置站点到站点 VPN 隧道或 jumpbox，以将对 Azure VM 的访问限制到组织中允许的用户。 此步骤不是必需的，但这是最佳做法。
 
 ## <a name="set-up-a-vm-on-azure-for-openframe-and-tibero"></a>在 Azure 上为 OpenFrame 和 Tibero 设置 VM
 
-您可以使用各种部署模式设置 OpenFrame 环境，但以下过程演示如何在一个 VM 上部署 OpenFrame 应用程序服务器和 Tibero 数据库。 在较大的环境和大型工作负载中，最佳做法是在自己的 VM 上单独部署数据库，以获得最佳性能。
+你可以使用各种部署模式设置 OpenFrame 环境，但以下过程显示了如何在一个 VM 上部署 OpenFrame 应用程序服务器和 Tibero 数据库。 在较大的环境和就前往工作负荷中，最佳做法是将数据库单独部署在其自己的 VM 上以获得更好的性能。
 
 **创建 VM**
 
-1. 转到 "在"处<https://portal.azure.com>转到 Azure 门户并登录到您的帐户。
+1. 中转到 Azure 门户<https://portal.azure.com> ，并登录到你的帐户。
 
 2. 单击“虚拟机”****。
 
     ![Azure 门户中的资源列表](media/vm-01.png)
 
-3. 单击 **“添加”**。
+3. 单击 **“添加”** 。
 
-    ![在 Azure 门户中添加选项](media/vm-02.png)
+    ![Azure 门户中的 "添加" 选项](media/vm-02.png)
 
-4. 在**操作系统**的右侧，单击 **"更多**"。
+4. 在 "**操作系统**" 右侧，单击 "**更多**"。
 
      ![Azure 门户中的更多选项](media/vm-03.png)
 
-5. 单击**基于 CentOS 的 7.3**以准确遵循此演练，或者您可以选择其他受支持的 Linux 发行版。
+5. 单击 "**基于 CentOS 的 7.3** " 将完全按照此演练操作，也可以选择另一个受支持的 Linux 分发版。
 
      ![Azure 门户中的操作系统选项](media/vm-04.png)
 
-6. 在 **"基本"** 设置中，**输入名称**、**用户名**、**身份验证类型**、**订阅**（即用即付即用即付即用即付）和 **"资源组**"（使用现有用户名或创建 TmaxSoft 组）。
+6. 在 "**基本**设置" 中，输入 "**名称**"、"**用户名**"、"**身份验证类型**"、"**订阅**" （即用即付，即 "AWS"）和 "**资源组**" （使用现有的付款样式，或创建一个 TmaxSoft 组）。
 
-7. 完成后（包括**身份验证类型的**公钥/私钥对），单击"**提交**"。
+7. 完成后（包括**身份验证类型**的公钥/私钥对），单击 "**提交**"。
 
 > [!NOTE]
-> 如果使用 SSH 公钥进行**身份验证类型**，请参阅下一节中的步骤以生成公钥/私钥对，然后在此处继续这些步骤。
+> 如果对**身份验证类型**使用 SSH 公钥，请参阅下一节中的步骤，以生成公钥/私钥对，并继续执行此处的步骤。
 
 ### <a name="generate-a-publicprivate-key-pair"></a>生成公钥/私钥对
 
-如果使用 Windows 操作系统，则需要 PuTTYgen 来生成公钥/私钥对。
+如果使用的是 Windows 操作系统，则需要 PuTTYgen 以生成公钥/私钥对。
 
-公钥可以自由共享，但私钥应完全保密，绝不应与另一方共享。 生成密钥后，必须将**SSH 公钥**粘贴到配置中 — 实际上，将其上载到 Linux VM。 它存储在用户帐户主目录\_\~的 /.ssh 目录中的授权密钥中。 然后在 SSH 客户端（在我们的案例中为 PuTTY）中提供关联的**SSH 私钥**后，Linux VM 能够识别和验证连接。
+可以自由共享公钥，但私钥应始终是机密密钥，且决不能与另一方共享。 生成密钥后，必须将**SSH 公钥**粘贴到配置中，并将其上传到 Linux VM。 它存储在用户帐户\_的主目录\~的/.ssh 目录中的授权密钥内。 然后，在 SSH 客户端（在本例中为 PuTTY）中提供关联的**ssh 私钥**后，Linux VM 即可识别并验证连接。
 
-让新个人访问 VM 时： 
+提供新人员访问 VM 的时间： 
 
-- 每个新人使用 PuTTYgen 生成自己的公共/私钥。
-- 个人单独存储自己的私钥，并将公钥信息发送给 VM 的管理员。
-- 管理员将公钥的内容粘贴到\~/.ssh/授权\_密钥文件。
-- 新的个人通过PuTTY连接。
+- 每个新的使用 PuTTYgen 生成自己的公钥/私钥。
+- 个人单独存储各自的私钥，并将公钥信息发送给 VM 的管理员。
+- 管理员将公钥的内容粘贴到\~/.ssh/authorized\_keys 文件中。
+- 新的单个通过 PuTTY 进行连接。
 
 **生成公钥/私钥对**
 
-1.  从<https://www.putty.org/>下载 PuTTYgen 并使用所有默认设置安装它。
+1.  从<https://www.putty.org/>下载 PuTTYgen，并使用所有默认设置安装它。
 
-2.  要打开 PuTTYgen，请在 C 中找到 PuTTY 安装目录：\\程序文件\\PuTTY。
+2.  若要打开 PuTTYgen，请在 C：\\Program Files\\PuTTY 中找到 PuTTY 安装目录。
 
-    ![普蒂接口](media/puttygen-01.png)
+    ![PuTTY 接口](media/puttygen-01.png)
 
 3.  单击 **“生成”**。
 
-    ![PuTTY 密钥生成器对话框](media/puttygen-02.png)
+    !["PuTTY 密钥生成器" 对话框](media/puttygen-02.png)
 
-4.  生成后，保存公钥和私钥。 将公钥的内容粘贴到 **"创建虚拟机\>基础知识"** 窗格的**SSH 公钥**部分（如上一节的步骤 6 和 7 所示）。
+4.  生成后，保存公钥和私钥。 将公钥的内容粘贴到 "**创建虚拟机\>基础知识**" 窗格的 " **SSH 公钥**" 部分中（如前一部分中的步骤6和步骤7所示）。
 
-    ![PuTTY 密钥生成器对话框](media/puttygen-03.png)
+    !["PuTTY 密钥生成器" 对话框](media/puttygen-03.png)
 
 ### <a name="configure-vm-features"></a>配置 VM 功能
 
-1. 在 Azure 门户中，在 **"选择大小**边栏选项卡"中，选择所需的 Linux 计算机硬件设置。 安装 Tibero 和 OpenFrame*的最低*要求为 2 个 CPU 和 4 GB RAM，如以下示例安装所示：
+1. 在 Azure 门户的 "**选择大小**" 边栏选项卡中，选择所需的 Linux 计算机硬件设置。 同时安装 Tibero 和 OpenFrame 的*最低*要求为2个 cpu 和 4 GB RAM，如以下示例中所示：
 
-    ![创建虚拟机 - 基础知识](media/create-vm-01.png)
+    ![创建虚拟机-基础](media/create-vm-01.png)
 
-2. 单击 **"3 设置"** 并使用默认设置配置可选功能。
-3. 查看您的付款详细信息。
+2. 单击 " **3 设置**"，然后使用默认设置来配置可选功能。
+3. 查看付款详情。
 
-    ![创建虚拟机 - 购买](media/create-vm-02.png)
+    ![创建虚拟机-购买](media/create-vm-02.png)
 
-4. 提交您的选择。 Azure 开始部署 VM。 此过程通常需要几分钟时间。
+4. 提交你的选择。 Azure 会开始部署 VM。 此过程通常要花费几分钟时间。
 
-5. 部署 VM 时，将显示其仪表板，显示配置期间选择的所有设置。 记下公共 IP**地址**。
+5. 部署 VM 时，将显示其仪表板，并显示在配置期间选择的所有设置。 记下 "**公共 IP 地址**"。
 
     ![Azure 仪表板上的 tmax](media/create-vm-03.png)
 
 6. 打开 PuTTY。
 
-7. 对于**主机名**，键入您的用户名和您复制的公共 IP 地址。 例如，**\@用户名公开 ip**。
+7. 对于 "**主机名**"，请键入您的用户名和复制的公共 IP 地址。 例如，**用户名\@publicip**。
 
-    ![PuTTY 配置对话框](media/putty-01.png)
+    !["PuTTY 配置" 对话框](media/putty-01.png)
 
-8. 在 **"类别"** 框中，**单击\>"连接\>SSH Auth**"。提供**私钥**文件的路径。
+8. 在 "**类别**" 框中，单击 "**连接\> \> SSH 身份验证**"。提供**私钥**文件的路径。
 
-    ![PuTTY 配置对话框](media/putty-02.png)
+    !["PuTTY 配置" 对话框](media/putty-02.png)
 
-9. 单击 **"打开**"以启动 PuTTY 窗口。 如果成功，您将连接到在 Azure 上运行的新 CentOS VM。
+9. 单击 "**打开**" 以启动 "PuTTY" 窗口。 如果成功，则连接到在 Azure 上运行的新 CentOS VM。
 
-10. 要以根用户身份登录，请键入**sudo bash**。
+10. 若要以 root 用户身份登录，请键入**sudo bash**。
 
-    ![根用户登录命令窗口](media/putty-03.png)
+    ![Root 用户在命令窗口中登录](media/putty-03.png)
 
 ## <a name="set-up-the-environment-and-packages"></a>设置环境和包
 
-现在，VM 已创建并登录，您必须执行一些设置步骤并安装所需的预安装包。
+创建 VM 并登录后，必须执行一些安装步骤并安装所需的预安装包。
 
-1. 使用 vi**ofdemo**编辑主机文件 （）`vi /etc/hosts`将demo 的名称映射到本地 IP 地址。 假设我们的 IP 为 192.168.96.148，则此更改之前：
+1. 使用 vi 编辑**ofdemo**主机文件（`vi /etc/hosts`），将名称 OFDEMO 映射到本地 IP 地址。 假设我们的 IP 是 192.168.96.148 ofdemo，这是在更改之前：
 
     ```vi
     127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 
@@ -215,7 +215,7 @@ WinSCP：一个流行的SFTP客户端和FTP客户端，您可以使用<br/>
     <IP Address>    <your hostname>
     ```
 
-     这是在更改之后：
+     这是在更改后：
 
     ```vi
     127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 
@@ -238,7 +238,7 @@ WinSCP：一个流行的SFTP客户端和FTP客户端，您可以使用<br/>
     passwd: all authentication tokens updated successfully.
     ```
 
-4. 更新 /etc/sysctl.conf 中的内核参数：
+4. 更新/etc/sysctl.conf 中的内核参数：
 
     ```vi
     [root@ofdemo ~]# vi /etc/sysctl.conf
@@ -246,19 +246,19 @@ WinSCP：一个流行的SFTP客户端和FTP客户端，您可以使用<br/>
     kernel.sem = 10000 32000 10000 10000
     ```
 
-5. 动态刷新内核参数而不重新启动：
+5. 动态刷新内核参数而无需重新启动：
 
     ```vi
     [root@ofdemo ~]# /sbin/sysctl -p
     ```
 
-6. 获取所需的包：确保服务器已连接到 Internet，下载以下程序包，然后安装它们：
+6. 获取所需的包：请确保服务器已连接到 Internet，下载以下包，然后安装它们：
 
-     - 多斯2unix
+     - dos2unix
      - glibc
-     - 格利bc.i686 glibc.x86\_64
-     - 利巴约
-     - 恩诅咒
+     - glibc. i686 glibc\_64
+     - libaio
+     - ncurses
 
           > [!NOTE]
           > 安装 ncurses 包后，创建以下符号链接：
@@ -268,13 +268,13 @@ WinSCP：一个流行的SFTP客户端和FTP客户端，您可以使用<br/>
          ```
 
      - gcc
-     - gcc-c++
-     - 利巴约-德维尔.x86\_64
-     - 跟踪
+     - gcc-c + +
+     - libaio-unixodbc-devel\_64
+     - 跟踪来
      - ltrace
      - gdb
 
-7. 在 Java RPM 安装的情况下，执行以下操作：
+7. 对于 Java RPM 安装，请执行以下操作：
 
 ```
 root@ofdemo ~]# rpm -ivh jdk-7u79-linux-x64.rpm
@@ -295,27 +295,27 @@ Java HotSpot(TM) 64-Bit Server VM (build 24.79-b02, mixed mode)
 [root@ofdemo ~]# echo $JAVA_HOME /usr/java/jdk1.7.0_79/
 ```
 
-## <a name="install-the-tibero-database"></a>安装蒂贝罗数据库
+## <a name="install-the-tibero-database"></a>安装 Tibero 数据库
 
-Tibero 在 Azure 上的 OpenFrame 环境中提供了几个关键功能：
+Tibero 在 Azure 上的 OpenFrame 环境中提供了若干关键功能：
 
-- Tibero 用作 OpenFrame 内部数据存储，用于各种系统功能。
+- Tibero 用作各种系统功能的 OpenFrame 内部数据存储。
 - VSAM 文件（包括 KSDS、RRDS 和 ESDS）在内部使用 Tibero 数据库进行数据存储。
-- TACF 数据存储库存储在蒂贝罗。
+- TACF 数据存储库存储在 Tibero 中。
 - OpenFrame 目录信息存储在 Tibero 中。
-- Tibero 数据库可用作 IBM Db2 的替换来存储应用程序数据。
+- Tibero 数据库可用作 IBM Db2 的替代，用于存储应用程序数据。
 
-**安装蒂贝罗**
+**安装 Tibero**
 
 1. 验证 Tibero 二进制安装程序文件是否存在并查看版本号。
-2. 将 Tibero 软件复制到 Tibero 用户帐户 （oframe）。 例如：
+2. 将 Tibero 软件复制到 Tibero 用户帐户（oframe）。 例如：
 
     ```
     [oframe7@ofdemo ~]$ tar -xzvf tibero6-bin-6_rel_FS04-linux64-121793-opt-tested.tar.gz 
     [oframe7@ofdemo ~]$ mv license.xml /opt/tmaxdb/tibero6/license/
     ```
 
-3. 在 vi\_（`vi .bash_profile`） 中打开 .bash 配置文件，并在其中粘贴以下内容：
+3. 在 vi （\_`vi .bash_profile`）中打开 bash 配置文件，并在其中粘贴以下内容：
 
     ```
     # Tibero6 ENV
@@ -325,20 +325,20 @@ Tibero 在 Azure 上的 OpenFrame 环境中提供了几个关键功能：
     export PATH=$TB_HOME/bin:$TB_HOME/client/bin:$PATH
     ```
 
-4. 要执行 bash 配置文件，请按命令提示符类型执行：
+4. 若要执行 bash 配置文件，请在命令提示符下键入：
 
     ```
     source .bash_profile
     ```
 
-5. 生成提示文件（Tibero 的配置文件），然后在 vi 中打开它。 例如：
+5. 生成 tip 文件（Tibero 的配置文件），然后在 vi 中打开它。 例如：
 
     ```
     [oframe7@ofdemo ~]$ sh $TB_HOME/config/gen_tip.sh
     [oframe7@ofdemo ~]$ vi $TB_HOME/config/$TB_SID.tip
     ```
 
-6. 修改\$\_TB HOME/客户端/配置/tbdsn.tbr 并放置 127.0.0.1 而不是本地主机，如下所示：
+6. 修改\$TB\_HOME/client/config/tbdsn. tbr 并将127.0.0.1 改为 oflocalhost，如下所示：
 
     ```
     TVSAM=( 
@@ -386,14 +386,14 @@ Tibero 在 Azure 上的 OpenFrame 环境中提供了几个关键功能：
      ******************************************************************************
     ```
 
-8. 要回收 Tibero，首先使用 命令`tbdown`将其关闭。 例如：
+8. 若要回收 Tibero，请先使用`tbdown`命令将其关闭。 例如：
 
     ```
     [oframe7@ofdemo ~]$$ tbdown 
     Tibero instance terminated (NORMAL mode).
     ```
 
-9. 现在启动蒂贝罗使用`tbboot`。 例如：
+9. 现在使用`tbboot`启动 Tibero。 例如：
 
     ```
     [oframe7@ofdemo ~]$ tbboot
@@ -404,7 +404,7 @@ Tibero 在 Azure 上的 OpenFrame 环境中提供了几个关键功能：
     Tibero instance started up (NORMAL mode).
     ```
 
-10. 要创建表空间，请使用 SYS 用户 （sys/tmax） 访问数据库，然后为默认卷和 TACF 创建必要的表空间：
+10. 若要创建表空间，请使用 SYS user （sys/tmax）访问数据库，然后为默认卷和 TACF 创建必要的表空间：
 
     ```
     [oframe7@ofdemo ~]$ tbsql tibero/tmax
@@ -413,7 +413,7 @@ Tibero 在 Azure 上的 OpenFrame 环境中提供了几个关键功能：
     Connected to Tibero.
     ```
 
-11. 现在键入以下 SQL 命令：
+11. 现在，键入以下 SQL 命令：
 
     ```
     SQL> create tablespace "DEFVOL" datafile 'DEFVOL.dbf' size 500M autoextend on; create tablespace "TACF00" datafile 'TACF00.dbf' size 500M autoextend on; create tablespace "OFM_REPOSITORY" datafile 'ofm_repository.dbf' size 300M autoextend on;
@@ -432,15 +432,15 @@ Tibero 在 Azure 上的 OpenFrame 环境中提供了几个关键功能：
 
 输出：
 
-![蒂贝罗输出](media/tibero-01.png)
+![Tibero 输出](media/tibero-01.png)
 
 ## <a name="install-odbc"></a>安装 ODBC
 
 OpenFrame 中的应用程序使用开源 unixODBC 项目提供的 ODBC API 与 Tibero 数据库通信。
 
-要安装 ODBC：
+若要安装 ODBC：
 
-1. 验证 unixODBC-2.3.4.tar.gz 安装程序文件是否存在，或使用 该`wget unixODBC-2.3.4.tar.gz`命令。 例如：
+1. 验证 Unixodbc-2.3.1.tar.gz 2.3.4 gz 安装程序文件是否存在，或使用`wget unixODBC-2.3.4.tar.gz`命令。 例如：
 
      ```
      [oframe7@ofdemo ~]$ wget ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-2.3.4.tar.gz
@@ -452,23 +452,23 @@ OpenFrame 中的应用程序使用开源 unixODBC 项目提供的 ODBC API 与 T
      [oframe7@ofdemo ~]$ tar -zxvf unixODBC-2.3.4.tar.gz
      ```
 
-3. 导航到 unixODBC-2.3.4 目录，并使用检查机信息生成 Makefile。 例如：
+3. 导航到 unixODBC-2.3.4 目录，并使用检查计算机信息生成生成文件。 例如：
 
      ```
      [oframe7@ofdemo unixODBC-2.3.4]$ ./configure --prefix=/opt/tmaxapp/unixODBC/ --sysconfdir=/opt/tmaxapp/unixODBC/etc
      ```
 
-     默认情况下，unixODBC 安装在 /usr /local 中`--prefix`，因此传递值以更改位置。 同样，默认情况下，配置文件安装在 /etc 中，因此`--sysconfdir`传递所需位置的值。
+     默认情况下，unixODBC 安装在/usr/local 中， `--prefix`因此传递值以更改位置。 同样，默认情况下会在/etc 中安装配置文件`--sysconfdir` ，因此传递所需位置的值。
 
-4. 执行 Makefile：`[oframe7@ofdemo unixODBC-2.3.4]$ make`
+4. 执行生成文件：`[oframe7@ofdemo unixODBC-2.3.4]$ make`
 
-5. 编译后，在程序目录中复制可执行文件。 例如：
+5. 编译后，复制程序目录中的可执行文件。 例如：
 
      ```
      [oframe7@ofdemo unixODBC-2.3.4]$ make install
      ```
 
-6. 使用 vi 编辑 bash`vi ~/.bash_profile`配置文件 （ ） 并添加以下内容：
+6. 使用 vi 编辑 bash 配置文件（`vi ~/.bash_profile`），并添加以下内容：
 
      ```
      # UNIX ODBC ENV 
@@ -479,7 +479,7 @@ OpenFrame 中的应用程序使用开源 unixODBC 项目提供的 ODBC API 与 T
      export ODBCSYSINI=$HOME
      ```
 
-7. 应用 ODBC。 相应地编辑以下文件。 例如：
+7. 应用 ODBC。 请相应地编辑以下文件。 例如：
 
      ```
      [oframe7@ofdemo unixODBC-2.3.4]$ source ~/.bash_profile
@@ -535,17 +535,17 @@ OpenFrame 中的应用程序使用开源 unixODBC 项目提供的 ODBC API 与 T
 
 显示以下输出：
 
-![显示连接到 SQL 的 ODBC 输出](media/odbc-01.png)
+![ODBC 输出显示连接到 SQL](media/odbc-01.png)
 
-## <a name="install-openframe-base"></a>安装开放框架底座
+## <a name="install-openframe-base"></a>安装 OpenFrame 基础
 
-基本应用程序服务器安装在 OpenFrame 用于在 Azure 上管理系统的各个服务之前，包括事务处理服务器进程。
+基本应用程序服务器安装在 OpenFrame 用于管理 Azure 上的系统的各个服务之前，包括事务处理服务器进程。
 
-**安装 OpenFrame 底座**
+**安装 OpenFrame 基础**
 
-1. 确保 Tibero 安装成功，然后验证以下\_OpenFrame Base7\_\_0\_Linux\_x86 64.bin 安装程序文件和 base.属性配置文件是否存在。
+1. 请确保 Tibero 安装已成功，然后验证是否存在以下 OpenFrame\_Base7\_0\_Linux\_x86\_x86 安装程序文件和基础属性配置文件。
 
-2. 使用以下特定于 Tibero 的信息更新 bash 配置文件：
+2. 用以下 Tibero 特定信息更新 bash 配置文件：
 
      ```bash
      alias ofhome='cd $OPENFRAME_HOME'
@@ -570,14 +570,14 @@ OpenFrame 中的应用程序使用开源 unixODBC 项目提供的 ODBC API 与 T
      > [!IMPORTANT]
      > 请确保在安装之前启动 Tibero。
 
-5. 在[technet.tmaxsoft.com](https://technet.tmaxsoft.com/en/front/main/main.do)生成许可证，并将 OpenFrame 基础、批处理、TACF、OSC 许可证放入相应的文件夹中：
+5. 在[technet.tmaxsoft.com](https://technet.tmaxsoft.com/en/front/main/main.do)上生成许可证，并在相应的文件夹中放置 OpenFrame Base、BATCH、TACF、.osc 许可证：
 
      ```
      [oframe7@ofdemo ~]$ cp license.dat /opt/tmaxapp/OpenFrame/core/license/
      [oframe7@ofdemo ~]$ cp lictjes.dat lictacf.dat licosc.dat $OPENFRAME_HOME/license/
      ```
 
-6. 下载 OpenFrame 基础二进制文件和 base.属性文件：
+6. 下载 OpenFrame 基本二进制文件和基本属性文件：
 
      ```
      [oframe7@ofdemo ~]$ vi base.properties
@@ -602,16 +602,16 @@ OpenFrame 中的应用程序使用开源 unixODBC 项目提供的 ODBC API 与 T
      OPENFRAME_LICENSE_PATH=/opt/tmaxapp/license/OPENFRAME TMAX_LICENSE_PATH=/opt/tmaxapp/license/TMAX
      ```
 
-7. 使用 base.属性文件执行安装程序。 例如：
+7. 使用 base. properties 文件执行安装程序。 例如：
 
     ```
     [oframe7@ofdemo ~]$ chmod a+x OpenFrame_Base7_0_Linux_x86_64.bin 
     [oframe7@ofdemo ~]$ ./OpenFrame_Base7_0_Linux_x86_64.bin -f base.properties
     ```
 
-    完成后，将播放"安装完成"消息。
+    完成后，安装完成消息为 diplayed。
 
-8. 使用`ls -ltr`命令验证 OpenFrame 基础目录结构。 例如：
+8. 使用`ls -ltr`命令验证 OpenFrame 基目录结构。 例如：
 
      ```
      [oframe7@ofdemo OpenFrame]$ ls -ltr
@@ -635,7 +635,7 @@ OpenFrame 中的应用程序使用开源 unixODBC 项目提供的 ODBC API 与 T
      drwxrwxr-x. 2 oframe7 oframe7 25 Nov 30 16:58 volume_default
      ```
 
-9. 启动开放框架库：
+9. 启动 OpenFrame 基：
 
      ```
      [oframe7@ofdemo ~]$ cp /usr/lib/libtermcap.so.2 $TMAXDIR/lib
@@ -645,11 +645,11 @@ OpenFrame 中的应用程序使用开源 unixODBC 项目提供的 ODBC API 与 T
 
      ![tmboot 命令输出](media/base-02.png)
 
-10. 使用 si 中的 tmadmin 命令验证进程状态是否就绪。 RDY 显示在每个进程**的状态**列中：
+10. 使用 si 中的 tmadmin 命令验证进程状态是否为 "就绪"。 对于每个进程，RDY 显示在 "**状态**" 列中：
 
      ![tmadmin 命令输出](media/base-03.png)
 
-11. 关闭打开框架底座：
+11. 关闭 OpenFrame 基：
 
      ```
      [oframe7@ofdemo ~]$ tmdown 
@@ -671,17 +671,17 @@ OpenFrame 中的应用程序使用开源 unixODBC 项目提供的 ODBC API 与 T
      TMDOWN: TMAX is down
      ```
 
-## <a name="install-openframe-batch"></a>安装打开帧批处理
+## <a name="install-openframe-batch"></a>安装 OpenFrame 批处理
 
-OpenFrame Batch 由多个组件组成，这些组件模拟大型机批处理环境，并用于在 Azure 上运行批处理作业。
+OpenFrame Batch 包含多个组件，用于模拟大型机批处理环境，并用于在 Azure 上运行批处理作业。
 
 **安装批处理**
 
-1. 确保基本安装成功，\_然后验证 OpenFrame Batch7\_0\_Fix2\_MVS\_\_\_Linux x86 64.bin 安装程序文件和 batch.属性配置文件是否存在：
+1. 请确保基本安装已\_成功，然后验证 OpenFrame Batch7 0\_\_Fix2\_\_\_\_安装程序文件和 batch. properties 配置文件是否存在：
 
-2. 在命令提示符下，`vi batch.properties`键入以使用 vi 编辑 batch.属性文件。
+2. 在命令提示符下，键入`vi batch.properties`以使用 vi 编辑批处理. properties 文件。
 
-3. 修改参数如下：
+3. 按如下所示修改参数：
 
      ```
      OPENFRAME_HOME = /opt/tmaxapp/OpenFrame
@@ -700,17 +700,17 @@ OpenFrame Batch 由多个组件组成，这些组件模拟大型机批处理环�
      BATCH_TABLE_CREATE=YES
      ```
 
-4. 要执行批处理安装程序，请执行命令提示符类型：
+4. 若要执行批处理安装程序，请在命令提示符下键入：
 
      ```
      ./OpenFrame_Batch7_0_Fix2_MVS_Linux_x86_64.bin -f batch.properties
      ```
 
-5. 安装完成后，通过在命令提示`tmboot`符处键入启动已安装的 OpenFrame 套件。
+5. 安装完成后，通过在命令提示符处键入`tmboot`来启动已安装的 OpenFrame 套件。
 
     ![tmboot 输出](media/tmboot-01.png)
 
-6. 在`tmadmin`命令提示符处键入以检查 OpenFrame 过程。
+6. 在`tmadmin`命令提示符下键入以检查 OpenFrame 进程。
 
     ![Tmax 管理屏幕](media/tmadmin-01.png)
 
@@ -761,12 +761,12 @@ OpenFrame Batch 由多个组件组成，这些组件模拟大型机批处理环�
 
 ## <a name="install-tacf"></a>安装 TACF
 
-TACF 管理器是一个 OpenFrame 服务模块，通过 RACF 安全性控制用户对系统和资源的访问。
+TACF Manager 是一种 OpenFrame service 模块，它通过 RACF 安全控制用户对系统和资源的访问。
 
 **安装 TACF**
 
-1. 验证\_OpenFrame Tacf7\_\_0\_Fix2\_Linux\_x86 64.bin 安装程序文件和 tacf.属性配置文件是否存在。
-2. 确保批处理安装成功，然后使用 vi 打开 tacf.属性文件 （）。`vi tacf.properties`
+1. 验证\_OpenFrame Tacf7\_0\_Fix2\_\_\_安装程序文件和 tacf 配置文件是否存在。
+2. 请确保批安装已成功，然后使用 vi 打开 tacf 文件（`vi tacf.properties`）。
 3. 修改 TACF 参数：
 
      ```
@@ -812,7 +812,7 @@ TACF 管理器是一个 OpenFrame 服务模块，通过 RACF 安全性控制用�
      /tmp/install.dir.41422/Linux/resource/jre/lib/resources.jar /tmp/install.dir.41422/Linux/resource/jre/lib/rt.jar /tmp/install.dir.41422/Linux/resource/jre/lib/sunrsasign.jar /tmp/install.dir.41422/Linux/resource/jre/lib/jsse.jar /tmp/install.dir.41422/Linux/resource/jre/lib/jce.jar /tmp/install.dir.41422/Linux/resource/jre/lib/charsets.jar /tmp/install.dir.41422/Linux/resource/jre/lib/jfr.jar /tmp/install.dir.41422/Linux/resource/jre/classes
      ```
 
-6. 在命令提示符下，`tmboot`键入以重新启动 OpenFrame。 输出的内容与以下类似：
+6. 在命令提示符下，键入`tmboot`重新启动 OpenFrame。 输出的内容与以下类似：
 
      ```
      TMBOOT for node(NODE1) is starting: 
@@ -849,15 +849,15 @@ TACF 管理器是一个 OpenFrame 服务模块，通过 RACF 安全性控制用�
      TMBOOT: SVR(tmsvr) is starting: Wed Sep  7 17:48:53 2016
      ```
 
-7. 验证在`tmadmin``si`命令中使用进程状态是否就绪。 例如：
+7. 使用`tmadmin` `si`命令验证进程状态是否为 "就绪"。 例如：
 
      ```
      [oframe7\@ofdemo \~]\$ tmadmin
      ```
 
-     在**状态**列中，将显示 RDY：
+     在 "**状态**" 列中，将显示 RDY：
 
-    ![状态列中的 RDY](media/tmboot-02.png)
+    !["状态" 列中的 RDY](media/tmboot-02.png)
 
 8. 执行以下命令：
 
@@ -905,11 +905,11 @@ TACF 管理器是一个 OpenFrame 服务模块，通过 RACF 安全性控制用�
 
 ## <a name="install-prosort"></a>安装 ProSort
 
-ProSort 是一种用于批处理事务的实用程序，用于对数据进行排序。
+ProSort 是用于对数据进行排序的批处理事务中使用的实用工具。
 
 **安装 ProSort**
 
-1. 确保批处理安装成功，然后验证**\_prosort-bin-prosort 2sp3-linux64-2123-opt.tar.gz**安装程序文件是否存在。
+1. 请确保批安装成功，然后验证**prosort-prosort\_2sp3-linux64-2123-opt gz**安装程序文件是否存在。
 
 2. 使用属性文件执行安装程序。 在命令提示符处，键入：
 
@@ -917,13 +917,13 @@ ProSort 是一种用于批处理事务的实用程序，用于对数据进行排
      tar -zxvf prosort-bin-prosort\_2sp3-linux64-2123-opt.tar.gz
      ```
 
-3. 将 prosort 目录移动到主位置。 在命令提示符处，键入：
+3. 将 prosort 目录移动到 home 位置。 在命令提示符处，键入：
 
      ```
      mv prosort /opt/tmaxapp/prosort
      ```
 
-4. 创建许可证子目录并在那里复制许可证文件。 例如：
+4. 创建许可证子目录并将许可证文件复制到其中。 例如：
 
      ```
      cd /opt/tmaxapp/prosort 
@@ -931,7 +931,7 @@ ProSort 是一种用于批处理事务的实用程序，用于对数据进行排
      cp /opt/tmaxsw/oflicense/prosort/license.xml /opt/tmaxapp/prosort/license
      ```
 
-5. 在 vi 中打开`vi .bash_profile`bash.profile ， 并更新如下：
+5. 在 vi （`vi .bash_profile`）中打开 bash，并按如下所示进行更新：
 
      ```bash
      #       PROSORT
@@ -945,7 +945,7 @@ ProSort 是一种用于批处理事务的实用程序，用于对数据进行排
      export PATH
      ```
 
-6. 要执行 bash 配置文件，在命令提示符处，请键入：`. .bash_profile`
+6. 若要执行 bash 配置文件，请在命令提示符下键入：`. .bash_profile`
 
 7. 创建配置文件。 例如：
 
@@ -963,7 +963,7 @@ ProSort 是一种用于批处理事务的实用程序，用于对数据进行排
      oframe@oframe7home/oframe7/OpenFrame/util :  ln -s DFSORT SORT
      ```
 
-9. 通过执行`prosort -h`命令验证 ProSort 安装。 例如：
+9. 通过执行`prosort -h`命令来验证 ProSort 安装。 例如：
 
      ```
      oframe@oframe7: prosort -h
@@ -979,19 +979,19 @@ ProSort 是一种用于批处理事务的实用程序，用于对数据进行排
 
 ## <a name="install-ofcobol"></a>安装 OFCOBOL
 
-OFCOBOL 是解释大型机 COBOL 程序的 OpenFrame 编译器。 
+OFCOBOL 是解释大型机的 COBOL 程序的 OpenFrame 编译器。 
 
 **安装 OFCOBOL**
 
-1. 确保批处理/\_联机安装成功，然后验证 OpenFrame COBOL3\_0\_40\_Linux\_x86\_64.bin 安装程序文件是否存在。
+1. 请确保 Batch/Online 安装成功，然后\_验证 OpenFrame COBOL3\_0\_40\_Linux\_x86 x86\_安装程序文件是否存在。
 
-2. 要执行 OFCOBOL 安装程序，在命令提示符下，键入：
+2. 若要执行 OFCOBOL 安装程序，请在命令提示符下键入：
 
      ```
       ./OpenFrame\_COBOL3\_0\_40\_Linux\_x86\_64.bin
      ```
 
-3. 阅读许可协议，然后按 Enter 继续。
+3. 阅读许可协议，并按 Enter 继续。
 
 4. 接受许可协议。 安装完成后，将显示以下内容：
 
@@ -1017,7 +1017,7 @@ OFCOBOL 是解释大型机 COBOL 程序的 OpenFrame 编译器。
      PRESS <ENTER> TO EXIT THE INSTALLER
      ```
 
-5. 打开 vi 中的 bash`vi .bash_profile`配置文件 ， 并验证是否更新了 OFCOBOL 变量。
+5. 在 vi （`vi .bash_profile`）中打开 bash 配置文件，并验证是否已更新为 OFCOBOL 变量。
 6. 执行 bash 配置文件。 在命令提示符处，键入：
 
      ```
@@ -1028,22 +1028,22 @@ OFCOBOL 是解释大型机 COBOL 程序的 OpenFrame 编译器。
      ```
      mv licofcob.dat $OFCOB_HOME/license
      ```
-8. 转到 OpenFrame tjclrun.conf 配置文件，并在 vi 中打开该文件。 例如：
+8. 中转到 OpenFrame tjclrun 配置文件，并在 vi 中将其打开。 例如：
      ```
      [oframe7@ofdemo ~]$ cd $OPENFRAME_HOME/config 
      [oframe7@ofdemo ~]$ vi tjclrun.conf
      ```
 
-   以下是更改前的 SYSLIB 部分：
+   下面是更改之前的 SYSLIB 部分：
      ```
      [SYSLIB] BIN_PATH=${OPENFRAME_HOME}/bin:${OPENFRAME_HOME}/util:${COBDIR}/bin:/usr/local/bin:/bin LIB_PATH=${OPENFRAME_HOME}/lib:${OPENFRAME_HOME}/core/lib:${TB_HOME}/client/lib:${COBDIR}/lib:/ usr/lib:/lib:/lib/i686:/usr/local/lib:${PROSORT_HOME}/lib:/opt/FSUNbsort/lib
      ```
-   以下是更改后的 SYSLIB 部分：
+   下面是更改后的 SYSLIB 部分：
      ```
      [SYSLIB] BIN_PATH=${OPENFRAME_HOME}/bin:${OPENFRAME_HOME}/util:${COBDIR}/bin:/usr/local/bin:/bin LIB_PATH=${OPENFRAME_HOME}/lib:${OPENFRAME_HOME}/core/lib:${TB_HOME}/client/lib:${COBDIR}/lib:/ usr/lib:/lib:/lib/i686:/usr/local/lib:${PROSORT_HOME}/lib:/opt/FSUNbsort/lib :${ODBC_HOME}/lib 
      :${OFCOB_HOME}/lib
      ```
-9. 查看 vi\_中的\_OpenFrame COBOL 安装日志文件，并验证是否存在错误。 例如：
+9. 查看 vi 中\_的\_OpenFrame COBOL installutil.installlog 文件，确认没有错误。 例如：
      ```
      [oframe7@ofdemo ~]$ vi $OFCOB_HOME/UninstallerData/log/OpenFrame_COBOL_InstallLog.log 
      …….. 
@@ -1063,15 +1063,15 @@ OFCOBOL 是解释大型机 COBOL 程序的 OpenFrame 编译器。
      CommitTag:: 645f3f6bf7fbe1c366a6557c55b96c48454f4bf
      ```
 
-11. 使用 命令`tmdown/tmboot`重新启动打开帧。
+11. 使用`tmdown/tmboot`命令重新启动 OpenFrame。
 
 ## <a name="install-ofasm"></a>安装 OFASM
 
-OFASM 是解释大型机的汇编程序的 OpenFrame 编译器。
+OFASM 是解释大型机汇编程序程序的 OpenFrame 编译器。
 
 **安装 OFASM**
 
-1. 确保批处理/联机安装成功，然后验证\_OpenFrame ASM3\_0\_Linux\_x86\_64.bin 安装程序文件是否存在。
+1. 请确保 Batch/Online 安装成功，然后\_验证 OpenFrame ASM3\_0\_Linux\_x86\_安装程序文件是否存在。
 
 2. 执行安装程序。 例如：
 
@@ -1079,9 +1079,9 @@ OFASM 是解释大型机的汇编程序的 OpenFrame 编译器。
      [oframe7@ofdemo ~]$ ./OpenFrame_ASM3_0_Linux_x86_64.bin
      ```
 
-3. 阅读许可协议，然后按 Enter 继续。
+3. 阅读许可协议，并按 Enter 继续。
 4. 接受许可协议。
-5. 使用 OFASM 变量验证 bash 配置文件已更新。 例如：
+5. 验证是否已用 OFASM 变量更新 bash 配置文件。 例如：
 
      ```
      [oframe7@ofdemo ~]$ source .bash_profile
@@ -1098,26 +1098,26 @@ OFASM 是解释大型机的汇编程序的 OpenFrame 编译器。
      export LD_LIBRARY_PATH="./:$OFASM_HOME/lib:$LD_LIBRARY_PATH"
      ```
 
-6. 在 vi 中打开 OpenFrame tjclrun.conf 配置文件，然后按照如下方式对其进行编辑：
+6. 在 vi 中打开 OpenFrame tjclrun 配置文件，并按如下所示对其进行编辑：
 
      ```
      [oframe7@ofdemo ~]$ cd $OPENFRAME_HOME/config 
      [oframe7@ofdemo ~]$ vi tjclrun.conf
      ```
 
-     以下是更改*前的*[SYSLIB] 部分：
+     下面是更改*之前*的 [SYSLIB] 部分：
 
      ```
      [SYSLIB] BIN_PATH=${OPENFRAME_HOME}/bin:${OPENFRAME_HOME}/util:${COBDIR}/bin:/usr/local/bin:/bi n:${OPENFRAME_HOME}/volume_default/SYS1.LOADLIB LIB_PATH=${OPENFRAME_HOME}/lib:${OPENFRAME_HOME}/core/lib:${TB_HOME}/client/lib:${CO BDIR}/lib:/usr/lib:/lib:/lib/i686:/usr/local/lib:${PROSORT_HOME}/lib:/opt/FSUNbsort/lib:${OFCOB_HOM E}/lib:${ODBC_HOME}/lib:${OFPLI_HOME}/lib
      ```
 
-     下面是更改*后的*[SYSLIB] 部分：
+     下面是更改*后*的 [SYSLIB] 部分：
 
      ```
      [SYSLIB] BIN_PATH=${OPENFRAME_HOME}/bin:${OPENFRAME_HOME}/util:${COBDIR}/bin:/usr/local/bin:/bi n:${OPENFRAME_HOME}/volume_default/SYS1.LOADLIB LIB_PATH=${OPENFRAME_HOME}/lib:${OPENFRAME_HOME}/core/lib:${TB_HOME}/client/lib:${CO BDIR}/lib:/usr/lib:/lib:/lib/i686:/usr/local/lib:${PROSORT_HOME}/lib:/opt/FSUNbsort/lib:${OFCOB_HOM E}/lib:${ODBC_HOME}/lib:${OFPLI_HOME}/lib:${OFASM_HOME}/lib
      ```
 
-7. 在 vi\_中打开\_OpenFrame ASM 安装日志.日志文件，并验证是否存在错误。 例如：
+7. 在 vi 中\_打开\_OpenFrame ASM installutil.installlog 文件，并验证是否没有任何错误。 例如：
 
      ```
      [oframe7@ofdemo ~]$ vi 
@@ -1134,7 +1134,7 @@ OFASM 是解释大型机的汇编程序的 OpenFrame 编译器。
      0 FatalErrors
      ```
 
-8. 通过发出以下命令之一重新启动 OpenFrame：
+8. 发出以下命令之一，重新启动 OpenFrame：
 
      ```
      tmdown / tmboot
@@ -1146,28 +1146,28 @@ OFASM 是解释大型机的汇编程序的 OpenFrame 编译器。
      oscdown / oscboot
      ```
 
-## <a name="install-osc"></a>安装 OSC
+## <a name="install-osc"></a>安装 .OSC
 
-OSC 是与 IBM CICS 类似的开放框架环境，支持高速 OLTP 事务和其他管理功能。
+.OSC 是类似于 IBM CICS 的 OpenFrame 环境，它支持高速 OLTP 事务和其他管理功能。
 
-**安装 OSC**
+**安装 .OSC**
 
-1. 确保\_基本安装成功，然后验证 OpenFrame OSC7\_0\_Fix2\_\_Linux x86\_64.bin 安装程序文件和 osc.属性配置文件是否存在。
-2. 在 osc.属性文件中编辑以下参数：
+1. 请确保基本安装已成功，然后验证\_OpenFrame OSC7\_0\_Fix2\_\_\_安装程序文件和 .osc. properties 配置文件是否存在。
+2. 编辑 .osc. properties 文件中的以下参数：
      ```
      OPENFRAME_HOME=/opt/tmaxapp/OpenFrame OSC_SYS_OSC_NCS_PATH=/opt/tmaxapp/OpenFrame/temp/OSC_NCS OSC_APP_OSC_TC_PATH=/opt/tmaxapp/OpenFrame/temp/OSC_TC
      ```
 
-3. 使用属性文件执行安装程序，如下所示：
+3. 按照如下所示使用 properties 文件执行安装程序：
 
      ```
      [oframe7@ofdemo ~]$ chmod a+x OpenFrame_OSC7_0_Fix2_Linux_x86_64.bin [oframe7@ofdemo ~]$ ./OpenFrame_OSC7_0_Fix2_Linux_x86_64.bin -f osc.properties
      ```
 
-     完成后，将显示"安装完成"消息。
+     完成后，将显示 "安装完成" 消息。
 
-4. 验证 bash 配置文件是否使用 OSC 变量更新。
-5. 查看 OpenFrame\_\_OSC7\_0\_修复2 安装日志文件。 其外观应与下图相似：
+4. 验证是否已通过 .OSC 变量更新 bash 配置文件。
+5. 查看 OpenFrame\_OSC7\_0\_Fix2\_installutil.installlog 文件。 其外观应与下图相似：
 
      ```
      Summary 
@@ -1180,13 +1180,13 @@ OSC 是与 IBM CICS 类似的开放框架环境，支持高速 OLTP 事务和其
      0 FatalError
      ```
 
-6. 使用 vi 打开 syssys.seq 配置文件。 例如：
+6. 使用 vi 打开 ofsys 配置文件。 例如：
 
      ```
      vi $OPENFRAME_HOME/config/ofsys.seq
      ```
 
-7. 在\#BASE\#和 BATCH 部分中，如所示编辑参数。
+7. 在 " \#基本" \#和 "批处理" 部分中，按如下所示编辑参数。
 
      ```
      Before changes
@@ -1238,9 +1238,9 @@ OSC 是与 IBM CICS 类似的开放框架环境，支持高速 OLTP 事务和其
      -rwxrwxr-x. 1 oframe mqm 80 Sep  3 11:54 lictjes.da
      ```
 
-9. 要启动和关闭 OSC，请通过`osctdlinit OSCOIVP1`键入命令提示符来初始化 CICS 区域共享内存。
+9. 若要启动和关闭 .OSC，请在命令提示符下键入`osctdlinit OSCOIVP1`以初始化 CICS 区域共享内存。
 
-10. 运行`oscboot`以启动 OSC。 输出的内容与以下类似：
+10. 运行`oscboot`以启动 .osc。 输出的内容与以下类似：
 
      ```
      OSCBOOT : pre-processing       [ OK ]
@@ -1254,19 +1254,19 @@ OSC 是与 IBM CICS 类似的开放框架环境，支持高速 OLTP 事务和其
           TMBOOT: TLM(tlm) is starting: Mon Sep 12 01:40:25 2016 
      ```
 
-11. 要验证进程状态是否就绪，请使用 si`tmadmin`中的命令。 所有进程都应在**状态**列中显示 RDY。
+11. 若要验证进程状态是否为 "就绪"， `tmadmin`请使用 si 中的命令。 所有进程都应在 "**状态**" 列中显示 RDY。
 
-    ![显示 RDY 的过程](media/tmadmin-02.png)
+    ![显示 RDY 的进程](media/tmadmin-02.png)
 
-12. 使用`oscdown`命令关闭 OSC。
+12. 使用`oscdown`命令关闭 .osc。
 
 ## <a name="install-jeus"></a>安装 JEUS
 
-JEUS（Java 企业用户解决方案）提供 OpenFrame Web 应用程序服务器的表示层。
+JEUS （Java 企业用户解决方案）提供 OpenFrame web 应用程序服务器的表示层。
 
-在安装 JEUS 之前，请安装 Apache Ant 包，该包提供安装 JEUS 所需的库和命令行工具。
+安装 JEUS 之前，请安装 Apache Ant 包，其中提供了安装 JEUS 所需的库和命令行工具。
 
-**安装阿帕奇蚂蚁**
+**安装 Apache Ant**
 
 1. 使用`wget`命令下载 Ant 二进制文件。 例如：
 
@@ -1274,19 +1274,19 @@ JEUS（Java 企业用户解决方案）提供 OpenFrame Web 应用程序服务�
      wget http://apache.mirror.cdnetworks.com/ant/binaries/apacheant-1.9.7-bin.tar.gz
      ```
 
-2. 使用实用程序`tar`提取二进制文件并将其移动到适当的位置。 例如：
+2. 使用`tar`实用工具提取二进制文件并将其移动到适当的位置。 例如：
 
      ```
      tar -xvzf apache-ant-1.9.7-bin.tar.gz
      ```
 
-3. 为了提高效率，请创建一个符号链接：
+3. 为提高效率，请创建一个符号链接：
 
      ```
      ln -s apache-ant-1.9.7 ant
      ```
 
-4. 打开 vi 中的 bash`vi .bash_profile`配置文件 ，然后使用以下变量更新它：
+4. 在 vi （`vi .bash_profile`）中打开 bash 配置文件并将其更新为以下变量：
 
      ```
      # Ant ENV
@@ -1308,14 +1308,14 @@ JEUS（Java 企业用户解决方案）提供 OpenFrame Web 应用程序服务�
      [oframe7@ofdemo ~]$ tar -zxvf jeus704.tar.gz
      ```
 
-2. 创建一个**jeus**文件夹 （`mkdir jeus7`）， 并解压缩二进制文件。
-3. 更改为**设置**目录（或使用 JEUS 参数进行您自己的环境）。 例如：
+2. 创建**jeus**文件夹（`mkdir jeus7`）并解压缩二进制文件。
+3. 更改为**安装**目录（或对自己的环境使用 JEUS 参数）。 例如：
 
      ```
      [oframe7@ofdemo ~]$ cd jeus7/setup/
      ```
 
-4. 在执行`ant clean-all`生成之前执行。 输出的内容与以下类似：
+4. 执行`ant clean-all`生成之前执行。 输出的内容与以下类似：
 
      ```
      Buildfile: /home/oframe7jeus7/setup/build.xml
@@ -1330,13 +1330,13 @@ JEUS（Java 企业用户解决方案）提供 OpenFrame Web 应用程序服务�
      Total time: 0 seconds
      ```
 
-5.  备份域配置模板.属性文件。 例如：
+5.  创建域配置模板文件的备份。 例如：
 
      ```
      [oframe7@ofdemo ~]$ cp domain-config-template.properties domain-configtemplate.properties.bkp
      ```
 
-6. 打开域配置模板.属性文件，在 vi 中：
+6. 在 vi 中打开域配置模板文件：
 
      ```
      [oframe7\@ofdemo setup]\$ vi domain-config-template.properties
@@ -1344,8 +1344,8 @@ JEUS（Java 企业用户解决方案）提供 OpenFrame Web 应用程序服务�
 
 7. 将 `jeus.password=jeusadmin nodename=Tmaxsoft` 更改为 `jeus.password=tmax1234 nodename=ofdemo`
 
-8. 执行命令`ant install`以生成 JEUS。
-9.  使用 JEUS\_变量更新 .bash 配置文件文件，如下所示：
+8. 执行`ant install`命令以生成 JEUS。
+9.  用 JEUS 变量更新\_bash 配置文件，如下所示：
 
      ```
      # JEUS ENV 
@@ -1370,66 +1370,66 @@ JEUS（Java 企业用户解决方案）提供 OpenFrame Web 应用程序服务�
      alias dsdown=‘jeusadmin -domain jeus_domain -u administrator -p tmax1234 "local-shutdown“’
      ```
 
-12. 要验证安装，请启动域管理员服务器，如下所示：
+12. 若要验证安装，请按如下所示启动域管理服务器：
 
      ```
      [oframe7@ofdemo ~]$ startDomainAdminServer -domain jeus_domain -u administrator -p jeusadmin
      ```
 
-13. 使用语法通过 Web 登录进行验证：
+13. 使用以下语法验证 web 登录：
 
      ```
      http://<IP>:<port>/webadmin/login
      ```
 
-     例如，<http://192.168.92.133:9736/webadmin/login.>显示登录屏幕：
+     例如， <http://192.168.92.133:9736/webadmin/login.>登录屏幕出现：
     
      ![JEUS WebAdmin 登录屏幕](media/jeus-01.png)
 
      > [!NOTE]
-     > 如果遇到端口安全问题，请打开端口 9736 或禁用防火墙 （）。`systemctl stop firewall`
+     > 如果你遇到与端口安全有关的任何问题，请打开端口9736或禁用`systemctl stop firewall`防火墙（）。
 
-14. 要更改服务器 1 的主机名，请单击 **"锁定&编辑**"，然后单击**服务器 1**。 在"服务器"窗口中，更改主机名，如下所示：
+14. 若要更改 server1 的主机名，请单击 "**锁定 & 编辑**"，然后单击 " **server1**"。 在服务器窗口中，按如下所示更改主机名：
 
-    1.  将**节点名称**更改为**ofdemo**
-    2.  单击窗口右侧的 **"确定**"。
-    3.  单击窗口左下角的 **"应用更改**"，有关说明，请输入*主机名更改*。
+    1.  将**Nodename**更改为**ofdemo**。
+    2.  在窗口右侧单击 **"确定"** 。
+    3.  单击窗口左下方的 "**应用更改**"，并为 "说明" 输入*主机名更改*。
 
-    ![JEUS 网络管理员屏幕](media/jeus-02.png)
+    ![JEUS WebAdmin 屏幕](media/jeus-02.png)
 
-15. 在确认屏幕中验证配置是否成功。
+15. 验证确认屏幕中的配置是否成功。
 
     ![jeus_domain 服务器屏幕](media/jeus-03.png)
 
-16. 使用以下命令启动托管服务器进程"server1"：
+16. 使用以下命令启动托管服务器进程 "server1"：
 
      ```
      [oframe7@ofdemo ~]$ startManagedServer -domain jeus_domain -server server1 -u administrator -p jeusadmin
      ```
 
-## <a name="install-ofgw"></a>安装OFGW
+## <a name="install-ofgw"></a>安装 OFGW
 
-OFGW 是 OpenFrame 网关，支持 3270 终端仿真器与 OSI 基座之间的通信，并管理终端仿真器和 OSI 之间的会话。
+OFGW 是支持3270终端模拟器与 OSI 基础之间的通信并管理终端模拟器与 OSI 之间的会话的 OpenFrame 网关。
 
 **安装 OFGW**
 
-1. 确保 JEUS 已成功安装，然后验证 OFGW7\_0\_1\_泛型.bin 安装程序文件是否存在。
+1. 请确保已成功安装 JEUS，然后验证是否存在 OFGW7\_0\_1\_常规 bin 安装程序文件。
 2. 执行安装程序。 例如：
 
      ```
      [oframe7@ofdemo ~]$ ./OFGW7_0_1_Generic.bin
      ````
 
-3. 对相应的提示使用以下位置：
-     -   JEUS 主页目录
+3. 为相应的提示使用以下位置：
+     -   JEUS 主目录
      -   JEUS 域名
      -   JEUS 服务器名称
-     -   蒂贝罗司机
-     -   德莫的 Tmax 节点 ID
+     -   Tibero 驱动程序
+     -   Tmax 节点 ID ofdemo
 
-4. 接受其余的默认值，然后按 Enter 退出安装程序。
+4. 接受剩余的默认值，然后按 Enter 退出安装程序。
 
-5. 验证 OFGW 的 URL 是否按预期工作：
+5. 验证 OFGW 的 URL 是否按预期方式工作：
 
      ```
      Type URL 
@@ -1439,15 +1439,15 @@ OFGW 是 OpenFrame 网关，支持 3270 终端仿真器与 OSI 基座之间的�
 
      将出现以下屏幕：
 
-    ![开放框架网络终端](media/ofgw-01.png)
+    ![OpenFrame WebTerminal](media/ofgw-01.png)
 
-## <a name="install-ofmanager"></a>安装管理器
+## <a name="install-ofmanager"></a>安装 OFManager
 
-OFManager 为 Web 环境中的 OpenFrame 提供操作和管理功能。
+OFManager 为 web 环境中的 OpenFrame 提供操作和管理功能。
 
-**安装管理管理器**
+**安装 OFManager**
 
-1. 验证 OFManager7\_泛型.bin 安装程序文件是否存在。
+1. 验证 OFManager7\_的常规 bin 安装程序文件是否存在。
 2. 执行安装程序。 例如：
 
      ```
@@ -1455,27 +1455,27 @@ OFManager 为 Web 环境中的 OpenFrame 提供操作和管理功能。
      ```
 
 3.  按 Enter 继续，然后接受许可协议。
-4.  选择安装文件夹。
+4.  选择 "安装" 文件夹。
 5.  接受默认值。
-6.  选择 Tibero 作为数据库。
+6.  选择 "Tibero" 作为数据库。
 7.  按 Enter 退出安装程序。
-8.  验证 OFManager 的 URL 是否按预期工作：
+8.  验证 OFManager 的 URL 是否按预期方式工作：
 
      ```
      Type URL http://192.168.92.133:8088/ofmanager and press enter <  IP >  : < PORT >  ofmanager Enter ID:   ROOT 
      Password: SYS1
      ```
 
-将显示"开始"屏幕：
+此时将显示 "开始" 屏幕：
 
-![Tmax OpenFrame 管理器登录屏幕](media/ofmanager-01.png)
+![Tmax OpenFrame Manager 登录屏幕](media/ofmanager-01.png)
 
-这完成了 OpenFrame 组件的安装。
+这就完成了 OpenFrame 组件的安装。
 
 ## <a name="next-steps"></a>后续步骤
 
-如果您正在考虑大型机迁移，我们不断扩大的合作伙伴生态系统可以帮助您。 有关选择合作伙伴解决方案的详细指南，请参阅[平台现代化联盟](https://datamigration.microsoft.com/)。
+如果你正在考虑使用大型机迁移，我们的扩展合作伙伴生态系统可为你提供帮助。 有关选择合作伙伴解决方案的详细指南，请参阅[平台现代化联盟](https://datamigration.microsoft.com/)。
 
 -   [Azure 入门](https://docs.microsoft.com/azure/)
 -   [Host Integration Server (HIS) 文档](https://docs.microsoft.com/host-integration-server/)
--   [Azure 虚拟数据中心提升和移动指南](https://blogs.msdn.microsoft.com/azurecat/2018/03/12/new-whitepaper-azure-virtual-datacenter-lift-and-shift-guide/)
+-   [Azure 虚拟数据中心提升指南](https://blogs.msdn.microsoft.com/azurecat/2018/03/12/new-whitepaper-azure-virtual-datacenter-lift-and-shift-guide/)

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 站点恢复在故障转移后设置 IP 寻址到辅助站点
+title: 使用 Azure Site Recovery 在故障转移到辅助站点后设置 IP 寻址
 description: 介绍如何设置 IP 寻址以在使用 Azure Site Recovery 灾难恢复和故障转移后连接到辅助本地站点中的 VM。
 author: rayne-wiselman
 manager: carmonm
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: a61f7ff69e648262eb721eb61a98b09dbbee924c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73961429"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>设置 IP 寻址以在故障转移后连接到辅助本地站点
@@ -61,11 +61,11 @@ ms.locfileid: "73961429"
 下图说明故障转移前后的子网：
 
 
-**故障转移之前**
+故障转移前 
 
 ![在故障转移之前](./media/hyper-v-vmm-networking/network-design2.png)
 
-故障转移后****
+故障转移后 
 
 ![在故障转移之后](./media/hyper-v-vmm-networking/network-design3.png)
 
@@ -116,11 +116,11 @@ ms.locfileid: "73961429"
 - 在此方案中，无需故障转移整个子网，并且无需进行重新配置 VPN 或网络路由的更改。 故障转移和部分 DNS 更新会确保应用程序仍然可供访问。
 - 如果 DNS 配置为允许动态更新，则 VM 会在故障转移后启动时使用新的 IP 地址自行注册。
 
-**故障转移之前**
+故障转移前 
 
 ![不同的 IP 地址 - 故障转移前](./media/hyper-v-vmm-networking/network-design10.png)
 
-故障转移后****
+故障转移后 
 
 ![不同的 IP 地址 - 故障转移后](./media/hyper-v-vmm-networking/network-design11.png)
 

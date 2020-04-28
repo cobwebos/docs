@@ -12,27 +12,27 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: eba5df587d6bd6dda6083314cfb94836c6669393
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73683148"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>使用 Azure 机器学习和 Azure 数据工厂创建预测管道
 
-> [!div class="op_single_selector" title1="转型活动"]
-> * [蜂巢活动](data-factory-hive-activity.md)
+> [!div class="op_single_selector" title1="转换活动"]
+> * [Hive 活动](data-factory-hive-activity.md)
 > * [Pig 活动](data-factory-pig-activity.md)
-> * [映射减少活动](data-factory-map-reduce.md)
+> * [MapReduce 活动](data-factory-map-reduce.md)
 > * [Hadoop 流式处理活动](data-factory-hadoop-streaming-activity.md)
 > * [Spark 活动](data-factory-spark.md)
 > * [机器学习批处理执行活动](data-factory-azure-ml-batch-execution-activity.md)
 > * [机器学习更新资源活动](data-factory-azure-ml-update-resource-activity.md)
 > * [存储过程活动](data-factory-stored-proc-activity.md)
-> * [数据湖分析 U-SQL 活动](data-factory-usql-activity.md)
+> * [Data Lake Analytics U-SQL 活动](data-factory-usql-activity.md)
 > * [.NET 自定义活动](data-factory-use-custom-activities.md)
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 > [!NOTE]
 > 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[在数据工厂中使用机器学习转换数据](../transform-data-using-machine-learning.md)。
 
@@ -40,19 +40,19 @@ ms.locfileid: "73683148"
 ### <a name="azure-machine-learning"></a>Azure 机器学习
 通过 [Azure 机器学习](https://azure.microsoft.com/documentation/services/machine-learning/)，可以生成、测试和部署预测分析解决方案。 从高层次的角度来看，这可通过三个步骤完成：
 
-1. **创建一个训练实验**。 使用 Azure 机器学习工作室执行此步骤。 Azure 机器学习工作室是一个协作式可视开发环境，可用于通过训练数据来训练和测试预测分析模型。
+1. **创建训练实验**。 使用 Azure 机器学习工作室执行此步骤。 Azure 机器学习工作室是一个协作式可视开发环境，可用于通过训练数据来训练和测试预测分析模型。
 2. **将其转换为预测实验**。 利用现有数据定型模型后，便可将其用于对新数据进行评分，为评分准备并简化实验。
 3. **将其部署为 Web 服务**。 可将评分实验作为 Azure Web 服务发布。 可通过此 Web 服务终结点向模型发送数据，并从模型接收结果预测。
 
 ### <a name="azure-data-factory"></a>Azure 数据工厂
-数据工厂是一种基于云的数据集成服务，可协调并自动**移动和****转换**数据。 可以使用 Azure 数据工厂创建数据集成解决方案，从各种数据存储引入数据、转换/处理数据，并将结果数据发布到数据存储。
+数据工厂是一项基于云的数据集成服务，可对数据的**移动**和**转换**进行协调和自动化。 可以使用 Azure 数据工厂创建数据集成解决方案，从各种数据存储引入数据、转换/处理数据，并将结果数据发布到数据存储。
 
 在数据工厂服务中可以创建数据管道来移动和转换数据，并按指定的计划（每小时、每日、每周等）运行管道。 该服务还提供丰富的可视化效果来显示数据管道之间的历史记录和依赖项，用户可以通过单个统一视图监视所有数据管道，轻松查明问题和设置监视警报。
 
 有关 Azure 数据工厂服务的快速入门，请参阅文章 [Azure 数据工厂简介](data-factory-introduction.md)和[生成第一个管道](data-factory-build-your-first-pipeline.md)。
 
 ### <a name="data-factory-and-machine-learning-together"></a>结合数据工厂和机器学习
-Azure 数据工厂使您能够轻松创建使用已发布的[Azure 机器学习][azure-machine-learning]Web 服务进行预测分析的管道。 使用 Azure 数据工厂管道中的**批处理执行活动**，可以调用 Azure 机器学习工作室 Web 服务成批对数据进行预测。 有关详细信息，请参阅使用批处理执行活动调用 Azure 机器学习工作室 Web 服务部分。
+使用 Azure 数据工厂，可轻松创建使用已发布的[Azure 机器学习][azure-machine-learning]web 服务进行预测分析的管道。 使用 Azure 数据工厂管道中的**批处理执行活动**，可以调用 Azure 机器学习工作室 Web 服务成批对数据进行预测。 有关详细信息，请参阅使用批处理执行活动调用 Azure 机器学习工作室 Web 服务部分。
 
 随着时间推移，需要使用新的输入数据集重新训练 Azure 机器学习工作室评分实验中的预测模型。 可以通过执行以下步骤重新训练数据工厂管道中的 Azure 机器学习工作室模型：
 
@@ -80,7 +80,7 @@ Azure 数据工厂使您能够轻松创建使用已发布的[Azure 机器学习]
 > [!IMPORTANT]
 > 如果 Web 服务需要多个输入，可改为使用 **webServiceInputs** 属性，而不是 **webServiceInput**。 有关使用 webServiceInputs 属性的示例，请参阅 [Web 服务需要多个输入](#web-service-requires-multiple-inputs)部分。
 >
-> **WebService输入**/**WebService 输入**和**WebService 输出**属性（**类型属性**中）引用的数据集也必须包含在活动**输入**和**输出中**。
+> **WebServiceInput**/**webServiceInputs**和**webServiceOutputs**属性（位于**typeProperties**中）引用的数据集也必须包括在活动**输入**和**输出**中。
 >
 > 在 Azure 机器学习工作室实验中，Web 服务输入和输出端口及全局参数具有可自定义的默认名称（“input1”、“input2”）。 用于 webServiceInputs、webServiceOutputs 和 globalParameters 设置的名称必须与实验中的名称完全匹配。 可在 Azure 机器学习工作室终结点的“批处理执行帮助”页上查看示例请求有效负载，验证预期映射。
 >
@@ -192,7 +192,7 @@ Azure 数据工厂使您能够轻松创建使用已发布的[Azure 机器学习]
     }
     ```
 
-    如果 csv 文件没有头行，您可能会看到以下错误：**活动错误：读取字符串错误。意外令牌：启动对象。路径''，第 1 行，位置 1**。
+    如果 csv 文件没有标题行，你可能会看到以下错误： "**活动中出错：读取字符串时出错"。意外的令牌： StartObject。路径 ""，第1行，位置 1**。
 3. 创建**输出** Azure 数据工厂**数据集**。 本示例使用分区为每个切片执行创建唯一输出路径。 如不使用分区，活动将覆盖文件。
 
     ```JSON
@@ -301,7 +301,7 @@ Azure 数据工厂使您能够轻松创建使用已发布的[Azure 机器学习]
       }
       ```
 
-      **开始**日期和**结束**日期时间都必须为[ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如：2014-10-14T16:32:41Z。 **结束**时间可选。 如果不为**结束**属性指定值，则计算为"**开始 = 48 小时"。** 若要无限期运行管道，请指定 **9999-09-09** 作为 **end** 属性的值。 有关 JSON 属性的详细信息，请参阅 [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) （JSON 脚本参考）。
+      **开始**和**结束**datetime 必须采用[ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如：2014-10-14T16:32:41Z。 **结束**时间可选。 如果未指定**end**属性的值，则计算结果为 "**start + 48 小时"。** 若要无限期运行管道，请指定 **9999-09-09** 作为 **end** 属性的值。 有关 JSON 属性的详细信息，请参阅 [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) （JSON 脚本参考）。
 
       > [!NOTE]
       > 可选择指定 AzureMLBatchExecution 活动的输入。
@@ -405,7 +405,7 @@ Azure 数据工厂使您能够轻松创建使用已发布的[Azure 机器学习]
 在上述 JSON 示例中：
 
 * 部署的 Azure 机器学习 Web 服务使用读取器和编写器模块从 Azure SQL 数据库读取数据，或将数据写入 Azure SQL 数据库。 此 Web 服务公开以下四个参数：数据库服务器名、数据库名、服务器用户帐户名和服务器用户帐户密码。
-* **开始**日期和**结束**日期时间都必须为[ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如：2014-10-14T16:32:41Z。 **结束**时间可选。 如果不为**结束**属性指定值，则计算为"**开始 = 48 小时"。** 若要无限期运行管道，请指定 **9999-09-09** 作为 **end** 属性的值。 有关 JSON 属性的详细信息，请参阅 [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) （JSON 脚本参考）。
+* **开始**和**结束**datetime 必须采用[ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如：2014-10-14T16:32:41Z。 **结束**时间可选。 如果未指定**end**属性的值，则计算结果为 "**start + 48 小时"。** 若要无限期运行管道，请指定 **9999-09-09** 作为 **end** 属性的值。 有关 JSON 属性的详细信息，请参阅 [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) （JSON 脚本参考）。
 
 ### <a name="other-scenarios"></a>其他方案
 #### <a name="web-service-requires-multiple-inputs"></a>Web 服务需要多个输入

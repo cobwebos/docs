@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: f3422fd10e062ae87bc165491e0d01ac2b4943d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72793234"
 ---
 # <a name="odata-expression-syntax-reference-for-azure-cognitive-search"></a>Azure 认知搜索的 OData 表达式语法参考
@@ -36,9 +36,9 @@ Azure 认知搜索在整个 API 中使用 [OData 表达式](https://docs.oasis-o
 
 我们可以使用 EBNF（[扩展巴科斯-瑙尔范式](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）语法描述 Azure 认知搜索支持的 OData 语言的子集。 规则以“自上而下”的方式列出，从最复杂的表达式开始，并将其分解为更原始的表达式。 顶部是与 Azure 认知搜索 REST API 的特定参数相对应的语法规则：
 
-- [`$filter`](search-query-odata-filter.md)，由`filter_expression`规则定义。
-- [`$orderby`](search-query-odata-orderby.md)，由`order_by_expression`规则定义。
-- [`$select`](search-query-odata-select.md)，由`select_expression`规则定义。
+- [`$filter`](search-query-odata-filter.md)，由 `filter_expression` 规则定义。
+- [`$orderby`](search-query-odata-orderby.md)，由 `order_by_expression` 规则定义。
+- [`$select`](search-query-odata-select.md)，由 `select_expression` 规则定义。
 - 字段路径，由 `field_path` 规则定义。 在整个 API 中使用字段路径。 它们可以引用索引的顶级字段，也可以引用具有一个或多个[复杂字段](search-howto-complex-data-types.md)祖先的子字段。
 
 EBNF 之后是一个可浏览的[语法图](https://en.wikipedia.org/wiki/Syntax_diagram)，可用于交互式地探索语法及其规则之间的关系。
@@ -214,7 +214,7 @@ search_mode ::= "'any'" | "'all'"
 > [!div class="nextstepaction"]
 > [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/)
 
-## <a name="see-also"></a>请参阅  
+## <a name="see-also"></a>另请参阅  
 
 - [Azure 认知搜索中的筛选器](search-filters.md)
 - [搜索文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

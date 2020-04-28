@@ -14,10 +14,10 @@ ms.workload: tbd
 ms.date: 9/20/2017
 ms.author: raiye
 ms.openlocfilehash: fbe9b3379799fe3cf0a56d921ab257bc87606ca9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68945449"
 ---
 # <a name="azure-guest-os-supportability-and-retirement-policy"></a>Azure 来宾 OS 可支持性和停用策略
@@ -27,9 +27,9 @@ Microsoft 已发布[来宾 OS 的支持策略](https://support.microsoft.com/gp/
 
 该策略规定，
 
-1. Microsoft 支持**至少两个最新的来宾操作系统系列**。 在某个系列停用后，客户可以在从正式停用之日起的 12 个月内更新为受支持的较新来宾 OS 系列。
-2. Microsoft 支持至少两个最新的支持来宾 OS 系列版本****。
-3. Microsoft 支持至少两个最新的 Azure SDK 版本****。 在某个 SDK 版本停用后，客户可以在从正式停用之日起的 12 个月内更新为较新的版本。
+1. Microsoft 支持**至少两个最新的来宾 OS 系列**。 在某个系列停用后，客户可以在从正式停用之日起的 12 个月内更新为受支持的较新来宾 OS 系列。
+2. Microsoft 支持至少两个最新的支持来宾 OS 系列版本  。
+3. Microsoft 支持至少两个最新的 Azure SDK 版本  。 在某个 SDK 版本停用后，客户可以在从正式停用之日起的 12 个月内更新为较新的版本。
 
 有时，可能会支持两个以上的系列或发行版。 将在 [Azure 来宾 OS 版本和 SDK 兼容性对照表](cloud-services-guestos-update-matrix.md)中显示正式的来宾 OS 支持信息。
 
@@ -52,7 +52,7 @@ Microsoft 将继续推出合并了最新 MSRC 更新的新来宾 OS 版本，直
 
 来宾 OS 版本每个月发布一次。 由于常规发布的速率，每个版本都具有固定生存期。
 
-在寿命延长60天时，一个版本被"*禁用*"。 “停用”表示该版本将从门户中删除。 该版本再也无法通过 CSCFG 配置文件进行设置。 现有部署仍保持运行。 但是不允许进行新部署以及针对现有部署的代码和配置更新。
+60 天使用期后，版本会“停用”  。 “停用”表示该版本将从门户中删除。 该版本再也无法通过 CSCFG 配置文件进行设置。 现有部署仍保持运行。 但是不允许进行新部署以及针对现有部署的代码和配置更新。
 
 在“停用”后的某个时间，来宾 OS 版本“过期”，仍在运行该过期版本的任何安装都会面临安全和漏洞问题。 通常情况下，过期是分批过期的，因此从停用到过期的时间段可能各不相同。
 

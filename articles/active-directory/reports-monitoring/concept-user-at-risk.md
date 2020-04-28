@@ -16,15 +16,15 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 894d8dfb7f870ec4a2a11f1d75ee0376b25d8c7f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74014448"
 ---
 # <a name="users-flagged-for-risk-report-in-the-azure-portal"></a>Azure 门户中标记为存在风险的用户的报表
 
-Azure Active Directory (Azure AD) 可以检测到与用户帐户相关的可疑操作。 对于每个检测到的操作，都会创建一个称为[风险检测](concept-risk-events.md)的记录。
+Azure Active Directory (Azure AD) 可以检测到与用户帐户相关的可疑操作。 对于检测到的每个操作，都会创建一个名为 "[风险检测](concept-risk-events.md)" 的记录。
 
 可以从 [Azure 门户](https://portal.azure.com)中通过选择“Azure Active Directory”**** 边栏选项卡并导航到“安全性”**** 部分来访问安全报告。 
 
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) 可以检测到与用户帐户相关的可疑�
 
 - **已标记为存在风险的用户** - 风险用户是指可能已泄露的用户帐户。 
 
-要了解如何配置触发这些风险检测的策略，请参阅[如何配置用户风险策略](../identity-protection/howto-user-risk-policy.md)。 
+若要了解如何配置触发这些风险检测的策略，请参阅[如何配置用户风险策略](../identity-protection/howto-user-risk-policy.md)。 
 
 ![有风险的登录](./media/concept-user-at-risk/10.png)
 
@@ -45,9 +45,9 @@ Azure Active Directory (Azure AD) 可以检测到与用户帐户相关的可疑�
 
 - 在“Azure Active Directory 免费版和基本版”中，获取一个列表，其中包含标记为存在风险的用户。**** 
 
-- 此外 **，Azure 活动目录高级 1**版允许您检查已检测到每个报表的某些基本风险检测。 
+- 此外， **Azure Active Directory Premium 1**版使你可以检查已为每个报告检测到的某些底层风险检测。 
 
-- **Azure Active Directory 高级版**为您提供了有关所有潜在风险检测的最详细信息，还使您能够配置自动响应配置的风险级别的安全策略。
+- **Azure Active Directory Premium 2**版本提供有关所有底层风险检测的最详细信息，并且还允许您配置自动响应已配置风险级别的安全策略。
 
 
 ## <a name="users-at-risk-report-for-azure-ad-free-and-basic-editions"></a>Azure AD 免费版和基本版的风险用户报告
@@ -73,7 +73,7 @@ Azure AD Premium 版中“标记为风险用户”的用户的报告提供：
 
 - 可能已泄露的用户帐户列表 
 
-- 有关已检测到[的风险检测类型的](concept-risk-events.md)聚合信息
+- 有关检测到的[风险检测类型](concept-risk-events.md)的聚合信息
 
 - 一个用于下载报表的选项
 
@@ -89,11 +89,11 @@ Azure AD Premium 版中“标记为风险用户”的用户的报告提供：
 
 - 清除所有事件
 
-- 调查用户报告的风险检测。 
+- 调查用户的已报告的风险检测。 
 
 ![有风险的登录](./media/concept-user-at-risk/324.png)
 
-要调查风险检测，请从列表中选择一个来打开此风险检测**的"详细信息"** 边栏选项卡。 在 **"详细信息"** 边栏选项卡上，您可以选择手动关闭风险检测或重新激活手动关闭的风险检测。 
+若要调查风险检测，请从列表中选择一个，以打开 "**详细信息**" 边栏选项卡来检测此风险。 在 "**详细信息**" 边栏选项卡上，你可以选择手动关闭风险检测或重新激活手动关闭的风险检测。 
 
 ![有风险的登录](./media/concept-user-at-risk/325.png)
 

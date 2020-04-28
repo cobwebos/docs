@@ -8,10 +8,10 @@ ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 28d7b2955c84833841760e441cd2919181e22bc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73572796"
 ---
 # <a name="manage-analysis-services"></a>管理 Analysis Services
@@ -36,31 +36,31 @@ ms.locfileid: "73572796"
 ### <a name="to-connect-with-ssms"></a>连接 SSMS
  使用 SSMS 时，在首次连接到服务器之前，需确保用户名已包含在 Analysis Services 管理员组中。 有关详细信息，请参阅本文后面的[服务器管理员和数据库用户](#server-administrators-and-database-users)。
 
-1. 在连接之前，需要获取服务器名称。 在 **Azure 门户**中，单击“服务器”>“概述”**** > “服务器名称”****，并复制服务器名称。
+1. 在连接之前，需要获取服务器名称。 在 **Azure 门户**中，单击“服务器”>“概述”   > “服务器名称”  ，并复制服务器名称。
    
     ![在 Azure 中获取服务器名称](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
-2. 在 SSMS >“对象资源管理器”**** 中，单击“连接”**** > “Analysis Services”****。
-3. 在“连接到服务器”**** 对话框中，粘贴服务器名称，然后在“身份验证”**** 中选择以下身份验证类型之一：   
+2. 在 SSMS >“对象资源管理器”  中，单击“连接”   > “Analysis Services”  。
+3. 在“连接到服务器”  对话框中，粘贴服务器名称，并在“身份验证”  中选择以下身份验证类型之一：   
     > [!NOTE]
-    > 建议选择“Active Directory - 通用且具有 MFA 支持”身份验证类型。****
+    > 建议选择“Active Directory - 通用且具有 MFA 支持”身份验证类型。 
 
     > [!NOTE]
     > 如果使用 Microsoft 帐户、Live ID、Yahoo、Gmail 等登录，请将密码字段留空。 单击“连接”后，系统将提示你输入密码。
 
-    选择“Windows 身份验证”****，以使用 Windows 域\用户名和密码凭据。
+    选择“Windows 身份验证”  ，以使用 Windows 域\用户名和密码凭据。
 
     **Active Directory 密码身份验证**，其使用组织帐户。 例如，从未加入域的计算机进行连接时。
 
-    选择“Active Directory - 通用且具有 MFA 支持”****，以使用[非交互式或多重身份验证](../sql-database/sql-database-ssms-mfa-authentication.md)。 
+    选择“Active Directory - 通用且具有 MFA 支持”  ，以使用[非交互式或多重身份验证](../sql-database/sql-database-ssms-mfa-authentication.md)。 
    
     ![在 SSMS 中连接](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 
 ## <a name="server-administrators-and-database-users"></a>服务器管理员和数据库用户
-Azure Analysis Services 中存在两种类型的用户，即服务器管理员和数据库用户。 这两种类型的用户必须存在于 Azure Active Directory 中，且必须由组织电子邮件地址或 UPN 指定。 要了解更多信息，请参阅[身份验证和用户权限](analysis-services-manage-users.md)。
+Azure Analysis Services 中存在两种类型的用户，即服务器管理员和数据库用户。 这两种类型的用户必须存在于 Azure Active Directory 中，且必须由组织电子邮件地址或 UPN 指定。 若要了解详细信息，请参阅[身份验证和用户权限](analysis-services-manage-users.md)。
 
 
-## <a name="troubleshooting-connection-problems"></a>连接问题疑难解答
-若在使用 SSMS 进行连接时遇到问题，则可能需要清除登录缓存。 不会将任何内容缓存到光盘。要清除缓存，请关闭并重新启动连接过程。 
+## <a name="troubleshooting-connection-problems"></a>排查连接问题
+若在使用 SSMS 进行连接时遇到问题，则可能需要清除登录缓存。 光盘中不缓存任何内容。若要清除缓存，请关闭并重启连接进程。 
 
 ## <a name="next-steps"></a>后续步骤
 如果尚未将表格模型部署到新服务器，现在正是一个好时机。 有关详细信息，请参阅[部署到 Azure Analysis Services](analysis-services-deploy.md)。

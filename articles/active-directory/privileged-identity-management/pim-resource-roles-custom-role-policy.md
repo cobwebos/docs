@@ -1,5 +1,5 @@
 ---
-title: 在 PIM 中对 Azure 资源使用自定义角色 - Azure AD |微软文档
+title: 在 PIM 中为 Azure 资源使用自定义角色-Azure AD |Microsoft Docs
 description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中为 Azure 资源使用自定义角色。
 services: active-directory
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fbe08cff2b57155f8f3315f5d3454abfbdad47a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73847065"
 ---
 # <a name="use-custom-roles-for-azure-resources-in-privileged-identity-management"></a>在 Privileged Identity Management 中为 Azure 资源使用自定义角色
@@ -40,7 +40,7 @@ ms.locfileid: "73847065"
 
 ## <a name="apply-pim-settings"></a>应用 PIM 设置
 
-在 Azure AD 组织中创建角色后，请在 Azure 门户中转到“Privileged Identity Management - Azure 资源”**** 页。 选择应用该角色的资源。
+在 Azure AD 组织中创建角色后，请在 Azure 门户中转到“Privileged Identity Management - Azure 资源”  页。 选择应用该角色的资源。
 
 ![“Privileged Identity Management - Azure 资源”窗格](media/pim-resource-roles-custom-role-policy/aadpim-manage-azure-resource-some-there.png)
 

@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: a64a9ce5e080308674893273e90a0e83686e339e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73795512"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>排查入口控制器的常见问题
 
-[Azure 云外壳](https://shell.azure.com/)是解决 AKS 和 AGIC 安装中任何问题的最便捷方法。 从[shell.azure.com](https://shell.azure.com/)启动外壳，或通过单击链接：
+[Azure Cloud Shell](https://shell.azure.com/)是解决 AKS 和 AGIC 安装问题的最简便方法。 从[shell.azure.com](https://shell.azure.com/)或单击链接启动 shell：
 
 [![嵌入启动](https://shell.azure.com/images/launchcloudshell.png "启动 Azure Cloud Shell")](https://shell.azure.com)
 
@@ -76,13 +76,13 @@ spec:
 EOF
 ```
 
-一次从上面的脚本复制并粘贴所有行到[Azure 云外壳](https://shell.azure.com/)中。 请确保复制整个命令 - 从 `cat` 开始，到最后的 `EOF` 为止。
+将上述脚本中的所有行一次复制并粘贴到[Azure Cloud Shell](https://shell.azure.com/)中。 请确保复制整个命令 - 从 `cat` 开始，到最后的 `EOF` 为止。
 
 ![apply](./media/application-gateway-ingress-controller-troubleshooting/tsg--apply-config.png)
 
 成功部署上述应用后，AKS 群集中将包含新的 Pod、服务和入口。
 
-获取具有[云外壳](https://shell.azure.com/)的窗格列表：。 `kubectl get pods -o wide`
+获取带有[Cloud Shell](https://shell.azure.com/)的 pod 的列表： `kubectl get pods -o wide`。
 预期已创建名为“test-agic-app-pod”的 Pod。 该 Pod 有一个 IP 地址。 此地址必须在 AKS 所用的应用程序网关的 VNET 中。
 
 ![Pod](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-pods.png)
@@ -102,7 +102,7 @@ I0927 22:34:51.281585       1 process.go:165] cache: Updated with latest applied
 I0927 22:34:51.282342       1 process.go:171] END AppGateway deployment
 ```
 
-或者，从[云外壳](https://shell.azure.com/)，我们只能检索指示成功使用`kubectl logs <ingress-azure-....> | grep 'Applied App Gateway config in'`应用程序网关配置的行，`<ingress-azure....>`其中应应是 AGIC pod 的确切名称。
+或者，可以从[Cloud Shell](https://shell.azure.com/)仅检索指示成功应用程序网关配置的行`kubectl logs <ingress-azure-....> | grep 'Applied App Gateway config in'`，其中`<ingress-azure....>`应该是 AGIC pod 的确切名称。
 
 将在应用程序网关中应用以下配置：
 
@@ -115,7 +115,7 @@ I0927 22:34:51.282342       1 process.go:171] END AppGateway deployment
 ![backend_pool](./media/application-gateway-ingress-controller-troubleshooting/tsg--backendpools.png) 观测到的 Pod IP 地址相匹配
 
 
-最后，我们可以使用`cURL`[云壳](https://shell.azure.com/)内的命令来建立与新部署的应用的 HTTP 连接：
+最后，我们可以使用`cURL` [Cloud Shell](https://shell.azure.com/)中的命令建立与新部署的应用的 HTTP 连接：
 
 1. 使用 `kubectl get ingress` 获取应用程序网关的公共 IP 地址
 2. 使用 `curl -I -H 'test.agic.contoso.com' <publitc-ip-address-from-previous-command>`
@@ -128,12 +128,12 @@ I0927 22:34:51.282342       1 process.go:171] END AppGateway deployment
 ## <a name="inspect-kubernetes-installation"></a>检查 Kubernetes 安装
 
 ### <a name="pods-services-ingress"></a>Pod、服务、入口
-应用程序网关入口控制器 （AGIC） 持续监视以下库伯内特斯资源：[部署](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment)或[Pod、](https://kubernetes.io/docs/concepts/workloads/pods/pod/#what-is-a-pod)[服务](https://kubernetes.io/docs/concepts/services-networking/service/)、[入口](https://kubernetes.io/docs/concepts/services-networking/ingress/)
+应用程序网关入口控制器（AGIC）持续监视以下 Kubernetes 资源：[部署](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment)或[Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/#what-is-a-pod)、[服务](https://kubernetes.io/docs/concepts/services-networking/service/)、[入口](https://kubernetes.io/docs/concepts/services-networking/ingress/)
 
 
 必须符合以下要求才能让 AGIC 按预期正常工作：
   1. AKS 必须包含一个或多个正常的 **Pod**。
-     `kubectl get pods -o wide --show-labels`使用["云外壳](https://shell.azure.com/)"验证这一点，如果您的 Pod 具有 ，`apsnetapp`您的输出可能如下所示：
+     与`kubectl get pods -o wide --show-labels` `apsnetapp` [Cloud Shell](https://shell.azure.com/)验证此设置，如果你有一个带的 Pod，你的输出可能如下所示：
      ```bash
      delyan@Azure:~$ kubectl get pods -o wide --show-labels
 
@@ -142,7 +142,7 @@ I0927 22:34:51.282342       1 process.go:171] END AppGateway deployment
      ```
 
   2. 通过匹配的 `selector` 标签引用上述 Pod 的一个或多个**服务**。
-     使用[云外壳](https://shell.azure.com/)验证此情况`kubectl get services -o wide`
+     验证此[Cloud Shell](https://shell.azure.com/)`kubectl get services -o wide`
      ```bash
      delyan@Azure:~$ kubectl get services -o wide --show-labels
 
@@ -150,7 +150,7 @@ I0927 22:34:51.282342       1 process.go:171] END AppGateway deployment
      aspnetapp           ClusterIP   10.2.63.254    <none>        80/TCP    17h   app=aspnetapp   <none>     
      ```
 
-  3. **入口**，用`kubernetes.io/ingress.class: azure/application-gateway`中带，引用上面的服务 从[云壳](https://shell.azure.com/)中验证此功能`kubectl get ingress -o wide --show-labels`
+  3. **Ingress**引用上述服务的`kubernetes.io/ingress.class: azure/application-gateway`入口（用来注释）验证此[Cloud Shell](https://shell.azure.com/)`kubectl get ingress -o wide --show-labels`
      ```bash
      delyan@Azure:~$ kubectl get ingress -o wide --show-labels
 
@@ -236,7 +236,7 @@ AGIC 提供 3 个日志记录级别。 第 1 级别是默认级别，显示的�
 Kubernetes 社区已经为 [kubectl](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-output-verbosity-and-debugging) 工具建立了 9 个日志记录级别。 在此存储库中，我们使用了其中 3 个语义类似的级别：
 
 
-| 详细程度 | 描述 |
+| 详细程度 | 说明 |
 |-----------|-------------|
 |  1        | 默认日志级别；显示启动详细信息、警告和错误 |
 |  3        | 有关事件和更改的扩展信息；创建的对象列表 |

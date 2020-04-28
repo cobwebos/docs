@@ -1,5 +1,5 @@
 ---
-title: 批量导出和导入 Azure 通知中心注册 |微软文档
+title: 批量导出和导入 Azure 通知中心注册 |Microsoft Docs
 description: 了解如何使用通知中心批量操作支持针对通知中心执行大量操作或导出所有注册。
 services: notification-hubs
 author: sethmanheim
@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/18/2019
 ms.openlocfilehash: 8eb03a42f38c0cc7fe82eda6a81d1c8c1213ec74
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71212395"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>批量导出和导入 Azure 通知中心注册
@@ -291,5 +291,5 @@ while(true){
 若要详细了解注册，请参阅以下文章：
 
 - [注册管理](notification-hubs-push-notification-registration-management.md)
-- [注册标记](notification-hubs-tags-segment-push-message.md)
+- [注册的标记](notification-hubs-tags-segment-push-message.md)
 - [模板注册](notification-hubs-templates-cross-platform-push-messages.md)

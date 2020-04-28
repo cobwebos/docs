@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/25/2018
 ms.openlocfilehash: ae26f669ddbe2cc2c5b6e25a9c1c0229e88dc2e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73823908"
 ---
 # <a name="building-scalable-cloud-databases"></a>构建可缩放的云数据库
@@ -25,15 +25,15 @@ ms.locfileid: "73823908"
 若要下载：
 
 * Java 版本的库，请参阅 [Maven 中央存储库](https://search.maven.org/#search%7Cga%7C1%7Celastic-db-tools)。
-* 库的 .NET 版本，请参阅[NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)。
+* .NET 版本的库，请参阅 [NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)。
 
 ## <a name="documentation"></a>文档
 
-1. [开始使用弹性数据库工具](sql-database-elastic-scale-get-started.md)
+1. [弹性数据库工具入门](sql-database-elastic-scale-get-started.md)
 2. [弹性数据库功能](sql-database-elastic-scale-introduction.md)
-3. [分片地图管理](sql-database-elastic-scale-shard-map-management.md)
-4. [迁移要扩展的现有数据库](sql-database-elastic-convert-to-use-elastic-tools.md)
-5. [数据相关路由](sql-database-elastic-scale-data-dependent-routing.md)
+3. [分片映射管理](sql-database-elastic-scale-shard-map-management.md)
+4. [迁移要横向扩展的现有数据库](sql-database-elastic-convert-to-use-elastic-tools.md)
+5. [数据依赖型路由](sql-database-elastic-scale-data-dependent-routing.md)
 6. [多分片查询](sql-database-elastic-scale-multishard-querying.md)
 7. [使用弹性数据库工具添加分片](sql-database-elastic-scale-add-a-shard.md)
 8. [具有弹性数据库工具和行级安全性的多租户应用程序](sql-database-elastic-tools-multi-tenant-row-level-security.md)

@@ -1,5 +1,5 @@
 ---
-title: 通过 Azure 站点恢复为 Azure VM 灾难恢复启用加速网络
+title: 使用 Azure Site Recovery 为 Azure VM 灾难恢复启用加速网络
 description: 介绍了如何将加速网络与 Azure Site Recovery 配合使用来实现 Azure 虚拟机灾难恢复
 services: site-recovery
 documentationcenter: ''
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: 27691d8fab3e7c8ccd60351dc0be83898ff984ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73622428"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>将加速网络与 Azure 虚拟机灾难恢复配合使用
@@ -24,7 +24,7 @@ ms.locfileid: "73622428"
 
 对于故障转移到不同 Azure 区域的 Azure 虚拟机，Azure Site Recovery 允许你利用加速网络的优势。 本文介绍了如何为通过 Azure Site Recovery 复制的 Azure 虚拟机启用加速网络。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保了解：
 -   Azure 虚拟机[复制体系结构](azure-to-azure-architecture.md)
@@ -38,7 +38,7 @@ ms.locfileid: "73622428"
 ### <a name="supported-operating-systems"></a>支持的操作系统
 从 Azure 库即可支持以下分发：
 * **Windows Server 2016 Datacenter**
-* **Windows 服务器 2012 R2 数据中心**
+* **Windows Server 2012 R2 Datacenter**
 
 ### <a name="supported-vm-instances"></a>支持的 VM 实例
 大多数常规用途实例以及具有 2 个或更多 vCPU 的计算优化实例都支持加速网络。  这些受支持的系列包括 D/DSv2 和 F/Fs

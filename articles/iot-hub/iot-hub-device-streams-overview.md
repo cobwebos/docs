@@ -1,6 +1,6 @@
 ---
-title: Azure IoT 中心设备流 |微软文档
-description: Azure IoT 中心设备流的概述，用于为各种云到设备通信方案提供安全的双向 TCP 隧道。
+title: Azure IoT 中心设备流 |Microsoft Docs
+description: Azure IoT 中心设备流概述，有助于实现各种云到设备通信方案的安全双向 TCP 隧道。
 author: robinsh
 services: iot-hub
 ms.service: iot-hub
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: robinsh
 ms.openlocfilehash: ff738e56226f7cbb720a754573a9d8607e0e3247
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73890459"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT 中心设备流（预览版）
@@ -26,17 +26,17 @@ Azure IoT 中心*设备流*可促进为各种云到设备通信方案创建安�
 
 IoT 中心设备流具有以下优点：
 
-* **防火墙友好的安全连接：** 无需在设备或网络外围打开入站防火墙端口即可从服务端点访问 IoT 设备（只需通过端口 443 连接到 IoT 中心）。
+* **防火墙友好的安全连接：** 可以从服务终结点访问 IoT 设备，而无需在设备或网络外围打开入站防火墙端口（仅需要端口 443 上到 IoT 中心的出站连接）。
 
-* **身份验证：** 隧道的设备和服务侧都需要使用相应的凭据使用 IoT 中心进行身份验证。
+* **身份验证：** 隧道的设备端和服务端都需要使用相应的凭据对 IoT 中心进行身份验证。
 
-* **加密：** 默认情况下，IoT 中心设备流使用启用 TLS 的连接。 这可确保始终加密流量，而无论应用程序是否使用加密。
+* **加密：** 默认情况下，IoT 中心设备流使用启用了 TLS 的连接。 这可确保始终加密流量，而无论应用程序是否使用加密。
 
-* **连接简单性：** 在许多情况下，使用设备流无需复杂的虚拟专用网络设置，即可实现与 IoT 设备的连接。
+* **简单的连接：** 在许多情况下，使用设备流可消除对虚拟专用网络进行复杂设置以连接到 IoT 设备的需求。
 
-* **与 TCP/IP 堆栈的兼容性：** IoT 中心设备流可以容纳 TCP/IP 应用程序流量。 这意味着各种专有协议和标准协议均可利用此功能。
+* **与 TCP/IP 堆栈的兼容性：** IoT 中心设备流可以接纳 TCP/IP 应用程序流量。 这意味着各种专有协议和标准协议均可利用此功能。
 
-* **在专用网络设置中易于使用：** 服务可以通过引用设备 ID 而不是设备的 IP 地址来与设备通信。 在设备位于专用网络内并拥有专用 IP 地址，或其 IP 地址由系统动态分配且对于服务端未知的情况下，这很有用。
+* **专用网络设置下的易用性：** 服务可以通过引用设备 ID（而不是设备的 IP 地址）与设备通信。 在设备位于专用网络内并拥有专用 IP 地址，或其 IP 地址由系统动态分配且对于服务端未知的情况下，这很有用。
 
 ## <a name="device-stream-workflows"></a>设备流工作流
 
@@ -66,7 +66,7 @@ IoT 中心设备流具有以下优点：
 
 * 上述流创建流程完成后，流式处理终结点将充当代理，并通过其各自的 WebSocket 在服务和设备之间传输流量。
 
-* 设备和服务都需要端口 443 上的到 IoT 中心主要终结点和流式处理终结点的出站连接。 IoT 中心门户的“概览”选项卡上提供这些终结点的 URL。**
+* 设备和服务都需要端口 443 上的到 IoT 中心主要终结点和流式处理终结点的出站连接。 IoT 中心门户的“概览”选项卡上提供这些终结点的 URL。 
 
 * 已建立的流的可靠性和排序保证与 TCP 的可靠性和排序保证相当。
 
@@ -78,7 +78,7 @@ IoT 中心设备流具有以下优点：
 
 ## <a name="connectivity-requirements"></a>连接要求
 
-设备流的设备端和服务端都必须能够建立到 IoT 中心及其流式处理终结点的启用 TLS 的连接。 这需要在端口 443 上建立到这些终结点的出站连接。 可以在 IoT 中心的“概述”选项卡上找到与这些终结点关联的主机名，如下图所示**：
+设备流的设备端和服务端都必须能够建立到 IoT 中心及其流式处理终结点的启用 TLS 的连接。 这需要在端口 443 上建立到这些终结点的出站连接。 可以在 IoT 中心的“概述”选项卡上找到与这些终结点关联的主机名，如下图所示  ：
 
 ![“设备流终结点”](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
 
@@ -106,7 +106,7 @@ az iot hub devicestream show --name <YourIoTHubName>
 
 如本文开头所述，设备在设备流启动过程中创建到 IoT 中心流式处理终结点的出站连接。 设备或其网络上的防火墙必须允许端口 443 上到流式传输网关的出站连接（请注意，通信发生在使用 TLS 加密的 WebSocket 连接上）。
 
-设备流式处理终结点的主机名可以在 Azure IoT 中心门户下"概述"选项卡![下找到。](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
+可以在 Azure IoT 中心门户的“概述”选项卡下找到设备流式处理终结点的主机名。![“设备流终结点”](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
 
 或者，可以使用 Azure CLI 找到此信息：
 
@@ -124,15 +124,15 @@ az iot hub devicestream show --name <YourIoTHubName>
 
 按照以下步骤为 IoT 中心的设备流活动配置 Azure Monitor 日志：
 
-1. 导航到 IoT 中心的“诊断设置”选项卡，然后单击“打开诊断”链接****。
+1. 导航到 IoT 中心的“诊断设置”选项卡，然后单击“打开诊断”链接   。
 
    ![“启用诊断日志”](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings-pane.png)
 
-2. 提供诊断设置的名称，然后选择“发送到 Log Analytics”选项**。 系统将引导你选择现有的 Log Analytics 工作区资源或创建新的资源。 此外，在列表中选中“DeviceStreams”**。
+2. 提供诊断设置的名称，然后选择“发送到 Log Analytics”选项  。 系统将引导你选择现有的 Log Analytics 工作区资源或创建新的资源。 此外，在列表中选中“DeviceStreams”  。
 
     ![“启用设备流日志”](./media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png)
 
-3. 现在可以在 IoT 中心门户的“日志”选项卡下访问设备流日志**。 设备流活动日志将在 `AzureDiagnostics` 表中显示并具有 `Category=DeviceStreams`。
+3. 现在可以在 IoT 中心门户的“日志”选项卡下访问设备流日志  。 设备流活动日志将在 `AzureDiagnostics` 表中显示并具有 `Category=DeviceStreams`。
 
    如下所示，日志中还提供目标设备的标识和操作的结果。
 
@@ -140,7 +140,7 @@ az iot hub devicestream show --name <YourIoTHubName>
 
 ## <a name="regional-availability"></a>区域可用性
 
-在公开预览期间，IoT 中心设备流在美国中部、美国中部 EUAP、北欧和东南亚地区提供。 请确保在这其中的一个区域创建中心。
+在公共预览版期间，IoT 中心设备流可用于美国中部、美国中部 EUAP、北欧和东南亚区域。 请确保在这其中的一个区域创建中心。
 
 ## <a name="sdk-availability"></a>SDK 可用性
 
@@ -156,7 +156,7 @@ IoT 中心页上提供两个[快速入门示例](/azure/iot-hub)。 这些示例
 
 * *echo* 示例演示如何以编程方式使用设备流（通过直接调用 SDK API）。
 
-* ** 本地代理示例演示如何通过设备流以隧道方式连接现成的客户端/服务器应用程序流（例如 SSH、RDP 或 Web）。
+*  本地代理示例演示如何通过设备流以隧道方式连接现成的客户端/服务器应用程序流（例如 SSH、RDP 或 Web）。
 
 这些示例在下面进行更详细的介绍。
 

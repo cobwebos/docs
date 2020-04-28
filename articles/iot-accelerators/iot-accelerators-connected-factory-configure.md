@@ -1,6 +1,6 @@
 ---
 title: 配置连接的工厂拓扑 - Azure | Microsoft Docs
-description: 本文介绍如何配置连接的工厂解决方案加速器，包括其拓扑。
+description: 本文介绍如何配置已连接的工厂解决方案加速器（包括其拓扑）。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: 5fa3d4d4fdfa0dd81cd8ab8772ffb3903dda289f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73820120"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>配置连接的工厂解决方案加速器
@@ -264,9 +264,9 @@ ms.locfileid: "73820120"
 
 此类别中的属性定义连接的工厂仪表板的可视外观。 示例包括：
 
-* “属性”
-* 描述
-* 图像
+* 名称
+* 说明
+* 映像
 * 位置
 * 单位
 * Visible
@@ -282,7 +282,7 @@ WebApp 维护包含所有拓扑节点信息的内部数据字典。 Guid 和 Opc
 * 要包括在计算中的 OPC UA 节点值。
 * 从遥测值计算图表数据的方式。
 
-连接工厂使用 OEE 公式，由 发布[http://www.oeefoundation.org](http://www.oeefoundation.org)。
+连接工厂使用由发布的 OEE 公式[http://www.oeefoundation.org](http://www.oeefoundation.org)。
 
 工作站中的 OPC UA 节点对象支持在 OEE/KPI 计算中使用标记。 Relevance 属性指示 OPC UA 节点值应用于的 OEE/KPI 图表数据****。 OpCode 属性定义如何在计算中包含值****。
 
@@ -307,7 +307,7 @@ WebApp 维护包含所有拓扑节点信息的内部数据字典。 Guid 和 Opc
 
   标识 OPC UA 服务器中的节点值。 此属性的格式必须在 OPC UA 规范中指定。 在引入的消息中，此属性作为 NodeId 发送****。
 
-有关遥测数据如何引入连接工厂的详细信息，请参阅[什么是 OPC 发布服务器](overview-opc-publisher.md)。
+有关如何将遥测数据引入到连接工厂的详细信息，请参阅[什么是 OPC 发布服务器](overview-opc-publisher.md)。
 
 ## <a name="example-how-kpi1-is-calculated"></a>示例：如何计算 KPI1
 
@@ -340,4 +340,4 @@ NumberOfManufactureredProducts 节点值的一个特征是它只会增加****。
 
 ## <a name="next-steps"></a>后续步骤
 
-建议的下一步是学习如何[自定义连接的工厂解决方案](iot-accelerators-connected-factory-customize.md)。
+建议的下一步是了解如何[自定义已连接的工厂解决方案](iot-accelerators-connected-factory-customize.md)。

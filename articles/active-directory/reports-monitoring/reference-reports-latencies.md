@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6d031546bb4f1f05e9ea2abb5b74fe911b0b507f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74007706"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory 报告延迟
@@ -68,7 +68,7 @@ ms.locfileid: "74007706"
 
 Azure AD 使用自适应机器学习算法和试探法来检测与用户帐户相关的可疑操作。 每个检测到的可疑操作都存储在称为**风险检测**的记录中。
 
-下表列出了风险检测的延迟信息。
+下表列出了风险检测的滞后时间信息。
 
 | 报表 | 最小值 | 平均值 | 最大值 |
 | :-- | --- | --- | --- |
@@ -82,6 +82,6 @@ Azure AD 使用自适应机器学习算法和试探法来检测与用户帐户�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure AD 报告概述](overview-reports.md)
+* [Azure AD 报表概述](overview-reports.md)
 * [以编程方式访问 Azure AD 报告](concept-reporting-api.md)
-* [Azure 活动目录风险检测](concept-risk-events.md)
+* [Azure Active Directory 风险检测](concept-risk-events.md)

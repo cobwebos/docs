@@ -16,13 +16,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e75ad29c5b4a76de5317991995f132c6cb53bbe3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70211846"
 ---
-# <a name="troubleshoot-azure-ad-connect-install-issues"></a>疑难解答：Azure AD 连接安装问题
+# <a name="troubleshoot-azure-ad-connect-install-issues"></a>疑难解答：Azure AD Connect 安装问题
 
 ## <a name="recommended-steps"></a>**建议的步骤**
 请查看适合你的 [Azure AD Connect 安装类型](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-select-installation)。 如果满足快速安装的条件，则强烈建议进行快速安装。 快速安装提供完成安装所需的最少选项，因此出现问题的可能性更小。 
@@ -45,7 +45,7 @@ ms.locfileid: "70211846"
 
 * [联机 Azure Active Directory 的连接问题](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-connectivity)。
 
-* [本地活动目录的权限问题](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account)。
+* [本地 Active Directory 的权限问题](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account)。
 
 ## <a name="recommended-documents"></a>**建议的文档**
 * [Azure AD Connect 的先决条件](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites)
@@ -53,11 +53,11 @@ ms.locfileid: "70211846"
 * [通过快速设置开始使用 Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-express)
 * [Azure AD Connect 的自定义安装](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom)
 * [Azure AD Connect：从旧版升级到最新版本](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)
-* [Azure AD 连接：什么是暂存服务器？](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-topologies#staging-server)
+* [Azure AD Connect：过渡服务器是什么？](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-topologies#staging-server)
 * [什么是 ADConnectivityTools PowerShell 模块？](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-adconnectivitytools)
 
 ## <a name="next-steps"></a>后续步骤
-- [Azure AD 连接同步](how-to-connect-sync-whatis.md)。
+- [Azure AD Connect 同步](how-to-connect-sync-whatis.md)。
 - [什么是混合标识？](whatis-hybrid-identity.md)
 
 

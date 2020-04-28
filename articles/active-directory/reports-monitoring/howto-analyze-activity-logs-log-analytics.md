@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 监视器日志分析活动日志 |微软文档
-description: 了解如何使用 Azure 监视器日志分析 Azure 活动目录活动日志
+title: 使用 Azure Monitor 日志分析活动日志 |Microsoft Docs
+description: 了解如何使用 Azure Monitor 日志分析 Azure Active Directory 活动日志
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2d6212692465270182db541889bed5f03a08a345
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74008278"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>使用 Azure Monitor 日志分析 Azure AD 活动日志
@@ -36,10 +36,10 @@ ms.locfileid: "74008278"
 
 若要按照文中内容操作，需要：
 
-* 在 Azure 订阅中创建 Log Analytics 工作区。 了解如何[创建日志分析工作区](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)。
+* 在 Azure 订阅中创建 Log Analytics 工作区。 了解如何[创建 Log Analytics 工作区](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)。
 * 首先，完成[将 Azure AD 活动日志路由到 Log Analytics 工作区](howto-integrate-activity-logs-with-log-analytics.md)的相关步骤。
-*  [访问](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions)日志分析工作区
-* Azure 活动目录中的以下角色（如果通过 Azure 活动目录门户访问日志分析）
+*  [访问](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions)log analytics 工作区
+* Azure Active Directory 中的以下角色（如果你要通过 Azure Active Directory 门户访问 Log Analytics）
     - 安全管理员
     - 安全读取者
     - 报表读者
@@ -47,7 +47,7 @@ ms.locfileid: "74008278"
     
 ## <a name="navigate-to-the-log-analytics-workspace"></a>导航到 Log Analytics 工作区
 
-1. 登录到 Azure[门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 
 2. 选择“Azure Active Directory”****，然后从“监视”**** 部分选择“日志”**** 以打开 Log Analytics 工作区。 随即工作区打开，并含有默认查询。
 
@@ -61,7 +61,7 @@ ms.locfileid: "74008278"
 1. 在上一节中的默认查询视图中，选择“架构”**** 并展开工作区。 
 
 2. 展开“日志管理”**** 部分，然后展开“AuditLogs”**** 或“SignInLogs”**** 以查看日志架构。
-    ![审核日志](./media/howto-analyze-activity-logs-log-analytics/auditlogschema.png)![登录日志](./media/howto-analyze-activity-logs-log-analytics/signinlogschema.png)
+    ![审核日志](./media/howto-analyze-activity-logs-log-analytics/auditlogschema.png) ![登录日志](./media/howto-analyze-activity-logs-log-analytics/signinlogschema.png)
 
 ## <a name="query-the-azure-ad-activity-logs"></a>查询 Azure AD 活动日志
 
@@ -108,7 +108,7 @@ AuditLogs
 * **登录事件**：此视图显示与监视登录活动最相关的报表，例如，分别按应用程序、用户、设备统计的登录情况，以及随时间推移跟踪登录情况的汇总视图。
 * **用户执行“同意”相关情况**：此视图显示与用户同意相关的报表，如由用户执行的“同意”操作、按执行“同意”操作的用户统计的登录情况，以及按所有基于同意操作的应用程序统计的登录情况。 
 
-了解如何[安装和使用 Azure AD 活动日志的日志分析视图](howto-install-use-log-analytics-views.md)。 
+了解如何[为 Azure AD 活动日志安装和使用 log analytics 视图](howto-install-use-log-analytics-views.md)。 
 
 
 ## <a name="next-steps"></a>后续步骤

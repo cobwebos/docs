@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
 ms.openlocfilehash: 79abaade22fc107fa4c848607ff48232eeeb58ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73823759"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>跨扩展云数据库进行报告（预览）
@@ -28,7 +28,7 @@ ms.locfileid: "73823759"
 
 对于非分片数据库，请参阅[跨具有不同架构的云数据库进行查询](sql-database-elastic-query-vertical-partitioning.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 使用弹性数据库客户端库创建分片映射。 [分片映射管理](sql-database-elastic-scale-shard-map-management.md)。 或者使用[弹性数据库工具入门](sql-database-elastic-scale-get-started.md)中的示例应用程序。
 * 也可以参阅[将现有数据库迁移到扩展数据库](sql-database-elastic-convert-to-use-elastic-tools.md)。
@@ -40,7 +40,7 @@ ms.locfileid: "73823759"
 这些语句在弹性查询数据库中创建元数据表示形式的分片数据层。
 
 1. [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx)
-2. [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
+2. [创建数据库范围的凭据](https://msdn.microsoft.com/library/mt270260.aspx)
 3. [CREATE EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)
 4. [创建外部表](https://msdn.microsoft.com/library/dn935021.aspx)
 
@@ -54,7 +54,7 @@ ms.locfileid: "73823759"
     [;]
 
 > [!NOTE]
-> 确保 *"\<\>用户名"* 不包含任何 *"\@服务器名称"* 后缀。
+> 请确保“*username\<”\>* 中不包括任何“*servername”\@* 后缀。
 
 ## <a name="12-create-external-data-sources"></a>1.2 创建外部数据源
 
@@ -142,9 +142,9 @@ SCHEMA\_NAME 和 OBJECT\_NAME 子句将外部表定义映射到不同架构的�
 
 DISTRIBUTION 子句指定用于此表的数据分布。 查询处理器利用 DISTRIBUTION 子句中提供的信息来构建最有效的查询计划。
 
-1. **SHARDED**表示数据在数据库中水平分区。 数据分布的分区键为 **<sharding_column_name>** 参数。
-2. **REPLICATED**表示每个数据库上都有表的相同副本。 要负责确保各数据库上的副本是相同的。
-3. **ROUND\_ROBIN**表示使用与应用程序相关的分发方法对表进行水平分区。
+1. **SHARDED** 表示数据在各数据库之间横向分区。 数据分布的分区键为 **<sharding_column_name>** 参数。
+2. **REPLICATED** 表示每个数据库都存在表的相同副本。 要负责确保各数据库上的副本是相同的。
+3. **ROUND\_ROBIN** 表示使用依赖于应用程序的分布方法对表进行横向分区。
 
 **数据层引用**：外部表 DDL 引用外部数据源。 外部数据源指定分片映射，后者为外部表提供在数据层中找到所有数据库所需的信息。
 

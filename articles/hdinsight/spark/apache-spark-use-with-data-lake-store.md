@@ -1,6 +1,6 @@
 ---
-title: 使用 HDInsight 阿帕奇火花分析 Azure 数据存储第 1 代
-description: 运行 Apache Spark 作业以分析存储在 Azure 数据湖存储第 1 代中的数据
+title: 分析 HDInsight Apache Spark Azure Data Lake Storage Gen1
+description: 运行 Apache Spark 作业来分析存储在 Azure Data Lake Storage Gen1 中的数据
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,15 +9,15 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: f7a6ab954aff1bcc2e3dae3fc035db4b136ccbbe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73818168"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>使用 HDInsight Spark 群集分析 Data Lake Storage Gen1 中的数据
 
-在本文中，您可以使用带有 HDInsight Spark 群集的[Jupyter 笔记本](https://jupyter.org/)来运行从数据湖存储帐户读取数据的作业。
+本文介绍如何使用 HDInsight Spark 群集可用[Jupyter Notebook](https://jupyter.org/)来运行从 Data Lake Storage 帐户读取数据的作业。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -56,7 +56,7 @@ ms.locfileid: "73818168"
 
 ## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage-gen1"></a>使用包含 Data Lake Store Gen1 的 HDInsight Spark 群集
 
-1. 从[Azure 门户](https://portal.azure.com/)（从起始板）单击 Apache Spark 群集的磁贴（如果将其固定到启动板）。 您还可以在 **"浏览所有** > **HDInsight 群集**"下导航到群集。
+1. 在[Azure 门户](https://portal.azure.com/)的启动板中，单击 Apache Spark 群集的磁贴（如果已将它固定到启动板）。 还可在 "**浏览所有** > **HDInsight 群集**" 下导航到群集。
 
 2. 在 Spark 群集边栏选项卡中单击“快速链接”****，并在“群集仪表板”**** 边栏选项卡中单击“Jupyter 笔记本”****。 出现提示时，请输入群集的管理员凭据。
 

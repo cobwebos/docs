@@ -10,10 +10,10 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: ad912eb0b26354d40a654a1c8782dfcb960235e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73847525"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>升级到 Azure 认知搜索 .NET SDK 版本 10
@@ -68,7 +68,7 @@ Azure 认知搜索 .NET SDK 版本 10 面向 REST API 的最新正式版 (`2019-
 
 版本 9 和更低版本中错误地指定了[自定义 Web API 技能](cognitive-search-custom-skill-web-api.md)的定义。 
 
-`WebApiSkill` 的模型将 `HttpHeaders` 指定为包含字典的对象属性。__ 以这种方式创建带有 `WebApiSkill` 构造的技能集会导致异常，因为 REST API 会将请求视为格式不当。 此问题已得到更正， 现在会设置为 `WebApiSkill` 模型本身上的`HttpHeaders` **顶级字典属性** - 请求被视为来自 REST API 的有效请求。
+`WebApiSkill` 的模型将 `HttpHeaders` 指定为包含字典的对象属性。  以这种方式创建带有 `WebApiSkill` 构造的技能集会导致异常，因为 REST API 会将请求视为格式不当。 此问题已得到更正，`HttpHeaders` 现在会设置为 `WebApiSkill` 模型本身上的**顶级字典属性** - 请求被视为来自 REST API 的有效请求。
 
 例如，如果你以前尝试按如下所示实例化 `WebApiSkill`：
 
@@ -147,16 +147,16 @@ var skillset = new Skillset()
 
 `ItemError` 和 `ItemWarning` 模型（分别用于封装索引器执行期间发生的错误和警告的详细信息）已经过修改，现在包含三个旨在帮助调试索引器的新属性。 这些属性为：
 
-- `Name`： 错误源自的源的名称。 例如，错误中可能会提到附加的技能集中的特定技能。
-- `Details`：有关错误或警告的其他详细详细信息。
-- `DocumentationLink`：指向特定错误或警告的故障排除指南的链接。
+- `Name`：错误来源的名称。 例如，错误中可能会提到附加的技能集中的特定技能。
+- `Details`：有关错误或警告的其他详细信息。
+- `DocumentationLink`：针对具体错误或警告的故障排除指南的链接。
 
 > [!NOTE]
 > 我们已开始组织错误和警告的内容，以尽可能地包含这些有用的信息。 我们正努力确保在所有错误和警告中提供这些详细信息，但这项工作正在进行，并且不一定总会填充这些附加的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 更改整形程序技能很有可能会对新代码或现有代码造成影响。 作为下一步，请务必重新访问此示例，说明输入结构：[沙珀技能 JSON 定义示例](cognitive-search-skill-shaper.md)
-- 浏览[AI 扩充概述](cognitive-search-concept-intro.md)。
+- 更改整形程序技能很有可能会对新代码或现有代码造成影响。 接下来，请务必重新访问这个演示输入结构的示例：[整形程序技能 JSON 定义示例](cognitive-search-skill-shaper.md)
+- 浏览 [AI 扩充概述](cognitive-search-concept-intro.md)。
 - 我们欢迎你对 SDK 提供反馈。 如果遇到问题，请随时通过 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search) 向我们寻求帮助。 如果找到 Bug，可以在 [Azure .NET SDK GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/issues)中提出问题。 务必在问题标题上加前缀“[Azure 认知搜索]”。
 

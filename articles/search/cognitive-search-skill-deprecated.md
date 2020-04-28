@@ -1,7 +1,7 @@
 ---
-title: 弃用的认知技能
+title: 已弃用的认知技能
 titleSuffix: Azure Cognitive Search
-description: 此页包含被视为已弃用的认知技能的列表，在不久的将来 Azure 认知搜索技能集中将不支持这些技能。
+description: 此页包含一系列被视为已弃用的认知技能，在不久的将来，Azure 认知搜索技能组中将不再支持这些技能。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,20 +9,20 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 5f3587e4398be28cbaa2372be720258196bb48ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72792019"
 ---
-# <a name="deprecated-cognitive-skills-in-azure-cognitive-search"></a>Azure 认知搜索中的已弃用认知技能
+# <a name="deprecated-cognitive-skills-in-azure-cognitive-search"></a>Azure 认知搜索中已弃用的认知技能
 
 本文档介绍别视为已弃用的认知技能。 对内容使用以下指南：
 
 * 技能名称：将要弃用的技能的名称，映射到 @odata.type 属性。
-* 最后可用的 api 版本：通过该版本创建/更新包含相应弃用技能的技能集的最后一个版本。
+* 最后一个可用的 API 版本：Azure 认知搜索公共 API 的最后一个版本，通过它可以创建/更新技能组，其中包含相应的已弃用技能。
 * 结束支持：支持的最后一天，这一天过后相应的技能会被视为不受支持的技能。 以前创建的技能集应该仍然可以继续使用，但建议用户不要使用已弃用的技能。
-* 建议：通过前向迁移路径来使用支持的技能。 建议用户按照建议来继续接受支持。
+* 建议：通过向前迁移路径来使用支持的技能。 建议用户按照建议来继续接受支持。
 
 ## <a name="microsoftskillstextnamedentityrecognitionskill"></a>Microsoft.Skills.Text.NamedEntityRecognitionSkill
 
@@ -43,17 +43,17 @@ ms.locfileid: "72792019"
 > [!NOTE]
 > 目前不支持作为概念的置信度分数。 `minimumPrecision` 参数存在于 `EntityRecognitionSkill` 上，可供将来使用，并可实现后向兼容。
 
-1. （必需）** 将 `@odata.type` 从 `"#Microsoft.Skills.Text.NamedEntityRecognitionSkill"` 更改为 `"#Microsoft.Skills.Text.EntityRecognitionSkill"`。
+1. （必需）  将 `@odata.type` 从 `"#Microsoft.Skills.Text.NamedEntityRecognitionSkill"` 更改为 `"#Microsoft.Skills.Text.EntityRecognitionSkill"`。
 
-2. （可选）** 若要使用 `entities` 输出，请改用来自 `EntityRecognitionSkill` 的 `namedEntities` 复杂集合输出。 可以使用技能定义中的 `targetName`，将它映射到名为 `entities` 的注释。
+2. （可选）  若要使用 `entities` 输出，请改用来自 `EntityRecognitionSkill` 的 `namedEntities` 复杂集合输出。 可以使用技能定义中的 `targetName`，将它映射到名为 `entities` 的注释。
 
-3. （可选）** 如果不显式指定 `categories`，则除了那些受 `NamedEntityRecognitionSkill` 支持的类别，`EntityRecognitionSkill` 可能还会返回不同类型的类别。 如果此行为不合适，请确保将 `categories` 参数显式设置为 `["Person", "Location", "Organization"]`。
+3. （可选）  如果不显式指定 `categories`，则除了那些受 `NamedEntityRecognitionSkill` 支持的类别，`EntityRecognitionSkill` 可能还会返回不同类型的类别。 如果此行为不合适，请确保将 `categories` 参数显式设置为 `["Person", "Location", "Organization"]`。
 
-    __ 示例迁移定义
+     示例迁移定义
 
     * 简单迁移
 
-        __（之前）NamedEntityRecognition 技能定义
+         （之前）NamedEntityRecognition 技能定义
         ```json
         {
             "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
@@ -73,7 +73,7 @@ ms.locfileid: "72792019"
             ]
         }
         ```
-        __（之后）EntityRecognition 技能定义
+         （之后）EntityRecognition 技能定义
         ```json
         {
             "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
@@ -96,7 +96,7 @@ ms.locfileid: "72792019"
     
     * 稍微复杂的迁移
 
-        __（之前）NamedEntityRecognition 技能定义
+         （之前）NamedEntityRecognition 技能定义
         ```json
         {
             "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
@@ -119,7 +119,7 @@ ms.locfileid: "72792019"
             ]
         }
         ```
-        __（之后）EntityRecognition 技能定义
+         （之后）EntityRecognition 技能定义
         ```json
         {
             "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
@@ -145,7 +145,7 @@ ms.locfileid: "72792019"
         }
         ```
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 + [内置技能](cognitive-search-predefined-skills.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)

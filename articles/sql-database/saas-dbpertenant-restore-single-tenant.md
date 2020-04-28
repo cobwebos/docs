@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: billgib
 ms.date: 12/04/2018
 ms.openlocfilehash: a54e8e5629f6f8ad688b6fe11bbf50fc038095bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73818524"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>通过“每租户一个数据库”SaaS 应用程序还原单个租户
@@ -63,7 +63,7 @@ ms.locfileid: "73818524"
 
 ### <a name="open-the-events-app-to-review-the-current-events"></a>打开事件应用查看当前事件
 
-1. 打开活动中心 （;http://events.wtp.&lt用户&gt;.trafficmanager.net），然后选择**Contoso 音乐厅**。
+1. 打开 "事件中心（http://events.wtp.&lt&gt;trafficmanager.net）"，并选择 " **Contoso 音乐会厅**"。
 
    ![事件中心](media/saas-dbpertenant-restore-single-tenant/events-hub.png)
 
@@ -75,7 +75,7 @@ ms.locfileid: "73818524"
 
 1. 在 PowerShell ISE 中，打开 ...\\Learning Modules\\Business Continuity and Disaster Recovery\\RestoreTenant\\*Demo-RestoreTenant.ps1*，并设置以下值：
 
-   * **$DemoScenario** = **1** *，删除最后一个事件（没有门票销售）。*
+   * **$DemoScenario** = **1**，*删除上一个事件（不包含票证销售额）*。
 2. 按 F5 来运行脚本并删除最后一个事件。 将显示以下确认消息：
 
    ```Console
@@ -105,7 +105,7 @@ ms.locfileid: "73818524"
 
 不太可能通过将还原后的租户公开为单独的一个租户（自带事件应用）来向租户授予访问对已还原数据的访问权限。 但可以使用此方法来展示还原模式。 通常，你将授予对旧数据的只读访问权限，并将还原后的数据库保留指定的期限。 在示例中，在完成后可以通过运行 _Remove restored tenant_ 方案来删除已还原的租户条目。
 
-1. 设置 **$DemoScenario** = **4** *，删除还原的租户*。
+1. 设置 **$DemoScenario** = **4**，*删除还原的租户*。
 2. 若要运行脚本，请按 F5。
 3. 现在已从目录中删除了 ContosoConcertHall\_old** 条目。 在浏览器中关闭此租户的事件页面。
 
@@ -114,7 +114,7 @@ ms.locfileid: "73818524"
 本练习会将 Contoso Concert Hall 租户还原到删除事件之间的某个时间点。 Restore-TenantInPlace 脚本会将租户数据库还原到新的数据库中并删除原始数据库**。 此还原模式最适用于在发生严重数据损坏后进行恢复，并且租户可能必须承受大量数据丢失。
 
 1. 在 PowerShell ISE 中，打开 **Demo-RestoreTenant.ps1** 文件。
-2. 设置 **$DemoScenario** = **5**，*将租户还原到位*。
+2. 设置 **$DemoScenario** = **5**，*就地还原租户*。
 3. 若要运行脚本，请按 F5。
 
 该脚本会将租户数据库还原到删除事件之前的某个时间点。 它首先使 Contoso Concert Hall 脱机，以防止进一步更新。 然后，通过从还原点进行恢复来创建一个并行数据库。 还原后的数据库以时间戳命名，以确保该数据库名称不与现有租户数据库名称冲突。 接着，删除旧租户数据库，并将还原的数据库重命名为原始数据库名称。 最后，将 Contoso Concert Hall 联机，使应用能够访问还原的数据库。

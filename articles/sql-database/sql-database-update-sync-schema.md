@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/14/2018
 ms.openlocfilehash: 639901975bbb66b9f410bea297d9e48cd96d6d1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73822434"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>在 Azure SQL 数据同步中自动复制架构更改
@@ -31,7 +31,7 @@ SQL 数据同步可让用户在 Azure SQL 数据库与本地 SQL Server 之间�
 本文使用 ALTER TABLE 作为架构更改的示例，但此解决方案也适用于其他类型的架构更改。
 
 > [!IMPORTANT]
-> 我们建议仔细阅读本文，尤其是[故障排除](#troubleshoot)和[其他注意事项](#other)部分，然后在同步环境中开始实现自动架构更改复制。 我们还建议使用 SQL[数据同步读取跨多个云和本地数据库的同步数据](sql-database-sync-data.md)。某些数据库操作可能会破坏本文中描述的解决方案。 可能需要有 SQL Server 和 Transact-SQL 领域的其他知识才能排查这些问题。
+> 我们建议仔细阅读本文，尤其是[故障排除](#troubleshoot)和[其他注意事项](#other)部分，然后在同步环境中开始实现自动架构更改复制。 我们还建议阅读[使用 SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)。某些数据库操作可能导致本文所述的解决方法不起作用。 可能需要有 SQL Server 和 Transact-SQL 领域的其他知识才能排查这些问题。
 
 ![自动复制架构更改](media/sql-database-update-sync-schema/automate-schema-changes.png)
 
@@ -185,9 +185,9 @@ END
 
 1.  查询架构更改跟踪表，以列出 ID 大于上一步骤中检索到的 ID 的所有命令。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  忽略无法在终结点数据库中执行的命令。 需要处理架构不一致情况。 如果不一致性影响了应用程序，请还原原始架构更改。
+    a.  忽略无法在终结点数据库中执行的命令。 需要处理架构不一致情况。 如果不一致性影响了应用程序，请还原原始架构更改。
 
-    b.保留“数据库类型”设置，即设置为“共享”。  手动应用这些命令。
+    b.  手动应用这些命令。
 
 1.  更新架构更改历史记录表，并将上次应用的 ID 设置为正确值。
 

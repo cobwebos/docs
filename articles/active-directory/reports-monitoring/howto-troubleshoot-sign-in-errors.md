@@ -1,5 +1,5 @@
 ---
-title: 如何排除登录错误报告 ：微软文档
+title: 如何排查登录错误报告 |Microsoft Docs
 description: 了解如何在 Azure 门户中使用 Azure Active Directory 报告对登录错误进行故障排除
 services: active-directory
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec5fe7f62e8537a7f687202d365eb37d43b48b78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74008063"
 ---
 # <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>操作方法：使用 Azure Active Directory 报告对登录错误进行故障排除
@@ -37,17 +37,17 @@ ms.locfileid: "74008063"
 需要：
 
 * 一个使用高级 (P1/P2) 许可证的 Azure AD 租户。 请参阅 [Azure Active Directory Premium 入门](../fundamentals/active-directory-get-started-premium.md)来升级 Azure Active Directory 版本。
-* 在**租户的全局管理员**、**安全管理员**、**安全读取器**或**报表读取器**角色中的用户。 此外，任何用户都可以访问自己的登录活动。 
+* 用户，属于该租户的**全局管理员**、**安全管理员**、**安全读者**或**报表读者**角色。 此外，任何用户都可以访问自己的登录活动。 
 
 ## <a name="troubleshoot-sign-in-errors-using-the-sign-ins-report"></a>使用登录报告对登录错误进行故障排除
 
 1. 导航到 [Azure 门户](https://portal.azure.com)，选择目录。
 2. 在“监视”部分，选择 **Azure Active Directory**，然后选择“登录”。******** 
-3. 使用提供的筛选条件，通过用户名或对象标识符、应用程序名或日期缩小登录失败的范围。 此外，从 **"状态**"下拉列表中选择 **"失败"** 以仅显示失败的登录。 
+3. 使用提供的筛选条件，通过用户名或对象标识符、应用程序名或日期缩小登录失败的范围。 此外，从**状态**下拉选择 "**失败**" 以仅显示失败的登录。 
 
     ![筛选结果](./media/howto-troubleshoot-sign-in-errors/filters.png)
         
-4. 标识要调查的失败的登录。 选择它可打开有关失败登录的详细信息的其他详细信息窗口。 记下“登录错误代码”和“失败原因”********。 
+4. 确定要调查的登录失败。 选择它以打开 "其他详细信息" 窗口，其中包含有关登录失败的详细信息。 记下“登录错误代码”和“失败原因”********。 
 
     ![选择记录](./media/howto-troubleshoot-sign-in-errors/sign-in-failures.png)
         
@@ -55,7 +55,7 @@ ms.locfileid: "74008063"
 
     ![故障排除和支持](./media/howto-troubleshoot-sign-in-errors/troubleshooting-and-support.png)
 
-6. 失败原因是对错误的描述。 例如，在上述方案中，失败原因是**无效的用户名或密码或无效的本地用户名或密码**。 解决方法是使用正确的用户名和密码再次登录。
+6. 失败原因是对错误的描述。 例如，在上面的方案中，失败原因是**无效的用户名或密码或者本地用户名或密码无效**。 解决方法是使用正确的用户名和密码再次登录。
 
 7. 在此示例中，可在[登录错误代码参考](reference-sign-ins-error-codes.md)中搜索错误代码 50126 获取其他信息，包括补救方法****。 
 

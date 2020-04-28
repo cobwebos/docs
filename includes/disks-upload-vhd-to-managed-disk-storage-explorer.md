@@ -9,10 +9,10 @@ ms.date: 09/25/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 5104c3b4446a8d3747ce7cc1648ef05dd117eb3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74013771"
 ---
 存储资源管理器 1.10.0 可让用户上传、下载和复制托管磁盘，以及创建快照。 由于具有这些附加功能，存储资源管理器使你能够将数据从本地迁移到 Azure，并可以跨 Azure 区域迁移数据。
@@ -50,7 +50,7 @@ ms.locfileid: "74013771"
 
     ![选择资源组 1](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1.png)
 
-1. 选择 **"上传**"。
+1. 选择 "**上传**"。
 
     ![选择“上传”](media/disks-upload-vhd-to-managed-disk-storage-explorer/upload-button.png)
 
@@ -120,7 +120,7 @@ ms.locfileid: "74013771"
 
     ![创建快照](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-button.png)
 
-1. 在“创建快照”中，指定快照名称，以及要在其中创建快照的资源组。**** 然后选择 **"创建**"。
+1. 在“创建快照”中，指定快照名称，以及要在其中创建快照的资源组。**** 然后选择“创建”  。
 
     ![“创建快照”对话框](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-dialog.png)
 

@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
 ms.openlocfilehash: 2c153d818136c5d8804dae72004dfaf17fd1bf7a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73494532"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight 上的 Apache Spark 群集的已知问题
@@ -32,7 +32,7 @@ ms.locfileid: "73494532"
 
         yarn application –list
 
-    如果在未指定显式名称的情况下通过 Livy 交互式对话启动作业，则默认的作业名称将为 Livy。 对于由[Jupyter 笔记本](https://jupyter.org/)启动的 Livy 会话，作业`remotesparkmagics_*`名称从 开始。
+    如果在未指定显式名称的情况下通过 Livy 交互式对话启动作业，则默认的作业名称将为 Livy。 对于[Jupyter Notebook](https://jupyter.org/)启动的 Livy 会话，作业名称以开头`remotesparkmagics_*`。
 
 3. 运行以下命令以终止这些作业。
 
@@ -81,7 +81,7 @@ HDInsight Spark 群集不支持 Spark-Phoenix 连接器。
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>加载大型笔记本时发生错误
 
-加载大小较大的笔记本时**`Error loading notebook`** 可能会看到错误。  
+加载大型笔记本时，可能会看到错误 **`Error loading notebook`** 。  
 
 **缓解：**
 
@@ -91,7 +91,7 @@ HDInsight Spark 群集不支持 Spark-Phoenix 连接器。
 
 若要防止今后发生此错误，必须遵循一些最佳实践：
 
-* 必须保持较小的笔记本大小。 发回到 Jupyter 的所有 Spark 作业输出都将保存在笔记本中。  一般来说，使用 Jupyter 是避免`.collect()`在大型 RDD 或数据帧上运行的最佳做法;相反，如果要查看 RDD 的内容，请考虑运行`.take()`，或者`.sample()`使输出不会变得太大。
+* 必须保持较小的笔记本大小。 发回到 Jupyter 的所有 Spark 作业输出都将保存在笔记本中。  通常，最佳做法是使用 Jupyter，以避免在大型`.collect()` RDD 或 dataframes 上运行;相反，如果要查看 RDD 的内容，请考虑运行`.take()`或`.sample()` ，这样您的输出将不会变得过大。
 * 此外，在保存笔记本时，请清除所有输出单元以减小大小。
 
 ### <a name="notebook-initial-startup-takes-longer-than-expected"></a>笔记本初次启动花费的时间比预期要长
@@ -115,7 +115,7 @@ HDInsight Spark 群集不支持 Spark-Phoenix 连接器。
 
 2. 重新启动先前尝试启动的笔记本。 现在应有足够的资源用于创建会话。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
 
@@ -137,7 +137,7 @@ HDInsight Spark 群集不支持 Spark-Phoenix 连接器。
 * [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Apache Spark 应用程序](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [在 HDInsight 上的 Apache Spark 群集中使用 Apache Zeppelin 笔记本](apache-spark-zeppelin-notebook.md)
 * [在 HDInsight 的 Apache Spark 群集中可用于 Jupyter Notebook 的内核](apache-spark-jupyter-notebook-kernels.md)
-* [将外部包与 Jupyter 笔记本配合使用](apache-spark-jupyter-notebook-use-external-packages.md)
+* [Use external packages with Jupyter notebooks（将外部包与 Jupyter 笔记本配合使用）](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>管理资源

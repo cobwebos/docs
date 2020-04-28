@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: c664141a8c89ccbdf37bd3f9a19cfa659982a47d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73795569"
 ---
 # <a name="expose-an-aks-service-over-http-or-https-using-application-gateway"></a>使用应用程序网关通过 HTTP 或 HTTPS 公开 AKS 服务 
@@ -21,8 +21,8 @@ ms.locfileid: "73795569"
 ## <a name="prerequisites"></a>先决条件
 
 - 已安装 `ingress-azure` Helm Chart。
-  - [**绿场部署**](ingress-controller-install-new.md)：如果您从头开始，请参阅这些安装说明，其中概述了在 AKS 群集上部署具有应用程序网关的 AKS 群集和安装应用程序网关入口控制器的步骤。
-  - [**Brownfield 部署**](ingress-controller-install-existing.md)：如果您有现有的 AKS 群集和应用程序网关，请参阅这些说明，在 AKS 群集上安装应用程序网关入口控制器。
+  - [ **“绿色地带”部署**](ingress-controller-install-new.md)：如果是从头开始，请参阅这些安装说明，大致了解如何通过应用程序网关部署 AKS 群集，以及如何在 AKS 群集上安装应用程序网关入口控制器。
+  - [ **“棕色地带”部署**](ingress-controller-install-existing.md)：如果有现有的 AKS 群集和应用程序网关，请参阅这些说明，了解如何在 AKS 群集上安装应用程序网关入口控制器。
 - 若要在此应用程序上使用 HTTPS，则需 x509 证书及其私钥。
 
 ## <a name="deploy-guestbook-application"></a>部署 `guestbook` 应用程序

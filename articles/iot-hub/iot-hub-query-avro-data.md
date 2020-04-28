@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
 ms.openlocfilehash: 92fc5bb88ff5efd8fe1a8cd61be833b3984b673a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73605616"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>使用 Azure Data Lake Analytics 查询 Avro 数据
 
-本文讨论了如何查询 Avro 数据，以高效地将消息从 Azure IoT 中心路由到 Azure 服务。 [消息路由](iot-hub-devguide-messages-d2c.md)允许使用基于消息属性、消息正文、设备孪生标记和设备孪生属性的丰富查询来筛选数据。 要了解有关消息路由中的查询功能的更多信息，请参阅有关[消息路由查询语法](iot-hub-devguide-routing-query-syntax.md)的文章。
+本文讨论了如何查询 Avro 数据，以高效地将消息从 Azure IoT 中心路由到 Azure 服务。 [消息路由](iot-hub-devguide-messages-d2c.md)允许使用基于消息属性、消息正文、设备孪生标记和设备孪生属性的丰富查询来筛选数据。 若要了解有关消息路由中查询功能的详细信息，请参阅关于[消息路由查询语法](iot-hub-devguide-routing-query-syntax.md)的文章。
 
-挑战在于，当 Azure IoT 中心将消息路由到 Azure Blob 存储时，默认情况下 IoT 中心以 Avro 格式写入内容，该格式同时具有消息正文属性和消息属性。 Avro 格式不用于任何其他终结点。 尽管 Avro 格式可用于保存数据和消息，但将其用于查询数据将是一项挑战。 比较而言，JSON 或 CSV 格式更容易用来查询数据。 IoT 中心现在支持将数据写入 JSON 中的 Blob 存储以及 AVRO。
+面对这一挑战，当 Azure IoT 中心将消息路由到 Azure Blob 存储时，默认情况下，IoT 中心会写入 Avro 格式的内容，该格式同时具有消息正文属性和消息属性。 Avro 格式不用于其他任何终结点。 尽管 Avro 格式可用于保存数据和消息，但将其用于查询数据将是一项挑战。 比较而言，JSON 或 CSV 格式更容易用来查询数据。 IoT 中心现在支持将数据写入 JSON 中的 Blob 存储和 AVRO。
 
-有关详细信息，请参阅将[Azure 存储用作路由终结点](iot-hub-devguide-messages-d2c.md#azure-storage)。
+有关详细信息，请参阅[使用 Azure 存储作为路由终结点](iot-hub-devguide-messages-d2c.md#azure-storage)。
 
 为了解决非关系大数据需求和格式并应对这一挑战，可以使用许多大数据模式来对数据进行转换和缩放。 其中的一个模式“按查询付费”是 Azure Data Lake Analytics，它是本文重点要讨论的内容。 虽然可以在 Hadoop 或其他解决方案中轻松执行查询，但 Data Lake Analytics 通常更适合“按查询付费”方式。
 
@@ -173,6 +173,6 @@ U-SQL 中有一个适用于 Avro 的“提取程序”。 有关详细信息，�
 
 有关使用 IoT 中心完成端到端解决方案的示例，请参阅 [Azure IoT 解决方案加速器文档](/azure/iot-accelerators)。
 
-要了解有关使用 IoT 中心开发解决方案的更多内容，请参阅[IoT 中心开发人员指南](iot-hub-devguide.md)。
+若要了解有关通过 IoT 中心开发解决方案的详细信息，请参阅[Iot 中心开发人员指南](iot-hub-devguide.md)。
 
 若要详细了解 IoT 中心的消息路由，请参阅[使用 IoT 中心发送和接收消息](iot-hub-devguide-messaging.md)。

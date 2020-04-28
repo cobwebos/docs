@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: ca2bc66c755da2011cc7016f37b194caa6200d9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72793595"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中为多种语言创建索引
@@ -26,7 +26,7 @@ Azure 认知搜索提供了大量来自 Lucene 和 Microsoft 的语言分析器�
 创建字段时指定语言分析器。 将分析器添加到现有字段定义需要覆盖（并重新加载）索引，或创建与原始字段相同但具有分析器分配的新字段。 然后，可以在方便时删除未使用的字段。
 
 1. 登录 [Azure 门户](https://portal.azure.com)并查找搜索服务。
-1. 在服务仪表板顶部的命令栏中单击“添加索引”**** 即可启动新的索引，或打开现有索引，在添加至现有索引的新字段上设置分析器。
+1. 在服务仪表板顶部的命令栏中单击“添加索引”  即可启动新的索引，或打开现有索引，在添加至现有索引的新字段上设置分析器。
 1. 通过提供名称开始字段定义。
 1. 选择 Edm.String 数据类型。 只有字符串字段是全文可搜索的。
 1. 设置**可搜索**特性以启用 Analyzer 属性。 字段必须基于文本才能使用语言分析器。
@@ -46,7 +46,7 @@ Azure 认知搜索提供了大量来自 Lucene 和 Microsoft 的语言分析器�
 
 `https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=PolishContent&api-version=2019-05-06`
 
-您可以使用[**"搜索资源管理器"**](search-explorer.md)从门户查询索引，以粘贴类似于上面所示的查询。
+使用[**搜索资源管理器**](search-explorer.md)粘贴类似上述内容的查询，可以从门户查询索引。
 
 ## <a name="boost-language-specific-fields"></a>提升语言特定的字段
 

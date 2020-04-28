@@ -1,5 +1,5 @@
 ---
-title: 删除托管实例后删除子网
+title: 删除托管实例之后删除子网
 description: 了解如何在删除 Azure SQL 数据库托管实例后删除 Azure 虚拟网络。
 services: sql-database
 ms.service: sql-database
@@ -11,10 +11,10 @@ ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
 ms.date: 06/26/2019
 ms.openlocfilehash: 496d67a73207fd17182c31c5adad25c1fbe60c4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73820463"
 ---
 # <a name="delete-a-subnet-after-deleting-an-azure-sql-database-managed-instance"></a>在删除 Azure SQL 数据库托管实例后删除子网
@@ -35,7 +35,7 @@ ms.locfileid: "73820463"
 
 ![Azure 门户的屏幕截图，其中突出显示了搜索框](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-search.png)
 
-找到要删除的虚拟群集后，请选择此资源，然后选择“删除”。**** 系统会提示你确认删除该虚拟群集。
+找到要删除的虚拟群集后，请选择此资源，然后选择“删除”。  系统会提示你确认删除该虚拟群集。
 
 ![Azure 门户“虚拟群集”仪表板的屏幕截图，其中突出显示了“删除”选项](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-delete.png)
 
@@ -50,7 +50,7 @@ Azure 门户通知会显示确认信息，确认已成功提交删除虚拟群�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关概述，请参阅[什么是托管实例？](sql-database-managed-instance.md)
+- 有关概述，请参阅[什么是托管实例？](sql-database-managed-instance.md)。
 - 了解[托管实例中的连接体系结构](sql-database-managed-instance-connectivity-architecture.md)。
 - 了解如何[修改托管实例的现有虚拟网络](sql-database-managed-instance-configure-vnet-subnet.md)
 - 有关如何创建虚拟网络、创建托管实例，以及从数据库备份还原数据库的教程，请参阅[创建 Azure SQL 数据库托管实例](sql-database-managed-instance-get-started.md)。

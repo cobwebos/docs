@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 门户中查找用户活动报告 |微软文档
+title: 在 Azure 门户中查找用户活动报告 |Microsoft Docs
 description: 了解在 Azure 门户中何处查找 Azure Active Directory 用户活动报告。
 services: active-directory
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d356f8c10ae3770d9f4ade100ab0496ee58d772f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74008212"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>在 Azure 门户中查找活动报告
@@ -48,11 +48,11 @@ ms.locfileid: "74008212"
 
 ### <a name="filtering-on-audit-logs"></a>根据审核日志进行筛选
 
-通过在 **"类别"** 筛选器中指定审核数据，可以在审核报告中使用高级筛选来访问特定类别的审核数据。 例如，要查看与用户相关的所有活动，请选择 **"用户管理**"类别。 
+您可以使用审核报告中的高级筛选来访问特定类别的审核数据，方法是在**类别**筛选器中指定该类别。 例如，若要查看与用户相关的所有活动，请选择 " **UserManagement** " 类别。 
 
 类别包括：
 
-- All
+- 全部
 - AdministrativeUnit
 - ApplicationManagement
 - 身份验证
@@ -69,11 +69,11 @@ ms.locfileid: "74008212"
 - RoleManagement
 - UserManagement
 
-您还可以使用服务下拉列表筛选特定**服务**。 例如，要获取与自助服务密码管理相关的所有审核事件，请选择**自助服务密码管理**筛选器。
+你还可以使用**服务**下拉筛选器在特定服务上进行筛选。 例如，若要获取与自助服务密码管理相关的所有审核事件，请选择 "**自助服务密码管理**" 筛选器。
 
 服务包括：
 
-- All
+- 全部
 - 访问评审
 - 帐户预配 
 - 应用程序 SSO
@@ -106,18 +106,18 @@ ms.locfileid: "74008212"
 
 可以使用登录报告查看有关应用程序使用情况的详细信息，可以根据用户名或应用程序名称进行筛选。
 
-![筛选登录事件页面](./media/howto-find-activity-reports/07.png "筛选登录事件页面")
+!["筛选登录事件" 页](./media/howto-find-activity-reports/07.png ""筛选登录事件" 页")
 
 ## <a name="security-reports"></a>安全报表
 
 ### <a name="anomalous-activity-reports"></a>异常活动报告
 
-异常活动报告提供有关 Azure AD 可以检测和报告的安全相关风险检测的信息。
+异常活动报告提供 Azure AD 可以检测和报告的与安全相关的风险检测的相关信息。
 
-下表列出了 Azure AD 异常活动安全报告以及 Azure 门户中相应的风险检测类型。 有关详细信息，请参阅 [Azure Active Directory 风险检测](concept-risk-events.md)。  
+下表列出了 Azure AD 异常活动安全报告和 Azure 门户中的相应风险检测类型。 有关详细信息，请参阅 [Azure Active Directory 风险检测](concept-risk-events.md)。  
 
 
-| Azure AD 异常活动报告 |  身份保护风险检测类型|
+| Azure AD 异常活动报告 |  标识保护风险检测类型|
 | :--- | :--- |
 | 具有已泄漏凭据的用户 | 已泄漏凭据 |
 | 异常登录活动 | 不可能前往异常位置 |
@@ -126,7 +126,7 @@ ms.locfileid: "74008212"
 | 从具有可疑活动的 IP 地址登录 | 从具有可疑活动的 IP 地址登录 |
 | - | 从不熟悉的位置登录 |
 
-以下 Azure AD 异常活动安全报告不包括为 Azure 门户中的风险检测：
+以下 Azure AD 异常活动安全报告未作为 Azure 门户中的风险检测包括：
 
 * 多次失败后登录
 * 从多个地理区域登录
@@ -134,10 +134,10 @@ ms.locfileid: "74008212"
 
 ### <a name="detected-risk-detections"></a>检测到的风险检测
 
-您可以在[Azure 门户](https://portal.azure.com)中的**Azure 活动目录**边栏选项卡**的安全**部分中访问有关检测到的风险检测的报告。 检测到的风险检测在以下报告中跟踪：   
+可以在[Azure 门户](https://portal.azure.com)中的 " **Azure Active Directory** " 边栏选项卡上的 "**安全**" 部分中访问有关检测到的风险检测的报告。 在以下报表中跟踪检测到的风险检测：   
 
-- [面临风险的用户](concept-user-at-risk.md)
-- [风险登录](concept-risky-sign-ins.md)
+- [有风险的用户](concept-user-at-risk.md)
+- [有风险的登录](concept-risky-sign-ins.md)
 
     ![安全报表](./media/howto-find-activity-reports/04.png "安全报表")
 
@@ -149,11 +149,11 @@ ms.locfileid: "74008212"
 
 我下载了活动日志（审核日志或登录日志），但发现所选时间范围内的记录不全。 为什么？ 
 
- ![报表](./media/troubleshoot-missing-data-download/01.png)
+ ![报告](./media/troubleshoot-missing-data-download/01.png)
  
 #### <a name="cause"></a>原因
 
-在 Azure 门户中下载活动日志时，我们将缩放限制为 250000 条记录，按最近第一条排序。 
+下载 Azure 门户中的活动日志时，会将扩展限制为250000个记录，并按最新的顺序进行排序。 
 
 #### <a name="resolution"></a>解决方法
 
@@ -165,7 +165,7 @@ ms.locfileid: "74008212"
 
 我在 Azure 门户中执行了一些操作，本应在`Activity logs > Audit Logs`边栏选项卡中看到这些操作的审核日志，但却找不到。
 
- ![报表](./media/troubleshoot-missing-audit-data/01.png)
+ ![报告](./media/troubleshoot-missing-audit-data/01.png)
  
 #### <a name="cause"></a>原因
 
@@ -186,7 +186,7 @@ ms.locfileid: "74008212"
 
 我最近登录了 Azure 门户，本应在`Activity logs > Sign-ins`边栏选项卡中看到这些操作的登录日志，但却找不到。
 
- ![报表](./media/troubleshoot-missing-audit-data/02.png)
+ ![报告](./media/troubleshoot-missing-audit-data/02.png)
  
 #### <a name="cause"></a>原因
 
@@ -207,7 +207,7 @@ ms.locfileid: "74008212"
 
 无法在 Azure 门户中查看 30 天以上的登录和审核数据。 为什么？ 
 
- ![报表](./media/troubleshoot-missing-audit-data/03.png)
+ ![报告](./media/troubleshoot-missing-audit-data/03.png)
 
 #### <a name="cause"></a>原因
 

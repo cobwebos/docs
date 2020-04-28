@@ -12,10 +12,10 @@ ms.author: anjangsh
 ms.reviewer: MightyPen, sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 4791cd3a6b6f72c5d9ee4ca828d66b0d361f356c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73816769"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>探索如何使用 Azure SQL 数据库、SQL 数据仓库、数据工厂和 Power BI 运行 SaaS 分析
@@ -72,7 +72,7 @@ SaaS 应用程序在云中保存租户数据，这些数据可能非常庞大。
 若要完成本教程，请确保满足以下先决条件：
 - 已部署 Wingtip Tickets SaaS Database Per Tenant 应用程序。 若要在五分钟内进行部署，请参阅[部署并探究 Wingtip SaaS 应用程序](saas-dbpertenant-get-started-deploy.md)。
 - 已从 GitHub 下载 Wingtip Tickets SaaS Database Per Tenant 脚本和应用程序[源代码](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/)。 请参阅下载说明。 在提取 zip 文件的内容之前，请务必取消阻止该 zip 文件。**
-- 已安装 Power BI Desktop。 [下载电源 BI 桌面](https://powerbi.microsoft.com/downloads/)。
+- 已安装 Power BI Desktop。 [下载 Power BI Desktop](https://powerbi.microsoft.com/downloads/)。
 - 已预配其他租户批，具体请参阅[**有关预配租户的教程**](saas-dbpertenant-provision-and-catalog.md)。
 
 ### <a name="create-data-for-the-demo"></a>创建用于演示的数据
@@ -80,7 +80,7 @@ SaaS 应用程序在云中保存租户数据，这些数据可能非常庞大。
 本教程探讨如何分析门票销量数据。 此步骤将为所有租户生成门票数据。 稍后的步骤将提取这些数据进行分析。 确保已按如前所述预配租户批，以便获得足够的数据来公开不同购票模式的范围。__
 
 1. 在 PowerShell ISE 中，打开“…\Learning Modules\Operational Analytics\Tenant Analytics DW\Demo-TenantAnalyticsDW.ps1”，并设置以下值：**
-    - **$DemoScenario** = **1**购买所有场地的活动门票
+    - **$DemoScenario** = **1**针对所有会场的事件购买票证
 2. 按 **F5** 运行脚本，并为所有会场创建购票历史记录。 针对 20 个租户，该脚本将生成数万张门票，整个过程可能需要 10 分钟或更长。
 
 ### <a name="deploy-sql-data-warehouse-data-factory-and-blob-storage"></a>部署 SQL 数据仓库、数据工厂和 Blob 存储 
@@ -93,15 +93,15 @@ SaaS 应用程序在云中保存租户数据，这些数据可能非常庞大。
 
 现在，查看部署的 Azure 资源：
 #### <a name="tenant-databases-and-analytics-store"></a>租户数据库和分析存储
-使用 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 连接到 **tenants1-dpt-&lt;user&gt;** 和 **catalog-dpt-&lt;user&gt;** 服务器。 将 &lt;user&gt; 替换为部署应用时使用的值。 使用登录 =*开发人员*和密码 = *\@P 剑1*。 有关更多指导，请参阅[简介教程](saas-dbpertenant-wingtip-app-overview.md)。
+使用 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 连接到 **tenants1-dpt-&lt;user&gt;** 和 **catalog-dpt-&lt;user&gt;** 服务器。 将 &lt;user&gt; 替换为部署应用时使用的值。 使用 Login = *developer*和 Password = *P\@ssword1*。 有关更多指导，请参阅[简介教程](saas-dbpertenant-wingtip-app-overview.md)。
 
 ![从 SSMS 连接到 SQL 数据库服务器](media/saas-tenancy-tenant-analytics/ssmsSignIn.JPG)
 
 在对象资源管理器中：
 
-1. 展开*租户1-dpt-&lt;用户&gt;* 服务器。
+1. 展开*tenants1-user&lt;&gt; *服务器。
 1. 展开“数据库”节点，查看租户数据库的列表。
-1. 展开*目录用户&lt;&gt;* 服务器。
+1. 展开*user-&lt;user&gt; *服务器。
 1. 确认是否能够看到包含以下对象的分析存储：
     1. **raw_Tickets**、**raw_Customers**、**raw_Events** 和 **raw_Venues** 表保存从租户数据库提取的原始数据。
     1. 星型架构表为 **fact_Tickets**、**dim_Customers**、**dim_Venues**、**dim_Events** 和 **dim_Dates**。
@@ -158,7 +158,7 @@ Azure 数据工厂用于协调数据的提取、加载和转换。 从本教程�
 ### <a name="data-warehouse-pattern-overview"></a>数据仓库模式概述
 SQL 数据仓库用作分析存储，对租户数据执行聚合。 本示例中使用 PolyBase 将数据载入 SQL 数据仓库。 原始数据载入临时表，这些表中包含一个标识列，用于跟踪已转换为星型架构表的行。 下图显示了加载模式：![loadingpattern](media/saas-tenancy-tenant-analytics/loadingpattern.JPG)
 
-本示例使用了渐变维度 (SCD) 类型 1 维度表。 每个维度具有一个使用标识列定义的代理键。 为了节省时间，日期维度表已预先填充，这也是一种最佳做法。 对于其他维度表，创建表作为选择...（CTAS） 语句用于创建包含现有修改行和未修改行的临时表以及代理项。 这是使用 IDENTITY_INSERT=ON 实现的。 然后，使用 IDENTITY_INSERT=OFF 将新行插入表中。 为了方便回滚，现有维度表已重命名，并且临时表也已重命名，成为新的维度表。 在每次运行之前，会删除旧维度表。
+本示例使用了渐变维度 (SCD) 类型 1 维度表。 每个维度具有一个使用标识列定义的代理键。 为了节省时间，日期维度表已预先填充，这也是一种最佳做法。 对于其他维度表，CREATE TABLE 为 SELECT .。。（CTAS）语句用于创建一个临时表，其中包含现有的已修改行和非修改行以及代理键。 这是使用 IDENTITY_INSERT=ON 实现的。 然后，使用 IDENTITY_INSERT=OFF 将新行插入表中。 为了方便回滚，现有维度表已重命名，并且临时表也已重命名，成为新的维度表。 在每次运行之前，会删除旧维度表。
 
 维度表在事实数据表之前加载。 这种顺序可确保每次事实数据抵达之前，所有引用的维度已存在。 加载事实数据后，将会匹配每个对应维度的业务键，并将对应的代理键添加到每个事实。
 
@@ -189,16 +189,16 @@ SQL 数据仓库用作分析存储，对租户数据执行聚合。 本示例中
 
 1. 启动 Power BI Desktop。
 2. 在“开始”功能区上的菜单中，依次选择“获取数据”、“更多...”******** 从菜单中。
-3. 在 **"获取数据"** 窗口中，选择**Azure SQL 数据库**。
-4. 在数据库登录窗口中，输入服务器名称 （**目录-dpt-&lt;用户&gt;.database.windows.net**）。 选择 **"导入****数据连接模式**"，然后单击"**确定**"。 
+3. 在 "**获取数据**" 窗口中，选择 " **Azure SQL 数据库**"。
+4. 在 "数据库登录" 窗口中，输入服务器名称（**user-&lt;User&gt;. database.windows.net**）。 选择 "**导入****数据连接模式**"，然后单击 **"确定"**。 
 
     ![sign-in-to-power-bi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. 在左侧窗格中选择 **"数据库**"，然后输入用户名 =*开发人员*，然后输入密码 = *P\@ssword1*。 单击“连接”。  
+5. 选择左窗格中的 "**数据库**"，然后输入 "用户名 =*开发人员*"，并输入 password = *P\@ssword1*。 单击“连接”  。  
 
     ![database-sign-in](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
-6. 在 **"导航器"** 窗格中，在分析数据库下，选择星形架构表：fact_Tickets、dim_Events、dim_Venues、dim_Customers和**dim_Venues****dim_Customers****dim_Dates**。 **fact_Tickets** **dim_Events** 然后选择“加载”。**** 
+6. 在 "**导航器**" 窗格中的 "分析" 数据库下，选择星型架构表： **fact_Tickets**、 **dim_Events**、 **dim_Venues**、 **dim_Customers**和**dim_Dates**。 然后选择“加载”。**** 
 
 祝贺你！ 数据已成功载入 Power BI。 现在，请浏览有趣的可视化效果，以深入了解租户。 本教程将逐步讲解分析功能如何向 Wingtip Tickets 业务团队提供一些数据驱动的建议。 借助建议可以优化业务模型和客户体验。
 
@@ -261,4 +261,4 @@ AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[V
 
 ## <a name="additional-resources"></a>其他资源
 
-- 其他[教程，建立在翼尖SaaS应用程序](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)。
+- [基于 Wingtip SaaS 应用程序构建的其他教程](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)。

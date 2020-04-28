@@ -1,5 +1,5 @@
 ---
-title: Azure 分析服务身份验证和用户权限*微软文档
+title: Azure Analysis Services 身份验证和用户权限 |Microsoft Docs
 description: 本文了解 Azure Analysis Services 如何使用 Azure Active Directory (Azure AD) 进行身份管理和用户身份验证。
 author: minewiskan
 ms.service: azure-analysis-services
@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 4a054c3c042e18f1679acd75e5ba5ad74f66edff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73572765"
 ---
 # <a name="authentication-and-user-permissions"></a>身份验证和用户权限
@@ -78,7 +78,7 @@ Azure 资源所有者****。 资源所有者管理 Azure 订阅的资源。 资�
   
 ## <a name="next-steps"></a>后续步骤
 
-[使用 Azure 活动目录组管理对资源的访问](../active-directory/fundamentals/active-directory-manage-groups.md)   
+[使用 Azure Active Directory 组管理对资源的访问权限](../active-directory/fundamentals/active-directory-manage-groups.md)   
 [管理数据库角色和用户](analysis-services-database-users.md)  
 [管理服务器管理员](analysis-services-server-admins.md)  
 [基于角色的访问控制](../role-based-access-control/overview.md)  

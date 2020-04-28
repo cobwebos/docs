@@ -1,5 +1,5 @@
 ---
-title: 管理数据存储存储第 1 代资源 - Azure 存储资源管理器
+title: 管理 Data Lake Storage Gen1 资源-Azure 存储资源管理器
 description: 了解如何在 Azure 存储资源管理器中访问和管理 Azure Data Lake Storage Gen1 数据和资源
 author: jejiang
 ms.service: data-lake-store
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: jejiang
 ms.openlocfilehash: a5117f72f933e1e48dc471a75624a8d3921f55af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73832266"
 ---
 # <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>使用存储资源管理器管理 Azure Data Lake Storage Gen1 资源
@@ -142,7 +142,7 @@ Data Lake Storage Gen1 帐户的资源包含文件夹和文件。
 1. 选择要下载的文件夹或文件。
 2. 在主窗格的工具栏上，选择“下载”。****
 3. 在“选择用于保存已下载文件的文件夹”对话框中，指定位置和名称。****
-4. 选择“保存”。****
+4. 选择“保存”。 
 
 ### <a name="open-a-folder-or-file-from-your-local-computer"></a>从本地计算机打开文件夹或文件
 
@@ -195,7 +195,7 @@ Data Lake Storage Gen1 帐户的资源包含文件夹和文件。
 ## <a name="next-steps"></a>后续步骤
 
 * 查看[最新的存储资源管理器发行说明和视频](https://www.storageexplorer.com)。
-* 了解如何在[Azure 存储资源管理器中管理 Azure 宇宙 DB。](https://docs.microsoft.com/azure/cosmos-db/storage-explorer)
+* 了解如何[在 Azure 存储资源管理器中管理 Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/storage-explorer)。
 * [存储资源管理器入门](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)。
 * [Azure Data Lake Storage Gen1 入门](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview)。
 * 观看[关于如何在 Azure 存储资源管理器中使用 Azure Cosmos DB 的 YouTube 视频](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be)。

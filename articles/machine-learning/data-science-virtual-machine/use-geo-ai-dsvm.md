@@ -11,10 +11,10 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.openlocfilehash: 2d7532c51e2963c0dc9f8d02e7a0e32864e80f92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70278421"
 ---
 # <a name="using-the-geo-artificial-intelligence-data-science-virtual-machine"></a>使用地理人工智能数据科学虚拟机
@@ -37,11 +37,11 @@ ArcGIS 的 R 桥作为名为 [arcgisbinding](https://github.com/R-ArcGIS/r-bridg
 除了基础 Data Science VM 提供的基于机器学习和深度学习框架的示例，地理人工智能 Data Science VM 还提供了一组地理空间示例。 这些示例可以帮助你使用地理空间数据和 ArcGIS 软件快速开始 AI 应用程序开发：
 
 
-1. [使用 Python 开始进行地理空间分析](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/Python%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb)[：Arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm)库提供了一个介绍性示例，演示如何通过 Python 接口与 ArcGIS 处理地理空间数据。 它还介绍了如何将传统的机器学习与地理空间数据组合使用，并在 ArcGIS 中的地图上直观呈现结果。
+1. [开始使用 Python 地理空间分析](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/Python%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb)：一个介绍性示例，介绍了如何使用 [arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm) 库提供的到 ArcGIS 的 Python 接口来处理地理空间数据。 它还介绍了如何将传统的机器学习与地理空间数据组合使用，并在 ArcGIS 中的地图上直观呈现结果。
 
-2. [开始使用 R](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/R%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb)： 开始地理空间分析 ：一个介绍性示例，演示如何使用[由 Arcgis 绑定](https://github.com/R-ArcGIS/r-bridge)库提供的与 ArcGIS 的 R 接口处理地理空间数据。 
+2. [使用 R 进行地理空间分析入门](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/R%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb)：一个介绍性示例，介绍了如何使用 [arcgisbinding](https://github.com/R-ArcGIS/r-bridge) 库提供的到 ArcGIS 的 R 接口来处理地理空间数据。 
 
-3. [像素级土地利用分类](https://github.com/Azure/pixel_level_land_classification)：该教程展示了如何创建深度神经网络模型，使该模型接受航拍图像作为输入并返回土地覆盖标签。 土地覆盖标签的示例包括“森林”和“水”****。 模型会为图像中的每个像素返回这样的标签。 
+3. [像素级土地利用分类](https://github.com/Azure/pixel_level_land_classification)：该教程展示了如何创建深度神经网络模型，使该模型接受航拍图像作为输入并返回土地覆盖标签。 土地覆盖标签的示例包括“森林”和“水”   。 模型会为图像中的每个像素返回这样的标签。 
 
 
 ## <a name="next-steps"></a>后续步骤

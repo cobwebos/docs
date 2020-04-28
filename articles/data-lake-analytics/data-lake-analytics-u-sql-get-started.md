@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Analytics U-SQL 语言入门
-description: 了解有关 Azure Data Lake Analytics 中 U-SQL 语言的基础知识。 使用变量将第一个查询写入文件的额外数据、转换行集和聚合数据。
+description: 了解有关 Azure Data Lake Analytics 中 U-SQL 语言的基础知识。 使用变量编写你的第一个查询、转换行集和聚合数据。
 services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/23/2017
 ms.openlocfilehash: 8130679dcc519cecd25abf43902c003ad8047df3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71672820"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics U-SQL 入门

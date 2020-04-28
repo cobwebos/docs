@@ -1,5 +1,5 @@
 ---
-title: 高级 RS 服务层停用
+title: 服务层停用高级 RS
 description: “高级 RS”服务层级即将停用，对其的支持即将终结 - 请参阅迁移选项。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/07/2019
 ms.openlocfilehash: f00ecd19877ba6236bde5de73d450967abc1fe15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73821045"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Azure SQL 数据库“高级 RS”服务层级（预览版）即将停用 - 迁移选项
@@ -26,7 +26,7 @@ ms.locfileid: "73821045"
 
 - vCore 服务层级
 
-  [基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)中的“常规用途”和“业务关键”服务层级。******** 这两个服务层级已推出正式版。 基于 vCore 的购买模型还提供“超大规模”服务层级，该服务层级按需适应工作负荷的需求，可自动将每个数据库最大扩展到 100 TB。**** “超大规模”服务层级提供的 IO 性能与[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)中的“高级”服务层级相当，价格与“高级 RS”服务层级比较接近。
+  [基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)中的“常规用途”和“业务关键”服务层级。   这两个服务层级已推出正式版。 基于 vCore 的购买模型还提供“超大规模”服务层级，该服务层级按需适应工作负荷的需求，可自动将每个数据库最大扩展到 100 TB。  “超大规模”服务层级提供的 IO 性能与[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)中的“高级”服务层级相当，价格与“高级 RS”服务层级比较接近。
 - 开发/测试定价
 
   与 Visual Studio 订阅的许可证涵盖费率相比，[开发/测试定价](https://azure.microsoft.com/pricing/dev-test/)最多可将成本节省 55%。
@@ -100,4 +100,4 @@ ms.locfileid: "73821045"
 ## <a name="next-steps"></a>后续步骤
 
 - 有关适用于单一数据库的特定计算大小和存储大小选项的详细信息，请参阅[适用于单一数据库的 SQL 数据库基于 vCore 的资源限制](sql-database-vcore-resource-limits-single-databases.md)。
-- 有关可用于弹性池的特定计算大小和存储大小选择的详细信息，请参阅[弹性池的 SQL 数据库 vCore 资源限制](sql-database-vcore-resource-limits-elastic-pools.md)。
+- 有关弹性池可用的特定计算大小和存储大小选项的详细信息，请参阅[针对弹性池的 SQL 数据库基于 vCore 的资源限制](sql-database-vcore-resource-limits-elastic-pools.md)。

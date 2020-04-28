@@ -12,10 +12,10 @@ ms.author: genemi
 ms.reviewer: billgib, stein
 ms.date: 10/16/2018
 ms.openlocfilehash: 3277318e01362df8fc21ff7ca769aaeb8006abc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73827996"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>部署和浏览分片多租户应用程序
@@ -50,15 +50,15 @@ Wingtip 应用在 Azure 云中运行，并使用 Azure SQL 数据库。 下面�
 
 若要完成本教程，请确保已完成了以下先决条件：
 
-- 安装最新的 Azure PowerShell。 有关详细信息，请参阅[使用 Azure PowerShell 入门][link-azure-get-started-powershell-41q]。
+- 安装最新的 Azure PowerShell。 有关详细信息，请参阅[Azure PowerShell][link-azure-get-started-powershell-41q]入门。
 
 ## <a name="deploy-the-wingtip-tickets-app"></a>部署 Wingtip Tickets 应用
 
 ### <a name="plan-the-names"></a>对名称进行计划
 
 通过执行本部分中的步骤，提供用户值，用于确保资源名称为全局唯一，以及一个资源组的名称，该资源组包含部署应用时创建的所有资源****。 如果一个人名叫 Ann Finley，则建议输入以下名称**：
-- *用户：* **af1（**  *其首字母缩写，外加一个数字。如果第二次部署应用，请使用其他值（例如 af2）。*
-- *资源组：***翼尖-mt-af1（***翼尖-mt 表示这是分片的多租户应用程序。附加用户名 af1 将资源组名称与其包含的资源的名称相关联。*
+- *User：* **af1**  *（其首字母缩写，加上一个数字）。如果第二次部署应用，请使用不同的值（例如 af2）。）*
+- *资源组：* **wingtip-af1** *（wingtip 指示这是分片多租户应用程序。追加用户名 af1 会将资源组名称与它包含的资源的名称相关联。）*
 
 现在请选择自己的名称，并将其写下来。 
 
@@ -75,14 +75,14 @@ Wingtip 应用在 Azure 云中运行，并使用 Azure SQL 数据库。 下面�
     > 就本演示来说，请勿使用任何预先存在的资源组、服务器或池， 而应选择“创建新的资源组”。**** 使用完该应用程序时请删除此资源组，以停止相关计费。
     > 不要使用该应用程序及其创建的任何资源进行生产。 为了便于演示，应用中身份验证的某些部分和服务器防火墙设置将有意设置为不安全。
 
-    - 对于**资源组**- 选择 **"创建新**"，然后为资源组提供**名称**（区分大小写）。
-        - 从下拉列表中选择 **"位置**"。
+    - 对于 "**资源组**"，选择 "**新建**"，然后为资源组提供一个**名称**（区分大小写）。
+        - 从下拉列表中选择一个**位置**。
     - 对于“用户”，**** 建议选择短的“用户”值。****
 
 1. **部署应用程序**。
 
     - 单击“我同意上述条款和条件”。
-    - 单击“购买”****。
+    - 单击“购买”  。
 
 1. 通过单击“通知”（搜索框右侧的钟形图标）监视部署状态****。 部署 Wingtip 应用大约需要 5 分钟。
 
@@ -97,13 +97,13 @@ Wingtip 应用在 Azure 云中运行，并使用 Azure SQL 数据库。 下面�
 
 1. 浏览到 [WingtipTicketsSaaS-MultiTenantDb GitHub 存储库](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)。
 2. 单击“克隆或下载”****。
-3. 单击 **"下载 ZIP 并**保存文件"。
+3. 单击 "**下载 ZIP** " 并保存文件。
 4. 右键单击“WingtipTicketsSaaS-MultiTenantDb-master.zip”文件，然后选择“属性”********。
 5. 在“常规”**** 选项卡上，选择“取消阻止”****，然后单击“应用”****。
-6. 单击“确定”。
+6. 单击“确定”。 
 7. 解压缩文件。
 
-脚本位于 *. 。翼尖TicketsSaaS-多租户Db主\\学习模块\\文件夹。 \\*
+脚本位于中 *。Wingtipticketssaas-dbpertenant 提供了-wingtipticketssaas-multitenantdb-主\\学习模块\\文件夹。 \\*
 
 ## <a name="update-the-configuration-file-for-this-deployment"></a>更新此部署的配置文件
 
@@ -124,7 +124,7 @@ Wingtip 应用在 Azure 云中运行，并使用 Azure SQL 数据库。 下面�
 中心式“事件中心”**** 网页提供特定部署中租户的链接列表。 请执行以下步骤，体验**事件中心**网页和单个的 Web 应用：
 
 1. 在 Web 浏览器中打开“事件中心”****：
-   - http://events.wingtip-mt.&lt用户&gt;&nbsp;*.trafficmanager.net（用&lt;部署&gt;的用户值替换用户。*
+   - http://events.wingtip-mt.&lt&gt;; trafficmanager.net &nbsp; *（将 user&gt;替换&lt;为部署的用户值。）*
 
      ![事件中心](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
@@ -136,7 +136,7 @@ Wingtip 应用在 Azure 云中运行，并使用 Azure SQL 数据库。 下面�
 
 Wingtip 应用使用 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)来控制传入请求的分配。 每个租户的事件页都会在其 URL 中包括租户名称。 每个 URL 还包括特定的“用户”值。 每个 URL 都通过以下步骤遵循所显示的格式：
 
-- http://events.wingtip-mt.&lt用户&gt;.trafficmanager.net/*法布里卡迈兹俱乐部*
+- http://events.wingtip-mt.&lt&gt;; trafficmanager.net/*fabrikamjazzclub*
 
 1. 事件应用可以从 URL 分析租户名称。 在前一示例 URL 中，租户名称为 *fabrikamjazzclub*。
 2. 然后，该应用会对租户名称进行哈希处理，以便创建密钥，从而使用[分片映射管理](sql-database-elastic-scale-shard-map-management.md)来访问目录。
@@ -154,7 +154,7 @@ Wingtip 应用使用 [Azure 流量管理器](../traffic-manager/traffic-manager-
 
 现在已部署应用，接下来让我们投入使用！ Demo-LoadGenerator** PowerShell 脚本将启动针对每个租户运行的一个工作负载。 许多 SaaS 应用上的实际加载通常是偶发性的且不可预测。 所以，为了模拟此类型的负载，负载生成器将生成分布在所有租户上的负载。 该负载包括以随机间隔期间发生的针对每个租户的随机突发。 负载模式显现会需要几分钟的时间，因此，最好让生成器先运行至少 3 或 4 分钟，然后再进行负载监测。
 
-1. 在*PowerShell ISE*中，打开 ...\\学习模块\\\\实用程序*演示加载生成器.ps1*脚本。
+1. 在*POWERSHELL ISE*中打开 .。。\\学习模块\\实用\\程序*demo-loadgenerator.ps1*脚本。
 2. 按 **F5** 运行该脚本并启动负载生成器（目前保留默认参数值）。
 
 ** Demo-LoadGenerator.ps1 脚本将打开运行负载生成器的另一个 PowerShell 会话。 负载生成器作为前台任务在此会话中运行，用于调用后台负载生成作业，每个租户一个。
@@ -231,7 +231,7 @@ Wingtip 应用使用 [Azure 流量管理器](../traffic-manager/traffic-manager-
 
    DTU 利用率图表很好地说明了多租户数据库支持多租户不可预测的工作负载的方式。 在这种情况下，负载生成器正在向每个租户应用大约 30 个 DTU 的偶发负载。 此负载相当于 50 个 DTU 数据库的 60% 的利用率。 超过 60% 的峰值是同时向多个租户应用负载的结果。
 
-2. 浏览到**租户&lt;1000m 用户&gt;** 服务器，然后单击**salixsalsa**数据库。 可以看到这个只包含一个租户的数据库中的资源利用情况。
+2. 浏览到**&lt;tenants1 用户&gt; **服务器，并单击**salixsalsa**数据库。 可以看到这个只包含一个租户的数据库中的资源利用情况。
 
    ![salixsalsa 数据库](./media/saas-multitenantdb-get-started-deploy/monitor-salix.png)
 
@@ -245,7 +245,7 @@ Wingtip 应用使用 [Azure 流量管理器](../traffic-manager/traffic-manager-
 
 ## <a name="additional-resources"></a>其他资源
 
-- 要了解多租户 SaaS 应用程序，请参阅[多租户 SaaS 应用程序的设计模式](saas-tenancy-app-design-patterns.md)。
+- 若要了解多租户 SaaS 应用程序，请参阅[多租户 saas 应用程序的设计模式](saas-tenancy-app-design-patterns.md)。
 
 - 若要了解弹性池，请参阅：
 

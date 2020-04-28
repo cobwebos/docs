@@ -10,10 +10,10 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: fcad05749892e3a652e110a7e351450bffaca6f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72792982"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-3"></a>升级到 Azure 搜索 .NET SDK 版本 3
@@ -41,7 +41,7 @@ the data source API will no longer return in the response of any REST operation,
 ## <a name="whats-new-in-version-3"></a>版本 3 中的新增功能
 版本 3 的 Azure 搜索 .NET SDK 针对 Azure 搜索 REST API 的最新正式发布版本，具体来说就是 2016-09-01。 这使得可以在 .NET 应用程序中使用 Azure 搜索的许多新功能，如下所示：
 
-* [自定义分析仪](https://aka.ms/customanalyzers)
+* [自定义分析器](https://aka.ms/customanalyzers)
 * [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)和 [Azure 表存储](search-howto-indexing-azure-tables.md)索引器支持
 * 通过[字段映射](search-indexer-field-mappings.md)实现的索引器自定义
 * 用于支持安全并发更新索引定义、索引器和数据源的 ETag 支持
@@ -71,7 +71,7 @@ the data source API will no longer return in the response of any REST operation,
 除重新生成应用程序之外，版本 3 中只有少量可能需要更改代码的重大更改。
 
 ### <a name="indexesgetclient-return-type"></a>Indexes.GetClient 返回类型
-`Indexes.GetClient` 方法具有新的返回类型。 以前，它返回 `SearchIndexClient`，但在版本 2.0-preview 中已将此项更改为 `ISearchIndexClient`，而该更改将传递给版本 3。 这是为了支持想要通过返回 `ISearchIndexClient` 的模拟实现，来模拟测试单元的 `GetClient` 方法的客户。
+`Indexes.GetClient` 方法具有新的返回类型。 以前，它返回 `SearchIndexClient`，但在版本 2.0-preview 中已将此项更改为 `ISearchIndexClient`，而该更改将传递给版本 3。 这是为了支持想要通过返回 `GetClient` 的模拟实现，来模拟测试单元的 `ISearchIndexClient` 方法的客户。
 
 #### <a name="example"></a>示例
 如果代码如下所示：

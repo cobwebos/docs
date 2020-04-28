@@ -1,5 +1,5 @@
 ---
-title: 欢迎来到翼尖应用程序
+title: 欢迎使用 Wingtips 应用
 description: 了解有关云环境中的 Azure SQL 数据库的数据库租户模型和示例 Wingtips SaaS 应用程序的内容。
 keywords: sql 数据库教程
 services: sql-database
@@ -13,21 +13,21 @@ ms.author: sstein
 ms.reviewer: billgib
 ms.date: 01/25/2019
 ms.openlocfilehash: 4e0b3afe51ac7c7a6b9213fcee79af57cbbd8197
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73818314"
 ---
 # <a name="the-wingtip-tickets-saas-application"></a>Wingtip Tickets SaaS 应用程序
 
-三个示例均实现了同一个 Wingtip Tickets SaaS ** 应用程序。 该应用程序是一个简单的事件列表和票务SaaS应用程序，针对小场地 - 剧院，俱乐部等。每个场地都是应用程序的租户，并有自己的数据：场地详细信息、活动列表、客户、机票订单等。 该应用程序以及管理脚本和教程展示了端到端 SaaS 方案。 此方案包括预配租户、监视并管理性能、架构管理和跨租户报告和分析。
+三个示例均实现了同一个 Wingtip Tickets SaaS ** 应用程序。 该应用是一个简单的事件列表和票证 SaaS 应用，面向小型会场、俱乐部等。每个地点都是应用的租户，并有自己的数据：地点详细信息、事件列表、客户、票证订单等。 该应用与管理脚本和教程一起展示了一个端到端 SaaS 方案。 此方案包括预配租户、监视并管理性能、架构管理和跨租户报告和分析。
 
 ## <a name="three-saas-application-and-tenancy-patterns"></a>三种 SaaS 应用程序和租户模式
 
 此应用有三个版本；每个版本在 Azure SQL 数据库上都使用了不同的数据库租户模式。  第一个示例使用每租户的独立应用程序和其自己的数据库。 第二个示例使用多租户应用，并且每个租户都具有一个数据库。 第三个示例使用多租户应用，并且具有分片式多租户数据库。
 
-![三种租赁模式][image-three-tenancy-patterns]
+![三种租户模式][image-three-tenancy-patterns]
 
  每个示例包含应用程序代码以及管理脚本和教程，其中介绍了各种设计和管理模式。  每个示例均可在 5 分钟内完成部署。  可并行部署这三个示例，以比较它们在设计和管理方面的不同。
 
@@ -47,7 +47,7 @@ ms.locfileid: "73818314"
 
 多租户数据库适用于希望降低每个租户的成本并可接受租户隔离性降低的服务提供商。 此模式可将大量租户封装到单个数据库，从而降低每个租户的成本。 可以通过跨多个数据库将租户分片来实现几乎无限制的缩放。 目录数据库将租户映射到数据库。  
 
-此模式还允许*混合*模型，您可以在其中优化数据库中有多个租户的成本，或优化与自己的数据库中的单个租户隔离。 在预配租户时或在此之后，可以根据租户做出选择，并且不会影响此应用程序。  如果需要以不同的方式处理不同租户组，使用此模式可获得良好效果。 例如，可将低成本租户分配到共享数据库，而将高级租户分配到其自己的数据库。 
+此模式还可实现*混合*模型，在该模型中，你可以在数据库中使用多个租户优化成本，或使用单个租户在自己的数据库中进行隔离优化。 在预配租户时或在此之后，可以根据租户做出选择，并且不会影响此应用程序。  如果需要以不同的方式处理不同租户组，使用此模式可获得良好效果。 例如，可将低成本租户分配到共享数据库，而将高级租户分配到其自己的数据库。 
 
 请查看相关[教程][docs-tutorials-for-wingtip-mt]和 GitHub [.../Microsoft/WingtipTicketsSaaS-MultiTenantDb][github-code-for-wingtip-mt] 上的代码。
 

@@ -1,5 +1,5 @@
 ---
-title: 将树莓派 Web 模拟器连接到 Azure IoT 中心 （Node.js）
+title: 将 Raspberry Pi web 模拟器连接到 Azure IoT 中心（node.js）
 description: 将 Raspberry Pi Web 模拟器连接到 Azure IoT 中心，以供 Raspberry Pi 将数据发送到 Azure 云。
 author: wesmc7777
 manager: philmea
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: wesmc
 ms.openlocfilehash: efbe41be6c923f3547df86fd6faeb56bff5e0802
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73954536"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>将 Raspberry Pi 联机模拟器连接到 Azure IoT 中心 (Node.js)
@@ -61,7 +61,7 @@ ms.locfileid: "73954536"
 单击用于启动 Raspberry Pi 联机模拟器的按钮。
 
 > [!div class="button"]
-> <a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">启动树莓派模拟器</a>
+> <a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">启动 Raspberry Pi 模拟器</a>
 
 Web 模拟器中有三个区域。
 
@@ -71,11 +71,11 @@ Web 模拟器中有三个区域。
 
 3. 集成控制台窗口 - 显示代码输出。 在此窗口的顶部，有三个按钮。
 
-   * 运行 - 在编码区域运行应用程序****。
+   * 运行 - 在编码区域运行应用程序  。
 
-   * 重置 - 将编码区域重置为默认示例应用程序****。
+   * 重置 - 将编码区域重置为默认示例应用程序  。
 
-   * 折叠/展开 - 可使用右侧的按钮折叠/展开控制台窗口****。
+   * 折叠/展开 - 可使用右侧的按钮折叠/展开控制台窗口  。
 
 > [!NOTE]
 > 目前 Raspberry Pi Web 模拟器在预览版中可用。 请通过 [Gitter Chatroom](https://gitter.im/Microsoft/raspberry-pi-web-simulator) 向我们提供意见和建议。 源代码在 [GitHub](https://github.com/Azure-Samples/raspberry-pi-web-simulator) 上是公开的。
@@ -96,7 +96,7 @@ Web 模拟器中有三个区域。
 1. 
    ![替换设备连接字符串](media/iot-hub-raspberry-pi-web-simulator/1-connectionstring.png)
 
-2. 选择“运行”，或键入 `npm start`，即可运行应用程序****。
+2. 选择“运行”，或键入 **，即可运行应用程序**`npm start`。
 
 应看到以下输出，该输出显示传感器数据和发送到 IoT 中心的消息![输出 - 从 Raspberry Pi 发送到 IoT 中心的传感器数据](media/iot-hub-raspberry-pi-web-simulator/2-run-application.png)
 

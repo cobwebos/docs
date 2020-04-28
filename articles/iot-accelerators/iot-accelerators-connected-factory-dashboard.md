@@ -1,6 +1,6 @@
 ---
 title: 使用连接的工厂仪表板 - Azure | Microsoft Docs
-description: 本文介绍如何使用连接工厂仪表板的功能来监视和管理工业 IoT 设备。
+description: 本文介绍如何使用连接工厂仪表板的功能来监视和管理你的工业 IoT 设备。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: dobett
 ms.openlocfilehash: b53177d578768428665891704269e63bd8edb09e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73820174"
 ---
 # <a name="use-features-in-the-connected-factory-solution-accelerator-dashboard"></a>使用连接的工厂解决方案加速器仪表板中的功能
@@ -33,7 +33,7 @@ ms.locfileid: "73820174"
 
 1. 然后应用筛选器。 额外的漏斗图图标表示应用了筛选器：
 
-    [![应用了连接出厂解决方案加速器过滤器](./media/iot-accelerators-connected-factory-dashboard/filterapplied-inline.png)](./media/iot-accelerators-connected-factory-dashboard/filterapplied-expanded.png#lightbox)
+    [![已应用连接工厂解决方案加速器筛选器](./media/iot-accelerators-connected-factory-dashboard/filterapplied-inline.png)](./media/iot-accelerators-connected-factory-dashboard/filterapplied-expanded.png#lightbox)
 
     > [!NOTE]
     > 活动筛选器不影响显示的 OEE 和 KPI 值，仅筛选列表内容。
@@ -46,17 +46,17 @@ ms.locfileid: "73820174"
 
 1. 单击仪表板导航栏中的“浏览器”图标****：
 
-    [![连接出厂解决方案加速器服务器浏览器](./media/iot-accelerators-connected-factory-dashboard/browser-inline.png)](./media/iot-accelerators-connected-factory-dashboard/browser-expanded.png#lightbox)
+    [![连接工厂解决方案加速器服务器浏览器](./media/iot-accelerators-connected-factory-dashboard/browser-inline.png)](./media/iot-accelerators-connected-factory-dashboard/browser-expanded.png#lightbox)
 
 1. 从显示在解决方案加速器中部署的服务器的列表选择一个服务器：
 
-    [![连接出厂解决方案加速器服务器列表](./media/iot-accelerators-connected-factory-dashboard/serverlist-inline.png)](./media/iot-accelerators-connected-factory-dashboard/serverlist-expanded.png#lightbox)
+    [![已连接的工厂解决方案加速器服务器列表](./media/iot-accelerators-connected-factory-dashboard/serverlist-inline.png)](./media/iot-accelerators-connected-factory-dashboard/serverlist-expanded.png#lightbox)
 
 1. 单击“连接”****，此时会显示一个安全对话框。 就此模拟来说，可以安全地单击“继续”****。
 
 1. 单击服务器树中的任意节点即可将其展开。 正在发布遥测的节点旁边有一个复选标记：
 
-    [![连接出厂解决方案加速器服务器树](./media/iot-accelerators-connected-factory-dashboard/servertree-inline.png)](./media/iot-accelerators-connected-factory-dashboard/servertree-expanded.png#lightbox)
+    [![连接工厂解决方案加速器服务器树](./media/iot-accelerators-connected-factory-dashboard/servertree-inline.png)](./media/iot-accelerators-connected-factory-dashboard/servertree-expanded.png#lightbox)
 
 1. 右键单击某个项，对该节点执行读取、写入、发布或调用操作。 能够使用哪些操作取决于权限和节点的属性。 读取选项会显示一个上下文面板，其中显示特定节点的值。 写入选项会显示一个上下文面板，可以在其中输入新值。 调用选项会显示一个节点，可以在其中输入调用的参数。
 
@@ -68,11 +68,11 @@ ms.locfileid: "73820174"
 
 1. 右键单击该节点。 单击“发布”****：
 
-    [![连接出厂解决方案加速器发布节点](./media/iot-accelerators-connected-factory-dashboard/publishnode-inline.png)](./media/iot-accelerators-connected-factory-dashboard/publishnode-expanded.png#lightbox)
+    [![已连接的工厂解决方案加速器发布节点](./media/iot-accelerators-connected-factory-dashboard/publishnode-inline.png)](./media/iot-accelerators-connected-factory-dashboard/publishnode-expanded.png#lightbox)
 
 1. 此时会显示一个上下文面板，告知你发布成功。 节点显示在装配站级别视图中，旁边有一个复选标记：
 
-    [![互联工厂解决方案加速器发布成功](./media/iot-accelerators-connected-factory-dashboard/publishsuccess-inline.png)](./media/iot-accelerators-connected-factory-dashboard/publishsuccess-expanded.png#lightbox)
+    [![已连接的工厂解决方案加速器发布成功](./media/iot-accelerators-connected-factory-dashboard/publishsuccess-inline.png)](./media/iot-accelerators-connected-factory-dashboard/publishsuccess-expanded.png#lightbox)
 
 ## <a name="command-and-control"></a>命令和控制
 
@@ -82,11 +82,11 @@ ms.locfileid: "73820174"
 
 1. 选择要使用的命令。 右键单击 OpenPressureReleaseValve 节点****。 单击“调用”****：
 
-    [![连接出厂解决方案加速器调用命令](./media/iot-accelerators-connected-factory-dashboard/callcommand-inline.png)](./media/iot-accelerators-connected-factory-dashboard/callcommand-expanded.png#lightbox)
+    [![已连接的工厂解决方案加速器调用命令](./media/iot-accelerators-connected-factory-dashboard/callcommand-inline.png)](./media/iot-accelerators-connected-factory-dashboard/callcommand-expanded.png#lightbox)
 
 1. 此时会显示一个上下文面板，告知要调用的具体方法，以及任何参数详细信息。 单击“调用”****：
 
-    [![连接出厂解决方案加速器调用参数](./media/iot-accelerators-connected-factory-dashboard/callpanel-inline.png)](./media/iot-accelerators-connected-factory-dashboard/callpanel-expanded.png#lightbox)
+    [![已连接的工厂解决方案加速器调用参数](./media/iot-accelerators-connected-factory-dashboard/callpanel-inline.png)](./media/iot-accelerators-connected-factory-dashboard/callpanel-expanded.png#lightbox)
 
 1. 上下文面板会进行更新，告知你该方法调用成功。 可以通过读取压力节点的值（在调用后已更新）来验证调用是否成功。
 
@@ -96,7 +96,7 @@ ms.locfileid: "73820174"
 
 部署解决方案加速器时，部署过程会在所选 Azure 订阅中创建多个资源。 可以在 Azure [门户](https://portal.azure.com)中查看这些资源。 部署过程会创建一个“资源组”，其名称基于为解决方案加速器选择的名称****：
 
-[![连接出厂解决方案加速器资源组](./media/iot-accelerators-connected-factory-dashboard/resourcegroup-inline.png)](./media/iot-accelerators-connected-factory-dashboard/resourcegroup-expanded.png#lightbox)
+[![已连接的工厂解决方案加速器资源组](./media/iot-accelerators-connected-factory-dashboard/resourcegroup-inline.png)](./media/iot-accelerators-connected-factory-dashboard/resourcegroup-expanded.png#lightbox)
 
 可以查看每个资源的设置，方法是在资源组中的资源列表中选择该资源。
 

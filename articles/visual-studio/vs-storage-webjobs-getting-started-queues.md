@@ -1,5 +1,5 @@
 ---
-title: 使用可视化工作室（WebJob 项目）开始使用队列存储
+title: 使用 Visual Studio （Web 作业项目）开始使用队列存储
 description: 在使用 Visual Studio 连接服务连接到存储帐户后，如何开始使用 WebJob 项目中的 Azure 队列存储
 services: storage
 author: ghogen
@@ -14,10 +14,10 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: ffba203bafaf3837cd2d7fc1a6fd962a6926b186
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72298749"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>开始使用 Azure 队列存储和 Visual Studio 连接服务（WebJob 项目）
@@ -89,10 +89,10 @@ public async static Task ProcessQueueMessageAsyncCancellationToken(
 ## <a name="types-the-queuetrigger-attribute-works-with"></a>QueueTrigger 属性适用的类型
 可以将 **QueueTrigger** 用于以下类型：
 
-* **字符串**
+* **string**
 * 序列化为 JSON 的 POCO 类型
-* **字节***
-* **云队列消息**
+* **byte[]**
+* **CloudQueueMessage**
 
 ## <a name="polling-algorithm"></a>轮询算法
 SDK 实现了随机指数退让算法，以降低空闲队列轮询对存储交易成本造成的影响。  当找到消息时，SDK 将等待两秒钟，然后检查另一条消息；如果未找到消息，它将等待大约四秒，然后重试。 如果后续尝试获取队列消息失败，则等待时间会继续增加，直到达到最长等待时间（默认为 1 分钟）。 [最长等待时间是可配置的](#how-to-set-configuration-options)。
@@ -112,7 +112,7 @@ SDK 实现了随机指数退让算法，以降低空闲队列轮询对存储交�
 * **DateTimeOffset** insertionTime
 * **DateTimeOffset** nextVisibleTime
 * **string** queueTrigger（包含消息文本）
-* **字符串**ID
+* **字符串**id
 * **string** popReceipt
 * **int** dequeueCount
 
@@ -191,7 +191,7 @@ public static void GracefulShutdownDemo(
 若要编写创建新队列消息的函数，请使用 **Queue** 属性。 与 **QueueTrigger** 一样，可以传入字符串形式的队列名称，还可以[动态设置队列名称](#how-to-set-configuration-options)。
 
 ### <a name="string-queue-messages"></a>字符串队列消息
-下面的非异步代码示例在名为“outputqueue”的队列中创建新的队列消息，该消息的内容与名为“inputqueue”的队列中收到的队列消息相同。 （对于异步函数，请使用**IAsyncCollector\<T>，** 如本节后面所示。
+下面的非异步代码示例在名为“outputqueue”的队列中创建新的队列消息，该消息的内容与名为“inputqueue”的队列中收到的队列消息相同。 （对于异步函数，请使用**\<IAsyncCollector T>** ，如本节后面部分所示。）
 
 ```csharp
 public static void CreateQueueMessage(
@@ -217,7 +217,7 @@ public static void CreateQueueMessage(
 SDK 会自动将对象序列化为 JSON。 即使对象为 null，也始终会创建队列消息。
 
 ### <a name="create-multiple-messages-or-in-async-functions"></a>在异步函数中创建多个消息
-要创建多条消息，请使输出队列**ICollector\<T>** 或**IAsyncCollector\<T>** 的参数类型，如下例所示。
+若要创建多个消息，请设置输出队列的参数**类型\<ICollector t>** 或**\<IAsyncCollector t>**，如下面的示例中所示。
 
 ```csharp
 public static void CreateQueueMessages(

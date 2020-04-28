@@ -12,17 +12,17 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 661afc08c76c6cde61b02a29a55b4a8bec932e21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73175792"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>使用 What If 工具排查条件访问问题
 
 若要尝试了解为何在特定情况下向用户应用或不向用户应用某个策略，或者某个策略是否会在已知状态下应用，可以使用条件访问中的 [What If 工具](what-if-tool.md)。
 
-如果工具位于**Azure 门户** > **Azure 活动目录** > **条件访问** > **中，则"如果"**
+What If 工具位于：“Azure 门户”   > “Azure Active Directory”   > “条件访问”   >   “What If”。
 
 ![默认状态下条件访问的 What If 工具](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-tool.png)
 
@@ -47,9 +47,9 @@ What If 工具只需要**用户**来启动。
 
 ## <a name="generating-results"></a>生成结果
 
-输入在上一部分收集的条件，然后选择“What If”以生成结果列表。**** 
+输入在上一部分收集的条件，然后选择“What If”以生成结果列表。  
 
-可以随时选择“重置”来清除任何条件输入并返回到默认状态。****
+可以随时选择“重置”来清除任何条件输入并返回到默认状态。 
 
 ## <a name="evaluating-results"></a>评估结果
 

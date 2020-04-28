@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 ms.date: 12/18/2018
 ms.openlocfilehash: c589d9619da8b5150d0fb4752625571c48393552
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73826384"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>使用提取的数据运行跨租户分析 - 单租户应用
@@ -24,7 +24,7 @@ ms.locfileid: "73826384"
 
 1.  从每个租户数据库提取数据，然后加载到分析存储中********。
 2.  转换提取后的数据进行分析处理****。
-3.  使用**商业智能**工具绘制有用的见解，从而指导决策。 
+3.  使用**商业智能**工具来草拟有用的见解，以指导制定决策。 
 
 本教程介绍如何执行下列操作：
 
@@ -68,7 +68,7 @@ ms.locfileid: "73826384"
 
 若要完成本教程，请确保满足以下先决条件：
 
-- 已部署 Wingtip Tickets SaaS Database Per Tenant 应用程序。 要在五分钟内部署，请参阅[部署和浏览翼尖 SaaS 应用程序](saas-dbpertenant-get-started-deploy.md)
+- 已部署 Wingtip Tickets SaaS Database Per Tenant 应用程序。 若要在五分钟内进行部署，请参阅[部署和浏览 Wingtip SaaS 应用程序](saas-dbpertenant-get-started-deploy.md)
 - 已从 GitHub 下载 Wingtip Tickets SaaS Database Per Tenant 脚本和应用程序[源代码](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/)。 请参阅下载说明。 在提取 zip 文件的内容之前，请务必取消阻止该 zip 文件。** 有关下载和取消阻止 Wingtip Tickets SaaS 脚本的步骤，请参阅[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)。
 - 已安装 Power BI Desktop。 [下载 Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 - 已预配其他租户批，具体请参阅[**有关预配租户的教程**](saas-dbpertenant-provision-and-catalog.md)。
@@ -79,7 +79,7 @@ ms.locfileid: "73826384"
 在本教程中，将门票销售数据执行分析。 在当前步骤中，请为所有租户生成门票数据。  稍后将提取这些数据进行分析。 确保已按如前所述预配租户批，以便获得有意义的数据量。** 数量够大的数据能够揭示不同购票模式的范围。
 
 1. 在 PowerShell ISE 中打开 *…\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1* 并设置以下值：
-    - **$DemoScenario** = **1**购买所有场地的活动门票
+    - **$DemoScenario** = **1**针对所有会场的事件购买票证
 2. 按 **F5** 运行脚本，并创建每个会场举行的每个活动的购票历史记录。  该脚本会运行几分钟时间，以生成数万张门票。
 
 ### <a name="deploy-the-analytics-store"></a>部署分析存储
@@ -88,11 +88,11 @@ ms.locfileid: "73826384"
 在以下步骤中部署名为 **tenantanalytics** 的分析存储。 此外，还要部署稍后将在本教程中填充的预定义表：
 1. 在 PowerShell ISE 中打开 *…\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1* 
 2. 设置脚本中的 $DemoScenario 变量，使其与所选的分析存储匹配：
-    - 要使用没有列存储的 SQL 数据库 **，$DemoScenario** = **2**
-    - 要将 SQL 数据库与列存储一起使用 **，$DemoScenario** = **3**  
-3. 按**F5**运行创建租户分析存储的演示脚本（该脚本称为*部署租户分析\<XX>.ps1*脚本）。 
+    - 若要使用不带列存储的 SQL 数据库，请设置 **$DemoScenario** = **2**
+    - 若要将 SQL 数据库与列存储一起使用，请设置 **$DemoScenario** = **3**  
+3. 按**F5**运行演示脚本（调用*TenantAnalytics\<XX> ps1*脚本），该脚本会创建租户分析存储。 
 
-现在，您已经部署了应用程序，并用有趣的租户数据填充了它，请使用[SQL 服务器管理工作室 （SSMS）](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)使用登录 =*开发人员*、密码 = *P\@ssword1*连接**租户1-dpt-User&lt;&gt;** 和目录**dpt-&lt;用户&gt;** 服务器。 有关更多指导，请参阅[简介教程](saas-dbpertenant-wingtip-app-overview.md)。
+现在，你已部署了应用程序，并使用了兴趣的租户数据对其进行了填充，请使用[SQL Server Management Studio （SSMS）](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)通过登录名 = *developer*，Password = *\@P ssword1*连接**tenants1-user-&lt;&gt; ** user 和**user-&lt;user&gt; **服务器。 有关更多指导，请参阅[简介教程](saas-dbpertenant-wingtip-app-overview.md)。
 
 ![architectureOverView](media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 
@@ -174,7 +174,7 @@ ms.locfileid: "73826384"
 
     ![signinpowerbi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. 在左侧窗格中选择 **"数据库**"，然后输入用户名 =*开发人员*，然后输入密码 = *P\@ssword1*。 单击“连接”。  
+5. 选择左窗格中的 "**数据库**"，然后输入 "用户名 =*开发人员*"，并输入 password = *P\@ssword1*。 单击“连接”  。  
 
     ![databasesignin](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
@@ -239,6 +239,6 @@ AverageTicketsSold = AVERAGEX( SUMMARIZE( TableName, TableName[Venue Name] ), CA
 
 ## <a name="additional-resources"></a>其他资源
 
-- 其他[教程，建立在翼尖SaaS应用程序](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)。
+- [基于 Wingtip SaaS 应用程序构建的其他教程](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)。
 - [弹性作业](elastic-jobs-overview.md)。
 - [使用提取的数据运行跨租户分析 - 多租户应用](saas-multitenantdb-tenant-analytics.md)
