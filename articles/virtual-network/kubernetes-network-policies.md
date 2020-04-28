@@ -17,10 +17,10 @@ ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
 ms.openlocfilehash: 5a6da7e65a9a3e962a2df37b062792fbb990d04d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73159697"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Azure Kubernetes 网络策略概述
@@ -102,4 +102,4 @@ ACS-Engine 是一项工具，可以生成 Azure 资源管理器模板，以便�
 ## <a name="next-steps"></a>后续步骤
 - 了解 [Azure Kubernetes 服务](../aks/intro-kubernetes.md)。
 -  了解[容器网络](container-networking-overview.md)。
-- 为库伯奈斯群集或 Docker 容器[部署插件](deploy-container-networking.md)。
+- 为 Kubernetes 群集或 Docker 容器[部署插件](deploy-container-networking.md)。

@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.openlocfilehash: 9d5d572c3e32e3645e65ba8d6fc28b567b3c1e9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65827218"
 ---
 # <a name="configure-access-controls-for-the-time-series-insights-telemetry-explorer"></a>为时序见解遥测数据资源浏览器配置访问控制
@@ -25,7 +25,7 @@ ms.locfileid: "65827218"
 
 遵循以下步骤向用户主体授予数据访问权限：
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 2. 查找时序见解环境。 在“搜索”框中，键入“时序见解”********。 在搜索结果中选择“时序环境”****。 
 

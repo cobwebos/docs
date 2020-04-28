@@ -1,16 +1,16 @@
 ---
-title: 法律通知
-description: Azure 文档的法律通知
+title: 法律声明
+description: Azure 文档的相关法律声明
 author: SyntaxC4
 ms.author: cfowler
 ms.service: azure
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.openlocfilehash: b68d521ba3ec678dad49273f0bd2fdfa5ceabee1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72750430"
 ---
 # <a name="legal-notices"></a>法律声明
@@ -19,7 +19,7 @@ Microsoft 和任何参与者根据 [Creative Commons Attribution 4.0 Internation
 
 Microsoft、Windows、Microsoft Azure 和/或其他在本文档中引用的 Microsoft 产品和服务可能是 Microsoft 在美国和/或其他国家/地区的商标或注册商标。
 该项目的许可证没有授予你使用任何 Microsoft 名称、徽标或商标的权利。
-微软的一般商标准则可以在 中找到[https://go.microsoft.com/fwlink/?LinkID=254653](https://go.microsoft.com/fwlink/?LinkID=254653)。
+Microsoft 的一般商标指导原则可在[https://go.microsoft.com/fwlink/?LinkID=254653](https://go.microsoft.com/fwlink/?LinkID=254653)中找到。
 
 隐私信息可在[https://privacy.microsoft.com/en-us/](https://privacy.microsoft.com/en-us/)
 

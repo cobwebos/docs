@@ -14,10 +14,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a1aa99e7e71ad78a62c1a9da303b2ecc8347ebeb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65783851"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory 应用程序代理和 Tableau 
@@ -70,11 +70,11 @@ Azure Active Directory 应用程序代理和 Tableau 已展开合作，以确保
 
 8. 选择“分配”，保存测试用户分配。**** 
 
-9. （可选）在应用管理页面中选择“单一登录”****。 从下拉菜单中选择“集成 Windows 身份验证”，然后根据 Tableau 配置填写必填字段****。 选择“保存”。**** 
+9. （可选）在应用管理页面中选择“单一登录”****。 从下拉菜单中选择“集成 Windows 身份验证”，然后根据 Tableau 配置填写必填字段****。 选择“保存”。  
 
  
 
-## <a name="testing"></a>正在测试 
+## <a name="testing"></a>测试 
 
 现在已准备好测试应用程序。 访问用来发布 Tableau 的外部 URL，并以分配到两个应用程序的用户身份登录。
 

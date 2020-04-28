@@ -9,10 +9,10 @@ ms.date: 03/29/2018
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 8361c32860d48b78c778ea5106ba04715fcc5f3c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67621044"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>针对导入/导出作业开具支持票证
@@ -28,19 +28,19 @@ ms.locfileid: "67621044"
 
 1. 转到导入/导出作业。 导航到“支持 + 故障排除”部分并单击“新建支持请求”。********
      
-    ![基础](./media/storage-import-export-contact-microsoft-support/import-export-support1.png)
+    ![基础知识](./media/storage-import-export-contact-microsoft-support/import-export-support1.png)
    
 2. 在“新建支持请求”中选择“基本信息”。******** 在“基本信息”中执行以下步骤：****
     
     1. 从“颁发类型”下拉列表中，选择“技术”********。
-    2. 选择您的**订阅**。
+    2. 选择**订阅**。
     3. 在“服务”下，检查“我的服务”。******** 在下拉列表中，可以选择以下选项之一：“存储帐户管理”、“Blob”或“文件”。************ 
         - 如果选择了“存储帐户管理”，请选择“资源”和“支持计划”。************
             ![选择存储帐户管理](./media/storage-import-export-contact-microsoft-support/import-export-support3.png)
         - 如果选择了“Blob”，请选择“资源”、“容器名称”（可选）和“支持计划”。****************
             ![选择 Blob](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
         - 如果选择了“文件”，请选择“资源”、“文件共享名称”（可选）和“支持计划”。**************** ![选择文件](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
-    4. 单击“下一步”****。
+    4. 单击“下一步”。 
 
 3. 在“新建支持请求”中，选择“步骤 2: 问题”。******** 在“问题”中执行以下步骤：****
     
@@ -51,15 +51,15 @@ ms.locfileid: "67621044"
     5. 提供问题的开始日期和时间。
     6. 在“文件上传”中单击文件夹图标，浏览要上传的其他任何文件。****
     7. 选中“共享诊断信息”。****
-    8. 单击“下一步”****。
+    8. 单击“下一步”。 
 
        ![问题](./media/storage-import-export-contact-microsoft-support/import-export-support5.png)
 
 4. 在“新建支持请求”中，单击“步骤 3: 联系信息”。******** 在“联系信息”中执行以下步骤：****
 
    1. 在“联系人选项”中，提供首选的联系方式（电话或电子邮件）和语言。**** 系统会根据订阅计划自动选择响应时间。
-   2. 在联系信息中，提供您的姓名、电子邮件、可选联系人、国家/地区。 选中“保存联系人更改以便在将来的支持请求中使用”复选框。****
-   3. 单击 **“创建”**。
+   2. 在 "联系人信息" 中，提供你的姓名、电子邮件、可选联系人、国家/地区。 选中“保存联系人更改以便在将来的支持请求中使用”复选框。****
+   3. 单击“创建”。 
    
        ![联系信息](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   
 

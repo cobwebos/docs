@@ -1,5 +1,5 @@
 ---
-title: 创建&查询 Azure 数据湖分析 - Azure 门户
+title: 创建 & 查询 Azure Data Lake Analytics-Azure 门户
 description: 使用 Azure 门户创建 Azure Data Lake Analytics 帐户，并提交 U-SQL 作业。
 ms.service: data-lake-analytics
 author: saveenr
@@ -9,10 +9,10 @@ ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
 ms.topic: conceptual
 ms.date: 03/21/2017
 ms.openlocfilehash: 46da3750e4d0ac78c5fd9df91ae37670e541302d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71315753"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-the-azure-portal"></a>通过 Azure 门户开始使用 Azure Data Lake Analytics
@@ -28,16 +28,16 @@ ms.locfileid: "71315753"
 
 现在可同时创建 Data Lake Analytics 帐户和 Azure Data Lake Storage Gen1 帐户。  此步骤很简单，只需大约 60 秒即可完成。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
-2. 单击"**创建资源** >  **数据 + 分析** > **数据湖分析**"。
+1. 登录到[Azure 门户](https://portal.azure.com)。
+2. 单击 "**创建资源** >  **数据 + 分析** > **Data Lake Analytics**。
 3. 为以下项选择值：
    * **名称**：为 Data Lake Analytics 帐户命名（只允许小写字母和数字）。
    * **订阅**：选择用于 Analytics 帐户的 Azure 订阅。
-   * **资源组**. 选择现有的 Azure 资源组或创建新的资源组。
+   * **资源组**。 选择现有的 Azure 资源组或创建新的资源组。
    * **位置**。 为 Data Lake Analytics 帐户选择 Azure 数据中心。
    * **Data Lake Storage Gen1**：按照说明创建新的 Data Lake Storage Gen1 帐户，或选择现有帐户。 
 4. （可选）为 Data Lake Analytics 帐户选择定价层。
-5. 单击 **“创建”**。 
+5. 单击“创建”。  
 
 
 ## <a name="your-first-u-sql-script"></a>第一个 U-SQL 脚本
@@ -63,9 +63,9 @@ OUTPUT @a
 2. 粘贴前面的 U-SQL 脚本的文本。 命名此作业。 
 3. 选择“提交”**** 按钮以启动作业。   
 4. 监视作业的状态，并等到作业状态更改为“成功”********。
-5. 选择"**数据**"选项卡，然后选择 **"输出"** 选项卡。选择命名的`data.csv`输出文件并查看输出数据。
+5. 选择 "**数据**" 选项卡，然后选择 "**输出**" 选项卡。选择`data.csv`名为的输出文件并查看输出数据。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * 若要着手开发 U-SQL 应用程序，请参阅 [使用 Data Lake Tools for Visual Studio 开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)。
 * 若要了解 U-SQL，请参阅 [Azure Data Lake Analytics U-SQL 语言入门](data-lake-analytics-u-sql-get-started.md)。

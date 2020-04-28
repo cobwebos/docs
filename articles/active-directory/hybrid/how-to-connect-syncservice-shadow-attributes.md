@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 10a4078f49abbdf431f42c6cde7cf882112e5848
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60384693"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Azure AD Connect 同步服务影子属性
@@ -38,7 +38,7 @@ ms.locfileid: "60384693"
 ### <a name="userprincipalname"></a>userPrincipalName
 用户在非已验证域中具有以下属性值：
 
-| 特性 | “值” |
+| Attribute | 值 |
 | --- | --- |
 | 本地 userPrincipalName | lee.sperry@fabrikam.com |
 | Azure AD shadowUserPrincipalName | lee.sperry@fabrikam.com |
@@ -53,7 +53,7 @@ userPrincipalName 属性是在使用 PowerShell 时显示的值。
 
 对于邮箱用户（无论是在本地还是在 Exchange Online 中），将仅显示已验证域的值。 它可能如下所示：
 
-| 特性 | “值” |
+| Attribute | 值 |
 | --- | --- |
 | 本地 proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
 | Exchange Online proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |
@@ -74,6 +74,6 @@ ProxyCalc 可能需要一些时间来处理用户更改，并且不会与 Azure 
 ### <a name="quarantined-attribute-values"></a>隔离的属性值
 有重复的属性值时，也使用影子属性。 有关详细信息，请参阅[重复属性复原](how-to-connect-syncservice-duplicate-attribute-resiliency.md)。
 
-## <a name="see-also"></a>请参阅
-* [Azure AD 连接同步](how-to-connect-sync-whatis.md)
-* [将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)。
+## <a name="see-also"></a>另请参阅
+* [Azure AD Connect 同步](how-to-connect-sync-whatis.md)
+* [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)。

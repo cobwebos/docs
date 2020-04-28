@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
 ms.openlocfilehash: f2d653441598a47986913d525057672eed24b435
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60931698"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>如何使用 SendGrid 从 Node.js 发送电子邮件
@@ -36,7 +36,7 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
 * 转发客户查询
 * 以电子邮件的形式从应用程序发送通知
 
-有关详细信息，请参阅[https://sendgrid.com](https://sendgrid.com)。
+有关详细信息，请[https://sendgrid.com](https://sendgrid.com)参阅。
 
 ## <a name="create-a-sendgrid-account"></a>创建 SendGrid 帐户
 
@@ -188,7 +188,7 @@ sendgrid.send(email);
 
 ## <a name="how-to-update-email-properties"></a>如何：更新电子邮件属性
 
-某些电子邮件属性可以使用**setProperty**进行覆盖，或使用**addProperty**追加。 例如，可使用以下命令添加更多收件人：
+可以使用**setProperty**覆盖某些电子邮件属性，或使用**addProperty**进行附加。 例如，可使用以下命令添加更多收件人：
 
 ```javascript
 email.addTo('jeff@contoso.com');
@@ -213,7 +213,7 @@ SendGrid 提供了基于 Web 的 API，可通过这些 API 从 Azure 应用程�
 
 * SendGrid Node.js 模块存储库：[sendgrid-nodejs][sendgrid-nodejs]
 * SendGrid API 文档：<https://sendgrid.com/docs>
-* 为 Azure 客户发送网格特别优惠：[http://sendgrid.com/azure.html](https://sendgrid.com/windowsazure.html)
+* 面向 Azure 客户的 SendGrid 特惠产品/服务：[http://sendgrid.com/azure.html](https://sendgrid.com/windowsazure.html)
 
 [special offer]: https://sendgrid.com/windowsazure.html
 [sendgrid-nodejs]: https://github.com/sendgrid/sendgrid-nodejs

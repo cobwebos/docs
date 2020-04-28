@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 08/15/2018
 ms.topic: conceptual
 ms.openlocfilehash: 7cbab38db859935c9f4490d79a131d6c9a7e302b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "66427566"
 ---
 # <a name="deploy-a-new-simulated-device"></a>部署新的模拟设备
@@ -33,7 +33,7 @@ ms.locfileid: "66427566"
 
 完成本操作方法指南中的步骤需要有效的 Azure 订阅。
 
-如果没有 Azure 订阅，请先创建[一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。"
+如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -140,7 +140,7 @@ ms.locfileid: "66427566"
 
 如果打算深入探索，请保留部署的远程监视解决方案加速器。
 
-如果不再需要解决方案加速器，请从预配解决方案页面将其从"[已预配解决方案"](https://www.azureiotsolutions.com/Accelerators#dashboard)页中删除，然后单击"**删除解决方案**"。
+如果不再需要解决方案加速器，请从 "[预配解决方案](https://www.azureiotsolutions.com/Accelerators#dashboard)" 页中将其删除，方法是选择它，然后单击 "**删除解决方案**"。
 
 ## <a name="next-steps"></a>后续步骤
 

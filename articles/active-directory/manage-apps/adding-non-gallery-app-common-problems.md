@@ -16,10 +16,10 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 38a9ef04389318d3588649117c930ff6efa3fe4e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "65784477"
 ---
 # <a name="problem-adding-a-non-gallery-application"></a>添加非库应用程序的问题
@@ -28,7 +28,7 @@ ms.locfileid: "65784477"
 
 ## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>单击“添加”按钮后，应用程序要很长时间才显示
 
-某些情况下，将应用程序添加到目录后，可能需要 1-2 分钟（有时更久）才会显示该应用程序。 虽然这不是正常的预期性能，但可以通过单击[Azure 门户](https://portal.azure.com/)右上角**的通知**图标（bell）并查找标记为 **"创建应用程序**"的 **"正在进行**"或 **"已完成**"通知来查看应用程序添加正在进行中。
+某些情况下，将应用程序添加到目录后，可能需要 1-2 分钟（有时更久）才会显示该应用程序。 尽管这不是正常的预期性能，但你可以通过单击[Azure 门户](https://portal.azure.com/)右上方的 "**通知**" 图标（电铃），并查找标为 "**创建应用程序**" 的**正在进行**或**已完成**的通知，来查看应用程序添加正在进行中。
 
 如果应用程序未成功添加，或在单击“添加”**** 按钮时遇到错误，将看到一个处于“错误”**** 状态的**通知**。 如果想要了解有关错误的详细信息或将其与支持工程师共享，请按照[如何查看门户通知的详细信息](#how-to-see-the-details-of-a-portal-notification)部分中的步骤进行操作。
 
@@ -96,7 +96,7 @@ ms.locfileid: "65784477"
 
 - **UPN** – 执行操作的用户
 
-  *  示例 = **tperkins\@f128.info**
+  *  示例– **tperkins\@f128.info**
 
 - **租户 ID** – 执行操作的用户所属的租户的唯一 ID
 
@@ -114,7 +114,7 @@ ms.locfileid: "65784477"
 
 - **状态** – 通知的特定状态
 
-  *  示例 =**失败**
+  *  示例– **Failed**
 
 - **对象 ID** – **（可能为空）** 对其执行了操作的对象 ID
 
@@ -122,7 +122,7 @@ ms.locfileid: "65784477"
 
 - **详细信息** – 由操作导致的所发生情况的详细说明
 
-  *  示例 =**内部 URL`https://bing.com/`无效，因为它已在使用中**
+  *  示例-**内部 url `https://bing.com/`无效，因为它已在使用中**
 
 - **复制错误** – 单击“复制错误”文本框右侧的复制图标********，可复制所有通知详细信息以便与支持小组或产品小组共享 
 - 工程师

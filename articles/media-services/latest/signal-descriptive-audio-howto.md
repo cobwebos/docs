@@ -13,10 +13,10 @@ ms.custom: ''
 ms.date: 09/25/2019
 ms.author: juliako
 ms.openlocfilehash: 0d8f88e6c2fe273efa969278146de67ba18eaecf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72392184"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>指示描述性音频轨道
@@ -34,7 +34,7 @@ ms.locfileid: "72392184"
 
 ## <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>创建输入资产并将本地文件上传到该资产 
 
-CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/rest/api/media/assets)并将指定的本地视频文件上传到该资产****。 此**资产**用作编码作业的输入。 在媒体服务 v3 中，**作业**输入可以是**资产**，也可以是可通过 HTTPS URL 使用媒体服务帐户访问的内容。 
+CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/rest/api/media/assets)并将指定的本地视频文件上传到该资产  。 此**资产**用作编码作业的输入。 在媒体服务 v3 中，**作业**输入可以是**资产**，也可以是可通过 HTTPS URL 使用媒体服务帐户访问的内容。 
 
 如果想要了解如何从 HTTPS URL 进行编码，请参阅[此文](job-input-from-http-how-to.md)。  
 
@@ -43,7 +43,7 @@ CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/res
 以下函数执行以下操作：
 
 * 创建**资产** 
-* 获取[存储中资产容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container)的可写[SAS URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
+* 获取资产的[存储中容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container)的可写 [SAS URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
 * 使用 SAS URL 将文件上传到存储中的容器中
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
@@ -76,7 +76,7 @@ CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/res
 
 此作业需要一些时间才能完成，完成时可发出通知。 建议使用事件网格等待作业完成。
 
-作业通常经历以下状态：**计划**、**排队**、**处理**、**完成**（最终状态）。 如果作业出错，则显示“错误”状态****。 如果作业正处于取消过程中，则显示“正在取消”，完成时则显示“已取消”********。
+作业通常会经历以下状态：**已计划**、**已排队**、**正在处理**、**已完成**（最终状态）。 如果作业出错，则显示“错误”状态  。 如果作业正处于取消过程中，则显示“正在取消”，完成时则显示“已取消”   。
 
 有关详细信息，请参阅[处理事件网格事件](reacting-to-media-services-events.md)。
 
@@ -219,7 +219,7 @@ await UpoadAudioIntoOutputAsset(client, config.ResourceGroup, config.AccountName
 
 ### <a name="get-streaming-urls"></a>获取流式 URL
 
-创建[流定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)后，可以获取流 URL，如 **GetStreamingURLs** 中所示。 若要生成 URL，需要连接[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)的主机名和**流定位符**路径。 在此示例中，使用*默认***流式处理终结点**。 首次创建媒体服务帐户时，此*默认***流式处理终结点**将处于已停止状态，因此您需要调用**Start**。
+创建[流定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)后，可以获取流 URL，如 **GetStreamingURLs** 中所示。 若要生成 URL，需要连接[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)的主机名和**流定位符**路径。 此示例使用默认的**流式处理终结点**  。 首次创建媒体服务帐户时，此默认的**流式处理终结点**处于停止状态，因此需要调用 **Start**  。
 
 > [!NOTE]
 > 在此方法中，需要指定在创建输出资产的**流定位符**时所用的 locatorName。
@@ -233,7 +233,7 @@ await UpoadAudioIntoOutputAsset(client, config.ResourceGroup, config.AccountName
 > [!NOTE]
 > 如果播放器在 Https 站点上进行托管，请确保将 URL 更新为“https”。
 
-1. 打开 Web 浏览器并导航[https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)到 。
+1. 打开 Web 浏览器并导航到 [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)。
 2. 在“URL:”框中，粘贴从应用程序获取的某个流式处理 URL 值****。 
  
      可以粘贴 HLS、Dash 或 Smooth 格式的 URL，Azure Media Player将切换到适当的流协议，以便在你的设备上自动播放。

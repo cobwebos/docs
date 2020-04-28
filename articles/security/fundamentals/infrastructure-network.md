@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 02/20/2019
 ms.author: terrylan
 ms.openlocfilehash: c4756c36c2243840df69f3696e7ddac3628f3a00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68727173"
 ---
 # <a name="azure-network-architecture"></a>Azure 网络体系结构
@@ -81,7 +81,7 @@ Azure 数据中心构建在高度冗余、适当预配的网络基础结构之�
 ### <a name="ddos-mitigation"></a>DDoS 缓解措施
 分布式拒绝服务 (DDoS) 攻击持续对联机服务的可靠性造成实际威胁。 随着攻击变得更有针对性且更复杂，以及 Microsoft 服务的地理分布越来越广泛，识别这些攻击并尽量降低其影响就成了一项高优先级任务。
 
-[Azure DDoS 保护标准](../../virtual-network/ddos-protection-overview.md)提供对 DDoS 攻击的防御。 请参阅[Azure DDoS 保护：最佳做法和参考体系结构](ddos-best-practices.md)以了解更多信息。
+[Azure DDoS 保护标准](../../virtual-network/ddos-protection-overview.md)提供对 DDoS 攻击的防御。 有关详细信息，请参阅[Azure DDoS 保护：最佳实践和参考体系结构](ddos-best-practices.md)。
 
 > [!NOTE]
 > Microsoft 默认为所有 Azure 客户提供 DDoS 防护。

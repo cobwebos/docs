@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
 ms.openlocfilehash: 044930c9df7b54515b9b66426a6b05aa9517a3a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "70881281"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure 专用 HSM 网络
@@ -60,7 +60,7 @@ Azure 专用 HSM 需要高度安全的网络环境。 无论是要 Azure 云连�
 
 ### <a name="site-to-site-vpn"></a>站点到站点 VPN
 
-使用站点到站点虚拟专用网络可在基于 Azure 的专用 HSM 与本地 IT 之间实现安全通信。 这样做的一个原因是为 HSM 的本地提供了备份设施，并且需要两者之间的连接才能运行备份。
+使用站点到站点虚拟专用网络可在基于 Azure 的专用 HSM 与本地 IT 之间实现安全通信。 这样做的一个原因是，在本地有一个用于 HSM 的备份设备，并且需要两个连接才能运行备份。
 
 ## <a name="connecting-virtual-networks"></a>连接虚拟网络
 
@@ -87,9 +87,9 @@ HSM 设备可以通过软件库将流量重定向到备用 HSM。 如果设备�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [常见问题](faq.md)
+- [常见问题解答](faq.md)
 - [可支持性](supportability.md)
 - [高可用性](high-availability.md)
-- [物理安全](physical-security.md)
-- <bpt i="1000001" x="1000001" type="formatting">{b&gt;</bpt>监视<ept i="1000001">&lt;b}</ept>
+- [物理安全性](physical-security.md)
+- [监视](monitoring.md)
 - [部署体系结构](deployment-architecture.md)

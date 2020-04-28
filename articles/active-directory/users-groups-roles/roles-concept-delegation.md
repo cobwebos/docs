@@ -16,10 +16,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6fa3c6bf39dbef601fe64e125999f519f725f2e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67083776"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>在 Azure Active Directory 中委托管理权限
@@ -87,7 +87,7 @@ ms.locfileid: "67083776"
 
 若要进行更精细的应用访问权限委托，可将所有权分配到单个企业应用程序。 这是对分配应用程序注册所有者的现有支持的补充。 所有权在“企业应用程序”边栏选项卡中根据每个企业应用程序进行分配。 优点是所有者只能管理他们拥有的企业应用程序。 例如，可以分配 Salesforce 应用程序的所有者，该所有者可以管理 Salesforce 的访问权限和配置，但不能管理其他任何应用程序的访问权限和配置。 一个企业应用程序可以有多个所有者，一个用户可以是许多企业应用程序的所有者。 有两种应用所有者角色：
 
-* “企业应用程序所有者”角色授予管理用户拥有的企业应用程序的能力，包括单一登录设置、用户和组分配，以及添加其他所有者。**** 它不授予管理应用程序代理设置或条件访问的权限。
+* “企业应用程序所有者”角色授予管理用户拥有的企业应用程序的能力，包括单一登录设置、用户和组分配，以及添加其他所有者。**** 它不会授予管理应用程序代理设置或条件性访问的能力。
 * “应用程序注册所有者”角色授予管理用户拥有的应用的应用程序注册的能力，包括应用程序清单和添加其他所有者。****
 
 ## <a name="develop-a-security-plan"></a>制定安全计划

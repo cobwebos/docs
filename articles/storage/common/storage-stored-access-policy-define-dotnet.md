@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 272d676d0a5a55262b1c68d0bae9a9ab229df72c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68990736"
 ---
 # <a name="define-a-stored-access-policy-with-net"></a>使用 .NET 定义存储访问策略
@@ -30,7 +30,7 @@ ms.locfileid: "68990736"
 > [!NOTE]
 > 容器上的存储访问策略可以与共享访问签名相关联，后者授予对容器本身的权限，或对它包含的 Blob 的权限。 类似地，文件共享上的存储访问策略可以与共享访问签名相关联，后者授予对共享本身的权限，或对它包含的文件的权限。  
 >
-> 仅服务 SAS 支持存储访问策略。 帐户 SAS 或用户委派 SAS 不支持存储的访问策略。  
+> 仅服务 SAS 支持存储访问策略。 帐户 SAS 或用户委托 SAS 不支持存储访问策略。  
 
 ## <a name="create-a-stored-access-policy"></a>创建存储访问策略
 
@@ -58,8 +58,8 @@ private static async Task CreateStoredAccessPolicyAsync(CloudBlobContainer conta
 }
 ```
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
-- [使用共享访问签名 (SAS) 授予对 Azure 存储资源的受限访问权限](storage-sas-overview.md)
+- [使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](storage-sas-overview.md)
 - [定义存储访问策略](/rest/api/storageservices/define-stored-access-policy)
 

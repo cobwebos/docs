@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bfd61b78ca3027ade1f2f48dec33e0a8ed508d3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60349808"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect：自动升级
@@ -43,7 +43,7 @@ ms.locfileid: "60349808"
 | Suspended |只能由系统设置。 系统**目前没有**资格接收自动升级。 |
 | 已禁用 |自动升级已禁用。 |
 
-可以使用 `Set-ADSyncAutoUpgrade` 在“已启用”与“已禁用”之间切换。******** 应该只有系统才能设置“暂停”状态。****  在 1.1.750.0 之前，如果自动升级状态设置为“已暂停”，则 Set-ADSyncAutoUpgrade cmdlet 会阻止自动升级。 此功能现已更改，不阻止自动升级。
+可以使用  **在“已启用”与“已禁用”之间切换。**  `Set-ADSyncAutoUpgrade` 应该只有系统才能设置“暂停”状态。   在 1.1.750.0 之前，如果自动升级状态设置为“已暂停”，则 Set-ADSyncAutoUpgrade cmdlet 会阻止自动升级。 此功能现已更改，不阻止自动升级。
 
 自动升级使用 Azure AD Connect Health 作为升级基础结构。 为使自动升级正常工作，请确保根据 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)中所述，在代理服务器中打开 **Azure AD Connect Health** 的 URL。
 
@@ -67,15 +67,15 @@ ms.locfileid: "60349808"
 
 结果代码前面会有包含状态概述的前缀。
 
-| 结果代码前缀 | 描述 |
+| 结果代码前缀 | 说明 |
 | --- | --- |
-| Success |安装已成功升级。 |
+| 成功 |安装已成功升级。 |
 | UpgradeAborted |某种临时状态停止了升级。 升级会重试，预期稍后会成功。 |
 | UpgradeNotSupported |系统中的某个配置阻止系统自动升级。 升级会重试，以查看状态是否已变化，但预期只能手动升级系统。 |
 
 下面是最常见的消息列表。 该列表并不完整，但结果消息应会明确说明问题所在。
 
-| 结果消息 | 描述 |
+| 结果消息 | 说明 |
 | --- | --- |
 | **UpgradeAborted** | |
 | UpgradeAbortedCouldNotSetUpgradeMarker |无法写入注册表。 |
@@ -91,7 +91,7 @@ ms.locfileid: "60349808"
 | **UpgradeNotSupported** | |
 | UpgradeNotSupportedAdfsSignInMethod | 已选择 Adfs 作为登录方法。 |
 | UpgradeNotSupportedCustomizedSyncRules |已将自己的自定义规则添加到配置中。 |
-| UpgradeNotSupportedDeviceWritebackEnabled |您已启用[设备回写](how-to-connect-device-writeback.md)功能。 |
+| UpgradeNotSupportedDeviceWritebackEnabled |已启用[设备写回](how-to-connect-device-writeback.md)功能。 |
 | UpgradeNotSupportedGroupWritebackEnabled |已启用[组写回](how-to-connect-preview.md#group-writeback)功能。 |
 | UpgradeNotSupportedInvalidPersistedState |安装不是快速设置或 DirSync 升级。 |
 | UpgradeNotSupportedMetaverseSizeExceeeded |Metaverse 中的对象超过 100,000 个。 |
@@ -100,8 +100,8 @@ ms.locfileid: "60349808"
 | UpgradeNotSupportedNonMsolAccount |[AD DS 连接器帐户](reference-connect-accounts-permissions.md#ad-ds-connector-account)不再是默认的 MSOL_ 帐户。 |
 | UpgradeNotSupportedNotConfiguredSignInMethod | 在设置 AAD Connect 期间，请在选择登录方法时选择“不配置”。** |
 | UpgradeNotSupportedPtaSignInMethod | 已选择“直通身份验证”作为登录方法。 |
-| UpgradeNotSupportedStagingModeEnabled |服务器设置为处于[暂存模式](how-to-connect-sync-staging-server.md)。 |
-| UpgradeNotSupportedUserWritebackEnabled |您已启用[用户回写](how-to-connect-preview.md#user-writeback)功能。 |
+| UpgradeNotSupportedStagingModeEnabled |服务器设置为[暂存模式](how-to-connect-sync-staging-server.md)。 |
+| UpgradeNotSupportedUserWritebackEnabled |已启用[用户写回](how-to-connect-preview.md#user-writeback)功能。 |
 
 ## <a name="next-steps"></a>后续步骤
-详细了解[将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

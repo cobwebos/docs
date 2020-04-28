@@ -17,10 +17,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4790dc7ebeeee3407e89bcf38d7e3f25699ed328
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67108410"
 ---
 # <a name="compare-remote-access-solutions"></a>比较远程访问解决方案
@@ -32,7 +32,7 @@ Azure Active Directory 应用程序代理是 Microsoft 提供的两个远程访�
 
 通过此表了解如何对威胁管理网关 (TMG)、统一访问网关 (UAG)、Web 应用程序代理 (WAP) 和 Azure AD 应用程序代理 (AP) 进行比较。
 
-| Feature | TMG | UAG | WAP | AP |
+| 功能 | TMG | UAG | WAP | AP |
 | ------- | --- | --- | --- | --- |
 | 证书身份验证 | 是 | 是 | - | - |
 | 有选择地发布浏览器应用 | 是 | 是 | 是 | 是 |
@@ -50,7 +50,7 @@ Azure Active Directory 应用程序代理是 Microsoft 提供的两个远程访�
 | 外围安全区域 (DMZ) 中无组件 | - | - | - | 是 |
 | 无入站连接 | - | - | - | 是 |
 
-对于大多数方案，我们建议将 Azure AD 应用程序代理作为现代解决方案。 仅在需要为 AD FS 提供代理服务器以及无法使用 Azure Active Directory 中的自定义域时，才优先考虑 Web 应用程序代理。 
+在大多数情况下，我们建议 Azure AD 应用程序代理作为新式解决方案。 仅在需要为 AD FS 提供代理服务器以及无法使用 Azure Active Directory 中的自定义域时，才优先考虑 Web 应用程序代理。 
 
 与同类产品相比，Azure AD 应用程序代理提供许多独一无二的优势，其中包括：
 

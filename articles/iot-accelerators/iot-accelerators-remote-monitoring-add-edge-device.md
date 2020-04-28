@@ -9,24 +9,24 @@ services: iot-accelerators
 ms.date: 10/09/2018
 ms.topic: conceptual
 ms.openlocfilehash: 0a42763ff47cccfa506acbbbd95d20d41eb0827f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72965368"
 ---
 # <a name="add-an-iot-edge-device-to-your-remote-monitoring-solution-accelerator"></a>将 IoT Edge 设备添加到远程监视解决方案加速器
 
 若要将 [IoT Edge](../iot-edge/about-iot-edge.md) 设备添加到解决方案加速器，请完成以下两个步骤：
 
-1. 在远程监视解决方案加速器 Web UI 中的 **"设备资源管理器**"页上添加边缘设备。
+1. 在远程监视解决方案加速器 web UI 的 " **Device Explorer** " 页上添加 Edge 设备。
 1. 在 Edge 设备上安装 IoT Edge 运行时。
 
 ## <a name="add-the-iot-edge-device"></a>添加 IoT Edge 设备
 
 若要将 IoT Edge 设备添加到远程监视解决方案加速器，请在 Web UI 中导航到“设备资源管理器”页，然后单击“+ 新建设备”。********
 
-在“新建设备”面板中，选择“IoT Edge 设备”********。 对于其他设置，可以保留默认值。 然后单击 **"应用**" ：
+在“新建设备”面板中，选择“IoT Edge 设备”********。 对于其他设置，可以保留默认值。 然后单击 "**应用**"：
 
 ![添加 IoT Edge 设备](media/iot-accelerators-remote-monitoring-add-edge-device/addedgedevice.png)
 
@@ -38,7 +38,7 @@ ms.locfileid: "72965368"
 - [使用 Azure CLI 注册新 Azure IoT Edge 设备](../iot-edge/how-to-register-device.md#register-with-the-azure-cli)
 - [通过 Visual Studio Code 注册新 Azure IoT Edge 设备](../iot-edge/how-to-register-device.md#register-with-visual-studio-code)
 
-当您在远程监视解决方案加速器中直接向 IoT 中心注册设备时，设备将列在 Web UI 中的 **"设备资源管理器**"页上。
+当你直接在远程监视解决方案加速器中向 IoT 中心注册设备时，它将列在 web UI 中的 " **Device Explorer** " 页上。
 
 ## <a name="install-the-iot-edge-runtime"></a>安装 IoT Edge 运行时
 

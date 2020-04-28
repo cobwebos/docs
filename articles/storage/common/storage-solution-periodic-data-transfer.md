@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/24/2019
 ms.author: alkohli
 ms.openlocfilehash: fb49802adf6242f445b700d06622d7e6aa336b4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67357042"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>定期数据传输解决方案
@@ -52,7 +52,7 @@ ms.locfileid: "67357042"
 
 ### <a name="continuous-data-ingestion-over-network"></a>网络上的持续数据引入
 
-| Feature                                       | Data Box Gateway | Data Box Edge   | Azure 数据工厂        |
+| 功能                                       | Data Box Gateway | Data Box Edge   | Azure 数据工厂        |
 |----------------------------------|-----------------------------------------|--------------------------|---------------------------|
 | 外形规格                                   | 虚拟设备             | 物理设备          | Azure 门户中的服务，本地代理                                                            |
 | 硬件                                      | 虚拟机监控程序            | 由 Microsoft 提供    | NA                                                            |
@@ -65,7 +65,7 @@ ms.locfileid: "67357042"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 AzCopy 传输数据](/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)。
+- [通过 AzCopy 传输数据](/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)。
 - [使用存储 REST API 传输数据的详细信息](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet)。
 - 了解如何：
     - [使用 Data Box Gateway 传输数据](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares)。

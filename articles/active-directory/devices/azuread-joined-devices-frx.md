@@ -1,6 +1,6 @@
 ---
 title: 首次运行期间使用 Azure AD 加入新的 Windows 10 设备 | Microsoft Docs
-description: 用户可以如何在开箱即用体验期间设置 Azure AD 加入。
+description: 在全新体验期间，用户可以如何设置 Azure AD 加入。
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -12,15 +12,15 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 384157828e9c816b150e40bf3f09b74578c4a98e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67482096"
 ---
 # <a name="tutorial-join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>教程：首次运行期间使用 Azure AD 加入新的 Windows 10 设备
 
-使用 Azure Active Directory (Azure AD) 中的设备管理，可以确保用户从满足安全性和符合性标准的设备访问资源。 有关详细信息，请参阅 Azure[活动目录中的设备管理简介](overview.md)。
+使用 Azure Active Directory (Azure AD) 中的设备管理，可以确保用户从满足安全性和符合性标准的设备访问资源。 有关详细信息，请参阅[Azure Active Directory 中的设备管理简介](overview.md)。
 
 对于 Windows 10，可在首次运行体验 (FRX) 期间将新的设备加入 Azure AD。  
 通过这样可将打包的设备分发给员工或学生。
@@ -39,7 +39,7 @@ Windows 全新体验中不支持加入本地 Active Directory (AD) 域**。 如�
 
 若要加入 Windows 10 设备，必须配置设备注册服务以允许注册设备。 除具有在 Azure AD 租户中加入设备的权限外，注册设备的数量必须少于所配置的最大数。 有关详细信息，请参阅[配置设备设置](device-management-azure-portal.md#configure-device-settings)。
 
-此外，如果你的租户为联合租户，标识提供者必须支持 WS-Fed 和 WS-Trust 用户名/密码终结点。 这可以是版本 1.3 或 2005。 此协议支持需要将设备加入 Azure AD 并使用密码登录到设备。
+此外，如果你的租户为联合租户，标识提供者必须支持 WS-Fed 和 WS-Trust 用户名/密码终结点。 这可以是版本 1.3 或 2005。 需要此协议支持才能将设备加入到 Azure AD，并使用密码登录到设备。
 
 ## <a name="joining-a-device"></a>加入设备
 
@@ -59,7 +59,7 @@ Windows 全新体验中不支持加入本地 Active Directory (AD) 域**。 如�
 
     ![登录屏幕](./media/azuread-joined-devices-frx/03.png)
 
-1. 您的设备在 Azure AD 中查找匹配的租户。 如果在联盟域中，系统会将你重定向到本地安全令牌服务 (STS) 服务器，例如，Active Directory 联合身份验证服务 (AD FS)。
+1. 设备在 Azure AD 中找到匹配的租户。 如果在联盟域中，系统会将你重定向到本地安全令牌服务 (STS) 服务器，例如，Active Directory 联合身份验证服务 (AD FS)。
 1. 如果是非联盟域中的用户，请直接在 Azure AD 托管页上输入凭据。 
 1. 系统会提示完成多重身份验证质询。 
 1. Azure AD 会检查是否需要在移动设备管理中进行注册。
@@ -76,5 +76,5 @@ Windows 全新体验中不支持加入本地 Active Directory (AD) 域**。 如�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关详细信息，请参阅 Azure[活动目录中的设备管理简介](overview.md)。
+- 有关详细信息，请参阅[Azure Active Directory 中的设备管理简介](overview.md)。
 - 有关在 Azure AD 门户中管理设备的详细信息，请参阅[使用 Azure 门户管理设备](device-management-azure-portal.md)。

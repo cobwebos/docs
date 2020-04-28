@@ -17,10 +17,10 @@ ms.custom: it-pro
 ms.reviewer: harshja
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6ca64e2de5734c567173fc735776074f4c87fbc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67108462"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理发布远程桌面
@@ -29,7 +29,7 @@ ms.locfileid: "67108462"
 
 本文的目标读者为：
 - 想要通过远程桌面服务发布本地应用程序，为最终用户提供更多应用程序的当前应用程序代理客户。
-- 想要使用 Azure AD 应用程序代理减小其部署的受攻击面的当前远程桌面服务客户。 此方案为 RDS 提供了一组有限的两步验证和条件访问控制。
+- 想要使用 Azure AD 应用程序代理减小其部署的受攻击面的当前远程桌面服务客户。 此方案提供一组有限的双重验证和对 RDS 的条件性访问控制。
 
 ## <a name="how-application-proxy-fits-in-the-standard-rds-deployment"></a>应用程序代理如何适应标准 RDS 部署
 
@@ -58,7 +58,7 @@ ms.locfileid: "67108462"
 
 - 在 Internet Explorer 中，启用 RDS ActiveX 外接程序。
 
-- 对于 Azure AD 预身份验证流，用户只能连接到**在"远程应用"和"桌面"** 窗格中发布到他们的资源。 用户无法使用"**连接到远程 PC"** 窗格连接到桌面。
+- 对于 Azure AD 预身份验证流，用户只能在 " **RemoteApp 和桌面**" 窗格中连接到发布的资源。 用户无法使用 "**连接到远程电脑**" 窗格连接到桌面。
 
 ## <a name="deploy-the-joint-rds-and-application-proxy-scenario"></a>部署 RDS 和应用程序代理联合方案
 
@@ -73,9 +73,9 @@ ms.locfileid: "67108462"
    - 转换 URL 标头：否
 2. 将用户分配到已发布的 RD 应用程序。 确保这些用户也都有权访问 RDS。
 3. 将应用程序的单一登录方法保留为“已禁用 Azure AD 单一登录”。**** 用户必须在 Azure AD 和 RD Web 上各执行身份验证一次，但可以单一登录到 RD 网关。
-4. 选择**Azure 活动目录**，然后**选择应用注册**。 从列表中选择你的应用。
-5. 在 **"管理"** 下，选择 **"品牌**"。
-6. 更新**主页 URL**字段以指向 RD Web 终结点（`https://\<rdhost\>.com/RDWeb`如 ）。
+4. 选择 " **Azure Active Directory**"，然后选择 "**应用注册**"。 从列表中选择应用。
+5. 在 "**管理**" 下，选择 "**品牌**"。
+6. 将 "**主页 URL** " 字段更新为指向 RD Web 终结点（如`https://\<rdhost\>.com/RDWeb`）。
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>将 RDS 流量定向到应用程序代理
 
@@ -84,14 +84,14 @@ ms.locfileid: "67108462"
 1. 连接到运行 RD 连接代理角色的 RDS 服务器。
 2. 启动**服务器管理器**。
 3. 在左侧窗格中选择“远程桌面服务”。****
-4. 选择“概述”。****
+4. 选择“概述”。 
 5. 在“部署概述”部分中，选择下拉菜单并选择“编辑部署属性”。****
 6. 在“RD 网关”选项卡中，将“服务器名称”字段更改为针对应用程序代理中的 RD 主机终结点设置的外部 URL。****
 7. 将“登录方法”字段更改为“密码身份验证”。********
 
    ![RDS 上的“部署属性”屏幕](./media/application-proxy-integrate-with-remote-desktop-services/rds-deployment-properties.png)
 
-8. 为所有集合运行此命令。 将*\<集合名称\>* 和*\<代理前名\>* 替换为您自己的信息。 此命令在 RD Web 与 RD 网关之间启用单一登录并优化性能：
+8. 为所有集合运行此命令。 将* \<yourcollectionname\> * *和\<proxyfrontendurl\> *替换为自己的信息。 此命令在 RD Web 与 RD 网关之间启用单一登录并优化性能：
 
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"
@@ -129,7 +129,7 @@ ms.locfileid: "67108462"
 | 预身份验证    | 使用 Internet Explorer 和 RDS ActiveX 外接程序的 Windows 7/10 |
 | 传递 | 支持 Microsoft 远程桌面应用程序的任何其他操作系统 |
 
-相比传递流，预身份验证流可提供更多的安全优势。 通过预身份验证，您可以使用 Azure AD 身份验证功能，如本地资源的单一登录、条件访问和两步验证。 此外，你还可以确保只有经过身份验证的流量才能访问你的网络。
+相比传递流，预身份验证流可提供更多的安全优势。 使用预身份验证，你可以使用 Azure AD 身份验证功能，如单一登录、条件性访问和本地资源的双重验证。 此外，你还可以确保只有经过身份验证的流量才能访问你的网络。
 
 若要使用传递身份验证，本文列出的步骤仅有下面两处修改：
 1. 在[发布 RD 主机终结点](#publish-the-rd-host-endpoint)步骤 1 中，将预身份验证方法设置为“传递”****。

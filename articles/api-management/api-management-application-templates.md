@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: d635950c8b34986cd5824660166017317948cbd8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73176907"
 ---
 # <a name="application-templates-in-azure-api-management"></a>Azure API 管理中的应用程序模板
@@ -73,10 +73,10 @@ ms.locfileid: "73176907"
 </div>  
 ```  
   
-### <a name="controls"></a>控件  
+### <a name="controls"></a>控制  
  `Product list` 模板可使用以下[页面控件](api-management-page-controls.md)。  
   
--   [分页控制](api-management-page-controls.md#paging-control)  
+-   [paging-control](api-management-page-controls.md#paging-control)  
   
 ### <a name="data-model"></a>数据模型  
   
@@ -137,7 +137,7 @@ ms.locfileid: "73176907"
 }  
 ```  
   
-##  <a name="application"></a><a name="Application"></a>应用  
+##  <a name="application"></a><a name="Application"></a>程序  
  **应用程序**模板可用于自定义开发人员门户中应用程序页的正文。  
   
  ![应用程序页开发人员门户模板](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM 应用程序页开发人员门户模板")  

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
 ms.openlocfilehash: b998043bc7d896989590ac21db5f309a81cc02bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71056834"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Azure 中的网络虚拟设备问题
@@ -71,7 +71,7 @@ NVA 供应商提供了对第三方 NVA 及其与 Azure 平台集成的技术支�
    Get-AzNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName>
    ```
 
-3. 检查“EnableIPForwarding”属性****。
+3. 检查“EnableIPForwarding”属性  。
 4. 如果未启用 IP 转发，请运行以下命令将其启用：
 
    ```powershell
@@ -87,15 +87,15 @@ NVA 供应商提供了对第三方 NVA 及其与 Azure 平台集成的技术支�
 
 **检查流量是否可路由到 NVA**
 
-1. 在 [Azure 门户](https://portal.azure.com)上，打开“网络观察程序”，选择“下一跃点”********。
+1. 在 [Azure 门户](https://portal.azure.com)上，打开“网络观察程序”，选择“下一跃点”   。
 2. 指定配置为将流量重定向到 NVA 的 VM，以及用于查看下一跃点的目标 IP 地址。 
-3. 如果 NVA 未列为“下一跃点”，请检查并更新 Azure 路由表****。
+3. 如果 NVA 未列为“下一跃点”，请检查并更新 Azure 路由表  。
 
 **检查流量是否可到达 NVA**
 
-1. 在 [Azure 门户](https://portal.azure.com)中，打开“网络观察程序”，然后选择“IP 流验证”********。 
+1. 在 [Azure 门户](https://portal.azure.com)中，打开“网络观察程序”，然后选择“IP 流验证”   。 
 2. 指定 VM 和 NVA 的 IP 地址，然后检查是否有任何网络安全组 (NSG) 阻止该流量。
-3. 如果存在阻止流量的 NSG 规则，请在“有效安全”规则中找到 NSG，并更新它以允许流量通过****。 然后再次运行“IP 流验证”并使用“连接故障排除”测试从 VM 到内部或外部 IP 地址的 TCP 通信********。
+3. 如果存在阻止流量的 NSG 规则，请在“有效安全”规则中找到 NSG，并更新它以允许流量通过  。 然后再次运行“IP 流验证”并使用“连接故障排除”测试从 VM 到内部或外部 IP 地址的 TCP 通信   。
 
 **检查 NVA 和 VM 是否正在侦听预期的流量**
 
@@ -114,7 +114,7 @@ NVA 供应商提供了对第三方 NVA 及其与 Azure 平台集成的技术支�
 
 ### <a name="validate-vm-cpu"></a>验证 VM CPU
 
-如果 CPU 使用率接近 100%，则可能会遇到造成网络数据包丢失的问题。 VM 报告 Azure 门户中特定时间跨度的平均 CPU。 在 CPU 峰值期间，调查来宾 VM 上的哪个进程导致高 CPU 使用率，并在可能的情况下缓解该问题。 可能还必须将 VM 大小调整为更大的 SKU 大小；或者，对于虚拟机规模集，可增加实例数或设置为自动调整 CPU 使用率。 对于上述任一问题[，请根据需要与 NVA 供应商联系以获得帮助](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
+如果 CPU 使用率接近 100%，则可能会遇到造成网络数据包丢失的问题。 VM 报告 Azure 门户中特定时间跨度的平均 CPU。 在 CPU 峰值期间，调查来宾 VM 上的哪个进程导致高 CPU 使用率，并在可能的情况下缓解该问题。 可能还必须将 VM 大小调整为更大的 SKU 大小；或者，对于虚拟机规模集，可增加实例数或设置为自动调整 CPU 使用率。 对于上述任意问题，如有需要，[请联系 NVA 供应商以获取帮助](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
 
 ### <a name="validate-vm-network-statistics"></a>验证 VM 网络统计信息
 
@@ -123,17 +123,17 @@ NVA 供应商提供了对第三方 NVA 及其与 Azure 平台集成的技术支�
 ## <a name="advanced-network-administrator-troubleshooting"></a>高级网络管理员故障排除
 
 ### <a name="capture-network-trace"></a>捕获网络跟踪
-运行 [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) 或 Nmap 时，请在源 VM、NVA 和目标 VM 上捕获同步网络跟踪，并停止跟踪********。
+运行 **PsPing[ 或 Nmap 时，请在源 VM、NVA 和目标 VM 上捕获同步网络跟踪，并停止跟踪](https://docs.microsoft.com/sysinternals/downloads/psping)**  。
 
 1. 若要捕获同步网络跟踪，请运行以下命令：
 
-   **对于窗口**
+   **对于 Windows**
 
-   netsh 跟踪开始捕获_是跟踪文件_c：\server_IP.etl 方案_网络连接
+   netsh trace start capture = yes tracefile = c：\ server_IP .etl 方案 = test-netconnection
 
-   **对于 Linux**
+   **适用于 Linux**
 
-   sudo tcpdump -s0 -i eth0 -X -w vmtrace.cap
+   sudo tcpdump-eth0-X-w vmtrace.cap
 
 2. 使用从源 VM 到目标 VM 的 PsPing 或 Nmap（例如：`PsPing 10.0.0.4:80` 或 `Nmap -p 80 10.0.0.4`）********。
 3. 使用[网络监视器](https://www.microsoft.com/download/details.aspx?id=4865)或 tcpdump 从目标 VM 打开网络跟踪。 为运行 PsPing 或 Nmap 的源 VM 的 IP 应用显示筛选器，例如 `IPv4.address==10.0.0.4 (Windows netmon)` 或 `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` (Linux)********。

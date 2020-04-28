@@ -16,10 +16,10 @@ ms.date: 03/28/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 70f2d9542082ddf7ecf1d1e7361b0ecdb14c5ef8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68963377"
 ---
 # <a name="what-are-storsimple-8000-series-system-limits"></a>StorSimple 8000 系列的系统限制是什么？
@@ -30,7 +30,7 @@ ms.locfileid: "68963377"
 
 StorSimple 为数据中心提供可伸缩且灵活的存储。 但用户在规划、部署和运行 StorSimple 解决方案时，应牢记某些限制。 下表介绍了这些限制，并提供了一些建议，以便用户充分利用 StorSimple 解决方案。
 
-| 限制标识符 | 限制 | 注释 |
+| 限制标识符 | 限制 | 说明 |
 | --- | --- | --- |
 | 存储帐户凭据的最大数目 |64 | |
 | 卷容器的最大数目 |64 | |

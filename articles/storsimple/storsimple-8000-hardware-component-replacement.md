@@ -16,10 +16,10 @@ ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: e05a37122647d4979089f0ba00b1fc15f9b84b0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60321679"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>更换 StorSimple 8000 系列设备上的硬件组件
@@ -37,9 +37,9 @@ ms.locfileid: "60321679"
 | 图标 | Text | 其他信息 |
 |:--- |:--- |:--- |
 | ![警告图标](./media/storsimple-hardware-component-replacement/Warning.png) |**危险!** |指示如果未能避免危险情况，将导致死亡或重伤。 此警示语仅限于最为极端的情况。 |
-| ![警告图标](./media/storsimple-hardware-component-replacement/Warning.png) |**警告！** |指示如果未能避免危险情况，可能导致死亡或重伤。 |
-| ![提醒图标](./media/storsimple-hardware-component-replacement/Caution.png) |**谨慎！** |指示如果未能避免危险情况，可能导致轻伤或重伤。 |
-| ![注意图标](./media/storsimple-hardware-component-replacement/NoticeIcon.png) |**通知：** |指示应该给予重视但不涉及危险情况的信息。 |
+| ![警告图标](./media/storsimple-hardware-component-replacement/Warning.png) |**出现!** |指示如果未能避免危险情况，可能导致死亡或重伤。 |
+| ![提醒图标](./media/storsimple-hardware-component-replacement/Caution.png) |**警告!** |指示如果未能避免危险情况，可能导致轻伤或重伤。 |
+| ![注意图标](./media/storsimple-hardware-component-replacement/NoticeIcon.png) |**通知** |指示应该给予重视但不涉及危险情况的信息。 |
 | ![电击图标](./media/storsimple-hardware-component-replacement/Electric.png) |**点击危险** |指示高压电。 |
 | ![重物图标](./media/storsimple-hardware-component-replacement/Weight.png) |**重物** | |
 | ![无用户可维修部件图标](./media/storsimple-hardware-component-replacement/NoUserServiceableParts.png) |**无用户可维修部件** |除非经过适当的培训，否则请勿访问。 |
@@ -88,11 +88,11 @@ StorSimple 8000 系列设备的主机箱和/或 EBOD 机箱包含多个插件模
 
 以下正面图和背面图突出显示了设备上的插件模块。 在需要更换插件模块时，这些图可用于确定各种插件模块的位置。 EBOD 机箱和主机箱的正面图显示磁盘驱动器，背面图显示插件模块。
 
-![带磁盘驱动器的设备前面板](./media/storsimple-hardware-component-replacement/IC741028.png)
+![带有磁盘驱动器的设备的前面板](./media/storsimple-hardware-component-replacement/IC741028.png)
 
 **图 1** 设备的前面
 
-| Label | 描述 |
+| Label | 说明 |
 |:--- |:--- |
 | 0 - 11 |磁盘驱动器（总数为 12） |
 
@@ -102,7 +102,7 @@ StorSimple 8000 系列设备的主机箱和/或 EBOD 机箱包含多个插件模
 
 **图 2** 主机箱的背面
 
-| Label | 描述 |
+| Label | 说明 |
 |:--- |:--- |
 | 1 |PCM 0 |
 | 2 |PCM 1 |
@@ -113,7 +113,7 @@ StorSimple 8000 系列设备的主机箱和/或 EBOD 机箱包含多个插件模
 
 **图 3** EBOD 机箱的背面
 
-| Label | 描述 |
+| Label | 说明 |
 |:--- |:--- |
 | 1 |PCM 0 |
 | 2 |PCM 1 |

@@ -1,5 +1,5 @@
 ---
-title: Azure AD 连接：ADSync 服务帐户 |微软文档
+title: Azure AD Connect：ADSync 服务帐户 | Microsoft Docs
 description: 本主题介绍 ADSync 服务帐户并提供有关此类帐户的最佳做法。
 services: active-directory
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f228da5afc5998d8fa59ce2d720cec4c9f955b67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67478714"
 ---
 # <a name="adsync-service-account"></a>ADSync 服务帐户
-Azure AD Connect 会安装一个本地服务用于协调 Active Directory 与 Azure Active Directory 之间的同步。  Microsoft Azure AD 同步同步服务 （ADSync） 在本地环境中的服务器上运行。  默认会在“快速”安装中设置该服务的凭据，不过，用户也可以根据组织的安全要求自定义凭据。  这些凭据不会用于连接到本地林或 Azure Active Directory。
+Azure AD Connect 会安装一个本地服务用于协调 Active Directory 与 Azure Active Directory 之间的同步。  Microsoft Azure AD 同步同步服务（ADSync）在本地环境中的服务器上运行。  默认会在“快速”安装中设置该服务的凭据，不过，用户也可以根据组织的安全要求自定义凭据。  这些凭据不会用于连接到本地林或 Azure Active Directory。
 
 选择 ADSync 服务帐户是在安装 Azure AD Connect 之前要做出的一项重要规划决策。  安装后尝试更改凭据会导致服务无法启动、无法访问同步数据库，以及无法在连接的目录（Azure 和 AD DS）中进行身份验证。  在还原原始凭据之前无法进行同步。
 
@@ -42,9 +42,9 @@ Azure AD Connect 会安装一个本地服务用于协调 Active Directory 与 Az
 ## <a name="custom-adsync-service-accounts"></a>自定义 ADSync 服务帐户
 Microsoft 建议在虚拟服务帐户或者独立或组托管服务帐户的上下文中运行 ADSync 服务。  域管理员还可以选择创建一个根据具体组织安全要求预配的服务帐户。   若要自定义安装期间使用的服务帐户，请在“快速设置”页上选择如下所示的“自定义”选项。   提供了以下选项：
 
-- 默认帐户 = Azure AD 连接将预配服务帐户，如上所述
-- 托管服务帐户 – 使用管理员预配的独立或组 MSA
-- 域帐户 – 使用管理员预配的域服务帐户
+- 默认帐户– Azure AD Connect 将按上文所述预配服务帐户
+- 托管服务帐户–使用管理员预配的独立或组 MSA
+- 域帐户–使用管理员预配的域服务帐户
 
 ![](media/concept-adsync-service-account/adsync1.png)
 
@@ -59,7 +59,7 @@ Microsoft 建议在虚拟服务帐户或者独立或组托管服务帐户的上�
 
 找不到 AdSync 服务加密密钥，或者已重新创建这些密钥。  在更正此问题之前无法进行同步。
 
-如果更改 AdSync 服务登录凭据，则 Microsoft Azure AD 同步加密密钥将无法访问。  如果更改了凭据，请使用“服务”应用程序将登录帐户改回到其原始配置值（例如 NT SERVICE\AdSync），并重启该服务。  这可以使 AdSync 服务立即恢复正常运行。
+解决此问题如果更改了 AdSync 服务登录凭据，则 Microsoft Azure AD 同步加密密钥将不可访问。  如果更改了凭据，请使用“服务”应用程序将登录帐户改回到其原始配置值（例如 NT SERVICE\AdSync），并重启该服务。  这可以使 AdSync 服务立即恢复正常运行。
 
 有关详细信息，请参阅以下[文章](https://go.microsoft.com/fwlink/?linkid=2086764)。
 
@@ -67,7 +67,7 @@ Microsoft 建议在虚拟服务帐户或者独立或组托管服务帐户的上�
 
 由于无法与本地数据库 (localdb) 建立连接，该服务无法启动。
 
-解决此问题 Microsoft Azure AD 同步服务将失去访问本地数据库提供程序的权限（如果 AdSync 服务登录凭据已更改）。  如果更改了凭据，请使用“服务”应用程序将登录帐户改回到其原始配置值（例如 NT SERVICE\AdSync），并重启该服务。  这可以使 AdSync 服务立即恢复正常运行。
+解决此问题如果更改了 AdSync 服务登录凭据，则 Microsoft Azure AD 同步服务将失去访问本地数据库提供程序的权限。  如果更改了凭据，请使用“服务”应用程序将登录帐户改回到其原始配置值（例如 NT SERVICE\AdSync），并重启该服务。  这可以使 AdSync 服务立即恢复正常运行。
 
 有关详细信息，请参阅以下[文章](https://go.microsoft.com/fwlink/?linkid=2086764)。
 
@@ -82,4 +82,4 @@ Minor Number = 0
 Description  = 'A network-related or instance-specific error has occurred while establishing a connection to SQL Server. Server is not found or not accessible. Check if instance name is correct and if SQL Server is configured to allow remote connections. For more information see SQL Server Books Online.'
 ```
 ## <a name="next-steps"></a>后续步骤
-详细了解[将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

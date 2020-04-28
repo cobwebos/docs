@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: c57a45145d9abc43d0ca79839ea297dfc025db9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "66161418"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>通过 PowerShell 创建使用 Azure Data Lake Storage Gen1 作为默认存储的 HDInsight 群集
@@ -137,7 +137,7 @@ ms.locfileid: "66161418"
 
         pvk2pfx -pvk mykey.pvk -spc CertFile.cer -pfx CertFile.pfx -po <password>
 
-    出现提示时，请输入前面指定的私钥密码。 为 -po 参数指定的值是与 .pfx 文件关联的密码****。 成功完成该命令后，还应在指定的证书目录中看到**CertFile.pfx。**
+    出现提示时，请输入前面指定的私钥密码。 为 -po 参数指定的值是与 .pfx 文件关联的密码****。 成功完成该命令后，还应在指定的证书目录中看到**CertFile。**
 
 ### <a name="create-an-azure-ad-and-a-service-principal"></a>创建 Azure AD 和服务主体
 本部分将为 Azure AD 应用程序创建一个服务主体，将角色分配给该服务主体，然后通过提供证书来以服务主体的身份进行身份验证。 若要在 Azure AD 中创建应用程序，请运行以下命令：
@@ -215,7 +215,7 @@ ms.locfileid: "66161418"
     成功完成该 cmdlet 后，应会出现列出群集详细信息的输出。
 
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>在 HDInsight 群集上运行测试作业以使用 Data Lake Storage Gen1
-配置 HDInsight 群集后，可在该群集上运行测试作业，确保该群集可访问 Data Lake Storage Gen1。 为此，请运行一个示例 Hive 作业以创建一个表，该表使用群集*\<根>/示例/数据/数据/示例.log）* 中的 Data Lake 存储 Gen1 中已有的示例数据。
+配置 HDInsight 群集后，可在该群集上运行测试作业，确保该群集可访问 Data Lake Storage Gen1。 为此，请运行示例 Hive 作业，以创建一个表，该表使用 Data Lake Storage Gen1 的* \<群集根>/example/data/sample.log*上已提供的示例数据。
 
 在本部分，我们将与创建的 HDInsight Linux 群集建立安全外壳 (SSH) 连接，然后运行示例 Hive 查询。
 
@@ -253,7 +253,7 @@ ms.locfileid: "66161418"
 
 可以使用 `hdfs dfs -put` 命令将一些文件上传到 Data Lake Storage Gen1，然后使用 `hdfs dfs -ls` 验证是否已成功上传这些文件。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 * [将 Data Lake Storage Gen1 与 Azure HDInsight 群集配合使用](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
 * [Azure 门户：创建使用 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)
 

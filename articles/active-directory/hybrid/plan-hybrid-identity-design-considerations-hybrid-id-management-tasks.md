@@ -1,6 +1,6 @@
 ---
 title: 混合标识设计 - 管理任务 Azure | Microsoft Docs
-description: 使用条件访问控件，Azure 活动目录会检查在验证用户时和允许访问应用程序之前选择的特定条件。 一旦符合这些条件，用户就会通过身份验证并获权访问应用程序。
+description: 使用条件性访问控制时，Azure Active Directory 会检查在对用户进行身份验证时以及允许访问应用程序之前选取的特定条件。 一旦符合这些条件，用户就会通过身份验证并获权访问应用程序。
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8a829d39ff21a1abeafd3b4362747894d196d9d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67109381"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>规划混合标识生命周期
@@ -32,7 +32,7 @@ ms.locfileid: "67109381"
 ## <a name="determine-hybrid-identity-management-tasks"></a>确定混合标识管理任务
 在组织中分配管理任务可以改善管理的精准度和效率，改善组织的工作负荷均衡性。 下面是定义稳健标识管理系统的要点。
 
- ![身份管理注意事项](./media/plan-hybrid-identity-design-considerations/Identity_management_considerations.png)
+ ![标识管理注意事项](./media/plan-hybrid-identity-design-considerations/Identity_management_considerations.png)
 
 若要定义混合标识管理任务，必须了解采用混合标识的组织有哪些基本特征。 必须了解当前用于标识源的存储库。 了解这些核心元素之后，即建立了基本要求，接下来需要据此提出更细微的问题，为标识解决方案做出更理想的设计决策。  
 
@@ -61,10 +61,10 @@ ms.locfileid: "67109381"
 ## <a name="synchronization-management"></a>同步管理
 标识管理员的目标之一是启用所有标识提供者并保持其同步状态。 可以根据权威的主标识提供者保持数据的同步状态。 在混合标识方案中，可以通过同步的管理模型在本地服务器中管理所有用户和设备标识，并将帐户同步到云（以及选择性地同步密码）。 用户在本地中输入的密码与在云中相同，登录时，标识解决方案会验证密码。 此模型使用目录同步工具。
 
-![目录同步](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png)要正确设计混合标识解决方案的同步，确保回答以下问题：
-*    混合标识解决方案可用的同步解决方案有哪些？
-*    可用的单一登录功能是什么？
-*    B2B 和 B2C 之间的身份联合有哪些选项？
+![目录同步](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png)到适当设计混合标识解决方案的同步确保了以下问题的答案：
+*    适用于混合标识解决方案的同步解决方案有哪些？
+*    可用的单一登录功能有哪些？
+*    B2B 和 B2C 之间的联合身份验证有哪些选项？
 
 ## <a name="next-steps"></a>后续步骤
 [确定混合标识管理采用策略](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)

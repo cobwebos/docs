@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 7/9/2019
 ms.author: victorh
 ms.openlocfilehash: db29551a8150b70e797d45fe659482470c8aca2a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67659497"
 ---
 # <a name="azure-application-gateway-resource-health-overview"></a>Azure 应用程序网关资源运行状况概述
 
-[Azure 资源运行状况](../service-health/resource-health-overview.md)可帮助您在 Azure 服务问题影响资源时诊断并获得支持。 它通知你有关资源的当前和过去运行状况的信息， 并提供技术支持以帮助你缓解问题。
+[Azure 资源运行状况](../service-health/resource-health-overview.md)有助于在 Azure 服务问题影响资源时进行诊断和获取支持。 它通知你有关资源的当前和过去运行状况的信息， 并提供技术支持以帮助你缓解问题。
 
 对于应用程序网关，资源运行状况依赖于网关发出的信号来评估资源是否正常运行。 如果网关运行不正常，资源运行状况将分析其他信息以确定问题根源。 它还标识为了修复问题而由 Microsoft 执行的操作或你可以执行的操作。
 
@@ -27,13 +27,13 @@ ms.locfileid: "67659497"
 
 ## <a name="available"></a>可用
 
-状态为“可用”**** 表示服务尚未检测到影响资源运行状况的任何事件。 如果过去 24 小时内网关在计划外停机后进行了恢复，则会看到“最近已解决”**** 通知。
+状态为“可用”  表示服务尚未检测到影响资源运行状况的任何事件。 如果过去 24 小时内网关在计划外停机后进行了恢复，则会看到“最近已解决”  通知。
 
 ![可用的运行状况状态](media/resource-health-overview/available-full.png)
 
 ## <a name="unavailable"></a>不可用
 
-状态为“不可用”**** 表示服务已检测到影响网关运行状况的正在发生的平台或非平台事件。
+状态为“不可用”  表示服务已检测到影响网关运行状况的正在发生的平台或非平台事件。
 
 ### <a name="platform-events"></a>平台事件
 
@@ -47,18 +47,18 @@ ms.locfileid: "67659497"
 
 此 **Unknown** 运行状况状态指示资源运行状况未收到此网关的相关信息已超过 10 分钟。 此状态不是网关状态的最终指示， 但它是故障排除过程中一个重要的数据点。
 
-如果网关正在按预期方式运行，状态会在几分钟后更改为“可用”。****
+如果网关正在按预期方式运行，状态会在几分钟后更改为“可用”。 
 
-如果你遇到问题，则请注意，“未知”运行状态可能表示平台中的事件正在影响网关。****
+如果你遇到问题，则请注意，“未知”运行状态可能表示平台中的事件正在影响网关。 
 
 ![状态未知](media/resource-health-overview/unknown.png)
 
 ## <a name="degraded"></a>已降级
 
-“已降级”运行状况状态指示网关检测到性能降低，虽然资源仍可供使用。****
+“已降级”运行状况状态指示网关检测到性能降低，虽然资源仍可供使用。 
 
 ![退化状态](media/resource-health-overview/degraded.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-要了解对应用程序网关 Web 应用程序防火墙 （WAF） 进行故障排除，请参阅[Azure 应用程序网关的 Web 应用程序防火墙疑难解答 （WAF）。](web-application-firewall-troubleshoot.md)
+若要了解有关应用程序网关 Web 应用程序防火墙（WAF）的疑难解答，请参阅[排查 Azure 应用程序网关的 Web 应用程序防火墙（WAF）](web-application-firewall-troubleshoot.md)问题。

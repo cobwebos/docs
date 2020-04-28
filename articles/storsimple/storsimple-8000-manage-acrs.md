@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: alkohli
 ms.openlocfilehash: ade7da25d2307a382c17e7a3cbb26b601c34ef78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "64693234"
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>使用 StorSimple Manager 服务管理访问控制记录
@@ -91,7 +91,7 @@ ms.locfileid: "64693234"
 
     ![编辑访问控制记录](./media/storsimple-8000-manage-acrs/editacr2.png)
 
-4. 单击“保存”。**** 当系统提示你进行确认时，单击 **“是”**。 
+4. 单击“ **保存**”。 当系统提示你进行确认时，单击 **“是”**。 
 
     ![编辑访问控制记录](./media/storsimple-8000-manage-acrs/editacr3.png)
 

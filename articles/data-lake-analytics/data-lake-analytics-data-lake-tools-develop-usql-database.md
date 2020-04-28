@@ -1,5 +1,5 @@
 ---
-title: 开发 U-SQL 数据库项目 - Azure 数据湖
+title: 开发 SQL 数据库项目-Azure Data Lake
 description: 了解如何使用针对 Visual Studio 的 Azure Data Lake 工具开发 U-SQL 数据库。
 author: yanancai
 ms.author: yanacai
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: a9b271b5f7d4e53dbf871d03dd43b62b9299aa53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "71309930"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>使用 U-SQL 数据库项目开发 Azure Data Lake 的 U-SQL 数据库
@@ -48,7 +48,7 @@ U-SQL 数据库项目是 Visual Studio 中的一种项目类型，可帮助开�
 
     ![针对 Visual Studio 的 Data Lake 工具 - 从引用创建程序集](./media/data-lake-analytics-data-lake-tools-develop-usql-database/data-lake-tools-create-assembly-from-reference.png)
 
-3.  如果有任何，则添加**托管依赖项****和其他文件**。 添加其他文件时，该工具会使用相对路径来确保它稍后可在本地计算机和生成计算机上找到程序集。 
+3.  添加**托管依赖项**和**其他文件**（如果有）。 添加其他文件时，该工具会使用相对路径来确保它稍后可在本地计算机和生成计算机上找到程序集。 
 
 @_DeployTempDirectory 是一个预定义的变量，它将该工具指向生成输出文件夹。 在生成输出文件夹下，每个程序集都有按程序集名称命名的子文件夹。 此子文件夹中包含所有 DLL 和其他文件。 
  
@@ -56,7 +56,7 @@ U-SQL 数据库项目是 Visual Studio 中的一种项目类型，可帮助开�
 
 U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称的后缀为 `.usqldbpack`。 `.usqldbpack` 包是一个 zip 文件，其中包含“DDL”文件夹中单个 U-SQL 脚本中的所有 DDL 语句，以及“Temp”文件夹中程序集的所有 DLL 和其他文件********。
 
-详细了解如何使用[MSBuild 命令行和 Azure DevOps 服务生成任务构建 U-SQL 数据库项目](data-lake-analytics-cicd-overview.md)。
+了解有关[如何使用 MSBuild 命令行和 Azure DevOps Services 生成任务生成 U SQL 数据库项目](data-lake-analytics-cicd-overview.md)的详细信息。
 
 ## <a name="deploy-a-u-sql-database"></a>部署 U-SQL 数据库
 
@@ -69,7 +69,7 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称�
 #### <a name="deploy-through-a-u-sql-database-project"></a>通过 U-SQL 数据库项目进行部署
 
 1.  右键单击 U-SQL 数据库项目，然后选择“部署”****。
-2.  在 **"部署 U-SQL 数据库向导"** 中，选择要将数据库部署到的**ADLA 帐户**。 支持本地帐户和 ADLA 帐户。
+2.  在 "**部署" "SQL 数据库" 向导**中，选择要将数据库部署到的**ADLA 帐户**。 支持本地帐户和 ADLA 帐户。
 3.  “数据库源”会自动填充，并指向项目生成输出文件夹中的 .usqldbpack 包****。
 4.  在“数据库名称”中键入名称以创建数据库****。 如果 Azure Data Lake Analytics 目标帐户中存在名称相同的数据库，则会创建在数据库项目中定义的所有对象，无需重新创建数据库。
 5.  要部署 U-SQL 数据库，选择“提交”****。 上传所有资源（程序集和其他文件）并提交包含所有 DDL 语句的 U-SQL 作业。
@@ -115,6 +115,6 @@ U-SQL 项目可以引用 U-SQL 数据库项目。 该引用将影响两个工作
 
 ## <a name="next-steps"></a>后续步骤
 
-- [如何为 Azure 数据湖分析设置 CI/CD 管道](data-lake-analytics-cicd-overview.md)
+- [如何为 Azure Data Lake Analytics 设置 CI/CD 管道](data-lake-analytics-cicd-overview.md)
 - [如何测试 Azure Data Lake Analytics 代码](data-lake-analytics-cicd-test.md)
 - [在本地计算机上运行 U-SQL 脚本](data-lake-analytics-data-lake-tools-local-run.md)

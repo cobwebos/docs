@@ -1,5 +1,5 @@
 ---
-title: 使用作业浏览器&作业视图 - Azure 数据湖分析
+title: 使用作业浏览器 & 作业视图-Azure Data Lake Analytics
 description: 本文介绍如何对 Azure Data Lake Analytics 作业使用作业浏览器和作业视图。
 ms.service: data-lake-analytics
 author: jasonwhowell
@@ -8,10 +8,10 @@ ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.topic: conceptual
 ms.date: 08/02/2017
 ms.openlocfilehash: 2d33a6ec5ff6b687913914e9433b85765aaa7aec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71309935"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>对 Azure Data Lake Analytics 使用作业浏览器和作业视图
@@ -111,7 +111,7 @@ Azure Data Lake Analytics 服务将已提交作业存档在查询存储中。 �
   * 持续时间：阶段所用的时钟时间，需加载配置文件才能查看此值。
   * 作业播放
     
-      数据湖分析运行作业并存档运行作业信息的顶点，例如当顶点启动、停止、失败以及如何重试这些边点等。所有信息都自动记录在查询存储中并存储在其作业配置文件中。 可通过作业视图中的“加载配置文件”下载该作业配置文件，并可在下载后查看作业播放。
+      Data Lake Analytics 运行作业并存档作业的顶点，这些作业的状态为 "已启动"、"已停止"、"已失败" 和 "重试方式" 等。所有信息会自动记录在查询存储中并存储在其作业配置文件中。 可通过作业视图中的“加载配置文件”下载该作业配置文件，并可在下载后查看作业播放。
     
       作业播放是反映群集所发生情况的典型可视化效果。 它有助于观看作业执行进度，并在超短时间内（通常小于 30 秒）直观地检测出性能异常和瓶颈。
   * 作业热度地图显示 
@@ -131,7 +131,7 @@ Azure Data Lake Analytics 服务将已提交作业存档在查询存储中。 �
     * 输入/输出吞吐量：每个阶段的输入/输出吞吐量热度地图，通过此热度地图，可确认作业是否为 I/O 边界作业。
 * 元数据操作
   
-    您可以在 U-SQL 脚本中执行某些元数据操作，例如创建数据库、删除表等。编译后，这些操作将显示在元数据操作中。 可在此处查找断言、创建实体、删除实体。
+    您可以在您的 SQL 脚本中执行某些元数据操作，例如创建数据库、删除表等。在编译后的元数据操作中显示这些操作。 可在此处查找断言、创建实体、删除实体。
   
     ![Azure Data Lake Analytics 作业视图元数据操作](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-metadata-operations.png)
 * 状态历史记录
@@ -155,7 +155,7 @@ Azure Data Lake Analytics 服务将已提交作业存档在查询存储中。 �
 
 ![Azure Data Lake Analytics 作业详细信息](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-details.png)
 
-* Script
+* 脚本
   
     作业的 U-SQL 脚本存储在查询存储中。 如果需要，可查看原始 U-SQL 脚本并重新提交该脚本。
 * 资源
@@ -163,10 +163,10 @@ Azure Data Lake Analytics 服务将已提交作业存档在查询存储中。 �
     通过“资源”，可找到存储在查询存储中的作业编译输出。 例如，可在此处找到用于显示作业图的“algebra.xml”、注册的程序集等。
 * 顶点执行视图
   
-    它显示顶点执行详细信息。 作业配置文件存档每个顶点执行日志，如总数据读取/写入、运行时、状态等。通过此视图，您可以获取有关作业如何运行的更多详细信息。 有关详细信息，请参阅[使用用于 Visual Studio 的 Data Lake 工具中的顶点执行视图](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)。
+    它显示顶点执行详细信息。 作业配置文件会存档每个顶点执行日志，例如数据读取/写入、运行时、状态等。通过此视图，可以获取有关作业运行方式的更多详细信息。 有关详细信息，请参阅[使用用于 Visual Studio 的 Data Lake 工具中的顶点执行视图](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * 若要记录诊断信息，请参阅[访问 Azure Data Lake Analytics 的诊断日志](data-lake-analytics-diagnostic-logs.md)
-* 要查看更复杂的查询，请参阅[使用 Azure 数据湖分析分析分析网站日志](data-lake-analytics-analyze-weblogs.md)。
+* 若要查看更复杂的查询，请参阅[使用 Azure Data Lake Analytics 分析网站日志](data-lake-analytics-analyze-weblogs.md)。
 * 若要使用顶点执行视图，请参阅[使用用于 Visual Studio 的 Data Lake 工具中的顶点执行视图](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
 

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
 ms.openlocfilehash: 3294a7b2112e9527041ef343f4452aedb7a2a272
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "70073464"
 ---
 # <a name="how-to-migrate-azure-api-management-across-regions"></a>如何跨区域迁移 Azure API 管理
@@ -25,7 +25,7 @@ ms.locfileid: "70073464"
 > [!NOTE]
 > 在不同的云类型之间迁移时，备份和还原无效。 因此，需要[以模板形式](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-portal#export-resource-groups-to-templates)导出资源。 然后，改编目标 Azure 区域的已导出模板并重新创建资源。 
 
-## <a name="option-1-use-a-different-api-management-instance-name"></a>选项 1：使用其他 API 管理实例名称
+## <a name="option-1-use-a-different-api-management-instance-name"></a>选项 1：使用另一个 API 管理实例名称
 
 1. 在目标区域创建新的 API 管理实例，所用定价层与源 API 管理实例相同。 新实例应该使用不同的名称。 
 1. 将现有的 API 管理实例备份到存储帐户。
@@ -33,7 +33,7 @@ ms.locfileid: "70073464"
 1. 如果有一个指向源区域 API 管理实例的自定义域，请更改自定义域 CNAME，使之指向新的 API 管理实例。 
 
 
-## <a name="option-2-use-the-same-api-management-instance-name"></a>选项 2：使用相同的 API 管理实例名称
+## <a name="option-2-use-the-same-api-management-instance-name"></a>选项 2：使用同一个 API 管理实例名称
 
 > [!NOTE]
 > 此选项会导致迁移过程中出现停机。

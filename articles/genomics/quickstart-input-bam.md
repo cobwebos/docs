@@ -1,7 +1,7 @@
 ---
 title: 使用 BAM 文件输入提交工作流
 titleSuffix: Microsoft Genomics
-description: 本文演示如何将工作流提交到 Microsoft 基因组服务，如果您的输入文件是单个 BAM 文件。
+description: 本文演示了在输入文件是单个 BAM 文件的情况下，如何将工作流提交到 Microsoft 基因组学服务。
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -10,15 +10,15 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.openlocfilehash: 5145aa0ffdc4095f178a214f63433e5bcece83b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72249170"
 ---
 # <a name="submit-a-workflow-using-a-bam-file-input"></a>使用 BAM 文件输入提交工作流
 
-本文演示如何将工作流提交到 Microsoft 基因组服务，如果您的输入文件是单个 BAM 文件。 本主题假设你已安装并运行 `msgen` 客户端，且熟悉如何使用 Azure 存储。 如果您已成功使用提供的示例数据提交工作流，则可以继续执行本文。 
+本文演示了在输入文件是单个 BAM 文件的情况下，如何将工作流提交到 Microsoft 基因组学服务。 本主题假设你已安装并运行 `msgen` 客户端，且熟悉如何使用 Azure 存储。 如果已使用提供的示例数据成功提交工作流，则可继续阅读本文。 
 
 ## <a name="set-up-upload-your-bam-file-to-azure-storage"></a>设置：将 BAM 文件上传到 Azure 存储
 假设有一个 BAM 文件 (*reads.bam*)，并且已将其上传到 Azure 中的存储帐户 *myaccount*，其形式为 **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/inputs/reads<span></span>.bam<span></span>**。 你有 API URL 和访问密钥。 你希望将输出置于 **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** 中。

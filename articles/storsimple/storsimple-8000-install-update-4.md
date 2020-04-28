@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 08/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 5b48cbd1020cfd51fe989a9be33197f2735f21f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60860308"
 ---
 # <a name="install-update-4-on-your-storsimple-device"></a>在 StorSimple 设备上安装 Update 4
@@ -49,7 +49,7 @@ Update 4 包括设备软件、USM 固件、LSI 驱动程序和固件、Storport 
 
 * 现在，会显示“维护模式更新已发布”（此消息可能会在安装更新后持续显示长达 24 小时）。 维护模式更新为中断性更新，会导致设备停机，只能通过设备的 Windows PowerShell 接口应用。
 
-* 下载维护模式更新时，需使用[下载修补程序](#to-download-hotfixes)中列出的步骤搜索并下载 KB4011837，以便安装磁盘固件更新（其他更新此时应已安装）。 按照安装中列出的步骤[进行验证维护模式修补程序](#to-install-and-verify-maintenance-mode-hotfixes)以安装维护模式更新。
+* 下载维护模式更新时，需使用[下载修补程序](#to-download-hotfixes)中列出的步骤搜索并下载 KB4011837，以便安装磁盘固件更新（其他更新此时应已安装）。 按照[安装和验证维护模式修补程序](#to-install-and-verify-maintenance-mode-hotfixes)中列出的步骤安装维护模式更新。
 
 ## <a name="install-update-4-as-a-hotfix"></a>将 Update 4 作为修补程序安装
 建议通过 Azure 门户安装 Update 4。
@@ -74,7 +74,7 @@ Update 4 包括设备软件、USM 固件、LSI 驱动程序和固件、Storport 
 
 必须按规定顺序将以下修补程序下载并安装到建议的文件夹：
 
-| 订单 | KB | 描述 | 更新类型 | 安装时间 |在文件夹中安装|
+| 订单 | KB | 说明 | 更新类型 | 安装时间 |在文件夹中安装|
 | --- | --- | --- | --- | --- | --- |
 | 1. |KB4011839 |软件更新 |常规 <br></br>非中断性 |~ 25 分钟 |FirstOrderUpdate|
 | 2A. |KB4011841 <br> KB4011842 |LSI 驱动程序和固件更新 <br> USM 固件更新（版本 3.38） |常规 <br></br>非中断性 |~ 3 小时 <br> （包括 2A. + 2B. + 2C.）|SecondOrderUpdate|
@@ -83,7 +83,7 @@ Update 4 包括设备软件、USM 固件、LSI 驱动程序和固件、Storport 
 
 除了前面表中显示的所有更新，可能还需安装磁盘固件更新。 运行 `Get-HcsFirmwareVersion` cmdlet 即可验证是否需要磁盘固件更新。 如果运行的是固件版本 `XMGJ`、`XGEG`、`KZ50`、`F6C2`、`VR08`、`N002``0106`，则不需安装这些更新。
 
-| 订单 | KB | 描述 | 更新类型 | 安装时间 | 在文件夹中安装|
+| 订单 | KB | 说明 | 更新类型 | 安装时间 | 在文件夹中安装|
 | --- | --- | --- | --- | --- | --- |
 | 3. |KB3121899 |磁盘固件 |维护 <br></br>中断性 |约 30 分钟 | ThirdOrderUpdate |
 

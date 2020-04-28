@@ -1,5 +1,5 @@
 ---
-title: Azure 生产网络管理 - 微软 Azure
+title: Azure 生产网络管理-Microsoft Azure
 description: 本文介绍 Microsoft 如何管理和操作 Azure 生产网络来保护 Azure 数据中心。
 services: security
 documentationcenter: n
@@ -16,16 +16,16 @@ ms.workload: na
 ms.date: 05/30/2019
 ms.author: terrylan
 ms.openlocfilehash: d41fe409b4a44a4c2af3670d76dd3a83a300feae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68727116"
 ---
-# <a name="management-and-operation-of-the-azure-production-network"></a>Azure 生产网络的管理和运营    
+# <a name="management-and-operation-of-the-azure-production-network"></a>Azure 生产网络的管理和操作    
 本文介绍 Microsoft 如何管理和操作 Azure 生产网络来保护 Azure 数据中心。
 
-## <a name="monitor-log-and-report"></a>监视、记录和报告
+## <a name="monitor-log-and-report"></a>监视器、日志和报表
 
 Azure 生产网络的管理和操作需要在 Azure 运营团队与 Azure SQL 数据库之间做出协调。 团队在环境中使用了多个系统和应用程序性能监视工具。 他们使用适当的工具来监视网络设备、服务器、服务和应用程序进程。
 

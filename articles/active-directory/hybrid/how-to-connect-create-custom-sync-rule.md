@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a65d4c477d0e3aa9d5feea53e3e667ece651c83f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60351032"
 ---
 # <a name="how-to-customize-a-synchronization-rule"></a>如何自定义同步规则
@@ -40,17 +40,17 @@ ms.locfileid: "60351032"
 
 * 请注意，如果修改的属性的计算值在克隆的规则中为 NULL，在默认标准规则中不为 NULL，则中非 NULL 值会胜出并替换 NULL 值。 如果不希望 NULL 值替换为非 NULL 值，则在克隆的规则中分配 AuthoritativeNull。
 
-* 若要修改“出站”**** 规则，请从同步规则编辑器更改筛选器。
+* 若要修改“出站”  规则，请从同步规则编辑器更改筛选器。
 
 ## <a name="recommended-documents"></a>**建议的文档**
 * [Azure AD Connect 同步：技术概念](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-technical-concepts)
 * [Azure AD Connect 同步：了解体系结构](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)
 * [Azure AD Connect 同步：了解声明性预配](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning)
-* [Azure AD Connect Sync：了解声明性预配表达式](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning-expressions)
+* [Azure AD Connect 同步：了解声明性设置表达式](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning-expressions)
 * [Azure AD Connect 同步：了解默认配置](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-default-configuration)
 * [Azure AD Connect 同步：了解用户、组和联系人](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-user-and-contacts)
-* [Azure AD 连接同步：阴影属性](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-syncservice-shadow-attributes)
+* [Azure AD Connect 同步：影子属性](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-syncservice-shadow-attributes)
 
 ## <a name="next-steps"></a>后续步骤
-- [Azure AD 连接同步](how-to-connect-sync-whatis.md)。
-- [什么是混合标识？](whatis-hybrid-identity.md).
+- [Azure AD Connect 同步](how-to-connect-sync-whatis.md)。
+- [什么是混合标识？](whatis-hybrid-identity.md)。

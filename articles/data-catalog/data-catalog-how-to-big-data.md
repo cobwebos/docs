@@ -1,5 +1,5 @@
 ---
-title: 如何在 Azure 数据目录中编目大数据
+title: 如何在 Azure 数据目录中编录大数据
 description: 操作指南文章着重说明通过“大数据”数据源使用 Azure 数据目录的模式，包括 Azure Blob 存储、Azure Data Lake 和 Hadoop HDFS。
 author: JasonWHowell
 ms.author: jasonh
@@ -7,15 +7,15 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 88dc85003fa2a3e41d8a31055ff8ba9b0fcc7492
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71300573"
 ---
-# <a name="how-to-catalog-big-data-in-azure-data-catalog"></a>如何在 Azure 数据目录中编目大数据
+# <a name="how-to-catalog-big-data-in-azure-data-catalog"></a>如何在 Azure 数据目录中编录大数据
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 **Microsoft Azure 数据目录**是一个完全托管的云服务，充当企业数据源的注册系统和发现系统。 它旨在帮助人们发现、了解和使用数据源，并帮助组织从其现有数据源（包括大数据）中获取更多价值。
 

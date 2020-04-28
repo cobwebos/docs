@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: briz
 ms.openlocfilehash: bdc55af23568b5785a831e81f352400c728c902e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60400872"
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>使用 IoT 中心进行设备管理的概述
@@ -55,40 +55,40 @@ IoT 带来了一系列独特的设备管理难题，每个企业级解决方案�
 
 * **计划**：使操作员能够创建可让他们轻松且精确地查询的设备元数据方案，并针对一组设备进行批量管理操作。 可以使用设备孪生以标记和属性的形式存储此设备元数据。
   
-    *进一步阅读*： 
-    * [开始使用设备孪生](iot-hub-node-node-twin-getstarted.md)
+    *延伸阅读*： 
+    * [设备孪生入门](iot-hub-node-node-twin-getstarted.md)
     * [了解设备孪生](iot-hub-devguide-device-twins.md)
-    * [如何使用设备克隆属性](tutorial-device-twins.md)
+    * [如何使用设备孪生属性](tutorial-device-twins.md)
     * [IoT 解决方案中设备配置的最佳做法](iot-hub-configuration-best-practices.md)
 
 * **预配**：安全地为 IoT 中心预配新设备，使操作员立即发现设备功能。  使用 IoT 中心标识注册表创建灵活的设备标识和凭据，并使用作业成批执行此操作。 通过设备孪生中的设备属性构建设备来报告其功能和情况。
   
-    *进一步阅读*： 
+    *延伸阅读*： 
     * [管理设备标识](iot-hub-devguide-identity-registry.md)
     * [批量管理设备标识](iot-hub-bulk-identity-mgmt.md)
-    * [如何使用设备克隆属性](tutorial-device-twins.md)
+    * [如何使用设备孪生属性](tutorial-device-twins.md)
     * [IoT 解决方案中设备配置的最佳做法](iot-hub-configuration-best-practices.md)
     * [Azure IoT 中心设备预配服务](https://azure.microsoft.com/documentation/services/iot-dps)
 
 * **配置**：在保持正常运行和安全性的同时便于对设备进行批量配置更改和固件更新。 使用所需属性或通过直接方法和广播作业成批执行这些设备管理操作。
   
-    *进一步阅读*：
-    * [如何使用设备克隆属性](tutorial-device-twins.md)
+    *延伸阅读*：
+    * [如何使用设备孪生属性](tutorial-device-twins.md)
     * [大规模配置和监视 IoT 设备](iot-hub-auto-device-config.md)
     * [IoT 解决方案中设备配置的最佳做法](iot-hub-configuration-best-practices.md)
 
 * **监视**：监视总体设备集合运行状况、正在进行的操作的状态并针对可能需要操作员注意的问题向操作员发出警报。  应用设备孪生以允许设备报告实时操作情况和更新操作的状态。 使用设备孪生查询生成显示最直接问题的功能强大的仪表板报告。
   
-    *进一步阅读*： 
-    * [如何使用设备克隆属性](tutorial-device-twins.md)
+    *延伸阅读*： 
+    * [如何使用设备孪生属性](tutorial-device-twins.md)
     * [用于设备孪生、作业和消息路由的 IoT 中心查询语言](iot-hub-devguide-query-language.md)
     * [大规模配置和监视 IoT 设备](iot-hub-auto-device-config.md)
     * [IoT 解决方案中设备配置的最佳做法](iot-hub-configuration-best-practices.md)
 
-* **停用**：在故障、升级周期或服务寿命结束时更换或停用设备。  使用设备孪生来维护设备信息（如果正在更换物理设备），或者将设备信息存档（如果正在停用设备）。 使用 IoT 中心标识注册表来安全地撤销设备标识和凭据。
+* **停用**：在发生故障、升级周期后，或在服务生存期结束时更换或停用设备。  使用设备孪生来维护设备信息（如果正在更换物理设备），或者将设备信息存档（如果正在停用设备）。 使用 IoT 中心标识注册表来安全地撤销设备标识和凭据。
   
-    *进一步阅读*： 
-    * [如何使用设备克隆属性](tutorial-device-twins.md)
+    *延伸阅读*： 
+    * [如何使用设备孪生属性](tutorial-device-twins.md)
     * [管理设备标识](iot-hub-devguide-identity-registry.md)
 
 ## <a name="device-management-patterns"></a>设备管理模式

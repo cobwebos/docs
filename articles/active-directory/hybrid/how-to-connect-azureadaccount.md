@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0ea151ee79fccd66f1d9422744d8f57829677ec0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67204527"
 ---
 # <a name="change-the-azure-ad-connector-account-password"></a>更改 Azure AD 连接器帐户密码
@@ -53,5 +53,5 @@ AADSTS70002: 验证凭据时出错。 AADSTS50054: 使用旧密码进行身份�
 **概述主题**
 
 * [Azure AD Connect 同步：理解和自定义同步](how-to-connect-sync-whatis.md)
-* [将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)
+* [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
 

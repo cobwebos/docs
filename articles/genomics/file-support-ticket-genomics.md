@@ -1,7 +1,7 @@
 ---
-title: 如何提交支持请求
+title: 如何发出支持请求
 titleSuffix: Microsoft Genomics
-description: 本文介绍，如果您无法使用故障排除指南或常见问题解答解决问题，如何提交支持请求以联系 Microsoft 基因组学。
+description: 本文介绍了如何发出支持请求，以联系 Microsoft 基因组学（如果你无法使用故障排除指南或常见问题解决问题）。
 keywords: 故障排除, 错误, 调试, 支持
 services: genomics
 author: grhuynh
@@ -11,20 +11,20 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.openlocfilehash: ddfe8b6010ddc241364ccf7b2d4f5f648bd3ce0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72248598"
 ---
 # <a name="how-to-contact-microsoft-genomics-for-support"></a>如何与 Microsoft 基因组学联系以获取支持
-本概述介绍如何创建支持请求以与 Microsoft 基因组学联系。 如果您无法使用[故障排除指南](troubleshooting-guide-genomics.md)或[常见问题解答](frequently-asked-questions-genomics.md)来解决问题，这非常有用。 
+本概述介绍如何创建支持请求以与 Microsoft 基因组学联系。 如果无法使用[故障排除指南](troubleshooting-guide-genomics.md)或[常见问题](frequently-asked-questions-genomics.md)排查问题，这会很有帮助。 
 
 
 ## <a name="file-a-support-ticket-through-the-azure-portal"></a>通过 Azure 门户创建支持票证
 首先，在 Azure 门户中登录到 Azure 帐户。 单击右上角的问号按钮并选择`Help + support`。
 
-![在 Azure 门户上联系支持人员](./media/file-support-ticket/genomics-contact-support.png "在 Azure 门户上联系支持人员") 
+![Azure 门户上的联系支持人员](./media/file-support-ticket/genomics-contact-support.png "Azure 门户上的联系支持人员") 
 
 
 

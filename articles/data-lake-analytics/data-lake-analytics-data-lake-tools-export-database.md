@@ -1,5 +1,5 @@
 ---
-title: 导出 U-SQL 数据库 - 用于可视化工作室的 Azure 数据湖工具
+title: 导出 U-SQL 数据库-针对 Visual Studio 的 Azure Data Lake 工具
 description: 了解如何使用针对 Visual Studio 的 Azure Data Lake 工具导出 U-SQL 数据库并自动将其导入本地帐户。
 services: data-lake-analytics
 author: yanancai
@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.openlocfilehash: e5a52de0342e864cb108d8d590583fe64f72e3b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "71315792"
 ---
 # <a name="export-a-u-sql-database"></a>导出 U-SQL 数据库
@@ -51,7 +51,7 @@ ms.locfileid: "71315792"
 
 还可以配置导出目标的其他设置。 下表列出了配置说明：
 
-|Configuration|描述|
+|配置|说明|
 |-------------|-----------|
 |目标名称|此名称指示要将导出的数据库资源保存到的位置。 这些资源的示例包括程序集、附加文件和示例数据。 将在本地数据根文件夹下创建使用此名称的文件夹。|
 |项目目录|此路径定义要将导出的 U-SQL 脚本保存到的位置。 所有数据库对象定义都保存在此位置。|

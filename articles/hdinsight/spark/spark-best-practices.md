@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.openlocfilehash: 20033e52e862f086d1491c06d38cdf4f2c57ba8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71106120"
 ---
 # <a name="apache-spark-best-practices"></a>Apache Spark 最佳做法
@@ -24,7 +24,7 @@ ms.locfileid: "71106120"
 |---|---|
 | VSCode | [使用适用于 Visual Studio Code 的 Spark 和 Hive 工具](../hdinsight-for-vscode.md) |
 | Jupyter Notebook | [教程：在 Azure HDInsight 中的 Apache Spark 群集上加载数据并运行查询](./apache-spark-load-data-run-query.md) |
-| IntelliJ | [教程：使用 IntelliJ 的 Azure 工具包为 HDInsight 群集创建 Apache Spark 应用程序](./apache-spark-intellij-tool-plugin.md) |
+| IntelliJ | [教程：使用 Azure Toolkit for IntelliJ 为 HDInsight 群集创建 Apache Spark 应用程序](./apache-spark-intellij-tool-plugin.md) |
 | IntelliJ | [教程：使用 IntelliJ 在 HDInsight 中创建适用于 Apache Spark 的 Scala Maven 应用程序](./apache-spark-create-standalone-application.md) |
 | Zeppelin 笔记本 | [在 Azure HDInsight 上的 Apache Spark 群集中使用 Apache Zeppelin 笔记本](./apache-spark-zeppelin-notebook.md) |
 | 使用 Livy 进行远程作业提交 | [使用 Apache Spark REST API 将远程作业提交到 HDInsight Spark 群集](./apache-spark-livy-rest-interface.md) |

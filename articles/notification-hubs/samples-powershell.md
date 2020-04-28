@@ -15,16 +15,16 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 720256416ca77b40ca0075f5b227212355dda040
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71213324"
 ---
 # <a name="azure-powershell-samples-for-azure-notification-hubs"></a>适用于 Azure 通知中心的 Azure PowerShell 示例
 
 下表包括了指向适用于 Azure 通知中心的示例 Azure PowerShell 脚本的链接。
 
-| 描述 | 链接 |
+| 说明 | 链接 |
 | ----------- | ---- |
 |[创建通知中心](scripts/create-notification-hub-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 脚本可创建示例通知中心。 |

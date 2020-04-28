@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/20/2018
 ms.author: marayerm
 ms.openlocfilehash: aa42d6b898a3cc474575f6c8dae65ff420fc8e30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60457231"
 ---
 # <a name="storage-explorer-accessibility"></a>存储资源管理器可访问性
@@ -27,7 +27,7 @@ ms.locfileid: "60457231"
 
 存储资源管理器支持在 Windows 和 Mac 中使用屏幕阅读器。 建议对每种平台使用以下屏幕阅读器：
 
-Platform | 屏幕阅读器
+平台 | 屏幕阅读器
 ---------|--------------
 Windows  | NVDA
 Mac      | Voice Over
@@ -37,7 +37,7 @@ Linux    | （Linux 不支持屏幕阅读器）
 
 ## <a name="zoom"></a>Zoom
 
-可通过放大操作，将存储资源管理器中的文本放大。 若要放大，请在“帮助”菜单中单击“放大”****。 还可使用“帮助”菜单缩小文本和将缩放级别重置回默认级别。
+可通过放大操作，将存储资源管理器中的文本放大。 若要放大，请在“帮助”菜单中单击“放大”  。 还可使用“帮助”菜单缩小文本和将缩放级别重置回默认级别。
 
 ![帮助菜单中的缩放选项][0]
 
@@ -45,7 +45,7 @@ Linux    | （Linux 不支持屏幕阅读器）
 
 ## <a name="high-contrast-themes"></a>高对比度主题
 
-存储资源管理器具有两个高对比度主题，“高对比度浅色”和“高对比度深色”********。 可以通过从“帮助”>“主题”菜单中进行选择来更改主题。
+存储资源管理器具有两个高对比度主题，“高对比度浅色”和“高对比度深色”   。 可以通过从“帮助”>“主题”菜单中进行选择来更改主题。
 
 ![“主题”子菜单][1]
 
@@ -55,7 +55,7 @@ Linux    | （Linux 不支持屏幕阅读器）
 
 ### <a name="window-commands"></a>窗口命令
 
-命令       | 键盘快捷键
+Command       | 键盘快捷键
 --------------|--------------------
 新建窗口    | **Control+Shift+N**
 关闭编辑器  | **Control+F4**
@@ -63,7 +63,7 @@ Linux    | （Linux 不支持屏幕阅读器）
 
 ### <a name="navigation-commands"></a>导航命令
 
-命令                | 键盘快捷键
+Command                | 键盘快捷键
 -----------------------|----------------------
 聚焦于下一个面板       | **F6**
 聚焦于上一个面板   | **Shift+F6**
@@ -78,22 +78,22 @@ Linux    | （Linux 不支持屏幕阅读器）
 
 ### <a name="zoom-commands"></a>缩放命令
 
-命令  | 键盘快捷键
+Command  | 键盘快捷键
 ---------|------------------
-放大  | **控制***
-缩小 | **控制*-**
+放大  | **Control+=**
+缩小 | **Control+-**
 
 ### <a name="blob-and-file-share-editor-commands"></a>Blob 和文件共享编辑器命令
 
-命令 | 键盘快捷键
+Command | 键盘快捷键
 --------|--------------------
-后退    | **Alt_左箭头**
-前进 | **Alt_右箭头**
+后退    | **Alt+向左箭头**
+前进 | **Alt+向右箭头**
 向上      | **Alt+向上箭头**
 
 ### <a name="editor-commands"></a>编辑器命令
 
-命令 | 键盘快捷键
+Command | 键盘快捷键
 --------|------------------
 复制    | **Control+C**
 剪切     | **Control+X**
@@ -102,7 +102,7 @@ Linux    | （Linux 不支持屏幕阅读器）
 
 ### <a name="other-commands"></a>其他命令
 
-命令                | 键盘快捷键
+Command                | 键盘快捷键
 -----------------------|------------------
 切换开发人员工具 | **F12**
 重新加载                 | **Alt+Control+R**

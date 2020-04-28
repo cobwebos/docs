@@ -1,6 +1,6 @@
 ---
-title: Azure 数据框网关& Azure 数据框边缘 1906 发行说明*微软文档
-description: 介绍运行 1906 版本的 Azure 数据框网关和 Azure 数据框边缘的关键打开问题和解决方法。
+title: Azure Data Box Gateway & Azure Data Box Edge 1906 发行说明 |Microsoft Docs
+description: 描述运行1906版本的 Azure Data Box Gateway 和 Azure Data Box Edge 的关键打开问题和解决方法。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,34 +9,34 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: alkohli
 ms.openlocfilehash: 69c905176a5beb1c7d442cd5f1a69161cd520c5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71099481"
 ---
-# <a name="azure-data-box-edge-and-azure-data-box-gateway-1906-release-notes"></a>Azure 数据框边缘和 Azure 数据框网关 1906 发行说明
+# <a name="azure-data-box-edge-and-azure-data-box-gateway-1906-release-notes"></a>Azure Data Box Edge 和 Azure Data Box Gateway 1906 发行说明
 
-以下发行说明标识 Azure 数据框边缘和 Azure 数据框网关的 1906 版本的关键未决问题和已解决的问题。
+以下发行说明针对 Azure Data Box Edge 和 Azure Data Box Gateway 的1906版本确定了严重的打开问题和解决的问题。
 
-发行说明会持续进行更新，并且会陆续将所发现的需要解决的重要问题添加到说明中。 在部署数据框边缘/数据盒网关之前，请仔细查看发行说明中包含的信息。
+发行说明会持续进行更新，并且会陆续将所发现的需要解决的重要问题添加到说明中。 在部署 Data Box Edge/Data Box Gateway 之前，请仔细查看发行说明中包含的信息。
 
 此版本对应于软件版本：
 
-- **数据盒网关 1906 （1.6.978.743）**
-- **数据框边缘 1906 （1.6.978.743）**
+- **Data Box Gateway 1906 （1.6.978.743）**
+- **Data Box Edge 1906 （1.6.978.743）**
 
 > [!NOTE]
-> 更新 1906 只能应用于运行软件的通用版 （GA） 或 1905 版本的数据盒边缘设备。
+> 更新1906只能应用于运行正式发行版（GA）的 Data Box Edge 设备或软件的1905版本。
 
 ## <a name="whats-new"></a>新增功能
 
-- **恢复密钥管理工作流中的 Bug 修复**- 在早期版本中，由于未应用恢复密钥，出现了一个 Bug。 在此版本中已修复这一 bug。 我们强烈建议您应用此更新，因为恢复密钥允许您在设备未启动的情况下恢复设备上的数据。 有关详细信息，请参阅在[部署数据框边缘或数据框网关时如何保存恢复密钥](data-box-edge-deploy-connect-setup-activate.md#set-up-and-activate-the-physical-device)。
-- **现场可编程门阵列 （FPGA） 日志记录改进**- 从 1905 年开始发布，进行了与 FPGA 相关的日志记录和警报增强。 如果将 Edge 计算功能与 FPGA 一起使用，则这仍然是数据框边缘所需的更新。 有关详细信息，请参阅如何在[数据框边缘上使用 Edge 计算转换数据](data-box-edge-deploy-configure-compute-advanced.md)。
+- **恢复密钥管理工作流中的 Bug 修复**-在早期版本中，存在一个 bug 由于，其中未应用恢复密钥。 在此版本中已修复这一 bug。 我们强烈建议你将此更新应用为恢复密钥，以便在设备不启动的情况下恢复设备上的数据。 有关详细信息，请参阅如何[在部署 Data Box Edge 或 Data Box Gateway 时保存恢复密钥](data-box-edge-deploy-connect-setup-activate.md#set-up-and-activate-the-physical-device)。
+- **现场可编程入口阵列（FPGA）日志记录改进**-已建立与 FPGA 相关的1905版本、日志记录和警报增强功能。 如果使用 FPGA 的 Edge 计算功能，这将继续作为 Data Box Edge 的必需更新。 有关详细信息，请参阅如何[在 Data Box Edge 上通过 Edge 计算转换数据](data-box-edge-deploy-configure-compute-advanced.md)。
 
 ## <a name="known-issues-in-ga-release"></a>GA 版本中的已知问题
 
-此版本未注意到任何新问题。 所有发布的注意到的问题都从以前的版本中延续过来。 要查看已知问题的列表，请访问[GA 版本中的已知问题](data-box-gateway-release-notes.md#known-issues-in-ga-release)。
+对于此版本，不会记录任何新问题。 所有已记录版本的问题已从以前的版本中继续执行。 若要查看已知问题的列表，请参阅[GA 版本中的已知问题](data-box-gateway-release-notes.md#known-issues-in-ga-release)。
 
 
 ## <a name="next-steps"></a>后续步骤

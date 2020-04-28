@@ -1,5 +1,5 @@
 ---
-title: 解决数据偏斜 - 用于可视化工作室的 Azure 数据湖工具
+title: 解决数据歪斜-针对 Visual Studio 的 Azure Data Lake 工具
 description: 通过用于 Visual Studio 的 Azure Data Lake 工具排查潜在解决方案的数据倾斜问题。
 services: data-lake-analytics
 author: yanancai
@@ -9,10 +9,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/16/2016
 ms.openlocfilehash: 9ff7ba5f04a8c1862f8ef136f8f3f6900f00a431
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "71802556"
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>通过用于 Visual Studio 的 Azure Data Lake 工具解决数据倾斜问题
@@ -36,7 +36,7 @@ ms.locfileid: "71802556"
 
 ### <a name="option-2-pick-a-different-partition-or-distribution-key"></a>选项 2：选择不同的分区或分布键
 
-在前面的示例中，如果只想检查国家/地区的税务审核工作负载，则可以通过选择 ID 号作为密钥来改进数据分布。 有时，选择不同的分区或分布键可以更均衡地分配数据，但需确保该选择不会影响业务逻辑。 例如，若要计算每个州的税收总额，则可能需指定 _State_ 作为分区键。 如果仍遇到此问题，请尝试使用选项 3。
+在上述示例中，如果只想要检查整个国家/地区的税务审核工作负荷，则可以通过选择 ID 号作为密钥来改善数据分布。 有时，选择不同的分区或分布键可以更均衡地分配数据，但需确保该选择不会影响业务逻辑。 例如，若要计算每个州的税收总额，则可能需指定 _State_ 作为分区键。 如果仍遇到此问题，请尝试使用选项 3。
 
 ### <a name="option-3-add-more-partition-or-distribution-keys"></a>选项 3：添加更多的分区键或分布键
 
@@ -165,7 +165,7 @@ U-SQL 提供针对表的 CREATE STATISTICS 语句。 此语句为查询优化器
 
 组合器模式的属性：
 
-- SqlUser 定义组合器（模式=合并模式.Full）：每个输出行可能依赖于具有相同键值的左、右所有输入行。
+- SqlUserDefinedCombiner （Mode = CombinerMode）：每个输出行可能依赖于左侧和右侧具有相同密钥值的所有输入行。
 
 - SqlUserDefinedCombiner(Mode=CombinerMode.Left)：每个输出行依赖于左侧的单个输入行（还可能依赖于右侧包含相同键值的所有行）。
 

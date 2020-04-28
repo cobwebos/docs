@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: girobins
 ms.openlocfilehash: 48b9a67de5c870a187ee008bd97265760ca6c341
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70998368"
 ---
 # <a name="get-sql-query-execution-metrics-and-analyze-query-performance-using-net-sdk"></a>使用 .NET SDK 获取 SQL 查询执行指标并分析查询性能
@@ -22,7 +22,7 @@ ms.locfileid: "70998368"
 
 [DocumentClient.CreateDocumentQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentquery.aspx) 的所有重载采用可选的 [FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) 参数。 此选项涉及到如何优化和参数化查询执行。 
 
-若要收集 SQL 查询执行指标，必须将 [FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) 中的参数 [PopulateQueryMetrics](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.populatequerymetrics.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.PopulateQueryMetrics) 设置为 `true`。 如果将 `PopulateQueryMetrics` 设置为 true，`FeedResponse` 将包含相关的 `QueryMetrics`。 
+若要收集 SQL 查询执行指标，必须将 [FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.populatequerymetrics.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.PopulateQueryMetrics) 中的参数 [PopulateQueryMetrics](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) 设置为 `true`。 如果将 `PopulateQueryMetrics` 设置为 true，`FeedResponse` 将包含相关的 `QueryMetrics`。 
 
 ## <a name="get-query-metrics-with-asdocumentquery"></a>使用 AsDocumentQuery() 获取查询指标
 以下代码示例演示使用 [AsDocumentQuery()](https://msdn.microsoft.com/library/microsoft.azure.documents.linq.documentqueryable.asdocumentquery.aspx) 方法时如何检索指标：
@@ -62,7 +62,7 @@ while (documentQuery.HasMoreResults)
 ```
 ## <a name="aggregating-querymetrics"></a>聚合 QueryMetrics
 
-上一部分提到，已多次调用 [ExecuteNextAsync](https://msdn.microsoft.com/library/azure/dn850294.aspx) 方法。 每次调用都会返回一个包含 `QueryMetrics` 字典的 `FeedResponse` 对象；每次延续查询都会返回一个此类对象。 以下示例演示如何使用 LINQ 聚合这些 `QueryMetrics`：
+上一部分提到，已多次调用 [ExecuteNextAsync](https://msdn.microsoft.com/library/azure/dn850294.aspx) 方法。 每次调用都会返回一个包含 `FeedResponse` 字典的 `QueryMetrics` 对象；每次延续查询都会返回一个此类对象。 以下示例演示如何使用 LINQ 聚合这些 `QueryMetrics`：
 
 ```csharp
 List<QueryMetrics> queryMetricsList = new List<QueryMetrics>();
@@ -115,7 +115,7 @@ foreach(IGrouping<string, KeyValuePair<string, QueryMetrics>> grouping in groupe
 
 ## <a name="linq-on-documentquery"></a>LINQ on DocumentQuery
 
-还可以使用 `AsDocumentQuery()` 方法从 LINQ 查询中获取 `FeedResponse`：
+还可以使用 `FeedResponse` 方法从 LINQ 查询中获取 `AsDocumentQuery()`：
 
 ```csharp
 IDocumentQuery<Document> linqQuery = client.CreateDocumentQuery(collection.SelfLink, feedOptions)
@@ -129,7 +129,7 @@ IReadOnlyDictionary<string, QueryMetrics> queryMetrics = feedResponse.QueryMetri
 
 ## <a name="expensive-queries"></a>耗费大量资源的查询
 
-可以捕获每个查询消耗的请求单位数，以调查高开销的查询，或者消耗了大量吞吐量的查询。 可以使用 `FeedResponse` 中的 [RequestCharge](https://msdn.microsoft.com/library/azure/dn948712.aspx) 属性获取请求费用。 若要详细了解如何使用 Azure 门户和不同的 SDK 获取请求费用，请参阅[查找请求单位费用](find-request-unit-charge.md)一文。
+可以捕获每个查询消耗的请求单位数，以调查高开销的查询，或者消耗了大量吞吐量的查询。 可以使用 [ 中的 ](https://msdn.microsoft.com/library/azure/dn948712.aspx)RequestCharge`FeedResponse` 属性获取请求费用。 若要详细了解如何使用 Azure 门户和不同的 SDK 获取请求费用，请参阅[查找请求单位费用](find-request-unit-charge.md)一文。
 
 ```csharp
 string query = "SELECT * FROM c";
@@ -233,11 +233,11 @@ WHERE c.description = "BABYFOOD, DESSERT, FRUIT DESSERT, WITHOUT ASCORBIC ACID, 
 
 若要详细了解如何优化查询性能，请参阅[优化查询性能](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-metrics)一文。
 
-## <a name="references"></a><a id="References"></a>引用
+## <a name="references"></a><a id="References"></a>参考
 
 - [Azure Cosmos DB SQL 规范](https://go.microsoft.com/fwlink/p/?LinkID=510612)
 - [ANSI SQL 2011](https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
-- [Json](https://json.org/)
+- [JSON](https://json.org/)
 - [LINQ](/previous-versions/dotnet/articles/bb308959(v=msdn.10)) 
 
 ## <a name="next-steps"></a>后续步骤

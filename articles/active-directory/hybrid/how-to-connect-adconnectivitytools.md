@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cd5340cd8c802df4ffbe0207b5401d2fee4e207e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "64571113"
 ---
 # <a name="troubleshoot-azure-ad-connectivity-with-the-adconnectivitytool-powershell-module"></a>使用 ADConnectivityTool PowerShell 模块排查 Azure AD 连接问题
@@ -29,7 +29,7 @@ ADConnectivity 工具是一个 PowerShell 模块，可在以下任一情形下�
 
 ## <a name="adconnectivitytool-during-installation"></a>安装过程中的 ADConnectivityTool
 
-在“连接目录”页的 Azure AD Connect 向导中，如果发生网络问题，ADConnectivityTool 将自动使用其函数之一来确定发生的问题****。  以下任何一种都可以被视为网络问题：
+在“连接目录”页的 Azure AD Connect 向导中，如果发生网络问题，ADConnectivityTool 将自动使用其函数之一来确定发生的问题  。  以下任何一种都可以被视为网络问题：
 
 - 用户提供的林名称键入错误，或该林不存在 
 - 与用户提供的林相关联的域控制器中已关闭 UDP 端口 389
@@ -43,7 +43,7 @@ ADConnectivity 工具是一个 PowerShell 模块，可在以下任一情形下�
 
 ![错误](media/how-to-connect-adconnectivitytools/error1.png)
 
-例如，当我们尝试在“连接目录”屏幕上添加目录时，Azure AD Connect 需要对此进行验证，并应能够通过端口 389 与域控制器进行通信****。  如果不能，我们将看到上面屏幕截图中显示的错误。  
+例如，当我们尝试在“连接目录”屏幕上添加目录时，Azure AD Connect 需要对此进行验证，并应能够通过端口 389 与域控制器进行通信  。  如果不能，我们将看到上面屏幕截图中显示的错误。  
 
 Azure AD Connect 实际上正在后台调用 `Start-NetworkConnectivityDiagnosisTools` 函数。  当凭据验证由于网络连接问题而失败时，将调用此函数。
 
@@ -56,7 +56,7 @@ Azure AD Connect 实际上正在后台调用 `Start-NetworkConnectivityDiagnosis
 
 ### <a name="start-connectivityvalidation"></a>Start-ConnectivityValidation
 
-我们将调用此函数，因为将 ADConnectivityTool.psm1 导入到 PowerShell 之后，就只能手动调用该函数****。 
+我们将调用此函数，因为将 ADConnectivityTool.psm1 导入到 PowerShell 之后，就只能手动调用该函数  。 
 
 此函数执行与 Azure AD Connect 向导相同的逻辑，以验证提供的 AD 凭据。  此外，它还提供了有关问题和建议解决方案的更详细的解释。 
 

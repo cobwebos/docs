@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 494ccc3b90b8c249ee935087dcf0f0b5264b02ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60386735"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Azure Active Directory 直通身份验证：升级预览身份验证代理
@@ -42,7 +42,7 @@ ms.locfileid: "60386735"
 1. 使用租户的全局管理员凭据登录到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。
 2. 在左侧导航栏中，选择“Azure Active Directory”****。
 3. 选择“Azure AD Connect”****。 
-4. 选择**传递身份验证**。 此边栏选项卡列出了安装身份验证代理的服务器。
+4. 选择 "**直通身份验证**"。 此边栏选项卡列出了安装身份验证代理的服务器。
 
 ![Azure Active Directory 管理中心 - 传递身份验证边栏选项卡](./media/how-to-connect-pta-upgrade-preview-authentication-agents/pta8.png)
 
@@ -60,7 +60,7 @@ ms.locfileid: "60386735"
 
 在升级之前，请确保已准备好以下各项：
 
-1. **创建仅限云的全局管理员帐户**：如果没有仅限云的全局管理员帐户（在直通身份验证代理无法正常工作的紧急情况下使用），请不要升级。 了解如何[添加仅云全局管理员帐户](../active-directory-users-create-azure-portal.md)。 此步骤至关重要，可确保你不被锁定在租户外部。
+1. **创建仅限云的全局管理员帐户**：如果没有仅限云的全局管理员帐户（在直通身份验证代理无法正常工作的紧急情况下使用），请不要升级。 了解如何[添加仅限云的全局管理员帐户](../active-directory-users-create-azure-portal.md)。 此步骤至关重要，可确保你不被锁定在租户外部。
 2.  **确保高可用性**：遵照这些[说明](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)安装另一个独立的身份验证代理，以便为登录请求提供高可用性（如果以前未这样做）。
 
 ## <a name="upgrading-the-authentication-agent-on-your-azure-ad-connect-server"></a>在 Azure AD Connect 服务器上升级身份验证代理
@@ -89,4 +89,4 @@ ms.locfileid: "60386735"
 >如果在完成上述步骤后查看 [Azure Active Directory 管理中心](https://aad.portal.azure.com)的“传递身份验证”边栏选项卡，将看到每个服务器上有两个身份验证代理条目，一个条目显示身份验证代理处于“活动”状态****，另一个显示它处于“非活动”状态****。 这是正常情况__。 几天后自动删除表示“非活动”的条目****。
 
 ## <a name="next-steps"></a>后续步骤
-- [**故障排除**](tshoot-connect-pass-through-authentication.md)- 了解如何使用该功能解决常见问题。
+- [**故障排除**](tshoot-connect-pass-through-authentication.md)-了解如何解决此功能的常见问题。

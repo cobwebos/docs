@@ -13,10 +13,10 @@ ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 1e729c608a2cad28c810f8d5236360c909a496b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70082036"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-azure-virtual-machines"></a>在 Linux Azure 虚拟机上运行 SQL Server 的常见问题
@@ -32,7 +32,7 @@ ms.locfileid: "70082036"
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
 
-## <a name="images"></a><a id="images"></a>图像
+## <a name="images"></a><a id="images"></a>幅
 
 1. **有哪些 SQL Server 虚拟机库映像可用？**
 
@@ -42,7 +42,7 @@ ms.locfileid: "70082036"
 
    每隔两个月，都会使用最新的 Linux 和 Windows 更新对虚拟机库中的 SQL Server 映像进行更新。 对于 Linux 映像，这包括最新的系统更新。 对于 Windows 映像，这包括 Windows 更新中标记为重要的任何更新，以及重要的 SQL Server 安全更新和 Service Pack。 Linux 和 Windows 的 SQL Server 累积更新以不同的方式进行处理。 对于 Linux，SQL Server 累积更新也包含在刷新中。 但目前，Windows VM 不会连同 SQL Server 或 Windows Server 累积更新一起更新。
 
-1. 还会安装哪些相关的 SQL Server 包？****
+1. 还会安装哪些相关的 SQL Server 包？ 
 
    若要查看默认情况下在 SQL Server Linux VM 上安装的 SQL Server 包，请参阅[安装的程序包](sql-server-linux-virtual-machines-overview.md#packages)。
 
@@ -52,7 +52,7 @@ ms.locfileid: "70082036"
 
 ## <a name="creation"></a>创建
 
-1. 如何创建装有 SQL Server 的 Linux Azure 虚拟机？****
+1. 如何创建装有 SQL Server 的 Linux Azure 虚拟机？ 
 
    最简单的解决方法是创建包含 SQL Server 的 Linux 虚拟机。 有关注册 Azure 并从门户创建 SQL VM 的教程，请参阅[在 Azure 门户中预配 Linux SQL Server 虚拟机](provision-sql-server-linux-virtual-machine.md)。 此外，你也可以选用免费许可版（开发人员版或速成版），或通过重新使用本地许可证在 VM 上手动安装 SQL Server。 如果自带许可，必须[在 Azure 上通过软件保障实现许可证移动性](https://azure.microsoft.com/pricing/license-mobility)。
 
@@ -66,7 +66,7 @@ ms.locfileid: "70082036"
 
    首先，创建仅限 Linux OS 的虚拟机。 然后，运行适用于 Linux 分发版的 [SQL Server 安装步骤](https://docs.microsoft.com/sql/linux/sql-server-linux-setup#platforms)。 除非你要安装 SQL Server 的一个免费许可版，否则还必须拥有 SQL Server 许可证和[通过 Azure 上的软件保障的许可移动性](https://azure.microsoft.com/pricing/license-mobility/)。
 
-1. 是否有适用于 SQL Server 的自带许可 (BYOL) Linux 虚拟机映像？****
+1. 是否有适用于 SQL Server 的自带许可 (BYOL) Linux 虚拟机映像？ 
 
    目前，没有适用于 SQL Server 的任何 BYOL Linux 虚拟机映像。 但是，可以在仅限 Linux 的 VM 上手动安装 SQL Server ，如前面问题中所述。
 
@@ -88,11 +88,11 @@ ms.locfileid: "70082036"
 
 1. **如何将 Azure VM 中的 SQL Server 升级到新版本？**
 
-   目前，在 Azure VM 中运行的 SQL Server 不提供任何就地升级。 使用所需的 SQL Server 版本/版本创建新的 Azure 虚拟机，然后使用[标准数据迁移技术](https://docs.microsoft.com/sql/linux/sql-server-linux-migrate-overview)将数据库迁移到新服务器。
+   目前，在 Azure VM 中运行的 SQL Server 不提供任何就地升级。 因此，请使用所需的 SQL Server 版本创建新的 Azure 虚拟机，然后使用[标准数据迁移技术](https://docs.microsoft.com/sql/linux/sql-server-linux-migrate-overview)，将数据库迁移到新的服务器。
 
 ## <a name="general"></a>常规
 
-1. Azure VM 上是否支持 SQL Server 的高可用性解决方案？****
+1. Azure VM 上是否支持 SQL Server 的高可用性解决方案？ 
 
    现在不行。 Always On 可用性组和故障转移群集都需要 Linux 中的聚类分析解决方案，如 Pacemaker。 SQL Server 受支持的 Linux 分发版在云中不支持其高可用性加载项。
 
@@ -106,6 +106,6 @@ ms.locfileid: "70082036"
 
 **Windows VM**：
 
-* [Windows VM 上的 SQL 服务器概述](../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
+* [Windows VM 上的 SQL Server 概述](../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
 * [设置 SQL Server Windows VM](../../windows/sql/virtual-machines-windows-portal-sql-server-provision.md)
 * [常见问题 (Windows)](../../windows/sql/virtual-machines-windows-sql-server-iaas-faq.md)

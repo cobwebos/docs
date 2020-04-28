@@ -1,63 +1,63 @@
 ---
-title: 使用 Azure 迁移服务器评估创建评估 |微软文档
-description: 介绍如何使用 Azure 迁移服务器评估工具创建评估
+title: 使用 Azure Migrate Server 评估创建评估 |Microsoft Docs
+description: 介绍如何使用 Azure Migrate Server 评估工具创建评估
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: raynew
 ms.openlocfilehash: cffde2a677650387dffd19733e082ff7002ccb55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68229097"
 ---
 # <a name="create-an-assessment"></a>创建评估
 
-本文介绍如何为具有 Azure 迁移的本地 Vm 或超 VM 创建评估：服务器评估。
+本文介绍如何使用 Azure Migrate： Server 评估为本地 VMware Vm 或 Hyper-v Vm 创建评估。
 
-[Azure 迁移](migrate-services-overview.md)可帮助您迁移到 Azure。 Azure Migrate 提供了一个中心，用于跟踪 Azure 的本地基础结构、应用程序和数据的发现、评估以及迁移。 该中心提供用于评估和迁移的 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 产品。 
+[Azure Migrate](migrate-services-overview.md)可帮助你迁移到 Azure。 Azure Migrate 提供了一个中心，用于跟踪 Azure 的本地基础结构、应用程序和数据的发现、评估以及迁移。 该中心提供用于评估和迁移的 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 产品。 
 
 ## <a name="before-you-start"></a>开始之前
 
-- 请确保[已创建](how-to-add-tool-first-time.md)Azure 迁移项目。
-- 如果已创建项目，请确保[已添加](how-to-assess.md)Azure 迁移：服务器评估工具。
-- 要创建评估，需要为[VMware](how-to-set-up-appliance-vmware.md)或[Hyper-V](how-to-set-up-appliance-hyper-v.md)设置 Azure 迁移设备。 设备发现本地计算机，并将元数据和性能数据发送到 Azure 迁移：服务器评估。 [了解详情](migrate-appliance.md)。
+- 请确保已[创建](how-to-add-tool-first-time.md)Azure Migrate 项目。
+- 如果已创建项目，请确保已[添加](how-to-assess.md)Azure Migrate： Server 评估工具。
+- 若要创建评估，需要为[VMware](how-to-set-up-appliance-vmware.md)或[hyper-v](how-to-set-up-appliance-hyper-v.md)设置 Azure Migrate 设备。 设备将发现本地计算机，并将元数据和性能数据发送到 Azure Migrate：服务器评估。 [了解详细信息](migrate-appliance.md)。
 
 
 ## <a name="assessment-overview"></a>评估概述
-可以使用 Azure 迁移创建两种类型的评估：服务器评估。
+使用“Azure Migrate: 服务器评估”可以运行两种类型的评估。
 
 **评估** | **详细信息** | **数据**
 --- | --- | ---
-**基于性能** | 基于收集的性能数据的评估 | **建议的 VM 大小**：基于 CPU 和内存利用率数据。<br/><br/> **推荐的磁盘类型（标准磁盘或高级托管磁盘）：** 基于 IOPS 和本地磁盘的吞吐量。
-**本地** | 基于本地大小的评估。 | **建议的 VM 大小**：基于本地 VM 大小<br/><br> **建议的磁盘类型**：根据为评估选择的存储类型设置。
+**基于性能** | 基于收集的性能数据的评估 | **建议的 VM 大小**：基于 CPU 和内存利用率数据。<br/><br/> **建议的磁盘类型(标准或高级托管磁盘)** ：基于本地磁盘的 IOPS 和吞吐量。
+**本地** | 基于本地大小的评估。 | **建议的 VM 大小**：基于本地 VM 大小<br/><br> **建议的磁盘类型**：基于为评估选择的存储类型设置。
 
-[了解有关评估的更多](concepts-assessment-calculation.md)详细信息。
+[了解](concepts-assessment-calculation.md)有关评估的详细信息。
 
 ## <a name="run-an-assessment"></a>运行评估
 
 按如下述运行评估：
 
 1. 查看有关创建评估的[最佳做法](best-practices-assessment.md)。
-2. 在 **"服务器"** 选项卡中，在**Azure 迁移：服务器评估**磁贴中，单击"**评估**"。
+2. 在“服务器”选项卡上的“Azure Migrate:   服务器评估”磁贴中，单击“评估”。 
 
     ![评估](./media/how-to-create-assessment/assess.png)
 
-2. 在**评估服务器**中，指定评估的名称。
-3. 单击“全部查看”查看评估属性****。
+2. 在“评估服务器”中，指定评估的名称。 
+3. 单击“全部查看”查看评估属性  。
 
     ![评估属性](./media/how-to-create-assessment//view-all.png)
 
-3. 在 **"选择"或"创建组"中**，选择 **"新建**"并指定组名称。 组将要评估的一个或多个 VM 集合到一起。
-4. 在“将计算机添加到组”中，选择要添加到该组的 VM。****
-5. 单击“创建评估”以创建该组，并运行评估。****
+3. 在“选择或创建组”中，选择“新建”并指定组名称。   组将要评估的一个或多个 VM 集合到一起。
+4. 在“将计算机添加到组”中，选择要添加到该组的 VM。 
+5. 单击“创建评估”以创建该组，并运行评估。 
 
     ![创建评估](./media/how-to-create-assessment//assessment-create.png)
 
-6. 创建评估后，在**服务器** > **Azure 迁移：服务器评估** > **中**查看它。
-7. 单击“导出评估”，将评估下载为 Excel 文件。****
+6. 创建评估后，在“服务器” > “Azure Migrate:   服务器评估” > “评估”中查看它。 
+7. 单击“导出评估”，将评估下载为 Excel 文件。 
 
 
 
@@ -65,27 +65,27 @@ ms.locfileid: "68229097"
 
 评估描述：
 
-- **Azure 就绪**：VM 是否适合迁移到 Azure。
-- **每月成本估算**：在 Azure 中运行 VM 的估计每月计算和存储成本。
-- **每月存储成本估算**：迁移后磁盘存储的估计成本。
+- **Azure 迁移就绪性**：VM 是否适合迁移到 Azure。
+- **每月成本估算**：在 Azure 中运行 VM 的估算每月计算和存储成本。
+- **每月存储成本估算**：迁移后的磁盘存储估算成本。
 
 ### <a name="view-an-assessment"></a>查看评估
 
-1. 在**迁移目标** >  **服务器**中，单击 Azure 迁移中的 **"评估****：服务器评估**"。
-2. 在“评估”中，单击某项评估将其打开。****
+1. 在“迁移目标” >  “服务器”中，单击“Azure Migrate:     服务器评估”中的“评估”。
+2. 在“评估”中，单击某项评估将其打开。 
 
     ![评估摘要](./media/how-to-create-assessment/assessment-summary.png)
 
 ### <a name="review-azure-readiness"></a>查看 Azure 迁移就绪性
 
-1. 在“Azure 迁移就绪性”中，验证 VM 是否已准备好迁移到 Azure。****
+1. 在“Azure 迁移就绪性”中，验证 VM 是否已准备好迁移到 Azure。 
 2. 查看 VM 状态：
-    - **已为 Azure 做好准备**：Azure 迁移建议在评估中为 VM 提供 VM 大小和成本估算。
-    - **准备好条件**：显示问题和建议的补救。
-    - **尚未准备好 Azure**：显示问题和建议的修正。
-    - **就绪未知**：由于数据可用性问题，Azure 迁移无法评估就绪状态时使用。
+    - **已做好 Azure 迁移准备**：对于评估中的 VM，Azure Migrate 将建议 VM 大小并显示估算成本。
+    - **准备就绪但存在以下状况**：显示问题和建议的补救措施。
+    - **尚未做好 Azure 迁移准备**：显示问题和建议的补救措施。
+    - **就绪性未知**：当数据可用性问题导致 Azure Migrate 无法评估就绪性时使用。
 
-2. 单击某种“Azure 迁移就绪性”状态。**** 可以查看 VM 就绪性详细信息，并深入查看 VM 详细信息，包括计算、存储和网络设置。
+2. 单击某种“Azure 迁移就绪性”状态。  可以查看 VM 就绪性详细信息，并深入查看 VM 详细信息，包括计算、存储和网络设置。
 
 
 
@@ -128,5 +128,5 @@ ms.locfileid: "68229097"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何使用[依赖项映射](how-to-create-group-machine-dependencies.md)创建高置信度组。
+- 了解如何使用[依赖关系映射](how-to-create-group-machine-dependencies.md)创建高可信度组。
 - [详细了解](concepts-assessment-calculation.md)如何计算评估。

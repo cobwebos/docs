@@ -17,10 +17,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 037e005993a54e525560571a6d893197af99b6a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67807763"
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>通过 Microsoft Teams 访问本地应用程序
@@ -33,23 +33,23 @@ ms.locfileid: "67807763"
 
 如果尚未执行，请[为租户配置应用程序代理并安装连接器](application-proxy-add-on-premises-application.md)。 然后[发布进行远程访问的本地应用程序](application-proxy-add-on-premises-application.md)。 发布应用时，请记下外部 URL，用于将应用添加到 Teams。
 
-如果已发布应用，但忘记了其外部 URL，请在 [Azure 门户](https://portal.azure.com)中查找。 登录，然后导航到**Azure 活动目录** > **企业应用程序** > **所有应用程序**>选择应用>**应用程序代理**。
+如果已发布应用，但忘记了其外部 URL，请在 [Azure 门户](https://portal.azure.com)中查找。 登录，然后导航到 " **Azure Active Directory** > **企业应用** > 程序" "**所有应用**程序" > 选择你的应用 >**应用程序代理**。
 
 ## <a name="add-your-app-to-teams"></a>将应用添加到 Teams 中
 
 通过应用程序代理发布应用后，让用户知道他们可以直接在 Teams 通道中将该应用添加为选项卡，然后团队中的所有人便都可以使用该应用。 让用户按照以下三个步骤进行操作：
 
-1. 导航到要添加此应用的 Teams 通道，然后选择**+** 添加选项卡。
+1. 导航到要在其中添加此应用的团队频道，然后选择**+** "添加选项卡"。
 
-   ![选择 + 以在"团队"中添加选项卡](./media/application-proxy-integrate-with-teams/add-tab.png)
+   ![选择 "+" 以在团队中添加选项卡](./media/application-proxy-integrate-with-teams/add-tab.png)
 
 1. 从选项卡选项中选择“网站”****。
 
-   ![从"添加选项卡"屏幕中选择网站](./media/application-proxy-integrate-with-teams/website.png)
+   ![从 "添加" 选项卡屏幕选择 "网站"](./media/application-proxy-integrate-with-teams/website.png)
 
 1. 为选项卡命名，并将 URL 设置为应用程序代理外部 URL。
 
-   ![命名选项卡并添加外部 URL](./media/application-proxy-integrate-with-teams/tab-name-url.png)
+   ![命名该选项卡并添加外部 URL](./media/application-proxy-integrate-with-teams/tab-name-url.png)
 
 团队中的某位成员添加选项卡后，通道中的每位用户都可看到该选项卡。 有权访问该应用的所有用户都可以使用其用于 Microsoft Teams 的凭据进行单一登录访问。 无权访问该应用的所有用户可以在 Teams 看到该选项卡，但需要获得对本地应用和该应用的 Azure 门户已发布版本的访问权限才不会被阻止。
 

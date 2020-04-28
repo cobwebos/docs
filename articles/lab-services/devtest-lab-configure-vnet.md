@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/05/2019
 ms.author: spelluru
 ms.openlocfilehash: 6cf3d2f82c98a3caab47ff48a600316747932b72
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70390034"
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中配置虚拟网络
@@ -27,12 +27,12 @@ ms.locfileid: "70390034"
 本文说明如何将现有虚拟网络添加到实验室的虚拟网络设置中，以便在创建 VM 时可进行选择。
 
 > [!NOTE]
-> 要了解与 Azure 虚拟网络服务关联的成本，请参阅[Azure 虚拟网络的定价](../virtual-network/virtual-networks-overview.md#pricing)。
+> 若要了解有关 Azure 虚拟网络服务的相关成本，请参阅[Azure 虚拟网络定价](../virtual-network/virtual-networks-overview.md#pricing)。
 
 ## <a name="configure-a-virtual-network-for-a-lab-using-the-azure-portal"></a>使用 Azure 门户为实验室配置虚拟网络
 以下步骤介绍如何将现有虚拟网络（以及子网）添加到实验室，以便在同一实验室创建 VM 时使用它。 
 
-1. 登录到 Azure[门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 选择“所有服务”****，并从列表中选择“开发测试实验室”****。
 1. 从实验室列表，选择所需的实验室。 
 1. 在实验室的主窗格中，选择“配置和策略”****。
@@ -55,10 +55,10 @@ ms.locfileid: "70390034"
     ![“实验室子网”窗格](./media/devtest-lab-configure-vnet/lab-subnet.png)
      
    - 指定**实验室子网名称**。
-   - 要允许子网用于实验室 VM 创建，请选择"**在虚拟机创建中使用**"。
+   - 若要允许在实验室 VM 创建中使用子网，请选择 "**在虚拟机创建中使用**"。
    - 若要启用 [共享公共 IP 地址](devtest-lab-shared-ip.md)，请选择“启用共享公共 IP”****。
    - 若要在子网中允许公共 IP 地址，请选择“允许公共 IP 创建”****。
-   - 在 **"每个用户的最大虚拟机"** 字段中，为每个子网指定每个用户的最大 VM。 如果不希望限制的 VM 的数目，请将此字段留空。
+   - 在 "**每个用户的最大虚拟机数**" 字段中，指定每个子网每个用户的最大 vm 数。 如果不希望限制的 VM 的数目，请将此字段留空。
 1. 选择“确定”关闭“实验室子网”窗格****。
 1. 选择“保存”关闭“虚拟网络”窗格****。
 

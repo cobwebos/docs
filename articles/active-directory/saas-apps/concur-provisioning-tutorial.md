@@ -16,10 +16,10 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 441aa9805f2a453e22f207238315125d2a281838
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60280397"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>教程：为 Concur 配置自动用户预配
@@ -73,7 +73,7 @@ Concur 顾问或客户管理员必须创建单独的 Web 服务管理员配置�
 
 * 如果管理员离开了公司，可根据需要将与该 WS 管理员配置文件关联的名称更改为替代管理员，这不会影响已启用的应用，因为无需停用该配置文件。
 
-**要配置用户预配，请执行以下步骤：**
+**若要配置用户设置，请执行以下步骤：**
 
 1. 登录到“Concur”租户****。
 
@@ -93,13 +93,13 @@ Concur 顾问或客户管理员必须创建单独的 Web 服务管理员配置�
    
     ![确认操作](./media/concur-provisioning-tutorial/ic721732.png "确认操作")
 
-6. 在[Azure 门户](https://portal.azure.com)中，浏览到**Azure 活动目录>企业应用>所有应用程序**部分。
+6. 在[Azure 门户](https://portal.azure.com)中，浏览到**Azure Active Directory > 企业应用 > 所有应用程序**"部分。
 
 7. 如果已为 Concur 配置单一登录，请使用搜索字段搜索 Concur 实例。 否则，请选择“添加”并在应用程序库中搜索“Concur”********。 从搜索结果中选择 Concur，并将其添加到应用程序列表。
 
 8. 选择 Concur 实例，然后选择“预配”选项卡****。
 
-9. 将**预配模式**设置为 **"自动**"。 
+9. 将**预配模式**设置为 "**自动**"。 
  
     ![预配](./media/concur-provisioning-tutorial/provisioning.png)
 
@@ -109,7 +109,7 @@ Concur 顾问或客户管理员必须创建单独的 Web 服务管理员配置�
 
 12. 在“通知电子邮件”字段中输入应接收预配错误通知的人员或组的电子邮件地址，并选中复选框****。
 
-13. 单击"**保存"。**
+13. 单击 "**保存"。**
 
 14. 在“映射”部分，选择“将 Azure Active Directory 用户同步到 Concur”****。
 
@@ -117,13 +117,13 @@ Concur 顾问或客户管理员必须创建单独的 Web 服务管理员配置�
 
 16. 若要为 Concur 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”************
 
-17. 单击"**保存"。**
+17. 单击 "**保存"。**
 
 现可创建测试帐户。 等待最多 20 分钟，验证该帐户是否已同步到 Concur。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](tutorial-list.md)
-* [什么是使用 Azure 活动目录的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
-* [配置单点登录](concur-tutorial.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
+* [配置单一登录](concur-tutorial.md)
 

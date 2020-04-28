@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: b0c9699bccbb539c9617fac2f3296483139e7188
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67203163"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>在远程监视解决方案加速器中配置基于角色的访问控制
@@ -25,7 +25,7 @@ ms.locfileid: "67203163"
 
 具有**管理员**角色的任何用户对解决方案都具有完全访问权限，包括以下权限。 具有**只读**角色的用户将仅有权查看解决方案。
 
-| 权限            | 管理员 | 只读 |
+| 权限            | 管理 | 只读 |
 |----------------       |-------|-----------|
 | 查看解决方案         | 是   | 是       |
 | 更新警报         | 是   | 否        |
@@ -51,7 +51,7 @@ ms.locfileid: "67203163"
 
 Azure Active Directory 应用程序所有者可以使用 Azure 门户在远程监视解决方案中的角色中添加或删除用户。 以下步骤使用在你部署远程监视解决方案时创建的 [Azure Active Directory 企业应用程序](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application)。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 检查[用户是否在所用的目录中](../active-directory/fundamentals/add-users-azure-active-directory.md)。 登录到 [Microsoft Azure IoT 解决方案加速器](https://www.azureiotsolutions.com/Accelerators)站点时，已选择要使用的目录。 目录名称显示在[页面](https://www.azureiotsolutions.com/Accelerators)的右上角。
 

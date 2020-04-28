@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.openlocfilehash: 28eeb446e55213f1ffa0a638878f6432fd15a05a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72392236"
 ---
 # <a name="use-apache-zeppelin-to-run-apache-phoenix-queries-over-apache-hbase-in-azure-hdinsight"></a>使用 Apache Zepperin 在 Azure HDInsight 中的 Apache HBase 上运行 Apache Phoenix 查询
@@ -31,16 +31,16 @@ HDInsight 上的 Apache HBase 群集。 请参阅 [Apache HBase 入门](./apache
 
 1. 请将以下 URL 中的 `CLUSTERNAME` 替换为你的群集的名称：`https://CLUSTERNAME.azurehdinsight.net/zeppelin`。 然后在 Web 浏览器中输入该 URL。 输入群集登录用户名和密码。
 
-1. 在 Zeppelin 页上，选择“创建新笔记”****。
+1. 在 Zeppelin 页上，选择“创建新笔记”  。
 
     ![HDInsight 交互式查询 zeppelin](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-create-note.png)
 
-1. 在“创建新笔记”对话框中，键入或选择以下值：****
+1. 在“创建新笔记”对话框中，键入或选择以下值： 
 
-    - 注释名称：输入注释的名称。
-    - 默认解释器：从下拉列表中选择**jdbc。**
+    - 笔记名称：输入笔记的名称。
+    - 默认解释器：从下拉列表中选择“jdbc”。 
 
-    然后选择“创建笔记”****。
+    然后选择“创建笔记”  。
 
 1. 确保笔记本标题显示“已连接”状态。 该状态由右上角的一个绿点表示。
 
@@ -99,4 +99,4 @@ HDInsight 上的 Apache HBase 群集。 请参阅 [Apache HBase 入门](./apache
 ## <a name="next-steps"></a>后续步骤
 
 - [Apache Phoenix 现在支持 Azure HDInsight 中的 Zeppelin](https://blogs.msdn.microsoft.com/ashish/2018/08/17/apache-phoenix-now-supports-zeppelin-in-azure-hdinsight/)
-- [阿帕奇凤凰语法](https://phoenix.apache.org/language/index.html)
+- [Apache Phoenix 语法](https://phoenix.apache.org/language/index.html)

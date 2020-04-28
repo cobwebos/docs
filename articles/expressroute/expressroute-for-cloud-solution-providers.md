@@ -9,10 +9,10 @@ ms.date: 10/10/2016
 ms.author: ricarlse
 ms.custom: seodec18
 ms.openlocfilehash: a3bd48f32dfcee1a666ff842cfcab2384a5459ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67849267"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>适用于云解决方案提供商 (CSP) 的 ExpressRoute
@@ -31,7 +31,7 @@ Microsoft Azure 提供越来越多的服务，可以将这些服务提供给客�
 Microsoft 为 CSP 提供管理 Azure 客户订阅所需的 API，允许通过编程方式与自己的服务管理系统集成。 可在 [此处](https://msdn.microsoft.com/library/partnercenter/dn974944.aspx)找到受支持的管理功能。
 
 ## <a name="microsoft-azure-resource-management"></a>Microsoft Azure 资源管理
-订阅管理方式将取决于你与客户签署的协定。 可以由 CSP 直接管理资源的创建和维护，也可以始终由客户对 Microsoft Azure 订阅进行控制，并根据需要来创建 Azure 资源。 如果客户在其 Microsoft Azure 订阅中管理资源的创建，他们会使用以下两种模型之一：“Connect-Through”模型或“Direct-To”模型。**** 将在下面各节中详细介绍这些模型。  
+订阅管理方式将取决于你与客户签署的协定。 可以由 CSP 直接管理资源的创建和维护，也可以始终由客户对 Microsoft Azure 订阅进行控制，并根据需要来创建 Azure 资源。 如果客户在其 Microsoft Azure 订阅中管理资源的创建，他们会使用以下两种模型之一：“Connect-Through”模型或“Direct-To”模型。   将在下面各节中详细介绍这些模型。  
 
 ### <a name="connect-through-model"></a>Connect-Through 模型
 ![替换文字](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
@@ -91,7 +91,7 @@ ExpressRoute 提供三种路由域：公共对等互连、专用对等互连和 
 可以自定义路由筛选器，根据需要来允许相关路由。 如需详细信息，或者需要了解如何进行此类更改，请参阅详细介绍路由筛选器的以下文章：[使用 PowerShell 创建和修改 ExpressRoute 线路的路由](expressroute-howto-routing-classic.md)。
 
 > [!NOTE]
-> 对于 Microsoft 对等互连和公共对等互连，必须通过客户或 CSP 拥有的公共 IP 地址进行连接，并且必须遵循所有定义的规则。 有关详细信息，请参阅[快速路由先决条件](expressroute-prerequisites.md)页面。  
+> 对于 Microsoft 对等互连和公共对等互连，必须通过客户或 CSP 拥有的公共 IP 地址进行连接，并且必须遵循所有定义的规则。 有关详细信息，请参阅 [ExpressRoute 先决条件](expressroute-prerequisites.md) 页。  
 > 
 > 
 

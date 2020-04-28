@@ -9,10 +9,10 @@ ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: b6bc0b00579bdef0a358f756b8cf2b6034aca017
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68688178"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>使用 Azure CLI 基于 URL 对 Web 流量进行路由
@@ -37,7 +37,7 @@ ms.locfileid: "68688178"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-根据本文的要求，如果选择在本地安装并使用 CLI，则需要运行 Azure CLI 2.0.4 或更高版本。 要查找版本，请运行 `az --version`。 如果需要安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+根据本文的要求，如果选择在本地安装并使用 CLI，则需要运行 Azure CLI 2.0.4 或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -51,7 +51,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>创建网络资源
 
-使用 `az network vnet create` 创建名为 *myVNet* 的虚拟网络和名为 *myAGSubnet* 的子网。 然后，使用 `az network vnet subnet create` 添加后端服务器所需的名为 *myBackendSubnet* 的子网。 使用 `az network public-ip create` 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。
+使用 *创建名为*myVNet*的虚拟网络和名为*myAGSubnet`az network vnet create` 的子网。 然后，使用 *添加后端服务器所需的名为*myBackendSubnet`az network vnet subnet create` 的子网。 使用 *创建名为*myAGPublicIPAddress`az network public-ip create` 的公共 IP 地址。
 
 ```azurecli-interactive
 az network vnet create \
@@ -77,7 +77,7 @@ az network public-ip create \
 
 ## <a name="create-the-app-gateway-with-a-url-map"></a>使用 URL 映射创建应用网关
 
-使用 `az network application-gateway create` 创建名为 *myAppGateway* 的应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 将应用程序网关分配给 myAGSubnet** 和 myAGPublicIPAddress**。
+使用 `az network application-gateway create` 创建名为 *myAppGateway* 的应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 将应用程序网关分配给 myAGSubnet  和 myAGPublicIPAddress  。
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -98,7 +98,7 @@ az network application-gateway create \
  创建应用程序网关可能需要几分钟时间。 创建应用程序网关后，可以看到以下新功能：
 
 
-|Feature  |描述  |
+|Feature  |说明  |
 |---------|---------|
 |appGatewayBackendPool     |应用程序网关必须至少具有一个后端地址池。|
 |appGatewayBackendHttpSettings     |指定将端口 80 和 HTTP 协议用于通信。|
@@ -108,7 +108,7 @@ az network application-gateway create \
 
 ### <a name="add-image-and-video-backend-pools-and-a-port"></a>添加映像及视频后端池和端口
 
-使用 `az network application-gateway address-pool create` 向应用程序网关添加名为 *imagesBackendPool* 和 *videoBackendPool* 的后端池。 使用 `az network application-gateway frontend-port create` 添加池的前端端口。
+使用 *向应用程序网关添加名为*imagesBackendPool*和*videoBackendPool`az network application-gateway address-pool create` 的后端池。 使用 `az network application-gateway frontend-port create` 添加池的前端端口。
 
 ```azurecli-interactive
 az network application-gateway address-pool create \
@@ -130,7 +130,7 @@ az network application-gateway frontend-port create \
 
 ### <a name="add-a-backend-listener"></a>添加后端侦听器
 
-使用 `az network application-gateway http-listener create` 添加路由流量所需的名为 *backendListener* 的后端侦听器。
+使用 *添加路由流量所需的名为*backendListener`az network application-gateway http-listener create` 的后端侦听器。
 
 
 ```azurecli-interactive
@@ -144,7 +144,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-a-url-path-map"></a>添加 URL 路径映射
 
-URL 路径映射可确保将特定的 URL 路由到特定的后端池。 使用 `az network application-gateway url-path-map create` 和 `az network application-gateway url-path-map rule create` 创建名为 *imagePathRule* 和 *videoPathRule* 的 URL 路径映射。
+URL 路径映射可确保将特定的 URL 路由到特定的后端池。 使用 *和* 创建名为 *imagePathRule* 和 `az network application-gateway url-path-map create`videoPathRule`az network application-gateway url-path-map rule create` 的 URL 路径映射。
 
 ```azurecli-interactive
 az network application-gateway url-path-map create \
@@ -169,7 +169,7 @@ az network application-gateway url-path-map rule create \
 
 ### <a name="add-a-routing-rule"></a>添加路由规则
 
-路由规则可将 URL 映射与所创建的侦听器相关联。 使用 `az network application-gateway rule create` 添加名为 *rule2* 的规则。
+路由规则可将 URL 映射与所创建的侦听器相关联。 使用 *添加名为*rule2`az network application-gateway rule create` 的规则。
 
 ```azurecli-interactive
 az network application-gateway rule create \

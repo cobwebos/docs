@@ -16,14 +16,14 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
 ms.openlocfilehash: 35307848c09391ae4468afc00adafd8171aaaa7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67876477"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>如何在 Azure 部署中通过 Java 使用 SendGrid 发送电子邮件
-以下示例演示如何能够使用 SendGrid 从在 Azure 中托管的网页上发送电子邮件。 生成的应用程序将提示用户输入电子邮件值，如下图所示。
+以下示例演示如何能够使用 SendGrid 从在 Azure 中托管的网页上发送电子邮件。 生成的应用程序将提示用户提供电子邮件值，如以下屏幕截图所示。
 
 ![“电子邮件”窗体][emailform]
 
@@ -205,7 +205,7 @@ ms.locfileid: "67876477"
     </body>
     </html>
 
-除了发送电子邮件外，emailform.jsp 还为用户提供了结果;因此，电子邮件表单.jsp 还为用户提供了结果。例如以下屏幕截图：
+除了发送电子邮件外，emailform.jsp 还提供用户的结果;下面的屏幕截图是一个示例：
 
 ![发送邮件结果][emailresult]
 

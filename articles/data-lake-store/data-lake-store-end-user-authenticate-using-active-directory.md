@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 4c2b774c304e46f9fc68f3beaf64218e614ecad1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "66234055"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 最终身份验证
@@ -48,9 +48,9 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。
 * Azure 租户 ID。 有关如何检索租户 ID 的说明，请参阅[获取租户 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)。
 
 ## <a name="end-user-authentication"></a>最终用户身份验证
-如果您希望最终用户通过 Azure AD 登录到应用程序，则建议使用此身份验证机制。 然后，应用程序可访问 Azure 资源，且访问权限级别与已登录的最终用户相同。 最终用户需要定期提供凭据，以使应用程序可继续访问。
+如果希望最终用户通过 Azure AD 登录到您的应用程序，则建议使用这种身份验证机制。 然后，应用程序可访问 Azure 资源，且访问权限级别与已登录的最终用户相同。 最终用户需要定期提供凭据，以使应用程序可继续访问。
 
-最终用户登录的结果是，为应用程序提供了访问令牌和刷新令牌。 访问令牌会附加到对 Data Lake Storage Gen1 或 Data Lake Analytics 作出的每个请求，默认情况下一小时内有效。 刷新令牌可用于获取新的访问令牌，默认情况下两周内有效。 您可以使用两种不同的方法来最终用户登录。
+最终用户登录的结果是，为你的应用程序提供了一个访问令牌和一个刷新令牌。 访问令牌会附加到对 Data Lake Storage Gen1 或 Data Lake Analytics 作出的每个请求，默认情况下一小时内有效。 刷新令牌可用于获取新的访问令牌，默认情况下两周内有效。 对于最终用户登录，可以使用两种不同的方法。
 
 ### <a name="using-the-oauth-20-pop-up"></a>使用 OAuth 2.0 弹出窗口
 应用程序会触发 OAuth 2.0 身份验证弹出窗口，最终用户可在其中输入凭据。 如有必要，此弹出窗口也适用于 Azure AD 双因素身份验证 (2FA) 过程。 
@@ -78,7 +78,7 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。
 
 遵循链接中的说明进行操作时，请确保选择“本机”作为应用程序类型，如以下屏幕截图中所示****：
 
-![创建 Web 应用](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-create-native-app.png "创建本机应用")
+![创建 web 应用](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-create-native-app.png "创建本机应用")
 
 ## <a name="step-2-get-application-id-and-redirect-uri"></a>步骤 2：获取应用程序 ID 和重定向 URI
 
@@ -111,12 +111,12 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。
 
     ![客户端 ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
 
-    单击 **“完成”**。
+    单击“完成”  。
 
 5. 重复最后两步，同时为 Windows Azure 服务管理 API 授予权限****。
    
 ## <a name="next-steps"></a>后续步骤
-在本文中，您创建了 Azure AD 本机应用程序，并收集了使用 .NET SDK、Java SDK、REST API 等创作的客户端应用程序中所需的信息。现在，您可以继续以下文章，其中讨论如何使用 Azure AD Web 应用程序首先使用 Data Lake 存储 Gen1 进行身份验证，然后在存储上执行其他操作。
+本文介绍了如何使用 .NET SDK、Java SDK、REST API 等在你创作的客户端应用程序中创建了一个 Azure AD 的本机应用程序并收集了所需的信息。你现在可以继续阅读以下文章，这些文章讨论了如何使用 Azure AD web 应用程序首先使用 Data Lake Storage Gen1 进行身份验证，然后在存储中执行其他操作。
 
 * [使用 Java SDK 进行 Data Lake Storage Gen1 最终用户身份验证](data-lake-store-end-user-authenticate-java-sdk.md)
 * [使用 .NET SDK 进行 Data Lake Storage Gen1 最终用户身份验证](data-lake-store-end-user-authenticate-net-sdk.md)

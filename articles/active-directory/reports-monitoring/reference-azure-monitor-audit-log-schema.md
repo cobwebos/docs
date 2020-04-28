@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d9f58b213e50a021651f35112a48d8f74ae59571
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68987945"
 ---
 # <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>解释 Azure Monitor 中的 Azure AD 审核日志架构（预览版）
@@ -147,37 +147,37 @@ ms.locfileid: "68987945"
 
 ## <a name="field-and-property-descriptions"></a>字段和属性说明
 
-| 字段名 | 描述 |
+| 字段名 | 说明 |
 |------------|-------------|
 | time       | 日期和时间 (UTC)。 |
 | operationName | 操作的名称。 |
 | operationVersion | 客户端请求的 REST API 版本。 |
-| category | 目前，“审核”是唯一支持的值**。 |
+| category | 目前，“审核”是唯一支持的值  。 |
 | tenantId | 与日志关联的租户 GUID。 |
-| resultType | 操作结果。 结果可以是“成功”或“失败”****。 |
+| resultType | 操作结果。 结果可以是“成功”或“失败”   。 |
 | resultSignature |  此字段未映射，可以放心地忽略它。 | 
 | resultDescription | 结果的附加说明（如果有）。 | 
 | durationMs |  此字段未映射，可以放心地忽略它。 |
 | callerIpAddress | 发出请求的客户端的 IP 地址。 | 
 | correlationId | 客户端所传递的可选 GUID。 它可以帮助将客户端操作与服务器端操作相关联，并且在跟踪跨服务的日志时非常有用。 |
 | identity | 发出请求时提供的令牌中的标识。 标识可以是用户帐户、系统帐户或服务主体。 |
-| 级别 | 消息类型。 对于审核日志，此级别始终为“信息”**。 |
+| 级别 | 消息类型。 对于审核日志，此级别始终为“信息”  。 |
 | location | 数据中心的位置。 |
 | properties | 列出与审核日志相关的受支持属性。 有关详细信息，请参阅下一个表格。 | 
 
 <br>
 
-| 属性名称 | 描述 |
+| 属性名称 | 说明 |
 |---------------|-------------|
-| AuditEventCategory | 审核事件的类型。 它可以是“用户管理”、“应用程序管理”或其他类型****。|
-| 标识类型 | 类型可以是“应用程序”或“用户”****。 |
-| 操作类型 | 类型可以是“添加”、“更新”、“删除”******。 或“其他”**。 |
-| 目标资源类型 | 指定已对其执行操作的目标资源类型。 类型可以是“应用程序”、“用户”、“角色”、“策略”******** | 
+| AuditEventCategory | 审核事件的类型。 它可以是“用户管理”、“应用程序管理”或其他类型   。|
+| 标识类型 | 类型可以是“应用程序”或“用户”   。 |
+| 操作类型 | 类型可以是“添加”、“更新”、“删除”    。 或“其他”  。 |
+| 目标资源类型 | 指定已对其执行操作的目标资源类型。 类型可以是“应用程序”、“用户”、“角色”、“策略”     | 
 | 目标资源名称 | 目标资源的名称。 它可以是应用程序名称、角色名称、用户主体名称或服务主体名称。 |
-| additionalTargets | 列出特定操作的任何其他属性。 例如，对于更新操作，旧值和新值列在*目标更新属性*下。 | 
+| additionalTargets | 列出特定操作的任何其他属性。 例如，对于更新操作，旧值和新值在 targetUpdatedProperties 下列出  。 | 
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 Azure 监视器中解释登录日志架构](reference-azure-monitor-sign-ins-log-schema.md)
+* [解释 Azure Monitor 中的登录日志架构](reference-azure-monitor-sign-ins-log-schema.md)
 * [Azure 诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [常见问题解答和已知的问题](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

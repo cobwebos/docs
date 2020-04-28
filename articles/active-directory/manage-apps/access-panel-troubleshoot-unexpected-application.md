@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewr: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8fa8ea75cc7fda05326c802c25a91d025b66b5ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65784418"
 ---
 # <a name="how-applications-appear-on-the-access-panel"></a>应用程序为何在访问面板上显示
@@ -46,7 +46,7 @@ ms.locfileid: "65784418"
 
 若要检查是否将用户分配给了应用程序，请执行以下步骤：
 
-1. 打开[**Azure 门户**](https://portal.azure.com/)并作为**全局管理员登录。**
+1. 打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
 
 2. 在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
 
@@ -58,7 +58,7 @@ ms.locfileid: "65784418"
 
 6. **搜索**有关应用程序的名称。
 
-7. 单击 **"用户和组**"。
+7. 单击 "**用户和组**"。
 
 8. 检查用户是否被分配给应用程序。
 
@@ -68,13 +68,13 @@ ms.locfileid: "65784418"
 
 若要检查用户的已分配许可证，请执行以下步骤：
 
-1. 打开[**Azure 门户**](https://portal.azure.com/)并作为**全局管理员登录。**
+1. 打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
 
 2. 在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
 
 3. 在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
 
-4. 单击导航菜单中的 **"用户"和"组**"。
+4. 单击导航菜单中的 "**用户和组**"。
 
 5. 单击“所有用户”****。
 
@@ -96,19 +96,19 @@ ms.locfileid: "65784418"
 
 若要检查组的成员身份，请执行以下步骤：
 
-1. 打开[**Azure 门户**](https://portal.azure.com/)并作为**全局管理员登录。**
+1. 打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
 
 2. 在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
 
 3. 在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
 
-4. 单击导航菜单中的 **"用户"和"组**"。
+4. 单击导航菜单中的 "**用户和组**"。
 
 5. 单击“所有用户”****。
 
 6. **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
-7. 单击 **"组"。**
+7. 单击 "**组"。**
 
 8. 检查用户是否是分配给应用程序的组的成员。
 
@@ -116,19 +116,19 @@ ms.locfileid: "65784418"
 
 ### <a name="check-if-a-user-is-a-member-of-a-group-assigned-to-a-license"></a>检查用户是否是被分配许可证的组的成员
 
-1. 打开[**Azure 门户**](https://portal.azure.com/)并作为**全局管理员登录。**
+1. 打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
 
 2. 在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
 
 3. 在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
 
-4. 单击导航菜单中的 **"用户"和"组**"。
+4. 单击导航菜单中的 "**用户和组**"。
 
 5. 单击“所有用户”****。
 
 6. **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
-7. 单击 **"组"。**
+7. 单击 "**组"。**
 
 8. 单击特定组所在的行。
 

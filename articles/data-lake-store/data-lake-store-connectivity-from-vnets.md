@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: elsung
 ms.openlocfilehash: c8d028a981d7811ed2c864db5750afc83ab93b2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60878862"
 ---
 # <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>从 Azure VNET 中的 VM 访问 Azure Data Lake Storage Gen1
@@ -50,7 +50,7 @@ Azure Data Lake Storage Gen1 是一种在公共 Internet IP 地址上运行的 P
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-expressroute"></a>使用 ExpressRoute 启用受限 VM 的连接
 配置 ExpressRoute 线路后，本地服务器可以通过公共对等互连访问 Data Lake Storage Gen1。 有关为公共对等互连配置 ExpressRoute 的详细信息，请参阅[ ExpressRoute 常见问题解答](../expressroute/expressroute-faqs.md)。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)
 * [保护 Azure Data Lake Storage Gen1 中存储的数据](data-lake-store-security-overview.md)
 

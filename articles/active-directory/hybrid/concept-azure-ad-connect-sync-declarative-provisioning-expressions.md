@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdc7c9dba49bf37db1f039d43b0450c65884c74b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60245505"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect 同步：了解声明性预配表达式
@@ -48,7 +48,7 @@ Azure AD Connect 同步基于 Forefront Identity Manager 2010 中最先引入的
 
 有关函数的完整列表，请参阅[函数参考](reference-connect-sync-functions-reference.md)。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 通过连接器或由管理员使用 PowerShell 定义参数。 参数通常包含因系统不同而各异的值，例如用户所在域的名称。 这些参数可在属性流中使用。
 
 Active Directory 连接器为入站同步规则提供以下参数：
@@ -95,7 +95,7 @@ Active Directory 连接器为入站同步规则提供以下参数：
 **概述主题**
 
 * [Azure AD Connect 同步：理解和自定义同步](how-to-connect-sync-whatis.md)
-* [将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)
+* [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
 
 **参考主题**
 

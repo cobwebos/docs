@@ -8,10 +8,10 @@ ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 97af40bd1f57acb5b26d3b6216984dfb8e3a5181
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68699795"
 ---
 # <a name="develop-for-azure-files-with-c"></a>使用 C++ 针对 Azure 文件进行开发
@@ -41,7 +41,7 @@ ms.locfileid: "68699795"
 若要安装用于 C++ 的 Azure 存储客户端 2.4.0，可以使用以下方法之一：
 
 * **Linux：** 按照[适用于 C++ 的 Azure 存储客户端库自述文件](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)页中提供的说明操作。
-* **Windows：** 在 Visual Studio 中，单击“工具”&gt;“NuGet 包管理器”&gt;“程序包管理器控制台”****。 在 [NuGet 包管理器控制台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)中，键入以下命令，并按 **ENTER**。
+* **Windows：** 在 Visual Studio 中，单击“工具” **“NuGet 包管理器”&gt;“程序包管理器控制台”&gt;** 。 在 [NuGet 包管理器控制台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)中，键入以下命令，并按 **ENTER**。
   
 
 ```powershell
@@ -69,7 +69,7 @@ storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_sto
 
 ## <a name="connecting-to-an-azure-storage-account"></a>连接到 Azure 存储帐户
 
-您可以使用**cloud_storage_account**类来表示存储帐户信息。 若要从存储连接字符串中检索存储帐户信息，可以使用 **parse** 方法。
+可使用 **cloud_storage_account** 类来表示存储帐户信息。 若要从存储连接字符串中检索存储帐户信息，可以使用 **parse** 方法。
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -79,7 +79,7 @@ azure::storage::cloud_storage_account storage_account =
 
 ## <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
 
-Azure 文件共享中的所有文件和目录都位于名为 Share**** 的容器内。 存储帐户可以拥有无数的共享，只要帐户容量允许。 要获得共享及其内容的访问权限，需要使用 Azure 文件客户端。
+Azure 文件共享中的所有文件和目录都位于名为 Share  的容器内。 存储帐户可以拥有无数的共享，只要帐户容量允许。 要获得共享及其内容的访问权限，需要使用 Azure 文件客户端。
 
 ```cpp
 // Create the Azure Files client.
@@ -107,7 +107,7 @@ if (share.create_if_not_exists()) {
 
 ## <a name="delete-an-azure-file-share"></a>删除 Azure 文件共享
 
-删除共享是通过在cloud_file_share对象上调用**delete_if_exists**方法来完成的。 以下是具有此类功能的示例代码。
+删除共享时，可针对 cloud_file_share 对象调用 **delete_if_exists** 方法。 以下是具有此类功能的示例代码。
 
 ```cpp
 // Get a reference to the share.
@@ -189,7 +189,7 @@ for (auto it = directory.list_files_and_directories(); it != end_of_results; ++i
 
 Azure 文件共享至少包含文件可以驻留的根目录。 在本部分，学习如何将文件从本地存储上传到共享所在的根目录。
 
-上传文件的第一步是获取对文件所在的目录的引用。 为此，调用共享对象的**get_root_directory_reference**方法。
+上传文件的第一步是获取对文件所在的目录的引用。 为此，需要调用共享对象的 **get_root_directory_reference** 方法。
 
 ```cpp
 //Get a reference to the root directory for the share.
@@ -369,5 +369,5 @@ if (share.exists())
 
 * [适用于 C++ 的存储客户端库](https://github.com/Azure/azure-storage-cpp)
 * [C++ 的 Azure 存储文件服务示例](https://github.com/Azure-Samples/storage-file-cpp-getting-started)
-* [Azure 存储资源管理器](https://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
+* [Azure 存储浏览器](https://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
 * [Azure 存储文档](https://azure.microsoft.com/documentation/services/storage/)

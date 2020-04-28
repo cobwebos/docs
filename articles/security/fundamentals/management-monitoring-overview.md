@@ -1,5 +1,5 @@
 ---
-title: 管理和监视安全功能 - 微软 Azure |微软文档
+title: 管理和监视安全功能-Microsoft Azure |Microsoft Docs
 description: 本文概述了 Azure 提供的安全功能和服务，以帮助管理和监视 Azure 云服务和虚拟机。
 services: security
 documentationcenter: na
@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
 ms.openlocfilehash: 7ad7a29a92d25556190b4cf44f4e48158a6f0952
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73162746"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure 安全管理和监视概述
@@ -40,7 +40,7 @@ ms.locfileid: "73162746"
 
 适用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件提供了为 PaaS 角色和虚拟机安装反恶意软件代理的能力。 基于 System Center Endpoint Protection，此功能将经验证的本地安全技术引入到了云。
 
-我们还为 Azure 平台中的 Trend[深度安全和](https://www.trendmicro.com/us/enterprise/cloud-solutions/deep-security/)[安全云](https://www.trendmicro.com/us/enterprise/cloud-solutions/secure-cloud/)产品提供深度集成。 DeepSecurity 是一个防病毒解决方案，SecureCloud 是一个加密解决方案。 DeepSecurity 通过扩展模型部署在 VM 内部。 通过 Azure 门户 UI 和 PowerShell，用户可以选择使用即将启动的新 VM 或已部署的现有 VM 内部的 DeepSecurity。
+我们还为 Azure 平台中趋势的[深度安全](https://www.trendmicro.com/us/enterprise/cloud-solutions/deep-security/)和[SecureCloud](https://www.trendmicro.com/us/enterprise/cloud-solutions/secure-cloud/)产品提供了深度集成。 DeepSecurity 是一个防病毒解决方案，SecureCloud 是一个加密解决方案。 DeepSecurity 通过扩展模型部署在 VM 内部。 通过 Azure 门户 UI 和 PowerShell，用户可以选择使用即将启动的新 VM 或已部署的现有 VM 内部的 DeepSecurity。
 
 在 Azure 上也支持 Symantec Endpoint Protection (SEP)。 通过门户集成，你能够表明想要在 VM 内使用 SEP。 SEP 可以通过 Azure 门户安装在新的 VM 上，也可以通过 PowerShell 安装在现有 VM 上。
 
@@ -97,7 +97,7 @@ Privileged Identity Management 为角色或“及时”管理员访问引入了�
 
 了解详细信息：
 
-* [Azure AD 特权标识管理](../../active-directory/privileged-identity-management/pim-configure.md)
+* [Azure AD Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)
 * [Azure AD Privileged Identity Management 入门](../../active-directory/privileged-identity-management/pim-getting-started.md)
 
 ## <a name="identity-protection"></a>标识保护
@@ -139,6 +139,6 @@ Intelligent Security Graph 在 Microsoft 产品和服务中提供实时威胁防
 * [Intelligent Security Graph](https://www.microsoft.com/security/intelligence)
 
 ## <a name="next-steps"></a>后续步骤
-了解[共享责任模型](shared-responsibility.md)以及哪些安全任务由 Microsoft 处理，以及哪些任务由您处理。
+了解共享的[责任模型](shared-responsibility.md)以及 Microsoft 处理哪些安全任务以及由您处理哪些任务。
 
 有关安全管理的详细信息，请参阅 [Azure 中的安全管理](management.md)。

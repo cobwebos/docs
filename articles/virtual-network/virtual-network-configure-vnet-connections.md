@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
 ms.openlocfilehash: dddf402455292e19bf0fcda3c50d9ce10d5888d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71099058"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>配置和验证虚拟网络或 VPN 连接
@@ -34,15 +34,15 @@ ms.locfileid: "71099058"
 
 ## <a name="network-to-network-vpn-connection"></a>网络间的 VPN 连接
 
-通过 VPN 将一个虚拟网络连接到另一个虚拟网络（网络间连接）类似于将虚拟网络连接到本地站点位置。 这两种连接类型都使用 VPN 网关通过 IPsec 和 IKE 提供安全隧道。 虚拟网络可以位于相同或不同的区域，也可以来自相同或不同的订阅。
+通过 VPN 将一个虚拟网络连接到另一个虚拟网络（网络间连接）类似于将虚拟网络连接到本地站点位置。 这两种连接类型都使用 VPN 网关通过 IPsec 和 IKE 提供安全隧道。 虚拟网络可位于相同或不同的区域，来自相同或不同的订阅。
 
 ![使用 IPsec 的网络间连接](./media/virtual-network-configure-vnet-connections/4034386_en_2.png)
  
-如果虚拟网络位于同一区域，你可能会考虑使用虚拟网络对等互连来连接这些虚拟网络。 虚拟网络对等互连不使用 VPN 网关。 它可以提高吞吐量并降低延迟。 若要配置虚拟网络对等互连，请选择“配置并验证 VNet 对等互连”。****
+如果虚拟网络位于同一区域，你可能会考虑使用虚拟网络对等互连来连接这些虚拟网络。 虚拟网络对等互连不使用 VPN 网关。 它可以提高吞吐量并降低延迟。 若要配置虚拟网络对等互连，请选择“配置并验证 VNet 对等互连”。 
 
-如果虚拟网络是通过 Azure 资源管理器部署模型创建的，请选择“配置并验证资源管理器 VNet 到资源管理器 VNet 的连接”来配置 VPN 连接。****
+如果虚拟网络是通过 Azure 资源管理器部署模型创建的，请选择“配置并验证资源管理器 VNet 到资源管理器 VNet 的连接”来配置 VPN 连接。 
 
-如果一个虚拟网络是通过 Azure 经典部署模型创建的，另一个虚拟网络是通过资源管理器创建的，请选择“配置并验证经典 VNet 到资源管理器 VNet 的连接”来配置 VPN 连接。****
+如果一个虚拟网络是通过 Azure 经典部署模型创建的，另一个虚拟网络是通过资源管理器创建的，请选择“配置并验证经典 VNet 到资源管理器 VNet 的连接”来配置 VPN 连接。 
 
 ### <a name="configure-virtual-network-peering-for-two-virtual-networks-in-the-same-region"></a>为同一区域中的两个虚拟网络配置虚拟网络对等互连
 
@@ -50,16 +50,16 @@ ms.locfileid: "71099058"
 
 * 对等虚拟网络必须位于同一 Azure 区域。
 * 对等虚拟网络必须使用不重叠的 IP 地址空间。
-* 虚拟网络对等互连在两个虚拟网络之间进行。 对等互连之间没有任何派生的可传递关系。 例如，如果 VNetA 与 VNetB 对等互连，VNetB 与 VNetC 对等互连，但 VNetA 不与 VNetC 对等互连。**
+* 虚拟网络对等互连在两个虚拟网络之间进行。 对等互连之间没有任何派生的可传递关系。 例如，如果 VNetA 与 VNetB 对等互连，VNetB 与 VNetC 对等互连，但 VNetA 不与 VNetC 对等互连。 
 
-满足要求时，可以按照教程：通过使用 Azure 门户创建和配置对等互连，[将虚拟网络与虚拟网络对等互连连接起来](https://docs.microsoft.com/azure/virtual-network/virtual-network-create-peering)。
+满足要求后，可以根据[教程：使用 Azure 门户通过虚拟网络对等互连来连接虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-network-create-peering)创建并配置对等互连。
 
 若要检查对等互连配置，请使用以下方法：
 
 1. 使用具有必要[角色和权限](virtual-network-manage-peering.md#permissions)的帐户登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在门户顶部包含“搜索资源”文本的框中，键入“虚拟网络”。******** 当“虚拟网络”出现在搜索结果中时，请选择它。****
-3. 在显示的“虚拟网络”边栏选项卡中，选择想要为其创建对等互连的虚拟网络。****
-4. 在针对所选虚拟网络显示的窗格中，选择“设置”部分中的“对等互连”。********
+2. 在门户顶部包含“搜索资源”文本的框中，键入“虚拟网络”。   当“虚拟网络”出现在搜索结果中时，请选择它。 
+3. 在显示的“虚拟网络”边栏选项卡中，选择想要为其创建对等互连的虚拟网络。 
+4. 在针对所选虚拟网络显示的窗格中，选择“设置”部分中的“对等互连”。  
 5. 选择一个对等互连并查看配置结果。
 
 ![用于检查虚拟网络对等互连配置的选项](./media/virtual-network-configure-vnet-connections/4034496_en_1.png)
@@ -110,11 +110,11 @@ RemoteVirtualNetworkAddressSpace : null
 > 在这些步骤中，虚拟网络组件后面的编号对应于上图中的编号。
 
 1. 请确保连接的虚拟网络中不存在重叠的地址空间。
-2. 验证是否在“连接对象”实例 (4) 中准确定义了 Azure 资源管理器虚拟网络的地址范围 (1)。****
-3. 验证是否在“连接对象”实例 (3) 中准确定义了 Azure 资源管理器虚拟网络的地址范围 (6)。****
+2. 验证是否在“连接对象”实例 (4) 中准确定义了 Azure 资源管理器虚拟网络的地址范围 (1)。 
+3. 验证是否在“连接对象”实例 (3) 中准确定义了 Azure 资源管理器虚拟网络的地址范围 (6)。 
 4. 验证连接对象中的预共享密钥是否匹配。
-5. 验证是否在“连接对象”实例 (4) 中准确定义了 Azure 资源管理器虚拟网络网关 VIP (2)。****
-6. 验证是否在“连接对象”实例 (3) 中准确定义了 Azure 资源管理器虚拟网络网关 VIP (5)。****
+5. 验证是否在“连接对象”实例 (4) 中准确定义了 Azure 资源管理器虚拟网络网关 VIP (2)。 
+6. 验证是否在“连接对象”实例 (3) 中准确定义了 Azure 资源管理器虚拟网络网关 VIP (5)。 
 
 ### <a name="connect-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>将经典虚拟网络连接到资源管理器虚拟网络
 
@@ -131,12 +131,12 @@ RemoteVirtualNetworkAddressSpace : null
 
 1. 请确保连接的虚拟网络中不存在重叠的地址空间。
 2. 验证是否在经典本地网络定义 (3) 中准确定义了 Azure 资源管理器虚拟网络的地址范围 (6)。
-3. 验证是否在 Azure 资源管理器“连接对象”实例 (4) 中准确定义了经典虚拟网络的地址范围 (1)。****
-4. 验证是否在 Azure 资源管理器“连接对象”实例 (4) 中准确定义了经典虚拟网络网关 VIP (2)。****
-5. 验证是否在经典“本地网络定义”实例 (3) 中准确定义了 Azure 资源管理器虚拟网络网关 (5)。****
+3. 验证是否在 Azure 资源管理器“连接对象”实例 (4) 中准确定义了经典虚拟网络的地址范围 (1)。 
+4. 验证是否在 Azure 资源管理器“连接对象”实例 (4) 中准确定义了经典虚拟网络网关 VIP (2)。 
+5. 验证是否在经典“本地网络定义”实例 (3) 中准确定义了 Azure 资源管理器虚拟网络网关 (5)。 
 6. 验证两个连接的虚拟网络上的预共享密钥是否匹配：
-   - 经典虚拟网络：**本地网络定义**（3）
-   - Azure 资源管理器虚拟网络：**连接对象**（4）
+   - 经典虚拟网络：**本地网络定义** (3)
+   - Azure 资源管理器虚拟网络：**连接对象** (4)
 
 ## <a name="create-a-point-to-site-vpn-connection"></a>创建点到站点 VPN 连接
 
@@ -154,15 +154,15 @@ RemoteVirtualNetworkAddressSpace : null
 
 ### <a name="validate-your-point-to-site-connection"></a>验证点到站点连接
 
-文章[疑难解答：Azure 点到站点连接问题](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems)会解决点到站点连接的常见问题。
+[故障排除：Azure 点到站点连接问题](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems)一文逐步讲解了如何排查点到站点连接的常见问题。
 
 ## <a name="create-a-multisite-vpn-connection"></a>创建多站点 VPN 连接
 
-可将站点到站点（下图中的 *S2S*）连接添加到已建立站点到站点连接、点到站点连接或网络间连接的虚拟网络。 这种连接通常称为多站点配置。** 
+可将站点到站点（下图中的 *S2S*）连接添加到已建立站点到站点连接、点到站点连接或网络间连接的虚拟网络。 这种连接通常称为多站点配置。  
 
 ![多站点连接](./media/virtual-network-configure-vnet-connections/4034497_en_2.png)
 
-Azure 当前使用两种部署模型：Resource Manager 部署模型和经典部署模型。 这两种模型彼此不完全兼容。 若要使用不同的模型配置多站点连接，请参阅以下文章：
+Azure 当前使用两种部署模型：资源管理器部署模型和经典部署模型。 这两种模型彼此不完全兼容。 若要使用不同的模型配置多站点连接，请参阅以下文章：
 
 * [将站点到站点连接添加到使用现有 VPN 网关连接的虚拟网络](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal)
 * [将站点到站点连接添加到使用现有 VPN 网关连接的虚拟网络（经典）](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site)
@@ -200,12 +200,12 @@ Azure 当前使用两种部署模型：Resource Manager 部署模型和经典部
 
 1. 使用具有必要[角色和权限](virtual-network-manage-peering.md#permissions)的帐户登录到 [Azure 门户](https://portal.azure.com/)。
 2. 按前面的示意图所示，[在 VNetA 与 VNetB 之间创建对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-create-peering)。 
-3. 在针对所选虚拟网络显示的窗格中，选择“设置”部分中的“对等互连”。********
-4. 选择要查看的对等互连。 然后选择“配置”，验证是否已在连接到 ExpressRoute 线路的 VNetA 网络上启用了“允许网关传输”，并在未连接到 ExpressRoute 线路的远程 VNetB 网络上启用了“使用远程网关”。************
+3. 在针对所选虚拟网络显示的窗格中，选择“设置”部分中的“对等互连”。  
+4. 选择要查看的对等互连。 然后选择“配置”，验证是否已在连接到 ExpressRoute 线路的 VNetA 网络上启用了“允许网关传输”，并在未连接到 ExpressRoute 线路的远程 VNetB 网络上启用了“使用远程网关”。   
 
 ### <a name="configure-transit-routing-in-a-virtual-network-peering-connection"></a>在虚拟网络对等互连中配置传输路由
 
-虚拟网络对等时，用户还可以将对等虚拟网络中的网关配置为本地网络的传输点。 若要在虚拟网络对等互连中配置传输路由，请参阅[网络间的连接](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps?toc=/azure/virtual-network/toc.json)。
+将虚拟网络对等互连后，还可以将对等虚拟网络中的网关配置为本地网络的传输点。 若要在虚拟网络对等互连中配置传输路由，请参阅[网络间的连接](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps?toc=/azure/virtual-network/toc.json)。
 
 > [!Note]
 > 通过不同部署模型创建的虚拟网络之间的对等互连关系不支持网关传输。 若要使用网关传输，对等互连关系中的两个虚拟网络都必须通过资源管理器创建。
@@ -213,10 +213,10 @@ Azure 当前使用两种部署模型：Resource Manager 部署模型和经典部
 若要检查是否为虚拟网络对等互连配置了传输路由，请按以下说明操作：
 
 1. 使用具有必要[角色和权限](virtual-network-manage-peering.md#permissions)的帐户登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在门户顶部包含“搜索资源”文本的框中，键入“虚拟网络”。******** 当“虚拟网络”出现在搜索结果中时，请选择它。****
-3. 在显示的“虚拟网络”边栏选项卡中，选择要检查其对等互连设置的虚拟网络。****
-4. 在针对所选虚拟网络显示的窗格中，选择“设置”部分中的“对等互连”。********
-5. 选择要查看的对等互连。 在“配置”下验证是否已启用“允许网关传输”和“使用远程网关”。************
+2. 在门户顶部包含“搜索资源”文本的框中，键入“虚拟网络”。   当“虚拟网络”出现在搜索结果中时，请选择它。 
+3. 在显示的“虚拟网络”边栏选项卡中，选择要检查其对等互连设置的虚拟网络。 
+4. 在针对所选虚拟网络显示的窗格中，选择“设置”部分中的“对等互连”。  
+5. 选择要查看的对等互连。 在“配置”下验证是否已启用“允许网关传输”和“使用远程网关”。   
 
 ![用于检查是否已为虚拟网络对等互连配置传输路由的选项](./media/virtual-network-configure-vnet-connections/4035414_en_1.png)
 
@@ -227,7 +227,7 @@ Azure 当前使用两种部署模型：Resource Manager 部署模型和经典部
 使用经典部署模型通过 Azure VPN 网关传输流量是可行的，但依赖于网络配置文件中静态定义的地址空间。 尚不支持通过经典部署模型使用 Azure 虚拟网络和 VPN 网关配置 BGP。 如果没有 BGP，手动定义传输地址空间很容易出错，因此不建议这样做。
 
 > [!Note]
-> 通过使用 Azure 经典门户或使用经典门户中的网络配置文件来配置传统的网络到网络连接。 无法通过 Azure 资源管理器部署模型或 Azure 门户来创建或修改经典虚拟网络。 有关经典虚拟网络传输路由的详细信息，请参阅 [Microsoft 开发人员博客](https://blogs.msdn.microsoft.com/igorpag/2015/10/01/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-using-vpn-v1/)。
+> 使用 Azure 经典门户或在经典门户中使用网络配置文件来配置经典网络到网络连接。 无法通过 Azure 资源管理器部署模型或 Azure 门户来创建或修改经典虚拟网络。 有关经典虚拟网络传输路由的详细信息，请参阅 [Microsoft 开发人员博客](https://blogs.msdn.microsoft.com/igorpag/2015/10/01/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-using-vpn-v1/)。
 
 ### <a name="configure-transit-routing-in-a-site-to-site-connection"></a>在站点到站点连接中配置传输路由
 
@@ -236,7 +236,7 @@ Azure 当前使用两种部署模型：Resource Manager 部署模型和经典部
 使用经典部署模型通过 Azure VPN 网关传输流量是可行的，但依赖于网络配置文件中静态定义的地址空间。 尚不支持通过经典部署模型使用 Azure 虚拟网络和 VPN 网关配置 BGP。 如果没有 BGP，手动定义传输地址空间很容易出错，因此不建议这样做。
 
 > [!Note]
-> 通过使用 Azure 经典门户或使用经典门户中的网络配置文件配置经典站点到站点连接。 无法通过 Azure 资源管理器部署模型或 Azure 门户来创建或修改经典虚拟网络。 有关经典虚拟网络传输路由的详细信息，请参阅 [Microsoft 开发人员博客](https://blogs.msdn.microsoft.com/igorpag/2015/10/01/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-using-vpn-v1/)。
+> 使用 Azure 经典门户或在经典门户中使用网络配置文件来配置经典站点到站点连接。 无法通过 Azure 资源管理器部署模型或 Azure 门户来创建或修改经典虚拟网络。 有关经典虚拟网络传输路由的详细信息，请参阅 [Microsoft 开发人员博客](https://blogs.msdn.microsoft.com/igorpag/2015/10/01/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-using-vpn-v1/)。
 
 ## <a name="configure-bgp-for-a-vpn-gateway"></a>为 VPN 网关配置 BGP
 
@@ -248,7 +248,7 @@ BGP 是在 Internet 上使用的，用于在两个或更多网络之间交换路
 
 若要配置使用 BGP 的 VPN 连接，请参阅[使用 PowerShell 在 Azure VPN 网关上配置 BGP](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-resource-manager-ps)。
 
-通过为虚拟网络网关创建自治系统 (AS) 编号在虚拟网络网关上启用 BGP。 基本网关不支持 BGP。 若要检查网关的 SKU，请在 Azure 门户中转到“VPN 网关”边栏选项卡的“概述”部分。******** 如果 SKU 为“基本”，则必须将 SKU（请参阅[调整网关大小](https://docs.microsoft.com/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway?view=azurermps-4.1.0&viewFallbackFrom=azurermps-4.0.0)）更改为“VpnGw1”。******** 
+通过为虚拟网络网关创建自治系统 (AS) 编号在虚拟网络网关上启用 BGP。 基本网关不支持 BGP。 若要检查网关的 SKU，请在 Azure 门户中转到“VPN 网关”边栏选项卡的“概述”部分。   如果 SKU 为“基本”，则必须将 SKU（请参阅[调整网关大小](https://docs.microsoft.com/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway?view=azurermps-4.1.0&viewFallbackFrom=azurermps-4.0.0)）更改为“VpnGw1”。   
 
 检查 SKU 会导致 20 到 30 分钟的停机时间。 网关获得正确的 SKU 后，你可以使用 [Set-AzureRmVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway?view=azurermps-3.8.0) PowerShell cmdlet 添加 AS 编号。 配置 AS 编号后，系统会自动提供网关的 BGP 对等互连 IP。
 
@@ -285,7 +285,7 @@ BGP 是在 Internet 上使用的，用于在两个或更多网络之间交换路
 若要创建主动/主动跨界连接和网络间连接，请按照[配置与 Azure VPN 网关的主动/主动 S2S VPN 连接](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-activeactive-rm-powershell)中的说明，以主动/主动模式配置 Azure VPN 网关。
 
 > [!Note]  
-> * 将地址添加到启用了 BGP 的主动/主动模式的本地网络网关时，只会添加 BGP 对等互连的 /32 地址。** 如果添加更多地址，这些地址将被视为静态路由，并优先于 BGP 路由。
+> * 将地址添加到启用了 BGP 的主动/主动模式的本地网络网关时，只会添加 BGP 对等互连的 /32 地址。  如果添加更多地址，这些地址将被视为静态路由，并优先于 BGP 路由。
 > * 对于连接到 Azure 的本地网络，必须使用不同的 BGP AS 编号。 （如果它们是相同的，并且本地 VPN 设备已使用 ASN 与其他 BGP 邻居建立对等互连，则必须更改虚拟网络的 AS 编号。）
 
 ## <a name="change-an-azure-vpn-gateway-type-after-deployment"></a>部署后更改 Azure VPN 网关类型

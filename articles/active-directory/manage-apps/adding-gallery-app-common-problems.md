@@ -16,10 +16,10 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b2b42880f99f3e87d75854166047896860f9eb14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65784432"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>添加 Azure AD 库应用程序时的问题
@@ -40,7 +40,7 @@ ms.locfileid: "65784432"
 
 ## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>添加应用程序后不知道如何进行设置
 
-如果您需要有关了解应用程序的帮助，[则有关如何将 SaaS 应用与 Azure 活动目录文章集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)是一个很好的开始位置。
+如果对应用程序的了解有帮助，有关[如何将 SaaS 应用与 Azure Active Directory 项目集成的教程的列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)是一个不错的开端。
 
 除此之外，[Azure AD 应用程序文档库](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index)可帮助你详细了解如何使用 Azure AD 进行单一登录及其工作原理。
 
@@ -48,7 +48,7 @@ ms.locfileid: "65784432"
 
 可以通过遵循以下步骤来查看任何门户通知的详细信息：
 
-1.  选择 Azure 门户右上角**的通知**图标（钟）
+1.  在 Azure 门户的右上方选择 "**通知**" 图标（电铃）
 
 2.  选择状态为“错误”**** 的任何通知（旁边有红色的 (!)）。
 
@@ -93,13 +93,13 @@ ms.locfileid: "65784432"
 
   -   示例 – **2017-03-23T19:50:43.7583681Z**
 
-- **内部事务 ID** – 可用于查找系统中错误的内部 ID
+- **内部事务 id** –可用于在我们的系统中查找错误的内部 ID
 
   -   示例 – **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
 - **UPN** – 执行操作的用户
 
-  -   示例 = **tperkins\@f128.info**
+  -   示例– **tperkins\@f128.info**
 
 - **租户 ID** – 执行操作的用户所属的租户的唯一 ID
 
@@ -117,7 +117,7 @@ ms.locfileid: "65784432"
 
 -   **状态** – 通知的特定状态
 
-    -   示例 =**失败**
+    -   示例– **Failed**
 
 -   **对象 ID** – **（可能为空）** 对其执行了操作的对象 ID
 
@@ -125,7 +125,7 @@ ms.locfileid: "65784432"
 
 -   **详细信息** – 由操作导致的所发生情况的详细说明
 
-    -   示例 =**内部 URL`https://bing.com/`无效，因为它已在使用中**
+    -   示例-**内部 url `https://bing.com/`无效，因为它已在使用中**
 
 -   **复制错误** – 单击“复制错误”文本框右侧的复制图标********，可复制所有通知详细信息以便与支持小组或产品小组共享 
 -   工程师

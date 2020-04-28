@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 11/19/2018
 ms.author: genli
 ms.openlocfilehash: 4c10a2dcd55c1605cfafe6c67cfefd9d8a3c5f9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71057985"
 ---
 # <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>由于 netvsc.sys，无法在 Azure 中远程连接到 Windows 10 或 Windows Server 2016 VM
@@ -36,7 +36,7 @@ ms.locfileid: "71057985"
 
 ## <a name="solution"></a>解决方案
 
-在按照这些步骤之前，先将受影响的 VM[的系统磁盘快照](../windows/snapshot-copy-managed-disk.md)作为备份。 若要排查此问题，请使用串行控制台，或通过将 VM 的系统磁盘附加到恢复 VM 来[脱机修复 VM](#repair-the-vm-offline)。
+在执行这些步骤之前，请将受影响 VM 的[系统磁盘快照](../windows/snapshot-copy-managed-disk.md)作为备份。 若要排查此问题，请使用串行控制台，或通过将 VM 的系统磁盘附加到恢复 VM 来[脱机修复 VM](#repair-the-vm-offline)。
 
 
 ### <a name="use-the-serial-console"></a>使用串行控制台
@@ -79,7 +79,7 @@ ms.locfileid: "71057985"
 
 5. 在安全的 VM 中，启动注册表编辑器 (regedit.exe)。
 
-6. 选择**HKEY_LOCAL_MACHINE**键，然后从菜单中选择 **"文件** > **加载配置"。**
+6. 选择 " **HKEY_LOCAL_MACHINE** " 项，然后从菜单中选择 "**文件** > " "**加载配置单元**"。
 
 7. 查找 \Windows\System32\config 文件夹中的系统文件****。
 

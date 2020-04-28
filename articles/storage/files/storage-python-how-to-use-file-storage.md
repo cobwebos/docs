@@ -8,10 +8,10 @@ ms.date: 12/14/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 139e3009722761172b7bbd57805a7f5b07e55fc0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68699395"
 ---
 # <a name="develop-for-azure-files-with-python"></a>使用 Python 针对 Azure 文件进行开发
@@ -44,10 +44,10 @@ pip install azure-storage-file
 > [!NOTE]
 > 如果要从适用于 Python 的 Azure 存储 SDK 版本 0.36 或更早版本升级，请在安装最新软件包之前使用 `pip uninstall azure-storage` 卸载旧版 SDK。
 
-有关其他安装方法，请访问[GitHub 上的 Python Azure 存储 SDK。](https://github.com/Azure/azure-storage-python/)
+有关备用安装方法，请访问 [Github 上用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python/)。
 
 ## <a name="view-the-sample-application"></a>查看示例应用程序
-f 要查看和运行演示如何将 Python 与 Azure 文件配合使用的示例应用程序，请参阅[Azure 存储：在 Python 中开始使用 Azure 文件](https://github.com/Azure-Samples/storage-file-python-getting-started)。 
+若要查看和运行演示如何结合使用 Python 和 Azure 文件的示例应用程序，请参阅[Azure 存储：在 Python 中使用 Azure 文件入门](https://github.com/Azure-Samples/storage-file-python-getting-started)。 
 
 若要运行示例应用程序，请确保已安装 `azure-storage-file` 和 `azure-storage-common` 软件包。
 
@@ -73,7 +73,7 @@ file_service.create_share('myshare')
 ```
 
 ## <a name="create-a-directory"></a>创建目录
-也可以将文件置于子目录中，不必将其全部置于根目录中，以便对存储进行有效的组织。 使用 Azure 文件可以创建帐户允许的任意数目的目录。 以下代码会在根目录下创建名为 **sampledir** 的子目录。
+也可将文件置于子目录中，而不是将其全部置于根目录中，以便对存储进行有效的组织。 使用 Azure 文件可以创建帐户允许的任意数目的目录。 以下代码在根目录下创建名为 **sampledir** 的子目录。
 
 ```python
 file_service.create_directory('myshare', 'sampledir')
@@ -89,11 +89,11 @@ for file_or_dir in generator:
 ```
 
 ## <a name="upload-a-file"></a>上传文件 
-Azure 文件共享至少包含文件可以驻留的根目录。 在本部分，学习如何将文件从本地存储上传到共享所在的根目录。
+Azure 文件共享至少包含文件可以驻留的根目录。 本部分会介绍如何将文件从本地存储上传到共享所在的根目录。
 
-若要创建文件并上传数据，请使用 `create_file_from_path`、`create_file_from_stream`、`create_file_from_bytes` 或 `create_file_from_text` 方法。 这些方法属于高级方法，用于在数据大小超过 64 MB 时执行必要的分块。
+若要创建文件并上传数据，请使用 `create_file_from_path`、`create_file_from_stream`、`create_file_from_bytes` 或 `create_file_from_text` 方法。 这些方法属于高级方法，在数据大小超过 64 MB 时执行必要的分块。
 
-`create_file_from_path` 从指定位置上传文件内容，`create_file_from_stream` 从已经打开的文件/流上传内容。 `create_file_from_bytes` 上传字节数组，`create_file_from_text` 使用指定的编码（默认为 UTF-8）上传指定的文本值。
+`create_file_from_path` 从指定路径上传文件内容，`create_file_from_stream` 从已经打开的文件/流上传内容。 `create_file_from_bytes` 上传字节数组，`create_file_from_text` 使用指定的编码（默认为 UTF-8）上传指定的文本值。
 
 下面的示例将 **sunset.png** 文件的内容上传到 **myfile** 文件中。
 
@@ -108,7 +108,7 @@ file_service.create_file_from_path(
 ```
 
 ## <a name="download-a-file"></a>下载文件
-若要从文件中下载数据，请使用 `get_file_to_path`、`get_file_to_stream`、`get_file_to_bytes` 或 `get_file_to_text`。 这些方法属于高级方法，用于在数据大小超过 64 MB 时执行必要的分块。
+若要从文件中下载数据，请使用 `get_file_to_path`、`get_file_to_stream`、`get_file_to_bytes` 或 `get_file_to_text`。 这些方法属于高级方法，在数据大小超过 64 MB 时执行必要的分块。
 
 以下示例演示如何使用 `get_file_to_path` 下载 **myfile** 文件的内容，并将其存储到 **out-sunset.png** 文件。
 
@@ -181,4 +181,4 @@ file_service.delete_share(share_name, delete_snapshots=DeleteSnapshot.Include)
 
 * [Python 开发人员中心](https://azure.microsoft.com/develop/python/)
 * [Azure 存储服务 REST API](https://msdn.microsoft.com/library/azure/dd179355)
-* [用于 Python 的 Microsoft Azure 存储 SDK](https://github.com/Azure/azure-storage-python)
+* [Microsoft Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python)

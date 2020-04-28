@@ -14,16 +14,16 @@ ms.workload: NA
 ms.date: 04/19/2019
 ms.author: alkohli
 ms.openlocfilehash: b46e9ee8fc3e14981a01cc2425a8ce55d06c5a9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65150740"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>将数据从 StorSimple 5000-7000 系列迁移到 Azure 文件同步
 
 > [!IMPORTANT]
-> 2019 年 7 月 9 日，StorSimple 5000/7000 系列将到达支持 （EOS） 状态结束。 我们建议 StorSimple 5000/7000 系列客户迁移到本文档中所述的替代方案之一。
+> 2019年7月9日，StorSimple 5000/7000 系列将达到支持终止（EOS）的状态。 我们建议 StorSimple 5000/7000 系列客户迁移到本文档中所述的替代方案之一。
 
 数据迁移是将数据从一个存储位置转移到另一个位置的过程。 这需要在组织中的一台设备上，创建另一台设备上的当前数据的完全相同的副本 — 最好能够避免中断或禁用活动的应用程序 — 然后将所有输入/输出 (I/O) 活动重定向到新设备。 
 
@@ -47,7 +47,7 @@ StorSimple 5000 和 7000 系列存储设备将在 2019 年 7 月退役。 这意
 
 ## <a name="migration-prerequisites"></a>迁移先决条件
 
-在这里，您将找到旧版 5000 或 7000 系列设备的迁移先决条件到 Azure 文件同步。开始之前，请确保您具有：
+你将在此处找到旧5000或7000系列设备的迁移先决条件，以便 Azure 文件同步。在开始之前，请确保：
 
 - 有权访问运行 v2.1.1.518 或更高软件版本的 StorSimple 5000/7000 系列设备。 不支持更早的版本。 StorSimple 设备 Web UI 的右上角应显示正在运行的软件版本。  
     如果设备不是运行 v2.1.1.518，请将系统升级到要求的最低版本。 有关详细说明，请参阅[将系统升级到 v2.1.1.518](http://onlinehelp.storsimple.com/111_Appliance/6_System_Upgrade_Guides/Current_(v2.1.1)/000_Software_Patch_Upgrade_Guide_v2.1.1.518)。
@@ -55,7 +55,7 @@ StorSimple 5000 和 7000 系列存储设备将在 2019 年 7 月退役。 这意
 - 访问已连接到 StorSimple 5000-7000 系列设备的 Windows Server 主机。 该主机必须运行 [Azure 文件同步互操作性](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning)中所述的受支持 Windows Server 版本。
 - StorSimple 卷已装载在主机上，并包含文件共享。
 - 该主机具有足够的本地存储，可以保存本地缓存的数据。
-- 所有者级对将用于部署 Azure 文件同步的 Azure 订阅的访问权限。如果没有所有者或管理员级别权限，则为同步组创建云终结点时可能会遇到问题。
+- 所有者级别对你将用于部署 Azure 文件同步的 Azure 订阅的访问权限。如果你没有所有者或管理员级别的权限，则为你的同步组创建云终结点时，可能会遇到问题。
 - 有权访问包含所要同步到的 Azure 文件共享的[常规用途 v2 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。 有关详细信息，请参阅[创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)。
   - 如何[创建 Azure 文件共享](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)。
 
@@ -69,10 +69,10 @@ StorSimple 5000 和 7000 系列存储设备将在 2019 年 7 月退役。 这意
 
 执行以下步骤，将 StorSimple 卷上配置的 Windows 文件共享迁移到 Azure 文件同步共享。 
 1.  在同一台 Windows Server 主机（其中的 StorSimple 卷已装载或使用不同的系统）上执行这些步骤。 
-    - [准备 Windows 服务器与 Azure 文件同步一起使用](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#prepare-windows-server-to-use-with-azure-file-sync)。
+    - [准备与 Azure 文件同步一起使用的 Windows Server](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#prepare-windows-server-to-use-with-azure-file-sync)。
     - [安装 Azure 文件同步代理](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#install-the-azure-file-sync-agent)。
     - [部署存储同步服务](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#deploy-the-storage-sync-service)。 
-    - [使用存储同步服务注册 Windows 服务器](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#register-windows-server-with-storage-sync-service)。 
+    - [向存储同步服务注册 Windows Server](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#register-windows-server-with-storage-sync-service)。 
     - [创建同步组和云终结点](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#create-a-sync-group-and-a-cloud-endpoint)。 对于需要从主机迁移的每个 Windows 文件共享，请创建同步组。
     - [创建服务器终结点](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal#create-a-server-endpoint)。 将路径指定为包含文件共享数据的 StorSimple 卷的路径。 例如，如果 StorSimple 卷是驱动器 `J`，而数据驻留在 `J:/<myafsshare>` 中，则将此路径添加为服务器终结点。 将“分层”保留为“已禁用”。********
 2.  等到文件服务器同步完成。 对于给定同步组中的每个服务器，请确保：
@@ -80,7 +80,7 @@ StorSimple 5000 和 7000 系列存储设备将在 2019 年 7 月退役。 这意
     - 上传和下载会话的状态为绿色。
     - “同步活动”显示的要同步的剩余文件数很少或者为零****。
     - 上传和下载会话的“未同步的文件数”值为 0****。
-    有关服务器同步何时完成的详细信息，请访问["对 Azure 文件同步进行故障排除](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#how-do-i-know-if-my-servers-are-in-sync-with-each-other)"。同步可能需要几个小时到几天，具体取决于您的数据大小和带宽。 同步完成后，所有数据将安全保存在 Azure 文件共享中。 
+    有关服务器同步完成时间的详细信息，请参阅[故障排除 Azure 文件同步](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#how-do-i-know-if-my-servers-are-in-sync-with-each-other)。同步可能需要几个小时到几个小时，具体取决于你的数据大小和带宽。 同步完成后，所有数据将安全保存在 Azure 文件共享中。 
 3.  转到 StorSimple 卷上的共享。 选择一个共享，单击右键，然后选择“属性”。**** 注意“安全性”下面的共享权限。**** 在稍后的步骤中，需将这些权限手动应用到新共享。
 4.  根据使用的是相同还是不同的 Windows Server 主机，后续步骤会有所不同。
 

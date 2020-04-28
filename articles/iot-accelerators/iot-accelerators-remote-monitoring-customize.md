@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/09/2018
 ms.topic: conceptual
 ms.openlocfilehash: eb3d5fea68b5b1b6e648943cb3dbaab5857e9e07
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68608007"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>自定义远程监视解决方案加速器
@@ -73,11 +73,11 @@ ms.locfileid: "68608007"
     npm start
     ```
 
-1. 前面的命令在本地运行 UI，网址为\/http：/localhost：3000/仪表板。 可以在站点正在运行时编辑代码，并查看其动态更新。
+1. 上一个命令在本地运行 UI，网址为\/http：/localhost： 3000/仪表板。 可以在站点正在运行时编辑代码，并查看其动态更新。
 
 ## <a name="customize-the-layout"></a>自定义布局
 
-远程监视解决方案中的每个页面包括一组控件，在源代码中称为“面板”。** **仪表板**页面由五个面板组成：概述、映射、警报、遥测和分析。 可以在 [pcs-remote-monitoring-webui](https://github.com/Azure/pcs-remote-monitoring-webui) GitHub 存储库中找到定义每个页面及其面板的源代码。 例如，在 [src/components/pages/dashboard](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard) 文件夹中可以找到定义“仪表板”页面、其布局及其面板的代码。****
+远程监视解决方案中的每个页面包括一组控件，在源代码中称为“面板”。** "**仪表板**" 页由五个面板组成：概述、地图、警报、遥测和分析。 可以在 [pcs-remote-monitoring-webui](https://github.com/Azure/pcs-remote-monitoring-webui) GitHub 存储库中找到定义每个页面及其面板的源代码。 例如，在 [src/components/pages/dashboard](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard) 文件夹中可以找到定义“仪表板”页面、其布局及其面板的代码。****
 
 由于面板管理自身的布局和大小，因此你可以轻松修改页面的布局。 对 `src/components/pages/dashboard/dashboard.js` 文件中的 **PageContent** 元素进行以下更改将会：
 

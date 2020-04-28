@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a981dfb1d72c21eccf2ad7119ea219114ed15aed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "65784282"
 ---
 # <a name="problem-using-self-service-application-access"></a>使用自助应用程序访问时的问题
@@ -43,17 +43,17 @@ ms.locfileid: "65784282"
 
 若要启用应用程序的自助应用程序访问，请执行以下步骤：
 
-1. 打开[**Azure 门户**](https://portal.azure.com/)并作为**全局管理员登录。**
+1. 打开[**Azure 门户**](https://portal.azure.com/)，并以 "**全局管理员" 身份登录。**
 
 2. 在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
 
 3. 在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
 
-4. 单击 Azure 活动目录左侧导航菜单中的**企业应用程序**。
+4. 单击 Azure Active Directory 左侧导航菜单中的 "**企业应用程序**"。
 
 5. 单击“所有应用程序”****，查看所有应用程序的列表。
 
-   * 如果您没有看到要在此处显示的应用程序，请使用 **"所有应用程序列表**"顶部的 **"筛选器"** 控件，并将 **"显示**"选项设置为 **"所有应用程序"。**
+   * 如果看不到要在此处显示的应用程序，请使用 "**所有应用程序" 列表**顶部的 "**筛选器**" 控件，并将 "**显示**" 选项设置为 "**所有应用程序"。**
 
 6. 从列表中选择要对其启用自助访问的应用程序。
 

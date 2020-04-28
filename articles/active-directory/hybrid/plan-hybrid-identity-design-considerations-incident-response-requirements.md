@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 52b5e37c29e4b3df3f171f683266b5d0a3e0c95d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67109272"
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>确定混合标识解决方案的事件响应要求
@@ -50,17 +50,17 @@ ms.locfileid: "67109272"
 * 贵公司是否需要识别来自不同设备的用户的可疑登录尝试？
 * 贵公司是否需要检测可能受威胁的用户的凭据？
 * 贵公司是否需要审核用户的访问和操作？
-* 您的公司是否需要知道用户何时重置其密码？
+* 你的公司是否需要知道何时用户重置其密码？
 
 ## <a name="policy-enforcement"></a>策略强制执行
 在损害控制和风险降低阶段，务必快速消减攻击的实际和潜在影响。 此时会采取的措施可以决定是受轻微影响，还是受重大影响。 具体响应将取决于组织和你面对的攻击的性质。 如果初始评估得出的结论是某个帐户已受到威胁，将需要强制执行阻止该帐户的策略。 这只是一个示例，其中将用到标识管理系统。 以下问题用于帮助你设计混合标识解决方案，同时考虑将如何强制执行策略来对正在进行的事件作出反应：
 
 * 贵公司是否部署了策略来阻止用户访问网络（如有必要）？
   * 如果是，则当前解决方案是否将与要采用的混合标识管理系统集成？
-* 您的公司是否需要对处于隔离状态的用户强制实施条件访问？ 
+* 贵公司是否需要为隔离用户强制实施条件性访问？ 
 
 > [!NOTE]
-> 务必记下每个答案并了解答案背后的依据。 [定义数据保护策略](plan-hybrid-identity-design-considerations-data-protection-strategy.md)将超越每个选项的可用选项和优点/缺点。  回答了这些问题之后，就会挑选出最适合业务需求的选项。
+> 务必记下每个答案并了解答案背后的依据。 [定义数据保护策略](plan-hybrid-identity-design-considerations-data-protection-strategy.md)将会超出每个选项的可用选项和优点/缺点。  回答了这些问题之后，就会挑选出最适合业务需求的选项。
 > 
 > 
 

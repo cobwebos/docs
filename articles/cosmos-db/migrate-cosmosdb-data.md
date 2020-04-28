@@ -8,31 +8,31 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: bharathb
 ms.openlocfilehash: 69b400eb7838c986ac6f275da58c7457179ebea6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72880203"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>将数百 TB 的数据迁移到 Azure Cosmos DB 
 
-Azure Cosmos DB 可以存储 TB 级的数据。 可以执行大规模数据迁移，将生产工作负荷移动到 Azure Cosmos DB。 下面的文章说明将大规模数据迁移到 Azure Cosmos DB 涉及的难题，并介绍有助于应对挑战和将数据迁移到 Azure Cosmos DB 的工具。 在此案例研究中，客户使用了 Cosmos DB SQL API。  
+Azure Cosmos DB 可以存储 TB 级的数据。 可以执行大规模数据迁移，将生产工作负荷移动到 Azure Cosmos DB。 本文介绍将大规模数据迁移到 Azure Cosmos DB 涉及的难题，并介绍有助于应对挑战和将数据迁移到 Azure Cosmos DB 的工具。 在本案例研究中，客户使用的是 Cosmos DB SQL API。  
 
 在将整个工作负荷迁移到 Azure Cosmos DB 之前，可以先迁移一部分数据，以便在某些方面进行验证，例如分区键的选择、查询性能和数据建模。 验证概念证明后，可将整个工作负荷移到 Azure Cosmos DB。  
 
 ## <a name="tools-for-data-migration"></a>数据迁移工具 
 
-目前，Azure Cosmos DB 迁移策略根据所选的 API 和数据大小而异。 要迁移较小的数据集 （用于验证数据建模、查询性能、分区密钥选择等），可以选择[数据迁移工具](import-data.md)或[Azure 数据工厂的 Azure Cosmos 数据库连接器](../data-factory/connector-azure-cosmos-db.md)。 如果你熟悉 Spark，则还可以选择使用 [Azure Cosmos DB Spark 连接器](spark-connector.md)来迁移数据。
+目前，Azure Cosmos DB 迁移策略根据所选的 API 和数据大小而异。 迁移较小的数据集–用于验证数据建模、查询性能、分区键选择等等–可以选择[数据迁移工具](import-data.md)或[Azure 数据工厂的 Azure Cosmos DB 连接器](../data-factory/connector-azure-cosmos-db.md)。 如果你熟悉 Spark，则还可以选择使用 [Azure Cosmos DB Spark 连接器](spark-connector.md)来迁移数据。
 
 ## <a name="challenges-for-large-scale-migrations"></a>大规模迁移的挑战 
 
 用于将数据迁移到 Azure Cosmos DB 的现有工具存在一些限制，进行大规模迁移时，这些限制尤其明显：
 
- * **有限的横向扩展功能**：为了尽快将 TB 的数据迁移到 Azure Cosmos DB，并有效地消耗整个预配吞吐量，迁移客户端应该能够无限期地扩展。  
+ * **受限的横向扩展功能**：若要尽快将 TB 量级的数据迁移到 Azure Cosmos DB 并有效利用整个预配吞吐量，迁移客户端应该具备无限横向扩展的能力。  
 
-* **缺乏进度跟踪和检查点**：在迁移大型数据集时跟踪迁移进度并进行检查非常重要。 否则，迁移过程中出现的任何错误都会导致迁移停止，且必须从头开始迁移。 如果迁移过程已完成 99%，重新开始整个迁移过程将降低效率。  
+* **缺少进度跟踪和检查点**：迁移大型数据集时，必须跟踪迁移进度并创建检查点。 否则，迁移过程中出现的任何错误都会导致迁移停止，且必须从头开始迁移。 如果迁移过程已完成 99%，重新开始整个迁移过程将降低效率。  
 
-* **缺少死信队列**：在大型数据集中，在某些情况下，部分源数据可能有问题。 此外，客户端或网络可能出现暂时性的问题。 出现其中的任何一种情况都不应导致整个迁移失败。 尽管大多数迁移工具都具有可靠的重试功能，可防范间歇性的问题，但它们并不总是足够可靠。 例如，如果 0.01% 以下的源数据文档大小大于 2 MB，将会导致文档写入 Azure Cosmos DB 失败。 理想情况下，迁移工具将这些"失败"文档保存到另一个死信队列非常有用，该队列可以在迁移后处理。 
+* **缺少死信队列**：在大型数据集中，可能有一部分源数据存在问题。 此外，客户端或网络可能出现暂时性的问题。 出现其中的任何一种情况都不应导致整个迁移失败。 尽管大多数迁移工具都具有可靠的重试功能，可防范间歇性的问题，但它们并不总是足够可靠。 例如，如果 0.01% 以下的源数据文档大小大于 2 MB，将会导致文档写入 Azure Cosmos DB 失败。 理想情况下，迁移工具会将这些 "失败" 文档保存到另一个死信队列中，从而可以在迁移后对其进行处理。 
 
 Azure 数据工厂、Azure 数据迁移服务之类的工具正在修复上述许多限制。 
 
@@ -112,7 +112,7 @@ Azure 数据工厂、Azure 数据迁移服务之类的工具正在修复上述�
 
 #### <a name="turn-off-the-indexing"></a>关闭索引：  
 
-由于迁移应尽快完成，我们建议最大程度地减少为每个引入文档创建索引所用的时间和 RU。  Azure Cosmos DB 自动为所有属性编制索引，因此有必要在迁移过程中将索引操作尽量限制为最少量的几个选定字词，或完全关闭索引。 您可以通过将索引模式更改为 none 来关闭容器的索引策略，如下所示：  
+由于迁移应尽快完成，我们建议最大程度地减少为每个引入文档创建索引所用的时间和 RU。  Azure Cosmos DB 自动为所有属性编制索引，因此有必要在迁移过程中将索引操作尽量限制为最少量的几个选定字词，或完全关闭索引。 可以通过将 Indexingpolicy.indexingmode 更改为 "无" 来关闭容器的索引策略，如下所示：  
 
  
 ```
@@ -132,24 +132,24 @@ Azure 数据工厂、Azure 数据迁移服务之类的工具正在修复上述�
 
 2. 批量执行程序库可以纵向扩展，以消耗单个客户端 VM 中的 50 万个 RU。 由于可用吞吐量为 500 万个 RU，因此，应在 Azure Cosmos 数据库所在的同一区域中预配 10 个 Ubuntu 16.04 VM (Standard_D32_v3)。 应使用迁移工具及其设置文件准备好这些 VM。  
 
-3. 在某个客户端虚拟机上运行排队步骤。 此步骤创建跟踪集合，该集合扫描 ADLS 容器，并为每个源数据集的分区文件创建进度跟踪文档。  
+3. 在某个客户端虚拟机上运行排队步骤。 此步骤将创建跟踪集合，该操作将扫描 ADLS 容器，并为每个源数据集的分区文件创建进度跟踪文档。  
 
-4. 接下来，在所有客户端 VM 上运行导入步骤。 每个客户端都可以取得源分区的所有权，并将其数据引入 Azure Cosmos DB。 完成并更新其状态后，客户端就可以查询跟踪集合中的下一个可用源分区。  
+4. 接下来，在所有客户端 VM 上运行导入步骤。 每个客户端都可以取得源分区的所有权，并将其数据引入 Azure Cosmos DB。 完成后，在跟踪集合中更新其状态之后，客户端就可以在跟踪集合中查询下一个可用的源分区。  
 
 5. 此过程将持续到引入了整个源分区集为止。 处理所有源分区之后，应以纠错模式针对同一个跟踪集合重新运行该工具。 需要执行此步骤来识别由于出错而要重新处理的源分区。  
 
 6. 其中某些错误可能是源数据中错误的文档造成的。 应识别并修复这些错误。 接下来，应针对失败的分区重新运行导入步骤以将其重新引入。 
 
-完成迁移后，可以验证 Azure Cosmos DB 中的文档计数是否与源数据库中的文档计数相同。 在此示例中，Azure Cosmos DB 中的总大小为 65 TB。 迁移后，可以有选择地打开索引，并且可以将 R 并降低到工作负载操作所需的级别。
+完成迁移后，可以验证 Azure Cosmos DB 中的文档计数是否与源数据库中的文档计数相同。 在此示例中，Azure Cosmos DB 中的总大小为 65 TB。 迁移后，可以有选择地打开索引，并且可以将 ru 降低到工作负荷操作所需的级别。
 
 ## <a name="contact-the-azure-cosmos-db-team"></a>联系 Azure Cosmos DB 团队
-虽然可以遵循本指南成功地将大型数据集迁移到 Azure Cosmos DB，但对于大规模迁移，我们建议联系 Azure Cosmos DB 产品团队来验证数据建模并完成一般性的体系结构评审。 产品团队还可以根据数据集和工作负荷提出可能适用于你的其他性能和成本优化方案。 要联系 Azure Cosmos DB 团队以获得大规模迁移的帮助，可以在"一般通报"问题类型和"大型 （TB+） 迁移"问题子类型下打开支持票证，如下所示。
+虽然可以遵循本指南成功地将大型数据集迁移到 Azure Cosmos DB，但对于大规模迁移，我们建议联系 Azure Cosmos DB 产品团队来验证数据建模并完成一般性的体系结构评审。 产品团队还可以根据数据集和工作负荷提出可能适用于你的其他性能和成本优化方案。 若要联系 Azure Cosmos DB 团队获取大规模迁移的帮助，你可以在 "常规建议" 问题类型和 "大（TB +）迁移" 问题子类型下打开支持票证，如下所示。
 
 ![迁移支持主题](./media/migrate-cosmosdb-data/supporttopic.png)
 
 
 ## <a name="next-steps"></a>后续步骤
 
-* 通过尝试在[.NET](bulk-executor-dot-net.md)和[Java](bulk-executor-java.md)中使用批量执行者库的示例应用程序，了解更多信息。 
-* 批量执行器库集成到 Cosmos DB Spark 连接器中，有关详细信息，请参阅[Azure Cosmos DB Spark 连接器](spark-connector.md)一文。  
+* 通过尝试使用[.net](bulk-executor-dot-net.md)和[Java](bulk-executor-java.md)中的批量执行程序库的示例应用程序，了解详细信息。 
+* 大容量执行程序库已集成到 Cosmos DB Spark 连接器，若要了解详细信息，请参阅[Azure Cosmos DB Spark 连接器](spark-connector.md)一文。  
 * 如需大规模迁移方面的更多帮助，请通过开具支持票证来联系 Azure Cosmos DB 产品团队：选择“常规建议”问题类型，“大规模迁移(TB+)”问题子类型。 

@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 9c4a57111566248d3537cab0d9d85c0c3be874a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68335942"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Azure 后端连接功能中的互操作性：测试配置详细信息
@@ -23,11 +23,11 @@ ms.locfileid: "68335942"
 
 ## <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>使用 VNet 对等互连建立辐射 VNet 连接
 
-下图显示了辐射虚拟网络 (VNet) 的 Azure 虚拟网络对等互连详细信息。 若要了解如何在两个 VNet 之间设置对等互连，请参阅[管理 VNet 对等互连][VNet-Config]。 如果希望辐射 VNet 使用连接到中心 VNet 的网关，请选择“使用远程网关”。****
+下图显示了辐射虚拟网络 (VNet) 的 Azure 虚拟网络对等互连详细信息。 若要了解如何在两个 VNet 之间设置对等互连，请参阅[管理 VNet 对等互连][VNet-Config]。 如果希望辐射 VNet 使用连接到中心 VNet 的网关，请选择“使用远程网关”。 
 
 [![1]][1]
 
-下图显示了中心 VNet 的 VNet 对等互连详细信息。 如果希望中心 VNet 允许辐射 VNet 使用中心的网关，请选择“允许网关传输”****。
+下图显示了中心 VNet 的 VNet 对等互连详细信息。 如果希望中心 VNet 允许辐射 VNet 使用中心的网关，请选择“允许网关传输”  。
 
 [![2]][2]
 
@@ -51,7 +51,7 @@ ms.locfileid: "68335942"
 
 [![5]][5]
 
-以下列表显示了 ExpressRoute 专用对等互连的主要 CE 路由器配置。 （Cisco ASR1000 路由器在测试设置中用作 CE 路由器。当并行配置站点到站点 VPN 和 ExpressRoute 电路以将本地网络连接到 Azure 时，Azure 默认优先处理 ExpressRoute 电路。 为了避免非对称路由，本地网络也应该优先使用 ExpressRoute 连接而不是站点到站点 VPN 连接。 以下配置使用 BGP **local-preference** 属性来建立优先级：
+以下列表显示了 ExpressRoute 专用对等互连的主要 CE 路由器配置。 （Cisco ASR1000 路由器用作测试设置中的 CE 路由器。）当站点到站点 VPN 和 ExpressRoute 线路同时配置为将某个本地网络连接到 Azure 时，默认情况下，Azure 会优先使用 ExpressRoute 线路。 为了避免非对称路由，本地网络也应该优先使用 ExpressRoute 连接而不是站点到站点 VPN 连接。 以下配置使用 BGP **local-preference** 属性来建立优先级：
 
     interface TenGigabitEthernet0/0/0.300
      description Customer 30 private peering to Azure

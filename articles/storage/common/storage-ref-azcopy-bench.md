@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 8570bce87aeea5473b4aadf9bd30bc0a648a6f0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "72518299"
 ---
 # <a name="azcopy-bench"></a>azcopy bench
@@ -43,19 +43,19 @@ azcopy bench [destination] [flags]
 
 使用默认参数运行基准测试（适用于对高达 1 Gbps 的网络进行基准测试）：
 
-- 兹比贝长凳"https：//_帐户]blob.core.windows.net/[容器]？<SAS>"
+- azcopy 工作台 "https：//[account]. .net/[容器]？<SAS>"
 
 运行一个上传 100 个文件的基准测试，每个文件的大小为 2 GiB：（适用于在快速网络（例如 10 Gbps）上进行基准测试）：
 
-- 兹比贝长凳"https：//_帐户]blob.core.windows.net/[容器]？<SAS>" --file-count 100 --size-per-file 2G
+- azcopy 工作台 "https：//[account]. .net/[容器]？<SAS>" --file-count 100 --size-per-file 2G
 
 与上面的相同，但是使用 50,000 个文件，每个文件的大小为 8 MiB，计算其 MD5 哈希（使用的方式与 --put-md5 标记在 copy 命令中使用的相同）。 进行基准测试时使用 --put-md5 的目的是测试 MD5 计算是否会影响所选文件计数和大小的吞吐量。
 
-- 兹比贝长凳"https：//_帐户]blob.core.windows.net/[容器]？<SAS>" --file-count 50000 --size-per-file 8M --put-md5
+- azcopy 工作台 "https：//[account]. .net/[容器]？<SAS>" --file-count 50000 --size-per-file 8M --put-md5
 
 ## <a name="options"></a>选项
 
-**--blob 类型**字符串 定义目标上的 blob 类型。 用于允许对不同的 Blob 类型进行基准测试。 与 copy 命令中具有相同名称的参数相同（默认为“Detect”）。
+**--blob-type** 字符串  定义目标中的 Blob 类型。 用于允许对不同的 Blob 类型进行基准测试。 与 copy 命令中具有相同名称的参数相同（默认为“Detect”）。
 
 **--block-size-mb** 浮点数  使用此块大小（以 MiB 为单位）。 默认值根据文件大小自动计算。 允许使用小数，例如 0.25。 与 copy 命令中具有相同名称的参数相同。
 
@@ -65,18 +65,18 @@ azcopy bench [destination] [flags]
 
 **-h, --help**  bench 命令的帮助
 
-**--日志级**字符串 定义日志文件的日志详细性、可用级别：INFO（所有请求/响应）、警告（慢速响应）、ERROR（仅失败的请求）和 NONE（无输出日志）。 （默认值为“INFO”）
+**--log-level** 字符串 定义日志文件的日志详细程度，可用级别：INFO（所有请求/响应）、WARNING（响应缓慢）、ERROR（仅限失败的请求）和 NONE（无输出日志）。 （默认值为“INFO”）
 
-**--put-md5**  创建每个文件的 MD5 哈希，并将该哈希另存为目标 Blob/文件的 Content-MD5 属性。 （默认情况下不会创建哈希。与复制命令中的同名参数相同。
+**--put-md5**  创建每个文件的 MD5 哈希，并将该哈希另存为目标 Blob/文件的 Content-MD5 属性。 （默认不会创建哈希。）与 copy 命令中具有相同名称的参数相同。
 
 **--size-per-file** string   每个自动生成的数据文件的大小。 必须是一个数字，后面紧跟 K、M 或 G。例如， 12k 或 200G（默认为“250M”）。
 
 ## <a name="options-inherited-from-parent-commands"></a>从父命令继承的选项
 
-**--盖-mbps uint32** 以每秒兆位表示传输速率上限。 瞬间吞吐量可能与上限略有不同。 如果此选项设置为零，或者省略，则吞吐量不受限制。
+**--cap-mbps uint32**  以兆位/秒为单位限制传输速率。 瞬间吞吐量可能与上限略有不同。 如果此选项设置为零，或者省略，则吞吐量不受限制。
 
-**--输出类型**字符串 命令输出的格式。 选项包括：text、json。 默认值为“text”。 （默认值为“text”）。
+**--output-type** 字符串  命令输出的格式。 选项包括：text、json。 默认值为“text”。 （默认值为“text”）。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
-- [阿兹比贝](storage-ref-azcopy.md)
+- [azcopy](storage-ref-azcopy.md)

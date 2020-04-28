@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 97fe33309f36cd7545f8c9d6c2d34671641caa1f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60877094"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>使用 REST API 在 Azure Data Lake Storage Gen1 上执行的帐户管理操作
@@ -27,12 +27,12 @@ ms.locfileid: "60877094"
 >
 >
 
-本文介绍如何使用 REST API 在 Azure Data Lake Storage Gen1 上执行帐户管理操作。 帐户管理操作包括创建数据存储第 1 代帐户、删除数据存储库第 1 代帐户等。有关如何使用 REST API 对数据存储库 1 执行文件系统操作的说明，请参阅使用[REST API 对数据存储库第 1 代的文件系统操作](data-lake-store-data-operations-rest-api.md)。
+本文介绍如何使用 REST API 在 Azure Data Lake Storage Gen1 上执行帐户管理操作。 帐户管理操作包括创建 Data Lake Storage Gen1 帐户、删除 Data Lake Storage Gen1 帐户等。有关如何使用 REST API 在 Data Lake Storage Gen1 上执行文件系统操作的说明，请参阅[使用 REST API 对 Data Lake Storage Gen1 执行文件系统操作](data-lake-store-data-operations-rest-api.md)。
 
 ## <a name="prerequisites"></a>先决条件
-* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
-* **[cURL](https://curl.haxx.se/)**。 本文使用 cURL 演示如何对 Data Lake Storage Gen1 帐户进行 REST API 调用。
+* **[弯曲](https://curl.haxx.se/)**。 本文使用 cURL 演示如何对 Data Lake Storage Gen1 帐户进行 REST API 调用。
 
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>如何使用 Azure Active Directory 进行身份验证？
 可以通过两种方法使用 Azure Active Directory 进行身份验证。
@@ -44,7 +44,7 @@ ms.locfileid: "60877094"
 ## <a name="create-a-data-lake-storage-gen1-account"></a>创建 Data Lake Storage Gen1 帐户
 此操作基于 [此处](https://docs.microsoft.com/rest/api/datalakestore/accounts/create)定义的 REST API 调用。
 
-使用以下 cURL 命令。 **\<将存储根1 名称>** 替换为数据湖存储第 1 代名称。
+使用以下 cURL 命令。 将** \<yourstoragegen1name>** 替换为 Data Lake Storage Gen1 名称。
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -H "Content-Type: application/json" https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.DataLakeStore/accounts/<yourstoragegen1name>?api-version=2015-10-01-preview -d@"C:\temp\input.json"
 
@@ -61,7 +61,7 @@ ms.locfileid: "60877094"
 ## <a name="delete-a-data-lake-storage-gen1-account"></a>删除 Data Lake Storage Gen1 帐户
 此操作基于 [此处](https://docs.microsoft.com/rest/api/datalakestore/accounts/delete)定义的 REST API 调用。
 
-使用以下 cURL 命令删除 Data Lake Storage Gen1 帐户。 **\<将存储基因 1 名称>** 替换为数据湖存储第 1 代帐户名称。
+使用以下 cURL 命令删除 Data Lake Storage Gen1 帐户。 将** \<yourstoragegen1name>** 替换为 Data Lake Storage Gen1 帐户名称。
 
     curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.DataLakeStore/accounts/<yourstoragegen1name>?api-version=2015-10-01-preview
 
@@ -74,7 +74,7 @@ ms.locfileid: "60877094"
 ## <a name="next-steps"></a>后续步骤
 * [使用 REST API 对 Data Lake Storage Gen1 执行的文件系统操作](data-lake-store-data-operations-rest-api.md)。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 * [Azure Data Lake Storage Gen1 REST API 参考](https://docs.microsoft.com/rest/api/datalakestore/)
 * [与 Azure Data Lake Storage Gen1 兼容的开源大数据应用程序](data-lake-store-compatible-oss-other-applications.md)
 
