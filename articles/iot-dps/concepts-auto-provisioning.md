@@ -1,6 +1,6 @@
 ---
 title: IoT 中心设备预配服务 - 自动预配的概念
-description: 本文使用 IoT 设备配置服务 （DPS）、IoT 中心和客户端 SDK 提供设备自动预配阶段的概念概述。
+description: 本文以概念的方式概述了使用 IoT 设备预配服务 (DPS)、IoT 中心和客户端 SDK 自动预配设备的各个阶段。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.openlocfilehash: c94fa6b851dfc9923628a738a15f7c245204f73f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74975323"
 ---
 # <a name="auto-provisioning-concepts"></a>自动预配的概念
@@ -28,7 +28,7 @@ ms.locfileid: "74975323"
    > [!NOTE]
    > 无论 IoT 解决方案的大小如何，也不管是否要支持数百万台设备，此阶段也是**一次性配置**。
 
-2. **设备登记** - 使设备预配服务实例将来识别尝试注册的设备的过程。 [注册](concepts-service.md#enrollment)是通过在预配服务中配置设备标识信息来完成的，该信息是单个设备的"个人注册"，或者为多个设备配置"组注册"。 标识基于设备应该使用的[认证机制](concepts-security.md#attestation-mechanism)，使预配服务在注册过程中认证设备的真实性：
+2. **设备登记** - 使设备预配服务实例将来识别尝试注册的设备的过程。 [登记](concepts-service.md#enrollment)是通过在预配服务中配置设备标识信息来实现的。可以针对单个设备进行“单独登记”，也可以针对多个设备进行“组登记”。 标识基于设备应该使用的[认证机制](concepts-security.md#attestation-mechanism)，使预配服务在注册过程中认证设备的真实性：
 
    - **TPM**：配置为“单独登记”的设备标识基于 TPM 注册 ID 和公共认可密钥。 既然 TPM 是一种[规范](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)，服务期望只会根据规范进行认证，而不考虑 TPM 实现方式（硬件或软件）如何。 有关基于 TPM 的认证的详细信息，请参阅[设备预配：使用 TPM 进行标识认证](https://azure.microsoft.com/blog/device-provisioning-identity-attestation-with-tpm/)。 
 
@@ -41,13 +41,13 @@ ms.locfileid: "74975323"
 
 ## <a name="roles-and-operations"></a>角色和操作
 
-由于生产时间、运输、海关流程等生产现实，上一节中讨论的阶段可能跨越数周或数月。此外，考虑到所涉及的各种实体，它们可以跨多个角色跨活动。 本部分更深入地探讨每个阶段相关的各种角色和操作，然后在顺序示意图中演示流程。 
+由于制造时间、交货、报关等生产因素，前一部分中所述的阶段可能会跨数周或数月。此外，如果涉及到多种实体，这些阶段可能需要经历多个角色的活动。 本部分更深入地探讨每个阶段相关的各种角色和操作，然后在顺序示意图中演示流程。 
 
 自动预配还对设备制造商施加启用认证机制方面的要求。 制造操作也可以独立于自动预配阶段的时间发生，尤其是在建立自动预配后采购新设备的情况下。
 
 左侧目录中提供了快速入门系列教程，旨在帮助通过实践解释自动预配。 为了促进/简化学习过程，我们将使用软件来模拟用于登记和注册的物理设备。 某些快速入门要求完成多个角色的操作，包括不存在的角色的操作（因为快速入门中所述的设备是模拟性的）。
 
-| 角色 | Operation | 描述 |
+| 角色 | 操作 | 说明 |
 |------| --------- | ------------|
 | 制造商 | 为标识和注册 URL 编码 | 根据所用的认证机制，制造商需负责为设备标识信息和设备预配服务注册 URL 编码。<br><br>**快速入门**：由于设备是模拟的，因此不存在制造商角色。 有关如何获取这些信息以便在编写示例注册应用程序代码时使用的详细信息，请参阅“开发人员角色”。 |
 | | 提供设备标识 | 作为设备标识信息的发起者，制造商需负责通信向操作员（或指定的代理）传递这些信息，或者通过 API 将其直接登记到设备预配服务。<br><br>**快速入门**：由于设备是模拟的，因此不存在制造商角色。 有关如何获取在设备预配服务实例中登记模拟设备时所用的设备标识的详细信息，请参阅“操作员角色”。 |
@@ -59,7 +59,7 @@ ms.locfileid: "74975323"
 
 下图汇总了设备自动预配期间的角色和操作顺序：
 <br><br>
-[![设备的自动预配序列](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png)](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png#lightbox) 
+[![设备的自动预配顺序](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png)](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png#lightbox) 
 
 > [!NOTE]
 > （可选）制造商还可以使用设备预配服务 API（而不是通过操作员）执行“登记设备标识”操作。 有关此顺序和其他要素的详细讨论，请观看[自动将设备注册到 Azure IoT](https://youtu.be/cSbDRNg72cU?t=2460) 视频（从 41:00 标记处开始）
@@ -76,9 +76,9 @@ ms.locfileid: "74975323"
 
 在此方案中，可能涉及两个 Azure 帐户：
 
-- **帐户#1：** 可能在某种程度上跨操作员和开发人员角色共享。 该方可能从制造商处购买 HSM 芯片。 这些芯片指向与帐户 1 关联的 DPS 实例。 使用 DPS 注册，该方可以将设备租赁给多个二级客户，只需在 DPS 中重新配置设备注册设置即可。 此方还可以为最终用户后端系统分配 IoT 中心进行接口，以便访问设备遥测等。在后一种情况下，可能不需要第二个帐户。
+- **帐户 #1**：可能在操作员和开发人员角色之间共享。 该方可能从制造商处购买 HSM 芯片。 这些芯片指向与帐户 1 关联的 DPS 实例。 使用 DPS 注册，该方可以将设备租赁给多个二级客户，只需在 DPS 中重新配置设备注册设置即可。 此参与方还可能将 IoT 中心分配给最终用户后端系统，以便与进行交互，以便访问设备遥测等。在这种情况下，可能不需要第二个帐户。
 
-- **帐户#2**：最终用户，二级客户可能有自己的 IoT 中心。 与帐户 1 相关联的一方可以直接将租赁的设备指向此帐户中的正确中心。 此配置要求跨 Azure 帐户链接 DPS 和 IoT 中心，该操作可以通过 Azure 资源管理器模板来完成。
+- **帐户 #2**：最终用户，级别2的客户可能有自己的 IoT 中心。 与帐户 1 相关联的一方可以直接将租赁的设备指向此帐户中的正确中心。 此配置要求跨 Azure 帐户链接 DPS 和 IoT 中心，该操作可以通过 Azure 资源管理器模板来完成。
 
 #### <a name="all-in-one-oem"></a>一体化 OEM
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
 ms.openlocfilehash: e978771eaafafe4120f9eec802525c293fb9c7c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75426384"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure 流分析自定义 blob 输出分区
@@ -29,18 +29,18 @@ Azure 流分析支持包含自定义字段或属性和自定义 DateTime 路径�
 
 ### <a name="example"></a>示例
 
-假设作业从连接到外部视频游戏服务的实时用户会话获取输入数据，其中引入的数据包含用于识别会话的列 client_id****。 若要按 client_id**** 对数据进行分区，请在创建作业时将“blob 路径模式”字段设置为，在 blob 输出属性中添加分区标记 {client_id}****。 当包含各种 client_id**** 值的数据流经流分析作业时，输出数据根据每个文件夹的单一 client_id**** 值保存到单独的文件夹中。
+假设作业从连接到外部视频游戏服务的实时用户会话获取输入数据，其中引入的数据包含用于识别会话的列 client_id  。 若要按 client_id  对数据进行分区，请在创建作业时将“blob 路径模式”字段设置为，在 blob 输出属性中添加分区标记 {client_id}  。 当包含各种 client_id  值的数据流经流分析作业时，输出数据根据每个文件夹的单一 client_id  值保存到单独的文件夹中。
 
 ![包含客户端 ID 的路径模式](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-path-pattern-client-id.png)
 
-同样，如果作业输入是来自数百万个传感器的传感器数据（其中每个传感器有一个 sensor_id****），那么路径模式为 {sensor_id}****，用于将每个传感器数据分区到不同的文件夹中。  
+同样，如果作业输入是来自数百万个传感器的传感器数据（其中每个传感器有一个 sensor_id  ），那么路径模式为 {sensor_id}  ，用于将每个传感器数据分区到不同的文件夹中。  
 
 
 使用 REST API，用于相应请求的 JSON 文件的输出部分可能如下所示：  
 
 ![REST API 输出](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-rest-output.png)
 
-在作业开始运行后，“客户端”** 容器可能如下所示：  
+在作业开始运行后，“客户端”  容器可能如下所示：  
 
 ![“客户端”容器](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-clients-container.png)
 
@@ -48,7 +48,7 @@ Azure 流分析支持包含自定义字段或属性和自定义 DateTime 路径�
 
 ![blob 内容](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-contents.png)
 
-请注意，blob 中的每个记录都有一个与文件夹名称匹配的 client_id**** 列，这是因为用于在输出路径中对输出进行分区的列是 client_id****。
+请注意，blob 中的每个记录都有一个与文件夹名称匹配的 client_id  列，这是因为用于在输出路径中对输出进行分区的列是 client_id  。
 
 ### <a name="limitations"></a>限制
 
@@ -59,7 +59,7 @@ Azure 流分析支持包含自定义字段或属性和自定义 DateTime 路径�
    * cluster1/{aFieldInMyData}  
    * cluster1/{date}/{time}/{aFieldInMyData} 
    
-2. 由于分区键不区分大小写，因此像“John”和“john”这样的分区键是等效的。 另外，无法使用表达式作为分区键。 例如，{columnA + columnB}**** 不起作用。  
+2. 由于分区键不区分大小写，因此像“John”和“john”这样的分区键是等效的。 另外，无法使用表达式作为分区键。 例如，{columnA + columnB}  不起作用。  
 
 3. 如果输入流由分区键基数低于 8000 的记录组成，记录会附加到现有 blob，并且仅在必要时新建 blob。 如果基数超过 8000，无法保证将写入现有 blob，并且不会为具有相同分区键的任意数量记录新建 blob。
 
@@ -71,7 +71,7 @@ Azure 流分析支持包含自定义字段或属性和自定义 DateTime 路径�
 
 以下格式说明符令牌可以单独使用，也可以组合使用，以便实现自定义 DateTime 格式：
 
-|格式说明符   |描述   |示例时间 2018-01-02T10:06:08 的结果|
+|格式说明符   |说明   |示例时间 2018-01-02T10:06:08 的结果|
 |----------|-----------|------------|
 |{datetime:yyyy}|年份为四位数|2018|
 |{datetime:MM}|月份为 01 到 12|01|

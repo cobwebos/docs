@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 42d9e8b190747a3ffaf0e46ea1eddda33d09bb24
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74870558"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Azure Cosmos DB 的 SQL 子查询示例
@@ -23,16 +23,16 @@ ms.locfileid: "74870558"
 
 有两种主要类型的子查询：
 
-* **相关**： 引用外部查询中的值的子查询。 将针对外部查询处理的每个行求值该子查询一次。
+* **相关**：引用外部查询中的值的子查询。 将针对外部查询处理的每个行求值该子查询一次。
 * **非相关**：独立于外部查询的子查询。 它可以独立运行，而不依赖于外部查询。
 
 > [!NOTE]
 > Azure Cosmos DB 仅支持相关子查询。
 
 可以根据子查询返回的行数和列数进一步分类子查询。 有三种类型：
-* **表**：返回多行和多列。
-* **多值**：返回多行和单个列。
-* **Scalar**：返回一行和一列。
+* **Table**：返回多个行和多个列。
+* **多值**：返回多个行和单个列。
+* **标量**：返回单个行和单个列。
 
 Azure Cosmos DB 中的 SQL 查询始终返回单个列（一个简单的值，或一个复杂文档）。 因此，Azure Cosmos DB 中仅适用多值子查询和标量子查询。 只能在 FROM 子句中将多值子查询用作关系表达式。 可以在 SELECT 或 WHERE 子句中将标量子查询用作标量表达式，或者在 FROM 子句中用作关系表达式。
 
@@ -120,7 +120,7 @@ WHERE AvgNutritionValue > 80
 
 ## <a name="mimic-join-with-external-reference-data"></a>模拟与外部引用数据的联接
 
-你可能经常需要引用极少发生变化的静态数据，例如度量单位或国家/地区代码。 最好不要为每个文档复制此类数据。 避免这种复制可以节省存储空间，并通过保持较小的文档大小来提高写入性能。 可以使用子查询通过引用数据的集合来模拟内部联接语义。
+你可能经常需要引用极少发生变化的静态数据，例如度量单位或国家/地区代码。 最好不要为每个文档重复此类数据。 避免这种复制可以节省存储空间，并通过保持较小的文档大小来提高写入性能。 可以使用子查询通过引用数据的集合来模拟内部联接语义。
 
 例如，假设存在以下引用数据集：
 
@@ -366,9 +366,9 @@ SELECT EXISTS (SELECT VALUE undefined)
 SELECT EXISTS (SELECT undefined) 
 ```
 
-该子查询在对象中的选定列表内括住值列表。 如果所选列表没有值，则子查询将返回单个值 ''。{} 此值已定义，因此 EXISTS 求值为 true。
+该子查询在对象中的选定列表内括住值列表。 如果选定的列表没有值，子查询将返回单个值 "{}"。 此值已定义，因此 EXISTS 求值为 true。
 
-### <a name="example-rewriting-array_contains-and-join-as-exists"></a>示例：重写ARRAY_CONTAINS和 JOIN 作为 EXISTS
+### <a name="example-rewriting-array_contains-and-join-as-exists"></a>示例：将 ARRAY_CONTAINS 和 JOIN 重写为 EXISTS
 
 ARRAY_CONTAINS 的一个常见用例是根据某个项在数组中的存在性筛选某个文档。 在本例中，我们将检查 tags 数组是否包含名为“orange”的项。
 
@@ -397,7 +397,7 @@ JOIN n IN c.nutrients
 WHERE n.units= "mg" AND n.nutritionValue > 0
 ```
 
-对于集合中的每个文档，将使用其数组元素执行叉积计算。 使用此 JOIN 操作可以根据数组中的属性进行筛选。 但是，此查询的 RU 消耗量将很大。 例如，如果 1,000 个文档包含每个数组中的 100 个项，则它会扩展为 1,000 x 100（即 100,000）个元组。
+对于集合中的每个文档，将使用其数组元素执行叉积计算。 使用此 JOIN 操作可以根据数组中的属性进行筛选。 但是，此查询的 RU 消耗将很重要。 例如，如果 1,000 个文档包含每个数组中的 100 个项，则它会扩展为 1,000 x 100（即 100,000）个元组。
 
 使用 EXISTS 可以帮助避免这种高开销的叉积计算：
 
@@ -519,5 +519,5 @@ JOIN n IN (SELECT VALUE ARRAY(SELECT t FROM t in c.tags WHERE t.name != 'infant 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Azure Cosmos DB .NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [模型文档数据](modeling-data.md)

@@ -1,16 +1,16 @@
 ---
 title: Azure Cosmos DB 中的 SQL 查询执行
-description: 了解如何在 Azure Cosmos DB 中创建并执行 SQL 查询。 本文介绍如何使用 REST API、.Net SDK、JavaScript SDK 和各种其他 SDK 创建和执行 SQL 查询。
+description: 了解如何在 Azure Cosmos DB 中创建并执行 SQL 查询。 本文介绍如何使用 REST API、.Net SDK、JavaScript SDK 和其他各种 Sdk 来创建和执行 SQL 查询。
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 70eb81b6d13c57a7ebc131244c7aa318cb2b2fd4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74871255"
 ---
 # <a name="azure-cosmos-db-sql-query-execution"></a>Azure Cosmos DB SQL 查询执行
@@ -21,7 +21,7 @@ ms.locfileid: "74871255"
 
 ## <a name="rest-api"></a><a id="REST-API"></a>REST API
 
-Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型由 Azure 订阅预配的数据库帐户下的一组资源组成。 该数据库帐户由一组数据库组成，其中的每个数据库可以包含多个容器，而每个容器又可以包含项、UDF 和其他资源类型******。 可以使用稳定的逻辑 URI 对每个 Cosmos DB 资源进行寻址。 一组资源称作一个源。** 
+Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型由 Azure 订阅预配的数据库帐户下的一组资源组成。 该数据库帐户由一组数据库组成，其中的每个数据库可以包含多个容器，而每个容器又可以包含项、UDF 和其他资源类型    。 可以使用稳定的逻辑 URI 对每个 Cosmos DB 资源进行寻址。 一组资源称作一个源。  
 
 这些资源的基本交互模型是通过 HTTP 谓词 `GET`、`PUT`、`POST` 和 `DELETE` 及其标准解释实现的。 使用 `POST` 可以创建新的资源、执行存储过程或发出 Cosmos DB 查询。 查询始终为只读操作，且无任何副作用。
 
@@ -241,9 +241,9 @@ Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型由 Az
     }
 ```
 
-.NET 客户端自动循环访问 `foreach` 块中所有的查询结果页，如前面的示例中所示。 [REST API](#REST-API) 部分介绍的查询选项也适用于在 `CreateDocumentQuery` 方法中使用 `FeedOptions` 和 `FeedResponse` 类的 .NET SDK。 可以使用 `MaxItemCount` 设置控制页数。
+.NET 客户端自动循环访问 `foreach` 块中所有的查询结果页，如前面的示例中所示。 [REST API](#REST-API) 部分介绍的查询选项也适用于在 `FeedOptions` 方法中使用 `FeedResponse` 和 `CreateDocumentQuery` 类的 .NET SDK。 可以使用 `MaxItemCount` 设置控制页数。
 
-还可以通过使用 `IQueryable` 对象创建 `IDocumentQueryable`，并读取 `ResponseContinuationToken` 值并将它们作为 `FeedOptions` 中的 `RequestContinuationToken` 向回传递，从而显式控制分页。 可以设置 `EnableScanInQuery`，以便在配置的索引策略不支持该查询时启用扫描。 对于分区容器，可以使用 `PartitionKey` 针对单个分区运行查询，不过，Azure Cosmos DB 可以自动从查询文本中提取此信息。 可以使用 `EnableCrossPartitionQuery` 针对多个分区运行查询。
+还可以通过使用 `IDocumentQueryable` 对象创建 `IQueryable`，并读取 `ResponseContinuationToken` 值并将它们作为 `RequestContinuationToken` 中的 `FeedOptions` 向回传递，从而显式控制分页。 可以设置 `EnableScanInQuery`，以便在配置的索引策略不支持该查询时启用扫描。 对于分区容器，可以使用 `PartitionKey` 针对单个分区运行查询，不过，Azure Cosmos DB 可以自动从查询文本中提取此信息。 可以使用 `EnableCrossPartitionQuery` 针对多个分区运行查询。
 
 有关更多包含查询的 .NET 示例，请参阅 GitHub 中的 [Azure Cosmos DB .NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)。
 
@@ -287,6 +287,6 @@ Azure Cosmos DB 提供一种编程模型，用于通过存储过程和触发器�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure 宇宙 DB 简介](introduction.md)
+- [Azure Cosmos DB 简介](introduction.md)
 - [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
-- [Azure 宇宙 DB 一致性级别](consistency-levels.md)
+- [Azure Cosmos DB 一致性级别](consistency-levels.md)

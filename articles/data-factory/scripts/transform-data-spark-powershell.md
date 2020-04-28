@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/12/2017
 ms.openlocfilehash: c09d0532b845472d0ccaac1ad57e3772630bb5c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74932054"
 ---
 # <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>PowerShell 脚本 - 使用 Azure 数据工厂转换云中的数据
@@ -25,11 +25,11 @@ ms.locfileid: "74932054"
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * **Azure 存储帐户**。 创建 Python 脚本和输入文件，并将其上传到 Azure 存储。 Spark 程序的输出存储在此存储帐户中。 按需 Spark 群集使用相同的存储帐户作为其主存储。  
 
 ### <a name="upload-python-script-to-your-blob-storage-account"></a>将 Python 脚本上传到 Blob 存储帐户
-1. 创建名为**WordCount_Spark.py**的 python 文件，内容如下： 
+1. 创建包含以下内容的名为 **WordCount_Spark.py** 的 Python 文件： 
 
     ```python
     import sys
@@ -54,7 +54,7 @@ ms.locfileid: "74932054"
     if __name__ == "__main__":
         main()
     ```
-2. 将**&lt;存储帐户名称&gt;** 替换为 Azure 存储帐户的名称。 然后保存文件。 
+2. 将 **&lt;storageAccountName&gt;** 替换为 Azure 存储帐户的名称。 然后保存文件。 
 3. 在 Azure Blob 存储中，创建名为 **adftutorial** 的容器（如果尚不存在）。 
 4. 创建名为 **spark** 的文件夹。
 5. 在 **spark** 文件夹中创建名为 **script** 的子文件夹。 
@@ -63,7 +63,7 @@ ms.locfileid: "74932054"
 
 ### <a name="upload-the-input-file"></a>上传输入文件
 1. 创建包含一些文本的名为 **minecraftstory.txt** 的文件。 Spark 程序会统计此文本中的单词数量。 
-2. 在 blob 容器的 `spark` 文件夹中创建一个名为 `inputfiles` 的子文件夹。 
+2. 在 blob 容器的 `inputfiles` 文件夹中创建一个名为 `spark` 的子文件夹。 
 3. 将 `minecraftstory.txt` 上传到 `inputfiles` 子文件夹。 
 
 ## <a name="sample-script"></a>示例脚本
@@ -89,7 +89,7 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 
 此脚本使用以下命令：
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | 创建数据工厂。 |

@@ -4,10 +4,10 @@ description: 本文介绍一些围绕升级 Service Fabric 应用程序的常见
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: d462f2c2482e0fbb4d252967754a9675ed362674
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75377916"
 ---
 # <a name="troubleshoot-application-upgrades"></a>应用程序升级故障排除
@@ -82,7 +82,7 @@ UpgradeReplicaSetCheckTimeout  : 00:00:00
 
 当前 **UpgradeState** 为 *RollingBackCompleted*，因此必须已使用回滚 **FailureAction**（会在失败时自动回滚升级）执行原始升级。 如果已使用手动 **FailureAction** 执行了原始升级，则升级将改为处于挂起状态，以允许对应用程序进行实时调试。
 
-在极少数情况下，当系统完成当前升级域的所有工作时，如果整体升级超时，则 UpgradeDomainProgressAtFailure 字段可能为空****。 如果发生这种情况，请尝试增加 UpgradeTimeout 和 UpgradeDomainTimeout 升级参数值，然后重试升级********。
+在极少数情况下，当系统完成当前升级域的所有工作时，如果整体升级超时，则 UpgradeDomainProgressAtFailure 字段可能为空  。 如果发生这种情况，请尝试增加 UpgradeTimeout 和 UpgradeDomainTimeout 升级参数值，然后重试升级   。
 
 ### <a name="investigate-health-check-failures"></a>调查运行状况检查失败
 
@@ -212,9 +212,9 @@ Service Fabric 将所有百分比转换为实际实体（如副本、分区和�
 
 让我们快速回顾一下超时如何与升级时间相互作用：
 
-升级域的升级完成速度不能快于*运行状况检查等待持续时间* + *。*
+完成升级域升级的时间不会早于 *HealthCheckWaitDuration* + *HealthCheckStableDuration*。
 
-升级失败不能比*运行状况检查等待持续时间* + *运行状况检查重试超时更快*。
+发生升级失败的时间不会早于 *HealthCheckWaitDuration* + *HealthCheckRetryTimeout*。
 
 升级域的升级时间受到 *UpgradeDomainTimeout* 的限制。  如果 *HealthCheckRetryTimeout* 和 *HealthCheckStableDuration* 均不为零，并且应用程序的运行状况保持来回切换，那么升级最终将于 *UpgradeDomainTimeout* 超时。 在当前升级域的升级开始时，*UpgradeDomainTimeout* 就开始倒计时。
 
@@ -222,10 +222,10 @@ Service Fabric 将所有百分比转换为实际实体（如副本、分区和�
 
 [使用 Visual Studio 升级应用程序](service-fabric-application-upgrade-tutorial.md)逐步讲解了如何使用 Visual Studio 进行应用程序升级。
 
-[使用 Powershell 升级应用程序](service-fabric-application-upgrade-tutorial-powershell.md)会引导您使用 PowerShell 进行应用程序升级。
+[使用 Powershell 升级应用程序](service-fabric-application-upgrade-tutorial-powershell.md)逐步讲解了如何使用 PowerShell 进行应用程序升级。
 
-使用[升级参数](service-fabric-application-upgrade-parameters.md)控制应用程序升级的方式。
+使用[升级参数](service-fabric-application-upgrade-parameters.md)来控制应用程序的升级方式。
 
 了解如何使用[数据序列化](service-fabric-application-upgrade-data-serialization.md)，使应用程序在升级后保持兼容。
 
-通过引用[高级主题](service-fabric-application-upgrade-advanced.md)，了解如何在升级应用程序时使用高级功能。
+参考[高级主题](service-fabric-application-upgrade-advanced.md)，了解如何在升级应用程序时使用高级功能。

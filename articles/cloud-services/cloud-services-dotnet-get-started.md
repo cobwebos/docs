@@ -11,27 +11,27 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
 ms.openlocfilehash: f5ebb8874b7e277d15ef89aa419c4d26560a6e76
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75386725"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure 云服务和 ASP.NET 入门
 
 ## <a name="overview"></a>概述
-本教程演示如何使用 ASP.NET MVC 前端创建多层.NET 应用程序，并将其部署到 [Azure 云服务](cloud-services-choose-me.md)。 应用程序使用 [Azure SQL 数据库](/previous-versions/azure/ee336279(v=azure.100))、[Azure Blob 服务](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)和 [Azure 队列服务](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern)。 可以从 MSDN 代码库 [下载 Visual Studio 项目](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4)。
+本教程演示如何使用 ASP.NET MVC 前端创建多层 .NET 应用程序，并将其部署到 [Azure 云服务](cloud-services-choose-me.md)。 应用程序使用 [Azure SQL 数据库](/previous-versions/azure/ee336279(v=azure.100))、[Azure Blob 服务](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)和 [Azure 队列服务](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern)。 可以从 MSDN 代码库 [下载 Visual Studio 项目](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4)。
 
-本教程介绍如何在本地生成并运行应用程序、如何将其部署到 Azure 并在云中运行，以及如何从头构建。 可以从头构建并进行测试，之后根据喜好部署步骤。
+本教程介绍如何在本地生成并运行应用程序、如何将其部署到 Azure 并在云中运行，以及如何从头构建。 用户可以从头构建并进行测试，之后根据用户的喜好部署步骤。
 
 ## <a name="contoso-ads-application"></a>Contoso 广告应用程序
-该应用程序是广告公告板。 用户通过输入文本和上载图像创建一个广告。 用户可以通过缩略图查看广告列表，并在选择一个广告以查看其详细信息时，查看完整尺寸的图像。
+该应用程序是广告公告板。 用户通过输入文本和上传图像创建一个广告。 用户可以通过缩略图查看广告列表，并在选择一个广告以查看其详细信息时，查看完整尺寸的图像。
 
 ![广告列表](./media/cloud-services-dotnet-get-started/list.png)
 
 应用程序使用 [以队列为中心的工作模式](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) 来减轻创建缩略图到后端进程的 CPU 密集型工作。
 
-## <a name="alternative-architecture-app-service-and-webjobs"></a>替代体系结构：应用服务和 Web 作业
+## <a name="alternative-architecture-app-service-and-webjobs"></a>替代体系结构：应用服务和 WebJobs
 本教程演示如何在 Azure 云服务中运行前端和后端。 一种替代方法是在 [Azure 应用服务](/azure/app-service/)中运行前端，并对后端使用 [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) 功能。 有关如何使用 WebJobs 的教程，请参阅 [Azure WebJobs SDK 入门](https://github.com/Azure/azure-webjobs-sdk/wiki)。 有关如何选择最适合方案的服务的信息，请参阅 [Azure 应用服务、云服务和虚拟机比较](/azure/architecture/guide/technology-choices/compute-decision-tree)。
 
 ## <a name="what-youll-learn"></a>学习内容
@@ -83,7 +83,7 @@ ms.locfileid: "75386725"
     首次运行云服务项目时，模拟器会花费大约一分钟来启动。 模拟器完成启动后，默认浏览器中会打开应用程序的主页。
 
     ![Contoso 广告体系结构](./media/cloud-services-dotnet-get-started/home.png)
-8. 单击 **"创建广告**"。
+8. 单击 "**创建广告**"。
 9. 输入一些测试数据并选择一个要上载的 *.jpg* 图像，并单击“创建”。****
 
     ![创建页面](./media/cloud-services-dotnet-get-started/create.png)
@@ -113,7 +113,7 @@ ms.locfileid: "75386725"
 ### <a name="create-an-azure-cloud-service"></a>创建 Azure 云服务
 Azure 云服务是该应用程序将运行的环境。
 
-1. 在浏览器中，打开[Azure 门户](https://portal.azure.com)。
+1. 在浏览器中打开[Azure 门户](https://portal.azure.com)。
 2. 单击“创建资源”>“计算”>“云服务”。****
 
 3. 在 DNS 名称输入框中，输入云服务的 URL 前缀。
@@ -124,7 +124,7 @@ Azure 云服务是该应用程序将运行的环境。
 5. 选择要在其中部署该应用程序的区域。
 
     此字段指定云服务将托管在哪个数据中心。 对于生产应用程序，可以选择离客户最近的区域。 对于本教程，选择最近的区域。
-5. 单击 **“创建”**。
+5. 单击“创建”。 
 
     在下图中，使用 URL CSvccontosoads.cloudapp.net 创建了一个云服务。
 
@@ -153,7 +153,7 @@ Azure 云服务是该应用程序将运行的环境。
 9. 针对新服务器单击“选择”。****
 
     ![新建 SQL 数据库服务器](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. 单击 **“创建”**。
+10. 单击“创建”。 
 
 ### <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 Azure 存储帐户可提供在云中存储队列和 Blob 数据的资源。
@@ -176,7 +176,7 @@ Azure 存储帐户可提供在云中存储队列和 Blob 数据的资源。
     当云服务和存储帐户位于不同的数据中心（不同区域）时，延迟将增加，并且需要为数据中心外的带宽付费。 数据中心内的带宽是免费的。
 
     Azure 地缘组实际上是一种机制，目的是最小化数据中心内不同资源之间的距离，这样可以降低延迟。 本教程不使用地缘组。 有关详细信息，请参阅 [如何在 Azure 中创建地缘组](/previous-versions/azure/reference/gg715317(v=azure.100))。
-7. 单击 **“创建”**。
+7. 单击“创建”。 
 
     ![新的存储帐户](./media/cloud-services-dotnet-get-started/newstorage.png)
 
@@ -229,7 +229,7 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 1. 在“解决方案资源管理器”中，右键单击“ContosoAdsCloudService”项目中“角色”下的“ContosoAdsWeb”，并单击“属性”。********************
 
     ![角色属性](./media/cloud-services-dotnet-get-started/roleproperties.png)
-2. 单击"**设置"** 选项卡。在 **"服务配置"** 下拉框中，选择 **"云**"。
+2. 单击 "**设置**" 选项卡。在 "**服务配置**" 下拉框中，选择 "**云**"。
 
     ![云配置](./media/cloud-services-dotnet-get-started/sccloud.png)
 3. 选择“StorageConnectionString”条目，你将看到一个省略号 (**...**) 按钮，位于行的右端****。 单击省略号按钮打开“创建存储帐户连接字符串”对话框 **** 。
@@ -353,7 +353,7 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 6. 查找 *Microsoft.WindowsAzure.ConfigurationManager* NuGet 包，然后将它安装在辅助角色项目中。
 
 ### <a name="set-project-references"></a>设置项目引用
-1. 在 ContosoAdsWeb 项目中，设置对 ContosoAdsCommon 项目的引用。 右键单击 ContosoAdsWeb 项目，然后单击 **"参考** - **添加参考**"。 在“引用管理器”对话框中，选择左窗格中的“解决方案 - 项目”，选择 **ContosoAdsCommon**，并单击“确定”。************
+1. 在 ContosoAdsWeb 项目中，设置对 ContosoAdsCommon 项目的引用。 右键单击 "ContosoAdsWeb" 项目，然后单击 "**引用** - " "**添加引用**"。 在“引用管理器”对话框中，选择左窗格中的“解决方案 - 项目”，选择 **ContosoAdsCommon**，并单击“确定”。************
 2. 在 ContosoAdsWorker 项目中，设置对 ContosoAdsCommon 项目的引用。
 
     ContosoAdsCommon 将包含实体框架数据模型和上下文类，会在前端和后端使用。
@@ -398,16 +398,16 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 ### <a name="add-code-files"></a>添加代码文件
 在本部分，将代码文件从已下载的解决方案复制到新的解决方案。 以下各节会显示并解释此代码的关键部分。
 
-要将文件添加到项目或文件夹，请右键单击项目或文件夹，然后单击"**添加** - **现有项目**"。 选择所需的文件，并单击“添加” ****。 如果询问你是否想要替换现有文件，请单击“是”****。
+若要将文件添加到项目或文件夹，请右键单击该项目或文件夹，然后单击 "**添加** - **现有项**"。 选择所需的文件，并单击“添加” ****。 如果询问你是否想要替换现有文件，请单击“是”****。
 
 1. 在 ContosoAdsCommon 项目中，删除 *Class1.cs* 文件，并在其原位置添加来自下载项目的 *Ad.cs* 和 *ContosoAdscontext.cs* 文件。
 2. 在 ContosoAdsWeb 项目中，从下载的项目添加以下文件。
 
    * *Global.asax.cs*。  
    * 在 *Views\Shared* 文件夹中：*\_Layout.cshtml*。
-   * 在*视图\主页*文件夹中：*索引.cshtml*。
-   * 在*控制器*文件夹中 *：AdController.cs*。
-   * 在 *"视图+Ad"* 文件夹中（首先创建文件夹）：五*个 .cshtml*文件。
+   * 在*Views\Home*文件夹中：*索引。*
+   * 在 "*控制器*" 文件夹中： *AdController.cs*。
+   * 在*Views\Ad*文件夹中（首先创建文件夹）：五个*cshtml*文件。
 3. 在 ContosoAdsWorker 项目中，从下载的项目添加 *WorkerRole.cs* 。
 
 现在，可以按照前面教程中的说明生成并运行该应用程序，并且该应用程序将使用本地数据库和存储仿真程序资源。
@@ -528,7 +528,7 @@ imagesQueue.CreateIfNotExists();
 ```
 
 ### <a name="contosoadsweb---adcontrollercs"></a>ContosoAdsWeb - AdController.cs
-在*AdController.cs*文件中，构造函数调用`InitializeStorage`方法以创建 Azure 存储客户端库对象，该对象提供用于处理 blob 和队列的 API。
+在*AdController.cs*文件中，构造函数调用`InitializeStorage`方法来创建 Azure 存储客户端库对象，这些对象提供用于处理 BLOB 和队列的 API。
 
 然后，代码获取对图像 Blob 容器的引用，正如之前在 Global.asax.cs 中所见****。 在执行该操作时，它设置适用于 Web 应用程序的默认 [重试策略](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling) 。 对于超过暂时性故障反复重试超过一分钟的 Web 应用程序，默认指数回退重试策略将其可能挂起。 此处指定的重试策略会在每次尝试后等待三秒，最多可尝试三次。
 

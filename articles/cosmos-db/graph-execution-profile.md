@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: lbosq
 ms.openlocfilehash: 5705ef4fb6aa895009d554617c968543cc3fcd63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75441854"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>如何使用执行配置文件步骤来评估 Gremlin 查询
 
-本文概述了如何为 Azure Cosmos DB Gremlin API 图形数据库使用“执行配置文件”步骤。 此步骤提供有关疑难解答和查询优化的相关信息，并且它与可针对 Cosmos DB Gremlin API 帐户执行的任何 Gremlin 查询兼容。
+本文概述如何使用适用于 Azure Cosmos DB Gremlin API 图形数据库的执行配置文件步骤。 此步骤提供故障排除和查询优化的相关信息，适用于可以针对 Cosmos DB Gremlin API 帐户执行的任何 Gremlin 查询。
 
 若要使用此步骤，只需在 Gremlin 查询的末尾追加 `executionProfile()` 函数调用即可。 **将执行你的 Gremlin 查询**，操作结果将返回包含查询执行配置文件的 JSON 响应对象。
 
@@ -139,23 +139,23 @@ ms.locfileid: "75441854"
 ## <a name="execution-profile-response-objects"></a>执行配置文件响应对象
 
 executionProfile() 函数的响应将生成采用以下结构的 JSON 对象层次结构：
-  - **格雷姆林操作对象**：表示执行的整个格雷姆林操作。 包含以下属性。
-    - `gremlin`：执行的显式格雷姆林语句。
-    - `totalTime`：发生步骤执行的时间（以毫秒为单位）。 
-    - `metrics`： 包含为完成查询而执行的每个 Cosmos DB 运行时运算符的数组。 此列表已按执行顺序排序。
+  - **Gremlin 操作对象**：表示已执行的整个 Gremlin 操作。 包含以下属性。
+    - `gremlin`：已执行的显式 Gremlin 语句。
+    - `totalTime`：执行该步骤所花费的时间（以毫秒为单位）。 
+    - `metrics`：一个数组，其中包含为了完成查询而执行的每个 Cosmos DB 运行时运算符。 此列表已按执行顺序排序。
     
   - **Cosmos DB 运行时运算符**：表示整个 Gremlin 操作的每个组件。 此列表已按执行顺序排序。 每个对象包含以下属性：
     - `name`：运算符的名称。 这是已评估和执行的步骤的类型。 请在下表中了解详细信息。
-    - `time`：给定运算符所花费的时间量（以毫秒为单位）。
+    - `time`：给定的运算符所花费的时间（以毫秒为单位）。
     - `annotations`：包含特定于已执行的运算符的其他信息。
-    - `annotations.percentTime`：执行特定运算符所花的总时间的百分比。
+    - `annotations.percentTime`：执行特定运算符所花费的时间占总时间的百分比。
     - `counts`：此运算符从存储层返回的对象数。 此值包含在内部的 `counts.resultCount` 标量值中。
     - `storeOps`：表示可以跨一个或多个分区的存储操作。
     - `storeOps.fanoutFactor`：表示此特定存储操作访问的分区数。
     - `storeOps.count`：表示此存储操作返回的结果数。
-    - `storeOps.size`： 表示给定存储操作结果的大小（以字节为单位）。
+    - `storeOps.size`：表示给定存储操作的结果大小（以字节为单位）。
 
-Cosmos DB Gremlin 运行时运算符|描述
+Cosmos DB Gremlin 运行时运算符|说明
 ---|---
 `GetVertices`| 此步骤从持久性层获取一组带谓词的对象。 
 `GetEdges`| 此步骤获取与一组顶点相邻的边缘。 此步骤可以生成一个或多个存储操作。
@@ -223,7 +223,7 @@ Cosmos DB Gremlin 运行时运算符|描述
 - 从 `time` 指标判断，此查询的延迟似乎很高，因为它[针对某个单点读取操作花费了 10 毫秒以上](https://docs.microsoft.com/azure/cosmos-db/introduction#guaranteed-low-latency-at-99th-percentile-worldwide)。
 - 查看 `storeOps` 对象可以发现 `fanoutFactor` 为 `5`，这意味着，此操作访问了 [5 个分区](https://docs.microsoft.com/azure/cosmos-db/partition-data)。
 
-根据此分析的结论，我们可以确定，第一个查询不必要地访问了多余的分区。 在查询中指定分区键作为谓词可以解决此问题。 这样可以降低延迟以及每个查询的开销。 有关详细信息，请参阅[图形分区](graph-partitioning.md)。 更佳的查询是 `g.V('tt0093640').has('partitionKey', 't1001')`。
+根据此分析的结论，我们可以确定，第一个查询不必要地访问了多余的分区。 在查询中指定分区键作为谓词可以解决此问题。 这样可以降低延迟以及每个查询的开销。 详细了解[图形分区](graph-partitioning.md)。 更佳的查询是 `g.V('tt0093640').has('partitionKey', 't1001')`。
 
 ### <a name="unfiltered-query-patterns"></a>未筛选的查询模式
 

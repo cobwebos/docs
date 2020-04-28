@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b2815b496545ca5f920c00df7b2b5b7efe15c12a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74900906"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>在 Azure Active Directory 中查看和分配管理员角色
@@ -26,7 +26,7 @@ ms.locfileid: "74900906"
 
 ## <a name="view-all-roles"></a>查看所有角色
 
-搜索并选择“Azure Active Directory”****。 选择“角色和管理员”以查看所有可用角色列表****。
+搜索并选择“Azure Active Directory”  。 选择“角色和管理员”以查看所有可用角色列表  。
 
 单击每行右侧的省略号会打开角色的详细说明。
 
@@ -34,11 +34,11 @@ ms.locfileid: "74900906"
 
 ## <a name="view-my-roles"></a>查看我的角色
 
-也可轻松查看自己的权限。 在“角色和管理员”**** 页上选择“你的角色”****，可查看当前分配给你的角色。
+也可轻松查看自己的权限。 在“角色和管理员”  页上选择“你的角色”  ，可查看当前分配给你的角色。
 
 ## <a name="view-assignments-for-a-role"></a>查看角色分配
 
-单击某个角色可查看分配给该角色的用户。 可选择“在 PIM 中管理”以查看其他管理功能****。 特权角色管理员可将“永久”（始终充当该角色）分配更改为“符合条件”（仅当提升了权限时才充当该角色）。 如果没有 PIM，仍可以选择“在 PIM 中管理”来注册试用版****。 Privileged Identity Management 需要 [Azure AD Premium P2 许可证计划](../privileged-identity-management/subscription-requirements.md)。
+单击某个角色可查看分配给该角色的用户。 可选择“在 PIM 中管理”以查看其他管理功能  。 特权角色管理员可将“永久”（始终充当该角色）分配更改为“符合条件”（仅当提升了权限时才充当该角色）。 如果没有 PIM，仍可以选择“在 PIM 中管理”来注册试用版  。 Privileged Identity Management 需要 [Azure AD Premium P2 许可证计划](../privileged-identity-management/subscription-requirements.md)。
 
 ![管理员角色的成员列表](./media/directory-manage-roles-portal/member-list.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "74900906"
 
 ## <a name="view-a-users-role-permissions"></a>查看用户的角色权限
 
-查看某个角色的成员时，选择“说明”可以查看角色分配授予的权限的完整列表****。 该页包含相关文档的链接，引导你对目录角色进行管理。
+查看某个角色的成员时，选择“说明”可以查看角色分配授予的权限的完整列表  。 该页包含相关文档的链接，引导你对目录角色进行管理。
 
 ![管理员角色的权限列表](./media/directory-manage-roles-portal/role-description.png)
 

@@ -1,7 +1,7 @@
 ---
 title: 使用时移和实时输出创建点播视频
 titleSuffix: Azure Media Services
-description: 本文介绍如何使用时间转换和实时输出来录制实时流并创建点播播放。
+description: 本文介绍如何使用时间移位和实时输出来记录实时流和创建按需播放。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/27/2019
 ms.author: juliako
 ms.openlocfilehash: 4c7618b60e5fd86a9b8b3f22fb3333c00cfdfa61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74899797"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>使用时移和实时输出创建点播视频

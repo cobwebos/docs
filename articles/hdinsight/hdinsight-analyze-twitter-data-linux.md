@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 12/16/2019
 ms.openlocfilehash: f3705170be28f33e5994bd00e363dc7ec7f94642
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75435620"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>使用 HDInsight 中的 Apache Hive 和 Apache Hadoop 分析 Twitter 数据
 
-了解如何使用[Apache Hive](https://hive.apache.org/)来处理 Twitter 数据。 结果是发送最多包含某个特定词的推文的 Twitter 用户列表。
+了解如何使用[Apache Hive](https://hive.apache.org/)处理 Twitter 数据。 结果是发送最多包含某个特定词的推文的 Twitter 用户列表。
 
 > [!IMPORTANT]  
 > 本文档中的步骤已在 HDInsight 3.6 上进行测试。
@@ -28,27 +28,27 @@ Twitter 允许通过 REST API 检索每个推文的数据作为 JavaScript 对�
 
 ### <a name="create-a-twitter-application"></a>创建 Twitter 应用程序
 
-1. 从 Web 浏览器登录到[https://developer.twitter.com/apps/](https://developer.twitter.com/apps/)。 如果您没有 Twitter 帐户 **，请选择"立即注册"** 链接。
+1. 在 web 浏览器中登录到[https://developer.twitter.com/apps/](https://developer.twitter.com/apps/)。 如果没有 Twitter 帐户，请选择 "**立即注册**" 链接。
 
 2. 选择“创建新应用”。****
 
 3. 输入“名称”****、“说明”****、“网站”****。 可为“网站”**** 字段补充 URL。 下表显示了一些要使用的示例值：
 
-   | 字段 | “值” |
+   | 字段 | 值 |
    |--- |--- |
-   | “属性” |MyHDInsightApp |
-   | 描述 |MyHDInsightApp |
+   | 名称 |MyHDInsightApp |
+   | 说明 |MyHDInsightApp |
    | 网站 |`https://www.myhdinsightapp.com` |
 
-4. 选择 **"是"，我同意**，然后选择 **"创建您的 Twitter 应用程序**"。
+4. 选择 **"是，我同意**"，然后选择 "**创建 Twitter 应用程序**"。
 
-5. 选择 **"权限"** 选项卡。默认权限为 **"只读**"。
+5. 选择 "**权限**" 选项卡。默认权限为**只读**。
 
 6. 选择“密钥和访问令牌”选项卡****。
 
-7. 选择 **"创建我的访问令牌**"。
+7. 选择 **"创建我的访问令牌"**。
 
-8. 在页面右上角选择 **"测试 OAuth"。**
+8. 在页面的右上角选择 "**测试 OAuth** "。
 
 9. 记下“使用者密钥”****、“使用者机密”****、“访问令牌”**** 和“访问令牌机密”****。
 
@@ -65,7 +65,7 @@ Twitter 允许通过 REST API 检索每个推文的数据作为 JavaScript 对�
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. 使用以下命令安装[Tweepy、](https://www.tweepy.org/)[进度栏](https://pypi.python.org/pypi/progressbar/2.2)和其他必需的包：
+1. 使用以下命令安装[Tweepy](https://www.tweepy.org/)、[进度栏](https://pypi.python.org/pypi/progressbar/2.2)和其他所需包：
 
    ```bash
    sudo apt install python-dev libffi-dev libssl-dev
@@ -84,7 +84,7 @@ Twitter 允许通过 REST API 检索每个推文的数据作为 JavaScript 对�
    nano gettweets.py
    ```
 
-1. 通过替换`Your consumer secret`、`Your consumer key``Your access token`和`Your access token secret`使用 twitter 应用程序中的相关信息编辑下面的代码。 然后，将编辑的代码粘贴为**gettweets.py**文件的内容。
+1. `Your consumer secret`将、 `Your consumer key` `Your access token`、和`Your access token secret`替换为 twitter 应用程序的相关信息，以编辑以下代码。 然后，将编辑的代码粘贴为**gettweets.py**文件的内容。
 
    ```python
    #!/usr/bin/python
@@ -154,7 +154,7 @@ Twitter 允许通过 REST API 检索每个推文的数据作为 JavaScript 对�
     一个进度指示器会出现。 它会随着推文下载计数到 100%。
 
    > [!NOTE]  
-   > 如果进度栏向前移动需要较长时间，则应更改筛选器以跟踪趋势主题。 当筛选器中有许多有关该主题的推文时，您可以快速获得所需的 100 条推文。
+   > 如果进度栏向前移动需要较长时间，则应更改筛选器以跟踪趋势主题。 如果在筛选器中有很多推文，可以快速获取所需的100推文。
 
 ### <a name="upload-the-data"></a>上传数据
 
@@ -310,7 +310,7 @@ hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
 
 ## <a name="next-steps"></a>后续步骤
 
-您已经了解如何将非结构化 JSON 数据集转换为结构化[的 Apache Hive](https://hive.apache.org/)表。 若要了解有关 HDInsight 上的 Hive 的详细信息，请参阅以下文档：
+已了解如何将非结构化 JSON 数据集转换为结构化的[Apache Hive](https://hive.apache.org/)表。 若要了解有关 HDInsight 上的 Hive 的详细信息，请参阅以下文档：
 
 * [HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [使用 HDInsight 分析航班延误数据](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)

@@ -9,10 +9,10 @@ ms.date: 06/29/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: 01432ab68fc399f3e97eac2de5a7c356bef7078a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74979030"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>设置 Azure 导入/导出工具
@@ -23,9 +23,9 @@ Microsoft Azure 导入/导出工具是可与 Microsoft Azure 导入/导出服务
 * 完成某个导入作业后，可以使用此工具修复已损坏、丢失或与其他 Blob 冲突的任何 Blob。
 * 通过某个已完成的导出作业收到驱动器后，可以使用此工具修复这些驱动器上已损坏或丢失的任何文件。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-若要为导入作业准备驱动器****，必须满足以下先决条件：
+若要为导入作业准备驱动器  ，必须满足以下先决条件：
 
 * 必须拥有一个有效的 Azure 订阅。
 * 该订阅必须包含一个存储帐户，其中有足够的可用空间可存储所要导入的文件。
@@ -36,12 +36,12 @@ Microsoft Azure 导入/导出工具是可与 Microsoft Azure 导入/导出服务
 * 需要一个或多个已连接到复制计算机的空 2.5 英寸或 3.5 英寸 SATA II、III 或 SSD 硬盘。
 * 打算导入的文件必须可从复制计算机访问，无论这些文件是位于网络共享还是本地硬盘驱动器上。
 
-若要尝试**** 修复部分失败的导入，需要：
+若要尝试  修复部分失败的导入，需要：
 
 * 复制日志文件
 * 存储帐户密钥
 
-若要尝试**** 修复部分失败的导出，需要：
+若要尝试  修复部分失败的导出，需要：
 
 * 复制日志文件
 * 清单文件（可选）
@@ -49,7 +49,7 @@ Microsoft Azure 导入/导出工具是可与 Microsoft Azure 导入/导出服务
 
 ## <a name="installing-the-azure-importexport-tool"></a>安装 Azure 导入/导出工具
 
-首先，[下载 Azure 导入/导出工具](https://www.microsoft.com/download/details.aspx?id=55280)并将其提取到计算机上的目录，例如`c:\WAImportExport`。
+首先，请[下载 Azure 导入/导出工具](https://www.microsoft.com/download/details.aspx?id=55280)，并将其解压缩到计算机上的某个目录，如 `c:\WAImportExport`。
 
 Azure 导入/导出工具由以下文件组成：
 
@@ -203,9 +203,9 @@ Examples:
 
 ## <a name="next-steps"></a>后续步骤
 
-* [为导入作业准备硬盘](../storage-import-export-tool-preparing-hard-drives-import.md)
+* [为导入作业准备硬盘驱动器](../storage-import-export-tool-preparing-hard-drives-import.md)
 * [预览导出作业的驱动器使用情况](../storage-import-export-tool-previewing-drive-usage-export-v1.md)
 * [使用复制日志文件查看作业状态](../storage-import-export-tool-reviewing-job-status-v1.md)
 * [修复导入作业](../storage-import-export-tool-repairing-an-import-job-v1.md)
 * [修复导出作业](../storage-import-export-tool-repairing-an-export-job-v1.md)
-* [排除 Azure 导入/导出工具的故障](storage-import-export-tool-troubleshooting-v1.md)
+* [排查 Azure 导入/导出工具问题](storage-import-export-tool-troubleshooting-v1.md)

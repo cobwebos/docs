@@ -1,6 +1,6 @@
 ---
 title: Azure 媒体服务遥测 | Microsoft Docs
-description: 本文概述了 Microsoft Azure 媒体服务遥测。
+description: 本文提供 Microsoft Azure 媒体服务遥测的概述。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: e2cbb36158722a47518f575b391340b5e25bd908
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74895779"
 ---
 # <a name="azure-media-services-telemetry"></a>Azure 媒体服务遥测  
 
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本，[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 通过 Azure 媒体服务 (AMS) 可访问其服务的遥测/指标数据。 通过当前版本的 AMS，可收集活动 **Channel**、**StreamingEndpoint** 和 **Archive** 实体的遥测数据。 
 
@@ -51,7 +51,7 @@ ms.locfileid: "74895779"
 
 可通过以下方式之一使用遥测数据：
 
-- 直接从 Azure 表存储中读取数据（例如使用存储 SDK）。 有关遥测存储表的说明，请参阅[此](https://msdn.microsoft.com/library/mt742089.aspx)主题中的**使用遥测信息**。
+- 直接从 Azure 表存储中读取数据（例如使用存储 SDK）。 有关遥测存储表的说明，请参阅**此**主题中的[使用遥测信息](https://msdn.microsoft.com/library/mt742089.aspx)。
 
 或
 
@@ -74,13 +74,13 @@ ms.locfileid: "74895779"
 
 遥测数据汇总存储在表“TelemetryMetrics20160321”中，其中“20160321”是创建表的日期。 遥测系统为每个新日期（基于 00:00 UTC）单独创建一个表。 该表用于存储重复值，如给定时间范围内的引入比特率、发送的字节数等。 
 
-properties|“值”|示例/说明
+properties|值|示例/说明
 ---|---|---
 PartitionKey|{account ID}_{entity ID}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>帐户 ID 包括在分区键中，可简化将多个媒体服务帐户写入同一存储帐户的工作流。
 RowKey|{seconds to midnight}_{random value}|01688_00199<br/><br/>行键以距午夜的秒数开头，可允许分区内的前 n 个样式查询。 有关详细信息，请参阅[此](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern)文章。 
 时间戳|日期/时间|Azure 表中的自动时间戳 2016-09-09T22:43:42.241Z
 类型|提供遥测数据的实体类型|Channel/StreamingEndpoint/Archive<br/><br/>事件类型只是字符串值。
-“属性”|遥测事件的名称|ChannelHeartbeat/StreamingEndpointRequestLog
+名称|遥测事件的名称|ChannelHeartbeat/StreamingEndpointRequestLog
 ObservedTime|发生遥测事件的时间 (UTC)|2016-09-09T22:42:36.924Z<br/><br/>观察时间由发送遥测的实体（例如通道）提供。 组件之间可能存在时间同步问题，因此此值为近似值
 ServiceID|{service ID}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 特定于实体的属性|由事件定义|StreamName: stream1, Bitrate 10123, …<br/><br/>其余属性针对给定时间类型定义。 Azure 表内容是键值对。  （即，表中的不同行具有不同的属性集）。
@@ -95,13 +95,13 @@ ServiceID|{service ID}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 
 **流式处理终结点**
 
-properties|“值”|示例
+properties|值|示例
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
 时间戳|时间戳|Azure 表中的自动时间戳 2016-09-09T22:43:42.241Z
 类型|类型|StreamingEndpoint
-“属性”|“属性”|StreamingEndpointRequestLog
+名称|名称|StreamingEndpointRequestLog
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ServiceID|服务 ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 HostName|终结点的主机名|builddemoserver.origin.mediaservices.windows.net
@@ -114,13 +114,13 @@ E2ELatency|平均端到端延迟|250
 
 **实时频道**
 
-properties|“值”|示例/说明
+properties|值|示例/说明
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
 时间戳|时间戳|Azure 表中的自动时间戳 2016-09-09T22:43:42.241Z
 类型|类型|Channel
-“属性”|“属性”|ChannelHeartbeat
+名称|名称|ChannelHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ServiceID|服务 ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 TrackType|轨道视频/音频/文本的类型|视频/音频
@@ -139,13 +139,13 @@ UnexpectedBitrate|如果音频/视频轨道的计算/实际比特率 > 40,000 bp
 
 **实时存档**
 
-properties|“值”|示例/说明
+properties|值|示例/说明
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
 时间戳|时间戳|Azure 表中的自动时间戳 2016-09-09T22:43:42.241Z
 类型|类型|存档
-“属性”|“属性”|ArchiveHeartbeat
+名称|名称|ArchiveHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ServiceID|服务 ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 ManifestName|节目 URL|asset-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4bd2-8c01-a92a2b38c9ba.ism

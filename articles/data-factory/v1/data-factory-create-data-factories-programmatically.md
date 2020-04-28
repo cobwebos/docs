@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: 9cd3cd60f5d62a0c416b0e05ea408c20483bff13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74931330"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>使用 Azure 数据工厂 .NET SDK 创建、监视和管理 Azure 数据工厂
@@ -50,7 +50,7 @@ ms.locfileid: "74931330"
     ```powershell
     Get-AzSubscription
     ```
-4. 运行以下命令选择要使用的订阅。 将**&lt;Azure 订阅**&gt;的名称替换为 Azure 订阅的名称。
+4. 运行以下命令选择要使用的订阅。 将** &lt;NameOfAzureSubscription** &gt;替换为你的 Azure 订阅的名称。
 
     ```powershell
     Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
@@ -109,14 +109,14 @@ ms.locfileid: "74931330"
 复制活动在 Azure 数据工厂中执行数据移动。 该活动由全球可用的服务提供支持，能以安全、可靠、可缩放的方式在各种数据存储区间复制数据。 有关复制活动的详细信息，请参阅 [Data Movement Activities](data-factory-data-movement-activities.md) （数据移动活动）。
 
 1. 使用 Visual Studio 2012/2013/2015 创建 C# .NET 控制台应用程序。
-   1. 推出**视觉工作室**2012/2013/2015。
-   2. 单击 **"文件**"，指向 **"新建"，** 然后单击 **"项目**"。
+   1. 启动**Visual Studio** 2012/2013/2015。
+   2. 单击 "**文件**"，指向 "**新建**"，然后单击 "**项目**"。
    3. 展开“模板”，并选择“Visual C#”。******** 本演练中使用的是 C#，但可以使用任何 .NET 语言。
    4. 从右侧项目类型列表中选择“控制台应用程序”。****
-   5. 输入**名称的数据工厂APITestApp。**
-   6. 选择**C：\_ADFGet 开始**的位置。
+   5. 为 "名称" 输入**DataFactoryAPITestApp** 。
+   6. 为 "位置" 选择**C:\ADFGetStarted** 。
    7. 单击“确定”**** 以创建项目。
-2. 单击**工具**，指向**NuGet 包管理器**，然后单击 **"包管理器控制台**"。
+2. 单击 "**工具**"，指向 " **NuGet 程序包管理器**"，然后单击 "**程序包管理器控制台**"。
 3. 在“包管理器控制台”中执行以下步骤：****
    1. 运行以下命令安装数据工厂包：`Install-Package Microsoft.Azure.Management.DataFactories`
    2. 运行以下命令安装 Azure Active Directory 包（因为要在代码中使用 Active Directory API）：`Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
@@ -137,7 +137,7 @@ ms.locfileid: "74931330"
         </appSettings>
     </configuration>
     ```
-5. 在 App.Config 文件中，使用您自己的值**&lt;更新&gt;应用程序 ID、****&lt;&gt;密码**、**&lt;订阅 ID&gt;** 和**&lt;租户 ID&gt;** 的值。
+5. 在 app.config 文件中，用自己的值更新** &lt;应用程序&gt;ID**、 ** &lt;密码&gt;**、 ** &lt;订阅&gt;id**和** &lt;租户 id&gt; **的值。
 6. 将以下 **using** 语句添加到项目中的 **Program.cs** 文件。
 
     ```csharp
@@ -445,7 +445,7 @@ ms.locfileid: "74931330"
     }
     ```
 
-15. 在解决方案资源管理器中，展开项目：**数据工厂APITestApp，** 右键单击 **"参考**"，然后单击"**添加参考**"。 选择 `System.Configuration` 程序集的复选框，并单击“确定”****。
+15. 在解决方案资源管理器中，展开项目： **DataFactoryAPITestApp**，右键单击 "**引用**"，然后单击 "**添加引用**"。 选择 `System.Configuration` 程序集的复选框，并单击“确定”****。
 15. 生成控制台应用程序。 在菜单中单击“生成”，并单击“生成解决方案”。********
 16. 确认 Azure Blob 存储中的 adftutorial 容器内至少有一个文件。 如果没有，请在记事本中创建包含以下内容的 Emp.txt 文件，然后将其上传到 adftutorial 容器。
 
@@ -453,7 +453,7 @@ ms.locfileid: "74931330"
     John, Doe
     Jane, Doe
     ```
-17. 通过单击菜单上的 **"调试** -> **开始调试"** 来运行示例。 看到“正在获取数据切片的运行详细信息”时，请等待几分钟，并按 **ENTER**。****
+17. 通过单击菜单上的 "**调试** -> " "**开始调试**" 来运行该示例。 看到“正在获取数据切片的运行详细信息”时，请等待几分钟，并按 **ENTER**。****
 18. 使用 Azure 门户验证是否创建了包含以下项目的数据工厂 **APITutorialFactory** ：
     * 链接服务：**AzureStorageLinkedService**
     * 数据集：**DatasetBlobSource** 和 **DatasetBlobDestination**。

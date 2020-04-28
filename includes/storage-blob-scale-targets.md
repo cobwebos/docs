@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/08/2019
 ms.author: tamram
 ms.openlocfilehash: 2ed88d8abb7cbe96093b68d89030e6e464a35541
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "75392278"
 ---
 | 资源 | 目标        |
@@ -25,4 +25,4 @@ ms.locfileid: "75392278"
 |单个页 blob 的目标吞吐量 | 最高每秒 60 MiB |
 |单个块 blob 的目标吞吐量 |上限为存储帐户的传入/传出限制<sup>1</sup> |
 
-<sup>1</sup> 单个 blob 的吞吐量取决于多个因素，包括但不限于：并发性、请求大小、性能层、源上传速度和目标下载速度。 要利用[高通量块 blob](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/)的性能增强，请上载较大的 blob 或块。 具体地说，对于标准存储帐户，请使用大于 4 MiB 的 Blob 或块大小调用 [Put Blob](/rest/api/storageservices/put-blob) 或 [Put Block](/rest/api/storageservices/put-block) 操作。 对于高级块 Blob 或 Data Lake 存储 Gen2 存储帐户，请使用大于 256 KiB 的块或 blob 大小。
+<sup>1</sup> 单个 blob 的吞吐量取决于多个因素，包括但不限于：并发性、请求大小、性能层、源上传速度和目标下载速度。 若要利用[高吞吐量块 blob](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/)的性能增强功能，请上传更大的 blob 或块。 具体地说，对于标准存储帐户，请使用大于 4 MiB 的 Blob 或块大小调用 [Put Blob](/rest/api/storageservices/put-blob) 或 [Put Block](/rest/api/storageservices/put-block) 操作。 对于高级块 blob 或 Data Lake Storage Gen2 存储帐户，请使用大于 256 KiB 的块或 blob 大小。

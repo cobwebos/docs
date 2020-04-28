@@ -1,6 +1,6 @@
 ---
-title: 如何使用 Media Encoder Standard 裁剪视频 - Azure | Microsoft 文档
-description: 裁剪是指在视频帧内选择一个矩形窗口并且只编码该窗口内的像素的过程。 本文演示如何使用媒体编码器标准裁剪视频。
+title: 如何使用 Media Encoder Standard 裁剪视频 - Azure | Microsoft Docs
+description: 裁剪是指在视频帧内选择一个矩形窗口并且只编码该窗口内的像素的过程。 本文演示如何通过 Media Encoder Standard 来裁剪视频。
 services: media-services
 documentationcenter: ''
 author: anilmur
@@ -15,10 +15,10 @@ ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
 ms.openlocfilehash: 059816284e39c65bb772bd02f066d73da624722f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74887758"
 ---
 # <a name="crop-videos-with-media-encoder-standard"></a>使用 Media Encoder Standard 裁剪视频  
@@ -128,7 +128,7 @@ MES 中的裁剪是预处理阶段，因此，编码预设​​值中的裁剪�
 
 
 ## <a name="restrictions-on-cropping"></a>裁剪的限制
-裁剪功能仅供手动操作。 您需要将输入视频加载到合适的编辑工具中，该工具允许您选择感兴趣的帧，定位光标以确定裁剪矩形的偏移量，以确定为该特定视频调整的编码预设等。此功能并非旨在启用以下功能：自动检测和删除输入视频中的黑色信箱/柱框边框。
+裁剪功能仅供手动操作。 需要将输入视频加载到合适的编辑工具中，以便选择感兴趣的帧、定位光标以确定裁剪矩形的偏移量、确定为该特定视频调整的编码预设值等。此功能并不旨在实现：自动检测和删除输入视频中的黑色黑边/黑边边框。
 
 裁剪功能受到以下限制。 如果不符合以下情况，编码任务可能会失败或生成非预期的输出。
 

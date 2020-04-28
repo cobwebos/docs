@@ -1,5 +1,5 @@
 ---
-title: 在访问审核中查看对组&应用的访问 - Azure AD
+title: 在访问评审中评审自己对组和应用的访问权限 - Azure AD
 description: 了解如何在 Azure Active Directory 访问评审中评审自己对组或应用程序的访问权限。
 services: active-directory
 author: msaburnley
@@ -16,10 +16,10 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0d75d7ffe28fa126ee5e359cba19e66e3c0f36e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75422405"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>在 Azure AD 访问评审中评审自己对组或应用程序的访问权限
@@ -36,23 +36,23 @@ Azure Active Directory (Azure AD) 借助称为“Azure AD 访问评审”的功�
 
     ![要求评审你对某个组的访问权限的 Microsoft 示例电子邮件](./media/review-your-access/access-review-email.png)
 
-1. 单击“评审访问权限”链接，打开访问评审。****
+1. 单击“评审访问权限”链接，打开访问评审。 
 
 如果未收到该电子邮件，可遵循以下步骤找到待处理的访问评审。
 
-1. 登录到 中的[https://myapps.microsoft.com](https://myapps.microsoft.com)MyApps 门户。
+1. 登录到“我的应用”门户 ([https://myapps.microsoft.com](https://myapps.microsoft.com))。
 
     ![“我的应用”门户，其中列出了你有权访问的应用](./media/review-your-access/myapps-access-panel.png)
 
 1. 在页面右上角，单击用户符号，其中显示了你的姓名和默认组织。 如果列出多个组织，请选择已请求访问评审的组织。
 
-1. 在页面右侧，单击“访问评审”磁贴来查看待处理的访问评审。****
+1. 在页面右侧，单击“访问评审”磁贴来查看待处理的访问评审。 
 
     如果该磁贴不可见，则该组织没有要执行的访问评审，此时不需要执行任何操作。
 
     ![应用和组的待处理访问评审列表](./media/review-your-access/access-reviews-list.png)
 
-1. 单击 **"开始审阅"** 链接，查看要执行的访问审核。
+1. 单击你要执行的访问评审对应的“开始评审”链接。 
 
 ## <a name="perform-the-access-review"></a>执行访问评审
 
@@ -64,13 +64,13 @@ Azure Active Directory (Azure AD) 借助称为“Azure AD 访问评审”的功�
 
     ![打开访问评审，系统会询问你是否仍需访问某个组](./media/review-your-access/perform-access-review.png)
 
-1. 单击“是”保留访问权限，**** 或者单击“否”删除访问权限****。
+1. 单击“是”保留访问权限，  或者单击“否”删除访问权限  。
 
-1. 如果单击“是”，你可能需要在“原因”框中指出原因。********
+1. 如果单击“是”，你可能需要在“原因”框中指出原因。  
 
     ![完成访问评审，系统会询问你是否仍需访问某个组](./media/review-your-access/perform-access-review-submit.png)
 
-1. 单击 **“提交”**。
+1. 单击“提交”  。
 
     此时会提交你所做的选择，并会将你返回到“我的应用”门户。
 

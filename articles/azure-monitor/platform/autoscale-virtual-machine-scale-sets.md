@@ -5,17 +5,17 @@ ms.topic: conceptual
 ms.date: 02/22/2016
 ms.subservice: autoscale
 ms.openlocfilehash: e22806ff94ce2eb830bb6918bfc7f80e5ad3ba0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75364214"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>使用 VM 规模集的 Resource Manager 模板的高级自动缩放配置
 可以根据性能指标阈值，按循环计划或按特定日期扩展和缩减虚拟机规模集。 还可以为缩放操作配置电子邮件和 webhook 通知。 本文演示了在 VM 规模集上使用 Resource Manager 模板配置以上所有对象的示例。
 
 > [!NOTE]
-> 虽然本演练说明了 VM 规模集的步骤，但相同的信息适用于自动缩放[云服务](https://azure.microsoft.com/services/cloud-services/)、[应用服务 - Web应用](https://azure.microsoft.com/services/app-service/web/)和 [API 管理服务](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)。有关基于简单性能指标（如 CPU）的 VM 规模集上的简单缩小/扩大设置，请参阅 [Linux](../../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-cli.md) 和 [Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) 文档
+> 虽然本演练说明了 VM 规模集的步骤，但相同的信息适用于自动缩放[云服务](https://azure.microsoft.com/services/cloud-services/)、[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)和 [API 管理服务](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)。有关基于简单性能指标（如 CPU）的 VM 规模集上的简单横向缩减/扩展设置，请参阅 [Linux](../../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-cli.md) 和 [Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) 文档
 >
 >
 
@@ -31,19 +31,19 @@ ms.locfileid: "75364214"
 
 3. 现在，可以根据计划或特定要求添加更多配置文件和规则。 我们会创建一个具有三个配置文件的自动缩放设置。 若要了解自动缩放中的配置文件和规则，请查看[自动缩放最佳做法](autoscale-best-practices.md)。  
 
-    | 配置文件和规则 | 描述 |
+    | 配置文件和规则 | 说明 |
     |--- | --- |
-    | **配置 文件** |**基于性能/指标** |
+    | **配置文件** |**基于性能/指标** |
     | 规则 |服务总线队列消息计数 > x |
     | 规则 |服务总线队列消息计数 < y |
     | 规则 |CPU% > n |
     | 规则 |CPU% < p |
-    | **配置 文件** |**工作日上午时（无规则）** |
-    | **配置 文件** |**产品发布日（无规则）** |
+    | **配置文件** |**工作日上午时（无规则）** |
+    | **配置文件** |**产品发布日（无规则）** |
 
 4. 以下是用于进行此演练所假设的一个缩放方案。
 
-   * **基于负载**- 我想根据我的规模集托管的应用程序上的负载进行横向扩展。
+   * **基于负载** - 我想要根据在规模集上托管的应用程序上的负载情况进行扩大或缩小。*
    * **消息队列大小** - 使用服务总线队列为应用程序传入消息。 使用队列的消息计数和 CPU 利用率并配置默认的配置文件，在消息计数或 CPU 利用率达到阈值时触发缩放操作。\*
    * **每周和每日时间** - 每周定期按基于“每日时间”的配置文件（名为“工作日上午时间”）执行。 根据历史数据，在此期间最好有一定数量的 VM 实例来处理应用程序的负载。\*
    * **特殊日期** - 添加了“产品上市日”配置文件。 提前计划具体日期，以便应用程序做好准备来处理由市场通知以及将新产品放入应用程序中时所产生的负载。\*
@@ -52,7 +52,7 @@ ms.locfileid: "75364214"
      自动缩放引擎的配置文件和规则的优先级顺序也在[自动缩放最佳实践](autoscale-best-practices.md)文章中有所介绍。
      有关自动缩放的常用指标列表，请参阅[自动缩放的常用指标](autoscale-common-metrics.md)
 
-5. 确保在资源浏览器中处于“读/写”**** 模式
+5. 确保在资源浏览器中处于“读/写”  模式
 
     ![Autoscalewad，默认自动缩放设置](media/autoscale-virtual-machine-scale-sets/autoscalewad.png)
 
@@ -192,12 +192,12 @@ ms.locfileid: "75364214"
     ```
     有关支持的字段及其值，请参阅[自动缩放 REST API 文档](https://msdn.microsoft.com/library/azure/dn931928.aspx)。 现在，自动缩放设置包含了之前说明的三个配置文件。
 
-7. 最后，来看一下自动缩放“通知”**** 部分。 自动缩放通知允许在成功触发扩大或缩小操作时执行三项操作。
+7. 最后，来看一下自动缩放“通知”  部分。 自动缩放通知允许在成功触发扩大或缩小操作时执行三项操作。
    - 通知订阅的管理员和共同管理员
    - 向一组用户发送电子邮件
    - 触发 webhook 调用。 触发时，此 webhook 将发送关于自动缩放条件和规模集资源的元数据。 若要了解有关自动缩放 webhook 的有效负载的详细信息，请参阅[对自动缩放配置 Webhook 和电子邮件通知](autoscale-webhook-email.md)。
 
-   将以下内容添加到自动缩放设置，替换值为 null 的 **notification ** 元素
+   将以下内容添加到自动缩放设置，替换值为 null 的 **notification**  元素
 
    ```
    "notifications": [
@@ -225,7 +225,7 @@ ms.locfileid: "75364214"
 
    ```
 
-   在资源浏览器中单击“输入”**** 按钮，更新自动缩放设置。
+   在资源浏览器中单击“输入”  按钮，更新自动缩放设置。
 
 已在 VM 规模集上更新了自动缩放设置，以包括多个缩放配置文件和缩放通知。
 
@@ -234,7 +234,7 @@ ms.locfileid: "75364214"
 
 [排查使用虚拟机规模集进行自动缩放的问题](../../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
 
-[自动缩放的通用指标](autoscale-common-metrics.md)
+[自动缩放的常用指标](autoscale-common-metrics.md)
 
 [Azure 自动缩放的最佳实践](autoscale-best-practices.md)
 

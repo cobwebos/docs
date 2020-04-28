@@ -1,5 +1,5 @@
 ---
-title: 添加或更新用户配置文件信息 - Azure AD
+title: 添加或更新用户配置文件信息-Azure AD
 description: 有关如何在 Azure Active Directory 中向用户配置文件添加信息（包括图片和作业详细信息）的说明。
 services: active-directory
 author: msaburnley
@@ -13,10 +13,10 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8ba51b0ad7f314058f34092dff4e26411020086a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75422881"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>使用 Azure Active Directory 添加或更新用户的配置文件信息
@@ -28,13 +28,13 @@ ms.locfileid: "75422881"
 ## <a name="to-add-or-change-profile-information"></a>添加或更改配置文件信息的步骤
 1. 以组织的用户管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 依次选择“Azure Active Directory”、“用户”，然后选择一个用户********。 例如，Alain Charon__。
+2. 依次选择“Azure Active Directory”、“用户”，然后选择一个用户   。 例如，Alain Charon  。
 
-    Alain Charon - 配置文件页面随即出现****。
+    Alain Charon - 配置文件页面随即出现  。
 
     ![用户的配置文件页面，其中包括可编辑信息](media/active-directory-users-profile-azure-portal/user-profile-all-blade.png)
 
-3. 选择“编辑”以选择性地添加或更新每个可用部分中包含的信息****。
+3. 选择“编辑”以选择性地添加或更新每个可用部分中包含的信息  。
 
     ![用户的配置文件页面，其中显示可编辑区域](media/active-directory-users-profile-azure-portal/user-profile-edit.png)
 
@@ -50,7 +50,7 @@ ms.locfileid: "75422881"
 
     - **身份验证联系人信息。** 验证此信息以确保用户的电话号码和电子邮件地址有效。 Azure Active Directory 使用此信息在登录期间确保用户为本人。 身份验证联系人信息只能由全局管理员更新。
 
-4. 选择“保存”。****
+4. 选择“保存”。 
 
     为用户保存所做的所有更改。
 

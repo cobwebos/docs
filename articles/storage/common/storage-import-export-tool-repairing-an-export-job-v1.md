@@ -9,10 +9,10 @@ ms.date: 01/23/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: b2ba30bddfc6364c79e1bb01d30cde63b261a07f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74978009"
 ---
 # <a name="repairing-an-export-job"></a>修复导出作业
@@ -24,22 +24,22 @@ ms.locfileid: "74978009"
   
 若要使用此功能，必须与 Azure 存储建立连接。  
   
-用于修复某一导入作业的命令是 **RepairExport**。
+用于修复导入作业的命令是 **RepairExport**。
 
 ## <a name="repairexport-parameters"></a>RepairExport 参数
 
 可以使用 **RepairExport** 指定以下参数：  
   
-|参数|描述|  
+|参数|说明|  
 |---------------|-----------------|  
 |**/r:<RepairFile\>**|必需。 修复文件的路径。该文件用于跟踪修复进度，以及恢复已中断的修复。 每个驱动器都必须有且仅有一个修复文件。 在开始对某个给定驱动器进行修复时，会传入尚不存在的某个修复文件的路径。 若要恢复已中断的修复，应该传入现有修复文件的名称。 始终必须指定与目标驱动器对应的修复文件。|  
-|**/日志：<日志目录\>**|可选。 日志目录。 详细日志文件将写入此目录。 如果未指定任何日志目录，将使用当前目录作为日志目录。|  
+|**/logdir:<LogDirectory\>**|可选。 日志目录。 详细日志文件将写入此目录。 如果未指定任何日志目录，将使用当前目录作为日志目录。|  
 |**/d:<TargetDirectory\>**|必需。 用于验证和修复的目录。 此目录通常是导出驱动器的根目录，但也可以是包含已导出的文件副本的网络文件共享。|  
 |**/bk:<BitLockerKey\>**|可选。 如果希望工具将存储已导出文件的加密目录解锁，应指定 BitLocker 密钥。|  
-|**/sn：<存储帐户名称\>**|必需。 导出作业的存储帐户的名称。|  
-|**/sk：<存储帐户密钥\>**|当且仅当未指定容器 SAS 时，才**需要**。 导出作业的存储帐户的帐户密钥。|  
-|**/csas：<集装箱\>**|当且仅当未指定存储帐户密钥时，才**需要**。 用于访问与导出作业关联的 Blob 的容器 SAS。|  
-|**/复制日志文件：<驱动器复制日志文件\>**|必需。 驱动器复制日志文件的路径。 该文件由 Microsoft Azure 导入/导出服务生成，可以从与该作业关联的 Blob 存储下载。 复制日志文件包含有关要修复的已失败 Blob 或文件的信息。|  
+|**/sn:<StorageAccountName\>**|必需。 导出作业的存储帐户的名称。|  
+|**/sk:<StorageAccountKey\>**|当且仅当未指定容器 SAS 时才是**必需**的。 导出作业的存储帐户的帐户密钥。|  
+|**/csas:<ContainerSas\>**|当且仅当未指定存储帐户密钥时才是**必需**的。 用于访问与导出作业关联的 Blob 的容器 SAS。|  
+|**/CopyLogFile:<DriveCopyLogFile\>**|必需。 驱动器复制日志文件的路径。 该文件由 Microsoft Azure 导入/导出服务生成，可以从与该作业关联的 Blob 存储下载。 复制日志文件包含有关要修复的已失败 Blob 或文件的信息。|  
 |**/ManifestFile:<DriveManifestFile\>**|可选。 导出驱动器的清单文件的路径。 此文件由 Windows Azure 导入/导出服务生成，存储在导出驱动器上，或者位于与该作业关联的存储帐户的 Blob 中。<br /><br /> 将使用在此文件中包含的 MD5 哈希验证导出驱动器上文件的内容。 确定下载已损坏的所有文件并将其重新写入目标目录。|  
   
 ## <a name="using-repairexport-mode-to-correct-failed-exports"></a>使用 RepairExport 模式更正失败的导出  
@@ -51,7 +51,7 @@ ms.locfileid: "74978009"
   
 -   传输过程中更改了存储帐户密钥  
   
-若要在 **RepairExport** 模式下运行该工具，你首先需要将包含导出的文件的驱动器连接到你的计算机。 接下来，运行 Azure 导入/导出工具，并使用 `/d` 参数指定该驱动器的路径。 还需要指定已下载的驱动器复制日志文件的路径。 以下示例命令行将运行该工具，修复未能导出的所有文件：  
+要在 **RepairExport** 模式下运行该工具，首先需要将包含已导出文件的驱动器连接到计算机。 接下来，运行 Azure 导入/导出工具，并使用 `/d` 参数指定该驱动器的路径。 还需要指定已下载的驱动器复制日志文件的路径。 以下示例命令行将运行该工具，修复未能导出的所有文件：  
   
 ```  
 WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C3U.log  
@@ -79,11 +79,11 @@ WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bob
 复制日志文件指示 Windows Azure 导入/导出服务在将 Blob 的某个块下载到导出驱动器上的文件时发生失败。 该文件的其他组成部分已成功下载，并且正确设置了文件长度。 在本例中，工具会在驱动器上打开该文件，从存储帐户下载该块并将其写入从偏移位置 65536 开始、长度为 65536 的文件范围。  
   
 ## <a name="using-repairexport-to-validate-drive-contents"></a>使用 RepairExport 验证驱动器内容  
-你还可以使用具有 **RepairExport** 选项的 Azure 导入/导出验证驱动器上的内容是否正确。 每个导出驱动器上的清单文件包含驱动器内容的 MD5 哈希。  
+还可以使用提供 **RepairExport** 选项的 Azure 导入/导出服务来验证驱动器上的内容是否正确。 每个导出驱动器上的清单文件包含驱动器内容的 MD5 哈希。  
   
 Azure 导入/导出服务还可以在导出过程中将清单文件保存到某个存储帐户。 完成作业后，可通过[获取作业](/rest/api/storageimportexport/jobs)操作获得清单文件的位置。 有关驱动器清单文件格式的详细信息，请参阅[导入/导出服务清单文件格式](storage-import-export-file-format-metadata-and-properties.md)。  
   
-下面的示例演示如何使用 **/ManifestFile**和 **/CopyLogFile**参数运行 Azure 导入/导出工具：  
+以下示例演示如何结合 **/ManifestFile** 和 **/CopyLogFile** 参数运行 Azure 导入/导出工具：  
   
 ```  
 WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C3U.log /ManifestFile:G:\9WM35C3U.manifest  
@@ -153,7 +153,7 @@ G:\pictures\wild\canyon.jpg.properties
 ## <a name="next-steps"></a>后续步骤
  
 * [设置 Azure 导入/导出工具](storage-import-export-tool-setup-v1.md)   
-* [为导入作业准备硬盘](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [为导入作业准备硬盘驱动器](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
 * [使用复制日志文件查看作业状态](storage-import-export-tool-reviewing-job-status-v1.md)   
 * [修复导入作业](storage-import-export-tool-repairing-an-import-job-v1.md)   
-* [排除 Azure 导入/导出工具的故障](storage-import-export-tool-troubleshooting-v1.md)
+* [排查 Azure 导入/导出工具问题](storage-import-export-tool-troubleshooting-v1.md)

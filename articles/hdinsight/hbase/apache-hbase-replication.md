@@ -1,5 +1,5 @@
 ---
-title: 虚拟网络中的 HBase 群集复制 - Azure HDInsight
+title: 虚拟网络中的 HBase 群集复制-Azure HDInsight
 description: 了解如何设置从一个 HDInsight 版本到另一个版本的 HBase 复制，以实现负载均衡、高可用性、在不造成停机的情况下进行迁移和更新，以及灾难恢复。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,19 +9,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.openlocfilehash: 1e6465584dd4e67f736b94d2939678c1a69163bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75435666"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>在 Azure 虚拟网络中设置 Apache HBase 群集复制
 
 了解如何在 Azure 中的一个虚拟网络内部或者在两个虚拟网络之间设置 [Apache HBase](https://hbase.apache.org/) 复制。
 
-群集复制使用源推送方法。 HBase 群集可以是一个源或一个目标，也可以同时充当这两个角色。 复制是异步的。 复制的目标是保持最终一致性。 在启用复制的情况下，当源接收到对列系列的编辑时，该编辑将传播到所有目标群集。 当数据从一个群集复制到另一个群集，会跟踪源群集和所有已使用数据的群集，防止复制循环。
+群集复制使用源推送方法。 HBase 群集可以是一个源或目标，也可以同时充当这两个角色。 复制是异步的。 复制的目标是保持最终一致性。 在启用复制的情况下，当源接收到对列系列的编辑时，该编辑将传播到所有目标群集。 当数据从一个群集复制到另一个群集，会跟踪源群集和所有已使用数据的群集，防止复制循环。
 
-在本文中，您可以设置源目标复制。 对于其他群集拓扑，请参阅 [Apache HBase 参考指南](https://hbase.apache.org/book.html#_cluster_replication)。
+本文介绍如何设置源-目标复制。 对于其他群集拓扑，请参阅 [Apache HBase 参考指南](https://hbase.apache.org/book.html#_cluster_replication)。
 
 下面是单个虚拟网络的 HBase 复制用例：
 
@@ -39,7 +39,7 @@ ms.locfileid: "75435666"
 可以使用 [GitHub](https://github.com/Azure/hbase-utils/tree/master/replication) 中的[脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)脚本复制群集。
 
 ## <a name="prerequisites"></a>先决条件
-在开始本文之前，必须具有 Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+在开始本文之前，必须有一个 Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
 ## <a name="set-up-the-environments"></a>设置环境
 
@@ -66,7 +66,7 @@ ms.locfileid: "75435666"
 
 **VNet 1**
 
-| properties | “值” |
+| properties | 值 |
 |----------|-------|
 | 位置 | 美国西部 |
 | VNet 名称 | &lt;ClusterNamePrevix>-vnet1 |
@@ -78,12 +78,12 @@ ms.locfileid: "75435666"
 | 网关名称 | vnet1gw |
 | 网关类型 | Vpn |
 | 网关 VPN 类型 | RouteBased |
-| 网关 SKU | Basic |
+| 网关 SKU | 基本 |
 | 网关 IP | vnet1gwip |
 
 **VNet 2**
 
-| properties | “值” |
+| properties | 值 |
 |----------|-------|
 | 位置 | 美国东部 |
 | VNet 名称 | &lt;ClusterNamePrevix>-vnet2 |
@@ -95,7 +95,7 @@ ms.locfileid: "75435666"
 | 网关名称 | vnet2gw |
 | 网关类型 | Vpn |
 | 网关 VPN 类型 | RouteBased |
-| 网关 SKU | Basic |
+| 网关 SKU | 基本 |
 | 网关 IP | vnet1gwip |
 
 ## <a name="setup-dns"></a>设置 DNS
@@ -104,7 +104,7 @@ ms.locfileid: "75435666"
 
 若要安装 Bind，需找到两个 DNS 虚拟机的公共 IP 地址。
 
-1. 打开[Azure 门户](https://portal.azure.com)。
+1. 打开 [Azure 门户](https://portal.azure.com)。
 2. 打开 DNS 虚拟机，方法是选择“资源组”> [资源组名称] > [vnet1DNS]****。  资源组名称是在上一过程中创建的。 默认的 DNS 虚拟机名称为 *vnet1DNS* 和 *vnet2NDS*。
 3. 选择“属性”，打开虚拟网络的属性页。****
 4. 记下“公共 IP 地址”，并验证“专用 IP 地址”********。  vnet1DNS 的专用 IP 地址应该是 **10.1.0.4**，vnet2DNS 的专用 IP 地址应该是 **10.2.0.4**。  
@@ -125,7 +125,7 @@ ms.locfileid: "75435666"
     >
     > * [Azure Cloud Shell](../../cloud-shell/quickstart.md)
     > * [Windows 10 版 Bash on Ubuntu](https://msdn.microsoft.com/commandline/wsl/about)
-    > * [吉特 （https://git-scm.com/)](https://git-scm.com/)
+    > * [Githttps://git-scm.com/)](https://git-scm.com/)
     > * [OpenSSH (https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
 
 2. 若要安装 Bind，请从 SSH 会话中使用以下命令：
@@ -285,7 +285,7 @@ sudo service bind9 status
 
 **从 Azure 门户启用 HBase 复制**
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 打开源 HBase 群集。
 3. 在群集菜单中，选择“脚本操作”。****
 4. 在页面顶部，选择“提交新项”。****
@@ -303,11 +303,11 @@ sudo service bind9 status
       >
       > 本演练假设 hn1 为活动头节点。 请检查群集以确定活动头节点。
 
-6. 选择 **“创建”**。 该脚本可能会运行一段时间，尤其是在使用 **-copydata** 参数的情况下。
+6. 选择“创建”  。 该脚本可能会运行一段时间，尤其是在使用 **-copydata** 参数的情况下。
 
 必需参数：
 
-|“属性”|描述|
+|名称|说明|
 |----|-----------|
 |-s、--src-cluster | 指定源 HBase 群集的 DNS 名称。 例如：-s hbsrccluster、--src-cluster=hbsrccluster |
 |-d、--dst-cluster | 指定目标（副本）HBase 群集的 DNS 名称。 例如：-s dsthbcluster、--src-cluster=dsthbcluster |
@@ -316,7 +316,7 @@ sudo service bind9 status
 
 可选参数：
 
-|“属性”|描述|
+|名称|说明|
 |----|-----------|
 |-su、--src-ambari-user | 指定源 HBase 群集的 Ambari 管理员用户名。 默认值为 **admin**。 |
 |-du、--dst-ambari-user | 指定目标 HBase 群集的 Ambari 管理员用户名。 默认值为 **admin**。 |
@@ -324,7 +324,7 @@ sudo service bind9 status
 |-m、--machine | 指定要在其中运行脚本操作的头节点。 此值应当根据活动的头节点进行选择。 在 HDInsight 门户或 Azure PowerShell 中以脚本操作的形式运行 $0 脚本时，可使用此选项。|
 |-cp、-copydata | 在启用复制的情况下，允许迁移表中的现有数据。 |
 |-rpm、-replicate-phoenix-meta | 针对 Phoenix 系统表启用复制。 <br><br>*请谨慎使用此选项。* 建议在使用此脚本之前，在副本群集上重新创建 Phoenix 表。 |
-|-h、--help | 显示用法信息。 |
+|-h、--help | 显示使用情况信息。 |
 
 该[脚本](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh)的 `print_usage()` 节中提供了详细的参数说明。
 
@@ -342,7 +342,7 @@ sudo service bind9 status
 
         -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"
 
-- **在特定表上启用复制，并复制现有数据**。 若要针对 table1、table2 和 table3 启用复制，请使用以下参数：
+- **对特定表启用复制并复制现有数据**。 若要针对 table1、table2 和 table3 启用复制，请使用以下参数：
 
         -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
 ms.openlocfilehash: 1737102ee652cc2263bd0a908c1336bc93a6757b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75377899"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>在 Azure Service Fabric 中还原备份
@@ -18,15 +18,15 @@ ms.locfileid: "75377899"
 
 例如，可将某个服务配置为备份其数据，以防止出现以下情况：
 
-- **灾难恢复案例**：整个服务结构群集的永久丢失。
-- **数据丢失案例**：服务分区的大部分副本永久丢失。
-- **数据丢失案例**：意外删除或损坏服务。 例如，管理员错误地删除了服务。
-- **数据损坏案例**：服务中的 Bug 会导致数据损坏。 例如，当某个服务代码升级程序将错误数据写入到可靠集合时，可能会发生数据损坏。 在此情况下，可能需要将代码和数据都还原到先前的状态。
+- **灾难恢复案例**：整个 Service Fabric 群集永久丢失。
+- **数据丢失案例**：大部分服务分区副本永久丢失。
+- **数据丢失案例**：服务被意外删除或损坏。 例如，管理员错误地删除了服务。
+- **数据损坏案例**：服务中的 Bug 导致数据损坏。 例如，当某个服务代码升级程序将错误数据写入到可靠集合时，可能会发生数据损坏。 在此情况下，可能需要将代码和数据都还原到先前的状态。
 
 ## <a name="prerequisites"></a>先决条件
 
-- 若要触发还原，必须为群集启用故障分析服务 (FAS)__
-- 备份还原服务 (BRS) 已创建备份。__
+- 若要触发还原，必须为群集启用故障分析服务 (FAS) 
+- 备份还原服务 (BRS) 已创建备份。 
 - 只能在分区触发还原。
 - 安装 Microsoft.ServiceFabric.Powershell.Http模块 [在预览中] 进行配置调用。
 
@@ -48,7 +48,7 @@ ms.locfileid: "75377899"
 可针对以下任何方案触发还原：
 
 - 灾难恢复时进行数据还原。__
-- _数据恢复数据损坏/数据丢失_。
+- 在数据损坏/数据丢失时进行数据还原。 
 
 ### <a name="data-restore-in-the-case-of-disaster-recovery"></a>发生灾难恢复时进行数据还原
 
@@ -152,7 +152,7 @@ FailureError            :
 
 此外，需要根据[分区方案](service-fabric-concepts-partitioning.md#get-started-with-partitioning)中的详述，选择备用群集中的某个目标分区。 备用群集备份将还原到在原始已丢失群集上的分区方案中指定的分区。
 
-如果备用群集上的分区 ID 为 `1c42c47f-439e-4e09-98b9-88b8f60800c6`，则你可以通过比较范围分区 (UniformInt64Partition) 的高键值和低键值，将此 ID 映射到原始群集分区 ID `974bd92a-b395-4631-8a7f-53bd4ae9cf22`。__
+如果备用群集上的分区 ID 为 `1c42c47f-439e-4e09-98b9-88b8f60800c6`，则你可以通过比较范围分区 (UniformInt64Partition) 的高键值和低键值，将此 ID 映射到原始群集分区 ID `974bd92a-b395-4631-8a7f-53bd4ae9cf22`。 
 
 对于已命名分区__，将比较名称值以识别备用群集中的目标分区。
 
@@ -201,7 +201,7 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
     ![触发分区还原 Fileshare][3]
 
-### <a name="data-restore-for-_data-corruption__data-loss_"></a>_数据损坏_/_data loss_数据丢失的数据还原
+### <a name="data-restore-for-_data-corruption__data-loss_"></a>在数据损坏/数据丢失时进行数据还原  
 
 对于数据丢失或数据损坏的情况，可靠有状态服务和 Reliable Actors 的已备份分区可以还原到任何所选备份。____
 
@@ -225,7 +225,7 @@ CreationTimeUtc         : 2018-04-06T21:10:27Z
 FailureError            :
 ```
 
-对于还原 API，请提供 _BackupId_ 和 _BackupLocation_ 详细信息。 群集已启用备份，因此 Service Fabric 备份还原服务 (BRS) 可识别出关联备份策略中的正确存储位置。__
+对于还原 API，请提供 _BackupId_ 和 _BackupLocation_ 详细信息。 群集已启用备份，因此 Service Fabric 备份还原服务 (BRS) 可识别出关联备份策略中的正确存储位置。 
 
 
 #### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用Microsoft.ServiceFabric.Powershell.Http 模块的 PowerShell
@@ -274,14 +274,14 @@ $restoreResponse | Format-List
 
 按以下顺序显示还原请求进度：
 
-1. **已接受**：_已接受_还原状态表示已使用正确的请求参数触发请求分区。
+1. **Accepted**：_Accepted_ 还原状态表示已使用正确的请求参数触发请求的分区。
     ```
     RestoreState  : Accepted
     TimeStampUtc  : 0001-01-01T00:00:00Z
     RestoredEpoch : @{DataLossNumber=131675205859825409; ConfigurationNumber=8589934592}
     RestoredLsn   : 3552
     ```
-2. **进度**：_进度_还原状态表示分区中正在进行还原，请求中提到了备份。 该分区将报告 _dataloss_ 状态。
+2. **InProgress**：_InProgress_ 还原状态表示正在使用请求中所述的备份来还原分区。 该分区将报告 _dataloss_ 状态。
     ```
     RestoreState  : RestoreInProgress
     TimeStampUtc  : 0001-01-01T00:00:00Z
@@ -289,8 +289,8 @@ $restoreResponse | Format-List
     RestoredLsn   : 3552
     ```
     
-3. **成功**、**失败**或**超时**：请求的还原可以在以下任何状态下完成。 每种状态的含义和响应详细信息如下：
-    - **成功**：_成功_还原状态表示已恢复的分区状态。 分区将报告 _RestoredEpoch_ 和 _RestoredLSN_ 状态，以及 UTC 格式的时间。
+3. **Success**、**Failure** 或 **Timeout**：请求的还原可能是在以下任一状态下完成的。 每种状态的含义和响应详细信息如下：
+    - **成功**：_Success_ 还原状态表示已重新获取分区状态。 分区将报告 _RestoredEpoch_ 和 _RestoredLSN_ 状态，以及 UTC 格式的时间。
 
         ```
         RestoreState  : Success
@@ -298,7 +298,7 @@ $restoreResponse | Format-List
         RestoredEpoch : @{DataLossNumber=131675205859825409; ConfigurationNumber=8589934592}
         RestoredLsn   : 3552
         ```        
-    - **失败**：_失败_还原状态指示还原请求失败。 将报告失败原因。
+    - **失败**：_Failure_ 还原状态表示还原请求失败。 将报告失败原因。
 
         ```
         RestoreState  : Failure
@@ -306,7 +306,7 @@ $restoreResponse | Format-List
         RestoredEpoch : 
         RestoredLsn   : 0
         ```
-    - **超时**：_超时_还原状态指示请求具有超时。 请使用更大的 [RestoreTimeout](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout) 建议新的还原请求。 默认超时为 10 分钟。 在再次请求还原之前，请确保分区不处于数据丢失状态。
+    - **Timeout**：_Timeout_ 还原状态表示请求超时。 请使用更大的 [RestoreTimeout](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout) 建议新的还原请求。 默认超时为 10 分钟。 在再次请求还原之前，请确保分区不处于数据丢失状态。
      
         ```
         RestoreState  : Timeout
@@ -317,7 +317,7 @@ $restoreResponse | Format-List
 
 ## <a name="automatic-restore"></a>自动还原
 
-可将 Service Fabric 群集中的可靠有状态服务和 Reliable Actors 分区配置为自动还原。__ 在备份策略中，将 `AutoRestore` 设置为 _true_。 启用自动还原可以在报告数据丢失情况时，从最新的分区备份还原数据。__ 有关详细信息，请参阅：
+可将 Service Fabric 群集中的可靠有状态服务和 Reliable Actors 分区配置为自动还原。__ 在备份策略中，将 `AutoRestore` 设置为 _true_。 启用自动还原可以在报告数据丢失情况时，从最新的分区备份还原数据。  有关详细信息，请参阅：
 
 - [备份策略中的自动还原支持](service-fabric-backuprestoreservice-configure-periodic-backup.md#auto-restore-on-data-loss)
 - [RestorePartition API 参考](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition)

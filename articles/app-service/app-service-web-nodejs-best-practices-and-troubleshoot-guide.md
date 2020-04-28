@@ -9,10 +9,10 @@ ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: 682884d11b298a97e27056af3c10802dfd410e4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75430569"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure 应用服务 Windows 版上节点应用程序的最佳做法和故障排除指南
@@ -20,7 +20,7 @@ ms.locfileid: "75430569"
 本文介绍 Azure 应用服务上运行的 [node 应用程序](app-service-web-get-started-nodejs.md)的最佳实践和故障排除步骤（使用 [iisnode](https://github.com/azure/iisnode)）。
 
 > [!WARNING]
-> 在生产站点上使用故障排除步骤时，请格外小心。 建议在非生产安装（例如过渡槽）上排查应用问题，当问题修复后，请交换过渡槽与生产槽。
+> 在生产站点上使用故障排除步骤时，请格外小心。 建议在非生产安装（例如过渡槽）上排查应用问题，问题修复后，请交换过渡槽与生产槽。
 >
 
 ## <a name="iisnode-configuration"></a>IISNODE 配置
@@ -87,7 +87,7 @@ IIS 的默认行为是在刷新之前或直到响应结束时（以较早出现�
 
 ### <a name="recyclesignalenabled"></a>recycleSignalEnabled
 
-默认值是 False。 如果启用，节点应用程序可以连接到命名管道（环境变量 IISNODE\_CONTROL\_PIPE）并发送“回收”消息。 可以通过此方式正常回收 w3wp。
+默认值为 false。 如果启用，节点应用程序可以连接到命名管道（环境变量 IISNODE\_CONTROL\_PIPE）并发送“回收”消息。 可以通过此方式正常回收 w3wp。
 
 ### <a name="idlepageouttimeperiod"></a>idlePageOutTimePeriod
 
@@ -99,7 +99,7 @@ IIS 的默认行为是在刷新之前或直到响应结束时（以较早出现�
 
 ### <a name="debugheaderenabled"></a>debugHeaderEnabled
 
-默认值是 False。 如果设置为 true，iisnode 会将 HTTP 响应标头 `iisnode-debug` 添加到它所发送的每个 HTTP 响应，`iisnode-debug` 标头值是一个 URL。 查看 URL 片段即可收集各项诊断信息，但在浏览器中打开该 URL 可达到更好的视觉效果。
+默认值为 false。 如果设置为 true，iisnode 会将 HTTP 响应标头 `iisnode-debug` 添加到它所发送的每个 HTTP 响应，`iisnode-debug` 标头值是一个 URL。 查看 URL 片段即可收集各项诊断信息，但在浏览器中打开该 URL 可达到更好的视觉效果。
 
 ### <a name="loggingenabled"></a>loggingEnabled
 
@@ -107,7 +107,7 @@ IIS 的默认行为是在刷新之前或直到响应结束时（以较早出现�
 
 ### <a name="deverrorsenabled"></a>devErrorsEnabled
 
-默认值是 False。 如果设置为 true，iisnode 会在浏览器上显示 HTTP 状态代码和 Win32 错误代码。 在调试特定类型的问题时，win32 代码很有用。
+默认值为 false。 如果设置为 true，iisnode 会在浏览器上显示 HTTP 状态代码和 Win32 错误代码。 在调试特定类型的问题时，win32 代码很有用。
 
 ### <a name="debuggingenabled-do-not-enable-on-live-production-site"></a>debuggingEnabled（请勿在实际生产站点上启用）
 
@@ -119,11 +119,11 @@ IIS 的默认行为是在刷新之前或直到响应结束时（以较早出现�
 
 ### <a name="my-node-application-is-making-excessive-outbound-calls"></a>Node 应用程序发出的出站调用过多
 
-许多应用程序想要在其定期操作中进行出站连接。 例如，当请求传入时，节点应用程序会想连接别处的 REST API，并获取一些信息来处理请求。 建议在进行 http 或 https 调用时使用保持连接代理。 可在进行这些出站调用时，使用 agentkeepalive 模块作为保持连接代理。
+许多应用程序想要在其定期操作中进行出站连接。 例如，请求传入时，节点应用程序会想连接别处的 REST API，并获取一些信息来处理请求。 建议在进行 http 或 https 调用时使用保持连接代理。 可在进行这些出站调用时，使用 agentkeepalive 模块作为保持连接代理。
 
 agentkeepalive 模块确保在 Azure Web 应用 VM 上重复使用套接字。 在每个出站请求中创建新套接字会增大应用程序的开销。 让应用程序对出站请求重复使用套接字可确保应用程序不会超过为每个 VM 分配的 maxSockets。 对于 Azure 应用服务的建议是将 agentKeepAlive maxSockets 值设置为每个 VM 总共 160 个套接字（4 个 node.exe 实例 \* 每个实例 40 个 maxSockets）。
 
-[agentKeepALive ](https://www.npmjs.com/package/agentkeepalive) 配置示例：
+[agentKeepALive 配置](https://www.npmjs.com/package/agentkeepalive)示例：
 
 ```nodejs
 let keepaliveAgent = new Agent({
@@ -166,7 +166,7 @@ http.createServer(function (req, res) {
 }).listen(process.env.PORT);
 ```
 
-转到调试控制台站点 `https://yoursite.scm.azurewebsites.net/DebugConsole`。
+转到调试控制台站点 `https://yoursite.scm.azurewebsites.net/DebugConsole` 。
 
 进入 site/wwwroot 目录。 将会看到一个命令提示符，如以下示例所示：
 
@@ -205,7 +205,7 @@ http.createServer(function (req, res) {
 
 ![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
 
-请下载此文件，并使用 Chrome F12 工具将其打开。 在 Chrome 上按 F12，然后选择 **"个人资料"** 选项卡。选择 **"加载**"按钮。 选择下载的 profile.cpuprofile 文件。 单击刚加载的配置文件。
+请下载此文件，并使用 Chrome F12 工具将其打开。 在 Chrome 中按 F12，并选择“配置文件”选项卡。  单击“加载”按钮。  选择下载的 profile.cpuprofile 文件。 单击刚加载的配置文件。
 
 ![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
 
@@ -232,9 +232,9 @@ node.exe 随机关闭的原因有多种：
 如果应用程序在启动时返回 500 错误，可能有几个原因：
 
 1. Node.exe 未出现在正确的位置。 检查 nodeProcessCommandLine 设置。
-2. 主要脚本文件未出现在正确的位置。 检查 web.config，并确保处理程序节中的主要脚本文件名与主要脚本文件匹配。
+2. 主要脚本文件未出现在正确的位置。 检查 web.config，确保处理程序节中的主要脚本文件名与主要脚本文件匹配。
 3. Web.config 配置不正确 – 检查设置名称/值。
-4. 冷启动 – 应用程序的启动时间太长。 如果应用程序所花的时间超过 (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay) / 1000 秒，则 iisnode 会返回 500 错误。 增加这些设置的值，以便与应用程序启动时间匹配，从而防止 iisnode 超时并返回 500 错误。
+4. 冷启动 – 应用程序的启动时间太长。 如果应用程序所花的时间超过 (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay) / 1000 秒，则 iisnode 会返回 500 错误。 增加这些设置的值，使其与应用程序启动时间匹配，防止 iisnode 超时并返回 500 错误。
 
 ### <a name="my-node-application-crashed"></a>节点应用程序崩溃
 
@@ -247,7 +247,7 @@ node.exe 随机关闭的原因有多种：
 
 1. 使用 npm3 来安装模块，确保采用平面依赖关系结构，并且没有重复的依赖项。
 2. 尝试延迟加载 node\_modules，而不要在应用程序启动时加载所有模块。 若要延迟加载模块，应在首次执行模块代码之前，在函数中真正需要该模块时调用 require('module')。
-3. Azure 应用服务提供一项称为本地缓存的功能。 此功能会将内容从网络共享复制到 VM 上的本地磁盘。 由于文件位于本地，因此，node\_modules 的加载时间快很多。
+3. Azure 应用服务提供一项称为本地缓存的功能。 此功能会将内容从网络共享复制到 VM 上的本地磁盘。 由于文件位于本地，因此 node\_modules 的加载速度要快很多。
 
 ## <a name="iisnode-http-status-and-substatus"></a>IISNODE http 状态和子状态
 
@@ -262,7 +262,7 @@ node.exe 随机关闭的原因有多种：
 | 500 |1002 |Node.exe 崩溃 – 检查 d:\\home\\LogFiles\\logging-errors.txt 中的堆栈跟踪。 |
 | 500 |1003 |管道配置问题 – 命名管道配置不正确。 |
 | 500 |1004-1018 |发送请求或处理 node.exe 的相关响应时发生某个错误。 检查 node.exe 是否已崩溃。 检查 d:\\home\\LogFiles\\logging-errors.txt 中的堆栈跟踪。 |
-| 503 |1000 |内存不足，无法分配更多命名管道连接。 检查应用为何耗用这么多内存。 检查 maxConcurrentRequestsPerProcess 设置值。 如果此值并非无限，而且有许多请求，请增大此值来防止此错误。 |
+| 503 |1000 |内存不足，无法分配更多命名管道连接。 检查应用为何耗用大量内存。 检查 maxConcurrentRequestsPerProcess 设置值。 如果此值并非无限，而且有许多请求，请增大此值来防止此错误。 |
 | 503 |1001 |无法将请求分派至 node.exe，因为应用程序正在回收。 应用程序回收之后，应该会正常处理请求。 |
 | 503 |1002 |检查 win32 错误代码的实际原因 – 无法将请求分派到 node.exe。 |
 | 503 |1003 |命名管道太忙 – 验证 node.exe 是否正在消耗过多的 CPU |
@@ -271,10 +271,10 @@ NODE.exe 具有名为 `NODE_PENDING_PIPE_INSTANCES` 的设置。 在 Azure 应�
 
 ## <a name="more-resources"></a>更多资源
 
-请访问以下链接，了解有关 Azure 应用服务上的 node.js 应用程序的详细信息。
+请访问以下链接，详细了解 Azure App Service 上的 node.js 应用程序。
 
-* [在 Azure 应用服务中开始使用 Node.js Web 应用](app-service-web-get-started-nodejs.md)
-* [如何在 Azure 应用服务中调试 Node.js Web 应用](https://blogs.msdn.microsoft.com/azureossds/2018/08/03/debugging-node-js-apps-on-azure-app-services/)
+* [Azure 应用服务中的 Node.js Web 应用入门](app-service-web-get-started-nodejs.md)
+* [如何在 Azure App Service 中调试 Node.js Web 应用](https://blogs.msdn.microsoft.com/azureossds/2018/08/03/debugging-node-js-apps-on-azure-app-services/)
 * [将 Node.js 模块与 Azure 应用程序一起使用](../nodejs-use-node-modules-azure-apps.md)
 * [Azure 应用服务 Web 应用：Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
 * [Node.js 开发人员中心](../nodejs-use-node-modules-azure-apps.md)

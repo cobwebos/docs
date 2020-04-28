@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/12/2019
 ms.openlocfilehash: 58f7d99af638c8d03bbce46b7fcf8204aaca11d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75435757"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>运行 HDInsight 随附的 MapReduce 示例
@@ -33,7 +33,7 @@ ms.locfileid: "75435757"
 
 下面的示例都包含在该存档文件中：
 
-|示例 |描述 |
+|示例 |说明 |
 |---|---|
 |aggregatewordcount|计算输入文件中的单词数。|
 |aggregatewordhist|计算输入文件中单词的直方图。|
@@ -88,7 +88,7 @@ ms.locfileid: "75435757"
 
     此消息表示可以为源文档提供多个输入路径。 最后的路径是存储输出（源文档中的单词计数）的位置。
 
-4. 使用以下内容计算列奥纳多·达·芬奇笔记本中的所有单词，这些单词作为示例数据随群集一起提供：
+4. 使用以下内容来统计 Leonardo da Vinci 的笔记本中的所有单词，它们作为示例数据包含在群集中：
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/davinciwordcount
@@ -168,7 +168,7 @@ yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar 
 
 GraySort 是一种基准排序。 其指标为在给大量数据（通常至少 100 TB）排序时达到的排序速率（TB/分钟）。
 
-此示例使用适中的 10 GB 数据，这样它运行时能相对快一点。 它使用由 Owen O'Malley 和 Arun Murthy 开发的 MapReduce 应用程序。 这些应用在 2009 年赢得了年度通用（"Daytona"）TB 排序基准，速率为 0.578 TB/min（173 分钟内为 100 TB）。 有关此和其他排序基准的详细信息，请参阅[排序基准](https://sortbenchmark.org/)站点。
+此示例使用适中的 10 GB 数据，这样它运行时能相对快一点。 它使用由 Owen O'Malley 和 Arun Murthy 开发的 MapReduce 应用程序。 这些应用程序在2009中赢得了年度通用（"Daytona"） tb 排序基准，其速率为 0.578 TB/分钟（173分钟内为 100 TB）。 有关此分类基准和其他排序基准的详细信息，请参阅[排序基准](https://sortbenchmark.org/)站点。
 
 本示例使用三组 MapReduce 程序：
 

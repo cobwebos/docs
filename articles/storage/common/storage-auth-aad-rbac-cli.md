@@ -11,17 +11,17 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: abe35f3193e2d7ff9a949ca7cd330cb58da2b78c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74891962"
 ---
 # <a name="use-azure-cli-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>使用 Azure CLI 为 blob 和队列数据分配 RBAC 角色
 
 Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 授权访问受保护的资源。 Azure 存储定义了一组内置的 RBAC 角色，它们包含用于访问 Blob 或队列数据的通用权限集。
 
-将 RBAC 角色分配到 Azure AD 安全主体后，Azure 会向该安全主体授予对这些资源的访问权限。 可以将访问权限限定于订阅、资源组、存储帐户、单个容器或队列级别。 Azure AD 安全主体可以是 Azure 资源的用户、组、应用程序服务主体或[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。
+将 RBAC 角色分配到 Azure AD 安全主体后，Azure 会向该安全主体授予对这些资源的访问权限。 可以将访问权限限定于订阅、资源组、存储帐户、单个容器或队列级别。 Azure AD 安全主体可以是用户、组、应用程序服务主体，也可以是 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。
 
 本文介绍如何使用 Azure CLI 列出内置的 RBAC 角色并将其分配给用户。 若要详细了解如何使用 Azure CLI，请参阅 [Azure 命令行界面 (CLI)](https://docs.microsoft.com/cli/azure)。
 
@@ -93,13 +93,13 @@ az role assignment create \
 
 ### <a name="storage-account-scope"></a>存储帐户范围
 
-若要分配存储帐户范围的角色，请为 `--scope` 参数指定存储帐户资源的范围。 存储帐户的范围采用以下形式：
+若要分配存储帐户范围的角色，请为 `--scope` 参数指定存储帐户资源的范围。 存储帐户的范围采用以下格式：
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
 ```
 
-以下示例演示如何在存储帐户级别向用户分配**存储 Blob 数据读取者**角色。 请务必将示例值替换为你自己的值：\
+以下示例演示如何在存储帐户级别向用户分配“存储 Blob 数据读取者”角色  。 请务必将示例值替换为你自己的值：\
 
 ```azurecli-interactive
 az role assignment create \
@@ -110,7 +110,7 @@ az role assignment create \
 
 ### <a name="resource-group-scope"></a>资源组范围
 
-若要分配资源组范围的角色，请为 `--resource-group` 参数指定资源组名称或 ID。 以下示例在资源组级别向用户分配“存储队列数据读取者”角色****。 请务必将括号中的示例值和占位符值替换为你自己的值：
+若要分配资源组范围的角色，请为 `--resource-group` 参数指定资源组名称或 ID。 以下示例在资源组级别向用户分配“存储队列数据读取者”角色  。 请务必将括号中的示例值和占位符值替换为你自己的值：
 
 ```azurecli-interactive
 az role assignment create \
@@ -127,7 +127,7 @@ az role assignment create \
 /subscriptions/<subscription>
 ```
 
-以下示例演示如何在存储帐户级别向用户分配**存储 Blob 数据读取者**角色。 请务必将示例值替换为你自己的值： 
+以下示例演示如何在存储帐户级别向用户分配“存储 Blob 数据读取者”角色  。 请务必将示例值替换为你自己的值： 
 
 ```azurecli-interactive
 az role assignment create \

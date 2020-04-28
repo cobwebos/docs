@@ -8,17 +8,17 @@ ms.date: 12/02/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 6f41adbb726313ef095084d079dc7852736e0c06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74870524"
 ---
 # <a name="system-functions-azure-cosmos-db"></a>系统函数 (Azure Cosmos DB)
 
  Cosmos DB 提供多个内置 SQL 函数。 内置函数的类别如下所示。  
   
-|函数组|描述|操作|  
+|函数组|说明|操作|  
 |--------------|-----------------|-----------------| 
 |[数组函数](sql-query-array-functions.md)|该数组函数对数组输入值执行操作，并返回数值、布尔值或数组值。 | [ARRAY_CONCAT](sql-query-array-concat.md)、[ARRAY_CONTAINS](sql-query-array-contains.md)、[ARRAY_LENGTH](sql-query-array-length.md)、[ARRAY_SLICE](sql-query-array-slice.md) |
 |[日期和时间函数](sql-query-date-time-functions.md)|使用日期和时间函数可以获取采用以下两种格式的当前 UTC 日期和时间：一个时间戳，其值为以毫秒为单位的 Unix 纪元；一个符合 ISO 8601 格式的字符串。 | [GetCurrentDateTime](sql-query-getcurrentdatetime.md)、[GetCurrentTimestamp](sql-query-getcurrenttimestamp.md) |
@@ -29,7 +29,7 @@ ms.locfileid: "74870524"
 
 ## <a name="built-in-versus-user-defined-functions-udfs"></a>内置函数与用户定义函数 (UDF)
 
-如果您当前使用的是用户定义的函数 （UDF），而内置函数现在可用，则相应的内置函数将更快、更高效。
+如果当前正在使用内置函数可用的用户定义函数（UDF），则相应的内置函数将更快运行，更有效率。
 
 ## <a name="built-in-versus-ansi-sql-functions"></a>内置函数与 ANSI SQL 函数
 
@@ -37,7 +37,7 @@ Cosmos DB 函数与 ANSI SQL 函数之间的主要差别在于，Cosmos DB 函�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure 宇宙 DB 简介](introduction.md)
+- [Azure Cosmos DB 简介](introduction.md)
 - [数组函数](sql-query-array-functions.md)
 - [日期和时间函数](sql-query-date-time-functions.md)
 - [数学函数](sql-query-mathematical-functions.md)
@@ -45,4 +45,4 @@ Cosmos DB 函数与 ANSI SQL 函数之间的主要差别在于，Cosmos DB 函�
 - [字符串函数](sql-query-string-functions.md)
 - [类型检查函数](sql-query-type-checking-functions.md)
 - [用户定义的函数](sql-query-udfs.md)
-- [集 料](sql-query-aggregates.md)
+- [聚合](sql-query-aggregates.md)

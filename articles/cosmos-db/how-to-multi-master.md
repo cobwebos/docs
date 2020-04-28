@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: 654baed649093add2aa62f4ba81bf6ce7c3e0df5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74873635"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>在使用 Azure Cosmos DB 的应用程序配置多主数据库
@@ -108,10 +108,10 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {
 
 * [使用会话令牌在 Azure Cosmos DB 中管理一致性](how-to-manage-consistency.md#utilize-session-tokens)
 * [Azure Cosmos DB 中的冲突类型和解决策略](conflict-resolution-policies.md)
-* [Azure 宇宙 DB 中的高可用性](high-availability.md)
-* [Azure 宇宙 DB 中的一致性级别](consistency-levels.md)
+* [Azure Cosmos DB 中的高可用性](high-availability.md)
+* [Azure Cosmos DB 中的一致性级别](consistency-levels.md)
 * [在 Azure Cosmos DB 中选择适当的一致性级别](consistency-levels-choosing.md)
 * [Azure Cosmos DB 中的一致性、可用性和性能权衡](consistency-levels-tradeoffs.md)
 * [各种一致性级别的可用性和性能权衡](consistency-levels-tradeoffs.md)
 * [全局缩放预配的吞吐量](scaling-throughput.md)
-* [全球分销：引擎盖下](global-dist-under-the-hood.md)
+* [全局分发：在幕后](global-dist-under-the-hood.md)

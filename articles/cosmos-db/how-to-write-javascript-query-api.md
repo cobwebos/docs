@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
 ms.openlocfilehash: 221a3118808a044ef1b1b822b9c95772bf792f34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75441715"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>如何使用 JavaScript 查询 API 在 Azure Cosmos DB 中编写存储过程和触发器
@@ -90,4 +90,4 @@ function insertDocumentAndUpdateMetadata(item) {
 
 * [如何在 Azure Cosmos DB 中注册和使用用户定义的函数](how-to-use-stored-procedures-triggers-udfs.md#udfs)
 
-* [Azure Cosmos DB 中的合成分区键](synthetic-partition-keys.md)
+* [Azure Cosmos DB 中的综合分区键](synthetic-partition-keys.md)

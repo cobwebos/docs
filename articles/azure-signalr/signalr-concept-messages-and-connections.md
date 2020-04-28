@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: 5f6428231a3639738e8fb52e7dc3f2f2a3d2a26e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75392818"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Azure SignalR 服务中的消息和连接
@@ -20,7 +20,7 @@ Azure SignalR 服务的计费模型基于连接数和消息数。 本文介绍�
 
 ## <a name="message-formats"></a>消息格式 
 
-Azure SignalR 服务支持与ASP.NET核心信号[R：JSON](https://www.json.org/)和[消息包](/aspnet/core/signalr/messagepackhubprotocol)相同的格式。
+Azure SignalR 服务支持的格式与 ASP.NET Core SignalR 相同：[JSON](https://www.json.org/) 和 [MessagePack](/aspnet/core/signalr/messagepackhubprotocol)。
 
 ## <a name="message-size"></a>消息大小
 
@@ -44,7 +44,7 @@ Azure SignalR 服务有服务器连接和客户端连接。 默认情况下，�
 
 Azure 门户中显示的连接计数包括服务器连接和客户端连接。
 
-例如，假设你有 2 个应用程序服务器，并在代码中定义了 5 个中心。 服务器连接计数将为 50：2 个应用服务器 + 5 个集线器 = 每个集线器 5 个连接。
+例如，假设你有 2 个应用程序服务器，并在代码中定义了 5 个中心。 服务器连接计数是 50：2 个应用服务器 * 5 个中心 * 每个中心的 5 个连接。
 
 ASP.NET SignalR 在计算服务器连接数方面有所不同。 除了定义的中心以外，它还包括一个默认的中心。 默认情况下，每个应用程序服务器需要 5 个额外的初始服务器连接。 默认中心的初始连接计数与其他中心保持一致。
 
@@ -58,5 +58,5 @@ ASP.NET SignalR 在计算服务器连接数方面有所不同。 除了定义的
 
 - [Azure Monitor 中的聚合类型](/azure/azure-monitor/platform/metrics-supported#microsoftsignalrservicesignalr )
 - [ASP.NET Core SignalR 配置](/aspnet/core/signalr/configuration)
-- [Json](https://www.json.org/)
+- [JSON](https://www.json.org/)
 - [MessagePack](/aspnet/core/signalr/messagepackhubprotocol)

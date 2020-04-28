@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
 ms.openlocfilehash: 23fbb0b4c506b2f72000add9704618337b8b24cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75386181"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>生成 Node.js 应用程序并将其部署到 Azure 云服务
@@ -35,7 +35,7 @@ ms.locfileid: "75386181"
 > [!NOTE]
 > 本教程使用 Azure PowerShell，因此需要在 Windows 上运行。
 
-* 安装和配置[Azure 电源外壳]。
+* 安装和配置[Azure Powershell]。
 * 下载并安装 [用于 .NET 2.7 的 Azure SDK]。 在安装设置中，选择：
   * MicrosoftAzureAuthoringTools
   * MicrosoftAzureComputeEmulator
@@ -82,7 +82,7 @@ Node.js 应用在 **server.js** 文件中定义，该文件位于 Web 角色（�
 ## <a name="deploy-the-application-to-azure"></a>将应用程序部署到 Azure
 
 > [!NOTE]
-> 要完成本教程，需要一个 Azure 帐户。 您可以[激活您的MSDN订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或[注册一个免费帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF)。
+> 要完成本教程，需要一个 Azure 帐户。 可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或[注册免费帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF)。
 
 ### <a name="download-the-azure-publishing-settings"></a>下载 Azure 发布设置
 要将应用程序部署到 Azure，必须先为 Azure 订阅下载发布设置。
@@ -161,7 +161,7 @@ Node.js 应用在 **server.js** 文件中定义，该文件位于 Web 角色（�
 
 [Azure 网站、云服务和虚拟机的比较]: /azure/architecture/guide/technology-choices/compute-decision-tree
 [使用轻型 Web 应用]: ../app-service/app-service-web-get-started-nodejs.md
-[Azure 电源外壳]: /powershell/azureps-cmdlets-docs
+[Azure Powershell]: /powershell/azureps-cmdlets-docs
 [用于 .NET 2.7 的 Azure SDK]: https://www.microsoft.com/en-us/download/details.aspx?id=48178
 [将 PowerShell 连接]: /powershell/azureps-cmdlets-docs
 [nodejs.org]: https://nodejs.org/

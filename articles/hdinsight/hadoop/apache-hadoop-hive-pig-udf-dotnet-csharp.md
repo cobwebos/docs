@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 9ef9eada9b9aec50642a8bf357edab0677868817
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74949383"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 上将 C# 用户定义函数与 Apache Hive 和 Apache Pig 配合使用
 
-了解如何在 HDInsight 上使用 C# 用户定义的函数 （UDF） 与[Apache Hive](https://hive.apache.org)和[Apache Pig。](https://pig.apache.org)
+了解如何在 HDInsight 上将 c # 用户定义函数（UDF）与[Apache Hive](https://hive.apache.org)和[Apache Pig](https://pig.apache.org)一起使用。
 
 > [!IMPORTANT]
 > 本文档中的步骤使用基于 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 组件版本控制](../hdinsight-component-versioning.md)。
@@ -30,7 +30,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
     使用任何需要的 IDE。 我们建议使用 [Visual Studio](https://www.visualstudio.com/vs) 或 [Visual Studio Code](https://code.visualstudio.com/)。 本文档中的步骤使用 Visual Studio 2019。
 
-* 将 .exe 文件上传到群集以及运行 Pig 和 Hive 作业的方法。 我们建议用于可视化工作室[、Azure PowerShell](/powershell/azure)和 Azure [CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)[的数据湖工具](../../data-lake-analytics/data-lake-analytics-data-lake-tools-install.md)。 本文档中的各个步骤都使用针对 Visual Studio 的 Data Lake 工具上传文件和运行 Hive 查询示例。
+* 将 .exe 文件上传到群集以及运行 Pig 和 Hive 作业的方法。 建议[Data Lake 用于 Visual Studio 的工具](../../data-lake-analytics/data-lake-analytics-data-lake-tools-install.md)、 [Azure PowerShell](/powershell/azure)和[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 本文档中的各个步骤都使用针对 Visual Studio 的 Data Lake 工具上传文件和运行 Hive 查询示例。
 
     有关运行 Hive 查询的其他方法的信息，请参阅 [Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？](hdinsight-use-hive.md)。
 
@@ -42,7 +42,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
 有关 Mono 与 .NET Framework 版本的兼容性的详细信息，请参阅 [Mono 兼容性](https://www.mono-project.com/docs/about-mono/compatibility/)。
 
-有关 HDInsight 版本附带的 .NET 框架和单声道版本的详细信息，请参阅[HDInsight 组件版本](../hdinsight-component-versioning.md)。
+有关 HDInsight 版本随附的 .NET Framework 和 Mono 版本的详细信息，请参阅[hdinsight 组件版本](../hdinsight-component-versioning.md)。
 
 ## <a name="create-the-c-projects"></a>创建 C\# 项目
 
@@ -54,11 +54,11 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
 1. 启动 Visual Studio。
 
-2. 选择“创建新项目”。****
+2. 选择“创建新项目”。 
 
-3. 在“创建新项目”窗口中，选择“控制台应用(.NET Framework)”模板（C# 版本）。******** 然后选择 **"下一步**"。
+3. 在“创建新项目”窗口中，选择“控制台应用(.NET Framework)”模板（C# 版本）。******** 然后，选择“下一步”  。
 
-4. 在“配置新项目”窗口输入 *HiveCSharp* 作为**项目名称**，然后导航到或创建一个**位置**用于保存新项目。**** 然后选择 **"创建**"。
+4. 在“配置新项目”窗口输入 *HiveCSharp* 作为**项目名称**，然后导航到或创建一个**位置**用于保存新项目。**** 然后选择“创建”  。
 
 5. 在 Visual Studio IDE 中，将 *Program.cs* 的内容替换为以下代码：
 
@@ -111,7 +111,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
     }
     ```
 
-6. 在菜单栏中，选择 **"生成** > **生成解决方案**"以生成项目。
+6. 从菜单栏中，选择 "**生成** > " "生成**解决方案**" 以生成项目。
 
 7. 关闭解决方案。
 
@@ -123,9 +123,9 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
 2. 在“开始”窗口中，选择“创建新项目”********。
 
-3. 在“创建新项目”窗口中，选择“控制台应用(.NET Framework)”模板（C# 版本）。******** 然后选择 **"下一步**"。
+3. 在“创建新项目”窗口中，选择“控制台应用(.NET Framework)”模板（C# 版本）。******** 然后，选择“下一步”  。
 
-4. 在“配置新项目”窗口输入 *PigUDF* 作为**项目名称**，然后转到或创建一个**位置**用于保存新项目。**** 然后选择 **"创建**"。
+4. 在“配置新项目”窗口输入 *PigUDF* 作为**项目名称**，然后转到或创建一个**位置**用于保存新项目。**** 然后选择“创建”  。
 
 5. 在 Visual Studio IDE 中，将 *Program.cs* 的内容替换为以下代码：
 
@@ -160,7 +160,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
     此代码分析发送自 Pig 的行，并对以 `java.lang.Exception` 开头的行重新设置格式。
 
-6. 在菜单栏中，选择 **"生成** > **生成解决方案**"以生成项目。
+6. 从菜单栏中，选择 "**生成** > " "生成**解决方案**" 以生成项目。
 
 7. 使解决方案保持打开状态。
 
@@ -168,7 +168,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
 接下来，将 Hive 和 Pig UDF 应用程序上传到 HDInsight 群集中的存储。
 
-1. 在可视化工作室中，导航到**查看** > **服务器资源管理器**。
+1. 在 Visual Studio 中，导航到 "**视图** > "**服务器资源管理器**。
 
 1. 在服务器资源管理器中右键单击“Azure”并选择“连接到 Microsoft Azure 订阅”，然后完成登录过程。************
 
@@ -196,7 +196,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
 现在可以运行使用 Hive UDF 应用程序的 Hive 查询。
 
-1. 在可视化工作室中，导航到**查看** > **服务器资源管理器**。
+1. 在 Visual Studio 中，导航到 "**视图** > "**服务器资源管理器**。
 
 2. 依次展开“Azure”**** 和“HDInsight”****。
 
@@ -222,7 +222,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
     > [!IMPORTANT]
     > 取消注释与用于群集的默认存储类型相匹配的 `add file` 语句。
 
-    此查询将从 `hivesampletable` 中选择 `clientid`、`devicemake` 和 `devicemodel` 字段，然后将这些字段传递到 *HiveCSharp.exe* 应用程序。 该查询预期应用程序返回三个字段，它们将存储为 `clientid`、`phoneLabel` 和 `phoneHash`。 查询还希望在默认存储容器的根目录中找到*HiveCSharp.exe。*
+    此查询将从 `hivesampletable` 中选择 `clientid`、`devicemake` 和 `devicemodel` 字段，然后将这些字段传递到 *HiveCSharp.exe* 应用程序。 该查询预期应用程序返回三个字段，它们将存储为 `clientid`、`phoneLabel` 和 `phoneHash`。 查询还需要在默认存储容器的根目录中找到*hivecsharp.exe* 。
 
 5. 将默认的“交互式”**** 切换为“批处理”****，然后选择“提交”**** 以将作业提交到 HDInsight 群集。 此时会打开“Hive 作业摘要”**** 窗口。
 
@@ -232,7 +232,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
 也可以运行使用 Pig UDF 应用程序的 Pig 作业。
 
-1. 使用 SSH 连接到 HDInsight 群集。 （例如，运行命令`ssh sshuser@<clustername>-ssh.azurehdinsight.net`.）有关详细信息，请参阅将[SSH 与 HDInsight 一起使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
+1. 使用 SSH 连接到 HDInsight 群集。 （例如，运行命令`ssh sshuser@<clustername>-ssh.azurehdinsight.net`。）有关详细信息，请参阅[使用 SSH withHDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 2. 使用以下命令启动 Pig 命令行：
 

@@ -9,55 +9,55 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: 07f109b3d5539f7cd87a12fb42a36803573c2bdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75354564"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>使用 Visual Studio 工具开发流分析 Edge 作业
 
 本教程介绍如何使用适用于 Visual Studio 的流分析工具。 了解如何创作、调试和创建流分析 Edge 作业。 创建并测试作业后，可以转到 Azure 门户，将该作业部署到设备中。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，需要具备以下先决条件：
 
-* 安装[视觉工作室 2019](https://visualstudio.microsoft.com/downloads/)，[视觉工作室 2015，](https://www.visualstudio.com/vs/older-downloads/)或[视觉工作室 2013 更新 4](https://www.microsoft.com/download/details.aspx?id=45326). 支持 Enterprise (Ultimate/Premium)、Professional、Community 版本。 不支持 Express 版本。  
+* 安装 [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)、[Visual Studio 2015](https://www.visualstudio.com/vs/older-downloads/) 或 [Visual Studio 2013 Update 4](https://www.microsoft.com/download/details.aspx?id=45326)。 支持 Enterprise (Ultimate/Premium)、Professional、Community 版本。 不支持 Express 版本。  
 
 * 请按照[安装说明](stream-analytics-tools-for-visual-studio-edge-jobs.md)安装用于 Visual Studio 的流分析工具。
  
 ## <a name="create-a-stream-analytics-edge-project"></a>创建流分析 Edge 项目 
 
-从可视化工作室中，选择 **"文件** > **新项目** > **"。** 导航到左侧的“模板”列表，展开“Azure 流分析” > “流分析 Edge” > “Azure 流分析 Edge 应用程序”。**************** 提供项目的名称、位置和解决方案名称，选择“确定”。****
+在 Visual Studio 中，选择“文件”   > “新建”   > “项目”  。 导航到左侧的“模板”列表，展开“Azure 流分析” **“流分析 Edge”** “Azure 流分析 Edge 应用程序”。   >    >   提供项目的名称、位置和解决方案名称，选择“确定”。 
 
 ![Visual Studio 中的新流分析 Edge 项目](./media/stream-analytics-tools-for-visual-studio-edge-jobs/new-stream-analytics-edge-project.png)
 
-创建项目后，导航到“解决方案资源管理器”查看文件夹层次结构。****
+创建项目后，导航到“解决方案资源管理器”查看文件夹层次结构。 
 
 ![流分析 Edge 作业的解决方案资源管理器视图](./media/stream-analytics-tools-for-visual-studio-edge-jobs/edge-project-in-solution-explorer.png)
 
  
 ## <a name="choose-the-correct-subscription"></a>选择正确的订阅
 
-1. 在 Visual Studio 的“视图”菜单中，选择“服务器资源管理器”********。  
+1. 在 Visual Studio 的“视图”菜单中，选择“服务器资源管理器”   。  
 
-2. 右键单击“Azure”并选择“连接到 Microsoft Azure 订阅”，然后使用你的 Azure 帐户进行登录。********
+2. 右键单击“Azure”并选择“连接到 Microsoft Azure 订阅”，然后使用你的 Azure 帐户进行登录。  
 
 ## <a name="define-inputs"></a>定义输入
 
-1. 在“解决方案资源管理器”中展开“输入”节点，应会看到名为 **EdgeInput.json** 的输入。******** 双击该输出以查看其设置。  
+1. 在“解决方案资源管理器”中展开“输入”节点，应会看到名为 **EdgeInput.json** 的输入。   双击该输出以查看其设置。  
 
-2. 将“源类型”设置为“数据流”。**** 然后将“源”设置为“Edge 中心”****，将“事件序列化格式”设置为“Json”****，将“编码”设置为“UTF8”。**** （可选）可以重命名“输入别名”。对于本示例，我们将其保留原样。**** 如果重命名了输入别名，请在定义查询时使用重命名后的名称。 选择“保存”****，保存这些设置。  
+2. 将“源类型”设置为“数据流”。  然后将“源”设置为“Edge 中心”  ，将“事件序列化格式”设置为“Json”  ，将“编码”设置为“UTF8”。  （可选）可以重命名“输入别名”。对于本示例，我们将其保留原样。**** 如果重命名了输入别名，请在定义查询时使用重命名后的名称。 选择“保存”  ，保存这些设置。  
    ![流分析作业输入配置](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-input-configuration.png)
  
 
 
 ## <a name="define-outputs"></a>定义输出
 
-1. 在“解决方案资源管理器”中展开“输出”节点，应会看到名为 **EdgeOutput.json** 的输出。******** 双击该输出以查看其设置。  
+1. 在“解决方案资源管理器”中展开“输出”节点，应会看到名为 **EdgeOutput.json** 的输出。   双击该输出以查看其设置。  
 
-2. 请确保将接收器设置为选择“Edge 中心”****，将“事件序列化格式”设置为 **Json**，将“编码”设置 为**UTF8**，将“格式”设置为“数组”****。 （可选）可以重命名“输出别名”。对于本示例，我们将其保留原样。**** 如果重命名了输出别名，请在定义查询时使用重命名后的名称。 选择“保存”****，保存这些设置。 
+2. 请确保将接收器设置为选择“Edge 中心”  ，将“事件序列化格式”设置为 **Json**，将“编码”设置 为**UTF8**，将“格式”设置为“数组”  。 （可选）可以重命名“输出别名”。对于本示例，我们将其保留原样。**** 如果重命名了输出别名，请在定义查询时使用重命名后的名称。 选择“保存”  ，保存这些设置。 
    ![流分析作业输出配置](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-output-configuration.png)
  
 ## <a name="define-the-transformation-query"></a>定义转换查询
@@ -82,13 +82,13 @@ FROM EdgeInput
 
 若要在本地测试查询，应上传示例数据。 可以通过从 [GitHub 存储库](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/Registration.json)下载注册数据来获取示例数据，并将其保存到本地计算机。 
 
-1. 若要上传示例数据，请右键单击 **EdgeInput.json** 文件并选择“添加本地输入”****  
+1. 若要上传示例数据，请右键单击 **EdgeInput.json** 文件并选择“添加本地输入”   
 
-2. 在弹出窗口中，**浏览**本地路径中的示例数据，并选择“保存”。****
+2. 在弹出窗口中，**浏览**本地路径中的示例数据，并选择“保存”。 
    ![Visual Studio 中的本地输入配置](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-local-input-configuration.png)
  
 3. 名为 **local_EdgeInput.json** 的文件会自动添加到输入文件夹。  
-4. 可以在本地运行此文件，或将其提交到 Azure。 若要测试查询，请选择“本地运行”****。  
+4. 可以在本地运行此文件，或将其提交到 Azure。 若要测试查询，请选择“本地运行”  。  
    ![Visual Studio 中的流分析作业运行选项](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-visual-stuidio-run-options.png)
  
 5. 命令提示符窗口会显示作业的状态。 如果作业运行成功，则会在项目文件夹路径“Visual Studio 2015\Projects\MyASAEdgejob\MyASAEdgejob\ASALocalRun\2018-02-23-11-31-42”中创建类似于“2018-02-23-11-31-42”的文件夹。 导航到文件夹路径，查看本地文件夹中的结果：
@@ -103,7 +103,7 @@ FROM EdgeInput
 
 2. 若要将作业提交到 Azure，请导航到查询编辑器并选择 **提交到 Azure**。  
 
-3. 此时将打开一个弹出窗口。 选择更新现有流分析 Edge 作业或创建新的流分析 Edge 作业。 更新现有作业时，会替换所有作业配置，在这种情况下，需要发布新作业。 选择“创建新的 Azure 流分析作业”，为作业输入类似于 **MyASAEdgeJob** 的名称，选择所需的**订阅**、**资源组**和**位置**，然后选择“提交”。********
+3. 此时将打开一个弹出窗口。 选择更新现有流分析 Edge 作业或创建新的流分析 Edge 作业。 更新现有作业时，会替换所有作业配置，在这种情况下，需要发布新作业。 选择“创建新的 Azure 流分析作业”，为作业输入类似于 **MyASAEdgeJob** 的名称，选择所需的**订阅**、**资源组**和**位置**，然后选择“提交”。  
 
    ![从 Visual Studio 将流分析作业提交到 Azure](./media/stream-analytics-tools-for-visual-studio-edge-jobs/submit-stream-analytics-job-to-azure.png)
  
@@ -111,7 +111,7 @@ FROM EdgeInput
 
 ## <a name="manage-the-job"></a>管理作业 
 
-可以通过服务器资源管理器查看作业和作业关系图。 从“服务器资源管理器”**** 中的“流分析”****，展开部署了流分析 Edge 作业的订阅和资源组。 你可以查看状态为“已创建”的 MyASAEdgejob。**** 展开作业节点，并双击该节点打开作业视图。
+可以通过服务器资源管理器查看作业和作业关系图。 从“服务器资源管理器”  中的“流分析”  ，展开部署了流分析 Edge 作业的订阅和资源组。 你可以查看状态为“已创建”的 MyASAEdgejob。  展开作业节点，并双击该节点打开作业视图。
 
 ![服务器资源管理器作业管理选项](./media/stream-analytics-tools-for-visual-studio-edge-jobs/server-explorer-options.png)
  

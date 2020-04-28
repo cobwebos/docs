@@ -16,10 +16,10 @@ ms.date: 03/14/2019
 ms.author: Juliako
 ms.reviewer: willzhan
 ms.openlocfilehash: 29a344c739d8d99da2e5c81d41a11c601e48022e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74969133"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>使用 castLabs 将 Widevine 许可证传送到 Azure 媒体服务 
@@ -31,7 +31,7 @@ ms.locfileid: "74969133"
 
 ## <a name="overview"></a>概述
 
-本文介绍如何使用 Azure 媒体服务(AMS) 传送 AMS 使用 PlayReady 和 Widevine DRM 动态加密的流。 PlayReady 许可证来自媒体服务 PlayReady 许可证服务器，宽文许可证由**castLabs**许可证服务器提供。
+本文介绍如何使用 Azure 媒体服务(AMS) 传送 AMS 使用 PlayReady 和 Widevine DRM 动态加密的流。 PlayReady 许可证来自媒体服务 PlayReady 许可证服务器，而 Widevine 许可证则由**castLabs**许可证服务器传送。
 
 若要播放受 CENC（PlayReady 和/或 Widevine）保护的流式处理内容，可使用 [Azure Media Player](https://aka.ms/azuremediaplayer)。 有关详细信息，请参阅 [AMP 文档](https://amp.azure.net/libs/amp/latest/docs/)。
 
@@ -68,7 +68,7 @@ castLabs 和 AMS 均支持用于授予许可证的 JWT（JSON Web 令牌）令�
 
 下表描述了 castLabs 中的 JWT 令牌。 
 
-| “属性” | 描述 |
+| 名称 | 说明 |
 | --- | --- |
 | optData |一个包含相关信息的 JSON 字符串。 |
 | crt |一个包含有关资源、其许可证信息和播放权限的信息的 JSON 字符串。 |

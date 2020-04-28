@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 门户管理流式处理终结点 | Microsoft Docs
-description: 本文演示如何使用 Azure 门户管理流式处理终结点。
+description: 本文演示如何通过 Azure 门户管理流式处理终结点。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 57ec22cb02512577f8737718cae9175403fb5603
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74900882"
 ---
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>使用 Azure 门户管理流式处理终结点 
@@ -36,7 +36,7 @@ ms.locfileid: "74900882"
 要开始管理帐户的流式处理终结点，请执行以下操作。
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择 Azure 媒体服务帐户。
-2. 在“设置”**** 边栏选项卡中，选择“流式处理终结点”****。
+2. 在“设置”  边栏选项卡中，选择“流式处理终结点”  。
    
     ![流式处理终结点](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints1.png)
 
@@ -50,7 +50,7 @@ ms.locfileid: "74900882"
 
 若要使用 Azure 门户添加/删除流式处理终结点，请执行以下操作：
 
-1. 若要添加流式处理终结点，请单击页面顶部的“+ 终结点”****。 
+1. 若要添加流式处理终结点，请单击页面顶部的“+ 终结点”  。 
 
     如果想要使用不同的 CDN 并直接访问，可能需要多个流式处理终结点。
 
@@ -75,7 +75,7 @@ ms.locfileid: "74900882"
 可通过执行以下操作配置流式处理终结点：
 
 1. 选择要配置的流式处理终结点。
-2. 单击“设置”****。
+2. 单击“设置”  。
 
 后面提供了字段的简要说明。
 
@@ -87,7 +87,7 @@ ms.locfileid: "74900882"
 
 ## <a name="scale-your-premium-streaming-endpoint"></a>缩放高级流式处理终结点
 
-有关详细信息，请参阅[此](media-services-portal-scale-streaming-endpoints.md)文章。
+有关详细信息，请参阅[此](media-services-portal-scale-streaming-endpoints.md)文。
 
 ## <a name="enable-azure-cdn-integration"></a><a id="enable_cdn"></a>启用 Azure CDN 集成
 

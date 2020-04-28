@@ -1,5 +1,5 @@
 ---
-title: Azure 快速路由：监视、指标和警报
+title: Azure ExpressRoute：监视、指标和警报
 description: 此页提供有关 ExpressRoute 监视的信息
 services: expressroute
 author: mialdrid
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: cherylmc
 ms.openlocfilehash: 268a7e7c94285d3c4fdcb0c5fb91b685c09b58c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75436915"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute 监视、指标和警报
@@ -24,12 +24,12 @@ ms.locfileid: "75436915"
 
 ## <a name="expressroute-metrics"></a>ExpressRoute 指标
 
-若要查看“指标”，请导航到“Azure Monitor”页，单击“指标”。******** 若要查看 ExpressRoute 指标，请按资源类型“ExpressRoute 线路”进行筛选******。 若要查看 **Global Reach** 指标，请按资源类型“ExpressRoute 线路”进行筛选，然后选择一个已启用 Global Reach 的 ExpressRoute 线路资源。** 若要查看 **ExpressRoute Direct** 指标，请按“ExpressRoute 端口”筛选资源类型。** 
+若要查看“指标”，请导航到“Azure Monitor”页，单击“指标”。    若要查看 ExpressRoute 指标，请按资源类型“ExpressRoute 线路”进行筛选   。 若要查看 **Global Reach** 指标，请按资源类型“ExpressRoute 线路”进行筛选，然后选择一个已启用 Global Reach 的 ExpressRoute 线路资源。  若要查看 **ExpressRoute Direct** 指标，请按“ExpressRoute 端口”筛选资源类型。  
 
 选择指标后，将应用默认聚合。 （可选）可以应用拆分，它将显示具有不同维度的指标。
 
 ### <a name="available-metrics"></a>可用指标
-|**指标**|**类别**|**尺寸**|**功能**|
+|**指标**|**类别**|**维度**|**功能**|
 | --- | --- | --- | --- |
 |ARP 可用性|可用性|<ui><li>对等机（主要/辅助 ExpressRoute 路由器）</ui></li><ui><li> 对等互连类型（专用/公共/Microsoft）</ui></li>|ExpressRoute|
 |BGP 可用性|可用性|<ui><li> 对等机（主要/辅助 ExpressRoute 路由器）</ui></li><ui><li> 对等互连类型</ui></li>|ExpressRoute|
@@ -109,11 +109,11 @@ ms.locfileid: "75436915"
 
 ## <a name="alerts-for-expressroute-gateway-connections"></a>ExpressRoute 网关连接的警报
 
-1. 若要配置警报，请导航到 **Azure Monitor**，然后单击“警报”****。
+1. 若要配置警报，请导航到 **Azure Monitor**，然后单击“警报”  。
 
    ![alerts](./media/expressroute-monitoring-metrics-alerts/eralertshowto.jpg)
 
-2. 单击“+选择目标”****，然后选择 ExpressRoute 网关连接资源。
+2. 单击“+选择目标”  ，然后选择 ExpressRoute 网关连接资源。
 
    ![目标]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
 3. 定义警报详细信息。
@@ -130,7 +130,7 @@ ms.locfileid: "75436915"
 
 ## <a name="configure-alerts-for-activity-logs-on-circuits"></a>为线路上的活动日志配置警报
 
-在**警报条件**中，可以选择“活动日志”**** 作为信号类型并选择“信号”。
+在**警报条件**中，可以选择“活动日志”  作为信号类型并选择“信号”。
 
   ![另一个](./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg)
   
@@ -139,5 +139,5 @@ ms.locfileid: "75436915"
 配置 ExpressRoute 连接。
   
   * [创建和修改线路](expressroute-howto-circuit-arm.md)
-  * [创建和修改对等配置](expressroute-howto-routing-arm.md)
+  * [创建和修改对等互连配置](expressroute-howto-routing-arm.md)
   * [将 VNet 链接到 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)

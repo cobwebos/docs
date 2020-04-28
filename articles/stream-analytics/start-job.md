@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.openlocfilehash: c393eb782c2ff16eb5b3e5967b39938dfe2f1534
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75426465"
 ---
 # <a name="how-to-start-an-azure-stream-analytics-job"></a>如何启动 Azure 流分析作业
@@ -20,25 +20,25 @@ ms.locfileid: "75426465"
 
 ## <a name="start-options"></a>启动选项
 可使用以下三个选项来启动作业。 请注意，下面提到的所有时间都是在 [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) 中指定的时间。 如果未指定 TIMESTAMP BY，将使用抵达时间。
-* **现在**：使输出事件流的起点与作业启动时相同。 如果使用时态运算符（例如时间窗口、LAG 或 JOIN），则 Azure 流分析会自动回查输入源中的数据。 例如，如果你“立即”启动一个作业，而查询使用 5 分钟翻转窗口，则 Azure 流分析将在输入中查找 5 分钟以前的数据。
+* **立即**：使输出事件流的起点与作业启动时间相同。 如果使用时态运算符（例如时间窗口、LAG 或 JOIN），则 Azure 流分析会自动回查输入源中的数据。 例如，如果你“立即”启动一个作业，而查询使用 5 分钟翻转窗口，则 Azure 流分析将在输入中查找 5 分钟以前的数据。
 第一个可能的输出事件具有等于或大于当前时间的时间戳，ASA 保证考虑到在逻辑上可对输出产生作用的所有输入事件。 例如，不会生成部分开窗聚合。 始终生成完整的聚合值。
 
-* **自定义**：您可以选择输出的起点。 与“立即”选项类似，如果使用时态运算符，Azure 流分析将自动读取此时间以前的数据**** 
+* **自定义**：可以选择输出的起点。 与“立即”选项类似，如果使用时态运算符，Azure 流分析将自动读取此时间以前的数据  
 
 * **上次停止时** 如果作业先前已启动，但被手动停止或失败，则可以使用此选项。 选择此选项时，Azure 流分析将使用上次输出时间来重启作业，因此不会丢失数据。 与前面的选项类似，如果使用时态运算符，Azure 流分析将自动读取此时间以前的数据。 由于多个输入分区可能具有不同的时间，而系统会使用所有分区的最早停止时间，因此，输出中可能会出现一些重复项。 [事件传送保证](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics)页上提供了有关“正好处理一次”的详细信息。
 
 
 ## <a name="azure-portal"></a>Azure 门户
 
-在 Azure 门户中导航到你的作业，然后在概述页上选择“启动”。**** 依次选择“作业输出开始时间”、“启动”。********
+在 Azure 门户中导航到你的作业，然后在概述页上选择“启动”。  依次选择“作业输出开始时间”、“启动”。  
 
-选择“作业输出开始时间”对应的选项之一。**** 选项包括“立即”、“自定义”，如果作业先前已运行过，则还包括“上次停止时”。****** 有关这些选项的详细信息，请参阅上文。
+选择“作业输出开始时间”对应的选项之一。  选项包括“立即”、“自定义”，如果作业先前已运行过，则还包括“上次停止时”。    有关这些选项的详细信息，请参阅上文。
 
 ## <a name="visual-studio"></a>Visual Studio
 
-在作业视图中，选择绿色箭头按钮启动作业。 设置“作业输出启动模式”并选择“启动”。******** 作业状态将更改为“正在运行”。****
+在作业视图中，选择绿色箭头按钮启动作业。 设置“作业输出启动模式”并选择“启动”。   作业状态将更改为“正在运行”。 
 
-**作业输出开始模式**有三个选项：*作业开始时间*、*自定义时间和**上次输出事件时间*。 如果此属性不存在，则默认值为 *JobStartTime*。 有关这些选项的详细信息，请参阅上文。
+“作业输出启动模式”有三个选项：  *JobStartTime*、*CustomTime* 和 *LastOutputEventTime*。 如果此属性不存在，则默认值为 *JobStartTime*。 有关这些选项的详细信息，请参阅上文。
 
 
 ## <a name="powershell"></a>PowerShell
@@ -52,7 +52,7 @@ Start-AzStreamAnalyticsJob `
   -OutputStartMode 'JobStartTime'
 ```
 
-**输出启动模式**有三个选项：*工作开始时间*、*自定义时间和**上次输出事件时间*。 如果此属性不存在，则默认值为 *JobStartTime*。 有关这些选项的详细信息，请参阅上文。
+**OutputStartMode** 有三个选项：*JobStartTime*、*CustomTime* 和 *LastOutputEventTime*。 如果此属性不存在，则默认值为 *JobStartTime*。 有关这些选项的详细信息，请参阅上文。
 
 有关 `Start-AzStreamAnalyitcsJob` cmdlet 的详细信息，请查看 [Start-AzStreamAnalyticsJob 参考](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob)。
 

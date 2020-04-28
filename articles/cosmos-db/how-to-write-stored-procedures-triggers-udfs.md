@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
 ms.openlocfilehash: 4dee017323bda5fc08598a9b24cadd11516807cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75441734"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中编写存储过程、触发器和用户定义的函数
 
-Azure Cosmos DB 提供 JavaScript 的语言集成式事务执行用于编写**存储过程**、**触发器**和**用户定义的函数 (UDF)**。 在 Azure Cosmos DB 中使用 SQL API 时，可以采用 JavaScript 语言定义存储过程、触发器和 UDF。 可在 JavaScript 中编写逻辑，并在数据库引擎内部执行该逻辑。 可以使用 [Azure 门户](https://portal.azure.com/)、[Azure Cosmos DB 中的 JavaScript 语言集成式查询 API](javascript-query-api.md) 和 [Cosmos DB SQL API 客户端 SDK](sql-api-dotnet-samples.md) 来创建及执行触发器、存储过程与 UDF。 
+Azure Cosmos DB 提供 JavaScript 的语言集成式事务执行用于编写**存储过程**、**触发器**和**用户定义的函数 (UDF)** 。 在 Azure Cosmos DB 中使用 SQL API 时，可以采用 JavaScript 语言定义存储过程、触发器和 UDF。 可在 JavaScript 中编写逻辑，并在数据库引擎内部执行该逻辑。 可以使用 [Azure 门户](https://portal.azure.com/)、[Azure Cosmos DB 中的 JavaScript 语言集成式查询 API](javascript-query-api.md) 和 [Cosmos DB SQL API 客户端 SDK](sql-api-dotnet-samples.md) 来创建及执行触发器、存储过程与 UDF。 
 
 若要调用存储过程、触发器和用户定义的函数，需将其注册。 有关详细信息，请参阅[如何在 Azure Cosmos DB 中使用存储过程、触发器和用户定义的函数](how-to-use-stored-procedures-triggers-udfs.md)。
 
@@ -240,7 +240,7 @@ function validateToDoItemTimestamp() {
 
 预触发器不能有任何输入参数。 使用触发器中的请求对象来处理与操作关联的请求消息。 在前面的示例中，创建 Azure Cosmos 项时将运行前触发器，请求消息正文包含要以 JSON 格式创建的项。
 
-注册触发器后，可以指定可对哪些操作运行该触发器。 应使用 `TriggerOperation.Create` 的 `TriggerOperation` 值创建此触发器，这意味着，不允许在以下代码所示的 replace 操作中使用此触发器。
+注册触发器后，可以指定可对哪些操作运行该触发器。 应使用 `TriggerOperation` 的 `TriggerOperation.Create` 值创建此触发器，这意味着，不允许在以下代码所示的 replace 操作中使用此触发器。
 
 有关如何注册和调用前触发器的示例，请参阅[前触发器](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers)和[后触发器](how-to-use-stored-procedures-triggers-udfs.md#post-triggers)文章。 
 
@@ -317,7 +317,7 @@ function tax(income) {
 
 有关如何注册和使用用户定义的函数的示例，请参阅[如何在 Azure Cosmos DB 中使用用户定义的函数](how-to-use-stored-procedures-triggers-udfs.md#udfs)一文。
 
-## <a name="logging"></a>Logging 
+## <a name="logging"></a>日志记录 
 
 使用存储过程、触发器或用户定义的函数时，可以使用 `console.log()` 命令来记录步骤。 当 `EnableScriptLogging` 设置为 true 时，该命令会专注于一个字符串进行调试，如以下示例所示：
 
@@ -336,6 +336,6 @@ Console.WriteLine(response.ScriptLog);
 
 * [如何在 Azure Cosmos DB 中使用 Javascript 查询 API 编写存储过程和触发器](how-to-write-javascript-query-api.md)
 
-* [在 Azure Cosmos DB 中使用 Azure Cosmos DB 存储过程、触发器和用户定义的函数](stored-procedures-triggers-udfs.md)
+* [在 Azure Cosmos DB 中使用 Azure Cosmos DB 存储过程、触发器与用户定义的函数](stored-procedures-triggers-udfs.md)
 
 * [在 Azure Cosmos DB 中使用 JavaScript 语言集成式查询 API](javascript-query-api.md)

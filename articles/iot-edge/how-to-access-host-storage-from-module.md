@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 079d5845917e63fadcf0466e5a744ed637d704ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75434525"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>向模块授予对设备本地存储的访问权限
@@ -23,7 +23,7 @@ ms.locfileid: "75434525"
 
 若要启用从模块存储到主机系统上的存储的链接，请为模块创建指向容器中存储文件夹的环境变量。 然后，使用创建选项将存储文件夹绑定到主机上的文件夹。
 
-例如，如果要启用 IoT Edge 中心以将消息存储在设备的本地存储中并在以后检索它们，可以在 Azure 门户的“运行时设置”部分中配置环境变量和创建选项****。
+例如，如果要启用 IoT Edge 中心以将消息存储在设备的本地存储中并在以后检索它们，可以在 Azure 门户的“运行时设置”部分中配置环境变量和创建选项  。
 
 1. 为 IoT Edge 中心和 IoT Edge 代理添加名为 **storageFolder** 的环境变量，使之指向模块中的目录。
 1. 为 IoT Edge 中心和 IoT Edge 代理添加绑定，以便将主机上的本地目录连接到模块中的目录。 例如：
@@ -72,9 +72,9 @@ ms.locfileid: "75434525"
 
 将 `<HostStoragePath>` 和 `<ModuleStoragePath>` 替换为你的主机和模块存储路径；两个值都必须是绝对路径。
 
-例如，在 Linux 系统上，`"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` 表示主机系统上的目录 /etc/iotedge/storage**** 映射到容器中的目录 /iotedge/storage/****。 再举一个例子，在 Windows 系统上，`"Binds":["C:\\temp:C:\\contemp"]` 表示主机系统上的目录 **C:\\temp** 映射到容器中的目录 **C:\\contemp**。
+例如，在 Linux 系统上，`"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` 表示主机系统上的目录 /etc/iotedge/storage  映射到容器中的目录 /iotedge/storage/  。 再举一个例子，在 Windows 系统上，`"Binds":["C:\\temp:C:\\contemp"]` 表示主机系统上的目录 **C:\\temp** 映射到容器中的目录 **C:\\contemp**。
 
-另外，在 Linux 设备上，确保模块的用户配置文件对主机系统目录具有所需的读取、写入和执行权限。 回到启用 IoT Edge 中心以将消息存储到设备的本地存储的先前示例，你需要向其用户配置文件（UID 为 1000）授予权限。 （IoT Edge 代理作为根操作，因此不需要其他权限。有几种方法可以管理 Linux 系统上的目录权限，包括使用`chown`更改目录所有者，然后`chmod`更改权限，例如：
+另外，在 Linux 设备上，确保模块的用户配置文件对主机系统目录具有所需的读取、写入和执行权限。 回到启用 IoT Edge 中心以将消息存储到设备的本地存储的先前示例，你需要向其用户配置文件（UID 为 1000）授予权限。 （IoT Edge 代理以根用户身份运行，因此不需额外的权限。）在 Linux 系统上，可以通过多种方式管理目录权限，包括使用 `chown` 来更改目录所有者，然后使用 `chmod` 来更改权限，例如：
 
 ```bash
 sudo chown 1000 <HostStoragePath>

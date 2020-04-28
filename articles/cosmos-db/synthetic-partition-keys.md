@@ -7,10 +7,10 @@ ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
 ms.openlocfilehash: e8786c2d6e93c18a5bf9856a5555d6b528f842c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75441225"
 ---
 # <a name="create-a-synthetic-partition-key"></a>创建合成分区键
@@ -58,7 +58,7 @@ ms.locfileid: "75441225"
 
 可通过以下文章详细了解分区的概念：
 
-* 了解有关[逻辑分区](partition-data.md)的更多详细信息。
+* 详细了解[逻辑分区](partition-data.md)。
 * 详细了解如何[对 Azure Cosmos 容器和数据库预配吞吐量](set-throughput.md)。
 * 了解[如何对 Azure Cosmos 容器预配吞吐量](how-to-provision-container-throughput.md)。
 * 了解[如何对 Azure Cosmos 数据库预配吞吐量](how-to-provision-database-throughput.md)。

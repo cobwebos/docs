@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 12/14/2019
 ms.author: rohogue
 ms.openlocfilehash: fe2fc062f690498f3d1f588887279aa33d2434b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75416150"
 ---
 # <a name="access-the-vfxt-cluster"></a>访问 vFXT 群集
 
-要调整群集设置并监视群集，请使用 Avere 控制面板。 Avere 控制面板是群集的基于浏览器的图形界面。
+若要调整群集设置并监视群集，请使用 Avere 控制面板。 Avere 控制面板是群集的基于浏览器的图形界面。
 
-由于 vFXT 群集位于专用虚拟网络内，因此必须创建 SSH 隧道或使用另一种方法到达群集的管理 IP 地址。
+由于 vFXT 群集位于专用虚拟网络中，因此你必须创建 SSH 隧道，或使用其他方法来访问群集的管理 IP 地址。
 
 有两个基本步骤：
 
@@ -25,15 +25,15 @@ ms.locfileid: "75416150"
 1. 在 Web 浏览器中加载群集的控制面板
 
 > [!NOTE]
-> 本文假设已在群集控制器或群集虚拟网络中另一 VM 上设置了公共 IP 地址。 本文介绍了如何使用该 VM 作为主机来访问群集。 如果您正在使用 VPN 或 ExpressRoute 进行虚拟网络访问，请跳至["连接到 Avere 控制面板](#connect-to-the-avere-control-panel-in-a-browser)"。
+> 本文假设已在群集控制器或群集虚拟网络中另一 VM 上设置了公共 IP 地址。 本文介绍了如何使用该 VM 作为主机来访问群集。 如果使用 VPN 或 ExpressRoute 进行虚拟网络访问，请跳到[连接到 Avere 控制面板](#connect-to-the-avere-control-panel-in-a-browser)。
 
-在连接之前，请确保在本地计算机上安装了创建群集控制器时所用的 SSH 公钥/私钥对。 如需帮助，请阅读有关适用于 [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) 或适用于 [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) 的 SSH 密钥文档。 如果您使用密码而不是公钥，则连接时将提示您输入密码。
+在连接之前，请确保在本地计算机上安装了创建群集控制器时所用的 SSH 公钥/私钥对。 如需帮助，请阅读有关适用于 [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) 或适用于 [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) 的 SSH 密钥文档。 如果你使用了密码而不是公钥，则在你连接时，系统将提示你输入密码。
 
 ## <a name="create-an-ssh-tunnel"></a>创建 SSH 隧道
 
 可以从基于 Linux 或 Windows 10 客户端系统的命令行创建 SSH 隧道。
 
-将 SSH 隧道命令用于此窗体：
+使用具有以下格式的 SSH 隧道命令：
 
 ****** ssh -L local_port:cluster_mgmt_ip:443 controller_username\@controller_public_IP**
 
@@ -49,7 +49,7 @@ ssh -L 8443:10.0.0.5:443 azureuser@203.0.113.51
 
 ## <a name="connect-to-the-avere-control-panel-in-a-browser"></a>在浏览器中连接到 Avere 控制面板
 
-此步骤使用 Web 浏览器连接到 vFXT 群集上的配置实用程序。
+此步骤使用 web 浏览器连接到 vFXT 群集上的配置实用程序。
 
 * 对于 SSH 隧道连接，请打开 Web 浏览器并导航到 `https://127.0.0.1:8443` 。
 

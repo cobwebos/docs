@@ -8,24 +8,24 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.openlocfilehash: 239955025f21d8679cbcf0bbfe68f9070f0217c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75426197"
 ---
 # <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>流分析中的 Azure 机器学习工作室（经典）集成（预览）
-流分析支持调用 Azure 机器学习工作室（经典）终结点的用户定义函数。 [流分析 REST API 库](https://msdn.microsoft.com/library/azure/dn835031.aspx)中详细介绍了此功能的 REST API 支持。 本文提供了在流分析中成功实现此功能所需的补充信息。 还发布了教程，可从[此处](stream-analytics-machine-learning-integration-tutorial.md)获取。
+流分析支持调用 Azure 机器学习工作室（经典）终结点的用户定义函数。 [流分析 REST API 库](https://msdn.microsoft.com/library/azure/dn835031.aspx)中详细介绍了对此功能的 REST API 支持。 本文提供在流分析中成功实现此功能所需的补充信息。 也可在 [此处](stream-analytics-machine-learning-integration-tutorial.md)获取已发布的教程。
 
 ## <a name="overview-azure-machine-learning-studio-classic-terminology"></a>概述：Azure 机器学习工作室（经典）术语
-Microsoft Azure 机器学习工作室（经典）提供一个协作型拖放式工具，可用于根据数据生成、测试和部署预测分析解决方案。 此工具称为“Azure 机器学习工作室（经典）”**。 该工作室用于与机器学习资源交互，并轻松生成、测试和循环访问设计。 这些资源及其定义如下。
+Microsoft Azure 机器学习工作室（经典）提供一个协作型拖放式工具，可用于根据数据生成、测试和部署预测分析解决方案。 此工具称为“Azure 机器学习工作室（经典）”  。 该工作室用于与机器学习资源交互，能够轻松地生成、测试和反复调整设计。 这些资源及其定义如下：
 
-* **工作区**：*工作区*是保存所有其他机器学习资源以进行管理和控制的容器。
-* **试验**：*试验*由数据科学家创建，以便利用数据集和定型机器学习模型。
-* **端点**：*端点是*Azure 机器学习工作室（经典）对象，用于将功能作为输入、应用指定的机器学习模型并返回评分输出。
-* **评分 Web 服务**：*评分 Web 服务*是终结点的集合，如上所述。
+* **工作区**：工作区是保存所有其他机器学习资源以进行管理和控制的容器  。
+* **试验**：试验由数据科学家创建，以便利用数据集和定型机器学习模型  。
+* **终结点**：终结点是 Azure 机器学习工作室（经典）对象，用于以特征作为输入、应用指定的机器学习模型并返回已评分输出  。
+* **评分 Web 服务**：评分 Web 服务是终结点的集合，如上所述  。
 
-每个终结点都具有批处理执行和同步执行的 API。 流分析使用同步执行。 在 Azure 机器学习工作室（经典）中，特定服务被命名为[请求/响应服务](../machine-learning/studio/consume-web-services.md)。
+每个终结点都具有适用于批处理执行和同步执行的 API。 流分析使用同步执行。 特定服务在 Azure 机器学习 Studio （经典）中名为[请求/响应服务](../machine-learning/studio/consume-web-services.md)。
 
 ## <a name="machine-learning-resources-needed-for-stream-analytics-jobs"></a>流分析作业所需的机器学习资源
 出于流分析作业处理的目的，请求/响应终结点、[apikey](../machine-learning/machine-learning-connect-to-azure-machine-learning-web-service.md) 和 swagger 定义对于成功执行而言都是必需项。 流分析提供附加的终结点，用于构造 swagger 终结点的 url、查找接口并向用户返回默认 UDF 定义。
@@ -188,11 +188,11 @@ PATCH : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers
 
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
+若要获得进一步的帮助，请尝试我们的[Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)
-* [使用 Azure 流分析开始](stream-analytics-real-time-fraud-detection.md)
+* [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
 * [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

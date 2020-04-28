@@ -4,10 +4,10 @@ description: 查看和筛选 Azure 顾问建议以减少干扰。
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: 10d7b16864f8e449dc51e870c5ff9f20d8c0dc87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75422372"
 ---
 # <a name="view-azure-advisor-recommendations-that-matter-to-you"></a>查看对你重要的 Azure 顾问建议
@@ -22,11 +22,11 @@ Azure 顾问提供的建议可用于优化 Azure 部署。 在 Azure 顾问中�
 
 1. 在 Azure 门户中打开 [Azure 顾问](https://aka.ms/azureadvisordashboard)。
 
-1. 在菜单中选择“配置”****。
+1. 在菜单中选择“配置”  。
 
    ![Azure 顾问配置菜单](./media/view-recommendations/configuration.png)
 
-1. 对于需要接收 Azure 顾问建议的订阅或资源组，请勾选“包括”列中的框。**** 如果禁用此框，则可能无权在该订阅或资源组上进行配置更改。 了解有关[Azure 顾问 中权限](permissions.md)的更多内容。
+1. 对于需要接收 Azure 顾问建议的订阅或资源组，请勾选“包括”列中的框。  如果禁用此框，则可能无权在该订阅或资源组上进行配置更改。 详细了解[Azure 顾问中的权限](permissions.md)。
 
 1. 进行更改后，单击底部的“应用”。****
 
@@ -89,7 +89,7 @@ Azure 顾问允许关闭或推迟单个资源的建议。 如果关闭某个建�
 
 - [什么是 Azure 顾问？](advisor-overview.md)
 - [Azure 顾问入门](advisor-get-started.md)
-- [Azure 顾问中的权限](permissions.md)
+- [Azure Advisor 中的权限](permissions.md)
 
 
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d637ac464b689a25ce5d5a79cf47da0c85d38d0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74846008"
 ---
 # <a name="migrate-a-classic-policy-in-the-azure-portal"></a>在 Azure 门户中迁移经典策略
@@ -32,8 +32,8 @@ ms.locfileid: "74846008"
 
 ## <a name="open-a-classic-policy"></a>打开经典策略
 
-1. 在 [Azure 门户](https://portal.azure.com)中，导航到“Azure Active Directory”**** > “安全性”**** > “条件访问”****。
-1. 选择“经典策略”****。
+1. 在 [Azure 门户](https://portal.azure.com)中，导航到“Azure Active Directory”   > “安全性”   > “条件访问”  。
+1. 选择“经典策略”  。
 
    ![经典策略视图](./media/policy-migration-mfa/12.png)
 
@@ -41,31 +41,31 @@ ms.locfileid: "74846008"
 
 ## <a name="create-a-new-conditional-access-policy"></a>创建新的条件访问策略
 
-1. 在 [Azure 门户](https://portal.azure.com)中，导航到“Azure Active Directory”**** > “安全性”**** > “条件访问”****。
-1. 若要创建新的条件访问策略，请选择“新建策略”****。
-1. 在“新建”页上的“名称”文本框中，键入策略的名称。********
-1. 在“分配”部分中，单击“用户和组”。********
-   1. 如果已在经典策略中选择所有用户，请单击“所有用户”。**** 
-   1. 如果已在经典策略中选择组，请单击“选择用户和组”，并选择所需的用户和组。****
-   1. 如果需要排除组，请单击“排除”选项卡，并选择所需的用户和组。**** 
-   1. 选择“完成”****
-1. 在“分配”**** 部分中，单击“云应用或操作”****。
-1. 在“云应用或操作”页上执行以下步骤：****
-   1. 单击“选择应用”。****
-   1. 单击“选择”。
-   1. 在“选择”页上选择云应用，单击“选择”。********
-   1. 在“云应用”页上，单击“完成”。********
-1. 如果已选择“需要多重身份验证”：****
-   1. 在“访问控制”部分中，单击“授予”。********
-   1. 在“授予”页上，依次单击“授予访问权限”、“需要多重身份验证”。************
-   1. 单击“选择”。
-1. 单击“打开”**** 启用策略，然后选择“保存”****。
+1. 在 [Azure 门户](https://portal.azure.com)中，导航到“Azure Active Directory”   > “安全性”   > “条件访问”  。
+1. 若要创建新的条件访问策略，请选择“新建策略”  。
+1. 在“新建”页上的“名称”文本框中，键入策略的名称。  
+1. 在“分配”部分中，单击“用户和组”。  
+   1. 如果已在经典策略中选择所有用户，请单击“所有用户”。  
+   1. 如果已在经典策略中选择组，请单击“选择用户和组”，并选择所需的用户和组。 
+   1. 如果需要排除组，请单击“排除”选项卡，并选择所需的用户和组。  
+   1. 选择“完成” 
+1. 在“分配”  部分中，单击“云应用或操作”  。
+1. 在“云应用或操作”页上执行以下步骤： 
+   1. 单击“选择应用”。 
+   1. 单击“选择”  。
+   1. 在“选择”页上选择云应用，单击“选择”。  
+   1. 在“云应用”页上，单击“完成”。  
+1. 如果已选择“需要多重身份验证”： 
+   1. 在“访问控制”部分中，单击“授予”。  
+   1. 在“授予”页上，依次单击“授予访问权限”、“需要多重身份验证”。   
+   1. 单击“选择”  。
+1. 单击“打开”  启用策略，然后选择“保存”  。
 
    ![创建条件访问策略](./media/policy-migration-mfa/conditional-access-policy-migration.png)
 
 ## <a name="disable-the-classic-policy"></a>禁用经典策略
 
-若要禁用经典策略，请单击“详细信息”**** 视图中的“禁用”****。
+若要禁用经典策略，请单击“详细信息”  视图中的“禁用”  。
 
 ![禁用经典策略](./media/policy-migration-mfa/14.png)
 

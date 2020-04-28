@@ -1,5 +1,5 @@
 ---
-title: Azure 快速路由：通过 Microsoft 对等互连配置 S2S VPN
+title: Azure ExpressRoute：通过 Microsoft 对等互连配置 S2S VPN
 description: 使用站点到站点的 VPN 网关，通过 ExpressRoute Microsoft 对等互连线路配置到 Azure 的 IPsec/IKE 连接。
 services: expressroute
 author: cherylmc
@@ -9,10 +9,10 @@ ms.date: 02/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: f3044a2701b0f1cd0e5f9ab3ab60c1d60cfb8f45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75436818"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>通过 ExpressRoute Microsoft 对等互连配置站点到站点的 VPN
@@ -26,7 +26,7 @@ ms.locfileid: "75436818"
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
-## <a name="architecture"></a><a name="architecture"></a>建筑
+## <a name="architecture"></a><a name="architecture"></a>体系结构
 
 
   ![连接概述](./media/site-to-site-vpn-over-microsoft-peering/IPsecER_Overview.png)
@@ -43,7 +43,7 @@ ms.locfileid: "75436818"
 >
 >
 
-## <a name="workflow"></a><a name="workflow"></a>流程
+## <a name="workflow"></a><a name="workflow"></a>工作流
 
 1. 为 ExpressRoute 线路配置 Microsoft 对等互连。
 2. 通过 Microsoft 对等互连将选定 Azure 区域公共前缀播发到本地网络。
@@ -53,7 +53,7 @@ ms.locfileid: "75436818"
 6. （可选）在本地 VPN 设备上配置防火墙/筛选器。
 7. 通过 ExpressRoute 线路测试和验证 IPsec 通信。
 
-## <a name="1-configure-microsoft-peering"></a><a name="peering"></a>1. 配置微软对等互连
+## <a name="1-configure-microsoft-peering"></a><a name="peering"></a>1. 配置 Microsoft 对等互连
 
 若要通过 ExpressRoute 配置站点到站点的 VPN 连接，必须利用 ExpressRoute Microsoft 对等互连。
 
@@ -91,7 +91,7 @@ ms.locfileid: "75436818"
 show ip bgp vpnv4 vrf 10 summary
 ```
 
-以下部分输出显示，从邻居\*.243.229.34 收到 68 个前缀，ASN 12076 （MSEE）：
+以下部分输出显示了从\*243.229.34 到 ASN 12076 （MSEE）的68前缀：
 
 ```
 ...
@@ -365,7 +365,7 @@ Azure VPN 网关与许多来自不同供应商的 VPN 设备兼容。 要了解�
 
 通常，eBGP 对等节点会直接连接（通常是通过 WAN 连接）。 但在通过 ExpressRoute Microsoft 对等互连在 IPsec VPN 隧道上配置 eBGP 时，eBGP 对等节点间存在多个路由域。 使用 ebgp-multihop 命令在两个非直接连接的对等节点间建立 eBGP 邻域关系****。 ebgp-multihop 命令后的整数指定 BGP 数据包中的 TTL 值。 maximum-paths eibgp 2 命令在两条 BGP 路径间启用流量负载均衡****。
 
-### <a name="cisco-csr1000-example"></a><a name="cisco1"></a>思科 CSR1000 示例
+### <a name="cisco-csr1000-example"></a><a name="cisco1"></a>Cisco CSR1000 示例
 
 以下示例显示将 Hyper-V 虚拟机中的 Cisco CSR1000 配置为本地 VPN 设备：
 
@@ -711,4 +711,4 @@ Total number of prefixes 2
 
 * [为 ExpressRoute 配置网络性能监视器](how-to-npm.md)
 
-* [使用现有 VPN 网关连接将站点到站点的连接添加到 VNet](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+* [向使用现有 VPN 网关连接的 VNet 添加站点到站点连接](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)

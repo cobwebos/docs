@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 虚拟网络中测试 Azure 虚拟机网络延迟 |微软文档
+title: 在 Azure 虚拟网络中测试 Azure 虚拟机网络延迟 |Microsoft Docs
 description: 了解如何测试虚拟网络中 Azure 虚拟机之间的网络延迟
 services: virtual-network
 documentationcenter: na
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: steveesp
 ms.openlocfilehash: 00efc2754948d53d4f80a6261dbd4041b358185b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74896364"
 ---
 # <a name="test-vm-network-latency"></a>测试 VM 网络延迟
@@ -38,7 +38,7 @@ ms.locfileid: "74896364"
 - 为部署的 VM 之间的网络延迟建立基准。
 - 在进行下述相关更改后，比较网络延迟变化产生的效果：
   - 操作系统 (OS) 或网络堆栈软件，包括配置更改。
-  - VM 部署方法，例如部署到可用性区域或邻近放置组 （PPG）。
+  - VM 部署方法，例如，部署到可用性区域或邻近位置组（PPG）。
   - VM 属性，例如加速网络或大小更改。
   - 虚拟网络，例如路由或筛选更改。
 
@@ -46,7 +46,7 @@ ms.locfileid: "74896364"
 要测量延迟，有两个不同的工具可供你选择：
 
 * 对于基于 Windows 的系统：[latte.exe (Windows)](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
-* 对于基于 Linux 的系统：[袜子Perf（Linux）](https://github.com/mellanox/sockperf)
+* 对于基于 Linux 的系统： [SockPerf （Linux）](https://github.com/mellanox/sockperf)
 
 使用这些工具有助于确保仅测量 TCP 或 UDP 有效负载传送时间，而不测量应用程序未使用的，且不影响应用程序性能的 ICMP (Ping) 或其他数据包类型。
 
@@ -55,7 +55,7 @@ ms.locfileid: "74896364"
 创建 VM 配置时，请记住以下建议：
 - 使用最新版本的 Windows 或 Linux。
 - 启用加速网络以获得最佳结果。
-- 使用[Azure 接近放置组](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)部署 VM。
+- 使用[Azure 邻近性放置组](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)部署 vm。
 - 大型 VM 的性能往往优于小型 VM。
 
 ### <a name="tips-for-analysis"></a>有关分析的提示
@@ -125,7 +125,7 @@ netsh advfirewall firewall add rule program=<path>\latte.exe name="Latte" protoc
 
 在 Linux VM 上（包括“发送方”和“接收方”****），运行以下命令以在 VM 上准备 SockPerf。 提供的命令适用于主要分发版。
 
-#### <a name="for-red-hat-enterprise-linux-rhelcentos"></a>对于红帽企业 Linux （RHEL）/CentOS
+#### <a name="for-red-hat-enterprise-linux-rhelcentos"></a>对于 Red Hat Enterprise Linux （RHEL）/CentOS
 
 运行以下命令：
 
@@ -200,7 +200,7 @@ sockperf ping-pong -i 10.0.0.4 --tcp -m 350 -t 101 -p 12345  --full-rtt
 
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 Azure[接近放置组](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)提高延迟。
+* 使用[Azure 邻近性放置组](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)提高延迟。
 * 了解如何根据方案[优化 VM 的网络](../virtual-network/virtual-network-optimize-network-bandwidth.md)。
-* 阅读有关如何[为虚拟机分配带宽](../virtual-network/virtual-machine-network-throughput.md)。
+* 了解[如何将带宽分配给虚拟机](../virtual-network/virtual-machine-network-throughput.md)。
 * 有关详细信息，请参阅 [Azure 虚拟网络常见问题解答](../virtual-network/virtual-networks-faq.md)。

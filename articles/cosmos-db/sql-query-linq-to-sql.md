@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: d43f95b91df7d0c9c442339de51936200f4688e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75441255"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ 到 SQL 转换
@@ -58,19 +58,19 @@ Azure Cosmos DB 查询提供程序执行从 LINQ 查询到 Cosmos DB SQL 查询�
 
 SQL .NET SDK 随附的 LINQ 提供程序支持以下运算符：
 
-- **选择**：投影转换为 SQL SELECT，包括对象构造。
-- **其中**：筛选器转换为 SQL WHERE，并支持`&&`在`||`和`!`之间转换 。
+- **Select**：投影转换为 SQL SELECT（包括对象构造）。
+- **Where**：筛选器转换为 SQL WHERE，支持 `&&`、`||` 和 `!` 到 SQL 运算符的转换
 - **SelectMany**：允许将数组展开到 SQL JOIN 子句。 用于将表达式链接或嵌套到对数组元素应用的筛选器。
-- **订单乘****和订单分递**：使用 ASC 或 DESC 转换为 ORDER BY。
+- **OrderBy** 和 **OrderByDescending**：使用 ASC 或 DESC 转换为 ORDER BY。
 - 用于聚合的 **Count**、**Sum**、**Min**、**Max** 和 **Average** 运算符及其异步等效项 **CountAsync**、**SumAsync**、**MinAsync**、**MaxAsync** 和 **AverageAsync**。
-- **CompareTo**：转换为范围比较。 通常用于字符串，因为它们在 .NET 中不可比。
-- **跳过**和**获取**：转换为 SQL OFFSET 和 LIMIT，以限制查询的结果并执行分页。
-- **数学函数**：支持从`Abs``Acos``Asin``Atan``Ceiling``Cos``Exp``Floor``Log``Pow``Round``Sign``Sin``Sqrt``Tan``Truncate`.NET、、、、、、、、、、、、、、、、、、、以及等效 SQL 内置函数进行转换。 `Log10`
-- **字符串函数**：支持`Concat`从 .NET、、、、、、、、、、、、、、、、、、、`Contains``Count``EndsWith``IndexOf``Replace``Reverse``StartsWith``SubString``ToLower``ToUpper``TrimEnd`以及`TrimStart`等效 SQL 内置函数进行转换。
-- **数组函数**：支持从`Concat`.NET`Contains`转换`Count`和 到等效 SQL 内置函数。
-- **地理空间扩展函数**：支持从存根方法`Distance` `IsValid`、`IsValidDetailed`和`Within`转换到等效 SQL 内置函数。
-- **用户定义的函数扩展函数**：支持从存根方法`UserDefinedFunctionProvider.Invoke`转换到相应的用户定义的函数。
-- **杂项**：支持`Coalesce`和 条件运算符的转换。 可以根据上下文将 `Contains` 转换为字符串 CONTAINS、ARRAY_CONTAINS 或 SQL IN。
+- **CompareTo**：转换为范围比较。 通常用于字符串，因为它们在 .NET 中不可比较。
+- **Skip** 和 **Take**：转换为 SQL OFFSET 和 LIMIT，用于限制查询的结果和进行分页。
+- **数学函数**：支持从 .NET `Abs`、`Acos`、`Asin`、`Atan`、`Ceiling`、`Cos`、`Exp`、`Floor`、`Log`、`Log10`、`Pow`、`Round`、`Sign`、`Sin`、`Sqrt`、`Tan` 和 `Truncate` 转换为等效的 SQL 内置函数。
+- **字符串函数**：支持从.NET  `Concat`、`Contains`、`Count`、`EndsWith`、`IndexOf`、`Replace`、`Reverse`、`StartsWith`、`SubString`、`ToLower`、`ToUpper`、`TrimEnd` 和 `TrimStart` 转换为等效的 SQL 内置函数。
+- **数组函数**：支持从 .NET `Concat`、`Contains` 和 `Count` 转换为等效的 SQL 内置函数。
+- **地理空间扩展函数**：支持从存根方法 `Distance`、`IsValid`、`IsValidDetailed` 和 `Within` 转换为等效的 SQL 内置函数。
+- **用户定义的函数扩展函数**：支持从存根方法 `UserDefinedFunctionProvider.Invoke` 转换为相应的用户定义的函数。
+- **其他**：支持 `Coalesce` 和条件运算符的转换。 可以根据上下文将 `Contains` 转换为字符串 CONTAINS、ARRAY_CONTAINS 或 SQL IN。
 
 ## <a name="examples"></a>示例
 
@@ -324,5 +324,5 @@ SQL .NET SDK 随附的 LINQ 提供程序支持以下运算符：
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Azure Cosmos DB .NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [模型文档数据](modeling-data.md)

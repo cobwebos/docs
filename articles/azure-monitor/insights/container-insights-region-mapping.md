@@ -1,47 +1,47 @@
 ---
-title: 容器区域映射的 Azure 监视器
-description: 本文介绍了容器 Azure 监视器、日志分析工作区和自定义指标之间支持的区域映射。
+title: 容器区域映射的 Azure Monitor
+description: 本文介绍容器 Azure Monitor、Log Analytics 工作区和自定义指标之间支持的区域映射。
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.openlocfilehash: a058f9cac987bb5c7130019f50370c6a176b09ac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75403427"
 ---
-# <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>Azure 监视器支持的容器区域映射
+# <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>容器 Azure Monitor 支持区域映射
 
- 为容器启用 Azure 监视器时，仅支持某些区域链接日志分析工作区和 AKS 群集，以及收集提交到 Azure 监视器的自定义指标。
+ 为容器启用 Azure Monitor 时，仅支持某些区域以链接 Log Analytics 工作区和 AKS 群集，以及收集提交到 Azure Monitor 的自定义指标。
 
-## <a name="log-analytics-workspace-supported-mappings"></a>日志分析工作区支持的映射
+## <a name="log-analytics-workspace-supported-mappings"></a>Log Analytics 支持工作区的映射
 
-AKS 群集资源或日志分析工作区可以驻留在其他区域，下表显示了我们的映射。
+AKS 群集资源或 Log Analytics 工作区可以位于其他区域，下表显示了映射。
 
-|**AKS 群集区域** | **日志分析工作区区域** |
+|**AKS 群集区域** | **Log Analytics 工作区区域** |
 |-----------------------|------------------------------------|
 |**非洲** | |
-|南非北部 |西欧 |
-|南非西部 |西欧 |
+|SouthAfricaNorth |西欧 |
+|SouthAfricaWest |西欧 |
 |**澳大利亚** | |
-|澳大利亚东部 |澳大利亚东部 |
-|澳大利亚中部 |澳大利亚中部 |
-|澳大利亚中心2 |澳大利亚中部 |
-|澳大利亚东部 |澳大利亚东部 |
-|**亚太** | |
+|AustraliaEast |AustraliaEast |
+|AustraliaCentral |AustraliaCentral |
+|AustraliaCentral2 |AustraliaCentral |
+|AustraliaEast |AustraliaEast |
+|**亚太区** | |
 |EastAsia |EastAsia |
 |SoutheastAsia |SoutheastAsia |
 |**巴西** | |
-|巴西南部 | 中南部 |
+|BrazilSouth | Default-machinelearning-southcentralus |
 |**Canada** ||
 |CanadaCentral |CanadaCentral |
 |CanadaEast |CanadaCentral |
 |**欧洲** | |
-|法国中部 |法国中部 |
-|法国南部 |法国中部 |
-|北欧 |北欧 |
+|FranceCentral |FranceCentral |
+|FranceSouth |FranceCentral |
+|NorthEurope |NorthEurope |
 |UKSouth |UKSouth |
-|英国西部 |UKSouth |
+|UKWest |UKSouth |
 |西欧 |西欧 |
 |**印度** | |
 |CentralIndia |CentralIndia |
@@ -49,24 +49,24 @@ AKS 群集资源或日志分析工作区可以驻留在其他区域，下表显�
 |WestIndia |CentralIndia |
 |**日本** | |
 |JapanEast |JapanEast |
-|日本西部 |JapanEast |
+|JapanWest |JapanEast |
 |**韩国** | |
 |KoreaCentral |KoreaCentral |
 |KoreaSouth |KoreaCentral |
-|**我们** | |
-|中央 |中央|
+|**反馈** | |
+|CentralUS |CentralUS|
 |EastUS |EastUS |
 |EastUS2 |EastUS2 |
-|韦斯特乌斯 |韦斯特乌斯 |
+|WestUS |WestUS |
 |美国西部 2 |美国西部 2 |
-|西中乌斯<sup>1</sup>|东US<sup>1</sup>|
+|WestCentralUS<sup>1</sup>|EastUS<sup>1</sup>|
 |US Gov 弗吉尼亚州 |US Gov 弗吉尼亚州 |
 
-<sup>1</sup>由于容量限制，在创建新资源时该区域不可用。 这包括日志分析工作区。 然而，该区域已有的相互联系资源应继续发挥作用。
+<sup>1</sup>由于容量限制，区域在创建新资源时不可用。 这包括 Log Analytics 工作区。 但是，区域中预先存在的链接资源应该继续工作。
 
-## <a name="custom-metrics-supported-regions"></a>受支持的自定义指标区域
+## <a name="custom-metrics-supported-regions"></a>自定义指标支持区域
 
-支持从 Azure Kubernetes 服务 （AKS） 群集节点和 pod 收集指标，仅支持在以下[Azure 区域](../platform/metrics-custom-overview.md#supported-regions)中作为自定义指标发布。
+仅支持在以下[azure 区域](../platform/metrics-custom-overview.md#supported-regions)中收集 Azure Kubernetes SERVICES （AKS）群集节点和 pod 中的指标以作为自定义指标发布。
 
 ## <a name="next-steps"></a>后续步骤
 

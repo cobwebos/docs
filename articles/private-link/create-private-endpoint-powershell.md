@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure PowerShell 创建 Azure 专用终结点*微软文档
+title: 使用 Azure PowerShell 创建 Azure 专用终结点 |Microsoft Docs
 description: 了解 Azure 专用链接
 services: private-link
 author: malopMSFT
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: 60032677594537f1e7791b7108eebd5d4cfad5b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75430346"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>使用 Azure PowerShell 创建专用终结点
@@ -23,7 +23,7 @@ ms.locfileid: "75430346"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-创建资源之前，必须先创建一个资源组，该资源组使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 托管虚拟网络和专用终结点。 下面的示例在*WestUS*位置创建名为*myResourceGroup*的资源组：
+创建资源之前，必须先创建一个资源组，该资源组使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 托管虚拟网络和专用终结点。 以下示例在 " *WestUS* " 位置创建名为 " *myResourceGroup* " 的资源组：
 
 ```azurepowershell
 
@@ -50,7 +50,7 @@ $virtualNetwork = New-AzVirtualNetwork `
 
 ### <a name="add-a-subnet"></a>添加子网
 
-Azure 将资源部署到虚拟网络中的子网，因此需要创建子网。 使用 [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) 创建名为“mySubnet”** 的子网配置。 以下示例创建一个名为 *mySubnet* 的子网，并将专用终结点网络策略标志设置为“禁用”****。
+Azure 将资源部署到虚拟网络中的子网，因此需要创建子网。 使用 [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) 创建名为“mySubnet”  的子网配置。 以下示例创建一个名为 *mySubnet* 的子网，并将专用终结点网络策略标志设置为“禁用”  。
 
 ```azurepowershell
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
@@ -65,7 +65,7 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
 
 ### <a name="associate-the-subnet-to-the-virtual-network"></a>将子网关联到虚拟网络
 
-您可以使用[Set-Az虚拟网络](/powershell/module/az.network/Set-azVirtualNetwork)将子网配置写入虚拟网络。 此命令创建子网：
+可以使用 [Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) 将子网配置写入虚拟网络。 此命令创建子网：
 
 ```azurepowershell
 $virtualNetwork | Set-AzVirtualNetwork
@@ -170,7 +170,7 @@ New-AzPrivateDnsRecordSet -Name $recordName -RecordType A -ZoneName "privatelink
   
 ## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
 
-使用 [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) 返回 VM 的公共 IP 地址。 此示例返回 myVM** VM 的公共 IP 地址：
+使用 [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) 返回 VM 的公共 IP 地址。 此示例返回 myVM  VM 的公共 IP 地址：
 
 ```azurepowershell
 Get-AzPublicIpAddress `
@@ -187,13 +187,13 @@ Get-AzPublicIpAddress `
 mstsc /v:<publicIpAddress>
 ```
 
-1. 出现提示时，选择“连接”****。 
+1. 出现提示时，选择“连接”  。 
 2. 输入在创建 VM 时指定的用户名和密码。
   > [!NOTE]
   > 可能需要选择“更多选择”>“使用其他帐户”，以指定在创建 VM 时输入的凭据。 
   
-3. 选择“确定”。 
-4. 可能会收到证书警告。 如果收到证书警告，选择“确定”或“继续”********。 
+3. 选择“确定”  。 
+4. 可能会收到证书警告。 如果收到证书警告，选择“确定”或“继续”   。 
 
 ## <a name="access-sql-database-server-privately-from-the-vm"></a>以私密方式从 VM 访问 SQL 数据库服务器
 
@@ -210,14 +210,14 @@ mstsc /v:<publicIpAddress>
     Aliases:   myserver.database.windows.net
     ```
 3. 安装 SQL Server Management Studio
-4. 在"连接到服务器"中，输入或选择此信息：设置值服务器类型选择数据库引擎。
-      服务器名称 选择myserver.database.windows.net用户名 输入创建期间提供的用户名。
+4. 在 "连接到服务器" 中，输入或选择以下信息：设置值服务器类型选择数据库引擎。
+      服务器名称选择 "myserver.database.windows.net 用户名" 输入创建过程中提供的用户名。
       密码  输入在创建过程中提供的密码。
       记住密码 选择“是”。
 5. 选择“连接”。
 6. 浏览左侧菜单中的“数据库”。 
 7. （可选）创建或查询 mydatabase 中的信息
-8. 关闭远程桌面连接到*myVM。* 
+8. 关闭与*myVM*的远程桌面连接。 
 
 ## <a name="clean-up-resources"></a>清理资源 
 使用专用终结点、SQL 数据库服务器和 VM 后，请使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 删除资源组和组内所有资源：

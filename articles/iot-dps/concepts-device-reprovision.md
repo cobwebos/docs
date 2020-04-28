@@ -1,6 +1,6 @@
 ---
-title: Azure IoT 中心设备配置服务 - 设备概念
-description: 描述 Azure IoT 中心设备配置服务 （DPS） 的设备重新调配概念
+title: Azure IoT 中心设备预配服务 - 设备概念
+description: 介绍 Azure IoT 中心设备预配服务 (DPS) 的设备重新预配概念
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 2bf369b784cddf307abc59d2b8766fc8a87e0985
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74975340"
 ---
 # <a name="iot-hub-device-reprovisioning-concepts"></a>IoT 中心设备重新预配概念
@@ -50,11 +50,11 @@ ms.locfileid: "74975340"
 
 根据具体情况，设备通常会在重启时向预配服务实例发送请求。 还支持按需手动触发预配的方法。 注册项上的重新预配策略将确定设备预配服务实例处理这些预配请求的方式。 该策略还确定是否应在重新预配期间迁移设备状态数据。 单个注册和注册组可使用相同的策略：
 
-* **重新预配和迁移数据**：此策略是新注册项的默认策略。 当与注册项关联的设备提交新的请求时，此策略将执行操作 (1)。 根据注册项配置，可将设备重新分配给其他 IoT 中心。 如果设备正在更改 IoT 中心，则将删除初始 IoT 中心内的设备注册。 来自该初始 IoT 中心的已更新设备状态信息将迁移到新的 IoT 中心 (2)。 在迁移期间，设备的状态将报告为**分配**。
+* **重新预配和迁移数据**：此策略是新注册项的默认策略。 当与注册项关联的设备提交新的请求时，此策略将执行操作 (1)。 根据注册项配置，可将设备重新分配给其他 IoT 中心。 如果设备正在更改 IoT 中心，则将删除初始 IoT 中心内的设备注册。 来自该初始 IoT 中心的已更新设备状态信息将迁移到新的 IoT 中心 (2)。 迁移期间，设备的状态将报告为“正在分配”  。
 
     ![使用设备预配服务进行预配](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
 
-* **重新预配并重置为初始配置**：当与注册项关联的设备提交新的预配请求时，此策略将执行操作 (1)。 根据注册项配置，可将设备重新分配给其他 IoT 中心。 如果设备正在更改 IoT 中心，则将删除初始 IoT 中心内的设备注册。 将向新的 IoT 中心提供预配服务实例在预配设备时接收到的初始配置数数据 (2)。 在迁移期间，设备的状态将报告为**分配**。
+* **重新预配并重置为初始配置**：当与注册项关联的设备提交新的预配请求时，此策略将执行操作 (1)。 根据注册项配置，可将设备重新分配给其他 IoT 中心。 如果设备正在更改 IoT 中心，则将删除初始 IoT 中心内的设备注册。 将向新的 IoT 中心提供预配服务实例在预配设备时接收到的初始配置数数据 (2)。 迁移期间，设备的状态将报告为“正在分配”  。
 
     此策略通常用于恢复出厂设置而无需更改 IoT 中心。
 

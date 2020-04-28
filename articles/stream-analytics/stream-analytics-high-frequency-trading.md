@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: 06a4bdb8a8ee5d458347d30b53f740952151799e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75426212"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>使用流分析进行高频交易模拟
@@ -64,7 +64,7 @@ socket.On(Socket.EVENT_CONNECT, () =>
 >事件的时间戳为 **lastUpdated**，采用纪元时间。
 
 ### <a name="predictive-model-for-high-frequency-trading"></a>高频交易预测模型
-为了演示的目的，我们使用一个线性模型，由沈大林[在他的论文](https://docplayer.net/23038840-Order-imbalance-based-strategy-in-high-frequency-trading.html)中描述的。
+我们使用 Darryl Shen 在[其文章](https://docplayer.net/23038840-Order-imbalance-based-strategy-in-high-frequency-trading.html)中介绍的线性模型进行演示。
 
 大额委托失衡 (VOI) 是基于当前买入/卖出价量和上次买入/卖出价量的一个函数。 该文章明确了 VOI 和未来价格波动的相关性。 它构建了一个线性模型，该模型基于过去 5 个 VOI 值以及接下来 10 次交易的价格变化。 使用前一天的数据对模型进行线性回归训练。 
 

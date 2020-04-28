@@ -1,5 +1,5 @@
 ---
-title: 访问和管理微软 OneDrive 中的文件
+title: 访问和管理 Microsoft OneDrive 中的文件
 description: 通过在 Azure 逻辑应用中创建自动化工作流，在 OneDrive 中上载和管理文件
 services: logic-apps
 ms.suite: integration
@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
 ms.openlocfilehash: edfbf090c3409d583cda6fd2c9957c37be5dfb7a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75378426"
 ---
 # <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用访问和管理 OneDrive 连接器中的文件
 
-通过使用[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[OneDrive 连接器](/connectors/onedriveconnector/)，您可以创建自动任务和工作流来管理文件，包括上载、获取、删除文件等。 使用 OneDrive，您可以执行以下任务：
+通过使用[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[OneDrive 连接器](/connectors/onedriveconnector/)，你可以创建自动化任务和工作流来管理文件，包括上传、获取、删除文件等。 利用 OneDrive，你可以执行以下任务：
 
 * 通过在 OneDrive 中存储文件生成工作流，或更新 OneDrive 中的现有文件。 
 * 在 OneDrive 内创建或更新文件时，使用触发器启动工作流。
@@ -38,7 +38,7 @@ ms.locfileid: "75378426"
 
 触发器是用于启动在逻辑应用中定义的工作流的事件。 触发器以希望的间隔和频率“轮询”服务。 [了解有关触发器的详细信息](../logic-apps/logic-apps-overview.md#logic-app-concepts)。
 
-1. 在逻辑应用设计器中，`onedrive`键入获取触发器列表：  
+1. 在逻辑应用设计器中， `onedrive`键入以获取触发器列表：  
 
    ![](./media/connectors-create-api-onedrive/onedrive-1.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "75378426"
 
 2. 选择“添加操作”****。
 
-3. 在搜索框中，键入`onedrive`以获取所有可用操作的列表。
+3. 在 "搜索" 框中`onedrive` ，键入以获取所有可用操作的列表。
 
    ![](./media/connectors-create-api-onedrive/onedrive-actions.png) 
 
@@ -74,9 +74,9 @@ ms.locfileid: "75378426"
 
    ![](./media/connectors-create-api-onedrive/sample-action.png)
 
-   如果系统提示您输入连接信息，请输入详细信息以创建本主题中[所述的连接](#create-the-connection)。
+   如果系统提示输入连接信息，请按照本主题中所述，输入详细信息以[创建连接](#create-the-connection)。
 
-   在此示例中，您可以在 OneDrive 文件夹中创建新文件。 可使用来自其他触发器的输出创建 OneDrive 文件。 例如，添加 Office 365 Outlook“新电子邮件到达时”** 触发器。 然后添加可在 ForEach 内使用“附件”和“内容类型”字段的 OneDrive“创建文件”操作，在 OneDrive 中新建文件**。
+   在此示例中，将在 OneDrive 文件夹中创建一个新文件。 可使用来自其他触发器的输出创建 OneDrive 文件。 例如，添加 Office 365 Outlook“新电子邮件到达时”** 触发器。 然后添加可在 ForEach 内使用“附件”和“内容类型”字段的 OneDrive“创建文件”操作，在 OneDrive 中新建文件**。
 
    ![](./media/connectors-create-api-onedrive/foreach-action.png)
 

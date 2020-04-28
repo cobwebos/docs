@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
 ms.openlocfilehash: c54853717f7e0b234df013e5aee575682d0d3d97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75429150"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>如何将 Azure IoT 中心克隆到另一个区域
 
 本文探讨克隆 IoT 中心的方法，并提供在开始之前需要回答的一些问题。 下面是克隆 IoT 中心的几个可能原因：
  
-* 您将公司从一个区域移动到另一个区域，例如从欧洲到北美（反之亦然），并且希望资源和数据在地理位置上靠近新位置，因此您需要移动中心。
+* 你要将公司从一个区域移到另一个区域（如从欧洲到北美（反之亦然），并且你希望你的资源和数据地理位置接近于你的新位置，因此你需要移动中心。
 
 * 要为开发环境和生产环境设置中心。
 
@@ -107,15 +107,15 @@ ms.locfileid: "75429150"
 
 ### <a name="find-the-original-hub-and-export-it-to-a-resource-template"></a>找到原始中心并将其导出到资源模板。
 
-1. 登录到[Azure 门户](https://portal.azure.com)。 
+1. 登录到 [Azure 门户](https://portal.azure.com)。 
 
-1. 转到“资源组”，选择包含所要移动的中心的资源组。**** 也可以转到“资源”并找到该中心。**** 选择该中心。
+1. 转到“资源组”，选择包含所要移动的中心的资源组。  也可以转到“资源”并找到该中心。  选择该中心。
 
-1. 从中心的属性和设置列表中选择“导出模板”。**** 
+1. 从中心的属性和设置列表中选择“导出模板”。  
 
    ![显示用于导出 IoT 中心模板的命令的屏幕截图。](./media/iot-hub-how-to-clone/iot-hub-export-template.png)
 
-1. 选择“下载”以下载模板。**** 将文件保存到可以再次找到的某个位置。 
+1. 选择“下载”以下载模板。  将文件保存到可以再次找到的某个位置。 
 
    ![显示用于下载 IoT 中心模板的命令的屏幕截图。](./media/iot-hub-how-to-clone/iot-hub-download-template.png)
 
@@ -300,7 +300,7 @@ ms.locfileid: "75429150"
 
 1. 检索所有路由资源所需的密钥，并将其放到模板中。 可以从 [Azure 门户](https://portal.azure.com)中的资源检索密钥。 
 
-   例如，如果要将消息路由到某个存储容器，请在门户中找到相应的存储帐户。 在“设置”部分下选择“访问密钥”，然后复制其中的一个密钥。**** 首次导出模板时，密钥如下所示：
+   例如，如果要将消息路由到某个存储容器，请在门户中找到相应的存储帐户。 在“设置”部分下选择“访问密钥”，然后复制其中的一个密钥。  首次导出模板时，密钥如下所示：
 
    ```json
    "connectionString": "DefaultEndpointsProtocol=https;
@@ -347,23 +347,23 @@ ms.locfileid: "75429150"
 
 使用模板在新位置创建新中心。 若要移动路由资源，应在新位置设置资源，并更新模板中的引用，以使其匹配。 如果不移动路由资源，应将其包含在模板中并对其使用更新的密钥。
 
-1. 登录到[Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 选择“创建资源”。**** 
+1. 选择“创建资源”。  
 
 1. 在搜索框中输入“模板部署”，然后按 Enter。
 
-1. 选择“模板部署(使用自定义模板进行部署)”。**** 随后会转到“模板部署”屏幕。 选择 **“创建”**。 将看到以下屏幕：
+1. 选择“模板部署(使用自定义模板进行部署)”。  随后会转到“模板部署”屏幕。 选择“创建”  。 将看到以下屏幕：
 
    ![显示用于生成自己的模板的命令的屏幕截图](./media/iot-hub-how-to-clone/iot-hub-custom-deployment.png)
 
-1. 选择“在编辑器中生成自己的模板”，以便可以从文件上传模板。**** 
+1. 选择“在编辑器中生成自己的模板”，以便可以从文件上传模板。  
 
-1. 选择“加载文件”。**** 
+1. 选择“加载文件”。  
 
    ![显示用于上传模板文件的命令的屏幕截图](./media/iot-hub-how-to-clone/iot-hub-upload-file.png)
 
-1. 浏览到已编辑的新模板并将其选中，然后选择“打开”。**** 随即会在编辑窗口中加载该模板。 选择“保存”。**** 
+1. 浏览到已编辑的新模板并将其选中，然后选择“打开”。  随即会在编辑窗口中加载该模板。 选择“保存”  。 
 
    ![显示加载模板的屏幕截图](./media/iot-hub-how-to-clone/iot-hub-loading-template.png)
 
@@ -373,11 +373,11 @@ ms.locfileid: "75429150"
 
    **资源组**：在新位置创建新资源组。 如果已经设置了新的资源组，可以选择它，而无需新建。
 
-   **位置**：如果选择了现有资源组，则填充此资源组以匹配资源组的位置。 如果创建了新资源组，请填充其位置。
+   **位置**：如果选择了现有的资源组，则系统会自动填充与该资源组匹配的位置。 如果创建了新资源组，请填充其位置。
 
    **“我同意”复选框**：简单而言，选中此框表示你同意为创建的资源付费。
 
-1. 选择“购买”按钮。****
+1. 选择“购买”按钮。 
 
 门户现在会验证该模板并部署克隆的中心。 如果有路由配置数据，该数据将包含到新中心，但会指向位于先前位置的资源。
 
@@ -393,7 +393,7 @@ ms.locfileid: "75429150"
 
 若要使用 DPS 将设备移到新位置，请参阅[如何重新预配设备](../iot-dps/how-to-reprovision.md)。 完成后，可以在 [Azure 门户](https://portal.azure.com)中查看设备，并确认它们是否出现在新位置。
 
-使用 [Azure 门户](https://portal.azure.com)转到新中心。 选择该中心，然后选择“IoT 设备”。**** 将会看到已重新预配到克隆的中心的设备。 还可以查看克隆的中心的属性。 
+使用 [Azure 门户](https://portal.azure.com)转到新中心。 选择该中心，然后选择“IoT 设备”。  将会看到已重新预配到克隆的中心的设备。 还可以查看克隆的中心的属性。 
 
 如果已实施路由，请测试并确保将消息正确路由到资源。
 
@@ -413,7 +413,7 @@ ms.locfileid: "75429150"
 
 ### <a name="downloading-the-sample"></a>下载示例
 
-1. 使用此页面中的 IoT C# 示例[：C# 的 Azure IoT 示例](https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/)。 下载 zip 文件并将其解压缩到计算机。 
+1. 使用以下页面中的 IoT C# 示例：[适用于 C# 的 Azure IoT 示例](https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/)。 下载 zip 文件并将其解压缩到计算机。 
 
 1. 相关代码位于 ./iot-hub/Samples/service/ImportExportDevicesSample 中。 无需查看或编辑代码即可运行应用程序。
 
@@ -473,13 +473,13 @@ ms.locfileid: "75429150"
    export STORAGE_ACCT_CONN_STRING="<put connection string to the storage account here>"
    ```
 
-1. 对于 IoT 中心连接字符串，请在门户中转到每个中心。 可以在中心的“资源”中搜索。**** 如果你知道某个资源组，可以转到“资源组”，选择该资源组，然后从该资源组的资产列表中选择中心。**** 
+1. 对于 IoT 中心连接字符串，请在门户中转到每个中心。 可以在中心的“资源”中搜索。  如果你知道某个资源组，可以转到“资源组”，选择该资源组，然后从该资源组的资产列表中选择中心。  
 
-1. 在中心的“设置”中选择“共享访问策略”，然后选择“iothubowner”并复制其中的一个连接字符串。******** 对目标中心执行相同的操作。 将连接字符串添加到相应的 SET 命令。
+1. 在中心的“设置”中选择“共享访问策略”，然后选择“iothubowner”并复制其中的一个连接字符串。   对目标中心执行相同的操作。 将连接字符串添加到相应的 SET 命令。
 
-1. 对于存储帐户连接字符串，请在“资源”中或其“资源组”下找到并打开该存储帐户。******** 
+1. 对于存储帐户连接字符串，请在“资源”中或其“资源组”下找到并打开该存储帐户。   
    
-1. 在“设置”部分下，选择“访问密钥”并复制其中的一个连接字符串。**** 将连接字符串放到包含相应 SET 命令的文本文件中。 
+1. 在“设置”部分下，选择“访问密钥”并复制其中的一个连接字符串。  将连接字符串放到包含相应 SET 命令的文本文件中。 
 
 现在，你已在包含 SET 命令的文件中设置了环境变量，并知道命令行参数有哪些。 让我们运行该示例。
 
@@ -524,7 +524,7 @@ ms.locfileid: "75429150"
    IoTHubServiceSamples.sln
    ```
     
-1. 右键单击项目“ImportExportDevicesSample”并选择“设为启动项目”。******    
+1. 右键单击项目“ImportExportDevicesSample”并选择“设为启动项目”。      
     
 1. 在 ImportExportDevicesSample 文件夹中 Program.cs 的顶部，设置五个选项的变量。
 
@@ -547,7 +547,7 @@ ms.locfileid: "75429150"
 
 可以在 [Azure 门户](https://portal.azure.com)中查看设备，并确认它们是否出现在新位置。
 
-1. 使用 [Azure 门户](https://portal.azure.com)转到新中心。 选择该中心，然后选择“IoT 设备”。**** 将会看到刚刚从旧中心复制到克隆的中心的设备。 还可以查看克隆的中心的属性。 
+1. 使用 [Azure 门户](https://portal.azure.com)转到新中心。 选择该中心，然后选择“IoT 设备”。  将会看到刚刚从旧中心复制到克隆的中心的设备。 还可以查看克隆的中心的属性。 
 
 1. 检查导入/导出错误：在 [Azure 门户](https://portal.azure.com)中转到 Azure 存储帐户，然后查看 `ImportErrors.log` 的 `devicefiles` 容器。 如果此文件为空（大小为 0），则表示未发生任何错误。 如果尝试多次导入同一设备，第二次导入时会拒绝该设备，并将一条错误消息添加到日志文件中。
 

@@ -11,10 +11,10 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: d064e940997d13e51be4fd38e9f678b778ce31f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74900048"
 ---
 # <a name="samples-on-azure-data-science-virtual-machines"></a>Azure Data Science Virtual Machine 示例
@@ -28,25 +28,25 @@ Azure Data Science Virtual Machine (DSVM) 包含一整套示例代码。 这些�
 为了运行这些示例，必须预配 Data Science Virtual Machine。 请参阅 [Windows](./provision-vm.md) 和 [Ubuntu](./dsvm-ubuntu-intro.md) 的快速入门。
 
 ## <a name="available-samples"></a>可用示例
-| 示例类别 | 描述 | 位置 |
+| 示例类别 | 说明 | 位置 |
 | ------------- | ------------- | ------------- |
 | R 语言  | 示例介绍了多种方案，例如如何连接到基于 Azure 的云数据存储，以及如何比较开源 R 和 Microsoft Machine Learning Server。 此外还介绍了如何在 Microsoft Machine Learning Server 和 SQL Server 上操作模型。 <br/> [R 语言](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
 | Python 语言  | 示例介绍了多种方案，例如如何连接到基于 Azure 的云数据存储，以及如何使用 Azure 机器学习。  <br/> [Python 语言](#python-language) | <br/>`~notebooks` <br/><br/>|
-| Julia 语言  | 详细说明了 Julia 中的绘图和深度学习。 此外还介绍了如何通过 Julia 调用 C 和 Python。 <br/> [朱莉娅语](#julia-language) |<br/> Windows：<br/> `~notebooks/Julia_notebooks`<br/><br/> Linux：<br/> `~notebooks/julia`<br/><br/> |
+| Julia 语言  | 详细说明了 Julia 中的绘图和深度学习。 此外还介绍了如何通过 Julia 调用 C 和 Python。 <br/> [Julia 语言](#julia-language) |<br/> Windows:<br/> `~notebooks/Julia_notebooks`<br/><br/> Linux：<br/> `~notebooks/julia`<br/><br/> |
 | Azure 机器学习  | 介绍了如何使用机器学习生成机器学习和深度学习模型。 在任意位置部署模型。 使用自动化机器学习和智能超参数优化。 还使用模型管理和分布式定型。 <br/> [机器学习](#azure-machine-learning) | <br/>`~notebooks/AzureML`<br/> <br/>|
-| PyTorch Notebook  | 使用基于 PyTorch 的神经网络的深度学习示例。 Notebook 从新手方案到高级方案都有涵盖。  <br/> [PyTorch 笔记本](#pytorch) | <br/>`~notebooks/Deep_learning_frameworks/pytorch`<br/> <br/>|
+| PyTorch Notebook  | 使用基于 PyTorch 的神经网络的深度学习示例。 Notebook 从新手方案到高级方案都有涵盖。  <br/> [PyTorch Notebook](#pytorch) | <br/>`~notebooks/Deep_learning_frameworks/pytorch`<br/> <br/>|
 | TensorFlow  |  使用 TensorFlow 框架实现的各种神经网络示例和技术。 <br/> [TensorFlow](#tensorflow) | <br/>`~notebooks/Deep_learning_frameworks/tensorflow`<br/><br/> |
-| Microsoft 认知工具包 <br/>   | 由 Microsoft 的 Cognitive Toolkit 团队发布的深度学习示例。  <br/> [认知工具包](#cntk) | <br/> `~notebooks/DeepLearningTools/CNTK/Tutorials`<br/><br/> Linux：<br/> `~notebooks/CNTK`<br/> <br/>|
-| Caffe2 | 使用基于 Caffe2 的神经网络的深度学习示例。 用户可通过多个笔记本熟悉 Caffe2 以及如何有效使用它。 示例不仅包括图像预处理和数据集创建， 还包括回归以及如何使用预定型模型。 <br/> [卡夫2](#caffe2) | <br/>`~notebooks/Deep_learning_frameworks/caffe2`<br/><br/> |
+| Microsoft 认知工具包 <br/>   | 由 Microsoft 的 Cognitive Toolkit 团队发布的深度学习示例。  <br/> [Cognitive Toolkit](#cntk) | <br/> `~notebooks/DeepLearningTools/CNTK/Tutorials`<br/><br/> Linux：<br/> `~notebooks/CNTK`<br/> <br/>|
+| Caffe2 | 使用基于 Caffe2 的神经网络的深度学习示例。 用户可通过多个笔记本熟悉 Caffe2 以及如何有效使用它。 示例不仅包括图像预处理和数据集创建， 还包括回归以及如何使用预定型模型。 <br/> [Caffe2](#caffe2) | <br/>`~notebooks/Deep_learning_frameworks/caffe2`<br/><br/> |
 | H2O   | 基于 Python 的示例，使用 H2O 处理实际问题方案。 <br/> [H2O](#h2o) | <br/>`~notebooks/h2o`<br/><br/> |
-| SparkML 语言  | 通过 pySpark 和 MMLSpark 使用 Apache Spark MLLib 工具包功能的示例：在 Apache Spark 2.x 上为 Apache Spark 进行微软机器学习。  <br/> [SparkML 语言](#sparkml) | <br/>`~notebooks/SparkML/pySpark`<br/>`~notebooks/MMLSpark`<br/><br/>  |
-| XGBoost | XGBoost 中的标准机器学习示例，用于分类、回归等场景。 <br/> [XGBoost](#xgboost) | <br/>Windows：<br/>`\dsvm\samples\xgboost\demo`<br/><br/> |
+| SparkML 语言  | 通过 pySpark 和 MMLSpark 使用 Apache Spark MLLib 工具箱功能的示例：面向 Apache Spark 2.x 上的 Apache Spark 的 Microsoft 机器学习。  <br/> [SparkML 语言](#sparkml) | <br/>`~notebooks/SparkML/pySpark`<br/>`~notebooks/MMLSpark`<br/><br/>  |
+| XGBoost | XGBoost 中的标准机器学习示例，用于分类、回归等场景。 <br/> [XGBoost](#xgboost) | <br/>Windows:<br/>`\dsvm\samples\xgboost\demo`<br/><br/> |
 
 <br/>
 
 ## <a name="access-jupyter"></a>访问 Jupyter 
 
-若要访问 Jupyter，请选择桌面或应用程序菜单中的 Jupyter 图标****。 还可以在 Linux 版的 DSVM 上访问 Jupyter。 若要在 Web 浏览器中执行远程访问，请在 Ubuntu 上转到 `https://<Full Domain Name or IP Address of the DSVM>:8000`。
+若要访问 Jupyter，请选择桌面或应用程序菜单中的 Jupyter 图标  。 还可以在 Linux 版的 DSVM 上访问 Jupyter。 若要在 Web 浏览器中执行远程访问，请在 Ubuntu 上转到 `https://<Full Domain Name or IP Address of the DSVM>:8000`。
 
 若要添加例外并允许通过浏览器访问 Jupyter，请使用以下指南：
 
@@ -57,7 +57,7 @@ Azure Data Science Virtual Machine (DSVM) 包含一整套示例代码。 这些�
 使用登录 Data Science Virtual Machine 所用的密码进行登录。
 <br/>
 
-**朱皮特家**
+**Jupyter 主页**
 <br/>![Jupyter 主页](./media/jupyter-home.png)<br/>
 
 ## <a name="r-language"></a>R 语言 

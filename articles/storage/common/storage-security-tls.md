@@ -1,7 +1,7 @@
 ---
 title: 使用 .NET 启用安全 TLS
 titleSuffix: Azure Storage
-description: 了解如何通过使用 .NET 客户端库实现 Azure 存储启用 TLS 1.2。
+description: 了解如何使用适用于 Azure 存储的 .NET 客户端库来启用 TLS 1.2。
 services: storage
 author: tamram
 ms.service: storage
@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 81c9a8fe9513f1f8fc65ad64b34f0fb04383569b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "75371796"
 ---
 # <a name="enable-secure-tls-for-azure-storage-client"></a>为 Azure 存储客户端启用安全 TLS
@@ -77,8 +77,8 @@ Fiddler 可以用于验证是否实际使用了 TLS 1.2。 打开 Fiddler 以开
 
 ![在 Fiddler 中验证 TLS 版本的屏幕截图](./media/storage-security-tls/storage-security-tls-verify-in-fiddler.png)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
-* [传输层安全 (TLS) (Transport Layer Security) (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)
+* [传输层安全性 (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)
 * [TLS 上的 PCI 符合性](https://blog.pcisecuritystandards.org/migrating-from-ssl-and-early-tls)
 * [在 Java 客户端中启用 TLS](https://www.java.com/en/configure_crypto.html)

@@ -1,21 +1,21 @@
 ---
 title: 使用 Azure Functions 调用逻辑应用
-description: 通过侦听 Azure 服务总线创建调用或触发逻辑应用的 Azure 函数
+description: 通过侦听 Azure 服务总线，创建调用或触发逻辑应用的 Azure 函数
 services: logic-apps
 ms.suite: integration
 ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
 ms.openlocfilehash: afd2735bae2a79ad942c347219019ef200b61070
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75428709"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>使用 Azure Functions 和 Azure 服务总线调用或触发逻辑应用
 
-当您需要部署长时间运行的侦听器或任务时，可以使用[Azure 函数](../azure-functions/functions-overview.md)触发逻辑应用。 例如，您可以创建 Azure 函数，该函数侦听 Azure[服务总线](../service-bus-messaging/service-bus-messaging-overview.md)队列，并立即触发逻辑应用作为推送触发器。
+当需要部署长时间运行的侦听器或任务时，可以使用[Azure Functions](../azure-functions/functions-overview.md)来触发逻辑应用。 例如，可以创建一个在[Azure 服务总线](../service-bus-messaging/service-bus-messaging-overview.md)队列上侦听的 azure 函数，并立即将逻辑应用作为推送触发器。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -25,7 +25,7 @@ ms.locfileid: "75428709"
 
 * 一个 Azure 函数应用，它是 Azure Functions 的容器。 若没有函数应用，请[先创建函数应用](../azure-functions/functions-create-first-azure-function.md)，并确保选择 .NET 作为运行时堆栈。
 
-* [有关如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
 ## <a name="create-logic-app"></a>创建逻辑应用
 
@@ -33,15 +33,15 @@ ms.locfileid: "75428709"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，并创建一个空的逻辑应用。
 
-   如果你不熟悉逻辑应用，请查看[快速入门：创建你的第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+   如果不熟悉逻辑应用，请查看[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-1. 在搜索框中输入 `http request`。 从触发器列表中选择“当收到 HTTP 请求时”触发器。****
+1. 在搜索框中输入 `http request`。 从触发器列表中选择“当收到 HTTP 请求时”触发器。 
 
    ![选择触发器](./media/logic-apps-scenario-function-sb-trigger/when-http-request-received-trigger.png)
 
    使用请求触发器时，可以选择输入用于队列消息的 JSON 架构。 JSON 架构帮助逻辑应用设计器理解输入数据的结构，并方便你在工作流中使用输出。
 
-1. 若要指定架构，请在“请求正文 JSON 架构”**** 框中输入架构，例如：
+1. 若要指定架构，请在“请求正文 JSON 架构”  框中输入架构，例如：
 
    ![指定 JSON 架构](./media/logic-apps-scenario-function-sb-trigger/when-http-request-received-trigger-schema.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "75428709"
 
    1. 在请求触发器中，选择“使用示例有效负载生成架构”。****
 
-   1. **在"输入或粘贴 JSON 有效负载示例**"下，输入示例有效负载，然后选择 **"完成**"。
+   1. 在 "**输入或粘贴示例 JSON 负载**" 下，输入示例负载，然后选择 "**完成**"。
 
       ![输入示例有效负载](./media/logic-apps-scenario-function-sb-trigger/enter-sample-payload.png)
 
@@ -99,21 +99,21 @@ ms.locfileid: "75428709"
 
 1. 在 Azure 门户中，打开并展开你的函数应用（如果尚未打开）。 
 
-1. 在你的函数应用名称下，展开“函数”。**** 在“函数”窗格中，选择“新建函数”。********
+1. 在你的函数应用名称下，展开“函数”。  在“函数”窗格中，选择“新建函数”。  
 
    ![展开“函数”，选择“新建函数”](./media/logic-apps-scenario-function-sb-trigger/add-new-function-to-function-app.png)
 
 1. 根据你是创建新的函数应用（在其中选择 .NET 作为运行时堆栈）还是使用现有的函数应用来选择此模板。
 
-   * 对于新功能应用，选择此模板：**服务总线队列触发器**
+   * 对于新的函数应用，请选择此模板：**服务总线队列触发器**
 
      ![为新的函数应用选择模板](./media/logic-apps-scenario-function-sb-trigger/current-add-queue-trigger-template.png)
 
-   * 对于现有函数应用，选择此模板：**服务总线队列触发器 - C#**
+   * 对于现有的函数应用，请选择此模板：**服务总线队列触发器 - C#**
 
      ![为现有的函数应用选择模板](./media/logic-apps-scenario-function-sb-trigger/legacy-add-queue-trigger-template.png)
 
-1. 在“Azure 服务总线队列触发器”窗格中，为你的触发器提供一个名称，然后为队列设置使用 Azure 服务总线 SDK `OnMessageReceive()` 侦听器的“服务总线连接”，然后选择“创建”。************
+1. 在“Azure 服务总线队列触发器”窗格中，为你的触发器提供一个名称，然后为队列设置使用 Azure 服务总线 SDK `OnMessageReceive()` 侦听器的“服务总线连接”，然后选择“创建”。   
 
 1. 编写一个基本函数，用以通过将队列消息用作触发器来调用之前创建的逻辑应用终结点。 在编写函数之前，请查看以下注意事项：
 
@@ -123,7 +123,7 @@ ms.locfileid: "75428709"
    
    * 可能情况下，重复使用 HTTP 客户端的实例。 有关详细信息，请参阅[在 Azure Functions 中管理连接](../azure-functions/manage-connections.md)。
 
-   本示例在[`Task.Run`](https://docs.microsoft.com/dotnet/api/system.threading.tasks.task.run)[异步](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/async)模式下使用 该方法。 有关详细信息，请参阅[使用 async 和 await 进行异步编程](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)。
+   此示例以[异步](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/async)模式使用 [`Task.Run` 方法](https://docs.microsoft.com/dotnet/api/system.threading.tasks.task.run)。 有关详细信息，请参阅[使用 async 和 await 进行异步编程](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)。
 
    ```csharp
    using System;

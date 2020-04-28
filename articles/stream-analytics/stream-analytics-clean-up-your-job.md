@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: d99920417f20034da1001a821c02376ac19274d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75426490"
 ---
 # <a name="stop-or-delete-your-azure-stream-analytics-job"></a>停止或删除 Azure 流分析作业
@@ -26,11 +26,11 @@ ms.locfileid: "75426490"
 
 停止作业时，将取消预配资源并停止处理事件。 与此作业相关的收费也将停止。 但是，你的所有配置都会保留，你可以稍后重启作业 
 
-1. 登录到 Azure[门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 
 2. 找到正在运行的流分析作业并选择它。
 
-3. 在流分析作业页上，选择“停止”**** 以停止作业。 
+3. 在流分析作业页上，选择“停止”  以停止作业。 
 
    ![停止 Azure 流分析作业](./media/stream-analytics-clean-up-your-job/stop-stream-analytics-job.png)
 
@@ -40,11 +40,11 @@ ms.locfileid: "75426490"
 >[!WARNING] 
 >流分析作业在删除后无法恢复。
 
-1. 登录到 Azure 门户。   
+1. 登录到 Azure 门户。 
 
 2. 找到现有流分析作业并选择它。
 
-3. 在流分析作业页上，选择“删除”**** 以删除作业。 
+3. 在流分析作业页上，选择“删除”  以删除作业。 
 
    ![删除 Azure 流分析作业](./media/stream-analytics-clean-up-your-job/delete-stream-analytics-job.png)
 

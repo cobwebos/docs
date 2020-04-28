@@ -1,5 +1,5 @@
 ---
-title: 还原或永久删除最近删除的用户 - Azure AD
+title: 还原或永久删除最近删除的用户 Azure AD
 description: 如何使用 Azure Active Directory 查看可还原的用户、还原已删除的用户或永久删除用户。
 services: active-directory
 author: msaburnley
@@ -14,10 +14,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 573269da1ca6b9ee09b493f4e758e78121d6c2f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75422863"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>使用 Azure Active Directory 还原或删除最近删除的用户
@@ -59,7 +59,7 @@ ms.locfileid: "75422863"
 > 还原用户后，在删除时已分配到该用户的许可证也会还原，即使这些许可证没有可用的席位。 如果随后使用的许可证超过了购买的许可证数目，则你的组织可能暂时不符合许可证的用法规则。
 
 ### <a name="to-restore-a-user"></a>还原用户
-1. 在“用户 - 已删除的用户”页上，搜索并选择一个可用用户****。 例如，_玛丽·帕克_。
+1. 在“用户 - 已删除的用户”页上，搜索并选择一个可用用户****。 例如， _Mary Parker_。
 
 2. 选择“还原用户”****。
 
@@ -88,6 +88,6 @@ ms.locfileid: "75422863"
 
 - [添加或更改配置文件信息](active-directory-users-profile-azure-portal.md)
 
-- [添加来自其他组织的来宾用户](../b2b/what-is-b2b.md)
+- [添加另一个组织中的来宾用户](../b2b/what-is-b2b.md)
 
 有关其他可用的用户管理任务的详细信息，请参阅 [Azure AD 用户管理文档](../users-groups-roles/index.yml)。

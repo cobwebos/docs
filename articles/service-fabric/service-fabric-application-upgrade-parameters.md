@@ -4,10 +4,10 @@ description: 介绍与升级 Service Fabric 应用程序相关的参数，包括
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.openlocfilehash: 42b5c52181cfb006ae57e43c183b96a059a9c63a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75377967"
 ---
 # <a name="application-upgrade-parameters"></a>应用程序升级参数
@@ -28,12 +28,12 @@ ms.locfileid: "75377967"
 
 通过 PowerShell 进行的 Service Fabric 应用程序升级使用 [Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade) 命令。 将 **Monitored**、**UnmonitoredAuto** 或 **UnmonitoredManual** 参数传递给 [Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade) 即可选择升级模式。
 
-Visual Studio Service Fabric 应用程序升级参数通过“Visual Studio 升级设置”对话框进行设置。 Visual Studio 升级模式通过“升级模式”下拉框从“Monitored”、“UnmonitoredAuto”或“UnmonitoredManual”中进行选择。**************** 有关详细信息，请参阅[在 Visual Studio 中配置 Service Fabric 应用程序的升级](service-fabric-visualstudio-configure-upgrade.md)。
+Visual Studio Service Fabric 应用程序升级参数通过“Visual Studio 升级设置”对话框进行设置。 Visual Studio 升级模式通过“升级模式”下拉框从“Monitored”、“UnmonitoredAuto”或“UnmonitoredManual”中进行选择。     有关详细信息，请参阅[在 Visual Studio 中配置 Service Fabric 应用程序的升级](service-fabric-visualstudio-configure-upgrade.md)。
 
 ### <a name="required-parameters"></a>必需的参数
 （PS=PowerShell，VS=Visual Studio）
 
-| 参数 | 应用于 | 描述 |
+| 参数 | 应用于 | 说明 |
 | --- | --- | --- |
 ApplicationName |PS| 正在升级的应用程序的名称。 示例：fabric:/VisualObjects、fabric:/ClusterMonitor。 |
 ApplicationTypeVersion|PS|作为升级目标的应用程序类型版本。 |
@@ -48,9 +48,9 @@ UnmonitoredManual | PS | 指示升级模式为“不受监视的手动”。 Ser
 运行状况评估参数为可选参数。 如果在启动升级时未指定运行状况评估条件，则 Service Fabric 将使用应用程序实例的 ApplicationManifest.xml 中指定的应用程序运行状况策略。
 
 > [!div class="mx-tdBreakAll"]
-> | 参数 | 应用于 | 描述 |
+> | 参数 | 应用于 | 说明 |
 > | --- | --- | --- |
-> | ApplicationParameter |PS、VS| 指定应用程序参数的替代。<br>PowerShell 应用程序参数指定为哈希表名称/值对。 例如，@{ "VotingData_MinReplicaSetSize" = "3"; "VotingData_PartitionCount" = "1" }。<br>Visual Studio 应用程序参数可以在“发布 Service Fabric 应用程序”对话框的“应用程序参数文件”字段中指定。****
+> | ApplicationParameter |PS、VS| 指定应用程序参数的替代。<br>PowerShell 应用程序参数指定为哈希表名称/值对。 例如，@{ "VotingData_MinReplicaSetSize" = "3"; "VotingData_PartitionCount" = "1" }。<br>Visual Studio 应用程序参数可以在“发布 Service Fabric 应用程序”对话框的“应用程序参数文件”字段中指定。 
 > | 确认 |PS| 允许的值为 **True** 和 **False**。 提示你在运行 cmdlet 之前进行确认。 |
 > | ConsiderWarningAsError |PS、VS |允许的值为 **True** 和 **False**。 默认值为 **False**。 在升级期间评估应用程序的运行状况时，将应用程序的警告运行状况事件视为错误。 默认情况下，Service Fabric 不会将警告运行状况事件评估为失败（错误），因此即使存在警告事件，升级也可以继续。 |
 > | DefaultServiceTypeHealthPolicy | PS、VS |以 MaxPercentUnhealthyPartitionsPerService、MaxPercentUnhealthyReplicasPerPartition、MaxPercentUnhealthyServices 格式指定用于受监视升级的默认服务类型的运行状况策略。 例如，5,10,15 指示以下值：MaxPercentUnhealthyPartitionsPerService = 5，MaxPercentUnhealthyReplicasPerPartition = 10，MaxPercentUnhealthyServices = 15。 |
@@ -78,7 +78,7 @@ UnmonitoredManual | PS | 指示升级模式为“不受监视的手动”。 Ser
 
 ### <a name="required-parameters"></a>必需的参数
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 | --- | --- |
 | application-id  |要升级的应用程序的 ID。 <br> 这通常是不带“fabric:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。|
 application-version |作为升级目标的应用程序类型版本。|
@@ -86,9 +86,9 @@ parameters  |升级应用程序时应用的应用程序参数替代的 JSON 编�
 
 ### <a name="optional-parameters"></a>可选参数
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 | --- | --- |
-default-service-health-policy | [JSON](https://docs.microsoft.com/rest/api/servicefabric/sfclient-model-servicetypehealthpolicy)编码的运行状况策略的编码规范，默认情况下用于评估服务类型的运行状况。 映射默认为空。 |
+default-service-health-policy | 默认使用的健康策略的 [JSON](https://docs.microsoft.com/rest/api/servicefabric/sfclient-model-servicetypehealthpolicy) 编码规范，用于评估服务类型的运行状况。 映射默认为空。 |
 failure-action | 允许的值为 **Rollback**、**Manual** 和 **Invalid**。 *Monitored* 升级遇到违反监视策略或运行状况策略的情况时需执行的补救操作。 <br>**Rollback** 指定将升级自动回退到升级前的版本。 <br>**Manual** 指示将升级切换到 *UnmonitoredManual* 升级模式。 <br>**Invalid** 指示故障操作无效。|
 force-restart | 如果更新配置或数据包而不更新服务代码，则仅当 ForceRestart 属性设置为 **True** 时，服务才会重启。 更新完成后，Service Fabric 将通知服务新的配置包或数据包可用。 该服务负责应用所做的更改。 如有必要，该服务可进行重启。 |
 health-check-retry-timeout | 执行 *FailureAction* 前，当应用程序或群集不正常时，重试运行状况评估所需的时间。 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 默认值：PT0H10M0S。 |
@@ -99,14 +99,14 @@ mode | 允许的值为 **Monitored**、**UpgradeMode**、**UnmonitoredAuto**、*
 replica-set-check-timeout |以秒为度量单位。 <br>**无状态服务** - 在单个升级域内，Service Fabric 尝试确保服务的其他实例可用。 如果有多个目标实例，则 Service Fabric 等待多个实例可用，直到达到最大超时值。 此超时是使用 *replica-set-check-timeout* 属性指定的。 如果超时到期，Service Fabric 将继续进行升级，而无论服务实例的数量。 如果只有一个目标实例，则 Service Fabric 不会等待，而是会立即继续进行升级。<br><br>**有状态服务** - 在单个升级域内，Service Fabric 尝试确保副本集具有仲裁。 Service Fabric 将等待一个仲裁可用，直到达到最大超时值（由 *replica-set-check-timeout* 属性指定）。 如果超时到期，Service Fabric 将继续进行升级，而无论是否具有仲裁。 前滚时，此设置设置为 never（无限）；回退时，设置为 1200 秒。 |
 service-health-policy | 包含每个服务类型名称的服务类型健康策略的 JSON 编码映射。 映射默认为空。 [参数 JSON 格式。](https://docs.microsoft.com/rest/api/servicefabric/sfclient-model-applicationhealthpolicy#servicetypehealthpolicymap) “Value”部分的 JSON 包含 **MaxPercentUnhealthyServices**、**MaxPercentUnhealthyPartitionsPerService** 和 **MaxPercentUnhealthyReplicasPerPartition**。 有关这些参数的说明，请参阅 Visual Studio 和 PowerShell “可选参数”部分。
 timeout | 指定操作的超时设置（以秒为单位）。 默认值：60。 |
-upgrade-domain-timeout | 在执行*失败操作*之前，每个升级域必须完成的时间量。 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 默认值为 never（无期限），应该针对应用程序相应地自定义该值。 默认值：P10675199DT02H48M05.4775807S。 |
-upgrade-timeout | 在执行*失败操作*之前，每个升级域必须完成的时间量。 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 默认值为 never（无期限），应该针对应用程序相应地自定义该值。 默认值：P10675199DT02H48M05.4775807S。|
+upgrade-domain-timeout | 执行 *FailureAction* 前，每个升级域需等待的时长。 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 默认值为 never（无期限），应该针对应用程序相应地自定义该值。 默认值：P10675199DT02H48M05.4775807S。 |
+upgrade-timeout | 执行 *FailureAction* 前，每个升级域需等待的时长。 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 默认值为 never（无期限），应该针对应用程序相应地自定义该值。 默认值：P10675199DT02H48M05.4775807S。|
 warning-as-error | 允许的值为 **True** 和 **False**。 默认值为 **False**。 可以作为标记进行传递。 在升级期间评估应用程序的运行状况时，将应用程序的警告运行状况事件视为错误。 默认情况下，Service Fabric 不会将警告运行状况事件评估为失败（错误），因此即使存在警告事件，升级也可以继续。 |
 
 ## <a name="next-steps"></a>后续步骤
 [使用 Visual Studio 升级应用程序](service-fabric-application-upgrade-tutorial.md)逐步讲解了如何使用 Visual Studio 进行应用程序升级。
 
-[使用 Powershell 升级应用程序](service-fabric-application-upgrade-tutorial-powershell.md)会引导您使用 PowerShell 进行应用程序升级。
+[使用 Powershell 升级应用程序](service-fabric-application-upgrade-tutorial-powershell.md)逐步讲解了如何使用 PowerShell 进行应用程序升级。
 
 [在 Linux 上使用 Service Fabric CLI 升级应用程序](service-fabric-application-lifecycle-sfctl.md#upgrade-application)介绍如何使用 Service Fabric CLI 完成应用程序升级。
 
@@ -114,6 +114,6 @@ warning-as-error | 允许的值为 **True** 和 **False**。 默认值为 **Fals
 
 了解如何使用[数据序列化](service-fabric-application-upgrade-data-serialization.md)，使应用程序在升级后保持兼容。
 
-通过引用[高级主题](service-fabric-application-upgrade-advanced.md)，了解如何在升级应用程序时使用高级功能。
+参考[高级主题](service-fabric-application-upgrade-advanced.md)，了解如何在升级应用程序时使用高级功能。
 
 参考[对应用程序升级进行故障排除](service-fabric-application-upgrade-troubleshooting.md)中的步骤来解决应用程序升级时的常见问题。

@@ -8,22 +8,22 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.openlocfilehash: 0755131f7d8071e37eadc1339ebc5e122725fa71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75426248"
 ---
 # <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>使用 Azure 流分析处理实时 IoT 数据流
 
 本文介绍如何创建流处理逻辑，以从物联网 (IoT) 设备收集数据。 使用真实的物联网 (IoT) 用例来演示如何经济实惠地快速生成解决方案。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* 创建免费[的 Azure 订阅](https://azure.microsoft.com/pricing/free-trial/)。
+* 创建免费的[Azure 订阅](https://azure.microsoft.com/pricing/free-trial/)。
 * 从[GitHub](https://aka.ms/azure-stream-analytics-get-started-iot)下载示例查询和数据文件。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 
 Contoso 是一家工业自动化公司，该公司已将其制造流程完全自动化。 这家工厂中的设备配有可实时发送数据流的传感器。 在此方案中，产品车间经理希望通过传感器数据获得实时见解，从而找到规律并采取措施。 可以对传感器数据使用流分析查询语言 (SAQL)，查找传入数据流的有趣规律。
 
@@ -44,13 +44,13 @@ Contoso 是一家工业自动化公司，该公司已将其制造流程完全自
 
 ## <a name="create-a-stream-analytics-job"></a>创建流分析作业
 
-1. 在[Azure 门户](https://portal.azure.com)中，选择 " 从左侧导航菜单**创建资源**"。 然后从“分析”中选择“流分析作业”********。
+1. 在 [Azure 门户](https://portal.azure.com)的左侧导航菜单中，选择“+ 创建资源”  。 然后从“分析”中选择“流分析作业”   。
    
     ![创建新的流分析作业](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
 
 1. 输入唯一的作业名称并验证订阅是否为用于作业的正确订阅。 新建资源组或选择订阅中的现有资源组。
 
-1. 为你的作业选择一个位置。 为资源组和所有资源使用同一位置，以提高处理速度并降低成本。 完成配置后，选择“创建”****。
+1. 为你的作业选择一个位置。 为资源组和所有资源使用同一位置，以提高处理速度并降低成本。 完成配置后，选择“创建”  。
    
     ![创建新的流分析作业详细信息](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03.png)
 
@@ -60,11 +60,11 @@ Contoso 是一家工业自动化公司，该公司已将其制造流程完全自
 从 GitHub 下载 [HelloWorldASA-InputStream.json](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json
 )。 然后，在 Azure 门户中导航到 Azure 流分析作业。
 
-在左侧菜单的“作业拓扑”下，选择“查询”********。 然后，选择“上传示例输入”****。 上传 `HelloWorldASA-InputStream.json` 文件，然后选择“确定”****。
+在左侧菜单的“作业拓扑”下，选择“查询”   。 然后，选择“上传示例输入”  。 上传 `HelloWorldASA-InputStream.json` 文件，然后选择“确定”  。
 
 ![流分析仪表板查询磁贴](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 
-请注意，系统将在“输入预览”表中自动填充数据预览****。
+请注意，系统将在“输入预览”表中自动填充数据预览  。
 
 ![示例输入数据的预览](./media/stream-analytics-get-started-with-iot-devices/input-preview.png)
 
@@ -81,7 +81,7 @@ FROM
     InputStream
 ```
 
-选择“测试查询”，然后在“测试结果”表中查看结果********。
+选择“测试查询”，然后在“测试结果”表中查看结果   。
 
 ![流分析查询的测试结果](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
 
@@ -102,7 +102,7 @@ FROM
 WHERE dspl='sensorA'
 ```
 
-将查询粘贴到编辑器中，然后选择“测试查询”以查看结果****。
+将查询粘贴到编辑器中，然后选择“测试查询”以查看结果  。
 
 ![筛选数据流](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-08.png)
 
@@ -125,7 +125,7 @@ HAVING Avg(temp)>100
 
 ![30 秒筛选查询](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-10.png)
 
-会看到结果只有 245 行，以及平均温度高于 100 度的传感器的名称。 此查询按 **dspl**（传感器名称）以 30 秒的**轮转窗口**对事件流进行分组。 临时查询必须声明你希望的时间进展方式。 通过使用 TIMESTAMP BY 子句，你已指定 OUTPUTTIME 列用于将时间与所有临时计算关联********。 有关详细信息，请阅读有关 [Time Management](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics)（时间管理）和 [Windowing functions](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics)（窗口化函数）的文章。
+会看到结果只有 245 行，以及平均温度高于 100 度的传感器的名称。 此查询按 **dspl**（传感器名称）以 30 秒的**轮转窗口**对事件流进行分组。 临时查询必须声明你希望的时间进展方式。 通过使用 TIMESTAMP BY 子句，你已指定 OUTPUTTIME 列用于将时间与所有临时计算关联   。 有关详细信息，请阅读有关 [Time Management](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics)（时间管理）和 [Windowing functions](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics)（窗口化函数）的文章。
 
 ### <a name="query-detect-absence-of-events"></a>查询：检测事件缺失
 

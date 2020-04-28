@@ -1,5 +1,5 @@
 ---
-title: Azure 快速路由：配置对等互连：经典
+title: Azure ExpressRoute：配置对等互连：经典
 description: 本文指导完成创建和预配 ExpressRoute 线路的专用、公共和 Microsoft 对等互连的步骤。 本文还介绍了如何检查状态，以及如何更新或删除线路的对等互连。
 services: expressroute
 author: cherylmc
@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: cherylmc
 ms.openlocfilehash: 05602538f206032d924b39a7dd8f4325c48a5224
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74931380"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>创建和修改 ExpressRoute 线路的对等互连（经典）
 > [!div class="op_single_selector"]
 > * [Azure 门户](expressroute-howto-routing-portal-resource-manager.md)
-> * [电源外壳](expressroute-howto-routing-arm.md)
+> * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
 > * [视频 - 专用对等互连](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
 > * [视频 - 公共对等互连](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
 > * [视频 - Microsoft 对等互连](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
-> * [电源外壳（经典）](expressroute-howto-routing-classic.md)
+> * [PowerShell （经典）](expressroute-howto-routing-classic.md)
 > 
 
 本文指导执行相关步骤，以便使用 PowerShell 和经典部署模型创建和管理 ExpressRoute 线路的对等互连/路由配置。 下面的步骤还将说明如何查看状态，以及如何更新、删除和取消预配 ExpressRoute 线路的对等互连。 可以为 ExpressRoute 线路配置一到三个对等互连（Azure 专用、Azure 公共和 Microsoft）。 可以按照所选的任意顺序配置对等互连。 但是，必须确保一次只完成一个对等互连的配置。 
@@ -152,12 +152,12 @@ Remove-AzureBGPPeering -AccessType Private -ServiceKey "************************
 本部分说明如何为 ExpressRoute 线路创建、获取、更新和删除 Azure 公共对等互连配置。
 
 > [!NOTE]
-> Azure 公共对等互连被弃用用于新电路。
+> 新线路不推荐使用 Azure 公共对等互连。
 >
 
 ### <a name="to-create-azure-public-peering"></a>创建 Azure 公共对等互连
 
-1. **创建快速路由电路**
+1. **创建 ExpressRoute 线路**
 
    请按说明创建 [ExpressRoute 线路](expressroute-howto-circuit-classic.md) ，并由连接服务提供商进行预配。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Azure 公共对等互连。 在此情况下，不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不管理路由，请在创建线路之后遵循以下说明。
 2. **检查 ExpressRoute 线路以确认它已预配**
@@ -261,7 +261,7 @@ Remove-AzureBGPPeering -AccessType Public -ServiceKey "*************************
 
 ### <a name="to-create-microsoft-peering"></a>创建 Microsoft 对等互连
 
-1. **创建快速路由电路**
+1. **创建 ExpressRoute 线路**
   
    请按说明创建 [ExpressRoute 线路](expressroute-howto-circuit-classic.md) ，并由连接服务提供商进行预配。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Azure 专用对等互连。 在此情况下，不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不管理路由，请在创建线路之后遵循以下说明。
 2. **检查 ExpressRoute 线路以确认它已预配**
@@ -291,7 +291,7 @@ Remove-AzureBGPPeering -AccessType Public -ServiceKey "*************************
    ServiceProviderProvisioningState : Provisioned
    Status                           : Enabled
    ```
-3. **为电路配置 Microsoft 对等互连**
+3. **为线路配置 Microsoft 对等互连**
    
     在继续下一步之前，请确保已准备好以下信息。
    
@@ -302,7 +302,7 @@ Remove-AzureBGPPeering -AccessType Public -ServiceKey "*************************
    * 播发的前缀：必须提供要通过 BGP 会话播发的所有前缀列表。 只接受公共 IP 地址前缀。 如果打算发送一组前缀，可以发送逗号分隔列表。 这些前缀必须已在 RIR/IRR 中注册。
    * 客户 ASN：如果要播发的前缀未注册到对等互连 AS 编号，可以指定它们要注册到的 AS 编号。 **可选**。
    * 路由注册表名称：可以指定 AS 编号和前缀要注册到的 RIR/IRR。
-   * MD5 哈希（如果选择使用）。 **选。**
+   * MD5 哈希（如果选择使用）。 **可选。**
      
    运行以下 cmdlet 为线路配置 Microsoft 对等互连：
  

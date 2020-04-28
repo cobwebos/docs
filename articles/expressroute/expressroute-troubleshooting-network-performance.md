@@ -1,5 +1,5 @@
 ---
-title: 排除网络链路性能：Azure
+title: 网络链接性能故障排除： Azure
 description: 此页提供一种标准化方法来测试 Azure 网络链接性能。
 services: expressroute
 author: tracsman
@@ -9,10 +9,10 @@ ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
 ms.openlocfilehash: bb68919fba731caa32dcca3f4c991b8881afc6f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74869640"
 ---
 # <a name="troubleshooting-network-performance"></a>网络性能故障排除
@@ -59,7 +59,7 @@ Azure 提供了将本地网络连接到 Azure 的稳定且快速方法。 站点
 我已经将所有这些工具和方法打包到一个 PowerShell 模块 (AzureCT) 中，你可以安装和使用。
 
 ### <a name="azurect---the-azure-connectivity-toolkit"></a>AzureCT - Azure 连接工具包
-AzureCT PowerShell 模块有两个组成部分 - [可用性测试][Availability Doc]和[性能测试][Performance Doc]。 本文只涉及性能测试，所以，我们一起来看看 PowerShell 模块中的两个链接性能命令。
+AzureCT PowerShell 模块有两个组件 - [可用性测试][Availability Doc]和[性能测试][Performance Doc]。 本文只涉及性能测试，所以，我们一起来看看 PowerShell 模块中的两个链接性能命令。
 
 使用此工具包进行性能测试有三个基本步骤。 1) 安装 PowerShell 模块，2) 安装支持性应用程序 iPerf 和 PSPing，3) 运行性能测试。
 
@@ -97,7 +97,7 @@ AzureCT PowerShell 模块有两个组成部分 - [可用性测试][Availability 
 
     所有 iPerf 和 PSPing 测试的详细结果都位于“C:\ACTTools”上 AzureCT 工具目录中的单个文本文件中。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 如果性能测试没能提供预期结果，则请搞清楚应进行渐进式逐步过程的原因。 考虑到路径中影响性能的要素数量，系统化方法常提供较快的解决途径，而不是来回执行、（可能不必要地）多次进行相同的测试。
 
 >[!NOTE]
@@ -116,7 +116,7 @@ AzureCT PowerShell 模块有两个组成部分 - [可用性测试][Availability 
 此外，也请记得查看 OSI 模型的其他层。 注意到网络和第 1 - 3 层（物理层、数据层和网络层）很容易，但是问题也可能出现在应用程序层的第 7 层。 保持开放的心态，验证假设。
 
 ## <a name="advanced-expressroute-troubleshooting"></a>高级 ExpressRoute 故障排除
-如果不确定云边缘的实际所在，那么隔离 Azure 要素便是一个难题。 使用 ExpressRoute 时，边缘是名为 Microsoft 企业边缘 (MSEE) 的网络要素。 使用 ExpressRoute 时，MSEE 是进入 Microsoft 网络的第一个接触点和离开 Microsoft 网络的最后一个跃点。**** 在 VNet 网关和 ExpressRoute 线路之间创建连接对象时，实际上正在连接 MSEE。 辨别 MSEE 是第一个跃点还是最后一个跃点（取决于要走哪个方向）至关重要，可隔离 Azure 网络问题，证明问题出在 Azure 上还是 WAN 或企业网络的更下游。 
+如果不确定云边缘的实际所在，那么隔离 Azure 要素便是一个难题。 使用 ExpressRoute 时，边缘是名为 Microsoft 企业边缘 (MSEE) 的网络要素。 使用 ExpressRoute 时，MSEE 是进入 Microsoft 网络的第一个接触点和离开 Microsoft 网络的最后一个跃点。  在 VNet 网关和 ExpressRoute 线路之间创建连接对象时，实际上正在连接 MSEE。 辨别 MSEE 是第一个跃点还是最后一个跃点（取决于要走哪个方向）至关重要，可隔离 Azure 网络问题，证明问题出在 Azure 上还是 WAN 或企业网络的更下游。 
 
 ![2][2]
 
@@ -125,7 +125,7 @@ AzureCT PowerShell 模块有两个组成部分 - [可用性测试][Availability 
 >
 >
 
-如果两个 Vnet（关系图中的 Vnet A 和 B）连接到相同 ExpressRoute 线路，便可执行一系列测试以隔离 Azure 中的问题（或证明它不在 Azure 中）****
+如果两个 Vnet（关系图中的 Vnet A 和 B）连接到相同 ExpressRoute 线路，便可执行一系列测试以隔离 Azure 中的问题（或证明它不在 Azure 中） 
  
 ### <a name="test-plan"></a>测试计划
 1. 在 VM1 和 VM2 之间运行 Get-LinkPerformance 测试。 此测试可让你了解到问题是否是出在本地。 如果此测试带来了可接受的延迟和带宽结果，则可将本地 VNet 网络标记为良好。
@@ -133,7 +133,7 @@ AzureCT PowerShell 模块有两个组成部分 - [可用性测试][Availability 
 3. 如果排除了 Azure，可在公司网络上执行类似的测试步骤。 如果此测试结果也是良好，则应对服务提供商或 ISP 执行测试来诊断 WAN 连接状态。 示例：在两个分支机构之间运行此测试，或在桌面和数据中心服务器之间进行测试。 根据测试内容，寻找可实现该路径的终结点（服务器、PC 等等）。
 
 >[!IMPORTANT]
-> 对于每次测试，都务必标记运行测试时的时间，并将测试结果记录在共同位置（我喜欢记录在 OneNote 或 Excel 上）。 每次测试运行应有相同的输出，以便在测试运行之间比较结果数据，并在数据中没有“遗漏”。 我使用 AzureCT 进行故障排除主要是因为多个测试间的一致性。 “魔力”在于从每个测试中获取的一致测试结果和数据输出，而非我所运行的精确负载方案。**** 如果稍后发现问题是偶尔发生的，每次记录时间并获得一致的数据特别有用。 要勤于采集数据，这样可避免重复测试相同的方案（多年前我了解到这不容易）。
+> 对于每次测试，都务必标记运行测试时的时间，并将测试结果记录在共同位置（我喜欢记录在 OneNote 或 Excel 上）。 每次测试运行应有相同的输出，以便在测试运行之间比较结果数据，并在数据中没有“遗漏”。 我使用 AzureCT 进行故障排除主要是因为多个测试间的一致性。 “魔力”在于从每个测试中获取的一致测试结果和数据输出，而非我所运行的精确负载方案。   如果稍后发现问题是偶尔发生的，每次记录时间并获得一致的数据特别有用。 要勤于采集数据，这样可避免重复测试相同的方案（多年前我了解到这不容易）。
 >
 >
 
@@ -144,7 +144,7 @@ AzureCT PowerShell 模块有两个组成部分 - [可用性测试][Availability 
 
 对于 WAN，与服务提供商或 ISP 共享测试结果可能会帮助他们开始测试工作，并避免重复测试你已测试的区域。 但是，如果他们想亲自验证你的测试结果也不要生气。 基于他人的报告结果进行故障排除时，“信任但验证”是不错的信条。
 
-使用 Azure，尽可能详细地隔离问题后，可以查看 [Azure 网络文档][Network Docs]，随后[打开支持票证][Ticket Link]（如仍有需要）。
+使用 Azure，尽可能详细地确定问题后，就可以查看 [Azure 网络文档][Network Docs]，随后[开具支持票证][Ticket Link]（如果仍然需要）。
 
 ## <a name="references"></a>参考
 ### <a name="latencybandwidth-expectations"></a>延迟/带宽预期
@@ -180,32 +180,32 @@ AzureCT PowerShell 模块有两个组成部分 - [可用性测试][Availability 
 | | | | | | |
 |-|-|-|-|-|-|
 |ExpressRoute<br/>位置|Azure<br/>区域|估计<br/>距离 (km)|延迟|1 会话<br/>带宽|最大值<br/>带宽|
-| Seattle | 美国西部 2        |    191 km |   5 ms | 262.0 Mbits/sec |  3.74 Gbits/sec |
-| Seattle | 美国西部          |  1,094 km |  18 ms |  82.3 Mbits/sec |  3.70 Gbits/sec |
-| Seattle | 美国中部       |  2,357 km |  40 ms |  38.8 Mbits/sec |  2.55 Gbits/sec |
-| Seattle | 美国中南部 |  2,877 km |  51 ms |  30.6 Mbits/sec |  2.49 Gbits/sec |
-| Seattle | 美国中北部 |  2,792 km |  55 ms |  27.7 Mbits/sec |  2.19 Gbits/sec |
-| Seattle | 美国东部 2        |  3,769 km |  73 ms |  21.3 Mbits/sec |  1.79 Gbits/sec |
-| Seattle | 美国东部          |  3,699 km |  74 ms |  21.1 Mbits/sec |  1.78 Gbits/sec |
-| Seattle | 日本东部       |  7,705 km | 106 ms |  14.6 Mbits/sec |  1.22 Gbits/sec |
-| Seattle | 英国南部         |  7,708 km | 146 ms |  10.6 Mbits/sec |   896 Mbits/sec |
-| Seattle | 西欧      |  7,834 km | 153 ms |  10.2 Mbits/sec |   761 Mbits/sec |
-| Seattle | 澳大利亚东部   | 12,484 km | 165 ms |   9.4 Mbits/sec |   794 Mbits/sec |
-| Seattle | 东南亚   | 12,989 km | 170 ms |   9.2 Mbits/sec |   756 Mbits/sec |
-| Seattle | 巴西南部*   | 10,930 km | 189 ms |   8.2 Mbits/sec |   699 Mbits/sec |
-| Seattle | 印度南部      | 12,918 km | 202 ms |   7.7 Mbits/sec |   634 Mbits/sec |
+| 西雅图 | 美国西部 2        |    191 km |   5 ms | 262.0 Mbits/sec |  3.74 Gbits/sec |
+| 西雅图 | 美国西部          |  1,094 km |  18 ms |  82.3 Mbits/sec |  3.70 Gbits/sec |
+| 西雅图 | 美国中部       |  2,357 km |  40 ms |  38.8 Mbits/sec |  2.55 Gbits/sec |
+| 西雅图 | 美国中南部 |  2,877 km |  51 ms |  30.6 Mbits/sec |  2.49 Gbits/sec |
+| 西雅图 | 美国中北部 |  2,792 km |  55 ms |  27.7 Mbits/sec |  2.19 Gbits/sec |
+| 西雅图 | 美国东部 2        |  3,769 km |  73 ms |  21.3 Mbits/sec |  1.79 Gbits/sec |
+| 西雅图 | 美国东部          |  3,699 km |  74 ms |  21.1 Mbits/sec |  1.78 Gbits/sec |
+| 西雅图 | 日本东部       |  7,705 km | 106 ms |  14.6 Mbits/sec |  1.22 Gbits/sec |
+| 西雅图 | 英国南部         |  7,708 km | 146 ms |  10.6 Mbits/sec |   896 Mbits/sec |
+| 西雅图 | 西欧      |  7,834 km | 153 ms |  10.2 Mbits/sec |   761 Mbits/sec |
+| 西雅图 | 澳大利亚东部   | 12,484 km | 165 ms |   9.4 Mbits/sec |   794 Mbits/sec |
+| 西雅图 | 东南亚   | 12,989 km | 170 ms |   9.2 Mbits/sec |   756 Mbits/sec |
+| 西雅图 | 巴西南部*   | 10,930 km | 189 ms |   8.2 Mbits/sec |   699 Mbits/sec |
+| 西雅图 | 印度南部      | 12,918 km | 202 ms |   7.7 Mbits/sec |   634 Mbits/sec |
 
 \* 巴西的延迟是一个很好的例子，其中的直线距离明显不同于光纤运行距离。 我以为延迟会在 160 ms 左右，但实际是 189 ms。 与我预期所产生的差异可能表明某处存在网络问题，但最有可能的是，光纤运行并不以直线形式转至巴西，而是从西雅图转至巴西，这一过程另有 1,000 km 左右。
 
 ## <a name="next-steps"></a>后续步骤
-1. 从 GitHub 下载 Azure 连接工具包，[https://aka.ms/AzCT][ACT]
+1. 从 GitHub 中下载 Azure 连接工具包，地址为 [https://aka.ms/AzCT][ACT]
 2. 按照[链接性能测试][Performance Doc]的说明进行操作
 
 <!--Image References-->
 [1]: ./media/expressroute-troubleshooting-network-performance/network-components.png "Azure 网络组件"
-[2]: ./media/expressroute-troubleshooting-network-performance/expressroute-troubleshooting.png "快速路由故障排除"
+[2]: ./media/expressroute-troubleshooting-network-performance/expressroute-troubleshooting.png "ExpressRoute 故障排除"
 [3]: ./media/expressroute-troubleshooting-network-performance/test-diagram.png "性能测试环境"
-[4]: ./media/expressroute-troubleshooting-network-performance/powershell-output.png "电源壳输出"
+[4]: ./media/expressroute-troubleshooting-network-performance/powershell-output.png "PowerShell 输出"
 
 <!--Link References-->
 [Performance Doc]: https://github.com/Azure/NetworkMonitoring/blob/master/AzureCT/PerformanceTesting.md

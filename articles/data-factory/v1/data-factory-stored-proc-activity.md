@@ -13,23 +13,23 @@ ms.author: abnarain
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: 45aa49de51f42b26c653b15e79c865e3f5647c39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74931628"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server 存储过程活动
-> [!div class="op_single_selector" title1="转型活动"]
-> * [蜂巢活动](data-factory-hive-activity.md)
+> [!div class="op_single_selector" title1="转换活动"]
+> * [Hive 活动](data-factory-hive-activity.md)
 > * [Pig 活动](data-factory-pig-activity.md)
-> * [映射减少活动](data-factory-map-reduce.md)
+> * [MapReduce 活动](data-factory-map-reduce.md)
 > * [Hadoop 流式处理活动](data-factory-hadoop-streaming-activity.md)
 > * [Spark 活动](data-factory-spark.md)
 > * [机器学习批处理执行活动](data-factory-azure-ml-batch-execution-activity.md)
 > * [机器学习更新资源活动](data-factory-azure-ml-update-resource-activity.md)
 > * [存储过程活动](data-factory-stored-proc-activity.md)
-> * [数据湖分析 U-SQL 活动](data-factory-usql-activity.md)
+> * [Data Lake Analytics U-SQL 活动](data-factory-usql-activity.md)
 > * [.NET 自定义活动](data-factory-use-custom-activities.md)
 
 > [!NOTE]
@@ -40,7 +40,7 @@ ms.locfileid: "74931628"
 
 可以使用存储过程活动调用企业或 Azure 虚拟机 (VM) 中以下数据存储中的存储过程：
 
-- Azure SQL 数据库
+- Azure SQL Database
 - Azure SQL 数据仓库
 - SQL Server 数据库。 如果使用 SQL Server，请在托管数据库的同一计算机上或在可以访问数据库的单独计算机上安装数据管理网关。 数据管理网关是一种以安全和托管的方式将本地/Azure VM 上的数据源与云服务进行连接的组件。 有关详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文。
 
@@ -84,7 +84,7 @@ ms.locfileid: "74931628"
     ```
 
    > [!IMPORTANT]
-   > 参数（在本示例中为 DateTime）的**名称**和**大小写**必须与管道/活动 JSON 中指定的参数匹配。 在存储过程定义中，**\@** 请确保用作参数的前缀。
+   > 参数（在本示例中为 DateTime）的**名称**和**大小写**必须与管道/活动 JSON 中指定的参数匹配。 在存储过程定义中，确保**\@** 用作参数的前缀。
 
 ### <a name="create-a-data-factory"></a>创建数据工厂
 1. 登录到[Azure 门户](https://portal.azure.com/)。
@@ -94,7 +94,7 @@ ms.locfileid: "74931628"
 3. 在“新建数据工厂”**** 边栏选项卡中，输入 **SProcDF** 作为名称。 Azure 数据工厂名称必须**全局唯一**。 必须将你的姓名作为数据工厂的名称前缀，才能成功创建工厂。
 
    ![新建数据工厂](media/data-factory-stored-proc-activity/new-data-factory-blade.png)
-4. 选择**Azure 订阅**。
+4. 选择 **Azure 订阅**。
 5. 对于**资源组**，请执行以下步骤之一：
    1. 单击“新建”****，然后为资源组输入名称。
    2. 单击“使用现有资源组”**** 并选择一个现有的资源组。
@@ -127,7 +127,7 @@ ms.locfileid: "74931628"
 ### <a name="create-an-output-dataset"></a>创建输出数据集
 必须为存储过程活动指定输出数据集，即使存储过程不生成任何数据也是如此。 这是因为活动的计划（活动的运行频率 - 每小时、每天等）取决于输出数据集。 输出数据集必须使用**链接服务**，其指代 Azure SQL 数据库或 Azure SQL 数据仓库或要在其中运行存储过程的 SQL Server 数据库。 输出数据集可用于传递存储过程的结果，以供管道中另一活动（[链接活动](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)）进行后续处理。 但是，数据工厂不会自动将存储过程的输出写入此数据集。 它是写入输出数据集指向的 SQL 表的存储过程。 在某些情况下，输出数据集可能是虚拟数据集（这种数据集指向实际不包含存储过程输出的表）****。 此虚拟数据集仅用于指定运行存储过程活动的计划。
 
-1. 单击 **...有关工具栏的详细信息**，请单击 **"新建数据集**"，然后单击**Azure SQL**。 单击命令栏上的“新建数据集”**** 并选择“Azure SQL****”。
+1. 单击 **.。。在工具栏上，单击**"**新建数据集**"，然后单击 " **Azure SQL**"。 单击命令栏上的“新建数据集”**** 并选择“Azure SQL****”。
 
     ![包含链接服务的树视图](media/data-factory-stored-proc-activity/new-dataset.png)
 2. 将以下 JSON 脚本复制/粘贴到 JSON 编辑器。
@@ -161,7 +161,7 @@ ms.locfileid: "74931628"
 - 类型属性中的 storedProcedureName 设置为 usp_sample（存储过程的名称）********。
 - storedProcedureParameters 部分包含一个名为 DateTime 的参数********。 采用 JSON 格式时，该参数的名称和大小写必须与存储过程定义中参数的名称和大小写相匹配。 如果需要为参数传递 null，请使用语法：`"param1": null`（全部小写）。
 
-1. 单击 **...有关**命令栏的详细信息，然后单击 **"新建管道**"。
+1. 单击 **.。。** 在命令栏上单击 "**新建管道**"。
 2. 复制/粘贴以下 JSON 代码段：
 
     ```JSON
@@ -201,7 +201,7 @@ ms.locfileid: "74931628"
 1. 单击“X”关闭“数据工厂编辑器”边栏选项卡，导航回到“数据工厂”边栏选项卡，然后单击“图示”。********
 
     ![图示磁贴](media/data-factory-stored-proc-activity/data-factory-diagram-tile.png)
-2. 在**图表视图中**，您可以看到本教程中使用的管道和数据集的概述。
+2. 在 "**关系图" 视图**中，可以看到有关在本教程中使用的管道和数据集的概述。
 
     ![图示磁贴](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
 3. 在“图示视图”中，双击数据集 `sprocsampleout`。 将看到切片处于“就绪”状态。 由于切片是在 JSON 中针对开始时间和结束时间之间的每一小时生成的，因此，应该有 5 个切片。
@@ -303,7 +303,7 @@ ms.locfileid: "74931628"
 
 下表描述了其中的 JSON 属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必需 |
 | --- | --- | --- |
 | name | 活动名称 |是 |
 | description |描述活动用途的文本 |否 |
@@ -318,7 +318,7 @@ ms.locfileid: "74931628"
 
 ![示例数据 2](./media/data-factory-stored-proc-activity/sample-data-2.png)
 
-**表：**
+**数据表**
 
 ```SQL
 CREATE TABLE dbo.sampletable2
@@ -345,7 +345,7 @@ BEGIN
 END
 ```
 
-现在，从存储过程活动中传递**方案**参数和值。 前面的示例中的**typeProperties**部分如下所示：
+现在，从存储过程活动传递**方案**参数和值。 前面示例中的**typeProperties**部分类似于以下代码片段：
 
 ```JSON
 "typeProperties":

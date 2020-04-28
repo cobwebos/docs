@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂调用 SSIS 包 - 存储过程活动
+title: 使用 Azure 数据工厂存储过程活动调用 SSIS 包
 description: 本文介绍如何使用存储过程活动从 Azure 数据工厂管道调用 SQL Server Integration Services (SSIS) 包。
 services: data-factory
 documentationcenter: ''
@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
 ms.openlocfilehash: ea86c4670a8eb6dc5e2133ed01045e8aada0f707
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75438791"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用存储过程活动调用 SSIS 包
@@ -28,7 +28,7 @@ ms.locfileid: "75438791"
 
 ## <a name="prerequisites"></a>先决条件
 
-### <a name="azure-sql-database"></a>Azure SQL 数据库 
+### <a name="azure-sql-database"></a>Azure SQL Database 
 本文中的演练使用托管 SSIS 目录的 Azure SQL 数据库。 还可使用 Azure SQL 数据库托管实例。
 
 ### <a name="create-an-azure-ssis-integration-runtime"></a>创建 Azure-SSIS 集成运行时
@@ -66,7 +66,7 @@ ms.locfileid: "75438791"
     $DataFactoryName = "ADFTutorialFactory";
     ```
 
-5. 要创建数据工厂，请使用$ResGrp变量中的"位置和资源组名称"属性运行以下**New-AzDataFactory** cmdlet： 
+5. 若要创建数据工厂，请运行以下**AzDataFactory** cmdlet，并使用 $ResGrp 变量中的 Location 和 ResourceGroupName 属性： 
     
     ```powershell       
     $df = New-AzDataFactory -ResourceGroupName $ResourceGroupName -Name $dataFactoryName -Location "East US"
@@ -101,7 +101,7 @@ ms.locfileid: "75438791"
         }
     ```
 2. 在 Azure PowerShell 中，切换到 C:\ADF\RunSSISPackage 文件夹********。
-3. 运行**新阿兹达工厂链接服务**cmdlet 以创建链接服务 **：AzureSql数据库链接服务**。 
+3. 运行**AzDataFactoryLinkedService** cmdlet 创建链接服务： **AzureSqlDatabaseLinkedService**。 
 
     ```powershell
     New-AzDataFactoryLinkedService $df -File ".\AzureSqlDatabaseLinkedService.json"
@@ -126,7 +126,7 @@ ms.locfileid: "75438791"
         }
     }
     ```
-2. 运行**New-AzDataFactory 数据集**cmdlet 以创建数据集。 
+2. 运行**AzDataFactoryDataset** cmdlet 以创建数据集。 
 
     ```powershell
     New-AzDataFactoryDataset $df -File ".\OutputDataset.json"
@@ -168,7 +168,7 @@ ms.locfileid: "75438791"
     }    
     ```
 
-2. 要创建管道：**运行SSIS包管道**，运行**新阿兹数据工厂管道**cmdlet。
+2. 若要创建管道： **RunSSISPackagePipeline**，请运行**AzDataFactoryPipeline** cmdlet。
 
     ```powershell
     $DFPipeLine = New-AzDataFactoryPipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "RunSSISPackagePipeline" -DefinitionFile ".\RunSSISPackagePipeline.json"
@@ -176,7 +176,7 @@ ms.locfileid: "75438791"
 
 ### <a name="monitor-the-pipeline-run"></a>监视管道运行
 
-1. 运行**Get-AzDataFactorySlice，** 获取有关输出数据集*的所有切片的详细信息，该切片是管道的输出表。
+1. 运行**AzDataFactorySlice**以获取输出数据集的所有切片的详细信息 * *，它是管道的输出表。
 
     ```powershell
     Get-AzDataFactorySlice $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z
