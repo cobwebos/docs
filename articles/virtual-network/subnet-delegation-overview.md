@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 11/20/2019
 ms.author: kumud
 ms.openlocfilehash: b33ff808b802b6848e2d5debaf515a73bf21a1bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74281332"
 ---
 # <a name="what-is-subnet-delegation"></a>什么是子网委托？
@@ -53,8 +53,8 @@ ms.locfileid: "74281332"
 - 指定自定义 DNS 配置包含 Azure DNS 条目。
 
 注入的服务也可以添加自身的策略，如下所述：
-- **安全策略**：收集给定服务正常工作所需的安全规则。
-- **路由策略**：收集给定服务正常工作所需的路由。
+- **安全策略**：给定服务正常运行所需的安全规则集合。
+- **路由策略**：给定服务正常运行所需的路由集合。
 
 ## <a name="what-subnet-delegation-does-not-do"></a>子网委托无法实现的目的
 

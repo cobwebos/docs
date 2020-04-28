@@ -1,6 +1,6 @@
 ---
-title: 分层安全 v1
-description: 了解如何在应用服务环境中实现分层安全体系结构。 此文档仅提供给使用旧版 v1 ASE 的客户。
+title: 分层安全性 v1
+description: 了解如何在应用服务环境中实现分层安全体系结构。 此文档仅为使用旧版 v1 ASE 的客户提供。
 author: stefsch
 ms.assetid: 73ce0213-bd3e-4876-b1ed-5ecad4ad5601
 ms.topic: article
@@ -8,10 +8,10 @@ ms.date: 08/30/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: a8920e97d315dc7bfd0ba22386b8b637afb7c05e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74688798"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>使用应用服务环境实现分层的安全体系结构

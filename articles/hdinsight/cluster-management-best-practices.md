@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: 3010c1d597907e7d5c7f82c8b42721dc1f934f6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74782016"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>HDInsight 群集管理最佳做法
@@ -42,7 +42,7 @@ ms.locfileid: "74782016"
 |---|---|
 | 脚本操作 | [使用脚本操作自定义 Azure HDInsight 群集](./hdinsight-hadoop-customize-cluster-linux.md) |
 | Bootstrap | [使用 Bootstrap 自定义 HDInsight 群集](./hdinsight-hadoop-customize-cluster-bootstrap.md) |
-| 外部元存储 | [使用外部元数据存储 - Azure HDInsight](./hdinsight-use-external-metadata-stores.md) |
+| 外部元存储 | [在 Azure HDInsight 中使用外部元数据存储](./hdinsight-use-external-metadata-stores.md) |
 | 自定义 Ambari DB | [使用自定义 Ambari 数据库设置 HDInsight 群集](./hdinsight-custom-ambari-db.md) |
 
 ## <a name="what-are-some-errors-i-might-face-when-creating-clusters"></a>创建群集时，我可能会遇到什么错误？

@@ -1,6 +1,6 @@
 ---
 title: CI/CD 到自定义 Linux 容器
-description: 了解如何在 Azure 应用服务中设置对自定义 Linux 容器的连续部署。 码头中心和 ACR 支持持续部署。
+description: 了解如何在 Azure App Service 中设置自定义 Linux 容器的持续部署。 Docker 中心和 ACR 支持连续部署。
 keywords: azure 应用服务, linux, docker, acr,oss
 author: msangapu-msft
 ms.assetid: a47fb43a-bbbd-4751-bdc1-cd382eae49f8
@@ -9,10 +9,10 @@ ms.date: 11/08/2018
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: d43491de7500204ed470757a1b744017a8180b57
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74687635"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>使用用于容器的 Web 应用进行持续部署
@@ -23,7 +23,7 @@ ms.locfileid: "74687635"
 
 ![ACR Webhook 的屏幕截图](./media/app-service-webapp-service-linux-ci-cd/ci-cd-acr-02.png)
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 选择页面左侧的“应用服务”选项。****
 3. 选择要为其配置持续部署的应用的名称。
 4. 在“容器设置”**** 页上，选择“单个容器”****
@@ -41,7 +41,7 @@ ms.locfileid: "74687635"
 
 ## <a name="enable-continuous-deployment-with-docker-hub-optional"></a>使用 Docker 中心启用持续部署（可选）
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 选择页面左侧的“应用服务”选项。****
 3. 选择要为其配置持续部署的应用的名称。
 4. 在“容器设置”**** 页上，选择“单个容器”****

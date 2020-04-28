@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b39238575c05d35a2d87999e08c49c0c77e99bfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74380018"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的服务依赖项是什么？ 
@@ -41,7 +41,7 @@ ms.locfileid: "74380018"
 
 | 客户端应用         | 下游服务                          | 强制 |
 | :--                 | :--                                         | ---         | 
-| Azure Data Lake     | 微软 Azure 管理（门户和 API） | 早期绑定 |
+| Azure Data Lake     | Microsoft Azure 管理（门户和 API） | 早期绑定 |
 | Microsoft Classroom | Exchange                                    | 早期绑定 |
 |                     | SharePoint                                  | 早期绑定 |
 | Microsoft Teams     | Exchange                                    | 早期绑定 |
@@ -52,11 +52,11 @@ ms.locfileid: "74380018"
 |                     | SharePoint                                  | 后期绑定  |
 | Outlook 组      | Exchange                                    | 早期绑定 |
 |                     | SharePoint                                  | 早期绑定 |
-| PowerApps           | 微软 Azure 管理（门户和 API） | 早期绑定 |
+| PowerApps           | Microsoft Azure 管理（门户和 API） | 早期绑定 |
 |                     | Microsoft Azure Active Directory              | 早期绑定 |
-| Project             | Dynamics CRM                                | 早期绑定 |
+| 项目             | Dynamics CRM                                | 早期绑定 |
 | Skype for Business  | Exchange                                    | 早期绑定 |
-| Visual Studio       | 微软 Azure 管理（门户和 API） | 早期绑定 |
+| Visual Studio       | Microsoft Azure 管理（门户和 API） | 早期绑定 |
 | Microsoft Forms     | Exchange                                    | 早期绑定 |
 |                     | SharePoint                                  | 早期绑定 |
 | 微软待办     | Exchange                                    | 早期绑定 |

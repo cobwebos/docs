@@ -7,27 +7,27 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.openlocfilehash: ccc503e6718ee8f516920cfbea3ad86e7ed81d84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74768259"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>使用查询存储监视性能
 
-**适用于：** 用于 PostgreSQL 的 Azure 数据库 - 单服务器版本 9.6、10、11
+**适用于：** Azure Database for PostgreSQL - 单一服务器版本 9.6、10、11
 
-Azure Database for PostgreSQL 中的查询存储功能提供了一种一段时间内跟踪查询性能的方法。 通过帮助快速查找运行时间最长且资源最密集的查询，查询存储可简化性能故障排除。 查询存储自动捕获查询和运行时统计信息的历史记录，并保留它们以供查看。 它按时间范围分隔数据，以便可以查看数据库使用模式。 所有用户、数据库和查询的数据都存储在 Azure Database for PostgreSQL 实例中的名为 azure_sys 的数据库中****。
+Azure Database for PostgreSQL 中的查询存储功能提供了一种一段时间内跟踪查询性能的方法。 通过帮助快速查找运行时间最长且资源最密集的查询，查询存储可简化性能故障排除。 查询存储自动捕获查询和运行时统计信息的历史记录，并保留它们以供查看。 它按时间范围分隔数据，以便可以查看数据库使用模式。 所有用户、数据库和查询的数据都存储在 Azure Database for PostgreSQL 实例中的名为 azure_sys 的数据库中  。
 
 > [!IMPORTANT]
-> 请勿修改 azure_sys 数据库或其架构****。 执行此操作将阻止查询存储和相关的性能功能正常运行。
+> 请勿修改 azure_sys 数据库或其架构  。 执行此操作将阻止查询存储和相关的性能功能正常运行。
 
 ## <a name="enabling-query-store"></a>启用查询存储
 查询存储是一项选择加入功能，因此默认情况下它在服务器上未处于活动状态。 对于给定服务器上的所有数据库，该存储处于全局启用或禁用状态，且无法为每个数据库打开或关闭存储。
 
 ### <a name="enable-query-store-using-the-azure-portal"></a>使用 Azure 门户启用查询存储
 1. 登录到 Azure 门户，选择 Azure Database for PostgreSQL 服务器。
-2. 在菜单的“设置”部分中选择“服务器参数”********。
+2. 在菜单的“设置”部分中选择“服务器参数”   。
 3. 搜索 `pg_qs.query_capture_mode` 参数。
 4. 将值设置为 `TOP` 并**保存**。
 
@@ -46,8 +46,8 @@ az postgres server configuration set --name pgms_wait_sampling.query_capture_mod
 
 ## <a name="information-in-query-store"></a>查询存储中的信息
 查询存储有两个存储：
-- 运行时统计信息存储，用于保存查询执行统计信息。
-- 等待统计信息存储，用于保存等待统计信息。
+- 用于保存查询执行统计信息的运行时统计信息存储。
+- 用于保存等待统计信息的等待统计信息存储。
 
 使用查询存储的常见方案包括：
 - 确定在给定时间范围内执行查询的次数
@@ -83,8 +83,8 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 | **观测** | **操作** |
 |---|---|
 |高锁定等待 | 检查受影响查询的查询文本，并确定目标实体。 在查询存储中查找修改同一实体的其他查询，这些查询经常执行和/或持续很长时间。 确定这些查询后，请考虑更改应用程序逻辑以提高并发性，或使用限制较少的隔离级别。|
-| 高缓冲 IO 等待 | 在查询存储中查找具有大量物理读取的查询。 如果它们匹配具有高 IO 等待的查询，考虑在基础实体上引入索引，以便进行搜索而不是扫描。 这将最小化查询的 IO 开销。 检查门户中服务器的“性能建议”，以查看是否存在可优化查询的此服务器的索引建议****。|
-| 高内存等待 | 在查询存储中查找消耗内存最多的查询。 这些查询可能会延迟受影响查询的进度。 检查门户中服务器的“性能建议”，以查看是否存在可优化这些查询的索引建议****。|
+| 高缓冲 IO 等待 | 在查询存储中查找具有大量物理读取的查询。 如果它们匹配具有高 IO 等待的查询，考虑在基础实体上引入索引，以便进行搜索而不是扫描。 这将最小化查询的 IO 开销。 检查门户中服务器的“性能建议”，以查看是否存在可优化查询的此服务器的索引建议  。|
+| 高内存等待 | 在查询存储中查找消耗内存最多的查询。 这些查询可能会延迟受影响查询的进度。 检查门户中服务器的“性能建议”，以查看是否存在可优化这些查询的索引建议  。|
 
 ## <a name="configuration-options"></a>配置选项
 启用查询存储时，它会在 15 分钟的聚合时段内保存数据，每个时段最多可存储 500 个不同查询。 
@@ -93,7 +93,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 
 | **参数** | **说明** | **默认** | **范围**|
 |---|---|---|---|
-| pg_qs.query_capture_mode | 设置跟踪哪些语句。 | none | none, top, all |
+| pg_qs.query_capture_mode | 设置跟踪哪些语句。 | 无 | none, top, all |
 | pg_qs.max_query_text_length | 设置可保存的最大查询长度。 将截断较长的查询。 | 6000 | 100 - 10K |
 | pg_qs.retention_period_in_days | 设置保持期。 | 7 | 1 - 30 |
 | pg_qs.track_utility | 设置是否跟踪实用程序命令 | on | on, off |
@@ -102,24 +102,24 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 
 | **参数** | **说明** | **默认** | **范围**|
 |---|---|---|---|
-| pgms_wait_sampling.query_capture_mode | 设置跟踪哪些语句以获取等待统计信息。 | none | none, all|
+| pgms_wait_sampling.query_capture_mode | 设置跟踪哪些语句以获取等待统计信息。 | 无 | none, all|
 | Pgms_wait_sampling.history_period | 设置等待事件采样的频率（以毫秒为单位）。 | 100 | 1-600000 |
 
 > [!NOTE] 
-> 将 pgms_wait_sampling.query_capture_mode 替代为 pg_qs.query_capture_mode********。 如果 pg_qs.query_capture_mode 为 NONE，则 pgms_wait_sampling.query_capture_mode 设置无效。
+> 将 pgms_wait_sampling.query_capture_mode 替代为 pg_qs.query_capture_mode   。 如果 pg_qs.query_capture_mode 为 NONE，则 pgms_wait_sampling.query_capture_mode 设置无效。
 
 
 使用 [Azure 门户](howto-configure-server-parameters-using-portal.md)或 [Azure CLI](howto-configure-server-parameters-using-cli.md) 获取或设置参数的不同值。
 
 ## <a name="views-and-functions"></a>视图和函数
-使用以下视图和函数查看并管理查询存储。 PostgreSQL 公共角色中的任何人都可使用这些视图来查看查询存储中的数据。 这些视图仅在 azure_sys 数据库中可用****。
+使用以下视图和函数查看并管理查询存储。 PostgreSQL 公共角色中的任何人都可使用这些视图来查看查询存储中的数据。 这些视图仅在 azure_sys 数据库中可用  。
 
 删除文本和常数后，通过查看查询的结构来规范化查询。 如果除文本值之外两个查询相同，则它们将具有相同的哈希值。
 
 ### <a name="query_storeqs_view"></a>query_store.qs_view
 此视图返回查询存储中的所有数据。 每个不同的数据库 ID、用户 ID 和查询 ID 都有一行。 
 
-|**名称**   |**类型** | **引用**  | **说明**|
+|**名称**   |**类型** | **参考**  | **说明**|
 |---|---|---|---|
 |runtime_stats_entry_id |bigint | | runtime_stats_entries 表的 ID|
 |user_id    |oid    |pg_authid.oid  |执行此语句的用户的 OID|
@@ -160,7 +160,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 ### <a name="query_storepgms_wait_sampling_view"></a>query_store.pgms_wait_sampling_view
 此视图返回查询存储中的等待事件数据。 每个不同的数据库 ID、用户 ID、查询 ID 和事件都有一行。
 
-|**名称**|  **类型**|   **引用**| **说明**|
+|**名称**|  **类型**|   **参考**| **说明**|
 |---|---|---|---|
 |user_id    |oid    |pg_authid.oid  |执行此语句的用户的 OID|
 |db_id  |oid    |pg_database.oid    |在其中执行语句的数据库的 OID|
@@ -173,7 +173,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 ### <a name="functions"></a>函数
 Query_store.qs_reset() 返回无效值
 
-`qs_reset` 丢弃查询存储到目前为止收集的所有统计信息。 只能由服务器管理员角色执行此函数。
+`qs_reset` 丢弃查询存储迄今收集的所有统计信息。 只能由服务器管理员角色执行此函数。
 
 Query_store.staging_data_reset() 返回无效值
 

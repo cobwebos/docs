@@ -1,6 +1,6 @@
 ---
 title: 连接到后端 v1
-description: 了解如何从应用服务环境安全连接到后端资源。 此文档仅提供给使用旧版 v1 ASE 的客户。
+description: 了解如何从应用服务环境安全连接到后端资源。 此文档仅为使用旧版 v1 ASE 的客户提供。
 author: stefsch
 ms.assetid: f82eb283-a6e7-4923-a00b-4b4ccf7c4b5b
 ms.topic: article
@@ -8,10 +8,10 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 03f773e286697a12188f238cf2f422a18a20054f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74687297"
 ---
 # <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>从应用服务环境安全地连接到后端资源

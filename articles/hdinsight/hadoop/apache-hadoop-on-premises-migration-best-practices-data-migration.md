@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
 ms.openlocfilehash: 41112359408497d84243ed9bb06f396acf008dc5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74665995"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 数据迁移最佳做法
@@ -24,15 +24,15 @@ ms.locfileid: "74665995"
 有两个主要选项可将数据从本地迁移到 Azure 环境：
 
 * 使用 TLS 通过网络传输数据
-    * 通过 Internet - 可以使用以下多个工具中的任意一个将数据通过 Internet 传输到 Azure 存储：Azure 存储资源管理器、AzCopy、Azure Powershell 和 Azure CLI。 有关详细信息，请参阅[将数据移离 Azure 存储](../../storage/common/storage-moving-data.md)。
+    * 通过 Internet - 可以使用以下多个工具中的任意一个将数据通过 Internet 传输到 Azure 存储：Azure 存储资源管理器、AzCopy、Azure Powershell 和 Azure CLI。 有关详细信息，请参阅[将数据移到和移出 Azure 存储](../../storage/common/storage-moving-data.md)。
 
-    * Express Route - ExpressRoute 是一项 Azure 服务，允许在 Microsoft 数据中心与本地环境或共同租用设施中的基础结构之间创建专用连接。 ExpressRoute 连接不会通过公共 Internet，并且提供更高的安全性、可靠性和速度，其延迟率低于 Internet 上的典型连接。 有关详细信息，请参阅[创建和修改 ExpressRoute 线路](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)。
+    * Express Route - ExpressRoute 是一项 Azure 服务，允许在 Microsoft 数据中心与本地环境或共同租用设施中的基础结构之间创建专用连接。 ExpressRoute 连接不通过公共 Internet，与通过 Internet 的典型连接相比，提供更高的安全性、可靠性、速度和更低的延迟。 有关详细信息，请参阅[创建和修改 ExpressRoute 线路](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)。
 
     * Data Box 联机数据传输 - Data Box Edge 和 Data Box Gateway 是联机数据传输产品，它们用作网络存储网关来管理站点和 Azure 之间的数据。 Data Box Edge 是一种本地网络设备，可将数据传入和传出 Azure，并使用支持人工智能 (AI) 的边缘计算来处理数据。 Data Box Gateway 是具有存储网关功能的虚拟设备。 有关详细信息，请参阅 [Azure Data Box 文档 - 联机传输](https://docs.microsoft.com/azure/databox-online/)。
 
 * 脱机寄送数据
 
-    Data Box 脱机数据传输 - Data Box、Data Box Disk 和 Data Box Heavy 设备可在网络不可用时将大量数据传输到 Azure。 这些脱机数据传输设备在组织和 Azure 数据中心之间往返运输。 它们使用 AES 加密来帮助保护传输中的数据，还在上传后执行一个清理过程，从设备中删除你的数据。 有关数据盒脱机传输设备的详细信息，请参阅 Azure[数据框文档 - 脱机传输](https://docs.microsoft.com/azure/databox/)。 有关 Hadoop 群集迁移的详细信息，请参阅[使用 Azure 数据框从本地 HDFS 存储迁移到 Azure 存储](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)。
+    Data Box 脱机数据传输 - Data Box、Data Box Disk 和 Data Box Heavy 设备可在网络不可用时将大量数据传输到 Azure。 这些脱机数据传输设备在组织和 Azure 数据中心之间往返运输。 它们使用 AES 加密来帮助保护传输中的数据，还在上传后执行一个清理过程，从设备中删除你的数据。 有关 Data Box 脱机传输设备的详细信息，请参阅[Azure Data Box 文档-脱机传输](https://docs.microsoft.com/azure/databox/)。 有关迁移 Hadoop 群集的详细信息，请参阅[使用 Azure Data Box 从本地 HDFS 存储迁移到 Azure 存储](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)。
 
 下表根据数据量和网络带宽列出了大致的数据传输持续时间。 如果数据迁移预计需要花费三周以上，请使用 Data Box。
 
@@ -59,7 +59,7 @@ DistCp 是一个 Apache 项目，它使用 MapReduce 映射作业来传输数据
 
 DistCp 会尝试创建映射任务，使每个副本的字节数大致相同。 默认情况下，DistCp 作业使用 20 个映射器。 对 Distcp 使用更多的映射器（在命令行中包含“m”参数）可在数据传输过程中提高并行度，减少数据传输的时长。 但是，增加映射器时需要注意两点：
 
-* DistCp 的最低粒度是一个文件。 指定多个 Mappers 多于源文件的数量没有帮助，并且会浪费可用的群集资源。
+* DistCp 的最低粒度是一个文件。 指定的映射器数大于源文件数，并将浪费可用的群集资源。
 
 * 确定映射器数目时，请考虑群集上的可用 Yarn 内存。 每个映射任务作为 Yarn 容器启动。 假设群集上没有其他繁重的工作负荷在运行，可通过以下公式确定映射器数目：m = (工作节点数 \* 每个工作节点的 YARN 内存) / YARN 容器大小。 但是，如果其他应用程序正在使用内存，请选择仅将一部分 YARN 内存用于 DistCp 作业。
 
@@ -95,7 +95,7 @@ hadoop distcp -Dmapreduce.fileoutputcommitter.algorithm.version=2 -numListstatus
 
 #### <a name="hive-metastore-migration-using-scripts"></a>使用脚本迁移 Hive 元存储
 
-1. 从本地 Hive 元存储生成 Hive DDL。 此步骤可以使用[包装器 bash 脚本](https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md)完成。
+1. 从本地 Hive 元存储生成 Hive DDL。 可以使用[包装 bash 脚本](https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md)执行此步骤。
 1. 编辑生成的 DDL，将 HDFS URL 替换为 WASB/ADLS/ABFS URL。
 1. 针对 HDInsight 群集中的元存储运行更新的 DDL。
 1. 确保本地与云之间的 Hive 元存储版本兼容。
@@ -112,7 +112,7 @@ hadoop distcp -Dmapreduce.fileoutputcommitter.algorithm.version=2 -numListstatus
 ### <a name="apache-ranger"></a>Apache Ranger
 
 - 将本地 Ranger 策略导出到 XML 文件。
-- 使用 XSLT 等工具将基于本地的基于 HDFS 的路径转换为 WASB/ADLS。
+- 使用 XSLT 之类的工具，将本地特定的基于 HDFS 的路径转换为 WASB/ADLS。
 - 将策略导入到 HDInsight 上运行的 Ranger。
 
 ## <a name="next-steps"></a>后续步骤

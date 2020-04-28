@@ -5,17 +5,17 @@ ms.date: 09/05/2019
 ms.topic: conceptual
 ms.reviewer: brendal
 ms.openlocfilehash: aa972e8ae486d181f0c48df72ec89c925c940451
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74324903"
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Azure Blockchain Workbench 体系结构
 
-Azure 区块链工作台预览版通过使用多个 Azure 组件提供解决方案，简化了区块链应用程序开发。 可以使用 Azure 市场中的解决方案模板部署 Blockchain Workbench。 该模板可用于选择要部署的模块和组件，包括区块链堆栈、客户端应用程序类型，以及对 IoT 集成的支持。 部署后，Blockchain Workbench 会提供对 Web 应用、iOS 应用和 Android 应用的访问权限。
+Azure 区块链工作台预览版通过使用几个 Azure 组件提供解决方案来简化区块链应用程序的开发。 可以使用 Azure 市场中的解决方案模板部署 Blockchain Workbench。 该模板可用于选择要部署的模块和组件，包括区块链堆栈、客户端应用程序类型，以及对 IoT 集成的支持。 部署后，Blockchain Workbench 会提供对 Web 应用、iOS 应用和 Android 应用的访问权限。
 
-![区块链工作台架构](./media/architecture/architecture.png)
+![区块链工作台体系结构](./media/architecture/architecture.png)
 
 ## <a name="identity-and-authentication"></a>标识和身份验证
 

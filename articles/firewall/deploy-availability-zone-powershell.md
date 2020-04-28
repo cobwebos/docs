@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 使用可用性区域部署 Azure 防火墙
+title: 使用 PowerShell 通过可用性区域部署 Azure 防火墙
 description: 本文介绍如何使用 Azure PowerShell 部署具有可用性区域的 Azure 防火墙。
 services: firewall
 author: vhorne
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: victorh
 ms.openlocfilehash: 33dcebf14f4d534962783a30ec94f7ff6529ae0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74195924"
 ---
 # <a name="deploy-an-azure-firewall-with-availability-zones-using-azure-powershell"></a>使用 Azure PowerShell 部署具有可用性区域的 Azure 防火墙

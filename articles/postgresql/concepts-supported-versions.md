@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 61dd98028b7342290984615ea19b561b48aaeadb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74792235"
 ---
 # <a name="supported-postgresql-major-versions"></a>支持的 PostgreSQL 主版本
-Microsoft 的目标是在 Azure 数据库中支持 n-2 版本的 PostgreSQL 引擎，用于 PostgreSQL - 单服务器。 这些版本将是 Azure 上的当前主版本 (n) 和之前的两个主版本 (-2)。
+Microsoft 旨在支持 Azure Database for PostgreSQL 单服务器中的 PostgreSQL 引擎的 n-2 版本。 这些版本将是 Azure 上的当前主版本 (n) 和之前的两个主版本 (-2)。
 
 Azure Database for PostgreSQL 目前支持以下主版本：
 

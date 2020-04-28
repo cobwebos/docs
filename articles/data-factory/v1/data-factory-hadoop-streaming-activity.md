@@ -1,5 +1,5 @@
 ---
-title: 使用 Hadoop 流活动转换数据 - Azure
+title: 使用 Hadoop 流式处理活动转换数据-Azure
 description: 了解如何使用 Azure 数据工厂中的 Hadoop 流式处理活动通过运行 Hadoop 流式处理程序在按需的/自己的 HDInsight 群集上转换数据。
 services: data-factory
 documentationcenter: ''
@@ -13,23 +13,23 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: a7f07365da699a40f5b51917104a68a62affa3d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74703366"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的 Hadoop 流式处理活动转换数据
-> [!div class="op_single_selector" title1="转型活动"]
-> * [蜂巢活动](data-factory-hive-activity.md) 
+> [!div class="op_single_selector" title1="转换活动"]
+> * [Hive 活动](data-factory-hive-activity.md) 
 > * [Pig 活动](data-factory-pig-activity.md)
-> * [映射减少活动](data-factory-map-reduce.md)
+> * [MapReduce 活动](data-factory-map-reduce.md)
 > * [Hadoop 流式处理活动](data-factory-hadoop-streaming-activity.md)
 > * [Spark 活动](data-factory-spark.md)
 > * [机器学习批处理执行活动](data-factory-azure-ml-batch-execution-activity.md)
 > * [机器学习更新资源活动](data-factory-azure-ml-update-resource-activity.md)
 > * [存储过程活动](data-factory-stored-proc-activity.md)
-> * [数据湖分析 U-SQL 活动](data-factory-usql-activity.md)
+> * [Data Lake Analytics U-SQL 活动](data-factory-usql-activity.md)
 > * [.NET 自定义活动](data-factory-use-custom-activities.md)
 
 > [!NOTE]
@@ -38,7 +38,7 @@ ms.locfileid: "74703366"
 
 可使用 HDInsightStreamingActivity 活动调用 Azure 数据工厂管道中的 Hadoop Streaming 作业。 以下 JSON 片段显示在管道 JSON 文件中使用 HDInsightStreamingActivity 的语法。 
 
-数据工厂[管道](data-factory-create-pipelines.md)中的 HDInsight 流式处理活动可[自行](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或[按需](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)基于 Windows/Linux 的 HDInsight 群集执行 Hadoop 流式处理程序。 本文基于[数据转换活动](data-factory-data-transformation-activities.md)一文，它概述了数据转换和受支持的转换活动。
+数据工厂[管道](data-factory-create-pipelines.md)中的 HDInsight 流式处理活动会在[自己](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或基于 Windows/Linux 的[按需](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)HDInsight 群集上执行 Hadoop 流式处理程序。 本文基于[数据转换活动](data-factory-data-transformation-activities.md)一文，它概述了数据转换和受支持的转换活动。
 
 > [!NOTE] 
 > 如果是刚开始接触 Azure 数据工厂，请仔细阅读 [Azure 数据工厂简介](data-factory-introduction.md)，并学习[教程：生成首个数据管道](data-factory-build-your-first-pipeline.md)，然后再阅读本文。 
@@ -223,9 +223,9 @@ HDInsight 群集使用示例程序（wc.exe 和 cat.exe）和数据 (davinci.txt
 }
 ```
 ## <a name="see-also"></a>另请参阅
-* [蜂巢活动](data-factory-hive-activity.md)
+* [Hive 活动](data-factory-hive-activity.md)
 * [Pig 活动](data-factory-pig-activity.md)
-* [映射减少活动](data-factory-map-reduce.md)
+* [MapReduce 活动](data-factory-map-reduce.md)
 * [调用 Spark 程序](data-factory-spark.md)
 * [调用 R 脚本](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
 

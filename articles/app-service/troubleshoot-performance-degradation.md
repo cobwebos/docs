@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
 ms.openlocfilehash: 98c11a72b5aea0fac15d943977402289dc33a970
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74688315"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>排查 Azure 应用服务中应用性能缓慢的问题
 本文帮助排查 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)中应用性能缓慢的问题。
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)，并单击“**获取支持**”。
+如果在本文中有任何需要协助的地方，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)，并单击“**获取支持**”。
 
 ## <a name="symptom"></a>症状
 浏览应用时，页面加载缓慢，并且有时还会超时。
@@ -41,7 +41,7 @@ ms.locfileid: "74688315"
 
 <a name="observe" />
 
-### <a name="1-observe-and-monitor-application-behavior"></a>1. 观察和监视应用程序行为
+### <a name="1-observe-and-monitor-application-behavior"></a>1.观察和监视应用程序行为
 #### <a name="track-service-health"></a>跟踪服务运行状况
 每次发生服务中断或性能下降时 Microsoft Azure 会发出通告。 可以在 [Azure 门户](https://portal.azure.com/)中跟踪服务的运行状况。 有关详细信息，请参阅[跟踪服务的运行状况](../monitoring-and-diagnostics/insights-service-health.md)。
 
@@ -58,7 +58,7 @@ ms.locfileid: "74688315"
 
 ![监视应用性能](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
 
-有关详细信息，请参阅：
+有关详细信息，请参见:
 
 * [监视 Azure 应用服务中的应用](web-sites-monitor.md)
 * [接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
@@ -93,7 +93,7 @@ ms.locfileid: "74688315"
 可以启用或禁用以下种类的日志：
 
 * **详细错误日志记录** - 指示故障的 HTTP 状态代码（状态代码 400 或更大数字）的详细错误消息。 其中可能包含有助于确定服务器返回错误代码的原因的信息。
-* **失败的请求跟踪**- 有关失败请求的详细信息，包括用于处理请求的 IIS 组件的跟踪以及每个组件所采用的时间。 在尝试提高应用性能或查找导致特定 HTTP 错误的问题时，此信息很有用。
+* **失败请求跟踪**-有关失败请求的详细信息，包括对用于处理请求的 IIS 组件和每个组件所用的时间的跟踪。 在尝试提高应用性能或查找导致特定 HTTP 错误的问题时，此信息很有用。
 * **Web 服务器日志记录** - 使用 W3C 扩展日志文件格式的 HTTP 事务信息。 这在确定总体应用指标（如处理的请求数量或来自特定 IP 地址的请求数）时非常有用。
 
 #### <a name="enable-application-diagnostics"></a>启用应用程序诊断
@@ -141,7 +141,7 @@ Kudu 的另一项有用功能是，如果应用程序引发第一次异常，可
 
 <a name="mitigate" />
 
-### <a name="3-mitigate-the-issue"></a>3. 缓解问题
+### <a name="3-mitigate-the-issue"></a>3. 缓解此问题
 #### <a name="scale-the-app"></a>缩放应用
 在 Azure 应用服务中，为了提高性能和吞吐量，可以调整运行应用程序的规模。 纵向扩展应用涉及到两个相关操作：将应用服务计划更改为较高的定价层，以及在切换到较高的定价层后配置特定的设置。
 
@@ -161,4 +161,4 @@ AutoHeal 会根据所选设置（例如配置更改、请求、基于内存的�
 
  ![重启应用以解决性能问题](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
-还可以使用 Azure Powershell 管理应用。 有关详细信息，请参阅将[Azure PowerShell 与 Azure 资源管理器一起使用](../powershell-azure-resource-manager.md)。
+还可以使用 Azure Powershell 管理应用。 有关详细信息，请参阅[使用 Azure 资源管理器的 Azure PowerShell](../powershell-azure-resource-manager.md)。

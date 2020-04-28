@@ -16,10 +16,10 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: b1578547fbca4caaecb209021569f0fbb2f1ae24
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74790632"
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>如何使用 Azure PowerShell 预配 SQL Server 虚拟机
@@ -337,7 +337,7 @@ New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualM
 > 如果收到有关启动诊断的错误，可将其忽略。 由于为虚拟机磁盘指定的存储帐户是高级存储帐户，因此会创建标准存储帐户用于启动诊断。
 
 ## <a name="install-the-sql-iaas-agent"></a>安装 SQL IaaS 代理
-SQL Server 虚拟机通过 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)支持自动化管理功能。 要在新 VM 上安装代理并将其注册到资源提供程序，请在创建虚拟机后运行[New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm)命令。 指定 SQL Server VM 的许可证类型，通过[Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)在即用即付或自带许可证之间进行选择。 有关许可的详细信息，请参阅[许可模型](virtual-machines-windows-sql-ahb.md)。 
+SQL Server 虚拟机通过 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)支持自动化管理功能。 若要在新 VM 上安装代理，并将其注册到资源提供程序，请在创建虚拟机后运行[AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm)命令。 指定 SQL Server VM 的许可证类型，通过[Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)在 "即用即付" 或 "自带许可证" 之间进行选择。 有关授权的详细信息，请参阅[授权模型](virtual-machines-windows-sql-ahb.md)。 
 
 
    ```powershell

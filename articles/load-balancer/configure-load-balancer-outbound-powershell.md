@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/24/2019
 ms.author: allensu
 ms.openlocfilehash: 5fd68f4559420ca688b3f4d6f6d66ee52db5191e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74225445"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-by-using-azure-powershell"></a>使用 Azure PowerShell 在标准负载均衡器中配置负载均衡和出站规则
@@ -144,7 +144,7 @@ $inboundRule = New-AzLoadBalancerRuleConfig -Name inboundlbrule -FrontendIPConfi
 
 ### <a name="create-a-load-balancer"></a>创建负载均衡器
 
-使用以下 [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer?view=azps-2.6.0) 命令为入站 IP 地址创建负载均衡器。 命名负载均衡器*磅*。它应包括入站前端 IP 配置。 应将其后端池 *bepoolinbound* 关联到在上一步骤中创建的公共 IP 地址 *mypublicipinbound*。
+使用以下 [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer?view=azps-2.6.0) 命令为入站 IP 地址创建负载均衡器。 将该负载均衡器命名为 *lb*。其中应包含入站前端 IP 配置。 应将其后端池 *bepoolinbound* 关联到在上一步骤中创建的公共 IP 地址 *mypublicipinbound*。
 
 ```azurepowershell-interactive
 New-AzLoadBalancer -Name lb -Sku Standard -ResourceGroupName myresourcegroupoutbound -Location eastus -FrontendIpConfiguration $frontendIPin,$frontendIPout -BackendAddressPool $bepoolin,$bepoolout -Probe $probe -LoadBalancingRule $inboundrule -OutboundRule $outboundrule 
@@ -161,6 +161,6 @@ New-AzLoadBalancer -Name lb -Sku Standard -ResourceGroupName myresourcegroupoutb
 ```
 
 ## <a name="next-steps"></a>后续步骤
-在本文中，您创建了一个标准负载均衡器，配置了入站和出站负载平衡器流量规则，并为后端池中的 VM 配置了运行状况探测。 
+本文介绍了如何创建标准负载均衡器、配置入站和出站负载平衡器流量规则，并为后端池中的 Vm 配置了运行状况探测。 
 
-要了解更多信息，请继续访问[Azure 负载均衡器](tutorial-load-balancer-standard-public-zone-redundant-portal.md)的教程。
+若要了解详细信息，请继续阅读[有关 Azure 负载均衡器的教程](tutorial-load-balancer-standard-public-zone-redundant-portal.md)。

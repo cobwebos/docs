@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 安全中心内实现租户级公开范围 | Microsoft Docs
-description: 本文介绍如何通过将策略应用于链接到 Azure 活动目录租户的所有订阅，大规模管理安全状况。
+description: 本文介绍如何通过将策略应用到链接到 Azure Active Directory 租户的所有订阅来大规模管理安全状况。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,14 +14,14 @@ ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
 ms.openlocfilehash: 734876380d22f5d4d6dae0dd375b238fd5f6ffed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74559342"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>在 Azure 安全中心内实现租户级公开范围
-本文介绍如何通过将安全策略应用于链接到 Azure 活动目录租户的所有 Azure 订阅，大规模管理组织的安全状况。
+本文介绍如何通过将安全策略应用到链接到 Azure Active Directory 租户的所有 Azure 订阅来大规模管理组织的安全状况。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -39,8 +39,8 @@ ms.locfileid: "74559342"
 可以将订阅整理到管理组中，并向管理组应用治理策略。 管理组中的所有订阅都会自动继承应用于管理组的策略。 虽然不一定要在安全中心内创建管理组，但强烈建议至少创建一个管理组，以便创建根管理组。 创建管理组后，Azure AD 租户下的所有订阅都会与它关联。 有关 PowerShell 说明以及更多信息，请参阅[创建管理组以管理资源和组织](../azure-resource-manager/management-groups-create.md)。
 
  
-1. 登录到 Azure[门户](https://portal.azure.com)。
-2. 选择**所有服务** > **管理组**。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+2. 选择 "**所有服务** > **管理组**"。
 3. 在主页上，选择“新建管理组”。**** 
 
     ![主要组](./media/security-center-management-groups/main.png) 
@@ -49,10 +49,10 @@ ms.locfileid: "74559342"
     - 显示名称字段是在 Azure 门户中显示的名称。 创建管理组时，单独的显示名称是一个可选字段，并且可以随时更改。  
 
       ![创建](./media/security-center-management-groups/create_context_menu.png)  
-5.  选择 **"保存"**
+5.  选择“保存” 
 
 ### <a name="view-management-groups-in-the-azure-portal"></a>在 Azure 门户中查看管理组
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 若要查看管理组，请选择 Azure 主菜单下的“所有服务”****。
 3. 选择“通用”**** 下的“管理组”****。
 
@@ -93,7 +93,7 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 
 #### <a name="assign-rbac-roles-to-users-through-the-azure-portal"></a>通过 Azure 门户向用户分配 RBAC 角色： 
 
-1. 登录到 Azure[门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 1. 若要查看管理组，请在 Azure 主菜单下选择“所有服务”****，然后选择“管理组”****。
 1.  选择一个管理组，然后单击“详细信息”****。
 
@@ -101,7 +101,7 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
  
 1. 单击“访问控制(IAM)”****，然后单击“角色分配”****。
 
-1. 单击 **"添加角色分配**"。
+1. 单击“添加角色分配”  。
 
 1. 选择要分配的角色和用户，然后单击“保存”****。  
    
@@ -112,7 +112,7 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-1. 安装[Azure 电源外壳](/powershell/azure/install-az-ps)。
+1. 安装[Azure PowerShell](/powershell/azure/install-az-ps)。
 2. 运行以下命令： 
 
     ```azurepowershell
@@ -140,7 +140,7 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 ### <a name="open-or-refresh-security-center"></a>打开或刷新安全中心
 获得提升的访问权限后，立即打开或刷新 Azure 安全中心，验证能否查看 Azure AD 租户下的所有订阅。 
 
-1. 登录到 Azure[门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 2. 请确保在订阅选择器中选择了要在安全中心内查看的所有订阅。
 
     ![订阅选择器屏幕截图](./media/security-center-management-groups/subscription-selector.png)
@@ -167,7 +167,7 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 
 
 
-## <a name="adding-subscriptions-to-a-management-group"></a>将订阅添加到管理组
+## <a name="adding-subscriptions-to-a-management-group"></a>向管理组添加订阅
 可以向创建的管理组添加订阅。 这些步骤不是实现租户级公开范围以及全局策略和访问管理的必需步骤。
 
 1. 在“管理组”**** 下，选择要向其中添加订阅的管理组。
@@ -192,5 +192,5 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 > [Azure 安全中心的安全运行状况监视](security-center-monitoring.md)
 
 > [!div class="nextstepaction"]
-> [管理和响应 Azure 安全中心中的安全警报](security-center-managing-and-responding-alerts.md)
+> [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/27/2019
 ms.author: aschhab
 ms.openlocfilehash: 3fba1d62b9347303d630c80733c4fbfa279b5296
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74560103"
 ---
 # <a name="get-started-with-service-bus-topics"></a>服务总线主题入门
@@ -32,13 +32,13 @@ ms.locfileid: "74560103"
 
 ## <a name="prerequisites"></a>先决条件
 
-1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
-2. 按照["快速入门"中的步骤：使用 Azure 门户创建服务总线主题和订阅主题](service-bus-quickstart-topics-subscriptions-portal.md)以执行以下任务：
-    1. 创建服务总线**命名空间**。
+1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+2. 按照[快速入门：使用 Azure 门户创建服务总线主题和主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来执行以下任务：
+    1. 创建一个服务总线**命名空间**。
     2. 获取**连接字符串**。
-    3. 在命名空间中创建**主题**。
+    3. 在此命名空间中创建一个**主题**。
     4. 在此命名空间中创建对此主题的**一个订阅**。
-3. [Visual Studio 2017 更新 3（版本 15.3， 26730.01）](https://www.visualstudio.com/vs)或更高版本。
+3. [Visual Studio 2017 Update 3（版本 15.3 (26730.01)）](https://www.visualstudio.com/vs)或更高版本。
 4. [NET Core SDK](https://www.microsoft.com/net/download/windows) 2.0 或更高版本。
  
 ## <a name="send-messages-to-the-topic"></a>将消息发送到主题
@@ -51,8 +51,8 @@ ms.locfileid: "74560103"
 
 ### <a name="add-the-service-bus-nuget-package"></a>添加服务总线 NuGet 包
 
-1. 右键单击新创建的项目，并选择“管理 NuGet 包” ****。
-2. 单击“浏览”**** 选项卡，搜索 [Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)，然后选择“Microsoft.Azure.ServiceBus”******** 项。 单击“安装”**** 以完成安装，并关闭此对话框。
+1. 右键单击新创建的项目，并选择“管理 NuGet 包”  。
+2. 单击“浏览”  选项卡，搜索 [Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)，然后选择“Microsoft.Azure.ServiceBus”   项。 单击“安装”  以完成安装，并关闭此对话框。
    
     ![选择 NuGet 包][nuget-pkg]
 
@@ -75,7 +75,7 @@ ms.locfileid: "74560103"
     static ITopicClient topicClient;
     ``` 
 
-3. 使用将在`Main()`下一步中添加的 SendMessagesAsync 方法异步发送消息的以下**异步**`Main`方法替换该方法。 
+3. 将 `Main()` 方法替换为下面的 **async** `Main` 方法，该方法使用将在下一步中添加的 SendMessagesAsync 方法异步发送消息。 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -182,7 +182,7 @@ ms.locfileid: "74560103"
     }
     ```
 
-3. 运行该程序并检查 Azure 门户：在命名空间“概览”窗口中单击主题的名称。**** 此时会显示主题的“基本信息”屏幕。**** 请注意，在列在窗口底部附近的订阅中，订阅的“消息计数”值现在应该为 **10**。**** 每次运行发件人应用程序而没有检索消息（如下一部分所述）时，该值会增加 10。 另请注意，每次该应用将消息添加到主题，主题的当前大小就会递增，增量为“基本信息”窗口中的“当前”值。********
+3. 运行该程序并检查 Azure 门户：在命名空间“概览”窗口中单击主题的名称。  此时会显示主题的“基本信息”屏幕。  请注意，在列在窗口底部附近的订阅中，订阅的“消息计数”值现在应该为 **10**。  每次运行发件人应用程序而没有检索消息（如下一部分所述）时，该值会增加 10。 另请注意，每次该应用将消息添加到主题，主题的当前大小就会递增，增量为“基本信息”窗口中的“当前”值。  
    
       ![消息大小][topic-message]
 
@@ -210,7 +210,7 @@ ms.locfileid: "74560103"
     static ISubscriptionClient subscriptionClient;
     ```
 
-3. 将 `Main()` 方法替换为以下 **async** `Main` 方法。 它调用将在`RegisterOnMessageHandlerAndReceiveMessages()`下一步中添加的方法。 
+3. 将 `Main()` 方法替换为以下 **async** `Main` 方法。 它调用将在下一步中添加的 `RegisterOnMessageHandlerAndReceiveMessages()` 方法。 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -364,11 +364,11 @@ ms.locfileid: "74560103"
         }
     }
     ```
-9. 运行该程序，并再次检查门户。 请注意，**消息计数**和**当前**值现在是**0**。
+9. 运行该程序，并再次检查门户。 请注意，“消息计数”和“当前”值现在为 **0**。  
    
     ![主题长度][topic-message-receive]
 
-祝贺你！ 现已使用 .NET Standard 库创建主题和订阅，发送了 10 条消息，并接收到了这些消息。
+祝贺！ 现已使用 .NET Standard 库创建主题和订阅，发送了 10 条消息，并接收到了这些消息。
 
 > [!NOTE]
 > 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 服务总线资源管理器允许用户连接到服务总线命名空间并以一种简单的方式管理消息传送实体。 该工具提供高级功能，如导入/导出功能或用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 

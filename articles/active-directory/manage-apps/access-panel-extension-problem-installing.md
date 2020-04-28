@@ -1,5 +1,5 @@
 ---
-title: 安装应用程序访问面板浏览器扩展 - Azure AD
+title: 安装应用程序访问面板浏览器扩展-Azure AD
 description: 修复安装访问面板浏览器扩展时遇到的常见错误。
 services: active-directory
 documentationcenter: ''
@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 771ba79f067cbff1ab8bbfece64f4028b4ca50b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74275859"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>安装访问面板浏览器扩展
@@ -39,7 +39,7 @@ ms.locfileid: "74275859"
 
 - **Microsoft Edge**：Windows 10 周年纪念版或更高版本。 
 - **Chrome**：在 Windows 7 或更高版本上，以及在 MacOS X 或更高版本上。
-- **Firefox 26.0 或更高版本**：在 Windows XP SP2 或更高版本上，以及 Mac OS X 10.6 或更高版本。
+- **Firefox 26.0 或更高版本**：在 WINDOWS XP SP2 或更高版本上，以及 Mac OS X 10.6 或更高版本上。
 
 ## <a name="install-the-access-panel-browser-extension"></a>安装访问面板浏览器扩展
 
@@ -52,7 +52,7 @@ ms.locfileid: "74275859"
 3.  出现提示时，选择“立即安装”****。  
     你将被定向到所选浏览器的下载链接。 
     
-4.  选择“添加”****。
+4.  选择 **添加** 。
 
 5.  如果出现提示，请**启用**或**允许**扩展。
 
@@ -62,9 +62,9 @@ ms.locfileid: "74275859"
 
 也可以直接从以下站点下载适用于 Chrome 和 Microsoft Edge 的扩展：
 
-- [铬扩展机](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
+- [Chrome 扩展](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 - [Microsoft Edge 扩展](https://www.microsoft.com/en-us/p/my-apps-secure-sign-in-extension/9pc9sckkzk84)
-- [火狐扩展](https://addons.mozilla.org/en-US/firefox/addon/access-panel-extension/)
+- [Firefox 扩展](https://addons.mozilla.org/en-US/firefox/addon/access-panel-extension/)
 
 ## <a name="use-the-my-apps-secure-sign-in-extension"></a>使用“我的应用”安全登录扩展
 * 如果使用的我的应用 URL 不是 `https://myapps.microsoft.com`，请通过执行以下操作配置默认 URL：
@@ -89,8 +89,8 @@ ms.locfileid: "74275859"
        最近使用的三个应用会显示在“最近使用”**** 快捷方式列表中。
        
 * 若要在进行远程操作时使用内部公司 URL，请执行以下操作：
-    1. [在租户上配置应用程序代理](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-enable)
-    2. 通过[应用程序代理发布应用程序](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal)和 URL
+    1. 在租户上[配置应用程序代理](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-enable)
+    2. 通过应用程序代理[发布应用程序](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal)和 URL
     3. 安装该扩展，并通过选择“登录以开始使用”登录到该扩展
     4. 现在，即使在执行远程操作时也可以浏览内部公司 URL
 
@@ -128,4 +128,4 @@ ms.locfileid: "74275859"
 -   Fiddler 跟踪
 
 ## <a name="next-steps"></a>后续步骤
-[什么是使用 Azure 活动目录的应用程序访问和单一登录？](what-is-single-sign-on.md)
+[Azure Active Directory 的应用程序访问与单一登录是什么？](what-is-single-sign-on.md)

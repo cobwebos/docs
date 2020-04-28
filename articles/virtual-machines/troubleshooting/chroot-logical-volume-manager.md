@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
 ms.openlocfilehash: 20d710f717a9dff26f46ac7a201a9b694f3fbe84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74684135"
 ---
-# <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>当无法访问 Azure 串行控制台且磁盘布局使用 LVM（逻辑卷管理器）时，对 Linux VM 进行故障排除
+# <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>当无权访问 Azure 串行控制台且磁盘布局使用 LVM （逻辑卷管理器）时，Linux VM 的故障排除
 
 本故障排除指南可帮助解决以下场景中出现的问题：Linux VM 不启动、无法建立 SSH 连接，并且在底层文件系统布局中配置了 LVM（逻辑卷管理器）。
 
@@ -42,14 +42,14 @@ ms.locfileid: "74684135"
 ## <a name="attach-the-disk"></a>附加磁盘
 将磁盘附加到基于前面创建的快照构建的**救援** VM。
 
-在 Azure 门户 -> 选择**救援** VM ->“磁盘”**** 
+在 Azure 门户 -> 选择**救援** VM ->“磁盘”  
 
 ![创建磁盘](./media/chroot-logical-volume-manager/create-disk-from-snap.png)
 
 填写字段。 为新磁盘命名，并选择与快照、受影响 VM 和救援 VM 相同的资源组。
 
-“源类型”为“快照”。********
-“源快照”是前面创建的**快照**的名称。****
+“源类型”为“快照”。  
+“源快照”是前面创建的**快照**的名称。 
 
 ![创建磁盘 2](./media/chroot-logical-volume-manager/create-disk-from-snap-2.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "74684135"
 
 ![Fdisk](./media/chroot-logical-volume-manager/fdisk-output-sdc.png)
 
-指示**\*** 引导分区，两个分区将被装载。
+**\*** 表示启动分区；将会装载这两个分区。
 
 运行 **lsblk** 命令查看受影响 VM 的 LVM
 
@@ -129,7 +129,7 @@ mount /dev/sdc1 /rescue/boot
 
 如果出现类似于下面的错误：
 
-**chroot：无法运行命令"/bin/bash"：没有此类文件或目录**
+**chroot：无法运行命令 "/bin/bash"：没有此类文件或目录**
 
 请尝试装载 **usr** 逻辑卷
 
@@ -204,20 +204,20 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 ![高级](./media/chroot-logical-volume-manager/rpm-kernel.png)
 
-如果需要删除或升级**内核**
+可根据需要删除或升级**内核**
 ![高级](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)
 
 
-### <a name="example-3---enable-serial-console"></a>示例 3 - 启用串行控制台
-如果无法访问 Azure 串行控制台，请验证 Linux VM 的 GRUB 配置参数并更正它们。 详细信息可[在此文档中](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-proactive-configuration)找到
+### <a name="example-3---enable-serial-console"></a>示例 3-启用串行控制台
+如果无法访问 Azure 串行控制台，请验证 Linux VM 的 GRUB 配置参数并更正它们。 可[在此文档中](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-proactive-configuration)找到详细信息
 
-### <a name="example-4---kernel-loading-with-problematic-lvm-swap-volume"></a>示例 4 - 具有有问题的 LVM 交换卷的内核加载
+### <a name="example-4---kernel-loading-with-problematic-lvm-swap-volume"></a>示例 4-具有有问题的 LVM 交换卷的内核加载
 
-VM 可能无法完全启动并放入**dracut**提示符。
-故障的更多详细信息可以从 Azure 串行控制台找到，也可以导航到 Azure 门户 -> 启动诊断 ->串行日志
+VM 可能无法完全启动并进入**dracut**提示符。
+有关失败的更多详细信息，可从 Azure 串行控制台定位，或导航到 Azure 门户 > 启动诊断-> 串行日志
 
 
-可能存在与此类似的错误：
+可能出现类似于下面的错误：
 
 ```
 [  188.000765] dracut-initqueue[324]: Warning: /dev/VG/SwapVol does not exist
@@ -225,14 +225,14 @@ VM 可能无法完全启动并放入**dracut**提示符。
 Warning: /dev/VG/SwapVol does not exist
 ```
 
-在此示例中，grub.cfg 配置为加载名称为**rd.lvm.lv_VG/SwapVol**的 LV，并且 VM 无法找到此名称。 此行显示内核如何加载引用 LV SwapVol
+在此示例中配置了 grub，以加载名称为 " **VG/SwapVol** " 且 VM 无法找到此项的 LV。 此行显示了如何加载内核引用 LV SwapVol
 
 ```
 [    0.000000] Command line: BOOT_IMAGE=/vmlinuz-3.10.0-1062.4.1.el7.x86_64 root=/dev/mapper/VG-OSVol ro console=tty0 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0 biosdevname=0 crashkernel=256M rd.lvm.lv=VG/OSVol rd.lvm.lv=VG/SwapVol nodmraid rhgb quiet
 [    0.000000] e820: BIOS-provided physical RAM map:
 ```
 
- 从 /etc/default/grub 配置中删除有问题的 LV，并重建 grub2.cfg
+ 从/etc/default/grub 配置中删除有问题的 LV 并重建 grub2
 
 
 ## <a name="exit-chroot-and-swap-the-os-disk"></a>退出 chroot 并交换 OS 磁盘
@@ -252,15 +252,15 @@ umount /rescue
 
 从救援 VM 中分离磁盘，并执行磁盘交换。
 
-从门户**磁盘**中选择 VM 并选择**分离**
-![分离磁盘](./media/chroot-logical-volume-manager/detach-disk.png) 
+从门户**磁盘**中选择 VM，并选择 "**分离**
+![分离磁盘"](./media/chroot-logical-volume-manager/detach-disk.png) 
 
 保存更改![保存分离结果](./media/chroot-logical-volume-manager/save-detach.png) 
 
 磁盘现在可用，并可与受影响 VM 的原始 OS 磁盘交换。
 
-在 Azure 门户中导航到失败的 VM，并选择**磁盘** -> **交换 OS 磁盘**
-![交换磁盘](./media/chroot-logical-volume-manager/swap-disk.png) 
+在 Azure 门户中导航到出现故障的 VM，并选择 "**磁盘** -> " "**交换 OS 磁盘**
+![交换磁盘"](./media/chroot-logical-volume-manager/swap-disk.png) 
 
 填写字段。在“选择磁盘”中选择刚刚在上一步骤中分离的快照磁盘。**** 受影响 VM 的名称也是必填的。然后选择“确定”****
 

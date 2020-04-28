@@ -1,5 +1,5 @@
 ---
-title: 调优性能：Spark、HDInsight& Azure 数据存储第 2 代 |微软文档
+title: 调整性能：Spark、HDInsight 和 Azure Data Lake Storage Gen2 | Microsoft Docs
 description: Azure Data Lake Storage Gen2 Spark 性能优化指南
 services: storage
 author: normesta
@@ -10,23 +10,23 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: a70b8112af201a49e7eece8b689e75102ec55880
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74327543"
 ---
-# <a name="tune-performance-spark-hdinsight--azure-data-lake-storage-gen2"></a>调优性能：火花、HDInsight& Azure 数据存储第 2 代
+# <a name="tune-performance-spark-hdinsight--azure-data-lake-storage-gen2"></a>调整性能：Spark、HDInsight 和 Azure Data Lake Storage Gen2
 
 在优化 Spark 的性能时，需要考虑到群集中将要运行的应用数目。  默认情况下，在 HDI 群集中可以同时运行 4 个应用（注意：默认设置可更改）。  可以使用更少的应用，这样便可以覆盖默认设置，将群集中的更多资源用于这些应用。  
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* Azure Data Lake Storage Gen2 帐户****。 有关如何创建一个存储帐户的说明，请参阅[快速入门：创建 Azure 数据存储湖存储 Gen2 存储帐户](data-lake-storage-quickstart-create-account.md)。
-* 具有 Data Lake Storage Gen2 帐户访问权限的 Azure HDInsight 群集****。 请参阅[将 Azure 数据存储第 2 代与 Azure HDInsight 群集一起](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)使用 。 请确保对该群集启用远程桌面。
+* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure Data Lake Storage Gen2 帐户  。 有关如何创建帐户的说明，请参阅[快速入门：创建 Azure Data Lake Storage Gen2 存储帐户](data-lake-storage-quickstart-create-account.md)。
+* 具有 Data Lake Storage Gen2 帐户访问权限的 Azure HDInsight 群集  。 请参阅[配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)。 请确保对该群集启用远程桌面。
 * **在 Data Lake Storage Gen2 中运行 Spark 群集**。  有关详细信息，请参阅[使用 HDInsight Spark 群集分析 Data Lake Storage Gen2 中的数据](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
-* Data Lake Storage Gen2 的性能优化指南****。  有关一般性能概念，请参阅[数据存储湖存储第 2 代性能调优指南](data-lake-storage-performance-tuning-guidance.md) 
+* Data Lake Storage Gen2 的性能优化指南****。  有关一般的性能概念，请参阅[Data Lake Storage Gen2 性能优化指南](data-lake-storage-performance-tuning-guidance.md) 
 
 ## <a name="parameters"></a>参数
 
@@ -54,14 +54,14 @@ ms.locfileid: "74327543"
 
 **步骤 1：确定群集中运行的应用数目** – 应该知道群集中运行了多少个应用，包括当前正在使用的应用。  每项 Spark 设置的默认值假设同时运行了 4 个应用。  因此，每个应用只能利用群集 25% 的资源。  若要提高性能，可以通过更改执行器数目来覆盖默认值。  
 
-**第 2 步：设置执行器内存**– 要设置的第一件事是执行器内存。  内存取决于要运行的作业。  减少每个执行器的内存分配可以提高并发性。  如果在运行作业时看到内存不足异常，应增大此参数的值。  一种替代方法是使用具有更高内存量的群集或增大群集的大小来获得更多内存。  增加内存便可以使用更多的执行器，意味着并发性得到提高。
+**步骤2：设置执行器内存**–要设置的第一件事是执行器内存。  内存取决于要运行的作业。  减少每个执行器的内存分配可以提高并发性。  如果在运行作业时看到内存不足异常，应增大此参数的值。  一种替代方法是使用具有更高内存量的群集或增大群集的大小来获得更多内存。  增加内存便可以使用更多的执行器，意味着并发性得到提高。
 
 **步骤 3：设置执行器核心数** – 对于不执行复杂操作的 I/O 密集型工作负荷而言，一开始最好是指定一个较大数值的执行器核心数，以增加每个执行器的并行任务数。  将执行器核心数设置为 4 是个不错的起点。   
 
     executor-cores = 4
 增加执行器核心数可以提高并行度，这样可以体验不同执行器核心数带来的效果。  对于执行较复杂操作的作业，应减少每个执行器的核心数。  如果执行器核心数设置为 4 以上，则垃圾回收可能会变得低效，并且性能会下降。
 
-**步骤 4：确定群集中的 YARN 内存量** – Ambari 中提供了此信息。  导航到 YARN 并查看"配置"选项卡。 YARN 内存将显示在此窗口中。  
+**步骤 4：确定群集中的 YARN 内存量** – Ambari 中提供了此信息。  导航到 YARN 并查看 "配置" 选项卡。 YARN 内存显示在此窗口中。  
 请注意，在该窗口中操作时，还可以查看默认的 YARN 容器大小。  YARN 容器大小与每个执行器的内存量参数相同。
 
     Total YARN memory = nodes * YARN memory per node

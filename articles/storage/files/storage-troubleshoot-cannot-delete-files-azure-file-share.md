@@ -11,10 +11,10 @@ ms.subservice: common
 services: storage
 tags: ''
 ms.openlocfilehash: d3a3763a8964810626bcdc47da230a9ee406f1f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74196481"
 ---
 # <a name="azure-file-share--failed-to-delete-files-from-azure-file-share"></a>Azure 文件共享 - 无法从 Azure 文件共享中删除文件
@@ -28,7 +28,7 @@ ms.locfileid: "74196481"
 * 标记为删除的文件
 * SMB 客户端可能正在使用指定的资源
 
-**症状2：**
+**症状 2：**
 
 处理此命令的配额不够
 
@@ -44,7 +44,7 @@ ms.locfileid: "74196481"
 
 ### <a name="install-the-latest-azure-powershell-module"></a>安装最新的 Azure PowerShell 模块
 
-* [安装 Azure 电源外壳模块](https://docs.microsoft.com/powershell/azure/install-az-ps)
+* [安装 Azure Powershell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)
 
 ### <a name="connect-to-azure"></a>连接到 Azure：
 

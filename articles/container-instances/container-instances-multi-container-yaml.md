@@ -4,22 +4,22 @@ description: 本教程介绍如何将 YAML 文件和 Azure CLI 配合使用，�
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: cce98ec56ee1d84c087150ba486b9482515b46f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74533593"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>教程：使用 YAML 文件部署多容器组
 
 > [!div class="op_single_selector"]
 > * [YAML](container-instances-multi-container-yaml.md)
-> * [资源管理器](container-instances-multi-container-group.md)
+> * [Resource Manager](container-instances-multi-container-group.md)
 >
 
 Azure 容器实例支持使用[容器组](container-instances-container-groups.md)将多个容器部署到单台主机上。 当生成应用程序 sidecar 以用于日志记录、监视或用于某些其他配置（其中服务需要第二个附加进程）时，容器组很有用。
 
-在本教程中，我们将按步骤运行简单的双容器挎斗配置，只需使用 Azure CLI 部署 [YAML 文件](container-instances-reference-yaml.md)即可。 YAML 文件提供了一种简单的格式来指定实例设置。 学习如何：
+在本教程中，我们将按步骤运行简单的双容器挎斗配置，只需使用 Azure CLI 部署 [YAML 文件](container-instances-reference-yaml.md)即可。 YAML 文件提供了一种简单的格式来指定实例设置。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 配置 YAML 文件
@@ -29,7 +29,7 @@ Azure 容器实例支持使用[容器组](container-instances-container-groups.m
 > [!NOTE]
 > 多容器组当前仅限于 Linux 容器。
 
-如果没有 Azure 订阅，请先创建[一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。"
+如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -37,13 +37,13 @@ Azure 容器实例支持使用[容器组](container-instances-container-groups.m
 
 若要在 Azure CLI 中使用 [az container create][az-container-create] 命令部署多容器组，必须在 YAML 文件中指定容器组配置。 然后，将 YAML 文件作为参数传递给命令。
 
-首先将以下 YAML 复制到一个名为 **deploy-aci.yaml** 的新文件中。 在 Azure 云外壳中，可以使用可视化工作室代码在工作目录中创建文件：
+首先将以下 YAML 复制到一个名为 **deploy-aci.yaml** 的新文件中。 在 Azure Cloud Shell 中，可以使用 Visual Studio Code 在工作目录中创建文件：
 
 ```
 code deploy-aci.yaml
 ```
 
-此 YAML 文件定义了一个名为“myContainerGroup”的容器组，其中包含两个容器、一个公共 IP 地址和两个公开端口。 容器从公共 Microsoft 映像部署。 该组中的第一个容器运行面向 Internet 的 Web 应用程序。 第二个容器 sidecar 定期通过容器组的本地网络向在第一个容器中运行的 Web 应用程序发出 HTTP 请求。
+此 YAML 文件定义了一个名为“myContainerGroup”的容器组，其中包含两个容器、一个公共 IP 地址和两个公开端口。 容器是从公共 Microsoft 映像部署的。 该组中的第一个容器运行面向 Internet 的 Web 应用程序。 第二个容器 sidecar 定期通过容器组的本地网络向在第一个容器中运行的 Web 应用程序发出 HTTP 请求。
 
 ```YAML
 apiVersion: 2018-10-01
@@ -91,7 +91,7 @@ type: Microsoft.ContainerInstance/containerGroups
 
 ## <a name="deploy-the-container-group"></a>部署容器组
 
-使用[az 组创建命令创建资源组][az-group-create]：
+使用[az group create][az-group-create]命令创建资源组：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -168,7 +168,7 @@ Connection: keep-alive
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你使用了 YAML 文件在 Azure 容器实例中部署多容器组。 你已了解如何执行以下操作：
+在本教程中，你使用了 YAML 文件在 Azure 容器实例中部署多容器组。 你已了解如何：
 
 > [!div class="checklist"]
 > * 为多容器组配置 YAML 文件

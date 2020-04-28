@@ -1,5 +1,5 @@
 ---
-title: 了解 B2B 协作中的用户令牌 - Azure AD
+title: 了解 B2B 协作中的用户令牌-Azure AD
 description: Azure Active Directory B2B 协作的用户令牌参考
 services: active-directory
 ms.service: active-directory
@@ -12,15 +12,15 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 08dbb81b91def2fd464ecc85c2d2eaf45ed189d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74271782"
 ---
 # <a name="understand-user-tokens-in-azure-ad-b2b-collaboration"></a>了解 Azure AD B2B 协作中的用户令牌
 
-若要了解 B2B 协作用户的令牌外观，以下是资源租户中 Azure Active Directory (Azure AD) 来宾和 Microsoft 帐户来宾的持有者令牌详细信息和令牌内容（适用于 tenantid 04dcc6ab-388a-4559-b527-fbec656300ea）。 要查看 JSON Web 令牌 （JWT）[https://jwt.io/](https://jwt.io/)内容[https://jwt.ms/](https://jwt.ms/)，请使用 或 。
+若要了解 B2B 协作用户的令牌外观，以下是资源租户中 Azure Active Directory (Azure AD) 来宾和 Microsoft 帐户来宾的持有者令牌详细信息和令牌内容（适用于 tenantid 04dcc6ab-388a-4559-b527-fbec656300ea）。 若要查看 JSON Web 令牌（JWT）内容，请[https://jwt.io/](https://jwt.io/)使用[https://jwt.ms/](https://jwt.ms/)或。
 
 ## <a name="azure-ad-guest-token"></a>Azure AD 来宾令牌
 ```

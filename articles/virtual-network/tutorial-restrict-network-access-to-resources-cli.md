@@ -1,5 +1,5 @@
 ---
-title: 限制对 PaaS 资源的网络访问 - Azure CLI
+title: 限制对 PaaS 资源的网络访问-Azure CLI
 description: 本文介绍如何使用 Azure CLI 通过虚拟网络服务终结点限制对 Azure 资源（例如 Azure 存储和 Azure SQL 数据库）的网络访问。
 services: virtual-network
 documentationcenter: virtual-network
@@ -18,10 +18,10 @@ ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: f2dcc714bc9052dd51f114e24f0b9bd74b87480c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74186408"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>使用 Azure CLI 通过虚拟网络服务终结点限制对 PaaS 资源的网络访问
@@ -39,11 +39,11 @@ ms.locfileid: "74186408"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.28 或更高版本。 要查找版本，请运行 `az --version`。 如果需要安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
+如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.28 或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
-创建虚拟网络之前，必须为虚拟网络创建资源组以及本文中创建的所有其他资源。 使用 [az group create](/cli/azure/group) 创建资源组。 下面的示例在*东部*位置创建名为*myResourceGroup*的资源组。
+创建虚拟网络之前，必须为虚拟网络创建资源组以及本文中创建的所有其他资源。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在“eastus”  位置创建名为“myResourceGroup”  的资源组。
 
 ```azurecli-interactive
 az group create \
@@ -227,7 +227,7 @@ az storage account network-rule add \
 
 ### <a name="create-the-first-virtual-machine"></a>创建第一个虚拟机
 
-使用 [az vm create](/cli/azure/vm) 在公共子网中创建一个 VM。** 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。
+使用 [az vm create](/cli/azure/vm) 在公共子网中创建一个 VM。  如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。
 
 ```azurecli-interactive
 az vm create \
@@ -272,7 +272,7 @@ az vm create \
 
 ## <a name="confirm-access-to-storage-account"></a>确认对存储帐户的访问
 
-通过 SSH 登录到 *myVmPrivate* VM。 将*\<公共 Ip 地址>* 替换为*myVmPrivate VM*的公共 IP 地址。
+通过 SSH 登录到 *myVmPrivate* VM。 将 \<publicIpAddress>  替换为 myVmPrivate  VM 的公共 IP 地址。
 
 ```bash 
 ssh <publicIpAddress>
@@ -316,13 +316,13 @@ ssh <publicIpAddress>
 sudo mkdir /mnt/MyAzureFileShare
 ```
 
-尝试将 Azure 文件共享装载到你创建的目录中。 本文假定你已部署了 Ubuntu 的最新版本。 如果使用的是 Ubuntu 的早期版本，请参阅[在 Linux 上装载](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json)来了解有关装载文件共享的其他说明。 在运行以下命令之前，请`<storage-account-name>`替换为帐户名称，并在`<storage-account-key>`[创建存储帐户](#create-a-storage-account)中检索到的密钥替换 ：
+尝试将 Azure 文件共享装载到你创建的目录中。 本文假定你已部署了 Ubuntu 的最新版本。 如果使用的是 Ubuntu 的早期版本，请参阅[在 Linux 上装载](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json)来了解有关装载文件共享的其他说明。 在运行以下命令之前，将 `<storage-account-name>` 替换为在[创建存储帐户](#create-a-storage-account)中检索到的帐户名称，将 `<storage-account-key>` 替换为检索到的密钥：
 
 ```bash
 sudo mount --types cifs //storage-account-name>.file.core.windows.net/my-file-share /mnt/MyAzureFileShare --options vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
 ```
 
-访问被拒绝，并且你将收到一个 `mount error(13): Permission denied` 错误，因为 *myVmPublic* VM 部署在 *Public* 子网内。 “公共”子网没有为 Azure 存储启用服务终结点，并且存储帐户仅允许来自“专用”子网的网络访问，不允许来自“公共”子网的网络访问。******
+访问被拒绝，并且你将收到一个 `mount error(13): Permission denied` 错误，因为 *myVmPublic* VM 部署在 *Public* 子网内。 “公共”子网没有为 Azure 存储启用服务终结点，并且存储帐户仅允许来自“专用”子网的网络访问，不允许来自“公共”子网的网络访问。   
 
 退出与 *myVmPublic* VM 建立的 SSH 会话。
 
@@ -334,7 +334,7 @@ az storage share list \
   --account-key <account-key>
 ```
 
-访问被拒绝，你将收到“此请求无权执行此操作”** 错误，因为你的计算机不在 *MyVirtualNetwork* 虚拟网络的 *Private* 子网中。
+访问被拒绝，你将收到“此请求无权执行此操作”  错误，因为你的计算机不在 *MyVirtualNetwork* 虚拟网络的 *Private* 子网中。
 
 ## <a name="clean-up-resources"></a>清理资源
 

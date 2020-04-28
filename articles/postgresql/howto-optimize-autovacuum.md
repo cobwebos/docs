@@ -1,5 +1,5 @@
 ---
-title: 优化自动真空 - Azure 数据库，用于后处理SQL - 单个服务器
+title: 优化 autovacuum-单服务器 Azure Database for PostgreSQL
 description: 本文介绍了如何在 Azure Database for PostgreSQL - 单一服务器中优化 autovacuum
 author: dianaputnam
 ms.author: dianas
@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 1917bd6744e100db54fe959292e29486f8a1784b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74770180"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL - 单一服务器中优化 autovacuum
@@ -19,7 +19,7 @@ ms.locfileid: "74770180"
 ## <a name="overview-of-autovacuum"></a>Autovacuum 概述
 PostgreSQL 使用多版本并发控制 (MVCC) 实现更高的数据库并发性。 每次更新都会导致插入和删除，而每次删除都会导致要删除的行被软标记。 软标记用于标识随后要清除的死元组。 为执行这些任务，PostgreSQL 将运行一个清扫作业。
 
-清扫作业可以手动触发或自动触发。 在数据库进行大量更新或删除操作时，死元组会更多。 数据库空闲时，死元组较少。 数据库负载过大时，需要更频繁地运行清扫作业，因此手动运行清扫作业会有所不便**。
+清扫作业可以手动触发或自动触发。 在数据库进行大量更新或删除操作时，死元组会更多。 数据库空闲时，死元组较少。 数据库负载过大时，需要更频繁地运行清扫作业，因此手动运行清扫作业会有所不便  。
 
 可以配置 autovacuum 并从优化中获益。 PostgreSQL 附带的默认值尝试确保产品在所有类型的设备上正常运行。 这些设备包括 Raspberry Pi。 理想的配置值取决于：
 - 可用资源总数，例如 SKU 和存储大小。
@@ -44,7 +44,7 @@ PostgreSQL 使用多版本并发控制 (MVCC) 实现更高的数据库并发性�
 
 下面是一些可以基于以上问题更新的 autovacuum 配置参数以及一些指导信息。
 
-参数|描述|默认值
+参数|说明|默认值
 ---|---|---
 autovacuum_vacuum_threshold|指定在任一表中触发清扫操作所需的已更新或已删除元组的最小数量。 默认值为 50 个元组。 只能在 postgresql.conf 文件中或服务器命令行上设置此参数。 若要替代单个表的设置，请更改表存储参数。|50
 autovacuum_vacuum_scale_factor|指定在决定是否触发清扫操作时要添加到 autovacuum_vacuum_threshold 的表大小的占比。 默认值为 0.2，即表大小的 20%。 只能在 postgresql.conf 文件中或服务器命令行上设置此参数。 若要替代单个表的设置，请更改表存储参数。|百分之 5

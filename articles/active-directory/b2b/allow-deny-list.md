@@ -1,5 +1,5 @@
 ---
-title: 允许或阻止对特定组织的邀请 - Azure AD
+title: 允许或阻止特定组织的邀请-Azure AD
 description: 向管理员介绍如何使用 Azure 门户或 PowerShell 设置访问或拒绝列表，以允许或阻止来自某些域的 B2B 用户。
 services: active-directory
 ms.service: active-directory
@@ -13,10 +13,10 @@ ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8b5100c4406cfd4a8395dfa177dc3cd5e911decb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74273424"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>允许或阻止向特定组织中的 B2B 用户发送邀请
@@ -27,9 +27,9 @@ ms.locfileid: "74273424"
 
 - 可以创建允许列表或拒绝列表。 不能同时设置这两种类型的列表。 默认情况下，不在允许列表中的任何域都会包含在拒绝列表中，反之亦然。 
 - 对于每个组织，只能创建一个策略。 可以更新策略以包含更多的域，或者删除策略以创建新策略。 
-- 可以添加到允许列表或拒绝列表的域数仅受策略大小的限制。 整个策略的最大大小为 25 KB（25，000 个字符），其中包括允许列表或拒绝列表以及为其他功能配置的任何其他参数。
+- 可以添加到允许列表或拒绝列表的域数量仅受策略大小限制。 整个策略的最大大小为 25 KB （25000个字符），其中包括允许列表或拒绝列表以及为其他功能配置的任何其他参数。
 - 此列表独立于 OneDrive for Business 和 SharePoint Online 允许/阻止列表。 若要在 SharePoint Online 中限制单个文件的共享，需要为 OneDrive for Business 和 SharePoint Online 设置允许或拒绝列表。 有关详细信息，请参阅 [SharePoint Online 和 OneDrive for Business 中受限制的域共享](https://support.office.com/article/restricted-domains-sharing-in-sharepoint-online-and-onedrive-for-business-5d7589cd-0997-4a00-a2ba-2320ec49c4e9)。
-- 该列表不适用于已兑换邀请的外部用户。 设置列表后，将强制实施该列表。 如果用户邀请处于挂起状态，而你设置了一个阻止该用户的域的策略，则该用户在尝试兑换邀请时将会失败。
+- 此列表不适用于已经兑换邀请的外部用户。 设置列表后，将强制实施该列表。 如果用户邀请处于挂起状态，而你设置了一个阻止该用户的域的策略，则该用户在尝试兑换邀请时将会失败。
 
 ## <a name="set-the-allow-or-deny-list-policy-in-the-portal"></a>在门户中设置允许或拒绝列表策略
 
@@ -41,8 +41,8 @@ ms.locfileid: "74273424"
 
 添加拒绝列表：
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
-2. 选择**Azure 活动目录** > **用户** > **用户用户设置**。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+2. 选择 " **Azure Active Directory** > **用户** > " "**用户设置**"。
 3. 在“外部用户”下，选择“管理外部协作设置”。********
 4. 在“协作限制”下，选择“拒绝向指定的域发送邀请”。********
 5. 在“目标域”下，输入要阻止的某个域的名称。**** 若要阻止多个域，请分行输入每个域。 例如：
@@ -62,8 +62,8 @@ ms.locfileid: "74273424"
 
 若要添加允许列表，请执行以下操作：
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
-2. 选择**Azure 活动目录** > **用户** > **用户用户设置**。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+2. 选择 " **Azure Active Directory** > **用户** > " "**用户设置**"。
 3. 在“外部用户”下，选择“管理外部协作设置”。********
 4. 在“协作限制”下，选择“只允许向指定的域发送邀请(限制性最强)”。********
 5. 在“目标域”下，输入要允许的某个域的名称。**** 若要阻止多个域，请分行输入每个域。 例如：
@@ -83,7 +83,7 @@ ms.locfileid: "74273424"
 ### <a name="prerequisite"></a>先决条件
 
 > [!Note]
-> AzureAD 预览模块不是完全支持的模块，因为它是在预览中。 
+> AzureADPreview 模块不是完全支持的模块，因为它处于预览阶段。 
 
 若要使用 PowerShell 设置允许或拒绝列表，必须安装适用于 Windows PowerShell 的 Azure Active Directory 模块预览版。 具体而言，请安装 AzureADPreview 模块 2.0.0.98 或更高版本。
 
@@ -161,7 +161,7 @@ Remove-AzureADPolicy -Id $currentpolicy.Id
 ## <a name="next-steps"></a>后续步骤
 
 - 有关 Azure AD B2B 的概述，请参阅[什么是 Azure AD B2B 协作？](what-is-b2b.md)
-- 有关条件访问和 B2B 协作的信息，请参阅[B2B 协作用户的条件访问](conditional-access.md)。
+- 有关条件访问和 B2B 协作的信息，请参阅[b2b 协作用户的条件性访问](conditional-access.md)。
 
 
 

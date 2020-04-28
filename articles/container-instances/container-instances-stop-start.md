@@ -4,10 +4,10 @@ description: 了解如何手动停止或启动 Azure 容器实例中的容器组
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: c9f8afea33c65df940d02823ec394697d2786d6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74533428"
 ---
 # <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>手动停止或启动 Azure 容器实例中的容器
@@ -18,7 +18,7 @@ ms.locfileid: "74533428"
 
 通过特定方式（例如，使用 [az container stop][az-container-stop] 命令或 Azure 门户）手动停止正在运行的容器组。 对于某些容器工作负载，可能需要在规定的一段时间后停止长时间运行的容器组，以便节省成本。 
 
-*当容器组进入"已停止"状态时，它将终止和回收组中的所有容器。它不保留容器状态。*
+容器组进入“已停止”状态时，会终止并回收组中的所有容器。  它不保留容器状态。
 
 回收容器后，会解除分配[资源](container-instances-container-groups.md#resource-allocation)，并停止容器组的计费。
 

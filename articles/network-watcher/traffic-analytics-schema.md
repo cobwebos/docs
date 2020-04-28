@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
 ms.openlocfilehash: ccfbb92c27e4508595f19c2ea6900730cde609b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74666369"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>流量分析中的架构和数据聚合
@@ -34,12 +34,12 @@ ms.locfileid: "74666369"
 
 1. 位于“FlowIntervalStartTime_t”与“FlowIntervalEndTime_t”之间的 NSG 中的所有流日志将按一分钟间隔捕获为存储帐户中的 Blob，然后由流量分析处理。
 2. 流量分析的默认处理间隔为 60 分钟。 即，流量分析每隔 60 分钟从存储中选取要聚合的 Blob。 如果所选的处理间隔为 10 分钟，则流量分析将每隔 10 分钟从存储帐户中选取 Blob。
-3. 具有相同源 IP、目标 IP、目标端口、NSG 名称、NSG 规则、流方向和传输层协议（TCP 或 UDP）（注意：源端口排除用于聚合）的流通过流量分析被绑定到单个流中
+3. 具有相同源 IP、目标 IP、目标端口、NSG 名称、NSG 规则、流方向和传输层协议（TCP 或 UDP）的流（注意：将排除源端口的聚合）将由流量分析聚集成单个流。
 4. 此单条记录在经过修饰后（以下部分将提供详细信息）由流量分析引入到 Log Analytics 中。此过程最长可能需要花费 1 小时。
 5. FlowStartTime_t 字段指示流日志处理间隔中出现在“FlowIntervalStartTime_t”与“FlowIntervalEndTime_t”之间的第一个此类聚合流（相同的四元组）。
 6. 对于 TA 中的任何资源，UI 中指示的流是 NSG 看到的总流数，但在 Log Analytics 中，用户只会看到一条简化的记录。 若要查看所有流，请使用可从存储引用的 blob_id 字段。 该记录的总流数将与 Blob 中出现的各个流相匹配。
 
-以下查询可帮助您查看过去 30 天内来自本地的所有流日志。
+以下查询可帮助你查看过去 30 天内来自本地的所有流日志。
 ```
 AzureNetworkAnalytics_CL
 | where SubType_s == "FlowLog" and FlowStartTime_t >= ago(30d) and FlowType_s == "ExternalPublic"
@@ -88,7 +88,7 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
   > [!IMPORTANT]
   > 流量分析架构已在 2019 年 8 月 22 日更新。 新架构单独提供源和目标 IP，无需用户分析 FlowDirection 字段，因此可以简化查询。 </br>
   > FASchemaVersion_s 已从 1 更新为 2。 </br>
-  > 已弃用字段：VMIP_s、Subscription_s、Region_s、NSGRules_s、Subnet_s、VM_s、NIC_s、PublicIPs_s、FlowCount_d </br>
+  > 已弃用的字段：VMIP_s、Subscription_s、Region_s、NSGRules_s、Subnet_s、VM_s、NIC_s、PublicIPs_s、FlowCount_d </br>
   > 新字段：SrcPublicIPs_s、DestPublicIPs_s、NSGRule_s </br>
   > 已弃用的字段在 2019 年 11 月 22 日之前仍然可用。
 
@@ -143,7 +143,7 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
 | LocalNetworkGateway1_s | \<订阅 ID>/\<资源组名称>/\<本地网络网关名称> | 与流中的源 IP 关联的本地网络网关 |
 | LocalNetworkGateway2_s | \<订阅 ID>/\<资源组名称>/\<本地网络网关名称> | 与流中的目标 IP 关联的本地网络网关 |
 | ConnectionType_s | 可能的值为 VNetPeering、VpnGateway 和 ExpressRoute |    连接类型 |
-| ConnectionName_s | \<订阅 ID>/\<资源组名称>/\<连接名称> | 连接名称。 对于流型 P2S，这将格式化为<gateway name>|<VPN Client IP> |
+| ConnectionName_s | \<订阅 ID>/\<资源组名称>/\<连接名称> | 连接名称。 对于 flowtype P2S，此项的格式将设为 <gateway name>_<VPN Client IP> |
 | ConnectingVNets_s | 虚拟网络名称的空格分隔列表 | 对于中心辐射型拓扑，此处将会填充中心虚拟网络 |
 | Country_s | 双字母国家/地区代码 (ISO 3166-1 alpha-2) | 为流类型 ExternalPublic 填充此字段。 PublicIPs_s 字段中的所有 IP 地址将共享同一个国家/地区代码 |
 | AzureRegion_s | Azure 区域位置 | 为流类型 AzurePublic 填充此字段。 PublicIPs_s 字段中的所有 IP 地址将共享该 Azure 区域 |
@@ -161,10 +161,10 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
 | SrcPublicIPs_s | <源公共 IP>\|\<启动的流计数>\|\<结束的流计数>\|\<出站数据包数>\|\<入站数据包数>\|\<出站字节数>\|\<入站字节数> | 条形分隔的条目 |
 | DestPublicIPs_s | <目标公共 IP>\|\<启动的流计数>\|\<结束的流计数>\|\<出站数据包数>\|\<入站数据包数>\|\<出站字节数>\|\<入站字节数> | 条形分隔的条目 |
 
-### <a name="notes"></a>说明
+### <a name="notes"></a>注释
 
 1. 对于 AzurePublic 和 ExternalPublic 流，客户拥有的 Azure VM IP 将填充在 VMIP_s 字段中，而公共 IP 地址将填充在 PublicIPs_s 字段中。 对于这两种流类型，我们应使用 VMIP_s 和 PublicIPs_s 字段，而不是 SrcIP_s 和 DestIP_s 字段。 对于 AzurePublic 和 ExternalPublicIP 地址，我们将进一步聚合，以尽量减少引入到客户 Log Analytics 工作区的记录数。（此字段即将弃用，我们应该根据 Azure VM 是流中的源还是目标，使用 SrcIP_ 或 DestIP_s）
-1. 流类型的详细信息：根据流中涉及的 IP 地址，我们将流分类为以类型：
+1. 流类型的详细信息：根据流中涉及的 IP 地址，我们将流分类为以下流类型：
 1. IntraVNet - 流中的两个 IP 地址位于同一个 Azure 虚拟网络中。
 1. InterVNet - 流中的 IP 地址位于两个不同的 Azure 虚拟网络中。
 1. S2S（站点到站点）- 一个 IP 地址属于 Azure 虚拟网络，而另一个 IP 地址属于通过 VPN 网关或 Express Route 连接到 Azure 虚拟网络的客户网络（站点）。

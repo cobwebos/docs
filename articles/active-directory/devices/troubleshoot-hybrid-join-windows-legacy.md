@@ -1,5 +1,5 @@
 ---
-title: 排除旧版混合 Azure 活动目录联接设备
+title: 排除旧版混合 Azure Active Directory 联接设备的故障
 description: 排查已加入混合 Azure Active Directory 的下层设备问题。
 services: active-directory
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e168deea1ba442d48f483264c1e97ce618040f18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74379119"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>排查已加入混合 Azure Active Directory 的下层设备问题 
@@ -36,7 +36,7 @@ ms.locfileid: "74379119"
 
 本文提供有关如何解决潜在问题的故障排除指导。  
 
-**您应该知道的：** 
+**应了解的内容：** 
 
 - 下层 Windows 设备混合 Azure AD 加入的工作方式与它在 Windows 10 中的工作方式略有不同。 许多客户没有意识到他们需要配置 AD FS（对于联合域）或无缝 SSO（对于托管域）。
 - 对于具有联合域的客户，如果服务连接点 (SCP) 配置为指向托管域名（例如 contoso.onmicrosoft.com 而非 contoso.com），则下层 Windows 设备混合 Azure AD 加入不会工作。
@@ -69,11 +69,11 @@ ms.locfileid: "74379119"
     ![适用于 Windows 的工作区加入](./media/troubleshoot-hybrid-join-windows-legacy/02.png)
     
    - Autoworkplace.exe 无法以无提示方式通过 Azure AD 或 AD FS 进行身份验证。 可能的原因如下：AD FS 缺少或配置不当（对于联合域）、Azure AD 无缝单一登录缺少或配置不当（对于托管域）或者网络存在问题。 
-   - 可能是为用户启用/配置了多重身份验证 （MFA），并且在 AD FS 服务器上未配置 WIAORMULTIAUTHN。 
+   - 这可能是因为为用户启用了多重身份验证（MFA），并且未在 AD FS 服务器上配置 WIAORMULTIAUTHN。 
    - 另一种可能性是主领域发现 (HRD) 页面正在等待用户交互，从而阻止了 **autoworkplace.exe** 以无提示方式请求令牌。
    - 客户端的 IE 的 intranet 区域中可能缺少 AD FS 和 Azure AD URL。
    - 网络连接问题可能阻止 **autoworkplace.exe** 访问 AD FS 或 Azure AD URL。 
-   - **Autoworkplace.exe**要求客户端从客户端直接看到组织的本地 AD 域控制器，这意味着混合 Azure AD 联接仅在客户端连接到组织的 Intranet 时才成功。
+   - **了 autoworkplace.exe**要求客户端能够从客户端直接连接到组织的本地 AD 域控制器，这意味着仅当客户端连接到组织的 intranet 时，混合 Azure AD 联接才会成功。
    - 你的组织使用 Azure AD 无缝单一登录，设备的 IE intranet 设置中不存在 `https://autologon.microsoftazuread-sso.com` 或 `https://aadg.windows.net.nsatc.net`，未对 Intranet 区域启用“允许通过脚本更新状态栏”****。
 - 登录身份不是域用户
 

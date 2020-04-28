@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 0e49e90209c7337081458b7c214d27b37d3b4da1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74462612"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>使用 Azure 门户分析媒体 
@@ -33,16 +33,16 @@ Azure 媒体服务分析是一系列语音和影像组件（具企业规模、�
 
 ## <a name="choose-an-asset-that-you-want-to-analyze"></a>选择要分析的资产
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择 Azure 媒体服务帐户。
-2. 在“设置”**** 窗口中，选择“资产”****。  
+2. 在“设置”  窗口中，选择“资产”  。  
    
     ![分析视频](./media/media-services-portal-analyze/media-services-portal-analyze001.png)
-3. 选择要分析的资产，按“分析”**** 按钮。
+3. 选择要分析的资产，按“分析”  按钮。
    
     ![分析视频](./media/media-services-portal-analyze/media-services-portal-analyze002.png)
-4. 在“使用媒体分析处理媒体资产”**** 窗口中，选择处理器。 
+4. 在“使用媒体分析处理媒体资产”  窗口中，选择处理器。 
    
     本文的其余部分介绍每种处理器的功能和使用方式。 
-5. 按“创建”****，开始作业。
+5. 按“创建”  ，开始作业。
 
 ## <a name="azure-media-indexer"></a>Azure 媒体索引器
 通过 **Azure Media Indexer** 媒体处理器，可使媒体文件和内容具有可搜索性并可生成隐藏式字幕跟踪。 本部分提供有关可为此 MP 指定的选项的一些详细信息。
@@ -60,7 +60,7 @@ Azure 媒体服务分析是一系列语音和影像组件（具企业规模、�
 
 采用这些格式的隐藏字幕 (CC) 文件可用于使有听力障碍的用户能够访问音频和视频文件。
 
-### <a name="keywords"></a>关键字
+### <a name="keywords"></a>Keywords
 若要生成关键字 XML 文件，请选择此选项。 此文件包含从语音内容中提取的关键字以及频率和偏移量信息。
 
 ### <a name="job-name"></a>作业名称
@@ -135,7 +135,7 @@ Azure 媒体服务分析是一系列语音和影像组件（具企业规模、�
 使用“2.0”。
 
 ### <a name="mode"></a>“模式”
-2.0 版忽略 `Mode` 设置。
+2\.0 版忽略 `Mode` 设置。
 
 ## <a name="next-steps"></a>后续步骤
 查看媒体服务学习路径。

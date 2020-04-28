@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/28/2019
 ms.openlocfilehash: 21bc903349876a76576fb742840e9899f9d94bcd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74769381"
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>使用 Apache Sqoop 在 Apache Hadoop on HDInsight 与 SQL 数据库之间导入和导出数据
@@ -138,7 +138,7 @@ ms.locfileid: "74769381"
 
 ## <a name="limitations"></a>限制
 
-* 批量导出 - 使用基于 Linux 的 HDInsight，用于将数据导出到 Microsoft SQL Server 或 Azure SQL 数据库的 Sqoop 连接器不支持批量插入。
+* 大容量导出-使用基于 Linux 的 HDInsight 时，用于将数据导出到 Microsoft SQL Server 或 Azure SQL 数据库的 Sqoop 连接器不支持大容量插入。
 
 * 批处理 - 在基于 Linux 的 HDInsight 上，如果在执行插入时使用 `-batch` 开关，Sqoop 将进行多次插入而不是批处理插入操作。
 
@@ -156,8 +156,8 @@ ms.locfileid: "74769381"
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，您已经学会了如何使用 Sqoop。 若要了解更多信息，请参阅以下文章：
+现在，你已学习了如何使用 Sqoop。 若要了解更多信息，请参阅以下文章：
 
-* [将 Apache Oozie 与 HDInsight](../hdinsight-use-oozie-linux-mac.md)一起使用 ： 在 Oozie 工作流中使用 Sqoop 操作。
+* [将 Apache Oozie 与 HDInsight 配合使用](../hdinsight-use-oozie-linux-mac.md)：在 Oozie 工作流中使用 Sqoop 操作。
 * [使用 HDInsight 分析航班延误数据](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)：使用交互式查询分析航班延误数据，然后使用 Sqoop 将数据导出到 Azure SQL 数据库。
 * [将数据上传到 HDInsight](../hdinsight-upload-data.md)：了解将数据上传到 HDInsight/Azure Blob 存储的其他方法。

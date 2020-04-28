@@ -1,5 +1,5 @@
 ---
-title: Azure 开发人员测试实验室中的公司策略和合规性
+title: Azure 开发测试实验室中的公司策略和符合性
 description: 本文提供有关监管 Azure 开发测试实验室基础结构的公司策略与合规性的指导。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -14,10 +14,10 @@ ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 81ca2a90b1940d70e170cab3f8d18144a5d5e5a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74560505"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Azure 开发测试实验室基础结构的监管 - 公司策略与合规性
@@ -29,7 +29,7 @@ ms.locfileid: "74560505"
 组织何时应在开发测试实验室中使用公共项目存储库或专用项目存储库？
 
 ### <a name="answer"></a>Answer
-[公共项目存储库](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)提供初始的一组最常用软件包。 它有助于快速部署，而无需花时间重现常见的开发人员工具和外接程序。您可以选择部署自己的私有存储库。 可以同时使用公共和专用存储库。 还可以选择禁用公共存储库。 部署专用存储库的条件应根据以下问题和注意事项而定：
+[公共项目存储库](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)提供初始的一组最常用软件包。 它可帮助进行快速部署，而无需花费时间来重现常见开发人员工具和外接程序。你可以选择部署其自己的专用存储库。 可以同时使用公共和专用存储库。 还可以选择禁用公共存储库。 部署专用存储库的条件应根据以下问题和注意事项而定：
 
 - 组织是否必须在其开发测试实验室套餐中提供企业许可的软件？ 如果是，则应创建专用存储库。
 - 组织是否开发可提供特定操作的、在总体预配过程中所需的自定义软件？ 如果是，则应部署专用存储库。

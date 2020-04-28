@@ -1,5 +1,5 @@
 ---
-title: 用于混合组织的 B2B 协作 - Azure AD
+title: 适用于混合组织的 B2B 协作-Azure AD
 description: 使用 Azure AD B2B 协作授予合作伙伴对本地资源和云资源的访问权限。
 services: active-directory
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 427f7ad4d6a1b9839b1197ef9f7ca15400ea0f59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74272475"
 ---
 # <a name="azure-active-directory-b2b-collaboration-for-hybrid-organizations"></a>适用于混合组织的 Azure Active Directory B2B 协作
@@ -48,6 +48,6 @@ ms.locfileid: "74272475"
 ## <a name="next-steps"></a>后续步骤
 
 - [向 Azure AD 中的 B2B 用户授予对本地应用程序的访问权限](hybrid-cloud-to-on-premises.md)
-- [使用 Azure AD B2B 协作授予本地管理的合作伙伴帐户对云资源的访问](hybrid-on-premises-to-cloud.md)
+- [使用 Azure AD B2B 协作向本地托管的合作伙伴帐户授予对云资源的访问权限](hybrid-on-premises-to-cloud.md)
 
 

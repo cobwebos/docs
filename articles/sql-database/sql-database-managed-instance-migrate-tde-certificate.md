@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 ms.date: 04/25/2019
 ms.openlocfilehash: 0f6e379287323d9353acd887cf30d5c9c0065959
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74555385"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>将 TDE 保护的数据库的证书迁移到 Azure SQL 数据库托管实例
@@ -32,14 +32,14 @@ ms.locfileid: "74555385"
 > [!IMPORTANT]
 > 迁移的证书仅用于还原 TDE 保护的数据库。 还原后不久，迁移的证书即会替换为不同的保护程序，可能是服务托管证书，也可能是密钥保管库中的非对称密钥，具体取决于在实例上设置的透明数据加密类型。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本文中的步骤，需要符合以下先决条件：
 
 - 已在本地服务器上，或者有权访问导出为文件的证书的计算机上，安装了 [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) 命令行工具。 Pvk2Pfx 工具是[企业 Windows 驱动程序工具包](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk)（一个独立的自包含性命令行环境）的一部分。
 - 已安装 [Windows PowerShell](/powershell/scripting/install/installing-windows-powershell) 5.0 或更高版本。
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 确保做好以下准备：
 
@@ -129,7 +129,7 @@ Update-Module -Name Az.Sql
 
 ## <a name="upload-certificate-to-azure-sql-database-managed-instance-using-azure-powershell-cmdlet"></a>使用 Azure PowerShell cmdlet 将证书上传到 Azure SQL 数据库托管实例
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. 在 PowerShell 中开始准备步骤：
 
@@ -158,7 +158,7 @@ Update-Module -Name Az.Sql
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-首先需要使用 *.pfx* 文件[设置 Azure Key Vault](/azure/key-vault/key-vault-manage-with-cli2)。
+首先需要使用 [.pfx](/azure/key-vault/key-vault-manage-with-cli2) 文件*设置 Azure Key Vault*。
 
 1. 在 PowerShell 中开始准备步骤：
 

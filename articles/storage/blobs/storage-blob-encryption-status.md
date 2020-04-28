@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 5cef0e94a43b3ef16d45f7f43658f962e07b5345
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74707597"
 ---
 # <a name="check-the-encryption-status-of-a-blob"></a>检查 blob 的加密状态
@@ -31,15 +31,15 @@ ms.locfileid: "74707597"
 若要使用 Azure 门户来检查 blob 是否已加密，请执行以下步骤：
 
 1. 在 Azure 门户中导航到存储帐户。
-1. 选择“容器”****，转到帐户中的容器列表。
-1. 找到 blob 并显示其“概述”**** 选项卡。
-1. 查看“加密的服务器”**** 属性。 如果为“True”****（如下图所示），则表明 blob 已加密。 请注意，blob 的属性还包括 blob 的创建日期和时间。
+1. 选择“容器”  ，转到帐户中的容器列表。
+1. 找到 blob 并显示其“概述”  选项卡。
+1. 查看“加密的服务器”  属性。 如果为“True”  （如下图所示），则表明 blob 已加密。 请注意，blob 的属性还包括 blob 的创建日期和时间。
 
     ![屏幕截图显示如何在 Azure 门户中查看“加密的服务器”属性](media/storage-blob-encryption-status/blob-encryption-property-portal.png)
 
-### <a name="powershell"></a>[电源外壳](#tab/powershell)
+### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要使用 PowerShell 检查 blob 是否已加密，请检查 blob 的“IsServerEncrypted”**** 属性。 请务必将尖括号中的占位符值替换为你自己的值：
+若要使用 PowerShell 检查 blob 是否已加密，请检查 blob 的“IsServerEncrypted”  属性。 请务必将尖括号中的占位符值替换为你自己的值：
 
 ```powershell
 $account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
@@ -50,7 +50,7 @@ $blob = Get-AzStorageBlob -Context $account.Context `
 $blob.ICloudBlob.Properties.IsServerEncrypted
 ```
 
-要确定创建 Blob 时，请检查 **"已创建"** 属性的值：
+若要确定 blob 的创建时间，请检查“创建”  属性的值：
 
 ```powershell
 $blob.ICloudBlob.Properties.IsServerEncrypted
@@ -58,7 +58,7 @@ $blob.ICloudBlob.Properties.IsServerEncrypted
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-若要使用 Azure CLI 检查 blob 是否已加密，请检查 blob 的“IsServerEncrypted”**** 属性。 请务必将尖括号中的占位符值替换为你自己的值：
+若要使用 Azure CLI 检查 blob 是否已加密，请检查 blob 的“IsServerEncrypted”  属性。 请务必将尖括号中的占位符值替换为你自己的值：
 
 ```azurecli-interactive
 az storage blob show \
@@ -68,7 +68,7 @@ az storage blob show \
     --query "properties.serverEncrypted"
 ```
 
-若要确定 blob 的创建时间，请检查“创建”**** 属性的值。
+若要确定 blob 的创建时间，请检查“创建”  属性的值。
 
 ---
 

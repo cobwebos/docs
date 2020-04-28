@@ -1,16 +1,16 @@
 ---
-title: 高可用性 - Azure 数据库，用于 PostgreSQL - 单个服务器
-description: 本文提供有关后处理SQL - 单服务器 Azure 数据库中的高可用性信息。
+title: 高可用性-Azure Database for PostgreSQL-单服务器
+description: 本文提供了有关 Azure Database for PostgreSQL 单服务器中的高可用性的信息。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 80229ff78c4570db583f1218d5d2f72da2dec388
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74768565"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的高可用性概念

@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
 ms.openlocfilehash: d868cdd346c79cf77d4f8c1ea6e4b20adcd99b6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74327397"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Apache Kafka on HDInsight 的 Apache Spark 流式处理 (DStream) 示例
 
-了解如何使用[Apache Spark](https://spark.apache.org/)在 HDInsight 上使用[DStreams](https://spark.apache.org/docs/latest/api/java/org/apache/spark/streaming/dstream/DStream.html)流式传输数据到或流出[Apache Kafka。](https://kafka.apache.org/) 本示例使用在 Spark 群集上运行的 [Jupyter Notebook](https://jupyter.org/)。
+了解如何[Apache Spark](https://spark.apache.org/)使用 DStreams 在 HDInsight 上使用[DStreams](https://spark.apache.org/docs/latest/api/java/org/apache/spark/streaming/dstream/DStream.html)将数据流入或流出[Apache Kafka](https://kafka.apache.org/) 。 本示例使用在 Spark 群集上运行的 [Jupyter Notebook](https://jupyter.org/)。
 
 > [!NOTE]  
 > 本文档中的步骤创建了一个包含 Spark on HDInsight 和 Kafka on HDInsight 群集的 Azure 资源组。 这些群集都位于 Azure 虚拟网络中，允许 Spark 群集直接与 Kafka 群集进行通信。
@@ -29,7 +29,7 @@ ms.locfileid: "74327397"
 
 ## <a name="create-the-clusters"></a>创建群集
 
-HDInsight上的ApacheKafka不提供通过公共互联网访问卡夫卡经纪人。 与 Kafka 对话的任何内容都必须与 Kafka 群集中的节点位于同一 Azure 虚拟网络中。 对于此示例，Kafka 和 Spark 群集都位于 Azure 虚拟网络中。 下图显示通信在群集之间的流动方式：
+HDInsight 上的 Apache Kafka 不通过公共 internet 提供对 Kafka 代理的访问权限。 与 Kafka 对话的任何内容都必须与 Kafka 群集中的节点位于同一 Azure 虚拟网络中。 对于此示例，Kafka 和 Spark 群集都位于 Azure 虚拟网络中。 下图显示通信在群集之间的流动方式：
 
 ![Azure 虚拟网络中的 Spark 和 Kafka 群集图表](./media/hdinsight-apache-spark-with-kafka/apache-spark-kafka-vnet.png)
 
@@ -51,7 +51,7 @@ HDInsight上的ApacheKafka不提供通过公共互联网访问卡夫卡经纪人
 
 1. 使用以下信息填充“自定义部署”部分中的条目****：
 
-    |properties |“值” |
+    |properties |值 |
     |---|---|
     |资源组|创建一个组或选择有个现有的组。|
     |位置|选择在地理上邻近的位置。|
@@ -63,7 +63,7 @@ HDInsight上的ApacheKafka不提供通过公共互联网访问卡夫卡经纪人
 
     ![HDInsight 自定义部署参数](./media/hdinsight-apache-spark-with-kafka/hdinsight-parameters.png)
 
-1. 阅读**条款和条件**，然后选择**我同意上述条款和条件**。
+1. 阅读**条款和条件**，然后选择 "**我同意上述条款和条件"**。
 
 1. 最后，选择“购买”****。 创建群集大约需要 20 分钟时间。
 
@@ -76,7 +76,7 @@ HDInsight上的ApacheKafka不提供通过公共互联网访问卡夫卡经纪人
 
 ## <a name="use-the-notebooks"></a>使用笔记本
 
-本文档中描述的示例的代码可在 。 [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka)
+本文档中所述示例的代码在[https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka)中提供。
 
 ## <a name="delete-the-cluster"></a>删除群集
 

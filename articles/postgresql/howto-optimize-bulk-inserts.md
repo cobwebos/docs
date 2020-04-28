@@ -1,5 +1,5 @@
 ---
-title: 优化批量插入 - Azure 数据库，用于 PostgreSQL - 单个服务器
+title: 优化大容量插入-Azure Database for PostgreSQL-单服务器
 description: 本文介绍了如何优化 Azure Database for PostgreSQL - 单一服务器中的批量插入操作。
 author: dianaputnam
 ms.author: dianas
@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 4c4bac16917be0064ebb111328753d378d462a2a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74770129"
 ---
 # <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql---single-server"></a>优化 Azure Database for PostgreSQL - 单一服务器中的批量插入和使用瞬态数据 

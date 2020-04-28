@@ -1,14 +1,14 @@
 ---
-title: 将以地图姆区块链连接器与 Azure 逻辑应用一起使用 - Azure 区块链服务
+title: 在 Azure 逻辑应用中使用以太坊区块链连接器-Azure 区块链服务
 description: 将 Ethereum 区块链连接器与 Azure 逻辑应用配合使用，以触发智能合同函数并响应智能合同事件。
 ms.date: 10/14/2019
 ms.topic: article
 ms.reviewer: chrisseg
 ms.openlocfilehash: 4a9acfd6098ed45fd92c7e3047b5d1446eeddbd6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74325216"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>将 Ethereum 区块链连接器与 Azure 逻辑应用配合使用
@@ -17,13 +17,13 @@ ms.locfileid: "74325216"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成可选的先决条件[快速入门：使用可视化工作室代码连接到 Azure 区块链服务联盟网络](connect-vscode.md)。 本快速入门将引导你安装[适用于 Ethereum 的 Azure 区块链开发工具包](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)并设置区块链开发环境。
+完成可选的先决条件[快速入门：使用 Visual Studio Code 连接到 Azure 区块链 Service 联合会网络](connect-vscode.md)。 本快速入门将引导你安装[适用于 Ethereum 的 Azure 区块链开发工具包](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)并设置区块链开发环境。
 
 ## <a name="create-a-logic-app"></a>创建逻辑应用
 
 需要集成系统和服务时，Azure 逻辑应用可帮助你计划和自动化业务流程和工作流。 首先，创建使用 Ethereum 区块链连接器的逻辑。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源” > “集成” > “逻辑应用”************。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源” > “集成” > “逻辑应用”    。
 1. 在“创建逻辑应用”下，提供有关在何处创建逻辑应用的详细信息。**** 完成后，选择“创建”****。
 
     有关创建逻辑应用的详细信息，请参阅[使用 Azure 逻辑应用创建自动化工作流](../../logic-apps/quickstart-create-first-logic-app-workflow.md)。
@@ -52,14 +52,14 @@ Ethereum 区块链连接器有一个触发器和多个操作。 使用哪个触�
 
     ![包含事件触发器属性的逻辑应用设计器](./media/ethereum-logic-app/event-properties.png)
 
-    | properties | 描述 |
+    | properties | 说明 |
     |----------|-------------|
     | **合同 ABI** | 合同应用程序二进制接口 (ABI) 定义智能合同接口。 有关详细信息，请参阅[获取合同 ABI](#get-the-contract-abi)。 |
     | **智能合同地址** | 合同地址是 Ethereum 区块链上的智能合同目标地址。 有关详细信息，请参阅[获取合同地址](#get-the-contract-address)。 |
     | **事件名称** | 选择要检查的智能合同事件。 该事件触发逻辑应用。 |
     | **间隔**和**频率** | 选择检查事件的频率。 |
 
-1. 选择“保存”。****
+1. 选择“保存”。 
 
 若要完成逻辑应用，可添加一个新步骤，用于根据 Ethereum 区块链事件触发器执行操作。 例如发送电子邮件。
 
@@ -78,10 +78,10 @@ Ethereum 区块链连接器有一个触发器和多个操作。 使用哪个触�
 1. 更改或[创建 API 连接](#create-an-api-connection)，该连接用于连接到 Azure 区块链服务。
 1. 根据所选的操作，提供有关智能合同函数的以下详细信息。
 
-    | properties | 描述 |
+    | properties | 说明 |
     |----------|-------------|
     | **合同 ABI** | 合同 ABI 定义智能合同接口。 有关详细信息，请参阅[获取合同 ABI](#get-the-contract-abi)。 |
-    | **合同字节码** | 编译的智能合同字节码。 有关详细信息，请参阅[获取合同字节码](#get-the-contract-bytecode)。 |
+    | **协定字节码** | 编译的智能合同字节码。 有关详细信息，请参阅[获取合同字节码](#get-the-contract-bytecode)。 |
     | **智能合同地址** | 合同地址是 Ethereum 区块链上的智能合同目标地址。 有关详细信息，请参阅[获取合同地址](#get-the-contract-address)。 |
     | **智能合同函数名称** | 选择操作的智能合同函数名称。 此列表中填充了合同 ABI 中的详细信息。 |
 
@@ -132,7 +132,7 @@ Ethereum 区块链连接器有一个触发器和多个操作。 使用哪个触�
 
     ![包含 HTTP POST URL 的逻辑应用设计器面板](./media/ethereum-logic-app/post-url.png)
 
-1. 使用 cURL 创建 HTTP POST 请求。 将占位符文本*\<HTTP\> POST URL*替换为上一步骤中的 URL。
+1. 使用 cURL 创建 HTTP POST 请求。 将占位符文本* \<HTTP POST URL\> *替换为上一步中的 url。
 
     ``` bash
     curl -d "{}" -H "Content-Type: application/json" -X POST "<HTTP POST URL>"
@@ -153,7 +153,7 @@ Ethereum 区块链连接器要求与区块链建立 API 连接。 可将 API 连
 
 若要与 Azure 区块链服务成员建立连接，可能需要提供以下列表中的属性，具体取决于方案。
 
-| properties | 描述 |
+| properties | 说明 |
 |----------|-------------|
 |**连接名称** | API 连接的名称。 必需。 |
 |**Ethereum RPC 终结点** | Azure 区块链服务事务节点的 HTTP 地址。 必需。 有关详细信息，请参阅[获取 RPC 终结点](#get-the-rpc-endpoint)。 |
@@ -176,12 +176,12 @@ Ethereum 区块链连接器要求与区块链建立 API 连接。 可将 API 连
 
 **若要使用 Azure 门户，请执行以下操作：**
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 转到你的 Azure 区块链服务成员。 选择“事务节点”**** 和默认事务节点链接。
 
     ![“事务节点”页，其中选择了默认节点](./media/ethereum-logic-app/transaction-nodes.png)
 
-1. 选择**连接字符串** > **访问键**。
+1. 选择 "**连接字符串** > **访问密钥**"。
 1. 从“HTTPS (访问密钥 1)”或“HTTPS (访问密钥 2)”中复制终结点地址。********
 
     ![Azure 门户，其中显示连接字符串访问密钥](./media/ethereum-logic-app/connection-string.png)
@@ -193,7 +193,7 @@ Ethereum 区块链连接器要求与区块链建立 API 连接。 可将 API 连
 在将事务发送到区块链时，可以使用 Ethereum 帐户的私钥进行身份验证。 Ethereum 帐户的公钥和私钥是基于 12 个单词的助记键生成的。 适用于 Ethereum 的 Azure 区块链开发工具包将在你连接到 Azure 区块链服务联盟成员时生成助记键。 可以使用开发工具包扩展来获取终结点地址。
 
 1. 在 Visual Studio Code 中打开命令面板 (F1)。
-1. 选择**Azure 区块链：检索私钥**。
+1. 选择 " **Azure 区块链：检索私钥**"。
 1. 选择连接到联盟成员时保存的助记键。
 
     ![命令面板，包含用于选择助记键的选项](./media/ethereum-logic-app/private-key.png)
@@ -205,7 +205,7 @@ Ethereum 区块链连接器要求与区块链建立 API 连接。 可将 API 连
 在将事务发送到区块链时，可以使用成员帐户和密码进行身份验证。 密码在创建成员时设置。
 
 1. 在 Azure 门户中，转到 Azure 区块链服务的概述页。
-1. 复制**会员帐户**地址。
+1. 复制**成员帐户**地址。
 
     ![包含成员帐户地址的“概览”页](./media/ethereum-logic-app/member-account.png)
 

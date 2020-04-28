@@ -1,5 +1,5 @@
 ---
-title: 备份和还原 - Azure 门户 - 用于 PostgreSQL 的 Azure 数据库 - 单个服务器
+title: 备份和还原-Azure Database for PostgreSQL-单服务器 Azure 门户
 description: 本文介绍如何使用 Azure 门户在 Azure Database for PostgreSQL（单一服务器）中还原服务器。
 author: rachel-msft
 ms.author: raagyema
@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: fb13e4f062976e39c3cec607001e6982db228873
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74765624"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for PostgreSQL（单一服务器）中备份和还原服务器
@@ -33,7 +33,7 @@ Azure Database for PostgreSQL 服务器定期进行备份以便启用还原功�
 有关在创建过程中设置这些值的详细信息，请参阅 [Azure Database for PostgreSQL 服务器快速入门](quickstart-create-server-database-portal.md)。
 
 可以通过以下步骤更改服务器的备份保留期：
-1. 登录到[Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 选择你的 Azure Database for PostgreSQL 服务器。 此操作将打开“概述”**** 页。
 3. 在“设置”**** 下，从菜单中选择“定价层”****。 使用滑块可以根据需要更改**备份保留期**（7 天到 35 天）。
 在下面的屏幕截图中，该项已增加到 34 天。
@@ -76,7 +76,7 @@ Azure Database for PostgreSQL 服务器定期进行备份以便启用还原功�
 
 如果为服务器配置了异地冗余备份，则可以从该现有服务器的备份创建新服务器。 可以在 Azure Database for PostgreSQL 可用的任何区域中创建此新服务器。  
 
-1. 选择门户左上角的 **"创建资源**按钮 （+）。 为**PostgreSQL**选择**数据库** > Azure 数据库。
+1. 选择门户左上角的 "**创建资源**" 按钮（+）。 选择**数据库** > **Azure Database for PostgreSQL**。
 
    ![“用于 PostgreSQL 的 Azure 数据库”选项](./media/howto-restore-server-portal/1-navigate-to-postgres.png)
 

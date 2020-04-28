@@ -1,6 +1,6 @@
 ---
-title: 备份和还原 - Azure CLI - 用于后格雷SQL的 Azure 数据库 - 单个服务器
-description: 了解如何使用 Azure CLI 在 Azure 数据库中设置备份配置并还原服务器。
+title: 备份和还原-Azure Database for PostgreSQL-单服务器 Azure CLI
+description: 了解如何使用 Azure CLI 设置备份配置和还原 Azure Database for PostgreSQL 单服务器中的服务器。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -8,19 +8,19 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: f0ea24133d7b6acdc4b099ee21a8711a2d99095d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74775685"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>如何使用 Azure CLI 在 Azure Database for PostgreSQL（单一服务器）中备份和还原服务器
 
 Azure Database for PostgreSQL 服务器定期进行备份以便启用还原功能。 通过此功能，用户可将服务器及其所有数据库还原到新服务器上的某个较早时间点。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要完成本操作指南，需要：
-- [后格雷SQL服务器和数据库的 Azure 数据库](quickstart-create-server-database-azure-cli.md)
+- [Azure Database for PostgreSQL 服务器和数据库](quickstart-create-server-database-azure-cli.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -68,7 +68,7 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 
 `az postgres server restore` 命令需要以下参数：
 
-| 设置 | 建议的值 | 描述  |
+| 设置 | 建议的值 | 说明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  源服务器所在的资源组。  |
 | name | mydemoserver-restored | 通过还原命令创建的新服务器的名称。 |
@@ -79,7 +79,7 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 
 还原的服务器的位置值和定价层值与原始服务器保持相同。 
 
-还原过程完成后，找到新服务器，验证数据是否已按预期还原。 新服务器具有在启动还原时对现有服务器有效的相同服务器管理员登录名和密码。 可以从新服务器的“概述”**** 页更改密码。
+还原过程完成后，找到新服务器，验证数据是否已按预期还原。 新服务器具有在启动还原时对现有服务器有效的相同服务器管理员登录名和密码。 可以从新服务器的“概述”  页更改密码。
 
 还原期间创建的新服务器没有原始服务器上存在的防火墙规则或 VNet 服务终结点。 需要为此新服务器单独设置这些规则。
 
@@ -108,7 +108,7 @@ az postgres server georestore --resource-group newresourcegroup --name mydemoser
 
 `az postgres server georestore` 命令需要以下参数：
 
-| 设置 | 建议的值 | 描述  |
+| 设置 | 建议的值 | 说明  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | 新服务器将属于的资源组的名称。|
 |name | mydemoserver-georestored | 新服务器的名称。 |
@@ -118,11 +118,11 @@ az postgres server georestore --resource-group newresourcegroup --name mydemoser
 
 通过异地还原创建新服务器时，它将继承与源服务器相同的存储大小和定价层。 在创建过程中无法更改这些值。 创建新服务器后，可以纵向扩展其存储大小。
 
-还原过程完成后，找到新服务器，验证数据是否已按预期还原。 新服务器具有在启动还原时对现有服务器有效的相同服务器管理员登录名和密码。 可以从新服务器的“概述”**** 页更改密码。
+还原过程完成后，找到新服务器，验证数据是否已按预期还原。 新服务器具有在启动还原时对现有服务器有效的相同服务器管理员登录名和密码。 可以从新服务器的“概述”  页更改密码。
 
 还原期间创建的新服务器没有原始服务器上存在的防火墙规则或 VNet 服务终结点。 需要为此新服务器单独设置这些规则。
 
 ## <a name="next-steps"></a>后续步骤
-- 了解有关服务[备份](concepts-backup.md)的更多
+- 详细了解服务的[备份](concepts-backup.md)
 - 了解[副本](concepts-read-replicas.md)
-- 了解有关[业务连续性](concepts-business-continuity.md)选项的详细信息
+- 详细了解[业务连续性](concepts-business-continuity.md)选项

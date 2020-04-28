@@ -1,5 +1,5 @@
 ---
-title: 为 B2B 协作配置 SaaS 应用 - Azure AD
+title: 为 B2B 协作配置 SaaS 应用-Azure AD
 description: 有关 Azure Active Directory B2B 协作的代码和 PowerShell 示例
 services: active-directory
 ms.service: active-directory
@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c73a14c2a8cd063672bd0998368ca660f52cd5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74272954"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>为 B2B 协作配置 SaaS 应用
@@ -81,16 +81,16 @@ Azure Active Directory (Azure AD) B2B 协作适用于与 Azure AD 集成的大�
 
    ![显示单一登录配置设置的屏幕截图](media/configure-saas-apps/configure-box-sso.png)
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”框中，确保登录 URL 是在 Azure 门户中为 Box 适当设置的 URL。**** 此 URL 是 Box.com 租户的 URL。 它应该遵循命名约定*https://.box.com*。  
+   a. 在“登录 URL”框中，确保登录 URL 是在 Azure 门户中为 Box 适当设置的 URL。**** 此 URL 是 Box.com 租户的 URL。 它应遵循命名约定*https://.box.com*。  
    “标识符”不适用于此应用，但仍显示为必填字段。****
 
-   b.保留“数据库类型”设置，即设置为“共享”。 在“用户标识符”框中输入 **user.mail**（适用于来宾帐户 SSO）。****
+   b. 在“用户标识符”框中输入 **user.mail**（适用于来宾帐户 SSO）。****
 
    c. 在“SAML 签名证书”下面，单击“创建新证书”。********
 
-   d.单击“下一步”。 要开始将 Box.com 租户配置为使用 Azure AD 作为标识提供者，请下载元数据文件并将其保存到本地驱动器。
+   d. 要开始将 Box.com 租户配置为使用 Azure AD 作为标识提供者，请下载元数据文件并将其保存到本地驱动器。
 
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 将元数据文件转发给 Box 支持团队，他们将为你配置单一登录。
+   e. 将元数据文件转发给 Box 支持团队，他们将为你配置单一登录。
 
 3. 为了在 Azure AD 中启用自动用户设置，请在左窗格中选择“预配”，并选择“授权”。********
 

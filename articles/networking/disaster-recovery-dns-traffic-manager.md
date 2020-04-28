@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
 ms.openlocfilehash: 6eab1803bf5adab42be87b5f8567682c6d75947e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74483538"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>使用 Azure DNS 和流量管理器进行灾难恢复
@@ -31,19 +31,19 @@ ms.locfileid: "74483538"
  
     ![使用冷备用的主动/被动](./media/disaster-recovery-dns-traffic-manager/active-passive-with-cold-standby.png)
     
-    图：使用冷备用的主动/被动灾难恢复配置**
+    图：使用冷备用的主动/被动灾难恢复配置 
 
 - **使用指示灯的主动/被动**：在此故障转移解决方案中，备用环境采用最简配置。 只配置运行必要的服务，就能支持关键的最简应用程序集。 在本机形式下，此方案只能执行最简功能，但如果发生故障转移，可以纵向扩展并生成附加服务来处理大量生产负载。
     
     ![使用指示灯的主动/被动](./media/disaster-recovery-dns-traffic-manager/active-passive-with-pilot-light.png)
     
-    图：使用指示灯的主动/被动灾难恢复配置**
+    图：使用指示灯的主动/被动灾难恢复配置 
 
 - **使用热备用的主动/被动**：在此故障转移解决方案中，备用区域会进行预热并能处理基础负载，自动缩放已启用，并且所有实例都正常运行。 此解决方案不会通过缩放来处理全部生产负载，但是有用的，且所有服务都正常运行。 此解决方案是指示灯方法的增强型版本。
     
     ![使用热备用的主动/被动](./media/disaster-recovery-dns-traffic-manager/active-passive-with-warm-standby.png)
     
-    图：使用热备用的主动/被动灾难恢复配置**
+    图：使用热备用的主动/被动灾难恢复配置 
     
 若要详细了解故障转移和高可用性，请参阅 [Azure 应用程序灾难恢复](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications)。
 
@@ -169,7 +169,7 @@ Azure 流量管理器自动故障转移的配置步骤如下：
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)。
-- 了解有关[Azure DNS](../dns/dns-overview.md)的更多详细信息。
+- 详细了解[Azure DNS](../dns/dns-overview.md)。
 
 
 

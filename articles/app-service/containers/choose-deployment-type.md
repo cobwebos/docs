@@ -1,6 +1,6 @@
 ---
 title: Linux 容器的部署选项
-description: 在自定义 Docker 容器部署、多容器和 Linux 上应用服务的内置应用程序框架之间进行决策。
+description: 在 Linux 上的应用服务的自定义 Docker 容器部署、多容器和内置应用程序框架之间做出决定。
 keywords: azure 应用服务, web 应用, linux, oss
 author: msangapu-msft
 ms.topic: article
@@ -8,10 +8,10 @@ ms.date: 05/04/2018
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: 7c4025e393c196fb98455bac26e94e5f252840b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74687516"
 ---
 # <a name="custom-image-multi-container-or-built-in-platform-image"></a>自定义映像、多容器还是内置平台映像？
@@ -19,7 +19,7 @@ ms.locfileid: "74687516"
 [Linux 上 的应用服务](app-service-linux-intro.md)提供了三种不同的方法来获取发布到 Web 的应用程序：
 
 - **自定义映像部署**：将应用 Docker 化为 Docker 映像，映像中包含可运行包中的所有文件和依赖项。
-- **多容器部署**：使用 Docker 组合配置文件跨多个容器"装货"你的应用。
+- **多容器部署**：使用 Docker Compose 配置文件在多个容器之间 "docker 化" 应用。
 - **使用内置平台映像的应用部署**：我们的内置平台映像包含常见 Web 应用运行时和依赖项，如 Node 和 PHP。 使用任意一种 [Azure App Service 部署方法](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)将应用部署到 Web 应用的存储，然后使用内置平台映像运行应用。
 
 ## <a name="which-method-is-right-for-your-app"></a>你的应用适合哪种方法？ 
@@ -43,7 +43,7 @@ ms.locfileid: "74687516"
 多容器：
 * [创建多容器应用](quickstart-multi-container.md)
 
-以下文章通过内置平台映像开始在 Linux 上应用服务：
+以下文章介绍了在 Linux 上使用内置平台映像的应用服务入门：
 
 * [.NET Core](quickstart-dotnetcore.md)
 * [PHP](quickstart-php.md)

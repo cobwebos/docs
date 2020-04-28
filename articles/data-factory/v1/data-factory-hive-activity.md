@@ -1,5 +1,5 @@
 ---
-title: 使用蜂巢活动转换数据 - Azure
+title: 使用 Hive 活动转换数据-Azure
 description: 了解如何使用 Azure 数据工厂中的 Hive 活动在按需/自己的 HDInsight 群集上运行 Hive 查询。
 services: data-factory
 documentationcenter: ''
@@ -13,23 +13,23 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: d153f8c316cbb76e063f07f7f823c8d9c4a21f87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74703356"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hive 活动转换数据 
-> [!div class="op_single_selector" title1="转型活动"]
-> * [蜂巢活动](data-factory-hive-activity.md) 
+> [!div class="op_single_selector" title1="转换活动"]
+> * [Hive 活动](data-factory-hive-activity.md) 
 > * [Pig 活动](data-factory-pig-activity.md)
-> * [映射减少活动](data-factory-map-reduce.md)
+> * [MapReduce 活动](data-factory-map-reduce.md)
 > * [Hadoop 流式处理活动](data-factory-hadoop-streaming-activity.md)
 > * [Spark 活动](data-factory-spark.md)
 > * [机器学习批处理执行活动](data-factory-azure-ml-batch-execution-activity.md)
 > * [机器学习更新资源活动](data-factory-azure-ml-update-resource-activity.md)
 > * [存储过程活动](data-factory-stored-proc-activity.md)
-> * [数据湖分析 U-SQL 活动](data-factory-usql-activity.md)
+> * [Data Lake Analytics U-SQL 活动](data-factory-usql-activity.md)
 > * [.NET 自定义活动](data-factory-use-custom-activities.md)
 
 > [!NOTE]
@@ -72,7 +72,7 @@ ms.locfileid: "74703356"
 }
 ```
 ## <a name="syntax-details"></a>语法详细信息
-| properties | 描述 | 必选 |
+| properties | 说明 | 必需 |
 | --- | --- | --- |
 | name |活动名称 |是 |
 | description |描述活动用途的文本 |否 |
@@ -243,7 +243,7 @@ FROM HiveSampleIn Group by ProfileID
     ```
   ## <a name="see-also"></a>另请参阅
 * [Pig 活动](data-factory-pig-activity.md)
-* [映射减少活动](data-factory-map-reduce.md)
+* [MapReduce 活动](data-factory-map-reduce.md)
 * [Hadoop 流式处理活动](data-factory-hadoop-streaming-activity.md)
 * [调用 Spark 程序](data-factory-spark.md)
 * [调用 R 脚本](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)

@@ -13,35 +13,35 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 598a16d25ba375b984a966cba190181edbda3d15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74703156"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>从数据工厂调用 MapReduce 程序
-> [!div class="op_single_selector" title1="转型活动"]
-> * [蜂巢活动](data-factory-hive-activity.md) 
+> [!div class="op_single_selector" title1="转换活动"]
+> * [Hive 活动](data-factory-hive-activity.md) 
 > * [Pig 活动](data-factory-pig-activity.md)
-> * [映射减少活动](data-factory-map-reduce.md)
+> * [MapReduce 活动](data-factory-map-reduce.md)
 > * [Hadoop 流式处理活动](data-factory-hadoop-streaming-activity.md)
 > * [Spark 活动](data-factory-spark.md)
 > * [机器学习批处理执行活动](data-factory-azure-ml-batch-execution-activity.md)
 > * [机器学习更新资源活动](data-factory-azure-ml-update-resource-activity.md)
 > * [存储过程活动](data-factory-stored-proc-activity.md)
-> * [数据湖分析 U-SQL 活动](data-factory-usql-activity.md)
+> * [Data Lake Analytics U-SQL 活动](data-factory-usql-activity.md)
 > * [.NET 自定义活动](data-factory-use-custom-activities.md)
 
 > [!NOTE]
 > 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[在数据工厂中使用 MapReduce 活动转换数据](../transform-data-using-hadoop-map-reduce.md)。
 
 
-HDInsight MapReduce 数据工厂[管道](data-factory-create-pipelines.md)中的活动将[自行](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或按需基于 Windows/Linux[的](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)HDInsight 群集执行 MapReduce 程序。 本文基于[数据转换活动](data-factory-data-transformation-activities.md)一文，它概述了数据转换和受支持的转换活动。
+数据工厂[管道](data-factory-create-pipelines.md)中的 HDInsight MapReduce 活动会在[自己](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或基于 Windows/Linux 的[按需](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)HDInsight 群集上执行 MapReduce 程序。 本文基于[数据转换活动](data-factory-data-transformation-activities.md)一文，它概述了数据转换和受支持的转换活动。
 
 > [!NOTE] 
 > 如果是刚开始接触 Azure 数据工厂，请仔细阅读 [Azure 数据工厂简介](data-factory-introduction.md)，并学习[教程：生成首个数据管道](data-factory-build-your-first-pipeline.md)，然后再阅读本文。  
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 Azure 数据工厂中的管道通过使用链接计算服务来处理链接存储服务中的数据。 它包含一系列活动，其中每个活动执行特定的处理操作。 本文介绍如何使用 HDInsight MapReduce 活动。
 
 请参阅 [Pig](data-factory-pig-activity.md) 和 [Hive](data-factory-hive-activity.md)，深入了解如何通过使用 HDInsight Pig 和 Hive 活动在管道中基于 Windows/Linux 的 HDInsight 群集上运行 Pig/Hive 脚本。 
@@ -135,7 +135,7 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 ```
 
 #### <a name="azure-hdinsight-linked-service"></a>Azure HDInsight 链接服务
-接下来，创建一个链接服务，将 Azure HDInsight 群集链接到 Azure 数据工厂。 如果复制/粘贴以下代码，请将**HDInsight 群集名称**替换为 HDInsight 群集的名称，并更改用户名和密码值。   
+接下来，创建一个链接服务，将 Azure HDInsight 群集链接到 Azure 数据工厂。 如果复制/粘贴以下代码，请将**hdinsight 群集名称**替换为 hdinsight 群集的名称，并更改用户名和密码值。   
 
 ```JSON
 {
@@ -246,7 +246,7 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 [Azure Portal]: https://portal.azure.com
 
 ## <a name="see-also"></a>另请参阅
-* [蜂巢活动](data-factory-hive-activity.md)
+* [Hive 活动](data-factory-hive-activity.md)
 * [Pig 活动](data-factory-pig-activity.md)
 * [Hadoop 流式处理活动](data-factory-hadoop-streaming-activity.md)
 * [调用 Spark 程序](data-factory-spark.md)

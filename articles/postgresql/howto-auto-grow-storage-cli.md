@@ -1,16 +1,16 @@
 ---
-title: 自动增长存储 - Azure CLI - 用于后格雷SQL的 Azure 数据库 - 单个服务器
-description: 本文介绍如何使用 Azure 数据库中的 Azure CLI 配置存储自动增长，用于 PostgreSQL - 单服务器。
+title: 自动增长存储-Azure CLI-Azure Database for PostgreSQL-单一服务器
+description: 本文介绍如何使用 Azure Database for PostgreSQL 单一服务器中的 Azure CLI 配置存储自动增长。
 author: ambhatna
 ms.author: ambhatna
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 8/7/2019
 ms.openlocfilehash: b0dc2fbb168d9325439ee18a227f71a3b88ef9c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74767936"
 ---
 # <a name="auto-grow-azure-database-for-postgresql-storage---single-server-using-the-azure-cli"></a>使用 Azure CLI 自动增长 Azure Database for PostgreSQL 存储（单一服务器）

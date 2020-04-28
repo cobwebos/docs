@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/25/2019
 ms.openlocfilehash: fc7e78a44d03af8952c1e178a3e92b1ee0c6fe66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74688117"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>读取 Azure Cosmos DB 更改源
@@ -31,7 +31,7 @@ Azure Functions 是最简单且建议使用的选项。 为 Cosmos DB 创建 Azu
 
 ## <a name="using-the-azure-cosmos-db-sql-api-sdk"></a>使用 Azure Cosmos DB SQL API SDK
 
-使用 SDK，你可以对更改源进行低层控制。 您可以管理检查点、访问特定的逻辑分区密钥等。如果有多个读取器，则可以使用`ChangeFeedOptions`将读取负载分发到不同的线程或不同的客户端。
+使用 SDK，你可以对更改源进行低层控制。 你可以管理检查点、访问特定的逻辑分区键，等等。如果有多个读者，可以使用 `ChangeFeedOptions` 将读取负载分配到不同的线程或不同的客户端。
 
 ## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>用于 Cassandra 和 MongoDB 的 API 中的更改源
 
@@ -45,4 +45,4 @@ Azure Functions 是最简单且建议使用的选项。 为 Cosmos DB 创建 Azu
 
 * [更改源概述](change-feed.md)
 * [将更改源与 Azure Functions 配合使用](change-feed-functions.md)
-* [使用更改馈送处理器库](change-feed-processor.md)
+* [使用更改源处理器库](change-feed-processor.md)
