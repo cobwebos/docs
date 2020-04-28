@@ -1,5 +1,5 @@
 ---
-title: Azure IoT 中心作为事件网格源
+title: 作为事件网格源的 Azure IoT 中心
 description: 本文提供 Azure IoT 中心事件的属性和架构。 它列出了可用的事件类型、示例事件和事件属性。
 services: iot-hub
 documentationcenter: ''
@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: f9bf807884ab5592fa320532f3ca10a223081263
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393329"
 ---
-# <a name="azure-iot-hub-as-an-event-grid-source"></a>Azure IoT 中心作为事件网格源
+# <a name="azure-iot-hub-as-an-event-grid-source"></a>作为事件网格源的 Azure IoT 中心
 本文提供 Azure IoT 中心事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。 
 
 ## <a name="event-grid-event-schema"></a>事件网格事件架构
@@ -33,7 +33,7 @@ Azure IoT 中心发出以下事件类型：
 | Microsoft.Devices.DeviceDisconnected | 当设备与 IoT 中心断开连接时发布。 | 
 | Microsoft.Devices.DeviceTelemetry | 当遥测消息发送到 IoT 中心时发布。 |
 
-除设备遥测事件外，所有设备事件通常在所有事件网格支持的区域都可用。 设备遥测事件处于公共预览版中，除美国东部、美国西部、西欧[、Azure 政府](../azure-government/documentation-government-welcome.md)[、Azure 中国 21Vianet](/azure/china/china-welcome)和 Azure[德国](https://azure.microsoft.com/global-infrastructure/germany/)外，所有区域都可用。
+除设备遥测事件外的所有设备事件在事件网格支持的所有区域中都已正式发布。 设备遥测事件处于公共预览阶段，在美国东部、美国西部、西欧、 [Azure 政府](../azure-government/documentation-government-welcome.md)版、 [Azure 中国世纪互联](/azure/china/china-welcome)和[azure 德国](https://azure.microsoft.com/global-infrastructure/germany/)以外的所有区域提供。
 
 ### <a name="example-event"></a>示例事件
 
@@ -148,7 +148,7 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 
 | properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| id | 字符串 | 事件的唯一标识符。 |
+| ID | 字符串 | 事件的唯一标识符。 |
 | 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | 字符串 | 事件主题的发布者定义路径。 |
 | eventType | 字符串 | 此事件源的一个注册事件类型。 |
@@ -180,7 +180,7 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 | -------- | ---- | ----------- |
 | body | 字符串 | 来自设备的消息内容。 |
 | properties | 字符串 | 应用程序属性是用户定义的字符串，可以添加到消息。 这些字段是可选的。 |
-| 系统属性 | 字符串 | [系统属性](../iot-hub/iot-hub-devguide-routing-query-syntax.md#system-properties)有助于标识消息的内容和源。 设备遥测消息必须采用有效的 JSON 格式，并且在消息系统属性中将 contentType 设置为 JSON，将 contentEncoding 设置为 UTF-8。 如果未设置此项，则 IoT 中心将以 base 64 编码格式写入消息。  |
+| 系统属性 | 字符串 | [系统属性](../iot-hub/iot-hub-devguide-routing-query-syntax.md#system-properties)有助于识别消息的内容和源。 设备遥测消息必须采用有效的 JSON 格式，并且在消息系统属性中将 contentType 设置为 JSON，将 contentEncoding 设置为 UTF-8。 如果未设置此项，则 IoT 中心将以 base 64 编码格式写入消息。  |
 
 对于**设备已创建**和**设备已删除** IoT 中心事件，数据对象包含以下属性：
 
@@ -194,18 +194,18 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 | statusUpdateTime | 字符串 | 上次设备孪生状态更新的 ISO8601 时间戳。 |
 | connectionState | 字符串 | 设备是已连接还是已断开连接。 | 
 | lastActivityTime | 字符串 | 上次活动的 ISO8601 时间戳。 | 
-| cloudToDeviceMessageCount | integer | 发送到此设备的云到设备消息数。 | 
+| cloudToDeviceMessageCount | 整数 | 发送到此设备的云到设备消息数。 | 
 | authenticationType | 字符串 | 用于此设备的身份验证类型：`SAS`、`SelfSigned` 或 `CertificateAuthority`。 |
 | x509Thumbprint | 字符串 | 指纹是 x509 证书的唯一值，通常用于在证书存储中查找特定证书。 指纹是使用 SHA1 算法动态生成的，并非在证书中实际存在。 | 
 | primaryThumbprint | 字符串 | x509 证书的主要指纹。 |
 | secondaryThumbprint | 字符串 | x509 证书的次要指纹。 | 
-| 版本 | integer | 一个整数，每次更新设备孪生时递增 1。 |
+| version | 整数 | 一个整数，每次更新设备孪生时递增 1。 |
 | desired | 对象 (object) | 只能由应用程序后端写入并且由设备读取的属性部分。 | 
 | reported | 对象 (object) | 只能由设备写入并且由应用程序后端读取的属性部分。 |
 | lastUpdated | 字符串 | 上次设备孪生属性更新的 ISO8601 时间戳。 | 
 
-## <a name="tutorials-and-how-tos"></a>教程和如何
-|标题  |说明  |
+## <a name="tutorials-and-how-tos"></a>教程和操作指南
+|Title  |说明  |
 |---------|---------|
 | [使用逻辑应用发送有关 Azure IoT 中心事件的电子邮件](publish-iot-hub-events-to-logic-apps.md) | 每次将设备添加到 IoT 中心时，逻辑应用就会发送一封通知电子邮件。 |
 | [通过使用事件网格触发操作来响应 IoT 中心事件](../iot-hub/iot-hub-event-grid.md) | 概述 IoT 中心与事件网格的集成。 |

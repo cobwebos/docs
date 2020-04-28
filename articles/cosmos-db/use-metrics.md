@@ -8,10 +8,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.openlocfilehash: b65bc6097d4841c79a68d4313ac7a3f89f6d1dbb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80065929"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的指标进行监视和调试
@@ -46,7 +46,7 @@ Azure Cosmos DB 提供吞吐量、存储、一致性、可用性和延迟的指�
 
 ## <a name="understand-how-many-requests-are-succeeding-or-causing-errors"></a>了解成功的请求数或导致错误的请求数
 
-若要开始，请前往 [Azure 门户](https://portal.azure.com)并导航到“指标”边栏选项卡****。 在此边栏选项卡中找到“每分钟超出容量的请求数”图表。** 该图表显示按状态代码划分的总请求数（以分钟计）。 有关 HTTP 状态代码的详细信息，请参阅[Azure Cosmos DB 的 HTTP 状态代码](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb)。
+若要开始，请前往 [Azure 门户](https://portal.azure.com)并导航到“指标”边栏选项卡****。 在此边栏选项卡中找到“每分钟超出容量的请求数”图表。** 该图表显示按状态代码划分的总请求数（以分钟计）。 有关 HTTP 状态代码的详细信息，请参阅[Azure Cosmos DB 的 http 状态代码](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb)。
 
 最常见的错误状态代码为 429（速率限制）。 此错误意味着对 Azure Cosmos DB 的请求超过预配的吞吐量。 此问题最常见的解决方案是为给定集合[纵向扩展 RU](./set-throughput.md)。
 

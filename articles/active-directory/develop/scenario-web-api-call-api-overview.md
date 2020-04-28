@@ -12,10 +12,10 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 88a0177755fbd913bdaaf0ecf3e12c62dee294c1
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885066"
 ---
 # <a name="scenario-a-web-api-that-calls-web-apis"></a>方案：调用 Web API 的 Web API
@@ -24,7 +24,7 @@ ms.locfileid: "80885066"
 
 ## <a name="prerequisites"></a>先决条件
 
-此方案（受保护的 Web API 调用 Web API）基于“保护 Web API”方案。 要了解有关此基本方案的更多信息，请参阅[方案：受保护的 Web API](scenario-protected-web-api-overview.md)。
+此方案（受保护的 Web API 调用 Web API）基于“保护 Web API”方案。 若要详细了解此基础方案，请参阅[方案：受保护的 Web API](scenario-protected-web-api-overview.md)。
 
 ## <a name="overview"></a>概述
 

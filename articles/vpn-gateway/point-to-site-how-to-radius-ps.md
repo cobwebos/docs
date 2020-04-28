@@ -1,5 +1,5 @@
 ---
-title: 使用点到站点和 RADIUS 身份验证将计算机连接到虚拟网络：PowerShell | Microsoft Docs
+title: 使用点到站点和 RADIUS 身份验证将计算机连接到虚拟网络：PowerShell | Azure
 description: 使用 P2S 和 RADIUS 身份验证将 Windows 和 Mac OS X 客户端安全地连接到虚拟网络。
 services: vpn-gateway
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: cherylmc
 ms.openlocfilehash: cb9a02532c3651aca544ed946f40bdcff9e9be83
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80411779"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>使用 RADIUS 身份验证配置 VNet 的点到站点连接：PowerShell
@@ -33,7 +33,7 @@ P2S VPN 连接是从 Windows 和 Mac 设备启动的。 连接方客户端可以
 
 * SSTP 是基于 TLS 的 VPN 隧道，仅在 Windows 客户端平台上受支持。 它可以穿透防火墙，这使得它成为一个可用来从任何位置连接到 Azure 的理想选项。 在服务器端，我们支持 SSTP 1.0、1.1 和 1.2 版。 客户端决定要使用的版本。 对于 Windows 8.1 及更高版本，SSTP 默认使用 1.2。
 
-* OpenVPN® 协议，一种基于 SSL/TLS 的 VPN 协议。 TLS VPN 解决方案可以穿透防火墙，因为大多数防火墙都打开 TLS 使用的 TCP 端口 443 出站。 OpenVPN 可用于从 Android、iOS（11.0 及更高版本）、Windows、Linux 和 Mac 设备（OSX 10.13 及更高版本）进行连接。
+* OpenVPN® 协议，一种基于 SSL/TLS 的 VPN 协议。 TLS VPN 解决方案可以穿透防火墙，因为大多数防火墙都打开 TLS 使用的 TCP 端口443出站。 OpenVPN 可用于从 Android、iOS（11.0 及更高版本）、Windows、Linux 和 Mac 设备（OSX 10.13 及更高版本）进行连接。
 
 * IKEv2 VPN，这是一种基于标准的 IPsec VPN 解决方案。 IKEv2 VPN 可用于从 Mac 设备进行连接（OSX 10.11 和更高版本）。
 
@@ -68,28 +68,28 @@ RADIUS 服务器可以驻留在本地或 Azure VNet 中。 在身份验证期间
 
 ### <a name="example-values"></a><a name="example"></a>示例值
 
-可使用示例值创建测试环境，或参考这些值以更好地理解本文中的示例。 可以将这些步骤用作演练并使用这些值而不更改它们，也可以更改这些值以反映自己的环境。
+可使用示例值创建测试环境，或参考这些值以更好地理解本文中的示例。 可以使用这些步骤作为演练并按原样使用这些值，或者根据环境更改这些值。
 
 * **名称：VNet1**
 * **地址空间：192.168.0.0/16** 和 **10.254.0.0/16**<br>本示例中使用了多个地址空间，说明此配置可与多个地址空间一起使用。 但是，对于此配置，多个地址空间并不必要。
-* **子网名称：前端**
-  * **子网地址范围： 192.168.1.0/24**
+* **子网名称：FrontEnd**
+  * **子网地址范围：192.168.1.0/24**
 * **子网名称：BackEnd**
   * **子网地址范围：10.254.1.0/24**
-* **子网名称：GatewaySubnet**<br>要使 VPN 网关正常工作，必须使用子网名称 GatewaySubnet**。
+* **子网名称：GatewaySubnet**<br>要使 VPN 网关正常工作，必须使用子网名称 GatewaySubnet  。
   * **GatewaySubnet 地址范围：192.168.200.0/24** 
 * **VPN 客户端地址池：172.16.201.0/24**<br>使用此点到站点连接连接到 VNet 的 VPN 客户端接收来自 VPN 客户端地址池的 IP 地址。
-* **订阅：** 如果有多个订阅，请验证是否正在使用正确的订阅。
+* **订阅：** 如果有多个订阅，请确保使用正确的订阅。
 * **资源组：TestRG**
-* **地点：美国东部**
-* **DNS 服务器**：用于 VNet 名称解析的 DNS 服务器的 IP 地址。 （可选）
+* **位置：美国东部**
+* **DNS 服务器：** 用于 VNet 名称解析的 DNS 服务器的 IP 地址。 （可选）
 * **GW 名称：Vnet1GW**
 * **公共 IP 名称：VNet1GWPIP**
 * **VpnType：RouteBased**
 
-## <a name="1-set-the-variables"></a><a name="signin"></a>1. 设置变量
+## <a name="1-set-the-variables"></a><a name="signin"></a>1.设置变量
 
-声明要使用的值。 使用以下示例，在必要时会值替换为自己的值。 如果在练习期间的任何时候关闭了 PowerShell/Cloud Shell 会话，只需再次复制和粘贴该值，重新声明变量。
+声明要使用的变量。 使用以下示例，根据需要将值替换为自己的值。 如果在练习期间的任何时候关闭了 PowerShell/Cloud Shell 会话，只需再次复制和粘贴该值，重新声明变量。
 
   ```azurepowershell-interactive
   $VNetName  = "VNet1"
@@ -118,7 +118,7 @@ RADIUS 服务器可以驻留在本地或 Azure VNet 中。 在身份验证期间
    ```azurepowershell-interactive
    New-AzResourceGroup -Name "TestRG" -Location "East US"
    ```
-2. 为虚拟网络创建子网配置，并将其命名为 FrontEnd**、BackEnd** 和 GatewaySubnet**。 这些前缀必须是已声明的 VNet 地址空间的一部分。
+2. 为虚拟网络创建子网配置，并将其命名为 *FrontEnd*、*BackEnd* 和 *GatewaySubnet*。 这些前缀必须是已声明的 VNet 地址空间的一部分。
 
    ```azurepowershell-interactive
    $fesub = New-AzVirtualNetworkSubnetConfig -Name "FrontEnd" -AddressPrefix "192.168.1.0/24"  
@@ -132,7 +132,7 @@ RADIUS 服务器可以驻留在本地或 Azure VNet 中。 在身份验证期间
    ```azurepowershell-interactive
    New-AzVirtualNetwork -Name "VNet1" -ResourceGroupName "TestRG" -Location "East US" -AddressPrefix "192.168.0.0/16","10.254.0.0/16" -Subnet $fesub, $besub, $gwsub -DnsServer 10.2.1.3
    ```
-4. VPN 网关必须具有公共 IP 地址。 请先请求 IP 地址资源，然后在创建虚拟网关时参阅该资源。 创建 VPN 网关时，IP 地址是动态分配给资源的。 VPN 网关当前仅支持动态** 公共 IP 地址分配。 不能请求静态公共 IP 地址分配。 但这并不意味着 IP 地址在分配到 VPN 网关后会更改。 公共 IP 地址只在删除或重新创建网关时更改。 该地址不会因为 VPN 网关大小调整、重置或其他内部维护/升级而更改。
+4. VPN 网关必须具有公共 IP 地址。 请先请求 IP 地址资源，并在创建虚拟网关时参阅该资源。 创建 VPN 网关时，IP 地址是动态分配给资源的。 VPN 网关当前仅支持动态  公共 IP 地址分配。 不能请求静态公共 IP 地址分配。 但这并不意味着 IP 地址在分配到 VPN 网关后会更改。 公共 IP 地址只在删除或重新创建网关时更改。 该地址不会因为 VPN 网关大小调整、重置或其他内部维护/升级而更改。
 
    指定用于请求动态分配的公共 IP 地址的变量。
 
@@ -158,7 +158,7 @@ RADIUS 服务器可以驻留在本地或 Azure VNet 中。 在身份验证期间
 为 VNet 配置和创建 VPN 网关。
 
 * -GatewayType 必须是“Vpn”，-VpnType 必须是“RouteBased”。
-* VPN 网关最多可能需要 45 分钟才能完成，具体取决于您选择的网关 [SKU。](vpn-gateway-about-vpn-gateway-settings.md#gwsku) 
+* VPN 网关可能需要长达 45 分钟的时间才能完成，具体取决于所选的 [网关 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku) 。
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
@@ -170,7 +170,7 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
  
 * 可按名称或 IP 地址指定 -RadiusServer。 如果指定名称并且服务器驻留在本地，VPN 网关可能无法解析名称。 如果出现这种情况，最好是指定服务器的 IP 地址。 
 * -RadiusSecret 应该与 RADIUS 服务器上配置的值匹配。
-* -VpnClientAddressPool 是连接方 VPN 客户端在连接时要从中接收 IP 地址的范围。使用专用 IP 地址范围时，该范围不得与要通过其进行连接的本地位置重叠，也不得与要连接到其中的 VNet 重叠。 请确保配置足够大的地址池。  
+* -VpnClientAddressPool 是连接方 VPN 客户端在连接时要从中接收 IP 地址的范围。 使用专用 IP 地址范围时，该范围不得与要通过其进行连接的本地位置重叠，也不得与要连接到其中的 VNet 重叠。 请确保配置足够大的地址池。  
 
 1. 为 RADIUS 机密创建安全字符串。
 
@@ -225,9 +225,9 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 
 ## <a name="6-download-the-vpn-client-configuration-package-and-set-up-the-vpn-client"></a>6.<a name="vpnclient"></a>下载 VPN 客户端配置包并设置 VPN 客户端
 
-VPN 客户端配置可让设备通过 P2S 连接来与 VNet 建立连接。若要生成 VPN 客户端配置包并设置 VPN 客户端，请参阅[为 RADIUS 身份验证创建 VPN 客户端配置](point-to-site-vpn-client-configuration-radius.md)。
+VPN 客户端配置可让设备通过 P2S 连接来与 VNet 建立连接。 若要生成 VPN 客户端配置包并设置 VPN 客户端，请参阅[为 RADIUS 身份验证创建 VPN 客户端配置](point-to-site-vpn-client-configuration-radius.md)。
 
-## <a name="7-connect-to-azure"></a><a name="connect"></a>7. 连接到 Azure
+## <a name="7-connect-to-azure"></a><a name="connect"></a>7.连接到 Azure
 
 ### <a name="to-connect-from-a-windows-vpn-client"></a>从 Windows VPN 客户端进行连接
 
@@ -240,13 +240,13 @@ VPN 客户端配置可让设备通过 P2S 连接来与 VNet 建立连接。若�
 
 ### <a name="connect-from-a-mac-vpn-client"></a>从 Mac VPN 客户端进行连接
 
-在“网络”对话框中，找到要使用的客户端配置文件，单击“连接”。****
+在“网络”对话框中，找到要使用的客户端配置文件，单击“连接”。 
 
   ![Mac 连接](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
 
 ## <a name="to-verify-your-connection"></a><a name="verify"></a>验证连接
 
-1. 要验证 VPN 连接是否处于活动状态，请打开提升的命令提示符，然后运行 *ipconfig/all*。
+1. 如果要验证用户的 VPN 连接是否处于活动状态，请打开提升的命令提示符，并运行 *ipconfig/all*。
 2. 查看结果。 请注意，收到的 IP 地址是在配置中指定的点到站点 VPN 客户端地址池中的地址之一。 结果与以下示例类似：
 
    ```

@@ -1,5 +1,5 @@
 ---
-title: 微软身份平台& SAML 承载断言流 |蔚蓝
+title: Microsoft 标识平台 & SAML 持有者断言流 |Microsoft
 description: 了解如何在不提示用户输入凭据的情况下，使用 SAML 持有者断言流从 Microsoft Graph 提取数据。
 services: active-directory
 author: umeshbarapatre
@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 1cd79b1f9e4cd3afadee250da0c184c0c5b8ac07
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80886171"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft 标识平台和 OAuth 2.0 SAML 持有者断言流
@@ -35,18 +35,18 @@ SAML 断言将发布到 OAuth 令牌终结点。  该终结点根据应用的先
 ## <a name="call-graph-using-saml-bearer-assertion"></a>使用 SAML 持有者断言的调用关系图
 现在，让我们了解如何以编程方式实际提取 SAML 断言。 此方法已使用 ADFS 进行测试。 不过，此方法也适用于支持以编程方式返回 SAML 断言的任何标识提供者。 基本过程是：获取 SAML 断言，获取访问令牌，然后访问 Microsoft Graph。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
-在授权服务器/环境 (Microsoft 365) 与标识提供者或 SAML 2.0 持有者断言 (ADFS) 颁发者之间建立信任关系。 要为单一登录配置 ADFS，并且作为标识提供程序，请参阅[本文](https://blogs.technet.microsoft.com/canitpro/2015/09/11/step-by-step-setting-up-ad-fs-and-enabling-single-sign-on-to-office-365/)。
+在授权服务器/环境 (Microsoft 365) 与标识提供者或 SAML 2.0 持有者断言 (ADFS) 颁发者之间建立信任关系。 若要将 ADFS 配置为单一登录和标识提供者，可参阅[此文](https://blogs.technet.microsoft.com/canitpro/2015/09/11/step-by-step-setting-up-ad-fs-and-enabling-single-sign-on-to-office-365/)。
 
 在[门户](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)中注册应用程序：
 1. 登录到[门户的应用注册边栏选项卡](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)（请注意，我们将对图形 API 使用 v2.0 终结点，因此需要在此门户中注册应用程序。 否则可以使用 Azure Active Directory 中的注册）。 
-1. 选择“新注册”。****
-1. 当 **"注册应用程序**"页出现时，输入应用程序的注册信息： 
+1. 选择“新注册”。 
+1. “注册应用程序”页出现后，请输入应用程序的注册信息：  
     1. **名称**：输入一个会显示给应用用户的有意义的应用程序名称。
     1. **支持的帐户类型** - 选择希望应用程序支持的帐户。
-    1. **重定向 URI（可选）** - 选择要构建的应用类型、Web 或公共客户端（移动&桌面），然后输入应用程序的重定向 URI（或回复 URL）。
-    1. 完成后，选择“注册”****。
+    1. **重定向 URI （可选）** -选择你构建的应用类型、Web 或公用客户端（移动 & 桌面），然后输入应用程序的重定向 URI （或回复 URL）。
+    1. 完成后，选择“注册”  。
 1. 记下应用程序（客户端）ID。
 1. 在左窗格中，选择“证书和机密”****。 在“客户端机密”部分单击“新建客户端机密”。******** 复制新客户端机密，因为在退出该边栏选项卡后不再可以检索它。
 1. 在左窗格中，依次选择“API 权限”、“添加权限”。******** 依次选择“Microsoft Graph”、“委托的权限”、“Tasks.read”，因为我们打算使用 Outlook 图形 API。************ 

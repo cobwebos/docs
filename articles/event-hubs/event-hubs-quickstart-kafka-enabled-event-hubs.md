@@ -8,20 +8,20 @@ ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 02/12/2020
-ms.openlocfilehash: 18976a29a716a0e5a627747d98edc0d3e1bf71e9
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 67ee882acab22d977f08124591289e9cfc7cded1
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587135"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261816"
 ---
 # <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>快速入门：使用 Kafka 协议通过事件中心进行数据流式传输
-本快速入门演示如何在不更改协议客户端或运行自己的群集的情况下，流式传输到已启用 Kafka 的事件中心。 你将了解如何只需更改应用程序配置，即可使用生产者和使用者与已启用 Kafka 的事件中心通信。 Azure 事件中心支持 [Apache Kafka 版本 1.0](https://kafka.apache.org/10/documentation.html)。
+此快速入门介绍如何在不更改协议客户端或运行自己的群集的情况下将数据流式传输到事件中心。 你将了解如何只需更改应用程序配置，即可使用生产者和使用者与事件中心通信。 Azure 事件中心支持 [Apache Kafka 版本 1.0](https://kafka.apache.org/10/documentation.html)。
 
 > [!NOTE]
 > [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/java) 上提供了此示例
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本快速入门，请确保符合以下先决条件：
 
@@ -32,7 +32,7 @@ ms.locfileid: "77587135"
 * [Git](https://www.git-scm.com/)
 
 
-## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>创建启用了 Kafka 的事件中心命名空间
+## <a name="create-an-event-hubs-namespace"></a>创建事件中心命名空间
 当你创建**标准**层事件中心命名空间时，系统会自动为该命名空间启用 Kafka 终结点。 可以将事件从使用 Kafka 协议的应用程序流式传输到标准层事件中心。 按照[使用 Azure 门户创建事件中心](event-hubs-create.md)中的分步说明创建**标准**层事件中心命名空间。 
 
 > [!NOTE]
@@ -46,7 +46,7 @@ ms.locfileid: "77587135"
 
 3. 在 `src/main/resources/producer.config` 中更新生产者的配置详细信息，如下所示：
 
-    **SSL：**
+    **TLS/SSL：**
 
     ```xml
     bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
@@ -65,7 +65,7 @@ ms.locfileid: "77587135"
     ```    
 
     可以在[此处](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/appsecret/producer/src/main/java)的 GitHub 上找到示例处理程序类 CustomAuthenticateCallbackHandler 的源代码。
-4. 运行生产者代码并将事件流式传输到已启用 Kafka 的事件中心：
+4. 运行生产者代码并将事件流式传输到事件中心：
    
     ```shell
     mvn clean package
@@ -76,7 +76,7 @@ ms.locfileid: "77587135"
 
 6. 在 `src/main/resources/consumer.config` 中更新使用者的配置详细信息，如下所示：
    
-    **SSL：**
+    **TLS/SSL：**
 
     ```xml
     bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
@@ -98,7 +98,7 @@ ms.locfileid: "77587135"
     可以在[此处](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/appsecret/consumer/src/main/java)的 GitHub 上找到示例处理程序类 CustomAuthenticateCallbackHandler 的源代码。
 
     可在[此处](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth)找到 Kafka 的事件中心的所有 OAuth 示例。
-7. 使用 Kafka 客户端运行使用者代码，并通过已启用 Kafka 的事件中心进行处理：
+7. 使用 Kafka 客户端运行使用者代码并处理来自事件中心的事件：
 
     ```java
     mvn clean package
@@ -108,10 +108,4 @@ ms.locfileid: "77587135"
 如果事件中心 Kafka 群集有事件，则现在开始从使用者接收这些事件。
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍了如何在不更改协议客户端或运行自己的群集的情况下，流式传输到已启用 Kafka 的事件中心。 若要了解详细信息，请参阅以下文章和示例：
-
-- [了解适用于 Kafka 的事件中心](event-hubs-for-kafka-ecosystem-overview.md)
-- [GitHub 上适用于 Kafka 的事件中心快速入门](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart)
-- [GitHub 上适用于 Kafka 的事件中心教程](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials)
-- 使用 [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330)[将事件从本地 Kafka 流式传输到云端已启用 Kafka 的事件中心](event-hubs-kafka-mirror-maker-tutorial.md)。
-- 了解如何使用 [Apache Flink](event-hubs-kafka-flink-tutorial.md) 或 [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md) 流式传输到已启用 Kafka 的事件中心
+本文介绍了如何在不更改协议客户端或运行自己的群集的情况下，将事件流式传输到事件中心。 若要了解详细信息，请参阅[针对 Azure 事件中心的 Apache Kafka 开发人员指南](apache-kafka-developer-guide.md)。 

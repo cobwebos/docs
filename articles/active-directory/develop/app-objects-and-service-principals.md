@@ -1,5 +1,5 @@
 ---
-title: 应用& Azure AD 中的服务主体 |蔚蓝
+title: 应用 & Azure AD 中的服务主体 |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解 Azure Active Directory 中应用程序对象与服务主体对象之间的关系。
 author: rwike77
@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
 ms.openlocfilehash: a636ff15da09bcf1891618d65270376f26fd3239
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885593"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory 中的应用程序对象和服务主体对象
@@ -74,9 +74,9 @@ Azure AD 应用程序由其唯一一个应用程序对象来定义，该对象�
 
 下图演示了应用程序的应用程序对象和对应的服务主体对象之间的关系，其上下文是在名为 **HR 应用**的示例多租户应用程序中。 此示例方案中有三个 Azure AD 租户：
 
-- **Adatum** - 开发**HR 应用程序的**公司使用的租户
-- **Contoso** - Contoso 组织使用的租户，它是**HR 应用**的使用者
-- **法布里卡姆**- Fabrikam 组织使用的租户，该组织也使用**HR 应用程序**
+- **Adatum** -开发**HR 应用**的公司使用的租户
+- **Contoso** -contoso 组织使用的租户，即**HR 应用**的使用者
+- **Fabrikam** -fabrikam 组织使用的租户，它也使用**HR 应用**
 
 ![应用对象与服务主体对象之间的关系](./media/app-objects-and-service-principals/application-objects-relationship.svg)
 

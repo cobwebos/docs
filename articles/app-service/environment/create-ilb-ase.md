@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/05/2019
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 98345e8585a3f6653659e0d41eb5c3308a0a6634
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b7fa447e8564fcbf77702f1d3d474cceb48705c5
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80057412"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114635"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>创建和使用内部负载均衡器应用服务环境 
 
@@ -60,6 +60,9 @@ Azure 应用服务环境是指将 Azure 应用服务部署到 Azure 虚拟网络
 
     ![ASE 创建](media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase.png)
 
+> [!NOTE]
+> 应用服务环境名称长度不能超过 37 个字符。
+
 6. 选择“网络”
 
 7. 选择或创建虚拟网络。 如果在此处创建新的 VNet，将使用 192.168.250.0/23 地址范围定义该 VNet。 若要使用不同的地址范围或者在除 ASE 以外的另一个资源组中创建 VNet，请使用 Azure 虚拟网络创建门户。 
@@ -70,11 +73,12 @@ Azure 应用服务环境是指将 Azure 应用服务部署到 Azure 虚拟网络
 
 7. 依次选择“查看并创建”、“创建”。  
 
+
 ## <a name="create-an-app-in-an-ilb-ase"></a>在 ILB ASE 中创建应用 ##
 
 在 ILB ASE 中创建应用通常与在 ASE 中创建应用相同。
 
-1. 在 Azure 门户中，选择“创建资源” **“Web”** “Web 应用”。 >    >  
+1. 在 Azure 门户中，选择“创建资源” > “Web” > “Web 应用”。   
 
 1. 输入应用的名称。
 

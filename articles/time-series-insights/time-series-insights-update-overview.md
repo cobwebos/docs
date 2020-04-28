@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: overview
-ms.date: 02/04/2020
+ms.date: 04/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1e4f72300752c93659db4edd4610464dbebf2503
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 73244a635bbf14efcf33f1b978db14e9e2589581
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77014413"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271057"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>什么是 Azure 时序见解预览版？
 
@@ -55,8 +55,8 @@ Azure 时序见解通过提供统包、端到端 IoT 分析解决方案来满足
 
 * 带有冷热分析支持的多层存储解决方案为客户提供了在冷热之间路由数据的选项，从而可以对热数据进行交互式分析，以及对数十年的历史数据执行运行智能。 
 
-    *   高度交互的热分析解决方案，可对较短时间范围内的数据频繁执行大量的查询 
-    *   使用基于 Azure 存储的可扩展、高性能和成本优化的时序数据湖，客户可以在数秒钟内呈现多年累积的时序数据。 
+    *    高度交互的热分析解决方案，可对较短时间范围内的数据频繁执行大量的查询 
+    *    使用基于 Azure 存储的可扩展、高性能和成本优化的时序数据湖，客户可以在数秒内呈现多年来的时序数据趋势。 
 
 * 语义模型支持，描述与资产和设备的派生信号和原始信号关联的域和元数据。
 
@@ -64,7 +64,7 @@ Azure 时序见解通过提供统包、端到端 IoT 分析解决方案来满足
 
 * 具有增强的查询 API 和用户体验的丰富分析功能，结合了基于资产的数据见解和丰富的即席数据分析功能，并支持内插、标量和聚合函数、分类变量、散点图和时移时序信号，以进行深入分析。
 
-*   企业级平台可满足企业 IoT 客户的规模、性能、安全性和可靠性需求。
+*    企业级平台可满足企业 IoT 客户的规模、性能、安全性和可靠性需求。
 
 * 针对端到端分析的可扩展性和集成支持。 时序见解为各种数据方案提供了可扩展的分析平台。 借助时序见解 Power BI 连接器，客户可以将其在时序见解中所做的查询直接带入 Power BI 中，以在一个单一的玻璃窗格中获得其 BI 和时序分析的统一视图。
 

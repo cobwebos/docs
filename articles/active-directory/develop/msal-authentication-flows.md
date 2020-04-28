@@ -14,25 +14,25 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 25c219bedbbbec9fbc0c5617c7bd9fc482faf49a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80050516"
 ---
 # <a name="authentication-flows"></a>身份验证流
 
 本文介绍 Microsoft 身份验证库 (MSAL) 提供的不同身份验证流。  可在各种不同的应用程序方案中使用这些流。
 
-| 流向 | 描述 | 适用范围|  
+| 流向 | 说明 | 适用范围|  
 | ---- | ----------- | ------- | 
-| [互动](#interactive) | 通过一个提示用户在浏览器或弹出窗口中提供凭据的交互式过程获取令牌。 | [桌面应用](scenario-desktop-overview.md)、[移动应用](scenario-mobile-overview.md) |
+| [交互式](#interactive) | 通过一个提示用户在浏览器或弹出窗口中提供凭据的交互式过程获取令牌。 | [桌面应用](scenario-desktop-overview.md)、[移动应用](scenario-mobile-overview.md) |
 | [隐式授权](#implicit-grant) | 允许应用在不执行后端服务器凭据交换的情况下获取令牌。 这可让应用登录用户、维护会话，并获取客户端 JavaScript 代码中所有其他 Web API 的令牌。| [单页应用程序 (SPA)](scenario-spa-overview.md) |
 | [授权代码](#authorization-code) | 在设备上安装的应用中使用，以访问受保护的资源，例如 Web API。 这样，就可以添加对移动应用和桌面应用的登录与 API 访问权限。 | [桌面应用](scenario-desktop-overview.md)、[移动应用](scenario-mobile-overview.md)、[Web 应用](scenario-web-app-call-api-overview.md) | 
 | [代理](#on-behalf-of) | 应用程序调用某个服务或 Web API，而后者又需要调用另一个服务或 Web API。 思路是通过请求链传播委托用户标识和权限。 | [Web API](scenario-web-api-call-api-overview.md) |
-| [客户端凭据](#client-credentials) | 允许你使用应用程序的标识访问 Web 托管的资源。 通常用于必须在后台运行的服务器间交互，不需要立即与用户交互。 | [守护进程应用](scenario-daemon-overview.md) |
+| [客户端凭据](#client-credentials) | 允许你使用应用程序的标识访问 Web 托管的资源。 通常用于必须在后台运行的服务器间交互，不需要立即与用户交互。 | [守护程序应用](scenario-daemon-overview.md) |
 | [设备代码](#device-code) | 允许用户登录到智能电视、IoT 设备或打印机等输入受限的设备。 | [桌面/移动应用](scenario-desktop-acquire-token.md#command-line-tool-without-a-web-browser) |
-| [集成 Windows 身份验证](scenario-desktop-acquire-token.md#integrated-windows-authentication) | 允许已加入域或已加入 Azure Active Directory (Azure AD) 的计算机上的应用程序以静默方式获取令牌（无需用户进行任何 UI 交互）。| [桌面/移动应用](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
+| [Windows 集成身份验证](scenario-desktop-acquire-token.md#integrated-windows-authentication) | 允许已加入域或已加入 Azure Active Directory (Azure AD) 的计算机上的应用程序以静默方式获取令牌（无需用户进行任何 UI 交互）。| [桌面/移动应用](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
 | [用户名/密码](scenario-desktop-acquire-token.md#username-and-password) | 允许应用程序通过直接处理用户的密码将用户登录。 不建议使用此流。 | [桌面/移动应用](scenario-desktop-acquire-token.md#username-and-password) |
 
 ## <a name="how-each-flow-emits-tokens-and-codes"></a>每个流如何发出令牌和代码
@@ -151,7 +151,7 @@ MSAL 支持 [OAuth 2 设备代码流](v2-oauth2-device-code.md)，可让用户�
 
 在上图中：
 
-1. 每当需要用户身份验证时，应用都会提供一个代码，并要求用户使用另一台设备（如联网的智能手机）转到 URL（例如。 `https://microsoft.com/devicelogin` 然后，系统会提示用户输入该代码，并转到完成正常身份验证的体验，包括许可提示和多重身份验证（如果需要）。
+1. 只要需要用户身份验证，应用程序就会提供代码，并要求用户使用其他设备（如连接 internet 的智能手机）来访问 URL （例如`https://microsoft.com/devicelogin`）。 然后，系统会提示用户输入该代码，并转到完成正常身份验证的体验，包括许可提示和多重身份验证（如果需要）。
 
 2. 成功完成身份验证后，命令行应用会通过传回通道收到所需的令牌，并使用这些令牌执行所需的 Web API 调用。
 
@@ -161,7 +161,7 @@ MSAL 支持 [OAuth 2 设备代码流](v2-oauth2-device-code.md)，可让用户�
 - 构造公共客户端应用程序时传入的颁发机构必须是下列其中一项：
   - 租户化（采用 `https://login.microsoftonline.com/{tenant}/` 格式，其中，`{tenant}` 是表示租户 ID 或者与该租户关联的域的 GUID）。
   - 适用于任何工作和学校帐户 (`https://login.microsoftonline.com/organizations/`)。
-- Azure AD v2.0 终结点尚未支持 Microsoft 个人帐户（不能使用 或`/common``/consumers`租户）。
+- Azure AD v2.0 终结点尚不支持 Microsoft 个人帐户（不能使用`/common`或`/consumers`租户）。
 
 ## <a name="integrated-windows-authentication"></a>Windows 集成身份验证
 
@@ -182,11 +182,11 @@ IWA 适用于针对 .NET Framework、.NET Core 和通用 Windows 平台编写的
 
 IWA 不会绕过多重身份验证。 如果配置了多重身份验证，需要多重身份验证质询时，IWA 可能会失败。 多重身份验证需要用户交互。
 
-你无法控制标识提供者何时请求执行双重身份验证， 而租户管理员可以控制。 通常，在未通过 VPN 连接到企业网络的情况下（有时，甚至已通过 VPN 连接到企业网络的情况下），从不同的国家/地区登录时都需要执行双重身份验证。 Azure AD 使用 AI 来持续了解是否需要双重身份验证。 如果 IWA 失败，应回退回 [交互式用户提示] （#interactive）。
+你无法控制标识提供者何时请求执行双重身份验证， 而租户管理员可以控制。 通常，在未通过 VPN 连接到企业网络的情况下（有时，甚至已通过 VPN 连接到企业网络的情况下），从不同的国家/地区登录时都需要执行双重身份验证。 Azure AD 使用 AI 来持续了解是否需要双重身份验证。 如果 IWA 失败，则应回退到 [交互用户提示] （#interactive）。
 
 构造公共客户端应用程序时传入的颁发机构必须是下列其中一项：
 - 租户化（采用 `https://login.microsoftonline.com/{tenant}/` 格式，其中，`tenant` 是表示租户 ID 或者与该租户关联的域的 GUID）。
-- 适用于任何工作和学校帐户 (`https://login.microsoftonline.com/organizations/`)。 不支持 Microsoft 个人帐户（您无法使用`/common`或`/consumers`租户）。
+- 适用于任何工作和学校帐户 (`https://login.microsoftonline.com/organizations/`)。 不支持 Microsoft 个人帐户（你不能使用`/common`或`/consumers`租户）。
 
 由于 IWA 是一个静默流，因此必须符合以下条件之一：
 - 应用程序的用户必须已事先许可使用该应用程序。 
@@ -200,7 +200,7 @@ IWA 不会绕过多重身份验证。 如果配置了多重身份验证，需要
 
 已针对 .NET Desktop、.NET Core 和 Windows 通用平台应用启用 IWA 流。 在 .NET Core 上，必须向 IWA 提供用户名，因为 .NET Core 无法从操作系统获取用户名。
   
-有关同意的详细信息，请参阅[v2.0 权限和同意](v2-permissions-and-consent.md)。
+有关许可的详细信息，请参阅 v2.0[权限和许可](v2-permissions-and-consent.md)。
 
 ## <a name="usernamepassword"></a>用户名/密码
 
@@ -218,7 +218,7 @@ MSAL 支持 [OAuth 2 资源所有者密码凭据授予](v2-oauth-ropc.md)，后�
 
 在已加入 Windows 域的计算机上以静默方式获取令牌的首选流是 [Windows 集成身份验证](#integrated-windows-authentication)。 否则，也可以使用[设备代码流](#device-code)。
 
-尽管在某些情况下（DevOps 方案）这非常有用，但如果希望在提供自己的 UI 的交互式方案中使用用户名/密码，请尝试避免这样做。 使用用户名/密码：
+尽管这在某些情况下（DevOps 方案）很有用，但如果你想要在提供自己的 UI 的交互方案中使用用户名/密码，请尝试避免出现这种情况。 使用用户名/密码：
 - 需要执行多重身份验证的用户将无法登录（因为没有交互）。
 - 用户无法执行单一登录。
 
@@ -226,8 +226,8 @@ MSAL 支持 [OAuth 2 资源所有者密码凭据授予](v2-oauth-ropc.md)，后�
 
 除了 [Windows 集成身份验证约束](#integrated-windows-authentication)以外，以下约束也适用：
 
-- 用户名/密码流与条件访问和多重身份验证不兼容。 因此，如果应用在 Azure AD 租户中运行，而该租户中的租户管理员需要多重身份验证，则你无法使用此流。 许多组织都会提出这种要求。
-- 它仅适用于工作帐户和学校帐户（不适用于 Microsoft 帐户）。
+- 用户名/密码流与条件性访问和多重身份验证不兼容。 因此，如果应用在 Azure AD 租户中运行，而该租户中的租户管理员需要多重身份验证，则你无法使用此流。 许多组织都会提出这种要求。
+- 它仅适用于工作和学校帐户（而不是 Microsoft 帐户）。
 - 可在 .NET Desktop 和 .NET Core 中使用该流，但不能在通用 Windows 平台中使用。
 
 ### <a name="azure-ad-b2c-specifics"></a>Azure AD B2C 细节

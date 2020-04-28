@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/11/2019
 ms.openlocfilehash: 6b81aba553fc775821c80631aa83bbb3e8ac63b5
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631800"
 ---
 # <a name="azure-monitor-log-queries"></a>Azure Monitor 日志查询
@@ -21,7 +21,7 @@ Azure Monitor 日志在 Azure 数据资源管理器之上构建，Azure Monitor 
 
 ## <a name="getting-started"></a>入门
 
-- [开始使用 Azure 监视器日志分析](get-started-portal.md)是编写查询和在 Azure 门户中处理结果的一课。
+- [开始使用 Azure Monitor Log Analytics](get-started-portal.md)是编写查询并在 Azure 门户中处理结果的课程。
 - [Azure Monitor 日志查询入门](get-started-queries.md)是一门介绍如何使用 Azure Monitor 日志数据编写查询的课程。
 
 ## <a name="concepts"></a>概念

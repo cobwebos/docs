@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 7a6540b5784a76acfc248fb15feb1aaf39420845
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80546946"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>使用数据工厂和 Batch 来处理大规模数据集
@@ -41,7 +41,7 @@ ms.locfileid: "80546946"
 * [Batch 基本信息](../../batch/batch-technical-overview.md)
 * [批处理功能概述](../../batch/batch-api-basics.md)
 
-或者，要了解有关批处理的更多情况，请参阅[批处理文档](https://docs.microsoft.com/azure/batch/)。
+或者，若要了解有关批处理的详细信息，请参阅[批处理文档](https://docs.microsoft.com/azure/batch/)。
 
 ## <a name="why-azure-data-factory"></a>为什么使用 Azure 数据工厂？
 数据工厂是一项基于云的数据集成服务，可对数据移动和转换进行安排并使其实现自动化。 可以使用数据工厂创建将数据从本地和云数据存储移动到集中数据存储的托管数据管道。 Azure Blob 存储是一个示例。 可以使用数据工厂，通过 Azure HDInsight 和 Azure 机器学习等服务来处理/转换数据。 还可以计划数据管道，以便按计划方法（例如每小时、每天和每周）运行。 可以一目了然地监视和管理管道，以便确定问题和采取措施。
@@ -63,7 +63,7 @@ ms.locfileid: "80546946"
 
 下图说明数据工厂如何安排数据移动和处理。 它还显示 Batch 如何以并行方式处理数据。 下载并打印该图以便参考（11 x 17 英寸或 A3 大小）。 若要访问该图以便可以打印它，请参阅[使用 Batch 和数据工厂进行的 HPC 和数据业务流程](https://go.microsoft.com/fwlink/?LinkId=717686)。
 
-[![大型数据处理图](./media/data-factory-data-processing-using-batch/image1.png)](https://go.microsoft.com/fwlink/?LinkId=717686)
+[![大规模数据处理关系图](./media/data-factory-data-processing-using-batch/image1.png)](https://go.microsoft.com/fwlink/?LinkId=717686)
 
 以下列表提供了该过程的基本步骤。 解决方案包含构建端到端解决方案的代码和说明。
 
@@ -94,7 +94,7 @@ ms.locfileid: "80546946"
 可使用存储帐户存储本教程中的数据。 如果还没有存储帐户，请参阅[创建存储帐户](../../storage/common/storage-account-create.md)。 示例解决方案使用 Blob 存储。
 
 #### <a name="azure-batch-account"></a>Azure Batch 帐户
-使用 [Azure 门户](https://portal.azure.com/)创建 Batch 存储帐户。 有关详细信息，请参阅[创建和管理 Batch 帐户](../../batch/batch-account-create-portal.md)。 请注意 Batch 帐户名称和帐户密钥。 您还可以使用[New-AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) cmdlet 创建批处理帐户。 有关如何使用此 cmdlet 的说明，请参阅 [Batch PowerShell cmdlet 入门](../../batch/batch-powershell-cmdlets-get-started.md)。
+使用 [Azure 门户](https://portal.azure.com/)创建 Batch 存储帐户。 有关详细信息，请参阅[创建和管理 Batch 帐户](../../batch/batch-account-create-portal.md)。 请注意 Batch 帐户名称和帐户密钥。 还可以使用[AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) Cmdlet 创建 Batch 帐户。 有关如何使用此 cmdlet 的说明，请参阅 [Batch PowerShell cmdlet 入门](../../batch/batch-powershell-cmdlets-get-started.md)。
 
 该示例解决方案使用 Batch（通过数据工厂管道间接使用）以并行方式在计算节点池（托管 VM 集合）上处理数据。
 
@@ -111,20 +111,20 @@ ms.locfileid: "80546946"
 
    a. 输入池的 ID（“池 ID”****）。 记下池的 ID。 创建数据工厂解决方案时需要它。
 
-   b. 为**操作系统系列**设置指定**Windows 服务器 2012 R2。**
+   b. 为**操作系统系列**设置指定**Windows Server 2012 R2** 。
 
    c. 选择**节点定价层**。
 
    d. 输入 **2** 作为“目标专用”**** 设置的值。
 
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 输入 **2** 作为“每个节点最大任务”**** 设置的值。
+   e. 输入 **2** 作为“每个节点最大任务”**** 设置的值。
 
    f. 选择“确定”**** 以创建池。
 
 #### <a name="azure-storage-explorer"></a>Azure 存储资源管理器
 可使用 [Azure 存储资源管理器 6](https://azurestorageexplorer.codeplex.com/) 或 [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer)（来自 ClumsyLeaf Software）检查并更改存储项目中的数据。 还可以检查和更改云托管应用程序日志中的数据。
 
-1. 创建具有私有访问权限的名为 **"我的容器**"的容器（无匿名访问）。
+1. 创建一个名为**mycontainer**的容器，该容器具有专用访问权限（无匿名访问权限）。
 
 1. 如果使用 CloudXplorer，按以下结构创建文件夹和子文件夹：
 
@@ -169,10 +169,10 @@ public IDictionary<string, string> Execute(
 
 * 该方法采用四个参数：
 
-  * **链接服务**。 此参数是将输入/输出数据源（例如 Blob 存储）链接到数据工厂的链接服务的可枚举列表。 在此示例中，仅有一个 Azure 存储类型的链接服务可同时用于输入和输出。
-  * **数据集**. 此参数是数据集的可枚举列表。 可使用此参数获取输入和输出数据集定义的位置和架构。
-  * **活动**. 此参数表示当前计算实体。 在此示例中，它是 Batch 服务。
-  * **记录器**. 可以使用记录器编写作为管道的“用户”日志的调试注释。
+  * **linkedservices.json**。 此参数是将输入/输出数据源（例如 Blob 存储）链接到数据工厂的链接服务的可枚举列表。 在此示例中，仅有一个 Azure 存储类型的链接服务可同时用于输入和输出。
+  * **数据集**。 此参数是数据集的可枚举列表。 可使用此参数获取输入和输出数据集定义的位置和架构。
+  * **活动**。 此参数表示当前计算实体。 在此示例中，它是 Batch 服务。
+  * **记录器**。 可以使用记录器编写作为管道的“用户”日志的调试注释。
 * 该方法返回一个字典，此字典可在以后将自定义活动链接在一起。 此功能尚未实现，因此该方法仅返回空字典。
 
 #### <a name="procedure-create-the-custom-activity"></a>过程：创建自定义活动
@@ -180,19 +180,19 @@ public IDictionary<string, string> Execute(
 
    a. 启动 Visual Studio 2012/2013/2015。
 
-   b. 选择 **"文件** > **新项目** > **"。**
+   b. 选择 "**文件** > " "**新建** > **项目**"。
 
-   c. 展开**模板**，然后选择**可视化 C\#**。 在此演练中使用的是 C\#，但也可使用任意 .NET 语言开发自定义活动。
+   c. 展开 "**模板**"，然后选择 " **Visual C\#**"。 在此演练中使用的是 C\#，但也可使用任意 .NET 语言开发自定义活动。
 
    d. 从右侧项目类型列表中选择“类库”****。
 
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 对于“名称”****，输入 **MyDotNetActivity**。
+   e. 对于“名称”****，输入 **MyDotNetActivity**。
 
    f. 对于“位置”****，选择“C:\\ADFGetStarted”****。 如果不存在，则创建 **ADF** 文件夹。
 
-   g. 选择“确定”**** 以创建项目。
+   g. 选择“确定”创建项目  。
 
-1. 选择**工具** > **NuGet 包管理器** > **管理器控制台**。
+1. 选择 "**工具** > " "**NuGet 包管理器** > " "**包管理器控制台**"。
 
 1. 在“包管理器控制台”中，执行以下命令导入 Microsoft.Azure.Management.DataFactories：
 
@@ -398,7 +398,7 @@ public IDictionary<string, string> Execute(
 
 1. 启动 Windows 资源管理器，然后转到 **bin\\debug** 或 **bin\\release** 文件夹。 文件夹选择取决于生成的类型。
 
-1. 创建包含**\\bin\\调试**文件夹中所有二进制文件的 zip 文件**MyDotNetActivity.zip。** 可能需要包括 MyDotNetActivity.**pdb** 文件以便获取其他详细信息，例如出现故障时引发问题的源代码中的行号。
+1. 创建一个 zip 文件**MyDotNetActivity** ，其中包含** \\bin\\调试**文件夹中的所有二进制文件。 可能需要包括 MyDotNetActivity.**pdb** 文件以便获取其他详细信息，例如出现故障时引发问题的源代码中的行号。
 
    ![bin\Debug 文件夹列表](./media/data-factory-data-processing-using-batch/image5.png)
 
@@ -434,7 +434,7 @@ public IDictionary<string, string> Execute(
 
 1. 以逻辑方式通过 blob 集工作的代码在 do-while 循环内运行。 在 **Execute** 方法中，do-while 循环将 blob 列表传递给名为 **Calculate** 的方法。 该方法返回名为 **output** 的字符串变量，它是循环访问段中所有 blob 的结果。
 
-   它返回传递给**Calculate**方法的 Blob 中搜索词"Microsoft"的匹配项数。
+   它返回传递到**计算**方法的 blob 中的搜索词 "Microsoft" 出现次数。
 
     ```csharp
     output += string.Format("{0} occurrences of the search term \"{1}\" were found in the file {2}.\r\n", wordCount, searchTerm, inputBlob.Name);
@@ -573,12 +573,12 @@ test custom activity Microsoft test custom activity Microsoft
 
    b. 将**访问密钥**替换为 Batch 帐户的访问密钥。
 
-   c. 输入**池名称**属性的池 ID。 对于此属性，可指定池名称或池 ID。
+   c. 输入**poolName**属性的池 ID。 对于此属性，可指定池名称或池 ID。
 
    d. 对于 **batchUri** JSON 属性，输入 batch URI。
 
       > [!IMPORTANT]
-      > **批处理帐户**边栏选项卡中的 URL 采用以下格式：\<帐户名称\>。\<区域\>.batch.azure.com。 对于 JSON 脚本中的 **batchUri** 属性，需要从 URL 中删除“accountname.”。 示例为 `"batchUri": "https://eastus.batch.azure.com"`。
+      > " **Batch 帐户**" 边栏选项卡中的 URL 采用以下格式\<：\>accountname。\<batch.azure.com\>。 对于 JSON 脚本中的 **batchUri** 属性，需要从 URL 中删除“accountname.”。 示例为 `"batchUri": "https://eastus.batch.azure.com"`。
       >
       >
 
@@ -591,7 +591,7 @@ test custom activity Microsoft test custom activity Microsoft
       >
       >
 
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 对于 **linkedServiceName** 属性，指定 **StorageLinkedService**。 已在之前的步骤中创建此链接服务。 此存储用作文件和日志的暂存区域。
+   e. 对于 **linkedServiceName** 属性，指定 **StorageLinkedService**。 已在之前的步骤中创建此链接服务。 此存储用作文件和日志的暂存区域。
 
 1. 选择命令栏上的“部署”****，部署链接服务。
 
@@ -665,23 +665,23 @@ test custom activity Microsoft test custom activity Microsoft
 
     每个切片的开始时间在前面的 JSON 代码片段中由 **SliceStart** 系统变量表示。 以下是为每个切片的开始时间。
 
-    | **片** | **开始时间**          |
+    | **饼图** | **开始时间**          |
     |-----------|-------------------------|
-    | 1         | 2015-11-16T**00**：00：00 |
+    | 1         | 2015-11-16T**00**：00:00 |
     | 2         | 2015-11-16T**01**:00:00 |
-    | 3         | 2015-11-16T**02**：00：00 |
-    | 4         | 2015-11-16T**03**：00：00 |
-    | 5         | 2015-11-16T**04**：00：00 |
+    | 3         | 2015-11-16T**02**：00:00 |
+    | 4         | 2015-11-16T**03**：00:00 |
+    | 5         | 2015-11-16T**04**：00:00 |
 
     使用切片开始时间 (**SliceStart**) 的年、月、日和小时部分计算 **folderPath**。 输入文件夹按以下方式映射到切片。
 
-    | **片** | **开始时间**          | **输入文件夹**  |
+    | **饼图** | **开始时间**          | **输入文件夹**  |
     |-----------|-------------------------|-------------------|
-    | 1         | 2015-11-16T**00**：00：00 | 2015-11-16-**00** |
+    | 1         | 2015-11-16T**00**：00:00 | 2015-11-16-**00** |
     | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-**01** |
-    | 3         | 2015-11-16T**02**：00：00 | 2015-11-16-**02** |
-    | 4         | 2015-11-16T**03**：00：00 | 2015-11-16-**03** |
-    | 5         | 2015-11-16T**04**：00：00 | 2015-11-16-**04** |
+    | 3         | 2015-11-16T**02**：00:00 | 2015-11-16-**02** |
+    | 4         | 2015-11-16T**03**：00:00 | 2015-11-16-**03** |
+    | 5         | 2015-11-16T**04**：00:00 | 2015-11-16-**04** |
 
 1. 选择工具栏上的“部署”****，创建并部署 **InputDataset** 表。
 
@@ -722,13 +722,13 @@ test custom activity Microsoft test custom activity Microsoft
 
     将为每个输入切片生成输出 blob/文件。 下面是每个切片的输出文件命名方式。 所有输出文件在一个输出文件夹 `mycontainer\\outputfolder` 中生成。
 
-    | **片** | **开始时间**          | **输出文件**       |
+    | **饼图** | **开始时间**          | **输出文件**       |
     |-----------|-------------------------|-----------------------|
-    | 1         | 2015-11-16T**00**：00：00 | 2015-11-16-00.txt**00.txt** |
-    | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-01.txt**01.txt** |
-    | 3         | 2015-11-16T**02**：00：00 | 2015-11-16-**02.txt** |
-    | 4         | 2015-11-16T**03**：00：00 | 2015-11-16-03.txt**03.txt** |
-    | 5         | 2015-11-16T**04**：00：00 | 2015-11-16-04.txt**04.txt** |
+    | 1         | 2015-11-16T**00**：00:00 | 2015-11-16-**00 .txt** |
+    | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-**01 .txt** |
+    | 3         | 2015-11-16T**02**：00:00 | 2015-11-16-**02.txt** |
+    | 4         | 2015-11-16T**03**：00:00 | 2015-11-16-**03 .txt** |
+    | 5         | 2015-11-16T**04**：00:00 | 2015-11-16-**04 .txt** |
 
     请记住，输入文件夹（例如 2015-11-16-00）中的所有文件都是含有开始时间 2015-11-16-00 的切片的一部分。 处理此切片时，自定义活动将扫描每个文件，并在输出文件中生成具有搜索词“Microsoft”出现次数的行。 如果 2015-11-16-00 文件夹有三个文件，则 2015-11-16-00.txt 输出文件中存在三行。
 
@@ -792,7 +792,7 @@ test custom activity Microsoft test custom activity Microsoft
    请注意以下几点：
 
    * 管道中仅包含一个活动，其类型为 **DotNetActivity**。
-   * **程序集名称**设置为 DLL **MyDotNetActivity.dll**的名称。
+   * **AssemblyName**设置为 dll **MyDotNetActivity**的名称。
    * **EntryPoint** 设置为 **MyDotNetActivityNS.MyDotNetActivity**。 在代码中其基本为 \<namespace\>.\<classname\>。
    * **PackageLinkedService** 设置为 **StorageLinkedService**，它指向包含自定义活动 zip 文件的 blob 存储。 如果对输入/输出文件和自定义活动 zip 文件使用不同的存储帐户，则必须创建另一个存储链接服务。 本文假定使用相同的存储帐户。
    * **PackageFile** 设置为 **customactivitycontainer/MyDotNetActivity.zip**。 采用以下格式：\<containerforthezip\>/\<nameofthezip.zip\>。
@@ -954,7 +954,7 @@ test custom activity Microsoft test custom activity Microsoft
 
    如果池使用默认 [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx)，则在运行自定义活动之前，Batch 服务可能需要 15 到 30 分钟准备 VM。 如果池使用其他 autoScaleEvaluationInterval，则 Batch 服务可能需要 autoScaleEvaluationInterval 加上 10 分钟。
 
-1. 在示例解决方案中，**Excute** 方法调用 **Calculate** 方法，后者可处理输入数据切片，产生输出数据切片。 您可以编写自己的方法来处理输入数据，并将**Execute**方法中的 **"计算**方法"调用替换为对方法的调用。
+1. 在示例解决方案中，**Excute** 方法调用 **Calculate** 方法，后者可处理输入数据切片，产生输出数据切片。 您可以编写自己的方法来处理输入数据，并将**Execute**方法中的**计算**方法调用替换为对方法的调用。
 
 ### <a name="next-steps-consume-the-data"></a>后续步骤：使用数据
 处理数据后，可通过 Power BI 等联机工具使用数据。 以下是有助于了解 Power BI 以及如何在 Azure 中使用 Power BI 的链接：

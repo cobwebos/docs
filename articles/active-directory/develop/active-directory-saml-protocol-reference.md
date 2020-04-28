@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: 44d06030d8015d2df9499ce903eb9cb06e1ef27a
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885644"
 ---
 # <a name="how-azure-ad-uses-the-saml-protocol"></a>Azure AD 使用 SAML 协议的方式
@@ -31,7 +31,7 @@ Azure AD 使用云服务的**元数据 URI** 来检索签名密钥和注销 URI�
 
 Azure Active Directory 公开特定于租户的和公用的（独立于租户的）单一登录和单一注销终结点。 这些 URL 表示可寻址位置（不只是标识符），方便你转到终结点读取元数据。
 
-* 特定于租户的终结点位于 `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`。 租户域名>占位符表示 Azure AD 租户的注册域名或租户 ID GUID。 * \<* 例如，contoso.com 租户的联合元数据位于： https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
+* 特定于租户的终结点位于 `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`。 TenantDomainName>占位符表示 Azure AD 租户的已注册域名或 TenantID GUID。 * \<* 例如，contoso.com 租户的联合元数据位于： https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
 
 * 独立于租户的终结点位于 `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`。 此终结点地址中显示 **common**，而不是租户域名或 ID。
 

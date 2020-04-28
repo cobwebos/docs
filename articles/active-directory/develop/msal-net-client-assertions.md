@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8c97387bfd2a362d3bf5a6b8a3252242f061da31
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80050293"
 ---
 # <a name="confidential-client-assertions"></a>机密客户端断言
@@ -50,7 +50,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 Azure AD 预期的声明为：
 
-声明类型 | “值” | 描述
+声明类型 | 值 | 说明
 ---------- | ---------- | ----------
 aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | “aud”（受众）声明标识 JWT 预期的接收者（在这里为 Azure AD）。请参阅 [RFC 7519 的 4.1.3 部分]
 exp | 2019 年 6 月 27 日，周四 15:04:17 GMT+0200（罗马夏令时） | “exp”（过期时间）声明指定只能在哪个时间（含）之前接受 JWT 的处理。 请参阅 [RFC 7519 的 4.1.4 部分]
@@ -196,4 +196,4 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 如果传入的目录中的某个声明与某个必需声明相同，则会考虑其他声明的值。 它会重写 MSAL.NET 计算的声明。
 
-若要提供你自己的声明（包括 Azure AD 预期的必需声明），请针对 `mergeWithDefaultClaims` 参数传入 `false`。
+若要提供你自己的声明（包括 Azure AD 预期的必需声明），请针对 `false` 参数传入 `mergeWithDefaultClaims`。

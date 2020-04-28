@@ -15,10 +15,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 20ec1d1909a53a9de29e12be33957acfd1643698
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80128827"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>在 Azure Active Directory 门户中分配或删除许可证
@@ -138,7 +138,7 @@ ms.locfileid: "80128827"
     ![“许可的组”页，突出显示了“删除许可证”选项](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
     
     > [!NOTE]
-    > 当同步到 Azure AD 的本地用户帐户退出同步范围或删除同步时，在 Azure AD 中软删除用户。 发生这种情况时，直接或通过基于组的许可分配给用户的许可证将被标记为**挂起**，而不是**删除**。
+    > 如果本地用户帐户同步到 Azure AD 超出了同步范围或删除了同步，则会在 Azure AD 中软删除该用户。 发生这种情况时，直接或通过基于组的许可分配给用户的许可证将被标记为 "已**挂起**" 而不是 "**已删除**"。
 
 ## <a name="next-steps"></a>后续步骤
 

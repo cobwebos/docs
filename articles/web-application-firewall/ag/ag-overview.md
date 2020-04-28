@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 8d43851a6a546bd23881c4d0a72185ca03e63092
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: e0e5c143e619b1c381a4a618a811883ad189719b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983613"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314362"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure 应用程序网关上的 Azure Web 应用程序防火墙
 
@@ -28,9 +28,9 @@ Azure 应用程序网关提供的 Azure Web 应用程序防火墙 (WAF) 可以�
 
 ![应用程序网关 WAF 关系图](../media/ag-overview/waf1.png)
 
-应用程序网关作为应用程序传送控制器 (ADC) 运行。 它提供了安全套接字层 (SSL) 终止、基于 Cookie 的会话相关性、轮循负载分发、基于内容的路由，以及托管多个网站的能力和安全增强功能。
+应用程序网关作为应用程序传送控制器 (ADC) 运行。 它提供了传输层安全性 (TLS)（以前称为安全套接字层 (SSL)）、终止、基于 Cookie 的会话相关性、轮循负载分发、基于内容的路由、托管多个网站的功能，以及安全增强功能。
 
-应用程序网关安全增强功能包括 SSL 策略管理和端到端 SSL 支持。 将 WAF 集成到应用程序网关，从而增强了应用程序的安全性。 此集成可以保护 Web 应用程序免受常见漏洞的侵害。 它还提供了易于配置的中央位置来进行管理。
+应用程序网关安全增强功能包括 TLS 策略管理和端到端 TLS 支持。 将 WAF 集成到应用程序网关，从而增强了应用程序的安全性。 此集成可以保护 Web 应用程序免受常见漏洞的侵害。 它还提供了易于配置的中央位置来进行管理。
 
 ## <a name="benefits"></a>优点
 

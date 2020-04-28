@@ -1,5 +1,5 @@
 ---
-title: 故障排除 Azure MFA NPS 扩展 - Azure 活动目录
+title: Azure MFA NPS 扩展故障排除-Azure Active Directory
 description: 获取有关解决 Azure 多重身份验证的 NPS 扩展问题的帮助
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,15 +12,15 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 330363a78aa9b642f4794cee40bbf040d3484b4b
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80653717"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>解决 Azure 多重身份验证的 NPS 扩展出现的错误消息
 
-如果在使用 Azure 多重身份验证的 NPS 扩展时遇到错误，请参考本文快速解决问题。 在安装 NPS 扩展的服务器上的 **"自定义视图** > **服务器角色** > **网络策略"和"访问服务**"下的事件查看器中可以找到 NPS 扩展日志。
+如果在使用 Azure 多重身份验证的 NPS 扩展时遇到错误，请参考本文快速解决问题。 Nps 扩展日志位于安装了 nps 扩展的服务器上的 "**自定义视图** > **服务器角色** > "**网络策略和访问服务**下的事件查看器中。
 
 ## <a name="troubleshooting-steps-for-common-errors"></a>解决常见错误的故障排除步骤
 
@@ -31,7 +31,7 @@ ms.locfileid: "80653717"
 | **ESTS_TOKEN_ERROR** | 遵循[排查 MFA NPS 扩展问题](howto-mfa-nps-extension.md#troubleshooting)中的说明调查客户端证书和 ADAL 令牌问题。 |
 | **HTTPS_COMMUNICATION_ERROR** | NPS 服务器无法从 Azure MFA 接收响应。 验证防火墙是否双向打开，用于传入和传出 https://adnotifications.windowsazure.com 的流量 |
 | **HTTP_CONNECT_ERROR** | 在运行 NPS 扩展的服务器上，验证是否可访问 `https://adnotifications.windowsazure.com` 和 `https://login.microsoftonline.com/`。 如果无法加载这些站点，请排查该服务器上的连接问题。 |
-| **适用于 Azure MFA 的 NPS 扩展：** <br> 适用于 Azure MFA 的 NPS 扩展仅对处于 AccessAccept 状态的 Radius 请求执行辅助身份验证。 收到响应状态为 AccessReject 的用户用户名请求，将忽略请求。 | 此错误通常反映了 AD 中的身份验证失败，或者 NPS 服务器无法接收来自 Azure AD 的响应。 使用端口 80 和 443 验证防火墙是否双向打开，以便流量进出 `https://adnotifications.windowsazure.com` 和 `https://login.microsoftonline.com`。 另外，还要务必检查“网络访问权限”的“拨入”选项卡上的设置是否设置为“通过 NPS 网络策略控制访问”。 如果未为用户分配许可证，也会触发此错误。 |
+| **适用于 Azure MFA 的 NPS 扩展：** <br> 适用于 Azure MFA 的 NPS 扩展仅对处于 AccessAccept 状态的 Radius 请求执行辅助身份验证。 收到响应状态为 AccessReject 的用户用户名请求，将忽略请求。 | 此错误通常反映了 AD 中的身份验证失败，或者 NPS 服务器无法接收来自 Azure AD 的响应。 使用端口 80 和 443 验证防火墙是否双向打开，以便流量进出 `https://adnotifications.windowsazure.com` 和 `https://login.microsoftonline.com`。 另外，还要务必检查“网络访问权限”的“拨入”选项卡上的设置是否设置为“通过 NPS 网络策略控制访问”。 如果没有为用户分配许可证，也会触发此错误。 |
 | **REGISTRY_CONFIG_ERROR** | 注册表中缺少应用程序的某个项，原因可能是 [PowerShell 脚本](howto-mfa-nps-extension.md#install-the-nps-extension)不是在安装后运行的。 错误消息应包括缺少的项。 请确保在 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa 下创建该项。 |
 | **REQUEST_FORMAT_ERROR** <br> Radius 请求缺少必需的 Radius userName\Identifier 属性。请验证 NPS 是否能够接收 RADIUS 请求 | 此错误通常反映了安装问题。 必须在可以接收 RADIUS 请求的 NPS 服务器上安装 NPS 扩展。 安装为 RRAS 和 RDG 等服务的依赖项的 NPS 服务器无法接收 Radius 请求。 安装在此类安装中的 NPS 扩展无法正常工作并会出错，因为它无法读取身份验证请求中的详细信息。 |
 | **REQUEST_MISSING_CODE** | 请确保 NPS 和 NAS 服务器之间密码加密协议支持你正在使用的辅助身份验证方法。 PAP 在云中支持 Azure MFA 的所有身份验证方法：电话呼叫、单向短信、移动应用通知和移动应用验证码****。 **CHAPV2**和**EAP**支持电话呼叫和移动应用通知。 |
@@ -49,7 +49,7 @@ ms.locfileid: "80653717"
 
 | 错误代码 | 错误消息 | 疑难解答步骤 |
 | ---------- | ------------- | --------------------- |
-| **访问被拒绝** | 调用方租户无权针对用户执行身份验证 | 检查租户域和用户主体名称 (UPN) 的域是否相同。 例如，确保 user@contoso.com 正在尝试向 Contoso 租户进行身份验证。 UPN 代表 Azure 中的租户的有效用户。 |
+| **AccessDenied** | 调用方租户无权针对用户执行身份验证 | 检查租户域和用户主体名称 (UPN) 的域是否相同。 例如，确保 user@contoso.com 正在尝试向 Contoso 租户进行身份验证。 UPN 代表 Azure 中的租户的有效用户。 |
 | **AuthenticationMethodNotConfigured** | 未为用户配置指定的身份验证方法 | 请让用户根据[管理双重验证设置](../user-help/multi-factor-authentication-end-user-manage-settings.md)中的说明添加或检查其验证方法。 |
 | **AuthenticationMethodNotSupported** | 指定的身份验证方法不受支持。 | 请收集包含此错误的所有日志，并[联系支持人员](#contact-microsoft-support)。 联系支持人员时，请提供用户名以及触发该错误的辅助验证方法。 |
 | **BecAccessDenied** | MSODS Bec 调用返回了拒绝访问错误，原因可能是租户中未定义用户名 | 该用户在本地 Active Directory 中存在，但未由 AD Connect 同步到 Azure AD。 或者，租户中缺少该用户。 请将该用户添加到 Azure AD，并让其根据[管理双重验证设置](../user-help/multi-factor-authentication-end-user-manage-settings.md)中的说明添加或检查其验证方法。 |
@@ -87,7 +87,7 @@ ms.locfileid: "80653717"
 | **InvalidParameter** | 无法解析请求或 Msods 中的任何 ProofData。 ProofData 未知 |
 | **InternalError** |  |
 | **OathCodePinIncorrect** |  |
-| **版本不支持** |  |
+| **VersionNotSupported** |  |
 | **MFAPinNotSetup** |  |
 
 ## <a name="next-steps"></a>后续步骤
@@ -98,7 +98,7 @@ ms.locfileid: "80653717"
 
 ### <a name="health-check-script"></a>运行状况检查脚本
 
-在排除 NPS 扩展故障时[，Azure MFA NPS 扩展运行状况检查脚本](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)执行基本运行状况检查。 运行脚本并选择选项 3。
+排查 NPS 扩展问题时， [AZURE MFA NPS 扩展运行状况检查脚本](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)会执行基本运行状况检查。 运行脚本并选择选项3。
 
 ### <a name="contact-microsoft-support"></a>请与 Microsoft 支持部门联系
 

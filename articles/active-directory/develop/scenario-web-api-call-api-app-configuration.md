@@ -13,17 +13,17 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 38e319efb100d326d55f6f821e7c903306a7c7d0
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80991001"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>调用 Web API 的 Web API：代码配置
 
 注册 Web API 后，可以配置应用程序的代码。
 
-用于配置 Web API 的代码，配置后它就可以调用下游 Web API，而后者又基于用来保护 Web API 的代码。 有关详细信息，请参阅受保护的[Web API：应用配置](scenario-protected-web-api-app-configuration.md)。
+用于配置 Web API 的代码，配置后它就可以调用下游 Web API，而后者又基于用来保护 Web API 的代码。 有关详细信息，请参阅[受保护的 Web API：应用配置](scenario-protected-web-api-app-configuration.md)。
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -214,7 +214,7 @@ class MsalAuthHelper {
 
 代理 (OBO) 流用于获取所需的令牌来调用下游 Web API。 在此流中，Web API 从客户端应用程序接收拥有用户委托权限的持有者令牌，然后用此令牌交换另一个访问令牌来调用下游 Web API。
 
-Python Web API 需要使用一些中间件来验证从客户端接收的持有者令牌。 然后，Web API 可以使用 MSAL Python 库调用[`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of)方法获取下游 API 的访问令牌。 有关使用此 API 的示例，请参阅[GitHub 上的 Microsoft 身份验证库 for python 的测试代码](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.2.0/tests/test_e2e.py#L429-L472)。 另请参阅同一存储库中[讨论问题 53](https://github.com/AzureAD/microsoft-authentication-library-for-python/issues/53)的方法，该方法绕过了中间层应用程序的需求。
+Python Web API 需要使用一些中间件来验证从客户端接收的持有者令牌。 然后，Web API 可以通过调用 [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) 方法，使用 MSAL Python 库获取下游 API 的访问令牌。 有关使用此 API 的示例，请参阅[GitHub 上用于 python 的 microsoft 身份验证库的测试代码](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.2.0/tests/test_e2e.py#L429-L472)。 另请参阅相同存储库中的[问题 53](https://github.com/AzureAD/microsoft-authentication-library-for-python/issues/53)讨论，以解决绕过中间层应用程序需要的方法。
 
 ---
 
@@ -227,4 +227,4 @@ Python Web API 需要使用一些中间件来验证从客户端接收的持有�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [调用 Web API 的 Web API：获取应用的令牌](scenario-web-api-call-api-acquire-token.md)
+> [用于调用 web Api 的 web API：获取应用的令牌](scenario-web-api-call-api-acquire-token.md)

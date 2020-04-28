@@ -1,5 +1,5 @@
 ---
-title: 配置应用程序单登录
+title: 配置应用程序单一登录
 description: 如何为正在使用 Azure AD 开发和注册的自定义应用程序配置单一登录。
 services: active-directory
 author: rwike77
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
 ms.openlocfilehash: 630be1676d73410f1b0d376b163a8599299ddbe2
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80883145"
 ---
 # <a name="how-to-configure-single-sign-on-for-an-application"></a>如何为应用程序配置单一登录

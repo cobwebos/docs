@@ -1,5 +1,5 @@
 ---
-title: Azure VPN 网关：为 P2S VPN 客户端通告自定义路由
+title: Azure VPN 网关：为 P2S VPN 客户端播发自定义路由
 description: 向点到站点客户端播发自定义路由的步骤
 services: vpn-gateway
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/11/2019
 ms.author: cherylmc
 ms.openlocfilehash: 3588755e2aab1c84d443e917eca8c7fca280b49a
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80756899"
 ---
 # <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>为 P2S VPN 客户端播发自定义路由
@@ -24,7 +24,7 @@ ms.locfileid: "80756899"
 
 若要播发自定义路由，请使用 `Set-AzVirtualNetworkGateway cmdlet`。 以下示例演示如何播发 [Contoso 存储帐户表](https://contoso.table.core.windows.net)的 IP。
 
-1. ping *contoso.table.core.windows.net*并记下 IP 地址。 例如：
+1. Ping *contoso.table.core.windows.net*并记录 IP 地址。 例如：
 
     ```cmd
     C:\>ping contoso.table.core.windows.net
@@ -38,7 +38,7 @@ ms.locfileid: "80756899"
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute 13.88.144.250/32
     ```
 
-3. 要添加多个自定义路由，请使用逗号和空格分隔地址。 例如：
+3. 若要添加多个自定义路由，请使用逗号和空格分隔地址。 例如：
 
     ```azurepowershell-interactive
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute x.x.x.x/xx , y.y.y.y/yy

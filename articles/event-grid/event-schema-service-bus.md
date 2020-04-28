@@ -1,5 +1,5 @@
 ---
-title: Azure 服务总线作为事件网格源
+title: 作为事件网格源的 Azure 服务总线
 description: 介绍了针对 Azure 事件网格中的服务总线事件提供的属性
 services: event-grid
 author: banisadr
@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: babanisa
 ms.openlocfilehash: 141a0e96071014dc3705d30f72b1a9257737298a
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393246"
 ---
-# <a name="azure-service-bus-as-an-event-grid-source"></a>Azure 服务总线作为事件网格源
+# <a name="azure-service-bus-as-an-event-grid-source"></a>作为事件网格源的 Azure 服务总线
 
-本文提供了服务总线事件的属性和架构。有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
+本文提供了服务总线事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
 ## <a name="event-grid-event-schema"></a>事件网格事件架构
 
@@ -79,33 +79,33 @@ ms.locfileid: "81393246"
 
 事件具有以下顶级数据：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
-| subject | 字符串 | 事件主题的发布者定义路径。 |
-| eventType | 字符串 | 此事件源的一个注册事件类型。 |
-| EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
-| id | 字符串 | 事件的唯一标识符。 |
-| data | 对象 (object) | Blob 存储事件数据。 |
-| dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
-| metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+| 主题 | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| subject | string | 事件主题的发布者定义路径。 |
+| eventType | string | 此事件源的一个注册事件类型。 |
+| EventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
+| id | string | 事件的唯一标识符。 |
+| 数据 | object | Blob 存储事件数据。 |
+| dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
+| metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| namespaceName | 字符串 | 资源所在的服务总线命名空间。 |
-| requestUri | 字符串 | 发出此事件的特定队列或订阅的 URI。 |
-| entityType | 字符串 | 发出事件的服务总线实体的类型（队列或订阅）。 |
-| queueName | 字符串 | 如果订阅队列，则为包含活动消息的队列。 如果使用主题 / 订阅，则为值 null。 |
-| topicName | 字符串 | 包含活动消息的服务总线订阅所属的主题。 如果使用队列，则值为 null。 |
-| subscriptionName | 字符串 | 包含活动消息的服务总线订阅。 如果使用队列，则值为 null。 |
+| namespaceName | string | 资源所在的服务总线命名空间。 |
+| requestUri | string | 发出此事件的特定队列或订阅的 URI。 |
+| entityType | string | 发出事件的服务总线实体的类型（队列或订阅）。 |
+| queueName | string | 如果订阅队列，则为包含活动消息的队列。 如果使用主题 / 订阅，则为值 null。 |
+| topicName | string | 包含活动消息的服务总线订阅所属的主题。 如果使用队列，则值为 null。 |
+| subscriptionName | string | 包含活动消息的服务总线订阅。 如果使用队列，则值为 null。 |
 
-## <a name="tutorials-and-how-tos"></a>教程和如何
-|标题  |说明  |
+## <a name="tutorials-and-how-tos"></a>教程和操作指南
+|Title  |说明  |
 |---------|---------|
 | [教程：Azure 服务总线与 Azure 事件网格的集成示例](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 事件网格将消息从服务总线主题发送到函数应用和逻辑应用。 |
-| [Azure 服务总线到事件网格集成](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | 概述服务总线与事件网格的集成。 |
+| [Azure Service Bus 到事件网格集成](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | 概述服务总线与事件网格的集成。 |
 
 ## <a name="next-steps"></a>后续步骤
 

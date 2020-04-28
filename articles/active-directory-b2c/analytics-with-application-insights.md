@@ -1,7 +1,7 @@
 ---
-title: 使用应用程序见解跟踪用户行为
+title: 跟踪 Application Insights 的用户行为
 titleSuffix: Azure AD B2C
-description: 了解如何使用自定义策略从 Azure AD B2C 用户旅程中启用应用程序见解中的事件日志。
+description: 了解如何使用自定义策略从 Azure AD B2C 用户旅程中启用 Application Insights 的事件日志。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,17 +12,17 @@ ms.date: 04/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 25e62e7c6865f91daa242a33a0f491f8015be41a
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80672521"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>使用 Application Insights 在 Azure Active Directory B2C 中跟踪用户行为
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Azure 活动目录 B2C（Azure AD B2C）支持使用提供给 Azure AD B2C 的检测密钥将事件数据直接发送到[应用程序见解](../azure-monitor/app/app-insights-overview.md)。  借助应用见解技术配置文件，您可以获取用户旅程的详细和自定义事件日志，以便：
+Azure Active Directory B2C （Azure AD B2C）支持通过使用提供给 Azure AD B2C 的检测密钥将事件数据直接发送到[Application Insights](../azure-monitor/app/app-insights-overview.md) 。  使用 Application Insights 技术配置文件，你可以获取用户旅程的详细的自定义事件日志，以便执行以下操作：
 
 * 洞察用户行为。
 * 排查自己在开发或生产过程中的策略问题。
@@ -31,7 +31,7 @@ Azure 活动目录 B2C（Azure AD B2C）支持使用提供给 Azure AD B2C 的�
 
 ## <a name="how-it-works"></a>工作原理
 
-[应用程序见解](application-insights-technical-profile.md)技术配置文件定义 Azure AD B2C 的事件。 此配置文件可指定事件的名称、将要记录的声明以及检测密钥。 要发布事件，技术配置文件将添加为[用户旅程](userjourneys.md)中的业务流程步骤。
+[Application Insights](application-insights-technical-profile.md)技术配置文件从 Azure AD B2C 中定义事件。 此配置文件可指定事件的名称、将要记录的声明以及检测密钥。 若要发布事件，请将技术配置文件添加为[用户旅程](userjourneys.md)中的业务流程步骤。
 
 Application Insights 可以使用关联 ID 来记录用户会话，以便统一事件。 Application Insights 可以在数秒内提供事件和会话，并提供许多可视化工具、导出工具和分析工具。
 
@@ -41,10 +41,10 @@ Application Insights 可以使用关联 ID 来记录用户会话，以便统一�
 
 ## <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 
-将 Azure AD B2C 与 Application Insights 配合使用时，只需创建资源并获取检测密钥。 有关详细信息，请参阅[创建应用程序见解资源](../azure-monitor/app/create-new-resource.md)
+将 Azure AD B2C 与 Application Insights 配合使用时，只需创建资源并获取检测密钥。 有关信息，请参阅[创建 Application Insights 资源](../azure-monitor/app/create-new-resource.md)
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 通过在顶部菜单中选择**目录 + 订阅**筛选器并选择包含订阅的目录，请确保使用的目录包含 Azure 订阅。 此租户不是 Azure AD B2C 租户。
+2. 在顶部菜单中选择 "**目录 + 订阅**" 筛选器，然后选择包含你的订阅的目录，确保你正在使用包含你的 Azure 订阅的目录。 此租户不是 Azure AD B2C 租户。
 3. 选择 Azure 门户左上角的“创建资源”，然后搜索并选择“Application Insights”********。
 4. 单击“创建”。 
 5. 输入此资源的名称****。
@@ -57,12 +57,12 @@ Application Insights 可以使用关联 ID 来记录用户会话，以便统一�
 
 ## <a name="define-claims"></a>定义声明
 
-声明在 Azure AD B2C 策略执行期间提供临时数据存储。 [声明架构](claimsschema.md)是声明声明的位置。
+声明在 Azure AD B2C 策略执行过程中提供数据的临时存储。 声明[架构](claimsschema.md)是声明声明的位置。
 
-1. 打开策略的扩展文件。 例如， <em> `SocialAndLocalAccounts/` </em>.
+1. 打开策略的扩展文件。 例如， <em> `SocialAndLocalAccounts/` </em>。
 1. 搜索 BuildingBlocks[](buildingblocks.md) 元素。 如果该元素不存在，请添加该元素。
-1. 找到[声明架构](claimsschema.md)元素。 如果该元素不存在，请添加该元素。
-1. 将以下声明添加到**声明架构**元素。 
+1. 找到 " [ClaimsSchema](claimsschema.md) " 元素。 如果该元素不存在，请添加该元素。
+1. 将以下声明添加到**ClaimsSchema**元素中。 
 
 ```xml
 <ClaimType Id="EventType">
@@ -106,10 +106,10 @@ Application Insights 可以使用关联 ID 来记录用户会话，以便统一�
 
 | 技术配置文件 | 任务 |
 | ----------------- | -----|
-| 应用见解-通用 | 要包含在所有 Azure Insights 技术配置文件中的通用参数集。 |
-| 应用见解-登录请求 | 收到登录`SignInRequest`请求时，使用一组声明记录事件。 |
-| 应用见解-用户签名 | 记录用户`UserSignUp`在注册/登录旅程中触发注册选项时的事件。 |
-| 应用见解-签名完成 | 记录成功`SignInComplete`完成身份验证时的事件，当令牌已发送到依赖方应用程序时。 |
+| AppInsights-Common | 要包括在所有 Azure Insights 技术配置文件中的一组通用参数。 |
+| AppInsights-SignInRequest | 收到登录`SignInRequest`请求时，记录包含一组声明的事件。 |
+| AppInsights-UserSignUp | 当用户`UserSignUp`在注册/登录旅程中触发注册选项时记录事件。 |
+| AppInsights-SignInComplete | 将令牌`SignInComplete`发送到信赖方应用程序时，记录身份验证成功完成后的事件。 |
 
 将配置文件添加到初学者包中的 TrustFrameworkExtensions.xml 文件**。 将以下元素添加到 ClaimsProviders 元素****：
 
@@ -219,15 +219,15 @@ Application Insights 可以使用关联 ID 来记录用户会话，以便统一�
 
 保存并上传 TrustFrameworkExtensions.xml 文件**。 然后，通过应用程序调用信赖方策略，或者在 Azure 门户中使用“立即运行”。**** 数秒后，事件就会出现在 Application Insights 中。
 
-1. 打开 Azure 活动目录租户**中的应用程序见解**资源。
-2. 选择**使用** > **事件**。
+1. 打开 Azure Active Directory 租户中的**Application Insights**资源。
+2. 选择 "**使用情况** > **事件**"。
 3. 将“期间”设置为“过去一小时”，将“截止时间”设置为“3 分钟”。****************  可能需要选择“刷新”才能查看结果。****
 
 ![Application Insights USAGE-Events 边栏选项卡](./media/analytics-with-application-insights/app-ins-graphic.png)
 
-## <a name="optional-collect-more-data"></a>[可选]收集更多数据
+## <a name="optional-collect-more-data"></a>可有可无收集更多数据
 
-根据需要向用户旅程添加声明类型和事件。 您可以使用[声明解析器](claim-resolver-overview.md)或任何字符串声明类型，通过将**输入声明**元素添加到应用程序见解事件或 AppInsights-通用技术配置文件来添加声明。
+根据需要向用户旅程添加声明类型和事件。 你可以使用[声明解析](claim-resolver-overview.md)程序或任何字符串声明类型，通过将**输入声明**元素添加到 Application Insights 事件，或添加到 AppInsights-通用技术配置文件来添加声明。
 
 - ClaimTypeReferenceId 是对声明类型的引用****。
 - PartnerClaimType 是 Azure Insights 中显示的属性的名称****。 使用语法 `{property:NAME}`，其中 `NAME` 是要添加到该事件的属性。
@@ -241,4 +241,4 @@ Application Insights 可以使用关联 ID 来记录用户会话，以便统一�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在 IEF 参考中了解有关[应用程序见解](application-insights-technical-profile.md)技术配置文件的更多详细信息。 
+- 在 IEF 参考中详细了解[Application Insights](application-insights-technical-profile.md)技术配置文件。 

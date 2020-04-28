@@ -1,5 +1,5 @@
 ---
-title: 创建 Azure 应用标识（PowerShell） |蔚蓝
+title: 创建 Azure 应用标识 (PowerShell) | Azure
 titleSuffix: Microsoft identity platform
 description: 介绍如何使用 Azure PowerShell 创建 Azure Active Directory 应用程序和服务主体，并通过基于角色的访问控制向其授予资源访问权限。 它演示如何使用证书对应用程序进行身份验证。
 services: active-directory
@@ -14,17 +14,17 @@ ms.date: 10/10/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.openlocfilehash: 7bd8c3b25c23ba8586e38ec8eb7d1baefaa21633
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80884163"
 ---
-# <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>如何：使用 Azure PowerShell 创建具有证书的服务主体
+# <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>如何：通过 Azure PowerShell 使用证书创建服务主体
 
-当有应用或脚本需访问资源时，可以为应用设置一个标识，并使用其自己的凭据对应用进行身份验证。 此标识称为服务主体。 使用此方法能够：
+当某个应用或脚本需要访问资源时，用户可以为该应用设置一个标识，并使用其自身的凭据进行身份验证。 此标识称为服务主体。 使用此方法可实现以下目的：
 
-* 将权限分配给应用标识，这些权限不同于自己的权限。 通常情况下，这些权限仅限于应用需执行的操作。
+* 将不同于自己的权限的权限分配给应用标识。 通常情况下，这些权限仅限于应用需执行的操作。
 * 执行无人参与的脚本时，使用证书进行身份验证。
 
 > [!IMPORTANT]
@@ -45,11 +45,11 @@ ms.locfileid: "80884163"
 ## <a name="assign-the-application-to-a-role"></a>将应用程序分配给角色
 要访问订阅中的资源，必须将应用程序分配到角色。 判定哪个角色能为应用程序提供适当的权限。 若要了解有关可用角色的信息，请参阅 [RBAC：内置角色](/azure/role-based-access-control/built-in-roles)。
 
-可将作用域设置为订阅、资源组或资源级别。 较低级别的作用域将继承权限。 例如，将应用程序添加到资源组的*Reader*角色意味着它可以读取资源组及其包含的任何资源。 要允许应用程序执行重新启动、启动和停止实例等操作，请选择 *"参与者"* 角色。
+可将作用域设置为订阅、资源组或资源级别。 较低级别的作用域会继承权限。 例如，将某个应用程序添加到资源组的“读者”  角色意味着该应用程序可以读取该资源组及其包含的所有资源。 若要允许应用程序执行诸如“重新启动”、“启动”和“停止”实例之类的操作，请选择“参与者”角色  。
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>使用自签名证书创建服务主体
 
-下面的示例介绍了简单的方案。 它使用[New-AzADService 委托创建](/powershell/module/az.resources/new-azadserviceprincipal)具有自签名证书的服务主体，并使用[New-AzRoleAssign](/powershell/module/az.resources/new-azroleassignment)将[读取器](/azure/role-based-access-control/built-in-roles#reader)角色分配给服务主体。 角色分配的范围限定为当前所选 Azure 订阅。 若要选择其他订阅，请使用 [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)。
+下面的示例介绍了简单的方案。 它使用 [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) 创建具有自签名证书的服务主体，并使用 [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) 将[读者](/azure/role-based-access-control/built-in-roles#reader)角色分配给该服务主体。 角色分配的范围限定为当前所选 Azure 订阅。 若要选择其他订阅，请使用 [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)。
 
 > [!NOTE]
 > New-SelfSignedCertificate cmdlet 和 PKI 模块目前在 PowerShell Core 中不受支持。 
@@ -68,7 +68,7 @@ Sleep 20
 New-AzRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $sp.ApplicationId
 ```
 
-该示例休眠 20 秒，让新的服务主体有时间传遍 Azure AD。 如果脚本等待时长不足，会显示错误：“主体 {ID} 不存在于目录 {DIR-ID} 中”。 若要解决此错误，请等待片刻，然后重新运行 **New-AzRoleAssignment** 命令。
+该示例休眠 20 秒，让新的服务主体有时间传遍 Azure AD。 如果脚本没有等待足够长的时间，则会显示一个错误，指出：“主体 {ID} 不存在于目录 {DIR-ID} 中”。 若要解决此错误，请等待片刻，然后重新运行 **New-AzRoleAssignment** 命令。
 
 可以使用 **ResourceGroupName** 参数将角色分配范围限制为特定资源组。 还可以使用 **ResourceType** 和 **ResourceName** 参数将范围限制为特定资源。 
 
@@ -79,7 +79,7 @@ New-AzRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $sp.Applic
 Import-Module -Name c:\ExtractedModule\New-SelfSignedCertificateEx.ps1
 ```
 
-在脚本中，替换以下两行以生成证书。
+在脚本中替换以下两行代码以生成证书。
 
 ```powershell
 New-SelfSignedCertificateEx -StoreLocation CurrentUser `
@@ -104,7 +104,7 @@ $ApplicationId = (Get-AzADApplication -DisplayNameStartWith exampleapp).Applicat
   -TenantId $TenantId
 ```
 
-## <a name="create-service-principal-with-certificate-from-certificate-authority"></a>使用来自证书颁发机构的证书创建服务主体
+## <a name="create-service-principal-with-certificate-from-certificate-authority"></a>使用证书颁发机构提供的证书创建服务主体
 
 以下示例使用证书颁发机构颁发的证书创建服务主体。 分配的范围限定为指定的 Azure 订阅。 它将服务主体添加到[读者](../../role-based-access-control/built-in-roles.md#reader)角色。 如果在角色分配过程中发生错误，它会重试分配。
 
@@ -216,9 +216,9 @@ Get-AzADApplication -DisplayName exampleapp | New-AzADAppCredential `
 
 创建服务主体时，可能会收到以下错误：
 
-* “Authentication_Unauthorized”**** 或“在上下文中找不到订阅”。**** - 如果帐户不具有在 Azure AD 上注册应用[所需的权限](#required-permissions)，会看到此错误。 通常，当 Azure 活动目录中的管理员用户可以注册应用且您的帐户不是管理员时，您会看到此错误。请管理员将您分配到管理员角色，或使用户能够注册应用。
+* “Authentication_Unauthorized”或“在上下文中找不到订阅”。   - 如果帐户不具有在 Azure AD 上注册应用[所需的权限](#required-permissions)，会看到此错误。 通常，当只有 Azure Active Directory 中的管理员用户可注册应用且帐户不是管理员帐户时，会看到此错误。可要求管理员分配管理员角色，或者允许用户注册应用。
 
-* 帐户“不具有对作用域‘/subscriptions/{guid}’执行操作‘Microsoft.Authorization/roleAssignments/write’的权限”。**** - 当帐户不具有足够权限将角色分配给标识时，会看到此错误。 请要求订阅管理员你将添加到用户访问管理员角色。
+* 帐户“不具有对作用域‘/subscriptions/{guid}’执行操作‘Microsoft.Authorization/roleAssignments/write’的权限”。  - 当帐户不具有足够权限将角色分配给标识时，会看到此错误。 可要求订阅管理员将你添加到“用户访问管理员”角色。
 
 ## <a name="next-steps"></a>后续步骤
 

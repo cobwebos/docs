@@ -1,21 +1,21 @@
 ---
-title: 访问审核日志 - Azure CLI - MySQL 的 Azure 数据库
-description: 本文介绍如何从 Azure CLI 配置和访问 Azure 数据库中 MySQL 中的审核日志。
+title: 访问审核日志-Azure CLI-Azure Database for MySQL
+description: 本文介绍如何在 Azure CLI 中配置和访问 Azure Database for MySQL 中的审核日志。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/13/2020
 ms.openlocfilehash: d532e1990586d80d675a8ccb247c0c9f7908bb6f
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81384163"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-cli"></a>在 Azure CLI 中配置和访问审核日志
 
-可以从 Azure CLI[为 MySQL 审核日志](concepts-audit-logs.md)配置 Azure 数据库。
+可以从 Azure CLI 配置[Azure Database for MySQL 审核日志](concepts-audit-logs.md)。
 
 > [!IMPORTANT]
 > 审核日志功能目前为预览版。
@@ -24,7 +24,7 @@ ms.locfileid: "81384163"
 
 若要逐步执行本操作方法指南，需要：
 
-- [MySQL 服务器的 Azure 数据库](quickstart-create-mysql-server-database-using-azure-portal.md)
+- [Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -35,7 +35,7 @@ ms.locfileid: "81384163"
 
 使用以下步骤启用和配置审核日志记录：
 
-1. 通过将**audit_logs_enabled**参数设置为"ON"来打开审核日志。 
+1. 通过将**audit_logs_enabled**参数设置为 "on" 来启用审核日志。 
     ```azurecli-interactive
     az mysql server configuration set --name audit_log_enabled --resource-group myresourcegroup --server mydemoserver --value ON
     ```
@@ -50,11 +50,11 @@ ms.locfileid: "81384163"
     az mysql server configuration set --name audit_log_exclude_users --resource-group myresourcegroup --server mydemoserver --value "azure_superuser"
     ```
 
-1. 通过更新**audit_log_include_users**参数添加要包括的任何特定 MySQL 用户进行日志记录。 通过提供 MySQL 用户名来指定用户。
+1. 通过更新**audit_log_include_users**参数添加要包含的任何特定 MySQL 用户进行日志记录。 通过提供 MySQL 用户名来指定用户。
     ```azurecli-interactive
     az mysql server configuration set --name audit_log_include_users --resource-group myresourcegroup --server mydemoserver --value "sampleuser"
     ```
 
 ## <a name="next-steps"></a>后续步骤
-- 了解有关 MySQL Azure 数据库中[审核日志](concepts-audit-logs.md)的详细信息
+- 详细了解 Azure Database for MySQL 中的[审核日志](concepts-audit-logs.md)
 - 了解如何在[Azure 门户](howto-configure-audit-logs-portal.md)中配置审核日志

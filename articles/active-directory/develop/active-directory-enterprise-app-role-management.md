@@ -1,5 +1,5 @@
 ---
-title: 为企业 Azure AD 应用配置角色声明 |蔚蓝
+title: 配置企业 Azure AD 应用的角色声明 |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何在 Azure Active Directory 中为企业应用程序配置 SAML 令牌中颁发的角色声明
 services: active-directory
@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 8db27819b7eef6cdf05ea3f6645ae930ebc4ef58
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80884743"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序配置 SAML 令牌中颁发的角色声明
@@ -54,7 +54,7 @@ ms.locfileid: "80884743"
 
     ![“属性”页](./media/active-directory-enterprise-app-role-management/tutorial_app_properties.png)
 
-6. 在另一个窗口中打开[Microsoft 图形资源管理器](https://developer.microsoft.com/graph/graph-explorer)，并采取以下步骤：
+6. 在另一个窗口中打开[Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)，然后执行以下步骤：
 
     a. 使用租户的全局管理员或共同管理员凭据登录到 Graph 浏览器站点。
 
@@ -135,7 +135,7 @@ ms.locfileid: "80884743"
 
       ![包含成功消息的修补操作](./media/active-directory-enterprise-app-role-management/graph-explorer-new11.png)
 
-7. 在使用更多角色修补服务主体后，可以将用户分配到相应的角色。 若要分配用户，可先转到门户，然后浏览到应用程序。 选择"**用户和组**"选项卡。此选项卡列出已分配给应用的所有用户和组。 可以在新角色上添加新用户。 还可以选择现有用户，然后再选择“编辑”来更改角色。****
+7. 在使用更多角色修补服务主体后，可以将用户分配到相应的角色。 若要分配用户，可先转到门户，然后浏览到应用程序。 选择 "**用户和组**" 选项卡。此选项卡列出了已分配给该应用的所有用户和组。 可以在新角色上添加新用户。 还可以选择现有用户，然后再选择“编辑”来更改角色。****
 
     ![“用户和组”选项卡](./media/active-directory-enterprise-app-role-management/graph-explorer-new5.png)
 
@@ -148,20 +148,20 @@ ms.locfileid: "80884743"
 
 8. 更新“属性”表以定义角色声明的自定义映射****。
 
-9. 在 **"用户属性**"对话框上的 **"用户声明"** 部分中，执行以下步骤以添加 SAML 令牌属性，如下表所示：
+9. 在 "用户**属性**" 对话框的 "**用户声明**" 部分中，执行以下步骤以添加 SAML 令牌属性，如下表所示：
 
-    | 属性名称 | 属性值 |
+    | 特性名 | 属性值 |
     | -------------- | ----------------|
     | 角色名称  | user.assignedroles |
 
     >[!NOTE]
-    >如果角色声明值为空，则 Azure AD 将不会在令牌中发送此值，并且根据设计默认此值。
+    >如果角色声明值为 null，则 Azure AD 将不会在令牌中发送此值，这是默认设置。
 
-    a. 单击 **"编辑**"图标可打开**用户属性&声明**对话框。
+    a. 单击 "**编辑**" 图标，打开 "& 声明" 对话框中的 "**用户属性**"。
 
       ![“添加属性”按钮](./media/active-directory-enterprise-app-role-management/editattribute.png)
 
-    b. 在 **"管理用户声明"** 对话框中，通过单击"**添加新声明**"来添加 SAML 令牌属性。
+    b. 在 "**管理用户声明**" 对话框中，单击 "**添加新声明**" 添加 "SAML 令牌" 属性。
 
       ![“添加属性”按钮](./media/active-directory-enterprise-app-role-management/tutorial_attribute_04.png)
 
@@ -171,7 +171,7 @@ ms.locfileid: "80884743"
 
     d. 将“命名空间”框留空****。
 
-    e. 在“源属性”**** 列表中，键入为该行显示的属性值。
+    e. 在“源属性”  列表中，键入为该行显示的属性值。
 
     f. 选择“保存”。 
 
@@ -181,7 +181,7 @@ ms.locfileid: "80884743"
 
 若要更新现有角色，请执行以下步骤：
 
-1. 打开[微软图形资源管理器](https://developer.microsoft.com/graph/graph-explorer)。
+1. 打开[Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)"。
 
 2. 使用租户的全局管理员或共同管理员凭据登录到 Graph 浏览器站点。
 
@@ -219,7 +219,7 @@ ms.locfileid: "80884743"
 
 若要删除现有角色，请执行以下步骤：
 
-1. 在另一个窗口中打开[Microsoft 图形资源管理器](https://developer.microsoft.com/graph/graph-explorer)。
+1. 在另一个窗口中打开[Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)。
 
 2. 使用租户的全局管理员或共同管理员凭据登录到 Graph 浏览器站点。
 

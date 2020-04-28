@@ -1,5 +1,5 @@
 ---
-title: Azure 机器学习作为事件网格源
+title: 作为事件网格源 Azure 机器学习
 description: 介绍为 Azure 事件网格中的机器学习工作区事件提供的属性
 services: event-grid
 author: spelluru
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: 7d9af420c7e2b47d2aeb4a8bf42ee138a605b305
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393275"
 ---
-# <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure 机器学习作为事件网格源
+# <a name="azure-machine-learning-as-an-event-grid-source"></a>作为事件网格源 Azure 机器学习
 
 本文提供了机器学习工作区事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
@@ -30,7 +30,7 @@ Azure 机器学习发出以下事件类型：
 | Microsoft.MachineLearningServices.ModelDeployed | 将模型成功部署到终结点时引发。 |
 | Microsoft.MachineLearningServices.RunCompleted | 在成功完成运行时引发。 |
 | Microsoft.MachineLearningServices.DatasetDriftDetected | 当数据集偏移监视器检测到偏移时引发。 |
-| 微软.机器学习服务.运行状态已更改 | 当运行状态更改为"失败"时引发。 |
+| MachineLearningServices. RunStatusChanged | 当运行状态更改为 "failed" 时引发。 |
 
 ### <a name="the-contents-of-an-event-response"></a>事件响应的内容
 
@@ -149,7 +149,7 @@ Azure 机器学习发出以下事件类型：
 }]
 ```
 
-### <a name="microsoftmachinelearningservicesrunstatuschanged-event"></a>微软.机器学习服务.运行状态更改事件
+### <a name="microsoftmachinelearningservicesrunstatuschanged-event"></a>MachineLearningServices. RunStatusChanged 事件
 
 ```json
 [{
@@ -196,7 +196,7 @@ Azure 机器学习发出以下事件类型：
 | subject | 字符串 | 事件主题的发布者定义路径。 |
 | eventType | 字符串 | 此事件源的一个注册事件类型。 |
 | EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
-| id | 字符串 | 事件的唯一标识符。 |
+| ID | 字符串 | 事件的唯一标识符。 |
 | data | 对象 (object) | Blob 存储事件数据。 |
 | dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
 | metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
@@ -246,7 +246,7 @@ Azure 机器学习发出以下事件类型：
 | StartTime | datetime | 导致了偏移检测的目标数据集时序的开始时间。  |
 | EndTime | datetime | 导致了偏移检测的目标数据集时序的结束时间。 |
 
-### <a name="microsoftmachinelearningservicesrunstatuschanged"></a>微软.机器学习服务.运行状态已更改
+### <a name="microsoftmachinelearningservicesrunstatuschanged"></a>MachineLearningServices. RunStatusChanged
 
 | properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
@@ -256,10 +256,10 @@ Azure 机器学习发出以下事件类型：
 | RunType | 字符串 | 已完成的运行的运行类型。 |
 | RunTags | 对象 (object) | 已完成的运行的标记。 |
 | RunProperties | 对象 (object) | 已完成的运行的属性。 |
-| 运行状态 | 字符串 | 运行的状态。 |
+| RunStatus | 字符串 | 运行的状态。 |
 
-## <a name="tutorials-and-how-tos"></a>教程和如何
-| 标题 | 说明 |
+## <a name="tutorials-and-how-tos"></a>教程和操作指南
+| Title | 说明 |
 | ----- | ----- |
 | [使用 Azure 机器学习事件](../machine-learning/concept-event-grid-integration.md) | 概述 Azure 机器学习与事件网格的集成。 |
 

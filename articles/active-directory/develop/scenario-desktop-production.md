@@ -12,19 +12,19 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: ea564eb69f102d8e548bf8ae9a626598fa264cd4
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882873"
 ---
-# <a name="desktop-app-that-calls-web-apis-move-to-production"></a>调用 Web API 的桌面应用：移动到生产
+# <a name="desktop-app-that-calls-web-apis-move-to-production"></a>用于调用 Web API 的桌面应用：移到生产环境
 
 本文介绍如何将调用 Web API 的桌面应用移到生产环境。
 
 ## <a name="handle-errors-in-desktop-applications"></a>在桌面应用程序中处理错误
 
-你已了解，在不同的流中如何处理静默流的错误，如代码片段所示。 您还看到，在某些情况下需要交互，如增量同意和条件访问。
+你已了解，在不同的流中如何处理静默流的错误，如代码片段所示。 你还发现存在需要交互的情况，如增量许可和条件访问。
 
 ## <a name="have-the-user-consent-upfront-for-several-resources"></a>让用户提前许可多个资源
 
@@ -101,9 +101,9 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();
 ```
 
-### <a name="microsoft-personal-account-requires-reconsent-each-time-the-app-runs"></a>每次应用运行时，Microsoft 个人帐户都需要重新批准
+### <a name="microsoft-personal-account-requires-reconsent-each-time-the-app-runs"></a>每次应用运行时，Microsoft 个人帐户都需要 reconsent
 
-对于 Microsoft 个人帐户用户，在授权的每个本机客户端（桌面或移动应用）调用上重新提示同意是预期行为。 本机客户端标识本质上是不安全的，这与机密客户端应用程序标识相悖。 机密客户端应用程序与 Microsoft 标识平台交换机密，以证明其身份。 Microsoft 标识平台选择在每次授权应用程序时提示用户同意，以减轻消费者服务的这种不安全。
+对于 Microsoft 个人帐户用户，针对每个本机客户端（桌面或移动应用）的同意调用的 reprompting 是预期的行为。 本机客户端标识本质上是不安全的，这与机密客户端应用程序标识相反。 机密客户端应用程序通过 Microsoft 标识平台交换机密，以证明其身份。 Microsoft 标识平台选择通过在应用程序每次获得授权时提示用户进行同意，来缓解消费者服务的安全。
 
 ## <a name="next-steps"></a>后续步骤
 

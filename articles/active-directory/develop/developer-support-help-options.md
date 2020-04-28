@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.openlocfilehash: ea1afd2ecac8974c0e865e235288da545a9f1244
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885525"
 ---
 # <a name="support-and-help-options-for-developers"></a>开发人员的支持和帮助选项
@@ -42,14 +42,14 @@ ms.locfileid: "80885525"
 {Your Search Terms} (site:stackoverflow.com OR site:docs.microsoft.com OR site:github.com/azure-samples OR site:cloudidentity.com OR site:developer.microsoft.com/graph)
 ```
 
-其中，*{Your Search Terms}* 对应于搜索关键字。
+其中， *{Your Search Terms}* 对应于搜索关键字。
 
 ## <a name="use-the-development-support-tools"></a>使用开发支持工具
 
 | 工具  | 说明  |
 |---------|---------|
 | [jwt.ms](https://jwt.ms) | 粘贴 ID 或访问令牌来解码声明名称和值。 |
-| [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)| 用于针对 Microsoft Graph API 发出请求和查看响应的工具。 |
+| [Microsoft Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)| 用于针对 Microsoft Graph API 发出请求和查看响应的工具。 |
 
 ## <a name="post-a-question-to-stack-overflow"></a>在 Stack Overflow 上发布问题
 
@@ -59,18 +59,18 @@ Stack Overflow 是开发相关问题的首选渠道。 在这里，开发人员�
 
 |组件/区域  | Tags |
 |---------|---------|
-| ADAL 库 | [[阿达尔]](https://stackoverflow.com/questions/tagged/adal) |
+| ADAL 库 | [[adal]](https://stackoverflow.com/questions/tagged/adal) |
 | MSAL 库     | [[msal]](https://stackoverflow.com/questions/tagged/msal) |
-| OWIN 中间件  | [[azure 活动目录]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
+| OWIN 中间件  | [[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
 | [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  | [[azure-ad-b2b]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
 | [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[azure-ad-b2c]](https://stackoverflow.com/questions/tagged/azure-ad-b2c) |
-| [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[微软图]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
-| 与身份验证或授权主题相关的其他任何方面 | [[azure 活动目录]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
+| [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[microsoft-graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
+| 与身份验证或授权主题相关的其他任何方面 | [[azure-active directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
 
 Stack Overflow 中的以下帖子包含有关如何提问和如何添加源代码的提示。 遵循以下准则可提高社区成员快速评估和响应问题的可能性：
 
-* [我该如何问一个好问题](https://stackoverflow.com/help/how-to-ask)
-* [How to create a minimal, complete, and verifiable example](https://stackoverflow.com/help/mcve)（如何创建最小、完整且可验证的示例）
+* [如何实现问一个好问题](https://stackoverflow.com/help/how-to-ask)
+* [如何创建最小、完整和可验证的示例](https://stackoverflow.com/help/mcve)
 
 ## <a name="create-a-github-issue"></a>创建 GitHub 问题
 
@@ -78,8 +78,8 @@ Stack Overflow 中的以下帖子包含有关如何提问和如何添加源代�
 
 有关库及其 GitHub 存储库的列表，请参阅以下内容：
 
-* [Azure 活动目录身份验证库 （ADAL）](../azuread-dev/active-directory-authentication-libraries.md)库和 GitHub 存储库
-* [微软身份验证库 （MSAL）](reference-v2-libraries.md)库和 GitHub 存储库
+* [Azure Active Directory 身份验证库（ADAL）](../azuread-dev/active-directory-authentication-libraries.md)库和 GitHub 存储库
+* [Microsoft 身份验证库（MSAL）](reference-v2-libraries.md)库和 GitHub 存储库
 
 ## <a name="open-a-support-request"></a>提出支持请求
 

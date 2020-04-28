@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/24/2020
 ms.author: anzaman
 ms.openlocfilehash: 4821f2eb694a36cf0570008b3e62ce39999c58d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80239749"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>关于点到站点 VPN 路由
@@ -52,11 +52,11 @@ Azure 当前支持两种远程访问协议：IKEv2 和 SSTP。 IKEv2 可用于�
 
 ## <a name="multiple-peered-vnets"></a><a name="multipeered"></a>多个对等互连 VNet
 
-在此示例中，点到站点 VPN 网关连接适用于 VNet1。 VNet1 与 VNet2 对等互连。 VNet2 与 VNet3 对等互连。 VNet1 与 VNet4 对等互连。 VNet1 不与 VNet3 直接对等互连。 VNet1 已启用"允许网关传输"，VNet2 和 VNet4 已启用"使用远程网关"。
+在此示例中，点到站点 VPN 网关连接适用于 VNet1。 VNet1 与 VNet2 对等互连。 VNet2 与 VNet3 对等互连。 VNet1 与 VNet4 对等互连。 VNet1 不与 VNet3 直接对等互连。 VNet1 已启用 "允许网关传输"，VNet2 和 VNet4 已启用 "使用远程网关"。
 
 使用 Windows 的客户端可以直接访问对等互连 VNet，但如果 VNet 对等互连或网络拓扑发生任何更改，必须重新下载 VPN 客户端。 非 Windows 客户端可直接访问对等互连 VNet。 访问不可传递，且仅限直接对等互连的 VNet。
 
-![多个对等 VNet](./media/vpn-gateway-about-point-to-site-routing/2.jpg "多个对等互连 VNet")
+![多个对等互连 VNet](./media/vpn-gateway-about-point-to-site-routing/2.jpg "多个对等互连 VNet")
 
 ### <a name="address-space"></a>地址空间：
 
@@ -114,7 +114,7 @@ Azure 当前支持两种远程访问协议：IKEv2 和 SSTP。 IKEv2 可用于�
 
 使用 Windows 或其他受支持的 OS 的客户端可以访问使用站点到站点 VPN 连接连接的所有 VNet，但必须将到已连接 VNet 的路由手动添加到 Windows 客户端。
 
-![多个 VNet 和 S2S （BGP）](./media/vpn-gateway-about-point-to-site-routing/4.jpg "多个 VNet 和 S2S BGP")
+![多个 VNet 和 S2S (BGP)](./media/vpn-gateway-about-point-to-site-routing/4.jpg "多个 VNet 和 S2S BGP")
 
 ### <a name="address-space"></a>地址空间
 
@@ -168,7 +168,7 @@ Windows 客户端和非 Windows 客户端只能访问 VNet1。
 
 Windows 客户端可以访问 VNet 和其他分支机构 (Site1)，但必须将到 Site1 的路由手动添加到客户端。 非 Windows 客户端可以访问 VNet 以及本地分支机构。
 
-![一个 VNet 和一个分支机构 （BGP）](./media/vpn-gateway-about-point-to-site-routing/6.jpg "一个 VNet 和一个分支机构")
+![一个 VNet 和一个分支机构 (BGP)](./media/vpn-gateway-about-point-to-site-routing/6.jpg "一个 VNet 和一个分支机构")
 
 ### <a name="address-space"></a>地址空间
 

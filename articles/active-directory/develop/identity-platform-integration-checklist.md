@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.openlocfilehash: 56975cebbfe4f6dd6452c850c338d431faea27bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80050498"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft 标识平台最佳做法和建议
@@ -56,7 +56,7 @@ ms.locfileid: "80050498"
 
 |   |   |
 |---|---|
-| ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 管理重定向 URI： <ul><li>保留所有重定向 URI 的所有权，并使其 DNS 记录保持最新。</li><li>不要在 URI 中使用通配符 (*)。</li><li>对于 Web 应用，请确保所有 URI 安全且已经过加密（例如，使用 https 方案）。</li><li>对于公共客户端，在适用的情况下请使用特定于平台的重定向 URI（主要适用于 iOS 和 Android）。 否则，请使用包含大量随机内容的重定向 URI，以防在回调应用时发生冲突。</li><li>如果在隔离的 Web 代理中使用应用，则可以使用 `https://login.microsoftonline.com/common/oauth2/nativeclient`。</li><li>定期审查并修剪所有未使用或不必要的重定向 URI。</li></ul> |
+| ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 管理重定向 URI： <ul><li>保留所有重定向 URI 的所有权，并使其 DNS 记录保持最新。</li><li>不要在 URI 中使用通配符 (*)。</li><li>对于 Web 应用，请确保所有 URI 安全且已经过加密（例如，使用 https 方案）。</li><li>对于公共客户端，在适用的情况下请使用特定于平台的重定向 URI（主要适用于 iOS 和 Android）。 否则，请使用包含大量随机内容的重定向 URI，以防在回调应用时发生冲突。</li><li>如果在隔离的 Web 代理中使用应用，则可以使用 `https://login.microsoftonline.com/common/oauth2/nativeclient` 。</li><li>定期审查并修剪所有未使用或不必要的重定向 URI。</li></ul> |
 | ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 如果应用已注册到目录中，请最小化并手动监视应用注册所有者的列表。 |
 | ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 除非有明确的要求，否则请不要启用对 [OAuth2 隐式授权流](v2-oauth2-implicit-grant-flow.md)的支持。 在[此处](v2-oauth2-implicit-grant-flow.md#suitable-scenarios-for-the-oauth2-implicit-grant)了解有效方案。 |
 | ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 不要只是使用用户名/密码。 不要使用[资源所有者密码凭据流 (ROPC)](v2-oauth-ropc.md)，因为它会直接处理用户的密码。 此流所需的信任度和用户公开度很高，仅当无法使用其他更安全的流时，才应使用此流。 在某些方案（比如 DevOps）中仍需要此流，但请注意，使用该流将对应用程序施加约束。  有关其他新式方法，请阅读[身份验证流和应用程序方案](authentication-flows-app-scenarios.md)。|
@@ -69,7 +69,7 @@ ms.locfileid: "80050498"
 |   |   |
 |---|---|
 | ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 使用新式身份验证解决方案（OAuth 2.0、[OpenID Connect](v2-protocols-oidc.md)）将用户安全登录。 |
-| ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) |  不要直接对 OAuth 2.0 和 Open ID 等协议进行编程。 请改用 [Microsoft 身份验证库 (MSAL)](msal-overview.md)。 MSAL 库在易于使用的库中安全地包装安全协议，您将获得对[条件访问](/azure/active-directory/conditional-access/overview)方案、设备范围[单一登录 （SSO）](/azure/active-directory/manage-apps/what-is-single-sign-on)和内置令牌缓存支持的内置支持。 有关详细信息，请参阅 Microsoft 支持的[客户端库](reference-v2-libraries.md#microsoft-supported-client-libraries)和[中间件库](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries)列表，以及[兼容的第三方客户端库](reference-v2-libraries.md#compatible-client-libraries)列表。<br/><br/>如果必须为身份验证协议手动编写代码，应遵循 [Microsoft SDL](https://www.microsoft.com/sdl/default.aspx) 等方法。 请认真对待每个协议的标准规范中的安全注意事项。|
+| ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) |  不要直接对 OAuth 2.0 和 Open ID 等协议进行编程。 请改用 [Microsoft 身份验证库 (MSAL)](msal-overview.md)。 MSAL 库在易于使用的库中安全地包装安全协议，并为[条件访问](/azure/active-directory/conditional-access/overview)方案、设备范围的[单一登录（SSO）](/azure/active-directory/manage-apps/what-is-single-sign-on)和内置令牌缓存支持提供内置支持。 有关详细信息，请参阅 Microsoft 支持的[客户端库](reference-v2-libraries.md#microsoft-supported-client-libraries)和[中间件库](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries)列表，以及[兼容的第三方客户端库](reference-v2-libraries.md#compatible-client-libraries)列表。<br/><br/>如果必须为身份验证协议手动编写代码，应遵循 [Microsoft SDL](https://www.microsoft.com/sdl/default.aspx) 等方法。 请认真对待每个协议的标准规范中的安全注意事项。|
 | ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) |  将现有应用从 [Azure Active Directory 身份验证库 (ADAL)](../azuread-dev/active-directory-authentication-libraries.md) 迁移到 [Microsoft 身份验证库](msal-overview.md)。 MSAL 是 Microsoft 的最新标识平台解决方案，比 ADAL 更普及。 它适用于 .NET、JavaScript、Android、iOS 和 macOS，并为 Python 和 Java 推出了公共预览版。 详细了解如何迁移 [ADAL.NET](msal-net-migration.md)、[ADAL.js](msal-compare-msal-js-and-adal-js.md) 以及 [ADAL.NET 和 iOS 中介](msal-net-migration-ios-broker.md)应用。|
 | ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) |  对于移动应用，请使用应用程序注册体验来配置每个平台。 要使应用程序能够利用 Microsoft Authenticator 或 Microsoft 公司门户进行单一登录，需要为应用配置“中介重定向 URI”。 这样，在身份验证后，Microsoft 就可将控制权递回给应用程序。 配置每个平台时，应用注册体验会引导你完成该过程。 使用快速入门下载工作示例。 在 iOS 上，请尽可能地使用中介和系统 webview。|
 | ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) |  在 Web 应用或 Web API 中，为每个帐户保留一个令牌缓存。  对于 Web 应用，令牌缓存应使用帐户 ID 进行键控。  对于 Web API，帐户应使用用于调用该 API 的令牌的哈希值进行键控。 MSAL.NET 在 .NET Framework 和 .NET Core 子平台中提供自定义令牌缓存序列化。 出于安全和性能方面的原因，我们建议为每个用户序列化一个缓存。 有关详细信息，请阅读[令牌缓存序列化](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application)。|
@@ -87,21 +87,21 @@ ms.locfileid: "80050498"
 | ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 注册应用所需的完整权限集，使管理员能够轻松地向其租户授予许可。 在运行时使用[增量许可](../azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)，以帮助用户了解应用在首次启动时为何要请求可能会给用户带来忧虑或困惑的权限。 |
 | ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 实现[干净的单一注销体验](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-6-SignOut)。 这是一项隐私和安全要求，有助于建立良好的用户体验。 |
 
-## <a name="testing"></a>正在测试
+## <a name="testing"></a>测试
 
 |   |   |
 |---|---|
 | ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 测试可能影响用户使用应用程序的能力的[条件访问策略](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-6-SignOut)。 |
-| ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 使用计划支持的所有可能帐户（例如，工作或学校帐户、个人 Microsoft 帐户、子帐户和主权帐户）测试应用程序。 |
+| ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 使用你计划支持的所有可能的帐户（例如，工作或学校帐户、个人 Microsoft 帐户、子帐户和主权帐户）来测试应用程序。 |
 
 ## <a name="additional-resources"></a>其他资源
 
 浏览有关 v2.0 的深入信息：
 
-* [微软身份平台（v2.0概述）](v2-overview.md)
+* [Microsoft 标识平台 (v2.0) 概述](v2-overview.md)
 * [Microsoft 标识平台协议参考](active-directory-v2-protocols.md)
 * [访问令牌参考](access-tokens.md)
 * [ID 令牌参考](id-tokens.md)
 * [身份验证库参考](reference-v2-libraries.md)
 * [Microsoft 标识平台中的权限和许可](v2-permissions-and-consent.md)
-* [Microsoft Graph API](https://developer.microsoft.com/graph)
+* [Microsoft 图形 API](https://developer.microsoft.com/graph)

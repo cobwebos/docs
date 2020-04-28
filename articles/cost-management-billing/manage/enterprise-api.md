@@ -5,14 +5,14 @@ author: mumami
 tags: billing
 ms.service: cost-management-billing
 ms.topic: reference
-ms.date: 02/14/2020
+ms.date: 04/14/2020
 ms.author: banders
-ms.openlocfilehash: 10275bac8cd9363939f9b6f298c49d7ef08ab7bf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: aeca9aede4c1b2d8c27de749c7e07c0153000825
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202907"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383171"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>面向企业客户的报告 API 概述
 报告 API 使企业 Azure 客户能够以编程方式将消耗数据和计费数据提取到首选的数据分析工具。 企业客户与 Azure 签订了[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)，以达成协商的货币承诺并获取自定义 Azure 资源定价的访问权限。
@@ -51,7 +51,9 @@ API 所需的所有日期和时间参数都必须表示为组合的协调世界�
 |响应状态代码|消息|说明|
 |-|-|-|
 |200| OK|无错误|
+|400| 错误的请求| 参数无效 – 日期范围、EA 号等。|
 |401| 未授权| API 密钥找不到、无效、已过期等。|
 |404| 不可用| 找不到报表终结点|
-|400| 错误的请求| 参数无效 – 日期范围、EA 号等。|
+|429 | TooManyRequests | 请求被限制。 等待 <code>x-ms-ratelimit-microsoft.consumption-retry-after</code> 标头中指定的时间后重试。|
 |500| 服务器错误| 处理请求时出现异常错误|
+| 503 | ServiceUnavailable | 服务暂时不可用。 等待 <code>Retry-After</code> 标头中指定的时间后重试。|

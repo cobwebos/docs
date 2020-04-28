@@ -12,13 +12,13 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 09cc43dec2eff48754f5a6e693badd6bb1907cce
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882994"
 ---
-# <a name="scenario-desktop-app-that-calls-web-apis"></a>方案：调用 Web API 的桌面应用
+# <a name="scenario-desktop-app-that-calls-web-apis"></a>方案：用于调用 Web API 的 桌面应用
 
 了解构建调用 Web API 的桌面应用所需的一切。
 
@@ -35,10 +35,10 @@ ms.locfileid: "80882994"
 
 
 > [!div class="nextstepaction"]
-> [快速入门：获取令牌并从 UWP 应用调用 Microsoft 图形 API](./quickstart-v2-uwp.md)
+> [快速入门：获取令牌并从 UWP 应用中调用 Microsoft Graph API](./quickstart-v2-uwp.md)
 
 > [!div class="nextstepaction"]
-> [快速入门：获取令牌并从 macOS 本机应用调用 Microsoft 图形 API](./quickstart-v2-ios.md)
+> [快速入门：获取令牌并从 macOS 本机应用调用 Microsoft Graph API](./quickstart-v2-ios.md)
 
 ## <a name="overview"></a>概述
 
@@ -50,9 +50,9 @@ ms.locfileid: "80882994"
   - 或者，如果它是 .NET Core 应用程序，并且你同意在系统浏览器中与 Azure Active Directory (Azure AD) 进行身份验证交互。
 
 - 对于 Windows 托管的应用程序，也可让加入到 Windows 域或已加入 Azure AD 的计算机上运行的应用程序使用集成 Windows 身份验证以无提示方式获取令牌。
-- 最后，可以在公共客户端应用程序中使用用户名和密码，虽然不建议使用这种方式。 在某些情况下，如 DevOps 中仍需要它。 使用此方式会对应用程序施加约束。 例如，它无法登录需要执行多重身份验证（条件访问）的用户。 另外，应用程序无法利用单一登录 (SSO)。
+- 最后，可以在公共客户端应用程序中使用用户名和密码，虽然不建议使用这种方式。 在某些情况下，它仍是必需的，如 DevOps。 使用此方式会对应用程序施加约束。 例如，它不能登录需要执行多重身份验证（条件访问）的用户。 另外，应用程序无法利用单一登录 (SSO)。
 
-  它也不适用于新式身份验证原则，仅出于遗留原因提供。
+  它也违反新式身份验证的原则，提供它只是出于历史原因。
 
   ![桌面应用程序](media/scenarios/desktop-app.svg)
 
@@ -67,4 +67,4 @@ ms.locfileid: "80882994"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [桌面应用：应用程序注册](scenario-desktop-app-registration.md)
+> [桌面应用：应用注册](scenario-desktop-app-registration.md)

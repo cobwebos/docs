@@ -16,10 +16,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1193bfc08ccbd86d4da09c4de472f09bb49208f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80049936"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>查找帮助并打开 Azure Active Directory 的支持票证
@@ -31,7 +31,7 @@ Microsoft 针对 Azure Active Directory (Azure AD) 提供全球技术支持、�
 
 * 有关面向 IT 专业人员和开发人员的操作指南信息或代码示例等内容，请参阅 [docs.microsoft.com 上的技术文档](https://docs.microsoft.com/azure/active-directory/)。
 
-* [Microsoft 技术社区](https://techcommunity.microsoft.com/)是我们 IT 专业合作伙伴和客户协作、共享和学习的场所。 [微软技术社区信息中心](https://techcommunity.microsoft.com/t5/Community-Info-Center/ct-p/Community-Info-Center)用于公告、博客文章、询问我任何内容 （AMA） 与专家的互动等。 你也可以[加入该社区以提交看法](https://techcommunity.microsoft.com/t5/Communities/ct-p/communities)。
+* [Microsoft 技术社区](https://techcommunity.microsoft.com/)是 IT 专业人员合作伙伴和客户进行协作、分享和学习的地方。 [Microsoft 技术社区信息中心](https://techcommunity.microsoft.com/t5/Community-Info-Center/ct-p/Community-Info-Center)用于公告、博客文章、咨询专家（AMA）与专家的交互等。 你也可以[加入该社区以提交看法](https://techcommunity.microsoft.com/t5/Communities/ct-p/communities)。
 
 
 ## <a name="open-a-support-ticket"></a>开具支持票证
@@ -41,7 +41,7 @@ Microsoft 针对 Azure Active Directory (Azure AD) 提供全球技术支持、�
 ### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-azure-portal"></a>如何在 Azure 门户中开具 Azure AD 相关的支持票证
 
 > [!NOTE]
-> 对于计费或订阅问题，您必须使用[Microsoft 365 管理中心](https://admin.microsoft.com)。
+> 对于帐单或订阅问题，必须使用[Microsoft 365 管理中心](https://admin.microsoft.com)。
 > 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，然后打开“Azure Active Directory”。****
@@ -50,34 +50,34 @@ Microsoft 针对 Azure Active Directory (Azure AD) 提供全球技术支持、�
    
 3. 在“基本信息”边栏选项卡上，请为“问题类型”选择“技术”。************
 
-4. 选择您的**订阅**。
+4. 选择**订阅**。
 
-5. 对于**服务**，请选择**Azure 活动目录**。
+5. 对于 "**服务**"，选择**Azure Active Directory**。
 
-6. 为请求创建**摘要**。 摘要必须低于 140 个字符。
+6. 为请求创建**摘要**。 摘要的长度必须为140个字符。
   
-7. 选择**问题类型**，然后为该类型选择一个类别。 此时，屏幕上还会针对问题类别提供自助信息。
+7. 选择 "**问题类型**"，然后选择该类型的类别。 此时，屏幕上还会针对问题类别提供自助信息。
   
 7. 添加剩余的问题信息，然后单击“下一步”。**** 
 
-8. 此时，在 **"解决方案"** 边栏选项卡中为您提供自助解决方案和文档。 如果解决方案没有解决您的问题，请单击 **"下一步**"。 
+8. 此时，你将在 "**解决方案**" 边栏选项卡中提供自助解决方案和文档。 如果没有解决方案解决问题，请单击 "**下一步**"。 
 
-9. 在 **"详细信息"** 边栏选项卡上，填写所需的详细信息并选择[严重性](https://azure.microsoft.com/support/plans/response/)。 
+9. 在 "**详细信息**" 边栏选项卡上，填写所需的详细信息并选择一个[严重性](https://azure.microsoft.com/support/plans/response/)。 
  
 ![image](https://user-images.githubusercontent.com/13383753/76565580-1c284900-6468-11ea-8c0f-85af98097b6f.png)
  
-10. 提供您的联系信息，然后选择 **"下一步**"。 
+10. 提供联系信息，然后选择 "**下一步**"。 
 
 
 8. 提供联系信息，然后选择“创建”。****
   ![问题类别自助屏幕截图](./media/active-directory-troubleshooting-support-howto/open-support-ticket.png)
 
-### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-microsoft-365-admin-center"></a>如何在 Microsoft 365 管理中心打开 Azure AD 的支持票证
+### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-microsoft-365-admin-center"></a>如何在 Microsoft 365 管理中心为 Azure AD 打开支持票证
 
 > [!NOTE]
-> [Microsoft 365 管理中心](https://admin.microsoft.com)中支持 Azure AD 仅为管理员提供。 
+> 仅为管理员提供对[Microsoft 365 管理中心](https://admin.microsoft.com)中 Azure AD 的支持。 
 
-1. 使用具有企业移动性与安全 （EMS） 许可证的帐户登录到[Microsoft 365 管理中心](https://admin.microsoft.com)。
+1. 使用具有企业移动性 + 安全性（EMS）许可证的帐户登录到[Microsoft 365 管理中心](https://admin.microsoft.com)。
 
 2. 在“支持”磁贴上，选择“新建服务请求”********：
 

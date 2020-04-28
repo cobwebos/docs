@@ -1,7 +1,7 @@
 ---
-title: 使用自定义策略配置资源所有者密码凭据流
+title: 配置资源所有者密码凭据流和自定义策略
 titleSuffix: Azure AD B2C
-description: 了解如何使用 Azure 活动目录 B2C 中的自定义策略配置资源所有者密码凭据 （ROPC） 流。
+description: 了解如何使用 Azure Active Directory B2C 中的自定义策略配置资源所有者密码凭据（ROPC）流。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,17 +12,17 @@ ms.date: 04/01/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 207f4aecfb57480293c138c95ed6e8f6562bbc7b
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80529163"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>使用自定义策略在 Azure Active Directory B2C 中配置资源所有者密码凭据流
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-在 Azure 活动目录 B2C（Azure AD B2C）中，资源所有者密码凭据 （ROPC） 流是 OAuth 标准身份验证流。 在此流中，应用程序（也称为信赖方）为令牌交换有效凭据。 凭据包括用户 ID 和密码。 返回的令牌为 ID 令牌、访问令牌和刷新令牌。
+在 Azure Active Directory B2C （Azure AD B2C）中，资源所有者密码凭据（ROPC）流是 OAuth 标准身份验证流。 在此流中，应用程序（也称为信赖方）为令牌交换有效凭据。 凭据包括用户 ID 和密码。 返回的令牌为 ID 令牌、访问令牌和刷新令牌。
 
 [!INCLUDE [active-directory-b2c-ropc-notes](../../includes/active-directory-b2c-ropc-notes.md)]
 
@@ -124,7 +124,7 @@ ms.locfileid: "80529163"
     </TechnicalProfile>
     ```
 
-    将**client_id**的**默认值**替换为您在先决条件教程中创建的代理身份体验框架应用程序的应用程序 ID。 然后，将**resource_id**的**默认值**替换为您在先决条件教程中创建的标识体验框架应用程序的应用程序 ID。
+    将**client_id**的**DefaultValue**替换为在必备教程中创建的 ProxyIdentityExperienceFramework 应用程序的应用程序 id。 然后，将**resource_id**的**DefaultValue**替换为你还在必备教程中创建的 IdentityExperienceFramework 应用程序的应用程序 id。
 
 5. 将以下 **ClaimsProvider** 元素及其技术配置文件添加到 **ClaimsProviders** 元素：
 
@@ -219,7 +219,7 @@ ms.locfileid: "80529163"
 
 7. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”********。
 8. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件****。
-9. 单击 **“上载”**。
+9. 单击“上载” 。 
 
 ## <a name="create-a-relying-party-file"></a>创建信赖方文件
 
@@ -239,8 +239,8 @@ ms.locfileid: "80529163"
     ```
 
 5. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”********。
-6. **启用覆盖策略（如果存在**），然后浏览并选择*ROPC_Auth.xml*文件。
-7. 单击 **“上载”**。
+6. 如果已存在，请启用 **"覆盖策略"**，然后浏览到并选择*ROPC_Auth .xml*文件。
+7. 单击“上载” 。 
 
 ## <a name="test-the-policy"></a>测试策略
 
@@ -251,7 +251,7 @@ ms.locfileid: "80529163"
 - 将 `your-tenant-name` 替换为 Azure AD B2C 租户的名称。
 - 将 `B2C_1A_ROPC_Auth` 替换为资源所有者密码凭据策略的全名。
 
-| 键 | 值 |
+| 密钥 | 值 |
 | --- | ----- |
 | username | `user-account` |
 | password | `password1` |
@@ -296,7 +296,7 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 - 将 `your-tenant-name` 替换为 Azure AD B2C 租户的名称。
 - 将 `B2C_1A_ROPC_Auth` 替换为资源所有者密码凭据策略的全名。
 
-| 键 | 值 |
+| 密钥 | 值 |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |

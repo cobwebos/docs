@@ -1,7 +1,7 @@
 ---
 title: Predicates 和 PredicateValidations
 titleSuffix: Azure AD B2C
-description: 通过使用 Azure 活动目录 B2C 中的自定义策略，防止将格式不正确的数据添加到 Azure AD B2C 租户。
+description: 使用 Azure Active Directory B2C 中的自定义策略防止将格式不正确的数据添加到 Azure AD B2C 租户。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,17 +12,17 @@ ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 887c9432f04cce775e045bb6da83f0af4a4a4bce
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80396892"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predicates 和 PredicateValidations
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Predicates**** 和 PredicateValidations**** 元素可用于执行验证过程，以确保向 Azure Active Directory B2C (Azure AD B2C) 租户仅输入正确格式的数据。
+Predicates  和 PredicateValidations  元素可用于执行验证过程，以确保向 Azure Active Directory B2C (Azure AD B2C) 租户仅输入正确格式的数据。
 
 以下图示显示了元素之间的关系：
 
@@ -30,29 +30,29 @@ Predicates**** 和 PredicateValidations**** 元素可用于执行验证过程，
 
 ## <a name="predicates"></a>谓词
 
-Predicate**** 元素定义基本验证，用以检查声明类型的值并返回 `true` 或 `false`。 可通过使用指定的 Method**** 元素和一组与该方法相关的 Parameter**** 元素来完成验证。 例如，谓词可以检查字符串声明值的长度是否在指定的最小和最大参数范围内，或者字符串声明值是否包含字符集。 如果检查失败，UserHelpText**** 元素将为用户提供一条错误消息。 UserHelpText**** 元素的值可以使用[语言自定义](localization.md)进行本地化。
+Predicate  元素定义基本验证，用以检查声明类型的值并返回 `true` 或 `false`。 可通过使用指定的 Method  元素和一组与该方法相关的 Parameter  元素来完成验证。 例如，谓词可以检查字符串声明值的长度是否在指定的最小和最大参数范围内，或者字符串声明值是否包含字符集。 如果检查失败，UserHelpText  元素将为用户提供一条错误消息。 UserHelpText  元素的值可以使用[语言自定义](localization.md)进行本地化。
 
-**Predicates** 元素必须紧跟在 [BuildingBlocks](buildingblocks.md) 元素中的 **ClaimsSchema** 元素之后。
+**Predicates** 元素必须紧跟在 **BuildingBlocks** 元素中的 [ClaimsSchema](buildingblocks.md) 元素之后。
 
-Predicates**** 元素包含以下元素：
+Predicates  元素包含以下元素：
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | Predicate | 1:n | 谓词列表。 |
 
-Predicate**** 元素包含以下属性：
+Predicate  元素包含以下属性：
 
-| 特性 | 必选 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于谓词的标识符。 其他元素可以在策略中使用此标识符。 |
-| 方法 | 是 | 用于验证的方法类型。 可能的值为：IsLengthRange[](#islengthrange)、MatchesRegex[](#matchesregex)、IncludesCharacters[](#includescharacters) 或 IsDateRange[](#isdaterange)。  |
+| 方法 | 是 | 用于验证的方法类型。 可能的值为：IsLengthRange  、MatchesRegex  、IncludesCharacters  或 IsDateRange  。  |
 | HelpText | 否 | 检查失败时向用户发送的错误消息。 此字符串可以使用[语言自定义](localization.md)进行本地化 |
 
 Predicate**** 元素包含以下元素：
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
-| UserHelpText | 0:1 | （已弃用）如果检查失败，则给用户发送错误消息。 |
+| UserHelpText | 0:1 | 弃用用户检查失败时的错误消息。 |
 | 参数 | 1:1 | 用于字符串验证的方法类型参数。 |
 
 Parameters**** 元素包含以下元素：
@@ -69,17 +69,17 @@ Parameter**** 元素包含以下属性：
 
 ### <a name="predicate-methods"></a>谓词方法
 
-#### <a name="islengthrange"></a>是长度范围
+#### <a name="islengthrange"></a>IsLengthRange
 
-IsLengthRange 方法检查字符串声明值的长度是否在指定的最小参数和最大参数范围内。 谓词元素支持以下参数：
+IsLengthRange 方法检查字符串声明值的长度是否在指定的最小和最大参数范围内。 谓词元素支持以下参数：
 
-| 参数 | 必选 | 说明 |
+| 参数 | 必需 | 说明 |
 | ------- | ----------- | ----------- |
-| 最大值 | 是 | 可输入的最大字符数。 |
+| 最大值 | 是 | 可以输入的最大字符数。 |
 | 最小值 | 是 | 必须输入的最小字符数。 |
 
 
-下面的示例显示了具有参数`Minimum`并`Maximum`指定字符串长度范围的 IsLengthRange 方法：
+下面的示例演示了一个带有参数`Minimum`的 IsLengthRange 方法`Maximum` ，并指定了该字符串的长度范围：
 
 ```XML
 <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
@@ -90,11 +90,11 @@ IsLengthRange 方法检查字符串声明值的长度是否在指定的最小参
 </Predicate>
 ```
 
-#### <a name="matchesregex"></a>匹配雷格ex
+#### <a name="matchesregex"></a>MatchesRegex
 
 MatchesRegex 方法检查字符串声明值是否与正则表达式匹配。 谓词元素支持以下参数：
 
-| 参数 | 必选 | 说明 |
+| 参数 | 必需 | 说明 |
 | ------- | ----------- | ----------- |
 | RegularExpression | 是 | 要匹配的正则表达式模式。 |
 
@@ -108,13 +108,13 @@ MatchesRegex 方法检查字符串声明值是否与正则表达式匹配。 谓
 </Predicate>
 ```
 
-#### <a name="includescharacters"></a>包括字符
+#### <a name="includescharacters"></a>IncludesCharacters
 
-"包括字符"方法检查字符串声明值是否包含字符集。 谓词元素支持以下参数：
+IncludesCharacters 方法检查字符串声明值是否包含字符集。 谓词元素支持以下参数：
 
-| 参数 | 必选 | 说明 |
+| 参数 | 必需 | 说明 |
 | ------- | ----------- | ----------- |
-| CharacterSet | 是 | 可以输入的字符集。 例如，小写`a-z`字符、大写字符`A-Z`、数字`0-9`或符号列表（如`@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!`）。 |
+| CharacterSet | 是 | 可以输入的字符集。 例如`a-z`，小写字符、大写字符`A-Z`、数字`0-9`或符号列表，如。 `@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!` |
 
 下面的示例说明 `IncludesCharacters` 方法使用参数 `CharacterSet` 指定字符集：
 
@@ -126,14 +126,14 @@ MatchesRegex 方法检查字符串声明值是否与正则表达式匹配。 谓
 </Predicate>
 ```
 
-#### <a name="isdaterange"></a>是日期
+#### <a name="isdaterange"></a>IsDateRange
 
-IsDateRange 方法检查日期声明值是否介于指定的最小参数和最大参数范围之间。 谓词元素支持以下参数：
+IsDateRange 方法检查日期声明值是否在指定的最小和最大参数范围之间。 谓词元素支持以下参数：
 
-| 参数 | 必选 | 说明 |
+| 参数 | 必需 | 说明 |
 | ------- | ----------- | ----------- |
-| 最大值 | 是 | 可以输入的最大可能日期。 日期的格式遵循`yyyy-mm-dd`惯例或`Today`。 |
-| 最小值 | 是 | 可以输入的最小日期。 日期的格式遵循`yyyy-mm-dd`惯例或`Today`。|
+| 最大值 | 是 | 可输入的可能的最大日期。 遵循`yyyy-mm-dd`约定的格式为或`Today`。 |
+| 最小值 | 是 | 可能输入的最小日期。 遵循`yyyy-mm-dd`约定的格式为或`Today`。|
 
 下面的示例说明 `IsDateRange` 方法使用参数 `Minimum` 和 `Maximum` 指定格式为 `yyyy-mm-dd` 和 `Today` 的日期范围。
 
@@ -178,7 +178,7 @@ PredicateValidations**** 元素包含以下元素：
 
 PredicateValidation**** 元素包含以下属性：
 
-| 特性 | 必选 | 说明 |
+| 特性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于谓词验证的标识符。 ClaimType**** 元素可以在策略中使用此标识符。 |
 
@@ -196,7 +196,7 @@ PredicateGroups**** 元素包含以下元素：
 
 PredicateGroup**** 元素包含以下属性：
 
-| 特性 | 必选 | 说明 |
+| 特性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于谓词组的标识符。  |
 
@@ -209,9 +209,9 @@ PredicateGroup**** 元素包含以下元素：
 
 PredicateReferences**** 元素包含以下属性：
 
-| 特性 | 必选 | 说明 |
+| 特性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
-| MatchAtLeast | 否 | 指定该值针对要接受的输入必须至少匹配多个谓词定义。 如果未指定，该值必须匹配所有谓词定义。 |
+| MatchAtLeast | 否 | 指定该值针对要接受的输入必须至少匹配多个谓词定义。 如果未指定，则值必须与所有谓词定义匹配。 |
 
 PredicateReferences**** 元素包含以下元素：
 
@@ -221,7 +221,7 @@ PredicateReferences**** 元素包含以下元素：
 
 PredicateReference**** 元素包含以下属性：
 
-| 特性 | 必选 | 说明 |
+| 特性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于谓词验证的标识符。  |
 
@@ -428,4 +428,4 @@ PredicateReference**** 元素包含以下属性：
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何使用[Azure 活动目录 B2C 中的自定义策略](custom-policy-password-complexity.md)使用谓词验证配置密码复杂性。
+- 了解如何使用谓词验证[Azure Active Directory B2C 中的自定义策略配置密码复杂性](custom-policy-password-complexity.md)。

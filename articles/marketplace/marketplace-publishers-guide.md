@@ -1,6 +1,6 @@
 ---
-title: 商业市场出版指南
-description: 应用和服务发布商的商业市场概述。
+title: 商业 marketplace 发布指南
+description: 适用于应用程序和服务发布者的商业应用商店概述。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 04/12/2020
 ms.author: dsindona
 ms.openlocfilehash: c41a24ecb3e12618ac8cfcdfb756a33114f0f8a2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81261986"
 ---
-# <a name="commercial-marketplace-publishing-guide"></a>商业市场出版指南
+# <a name="commercial-marketplace-publishing-guide"></a>商业 marketplace 发布指南
 
 本市场发布指南旨在帮助新发布者和现有发布者了解如何利用 [Azure 市场](https://azuremarketplace.microsoft.com)和 [Microsoft AppSource](https://appsource.microsoft.com) 的店面列出他们的应用程序和服务，从而在与 Microsoft 的合作中发展自己的业务。
 
@@ -30,7 +30,7 @@ ms.locfileid: "81261986"
 
 本指南包含在列出你的应用程序和服务之前，需要执行的步骤的相关技术和业务信息。 使用目录转到指南的不同部分并直接转到关键主题。
 
-有关 Azure 应用商店和 AppSource 的问题，请向我们发送 **"问题类型** > **应用商店入职"下**的消息。 我们的市场发布者载入团队将乐于为你提供帮助！ 
+有关 Azure Marketplace 和 AppSource 的问题，请在 "**Marketplace 载入**"**问题类型** > 下向我们发送一条消息。 我们的市场发布者载入团队将乐于为你提供帮助！ 
 
 ## <a name="benefits-of-participating-in-the-marketplace"></a>加入市场的好处 
 
@@ -52,7 +52,7 @@ ms.locfileid: "81261986"
 
 通过市场为你提供的见解和分析，深入了解商品性能。 获取有关市场活动效果、订单和付款以及如何最大化利用解决方案的营销活动的详细信息。
 
-### <a name="commercial-marketplace-benefits"></a>商业市场优势 
+### <a name="commercial-marketplace-benefits"></a>商业应用商店权益 
 
 市场中的新上市商品有资格获得一组不同的免费权益，帮助合作伙伴在市场中拓展业务。 这些权益分为以下类别： 
 
@@ -62,9 +62,9 @@ ms.locfileid: "81261986"
 
 *   联合销售：通过市场开始或加速与 Microsoft 的合作销售。 访问程序和支持，促进与 Microsoft 团队之间的联合销售。
 
-在向市场[提交解决方案](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)之后，我们的加入团队会联系你，为你的发布体验提供支持。  有关详细信息[，请参阅如何创建合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。
+在向市场[提交解决方案](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)之后，我们的加入团队会联系你，为你的发布体验提供支持。  有关详细信息，请参阅[如何创建合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。
 
-了解更多关于您的[商业市场优势](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits)。
+详细了解你的[商业应用商店权益](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits)。
 
 ## <a name="next-steps"></a>后续步骤
 

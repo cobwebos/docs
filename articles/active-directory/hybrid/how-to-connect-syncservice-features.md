@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d3f6b698922440c6e3e9b488cca93ca8d98d9c59
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80983069"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect 同步服务功能
@@ -89,16 +89,16 @@ Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 
 ## <a name="synchronize-userprincipalname-updates"></a>同步 userPrincipalName 更新
 
-从历史上看，使用本地同步服务的 UserTheName 属性的更新已被阻止，除非这两个条件都为 true：
+过去，除非以下两个条件都成立，否则从本地使用同步服务对 UserPrincipalName 属性进行更新已被阻止：
 
 * 用户受管理（非联合）。
 * 没有为用户分配许可证。
 
 > [!NOTE]
-> 从 2019 年 3 月起，允许对联合用户帐户进行同步 UPN 更改。
+> 从3月2019开始，将允许同步联合用户帐户的 UPN 更改。
 > 
 
-启用此功能允许同步引擎在用户主体名称在本地更改并使用密码哈希同步或传递身份验证时更新用户主体名称。
+如果启用此功能，则在本地更改 userPrincipalName 并使用密码哈希同步或直通身份验证时，同步引擎可以更新 userPrincipalName。
 
 在新建的 Azure AD 目录中，默认已打开此功能。 可以运行以下命令查看是否已启用此功能：  
 
@@ -114,7 +114,7 @@ Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $true
 
 启用此功能后，现有的 userPrincipalName 值将保持不变。 下一次在本地更改 userPrincipalName 属性时，对用户进行正常的增量同步会更新 UPN。  
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
-* [Azure AD 连接同步](how-to-connect-sync-whatis.md)
-* [将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)。
+* [Azure AD Connect 同步](how-to-connect-sync-whatis.md)
+* [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)。

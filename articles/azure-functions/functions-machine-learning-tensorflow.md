@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: c64d87b2430cc1d733a67bbc1e803590a37b1714
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9d25e2e32f09cc681d85d5adffe53f1237d7200c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78190766"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255492"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>教程：在 Azure Functions 中使用 Python 和 TensorFlow 应用机器学习模型
 
@@ -153,8 +153,10 @@ py -m venv .venv
 
 若要修改 `classify` 函数以根据图像内容对图像进行分类，请使用一个已通过 Azure 自定义视觉服务进行训练并已从中导出的预生成 TensorFlow 模型。 该模型已包含在前面克隆的示例的 *resources* 文件夹中，它可以根据图像是包含狗还是猫来分类图像。 然后，将一些帮助器代码和依赖项添加到项目。
 
+若要使用自定义视觉服务的免费层生成自己的模型，请按照[示例项目存储库](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md)中的说明操作。
+
 > [!TIP]
-> 若要使用自定义视觉服务的免费层生成自己的模型，可以按照[示例项目存储库](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md)中的说明操作。
+> 若要独立于函数应用托管 TensorFlow 模型，可以改将包含模型的文件共享装载到 Linux 函数应用。 若要了解详细信息，请参阅[使用 Azure CLI 将文件共享装载到 Python 函数应用](./scripts/functions-cli-mount-files-storage-linux.md)。
 
 1. 在 *start* 文件夹中，运行以下命令将模型文件复制到 *classify* 文件夹中。 请务必在命令中包含 `\*`。 
 
@@ -315,3 +317,4 @@ py -m venv .venv
 
 - [使用 Visual Studio Code 将函数部署到 Azure](https://code.visualstudio.com/docs/python/tutorial-azure-functions)。
 - [Azure Functions Python 开发人员指南](./functions-reference-python.md)
+- [使用 Azure CLI 将文件共享装载到 Python 函数应用](./scripts/functions-cli-mount-files-storage-linux.md)

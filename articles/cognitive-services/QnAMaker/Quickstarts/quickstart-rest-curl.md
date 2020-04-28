@@ -1,16 +1,16 @@
 ---
 title: 快速入门：使用 cURL 和 REST 管理知识库 - QnA Maker
 description: 本快速入门介绍如何使用 REST API 创建、发布和查询知识库。
-ms.date: 02/27/2020
+ms.date: 04/13/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: quickstart
-ms.openlocfilehash: 00ec52fe20fb0e6a976f3e7142386e835713c98c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: facc45ab8f916181f7eeceb65c5102a60ae7d7e9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78851203"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261697"
 ---
 # <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>快速入门：使用 cURL 和 REST 管理知识库
 
@@ -21,9 +21,9 @@ ms.locfileid: "78851203"
 ## <a name="prerequisites"></a>先决条件
 
 * 最新版本的 [cURL](https://curl.haxx.se/)。 快速入门中使用了 [cURL 文档](https://curl.haxx.se/docs/manpage.html)中所述的多个命令行开关。
-* 必须已有一项 [QnA Maker 资源](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥和资源名称，请在 Azure 门户中选择资源对应的“快速入门”。  资源名称是终结点 URL 的第一个组成部分：
+* 必须有 [QnA Maker 资源](../How-To/set-up-qnamaker-service-azure.md)，才能使用密钥和资源名称。 你在资源创建过程中输入了资源“名称”  ，然后系统为你创建了密钥。 资源名称将用作终结点的子域。 若要检索密钥和资源名称，请在 Azure 门户中选择资源对应的“快速入门”。  资源名称是终结点 URL 的第一个子域：
 
-    `https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0`
+    `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0`
 
 > [!CAUTION]
 > 以下 BASH 示例使用 `\` 行继续符。 如果你的控制台或终端使用不同的行继续符，请使用此字符。

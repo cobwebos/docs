@@ -12,10 +12,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: e5d25169aa3daee33a9f02e605cbff91776dc7f1
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885423"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>调用 Web API 的守护程序应用 - 移到生产环境
@@ -39,10 +39,10 @@ ms.locfileid: "80885423"
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-- 快速入门：[获取令牌，并使用应用的标识从控制台应用调用 Microsoft 图形 API。](./quickstart-v2-netcore-daemon.md)
+- 快速入门：[使用应用的标识获取令牌并从控制台应用中调用 Microsoft Graph API](./quickstart-v2-netcore-daemon.md)。
 - 以下内容的参考文档：
-  - 实例化[机密客户端应用程序](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)。
-  - 调用[获取令牌客户端](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder)。
+  - 实例化[ConfidentialClientApplication](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)。
+  - 调用[AcquireTokenForClient](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder)。
 - 其他示例/教程：
   - [microsoft-identity-platform-console-daemon](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) 提供一个简单的 .NET Core 守护程序控制台应用程序，该应用程序显示某个租户的用户在查询 Microsoft Graph。
 

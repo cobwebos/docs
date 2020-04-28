@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 225221635f978e3d70cec4ce7e9d78d6b100b4fd
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80618757"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>使用 Azure Key Vault 保护 Azure Cosmos 密钥 
 
 >[!IMPORTANT]
-> 访问 Azure Cosmos DB 密钥的建议解决方案是使用[系统分配的托管标识](managed-identity-based-authentication.md)。 如果服务无法利用托管标识，则使用[基于证书的解决方案](certificate-based-authentication.md)。 如果托管标识解决方案和基于证书的解决方案都不能满足您的需要，请使用下面的密钥保管库解决方案。
+> Azure Cosmos DB 密钥的推荐解决方案是使用[系统分配的托管标识](managed-identity-based-authentication.md)。 如果服务无法利用托管标识，则使用[基于证书的解决方案](certificate-based-authentication.md)。 如果托管标识解决方案和基于证书的解决方案都不能满足你的需求，请使用下面的密钥保管库解决方案。
 
 对应用程序使用 Azure Cosmos DB 时，可以使用应用配置文件中的终结点和密钥来访问数据库、集合、文档。  但是，将密钥和 URL 直接放在应用程序代码中并不安全，因为它们将以明文格式向所有用户提供。 应确保通过一种安全机制提供终结点和密钥。 这正是 Azure Key Vault 的作用所在，它能够安全地存储和管理应用程序机密。
 
@@ -33,19 +33,19 @@ ms.locfileid: "80618757"
 
 ## <a name="create-a-key-vault"></a>创建密钥保管库
 
-1. 登录到[Azure 门户](https://portal.azure.com/)。  
+1. 登录到 [Azure 门户](https://portal.azure.com/)。  
 2. 选择“创建资源”>“安全性”>“Key Vault”。****  
-3. 在“创建密钥保管库”部分，提供以下信息：****  
+3. 在“创建密钥保管库”部分，提供以下信息：   
    * **名称：** 提供 Key Vault 的唯一名称。  
    * **订阅**：选择要使用的订阅。  
-   * 在“资源组”**** 下选择“新建”****，然后输入资源组名称。  
+   * 在 "**资源组**" 下，选择 "**新建**" 并输入资源组名称。  
    * 在“位置”下拉菜单中选择一个位置。  
    * 将其他选项保留默认值。  
-4. 提供上述信息后，选择“创建”****。  
+4. 提供上述信息后，选择“创建”  。  
 
 ## <a name="add-azure-cosmos-db-access-keys-to-the-key-vault"></a>将 Azure Cosmos DB 访问密钥添加到 Key Vault。
 1. 导航到在上一步骤中创建的 Key Vault，打开“机密”选项卡。****  
-2. 选择“+生成/导入”。**** 
+2. 选择 " **+ 生成/导入**"， 
 
    * 为“上传选项”选择“手动”。********
    * 提供机密的**名称**。

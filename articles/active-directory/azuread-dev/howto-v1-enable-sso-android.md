@@ -16,10 +16,10 @@ ms.reviewer: brandwe, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 0b87a9cd0ae29281faad4209f4449d547921835d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80154808"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>如何：使用 ADAL 在 Android 上启用跨应用 SSO
@@ -60,7 +60,7 @@ Microsoft 为每个移动平台提供了应用程序，可在来自不同供应�
 
 #### <a name="how-microsoft-ensures-the-application-is-valid"></a>Microsoft 如何确保应用程序有效
 
-需要确保调用代理的应用程序的身份对于代理辅助登录中提供的安全性至关重要。 iOS 和 Android 都不会强制实施仅对给定应用程序有效的唯一标识符，因此恶意应用程序可能“假冒”合法应用程序的标识符，并接收对合法应用程序适用的令牌。 为了确保在运行时 Microsoft 始终与适当的应用程序进行通信，我们会要求开发人员在将其应用程序注册到 Microsoft 时提供自定义重定向 URI。 **下面详细讨论开发人员应如何设计此重定向 URI。** 此自定义 redirectURI 包含应用程序的证书指纹，并由 Google Play Store 确保其对应用程序是唯一的。 当应用程序调用中转站时，中转站会请求 Android 操作系统为其提供调用中转站的证书指纹。 在调用我们的标识系统时，中转站会向 Microsoft 提供此证书指纹。 如果应用程序的证书指纹与开发人员在注册期间提供给我们的证书指纹不匹配，我们将拒绝应用程序访问所请求的资源的令牌。 此检查可确保只有开发人员注册的应用程序收到令牌。
+确保调用 broker 的应用程序的标识对于 broker 辅助登录中提供的安全性至关重要。 iOS 和 Android 都不会强制实施仅对给定应用程序有效的唯一标识符，因此恶意应用程序可能“假冒”合法应用程序的标识符，并接收对合法应用程序适用的令牌。 为了确保在运行时 Microsoft 始终与适当的应用程序进行通信，我们会要求开发人员在将其应用程序注册到 Microsoft 时提供自定义重定向 URI。 **下面详细讨论开发人员应如何设计此重定向 URI。** 此自定义 redirectURI 包含应用程序的证书指纹，并由 Google Play Store 确保其对应用程序是唯一的。 当应用程序调用中转站时，中转站会请求 Android 操作系统为其提供调用中转站的证书指纹。 在调用我们的标识系统时，中转站会向 Microsoft 提供此证书指纹。 如果应用程序的证书指纹与开发人员在注册期间提供给我们的证书指纹不匹配，我们将拒绝应用程序访问所请求的资源的令牌。 此检查可确保只有开发人员注册的应用程序收到令牌。
 
 SSO 中转登录具有以下优点：
 
@@ -116,7 +116,7 @@ AuthenticationSettings.Instance.setUseBroker(true);
 
 #### <a name="step-2-establish-a-new-redirect-uri-with-your-url-scheme"></a>步骤 2：使用 URL 方案建立新的重定向 URI
 
-为了确保正确的应用程序接收返回的凭据令牌，需要确保以 Android 操作系统可以验证的方式回调应用程序。 Android 操作系统使用 Google Play Store 中的证书哈希。 恶意应用程序无法欺骗此证书哈希。 结合中转站应用程序的 URI，Microsoft 可确保令牌返回到正确的应用程序。 必须在应用程序中注册唯一的重定向 URI。
+若要确保正确的应用程序收到返回的凭据令牌，需要确保以 Android 操作系统可以验证的方式返回到应用程序中。 Android 操作系统使用 Google Play Store 中的证书哈希。 恶意应用程序无法欺骗此证书哈希。 结合中转站应用程序的 URI，Microsoft 可确保令牌返回到正确的应用程序。 必须在应用程序中注册唯一的重定向 URI。
 
 重定向 URI 必须采用正确的格式：
 

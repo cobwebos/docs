@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.service: iot-central
 manager: philmea
 ms.openlocfilehash: b447f44d0c95693e560fd5bbfbff8c8daeec964e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80157681"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>将多个操作分组以从一个或多个规则运行
 
 *本文面向构建人员和管理员。*
 
-在 Azure IoT Central 中可以创建规则，以便在满足条件时运行操作。 规则基于设备遥测数据或事件。 例如，当设备温度超过阈值时，可以通知操作员。 本文介绍如何使用 [Azure Monitor 操作组将多个操作附加到 IoT Central 规则。](../../azure-monitor/overview.md) ** 可将一个操作组附加到多个规则。 [操作组](../../azure-monitor/platform/action-groups.md)是由 Azure 订阅的所有者定义的通知首选项的集合。
+在 Azure IoT Central 中可以创建规则，以便在满足条件时运行操作。 规则基于设备遥测数据或事件。 例如，当设备温度超过阈值时，可以通知操作员。 本文介绍如何使用 [Azure Monitor](../../azure-monitor/overview.md) 操作组将多个操作附加到 IoT Central 规则。  可将一个操作组附加到多个规则。 [操作组](../../azure-monitor/platform/action-groups.md)是由 Azure 订阅的所有者定义的通知首选项的集合。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -43,7 +43,7 @@ ms.locfileid: "80157681"
 
 ## <a name="use-an-action-group"></a>使用操作组
 
-若要在 IoT Central 应用程序中使用操作组，请先创建一个规则。 将操作添加到规则时，请选择“Azure Monitor 操作组”：****
+若要在 IoT Central 应用程序中使用操作组，请先创建一个规则。 将操作添加到规则时，请选择“Azure Monitor 操作组”： 
 
 ![选择操作](media/howto-use-action-groups/chooseaction.png)
 
@@ -51,7 +51,7 @@ ms.locfileid: "80157681"
 
 ![选择操作组](media/howto-use-action-groups/chooseactiongroup.png)
 
-选择“保存”。**** 该操作组随即显示在触发规则时要运行的操作列表中：
+选择“保存”  。 该操作组随即显示在触发规则时要运行的操作列表中：
 
 ![保存的操作组](media/howto-use-action-groups/savedactiongroup.png)
 
@@ -59,10 +59,10 @@ ms.locfileid: "80157681"
 
 | 操作类型 | 输出格式 |
 | ----------- | -------------- |
-| 电子邮件       | 标准 IoT Central 电子邮件模板 |
+| Email       | 标准 IoT Central 电子邮件模板 |
 | SMS         | Azure IoT Central alert: ${applicationName} - "${ruleName}" triggered on "${deviceName}" at ${triggerDate} ${triggerTime} |
 | 语音       | Azure I.O.T Central alert: rule "${ruleName}" triggered on device "${deviceName}" at ${triggerDate} ${triggerTime}, in application ${applicationName} |
-| Webhook     | • "架构 Id"："AzureIoTCentralRuleWebhook"，"数据"：{[常规 Webhook 有效负载](howto-create-webhooks.md#payload)}} |
+| Webhook     | { "schemaId" :"AzureIoTCentralRuleWebhook", "data": {[regular webhook payload](howto-create-webhooks.md#payload)}} |
 
 以下文本是来自操作组的示例短信：
 

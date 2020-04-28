@@ -12,13 +12,13 @@ ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: df06c4c55941f4424d6b90d2846af17bf055b2e4
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885457"
 ---
-# <a name="scenario-daemon-application-that-calls-web-apis"></a>方案：调用 Web API 的守护进程应用程序
+# <a name="scenario-daemon-application-that-calls-web-apis"></a>方案：用于调用 Web API 的守护程序应用程序
 
 了解在构建用于调用 Web API 的守护程序应用程序时需要的所有项目。
 
@@ -38,7 +38,7 @@ ms.locfileid: "80885457"
 - 执行批处理作业的桌面应用程序（例如 Windows 上的 Windows 服务，或 Linux 上的守护程序进程），或者在后台运行的操作系统服务
 - 需操作目录而非特定用户的 Web API
 
-另一种常见情况是，非守护程序应用程序使用客户端凭据：即使它们代表用户操作，出于技术原因，它们也需要访问 Web API 或自己的标识下的资源。 例如，访问 Azure Key Vault 或用于缓存的 Azure SQL 数据库中的机密。
+非守护程序应用程序使用客户端凭据的另一种常见情况是：即使它们代表用户进行操作，出于技术原因，它们也需要以自己的标识访问 Web API 或资源。 例如，访问 Azure Key Vault 或用于缓存的 Azure SQL 数据库中的机密。
 
 获取其自身标识的令牌的应用程序具有以下特点：
 
@@ -54,7 +54,7 @@ ms.locfileid: "80885457"
 
 对于开发人员来说，此方案的端到端体验具有以下特点：
 
-- 守护程序应用程序只能在 Azure AD 租户中工作。 构建试图操作 Microsoft 个人帐户的守护进程应用程序是没有意义的。 如果你是业务线 (LOB) 应用开发人员，则需在租户中创建守护程序应用。 如果你是 ISV，你可能希望创建多租户守护程序应用程序， 每个租户管理员都需要提供许可。
+- 守护程序应用程序只能在 Azure AD 租户中工作。 构建尝试操作 Microsoft 个人帐户的后台应用程序并无意义。 如果你是业务线 (LOB) 应用开发人员，则需在租户中创建守护程序应用。 如果你是 ISV，你可能希望创建多租户守护程序应用程序， 每个租户管理员都需要提供许可。
 - 在[注册应用程序](./scenario-daemon-app-registration.md)期间，回复 URI 不是必需的。 你需要与 Azure AD 共享机密或证书或已签名断言。 你还需要请求应用程序权限，并授予管理员许可才能使用这些应用权限。
 - [应用程序配置](./scenario-daemon-app-configuration.md)需要提供客户端凭据，这些凭据是在应用程序注册期间与 Azure AD 共享的。
 - 用于通过客户端凭据流获取令牌的[作用域](scenario-daemon-acquire-token.md#scopes-to-request)必须是静态作用域。

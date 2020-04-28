@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 03/22/2020
 ms.author: banders
-ms.openlocfilehash: fb6e7e3fe3b7b45b503dca66dc5b039a9eceb689
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5781ade7b2f3cfc7514208861de025cc84944fcd
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80135481"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380640"
 ---
 # <a name="how-a-reservation-discount-is-applied"></a>如何应用预留折扣
 
@@ -39,7 +39,7 @@ ms.locfileid: "80135481"
 服务计划：
 
 - 虚拟机预留实例：购买预留项时，如果选择“针对实例大小灵活性进行优化”  ，则折扣覆盖范围将取决于所选的 VM 大小。 预订可以应用于同一大小系列组中的虚拟机 (VM) 大小。 有关详细信息，请参阅[预订 VM 实例的虚拟机大小灵活性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)。
-- Azure 存储预留容量：你可以购买标准 Azure 存储帐户的预留容量（单位为每月 100 TiB 或 1 PiB）。 适用于任何访问层（热、冷或存档）和任何复制选项（LRS、GRS 或 ZRS）的所有区域中均提供 Azure 存储预留容量。
+- Azure 存储预留容量：你可以购买标准 Azure 存储帐户的预留容量（单位为每月 100 TiB 或 1 PiB）。 若要了解哪些区域支持 Azure 存储预留容量，请参阅[块 blob 定价](https://azure.microsoft.com/pricing/details/storage/blobs/)。 Azure 存储预留容量可用于所有访问层（热、冷、存档）和任何复制配置（LRS、GRS 或 ZRS）。
 - SQL 数据库预留容量：折扣覆盖范围取决于所选的性能层。 有关详细信息，请参阅[了解如何应用 Azure 预订折扣](understand-reservation-charges.md)。
 - Azure Cosmos DB 预留容量：折扣覆盖范围取决于预配的吞吐量。 有关详细信息，请参阅[了解如何应用 Azure Cosmos DB 预订折扣](understand-cosmosdb-reservation-charges.md)。
 

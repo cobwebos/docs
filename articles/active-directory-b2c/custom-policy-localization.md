@@ -1,6 +1,6 @@
 ---
-title: 使用自定义策略本地化应用的用户界面
-description: 了解使用 Azure 活动目录 B2C 中的自定义策略本地化用户界面。
+title: 使用自定义策略本地化你的应用的用户界面
+description: 了解如何在 Azure Active Directory B2C 中使用自定义策略来本地化用户界面。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,26 +11,26 @@ ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: be12bce8fa29076621bec35228838a4ebdd97433
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80545871"
 ---
-# <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>使用 Azure 活动目录 B2C 中的自定义策略本地化应用程序的用户界面
+# <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略来本地化应用程序的用户界面
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure 活动目录 B2C（Azure AD B2C）中的语言自定义允许您适应不同的语言以满足客户的需求。 微软提供[36种语言](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-language-customization#supported-languages)的翻译，但您也可以为任何语言提供自己的翻译。 即使体验是针对一种语言提供的，也可以自定义页面上的任何文本。 
+你可以使用 Azure Active Directory B2C (Azure AD B2C) 中的语言自定义来容纳不同的语言以满足客户需求。 Microsoft 为[36 语言](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-language-customization#supported-languages)提供翻译，但你也可以为任何语言提供自己的翻译。 即使体验是针对一种语言提供的，也可以自定义页面上的任何文本。 
 
-本文将介绍如何在用户旅程的策略中支持多个区域设置或语言。 本地化需要三个步骤：设置受支持语言的显式列表、提供特定于语言的字符串和集合以及编辑页面[的内容定义](contentdefinitions.md)。 
+本文将介绍如何在用户旅程的策略中支持多个区域设置或语言。 本地化需要执行三个步骤：设置受支持语言的显式列表，提供特定于语言的字符串和集合，以及编辑页面的[内容定义](contentdefinitions.md)。 
 
-## <a name="set-up-the-list-of-supported-languages"></a>设置受支持语言的列表
+## <a name="set-up-the-list-of-supported-languages"></a>设置支持的语言的列表
 
-打开策略的扩展文件。 例如， <em> `SocialAndLocalAccounts/` </em>.
+打开策略的扩展文件。 例如<em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>。
 
-1. 搜索 BuildingBlocks[](buildingblocks.md) 元素。 如果该元素不存在，请添加该元素。
-1. 使用支持`Localization`的语言添加元素：英语（默认）和西班牙语。  
+1. 搜索 [BuildingBlocks](buildingblocks.md) 元素。 如果该元素不存在，请添加该元素。
+1. 添加包含支持的语言的 `Localization` 元素：英语（默认）和西班牙语。  
 
 
 ```XML
@@ -44,12 +44,12 @@ Azure 活动目录 B2C（Azure AD B2C）中的语言自定义允许您适应不�
 
 ## <a name="provide-language-specific-labels"></a>提供特定于语言的标签
 
-元素的`Localization`[本地化资源](localization.md#localizedresources)包含本地化字符串的列表。 本地化资源元素具有用于唯一标识本地化资源的标识符。 此标识器稍后在[内容定义](contentdefinitions.md)元素中使用。
+`Localization` 元素的 [LocalizedResources](localization.md#localizedresources) 包含本地化字符串的列表。 本地化资源元素具有用于唯一标识本地化资源的标识符。 此标识符稍后会在[内容定义](contentdefinitions.md)元素中使用。
 
-为内容定义和要支持的任何语言配置本地化资源元素。 要自定义英语和西班牙语的统一注册或登录页面，请在`LocalizedResources``</SupportedLanguages>`元素关闭后添加以下元素。
+你将为内容定义和要支持的任何语言配置本地化资源元素。 若要自定义适用于英语和西班牙语的统一注册或登录页面，请在 `</SupportedLanguages>` 元素结束后添加以下 `LocalizedResources` 元素。
 
 > [!NOTE]
-> 在下面的示例中，我们在每行的`#`乞讨处添加了磅符号，因此您可以在屏幕上找到本地化的标签。
+> 在下面的示例中，我们在每行的开头都添加了井字符号 `#`，以便你可以在屏幕上轻松找到本地化的标签。
 
 ```XML
 <!--Local account sign-up or sign-in page English-->
@@ -212,11 +212,11 @@ Azure 活动目录 B2C（Azure AD B2C）中的语言自定义允许您适应不�
 </LocalizedResources>
 ```
 
-## <a name="edit-the-content-definition-with-the-localization"></a>使用本地化编辑内容定义
+## <a name="edit-the-content-definition-with-the-localization"></a>通过本地化编辑内容定义
 
 粘贴作为 BuildingBlocks 元素的子元素复制的 ContentDefinitions 元素的全部内容。
 
-在下面的示例中，英语 （en） 和西班牙语 （es） 自定义字符串将添加到注册或登录页面以及本地帐户注册页。 每个 **LocalizedResourcesReference** 的 **LocalizedResourcesReferenceId** 与其区域设置相同，但可将任何字符串用作标识符。 对于每种语言和页面组合，您可以指向以前创建的相应**本地化资源**。
+在以下示例中，英语 (en) 和西班牙语 (es) 自定义字符串已添加到注册或登录页面，并已添加到本地帐户注册页面。 每个 **LocalizedResourcesReference** 的 **LocalizedResourcesReferenceId** 与其区域设置相同，但可将任何字符串用作标识符。 对于每个语言和页面组合，请指向前面创建的相应 **LocalizedResources**。
 
 ```XML
 <ContentDefinitions>
@@ -236,23 +236,23 @@ Azure 活动目录 B2C（Azure AD B2C）中的语言自定义允许您适应不�
 </ContentDefinitions>
 ```
 
-##  <a name="upload-and-test-your-updated-custom-policy"></a>上传并测试更新的自定义策略
+##  <a name="upload-and-test-your-updated-custom-policy"></a>上传并测试已更新的自定义策略
 
 ### <a name="upload-the-custom-policy"></a>上传自定义策略
 
 1. 保存扩展文件。
-1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录****。
-1. 搜索并选择**Azure AD B2C**。
-1. 在“策略”下，选择“Identity Experience Framework”。********
-1. 选择 **"上载自定义策略**"。
+1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录  。
+1. 搜索并选择“Azure AD B2C”  。
+1. 在“策略”下，选择“Identity Experience Framework”。  
+1. 选择“上传自定义策略”  。
 1. 上传以前已更改的扩展文件。
 
-### <a name="test-the-custom-policy-by-using-run-now"></a>使用 **"立即运行"** 测试自定义策略
+### <a name="test-the-custom-policy-by-using-run-now"></a>使用“立即运行”测试自定义策略 
 
-1. 选择您上载的策略，然后选择 **"立即运行**"。
-1. 您应该能够看到本地化的注册或登录页面。
-1. 单击注册链接，您应该能够看到本地化的注册页面。
-1. 将浏览器默认语言切换到西班牙语。 或者，您可以将查询字符串参数`ui_locales`添加到授权请求。 例如： 
+1. 选择已上传的策略，然后选择“立即运行”。 
+1. 你应该能够看到已本地化的注册或登录页面。
+1. 单击注册链接，你应该能够看到已本地化的注册页面。
+1. 将浏览器默认语言切换为西班牙语。 还可以将查询字符串参数 `ui_locales` 添加到授权请求。 例如： 
 
 ```http
 https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1A_signup_signin&client_id=0239a9cc-309c-4d41-12f1-31299feb2e82&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&ui_locales=es
@@ -260,6 +260,6 @@ https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/oauth2/v2.0/authorize
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解有关 IEF 引用中的[本地化](localization.md)元素的更多内容。
-- 请参阅 Azure AD B2C 中可用的[本地化字符串标识](localization-string-ids.md)列表。
+- 在 IEF 参考中详细了解 [localization](localization.md) 元素。
+- 查看 Azure AD B2C 中可用的[本地化字符串 ID](localization-string-ids.md) 的列表。
 

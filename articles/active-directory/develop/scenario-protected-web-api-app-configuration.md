@@ -13,10 +13,10 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 073eca94ad93c69811b02abe2c8649940a394e8e
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882465"
 ---
 # <a name="protected-web-api-code-configuration"></a>受保护的 Web API：代码配置
@@ -55,7 +55,7 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 ```
 
 > [!IMPORTANT]
-> 客户端应用程序向 Web API 的 Microsoft 标识平台终结点请求持有者令牌。** Web API 是唯一应该验证令牌并查看其中包含的声明的应用程序。 客户端应用永远不会尝试检查令牌中的声明。
+> 客户端应用程序向 Web API 的 Microsoft 标识平台终结点请求持有者令牌。  Web API 是唯一应该验证令牌并查看其中包含的声明的应用程序。 客户端应用永远不会尝试检查令牌中的声明。
 >
 > 将来，Web API 可能要求加密令牌。 这项要求会阻止可以查看访问令牌的客户端应用进行访问。
 
@@ -108,7 +108,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
          .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
 ```
 
- 目前，ASP.NET Core 模板会创建可将你的组织或任何组织中的用户登录的 Azure Active Directory (Azure AD) Web API。 他们不使用个人帐户登录用户。 但是，你可以通过在 Startup.cs 中添加以下代码，将这些模板更改为使用 Microsoft 标识平台终结点：
+ 目前，ASP.NET Core 模板会创建可将你的组织或任何组织中的用户登录的 Azure Active Directory (Azure AD) Web API。 他们不会通过个人帐户登录用户。 但是，你可以通过在 Startup.cs 中添加以下代码，将这些模板更改为使用 Microsoft 标识平台终结点：
 
 ```csharp
 services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
@@ -136,11 +136,11 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
 
 在上述代码片段中，与 Web 应用中的 OpenID Connect 中间件一样，JwtBearer 中间件将会根据 `TokenValidationParameters` 的值验证令牌。 根据需要解密该令牌，提取声明，并验证签名。 然后，该中间件将通过检查以下数据来验证该令牌：
 
-- 访问群体：令牌是 Web API 的目标。
-- Sub：它是为允许调用 Web API 的应用发布的。
-- 颁发者：它由受信任的安全令牌服务 （STS） 颁发。
+- 受众：令牌针对 web API。
+- Sub：对允许调用 web API 的应用程序发出此操作。
+- 颁发者：它是由受信任的 security token service （STS）颁发的。
 - 过期：其生存期在范围内。
-- 签名：没有被篡改。
+- 签名：未被篡改。
 
 此外还可以执行特殊验证。 例如，可以验证嵌入在令牌中的签名密钥是否受信任，以及令牌是否未重放。 最后，某些协议需要特定的验证。
 
@@ -161,7 +161,7 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
 
 验证程序与 **TokenValidationParameters** 类的属性相关联。 这些属性从 ASP.NET 和 ASP.NET Core 配置初始化。
 
-在大多数情况下，无需更改参数， 非单租户应用除外。 这些 Web 应用接受来自任何组织或个人 Microsoft 帐户的用户。 对于这种情况，必须验证颁发者。
+在大多数情况下，无需更改参数， 非单租户应用除外。 这些 web 应用将接受来自任何组织或个人 Microsoft 帐户的用户。 对于这种情况，必须验证颁发者。
 
 ## <a name="token-validation-in-azure-functions"></a>Azure Functions 中的令牌验证
 

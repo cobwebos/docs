@@ -10,12 +10,12 @@ ms.custom:
 - mvc
 - seo-python-october2019
 ms.date: 11/05/2019
-ms.openlocfilehash: 7b05f12ad3fd3a0f56605d708bbbf06df7e341ed
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6ce3dd1cbb694988af3555765342a1c4ca3850b5
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75433470"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010845"
 ---
 # <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>快速入门：创建使用 Azure Redis 缓存的 Python 应用
 
@@ -54,7 +54,7 @@ b'bar'
 ```
 
 > [!IMPORTANT]
-> 对于 Azure Redis 缓存版本 3.0 或更高版本，强制执行 SSL 证书检查。 连接到 Azure Redis 缓存时，必须显式设置 ssl_ca_certs。 对于 RedHat Linux，ssl_ca_certs 位于 /etc/pki/tls/certs/ca-bundle.crt 证书中  。
+> 对于 Azure Cache for Redis 3.0 或更高版本，请强制执行 TLS/SSL 证书检查。 连接到 Azure Redis 缓存时，必须显式设置 ssl_ca_certs。 对于 RedHat Linux，ssl_ca_certs 位于 /etc/pki/tls/certs/ca-bundle.crt 证书中  。
 
 ## <a name="create-a-python-sample-app"></a>创建 Python 示例应用
 

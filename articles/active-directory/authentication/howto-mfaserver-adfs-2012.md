@@ -1,5 +1,5 @@
 ---
-title: Windows 服务器中带有 AD FS 的 Azure MFA 服务器 - Azure 活动目录
+title: Windows Server 中 AD FS 的 Azure MFA 服务器-Azure Active Directory
 description: 本文介绍如何开始将 Azure 多重身份验证与 Windows Server 2012 R2 和 2016 中的 AD FS 配合使用。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2777675d915d99b8c0e3c2a123b24ab60d41f672
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80653353"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>将 Azure 多重身份验证服务器配置为与 Windows Server 中的 AD FS 配合使用
@@ -25,7 +25,7 @@ ms.locfileid: "80653353"
 本文介绍如何将 Azure 多重身份验证服务器与 Windows Server 2012 R2 或 Windows Server 2016 中的 AD FS 配合使用。 请阅读如何 [将 Azure 多重身份验证服务器与 AD FS 2.0 配合使用来保护云资源和本地资源](howto-mfaserver-adfs-2.md)，了解详细信息。
 
 > [!IMPORTANT]
-> 自 2019 年 7 月 1 日起，Microsoft 将不再为新部署提供 MFA 服务器。 希望用户进行多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在 7 月 1 日之前激活 MFA 服务器的现有客户将能够像往常一样下载最新版本、将来的更新并生成激活凭据。
+> 从2019年7月1日起，Microsoft 将不再为新部署提供 MFA 服务器。 想要从其用户请求多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在7月1日前激活 MFA 服务器的现有客户将能够下载最新版本、将来更新和生成激活凭据。
 
 ## <a name="secure-windows-server-ad-fs-with-azure-multi-factor-authentication-server"></a>使用 Azure 多重身份验证服务器保护 Windows Server AD FS
 
@@ -84,8 +84,8 @@ ms.locfileid: "80653353"
 按照以下步骤编辑 MultiFactorAuthenticationAdfsAdapter.config 文件：
 
 1. 将“UseWebServiceSdk”**** 节点设置为“true”****。  
-2. 将“WebServiceSdkUrl”**** 的值设置为多重身份验证 Web 服务 SDK 的 URL。 例如 *：https：contoso.com/\/\/\<证书名称>/多因子AuthWebServiceSdk/PfWsSdk.asmx，* 其中*\<证书名称>* 是证书的名称。  
-3. 通过添加到`-ConfigurationFilePath &lt;path&gt;``Register-AdfsAuthenticationProvider`命令的末尾编辑寄存器多因素身份验证 AdfsAdapter.ps1 脚本，其中*&lt;路径&gt;* 是多因素身份验证 AdfsAdapter.config 文件的完整路径。
+2. 将“WebServiceSdkUrl”**** 的值设置为多重身份验证 Web 服务 SDK 的 URL。 例如： *https：\/\/contoso.com/\<certificatename>/multifactorauthwebservicesdk/pfwssdk.asmx*，其中* \<certificatename>* 是证书的名称。  
+3. 编辑 register-multifactorauthenticationadfsadapter.ps1 脚本，将其添加`-ConfigurationFilePath &lt;path&gt;`到`Register-AdfsAuthenticationProvider`命令的末尾，其中* &lt;path&gt; *是 multifactorauthenticationadfsadapter.config 文件的完整路径。
 
 ### <a name="configure-the-web-service-sdk-with-a-username-and-password"></a>使用用户名和密码配置 Web 服务 SDK
 
@@ -136,9 +136,9 @@ ms.locfileid: "80653353"
 
    ![在 ADFS 控制台中编辑声明规则](./media/howto-mfaserver-adfs-2012/trustedip1.png)
 
-4. 在"颁发转换规则"时，单击"**添加规则"。**
+4. 在 "颁发转换规则" 上，单击 "**添加规则"。**
 
-   ![编辑 ADFS 控制台中的转换规则](./media/howto-mfaserver-adfs-2012/trustedip2.png)
+   ![在 ADFS 控制台中编辑转换规则](./media/howto-mfaserver-adfs-2012/trustedip2.png)
 
 5. 在“添加转换声明规则向导”上，从下拉列表中选择“传递或筛选传入声明”****，并单击“下一步”****。
 
@@ -150,7 +150,7 @@ ms.locfileid: "80653353"
 
     ![添加转换声明规则向导](./media/howto-mfaserver-adfs-2012/configurewizard.png)
 
-9. 单击“完成”  。 关闭 AD FS 管理控制台。
+9. 单击 **“完成”** 。 关闭 AD FS 管理控制台。
 
 ## <a name="troubleshooting-logs"></a>故障排除日志
 

@@ -1,6 +1,6 @@
 ---
 title: 监视本地 Azure AD 密码保护
-description: 了解如何监视和查看本地活动目录域服务环境的 Azure AD 密码保护日志
+description: 了解如何监视和查看 Azure AD 本地 Active Directory 域服务环境的密码保护的日志
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,17 +12,17 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d67d867249286ad1591b441bbe5ea2637971e104
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80652617"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>监视和查看本地 Azure AD 密码保护环境的日志
 
 部署 Azure AD 密码保护后，监视和报告是至关重要的任务。 本文详细介绍了各种监视技术，包括每项服务在哪里记录信息，以及如何报告 Azure AD 密码保护使用情况。
 
-监视和报告由事件日志消息或运行 PowerShell cmdlet 来完成。 DC 代理和代理服务都记录事件日志消息。 下面介绍的所有 PowerShell cmdlet 仅在代理服务器上可用（请参阅 AzureAD密码保护 PowerShell 模块）。 DC 代理软件不安装 PowerShell 模块。
+监视和报告是通过事件日志消息或通过运行 PowerShell cmdlet 来完成的。 DC 代理和代理服务都记录事件日志消息。 下面所述的所有 PowerShell cmdlet 仅可用于代理服务器（请参阅 AzureADPasswordProtection PowerShell 模块）。 DC 代理软件不安装 PowerShell 模块。
 
 ## <a name="dc-agent-event-logging"></a>DC 代理事件日志记录
 
@@ -94,11 +94,11 @@ PasswordChangeErrors            : 0
 PasswordSetErrors               : 1
 ```
 
-cmdlet 的报告范围可能会使用 _Forest、-Domain 或 _DomainController 参数之一受到影响。 不指定参数表示使用 –Forest。
+Cmdlet 的报告范围可能会受到使用–林、-域或–域控制器参数之一的影响。 不指定参数表示使用 –Forest。
 
-`Get-AzureADPasswordProtectionSummaryReport` cmdlet 的工作原理是，先查询 DC 代理管理事件日志，再计算所显示的每个结果类别对应的事件总数。 下表包含每个结果与其相应的事件 ID 之间的映射：
+`Get-AzureADPasswordProtectionSummaryReport` cmdlet 的工作原理是，先查询 DC 代理管理事件日志，再计算所显示的每个结果类别对应的事件总数。 下表包含每个结果与其相应事件 ID 之间的映射：
 
-|Get-AzureADPasswordProtectionSummaryReport property |相应的事件 ID|
+|Get-AzureADPasswordProtectionSummaryReport property |对应的事件 ID|
 | :---: | :---: |
 |PasswordChangesValidated |10014|
 |PasswordSetsValidated |10015|
@@ -117,7 +117,7 @@ cmdlet 的报告范围可能会使用 _Forest、-Domain 或 _DomainController �
 > 此 cmdlet 通过打开与每个域控制器的 Powershell 会话进行工作。 若要获得成功，必须在每个域控制器上启用 PowerShell 远程会话支持，并且客户端必须具有足够的权限。 有关 PowerShell 远程会话要求的详细信息，请在 PowerShell 窗口中运行“Get-Help about_Remote_Troubleshooting”。
 
 > [!NOTE]
-> 此 cmdlet 的工作原理是远程查询每个 DC 代理服务的管理事件日志。 如果事件日志包含大量事件，此 cmdlet 可能需要很长时间才能完成。 此外，对大型数据集执行批量网络查询可能会影响域控制器的性能。 因此，在生产环境中应慎用此 cmdlet。
+> 此 cmdlet 通过远程查询每个 DC 代理服务的管理事件日志来工作。 如果事件日志包含大量事件，此 cmdlet 可能需要很长时间才能完成。 此外，对大型数据集执行批量网络查询可能会影响域控制器的性能。 因此，在生产环境中应慎用此 cmdlet。
 
 ### <a name="sample-event-log-message-for-event-id-10014-successful-password-change"></a>事件 ID 10014（密码更改成功）的示例事件日志消息
 
@@ -265,15 +265,15 @@ HeartbeatUTC          : 2/16/2018 8:35:02 AM
 
 每个 DC 代理服务大约每隔一小时更新各种属性。 数据仍可能遇到 Active Directory 复制延迟。
 
-cmdlet 查询的范围可能会使用 _Forest 或 _Domain 参数受到影响。
+使用–林参数或– Domain 参数可能会影响 cmdlet 的查询范围。
 
 如果 HeartbeatUTC 值过时，可能会有以下症状：相应域控制器上的 Azure AD 密码保护 DC 代理未运行或已卸载，或者计算机已降级，不再是域控制器。
 
-如果密码策略DateUTC值过时，这可能是该计算机上的 Azure AD 密码保护 DC 代理无法正常工作的症状。
+如果 PasswordPolicyDateUTC 值过时，这可能是因为该计算机上 Azure AD 的密码保护 DC 代理无法正常运行。
 
-## <a name="dc-agent-newer-version-available"></a>DC 代理较新版本可用
+## <a name="dc-agent-newer-version-available"></a>可用的 DC 代理更新版本
 
-DC 代理服务在检测到 DC 代理软件的较新版本可用后，将 30034 警告事件记录到操作日志，例如：
+检测到新版本的 DC 代理软件可用时，DC 代理服务会将30034警告事件记录到操作日志中，例如：
 
 ```text
 An update for Azure AD Password Protection DC Agent is available.
@@ -287,10 +287,10 @@ https://aka.ms/AzureADPasswordProtectionAgentSoftwareVersions
 Current version: 1.2.116.0
 ```
 
-上述事件未指定较新版本的版本。 您应该转到事件消息中的链接以获取有关该信息。
+上面的事件未指定新版软件的版本。 应该在事件消息中找到该信息的链接。
 
 > [!NOTE]
-> 尽管上述事件消息中引用了"自动升级"，但 DC 代理软件当前不支持此功能。
+> 尽管上述事件消息中的 "自动升级" 引用，但 DC 代理软件当前不支持此功能。
 
 ## <a name="proxy-service-event-logging"></a>代理服务事件日志记录
 
@@ -335,7 +335,7 @@ HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionProxy\Parameters
 
 导致状态更改的 PowerShell cmdlet（例如，Register-AzureADPasswordProtectionProxy）通常会将结果事件记录到运行日志中。
 
-此外，大多数 Azure AD 密码保护 PowerShell cmdlet 将写入位于以下的文本日志：
+此外，大多数 Azure AD 密码保护 PowerShell cmdlet 会写入以下位置的文本日志：
 
 `%ProgramFiles%\Azure AD Password Protection Proxy\Logs`
 
@@ -357,13 +357,13 @@ HeartbeatUTC          : 12/25/2018 6:35:02 AM
 
 每个代理服务大约每小时更新一次各种属性。 数据仍可能遇到 Active Directory 复制延迟。
 
-cmdlet 查询的范围可能会使用 _Forest 或 _Domain 参数受到影响。
+使用–林参数或– Domain 参数可能会影响 cmdlet 的查询范围。
 
 如果 HeartbeatUTC 值过时，可能会有以下症状：相应计算机上的 Azure AD 密码保护代理未运行或已卸载。
 
 ## <a name="proxy-agent-newer-version-available"></a>代理更新版本可用
 
-代理服务在检测到代理软件的较新版本可用后，将 20002 警告事件记录到操作日志，例如：
+检测到较新版本的代理软件可用时，代理服务会将20002警告事件记录到操作日志中，例如：
 
 ```text
 An update for Azure AD Password Protection Proxy is available.
@@ -378,9 +378,9 @@ Current version: 1.2.116.0
 .
 ```
 
-上述事件未指定较新版本的版本。 您应该转到事件消息中的链接以获取有关该信息。
+上面的事件未指定新版软件的版本。 应该在事件消息中找到该信息的链接。
 
-即使启用了自动升级配置代理，也会发出此事件。
+即使已将代理程序配置为启用了自动升级，也会发出此事件。
 
 ## <a name="next-steps"></a>后续步骤
 

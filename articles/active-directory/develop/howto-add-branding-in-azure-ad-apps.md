@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
 ms.openlocfilehash: c5b63fb0b66c78b33fb073eca919ed55bd05107c
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80884420"
 ---
 # <a name="branding-guidelines-for-applications"></a>适用于应用程序的品牌准则
@@ -63,13 +63,13 @@ Microsoft 不会向最终用户显示 Azure 或 Active Directory 品牌名称，
 
 “获取应用程序”链接必须将用户重定向到 Azure AD 的访问权限授予（授权）页，以方便组织的管理员对应用程序进行授权，使其有权访问 Microsoft 托管的组织数据。 有关如何请求访问权限的详细信息，请参阅[将应用程序与 Azure Active Directory 集成](quickstart-v1-integrate-apps-with-azure-ad.md)一文。
 
-在管理员同意你的应用后，他们可以选择将其添加到用户的 Office 365 应用启动器体验（可从华夫饼和 从[https://portal.office.com/myapps](https://portal.office.com/myapps)访问） 如果想要广告此功能，可以使用类似于“将此应用程序添加到组织”词语，并显示类似于以下示例的按钮：
+在管理员同意你的应用程序后，他们可以选择将其添加到其用户的 Office 365 应用程序启动器体验（可从 waffle [https://portal.office.com/myapps](https://portal.office.com/myapps)和进行访问）。 如果想要广告此功能，可以使用类似于“将此应用程序添加到组织”词语，并显示类似于以下示例的按钮：
 
 ![显示 Microsoft 徽标和“添加到我的组织”文本的按钮](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
 但是，我们建议编写说明性的文本而不要依赖于按钮。 例如：
 
-> *如果您已经使用 Microsoft 的 Office 365 或其他业务服务，则可以授予<your_app_name>访问组织的数据。这将允许用户使用现有工作帐户访问<your_app_name>。*
+> *如果已使用 Office 365 或 Microsoft 的其他业务服务，则可以授予 <your_app_name> 对组织数据的访问权限。这样，用户便可以使用其现有工作帐户访问 <your_app_name>。*
 
 若要下载官方 Microsoft 徽标以在应用中使用，请右键单击要使用的徽标，然后将其保存到计算机。
 
@@ -102,7 +102,7 @@ Microsoft 徽标和“通过 Microsoft 登录”词语的关联可唯一地将 A
 
 **务必**将“工作或学校帐户”与“通过 Microsoft 登录”按钮结合使用来提供附加说明，以便帮助最终用户识别他们是否可以使用该应用。 **请勿**使用“企业帐户”、“业务帐户”或“公司帐户”等其他词语。
 
-**不要**使用"Office 365 ID"或"Azure ID"。 Office 365 也是 Microsoft 的消费型产品名称，它不使用 Azure AD 进行身份验证。
+**请勿**使用 "OFFICE 365 id" 或 "Azure ID"。 Office 365 也是 Microsoft 的消费型产品名称，它不使用 Azure AD 进行身份验证。
 
 **请勿**更改 Microsoft 徽标。
 

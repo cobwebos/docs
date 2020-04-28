@@ -7,15 +7,15 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: overview
-ms.date: 05/08/2019
+ms.date: 04/10/2020
 ms.author: mamccrea
 ms.custom: mvc
-ms.openlocfilehash: 53f1b9a2fde20cacccd0730213695f26c1200fa7
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 902486f7e19f2dfd7cc64e27589e192c57ef64e8
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80132542"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255509"
 ---
 # <a name="what-is-azure-databricks"></a>什么是 Azure Databricks？
 
@@ -85,6 +85,11 @@ Azure Databricks 提供企业级的 Azure 安全性，包括 Azure Active Direct
 * 与 Azure Active Directory 集成后，可以使用 Azure Databricks 运行基于 Azure 的完整解决方案。
 * Azure Databricks 基于角色的访问可以细化用户对笔记本、群集、作业和数据的权限。
 * 企业级 SLA。 
+
+> [!IMPORTANT]
+>
+> Azure Databricks 是部署在全局 Azure 公有云基础结构上的 Microsoft Azure 第一方服务。 服务组件之间的所有通信（包括控制平面和客户数据平面中的公共 IP 之间的通信）都留在 Microsoft Azure 网络主干内进行。 另请参阅 [Microsoft 全球网络](https://docs.microsoft.com/azure/networking/microsoft-global-network)。
+
 
 ## <a name="integration-with-azure-services"></a>与 Azure 服务集成
 

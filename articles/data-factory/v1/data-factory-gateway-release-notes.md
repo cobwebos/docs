@@ -12,10 +12,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 838e523f74a21c44958ddb6dc88e4dab3526d81a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80064997"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>数据管理网关的发行说明
@@ -40,7 +40,7 @@ ms.locfileid: "80064997"
 ## <a name="21063477"></a>2.10.6347.7
 ### <a name="enhancements-"></a>增强功能
 - 可将 DNS 条目添加到允许列表服务总线，而不是将防火墙中的所有 Azure IP 地址列入允许列表（如果需要）。 可以在 Azure 门户中找到相应的 DNS 条目（“数据工厂”->“创作和部署”->“网关”->“serviceUrls”（采用 JSON））
-- HDFS 连接器现在通过跳过 TLS 验证支持自签名公共证书。
+- HDFS 连接器现在支持自签名的公共证书，方法是允许你跳过 TLS 验证。
 - 已修复：更新期间发生的网关脱机问题（由于时钟偏差）
 
 

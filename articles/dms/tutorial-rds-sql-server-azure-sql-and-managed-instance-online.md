@@ -1,5 +1,5 @@
 ---
-title: 教程：将 RDS SQL 服务器联机迁移到 SQL 数据库
+title: 教程：将 RDS SQL Server 联机迁移到 SQL 数据库
 titleSuffix: Azure Database Migration Service
 description: 了解如何使用 Azure 数据库迁移服务执行从 RDS SQL Server 到 Azure SQL 数据库单一数据库或托管实例的联机迁移操作。
 services: dms
@@ -13,16 +13,16 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
 ms.openlocfilehash: 8d538deca610fd9981d401d28b6bea1c31c6d4c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80298874"
 ---
-# <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>教程：使用 DMS 将 RDS SQL 服务器迁移到 Azure SQL 数据库或 Azure SQL 数据库托管实例
-可以使用 Azure 数据库迁移服务将数据库从 RDS SQL Server 实例迁移到 [Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/)或 [Azure SQL 数据库托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)，且几乎不用停机。 在本教程中，我们使用 Azure 数据库迁移服务，将还原到 SQL Server 2012（或更高版本） RDS SQL Server 实例的 Adventureworks2012 数据库迁移到 Azure SQL 数据库或 Azure SQL 数据库托管实例****。
+# <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>教程：使用 DMS 将 RDS SQL Server 联机迁移到 Azure SQL 数据库或 Azure SQL 数据库托管实例
+可以使用 Azure 数据库迁移服务将数据库从 RDS SQL Server 实例迁移到 [Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/)或 [Azure SQL 数据库托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)，且几乎不用停机。 在本教程中，我们使用 Azure 数据库迁移服务，将还原到 SQL Server 2012（或更高版本） RDS SQL Server 实例的 Adventureworks2012 数据库迁移到 Azure SQL 数据库或 Azure SQL 数据库托管实例  。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 > [!div class="checklist"]
 > * 创建 Azure SQL 数据库的实例，或 Azure SQL 数据库托管实例。 
 > * 通过使用数据迁移助手迁移示例架构。
@@ -49,13 +49,13 @@ ms.locfileid: "80298874"
 * 按照[在 Azure 门户中创建 Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)一文中的详细信息创建 Azure SQL 数据库。
 
     > [!NOTE]
-    > 若要迁移到 Azure SQL 数据库托管实例，请遵循[创建 Azure SQL 数据库托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)一文中的详细信息，并创建名为 AdventureWorks2012 的空数据库****。 
+    > 若要迁移到 Azure SQL 数据库托管实例，请遵循[创建 Azure SQL 数据库托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)一文中的详细信息，并创建名为 AdventureWorks2012 的空数据库  。 
  
 * 下载并安装[数据迁移助手](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) v3.3 或更高版本。
-* 通过使用 Azure 资源管理器部署模型为 Azure 数据库迁移服务创建 Microsoft Azure 虚拟网络。 若要迁移到 Azure SQL 数据库托管实例，请确保在用于 Azure SQL 数据库托管实例的同一虚拟网络的不同子网中创建 DMS 实例。  或者，如果对 DMS 使用不同的虚拟网络，则需要在两个虚拟网络之间创建虚拟网络对等互连。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
+* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络。 若要迁移到 Azure SQL 数据库托管实例，请确保在用于 Azure SQL 数据库托管实例的同一虚拟网络的不同子网中创建 DMS 实例。  或者，如果对 DMS 使用不同的虚拟网络，则需要在两个虚拟网络之间创建虚拟网络对等互连。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
 
     > [!NOTE]
-    > 在虚拟网络设置期间，如果将 ExpressRoute 与网络对等互连到 Microsoft，则向将服务预配的子网添加以下服务[终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)：
+    > 在虚拟网络安装期间，如果将 ExpressRoute 与 Microsoft 的网络对等互连一起使用，请将以下服务[终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)添加到将在其中预配服务的子网中：
     >
     > * 目标数据库终结点（例如，SQL 终结点、Cosmos DB 终结点等）
     > * 存储终结点
@@ -63,7 +63,7 @@ ms.locfileid: "80298874"
     >
     > Azure 数据库迁移服务缺少 Internet 连接，因此必须提供此配置。 
 
-* 确保虚拟网络网络安全组规则不会阻止以下到 Azure 数据库迁移服务的入站通信端口：443、53、9354、445、12000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
+* 确保虚拟网络网络安全组规则未阻止到 Azure 数据库迁移服务的以下入站通信端口：443、53、9354、445、12000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
 * 配置[针对数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 * 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 SQL Server（默认情况下为 TCP 端口 1433）。
 * 为 Azure SQL 数据库服务器创建服务器级[防火墙规则](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的虚拟网络子网范围。
@@ -103,50 +103,50 @@ ms.locfileid: "80298874"
 > [!NOTE]
 > 在 DMA 中创建迁移项目之前，请确保已按照先决条件中的说明预配了 Azure SQL 数据库。 本教程假设 Azure SQL 数据库的名称是 **AdventureWorks2012**，但你可以根据需要提供任意名称。
 
-若要将 AdventureWorks2012**** 架构迁移到 Azure SQL 数据库，请执行以下步骤：
+若要将 AdventureWorks2012  架构迁移到 Azure SQL 数据库，请执行以下步骤：
 
-1. 在数据迁移助手中，选择“新建 (+)”图标，然后在“项目类型”下选择“迁移”********。
-2. 指定项目名称，在“源服务器类型”**** 文本框中，选择“SQL Server”****，然后在“目标服务器类型”**** 文本框中，选择“Azure SQL 数据库”****。
-3. 在“迁移范围”**** 下，选择“仅架构”****。
+1. 在数据迁移助手中，选择“新建 (+)”图标，然后在“项目类型”下选择“迁移”   。
+2. 指定项目名称，在“源服务器类型”  文本框中，选择“SQL Server”  ，然后在“目标服务器类型”  文本框中，选择“Azure SQL 数据库”  。
+3. 在“迁移范围”  下，选择“仅架构”  。
 
     在执行前面的步骤后，DMA 界面应如下图所示：
 
     ![创建数据迁移助手项目](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dma-create-project.png)
 
-4. 选择“创建”**** 来创建项目。
-5. 在 DMA 中指定 SQL Server 的源连接详细信息，选择“连接”****，然后选择“AdventureWorks2012”**** 数据库。
+4. 选择“创建”  来创建项目。
+5. 在 DMA 中指定 SQL Server 的源连接详细信息，选择“连接”  ，然后选择“AdventureWorks2012”  数据库。
 
     ![数据迁移助手源连接详细信息](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dma-source-connect.png)
 
-6. 在“连接到目标服务器”下选择“下一步”，指定 Azure SQL 数据库的目标连接详细信息，选择“连接”，然后选择在 Azure SQL 数据库中预配的“AdventureWorksAzure”数据库。****************
+6. 在“连接到目标服务器”下选择“下一步”，指定 Azure SQL 数据库的目标连接详细信息，选择“连接”，然后选择在 Azure SQL 数据库中预配的“AdventureWorksAzure”数据库。    
 
     ![数据迁移助手目标连接详细信息](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dma-target-connect.png)
 
-7. 选择“下一步”****，以转到“选择对象”**** 屏幕，可以在其中指定需要部署到 Azure SQL 数据库的“AdventureWorks2012”**** 中的架构对象。
+7. 选择“下一步”  ，以转到“选择对象”  屏幕，可以在其中指定需要部署到 Azure SQL 数据库的“AdventureWorks2012”  中的架构对象。
 
     默认情况下，选择所有对象。
 
     ![生成 SQL 脚本](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dma-assessment-source.png)
 
-8. 选择“生成 SQL 脚本”**** 以创建 SQL 脚本，然后检查脚本是否有任何错误。
+8. 选择“生成 SQL 脚本”  以创建 SQL 脚本，然后检查脚本是否有任何错误。
 
     ![架构脚本](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dma-schema-script.png)
 
-9. 选择“部署架构”**** 以将架构部署到 Azure SQL 数据库，然后在部署架构后，检查目标服务器是否存在任何异常情况。
+9. 选择“部署架构”  以将架构部署到 Azure SQL 数据库，然后在部署架构后，检查目标服务器是否存在任何异常情况。
 
     ![部署架构](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dma-schema-deploy.png)
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>注册 Microsoft.DataMigration 资源提供程序
 
-1. 登录到 Azure 门户，选择“所有服务”****，然后选择“订阅”****。
+1. 登录到 Azure 门户，选择“所有服务”  ，然后选择“订阅”  。
 
    ![显示门户订阅](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/portal-select-subscription1.png)
 
-2. 选择要在其中创建 Azure 数据库迁移服务实例的订阅，再选择“资源提供程序”****。
+2. 选择要在其中创建 Azure 数据库迁移服务实例的订阅，再选择“资源提供程序”  。
 
     ![显示资源提供程序](media/tutorial-sql-server-to-azure-sql-online/portal-select-resource-provider.png)
 
-3. 搜索迁移，然后搜索 Microsoft 的右侧 **。** **Register**
+3. 搜索 "迁移"，然后在 " **microsoft.datamigration**" 右侧选择 "**注册**"。
 
     ![注册资源提供程序](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/portal-register-resource-provider.png)    
 
@@ -156,11 +156,11 @@ ms.locfileid: "80298874"
 
     ![Azure 市场](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/portal-marketplace.png)
 
-2. 在“Azure 数据库迁移服务”屏幕上，选择“创建”********。
+2. 在“Azure 数据库迁移服务”屏幕上，选择“创建”   。
 
     ![创建 Azure 数据库迁移服务实例](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-create1.png)
   
-3. 在“创建迁移服务”屏幕上，为服务、订阅以及新的或现有资源组指定名称****。
+3. 在“创建迁移服务”屏幕上，为服务、订阅以及新的或现有资源组指定名称  。
 
 4. 选择要在其中创建 Azure 数据库迁移服务实例的位置。 
 
@@ -176,116 +176,116 @@ ms.locfileid: "80298874"
 
      ![配置 Azure 数据库迁移服务实例设置](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-settings3.png)
 
-7. 选择“创建”**** 来创建服务。
+7. 选择“创建”  来创建服务。
 
 ## <a name="create-a-migration-project"></a>创建迁移项目
 
 创建服务后，在 Azure 门户中找到并打开它，然后创建一个新的迁移项目。
 
-1. 在 Azure 门户中，选择“所有服务”****，搜索 Azure 数据库迁移服务，然后选择“Azure 数据库迁移服务”****。
+1. 在 Azure 门户中，选择“所有服务”  ，搜索 Azure 数据库迁移服务，然后选择“Azure 数据库迁移服务”  。
 
       ![查找 Azure 数据库迁移服务的所有实例](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-search.png)
 
-2. 在“Azure 数据库迁移服务”屏幕上，搜索你创建的 Azure 数据库迁移服务实例名称，然后选择该实例****。
+2. 在“Azure 数据库迁移服务”屏幕上，搜索你创建的 Azure 数据库迁移服务实例名称，然后选择该实例  。
 
      ![查找 Azure 数据库迁移服务实例](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-instance-search.png)
 
-3. 选择 =**新迁移项目**。
-4. 在“新建迁移项目”屏幕上指定项目名称，在“源服务器类型”文本框中选择“AWS RDS for SQL Server”，在“目标服务器类型”文本框中选择“Azure SQL 数据库”。********************
+3. 选择“+ 新建迁移项目”  。
+4. 在“新建迁移项目”屏幕上指定项目名称，在“源服务器类型”文本框中选择“AWS RDS for SQL Server”，在“目标服务器类型”文本框中选择“Azure SQL 数据库”。     
 
     > [!NOTE]
-    > 对于目标服务器类型，请选择“Azure SQL 数据库”以同时迁移到 Azure SQL 数据库单一数据库以及 Azure SQL 数据库托管实例****。
+    > 对于目标服务器类型，请选择“Azure SQL 数据库”以同时迁移到 Azure SQL 数据库单一数据库以及 Azure SQL 数据库托管实例  。
 
-5. 在“选择活动类型”部分选择“联机数据迁移”。********
+5. 在“选择活动类型”部分选择“联机数据迁移”。  
 
     > [!IMPORTANT]
-    > 请确保选择“联机数据迁移”；此方案不支持脱机迁移****。
+    > 请确保选择“联机数据迁移”；此方案不支持脱机迁移  。
 
     ![创建数据库迁移服务项目](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-create-project4.png)
 
     > [!NOTE]
-    > 也可以现在就选择“仅创建项目”来创建迁移项目，在以后再执行迁移。****
+    > 也可以现在就选择“仅创建项目”来创建迁移项目，在以后再执行迁移。 
 
-6. 选择“保存”。****
+6. 选择“保存”  。
 
-7. 选择“创建并运行活动”，以便创建项目并运行迁移活动。****
+7. 选择“创建并运行活动”，以便创建项目并运行迁移活动。 
 
     ![创建并运行数据库迁移服务活动](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-create-and-run-activity1.png)
 
 ## <a name="specify-source-details"></a>指定源详细信息
 
-1. 在“迁移源详细信息”**** 屏幕上，指定源 SQL Server 实例的连接详细信息。
+1. 在“迁移源详细信息”  屏幕上，指定源 SQL Server 实例的连接详细信息。
 
     请确保为源 SQL Server 实例名称使用完全限定的域名 (FQDN)。
 
-2. 如果尚未在源服务器上安装受信任的证书，请选中“信任服务器证书”复选框****。
+2. 如果尚未在源服务器上安装受信任的证书，请选中“信任服务器证书”复选框  。
 
     如果没有安装受信任的证书，SQL Server 会在实例启动时生成自签名证书。 此证书用于加密客户端连接的凭据。
 
     > [!CAUTION]
-    > 使用自签名证书加密的 TLS 连接不提供强大的安全性。 它们易遭受中间人攻击。 不应依赖 TLS 在生产环境中或连接到 Internet 的服务器上使用自签名证书。
+    > 使用自签名证书加密的 TLS 连接不提供强安全性。 它们易遭受中间人攻击。 不应在生产环境中或在连接到 internet 的服务器上使用自签名证书依赖于 TLS。
 
    ![源详细信息](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-source-details3.png)
 
 ## <a name="specify-target-details"></a>指定目标详细信息
 
-1. 选择“保存”，然后在“迁移目标详细信息”屏幕中，指定目标 Azure SQL 数据库服务器的连接详细信息，这是使用 DMA 向其部署 AdventureWorks2012 架构的预配 Azure SQL 数据库************。
+1. 选择“保存”，然后在“迁移目标详细信息”屏幕中，指定目标 Azure SQL 数据库服务器的连接详细信息，这是使用 DMA 向其部署 AdventureWorks2012 架构的预配 Azure SQL 数据库    。
 
     ![选择目标](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-select-target3.png)
 
-2. 选择“保存”，然后在“映射到目标数据库”屏幕上，映射源和目标数据库以进行迁移。********
+2. 选择“保存”，然后在“映射到目标数据库”屏幕上，映射源和目标数据库以进行迁移。  
 
     如果目标数据库包含的数据库名称与源数据库的相同，则 Azure 数据库迁移服务会默认选择目标数据库。
 
     ![映射到目标数据库](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-map-targets-activity4.png)
 
-3. 在“选择表”屏幕上选择“保存”，展开表列表，如何查看受影响字段的列表********。
+3. 在“选择表”屏幕上选择“保存”，展开表列表，如何查看受影响字段的列表   。
 
     Azure 数据库迁移服务会自动选择目标 Azure SQL 数据库实例上的所有空源表。 若要重新迁移已包含数据的表，需要在此屏幕上显式选择表。
 
     ![选择表](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-configure-setting-activity4.png)
 
-4. 设置以下“高级联机迁移设置”后，选择“保存”。********
+4. 设置以下“高级联机迁移设置”后，选择“保存”。  
 
-    | 设置 | 描述 |
+    | 设置 | 说明 |
     | ------------- | ------------- |
     | **可并行加载的最大表数目** | 指定 DMS 在迁移期间并行执行的表数。 默认值为 5，但可以根据任何 POC 迁移方案的具体迁移需求，将其设置为最佳值。 |
     | **截断源表时** | 指定 DMS 在迁移期间是否截断目标表。 如果在迁移过程中截断了一个或多个表，此设置可能有所帮助。 |
-    | **配置大型对象(LOB)数据设置** | 指定 DMS 是要迁移不受限制的 LOB 数据，还是将迁移的 LOB 数据限制为特定的大小。  对迁移的 LOB 数据施加限制后，将截断超出该限制的任何 LOB 数据。 对于生产迁移，我们建议选择“允许不受限制的 LOB 大小”以防止数据丢失。**** 指定允许不受限制的 LOB 大小时，请选中“当 LOB 大小小于指定的 KB 时以单个块的形式迁移 LOB 数据”复选框，以提高性能。**** |
+    | **配置大型对象(LOB)数据设置** | 指定 DMS 是要迁移不受限制的 LOB 数据，还是将迁移的 LOB 数据限制为特定的大小。  对迁移的 LOB 数据施加限制后，将截断超出该限制的任何 LOB 数据。 对于生产迁移，我们建议选择“允许不受限制的 LOB 大小”以防止数据丢失。  指定允许不受限制的 LOB 大小时，请选中“当 LOB 大小小于指定的 KB 时以单个块的形式迁移 LOB 数据”复选框，以提高性能。  |
 
     ![设置高级联机迁移设置](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-advanced-online-migration-settings.png)
 
-5. 选择“保存”，在“迁移摘要”屏幕上的“活动名称”文本框中指定迁移活动的名称，然后查看摘要，确保源和目标详细信息与此前指定的信息相符************。
+5. 选择“保存”，在“迁移摘要”屏幕上的“活动名称”文本框中指定迁移活动的名称，然后查看摘要，确保源和目标详细信息与此前指定的信息相符    。
 
     ![迁移摘要](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-migration-summary.png)
 
 ## <a name="run-the-migration"></a>运行迁移
 
-* 选择“运行迁移”****。
+* 选择“运行迁移”  。
 
-    将显示迁移活动窗口，并且活动**的状态****正在初始化**。
+    迁移活动窗口随即出现，活动的“状态”为“正在初始化”   。
 
     ![活动状态 - 正在初始化](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-activity-status2.png)
 
 ## <a name="monitor-the-migration"></a>监视迁移
 
-1. 在迁移活动屏幕上选择“刷新”****，以便更新显示，直到迁移的“状态”**** 显示为“正在运行”****。
+1. 在迁移活动屏幕上选择“刷新”  ，以便更新显示，直到迁移的“状态”  显示为“正在运行”  。
 
-2. 单击特定数据库即可转到“完整数据加载”和“增量数据同步”操作的迁移状态。********
+2. 单击特定数据库即可转到“完整数据加载”和“增量数据同步”操作的迁移状态。  
 
     ![活动状态 - 正在进行](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-activity-in-progress.png)
 
 ## <a name="perform-migration-cutover"></a>执行迁移直接转换
 
-完成初始的完整加载以后，数据库会被标记为“直接转换可供执行”。****
+完成初始的完整加载以后，数据库会被标记为“直接转换可供执行”。 
 
-1. 如果准备完成数据库迁移，请选择“启动直接转换”。****
+1. 如果准备完成数据库迁移，请选择“启动直接转换”。 
 
     ![启动直接转换](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-start-cutover.png)
 
-2. 确保停止传入源数据库的所有事务；等到“挂起的更改”计数器显示 **0**。****
-3. 选择“确认”****，然后选择“应用”****。
-4. 当数据库迁移状态显示“已完成”后，请将应用程序连接到新的目标 Azure SQL 数据库。****
+2. 确保停止传入源数据库的所有事务；等到“挂起的更改”计数器显示 **0**。 
+3. 选择“确认”  ，然后选择“应用”  。
+4. 当数据库迁移状态显示“已完成”后，请将应用程序连接到新的目标 Azure SQL 数据库。 
 
     ![活动状态 - 已完成](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-activity-completed.png)
 

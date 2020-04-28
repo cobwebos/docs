@@ -1,7 +1,7 @@
 ---
 title: 适用于 Android 设备的共享设备模式
 titleSuffix: Microsoft identity platform | Azure
-description: 了解如何启用共享设备模式，以允许一线工作人员共享 Android 设备
+description: 了解如何启用共享设备模式以允许 Firstline 工作人员共享 Android 设备
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
 ms.openlocfilehash: d9874e27c21906512c2f6c841767b4d6591dbeaf
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80550261"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>适用于 Android 设备的共享设备模式
@@ -27,7 +27,7 @@ ms.locfileid: "80550261"
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-一线员工（如零售员工、机组人员和现场服务人员）通常使用共享移动设备完成工作。 当他们开始共享密码或 PIN 号来访问共享设备上的客户和业务数据时，这会造成问题。
+Firstline 工作人员（例如零售协会、航班员工和现场服务工作人员）通常使用共享的移动设备来完成工作。 当他们开始共享密码或 PIN 号来访问共享设备上的客户和业务数据时，这会造成问题。
 
 使用共享设备模式可对 Android 设备进行配置，使其可由多名员工轻松共享。 员工可以登录并快速访问客户信息。 当他们完成其轮班或任务后，可以从设备注销，然后，该设备立即可供下一名员工使用。
 
@@ -36,7 +36,7 @@ ms.locfileid: "80550261"
 开发人员和云设备管理员可以共同创建共享设备模式应用：
 
 - 开发人员编写单帐户应用（共享设备模式不支持多帐户应用），将 `"shared_device_mode_supported": true` 添加到应用的配置，并编写代码来处理共享设备注销等任务。
-- 设备管理员通过安装 Authenticator 应用，并使用 Authenticator 应用将设备设置为共享模式，来准备要共享的设备。 只有充当[云设备管理员](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator-permissions)角色的用户才能使用 [Authenticator 应用](../user-help/user-help-auth-app-overview.md)将设备置于共享模式。 您可以通过 **：Azure 活动目录** > **角色和管理员** > **云设备管理员**在 Azure 门户中配置组织角色的成员身份。
+- 设备管理员通过安装 Authenticator 应用，并使用 Authenticator 应用将设备设置为共享模式，来准备要共享的设备。 只有充当[云设备管理员](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator-permissions)角色的用户才能使用 [Authenticator 应用](../user-help/user-help-auth-app-overview.md)将设备置于共享模式。 可以通过以下方式在 Azure 门户中配置组织角色的成员身份： **Azure Active Directory** > **角色和管理员** > **云设备管理员**。
 
  本文重点介绍开发人员应考虑的事项。
 
@@ -57,7 +57,7 @@ ms.locfileid: "80550261"
 
 你可能还希望应用根据其运行所在的设备类型更改其行为。 使用 `ISingleAccountPublicClientApplication.isSharedDevice()` 确定何时在单帐户模式下运行。
 
-有两个不同的接口表示应用程序所在的设备类型。 当您从 MSAL 的应用程序工厂请求应用程序实例时，将自动提供正确的应用程序对象。
+有两个不同的接口表示应用程序所在的设备类型。 从 MSAL 的应用程序工厂请求应用程序实例时，会自动提供正确的应用程序对象。
 
 以下对象模型演示了可以接收的对象类型，以及该对象在共享设备上下文中的含义：
 

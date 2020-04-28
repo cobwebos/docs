@@ -1,23 +1,23 @@
 ---
 title: 教程：使用交互式查询执行 ETL 操作 - Azure HDInsight
-description: 教程 - 了解如何从原始 CSV 数据集提取数据，在 HDInsight 上使用交互式查询将其转换，然后使用 Apache Sqoop 将已转换的数据加载到 Azure SQL 数据库。
+description: 教程 - 了解如何从原始 CSV 数据集提取数据。 使用 HDInsight 上的 Interactive Query 转换数据。 然后使用 Apache Sqoop 将转换后的数据加载到 Azure SQL 数据库。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.date: 07/02/2019
-ms.author: hrasheed
 ms.custom: hdinsightactive,mvc
-ms.openlocfilehash: d1136c153a529f58db1de277ec84ac332b9f78ae
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 07/02/2019
+ms.openlocfilehash: 7413a32fdddb579bad61c9cfe539be6aaeae9881
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73494160"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313741"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中使用交互式查询提取、转换和加载数据
 
-在此教程中，你将获取公开可用的航班数据的原始 CSV 数据文件，将其导入 HDInsight 群集存储，然后在 Azure HDInsight 中使用交互式查询转换数据。 数据转换完毕后，使用 [Apache Sqoop](https://sqoop.apache.org/) 将数据加载到 Azure SQL 数据库。
+在本教程中，我们将下载公开发布的航班数据的原始 CSV 数据文件。 将该文件导入 HDInsight 群集存储，然后使用 Azure HDInsight 中的 Interactive Query 来转换数据。 数据转换完毕后，使用 [Apache Sqoop](https://sqoop.apache.org/) 将数据加载到 Azure SQL 数据库。
 
 本教程涵盖以下任务：
 
@@ -46,7 +46,7 @@ ms.locfileid: "73494160"
    | --- | --- |
    | 筛选年份 |2019 |
    | 筛选期间 |1 月 |
-   | 字段 |Year、FlightDate、Reporting_Airline、DOT_ID_Reporting_Airline、Flight_Number_Reporting_Airline、OriginAirportID、Origin、OriginCityName、OriginState、DestAirportID、Dest、DestCityName、DestState、DepDelayMinutes、ArrDelay、ArrDelayMinutes、CarrierDelay、WeatherDelay、NASDelay、SecurityDelay、LateAircraftDelay。 |
+   | 字段 |`Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay` 列中的一个值匹配。 |
 
 3. 选择“下载”  。 你将得到一个具有所选数据字段的 zip 文件。
 
@@ -60,7 +60,7 @@ ms.locfileid: "73494160"
     scp FILENAME.zip sshuser@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.zip
     ```
 
-    如果要求你输入“yes”或“no”以继续，请在命令提示符下键入“yes”，然后按 Enter。 键入时，文本在窗口中不可见。
+    如果出现提示，请输入“yes”或“no”以继续。 键入时，文本在窗口中不可见。
 
 2. 上传完成后，使用 SSH 连接到群集。 通过将 `CLUSTERNAME` 替换为 HDInsight 群集的名称来编辑以下命令。 然后输入以下命令：
 
@@ -283,7 +283,7 @@ ms.locfileid: "73494160"
     GO
     ```
 
-    会在表中看到一系列数据。 该表包括城市名称和该城市的平均航班延迟时间。 
+    会在表中看到一系列数据。 该表包括城市名称和该城市的平均航班延迟时间。
 
     键入 `exit` 退出 tsql 实用工具。
 
@@ -298,4 +298,4 @@ ms.locfileid: "73494160"
 在本教程中，你获取了一个原始 CSV 数据文件，将其导入到 HDInsight 群集存储中，然后使用 Azure HDInsight 中的交互式查询转换数据。  继续学习下一篇教程，了解 Apache Hive Warehouse Connector。
 
 > [!div class="nextstepaction"]
->[将 Apache Spark 和 Apache Hive 与 Hive Warehouse Connector 集成](./apache-hive-warehouse-connector.md)
+> [将 Apache Spark 和 Apache Hive 与 Hive Warehouse Connector 集成](./apache-hive-warehouse-connector.md)

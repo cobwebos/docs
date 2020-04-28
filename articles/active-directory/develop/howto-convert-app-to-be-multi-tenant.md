@@ -14,17 +14,17 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
 ms.openlocfilehash: f22ecb13284eaf6fb2a833791b5563351ca19147
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80884080"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>如何：使用多租户应用程序模式让任何 Azure Active Directory 用户登录
 
-如果你向许多组织提供软件即服务 (SaaS) 应用程序，则可以将应用程序配置为接受来自任何 Azure Active Directory (Azure AD) 租户的登录。 此配置称为*使应用程序多租户*。 任何 Azure AD 租户中的用户在同意配合应用程序使用其帐户之后，便可登录到应用程序。
+如果你向许多组织提供软件即服务 (SaaS) 应用程序，则可以将应用程序配置为接受来自任何 Azure Active Directory (Azure AD) 租户的登录。 此配置称为使应用程序成为多租户应用程序  。 任何 Azure AD 租户中的用户在同意配合应用程序使用其帐户之后，便可登录到应用程序。
 
-如果现有应用程序具有自己的帐户系统，或者支持来自其他云提供程序的其他类型的登录，则从任何租户添加 Azure AD 登录都非常简单。 只需注册应用，通过 OAuth2、OpenID 连接或 SAML 添加登录代码，并在应用程序中放置["使用 Microsoft 登录"按钮][AAD-App-Branding]。
+如果现有应用程序具有自己的帐户系统，或者支持来自其他云提供程序的其他类型的登录，则从任何租户添加 Azure AD 登录都非常简单。 只需要注册应用，通过 OAuth2、OpenID Connect 或 SAML 添加登录代码，并按下应用程序中的[“使用 Microsoft 登录”按钮][AAD-App-Branding]。
 
 > [!NOTE]
 > 本文假设已熟悉如何为 Azure AD 构建单租户应用程序。 如果不是，则从[开发人员指南主页][AAD-Dev-Guide]上其中一个快速入门开始。
@@ -36,11 +36,11 @@ ms.locfileid: "80884080"
 3. [将代码更新为处理多个颁发者值](#update-your-code-to-handle-multiple-issuer-values)
 4. [了解用户和管理员的同意意向并进行适当的代码更改](#understand-user-and-admin-consent)
 
-让我们详细了解每个步骤。 您还可以直接跳转到[示例"构建一个多租户 SaaS Web 应用程序，该应用程序使用 Azure AD 和 OpenID 连接调用 Microsoft 图形](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/2-WebApp-graph-user/2-3-Multi-Tenant/README.md)。
+让我们详细了解每个步骤。 也可以直接跳至示例[构建使用 Azure AD 和 OpenID Connect 调用 Microsoft Graph 的多租户 SaaS Web 应用程序](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/2-WebApp-graph-user/2-3-Multi-Tenant/README.md)。
 
 ## <a name="update-registration-to-be-multi-tenant"></a>将注册更新为多租户
 
-Azure AD 中的 Web 应用/API 注册默认为单租户。 通过在 [Azure 门户][AZURE-portal]中应用程序注册的“身份验证”**** 窗格中查找“支持的帐户类型”**** 开关，并将其设置为“任何组织目录中的帐户”****，可以使注册成为多租户。
+Azure AD 中的 Web 应用/API 注册默认为单租户。 通过在 [Azure 门户][AZURE-portal]中应用程序注册的“身份验证”  窗格中查找“支持的帐户类型”  开关，并将其设置为“任何组织目录中的帐户”  ，可以使注册成为多租户。
 
 在将某个应用程序转换为多租户之前，Azure AD 要求该应用程序的应用 ID URI 全局唯一。 应用 ID URI 是在协议消息中标识应用程序的方式之一。 就单租户应用程序而言，应用 ID URI 在该租户中保持唯一便已足够。 就多租户应用程序而言，该 URI 必须全局唯一，以便 Azure AD 能够在所有租户中找到该应用程序。 系统通过要求应用 ID URI 必须具有与已验证 Azure AD 租户域匹配的主机名，来强制实施全局唯一性。
 
@@ -55,7 +55,7 @@ Azure AD 中的 Web 应用/API 注册默认为单租户。 通过在 [Azure 门�
 
 使用多租户应用程序时，应用程序事先并不知道用户来自哪个租户，因此无法将请求发送到租户的终结点。 取而代之的是，请求将发送到在所有 Azure AD 租户之间多路复用的终结点：`https://login.microsoftonline.com/common`
 
-当 Microsoft 标识平台在 /common 终结点上收到请求时，会使用户登录，因而可以发现用户来自哪个租户。 /公共终结点适用于 Azure AD 支持的所有身份验证协议：OpenID 连接、OAuth 2.0、SAML 2.0 和 WS-联合。
+当 Microsoft 标识平台在 /common 终结点上收到请求时，会使用户登录，因而可以发现用户来自哪个租户。 /common 终结点可与 Azure AD 支持的所有身份验证协议配合使用：OpenID Connect、OAuth 2.0、SAML 2.0 和 WS 联合身份验证。
 
 然后，对应用程序做出的登录响应会包含代表该用户的令牌。 令牌中的颁发者值告知应用程序该用户来自哪个租户。 从 /common 终结点返回响应时，令牌中的颁发者值将与用户的租户相对应。
 
@@ -97,9 +97,9 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 
 ## <a name="understand-user-and-admin-consent"></a>了解用户同意和管理员同意
 
-若要让用户登录 Azuer AD 中的某个应用程序，必须以用户租户的形式表示该应用程序。 这样，组织便可以采取一些措施，例如，当其租户中的用户登录应用程序时应用唯一策略。 对于单个租户应用程序，此注册非常简单;它是在[Azure 门户][AZURE-portal]中注册应用程序时发生的情况。
+若要让用户登录 Azuer AD 中的某个应用程序，必须以用户租户的形式表示该应用程序。 这样，组织便可以采取一些措施，例如，当其租户中的用户登录应用程序时应用唯一策略。 对于单租户应用程序，此注册过程相当简单，它与在 [Azure 门户][AZURE-portal]中注册应用程序时的过程相同。
 
-对于多租户应用程序，应用程序的初始注册过程是在开发人员使用的 Azure AD 租户中进行的。 当来自不同租户的用户首次登录应用程序时，Azure AD 将要求他们同意应用程序所请求的权限。 如果他们同意，系统会在用户的租户中创建一个称为“服务主体”** 的应用程序表示形式，然后登录可继续进行。 系统还会在记录用户对应用程序的同意意向的目录中创建委托。 有关应用程序的应用程序和服务主体对象及其相互关系的详细信息，请参阅[应用程序对象和服务主体对象][AAD-App-SP-Objects]。
+对于多租户应用程序，应用程序的初始注册过程是在开发人员使用的 Azure AD 租户中进行的。 当来自不同租户的用户首次登录应用程序时，Azure AD 会要求他们同意应用程序所请求的权限。 如果他们同意，系统将在用户的租户中创建一个称为“服务主体”  的应用程序表示形式，然后登录即可继续进行。 系统还会在记录用户对应用程序的同意意向的目录中创建委托。 有关应用程序的 Application 和 ServicePrincipal 对象以及它们之间关系的详细信息，请参阅[应用程序对象和服务主体对象][AAD-App-SP-Objects]。
 
 ![说明如何同意单层应用][Consent-Single-Tier]
 
@@ -114,18 +114,18 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 
 仅限应用的权限始终需要租户管理员的同意。 如果应用程序请求仅限应用的权限，当用户尝试登录应用程序时，会显示一条错误消息，指出该用户无法同意。
 
-有些委托的权限也需要租户管理员的同意。 例如，若要能够以登录用户身份写回 Azure AD，就需要租户管理员的同意。 与仅限应用的权限一样，如果普通用户尝试登录请求委托权限的应用程序，而该权限需要管理员同意，则应用程序会收到错误。 权限是否需要管理员同意是由发布资源的开发人员决定的，可以在该资源的文档中找到相关信息。 [Microsoft 图形 API][MSFT-Graph-permission-scopes]的权限文档指示哪些权限需要管理员同意。
+有些委托的权限也需要租户管理员的同意。 例如，若要能够以登录用户身份写回 Azure AD，就需要租户管理员的同意。 与仅限应用的权限一样，如果普通用户尝试登录请求委托权限的应用程序，而该权限需要管理员同意，则应用程序会收到错误。 权限是否需要管理员同意是由发布资源的开发人员决定的，可以在该资源的文档中找到相关信息。 [Microsoft Graph API][MSFT-Graph-permission-scopes] 的权限文档指示哪些权限需要管理员同意。
 
-如果应用程序使用需要管理员同意的权限，则需要提供某种表示，例如可供管理员发起操作的按钮或链接。 应用程序针对此操作发送的请求是一个普通的 OAuth2/OpenID Connect 授权请求，但此请求同时也包含 `prompt=admin_consent` 查询字符串参数。 在管理员同意且系统已在客户的租户中创建服务主体之后，后续登录请求就不再需要 `prompt=admin_consent` 参数。 由于管理员已确定可接受请求的权限，因此从该时间点之后，不再提示租户中的任何其他用户同意。
+如果应用程序使用需要管理员同意的权限，你需要提供某种表示，例如可供管理员发起操作的按钮或链接。 应用程序针对此操作发送的请求是一个普通的 OAuth2/OpenID Connect 授权请求，但此请求同时也包含 `prompt=admin_consent` 查询字符串参数。 在管理员同意且系统已在客户的租户中创建服务主体之后，后续登录请求就不再需要 `prompt=admin_consent` 参数。 由于管理员已确定可接受请求的权限，因此从该时间点之后，不再提示租户中的任何其他用户同意。
 
-租户管理员可以禁用普通用户同意应用程序的能力。 如果禁用此功能，则始终需要管理员同意，才能在租户中使用应用程序。 如果要在禁用最终用户同意的情况下测试应用程序，可以在**企业应用程序**下的**["用户设置"](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)** 部分的 Azure[门户][AZURE-portal]中找到配置开关。
+租户管理员可以禁用普通用户同意应用程序的能力。 如果禁用此功能，则始终需要管理员同意，才能在租户中使用应用程序。 若要在禁用最终用户许可的情况下测试应用程序，可以在 [Azure 门户][AZURE-portal]的“企业应用程序”下的  [用户设置](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)  部分中找到配置开关。
 
 `prompt=admin_consent` 参数还可以由请求权限但不要求管理员同意的应用程序使用。 何时会使用此功能的一个示例是当应用程序需要如下所述的体验时，即：租户管理员“注册”一次，在此之后不再提示其他用户确认同意。
 
 如果某个应用程序需要管理员同意并且管理员登录而没有发送 `prompt=admin_consent` 参数，则当管理员成功地向该应用程序表示同意时，它**仅适用于其用户帐户**。 普通用户仍然无法登录或同意该应用程序。 如果想要让租户管理员浏览应用程序，然后允许其他用户访问，则此功能就很有用。
 
 > [!NOTE]
-> 某些应用程序想要提供一种体验，让普通用户能够一开始即表示同意，然后应用程序可让管理员参与操作并请求需要管理员同意的权限。 当前 Azure AD 中的 v1.0 应用程序注册没有办法做到这一点；但是，使用 Microsoft 标识平台 (v2.0) 终结点允许应用程序在运行时（而不是在注册时）请求权限，从而启用此方案。 有关详细信息，请参阅 [Microsoft 标识平台终结点][AAD-V2-Dev-Guide]。
+> 某些应用程序想要提供一种体验，让普通用户能够一开始即表示同意，应用程序可让管理员参与操作并请求需要管理员同意的权限。 当前 Azure AD 中的 v1.0 应用程序注册没有办法做到这一点；但是，使用 Microsoft 标识平台 (v2.0) 终结点允许应用程序在运行时（而不是在注册时）请求权限，从而启用此方案。 有关详细信息，请参阅 [Microsoft 标识平台终结点][AAD-V2-Dev-Guide]。
 
 ### <a name="consent-and-multi-tier-applications"></a>同意和多层应用程序
 
@@ -143,7 +143,7 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 
 #### <a name="multiple-tiers-in-multiple-tenants"></a>多个租户中的多个层
 
-如果在不同的租户中注册不同的应用程序层，将发生类似的情况。 例如，考虑构建一个调用 Office 365 Exchange Online API 的本机客户端应用程序的情况。 要开发该本机应用程序，并让该本机应用程序在客户的租户中运行，必须存在 Exchange Online 服务主体。 在此情况下，开发人员和客户必须购买 Exchange Online，才能在其租户中创建服务主体。
+如果在不同的租户中注册不同的应用程序层，将发生类似的情况。 例如，考虑构建一个调用 Office 365 Exchange Online API 的本机客户端应用程序的情况。 如果要开发该本机应用程序，并让该本机应用程序在客户的租户中运行，必须存在 Exchange Online 服务主体。 在此情况下，开发人员和客户必须购买 Exchange Online，才能在其租户中创建服务主体。
 
 如果它是由 Microsoft 以外的组织生成的 API，则 API 的开发人员需要提供一个可供其客户许可将其应用程序添加到客户租户中的方式。 对于第三方开发人员，建议的设计是使所生成的 API 能够同时用作 Web 客户端来实现注册。 为此，请按以下步骤操作：
 
@@ -173,13 +173,13 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 
 本文介绍了如何构建可使用户从任何 Azure AD 租户进行登录的应用程序。 在应用与 Azure AD 之间启用单一登录 (SSO) 后，还可以更新应用程序以访问 Microsoft 资源（如 Office 365）公开的 API。 从而可以在应用程序中提供个性化体验，例如向用户显示上下文信息（例如个人资料图片或下一个日历约会）。 若要了解有关对 Azure AD 和 Office 365 服务（如 Exchange、SharePoint、OneDrive、OneNote 等）进行 API 调用的详细信息，请访问：[Microsoft Graph API][MSFT-Graph-overview]。
 
-## <a name="related-content"></a>相关的内容
+## <a name="related-content"></a>相关内容
 
 * [多租户应用程序示例](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/2-WebApp-graph-user/2-3-Multi-Tenant/README.md)
 * [适用于应用程序的品牌准则][AAD-App-Branding]
 * [应用程序对象和服务主体对象][AAD-App-SP-Objects]
 * [将应用程序与 Azure Active Directory 集成][AAD-Integrating-Apps]
-* [同意框架概述][AAD-Consent-Overview]
+* [许可框架概述][AAD-Consent-Overview]
 * [Microsoft Graph API 权限范围][MSFT-Graph-permission-scopes]
 
 <!--Reference style links IN USE -->

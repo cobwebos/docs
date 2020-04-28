@@ -13,13 +13,13 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
 ms.openlocfilehash: 40e7a05505bc501c1c622e627a6d97cc57db1cfa
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80884233"
 ---
-# <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>如何：为应用配置服务条款和隐私声明
+# <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>如何：配置应用的服务条款和隐私声明
 
 构建和管理与 Azure Active Directory (Azure AD) 和 Microsoft 帐户集成的应用的开发人员应随附指向应用的服务条款和隐私声明的链接。 服务条款和隐私声明通过用户同意体验展示给用户。 它们可以帮助用户认识到他们可以信任你的应用。 对于面向用户的多租户应用（由多个目录使用的应用或面向所有 Microsoft 帐户提供的应用）来说，服务条款和隐私声明至关重要。
 
@@ -51,17 +51,17 @@ ms.locfileid: "80884233"
 
 服务条款和隐私声明准备就绪后，可以在应用中使用这些方法之一添加指向这些文档的链接：
 
-* [通过 Azure 门户](#azure-portal)
+* [通过 Azure 门户 添加](#azure-portal)
 * [使用应用对象 JSON](#app-object-json)
-* [使用微软图形 API](#msgraph-rest-api)
+* [使用 Microsoft Graph API](#msgraph-rest-api)
 
 ### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>使用 Azure 门户
 在 Azure 门户中执行以下步骤。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 导航到“应用注册”部分并选择应用****。
-3. 打开“品牌”**** 窗格。
-4. 填写“服务条款 URL”和“隐私声明 URL”字段********。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
+2. 导航到“应用注册”部分并选择应用  。
+3. 打开“品牌”  窗格。
+4. 填写“服务条款 URL”和“隐私声明 URL”字段   。
 5. 保存所做更改。
 
     ![应用属性包含服务条款和隐私声明 URL](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
@@ -77,9 +77,9 @@ ms.locfileid: "80884233"
     }
 ```
 
-### <a name="using-the-microsoft-graph-api"></a><a name="msgraph-rest-api"></a>使用微软图形 API
+### <a name="using-the-microsoft-graph-api"></a><a name="msgraph-rest-api"></a>使用 Microsoft Graph API
 
-要以编程方式更新所有应用，可以使用 Microsoft 图形 API 更新所有应用，以包括指向服务条款和隐私声明文档的链接。
+若要以编程方式更新所有应用，可以使用 Microsoft Graph API 更新所有应用，以包含指向服务条款和隐私声明文档的链接。
 
 ```
 PATCH https://graph.microsoft.com/v1.0/applications/{application id}
@@ -97,4 +97,4 @@ PATCH https://graph.microsoft.com/v1.0/applications/{application id}
 
 > [!NOTE]
 > * 请注意不要覆盖已分配给以下任何字段的任何预先存在的值：`supportUrl``marketingUrl` 和 `logoUrl`
-> * 仅当使用 Azure AD 帐户登录时，Microsoft 图形 API 才有效。 不支持 Microsoft 个人帐户。
+> * 只有使用 Azure AD 帐户登录时，Microsoft Graph API 才起作用。 不支持 Microsoft 个人帐户。

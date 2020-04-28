@@ -11,10 +11,10 @@ ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
 ms.openlocfilehash: dcf86deda32069bf9711dbeb733dc9361e22a771
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631771"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>如何验证到达虚拟网络的 VPN 吞吐量
@@ -30,7 +30,7 @@ ms.locfileid: "80631771"
 
 VPN 网关连接涉及以下组件：
 
-* 本地 VPN 设备（查看[已验证 VPN 设备](vpn-gateway-about-vpn-devices.md#devicetable)的列表。
+* 本地 VPN 设备（请查看[已验证 VPN 设备](vpn-gateway-about-vpn-devices.md#devicetable)的列表。）
 * 公共 Internet
 * Azure VPN 网关
 * Azure VM
@@ -56,7 +56,7 @@ VPN 网关连接涉及以下组件：
 
 此验证应在非高峰时段执行，因为测试期间的 VPN 隧道吞吐量饱和度无法给出准确的结果。
 
-此测试将使用 iPerf 工具来实施，此工具在 Windows 和 Linux 上均可使用，并且有“客户端”和“服务器”两种模式。 对于 Windows VM，其限速为 3Gbps。
+此测试使用 iPerf 工具来实施，此工具在 Windows 和 Linux 上均可使用，并且有“客户端”和“服务器”两种模式。 对于 Windows VM，其限速为 3Gbps。
 
 此工具不会对磁盘执行任何读/写操作。 它只会生成从一端至另一端的自生成 TCP 流量。 它已生成的统计信息基于各种旨在测量客户端和服务器节点间可用带宽的试验。 在两个节点间进行测试时，一个节点充当服务器，另一个节点充当客户端。 完成此测试后，建议对调两个节点的角色，以测试它们的上传和下载吞吐量。
 
@@ -69,11 +69,11 @@ VPN 网关连接涉及以下组件：
 
 ### <a name="run-iperf-iperf3exe"></a>运行 iPerf (iperf3.exe)
 
-1. 启用允许流量的 NSG/ACL 规则（对于 Azure VM 上的公共 IP 地址测试）。
+1. 启用允许流量的 NSG/ACL 规则（适用于在 Azure VM 上进行公共 IP 地址测试）。
 
 1. 在两个节点上，为端口 5001 启用防火墙例外。
 
-   **Windows：** 以管理员身份运行以下命令：
+   **Windows:** 以管理员身份运行以下命令：
 
    ```CMD
    netsh advfirewall firewall add rule name="Open Port 5001" dir=in action=allow protocol=TCP localport=5001
@@ -85,7 +85,7 @@ VPN 网关连接涉及以下组件：
    netsh advfirewall firewall delete rule name="Open Port 5001" protocol=TCP localport=5001
    ```
 
-   **Azure Linux：** Azure Linux 映像具有允许的防火墙。 如果有应用程序在侦听某个端口，则流量会被允许通过。 受保护的自定义映像可能需要显式打开端口。 常见的 Linux 操作系统层防火墙包括 `iptables`、`ufw` 或 `firewalld`。
+   **Azure Linux：** Azure Linux 映像具有限制性较低的防火墙。 如果有应用程序在侦听某个端口，则流量会被允许通过。 受保护的自定义映像可能需要显式打开端口。 常见的 Linux OS 层防火墙包括 `iptables`、`ufw` 或 `firewalld`。
 
 1. 在服务器节点上，更改为从中提取 iperf3.exe 的目录。 然后，在服务器模式下运行 iPerf 并将其设置为侦听端口 5001，如以下命令所示：
 
@@ -98,7 +98,7 @@ VPN 网关连接涉及以下组件：
    > [!Note]
    > 可以根据环境中的特定防火墙限制自定义端口 5001。
 
-1. 在客户端节点上，更改为从中提取 iperf 工具的目录，并运行以下命令：
+1. 在客户端节点上，转到从中提取 iperf 工具的目录，并运行以下命令：
 
    ```CMD
    iperf3.exe -c <IP of the iperf Server> -t 30 -p 5001 -P 32
@@ -125,7 +125,7 @@ VPN 网关连接涉及以下组件：
 
 ### <a name="load-latteexe-onto-the-vms"></a>将 Latte.exe 加载到 VM
 
-下载最新版本的[拿铁.exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
+下载最新版本的 [Latte.exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
 
 考虑将 Latte.exe 放在单独的文件夹中，例如 `c:\tools`
 
@@ -217,7 +217,7 @@ Make install 速度较快
 
 > [!Note]
 > 在 VM 与网关之间执行吞吐量测试过程中，请确保没有中间跃点（例如虚拟设备）。
-> 如果上述 iPERF/NTTTCP 测试返回的结果不佳（在总体吞吐量方面），请参阅以下文章，了解此问题的可能性根本原因是哪些重要因素造成的：https://docs.microsoft.com/azure/virtual-network/virtual-network-tcpip-performance-tuning
+> 如果上述 iPERF/NTTTCP 测试返回的结果不佳（在总体吞吐量方面），请参阅以下文章，了解此问题的可能性根本原因是哪些重要因素造成的： https://docs.microsoft.com/azure/virtual-network/virtual-network-tcpip-performance-tuning
 
 具体而言，在执行这些测试期间同时从客户端和服务器收集的数据包捕获跟踪（Wireshark/网络监视器）有助于对不良性能进行评估。 这些跟踪可能包括丢包、高延迟、MTU 大小问题、 碎片、TCP 0 窗口、失序片段等。
 
@@ -225,7 +225,7 @@ Make install 速度较快
 
 即使使用上述步骤评估得出的总体吞吐量（iPERF/NTTTCP/等）良好，在使用 Windows 资源管理器或通过 RDP 会话拖放时，也仍可能会遇到文件复制速度缓慢的情况。 此问题通常是由以下的一个或两个因素造成的：
 
-* 文件复制应用程序（如 Windows 资源管理器和 RDP）在复制文件时没有使用多个线程。 为了提高性能，请通过多线程文件复制应用程序（如 [Richcopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx)）使用 16 或 32 个线程来复制文件。 要更改"富复制"中文件副本的线程编号，请单击**操作** > **复制选项** > **"文件副本**"。
+* 文件复制应用程序（如 Windows 资源管理器和 RDP）在复制文件时没有使用多个线程。 为了提高性能，请通过多线程文件复制应用程序（如 [Richcopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx)）使用 16 或 32 个线程来复制文件。 若要更改 Richcopy 中的文件复制线程数目，请单击“操作”   > “复制选项”   > “文件复制”  。
 
    ![文件复制速度缓慢问题](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
 
@@ -233,7 +233,7 @@ Make install 速度较快
    > 并非所有应用程序的工作方式都相同，此外，并非所有应用程序/进程都利用所有线程。 如果运行测试，可以看到某些线程是空的，不能提供准确的吞吐量结果。
    > 若要检查应用程序文件的传输性能，请通过增加连续线程数来使用多线程，或减少线程数，以找到应用程序或文件传输的最佳吞吐量。
 
-* VM 磁盘读/写速度不够快。 有关详细信息，请参阅 [Azure 存储器故障排除](../storage/common/storage-e2e-troubleshooting.md)。
+* VM 磁盘读/写速度不够快。 有关详细信息，请参阅 [Azure 存储故障排除](../storage/common/storage-e2e-troubleshooting.md)。
 
 ## <a name="on-premises-device-external-facing-interface"></a>本地设备上的对外接口
 
@@ -241,7 +241,7 @@ Make install 速度较快
 
 * **基于路由的网关**：基于路由的 VPN 的策略或流量选择器配置为任意到任意（或通配符）。
 
-* **基于策略的网关**：基于策略的 VPN 根据本地网络和 Azure VNet 之间的地址前缀组合，通过 IPsec 隧道加密和直接数据包。 通常会在 VPN 配置中将策略（或流量选择器）定义为访问列表。
+* **基于策略的网关**：基于策略的 VPN 会根据本地网络和 Azure VNet 之间的地址前缀的各种组合，加密数据包并引导其通过 IPsec 隧道。 通常会在 VPN 配置中将策略（或流量选择器）定义为访问列表。
 
 * **UsePolicyBasedTrafficSelector** 连接：将“UsePolicyBasedTrafficSelectors”设置为 $True，此时会配置 Azure VPN 网关，以连接到基于策略的本地 VPN 防火墙。 如果启用 PolicyBasedTrafficSelectors，则需确保对于本地网络（本地网关）前缀与 Azure 虚拟网络前缀的所有组合，VPN 设备都定义了与之匹配的（而不是任意到任意）流量选择器。
 
@@ -265,4 +265,4 @@ Make install 速度较快
 
 有关详细信息或帮助，请查看以下链接：
 
-* [微软支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+* [Microsoft 支持部门](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)

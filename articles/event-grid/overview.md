@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 02/20/2020
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 65fd9d06c8b25e0aff94429f8eb95bb922da330c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b6f987eb283edea7f2d8e6b207b5b4e5b14f9120
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77505911"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393183"
 ---
 # <a name="what-is-azure-event-grid"></a>什么是 Azure 事件网格？
 
@@ -32,22 +32,21 @@ ms.locfileid: "77505911"
 
 ## <a name="event-sources"></a>事件源
 
-有关每个源的功能的完整详细信息及相关文章，请参阅[事件源](event-sources.md)。 当前，以下 Azure 服务支持将事件发送到事件网格：
+当前，以下 Azure 服务支持将事件发送到事件网格：
 
-* [Azure 订阅（管理操作）](event-sources.md#azure-subscriptions)
-* [容器注册表](event-sources.md#container-registry)
-* [自定义主题](event-sources.md#custom-topics)
-* [事件中心](event-sources.md#event-hubs)
-* [IoT 中心](event-sources.md#iot-hub)
-* [Key Vault（预览版）](event-sources.md#key-vault-preview)
-* [媒体服务](event-sources.md#media-services)
-* [资源组（管理操作）](event-sources.md#resource-groups)
-* [服务总线](event-sources.md#service-bus)
-* [存储 Blob](event-sources.md#storage)
-* [Azure Maps](event-sources.md#maps)
-* [应用配置](event-sources.md#app-configuration)
-* [Signal R](event-sources.md#azure-signalr)
-* [机器学习](event-sources.md#azure-machine-learning)
+- [Azure 应用配置](event-schema-app-configuration.md)
+- [Azure Blob 存储](event-schema-blob-storage.md)
+- [Azure 容器注册表](event-schema-container-registry.md)
+- [Azure 事件中心](event-schema-event-hubs.md)
+- [Azure IoT 中心](event-schema-iot-hub.md)
+- [Azure Key Vault](event-schema-key-vault.md)
+- [Azure 机器学习](event-schema-machine-learning.md)
+- [Azure Maps](event-schema-azure-maps.md)
+- [Azure 媒体服务](event-schema-media-services.md)
+- [Azure 资源组](event-schema-resource-groups.md)
+- [Azure 服务总线](event-schema-service-bus.md)
+- [Azure SignalR](event-schema-azure-signalr.md)
+- [Azure 订阅](event-schema-subscriptions.md)
 
 ## <a name="event-handlers"></a>事件处理程序
 

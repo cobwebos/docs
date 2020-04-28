@@ -1,5 +1,5 @@
 ---
-title: Azure MFA 服务器的用户门户 - Azure 活动目录
+title: Azure MFA 服务器的用户门户-Azure Active Directory
 description: 开始使用 Azure MFA 和用户门户。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1869fac973cd4cd68e1e91be89c25fdf1427f6a5
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80653214"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>适用于 Azure 多重身份验证服务器的用户门户
@@ -29,7 +29,7 @@ ms.locfileid: "80653214"
 根据环境情况，可能需要将用户门户部署在 Azure 多重身份验证服务器所在的服务器上，或者部署在其他面向 Internet 的服务器上。
 
 > [!IMPORTANT]
-> 自 2019 年 7 月 1 日起，Microsoft 将不再为新部署提供 MFA 服务器。 希望用户进行多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在 7 月 1 日之前激活 MFA 服务器的现有客户将能够像往常一样下载最新版本、将来的更新并生成激活凭据。
+> 从2019年7月1日起，Microsoft 将不再为新部署提供 MFA 服务器。 想要从其用户请求多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在7月1日前激活 MFA 服务器的现有客户将能够下载最新版本、将来更新和生成激活凭据。
 
 ![MFA 服务器用户门户登录页](./media/howto-mfaserver-deploy-userportal/portal.png)
 
@@ -45,9 +45,9 @@ ms.locfileid: "80653214"
 3. 使用默认设置完成安装，除非因某种原因而需要更改它们。
 4. 将 TLS/SSL 证书绑定到 IIS 中的站点。
 
-如果您对在 IIS 服务器上配置 TLS/SSL 证书有疑问，请参阅["如何在 IIS 上设置 SSL"](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)一文。
+如果有关于在 IIS 服务器上配置 TLS/SSL 证书的问题，请参阅文章[如何在 iis 上设置 SSL](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)。
 
-Web 服务 SDK 必须使用 TLS/SSL 证书进行保护。 也可以使用自签名证书实现此目的。 将证书导入用户门户 Web 服务器上本地计算机帐户的"可信根证书颁发机构"存储，以便在启动 TLS 连接时信任该证书。
+必须使用 TLS/SSL 证书保护 Web 服务 SDK。 也可以使用自签名证书实现此目的。 将证书导入到用户门户 web 服务器上的本地计算机帐户的 "受信任的根证书颁发机构" 存储中，以便在启动 TLS 连接时信任该证书。
 
 ![MFA 服务器配置设置 Web 服务 SDK](./media/howto-mfaserver-deploy-userportal/sdk.png)
 
@@ -69,11 +69,11 @@ Web 服务 SDK 必须使用 TLS/SSL 证书进行保护。 也可以使用自签�
    > [!NOTE]
    > 此 TLS/SSL 证书通常是公开签名的 TLS/SSL 证书。
 
-4. 从任何计算机打开 Web 浏览器并导航到安装用户门户的 URL（示例： `https://mfa.contoso.com/MultiFactorAuth`）。 确保未显示证书警告或错误。
+4. 从任何计算机打开 web 浏览器并导航到安装用户门户的 URL （示例： `https://mfa.contoso.com/MultiFactorAuth`）。 确保未显示证书警告或错误。
 
 ![MFA 服务器用户门户安装](./media/howto-mfaserver-deploy-userportal/install.png)
 
-如果您对在 IIS 服务器上配置 TLS/SSL 证书有疑问，请参阅["如何在 IIS 上设置 SSL"](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)一文。
+如果有关于在 IIS 服务器上配置 TLS/SSL 证书的问题，请参阅文章[如何在 iis 上设置 SSL](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)。
 
 ## <a name="deploy-the-user-portal-on-a-separate-server"></a>在单独的服务器上部署用户门户
 
@@ -105,12 +105,12 @@ Web 服务 SDK 必须使用 TLS/SSL 证书进行保护。 也可以使用自签�
     * 找到项 "USE_WEB_SERVICE_SDK"****，将 value="false"**** 更改为 value="true"****
     * 找到项 "WEB_SERVICE_SDK_AUTHENTICATION_USERNAME"****，将 value=""**** 更改为 value="DOMAIN\User"****，其中，DOMAIN\User 是属于“PhoneFactor Admins”组的服务帐户。
     * 找到项 "WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD"****，将 value=""**** 更改为 value="Password"****，其中，Password 是在上一行中输入的服务帐户的密码。
-    * 查找值**https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx**并将此占位符 URL 更改为我们在步骤 2 中安装的 Web 服务 SDK URL。
+    * 查找值**https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx** ，并将此占位符 URL 更改为在步骤2中安装的 WEB 服务 SDK url。
     * 保存 Web.Config 文件并关闭记事本。
 
-6. 从任何计算机打开 Web 浏览器并导航到安装用户门户的 URL（示例： `https://mfa.contoso.com/MultiFactorAuth`）。 确保未显示证书警告或错误。
+6. 从任何计算机打开 web 浏览器并导航到安装用户门户的 URL （示例： `https://mfa.contoso.com/MultiFactorAuth`）。 确保未显示证书警告或错误。
 
-如果您对在 IIS 服务器上配置 TLS/SSL 证书有疑问，请参阅["如何在 IIS 上设置 SSL"](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)一文。
+如果有关于在 IIS 服务器上配置 TLS/SSL 证书的问题，请参阅文章[如何在 iis 上设置 SSL](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)。
 
 ## <a name="configure-user-portal-settings-in-the-azure-multi-factor-authentication-server"></a>在 Azure 多重身份验证服务器中配置用户门户设置
 
@@ -118,7 +118,7 @@ Web 服务 SDK 必须使用 TLS/SSL 证书进行保护。 也可以使用自签�
 
 1. 在 Azure 多重身份验证服务器控制台中，单击“用户门户”图标。**** 在“设置”选项卡上的“用户门户 URL”文本框中，输入用户门户的 URL。**** 如果已启用电子邮件功能，则会将此 URL 添加到电子邮件中，再将该电子邮件发送给导入到 Azure 多重身份验证服务器的用户。
 2. 选择要在用户门户中使用的设置。 例如，如果允许用户选择其身份验证方法，请确保选中“允许用户选择方法”以及这些用户可以从中选择的方法。****
-3. 在 **"管理员"** 选项卡上定义应管理员。您可以使用"添加/编辑"框中的复选框和下拉创建精细的管理权限。
+3. 定义 "**管理员**" 选项卡上的管理员。您可以使用 "添加/编辑" 框中的复选框和下拉列表创建粒度管理权限。
 
 可选配置：
 
@@ -146,15 +146,15 @@ Azure 多重身份验证服务器为用户门户提供了多个选项。 下表�
 | 启用日志记录 | 在用户门户上启用日志记录。 日志文件位于：C:\Program Files\Multi-Factor Authentication Server\Logs。 |
 
 > [!IMPORTANT]
-> 从 2019 年 3 月开始，免费/试用 Azure AD 租户中的 MFA 服务器用户将不能使用电话呼叫选项。 SMS 消息不受此更改影响。 付费 Azure AD 租户中的用户将继续可以使用电话呼叫。 此更改仅影响免费/试用 Azure AD 租户。
+> 从2019年3月开始，电话呼叫选项对于免费/试用 Azure AD 租户中的 MFA 服务器用户将不可用。 SMS 消息不受此更改影响。 付费 Azure AD 租户中的用户将继续可以使用电话呼叫。 此更改仅影响免费/试用 Azure AD 租户。
 
 启用这些设置后，当用户登录用户门户时，就会看到这些设置。
 
-![使用用户门户管理您的 MFA 服务器帐户](./media/howto-mfaserver-deploy-userportal/portalsettings.png)
+![使用用户门户管理 MFA 服务器帐户](./media/howto-mfaserver-deploy-userportal/portalsettings.png)
 
 ### <a name="self-service-user-enrollment"></a>自助用户注册
 
-如果希望用户登录并注册，则必须在"设置"选项卡下选择"**允许用户登录**"和 **"允许用户注册**"选项。请记住，您选择的设置会影响用户登录体验。
+如果希望用户登录并注册，必须在 "设置" 选项卡下选择 "**允许用户登录**并**允许用户注册**" 选项。请记住，选择的设置会影响用户的登录体验。
 
 例如，当用户首次登录到用户门户时，会转到“Azure 多重身份验证用户设置”页。 根据 Azure 多重身份验证的配置方式，用户也许能够选择身份验证方法。
 
@@ -164,9 +164,9 @@ Azure 多重身份验证服务器为用户门户提供了多个选项。 下表�
 
 如果要求用户在身份验证时使用 PIN 码，此页会提示他们创建 PIN 码。 在输入其电话号码和 PIN 码（如果适用）之后，用户可单击“立即打电话给我进行身份验证”按钮。**** Azure 多重身份验证对用户的主电话号码执行电话呼叫验证。 用户必须接听电话并输入其 PIN 码（如果适用），并按 # 转到自我注册过程的下一步。
 
-如果用户选择“短信”验证方法或已预先配置为使用该方法，则该页会提示用户输入其手机号码。 如果要求用户在身份验证时使用 PIN 码，此页还会提示他们输入 PIN 码。  在输入其电话号码和 PIN 码（如果适用）之后，用户可单击“立即发短信给我进行身份验证”按钮。**** Azure 多重身份验证对用户的移动电话执行 SMS 验证。 用户将收到包含一次性密码 (OTP) 的短信，然后应使用该 OTP 和 PIN 码（如果适用）回复该短信。
+如果用户选择“短信”验证方法或已预先配置为使用该方法，则该页会提示用户输入其手机号码。 如果要求用户在身份验证时使用 PIN 码，此页还会提示他们输入 PIN 码。  在输入其电话号码和 PIN 码（如果适用）之后，用户可单击“立即发短信给我进行身份验证”按钮。**** Azure 多重身份验证对用户的移动电话执行短信验证。 用户将收到包含一次性密码 (OTP) 的短信，然后应使用该 OTP 和 PIN 码（如果适用）回复该短信。
 
-![使用 SMS 进行用户门户验证](./media/howto-mfaserver-deploy-userportal/text.png)
+![使用短信验证用户门户](./media/howto-mfaserver-deploy-userportal/text.png)
 
 如果用户选择“移动应用”验证方法，该页会提示用户在其设备上安装 Microsoft Authenticator 应用并生成激活代码。 安装该应用后，用户可单击“生成激活代码”按钮。
 

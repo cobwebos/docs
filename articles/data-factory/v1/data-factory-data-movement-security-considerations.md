@@ -12,10 +12,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 1f19d258531e5368238cba72c986aede3f4a64ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80130843"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure 数据工厂 - 数据移动的安全注意事项
@@ -23,14 +23,14 @@ ms.locfileid: "80130843"
 > [!NOTE]
 > 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[数据工厂的数据移动安全注意事项](../data-movement-security-considerations.md)。
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 本文介绍了 Azure 数据工厂中数据移动服务用于保护数据的基本安全基础结构。 Azure 数据工厂管理资源建立在 Azure 安全基础结构上，并使用 Azure 提供的所有可能的安全措施。
 
 在数据工厂解决方案中，可以创建一个或多个数据[管道](data-factory-create-pipelines.md)。 “管道”是共同执行一项任务的活动的逻辑分组。 这些管道位于创建数据工厂的区域。 
 
 尽管数据工厂只能在美国西部****、美国东部**** 和北欧**** 区域使用，但数据移动服务可在[全球多个区域](data-factory-data-movement-activities.md#global)使用。 数据工厂服务确保数据不会离开某个地理区域，除非在数据移动服务尚未部署到该区域的情况下，明确指示服务使用备用区域。 
 
-除使用证书加密的云数据存储的链接服务凭据外，Azure 数据工厂本身不存储任何其他数据。 它允许您创建数据驱动的工作流，以协调受[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)之间的数据移动，并使用其他区域或本地环境中[的计算服务](data-factory-compute-linked-services.md)处理数据。 它还允许使用编程方式及 UI 机制来 [监视和管理工作流](data-factory-monitor-manage-pipelines.md) 。
+除使用证书加密的云数据存储的链接服务凭据外，Azure 数据工厂本身不存储任何其他数据。 利用此功能，你可以创建数据驱动的工作流，以便在[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)之间安排数据移动，并在其他区域或本地环境中使用[计算服务](data-factory-compute-linked-services.md)处理数据。 它还允许使用编程方式及 UI 机制来 [监视和管理工作流](data-factory-monitor-manage-pipelines.md) 。
 
 使用 Azure 数据工厂的数据移动已获得以下认证****：
 -   [HIPAA/HITECH](https://www.microsoft.com/en-us/trustcenter/Compliance/HIPAA)  
@@ -63,7 +63,7 @@ Azure 数据工厂使用由 Microsoft 管理的证书**** 对数据存储凭据�
 #### <a name="azure-sql-data-warehouse"></a>Azure SQL 数据仓库
 Azure SQL 数据仓库中的透明数据加密 (TDE) 可对静态数据执行实时加密和解密，从而帮助防止恶意活动的威胁。 此行为对客户端透明。 有关详细信息，请参阅[保护 SQL 数据仓库中的数据库](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)。
 
-#### <a name="azure-sql-database"></a>Azure SQL 数据库
+#### <a name="azure-sql-database"></a>Azure SQL Database
 Azure SQL 数据库还支持透明数据加密 (TDE)，它无需更改应用程序，即可对数据执行实时加密和解密，从而帮助防止恶意活动的威胁。 此行为对客户端透明。 有关详细信息，请参阅[使用 Azure SQL 数据库进行透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database)。 
 
 #### <a name="azure-data-lake-store"></a>Azure Data Lake Store
@@ -94,7 +94,7 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件、
 - 从 Azure 门户/复制向导通过 HTTPS 使用纯文本****（较不安全）。 凭据以纯文本形式传递到本地网关。
 - 使用复制向导中的 JavaScript 加密库****。
 - 使用一键式凭据管理器应用****。 一键式应用程序在有权访问网关的本地计算机上执行，并为数据存储设置凭据。 此选项与下一选项是最安全的选项。 默认情况下，凭据管理器应用在计算机上使用端口 8050，借助网关确保安全通信。  
-- 使用[新阿兹达工厂加密值电源](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue)Shell cmdlet 加密凭据。 此 cmdlet 使用的证书是配置网关加密凭据所用的证书。 您可以使用此 cmdlet 返回的加密凭据，并将其添加到与[New-AzDataFactoryLinkService](/powershell/module/az.datafactory/new-azdatafactorylinkedservice) cmdlet 一起使用的 JSON 文件中**的连接字符串**的**加密凭据**元素，或在门户中的数据工厂编辑器中的 JSON 代码段中。 此选项与一键式应用程序是最安全的选项。 
+- 使用[AzDataFactoryEncryptValue](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue) PowerShell cmdlet 来加密凭据。 此 cmdlet 使用的证书是配置网关加密凭据所用的证书。 可以使用此 cmdlet 返回的加密凭据，并将其添加到 JSON 文件中**connectionString**的**EncryptedCredential**元素中，该文件与[AzDataFactoryLinkedService](/powershell/module/az.datafactory/new-azdatafactorylinkedservice) cmdlet 一起使用，或在门户中的数据工厂编辑器的 json 代码片段中添加。 此选项与一键式应用程序是最安全的选项。 
 
 #### <a name="javascript-cryptography-library-based-encryption"></a>基于 JavaScript 加密库的加密
 可以使用[复制向导](data-factory-copy-wizard.md)中的 [JavaScript 加密库](https://www.microsoft.com/download/details.aspx?id=52439)对数据存储凭据加密。 选择此选项时，复制向导将检索网关的公共密钥，并将其用于加密数据存储凭据。 凭据由网关计算机解密，并受 Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) 保护。
@@ -149,7 +149,7 @@ IPSec VPN：****
 
 下表提供了企业防火墙**** 的出站端口**** 和域要求。
 
-| 域名 | 出站端口 | 描述 |
+| 域名 | 出站端口 | 说明 |
 | ------------ | -------------- | ----------- | 
 | `*.servicebus.windows.net` | 443, 80 | 用于将网关连接到数据工厂中的数据移动服务 |
 | `*.core.windows.net` | 443 | 使用[暂存复制](data-factory-copy-activity-performance.md#staged-copy)功能时，由网关用于连接到 Azure 存储帐户。 | 
@@ -160,9 +160,9 @@ IPSec VPN：****
 > [!NOTE] 
 > 可能需要按相应数据源的要求在企业防火墙级别管理端口/允许列表域。 此表仅以 Azure SQL 数据库、Azure SQL 数据仓库和 Azure Data Lake Store 为例。   
 
-下表提供了**窗口防火墙**的**入站端口**要求。
+下表提供了**windows 防火墙**的**入站端口**要求。
 
-| 入站端口 | 描述 | 
+| 入站端口 | 说明 | 
 | ------------- | ----------- | 
 | 8050 (TCP) | 由凭据管理器应用程序用于为网关上的本地数据存储安全地设置凭据。 | 
 
@@ -175,9 +175,9 @@ IPSec VPN：****
 
 - [Azure SQL 数据库](../../sql-database/sql-database-firewall-configure.md) 
 - [Azure SQL 数据仓库](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
-- [Azure 数据湖存储](../../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
+- [Azure Data Lake Store](../../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../../cosmos-db/firewall-support.md)
-- [亚马逊红移](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
+- [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
@@ -188,7 +188,7 @@ IPSec VPN：****
 答案：**** 网关建立基于 HTTP 的连接，以打开 Internet。 必须打开出站端口 443 和 80****，网关才能建立此连接。 仅在计算机级别（不是企业防火墙级别）为凭据管理器应用程序打开入站端口 8050****。 如果使用 Azure SQL 数据库或 Azure SQL 数据仓库作为源/目标，则还需要打开端口 1433****。 有关详细信息，请参阅[防火墙配置和允许列表 IP 地址](#firewall-configurations-and-whitelisting-ip-address-of gateway)部分。 
 
 问题：**** 网关的证书要求是什么？
-答案：**** 当前网关需要凭据管理器应用程序用于安全设置数据存储凭据的证书。 该证书是由网关安装程序创建并配置的自签名证书。 您可以使用自己的 TLS/SSL 证书。 有关详细信息，请参阅[一键式凭据管理器应用程序](#click-once-credentials-manager-app)部分。 
+答案：**** 当前网关需要凭据管理器应用程序用于安全设置数据存储凭据的证书。 该证书是由网关安装程序创建并配置的自签名证书。 你可以改用自己的 TLS/SSL 证书。 有关详细信息，请参阅[一键式凭据管理器应用程序](#click-once-credentials-manager-app)部分。 
 
 ## <a name="next-steps"></a>后续步骤
 有关复制活动性能的信息，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。

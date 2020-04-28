@@ -13,12 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: a565aba12f1b10f215d8f6cc7fc0b7247a0441d2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 854bf2d1ed2155290c2ecebd17695049fdd0c8bb
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80066361"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314293"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>教程：使用 Azure 门户通过路由表路由网络流量
 
@@ -208,7 +208,7 @@ ms.locfileid: "80066361"
 | 基础 | 资源组 | **myResourceGroup** |
 | | 虚拟机名称 | *myVmPublic* |
 | | 公共入站端口 | “允许选定的端口”  |
-| | 选择入站端口 | “HTTP”和“RDP”   |
+| | 选择入站端口 | **RDP** |
 | 网络 | 虚拟网络 | **myVirtualNetwork** |
 | | 子网 | “公共(10.0.0.0/24)”  |
 | | 公共 IP 地址 | 默认值 |
@@ -221,7 +221,7 @@ ms.locfileid: "80066361"
 | 基础 | 资源组 | **myResourceGroup** |
 | | 虚拟机名称 | *myVmPrivate* |
 | | 公共入站端口 | “允许选定的端口”  |
-| | 选择入站端口 | “HTTP”和“RDP”   |
+| | 选择入站端口 | **RDP** |
 | 网络 | 虚拟网络 | **myVirtualNetwork** |
 | | 子网 | “专用(10.0.1.0/24)”  |
 | | 公共 IP 地址 | 默认值 |
@@ -341,7 +341,7 @@ ms.locfileid: "80066361"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要 *myResourceGroup* 时，请删除该资源组及其包含的所有资源：
+不再需要 myResourceGroup  时，请删除该资源组及其包含的所有资源：
 
 1. 转到 [Azure 门户](https://portal.azure.com)来管理资源组。 搜索并选择“资源组”。 
 

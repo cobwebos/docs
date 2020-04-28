@@ -1,5 +1,5 @@
 ---
-title: Windows 的自助服务密码重置 - Azure 活动目录
+title: 适用于 Windows 的自助式密码重置 - Azure Active Directory
 description: 如何使用 Windows 登录屏幕上的“忘记了密码”启用自助式密码重置
 services: active-directory
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d4f08161daf1d9c1a4431d9e3fba3ca741d88b16
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80743343"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>如何：从 Windows 登录屏幕启用密码重置
@@ -28,22 +28,22 @@ ms.locfileid: "80743343"
 
 - 目前不支持从远程桌面或从 Hyper-V 增强的会话进行密码重置。
 - 已知某些第三方凭据提供程序会导致此功能出现问题。
-- 已知通过修改[启用LUA注册表](https://docs.microsoft.com/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec)项禁用 UAC 会导致问题。
-- 此功能不适用于部署了 802.1x 网络身份验证和"在用户登录前立即执行"选项的网络。 对于部署了 802.1x 网络身份验证的网络，建议使用计算机身份验证来启用此功能。
+- 已知通过修改 [EnableLUA 注册表项](https://docs.microsoft.com/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec)禁用 UAC 会导致问题。
+- 此功能不适用于部署了 802.1x 网络身份验证的网络和“在用户登录前立即执行”选项。 对于部署了 802.1x 网络身份验证的网络，建议使用计算机身份验证来启用此功能。
 - 若要使用新密码并更新缓存的凭据，已加入混合 Azure AD 的计算机必须能够通过网络连接到域控制器。
 - 如果使用映像，请确保在运行 sysprep 之前先为内置 Administrator 清除 Web 缓存，再执行 CopyProfile 步骤。 有关此步骤的更多信息，可参阅支持文章：[使用自定义默认用户配置文件时性能较差](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)。
 - 已知以下设置会干扰在 Windows 10 设备上使用和重置密码的功能
-    - 在 v1809 之前的 Windows 10 版本中，如果策略要求使用 Ctrl+Alt+Del，则“重置密码”将无效。****
-    - 如果锁屏通知已关闭，则“重置密码”将无效。****
+    - 在 v1809 之前的 Windows 10 版本中，如果策略要求使用 Ctrl+Alt+Del，则“重置密码”将无效。 
+    - 如果锁屏通知已关闭，则“重置密码”将无效。 
     - HideFastUserSwitching 设置为“启用”或 1
     - DontDisplayLastUserName 设置为“启用”或 1
     - NoLockScreen 设置为“启用”或 1
     - 在设备上设置 EnableLostMode
     - 将 Explorer.exe 替换为自定义 shell
 - 组合使用下面三个特定的设置可能会导致此功能失效。
-    - 交互式登录：不需要 CTRL_ALT_DEL = 已禁用
+    - 交互式登录：不需要 CTRL+ALT+DEL = Disabled
     - DisableLockScreenAppNotifications = 1 或 Enabled
-    - Windows SKU 不是主页版或专业版
+    - Windows SKU 不是家庭或专业版
 
 ## <a name="windows-10-password-reset"></a>Windows 10 密码重置
 
@@ -66,10 +66,10 @@ ms.locfileid: "80743343"
 #### <a name="create-a-device-configuration-policy-in-intune"></a>在 Intune 中创建设备配置策略
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，单击“Intune”。****
-1. 通过访问**设备配置** > **配置文件** > **创建配置文件创建新**的设备配置配置文件
+1. 转到 "**设备配置** > **Profiles** > " "配置文件" "**创建配置**文件"，创建新的设备配置文件
    - 为配置文件提供一个有意义的名称
    - （可选）提供对配置文件的有意义说明
-   - 平台：**Windows 10 及更高版本**
+   - 平台**Windows 10 及更高版本**
    - 配置文件类型：**自定义**
 1. 配置**设置**
    - **添加**以下 OMA-URI 设置，启用“重置密码”链接
@@ -78,10 +78,10 @@ ms.locfileid: "80743343"
       - **OMA-URI** 设置为 `./Vendor/MSFT/Policy/Config/Authentication/AllowAadPasswordReset`
       - **数据类型**设置为**整数**
       - **值**设置为 **1**
-      - 单击“确定”****
-   - 单击“确定”****
-1. 单击 **"创建"**
-1. 此策略可以分配给特定用户、设备或组。 更多信息可以在[Microsoft Intune 中分配用户和设备配置文件](https://docs.microsoft.com/intune/device-profile-assign)的文章中找到。
+      - 单击 **“确定”**
+   - 单击 **“确定”**
+1. 单击“创建” 
+1. 此策略可以分配给特定的用户、设备或组。 有关详细信息，请参阅[将用户和设备配置文件分配到 Microsoft Intune](https://docs.microsoft.com/intune/device-profile-assign)一文。
 
 ### <a name="enable-for-windows-10-using-the-registry"></a>为使用注册表的 Windows 10 启用此功能
 
@@ -97,7 +97,7 @@ Azure AD 审核日志将包含有关密码重置发生的 IP 地址和 ClientTyp
 
 ![Azure AD 审核日志中的 Windows 7 密码重置示例](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
 
-当用户在 Windows 10 设备的登录屏幕中重置其密码时，系统会创建名为 `defaultuser1` 的权限较低的临时帐户。 使用此帐户可以确保密码重置过程的安全。 帐户本身具有随机生成的密码，不会显示设备登录，并且在用户重置密码后将自动删除。 可能存在多个 `defaultuser` 配置文件，不过可以放心地忽略它们。
+当用户在 Windows 10 设备的登录屏幕中重置其密码时，系统会创建名为 `defaultuser1` 的权限较低的临时帐户。 使用此帐户可以确保密码重置过程的安全。 帐户本身具有随机生成的密码，不会显示设备登录，并且在用户重置其密码后会自动删除。 可能存在多个 `defaultuser` 配置文件，不过可以放心地忽略它们。
 
 ## <a name="windows-7-8-and-81-password-reset"></a>Windows 7、8、8.1 密码重置
 
@@ -118,7 +118,7 @@ Azure AD 审核日志将包含有关密码重置发生的 IP 地址和 ClientTyp
 ### <a name="install"></a>安装
 
 1. 下载要启用的 Windows 版本的相应安装程序。
-   - 软件可在微软下载中心[https://aka.ms/sspraddin](https://aka.ms/sspraddin)
+   - 可从 Microsoft 下载中心获取软件[https://aka.ms/sspraddin](https://aka.ms/sspraddin)
 1. 登录到要在其中进行安装的计算机，然后运行安装程序。
 1. 安装完成后，强烈建议重新启动。
 1. 重启后，在登录屏幕中选择一个用户，然后单击“忘记了密码?” 启动密码重置工作流。
@@ -128,8 +128,8 @@ Azure AD 审核日志将包含有关密码重置发生的 IP 地址和 ClientTyp
 
 #### <a name="silent-installation"></a>无提示安装
 
-- 对于静默安装，请使用命令"msiexec /i SsprWindowsLogon.PROD.msi /qn"
-- 对于静默卸载，请使用命令"msiexec /x SsprWindowsLogon.PROD.msi /qn"
+- 对于无提示安装，请使用命令 "msiexec/i SsprWindowsLogon/qn"
+- 对于无提示卸载，请使用命令 "msiexec/x SsprWindowsLogon/qn"
 
 #### <a name="troubleshooting-windows-7-8-and-81-password-reset"></a>排查 Windows 7、8、8.1 的密码重置问题
 
@@ -156,6 +156,6 @@ Azure AD 审核日志将包含有关密码重置发生的 IP 地址和 ClientTyp
 
 ## <a name="next-steps"></a>后续步骤
 
-[计划身份验证方法以允许](concept-authentication-methods.md)
+[规划身份验证方法以允许](concept-authentication-methods.md)
 
 [配置 Windows 10](https://docs.microsoft.com/windows/configuration/)

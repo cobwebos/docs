@@ -17,17 +17,17 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f0c6484f46731e0ff2d16d00cb0038202511d193
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80331083"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常见问题
 本文提供有关 Azure Active Directory (Azure AD) Connect Health 的常见问题 (FAQ) 解答。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。
 
 ## <a name="general-questions"></a>一般问题
-**问：我管理多个 Azure AD 目录。如何切换到具有 Azure 活动目录高级版的目录？**
+**问：我管理多个 Azure AD 目录。如何实现切换到已 Azure Active Directory Premium 的项？**
 
 要切换 Azure AD 租户，可以在右上角选择当前登录的**用户名**，并选择相应的帐户。 如果此处未列出该帐户，可选择“注销”****，并使用已启用 Azure Active Directory Premium 的目录的全局管理员凭据来登录。
 
@@ -35,10 +35,10 @@ ms.locfileid: "80331083"
 
 下表列出了角色，以及支持的操作系统版本。
 
-|角色| 操作系统/版本|
+|Role| 操作系统/版本|
 |--|--|
 |Active Directory 联合身份验证服务 (AD FS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
-|Azure AD Connect | 版本 1.0.9125 或更高版本|
+|具有 Azure AD Connect | 版本 1.0.9125 或更高版本|
 |Active Directory 域服务 (AD DS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
 
 请注意，该服务提供的功能可能因角色和操作系统而有所不同。 换言之，并非所有功能都适用于所有操作系统版本。 有关详细信息，请参阅功能说明。
@@ -96,30 +96,30 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 **问：在安装 Azure AD Connect Health 代理期间，是否必须重新启动服务器？**
 
-不是。 安装代理时不需要重新启动服务器。 但是，安装某些先决条件步骤可能需要重新启动服务器。
+否。 安装代理时不需要重新启动服务器。 但是，安装某些先决条件步骤可能需要重新启动服务器。
 
 例如，在 Windows Server 2008 R2 上安装 .NET 4.5 Framework 需要重新启动服务器。
 
 **问：Azure AD Connect Health 是否通过直通型 HTTP 代理进行工作？**
 
 是的。 对于正在进行的操作，可以将 Health 代理配置为使用 HTTP 代理转发出站 HTTP 请求。
-阅读有关[为运行状况代理配置 HTTP 代理](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)的更多信息。
+阅读有关[为 Health 代理配置 HTTP 代理的](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)详细信息。
 
 如果要在代理注册过程中配置代理，可能需要事先修改 Internet Explorer 代理设置。
 
-1. 打开互联网浏览器>**设置** > **互联网选项** > **连接** > **局域网设置**。
-2. 选择**使用代理服务器进行 LAN。**
-3. 如果 HTTP 和 HTTPS/安全具有不同的代理端口，请选择 **"高级**"。
+1. 打开 internet Explorer >**设置** > **Internet 选项** > " "**连接** > " "**局域网设置**"。
+2. 选择 "**为 LAN 使用代理服务器**"。
+3. 如果针对 HTTP 和 HTTPS/Secure 有不同的代理端口，请选择 "**高级**"。
 
 **问：Azure AD Connect Health 在连接到 HTTP 代理时是否支持基本身份验证？**
 
-不是。 目前不支持指定任意用户名和密码进行基本身份验证的机制。
+否。 目前不支持指定任意用户名和密码进行基本身份验证的机制。
 
 **问：若要确保 Azure AD Connect Health 代理正常使用，需要打开哪些防火墙端口？**
 
-有关防火墙端口和其他连接要求的列表，请参阅[要求部分](how-to-connect-health-agent-install.md#requirements)。
+有关防火墙端口列表和其他连接要求，请参阅 "[要求" 部分](how-to-connect-health-agent-install.md#requirements)。
 
-**问：为什么在 Azure AD 连接运行状况门户中看到两个同名服务器？**
+**问：为什么在 Azure AD Connect Health 门户中看到两个同名的服务器？**
 
 从某个服务器中删除代理时，该服务器不会自动从 Azure AD Connect Health 门户中删除。 如果手动从服务器中删除代理或删除服务器本身，需要从 Azure AD Connect Health 门户中手动删除该服务器条目。
 
@@ -133,16 +133,16 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 由于下列可能的原因，Health 代理可能无法注册：
 
-* 该代理无法与所需的终结点通信，因为防火墙阻止流量。 这在 Web 应用程序代理服务器上尤其常见。 请确保已允许出站通信到所需终结点和端口。 有关详细信息，请参阅[需求部分](how-to-connect-health-agent-install.md#requirements)。
-* 出站通信接受网络层的 TLS 检查。 这会导致代理使用的证书被检查服务器/实体替换，并且无法执行完成代理注册所需的步骤。
+* 该代理无法与所需的终结点通信，因为防火墙阻止流量。 这在 Web 应用程序代理服务器上尤其常见。 请确保已允许出站通信到所需终结点和端口。 有关详细信息，请参阅 "[要求" 部分](how-to-connect-health-agent-install.md#requirements)。
+* 网络层会对出站通信进行 TLS 检测。 这会导致代理使用的证书被检查服务器/实体替换，并且无法执行完成代理注册所需的步骤。
 * 用户没有执行代理注册的访问权限。 默认情况下，全局管理员具有访问权限。 可使用[基于角色的访问控制](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)将访问权限委派给其他用户。
 
-**问：我收到警报，"卫生服务数据不是最新的。如何排除故障？**
+**问：收到 "运行状况服务数据不是最新" 的警报。如何实现解决该问题？**
 
-如果过去两小时内未从服务器收到所有数据点，Azure AD Connect Health 将生成此警报。 [阅读更多](how-to-connect-health-data-freshness.md)。
+如果过去两小时内未从服务器收到所有数据点，Azure AD Connect Health 将生成此警报。 [阅读详细信息](how-to-connect-health-data-freshness.md)。
 
 ## <a name="operations-questions"></a>操作问题
-**问：是否需要在 Web 应用程序代理服务器上启用审核？**
+**问：我需要在 web 应用程序代理服务器上启用审核吗？**
 
 否，不需在 Web 应用程序代理服务器上启用审核。
 
@@ -150,13 +150,13 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 在成功的情况下，将解除 Azure AD Connect Health 警报。 Azure AD Connect Health 代理将定期检测并向服务报告成功的情况。 某些警报的解除取决于时间。 换句话说，如果在警报生成后的 72 小时内未观察到相同的错误条件，则警报会自动解除。
 
-**问：我收到警报，"测试身份验证请求（综合事务）未能获取令牌。如何排除故障？**
+**问：我收到 "测试身份验证请求（综合事务）无法获取令牌" 的警报。如何实现解决该问题？**
 
 当 AD FS 服务器上安装的 Health 代理无法获取由 Health 代理启动的作为综合事务一部分的令牌时，AD FS 的 Azure AD Connect Health 就会生成此警报。 Health 代理使用本地系统上下文，并尝试为自信赖方获取令牌。 这是一个全面测试，可确保 AD FS 处于发出令牌的状态。
 
 此测试通常会失败，因为 Health 代理无法解析 AD FS 场名称。 如果 AD FS 服务器位于网络负载均衡器之后，并且请求从位于负载均平衡器后面的节点（而不是位于负载均衡器前面的常规客户端）启动，则可能会发生这种情况。 这可以通过更新位于“C:\Windows\System32\drivers\etc”下的“hosts”文件来修复，以包括 AD FS 服务器的 IP 地址或 AD FS 场名称（如 sts.contoso.com）的环回 IP 地址 (127.0.0.1)。 添加主机文件会使网络调用短路，从而使 Health 代理获得令牌。
 
-**问：我收到一封电子邮件，指示我的机器没有修补最近发生的勒索软件攻击。为什么我收到此电子邮件？**
+**问：我收到了一封电子邮件，指出我的计算机未针对最新的勒索软件攻击进行修补。为什么我收到这封电子邮件？**
 
 Azure AD Connect Health 服务会扫描其所监视的所有计算机，以确保已安装所需的修补程序。 如果至少有一台计算机未安装关键修补程序，则会向租户管理员发送此电子邮件。 以下逻辑用于做出此判断。
 1. 查找计算机上安装的所有修补程序。
@@ -192,17 +192,17 @@ CheckForMS17-010
 
 **问：为什么未生成 ADFS 审核？**
 
-请使用 PowerShell cmdlet <i>Get-AdfsProperties -AuditLevel</i> 确保审核日志未处于禁用状态。 阅读更多有关[ADFS 审核日志](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)。 请注意，如果有高级审核设置推送到 ADFS 服务器，则通过 auditpol.exe 进行的任何更改都将被覆盖 （即使未配置“已生成应用程序”）。 在这种情况下，请设置本地安全策略来记录“已生成应用程序”失败和成功。
+请使用 PowerShell cmdlet <i>Get-AdfsProperties -AuditLevel</i> 确保审核日志未处于禁用状态。 阅读有关[ADFS 审核日志](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)的详细信息。 请注意，如果有高级审核设置推送到 ADFS 服务器，则通过 auditpol.exe 进行的任何更改都将被覆盖 （即使未配置“已生成应用程序”）。 在这种情况下，请设置本地安全策略来记录“已生成应用程序”失败和成功。
 
-**问：代理证书何时在过期前自动续订？**
-代理认证将在到期日期前**6 个月**自动续订。 如果未续订，请确保代理的网络连接稳定。 重新启动代理服务或更新到最新版本也可能解决问题。
+**问：代理证书在过期之前是否自动续订？**
+代理证书将在到期日期前**6 个月**自动续订。 如果未续订，请确保该代理的网络连接稳定。 重新启动代理服务或更新到最新版本也可以解决此问题。
 
 
 ## <a name="related-links"></a>相关链接
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
-* [Azure AD 连接运行状况代理安装](how-to-connect-health-agent-install.md)
-* [Azure AD 连接运行状况操作](how-to-connect-health-operations.md)
+* [Azure AD Connect Health 代理安装](how-to-connect-health-agent-install.md)
+* [Azure AD Connect Health 操作](how-to-connect-health-operations.md)
 * [在 AD FS 中使用 Azure AD Connect Health](how-to-connect-health-adfs.md)
 * [使用用于同步的 Azure AD Connect Health](how-to-connect-health-sync.md)
 * [在 AD DS 中使用 Azure AD Connect Health](how-to-connect-health-adds.md)
-* [Azure AD 连接运行状况版本历史记录](reference-connect-health-version-history.md)
+* [Azure AD Connect Health 版本历史记录](reference-connect-health-version-history.md)

@@ -1,5 +1,5 @@
 ---
-title: 如何与 Azure 活动目录集成
+title: 如何与 Azure Active Directory 集成
 description: 了解将你的应用程序与 Azure Active Directory 进行集成的优势，并获取诸如简化登录、标识管理、多重身份验证和访问控制等功能的资源。
 services: active-directory
 author: rwike77
@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
 ms.openlocfilehash: 4eaca7350ac006a2fcf2eed8d3eb0cb8ef274841
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885695"
 ---
 # <a name="integrating-with-azure-active-directory"></a>与 Azure Active Directory 集成
@@ -37,13 +37,13 @@ ms.locfileid: "80885695"
 
 ### <a name="browse-for-users-manage-user-provisioning-and-control-access-to-your-application"></a>浏览用户，管理用户预配，以及控制对应用程序的访问
 
-**浏览目录中的用户。**  使用 Microsoft 图形 API 可帮助用户在邀请其他人或授予访问权限时搜索和浏览其组织中的其他人，而不是要求他们键入电子邮件地址。 用户可以使用熟悉的通讯簿样式界面进行浏览，包括查看组织层次结构的详细信息。 了解有关[微软图形 API](https://docs.microsoft.com/graph/overview)的更多信息。
+**浏览目录中的用户。**  在邀请其他人或授予访问权限时，可以使用 Microsoft Graph API 来帮助用户搜索和浏览其组织中的其他人员，而无需用户键入电子邮件地址。 用户可以使用熟悉的通讯簿样式界面进行浏览，包括查看组织层次结构的详细信息。 详细了解 [Microsoft Graph API](https://docs.microsoft.com/graph/overview)。
 
-**重复使用客户正在管理的 Active Directory 组和通讯组列表。**  Azure AD 包含客户已用于电子邮件分发和管理访问权限的组。 使用 Microsoft 图形 API，重用这些组，而不是要求客户在应用程序中创建和管理一组单独的组。 还可以在登录令牌中向应用程序发送组信息。 了解有关[微软图形 API](https://docs.microsoft.com/graph/overview)的更多信息。
+**重复使用客户正在管理的 Active Directory 组和通讯组列表。**  Azure AD 包含客户已用于电子邮件分发和管理访问权限的组。 使用 Microsoft Graph API 时，可以重复使用这些组，而无需要求客户在应用程序中创建并管理一系列不同的组。 还可以在登录令牌中向应用程序发送组信息。 详细了解 [Microsoft Graph API](https://docs.microsoft.com/graph/overview)。
 
-**使用 Azure AD 控制有权访问应用程序的用户。**  Azure AD 中的管理员和应用程序所有者可以将应用程序访问权限分配给特定的用户和组。 使用 Microsoft 图形 API，可以读取此列表，并用它来控制应用程序中资源和访问的预配和取消预配。
+**使用 Azure AD 控制有权访问应用程序的用户。**  Azure AD 中的管理员和应用程序所有者可以将应用程序访问权限分配给特定的用户和组。 使用 Microsoft Graph API，可以读取此列表并使用它来控制资源的预配和取消预配，以及应用程序中的访问权限。
 
-**利用 Azure AD 实现基于角色的访问控制。**  管理员和应用程序所有者可以向在 Azure AD 中注册应用程序时定义的角色分配用户和组。 角色信息以登录令牌发送到应用程序，也可以使用 Microsoft 图形 API 读取。 深入了解如何[使用 Azure AD 进行授权](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/)。
+**利用 Azure AD 实现基于角色的访问控制。**  管理员和应用程序所有者可以向在 Azure AD 中注册应用程序时定义的角色分配用户和组。 角色信息会在登录令牌中发送到应用程序，并可使用 Microsoft Graph API 来读取。 深入了解如何[使用 Azure AD 进行授权](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/)。
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>获取对用户配置文件、日历、电子邮件、联系人、文件等的访问权限
 
@@ -75,7 +75,7 @@ ms.locfileid: "80885695"
 
 **异常登录检测。**  Azure AD 每天要处理十亿次以上的登录，同时，使用机器学习算法来检测可疑活动，并通知 IT 管理员可能存在的问题。 通过支持 Azure AD 登录，应用程序将从这种保护中受益。 深入了解如何[查看 Azure Active Directory 访问报告](../active-directory-view-access-usage-reports.md)。
 
-**条件访问。**  除了多重身份验证以外，管理员可以要求用户在登录应用程序之前满足特定的条件。 可设置的条件包括客户端设备的 IP 地址范围、指定的组中的成员资格，以及用于访问的设备的状态。 了解有关[Azure 活动目录条件访问](../active-directory-conditional-access-azure-portal.md)的更多内容。
+**条件性访问。**  除了多重身份验证以外，管理员可以要求用户在登录应用程序之前满足特定的条件。 可设置的条件包括客户端设备的 IP 地址范围、指定的组中的成员资格，以及用于访问的设备的状态。 详细了解[Azure Active Directory 的条件性访问](../active-directory-conditional-access-azure-portal.md)。
 
 ### <a name="easy-development"></a>易于开发
 

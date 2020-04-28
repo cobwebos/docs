@@ -1,5 +1,5 @@
 ---
-title: 将电话机算升级到 Azure MFA 服务器 - Azure 活动目录
+title: 将 PhoneFactor 升级到 Azure MFA 服务器-Azure Active Directory
 description: 从旧版 PhoneFactor 代理升级以后，开始使用 Azure MFA 服务器。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4f2a52f31babf1f0323f28033f9138c3630bdba6
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80653137"
 ---
 # <a name="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>将 PhoneFactor 代理升级到 Azure 多重身份验证服务器
@@ -23,7 +23,7 @@ ms.locfileid: "80653137"
 若要将 PhoneFactor Agent v5.x 或更低版本升级到 Azure 多重身份验证服务器，请先卸载 PhoneFactor 代理及关联的组件。 然后即可安装多重身份验证服务器及其关联组件。
 
 > [!IMPORTANT]
-> 自 2019 年 7 月 1 日起，Microsoft 将不再为新部署提供 MFA 服务器。 希望用户进行多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在 7 月 1 日之前激活 MFA 服务器的现有客户将能够像往常一样下载最新版本、将来的更新并生成激活凭据。
+> 从2019年7月1日起，Microsoft 将不再为新部署提供 MFA 服务器。 想要从其用户请求多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在7月1日前激活 MFA 服务器的现有客户将能够下载最新版本、将来更新和生成激活凭据。
 
 ## <a name="uninstall-the-phonefactor-agent"></a>卸载 PhoneFactor 代理
 
@@ -54,11 +54,11 @@ ms.locfileid: "80653137"
 
 2. 如果以前安装了 Web 服务 SDK，请通过多重身份验证服务器用户界面安装新的 Web 服务 SDK。
 
-   默认虚拟目录名称现在是**多因素AuthWeb服务Sdk，** 而不是**PhoneFactorWebServiceSdk。** 如果要使用以前的名称，则必须在安装过程中更改虚拟目录的名称。 否则，如果允许安装使用新的默认名称，则必须将任何应用程序中引用 Web 服务 SDK（如用户门户和移动应用 Web 服务）的 URL 改为指向正确的位置。
+   默认虚拟目录名称现在是**MultiFactorAuthWebServiceSdk**而不是**PhoneFactorWebServiceSdk**。 如果要使用以前的名称，则必须在安装过程中更改虚拟目录的名称。 否则，如果允许安装使用新的默认名称，则必须将任何应用程序中引用 Web 服务 SDK（如用户门户和移动应用 Web 服务）的 URL 改为指向正确的位置。
 
 3. 如果用户门户以前已安装在 PhoneFactor 代理服务器上，请通过多重身份验证服务器用户界面安装新的多重身份验证用户门户。
 
-   默认的虚拟目录名称现在是**多因子Auth，** 而不是**电话因子**。 如果要使用以前的名称，则必须在安装过程中更改虚拟目录的名称。 否则，如果允许安装使用新的默认名称，则应单击多重身份验证服务器中的“用户门户”图标，并更新“设置”选项卡上的用户门户 URL。
+   默认虚拟目录名称现在是**MultiFactorAuth**而不是**PhoneFactor**。 如果要使用以前的名称，则必须在安装过程中更改虚拟目录的名称。 否则，如果允许安装使用新的默认名称，则应单击多重身份验证服务器中的“用户门户”图标，并更新“设置”选项卡上的用户门户 URL。
 
 4. 如果用户门户和/或移动应用 Web 服务之前安装在了 PhoneFactor 代理中的不同服务器上：
 
@@ -66,7 +66,7 @@ ms.locfileid: "80653137"
 
    2. 若要在 Web 服务器上安装用户门户，请以管理员身份打开命令提示符，并运行 MultiFactorAuthenticationUserPortalSetupXX.msi。
 
-      默认的虚拟目录名称现在是**多因子Auth，** 而不是**电话因子**。 如果要使用以前的名称，则必须在安装过程中更改虚拟目录的名称。 否则，如果允许安装使用新的默认名称，则应单击多重身份验证服务器中的"用户门户"图标，并在"设置"选项卡上更新用户门户 URL。需要通知现有用户新的 URL。
+      默认虚拟目录名称现在是**MultiFactorAuth**而不是**PhoneFactor**。 如果要使用以前的名称，则必须在安装过程中更改虚拟目录的名称。 否则，如果允许安装使用新的默认名称，则应单击 "多重身份验证服务器中的" 用户门户 "图标，并更新" 设置 "选项卡上的" 用户门户 URL "。现有用户需要知道新的 URL。
 
    3. 转到用户门户安装位置（例如 C:\inetpub\wwwroot\MultiFactorAuth）并编辑 web.config 文件。 将升级前备份的原始 web.config 文件的 appSettings 和 applicationSettings 节中的值复制到新的 web.config 文件。 如果在安装 Web 服务 SDK 时保留了新的默认虚拟目录名称，请更改 applicationSettings 节中的 URL，让其指向正确的位置。 如果在以前的 web.config 文件中更改了任何其他默认设置，请将这些更改应用到新的 web.config 文件。
 
@@ -77,4 +77,4 @@ ms.locfileid: "80653137"
 
 - 为 Azure 多重身份验证服务器[安装用户门户](howto-mfaserver-deploy-userportal.md)。
 
-- [为应用程序配置 Windows 身份验证](howto-mfaserver-windows.md)。 
+- 为应用程序[配置 Windows 身份验证](howto-mfaserver-windows.md)。 

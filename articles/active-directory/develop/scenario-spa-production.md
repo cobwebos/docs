@@ -12,13 +12,13 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 04a900c98311f4e7dcccbfca93ea41e212308759
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882091"
 ---
-# <a name="single-page-application-move-to-production"></a>单页应用程序：移动到生产
+# <a name="single-page-application-move-to-production"></a>单页应用程序：移到生产环境
 
 现在你已了解如何获取用于调用 Web API 的令牌，接下来了解如何移到生产环境。
 

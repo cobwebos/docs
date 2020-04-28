@@ -3,12 +3,12 @@ title: 快速入门：在门户中创建蓝图
 description: 本快速入门介绍如何通过 Azure 门户使用 Azure 蓝图创建、定义和部署项目。
 ms.date: 03/25/2020
 ms.topic: quickstart
-ms.openlocfilehash: 457f4f9c53f45077129b291c904bc1580b6d965e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd50b1833f16d364a4494483fcccfee017bb982b
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282046"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381890"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>快速入门：在门户中定义和分配蓝图
 
@@ -28,7 +28,7 @@ ms.locfileid: "80282046"
 
    或者，选择“入门”  页上的“创建”  ，直接创建一个蓝图。
 
-   ![在“蓝图定义”页中创建蓝图](./media/create-blueprint-portal/create-blueprint-button.png)
+   :::image type="content" source="./media/create-blueprint-portal/create-blueprint-button.png" alt-text="从“蓝图定义”页创建蓝图" border="false":::
 
 1. 从内置蓝图列表顶部的卡中选择“以空白蓝图开始”  。
 
@@ -48,7 +48,7 @@ ms.locfileid: "80282046"
 
    1. 选择“添加”  将此项目添加到蓝图中。
 
-   ![蓝图项目的角色分配](./media/create-blueprint-portal/add-role-assignment.png)
+   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment.png" alt-text="蓝图项目的角色分配" border="false":::
 
    > [!NOTE]
    > 大多数项目支持参数。 在蓝图创建期间为其分配值的参数是静态参数  。 如果在蓝图分配期间分配参数，则该参数是动态参数  。 有关更多信息，请参阅[蓝图参数](./concepts/parameters.md)。
@@ -144,11 +144,11 @@ ms.locfileid: "80282046"
 
    1. 选择“添加”  将此项目添加到蓝图中。
 
-   ![蓝图项目的资源管理器模板](./media/create-blueprint-portal/add-resource-manager-template.png)
+   :::image type="content" source="./media/create-blueprint-portal/add-resource-manager-template.png" alt-text="蓝图项目的资源管理器模板" border="false":::
 
 1. 已完成的蓝图应如下所示： 请注意，每个项目在“参数”列下都显示“已填充 y 个参数中的 x 个”。    动态参数在每次分配蓝图期间设置。
 
-   ![完成的蓝图定义](./media/create-blueprint-portal/completed-blueprint.png)
+   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint.png" alt-text="已完成的蓝图定义" border="false":::
 
 1. 现在已添加所有计划项目，请选择页面底部的“保存草稿”  。
 
@@ -174,13 +174,13 @@ ms.locfileid: "80282046"
 
    1. 搜索并选择要添加的用户、应用或组。 此项目使用每次分配此蓝图时以同样方式设置的静态参数。
 
-   e. 选择“添加”  将此项目添加到蓝图中。
+   1. 选择“添加”  将此项目添加到蓝图中。
 
-   ![蓝图项目的第二个角色分配](./media/create-blueprint-portal/add-role-assignment-2.png)
+   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment-2.png" alt-text="蓝图项目的第二个角色分配" border="false":::
 
 1. 已完成的蓝图应如下所示： 请注意，新添加的角色分配显示“已填充 1 个参数中的 1 个”  。 这意味着它是一个静态参数。
 
-   ![已完成的蓝图的第二个定义](./media/create-blueprint-portal/completed-blueprint-2.png)
+   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint-2.png" alt-text="已完成蓝图的第二个定义" border="false":::
 
 1. 草稿更新后，请单击“保存草稿”  。
 
@@ -219,10 +219,10 @@ ms.locfileid: "80282046"
 
    1. 在页面底部选择“创建”  。
 
-   ![创建蓝图分配订阅的订阅](./media/create-blueprint-portal/assignment-create-subscription.png)
+      :::image type="content" source="./media/create-blueprint-portal/assignment-create-subscription.png" alt-text="创建蓝图分配订阅的订阅" border="false":::
 
-   > [!IMPORTANT]
-   > 选择“创建”后，将立即创建新订阅  。
+      > [!IMPORTANT]
+      > 选择“创建”后，将立即创建新订阅  。
 
    > [!NOTE]
    > 将为选择每个订阅创建一个分配。 可以在以后对单个订阅分配进行更改，而不强制对所选订阅的其余部分进行更改。
@@ -235,7 +235,7 @@ ms.locfileid: "80282046"
 
 1. 对于“锁定分配”  ，保留默认值“不锁定”  。 有关详细信息，请参阅[蓝图资源锁定](./concepts/resource-locking.md)。
 
-   ![分配的锁定和托管标识](./media/create-blueprint-portal/assignment-locking-mi.png)
+   :::image type="content" source="./media/create-blueprint-portal/assignment-locking-mi.png" alt-text="分配的锁定和托管标识" border="false":::
 
 1. 在**托管标识**下，保留默认值“系统已分配”  。
 
@@ -266,7 +266,7 @@ ms.locfileid: "80282046"
 
 1. 在蓝图列表中，右键单击之前分配的一个蓝图，然后选择“查看分配详细信息”  。
 
-   ![在“分配的蓝图”页中查看分配详细信息](./media/create-blueprint-portal/view-assignment-details.png)
+   :::image type="content" source="./media/create-blueprint-portal/view-assignment-details.png" alt-text="在“分配的蓝图”页中查看分配详细信息" border="false":::
 
 1. 在“蓝图分配”页面上，验证是否已成功部署所有项目，以及在部署期间是否未出现任何错误  。 如果发生错误，请参阅[蓝图故障排除](./troubleshoot/general.md)，了解确定错误原因的操作步骤。
 

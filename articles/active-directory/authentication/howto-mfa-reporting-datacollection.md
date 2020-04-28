@@ -1,5 +1,5 @@
 ---
-title: Azure MFA 用户数据收集 - Azure 活动目录
+title: Azure MFA 用户数据收集-Azure Active Directory
 description: Azure 多重身份验证借助哪些信息来对用户进行身份验证？
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f3b5af972ad6dd15b7c992d5e264ede97bd1dde
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80653635"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Microsoft Azure 多重身份验证用户数据收集
@@ -89,7 +89,7 @@ MFA 服务器、NPS 扩展和 Windows Server 2016 Azure MFA AD FS 适配器收�
 - 国家/地区代码
 - 电话号码
 - 带格式的电话号码
-- 分机
+- 扩展名
 - 清理分机号
 - 已阻止
 - 阻止原因
@@ -109,7 +109,7 @@ MFA 服务器、NPS 扩展和 Windows Server 2016 Azure MFA AD FS 适配器收�
 - 国家/地区代码
 - 电话号码
 - 带格式的电话号码
-- 分机
+- 扩展名
 - 清理分机号
 - 绕过原因
 - 完成时间戳
@@ -138,9 +138,9 @@ MFA 服务器、NPS 扩展和 Windows Server 2016 Azure MFA AD FS 适配器收�
 - 登录到 MFA 服务器，导航到“用户”选项卡，选择相关的用户，然后单击“编辑”按钮。******** 拍摄每个选项卡的屏幕截图 (Alt-PrtScn)，为用户提供其当前 MFA 设置。
 - 在 MFA 服务器的命令行中运行以下命令（请根据安装更改路径 (`C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe export <username>`)），以生成 JSON 格式的文件。
 - 管理员也可以使用 Web 服务 SDK GetUserGdpr 操作作为选项，导出针对给定用户收集的所有 MFA 云服务信息，或将其合并到更大的报告解决方案。
-- 搜索`C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log`和"用户名>"（\<包括搜索中的报价）的任何备份，以查找要添加或更改的用户记录的所有实例。
-   - 通过取消选中 MFA 服务器 UX、日志记录部分、日志文件选项卡中的 **"记录用户更改"，** 可以限制（但不能消除）这些记录。
-   - 如果配置了 syslog，并且在 MFA 服务器 UX、日志记录部分、Syslog 选项卡中选中**了"日志用户更改"，** 则可以从 syslog 中收集日志条目。
+- 搜索`C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` "\<username>" 的任何备份（包括搜索中的引号），查找正在添加或更改的用户记录的所有实例。
+   - 通过取消选中 "MFA 服务器 UX，日志记录" 部分的 "日志文件" 选项卡中的 **"日志用户更改"** ，可以限制（但不能清除）这些记录。
+   - 如果配置了 syslog 并在 MFA 服务器 UX、日志记录部分、Syslog 选项卡中选中了 **"日志用户更改"** ，则可以改为从 syslog 收集日志条目。
 - MultiFactorAuthSvc.log 和其他 MFA 服务器日志文件中出现的、与身份验证尝试相关的其他用户名被视为有效，并且与使用 MultiFactorAuthGdpr.exe 导出功能或 Web 服务 SDK GetUserGdpr 提供的信息重复。
 
 ## <a name="delete-data-from-mfa-server"></a>从 MFA 服务器删除数据

@@ -16,10 +16,10 @@ ms.reviewer: brandwe
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 082cbb931c9dae60b39f9ee5323337bf051fb56d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80154774"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>如何：使用 ADAL 在 iOS 上启用跨应用 SSO
@@ -109,7 +109,7 @@ Microsoft 为每个移动平台提供了应用程序，可在来自不同供应�
 
 #### <a name="how-we-ensure-the-application-is-valid"></a>我们如何确保应用程序有效
 
-需要确保调用代理的应用程序的身份对于我们在代理辅助登录中提供的安全性至关重要。 iOS 和 Android 都不会强制实施仅对给定应用程序有效的唯一标识符，因此恶意应用程序可能“假冒”合法应用程序的标识符，并接收对合法应用程序适用的令牌。 为了确保在运行时我们始终与适当的应用程序进行通信，我们会要求开发人员在将其应用程序注册到 Microsoft 时提供自定义重定向 URI。 下面详细讨论了开发人员应如何设计此重定向 URI。 此自定义重定向 URI 包含应用程序的捆绑 ID，并由 Apple App Store 确保其对应用程序是唯一的。 当应用程序调用中转站时，中转站会请求 iOS 操作系统为其提供调用中转站的捆绑 ID。 在调用我们的标识系统时，中转站会向 Microsoft 提供此捆绑 ID。 如果应用程序的捆绑 ID 与开发人员在注册期间提供给我们的捆绑 ID 不匹配，我们将拒绝应用程序访问所请求的资源的令牌。 此检查可确保只有开发人员注册的应用程序收到令牌。
+确保调用 broker 的应用程序的标识对我们在 broker 辅助登录中提供的安全性至关重要。 iOS 和 Android 都不会强制实施仅对给定应用程序有效的唯一标识符，因此恶意应用程序可能“假冒”合法应用程序的标识符，并接收对合法应用程序适用的令牌。 为了确保在运行时我们始终与适当的应用程序进行通信，我们会要求开发人员在将其应用程序注册到 Microsoft 时提供自定义重定向 URI。 下面详细讨论了开发人员应如何设计此重定向 URI。 此自定义重定向 URI 包含应用程序的捆绑 ID，并由 Apple App Store 确保其对应用程序是唯一的。 当应用程序调用中转站时，中转站会请求 iOS 操作系统为其提供调用中转站的捆绑 ID。 在调用我们的标识系统时，中转站会向 Microsoft 提供此捆绑 ID。 如果应用程序的捆绑 ID 与开发人员在注册期间提供给我们的捆绑 ID 不匹配，我们将拒绝应用程序访问所请求的资源的令牌。 此检查可确保只有开发人员注册的应用程序收到令牌。
 
 **开发人员可以选择 SDK 是调用中转站，还是使用非中转站辅助的流。** 但是，如果开发人员选择不使用中转站辅助的流，他们会失去使用用户可能已添加到设备的 SSO 凭据的优势，并阻止其应用程序使用 Microsoft 为客户提供的业务功能，例如条件访问、Intune 管理功能和基于证书的身份验证。
 
@@ -230,7 +230,7 @@ App3 重定向 URI：`x-msauth-mytestiosapp://com.myapp.mytestapp3`
 </plist>
 ```
 
-在每个应用程序中启用了钥匙串授权并准备好使用 SSO 后，请在以下设置中使用`ADAuthenticationSettings`以下设置，将钥匙串的标识 SDK 告知：
+在每个应用程序中启用密钥链授权并准备好使用 SSO 后，请在中`ADAuthenticationSettings`使用以下设置，告诉标识 SDK 关于密钥链：
 
 ```
 defaultKeychainSharingGroup=@"com.myapp.mycache";
@@ -243,7 +243,7 @@ defaultKeychainSharingGroup=@"com.myapp.mycache";
 
 ### <a name="turning-on-sso-for-broker-assisted-sso"></a>打开对中转站辅助 SSO 的 SSO
 
-默认情况下，应用程序使用设备上安装的任何代理的功能处于**关闭**状态。 要向中转站使用应用程序必须执行一些额外配置，并将一些代码添加到应用程序。
+**默认情况下**，应用程序使用安装在设备上的任何 broker 功能都处于关闭状态。 要向中转站使用应用程序必须执行一些额外配置，并将一些代码添加到应用程序。
 
 要遵循的步骤如下：
 
@@ -297,7 +297,7 @@ defaultKeychainSharingGroup=@"com.myapp.mycache";
 
 例如：*x-msauth-mytestiosapp://com.myapp.mytestapp*
 
-此重定向 URI 需要在应用注册中使用[Azure 门户](https://portal.azure.com/)指定。 有关 Azure AD 应用注册的详细信息，请参阅[与 Azure Active Directory 集成](../develop/active-directory-how-to-integrate.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。
+需要在使用[Azure 门户](https://portal.azure.com/)的应用注册中指定此重定向 URI。 有关 Azure AD 应用注册的详细信息，请参阅[与 Azure Active Directory 集成](../develop/active-directory-how-to-integrate.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。
 
 ##### <a name="step-3a-add-a-redirect-uri-in-your-app-and-dev-portal-to-support-certificate-based-authentication"></a>步骤 3a：在应用和开发门户添加重定向 URI，以支持基于证书的身份验证
 
@@ -309,7 +309,7 @@ defaultKeychainSharingGroup=@"com.myapp.mycache";
 
 #### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>步骤 4：将配置参数添加到应用
 
-ADAL 使用 -canOpenURL: 来检查是否在设备上安装了中转站。 在 iOS 9 中，Apple 锁定了应用程序可以查询的方案。 您需要将"msauth"添加到 您的`info.plist file`的 LS应用程序查询计划部分。
+ADAL 使用 -canOpenURL: 来检查是否在设备上安装了中转站。 在 iOS 9 中，Apple 锁定了应用程序可以查询的方案。 需要将 "msauth" 添加到的 LSApplicationQueriesSchemes 节`info.plist file`。
 
 ```
     <key>LSApplicationQueriesSchemes</key>

@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 54636600c208f8f5df9fa2e25460c63dd9f46e85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80239548"
 ---
 # <a name="how-long-does-azure-ad-store-reporting-data"></a>Azure AD 存储报告数据多长时间？
@@ -40,7 +40,7 @@ ms.locfileid: "80239548"
 
 ### <a name="when-is-the-activity-data-available-in-the-azure-portal"></a>活动数据何时出现在 Azure 门户中？
 
-- **立即**- 如果您已在 Azure 门户中处理报表。
+- **立即** - 如果已在 Azure 门户中使用报告。
 - **2 小时内** - 如果尚未在 Azure 门户中启用报告。
 
 ---
@@ -59,7 +59,7 @@ ms.locfileid: "80239548"
 
 ### <a name="when-does-azure-ad-start-collecting-security-signal-data"></a>Azure AD 何时开始收集安全信号数据？  
 
-对于安全信号，当您选择使用**标识保护中心**时，收集过程将启动。 
+对于安全信号，当你选择使用**Identity Protection Center**时，收集过程将开始。 
 
 ---
 

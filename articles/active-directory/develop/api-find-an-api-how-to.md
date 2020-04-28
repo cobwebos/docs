@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ms.openlocfilehash: cd3b21050c6a442284647212fdf7c5707943ffc1
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885610"
 ---
 # <a name="how-to-find-a-specific-api-needed-for-a-custom-developed-application"></a>如何为自定义开发的应用程序查找所需的特定 API
@@ -23,7 +23,7 @@ ms.locfileid: "80885610"
 
 ## <a name="configuring-a-resource-application-to-expose-web-apis"></a>将资源应用程序配置为公开 Web API
 
-当 Web API 公开后，将权限添加到应用注册时，API 会显示在“选择 API”**** 列表中。 若要添加访问范围，请按照[配置应用程序以公开 Web API](quickstart-configure-app-expose-web-apis.md) 中列出的步骤进行操作。
+当 Web API 公开后，将权限添加到应用注册时，API 会显示在“选择 API”  列表中。 若要添加访问范围，请按照[配置应用程序以公开 Web API](quickstart-configure-app-expose-web-apis.md) 中列出的步骤进行操作。
 
 ## <a name="configuring-a-client-application-to-access-web-apis"></a>将客户端应用程序配置为访问 Web API
 

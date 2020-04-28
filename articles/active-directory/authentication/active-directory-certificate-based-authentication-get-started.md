@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3a6c44a8253c81b44d02351b2df9c943d9f358f8
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80654339"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory 中基于证书的身份验证入门
@@ -40,7 +40,7 @@ ms.locfileid: "80654339"
 - 必须在 Azure Active Directory 中配置根证书颁发机构和任何中间证书颁发机构。
 - 每个证书颁发机构必须有一个可通过面向 Internet 的 URL 引用的证书吊销列表 (CRL)。
 - 必须在 Azure Active Directory 中至少配置一个证书颁发机构。 可以在[配置证书颁发机构](#step-2-configure-the-certificate-authorities)部分中查找相关步骤。
-- 对于 Exchange ActiveSync 客户端，客户端证书必须在 Exchange 中联机具有用户可路由的电子邮件地址，位于"主体替代名称"字段的主名称或 RFC822 名称值中。 Azure Active Directory 会将 RFC822 值映射到目录中的“代理地址”属性。
+- 对于 Exchange ActiveSync 客户端，客户端证书的 "使用者可选名称" 字段的主体名称或 RFC822 名称值中必须具有用户的可路由电子邮件地址。 Azure Active Directory 会将 RFC822 值映射到目录中的“代理地址”属性。
 - 客户端设备必须至少可以访问一个颁发客户端证书的证书颁发机构。
 - 用于客户端身份验证的客户端证书必须已颁发给客户端。
 
@@ -63,7 +63,7 @@ ms.locfileid: "80654339"
 
 若要在 Azure Active Directory 中配置证书颁发机构，针对每个证书颁发机构，需要上传以下信息：
 
-* 证书的公共部分，格式为 .cer**
+* 证书的公共部分，格式为 .cer 
 * 证书吊销列表 (CRL) 所在的面向 Internet 的 URL
 
 证书颁发机构的架构如下所示：
@@ -139,7 +139,7 @@ ms.locfileid: "80654339"
 
 ## <a name="step-3-configure-revocation"></a>步骤 3：配置吊销
 
-要吊销客户端证书，Azure Active Directory 会从作为证书颁发机构信息的一部分上传的 URL 中提取证书吊销列表 (CRL)，并将其缓存。 CRL 中的上次发布时间戳（“生效日期”属性）用于确保 CRL 仍然有效。**** 将定期引用 CRL，以撤销对该列表中证书的访问权限。
+要吊销客户端证书，Azure Active Directory 会从作为证书颁发机构信息的一部分上传的 URL 中提取证书吊销列表 (CRL)，并将其缓存。 CRL 中的上次发布时间戳（“生效日期”属性）用于确保 CRL 仍然有效。  将定期引用 CRL，以撤销对该列表中证书的访问权限。
 
 如果需要更即时的吊销（例如，如果用户丢失了设备），可以使用户的授权令牌失效。 若要使授权令牌失效，请使用 Windows PowerShell 为此特定用户设置 **StsRefreshTokenValidFrom** 字段。 必须为要撤销其访问权限的每个用户更新 **StsRefreshTokenValidFrom** 字段。
 
@@ -169,7 +169,7 @@ ms.locfileid: "80654339"
 
 ### <a name="testing-your-certificate"></a>测试证书
 
-作为第一个配置测试，应尝试使用**设备内置的浏览器**登录 [Outlook Web Access](https://outlook.office365.com) 或 [SharePoint Online](https://microsoft.sharepoint.com)。
+作为第一个配置测试，应尝试使用[设备内置的浏览器](https://outlook.office365.com)登录 [Outlook Web Access](https://microsoft.sharepoint.com) 或 **SharePoint Online**。
 
 如果登录成功，则表示：
 

@@ -7,14 +7,14 @@ ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
 keywords: azure automation, DSC, powershell, desired state configuration, update management, change tracking, inventory, runbooks, python, graphical, hybrid
-ms.date: 02/24/2020
+ms.date: 03/24/2020
 ms.topic: overview
-ms.openlocfilehash: 57b44db9c1bb9a607ad8478b7208df40441020c2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5fa39028f1041a063bab295adabf8145a8b46ae4
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290125"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81308771"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>什么是 Azure Arc for servers（预览版）
 
@@ -43,7 +43,7 @@ Azure Arc for servers（预览版）支持以下使用联网计算机的方案�
 
 在大多数情况下，创建安装脚本时选择的位置应该是在地理位置上最接近你的计算机位置的 Azure 区域。 静态数据将存储在包含你指定区域的 Azure 地理区域中，如果你有数据驻留要求，这可能也会影响你对区域的选择。 如果你的计算机连接到的 Azure 区域受中断影响，则已连接的计算机不受影响，但使用 Azure 的管理操作可能无法完成。 为了在发生区域性中断时具有恢复能力，如果你有提供地理冗余服务的多个位置，最好将每个位置的计算机连接到不同的 Azure 区域。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="supported-operating-systems"></a>支持的操作系统
 
@@ -54,7 +54,7 @@ Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操�
 - CentOS Linux 7
 - SUSE Linux Enterprise Server (SLES) 15
 - Red Hat Enterprise Linux (RHEL) 7
-- Amazon Linux 7
+- Amazon Linux 2
 
 >[!NOTE]
 >适用于 Windows 的 Connected Machine 代理预览版仅支持配置为使用英语的 Windows Server。
@@ -143,11 +143,11 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 >[!NOTE]
 >在预览期，仅发布了一个适用于 Ubuntu 16.04 或 18.04 的包。
 
-适用于 Windows 和 Linux 的 Azure Connected Machine 代理可以手动或自动升级到最新版本，具体取决于你的要求。 对于 Windows，可以使用 Windows 更新自动完成代理更新；对于 Ubuntu，可以使用 [apt](https://help.ubuntu.com/lts/serverguide/apt.html) 命令行工具来这样做。
+适用于 Windows 和 Linux 的 Azure Connected Machine 代理可以手动或自动升级到最新版本，具体取决于你的要求。 有关详细信息，请参阅[此文](manage-agent.md)。
 
 ### <a name="agent-status"></a>代理状态
 
-Connected Machine 代理每 5 分钟向服务发送一条定期检测信号消息。 如果在 15 分钟内未收到一条消息，则会将该计算机视为脱机，并会在门户中将状态自动更改为“已断开连接”  。 收到来自 Connected Machine 代理的后续检测信号消息后，其状态会自动更改为“已连接”  。
+Connected Machine 代理每 5 分钟向服务发送一条定期检测信号消息。 如果服务停止从计算机接收这些检测信号消息，系统会将该计算机视为脱机，并会在 15 到 30 分钟内在门户中将状态自动更改为“已断开连接”  。 收到来自 Connected Machine 代理的后续检测信号消息后，其状态会自动更改为“已连接”  。
 
 ## <a name="install-and-configure-agent"></a>安装并配置代理
 
@@ -157,6 +157,7 @@ Connected Machine 代理每 5 分钟向服务发送一条定期检测信号消�
 |--------|-------------|
 | 交互式 | 遵循[从 Azure 门户连接计算机](onboard-portal.md)中的步骤，在一台或多台计算机上手动安装代理。<br> 在 Azure 门户中，可以生成一个脚本并在计算机上执行，以自动完成代理安装和配置的步骤。|
 | 大规模 | 遵循[使用服务主体连接计算机](onboard-service-principal.md)中的步骤，为多台计算机安装并配置代理。<br> 此方法创建一个服务主体来以非交互方式连接计算机。|
+| 大规模 | 按照[使用 Windows PowerShell DSC](onboard-dsc.md) 方法为多台计算机安装和配置代理。<br> 此方法使用服务主体以非交互方式将计算机与 PowerShell DSC 连接。 |
 
 ## <a name="next-steps"></a>后续步骤
 

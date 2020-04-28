@@ -1,6 +1,6 @@
 ---
-title: 在 Azure AD 域服务中排除帐户锁定故障 |微软文档
-description: 了解如何解决导致用户帐户在 Azure 活动目录域服务中锁定的常见问题。
+title: 排查 Azure AD 域服务中的帐户锁定问题 |Microsoft Docs
+description: 了解如何对导致用户帐户在 Azure Active Directory 域服务中被锁定的常见问题进行故障排除。
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -11,54 +11,54 @@ ms.topic: troubleshooting
 ms.date: 04/06/2020
 ms.author: iainfou
 ms.openlocfilehash: 7d2e22804c06f589c7990bf8f19319b897363a93
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80743445"
 ---
-# <a name="troubleshoot-account-lockout-problems-with-an-azure-ad-domain-services-managed-domain"></a>解决 Azure AD 域服务托管域的帐户锁定问题
+# <a name="troubleshoot-account-lockout-problems-with-an-azure-ad-domain-services-managed-domain"></a>排查 Azure AD 域服务托管域的帐户锁定问题
 
-为了防止重复的恶意登录尝试，Azure AD DS 会在定义的阈值后锁定帐户。 此帐户锁定也可能意外发生，而不会发生登录攻击事件。 例如，如果用户反复输入错误的密码或服务尝试使用旧密码，则帐户将锁定。
+为防止重复的恶意登录尝试，Azure AD DS 在定义的阈值后锁定帐户。 此帐户锁定也可能在没有登录攻击事件的情况下发生。 例如，如果用户重复输入错误的密码或服务尝试使用旧密码，则该帐户将被锁定。
 
-此故障排除文章概述了帐户锁定发生的原因以及如何配置行为，以及如何查看安全审核以排除锁定事件。
+此故障排除一文概述了发生帐户锁定的原因，以及如何配置行为，以及如何查看安全审核来排查锁定事件。
 
 ## <a name="what-is-an-account-lockout"></a>什么是帐户锁定？
 
-当满足未成功登录尝试的已定义阈值时，Azure AD DS 中的用户帐户将锁定。 此帐户锁定行为旨在保护您免受可能指示自动数字攻击的重复暴力强制登录尝试的影响。
+如果满足未成功登录尝试的规定阈值，则会锁定 Azure AD DS 中的用户帐户。 此帐户锁定行为旨在防止你重复多次尝试登录，这可能表示自动数字攻击。
 
-**默认情况下，如果在 2 分钟内尝试了 5 次错误密码，则帐户将锁定 30 分钟。**
+**默认情况下，如果2分钟内有5个错误的密码尝试，则该帐户将被锁定30分钟。**
 
-使用细粒度密码策略配置默认帐户锁定阈值。 如果您有一组特定的要求，则可以覆盖这些默认帐户锁定阈值。 但是，不建议增加阈值限制以尝试减少帐户锁定的数量。 首先排除帐户锁定行为的来源。
+使用细化密码策略配置默认的帐户锁定阈值。 如果有一组特定的要求，则可以重写这些默认的帐户锁定阈值。 但是，不建议增加阈值限制来尝试减少帐户锁定次数。 首先排查帐户锁定行为的问题。
 
 ### <a name="fine-grained-password-policy"></a>严格的密码策略
 
-细粒度密码策略 （FGP） 允许您对域中的不同用户应用密码和帐户锁定策略的特定限制。 FGPP 仅影响 Azure AD DS 托管域中的用户。 从 Azure AD 同步到 Azure AD DS 托管域的云用户和域用户仅受 Azure AD DS 中的密码策略的影响。 其在 Azure AD 或本地目录中的帐户不受影响。
+细化密码策略（Fgpp）允许您将对密码和帐户锁定策略的特定限制应用于域中的不同用户。 FGPP 仅影响 Azure AD DS 托管域中的用户。 从 Azure AD 同步到 Azure AD DS 托管域的云用户和域用户仅受 Azure AD DS 内的密码策略影响。 它们在 Azure AD 或本地目录中的帐户不受影响。
 
-策略通过 Azure AD DS 托管域中的组关联分发，所做的任何更改都应用于下一个用户登录。 更改策略不会解锁已锁定的用户帐户。
+策略通过 Azure AD DS 托管域中的组关联进行分发，你所做的任何更改将在下次用户登录时应用。 更改策略不会解除对已锁定的用户帐户的锁定。
 
-有关细粒度密码策略的详细信息，以及直接在 Azure AD DS 中创建的用户与从 Azure AD 同步的用户之间的差异，请参阅[配置密码和帐户锁定策略][configure-fgpp]。
+有关细化密码策略的详细信息，以及直接在 Azure AD DS 中创建的用户与从 Azure AD 中同步的用户之间的差异，请参阅[配置密码和帐户锁定策略][configure-fgpp]。
 
 ## <a name="common-account-lockout-reasons"></a>常见帐户锁定原因
 
-在没有任何恶意或因素的情况下，将帐户锁定的最常见原因包括以下方案：
+帐户被锁定的最常见原因是没有任何恶意意向或因素，包括以下方案：
 
-* **用户把自己锁在门外。**
-    * 最近更改密码后，用户继续使用以前的密码吗？ 默认帐户锁定策略在 2 分钟内尝试 5 次失败，可能是由于用户无意中重试旧密码造成的。
-* **有一个应用程序或服务具有旧密码。**
-    * 如果应用程序或服务使用帐户，这些资源可能会反复尝试使用旧密码登录。 此行为会导致帐户被锁定。
-    * 尝试最小化跨多个不同应用程序或服务的帐户使用，并记录凭据的使用位置。 如果帐户密码已更改，请相应地更新关联的应用程序或服务。
-* **密码已在不同的环境中更改，并且新密码尚未同步。**
-    * 如果在 Azure AD DS 之外（如在 AD DS 环境中）更改了帐户密码，则密码更改可能需要几分钟才能通过 Azure AD 同步并同步到 Azure AD DS。
-    * 尝试在密码同步过程完成之前通过 Azure AD DS 登录到资源的用户会导致其帐户被锁定。
+* **用户已自行锁定。**
+    * 最近密码更改后，用户是否继续使用以前的密码？ 默认的帐户锁定策略在2分钟内尝试失败的次数为5次，因为用户意外重试旧密码。
+* **存在具有旧密码的应用程序或服务。**
+    * 如果应用程序或服务使用某个帐户，这些资源可能会使用旧密码重复尝试登录。 此行为将导致帐户被锁定。
+    * 尝试最大程度地减少跨多个不同应用程序或服务使用的帐户，并记录使用凭据的位置。 如果更改了帐户密码，请相应地更新关联的应用程序或服务。
+* **密码在不同的环境中已更改，新密码尚未同步。**
+    * 如果帐户密码在 Azure AD DS 之外（如本地 AD DS 环境中）发生更改，则密码更改可能需要几分钟时间才能通过 Azure AD 和 Azure AD DS 同步。
+    * 在完成密码同步过程之前，尝试通过 Azure AD DS 登录到资源的用户会导致其帐户被锁定。
 
-## <a name="troubleshoot-account-lockouts-with-security-audits"></a>通过安全审核解决帐户锁定问题
+## <a name="troubleshoot-account-lockouts-with-security-audits"></a>排除安全审核帐户锁定问题
 
-要在帐户锁定事件发生时和它们来自何处进行故障排除，[请为 Azure AD DS 启用安全审核][security-audit-events]。 审核事件仅从启用该功能时捕获。 理想情况下，您应该在出现要排除帐户锁定问题*之前*启用安全审核。 如果用户帐户反复出现锁定问题，则可以为下次发生这种情况启用安全审核。
+若要解决帐户锁定事件发生的时间以及这些事件的来源，请[为 AZURE AD DS 启用安全审核][security-audit-events]。 仅在启用该功能时捕获审核事件。 理想情况下，应该先启用安全审核，*然后再*进行故障排除。 如果用户帐户重复出现锁定问题，你可以在下一次出现此情况时启用安全审核。
 
-启用安全审核后，以下示例查询将向您展示如何查看*帐户锁定事件*，代码*4740*。
+启用安全审核后，以下示例查询将演示如何查看*帐户锁定事件*，代码*4740*。
 
-查看过去七天的所有帐户锁定事件：
+查看过去7天的所有帐户锁定事件：
 
 ```Kusto
 AADDomainServicesAccountManagement
@@ -66,7 +66,7 @@ AADDomainServicesAccountManagement
 | where OperationName has "4740"
 ```
 
-查看名为*driley*的帐户过去七天的所有帐户锁定事件。
+查看最近7天内名为*driley*的帐户的所有帐户锁定事件。
 
 ```Kusto
 AADDomainServicesAccountLogon
@@ -75,7 +75,7 @@ AADDomainServicesAccountLogon
 | where "driley" == tolower(extract("Logon Account:\t(.+[0-9A-Za-z])",1,tostring(ResultDescription)))
 ```
 
-查看 2019 年 6 月 26 日上午 9 点的所有帐户锁定事件。 和 2019 年 7 月 1 日午夜，按日期和时间排序：
+查看2019年6月26日之间的所有帐户锁定事件。 和2019年7月1日午夜按日期和时间升序排序：
 
 ```Kusto
 AADDomainServicesAccountManagement
@@ -86,9 +86,9 @@ AADDomainServicesAccountManagement
 
 ## <a name="next-steps"></a>后续步骤
 
-有关调整帐户锁定阈值的细粒度密码策略的详细信息，请参阅[配置密码和帐户锁定策略][configure-fgpp]。
+有关细化密码策略以调整帐户锁定阈值的详细信息，请参阅[配置密码和帐户锁定策略][configure-fgpp]。
 
-如果仍难以将 VM 加入 Azure AD DS 托管域，[请查找帮助并打开 Azure 活动目录的支持票证][azure-ad-support]。
+如果在将 VM 加入到 Azure AD DS 托管域时仍出现问题，请[找到 "帮助" 并为 Azure Active Directory 打开支持票证][azure-ad-support]。
 
 <!-- INTERNAL LINKS -->
 [configure-fgpp]: password-policy.md

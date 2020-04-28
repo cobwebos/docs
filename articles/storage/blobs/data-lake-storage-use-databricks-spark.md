@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: be5a2f76a99149fde378d29f2ef7748ebe60b038
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5889afa033b30606f8981ddb826aa192f24efa10
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78303233"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312913"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>教程：Azure Data Lake Storage Gen2、Azure Databricks & Spark
 
@@ -47,7 +47,7 @@ ms.locfileid: "78303233"
   > [!IMPORTANT]
   > 请确保在 Data Lake Storage Gen2 存储帐户的范围内分配角色。 可以将角色分配给父资源组或订阅，但在这些角色分配传播到存储帐户之前，你将收到与权限相关的错误。
 
-  :heavy_check_mark:执行本文中[获取用于登录的值](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)部分中的步骤时，请将租户 ID、应用 ID 和密码值粘贴到文本文件中。 很快就会需要这些值。
+  :heavy_check_mark:执行本文的[获取用于登录的值](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)部分中的步骤时，请将租户 ID、应用 ID 和客户端机密值粘贴到文本文件中。 很快就会需要这些值。
 
 ### <a name="download-the-flight-data"></a>下载航班数据
 
@@ -151,7 +151,7 @@ ms.locfileid: "78303233"
     configs = {"fs.azure.account.auth.type": "OAuth",
            "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
            "fs.azure.account.oauth2.client.id": "<appId>",
-           "fs.azure.account.oauth2.client.secret": "<password>",
+           "fs.azure.account.oauth2.client.secret": "<clientSecret>",
            "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant>/oauth2/token",
            "fs.azure.createRemoteFileSystemDuringInitialization": "true"}
 
@@ -161,7 +161,7 @@ ms.locfileid: "78303233"
     extra_configs = configs)
     ```
 
-18. 在此代码块中，请将 `appId`、`password`、`tenant` 和 `storage-account-name` 占位符值替换为在完成本教程的先决条件时收集的值。 将 `container-name` 占位符值替换为容器的名称。
+18. 在此代码块中，请将 `appId`、`clientSecret`、`tenant` 和 `storage-account-name` 占位符值替换为在完成本教程的先决条件时收集的值。 将 `container-name` 占位符值替换为容器的名称。
 
 19. 按 **SHIFT + ENTER** 键，运行此块中的代码。
 

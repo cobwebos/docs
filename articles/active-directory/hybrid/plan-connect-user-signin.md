@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a08120b98c7a08bca50453df59df313b1645c5c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80331266"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect 用户登录选项
@@ -68,7 +68,7 @@ Azure AD 支持以下身份验证方法：
 此外，还可以对公司网络中已加入域的计算机上的用户启用单一登录。 通过单一登录，受支持的用户只需输入用户名即可安全访问云资源。
 ![直通身份验证](./media/plan-connect-user-signin/pta.png)
 
-有关详细信息，请参阅：
+有关详细信息，请参见:
 - [直通身份验证](how-to-connect-pta.md)
 - [单一登录](how-to-connect-sso.md)
 
@@ -85,7 +85,7 @@ Azure AD 支持以下身份验证方法：
 
 * 用于联合服务器的 Windows Server 2012 R2 服务器。
 * 用于 Web 应用程序代理的 Windows Server 2012 R2 服务器。
-* 一个 .pfx 文件，具有一个 TLS/SSL 证书，用于预期的联合服务名称。 例如：fs.contoso.com。
+* 一个 .pfx 文件，其中包含一个适用于所需联合身份验证服务名称的 TLS/SSL 证书。 例如：fs.contoso.com。
 
 如果要部署新场或使用现有场，则需要：
 
@@ -126,7 +126,7 @@ Azure AD 登录体验取决于 Azure AD是否能够匹配要同步到某个自�
 Azure AD Connect 列出了为域定义的 UPN 后缀，并尝试在 Azure AD 中将其与自定义域进行匹配。 然后它会帮助执行需要执行的相应操作。
 Azure AD 登录页列出了为本地 Active directory 定义的 UPN 后缀，并根据每个后缀显示相应的状态。 状态值可以是下列其中一项：
 
-| 状态 | 描述 | 所需操作 |
+| 状态 | 说明 | 所需操作 |
 |:--- |:--- |:--- |
 | 已验证 |Azure AD Connect 在 Azure AD 中找到匹配的已验证域。 此域的所有用户均可使用其本地凭据登录。 |无需采取任何措施。 |
 | 未验证 |Azure AD Connect 在 Azure AD 中找到了匹配的但未验证的自定义域。 如果域未验证，则在同步后此域的用户的 UPN 后缀将更改为默认的 .onmicrosoft.com 后缀。 | [在 Azure AD 中验证自定义域。](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) |
@@ -191,5 +191,5 @@ Azure AD 登录页列出了针对本地 Active Directory 定义的 UPN 后缀，
 >
 
 ## <a name="next-steps"></a>后续步骤
-- 了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
-- 了解有关[Azure AD 连接设计概念](plan-connect-design-concepts.md)的更多内容。
+- 详细了解如何[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)。
+- 详细了解[Azure AD Connect 的设计概念](plan-connect-design-concepts.md)。

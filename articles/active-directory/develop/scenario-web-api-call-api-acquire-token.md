@@ -13,10 +13,10 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 79f8eb9e804502a7c0e61c18e4998fa05db10278
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885134"
 ---
 # <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>调用 Web API 的 Web API：获取应用的令牌
@@ -27,7 +27,7 @@ ms.locfileid: "80885134"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-下面是在 API 控制器的操作中调用的代码示例。 它调用名为“todolist”** 的下游 API。
+下面是在 API 控制器的操作中调用的代码示例。 它调用下游 API（名为 *todolist*）。
 
 ```csharp
 private async Task GetTodoList(bool isAppStarting)
@@ -48,7 +48,7 @@ private async Task GetTodoList(bool isAppStarting)
 }
 ```
 
-`BuildConfidentialClient()`类似于调用 Web API 的 Web API 中的方案[：应用配置](scenario-web-api-call-api-app-configuration.md)。 `BuildConfidentialClient()` 使用仅包含一个帐户信息的缓存实例化 `IConfidentialClientApplication`。 该帐户由 `GetAccountIdentifier` 方法提供。
+`BuildConfidentialClient()` 类似于[调用 Web API 的 Web API：应用配置](scenario-web-api-call-api-app-configuration.md)中的方案。 `BuildConfidentialClient()` 使用仅包含一个帐户信息的缓存实例化 `IConfidentialClientApplication`。 该帐户由 `GetAccountIdentifier` 方法提供。
 
 `GetAccountIdentifier` 方法使用与 Web API 收到其 JSON Web 令牌 (JWT) 的用户的标识相关联的声明：
 
@@ -91,7 +91,7 @@ public class ApiController {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python Web API 需要使用一些中间件来验证从客户端接收的持有者令牌。 然后，Web API 可以使用 MSAL Python 库调用[`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of)方法获取下游 API 的访问令牌。 我们尚未编写在 MSAL Python 中演示此流的示例。
+Python Web API 需要使用一些中间件来验证从客户端接收的持有者令牌。 然后，Web API 可以通过调用 [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) 方法，使用 MSAL Python 库获取下游 API 的访问令牌。 使用 MSAL Python 演示此流的示例尚不可用。
 
 ---
 

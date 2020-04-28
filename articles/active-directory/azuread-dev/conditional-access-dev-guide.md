@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
 ms.openlocfilehash: 92acb1a475fbd41bfb7351d73c61db866ce2bbc0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80154927"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问开发人员指南
@@ -30,7 +30,7 @@ ms.locfileid: "80154927"
 * 仅允许已注册 Intune 的设备访问特定服务
 * 限制用户位置和 IP 范围
 
-有关条件访问的全部功能的详细信息，请参阅[Azure 活动目录中的条件访问](../active-directory-conditional-access-azure-portal.md)。
+有关条件性访问的完整功能的详细信息，请参阅[Azure Active Directory 中的条件访问](../active-directory-conditional-access-azure-portal.md)。
 
 对于生成 Azure AD 应用的开发人员，本文演示了条件访问的使用方法，并介绍了访问应用了条件访问策略且你无法控制的资源将产生的影响。 此外，本文还探讨了条件访问对代理流、Web 应用、访问 Microsoft Graph 和调用 API 的影响。
 
@@ -49,7 +49,7 @@ ms.locfileid: "80154927"
 * 使用 ADAL.js 的单页应用
 * 调用资源的 Web 应用
 
-条件访问策略不仅可应用于应用，还可应用于应用访问的 Web API。 要了解有关如何配置条件访问策略的更多信息，请参阅[快速入门：对于具有 Azure 活动目录条件访问的特定应用需要 MFA。](../conditional-access/app-based-mfa.md)
+条件访问策略不仅可应用于应用，还可应用于应用访问的 Web API。 若要了解有关如何配置条件访问策略的详细信息，请参阅[快速入门：需要对具有 Azure Active Directory 条件性访问的特定应用的 MFA](../conditional-access/app-based-mfa.md)。
 
 根据具体的情况，企业客户随时可以应用和删除条件访问策略。 应用新策略后，若要使应用继续正常工作，需执行“质询”处理。 以下示例演示了质询处理的过程。
 
@@ -90,7 +90,7 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 ### <a name="prerequisites"></a>先决条件
 
-Azure AD 条件访问是[Azure AD 高级版](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)中包含的功能。 可以在[未授权用户使用情况报表](../active-directory-conditional-access-unlicensed-usage-report.md)中了解有关许可要求的更多信息。 开发人员可以加入[Microsoft 开发人员网络](https://msdn.microsoft.com/dn308572.aspx)，其中包括对企业移动套件（包括 Azure AD 高级版）的免费订阅。
+Azure AD 条件访问是[Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)中包含的一项功能。 可以在[未授权用户使用情况报表](../active-directory-conditional-access-unlicensed-usage-report.md)中了解有关许可要求的更多信息。 开发人员可以加入[Microsoft 开发人员网络](https://msdn.microsoft.com/dn308572.aspx)，其中包含企业移动性套件的免费订阅，其中包括 Azure AD Premium。
 
 ### <a name="considerations-for-specific-scenarios"></a>特定应用场景的注意事项
 
@@ -157,11 +157,11 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 * 然后可以使用 `acquireToken(…)` 以无提示方式获取访问令牌，这意味着在任何情况下它都不会显示 UI。
 * `acquireTokenPopup(…)` 和 `acquireTokenRedirect(…)` 用于以交互方式请求资源的令牌，这意味着它们始终会显示登录 UI。
 
-应用需要访问令牌来调用 Web API 时，它尝试 `acquireToken(…)`。 如果令牌会话已过期，或者我们需要遵守条件访问策略，则*accessToken*函数将失败，应用使用`acquireTokenPopup()`或`acquireTokenRedirect()`。
+应用需要访问令牌来调用 Web API 时，它尝试 `acquireToken(…)`。 如果令牌会话已过期，或者我们需要符合条件性访问策略，则*acquireToken*函数会失败，并且应用程序将使用`acquireTokenPopup()`或`acquireTokenRedirect()`。
 
 ![使用 ADAL 流的单页应用示意图](./media/conditional-access-dev-guide/spa-using-adal-scenario.png)
 
-我们来演示一个使用条件访问应用场景的示例。 最终用户刚刚登陆了该站点，并且没有会话。 我们执行一个 `login()` 调用，未通过多重身份验证获取了 ID 令牌。 然后用户点击一个按钮，要求应用从 Web API 请求数据。 该应用将尝试执行一个 `acquireToken()` 调用，但是失败，因为用户尚未执行多重身份验证，且需要符合条件访问策略。
+我们来演示一个使用条件访问应用场景的示例。 最终用户只是在网站上着陆，没有会话。 我们执行一个 `login()` 调用，未通过多重身份验证获取了 ID 令牌。 然后用户点击一个按钮，要求应用从 Web API 请求数据。 该应用将尝试执行一个 `acquireToken()` 调用，但是失败，因为用户尚未执行多重身份验证，且需要符合条件访问策略。
 
 Azure AD 发送回以下 HTTP 响应：
 
@@ -175,7 +175,7 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 若要尝试此应用场景，请参阅 [JS SPA 代理代码示例](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca)。 此代码示例使用之前通过 JS SPA 注册的条件访问策略和 Web API 演示此应用场景。 它演示了如何正确处理声明质询并获取可用于 Web API 的访问令牌。 或者，请查看常规的 [Angular.js 代码示例](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp)，获取 Angular SPA 方面的指南。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * 若要详细了解这些功能，请参阅 [Azure Active Directory 中的条件访问](../active-directory-conditional-access-azure-portal.md)。
 * 若要获取更多 Azure AD 代码示例，请参阅 [GitHub 存储库的代码示例](https://github.com/azure-samples?utf8=%E2%9C%93&q=active-directory)。

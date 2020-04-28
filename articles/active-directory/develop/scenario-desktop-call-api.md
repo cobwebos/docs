@@ -12,13 +12,13 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 753892790a6f6b898b48d955e6806837967f3e92
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882958"
 ---
-# <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>调用 Web API 的桌面应用：调用 Web API
+# <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>用于调用 Web API 的桌面应用：调用 Web API
 
 现在你已有令牌，可以调用受保护的 Web API 了。
 
@@ -92,7 +92,7 @@ let task = URLSession.shared.dataTask(with: urlRequest as URLRequest) { (data: D
 task.resume()
 ```
 
-## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>调用多个 API：增量同意和条件访问
+## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>调用多个 Api：增量许可和条件访问
 
 若要为同一用户调用多个 API，请在获得第一个 API 的令牌后调用 `AcquireTokenSilent`。 大多数情况下，你会以静默方式获得其他 API 的令牌。
 
@@ -130,4 +130,4 @@ catch(MsalUiRequiredException ex)
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [移到生产环境](scenario-desktop-production.md)
+> [转移到生产环境](scenario-desktop-production.md)

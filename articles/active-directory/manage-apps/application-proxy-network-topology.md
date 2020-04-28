@@ -17,10 +17,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eaceaf1f5e9b6e34ced5db39b61e607fffcb5953
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80295138"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>使用 Azure Active Directory 应用程序代理时的网络拓扑注意事项
@@ -39,9 +39,9 @@ ms.locfileid: "80295138"
 
 ## <a name="tenant-location-and-application-proxy-service"></a>租户位置和应用程序代理服务
 
-注册 Azure AD 租户时，租户的区域由指定的国家/地区确定。 启用应用程序代理时，将在 Azure AD 租户所在的同一区域或者与它最靠近的区域中选择或创建租户的应用程序代理服务实例。
+当你注册 Azure AD 租户时，你的租户区域由指定的国家/地区确定。 启用应用程序代理时，将在 Azure AD 租户所在的同一区域或者与它最靠近的区域中选择或创建租户的应用程序代理服务实例。
 
-例如，如果 Azure AD 租户的国家或地区是英国，则所有应用程序代理连接器都使用欧洲数据中心中的服务实例。 当用户访问发布的应用程序时，其流量会流经此位置中的应用程序代理服务实例。
+例如，如果 Azure AD 租户所在的国家或地区是英国，则所有应用程序代理连接器都将使用欧洲数据中心内的服务实例。 当用户访问发布的应用程序时，其流量会流经此位置中的应用程序代理服务实例。
 
 ## <a name="considerations-for-reducing-latency"></a>有关降低延迟的注意事项
 
@@ -78,7 +78,7 @@ ms.locfileid: "80295138"
 
 ## <a name="focus-your-optimization-strategy"></a>注重优化策略
 
-很难控制用户与应用程序代理之间的连接。 用户可以从家庭网络、咖啡店或其他国家/地区访问您的应用。 不过，可以优化从应用程序代理服务到应用程序代理连接器再到应用的连接。 考虑在环境中整合以下模式。
+很难控制用户与应用程序代理之间的连接。 用户可以从家庭网络、咖啡店或其他国家/地区访问应用。 不过，可以优化从应用程序代理服务到应用程序代理连接器再到应用的连接。 考虑在环境中整合以下模式。
 
 ### <a name="pattern-1-put-the-connector-close-to-the-application"></a>模式 1：将连接器放在靠近应用程序的位置
 
@@ -86,7 +86,7 @@ ms.locfileid: "80295138"
 
 如果连接器需连接到域控制器，此模式十分有利。 这种方法适用于大多数方案，因此大多数客户都使用此模式。 也可以将此模式与模式 2 结合使用，优化服务与连接器之间的流量。
 
-### <a name="pattern-2-take-advantage-of-expressroute-with-microsoft-peering"></a>模式 2：利用与微软对等互连的 ExpressRoute
+### <a name="pattern-2-take-advantage-of-expressroute-with-microsoft-peering"></a>模式2：通过 Microsoft 对等互连利用 ExpressRoute
 
 如果你为 ExpressRoute 设置了 Microsoft 对等互连，则可为应用程序代理与连接器之间的流量使用更快的 ExpressRoute 连接。 连接器仍在网络中靠近应用的位置。
 
@@ -124,7 +124,7 @@ ms.locfileid: "80295138"
 
 这是一个简单的模式。 可以通过将连接器放置在应用附近来优化跃点 3。 这也是一种自然而然的选择，因为安装的连接器通常与应用和数据中心建立直通连接，以便执行 KCD 操作。
 
-![显示用户、代理、连接器和应用的图表均位于美国](./media/application-proxy-network-topology/application-proxy-pattern1.png)
+![显示用户、代理、连接器和应用的关系图](./media/application-proxy-network-topology/application-proxy-pattern1.png)
 
 ### <a name="use-case-2"></a>用例 2
 
@@ -134,7 +134,7 @@ ms.locfileid: "80295138"
 
 同样，常见的模式是优化跃点 3，其中的连接器放置在应用附近。 如果将整个跃点 3 放在同一区域，则它的系统开销通常不大。 但是，根据用户所在的位置，跃点 1 的系统开销可能更大，因为世界各地的用户必须访问位于美国的应用程序代理实例。 值得注意的是，由于用户遍布全球各地，任何代理解决方案将具有类似的特征。
 
-![用户遍布全球，但其他一切都在美国](./media/application-proxy-network-topology/application-proxy-pattern2.png)
+![用户在全球范围内传播，但其他所有内容都在美国](./media/application-proxy-network-topology/application-proxy-pattern2.png)
 
 ### <a name="use-case-3"></a>用例 3
 
@@ -158,23 +158,23 @@ ms.locfileid: "80295138"
 
 可将连接器放置在 Azure 数据中心内。 由于连接器仍旧通过专用网络与应用程序和数据中心建立直通连接，跃点 3 将保持优化。 此外，跃点 2 会进一步优化。
 
-![Azure 数据中心中的连接器，连接器和应用之间的快速路由](./media/application-proxy-network-topology/application-proxy-pattern4.png)
+![Azure 数据中心中的连接器，连接器与应用之间的 ExpressRoute](./media/application-proxy-network-topology/application-proxy-pattern4.png)
 
 ### <a name="use-case-5"></a>用例 5
 
-**方案：** 该应用程序位于欧洲的一个组织网络中，具有应用程序代理实例和美国的大多数用户。
+**方案：** 该应用程序位于欧洲的组织网络中，其中包含应用程序代理实例和美国大多数用户。
 
 **建议：** 将连接器放置在应用的附近。 由于美国用户访问的应用程序代理实例正好处于同一区域，因此跃点 1 的系统开销也不会太高。 跃点 3 经过优化。 考虑使用 ExpressRoute 来优化跃点 2。
 
-![图表显示美国的用户和代理、欧洲连接器和应用](./media/application-proxy-network-topology/application-proxy-pattern5b.png)
+![关系图显示了欧洲地区的用户和代理、连接器和应用](./media/application-proxy-network-topology/application-proxy-pattern5b.png)
 
-还可以考虑对此用例使用另一种变化形式。 如果组织中的大多数用户位于美国，则组织有可能也会将网络扩展到美国。 将连接器放在美国，并使用专用的内部企业网络线到欧洲的应用。 因此，跃点 2 和跃点 3 将得到优化。
+还可以考虑对此用例使用另一种变化形式。 如果组织中的大多数用户位于美国，则组织有可能也会将网络扩展到美国。 将连接器放置在美国，并使用欧洲的专用企业网络线路连接到应用程序。 因此，跃点 2 和跃点 3 将得到优化。
 
-![图表显示美国的用户、代理和连接器，欧洲的应用](./media/application-proxy-network-topology/application-proxy-pattern5c.png)
+![关系图显示了美国的用户、代理和连接器、欧洲的应用](./media/application-proxy-network-topology/application-proxy-pattern5c.png)
 
 ## <a name="next-steps"></a>后续步骤
 
 - [启用应用程序代理](application-proxy-add-on-premises-application.md)
 - [启用单一登录](application-proxy-configure-single-sign-on-with-kcd.md)
-- [启用条件访问](application-proxy-integrate-with-sharepoint-server.md)
+- [启用条件性访问](application-proxy-integrate-with-sharepoint-server.md)
 - [解决使用应用程序代理时遇到的问题](application-proxy-troubleshoot.md)

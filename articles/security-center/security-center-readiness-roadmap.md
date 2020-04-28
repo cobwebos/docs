@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
 ms.openlocfilehash: 9d74ea2b967112a794cda204cbbfcac707e1d7c4
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80879456"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure 安全中心就绪情况路线图
@@ -73,7 +73,7 @@ Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供�
 * [Mitigating Security Issues using Azure Security Center](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Mitigating-Security-Issues-using-Azure-Security-Center)（使用 Azure 安全中心缓解安全问题）
 
 ### <a name="security-center-for-incident-response"></a>负责事件响应的安全中心
-为了降低成本和损坏，在攻击发生之前制定事件响应计划非常重要。 可在事件响应的不同阶段使用 Azure 安全中心。
+为了降低成本和损坏情况，必须在攻击发生之前制定事件响应计划。 可在事件响应的不同阶段使用 Azure 安全中心。
 
 若要了解如何将安全中心纳入事件响应流程中，请参考以下资源。
 
@@ -83,16 +83,16 @@ Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供�
 
 项目    
 * [利用 Azure 安全中心进行事件响应](https://docs.microsoft.com/azure/security-center/security-center-incident-response)
-* [通过工作流自动化自动响应](workflow-automation.md)
+* [通过工作流自动化自动完成响应](workflow-automation.md)
 
 ## <a name="advanced-cloud-defense"></a>高级云防御
 
-Azure VM 可以充分利用安全中心的高级云防御功能。 这些功能包括实时虚拟机 （VM） 访问和自适应应用程序控制。
+Azure VM 可以充分利用安全中心的高级云防御功能。 这些功能包括实时虚拟机（VM）访问和自适应应用程序控制。
 
 若要了解如何在安全中心使用这些功能，请参考以下资源。
 
 视频    
-* [Azure 安全中心 + 及时的 VM 访问](https://youtu.be/UOQb2FcdQnU)
+* [Azure 安全中心-实时 VM 访问](https://youtu.be/UOQb2FcdQnU)
 * [Azure Security Center - Adaptive Application Controls](https://youtu.be/wWWekI1Y9ck)（Azure 安全中心 - 自适应应用程序控制）
 
 项目    
@@ -113,8 +113,8 @@ Azure VM 可以充分利用安全中心的高级云防御功能。 这些功能�
 * [标识安全最佳做法](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices)
 * [网络安全最佳实践](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices)
 * [PaaS 建议](https://docs.microsoft.com/azure/security/security-paas-deployments)
-* [合规性](https://www.microsoft.com/trustcenter/compliance/due-diligence-checklist)
-* [日志分析客户现在可以使用 Azure 安全中心保护其混合云工作负载](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
+* [遵从性](https://www.microsoft.com/trustcenter/compliance/due-diligence-checklist)
+* [Log analytics 客户现在可以使用 Azure 安全中心来保护其混合云工作负荷](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
 
 ## <a name="community-resources"></a>社区资源
 

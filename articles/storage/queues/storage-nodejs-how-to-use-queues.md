@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.reviewer: cbrooks
 ms.custom: seo-javascript-september2019
 ms.openlocfilehash: 7abcad03678131668700f5d2c64b9c971081cb89
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80060939"
 ---
 # <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>通过 Node.js 使用 Azure 队列服务创建和删除队列
@@ -35,8 +35,8 @@ ms.locfileid: "80060939"
 若要使用 Azure 存储，需要 Azure Storage SDK for Node.js，其中包括一组便于与存储 REST 服务进行通信的库。
 
 ### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>使用 Node 包管理器 (NPM) 可获取该程序包
-1. 使用 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Unix) 等命令行接口导航到在其中创建了示例应用程序的文件夹。
-2. 在命令窗口中键入 **npm install azure-storage**。 该命令的输出类似于以下示例。
+1. 使用 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Unix) 等命令行界面导航到在其中创建了示例应用程序的文件夹。
+2. 在命令窗口中键入 **npm install azure-storage** 。 该命令的输出类似于以下示例。
  
     ```bash
     azure-storage@0.5.0 node_modules\azure-storage
@@ -54,23 +54,23 @@ ms.locfileid: "80060939"
 3. 可以手动运行 **ls** 命令来验证是否创建了 **node\_modules** 文件夹。 在该文件夹中将找到 **azure-storage** 包，其中包含访问存储所需的库。
 
 ### <a name="import-the-package"></a>导入包
-使用记事本或其他文本编辑器，将以下内容添加到要在其中使用存储的应用程序的 **server.js** 文件顶部：
+使用记事本或其他文本编辑器，将以下内容添加到要使用存储的应用程序的 **server.js** 文件顶部：
 
 ```javascript
 var azure = require('azure-storage');
 ```
 
 ## <a name="setup-an-azure-storage-connection"></a>设置 Azure 存储连接
-Azure 模块将读取环境变量 AZURE\_STORAGE\_ACCOUNT 和 AZURE\_STORAGE\_ACCESS\_KEY，或 AZURE\_STORAGE\_CONNECTION\_STRING 以获取连接到 Azure 存储帐户所需的信息。 如果未设置这些环境变量，则必须在调用 **createQueueService** 时指定帐户信息。
+Azure 模块将读取环境变量 AZURE\_STORAGE\_ACCOUNT 和 AZURE\_STORAGE\_ACCESS\_KEY，或 AZURE\_STORAGE\_CONNECTION\_STRING 以获取连接到 Azure 存储帐户所需的信息。 如果未设置这些环境变量，则必须在调用 **createQueueService**时指定帐户信息。
 
 ## <a name="how-to-create-a-queue"></a>如何：创建队列
-以下代码将创建一个 **QueueService** 对象，可通过该对象来操作队列。
+以下代码创建一个 **QueueService** 对象，可通过该对象来操作队列。
 
 ```javascript
 var queueSvc = azure.createQueueService();
 ```
 
-使用 **createQueueIfNotExists** 方法，该方法将返回指定的队列（如果已存在），或创建具有指定名称的新队列（如果尚不存在）。
+使用 **createQueueIfNotExists** 方法，该方法返回指定的队列（如果已存在），或创建具有指定名称的新队列（如果尚不存在）。
 
 ```javascript
 queueSvc.createQueueIfNotExists('myqueue', function(error, results, response){
@@ -83,7 +83,7 @@ queueSvc.createQueueIfNotExists('myqueue', function(error, results, response){
 如果创建了队列，则 `result.created` 为 true。 如果队列已存在，则 `result.created` 为 false。
 
 ### <a name="filters"></a>筛选器
-可以向使用 **QueueService** 执行的操作应用可选的筛选操作。 筛选操作可以包括日志记录、自动重试等。筛选器是实现了具有签名的方法的对象：
+可以向使用 **QueueService** 执行的操作应用可选的筛选操作。 筛选操作可包括日志记录、自动重试等。筛选器是实现具有签名的方法的对象：
 
 ```javascript
 function handle (requestOptions, next)
@@ -105,7 +105,7 @@ var queueSvc = azure.createQueueService().withFilter(retryOperations);
 ```
 
 ## <a name="how-to-insert-a-message-into-a-queue"></a>如何：在队列中插入消息
-若要将消息插入队列，请使用**createMessage**方法创建新消息并将其添加到队列中。
+要在队列中插入消息，可使用 **createMessage** 方法创建一条新消息并将其添加到队列中。
 
 ```javascript
 queueSvc.createMessage('myqueue', "Hello world!", function(error, results, response){
@@ -116,7 +116,7 @@ queueSvc.createMessage('myqueue', "Hello world!", function(error, results, respo
 ```
 
 ## <a name="how-to-peek-at-the-next-message"></a>如何：扫视下一条消息
-您可以通过调用**peekMessages**方法查看队列前面的消息，而无需将其从队列中删除。 默认情况下，**peekMessages** 扫视单条消息。
+可以通过调用 **peekMessages** 方法，速览队列前面的消息，而不必从队列中将其删除。 默认情况下， **peekMessages** 扫视单条消息。
 
 ```javascript
 queueSvc.peekMessages('myqueue', function(error, results, response){
@@ -129,7 +129,7 @@ queueSvc.peekMessages('myqueue', function(error, results, response){
 `result` 包含该消息。
 
 > [!NOTE]
-> 如果队列中没有消息，使用 **peekMessages** 不会返回错误，但也不会返回消息。
+> 在队列中没有消息时使用 **peekMessages** 不会返回错误，但也不会返回消息。
 > 
 > 
 
@@ -139,7 +139,7 @@ queueSvc.peekMessages('myqueue', function(error, results, response){
 1. 取消消息的排队。
 2. 删除消息。
 
-若要取消消息的排队，请使用 **getMessages**。 这会使消息在队列中不可见，使其他客户端无法处理它们。 应用程序处理完某条消息后，即可调用 **deleteMessage** 将其从队列中删除。 下面的示例获取了一条消息，然后将其删除：
+若要取消消息的排队，请使用 **getMessages**。 这会使消息在队列中不可见，使其他客户端无法处理它们。 当应用程序处理完某条消息后，即可调用 **deleteMessage** 将其从队列中删除。 下面的示例获取了一条消息，并将其删除：
 
 ```javascript
 queueSvc.getMessages('myqueue', function(error, results, response){
@@ -156,7 +156,7 @@ queueSvc.getMessages('myqueue', function(error, results, response){
 ```
 
 > [!NOTE]
-> 默认情况下，一条消息只会隐藏 30 秒，其他客户端就可以看见它。 可将 `options.visibilityTimeout` 与 **getMessages** 配合使用，以指定其他值。
+> 默认情况下，一条消息只会隐藏 30 秒，其他客户端就可以看见它。 可以将 `options.visibilityTimeout` 与 **getMessages** 配合使用，以指定其他值。
 > 
 > [!NOTE]
 > 在队列中没有消息时使用 **getMessages** 不会返回错误，但也不会返回消息。
@@ -164,7 +164,7 @@ queueSvc.getMessages('myqueue', function(error, results, response){
 > 
 
 ## <a name="how-to-change-the-contents-of-a-queued-message"></a>如何：更改已排队消息的内容
-可更改队列中现有消息的内容，只需使用 **updateMessage** 即可。 以下示例将更新消息的文本：
+可以使用 **updateMessage**就地更改队列中消息的内容。 以下示例更新消息的文本：
 
 ```javascript
 queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
@@ -180,13 +180,13 @@ queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
 });
 ```
 
-## <a name="how-to-additional-options-for-dequeuing-messages"></a>如何：用于对消息取消排队的其他选项
+## <a name="how-to-additional-options-for-dequeuing-messages"></a>如何：用于取消对消息进行排队的其他选项
 可以通过两种方式自定义队列中的消息检索：
 
 * `options.numOfMessages` - 获取一批消息（最多 32 条）。
 * `options.visibilityTimeout` - 设置较长或较短的不可见性超时。
 
-以下示例使用 **getMessages** 方法通过一次调用获取 15 条消息。 然后，使用 for 循环处理每条消息。 它还会将通过此方法返回的所有消息的不可见性超时设置为 5 分钟。
+以下示例使用 **getMessages** 方法通过一次调用获取 15 条消息。 然后，它会使用 for 循环处理每条消息。 它还会将通过此方法返回的所有消息的不可见性超时设置为 5 分钟。
 
 ```javascript
 queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, function(error, results, getResponse){
@@ -230,7 +230,7 @@ queueSvc.listQueuesSegmented(null, function(error, results, response){
 如果无法返回所有队列，可使用 `result.continuationToken` 作为 **listQueuesSegmented** 的第一个参数或 **listQueuesSegmentedWithPrefix** 的第二个参数，以检索更多结果。
 
 ## <a name="how-to-delete-a-queue"></a>如何：删除队列
-要删除队列及其中包含的所有消息，请调用队列对象上的**deleteQueue**方法。
+若要删除队列及其中包含的所有消息，请对队列对象调用 **deleteQueue** 方法。
 
 ```javascript
 queueSvc.deleteQueue(queueName, function(error, response){
@@ -247,7 +247,7 @@ queueSvc.deleteQueue(queueName, function(error, response){
 
 受信任的应用程序（例如基于云的服务）可使用 **QueueService** 的 **generateSharedAccessSignature** 生成 SAS，然后将其提供给不受信任的或不完全受信任的应用程序。 例如，移动应用。 可使用策略生成 SAS，该策略描述了 SAS 的生效日期和失效日期，以及授予 SAS 持有者的访问级别。
 
-下面的示例生成了一个新的共享访问策略，该策略将允许 SAS 持有者向队列添加消息，此策略在创建后 100 分钟过期。
+下面的示例生成了一个新的共享访问策略，该策略允许 SAS 持有者向队列添加消息，此策略在创建后 100 分钟过期。
 
 ```javascript
 var startDate = new Date();
@@ -302,7 +302,7 @@ var sharedAccessPolicy = {
 };
 ```
 
-下面的示例获取 **myqueue** 的当前 ACL，并使用 **setQueueAcl** 添加新策略。 此方法具有以下用途：
+下面的示例获取 **myqueue** 的当前 ACL，然后使用 **setQueueAcl** 添加新策略。 此方法具有以下用途：
 
 ```javascript
 var extend = require('extend');
@@ -325,10 +325,10 @@ queueSAS = queueSvc.generateSharedAccessSignature('myqueue', { Id: 'user2' });
 ```
 
 ## <a name="next-steps"></a>后续步骤
-现在，已了解有关队列存储的基础知识，可单击下面的链接来了解更复杂的存储任务。
+在了解了有关队列存储的基础知识后，可使用以下链接来了解更复杂的存储任务。
 
 * 访问 [Azure 存储团队博客][Azure Storage Team Blog]。
-* 访问 GitHub 上的[适用于 Node 的 Azure 存储 SDK][Azure Storage SDK for Node] 存储库。
+* 访问 GitHub 上的 [Azure Storage SDK for Node][Azure Storage SDK for Node] 存储库。
 
 
 

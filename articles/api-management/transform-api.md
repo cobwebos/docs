@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 5dec08bd4bc0a63a419d2bdc63383348a69b02db
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9a9c6897937b73786367accc33e985a268907226
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70067465"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258739"
 ---
 # <a name="transform-and-protect-your-api"></a>转换和保护 API
 
@@ -112,7 +112,7 @@ ms.locfileid: "70067465"
 2.  选择“所有操作”。 
 3.  选择屏幕顶部的“设计”选项卡。 
 4.  在“出站处理”部分，单击 **</>** 图标。 
-5.  将光标置于 **&lt;outbound&gt;** 元素内。
+5.  将光标置于 &lt;outbound&gt;  元素内，然后单击右上角的“插入策略”  按钮。
 6.  在右侧窗口中的“转换策略”下面，单击“+ 查找并替换正文中的字符串”。  
 7.  修改 **find-and-replace** 代码（在 **\<outbound\>** 元素中）以替换 URL，使之与 APIM 网关匹配。 例如：
 

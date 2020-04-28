@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 227230f2d6f46fae27e2cec69d99390f5054c7db
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80366261"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory 中的默认用户权限是什么？
@@ -32,7 +32,7 @@ ms.locfileid: "80366261"
 
 ## <a name="compare-member-and-guest-default-permissions"></a>比较成员和来宾的默认权限
 
-**地区** | **成员用户权限** | **来宾用户权限**
+**领域** | **成员用户权限** | **来宾用户权限**
 ------------ | --------- | ----------
 用户和联系人 | 读取用户和联系人的所有公共属性<br>邀请来宾<br>更改自己的密码<br>管理自己的手机号码<br>管理自己的照片<br>使自己的刷新令牌失效 | 读取自己的属性<br>读取其他用户和联系人的显示名称、电子邮件、登录名、照片、用户主体名称和用户类型属性<br>更改自己的密码
 组 | 创建安全组<br>创建 Office 365 组<br>读取组的所有属性<br>读取非隐藏的组成员身份<br>读取加入的组的隐藏 Office 365 组成员身份<br>管理用户拥有的组的属性、所有权和成员身份<br>将来宾添加到拥有的组<br>管理动态成员身份设置<br>删除拥有的组<br>还原拥有的 Office 365 组 | 读取组的所有属性<br>读取非隐藏的组成员身份<br>读取加入的组的隐藏 Office 365 组成员身份<br>管理拥有的组<br>将来宾添加到拥有的组（如果允许）<br>删除拥有的组<br>还原拥有的 Office 365 组<br>读取他们所属组的属性，包括成员身份。
@@ -40,7 +40,7 @@ ms.locfileid: "80366261"
 设备 | 读取设备的所有属性<br>管理拥有的设备的所有属性<br> | 无权限<br>删除拥有的设备<br>
 目录 | 读取所有公司信息<br>读取所有域<br>读取所有合作伙伴协定 | 读取显示名称和已验证的域
 角色和范围 | 读取所有管理角色和成员身份<br>读取管理单元的所有属性和成员身份 | 无权限 
-Subscriptions | 读取所有订阅<br>启用服务计划成员 | 无权限
+订阅 | 读取所有订阅<br>启用服务计划成员 | 无权限
 策略 | 读取策略的所有属性<br>管理拥有的策略的所有属性 | 无权限
 
 ## <a name="to-restrict-the-default-permissions-for-member-users"></a>限制成员用户的默认权限
@@ -50,10 +50,10 @@ Subscriptions | 读取所有订阅<br>启用服务计划成员 | 无权限
 权限 | 设置说明
 ---------- | ------------
 用户可以注册应用程序 | 将此选项设置为“否”可阻止用户创建应用程序注册。 然后，通过将特定的个人添加到“应用程序开发人员”角色，可以将该能力重新授予这些个人。
-允许用户使用 LinkedIn 连接工作或学校帐户 | 将此选项设置为“否”可阻止用户使用其 LinkedIn 帐户连接其工作或学校帐户。 有关详细信息，请参阅[LinkedIn帐户连接数据共享和同意](https://docs.microsoft.com/azure/active-directory/users-groups-roles/linkedin-user-consent)。
+允许用户使用 LinkedIn 连接工作或学校帐户 | 将此选项设置为“否”可阻止用户使用其 LinkedIn 帐户连接其工作或学校帐户。 有关详细信息，请参阅[LinkedIn 帐户连接数据共享和同意](https://docs.microsoft.com/azure/active-directory/users-groups-roles/linkedin-user-consent)。
 能够创建安全组 | 将此选项设置为“否”可阻止用户创建安全组。 全局管理员和用户管理员仍可创建安全组。 有关操作方法，请参阅[用于配置组设置的 Azure Active Directory cmdlet](../users-groups-roles/groups-settings-cmdlets.md)。
 能够创建 Office 365 组 | 将此选项设置为“否”可阻止用户创建 Office 365 组。 将此选项设置为“某些”可让选定的一组用户创建 Office 365 组。 全局管理员和用户管理员仍可创建 Office 365 组。 有关操作方法，请参阅[用于配置组设置的 Azure Active Directory cmdlet](../users-groups-roles/groups-settings-cmdlets.md)。
-限制访问 Azure AD 管理门户 | 将此选项设置为"否"允许非管理员使用 Azure AD 管理门户读取和管理 Azure AD 资源。 是 限制所有非管理员访问管理门户中的任何 Azure AD 数据。 需要注意：此设置不会限制使用 PowerShell 或其他客户端（如 Visual Studio）访问 Azure AD 数据。 设置为"是"时，授予特定非管理员用户使用 Azure AD 管理门户分配任何管理角色（如目录阅读器角色）的权限。 此角色允许读取基本目录信息，而成员用户默认拥有这些信息（来宾和服务主体没有）。
+限制访问 Azure AD 管理门户 | 如果将此选项设置为 "否"，则不允许非管理员使用 Azure AD 管理门户来读取和管理 Azure AD 资源。 "是" 会限制所有非管理员访问管理门户中的任何 Azure AD 数据。 重要说明：此设置不会限制使用 PowerShell 或其他客户端（如 Visual Studio）对 Azure AD 数据的访问。 当设置为 "是" 时，若要向特定的非管理员用户授予使用 Azure AD 管理门户的能力，请分配任何管理角色，如目录读取者角色。 此角色允许读取基本目录信息，默认情况下，用户具有哪些成员（来宾和服务主体不具有）。
 能够读取其他用户 | 此设置仅可在 PowerShell 中使用。 将此标记设置为 $false 可阻止所有非管理员用户从目录读取用户信息。 此标记不会阻止读取其他 Microsoft 服务（如 Exchange Online）中的用户信息。 此设置适用于特殊情况，因此不建议将此标记设置为 $false。
 
 ## <a name="object-ownership"></a>对象所有权
@@ -62,7 +62,7 @@ Subscriptions | 读取所有订阅<br>启用服务计划成员 | 无权限
 当某个用户注册某个应用程序时，该用户将自动添加为该应用程序的所有者。 所有者可以管理应用程序的元数据，例如应用请求的名称和权限。 他们还可以管理应用程序的特定于租户的配置，例如 SSO 配置和用户分配。 所有者还可以添加或删除其他所有者。 与全局管理员不同，所有者只能管理他们拥有的应用程序。
 
 ### <a name="enterprise-application-owner-permissions"></a>企业应用程序所有者权限
-当某个用户添加新的企业应用程序时，系统会将该用户自动添加为所有者。 作为所有者，他们可以管理应用程序的租户特定配置，如 SSO 配置、预配和用户分配。 所有者还可以添加或删除其他所有者。 与全局管理员不同，所有者只能管理他们拥有的应用程序。
+当某个用户添加新的企业应用程序时，系统会将该用户自动添加为所有者。 作为所有者，他们可以管理应用程序的特定于租户的配置，例如 SSO 配置、设置和用户分配。 所有者还可以添加或删除其他所有者。 与全局管理员不同，所有者只能管理他们拥有的应用程序。
 
 ### <a name="group-owner-permissions"></a>组所有者权限
 当某个用户创建某个组时，该用户将自动添加为该组的所有者。 所有者可以管理组的属性（例如名称），以及管理组成员身份。 所有者还可以添加或删除其他所有者。 与全局管理员和用户管理员不同，所有者只能管理他们拥有的组。 若要分配组所有者，请参阅[管理组的所有者](active-directory-accessmanagement-managing-group-owners.md)。

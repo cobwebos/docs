@@ -14,10 +14,10 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9f4a961e601949689db89f8819f0a1fe1c5a7b3a
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80875786"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>有关 Azure Active Directory 的常见问题
@@ -27,17 +27,17 @@ Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决�
 
 
 ## <a name="access-azure-and-azure-active-directory"></a>访问 Azure 和 Azure Active Directory
-**问：为什么在尝试在 Azure 门户中访问 Azure AD 时，会获得"未找到订阅"？**
+**问：当我尝试访问 Azure 门户中的 Azure AD 时，为什么会收到 "找不到订阅"？**
 
-**答：** 若要访问 Azure 门户，每个用户都需要 Azure 订阅的权限。 如果没有付费 Office 365 或 Azure AD 订阅，则需要激活免费的 Azure[帐户](https://azure.microsoft.com/free/
+**答：** 若要访问 Azure 门户，每个用户都需要 Azure 订阅的权限。 如果你没有付费 Office 365 或 Azure AD 订阅，你将需要激活免费的[Azure 帐户](https://azure.microsoft.com/free/
 )或付费订阅。
 
-有关详细信息，请参阅：
+有关详细信息，请参见:
 
 * [Azure 订阅与 Azure Active Directory 的关联方式](active-directory-how-subscriptions-associated-directory.md)
 
 ---
-**问：Azure AD、Office 365 和 Azure 之间的关系是什么？**
+**问： Azure AD、Office 365 和 Azure 之间的关系是什么？**
 
 **答：** Azure AD 为所有 Web 服务提供通用的标识和访问功能。 不管使用的是 Office 365、Microsoft Azure、Intune 还是其他服务，都是在使用 Azure AD 为上述所有服务启用登录和访问管理。
 
@@ -76,21 +76,21 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 
 **答：** 可以使用 Azure AD Connect 将本地目录连接到 Azure AD。
 
-有关详细信息，请参阅[将本地标识与 Azure 活动目录集成](../hybrid/whatis-hybrid-identity.md)。
+有关详细信息，请参阅[将本地标识与 Azure Active Directory 集成](../hybrid/whatis-hybrid-identity.md)。
 
 ---
 **问：如何设置本地目录与云应用程序之间的 SSO？**
 
 **答：** 只需在本地目录与 Azure AD 之间设置单一登录 (SSO)。 只要通过 Azure AD 访问云应用程序，该服务就会自动让用户使用其本地凭据正确进行身份验证。
 
-通过联合解决方案（如 Active 目录联合服务 （AD FS））或配置密码哈希同步，可以轻松地从本地实现 SSO。通过使用 Azure AD 连接配置向导，可以轻松地部署这两个选项。
+可以通过联合身份验证解决方案（例如 Active Directory 联合身份验证服务（AD FS））或通过配置密码哈希同步，轻松实现本地从本地实现 SSO。您可以使用 Azure AD Connect 配置向导轻松部署这两个选项。
 
-有关详细信息，请参阅[将本地标识与 Azure 活动目录集成](../hybrid/whatis-hybrid-identity.md)。
+有关详细信息，请参阅[将本地标识与 Azure Active Directory 集成](../hybrid/whatis-hybrid-identity.md)。
 
 ---
 **问：Azure AD 是否为组织中的用户提供自助服务门户？**
 
-**答：** 是的，Azure AD 提供 [Azure AD 访问面板](https://myapps.microsoft.com) ，方便用户使用自助服务以及进行应用程序访问。 如果您是 Office 365 客户，则可以在[Office 365 门户](https://portal.office.com)中找到许多相同的功能。
+**答：** 是的，Azure AD 提供 [Azure AD 访问面板](https://myapps.microsoft.com) ，方便用户使用自助服务以及进行应用程序访问。 如果你是 Office 365 客户，可以在[office 365 门户](https://portal.office.com)中找到许多相同的功能。
 
 有关详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
@@ -103,7 +103,7 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 
 ---
 ## <a name="password-management"></a>密码管理
-**问：是否可以在没有密码同步的情况下使用 Azure AD 密码回写？（在这种情况下，是否可以使用 Azure AD 自助服务密码重置 （SSPR） 进行密码写回，而不是将密码存储在云中？）**
+**问：是否可以在不使用密码同步的情况下使用 Azure AD 密码写回？（在这种情况下，是否可以使用密码写回 Azure AD 自助服务密码重置（SSPR）而不将密码存储在云中？）**
 
 **答：** 无需将 Active Directory 密码同步到 Azure AD 即可启用写回。 在联合环境中，Azure AD 单一登录 (SSO) 依赖本地目录对用户进行身份验证。 在这种情况下，并不需要在 Azure AD 中跟踪本地密码。
 
@@ -123,7 +123,7 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 ---
 **问：如果我在尝试更改 Office 365/Azure AD 密码时忘记了现有的密码，该怎么办？**
 
-**答：** 对于此类情况，有几个选项。  在可行的情况下，使用自助服务密码重置 (SSPR)。  SSPR 是否适用取决于其配置方式。  有关详细信息，请参阅[密码重置门户的工作原理](../authentication/howto-sspr-deployment.md)。
+**答：** 对于这种情况，有几个选项可供选择。  在可行的情况下，使用自助服务密码重置 (SSPR)。  SSPR 是否适用取决于其配置方式。  有关详细信息，请参阅[密码重置门户的工作](../authentication/howto-sspr-deployment.md)原理。
 
 对于 Office 365 用户，管理员可以使用 [Reset user passwords](https://support.office.com/article/Admins-Reset-user-passwords-7A5D073B-7FAE-4AA5-8F96-9ECD041ABA9C?ui=en-US&rs=en-US&ad=US)（重置用户密码）中概述的步骤重置密码。
 
@@ -139,9 +139,9 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 
 我们使用更复杂的策略来锁定帐户。  这基于请求的 IP 和输入的密码。 锁定的持续时间也会根据存在攻击的可能性而延长。  
 
-**问：某些（常见）密码被拒绝，邮件"此密码已多次使用"，这是否是指当前活动目录中使用的密码？**
+**问：某些（常见）密码拒绝了消息 "此密码已被多次使用"，这是否是指当前 active directory 中使用的密码？**
 
-这是指全局通用的密码，例如"密码"和"123456"的任何变体。
+这是指全局通用的密码，例如 "Password" 和 "123456" 的任何变体。
 
 **问：B2C 租户中就会阻止来自可疑来源（僵尸网络、Tor 终结点）的登录请求还是需要使用基本或高级版租户才能阻止？**
 
@@ -158,9 +158,9 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 ---
 **问：如果 Azure AD 市场中没有我需要的应用程序怎么办？**
 
-**答：** 使用 Azure AD Premium，可以添加和配置所需的任何应用程序。 根据应用程序的功能和首选项，您可以配置 SSO 和自动预配。  
+**答：** 使用 Azure AD Premium，可以添加和配置所需的任何应用程序。 根据应用程序的功能和首选项，可以配置 SSO 和自动预配。  
 
-有关详细信息，请参阅：
+有关详细信息，请参见:
 
 * [针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
 * [使用 SCIM 启用从 Azure Active Directory 到应用程序的用户和组自动预配](../app-provisioning/use-scim-to-provision-users-and-groups.md)
@@ -182,14 +182,14 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 
 **答：** Azure AD 支持使用多种标准化协议（例如 SAML 2.0、OpenID Connect、OAuth 2.0 和 WS-Federation）进行身份验证和授权。 对于仅支持基于窗体的身份验证的应用程序，Azure AD 还支持密码保管和自动化登录功能。  
 
-有关详细信息，请参阅：
+有关详细信息，请参见:
 
 * [Azure AD 的身份验证方案](../develop/authentication-scenarios.md)
 * [Active Directory 身份验证协议](https://msdn.microsoft.com/library/azure/dn151124.aspx)
 * [Azure AD 中应用程序的单一登录](../manage-apps/what-is-single-sign-on.md)
 
 ---
-**问：是否可以添加在本地运行的应用程序？**
+**问：我是否能添加我在本地运行的应用程序？**
 
 **答：** Azure AD 应用程序代理可让你轻松安全地访问所选的本地 Web 应用程序。 可以像访问 Azure AD 中的软件即服务 (SaaS) 应用一样访问这些应用程序。 不需要设置 VPN 或更改网络基础结构。  
 
@@ -198,7 +198,7 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 ---
 **问：如何要求访问特定应用程序的用户进行多重身份验证？**
 
-**答：** 使用 Azure AD 条件访问，可以为每个应用程序分配唯一的访问策略。 可以在策略中要求用户始终进行多重身份验证，或者在未连接到本地网络时才进行。  
+**答：** 使用 Azure AD 条件性访问，你可以为每个应用程序分配唯一的访问策略。 可以在策略中要求用户始终进行多重身份验证，或者在未连接到本地网络时才进行。  
 
 有关详细信息，请参阅[保护对 Office 365 和其他连接到 Azure Active Directory 的应用的访问](../conditional-access/overview.md)。
 
@@ -207,9 +207,9 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 
 **答：** 使用 Azure AD 可以在许多流行的云 (SaaS) 应用中自动创建、维护和删除用户标识。
 
-有关详细信息，请参阅使用[Azure 活动目录 自动预配和取消预配到 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
+有关详细信息，请参阅[通过 Azure Active Directory 自动执行用户预配和取消预配到 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
 
 ---
 **问：是否可以通过 Azure AD 设置安全的 LDAP 连接？**
 
-**答：** 不。 Azure AD 不支持轻量级目录访问协议 （LDAP） 协议或直接安全 LDAP。 但是，可以通过 Azure 网络在 Azure AD 租户上启用 Azure AD 域服务 （Azure AD DS） 实例，并正确配置网络安全组，以实现 LDAP 连接。 有关详细信息，请参阅为[Azure 活动目录域服务托管域配置安全 LDAP](../../active-directory-domain-services/tutorial-configure-ldaps.md)
+**答：** 不。 Azure AD 不支持轻型目录访问协议（LDAP）协议或直接安全 LDAP。 但是，可以通过 Azure 网络通过正确配置的网络安全组在 Azure AD 租户上启用 Azure AD 域服务（Azure AD DS）实例，以实现 LDAP 连接。 有关详细信息，请参阅为[Azure Active Directory 域服务托管域配置安全 LDAP](../../active-directory-domain-services/tutorial-configure-ldaps.md)

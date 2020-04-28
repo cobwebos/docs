@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ea14e02920cf7ba6c5e0a7b415cb92137c915576
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80519706"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>对应用程序执行许可时发生的意外错误
@@ -32,12 +32,12 @@ ms.locfileid: "80519706"
 对于用户而言，必须满足一些条件才能对应用程序所需的权限进行许可。 如果不满足这些条件，可能会发生以下错误。
 
 ## <a name="requesting-not-authorized-permissions-error"></a>请求未授予的权限错误
-* **AADSTS90093：** &lt;clientAppDisplayName&gt; 正在请求一个或多个无权授予的权限。 请与管理员联系，他/她可代表你对此应用程序进行许可。
-* **AADSTS90094：**&lt;客户端AppDisplayName&gt;需要权限才能访问组织中只有管理员才能授予的资源。 请让管理员授予访问此应用的权限，否则你将无法使用该应用。
+* **AADSTS90093：** &lt;clientAppDisplayName&gt; 正在请求一个或多个你无权授予的权限。 请与管理员联系，他/她可代表你对此应用程序进行许可。
+* **AADSTS90094：** &lt;clientAppDisplayName&gt;需要权限才能访问组织中只有管理员才能授予的资源。 请让管理员授予访问此应用的权限，否则你将无法使用该应用。
 
 当非公司管理员用户尝试使用的应用程序请求只有管理员才能授予的权限时，会发生此错误。 此错误可通过管理员代表其组织授予访问此应用程序的权限进行解决。
 
-当由于 Microsoft 检测到权限请求存在风险而阻止用户同意应用程序时，也可能发生此错误。 在这种情况下，还将记录审核事件，并记录"应用程序管理"类别、"同意应用程序"的活动类型和"检测到的 Risky 应用程序"的状态原因。
+当阻止用户同意应用程序时，也可能发生此错误，因为 Microsoft 检测到权限请求是危险的。 在这种情况下，还将记录审核事件，其中包含 "ApplicationManagement" 类别、"同意应用程序" 活动类型和 "检测到有风险的应用程序" 的状态描述。
 
 ## <a name="policy-prevents-granting-permissions-error"></a>策略阻止权限授予错误
 * **AADSTS90093：**&lt;tenantDisplayName&gt; 管理员设置的策略阻止授予 &lt;应用名称&gt; 请求的权限。 请与 &lt;tenantDisplayName&gt; 管理员联系，他/她可代表你授予对此应用的权限。

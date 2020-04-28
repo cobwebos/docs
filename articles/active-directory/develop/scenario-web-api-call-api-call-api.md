@@ -12,10 +12,10 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 6bbd24978891efd147b0c317c1746d13961ce5e9
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885083"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>调用 Web API 的 Web API：调用 API
@@ -26,7 +26,7 @@ ms.locfileid: "80885083"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-以下代码继续示例代码，该代码显示在[调用 Web API 的 Web API 中：获取应用的令牌](scenario-web-api-call-api-acquire-token.md)。 该代码在 API 控制器的操作中调用。 它调用名为“todolist”** 的下游 API。
+以下代码继续演示[调用 Web API 的 Web API：获取应用的令牌](scenario-web-api-call-api-acquire-token.md)中显示的示例代码。 该代码在 API 控制器的操作中调用。 它调用名为“todolist”  的下游 API。
 
 获取令牌后，将其用作持有者令牌以调用下游 API。
 
@@ -58,7 +58,7 @@ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + 
 
 # <a name="java"></a>[Java](#tab/java)
 
-以下代码继续示例代码，该代码显示在[调用 Web API 的 Web API 中：获取应用的令牌](scenario-web-api-call-api-acquire-token.md)。 该代码在 API 控制器的操作中调用。 它调用下游 API MS Graph。
+以下代码继续演示[调用 Web API 的 Web API：获取应用的令牌](scenario-web-api-call-api-acquire-token.md)中显示的示例代码。 该代码在 API 控制器的操作中调用。 它调用下游 API MS Graph。
 
 获取令牌后，将其用作持有者令牌以调用下游 API。
 
@@ -81,11 +81,11 @@ private String callMicrosoftGraphMeEndpoint(String accessToken){
 ```
 
 # <a name="python"></a>[Python](#tab/python)
-我们尚未编写在 MSAL Python 中演示此流的示例。
+使用 MSAL Python 演示此流的示例尚不可用。
 
 ---
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [调用 Web API 的 Web API：迁移到生产](scenario-web-api-call-api-production.md)
+> [调用 Web API 的 Web API：转移到生产环境](scenario-web-api-call-api-production.md)

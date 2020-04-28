@@ -12,10 +12,10 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 508101ad615dd96559b1c68a61be7c08772545db
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885474"
 ---
 # <a name="daemon-app-that-calls-web-apis---app-registration"></a>调用 Web API 的守护程序应用 - 应用注册
@@ -31,18 +31,18 @@ ms.locfileid: "80885474"
 
 ## <a name="authentication---no-reply-uri-needed"></a>身份验证 - 不需回复 URI
 
-如果机密客户端应用程序仅** 使用客户端凭据流，则不需注册回复 URI。 应用程序配置或构造不需要它。 客户端凭据流不使用它。
+如果机密客户端应用程序仅  使用客户端凭据流，则不需注册回复 URI。 应用程序配置或构造不需要它。 客户端凭据流不使用它。
 
 ## <a name="api-permissions---app-permissions-and-admin-consent"></a>API 权限 - 应用权限和管理员许可
 
-守护程序应用程序只能请求针对 API 的应用程序权限（非委托权限）。 在应用程序注册的“API 权限”页上，**** 在选择“添加权限”并选择**** API 系列以后，请在选择“应用程序权限”后再选择权限****。
+守护程序应用程序只能请求针对 API 的应用程序权限（非委托权限）。 在应用程序注册的“API 权限”页上，  在选择“添加权限”并选择  API 系列以后，请在选择“应用程序权限”后再选择权限  。
 
 ![应用权限和管理员许可](media/scenario-daemon-app/app-permissions-and-admin-consent.png)
 
 > [!NOTE]
-> 要调用的 Web API 需要定义*应用程序权限（应用角色）*，而不是委托的权限。 有关如何公开此类 API 的详细信息，请参阅受保护的[Web API：应用注册 - 当守护进程应用调用 Web API 时](scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app)。
+> 要调用的 Web API 需要定义*应用程序权限（应用角色）* ，而不是委托的权限。 有关如何公开此类 API 的详细信息，请参阅[受保护的 Web API：应用注册 - 当守护程序应用调用 Web API 时](scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app)。
 
-守护程序应用程序需要获得租户管理员的预先许可，然后该应用程序才能调用 Web API。 租户管理员在同一“API 权限”页中提供此许可，**** 只需选择“向我们的组织授予管理员许可”即可******
+守护程序应用程序需要获得租户管理员的预先许可，然后该应用程序才能调用 Web API。 租户管理员在同一“API 权限”页中提供此许可，  只需选择“向我们的组织授予管理员许可”即可 
 
 如果你是构建多租户应用程序的 ISV，则应阅读[部署 - 多租户守护程序应用的示例](scenario-daemon-production.md#deployment---multitenant-daemon-apps)部分。
 

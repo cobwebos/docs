@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/17/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 64eb19e43223c1953a7244f8fd29c48d085f1e96
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2fa2e40ba2a7fe84b6df57bfb711d01332b8f523
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80116954"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81274947"
 ---
 <a name="HOLTop"></a>
 
@@ -44,7 +44,7 @@ ms.locfileid: "80116954"
 
 #### <a name="version-30-preview"></a>[版本 3.0-preview](#tab/version-3)
 
-右键单击**解决方案资源管理器**中的解决方案，然后选择“管理 NuGet 包”  ，以便安装客户端库。 在打开的包管理器中，选择“浏览”  ，选中“包括预发行版”  并搜索 `Azure.AI.TextAnalytics`。 选择版本 `1.0.0-preview.3`，然后选择“安装”  。 也可使用[包管理器控制台](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)。
+右键单击**解决方案资源管理器**中的解决方案，然后选择“管理 NuGet 包”  ，以便安装客户端库。 在打开的包管理器中，选择“浏览”  ，选中“包括预发行版”  并搜索 `Azure.AI.TextAnalytics`。 选择版本 `1.0.0-preview.4`，然后选择“安装”  。 也可使用[包管理器控制台](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)。
 
 > [!TIP]
 > 想要立即查看整个快速入门代码文件？ 可以[在 GitHub 上](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/TextAnalytics/program.cs)找到它，其中包含此快速入门中的代码示例。 
@@ -63,6 +63,7 @@ ms.locfileid: "80116954"
 打开 *program.cs* 文件并添加以下 `using` 指令：
 
 ```csharp
+using Azure;
 using System;
 using System.Globalization;
 using Azure.AI.TextAnalytics;
@@ -73,7 +74,7 @@ using Azure.AI.TextAnalytics;
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
 ```csharp
-private static readonly TextAnalyticsApiKeyCredential credentials = new TextAnalyticsApiKeyCredential("<replace-with-your-text-analytics-key-here>");
+private static readonly AzureKeyCredential credentials = new AzureKeyCredential("<replace-with-your-text-analytics-key-here>");
 private static readonly Uri endpoint = new Uri("<replace-with-your-text-analytics-endpoint-here>");
 ```
 
@@ -87,7 +88,6 @@ static void Main(string[] args)
     SentimentAnalysisExample(client);
     LanguageDetectionExample(client);
     EntityRecognitionExample(client);
-    EntityPIIExample(client);
     EntityLinkingExample(client);
     KeyPhraseExtractionExample(client);
 
@@ -121,14 +121,13 @@ private static readonly string endpoint = "<replace-with-your-text-analytics-end
 
 文本分析客户端是一个 `TextAnalyticsClient` 对象，该对象使用你的密钥在 Azure 中进行身份验证，并提供用于接受文本（单个字符串或批）的函数。 可以同步方式或异步方式将文本发送到 API。 响应对象包含发送的每个文档的分析信息。 
 
-如果使用的是版本 `3.0-preview`，则可以使用可选的 `TextAnalyticsClientOptions` 实例，通过各种默认设置（例如默认语言或国家/地区提示）来初始化客户端。 还可以使用 Azure Active Directory 令牌进行身份验证。 
+如果使用的是服务的 `3.0-preview` 版本，则可使用可选的 `TextAnalyticsClientOptions` 实例，通过各种默认设置（例如默认语言或国家/地区提示）来初始化客户端。 还可以使用 Azure Active Directory 令牌进行身份验证。 
 
 ## <a name="code-examples"></a>代码示例
 
 * [情绪分析](#sentiment-analysis)
 * [语言检测](#language-detection)
 * [命名实体识别](#named-entity-recognition-ner)
-* [检测个人信息](#detect-personal-information)
 * [实体链接](#entity-linking)
 * [关键短语提取](#key-phrase-extraction)
 
@@ -264,7 +263,6 @@ Language: English
 
 > [!NOTE]
 > 版本 `3.0-preview` 中的新增功能：
-> * 实体识别现在包括检测文本中的个人信息的功能。
 > * 实体关联现在独立于实体识别。
 
 
@@ -293,33 +291,6 @@ Named Entities:
         Text: last week,        Category: DateTime,     Sub-Category: DateRange
                 Length: 9,      Score: 0.80
 ```
-
-## <a name="detect-personal-information"></a>检测个人信息
-
-创建一个名为 `EntityPIIExample()` 的新函数，该函数接受你之前创建的客户端，调用其 `RecognizePiiEntities()` 函数并循环访问结果。 与前面的函数类似，返回的 `Response<IReadOnlyCollection<CategorizedEntity>>` 对象将包含检测到的实体的列表。 如果发生错误，则会引发 `RequestFailedException`。
-
-```csharp
-static void EntityPIIExample(TextAnalyticsClient client)
-{
-    string inputText = "Insurance policy for SSN on file 123-12-1234 is here by approved.";
-    var response = client.RecognizePiiEntities(inputText);
-    Console.WriteLine("Personally Identifiable Information Entities:");
-    foreach (var entity in response.Value)
-    {
-        Console.WriteLine($"\tText: {entity.Text},\tCategory: {entity.Category},\tSub-Category: {entity.SubCategory}");
-        Console.WriteLine($"\t\tLength: {entity.GraphemeLength},\tScore: {entity.ConfidenceScore:F2}\n");
-    }
-}
-```
-
-### <a name="output"></a>输出
-
-```console
-Personally Identifiable Information Entities:
-        Text: 123-12-1234,      Category: U.S. Social Security Number (SSN),    Sub-Category:
-                Length: 11,     Score: 0.85
-```
-
 
 ## <a name="entity-linking"></a>实体链接
 
