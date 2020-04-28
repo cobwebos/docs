@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: e8f6c0454497b1cb1d62417e566e9662469c56d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74113000"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>如何使用 Azure 认知搜索从 Azure 表存储索引表
@@ -25,7 +25,7 @@ ms.locfileid: "74113000"
 可以使用以下资源设置 Azure 表存储索引器：
 
 * [Azure 门户](https://ms.portal.azure.com)
-* Azure 认知搜索[REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
+* Azure 认知搜索 [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * Azure 认知搜索 [.NET SDK](https://aka.ms/search-sdk)
 
 在这里，我们使用 REST API 演示流。 
@@ -67,9 +67,9 @@ ms.locfileid: "74113000"
 
 可通过以下一种方式提供表的凭据： 
 
-- **完全访问存储帐户连接字符串** `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` ：您可以通过访问**存储帐户边栏选项卡** > **设置** > **键**（用于经典存储帐户）或**设置** > **访问密钥**（用于 Azure 资源管理器存储帐户）从 Azure 门户获取连接字符串。
-- **存储帐户共享访问签名连接字符串**：`TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl`共享访问签名应具有容器（本例中的表）和对象（表行）的列表和读取权限。
--  **表共享访问签名**：`ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r`共享访问签名应具有表上的查询（读取）权限。
+- **完全访问存储帐户连接字符串**：`DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` 可通过转到“存储帐户”边栏选项卡  > “设置” > “密钥”（适用于经典存储帐户）或“设置” > “访问密钥”（适用于 Azure 资源管理器存储帐户），从 Azure 门户获取连接字符串      。
+- **存储帐户共享访问签名连接字符串**：`TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` 共享访问签名应具有容器（本例中为表）和对象（表行）的列表和读取权限。
+-  **表共享访问签名**：`ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` 共享访问签名应具有表的查询（读取）权限。
 
 有关存储共享访问签名的详细信息，请参阅[使用共享访问签名](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
 
@@ -111,7 +111,7 @@ ms.locfileid: "74113000"
       "schedule" : { "interval" : "PT2H" }
     }
 
-此索引器每两小时运行一次。 （计划间隔设置为"PT2H"。要每 30 分钟运行一次索引器，将间隔设置为"PT30M"。 支持的最短间隔为 5 分钟。 计划是可选的；如果省略，则索引器在创建后只运行一次。 但是，可以随时根据需要运行索引器。   
+此索引器每两小时运行一次。 （已将计划间隔设置为“PT2H”）。若要每隔 30 分钟运行一次索引器，可将间隔设置为“PT30M”。 支持的最短间隔为 5 分钟。 计划是可选的；如果省略，则索引器在创建后只运行一次。 但是，可以随时根据需要运行索引器。   
 
 有关创建索引器 API 的详细信息，请参阅[创建索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
 
@@ -166,5 +166,5 @@ ms.locfileid: "74113000"
     - 借助此方法，如果需要触发完整的索引重编制，除了重置索引器外还需要重置数据源查询。 
 
 
-## <a name="help-us-make-azure-cognitive-search-better"></a>帮助我们改进 Azure 认知搜索
+## <a name="help-us-make-azure-cognitive-search-better"></a>帮助我们改善 Azure 认知搜索
 如果有功能请求或改进建议，请在我们的 [UserVoice 站点](https://feedback.azure.com/forums/263029-azure-search/)上提交。

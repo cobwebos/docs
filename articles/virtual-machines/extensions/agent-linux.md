@@ -16,10 +16,10 @@ ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5f22fbd77069488e7aaf490f93f42cde747444a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74073852"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>了解和使用 Azure Linux 代理
@@ -42,7 +42,7 @@ Microsoft Azure Linux 代理 (waagent) 可以管理 Linux 与 FreeBSD 预配，�
   * 资源磁盘管理
   * 格式化并安装资源磁盘
   * 配置交换空间
-* **网络连接**
+* **网络**
   
   * 管理路由以提高与平台 DHCP 服务器的兼容性
   * 确保网络接口名称的稳定性
@@ -60,7 +60,7 @@ Microsoft Azure Linux 代理 (waagent) 可以管理 Linux 与 FreeBSD 预配，�
 * **VM 扩展**
   
   * 将 Microsoft 和合作伙伴授权的组件注入 Linux VM (IaaS)，以便实现软件和配置的自动化
-  * VM 扩展引用实现[https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
+  * [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions) 上的 VM 扩展参考实现
 
 ## <a name="communication"></a>通信
 从平台到代理的信息流通过两个通道进行：
@@ -72,7 +72,7 @@ Microsoft Azure Linux 代理 (waagent) 可以管理 Linux 与 FreeBSD 预配，�
 下列系统已经过测试并确认兼容 Azure Linux 代理：
 
 > [!NOTE]
-> 此列表可能与 Microsoft Azure 平台上受支持系统的官方列表不同，如下所示：[https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
+> 此列表可能与 Microsoft Azure 平台上受支持系统的官方列表有所不同，如下所述：[https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
 > 
 > 
 
@@ -131,7 +131,7 @@ Linux 代理的正常运行依赖一些系统程序包：
 * daemon：将 waagent 作为 daemon 运行以管理与平台的交互。 在 waagent init 脚本中为 waagent 指定此参数。
 * 开始：将 waagent 作为后台进程运行
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 配置文件 (/etc/waagent.conf) 可控制 waagent 的操作。 下面显示了示例配置文件：
 
     ```
@@ -243,14 +243,14 @@ Default: 10
 ```
 生成密码哈希时使用的随机 salt 长度。
 
-**资源磁盘格式：**  
+**Resourcedisk.filesystem：**  
 ```
 Type: Boolean  
 Default: y
 ```
 如果设置此参数，则当“ResourceDisk.Filesystem”中用户请求的 filesystem 类型是“ntfs”之外的任何值时，平台提供的资源磁盘通过 waagent 进行格式化和安装。 在磁盘上提供类型 Linux (83) 的单个分区。 如果可以成功安装此分区，不会对其进行格式化。
 
-**资源磁盘.文件系统：**  
+**Resourcedisk.filesystem：**  
 ```
 Type: String  
 Default: ext4
@@ -337,12 +337,12 @@ Ubuntu 云映像利用 [cloud-init](https://launchpad.net/ubuntu/+source/cloud-i
   
   * **ResourceDisk.Format**
   * **ResourceDisk.Filesystem**
-  * **资源磁盘.安装点**
-  * **资源磁盘.启用交换**
-  * **资源磁盘.交换大小MB**
+  * **Resourcedisk.filesystem**
+  * **Resourcedisk.filesystem. Resourcedisk.enableswap**
+  * **Resourcedisk.filesystem. Resourcedisk.swapsizemb**
 
 * 有关详细信息，请参阅以下资源来配置资源磁盘装入点，并在预配期间交换 Ubuntu 云映像上的空间：
   
   * [Ubuntu Wiki：配置交换分区](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
-  * [将自定义数据注入 Azure 虚拟机](../windows/classic/inject-custom-data.md)
+  * [将自定义数据注入到 Azure 虚拟机](../windows/classic/inject-custom-data.md)
 

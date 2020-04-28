@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: zhshang
 ms.openlocfilehash: 43d703312cbc1fc067a2d51d5623ed028ba01405
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74158160"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>如何使用多个实例扩展 SignalR 服务？
@@ -215,17 +215,17 @@ app.MapAzureSignalR(GetType().FullName, hub, options => {
 
 ## <a name="configuration-in-cross-region-scenarios"></a>跨区域方案中的配置
 
-`ServiceEndpoint` 对象包含值为 `primary` 或 `secondary` 的 `EndpointType` 属性。
+`ServiceEndpoint` 对象包含值为 `EndpointType` 或 `primary` 的 `secondary` 属性。
 
 `primary` 终结点是接收客户端流量的首选终结点，我们认为其网络连接更可靠；`secondary` 终结点的网络连接被认为较不可靠，仅用于接收从服务器到客户端的流量（例如广播消息），而不用于接收客户端到服务器的流量。
 
-在跨区域案例中，网络可能不稳定。 对于位于*美国东部的*一个应用服务器，位于*美国东部*同一区域的 SignalR 服务终结点可以配置为`primary`和终结点在标记为`secondary`的其他地区。 在此配置中，其他地区的服务终结点可以**接收**来自此*东美国*应用服务器的消息，但不会将**跨区域**客户端路由到此应用服务器。 下图显示了体系结构：
+在跨区域案例中，网络可能不稳定。 对于*美国东部*的一个应用服务器，位于同一*美国东部*区域的 SignalR 服务终结点可以配置为`primary` ，其他区域中标记为`secondary`的终结点。 在此配置中，其他区域中的服务终结点可以从*美国东部*应用服务器**接收**消息，但将不会向此应用服务器路由**跨区域**的客户端。 下图显示了体系结构：
 
 ![跨地域基础结构](./media/signalr-howto-scale-multi-instances/cross_geo_infra.png)
 
-当客户端尝试使用默认路由器通过 `/negotiate` 来与应用服务器协商时，SDK 会从可用的 `primary` 终结点集内**随机选择**一个终结点。 当主终结点不可用时，SDK 会从所有可用的 `secondary` 终结点中**随机选择**。 当服务器与服务终结点之间的连接处于活动状态时，终结点将标记为**可用**。
+当客户端尝试使用默认路由器通过 `/negotiate` 来与应用服务器协商时，SDK 会从可用的  **终结点集内**随机选择`primary`一个终结点。 当主终结点不可用时，SDK 会从所有可用的  **终结点中**随机选择`secondary`。 当服务器与服务终结点之间的连接处于活动状态时，终结点将标记为**可用**。
 
-在跨区域方案中，当客户端尝试`/negotiate`使用托管*在美国东部*的应用服务器时，默认情况下，它始终返回位于同一区域`primary`中的终结点。 当所有*东美国*终结点不可用时，客户端将重定向到其他区域中的终结点。 以下故障转移部分详细介绍了该方案。
+在跨区域方案中，当客户端尝试`/negotiate`使用*美国东部*托管的应用程序服务器时，默认情况下，它`primary`始终返回位于同一区域中的终结点。 当所有 "*美国东部*" 终结点都不可用时，客户端将重定向到其他区域中的终结点。 以下故障转移部分详细介绍了该方案。
 
 ![正常协商](./media/signalr-howto-scale-multi-instances/normal_negotiate.png)
 

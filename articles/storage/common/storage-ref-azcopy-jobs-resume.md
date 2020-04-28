@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 3ee7879475801660b5200dddca88a0a81b2b6b9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74034147"
 ---
 # <a name="azcopy-jobs-resume"></a>azcopy jobs resume
@@ -34,21 +34,21 @@ azcopy jobs resume [jobID] [flags]
 
 ## <a name="options"></a>选项
 
-|选项|描述|
+|选项|说明|
 |--|--|
 |--destination-sas 字符串|给定 JobId 的目标的目标 SAS。|
-|--exclude 字符串|筛选器：在恢复作业时排除这些失败的转移。 文件应由 ";" 分隔。|
+|--exclude 字符串|筛选器：恢复作业时排除这些失败的传输。 文件应由 ";" 分隔。|
 |-h、--help|显示 resume 命令的帮助内容。|
 |--include 字符串|筛选器：恢复作业时仅包括这些失败的传输。 文件应由 ";" 分隔。|
 |--source-sas 字符串 |给定 JobId 的源的源 SAS。|
 
 ## <a name="options-inherited-from-parent-commands"></a>从父命令继承的选项
 
-|选项|描述|
+|选项|说明|
 |---|---|
 |--cap-mbps uint32|以兆位/秒为单位限制传输速率。 瞬间吞吐量可能与上限略有不同。 如果此选项设置为零，或者省略，则吞吐量不受限制。|
 |--output-type string|命令输出的格式。 选项包括：text、json。 默认值为“text”。|
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [azcopy jobs](storage-ref-azcopy-jobs.md)

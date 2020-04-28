@@ -1,6 +1,6 @@
 ---
-title: 关于 Azure 快速路由直接
-description: 本页提供快速路由直接的概述
+title: 关于 Azure ExpressRoute 直通
+description: 此页提供 ExpressRoute 直通的概述
 services: expressroute
 author: jaredr80
 ms.service: expressroute
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jaredro
 ms.openlocfilehash: f26fdd75e0a6c6228d329a8b9be4743072ae54c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74083601"
 ---
 # <a name="about-expressroute-direct"></a>关于 ExpressRoute Direct
@@ -24,9 +24,9 @@ ExpressRoute Direct 提供的主要功能包括但不限于：
 * 针对受监管和需要专用和独立连接的行业的物理隔离，例如：银行、政府和零售
 * 根据业务部门，细化控制线路分布
 
-## <a name="onboard-to-expressroute-direct"></a>登机到快速路由直接
+## <a name="onboard-to-expressroute-direct"></a>集成到 ExpressRoute 直接
 
-在使用 ExpressRoute Direct 之前，您必须首先注册订阅。 若要注册，请使用你的订阅 ID 向 <ExpressRouteDirect@microsoft.com> 发送一封电子邮件，其中包括以下详细信息：
+使用 ExpressRoute Direct 之前，必须先注册订阅。 若要注册，请使用你的订阅 ID 向 <ExpressRouteDirect@microsoft.com> 发送一封电子邮件，其中包括以下详细信息：
 
 * 需通过 **ExpressRoute Direct** 完成的方案
 * 位置首选项 - 请参阅[合作伙伴和对等互连位置](expressroute-locations-providers.md)，获取包含所有位置的完整列表
@@ -35,16 +35,16 @@ ExpressRoute Direct 提供的主要功能包括但不限于：
 
 ## <a name="expressroute-using-a-service-provider-and-expressroute-direct"></a>使用服务提供程序的 ExpressRoute，以及 ExpressRoute Direct
 
-| **使用服务提供程序的 ExpressRoute** | **快速路线直接** | 
+| **使用服务提供程序的 ExpressRoute** | **ExpressRoute 直接** | 
 | --- | --- |
-| 使用服务提供程序可以快速载入并连接到现有的基础结构 | 需要 100 Gbps/10 Gbps 基础架构和所有层的完全管理
+| 使用服务提供程序可以快速载入并连接到现有的基础结构 | 需要 100 Gbps/10 Gbps 基础结构和所有层的完全管理
 | 集成数百个提供程序，包括以太网和 MPLS | 直接/专用容量，适用于受管制行业和大规模数据引入 |
-| 从 50 Mbps 到 10 Gbps 的线路 SKU | 客户可在 100 Gbps ExpressRoute Direct 上选择以下电路 SKU 的组合： <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 Gbps</li><li>100 Gbps</li></ul> 客户可在 10 Gbps ExpressRoute Direct 上选择以下电路 SKU 的组合：<ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
-| 针对单租户优化 | 针对具有多个业务单位和多个工作环境的单租户进行了优化
+| 从 50 Mbps 到 10 Gbps 的线路 SKU | 客户可以在 100 Gbps ExpressRoute 直接上选择以下线路 Sku 的组合： <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 Gbps</li><li>100 Gbps</li></ul> 客户可在 10 Gbps ExpressRoute 直接上选择以下线路 Sku 的组合：<ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
+| 针对单租户优化 | 针对具有多个业务单位和多个工作环境的单个租户进行了优化
 
 ## <a name="expressroute-direct-circuits"></a>ExpressRoute Direct 线路
 
-使用 Microsoft Azure ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 使用 ExpressRoute，您可以建立与 Microsoft 云服务（如 Microsoft Azure 和 Office 365）的连接。
+使用 Microsoft Azure ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 通过 ExpressRoute，你可以与 Microsoft 云服务（如 Microsoft Azure 和 Office 365）建立连接。
 
 每个对等互连位置都可以访问 Microsoft 的全球网络，可以默认访问地缘政治区域中的任何区域，还可以访问使用高级线路的所有全球区域。  
 
@@ -52,28 +52,28 @@ ExpressRoute Direct 提供的主要功能包括但不限于：
 
 ## <a name="circuit-skus"></a>线路 SKU
 
-ExpressRoute Direct 支持将数据大规模引入到 Azure 存储和其他大数据服务中的方案。 100 Gbps ExpressRoute Direct 上的 ExpressRoute 电路现在也支持**40 Gbps**和**100 Gbps**电路 SKU。 物理端口对仅为**100 或 10 Gbps，** 可以有多个虚拟电路。 电路尺寸：
+ExpressRoute Direct 支持将数据大规模引入到 Azure 存储和其他大数据服务中的方案。 100 Gbps ExpressRoute 直通上的 ExpressRoute 线路现在还支持**40 gbps**和**100 Gbps 的 gbps**电路 sku。 物理端口对只为**100 或 10 Gbps** ，可以有多个虚拟线路。 线路大小：
 
-| **100 Gbps 快速路由直接** | **10 Gbps 快速路由直接** | 
+| **100 Gbps ExpressRoute 直接** | **10 Gbps ExpressRoute 直接** | 
 | --- | --- |
-| **订阅带宽**： 200 Gbps | **订阅带宽**： 20 Gbps |
+| **订阅的带宽**： 200 Gbps | **订阅的带宽**： 20 Gbps |
 | <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 Gbps</li><li>100 Gbps</li></ul> | <ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
 
 ## <a name="technical-requirements"></a>技术要求
 
-* 微软企业边缘路由器 （MSEE） 接口：
-    * 双 10 或 100 千兆以太网端口仅跨路由器对
+* Microsoft 企业边缘路由器（MSEE）接口：
+    * 仅限跨路由器对的双10或100千兆以太网端口
     * 单模式 LR 光纤连接
     * IPv4 和 IPv6
     * IP MTU 1500 字节
 
-* 交换机/路由器第 2 层/第 3 层连接：
-    * 必须支持 1 802.1Q （Dot1Q） 标签或两个标签 802.1Q （QinQ） 标签封装
-    * 醚型 = 0x8100
-    * 必须添加基于 Microsoft 指定的 VLAN ID 的外部 VLAN 标记 （STAG） -*仅适用于 QinQ*
-    * 每个端口和设备必须支持多个 BGP 会话 （VLAN）
-    * IPv4 和 IPv6 连接。 *对于 IPv6，不会创建额外的子接口。IPv6 地址将添加到现有的子接口*。 
-    * 可选：[双向转发检测 （BFD）](https://docs.microsoft.com/azure/expressroute/expressroute-bfd)支持，默认情况下在 ExpressRoute 电路上的所有专用对等互连上配置
+* 交换机/路由器第2层/第3层连接：
+    * 必须支持 1 802.1 Q （Dot1Q）标记或两个标记 802.1 Q （QinQ）标记封装
+    * Ethertype = 0x8100
+    * 必须基于 Microsoft 指定的 VLAN ID （*仅适用于 QinQ* ）添加外部 VLAN 标记（STAG）。
+    * 必须支持每个端口和设备多个 BGP 会话（Vlan）
+    * IPv4 和 IPv6 连接。 *对于 IPv6，将不会创建其他子接口。IPv6 地址将添加到现有子接口*。 
+    * 可选：[双向转发检测（BFD）](https://docs.microsoft.com/azure/expressroute/expressroute-bfd)支持，在 ExpressRoute 线路上的所有专用对等互连上默认配置
 
 ## <a name="vlan-tagging"></a>VLAN 标记
 
@@ -85,7 +85,7 @@ ExpressRoute Direct 同时支持 QinQ 和 Dot1Q VLAN 标记。
 
 ## <a name="workflow"></a>工作流
 
-[![工作流](./media/expressroute-erdirect-about/workflow1.png)](./media/expressroute-erdirect-about/workflow1.png#lightbox)
+[![workflow](./media/expressroute-erdirect-about/workflow1.png)](./media/expressroute-erdirect-about/workflow1.png#lightbox)
 
 ## <a name="sla"></a>SLA
 

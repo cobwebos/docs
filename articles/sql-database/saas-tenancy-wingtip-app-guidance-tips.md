@@ -1,5 +1,5 @@
 ---
-title: 多租户应用示例 - 翼尖 SaaS
+title: 多租户应用示例-Wingtip SaaS
 description: 提供有关安装和运行使用 Azure SQL 数据库（Wingtip Tickets SaaS 示例）的示例多租户应用程序的步骤和指南。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: genemi
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 162d1f269c65ad98afa30e8e96370bbdceca99bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74132294"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>使用 Wingtip Tickets 示例 SaaS 应用的一般指南
@@ -34,10 +34,10 @@ ms.locfileid: "74132294"
 3. 单击“下载 zip”**** 并保存文件。
 4. 右键单击 zip 文件并选择“属性”****。 zip 文件名与存储库名称对应。 （例如： WingtipTicketsSaaS-DbPerTenant-master.zip__）
 5. 在“常规”选项卡上，选择“取消阻止”********。
-6. 单击“确定”。
+6. 单击“确定”。 
 7. 解压缩文件。
 
-脚本位于 . *。学习\\模块*文件夹。
+脚本位于中 *。学习\\模块*文件夹。
 
 
 ## <a name="working-with-the-wingtip-tickets-powershell-scripts"></a>使用 Wingtip Tickets PowerShell 脚本
@@ -89,11 +89,11 @@ ms.locfileid: "74132294"
     - **独立的应用程序：** 各个租户的服务器（例如： contosoconcerthall-&lt;User&gt;.database.windows.net**）
     - **每个租户一个数据库：tenants1-dpt-&lt;User&gt;.database.windows.net** **
     - **多租户数据库：tenants1-mt-&lt;User&gt;.database.windows.net** **
-2. 单击 **"连接** > **数据库引擎..."：**
+2. 单击 "**连接** > **数据库引擎 ...**"：
 
    ![编录服务器](media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
-3. 演示凭据是： 登录 =*开发人员*， 密码 = *\@P 剑1*
+3. 演示凭据为：登录名 = *developer*，Password *=\@P ssword1*
 
     下图显示“每个租户一个数据库”模式的登录**。
     连接![](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)

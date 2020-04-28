@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
 ms.openlocfilehash: f00c7b12accde9df9a5708a2b8b378d70428318d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74091240"
 ---
 # <a name="troubleshoot-vcenter-server-discovery-failures"></a>排查 vCenter Server 发现失败问题
@@ -46,8 +46,8 @@ vCenter 发现遵守 System 用户配置的系统默认代理设置。 DRA 服�
 
 遇到此问题时，会发生以下情况：
 
-- 由于错误，无法访问\<vCenter 服务器 vCenter>：远程服务器返回错误：（503） 服务器不可用
-- 由于错误，无法访问\<vCenter 服务器 vCenter>：远程服务器返回错误：无法连接到远程服务器。
+- 由于以下错误，无法访问 vCenter 服务器 \<vCenter>：远程服务器返回了错误：(503) 服务器不可用
+- 由于以下错误，无法访问 vCenter 服务器 \<vCenter>：远程服务器返回了错误：无法连接到远程服务器。
 - 无法连接到 vCenter/ESXi 服务器。
 
 若要解决问题，请执行以下操作：
@@ -67,7 +67,7 @@ vCenter 发现遵守 System 用户配置的系统默认代理设置。 DRA 服�
 
 对于 DRA 代理配置：
 
-1. 打开命令提示符并打开 Microsoft Azure 站点恢复提供程序文件夹。
+1. 打开命令提示符并打开 Microsoft Azure Site Recovery 提供程序 "文件夹。
  
     **cd C:\Program Files\Microsoft Azure Site Recovery Provider**
 
@@ -79,4 +79,4 @@ vCenter 发现遵守 System 用户配置的系统默认代理设置。 DRA 服�
 
 ## <a name="next-steps"></a>后续步骤
 
-[为 VMware VM 灾难恢复管理配置服务器](https://docs.microsoft.com/azure/site-recovery/vmware-azure-manage-configuration-server#refresh-configuration-server) 
+[管理用于 VMware VM 灾难恢复的配置服务器](https://docs.microsoft.com/azure/site-recovery/vmware-azure-manage-configuration-server#refresh-configuration-server) 

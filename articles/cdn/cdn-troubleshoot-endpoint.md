@@ -1,5 +1,5 @@
 ---
-title: 排除 Azure CDN 终结点故障 - 404 状态代码
+title: Azure CDN 终结点疑难解答-404 状态代码
 description: 排查 Azure CDN 终结点的 404 响应代码。
 services: cdn
 documentationcenter: ''
@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: c332c6712cdf057491e3039854aa1a29bd54196f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74083118"
 ---
 # <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>排查 Azure CDN 终结点返回 404 状态代码的问题
 本文帮助你排查 Azure 内容分发网络 (CDN) 终结点返回 404 HTTP 响应状态代码的问题。
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **"获取支持**"。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 "**获取支持**"。
 
 ## <a name="symptom"></a>症状
 已经创建 CDN 配置文件和终结点，但内容似乎没有出现在 CDN 上。 尝试通过 CDN URL 访问内容的用户收到 HTTP 404 状态代码。 
@@ -73,7 +73,7 @@ ms.locfileid: "74083118"
 #### <a name="http-and-https-ports"></a>HTTP 和 HTTPS 端口
 检查**HTTP**和**HTTPS 端口**。 在大多数情况下，80 和 443 都正确，无需任何更改。  但是，如果源服务器正在侦听其他端口，则应在此处表示出来。 如果不能确定，请查看源文件的 URL。 HTTP 和 HTTPS 规范使用端口 80 和 443 作为默认值。 在示例 URL https:\//cdndocdemo.blob.core.windows.net/publicblob/lorem.txt 中未指定端口，因此假设 443 为默认端口，并且设置是正确的。  
 
-但是，假设之前测试的源文件的 URL 为 http:\//www.contoso.com:8080/file.txt， 请注意主机名段末尾的 *:8080* 部分。 该数字指示浏览器使用端口 8080 在 www\.contoso.com 连接到 Web 服务器，因此您需要在 HTTP**端口**字段中输入*8080。* 请务必注意，这些端口设置只会影响该终结点用来从源中检索信息的那些端口。
+但是，假设之前测试的源文件的 URL 为 http:\//www.contoso.com:8080/file.txt， 请注意主机名段末尾的 *:8080* 部分。 该数字指示浏览器使用端口8080连接到 www\.contoso.com 上的 web 服务器，因此需要在 " **HTTP 端口**" 字段中输入*8080* 。 请务必注意，这些端口设置只会影响该终结点用来从源中检索信息的那些端口。
 
 > [!NOTE]
 > **来自 Akamai 的 Azure CDN 标准**终结点不允许原点的完整 TCP 端口范围。  有关不被允许的原点端口列表，请参阅 [来自 Akamai 的 Azure CDN 受允许原点端口](/previous-versions/azure/mt757337(v=azure.100))。  

@@ -20,15 +20,15 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: b43c46599cbacaf40bc9583e364d088fa27a3ac9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74113118"
 ---
 # <a name="odata-searchin-function-in-azure-cognitive-search"></a>Azure 认知搜索中的 OData `search.in` 函数
 
-在 [OData 筛选器表达式](query-odata-filter-orderby-syntax.md)中，一种常见情景是检查每个文档中的单个字段是否等于许多可能值中的一个。 例如，某些应用程序会这样进行[安全修整](search-security-trimming-for-azure-search.md)：根据一个包含主 ID（代表发出查询的用户）的列表，检查字段是否包含一个或多个主 ID。 编写这样的查询的一种方法是使用[`eq`](search-query-odata-comparison-operators.md)和[`or`](search-query-odata-logical-operators.md)运算符：
+在 [OData 筛选器表达式](query-odata-filter-orderby-syntax.md)中，一种常见情景是检查每个文档中的单个字段是否等于许多可能值中的一个。 例如，某些应用程序会这样进行[安全修整](search-security-trimming-for-azure-search.md)：根据一个包含主 ID（代表发出查询的用户）的列表，检查字段是否包含一个或多个主 ID。 若要编写这样的查询，一种方法是使用 [`eq`](search-query-odata-comparison-operators.md) 和 [`or`](search-query-odata-logical-operators.md) 运算符：
 
     group_ids/any(g: g eq '123' or g eq '456' or g eq '789')
 
@@ -40,7 +40,7 @@ ms.locfileid: "74113118"
 > 除了更简便且更易读，使用 `search.in` 还具有[性能优势](#bkmk_performance)，并且在需要在筛选器中包含数百甚至数千个值的情况下，可以避免某些[筛选器大小限制](search-query-odata-filter.md#bkmk_limits)。 因此，我们强烈建议使用 `search.in`，而不要使用更复杂的相等表达式析取。
 
 > [!NOTE]
-> OData 标准的版本 4.01 最近引入了[`in`运算符](https://docs.oasis-open.org/odata/odata/v4.01/cs01/part2-url-conventions/odata-v4.01-cs01-part2-url-conventions.html#_Toc505773230)，该运算符具有与 Azure`search.in`认知搜索中的函数类似的行为。 但是，Azure 认知搜索不支持该运算符，因此你必须改用 `search.in` 函数。
+> 4\.01 版 OData Standard 最近引入了 [`in` 运算符](https://docs.oasis-open.org/odata/odata/v4.01/cs01/part2-url-conventions/odata-v4.01-cs01-part2-url-conventions.html#_Toc505773230)，该运算符的行为类似于 Azure 认知搜索中的 `search.in` 函数。 但是，Azure 认知搜索不支持该运算符，因此你必须改用 `search.in` 函数。
 
 ## <a name="syntax"></a>语法
 
@@ -53,7 +53,7 @@ search_in_call ::=
     'search.in(' variable ',' string_literal(',' string_literal)? ')'
 ```
 
-下面还提供了交互式语法图：
+交互式语法图也可用：
 
 > [!div class="nextstepaction"]
 > [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#search_in_call)
@@ -72,7 +72,7 @@ search_in_call ::=
 
 | 参数名称 | 类型 | 说明 |
 | --- | --- | --- |
-| `variable` | `Edm.String` | 字符串字段引用（在 `any` 或 `all` 表达式中使用 `search.in` 的情况下，则为基于字符串集合字段的范围变量）。 |
+| `variable` | `Edm.String` | 字符串字段引用（在 `search.in` 或 `any` 表达式中使用 `all` 的情况下，则为基于字符串集合字段的范围变量）。 |
 | `valueList` | `Edm.String` | 一个字符串，其中包含的分隔列表中的值需要与 `variable` 参数匹配。 如果未指定 `delimiters` 参数，则默认的分隔符为空格和逗号。 |
 | `delimiters` | `Edm.String` | 一个字符串，其中的每个字符在分析 `valueList` 参数时会被视为分隔符。 此参数的默认值为 `' ,'`，这意味着，系统会将其中包含空格和/或逗号的任何值分开。 如果因为值包含空格和逗号而需要使用这些字符以外的分隔符，可以在此参数中指定替代分隔符，例如 `'|'`。 |
 
@@ -84,7 +84,7 @@ search_in_call ::=
 
 ## <a name="examples"></a>示例
 
-查找名称为“Sea View motel”或“Budget hotel”的所有酒店。 包含空格（默认分隔符）的短语。 可以将单引号中的备用分隔符指定为第三个字符串参数：  
+查找名称为“Sea View motel”或“Budget hotel”的所有酒店。 包含空格（默认分隔符）的短语。 可将单引号中的备用分隔符指定为第三个字符串参数：  
 
     search.in(HotelName, 'Sea View motel,Budget hotel', ',')
 

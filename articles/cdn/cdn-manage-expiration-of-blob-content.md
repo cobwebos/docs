@@ -1,5 +1,5 @@
 ---
-title: 管理 Azure Blob 存储的过期
+title: 管理 Azure Blob 存储的过期时间
 titleSuffix: Azure Content Delivery Network
 description: 了解用于控制 Azure CDN 缓存中 blob 生存时间的选项。
 services: cdn
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/1/2018
 ms.author: mazha
 ms.openlocfilehash: f28282a802e4b38fadc05c7090fa2a2af154de54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74083162"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>在 Azure CDN 中管理 Azure Blob 存储的到期时间
@@ -70,7 +70,7 @@ ms.locfileid: "74083162"
 
    此全局缓存规则设置为期一小时的缓存持续时间，并会影响发送到终结点的所有请求。 它会替代由终结点指定的源服务器发送的所有 `Cache-Control` 或 `Expires` HTTP 标头。   
 
-3. 选择“保存”。****
+3. 选择“保存”。 
  
 **使用自定义缓存规则设置 Blob 文件的 Cache-Control 标头：**
 
@@ -84,7 +84,7 @@ ms.locfileid: "74083162"
 
     第一个自定义缓存规则为终结点指定的源服务器上的 `/blobcontainer1` 文件夹中的所有 blob 文件设置为期四小时的缓存持续时间。 第二个规则仅替代 `blob1.txt` blob 文件的第一个规则，并且为它设置为期两小时的缓存持续时间。
 
-2. 选择“保存”。****
+2. 选择“保存”。 
 
 
 ## <a name="setting-cache-control-headers-by-using-azure-powershell"></a>使用 Azure PowerShell 设置 Cache-Control 标头
@@ -178,7 +178,7 @@ azure storage blob upload -c <connectionstring> -p cacheControl="max-age=3600" .
    - [设置 Blob 属性](/rest/api/storageservices/Set-Blob-Properties)
 
 ## <a name="testing-the-cache-control-header"></a>测试 Cache-Control 标头
-可以轻松验证 Blob 的 TTL 设置。 使用浏览器的[开发人员工具](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)，测试 Blob 是否包含 `Cache-Control` 响应标头。 您还可以使用[Wget、Postman](https://www.getpostman.com/)[Wget](https://www.gnu.org/software/wget/)或[Fiddler](https://www.telerik.com/fiddler)等工具来检查响应标头。
+可以轻松验证 Blob 的 TTL 设置。 使用浏览器的[开发人员工具](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)，测试 Blob 是否包含 `Cache-Control` 响应标头。 还可使用[Wget](https://www.gnu.org/software/wget/)、 [Postman](https://www.getpostman.com/)或[Fiddler](https://www.telerik.com/fiddler)等工具检查响应标头。
 
 ## <a name="next-steps"></a>后续步骤
 * [了解如何管理 Azure CDN 中云服务内容的过期问题](cdn-manage-expiration-of-cloud-service-content.md)

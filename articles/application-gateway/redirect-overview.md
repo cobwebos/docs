@@ -1,6 +1,6 @@
 ---
 title: Azure 应用程序网关的重定向概述
-description: 了解 Azure 应用程序网关中的重定向功能，将一个侦听器上接收的流量重定向到另一个侦听器或外部站点。
+description: 了解 Azure 应用程序网关中的重定向功能，将一个侦听器上收到的流量重定向到另一个侦听器或外部站点。
 services: application-gateway
 author: amsriva
 ms.service: application-gateway
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/16/2019
 ms.author: amsriva
 ms.openlocfilehash: 5943d8aad4d5dd0d981fae9b2325dd3fc75b31e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74129883"
 ---
 # <a name="application-gateway-redirect-overview"></a>应用程序网关重定向概述

@@ -9,10 +9,10 @@ ms.date: 11/13/2019
 ms.topic: conceptual
 ms.service: signalr
 ms.openlocfilehash: a8e25907b40b910f2b91884d355b6ac85eeaa250
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74158192"
 ---
 # <a name="reacting-to-azure-signalr-service-events"></a>响应 Azure SignalR 服务事件
@@ -29,7 +29,7 @@ Azure SignalR 服务事件处于活动状态的前提是客户端连接处于无
 ## <a name="available-azure-signalr-service-events"></a>可用的 Azure SignalR 服务事件
 事件网格使用[事件订阅](../event-grid/concepts.md#event-subscriptions)将事件消息路由到订阅方。 Azure SignalR 服务事件订阅支持两种类型的事件：  
 
-|事件名称|描述|
+|事件名称|说明|
 |----------|-----------|
 |`Microsoft.SignalRService.ClientConnectionConnected`|建立客户端连接时出现。|
 |`Microsoft.SignalRService.ClientConnectionDisconnected`|断开客户端连接时出现。|
@@ -63,5 +63,5 @@ Azure SignalR 服务事件包含响应数据中的更改所需的所有信息。
 详细了解事件网格并尝试使用 Azure SignalR 服务事件：
 
 > [!div class="nextstepaction"]
-> [尝试与 Azure SignalR 服务](./signalr-howto-event-grid-integration.md)
-> 的示例事件网格集成[有关事件网格](../event-grid/overview.md)
+> [尝试将事件网格与 Azure SignalR 服务进行示例性的集成](./signalr-howto-event-grid-integration.md)
+> [关于事件网格](../event-grid/overview.md)

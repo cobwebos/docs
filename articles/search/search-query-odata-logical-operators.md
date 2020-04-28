@@ -20,19 +20,19 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 2d3952f7d2adc26892cbebcd962f2ea25b86de7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74113184"
 ---
 # <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>Azure 认知搜索中的 OData 逻辑运算符 - `and`、`or`、`not`
 
 Azure 认知搜索中的 [OData 筛选器表达式](query-odata-filter-orderby-syntax.md)是求值结果为 `true` 或 `false` 的布尔表达式。 你可以编写复杂的筛选器，只需先编写一系列[较简单的筛选器](search-query-odata-comparison-operators.md)，然后使用[布尔代数](https://en.wikipedia.org/wiki/Boolean_algebra)中的逻辑运算符将其组合在一起即可：
 
-- `and`： 二进制运算符，用于计算`true`其左右子表达式是否都计算到`true`。
-- `or`： 二进制运算符，用于计算`true`其左子表达式之一或右子表达式是否计算到`true`。
-- `not`： 计算到`true`其子表达式是否计算为`false`的一个未编辑运算符，反之亦然。
+- `and`：一个二元运算符，在左侧和右侧的子表达式的求值结果均为 `true` 的情况下，其求值结果为 `true`。
+- `or`：一个二元运算符，在左侧或右侧的子表达式的求值结果为 `true` 的情况下，其求值结果为 `true`。
+- `not`：一个一元运算符，在子表达式的求值结果为 `false` 的情况下，其求值结果为 `true`，反之亦然。
 
 可以使用这些运算符以及[集合运算符 `any` 和 `all`](search-query-odata-collection-operators.md) 来构建筛选器，以便表述很复杂的搜索条件。
 

@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 5da3a2e5d003a191bff66af6599cae4d34ab60c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74038090"
 ---
 # <a name="azcopy"></a>azcopy
@@ -23,7 +23,7 @@ AzCopy 是一个命令行工具，用于将数据移入和移出 Azure 存储。
 
 命令的常规格式为：`azcopy [command] [arguments] --[flag-name]=[flag-value]`。
 
-要报告问题或了解有关该工具的更多信息，请参阅[https://github.com/Azure/azure-storage-azcopy](https://github.com/Azure/azure-storage-azcopy)。
+若要报告问题或详细了解该工具，请参阅 [https://github.com/Azure/azure-storage-azcopy](https://github.com/Azure/azure-storage-azcopy)。
 
 ## <a name="related-conceptual-articles"></a>相关概念性文章
 
@@ -34,13 +34,13 @@ AzCopy 是一个命令行工具，用于将数据移入和移出 Azure 存储。
 
 ## <a name="options"></a>选项
 
-**--盖-mbps uint32**  以每秒兆位表示传输速率上限。 瞬间吞吐量可能与上限略有不同。 如果此选项设置为零，或者省略，则吞吐量不受限制。
+**--cap-mbps uint32**   以兆位/秒为单位限制传输速率。 瞬间吞吐量可能与上限略有不同。 如果此选项设置为零，或者省略，则吞吐量不受限制。
 
 **-h, --help** azcopy 命令的帮助
       
 **--output-type**  命令输出的格式。 选项包括：text、json。 默认值为“text”。 （默认值为“text”）
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [AzCopy 入门](storage-use-azcopy-v10.md)
 - [azcopy bench](storage-ref-azcopy-bench.md)

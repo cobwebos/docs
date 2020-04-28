@@ -1,5 +1,5 @@
 ---
-title: Azure 快速路由：先决条件
+title: Azure ExpressRoute：必备组件
 description: 本页提供了在订购 Azure ExpressRoute 线路之前需要满足的要求列表。 其中包括了一个清单。
 services: expressroute
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: cherylmc
 ms.openlocfilehash: a72eba9bde0745e66bdf8e7efd8eaec7d6a0b186
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74083355"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>ExpressRoute 先决条件和清单
@@ -21,7 +21,7 @@ ms.locfileid: "74083355"
 
 ## <a name="azure-account"></a>Azure 帐户
 * 使用中的有效 Microsoft Azure 帐户。 需有此帐户才能设置 ExpressRoute 线路。 ExpressRoute 线路是 Azure 订阅中的资源。 即使连接仅限于非 Azure Microsoft 云服务（如 Office 365），Azure 订阅也是一项要求。
-* 激活 Office 365 订阅（如果要使用 Office 365 服务）。 有关详细信息，请参阅本文中的“Office 365 的具体要求”部分。
+* 有效的 Office 365 订阅（如果使用的是 Office 365 服务）。 有关详细信息，请参阅本文中的“Office 365 的具体要求”部分。
 
 ## <a name="connectivity-provider"></a>连接服务提供商
 
@@ -29,8 +29,8 @@ ms.locfileid: "74083355"
 * 即使提供商不是 ExpressRoute 连接合作伙伴，也可以通过 [云交换提供商](expressroute-locations.md#connectivity-through-exchange-providers)连接到 Microsoft 云。
 
 ## <a name="network-requirements"></a>网络要求
-* **每个对等位置的冗余**：Microsoft 要求在 Microsoft 的路由器和每个 ExpressRoute 电路上的对等路由器之间设置冗余 BGP 会话（即使您只有[一个物理连接到云交换](expressroute-faqs.md#onep2plink)）。
-* **灾难恢复的冗余**：Microsoft 强烈建议您在不同的对等位置设置至少两个 ExpressRoute 电路，以避免单点故障。
+* **每个对等位置的冗余**： microsoft 要求在 microsoft 的路由器与每个 ExpressRoute 线路上的对等互连路由器之间设置冗余的 BGP 会话（即使只有[一个到云交换的物理连接](expressroute-faqs.md#onep2plink)）。
+* **灾难恢复冗余**： Microsoft 强烈建议在不同的对等位置中至少设置两条 ExpressRoute 线路，以避免单点故障。
 * **路由**：你或提供商需设置和管理针对[路由域](expressroute-circuit-peerings.md)的 BGP 会话，具体取决于连接到 Microsoft 云的方式。 某些以太网连接服务提供商或云交换服务提供商可能会以增值服务的形式提供 BGP 管理。
 * **NAT**：Microsoft 只能通过 Microsoft 对等互连方式接受公共 IP 地址。 如果使用的是本地网络中的专用 IP 地址，你或提供商需[使用 NAT](expressroute-nat.md)将专用 IP 地址转换为公共 IP 地址。
 * **QoS**：Skype for Business 的各种服务（例如语音、视频、文本）所要求的 QoS 处理方式各有差异。 你和提供商应遵循 [QoS 要求](expressroute-qos.md)。
@@ -53,6 +53,6 @@ ms.locfileid: "74083355"
 * 查找 ExpressRoute 连接服务提供商。 请参阅 [ExpressRoute 合作伙伴和对等位置](expressroute-locations.md)。
 * 请参阅[路由](expressroute-routing.md)、[NAT](expressroute-nat.md) 和 [QoS](expressroute-qos.md) 的要求。
 * 配置 ExpressRoute 连接。
-  * [创建快速路由电路](expressroute-howto-circuit-arm.md)
+  * [创建 ExpressRoute 线路](expressroute-howto-circuit-arm.md)
   * [配置路由](expressroute-howto-routing-arm.md)
   * [将 VNet 链接到 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)

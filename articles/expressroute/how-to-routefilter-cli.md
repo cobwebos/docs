@@ -1,5 +1,5 @@
 ---
-title: 快速路由：路由筛选器 - 微软对等互连：Azure CLI
+title: ExpressRoute：路由筛选器-Microsoft 对等互连： Azure CLI
 description: 本文介绍如何使用 Azure CLI 配置用于 Microsoft 对等互连的路由筛选器
 services: expressroute
 author: anzaman
@@ -8,25 +8,25 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: anzaman
 ms.openlocfilehash: c3c50a005e119890fb17fcf7b3114a747bbe34bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74033412"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>配置用于 Microsoft 对等互连的路由筛选器：Azure CLI
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](how-to-routefilter-portal.md)
-> * [Azure 电源外壳](how-to-routefilter-powershell.md)
+> * [Azure PowerShell](how-to-routefilter-powershell.md)
 > * [Azure CLI](how-to-routefilter-cli.md)
 > 
 
 路由筛选器是通过 Microsoft 对等互连使用部分受支持服务的一种方法。 本文中的步骤可帮助配置和管理 ExpressRoute 线路的路由筛选器。
 
-Office 365 服务（如在线交换、SharePoint 在线和 Skype 业务）可通过 Microsoft 对等互连访问。 如果在 ExpressRoute 线路中配置 Microsoft 对等互连，则会通过建立的 BGP 会话播发与这些服务相关的所有前缀。 每个前缀附加有 BGP 团体值，以标识通过该前缀提供的服务。 有关 BGP 团体值及其映射到的服务的列表，请参阅 [BGP 团体](expressroute-routing.md#bgp)。
+Office 365 服务（如 Exchange Online、SharePoint Online 和 Skype for Business）可通过 Microsoft 对等互连进行访问。 如果在 ExpressRoute 线路中配置 Microsoft 对等互连，则会通过建立的 BGP 会话播发与这些服务相关的所有前缀。 每个前缀附加有 BGP 团体值，以标识通过该前缀提供的服务。 有关 BGP 团体值及其映射到的服务的列表，请参阅 [BGP 团体](expressroute-routing.md#bgp)。
 
-如需连接所有服务，则应通过 BGP 播发大量前缀。 这会显著增加网络中路由器所维护路由表的大小。 如果打算仅使用通过 Microsoft 对等互连提供的一部分服务，可通过两种方式减少路由表大小。 可以：
+如需连接所有服务，则应通过 BGP 播发大量前缀。 这会显著增加网络中路由器所维护路由表的大小。 如果打算仅使用通过 Microsoft 对等互连提供的一部分服务，可通过两种方式减少路由表大小。 你可以：
 
 * 通过在 BGP 团体上应用路由筛选器，筛选出不需要的前缀。 这是标准的网络做法，通常在多个网络中使用。
 
@@ -45,7 +45,7 @@ Office 365 服务（如在线交换、SharePoint 在线和 Skype 业务）可通
 > 
 > 
 
-### <a name="workflow"></a><a name="workflow"></a>流程
+### <a name="workflow"></a><a name="workflow"></a>工作流
 
 若要通过 Microsoft 对等互连成功连接服务，必须完成以下配置步骤：
 
@@ -66,7 +66,7 @@ Office 365 服务（如在线交换、SharePoint 在线和 Skype 业务）可通
 
 * 在开始配置之前，请查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。
 
-* 必须有一个活动的 ExpressRoute 线路。 按照说明[创建 ExpressRoute 电路](howto-circuit-cli.md)，并在继续操作之前由连接提供商启用该电路。 ExpressRoute 线路必须处于已预配且已启用状态。
+* 必须有一个活动的 ExpressRoute 线路。 继续之前，请按照说明[创建 ExpressRoute 线路](howto-circuit-cli.md)，并让连接提供商启用该线路。 ExpressRoute 线路必须处于已预配且已启用状态。
 
 * 必须有活动的 Microsoft 对等互连。 按照[创建和修改对等互连配置](howto-routing-cli.md)中的说明操作
 
@@ -92,14 +92,14 @@ az account set --subscription "<subscription ID>"
 
 ## <a name="step-1-get-a-list-of-prefixes-and-bgp-community-values"></a><a name="prefixes"></a>步骤 1：获取前缀和 BGP 团体值的列表
 
-### <a name="1-get-a-list-of-bgp-community-values"></a>1. 获取 BGP 社区价值观列表
+### <a name="1-get-a-list-of-bgp-community-values"></a>1. 获取 BGP 团体值的列表
 
 使用以下 cmdlet 获取与通过 Microsoft 对等互连可访问服务相关联的 BGP 团体值列表，以及与之关联的前缀列表：
 
 ```azurecli-interactive
 az network route-filter rule list-service-communities
 ```
-### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. 列出要使用的值
+### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. 创建要使用的值的列表
 
 列出要在路由筛选器中使用的 BGP 团体值列表。
 
@@ -115,7 +115,7 @@ az network route-filter rule list-service-communities
 az network route-filter create -n MyRouteFilter -g MyResourceGroup
 ```
 
-### <a name="2-create-a-filter-rule"></a>2. 创建筛选器规则
+### <a name="2-create-a-filter-rule"></a>2. 创建筛选规则
 
 运行以下命令来创建新规则：
  

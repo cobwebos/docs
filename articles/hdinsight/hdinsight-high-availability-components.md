@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.openlocfilehash: 38fb45fd339b5e2c7cab6f66a1ed6c0df73fb29e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74069630"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Azure HDInsight 支持的高可用性服务
@@ -46,17 +46,17 @@ HDInsight 提供自定义的基础结构，以确保四个主要服务具有高�
 
 ## <a name="hdinsight-high-availability-services"></a>HDInsight 高可用性服务
 
-Microsoft 为下表中所述的 HDInsight 群集中的四个 Apache 服务提供支持。 为了将这些服务与 Apache 组件支持的高可用性服务区分开来，下表中将它们称作“HDInsight HA 服务”。**
+Microsoft 为下表中所述的 HDInsight 群集中的四个 Apache 服务提供支持。 为了将这些服务与 Apache 组件支持的高可用性服务区分开来，下表中将它们称作“HDInsight HA 服务”。 
 
 | 服务 | 群集节点 | 群集类型 | 目的 |
 |---|---|---|---|
-| Apache Ambari 服务器| 活动头节点 | All | 监视和管理群集。|
+| Apache Ambari 服务器| 活动头节点 | 全部 | 监视和管理群集。|
 | 适用于 Apache YARN 的应用程序时间线服务器 | 活动头节点 | 除 Kafka 以外的所有服务 | 维护有关群集上运行的 YARN 作业的调试信息。|
 | 适用于 Hadoop MapReduce 的作业历史记录服务器 | 活动头节点 | 除 Kafka 以外的所有服务 | 维护 MapReduce 作业的调试数据。|
 | Apache Livy | 活动头节点 | Spark | 用于通过 REST 接口轻松与 Spark 群集交互 |
 
 >[!Note]
-> HDInsight 企业安全包 （ESP） 群集目前仅提供 Ambari 服务器高可用性。
+> HDInsight 企业安全性套餐（ESP）群集目前仅提供 Ambari 服务器高可用性。
 
 ### <a name="architecture"></a>体系结构
 
@@ -105,7 +105,7 @@ HDInsight HA 服务只应在活动头节点上运行，并在必要时自动重�
 
 ### <a name="some-known-issues"></a>某些已知问题
 
-- 在待机节点上手动启动某个 HA 服务时，在发生下一次故障转移之前该服务不会停止。 当两个头节点上运行 HA 服务时，一些潜在问题包括：Ambari UI 无法访问，Ambari 引发错误，YARN、Spark 和 Oozie 作业可能会卡住。
+- 在待机节点上手动启动某个 HA 服务时，在发生下一次故障转移之前该服务不会停止。 当 HA 服务同时在这两个头节点上运行时，一些潜在问题包括： Ambari UI 不可访问、Ambari 引发错误、YARN、Spark 和 Oozie 作业可能会停滞。
 
 - 当活动头节点上的某个 HA 服务停止时，在发生下一次故障转移或者主故障转移控制器/master-ha-service 重启之前，该服务不会重启。 当活动头节点上的一个或多个 HA 服务停止时（尤其是当 Ambari 服务器停止时），Ambari UI 将不可访问，其他潜在问题包括 YARN、Spark 和 Oozie 作业失败。
 

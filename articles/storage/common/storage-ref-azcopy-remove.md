@@ -9,17 +9,17 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: abce1acb88e920c0de7bbb6447ec9d838f10486c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74033997"
 ---
 # <a name="azcopy-remove"></a>azcopy remove
 
 从 Azure 存储帐户中删除 blob 或文件。
 
-## <a name="synopsis"></a>概要
+## <a name="synopsis"></a>摘要
 
 ```azcopy
 azcopy remove [resourceURL] [flags]
@@ -91,27 +91,27 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 **--exclude-path string**      删除时排除这些路径。 此选项不支持通配符 (*)。 检查相对路径前缀。 例如：myFolder;myFolder/subDirName/file.pdf。
 
-**--exclude-pattern** 字符串   排除名称与模式列表相匹配的文件。 例如：*.jpg;*.pdf;exactName
+**--exclude-pattern** 字符串   排除名称与模式列表相匹配的文件。 例如： *.jpg;* .pdf;exactName
 
-**-h， -- 帮助**删除
+**-h, --help**                     remove 命令的帮助
 
 **--include-path** 字符串      删除时仅包括这些路径。 此选项不支持通配符 (*)。 检查相对路径前缀。 例如：myFolder;myFolder/subDirName/file.pdf
 
-**--include-pattern** 字符串   仅包括名称与模式列表相匹配的文件。 例如：*.jpg;*.pdf;exactName
+**--include-pattern** 字符串   仅包括名称与模式列表相匹配的文件。 例如： *.jpg;* .pdf;exactName
 
 **--list-of-files** string     定义要删除的文件和目录列表所在文件的位置。 相对路径应由换行符分隔，路径不应进行 URL 编码。
 
-**--log-level** 字符串         定义日志文件的日志详细程度。 可用级别包括：INFO（所有请求/响应）、警告（响应缓慢）、ERROR（仅失败的请求）和 NONE（无输出日志）。 （默认值为“INFO”）（默认值为“INFO”）
+**--log-level** 字符串         定义日志文件的日志详细程度。 可用级别包括：INFO（所有请求/响应）、WARNING（响应缓慢）、ERROR（仅限失败的请求）和 NONE（无输出日志）。 （默认值为“INFO”）（默认值为“INFO”）
 
 **--recursive**                在目录之间同步时，以递归方式查看子目录。
 
 ## <a name="options-inherited-from-parent-commands"></a>从父命令继承的选项
 
-|选项|描述|
+|选项|说明|
 |---|---|
 |--cap-mbps uint32|以兆位/秒为单位限制传输速率。 瞬间吞吐量可能与上限略有不同。 如果此选项设置为零，或者省略，则吞吐量不受限制。|
 |--output-type string|命令输出的格式。 选项包括：text、json。 默认值为“text”。|
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
-- [阿兹比贝](storage-ref-azcopy.md)
+- [azcopy](storage-ref-azcopy.md)

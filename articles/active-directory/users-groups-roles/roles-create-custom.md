@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c2cb19c82f8c19bf87eeef755adb5756b2452512
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74025274"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>在 Azure Active Directory 中创建和分配自定义角色
@@ -30,22 +30,22 @@ ms.locfileid: "74025274"
 
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>创建新的自定义角色，授予管理应用注册所需的访问权限
 
-1. 在 Azure [AD](https://aad.portal.azure.com) 组织中使用特权角色管理员或全局管理员权限登录到 Azure AD 管理中心。
-1. 选择**Azure 活动目录** > **角色和管理员** > **"新建自定义角色**"。
+1. 在 Azure AD 组织中，以特权角色管理员或全局管理员权限登录到 [Azure AD 管理中心](https://aad.portal.azure.com) 。
+1. 选择“Azure Active Directory”   > “角色和管理员”   >   “新建自定义角色”。
 
    ![在“角色和管理员”页中创建或编辑角色](./media/roles-create-custom/new-custom-role.png)
 
-1. 在“基本信息”选项卡中提供角色的名称和说明，然后单击“下一步”。********
+1. 在“基本信息”选项卡中提供角色的名称和说明，然后单击“下一步”。  
 
    ![在“基本信息”选项卡中提供自定义角色的名称和说明](./media/roles-create-custom/basics-tab.png)
 
-1. 在“权限”选项卡中，选择管理应用注册的基本属性和凭据属性所需的权限。**** 如需每个权限的详细说明，请参阅 [Azure Active Directory 中的应用程序注册子类型和权限](./roles-custom-available-permissions.md)。
+1. 在“权限”选项卡中，选择管理应用注册的基本属性和凭据属性所需的权限。  如需每个权限的详细说明，请参阅 [Azure Active Directory 中的应用程序注册子类型和权限](./roles-custom-available-permissions.md)。
    1. 首先在搜索栏中输入“credentials”，然后选择 `microsoft.directory/applications/credentials/update` 权限。
 
       ![在“权限”选项卡上选择自定义角色的权限](./media/roles-create-custom/permissions-tab.png)
 
-   1. 接下来，在搜索栏中输入“basic”，选择 `microsoft.directory/applications/basic/update` 权限，然后单击“下一步”。****
-1. 在“查看 + 创建”选项卡上查看权限，然后选择“创建”。********
+   1. 接下来，在搜索栏中输入“basic”，选择 `microsoft.directory/applications/basic/update` 权限，然后单击“下一步”。 
+1. 在“查看 + 创建”选项卡上查看权限，然后选择“创建”。  
 
 自定义角色将显示在要分配的可用角色的列表中。
 
@@ -122,7 +122,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
     https://graph.microsoft.com/beta/roleManagement/directory/roleDefinitions
     ```
 
-    Body
+    正文
 
     ``` HTTP
    {
@@ -151,7 +151,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
     https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
     ```
 
-    Body
+    正文
 
     ``` HTTP
    {
@@ -165,16 +165,16 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 
 与内置角色一样，默认情况下，在默认的组织范围内分配自定义角色，以授予对组织中所有应用注册的访问权限。 但与内置角色不同，自定义角色也可以在单个 Azure AD 资源的范围内分配。 这样你就可以被用户分配权限，使之可以更新单个应用的凭据和基本属性，不需创建另一个自定义角色。
 
-1. 在 Azure [AD](https://aad.portal.azure.com)组织中使用应用程序开发人员权限登录到 Azure AD 管理中心。
-1. 选择**应用注册**。
-1. 选择要向其授予管理权限的应用注册。 可能必须选择“所有应用程序”，以便在 Azure AD 组织中查看应用注册的完整列表。****
+1. 通过 Azure AD 组织中的应用程序开发人员权限登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
+1. 选择“应用注册”  。
+1. 选择要向其授予管理权限的应用注册。 可能必须选择“所有应用程序”，以便在 Azure AD 组织中查看应用注册的完整列表。 
 
     ![选择应用注册作为角色分配的资源范围](./media/roles-create-custom/appreg-all-apps.png)
 
-1. 在应用注册中，选择“角色和管理员”。**** 如果尚未创建，请按[上一过程](#create-a-new-custom-role-to-grant-access-to-manage-app-registrations)中的说明操作。
+1. 在应用注册中，选择“角色和管理员”。  如果尚未创建，请按[上一过程](#create-a-new-custom-role-to-grant-access-to-manage-app-registrations)中的说明操作。
 
-1. 选择角色以打开“分配”页****。
-1. 选择“添加分配”以添加用户。**** 用户将仅被授予对所选应用注册的任何权限。
+1. 选择角色以打开“分配”页  。
+1. 选择“添加分配”以添加用户。  用户将仅被授予对所选应用注册的任何权限。
 
 ## <a name="next-steps"></a>后续步骤
 

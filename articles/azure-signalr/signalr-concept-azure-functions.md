@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: cbb1fcf320a78f11045bf9627ffcc438af3e388a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74157619"
 ---
 # <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>使用 Azure Functions 和 Azure SignalR 服务生成实时应用
 
-由于 Azure SignalR 服务和 Azure 函数都是完全托管的、高度可扩展的服务，允许您专注于构建应用程序而不是管理基础结构，因此通常将这两个服务一起使用，以便在[无服务器](https://azure.microsoft.com/solutions/serverless/)环境中提供实时通信。
+Azure SignalR Service 和 Azure Functions 都是高度可缩放的完全托管服务，使你可以专注于构建应用程序而不是管理基础结构，因此通常将这两种服务结合使用以在[无服务器](https://azure.microsoft.com/solutions/serverless/)环境中提供实时通信。
 
 > [!NOTE]
-> 在交互式教程"[使用 Azure 函数和 SignalR 服务在 Web 应用程序中启用自动更新"中，](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr)了解如何一起使用 SignalR 和 Azure 函数。
+> 了解如何在交互式教程中同时使用 SignalR 和 Azure Functions，[使用 Azure Functions 和 SignalR 服务在 web 应用程序中启用自动更新](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr)。
 
 ## <a name="integrate-real-time-communications-with-azure-services"></a>将实时通信与 Azure 服务集成在一起
 
@@ -29,7 +29,7 @@ Azure Functions 允许你以 JavaScript、Python、C# 和 Java 等[多种语言]
 * Azure 服务中的事件，例如：
     - 事件网格
     - 事件中心
-    - 服务总线
+    - Service Bus
     - Cosmos DB 更改源
     - 存储 - blob 和队列
     - 逻辑应用连接器，例如 Salesforce 和 SQL Server

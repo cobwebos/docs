@@ -1,5 +1,5 @@
 ---
-title: 弃用 Azure 站点恢复数据加密功能 |微软文档
+title: 弃用 Azure Site Recovery 数据加密功能 |Microsoft Docs
 description: 有关 Azure Site Recovery 数据加密功能的详细信息
 services: site-recovery
 author: rajani-janaki-ram
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: rajanaki
 ms.openlocfilehash: 5e74466891a5926d8ae8feb3c1c48348ecf3cfe6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74134991"
 ---
 # <a name="deprecation-of-site-recovery-data-encryption-feature"></a>弃用 Site Recovery 数据加密功能
@@ -43,5 +43,5 @@ Site Recovery 数据加密功能可供保护 Hyper-V VM 的客户使用，确保
 
 
 ## <a name="next-steps"></a>后续步骤
-做好执行补救步骤的计划，并尽早执行这些步骤。 如果您对此弃用有任何疑问，请联系 Microsoft 支持部门。 若要详细了解从 Hyper-V 故障转移到 Azure 的方案，请参阅[此文](hyper-v-vmm-architecture.md)。
+做好执行补救步骤的计划，并尽早执行这些步骤。 如果有与此弃用相关的任何查询，请联系 Microsoft 支持部门。 若要详细了解从 Hyper-V 故障转移到 Azure 的方案，请参阅[此文](hyper-v-vmm-architecture.md)。
 

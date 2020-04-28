@@ -1,6 +1,6 @@
 ---
 title: Apache Storm 示例 Java 拓扑 - Azure HDInsight
-description: 了解如何通过创建一个简单的单词计数拓扑，来以 Java 语言创建 Apache Storm 拓扑。
+description: 了解如何通过创建一个示例单词计数拓扑，来以 Java 语言创建 Apache Storm 拓扑。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
 ms.openlocfilehash: 75100b47ddf8f36ed9a22ff3073c439f8ad9040b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74083300"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>以 Java 语言创建 Apache Storm 拓扑
@@ -22,11 +22,11 @@ ms.locfileid: "74083300"
 完成本文档中的步骤之后，可将拓扑部署到 Apache Storm on HDInsight。
 
 > [!NOTE]  
-> 本文档中创建的 Storm 拓扑示例的已完成版本可在 。 [https://github.com/Azure-Samples/hdinsight-java-storm-wordcount](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount)
+> 本文档中创建的风暴拓扑示例的完整版本可在[https://github.com/Azure-Samples/hdinsight-java-storm-wordcount](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount)中找到。
 
 ## <a name="prerequisites"></a>先决条件
 
-* [Java 开发人员工具包 (JDK) 版本 8](https://aka.ms/azure-jdks)
+* [Java 开发人员工具包（JDK）版本8](https://aka.ms/azure-jdks)
 
 * 根据 Apache 要求正确[安装](https://maven.apache.org/install.html)的 [Apache Maven](https://maven.apache.org/download.cgi)。  Maven 是 Java 项目的项目生成系统。
 
@@ -164,7 +164,7 @@ Maven 插件允许自定义项目的构建阶段。 例如，如何编译项目�
 </build>
 ```
 
-此节用于添加插件、资源和其他生成配置选项。 有关文件的完整引用，`pom.xml`请参阅。 [https://maven.apache.org/pom.html](https://maven.apache.org/pom.html)
+此节用于添加插件、资源和其他生成配置选项。 有关`pom.xml`文件的完整参考，请参阅[https://maven.apache.org/pom.html](https://maven.apache.org/pom.html)。
 
 ### <a name="add-plug-ins"></a>添加插件
 
@@ -245,7 +245,7 @@ Maven 插件允许自定义项目的构建阶段。 例如，如何编译项目�
 
 ### <a name="create-the-spout"></a>创建 Spout
 
-为了降低设置外部数据源的要求，以下 Spout 只会发出随机句子。 这是一个修改版本的喷口，提供了[风暴启动示例](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter)。  虽然此拓扑只使用一个 Spout，但其他拓扑可能存在将数据从不同源送入拓扑的多个 Spout。
+为了降低设置外部数据源的要求，以下 Spout 只会发出随机句子。 它是随[风暴示例](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter)一起提供的 spout 的修改版本。  虽然此拓扑只使用一个 Spout，但其他拓扑可能存在将数据从不同源送入拓扑的多个 Spout。
 
 输入以下命令，以创建并打开新文件 `RandomSentenceSpout.java`：
 
@@ -320,8 +320,8 @@ public class RandomSentenceSpout extends BaseRichSpout {
 > [!NOTE]  
 > 有关从外部数据源读取的 Spout 的示例，请参阅以下示例之一：
 >
-> * [推特样本：](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java)从Twitter上读取的一个例子。
-> * [风暴卡夫卡](https://github.com/apache/storm/tree/0.10.x-branch/external/storm-kafka)：从卡夫卡读的壶嘴。
+> * [TwitterSampleSPout](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java)：从 Twitter 读取的示例 spout。
+> * [Kafka](https://github.com/apache/storm/tree/0.10.x-branch/external/storm-kafka)：从 Kafka 读取的 spout。
 
 ### <a name="create-the-bolts"></a>创建 Bolt
 
@@ -559,7 +559,7 @@ public class WordCountTopology {
 
 ### <a name="configure-logging"></a>配置日志记录
 
-Storm 使用 [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) 来记录信息。 如果不配置日志记录，拓扑将发出诊断信息。 若要控制所要记录的内容，请输入以下命令，在 `resources` 目录中创建名为 `log4j2.xml` 的文件：
+Storm 使用 [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) 来记录信息。 如果未配置日志记录，拓扑将发出诊断信息。 若要控制所要记录的内容，请输入以下命令，在 `resources` 目录中创建名为 `log4j2.xml` 的文件：
 
 ```cmd
 notepad resources\log4j2.xml
@@ -590,7 +590,7 @@ notepad resources\log4j2.xml
 
 `<Root level="error">` 部分将日志记录的根级别（不在 `com.microsoft.example` 中的所有内容）配置为只记录错误信息。
 
-有关配置 Log4j 2 日志记录的详细信息，请参阅[https://logging.apache.org/log4j/2.x/manual/configuration.html](https://logging.apache.org/log4j/2.x/manual/configuration.html)。
+有关为 Log4j 2 配置日志记录的详细信息， [https://logging.apache.org/log4j/2.x/manual/configuration.html](https://logging.apache.org/log4j/2.x/manual/configuration.html)请参阅。
 
 > [!NOTE]  
 > Storm 0.10.0 版及更高版本使用 Log4j 2.x。 早期版本的 Storm 使用 Log4j 1.x（为日志配置使用的格式不同）。 有关旧配置的信息，请参阅[https://wiki.apache.org/logging-log4j/Log4jXmlFormat](https://wiki.apache.org/logging-log4j/Log4jXmlFormat)。
@@ -615,7 +615,7 @@ mvn compile exec:java -Dstorm.topology=com.microsoft.example.WordCountTopology
 
 此示例日志指示单词 'and' 已发出了 113 次。 只要拓扑运行，计数就会持续增加，因为 Spout 会连续发出相同的句子。
 
-单词和计数的发射间隔为 5 秒。 **WordCount** 组件配置为仅当 tick 元组到达时才发出信息。 它要求每五秒钟传送一次 tick 元组。
+发出单词和计数之间有5秒的间隔。 **WordCount** 组件配置为仅当 tick 元组到达时才发出信息。 它要求每五秒钟传送一次 tick 元组。
 
 ## <a name="convert-the-topology-to-flux"></a>将拓扑转换为 Flux
 
@@ -754,7 +754,7 @@ YAML 文件定义了要用于拓扑的组件以及它们之间的数据流。 �
     ```
 
     > [!WARNING]  
-    > 如果拓扑使用 Storm 1.0.1 位，此命令会失败。 此故障由 引起[https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055)。 相反，[在开发环境中安装 Storm](https://storm.apache.org/releases/current/Setting-up-development-environment.html)，并按照以下步骤操作：
+    > 如果拓扑使用 Storm 1.0.1 位，此命令会失败。 此失败是由导致[https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055)的。 相反，[在开发环境中安装 Storm](https://storm.apache.org/releases/current/Setting-up-development-environment.html)，并按照以下步骤操作：
     >
     > 如果已[在开发环境中安装 Storm](https://storm.apache.org/releases/current/Setting-up-development-environment.html)，则可以改用以下命令：
     >
@@ -776,7 +776,7 @@ YAML 文件定义了要用于拓扑的组件以及它们之间的数据流。 �
     17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word dwarfs
     ```
 
-    记录的信息批次之间有 10 秒的延迟。
+    记录的信息的批次之间存在10秒的延迟。
 
 2. 基于项目创建新的拓扑 yaml。
 
@@ -820,7 +820,7 @@ YAML 文件定义了要用于拓扑的组件以及它们之间的数据流。 �
 
 [Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) 是 Storm 提供的高级抽象。 它支持有状态处理。 Trident 的主要优点在于，它可以保证进入拓扑的每个消息只会处理一次。 如果不使用 Trident，则拓扑只能保证至少将消息处理一次。 两者还有其他方面的差异，例如，可以使用内置组件，而无需创建 Bolt。 事实上，可以使用低泛型组件（例如筛选、投影和函数）来取代 Bolt。
 
-可以使用 Maven 项目来创建 Trident 应用程序。 使用本文前面所述的相同基本步骤 - 只有代码不同。 三叉星也不能（当前）与 Flux 框架一起使用。
+可以使用 Maven 项目来创建 Trident 应用程序。 使用本文前面所述的相同基本步骤 - 只有代码不同。 Trident 也不能与 Flux 框架一起使用。
 
 有关 Trident 的详细信息，请参阅 [Trident API 概述](https://storm.apache.org/releases/current/Trident-API-Overview.html)。
 

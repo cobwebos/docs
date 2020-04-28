@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: f6e8ed5baef9b8594bb1fe03942e831fd8264a56
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74113071"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>了解 Azure 认知搜索中的 OData 集合筛选器
@@ -87,7 +87,7 @@ ms.locfileid: "74113071"
 | `Rooms/Type` 中的字词 | 文档 ID |
 | --- | --- |
 | 豪华 | 1, 2 |
-| standard | 1 |
+| 标准 | 1 |
 
 如何为全文搜索存储 `Rooms/Description`：
 
@@ -99,14 +99,14 @@ ms.locfileid: "74113071"
 | 大 | 1 |
 | 汽车旅馆 | 2 |
 | 客房 | 1, 2 |
-| standard | 1 |
+| 标准 | 1 |
 | 套间 | 1 |
 | view | 1 |
 
 简单而言，上述筛选器指出“匹配其中某间客房的 `Type` 等于‘豪华客房’，且**同一间客房** 的 `BaseRate` 小于 100 的文档”，而该搜索查询则与此不同，它指出“匹配其中的 `Rooms/Type` 包含字词‘豪华’且 `Rooms/Description` 包含短语‘市景’的文档”。 对于后面的查询，可关联哪些客房的字段没有概念。
 
 > [!NOTE]
-> 如果要查看将相关搜索的支持添加到 Azure 认知搜索，请投票支持[此用户语音项目](https://feedback.azure.com/forums/263029-azure-search/suggestions/37735060-support-correlated-search-on-complex-collections)。
+> 如果你希望在 Azure 认知搜索中添加对关联搜索的支持，请为[此 User Voice 项](https://feedback.azure.com/forums/263029-azure-search/suggestions/37735060-support-correlated-search-on-complex-collections)投票。
 
 ## <a name="inverted-indexes-and-collections"></a>倒排索引和集合
 
@@ -136,7 +136,7 @@ ms.locfileid: "74113071"
 }
 ```
 
-`seasons` 字段的值存储在称作“倒排索引”的结构中，如下所示：****
+`seasons` 字段的值存储在称作“倒排索引”的结构中，如下所示： 
 
 | 术语 | 文档 ID |
 | --- | --- |
@@ -145,7 +145,7 @@ ms.locfileid: "74113071"
 | 秋 | 1, 2 |
 | 冬 | 2, 3 |
 
-此数据结构旨在以极快的速度回答一个问题：给定术语在哪些文档中出现？ 解答此问题的过程更像是一个普通的相等性检查，而不是基于集合的循环。 事实上，正因如此，对于字符串集合，Azure 认知搜索仅允许使用 `eq` 作为 `any` 的 Lambda 表达式中的比较运算符。
+此数据结构旨在快速解答一个问题：给定的字词出现在哪些文档中？ 解答此问题的过程更像是一个普通的相等性检查，而不是基于集合的循环。 事实上，正因如此，对于字符串集合，Azure 认知搜索仅允许使用 `eq` 作为 `any` 的 Lambda 表达式中的比较运算符。
 
 基于相等性，接下来我们将探讨如何使用 `or` 来合并多个针对同一范围变量执行的相等性检查。 此方法得益于代数原理以及[限定符的分布属性](https://en.wikipedia.org/wiki/Existential_quantification#Negation)。 此表达式：
 

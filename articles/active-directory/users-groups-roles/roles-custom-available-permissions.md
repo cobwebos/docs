@@ -1,5 +1,5 @@
 ---
-title: 可用的自定义管理员角色权限 - Azure AD |微软文档
+title: 可用的自定义管理员角色权限-Azure AD |Microsoft Docs
 description: 用于委托标识管理的自定义管理员角色权限。
 services: active-directory
 author: curtand
@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6156857202c1cca94df6d70ec2059daf55178f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74025150"
 ---
 # <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Azure Active Directory 中的应用程序注册子类型和权限
@@ -26,7 +26,7 @@ ms.locfileid: "74025150"
 
 ## <a name="permissions-for-managing-single-directory-applications"></a>用于管理单目录应用程序的权限
 
-选择自定义角色的权限时，可以选择授予仅管理单目录应用程序的访问权限。 单目录应用程序仅适用于该应用程序已注册到的 Azure AD 组织中的用户。 单目录应用程序定义为将“支持的帐户类型”设置为“仅限此组织目录中的帐户”。**** 在图形 API 中，单目录应用程序的 signInAudience 属性设置为“AzureADMyOrg”。
+选择自定义角色的权限时，可以选择授予仅管理单目录应用程序的访问权限。 单目录应用程序仅适用于该应用程序已注册到的 Azure AD 组织中的用户。 单目录应用程序定义为将“支持的帐户类型”设置为“仅限此组织目录中的帐户”。  在图形 API 中，单目录应用程序的 signInAudience 属性设置为“AzureADMyOrg”。
 
 若要授予仅管理单目录应用程序的访问权限，请对子类型 **applications.myOrganization** 使用以下权限。 例如 microsoft.directory/applications.myOrganization/basic/update。
 
@@ -46,7 +46,7 @@ ms.locfileid: "74025150"
 
 如果同时分配上述两个权限，/create 权限优先。 尽管 /createAsOwner 权限不会自动将创建者添加为第一个所有者，但使用图形 API 或 PowerShell cmdlet 时，可以在创建应用注册期间指定所有者。
 
-create 权限授予对“新建注册”命令的访问权限。****
+create 权限授予对“新建注册”命令的访问权限。 
 
 [这些权限授予对“新建注册”门户命令的访问权限](./media/roles-create-custom/new-custom-role.png)
 

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: billgib
 ms.date: 09/24/2018
 ms.openlocfilehash: 02682a18f14e7ecbf5b42783ab84a1b55a4bb77b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74133134"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>使用“每租户一个应用程序”的 SaaS 模式预配和编录新租户
@@ -81,7 +81,7 @@ Azure 资源管理器模板可用于部署和配置应用程序，创建租户�
 * 使用 Azure 资源管理模板预配目录数据库****。 通过导入 bacpac 文件初始化数据库。
 * 注册以前部署的示例租户应用****。  每个租户均使用通过租户名称的哈希构造的密钥进行注册。  租户名称也存储在目录的扩展表中。
 
-1. 在 PowerShell ISE 中，打开 ...\Learning Modules\UserConfig.psm 并将 \<user\> 值更新为部署三个示例应用程序时所用的值******。  **保存文件**。
+1. 在 PowerShell ISE 中，打开 ...\Learning Modules\UserConfig.psm 并将 \<user\> 值更新为部署三个示例应用程序时所用的值******。  **保存该文件**。
 1. 在 PowerShell ISE 中打开 ...\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1 并设置 $Scenario = 1******。 部署租户目录并注册预定义的租户。
 
 1. 通过将游标置于显示有“`& $PSScriptRoot\New-Catalog.ps1`”的行中的任意位置来添加断点，并按 F9****。
@@ -98,7 +98,7 @@ Azure 资源管理器模板可用于部署和配置应用程序，创建租户�
 现在来看一看创建的资源。
 
 1. 打开 [Azure 门户](https://portal.azure.com/)，并浏览资源组。  打开 wingtip-sa-catalog-\<user\> 资源组并查看目录服务器和数据库****。
-1. 打开门户中的数据库并从左侧菜单中选择“数据资源管理器”**。  单击"登录"命令，然后输入密码 = **\@P 剑1**。
+1. 打开门户中的数据库并从左侧菜单中选择“数据资源管理器”**。  单击 "登录" 命令，然后输入 Password = **P\@ssword1**。
 
 
 1. 浏览 tenantcatalog 数据库的架构**。

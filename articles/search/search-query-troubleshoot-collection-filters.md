@@ -20,15 +20,15 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: e82fa00226c964d5ba774cdf06f5b0f3898bdc55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74113079"
 ---
 # <a name="troubleshooting-odata-collection-filters-in-azure-cognitive-search"></a>排查 Azure 认知搜索中的 OData 集合筛选器问题
 
-若要根据 Azure 认知搜索中的集合字段进行[筛选](query-odata-filter-orderby-syntax.md)，可以结合 **Lambda 表达式**使用 [`any` 和 `all` 运算符](search-query-odata-collection-operators.md)。 Lambda 表达式是应用到每个集合元素的子筛选器。
+若要根据 Azure 认知搜索中的集合字段进行[筛选](query-odata-filter-orderby-syntax.md)，可以结合 [Lambda 表达式`any`使用 `all`](search-query-odata-collection-operators.md) 和  **运算符**。 Lambda 表达式是应用到每个集合元素的子筛选器。
 
 并非每个筛选表达式功能都可在 Lambda 表达式中使用。 可用的功能因要筛选的集合字段的数据类型而异。 如果你尝试在 Lambda 表达式中使用该上下文不支持的某个功能，可能会导致错误。 如果你在尝试基于集合字段编写复杂的筛选器时遇到此类错误，本文可帮助你排查问题。
 
@@ -68,7 +68,7 @@ ms.locfileid: "74113079"
 
 只能在 `any` 的正文中测试相等性，只能在 `all` 的正文中测试不相等性。
 
-还可以通过 `any` 正文中的 `or`，以及通过 `all` 正文中的 `and`，来合并多个表达式。 由于 `search.in` 函数等效于将相等性检查与 `or` 相结合，因此，`any` 的正文中也允许该函数。 相比之下，`all` 的正文中允许 `not search.in`。
+还可以通过 `or` 正文中的 `any`，以及通过 `and` 正文中的 `all`，来合并多个表达式。 由于 `search.in` 函数等效于将相等性检查与 `or` 相结合，因此，`any` 的正文中也允许该函数。 相比之下，`not search.in` 的正文中允许 `all`。
 
 例如，允许以下表达式：
 
@@ -104,7 +104,7 @@ ms.locfileid: "74113079"
 - `flags/all(f: not f)`
 - `flags/all(f: not (f eq true))`
 
-与字符串集合不同，布尔集合对于可在哪种类型的 Lambda 表达式中使用哪个运算符不设限制。 在 `any` 或 `all` 的正文中可以使用 `eq` 和 `ne`。
+与字符串集合不同，布尔集合对于可在哪种类型的 Lambda 表达式中使用哪个运算符不设限制。 在 `eq` 或 `ne` 的正文中可以使用 `any` 和 `all`。
 
 布尔集合不允许如下所示的表达式：
 
@@ -117,7 +117,7 @@ ms.locfileid: "74113079"
 
 ## <a name="rules-for-filtering-geographypoint-collections"></a>有关筛选 GeographyPoint 集合的规则
 
-集合中 `Edm.GeographyPoint` 类型的值不能直接相互比较。 必须将它们用作 `geo.distance` 和 `geo.intersects` 函数的参数。 然后，必须使用 `lt`、`le`、`gt` 或 `ge` 比较运算符将 `geo.distance` 函数与距离值进行比较。 这些规则也适用于非集合 Edm.GeographyPoint 字段。
+集合中 `Edm.GeographyPoint` 类型的值不能直接相互比较。 必须将它们用作 `geo.distance` 和 `geo.intersects` 函数的参数。 然后，必须使用 `geo.distance`、`lt`、`le` 或 `gt` 比较运算符将 `ge` 函数与距离值进行比较。 这些规则也适用于非集合 Edm.GeographyPoint 字段。
 
 与字符串集合一样，`Edm.GeographyPoint` 集合在如何在不同类型的 Lambda 表达式中使用与合并地理空间函数方面也实施了一些规则：
 
@@ -199,7 +199,7 @@ ms.locfileid: "74113079"
 
 第一，Lambda 表达式中不支持 `search.ismatch` 和 `search.ismatchscoring` 函数。 有关详细信息，请参阅[了解 Azure 认知搜索中的 OData 集合筛选器](search-query-understand-collection-filters.md)。
 
-第二，不允许引用未绑定到范围变量（所谓的“自由变量”）的字段。**** 例如，考虑以下两个等效的 OData 筛选表达式：
+第二，不允许引用未绑定到范围变量（所谓的“自由变量”）的字段。   例如，考虑以下两个等效的 OData 筛选表达式：
 
 1. `stores/any(s: s/amenities/any(a: a eq 'parking')) and details/margin gt 0.5`
 1. `stores/any(s: s/amenities/any(a: a eq 'parking' and details/margin gt 0.5))`

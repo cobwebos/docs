@@ -1,5 +1,5 @@
 ---
-title: 在 SaaS 多租户中提供
+title: SaaS 多租户中的预配
 description: 了解如何在 Azure SQL 数据库多租户 SaaS 应用中预配和编录新租户
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: genemi
 ms.reviewer: billgib,andrela,stein
 ms.date: 09/24/2018
 ms.openlocfilehash: 4ea18ee23d845b2d16209b23de14dc3cd70aaa59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74133146"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>在使用分片多租户 Azure SQL 数据库的 SaaS 应用程序中预配和编录新租户
@@ -128,7 +128,7 @@ ms.locfileid: "74133146"
 
 - Azure PowerShell 已安装。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 
-- 已部署 Wingtip Tickets SaaS 多租户数据库应用。 要在五分钟内部署，请参阅[部署和浏览翼尖票证 SaaS 多租户数据库应用程序](saas-multitenantdb-get-started-deploy.md)
+- 已部署 Wingtip Tickets SaaS 多租户数据库应用。 若要在五分钟内进行部署，请参阅[部署和浏览 Wingtip 票证 SaaS 多租户数据库应用程序](saas-multitenantdb-get-started-deploy.md)
 
 - 获取 Wingtip 脚本和源代码：
     - 在 [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub 存储库中提供了 Wingtip Tickets SaaS 多租户数据库脚本和应用程序源代码。
@@ -145,7 +145,7 @@ ms.locfileid: "74133146"
 - **计算新租户密钥**：哈希函数用于从租户名称创建租户密钥。
 - **检查租户密钥是否已存在**：检查目录，确保尚未注册密钥。
 - **初始化默认租户数据库中的租户**：更新租户数据库，以添加新租户信息。
-- **在目录中注册租户**：新租户密钥和现有租户 1 数据库之间的映射将添加到目录中。
+- **在目录中注册租户**：新租户密钥和现有 tenants1 数据库之间的映射将添加到目录中。
 - **将租户的名称添加到目录扩展表**：将地点名称添加到目录中的“租户”表。  此项添加内容说明如何扩展目录数据库来支持其他特定于应用程序的数据。
 - **打开新租户的“事件”页**：在浏览器中打开 *Bushwillow Blues* 事件页。
 
@@ -156,9 +156,9 @@ ms.locfileid: "74133146"
 若要了解 Wingtip 应用如何在共享数据库中实现新租户预配，请添加断点并单步执行工作流：
 
 1. 在 *PowerShell ISE* 中，打开 ...\\Learning Modules\\ProvisionTenants\\*Demo-ProvisionTenants.ps1*，并设置以下参数：
-   - **$TenantName** = **布什柳蓝调**，一个新的地点的名字。
-   - **$VenueType** = **蓝调**，一个预先定义的场地类型：蓝调，古典音乐，舞蹈，爵士乐，柔道，赛车，多用途，歌剧，摇滚音乐，足球（小写，没有空间）。
-   - **$DemoScenario** = **1**， 以预配与其他租户共享数据库中的租户。
+   - **$TenantName** = **Bushwillow 蓝**，即新地点的名称。
+   - **$VenueType** = **蓝色**，预定义的地点类型之一：蓝色、classicalmusic、dance、爵士乐、judo、motorracing、多用途、opera、rockmusic、足球（小写，不含空格）。
+   - **$DemoScenario** = **1**，用于在具有其他租户的共享数据库中预配租户。
 
 2. 通过将游标置于 38 行（该行显示：*New-Tenant `*）的任意位置来添加断点，并按 **F9**。
 
@@ -174,7 +174,7 @@ ms.locfileid: "74133146"
 
 有关调试 PowerShell 脚本的详细信息，请参阅[有关使用和调试 PowerShell 脚本的提示](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)。
 
-## <a name="provision-a-tenant-in-its-own-database"></a>在*自己的*数据库中预配租户
+## <a name="provision-a-tenant-in-its-own-database"></a>在*自己*的数据库中预配租户
 
 #### <a name="major-actions-of-provisioning"></a>用于预配的主要操作
 
@@ -185,7 +185,7 @@ ms.locfileid: "74133146"
 - **创建新租户数据库**：通过使用资源管理器模板复制 *basetenantdb* 数据库来创建此数据库。  新数据库名称取决于租户名称。
 - **将数据库添加到目录**：新租户数据库在目录中注册为分片。
 - **初始化默认租户数据库中的租户**：更新租户数据库，以添加新租户信息。
-- **在目录中注册租户**：新租户密钥和*红杉数据库*之间的映射将添加到目录中。
+- **在目录中注册租户**：新租户密钥和*sequoiasoccer*数据库之间的映射将添加到目录中。
 - **将租户名称添加到目录**：将地点名称添加到目录的“租户”扩展表中。
 - **打开新租户的“事件”页**：在浏览器中打开 *Sequoia Soccer* 事件页。
 
@@ -196,11 +196,11 @@ ms.locfileid: "74133146"
 现在演练在租户自身的数据库中创建该租户的脚本过程：
 
 1. 在 ...\\Learning Modules\\ProvisionTenants\\*Demo-ProvisionTenants.ps1* 中设置以下参数：
-   - **$TenantName** = **红杉足球**，一个新的场地的名称。
-   - **$VenueType** = **足球**，其中一个预先定义的场地类型：蓝调，古典音乐，舞蹈，爵士乐，柔道，赛车，多用途，歌剧，摇滚音乐，足球（小写，没有空间）。
-   - **$DemoScenario** = **2**， 将租户预配到自己的数据库中。
+   - **$TenantName** = **Sequoia 的足球**，即新地点的名称。
+   - **$VenueType** = **足球**，预定义的地点类型之一：蓝色、classicalmusic、dance、爵士乐、judo、motorracing、多用途、opera、rockmusic、足球（小写，无空格）。
+   - **$DemoScenario** = **2**，用于将租户预配到其自己的数据库中。
 
-2. 通过将光标放在第 57 行的任意位置添加新的断点，该行表示*&&nbsp;：$PSScriptRoot\新租户和数据库'，* 然后按**F9**。
+2. 将光标置于第57行的任意位置* & &nbsp;$PSScriptRoot*，然后按**F9**，添加一个新断点。
 
    ![断点](media/saas-multitenantdb-provision-and-catalog/breakpoint2.png)
 
@@ -213,7 +213,7 @@ ms.locfileid: "74133146"
 本练习预配一批 17 个租户。 建议在开始其他 Wingtip Tickets 教程之前预配这批租户，以便可以使用更多数据库。
 
 1. 在 *PowerShell ISE* 中，打开 ...\\Learning Modules\\ProvisionTenants\\*Demo-ProvisionTenants.ps1*，并将 *$DemoScenario* 参数更改为 4：
-   - **$DemoScenario** = **$DemoScenario4，** 将一批租户预配到共享数据库中。
+   - **$DemoScenario** = **4**，可将一批租户预配到共享数据库中。
 
 2. 按 **F5** 运行脚本。
 
@@ -236,7 +236,7 @@ ms.locfileid: "74133146"
 - 租户名称存储在“租户”表中。
 - 数据库名称存储在“分片管理”表中。
 
-1. 在 SQL 服务器管理工作室 （SSMS） 中，连接到**目录 mt.\<USER\>.database.windows.net**的租户服务器，使用登录 =**开发人员**，密码 = **P\@ssword1**
+1. 在 SQL Server Management Studio （SSMS）中，连接到 database.windows.net 的租户**\<\>** 服务器，登录名 = **developer**，密码 = **\@P ssword1**
 
     ![“SSMS 连接”对话框](media/saas-multitenantdb-provision-and-catalog/SSMSConnection.png)
 

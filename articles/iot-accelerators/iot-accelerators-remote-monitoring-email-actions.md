@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
 ms.openlocfilehash: c192ba73da0cfaf1832b6a1e572bd71b250a976b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74168363"
 ---
 # <a name="add-an-email-action"></a>添加电子邮件操作
@@ -49,7 +49,7 @@ ms.locfileid: "74168363"
 
 1. 确保“规则状态”设置为“已启用”********。
 
-1. 单击 **“应用”**。
+1. 单击“应用”  。
 
 ## <a name="create-a-new-rule"></a>创建新规则
 
@@ -77,7 +77,7 @@ ms.locfileid: "74168363"
 
 1. 确保“规则状态”设置为“已启用”********。
 
-1. 单击 **“应用”**。
+1. 单击“应用”  。
 
 现已启用包含电子邮件操作的规则。 每次触发操作时，新的电子邮件都会发送给收件人。
 
@@ -132,7 +132,7 @@ ms.locfileid: "74168363"
 
 1. 单击“授权”****。 系统会提示你进行登录。 用于登录的帐户应是该应用程序用于发送电子邮件通知的电子邮件地址：
 
-1. 单击“保存”。**** 返回到解决方案加速器并刷新页面。
+1. 单击“ **保存**”。 返回到解决方案加速器并刷新页面。
 
 1. 如果已成功配置电子邮件通知，则会显示以下消息：
 
@@ -164,7 +164,7 @@ ms.locfileid: "74168363"
 
 1. 要添加图像或自定义文本，请直接更新 EmailTemplate.HTML 文件。
 
-## <a name="throttling"></a>遏制
+## <a name="throttling"></a>限制
 
 远程监视解决方案加速器使用 Outlook 发送电子邮件通知。 Outlook 将发送的电子邮件数量限制为[每 1 分钟 30 封电子邮件](https://docs.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#receiving-and-sending-limits)。 接收电子邮件的电子邮件客户端也可以限制每分钟收到的电子邮件数量。 有关限制事宜，请查看特定电子邮件客户端。 设置规则的电子邮件通知时，规则应计算至少一分钟的平均值，而不是使用即时值：
 

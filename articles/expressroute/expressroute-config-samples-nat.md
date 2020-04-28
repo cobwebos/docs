@@ -1,5 +1,5 @@
 ---
-title: Azure 快速路由：路由器配置示例 - NAT
+title: Azure ExpressRoute：路由器配置示例 - NAT
 description: 本页提供 Cisco 和 Juniper 路由器的路由器配置示例。
 services: expressroute
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
 ms.openlocfilehash: ef2fd40db422c459ca966e802344ef45f7ec01de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74072117"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>用于设置和管理 NAT 的路由器配置示例
@@ -19,7 +19,7 @@ ms.locfileid: "74072117"
 本页提供处理 ExpressRoute 时适用于 Cisco ASA 和 Juniper SRX 系列路由器的 NAT 配置示例。 这些示例仅供指导，不能按原样使用。 可以与供应商合作，以便为网络指定适当的配置。
 
 > [!IMPORTANT]
-> 本页中的示例仅供指导。 必须与供应商的销售/技术团队和网络团队合作，以便指定符合需要的适当配置。 对于本页中所列配置的相关问题，Microsoft 将不提供支持。 有关支持问题，必须与设备供应商联系。
+> 本页中的示例仅供指导。 必须与供应商的销售/技术团队和网络团队合作，以便指定符合需要的适当配置。 对于本页中所列配置的相关问题，Microsoft 不提供支持。 有关支持问题，必须与设备供应商联系。
 > 
 > 
 
@@ -82,7 +82,7 @@ NAT 命令：
 
 
 ## <a name="juniper-srx-series-routers"></a>Juniper SRX 系列路由器
-### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. 为群集创建冗余以太网接口
+### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1.为群集创建冗余的以太网接口
     interfaces {
         reth0 {
             description "To Internal Network";
@@ -114,7 +114,7 @@ NAT 命令：
     }
 
 
-### <a name="2-create-two-security-zones"></a>2. 创建两个安全区域
+### <a name="2-create-two-security-zones"></a>2.创建两个安全区域
 * 内部网络的信任区域和面向外部网络的边缘路由器的非信任区域
 * 向区域分配适当的接口
 * 在接口上允许服务
@@ -122,7 +122,7 @@ NAT 命令：
     security {       zones {           security-zone Trust {               host-inbound-traffic {                   system-services {                       ping;                   }                   protocols {                       bgp;                   }               }               interfaces {                   reth0.100;               }           }           security-zone Untrust {               host-inbound-traffic {                   system-services {                       ping;                   }                   protocols {                       bgp;                   }               }               interfaces {                   reth1.100;               }           }       }   }
 
 
-### <a name="3-create-security-policies-between-zones"></a>3. 在区域之间创建安全策略
+### <a name="3-create-security-policies-between-zones"></a>3.在区域之间创建安全策略
     security {
         policies {
             from-zone Trust to-zone Untrust {
@@ -153,7 +153,7 @@ NAT 命令：
     }
 
 
-### <a name="4-configure-nat-policies"></a>4. 配置 NAT 策略
+### <a name="4-configure-nat-policies"></a>4.配置 NAT 策略
 * 创建两个 NAT 池。 一个用于通过 NAT 转换出站到 Microsoft 的流量，另一个用于从 Microsoft 发往客户的流量。
 * 创建规则以通过 NAT 转换相应的流量
   
@@ -212,10 +212,10 @@ NAT 命令：
            }
        }
 
-### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. 配置 BGP 以通告每个方向的选择性前缀
+### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5.配置 BGP 以朝每个方向播发选择的前缀
 请参阅[路由配置示例](expressroute-config-samples-routing.md)页中的示例。
 
-### <a name="6-create-policies"></a>6. 创建策略
+### <a name="6-create-policies"></a>6.创建策略
     routing-options {
                   autonomous-system <Customer-ASN>;
     }
@@ -311,5 +311,5 @@ NAT 命令：
     }
 
 ## <a name="next-steps"></a>后续步骤
-有关详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md) 。
+有关更多详细信息，请参阅 [ExpressRoute 常见问题解答](expressroute-faqs.md)。
 

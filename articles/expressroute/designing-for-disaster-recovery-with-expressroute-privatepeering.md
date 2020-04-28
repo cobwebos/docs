@@ -1,5 +1,5 @@
 ---
-title: Azure 快速路由：为灾难恢复设计
+title: Azure ExpressRoute：针对灾难恢复进行设计
 description: 本页提供有关使用 Azure ExpressRoute 实现灾难恢复的体系结构建议。
 services: expressroute
 author: rambk
@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 05/25/2019
 ms.author: rambala
 ms.openlocfilehash: 726a014983c0da959d72b7976fef2ebb2c6e9b9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74076689"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>使用 ExpressRoute 专用对等互连进行灾难恢复设计
 
 ExpressRoute 旨在实现高可用性，以便与 Microsoft 资源建立运营商级专用网络连接。 换句话说，Microsoft 网络中的 ExpressRoute 路径不存在单一故障点。 有关最大化 ExpressRoute 线路可用性的设计注意事项，请参阅[使用 ExpressRoute 进行高可用性设计][HA]。
 
-但是，考虑到墨菲的一句格言“如果某件事可能会出错，那么它就会出错”，本文将重点分析的解决方案并不局限于使用单条 ExpressRoute 线路可以解决的故障。** 换而言之，本文将会探讨使用异地冗余 ExpressRoute 线路构建可靠的后端网络连接以实现灾难恢复时的网络体系结构考虑因素。
+但是，考虑到墨菲的一句格言“如果某件事可能会出错，那么它就会出错”，本文将重点分析的解决方案并不局限于使用单条 ExpressRoute 线路可以解决的故障。  换而言之，本文将会探讨使用异地冗余 ExpressRoute 线路构建可靠的后端网络连接以实现灾难恢复时的网络体系结构考虑因素。
 
 ## <a name="need-for-redundant-connectivity-solution"></a>对冗余连接解决方案的需求
 
@@ -27,7 +27,7 @@ ExpressRoute 旨在实现高可用性，以便与 Microsoft 资源建立运营�
 无论是在 Azure 区域、本地还是其他任何位置运行任务关键型应用程序，都可以使用另一个 Azure 区域作为故障转移站点。 以下文章介绍了从应用程序和前端访问角度进行的灾难恢复：
 
 - [企业级灾难恢复][Enterprise DR]
-- [使用 Azure Site Recovery 进行 SMB 灾难恢复][SMB DR]
+- [使用 Azure Site Recovery 实现 SMB 灾难恢复][SMB DR]
 
 如果你依赖于使用本地网络与 Microsoft 之间的 ExpressRoute 连接来执行任务关键的操作，则还应该在灾难恢复计划中包含异地冗余的网络连接。 
 
@@ -132,7 +132,7 @@ ExpressRoute 旨在实现高可用性，以便与 Microsoft 资源建立运营�
 本文已介绍如何设计 ExpressRoute 线路专用对等互连的灾难恢复。 以下文章介绍了从应用程序和前端访问角度进行的灾难恢复：
 
 - [企业级灾难恢复][Enterprise DR]
-- [使用 Azure Site Recovery 进行 SMB 灾难恢复][SMB DR]
+- [使用 Azure Site Recovery 实现 SMB 灾难恢复][SMB DR]
 
 <!--Image References-->
 [1]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/one-region.png "中小型本地网络的考虑因素"

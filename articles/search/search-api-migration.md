@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: edb45eebc2c4eacc2f30d13988943f097a7190fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74112167"
 ---
 # <a name="upgrade-to-the-latest-azure-cognitive-search-service-rest-api-version"></a>升级到最新的 Azure 认知搜索服务 REST API 版本
@@ -35,7 +35,7 @@ REST API 版本 2019-05-06 包含某些针对早期版本进行的更改。 这�
 
 * [JsonLines 分析模式](search-howto-index-json-blobs.md)（Azure Blob 编制索引的一部分）可为每个 JSON 实体创建以换行符分隔的搜索文档。
 
-* [AI 扩充](cognitive-search-concept-intro.md)提供索引，利用认知服务的 AI 扩充引擎。
+* [AI 扩充](cognitive-search-concept-intro.md)提供可以利用认知服务 AI 扩充引擎的索引编制功能。
 
 有多个预览版功能版本与此正式版更新相一致。 若要查看新的预览版功能列表，请参阅[搜索 REST API 版本 2019-05-06-Preview](search-api-preview.md)。
 
@@ -66,7 +66,7 @@ REST API 版本 2019-05-06 包含某些针对早期版本进行的更改。 这�
 
 * 当 API 响应中返回无法识别的属性时，代码失效。 默认情况下，应用程序应忽略无法理解的属性。
 
-* 代码仍坚持 API 请求，并尝试将其重新发送到新 API 版本。 例如，如果应用程序仍存留从搜索 API 返回的延续标记（有关详细信息，请查找[搜索 API 参考](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)中的 `@search.nextPageParameters`）。
+* 代码仍坚持 API 请求，并尝试将其重新发送到新 API 版本。 例如，如果应用程序仍存留从搜索 API 返回的延续标记（有关详细信息，请查找`@search.nextPageParameters`搜索 API 参考[中的 ](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)）。
 
 如果任一种情况适用，都可能需要更改相应代码。 否则，如果不是要开始使用版本 2019-05-06 的[新功能](#WhatsNew)，便无需进行任何更改。
 

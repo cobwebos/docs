@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 62c8c93e07326e776cbe089042abc481544794bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74113222"
 ---
 # <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>Azure 认知搜索中的 OData 比较运算符 - `eq`、`ne`、`gt`、`lt`、`ge` 和 `le`
@@ -32,15 +32,15 @@ ms.locfileid: "74113222"
 
 相等性运算符：
 
-- `eq`：测试字段是否**等于**常量值
-- `ne`：测试字段**是否不等于**常量值
+- `eq`：测试某个字段是否**等于**某个常量值
+- `ne`：测试某个字段是否**不等于**某个常量值
 
 范围运算符：
 
-- `gt`：测试字段是否**大于**常量值
-- `lt`：测试字段是否**小于**常量值
-- `ge`： 测试字段是否**大于或等于**常量值
-- `le`： 测试字段是否**小于或等于**常量值
+- `gt`：测试某个字段是否**大于**某个常量值
+- `lt`：测试某个字段是否**小于**某个常量值
+- `ge`：测试某个字段是否**大于或等于**某个常量值
+- `le`：测试某个字段是否**小于或等于**某个常量值
 
 可以结合使用范围运算符和[逻辑运算符](search-query-odata-logical-operators.md)来测试某个字段是否在特定的值范围内。 请参阅本文稍后提供的[示例](#examples)。
 
@@ -89,7 +89,7 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 | `Edm.Int32` | `Edm.Int64` | 不适用 |
 | `Edm.Int32` | `Edm.Int32` | 不适用 |
 
-对于不允许的比较，例如将类型`Edm.Int64`字段与`NaN`比较 Azure 认知搜索 REST API 将返回"HTTP 400：错误请求"错误。
+对于不允许的比较（例如，将 `Edm.Int64` 类型的字段与 `NaN` 进行比较），Azure 认知搜索 REST API 将返回“HTTP 400:错误的请求”错误。
 
 > [!IMPORTANT]
 > 尽管数字类型比较非常灵活，但我们强烈建议在筛选器中编写比较表达式，使常量值的数据类型与要比较的变量或函数的数据类型相同。 混合使用浮点值和整数值时（在这种情况下，隐式转换可能会损失精度），这一点尤其重要。
@@ -102,10 +102,10 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 
 | 运算符 | 只有字段或变量为 `null` 时的结果 | 只有常量为 `null` 时的结果 | 字段或变量和常量都为 `null` 时的结果 |
 | --- | --- | --- | --- |
-| `gt` | `false` | HTTP 400： 错误请求错误 | HTTP 400： 错误请求错误 |
-| `lt` | `false` | HTTP 400： 错误请求错误 | HTTP 400： 错误请求错误 |
-| `ge` | `false` | HTTP 400： 错误请求错误 | HTTP 400： 错误请求错误 |
-| `le` | `false` | HTTP 400： 错误请求错误 | HTTP 400： 错误请求错误 |
+| `gt` | `false` | “HTTP 400:错误的请求”错误 | “HTTP 400:错误的请求”错误 |
+| `lt` | `false` | “HTTP 400:错误的请求”错误 | “HTTP 400:错误的请求”错误 |
+| `ge` | `false` | “HTTP 400:错误的请求”错误 | “HTTP 400:错误的请求”错误 |
+| `le` | `false` | “HTTP 400:错误的请求”错误 | “HTTP 400:错误的请求”错误 |
 | `eq` | `false` | `false` | `true` |
 | `ne` | `true` | `true` | `false` |
 

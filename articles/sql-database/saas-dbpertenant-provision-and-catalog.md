@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: 6ec8f8835e925663fc6ac21a6eb1df09d6927109
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74132110"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>了解如何预配新租户并将其注册到目录中
@@ -45,7 +45,7 @@ ms.locfileid: "74132110"
 
 该目录还存储其他租户或数据库元数据，如架构版本、服务计划或提供给租户的 SLA。 该目录可以存储其他在进行应用程序管理、客户支持或 DevOps 时所需的信息。
 
-除了 SaaS 应用程序，该目录还可以启用数据库工具。 在 Wingtip 票证 SaaS 数据库每个租户示例中，目录用于启用跨租户查询，这在[临时报告教程](saas-tenancy-cross-tenant-reporting.md)中进行了探讨。 架构[管理和](saas-tenancy-schema-management.md)[租户分析](saas-tenancy-tenant-analytics.md)教程中探讨了跨数据库作业管理。
+除了 SaaS 应用程序，该目录还可以启用数据库工具。 在 Wingtip 票证 SaaS 每个租户的数据库示例中，目录用于启用跨租户查询，这在[即席报表教程](saas-tenancy-cross-tenant-reporting.md)中进行了介绍。 [架构管理](saas-tenancy-schema-management.md)和[租户分析](saas-tenancy-tenant-analytics.md)教程中探讨了跨数据库作业管理。
 
 在 Wingtip Tickets SaaS 示例中，目录通过使用[弹性数据库客户端库 (EDCL)](sql-database-elastic-database-client-library.md) 的“分片管理”功能来实现。 EDCL 在 Java 和 .NET Framework 中可用。 EDCL 允许应用程序创建、管理和使用支持数据库的分片映射。
 
@@ -77,11 +77,11 @@ Wingtip Tickets 的“每租户一个数据库”应用通过复制在目录服�
 
 若要了解 Wingtip Tickets 应用程序如何实现新租户预配，请在预配租户时添加断点并单步执行工作流。
 
-1. 在 PowerShell ISE 中，打开 ...\\学习模块\\预配和目录\\_演示-预配和目录.ps1_并设置以下参数：
+1. 在 PowerShell ISE 中打开 .。。\\学习模块\\ProvisionAndCatalog\\_demo-provisionandcatalog.ps1_并设置以下参数：
 
    * **$TenantName** = 新地点的名称（例如 *Bushwillow Blues*）。
    * **$VenueType** = 预定义的地点类型之一：_blues、classicalmusic、dance、jazz、judo、motorracing、multipurpose、opera、rockmusic、soccer_。
-   * **$DemoScenario1** = **1**.*预配单个租户*。
+   * **$DemoScenario** = **1**，*预配单个租户*。
 
 2. 通过将游标置于显示有“New-Tenant `”的行中的任意位置来添加断点**。 然后按 F9。
 
@@ -115,7 +115,7 @@ Wingtip Tickets 的“每租户一个数据库”应用通过复制在目录服�
 
     数据库名称是从租户名称构造的，可使用户清楚地知道哪个分片属于哪个租户。 也可使用其他数据库命名约定。 资源管理器模板通过复制目录服务器上的模板数据库 (_baseTenantDB_) 来创建租户数据库。 另一种方法是创建一个数据库，并通过导入 bacpac 对该数据库进行初始化。 或者从已知的位置执行初始化脚本。
 
-    资源管理器模板位于 ...[学习模块]公共*文件夹中：*租户数据库copytemplate.json*
+    资源管理器模板位于 ..\Learning Modules\Common\ 文件夹中： *tenantdatabasecopytemplate.json*
 
 * **租户数据库进一步初始化。** 已添加地点（租户）名称和地点类型。 其他初始化也可以在此处执行。
 
@@ -137,7 +137,7 @@ Wingtip Tickets 的“每租户一个数据库”应用通过复制在目录服�
 
 1. 在 PowerShell ISE 中打开 ...\\Learning Modules\\ProvisionAndCatalog\\*Demo-ProvisionAndCatalog.ps1*。 将 *$DemoScenario* 参数更改为 3：
 
-   * **$DemoScenario3** = **3**日，*提供一批租户*。
+   * **$DemoScenario** = **3**，*预配一批租户*。
 2. 若要运行脚本，请按 F5。
 
 该脚本部署一批其他租户。 它使用 [Azure 资源管理器模板](../azure-resource-manager/resource-manager-template-walkthrough.md)控制该批租户，将每个数据库的预配委托给链接的模板。 以这种方式使用模板允许 Azure 资源管理器中转脚本的预配过程。 这些模板并行预配数据库，并在需要时进行重试。 该脚本是幂等的，因此如果由于任何原因，它失败或停止，请重新运行它。

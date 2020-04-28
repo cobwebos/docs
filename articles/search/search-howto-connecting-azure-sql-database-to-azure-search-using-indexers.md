@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: c09727e8d92a449b41124eae6ad8381d66cb2619
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74113306"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-an-azure-cognitive-search-indexer"></a>使用 Azure 认知搜索索引器连接 Azure SQL 数据库并为其内容编制索引
@@ -22,7 +22,7 @@ ms.locfileid: "74113306"
 
 本文不但介绍了使用[索引器](search-indexer-overview.md)的机制，而且还介绍了仅适用于 Azure SQL 数据库的功能（如集成的更改跟踪）。 
 
-除了 Azure SQL 数据库之外，Azure 认知搜索还针对 [Azure Cosmos DB](search-howto-index-cosmosdb.md)、[Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)和 [Azure 表存储](search-howto-indexing-azure-tables.md)提供了索引器。 要请求对其他数据源的支持，请在[Azure 认知搜索反馈论坛](https://feedback.azure.com/forums/263029-azure-search/)上提供反馈。
+除了 Azure SQL 数据库之外，Azure 认知搜索还针对 [Azure Cosmos DB](search-howto-index-cosmosdb.md)、[Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)和 [Azure 表存储](search-howto-indexing-azure-tables.md)提供了索引器。 若要请求对其他数据源的支持，请在 [Azure 认知搜索反馈论坛](https://feedback.azure.com/forums/263029-azure-search/)上提供反馈。
 
 ## <a name="indexers-and-data-sources"></a>索引器和数据源
 
@@ -40,7 +40,7 @@ ms.locfileid: "74113306"
 
 * [Azure 门户](https://portal.azure.com)中的导入数据向导
 * Azure 认知搜索 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
-* Azure 认知搜索[REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)
+* Azure 认知搜索 [REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)
 
 在本文中，我们将使用 REST API 创建**索引器**和**数据源**。
 
@@ -228,7 +228,7 @@ Azure 认知搜索使用****“增量索引编制”来避免索引器每次运�
     }
 
 > [!WARNING]
-> 如果源表在高水位线列上没有索引，则 SQL 索引器使用的查询可能会超时。特别是，当表`ORDER BY [High Water Mark Column]`包含许多行时，子句要求索引高效运行。
+> 如果源表在高水位标记列上没有索引，则 SQL 索引器使用的查询可能会超时。特别是`ORDER BY [High Water Mark Column]` ，当表包含很多行时，子句需要索引才能高效运行。
 >
 >
 
@@ -299,33 +299,33 @@ SQL 索引器公开多个配置设置：
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题解答
 
-**问：是否可以将 Azure SQL 索引器与在 Azure 中的 IaaS VM 上运行的 SQL 数据库使用？**
+**问：是否可以将 Azure SQL 索引器与在 Azure 中的 IaaS Vm 上运行的 SQL 数据库配合使用？**
 
 是的。 但是，需要允许搜索服务连接到数据库。 有关详细信息，请参阅[配置从 Azure 认知搜索索引器到 Azure VM 上 SQL Server 的连接](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)。
 
-**问：是否可以将 Azure SQL 索引器与本地运行的 SQL 数据库一起运行？**
+**问：是否可以将 Azure SQL 索引器用于本地运行的 SQL 数据库？**
 
-无法直接配合使用。 我们不建议使用也不支持直接连接，因为这样做需要使用 Internet 流量打开数据库。 对于此方案，客户已使用诸如 Azure 数据工厂之类的桥技术取得了成功。 有关详细信息，请参阅使用[Azure 数据工厂将数据推送到 Azure 认知搜索索引](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector)。
+无法直接配合使用。 我们不建议使用也不支持直接连接，因为这样做需要使用 Internet 流量打开数据库。 对于此方案，客户已使用诸如 Azure 数据工厂之类的桥技术取得了成功。 有关详细信息，请参阅[使用 Azure 数据工厂将数据推送到 Azure 认知搜索索引](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector)。
 
-**问：是否可以将 Azure SQL 索引器与在 Azure 上的 IaaS 中运行的 SQL Server 以外的数据库使用？**
+**问：是否可以将 Azure SQL 索引器与在 Azure 上的 IaaS 中运行 SQL Server 以外的数据库一起使用？**
 
-不是。 我们不支持此方案，因为我们尚未使用除 SQL Server 以外的任何数据库测试该索引器。  
+否。 我们不支持此方案，因为我们尚未使用除 SQL Server 以外的任何数据库测试该索引器。  
 
-**问：是否可以创建按计划运行的多个索引器？**
+**问：我是否可以创建按计划运行的多个索引器？**
 
 是的。 但是，一次只能在一个节点上运行一个索引器。 如果需要同时运行多个索引器，请考虑将搜索服务扩展到多个搜索单位。
 
-**问：运行索引器会影响查询工作负荷吗？**
+**问：运行索引器是否会影响我的查询工作负荷？**
 
-是的。 索引器在搜索服务中的一个节点上运行，该节点的资源在编制查询流量索引并进行处理和其他 API 请求之间共享。 如果运行密集型索引和查询工作负载，并且遇到 503 个错误的高速率或增加响应时间，请考虑[扩展搜索服务](search-capacity-planning.md)。
+是的。 索引器在搜索服务中的一个节点上运行，该节点的资源在编制查询流量索引并进行处理和其他 API 请求之间共享。 如果运行大量索引和查询工作负荷，并且遇到503个错误或响应时间增加，请考虑[向上缩放搜索服务](search-capacity-planning.md)。
 
 **问：是否可以将[故障转移群集](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)中的辅助副本用作数据源？**
 
 不一定。 对于表或视图的完整索引编制，可以使用辅助副本。 
 
-对于增量索引，Azure 认知搜索支持两个更改检测策略：SQL 集成更改跟踪和高水位标记。
+对于增量索引，Azure 认知搜索支持两个更改检测策略： SQL 集成的更改跟踪和高水位线。
 
 在只读副本上，SQL 数据库不支持集成的更改跟踪。 因此，必须使用高使用标记策略。 
 
