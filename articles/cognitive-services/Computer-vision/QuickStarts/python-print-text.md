@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: af755af9404cc98c650164e5f891661f2530f77b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 7daa630c47fc677f6659fa51cca6583a0b583865
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80244767"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404386"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-python"></a>快速入门：使用计算机视觉 REST API 和 Python 提取印刷体文本 (OCR)
 
@@ -226,7 +226,9 @@ response = requests.post(ocr_url, headers=headers, params=params, data = image_d
 
 ## <a name="next-steps"></a>后续步骤
 
-浏览一款 Python 应用程序，该应用程序使用计算机视觉执行光学字符识别 (OCR)、创建智能裁剪缩略图，并对图像中的视觉特征（包括人脸）进行检测、分类、标记和描述。 要快速体验计算机视觉 API，请尝试使用 [Open API 测试控制台](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)。
+接下来，了解一款使用计算机视觉执行光学字符识别 (OCR) 功能的 Python 应用程序；创建智能裁剪缩略图；对图像中的视觉特征进行检测、分类、标记和说明。
 
 > [!div class="nextstepaction"]
 > [计算机视觉 API Python 教程](../Tutorials/PythonTutorial.md)
+
+* 要快速体验计算机视觉 API，请尝试使用 [Open API 测试控制台](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)。

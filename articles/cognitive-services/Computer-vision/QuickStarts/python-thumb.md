@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 21d8659e13506777f6045272f68c69dd63f09cf5
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 68a6504668b9f180a421fe20c2c89d73b87bcc35
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80244675"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404349"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-python"></a>快速入门：使用计算机视觉 REST API 和 Python 生成缩略图
 
-在本快速入门中，你将使用计算机视觉 REST API 基于图像生成缩略图。 使用[获取缩略图](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)方法，可以指定所需的高度和宽度，计算机视觉使用智能裁剪来智能识别感兴趣的区域并基于该区域生成裁剪坐标。
+本快速入门将使用计算机视觉 REST API 基于图像生成缩略图。 使用[获取缩略图](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)方法，可以指定所需的高度和宽度，计算机视觉使用智能裁剪来智能识别感兴趣的区域并基于该区域生成裁剪坐标。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/try/cognitive-services/)。
 
@@ -93,7 +93,9 @@ print("Thumbnail is {0}-by-{1}".format(*thumbnail.size))
 
 ## <a name="next-steps"></a>后续步骤
 
-接下来，了解有关生成缩略图功能的更多详细信息。
+接下来，了解一款使用计算机视觉执行光学字符识别 (OCR) 功能的 Python 应用程序；创建智能裁剪缩略图；对图像中的视觉特征进行检测、分类、标记和说明。
 
 > [!div class="nextstepaction"]
-> [生成缩略图](../concept-generating-thumbnails.md)
+> [计算机视觉 API Python 教程](../Tutorials/PythonTutorial.md)
+
+* 要快速体验计算机视觉 API，请尝试使用 [Open API 测试控制台](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)。

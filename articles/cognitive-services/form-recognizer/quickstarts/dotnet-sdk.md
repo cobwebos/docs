@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: b9db9daf06b59e1a26a9b03a93aff63984841862
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 8d05f5ad07f9b3affba9442d6caa6e63162b813c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77118363"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399423"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>快速入门：适用于 .NET 的表单识别器客户端库
 
@@ -42,7 +42,7 @@ ms.locfileid: "77118363"
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-获取试用订阅或资源的密钥后，请为该密钥和终结点[创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别名为 `FORM_RECOGNIZER_KEY` 和 `FORM_RECOGNIZER_ENDPOINT`。
+获取密钥和终结点后，请为该密钥和终结点[创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别命名为 `FORM_RECOGNIZER_KEY` 和 `FORM_RECOGNIZER_ENDPOINT`。
 
 ### <a name="create-a-new-c-application"></a>新建 C# 应用程序
 
@@ -99,12 +99,6 @@ dotnet add package Microsoft.Azure.CognitiveServices.FormRecognizer --version 0.
 |[ExtractedPage](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.extractedpage?view=azure-dotnet-preview)| 此类代表从单个表单文档提取的所有数据。|
 
 ## <a name="code-examples"></a>代码示例
-
-<!--
-    Include code snippets and short descriptions for each task you list in the the bulleted list. Briefly explain each operation, but include enough clarity to explain complex or otherwise tricky operations.
-
-    Include links to the service's reference content when introducing a class for the first time
--->
 
 这些代码片段演示如何使用适用于 .NET 的表单识别器客户端库执行以下任务：
 
@@ -193,7 +187,7 @@ dotnet run
 在本快速入门中，你已使用表单识别器 .NET 客户端库训练了一个自定义模型，并分析了表单。 接下来，请了解如何创建更好的训练数据集并生成更准确的模型。
 
 > [!div class="nextstepaction"]
->[生成训练数据集](../build-training-data-set.md)
+> [生成训练数据集](../build-training-data-set.md)
 
 * [什么是表单识别器？](../overview.md)
 * 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/FormRecognizer) 上找到此示例的源代码。

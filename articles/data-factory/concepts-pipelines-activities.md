@@ -10,15 +10,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.openlocfilehash: ad4ffa71480a5af06c31872cbafcaab7719c55e0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418331"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动
 
-> [!div class="op_single_selector" title1="选择您正在使用的数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择要使用的数据工厂服务的版本："]
 > * [版本 1](v1/data-factory-create-pipelines.md)
 > * [当前版本](concepts-pipelines-activities.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -26,11 +26,11 @@ ms.locfileid: "81418331"
 本文帮助你了解 Azure 数据工厂中的管道和活动，并帮助你利用它们为数据移动和数据处理方案构造端到端数据驱动工作流。
 
 ## <a name="overview"></a>概述
-数据工厂可以包含一个或多个数据管道。 “管道”是共同执行一项任务的活动的逻辑分组。 例如，管道可以包含一组引入和清理日志数据的活动，然后启动映射数据流以分析日志数据。 管道允许您将活动作为一个集而不是每个单独的集进行管理。 您可以独立部署和计划管道，而不是活动。
+数据工厂可以包含一个或多个数据管道。 “管道”是共同执行一项任务的活动的逻辑分组。 例如，管道可能包含一组活动，这些活动用于引入和清理日志数据，然后启动映射数据流来分析日志数据。 使用管道可以将活动作为一个集来管理，而不是分别管理每个活动。 您可以独立部署和计划管道，而不是单独部署和计划。
 
-管道中的活动定义对数据执行的操作。 例如，可使用复制活动将数据从本地 SQL Server 复制到 Azure Blob 存储。 然后，使用数据流活动或 Databricks 笔记本活动来处理数据并将其转换为 Azure Synapse 分析池，在此基础上构建了商业智能报告解决方案。
+管道中的活动定义对数据执行的操作。 例如，可使用复制活动将数据从本地 SQL Server 复制到 Azure Blob 存储。 然后，使用数据流活动或 Databricks 笔记本活动处理数据，并将其从 blob 存储转换到 Azure Synapse 分析池，该池位于构建商业智能报表解决方案之上。
 
-数据工厂包含三组活动：[数据移动活动](copy-activity-overview.md)、[数据转换活动](transform-data.md)和[控制活动](control-flow-web-activity.md)。 活动可以获取零个或多个输入[数据集](concepts-datasets-linked-services.md)，并生成一个或多个输出[数据集](concepts-datasets-linked-services.md)。 下图显示了数据工厂中管道、活动和数据集之间的关系：
+数据工厂包含三组活动：[数据移动活动](copy-activity-overview.md)、[数据转换活动](transform-data.md)和[控制活动](control-flow-web-activity.md)。 活动可以接受零个或多个输入[数据集](concepts-datasets-linked-services.md)并生成一个或多个输出[数据集](concepts-datasets-linked-services.md)。 下图显示了数据工厂中管道、活动和数据集之间的关系：
 
 ![数据集、活动和管道之间的关系](media/concepts-pipelines-activities/relationship-between-dataset-pipeline-activity.png)
 
@@ -49,11 +49,11 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 
 数据转换活动 | 计算环境
 ---------------------------- | -------------------
-[数据流](control-flow-execute-data-flow-activity.md) | Azure 数据实体由 Azure 数据工厂管理
+[数据流](control-flow-execute-data-flow-activity.md) | Azure Databricks 由 Azure 数据工厂管理
 [Azure 函数](control-flow-azure-function-activity.md) | Azure Functions
 [Hive](transform-data-using-hadoop-hive.md) | HDInsight [Hadoop]
 [Pig](transform-data-using-hadoop-pig.md) | HDInsight [Hadoop]
-[Mapreduce](transform-data-using-hadoop-map-reduce.md) | HDInsight [Hadoop]
+[MapReduce](transform-data-using-hadoop-map-reduce.md) | HDInsight [Hadoop]
 [Hadoop 流式处理](transform-data-using-hadoop-streaming.md) | HDInsight [Hadoop]
 [Spark](transform-data-using-spark.md) | HDInsight [Hadoop]
 [机器学习活动：批处理执行和更新资源](transform-data-using-machine-learning.md) | Azure VM
@@ -76,14 +76,14 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 [筛选器](control-flow-filter-activity.md) | 将筛选器表达式应用于输入数组
 [对于每个](control-flow-for-each-activity.md) | ForEach 活动在管道中定义重复的控制流。 此活动用于循环访问集合，并在循环中执行指定的活动。 此活动的循环实现类似于采用编程语言的 Foreach 循环结构。
 [获取元数据](control-flow-get-metadata-activity.md) | GetMetadata 活动可用于检索 Azure 数据工厂中的任何数据的元数据。
-[If Condition 活动](control-flow-if-condition-activity.md) | If Condition 可用于基于计算结果为 true 或 false 的条件进行分支。 If Condition 活动可提供 if 语句在编程语言中提供相同的功能。 当条件评估到`true`时，它评估一组活动，当条件评估为`false.`
+[If Condition 活动](control-flow-if-condition-activity.md) | If Condition 可用于基于计算结果为 true 或 false 的条件进行分支。 If Condition 活动可提供 if 语句在编程语言中提供相同的功能。 当条件计算结果为`true`时，它会计算一组活动，当条件计算结果为时，还会计算一组活动`false.`
 [查找活动](control-flow-lookup-activity.md) | 查找活动可用于从任何外部源读取或查找记录/表名称/值。 此输出可进一步由后续活动引用。
 [设置变量](control-flow-set-variable-activity.md) | 设置现有变量的值。
 [Until 活动](control-flow-until-activity.md) | 实现类似于采用编程语言的 Do-Until 循环结构的 Do-Until 循环。 它在循环中将执行一组活动，直到与活动相关联的条件的计算结果为 true。 你可以在数据工厂中为 Until 活动指定超时值。
 [验证活动](control-flow-validation-activity.md) | 确保管道仅在存在引用数据集、满足指定条件或已超时时才继续执行。
-[Wait 活动](control-flow-wait-activity.md) | 在管道中使用 Wait 活动时，管道将等待指定时间，然后再继续执行后续活动。
+[Wait 活动](control-flow-wait-activity.md) | 在管道中使用 Wait 活动时，管道将等待指定的时间，然后再继续执行后续活动。
 [Web 活动](control-flow-web-activity.md) | Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可以传递数据集和链接服务以供活动使用和访问。
-[Webhook 活动](control-flow-webhook-activity.md) | 使用 Webhook 活动，调用终结点，并传递回调 URL。 管道运行在继续下一个活动之前，等待调用回调。
+[Webhook 活动](control-flow-webhook-activity.md) | 使用 webhook 活动，调用终结点，并传递回调 URL。 管道运行在继续下一个活动之前，等待调用回调。
 
 ## <a name="pipeline-json"></a>管道 JSON
 下面介绍如何以 JSON 格式定义管道：
@@ -106,14 +106,14 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 }
 ```
 
-标记 | 说明 | 类型 | 必选
+标记 | 描述 | 类型 | 必需
 --- | ----------- | ---- | --------
-name | 管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：140</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符："."."，"*"、"\""/"，"<"、">"、"""%"、"&"、"："，"\" </li></ul> | 字符串 | 是
+name | 管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：140</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符： "."、"+"、"？"、"/"、"<"、">"、"*"、"%"、"&"、"："、"\" </li></ul> | 字符串 | 是
 description | 指定描述管道用途的文本。 | 字符串 | 否
 活动 | **activities** 节中可定义有一个或多个活动。 请参阅[活动 JSON](#activity-json) 一节，以了解有关活动 JSON 元素的详细信息。 | Array | 是
 parameters | **参数**部分可在在管道内定义一个或多个参数，使你的管道能够灵活地重复使用。 | 列出 | 否
-concurrency | 管道可以具有的最大并发运行数。 默认情况下，没有最大值。 如果达到并发限制，则其他管道运行将排队，直到较早的管道完成 | Number | 否 
-annotations | 与管道关联的标记的列表 | Array | 否
+concurrency | 管道可以具有的最大并发运行数。 默认情况下，没有最大值。 如果达到并发限制，则会将其他管道运行排入队列，直到更早的管道完成 | 数字 | 否 
+annotations | 与管道关联的标记的列表 | 数组 | 否
 
 ## <a name="activity-json"></a>活动 JSON
 **activities** 节中可定义有一个或多个活动。 有两种主要的活动类型：执行活动和控制活动。
@@ -143,12 +143,12 @@ annotations | 与管道关联的标记的列表 | Array | 否
 
 标记 | 说明 | 必选
 --- | ----------- | ---------
-name | 活动的名称。 指定一个名称，它表示活动要执行的操作。 <br/><ul><li>最大字符数：55</li><li>必须以字母编号或下划线开头 （\_）</li><li>不允许使用以下字符："."."，"*"、"\""/"，"<"、">"、"""%"、"&"、"："，"\" | 是</li></ul>
+name | 活动的名称。 指定一个名称，它表示活动要执行的操作。 <br/><ul><li>最大字符数：55</li><li>必须以字母数字或下划线（\_）开头</li><li>不允许使用以下字符： "."、"+"、"？"、"/"、"<"、">"、"*"、"%"、"&"、"："、"\" | 是</li></ul>
 description | 描述活动用途的文本 | 是
 type | 活动的类型。 有关不同的活动类型，请参阅[数据移动活动](#data-movement-activities)、[数据转换活动](#data-transformation-activities)和[控制活动](#control-flow-activities)部分。 | 是
 linkedServiceName | 活动使用的链接服务的名称。<br/><br/>活动可能需要你指定链接到所需计算环境的链接服务。 | 对 HDInsight 活动、Azure 机器学习批处理评分活动和存储过程活动是必需的。 <br/><br/>对其他活动均非必需
 typeProperties | typeProperties 部分的属性取决于每个活动类型。 要查看活动的类型属性，请单击链接转到上一节中的活动。 | 否
-policy | 影响活动运行时行为的策略。 此属性包括超时和重试行为。 如果未指定，则使用默认值。 有关详细信息，请参阅[活动策略](#activity-policy)部分。 | 否
+policy | 影响活动运行时行为的策略。 此属性包括超时和重试行行为。 如果未指定，则使用默认值。 有关详细信息，请参阅[活动策略](#activity-policy)部分。 | 否
 dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前活动的依赖方式。 有关详细信息，请参阅[活动依赖项](#activity-dependency) | 否
 
 ### <a name="activity-policy"></a>活动策略
@@ -184,10 +184,10 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 
 JSON 名称 | 说明 | 允许的值 | 必选
 --------- | ----------- | -------------- | --------
-timeout | 指定活动运行的超时。 | Timespan | 不是。 默认超时为 7 天。
-retry | 最大重试次数 | Integer | 不是。 默认值为 0
-retryIntervalInSeconds | 重试之间的延迟（以秒为单位） | Integer | 不是。 默认为 30 秒
-secureOutput | 设置为 true 时，活动输出被视为安全，不会记录以进行监视。 | Boolean | 不是。 默认值为 false。
+timeout | 指定活动运行的超时。 | Timespan | 否。 默认超时为 7 天。
+retry | 最大重试次数 | Integer | 否。 默认值为 0
+retryIntervalInSeconds | 重试之间的延迟（以秒为单位） | Integer | 否。 默认为 30 秒
+secureOutput | 如果设置为 true，则会将活动的输出视为安全的，而不会记录监视。 | Boolean | 否。 默认值为 false。
 
 ### <a name="control-activity"></a>控制活动
 控制活动具有以下顶级结构：
@@ -206,16 +206,16 @@ secureOutput | 设置为 true 时，活动输出被视为安全，不会记录�
 }
 ```
 
-标记 | 说明 | 必选
+标记 | 说明 | 必需
 --- | ----------- | --------
-name | 活动的名称。 指定一个名称，它表示活动要执行的操作。<br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符："."."，"*"、"\""/"，"<"、">"、"""%"、"&"、"："，"\" | 是</li><ul>
+name | 活动的名称。 指定一个名称，它表示活动要执行的操作。<br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符： "."、"+"、"？"、"/"、"<"、">"、"*"、"%"、"&"、"："、"\" | 是</li><ul>
 description | 描述活动用途的文本 | 是
-type | 活动的类型。 有关不同类型的[活动，请参阅数据移动活动](#data-movement-activities)、[数据转换活动](#data-transformation-activities)[和控制活动](#control-flow-activities)部分。 | 是
+type | 活动的类型。 有关不同类型的活动，请参阅[数据移动活动](#data-movement-activities)、[数据转换活动](#data-transformation-activities)和[控制活动](#control-flow-activities)部分。 | 是
 typeProperties | typeProperties 部分的属性取决于每个活动类型。 要查看活动的类型属性，请单击链接转到上一节中的活动。 | 否
 dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前活动的依赖方式。 有关详细信息，请参阅[活动依赖项](#activity-dependency)。 | 否
 
 ### <a name="activity-dependency"></a>活动依赖项
-活动依赖项定义后续活动如何依赖于以前的活动，以确定是否继续执行下一个任务的条件。 活动可能依赖于具有不同依赖项条件的一个或多个以前的活动。
+活动依赖项定义后续活动如何依赖于以前的活动，确定是否继续执行下一个任务的条件。 活动可能依赖于具有不同依赖项条件的一个或多个以前的活动。
 
 不同的依赖项条件有：成功、失败、跳过和完成。
 
@@ -224,7 +224,7 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 - 活动 B 对活动 A 具有的依赖项条件为**成功**：活动 B 仅在活动 A 的最终状态为成功时才运行
 - 活动 B 对活动 A 具有的依赖项条件为**失败**：活动 B 仅在活动 A 的最终状态为失败时才运行
 - 活动 B 对活动 A 具有的依赖项条件为**完成**：活动 B 在活动 A 的最终状态为成功或失败时运行
-- 活动 B 具有活动 A 的依赖项**条件，如果**活动 A 的最终状态为跳过，则活动 B 将运行。 在活动 X -> 活动 Y -> 活动 Z 的情况下出现跳过，其中每个活动仅在以前的活动成功后才运行。 如果活动 X 失败，则活动 Y 的状态为"跳过"，因为它永远不会执行。 同样，活动 Z 的状态也为"跳过"。
+- 活动 B 对活动 A 具有依赖项条件，但**跳过**：活动 B 在活动 a 的最终状态为 "已跳过" 时运行。 在活动 X -> 活动 Y -> 活动 Z 的情况下出现跳过，其中每个活动仅在以前的活动成功后才运行。 如果活动 X 失败，则活动 Y 的状态为 "已跳过"，因为它从不执行。 同样，活动 Z 也具有 "跳过" 状态。
 
 #### <a name="example-activity-2-depends-on-the-activity-1-succeeding"></a>示例：活动 2 是否运行取决于活动 1 是否成功运行
 
@@ -358,7 +358,7 @@ In the following sample pipeline, there is one activity of type **Copy** in the 
 请注意以下几点：
 
 - 在 activities 节中，只有一个活动的 **type** 设置为 **HDInsightHive**。
-- Hive 脚本文件**saweblogs.hql**存储在 Azure 存储帐户（由脚本链接服务指定，称为 Azure 存储链接服务）和容器`adfgetstarted`中的脚本文件夹中。
+- Hive 脚本文件**partitionweblogs.hql**存储在 Azure 存储帐户（由 scriptLinkedService 指定，名为 AzureStorageLinkedService）中，以及容器`adfgetstarted`中的 script 文件夹中。
 - `defines` 部分用于指定以配置单元配置值传递到配置单元脚本的运行时设置（例如，$`{hiveconf:inputtable}`，`${hiveconf:partitionedtable}`）。
 
 每个转换活动的 typeProperties **** 节都不同。 若要了解有关转换活动所支持的类型属性的详细信息，请单击[数据转换活动](#data-transformation-activities)中的转换活动。
@@ -371,11 +371,11 @@ In the following sample pipeline, there is one activity of type **Copy** in the 
 可以使用[活动依赖项](#activity-dependency)将两个活动进行链接，以定义后续活动对以前活动的依赖方式，确定是否继续执行下一个任务的条件。 活动可以依赖于具有不同依赖项条件的一个或多个以前的活动。
 
 ## <a name="scheduling-pipelines"></a>计划管道
-管道由触发器计划 有不同类型的触发器（计划触发器，它允许按挂钟计划触发管道，以及手动触发器，它触发按需管道）。 有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md)一文。
+管道由触发器计划 有不同类型的触发器（计划程序触发器，这允许按照时钟计划触发管道，以及根据需要触发管道的手动触发器）。 有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md)一文。
 
-若要使你的触发器启动管道运行，必须包含对触发器定义中的特定管道的管道引用。 管道和触发器具有 n-m 关系。 多个触发器可以启动单个管道，而同一触发器可以启动多个管道。 定义管道后，必须启动触发器，以使其开始触发管道。 有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md)一文。
+若要使你的触发器启动管道运行，必须包含对触发器定义中的特定管道的管道引用。 管道和触发器具有 n-m 关系。 多个触发器可以启动单个管道，同一个触发器可以启动多个管道。 定义管道后，必须启动触发器，以使其开始触发管道。 有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md)一文。
 
-例如，假设您有一个计划程序触发器"触发器 A"，我希望启动我的管道"MyCopyPipeline"。 定义触发器，如以下示例所示：
+例如，假设你有一个计划程序触发器 "触发器 A"，我想要启动我的管道 "MyCopyPipeline"。 定义触发器，如以下示例中所示：
 
 ### <a name="trigger-a-definition"></a>触发器 A 定义
 

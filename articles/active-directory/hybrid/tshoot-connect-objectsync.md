@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6e10d00ed90248319801974c7c1e7fadf835024b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81407022"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步排查对象同步问题
@@ -43,7 +43,7 @@ ms.locfileid: "81407022"
 以下输入参数是故障排除任务所需的：
 1.  **对象可分辨名称** – 这是需要进行故障排除的对象的可分辨名称
 2.  **AD 连接器名称** – 这是上述对象所驻留的 AD 林的名称。
-3.  Azure AD 租户全局![管理员凭据全局管理员凭据](media/tshoot-connect-objectsync/objsynch1.png)
+3.  Azure AD 租户全局管理员凭据![全局管理员凭据](media/tshoot-connect-objectsync/objsynch1.png)
 
 ### <a name="understand-the-results-of-the-troubleshooting-task"></a>了解故障排除任务的结果
 此故障排除任务执行以下检查：
@@ -97,4 +97,4 @@ ms.locfileid: "81407022"
 ![HTML 报表](media/tshoot-connect-objectsync/objsynch8.png)
 
 ## <a name="next-steps"></a>后续步骤
-详细了解[将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)。
+了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

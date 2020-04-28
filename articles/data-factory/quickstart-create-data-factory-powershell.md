@@ -11,20 +11,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: quickstart
-ms.date: 01/22/2018
+ms.date: 04/10/2020
 ms.author: jingwang
-ms.openlocfilehash: 7f527d3c57f086e7941505a9ca4396885c746762
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ad757e3d65d3094ca6883d747404906a871ed850
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75440083"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419334"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>快速入门：使用 PowerShell 创建 Azure 数据工厂
 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [当前版本](quickstart-create-data-factory-powershell.md)
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 此快速入门介绍了如何使用 PowerShell 创建 Azure 数据工厂。 在此数据工厂中创建的管道会将数据从 Azure Blob 存储中的一个文件夹**复制**到另一个文件夹。 有关如何使用 Azure 数据工厂**转换**数据的教程，请参阅[教程：使用 Spark 转换数据](transform-data-using-spark.md)。
 
@@ -111,6 +113,10 @@ ms.locfileid: "75440083"
 ## <a name="create-a-linked-service"></a>创建链接服务
 
 在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在本快速入门中，请创建一个 Azure 存储链接服务，用作源存储和接收器存储。 链接服务包含的连接信息可供数据工厂服务用来在运行时连接到它。
+
+>[!TIP]
+>本快速入门使用“帐户密钥”  作为数据存储的身份验证类型，但你可以根据需要选择其他受支持的身份验证方法：“SAS URI”  、“服务主体”  和“托管标识”  。 有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#linked-service-properties)中的相应部分。
+>为了安全地存储数据存储的机密，我们还建议使用 Azure Key Vault。 有关详细说明，请参阅[此文](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)。
 
 1. 在 **C:\ADFv2QuickStartPSH** 文件夹中，创建包含以下内容的名为 **AzureStorageLinkedService.json** 的 JSON 文件：（创建 ADFv2QuickStartPSH 文件夹（如果不存在）。）
 

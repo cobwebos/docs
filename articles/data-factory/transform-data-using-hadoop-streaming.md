@@ -1,5 +1,5 @@
 ---
-title: 使用 Hadoop 流活动转换数据
+title: 使用 Hadoop 流式处理活动转换数据
 description: 说明如何使用 Azure 数据工厂中的 Hadoop 流式处理活动通过在 HDInsight 群集上运行 Hadoop 流式处理程序来转换数据。
 author: nabhishek
 ms.author: abnarain
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/16/2018
 ms.openlocfilehash: c1bba6903fe1cb8cc5bae9a12153553594180b43
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418875"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的 Hadoop 流式处理活动转换数据
@@ -69,7 +69,7 @@ ms.locfileid: "81418875"
 
 ## <a name="syntax-details"></a>语法详细信息
 
-| properties          | 说明                              | 必选 |
+| properties          | 说明                              | 必需 |
 | ----------------- | ---------------------------------------- | -------- |
 | name              | 活动名称                     | 是      |
 | description       | 描述活动用途的文本 | 否       |
@@ -91,9 +91,9 @@ ms.locfileid: "81418875"
 
 * [U-SQL 活动](transform-data-using-data-lake-analytics.md)
 * [Hive 活动](transform-data-using-hadoop-hive.md)
-* [猪活动](transform-data-using-hadoop-pig.md)
+* [Pig 活动](transform-data-using-hadoop-pig.md)
 * [MapReduce 活动](transform-data-using-hadoop-map-reduce.md)
-* [火花活动](transform-data-using-spark.md)
+* [Spark 活动](transform-data-using-spark.md)
 * [.NET 自定义活动](transform-data-using-dotnet-custom-activity.md)
 * [机器学习批处理执行活动](transform-data-using-machine-learning.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)

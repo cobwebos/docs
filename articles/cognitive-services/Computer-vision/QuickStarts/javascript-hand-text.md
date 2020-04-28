@@ -8,26 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/26/2020
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: cca5680d307874a565dec47f643bf9320192c270
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 35988f10703967bd5986015ccb0fb480679b94e9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656104"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404752"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-javascript"></a>快速入门：使用计算机视觉 2.0 和 2.1 REST API 和 JavaScript 提取印刷体文本和手写文本
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>快速入门：使用计算机视觉 REST API 和 JavaScript 提取印刷体文本和手写文本
 
 本快速入门将使用计算机视觉 REST API 从图像中提取印刷体文本和/或手写文本。 使用[批量读取](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)和[读取操作结果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d)方法，可以检测图像中的文本，并将识别的字符提取到计算机可读的字符流中。 该 API 将确定用于每行文本的识别模型，因此它支持同时包含印刷体文本和手写文本的图像。
 
-与计算机视觉 2.0 和 2.1 相比，计算机视觉 3.0 公共预览版提供：
+此功能在 v2.1 API 和 v3.0 公共预览版 API 中都可用。 与 v2.1 相比，3.0 API 有以下不同：
 
-* 更高的准确度
-* 更改的输出格式
-* 字词置信度分数
-* 通过附加的语言参数同时支持西班牙语和英语
+* 准确度改进
+* 提供了字词置信度分数
+* 使用附加的 `language` 参数同时支持西班牙语和英语
+* 具有不同的输出格式
+
+针对所使用的版本，选择下面的选项卡。
 
 #### <a name="version-2"></a>[第 2 版](#tab/version-2)
 
@@ -784,7 +786,9 @@ Image to read:
 
 ## <a name="next-steps"></a>后续步骤
 
-浏览一款 JavaScript 应用程序，该应用程序使用计算机视觉执行光学字符识别 (OCR)、创建智能裁剪缩略图，并对图像中的视觉特征（包括人脸）进行检测、分类、标记和描述。 要快速体验计算机视觉 API，请尝试使用 [Open API 测试控制台](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)。
+了解一款使用计算机视觉执行光学字符识别 (OCR) 功能的 JavaScript 应用程序；创建智能裁剪缩略图；对图像中的视觉特征进行检测、分类、标记和说明。 
 
 > [!div class="nextstepaction"]
 > [计算机视觉 API JavaScript 教程](../Tutorials/javascript-tutorial.md)
+
+* 要快速体验计算机视觉 API，请尝试使用 [Open API 测试控制台](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)。

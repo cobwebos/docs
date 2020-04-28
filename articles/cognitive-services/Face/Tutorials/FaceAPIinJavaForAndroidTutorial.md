@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 8d5bef141f83eedaa996bb63c1fb814aeb6af197
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: dd986a7557f468b939aefe1da825c9834618047f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76165961"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402917"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>教程：创建一个用于检测和定格图像中人脸的 Android 应用
 
@@ -35,11 +35,11 @@ ms.locfileid: "76165961"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 人脸订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=face-api)获取免费试用的订阅密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅人脸服务并获取密钥。 然后，为密钥和服务终结点字符串[创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别名为 `FACE_SUBSCRIPTION_KEY` 和 `FACE_ENDPOINT`。
 - 任何版本的 [Visual Studio 2015 或 2017](https://www.visualstudio.com/downloads/)。
-- [Android Studio](https://developer.android.com/studio/)，装有 API 22 或更高级别（这是人脸客户端库需要的）。
+- API 级别为 22 或更高的 [Android Studio](https://developer.android.com/studio/)。
 
 ## <a name="create-the-android-studio-project"></a>创建 Android Studio 项目
 
@@ -123,7 +123,7 @@ ms.locfileid: "76165961"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了人脸 Java SDK 的基本使用过程，并创建了一个应用程序来检测并定格图像中的人脸。 接下来，请深入了解人脸检测的详细信息。
+本教程介绍了如何使用人脸 Java SDK 创建一个应用程序来检测并定格图像中的人脸。 接下来，请深入了解人脸检测的详细信息。
 
 > [!div class="nextstepaction"]
 > [如何检测图像中的人脸](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)

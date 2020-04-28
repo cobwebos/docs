@@ -14,15 +14,15 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: 3b4362e4c5e69efddfbc99ef0f98ad3c5966165c
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81450865"
 ---
-# <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>如何：为 iOS/macOS 自定义浏览器和 Web 视图
+# <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>如何：自定义 iOS/macOS 的浏览器和 WebView
 
-完成交互式身份验证需要使用 Web 浏览器。 在 iOS 和 macOS 10.15+ 上，Microsoft 身份验证库 （MSAL） 默认使用系统 Web 浏览器（可能显示在应用顶部）执行交互式身份验证以登录用户。 使用系统浏览器的好处是可与其他应用程序和 Web 应用程序共享单一登录 (SSO) 状态。
+完成交互式身份验证需要使用 Web 浏览器。 在 iOS 和 macOS 10.15 + 上，Microsoft 身份验证库（MSAL）默认使用系统 web 浏览器（可能会显示在应用程序的顶部）进行交互式身份验证，以便登录用户。 使用系统浏览器的好处是可与其他应用程序和 Web 应用程序共享单一登录 (SSO) 状态。
 
 可以通过将配置自定义为其他用于显示 Web 内容的选项来更改体验，例如：
 
@@ -34,17 +34,17 @@ ms.locfileid: "81450865"
 对于 iOS 和 macOS：
 
 - [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc)
-- [WKWebView](https://developer.apple.com/documentation/webkit/wkwebview?language=objc).
+- [WKWebView](https://developer.apple.com/documentation/webkit/wkwebview?language=objc)。
 
-适用于 macOS 的`WKWebView`MSAL 仅支持较旧的操作系统版本。 `ASWebAuthenticationSession`仅在 macOS 10.15 及以上支持。 
+MSAL for macOS 仅支持`WKWebView`较早的 OS 版本。 `ASWebAuthenticationSession`仅在 macOS 10.15 和更高版本上受支持。 
 
 ## <a name="system-browsers"></a>系统浏览器
 
-对于 iOS，`ASWebAuthenticationSession`、`SFAuthenticationSession` 和 `SFSafariViewController` 被视为系统浏览器。 对于 macOS，`ASWebAuthenticationSession`仅可用。 一般情况下，系统浏览器将与 Safari 浏览器应用程序共享 Cookie 和其他网站数据。
+对于 iOS，`ASWebAuthenticationSession`、`SFAuthenticationSession` 和 `SFSafariViewController` 被视为系统浏览器。 对于 macOS，仅`ASWebAuthenticationSession`提供。 一般情况下，系统浏览器将与 Safari 浏览器应用程序共享 Cookie 和其他网站数据。
 
 默认情况下，MSAL 会动态检测 iOS 版本，并选择适用于该版本的建议系统浏览器。 在 iOS 12+ 上，系统浏览器为 `ASWebAuthenticationSession`。 
 
-### <a name="default-configuration-for-ios"></a>iOS 的默认配置
+### <a name="default-configuration-for-ios"></a>IOS 的默认配置
 
 | 版本 | Web 浏览器 |
 |:-------------:|:-------------:|
@@ -52,11 +52,11 @@ ms.locfileid: "81450865"
 | iOS 11 | SFAuthenticationSession |
 | iOS 10 | SFSafariViewController |
 
-### <a name="default-configuration-for-macos"></a>macOS 的默认配置
+### <a name="default-configuration-for-macos"></a>MacOS 的默认配置
 
 | 版本 | Web 浏览器 |
 |:-------------:|:-------------:|
-| macOS 10.15° | ASWebAuthenticationSession |
+| macOS 10.15 + | ASWebAuthenticationSession |
 | 其他版本 | WKWebView |
 
 开发人员还可为 MSAL 应用选择不同的系统浏览器：
@@ -74,10 +74,10 @@ ms.locfileid: "81450865"
 
 | 技术    | 浏览器类型  | iOS 可用性 | macOS 可用性 | 共享 Cookie 和其他数据  | MSAL 可用性 | SSO |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|-------------:|
-| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | 系统 | iOS12 和更高版本 | macOS 10.15 和更高版本 | 是 | iOS 和 macOS 10.15° | 具有 Safari 实例
-| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | 系统 | iOS11 和更高版本 | 空值 | 是 | 仅限 iOS |  具有 Safari 实例
-| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | 系统 | iOS11 和更高版本 | 空值 | 否 | 仅限 iOS | 否**
-| **SFSafariViewController** | 系统 | iOS10 | 空值 | 是 | 仅限 iOS |  具有 Safari 实例
+| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | 系统 | iOS12 和更高版本 | macOS 10.15 和更高版本 | 是 | iOS 和 macOS 10.15 + | 具有 Safari 实例
+| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | 系统 | iOS11 和更高版本 | 不适用 | 是 | 仅限 iOS |  具有 Safari 实例
+| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | 系统 | iOS11 和更高版本 | 不适用 | 否 | 仅限 iOS | 否**
+| **SFSafariViewController** | 系统 | iOS10 | 不适用 | 是 | 仅限 iOS |  具有 Safari 实例
 | **WKWebView**  | 应用中 | iOS8 和更高版本 | macOS 10.10 和更高版本 | 否 | iOS 和 macOS | 否**
 
 ** 要正常进行 SSO，需要在应用之间共享令牌。 这需要使用令牌缓存或中介应用程序，例如适用于 iOS 的 Microsoft Authenticator。

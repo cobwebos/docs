@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/26/2020
 ms.openlocfilehash: ffa348c796a4d9d4e3bdb8e7ce18ba0eb82e17ad
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418370"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure 数据工厂中的集成运行时 
@@ -24,16 +24,16 @@ ms.locfileid: "81418370"
 
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供以下数据集成功能的计算基础结构：
 
-- **数据流**：在托管 Azure 计算环境中执行[数据流](concepts-data-flow-overview.md)。  
-- **数据移动**：在公共网络中的数据存储和专用网络（本地或虚拟专用网络）中的数据存储中复制数据。 它提供对内置连接器、格式转换、列映射以及性能和可扩展数据传输的支持。
-- **活动调度**：调度和监视在各种计算服务上运行的转换活动，如 Azure 数据块、Azure HDInsight、Azure 机器学习、Azure SQL 数据库、SQL Server 等。
+- **数据流：在**托管的 Azure 计算[环境中执行数据流。](concepts-data-flow-overview.md)  
+- **数据移动**：在公用网络中的数据存储和专用网络（本地或虚拟专用网络）中的数据存储中复制数据。 它提供对内置连接器、格式转换、列映射以及性能和可扩展数据传输的支持。
+- **活动调度**：调度和监视在各种计算服务（例如 Azure Databricks、azure HDInsight、Azure 机器学习、Azure SQL 数据库、SQL Server 等）上运行的转换活动。
 - **SSIS 包执行**：在托管的 Azure 计算环境中本机执行 SQL Server 集成服务 (SSIS) 包。
 
-在数据工厂中，活动定义要执行的操作。 链接服务定义目标数据存储或计算服务。 集成运行时提供活动和链接服务之间的桥梁。  它由链接的服务或活动引用，并提供运行活动或从其中调度的活动的计算环境。 这样一来，可以在最接近目标数据存储的区域中执行活动，或者，以最优性能计算服务的同时满足安全和合规性需求。
+在数据工厂中，活动定义要执行的操作。 链接服务定义目标数据存储或计算服务。 集成运行时提供活动和链接服务之间的桥梁。  它由链接的服务或活动引用，并提供在其中运行活动或从中进行调度的计算环境。 这样一来，可以在最接近目标数据存储的区域中执行活动，或者，以最优性能计算服务的同时满足安全和合规性需求。
 
 ## <a name="integration-runtime-types"></a>集成运行时类型
 
-数据工厂提供三种类型的集成运行时 （IR），您应该选择最适合您正在寻找的数据集成功能和网络环境的类型。  这三种类型是：
+数据工厂提供三种类型的 Integration Runtime （IR），您应该选择最能满足所需的数据集成功能和网络环境要求的类型。  这三种类型是：
 
 - Azure
 - 自承载
@@ -57,20 +57,20 @@ Azure 集成运行时可以：
 
 - 在 Azure 中运行数据流 
 - 在云数据存储之间运行复制活动
-- 在公共网络中调度以下转换活动：Databricks 笔记本/Jar/Python 活动、HDInsight Hive 活动、HDInsight Pig 活动、HDInsight MapReduce 活动、HDInsight Spark 活动、HDInsight 流活动、机器学习批处理执行活动、机器学习更新资源活动、存储过程活动、数据湖分析 U-SQL 活动、.NET 自定义活动、Web 活动、查找活动和获取元数据活动。
+- 在公用网络中调度以下转换活动： Databricks 笔记本/Jar/Python 活动、HDInsight Hive 活动、HDInsight Pig 活动、HDInsight MapReduce 活动、HDInsight Spark 活动、HDInsight 流式处理活动、机器学习批处理执行活动、机器学习更新资源活动、存储过程活动、Data Lake Analytics U SQL 活动、.NET 自定义活动、Web 活动、查找活动和获取元数据活动。
 
 ### <a name="azure-ir-network-environment"></a>Azure IR 网络环境
 
-Azure 集成运行时支持连接到数据存储，并计算具有公共可访问终结点的服务。 为 Azure 虚拟网络环境使用自承载集成运行时。
+Azure Integration Runtime 支持连接到数据存储，并计算具有公共可访问终结点的服务。 为 Azure 虚拟网络环境使用自承载集成运行时。
 
 ### <a name="azure-ir-compute-resource-and-scaling"></a>Azure IR 计算资源和缩放
-Azure 集成运行时在 Azure 中提供完全托管的无服务器计算。  您不必担心基础结构配置、软件安装、修补或容量扩展。  此外，只需为实际使用时间付费。
+Azure 集成运行时在 Azure 中提供完全托管的无服务器计算。  无需担心基础结构预配、软件安装、修补或容量扩展。  此外，只需为实际使用时间付费。
 
 Azure 集成运行时提供了使用安全、可靠和高性能的方式在云数据存储之间移动数据的本机计算。  可以设置在复制活动上要使用的数据集成单元的数量，相应地，Azure IR 的计算大小弹性地纵向扩展，无需显式调整 Azure 集成运行时的大小。 
 
-活动调度是将活动路由到目标计算服务的轻量级操作，因此无需为此方案扩展计算大小。
+活动调度是将活动路由到目标计算服务的一种轻型操作，因此不需要增加此方案的计算大小。
 
-有关创建和配置 Azure IR 的信息，请参阅如何在如何引导下创建和配置 Azure IR。 
+有关创建和配置 Azure IR 的信息，请参阅如何在操作指南中创建和配置 Azure IR。 
 
 > [!NOTE] 
 > Azure 集成运行时具有与数据流运行时相关的属性，该运行时定义将用来运行数据流的基础计算基础结构。 
@@ -80,23 +80,23 @@ Azure 集成运行时提供了使用安全、可靠和高性能的方式在云�
 自承载 IR 能够：
 
 - 在专用网络中的云数据存储和数据存储之间运行复制活动。
-- 针对本地或 Azure 虚拟网络中的计算资源调度以下转换活动：HDInsight Hive 活动（BYOC-Bring 您自己的群集）、HDInsight Pig 活动 （BYOC）、HDInsight MapReduce 活动 （BYOC）、HDInsight Spark 活动 （BYOC）、HDInsight 流活动 （BYOC）、机器学习批处理执行活动、机器学习更新资源活动、存储过程活动、数据湖分析 U-SQL 活动、自定义活动（在 Azure 批处理上运行）、查找活动以及获取元数据活动。
+- 针对本地或 Azure 虚拟网络中的计算资源调度以下转换活动： HDInsight Hive 活动（BYOC-自带群集），HDInsight Pig 活动（BYOC），hdinsight MapReduce 活动（BYOC），HDInsight Spark 活动（BYOC），HDInsight 流式处理活动（BYOC），机器学习批处理执行活动，机器学习更新资源活动，存储过程活动，Data Lake Analytics U SQL 活动，自定义活动（在 Azure Batch 运行）、查找活动和获取元数据活动。
 
 > [!NOTE] 
-> 使用自托管集成运行时支持需要自带驱动程序（如 SAP Hana、MySQL 等）的数据存储。 有关详细信息，请参阅[受支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+> 使用自承载集成运行时支持需要自带驱动程序的数据存储，如 SAP Hana、MySQL 等。 有关详细信息，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
 
 > [!NOTE] 
 > Java Runtime Environment (JRE) 是自承载 IR 的依赖项。 请确保将 JRE 安装在同一主机上。
 
 ### <a name="self-hosted-ir-network-environment"></a>自承载 IR 网络环境
 
-如果要在私有网络环境中安全地执行数据集成（该环境没有直接从公共云环境的视线，则可以在公司防火墙后面的本地环境中或在虚拟专用网络内安装自托管 IR。  自承载集成运行时仅进行基于出站 HTTP 的连接，以打开 Internet。
+如果你想要在专用网络环境中安全地执行数据集成，而该环境没有从公有云环境直接看到的线路，则可以在企业防火墙后面或虚拟专用网络内安装自承载的 IR 本地环境。  自承载集成运行时仅进行基于出站 HTTP 的连接，以打开 Internet。
 
 ### <a name="self-hosted-ir-compute-resource-and-scaling"></a>自承载 IR 计算资源和缩放
 
-在本地计算机或专用网络内的虚拟机上安装自承载 IR。 目前，仅支持在 Windows 操作系统上运行自承载 IR。  
+在本地计算机或专用网络中的虚拟机上安装自承载 IR。 目前，仅支持在 Windows 操作系统上运行自承载 IR。  
 
-为了获得高可用性和可伸缩性，可以通过在主动-主动模式中将逻辑实例与多个本地计算机相关联来向外扩展自承载 IR。  有关详细信息，请参阅如何在如何指导详细信息下[创建和配置自承载的 IR](create-self-hosted-integration-runtime.md)文章。
+为了获得高可用性和可伸缩性，可以通过在主动-主动模式中将逻辑实例与多个本地计算机相关联来向外扩展自承载 IR。  有关详细信息，请参阅如何[创建和配置自承载 IR](create-self-hosted-integration-runtime.md)文章。
 
 ## <a name="azure-ssis-integration-runtime"></a>Azure-SSIS 集成运行时
 
@@ -114,7 +114,7 @@ Azure-SSIS IR 是完全托管的 Azure VM 群集，专用于运行 SSIS 包。 �
 
 有关 Azure-SSIS 运行时的详细信息，请参阅以下文章： 
 
-- [教程：将 SSIS 包部署到 Azure](tutorial-create-azure-ssis-runtime-portal.md)。 本文提供创建 Azure-SSIS IR 的分步说明，并使用 Azure SQL 数据库托管 SSIS 目录。 
+- [教程：将 SSIS 包部署到 Azure](tutorial-create-azure-ssis-runtime-portal.md)。 本文提供了创建 Azure-SSIS IR 的分步说明，并使用 Azure SQL 数据库来托管 SSIS 目录。 
 - [如何创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)。 本文是教程的拓展延伸，介绍了如何使用 Azure SQL 数据库托管实例以及如何将 IR 加入虚拟网络。 
 - [监视 Azure-SSIS IR](monitor-integration-runtime.md#azure-ssis-integration-runtime)。 此文介绍如何检索有关 Azure-SSIS IR 的信息，以及返回的信息中的状态说明。 
 - [管理 Azure-SSIS IR](manage-azure-ssis-integration-runtime.md)。 此文介绍如何停止、启动或删除 Azure-SSIS IR。 此外，介绍如何通过在 Azure-SSIS IR 中添加更多节点来扩展 IR。 
@@ -128,21 +128,21 @@ IR 位置定义其后端计算的位置，尤其是执行数据移动、活动�
 
 ### <a name="azure-ir-location"></a>Azure IR 位置
 
-- 对于复制活动，ADF 将尽最大努力自动检测接收器数据存储的位置，然后在相同的区域（如果可用）或同一地理位置中最接近的区域中使用 IR;如果接收器数据存储的区域无法检测到，则使用数据工厂区域中的 IR 作为替代方法。
+- 对于复制活动，ADF 会尽力自动检测接收器数据存储的位置，然后在同一区域中使用 IR （如果可用），或者在同一地理区域中使用最接近的 IR;如果无法检测接收器数据存储区的区域，则会使用数据工厂区域中的 IR 作为替代项。
 
-  例如，您在美国东部创建了工厂， 
+  例如，你的工厂是在美国东部创建的， 
   
-  - 将数据复制到美国西部的 Azure Blob 时，如果 ADF 成功检测到 Blob 位于美国西部，则复制活动将在美国西部的 IR 上执行;如果 ADF 成功检测到 Blob 位于美国西部西部，则复制活动将在美国西部执行。"如果区域检测失败，则在美国东部的 IR 上执行复制活动。
-  - 将数据复制到无法检测到的区域的 Salesforce 时，将在美国东部的 IR 上执行复制活动。
+  - 将数据复制到美国西部的 Azure Blob 时，如果 ADF 成功检测到 Blob 在美国西部，则会在美国西部的 IR 上执行复制活动;如果区域检测失败，将在美国东部的 IR 上执行复制活动。
+  - 将数据复制到未检测到其区域的 Salesforce 时，将在美国东部的 IR 上执行复制活动。
 
-- 对于复制活动，ADF 会尽最大努力自动检测接收器和源数据存储，以选择最佳位置，例如位于同一区域（如果可用），或者在同一地理位置中最接近的位置，或者如果无法检测到使用数据工厂区域作为替代位置。
+- 对于复制活动，ADF 会尽力自动检测接收器和源数据存储，以便在同一区域（如果有）或在同一地理区域中最接近的位置选择最佳位置，或者如果无法检测到使用数据工厂区域作为替代项。
 
-- 对于查找/GetMetadata/删除活动执行（也称为管道活动）、转换活动调度（也称为外部活动）和创作操作（测试连接、浏览文件夹列表和表列表、预览数据），ADF 在数据工厂区域中使用 IR。
+- 对于查找/GetMetadata/删除活动执行（也称为管道活动）、转换活动调度（也称为外部活动）和创作操作（测试连接、浏览文件夹列表和表列表、预览数据），ADF 会在数据工厂区域使用 IR。
 
-- 对于数据流，ADF 在数据工厂区域中使用 IR。 
+- 对于数据流，ADF 使用数据工厂区域中的 IR。 
 
   > [!TIP] 
-  > 一种好的做法是确保数据流与相应的数据存储在同一区域中运行（如果可能）。 可以通过自动解析 Azure IR（如果数据存储位置与数据工厂位置相同）或在数据存储相同的区域创建新的 Azure IR 实例，然后执行数据流来实现此目的。 
+  > 好的做法是确保数据流与相应的数据存储在同一区域中运行（如果可能）。 可以通过自动解析 Azure IR 来实现此目的（如果数据存储位置与数据工厂位置相同），或在与数据存储相同的区域中创建新的 Azure IR 实例，然后在数据存储区中执行数据流。 
 
 可以在 UI 或活动监视有效负载的管道活动监视视图中监视哪个 IR 位置在活动执行期间生效。
 
@@ -156,9 +156,9 @@ IR 位置定义其后端计算的位置，尤其是执行数据移动、活动�
 
 为你的 Azure-SSIS IR 选择正确的位置对在提取-转换-加载 (ETL) 工作流中实现高性能至关重要。
 
-- Azure-SSIS IR 的位置不需要与数据工厂的位置相同，但应与要托管 SSISDB 的 Azure SQL 数据库或托管实例服务器的位置相同。 这样一来，Azure-SSIS 集成运行时可以轻松地访问 SSISDB，且不会在不同位置之间产生过多的流量。
-- 如果没有现有的 Azure SQL 数据库或托管实例服务器来承载 SSISDB，但具有本地数据源/目标，则应在连接到本地网络的虚拟网络的同一位置创建新的 Azure SQL 数据库或托管实例服务器。  这样，可以使用新的 Azure SQL 数据库或托管实例服务器创建 Azure-SSIS IR，并在同一位置加入该虚拟网络，从而有效地最大限度地减少了不同位置的数据移动。
-- 如果托管 SSISDB 的现有 Azure SQL 数据库或托管实例服务器的位置与连接到本地网络的虚拟网络的位置不同，请先使用现有的 Azure SQL 数据库或托管实例服务器创建 Azure-SSIS IR，并在同一位置加入另一个虚拟网络，然后将虚拟网络配置为不同位置之间的虚拟网络连接。
+- Azure-SSIS IR 的位置不需要与数据工厂的位置相同，但它应该与你自己的 Azure SQL 数据库的位置或要托管 SSISDB 的托管实例服务器的位置相同。 这样一来，Azure-SSIS 集成运行时可以轻松地访问 SSISDB，且不会在不同位置之间产生过多的流量。
+- 如果没有现有的 Azure SQL 数据库或托管实例服务器来托管 SSISDB，但有本地数据源/目标，应在连接到本地网络的虚拟网络的同一位置中创建新的 Azure SQL 数据库或托管实例服务器。  这样，你便可以使用新的 Azure SQL 数据库或托管实例服务器创建 Azure-SSIS IR，并将该虚拟网络加入同一位置，从而有效地最大限度地减少了跨不同位置的数据移动。
+- 如果 Azure SQL 数据库的现有 Azure SQL 数据库或托管实例服务器的位置与连接到本地网络的虚拟网络的位置不同，请首先使用现有的 Azure SQL 数据库或托管实例服务器创建 Azure-SSIS IR，并在同一位置中加入另一个虚拟网络，然后将虚拟网络配置为不同位置之间的虚拟网络连接。
 
 下图显示了数据工厂及其集成运行时的位置设置：
 
@@ -170,9 +170,9 @@ IR 位置定义其后端计算的位置，尤其是执行数据移动、活动�
 
 对于复制活动，它需要使用源和接收器链接服务，以定义数据流的方向。 以下逻辑用于确定执行复制所使用的集成运行时实例的类型： 
 
-- **在两个云数据源之间复制**：当源和接收器链接服务都使用 Azure IR 时，如果指定，ADF 将使用区域 Azure IR;如果选择["集成运行时位置](#integration-runtime-location)"部分中所述的自动解析 IR（默认），则 ADF 将使用区域 Azure IR。
+- 在**两个云数据源之间复制**：源和接收器链接服务都在使用 Azure IR 时，如果你选择了 "自动解析 IR" （默认值），则 ADF 使用区域 Azure IR; 如果选择 "[集成运行时位置](#integration-runtime-location)" 部分中所述，则自动确定 Azure IR 位置。
 - **在云数据源和专用网络中的数据源之间复制**：如果源或接收器链接服务指向自承载 IR，则在该自承载集成运行时上执行复制活动。
-- **在专用网络中的两个数据源之间复制**：源和接收器链接服务必须指向集成运行时的同一实例，并且集成运行时用于执行复制活动。
+- **在专用网络中的两个数据源之间复制**：源和接收器链接服务必须指向集成运行时的同一个实例，而集成运行时用于执行复制活动。
 
 ### <a name="lookup-and-getmetadata-activity"></a>查找和 GetMetadata 活动
 
@@ -180,16 +180,16 @@ IR 位置定义其后端计算的位置，尤其是执行数据移动、活动�
 
 ### <a name="external-transformation-activity"></a>外部转换活动
 
-利用外部计算引擎的每个外部转换活动都有一个目标计算链接服务，它指向集成运行时。 此集成运行时实例确定从中调度外部手动编码转换活动的位置。
+利用外部计算引擎的每个外部转换活动都具有指向集成运行时的目标计算链接服务。 此集成运行时实例确定从中调度外部手动编码转换活动的位置。
 
 ### <a name="data-flow-activity"></a>数据流活动
 
-数据流活动在与其关联的 Azure 集成运行时上执行。 数据流使用的 Spark 计算由 Azure 集成运行时中的数据流属性决定，并由 ADF 完全管理。
+数据流活动在与其关联的 Azure 集成运行时上执行。 数据流所利用的 Spark 计算由 Azure Integration Runtime 中的数据流属性决定，由 ADF 完全管理。
 
 ## <a name="next-steps"></a>后续步骤
 
 请参阅以下文章：
 
 - [创建 Azure 集成运行时](create-azure-integration-runtime.md)
-- [创建自托管集成运行时](create-self-hosted-integration-runtime.md)
-- [创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)。 本文是教程的拓展延伸，介绍了如何使用 Azure SQL 数据库托管实例以及如何将 IR 加入虚拟网络。 
+- [创建自承载集成运行时](create-self-hosted-integration-runtime.md)
+- [创建 AZURE SSIS 集成运行时](create-azure-ssis-integration-runtime.md)。 本文是教程的拓展延伸，介绍了如何使用 Azure SQL 数据库托管实例以及如何将 IR 加入虚拟网络。 

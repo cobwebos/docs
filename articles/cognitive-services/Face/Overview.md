@@ -7,22 +7,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: c433d99fd96e99d418fd5500c1075e68dfb1742c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 6714a0c4b967d80ad683ef023b5811423bdcb022
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80053583"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403466"
 ---
 # <a name="what-is-the-azure-face-service"></a>什么是 Azure 人脸服务？
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure 认知服务人脸服务提供用于检测、识别和分析图像中人脸的算法。 在许多不同的软件方案中，处理人脸信息的功能非常重要。 示例方案包括安全、自然用户界面、图像内容分析和管理、移动应用及机器人。
+Azure 认知服务人脸服务提供了用于检测、识别和分析图像中人脸的算法。 在许多不同的软件方案中，处理人脸信息的功能非常重要。 示例方案包括安全性、自然用户界面、图像内容分析和管理、移动应用及机器人。
 
-人脸服务提供多个不同的函数。 以下各部分将概述每个函数。 请继续阅读以了解详细信息。
+人脸服务提供了多种不同的功能，在以下部分中对每一种功能进行了概述。
 
 ## <a name="face-detection"></a>人脸检测
 
@@ -69,7 +69,7 @@ Azure 认知服务人脸服务提供用于检测、识别和分析图像中人�
 
 有关人员识别的详细信息，请参阅[人脸识别](concepts/face-recognition.md)概念指南或[识别 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) 参考文档。
 
-## <a name="use-containers"></a>使用容器
+## <a name="containers"></a>容器
 
 将标准化的 Docker 容器安装到靠近数据的位置后，[使用人脸容器](face-how-to-install-containers.md)来检测和识别人脸。
 

@@ -6,15 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 03/05/2020
+ms.date: 04/15/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: abb38dfc342c8ff692ed1a3a05376b5dcefe8a3d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3e1ca14d967b0e88ea7eb559fd9962a3824ff9b0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78399555"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406214"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>快速入门：通过 Azure PowerShell 使用 Azure 应用程序网关定向 Web 流量
 
@@ -99,12 +99,10 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool"></a>创建后端池
 
-1. 使用 `New-AzApplicationGatewayBackendAddressPool` 创建应用程序网关的后端池。 后端池暂时将为空，在下一部分中创建后端服务器 NIC 时，会将它们添加到后端池。
+1. 使用 `New-AzApplicationGatewayBackendAddressPool` 创建应用程序网关的后端池。 后端池此时将为空。 在下一部分中创建后端服务器 NIC 时，会将它们添加到后端池中。
 2. 使用 `New-AzApplicationGatewayBackendHttpSetting` 配置后端池的设置。
 
 ```azurepowershell-interactive
-$address1 = Get-AzNetworkInterface -ResourceGroupName myResourceGroupAG -Name myNic1
-$address2 = Get-AzNetworkInterface -ResourceGroupName myResourceGroupAG -Name myNic2
 $backendPool = New-AzApplicationGatewayBackendAddressPool `
   -Name myAGBackendPool
 $poolSettings = New-AzApplicationGatewayBackendHttpSetting `

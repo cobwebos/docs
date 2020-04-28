@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 570d55c8523e1c1deca3242a8841b0cc34322786
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: f28f2bcf5d04c9a6354b8135bd39546b9d8b9bf3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80053877"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404297"
 ---
 # <a name="what-is-azure-content-moderator"></a>什么是 Azure 内容审查器？
 
@@ -38,7 +38,7 @@ Azure 内容审查器是一项认知服务，用于检查文本、图像和视�
 
 ## <a name="what-it-includes"></a>组成部分
 
-内容审查器服务包含多个可以通过 REST 调用和 .NET SDK 使用的 Web 服务 API。 它还包括人工审阅工具，让审核人员来协助服务改进或优化其审查功能。
+内容审查器服务包含多个可以通过 REST 调用和 .NET SDK 使用的 Web 服务 API。 它还包括评审工具，允许人工审阅者帮助服务并改进或微调其审查功能。
 
 ## <a name="moderation-apis"></a>审查 API
 
@@ -58,18 +58,18 @@ Azure 内容审查器是一项认知服务，用于检查文本、图像和视�
 
 ## <a name="review-apis"></a>查看 API
 
-审阅 API 允许你将审查管道与人工审阅者进行集成。 使用[作业](review-api.md#jobs)、[审阅](review-api.md#reviews)和[工作流](review-api.md#workflows)操作在[审阅工具](#the-review-tool)（下文）中创建和自动执行人工干预工作流。
+审阅 API 允许你将审查管道与人工审阅者进行集成。 使用[作业](review-api.md#jobs)、[审阅](review-api.md#reviews)和[工作流](review-api.md#workflows)操作在[审阅工具](#review-tool)（下文）中创建和自动执行人工干预工作流。
 
 > [!NOTE]
 > 工作流 API 在 .NET SDK 中尚不可用，但可以与 REST 终结点一起使用。
 
 ![内容审查器审阅 API 的框图](images/content-moderator-rev-api.png)
 
-## <a name="the-review-tool"></a>“审阅”工具
+## <a name="review-tool"></a>审阅工具
 
 内容审查器服务还包括基于 Web 的[审阅工具](Review-Tool-User-Guide/human-in-the-loop.md)，其中托管的内容审阅可供审阅人处理。 人工输入不会训练服务，但是将服务与人工审阅团队组合起来以后，开发人员就可以在效率和准确性之间取得适当的平衡。 评审工具还为多种内容审查器资源提供用户友好型前端。
 
-![内容审查器人工审阅工具主页](images/homepage.PNG)
+![内容审查器评审工具主页](images/homepage.PNG)
 
 ## <a name="data-privacy-and-security"></a>数据隐私和安全性
 

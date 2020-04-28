@@ -11,10 +11,10 @@ ms.reviewer: ''
 manager: anandsub
 ms.date: 12/19/2019
 ms.openlocfilehash: e7de92878dac72470c0b65d1cf18c1a2d526a0bb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418484"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure 数据工厂中的视觉对象创作
@@ -31,9 +31,9 @@ Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部�
 
 ![创作画布](media/author-visually/authoring-canvas.png)
 
-在这里，您将创作构成工厂的管道、活动、数据集、链接服务、数据流、触发器和集成运行时。 若要开始使用创作画布构建管道，请参阅[使用复制活动复制数据](tutorial-copy-data-portal.md)。 
+在这里，你将创作构成工厂的管道、活动、数据集、链接的服务、数据流、触发器和集成运行时。 若要开始使用创作画布构建管道，请参阅[使用复制活动复制数据](tutorial-copy-data-portal.md)。 
 
-默认视觉创作体验直接使用数据工厂服务。 还支持 Azure Repos Git 或 GitHub 集成，以允许源代码管理和协作，以便处理数据工厂管道。 要了解有关这些创作体验之间的差异，请参阅[Azure 数据工厂中的源代码管理](source-control.md)。
+默认的可视化创作体验直接使用数据工厂服务。 还支持 Azure Repos Git 或 GitHub 集成，以允许对数据工厂管道进行源代码管理和协作。 若要详细了解这些创作体验之间的差异，请参阅[Azure 数据工厂中的源代码管理](source-control.md)。
 
 ## <a name="expressions-and-functions"></a>表达式和函数
 

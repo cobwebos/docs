@@ -1,5 +1,5 @@
 ---
-title: 为 Azure-SSIS 集成运行时配置性能
+title: 为 Azure-SSIS Integration Runtime 配置性能
 description: 了解如何配置高性能 Azure-SSIS Integration Runtime 的属性
 services: data-factory
 ms.date: 01/10/2018
@@ -11,10 +11,10 @@ ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
 ms.openlocfilehash: ca88e42438c7cb48b062aa67d82053afbb9244bf
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418280"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>配置高性能 Azure-SSIS Integration Runtime
@@ -69,7 +69,7 @@ $SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…
 ```
 
 ## <a name="azuressislocation"></a>AzureSSISLocation
-AzureSSISLocation 是 Integration Runtime 辅助角色节点的位置****。 该辅助角色节点始终连接到 Azure SQL 数据库上的 SSIS 目录数据库 (SSISDB)。 将 AzureSSISLocation 位置设置为与托管 SSISDB 的 SQL 数据库服务器相同，确保集成运行时尽可能有效运行****。
+AzureSSISLocation 是 Integration Runtime 辅助角色节点的位置  。 该辅助角色节点始终连接到 Azure SQL 数据库上的 SSIS 目录数据库 (SSISDB)。 将 AzureSSISLocation 位置设置为与托管 SSISDB 的 SQL 数据库服务器相同，确保集成运行时尽可能有效运行  。
 
 ## <a name="azuressisnodesize"></a>AzureSSISNodeSize
 数据工厂（包括 Azure-SSIS IR）支持以下选项：
@@ -114,11 +114,11 @@ AzureSSISLocation 是 Integration Runtime 辅助角色节点的位置****。 该
 
 ## <a name="azuressisnodenumber"></a>AzureSSISNodeNumber
 
-AzureSSISNodeNumber 调整 Integration Runtime 的可伸缩性****。 Integration Runtime 的吞吐量与 AzureSSISNodeNumber 成正比****。 首先将 AzureSSISNodeNumber 设为一个较小值，监视 Integration Runtime 的吞吐量，然后针对方案调整值****。 若要重新配置辅助角色节点数，请参阅[管理 Azure-SSIS Integration Runtime](manage-azure-ssis-integration-runtime.md)。
+AzureSSISNodeNumber 调整 Integration Runtime 的可伸缩性  。 Integration Runtime 的吞吐量与 AzureSSISNodeNumber 成正比  。 首先将 AzureSSISNodeNumber 设为一个较小值，监视 Integration Runtime 的吞吐量，然后针对方案调整值  。 若要重新配置辅助角色节点数，请参阅[管理 Azure-SSIS Integration Runtime](manage-azure-ssis-integration-runtime.md)。
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-已经在使用强大的辅助角色节点运行包时，增加 AzureSSISMaxParallelExecutionsPerNode 可能增加 Integration Runtime 的整体吞吐量****。 对于 Standard_D1_v2 节点，支持每个节点 1-4 个并行执行。 对于所有其他类型的节点，支持每个节点 1-max(2 x 核心数, 8) 个并行执行。 如果你希望 **AzureSSISMaxParallelExecutionsPerNode** 超出我们支持的最大值，你可以开具支持票证，我们可以为你增加最大值，然后你需要使用 Azure Powershell 更新 **AzureSSISMaxParallelExecutionsPerNode**。
+已经在使用强大的辅助角色节点运行包时，增加 AzureSSISMaxParallelExecutionsPerNode 可能增加 Integration Runtime 的整体吞吐量  。 对于 Standard_D1_v2 节点，支持每个节点 1-4 个并行执行。 对于所有其他类型的节点，支持每个节点 1-max(2 x 核心数, 8) 个并行执行。 如果你希望 **AzureSSISMaxParallelExecutionsPerNode** 超出我们支持的最大值，你可以开具支持票证，我们可以为你增加最大值，然后你需要使用 Azure Powershell 更新 **AzureSSISMaxParallelExecutionsPerNode**。
 可以基于包的成本和辅助角色节点的以下配置估计合适的值。 有关详细信息，请参阅[常规用途虚拟机大小](../virtual-machines/windows/sizes-general.md)。
 
 | 大小             | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 临时存储的最大吞吐量：IOPS/读取 MBps/写入 MBps | 最大的数据磁盘/吞吐量：IOPS | 最大 NIC 数/预期网络性能 (Mbps) |
@@ -142,7 +142,7 @@ AzureSSISNodeNumber 调整 Integration Runtime 的可伸缩性****。 Integratio
 | Standard\_E32\_v3| 32   | 256         | 800                    | 48000/750/375                                          | 32 / 96x500                       | 8 / 16000                                      |
 | Standard\_E64\_v3| 64   | 432         | 1600                   | 96000 / 1000 / 500                                         | 32 / 192x500                      | 8 / 30000                                      |
 
-以下是为 AzureSSISMaxParallelExecutionsPerNode 属性设置正确值的指南****： 
+以下是为 AzureSSISMaxParallelExecutionsPerNode 属性设置正确值的指南  ： 
 
 1. 首先将它设置为一个较小值。
 2. 少量增加该值，以检查是否提升整体吞吐量。
@@ -150,7 +150,7 @@ AzureSSISNodeNumber 调整 Integration Runtime 的可伸缩性****。 Integratio
 
 ## <a name="ssisdbpricingtier"></a>SSISDBPricingTier
 
-SSISDBPricingTier 是 Azure SQL 数据库上 SSIS 目录数据库 (SSISDB) 的定价层****。 此设置影响 IR 实例中的最大辅助角色节点数、包执行排队速度以及执行日志加载速度。
+SSISDBPricingTier 是 Azure SQL 数据库上 SSIS 目录数据库 (SSISDB) 的定价层  。 此设置影响 IR 实例中的最大辅助角色节点数、包执行排队速度以及执行日志加载速度。
 
 -   如果不关注包执行排队和执行日志加载速度，可以选择最低的数据库定价层。 使用基本定价的 Azure SQL 数据库在 Integration Runtime 实例中支持 8 个辅助角色节点。
 

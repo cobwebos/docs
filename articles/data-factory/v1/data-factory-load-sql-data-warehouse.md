@@ -1,5 +1,5 @@
 ---
-title: 将 TB 的数据加载到 SQL 数据仓库中
+title: 将 tb 数据加载到 SQL 数据仓库
 description: 演示如何在不到 15 分钟的时间里通过 Azure 数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库
 services: data-factory
 documentationcenter: ''
@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 0bef6b5e87e7f0964989db371014c305b97f1d12
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81419300"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>在不到 15 分钟的时间里通过数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库
@@ -24,7 +24,7 @@ ms.locfileid: "81419300"
 > 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[使用 Azure 数据工厂将数据复制到 Azure SQL 数据仓库或从 Azure SQL 数据仓库复制数据](../connector-azure-sql-data-warehouse.md)。
 
 
-[Azure SQL 数据仓库](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)是一个基于云的横向扩展数据库，能够处理海量数据（包括关系数据和非关系数据）。  SQL 数据仓库在大规模并行处理 (MPP) 体系结构的基础上构建，已针对企业数据仓库工作负荷进行优化。  它通过灵活地缩放存储以及独立计算提供云灵活性。
+[AZURE SQL 数据仓库](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)是一种基于云的向外扩展数据库，可以处理大量数据（关系数据和非关系数据）。  SQL 数据仓库在大规模并行处理 (MPP) 体系结构的基础上构建，已针对企业数据仓库工作负荷进行优化。  它通过灵活地缩放存储以及独立计算提供云灵活性。
 
 现在通过使用 **Azure 数据工厂**，Azure SQL 数据仓库入门变得前所未有地简单。  Azure 数据工厂是一个完全托管的基于云的数据集成服务，它可用于使用现有系统中的数据填充 SQL 数据仓库，在节省宝贵时间的同时评估 SQL 数据仓库并生成分析解决方案。 以下是使用 Azure 数据工厂将数据加载到 Azure SQL 数据仓库的主要优点：
 
@@ -40,7 +40,7 @@ ms.locfileid: "81419300"
 > [!NOTE]
 >  有关数据工厂将数据移入/移出 Azure SQL 数据仓库的功能的一般信息，请参阅[使用 Azure 数据工厂将数据移入和移出 Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md)一文。
 >
-> 您还可以使用可视化工作室、PowerShell 等构建管道。请参阅[教程：将数据从 Azure Blob 复制到 Azure SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)，以便快速演练有关在 Azure 数据工厂中使用复制活动的分步说明。  
+> 你还可以使用 Visual Studio、PowerShell 等生成管道。有关使用 Azure 数据工厂中的复制活动的分步说明，请参阅[教程：将数据从 Azure Blob 复制到 AZURE SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。  
 >
 >
 
@@ -111,12 +111,12 @@ ms.locfileid: "81419300"
   完成必需的步骤后，现在可以准备使用复制向导配置复制活动。
 
 ## <a name="launch-copy-wizard"></a>启动复制向导
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 单击左上角的“创建资源”****，单击“智能 + 分析”****，然后单击“数据工厂”****。
 3. 在“新建数据工厂”**** 窗格中：
 
    1. 输入 **LoadIntoSQLDWDataFactory** 作为**名称**。
-       Azure 数据工厂的名称必须全局唯一。 如果收到错误：**数据工厂名称"LoadIntoSQLDWDataFactory"不可用**，请更改数据工厂的名称（例如，您的姓名 LoadIntoSQLDWDataFactory），然后重试创建。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。  
+       Azure 数据工厂的名称必须全局唯一。 如果收到错误：**数据工厂名称 "LoadIntoSQLDWDataFactory" 不可用**，请更改数据工厂的名称（例如，yournameLoadIntoSQLDWDataFactory），然后重试创建操作。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。  
    2. 选择 **Azure 订阅**。
    3. 对于资源组，请执行以下步骤之一：
       1. 选择“使用现有资源组”并选择一个现有的资源组。****
@@ -160,7 +160,7 @@ ms.locfileid: "81419300"
 
     ![复制向导 - 选择输入文件夹](media/data-factory-load-sql-data-warehouse/select-input-folder.png)
 
-4. 单击“下一步”**** 时会自动检测文件格式设置。  检查以确保列分隔符是"*"而不是默认逗号""。"。  预览数据后，单击“下一步”****。
+4. 单击“下一步”**** 时会自动检测文件格式设置。  检查以确保列分隔符为 "|"，而不是默认的逗号 "，"。  预览数据后，单击“下一步”****。
 
     ![复制向导 - 文件格式设置](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
 
@@ -198,7 +198,7 @@ ms.locfileid: "81419300"
 
     可以在右侧面板中的“活动窗口资源管理器”**** 中查看副本运行的详细信息，包括从源中读取和写入到目标中的数据量、持续时间以及运行的平均吞吐量。
 
-    从以下屏幕截图中可以看出，将 1 TB 从 Azure Blob 存储复制到 SQL 数据仓库需要 14 分钟，从而有效地实现了 1.22 GBps 吞吐量！
+    如以下屏幕截图中所示，从 Azure Blob 存储复制到 SQL 数据仓库的 1 TB 花费14分钟，有效实现 1.22 GBps 吞吐量！
 
     ![复制向导 - “成功”对话框](media/data-factory-load-sql-data-warehouse/succeeded-info.png)
 

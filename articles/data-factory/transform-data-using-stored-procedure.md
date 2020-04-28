@@ -1,5 +1,5 @@
 ---
-title: 使用"存储过程"活动转换数据
+title: 使用存储过程活动转换数据
 description: 说明如何使用 SQL Server 存储过程活动从数据工厂管道调用 Azure SQL 数据库/数据仓库中的存储过程。
 services: data-factory
 documentationcenter: ''
@@ -12,10 +12,10 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 11/27/2018
 ms.openlocfilehash: 57bf653aa3f421ae8897c4be661ceef589fcdc06
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418807"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 SQL Server 存储过程活动转换数据
@@ -34,7 +34,7 @@ ms.locfileid: "81418807"
 
 - Azure SQL Database
 - Azure SQL 数据仓库
-- SQL Server 数据库。  如果使用 SQL Server，请在托管数据库的同一计算机上或在可以访问数据库的单独计算机上安装自托管集成运行时。 自托管集成运行时是一种以安全托管方式将本地/Azure VM 上的数据源与云服务进行连接的组件。 有关详细信息[，请参阅自托管集成运行时](create-self-hosted-integration-runtime.md)文章。
+- SQL Server 数据库。  如果使用 SQL Server，请在托管数据库的同一计算机上或在可以访问数据库的单独计算机上安装自托管集成运行时。 自托管集成运行时是一种以安全托管方式将本地/Azure VM 上的数据源与云服务进行连接的组件。 有关详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)一文。
 
 > [!IMPORTANT]
 > 将数据复制到 Azure SQL 数据库或 SQL Server 中时，可以使用 sqlWriterStoredProcedureName 属性将复制活动中的 SqlSink 配置为调用存储过程********。 有关属性的详细信息，请参阅以下连接器文章：[Azure SQL 数据库](connector-azure-sql-database.md)、[SQL Server](connector-sql-server.md)。 不支持在使用复制活动将数据复制到 Azure SQL 数据仓库时调用存储过程。 但是，可使用存储过程活动来调用 SQL 数据仓库中的存储过程。 
@@ -68,7 +68,7 @@ ms.locfileid: "81418807"
 
 下表描述了其中的 JSON 属性：
 
-| properties                  | 说明                              | 必选 |
+| properties                  | 说明                              | 必需 |
 | ------------------------- | ---------------------------------------- | -------- |
 | name                      | 活动名称                     | 是      |
 | description               | 描述活动用途的文本 | 否       |
@@ -80,7 +80,7 @@ ms.locfileid: "81418807"
 ## <a name="parameter-data-type-mapping"></a>参数数据类型映射
 为参数指定的数据类型是 Azure 数据工厂类型，该类型映射到正在使用的数据源中的数据类型。 可以在连接器区域中找到数据源的数据类型映射。 下面是一些示例：
 
-| 数据源          | 数据类型映射 |
+| “数据源”          | 数据类型映射 |
 | ---------------------|-------------------|
 | Azure SQL 数据仓库 | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
 | Azure SQL Database   | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#data-type-mapping-for-azure-sql-database | 
@@ -96,9 +96,9 @@ ms.locfileid: "81418807"
 参阅以下文章了解如何以其他方式转换数据： 
 
 * [U-SQL 活动](transform-data-using-data-lake-analytics.md)
-* [蜂巢活动](transform-data-using-hadoop-hive.md)
+* [Hive 活动](transform-data-using-hadoop-hive.md)
 * [Pig 活动](transform-data-using-hadoop-pig.md)
-* [映射减少活动](transform-data-using-hadoop-map-reduce.md)
+* [MapReduce 活动](transform-data-using-hadoop-map-reduce.md)
 * [Hadoop 流式处理活动](transform-data-using-hadoop-streaming.md)
 * [Spark 活动](transform-data-using-spark.md)
 * [.NET 自定义活动](transform-data-using-dotnet-custom-activity.md)

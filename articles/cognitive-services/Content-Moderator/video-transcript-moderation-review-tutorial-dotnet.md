@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 2fbd4270221cb23a4f99a0f8155bb1de76472f31
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2171bbaea065ce1ab3a8d90f32e6ea6dc1f1e821
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74976972"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404223"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>教程：视频和脚本审查
 
@@ -82,7 +82,7 @@ ms.locfileid: "74976972"
 如果不存在命令行参数，`Main()` 将调用 `GetUserInputs()`。 此方法提示用户输入单个视频文件的路径，并指定是否应生成文本脚本。
 
 > [!NOTE]
-> 控制台应用程序使用 [Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) 根据上传视频的音频轨道生成脚本。结果以 WebVTT 格式提供。 有关此格式的详细信息，请参阅 [Web Video Text Tracks Format](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API)（Web 视频文本轨道格式）。
+> 控制台应用程序使用 [Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) 根据上传视频的音频轨道生成脚本。结果以 WebVTT 格式提供。 有关此格式的详细信息，请参阅 [Web Video Text Tracks Format](https://developer.mozilla.org/docs/Web/API/WebVTT_API)（Web 视频文本轨道格式）。
 
 ### <a name="initialize-and-processvideo-methods"></a>Initialize 和 ProcessVideo 方法
 
@@ -223,11 +223,11 @@ ms.locfileid: "74976972"
 当设置 `GenerateVTT` 标志时，还会生成来自视频的音频脚本。
 
 > [!NOTE]
-> 控制台应用程序使用 [Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) 根据上传视频的音频轨道生成脚本。结果以 WebVTT 格式提供。 有关此格式的详细信息，请参阅 [Web Video Text Tracks Format](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API)（Web 视频文本轨道格式）。
+> 控制台应用程序使用 [Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) 根据上传视频的音频轨道生成脚本。结果以 WebVTT 格式提供。 有关此格式的详细信息，请参阅 [Web Video Text Tracks Format](https://developer.mozilla.org/docs/Web/API/WebVTT_API)（Web 视频文本轨道格式）。
 
 ## <a name="create-a-human-review"></a>创建人工评审
 
-审查过程会从视频返回一个关键帧列表，以及其音频轨道的脚本。 下一步是在内容审查器评论工具中为人工审查器创建评论。 回到 `Program.cs` 中的 `ProcessVideo()` 方法，你会看到对 `CreateVideoReviewInContentModerator()` 方法的调用。 此方法位于 `videoReviewApi` 类中，该类位于 `VideoReviewAPI.cs` 中，如下所示。
+审查过程会从视频返回一个关键帧列表，以及其音频轨道的脚本。 下一步是在内容审查器评审工具中为人工审查器创建评审。 回到 `Program.cs` 中的 `ProcessVideo()` 方法，你会看到对 `CreateVideoReviewInContentModerator()` 方法的调用。 此方法位于 `videoReviewApi` 类中，该类位于 `VideoReviewAPI.cs` 中，如下所示。
 
 [!code-csharp[CreateVideoReviewInContentModerator](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=42-69)]
 
@@ -299,7 +299,7 @@ ms.locfileid: "74976972"
 
 ### <a name="parse-the-transcript-for-captions"></a>分析脚本字幕
 
-接下来，分析 VTT 格式的脚本的字幕和时间戳。 评论工具会在视频评论屏幕的“脚本”选项卡中显示这些字幕。 时间戳用于将字幕与相应的视频帧同步。
+接下来，分析 VTT 格式的脚本的字幕和时间戳。 评审工具会在视频评审屏幕的“脚本”选项卡中显示这些字幕。 时间戳用于将字幕与相应的视频帧同步。
 
 [!code-csharp[TextScreen2](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=528-567)]
 
