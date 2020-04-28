@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 9f3802ada79ee87d1a04634f7caac3b1b4286dce
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ac7609d49631fb2ed16fa129f8dc4099cc166247
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74978026"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769875"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>教程：配合使用自定义视觉和 IoT 设备来报告视觉状态
 
-本示例应用演示如何使用自定义视觉来训练带有照相机的设备，使其能够检测视觉对象。 可以使用从自定义视觉服务导出的 ONNX 模型在 IoT 设备上运行此检测方案。
+本示例应用演示如何使用自定义视觉来训练带有照相机的设备，使其能够检测视觉对象。 可以使用导出的 ONNX 模型在 IoT 设备上运行此检测方案。
 
 视觉状态描述图像的内容：空房间或有人的房间、空车道或有一辆卡车的车道等。 在下图中，可以看到在照相机前放置香蕉或苹果时，应用可检测出来。
 
@@ -92,7 +92,7 @@ IoT 视觉警报应用以连续循环的形式运行，并根据需要在四个�
 * 如果要在电脑上运行应用，请使用 UI 右上角的按钮。
 * 如果要在 IoT 设备上运行应用，请通过 IoT 中心在设备上调用 `EnterLearningMode` 方法。 可通过 Azure 门户上 IoT 中心菜单中的设备项或 [IoT 中心设备资源管理器](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)等工具来调用。
  
-当应用进入“捕获训练图像”状态时，它会每隔一秒钟捕获大约两个图像，直到达到目标图像数目  。 默认情况下，目标图像数目为 30，但可通过将所需数据作为自变量传递给 `EnterLearningMode` IoT 中心方法，来设置此参数。 
+当应用进入“捕获训练图像”状态时，它会每隔一秒钟捕获大约两个图像，直到达到目标图像数目  。 默认情况下，目标图像数目为 30，但可通过将所需数目作为参数传递给 `EnterLearningMode` IoT 中心方法，来设置此参数。 
 
 当应用捕获图像时，必须将要检测的视觉状态类型（例如，空房间、有人的房间、空桌子、放有玩具卡车的桌子等）暴露在照相机下。
 

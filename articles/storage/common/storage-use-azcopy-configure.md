@@ -8,12 +8,12 @@ ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 87a335f44a31436de735395adbee9035493cbbd2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: c3ee0f335741c171c3a7ee1df3eea6dea9c4b728
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81263414"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176152"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>对 AzCopy 进行配置、优化和故障排除
 
@@ -72,7 +72,7 @@ AzCopy 目前不支持要求通过 NTLM 或 Kerberos 进行身份验证的代理
 
 ### <a name="optimize-throughput"></a>优化吞吐量
 
-可以在命令中使用 `cap-mbps` 标志来设置吞吐量数据速率的上限。 例如，以下命令恢复作业并将吞吐量上限设置为每秒 `10` 兆位 (MB)。 
+可以在命令中使用 `cap-mbps` 标志来设置吞吐量数据速率的上限。 例如，以下命令将恢复作业，并将每秒的`10`上限吞吐量恢复为兆字节（mb）。 
 
 ```azcopy
 azcopy jobs resume <job-id> --cap-mbps 10
@@ -82,7 +82,7 @@ azcopy jobs resume <job-id> --cap-mbps 10
 
 如果计算机中的 CPU 少于 5 个，则此变量的值将设置为 `32`。 否则，默认值等于 16 乘以 CPU 数。 此变量的最大默认值为 `3000`，但可以手动增大或减小此值。 
 
-| 操作系统 | Command  |
+| 操作系统 | 命令  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
@@ -97,7 +97,7 @@ azcopy jobs resume <job-id> --cap-mbps 10
 设置 `AZCOPY_BUFFER_GB` 环境变量，以指定 AzCopy 在下载和上传文件时要使用的最大系统内存量。
 请以 GB 表示此值。
 
-| 操作系统 | Command  |
+| 操作系统 | 命令  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
@@ -119,16 +119,16 @@ AzCopy 为每个作业创建日志和计划文件。 可以使用日志调查并
 
 默认情况下，日志和计划文件位于 Windows 上的 `%USERPROFILE%\.azcopy` 目录中或 Mac 和 Linux 上的 `$HOME$\.azcopy` 目录中，但可根据需要更改此位置。
 
-相关错误不一定是文件中出现的第一个错误。 对于网络错误、超时和服务器忙错误等错误，AzCopy 将重试多达 20 次，并且重试过程通常成功。  您看到的第一个错误可能是成功重试的无害。  因此，不要查看文件中的第一个错误，而是查找靠近`UPLOADFAILED`或`COPYFAILED`的错误。 `DOWNLOADFAILED` 
+相关错误不一定是出现在文件中的第一个错误。 对于网络错误、超时和服务器繁忙错误等错误，AzCopy 将重试最多20次，重试过程通常会成功。  你看到的第一个错误可能是已成功重试的错误。  因此，请查找附近、 `UPLOADFAILED` `COPYFAILED`或`DOWNLOADFAILED`附近的错误，而不是查看文件中的第一个错误。 
 
 > [!IMPORTANT]
-> 向 Microsoft 支持提交请求（或排除涉及任何第三方的问题的疑难解答）时，共享要执行的命令的修订版本。 这可以确保不会意外地与任何人共享 SAS。 可以在日志文件的开头找到经修订的版本。
+> 向 Microsoft 支持部门提交请求（或解决涉及任何第三方的问题）时，请共享要执行的命令的修正版本。 这可以确保不会意外地与任何人共享 SAS。 可以在日志文件的开头找到经修订的版本。
 
 ### <a name="review-the-logs-for-errors"></a>查看日志中的错误
 
 以下命令从 `04dc9ca9-158f-7945-5933-564021086c79` 日志中获取 `UPLOADFAILED` 状态的所有错误：
 
-**视窗（电源外壳）**
+**Windows （PowerShell）**
 
 ```
 Select-String UPLOADFAILED .\04dc9ca9-158f-7945-5933-564021086c79.log
@@ -180,7 +180,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 使用以下任何命令。
 
-| 操作系统 | Command  |
+| 操作系统 | 命令  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
@@ -192,7 +192,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 使用以下任何命令。
 
-| 操作系统 | Command  |
+| 操作系统 | 命令  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_LOG_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |

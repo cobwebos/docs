@@ -1,19 +1,19 @@
 ---
 title: 将 IoT 即插即用预览示例设备代码连接到 IoT 中心 (Windows) | Microsoft Docs
 description: 在连接到 IoT 中心的 Windows 上生成并运行 IoT 即插即用预览示例设备代码。 使用 Azure IoT 资源管理器工具查看由设备发送到中心的信息。
-author: ChrisGMsft
-ms.author: chrisgre
+author: Philmea
+ms.author: philmea
 ms.date: 12/26/2019
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 1c8b6a5d133d8838c2c7a23f8881092affa424dc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 080820024db1302ff5a841761428442396b90040
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75531178"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769854"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-running-on-windows-to-iot-hub-c-windows"></a>快速入门：将 Windows 上运行的示例 IoT 即插即用预览设备应用程序连接到 IoT 中心 (C Windows)
 

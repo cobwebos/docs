@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb0941a6cdde5b60b71da6f58ea6b0fd2ccbb262
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d64307c4f91839c466b5f3f495cad8d7410ed364
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160963"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867312"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-splunk-enterprise-and-splunk-cloud"></a>教程：Azure Active Directory 与 Splunk Enterprise and Splunk Cloud 集成
 
@@ -113,7 +113,7 @@ ms.locfileid: "73160963"
     c. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<splunkserver>/saml/acs`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Splunk Enterprise and Splunk Cloud 客户端支持团队](https://www.splunk.com/about-us/contact.html#tabs/customer-support)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Splunk Enterprise and Splunk Cloud 客户端支持团队](https://www.splunk.com/en_us/about-splunk/contact-us.html)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
@@ -121,7 +121,7 @@ ms.locfileid: "73160963"
 
 ### <a name="configure-splunk-enterprise-and-splunk-cloud-single-sign-on"></a>配置 Splunk Enterprise and Splunk Cloud 单一登录
 
-若要在 Splunk Enterprise and Splunk Cloud 端配置单一登录，需要将已下载的联合元数据 XML 和相应已复制的 URL 从 Azure 门户发送到 [Splunk Enterprise and Splunk Cloud 支持团队](https://www.splunk.com/about-us/contact.html#tabs/customer-support)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Splunk Enterprise and Splunk Cloud 端配置单一登录，需要将已下载的联合元数据 XML 和相应已复制的 URL 从 Azure 门户发送到 [Splunk Enterprise and Splunk Cloud 支持团队](https://www.splunk.com/en_us/about-splunk/contact-us.html)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -176,7 +176,7 @@ ms.locfileid: "73160963"
 
 ### <a name="create-splunk-enterprise-and-splunk-cloud-test-user"></a>创建 Splunk Enterprise and Splunk Cloud 测试用户
 
-在本部分中，会在 Splunk Enterprise and Splunk Cloud 中创建一个名为“Britta Simon”的用户。 协助  [Splunk Enterprise and Splunk Cloud 支持团队](https://www.splunk.com/about-us/contact.html#tabs/customer-support)，将用户添加到 Splunk Enterprise and Splunk Cloud 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，会在 Splunk Enterprise and Splunk Cloud 中创建一个名为“Britta Simon”的用户。 协助  [Splunk Enterprise and Splunk Cloud 支持团队](https://www.splunk.com/en_us/about-splunk/contact-us.html)，将用户添加到 Splunk Enterprise and Splunk Cloud 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

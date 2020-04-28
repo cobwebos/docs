@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 5b2f8231952d25f5858f8e06a957f1056ecc3651
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ROBOTS: NOINDEX
+ms.openlocfilehash: bb6cb6d86933166d2427788d697d9cd38cf04bf0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76768491"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460165"
 ---
 # <a name="quickstart-create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>快速入门：在 Azure SQL 数据库机器学习服务（预览版）中创建和运行简单的 R 脚本
 
@@ -30,11 +31,8 @@ ms.locfileid: "76768491"
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - 一个使用[服务器级防火墙规则](sql-database-server-level-firewall-rule.md)的 [Azure SQL 数据库](sql-database-single-database-get-started.md)
-- 启用了 R 的[机器学习服务](sql-database-machine-learning-services-overview.md)。 [注册预览版](sql-database-machine-learning-services-overview.md#signup)。
+- 启用了 R 的[机器学习服务](sql-database-machine-learning-services-overview.md)。
 - [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
-
-> [!NOTE]
-> 在发布公共预览版期间，Microsoft 会将你加入该版本并为你的现有数据库或新数据库启用机器学习。
 
 此示例使用存储过程 [sp_execute_external_script](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) 包装格式正确的 R 脚本。
 

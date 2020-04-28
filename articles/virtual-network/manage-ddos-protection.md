@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: 454278f0f45a73ec99f52d3f7e9e0c5ce95ecf7a
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: f208119ce80d6b728030ea96f13d6c3d0375e74a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82133288"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182933"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>使用 Azure 门户管理 Azure DDoS 保护标准
 
@@ -39,7 +39,7 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
 
 1. 在 Azure 门户的左上角，选择“创建资源”****。
 2. 搜索 DDoS**。 当“DDoS 防护计划”出现在搜索结果中时，将其选中****。
-3. 选择“创建”。 
+3. 选择“创建”  。
 4. 输入或选择自己的值或以下示例值，然后选择“创建”****：
 
     |设置        |值                                              |
@@ -241,4 +241,4 @@ Azure 安全中心提供[安全警报](/azure/security-center/security-center-ma
 
 ## <a name="next-steps"></a>后续步骤
 
-- 为虚拟网络创建并应用 [Azure Policy](policy-samples.md)
+- 为虚拟网络创建和分配[Azure 策略定义](policy-samples.md)

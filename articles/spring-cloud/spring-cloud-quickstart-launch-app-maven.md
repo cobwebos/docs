@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: d1e6d6db1465b20f1f32a8ffb2f978d0a04a1033
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4eddf34f4887f0e2bad08eb5700d83eaeae0ef7e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79470837"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687096"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>快速入门：使用 Maven 插件启动 Azure Spring Cloud 应用
 
@@ -93,7 +93,7 @@ ms.locfileid: "79470837"
 1. 通过在包含父 POM 的 PiggyMetrics 的根文件夹中运行以下命令来生成配置：
 
     ```console
-    mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.0.0:config
+    mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.1.0:config
     ```
 
     a. 选择模块 `gateway`、`auth-service` 和 `account-service`。

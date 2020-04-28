@@ -3,12 +3,12 @@ title: 确定导致非符合性的原因
 description: 有多种可能的原因会导致资源不合规。 了解如何查明导致不合规的原因。
 ms.date: 04/26/2019
 ms.topic: how-to
-ms.openlocfilehash: c931831ddf3cc727b9861e75969eac3bf00c9e45
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 395c70309ceca6e38f9f62522d80fb588821b886
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "79264630"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182576"
 ---
 # <a name="determine-causes-of-non-compliance"></a>确定导致非符合性的原因
 
@@ -37,11 +37,11 @@ ms.locfileid: "79264630"
 
 1. 在“策略合规性”页的“资源合规性”选项卡下，右键单击**合规性状态**为“不合规”的资源或选择其对应的省略号。********__ 然后选择“查看合规性详细信息”。****
 
-   ![“查看合规性详细信息”选项](../media/determine-non-compliance/view-compliance-details.png)
+   :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="“查看合规性详细信息”选项" border="false":::
 
 1. “合规性详细信息”窗格将显示最近评估当前策略分配中的资源时的信息。**** 在此示例中，**Microsoft.Sql/servers/version** 字段值为 _12.0_，而策略定义预期该值为 _14.0_。 如果资源出于多种原因而不合规，此窗格中会列出每种原因。
 
-   ![“合规性详细信息”窗格和不合规的原因](../media/determine-non-compliance/compliance-details-pane.png)
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="“合规性详细信息”窗格和不合规的原因" border="false":::
 
    对于 **auditIfNotExists** 或 **deployIfNotExists** 策略定义，详细信息包含 **details.type** 属性和所有可选属性。 有关列表，请参阅 [auditIfNotExists 属性](../concepts/effects.md#auditifnotexists-properties)和 [deployIfNotExists 属性](../concepts/effects.md#deployifnotexists-properties)。 “上次评估的资源”是定义的 **details** 节中的相关资源。****
 
@@ -70,7 +70,7 @@ ms.locfileid: "79264630"
    }
    ```
 
-   ![“合规性详细信息”窗格 - *ifNotExists](../media/determine-non-compliance/compliance-details-pane-existence.png)
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="“合规性详细信息”窗格 - *ifNotExists" border="false":::
 
 > [!NOTE]
 > 若要保护数据，当属性值是机密时，当前值将显示星号。__
@@ -117,11 +117,11 @@ ms.locfileid: "79264630"
 
 在“合规性详细信息”窗格视图中，单击“上次评估的资源”链接。********
 
-   ![查看 auditIfNotExists 定义详细信息](../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png)
+:::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="查看 auditIfNotExists 定义详细信息" border="false":::
 
 “来宾分配”页将显示提供的所有合规性详细信息。**** 视图中的每一行代表在计算机中执行的一项评估。 “原因”列中会显示一条短语，描述来宾分配为何不合规。****__ 例如，如果你要审核密码策略，则“原因”列将显示包含每项设置的当前值的文本。****
 
-![查看合规性详细信息](../media/determine-non-compliance/guestconfig-compliance-details.png)
+:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="查看合规性详细信息" border="false":::
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -190,32 +190,32 @@ Audit that an application is installed inside Windows VMs                 NonCom
 
 ## <a name="change-history-preview"></a><a name="change-history"/>更改历史记录（预览版）
 
-作为新**公共预览**的一部分，支持[完全模式删除](../../../azure-resource-manager/templates/complete-mode-deletion.md)的所有 Azure 资源都可以使用更改历史记录的最后 14 天。 更改历史记录提供有关何时检测到更改的详细信息，以及每个更改的_视觉差异_。 添加、删除或更改资源管理器属性时，将触发更改检测。
+作为新**公共预览版**的一部分，最后14天的更改历史记录适用于支持[完整模式删除](../../../azure-resource-manager/templates/complete-mode-deletion.md)的所有 Azure 资源。 更改历史记录提供有关何时检测到更改的详细信息，以及每个更改的_视觉差异_。 添加、删除或更改资源管理器属性时，将触发更改检测。
 
 1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。********
 
-1. 在 **"概述**"或"**合规性"** 页上，选择处于任何**合规性状态**的策略。
+1. 在 "**概述**" 或 "**符合性**" 页上，选择任何**符合性状态**的策略。
 
-1. 在 **"策略合规性**"页的 **"资源合规性**"选项卡下，选择资源。
+1. 在 "**策略符合性**" 页的 "**资源符合性**" 选项卡下，选择一个资源。
 
 1. 选择“资源符合性”页上的“更改历史记录(预览版)”选项卡********。 此时会显示检测到的更改的列表（如果存在）。
 
-   ![Azure 策略更改历史记录选项卡位于资源合规性页上](../media/determine-non-compliance/change-history-tab.png)
+   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="资源符合性页上的 Azure 策略更改历史记录选项卡" border="false":::
 
-1. 选择其中一个检测到的更改。 资源的_可视差异_显示在 **"更改历史记录**"页上。
+1. 选择其中一个检测到的更改。 "**更改历史记录**" 页上显示了资源的_可视化差异_。
 
-   ![Azure 策略更改更改历史记录在更改历史记录页上的可视差异](../media/determine-non-compliance/change-history-visual-diff.png)
+   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text=""更改历史记录" 页上的 Azure 策略更改历史记录视觉差异" border="false":::
 
-_视觉差异_可帮助识别资源的更改。 检测到的更改可能与资源的当前符合性状态无关。
+_视觉差异_可帮助识别资源的更改。 检测到的更改可能与资源的当前符合性状态不相关。
 
-更改历史记录数据由[Azure 资源图](../../resource-graph/overview.md)提供。 要在 Azure 门户之外查询此信息，请参阅[获取资源更改](../../resource-graph/how-to/get-resource-changes.md)。
+更改历史记录数据由[Azure 资源 Graph](../../resource-graph/overview.md)提供。 若要在 Azure 门户之外查询此信息，请参阅[获取资源更改](../../resource-graph/how-to/get-resource-changes.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 查看[Azure 策略示例](../samples/index.md)中的示例。
 - 查看 [Azure Policy 定义结构](../concepts/definition-structure.md)。
 - 查看[了解策略效果](../concepts/effects.md)。
-- 了解如何[以编程方式创建策略](programmatically-create.md)。
-- 了解如何[获取合规性数据](get-compliance-data.md)。
-- 了解如何[修复不合规资源](remediate-resources.md)。
+- 了解如何以[编程方式创建策略](programmatically-create.md)。
+- 了解如何[获取相容性数据](get-compliance-data.md)。
+- 了解如何[修正不合规的资源](remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

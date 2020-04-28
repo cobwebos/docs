@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 05/08/2018
-ms.openlocfilehash: 06d05d6d410af13bfbe85f3cb66523c1d48cb77c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1f3a24afb2238c2448cb19b3889467a1b1819724
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "70195664"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460539"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>基于数据科学虚拟机的团队分析和 AI 环境 
 [Data Science Virtual Machine](overview.md) (DSVM) 在 Azure 平台上提供了一个丰富的环境，其中包含为人工智能 (AI) 和数据分析预建的软件。
@@ -43,7 +43,7 @@ ms.locfileid: "70195664"
 * [基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/overview)
 * [策略设置和执行](../../governance/policy/overview.md)
 * [反恶意软件](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
-* [加密](https://docs.microsoft.com/azure/virtual-machines/windows/encrypt-disks)
+* [加密](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption-overview.md)
 * [数据发现和管理](https://docs.microsoft.com/azure/data-catalog/)
 
 最后，[Azure 体系结构中心](https://docs.microsoft.com/azure/architecture/)为构建和管理基于云的分析基础结构提供了详细的端到端体系结构和模型。

@@ -1,27 +1,21 @@
 ---
 title: 使用 PowerShell 迁移到资源管理器
-description: 本文通过使用 Azure PowerShell 命令，介绍支持平台的 IaaS 资源（如虚拟机 （VM）、虚拟网络和存储帐户从经典迁移到 Azure 资源管理器的迁移过程
-services: virtual-machines-windows
-documentationcenter: ''
+description: 本文介绍如何在支持的平台上使用 Azure PowerShell 命令将 IaaS 资源（例如虚拟机 (VM)、虚拟网络和存储帐户）从经典部署模型迁移到 Azure 资源管理器部署模型
 author: tanmaygore
 manager: vashan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 2b3dff9b-2e99-4556-acc5-d75ef234af9c
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 12a77c4c21a26f1ec52bb3ffdc312df56d3c4537
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 314d7a4725709f00ba5cdbf54595857502bc5805
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79249966"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865945"
 ---
-# <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>使用 PowerShell 将 IaaS 资源从经典资源迁移到 Azure 资源管理器
+# <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>使用 PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型
 
 > [!IMPORTANT]
 > 今天，大约 90% 的 IaaS VM 正在使用[Azure 资源管理器](https://azure.microsoft.com/features/resource-manager/)。 截至 2020 年 2 月 28 日，经典 VM 已被弃用，将于 2023 年 3 月 1 日完全停用。 [详细了解]( https://aka.ms/classicvmretirement)此弃用[及其如何影响您](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me)。
@@ -60,7 +54,7 @@ ms.locfileid: "79249966"
 ## <a name="step-3-ensure-that-youre-an-administrator-for-the-subscription"></a>第 3 步：确保您是订阅的管理员
 要执行此迁移，必须添加为[Azure 门户](https://portal.azure.com)中的订阅的共同管理员。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 在 **"中心"** 菜单上，选择 **"订阅**"。 如果看不到该选项，请选择“所有服务”****。
 3. 查找相应的订阅条目，然后查看 **"MY ROLE"** 字段。 对于共同管理员，该值应为_帐户管理员_。
 

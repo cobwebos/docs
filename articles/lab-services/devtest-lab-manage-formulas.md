@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/17/2020
 ms.author: spelluru
 ms.openlocfilehash: ce980167cd88adfada1aa294aafa885184565799
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641164"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>管理 Azure 开发测试实验室公式
@@ -44,12 +44,12 @@ ms.locfileid: "81641164"
 
 3. 从实验室列表，选择所需的实验室。  
 
-4. 在实验室的页面上，选择左侧菜单上的**公式（可重用基础）。**
+4. 在实验室的页面上，选择左侧菜单中的 "**公式（可重用的基）** "。
 5. 在“公式”**** 页面上，选择“+ 添加”****。
    
     ![添加公式](./media/devtest-lab-create-formulas/add-formula.png)
 
-6. 在 **"选择基本**页"中，选择要从中创建公式的基础（自定义图像或应用商店映像）。
+6. 在 "**选择基本**页" 上，选择要从中创建公式的基本（自定义映像或 Marketplace 映像）。
 7. 在“创建公式”**** 页面的“基本设置”**** 选项卡上，指定以下值：
    
     * “公式名称”**** - 输入公式的名称。 创建 VM 时，此值会显示在基本映像列表中。 在键入该名称时会对其进行验证，如果无效，则会显示一条消息，指出有效名称的要求。
@@ -57,20 +57,20 @@ ms.locfileid: "81641164"
     * “用户名”**** - 输入被授予管理员权限的用户名。
     * “密码”**** - 输入或从下拉列表中选择与要用于指定用户的密码相关联的值。 若要了解如何在密钥保管库中保存机密并在创建实验室资源时使用这些机密，请参阅[在 Azure 密钥保管库中存储机密](devtest-lab-store-secrets-in-key-vault.md)。
 
-        如果要使用 Azure 密钥保管库中的秘密而不是使用密码，请选择 **"使用已保存的密钥**"。 
-    * **虚拟机大小**- 选择 **"更改大小"** 以更改 VM 的大小。 
-    - **OS 磁盘类型**- 选择要使用的磁盘类型（标准硬盘、标准 SSD 或高级 SSD）。
+        如果要使用 Azure Key Vault 的机密，而不是使用密码，请选择 "**使用保存的机密**"。 
+    * **虚拟机大小**-选择 "**更改大小**" 可更改 VM 的大小。 
+    - **OS 磁盘类型**-选择要使用的磁盘类型（标准 HDD、标准 SSD 或高级 SSD）。
     * **项目** - 选择“添加或删除项目”**** 页面，可以从中选择并配置要添加到基本映像的项目。 有关项目的详细信息，请参阅[创建 Azure 开发测试实验室虚拟机的自定义项目](devtest-lab-artifact-author.md)。
 
-        ![基本设置页面](./media/devtest-lab-create-formulas/basic-settings.png)
+        ![基本设置页](./media/devtest-lab-create-formulas/basic-settings.png)
 8. 切换到“高级设置”**** 选项卡，并指定以下值：
     - **虚拟网络** - 若要更改虚拟网络，请选择“更改 VNet”****。 
     - **子网** - 若要更改子网，请选择“更改子网”****。 
     - “IP 地址配置”**** - 指定希望使用公共、私有还是共享 IP 地址。 有关共享 IP 地址的详细信息，请参阅[了解 Azure 开发测试实验室中的共享 IP 地址](./devtest-lab-shared-ip.md)。
-    - **到期日期和时间**- 无法编辑此字段。 
+    - **过期日期和时间**-无法编辑此字段。 
     - “使此计算机可索取”**** - 使计算机可“索取”的意思是在创建时不会为其分配所有权。 而是，实验室用户将能够在实验室的页面上取得（“索取”）计算机的所有权。  
 
-        ![基本设置页面](./media/devtest-lab-create-formulas/advanced-settings.png)
+        ![基本设置页](./media/devtest-lab-create-formulas/advanced-settings.png)
 8. 选择“提交”**** 以创建公式。
 
 9. 创建公式后，它会显示在“公式”**** 页面上的列表中。

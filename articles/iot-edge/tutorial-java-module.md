@@ -8,13 +8,15 @@ ms.author: kgremban
 ms.date: 04/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: 228e50160e5c13b2d24a504b02c4bb7e3a420a46
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom:
+- mvc
+- mqtt
+ms.openlocfilehash: d8ea58dca8235b6dfc49c14c519dd44dabdf0592
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76772911"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733086"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>教程：开发适用于 Linux 设备的 Java IoT Edge 模块
 

@@ -2,19 +2,39 @@
 title: 配置混合 Kubernetes 群集与 Azure Monitor 容器 |Microsoft Docs
 description: 本文介绍如何配置容器 Azure Monitor，以监视托管在 Azure Stack 或其他环境中的 Kubernetes 群集。
 ms.topic: conceptual
-ms.date: 01/24/2020
-ms.openlocfilehash: c0dbbf9f65aa96db1ebcd0b03552bba8d1f91863
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.date: 04/22/2020
+ms.openlocfilehash: a0008f7a2d6b808a8ff55d85330801305361d7c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82143175"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185959"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>为容器配置混合 Kubernetes 群集 Azure Monitor
 
 容器 Azure Monitor 提供丰富的监视体验，适用于 azure 上的 Azure Kubernetes 服务（AKS）和[AKS 引擎](https://github.com/Azure/aks-engine)，这是托管在 azure 上的自托管 Kubernetes 群集。 本文介绍如何启用对 Azure 外部托管的 Kubernetes 群集的监视并实现类似的监视体验。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="supported-configurations"></a>支持的配置
+
+用于容器的 Azure Monitor 正式支持以下内容。
+
+* 环境： 
+
+    * 本地 Kubernetes
+    
+    * Azure 上的 AKS 引擎和 Azure Stack。 有关详细信息，请参阅[Azure Stack 上的 AKS Engine](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)
+    
+    * [OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html)版本4及更高版本，本地或其他云环境。
+
+* Kubernetes 和支持策略的版本与 [AKS 支持](../../aks/supported-kubernetes-versions.md)的版本相同。
+
+* 容器运行时： Docker、小鲸鱼和 CRI 兼容的运行时，例如 CRI 和 ContainerD。
+
+* 适用于主节点和工作节点的 Linux OS 版本： Ubuntu （18.04 LTS 和 16.04 LTS）和 Red Hat Enterprise Linux CoreOS 43.81。
+
+* 支持的访问控制： Kubernetes RBAC 和非 RBAC
+
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保做好以下准备：
 
@@ -33,10 +53,9 @@ ms.locfileid: "82143175"
 * 适用于 Linux 的容器化版本的 Log Analytics agent 需要以下代理和防火墙配置信息才能与 Azure Monitor 通信：
 
     |代理资源|端口 |
-    |------|---------|   
-    |*.ods.opinsights.azure.com |端口 443 |  
-    |*.oms.opinsights.azure.com |端口 443 |  
-    |\* .blob.core.windows.net |端口 443 |  
+    |------|---------|
+    |*.ods.opinsights.azure.com |端口 443 |
+    |*.oms.opinsights.azure.com |端口 443 |
     |*. dc.services.visualstudio.com |端口 443 |
 
 * 容器化代理需要在群集`cAdvisor secure port: 10250`中`unsecure port :10255`的所有节点上打开 Kubelet 或以收集性能指标。 建议你在 Kubelet `secure port: 10250`的 cAdvisor 上进行配置（如果尚未配置）。
@@ -45,16 +64,6 @@ ms.locfileid: "82143175"
 
 >[!IMPORTANT]
 >监视混合 Kubernetes 群集所支持的最低代理版本为 ciprod10182019 或更高版本。
-
-## <a name="supported-configurations"></a>支持的配置
-
-用于容器的 Azure Monitor 正式支持以下内容。
-
-- 环境： Azure 上的 Kubernetes 本地、AKS 引擎和 Azure Stack。 有关详细信息，请参阅 [Azure Stack 上的 AKS 引擎](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)。
-- Kubernetes 和支持策略的版本与 [AKS 支持](../../aks/supported-kubernetes-versions.md)的版本相同。
-- 容器运行时： Docker 和小鲸鱼
-- 适用于主节点和工作节点的 Linux OS 版本： Ubuntu （18.04 LTS 和 16.04 LTS）
-- 支持的访问控制： Kubernetes RBAC 和非 RBAC
 
 ## <a name="enable-monitoring"></a>启用监视
 
@@ -242,7 +251,7 @@ ms.locfileid: "82143175"
 ## <a name="install-the-chart"></a>安装图表
 
 >[!NOTE]
->以下命令仅适用于 Helm 版本2。 使用--name 参数不适用于 Helm 版本3。
+>以下命令仅适用于 Helm 版本2。 使用`--name`参数不适用于 Helm 版本3。
 
 若要启用 HELM 图表，请执行以下操作：
 
@@ -273,6 +282,28 @@ ms.locfileid: "82143175"
     --set omsagent.domain=opinsights.azure.us,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
     ```
 
+### <a name="enable-the-helm-chart-using-the-api-model"></a>使用 API 模型启用 Helm 图表
+
+你可以在 AKS 引擎群集规范 json 文件中指定加载项，也称为 API 模型。 在此加载项中，提供在其中存储`WorkspaceGUID`所`WorkspaceKey`收集的监视数据的 Log Analytics 工作区的 base64 编码版本。
+
+此示例[monitoring_existing_workspace_id_and_key kubernetes](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json)中提供了 Azure Stack 中心群集支持的 API 定义。 具体而言，请在**kubernetesConfig**中查找**加载项**属性：
+
+```json
+"orchestratorType": "Kubernetes",
+       "kubernetesConfig": {
+         "addons": [
+           {
+             "name": "container-monitoring",
+             "enabled": true,
+             "config": {
+               "workspaceGuid": "<Azure Log Analytics Workspace Guid in Base-64 encoded>",
+               "workspaceKey": "<Azure Log Analytics Workspace Key in Base-64 encoded>"
+             }
+           }
+         ]
+       }
+```
+
 ## <a name="configure-agent-data-collection"></a>配置代理数据收集
 
 起始具有图表版本1.0.0，则从 ConfigMap 控制代理数据收集设置。 请参阅[此处](container-insights-agent-config.md)的有关代理数据收集设置的文档。
@@ -282,7 +313,7 @@ ms.locfileid: "82143175"
 >[!NOTE]
 >从代理到 Azure Log Analytics 工作区中的提交，引入延迟时间大约为5到10分钟。 群集的状态显示值 "**无数据**" 或 "**未知**"，直到所有必需的监视数据在 Azure Monitor 中可用。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 如果尝试为混合 Kubernetes 群集启用监视时遇到错误，请将 PowerShell 脚本复制[TroubleshootError_nonAzureK8s ps1](https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/Troubleshoot/TroubleshootError_nonAzureK8s.ps1) ，并将其保存到计算机上的文件夹中。 提供此脚本是为了帮助检测和解决遇到的问题。 用于检测和尝试更正的问题如下所示：
 

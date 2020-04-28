@@ -1,21 +1,14 @@
 ---
 title: 什么是个性化体验创建服务？
-titleSuffix: Azure Cognitive Services
 description: 个性化体验创建服务是基于云的 API 服务，可让你选择要显示给用户的最佳体验，并从其实时行为中学习信息。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: personalizer
 ms.topic: overview
-ms.date: 01/21/2020
-ms.author: diberry
-ms.openlocfilehash: ac6d72cbb69796851e58098138d51bb0988be4ec
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.date: 04/20/2020
+ms.openlocfilehash: 3ae425479d764c0a6bf6c63bdd54a964c48af8b6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520978"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687263"
 ---
 # <a name="what-is-personalizer"></a>什么是个性化体验创建服务？
 

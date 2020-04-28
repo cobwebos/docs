@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/13/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: a82481c5cb3d12b11179b41999f73e67583ec43b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab6bb116c93aad8501da21dc5688d7e39f4195fe
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76277747"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82166183"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-dynatrace-saasmanaged"></a>（已弃用）通过 Dynatrace SaaS/托管监视 Azure 容器服务 DC/OS 群集
 
@@ -28,12 +28,12 @@ Dynatrace 是用于高动态容器和群集环境的云原生监视解决方案�
 ![Dynatrace UI](./media/container-service-monitoring-dynatrace/dynatrace.png)
 
 ## <a name="prerequisites"></a>先决条件 
-[部署](container-service-deployment.md)和[连接](./../container-service-connect.md)由 Azure 容器服务配置的群集。 探究 [Marathon UI](container-service-mesos-marathon-ui.md)。 转到[https://www.dynatrace.com/trial/](https://www.dynatrace.com/trial/)设置 Dynatrace SaaS 帐户。  
+[部署](container-service-deployment.md)和[连接](./../container-service-connect.md)由 Azure 容器服务配置的群集。 探究 [Marathon UI](container-service-mesos-marathon-ui.md)。 [https://www.dynatrace.com/trial/](https://www.dynatrace.com/trial/)若要设置 Dynatrace SaaS 帐户，请参阅。  
 
 ## <a name="configure-a-dynatrace-deployment-with-marathon"></a>通过 Marathon 配置 Dynatrace 部署
 这些步骤将演示如何通过 Marathon 将 Dynatrace 应用程序配置和部署到群集中。
 
-1. 通过[http://localhost:80/](http://localhost:80/)访问您的 DC/OS UI。 在位于 DC/OS UI 中后，导航到“Universe”**** 选项卡，并搜索“Dynatrace”****。
+1. 通过 `http://localhost:80/` 访问 DC/OS UI。 在位于 DC/OS UI 中后，导航到“Universe”**** 选项卡，并搜索“Dynatrace”****。
 
     ![DC/OS Universe 中的 Dynatrace](./media/container-service-monitoring-dynatrace/dynatrace-universe.png)
 
