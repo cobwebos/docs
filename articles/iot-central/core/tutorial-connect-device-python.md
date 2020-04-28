@@ -7,16 +7,18 @@ ms.date: 03/24/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 493dcd71905970434dd2ab2997cfebd17b8e47ff
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: d6c44c81db78fa76eeaf4b7181cca34fb8e81523
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80891588"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758179"
 ---
-# <a name="tutorial-create-and-connect-a-python-client-application-to-your-azure-iot-central-application-python"></a>教程：创建 Python 客户端应用程序并将其连接到 Azure IoT Central 应用程序 (Python)
+# <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>教程：创建客户端应用程序并将其连接到 Azure IoT Central 应用程序 (Python)
 
 [!INCLUDE [iot-central-selector-tutorial-connect](../../../includes/iot-central-selector-tutorial-connect.md)]
+
+本文适用于解决方案构建者和设备开发人员。 
 
 本教程介绍如何以设备开发人员的身份将 Python 客户端应用程序连接到 Azure IoT Central 应用程序。 该 Python 应用程序模拟环境传感器设备的行为。 你将使用一个示例设备功能模型在 IoT Central 中创建设备模板。   此外，你将向该设备模板中添加视图，使操作员能够与设备进行交互。
 
@@ -199,7 +201,7 @@ ms.locfileid: "80891588"
 
     命令的名称（`blink`、`turnon`、`turnoff` 和 `rundiagnostics`）必须与设备模板中使用的名称相匹配。
 
-    目前，IoT Central 不使用设备功能模型中定义的响应架构。 对于同步命令，响应有效负载可以是任何有效 JSON。 对于异步命令，在工作完成后，设备应立即返回 202 响应，后接所报告的属性更新。 所报告的属性更新采用以下格式：
+    目前，IoT Central 不使用设备功能模型中定义的响应架构。 对于同步命令，响应有效负载可以是任何有效 JSON。 对于异步命令，在工作完成后，设备应立即返回 202 响应，后接报告属性更新。 报告属性更新的格式为：
 
     ```json
     {
@@ -239,7 +241,7 @@ ms.locfileid: "80891588"
             )
     ```
 
-    当操作员在 IoT Central 应用程序中设置可写属性时，该应用程序会使用设备孪生所需属性将值发送到设备。 然后，设备使用设备孪生报告属性做出响应。 当 IoT Central 收到所报告的属性值时，它会将属性视图更新为“已同步”状态。 
+    当操作员在 IoT Central 应用程序中设置可写属性时，该应用程序会使用设备孪生所需属性将值发送到设备。 然后，设备使用设备孪生报告属性做出响应。 IoT Central 在收到报告属性值时会使用 synced 状态更新属性视图。 
 
     属性的名称（`name` 和 `brightness`）必须与设备模板中使用的名称相匹配。
 
@@ -297,13 +299,18 @@ python3 environmental_sensor.py
 
 [!INCLUDE [iot-central-monitor-environmental-sensor](../../../includes/iot-central-monitor-environmental-sensor.md)]
 
-你可以看到设备如何对命令和属性更新做出响应：
+可以看到设备如何对命令和属性更新做出响应：
 
 ![观察客户端应用程序](media/tutorial-connect-device-python/run-application-2.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解设备功能模型以及如何创建自己的设备模板，请继续阅读操作指南：
+作为设备开发人员，现在你已了解了有关使用 Node.js 创建设备的基础知识，建议执行的后续步骤是：
+
+- 阅读[将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序](./howto-connect-devkit.md)操作方法文章，了解如何将实际设备连接到 IoT Central。
+- 阅读[连接到 Azure IoT Central](./concepts-get-connected.md)，详细了解如何向 IoT Central 注册设备以及 IoT Central 如何保护设备连接。
+
+若要继续浏览 IoT Central 系列教程并详细了解如何构建 IoT Central 解决方案，请参阅：
 
 > [!div class="nextstepaction"]
-> [定义新的 IoT 设备类型](./howto-set-up-template.md)
+> [创建网关设备模板](./tutorial-define-gateway-device-type.md)

@@ -1,19 +1,20 @@
 ---
 title: 排查 Azure 订阅登录问题
 description: 帮助解决无法登录 Azure 门户或 Azure 帐户中心的问题。
+services: cost-management-billing
 author: v-miegge
-ms.reviewer: dcscontentpm
+manager: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: v-miegge
-ms.openlocfilehash: 4213df57423f5211517b019a8b58be99d2e12e7a
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 08f278d56e742659ebe197695fae8dfa35383b17
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409342"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639208"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>排查 Azure 订阅登录问题
 
@@ -36,12 +37,12 @@ ms.locfileid: "80409342"
 若要解决此问题，请尝试下列方法：
 
 - 清除缓存并删除 Internet Cookie。 在 Internet Explorer 中，单击“工具”   >   “Internet 选项” >   “删除”。 确保选中临时文件、cookie、密码和浏览历史记录的复选框，并单击“删除”。
-- 重置 Internet Explorer 设置，还原所做的任何个人设置。 单击“工具”   >   “Internet 选项” >   “高级”> 选中“删除个人设置”  框 >“重置”  。
+- 重置 Internet Explorer 设置以还原所做的任何个人设置。 单击“工具”   >   “Internet 选项” >   “高级”> 选中“删除个人设置”  框 >“重置”  。
 - 使用浏览器的专用浏览模式。 对于 Internet Explorer：单击“工具”   > “安全”   > “InPrivate 浏览”  ，然后浏览并登录到 [Azure 门户](https://portal.azure.com/)或 [Azure 帐户中心](https://account.azure.com/Subscriptions)。
 
 ### <a name="i-can-sign-in-but-i-see-no-subscriptions-found"></a>可以登录，但看到“找不到任何订阅” 
 
-如果选择了错误的目录，或者帐户没有足够的权限，会出现此问题。
+如果选择的目录不正确，或者帐户没有足够的权限，则会出现此问题。
 
 **场景 1：** [Azure 门户](https://portal.azure.com/)收到错误消息
 

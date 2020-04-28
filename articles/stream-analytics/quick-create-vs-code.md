@@ -7,16 +7,19 @@ ms.author: mamccrea
 ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: e3e878b4f548da64ab04eb079d51b0846cf35c57
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: fe666359b9ed2773f615ff496f4032bda5e74dc2
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76313869"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767763"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>快速入门：在 Visual Studio Code 中创建 Azure 流分析作业（预览）
 
 本快速入门介绍如何使用用于 Visual Studio Code 的 Azure 流分析工具扩展创建和运行 Azure 流分析作业。 示例作业从 Azure IoT 中心设备中读取流式处理数据。 你将定义一个作业，用以计算超过 27° 时的平均温度并将生成的输出事件写入到 blob 存储中的一个新文件。
+
+> [!NOTE]
+> Visual Studio 和 Visual Studio Code 工具不支持“中国东部”、“中国北部”、“德国中部”和“德国东北部”区域中的作业。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -140,14 +143,6 @@ ms.locfileid: "76313869"
    FROM Input
    HAVING Temperature > 27
    ```
-
-## <a name="test-the-query-locally-with-sample-data"></a>使用示例数据在本地测试查询
-
-在云中运行查询之前，可以使用本地示例数据文件或从实时输入中捕获的数据，在本地对其进行测试，以验证查询逻辑。
-
-有关更多详细信息，请按照[使用示例数据在本地测试查询](visual-studio-code-local-run.md)中的说明进行操作。
-
- ![在 Visual Studio Code 中使用示例数据进行测试](./media/vscode-local-run/localrun-localinput.gif)
 
 ## <a name="define-a-live-input"></a>定义实时输入
 
@@ -279,6 +274,8 @@ ms.locfileid: "76313869"
 在本快速入门中，你已使用 Visual Studio Code 部署了一个简单的流分析作业。 也可通过 [Azure 门户](stream-analytics-quick-create-portal.md)、[PowerShell](stream-analytics-quick-create-powershell.md) 和 [Visual Studio](stream-analytics-quick-create-vs.md) 部署流分析作业。
 
 若要了解适用于 Visual Studio Code 的 Azure 流分析工具，请继续阅读以下文章：
+
+* [通过 Visual Studio Code 使用示例数据在本地测试流分析查询](visual-studio-code-local-run.md)
 
 * [通过 Visual Studio Code 在本地对实时输入测试 Azure 流分析作业](visual-studio-code-local-run-live-input.md)
 

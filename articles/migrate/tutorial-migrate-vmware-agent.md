@@ -4,18 +4,16 @@ description: 了解如何使用 Azure Migrate 运行基于代理的 VMware VM �
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 64873c5185660c58cd4d07d60df3d086364d6288
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6855c3e81aece0358146608b6cf179fb923c54c8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222024"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535326"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>将 VMware VM 迁移到 Azure（使用基于代理的方法）
 
 本文介绍如何使用基于代理的 Azure Migrate 服务器迁移工具将本地 VMware VM 迁移到 Azure。
-
-[Azure Migrate](migrate-services-overview.md) 提供一个中心用于跟踪本地应用、工作负荷与 AWS/GCP VM 实例的发现、评估及其到 Azure 的迁移。 该中心提供用于评估和迁移的 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 产品。
 
 
 在本教程中，你将了解如何执行以下操作：
@@ -78,7 +76,7 @@ ms.locfileid: "79222024"
 如果你尚未运行评估，则需要设置 Azure 权限，然后才能使用 Azure Migrate 服务器迁移进行迁移。
 
 - **创建项目**：你的 Azure 帐户需要有权创建 Azure Migrate 项目。 
-- **注册 Azure Migrate 复制设备**：复制设备将在 Azure 帐户中创建并注册 Azure Active Directory 应用。 需要委托此操作的权限。
+- **注册 Azure Migrate 复制设备**：复制设备将在 Azure 帐户中创建并注册 Azure Active Directory 应用。 请委托此操作的权限。
 - **创建 Key Vault**：若要使用 Azure Migrate 服务器迁移工具迁移 VMware VM，Azure Migrate 需在资源组中创建一个 Key Vault，用于管理订阅中复制存储帐户的访问密钥。 若要创建保管库，需要对 Azure Migrate 项目所在的资源组拥有角色分配权限。 
 
 
@@ -147,8 +145,8 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以便：
 
 **任务** | **角色/权限** | **详细信息**
 --- | --- | ---
-**VM 发现** | 至少一个只读用户<br/><br/> 数据中心对象 –> 传播到子对象、角色=只读 | 在数据中心级别分配的对数据中心内所有对象具有访问权限的用户。<br/><br/> 要限制访问权限，请在选中“传播到子对象”的情况下将“无访问权”角色分配给子对象（vSphere 主机、数据存储、VM 和网络）   。
-**完全复制、故障转移、故障回复** |  创建一个拥有所需权限的角色 (Azure_Site_Recovery)，然后将该角色分配到 VMware 用户或组<br/><br/> 数据中心对象 – 传播到子对象、角色=Azure_Site_Recovery<br/><br/> 数据存储->分配空间、浏览数据存储、低级别文件操作、删除文件、更新虚拟机文件<br/><br/> 网络 -> 网络分配<br/><br/> 资源 -> 将 VM 分配到资源池、迁移关闭的 VM、迁移打开的 VM<br/><br/> 任务 -> 创建任务、更新任务<br/><br/> 虚拟机 -> 配置<br/><br/> 虚拟机 -> 交互 -> 回答问题、设备连接、配置 CD 媒体、配置软盘媒体、关闭电源、打开电源、安装 VMware 工具<br/><br/> 虚拟机 -> 清单 -> 创建、注册、取消注册<br/><br/> 虚拟机 -> 预配 -> 允许虚拟机下载、允许虚拟机文件上传<br/><br/> 虚拟机 -> 快照 -> 删除快照 | 在数据中心级别分配的对数据中心内所有对象具有访问权限的用户。<br/><br/> 要限制访问权限，请在选中“传播到子对象”的情况下将“无访问权”角色分配给子对象（vSphere 主机、数据存储、VM 和网络）   。
+**VM 发现** | 至少一个只读用户<br/><br/> 数据中心对象 –> 传播到子对象、角色=只读 | 在数据中心级别分配的对数据中心内所有对象具有访问权限的用户。<br/><br/> 若要限制访问权限，请使用“传播到子对象”  将“无访问权”  角色分配给子对象（vSphere 主机、数据存储、VM 和网络）。
+**完全复制、故障转移、故障回复** |  创建一个拥有所需权限的角色 (Azure_Site_Recovery)，然后将该角色分配到 VMware 用户或组<br/><br/> 数据中心对象 – 传播到子对象、角色=Azure_Site_Recovery<br/><br/> 数据存储->分配空间、浏览数据存储、低级别文件操作、删除文件、更新虚拟机文件<br/><br/> 网络 -> 网络分配<br/><br/> 资源 -> 将 VM 分配到资源池、迁移关闭的 VM、迁移打开的 VM<br/><br/> 任务 -> 创建任务、更新任务<br/><br/> 虚拟机 -> 配置<br/><br/> 虚拟机 -> 交互 -> 回答问题、设备连接、配置 CD 媒体、配置软盘媒体、关闭电源、打开电源、安装 VMware 工具<br/><br/> 虚拟机 -> 清单 -> 创建、注册、取消注册<br/><br/> 虚拟机 -> 预配 -> 允许虚拟机下载、允许虚拟机文件上传<br/><br/> 虚拟机 -> 快照 -> 删除快照 | 在数据中心级别分配的对数据中心内所有对象具有访问权限的用户。<br/><br/> 若要限制访问权限，请使用“传播到子对象”  将“无访问权”  角色分配给子对象（vSphere 主机、数据存储、VM 和网络）。
 
 ### <a name="prepare-an-account-for-mobility-service-installation"></a>准备一个帐户用于安装移动服务
 
@@ -191,23 +189,15 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以便：
 3. 在“概述”中，单击“评估和迁移服务器”。  
 4. 在“发现、评估和迁移服务器”下，单击“评估和迁移服务器”。  
 
-    ![发现和评估服务器](./media/tutorial-migrate-vmware-agent/assess-migrate.png)
+    ![发现和评估服务器](./media/tutorial-migrate-vmware-agent/assess-migrate.png
 
 1. 在“发现、评估和迁移服务器”中，单击“添加工具”。  
 2. 在“迁移项目”中选择你的 Azure 订阅，并创建一个资源组（如果没有）。 
-3. 在“项目详细信息”中，指定项目名称以及要在其中创建项目的地理位置，然后单击“下一步”。  
+3. 在“项目详细信息”中，指定项目名称以及要在其中创建项目的地理位置，然后单击“下一步”。   查看[公有云](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。
 
     ![创建 Azure Migrate 项目](./media/tutorial-migrate-vmware-agent/migrate-project.png)
 
-    可在下述任一地理位置创建 Azure Migrate 项目。
 
-    **地域** | **区域**
-    --- | ---
-    亚洲 | 东南亚
-    欧洲 | 欧洲北部或欧洲西部
-    United States | 美国东部或美国中西部
-
-    为项目指定的地理位置仅用于存储从本地 VM 中收集的元数据。 可为实际迁移选择任一目标区域。
 4. 在“选择评估工具”中，选择“暂时跳过添加评估工具” > “下一步”。   
 5. 在“选择迁移工具”中，选择“Azure Migrate:   服务器迁移” > “下一步”。 
 6. 在“检查 + 添加工具”中检查设置，然后单击“添加工具”。  
@@ -221,7 +211,10 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以便：
 - **进程服务器**：进程服务器充当复制网关。 它接收复制数据，通过缓存、压缩和加密对其进行优化，然后将其发送到 Azure 中的缓存存储帐户。 进程服务器还会将移动服务代理安装在要复制的 VM 上，并在本地 VMware VM 上执行自动发现。
 
 
-若要设置复制设备，请下载已准备好的开放虚拟化应用程序 (.OVA) 模板。 将该模板导入 VMware，并创建复制设备 VM。 
+可通过几种方式来设置复制设备。
+
+- 使用下载的开放虚拟化应用程序 (OVA) 模板进行设置。 将该模板导入 VMware，并创建复制设备 VM。 这是本教程中使用的方法。
+- 使用脚本进行设置。
 
 ### <a name="download-the-replication-appliance-template"></a>下载复制设备模板
 

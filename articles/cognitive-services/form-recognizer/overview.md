@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 6919849d28573ad7388a7f2e317d2b8433f35559
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5b7a060aa2313902e4644fdd15068e06816e3f58
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399453"
+ms.locfileid: "81529886"
 ---
 # <a name="what-is-form-recognizer"></a>什么是表单识别器？
 
@@ -92,7 +92,7 @@ Azure 表单识别器是一个认知服务，该服务使用机器学习技术�
 
 回执模型的输入要求略有不同。
 
-* 格式必须为 JPEG、PNG、BMP、PDF（文本或扫描时间）或 TIFF。
+* 格式必须为 JPEG、PNG、PDF（文本或扫描件）或 TIFF。
 * 文件大小必须小于 20 MB。
 * 图像尺寸必须介于 50 x 50 像素与 10000 x 10000 像素之间。
 * PDF 尺寸必须最多为 17 x 17 英寸，对应于 Legal 或 A3 纸张尺寸及更小。

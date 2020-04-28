@@ -6,12 +6,12 @@ ms.assetid: 53e6a15a-370a-48df-8618-c6737e26acec
 ms.topic: sample
 ms.date: 12/12/2017
 ms.custom: mvc
-ms.openlocfilehash: 0b3acb1b421962cde7d90398f42bdfeefda578e3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 499bf25f06030ae9fc5c1f8381ef4cd6ff6873dc
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74971496"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535615"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>针对 Azure 应用服务的 CLI 示例
 
@@ -28,7 +28,7 @@ ms.locfileid: "74971496"
 | [在 Docker 容器中创建 ASP.NET Core 应用](./scripts/cli-linux-docker-aspnetcore.md?toc=%2fcli%2fazure%2ftoc.json)| 在 Linux 上创建应用服务应用并从 Docker 中心加载 Docker 映像。 |
 |**配置应用**||
 | [将自定义域映射到应用](./scripts/cli-configure-custom-domain.md?toc=%2fcli%2fazure%2ftoc.json)| 创建应用服务应用并将自定义域名映射到它。 |
-| [将自定义 SSL 证书绑定到应用](./scripts/cli-configure-ssl-certificate.md?toc=%2fcli%2fazure%2ftoc.json)| 创建应用服务应用并将自定义域名的 SSL 证书绑定到它。 |
+| [将自定义 TLS/SSL 证书绑定到应用](./scripts/cli-configure-ssl-certificate.md?toc=%2fcli%2fazure%2ftoc.json)| 创建应用服务应用并将自定义域名的 TLS/SSL 证书绑定到该应用。 |
 |**缩放应用**||
 | [手动缩放应用](./scripts/cli-scale-manual.md?toc=%2fcli%2fazure%2ftoc.json) | 创建应用服务应用并将其在 2 个实例之间进行缩放。 |
 | [缩放具有高可用性体系结构的全球应用](./scripts/cli-scale-high-availability.md?toc=%2fcli%2fazure%2ftoc.json) | 在两个不同地理区域中创建两个应用服务应用，并使用 Azure 流量管理器通过单个终结点使其可用。 |

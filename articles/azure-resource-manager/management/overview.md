@@ -2,17 +2,17 @@
 title: 概述
 description: 介绍如何使用 Azure 资源管理器在 Azure 上部署和管理资源以及对其进行访问控制。
 ms.topic: overview
-ms.date: 03/25/2020
-ms.openlocfilehash: 1e2a6959117749b4e7d08a9768b4189b97ef08bd
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/21/2020
+ms.openlocfilehash: 253fc2f296fa764a6c22fa1331221df60ca21bb5
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80258135"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870487"
 ---
 # <a name="what-is-azure-resource-manager"></a>什么是 Azure 资源管理器？
 
-Azure 资源管理器是 Azure 的部署和管理服务。 它提供一个管理层用于在 Azure 订阅中创建、更新和删除资源。 部署后，可以使用访问控制、锁和标记等管理功能来保护和组织资源。
+Azure 资源管理器是 Azure 的部署和管理服务。 它提供了一个管理层，用于在 Azure 帐户中创建、更新和删除资源。 部署后，可以使用访问控制、锁和标记等管理功能来保护和组织资源。
 
 若要了解 Azure 资源管理器模板，请参阅[模板部署概述](../templates/overview.md)。
 
@@ -30,10 +30,10 @@ Azure 资源管理器是 Azure 的部署和管理服务。 它提供一个管理
 
 如果不熟悉 Azure 资源管理器，则可能不熟悉某些术语。
 
-* **资源** - 可通过 Azure 获取的可管理项。 资源的示例包括虚拟机、存储帐户、Web 应用、数据库和虚拟网络。
+* **资源** - 可通过 Azure 获取的可管理项。 资源的示例包括虚拟机、存储帐户、Web 应用、数据库和虚拟网络。 资源组、订阅、管理组和标记也是资源的示例。
 * **资源组** — 一个容器，用于保存 Azure 解决方案的相关资源。 资源组包括你想要作为一个组进行管理的那些资源。 根据最适合组织的情况来决定哪些资源属于哪个资源组。 请参阅 [资源组](#resource-groups)。
 * **资源提供程序** - 提供 Azure 资源的服务。 例如，Microsoft.Compute 就是一个常见的资源提供程序，它提供虚拟机资源。 Microsoft.Storage 是另一个常见的资源提供程序。 请参阅[资源提供程序和类型](resource-providers-and-types.md)。
-* **资源管理器模板** - 一个 JavaScript 对象表示法 (JSON) 文件，用于定义一个或多个要部署到资源组或订阅的资源。 使用模板能够以一致方式反复部署资源。 请参阅[模板部署概述](../templates/overview.md)。
+* 资源管理器模板  - 一个 JavaScript 对象表示法 (JSON) 文件，用于定义一个或多个要部署到资源组、订阅、管理组或租户的资源。 使用模板能够以一致方式反复部署资源。 请参阅[模板部署概述](../templates/overview.md)。
 * **声明性语法** — 一种语法，允许声明“以下是我想要创建的项目”，而不需要编写一系列编程命令来进行创建。 资源管理器模板便是声明性语法的其中一个示例。 在该文件中，可以定义要部署到 Azure 的基础结构的属性。  请参阅[模板部署概述](../templates/overview.md)。
 
 ## <a name="the-benefits-of-using-resource-manager"></a>使用 Resource Manager 的优势
@@ -48,7 +48,7 @@ Azure 资源管理器是 Azure 的部署和管理服务。 它提供一个管理
 
 * 定义各资源之间的依赖关系，使其按正确的顺序进行部署。
 
-* 将访问控制应用到资源组中的所有服务，因为基于角色的访问控制 (RBAC) 已在本机集成到管理平台。
+* 将访问控制应用于所有服务，因为基于角色的访问控制 (RBAC) 原本已集成到管理平台。
 
 * 将标记应用到资源，以逻辑方式组织订阅中的所有资源。
 
@@ -58,11 +58,11 @@ Azure 资源管理器是 Azure 的部署和管理服务。 它提供一个管理
 
 Azure 提供四个级别的范围：[管理组](../../governance/management-groups/overview.md)、订阅、[资源组](#resource-groups)和资源。 下图显示了这些层的一个示例。
 
-![范围](./media/overview/scope-levels.png)
+![管理级别](./media/overview/scope-levels.png)
 
 将在上述任何级别的作用域中应用管理设置。 所选的级别确定应用设置的广泛程度。 较低级别继承较高级别的设置。 例如，将[策略](../../governance/policy/overview.md)应用于订阅时，该策略将应用于订阅中的所有资源组和资源。 在资源组上应用策略时，该策略将应用于资源组及其所有资源。 但是，其他资源组没有该策略分配。
 
-可以将模板部署到管理组、订阅或资源组。
+可以将模板部署到租户、管理组、订阅或资源组。
 
 ## <a name="resource-groups"></a>资源组
 
@@ -71,6 +71,8 @@ Azure 提供四个级别的范围：[管理组](../../governance/management-grou
 * 组中的所有资源应该共享相同的生命周期。 一起部署、更新和删除这些资源。 如果某个资源（例如数据库服务器）需要采用不同的部署周期，则它应在另一个资源组中。
 
 * 每个资源只能在一个资源组中。
+
+* 某些资源可能存在于资源组之外。 这些资源将部署到[订阅](../templates/deploy-to-subscription.md)、[管理组](../templates/deploy-to-management-group.md)或[租户](../templates/deploy-to-tenant.md)。 这些范围仅支持特定的资源类型。
 
 * 随时可以在资源组添加或删除资源。
 

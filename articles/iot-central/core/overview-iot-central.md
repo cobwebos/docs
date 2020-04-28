@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 6c50e5892aca37bac47e68a9ae17435611c99817
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 38152889ad43b41aeb345f59963cbfb869964b98
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80157460"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025231"
 ---
 # <a name="what-is-azure-iot-central"></a>什么是 Azure IoT Central？
 
@@ -60,7 +60,7 @@ IoT Central 是一个 IoT 应用程序平台，可减轻开发、管理和维护
 - 一个基于云的应用程序，它从设备接收遥测数据并使得你可以管理这些设备。
 - 运行自定义代码且连接到基于云的应用程序的多个设备。
 
-可以快速部署新的 IoT Central 应用程序，然后在浏览器中对其进行自定义以满足特定要求。 一开始可以使用普通的应用程序模板，或使用以[零售](../retail/overview-iot-central-retail-pnp.md)、[能源](../energy/overview-iot-central-energy.md)、[政府](../government/overview-iot-central-government.md)或[医疗保健](../healthcare/overview-iot-central-healthcare.md)行业为中心的某个应用程序模板。 
+可以快速部署新的 IoT Central 应用程序，然后在浏览器中对其进行自定义以满足特定要求。 一开始可以使用普通的应用程序模板，或使用以[零售](../retail/overview-iot-central-retail.md)、[能源](../energy/overview-iot-central-energy.md)、[政府](../government/overview-iot-central-government.md)或[医疗保健](../healthcare/overview-iot-central-healthcare.md)行业为中心的某个应用程序模板。 
 
 作为解决方案构建者，你可以使用基于 Web 的工具为连接到应用程序的设备创建“设备模板”  。 设备模板是定义一种设备的特征和行为的蓝图，例如：
 
@@ -197,7 +197,7 @@ IoT Central 应用程序完全由 Microsoft 托管，这降低了管理应用程
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已大致了解了 IoT Central，下面是建议的后续步骤：
+现在，你已大致了解了 IoT Central，下面是一些建议的后续步骤：
 
 - 了解可用的[用于创建 IoT 解决方案的 Azure 技术和服务](../../iot-fundamentals/iot-services-and-technologies.md)。
 - 熟悉 [Azure IoT Central UI](overview-iot-central-tour.md)。
@@ -205,3 +205,5 @@ IoT Central 应用程序完全由 Microsoft 托管，这降低了管理应用程
 - 详细了解 [IoT 即插即用（预览版）](../../iot-pnp/overview-iot-plug-and-play.md)。
 - 了解如何[连接 Azure IoT Edge 设备](./tutorial-add-edge-as-leaf-device.md)。
 - 详细了解 [Azure IoT 技术和服务](../../iot-fundamentals/iot-services-and-technologies.md)。
+
+如果你是设备开发人员并想深入了解某种代码，建议执行的下一步骤是[创建客户端应用程序并将其连接到 Azure IoT Central 应用程序](./tutorial-connect-device-nodejs.md)。

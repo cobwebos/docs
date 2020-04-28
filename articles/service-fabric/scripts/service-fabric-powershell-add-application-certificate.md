@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 61c22a3949008d61bbe3472f601d2d0dd597a0ac
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d657ef8d28b36d93bc923036254e446c7be4c2c8
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77114346"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769518"
 ---
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>将应用程序证书添加到 Service Fabric 群集
 
@@ -48,9 +48,7 @@ $CertName= ""
 $CertPassword= ""
 $PathToPFX= ""
 
-$Cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2 $PathToPFX, $CertPassword
-
-$bytes = [System.IO.File]::ReadAllBytes($ExistingPfxFilePath)
+$bytes = [System.IO.File]::ReadAllBytes($PathToPFX)
 $base64 = [System.Convert]::ToBase64String($bytes)
 $jsonBlob = @{
    data = $base64
@@ -74,7 +72,12 @@ $ResourceGroupName = ""
 $VMSSName = ""
 $CertStore = "My" # Update this with the store you want your certificate placed in, this is LocalMachine\My
 
+# If you have added your certificate to the keyvault certificates, use
 $CertConfig = New-AzVmssVaultCertificateConfig -CertificateUrl (Get-AzKeyVaultCertificate -VaultName $VaultName -Name $CertName).SecretId -CertificateStore $CertStore
+
+# Otherwise, if you have added your certificate to the keyvault secrets, use
+$CertConfig = New-AzVmssVaultCertificateConfig -CertificateUrl (Get-AzKeyVaultSecret -VaultName $VaultName -Name $CertName).Id -CertificateStore $CertStore
+
 $VMSS = Get-AzVmss -ResourceGroupName $ResourceGroupName -VMScaleSetName $VMSSName
 
 # If this KeyVault is already known by the virtual machine scale set, for example if the cluster certificate is deployed from this keyvault, use
@@ -98,7 +101,8 @@ Update-AzVmss -ResourceGroupName $ResourceGroupName -VirtualMachineScaleSet $VMS
 | Command | 说明 |
 |---|---|
 | [New-AzKeyVaultCertificatePolicy](/powershell/module/az.keyvault/New-AzKeyVaultCertificatePolicy) | 创建表示证书的内存中策略 |
-| [Add-AzKeyVaultCertificate](/powershell/module/az.keyvault/Add-AzKeyVaultCertificate)| 将策略部署到 Key Vault |
+| [Add-AzKeyVaultCertificate](/powershell/module/az.keyvault/Add-AzKeyVaultCertificate)| 将策略部署到 Key Vault 证书 |
+| [Set-AzKeyVaultSecret](/powershell/module/az.keyvault/Set-AzKeyVaultSecret)| 将策略部署到 Key Vault 机密 |
 | [New-AzVmssVaultCertificateConfig](/powershell/module/az.compute/New-AzVmssVaultCertificateConfig) | 创建表示 VM 中证书的内存中配置 |
 | [Get-AzVmss](/powershell/module/az.compute/Get-AzVmss) |  |
 | [Add-AzVmssSecret](/powershell/module/az.compute/Add-AzVmssSecret) | 将证书添加到虚拟机规模集的内存中定义 |

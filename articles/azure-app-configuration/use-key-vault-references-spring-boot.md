@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: b6b6d10165eed331c397e17a18e382b095e1f74f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6a5bc947c3ea414f197df9cfcdd5f233e4654cbc
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79216742"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085019"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>教程：在 Java Spring 应用中使用 Key Vault 引用
 
@@ -140,6 +140,14 @@ ms.locfileid: "79216742"
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>更新代码以使用 Key Vault 引用
 
+1. 创建一个名为“APP_CONFIGURATION_ENDPOINT”  的环境变量。 将其值设为你的应用配置存储的终结点。 可以在 Azure 门户的“访问密钥”  边栏选项卡上找到该终结点。
+
+1. 打开“resources”  文件夹中的 bootstrap.properties  。 将此文件更新为使用应用配置终结点（而不是使用连接字符串）。
+
+    ```properties
+    spring.cloud.azure.appconfiguration.stores[0].endpoint= ${APP_CONFIGURATION_ENDPOINT}
+    ```
+
 1. 打开 MessageProperties.java  。 添加一个名为“keyVaultMessage”  的新变量：
 
     ```java
@@ -166,7 +174,7 @@ ms.locfileid: "79216742"
 1. 创建一个名为 AzureCredentials.java  的新文件并添加下面的代码。
 
     ```java
-    package com.example;
+    package com.example.demo;
 
     import com.azure.core.credential.TokenCredential;
     import com.azure.identity.EnvironmentCredentialBuilder;
@@ -195,7 +203,7 @@ ms.locfileid: "79216742"
 1. 创建一个名为 AppConfiguration.java  的新文件。 并添加以下代码。
 
     ```java
-    package com.example;
+    package com.example.demo;
 
     import org.springframework.context.annotation.Bean;
     import org.springframework.context.annotation.Configuration;
@@ -214,7 +222,7 @@ ms.locfileid: "79216742"
 
     ```factories
     org.springframework.cloud.bootstrap.BootstrapConfiguration=\
-    com.example.AppConfiguration
+    com.example.demo.AppConfiguration
     ```
 
 1. 使用 Maven 生成 Spring Boot 应用程序，然后运行该程序，例如：

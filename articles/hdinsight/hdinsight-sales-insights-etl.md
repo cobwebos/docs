@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
-ms.date: 03/24/2020
-ms.openlocfilehash: a4df99c45b27ad662133010422cae2e30e36e584
-ms.sourcegitcommit: 940e16ff194d5163f277f98d038833b1055a1a3e
+ms.date: 04/15/2020
+ms.openlocfilehash: c213b0089af0af295d44afd38bbc5c17b6db159d
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80247259"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535224"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中创建端到端的数据管道以派生销售见解
 
@@ -27,23 +27,28 @@ ms.locfileid: "80247259"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure CLI。 请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+* Azure CLI - 至少为版本 2.2.0。 请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+
+* jq，一个命令行 JSON 处理程序。  请参阅 [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
 
 * [Azure 内置角色 - 所有者](../role-based-access-control/built-in-roles.md)的一个成员。
 
-* [Power BI Desktop](https://www.microsoft.com/download/details.aspx?id=45331)，用以可视化本教程结束时生成的业务见解。
+* 如果使用 PowerShell 来触发数据工厂管道，则需要 [Az 模块](https://docs.microsoft.com/powershell/azure/overview)。
+
+* [Power BI Desktop](https://aka.ms/pbiSingleInstaller)，用以可视化本教程结束时生成的业务见解。
 
 ## <a name="create-resources"></a>创建资源
 
 ### <a name="clone-the-repository-with-scripts-and-data"></a>克隆包含脚本和数据的存储库
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 Azure 订阅。 如果打算使用 Azure Cloud Shell，请在代码块的右上角选择“试用”  。 否则，请输入以下命令：
 
-1. 在顶部菜单栏中打开 Azure Cloud Shell。 根据 Azure Cloud Shell 的提示选择自己的订阅来创建文件共享。
+    ```azurecli-interactive
+    az login
 
-   ![打开 Azure Cloud Shell](./media/hdinsight-sales-insights-etl/hdinsight-sales-insights-etl-click-cloud-shell.png)
-
-1. 在“选择环境”下拉菜单中选择“Bash”。  
+    # If you have multiple subscriptions, set the one to use
+    # az account set --subscription "SUBSCRIPTIONID"
+    ```
 
 1. 确保你是 Azure 角色[所有者](../role-based-access-control/built-in-roles.md)的成员。 将 `user@contoso.com` 替换为你的帐户，然后输入以下命令：
 
@@ -55,29 +60,7 @@ ms.locfileid: "80247259"
 
     如果未返回任何记录，则你不是成员，将无法完成本教程。
 
-1. 输入以下命令来列出你的订阅：
-
-    ```azurecli
-    az account list --output table
-    ```
-
-    记下你要用于此项目的订阅的 ID。
-
-1. 设置要用于此项目的订阅。 将 `SUBSCRIPTIONID` 替换为实际值，然后输入命令。
-
-    ```azurecli
-    subscriptionID="SUBSCRIPTIONID"
-    az account set --subscription $subscriptionID
-    ```
-
-1. 为项目创建一个新的资源组。 将 `RESOURCEGROUP` 替换为所需名称，然后输入命令。
-
-    ```azurecli
-    resourceGroup="RESOURCEGROUP"
-    az group create --name $resourceGroup --location westus
-    ```
-
-1. 从 [HDInsight 销售见解 ETL 存储库](https://github.com/Azure-Samples/hdinsight-sales-insights-etl)下载本教程所需的数据和脚本。  输入以下命令：
+1. 从 [HDInsight 销售见解 ETL 存储库](https://github.com/Azure-Samples/hdinsight-sales-insights-etl)下载本教程所需的数据和脚本。 输入以下命令：
 
     ```bash
     git clone https://github.com/Azure-Samples/hdinsight-sales-insights-etl.git
@@ -98,11 +81,19 @@ ms.locfileid: "80247259"
     chmod +x scripts/*.sh
     ````
 
-1. 执行脚本。 将 `RESOURCE_GROUP_NAME` 和 `LOCATION` 替换为相关值，然后输入以下命令：
+1. 为资源组设置变量。 将 `RESOURCE_GROUP_NAME` 替换为现有或新资源组的名称，然后输入以下命令：
 
     ```bash
-    ./scripts/resources.sh RESOURCE_GROUP_NAME LOCATION
+    resourceGroup="RESOURCE_GROUP_NAME"
     ```
+
+1. 执行脚本。 将 `LOCATION` 替换为所需值，然后输入以下命令：
+
+    ```bash
+    ./scripts/resources.sh $resourceGroup LOCATION
+    ```
+
+    如果不确定要指定哪个区域，可以使用 [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list-locations) 命令检索你的订阅支持的区域列表。
 
     该命令将部署以下资源：
 
@@ -115,49 +106,26 @@ ms.locfileid: "80247259"
 
 创建群集的过程可能需要 20 分钟左右。
 
-`resources.sh` 脚本包含以下命令。 如果已在上一步中执行了该脚本，则不需要运行这些命令。
-
-* `az group deployment create` - 此命令使用 Azure 资源管理器模板 (`resourcestemplate.json`) 创建采用所需配置的指定资源。
-
-    ```azurecli
-    az group deployment create --name ResourcesDeployment \
-        --resource-group $resourceGroup \
-        --template-file resourcestemplate.json \
-        --parameters "@resourceparameters.json"
-    ```
-
-* `az storage blob upload-batch` - 此命令还使用以下命令将销售数据 .csv 文件上传到新建的 Blob 存储帐户：
-
-    ```azurecli
-    az storage blob upload-batch -d rawdata \
-        --account-name <BLOB STORAGE NAME> -s ./ --pattern *.csv
-    ```
-
-用于对群集进行 SSH 访问的默认密码为 `Thisisapassword1`。 若要更改密码，请转到 `resourcesparameters.json` 文件，并更改 `sparksshPassword`、`sparkClusterLoginPassword`、`llapClusterLoginPassword` 和 `llapsshPassword` 参数的密码。
+用于对群集进行 SSH 访问的默认密码为 `Thisisapassword1`。 若要更改密码，请转到 `./templates/resourcesparameters_remainder.json` 文件，并更改 `sparksshPassword`、`sparkClusterLoginPassword`、`llapClusterLoginPassword` 和 `llapsshPassword` 参数的密码。
 
 ### <a name="verify-deployment-and-collect-resource-information"></a>验证部署并收集资源信息
 
-1. 若要检查部署状态，请在 Azure 门户上转到资源组。 选择“设置”下面的“部署”。   选择部署的名称 `ResourcesDeployment`。 在此处可以看到已成功部署的资源，以及仍在部署的资源。
+1. 若要检查部署状态，请在 Azure 门户上转到资源组。 在“设置”  下，选择“部署”  ，然后选择你的部署。 在此处可以看到已成功部署的资源，以及仍在部署的资源。
 
 1. 若要查看群集的名称，请输入以下命令：
 
-    ```azurecli
-    sparkCluster=$(az hdinsight list \
-        --resource-group $resourceGroup \
-        --query "[?contains(name,'spark')].{clusterName:name}" -o tsv)
+    ```bash
+    sparkClusterName=$(cat resourcesoutputs_remainder.json | jq -r '.properties.outputs.sparkClusterName.value')
+    llapClusterName=$(cat resourcesoutputs_remainder.json | jq -r '.properties.outputs.llapClusterName.value')
 
-    llapCluster=$(az hdinsight list \
-        --resource-group $resourceGroup \
-        --query "[?contains(name,'llap')].{clusterName:name}" -o tsv)
-
-    echo $sparkCluster
-    echo $llapCluster
+    echo "Spark Cluster" $sparkClusterName
+    echo "LLAP cluster" $llapClusterName
     ```
 
 1. 若要查看 Azure 存储帐户和访问密钥，请输入以下命令：
 
     ```azurecli
-    blobStorageName=$(cat resourcesoutputs.json | jq -r '.properties.outputs.blobStorageName.value')
+    blobStorageName=$(cat resourcesoutputs_storage.json | jq -r '.properties.outputs.blobStorageName.value')
 
     blobKey=$(az storage account keys list \
         --account-name $blobStorageName \
@@ -171,7 +139,7 @@ ms.locfileid: "80247259"
 1. 若要查看 Data Lake Storage Gen2 帐户和访问密钥，请输入以下命令：
 
     ```azurecli
-    ADLSGen2StorageName=$(cat resourcesoutputs.json | jq -r '.properties.outputs.adlsGen2StorageName.value')
+    ADLSGen2StorageName=$(cat resourcesoutputs_storage.json | jq -r '.properties.outputs.adlsGen2StorageName.value')
 
     adlsKey=$(az storage account keys list \
         --account-name $ADLSGen2StorageName \
@@ -191,10 +159,13 @@ Azure 数据工厂是一个有助于自动化 Azure Pipelines 的工具。 数�
 * 第一个活动将 Azure Blob 存储中的数据复制到 Data Lake Storage Gen2 存储帐户，以模拟数据引入。
 * 第二个活动转换 Spark 群集中的数据。 脚本通过删除不需要的列来转换数据。 它还会追加一个新列来计算单笔交易产生的收入。
 
-若要设置 Azure 数据工厂管道，请执行以下命令：
+若要设置 Azure 数据工厂管道，请执行以下命令。  你应该还在 `hdinsight-sales-insights-etl` 目录中。
 
 ```bash
-./scripts/adf.sh
+blobStorageName=$(cat resourcesoutputs_storage.json | jq -r '.properties.outputs.blobStorageName.value')
+ADLSGen2StorageName=$(cat resourcesoutputs_storage.json | jq -r '.properties.outputs.adlsGen2StorageName.value')
+
+./scripts/adf.sh $resourceGroup $ADLSGen2StorageName $blobStorageName
 ```
 
 此脚本执行以下操作：
@@ -205,35 +176,47 @@ Azure 数据工厂是一个有助于自动化 Azure Pipelines 的工具。 数�
 1. 获取 Data Lake Storage Gen2 和 Blob 存储帐户的存储密钥。
 1. 创建另一个资源部署，以创建 Azure 数据工厂管道及其关联的链接服务和活动。 它将存储密钥作为参数传递给模板文件，使链接服务能够正常访问存储帐户。
 
-通过以下命令部署数据工厂管道：
-
-```azurecli-interactive
-az group deployment create --name ADFDeployment \
-    --resource-group $resourceGroup \
-    --template-file adftemplate.json \
-    --parameters "@adfparameters.json"
-```
-
 ## <a name="run-the-data-pipeline"></a>运行数据管道
 
 ### <a name="trigger-the-data-factory-activities"></a>触发数据工厂活动
 
 创建的数据工厂管道中的第一个活动将 Blob 存储中的数据移到 Data Lake Storage Gen2。 第二个活动对数据应用 Spark 转换，并将转换后的 csv 文件保存到新位置。 整个管道可能需要几分钟时间才能完成。
 
+若要检索数据工厂名称，请输入以下命令：
+
+```azurecli
+cat resourcesoutputs_adf.json | jq -r '.properties.outputs.factoryName.value'
+```
+
 若要触发管道，可执行以下任一操作：
 
-* 在 PowerShell 中触发数据工厂管道。 将 `DataFactoryName` 替换为实际数据工厂名称，并运行以下命令：
+* 在 PowerShell 中触发数据工厂管道。 将 `RESOURCEGROUP` 和 `DataFactoryName` 替换为适当的值，然后运行以下命令：
 
     ```powershell
-    Invoke-AzDataFactoryV2Pipeline -DataFactory DataFactoryName -PipelineName "CopyPipeline_k8z"
-    Invoke-AzDataFactoryV2Pipeline -DataFactory DataFactoryName -PipelineName "sparkTransformPipeline"
+    # If you have multiple subscriptions, set the one to use
+    # Select-AzSubscription -SubscriptionId "<SUBSCRIPTIONID>"
+
+    $resourceGroup="RESOURCEGROUP"
+    $dataFactory="DataFactoryName"
+
+    $pipeline =Invoke-AzDataFactoryV2Pipeline `
+        -ResourceGroupName $resourceGroup `
+        -DataFactory $dataFactory `
+        -PipelineName "IngestAndTransform"
+
+    Get-AzDataFactoryV2PipelineRun `
+        -ResourceGroupName $resourceGroup  `
+        -DataFactoryName $dataFactory `
+        -PipelineRunId $pipeline
     ```
+
+    根据需要重新执行 `Get-AzDataFactoryV2PipelineRun` 来监视进度。
 
     或
 
-* 打开数据工厂并选择“创作和监视”。  触发复制管道，然后从门户触发 Spark 管道。 有关通过门户触发管道的信息，请参阅[使用 Azure 数据工厂在 HDInsight 中创建按需 Apache Hadoop 群集](hdinsight-hadoop-create-linux-clusters-adf.md#trigger-a-pipeline)。
+* 打开数据工厂并选择“创作和监视”。  从门户触发 `IngestAndTransform` 管道。 有关通过门户触发管道的信息，请参阅[使用 Azure 数据工厂在 HDInsight 中创建按需 Apache Hadoop 群集](hdinsight-hadoop-create-linux-clusters-adf.md#trigger-a-pipeline)。
 
-若要验证管道是否已运行，可执行以下步骤之一：
+若要验证管道是否已运行，可执行以下任一步骤：
 
 * 通过门户转到数据工厂的“监视”部分。 
 * 在 Azure 存储资源管理器中，转到你的 Data Lake Storage Gen2 存储帐户。 转到 `files` 文件系统，然后转到 `transformed` 文件夹，并检查其内容以查看管道运行是否成功。
@@ -242,37 +225,48 @@ az group deployment create --name ADFDeployment \
 
 ### <a name="create-a-table-on-the-interactive-query-cluster-to-view-data-on-power-bi"></a>在交互式查询群集中创建一个表用于查看 Power BI 中的数据
 
-1. 使用 SCP 将 `query.hql` 文件复制到 LLAP 群集。 将 `LLAPCLUSTERNAME` 替换为实际名称，然后输入以下命令：
+1. 使用 SCP 将 `query.hql` 文件复制到 LLAP 群集。 输入以下命令：
 
     ```bash
-    scp scripts/query.hql sshuser@LLAPCLUSTERNAME-ssh.azurehdinsight.net:/home/sshuser/
+    llapClusterName=$(cat resourcesoutputs_remainder.json | jq -r '.properties.outputs.llapClusterName.value')
+    scp scripts/query.hql sshuser@$llapClusterName-ssh.azurehdinsight.net:/home/sshuser/
     ```
 
-2. 使用 SSH 访问 LLAP 群集。 将 `LLAPCLUSTERNAME` 替换为实际名称，然后输入命令。 如果你未更改 `resourcesparameters.json` 文件，则密码为 `Thisisapassword1`。
+    提醒：默认密码为 `Thisisapassword1`。
+
+1. 使用 SSH 访问 LLAP 群集。 输入以下命令：
 
     ```bash
-    ssh sshuser@LLAPCLUSTERNAME-ssh.azurehdinsight.net
+    ssh sshuser@$llapClusterName-ssh.azurehdinsight.net
     ```
 
-3. 使用以下命令运行该脚本：
+1. 使用以下命令运行该脚本：
 
     ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -f query.hql
     ```
 
-此脚本将在交互式查询群集中创建一个可从 Power BI 访问的托管表。
+    此脚本将在交互式查询群集中创建一个可从 Power BI 访问的托管表。
 
 ### <a name="create-a-power-bi-dashboard-from-sales-data"></a>基于销售数据创建 Power BI 仪表板
 
 1. 打开 Power BI Desktop。
-1. 选择“获取数据”  。
-1. 搜索“HDInsight 交互式查询群集”。 
-1. 在此处粘贴群集的 URI。 它应采用格式 `https://LLAPCLUSTERNAME.azurehdinsight.net`。
 
-   为数据库输入 `default`。
-1. 输入用于访问群集的用户名和密码。
+1. 在菜单中，导航到“获取数据”   > “更多...”   > “Azure”  “HDInsight Interactive Query” >   。
 
-加载数据后，可以尝试创建仪表板。 若要开始使用 Power BI 仪表板，请参阅以下链接：
+1. 选择“连接”  。
+
+1. 在“HDInsight Interactive Query”  对话框中执行以下操作：
+    1. 在“服务器”  文本框中，以 `https://LLAPCLUSTERNAME.azurehdinsight.net` 格式输入 LLAP 群集的名称。
+    1. 在“数据库”  文本框中，输入 `default`。
+    1. 选择“确定”  。
+
+1. 在“AzureHive”  对话框中执行以下操作：
+    1. 在“用户名”  文本框中，输入 `admin`。
+    1. 在“密码”  文本框中，输入 `Thisisapassword1`。
+    1. 选择“连接”  。
+
+1. 在“导航器”  中，选择 `sales` 和/或 `sales_raw` 以预览数据。 加载数据后，可以尝试创建仪表板。 若要开始使用 Power BI 仪表板，请参阅以下链接：
 
 * [Power BI 设计器仪表板简介](https://docs.microsoft.com/power-bi/service-dashboards)
 * [教程：Power BI 服务入门](https://docs.microsoft.com/power-bi/service-get-started)
@@ -281,9 +275,18 @@ az group deployment create --name ADFDeployment \
 
 如果你不打算继续使用此应用程序，请通过以下命令删除所有资源，以免产生费用。
 
-```azurecli-interactive
-az group delete -n $resourceGroup
-```
+1. 若要删除资源组，请输入以下命令：
+
+    ```azurecli
+    az group delete -n $resourceGroup
+    ```
+
+1. 若要删除服务主体，请输入以下命令：
+
+    ```azurecli
+    servicePrincipal=$(cat serviceprincipal.json | jq -r '.name')
+    az ad sp delete --id $servicePrincipal
+    ```
 
 ## <a name="next-steps"></a>后续步骤
 

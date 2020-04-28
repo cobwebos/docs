@@ -9,14 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: bf74784998de6bbad6310c48c24d6353512bff13
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c60cf4b90b089d271c0ccd91031420efe9017b1e
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77026390"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758160"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>教程：将 Azure IoT Edge 设备添加到 Azure IoT Central 应用程序
+
+本文适用于解决方案构建者和设备开发人员。 
 
 本教程介绍如何配置 Azure IoT Edge 设备并将其添加到 Azure IoT Central 应用程序。 本教程使用 Azure 市场中提供的支持 IoT Edge 的 Linux 虚拟机 (VM) 来模拟 IoT Edge 设备。 该 IoT Edge 设备使用一个可以生成模拟环境遥测数据的模块。 你将在 IoT Central 应用程序中的仪表板上查看遥测数据。
 
@@ -262,9 +264,9 @@ IoT Edge 清单不会定义模块发送的遥测数据。 必须将遥测定义�
 
 ## <a name="next-steps"></a>后续步骤
 
-现在你已了解如何在 IoT Central 中使用和管理 IoT Edge 设备，建议接下来执行以下步骤：
+作为设备开发人员，现在你已了解了如何在 IoT Central 中使用和管理 IoT Edge 设备，建议执行的下一步操作是阅读：
 
 <!-- Next how-tos in the sequence -->
 
 > [!div class="nextstepaction"]
-> [配置透明网关](../../iot-edge/how-to-create-transparent-gateway.md)
+> [连接到 Azure IoT Central](./concepts-get-connected.md)

@@ -4,12 +4,12 @@ description: 了解如何从应用服务应用调用业务流程。 发送电子
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: mvc
-ms.openlocfilehash: 44f2dfb83e96e1d8fa31ee1acf350193b954dbd8
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: 4073b49a134356943bd7da8d54bf574f2e0d5eea
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892566"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604853"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>教程：从应用服务发送电子邮件及调用其他业务流程
 
@@ -199,7 +199,7 @@ var statusCode = result.StatusCode.ToString();
 ```
 
 > [!NOTE]
-> 编写此代码是为了便于演示。 在实践中，请不要实例化每个请求的 `HttpClient` 对象。 请遵循 [使用 IHttpClientFactory 实现可复原的 HTTP 请求](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient -http-requests) 中的指导。
+> 编写此代码是为了便于演示。 在实践中，请不要实例化每个请求的 `HttpClient` 对象。 请按照[使用 IHttpClientFactory 实现可复原的 HTTP 请求](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)中的指导进行操作。
 
 如果在[教程：在 Azure 应用服务中生成 ASP.NET Core 和 SQL 数据库应用](app-service-web-tutorial-dotnetcore-sqldb.md)的示例应用中测试此代码，可以在添加 `Todo` 项后，使用该代码在 [Create 操作](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)中发送电子邮件确认。
 

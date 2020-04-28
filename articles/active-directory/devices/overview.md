@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c895a13eb9b2bed9e3a8a5a250c4e925dfa834c5
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ba0630474224c34eb96429cd7592028362e03381
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80331809"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024432"
 ---
 # <a name="what-is-a-device-identity"></a>什么是设备标识？
 
@@ -53,6 +53,9 @@ ms.locfileid: "80331809"
 
 ![“Azure AD 设备”边栏选项卡中显示的设备](./media/overview/azure-active-directory-devices-all-devices.png)
 
+> [!NOTE]
+> 混合状态不仅指设备的状态。 要使混合状态有效，还需要有效的 Azure AD 用户。
+
 ## <a name="device-management"></a>设备管理
 
 可以使用 Microsoft Intune、Microsoft Endpoint Configuration Manager、组策略（混合 Azure AD 联接）、移动应用管理 (MAM) 工具等移动设备管理 (MDM) 工具或其他第三方工具来管理 Azure AD 中的设备。
@@ -63,6 +66,8 @@ ms.locfileid: "80331809"
 
 > [!NOTE]
 > 基于设备的条件访问策略需要已加入混合 Azure AD 的设备或已加入 Azure AD 或已注册到 Azure AD 的合规设备。
+
+主刷新令牌 (PRT) 包含有关设备的信息，是 SSO 所必需的。 如果在没有 PRT 的应用程序上设置了基于设备的条件访问策略，则访问将被拒绝。 混合条件访问策略需要一个混合状态设备和已登录的有效用户。
 
 已加入 Azure AD 或加入混合 Azure AD 的设备可受益于组织本地资源以及云资源的 SSO。 在[本地资源的 SSO 在已加入 Azure AD 的设备上的工作原理](azuread-join-sso.md)一文中可以找到详细信息。
 

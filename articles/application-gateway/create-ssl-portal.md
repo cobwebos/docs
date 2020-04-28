@@ -1,22 +1,22 @@
 ---
-title: 教程：在门户中配置 SSL 终端 - Azure 应用程序网关
-description: 在本教程中，你将了解如何使用 Azure 门户配置应用程序网关并为 SSL 终端添加证书。
+title: 教程：在门户中配置 TLS 终止 - Azure 应用程序网关
+description: 本教程介绍如何使用 Azure 门户配置应用程序网关并添加 TLS 终止证书。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 11/13/2019
+ms.date: 04/22/2019
 ms.author: victorh
-ms.openlocfilehash: b4278fc6d44f32921713681cb094b659901cc87c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 62f5375a0d468f5b137c4628c89c802d83dee102
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74012304"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024485"
 ---
-# <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>教程：通过 Azure 门户使用 SSL 终端配置应用程序网关
+# <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>教程：使用 Azure 门户配置带有 TLS 终止的应用程序网关
 
-可通过 Azure 门户使用 SSL 终端的证书配置使用虚拟机作为后端服务器的[应用程序网关](overview.md)。
+可以使用 Azure 门户为使用虚拟机作为后端服务器的[应用程序网关](overview.md)配置 TLS 终止证书。
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -56,13 +56,11 @@ Thumbprint                                Subject
 E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
 ```
 
-结合返回的指纹使用 [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate)，从证书导出 pfx 文件：
+将 [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) 与返回的指纹配合使用，从证书导出 pfx 文件。 请确保密码长度为 4 到 12 个字符：
 
-> [!NOTE]
-> 请勿在 .pfx 文件密码中使用任何特殊字符。 仅支持字母数字字符。
 
 ```powershell
-$pwd = ConvertTo-SecureString -String "Azure123456" -Force -AsPlainText
+$pwd = ConvertTo-SecureString -String <your password> -Force -AsPlainText
 Export-PfxCertificate `
   -cert cert:\localMachine\my\E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630 `
   -FilePath c:\appgwcert.pfx `
@@ -150,7 +148,7 @@ Export-PfxCertificate `
 
    - **PFX 证书文件** - 浏览到并选择前面创建的 c:\appgwcert.pfx 文件。
    - **证书名称** - 键入“mycert1”  作为证书的名称。
-   - **密码** - 输入“Azure123456”作为“密码”  。
+   - 密码  - 键入密码。
   
         接受“侦听器”选项卡上其他设置的默认值，然后选择“后端目标”选项卡以配置剩余的传递规则   。
 
@@ -194,10 +192,10 @@ Export-PfxCertificate `
     - **资源组**：选择 **myResourceGroupAG** 作为资源组名称。
     - **虚拟机名称**：输入 *myVM* 作为虚拟机的名称。
     - **用户名**：输入 *azureuser* 作为管理员用户名。
-    - **密码**：输入“Azure123456”作为管理员密码  。
-4. 接受其他默认值，然后选择“下一步:**磁盘”** 。  
-5. 接受“磁盘”**选项卡的默认值**，然后选择“下一步:**网络”** 。
-6. 在“网络”  选项卡上，验证是否已选择 **myVNet** 作为**虚拟网络**，以及是否已将“子网”  设置为 **myBackendSubnet**。 接受其他默认值，然后选择“下一步:**管理”** 。
+    - **密码**：输入管理员帐户的密码。
+1. 接受其他默认值，然后选择“下一步:**磁盘”** 。  
+2. 接受“磁盘”**选项卡的默认值**，然后选择“下一步:**网络”** 。
+3. 在“网络”  选项卡上，验证是否已选择 **myVNet** 作为**虚拟网络**，以及是否已将“子网”  设置为 **myBackendSubnet**。 接受其他默认值，然后选择“下一步:**管理”** 。
 
    应用程序网关可与其所在的虚拟网络外部的实例进行通信，但需要确保已建立 IP 连接。
 1. 在“管理”  选项卡上，将“启动诊断”  设置为“关闭”。  接受其他默认值，然后选择“复查 + 创建”。 
@@ -265,4 +263,4 @@ Export-PfxCertificate `
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [详细了解应用程序网关 SSL 支持](ssl-overview.md)
+> [详细了解应用程序网关 TLS 支持](ssl-overview.md)

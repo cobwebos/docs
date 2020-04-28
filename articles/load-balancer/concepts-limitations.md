@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/14/2020
 ms.author: allensu
-ms.openlocfilehash: a94b51e49951948974b8f42f6c89cd3c84f95d65
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7a7210915920ed9ab2a5ddc47a27c2587895a57a
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80064279"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768251"
 ---
 # <a name="load-balancer-components-and-limitations"></a>负载均衡器组件和限制
 Azure 负载均衡器包含几个关键组件，用于执行其操作。  可以通过 Azure 门户、Azure CLI 或 Azure PowerShell 在你的订阅中配置这些组件。  
@@ -171,6 +171,8 @@ Internet 客户端将网页请求发送到 TCP 端口 80 上 Web 应用的公共
 
 根据 SKU，完整的方案配置可能略有不同。 如果某篇文章仅适用于特定的 SKU，负载均衡器文档中会做出相应的标识。 请参阅下表来比较和了解差别。 有关详细信息，请参阅 [Azure 标准负载均衡器概述](load-balancer-standard-overview.md)。
 
+若要将基本负载均衡器升级为标准负载均衡器，请参阅[升级基本负载均衡器](upgrade-basic-standard.md)。
+
 >[!NOTE]
 > Microsoft 建议使用标准负载均衡器。
 独立 VM、可用性集和虚拟机规模集只能连接到一个 SKU，永远无法同时连接到两个 SKU。 与公共 IP 地址配合使用时，负载均衡器和公共 IP 地址 SKU 必须匹配。 负载均衡器和公共 IP SKU 不可变。
@@ -207,6 +209,7 @@ Internet 客户端将网页请求发送到 TCP 端口 80 上 Web 应用的公共
 
 ## <a name="next-steps"></a>后续步骤
 
+- 请参阅[升级基本负载均衡器](upgrade-basic-standard.md)，将基本负载均衡器升级为标准负载均衡器。
 - 请参阅[创建公共标准负载均衡器](quickstart-load-balancer-standard-public-portal.md)以开始使用负载均衡器：在已安装自定义 IIS 扩展的情况下创建 VM，然后对 VM 之间的 Web 应用进行负载均衡。
 - 详细了解 [Azure 负载均衡器](load-balancer-overview.md)。
 - 了解如何使用[标准负载均衡器和可用性区域](load-balancer-standard-availability-zones.md)。

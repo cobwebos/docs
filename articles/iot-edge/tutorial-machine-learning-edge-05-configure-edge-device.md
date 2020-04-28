@@ -8,12 +8,13 @@ ms.date: 2/5/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d2bad581c925bb62cbe65a45000f6d3ae35db011
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: amqp
+ms.openlocfilehash: 353ed321ce3b6161b28bf67d852a81f809880603
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372692"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733011"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>教程：配置 IoT Edge 设备
 
@@ -26,7 +27,7 @@ ms.locfileid: "80372692"
 
 ## <a name="create-certificates"></a>创建证书
 
-充当网关的设备必须能够安全地连接到下游设备。 Azure IoT Edge 允许使用公钥基础结构 (PKI) 在设备之间建立安全连接。 在这种情况下，我们可以将下游 IoT 设备连接到充当透明网关的 IoT Edge 设备。 要维持合理的安全性，下游设备应确认 IoT Edge 设备的标识。 要详细了解 IoT Edge 设备如何使用证书，请查看 [Azure IoT Edge 证书使用详细信息](iot-edge-certs.md)。
+充当网关的设备必须能够安全地连接到下游设备。 Azure IoT Edge 允许使用公钥基础结构 (PKI) 在设备之间建立安全连接。 在这种情况下，我们允许将下游 IoT 设备连接到充当透明网关的 IoT Edge 设备。 要维持合理的安全性，下游设备应确认 IoT Edge 设备的标识。 要详细了解 IoT Edge 设备如何使用证书，请查看 [Azure IoT Edge 证书使用详细信息](iot-edge-certs.md)。
 
 在此部分中，我们要使用到时会生成和运行的 Docker 映像来创建自签名证书。 我们选择用 Docker 映像来完成此步骤的原因是，它显著减少了在 Windows 开发计算机上创建证书所需的步骤数。 请参阅[创建演示证书以测试 IoT Edge 设备功能](how-to-create-test-certificates.md)，了解通过 Docker 映像实现自动化的操作。
 
@@ -282,7 +283,7 @@ IoT Edge 运行时使用 `/etc/iotedge/config.yaml` 文件来保留其配置。 
     sudo systemctl restart iotedge
     ```
 
-7. 检查 IoT Edge 守护程序的状态（在命令后键入“:q”可退出）。
+7. 检查 IoT Edge 守护程序的状态（在执行命令后，键入“:q”退出）。
 
     ```bash
     systemctl status iotedge
@@ -296,7 +297,7 @@ IoT Edge 运行时使用 `/etc/iotedge/config.yaml` 文件来保留其配置。 
 
 ## <a name="next-steps"></a>后续步骤
 
-我们刚才完成了将 Azure VM 配置为 Azure IoT Edge 透明网关的操作。 我们首先创建了测试证书并将它们上传到 Azure Key Vault。 接下来，我们使用了脚本和 Resource Manager 模板，通过 Azure 市场中的“Ubuntu Server 16.04 LTS + Azure IoT Edge 运行时”映像部署了 VM。 在 VM 启动并运行后，我们通过 SSH 进行了连接，登录到 Azure 并从 Key Vault 下载了证书。 我们通过更新 config.yaml 文件对 IoT Edge 运行时的配置进行了多处更新。
+我们刚才完成了将 Azure VM 配置为 Azure IoT Edge 透明网关的操作。 我们首先创建了测试证书并将它们上传到 Azure Key Vault。 接下来，我们使用了脚本和资源管理器模板，通过 Azure 市场中的“Ubuntu Server 16.04 LTS + Azure IoT Edge 运行时”映像部署了 VM。 在 VM 启动并运行后，我们通过 SSH 进行了连接，登录到 Azure 并从 Key Vault 下载了证书。 我们通过更新 config.yaml 文件对 IoT Edge 运行时的配置进行了多处更新。
 
 有关详细信息，请参阅[如何将 IoT Edge 设备用作网关](iot-edge-as-gateway.md)和[将 IoT Edge 设备配置为充当透明网关](how-to-create-transparent-gateway.md)。
 

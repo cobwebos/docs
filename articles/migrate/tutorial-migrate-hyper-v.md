@@ -2,16 +2,16 @@
 title: 使用 Azure Migrate 服务器迁移工具将 Hyper-V VM 迁移到 Azure
 description: 了解如何使用 Azure Migrate 服务器迁移工具将本地 Hyper-V VM 迁移到 Azure
 ms.topic: tutorial
-ms.date: 11/18/2019
+ms.date: 04/15/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: b5d37da7ea0c53a7e8cbb5b579d529dd4a799fed
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 6b9732aab9e3fe0d26b4c572efe87c3a9d3e29f6
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422683"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535343"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>将 Hyper-V VM 迁移到 Azure 
 
@@ -19,12 +19,12 @@ ms.locfileid: "80422683"
 
 [Azure Migrate](migrate-services-overview.md) 提供一个中心用于跟踪本地应用、工作负荷与私有云/公有云 VM 的发现、评估及其到 Azure 的迁移。 该中心提供用于评估和迁移的 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 产品。
 
-本教程是演示如何使用 Azure Migrate 服务器评估与迁移工具评估 Hyper-V 以及将其迁移到 Azure 的教程系列中的第三篇文章。 在本教程中，你将了解如何执行以下操作：
+本教程是教程系列中的第三篇教程，演示了如何使用 Azure Migrate 服务器评估与服务器迁移工具评估 Hyper-V 并将其迁移到 Azure。 在本教程中，你将了解如何执行以下操作：
 
 
 > [!div class="checklist"]
 > * 准备 Azure 和本地 Hyper-V 环境
-> * 设置源环境并部署复制设备。
+> * 设置源环境。
 > * 设置目标环境。
 > * 启用复制。
 > * 运行测试迁移，确保一切按预期正常进行。
@@ -38,23 +38,28 @@ ms.locfileid: "80422683"
 开始学习本教程之前，应做好以下准备：
 
 1. [查看](hyper-v-migration-architecture.md) Hyper-V 迁移体系结构。
-2. 完成本教程系列的[第一篇教程](tutorial-prepare-hyper-v.md)来设置 Azure 和 Hyper-V，以便能够完成迁移。 在第一篇教程中，你已：
-    - [准备 Azure](tutorial-prepare-hyper-v.md#prepare-azure)，以便能够完成迁移。
-    - [准备本地环境](tutorial-prepare-hyper-v.md#prepare-for-hyper-v-migration)，以便能够完成迁移。
-3. 我们建议你尝试使用 Azure Migrate 评估 Hyper-V VM：服务器评估在迁移到 Azure 之前进行。 为此，请完成本教程系列的[第二篇教程](tutorial-assess-hyper-v.md)。 尽管我们建议你尝试运行评估，但在迁移 VM 之前不一定非要这样做。
-4. 确保为 Azure 帐户分配“虚拟机参与者”角色，以便你有权执行以下操作：
+2. [查看](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts) Hyper-V 主机要求以及 Hyper-V 主机需要访问的 Azure URL。
+3. [查看](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms)要迁移的 Hyper-V VM 的要求。 Hyper-V VM 必须符合 [Azure VM 要求](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements)。
+2. 我们建议你完成本系列中前面的教程。 [第一篇教程](tutorial-prepare-hyper-v.md)演示了如何针对迁移设置 Azure 和 Hyper-V。 第二篇教程演示了如何在迁移之前使用 Azure Migrate:服务器评估 [评估 Hyper-V VMs](tutorial-assess-hyper-v.md。 
+    > [!NOTE]
+    > 尽管我们建议你尝试运行评估，但在迁移 VM 之前不一定非要这样做。
+    > 对于迁移 Hyper-V VM，Azure Migrate:服务器迁移在 Hyper-V 主机或群集节点上运行软件代理（Microsoft Azure Site Recovery 提供程序和 Microsoft Azure 恢复服务代理），以便进行协调并将数据复制到 Azure Migrate。 [Azure Migrate 设备](migrate-appliance.md)不用于 Hyper-V 迁移。
+
+3. 确保为 Azure 帐户分配“虚拟机参与者”角色，以便你有权执行以下操作：
 
     - 在所选资源组中创建 VM。
     - 在所选虚拟网络中创建 VM。
     - 写入 Azure 托管磁盘。
-5. [设置 Azure 网络](../virtual-network/manage-virtual-network.md#create-a-virtual-network)。 迁移到 Azure 时，创建的 Azure VM 将加入到设置迁移时指定的 Azure 网络。
+4. [设置 Azure 网络](../virtual-network/manage-virtual-network.md#create-a-virtual-network)。 迁移到 Azure 时，创建的 Azure VM 将加入到设置迁移时指定的 Azure 网络。
 
+## <a name="add-the-azure-migrateserver-migration-tool"></a>添加 Azure Migrate:服务器迁移工具
 
-## <a name="add-the-azure-migrate-server-migration-tool"></a>添加 Azure Migration 服务器迁移工具
+添加 Azure Migrate:服务器迁移工具。
 
-如果你未按照第二篇教程评估 Hyper-V VM，则需要[按照这些说明](how-to-add-tool-first-time.md)设置 Azure Migrate 项目，并将 Azure Migrate 服务器评估工具添加到该项目。
+- 如果你已按照第二篇教程来[评估 VMware VM](/tutorial-assess-hyper-v.md)，则已设置了一个 Azure Migrate 项目，现在可以继续添加工具。
+- 如果未按照第二篇教程操作，请[按照这些说明](how-to-add-tool-first-time.md)设置 Azure Migrate 项目。 创建项目时，请添加 Azure Migrate:服务器迁移工具。
 
-如果已按照第二篇教程进行操作并已有一个 Azure Migrate 项目，请按如下所述添加 Azure Migrate:服务器迁移工具：
+如果已设置项目，请如下所述添加工具：
 
 1. 在 Azure Migrate 项目中，单击“概述”。  
 2. 在“发现、评估和迁移服务器”中，单击“评估和迁移服务器”。  
@@ -66,25 +71,8 @@ ms.locfileid: "80422683"
 
     ![服务器迁移工具](./media/tutorial-migrate-hyper-v/server-migration-tool.png)
 
-
-## <a name="set-up-the-azure-migrate-appliance"></a>设置 Azure Migrate 设备
-
-Azure Migrate 服务器迁移在 Hyper-V 主机或群集节点上运行软件代理来协调数据并将其复制到 Azure Migrate，而不需要使用专用设备进行迁移。
-
-- Azure Migrate：服务器评估设备执行 VM 发现，并将 VM 元数据和性能数据发送到 Azure Migrate 服务器迁移。
-- 迁移业务流程和数据复制由 Microsoft Azure Site Recovery 提供程序和 Microsoft Azure 恢复服务代理处理。
-
-设置设备：
-- 如果已按照第二个教程来评估 Hyper-V VM，则你已在该教程中设置了设备，不需要再次进行设置。
-- 如果你未遵循该教程，则现在需要设置该设备。 为此，请执行以下操作： 
-
-    - 从 Azure 门户下载压缩的 Hyper-V VHD。
-    - 创建设备，并检查它是否可以连接到 Azure Migrate 服务器评估。 
-    - 完成设备的首次配置，并将其注册到 Azure Migrate 项目。
-
-    按照[此文](how-to-set-up-appliance-hyper-v.md)中的详细说明设置设备。
-
 ## <a name="prepare-hyper-v-hosts"></a>准备 Hyper-V 主机
+
 
 1. 在 Azure Migrate 项目中选择“服务器”，在“Azure Migrate:   服务器迁移”中，单击“发现”。 
 2. 在“发现计算机” > “计算机是否已虚拟化?”中，选择“是，使用 Hyper-V”。   
@@ -111,21 +99,6 @@ Azure Migrate 服务器迁移在 Hyper-V 主机或群集节点上运行软件代
 
 ![已发现的服务器](./media/tutorial-migrate-hyper-v/discovered-servers.png)
 
-### <a name="register-hyper-v-hosts"></a>注册 Hyper-V 主机
-
-将下载的安装程序文件 (AzureSiteRecoveryProvider.exe) 安装在每个相关的 Hyper-V 主机上。
-
-1. 在每个主机或群集节点上运行提供程序安装文件。
-2. 在“提供程序安装程序向导”>“Microsoft 更新”中，选择使用 Microsoft 更新检查提供程序更新。 
-3. 在“安装”中接受提供程序和代理的默认安装位置，并选择“安装”   。
-4. 安装后，在“注册向导”>“保管库设置”中选择“浏览”，然后在“密钥文件”中选择下载的保管库密钥文件。   
-5. 在“代理设置”中，指定主机上运行的提供程序如何连接到 Internet。 
-    - 如果设备位于代理服务器后面，则你需要指定代理设置。
-    - 将代理名称指定为 **http://ip-address** 或 **http://FQDN** 。 不支持 HTTPS 代理服务器。
-   
-
-6. 确保提供程序可以访问[所需的 URL](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts)。
-7. 注册主机后，在“注册”中单击“完成”。  
 
 ## <a name="replicate-hyper-v-vms"></a>复制 Hyper-V VM
 

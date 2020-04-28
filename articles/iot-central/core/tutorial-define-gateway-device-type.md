@@ -9,16 +9,18 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 7bb386d39f53331e77bee4d863c431c2e3655f5c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2411eab50cc921a09ba55780b3c6620744a78f3f
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79298829"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758128"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中定义新的 IoT 网关设备类型
 
-本教程向构建人员介绍如何使用网关设备模板在 IoT Central 应用程序中定义网关设备。 然后配置多个下游设备，这些设备通过网关设备连接到 IoT Central 应用程序。 
+本文适用于解决方案构建者和设备开发人员。 
+
+本教程向解决方案构建者介绍如何使用网关设备模板在 IoT Central 应用程序中定义网关设备。 然后配置多个下游设备，这些设备通过网关设备连接到 IoT Central 应用程序。 
 
 在本教程中，你将创建一个“智能建筑物”网关设备模板。  “智能建筑物”网关设备与其他下游设备发生关系。 
 
@@ -105,8 +107,8 @@ ms.locfileid: "79298829"
 
     | 显示名称      | 语义类型 | 架构 |
     | ----------------- | ------------- | ------ |
-    | 最后维修日期 | 无          | Date   |
-    | 客户名称     | 无          | String |
+    | 最后维修日期 | 无          | 日期   |
+    | 客户名称     | 无          | 字符串 |
 
 2. 选择“保存”。 
 
@@ -207,7 +209,7 @@ ms.locfileid: "79298829"
 > [!NOTE]
 > 在 IoT Central 中建模的网关设备目前不支持基于 VS Code 的代码生成。
 
-接下来可以：
+接下来，设备开发人员可以了解如何：
 
 > [!div class="nextstepaction"]
-> [连接设备](tutorial-connect-device.md)
+> [将 Azure IoT Edge 设备添加到 Azure IoT Central 应用程序](tutorial-add-edge-as-leaf-device.md)

@@ -2,18 +2,18 @@
 title: 使用 Azure Migrate 准备 Hyper-V VM 以进行评估/迁移
 description: 了解如何使用 Azure Migrate 准备评估/迁移 Hyper-V VM。
 ms.topic: tutorial
-ms.date: 03/31/2020
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: d14ae4282afb610d025d08419a69c6d10c2f1d08
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: ea6290eae187ed4ead39f7307a84a54a23c19c29
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80436226"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641630"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>准备评估 Hyper-V VM 并将其迁移到 Azure
 
-本文介绍如何准备使用 Azure Migrate:Server Assessment(migrate-services-overview.md#azure-migrate-server-assessment-tool) 评估本地 Hyper-V VM，以及如何使用 [Azure Migrate:Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) 迁移 Hyper-V VM。
+本文介绍如何准备使用 [Azure Migrate:服务器评估工具](migrate-services-overview.md#azure-migrate-server-assessment-tool)评估本地 Hyper-V VM，以及如何使用 [Azure Migrate:服务器迁移工具](migrate-services-overview.md#azure-migrate-server-migration-tool)迁移 Hyper-V VM。
 
 
 本教程是介绍如何评估 Hyper-V VM 以及将其迁移到 Azure 的教程系列中的第一篇文章。 在本教程中，你将了解如何执行以下操作：
@@ -95,7 +95,7 @@ ms.locfileid: "80436226"
 - 在每台主机上设置 PowerShell 远程控制，使 Azure Migrate 设备能够通过 WinRM 连接在主机上运行 PowerShell 命令。
 - 如果 VM 磁盘位于远程 SMB 共享上，则委派凭据。
 - 在 Hyper-V 主机上设置供设备用来发现 VM 的帐户。
-- 在要发现和评估的每个 VM 上，设置 Hyper-V Integration Services。 启用 Integration Services 时的默认设置已足够用于 Azure Migrate。
+- 在要发现和评估的每个 VM 上，启用 Hyper-V Integration Services。 启用 Integration Services 时的默认设置已足够用于 Azure Migrate。
 
     ![启用 Integration Services](./media/tutorial-prepare-hyper-v/integrated-services.png)
 
@@ -214,9 +214,11 @@ Azure Migrate 需要拥有发现本地 VM 的权限。
 在设置 Azure Migrate 设备并在下一篇教程中开始评估之前，需要准备好设备部署。
 
 1. [验证](migrate-appliance.md#appliance---hyper-v)设备要求。
-2. [查看](migrate-appliance.md#url-access)设备需要访问的 Azure URL。
+2. 查看设备在[公有云](migrate-appliance.md#public-cloud-urls)和[政府云](migrate-appliance.md#government-cloud-urls)中需要访问的 Azure URL。 如果使用的是基于 URL 的防火墙或代理，请确保它允许访问所需的 URL。
 3. 查看设备在发现和评估期间要收集的数据。
-4. [注意](migrate-appliance.md#collected-data---hyper-v)设备的端口访问要求。
+4. [查看](migrate-appliance.md#collected-data---hyper-v)设备的端口访问要求。
+
+
 
 
 ## <a name="prepare-for-hyper-v-migration"></a>准备 Hyper-V 迁移

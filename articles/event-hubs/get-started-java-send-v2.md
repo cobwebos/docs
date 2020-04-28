@@ -6,14 +6,14 @@ author: spelluru
 ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
-ms.date: 02/11/2020
+ms.date: 04/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 824244c0c3247e5a218c1551dd95de6e1d6e1007
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ca22f4481750abb3bd4432c8b42fbce93ede8ffd
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419215"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770882"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-messaging-eventhubs"></a>使用 Java 向/从 Azure 事件中心 (azure-messaging-eventhubs) 发送/接收事件
 本快速入门介绍如何使用 **azure-messaging-eventhubs** Java 包向事件中心发送事件以及从事件中心接收事件。
@@ -193,7 +193,7 @@ public class Sender {
                      .processEvent(processEvent)
                      .processError(processError)
                      .consumerGroup(EventHubClientBuilder.DEFAULT_CONSUMER_GROUP_NAME)
-                     .checkpointStore(new InMemoryCheckpointStore())
+                     .checkpointStore(new SampleCheckpointStore())
                      .buildEventProcessorClient();
     
              System.out.println("Starting event processor");
@@ -211,7 +211,7 @@ public class Sender {
      }
     ```
     
-2. 从 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs/InMemoryCheckpointStore.java) 下载 **InMemoryCheckpointStore.java** 文件，并将其添加到项目。 
+2. 从 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs/SampleCheckpointStore.java) 下载 SampleCheckpointStore.java  文件，并将其添加到你的项目。 
 3. 生成程序，并确保没有引发任何错误。 
 
 ## <a name="run-the-applications"></a>运行应用程序

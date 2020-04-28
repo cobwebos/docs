@@ -2,14 +2,14 @@
 title: 使用 Azure Migrate 准备 VMware VM 以进行评估/迁移
 description: 了解如何使用 Azure Migrate 准备评估/迁移 VMware VM。
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 2e8aa72300c840832168138015e0a01ab054f954
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: a3f9716d6302c41f139d9a2a8b1f994b79afd199
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619424"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677289"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>准备 VMware VM 以进行评估和迁移到 Azure
 
@@ -123,7 +123,7 @@ Azure Migrate 需访问 vCenter Server 来发现用于评估和无代理迁移�
 在设置 Azure Migrate 设备并在下一篇教程中开始评估之前，需要准备好设备部署。
 
 1. [验证](migrate-appliance.md#appliance---vmware) Azure Migrate 设备要求。
-2. [查看](migrate-appliance.md#url-access)设备需要访问的 Azure URL。 如果使用的是基于 URL 的防火墙或代理，请确保它允许访问所需的 URL。
+2. 查看设备在[公有云](migrate-appliance.md#public-cloud-urls)和[政府云](migrate-appliance.md#government-cloud-urls)中需要访问的 Azure URL。
 3. [查看](migrate-appliance.md#collected-data---vmware)设备在发现和评估期间收集的数据。
 4. [注意](migrate-support-matrix-vmware.md#port-access)设备的端口访问要求。
 
@@ -138,7 +138,8 @@ Azure Migrate 需访问 vCenter Server 来发现用于评估和无代理迁移�
 2. [查看](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) Azure Migrate 访问 vCenter Server 所需的权限。
 3. [查看](migrate-support-matrix-vmware-migration.md#agentless-vmware-vms) VMware VM 要求。
 4. [查看](migrate-support-matrix-vmware-migration.md#agentless-azure-migrate-appliance) Azure Migrate 设备要求。
-5. 请注意 [URL 访问](migrate-appliance.md#url-access)和[端口访问](migrate-support-matrix-vmware-migration.md#agentless-ports)要求。
+5. 记下在[公有云](migrate-appliance.md#public-cloud-urls)和[政府云](migrate-appliance.md#government-cloud-urls)中需要访问的 URL。
+6. 查看[端口访问](migrate-support-matrix-vmware-migration.md#agentless-ports)要求。
 
 ## <a name="prepare-for-agent-based-vmware-migration"></a>准备基于代理的 VMware 迁移
 
@@ -150,7 +151,8 @@ Azure Migrate 需访问 vCenter Server 来发现用于评估和无代理迁移�
 3. 基于代理的迁移使用复制设备：
     - [查看](migrate-replication-appliance.md#appliance-requirements)复制设备的部署要求。
     - [查看](migrate-replication-appliance.md#mysql-installation)在设备上安装 MySQL 的选项。
-    - 查看复制设备的 [URL](migrate-replication-appliance.md#url-access) 和[端口](migrate-replication-appliance.md#port-access)访问要求。
+    - 记下在[公有云](migrate-replication-appliance.md#url-access)和[政府云](migrate-replication-appliance.md#azure-government-url-access)中需要访问的 URL。
+    - 查看复制设备的[端口访问](migrate-replication-appliance.md#port-access)要求。
     
 ## <a name="next-steps"></a>后续步骤
 

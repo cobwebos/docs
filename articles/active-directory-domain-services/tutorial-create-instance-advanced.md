@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: a7ab79fe7ccfbf6d292b6ba7be58026955a06516
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: f2d7f1725623dcc031f3c2b36bacd6dbc9ad339d
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80519307"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639955"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>教程：使用高级配置选项创建和配置 Azure Active Directory 域服务实例
 
@@ -207,7 +207,7 @@ Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围�
 > [!TIP]
 > 如果 Azure AD 租户既有仅限云的用户，又有来自本地 AD 的用户，则需完成两组步骤。
 
-对于仅限云的用户帐户，用户必须更改其密码才能使用 Azure AD DS。 此密码更改过程会导致在 Azure AD 中生成并存储用于 Kerberos 和 NTLM 身份验证的密码哈希。 对于需要使用 Azure AD DS 的所有租户中用户，可以使其密码过期，以强制他们在下次登录时更改密码，或指示他们手动更改密码。 对于本教程，我们将手动更改用户密码。
+对于仅限云的用户帐户，用户必须更改其密码才能使用 Azure AD DS。 此密码更改过程会导致在 Azure AD 中生成并存储用于 Kerberos 和 NTLM 身份验证的密码哈希。 在更改密码之前，帐户不会从 Azure AD 同步到 Azure AD DS。 对于租户中所有需要使用 Azure AD DS 的云用户，可以使其密码过期，以强制他们在下次登录时更改密码，或指示他们手动更改密码。 对于本教程，我们将手动更改用户密码。
 
 只有在 Azure AD 租户中[配置自助式密码重置][configure-sspr]后，用户才能重置其密码。
 

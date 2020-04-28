@@ -1,23 +1,23 @@
 ---
-title: 有关自动完成功能和建议的 C# 教程
+title: 自动完成和建议
 titleSuffix: Azure Cognitive Search
 description: 本教程演示使用下拉列表收集用户的搜索词输入时的自动完成功能和建议。 它基于现有的酒店项目。
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: 8f244d64fe33a1529cf66314515bbe16e05ccffb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/15/2020
+ms.openlocfilehash: 6b74c3bbb811c122950fd969a8797e87f8f77f86
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77121530"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641077"
 ---
-# <a name="c-tutorial-add-autocompletion-and-suggestions---azure-cognitive-search"></a>C# 教程：添加自动完成功能和建议 - Azure 认知搜索
+# <a name="c-tutorial-add-autocomplete-and-suggestions---azure-cognitive-search"></a>C# 教程：添加自动完成和建议 - Azure 认知搜索
 
-了解如何在用户开始在搜索框中键入内容时实现自动完成功能（提前键入和提供建议）。 本教程将分别展示提前键入的结果和建议结果，然后展示一种将二者相结合来创建更丰富的用户体验的方法。 用户可能只需按下两个或三个键就能得到所有可用结果。 本教程是在 [C# 教程：搜索结果分页 - Azure 认知搜索](tutorial-csharp-paging.md)教程中创建的分页项目的基础上编写的。
+了解如何在用户开始在搜索框中键入内容时实现自动完成功能（提前键入查询和建议的文档）。 在本教程中，我们先分别显示自动完成的查询和建议结果，然后将它们一起显示。 用户可能只需键入两个或三个字符就能找到所有可用的结果。
 
 在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
@@ -28,23 +28,21 @@ ms.locfileid: "77121530"
 
 ## <a name="prerequisites"></a>先决条件
 
-要完成本教程，需要：
+本教程是一系列教程的一部分，是在 [C# 教程：搜索结果分页 - Azure 认知搜索](tutorial-csharp-paging.md)中创建的分页项目的基础上编写的。
 
-启动并运行 [C# 教程：搜索结果分页 - Azure 认知搜索](tutorial-csharp-paging.md)项目。 此项目可使用上一教程中完成的版本，或从 GitHub 安装它：[创建第一个应用](https://github.com/Azure-Samples/azure-search-dotnet-samples)。
+也可下载并运行此特定教程的解决方案：[3-add-typeahead](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead)。
 
 ## <a name="add-suggestions"></a>添加建议
 
 让我们从为用户提供候选产品/服务的最简单情况开始：下拉建议列表。
 
-1. 在 index.cshtml 文件中，将 TextBoxFor  语句更改为以下内容。
+1. 在 index.cshtml 文件中，将 TextBoxFor  语句的 `@id` 更改为“azureautosuggest”  。
 
     ```cs
      @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox", @id = "azureautosuggest" }) <input value="" class="searchBoxSubmit" type="submit">
     ```
 
-    此处的关键在于，已将搜索框的 ID 设置为 azureautosuggest  。
-
-2. 在此语句后面，在结尾的 &lt;/div&gt;  后面，输入此脚本。
+2. 在此语句后面，在结尾的 &lt;/div&gt;  后面，输入此脚本。 此脚本利用开源 jQuery UI 库中的[自动完成小组件](https://api.jqueryui.com/autocomplete/)来提供建议结果的下拉列表。 
 
     ```javascript
     <script>
@@ -59,13 +57,11 @@ ms.locfileid: "77121530"
     </script>
     ```
 
-    已通过同一 ID 将此脚本连接到搜索框。 此外，至少需要两个字符才能触发搜索，我们使用两个查询参数在主控制器中调用 Suggest  操作：highlights  和 fuzzy  ，在此例中两个参数均设置为 false。
+    ID“azureautosuggest”将上述脚本连接到搜索框。 小组件的 source 选项设置为 Suggest 方法，该方法使用两个查询参数（highlights  和 fuzzy  ，在本例中都设为 false）调用建议 API。 此外，触发搜索至少需要两个字符。
 
-### <a name="add-references-to-jquery-scripts-to-the-view"></a>在视图中添加对 jquery 脚本的引用
+### <a name="add-references-to-jquery-scripts-to-the-view"></a>在视图中添加对 jQuery 脚本的引用
 
-我们无需自己编写上述脚本中调用的自动完成函数，可在 jquery 库中获取该函数。 
-
-1. 若要访问 jquery 库，请将视图文件的 &lt;head&gt; 部分更改为以下代码。
+1. 若要访问 jQuery 库，请将视图文件的 &lt;head&gt; 部分更改为以下代码：
 
     ```cs
     <head>
@@ -80,7 +76,7 @@ ms.locfileid: "77121530"
     </head>
     ```
 
-2. 还需要删除或注释掉引用 _Layout.cshtml 文件（在 Views/Shared  文件夹中）中 jquery 的一行代码。 找到以下行，并按所示那样注释掉第一行脚本。 此更改可避免与 jquery 引用产生冲突。
+2. 因为我们要引入一个新的 jQuery 引用，所以还需要删除或注释掉 _Layout.cshtml 文件（在“Views/Shared”  文件夹中）中的默认 jQuery 引用。 找到以下行，并按所示那样注释掉第一行脚本。 此更改可避免与 jQuery 引用产生冲突。
 
     ```html
     <environment include="Development">
@@ -90,7 +86,7 @@ ms.locfileid: "77121530"
     </environment>
     ```
 
-    现在可以使用预定义的自动完成 jquery 函数。
+    现在，可以使用预定义的自动完成 jQuery 函数了。
 
 ### <a name="add-the-suggest-action-to-the-controller"></a>添加对控制器的 Suggest 操作
 
@@ -114,7 +110,8 @@ ms.locfileid: "77121530"
                 parameters.HighlightPostTag = "</b>";
             }
 
-            // Only one suggester can be specified per index. The name of the suggester is set when the suggester is specified by other API calls.
+            // Only one suggester can be specified per index. It is defined in the index schema.
+            // The name of the suggester is set when the suggester is specified by other API calls.
             // The suggester for the hotel database is called "sg", and simply searches the hotel name.
             DocumentSuggestResult<Hotel> suggestResult = await _indexClient.Documents.SuggestAsync<Hotel>(term, "sg", parameters);
 
@@ -128,7 +125,7 @@ ms.locfileid: "77121530"
 
     Top  参数指定要返回的结果数（如果未指定，默认值为 5）。 Azure 索引上指定了一个_建议器_，该索引在数据设置完毕后完成，但不是由类似于本教程中的客户端应用来完成。 在此例中，建议器称名为“sg”，它搜索 HotelName  字段 - 别无其他了。 
 
-    模糊匹配允许输出中包含“近似结果”。 如果 highlights  参数设置为 true，则输出中会添加粗体的 HTML 标记。 在下一节中，我们会将这两个参数设置为 true。
+    模糊匹配允许输出中包含“近似结果”（最多差一个编辑距离）。 如果 highlights  参数设置为 true，则输出中会添加粗体的 HTML 标记。 在下一节中，我们会将这两个参数设置为 true。
 
 2. 这样可能会收到一些语法错误。 如果收到错误，则将以下两个 using  语句添加到文件顶部。
 
@@ -151,7 +148,7 @@ ms.locfileid: "77121530"
 
 ## <a name="add-highlighting-to-the-suggestions"></a>为建议添加突出显示
 
-可以通过将 highlights  参数设为 true，优化用户建议的视觉效果。 但是，需要先将一些代码添加到视图中来显示粗体文本。
+可以通过将 highlights  参数设为“true”来改进向用户提供的建议的外观。 但是，需要先将一些代码添加到视图中来显示粗体文本。
 
 1. 在视图中 (index.cshtml)，在上面输入的 azureautosuggest  脚本后面添加以下脚本。
 
@@ -194,11 +191,11 @@ ms.locfileid: "77121530"
 
 4. 上面突出显示的脚本中使用的逻辑并不能做到万无一失。 如果输入一个术语，它在相同的名称中出现两次，那么粗体结果与预期不会完全一致。 请尝试键入“mo”。
 
-    开发人员需要回答的一个问题是，如何界定脚本的工作效果，什么情况算是“效果足够好”，什么情况需要修正其结果。 本教程不再继续深入探讨突出显示，但如果要深入考察，建议寻找更精确的算法。
+    开发人员需要回答的一个问题是，如何界定脚本的工作效果，什么情况算是“效果足够好”，什么情况需要修正其结果。 本教程未深入探讨突出显示，但如果突出显示对你的数据无效，则需要考虑使用精确的算法。 有关详细信息，请参阅[命中项突出显示](search-pagination-page-layout.md#hit-highlighting)。
 
-## <a name="add-autocompletion"></a>添加自动完成功能
+## <a name="add-autocomplete"></a>添加自动完成功能
 
-与建议略有不同的另一个变体是自动完成功能（有时称为“提前键入”）。 同样，我们将从最简单的实现开始，然后再探讨如何改进用户体验。
+与建议略有不同的另一个变体是用于完成查询词的自动完成功能（有时称为“提前键入”）。 同样，我们将从最简单的实现开始，然后再探讨如何改善用户体验。
 
 1. 在视图中前述脚本后面输入以下脚本。
 
@@ -246,7 +243,7 @@ ms.locfileid: "77121530"
 
     请注意，在自动完成功能搜索中使用的函数是名为“sg”的 suggester  函数，与为建议用的函数一样（仅尝试自动完成酒店名称）。
 
-    有一系列 AutocompleteMode  设置，这里使用 OneTermWithContext  。 请参阅 [Azure 自动完成功能](https://docs.microsoft.com/rest/api/searchservice/autocomplete)，其中介绍了此处的一些选项。
+    有一系列 AutocompleteMode  设置，这里使用 OneTermWithContext  。 有关其他选项的说明，请参阅[自动完成 API](https://docs.microsoft.com/rest/api/searchservice/autocomplete)。
 
 4. 运行应用。 请注意，下拉列表中显示的一系列选项都是单个词语。 请尝试键入“re”开头的单词。 请注意选项数是如何随键入字母的增加而减少的。
 
@@ -256,7 +253,7 @@ ms.locfileid: "77121530"
 
 ## <a name="combine-autocompletion-and-suggestions"></a>结合使用自动完成功能和建议
 
-将自动完成功能和建议结合使用，是最复杂的选项，但却可能提供最佳的用户体验。 我们希望显示出要键入的文本或与之相符的文本，显示出 Azure 认知搜索自动完成文本时的首选内容。 我们还需要一系列以下拉列表形式显示的建议。
+将自动完成功能和建议结合使用，是最复杂的选项，但却可能提供最佳的用户体验。 我们想要的是根据正在键入的文本进行显示，这是 Azure 认知搜索在自动完成文本方面的第一选择。 我们还需要一系列以下拉列表形式显示的建议。
 
 有提供此功能的库 - 库名通常为“内联自动完成”或类似名称。 但我们将以本机方式实现此功能，以便可以展示其工作原理。 在此示例中，我们从控制器上的工作着手。
 

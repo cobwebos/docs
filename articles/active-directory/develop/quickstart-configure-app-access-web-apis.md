@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 03/09/2020
+ms.date: 04/22/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 5e628626f2db49ff67d6d7ab425a3a19870b1ebd
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 210ed5b8ad53fd59a46e160fe5fc72633d115d44
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215965"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082316"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>快速入门：配置客户端应用程序以访问 Web API
 
@@ -34,7 +34,7 @@ ms.locfileid: "79215965"
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>登录到 Azure 门户，并选择应用
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户。 将门户会话设置为所需的 Azure AD 租户。
+1. 如果帐户有权访问多个租户，请在右上角选择该帐户。 将门户会话设置为所需的 Azure AD 租户。
 1. 搜索并选择“Azure Active Directory”  。 在“管理”下，选择“应用注册”。  
 1. 找到并选择要配置的应用程序。 选择应用后，会看到应用程序的“概述”页或主注册页。 
 
@@ -110,7 +110,10 @@ ms.locfileid: "79215965"
    | **Web**              | 输入应用程序的“重定向 URI”。  |
    | **iOS/macOS**              | 输入应用的“捆绑 ID”（可在 XCode 中的 info.plist 内找到，或者在“生成设置”中找到）。  添加捆绑 ID 可自动创建应用程序的重定向 URI。 |
    | **Android**          | 提供应用的“包名称”（可在 AndroidManifest.xml 文件中找到）。 <br/>生成并输入**签名哈希**。 添加签名哈希可自动创建应用程序的重定向 URI。  |
-   | **移动和桌面应用程序**  | 可选。 为桌面和设备生成应用时，请选择**建议的重定向 URI** 之一。<br/>可选。 输入一个**自定义重定向 URI**，用作 Azure AD 在响应身份验证请求时将用户重定向到的位置。 例如，对于要交互的 .NET Core 应用程序，请使用 `https://localhost`。 |
+   | **移动和桌面应用程序**  | 可选。 为桌面和设备生成应用时，请选择**建议的重定向 URI** 之一。<br/>可选。 输入一个**自定义重定向 URI**，用作 Azure AD 在响应身份验证请求时将用户重定向到的位置。 例如，对于要交互的 .NET Core 应用程序，请使用 `http://localhost`。 |
+
+   > [!NOTE]
+   > 在 Active Directory 联合身份验证服务 (AD FS) 和 Azure AD B2C 上，还必须指定端口号。  例如：`http://localhost:1234`。 
 
    > [!IMPORTANT]
    > 对于不使用最新 Microsoft 身份验证库 (MSAL) 或不使用中介的移动应用程序，必须在“桌面 + 设备”中为这些应用程序配置重定向 URI。 

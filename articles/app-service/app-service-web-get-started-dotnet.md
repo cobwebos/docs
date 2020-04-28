@@ -3,14 +3,14 @@ title: 快速入门：创建 C# ASP.NET Core 应用
 description: 了解如何通过部署 Visual Studio 提供的默认 C# ASP.NET Core Web 应用模板，在 Azure 应用服务中运行 Web 应用。
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
-ms.date: 03/17/2020
+ms.date: 04/22/2020
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: be7c4a2fb65f913bc97617af1a0f21ee8fcca714
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 6c7ab1290033792cf356c4882811670011df5efe
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313282"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086039"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>快速入门：在 Azure 中创建 ASP.NET Core Web 应用
 
@@ -107,7 +107,7 @@ ms.locfileid: "81313282"
 
 1. 在**解决方案资源管理器**中你的项目下，打开  “页” > “Index.cshtml”  。
 
-1. 将两个 `<div>` 标记替换为以下代码：
+1. 将整个 `<div>` 标记替换为以下代码：
 
    ```HTML
    <div class="jumbotron">

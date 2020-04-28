@@ -10,12 +10,12 @@ ms.date: 02/14/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 05e668ff5b0ec19c5e380cf6bfee4b6e46900b2f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 9c15e4217c5331346c5a95329bae7e2a4f0e0841
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77372048"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732076"
 ---
 可以使用适用于 Node.js 的语言理解 (LUIS) 运行时客户端库执行以下操作：
 
@@ -28,6 +28,7 @@ ms.locfileid: "77372048"
 
 * 语言理解运行时资源：[在 Azure 门户中创建一个](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
 * [Node.js](https://nodejs.org)
+* LUIS 应用 ID - 使用 `df67dcdb-c37d-46af-88e1-8b97951ca1c2` 的公共 IoT 应用 ID。 快速入门代码中使用的用户查询特定于该应用。
 
 ## <a name="setting-up"></a>设置
 
@@ -37,9 +38,9 @@ ms.locfileid: "77372048"
 
 [!INCLUDE [Set up environment variables for prediction quickstart](sdk-prediction-environment-variables.md)]
 
-### <a name="create-a-new-javascript-nodejs-file"></a>创建新的 javascript (Node.js) 文件
+### <a name="create-a-new-javascript-nodejs-file"></a>创建新的 JavaScript (Node.js) 文件
 
-在首选编辑器或 IDE 中创建名为 `luis_prediction.js` 的新 javascript 文件。
+在你喜欢使用的编辑器或 IDE 中创建名为 `luis_prediction.js` 的新 JavaScript 文件。
 
 ### <a name="install-the-npm-library-for-the-luis-runtime"></a>安装适用于 LUIS 运行时的 NPM 库
 

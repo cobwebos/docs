@@ -1,5 +1,5 @@
 ---
-title: 介绍
+title: 简介
 description: 了解如何通过 Azure 应用服务环境在一个完全隔离的专用环境中缩放、保护和优化应用。
 author: ccompy
 ms.assetid: 3c7eaefa-1850-4643-8540-428e8982b7cb
@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 9bc40e71c1da6eb60b62cd08c51df89a7f35af09
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 08a97f0f7b1a6a65feb7a2ec041001f2199ffdf7
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80057382"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770632"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>应用服务环境简介 #
  
@@ -34,7 +34,7 @@ Azure 应用服务环境是一项 Azure 应用服务功能，可提供完全隔�
 
 客户可以在单个 Azure 区域或多个 Azure 区域创建多个 ASE。 这种灵活性使得 ASE 非常适合用于水平缩放无状态应用程序层，以支持高 RPS 工作负荷。
 
-ASE 可在隔离后只运行单个客户的应用程序，并可始终部署到虚拟网络中。 客户可以对入站和出站应用程序网络流量进行精细控制。 应用程序可以通过 VPN 建立到本地公司资源的高速安全连接。
+ASE 仅托管一个客户的应用程序，并在其一个 VNet 中进行托管。 客户可以对入站和出站应用程序网络流量进行精细控制。 应用程序可以通过 VPN 建立到本地公司资源的高速安全连接。
 
 * ASE 附带自己的定价层，了解[隔离套餐](https://channel9.msdn.com/Shows/Azure-Friday/Security-and-Horsepower-with-App-Service-The-New-Isolated-Offering?term=app%20service%20environment)如何有助于驱动超大规模和安全性。
 * [应用服务环境 v2](https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud?term=app%20service%20environment) 提供了一个环境来保护网络子网中的应用，并提供你自己的 Azure 应用服务专用部署。

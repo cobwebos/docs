@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 195fa26a38d89d9ef738e6060ff7dab602d5c234
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 875114c53cb3193b1b140e95be19daf7fb6415a9
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67095911"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870316"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oneteam"></a>教程：Azure Active Directory 与 Oneteam 的集成
 
@@ -118,7 +118,7 @@ ms.locfileid: "67095911"
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<team name>.one-team.io/`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Oneteam 客户端支持团队](https://support.one-team.com/hc/requests/new)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 Oneteam 客户端支持团队来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 6. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
@@ -136,7 +136,7 @@ ms.locfileid: "67095911"
 
 ### <a name="configure-oneteam-single-sign-on"></a>配置 Oneteam 单一登录
 
-要在“Oneteam”端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Oneteam 支持团队](https://support.one-team.com/hc/requests/new)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在“Oneteam”端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 Oneteam 支持团队   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -194,7 +194,7 @@ ms.locfileid: "67095911"
 在本部分中，我们会在 Oneteam 中创建一个名为 Britta Simon 的用户。 Convene 支持默认启用的实时用户预配。 此部分不存在任何操作项。 如果 Oneteam 中不存在用户，则会在身份验证后创建一个新用户。
 
 >[!NOTE]
->如果需要手动创建用户，请向 [Oneteam 支持团队](https://support.one-team.com/hc/requests/new)提交支持票证。
+>如果需要手动创建用户，请向 Oneteam 支持团队提交支持票证。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

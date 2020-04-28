@@ -8,16 +8,16 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: c2a0dde496d6af66387210ca9b2ebf9cb4bdae7f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b3cf4fd958202c28586b7c15932dc88a21d7c60f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79087944"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686863"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>教程：连接、设置、激活 Azure Data Box Gateway
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 本教程介绍了如何通过使用本地 Web UI 连接到、设置以及激活 Data Box Gateway 设备。 
 
@@ -41,7 +41,7 @@ ms.locfileid: "79087944"
 
 1. 打开浏览器窗口并在以下网址访问设备的本地 Web UI：
    
-   [https://ip-address-of-network-interface](https://ip-address-of-network-interface)
+   https:\//ip-address-of-network-interface
    
    使用在上一教程中记下的连接 URL。 此时会出现一个错误或警告，指出网站的安全证书有问题。
 
@@ -88,7 +88,7 @@ ms.locfileid: "79087944"
    
    在“Web 代理”页上，执行以下操作  ：
    
-   1. 在“Web 代理 URL”框中，按以下格式输入 URL：`http://&lt;host-IP address or FQDN&gt;:Port number`  。 不支持 HTTPS URL。
+   1. 在“Web 代理 URL”框中，按以下格式输入 URL：`http://&lt;host-IP address or FQDN&gt;:Port number` 。 不支持 HTTPS URL。
    2. 在“身份验证”下选择“无”或“NTLM”。   
    3. 如果使用身份验证，请输入用户名和密码   。
    4. 若要验证并应用配置的 Web 代理设置，请选择“应用”  。
@@ -109,7 +109,7 @@ ms.locfileid: "79087944"
     1. 在“时区”下拉列表中选择时区，使之与部署设备的地理位置相对应  。
         设备的默认时区为太平洋标准时间。 设备将此时区用于所有计划操作。
 
-    2. 为设备指定“主 NTP 服务器”，或者接受默认值：`time.windows.com`  。   
+    2. 为设备指定“主 NTP 服务器”，或者接受默认值：`time.windows.com` 。   
         确保网络允许 NTP 流量从数据中心传递到 Internet。
 
     3. （可选）在“辅助 NTP 服务器”框中，为设备输入辅助服务器  。

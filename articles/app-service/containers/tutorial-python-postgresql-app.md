@@ -1,6 +1,6 @@
 ---
-title: 教程：使用 Postgres 的 Linux Python 应用
-description: 了解如何在 Azure 应用服务中运行 Linux Python 应用，同时使其连接到 Azure 中的 PostgreSQL 数据库。 本教程使用一个 Django 示例应用来演示操作。
+title: 教程：使用 Postgres 部署 Python (Django)
+description: 了解如何创建使用 PostgreSQL 数据库的 Python 应用并将其部署到 Linux 上的 Azure 应用服务。 本教程使用 Django 示例应用进行演示。
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 04/14/2020
@@ -9,12 +9,12 @@ ms.custom:
 - seodec18
 - seo-python-october2019
 - cli-validate
-ms.openlocfilehash: aa30cb5b66769c0a9c89a311940e581f74636573
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 0c9329b46d096df1afab6f7e457d143f9c6504be
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392542"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085750"
 ---
 # <a name="tutorial-deploy-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>教程：在 Azure 应用服务中部署使用 PostgreSQL 的 Python (Django) Web 应用
 
@@ -51,7 +51,7 @@ git clone https://github.com/Azure-Samples/djangoapp
 cd djangoapp
 ```
 
-djangoapp 示例存储库包含数据驱动的 [Django](https://www.djangoproject.com/) 投票应用，该应用是根据 Django 文档的[编写第一个 Django 应用](https://docs.djangoproject.com/en/2.1/intro/tutorial01/)中的说明创建的。 为便于参考，本文提供了此示例。
+djangoapp 示例存储库包含数据驱动的 [Django](https://www.djangoproject.com/) 投票应用，该应用是根据 Django 文档的[编写第一个 Django 应用](https://docs.djangoproject.com/en/2.1/intro/tutorial01/)中的说明创建的。 为方便你参考，本文提供了该应用。
 
 ## <a name="prepare-app-for-app-service"></a>为应用服务准备应用
 
@@ -120,7 +120,7 @@ az postgres up --resource-group myResourceGroup --location westus2 --server-name
 
 此命令可能会运行较长时间，因为它要执行以下操作：
 
-- 创建名为 `myResourceGroup` 的[资源组](../../azure-resource-manager/management/overview.md#terminology)（如果不存在）。 每个 Azure 资源需要位于某个资源组中。 `--resource-group` 是可选项。
+- 创建名为 `myResourceGroup` 的[资源组](../../azure-resource-manager/management/overview.md#terminology)（如果不存在）。 每个 Azure 资源都需要位于某个资源组中。 `--resource-group` 是可选项。
 - 创建带有管理用户的 Postgres 服务器。
 - 创建 `pollsdb` 数据库。
 - 允许从本地 IP 地址进行访问。
@@ -167,12 +167,12 @@ az webapp up --plan myAppServicePlan --sku B1 --name <app-name>
 
 <pre>
 {
-  "URL": "http://<app-name>.azurewebsites.net",
+  "URL": "http://&lt;app-name&gt;.azurewebsites.net",
   "appserviceplan": "myAppServicePlan",
   "location": "westus",
-  "name": "<app-name>",
+  "name": "&lt;app-name&gt;",
   "os": "Linux",
-  "resourcegroup": "<app-resource-group>",
+  "resourcegroup": "&lt;app-resource-group&gt;",
   "runtime_version": "python|3.7",
   "runtime_version_detected": "-",
   "sku": "BASIC",
@@ -217,9 +217,8 @@ az webapp ssh --resource-group myResourceGroup --name <app-name>
 ```bash
 cd site/wwwroot
 
-# Activate virtual environment
-python3 -m venv venv
-source venv/bin/activate
+# Activate default virtual environment in App Service container
+source /antenv/bin/activate
 # Install requirements in environment
 pip install -r requirements.txt
 # Run database migrations
@@ -371,8 +370,8 @@ az webapp up --name <app-name>
 ```
 cd site/wwwroot
 
-# Activate the virtual environment
-source venv/bin/activate
+# Activate default virtual environment in App Service container
+source /antenv/bin/activate
 # Run database migrations
 python manage.py migrate
 ```

@@ -5,38 +5,29 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 2/11/2020
+ms.date: 04/13/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c429648adeb0c81799bff2dca1650de965395a60
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0ef9172ca5d0961bb6de1949a61199ce1d6c1bff
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77166441"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81603424"
 ---
-# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>教程：批量邀请 Azure AD B2B 协作用户（预览）
-
-|     |
-| --- |
-| 本文介绍 Azure Active Directory 的公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
-|     |
-
-> [!NOTE]
-> 从 2019/12/22 起，批量邀请用户（预览）功能已暂时禁用。
-> 目前尚不知道何时在 Azure 门户中重新启用此功能。 若要使用 PowerShell 批量邀请来宾用户，请参阅 [B2B 批量邀请教程](bulk-invite-powershell.md)或 [B2B 代码和 PowerShell 示例](code-samples.md)。
+# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>教程：批量邀请 Azure AD B2B 协作用户
 
 如果使用 Azure Active Directory (Azure AD) B2B 协作功能与外部合作伙伴进行协作，可同时邀请多名来宾用户加入你的组织。 本教程介绍如何使用 Azure 门户向外部用户批量发送邀请。 具体操作如下：
 
 > [!div class="checklist"]
-> * 通过“批量邀请用户(预览)”  准备一个包含用户信息和邀请首选项的逗号分隔值 (.csv) 文件
+> * 使用“批量邀请用户”  准备一个包含用户信息和邀请首选项的逗号分隔值 (.csv) 文件
 > * 将 .csv 文件上传到 Azure AD
 > * 验证是否已将用户添加到目录中
 
-如果没有 Azure Active Directory，请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+如果没有 Azure Active Directory，请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -47,7 +38,7 @@ ms.locfileid: "77166441"
 1. 使用组织中的用户管理员的帐户登录到 Azure 门户。
 2. 在导航窗格中选择“Azure Active Directory”。 
 3. 在“管理”下，选择“用户” > “批量邀请”。   
-4. 在“批量邀请用户(预览)”  页上选择“下载”，获取一个有效的包含邀请属性的 .csv 文件。 
+4. 在“批量邀请用户”  页上，选择“下载”以获取一个有效的包含邀请属性的 .csv 文件。 
 
     ![批量邀请的下载按钮](media/tutorial-bulk-invite/bulk-invite-button.png)
 
@@ -63,10 +54,10 @@ ms.locfileid: "77166441"
    > 请勿在**自定义的邀请消息**中使用逗号，因为这样会妨碍系统对消息成功进行分析。
 
 6. 保存文件。
-7. 在“批量邀请用户(预览)”  页的“上传 csv 文件”下，浏览到该文件。  选择该 .csv 文件后，对其的验证就会开始。 
+7. 在“批量邀请用户”  页中，在“上传 csv 文件”下，浏览找到该文件。  选择该 .csv 文件后，对其的验证就会开始。 
 8. 验证文件内容后，会看到“文件上传成功”消息。  如果有错误，必须修正错误，然后才能提交作业。
 9. 文件通过验证以后，请选择“提交”，开始用于添加邀请的 Azure 批量操作。  
-10. 若要查看作业状态，请选择“单击此处查看每项操作的状态”。  也可在“活动”部分选择“批量操作结果(预览)”。   若要了解批量操作中每个行项的详细信息，请选择“成功数”、“失败数”或“请求总数”列下的值。    如果失败，则会列出失败原因。
+10. 若要查看作业状态，请选择“单击此处查看每项操作的状态”。  也可在“活动”部分中选择“批量操作结果”。   若要了解批量操作中每个行项的详细信息，请选择“成功数”、“失败数”或“请求总数”列下的值。    如果失败，则会列出失败原因。
 
     ![批量操作结果的示例](media/tutorial-bulk-invite/bulk-operation-results.png)
 

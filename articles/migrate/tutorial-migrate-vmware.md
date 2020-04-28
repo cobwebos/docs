@@ -2,20 +2,20 @@
 title: 通过无代理 Azure Migrate 服务器迁移功能迁移 VMware VM
 description: 了解如何使用 Azure Migrate 运行 VMware VM 的无代理迁移。
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 825d6ff16a1f51fa476541ee10fea5f8a1c2972e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4612c9b0ea2ef8d53b0c04f47628f3789705d833
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78304202"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535309"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>将 VMware VM 迁移到 Azure（使用无代理方法）
 
 本文介绍如何使用 Azure Migrate 服务器迁移工具以无代理方法将本地 VMware VM 迁移到 Azure。
 
-[Azure Migrate](migrate-services-overview.md) 提供一个中心用于跟踪本地应用、工作负荷与 AWS/GCP VM 实例的发现、评估及其到 Azure 的迁移。 该中心提供用于评估和迁移的 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 产品。
+[Azure Migrate](migrate-services-overview.md) 提供了一个集中化中心来用于跟踪本地应用、工作负荷与 AWS/GCP VM 实例的发现、评估及其到 Azure 的迁移。 该中心提供用于评估和迁移的 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 产品。
 
 本教程是演示如何使用 Azure Migrate 服务器评估与迁移工具评估 VMware VM 以及将其迁移到 Azure 的教程系列中的第三篇文章。 在本教程中，你将了解如何执行以下操作：
 
@@ -49,15 +49,18 @@ ms.locfileid: "78304202"
     - [准备 Azure](tutorial-prepare-vmware.md#prepare-azure)，以便能够完成迁移。
     - [准备本地环境](tutorial-prepare-vmware.md#prepare-for-agentless-vmware-migration)，以便能够完成迁移。
     
-2. 在将 VMware VM 迁移到 Azure 之前，我们建议你尝试使用 Azure Migrate 服务器评估工具对其进行评估。 若要设置评估，请完成本教程系列的[第二篇教程](tutorial-assess-vmware.md)。 如果你不想要评估 VM，可以跳过此教程。 尽管我们建议你尝试运行评估，但在迁移之前不一定非要这样做。
+2. 在将 VMware VM 迁移到 Azure 之前，我们建议你尝试使用 Azure Migrate 服务器评估工具对其进行评估。 若要设置评估，请完成本教程系列的[第二篇教程](tutorial-assess-vmware.md)。 如果你不想评估 VM，可以跳过此教程。 尽管我们建议你尝试运行评估，但在迁移之前不一定非要这样做。
 
 
 
 ## <a name="add-the-azure-migrate-server-migration-tool"></a>添加 Azure Migration 服务器迁移工具
 
-如果你未遵循第二篇教程评估 VMware VM，则需要[遵循这些说明](how-to-add-tool-first-time.md)设置 Azure Migrate 项目，并选择 Azure Migrate 服务器迁移工具。 
+添加 Azure Migrate:服务器迁移工具。
 
-如果你已遵循第二篇教程并已设置了一个 Azure Migrate 项目，请按如下所述添加 Azure Migrate 服务器迁移工具：
+- 如果你已按照第二个教程来[评估 VMware VM](/tutorial-assess-vmware.md)，则可以继续添加该工具。
+- 如果未按照第二个教程操作，请[按照这些说明](how-to-add-tool-first-time.md)设置 Azure Migrate 项目。  创建项目时，请添加 Azure Migrate:服务器迁移工具。
+
+如果已设置项目，请如下所述添加工具：
 
 1. 在 Azure Migrate 项目中，单击“概述”。  
 2. 在“发现、评估和迁移服务器”中，单击“评估和迁移服务器”。  
@@ -74,15 +77,14 @@ ms.locfileid: "78304202"
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>设置 Azure Migrate 设备
 
-Azure Migrate 服务器迁移运行一个轻型 VMware VM 设备。 该设备执行 VM 发现，并将 VM 元数据和性能数据发送到 Azure Migrate 服务器迁移。 Azure Migrate 服务器评估工具也使用该设备。
+Azure Migrate 服务器迁移运行一个轻型 VMware VM 设备。 该设备执行 VM 发现，并将 VM 元数据和性能数据发送到 Azure Migrate:服务器迁移。 Azure Migrate:服务器评估工具也使用同一设备来执行 VMware VM 的无代理迁移。
 
-如果你遵循第二篇教程评估了 VMware VM，则已在该教程中设置了该设备。 如果你未遵循该教程，则现在需要设置该设备。 为此，请执行以下操作： 
+- 如果你已按照[评估 VMware VM 教程](tutorial-assess-vmware.md)进行操作，则已在该教程中设置了此设备。
+- 如果你未按照该教程进行操作，则现在需要使用以下方法之一设置此设备：
+    - 使用下载的 OVA 模板在 VMware VM 上进行[设置](how-to-set-up-appliance-vmware.md)。
+    - 使用 PowerShell 安装程序脚本在 VMware VM 或物理计算机上进行设置。 如果无法使用 OVA 模板设置 VM，或者你使用的是 Azure 政府，则应使用[此方法](deploy-appliance-script.md)。
 
-- 下载 OVA 模板文件，并将其导入 vCenter Server。
-- 创建设备，并检查它是否可以连接到 Azure Migrate 服务器评估。 
-- 完成设备的首次配置，并将其注册到 Azure Migrate 项目。
-
-遵照[此文](how-to-set-up-appliance-vmware.md)中的说明设置设备。
+创建设备后，请检查它是否可以连接到 Azure Migrate:服务器评估，首次配置该设备，并将其注册到 Azure Migrate 项目。
 
 
 ## <a name="prepare-vms-for-migration"></a>准备要迁移的 VM
@@ -97,7 +99,7 @@ Azure Migrate 需要对 VM 进行一些更改，以确保 VM 可迁移到 Azure�
 
 ### <a name="prepare-windows-server-vms"></a>准备 Windows Server VM
 
-**Action** | **详细信息** | **说明**
+**操作** | **详细信息** | **说明**
 --- | --- | ---
 确保 Azure VM 中的 Windows 卷使用的驱动器号分配与本地 VM 相同。 | 将 SAN 策略配置为“全部联机”。 | 1.使用管理员帐户登录到 VM，然后打开命令窗口。<br/> 2.键入 **diskpart** 运行 Diskpart 实用工具。<br/> 3.键入 **SAN POLICY=OnlineAll**<br/> 4.键入 Exit 退出 Diskpart，然后关闭命令提示符。
 为 Azure VM 启用 Azure 串行访问控制台 | 这有助于完成故障排除。 无需重新启动 VM。 Azure VM 将使用磁盘映像启动，这相当于重新启动新的 VM。 | 遵照[这些说明](https://docs.microsoft.com/azure/virtual-machines/windows/serial-console)启用此功能。
@@ -106,7 +108,7 @@ Azure Migrate 需要对 VM 进行一些更改，以确保 VM 可迁移到 Azure�
 
 ### <a name="prepare-linux-vms"></a>准备 Linux VM
 
-**Action** | **详细信息** 
+**操作** | **详细信息** 
 --- | --- | ---
 安装 Hyper-V Linux Integration Services | 默认情况下，大多数最新版本的 Linux 分发版已包含此服务。
 重新生成 Linux init 映像，以包含所需的 Hyper-V 驱动程序 | 这可以确保 VM 在 Azure 中启动；只需在某些分发版中执行此操作。

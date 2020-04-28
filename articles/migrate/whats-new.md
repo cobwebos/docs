@@ -2,18 +2,30 @@
 title: Azure Migrate 中的新增功能
 description: 了解 Azure Migrate 服务中的新增功能和最新更新。
 ms.topic: overview
-ms.date: 03/22/2020
+ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 9767f3ea31b57d23c8a6772ff5eb6500f7550802
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ba85b0a4ed30320099388ccb48dd91ad6445efd5
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80127592"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677248"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate 中的新增功能
 
 [Azure Migrate](migrate-services-overview.md) 可帮助发现和访问本地服务器、应用和数据并将其迁移到 Microsoft Azure 云。 本文汇总了 Azure Migrate 中的新版本和功能。
+
+
+## <a name="update-april-2020"></a>更新（2020 年 4 月）
+
+Azure Migrate 支持在 Azure 政府中部署。 
+
+- 你可以发现和评估 VMware VM、Hyper-V VM 和物理服务器。
+- 你可以将 VMware VM、Hyper-V VM 和物理服务器迁移到 Azure。
+- 对于 VMware 迁移，可以使用无代理或基于代理的迁移。 [了解详细信息](server-migrate-overview.md)。
+- [查看](migrate-support-matrix.md#supported-geographies-azure-government) Azure 政府支持的地理位置和区域。
+- Azure 政府不支持[基于代理的依赖关系分析](concepts-dependency-visualization.md#agent-based-analysis)。
+- Azure 政府支持预览版中的功能，特别是[无代理依赖关系分析](concepts-dependency-visualization.md#agentless-analysis)和[应用程序发现](how-to-discover-applications.md)。
 
 ## <a name="update-march-2020"></a>更新（2020 年 3 月）
 

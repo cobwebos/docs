@@ -5,14 +5,14 @@ services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 03/18/2020
+ms.date: 04/16/2020
 ms.author: alzam
-ms.openlocfilehash: fd415e1da00f52a9a3b55c946a07a30cf841cf4a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 11007bc39cb1112799c89afaf0ca670aa6760de6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80060295"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482129"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建用户 VPN 连接
 
@@ -110,6 +110,32 @@ P2S 配置定义连接远程客户端的参数。
 4. 选中“包括点到站点网关”  复选框，然后选择所需的网关缩放单元  。
 
    ![新建站点](media/virtual-wan-point-to-site-portal/p2s2.jpg)
+
+下表显示了有关可用缩放单元  的详细信息
+
+| **缩放单元** | **吞吐量** | **P2S 连接** |
+| --- | --- | --- |
+| 1| 500 Mbps | 500 |
+| 2| 1 Gbps | 500 |
+| 3| 1.5 Gbps | 500 |
+| 4| 2 Gbps | 1000 |
+| 5| 2.5 Gbps | 1000 |
+| 6| 3 Gbps | 1000 |
+| 7| 3.5 Gbps | 5000 |
+| 8| 4 Gbps | 5000 |
+| 9| 4.5 Gbps | 5000 |
+| 10| 5 Gbps | 5000 |
+| 11| 5.5 Gbps | 5000 |
+| 12| 6 Gbps | 5000 |
+| 13| 6.5 Gbps | 10000 |
+| 14| 7 Gbps | 10000 |
+| 15| 7.5 Gbps | 10000 |
+| 16| 8 Gbps | 10000 |
+| 17| 8.5 Gbps | 10000 |
+| 18| 9 Gbps | 10000 |
+| 19| 9.5 Gbps | 10000 |
+| 20| 10 Gbps | 10000 |
+
 5. 输入用于为 VPN 客户端分配 IP 地址的“地址池”  。
 6. 单击“确认” 
 7. 完成此操作最多需要 30 分钟。

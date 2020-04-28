@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
-ms.date: 03/02/2020
-ms.openlocfilehash: d7330225ecbdc6715847821a47c140a3c2b8d1b9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/21/2020
+ms.openlocfilehash: dd0b4d1b0998bd4b13a17fb8345b87924bc27e1d
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78251954"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869974"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>教程：使用 Power BI 在 HDInsight 中分析 Apache Spark 数据
 
-在本教程中，了解如何使用 [Microsoft Power BI](https://powerbi.microsoft.com/) 在 Azure HDInsight 中可视化 [Apache Spark](https://azure.microsoft.com/services/hdinsight/) 群集中的数据。
+在本教程中，了解如何使用 Microsoft Power BI 在 Azure HDInsight 中直观显示 Apache Spark 群集中的数据。
 
 在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
@@ -70,9 +70,6 @@ ms.locfileid: "78251954"
 ### <a name="create-a-report-in-power-bi-desktop"></a>在 Power BI Desktop 中创建报表
 
 使用 Spark 的前几步是连接到 Power BI Desktop 中的集群，从集群中加载数据，并根据此数据创建基本的可视化效果。
-
-> [!NOTE]  
-> 本文中所示的连接器当前处于预览状态。 通过 [Power BI 社区](https://community.powerbi.com/)站点或 [Power BI Ideas](https://ideas.powerbi.com/forums/265200-power-bi-ideas)（Power BI 想法）提供反馈。
 
 1. 打开 Power BI Desktop。 关闭启动初始屏幕（如果已打开）。
 
@@ -180,7 +177,7 @@ Power BI 服务允许在整个组织中共享报表和仪表板。 在本部分�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，了解了如何使用 [Microsoft Power BI](https://powerbi.microsoft.com/) 在 Azure HDInsight 中可视化 [Apache Spark](https://azure.microsoft.com/services/hdinsight/) 群集中的数据。 请继续学习下一篇文章，试着创建一个机器学习应用程序。
+在本教程中，你已了解了如何使用 Microsoft Power BI 在 Azure HDInsight 中直观显示 Apache Spark 群集中的数据。 请继续学习下一篇文章，试着创建一个机器学习应用程序。
 
 > [!div class="nextstepaction"]
 > [创建机器学习应用程序](./apache-spark-ipython-notebook-machine-learning.md)

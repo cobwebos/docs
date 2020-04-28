@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/09/2020
+ms.date: 04/09/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63ec58711c5dd142064e2d5cb29ccaa9eb9c0ed9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1c2427fff37158745e416f4b2f0641697ad62ea9
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79300351"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682668"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-invision"></a>教程：Azure Active Directory 单一登录 (SSO) 与 InVision 的集成
 
@@ -157,13 +157,15 @@ ms.locfileid: "79300351"
 
     e. 在记事本中打开下载的“证书(Base64)”文件，将其内容复制并粘贴到“SAML 证书”文本框中。  
 
-    f. 从“哈希算法”的下拉列表中选择“SHA-256”。  
+    f. 在“名称 ID 格式”  文本框中，使用 `Unspecified` 作为“名称 ID 格式”  。
 
-    g. 为“SSO 按钮标签”输入适当的名称。 
+    g. 从“哈希算法”的下拉列表中选择“SHA-256”。  
 
-    h. 将“允许实时预配”设置为“打开”。 
+    h. 为“SSO 按钮标签”输入适当的名称。 
 
-    i. 单击“更新”  。
+    i. 将“允许实时预配”设置为“打开”。 
+
+    j. 单击“更新”  。
 
 ### <a name="create-invision-test-user"></a>创建 InVision 测试用户
 

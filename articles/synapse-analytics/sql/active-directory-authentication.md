@@ -8,18 +8,18 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5808f892f189bd6cb2cc39bd157be1d61c966763
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: db80c11c3b6eab3b7e682878e479729f4787a40b
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421081"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086090"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>结合使用 Azure Active Directory 身份验证与 Synapse SQL 进行身份验证
 
 Azure Active Directory 身份验证是一种使用 Azure Active Directory (Azure AD) 中的标识连接到 [Azure Synapse Analytics](../overview-faq.md) 的机制。
 
-使用 Azure AD 身份验证，你可以集中管理有权访问 Azure Synapse 的用户的标识，以简化权限管理。 包括如下优点：
+使用 Azure AD 身份验证，你可以集中管理有权访问 Azure Synapse 的用户标识，以简化权限管理。 包括如下优点：
 
 - 它提供了一种替代常规的用户名和密码身份验证的方法。
 - 帮助阻止用户标识在数据库服务器之间激增。
@@ -48,26 +48,34 @@ Azure Active Directory 身份验证是一种使用 Azure Active Directory (Azure
 
 以下概要关系图概述了将 Azure AD 身份验证与 Synapse SQL 配合使用的解决方案体系结构。 若要支持 Azure AD 本机用户密码，只需考虑云部分和 Azure AD/Synapse SQL。 若要支持联合身份验证（或 Windows 凭据的用户/密码），需要与 ADFS 块进行通信。 箭头表示通信路径。
 
-![AAD 身份验证关系图][1]
+![AAD 身份验证关系图](./media/aad-authentication/1-active-directory-authentication-diagram.png)
 
-下图表明允许客户端通过提交令牌连接到数据库的联合、信任和托管关系。 该令牌已由 Azure AD 进行身份验证且受数据库信任。 客户 1 可以代表具有本机用户的 Azure Active Directory 或具有联合用户的 Azure AD。 客户 2 代表包含已导入用户的可行解决方案；在本例中，来自联合 Azure Active Directory 且 ADFS 正与 Azure Active Directory 进行同步。 请务必了解，使用 Azure AD 身份验证访问数据库需要托管订阅与 Azure AD 相关联。 必须使用同一订阅来创建托管 Azure SQL 数据库或 SQL 池的 SQL Server。
+下图表明允许客户端通过提交令牌连接到数据库的联合、信任和托管关系。 该令牌已由 Azure AD 进行身份验证且受数据库信任。 
 
-![订阅关系][2]
+客户 1 可以代表具有本机用户的 Azure Active Directory 或具有联合用户的 Azure AD。 客户 2 代表包含已导入用户的可行解决方案；在本例中，来自联合 Azure Active Directory 且 ADFS 正与 Azure Active Directory 进行同步。 
+
+请务必了解，使用 Azure AD 身份验证访问数据库需要托管订阅与 Azure AD 相关联。 必须使用同一订阅来创建托管 Azure SQL 数据库或 SQL 池的 SQL Server。
+
+![订阅关系](./media/aad-authentication/2-subscription-relationship.png)
 
 ## <a name="administrator-structure"></a>管理员结构
 
-使用 Azure AD 身份验证时，Synapse SQL 会有两个管理员帐户：原始的 SQL Server 管理员和 Azure AD 管理员。 只有基于 Azure AD 帐户的管理员可以在用户数据库中创建第一个 Azure AD 包含的数据库用户。 Azure AD 管理员登录名可以是 Azure AD 用户，也可以是 Azure AD 组。 
+使用 Azure AD 身份验证时，Synapse SQL 会有两个管理员帐户：原始的 SQL Server 管理员和 Azure AD 管理员。 只有基于 Azure AD 帐户的管理员可以在用户数据库中创建第一个 Azure AD 包含的数据库用户。 
 
-当管理员为组帐户时，可以由任何组成员使用，因此可以为 Synapse SQL 实例启用多个 Azure AD 管理员。 以管理员身份使用组帐户时，可以在 Azure AD 中集中添加和删除组成员，无需在 Synapse Analytics 工作区中更改用户或权限，从而提高可管理性。 无论何时都仅可配置一个 Azure AD 管理员（一个用户或组）。
+Azure AD 管理员登录名可以是 Azure AD 用户，也可以是 Azure AD 组。 当管理员为组帐户时，可以由任何组成员使用，因此可以为 Synapse SQL 实例启用多个 Azure AD 管理员。 
 
-![管理结构][3]
+以管理员身份使用组帐户时，可以在 Azure AD 中集中添加和删除组成员，无需在 Synapse Analytics 工作区中更改用户或权限，从而提高可管理性。 无论何时都仅可配置一个 Azure AD 管理员（一个用户或组）。
+
+![管理结构](./media/aad-authentication/3-admin-structure.png)
 
 ## <a name="permissions"></a>权限
 
 若要新建用户，必须具有数据库中的 `ALTER ANY USER` 权限。 `ALTER ANY USER` 权限可以授予任何数据库用户。 `ALTER ANY USER` 权限还由服务器管理员帐户、具有该数据库的 `CONTROL ON DATABASE` 或 `ALTER ON DATABASE` 权限的数据库用户以及 `db_owner` 数据库角色的成员拥有。
 
-若要在 Synapse SQL 中创建一个包含数据库用户，必须使用 Azure AD 标识连接到数据库或实例。 若要创建第一个包含数据库用户，必须通过使用 Azure AD 管理员（其是数据库的所有者）连接到数据库。 只有为 Synapse SQL 创建 Azure AD 管理员之后，才有可能进行任何 Azure AD 身份验证。 如果已从服务器删除 Azure Active Directory 管理员，先前在 Synapse SQL 内创建的现有 Azure Active Directory 用户将无法再使用其 Azure Active Directory 凭据连接到数据库。
+若要在 Synapse SQL 中创建一个包含数据库用户，必须使用 Azure AD 标识连接到数据库或实例。 若要创建第一个包含数据库用户，必须通过使用 Azure AD 管理员（其是数据库的所有者）连接到数据库。 
 
+只有为 Synapse SQL 创建 Azure AD 管理员之后，才有可能进行任何 Azure AD 身份验证。 如果已从服务器删除 Azure Active Directory 管理员，先前在 Synapse SQL 内创建的现有 Azure Active Directory 用户将无法再使用其 Azure Active Directory 凭据连接到数据库。
+ 
 ## <a name="azure-ad-features-and-limitations"></a>Azure AD 功能和限制
 
 - 可以在 Synapse SQL 中预配 Azure AD 的以下成员：
@@ -120,21 +128,8 @@ Azure AD 服务器主体（登录名）（**公共预览版**）支持以下身�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Synapse SQL 中的访问和控制的概述，请参阅 [Synapse SQL 访问控制](../sql/access-control.md)。 若要详细了解数据库主体，请参阅[主体](https://msdn.microsoft.com/library/ms181127.aspx)。 可以在[数据库角色](https://msdn.microsoft.com/library/ms189121.aspx)一文中找到有关数据库角色的更多信息。
+- 有关 Synapse SQL 中的访问和控制的概述，请参阅 [Synapse SQL 访问控制](../sql/access-control.md)。
+- 有关数据库主体的详细信息，请参阅[主体](/sql/relational-databases/security/authentication-access/principals-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
+- 有关数据库角色的详细信息，请参阅[数据库角色](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
+
  
-
-<!--Image references-->
-
-[1]: ./media/aad-authentication/1-active-directory-authentication-diagram.png
-[2]: ./media/aad-authentication/2-subscription-relationship.png
-[3]: ./media/aad-authentication/3-admin-structure.png
-[4]: ./media/aad-authentication/4-select-subscription.png
-[5]: ./media/aad-authentication/5-active-directory-settings-portal.png
-[6]: ./media/aad-authentication/6-edit-directory-select.png
-[7]: ./media/aad-authentication/7-edit-directory-confirm.png
-[8]: ./media/aad-authentication/8-choose-active-directory.png
-[9]: ./media/aad-authentication/9-active-directory-settings.png
-[10]: ./media/aad-authentication/10-choose-admin.png
-[11]: ./media/aad-authentication/11-connect-using-integrated-authentication.png
-[12]: ./media/aad-authentication/12-connect-using-password-authentication.png
-[13]: ./media/aad-authentication/13-connect-to-db.png

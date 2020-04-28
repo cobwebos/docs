@@ -2,14 +2,14 @@
 title: 使用 Azure Migrate 评估要迁移到 Azure 的 Hyper-V VM | Microsoft Docs
 description: 介绍如何使用 Azure Migrate 服务器评估工具评估要迁移到 Azure 的本地 Hyper-V VM。
 ms.topic: tutorial
-ms.date: 03/23/2020
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: cb3c29e01b7917a6d639b6b2a53fc2842efc2172
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: c627902268af3a91e172223c1741dd24ea21fa92
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336776"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535445"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>使用 Azure Migrate 服务器评估工具评估 Hyper-V VM
 
@@ -49,7 +49,7 @@ ms.locfileid: "80336776"
 
 4. 在“开始”中，单击“添加工具”。  
 5. 在“迁移项目”选项卡中选择你的 Azure 订阅，并创建一个资源组（如果没有）。 
-6. 在“项目详细信息”中，指定项目名称以及要在其中创建项目的区域。  [查看](migrate-support-matrix.md#supported-geographies)可在其中创建 Azure Migrate 项目的区域。
+6. 在“项目详细信息”中，指定项目名称以及要在其中创建项目的区域。  查看[公有云](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。
 
     - 项目区域仅用于存储从本地 VM 中收集的元数据。
     - 迁移 VM 时，可以选择其他 Azure 目标区域。 迁移目标支持所有 Azure 区域。
@@ -67,9 +67,11 @@ ms.locfileid: "80336776"
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>设置 Azure Migrate 设备
 
-Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执行 VM 发现并将 VM 元数据和性能数据发送到 Azure Migrate。
-- 可以使用已下载的 Hyper-V VHD 在 Hyper-V VM 上设置设备。 或者，可以使用 PowerShell 安装程序脚本在 VM 或物理计算机上设置设备。
-- 本教程使用 VHD。 若要使用脚本设置设备，请查看[此文](deploy-appliance-script.md)。
+
+Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执行 VM 发现并将 VM 元数据和性能数据发送到 Azure Migrate。 可通过多种方式设置此设备。
+
+- 使用已下载的 Hyper-V VHD 在 Hyper-V VM 上进行设置。 这是本教程中使用的方法。
+- 使用 PowerShell 安装程序脚本在 Hyper-V VM 或物理计算机上进行设置。 如果无法使用 VHD 设置 VM，或者你使用的是 Azure 政府，则应使用[此方法](deploy-appliance-script.md)。
 
 创建设备后，请检查它是否可以连接到 Azure Migrate:服务器评估，首次配置该设备，并将其注册到 Azure Migrate 项目。
 
@@ -125,9 +127,9 @@ Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执�
 7. 在“Hyper-V 管理器”>“虚拟机”中启动 VM。 
 
 
-### <a name="verify-appliance-access-to-azure"></a>验证设备的 Azure 访问权限
+## <a name="verify-appliance-access-to-azure"></a>验证设备的 Azure 访问权限
 
-确保设备 VM 可以连接到 [Azure URL](migrate-appliance.md#url-access)。
+确保设备 VM 可以连接到[公有云](migrate-appliance.md#public-cloud-urls)和[政府云](migrate-appliance.md#government-cloud-urls)的 Azure URL。
 
 ### <a name="configure-the-appliance"></a>配置设备
 

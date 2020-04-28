@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 9de9739efce13fc96bf550759eb0ef68d732af1e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 673155706c3b7d44b41562c2dc8ce24a94ac6a58
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77212714"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82083625"
 ---
 # <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>快速入门：使用 Python 和 Azure Cosmos DB 生成表 API 应用
 
@@ -27,7 +27,7 @@ ms.locfileid: "77212714"
 
 在本快速入门中，我们通过 Azure 门户创建和管理 Azure Cosmos DB 表 API 帐户，并通过 Visual Studio 使用从 GitHub 克隆的 Python 应用。 Azure Cosmos DB 是一种多模型数据库服务，你可以借助其全球分布和水平缩放功能快速创建和查询文档、表、键/值和图数据库。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 或者[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 而无需 Azure 订阅。 你还可以使用 [Azure Cosmos DB 模拟器](https://aka.ms/cosmosdb-emulator)以及 URI `https://localhost:8081` 和密钥 `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`。
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/)，在安装过程中选择了“Azure 开发”和“Python 开发”工作负载。   
@@ -73,6 +73,8 @@ ms.locfileid: "77212714"
 
 3. 然后在 Visual Studio 中打开解决方案文件。 
 
+> ![TIP] 有关类似代码的更详细演练，请参阅 [Cosmos DB 表 API 示例](table-storage-how-to-use-python.md)一文。
+
 ## <a name="update-your-connection-string"></a>更新连接字符串
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。 这样，应用程序就可以与托管的数据库进行通信。 
@@ -97,7 +99,7 @@ ms.locfileid: "77212714"
 
 2. 选择当前 Python 环境，然后右键单击。
 
-2. 选择“安装 Python 包”，然后输入 **azure-storage-table**。 
+2. 选择“安装 Python 包”，然后输入 *azure-storage-table*。 
 
 3. 按 F5 运行应用程序。 应用会显示在浏览器中。 
 

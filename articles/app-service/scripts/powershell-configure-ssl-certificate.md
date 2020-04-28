@@ -1,34 +1,34 @@
 ---
-title: PowerShell：上传并绑定 SSL
-description: 了解如何使用 Azure PowerShell 自动部署和管理应用服务。 此示例介绍如何将自定义 SSL 证书绑定到应用。
+title: PowerShell：上传并绑定 TLS/SSL
+description: 了解如何使用 Azure PowerShell 自动部署和管理应用服务。 此示例展示了如何将自定义 TLS/SSL 证书绑定到应用。
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 23e83b74-614a-49a0-bc08-7542120eeec5
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 8422c4ef29366888a2bdd53c18462e6cfb680c78
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5116585b701717a82b757cae70f938c321a1f7d1
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80044566"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532470"
 ---
-# <a name="bind-a-custom-ssl-certificate-to-a-web-app-using-powershell"></a>使用 PowerShell 将自定义 SSL 证书绑定到 Web 应用
+# <a name="bind-a-custom-tlsssl-certificate-to-a-web-app-using-powershell"></a>使用 PowerShell 将自定义 TLS/SSL 证书绑定到 Web 应用
 
-此示例脚本在应用服务中创建一个 Web 应用及其相关资源，然后将自定义域名的 SSL 证书绑定到该应用。 
+此示例脚本在应用服务中创建一个 Web 应用及其相关资源，然后将自定义域名的 TLS/SSL 证书绑定到该应用。 
 
 必要时，请使用 [Azure PowerShell 指南](/powershell/azure/overview)中的说明安装 Azure PowerShell，并运行 `Connect-AzAccount` 创建与 Azure 的连接。 同时，请确保：
 
 - 已使用 `az login` 命令创建与 Azure 的连接。
 - 可以访问域注册机构的 DNS 配置页。
-- 有要上传和绑定的 SSL 证书的有效 .PFX 文件及其密码。
+- 具有要上传和绑定的 TLS/SSL 证书的有效 .PFX 文件及其密码。
 
 ## <a name="sample-script"></a>示例脚本
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
+[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="clean-up-deployment"></a>清理部署 
 
@@ -42,14 +42,14 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | 创建应用服务计划。 |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | 创建 Web 应用。 |
 | [Set-AzAppServicePlan](/powershell/module/az.websites/set-azappserviceplan) | 修改应用服务计划以更改其定价层。 |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | 修改 Web 应用的配置。 |
-| [New-AzWebAppSSLBinding](/powershell/module/az.websites/new-azwebappsslbinding) | 为 Web 应用创建 SSL 证书绑定。 |
+| [New-AzWebAppSSLBinding](/powershell/module/az.websites/new-azwebappsslbinding) | 为 Web 应用创建 TLS/SSL 证书绑定。 |
 
 ## <a name="next-steps"></a>后续步骤
 

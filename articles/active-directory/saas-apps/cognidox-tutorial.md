@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad06d2f695109866bab60502a67f0d2c2f425477
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4280bd1385bbf936dc9188df259ca1a4b4a62d6a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68480260"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870381"
 ---
 # <a name="tutorial-integrate-cognidox-with-azure-active-directory"></a>教程：将 Cognidox 与 Azure Active Directory 集成
 
@@ -103,7 +103,7 @@ ms.locfileid: "68480260"
 
     | 名称 | 命名空间  |  转换 | 参数 1 |
     | ---------------| --------------- | --------- |
-    | wanshort | http://appinux.com/windowsaccountname2 | ExtractMailPrefix() | user.userprincipalname |
+    | wanshort | http:\//appinux.com/windowsaccountname2 | ExtractMailPrefix() | user.userprincipalname |
 
 
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。

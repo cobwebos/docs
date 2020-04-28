@@ -2,17 +2,17 @@
 title: 使用 Azure Migrate 服务器评估来评估要迁移到 Azure 的物理服务器
 description: 介绍如何使用 Azure Migrate 服务器评估来评估要迁移到 Azure 的本地物理服务器。
 ms.topic: tutorial
-ms.date: 11/18/2019
-ms.openlocfilehash: c89c731712a625e5f3b7a1a7e9306f6a7480b96b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/15/2020
+ms.openlocfilehash: b36cba18bd154cd5d14e16a9f8bf85cda6bf87a8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76990294"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535428"
 ---
-# <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>使用 Azure Migrate：服务器评估服务器评估”评估 VMware VM
+# <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>使用 Azure Migrate:服务器评估工具评估物理服务器
 
-本文介绍如何使用“Azure Migrate:服务器评估”工具评估本地 VMware VM。
+本文介绍如何使用 Azure Migrate:服务器评估工具评估本地物理服务器。
 
 [Azure Migrate](migrate-services-overview.md) 在一个中心位置提供多种工具，帮助你发现、评估应用、基础结构和工作负荷并将其迁移到 Microsoft Azure。 该中心包含 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 的产品/服务。
 
@@ -34,8 +34,10 @@ ms.locfileid: "76990294"
 
 - [完成](tutorial-prepare-physical.md)本教程系列中的第一篇教程。 否则，本教程中的说明不适用。
 - 下面是在第一篇教程中应已完成的操作：
-    - 为 Azure Migrate [设置 Azure 权限](tutorial-prepare-physical.md#prepare-azure)。
+    - 为 Azure Migrate [设置 Azure 权限](tutorial-prepare-physical.md)。
     - [准备物理服务器](tutorial-prepare-physical.md#prepare-for-physical-server-assessment)以进行评估。 应验证设备要求。 此外，应该设置一个帐户用于发现物理服务器。 所需的端口应该可用；你应该知道用于访问 Azure 的 URL。
+
+
 
 
 ## <a name="set-up-an-azure-migrate-project"></a>设置 Azure Migrate 项目
@@ -49,8 +51,8 @@ ms.locfileid: "76990294"
     ![发现和评估服务器](./media/tutorial-assess-physical/assess-migrate.png)
 
 4. 在“开始”中，单击“添加工具”。  
-5. 在“迁移项目”中选择你的 Azure 订阅，并创建一个资源组（如果没有）。      
-6. 在“项目详细信息”中，指定项目名称以及要在其中创建项目的地理位置。  支持“亚洲”、“欧洲”、“英国”和“美国”。
+5. 在“迁移项目”中选择你的 Azure 订阅，并创建一个资源组（如果没有）。   
+6. 在“项目详细信息”中，指定项目名称以及要在其中创建项目的地理位置。  查看[公有云](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。
 
     - 项目地理位置仅用于存储从本地服务器中收集的元数据。
     - 运行迁移时，可以选择任一目标区域。
@@ -96,16 +98,24 @@ ms.locfileid: "76990294"
 在部署压缩文件之前检查其安全性。
 
 1. 在下载文件的计算机上，打开管理员命令窗口。
-2. 运行以下命令以生成 zip 文件的哈希
+2. 运行以下命令以生成 zip 文件的哈希：
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 用法示例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
+    - 公有云的示例用法：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
+    - 政府云的示例用法：```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
+3.  验证哈希值：
+ 
+    - 对于公有云（适用于最新设备版本）：
 
-3.  对于最新设备版本，生成的哈希应与这些设置匹配。
+        **算法** | **哈希值**
+          --- | ---
+          MD5 | 1e92ede3e87c03bd148e56a708cdd33f
+          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
 
-  **算法** | **哈希值**
-  --- | ---
-  MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-  SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+    - 对于 Azure 政府云（适用于最新设备版本）：
+
+        **算法** | **哈希值**
+          --- | ---
+          MD5 | f81c155fc4a1409901caea948713913f
 
 ### <a name="run-the-azure-migrate-installer-script"></a>运行 Azure Migrate 安装程序脚本
 
@@ -116,28 +126,26 @@ ms.locfileid: "76990294"
 - 下载并安装 IIS 可重写模块。 [了解详细信息](https://www.microsoft.com/download/details.aspx?id=7435)。
 - 更新 Azure Migrate 的注册表项 (HKLM) 和永久性设置详细信息。
 - 在路径下创建以下文件：
-    -  配置文件：%ProgramData%\Microsoft Azure\Config
-    -  日志文件：%ProgramData%\Microsoft Azure\Logs
+    - **配置文件**：%Programdata%\Microsoft Azure\Config
+    - **日志文件**：%Programdata%\Microsoft Azure\Logs
 
 按如下所示运行脚本：
 
-1. 将压缩文件解压缩到托管设备的服务器上的某个文件夹中。
+1. 将压缩文件解压缩到托管设备的服务器上的某个文件夹中。  请确保不要在现有 Azure Migrate 设备上的计算机中运行该脚本。
 2. 使用管理（提升）权限在上述服务器上启动 PowerShell。
 3. 将 PowerShell 目录更改为从下载的压缩文件中提取内容的文件夹。
 4. 通过运行以下命令，运行名为“AzureMigrateInstaller.ps1”的脚本  ：
-    ```
-    PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
-    ```
-脚本将在成功完成时启动设备 Web 应用程序。
 
-如果出现任何问题，可以访问位于 C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log 的脚本日志以进行故障排除。
+    - 对于公有云：``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 ```
+    - 对于 Azure 政府云：``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
 
-> [!NOTE]
-> 请不要在现有的 Azure Migrate 设备上执行 Azure Migrate 安装程序脚本。
+    脚本将在成功完成时启动设备 Web 应用程序。
+
+如果遇到任何问题，可以访问位于 C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log 的脚本日志来进行故障排除。
 
 ### <a name="verify-appliance-access-to-azure"></a>验证设备的 Azure 访问权限
 
-确保设备可以连接到 [Azure URL](migrate-appliance.md#url-access)。
+确保设备可以连接到[公有云](migrate-appliance.md#public-cloud-urls)和[政府云](migrate-appliance.md#government-cloud-urls)的 Azure URL。
 
 
 ### <a name="configure-the-appliance"></a>配置设备
@@ -173,7 +181,7 @@ ms.locfileid: "76990294"
 现在，从设备连接到要发现的物理服务器，并启动发现。
 
 1. 单击“添加凭据”以指定设备用于发现服务器的帐户凭据  。  
-2. 指定“操作系统”、凭据的友好名称、“用户名”和“密码”，然后单击“添加”     。
+2. 指定操作系统  、凭据的友好名称以及用户名和密码。 然后单击“添加”  。
 你可以为 Windows 和 Linux 服务器分别添加一组凭据。
 4. 单击“添加服务器”，然后指定服务器详细信息 - FQDN/IP 地址和凭据的友好名称（每行一个条目）以连接到服务器  。
 3. 单击 **“验证”** 。 验证后，将显示可发现的服务器列表。

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 5469c2512e133d17e4d18cebb64ab9e2a21b1f83
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 36ded3bd85cd7acdffbfe46b9e931a811994fa30
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77482287"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81531094"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>使用 REST API 和 Python 通过标签训练表单识别器模型
 
@@ -40,7 +40,7 @@ ms.locfileid: "77482287"
 
 若要使用标记的数据训练模型，需要在子文件夹中将以下文件用作输入。 我们将在下面了解如何创建这些文件。
 
-* **源表单** – 用于从其中提取数据的表单。 支持的类型为 JPEG、PNG、BMP、PDF 或 TIFF。
+* **源表单** – 用于从其中提取数据的表单。 支持的类型为 JPEG、PNG、PDF 或 TIFF。
 * **OCR 布局文件** - JSON 文件，描述每个源表单中所有可读文本的大小和位置。 我们将使用表单识别器布局 API 来生成此数据。 
 * **标签文件** - JSON 文件，用于描述用户已手动输入的数据标签。
 
@@ -219,7 +219,7 @@ headers = {
     'Ocp-Apim-Subscription-Key': '<subsription key>',
 }
 
-body =  {
+body =     {
     "source": source,
     "sourceFilter": {
         "prefix": prefix,
@@ -455,7 +455,7 @@ print("Train operation did not complete within the allocated time.")
                     "#/readResults/0/lines/8/words/1"
                   ]
                 },
-                ...     
+                ...        
               ]
             }
           ]

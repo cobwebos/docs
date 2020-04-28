@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: e76ca7198bfded725d89f04fd162d470a85da904
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5b9de6c2b8d9f7b11b686e820aab54fdd8e8a02f
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67442841"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866804"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>教程：Azure Active Directory 与 HR2day by Merces 的集成
 
@@ -105,9 +105,9 @@ ms.locfileid: "67442841"
 
     ![HR2day by Merces 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenantname>.force.com/<instancename>` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenantname>.force.com/<instancename>`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://hr2day.force.com/<companyname>` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://hr2day.force.com/<companyname>`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [HR2day by Merces 客户端支持团队](mailto:servicedesk@merces.nl)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -128,9 +128,9 @@ ms.locfileid: "67442841"
 
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
-    ![image](common/new-save-attribute.png)
+    ![图像](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![图像](common/new-attribute-details.png)
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。 
 
@@ -163,7 +163,7 @@ ms.locfileid: "67442841"
 若要在 **HR2day by Merces** 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [HR2day by Merces 支持团队](mailto:servicedesk@merces.nl)  。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 > [!NOTE]
-> 向 Merces 团队提及此集成需要使用以下模式设置实体 ID： **https://hr2day.force.com/INSTANCENAME** 。
+> 向 Merces 团队提及此集成需要使用以下模式设置实体 ID：https:\//hr2day.force.com/INSTANCENAME  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -183,7 +183,7 @@ ms.locfileid: "67442841"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 `brittasimon@yourcompanydomain.extension`   
+    b. 在“用户名”字段中，键入 `brittasimon@yourcompanydomain.extension`  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。

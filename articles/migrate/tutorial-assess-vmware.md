@@ -1,16 +1,17 @@
 ---
-title: 评估 VMware VM 以便迁移到 Azure
+title: 使用 Azure Migrate 服务器评估工具评估 VMware VM
 description: 介绍如何使用 Azure Migrate 服务器评估工具评估要迁移到 Azure 的本地 VMware VM。
 ms.topic: tutorial
-ms.date: 03/23/2019
-ms.openlocfilehash: 944b7c12a353a29a172576974261eece63ebf668
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/15/2020
+ms.custom: mvc
+ms.openlocfilehash: bd9e6b5923207297b1aa70a67052a7796b901781
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548748"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535360"
 ---
-# <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>使用 Azure Migrate 服务器评估来评估 VMware VM
+# <a name="assess-vmware-vms-with-server-assessment"></a>使用“服务器评估”功能评估 VMware VM
 
 本文介绍如何使用 [Azure Migrate:服务器评估](migrate-services-overview.md#azure-migrate-server-assessment-tool)工具来评估本地 VMware 虚拟机 (VM)。
 
@@ -48,9 +49,7 @@ ms.locfileid: "80548748"
 
 1. 在“入门”中，选择“添加工具”。  
 1. 在“迁移项目”中选择你的 Azure 订阅，并创建一个资源组（如果没有）。      
-1. 在“项目详细信息”中，指定项目名称以及要在其中创建项目的地理位置。  支持“亚洲”、“欧洲”、“英国”和“美国”。
-
-   项目地理位置仅用于存储从本地 VM 中收集的元数据。 运行迁移时，可以选择任一目标区域。
+1. 在“项目详细信息”中，指定项目名称以及要在其中创建项目的地理位置。  查看[公有云](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。
 
    ![用于项目名称和区域的框](./media/tutorial-assess-vmware/migrate-project.png)
 
@@ -65,12 +64,12 @@ ms.locfileid: "80548748"
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>设置 Azure Migrate 设备
 
-Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执行 VM 发现并将 VM 元数据和性能数据发送到 Azure Migrate。
-- 可以使用已下载的 OVA 模板在 VMware VM 上设置设备。 或者，可以使用 PowerShell 安装程序脚本在 VM 或物理计算机上设置设备。
-- 本教程使用 OVA 模板。 若要使用脚本设置设备，请查看[此文](deploy-appliance-script.md)。
+Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执行 VM 发现并将 VM 元数据和性能数据发送到 Azure Migrate。 可通过多种方式设置此设备。
+
+- 使用下载的 OVA 模板在 VMware VM 上进行设置。 这是本教程中使用的方法。
+- 使用 PowerShell 安装程序脚本在 VMware VM 或物理计算机上进行设置。 如果无法使用 OVA 模板设置 VM，或者你使用的是 Azure 政府，则应使用[此方法](deploy-appliance-script.md)。
 
 创建设备后，请检查它是否可以连接到 Azure Migrate:服务器评估，首次配置该设备，并将其注册到 Azure Migrate 项目。
-
 
 
 ### <a name="download-the-ova-template"></a>下载 OVA 模板
@@ -115,9 +114,9 @@ SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 1. 在“网络映射”中，指定 VM 要连接到的网络。  该网络需要与 Internet 建立连接，这样才能向 Azure Migrate 服务器评估发送元数据。
 1. 检查并确认设置，然后选择“完成”。 
 
-### <a name="verify-appliance-access-to-azure"></a>验证设备的 Azure 访问权限
+## <a name="verify-appliance-access-to-azure"></a>验证设备的 Azure 访问权限
 
-确保设备 VM 可以连接到 [Azure URL](migrate-appliance.md#url-access)。
+确保设备 VM 可以连接到[公有云](migrate-appliance.md#public-cloud-urls)和[政府云](migrate-appliance.md#government-cloud-urls)的 Azure URL。
 
 ### <a name="configure-the-appliance"></a>配置设备
 
@@ -136,7 +135,7 @@ SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
    - **连接**：应用将检查 VM 是否可访问 Internet。 如果 VM 使用代理：
      - 选择“代理设置”，并以 http://ProxyIPAddress 或 http://ProxyFQDN 格式指定代理地址和侦听端口。 
      - 如果代理需要身份验证，请指定凭据。
-     - 请注意，仅支持 HTTP 代理。
+     - 仅支持 HTTP 代理。
    - **时间同步**：设备上的时间应与 Internet 时间同步，这样才能正常进行发现。
    - **安装更新**：设备可确保安装最新的更新。
    - **安装 VDDK**：设备将检查是否已安装 VMWare vSphere 虚拟磁盘开发工具包 (VDDK)。 从 VMware 下载 VDDK 6.7（如果尚未安装它），并将下载的 zip 内容解压缩到设备上的指定位置。
@@ -255,7 +254,7 @@ SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 
 ### <a name="review-confidence-rating"></a>查看置信度分级
 
-Azure Migrate 服务器评估会为基于性能的评估进行置信度分级，从 1 星（最低）到 5 星（最高）不等。
+Azure Migrate 服务器评估会为基于性能的评估分配置信度分级，从 1 星（最低）到 5 星（最高）不等。
 
 ![置信度分级](./media/tutorial-assess-vmware/confidence-rating.png)
 

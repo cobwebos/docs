@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ba96dd2fcfb995afa6e3b1302a2c8b075abfd90
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 275215a69f97d93a1b1741a8fa8f3ca752c8c9ef
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72968695"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758987"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-dynatrace"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Dynatrace 集成
 
@@ -88,7 +88,7 @@ ms.locfileid: "72968695"
 
 1. 单击“设置其他 URL”，并完成以下步骤以 SP 发起的模式配置应用程序   ：
 
-    在“登录 URL”文本框中，键入 URL：`https://sso.dynatrace.com/` 
+    在“登录 URL”文本框中，键入 URL：`https://sso.dynatrace.com/`
 
 1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分，找到“联合元数据 XML”    。 选择“下载”以下载证书，并将其保存在计算机上。 
 
@@ -140,7 +140,7 @@ ms.locfileid: "72968695"
 
 ## <a name="configure-dynatrace-sso"></a>配置 Dynatrace SSO
 
-若要在“Dynatrace”端配置单一登录，需要将下载的“联合元数据 XML”文件以及从 Azure 门户复制的相应 URL 发送给 [Dynatrace 支持团队](https://www.dynatrace.com/services-support/)   。 他们会对此设置进行配置，以在两端正确设置 SAML SSO 连接。
+若要在“Dynatrace”端配置单一登录，需要将下载的“联合元数据 XML”文件以及从 Azure 门户复制的相应 URL 发送到 [Dynatrace](https://www.dynatrace.com/support/help/shortlink/users-sso-hub)   。 可以按照 Dynatrace 网站上的说明在两端配置 SAML SSO 连接。
 
 ### <a name="create-dynatrace-test-user"></a>创建 Dynatrace 测试用户
 

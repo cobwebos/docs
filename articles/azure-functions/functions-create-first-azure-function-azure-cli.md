@@ -4,12 +4,12 @@ description: 了解如何通过命令行创建函数，然后将本地项目发�
 ms.date: 03/30/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 1e3ce26894e9e89d196c068bd32245c8c891b2e2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 547acb42be6a0c89dbc315031c46192b5c9a4a0d
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255543"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732806"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>快速入门：在 Azure 中创建用于响应 HTTP 请求的函数
 
@@ -21,7 +21,7 @@ ms.locfileid: "81255543"
 
 ::: zone pivot="programming-language-java"  
 > [!NOTE]
-> 如果 Maven 不是你的首选开发工具，请查看面向使用 [Gradle](/azure/azure-functions/functions-create-first-java-gradle)、[IntelliJ IDEA](/azure/java/intellij/azure-toolkit-for-intellij-quickstart-functions) 和 [VS Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java) 的 Java 开发人员的类似教程。
+> 如果 Maven 不是你的首选开发工具，请查看面向使用 [Gradle](/azure/azure-functions/functions-create-first-java-gradle)、[IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) 和 [VS Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java) 的 Java 开发人员的类似教程。
 ::: zone-end  
 
 [!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]
@@ -222,9 +222,9 @@ Function.java 包含一个接收 `request` 变量中的请求数据的 `run` 方
 
 使用 [az login](/cli/azure/reference-index#az-login) 命令登录到 Azure（如果尚未这样做）：
 
-    ```azurecli
-    az login
-    ```
+```azurecli
+az login
+```
     
 使用“[az group create](/cli/azure/group#az-group-create)”命令创建资源组。 以下示例在 `westeurope` 区域中创建名为 `AzureFunctionsQuickstart-rg` 的资源组。 （通常，你会在 `az account list-locations` 命令输出的、与你靠近的某个可用区域中创建资源组和资源。）
 
