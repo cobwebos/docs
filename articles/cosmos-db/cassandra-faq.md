@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: thvankra
-ms.openlocfilehash: 2d6cae3a7a41eae05783d3bcc12ec2bfe8220c4c
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 9b771a82d88f9902aeb6022f07811ded8a6e0e62
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82148322"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192827"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-for-azure-cosmos-db"></a>有关 Azure Cosmos DB Cassandra API 的常见问题
 
 ## <a name="what-are-some-key-differences-between-apache-cassandra-and-the-cassandra-api"></a>Apache Cassandra 和 Cassandra API 有哪些重要区别？
 
-- Apache Cassandra 建议对分区键大小的限制为 100 MB。 Azure Cosmos DB 的 Cassandra API 允许每个分区最多 10 GB。
+- Apache Cassandra 建议对分区键大小的限制为 100 MB。 Azure Cosmos DB 的 Cassandra API 允许每个分区最多 20 GB。
 - Apache Cassandra 允许禁用持久提交。 可以跳过写入提交日志，直接转到 memtables。 如果在将 memtables 刷新到磁盘上的 SSTables 之前节点出现故障，则可能导致数据丢失。 Azure Cosmos DB 始终执行持久提交，以帮助防止数据丢失。
 - 如果工作负荷涉及多次替换或删除，Apache Cassandra 可能会看到性能下降。 原因是，读取工作负荷需要跳过来提取最新数据的逻辑删除。 当工作负荷有许多替换或删除时，Cassandra API 不会看到降低读取性能。
 - 在高替换工作负载的情况下，需要运行压缩来合并磁盘上的 SSTables。 （需要进行合并，因为 Apache Cassandra 的写入只是 append。 多个更新存储为需要定期合并的单个 SSTable 条目。 这种情况还可能会导致压缩期间的读取性能降低。 Cassandra API 中不会对性能造成影响，因为 API 不实现压缩。
@@ -131,7 +131,7 @@ Azure Cosmos DB 提供读取、写入和吞吐量的性能保证。 因此，您
 
 ### <a name="how-can-i-monitor-infrastructure-along-with-throughput"></a>如何监视基础结构以及吞吐量？
 
-Azure Cosmos DB 是一个平台服务，可帮助你提高工作效率，而无需担心如何管理和监视基础结构。 例如，你不需要通过各种工具来监视节点状态、副本状态、gc 和 OS 参数。 只需处理门户指标中可用的吞吐量即可查看是否受到限制，然后增加或减少该吞吐量。 你可以：
+Azure Cosmos DB 是一个平台服务，可帮助你提高工作效率，而无需担心如何管理和监视基础结构。 例如，你不需要通过各种工具来监视节点状态、副本状态、gc 和 OS 参数。 只需处理门户指标中可用的吞吐量即可查看是否受到限制，然后增加或减少该吞吐量。 可以：
 
 - 监视[sla](monitor-accounts.md)
 - 使用[度量值](use-metrics.md)
@@ -167,7 +167,7 @@ Cassandra API 从 Azure Cosmos DB 的全局分布式平台借用。 若要确保
 
 ### <a name="does-the-cassandra-api-index-all-attributes-of-an-entity-by-default"></a>默认情况下，Cassandra API 是否为实体的所有属性编制索引？
 
-不能。 Cassandra API 支持[辅助索引](cassandra-secondary-index.md)，其行为方式类似于 Apache Cassandra。 默认情况下，API 不会索引每个属性。  
+否。 Cassandra API 支持[辅助索引](cassandra-secondary-index.md)，其行为方式类似于 Apache Cassandra。 默认情况下，API 不会索引每个属性。  
 
 
 ### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>是否可以在本地将新的 Cassandra API SDK 用于模拟器？

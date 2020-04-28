@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
-ms.openlocfilehash: a03ace1553bd845d8a221e458fd47f3d8aa3d611
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: de680e7cb542e7606b80ad46934f4ad7256bfb92
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82146539"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186061"
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>创建、更改或删除公共 IP 地址
 
@@ -70,7 +70,7 @@ ms.locfileid: "82146539"
 
 虽然门户提供了用于创建两个公共 IP 地址资源（一个 IPv4 和一个 IPv6）的选项，但以下 CLI 和 PowerShell 命令可使用任一 IP 版本的地址创建一个资源。 如果需要两个公共 IP 地址资源（每个 IP 版本一个），必须运行此命令两次，为公共 IP 地址资源指定不同的名称和 IP 版本。
 
-|工具|命令|
+|工具|Command|
 |---|---|
 |CLI|[az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create)|
 |PowerShell|[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)|
@@ -89,7 +89,7 @@ ms.locfileid: "82146539"
 
 **命令**
 
-|工具|命令|
+|工具|Command|
 |---|---|
 |CLI|[az network public-ip list](/cli/azure/network/public-ip#az-network-public-ip-list) 用于列出公共 IP 地址；[az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) 用于显示设置；[az network public-ip update](/cli/azure/network/public-ip#az-network-public-ip-update) 用于更新；[az network public-ip delete](/cli/azure/network/public-ip#az-network-public-ip-delete) 用于删除|
 |PowerShell|[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) 用于检索公共 IP 地址对象并查看其设置；[Set-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) 用于更新设置；[Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) 用于删除|
@@ -118,4 +118,4 @@ ms.locfileid: "82146539"
 ## <a name="next-steps"></a>后续步骤
 
 - 使用 [PowerShell](powershell-samples.md) 或 [Azure CLI](cli-samples.md) 示例脚本或使用 Azure [资源管理器模板](template-samples.md)创建公共 IP 地址
-- 为公共 IP 地址创建并应用 [Azure Policy](policy-samples.md)
+- 创建和分配公共 IP 地址的[Azure 策略定义](policy-samples.md)

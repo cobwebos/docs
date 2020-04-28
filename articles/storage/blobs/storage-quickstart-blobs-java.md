@@ -1,18 +1,18 @@
 ---
 title: 快速入门：Azure Blob 存储库 v12 - Java
-description: 本快速入门介绍如何使用适用于 Java 的 Azure Blob 存储客户端库版本 12 在 Blob（对象）存储中创建容器和 blob。 接下来，将介绍如何将 blob 下载到本地计算机，以及如何在容器中列出所有 blob。
+description: 本快速入门介绍如何使用适用于 Java 的 Azure Blob 存储客户端库版本 12 在 Blob（对象）存储中创建容器和 blob。 接下来，介绍如何将 blob 下载到本地计算机，以及如何列出容器中的所有 blob。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 01/27/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: c883653754e1f69d3b2d79b256d57a036c70b58e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 15e0eaaeb407ad22220faa7d085eea805fe62679
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78330127"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731343"
 ---
 # <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>快速入门：使用 Java v12 SDK 管理 blob
 
@@ -40,7 +40,7 @@ ms.locfileid: "78330127"
 
 创建名为 blob-quickstart-v12 的 Java 应用程序  。
 
-1. 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 Maven 创建名为 blob-quickstart-v12 的新控制台应用  。 键入以下“mvn”命令，创建“Hello World!”  Java 项目。
+1. 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 Maven 创建名为 blob-quickstart-v12 的新控制台应用  。 键入以下“mvn”命令  ，创建“Hello World!” Java 项目。
 
    ```console
    mvn archetype:generate -DgroupId=com.blobs.quickstart \
@@ -355,4 +355,4 @@ Done
 > [Azure Blob 存储 SDK v12 Java 示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
 
 * 若要了解详细信息，请参阅 [Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java/blob/master/README.md)。
-* 有关教程、示例、快速入门和其他文档，请访问[面向 Java 云开发人员的 Azure](/azure/java/)。
+* 有关教程、示例、快速入门和其他文档，请访问[面向 Java 云开发人员的 Azure](/azure/developer/java/)。

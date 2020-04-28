@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2020
 ms.author: kumud
-ms.openlocfilehash: 95dd7be118e869aed02bb55918ab0cefa0d05d03
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 4601a7f5da8d6e4eda2ee433fe52d08a6341ce6c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998870"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186010"
 ---
 # <a name="plan-virtual-networks"></a>计划虚拟网络
 
@@ -62,7 +62,7 @@ ms.locfileid: "80998870"
 - 如果计划将某些 Azure 服务资源部署到虚拟网络中，则他们可能需要或创建自己的子网，因此必须有足够的未分配空间才能进行此操作。 若要确定 Azure 服务是否创建自己的子网，请参阅每个[可部署到虚拟网络中的 Azure 服务](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)的信息。 例如，如果使用 Azure VPN 网关将虚拟网络连接到本地网络，虚拟网络必须具有该网关的专用子网。 详细了解[网关子网](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)。
 - 默认情况下，Azure 在虚拟网络中的所有子网之间路由流量。 例如，可替代 Azure 的默认路由以防止在子网之间进行 Azure 路由，或通过网络虚拟设备在子网之间路由流量。 如果要求相同虚拟网络中资源之间的流量流经网络虚拟设备 (NVA)，请将资源部署到不同的子网。 有关详细信息，请参阅[安全性](#security)。
 - 可将对 Azure 资源（例如 Azure 存储帐户或 Azure SQL 数据库）的访问权限限制为具有虚拟网络服务终结点的特定子网。 此外，可拒绝通过 Internet 访问资源。 可创建多个子网，并为某些子网启用服务终结点，但不启用其他项。 详细了解[服务终结点](virtual-network-service-endpoints-overview.md)，以及可为其启用的 Azure 资源。
-- 可将零个或一个网络安全组与虚拟网络中的每个子网相关联。 可将相同或不同的网络安全组关联到每个子网。 每个网络安全组都包含规则，允许或拒绝到达和来自源和目标的流量。 了解有关[网络安全组](#traffic-filtering)的更多信息。
+- 可将零个或一个网络安全组与虚拟网络中的每个子网相关联。 可将相同或不同的网络安全组关联到每个子网。 每个网络安全组都包含规则，允许或拒绝到达和来自源和目标的流量。 了解有关[网络安全组](#traffic-filtering)的详细信息。
 
 ## <a name="security"></a>安全性
 
@@ -75,12 +75,12 @@ ms.locfileid: "80998870"
 - 如果子网中不同 VM 需要应用不同的安全规则，则可将 VM 中的网络接口与一个或多个应用程序安全组相关联。 安全规则可以在其源和/或目标中指定应用程序安全组。 该规则仅适用于属于应用程序安全组成员的网络接口。 详细了解[网络安全组](security-overview.md)和[应用程序安全组](security-overview.md#application-security-groups)。
 - Azure 在每个网络安全组中创建了多个默认安全规则。 其中一个默认规则允许所有流量在虚拟网络中的所有资源之间流动。 若要替代此行为，可使用网络安全组和/或自定义路由将流量路由到 NVA。 建议熟悉 Azure 的所有[默认安全规则](security-overview.md#default-security-rules)，并了解网络安全组规则如何应用于资源。
 
-您可以使用[NVA](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json)查看在 Azure 和 Internet 之间实现外围网络（也称为 DMZ）的示例设计。
+可以查看使用[NVA](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json)在 Azure 与 internet 之间实现外围网络（也称为 DMZ）的示例设计。
 
 ### <a name="traffic-routing"></a>流量路由
 
 Azure 为子网中的出站流量创建多个默认路由。 可通过创建路由表并将其关联到子网来替代 Azure 的默认路由。 替代 Azure 的默认路由的常见原因是：
-- 想要子网之间的流量流经 NVA。 详细了解如何[配置路由表以强制流量通过 NVA](tutorial-create-route-table-portal.md)。
+- 想要子网之间的流量流经 NVA。 若要详细了解如何[配置路由表以强制通过 NVA 的流量](tutorial-create-route-table-portal.md)。
 - 想要通过 Azure VPN 网关强制所有 Internet 绑定流量通过 NVA 或本地。 强制 Internet 流量本地进行检查和记录通常被称为强制隧道。 详细了解如何配置[强制隧道](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md?toc=%2Fazure%2Fvirtual-network%2Ftoc.json)。
 
 如果需要实施自定义路由，建议熟悉 [Azure 中的路由](virtual-networks-udr-overview.md)。
@@ -97,7 +97,7 @@ Azure 为子网中的出站流量创建多个默认路由。 可通过创建路�
 
 可通过[站点到站点 VPN ](../vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json)或与 Azure [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 的专用连接，使用 Azure [VPN 网关](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)将虚拟网络连接到本地网络。
 
-例如，您可以将对等互连和 VPN 网关组合起来创建[中心和分支网络](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)，其中分支虚拟网络连接到集线器虚拟网络，并且中心连接到本地网络。
+可以结合对等互连和 VPN 网关来创建[中心和分支网络](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)，其中的辐射虚拟网络连接到中心虚拟网络，中心连接到本地网络，例如。
 
 ### <a name="name-resolution"></a>名称解析
 
@@ -111,7 +111,7 @@ Azure 对资源使用[基于角色的访问控制](../role-based-access-control/
 
 通过 Azure Policy，可创建、分配和管理策略定义。 策略定义将在整个资源中强制实施不同的规则，以便资源符合组织标准和服务级别协议。 Azure Policy 对资源进行评估，扫描并找到与所定义策略不相符的资源。 例如，可以定义和应用仅在特定资源组或区域中允许创建虚拟网络的策略。 另一个策略可能要求每个子网都有一个与之关联的网络安全组。 然后，在创建和更新资源时评估此策略。
 
-策略将应用于以下层次结构：管理组、订阅和资源组。 了解有关 [Azure Policy](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或部署某些虚拟网络[策略模板](policy-samples.md)示例的详细信息。
+策略将应用于以下层次结构：管理组、订阅和资源组。 了解有关[Azure 策略](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的详细信息或部署某些虚拟网络[Azure 策略定义](policy-samples.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

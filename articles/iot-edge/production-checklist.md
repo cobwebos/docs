@@ -4,19 +4,19 @@ description: 了解如何将 Azure IoT Edge 解决方案从开发环境转移到
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 4/02/2020
+ms.date: 4/24/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: f1de8330b950ffa09ce3e8ae168f05021b2ad80c
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
-ms.translationtype: MT
+ms.openlocfilehash: 6ec196408c047682be527ee21735ce809f5916e9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81729453"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82191832"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>准备在生产环境中部署 IoT Edge 解决方案
 
@@ -136,6 +136,8 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
 * 重要说明 
   * 管理对容器注册表的访问
   * 使用标记管理版本
+* **有用提示**
+  * 将运行时容器存储在专用注册表中
 
 ### <a name="manage-access-to-your-container-registry"></a>管理对容器注册表的访问
 
@@ -143,30 +145,41 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
 
 教程和其他文档会指导你在 IoT Edge 设备上使用开发计算机上所用的相同容器注册表凭据。 这些说明旨在帮助你更轻松地设置测试和开发环境，在生产方案中请勿遵照这些说明。
 
-要获得对注册表的更安全访问，您可以选择[身份验证选项](../container-registry/container-registry-authentication.md)。 常用和推荐的身份验证是使用 Active Directory 服务主体，该主体非常适合应用程序或服务以自动或其他无人值守（无头）方式拉取容器映像，就像 IoT Edge 设备那样。
+对于更安全的注册表访问权限，你可以选择[身份验证选项](../container-registry/container-registry-authentication.md)。 常见的推荐身份验证是使用一种 Active Directory 的服务主体，该服务主体非常适合应用程序或服务以自动或无人参与（无外设）的方式（如 IoT Edge 设备）提取容器映像。
 
-要创建服务主体，请运行[创建服务主体](../container-registry/container-registry-auth-service-principal.md#create-a-service-principal)中所述的两个脚本。 这些脚本执行以下任务：
+若要创建服务主体，请运行 "[创建服务主体](../container-registry/container-registry-auth-service-principal.md#create-a-service-principal)" 中所述的两个脚本。 这些脚本执行以下任务：
 
-* 第一个脚本创建服务主体。 它输出服务主体 ID 和服务主体密码。 将这些值安全地存储在记录中。
+* 第一个脚本创建服务主体。 它输出服务主体 ID 和服务主体密码。 安全地将这些值存储在记录中。
 
-* 第二个脚本创建角色分配以授予服务主体，如果需要，可以随后运行。 我们建议为`role`参数应用**acrPull**用户角色。 有关角色列表，请参阅[Azure 容器注册表角色和权限](../container-registry/container-registry-roles.md)。
+* 第二个脚本创建角色分配，以授予服务主体，以后可以根据需要运行。 建议为`role`参数应用**acrPull**用户角色。 有关角色的列表，请参阅[Azure 容器注册表角色和权限](../container-registry/container-registry-roles.md)。
 
-要使用服务主体进行身份验证，请提供从第一个脚本获取的服务主体 ID 和密码。 在部署清单中指定这些凭据。
+若要使用服务主体进行身份验证，请提供从第一个脚本获取的服务主体 ID 和密码。 在部署清单中指定这些凭据。
 
-* 对于用户名或客户端 ID，请指定服务主体 ID。
+* 对于 "用户名" 或 "客户端 ID"，请指定服务主体 ID。
 
-* 对于密码或客户端机密，请指定服务主体密码。
+* 对于密码或客户端密码，指定服务主体密码。
 
 > [!NOTE]
-> 实现增强的安全身份验证后，禁用**管理员用户**设置，以便默认用户名/密码访问不再可用。 在 Azure 门户中的容器注册表中，从 **"设置"** 下的左侧窗格菜单中，选择 **"访问键**"。
+> 实现增强的安全身份验证后，禁用**管理员用户**设置，以使默认的用户名/密码访问不再可用。 在容器注册表中的 Azure 门户 "**设置**" 下的左窗格菜单中，选择 "**访问密钥**"。
 
 ### <a name="use-tags-to-manage-versions"></a>使用标记管理版本
 
-标记是一个 docker 概念，可用于区分 docker 容器的版本。 标记是附加在容器存储库末尾的后缀（如 **1.0**）。 例如 **mcr.microsoft.com/azureiotedge-agent:1.0**。 标记是可变的，随时可能更改为指向另一容器，因此，团队应该议定一种约定，以便今后在更新模块映像时遵循。
+标记是一个 docker 概念，可用于区分 docker 容器的各个版本。 标记是附加在容器存储库末尾的后缀（如 **1.0**）。 例如 **mcr.microsoft.com/azureiotedge-agent:1.0**。 标记是可变的，随时可能更改为指向另一容器，因此，团队应该议定一种约定，以便今后在更新模块映像时遵循。
 
 标记还可帮助你针对 IoT Edge 设备强制实施更新。 将模块的更新版本推送到容器注册表时，请递增标记。 然后，使用递增的标记将新部署推送到设备。 容器引擎将递增的标记识别为新版本，并将最新模块版本提取到设备。
 
 有关标记约定的示例，请参阅[更新 IoT Edge 运行时](how-to-update-iot-edge.md#understand-iot-edge-tags)，了解 IoT Edge 如何使用滚动更新标记和特定标记来跟踪版本。
+
+### <a name="store-runtime-containers-in-your-private-registry"></a>将运行时容器存储在专用注册表中
+
+你了解如何在专用 Azure 注册表中存储自定义代码模块的容器映像，但你也可以使用它来存储公共容器映像，例如适用于 edgeAgent 和 edgHub 运行时模块。 如果防火墙受到严格限制，则可能需要执行此操作，因为这些运行时容器存储在 Microsoft 容器注册表（MCR）中。
+
+获取包含 Docker pull 命令的映像，将其放入注册表。 请注意，你将需要更新每个新版本的 IoT Edge 运行时的映像。
+
+| IoT Edge 运行时容器 | Docker 拉取命令 |
+| --- | --- |
+| [Azure IoT Edge 代理](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent` |
+| [Azure IoT Edge 中心](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
 
 ## <a name="networking"></a>网络
 
@@ -202,7 +215,9 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
    | \*.azure-devices.net | 5671、8883、443 | IoT 中心访问 |
    | \*.docker.io  | 443 | Docker 中心访问（可选） |
 
-其中一些防火墙规则是从 Azure 容器注册表继承的。 有关详细信息，请参阅[配置规则以访问防火墙后面的 Azure 容器注册表](../container-registry/container-registry-firewall-access-rules.md)。
+其中的某些防火墙规则继承自 Azure 容器注册表。 有关详细信息，请参阅[配置规则以访问防火墙后面的 Azure 容器注册表](../container-registry/container-registry-firewall-access-rules.md)。
+
+如果你不想将防火墙配置为允许访问公共容器注册表，则可以在专用容器注册表中存储图像，如[专用注册表中的存储运行时容器](#store-runtime-containers-in-your-private-registry)中所述。
 
 ### <a name="configure-communication-through-a-proxy"></a>配置为通过代理进行通信
 

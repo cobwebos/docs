@@ -1,27 +1,27 @@
 ---
-title: Excel &阿帕奇哈达普与开放数据库连接 （ODBC） 驱动程序 - Azure HDInsight
+title: Excel & Apache Hadoop 与开放式数据库连接（ODBC）驱动程序-Azure HDInsight
 description: 了解如何设置和使用针对 Excel 的 Microsoft Hive ODBC 驱动程序来从 Microsoft Excel 查询 HDInsight 群集中的数据。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,hdiseo17may2017
+ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: 5aefd2c344565bf6dcb384996c42c1bc30e7291d
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.openlocfilehash: 388f59f5090be43469acfde5197a658942e817f7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82024925"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182440"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 Azure HDInsight 中的 Apache Hadoop
 
 [!INCLUDE [ODBC-JDBC-selector](../../../includes/hdinsight-selector-odbc-jdbc.md)]
 
-微软的大数据解决方案将微软商业智能 （BI） 组件与部署在 HDInsight 中的 Apache Hadoop 群集集成在一起。 例如，能够将 Excel 连接到 Hadoop 群集的 Hive 数据仓库。 使用 Microsoft 蜂巢开放数据库连接 （ODBC） 驱动程序进行连接。
+Microsoft 的大数据解决方案将 Microsoft 商业智能（BI）组件与在 HDInsight 中部署的 Apache Hadoop 群集相集成。 例如，可以将 Excel 连接到 Hadoop 群集的 Hive 数据仓库。 使用 Microsoft Hive 开放式数据库连接（ODBC）驱动程序进行连接。
 
-您可以将与 Excel 的 HDInsight 群集关联的数据与 Excel 的 Microsoft 电源查询外接程序连接。 有关详细信息，请参阅将[Excel 连接到 HDInsight 与电源查询](../hdinsight-connect-excel-power-query.md)。
+您可以使用 Microsoft Power Query Excel 外接程序从 Excel 连接与 HDInsight 群集关联的数据。 有关详细信息，请参阅[通过 Power Query 将 Excel 连接到 HDInsight](../hdinsight-connect-excel-power-query.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -32,13 +32,13 @@ ms.locfileid: "82024925"
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>安装 Microsoft Hive ODBC 驱动程序
 
-下载并安装[微软蜂巢ODBC驱动程序](https://www.microsoft.com/download/details.aspx?id=40886)。 选择与应用程序版本匹配的版本，您将在其中使用 ODBC 驱动程序。  在本文中，驱动程序用于 Office Excel。
+下载并安装[Microsoft Hive ODBC 驱动程序](https://www.microsoft.com/download/details.aspx?id=40886)。 选择与要在其中使用 ODBC 驱动程序的应用程序版本匹配的版本。  在本文中，驱动程序用于 Office Excel。
 
 ## <a name="create-apache-hive-odbc-data-source"></a>创建 Apache Hive ODBC 数据源
 
 下列步骤演示如何创建 Hive ODBC 数据源。
 
-1. 从 Windows 导航到**启动> Windows 管理工具> ODBC 数据源（32 位）/（64 位）。**  此操作将打开**ODBC 数据源管理员**窗口。
+1. 在 Windows 中，导航到 "**开始 > Windows 管理工具" > ODBC 数据源（32位）/（64位）**。  此操作将打开 " **ODBC 数据源管理器**" 窗口。
 
     ![ODBC 数据源管理器](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-datasourceadmin1.png "使用 ODBC 数据源管理器配置 DSN")
 
@@ -58,17 +58,17 @@ ms.locfileid: "82024925"
    |  用户名 |输入 HDInsight 群集 HTTP 用户的用户名。 默认的用户名为 **admin**。 |
    |  密码 |输入 HDInsight 群集用户的密码。 选中“保存密码(已加密)”**** 复选框。|
 
-1. 可选：选择**高级选项...**  
+1. 可选：选择**高级选项 ...**  
 
    | 参数 | 说明 |
    | --- | --- |
-   |  使用本机查询 |当此项处于选中状态时，ODBC 驱动程序不会尝试将 TSQL 转换为 HiveQL。 只有当您 100% 确信您提交了纯 HiveQL 语句时，您才应使用它。 连接 SQL Server 或 Azure SQL 数据库时，应将此项保留为未选中状态。 |
+   |  使用本机查询 |当此项处于选中状态时，ODBC 驱动程序不会尝试将 TSQL 转换为 HiveQL。 仅当你是100% 时才应使用此方法。请确保提交的是纯 HiveQL 语句。 连接 SQL Server 或 Azure SQL 数据库时，应将此项保留为未选中状态。 |
    |  每块提取的行数 |提取大量记录时，可能需要调整此参数以确保最佳性能。 |
-   |  默认字符串列长度、二进制列长度、十进制列小数位数 |数据类型长度和精度可能会影响返回数据的方式。 它们会导致由于精度损失和或截断而返回不正确的信息。 |
+   |  默认字符串列长度、二进制列长度、十进制列小数位数 |数据类型长度和精度可能会影响返回数据的方式。 它们会导致返回不正确的信息，因为丢失精度和或截断。 |
 
     ![高级 DSN 配置选项](./media/apache-hadoop-connect-excel-hive-odbc-driver/hiveodbc-datasource-advancedoptions1.png "高级 DSN 配置选项")
 
-1. 选择“测试”以测试数据源****。 正确配置数据源后，测试结果将显示**成功！**
+1. 选择“测试”以测试数据源****。 正确配置数据源后，测试结果会显示**成功！**
 
 1. 选择“确定”以关闭“测试”窗口****。  
 
@@ -86,7 +86,7 @@ ms.locfileid: "82024925"
 
     ![打开 Excel 数据连接向导](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png "打开 Excel 数据连接向导")
 
-3. 从下拉列表中，选择您在最后一节中创建的数据源名称，然后选择 **"确定**"。
+3. 从下拉列表中，选择在上一部分中创建的数据源名称，然后选择 **"确定"**。
 
 4. 第一次使用时，将打开“ODBC 驱动程序”**** 对话框。 从左侧菜单中选择 **Windows**。 然后选择“连接”**** 以打开“导航器”**** 窗口。
 
@@ -96,7 +96,7 @@ ms.locfileid: "82024925"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，已了解了如何使用 Microsoft Hive ODBC 驱动程序将来自 HDInsight 服务的数据检索到 Excel 中。 同样地，也可以将来自 HDInsight 服务的数据检索到 SQL 数据库中。 还可以将数据上载到 HDInsight 服务。 若要了解更多信息，请参阅以下文章：
+在本文中，已了解了如何使用 Microsoft Hive ODBC 驱动程序将来自 HDInsight 服务的数据检索到 Excel 中。 同样地，也可以将来自 HDInsight 服务的数据检索到 SQL 数据库中。 也可以将数据上载到 HDInsight 服务。 若要了解更多信息，请参阅以下文章：
 
 * [在 Azure HDInsight 中使用 Microsoft Power BI 直观显示 Apache Hive 数据](apache-hadoop-connect-hive-power-bi.md)。
 * [在 Azure HDInsight 中使用 Power BI 直观显示交互式查询 Hive 数据](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)。

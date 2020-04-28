@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 9bb1059087bdf8fc4eb852be7a995febc3336713
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 10fa16767061506eccf212c182e738246dc9fe7b
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115287"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867230"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>创建新的 Dynamics 365 商业中心产品/服务
 
@@ -25,7 +25,7 @@ ms.locfileid: "81115287"
 >[!Note]
 > 产品/服务发布后，只有在重新发布后，才会在系统和商店前面更新对合作伙伴中心中提供的优惠进行编辑。 请确保在进行更改后提交要发布的要约。
 
-## <a name="create-a-new-offer"></a>创建新产品/服务
+## <a name="create-a-new-offer"></a>创建新套餐
 
 选择 **+ 新优惠**按钮，然后选择**Dynamics 365 商业中心**菜单项。 将显示"**新建产品/服务**"对话框。
 
@@ -118,7 +118,7 @@ ms.locfileid: "81115287"
 > [!NOTE]
 > 您只能提供一种语言的优惠列表详细信息。 它不需要是英文的，只要报价说明以短语开头，"此应用程序仅以[非英语]提供。 提供*帮助链接 URL*以提供产品/服务列表内容中所用语言以外的语言也是可以接受的。
 
-### <a name="name"></a>“属性”
+### <a name="name"></a>名称
 
 您在此处输入的名称将作为产品/服务列表的标题显示给客户。 此字段预填充了创建**产品/服务时为"产品/服务"别名**输入的文本，但您可以更改此值。 此名称可以注册商标（您可以包括商标或版权符号）。 名称不能超过 50 个字符，不能包含任何表情符号。
 
@@ -192,6 +192,9 @@ ms.locfileid: "81115287"
 ### <a name="marketplace-images"></a>市场映像
 
 在本节中，您可以提供向客户展示产品/服务时将使用的徽标和图像。 所有图像必须采用 .png 格式。 上传您的优惠徽标有两种尺寸：**小 （48 x 48）** **和大 （216 x 216）**。
+
+>[!Note]
+>如果上传文件出现问题，请确保本地网络不会阻止合作伙伴中心使用https://upload.xboxlive.com的服务。
 
 #### <a name="screenshots"></a>屏幕截图
 

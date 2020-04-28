@@ -11,16 +11,16 @@ ms.workload: identity
 ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 934b756329065c466f21fca1480247065bdea28b
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: e138b3513b42dda47b0a114d866d657e18e3e393
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881606"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181641"
 ---
-# <a name="a-web-app-that-calls-web-apis-remove-accounts-from-the-token-cache-on-global-sign-out"></a>调用 Web API 的 Web 应用：从全局注销的令牌缓存中删除帐户
+# <a name="a-web-app-that-calls-web-apis-remove-accounts-from-the-token-cache-on-global-sign-out"></a>调用 Web API 的 Web 应用：在全局注销时从令牌缓存中删除帐户
 
-您学习了如何在[Web 应用中向登录用户的 Web 应用添加登录：登录和注销](scenario-web-app-sign-user-sign-in.md)。
+你已在[用于将用户登录的 Web 应用：登录和注销](scenario-web-app-sign-user-sign-in.md)中了解了如何向 Web 应用中添加登录信息。
 
 对于调用 web api 的 web 应用，注销是不同的。 当用户从你的应用程序或从任何应用程序中注销时，你必须从令牌缓存中删除与该用户关联的令牌。
 
@@ -30,35 +30,7 @@ ms.locfileid: "80881606"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-对于 ASP.NET Core，[WebAppServiceCollectionExtensions.cs#L151-L157](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L157) 的 `AddMsal()` 方法中说明了拦截机制。
-
-您以前为应用程序注册的注销 URL 使您能够实现单一注销。Microsoft 标识平台`logout`终结点调用注销 URL。 如果注销是从你的 Web 应用或者另一 Web 应用或浏览器启动的，则会发生此调用。 有关详细信息，请参阅[单一注销](v2-protocols-oidc.md#single-sign-out)。
-
-```csharp
-public static class WebAppServiceCollectionExtensions
-{
- public static IServiceCollection AddMsal(this IServiceCollection services, IConfiguration configuration, IEnumerable<string> initialScopes, string configSectionName = "AzureAd")
- {
-  // Code omitted here
-
-  services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
-  {
-   // Code omitted here
-
-   // Handling the sign-out: Remove the account from MSAL.NET cache.
-   options.Events.OnRedirectToIdentityProviderForSignOut = async context =>
-   {
-    // Remove the account from MSAL.NET token cache.
-    var tokenAcquisition = context.HttpContext.RequestServices.GetRequiredService<ITokenAcquisition>();
-    await tokenAcquisition.RemoveAccountAsync(context).ConfigureAwait(false);
-   };
-  });
-  return services;
- }
-}
-```
-
-[Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288) 中提供了 `RemoveAccountAsync` 的代码。
+Microsoft Identity. Web 负责为您实现注销。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

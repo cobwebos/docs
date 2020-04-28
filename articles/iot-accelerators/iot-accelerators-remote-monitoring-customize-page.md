@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0228f317e2d3380f2387dd557a27203eb3abc4ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c90f4166bf88a8df18a93e84903c93461b904d2c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240265"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187256"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>向远程监视解决方案加速器 Web UI 添加自定义页面
 
@@ -142,7 +142,7 @@ npm install
 npm start
 ```
 
-前面的命令在 本地运行[http://localhost:3000/dashboard](http://localhost:3000/dashboard)UI。
+上述命令在本地 (`http://localhost:3000/dashboard`) 运行 UI。
 
 如果不将 Web UI 的本地实例连接到解决方案加速器的已部署实例，仪表板上会出现错误。 这些错误不会影响测试新页的能力。
 
@@ -160,7 +160,7 @@ npm start
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
     ```
 
-    仅应在测试和开发期间启用 SSH 访问。 如果启用 SSH，[应尽快再次禁用它](../security/fundamentals/network-best-practices.md)。
+    仅应在测试和开发期间启用 SSH 访问。 如果启用 SSH，[应尽快禁用它](../security/fundamentals/network-best-practices.md)。
 
 1. 使用 Azure 门户或 [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 查找虚拟机的名称和公共 IP 地址。 例如：
 

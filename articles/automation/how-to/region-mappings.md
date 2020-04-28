@@ -9,18 +9,18 @@ ms.author: magoedte
 ms.date: 04/23/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1bc47fe6e1f0730bcff49e138df92f85ba3ef1a8
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 607cebca3e6e8ddd95900ecdbd7041e5f7bb50cc
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82114473"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82165767"
 ---
 # <a name="workspace-mappings"></a>工作区映射
 
 启用更新管理、更改跟踪和清单或在空闲时间启动/停止 VM 时，仅支持某些区域在订阅中链接 Log Analytics 工作区和自动化帐户。 此映射仅适用于自动化帐户和 Log Analytics 工作区。 Log Analytics 工作区和自动化帐户必须位于同一订阅中，但可以在部署到同一区域的不同资源组中。
 
-有关详细信息，请参阅[Log Analytics 工作区和自动化帐户](../azure-monitor/insights/solutions.md#log-analytics- workspace-and-automation-account)。
+有关详细信息，请参阅[Log Analytics 工作区和自动化帐户](../../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account)。
 
 ## <a name="supported-mappings"></a>支持的映射
 

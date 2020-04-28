@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5fa515515c06466e121a5c0ee925fd4d14245363
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0bc8da02a523479c3c543eff28a376136e29098f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74895234"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176203"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>使用 PowerShell 管理 Azure 独立云中的存储
 
@@ -30,7 +30,7 @@ ms.locfileid: "74895234"
 
 若要在某个独立云中使用 Azure 存储，需要连接到该云而不是 Azure 公有云。 若要使用某个独立云而不是 Azure 公有云，需要：
 
-* 指定要连接到的环境。**
+* 指定要连接到的环境。 
 * 确定并使用可用的区域。
 * 使用正确的终结点后缀，它不同于 Azure 公有云。
 
@@ -74,7 +74,7 @@ Get-AzLocation | select Location, DisplayName
 
 使用 [Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment) 检索终结点后缀。 终结点是环境的 *StorageEndpointSuffix* 属性。
 
-下面的代码片段演示如何检索终结点后缀。 所有这些命令都会返回诸如"core.cloudapp.net"或"core.cloudapi.de"等内容。将后缀追加到存储服务以访问该服务。 例如，追加“queue.core.cloudapi.de”可访问德国云中的队列服务。
+下面的代码片段演示如何检索终结点后缀。 所有这些命令返回类似于 "core.cloudapp.net" 或 "core.cloudapi.de" 等的内容。将后缀追加到存储服务以访问该服务。 例如，追加“queue.core.cloudapi.de”可访问德国云中的队列服务。
 
 此代码片段检索所有环境，以及每个环境的终结点后缀。
 
@@ -84,7 +84,7 @@ Get-AzEnvironment | select Name, StorageEndpointSuffix
 
 此命令返回以下结果。
 
-| “属性”| core.usgovcloudapi.net|
+| 名称| core.usgovcloudapi.net|
 |----|----|
 | AzureChinaCloud | core.chinacloudapi.cn|
 | AzureCloud | core.windows.net |
@@ -99,9 +99,9 @@ Get-AzEnvironment -Name AzureGermanCloud
 
 结果类似于以下值：
 
-|属性名称|“值”|
+|属性名称|值|
 |----|----|
-| “属性” | `AzureGermanCloud` |
+| 名称 | `AzureGermanCloud` |
 | EnableAdfsAuthentication | `False` |
 | ActiveDirectoryServiceEndpointResourceI | `http://management.core.cloudapi.de/` |
 | GalleryURL | `https://gallery.cloudapi.de/` |
@@ -152,7 +152,7 @@ table endpoint = http://myexistingstorageaccount.table.core.usgovcloudapi.net/
 
 ## <a name="after-setting-the-environment"></a>设置环境之后
 
-从现在起，可以根据[对 Azure 存储使用 Azure PowerShell](storage-powershell-guide-full.md) 一文中所述，使用管理存储帐户时所用的相同 PowerShell 以及访问数据平面。
+你现在可以使用 PowerShell 管理存储帐户并访问 blob、队列、文件和表数据。 有关详细信息，请参阅[Az. Storage](/powershell/module/az.storage)。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -165,7 +165,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 ## <a name="next-steps"></a>后续步骤
 
 * [在不同的 PowerShell 会话中保留用户登录](/powershell/azure/context-persistence)
-* [Azure 政府存储](../../azure-government/documentation-government-services-storage.md)
+* [Azure 政府版存储](../../azure-government/documentation-government-services-storage.md)
 * [Microsoft Azure Government 开发人员指南](../../azure-government/documentation-government-developer-guide.md)
-* [Azure 中国 21Vianet 应用程序的开发人员说明](https://msdn.microsoft.com/library/azure/dn578439.aspx)
+* [Azure 中国世纪互联应用程序开发人员说明](https://msdn.microsoft.com/library/azure/dn578439.aspx)
 * [Azure 德国版文档](../../germany/germany-welcome.md)

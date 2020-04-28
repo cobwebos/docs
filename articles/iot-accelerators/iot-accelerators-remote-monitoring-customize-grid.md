@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: a24cb7f39ccb8ea07d4dde2869dc7c924b91983a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e27c1c4303129467c0bd05152570e26f129585a1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61447091"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186282"
 ---
 # <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>向远程监视解决方案加速器 Web UI 添加自定义网格
 
@@ -35,7 +35,7 @@ ms.locfileid: "61447091"
 
 应先完成下列文章中的步骤，再继续操作：
 
-- [向远程监视解决方案加速器 Web UI 添加自定义页面](iot-accelerators-remote-monitoring-customize-page.md)。
+- [将自定义页面添加到远程监视解决方案加速器 WEB UI](iot-accelerators-remote-monitoring-customize-page.md)。
 - [向远程监视解决方案加速器 Web UI 添加自定义服务](iot-accelerators-remote-monitoring-customize-service.md)
 
 ## <a name="add-a-grid"></a>添加网格
@@ -182,7 +182,7 @@ describe('BasicPage Component', () => {
 npm start
 ```
 
-前面的命令在 本地运行[http://localhost:3000/dashboard](http://localhost:3000/dashboard)UI。 导航到“示例”页，查看显示服务中的数据的网格****。
+上述命令在本地 (`http://localhost:3000/dashboard`) 运行 UI。 导航到“示例”页，查看显示服务中的数据的网格****。
 
 ## <a name="select-rows"></a>选择行
 

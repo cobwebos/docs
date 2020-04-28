@@ -6,19 +6,19 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f66a23c0562ec9f1987bd119a45b7b767f2dfe46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 52391ffc8eb6b6879e5fd90df26d9ccacbfacebb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671624"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188920"
 ---
 # <a name="configure-application-insights-profiler"></a>配置 Application Insights Profiler
 
 ## <a name="updated-profiler-agent"></a>更新的 Profiler 代理
-触发器功能仅适用于版本 2.6 或更高版本的 Profiler 代理。 如果运行的是 Azure 应用服务，代理将自动更新。 如果转到网站的 Kudu URL 并将 \DiagnosticServices 追加到其末尾（类似于 https://yourwebsite.scm.azurewebsites.net/diagnosticservices），则可以查看正在运行的代理版本。 Application Insights Profiler Webjob 应为版本 2.6 或更高版本。 可以通过重启 Web 应用来强制升级。 
+触发器功能仅适用于版本 2.6 或更高版本的 Profiler 代理。 如果运行的是 Azure 应用服务，代理将自动更新。 如果转到网站的 Kudu URL 并将 \DiagnosticServices 追加到其末尾（类似于 `https://yourwebsite.scm.azurewebsites.net/diagnosticservices`），则可以查看正在运行的代理版本。 Application Insights Profiler Webjob 应为版本 2.6 或更高版本。 可以通过重启 Web 应用来强制升级。 
 
-如果在 VM 或云服务上运行 Profiler，则需要安装 Windows Azure 诊断 (WAD) 扩展版本 16.0.4 或更高版本。 您可以通过登录到 VM 并查看此目录来检查 WAD 的版本：C：\包\插件\Microsoft.Azure.诊断.IaaS诊断\1.16.0.4。 目录名称即为安装的 WAD 版本。 有新版本可用时，Azure VM 代理会自动更新 WAD。
+如果在 VM 或云服务上运行 Profiler，则需要安装 Windows Azure 诊断 (WAD) 扩展版本 16.0.4 或更高版本。 可以通过登录到 VM 并查看以下目录来检查 WAD 的版本： C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.16.0.4。 目录名称即为安装的 WAD 版本。 有新版本可用时，Azure VM 代理会自动更新 WAD。
 
 ## <a name="profiler-settings-page"></a>Profiler 设置页
 
@@ -74,11 +74,11 @@ CPU % | Profiler 运行时使用的 CPU 百分比。
 
 下一部分将说明此方案的工作原理：
 
-### <a name="step-1-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>第 1 步：通过启动 Web 性能测试生成 Web 应用的流量
+### <a name="step-1-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>步骤1：通过启动 web 性能测试生成到 web 应用的流量
 
 如果 Web 应用已有传入流量或者你就是希望手动生成流量，请跳过本部分并转到步骤 2。
 
-1. 在应用程序见解门户中，选择 **"配置** > **性能测试**"。 
+1. 在 Application Insights 门户中，选择 "**配置** > **性能测试**"。 
 
 1. 若要启动新的性能测试，请选择“新建”按钮****。
 
@@ -94,7 +94,7 @@ CPU % | Profiler 运行时使用的 CPU 百分比。
 
     ![负载测试正在运行中][load-test-in-progress]
 
-### <a name="step-2-start-a-profiler-on-demand-session"></a>第 2 步：启动探查器按需会话
+### <a name="step-2-start-a-profiler-on-demand-session"></a>步骤2：启动探查器点播会话
 
 1. 负载测试运行时，启动 Profiler 以在 Web 应用接收负载期间捕获该应用上的跟踪。
 

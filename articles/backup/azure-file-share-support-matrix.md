@@ -3,12 +3,12 @@ title: Azure 文件共享备份的支持矩阵
 description: 汇总了备份 Azure 文件共享时的支持设置和限制。
 ms.topic: conceptual
 ms.date: 1/26/2020
-ms.openlocfilehash: e74d04cf8ae9010a860b8467d0de771524bd3f3a
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 03190c6b83fceec88442583a57ff46756cfe6221
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82103199"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195683"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure 文件共享备份的支持矩阵
 
@@ -20,13 +20,13 @@ Azure 文件共享的备份在以下地域中提供：
 
 | GA 区域 | 支持的区域，但不是 GA                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 澳大利亚东部（AE）、加拿大中部（CNC）、美国中部（WCUS）、印度南部（INS）、美国中北部（NCUS）、日本东部（JPE）、巴西南部（BRS）                                                     |澳大利亚东南部（ASE）、加拿大东部（CE）、美国中部（CU）、东亚（EA）、美国东部（EUS）、美国东部2（EUS2）、日本西部（JPW）、印度中部（INC.）、韩国中部（KRC）、韩国南部（KRS）、北欧（NE）、美国中南部（SCUS）、南东亚（海）、英国南部（UKS）、英国西部（UKW）、西欧（我们）、美国西部、US Gov 弗吉尼亚州（UGV）、澳大利亚中部（ACL）、印度西部（INW）、南非北部（SAN）、阿拉伯联合酋长国北部（UAN）、法国中部（FRC）、德国北部（GN）、德国中西部（GWC）、南非西部（见）、阿拉伯联合酋长国中部（UAC）、挪威东部（NWE）、挪威西部（NWW）、瑞士北部（SZN）、美国西部2（WUS 2）             |
+| 澳大利亚东南部（ASE）、加拿大中部（CNC）、美国中部（WCUS）、美国西部2（WUS 2）、印度南部（INS）、美国中北部（NCUS）、日本东部（JPE）、巴西南部（BRS）、南东亚（海平面）                                                     |澳大利亚东部（AE）、加拿大东部（CE）、东亚（EA）、美国东部（EUS）、美国东部2（EUS2）、日本西部（JPW）、印度中部（INC.）、韩国中部（KRC）、韩国南部（KRS）、北欧（NE）、美国中南部（SCUS）、英国南部（UKS）、英国西部（UKW）、西欧（我们）、美国西部（WUS）、US Gov 亚利桑那州（UGA）、UGT （ACL）、印度西部（INW）、南非洲北部（SAN）、阿拉伯联合酋长国北部（UAN）、法国中部（FRC）、德国北部（GN）、德国中西部（GWC）、南非西部（见）、阿拉伯联合酋长国中部（UAC）、挪威东部（NWE）、挪威西部（NWW）、瑞士北部（SZN）、美国中部（CU）           |
 
 ## <a name="supported-storage-accounts"></a>支持的存储帐户
 
 | 存储帐户详细信息 | 支持                                                      |
 | ------------------------ | ------------------------------------------------------------ |
-| 帐户类型            | Azure 备份支持常规用途 v1 和常规用途 v2 存储帐户中的 Azure 文件共享 |
+| 帐户类型            | Azure 备份支持常规用途 v1、常规用途 v2 和文件共享类型存储帐户中存在的 Azure 文件共享 |
 | 性能              | Azure 备份支持标准存储帐户和高级存储帐户中的文件共享 |
 | 复制              | 支持具有任何复制类型的存储帐户中的 Azure 文件共享 |
 
@@ -34,7 +34,7 @@ Azure 文件共享的备份在以下地域中提供：
 
 | 文件共享类型                                   | 支持   |
 | -------------------------------------------------- | --------- |
-| Standard                                           | 支持 |
+| 标准                                           | 支持 |
 | 大型                                              | 支持 |
 | Premium                                            | 支持 |
 | 与 Azure 文件同步服务连接的文件共享 | 支持 |

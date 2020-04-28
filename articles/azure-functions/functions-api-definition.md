@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: a80079574dc29c54de89f5275c65637b205742d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cbfd0e36307210851070c22e74acb0a858446ce1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74227418"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866719"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Azure Functions 中的 OpenAPI 2.0 元数据支持（预览版）
 Azure Functions 中的 OpenAPI 2.0（以前称为 Swagger）元数据支持一项预览版功能，可用于在 Function App 中编写 OpenAPI 2.0 定义。 随后可使用 Function App 托管该文件。
@@ -26,12 +26,12 @@ Azure Functions 中的 OpenAPI 2.0（以前称为 Swagger）元数据支持一�
 >建议先从[入门教程](./functions-api-definition-getting-started.md)开始，然后返回到本文档，了解有关特定功能的详细信息。
 
 ## <a name="enable-openapi-definition-support"></a><a name="enable"></a>启用 OpenAPI 定义支持
-可在函数应用的“平台功能”的“API 定义”页中配置所有 OpenAPI 设置********。
+可在函数应用的“平台功能”的“API 定义”页中配置所有 OpenAPI 设置   。
 
 > [!NOTE]
 > beta 版本运行时当前不支持函数 API 定义功能。
 
-要生成托管的 OpenAPI 定义和快速入门定义，请将“API 定义源”设置为“函数(预览版)”********。 外部 URL 允许函数使用托管在其他位置的 OpenAPI 定义。****
+要生成托管的 OpenAPI 定义和快速入门定义，请将“API 定义源”设置为“函数(预览版)”   。 外部 URL 允许函数使用托管在其他位置的 OpenAPI 定义。 
 
 ## <a name="generate-a-swagger-skeleton-from-your-functions-metadata"></a><a name="generate-definition"></a>通过函数元数据生成 Swagger 框架
 模板可帮助你开始编写第一个 OpenAPI 定义。 定义模板功能通过使用 function.json 文件中的所有元数据，为每个 HTTP 触发器函数创建稀疏的 OpenAPI 定义。 将需要按 [OpenAPI 规范](https://swagger.io/specification/)填写 API 详细信息，如请求和响应模板。
@@ -40,7 +40,7 @@ Azure Functions 中的 OpenAPI 2.0（以前称为 Swagger）元数据支持一�
 
 ### <a name="available-templates"></a><a name="templates"></a>可用模板
 
-|“属性”| 描述 |
+|名称| 说明 |
 |:-----|:-----|
 |生成的定义|一个 OpenAPI 定义，内含可从函数的现有元数据中推断出的大量信息。|
 
@@ -50,17 +50,17 @@ Azure Functions 中的 OpenAPI 2.0（以前称为 Swagger）元数据支持一�
 
 |Swagger.json|门户 UI|Function.json|
 |:----|:-----|:-----|
-|[Host](https://swagger.io/specification/#fixed-fields-15)|**功能应用设置** > **应用服务设置** > **概述** > **URL**|*不存在*
-|[路径](https://swagger.io/specification/#paths-object-29)|**集成** > **选定的 HTTP 方法**|绑定：路由
-|[路径项](https://swagger.io/specification/#path-item-object-32)|**集成** > **路由模板**|绑定︰方法
-|[安全性](https://swagger.io/specification/#security-scheme-object-112)|**密钥**|*不存在*|
+|[主机](https://swagger.io/specification/#fixed-fields-15)|“Function App 设置” **“应用服务设置”** “概述” > “URL”   >    >  |*不存在*
+|[路径](https://swagger.io/specification/#paths-object-29)|“集成” **“选择 HTTP 方法”**  >  |绑定：路由
+|[路径项](https://swagger.io/specification/#path-item-object-32)|“集成” **“路由模板”**  >  |绑定︰方法
+|[安全性](https://swagger.io/specification/#security-scheme-object-112)|**“键”**|*不存在*|
 |operationID*|**路由 = 允许的谓词**|路由 + 允许的动作|
 
 \*仅与 PowerApps 和 Flow 集成才需要操作 ID。
 > [!NOTE]
 > x-ms-summary 扩展名在逻辑应用、PowerApps 和 Flow 中提供显示名称。
 >
-> 有关详细信息，请参阅[自定义 PowerApps 的 Swagger 定义](https://powerapps.microsoft.com/tutorials/customapi-how-to-swagger/)。
+> 有关详细信息，请参阅[自定义 PowerApps 的 Swagger 定义](https://docs.microsoft.com/connectors/custom-connectors/openapi-extensions)。
 
 ## <a name="use-cicd-to-set-an-api-definition"></a><a name="CICD"></a>使用 CI/CD 设置 API 定义
 

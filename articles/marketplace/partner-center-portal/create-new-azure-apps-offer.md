@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: a62551b31c51836dfa50534ee6db907c8a4e111a
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 516ebce176f53a0495ea493f5327658162e7ea9e
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81730615"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867271"
 ---
 # <a name="create-an-azure-application-offer"></a>创建 Azure 应用程序产品/服务
 
@@ -221,6 +221,9 @@ Azure[应用商店的视频构建解决方案模板和托管应用程序](https:
 
 在本节中，您可以提供向客户展示产品/服务时将使用的徽标和图像。 所有图像必须采用 .png 格式。
 
+>[!Note]
+>如果上传文件出现问题，请确保本地网络不会阻止合作伙伴中心使用https://upload.xboxlive.com的服务。
+
 #### <a name="store-logos"></a>应用商店徽标
 
 提供三种尺寸的产品徽标：**小 （48 x 48）**、**中等 （90 X 90）** 和大 **（216 x 216）**。
@@ -355,7 +358,7 @@ Azure 政府服务处理受某些政府法规和要求约束的数据，例如 F
 
 提供此计划的每月价格。  此价格是此解决方案部署的资源产生的任何 Azure 基础结构或即用即付软件成本的补充。
 
-以当地货币（美元 = 美元）设置的价格使用设置期间可用的当前汇率转换为所有选定市场的当地货币。 通过导出定价电子表格并查看每个市场的价格，在发布之前验证这些价格。 如果要在单个市场设置自定义价格，请修改并导入定价电子表格。 
+以美元（美元 = 美元）设定的价格在保存时使用当前汇率转换为所有选定市场的当地货币。 通过导出定价电子表格并查看每个市场的价格，在发布之前验证这些价格。 如果要在单个市场设置自定义价格，请修改并导入定价电子表格。 
 
 >[!Note]
 >您必须首先保存定价更改，以启用定价数据的导出。
@@ -397,7 +400,16 @@ Azure 政府服务处理受某些政府法规和要求约束的数据，例如 F
 
 * 名为[createUiDefinition.json](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)的 Azure 应用程序创建体验的用户界面定义。
 
+支持的最大文件大小包括：
+
+* 压缩存档`.zip`总大小高达 1 Gb
+
+* `.zip`存档中的任何单个未压缩文件高达 1 Gb  
+
 所有新的 Azure 应用程序产品/服务还必须包括[Azure 合作伙伴客户使用情况归因](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution)GUID。
+
+>[!Note]
+>如果上传文件出现问题，请确保本地网络不会阻止合作伙伴中心使用https://upload.xboxlive.com的服务。
 
 ### <a name="previously-published-packages"></a>以前发布的软件包 
 

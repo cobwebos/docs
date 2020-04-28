@@ -3,12 +3,12 @@ title: 策略定义结构的详细信息
 description: 描述如何使用策略定义为组织中的 Azure 资源建立约定。
 ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 329692c7220810af1d47fe7036e727bb49284810
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 5d4a86f4d9f74cf17229467f19a3afa8bebcf40f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82117278"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187760"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -234,7 +234,7 @@ Azure Policy 为资源建立约定。 策略定义描述资源符合性[条件](
 },
 ```
 
-### <a name="conditions"></a>条件
+### <a name="conditions"></a>Conditions
 
 条件用于评估 **field** 或 **value** 访问器是否符合特定标准。 支持的条件有：
 
@@ -629,7 +629,7 @@ Azure Policy 支持以下类型的效果：
 
   使用[适用于 Visual Studio Code 的 Azure 策略扩展](../how-to/extension-for-vscode.md)来查看和发现资源属性的别名。
 
-  ![适用于 Visual Studio Code 的 Azure Policy 扩展](../media/extension-for-vscode/extension-hover-shows-property-alias.png)
+  :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="适用于 Visual Studio Code 的 Azure Policy 扩展" border="false":::
 
 - Azure Resource Graph
 
