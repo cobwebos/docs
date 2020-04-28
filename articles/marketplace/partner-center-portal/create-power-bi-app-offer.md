@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 776311d6e6395cbe462f958bd8685fa0259e1fc2
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: dc036ae3cba6aa4d3a689562afffb991fadc8c0a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674184"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867599"
 ---
 # <a name="create-a-power-bi-app"></a>创建 Power BI 应用
 
@@ -221,6 +221,9 @@ ms.locfileid: "80674184"
 ### <a name="marketplace-images"></a>市场映像
 
 提供徽标和图像，以便与您的产品配合使用。 所有图像必须采用 .png 格式。 模糊图像将被拒绝。
+
+>[!Note]
+>如果上传文件出现问题，请确保本地网络不会阻止合作伙伴中心使用https://upload.xboxlive.com的服务。
 
 #### <a name="store-logos"></a>应用商店徽标
 

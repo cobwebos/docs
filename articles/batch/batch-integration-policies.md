@@ -4,12 +4,12 @@ description: Azure 策略是 Azure 中的一项服务，可用于创建、分配
 ms.topic: article
 ms.date: 02/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 74c087031a024b0c50d6c40057a4e2eda554be6f
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: a160de1277afea026a16f470c8f76cdc2ec1733f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116071"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184259"
 ---
 # <a name="integration-with-azure-policy"></a>与 Azure 策略的集成
 
@@ -17,7 +17,7 @@ Azure 策略是 Azure 中的一项服务，可用于创建、分配和管理策�
 
 Azure Batch 提供了两个内置扩展，可帮助你管理策略符合性。 
 
-|**名称**.。。|   **描述**|**效果**|  **版本**|    **源**
+|**名称**.。。|   **说明**|**效果**|  **Version**|    **源**
 |----------------|----------|----------|----------------|---------------|
 |应启用 Batch 帐户中的诊断日志|   审核是否已启用诊断日志。 这样便可以在发生安全事件或网络受到威胁时重新创建活动线索以用于调查目的|AuditIfNotExists、Disabled|  2.0.0|  GitHub|
 |应在批处理帐户上配置指标警报规则| 审核是否已针对 Batch 帐户配置指标警报规则，以启用所需指标|   AuditIfNotExists、Disabled| 1.0.0|  GitHub|

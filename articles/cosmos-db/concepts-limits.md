@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: b24d7db679bb9cb9dacd5e1db8e6410b883548cc
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 6dcda58652abe51d360748222263f30f337a2251
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415711"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182729"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
 
@@ -77,8 +77,8 @@ Cosmos DB 会定期自动备份数据。 有关备份保留间隔和时限的详
 | 资源 | 默认限制 |
 | --- | --- |
 | 数据库的最小数目 | 无限制 |
-| 每个具有共享吞吐量的数据库的最大容器数 |25 |
-| 每个具有专用吞吐量的数据库或帐户的最大容器数  |不受限制 |
+| 每个数据库具有共享吞吐量的容器的最大数目 |25 |
+| 每个数据库或具有专用吞吐量的帐户的容器的最大数目  |无限制 |
 | 最大区域数 | 无限制（所有 Azure 区域） |
 
 ## <a name="per-container-limits"></a>每个容器的限制
@@ -91,10 +91,10 @@ Cosmos DB 会定期自动备份数据。 有关备份保留间隔和时限的详
 | 每个容器的最大存储过程数 | 100<sup>*</sup>|
 | 每个容器的最大 UDF 数 | 25<sup>*</sup>|
 | 索引策略中的最大路径数| 100<sup>*</sup>|
-| 每个容器的最大唯一键数|10<sup>*</sup>|
-| 每个唯一键约束的最大路径数|16<sup>*</sup>|
+| 每个容器的最大唯一键数|万<sup>*</sup>|
+| 每个唯一键约束的最大路径数|超过<sup>*</sup>|
 
-<sup>*</sup>您可以通过联系 Azure 支持来增加这些每个容器限制中的任何一个。
+<sup>*</sup>可以通过联系 Azure 支持人员，增加这些每个容器的限制。
 
 ## <a name="per-item-limits"></a>每个项的限制
 
@@ -104,7 +104,7 @@ Cosmos DB 会定期自动备份数据。 有关备份保留间隔和时限的详
 | --- | --- |
 | 项的最大大小 | 2 MB（JSON 表示形式的 UTF-8 长度） |
 | 分区键值的最大长度 | 2048 字节 |
-| ID 值的最大长度 | 1023 字节 |
+| ID 值的最大长度 | 1023字节 |
 | 每个项的最大属性数 | 无实际限制 |
 | 最大嵌套深度 | 无实际限制 |
 | 属性名称的最大长度 | 无实际限制 |
@@ -138,9 +138,9 @@ Cosmos DB 使用 HMAC 进行授权。 可以使用主密钥或[资源令牌](sec
 
 Cosmos DB 支持在写入期间执行触发器。 对于每个写入操作，服务最多支持一个前触发器和一个后触发器。 
 
-## <a name="autopilot-mode-limits"></a>自动驾驶模式限制
+## <a name="autoscale-mode-limits"></a>自动缩放模式限制
 
-有关自动驾驶模式下的吞吐量和存储限制，请参阅[自动驾驶仪](provision-throughput-autopilot.md#autopilot-limits)一文。
+有关自动缩放模式下的吞吐量和存储限制，请参阅[自动缩放](provision-throughput-autoscale.md#autoscale-limits)文章。
 
 ## <a name="sql-query-limits"></a>SQL 查询限制
 
@@ -150,13 +150,13 @@ Cosmos DB 支持使用 [SQL](how-to-sql-query.md) 查询项。 下表描述了�
 | --- | --- |
 | SQL 查询的最大长度| 256 KB |
 | 每个查询的最大 JOIN 数目| 5<sup>*</sup>|
-| 每个查询的最大 UDF 数目| 10<sup>*</sup>|
+| 每个查询的最大 UDF 数目| 万<sup>*</sup>|
 | 每个多边形的最大点数目| 4096 |
 | 每个容器的最大包含路径| 500 |
 | 每个容器的最大排除路径| 500 |
 | 复合索引中的最大属性| 8 |
 
-<sup>*</sup>您可以通过联系 Azure 支持来增加这些 SQL 查询限制。
+<sup>*</sup>可以通过联系 Azure 支持人员来增加这些 SQL 查询限制。
 
 ## <a name="mongodb-api-specific-limits"></a>特定于 MongoDB API 的限制
 
@@ -166,44 +166,44 @@ Cosmos DB 支持针为 MongoDB 编写的应用程序使用 MongoDB 线路协议�
 
 | 资源 | 默认限制 |
 | --- | --- |
-| 最大 MongoDB 查询内存大小（此限制仅适用于 3.2 服务器版本） | 40 MB |
+| 最大 MongoDB 查询内存大小（此限制仅适用于3.2 服务器版本） | 40 MB |
 | MongoDB 操作的最长执行时间| 30 秒 |
-| 服务器端连接关闭的空闲连接超时* | 30 分钟 |
+| 服务器端连接闭包的空闲连接超时值 * | 30 分钟 |
 
-\*我们建议客户端应用程序在驱动程序设置中将空闲连接超时设置为 2-3 分钟，因为[Azure LoadBalancer 的默认超时为 4 分钟](../load-balancer/load-balancer-tcp-idle-timeout.md#tcp-idle-timeout)。  此超时将确保客户端计算机和 Azure Cosmos DB 之间的中间负载平衡器不会关闭空闲连接。
+\*建议客户端应用程序将驱动程序设置中的空闲连接超时设置为2-3 分钟，因为[Azure LoadBalancer 的默认超时为4分钟](../load-balancer/load-balancer-tcp-idle-timeout.md#tcp-idle-timeout)。  此超时将确保客户端计算机与 Azure Cosmos DB 之间的中间负载均衡器不会关闭空闲连接。
 
-## <a name="try-cosmos-db-free-limits"></a>尝试宇宙 DB 自由限制
+## <a name="try-cosmos-db-free-limits"></a>试用 Cosmos DB 可用限制
 
-下表列出了["尝试 Azure 宇宙数据库免费](https://azure.microsoft.com/try/cosmosdb/)试用"的限制。
+下表列出了免费试用版试用[Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)的限制。
 
 | 资源 | 默认限制 |
 | --- | --- |
-| 审判的持续时间 | 30 天（可续订任意次数） |
-| 每个订阅的最大容器（SQL、Gremlin、表 API） | 1 |
+| 试用持续时间 | 30天（可以随时续订） |
+| 每个订阅的最大容器数（SQL、Gremlin、表 API） | 1 |
 | 每个订阅的最大容器（MongoDB API） | 3 |
 | 每个容器的最大吞吐量 | 5000 |
 | 每个共享吞吐量数据库的最大吞吐量 | 20000 |
-| 每个帐户的最大总存储量 | 10 GB |
+| 每个帐户的最大总存储 | 10 GB |
 
-尝试 Cosmos DB 仅支持美国中部、北欧和东南亚地区的全球分布。 无法为尝试 Azure 宇宙数据库帐户创建 Azure 支持票证。 但是，为具有现有支持计划的订阅者提供支持。
+试用 Cosmos DB 仅支持美国中部、北欧和东南亚地区的全局分发。 无法为试用 Azure Cosmos DB 帐户创建 Azure 支持票证。 但是，为具有现有支持计划的订阅者提供了支持。
 
-## <a name="free-tier-account-limits"></a>免费套餐帐户限制
-下表列出了[Azure Cosmos DB 免费层帐户的限制。](optimize-dev-test.md#azure-cosmos-db-free-tier)
+## <a name="free-tier-account-limits"></a>免费层帐户限制
+下表列出了[Azure Cosmos DB 免费层帐户](optimize-dev-test.md#azure-cosmos-db-free-tier)的限制。
 
 | 资源 | 默认限制 |
 | --- | --- |
 | 每个 Azure 订阅的免费层帐户数 | 1 |
-| 免费折扣的持续时间 | 帐户的生存期。 必须在创建帐户期间选择加入。 |
-| 最大 RU/s 免费 | 400 RU/秒 |
-| 最大存储空间免费 | 5 GB |
-| 最大共享吞吐量数据库数 | 5 |
-| 共享吞吐量数据库中的最大容器数 | 25 <br>在免费层帐户中，最多 25 个容器的共享吞吐量数据库的最小 RU/s 为 400 RU/s。 |
+| 免费层折扣的持续时间 | 帐户的生存期。 必须在创建帐户期间选择加入。 |
+| 可用的最大 RU/秒 | 400 RU/秒 |
+| 最大存储空间（免费） | 5 GB |
+| 共享吞吐量数据库的最大数目 | 5 |
+| 共享吞吐量数据库中的容器的最大数目 | 25 <br>在免费层帐户中，具有最多25个容器的共享吞吐量数据库的最小 RU/秒为 400 RU/s。 |
 
-  除上述情况外，[每个帐户限制](#per-account-limits)也适用于免费套餐帐户。
+  除此之外，[每个帐户的限制](#per-account-limits)也适用于免费层帐户。
 
 ## <a name="next-steps"></a>后续步骤
 
-阅读更多关于 Cosmos DB 的核心概念[全局分发](distribute-data-globally.md)、[分区](partitioning-overview.md)和[预配吞吐量](request-units.md)。
+详细了解 Cosmos DB 的核心概念[全局分发](distribute-data-globally.md)和[分区](partitioning-overview.md)和[预配的吞吐量](request-units.md)。
 
 请通过阅读以下快速入门文章之一，来开始使用 Azure Cosmos DB：
 

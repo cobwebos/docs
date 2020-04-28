@@ -1,22 +1,15 @@
 ---
 title: 快速入门：SDK 查询预测终结点 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 本快速入门介绍如何使用 SDK 将用户言语发送到 Azure 认知服务 LUIS 应用程序并接收预测。
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-services: cognitive-services
-ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 01/17/2020
-ms.author: diberry
+ms.date: 04/20/2020
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: 42335c3d2ac5efb8ae1ede0a2076260ac9537eb5
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2b85e3085a7265fa007422180ff1cfe93d4fef57
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77524409"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732063"
 ---
 # <a name="quickstart-query-v3-prediction-endpoint-with-sdk"></a>快速入门：使用 SDK 查询 V3 预测终结点
 

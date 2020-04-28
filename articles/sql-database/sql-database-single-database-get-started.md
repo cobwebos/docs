@@ -10,13 +10,13 @@ ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein, vanto
-ms.date: 03/10/2020
-ms.openlocfilehash: 638adaac699bb7aa2774f5cbd37dc8394a2baee3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/19/2020
+ms.openlocfilehash: b06c255f94b4d539c7c85e318238b10629cbb907
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215425"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685151"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>快速入门：创建 Azure SQL 数据库单一数据库
 
@@ -67,7 +67,7 @@ ms.locfileid: "79215425"
 
 用完这些资源后，可以删除创建的资源组，这也会删除该资源组中的服务器和单一数据库。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[门户](#tab/azure-portal)
 
 若要使用 Azure 门户删除 **myResourceGroup** 及其包含的所有资源：
 
@@ -75,7 +75,7 @@ ms.locfileid: "79215425"
 1. 在资源组页上，选择“删除资源组”  。
 1. 在“键入资源组名称”下输入 *myResourceGroup*，然后选择“删除”。  
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要删除资源组及其包含所有资源，请使用该资源组的名称运行以下 Azure CLI 命令：
 
@@ -83,15 +83,16 @@ ms.locfileid: "79215425"
 az group delete --name <your resource group>
 ```
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 若要删除资源组及其包含所有资源，请使用该资源组的名称运行以下 PowerShell cmdlet：
 
- ```azurepowershell-interactive
+```azurepowershell-interactive
 Remove-AzResourceGroup -Name <your resource group>
 ```
 
 ---
+
 ## <a name="next-steps"></a>后续步骤
 
 使用不同的工具与语言[连接和查询](sql-database-connect-query.md)数据库：

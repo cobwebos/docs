@@ -1,24 +1,18 @@
 ---
 title: 使用 Azure 门户打开 VM 的端口
-description: 了解如何在 Azure 门户中使用 Resource Manager 部署模型为 Windows VM 打开端口/创建终结点
-services: virtual-machines-windows
-documentationcenter: ''
+description: 了解如何使用 Azure 门户打开端口/创建 Windows VM 终结点
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: f7cf0319-5ee7-435e-8f94-c484bf5ee6f1
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 130d3315b5a9a6f175bd3d67ed33a034ab5f8dda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1844236a77b688819832b3fe0bf6736beea4bfae
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75371405"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865491"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>如何使用 Azure 门户打开虚拟机端口
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -29,11 +23,11 @@ ms.locfileid: "75371405"
 
 ## <a name="create-a-network-security-group"></a>创建网络安全组
 
-1. 搜索并选择 VM 的资源组，选择“添加”****，然后搜索并选择“网络安全组”****。
+1. 搜索并选择 VM 的资源组，选择“添加”  ，然后搜索并选择“网络安全组”  。
 
-2. 选择 **“创建”**。
+2. 选择“创建”  。
 
-    此时将打开“创建网络安全组”**** 窗口。
+    此时将打开“创建网络安全组”  窗口。
 
     ![创建网络安全组](./media/nsg-quickstart-portal/create-nsg.png)
 
@@ -41,29 +35,29 @@ ms.locfileid: "75371405"
 
 3. 选择或创建一个资源组，然后选择位置。
 
-4. 选择“创建”**** 以创建网络安全组。
+4. 选择“创建”  以创建网络安全组。
 
 ## <a name="create-an-inbound-security-rule"></a>创建入站安全规则
 
 1. 选择新的网络安全组。 
 
-2. 选择“入站安全规则”****，并选择“添加”****。
+2. 选择“入站安全规则”  ，并选择“添加”  。
 
     ![添加入站规则](./media/nsg-quickstart-portal/add-inbound-rule.png)
 
-3. 选择 **"高级**"。 
+3. 选择“高级”。  
 
-4. 从下拉菜单中选择常见的“服务”，如 HTTP********。 如果要提供要使用的特定端口，也可以选择“自定义”****。 
+4. 从下拉菜单中选择常见的“服务”，如 HTTP   。 如果要提供要使用的特定端口，也可以选择“自定义”  。 
 
 5. （可选）更改**优先级**或**名称**。 优先级会影响应用规则的顺序：数值越小，越先应用规则。
 
-6. 选择“添加”**** 以创建规则。
+6. 选择“添加”  以创建规则。
 
 ## <a name="associate-your-network-security-group-with-a-subnet"></a>将网络安全组与子网相关联
 
 最后一步是将网络安全组与子网或特定网络接口相关联。 对于此示例，我们将网络安全组与子网相关联。 
 
-1. 选择“子网”，然后选择“关联”********。
+1. 选择“子网”，然后选择“关联”   。
 
     ![将网络安全组与子网相关联](./media/nsg-quickstart-portal/associate-subnet.png)
 

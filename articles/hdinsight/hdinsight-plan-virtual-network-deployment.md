@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 18774ae4a98b795846459251174ee47671aef39c
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: d421811c18ac63952432cd853a6928db7c81f3db
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81769886"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182423"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>规划 Azure HDInsight 的虚拟网络
 
@@ -36,7 +36,7 @@ ms.locfileid: "81769886"
 
 * 是否需要将 HDInsight 安装到现有的虚拟网络？ 或者，你是否在创建新的网络？
 
-    如果您使用的是现有虚拟网络，则可能需要修改网络配置，然后才能安装 HDInsight。 有关详细信息，请参阅[将 HDInsight 添加到现有的虚拟网络](#existingvnet)部分。
+    如果使用现有的虚拟网络，则可能需要修改网络配置，然后才能安装 HDInsight。 有关详细信息，请参阅[将 HDInsight 添加到现有的虚拟网络](#existingvnet)部分。
 
 * 是否需要将包含 HDInsight 的虚拟网络连接到另一个虚拟网络或本地网络？
 
@@ -65,7 +65,7 @@ ms.locfileid: "81769886"
 
     作为托管服务，HDInsight 要求对 Azure 数据中心的多个 IP 地址进行不受限制的访问。 请更新任何现有的网络安全组或用户定义路由，以便与这些 IP 地址通信。
 
-    HDInsight 托管多个服务，这些服务使用不同的端口。 不要阻止到这些端口的流量。 有关虚拟设备防火墙的允许端口列表，请参阅“安全”一节。
+    HDInsight 托管多个服务，这些服务使用不同的端口。 不要阻止发往这些端口的流量。 有关虚拟设备防火墙的允许端口列表，请参阅“安全”一节。
 
     若要查找现有的安全配置，请使用以下 Azure PowerShell 或 Azure CLI 命令：
 
@@ -125,7 +125,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
     这两个节点均可使用内部 DNS 名称直接相互通信，以及与 HDInsight 中的其他节点通信。
 
- 默认名称解析不允许 HDInsight 解析连接到虚拟网络的网络中的资源的名称。 例如，将本地网络加入虚拟网络很常见。 仅使用默认名称解析，HDInsight 无法按名称访问本地网络中的资源。 事实正好相反，本地网络中的资源无法按名称访问虚拟网络中的资源。
+ 默认名称解析不允许 HDInsight 解析连接到虚拟网络的网络中的资源的名称。 例如，将本地网络加入虚拟网络很常见。 如果仅使用默认名称解析，HDInsight 将无法通过名称访问本地网络中的资源。 相反，本地网络中的资源不能按名称访问虚拟网络中的资源。
 
 > [!WARNING]  
 > 必须在创建 HDInsight 群集之前，先创建自定义 DNS 服务器并将虚拟网络配置为使用该服务器。
@@ -243,7 +243,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 ## <a name="required-ports"></a><a id="hdinsight-ports"></a> 所需端口
 
-如果计划使用**防火墙**并在特定端口上从外部访问群集，则需要允许你的方案所需的那些端口上的流量。 默认情况下，只要允许上一节中介绍的 Azure 管理流量访问端口 443 上的群集，就不需要端口的特殊白名单。
+如果计划使用**防火墙**并在特定端口上从外部访问群集，则需要允许你的方案所需的那些端口上的流量。 默认情况下，只要允许上一部分中所述的 Azure 管理流量进入端口443上的群集，就不需要任何特殊的允许列表端口。
 
 对于特定服务的端口列表，请参阅 [HDInsight 上的 Apache Hadoop 服务所用的端口](hdinsight-hadoop-port-settings-for-services.md)文档。
 
@@ -251,7 +251,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 ## <a name="load-balancing"></a>负载均衡
 
-创建 HDInsight 群集时，也会创建一个负载均衡器。 此负载均衡器的类型处于[基本 SKU 级别](../load-balancer/concepts-limitations.md#skus)，具有一定的约束。 这些约束中的一个是：如果两个虚拟网络位于不同的区域，则无法连接到基本负载均衡器。 有关详细信息，请参阅[虚拟网络常见问题解答：对全局 VNet 对等互连的约束](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。
+创建 HDInsight 群集时，也会创建一个负载均衡器。 此负载均衡器的类型为[基本 SKU 级别](../load-balancer/concepts-limitations.md#skus)，它具有某些约束。 这些约束中的一个是：如果两个虚拟网络位于不同的区域，则无法连接到基本负载均衡器。 有关详细信息，请参阅[虚拟网络常见问题解答：对全局 VNet 对等互连的约束](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。
 
 ## <a name="next-steps"></a>后续步骤
 

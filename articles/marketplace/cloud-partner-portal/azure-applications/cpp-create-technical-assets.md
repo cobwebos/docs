@@ -7,77 +7,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dsindona
-ms.openlocfilehash: 59f9fecb3d949d9cdf48719e6329b066d9eb3fc5
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 7bfc74b2d27a879352f54df0772784a98e15e46d
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393531"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865538"
 ---
 # <a name="prepare-your-azure-application-technical-assets"></a>准备 Azure 应用程序技术资产
 
-本文介绍了用于为 Azure 应用程序产品/服务准备技术资产的资源。
+[云合作伙伴门户](https://cloudpartner.azure.com/)不再支持 Azure 应用程序产品的创建和管理。 相反，此功能已移动到 Microsoft[合作伙伴中心门户](https://partner.microsoft.com/)。 有关详细信息，请参阅[创建 Azure 应用程序套餐](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer)。
 
-## <a name="before-you-begin"></a>开始之前
-
-观看以下视频（[针对 Azure 市场构建解决方案模板和托管应用程序](https://channel9.msdn.com/Events/Build/2018/BRK3603)），该视频首先概述了如何创建 Azure 资源管理器模板来定义 Azure 应用程序解决方案，然后概述了之后如何将应用套餐发布到 Azure 市场。
-
->[!VIDEO https://channel9.msdn.com/Events/Build/2018/BRK3603/player]
-
-
-查看以下 Azure 应用程序文档，其中提供了快速入门、教程和示例。
-
-- [了解 Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)
-- 快速入门：
-
-  - [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)
-  - [GitHub Azure 快速入门模板](https://github.com/azure/azure-quickstart-templates)
-  - [发布应用程序定义](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
-  - [部署服务目录应用](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
-
-  
-- 教程：
-
-  - [创建定义文件](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
-  - [发布市场应用程序](https://docs.microsoft.com/azure/managed-applications/publish-marketplace-app)
-
-  - 示例：
-
-    - [Azure CLI](https://docs.microsoft.com/azure/managed-applications/cli-samples)
-    - [Azure PowerShell](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
-    - [托管应用程序解决方案](https://docs.microsoft.com/azure/managed-applications/sample-projects)
-
-## <a name="fundamental-technical-knowledge"></a>基础技术知识
-
-设计、生成和测试这些资产需要一些时间，并在 Azure 平台和用于生成套餐的技术方面有一定的专业知识。
-
-工程团队应该了解以下 Microsoft 技术：
-
-- 基本了解 [Azure 服务](https://azure.microsoft.com/services/)
-- 如何[设计和架构 Azure 应用程序](https://azure.microsoft.com/solutions/architecture/)
-- [Azure 虚拟机](https://azure.microsoft.com/services/virtual-machines/)、[Azure 存储](https://azure.microsoft.com/services/?filter=storage)和 [Azure 网络](https://azure.microsoft.com/services/?filter=networking)的实践知识
-- [Azure 资源管理器](https://azure.microsoft.com/features/resource-manager/)的实践知识
-- [JSON](https://www.json.org/) 的实践知识
-
-## <a name="suggested-tools"></a>建议的工具
-
-选择以下一种或两种脚本环境来帮助管理 Azure 应用程序：
-
-- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
-- [Azure CLI](https://docs.microsoft.com/cli/azure)
-
-我们建议将以下工具添加到开发环境：
-
-- [Azure 存储浏览器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
-- 包含以下扩展的 [Visual Studio Code](https://code.visualstudio.com/)：
-
-  - 扩展：[Azure 资源管理器工具](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-  - 扩展：[Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-  - 扩展：[Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
-
-我们还建议在 [Azure 开发人员工具](https://azure.microsoft.com/tools/)页中查看可用的工具；如果使用的是 Visual Studio，请在 [Visual Studio 市场](https://marketplace.visualstudio.com/)中查看。
-
-## <a name="next-steps"></a>后续步骤
-
-[创建 Azure 应用程序套餐](./cpp-create-offer.md)
-
+在创建新的 Azure 应用程序产品/服务之前，应阅读["创建合作伙伴中心帐户"，](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)然后在选中"**概述"** 页后打开[商业市场仪表板](https://partner.microsoft.com/dashboard/directory)。 按照创建 Azure[应用程序产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer)中的说明创建产品/服务。

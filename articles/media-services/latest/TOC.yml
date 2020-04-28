@@ -13,6 +13,9 @@
     - name: 使用门户和 Wirecast 创建直播活动
       displayName: 'live, event, portal, wirecast'
       href: live-events-wirecast-quickstart.md
+    - name: 使用门户和 OBS 创建直播活动
+      displayName: 'live, event, portal, obs'
+      href: live-events-obs-quickstart.md
 - name: 教程
   items:
     - name: 对远程文件进行编码并流式传输视频
@@ -406,3 +409,5 @@
       href: limits-quotas-constraints.md
     - name: Azure 云和区域
       href: azure-clouds-regions.md
+    - name: 文档更新
+      href: docs-release-notes.md

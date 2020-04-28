@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a8e275a41637950139598ac7c4f2513841bb4d0d
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 47a45b52ac10a44b6efd54c41b3fec1e61a47a35
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82112501"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181624"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>用于登录用户的 Web 应用：移到生产环境
 
@@ -26,7 +26,7 @@ ms.locfileid: "82112501"
 
 ## <a name="next-steps"></a>后续步骤
 
-### <a name="troubleshooting"></a>疑难解答
+### <a name="troubleshooting"></a>故障排除
 
 > [!NOTE]
 > 当用户首次登录到 web 应用程序时，他们将需要同意。 但是，在某些组织中，用户可以看到如下所示的消息：
@@ -41,6 +41,8 @@ ms.locfileid: "82112501"
 
 > [!div class="nextstepaction"]
 > [如何在 Chrome 浏览器中处理 SameSite Cookie 更改](howto-handle-samesite-cookie-changes-chrome-browser.md)
+
+SameSite NuGet 包处理最常见的问题。
 
 ### <a name="scenario-for-calling-web-apis"></a>用于调用 Web API 的方案
 

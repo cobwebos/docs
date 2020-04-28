@@ -5,18 +5,18 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/01/2019
+ms.date: 04/24/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 43a842c3b6d6d421eca4196c7f3facc7876318cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b3874bbe7a5830b0a80b658ac32952fe8985c1c3
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79246781"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82161684"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用数据库、容器和项
 
-在 Azure 订阅下创建[Azure Cosmos DB 帐户](account-overview.md)后，可以通过创建数据库、容器和项目来管理帐户中的数据。 本文介绍上述每个条目。 
+在 Azure 订阅下创建 [Azure Cosmos DB 帐户](account-overview.md)后，可以通过创建数据库、容器和项来管理帐户中的数据。 本文将介绍上述每个实体。 
 
 下图显示 Azure Cosmos DB 帐户中不同实体的层次结构：
 
@@ -28,7 +28,7 @@ ms.locfileid: "79246781"
 
 | Azure Cosmos 实体 | SQL API | Cassandra API | 用于 MongoDB 的 Azure Cosmos DB API | Gremlin API | 表 API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos 数据库 | 数据库 | 密钥空间 | 数据库 | 数据库 | NA |
+|Azure Cosmos 数据库 | 数据库 | 密钥空间 | 数据库 | 数据库 | 不可用 |
 
 > [!NOTE]
 > 如果使用表 API 帐户，在创建第一个表时，系统会自动在 Azure Cosmos 帐户中创建默认数据库。
@@ -37,12 +37,12 @@ ms.locfileid: "79246781"
 
 可以使用下表中所述的 Azure Cosmos API 来与 Azure Cosmos 数据库交互：
 
-| Operation | Azure CLI | SQL API | Cassandra API | 用于 MongoDB 的 Azure Cosmos DB API | Gremlin API | 表 API |
+| 操作 | Azure CLI | SQL API | Cassandra API | 用于 MongoDB 的 Azure Cosmos DB API | Gremlin API | 表 API |
 | --- | --- | --- | --- | --- | --- | --- |
-|枚举所有数据库| 是 | 是 | 是（将数据库映射至密钥空间） | 是 | NA | NA |
-|读取数据库| 是 | 是 | 是（将数据库映射至密钥空间） | 是 | NA | NA |
-|创建新的数据库| 是 | 是 | 是（将数据库映射至密钥空间） | 是 | NA | NA |
-|更新数据库| 是 | 是 | 是（将数据库映射至密钥空间） | 是 | NA | NA |
+|枚举所有数据库| 是 | 是 | 是（将数据库映射至密钥空间） | 是 | 不可用 | 不可用 |
+|读取数据库| 是 | 是 | 是（将数据库映射至密钥空间） | 是 | 不可用 | 不可用 |
+|创建新数据库| 是 | 是 | 是（将数据库映射至密钥空间） | 是 | 不可用 | 不可用 |
+|更新数据库| 是 | 是 | 是（将数据库映射至密钥空间） | 是 | 不可用 | 不可用 |
 
 
 ## <a name="azure-cosmos-containers"></a>Azure Cosmos 容器
@@ -51,22 +51,22 @@ Azure Cosmos 容器是预配的吞吐量和存储的缩放单元。 容器会进
 
 创建 Azure Cosmos 容器时，会在以下某种模式下配置吞吐量：
 
-* **专用预配吞吐量模式**：容器上预配的吞吐量仅保留给该容器，并由 SL 支持。 要了解详细信息，请参阅[如何在 Azure Cosmos 容器上预配吞吐量](how-to-provision-container-throughput.md)。
+* **专用预配吞吐量模式**：针对容器预配的吞吐量是专门为该容器保留的，由 SLA 提供支持。 有关详细信息，请参阅[如何对 Azure Cosmos 容器预配吞吐量](how-to-provision-container-throughput.md)。
 
-* **共享预配吞吐量模式**：这些容器与同一数据库中的其他容器共享预配吞吐量（不包括已配置专用预配吞吐量的容器）。 换句话说，数据库上的预配吞吐量在所有"共享吞吐量"容器之间共享。 有关详细信息，请参阅[如何对 Azure Cosmos 数据库预配吞吐量](how-to-provision-database-throughput.md)。
+* **共享预配吞吐量模式**：这些容器与同一数据库中的其他容器共享预配吞吐量（不包含已配置专用预配吞吐量的容器）。 换句话说，在所有 "共享吞吐量" 容器之间共享数据库的预配吞吐量。 有关详细信息，请参阅[如何对 Azure Cosmos 数据库预配吞吐量](how-to-provision-database-throughput.md)。
 
 > [!NOTE]
-> 只有在创建数据库和容器时，才能配置共享吞吐量和专用吞吐量。 在创建容器后，若要从专用吞吐量模式切换到共享吞吐量模式（以及反过来进行操作），必须创建一个新容器，然后将数据迁移到新容器。 可以使用 Azure Cosmos DB 更改源功能迁移数据。
+> 只有在创建数据库和容器时，才能配置共享吞吐量和专用吞吐量。 若要在创建容器后从专用吞吐量模式切换为共享吞吐量模式（或反之），必须创建一个新容器，并将数据迁移到该容器。 可以使用 Azure Cosmos DB 更改源功能迁移数据。
 
 无论是使用专用还是共享预配吞吐量模式创建容器，Azure Cosmos 容器都可以弹性缩放。
 
-Azure Cosmos 容器是与架构无关的项容器。 容器中的项可以采用任意架构。 例如，可以在同一个容器中放置一个表示人员的项，以及一个表示汽车的项。** 默认情况下，添加到容器的所有项会自动编制索引，不需要进行显式的索引或架构管理。 您可以通过在容器上配置[索引策略](index-overview.md)来自定义索引行为。 
+Azure Cosmos 容器是与架构无关的项容器。 容器中的项可以采用任意架构。 例如，可以在同一个容器中放置一个表示人员的项，以及一个表示汽车的项。  默认情况下，添加到容器的所有项会自动编制索引，不需要进行显式的索引或架构管理。 通过在容器上配置的[索引策略](index-overview.md)，可以自定义索引行为。 
 
 可以针对 Azure Cosmos 容器中的所选项或整个容器设置[生存时间 (TTL)](time-to-live.md)，以正常从系统中清除这些项。 Azure Cosmos DB 会在这些项过期时自动将其删除。 这样还能保证对这些容器执行的查询不会返回固定边界内已过期的项。 有关详细信息，请参阅[对容器配置 TTL](how-to-time-to-live.md)。
 
-可以使用[更改源](change-feed.md)订阅针对容器的每个逻辑分区管理的操作日志。 更改源提供对容器执行的所有更新的日志，以及更新前和更新后的项的映像。 有关详细信息，请参阅[使用更改源生成被动式应用程序](serverless-computing-database.md)。 还可以通过使用容器上的更改源策略来配置更改源的保留期限。 
+可以使用[更改源](change-feed.md)订阅针对容器的每个逻辑分区管理的操作日志。 更改源提供对容器执行的所有更新的日志，以及更新前和更新后的项的映像。 有关详细信息，请参阅[使用更改源生成被动式应用程序](serverless-computing-database.md)。 还可以通过使用容器上的更改源策略来配置更改源的保留期限。
 
-可为 Azure Cosmos 容器注册[存储过程、触发器、用户定义的函数 (UDF)](stored-procedures-triggers-udfs.md) 和[合并过程](how-to-manage-conflicts.md)。 
+可为 Azure Cosmos 容器注册[存储过程、触发器、用户定义的函数 (UDF)](stored-procedures-triggers-udfs.md) 和[合并过程](how-to-manage-conflicts.md)。
 
 可以在 Azure Cosmos 容器上指定一个[唯一键约束](unique-keys.md)。 通过创建唯一键策略，可确保每个逻辑分区键的一个或多个值的唯一性。 如果使用唯一键策略创建容器，则无法创建值与唯一键约束指定的值重复的任何新项或更新的项。 若要了解详细信息，请参阅[唯一键约束](unique-keys.md)。
 
@@ -74,7 +74,10 @@ Azure Cosmos 容器专用于 API 特定的实体，如下表所示：
 
 | Azure Cosmos 实体 | SQL API | Cassandra API | 用于 MongoDB 的 Azure Cosmos DB API | Gremlin API | 表 API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos 容器 | 容器 | 表 | 集合 | 图形 | 表 |
+|Azure Cosmos 容器 | 容器 | 表 | 集合 | Graph | 表 |
+
+> [!NOTE]
+> 创建容器时，请确保不创建名称相同但大小写不同的两个容器。 这是因为，Azure 平台的某些部分不区分大小写，这可能会导致对具有此类名称的容器的遥测数据和操作产生混乱和冲突。
 
 ### <a name="properties-of-an-azure-cosmos-container"></a>Azure Cosmos 容器的属性
 
@@ -110,7 +113,7 @@ Azure Cosmos 容器具备一组系统定义的属性。 根据所用的 API，�
 
 | Cosmos 实体 | SQL API | Cassandra API | 用于 MongoDB 的 Azure Cosmos DB API | Gremlin API | 表 API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos 项 | Document | 行 | Document | 节点或边缘 | Item |
+|Azure Cosmos 项 | 文档 | 行 | Document | 节点或边缘 | 项 |
 
 ### <a name="properties-of-an-item"></a>项的属性
 

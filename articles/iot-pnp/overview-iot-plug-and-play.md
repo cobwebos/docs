@@ -1,20 +1,20 @@
 ---
 title: IoT 即插即用预览版简介 | Microsoft Docs
 description: 了解 IoT 即插即用预览版。 IoT 即插即用基于开放式建模语言，使 IoT 设备能够声明其功能。 IoT 设备在连接到 Azure IoT Central 等云解决方案或合作伙伴应用程序时，会出示该声明（称为“设备功能模型”）。 然后，云解决方案可以自动了解该设备，并开始与其交互 - 无需编写任何代码。
-author: ChrisGMsft
-ms.author: chrisgre
+author: Philmea
+ms.author: philmea
 ms.date: 12/23/2019
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 0399e1659fb7cc6a650c6b3c1d0189c8802d4904
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 12f3febac2c5c8ed01b9b156a64dc77f6ed0704f
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80064311"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770440"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>什么是 IoT 即插即用预览版？
 

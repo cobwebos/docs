@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bd9ea5565ea64415c00a458236456bed04b6c38
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: be4edfe3262ab74d903384eb00c0282acc7a3299
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74233381"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867430"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>教程：Azure Active Directory 与 SpringCM 集成
 
@@ -202,7 +202,7 @@ ms.locfileid: "74233381"
 要使 Azure Active Directory 用户能够登录到 SpringCM，必须将其预配到 SpringCM 中。 对于 SpringCM，预配是一项手动任务。
 
 > [!NOTE]
-> 有关详细信息，请参阅[创建和编辑 SpringCM 用户](https://knowledge.springcm.com/create-and-edit-a-springcm-user)。 
+> 有关详细信息，请参阅[创建和编辑 SpringCM 用户](http://community.springcm.com/s/article/Create-and-Edit-a-SpringCM-User-1619481053)。 
 
 **要将用户帐户预配到 SpringCM，请执行以下步骤：**
 

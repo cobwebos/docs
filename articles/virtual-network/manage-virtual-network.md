@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 70523dc12f3f20362fcf4a2c3cb456a182038e8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 643f326952f72f952aa946079e56f1fb56373c9f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280230"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182865"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>创建、更改或删除虚拟网络
 
@@ -25,20 +25,20 @@ ms.locfileid: "79280230"
 
 了解如何创建和删除虚拟网络以及更改现有虚拟网络的设置，如 DNS 服务器和 IP 地址空间。 如果不熟悉虚拟网络，可在[虚拟网络概述](virtual-networks-overview.md)中或通过完成[教程](quick-create-portal.md)了解相关详细信息。 虚拟网络包含子网。 若要了解如何创建、更改和删除子网，请阅读[管理子网](virtual-network-manage-subnet.md)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 在完成本文任何部分中的步骤之前，请完成以下任务：
 
 - 如果还没有 Azure 帐户，请注册[免费试用帐户](https://azure.microsoft.com/free)。
-- 如果使用门户，请打开 https://portal.azure.com，并使用 Azure 帐户登录。
+- 如果使用门户，请打开 https://portal.azure.com ，并使用 Azure 帐户登录。
 - 如果使用 PowerShell 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 本教程需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
-- 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/bash) 中的命令，或从计算机运行 CLI。 本教程需要 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
-- 必须将登录到或与 Azure 连接的帐户分配给[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或分配给[权限](#permissions)中列出的相应操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+- 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/bash) 中的命令，或从计算机运行 CLI。 本教程需要 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
+- 必须将登录或连接到 Azure 的帐户分配到[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或分配给分配了[权限](#permissions)中列出的相应操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
-1. 选择 **= 创建资源** > **网络** > **虚拟网络**。
-2. 输入或选择以下设置的值，然后选择 **"创建**"
+1. 选择 " **+ 创建资源** > " "**网络** > " "**虚拟网络**"。
+2. 为以下设置输入或选择值，然后选择 "**创建**"：
    - 名称：该名称在选择创建虚拟网络的[资源组](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)中必须是唯一的。**** 虚拟网络创建后，无法更改名称。 可随着时间推移创建多个虚拟网络。 有关命名建议，请参阅[命名约定](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)。 遵循命名约定有助于更加轻松地管理多个虚拟网络。
    - **地址空间**：虚拟网络的地址空间由以 CIDR 表示法指定的一个或多个非重叠地址范围组成。 定义的地址范围可以是公共或专用 (RFC 1918) 地址。 无论是将地址范围定义为公用还是专用，地址范围都只能从虚拟网络内、从互联的虚拟网络以及从任何已连接到虚拟网络的本地网络进行访问。 无法添加以下的地址范围：
      - 224.0.0.0/4（多播）
@@ -68,7 +68,7 @@ ms.locfileid: "79280230"
 **命令**
 
 - Azure CLI: [az network vnet create](/cli/azure/network/vnet)
-- 电源外壳：[新阿兹虚拟网络](/powershell/module/az.network/new-azvirtualnetwork)
+- PowerShell： [AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)
 
 ## <a name="view-virtual-networks-and-settings"></a>查看虚拟网络和设置
 
@@ -89,7 +89,7 @@ ms.locfileid: "79280230"
    - 图示：该图提供已连接到虚拟网络的所有设备的可视表示形式。**** 该图具有设备相关的一些关键信息。 若要在此视图中管理设备，请选择设备。
    - 常见 Azure 设置****：若要详细了解常见的 Azure 设置，请参阅以下信息：
      - [活动日志](../azure-monitor/platform/platform-logs-overview.md)
-     - [访问控制 （IAM）](../role-based-access-control/overview.md)
+     - [访问控制（IAM）](../role-based-access-control/overview.md)
      - [标记](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [锁](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [自动化脚本](../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)
@@ -97,7 +97,7 @@ ms.locfileid: "79280230"
 **命令**
 
 - Azure CLI: [az network vnet show](/cli/azure/network/vnet)
-- 电源外壳：[获取阿兹虚拟网络](/powershell/module/az.network/get-azvirtualnetwork)
+- PowerShell： [AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork)
 
 ## <a name="add-or-remove-an-address-range"></a>添加或删除地址范围
 
@@ -123,12 +123,12 @@ ms.locfileid: "79280230"
 4. 完成以下选项之一：
     - **添加地址范围**：输入新的地址范围。 该地址范围不能与为虚拟网络定义的现有地址范围重叠。
     - **删除地址范围**：在要删除的地址范围右侧，选择“...”****，然后选择“删除”****。 如果该地址范围包含子网，则无法删除该地址范围。 要删除某个地址范围，必须先删除存在于该地址范围内的所有子网（以及已连接到这些子网的所有资源）。
-5. 选择“保存”。****
+5. 选择“保存”。 
 
 **命令**
 
 - Azure CLI: [az network vnet update](/cli/azure/network/vnet)
-- 电源外壳：[集阿兹虚拟网络](/powershell/module/az.network/set-azvirtualnetwork)
+- PowerShell： [AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork)
 
 ## <a name="change-dns-servers"></a>更改 DNS 服务器
 
@@ -136,21 +136,21 @@ ms.locfileid: "79280230"
 
 1. 在门户顶部的搜索框中，输入“虚拟网络”**。 当“虚拟网络”出现在搜索结果中时，请将其选中****。
 2. 在虚拟网络列表中，选择要更改其 DNS 服务器的虚拟网络。
-3. 选择**DNS 服务器**，在**SETTINGS**下。
-4. 选择以下选项之一：
+3. 选择 "**设置**" 下的 " **DNS 服务器**"。
+4. 选择下列选项之一：
    - **默认(Azure 提供)**：所有资源名称和专用 IP 地址将自动注册到 Azure DNS 服务器。 可以解析连接到同一虚拟网络的任何资源之间的名称。 不能使用此选项跨虚拟网络解析名称。 若要跨虚拟网络解析名称，必须使用自定义 DNS 服务器。
    - 自定义：可以添加一个或多个服务器，直至达到虚拟网络的 Azure 限制。**** 要了解有关 DNS 服务器限制的详细信息，请参阅 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic)。 可以使用以下选项：
    - 添加地址：将服务器添加到虚拟网络 DNS 服务器列表。**** 此选项还会向 Azure 注册 DNS 服务器。 如果已将 DNS 服务器注册到 Azure，则可以在列表中选择该 DNS 服务器。
    - **删除地址**：在要删除的服务器旁，选择“...”，然后选择“删除”。******** 删除服务器只会将服务器从此虚拟网络列表中删除。 DNS 服务器在 Azure 中仍为注册状态，可供其他虚拟网络使用。
    - **重新排列 DNS 服务器的地址**：确认按所处环境的正确顺序列出 DNS 服务器，这一点很重要。 将按指定服务器的顺序使用 DNS 服务器列表。 它们并非以轮循机制工作。 如果列表中的第一个 DNS 服务器可访问，则无论此 DNS 服务器是否运行正常，客户端都会使用该 DNS 服务器。 删除列出的所有 DNS 服务器，然后按照所需顺序，将这些服务器重新添加到列表中。
    - 更改地址：在列表中突出显示 DNS 服务器，然后输入新地址。****
-5. 选择“保存”。****
+5. 选择“保存”。 
 6. 重启已连接到虚拟网络的 VM，以便为它们分配新的 DNS 服务器设置。 VM 在重新启动之前，将继续使用其当前 DNS 设置。
 
 **命令**
 
 - Azure CLI: [az network vnet update](/cli/azure/network/vnet)
-- 电源外壳：[集阿兹虚拟网络](/powershell/module/az.network/set-azvirtualnetwork)
+- PowerShell： [AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork)
 
 ## <a name="delete-a-virtual-network"></a>删除虚拟网络
 
@@ -159,19 +159,19 @@ ms.locfileid: "79280230"
 1. 在门户顶部的搜索框中，输入“虚拟网络”**。 当“虚拟网络”出现在搜索结果中时，请将其选中****。
 2. 从虚拟网络列表中，选择要删除的虚拟网络。
 3. 在“设置”下单击“已连接的设备”，以确认没有设备连接到该虚拟网络。******** 如果有连接的设备，则必须先删除它们，然后才能删除虚拟网络。 如果没有连接的设备，请选择“概述”。****
-4. 选择 **"删除**"。
+4. 选择“删除”。 
 5. 若要确认删除虚拟网络，请选择“是”****。
 
 **命令**
 
 - Azure CLI: [azure network vnet delete](/cli/azure/network/vnet)
-- 电源外壳：[删除阿兹虚拟网络](/powershell/module/az.network/remove-azvirtualnetwork)
+- PowerShell： [AzVirtualNetwork](/powershell/module/az.network/remove-azvirtualnetwork)
 
 ## <a name="permissions"></a>权限
 
 若要在虚拟网络上执行任务，必须将你的帐户分配给[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或分配有下表中所列适当操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)：
 
-| 操作                                  |   “属性”                                |
+| 操作                                  |   名称                                |
 |---------------------------------------- |   --------------------------------    |
 |Microsoft.Network/virtualNetworks/read   |   读取虚拟网络              |
 |Microsoft.Network/virtualNetworks/write  |   创建或更新虚拟网络  |
@@ -180,4 +180,4 @@ ms.locfileid: "79280230"
 ## <a name="next-steps"></a>后续步骤
 
 - 使用 [PowerShell](powershell-samples.md) 或 [Azure CLI](cli-samples.md) 示例脚本或使用 Azure [资源管理器模板](template-samples.md)创建虚拟网络
-- 为虚拟网络创建并应用 [Azure Policy](policy-samples.md)
+- 为虚拟网络创建和分配[Azure 策略定义](policy-samples.md)

@@ -27,7 +27,7 @@
       href: roles.md
     - name: 高级多阶段攻击检测
       href: fusion.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 连接数据源
       href: connect-data-sources.md
@@ -87,9 +87,9 @@
             - name: 基于 CEF 的解决方案
               href: connect-common-event-format.md
               items:
-                - name: 步骤 1 部署代理
+                - name: 步骤 1：部署日志转发器
                   href: connect-cef-agent.md
-                - name: 步骤 2 配置安全解决方案
+                - name: 步骤 2：配置安全解决方案
                   href: connect-cef-solution-config.md
                   items:
                     - name: 检查点

@@ -3,12 +3,12 @@ title: 适用于 Visual Studio Code 的 Azure Policy 扩展
 description: 了解如何使用适用于 Visual Studio Code 的 Azure Policy 扩展来查找资源管理器别名。
 ms.date: 03/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 5e31af652f2746adbf0eda386bdb178c752f5f84
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 0c4e04cc352744fed1c7c2965f8096f0f05c2a50
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641025"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182559"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>使用适用于 Visual Studio Code 的 Azure Policy 扩展
 
@@ -34,25 +34,25 @@ ms.locfileid: "81641025"
 
 1. 打开 Visual Studio Code。
 
-1. 从菜单栏转到 **"查看** > **扩展"。**
+1. 在菜单栏中，转到“视图” > “扩展”。  
 
 1. 在搜索框中输入 **Azure Policy**。
 
-1. 在搜索结果中选择“Azure Policy”，然后选择“安装”。********
+1. 在搜索结果中选择“Azure Policy”，然后选择“安装”。  
 
-1. 根据需要选择“重载”。****
+1. 根据需要选择“重载”。 
 
 ## <a name="set-the-azure-environment"></a>设置 Azure 环境
 
 国家云用户请先遵循以下步骤设置 Azure 环境：
 
-1. 选择“文件”>“首选项”>“设置”。****
+1. 选择“文件”>“首选项”>“设置”。 
 
-1. 搜索以下字符串 _：Azure：云_
+1. 搜索以下字符串：_Azure:_ 云”
 
 1. 在列表中选择国家云：
 
-   ![设置 Visual Studio Code 的默认 Azure 云登录名](../media/extension-for-vscode/set-default-azure-cloud-sign-in.png)
+   :::image type="content" source="../media/extension-for-vscode/set-default-azure-cloud-sign-in.png" alt-text="设置 Visual Studio Code 的默认 Azure 云登录名" border="false":::
 
 ## <a name="connect-to-an-azure-account"></a>连接到 Azure 帐户
 
@@ -62,15 +62,15 @@ ms.locfileid: "81641025"
 
    - Azure Policy 扩展
 
-     在 Azure Policy 扩展中，选择“登录到 Azure”。****
+     在 Azure Policy 扩展中，选择“登录到 Azure”。 
 
-     ![Azure Policy 扩展中 Visual Studio Code 的 Azure 云登录名](../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png)
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="Azure Policy 扩展中 Visual Studio Code 的 Azure 云登录名" border="false":::
 
    - 命令面板
 
-     从菜单栏转到 **"查看** > **命令调色板**"，然后输入**Azure：登录**。
+     在菜单栏中，转到“视图” > “命令面板”，然后输入“Azure:    登录”。
 
-     ![命令面板中 Visual Studio Code 的 Azure 云登录名](../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png)
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="命令面板中 Visual Studio Code 的 Azure 云登录名" border="false":::
 
 1. 按照登录说明登录到 Azure。 连接后，Visual Studio Code 窗口底部的状态栏上会显示 Azure 帐户名称。
 
@@ -82,24 +82,24 @@ ms.locfileid: "81641025"
 
    - 命令面板： 
 
-     从菜单栏转到 **"查看** > **命令调色板**"，然后输入**Azure：选择订阅**。
+     在菜单栏中，转到“视图” > “命令面板”，然后输入“Azure:    选择订阅”。
 
    - 窗口页脚
 
-     在屏幕底部的窗口页脚中，选择与“Azure: \<你的帐户\>”匹配的段。****
+     在屏幕底部的窗口页脚中，选择与“Azure: \<你的帐户\>”匹配的段。 
 
-1. 使用筛选框按名称快速查找订阅。 然后，选中或清除每个订阅对应的复选框，以设置 Azure Policy 扩展要显示的订阅。 添加或删除要显示的订阅后，选择“确定”。****
+1. 使用筛选框按名称快速查找订阅。 然后，选中或清除每个订阅对应的复选框，以设置 Azure Policy 扩展要显示的订阅。 添加或删除要显示的订阅后，选择“确定”。 
 
 ## <a name="search-for-and-view-resources"></a>搜索和查看资源
 
-Azure Policy 扩展在“资源”窗格中按资源提供程序和资源组列出所选订阅中的资源。**** 树视图包含所选订阅中或订阅级别的以下资源分组：
+Azure Policy 扩展在“资源”窗格中按资源提供程序和资源组列出所选订阅中的资源。  树视图包含所选订阅中或订阅级别的以下资源分组：
 
 - **资源提供程序**
   - 每个已注册的资源提供程序，其中包含具有策略别名的资源和相关子资源
 - **资源组**
   - 按资源所在的资源组列出所有资源
 
-默认情况下，该扩展将按现有资源以及具有策略别名的资源筛选“资源提供程序”部分。 在 **"设置** > **扩展** > **Azure 策略**"中更改此行为，以查看所有资源提供程序，而无需筛选。
+默认情况下，该扩展将按现有资源以及具有策略别名的资源筛选“资源提供程序”部分。 在“设置” > “扩展” > “Azure Policy”中更改此行为可在不进行筛选的情况下查看所有资源提供程序。   
 
 在单个订阅中包含数百甚至数千个资源的客户可能更倾向于通过搜索来查找其资源。 在 Azure Policy 扩展中可通过以下步骤搜索特定的资源：
 
@@ -107,11 +107,11 @@ Azure Policy 扩展在“资源”窗格中按资源提供程序和资源组列�
 
    - Azure Policy 扩展
 
-     在 Azure Policy 扩展中，将鼠标悬停在“资源”面板上，选择省略号图标，然后选择“搜索资源”。********
+     在 Azure Policy 扩展中，将鼠标悬停在“资源”面板上，选择省略号图标，然后选择“搜索资源”。  
 
    - 命令面板：
 
-     从菜单栏转到 **"查看**>**命令调色板**"，然后输入 **"资源：搜索资源**"。
+     在菜单栏中，转到“视图”>“命令面板”，然后输入“资源:    搜索资源”。
 
 1. 如果已选择显示多个订阅，请使用筛选器来选择要搜索的订阅。
 
@@ -121,25 +121,25 @@ Azure Policy 扩展在“资源”窗格中按资源提供程序和资源组列�
 
 ## <a name="discover-aliases-for-resource-properties"></a>发现资源属性的别名
 
-选择资源时，无论是通过搜索界面还是通过在树视图中选择资源，Azure 策略扩展名将打开 JSON 文件，表示该资源及其所有资源管理器属性值。
+选择资源时，无论是通过搜索界面还是在 treeview 中选择资源，Azure 策略扩展都将打开表示该资源及其所有资源管理器属性值的 JSON 文件。
 
 打开某个资源后，将鼠标悬停在资源管理器属性名称或值上可显示 Azure Policy 别名（如果存在）。 在此示例中，资源的类型是 `Microsoft.Compute/virtualMachines`，鼠标已悬停在 **properties.storageProfile.imageReference.offer** 属性上。 悬停鼠标可显示匹配的别名。
 
-![在 Azure Policy 扩展中悬停鼠标即可显示资源管理器属性别名](../media/extension-for-vscode/extension-hover-shows-property-alias.png)
+:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="在 Azure Policy 扩展中悬停鼠标即可显示资源管理器属性别名" border="false":::
 
 ## <a name="search-for-and-view-policies-and-assignments"></a>搜索和查看策略与分配
 
-对于选择显示的订阅，Azure Policy 扩展将在“策略”窗格中以树视图的形式列出策略类型和策略分配。**** 在单个订阅中包含数百甚至数千个策略或分配的客户可能更倾向于通过搜索来查找其策略或分配。 在 Azure Policy 扩展中可通过以下步骤搜索特定的策略或分配：
+对于选择显示的订阅，Azure Policy 扩展将在“策略”窗格中以树视图的形式列出策略类型和策略分配。  在单个订阅中包含数百甚至数千个策略或分配的客户可能更倾向于通过搜索来查找其策略或分配。 在 Azure Policy 扩展中可通过以下步骤搜索特定的策略或分配：
 
 1. 通过 Azure Policy 扩展或命令面板启动搜索界面。
 
    - Azure Policy 扩展
 
-     在 Azure Policy 扩展中，将鼠标悬停在“策略”面板上，选择省略号图标，然后选择“搜索策略”。********
+     在 Azure Policy 扩展中，将鼠标悬停在“策略”面板上，选择省略号图标，然后选择“搜索策略”。  
 
    - 命令面板：
 
-     从菜单栏转到 **"查看**>**命令调色板**"，然后输入 **"策略：搜索策略**"。
+     在菜单栏中，转到“视图”>“命令面板”，然后输入“策略:    搜索策略”。
 
 1. 如果已选择显示多个订阅，请使用筛选器来选择要搜索的订阅。
 
@@ -151,13 +151,13 @@ Azure Policy 扩展在“资源”窗格中按资源提供程序和资源组列�
 
 ## <a name="sign-out"></a>注销
 
-从菜单栏转到 **"查看** > **命令调色板**"，然后输入**Azure：注销**。
+在菜单栏中，转到“视图” > “命令面板”，然后输入“Azure:    注销”。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看[Azure 策略示例](../samples/index.md)中的示例。
+- 在 [Azure Policy 示例](../samples/index.md)中查看示例。
 - 查看 [Azure Policy 定义结构](../concepts/definition-structure.md)。
 - 查看[了解策略效果](../concepts/effects.md)。
 - 了解如何[以编程方式创建策略](programmatically-create.md)。
-- 了解如何[修复不合规资源](remediate-resources.md)。
+- 了解如何[修正不符合的资源](remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

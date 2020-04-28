@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: ada96d0d4b167e30cb6e271aa02d0d399a9ae7d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df261dbf8af8ffdb4ccb10626594626150245748
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78303080"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176390"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>选择 Azure 数据传输解决方案
 
@@ -50,19 +50,19 @@ ms.locfileid: "78303080"
 
 - 可用网络带宽是否有限或不存在，并且你要传输大型数据集？
   
-    如果是，请参阅：[方案 1：传输没有或低网络带宽的大型数据集](storage-solution-large-dataset-low-network.md)。
+    如果是，请参阅：[方案1：传输不带或低网络带宽的大型数据集](storage-solution-large-dataset-low-network.md)。
 - 是否要通过网络传输大型数据集并且具有中等到较高网络带宽？
 
-    如果是，请参阅：[方案 2：传输具有中到高网络带宽的大型数据集](storage-solution-large-dataset-moderate-high-network.md)。
+    如果是，请参阅：[方案2：传输具有中等到高网络带宽的大型数据集](storage-solution-large-dataset-moderate-high-network.md)。
 - 是否偶尔要通过网络仅传输几个文件？
 
-    如果是，请参阅[方案 3：传输具有受限于中等网络带宽的小型数据集](storage-solution-small-dataset-low-moderate-network.md)。
+    如果是，请参阅[方案3：传输大小限制为适中的网络带宽的小型数据集](storage-solution-small-dataset-low-moderate-network.md)。
 - 是否在寻找采用固定时间间隔的时间点数据传输？
 
-    如果是，请使用方案 4 中概述的脚本/编程选项[：定期数据传输](storage-solution-periodic-data-transfer.md)。
+    如果是，请使用[方案4：定期数据传输](storage-solution-periodic-data-transfer.md)中所述的脚本化/编程选项。
 - 是否在寻找持续数据传输？
 
-    如果是，请使用方案 4 中的选项[：定期数据传输](storage-solution-periodic-data-transfer.md)。
+    如果是，请使用[方案4：定期数据传输](storage-solution-periodic-data-transfer.md)中的选项。
 
 ## <a name="data-transfer-feature-in-azure-portal"></a>Azure 门户中的数据传输功能
 
@@ -72,8 +72,8 @@ ms.locfileid: "78303080"
 
 - [获取 Azure 存储资源管理器简介](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/)。
 - [阅读 AzCopy 概述](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)。
-- [将 Azure PowerShell 与 Azure 存储一起使用](https://docs.microsoft.com/azure/storage/common/storage-powershell-guide-full)
-- [快速入门：使用 Azure CLI 创建、下载和列出 blob](../blobs/storage-quickstart-blobs-cli.md)
+- [快速入门：在 PowerShell 中上传、下载和列出 blob](../blobs/storage-quickstart-blobs-powershell.md)
+- [快速入门：通过 Azure CLI 创建、下载和列出 blob](../blobs/storage-quickstart-blobs-cli.md)
 - 学习内容：
 
     - [用于脱机传输的 Azure Data Box、Azure Data Box Disk 和 Azure Data Box Heavy](https://docs.microsoft.com/azure/databox/)。

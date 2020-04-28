@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 12/20/2019
+ms.date: 04/24/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f617beec8a53570ede7755040cfbb92a7d1712b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 681723ee9370f889ef86e6eae0878b148c17606b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79268348"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176356"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>配置 Azure 存储连接字符串
 
@@ -25,11 +25,9 @@ ms.locfileid: "79268348"
 * 在 Azure 中访问存储帐户。
 * 通过共享访问签名 (SAS) 访问 Azure 中的指定资源。
 
+若要了解如何查看帐户访问密钥并复制连接字符串，请参阅[管理存储帐户访问密钥](storage-account-keys-manage.md)。
+
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
-
-## <a name="view-and-copy-a-connection-string"></a>查看和复制连接字符串
-
-[!INCLUDE [storage-view-keys-include](../../../includes/storage-view-keys-include.md)]
 
 ## <a name="store-a-connection-string"></a>存储连接字符串
 
@@ -59,10 +57,10 @@ ms.locfileid: "79268348"
 
 `DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=<account-key>`
 
-尽管 Azure 存储连接字符串同时支持 HTTP 和 HTTPS，但强烈建议使用 HTTPS**。
+尽管 Azure 存储连接字符串同时支持 HTTP 和 HTTPS，但强烈建议使用 HTTPS  。
 
 > [!TIP]
-> 可以在 [Azure 门户](https://portal.azure.com)中找到存储帐户的连接字符串。 导航到存储帐户菜单边栏选项卡中的 **"设置** > **访问密钥**"，以查看主访问密钥和辅助访问密钥的连接字符串。
+> 可以在 [Azure 门户](https://portal.azure.com)中找到存储帐户的连接字符串。 导航到存储帐户菜单边栏选项卡中的“设置”   > “访问密钥”  ，查看主访问密钥和辅助访问密钥的连接字符串。
 >
 
 ## <a name="create-a-connection-string-using-a-shared-access-signature"></a>使用共享访问签名创建连接字符串
@@ -113,7 +111,7 @@ AccountKey=<account-key>
 如果已将存储终结点映射到自定义域并从连接字符串中省略该终结点，将无法使用该连接字符串通过代码访问该服务中的数据。
 
 > [!IMPORTANT]
-> 连接字符串中的服务终结点值必须是格式正确的 URI，包括 `https://`（推荐）或 `http://`。 因为 Azure 存储尚不支持自定义域的 HTTPS，因此必须** 为指向自定义域的所有终结点 URI 指定 `http://`。
+> 连接字符串中的服务终结点值必须是格式正确的 URI，包括 `https://`（推荐）或 `http://`。 因为 Azure 存储尚不支持自定义域的 HTTPS，因此必须  为指向自定义域的所有终结点 URI 指定 `http://`。
 >
 
 ### <a name="create-a-connection-string-with-an-endpoint-suffix"></a>创建含终结点后缀的连接字符串
@@ -144,4 +142,4 @@ EndpointSuffix=core.chinacloudapi.cn;
 
 * [使用 Azure 存储模拟器进行开发和测试](storage-use-emulator.md)
 * [Azure 存储资源管理器](storage-explorers.md)
-* [使用共享访问签名 （SAS）](storage-sas-overview.md)
+* [使用共享访问签名 (SAS)](storage-sas-overview.md)

@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 428db340ce43463939ce71ffadd4188060f3e732
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b86429c90f436007116a45c6dbab443d6cc889e0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74073113"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188546"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>使用 Azure Policy 限制 Windows VM 上的扩展安装
 
-如果想要阻止在 Windows VM 上使用或安装某些扩展，可以使用 PowerShell 创建 Azure Policy 以限制资源组中的 VM 扩展。 
+如果要阻止在 Windows Vm 上使用或安装某些扩展，可以使用 PowerShell 创建 Azure 策略定义，以限制资源组中 Vm 的扩展。 
 
 本教程在 Cloud Shell 中使用 Azure PowerShell，后者已不断更新到最新版本。 
 
@@ -141,7 +141,7 @@ $assignment
 
 ## <a name="test-the-policy"></a>测试策略
 
-若要测试策略，请尝试使用 VM 访问扩展。 以下消息"设置-AzVMAccess扩展：策略不允许资源'myVMAccess"）失败。
+若要测试策略，请尝试使用 VM 访问扩展。 以下内容应失败，并出现消息 "AzVMAccessExtension：资源 ' myVMAccess ' 被策略禁止 '"。
 
 ```azurepowershell-interactive
 Set-AzVMAccessExtension `
@@ -151,7 +151,7 @@ Set-AzVMAccessExtension `
    -Location EastUS 
 ```
 
-在门户中，密码更改将失败并显示消息“由于违反策略，模板部署失败” 。
+在门户中，密码更改将失败并显示消息“由于违反策略，模板部署失败” 消息。
 
 ## <a name="remove-the-assignment"></a>删除分配
 

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/21/2020
-ms.openlocfilehash: 4db9624fbc71e48fcc10ae1d9a1d700d301248a2
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.date: 04/25/2020
+ms.openlocfilehash: 68355ac4238aba3deaa951881bc164fe9dc08e28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81759545"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183426"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Azure 认知搜索中的安全性和数据隐私
 
@@ -40,9 +40,9 @@ Azure 认知搜索针对以下标准进行了认证，如 [2018 年 6 月发布�
 
 | 安全层 | 说明 |
 |----------------|-------------|
-| 传输中加密 <br>(HTTPS/SSL/TLS) | Azure 认知搜索在 HTTPS 端口 443 上侦听。 与 Azure 服务建立的跨平台连接经过加密。 <br/><br/>所有客户端到服务的 Azure 认知搜索交互都使用 SSL/TLS 1.2 加密。 不支持早期版本（1.0 或 1.1）。|
+| 传输中加密 <br>（HTTPS/TLS） | Azure 认知搜索在 HTTPS 端口 443 上侦听。 与 Azure 服务建立的跨平台连接经过加密。 <br/><br/>所有客户端到服务 Azure 认知搜索交互使用 TLS 1.2 加密。 不支持早期版本（1.0 或1.1）。|
 | 静态加密 <br>Microsoft 托管的密钥 | 加密在索引过程中完全进行内部化处理，而不会显著影响完成索引所需的时间或索引大小。 加密自动对所有索引进行，包括对未完全加密的索引（在 2018 年 1 月前创建）的增量更新。<br><br>在内部，加密基于 [Azure 存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)，使用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)进行。<br><br> 加密在 Azure 认知搜索内部进行，证书和加密密钥由 Microsoft 进行内部管理，并得到了广泛应用。 无法在门户中或以编程方式打开或关闭加密、管理或替换为自己的密钥，或者查看加密设置。<br><br>静态加密已于 2018 年 1 月 24 日宣布推出并应用于所有区域中的所有服务层级，包括免费层。 对于完全加密，必须删除该日期之前创建的索引并重新生成，以便进行加密。 否则，仅对 1 月 24 日以后添加的新数据进行加密。|
-| 静态加密 <br>客户管理的密钥 | 使用客户托管密钥进行加密现在通常可用于 2019 年 1 月或之后创建的搜索服务。 免费（共享）服务不支持它。<br><br>Azure 认知搜索索引和同义词映射现在可以使用 Azure 密钥保管库中的客户托管密钥进行静态加密。 若要了解详细信息，请参阅[在 Azure 认知搜索中管理加密密钥](search-security-manage-encryption-keys.md)。<br><br>此功能不会替代默认的静态加密，而是对默认静态加密的补充。<br><br>启用此功能会增大索引大小，降低查询性能。 根据迄今为止的观察结果，查询时间预期会增加 30%-60%，不过，实际性能根据索引定义和查询类型而有所不同。 由于这种性能影响，我们建议仅对真正需要此功能的索引启用此功能。
+| 静态加密 <br>客户管理的密钥 | 使用客户托管密钥进行加密现可用于在2019年1月1日或之后创建的搜索服务。 它在免费（共享）服务中不受支持。<br><br>Azure 认知搜索索引和同义词映射现在可以在 Azure Key Vault 中通过客户托管的密钥进行静态加密。 若要了解详细信息，请参阅[在 Azure 认知搜索中管理加密密钥](search-security-manage-encryption-keys.md)。<br><br>此功能不会替代默认的静态加密，而是对默认静态加密的补充。<br><br>启用此功能会增大索引大小，降低查询性能。 根据迄今为止的观察结果，查询时间预期会增加 30%-60%，不过，实际性能根据索引定义和查询类型而有所不同。 由于这种性能影响，我们建议仅对真正需要此功能的索引启用此功能。
 
 ## <a name="azure-wide-user-access-controls"></a>Azure 范围的用户访问控制
 
@@ -51,15 +51,15 @@ Azure 认知搜索针对以下标准进行了认证，如 [2018 年 6 月发布�
 + [订阅或资源级别的锁可防止删除](../azure-resource-manager/management/lock-resources.md)
 + [基于角色的访问控制 (RBAC) 可以控制对信息和管理操作的访问](../role-based-access-control/overview.md)
 
-所有 Azure 服务支持使用基于角色的访问控制 (RBAC) 在不同的服务之间以一致的方式设置访问级别。 例如，查看敏感数据（如管理密钥）仅限于所有者和参与者角色。 但是，查看服务状态可供任何角色的成员使用。 RBAC 提供“所有者”、“参与者”和“读取者”角色。 默认情况下，所有服务管理员是“所有者”角色的成员。
+所有 Azure 服务支持使用基于角色的访问控制 (RBAC) 在不同的服务之间以一致的方式设置访问级别。 例如，查看敏感数据（如管理密钥）仅限于所有者和参与者角色。 不过，查看服务状态适用于任何角色的成员。 RBAC 提供“所有者”、“参与者”和“读取者”角色。 默认情况下，所有服务管理员是“所有者”角色的成员。
 
 <a name="service-access-and-authentication"></a>
 
-## <a name="endpoint-access"></a>端点访问
+## <a name="endpoint-access"></a>终结点访问
 
 ### <a name="public-access"></a>公共访问权限
 
-Azure 认知搜索继承了 Azure 平台的安全安全措施，并提供其自己的基于密钥的身份验证。 API 密钥是随机生成的数字和字母所组成的字符串。 密钥的类型（管理员或查询）确定访问的级别。 提交有效密钥被视为请求源自受信任实体的证明。 
+Azure 认知搜索继承了 Azure 平台的安全保护，并提供了其自己的基于密钥的身份验证。 API 密钥是随机生成的数字和字母所组成的字符串。 密钥的类型（管理员或查询）确定访问的级别。 提交有效密钥被视为请求源自受信任实体的证明。 
 
 有两个搜索服务访问级别，可通过两种类型的密钥启用它们：
 
@@ -74,13 +74,13 @@ Azure 认知搜索继承了 Azure 平台的安全安全措施，并提供其自�
 
 ### <a name="restricted-access"></a>受限访问
 
-当您拥有公共服务并且想要限制服务的使用时，您可以在管理 REST API 版本中使用 IP 限制规则：2020-03-13，IpRule 。 [IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) IpRule 允许您通过单独或在一个范围内识别要授予对搜索服务的访问权限的 IP 地址来限制对服务的访问。 
+如果你拥有公共服务并且想要限制服务的使用，则可以使用管理 REST API 版本2020-03-13， [IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule)中的 IP 限制规则。 通过 IpRule，你可以通过分别标识你想要授予对搜索服务的访问权限的 IP 地址来限制对服务的访问。 
 
-### <a name="private-access"></a>私人访问
+### <a name="private-access"></a>私有访问
 
-Azure 认知搜索[的专用终结点](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)允许虚拟网络上的客户端通过[专用链接](https://docs.microsoft.com/azure/private-link/private-link-overview)安全地访问搜索索引中的数据。 专用终结点使用虚拟网络地址空间中的 IP 地址进行搜索服务。 客户端和搜索服务之间的网络流量通过虚拟网络和 Microsoft 骨干网络上的专用链路遍历，消除了公共 Internet 的暴露。
+Azure 认知搜索的[专用终结点](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)允许虚拟网络上的客户端通过[专用链接](https://docs.microsoft.com/azure/private-link/private-link-overview)安全访问搜索索引中的数据。 专用终结点使用来自虚拟网络地址空间的 IP 地址来搜索服务。 客户端与搜索服务之间的网络流量将在 Microsoft 主干网络上遍历虚拟网络和专用链接，从而消除了公共 internet 的泄露。
 
-[Azure 虚拟网络 （VNet）](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)允许资源之间安全通信，包括本地网络和 Internet。 
+通过[Azure 虚拟网络（VNet）](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) ，可以在资源之间通过本地网络和 Internet 进行安全通信。 
 
 ## <a name="index-access"></a>索引访问
 
@@ -102,7 +102,7 @@ Azure 认知搜索[的专用终结点](https://docs.microsoft.com/azure/private-
 
 默认情况下，由查询请求中的访问密钥确定用户对索引的访问权限。 大部分开发人员会针对客户端搜索请求创建并分配[*查询密钥*](search-security-api-keys.md)。 查询密钥授予对索引内的所有内容的读取访问权限。
 
-如果需要对内容进行精细的基于每个用户的控制，可以在查询中生成安全筛选器，返回与给定安全标识关联的文档。 基于身份的访问控制不是预定义的角色和角色分配，而是作为筛选器实现，该*筛选器*根据标识修剪文档和内容的搜索结果。 下表描述了修整未经授权内容的搜索结果的两种方法。
+如果需要对内容进行精细的基于每个用户的控制，可以在查询中生成安全筛选器，返回与给定安全标识关联的文档。 基于标识的访问控制是根据标识来修整文档和内容的搜索结果的*筛选器*，而不是预定义的角色和角色分配。 下表描述了修整未经授权内容的搜索结果的两种方法。
 
 | 方法 | 说明 |
 |----------|-------------|
@@ -116,9 +116,9 @@ Azure 认知搜索[的专用终结点](https://docs.microsoft.com/azure/private-
 | Operation | 权限 |
 |-----------|-------------------------|
 | 创建服务 | Azure 订阅持有者|
-| 缩放服务 | 资源上的管理密钥、RBAC 所有者或参与者  |
-| 删除服务 | 资源上的管理密钥、RBAC 所有者或参与者 |
-| 创建、修改、删除服务中的对象： <br>索引和组件部分（包括分析器定义、评分配置文件、CORS 选项）、索引器、数据源、同义词、建议器。 | 资源上的管理密钥、RBAC 所有者或参与者  |
+| 缩放服务 | 资源的管理密钥、RBAC 所有者或参与者  |
+| 删除服务 | 资源的管理密钥、RBAC 所有者或参与者 |
+| 创建、修改、删除服务中的对象： <br>索引和组件部分（包括分析器定义、评分配置文件、CORS 选项）、索引器、数据源、同义词、建议器。 | 资源的管理密钥、RBAC 所有者或参与者  |
 | 查询索引 | 管理密钥或查询密钥（RBAC 不适用） |
 | 查询系统信息，例如返回统计信息、计数和对象列表。 | 管理密钥，资源的 RBAC（所有者、参与者、读取者） |
 | 管理管理密钥 | 管理密钥，资源中的 RBAC 所有者或参与者。 |

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 04/24/2020
-ms.openlocfilehash: 01121612c5574544ef6985d33f56f3e334f8d37c
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 8c2ef8d174e8449b88f2257074bee69c3f45c6d9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82120647"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181933"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Azure 逻辑应用中 Google 连接器的数据安全和隐私策略
 
@@ -34,13 +34,13 @@ ms.locfileid: "82120647"
 
 在此策略下，使用 Gmail 使用者帐户时，可以使用 Gmail 连接器，其中仅包含特定的 Google 批准服务，这些服务可能会发生更改。 我们的工程团队继续使用 Google 向此列表添加更多服务。 现在，在使用 Gmail 使用者帐户时，可以在与 Gmail 连接器相同的逻辑应用工作流中使用 Google 批准的触发器、操作和连接器：
 
-* 逻辑应用内置触发器和操作：批处理、控制、数据操作、日期时间、平面文件、液体、请求、计划、变量和 XML
+* 逻辑应用内置触发器和操作：批处理、控制、数据操作、日期时间、平面文件、HTTP、液体、请求、计划、变量和 XML
 
 * Google 服务： Gmail、Google Calendar、Google Contacts、Google Drive、Google Sheets 和 Google Task
 
 * 批准的 Microsoft 服务： Dynamics 365、Excel Online、Microsoft 团队、Office 365、OneDrive 和 SharePoint Online
 
-* 用于客户管理的数据源的连接器： FTP、HTTP、RSS、SFTP、SMTP 和 SQL Server
+* 用于客户管理的数据源的连接器： FTP、RSS、SFTP、SMTP 和 SQL Server
 
 有关最新信息，请参阅[Gmail 连接器技术参考文档](https://docs.microsoft.com/connectors/gmail/)。
 
@@ -78,11 +78,11 @@ ms.locfileid: "82120647"
 
    ![提供连接信息](./media/connectors-google-data-security-privacy-policy/authentication-type-bring-your-own.png)
 
-   | Property | 值 | 说明 |
+   | properties | 值 | 说明 |
    |----------|-------|-------------|
    | **身份验证类型** | **自带应用程序** | 指定将使用自己的客户端应用进行身份验证。 |
-   | **客户端 ID** | <*客户端-ID*> | Google 客户端应用的客户端 ID |
-   | **客户端密码** | <*客户端-密码*> | Google 客户端应用的客户端密码 |
+   | **客户端 ID** | <*client-ID*> | Google 客户端应用的客户端 ID |
+   | **客户端密码** | <*client-secret*> | Google 客户端应用的客户端密码 |
    ||||
 
 1. 完成后，选择 "**登录**"。

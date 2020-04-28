@@ -8,12 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 04/21/2020
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 70a087e106e632d697052461928f3e1123a06b1b
-ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
+ms.openlocfilehash: 42eec4a0796a7f07c7e7d1c35571d9d4ddcf69d7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82137529"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176696"
 ---
 # <a name="azure-data-lake-storage-query-acceleration-preview"></a>Azure Data Lake Storage 查询加速（预览版）
 
@@ -71,7 +71,7 @@ ms.locfileid: "82137529"
 
 ## <a name="pricing"></a>定价
 
-由于 Azure Data Lake Storage 服务中增加了计算负载，因此使用查询加速的定价模型不同于正常 Azure Data Lake Storage 事务模型。 查询加速对扫描的数据量以及返回给调用方的数据量收费。
+由于 Azure Data Lake Storage 服务中增加了计算负载，因此使用查询加速的定价模型不同于正常 Azure Data Lake Storage 事务模型。 查询加速对扫描的数据量以及返回给调用方的数据量收费。 有关详细信息，请参阅[Azure Data Lake Storage Gen2 定价](https://azure.microsoft.com/pricing/details/storage/data-lake/)。
 
 尽管对计费模型进行了更改，但查询加速的定价模型旨在降低工作负荷的总拥有成本，因为降低了更昂贵的 VM 成本。
 

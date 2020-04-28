@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc41a18063202bfefb9ddf7238de17fc691984af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 28e591234e28770a90bed827e4d36c6342661dd1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77612141"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866587"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>在 Azure Active Directory 中编写属性映射的表达式
 将预配配置到 SaaS 应用程序时，表达式映射是可指定的属性映射类型之一。 为此，必须编写一个类似于脚本的表达式，允许将用户的数据转换为 SaaS 应用程序更可接受的格式。
@@ -38,7 +38,7 @@ ms.locfileid: "77612141"
 * 对于字符串常量，如果字符串中需要反斜杠 ( \ ) 或引号 ( " )，则必须使用反斜杠 ( \ ) 符号进行转义。 例如："公司名称："Contoso"" \\\\
 
 ## <a name="list-of-functions"></a>函数列表
-[附属](#append)&nbsp;&nbsp;[Count](#count)[Coalesce](#coalesce)&nbsp;[BitAnd](#bitand)&nbsp;&nbsp;[CStr](#cstr)[CBool](#cbool)&nbsp;&nbsp;[ConvertToBase64](#converttobase64)&nbsp;[ConvertToUTF8Hex](#converttoutf8hex)&nbsp;位和&nbsp;&nbsp;CBool&nbsp;&nbsp;组合&nbsp;转换到&nbsp;Base64&nbsp;转换到UTF8Hex&nbsp;计数 Cstr &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;[Guid](#guid)&nbsp;[DateFromNum](#datefromnum)&nbsp;&nbsp;[IIF](#iif)&nbsp;[InStr](#instr)&nbsp;[IsNull](#isnull)[FormatDateTime](#formatdatetime)&nbsp;&nbsp;&nbsp;&nbsp;日期&nbsp;从num&nbsp;&nbsp;[IsNullOrEmpty](#isnullorempty)格式日期吉德&nbsp;&nbsp;IIF &nbsp; instr &nbsp; isnull 是nullor空&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[是存在](#ispresent)&nbsp;&nbsp;&nbsp;[Mid](#mid)[Join](#join)[Left](#left)[Not](#not)[Item](#item)[IsString](#isstring)&nbsp;[NormalizeDiacritics](#normalizediacritics)是字符串&nbsp;项目加入左中&nbsp;规范化符号不&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Replace](#replace)&nbsp;[Split](#split)[SingleAppRoleAssignment](#singleapproleassignment)[RemoveDuplicates](#removeduplicates)&nbsp;[SelectUniqueValue](#selectuniquevalue)删除重复替换&nbsp;&nbsp;选择唯&nbsp;一价值&nbsp;单应用程序分配拆分&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[条带空格](#stripspaces)&nbsp;&nbsp;&nbsp;&nbsp;[Switch](#switch)&nbsp;[ToLower](#tolower)[Word](#word)[ToUpper](#toupper)切换到&nbsp;"下&nbsp;到&nbsp;上字"&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+[附录](#append)&nbsp;&nbsp;[Join](#join)[Mid](#mid)[Left](#left)[Coalesce](#coalesce)&nbsp;[Not](#not)[Replace](#replace)[Count](#count)&nbsp;[Item](#item)[BitAnd](#bitand)&nbsp;&nbsp;&nbsp;[IsPresent](#ispresent)[CStr](#cstr)&nbsp;&nbsp;[IIF](#iif)&nbsp;[FormatDateTime](#formatdatetime)&nbsp;[InStr](#instr)&nbsp;[Guid](#guid)&nbsp;[RemoveDuplicates](#removeduplicates)[CBool](#cbool)&nbsp;&nbsp;&nbsp;&nbsp;[IsNull](#isnull)&nbsp;[DateFromNum](#datefromnum)&nbsp;[NormalizeDiacritics](#normalizediacritics)[IsString](#isstring)[IsNullOrEmpty](#isnullorempty)[ConvertToBase64](#converttobase64)&nbsp;&nbsp;&nbsp;[SelectUniqueValue](#selectuniquevalue)[ConvertToUTF8Hex](#converttoutf8hex)&nbsp;&nbsp;&nbsp;位和&nbsp;&nbsp;CBool&nbsp;&nbsp;&nbsp;组合&nbsp;&nbsp;转换到Base64&nbsp;&nbsp;&nbsp;转换到UTF8hex&nbsp;&nbsp;计数 Cstr&nbsp;&nbsp;日期从num 格式日期&nbsp;&nbsp;Guid &nbsp; IIF &nbsp; &nbsp; instr isnullornull&nbsp;是&nbsp;存在是存在是&nbsp;字符串&nbsp;项目&nbsp;加入左&nbsp;中间&nbsp;规范化音调符号不&nbsp;删除重复&nbsp;替换选择唯一值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Switch](#switch)[Split](#split)&nbsp;[SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;[ToUpper](#toupper)[Word](#word)[StripSpaces](#stripspaces)&nbsp;[ToLower](#tolower)单应用分配&nbsp;拆分&nbsp;条带空间&nbsp;切换到&nbsp;"下&nbsp;转到&nbsp;上部&nbsp;"&nbsp;字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 ---
 ### <a name="append"></a>附加
@@ -48,10 +48,10 @@ ms.locfileid: "77612141"
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **源** |必选 |String |通常是来自源对象的属性的名称。 |
-| **suffix** |必选 |String |要附加到源值末尾的字符串。 |
+| **源** |必选 |字符串 |通常是来自源对象的属性的名称。 |
+| **suffix** |必选 |字符串 |要附加到源值末尾的字符串。 |
 
 ---
 ### <a name="bitand"></a>BitAnd
@@ -66,10 +66,10 @@ ms.locfileid: "77612141"
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **值1** |必选 |num |应使用值 2 的数值|
-| **值2** |必选 |num |应使用值 1 的 AND 的数值|
+| **value1** |必选 |num |应使用值 2 的数值|
+| **value2** |必选 |num |应使用值 1 的 AND 的数值|
 
 **例子：**<br>
 BitAnd(&HF, &HF7)                                                                                
@@ -83,7 +83,7 @@ BitAnd(&HF, &HF7)
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **expression** |必选 | 表达式 | 任何有效的表达式 |
 
@@ -99,10 +99,10 @@ CBool（[属性1]=[属性2]）
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **源1 ...源N** | 必选 | String |必需的可变次数。 通常是来自源对象的属性的名称。 |
-| **defaultValue** | 可选 | String | 所有源值为 NULL 时使用的默认值。 可以是空字符串 ("")。
+| **源1 ...源N** | 必选 | 字符串 |必需的可变次数。 通常是来自源对象的属性的名称。 |
+| **defaultValue** | 可选 | 字符串 | 所有源值为 NULL 时使用的默认值。 可以是空字符串 ("")。
 
 ---
 ### <a name="converttobase64"></a>ConvertToBase64
@@ -112,9 +112,9 @@ CBool（[属性1]=[属性2]）
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **源** |必选 |String |要转换为基 64 的字符串|
+| **源** |必选 |字符串 |要转换为基 64 的字符串|
 
 **例子：**<br>
 ConvertToBase64("Hello world!")                                                                                                        
@@ -128,9 +128,9 @@ ConvertToBase64("Hello world!")
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **源** |必选 |String |要转换为 UTF8 十六进制的字符串|
+| **源** |必选 |字符串 |要转换为 UTF8 十六进制的字符串|
 
 **例子：**<br>
 ConvertToUTF8Hex("Hello world!")                                                                                                         
@@ -144,7 +144,7 @@ ConvertToUTF8Hex("Hello world!")
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **属性** |必选 |属性 |多值属性，将元素计数|
 
@@ -156,7 +156,7 @@ ConvertToUTF8Hex("Hello world!")
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **value** |必选 | 数值、参考或布尔 | 可以是数字值、引用属性或布尔值。 |
 
@@ -172,7 +172,7 @@ CStr([dn])
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **value** |必选 | Date | 要转换为日期时间类型的 AD 日期 |
 
@@ -189,11 +189,11 @@ DateFromNum(129699324000000000)
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **源** |必选 |String |通常是来自源对象的属性的名称。 |
-| **inputFormat** |必选 |String |源值的预期格式。 有关支持的格式，请参阅[https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)。 |
-| **输出格式** |必选 |String |输出日期的格式。 |
+| **源** |必选 |字符串 |通常是来自源对象的属性的名称。 |
+| **inputFormat** |必选 |字符串 |源值的预期格式。 有关支持的格式，请参阅[https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)。 |
+| **输出格式** |必选 |字符串 |输出日期的格式。 |
 
 ---
 ### <a name="guid"></a>Guid
@@ -209,7 +209,7 @@ DateFromNum(129699324000000000)
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **条件** |必选 |变量或表达式 |计算结果为 true 或 false 的任何值或表达式。 |
 | **valueIfTrue** |必选 |变量或字符串 | 如果条件计算结果为 true，则为返回值。 |
@@ -226,11 +226,11 @@ IIF（[国家]"美国"，"国家"，[部门]）
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **值1** |必选 |String |要搜索的字符串 |
-| **值2** |必选 |String |要找到的字符串 |
-| **开始** |可选 |Integer |起始位置以查找子字符串|
+| **value1** |必选 |字符串 |要搜索的字符串 |
+| **value2** |必选 |字符串 |要找到的字符串 |
+| **start** |可选 |Integer |起始位置以查找子字符串|
 | **比较类型** |可选 |枚举 |可以是 vb 文本比较或 vbBinary 比较 |
 
 **例子：**<br>
@@ -248,7 +248,7 @@ InStr("repEated","e",3,vbBinaryCompare)
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **expression** |必选 |表达式 |要计算的表达式 |
 
@@ -265,7 +265,7 @@ IsNull([displayName])
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **expression** |必选 |表达式 |要计算的表达式 |
 
@@ -281,7 +281,7 @@ IsNull([displayName])
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **expression** |必选 |表达式 |要计算的表达式 |
 
@@ -296,21 +296,21 @@ Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager])
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **expression** |必选 |表达式 |要计算的表达式 |
 
 ---
-### <a name="item"></a>Item
+### <a name="item"></a>项
 **功能：**<br> 项目（属性、索引）
 
 **描述:**<br> Item 函数返回多值字符串/属性中的一个项。
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **属性** |必选 |特性 |要搜索的多值属性 |
+| **属性** |必选 |Attribute |要搜索的多值属性 |
 | **index** |必选 |Integer | 索引到多值字符串中的项|
 
 **例子：**<br>
@@ -326,10 +326,10 @@ Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager])
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **分离** |必选 |String |用于在将源值连接为一个字符串时分隔源值的字符串。 如果不需要分隔符，则可以是 ""。 |
-| **源1 ...源N** |必选，次数可变 |String |要联接在一起的字符串值。 |
+| separator  |必选 |字符串 |用于在将源值连接为一个字符串时分隔源值的字符串。 如果不需要分隔符，则可以是 ""。 |
+| **源1 ...源N** |必选，次数可变 |字符串 |要联接在一起的字符串值。 |
 
 ---
 ### <a name="left"></a>Left
@@ -342,9 +342,9 @@ Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager])
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **字符串** |必选 |特性 | 要从 中返回字符的字符串 |
+| **字符串** |必选 |Attribute | 要从 中返回字符的字符串 |
 | **纳姆查尔斯** |必选 |Integer | 标识从字符串开头（左）返回的字符数的数字|
 
 **例子：**<br>
@@ -359,10 +359,10 @@ Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager])
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **源** |必选 |String |通常是属性的名称。 |
-| **开始** |必选 |integer |**source** 字符串中的索引，子字符串应从这里开始。 字符串中第一个字符的索引为 1，第二个字符的索引为 2，依此类推。 |
+| **源** |必选 |字符串 |通常是属性的名称。 |
+| **start** |必选 |integer |**source** 字符串中的索引，子字符串应从这里开始。 字符串中第一个字符的索引为 1，第二个字符的索引为 2，依此类推。 |
 | **length** |必选 |integer |子字符串的长度。 如果长度超出 **source** 字符串，则函数将返回从 **start** 索引到 **source** 字符串末尾的子字符串。 |
 
 ---
@@ -373,9 +373,9 @@ Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager])
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **源** |必选 |String | 通常是名字或姓氏属性。 |
+| **源** |必选 |字符串 | 通常是名字或姓氏属性。 |
 
 ---
 ### <a name="not"></a>Not
@@ -385,7 +385,7 @@ Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager])
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **源** |必选 |布尔型字符串 |预期的 **source** 值为“True”或“False”。 |
 
@@ -397,9 +397,9 @@ Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager])
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **value** |必选 | String | 受支持格式的日期时间字符串。 有关支持的格式，请参阅 https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx。 |
+| **value** |必选 | 字符串 | 受支持格式的日期时间字符串。 有关支持的格式，请参阅 https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx。 |
 
 **例子：**<br>
 * 工作日示例 <br>
@@ -419,7 +419,7 @@ Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager])
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **属性** |必选 |多值属性 |将删除重复项的多值属性|
 
@@ -453,15 +453,15 @@ RemoveDuplicates([proxyAddresses])
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **源** |必选 |String |通常来自**源**对象的属性的名称。 |
-| **oldValue** |可选 |String |要在 **source** 或 **template** 中替换的值。 |
-| **regexPattern** |可选 |String |**source** 中要替换的值的正则表达式模式。 或者，当使用 **replacementPropertyName** 时，从 **replacementPropertyName** 中提取值的模式。 |
-| **regexGroupName** |可选 |String |**regexPattern** 中的组名称。 仅当使用 **replacementPropertyName** 时，才会从 **replacementPropertyName** 中以 **replacementValue** 的形式提取此组的值。 |
-| **replacementValue** |可选 |String |用于替换旧值的新值。 |
-| **replacementAttributeName** |可选 |String |用于替换值的属性的名称 |
-| **模板** |可选 |String |当提供**模板**值时，我们将在模板中查找**旧值**并将其替换为**源**值。 |
+| **源** |必选 |字符串 |通常来自**源**对象的属性的名称。 |
+| **oldValue** |可选 |字符串 |要在 **source** 或 **template** 中替换的值。 |
+| **regexPattern** |可选 |字符串 |**source** 中要替换的值的正则表达式模式。 或者，当使用 **replacementPropertyName** 时，从 **replacementPropertyName** 中提取值的模式。 |
+| **regexGroupName** |可选 |字符串 |**regexPattern** 中的组名称。 仅当使用 **replacementPropertyName** 时，才会从 **replacementPropertyName** 中以 **replacementValue** 的形式提取此组的值。 |
+| **replacementValue** |可选 |字符串 |用于替换旧值的新值。 |
+| **replacementAttributeName** |可选 |字符串 |用于替换值的属性的名称 |
+| **模板** |可选 |字符串 |当提供**模板**值时，我们将在模板中查找**旧值**并将其替换为**源**值。 |
 
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
@@ -469,18 +469,18 @@ RemoveDuplicates([proxyAddresses])
 
 **描述:**<br> 需要至少两个参数，这些参数是使用表达式定义的唯一值生成规则。 此函数会评估每个规则，然后在目标应用/目录中检查生成的值的唯一性。 将返回找到的第一个唯一值。 如果所有值都已存在于目标中，则会托管该条目并在审核日志中记录原因。 可以提供的参数数目没有上限。
 
-> [!NOTE]
-> - 这是一个顶级函数，不能嵌套。
-> - 此函数不能应用到具有匹配优先级的属性。  
-> - 此函数仅供用于创建条目。 将其与属性一起使用时，请将“应用映射”**** 属性设置为“仅在创建对象期间”。****
-> - 目前只有“Workday 到 Active Directory 的用户预配”支持此函数。 此函数不可用于其他预配应用程序。 
+
+ - 这是一个顶级函数，不能嵌套。
+ - 此函数不能应用到具有匹配优先级的属性。   
+ - 此函数仅供用于创建条目。 将其与属性一起使用时，请将“应用映射”**** 属性设置为“仅在创建对象期间”。****
+ - 目前只有“Workday 到 Active Directory 的用户预配”支持此函数。 此函数不可用于其他预配应用程序。 
 
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **uniqueValueRule1  … uniqueValueRuleN** |需要至少 2 个，没有上限 |String | 要评估的唯一值生成规则的列表。 |
+| **uniqueValueRule1  … uniqueValueRuleN** |需要至少 2 个，没有上限 |字符串 | 要评估的唯一值生成规则的列表。 |
 
 
 ---
@@ -491,9 +491,9 @@ RemoveDuplicates([proxyAddresses])
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **[appRoleAssignments]** |必选 |String |**[appRoleAssignments]** 对象。 |
+| **[appRoleAssignments]** |必选 |字符串 |**[appRoleAssignments]** 对象。 |
 
 ---
 ### <a name="split"></a>拆分
@@ -503,10 +503,10 @@ RemoveDuplicates([proxyAddresses])
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **源** |必选 |String |要更新的 **source** 值。 |
-| **分隔符** |必选 |String |指定将用来拆分字符串的字符（示例：“,”） |
+| **源** |必选 |字符串 |要更新的 **source** 值。 |
+| **分隔符** |必选 |字符串 |指定将用来拆分字符串的字符（示例：“,”） |
 
 ---
 ### <a name="stripspaces"></a>StripSpaces
@@ -516,9 +516,9 @@ RemoveDuplicates([proxyAddresses])
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **源** |必选 |String |要更新的 **source** 值。 |
+| **源** |必选 |字符串 |要更新的 **source** 值。 |
 
 ---
 ### <a name="switch"></a>开关
@@ -528,12 +528,12 @@ RemoveDuplicates([proxyAddresses])
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **源** |必选 |String |要更新的 **source** 值。 |
-| **defaultValue** |可选 |String |当 source 不匹配任何 key 时使用的默认值。 可以是空字符串 ("")。 |
-| **关键** |必选 |String |用来比较 **source** 值的 **key**。 |
-| **value** |必选 |String |与该 key 匹配的 **source** 的替换值。 |
+| **源** |必选 |字符串 |要更新的 **source** 值。 |
+| **defaultValue** |可选 |字符串 |当 source 不匹配任何 key 时使用的默认值。 可以是空字符串 ("")。 |
+| **键** |必选 |字符串 |用来比较 **source** 值的 **key**。 |
+| **value** |必选 |字符串 |与该 key 匹配的 **source** 的替换值。 |
 
 ---
 ### <a name="tolower"></a>ToLower
@@ -543,10 +543,10 @@ RemoveDuplicates([proxyAddresses])
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **源** |必选 |String |通常是来自源对象的属性的名称 |
-| **文化** |可选 |String |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2**，其中 languagecode2** 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码**。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
+| **源** |必选 |字符串 |通常是来自源对象的属性的名称 |
+| **区域性** |可选 |字符串 |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2**，其中 languagecode2** 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码**。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
 
 ---
 ### <a name="toupper"></a>ToUpper
@@ -556,10 +556,10 @@ RemoveDuplicates([proxyAddresses])
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **源** |必选 |String |通常是来自源对象的属性的名称。 |
-| **文化** |可选 |String |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2**，其中 languagecode2** 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码**。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
+| **源** |必选 |字符串 |通常是来自源对象的属性的名称。 |
+| **区域性** |可选 |字符串 |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2**，其中 languagecode2** 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码**。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
 
 ---
 ### <a name="word"></a>Word
@@ -573,11 +573,11 @@ RemoveDuplicates([proxyAddresses])
 
 **参数：**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **字符串** |必选 |多值属性 |要返回单词的字符串。|
 | **字数** |必选 | Integer | 标识应返回的字号的数字|
-| **分隔符** |必选 |String| 表示应用于标识单词的分隔符的字符串|
+| **分隔符** |必选 |字符串| 表示应用于标识单词的分隔符的字符串|
 
 **例子：**<br>
 字（"快速棕色狐狸"，3，""）                                                                                       

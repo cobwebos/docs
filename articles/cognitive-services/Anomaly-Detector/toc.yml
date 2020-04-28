@@ -10,12 +10,8 @@
   items:
     - name: 客户端库
       items:
-        - name: '使用 C#'
-          href: quickstarts/detect-data-anomalies-csharp-sdk.md
-        - name: 使用 Python
-          href: quickstarts/detect-data-anomalies-python-sdk.md
-        - name: 使用 Node.js
-          href: quickstarts/detect-data-anomalies-nodejs-sdk.md
+        - name: 异常探测器客户端库
+          href: ./quickstarts/client-libraries.md
     - name: REST API
       items:
         - name: '使用 C#'
@@ -30,7 +26,7 @@
       href: tutorials/batch-anomaly-detection-powerbi.md
     - name: 使用 Azure Databricks 针对流数据进行异常情况检测
       href: tutorials/anomaly-detection-streaming-databricks.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 识别数据中的异常
       href: how-to/identify-anomalies.md
@@ -82,7 +78,7 @@
       items:
         - name: 获取支持
           href: 'https://aka.ms/adsupport'
-        - name: 堆栈溢出
+        - name: Stack Overflow
           href: 'https://aka.ms/adso'
         - name: MSDN
           href: 'https://aka.ms/admsdn'

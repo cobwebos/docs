@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: c5ea32fb198a61391e1be3648d1d2d2e829a7214
-ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
+ms.openlocfilehash: 06c344130156ae5f72f6e65baa519c11adff2bae
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82137257"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186435"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>使用 InfluxData Telegraf 代理收集 Linux VM 的自定义指标
 
@@ -32,6 +32,9 @@ ms.locfileid: "82137257"
 在本教程中，我们将部署运行 Ubuntu 16.04 LTS 操作系统的 Linux VM。 大多数 Linux 操作系统支持 Telegraf 代理。 Debian 和 RPM 包在[InfluxData 下载门户](https://portal.influxdata.com/downloads)上都与未封装的 Linux 二进制文件一起使用。 有关其他安装说明和选项，请参阅此 [Telegraf 安装指南](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/)。 
 
 登录 [Azure 门户](https://portal.azure.com)。
+
+> [!NOTE]  
+> 如果要迁移经典警报规则并使用现有 Linux 虚拟机，请确保虚拟机将系统分配的标识设置为 **"开**"。
 
 创建新的 Linux VM： 
 

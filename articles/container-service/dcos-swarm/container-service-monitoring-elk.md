@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 3d34ebe22344be8acc6ec3cc974071639293e2b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 586b8d25a9f391487640e9b1f8adb3be0e4be6db
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76277760"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82166166"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-elk"></a>（已弃用）通过 ELK 监视 Azure 容器服务群集
 
@@ -28,11 +28,11 @@ ms.locfileid: "76277760"
 ELK 堆栈是 Elasticsearch、Logstash 和 Kibana 的组合，提供可用于监视和分析群集中的日志的端到端堆栈。
 
 ## <a name="configure-the-elk-stack-on-a-dcos-cluster"></a>在 DC/OS 群集上配置 ELK 堆栈
-访问您的DC/OS UI[http://localhost:80/](http://localhost:80/)通过一旦在DC/OS UI导航到**宇宙**。 从 DC/OS Universe 以该特定顺序搜索并安装 Elasticsearch、Logstash 和 Kibana。 如果转到“高级安装”**** 链接，可以了解有关配置的详细信息。
+通过 `http://localhost:80/` 访问 DC/OS UI，然后从此处导航到“Universe”****。 从 DC/OS Universe 以该特定顺序搜索并安装 Elasticsearch、Logstash 和 Kibana。 如果转到“高级安装”**** 链接，可以了解有关配置的详细信息。
 
 ![ELK1](./media/container-service-monitoring-elk/elk1.PNG) ![ELK2](./media/container-service-monitoring-elk/elk2.PNG) ![ELK3](./media/container-service-monitoring-elk/elk3.PNG) 
 
-在 ELK 容器启动并正在运行后，需要使 Kibana 能够通过 Marathon-LB 进行访问。 导航到**服务** > **kibana**，然后单击 **"编辑**"，如下所示。
+在 ELK 容器启动并正在运行后，需要使 Kibana 能够通过 Marathon-LB 进行访问。 导航到 "**服务** > " "**kibana**"，然后单击 "**编辑**"，如下所示。
 
 ![ELK4](./media/container-service-monitoring-elk/elk4.PNG)
 

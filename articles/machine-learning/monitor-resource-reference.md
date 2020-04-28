@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 03/06/2020
-ms.openlocfilehash: 958794cda60d0ce1b0d223b9b5a6c03283022a6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/27/2020
+ms.openlocfilehash: 1abd52c98cb1fa6ebe1014fc7a65e756d038d683
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78927565"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187590"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Azure 机器学习监视数据引用
 
@@ -27,7 +27,7 @@ ms.locfileid: "78927565"
 
 ### <a name="amlcomputejobevents-table"></a>AmlComputeJobEvents 表
 
-| properties | 描述 |
+| properties | 说明 |
 |:--- |:---|
 | TimeGenerated | 生成日志项目的时间 |
 | OperationName | 与日志事件关联的操作的名称 |
@@ -56,7 +56,7 @@ ms.locfileid: "78927565"
 
 ### <a name="amlcomputeclusterevents-table"></a>AmlComputeClusterEvents 表
 
-| properties | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | TimeGenerated | 生成日志项目的时间 |
 | OperationName | 与日志事件关联的操作的名称 |
@@ -99,7 +99,7 @@ ms.locfileid: "78927565"
 
 ### <a name="amlcomputeclusternodeevents-table"></a>AmlComputeClusterNodeEvents 表
 
-| properties | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | TimeGenerated | 生成日志项目的时间 |
 | OperationName | 与日志事件关联的操作的名称 |
@@ -122,13 +122,13 @@ ms.locfileid: "78927565"
 | StartTaskEndTime | 向节点分配任务并结束任务的时间 |
 | TotalE2ETimeInSeconds | 总时间节点处于活动状态 |
 
-### <a name="metrics"></a>指标
+### <a name="metrics"></a>度量值
 
-下表列出了为 Azure 机器学习收集的平台指标，所有度量值都存储在“Azure 机器学习工作区”命名空间中****。
+下表列出了为 Azure 机器学习收集的平台指标，所有度量值都存储在“Azure 机器学习工作区”命名空间中  。
 
-**模型**
+**Model**
 
-| 指标 | 单位 | 描述 |
+| 指标 | 单位 | 说明 |
 | ----- | ----- | ----- |
 | 模型部署失败 | Count | 失败的模型部署数。 |
 | 模型部署开始 | Count | 开始的模型部署数。 |
@@ -140,7 +140,7 @@ ms.locfileid: "78927565"
 
 配额信息仅用于 Azure 机器学习计算。
 
-| 指标 | 单位 | 描述 |
+| 指标 | 单位 | 说明 |
 | ----- | ----- | ----- |
 | 活动核心数 | Count | 活动计算核心的数量。 |
 | 活动节点数 | Count | 活动节点的数量。 |
@@ -158,17 +158,33 @@ ms.locfileid: "78927565"
 
 下面是可用于筛选配额指标的维度：
 
-| 维度 | 适用指标 | 描述 |
+| 维度 | 适用指标 | 说明 |
 | ---- | ---- | ---- |
 | 群集名称 | 所有配额指标 | 计算实例的名称。 |
 | VM 系列名称 | 配额使用率百分比 | 群集使用的 VM 系列的名称。 |
 | VM 优先级 | 配额使用率百分比 | VM 的优先级。
 
-**运行**
+**资源**
+
+| 指标 | 单位 | 说明 |
+| ----- | ----- | ----- |
+| CpuUtilization | 百分比 | 在运行/作业过程中，给定节点使用的 CPU 百分比。 仅当作业在节点上运行时，才会发布此指标。 一个作业可以使用一个或多个节点。 此指标按节点发布。 |
+| GpuUtilization | 百分比 | 在运行/作业期间，给定节点使用的 GPU 百分比。 一个节点可以有一个或多个 Gpu。 每个节点每个 GPU 发布此指标。 |
+
+下面是可用于筛选资源度量值的维度：
+
+| 维度 | 说明 |
+| ----- | ----- |
+| CreatedTime | |
+| DeviceId | 设备的 ID （GPU）。 仅适用于 GpuUtilization。 |
+| NodeId | 作业运行所在的节点的 ID。 |
+| RunId | 运行/作业的 ID。 |
+
+**用**
 
 有关训练运行的信息。
 
-| 指标 | 单位 | 描述 |
+| 指标 | 单位 | 说明 |
 | ----- | ----- | ----- |
 | 已完成的运行数 | Count | 已完成运行的数量。 |
 | 失败运行数 | Count | 失败运行的数量。 |
@@ -176,7 +192,7 @@ ms.locfileid: "78927565"
 
 下面是可用于筛选运行指标的维度：
 
-| 维度 | 描述 |
+| 维度 | 说明 |
 | ---- | ---- |
 | ComputeType | 运行时使用的计算类型。 |
 | PipelineStepType | 运行时使用的 [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py) 类型。 |
@@ -185,7 +201,7 @@ ms.locfileid: "78927565"
 
 RunType 维度的有效值为：
 
-| “值” | 描述 |
+| 值 | 说明 |
 | ----- | ----- |
 | 试验 | 非管道运行。 |
 | PipelineRun | 管道运行，它是 StepRun 的父级。 |

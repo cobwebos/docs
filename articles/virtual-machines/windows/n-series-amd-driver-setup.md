@@ -1,23 +1,19 @@
 ---
 title: 适用于 Windows 的 Azure N 系列 AMD GPU 驱动程序设置
 description: 如何为在 Azure 中运行 Windows 服务器或 Windows 的 N 系列 VM 设置 AMD GPU 驱动程序
-services: virtual-machines-windows
 author: vikancha
 manager: jkabat
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 02213feb507e9a032a50241fddf31714b9dfd7ee
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 63114bdf60c1feb2b6cb1092ef78397efdc5b666
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011051"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865765"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>在运行 Windows 的 N 系列 VM 上安装 AMD GPU 驱动程序
 
@@ -29,7 +25,7 @@ ms.locfileid: "81011051"
 
 ## <a name="supported-operating-systems-and-drivers"></a>支持的操作系统和驱动程序
 
-| (OS) | 驱动程序 |
+| OS | 驱动程序 |
 | -------- |------------- |
 | Windows 10 EVD - 生成 1903 <br/><br/>Windows 10 - 生成 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20.Q1.1](https://download.microsoft.com/download/3/8/9/3893407b-e8aa-4079-8592-735d7dd1c19a/Radeon-Pro-Software-for-Enterprise-GA.exe) （.exe） |
 
