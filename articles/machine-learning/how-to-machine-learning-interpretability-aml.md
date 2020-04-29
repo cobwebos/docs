@@ -1,5 +1,5 @@
 ---
-title: 解释&解释 Python 中的 ML 模型
+title: 解释 & 在 Python 中解释 ML 模型
 titleSuffix: Azure Machine Learning
 description: 了解使用 Azure 机器学习 SDK 时如何获取解释，以了解机器学习模型如何确定特征重要性并做出预测。
 services: machine-learning
@@ -11,37 +11,37 @@ author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/12/2020
 ms.openlocfilehash: 45eef976fe10bbb5acda2cd348a77b28c3ffbe02
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81769809"
 ---
-# <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>使用可解释性包解释 Python 中&预测的 ML 模型
+# <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>使用 interpretability 包在 Python 中说明 & 预测的 ML 模型
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在此操作指南中，您将了解如何使用 Azure 机器学习 Python SDK 的可解释性包来执行以下任务：
+在本操作方法指南中，你将了解如何使用 Azure 机器学习 Python SDK 的 interpretability 包来执行以下任务：
 
 
-* 在本地解释个人计算机上的整个模型行为或单个预测。
+* 在本地对个人计算机上的整个模型行为或单个预测进行说明。
 
-* 为工程功能启用可解释性技术。
+* 启用用于工程功能的 interpretability 技术。
 
-* 解释 Azure 中整个模型和单个预测的行为。
+* 介绍 Azure 中的整个模型和单个预测的行为。
 
-* 使用可视化仪表板与模型说明进行交互。
+* 使用可视化面板来与模型说明进行交互。
 
-* 在模型旁边部署评分解释器，以观察推断过程中的说明。
+* 在您的模型中部署计分说明，在推断期间观察说明。
 
 
 
-有关支持的可解释性技术和机器学习模型的详细信息，请参阅 Azure 机器学习和[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)[中的模型可解释性](how-to-machine-learning-interpretability.md)。
+有关支持的 interpretability 技术和机器学习模型的详细信息，请参阅[模型 interpretability in Azure 机器学习](how-to-machine-learning-interpretability.md)和[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)。
 
 ## <a name="generate-feature-importance-value-on-your-personal-machine"></a>在个人计算机上生成功能重要性值 
-下面的示例演示如何在不联系 Azure 服务的情况下在个人计算机上使用可解释性包。
+下面的示例演示如何在个人计算机上使用 interpretability 包，而无需联系 Azure 服务。
 
-1. 安装`azureml-interpret`和`azureml-contrib-interpret`打包。
+1. 安装`azureml-interpret`和`azureml-contrib-interpret`包。
     ```bash
     pip install azureml-interpret
     pip install azureml-contrib-interpret
@@ -122,9 +122,9 @@ ms.locfileid: "81769809"
                              classes=classes)
     ```
 
-### <a name="explain-the-entire-model-behavior-global-explanation"></a>解释整个模型行为（全局解释） 
+### <a name="explain-the-entire-model-behavior-global-explanation"></a>解释整个模型行为（全局说明） 
 
-请参阅以下示例，以帮助您获取聚合（全局）要素重要性值。
+请参阅下面的示例，帮助你获取聚合（全局）特征重要性值。
 
 ```python
 
@@ -143,8 +143,8 @@ dict(zip(sorted_global_importance_names, sorted_global_importance_values))
 global_explanation.get_feature_importance_dict()
 ```
 
-### <a name="explain-an-individual-prediction-local-explanation"></a>解释单个预测（本地解释）
-通过调用单个实例或一组实例的说明来获取不同数据点的单个要素重要性值。
+### <a name="explain-an-individual-prediction-local-explanation"></a>说明单个预测（本地说明）
+通过调用单个实例或一组实例的解释，获取不同数据点的各个功能重要性值。
 > [!NOTE]
 > `PFIExplainer` 不支持本地解释。
 
@@ -231,14 +231,14 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
                                      transformations=transformations)
 ```
 
-## <a name="generate-feature-importance-values-via-remote-runs"></a>通过远程运行生成要素重要性值
+## <a name="generate-feature-importance-values-via-remote-runs"></a>通过远程运行生成功能重要性值
 
-以下示例演示如何使用 `ExplanationClient` 类为远程运行启用模型可解释性。 它在概念上类似于本地流程，但您除外：
+以下示例演示如何使用 `ExplanationClient` 类为远程运行启用模型可解释性。 它在概念上类似于本地过程，只不过：
 
 * 在远程运行中使用 `ExplanationClient` 来上传可解释性上下文。
 * 稍后在本地环境中下载该上下文。
 
-1. 安装`azureml-interpret`和`azureml-interpret-contrib`打包。
+1. 安装`azureml-interpret`和`azureml-interpret-contrib`包。
     ```bash
     pip install azureml-interpret
     pip install azureml-interpret-contrib
@@ -299,34 +299,34 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 下载本地 Jupyter 笔记本中的解释后，可以使用可视化仪表板来了解和解释模型。
 
-### <a name="understand-entire-model-behavior-global-explanation"></a>了解整个模型行为（全局解释） 
+### <a name="understand-entire-model-behavior-global-explanation"></a>了解整个模型行为（全局说明） 
 
-以下图提供了已训练模型的总体视图及其预测和说明。
+以下图形提供了定型模型的总体视图及其预测和说明。
 
 |绘图|说明|
 |----|-----------|
 |数据浏览| 显示数据集的概述以及预测值。|
-|全局重要性|聚合具有单个数据点的重要性值，以显示模型的总体顶部 K（可配置 K） 重要要素。 帮助了解基础模型的整体行为。|
-|解释探索|演示要素如何影响模型预测值的变化或预测值的概率。 显示特征交互的影响。|
-|摘要重要性|在所有数据点上使用单个要素重要性值来显示每个要素对预测值的影响分布。 使用此关系图，可以调查要素值对预测值的影响方向。
+|全局重要性|聚合各个数据点的特征重要性值，以显示模型的总体前 K （可配置 K）重要特征。 帮助了解基础模型的总体行为。|
+|解释探索|说明功能如何影响模型的预测值的变化或预测值的概率。 显示特征交互的影响。|
+|摘要重要性|跨所有数据点使用各个特征重要性值，以显示每个特征对预测值的影响的分布情况。 使用此关系图，您可以调查功能值影响预测值的方向。
 |
 
-[![可视化仪表板全局](./media/how-to-machine-learning-interpretability-aml/global-charts.png)](./media/how-to-machine-learning-interpretability-aml/global-charts.png#lightbox)
+[![可视化面板全局](./media/how-to-machine-learning-interpretability-aml/global-charts.png)](./media/how-to-machine-learning-interpretability-aml/global-charts.png#lightbox)
 
-### <a name="understand-individual-predictions-local-explanation"></a>了解单个预测（本地解释） 
+### <a name="understand-individual-predictions-local-explanation"></a>了解单个预测（本地说明） 
 
-通过单击任何整体图中的任何单个数据点，可以加载任何数据点的单个要素重要性图。
+您可以通过单击任意绘图中的任何单个数据点，为任何数据点加载各个特征的重要性。
 
 |绘图|说明|
 |----|-----------|
-|本地重要性|显示单个预测的前 K（可配置 K）重要要素。 帮助演示基础模型对特定数据点的本地行为。|
-|扰动探索（如果分析）|允许更改所选数据点的特征值，并观察对预测值所做的最终更改。|
+|本地重要性|显示单个预测的前 K （可配置 K）重要功能。 帮助演示基础模型对特定数据点的本地行为。|
+|Perturbation 探索（if 分析）|允许更改所选数据点的特征值，并观察对预测值所做的最终更改。|
 |个体条件预期 (ICE)| 允许特征值从最小值更改为最大值。 帮助演示在特征发生更改时数据点的预测如何更改。|
 
-[![可视化仪表板本地功能重要性](./media/how-to-machine-learning-interpretability-aml/local-charts.png)](./media/how-to-machine-learning-interpretability-aml/local-charts.png#lightbox)
+[![可视化面板本地功能重要性](./media/how-to-machine-learning-interpretability-aml/local-charts.png)](./media/how-to-machine-learning-interpretability-aml/local-charts.png#lightbox)
 
 
-[![可视化仪表板功能扰动](./media/how-to-machine-learning-interpretability-aml/perturbation.gif)](./media/how-to-machine-learning-interpretability-aml/perturbation.gif#lightbox)
+[![可视化面板功能 Perturbation](./media/how-to-machine-learning-interpretability-aml/perturbation.gif)](./media/how-to-machine-learning-interpretability-aml/perturbation.gif#lightbox)
 
 
 [![可视化仪表板 ICE 绘图](./media/how-to-machine-learning-interpretability-aml/ice-plot.png)](./media/how-to-machine-learning-interpretability-aml/ice-plot.png#lightbox)
@@ -348,7 +348,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
     jupyter labextension install microsoft-mli-widget
     ```
 
-要加载可视化仪表板，请使用以下代码。
+若要加载可视化面板，请使用以下代码。
 
 ```python
 from interpret_community.widget import ExplanationDashboard
@@ -358,9 +358,9 @@ ExplanationDashboard(global_explanation, model, x_test)
 
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Azure 机器学习工作室中的可视化效果
 
-如果完成[远程可解释性](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs)步骤（将生成的解释上载到 Azure 机器学习运行历史记录），则可以在[Azure 机器学习工作室](https://ml.azure.com)中查看可视化仪表板。 此仪表板是上面解释的可视化仪表板的较简单的版本（由于工作室中没有可以执行其实时计算的活动计算，因此禁用了解释探索和 ICE 绘图）。
+如果完成[远程 interpretability](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs)步骤（将生成的说明上载到 Azure 机器学习运行历史记录），可以在[Azure 机器学习 studio](https://ml.azure.com)中查看可视化仪表板。 此仪表板是上面所述的可视化面板的更简单的版本（说明探索和 ICE 绘图已禁用，因为 studio 中没有可执行其实时计算的活动计算）。
 
-如果数据集、全局和本地说明可用，则数据将填充所有选项卡（扰动探索和 ICE 除外）。 如果只有全局说明可用，则禁用"摘要重要性"选项卡和所有本地说明选项卡。
+如果数据集、全局和本地解释可用，则数据将填充所有选项卡（Perturbation 浏览和 ICE 除外）。 如果只有全局说明，则 "摘要重要性" 选项卡和 "所有本地解释" 选项卡都处于禁用状态。
 
 通过以下途径之一访问 Azure 机器学习工作室中的可视化仪表板：
 
@@ -369,7 +369,7 @@ ExplanationDashboard(global_explanation, model, x_test)
   1. 选择特定的试验可查看该试验中的所有运行。
   1. 选择一个运行，然后选择“解释”选项卡来查看解释可视化仪表板。****
 
-   [![可视化仪表板本地功能重要性](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
+   [![可视化面板本地功能重要性](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
 
 * “模型”窗格****
   1. 如果已遵循[使用 Azure 机器学习部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)中的步骤注册了原始模型，则可以在左侧窗格中选择“模型”来查看它。****
@@ -377,7 +377,7 @@ ExplanationDashboard(global_explanation, model, x_test)
 
 ## <a name="interpretability-at-inference-time"></a>推理时的可解释性
 
-您可以将解释器与原始模型一起部署，并在推理时使用它为新任何新数据点提供单个要素重要性值（本地解释）。 我们还提供了更轻量的评分解释器来改善推断时的解释性能。 部署轻量评分解释器的过程类似于部署模型，包括以下步骤：
+你可以将说明与原始模型一起部署，并在推断时使用它为新的任何新的时间。 我们还提供了更轻量的评分解释器来改善推断时的解释性能。 部署轻量评分解释器的过程类似于部署模型，包括以下步骤：
 
 1. 创建解释对象。 例如，可以使用 `TabularExplainer`：
 
@@ -570,5 +570,5 @@ ExplanationDashboard(global_explanation, model, x_test)
 
 [详细了解模型可解释性](how-to-machine-learning-interpretability.md)
 
-[查看 Azure 机器学习可解释性示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)
+[查看 Azure 机器学习 Interpretability 示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)
 

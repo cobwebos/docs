@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.openlocfilehash: 873fc41585c387246d83008a8f97d6c4d9a32c3b
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80985059"
 ---
 # <a name="monitor-performance-in-web-applications"></a>在 Web 应用程序中监视性能
@@ -102,7 +102,7 @@ HTTP 请求包括对页面、数据和图像的所有 GET 或 POST 请求。
 * 将请求计数与其他指标比较，查看故障或响应缓慢是否与负载有关。
 * 在代码中[插入和搜索跟踪语句][diagnostic]以帮助查明问题。
 * 使用[实时指标流][livestream]监视正在运行的 Web 应用。
-* 使用[快照调试器][snapshot]捕获 .NET 应用程序的状态。
+* 通过[Snapshot Debugger][snapshot]捕获 .net 应用程序的状态。
 
 ## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>通过性能调查体验来发现和修复性能瓶颈
 

@@ -1,32 +1,32 @@
 ---
 title: Azure 自动化的 Runbook 和模块库
-description: 可以安装并在 Azure 自动化环境中使用 Microsoft 和社区提供的 Runbook 与模块。  本文介绍如何访问这些资源并将 Runbook 贡献给库。
+description: 可以安装并在 Azure 自动化环境中使用 Microsoft 和社区提供的 Runbook 与模块。  本文介绍如何访问这些资源，以及如何向库中提供 runbook。
 services: automation
 ms.subservice: process-automation
 ms.date: 03/20/2019
 ms.topic: conceptual
 ms.openlocfilehash: 90b475e275598363314c8f131911fe12650cd3df
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81535547"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure 自动化的 Runbook 和模块库
 
-无需在 Azure 自动化中创建自己的 Runbook 和模块，即可访问 Microsoft 和社区构建的方案。 您可以在脚本中心库中从 PowerShell 库和[Python runbook](#use-python-runbooks)获取 PowerShell 手册和[模块](#modules-in-powershell-gallery)。 您还可以通过共享[您开发的方案](#add-a-powershell-runbook-to-the-gallery)，为社区做出贡献。 
+无需在 Azure 自动化中创建自己的 Runbook 和模块，即可访问 Microsoft 和社区构建的方案。 可以从脚本中心库中的 PowerShell 库和[Python runbook](#use-python-runbooks)获取 PowerShell runbook 和[模块](#modules-in-powershell-gallery)。 你还可以通过共享[开发的方案](#add-a-powershell-runbook-to-the-gallery)来为社区贡献。 
 
-## <a name="runbooks-in-powershell-gallery"></a>PowerShell 库中的 Runbook
+## <a name="runbooks-in-powershell-gallery"></a>PowerShell 库中的 runbook
 
-[PowerShell 库](https://www.powershellgallery.com/packages)提供了来自 Microsoft 和社区的各种 Runbook，您可以将这些手册导入到 Azure 自动化中。 要使用其中一个，请从库中下载 Runbook，或者可以直接从库或 Azure 门户中的自动化帐户导入 Runbook。
+[PowerShell 库](https://www.powershellgallery.com/packages)提供了来自 Microsoft 和社区的各种 runbook，你可以将其导入 Azure 自动化。 若要使用一个 runbook，请从库中下载 runbook，或者可以直接从库中导入 runbook，或从 Azure 门户中的自动化帐户中导入 runbook。
 
 > [!NOTE]
-> PowerShell 库中不支持图形 Runbook。
+> PowerShell 库中不支持图形 runbook。
 
 只能使用 Azure 门户直接从 PowerShell 库导入。 不能使用 PowerShell 执行此功能。
 
 > [!NOTE]
-> 您应该验证从 PowerShell 库获取的任何 Runbook 的内容，并在生产环境中安装和运行它们时要格外小心。
+> 你应验证从 PowerShell 库获取的任何 runbook 的内容，并在生产环境中安装和运行这些 runbook 时要格外小心。
 
 ## <a name="modules-in-powershell-gallery"></a>PowerShell 库中的模块
 
@@ -34,33 +34,33 @@ PowerShell 模块包含可以在 Runbook 中使用的 cmdlet，并可以在 [Pow
 
 ## <a name="common-solutions-available-in-powershell-gallery"></a>PowerShell 库中提供的常见解决方案
 
-下面的列表包含一些提供常见方案解决方案的 Runbook。 有关 Azure 自动化团队创建的 Runbook 的完整列表，请参阅[Azure 自动化团队配置文件](https://www.powershellgallery.com/profiles/AzureAutomationTeam)。
+下面的列表包含一些为常见方案提供解决方案的 runbook。 有关由 Azure 自动化团队创建的 runbook 的完整列表，请参阅[AzureAutomationTeam profile](https://www.powershellgallery.com/profiles/AzureAutomationTeam)。
 
-   * [更新模块在自动化到最新版本](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/)- 从 PowerShell 库导入自动化帐户中所有模块的最新版本。
-   * [启用 Azure 诊断](https://www.powershellgallery.com/packages/Enable-AzureDiagnostics/)- 配置 Azure 诊断和日志分析以接收包含作业状态和作业流的 Azure 自动化日志。
-   * [复制项目从AzureVM](https://www.powershellgallery.com/packages/Copy-ItemFromAzureVM/) - 从 Windows Azure 虚拟机复制远程文件。
-   * [复制项目从AzureVM](https://www.powershellgallery.com/packages/Copy-ItemToAzureVM/) - 将本地文件复制到 Azure 虚拟机。
+   * [ModulesInAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/) -从 PowerShell 库导入自动化帐户中所有模块的最新版本。
+   * [AzureDiagnostics](https://www.powershellgallery.com/packages/Enable-AzureDiagnostics/) -配置 Azure 诊断和 Log Analytics 以接收包含作业状态和作业流的 Azure 自动化日志。
+   * [ItemFromAzureVM](https://www.powershellgallery.com/packages/Copy-ItemFromAzureVM/) -从 microsoft Azure 虚拟机复制远程文件。
+   * [ItemFromAzureVM](https://www.powershellgallery.com/packages/Copy-ItemToAzureVM/) -将本地文件复制到 Azure 虚拟机。
 
-## <a name="import-a-powershell-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>使用 Azure 门户从 Runbook 库导入 PowerShell 运行簿
+## <a name="import-a-powershell-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>使用 Azure 门户从 runbook 库导入 PowerShell runbook
 
 1. 在 Azure 门户中，打开自动化帐户。
-2. 在 **"过程自动化**"下选择**Runbook 库**。
-3. 选择 **"源：电源壳库**"。
+2. 在 "**流程自动化**" 下选择 " **runbook 库**"。
+3. 选择**源： PowerShell 库**。
 4. 找到所需的库项，选择它以查看其详细信息。 在左侧可以输入发布者和类型的其他搜索参数。
 
    ![浏览库](media/automation-runbook-gallery/browse-gallery.png)
 
 5. 单击“查看源项目”**** 以在 [TechNet 脚本中心](https://gallery.technet.microsoft.com/)查看该项。
-6. 要导入项目，请单击它以查看其详细信息，然后单击"**导入**"。
+6. 若要导入项目，请单击它以查看其详细信息，然后单击 "**导入**"。
 
    ![“导入”按钮](media/automation-runbook-gallery/gallery-item-detail.png)
 
 7. 可选择更改 Runbook 的名称，并单击“确定”**** 导入该 Runbook。
-8. Runbook 将显示在"自动化**帐户的 Runbook"** 选项卡上。
+8. Runbook 将出现在自动化帐户的 " **runbook** " 选项卡上。
 
-## <a name="add-a-powershell-runbook-to-the-gallery"></a>向库添加 PowerShell 运行簿
+## <a name="add-a-powershell-runbook-to-the-gallery"></a>将 PowerShell runbook 添加到库
 
-Microsoft 鼓励您将 Runbook 添加到 PowerShell 库，您认为这些手册对其他客户非常有用。 PowerShell 库接受 PowerShell 模块和 PowerShell 脚本。 您可以通过[将其上载到 PowerShell 库](/powershell/scripting/gallery/how-to/publishing-packages/publishing-a-package)来添加 Runbook。
+Microsoft 建议你将 runbook 添加到你认为对其他客户有用的 PowerShell 库。 PowerShell 库接受 PowerShell 模块和 PowerShell 脚本。 可以通过将 runbook[上传到 PowerShell 库](/powershell/scripting/gallery/how-to/publishing-packages/publishing-a-package)来添加 runbook。
 
 ## <a name="import-a-module-from-the-module-gallery-with-the-azure-portal"></a>使用 Azure 门户从模块库导入模块
 
@@ -83,28 +83,28 @@ Microsoft 鼓励您将 Runbook 添加到 PowerShell 库，您认为这些手册�
 
    ![PowerShell 模块详细信息](media/automation-runbook-gallery/gallery-item-details-blade.png)
 
-6. 要将模块直接安装到 Azure 自动化中，请单击"**导入**"。
-7. 在"导入"窗格中，您可以看到要导入的模块的名称。 如果安装了所有依赖项，“确定”按钮将处于活动状态****。 如果缺少依赖项，则需要在导入此模块前导入这些依赖项。
-8. 在"导入"窗格中，单击"**确定"** 以导入模块。 Azure 自动化将模块导入帐户时，它提取有关该模块和 cmdlet 的元数据。 此操作可能需要几分钟时间，因为需要提取每个活动。
+6. 若要将模块直接安装到 Azure 自动化中，请单击 "**导入**"。
+7. 在 "导入" 窗格上，可以看到要导入的模块的名称。 如果安装了所有依赖项，“确定”按钮将处于活动状态****。 如果缺少依赖项，则需要在导入此模块前导入这些依赖项。
+8. 在 "导入" 窗格上，单击 **"确定"** 以导入模块。 Azure 自动化将模块导入帐户时，它提取有关该模块和 cmdlet 的元数据。 此操作可能需要几分钟的时间，因为需要提取每个活动。
 9. 将收到正在部署该模块的初始通知；完成此过程后，还会收到另一通知。
-10. 导入模块后，可以看到可用的活动。 您可以在 Runbook 和 DSC 资源中使用模块资源。
+10. 导入模块后，可以看到可用的活动。 可以在 runbook 和 DSC 资源中使用模块资源。
 
 > [!NOTE]
 > 仅支持 PowerShell 核心的模块将在 Azure 自动化中不受支持，无法在 Azure 门户中导入，或直接从 PowerShell 库部署。
 
-## <a name="use-python-runbooks"></a>使用 Python 手册
+## <a name="use-python-runbooks"></a>使用 Python runbook
 
-可在[脚本中心库](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B1%5D.Type=ProgrammingLanguage&f%5B1%5D.Value=Python&f%5B1%5D.Text=Python&sortBy=Date&username=)中找到 Python Runbook。 您可以通过单击"**上传贡献**"将 Python runbook 贡献到脚本中心库。 执行此操作时，请确保在上传贡献时添加标记`Python`。
+可在[脚本中心库](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B1%5D.Type=ProgrammingLanguage&f%5B1%5D.Value=Python&f%5B1%5D.Text=Python&sortBy=Date&username=)中找到 Python Runbook。 可以通过单击 "**上传内容**" 向脚本中心库提供 Python runbook。 当你执行此操作时，请确保在`Python`上载你的发布内容时添加标记。
 
 > [!NOTE]
-> 要将内容上载到[脚本中心](https://gallery.technet.microsoft.com/scriptcenter)，至少需要 100 点。
+> 若要将内容上载到[脚本中心](https://gallery.technet.microsoft.com/scriptcenter)，需要至少100点。
 
-## <a name="request-a-runbook-or-module"></a>请求运行簿或模块
+## <a name="request-a-runbook-or-module"></a>请求 runbook 或模块
 
 可以将请求发送到[用户之声](https://feedback.azure.com/forums/246290-azure-automation/)。  如果需要 Runbook 编写帮助，或对 PowerShell 存有疑问，请将问题发布到我们的[论坛](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 要开始使用 Runbook，请参阅[在 Azure 自动化 中管理 Runbook。](manage-runbooks.md)
-* 要了解使用 Runbook 的 PowerShell 工作流和 PowerShell 工作流之间的区别，请参阅[学习 PowerShell 工作流](automation-powershell-workflow.md)。
-* 有关 PowerShell 的详细信息（包括语言参考和学习模块），请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell/scripting/overview)。
+* 若要开始 runbook，请参阅[在 Azure 自动化中管理 runbook](manage-runbooks.md)。
+* 若要了解具有 runbook 的 PowerShell 和 PowerShell 工作流之间的差异，请参阅[了解 powershell 工作流](automation-powershell-workflow.md)。
+* 有关 PowerShell 的详细信息，包括语言参考和学习模块，请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell/scripting/overview)。

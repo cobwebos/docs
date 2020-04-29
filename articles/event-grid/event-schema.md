@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: babanisa
 ms.openlocfilehash: 7c45b8f634868024a84f9f3b75bb23031c09b40c
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82113997"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure 事件网格事件架构

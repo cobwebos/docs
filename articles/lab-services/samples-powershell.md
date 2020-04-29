@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/22/2020
 ms.author: spelluru
 ms.openlocfilehash: 44050ab9367572a8160f6e268781478ca3313419
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82100849"
 ---
 # <a name="azure-powershell-samples-for-azure-lab-services"></a>用于 Azure 实验室服务的 Azure PowerShell 示例

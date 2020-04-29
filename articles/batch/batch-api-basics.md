@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.custom: seodec18
 ms.openlocfilehash: fdc04c49521c9d91ef836c4d1dba76091db8f16a
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82115374"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>使用 Batch 开发大规模并行计算解决方案
@@ -446,7 +446,7 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 
 如果将证书添加到 *现有* 池，必须重新启动其计算节点，证书才会应用到节点。
 
-## <a name="error-handling"></a>错误处理
+## <a name="error-handling"></a>错误处理。
 
 有时你可能需要处理 Batch 解决方案中的任务和应用程序失败。
 

@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 06/28/2017
 ms.custom: mqtt
 ms.openlocfilehash: af9743233a61e8e6d816b362d35e6a38735df35b
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732253"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>使用 IoT 中心将文件从设备上传到云 (Node.js)
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
-本教程基于[IoT 中心教程"发送云到设备消息](iot-hub-node-node-c2d.md)"中的代码，向您展示如何使用[IoT 中心的文件上载功能](iot-hub-devguide-file-upload.md)将文件上载到[Azure Blob 存储](../storage/index.yml)。 本教程介绍如何：
+本教程基于使用[Iot 中心发送云到设备的消息](iot-hub-node-node-c2d.md)教程中的代码，演示如何使用[iot 中心的文件上传功能](iot-hub-devguide-file-upload.md)将文件上传到[Azure blob 存储](../storage/index.yml)。 本教程介绍如何：
 
 * 安全提供具有 Azure blob URI 的设备，用于上传文件。
 
@@ -43,7 +43,7 @@ ms.locfileid: "81732253"
 * **ReadFileUploadNotification.js**，它可以接收来自 IoT 中心的文件上传通知。
 
 > [!NOTE]
-> IoT 中心通过 Azure IoT 设备 SDK 来支持许多设备平台和语言（包括 C、.NET、Javascript、Python 和 Java）。 有关如何将设备连接到 Azure IoT 中心的步骤说明，请参阅 [Azure IoT 开发人员中心]。
+> IoT 中心通过 Azure IoT 设备 SDK 来支持许多设备平台和语言（包括 C、.NET、Javascript、Python 和 Java）。 请参阅 [Azure IoT 开发人员中心]，获取有关如何将设备连接到 Azure IoT 中心的分步说明。
 
 ## <a name="prerequisites"></a>必备条件
 

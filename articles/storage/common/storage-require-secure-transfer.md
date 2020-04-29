@@ -11,21 +11,21 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 125f4188ed3f12f366c619af9efe3aa203987c19
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870515"
 ---
 # <a name="require-secure-transfer-to-ensure-secure-connections"></a>需要安全传输以确保安全连接
 
-可以通过为存储帐户设置“需要安全传输”属性，将存储帐户配置为仅接受来自安全连接的请求。  要求安全传输时，来自不安全连接的任何请求都会被拒绝。 Microsoft 建议您始终需要安全转移所有存储帐户。
+可以通过为存储帐户设置“需要安全传输”属性，将存储帐户配置为仅接受来自安全连接的请求。  要求安全传输时，来自不安全连接的任何请求都会被拒绝。 Microsoft 建议你始终需要对所有存储帐户进行安全传输。
 
 要求安全传输时，必须通过 HTTPS 调用 Azure 存储 REST API 操作。 通过 HTTP 发出的任何请求都会被拒绝。
 
 如果存储帐户需要安全传输，则在不加密的情况下通过 SMB 连接到 Azure 文件共享会失败。 不安全连接的示例包括通过 SMB 2.1、不加密的 SMB 3.0 或某些版本的 Linux SMB 客户端进行的连接。
 
-默认情况下，在创建存储帐户时启用**安全转移必需**属性。
+默认情况下，当你创建存储帐户时，将启用 "**需要安全传输**" 属性。
 
 > [!NOTE]
 > 由于 Azure 存储对自定义域名不支持 HTTPS，因此使用自定义域名时不应用此选项。 不支持经典存储帐户。

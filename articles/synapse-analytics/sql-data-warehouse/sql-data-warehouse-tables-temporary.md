@@ -1,6 +1,6 @@
 ---
 title: 临时表
-description: 在 Synapse SQL 池中使用临时表的基本指南，突出显示会话级别临时表的原则。
+description: 在 Synapse SQL 池中使用临时表的基本指南，重点介绍会话级别临时表的原则。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,29 +11,29 @@ ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 56d8ab81fcf9200fec2cfb4a741724b8f79db820
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81408031"
 ---
 # <a name="temporary-tables-in-synapse-sql-pool"></a>Synapse SQL 池中的临时表
 本文包含使用临时表的基本指导，并重点介绍会话级别临时表的原则。 
 
-使用本文中的信息可以帮助您模块化代码，提高可重用性和易于维护性。
+使用本文中的信息可帮助你模块化代码，同时提高可重用性和易维护性。
 
 ## <a name="what-are-temporary-tables"></a>什么是临时表？
-临时表在处理数据时很有用，尤其是在转换期间，中间结果是暂时的。 在 SQL 池中，临时表存在于会话级别。  
+临时表在处理数据时非常有用，尤其是在转换期间，中间结果是暂时性的。 在 SQL 池中，临时表存在于会话级别。  
 
-临时表仅对创建临时表的会话可见，并且当该会话注销时会自动删除。  
+临时表仅对创建它们的会话可见，并在该会话注销时被自动删除。  
 
 临时表可以提高性能，因为其结果将写入到本地而不是远程存储。
 
-临时表在处理数据时很有用，尤其是在转换期间，中间结果是暂时的。 使用 SQL 分析，临时表存在于会话级别。  它们仅在创建它们的会话中可见。 因此，当会话注销时，它们会自动丢弃。 
+临时表在处理数据时非常有用，尤其是在转换期间，中间结果是暂时性的。 对于 SQL Analytics，临时表存在于会话级别。  它们仅对创建它们的会话可见。 因此，当该会话注销时，它们会自动删除。 
 
 ## <a name="temporary-tables-in-sql-pool"></a>SQL 池中的临时表
 
-在 SQL 池资源中，临时表提供性能优势，因为它们的结果写入本地存储而不是远程存储。
+在 SQL 池资源中，临时表可以提高性能，因为其结果将写入到本地而不是远程存储。
 
 ### <a name="create-a-temporary-table"></a>创建临时表
 
@@ -105,7 +105,7 @@ GROUP BY
 ## <a name="dropping-temporary-tables"></a>删除临时表
 创建新会话时，应不存在任何临时表。  
 
-如果要调用同一存储过程（创建具有相同名称的临时过程，以确保`CREATE TABLE`语句成功，则使用 a`DROP`的简单存在前检查可以使用，如以下示例所示：
+如果调用同一存储过程，该存储过程将创建一个具有相同名称的临时，若要确保`CREATE TABLE`语句成功， `DROP`可以使用的简单的预存在检查，如以下示例中所示：
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -114,18 +114,18 @@ BEGIN
 END
 ```
 
-对于编码一致性，最好将此模式同时用于表和临时表。  在代码中完成临时表后，最好`DROP TABLE`使用它删除临时表。  
+为实现编码一致性，最好对表和临时表使用此模式。  在代码中完成临时表后， `DROP TABLE`最好使用将其删除。  
 
-在存储过程开发中，通常可以看到放置命令在过程结束时捆绑在一起，以确保清理这些对象。
+在存储过程开发中，通常会看到在过程结束时捆绑在一起的 drop 命令，以确保清除这些对象。
 
 ```sql
 DROP TABLE #stats_ddl
 ```
 
 ## <a name="modularizing-code"></a>模块化代码
-由于在用户会话的任意位置都可以看到临时表，因此可以利用此功能帮助您模块化应用程序代码。  
+由于可以在用户会话中的任何位置查看临时表，因此可以利用此功能来帮助模块化应用程序代码。  
 
-例如，以下存储过程生成 DDL 以按统计名称更新数据库中的所有统计信息：
+例如，下面的存储过程按统计信息名称生成 DDL 以更新数据库中的所有统计信息：
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_update_stats]
@@ -201,11 +201,11 @@ GO
 
 在此阶段发生的唯一操作是创建存储过程，该存储过程使用 DDL 语句生成临时表 #stats_ddl。  
 
-此存储过程将删除现有#stats_ddl以确保在会话中运行多次时不会失败。  
+此存储过程删除现有 #stats_ddl 以确保在会话中多次运行时它不会失败。  
 
 但是，由于存储过程的末尾没有 `DROP TABLE`，当存储过程完成后，它将保留创建的表，以便能够在存储过程之外进行读取。  
 
-在 SQL 池中，与其他 SQL Server 数据库不同，可以在创建它的过程之外使用临时表。  SQL 池临时表可以在会话内的**任意位置**使用。 此功能可以带来更模块化和可管理的代码，如以下示例所示：
+在 SQL 池中，与其他 SQL Server 数据库不同的是，可以在创建该数据库的过程之外使用临时表。  可以在会话中的**任何位置**使用 SQL 池临时表。 此功能可能会导致更多模块化和可管理的代码，如以下示例中所示：
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -227,11 +227,11 @@ DROP TABLE #stats_ddl;
 ```
 
 ## <a name="temporary-table-limitations"></a>临时表的限制
-在实现临时表时，SQL 池确实会施加一些限制。  目前，仅支持会话范围的临时表。  不支持全局临时表。  
+在实现临时表时，SQL 池的确会施加一些限制。  目前，仅支持会话范围的临时表。  不支持全局临时表。  
 
-此外，无法在临时表上创建视图。  只能使用哈希分布或轮循机制分布来创建临时表。  不支持复制的临时表分发。 
+此外，不能在临时表上创建视图。  只能使用哈希分布或轮循机制分布来创建临时表。  不支持复制的临时表分布。 
 
 ## <a name="next-steps"></a>后续步骤
 
-要了解有关开发表的更多信息，请参阅使用[SQL Analytics 资源设计表](sql-data-warehouse-tables-overview.md)一文。
+若要了解有关开发表的详细信息，请参阅[使用 SQL Analytics 资源设计表](sql-data-warehouse-tables-overview.md)一文。
 

@@ -6,10 +6,10 @@ ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
 ms.openlocfilehash: 5376562d9df35539a33f6746b387a1ff7083b8f1
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81676447"
 ---
 # <a name="manage-updates-for-multiple-azure-virtual-machines"></a>管理多个 Azure 虚拟机的更新
@@ -19,14 +19,14 @@ ms.locfileid: "81676447"
 - 载入虚拟机。
 - 评估可用更新的状态。
 - 计划安装所需的更新。
-- 查看部署结果，以验证更新是否已成功应用于为其启用更新管理的所有虚拟机。
+- 查看部署结果，验证更新是否已成功应用到已启用更新管理的所有虚拟机。
 
 要了解更新管理的系统要求，请参阅[更新管理客户端要求](automation-update-management.md#clients)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 一个安装了某个受支持的操作系统的虚拟机或计算机。
-* 访问已连接到更新管理的 Linux VM 的更新存储库。
+* 访问适用于 Linux Vm 的更新存储库载入到更新管理。
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>为 Azure 虚拟机启用“更新管理”
 
@@ -46,7 +46,7 @@ ms.locfileid: "81676447"
 
 ## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>为非 Azure 虚拟机和计算机启用更新管理
 
-Windows 和 Linux 的日志分析代理需要在公司网络或其他云环境中运行的 VM 上安装，以便通过更新管理启用它们。 要了解将代理部署到 Azure 外部托管的计算机的系统要求和支持的方法，请参阅[日志分析代理概述](../azure-monitor/platform/log-analytics-agent.md)。
+需要在运行于企业网络或其他云环境中的 Vm 上安装适用于 Windows 和 Linux 的 Log Analytics 代理，才能使用更新管理启用它们。 若要了解将代理部署到在 Azure 外部托管的计算机的系统要求和支持的方法，请参阅[Log Analytics 代理概述](../azure-monitor/platform/log-analytics-agent.md)。
 
 ## <a name="view-computers-attached-to-your-automation-account"></a>查看附加到自动化帐户的计算机
 
@@ -54,19 +54,19 @@ Windows 和 Linux 的日志分析代理需要在公司网络或其他云环境�
 
   ![查看“计算机”选项卡](./media/manage-update-multi/update-computers-tab.png)
 
-最近刚启用“更新管理”的计算机可能尚未进行评估。 这些计算机的符合性状态为`Not assessed`。 下面是符合性状态的可能值的列表：
+最近刚启用“更新管理”的计算机可能尚未进行评估。 这些计算机的符合性状态是`Not assessed`。 下面是符合性状态的可能值的列表：
 
-- `Compliant`：未缺少关键或安全更新的计算机。
-- `Non-compliant`：至少缺少一个关键或安全更新的计算机。
-- `Not assessed`：更新评估数据未在预期的时间内从计算机接收。 对于 Linux 计算机，预期的时间范围是最后一小时。 对于 Windows 计算机，预期时间范围是最后 12 小时。
+- `Compliant`：不缺少关键更新或安全更新的计算机。
+- `Non-compliant`：至少缺少一项关键更新或安全更新的计算机。
+- `Not assessed`：没有在预期时间范围内从计算机接收到更新评估数据。 对于 Linux 计算机，预期的时间范围为最后一个小时。 对于 Windows 计算机，预期的时间范围为最后12个小时。
 
-要查看代理的状态，请在 **"更新代理就绪"** 列中选择链接。 选择此选项将打开“混合辅助角色”窗格，并且将显示混合辅助角色的状态。 下图显示了长时间未连接到“更新管理”的代理的示例。
+若要查看代理的状态，请选择 "**更新代理准备情况**" 列中的链接。 选择此选项将打开“混合辅助角色”窗格，并且将显示混合辅助角色的状态。 下图显示了长时间未连接到“更新管理”的代理的示例。
 
 ![查看“计算机”选项卡](./media/manage-update-multi/update-agent-broken.png)
 
 ## <a name="view-an-update-assessment"></a>查看更新评估
 
-启用更新管理后，将打开"更新管理"窗格。 可在“缺少更新”**** 选项卡上查看缺少更新的列表。
+启用更新管理后，更新管理窗格会打开。 可在“缺少更新”**** 选项卡上查看缺少更新的列表。
 
 ## <a name="collect-data"></a>收集数据
 
@@ -85,11 +85,11 @@ Windows 和 Linux 的日志分析代理需要在公司网络或其他云环境�
 
 ### <a name="collection-frequency"></a>收集频率
 
-计算机完成更新合规性扫描后，代理将信息批量转发到 Azure 监视器日志。 在 Windows 计算机上，符合性扫描默认情况下每 12 小时运行一次。
+计算机完成更新符合性扫描后，代理会将信息批量转发到 Azure Monitor 日志。 在 Windows 计算机上，符合性扫描默认情况下每 12 小时运行一次。
 
 如果 MMA 重启，除了按扫描计划扫描，更新符合性扫描还会在更新安装前和更新安装后的 15 分钟内启动。
 
-默认情况下，对于 Linux 计算机，每小时执行一次合规性扫描。 如果 MMA 代理重启，则会在 15 分钟内启动符合性扫描。
+对于 Linux 计算机，默认情况下，每小时执行一次符合性扫描。 如果 MMA 代理重启，则会在 15 分钟内启动符合性扫描。
 
 可能需要 30 分钟到 6 小时，仪表板才会显示受托管计算机提供的已更新数据。
 
@@ -107,13 +107,13 @@ Windows 和 Linux 的日志分析代理需要在公司网络或其他云环境�
 
 - **名称**：输入用于标识更新部署的唯一名称。
 - **操作系统**：选择 **Windows** 或 **Linux**。
-- **要更新的组**：基于订阅、资源组、位置和标记的组合定义查询，以生成要包含在部署中的 Azure VM 的动态组。 对于非 Azure VM，保存的搜索用于创建要包含在部署中的动态组。 要了解更多信息，[请参阅动态组](automation-update-management-groups.md)。
+- **要更新的组**：基于订阅、资源组、位置和标记的组合定义查询，以生成要包含在部署中的 Azure vm 动态组。 对于非 Azure Vm，保存的搜索用于创建要包含在你的部署中的动态组。 若要了解详细信息，请参阅[动态组](automation-update-management-groups.md)。
 - **要更新的计算机**：选择“已保存的搜索”、“已导入的组”或“计算机”，进而选择要更新的计算机。
 
    >[!NOTE]
-   >选择"保存的搜索"选项不会返回计算机标识，而只返回其名称。 如果多个资源组中有多个具有相同名称的 VM，则结果将返回它们。 建议使用 **"组"更新**选项，以确保包含符合条件的唯一 VM。
+   >选择 "保存的搜索" 选项不会返回计算机标识，只返回其名称。 如果多个资源组中有多个具有相同名称的 Vm，则会在结果中返回它们。 建议使用 "**要更新的组**" 选项，以确保包括与条件相匹配的唯一 vm。
 
-   如果选择 **"计算机"，** 则计算机的就绪状态将显示在 **"更新代理就绪"** 列中。 可以在计划更新部署之前查看计算机的运行状况状态。 要了解在 Azure 监视器日志中创建计算机组的不同方法，请参阅[Azure 监视器日志中的计算机组](../azure-monitor/platform/computer-groups.md)
+   如果选择**计算机**，则会在 "**更新代理准备情况**" 列中显示计算机的就绪状态。 可以在计划更新部署之前查看计算机的运行状况状态。 若要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅[Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md)
 
   ![“新建更新部署”窗格](./media/manage-update-multi/update-select-computers.png)
 
@@ -127,7 +127,7 @@ Windows 和 Linux 的日志分析代理需要在公司网络或其他云环境�
   - 工具
   - 更新
 
-- **要包含/排除的更新** - 这会打开“包含/排除”页。 要包含或排除的更新位于单独的选项卡上。 有关如何处理包含的其他信息，请参阅[计划更新部署](automation-tutorial-update-management.md#schedule-an-update-deployment)。
+- **要包含/排除的更新** - 这会打开“包含/排除”页。 要包含或排除的更新位于单独的选项卡上。 有关如何处理包含的详细信息，请参阅[计划更新部署](automation-tutorial-update-management.md#schedule-an-update-deployment)。
 
 > [!NOTE]
 > 请务必注意，排除项会替代包含项。 例如，如果定义 `*` 的排除规则，全部排除后将不会安装任何修补程序或包。 已排除的修补程序仍显示为在计算机中缺少。 对于 Linux 计算机，如果包含包且已排除相关包，将不会安装此包。
@@ -150,8 +150,8 @@ Windows 和 Linux 的日志分析代理需要在公司网络或其他云环境�
    |选项|说明|
    |---|---|
    |必要时请重启| **（默认）** 必要时且在维护时段允许的情况下开始重启。|
-   |始终重新启动|无论是否需要重启，都会开始重启。 |
-   |永不重新启动|无论是否需要重启，都会禁止重启。|
+   |永远重启|无论是否需要重启，都会开始重启。 |
+   |永不重启|无论是否需要重启，都会禁止重启。|
    |仅重启 - 不安装更新|此选项忽略安装更新，仅开始重启。|
 
 配置完计划后，选择“创建”**** 按钮以返回到状态仪表板。 “已计划”**** 表会显示你创建的部署计划。
@@ -173,7 +173,7 @@ Windows 和 Linux 的日志分析代理需要在公司网络或其他云环境�
 
 “更新结果”窗格会显示虚拟机的更新数和部署结果。 右侧的表格详细列出了每个更新的细目以及安装结果。 安装结果可能是以下值之一：
 
-- `Not attempted`： 未安装更新，因为根据定义的维护窗口可用时间不足。
+- `Not attempted`：未安装更新，因为在定义的维护时段中没有足够的时间可用。
 - `Succeeded`：更新成功。
 - `Failed`：更新失败。
 
@@ -185,4 +185,4 @@ Windows 和 Linux 的日志分析代理需要在公司网络或其他云环境�
 
 ## <a name="next-steps"></a>后续步骤
 
-要了解有关更新管理日志、输出和错误的详细信息，请参阅[更新管理的查询更新记录](automation-update-management-query-logs.md)。
+若要详细了解更新管理日志、输出和错误，请参阅[更新管理的查询更新记录](automation-update-management-query-logs.md)。

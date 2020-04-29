@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.openlocfilehash: f2584a8d4e68b7c16b3acdc29f64f0a19d83d735
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457665"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>部署 Linux 混合 Runbook 辅助角色
@@ -27,7 +27,7 @@ ms.locfileid: "81457665"
 * Oracle Linux 5、6 和 7 (x86/x64)
 * Red Hat Enterprise Linux Server 5、6 和 7 (x86/x64)
 * Debian GNU/Linux 6、7 和 8 (x86/x64)
-* Ubuntu 12.04 LTS、14.04 LTS、16.04 LTS 和 18.04 （x86/x64）
+* Ubuntu 12.04 LTS、14.04 LTS、16.04 LTS 和 18.04 (x86/x64)
 * SUSE Linux Enterprise Server 11 和 12 (x86/x64)
 
 ## <a name="supported-runbook-types"></a>支持的 runbook 类型
@@ -50,7 +50,7 @@ Linux 混合 Runbook 辅助角色并非支持 Azure 自动化中的全套 Runboo
 
 ## <a name="installing-a-linux-hybrid-runbook-worker"></a>安装 Linux 混合 Runbook 辅助角色
 
-要在 Linux 计算机上安装和配置混合 Runbook 辅助角色，请按照简单的手动过程操作。 它需要启用 Azure Log Analytics 工作区中的“自动化混合辅助角色”解决方案，然后运行一组命令将计算机注册为辅助角色，并且将它添加到组中。
+若要在 Linux 计算机上安装和配置混合 Runbook 辅助角色，请执行简单的手动过程。 它需要启用 Azure Log Analytics 工作区中的“自动化混合辅助角色”解决方案，然后运行一组命令将计算机注册为辅助角色，并且将它添加到组中。
 
 Linux 混合 Runbook 辅助角色的最低要求如下：
 
@@ -60,14 +60,14 @@ Linux 混合 Runbook 辅助角色的最低要求如下：
 
 ### <a name="package-requirements"></a>程序包要求
 
-| **所需程序包** | **说明** | **最小版本**|
+| **所需程序包** | **说明** | **最低版本**|
 |--------------------- | --------------------- | -------------------|
 |Glibc |GNU C 库| 2.5-12 |
 |Openssl| OpenSSL 库 | 1.0（支持 TLS 1.1 和 TLS 1.2）|
 |Curl | cURL Web 客户端 | 7.15.5|
 |Python-ctype | 需要 Python 2.x |
 |PAM | 可插入验证模块|
-| **可选包** | **说明** | **最小版本**|
+| **可选包** | **说明** | **最低版本**|
 | PowerShell Core | 若要运行 PowerShell Runbook，需要安装 PowerShell，请参阅[在 Linux 上安装 PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-linux) 了解如何安装。  | 6.0.0 |
 
 ### <a name="installation"></a>安装
@@ -76,7 +76,7 @@ Linux 混合 Runbook 辅助角色的最低要求如下：
 
 1. 使用以下方法之一，在 Azure 中启用“自动化混合辅助角色”解决方案：
 
-   * 使用"[将 Azure 监视器日志解决方案添加到工作区](../log-analytics/log-analytics-add-solutions.md)"的过程，将自动化混合辅助角色解决方案添加到订阅中。
+   * 使用[将 Azure Monitor 日志解决方案添加到工作区](../log-analytics/log-analytics-add-solutions.md)中的过程，将自动化混合辅助角色解决方案添加到你的订阅。
    * 运行以下 cmdlet：
 
         ```azurepowershell-interactive
@@ -91,7 +91,7 @@ Linux 混合 Runbook 辅助角色的最低要求如下：
    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
    ```
 
-1. 运行以下命令，更改 *-w*、*-k*、*-g* 和 *-e* 参数的值。 对于 *-g*参数，将值替换为新的 Linux 混合 Runbook 工作线程应联接的混合 Runbook 辅助角色组的名称。 如果自动化帐户中尚不存在该名称，系统会使用该名称生成一个新的混合 Runbook 辅助角色组。
+1. 运行以下命令，更改 *-w*、*-k*、*-g* 和 *-e* 参数的值。 对于 *-g*参数，请将值替换为新的 Linux 混合 Runbook 辅助角色应加入的混合 Runbook 辅助角色组的名称。 如果自动化帐户中尚不存在该名称，系统会使用该名称生成一个新的混合 Runbook 辅助角色组。
 
    ```bash
    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/onboarding.py --register -w <LogAnalyticsworkspaceId> -k <AutomationSharedKey> -g <hybridgroupname> -e <automationendpoint>
@@ -100,11 +100,11 @@ Linux 混合 Runbook 辅助角色的最低要求如下：
 1. 命令完成后，Azure 门户中的“混合辅助角色组”页面会显示新组和成员数。 如果这是现有的组，则成员数会递增。 可以从“混合辅助角色组”页上的列表中选择组，并选择“混合辅助角色”**** 磁贴。 在“混合辅助角色”页上，会列出组的每个成员。
 
 > [!NOTE]
-> 如果要为 Azure VM 使用 Linux 的 Azure 监视器虚拟机扩展，`autoUpgradeMinorVersion`我们建议将设置为 false，因为自动升级版本可能会导致混合 Runbook 辅助角色出现问题。 要了解如何手动升级扩展，请参阅[Azure CLI 部署](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment)。
+> 如果你使用的是适用于 Azure VM 的 Linux Azure Monitor 虚拟机扩展，则建议`autoUpgradeMinorVersion`将设置为 false，因为自动升级版本可能会导致混合 Runbook 辅助角色出现问题。 若要了解如何手动升级扩展，请参阅[Azure CLI 部署](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment)。
 
 ## <a name="turning-off-signature-validation"></a>关闭签名验证
 
-默认情况下，Linux 混合 Runbook 辅助角色需要签名验证。 如果针对工作人员运行无符号 Runbook，则会看到错误`Signature validation failed`。 若要禁用签名验证，请运行以下命令。 将第二个参数替换为 Log Analytics 工作区 ID。
+默认情况下，Linux 混合 Runbook 辅助角色需要签名验证。 如果针对辅助角色运行未签名的 runbook，将看到`Signature validation failed`错误。 若要禁用签名验证，请运行以下命令。 将第二个参数替换为 Log Analytics 工作区 ID。
 
  ```bash
  sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <LogAnalyticsworkspaceId>

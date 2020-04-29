@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 7/13/2019
 ms.author: rohink
 ms.openlocfilehash: 56a7680de3127da06341ac03252a9ab0cff9da7c
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82024942"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>使用 Azure DNS 为 Azure 服务提供自定义域设置
@@ -119,14 +119,14 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 
 下面逐步介绍如何使用 asverify 方法配置 Blob 存储帐户的 CNAME 记录。 此方法可确保不会造成停机。
 
-导航到**存储** > **存储帐户**，选择您的存储帐户，然后单击**自定义域**。 记下步骤 2 中的 FQDN，此值用于创建第一条 CNAME 记录
+导航到 "**存储** > " "存储**帐户**"，选择存储帐户，然后单击 "**自定义域**"。 记下步骤 2 中的 FQDN，此值用于创建第一条 CNAME 记录
 
 ![Blob 存储自定义域](./media/dns-custom-domain/blobcustomdomain.png)
 
 导航到 DNS 区域，单击“+ 记录集”。**** 在“添加记录集”边栏选项卡上填写以下信息，单击“确定”创建该记录集。********
 
 
-|properties  |值  |说明  |
+|属性  |值  |说明  |
 |---------|---------|---------|
 |名称     | asverify.mystorageaccount        | 此值连同域名标签是自定义域名的 FQDN。        |
 |类型     | CNAME        | 使用 CNAME 记录相当于使用别名。        |
@@ -134,7 +134,7 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 |TTL 单位     | 小时        | 小时用作时间计量单位         |
 |Alias     | asverify.adatumfunctiona9ed.blob.core.windows.net        | 为其创建别名的 DNS 名称，在本示例中，为默认提供给存储帐户的 asverify.adatumfunctiona9ed.blob.core.windows.net DNS 名称。        |
 
-单击"**Storage** > **存储存储帐户**"，选择存储帐户并单击 **"自定义域**"，即可导航回存储帐户。 键入创建而不在文本框中没有 asverify 前缀的别名，选中"**使用间接 CNAME 验证**"，然后单击"**保存**"。 完成此步骤后，返回 DNS 区域，并创建不带 asverify 前缀的 CNAME 记录。  此后，可以安全删除带有 cdnverify 前缀的 CNAME 记录。
+导航回到存储帐户，方法是单击 "**存储** > " "存储**帐户**"，选择存储帐户，然后单击 "**自定义域**"。 在文本框中键入您创建的别名，并选中 "**使用间接 CNAME 验证**"，然后单击 "**保存**"。 完成此步骤后，返回 DNS 区域，并创建不带 asverify 前缀的 CNAME 记录。  此后，可以安全删除带有 cdnverify 前缀的 CNAME 记录。
 
 ![Blob 存储自定义域](./media/dns-custom-domain/indirectvalidate.png)
 
@@ -146,7 +146,7 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 
 下面逐步介绍如何使用 cdnverify 方法配置 CDN 终结点的 CNAME 记录。 此方法可确保不会造成停机。
 
-导航到**网络** > **CDN 配置文件**，选择您的 CDN 配置文件。
+导航到 "**网络** > **cdn 配置文件**"，选择 CDN 配置文件。
 
 选择正在使用的终结点，单击“+ 自定义域”。**** 记下“终结点主机名”，因为此值是该 CNAME 记录指向的记录。****
 
@@ -154,7 +154,7 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 
 导航到 DNS 区域，单击“+ 记录集”。**** 在“添加记录集”边栏选项卡上填写以下信息，单击“确定”创建该记录集。********
 
-|properties  |值  |说明  |
+|属性  |值  |说明  |
 |---------|---------|---------|
 |名称     | cdnverify.mycdnendpoint        | 此值连同域名标签是自定义域名的 FQDN。        |
 |类型     | CNAME        | 使用 CNAME 记录相当于使用别名。        |
@@ -162,7 +162,7 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 |TTL 单位     | 小时        | 小时用作时间计量单位         |
 |Alias     | cdnverify.adatumcdnendpoint.azureedge.net        | 为其创建别名的 DNS 名称，在本示例中，为默认提供给存储帐户的 cdnverify.adatumcdnendpoint.azureedge.net DNS 名称。        |
 
-通过单击**网络** > **CDN 配置文件**（并选择 CDN 配置文件）导航回 CDN 终结点。 单击“+ 自定义域”并输入不带 cdnverify 前缀的 CNAME 记录别名，单击“添加”。********
+单击 "**网络** > **CDN 配置文件**"，导航回 cdn 终结点，并选择 CDN 配置文件。 单击“+ 自定义域”并输入不带 cdnverify 前缀的 CNAME 记录别名，单击“添加”。********
 
 完成此步骤后，返回 DNS 区域，并创建不带 cdnverify 前缀的 CNAME 记录。  此后，可以安全删除带有 cdnverify 前缀的 CNAME 记录。 有关 CDN 以及如何在不执行中间注册步骤的情况下配置自定义域的详细信息，请访问[将 Azure CDN 内容映射到自定义域](../cdn/cdn-map-content-to-custom-domain.md?toc=%dns%2ftoc.json)。
 

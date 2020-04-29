@@ -4,10 +4,10 @@ description: 使用 Application Insights 监视来自本地或 Microsoft Azure W
 ms.topic: conceptual
 ms.date: 03/26/2020
 ms.openlocfilehash: 1e30d8036c1fc624d39f027f38e314c6c57360f6
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81731492"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>在 Azure Application Insights 中跟踪依赖项 
@@ -30,18 +30,18 @@ ms.locfileid: "81731492"
 |[ServiceBus 客户端 SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| 3\.0.0 和更高版本。 |
 |Azure Cosmos DB | 仅当使用 HTTP/HTTPS 时，才会自动跟踪。 Application Insights 不会捕获 TCP 模式。 |
 
-如果您缺少依赖项，或者使用其他 SDK 请确保它位于[自动收集的依赖项](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)列表中。 如果依赖项未自动收集，您仍可以使用[跟踪依赖项调用](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)手动跟踪它。
+如果缺少依赖项，或使用不同的 SDK，请确保它位于[自动收集的依赖项](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)的列表中。 如果依赖关系不是自动收集的，则仍可以使用[跟踪依赖项调用](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)手动跟踪。
 
 ## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>在控制台应用中设置自动依赖项跟踪
 
-要自动跟踪来自 .NET 控制台应用的依赖项，请安装`Microsoft.ApplicationInsights.DependencyCollector`Nuget 包`DependencyTrackingTelemetryModule`，并按照如下方式初始化：
+若要从 .NET 控制台应用自动跟踪依赖项，请安装`Microsoft.ApplicationInsights.DependencyCollector`Nuget 包， `DependencyTrackingTelemetryModule`并按如下所示进行初始化：
 
 ```csharp
     DependencyTrackingTelemetryModule depModule = new DependencyTrackingTelemetryModule();
     depModule.Initialize(TelemetryConfiguration.Active);
 ```
 
-对于 .NET 核心控制台应用遥测配置.活动已过时。 请参阅[工作人员服务文档](https://docs.microsoft.com/azure/azure-monitor/app/worker-service)和[ASP.NET核心监控文档中](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)的指南
+对于 .NET Core 控制台应用 TelemetryConfiguration 已过时。 请参阅[辅助角色服务文档](https://docs.microsoft.com/azure/azure-monitor/app/worker-service)和[ASP.NET Core 监视文档](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)中的指南
 
 ### <a name="how-automatic-dependency-monitoring-works"></a>自动依赖项监视的工作原理
 
@@ -98,7 +98,7 @@ ms.locfileid: "81731492"
 | --- | --- |
 | Azure Web 应用 |在 Web 应用控制面板中，[打开“Application Insights”边栏选项卡](../../azure-monitor/app/azure-web-apps.md)并启用“.NET”下的“SQL 命令” |
 | IIS 服务器（Azure VM、本地服务器，等等。） | 使用状态监视器 PowerShell 模块[安装检测引擎](../../azure-monitor/app/status-monitor-v2-api-reference.md)并重启 IIS。 |
-| Azure 云服务 | 添加[启动任务以安装状态监视器](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> 应用应在生成时通过为[ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)或[ASP.NET核心应用程序](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)安装 NuGet 包，在生成时将其装机到应用程序 Insights SDK |
+| Azure 云服务 | 添加[启动任务以安装 StatusMonitor](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> 您的应用程序应在生成时通过安装[ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)或[ASP.NET Core 应用程序](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)的 NuGet 包载入到 applicationinsights.config SDK |
 | IIS Express | 不支持
 
 在上述情况下，验证是否已正确安装该检测引擎的适当方法是验证收集的 `DependencyTelemetry` 的 SDK 版本是否为“rddp”。 “rdddsd”或“rddf”表示依赖项是通过 DiagnosticSource 或 EventSource 回调收集的，因此不会捕获完整的 SQL 查询。
@@ -129,7 +129,7 @@ ms.locfileid: "81731492"
 
 ### <a name="profile-your-live-site"></a>分析实时站点
 
-不知道时间花到哪去了？ [应用程序见解探查器](../../azure-monitor/app/profiler.md)跟踪对实时站点的 HTTP 调用，并显示代码中耗时最长的函数。
+不知道时间花到哪去了？ [Application Insights 探查器](../../azure-monitor/app/profiler.md)跟踪对实时站点的 HTTP 调用，并显示代码中花费最长时间的函数。
 
 ## <a name="failed-requests"></a>失败的请求
 
@@ -180,7 +180,7 @@ ms.locfileid: "81731492"
       on operation_Id
 ```
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 
 ### <a name="how-does-automatic-dependency-collector-report-failed-calls-to-dependencies"></a>*自动依赖项收集器如何报告依赖项的失败调用？*
 

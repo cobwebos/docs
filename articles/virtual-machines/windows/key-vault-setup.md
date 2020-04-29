@@ -1,6 +1,6 @@
 ---
 title: 设置密钥保管库
-description: 如何设置密钥保管库，以便与虚拟机一起使用。
+description: 如何设置与虚拟机一起使用的 Key Vault。
 author: mimckitt
 manager: vashan
 ms.service: virtual-machines
@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 01/24/2017
 ms.author: mimckitt
 ms.openlocfilehash: e4bff4d1826d9586495207095eccf8f6c66164a0
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870014"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>在 Azure 资源管理器中为虚拟机设置密钥保管库

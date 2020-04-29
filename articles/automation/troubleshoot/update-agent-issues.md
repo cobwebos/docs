@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 自动化更新管理中解决 Windows 更新代理问题
-description: 了解如何使用更新管理解决方案解决 Windows 更新代理的问题。
+title: Azure Automation 中的 Windows update 代理问题疑难解答更新管理
+description: 了解如何使用更新管理解决方案排查和解决 Windows update 代理的问题。
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -10,35 +10,35 @@ ms.service: automation
 ms.subservice: update-management
 manager: carmonm
 ms.openlocfilehash: 6983a2ac7ab5fafcb00aee0b72221a8540ea1668
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678974"
 ---
-# <a name="troubleshoot-windows-update-agent-issues"></a>解决 Windows 更新代理问题
+# <a name="troubleshoot-windows-update-agent-issues"></a>Windows update 代理问题疑难解答
 
-在更新管理中，计算机未显示为就绪（正常）的原因有很多。 在更新管理中，可以检查混合 Runbook 工作线程代理的运行状况以确定基础问题。 本文讨论如何在[脱机方案中](#troubleshoot-offline)从 Azure 门户和非 Azure 计算机运行 Azure 计算机的疑难解答。
+在更新管理中，计算机未显示为 "就绪" （正常）的原因有很多。 在更新管理中，可以检查混合 Runbook 辅助角色代理的运行状况，以确定基本问题。 本文介绍如何在[脱机方案](#troubleshoot-offline)中从 Azure 门户和非 Azure 计算机运行 Azure 计算机的疑难解答。
 
-以下是计算机的三个就绪状态：
+下面是计算机的三个就绪状态：
 
-* 就绪 - 部署了混合 Runbook 工作线程，最后一次出现不到 1 小时。
-* 已断开连接 - 已部署混合 Runbook 工作线程，最后一次出现是在 1 小时前。
-* 未配置 - 找不到混合 Runbook 工作线程或尚未完成载入。
+* 就绪-已部署混合 Runbook 辅助角色，最后发现它不到1小时前。
+* 已断开连接-混合 Runbook 辅助角色已部署，最后一次在1小时前查看。
+* 未配置-混合 Runbook 辅助角色找不到或未完成加入。
 
 > [!NOTE]
-> Azure 门户显示的内容与计算机的当前状态之间可能会有轻微的延迟。
+> 在 Azure 门户显示的内容和计算机的当前状态之间可能会有轻微的延迟。
 
 ## <a name="start-the-troubleshooter"></a>启动“故障排除”
 
-对于 Azure 计算机，通过单击门户中“更新代理准备”**** 列下的“故障排除”**** 链接，可以启动“更新代理故障排除”页。 对于非 Azure 计算机，该链接将带您到本文。 请参阅[脱机说明](#troubleshoot-offline)以排除非 Azure 计算机故障。
+对于 Azure 计算机，通过单击门户中“更新代理准备”**** 列下的“故障排除”**** 链接，可以启动“更新代理故障排除”页。 对于非 Azure 计算机，此链接会将你带入本文。 请参阅[脱机说明](#troubleshoot-offline)，对非 Azure 计算机进行故障排除。
 
 ![虚拟机更新管理列表](../media/update-agent-issues/vm-list.png)
 
 > [!NOTE]
-> 要检查混合 Runbook 辅助角色的运行状况，VM 必须正在运行。 如果 VM 没有运行，屏幕上会显示“启动 VM”按钮****。
+> 若要查看混合 Runbook 辅助角色的运行状况，VM 必须正在运行。 如果 VM 没有运行，屏幕上会显示“启动 VM”按钮****。
 
-在“更新代理故障排除”页上选择“运行检查”，启动故障排除****。 疑难解答使用[Run 命令](../../virtual-machines/windows/run-command.md)在计算机上运行脚本以验证依赖项。 完成故障排除时，它会返回检查的结果。
+在“更新代理故障排除”页上选择“运行检查”，启动故障排除****。 疑难解答使用[运行命令](../../virtual-machines/windows/run-command.md)在计算机上运行脚本，以验证依赖关系。 完成故障排除时，它会返回检查的结果。
 
 ![“更新代理故障排除”页面](../media/update-agent-issues/troubleshoot-page.png)
 
@@ -50,19 +50,19 @@ ms.locfileid: "81678974"
 
 ### <a name="operating-system"></a>操作系统
 
-操作系统检查验证混合 Runbook 辅助角色是否运行以下操作系统之一：
+操作系统检查会验证混合 Runbook 辅助角色是否正在运行以下操作系统之一：
 
-|操作系统  |说明  |
+|操作系统  |注意  |
 |---------|---------|
-|Windows 服务器 2012 及更高版本 |.NET 框架 4.6 或更高版本是必需的。 （[下载 .NET Framework](/dotnet/framework/install/guide-for-developers)）<br/> 需要 Windows PowerShell 5.1。  （[下载 Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)）        |
+|Windows Server 2012 及更高版本 |需要 .NET Framework 4.6 或更高版本。 （[下载 .NET Framework](/dotnet/framework/install/guide-for-developers)）<br/> Windows PowerShell 5.1 是必需的。  （[下载 Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)）        |
 
 ### <a name="net-462"></a>.NET 4.6.2
 
-.NET 框架检查验证系统是否安装了至少[.NET 框架 4.6.2。](https://www.microsoft.com/en-us/download/details.aspx?id=53345)
+.NET Framework 检查将验证系统是否至少安装了[.NET Framework 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53345) 。
 
 ### <a name="wmf-51"></a>WMF 5.1
 
-WMF 检查验证系统是否具有 Windows 管理框架 （WMF） - [Windows 管理框架 5.1](https://www.microsoft.com/download/details.aspx?id=54616)的必需版本。
+WMF 检查将验证系统是否具有所需的 Windows Management Framework （WMF）版本- [Windows Management framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)。
 
 ### <a name="tls-12"></a>TLS 1.2
 
@@ -86,13 +86,13 @@ WMF 检查验证系统是否具有 Windows 管理框架 （WMF） - [Windows 管
 
 ### <a name="monitoring-agent-service-status"></a>监视代理服务的状态
 
-此检查确定 Windows 的日志分析代理`healthservice`（ ） 是否在计算机上运行。 要了解有关对服务进行故障排除的更多信息，请参阅[Windows 的日志分析代理未运行](hybrid-runbook-worker.md#mma-not-running)。
+此检查确定适用于 Windows 的 Log Analytics 代理（`healthservice`）是否正在计算机上运行。 若要详细了解如何对服务进行故障排除，请参阅[Windows Log Analytics 代理未运行](hybrid-runbook-worker.md#mma-not-running)。
 
-要重新安装 Windows 的日志分析代理，请参阅[安装和配置 Windows 的日志分析代理](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)。
+若要重新安装适用于 Windows 的 Log Analytics 代理，请参阅[安装和配置适用于 windows 的 Log Analytics 代理](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)。
 
 ### <a name="monitoring-agent-service-events"></a>监视代理服务事件
 
-此检查确定在过去 24 小时内，Azure 操作管理器日志中是否显示任何 4502 事件。
+此检查确定在过去24小时内，计算机上的 Azure Operations Manager 日志中是否显示任何4502事件。
 
 有关此事件的详细信息，请参阅此事件的[故障排除指南](hybrid-runbook-worker.md#event-4502)。
 
@@ -104,7 +104,7 @@ Crypto 文件夹访问检查确定本地系统帐户是否有权访问 C:\Progra
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>脱机使用故障排除
 
-可以通过在本地运行脚本，在混合 Runbook 辅助角色上脱机使用故障排除。 可在 PowerShell 库中获得 [Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration) 脚本。 您必须安装 WMF 4.0 或更高，才能运行脚本。 要下载最新版本的 PowerShell，请参阅[安装各种版本的 PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)。
+可以通过在本地运行脚本，在混合 Runbook 辅助角色上脱机使用故障排除。 可在 PowerShell 库中获得 [Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration) 脚本。 必须安装 WMF 4.0 或更高版本，才能运行该脚本。 若要下载最新版本的 PowerShell，请参阅[安装各种版本的 powershell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)。
 
 此脚本的输出如以下示例所示：
 

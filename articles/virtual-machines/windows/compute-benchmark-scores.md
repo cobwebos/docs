@@ -1,5 +1,5 @@
 ---
-title: 计算 Azure Windows VM 的基准分数
+title: Azure Windows Vm 的计算基准测试分数
 description: 比较运行 Windows Server 的 Azure VM 的 SPECint 计算基准测试分数。
 author: cynthn
 ms.service: virtual-machines-windows
@@ -10,10 +10,10 @@ ms.date: 04/09/2018
 ms.author: cynthn
 ms.reviewer: davberg
 ms.openlocfilehash: ea6bca1367d4b34aa54b65e92e7cbfdd02642f4c
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086226"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Windows VM 的计算基准测试分数
@@ -45,7 +45,7 @@ ms.locfileid: "82086226"
 | Standard_A8m_v2 | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 10 | 104.5 | 5.1 | 
 | Standard_A8m_v2 | 8 | 2 | Intel(R) Xeon(R) CPU E5-2660 0 @ 2.20GHz | 13 | 111.6 | 2.3 | 
 
-注意：Av2 系列 VM 可以部署在各种硬件类型和处理器上（如上图所示）。 Av2 系列 VM 具有 CPU 性能和内存配置，最适合入门级工作负载，如开发和测试。 无论部署在哪个硬件上，都会限制大小，以为正在运行的实例提供相对一致的处理器性能;但是，利用特定较新的处理器优化的软件可能会看到处理器类型之间的更多显著变化。
+注意： Av2 系列 Vm 可以部署在各种不同的硬件类型和处理器上（如上所示）。 Av2 系列 Vm 具有最适合于入门级工作负荷（如开发和测试）的 CPU 性能和内存配置。 大小被限制为为正在运行的实例提供相对一致的处理器性能，而不考虑部署它的硬件;但是，利用特定的较新处理器优化的软件可能会发现跨处理器类型的更大变化。
 
 ## <a name="b---burstable"></a>B - 可迸发
 | 大小 | vCPU | NUMA 节点 | CPU | 运行次数 | 平均基本速率 | 标准偏差 | 
@@ -60,9 +60,9 @@ ms.locfileid: "82086226"
 | Standard_B8ms | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 3 | 42.0 | 0.0 | 
 | Standard_B8ms | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 25 | 41.4 | 0.9 | 
 
-注意：B 系列 VM 适用于具有可突发性能要求的工作负载。 当使用少于其基线时，VM 实例会累积积分。 当 VM 累积了信用时，VM 可以使用高达 100% 的时间在基线上方突发，以满足简短的 CPU 突发要求。 突发时间取决于可用积分，这是 VM 大小和时间的函数。  
+注意： B 系列 Vm 适用于具有可突增性能要求的工作负荷。 当使用小于基线时，VM 实例累积了信用额度。 当 VM 具有累积信用额度时，VM 可能会在基线之上使用最多100% 的流量，以满足短 CPU 突发要求。 突发时间取决于可用信用额度，它是 VM 大小和时间的函数。  
 
-SPEC Int 是一个运行相当长的测试，通常耗尽可用的突发积分。  因此，上述数字更接近 VM 的基准性能（尽管它们可能反映运行之间累积的一些突发时间）。  对于短时间、突发性工作负载（典型的 B 系列）性能，性能通常更接近 Ds v3 系列的性能。
+SPEC Int 是相当长的运行测试，通常用完可用的突发信用额度。  因此，上面的数字更接近于 VM 的基准性能（尽管它们可能反映了两次运行之间累积的某些突发时间）。  对于 short、突发、工作负荷（通常在 B 系列上），性能通常会更接近 Ds v3 系列。
 
 ## <a name="dsv3---general-compute--premium-storage"></a>DSv3 - 通用计算 + 高级存储
 | 大小 | vCPU | NUMA 节点 | CPU | 运行次数 | 平均基本速率 | 标准偏差 | 
@@ -313,7 +313,7 @@ SPEC Int 是一个运行相当长的测试，通常耗尽可用的突发积分�
 | Standard_NC24rs_v3 | 24 | 2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 2 | 811.0 | 4.2 | 
 | Standard_NC24s_v3 | 24 | 2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 3 | 809.3 | 2.3 | 
 
-## <a name="ncsv2---gpu-enabled"></a>NCSv2 - 启用 GPU
+## <a name="ncsv2---gpu-enabled"></a>NCSv2-已启用 GPU
 | 大小 | vCPU | NUMA 节点 | CPU | 运行次数 | 平均基本速率 | 标准偏差 | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_NC6s_v2 | 6 | 1 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 11 | 227.0 | 6.2 | 
@@ -321,15 +321,15 @@ SPEC Int 是一个运行相当长的测试，通常耗尽可用的突发积分�
 | Standard_NC24rs_v2 | 24 | 2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 12 | 811.0 | 5.4 | 
 | Standard_NC24s_v2 | 24 | 2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 11 | 811.5 | 4.4 | 
 
-## <a name="nc---gpu-enabled"></a>NC - 启用 GPU
+## <a name="nc---gpu-enabled"></a>NC-已启用 GPU
 | 大小 | vCPU | NUMA 节点 | CPU | 运行次数 | 平均基本速率 | 标准偏差 | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
-| Standard_NC6 | 6 | 1 | 英特尔（R） Xeon（R） CPU E5-2690 v3 = 2.60GHz | 27 | 209.6 | 4.4 | 
-| Standard_NC12 | 12 | 1 | 英特尔（R） Xeon（R） CPU E5-2690 v3 = 2.60GHz | 28 | 394.4 | 3.8 | 
-| Standard_NC24 | 24 | 2 | 英特尔（R） Xeon（R） CPU E5-2690 v3 = 2.60GHz | 28 | 751.7 | 3.5 | 
-| Standard_NC24r | 24 | 2 | 英特尔（R） Xeon（R） CPU E5-2690 v3 = 2.60GHz | 27 | 752.9 | 3.4 | 
+| Standard_NC6 | 6 | 1 | Intel （R）强® CPU E5-2690 v3 @ 2.60 GHz | 27 | 209.6 | 4.4 | 
+| Standard_NC12 | 12 | 1 | Intel （R）强® CPU E5-2690 v3 @ 2.60 GHz | 28 | 394.4 | 3.8 | 
+| Standard_NC24 | 24 | 2 | Intel （R）强® CPU E5-2690 v3 @ 2.60 GHz | 28 | 751.7 | 3.5 | 
+| Standard_NC24r | 24 | 2 | Intel （R）强® CPU E5-2690 v3 @ 2.60 GHz | 27 | 752.9 | 3.4 | 
 
-## <a name="nds--gpu-enabled"></a>已启用 ND- GPU
+## <a name="nds--gpu-enabled"></a>已启用 NDs-GPU
 | 大小 | vCPU | NUMA 节点 | CPU | 运行次数 | 平均基本速率 | 标准偏差 | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_ND6s | 6 | 1 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 8 | 230.1 | 1.2 | 
@@ -337,12 +337,12 @@ SPEC Int 是一个运行相当长的测试，通常耗尽可用的突发积分�
 | Standard_ND24rs | 24 | 2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 10 | 811.4 | 3.5 | 
 | Standard_ND24s | 24 | 2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 11 | 812.6 | 4.4 | 
 
-## <a name="nv---gpu-enabled"></a>NV - 启用 GPU
+## <a name="nv---gpu-enabled"></a>NV-已启用 GPU
 | 大小 | vCPU | NUMA 节点 | CPU | 运行次数 | 平均基本速率 | 标准偏差 | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
-| Standard_NV6 | 6 | 1 | 英特尔（R） Xeon（R） CPU E5-2690 v3 = 2.60GHz | 28 | 210.5 | 6.1 | 
-| Standard_NV12 | 12 | 1 | 英特尔（R） Xeon（R） CPU E5-2690 v3 = 2.60GHz | 28 | 394.5 | 2.3 | 
-| Standard_NV24 | 24 | 2 | 英特尔（R） Xeon（R） CPU E5-2690 v3 = 2.60GHz | 26 | 752.2 | 4.4 | 
+| Standard_NV6 | 6 | 1 | Intel （R）强® CPU E5-2690 v3 @ 2.60 GHz | 28 | 210.5 | 6.1 | 
+| Standard_NV12 | 12 | 1 | Intel （R）强® CPU E5-2690 v3 @ 2.60 GHz | 28 | 394.5 | 2.3 | 
+| Standard_NV24 | 24 | 2 | Intel （R）强® CPU E5-2690 v3 @ 2.60 GHz | 26 | 752.2 | 4.4 | 
 
 ## <a name="about-specint"></a>关于 SPECint
 Windows 分数是通过在 Windows Server 上运行 [SPECint 2006](https://www.spec.org/cpu2006/results/rint2006.html) 计算得出的。 SPECint 是使用基本速率选项 (SPECint_rate2006) 运行的，每个 vCPU 一个副本。 SPECint 包括 12 项单独的测试，每项测试运行三次，取每次测试的中间值并为值加权，形成综合分数。 然后跨多个 VM 运行这些测试，提供所示的平均分。

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: allensu
-ms.openlocfilehash: 46ecf1bf2f5bd7900677cd115f8571ec3551a874
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: 477a5ffa971120d1a98c09ac4ae8ebda1c82b770
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134268"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209020"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure 专用终结点 DNS 配置
 
@@ -55,7 +55,7 @@ Azure 服务将在公共 DNS 上创建一个规范名称 DNS 记录（CNAME）�
 |Azure Database for MySQL （DBforMySQL/服务器）|mysqlServer|privatelink.mysql.database.azure.com|
 |Azure Database for MariaDB （DBforMariaDB/服务器）|mariadbServer|privatelink.mariadb.database.azure.com|
 |Azure Key Vault （KeyVault/保管库）|保管库|privatelink.vaultcore.azure.net|
-|Azure Kubernetes 服务-Kubernetes API （ContainerService/managedClusters）    | managedCluster | {guid}. privatelink。<region>。 azmk8s.io|
+|Azure Kubernetes 服务-Kubernetes API （ContainerService/managedClusters）    | managedCluster | {guid}. privatelink。{region}. azmk8s|
 |Azure 搜索（searchServices/）|searchService|privatelink.search.windows.net|   
 |Azure 容器注册表（Microsoft.containerregistry/注册表） | 注册表 | privatelink.azurecr.io |
 |Azure 应用配置（Appconfiguration/configurationStores）| configurationStore | privatelink.azconfig.io|

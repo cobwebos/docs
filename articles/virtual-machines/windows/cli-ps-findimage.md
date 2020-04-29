@@ -10,10 +10,10 @@ ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
 ms.openlocfilehash: 46a2badbbe957f6a8a6af7f5a40633ea24cadcd4
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82083359"
 ---
 # <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>使用 Azure PowerShell 在 Azure 市场中查找 Windows VM 映像
@@ -41,8 +41,8 @@ ms.locfileid: "82083359"
 | MicrosoftWindowsServer |WindowsServer |2012-R2-Datacenter |
 | MicrosoftWindowsServer |WindowsServer |2012-Datacenter |
 | MicrosoftSharePoint |MicrosoftSharePointServer |sp2019 |
-| MicrosoftSQLServer |SQL2019-WS2016 |Enterprise |
-| MicrosoftRServer |RServer-WS2016 |Enterprise |
+| MicrosoftSQLServer |SQL2019-WS2016 |企业 |
+| MicrosoftRServer |RServer-WS2016 |企业 |
 
 ## <a name="navigate-the-images"></a>浏览映像
 
@@ -206,7 +206,7 @@ DataDiskImages   : []
 
 ```
 
-下面的示例显示了*数据科学虚拟机 - Windows 2016*`PurchasePlan`映像的类似命令，该映像具有以下属性： `name`、`product`和`publisher`。 某些映像还具有 `promotion code` 属性。 若要部署此映像，请参阅以下部分，以接受条款并启用编程式部署。
+下面的示例显示了一个与*Data Science Virtual Machine-Windows 2016*映像类似的命令，该命令具有`PurchasePlan`以下属性`name`： `product`、和`publisher`。 某些映像还具有 `promotion code` 属性。 若要部署此映像，请参阅以下部分，以接受条款并启用编程式部署。
 
 ```powershell
 Get-AzVMImage -Location "westus" -PublisherName "microsoft-ads" -Offer "windows-data-science-vm" -Skus "windows2016" -Version "0.2.02"

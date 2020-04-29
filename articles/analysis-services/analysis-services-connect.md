@@ -8,10 +8,10 @@ ms.date: 04/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: cc671629934d80b3e727ca69f9026f534d05e160
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81676653"
 ---
 # <a name="connecting-to-servers"></a>连接到服务器
@@ -25,7 +25,7 @@ ms.locfileid: "81676653"
 与服务器的所有连接（无论连接类型）都需要更新后的 AMO、ADOMD.NET 和 OLEDB 客户端库才能连接到 Analysis Services 服务器。 对于 SSMS、Visual Studio、Excel 2016 及更高版本和 Power BI，最新的客户端库会与每月发布一起安装或更新。 但是在某些情况下，应用程序可能不是最新版本。 例如，当策略延迟更新或 Office 365 更新在延期频道上时。
 
 > [!NOTE]
-> 客户端库无法通过需要用户名和密码的代理服务器连接到 Azure 分析服务。 
+> 客户端库无法通过需要用户名和密码的代理服务器连接到 Azure Analysis Services。 
 
 ## <a name="server-name"></a>服务器名称
 
@@ -43,7 +43,7 @@ ms.locfileid: "81676653"
 ![在 Azure 中获取服务器名称](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 
 > [!NOTE]
-> 美国东部2区的协议是**阿斯帕斯塔斯2。**
+> 美国东部2地区的协议为**aspaaseastus2**。
 
 ## <a name="connection-string"></a>连接字符串
 
@@ -80,6 +80,6 @@ ms.locfileid: "81676653"
 ## <a name="next-steps"></a>后续步骤
 
 [与 Excel 连接](analysis-services-connect-excel.md)    
-[使用电源 BI 连接](analysis-services-connect-pbi.md)   
+[连接 Power BI](analysis-services-connect-pbi.md)   
 [管理服务器](analysis-services-manage.md)   
 

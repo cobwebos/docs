@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: allensu
 ms.openlocfilehash: 8ff958b7bab7be3124452c1206baf64d0f8ccb7a
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82142504"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>为 Azure 网络接口添加、更改或删除 IP 地址
@@ -52,7 +52,7 @@ ms.locfileid: "82142504"
 4. 在“IP 配置”**** 下选择“+ 添加”****。
 5. 指定以下内容，然后选择“确定”****：
 
-   |设置|必需？|详细信息|
+   |设置|是否必需？|详细信息|
    |---|---|---|
    |名称|是|对于网络接口必须是唯一的|
    |类型|是|由于要将 IP 配置添加到现有网络接口，并且每个网络接口都必须有一个[主要](#primary) IP 配置，因此，你的唯一选项是“辅助”。****|
@@ -62,7 +62,7 @@ ms.locfileid: "82142504"
 
 **命令**
 
-|工具|命令|
+|工具|Command|
 |---|---|
 |CLI|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/add-aznetworkinterfaceipconfig)|
@@ -76,14 +76,14 @@ ms.locfileid: "82142504"
 3. 在“设置”**** 下选择“IP 配置”****。
 4. 从列表中选择想要修改的 IP 配置。
 5. 使用有关[添加 IP 配置](#add-ip-addresses)的步骤 5 中的设置的信息，根据需要更改设置。
-6. 选择“保存”。 
+6. 选择“保存”  。
 
 >[!NOTE]
 >在 Windows 中，如果主要网络接口有多个 IP 配置，并且你更改了主要 IP 配置的专用 IP 地址，则必须手动将主要 IP 地址和辅助 IP 地址重新分配给网络接口（在 Linux 中不需要执行此操作）。 若要手动向操作系统中的网络接口分配 IP 地址，请参阅[将多个 IP 地址分配到虚拟机](virtual-network-multiple-ip-addresses-portal.md#os-config)。 有关在手动向虚拟机操作系统添加 IP 地址的特别注意事项，请参阅[专用](#private) IP 地址。 请不要向虚拟机操作系统添加任何公共 IP 地址。
 
 **命令**
 
-|工具|命令|
+|工具|Command|
 |---|---|
 |CLI|[az network nic ip-config update](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
@@ -99,7 +99,7 @@ ms.locfileid: "82142504"
 
 **命令**
 
-|工具|命令|
+|工具|Command|
 |---|---|
 |CLI|[az network nic ip-config delete](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Remove-AzNetworkInterfaceIpConfig](/powershell/module/az.network/remove-aznetworkinterfaceipconfig)|
@@ -151,7 +151,7 @@ ms.locfileid: "82142504"
 
 通过专用 IP 地址，虚拟机除了能够与同一网络中的或所连接的虚拟网络中的其他资源进行通信外，还能够进行到 Internet 的出站通信。 出站连接是由 Azure 转换为不可预测的公共 IP 地址的源网络地址。 若要了解 Azure 出站 Internet 连接的详细信息，请阅读 [Azure 出站 Internet 连接](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。 不能从 Internet 进行到虚拟机的专用 IP 地址的入站通信。 如果出站连接需要可预测的公共 IP 地址，则将公共 IP 地址资源关联到网络接口。
 
-### <a name="public"></a>公用
+### <a name="public"></a>公共
 
 通过公共 IP 地址资源分配的公共 IP 地址允许以入站连接的方式从 Internet 连接到虚拟机。 到 Internet 的出站连接使用不可预测的 IP 地址。 有关详细信息，请参阅[了解 Azure 中的出站连接](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 可以将公共 IP 地址分配给 IP 配置，但这不是必需的。 如果没有通过关联公共 IP 地址资源的方式向虚拟机分配公共 IP 地址，则虚拟机仍可以出站方式与 Internet 通信。 在这种情况下，专用 IP 地址是由 Azure 转换为不可预测的公共 IP 地址的源网络地址。 若要了解有关公共 IP 地址资源的详细信息，请参阅[公共 IP 地址资源](virtual-network-public-ip-address.md)。
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 18e1ab1d01394d585cfb06ced8c5fbac04114177
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431951"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 密钥保管库开发人员指南
@@ -20,11 +20,11 @@ ms.locfileid: "81431951"
 使用 Key Vault 可以从应用程序中安全地访问敏感信息：
 
 - 无需自己编写代码即可保护密钥和机密信息，并且能够轻松地在应用程序中使用它们。
-- 能够让客户拥有和管理其自己的密钥，因此可以专注于提供核心软件功能。 这样，您的应用程序将不会对客户的租户密钥和机密承担任何责任或潜在责任。
+- 能够让客户拥有和管理其自己的密钥，因此可以专注于提供核心软件功能。 这样，你的应用程序将不承担客户租户密钥和机密的责任或潜在责任。
 - 应用程序可以使用密钥进行签名和加密，不过使密钥管理与应用程序分开，可以使解决方案适用于地理分散的应用。
-- 管理密钥保管库证书。 有关详细信息，请参阅[证书](../certificates/about-certificates.md)
+- 管理 Key Vault 证书。 有关详细信息，请参阅[证书](../certificates/about-certificates.md)
 
-有关 Azure 密钥保管库的更常规信息，请参阅[什么是密钥保管库](overview.md)。
+有关 Azure Key Vault 的更多常规信息，请参阅[什么是 Key Vault](overview.md)）。
 
 ## <a name="public-previews"></a>公共预览版
 
@@ -34,17 +34,17 @@ ms.locfileid: "81431951"
 
 虽然 Azure Key Vault 可用于安全存储凭据以及其他密钥和机密，但代码需要通过 Key Vault 的身份验证才能检索它们。 “Azure 资源的托管标识”为 Azure 服务提供了 Azure Active Directory (Azure AD) 中的自动托管标识，更巧妙地解决了这个问题。 此标识可用于通过支持 Azure AD 身份验证的任何服务（包括 Key Vault）的身份验证，这样就无需在代码中插入任何凭据了。 
 
-有关 Azure 资源的托管标识的详细信息，请参阅[标识概述](../../active-directory/managed-identities-azure-resources/overview.md)。 有关使用 Azure AD 的详细信息，请参阅[将应用程序与 Azure 活动目录集成](../../active-directory/develop/active-directory-integrating-applications.md)。
+有关 Azure 资源的托管标识的详细信息，请参阅[标识概述](../../active-directory/managed-identities-azure-resources/overview.md)。 有关使用 Azure AD 的详细信息，请参阅将[应用程序与 Azure Active Directory 集成](../../active-directory/develop/active-directory-integrating-applications.md)。
 
 使用密钥保管库中的密钥、机密或证书前，请通过 CLI、PowerShell、资源管理器模板或 REST 创建和管理密钥保管库，如以下文章所述：
 
 - [使用 CLI 创建和管理 Key Vault](../secrets/quick-create-cli.md)
 - [使用 PowerShell 创建和管理 Key Vault](../secrets/quick-create-powershell.md)
-- [使用 Azure 端口创建和管理密钥保管库](../secrets/quick-create-portal.md)
-- [使用 Python 创建和管理密钥保管库](../secrets/quick-create-python.md)
-- [使用 Java 创建和管理密钥保管库](../secrets/quick-create-java.md)
-- [使用 Node.js 创建和管理密钥保管库](../secrets/quick-create-node.md)
-- [使用 .NET （v4 SDK） 创建和管理密钥保管库](../secrets/quick-create-net.md)
+- [通过 Azure 端口创建和管理密钥保管库](../secrets/quick-create-portal.md)
+- [通过 Python 创建和管理密钥保管库](../secrets/quick-create-python.md)
+- [通过 Java 创建和管理密钥保管库](../secrets/quick-create-java.md)
+- [用 node.js 创建和管理密钥保管库](../secrets/quick-create-node.md)
+- [通过 .NET 创建和管理密钥保管库（v4 SDK）](../secrets/quick-create-net.md)
 - [通过 Azure 资源管理器模板创建密钥保管库并添加机密](../secrets/quick-create-template.md)
 - [使用 REST 创建和管理 Key Vault](/rest/api/keyvault/)
 
@@ -117,15 +117,15 @@ ms.locfileid: "81431951"
 
 这些文章介绍了使用 Key Vault 或与之集成的其他方案和服务。
 
-- [Azure 磁盘加密](../../security/fundamentals/encryption-overview.md)利用 Windows 的行业标准[BitLocker](https://technet.microsoft.com/library/cc732774.aspx)功能和 Linux 的[DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt)功能为操作系统和数据磁盘提供卷加密。 该解决方案与 Azure 密钥保管库集成，可帮助你控制和管理密钥保管库订阅中的磁盘加密密钥和机密，同时确保虚拟机磁盘中的所有数据可在 Azure 存储空间中静态加密。
+- [Azure 磁盘加密](../../security/fundamentals/encryption-overview.md)利用 Windows 的行业标准[BitLocker](https://technet.microsoft.com/library/cc732774.aspx)功能和 Linux 的[dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)功能为 OS 和数据磁盘提供卷加密。 该解决方案与 Azure 密钥保管库集成，可帮助你控制和管理密钥保管库订阅中的磁盘加密密钥和机密，同时确保虚拟机磁盘中的所有数据可在 Azure 存储空间中静态加密。
 - [Azure Data Lake Store](../../data-lake-store/data-lake-store-get-started-portal.md) 提供了对帐户中存储的数据进行加密的选项。 对于密钥管理，Data Lake Store 提供两种用于管理主加密密钥 (MEK) 的模式，这两种模式可用于解密在 Data Lake Store 中存储的任何数据。 可以让 Data Lake Store 代为管理 MEK，或选择使用 Azure 密钥保管库帐户保留 MEK 所有权。 创建 Data Lake Store 帐户时可以指定密钥管理模式。
 - [Azure 信息保护](/azure/information-protection/plan-implement-tenant-key)允许管理自己的租户密钥。 例如，不是由 Microsoft 管理租户密钥（默认设置），可以管理自己的租户密钥，以遵守适用于组织的具体规定。 管理自己的租户密钥也称为自带密钥（简称 BYOK）。
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault 概述和概念
 
-- [密钥保管库软删除行为](overview-soft-delete.md)）描述允许恢复已删除对象的功能，无论删除是意外的还是有意的。
+- [Key Vault 软删除行为](overview-soft-delete.md)）描述允许恢复已删除的对象的功能，不管是有意还是有意删除。
 - [Key Vault 客户端限制](overview-throttling.md)介绍了有关限制的基本概念，并针对应用提供了限制方法。
-- [密钥保管库存储帐户密钥概述](../secrets/overview-storage-keys.md)）描述密钥保管库集成 Azure 存储帐户密钥。
+- [Key Vault 存储帐户密钥概述](../secrets/overview-storage-keys.md)）介绍 Key Vault 集成 Azure 存储帐户密钥。
 - [Key Vault 安全体系](overview-security-worlds.md)介绍了区域与安全领域之间的关系。
 
 ## <a name="social"></a>社交

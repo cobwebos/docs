@@ -27,7 +27,7 @@
       href: concepts-built-in-policy.md
     - name: 资源载入
       href: concepts-resource-onboarding.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 将自定义操作添加到 Azure
       href: custom-providers-action-endpoint-how-to.md
@@ -53,5 +53,5 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 资源管理器模板最佳做法
       href: 'https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-custom-providers'

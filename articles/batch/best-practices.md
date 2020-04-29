@@ -1,13 +1,13 @@
 ---
-title: 最佳实践
+title: 最佳做法
 description: 了解开发 Azure Batch 解决方案的最佳做法和有用的技巧。
 ms.date: 04/03/2020
 ms.topic: article
 ms.openlocfilehash: 43a0020953ea44593cf38298a78547194751fc72
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82117499"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳实践
@@ -116,7 +116,7 @@ Batch 池是用于在批处理服务上执行作业的计算资源。 以下各�
 
 - **任务执行时间**避免具有短执行时间的任务。 仅运行一到两秒的任务并不理想。 应尝试在单个任务中执行大量的工作（最多10秒，最多可达几小时或几天）。 如果每个任务执行一分钟（或更多），则作为总体计算时间的一小部分的计划开销很小。
 
-## <a name="nodes"></a>Nodes
+## <a name="nodes"></a>节点
 
 - **启动任务应该是幂等**的与其他任务类似，节点启动任务应该是幂等的，因为每次节点启动时将重新运行该任务。 幂等任务只是一种在多次运行时产生一致结果的任务。
 
@@ -129,7 +129,7 @@ Batch 池是用于在批处理服务上执行作业的计算资源。 以下各�
 
 - **如果存在问题，则收集批处理代理日志**如果你注意到某个节点的行为涉及到节点上运行的任务，则建议在解除相关节点的分配之前收集批处理代理日志。 可以使用 "上载批处理服务日志" API 收集批处理代理日志。 这些日志可提供给 Microsoft 的支持票证的一部分，并可帮助解决问题和解决问题。
 
-## <a name="security"></a>安全
+## <a name="security"></a>安全性
 
 ### <a name="security-isolation"></a>安全隔离
 

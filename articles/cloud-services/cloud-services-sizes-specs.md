@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: 2549cb0408c9dad3e92f2cec9625757de45a10dc
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086243"
 ---
 # <a name="sizes-for-cloud-services"></a>云服务的大小
@@ -63,7 +63,7 @@ Azure 上有多个标准大小可供选择。 其中某些大小的注意事项�
 | [D v3](#dv3-series) |160 - 190* |
 | [E v3](#ev3-series) |160 - 190* |
 | [G](#g-series) |180 - 240* |
-| [H](#h-series) |290 - 300* |
+| [高](#h-series) |290 - 300* |
 
 ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。 提升量可能因 VM 大小、工作负荷和同一主机上运行的其他工作负荷而有所不同。
 
@@ -80,7 +80,7 @@ ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | 特小型      | 1         | 0.768        | 20                   | 1/低 |
 | 小型           | 1         | 1.75         | 225                  | 1/中 |
-| 中型          | 2         | 3.5          | 490                  | 1/中 |
+| 中          | 2         | 3.5          | 490                  | 1/中 |
 | 大型           | 4         | 7            | 1000                 | 2/高 |
 | 超大型      | 8         | 14           | 2040                 | 4/高 |
 | A5              | 2         | 14           | 490                  | 1/中 |
@@ -216,7 +216,7 @@ Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceS
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* 了解[Azure 订阅和服务限制、配额和约束](../azure-resource-manager/management/azure-subscription-service-limits.md)。
+* 了解[azure 订阅和服务限制、配额和约束](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 * 针对 HPC 工作负荷，了解关于[高性能计算 VM 大小](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)的详细信息。
 
 

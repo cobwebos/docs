@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: 8d22f8a2722dc55a13ce8e3752ca69d6e7251070
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82115119"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>作为事件网格源的 Azure Blob 存储
@@ -293,27 +293,27 @@ ms.locfileid: "82115119"
 
 事件具有以下顶级数据：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | 字符串 | 事件主题的发布者定义路径。 |
 | eventType | 字符串 | 此事件源的一个注册事件类型。 |
 | EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
 | ID | 字符串 | 事件的唯一标识符。 |
-| data | 对象 | Blob 存储事件数据。 |
+| data | 对象 (object) | Blob 存储事件数据。 |
 | dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
 | metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | api | 字符串 | 触发事件的操作。 |
 | ClientRequestId | 字符串 | 客户端提供的用于存储 API 操作的请求 ID。 此 ID 可用于通过 Azure 存储诊断日志中的“client-request-id”字段关联到这些日志，并且可以通过“x-ms-client-request-id”标头提供到客户端请求中。 请参阅[日志格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)。 |
 | requestId | 字符串 | 用于存储 API 操作的服务生成的请求 ID。 可用于通过 Azure 存储诊断日志中的“request-id-header”字段关联到这些日志，并且由“x-ms-request-id”标头中的初始化 API 调用返回。 请参阅[日志格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)。 |
 | eTag | 字符串 | 可用于根据条件执行操作的值。 |
 | contentType | 字符串 | 为 Blob 指定的内容类型。 |
-| contentLength | integer | Blob 大小，以字节为单位。 |
+| contentLength | 整数 | Blob 大小，以字节为单位。 |
 | blobType | 字符串 | Blob 的类型。 有效值为“BlockBlob”或“PageBlob”。 |
 | contentOffset | 数字 | 在事件触发应用程序完成写入文件时执行的写入操作的偏移量（以字节为单位）。 <br>只有对具有分层命名空间的 Blob 存储帐户触发的事件才显示此值。|
 | destinationUrl |字符串 | 操作完成后存在的文件的 URL。 例如，如果重命名了某个文件，则 `destinationUrl` 属性将包含新文件名的 URL。 <br>只有对具有分层命名空间的 Blob 存储帐户触发的事件才显示此值。|
@@ -321,7 +321,7 @@ ms.locfileid: "82115119"
 | url | 字符串 | Blob 的路径。 <br>如果客户端使用 Blob REST API，则该 url 将具有以下结构： * \<\>\<blob.core.windows.net/\>/\<\>* 的名称。 <br>如果客户端使用 Data Lake Storage REST API，则 url 将采用以下结构： * \<\>\<dfs.core.windows.net/\>/\<\>* 文件-名称文件中。 |
 | recursive | 字符串 | 若要对所有子目录执行该操作，则为 `True`；否则为 `False`。 <br>只有对具有分层命名空间的 Blob 存储帐户触发的事件才显示此值。 |
 | sequencer | 字符串 | 一个不透明的字符串值，表示任何特定 blob 名称的事件的逻辑顺序。  用户可以使用标准字符串比较，了解同一个 blob 名称上两个事件的相对序列。 |
-| storageDiagnostics | 对象 | Azure 存储服务中偶尔附带的诊断数据。 如果存在，事件使用者应忽略它。 |
+| storageDiagnostics | 对象 (object) | Azure 存储服务中偶尔附带的诊断数据。 如果存在，事件使用者应忽略它。 |
 
 ## <a name="tutorials-and-how-tos"></a>教程和操作指南
 |标题  |说明  |

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
 ms.openlocfilehash: ac1ed9ac25d65d0391175fc6d43b48048da74926
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82101580"
 ---
 # <a name="security-controls-for-windows-virtual-machines"></a>Windows 虚拟机的安全控制
@@ -49,7 +49,7 @@ ms.locfileid: "82101580"
 
 | 安全控制 | Yes/No | 注释 |
 |---|---|--|
-| 服务器端加密： Microsoft 托管密钥 | 是 | 请参阅[加密 Windows VM 上的虚拟磁盘](/azure/virtual-machines/windows/disk-encryption-overview)。 |
+| 服务器端静态加密：Microsoft 管理的密钥 | 是 | 请参阅[加密 Windows VM 上的虚拟磁盘](/azure/virtual-machines/windows/disk-encryption-overview)。 |
 | 传输中加密（例如 ExpressRoute 加密、VNet 中加密，以及 VNet-VNet 加密）| 是 | Azure 虚拟机支持 [ExpressRoute](/azure/expressroute) 和 VNet 加密。 请参阅 [VM 中的传输中加密](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)。 |
 | 服务器端静态加密：客户管理的密钥 (BYOK) | 是 | 客户托管密钥是受支持的 Azure 加密方案；请参阅 [Azure 加密概述](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)。|
 | 列级加密（Azure 数据服务）| 不适用 | |

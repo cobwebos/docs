@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
 ms.openlocfilehash: 019c27b1f7e8560c86252aaf2ed1fb79df2439fa
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81677339"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>排查 Azure 虚拟机上出现的备份失败问题
@@ -83,8 +83,8 @@ ms.locfileid: "81677339"
 * 如果无法重启服务，则请通过以下步骤重新安装**分布式事务处理协调器**服务：
   * 停止 MSDTC 服务
   * 打开命令提示符 (cmd)
-  * 运行命令"msdtc -卸载"
-  * 运行命令"msdtc -安装"
+  * 运行命令 "msdtc-uninstall"
+  * 运行命令 "msdtc-install"
   * 启动 MSDTC 服务
 * 启动 Windows 服务“COM+ 系统应用程序”  。 “COM+ 系统应用程序”启动后，从 Azure 门户触发备份作业  。</ol>
 
@@ -190,7 +190,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 | 虚拟机上不存在 VM 代理： <br>安装任何必备组件和 VM 代理。 然后，重启该操作。 |阅读有关 [VM 代理安装以及如何验证 VM 代理安装](#vm-agent)的详细信息。 |
 | **错误代码**：ExtensionSnapshotFailedNoSecureNetwork <br/> **错误消息**：由于无法创建安全的网络通信通道，因此快照操作失败。 | <ol><li> 通过在权限提升模式下运行“regedit.exe”来打开注册表编辑器  。 <li> 标识系统中存在的所有 .NET Framework 版本。 它们位于注册表项“HKEY_LOCAL_MACHINE \ SOFTWARE \ Microsoft”的层次结构下  。 <li> 请为注册表项中存在的每个 .Net Framework 添加以下键： <br> “SchUseStrongCrypto"=dword:00000001”  。 </ol>|
 | **错误代码**：ExtensionVCRedistInstallationFailure <br/> **错误消息**：由于 Visual C++ Redistributable for Visual Studio 2012 安装失败，因此快照操作失败。 | 导航到 C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion 并安装 vcredist2013_x64。<br/>请确保允许此服务安装的注册表项值设置为正确的值。 也就是说，将 **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** 中的 **Start** 值设置为 **3**，而不是 **4**。 <br><br>如果仍然遇到安装问题，请通过权限提升的命令提示符运行“MSIEXEC /UNREGISTER”，接着运行“MSIEXEC /REGISTER”来重启安装服务   。  |
-| **错误代码**： 用户错误请求通过策略取消 <BR> **错误消息**：在 VM 上配置了无效的策略，这阻止了快照操作。 | 如果 Azure 策略[控制环境中的标记](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags)，请考虑将策略从[拒绝效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny)更改为["修改效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify)"，或者根据[Azure 备份所需的命名架构](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)手动创建资源组。
+| **错误代码**： UserErrorRequestDisallowedByPolicy <BR> **错误消息**：在 VM 上配置了无效的策略，该策略将阻止快照操作。 | 如果你的 Azure 策略在[你的环境中控制标记](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags)，则可以考虑将策略从[拒绝效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny)更改为[修改效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify)，或根据[Azure 备份所需的命名架构](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)手动创建资源组。
 
 ## <a name="jobs"></a>作业
 
@@ -205,7 +205,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 | 错误详细信息 | 解决方法 |
 | --- | --- |
-| 还原失败，发生云内部错误。 |<ol><li>尝试还原的云服务使用 DNS 设置进行配置。 可以检查： <br>**$deployment = 获取 Azure 部署 - 服务名称"服务名称" - 插槽"生产" 获取 AzureDns -dns 设置$deployment。DnsSettings**.<br>如果配置了“地址”，则配置了 DNS 设置****。<br> <li>尝试还原的云服务配置了“ReservedIP”，且云服务中的现有 VM 处于停止状态****。 可以使用以下 PowerShell cmdlet 检查云服务是否已保留 IP：$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Production" $dep.ReservedIPName****。 <br><li>正在尝试将具有以下特殊网络配置的虚拟机还原到同一个云服务中： <ul><li>采用负载均衡器配置的虚拟机（内部和外部）。<li>具有多个保留 IP 的虚拟机。 <li>具有多个 NIC 的虚拟机。 </ul><li>请在 UI 中选择新的云服务，或参阅[还原注意事项](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations)，了解具有特殊网络配置的 VM。</ol> |
+| 还原失败，发生云内部错误。 |<ol><li>尝试还原的云服务使用 DNS 设置进行配置。 可以检查： <br>**$deployment = get-azuredeployment-servicename "servicename"-槽 "生产" get-azuredns-DnsSettings $deployment。DnsSettings**。<br>如果配置了“地址”，则配置了 DNS 设置****。<br> <li>尝试还原的云服务配置了“ReservedIP”，且云服务中的现有 VM 处于停止状态****。 可以使用以下 PowerShell cmdlet 检查云服务是否已保留 IP：$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Production" $dep.ReservedIPName****。 <br><li>正在尝试将具有以下特殊网络配置的虚拟机还原到同一个云服务中： <ul><li>采用负载均衡器配置的虚拟机（内部和外部）。<li>具有多个保留 IP 的虚拟机。 <li>具有多个 NIC 的虚拟机。 </ul><li>请在 UI 中选择新的云服务，或参阅[还原注意事项](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations)，了解具有特殊网络配置的 VM。</ol> |
 | 已存在所选的 DNS 名称： <br>请指定其他 DNS 名称，然后重试。 |此 DNS 名称是指云服务名称，通常以 “cloudapp.net”结尾****。 此名称必须是唯一名称。 如果出现此错误，则需在还原期间选择其他 VM 名称。 <br><br> 此错误仅向 Azure 门户用户显示。 通过 PowerShell 进行的还原操作成功，因为它仅还原磁盘而不创建 VM。 如果在磁盘还原操作之后显式创建 VM，则会遇到该错误。 |
 | 指定的虚拟网络配置不正确： <br>指定其他虚拟网络配置，然后重试。 |无 |
 | 指定的云服务使用与要还原的虚拟机的配置不匹配的保留 IP： <br>指定不使用保留的 IP 的其他云服务。 或者选择要还原的其他恢复点。 |无 |
@@ -219,7 +219,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 ## <a name="backup-or-restore-takes-time"></a>备份或还原需要一定时间
 
-如果您的备份需要超过 12 小时，或者还原需要超过 6 小时，请查看[最佳实践](backup-azure-vms-introduction.md#best-practices)和性能[注意事项](backup-azure-vms-introduction.md#backup-performance)
+如果备份所需时间超过12个小时，或 restore 需要超过6小时，请查看[最佳实践](backup-azure-vms-introduction.md#best-practices)和[性能注意事项](backup-azure-vms-introduction.md#backup-performance)
 
 ## <a name="vm-agent"></a>VM 代理
 
@@ -235,7 +235,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 #### <a name="linux-vms"></a>Linux VM
 
 * 从分发存储库安装最新版本的代理。 有关包名称的详细信息，请参阅 [Linux 代理存储库](https://github.com/Azure/WALinuxAgent)。
-* 对于使用经典部署模型创建的 VM，[请更新 VM 属性](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms)并验证代理是否已安装。 资源管理器虚拟机无需执行此步骤。
+* 对于使用经典部署模型创建的 Vm，请[更新 VM 属性](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms)并验证是否已安装代理。 资源管理器虚拟机无需执行此步骤。
 
 ### <a name="update-the-vm-agent"></a>更新 VM 代理
 
@@ -257,13 +257,13 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 验证 Windows VM 上的 VM 代理版本：
 
 1. 登录 Azure 虚拟机并导航到 C:\WindowsAzure\Packages 文件夹****。 应会发现“WaAppAgent.exe”文件****。
-2. 右键单击该文件并转到“属性”****。 然后选择"**详细信息**"选项卡。**产品版本**字段应为 2.6.1198.718 或更高版本。
+2. 右键单击该文件并转到“属性”****。 然后选择 "**详细信息**" 选项卡。"**产品版本**" 字段应为2.6.1198.718 或更高版本。
 
 ## <a name="troubleshoot-vm-snapshot-issues"></a>排查 VM 快照问题
 
 VM 备份依赖于向底层存储发出快照命令。 如果无法访问存储或者快照任务运行延迟，则备份作业可能会失败。 以下状态可能会导致快照任务失败：
 
-* **配置了 SQL Server 备份的 VM 可能会导致快照任务延迟**。 默认情况下，VM 备份在 Windows VM 上创建 VSS 完整备份。 运行 SQL Server 且配置有 SQL Server 备份的 VM 可能会遇到快照延迟。 如果快照延迟导致备份失败，请设置以下注册表项：
+* **配置了 SQL Server 备份的 vm 可能会导致快照任务延迟**。 默认情况下，VM 备份在 Windows VM 上创建 VSS 完整备份。 运行 SQL Server 且配置有 SQL Server 备份的 VM 可能会遇到快照延迟。 如果快照延迟导致备份失败，请设置以下注册表项：
 
    ```text
    [HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT]
@@ -272,7 +272,7 @@ VM 备份依赖于向底层存储发出快照命令。 如果无法访问存储�
 
 * 由于在 RDP 中关闭了 VM，VM 状态报告不正确。**** 如果使用远程桌面关闭虚拟机，请验证门户中的 VM 状态是否正确。 如果状态不正确，请使用门户 VM 仪表板中的“关闭”选项关闭 VM****。
 * 如果四个以上的 VM 共享同一云服务，请为 VM 选择多个不同的备份策略****。 错开备份时间，使同时开始的 VM 备份不超过四个。 尝试将策略中的开始时间至少隔开一小时。
-* VM 在高 CPU 或内存情况下运行****。 如果虚拟机在高内存或 CPU 使用率（超过 90%）情况下运行，则快照任务将排队并延迟。 最终，它超时。如果发生此问题，请尝试按需备份。
+* VM 在高 CPU 或内存情况下运行****。 如果虚拟机在高内存或 CPU 使用率（超过 90%）情况下运行，则快照任务将排队并延迟。 最终，它会超时。如果发生此问题，请尝试按需备份。
 
 ## <a name="networking"></a>网络
 

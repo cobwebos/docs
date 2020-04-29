@@ -4,10 +4,10 @@ description: Application Insights 执行应用遥测的自动深入分析，并�
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.openlocfilehash: ff9f88e1d2e643d04c4417283420217e7d496caf
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81536788"
 ---
 # <a name="smart-detection-in-application-insights"></a>Application Insights 中的智能检测
@@ -23,7 +23,7 @@ ms.locfileid: "81536788"
     ![电子邮件警报](./media/proactive-diagnostics/03.png)
   
     单击大按钮以在门户中打开更多详细信息。
-* Application Insights 中的 **“智能检测”边栏选项卡**。 选择“调查”**** 菜单下的“智能检测”**** 以查看最近检测的列表。
+* Application Insights 中的 **“智能检测”边栏选项卡**。 选择“调查”  菜单下的“智能检测”  以查看最近检测的列表。
 
 ![查看最近的检测](./media/proactive-diagnostics/04.png)
 
@@ -34,15 +34,15 @@ ms.locfileid: "81536788"
 
 * [智能检测 - 失败异常](../../azure-monitor/app/proactive-failure-diagnostics.md)。 我们使用机器学习，通过与负载和其他因素相关为应用设置预期的失败请求速率。 如果失败率超出预期的包络线，我们将发送警报。
 * [智能检测 - 性能异常](../../azure-monitor/app/proactive-performance-diagnostics.md)。 如果操作的响应时间或依赖关系的持续时间比历史基线慢，或者如果我们在响应时间或页面加载时间中识别到异常模式，会收到通知。   
-* 一般退化和问题，如[跟踪降级](https://docs.microsoft.com/azure/azure-monitor/app/proactive-trace-severity)，[内存泄漏](https://docs.microsoft.com/azure/azure-monitor/app/proactive-potential-memory-leak)，[异常量异常上升](https://docs.microsoft.com/azure/azure-monitor/app/proactive-exception-volume)[和安全反模式](https://docs.microsoft.com/azure/azure-monitor/app/proactive-application-security-detection-pack)。
+* 一般的下降和问题，例如[跟踪降级](https://docs.microsoft.com/azure/azure-monitor/app/proactive-trace-severity)、[内存泄漏](https://docs.microsoft.com/azure/azure-monitor/app/proactive-potential-memory-leak)、[异常卷](https://docs.microsoft.com/azure/azure-monitor/app/proactive-exception-volume)和[安全反模式](https://docs.microsoft.com/azure/azure-monitor/app/proactive-application-security-detection-pack)的异常上升。
 
 （每个通知中的帮助链接可转到相关文章。）
 
 ## <a name="smart-detection-email-notifications"></a>智能检测电子邮件通知
 
-默认情况下，所有智能检测规则（标记为_预览_的规则除外）配置为在发现检测时发送电子邮件通知。
+除了标为_预览版_的规则以外，所有智能检测规则都默认配置为在发现检测时发送电子邮件通知。
 
-可以通过打开智能检测“设置”**** 边栏选项卡并选择规则（这将打开“编辑规则”**** 边栏选项卡）来为特定的智能检测规则配置电子邮件通知。
+可以通过打开智能检测“设置”  边栏选项卡并选择规则（这将打开“编辑规则”  边栏选项卡）来为特定的智能检测规则配置电子邮件通知。
 
 另外，还可以使用 Azure 资源管理器模板来更改配置。 有关更多详细信息，请参阅[使用 Azure 资源管理器模板管理 Application Insights 智能检测规则](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config)。
 

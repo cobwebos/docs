@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/22/2020
 ms.author: spelluru
 ms.openlocfilehash: d2f5d6b6b9500ccd90630e8920c09340658fb76f
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82100172"
 ---
 # <a name="use-powershell-to-add-a-marketplace-image-to-a-lab-in-azure-devtest-labs"></a>使用 PowerShell 将市场映像添加到 Azure 开发测试实验室中的实验室
@@ -27,7 +27,7 @@ ms.locfileid: "82100172"
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * 实验室****。 此脚本要求拥有现有的实验室。 
 
 ## <a name="sample-script"></a>示例脚本

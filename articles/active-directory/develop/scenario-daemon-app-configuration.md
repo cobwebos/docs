@@ -12,10 +12,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: ead39343cca9943ba55d66509bd9917402efb8cf
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81868973"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>调用 Web API 的守护程序应用 - 代码配置
@@ -34,7 +34,7 @@ ms.locfileid: "81868973"
 
 ## <a name="configure-the-authority"></a>配置颁发机构
 
-守护程序应用程序使用应用程序权限，而不是委托的权限。 因此，他们支持的帐户类型不能是任何组织目录中的帐户或任何个人 Microsoft 帐户（例如，Skype、Xbox、Outlook.com）。 没有租户管理员同意 Microsoft 个人帐户的守护进程应用程序。 你需要选择“我的组织中的帐户”** 或“任何组织中的帐户”**。
+守护程序应用程序使用应用程序权限，而不是委托的权限。 因此，其支持的帐户类型不能是任何组织目录或任何个人 Microsoft 帐户（例如 Skype、Xbox、Outlook.com）中的帐户。 无租户管理员可以向 Microsoft 个人帐户的后台应用程序授予许可。 你需要选择“我的组织中的帐户”** 或“任何组织中的帐户”**。
 
 因此，在应用程序配置中指定的颁发机构应该是租户的（指定租户 ID 或者与组织相关联的域名）。
 
@@ -256,7 +256,7 @@ ConfidentialClientApplication cca =
 
 ---
 
-#### <a name="advanced-scenario-instantiate-the-confidential-client-application-with-client-assertions"></a>高级方案：使用客户端断言实例化机密客户端应用程序
+#### <a name="advanced-scenario-instantiate-the-confidential-client-application-with-client-assertions"></a>高级方案：实例化包含客户端断言的机密客户端应用程序
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 

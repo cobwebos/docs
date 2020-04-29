@@ -1,6 +1,6 @@
 ---
-title: 来自 Verizon 高级规则的 Azure CDN 引擎匹配条件 |微软文档
-description: 来自 Verizon 高级版中 Azure 内容交付网络的参考文档会管理引擎匹配条件。
+title: Verizon Premium 规则引擎匹配条件中的 Azure CDN |Microsoft Docs
+description: 来自 Verizon Premium 规则引擎匹配条件的 Azure 内容分发网络的参考文档。
 services: cdn
 author: asudbring
 ms.service: azure-cdn
@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: allensu
 ms.openlocfilehash: e2361590118668f2cdf22c4a29534b16790b90e4
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81253435"
 ---
-# <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>来自 Verizon 高级规则的 Azure CDN 规则引擎匹配条件
+# <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>Verizon Premium 规则引擎匹配条件中的 Azure CDN
 
-本文列出了来自 Verizon 高级[规则引擎](cdn-verizon-premium-rules-engine.md)的 Azure 内容交付网络 （CDN） 的可用匹配条件的详细说明。
+本文列出了 Verizon Premium[规则引擎](cdn-verizon-premium-rules-engine.md)中的 Azure 内容分发网络（CDN）的可用匹配条件的详细说明。
 
 规则的第二部分是匹配条件。 可以使用匹配条件来确定特定类型的请求，以便执行一组相应的功能。
 
@@ -49,7 +49,7 @@ ms.locfileid: "81253435"
 名称 | 目的
 -----|--------
 [AS 编号](#as-number) | 标识源自特定网络的请求。
-[国家](#country) | 标识源自指定国家/地区的请求。
+[国家/地区](#country) | 标识源自指定国家/地区的请求。
 
 ## <a name="origin-match-conditions"></a>“源”匹配条件
 
@@ -102,7 +102,7 @@ ms.locfileid: "81253435"
 
 “始终”匹配条件向所有请求应用默认的一组功能。
 
-[返回顶部](#reference-for-rules-engine-match-conditions)
+[返回页首](#reference-for-rules-engine-match-conditions)
 
 </br>
 
@@ -112,7 +112,7 @@ ms.locfileid: "81253435"
 
 AS 编号网络由其自治系统编号 (ASN) 定义。 
 
-/"**Matches****匹配不匹配"** 选项确定满足 AS 编号匹配条件的条件：
+"**匹配**/" "**不匹配**" 选项用于确定在哪种条件下满足 AS Number 匹配条件：
 
 - **匹配**：要求客户端网络的 ASN 与指定的 ASN 之一匹配。 
 - **不匹配**：要求客户端网络的 ASN 不与任何指定的 ASN 匹配。
@@ -129,7 +129,7 @@ AS 编号网络由其自治系统编号 (ASN) 定义。
   - 忽略源服务器 No-Cache
   - 内部最大过时期限
 
-[返回顶部](#reference-for-rules-engine-match-conditions)
+[返回页首](#reference-for-rules-engine-match-conditions)
 
 </br>
 
@@ -149,7 +149,7 @@ AS 编号网络由其自治系统编号 (ASN) 定义。
 - 内容访问点标识应处理请求内容的服务。
 - 请勿使用 AND IF 语句组合某些匹配条件。 例如，将“CDN 源”匹配条件与“客户源”匹配条件组合会创建一个永远无法匹配的匹配模式。 为此，不能通过 AND IF 语句组合两个“CDN 源”匹配条件。
 
-[返回顶部](#reference-for-rules-engine-match-conditions)
+[返回页首](#reference-for-rules-engine-match-conditions)
 
 </br>
 
@@ -157,7 +157,7 @@ AS 编号网络由其自治系统编号 (ASN) 定义。
 
 ### <a name="client-ip-address"></a>客户端 IP 地址
 
-/"**Matches****匹配不匹配"** 选项确定满足客户端 IP 地址匹配条件的条件：
+"**匹配**/" "**不匹配**" 选项用于确定在哪种条件下满足客户端 IP 地址匹配条件：
 
 - **匹配**：要求客户端的 IP 地址与指定的 IP 地址之一匹配。 
 - **匹配**：要求客户端的 IP 地址不与任何指定的 IP 地址匹配。 
@@ -178,7 +178,7 @@ AS 编号网络由其自治系统编号 (ASN) 定义。
   - 忽略源服务器 No-Cache
   - 内部最大过时期限
 
-[返回顶部](#reference-for-rules-engine-match-conditions)
+[返回页首](#reference-for-rules-engine-match-conditions)
 
 </br>
 
@@ -186,7 +186,7 @@ AS 编号网络由其自治系统编号 (ASN) 定义。
 
 ### <a name="cookie-parameter"></a>Cookie 参数
 
-/"**Matches****匹配不匹配"** 选项确定满足 Cookie 参数匹配条件的条件。
+"**匹配**/" "**不匹配**" 选项用于确定在哪种条件下满足 Cookie 参数匹配条件。
 
 - **匹配**：需要请求包含指定的 Cookie，其值与此匹配条件中定义的至少一个值匹配。
 - **不匹配**：要求请求满足以下条件之一：
@@ -211,16 +211,16 @@ AS 编号网络由其自治系统编号 (ASN) 定义。
   - 忽略源服务器 No-Cache
   - 内部最大过时期限
 
-[返回顶部](#reference-for-rules-engine-match-conditions)
+[返回页首](#reference-for-rules-engine-match-conditions)
 </br>
 
 ---
 
 ### <a name="cookie-parameter-regex"></a>Cookie 参数正则表达式
 
-“Cookie 参数正则表达式”匹配条件定义 Cookie 名称和值。 可以使用[正则表达式](cdn-verizon-premium-rules-engine-reference.md#regular-expressions)定义所需的 Cookie 值。
+“Cookie 参数正则表达式”匹配条件定义 Cookie 名称和值。 可以使用[正则表达式](cdn-verizon-premium-rules-engine-reference.md#regular-expressions)定义所需的 cookie 值。
 
-/"**Matches****匹配不匹配"** 选项确定满足 Cookie 参数 Regex 匹配条件的条件。
+"**匹配**/" "**不匹配**" 选项用于确定在哪种条件下满足 Cookie 参数正则表达式匹配条件。
 
 - **匹配**：需要请求包含指定的 Cookie，其值与指定的正则表达式匹配。
 - **不匹配**：要求请求满足以下条件之一：
@@ -243,7 +243,7 @@ AS 编号网络由其自治系统编号 (ASN) 定义。
   - 忽略源服务器 No-Cache
   - 内部最大过时期限
 
-[返回顶部](#reference-for-rules-engine-match-conditions)
+[返回页首](#reference-for-rules-engine-match-conditions)
 
 </br>
 
@@ -253,7 +253,7 @@ AS 编号网络由其自治系统编号 (ASN) 定义。
 
 可以通过国家/地区代码指定国家/地区。 
 
-/"**Matches****匹配不匹配"** 选项确定满足国家/地区匹配条件的条件：
+"**匹配**/" "**不匹配**" 选项用于确定在哪种条件下满足国家/地区匹配条件：
 
 - **匹配**：要求请求包含指定的国家/地区代码值。 
 - **不匹配**：要求请求不包含指定的国家/地区代码值。
@@ -285,7 +285,7 @@ AS 编号网络由其自治系统编号 (ASN) 定义。
 
 - 拒绝访问 (403) 功能：启用[拒绝访问 (403) 功能](cdn-verizon-premium-rules-engine-reference-features.md#deny-access-403)，以复制国家/地区筛选功能的允许或阻止部分。
 
-[返回顶部](#reference-for-rules-engine-match-conditions)
+[返回页首](#reference-for-rules-engine-match-conditions)
 
 </br>
 
@@ -301,7 +301,7 @@ AS 编号网络由其自治系统编号 (ASN) 定义。
   - 边缘 CNAME 配置
 - 请勿使用 AND IF 语句组合某些匹配条件。 例如，将“客户源”匹配条件与“CDN 源”匹配条件组合会创建一个永远无法匹配的匹配模式。 为此，不能通过 AND IF 语句组合两个“客户源”匹配条件。
 
-[返回顶部](#reference-for-rules-engine-match-conditions)
+[返回页首](#reference-for-rules-engine-match-conditions)
 
 </br>
 
@@ -311,7 +311,7 @@ AS 编号网络由其自治系统编号 (ASN) 定义。
 
 “设备”匹配条件用于根据属性标识来自移动设备的请求。 可通过 [WURFL](http://wurfl.sourceforge.net/) 进行移动设备检测。 
 
-/"**Matches****匹配不匹配"** 选项确定满足设备匹配条件的条件：
+"**匹配**/" "**不匹配**" 选项用于确定在哪种条件下满足设备匹配条件：
 
 - **匹配**：要求请求方的设备匹配指定的值。 
 - **不匹配**：要求请求方的设备不匹配指定的值。
@@ -351,7 +351,7 @@ WURFL 功能引用描述移动设备的类别。 选定的功能确定用于识�
 设备 OS | %{wurfl_cap_device_os} | 一个字符串，表示设备上安装的操作系统。 | IOS
 设备 OS 版本 | %{wurfl_cap_device_os_version} | 一个字符串，表示设备上安装的操作系统的版本号。 | 1.0.1
 双方向 | %{wurfl_cap_dual_orientation} | 一个布尔值，表示设备是否支持双方向。 | true
-HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移动设备针对 HTML 内容的首选文档类型定义 (DTD)。 | 无<br/>xhtml_basic<br/>html5
+HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移动设备针对 HTML 内容的首选文档类型定义 (DTD)。 | none<br/>xhtml_basic<br/>html5
 图像内联 | %{wurfl_cap_image_inlining} | 一个布尔值，表示设备是否支持 Base64 编码图像。 | false
 是 Android | %{wurfl_vcap_is_android} | 一个布尔值，表示设备是否使用 Android OS。 | true
 是 IOS | %{wurfl_vcap_is_ios} | 一个布尔值，表示设备是否使用 iOS。 | false
@@ -368,7 +368,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 垂直分辨率 | %{wurfl_cap_resolution_height} | 一个整数，表示设备以像素为单位的高度。 | 768
 水平分辨率 | %{wurfl_cap_resolution_width} | 一个整数，表示设备以像素为单位的宽度。 | 1024
 
-[返回顶部](#reference-for-rules-engine-match-conditions)
+[返回页首](#reference-for-rules-engine-match-conditions)
 
 </br>
 
@@ -388,7 +388,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
   - 忽略源服务器 No-Cache
   - 内部最大过时期限
 
-[返回顶部](#reference-for-rules-engine-match-conditions)
+[返回页首](#reference-for-rules-engine-match-conditions)
 
 </br>
 
@@ -398,7 +398,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
 与用于请求内容的引用域关联的主机名可确定是否满足“引用域”条件。
 
-/"**Matches****匹配不匹配"** 选项确定满足引用域匹配条件的条件：
+"**匹配**/" "**不匹配**" 选项用于确定在哪种条件下满足引用域匹配条件：
 
 - **匹配**：要求引用主机名匹配指定的值。 
 - **不匹配**：要求引用主机名不匹配指定的值。
@@ -416,7 +416,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
   - 忽略源服务器 No-Cache
   - 内部最大过时期限
 
-[返回顶部](#reference-for-rules-engine-match-conditions)
+[返回页首](#reference-for-rules-engine-match-conditions)
 
 </br>
 
@@ -424,7 +424,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
 ### <a name="request-header-literal"></a>请求标头文本
 
-/"**Matches****匹配不匹配"** 选项确定满足请求标头文本匹配条件的条件。
+"**匹配**/" "**不匹配**" 选项用于确定在哪种条件下满足请求标头文本匹配条件。
 
 - **匹配**：需要请求包含指定的标头。 其值必须与此匹配条件中定义的值匹配。
 - **不匹配**：要求请求满足以下条件之一：
@@ -441,7 +441,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
   - 忽略源服务器 No-Cache
   - 内部最大过时期限
 
-[返回顶部](#reference-for-rules-engine-match-conditions)
+[返回页首](#reference-for-rules-engine-match-conditions)
 
 </br>
 
@@ -449,7 +449,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
 ### <a name="request-header-regex"></a>请求标头正则表达式
 
-"**匹配**/**不匹配"** 选项确定满足请求标头 Regex 匹配条件的条件。
+"**匹配**/" "**不匹配**" 选项用于确定在哪种条件下满足请求标头正则表达式匹配条件。
 
 - **匹配**：需要请求包含指定的标头。 其值必须与指定的[正则表达式](cdn-verizon-premium-rules-engine-reference.md#regular-expressions)中定义的模式匹配。
 - **不匹配**：要求请求满足以下条件之一：
@@ -472,7 +472,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
   - 忽略源服务器 No-Cache
   - 内部最大过时期限
 
-[返回顶部](#reference-for-rules-engine-match-conditions)
+[返回页首](#reference-for-rules-engine-match-conditions)
 
 </br>
 
@@ -480,7 +480,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
 ### <a name="request-header-wildcard"></a>请求标头通配符
 
-/"**Matches****匹配不匹配"** 选项确定满足请求标头通配符匹配条件的条件。
+"**匹配**/" "**不匹配**" 选项用于确定在哪种条件下满足请求标头通配符匹配条件。
 
 - **匹配**：需要请求包含指定的标头。 其值必须与此匹配条件中定义的至少一个值匹配。
 - **不匹配**：要求请求满足以下条件之一：
@@ -504,7 +504,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
   - 忽略源服务器 No-Cache
   - 内部最大过时期限
 
-[返回顶部](#reference-for-rules-engine-match-conditions)
+[返回页首](#reference-for-rules-engine-match-conditions)
 
 </br>
 
@@ -533,7 +533,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
   - 忽略源服务器 No-Cache
   - 内部最大过时期限
 
-[返回顶部](#reference-for-rules-engine-match-conditions)
+[返回页首](#reference-for-rules-engine-match-conditions)
 
 </br>
 
@@ -555,7 +555,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
   - 忽略源服务器 No-Cache
   - 内部最大过时期限
 
-[返回顶部](#reference-for-rules-engine-match-conditions)
+[返回页首](#reference-for-rules-engine-match-conditions)
 
 </br>
 
@@ -565,7 +565,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
 按相对路径（不包括所请求资产的文件名）标识请求。
 
-/"**Matches****匹配不匹配"** 选项确定满足 URL 路径目录匹配条件的条件。
+"**匹配**/" "**不匹配**" 选项用于确定在哪种条件下满足 URL 路径目录匹配条件。
 
 - **匹配**：要求请求包含与指定的 URL 模式匹配的相对 URL 路径（不包括文件名）。
 - **不匹配**：要求请求包含与指定的 URL 模式不匹配的相对 URL 路径（不包括文件名）。
@@ -583,7 +583,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
   例如：https:\//&lt;endpoint&gt;.azureedge.net/**myfolder**/index.htm 
 
-  此 URL 指向以下 Verizon CDN 主机名\/： http： /wpc.0001。&lt;域&gt;/800001/我的原点/**我的文件夹**/索引.htm
+  此 URL 指向以下 Verizon CDN 主机名： http：\//wpc.0001。&lt;domain&gt;/800001/myorigin/**myfolder**/index.htm
 
 - 在 URL 比较之前，边缘 CNAME URL 将重写入 CDN URL。
 
@@ -613,7 +613,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
 - 使用“忽略大小写”**** 选项可以控制是否执行区分大小写的比较。
 
-[返回顶部](#reference-for-rules-engine-match-conditions)
+[返回页首](#reference-for-rules-engine-match-conditions)
 
 </br>
 
@@ -623,7 +623,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
 按所请求资产的文件扩展名标识请求。
 
-/"**Matches****匹配不匹配"** 选项确定满足 URL 路径扩展匹配条件的条件。
+"**匹配**/" "**不匹配**" 选项用于确定在哪种条件下满足 URL 路径扩展条件。
 
 - **匹配**：要求请求的 URL 包含与指定的模式完全匹配的文件扩展名。
 
@@ -647,7 +647,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
 以下示例配置假设当某个请求与指定的扩展名匹配时满足此匹配条件。
 
-值规范：asp aspx php html
+值规范： asp aspx php html
 
 当找到末尾为以下扩展名的 URL 时，将满足此匹配条件：
 
@@ -656,7 +656,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 - .php
 - .html
 
-[返回顶部](#reference-for-rules-engine-match-conditions)
+[返回页首](#reference-for-rules-engine-match-conditions)
 
 </br>
 
@@ -666,7 +666,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
 按所请求资产的文件名标识请求。 要满足此匹配条件，文件名必须由所请求资产的名称、句点和文件扩展名（例如，index.html）组成。
 
-/"**Matches****匹配不匹配"** 选项确定满足 URL 路径文件名匹配条件的条件。
+"**匹配**/" "**不匹配**" 选项用于确定在哪种条件下满足 URL 路径文件名匹配条件。
 
 - **匹配**：要求请求在其 URL 路径中包含与指定的模式匹配的文件名。
 - **不匹配**：要求请求在其 URL 路径中包含与指定的模式不匹配的文件名。
@@ -687,7 +687,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
     例如，指定“presentation.ppt”可匹配名为“presentation.ppt”的资产，但不匹配名为“presentation.pptx”的资产。
 
-[返回顶部](#reference-for-rules-engine-match-conditions)
+[返回页首](#reference-for-rules-engine-match-conditions)
 
 </br>
 
@@ -697,7 +697,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
 将请求的 URL 路径（包括文件名）与指定的值进行比较。
 
-/"**Matches****匹配不匹配"** 选项确定满足 URL 路径文本匹配条件的条件。
+"**匹配**/" "**不匹配**" 选项用于确定在哪种条件下满足 URL 路径文本匹配条件。
 
 - **匹配**：要求请求包含与指定的模式匹配的 URL 路径。
 - **不匹配**：要求请求包含与指定的模式不匹配的 URL 路径。
@@ -709,13 +709,13 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
     “相对于”选项可以使用以下值：****
   - **根**：表示 URL 比较点紧接在 CDN 主机名后面开始。
 
-    例如：http：\//wpc.0001。&lt;&gt;域/**800001/myorigin/myfolder/index.htm**
+    例如： http：\//wpc.0001。&lt;&gt;域/**800001/myorigin/myfolder/index.htm**
 
   - **源**：表示 URL 比较点在内容访问点后面开始（例如 /000001 或 /800001/myorigin）。 由于 \*.azureedge.net CNAME 默认是在相对于 Verizon CDN 主机名上源目录的位置创建的，因此，Azure CDN 用户应使用“源”值。**** 
 
-    例如\//&lt;：https：终结点&gt;.azureedge.net/myfolder/index.htm**myfolder/index.htm**
+    例如： https：\//&lt;endpoint&gt;. azureedge.net/**myfolder/index.htm**
 
-  此 URL 指向以下 Verizon CDN 主机名\/： http： /wpc.0001。&lt;域&gt;/800001/myorigin/**myfolder/index.htm**
+  此 URL 指向以下 Verizon CDN 主机名： http：\//wpc.0001。&lt;域&gt;/800001/myorigin/**myfolder/index.htm**
 
 - 在 URL 比较之前，边缘 CNAME URL 将重写入 CDN URL。
 
@@ -736,7 +736,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
 - 若要匹配针对特定目录发出的所有请求，请使用 [URL 路径目录](#url-path-directory)或 [URL 路径通配符](#url-path-wildcard)匹配条件。
 
-[返回顶部](#reference-for-rules-engine-match-conditions)
+[返回页首](#reference-for-rules-engine-match-conditions)
 
 </br>
 
@@ -746,7 +746,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
 将请求的 URL 路径与指定的[正则表达式](cdn-verizon-premium-rules-engine-reference.md#regular-expressions)进行比较。
 
-/"**Matches****匹配不匹配"** 选项确定满足 URL 路径 Regex 匹配条件的条件。
+"**匹配**/" "**不匹配**" 选项用于确定在哪种条件下满足 URL 路径正则表达式匹配条件。
 
 - **匹配**：要求请求包含与指定的正则表达式匹配的 URL 路径。
 - **不匹配**：要求请求包含与指定的正则表达式不匹配的 URL 路径。
@@ -771,7 +771,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
     
 - URL 路径中的空格应替换为“%20”。
 
-[返回顶部](#reference-for-rules-engine-match-conditions)
+[返回页首](#reference-for-rules-engine-match-conditions)
 
 </br>
 
@@ -781,7 +781,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
 将请求的相对 URL 路径与指定的通配符模式进行比较。
 
-/"**Matches****匹配不匹配"** 选项确定满足 URL 路径通配符匹配条件的条件。
+"**匹配**/" "**不匹配**" 选项用于确定在哪种条件下满足 URL 路径通配符匹配条件。
 
 - **匹配**：要求请求包含与指定的通配符模式匹配的 URL 路径。
 - **不匹配**：要求请求包含与指定的通配符模式不匹配的 URL 路径。
@@ -793,13 +793,13 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
    此选项可以采用以下值：
      - **根**：表示 URL 比较点紧接在 CDN 主机名后面开始。
 
-       例如：http：\//wpc.0001。&lt;&gt;域/**800001/myorigin/myfolder/index.htm**
+       例如： http：\//wpc.0001。&lt;&gt;域/**800001/myorigin/myfolder/index.htm**
 
      - **源**：表示 URL 比较点在内容访问点后面开始（例如 /000001 或 /800001/myorigin）。 由于 \*.azureedge.net CNAME 默认是在相对于 Verizon CDN 主机名上源目录的位置创建的，因此，Azure CDN 用户应使用“源”值。**** 
 
-       例如\//&lt;：https：终结点&gt;.azureedge.net/myfolder/index.htm**myfolder/index.htm**
+       例如： https：\//&lt;endpoint&gt;. azureedge.net/**myfolder/index.htm**
 
-     此 URL 指向以下 Verizon CDN 主机名\/： http： /wpc.0001。&lt;域&gt;/800001/myorigin/**myfolder/index.htm**
+     此 URL 指向以下 Verizon CDN 主机名： http：\//wpc.0001。&lt;域&gt;/800001/myorigin/**myfolder/index.htm**
 
 - 在 URL 比较之前，边缘 CNAME URL 将重写入 CDN URL。
 
@@ -837,7 +837,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 *.jpg *.gif *.png       | 根或源 | 以 .jpg、.gif 或 .png 结尾的所有 CDN 或边缘 CNAME URL 都匹配此模式。 指定此模式的一种替代方式是使用 [URL 路径扩展名匹配条件](#url-path-extension)。
 /images/\* /media/\*      | 源         | 相对路径以“images”或“media”文件夹开头的 CDN 或边缘 CNAME URL 匹配此模式。 <br />- CDN URL：http:\//wpc.0001.&lt;domain&gt;/800001/myorigin/images/sales/event1.png<br />- 示例边缘 CNAME URL：http:\//cdn.mydomain.com/images/sales/event1.png
 
-[返回顶部](#reference-for-rules-engine-match-conditions)
+[返回页首](#reference-for-rules-engine-match-conditions)
 
 </br>
 
@@ -847,7 +847,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
 将请求的查询字符串与指定值比较。
 
-/"**Matches****匹配不匹配"** 选项确定满足 URL 查询文本匹配条件的条件。
+"**匹配**/" "**不匹配**" 选项用于确定在哪种条件下满足 URL 查询文本匹配条件。
 
 - **匹配**：要求请求包含与指定的查询字符串匹配的 URL 查询字符串。
 - **不匹配**：要求请求包含与指定的查询字符串不匹配的 URL 查询字符串。
@@ -874,7 +874,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
    - 忽略源服务器 No-Cache
    - 内部最大过时期限
 
-[返回顶部](#reference-for-rules-engine-match-conditions)
+[返回页首](#reference-for-rules-engine-match-conditions)
 
 </br>
 
@@ -884,7 +884,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
 标识包含指定查询字符串参数的请求。 此参数设置为与指定的模式匹配的值。 请求 URL 中的查询字符串参数（例如 parameter=value）确定是否满足此条件。 此匹配条件按名称标识查询字符串参数，并接受一个或多个值作为参数值。 
 
-/"**Matches****匹配不匹配"** 选项确定满足 URL 查询参数匹配条件的条件。
+"**匹配**/" "**不匹配**" 选项用于确定在哪种条件下满足 URL 查询参数匹配条件。
 
 - **匹配**：要求请求包含指定的参数，其值与此匹配条件中定义的至少一个值匹配。
 - **不匹配**：要求请求满足以下条件之一：
@@ -953,13 +953,13 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
 以下示例演示此选项在特定场合下的工作方式：
 
-“属性”  | “值” |  结果
+名称  | “值” |  结果
 ------|-------|--------
-用户  | Joe   | 当所请求 URL 的查询字符串为“?user=joe”时匹配此模式。
-用户  | *     | 当所请求 URL 的查询字符串包含 User 参数时匹配此模式。
+User  | Joe   | 当所请求 URL 的查询字符串为“?user=joe”时匹配此模式。
+User  | *     | 当所请求 URL 的查询字符串包含 User 参数时匹配此模式。
 电子邮件 | Joe\* | 当所请求 URL 的查询字符串包含以“Joe”开头的 Email 参数时匹配此模式。
 
-[返回顶部](#reference-for-rules-engine-match-conditions)
+[返回页首](#reference-for-rules-engine-match-conditions)
 
 </br>
 
@@ -969,7 +969,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
 标识包含指定查询字符串参数的请求。 此参数设置为与指定的[正则表达式](cdn-verizon-premium-rules-engine-reference.md#regular-expressions)匹配的值。
 
-/"**Matches****匹配不匹配"** 选项确定满足 URL 查询 Regex 匹配条件的条件。
+"**匹配**/" "**不匹配**" 选项用于确定在哪种条件下满足 URL 查询正则表达式匹配条件。
 
 - **匹配**：要求请求包含与指定的正则表达式匹配的 URL 查询字符串。
 - **不匹配**：要求请求包含与指定的正则表达式不匹配的 URL 查询字符串。
@@ -1007,7 +1007,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
    - 忽略源服务器 No-Cache
    - 内部最大过时期限
 
-[返回顶部](#reference-for-rules-engine-match-conditions)
+[返回页首](#reference-for-rules-engine-match-conditions)
 
 </br>
 
@@ -1017,7 +1017,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
 将指定值与请求的查询字符串比较。
 
-/"**Matches****匹配不匹配"** 选项确定满足 URL 查询通配符匹配条件的条件。
+"**匹配**/" "**不匹配**" 选项用于确定在哪种条件下满足 URL 查询通配符匹配条件。
 
 - **匹配**：要求请求包含与指定的通配符值匹配的 URL 查询字符串。
 - **不匹配**：要求请求包含与指定的通配符值不匹配的 URL 查询字符串。
@@ -1025,7 +1025,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 重要信息：
 
 - 使用此选项时，查询字符串必须以查询字符串问号 (?) 分隔符后面的第一个字符开头。
-- 参数值可以包括[通配符值](cdn-verizon-premium-rules-engine-reference.md#wildcard-values)：
+- 参数值可以包含[通配符值](cdn-verizon-premium-rules-engine-reference.md#wildcard-values)：
    - 每个参数值模式可以包含一个或多个星号 (*)，其中每个星号可与包含一个或多个字符的序列匹配。
    - 某些字符需要 URL 编码。 使用百分比符号对以下字符进行 URL 编码：
 
@@ -1056,9 +1056,9 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
  名称                 | 说明
  ---------------------|------------
 user=joe              | 当所请求 URL 的查询字符串为“?user=joe”时匹配此模式。
-\*用户*\*\*选择退出*\* | 当 CDN URL 查询包含 user 或 optout 参数时匹配此模式。
+\*user =\* \*选择 =\* | 当 CDN URL 查询包含 user 或 optout 参数时匹配此模式。
 
-[返回顶部](#reference-for-rules-engine-match-conditions)
+[返回页首](#reference-for-rules-engine-match-conditions)
 
 </br>
 

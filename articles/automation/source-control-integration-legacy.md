@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: dcadfcb4c2f8e6bc371b0a70b917c8c1e218fba9
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81679516"
 ---
 # <a name="source-control-integration-in-azure-automation---legacy"></a>Azure 自动化中的源代码管理集成 - 传统
@@ -17,12 +17,12 @@ ms.locfileid: "81679516"
 > [!NOTE]
 > 有一种新的源代码管理体验。 若要了解有关新体验的更多信息，请参阅[源代码管理（预览）](source-control-integration.md)。
 
-源代码管理集成允许您将自动化帐户中的 Runbook 关联到 GitHub 源代码管理存储库。 使用源代码管理可轻松与团队协作、跟踪更改，以及回退到旧版 Runbook。 例如，源代码管理可让你将源代码管理中的不同分支同步到开发、测试或生产自动化帐户，以轻松地将已在开发环境中测试过的代码提升到生产自动化帐户。
+源代码管理集成允许您将自动化帐户中的 runbook 关联到 GitHub 源代码管理存储库。 使用源代码管理可轻松与团队协作、跟踪更改，以及回退到旧版 Runbook。 例如，源代码管理可让你将源代码管理中的不同分支同步到开发、测试或生产自动化帐户，以轻松地将已在开发环境中测试过的代码提升到生产自动化帐户。
 
-源代码管理允许您将代码从 Azure 自动化推送到源代码管理，或者将 Runbook 从源代码管理拉到 Azure 自动化。 本文介绍如何在 Azure 自动化环境中设置源代码管理。 我们将首先配置 Azure 自动化以访问 GitHub 存储库，并演练可使用源代码管理集成完成的不同操作。 
+源代码管理允许将代码从 Azure 自动化推送到源代码管理，或将 runbook 从源控件推送到 Azure 自动化。 本文介绍如何在 Azure 自动化环境中设置源代码管理。 我们将首先配置 Azure 自动化以访问 GitHub 存储库，并演练可使用源代码管理集成完成的不同操作。 
 
 > [!NOTE]
-> 源代码管理支持拉和推[PowerShell工作流运行簿](automation-runbook-types.md#powershell-workflow-runbooks)以及[PowerShell运行簿](automation-runbook-types.md#powershell-runbooks)。 目前不支持[图形 Runbook](automation-runbook-types.md#graphical-runbooks)。
+> 源代码管理支持拉取和推送[Powershell 工作流 runbook](automation-runbook-types.md#powershell-workflow-runbooks)以及[powershell runbook](automation-runbook-types.md#powershell-runbooks)。 目前不支持[图形 Runbook](automation-runbook-types.md#graphical-runbooks)。
 
 ## <a name="configuring-source-control"></a>配置源代码管理
 
@@ -41,19 +41,19 @@ ms.locfileid: "81679516"
    | **参数** | **说明** |
    |:--- |:--- |
    | 选择源 |选择源。 目前仅支持 **GitHub**。 |
-   | 授权 |单击“授权”  按钮，授予 GitHub 存储库的 Azure 自动化访问权限。 如果已在不同的窗口中登录 GitHub 帐户，将使用该帐户的凭据。 授权成功后，该页会在**授权属性**下显示您的 GitHub 用户名。 |
+   | 授权 |单击“授权”  按钮，授予 GitHub 存储库的 Azure 自动化访问权限。 如果已在不同的窗口中登录 GitHub 帐户，将使用该帐户的凭据。 授权成功后，该页面将在**Authorization 属性**下显示你的 GitHub 用户名。 |
    | 选择存储库 |从可用存储库列表中选择 GitHub 存储库。 |
    | 选择分支 |从可用分支列表中选择分支。 如果尚未创建任何分支，则只显示 **master** 分支。 |
    | Runbook 文件夹路径 |Runbook 文件夹路径可指定 GitHub 存储库中的路径，以便从中推送或提取代码。 必须以 **/foldername/subfoldername** 格式输入路径。 只有 Runbook 文件夹路径中的 Runbook 才同步到自动化帐户。 Runbook 文件夹路径的子文件夹中的 Runbook **不会**同步。 使用 **/** 来同步存储库下的所有 Runbook。 |
 3. 例如，如果有名为 **PowerShellScripts** 的存储库，其中包含名为 **RootFolder** 的文件夹，而该文件夹包含名为 **SubFolder** 的文件夹。 那么，可以使用以下字符串来同步每个文件夹级别：
 
-   1. 要从**存储库**同步 Runbook，Runbook 文件夹**/** 路径为 。
-   2. 要从**RootFolder**同步 Runbook，Runbook 文件夹路径为 **/Rootfolder**。
+   1. 若要从**存储库**同步 runbook，则 runbook **/** 文件夹路径为。
+   2. 若要从**RootFolder**同步 runbook，则 runbook 文件夹路径为 **/RootFolder**。
    3. 若要从 **SubFolder** 同步 Runbook，则 Runbook 文件夹路径为 **/RootFolder/SubFolder**。
 4. 配置参数后，它们会显示在“设置源代码管理”页面上。  
 
     ![显示了设置的“源代码管理”页](media/source-control-integration-legacy/automation-SourceControlConfigure.png)
-5. 单击“确定”后，随即会针对你的自动化帐户配置源代码管理集成，并且应会使用你的 GitHub 信息更新该集成。  现在，您可以单击此部件以查看所有源代码管理同步作业历史记录。  
+5. 单击“确定”后，随即会针对你的自动化帐户配置源代码管理集成，并且应会使用你的 GitHub 信息更新该集成。  你现在可以单击此部分以查看所有的源代码管理同步作业历史记录。  
 
     ![当前配置的源代码管理配置的值](media/source-control-integration-legacy/automation-RepoValues.png)
 6. 设置源代码管理后，将在自动化帐户中创建两个[变量资产](automation-variables.md)。 此外，会将一个已授权的应用程序添加到 GitHub 帐户。
@@ -76,7 +76,7 @@ ms.locfileid: "81679516"
 
      ![显示源代码管理变量的窗口](media/source-control-integration-legacy/automation-Variables.png)  
 
-   * **自动化源代码管理**已作为已授权的应用程序添加到 GitHub 帐户。 要查看应用程序，请从 GitHub 主页导航到**配置文件** > **设置** > **应用程序**。 此应用程序可让 Azure 自动化将 GitHub 存储库同步到自动化帐户。  
+   * **自动化源代码管理**已作为已授权的应用程序添加到 GitHub 帐户。 若要查看应用程序，请从 GitHub 主页导航到 "**配置文件** > **设置** > " "**应用程序**"。 此应用程序可让 Azure 自动化将 GitHub 存储库同步到自动化帐户。  
 
      ![GitHub 中的应用程序设置](media/source-control-integration-legacy/automation-GitApplication.png)
 
@@ -84,8 +84,8 @@ ms.locfileid: "81679516"
 
 Runbook 签入可让你将对 Azure 自动化中的 Runbook 所做的更改推送到源代码管理存储库。 下面是签入 Runbook 的步骤：
 
-1. 从自动化帐户创建新[的文本 Runbook，](automation-first-runbook-textual.md)或[编辑现有的文本 Runbook](automation-edit-textual-runbook.md)。 此 Runbook 可以是 PowerShell 工作流或 PowerShell 脚本 Runbook。  
-2. 编辑 Runbook 后，请保存它，然后单击编辑页上的 **"签入**"。  
+1. 在自动化帐户中，[创建新的文本 runbook](automation-first-runbook-textual.md)，或[编辑现有的文本 runbook](automation-edit-textual-runbook.md)。 此 Runbook 可以是 PowerShell 工作流或 PowerShell 脚本 Runbook。  
+2. 编辑 runbook 后，将其保存，然后单击 "编辑" 页上的 "**签入**"。  
 
     ![显示“签入 GitHub”按钮的窗口](media/source-control-integration-legacy/automation-CheckinButton.png)
 
@@ -102,20 +102,20 @@ Runbook 签入可让你将对 Azure 自动化中的 Runbook 所做的更改推�
    > [!NOTE]
    > 源代码管理 Runbook 是特殊的自动化 Runbook，无法查看或编辑。 虽然它们不显示在 Runbook 列表上，但你可以看到显示在作业列表中的同步作业。
 
-5. 修改后的 Runbook 的名称将发送为已签入 Runbook 的输入参数。 您可以通过在存储库同步页上展开 Runbook[来查看作业详细信息](automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)。  
+5. 修改后的 Runbook 的名称将发送为已签入 Runbook 的输入参数。 可以通过在 "存储库同步" 页面上展开 runbook 来[查看作业详细信息](automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)。  
 
     ![显示同步作业的输入的窗口](media/source-control-integration-legacy/automation-CheckinInput.png)
-6. 在作业完成时刷新 GitHub 存储库可以查看更改。  存储库中应该有一个提交消息，其中有一条提交消息 **：Azure 自动化中更新*的 Runbook 名称*。**  
+6. 在作业完成时刷新 GitHub 存储库可以查看更改。  存储库中应有一个提交消息：**已在 Azure 自动化中更新*Runbook 名称*。**  
 
 ### <a name="sync-runbooks-from-source-control-to-azure-automation"></a>将源代码管理中的 Runbook 同步到 Azure 自动化
 
 使用“存储库同步”页面上的“同步”按钮，可以将存储库的 Runbook 文件夹路径中的所有 Runbook 提取到自动化帐户。 同一个存储库可以同步到多个自动化帐户。 以下是同步 Runbook 的步骤：
 
-1. 从设置源代码控制的自动化帐户中，打开源代码管理集成/存储库同步页面，然后单击 **"同步**"。 系统会提示您收到确认消息，单击"**是**"以继续。  
+1. 从设置源代码管理的自动化帐户中，打开 "源代码管理集成/存储库同步" 页面，然后单击 "**同步**"。 系统将提示确认消息，单击 **"是"** 以继续。  
 
     ![“同步”按钮，以及确认将要同步所有 Runbook 的消息](media/source-control-integration-legacy/automation-SyncButtonwithMessage.png)
 
-2. 同步启动**同步-微软Azure自动化帐户FromGitHubV1**运行簿，该运行簿连接到 GitHub 并将更改从存储库拉到 Azure 自动化。 此操作的“存储库同步”页面中应该会显示一个新作业。 若要查看同步作业的详细信息，请单击以打开作业详细信息页面。  
+2. 同步启动**MicrosoftAzureAutomationAccountFromGitHubV1** runbook，它连接到 GitHub 并将更改从存储库中提取到 Azure 自动化。 此操作的“存储库同步”页面中应该会显示一个新作业。 若要查看同步作业的详细信息，请单击以打开作业详细信息页面。  
 
     ![显示针对 GitHub 存储库执行同步作业后的同步结果的窗口](media/source-control-integration-legacy/automation-SyncRunbook.png)
 

@@ -13,10 +13,10 @@ ms.workload: tbd
 ms.date: 4/22/2020
 ms.author: yohaddad
 ms.openlocfilehash: 83ecbf05ab892e0673b31df893f66b03373957b7
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82101495"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure 来宾 OS 版本和 SDK 兼容性对照表
@@ -144,7 +144,7 @@ ms.locfileid: "82101495"
 |~~WA-GUEST-OS-6.1_201811-01~~ |2019 年 1 月 24 日 |2019 年 2 月 5日 |
 
 ## <a name="family-5-releases"></a>系列 5 发行版本
-**Windows 2016 Server**
+**Windows Server 2016**
 
 已安装的 .NET Framework：3.5、4.6.2
 
@@ -334,4 +334,4 @@ Microsoft Azure 不断地发布更新。 来宾 OS 只不过是此类更新的�
 [fam1retire]: cloud-services-guestos-family1-retirement.md
 [fix]: https://technet.microsoft.com/library/security/ms17-010.aspx
 [Windows Azure SDK]: https://www.microsoft.com/en-us/download/details.aspx?id=54917
-[较为]: https://docs.microsoft.com/azure/cloud-services/applications-dont-support-tls-1-2  
+[more]: https://docs.microsoft.com/azure/cloud-services/applications-dont-support-tls-1-2  

@@ -1,6 +1,6 @@
 ---
 title: Microsoft 标识平台身份验证流和应用方案 | Azure
-description: 了解 Microsoft 标识平台的应用程序方案，包括身份验证标识、获取令牌和调用受保护的 API。
+description: 了解 Microsoft 标识平台的应用方案，包括对标识进行身份验证、获取令牌，以及调用受保护的 API。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,47 +13,47 @@ ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.openlocfilehash: bf47a352542be0ad4467ed420cc38f62da0d47dc
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81534826"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>身份验证流和应用程序方案
 
-Microsoft 标识平台 (v2.0) 终结点支持各种新式应用程序体系结构的身份验证。 所有这些体系结构基于行业标准协议 [OAuth 2.0 和 OpenID Connect](active-directory-v2-protocols.md)。  使用[Microsoft 标识平台身份验证库](reference-v2-libraries.md)，应用程序对标识进行身份验证并获取令牌以访问受保护的 API。
+Microsoft 标识平台 (v2.0) 终结点支持各种新式应用程序体系结构的身份验证。 所有这些体系结构基于行业标准协议 [OAuth 2.0 和 OpenID Connect](active-directory-v2-protocols.md)。  使用 [Microsoft 标识平台身份验证库](reference-v2-libraries.md)，应用程序可以对标识进行身份验证并获得令牌，以便访问受保护的 API。
 
-本文介绍了身份验证流及其在以下用途的应用程序方案：
+本文介绍身份验证流及其应用方案：
 
 - [应用程序方案和支持的身份验证流](#scenarios-and-supported-authentication-flows)
 - [应用程序方案和支持的平台与语言](#scenarios-and-supported-platforms-and-languages)
 
 ## <a name="application-categories"></a>应用程序类别
 
-可以从多种类型的应用程序获取令牌，包括：
+获取的令牌可以来自多种类型的应用程序，其中包括：
 
 - Web 应用
 - 移动应用
 - 桌面应用
 - Web API
 
-也可以从在没有浏览器或在 IoT 上运行的设备上运行的应用获取令牌。
+还可以从设备上运行的应用中获取令牌，这些设备没有浏览器或在 IoT 上运行。
 
 可按以下列表中所述对应用程序进行分类：
 
-- [受保护资源与客户端应用程序](#protected-resources-vs-client-applications)：某些方案是关于保护资源（如 Web 应用或 Web API）。 还有一些方案涉及到获取安全令牌来调用受保护的 Web API。
-- [用户或无用户](#with-users-or-without-users)：某些方案涉及登录用户，但其他方案（如守护进程方案）不涉及用户。
-- [单页、公共客户端和机密客户端应用程序](#single-page-public-client-and-confidential-client-applications)：这些类型的是三大类应用程序。 每种应用程序配合不同的库和对象使用。
-- [登录访问群体](v2-supported-account-types.md#certain-authentication-flows-dont-support-all-the-account-types)：可用的身份验证流因登录访问群体而异。 一些流仅适用于工作或学校帐户。 还有一些流同时适用于工作或学校帐户和 Microsoft 个人帐户。 允许的受众取决于身份验证流。
+- [受保护的资源与客户端应用程序](#protected-resources-vs-client-applications)：一些方案涉及到保护资源（例如 Web 应用或 Web API）。 还有一些方案涉及到获取安全令牌来调用受保护的 Web API。
+- [涉及或不涉及用户](#with-users-or-without-users)：一些方案涉及到已登录的用户，还有一些方案（例如守护程序方案）不涉及到用户。
+- [单页、公共客户端和机密客户端应用程序](#single-page-public-client-and-confidential-client-applications)：这些类型是三大应用程序类别。 每种应用程序配合不同的库和对象使用。
+- [登录受众](v2-supported-account-types.md#certain-authentication-flows-dont-support-all-the-account-types)：可用的身份验证流因登录受众而异。 一些流仅适用于工作或学校帐户。 还有一些流同时适用于工作或学校帐户和 Microsoft 个人帐户。 允许的受众取决于身份验证流。
 - [支持的 OAuth 2.0 流](#scenarios-and-supported-authentication-flows)：身份验证流用于实现请求令牌的应用程序方案。 应用程序方案和身份验证流之间不存在一对一的映射。
-- [支持的平台](#scenarios-and-supported-platforms-and-languages)：并非所有应用程序方案都可用于每个平台。
+- [支持的平台](#scenarios-and-supported-platforms-and-languages)：并非所有应用程序方案都适用于每个平台。
 
 ### <a name="protected-resources-vs-client-applications"></a>受保护的资源与客户端应用程序
 
 身份验证方案涉及两个活动：
 
-- **获取受保护 Web API 的安全令牌**：我们建议您使用[Microsoft 支持的客户端库](reference-v2-libraries.md#microsoft-supported-client-libraries)来获取令牌，特别是 Microsoft 身份验证库 （MSAL） 系列。
-- **保护 Web API 或 Web 应用**：保护 Web API 或 Web 应用资源的一个挑战是验证安全令牌。 Microsoft 在某些平台上提供[中间件库](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries)。
+- **获取受保护的 WEB API 的安全令牌**：我们建议你使用[microsoft 支持的客户端库](reference-v2-libraries.md#microsoft-supported-client-libraries)来获取令牌，特别是 microsoft 身份验证库（MSAL）家族。
+- **保护 WEB api 或 web 应用**：保护 web api 或 web 应用资源的一个挑战是验证安全令牌。 Microsoft 在某些平台上提供[中间件库](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries)。
 
 ### <a name="with-users-or-without-users"></a>涉及或不涉及用户
 
@@ -69,7 +69,7 @@ Microsoft 标识平台 (v2.0) 终结点支持各种新式应用程序体系结�
 
 可从多种类型的应用程序获取安全令牌。 这些应用程序往往划分为三种类别：
 
-- **单页应用程序**：也称为 SPA，这些应用程序是从浏览器中运行的 JavaScript 或 TypeScript 应用获取令牌的 Web 应用程序。 许多新式应用都有一个单页应用程序前端（主要以 JavaScript 编写）。 该应用程序通常使用 Angular、React 或 Vue 等框架。 MSAL 是唯一支持单页应用程序的 Microsoft 身份验证库。
+- **单页应用程序**：也称为 spa，这些应用是 web 应用，其中的令牌是从浏览器中运行的 JavaScript 或 TypeScript 应用获取的。 许多新式应用都有一个单页应用程序前端（主要以 JavaScript 编写）。 该应用程序通常使用 Angular、React 或 Vue 等框架。 MSAL 是唯一支持单页应用程序的 Microsoft 身份验证库。
 
 - **公共客户端应用程序**：这些应用程序始终登录用户：
   - 代表已登录用户调用 Web API 的桌面应用
@@ -87,7 +87,7 @@ Microsoft 标识平台 (v2.0) 终结点支持各种新式应用程序体系结�
 
 ## <a name="application-scenarios"></a>应用程序方案
 
-Microsoft 标识平台终结点支持针对不同应用体系结构的身份验证：
+Microsoft 标识平台终结点支持对不同应用程序体系结构进行身份验证：
 
 - 单页应用
 - Web 应用
@@ -101,9 +101,9 @@ Microsoft 标识平台终结点支持针对不同应用体系结构的身份验�
 
 ### <a name="a-single-page-application"></a>单页应用程序
 
-许多现代 Web 应用程序都是作为客户端单页应用程序构建的。 这些应用程序使用 JavaScript 或单页应用程序框架（如 Angular、Vue.js 和 React.js）。 这些应用程序在 Web 浏览器中运行。
+许多新式 web 应用是作为客户端单页面应用程序构建的。 这些使用 JavaScript 的应用程序或 Vue 的单页面应用程序框架（如）和响应。 这些应用程序在 Web 浏览器中运行。
 
-它们的身份验证特性不同于传统的服务器端 Web 应用。 单页应用程序可以使用 Microsoft 标识平台将用户登录，并获取用于访问后端服务或 Web API 的令牌。
+其身份验证特性不同于传统的服务器端 web 应用。 单页应用程序可以使用 Microsoft 标识平台将用户登录，并获取用于访问后端服务或 Web API 的令牌。
 
 ![单页应用程序](media/scenarios/spa-app.svg)
 
@@ -137,17 +137,17 @@ Microsoft 标识平台终结点支持针对不同应用体系结构的身份验�
 
 对于已加入 Windows 域或者由 Azure Active Directory (Azure AD) 管理的计算机上的 Windows 托管应用程序，存在另一种可能的情况。 这些应用程序可以使用 [Windows 集成身份验证](https://aka.ms/msal-net-iwa)以无提示方式获取令牌。
 
-在无浏览器的设备上运行的应用程序仍可代表用户调用 API。 若要进行身份验证，用户必须登录到有 Web 浏览器的另一台设备。 此方案要求您使用[设备代码流](https://aka.ms/msal-net-device-code-flow)。
+在无浏览器的设备上运行的应用程序仍可代表用户调用 API。 若要进行身份验证，用户必须登录到有 Web 浏览器的另一台设备。 此方案要求使用[设备代码流](https://aka.ms/msal-net-device-code-flow)。
 
 ![设备代码流](media/scenarios/device-code-flow-app.svg)
 
 可以在公共客户端应用程序中使用[用户名/密码流](https://aka.ms/msal-net-up)，不过我们并不建议使用。 在某些方案（例如 DevOps）中仍需要此流。
 
-但是使用此流会限制您的应用程序。 例如，应用程序无法登录需要使用多重身份验证或条件访问的用户。 应用程序也无法受益于单一登录。
+但使用此流会限制你的应用程序。 例如，应用程序无法登录需要使用多重身份验证或条件性访问的用户。 应用程序也无法受益于单一登录。
 
 使用用户名/密码流进行身份验证的方式违反新式身份验证的原则，仅仅是出于遗留原因而提供的。
 
-在桌面应用中，如果希望令牌缓存保留，请自定义[令牌缓存序列化](https://aka.ms/msal-net-token-cache-serialization)。 通过实现[双令牌缓存序列化](https://aka.ms/msal-net-dual-cache-serialization)，可以使用向后兼容和向前兼容的令牌缓存。 这些令牌支持前几代身份验证库。 具体的库包括适用于 .NET 的 Azure AD 身份验证库 (ADAL.NET) 版本 3 和 4。
+在桌面应用中，如果希望令牌缓存持久保存，请自定义[令牌缓存序列化](https://aka.ms/msal-net-token-cache-serialization)。 通过实现[双重令牌缓存序列化](https://aka.ms/msal-net-dual-cache-serialization)，可以使用向后兼容的和向前兼容的令牌缓存。 这些令牌支持以前代的身份验证库。 具体的库包括适用于 .NET 的 Azure AD 身份验证库 (ADAL.NET) 版本 3 和 4。
 
 有关详细信息，请参阅[调用 Web API 的桌面应用](scenario-desktop-overview.md)。
 
@@ -157,28 +157,28 @@ Microsoft 标识平台终结点支持针对不同应用体系结构的身份验�
 
 ![调用 Web API 的移动应用](media/scenarios/mobile-app.svg)
 
-MSAL iOS 和 MSAL Android 默认使用系统 Web 浏览器。 但是，你可以指示它们改用嵌入式 Web 视图。 有一些具体功能取决于移动平台：通用 Windows 平台 （UWP）、iOS 或 Android。
+MSAL iOS 和 MSAL Android 默认使用系统 Web 浏览器。 但是，你可以指示它们改用嵌入式 Web 视图。 Specificities （UWP）、iOS 或 Android 都依赖于移动通用 Windows 平台平台。
 
-某些方案（如涉及与设备 ID 或设备注册相关的条件访问）需要在设备上安装代理。 中介的示例包括 Android 上的 Microsoft 公司门户，以及 Android 和 iOS 上的 Microsoft Authenticator。 MSAL 现在可以与经纪人进行交互。 有关详细信息，请参阅[利用安卓和 iOS 上的经纪商](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/leveraging-brokers-on-Android-and-iOS)。
+某些方案（如涉及到设备 ID 或设备注册相关的条件性访问的方案）要求在设备上安装代理。 中介的示例包括 Android 上的 Microsoft 公司门户，以及 Android 和 iOS 上的 Microsoft Authenticator。 现在，MSAL 可以与代理交互。 有关详细信息，请参阅[在 Android 和 iOS 上利用代理](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/leveraging-brokers-on-Android-and-iOS)。
 
 有关详细信息，请参阅[调用 Web API 的移动应用](scenario-mobile-overview.md)。
 
 > [!NOTE]
-> 对于使用 MSAL.iOS、MSAL.Android 或 Xamarin 上的 MSAL.NET 的移动应用，可以应用应用保护策略。 例如，策略可以阻止用户复制受保护的文本。 移动应用由 Intune 管理，由 Intune 识别为托管应用。 有关详细信息，请参阅微软[Intune 应用 SDK 概述](https://docs.microsoft.com/intune/app-sdk)。
+> 对于使用 MSAL.iOS、MSAL.Android 或 Xamarin 上的 MSAL.NET 的移动应用，可以应用应用保护策略。 例如，策略可以阻止用户复制受保护的文本。 移动应用由 Intune 管理，由 Intune 识别为托管应用。 有关详细信息，请参阅[Microsoft Intune APP SDK 概述](https://docs.microsoft.com/intune/app-sdk)。
 >
 > [Intune 应用 SDK](https://docs.microsoft.com/intune/app-sdk-get-started) 独立于 MSAL 库，可自行与 Azure AD 交互。
 
 ### <a name="a-protected-web-api"></a>受保护的 Web API
 
-您可以使用 Microsoft 标识平台终结点来保护 Web 服务，如应用的 RESTful Web API。 使用访问令牌调用受保护的 Web API。 令牌保护 API 的数据并验证传入的请求。 Web API 调用方会在 HTTP 请求的授权标头中追加一个访问令牌。
+可以使用 Microsoft 标识平台终结点来保护 web 服务，例如应用的 RESTful web API。 使用访问令牌调用受保护的 web API。 该令牌可以保护 API 的数据并对传入的请求进行身份验证。 Web API 调用方会在 HTTP 请求的授权标头中追加一个访问令牌。
 
-如果要保护ASP.NET或 ASP.NET酷睿 Web API，则需要验证访问令牌。 可以使用 ASP.NET JWT 中间件进行这种验证。 验证是由[适用于.NET 的 IdentityModel 扩展](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki)库而不是 MSAL.NET 完成的。
+如果要保护 ASP.NET 或 ASP.NET Core web API，则需要验证访问令牌。 可以使用 ASP.NET JWT 中间件进行这种验证。 验证是由[适用于.NET 的 IdentityModel 扩展](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki)库而不是 MSAL.NET 完成的。
 
 有关详细信息，请参阅[受保护的 Web API](scenario-protected-web-api-overview.md)。
 
 ### <a name="a-web-api-calling-another-web-api-on-behalf-of-a-user"></a>代表用户调用另一个 Web API 的 Web API
 
-ASP.NET或ASP.NET核心保护的 Web API 代表用户调用另一个 Web API，你的应用需要为下游 Web API 获取令牌。 要获取令牌，你的应用调用**机密客户端应用程序**类的["获取令牌"方法](https://aka.ms/msal-net-on-behalf-of)。 此类调用也称为*服务到服务*呼叫。 调用其他 Web API 的 Web API 需要提供自定义缓存序列化。
+为了使你的 ASP.NET 或 ASP.NET Core 受保护的 web API 代表用户调用另一个 web API，你的应用程序需要获取下游 web API 的令牌。 若要获取令牌，你的应用将调用**ConfidentialClientApplication**类的[AcquireTokenOnBehalfOf](https://aka.ms/msal-net-on-behalf-of)方法。 此类调用也称为*服务到服务*调用。 调用其他 Web API 的 Web API 需要提供自定义缓存序列化。
 
   ![调用另一个 Web API 的 Web API](media/scenarios/web-api.svg)
 
@@ -196,7 +196,7 @@ ASP.NET或ASP.NET核心保护的 Web API 代表用户调用另一个 Web API，�
 
 ## <a name="scenarios-and-supported-authentication-flows"></a>方案和受支持的身份验证流
 
-涉及获取令牌的方案也会映射到 OAuth 2.0 身份验证流。 有关详细信息，请参阅[Microsoft 标识平台上的 OAuth 2.0 和 OpenID 连接协议](active-directory-v2-protocols.md)。
+涉及获取令牌的方案也会映射到 OAuth 2.0 身份验证流。 有关详细信息，请参阅[Microsoft 标识平台上的 OAuth 2.0 和 OpenID connect 协议](active-directory-v2-protocols.md)。
 
 <table>
  <thead>
@@ -295,23 +295,23 @@ Microsoft 身份验证库支持多种平台：
 你还可以使用多种语言来构建你的应用程序。
 
 > [!NOTE]
-> 某些应用程序类型并非在每个平台上都可用。
+> 某些应用程序类型在每个平台上不可用。
 
 在下表的“Windows”列中，每当提到 .NET Core，表示 .NET Framework 也可用。 省略后者是为了避免表格内容混杂。
 
 |方案  | Windows | Linux | Mac | iOS | Android
 |--|--|--|--|--|--|--|
 | [单页应用](scenario-spa-overview.md) <br/>[![单页应用](media/scenarios/spa-app.svg)](scenario-spa-overview.md) | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js
-| [用于登录用户的 Web 应用](scenario-web-app-sign-user-overview.md) <br/>[![登录用户的 Web 应用](media/scenarios/scenario-webapp-signs-in-users.svg)](scenario-web-app-sign-user-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core
-| [用于调用 Web API 的 Web 应用](scenario-web-app-call-api-overview.md) <br/> <br/>[![用于调用 Web API 的 Web 应用](media/scenarios/web-app.svg)](scenario-web-app-call-api-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png) <br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>Flask + MSAL Python| ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>Flask + MSAL Python| ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/> ![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>Flask + MSAL Python
-| [用于调用 Web API 的 桌面应用](scenario-desktop-overview.md) <br/> <br/>调用 Web API![设备代码流的[桌面应用![](media/scenarios/desktop-app.svg)](scenario-desktop-overview.md)](media/scenarios/device-code-flow-app.svg) | ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/> ![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python <br/> ![iOS / Objective C 或 swift](media/sample-v2-code/small_logo_iOS.png) MSAL.objc |
+| [登录用户的 Web 应用](scenario-web-app-sign-user-overview.md) <br/>[![登录用户的 Web 应用](media/scenarios/scenario-webapp-signs-in-users.svg)](scenario-web-app-sign-user-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core
+| [调用 Web API 的 Web 应用](scenario-web-app-call-api-overview.md) <br/> <br/>[![调用 Web API 的 Web 应用](media/scenarios/web-app.svg)](scenario-web-app-call-api-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png) <br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>Flask + MSAL Python| ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>Flask + MSAL Python| ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/> ![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>Flask + MSAL Python
+| [用于调用 Web API 的 桌面应用](scenario-desktop-overview.md) <br/> <br/>[用于调用 web api 的桌面应用程序设备代码流![](media/scenarios/desktop-app.svg)](scenario-desktop-overview.md) ![](media/scenarios/device-code-flow-app.svg) | ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/> ![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python <br/> ![iOS / Objective C 或 swift](media/sample-v2-code/small_logo_iOS.png) MSAL.objc |
 | [用于调用 Web API 的移动应用](scenario-mobile-overview.md) <br/> [![用于调用 Web API 的移动应用](media/scenarios/mobile-app.svg)](scenario-mobile-overview.md) | ![UWP](media/sample-v2-code/small_logo_windows.png) MSAL.NET ![Xamarin](media/sample-v2-code/small_logo_xamarin.png) MSAL.NET | | | ![iOS / Objective C 或 swift](media/sample-v2-code/small_logo_iOS.png) MSAL.objc | ![Android](media/sample-v2-code/small_logo_Android.png) MSAL.Android
 | [守护程序应用](scenario-daemon-overview.md) <br/> [![守护程序应用](media/scenarios/daemon-app.svg)](scenario-daemon-overview.md) | ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python
 | [用于调用 Web API 的 Web API](scenario-web-api-call-api-overview.md) <br/><br/> [![用于调用 Web API 的 Web API](media/scenarios/web-api.svg)](scenario-web-api-call-api-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python
 
-有关详细信息，请参阅[Microsoft 支持的操作系统 /语言库](reference-v2-libraries.md#microsoft-supported-libraries-by-os--language)。
+有关详细信息，请参阅[Microsoft 支持的库（按 OS/语言](reference-v2-libraries.md#microsoft-supported-libraries-by-os--language)）。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解有关[身份验证基础知识](authentication-scenarios.md)和 Microsoft[标识平台访问令牌](access-tokens.md)的更多信息。
-* 了解有关[保护对 IoT 应用的访问](/azure/architecture/example-scenario/iot-aad/iot-aad)的更多信息。
+* 详细了解[身份验证基础知识](authentication-scenarios.md)和[Microsoft 标识平台访问令牌](access-tokens.md)。
+* 详细了解[如何保护对 IoT 应用的访问](/azure/architecture/example-scenario/iot-aad/iot-aad)。

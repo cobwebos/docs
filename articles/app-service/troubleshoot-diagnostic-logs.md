@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
 ms.openlocfilehash: e945fd77c2615e6f5213a9aa4fc996f0c4d2f3dd
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81769985"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
@@ -32,7 +32,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 | 部署日志记录 | Windows、Linux | 应用服务文件系统 | 有关何时将内容发布到应用的日志。 部署日志记录会自动发生，它没有可配置的设置。 它可以帮助确定部署失败的原因。 例如，如果使用[自定义部署脚本](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)，你可能会使用部署日志记录确定该脚本失败的原因。 |
 
 > [!NOTE]
-> 应用服务提供了一个专用的交互式诊断工具来帮助你排查应用程序问题。 有关详细信息，请参阅[Azure 应用服务诊断概述](overview-diagnostics.md)。
+> 应用服务提供了一个专用的交互式诊断工具来帮助你排查应用程序问题。 有关详细信息，请参阅[Azure App Service 诊断概述](overview-diagnostics.md)。
 >
 > 此外，可以使用其他 Azure 服务（例如 [Azure Monitor](../azure-monitor/app/azure-web-apps.md)）来改善应用的日志记录和监视功能。
 >
@@ -51,7 +51,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 > [!NOTE]
 > 目前，只有 .NET 应用程序日志可以写入到 blob 存储。 Java、PHP、Node.js、Python 应用程序日志只能存储在应用服务文件系统上（无需修改代码即可将日志写入外部存储）。
 >
-> 此外，如果[重新生成存储帐户的访问密钥](../storage/common/storage-create-storage-account.md)，则必须重置相应的日志记录配置才能使用更新的访问密钥。 为此，请按以下步骤操作：
+> 此外，如果[重新生成存储帐户的访问密钥](../storage/common/storage-create-storage-account.md)，则必须重置相应的日志记录配置才能使用更新的访问密钥。 要执行此操作：
 >
 > 1. 在“配置”**** 选项卡上，将相应的日志记录功能设置为“关闭”****。 保存设置。
 > 2. 再次启用将日志记录到存储帐户 Blob。 保存设置。
@@ -66,17 +66,17 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 |**错误** | “错误”、“严重” |
 |**警告** | “警告”、“错误”、“严重”|
 |**信息** | “信息”、“警告”、“错误”、“严重”|
-|**详细** | “跟踪”、“调试”、“信息”、“警告”、“错误”、“严重”（所有类别） |
+|**Verbose** | “跟踪”、“调试”、“信息”、“警告”、“错误”、“严重”（所有类别） |
 
 完成后，选择“保存”。****
 
 ## <a name="enable-application-logging-linuxcontainer"></a>启用应用程序日志记录（Linux/容器）
 
-要在[Azure 门户](https://portal.azure.com)中为 Linux 应用或自定义容器应用启用应用程序日志记录，请导航到应用并选择**应用服务日志**。
+若要在[Azure 门户](https://portal.azure.com)中启用适用于 Linux 应用或自定义容器应用的应用程序日志记录，请导航到应用并选择 "**应用服务日志**"。
 
-在**应用程序日志记录**中，选择**文件系统**。
+在 "**应用程序日志记录**" 中，选择 "**文件系统**"。
 
-在**配额 （MB）** 中，指定应用程序日志的磁盘配额。 在“保留期(天)”中，设置日志要保留的天数。****
+在 "**配额（MB）**" 中，指定应用程序日志的磁盘配额。 在“保留期(天)”中，设置日志要保留的天数。****
 
 完成后，选择“保存”。****
 
@@ -89,7 +89,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 在“保留期(天)”中，设置日志要保留的天数。****
 
 > [!NOTE]
-> 如果[重新生成存储帐户的访问密钥](../storage/common/storage-create-storage-account.md)，则必须重置相应的日志记录配置才能使用更新的密钥。 为此，请按以下步骤操作：
+> 如果[重新生成存储帐户的访问密钥](../storage/common/storage-create-storage-account.md)，则必须重置相应的日志记录配置才能使用更新的密钥。 要执行此操作：
 >
 > 1. 在“配置”**** 选项卡上，将相应的日志记录功能设置为“关闭”****。 保存设置。
 > 2. 再次启用将日志记录到存储帐户 Blob。 保存设置。
@@ -130,9 +130,9 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 
 若要在 [Azure 门户](https://portal.azure.com)中流式传输日志，请导航到你的应用并选择“日志流”。**** 
 
-### <a name="in-cloud-shell"></a>在云壳中
+### <a name="in-cloud-shell"></a>在 Cloud Shell
 
-要在[云壳](../cloud-shell/overview.md)中实时流式传输日志，请使用以下命令：
+若要在[Cloud Shell](../cloud-shell/overview.md)中实时流式传输日志，请使用以下命令：
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup
@@ -151,7 +151,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 ### <a name="in-local-terminal"></a>在本地终端中
 
-若要在本地控制台中流式传输日志，请[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 并[登录帐户](https://docs.microsoft.com/cli/azure/authenticate-azure-cli)。 登录后，按照[云外壳的说明操作](#in-cloud-shell)
+若要在本地控制台中流式传输日志，请[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 并[登录帐户](https://docs.microsoft.com/cli/azure/authenticate-azure-cli)。 登录后，请按照[Cloud Shell 的说明进行操作](#in-cloud-shell)
 
 ## <a name="access-log-files"></a>访问日志文件
 
@@ -159,17 +159,17 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 对于存储在应用服务文件系统中的日志，最简单的方法是在浏览器中通过以下链接下载 ZIP 文件：
 
-- Linux/容器应用程序：`https://<app-name>.scm.azurewebsites.net/api/logs/docker/zip`
+- Linux/容器应用：`https://<app-name>.scm.azurewebsites.net/api/logs/docker/zip`
 - Windows 应用：`https://<app-name>.scm.azurewebsites.net/api/dump`
 
-对于 Linux/容器应用，ZIP 文件包含 Docker 主机和 Docker 容器的控制台输出日志。 对于横向扩展应用，ZIP 文件包含每个实例的一组日志。 在应用服务文件系统中，这些日志文件是 */home/LogFiles*目录的内容。
+对于 Linux/容器应用，ZIP 文件包含 docker 主机和 docker 容器的控制台输出日志。 对于向外扩展的应用程序，ZIP 文件包含每个实例的一组日志。 在应用服务文件系统中，这些日志文件是 */home/LogFiles*目录的内容。
 
 对于 Windows 应用，该 ZIP 文件包含应用服务文件系统中 *D:\Home\LogFiles* 目录的内容。 其结构如下：
 
 | 日志类型 | 目录 | 说明 |
 |-|-|-|
 | **应用程序日志** |*/LogFiles/Application/* | 包含一个或多个文本文件。 日志消息的格式取决于所用的日志记录提供程序。 |
-| **失败的请求跟踪** | */LogFiles/W3SVC#########/* | 包含 XML 文件和一个 XSL 文件。 可以在浏览器中查看带格式的 XML 文件。 |
+| **失败请求跟踪** | */LogFiles/W3SVC#########/* | 包含 XML 文件和一个 XSL 文件。 可以在浏览器中查看带格式的 XML 文件。 |
 | **详细的错误日志** | */LogFiles/DetailedErrors/* | 包含 HTM 错误文件。 可以在浏览器中查看 HTM 文件。<br/>查看失败请求跟踪的另一种方法是在门户中导航到应用页。 在左侧菜单中选择“诊断和解决问题”，搜索“失败请求跟踪日志”，然后单击相应的图标来浏览和查看所需的跟踪。******** |
 | **Web 服务器日志** | */LogFiles/http/RawLogs/* | 包含使用 [W3C 扩展日志文件格式](/windows/desktop/Http/w3c-logging)的文本文件。 可以使用文本编辑器或诸如[日志分析程序](https://go.microsoft.com/fwlink/?LinkId=246619)之类实用工具来阅读此信息。<br/>应用服务不支持 `s-computername`、`s-ip` 或 `cs-version` 字段。 |
 | **部署日志** | */LogFiles/Git/* 和 */deployments/* | 包含内部部署进程生成的日志，以及 Git 部署的日志。 |
@@ -185,14 +185,14 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 下表显示了支持的日志类型和说明： 
 
-| 日志类型 | Windows 支持 | Linux（Docker）支持 | 说明 |
+| 日志类型 | Windows 支持 | Linux （Docker）支持 | 说明 |
 |-|-|-|
 | AppServiceConsoleLogs | TBA | 是 | 标准输出和标准错误 |
 | AppServiceHTTPLogs | 是 | 是 | Web 服务器日志 |
 | AppServiceEnvironmentPlatformLogs | 是 | 是 | 应用服务环境：缩放、配置更改和状态日志|
 | AppServiceAuditLogs | 是 | 是 | 通过 FTP 和 Kudu 进行的登录活动 |
 | AppServiceFileAuditLogs | 是 | TBD | 通过 FTP 和 Kudu 进行的文件更改 |
-| AppServiceAppLogs | TBA | Java SE & 汤姆卡特 | 应用程序日志 |
+| AppServiceAppLogs | TBA | Java SE & Tomcat | 应用程序日志 |
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> 后续步骤
 * [使用 Azure Monitor 查询日志](../azure-monitor/log-query/log-query-overview.md)

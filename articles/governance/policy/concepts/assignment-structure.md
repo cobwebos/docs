@@ -4,10 +4,10 @@ description: 介绍策略分配定义，Azure Policy 使用该定义将策略定
 ms.date: 04/15/2020
 ms.topic: conceptual
 ms.openlocfilehash: cdb2fc0c6f057ece44383f68bc79fca54507db9b
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683221"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy 分配结构
@@ -64,13 +64,13 @@ Azure Policy 使用策略分配来定义为哪些资源分配了哪些策略或�
 |“模式” |JSON 值 |类型 |手动修正 |活动日志条目 |说明 |
 |-|-|-|-|-|-|
 |已启用 |默认 |字符串 |是 |是 |在创建或更新资源期间强制实施策略效果。 |
-|已禁用 |DoNotEnforce |字符串 |是 |否 | 在创建或更新资源期间不强制实施策略效果。 |
+|禁用 |DoNotEnforce |字符串 |是 |否 | 在创建或更新资源期间不强制实施策略效果。 |
 
 如果未在策略或计划定义中指定 **enforcementMode**，则使用值 _Default_。 即使 **enforcementMode** 设置为 _DoNotEnforce_，也可以针对 [deployIfNotExists](./effects.md#deployifnotexists) 策略启动[修正任务](../how-to/remediate-resources.md)。
 
 ## <a name="excluded-scopes"></a>排除的范围
 
-分配**的范围**包括所有子资源容器和子资源。 如果子资源容器或子资源不应应用定义，则可以通过设置 **"不Scope"** 从评估中排除每个容器。 此属性是一个数组，用于启用从评估中排除一个或多个资源容器或资源。 在创建初始分配后，可以添加或更新 **"不Scope"。**
+分配的**作用域**包括所有子资源容器和子资源。 如果子资源容器或子资源不应应用定义，则可以通过设置**notScopes**将每个项从计算中排除。 此属性是一个数组，该数组允许从计算中排除一个或多个资源容器或资源。 创建初始赋值后，可以添加或更新**notScopes** 。
 
 ## <a name="policy-definition-id"></a>策略定义 ID
 
@@ -98,7 +98,7 @@ Azure Policy 使用策略分配来定义为哪些资源分配了哪些策略或�
 ## <a name="next-steps"></a>后续步骤
 
 - 了解[策略定义结构](./definition-structure.md)。
-- 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
-- 了解如何[获取合规性数据](../how-to/get-compliance-data.md)。
-- 了解如何[修复不合规资源](../how-to/remediate-resources.md)。
+- 了解如何以[编程方式创建策略](../how-to/programmatically-create.md)。
+- 了解如何[获取相容性数据](../how-to/get-compliance-data.md)。
+- 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

@@ -11,10 +11,10 @@ ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: 05d658c052c5bc12f49d957bb29ad085c269c57b
-ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82137344"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时序预测模型
@@ -53,7 +53,7 @@ ms.locfileid: "82137344"
 自动化 ML 包含推荐系统，可为用户提供本机时序和深度学习模型。 
 
 
-模型| 说明 | 优势
+模型| 说明 | 优点
 ----|----|---
 Prophet （预览版）|Prophet 最适合用于受季节影响大且包含多个季节历史数据的时序。 | 准确 & 快速、强健、离群值、丢失数据以及在时序方面产生巨大的变化。
 自动 ARIMA （预览版）|当数据为静止时，自动回归集成移动平均线（ARIMA）的性能最佳。 这意味着，其统计属性（如平均值和方差）在整个集中都是固定的。 例如，如果您翻了一硬币，那么您将获得机头的概率为50%，而不考虑您是今天、明天还是下一年。| 适用于单变量系列，因为过去的值用于预测未来值。

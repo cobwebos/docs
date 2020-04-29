@@ -11,10 +11,10 @@ ms.custom: seodec18
 ms.date: 12/02/2019
 ms.author: shvija
 ms.openlocfilehash: 7f6e1896c97c96cd484d15fb9e6a3056e5c5d6b2
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086362"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中心常见问题
@@ -75,7 +75,7 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 | -------- | ----- | ------- | 
 | AMQP | 5671 和 5672 | 请参阅 [AMQP 协议指南](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
 | HTTP、HTTPS | 80、443 |  |
-| Kafka | 9093 | 请参阅[使用卡夫卡应用程序中的事件中心](event-hubs-for-kafka-ecosystem-overview.md)
+| Kafka | 9093 | 请参阅[从 Kafka 应用程序使用事件中心](event-hubs-for-kafka-ecosystem-overview.md)
 
 ### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>我需要将哪些 IP 地址加入允许列表？
 若要找到适合加入连接的允许列表的 IP 地址，请执行以下步骤：
@@ -109,15 +109,15 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 事件中心提供可由基于 Apache Kafka 的现有应用程序使用的 Kafka 终结点。 只需完成一项配置更改，即可获得 PaaS Kafka 体验。 使用该体验就如同运行自己的 Kafka 群集。 事件中心支持 Apache Kafka 1.0 和更高版本的客户端，并且适用于现有的 Kafka 应用程序、工具和框架。 有关详细信息，请参阅[适用于 Kafka 的事件中心存储库](https://github.com/Azure/azure-event-hubs-for-kafka)。
 
 ### <a name="what-configuration-changes-need-to-be-done-for-my-existing-application-to-talk-to-event-hubs"></a>要使现有的应用程序与事件中心通信，需要完成哪些配置更改？
-要连接到事件中心，您需要更新 Kafka 客户端配置。 它通过创建事件中心命名空间和获取[连接字符串](event-hubs-get-connection-string.md)来完成。 更改 bootstrap.servers，以将事件中心 FQDN 和端口指向 9093。 更新 sasl.jaas.config 以将 Kafka 客户端定向到事件中心终结点（即您获得的连接字符串），并进行正确的身份验证，如下所示：
+若要连接到事件中心，需要更新 Kafka 客户端配置。 这是通过创建事件中心命名空间并获取[连接字符串](event-hubs-get-connection-string.md)来完成的。 更改 bootstrap.servers，以将事件中心 FQDN 和端口指向 9093。 更新 jaas 以将 Kafka 客户端定向到事件中心终结点（即你获取的连接字符串），并提供正确的身份验证，如下所示：
 
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 
-示例：
+例如：
 
 bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly=";
 
-注意：如果 sasl.jaas.config 不是框架中受支持的配置，请找到用于设置 SASL 用户名和密码的配置，然后改用这些配置。 将用户名设置为 $ConnectionString，将密码设置为事件中心连接字符串。
+注意：如果 jaas 不是框架中支持的配置，请查找用于设置 SASL 用户名和密码的配置，并使用这些配置。 将用户名设置为 $ConnectionString，将密码设置为事件中心连接字符串。
 
 ### <a name="what-is-the-messageevent-size-for-event-hubs"></a>事件中心的消息/事件大小是多少？
 事件中心允许的最大消息大小为 1 MB。

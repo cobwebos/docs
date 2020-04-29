@@ -1,6 +1,6 @@
 ---
 title: 为 Windows VM 启用 Azure 磁盘加密
-description: 本文提供有关为 Windows VM 启用 Microsoft Azure 磁盘加密的说明。
+description: 本文提供了有关为 Windows Vm 启用 Microsoft Azure 磁盘加密的说明。
 author: msmbaldwin
 ms.service: virtual-machines-windows
 ms.subservice: security
@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
 ms.openlocfilehash: 8bed34e816207c9f0bd0565abab6af4adbaeb7fd
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82081636"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>适用于 Windows VM 的 Azure 磁盘加密 
@@ -37,12 +37,12 @@ Windows VM 的大小有[多种](sizes-general.md)。 Azure 磁盘加密在 [A �
 
 Azure 磁盘加密还可用于使用高级存储的 VM。
 
-Azure 磁盘加密在第[2 代 VM](generation-2.md#generation-1-vs-generation-2-capabilities)和[Lsv2 系列 VM](../lsv2-series.md)上不可用。 有关更多例外情况，请参阅[Azure 磁盘加密：不受支持的方案](disk-encryption-windows.md#unsupported-scenarios)。
+Azure 磁盘加密不适用于[第2代 vm](generation-2.md#generation-1-vs-generation-2-capabilities)）和[Lsv2 系列 vm](../lsv2-series.md)）。 有关更多例外，请参阅[Azure 磁盘加密：不支持的方案](disk-encryption-windows.md#unsupported-scenarios)。
 
 ### <a name="supported-operating-systems"></a>支持的操作系统
 
-- Windows 客户端：Windows 8 及更高版本。
-- Windows 服务器：Windows 服务器 2008 R2 及更高版本。  
+- Windows 客户端： Windows 8 及更高版本。
+- Windows Server： Windows Server 2008 R2 及更高版本。  
  
 > [!NOTE]
 > Windows Server 2008 R2 要求安装 .NET Framework 4.5 以支持加密；请从 Windows 更新安装此组件，并安装适用于 Windows Server 2008 R2 基于 x64 的系统的 Microsoft .NET Framework 4.5.2 可选更新 ([KB2901983](https://www.catalog.update.microsoft.com/Search.aspx?q=KB2901983))。  
@@ -52,7 +52,7 @@ Azure 磁盘加密在第[2 代 VM](generation-2.md#generation-1-vs-generation-2-
 
 ## <a name="networking-requirements"></a>网络要求
 若要启用 Azure 磁盘加密，VM 必须符合以下网络终结点配置要求：
-  - 要获取令牌以连接到密钥保管库，Windows VM 必须能够连接到 Azure 活动目录终结点，login.microsoftonline.com \[\]。
+  - 若要获取令牌以连接到密钥保管库，Windows VM 必须能够连接到 Azure Active Directory 终结点\[login.microsoftonline.com。\]
   - 若要将加密密钥写入密钥保管库，Windows VM 必须能够连接到密钥保管库终结点。
   - Windows VM 必须能够连接到托管 Azure 扩展存储库的 Azure 存储终结点和托管 VHD 文件的 Azure 存储帐户。
   -  如果安全策略限制从 Azure VM 到 Internet 的访问，可以解析上述 URI，并配置特定的规则以允许与这些 IP 建立出站连接。 有关详细信息，请参阅[防火墙后的 Azure Key Vault](../../key-vault/general/access-behind-firewall.md)。    
@@ -60,9 +60,9 @@ Azure 磁盘加密在第[2 代 VM](generation-2.md#generation-1-vs-generation-2-
 
 ## <a name="group-policy-requirements"></a>组策略要求
 
-Azure 磁盘加密对 Windows VM 使用 BitLocker 外部密钥保护程序。 对于已加入域的 VM，请不要推送会强制执行 TPM 保护程序的任何组策略。 有关"允许未兼容 TPM 的 BitLocker"的组策略的信息，请参阅[BitLocker 组策略参考](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1)。
+Azure 磁盘加密对 Windows VM 使用 BitLocker 外部密钥保护程序。 对于已加入域的 VM，请不要推送会强制执行 TPM 保护程序的任何组策略。 有关 "不使用兼容的 TPM 时允许 BitLocker" 的组策略的信息，请参阅[BitLocker 组策略引用](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1)。
 
-具有自定义组策略的域加入虚拟机上的 BitLocker 策略必须包括以下设置：[配置用户存储的 BitLocker 恢复信息 ->允许 256 位恢复密钥](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings)。 如果 BitLocker 的自定义组策略设置不兼容，Azure 磁盘加密将会失败。 在没有正确策略设置的计算机上，应用新策略，强制更新新策略 (gpupdate.exe /force)，然后可能需要重启。
+与自定义组策略在加入域的虚拟机上的 BitLocker 策略必须包括以下设置：[配置 BitLocker 恢复信息的用户存储-> 允许256位恢复密钥](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings)。 如果 BitLocker 的自定义组策略设置不兼容，Azure 磁盘加密将会失败。 在没有正确策略设置的计算机上，应用新策略，强制更新新策略 (gpupdate.exe /force)，然后可能需要重启。
 
 如果域级组策略阻止了 BitLocker 使用的 AES-CBC 算法，Azure 磁盘加密将会失败。
 
@@ -91,6 +91,6 @@ Azure 磁盘加密需要 Azure Key Vault 来控制和管理磁盘加密密钥和
 - [Windows VM 上的 Azure 磁盘加密方案](disk-encryption-windows.md)
 - [Azure 磁盘加密先决条件 CLI 脚本](https://github.com/ejarvi/ade-cli-getting-started)
 - [Azure 磁盘加密先决条件 PowerShell 脚本](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
-- [创建和配置用于 Azure 磁盘加密的密钥保管库](disk-encryption-key-vault.md)
+- [创建和配置用于 Azure 磁盘加密的 Key Vault](disk-encryption-key-vault.md)
 
 

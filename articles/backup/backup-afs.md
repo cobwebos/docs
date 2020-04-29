@@ -4,10 +4,10 @@ description: 了解如何使用 Azure 门户在恢复服务保管库中备份 Az
 ms.topic: conceptual
 ms.date: 01/20/2020
 ms.openlocfilehash: da2c7fa4cc5c3b7b948604a6f6d3999671cb3697
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82101234"
 ---
 # <a name="back-up-azure-file-shares-in-a-recovery-services-vault"></a>在恢复服务保管库中备份 Azure 文件共享
@@ -20,7 +20,7 @@ ms.locfileid: "82101234"
 * 发现文件共享并配置备份。
 * 运行按需备份作业来创建还原点。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 在与托管文件共享的存储帐户相同的区域中标识或创建[恢复服务保管库](#create-a-recovery-services-vault)。
 * 确保文件共享存在于[受支持的存储帐户类型](azure-file-share-support-matrix.md)之一中。

@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
 ms.openlocfilehash: 87fa28cf9bdb546a5f108284023a9f787645a1fd
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457988"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Azure 容器实例的安全注意事项
@@ -25,15 +25,15 @@ ms.locfileid: "81457988"
 
 容器是基于一个或多个存储库中存储的映像构建的。 这些存储库可以属于公共注册表（例如 [Docker Hub](https://hub.docker.com)），也可以属于专用注册表。 [Docker 受信任注册表](https://docs.docker.com/datacenter/dtr/)是专用注册表的例子，它可以安装在本地或者安装在虚拟私有云中。 还可以使用基于云的专用容器注册表服务，包括 [Azure 容器注册表](../container-registry/container-registry-intro.md)。 
 
-公用的容器映像不保证安全性。 容器映像包括多个软件层，每个软件层可能有漏洞。 为帮助减少攻击风险，应在 Azure 容器注册表或 Docker 受信任注册表等专用注册表中存储和检索映像 除了提供托管的专用注册表以外，Azure 容器注册表还支持通过 Azure Active Directory 使用[基于服务主体的身份验证](../container-registry/container-registry-authentication.md)执行基本身份验证流。 此身份验证包括基于角色的只读（拉取）、写入（推送）和其他权限的访问。
+公用的容器映像不保证安全性。 容器映像包括多个软件层，每个软件层可能有漏洞。 为帮助减少攻击风险，应在 Azure 容器注册表或 Docker 受信任注册表等专用注册表中存储和检索映像 除了提供托管的专用注册表以外，Azure 容器注册表还支持通过 Azure Active Directory 使用[基于服务主体的身份验证](../container-registry/container-registry-authentication.md)执行基本身份验证流。 此身份验证包括基于角色的只读访问（请求）、写入（推送）和其他权限。
 
 ### <a name="monitor-and-scan-container-images"></a>监视和扫描容器映像
 
-利用解决方案扫描私有注册表中的容器映像并识别潜在漏洞。 了解不同解决方案提供的威胁检测深度非常重要。
+利用解决方案来扫描专用注册表中的容器映像，并识别潜在的漏洞。 了解不同解决方案提供的威胁检测的深度很重要。
 
-例如，Azure 容器注册表可以选择[与 Azure 安全中心集成](../security-center/azure-container-registry-integration.md)，以自动扫描推送到注册表的所有 Linux 映像。 Azure 安全中心的集成 Qualys 扫描程序可检测图像漏洞、对其进行分类并提供修正指南。
+例如，Azure 容器注册表可以选择[与 Azure 安全中心集成](../security-center/azure-container-registry-integration.md)，以自动扫描推送到注册表的所有 Linux 映像。 Azure 安全中心的集成 Qualys 扫描程序可以检测映像漏洞，对其进行分类，并提供修正指导。
 
-通过 Azure 应用商店，还提供安全监视和图像扫描解决方案，如[Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview)和[Aqua Security。](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview)  
+还可以通过 Azure Marketplace 使用安全监视和图像扫描解决方案，如[Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview)和[浅绿安全性](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview)。  
 
 ### <a name="protect-credentials"></a>保护凭据
 
@@ -60,7 +60,7 @@ ms.locfileid: "81457988"
 
 ### <a name="ensure-that-only-approved-images-are-used-in-your-environment"></a>确保在环境中仅使用已批准的映像 
 
-容器生态系统中有足够的变化和波动性，而不允许未知的容器。 仅允许已批准的容器映像。 部署用于监视和阻止使用未经批准的容器映像的工具与流程。 
+容器生态系统中有足够的更改和变动，同时也不允许使用未知容器。 仅允许已批准的容器映像。 部署用于监视和阻止使用未经批准的容器映像的工具与流程。 
 
 减小受攻击面并防止开发人员出现严重安全错误的有效方式是控制容器映像流入开发环境 例如，可以批准将单个 Linux 分发版用作基础映像，最好是精简的映像（Alpine 或 CoreOS，而不是 Ubuntu），以最大程度地减少潜在受攻击面。 
 
@@ -76,7 +76,7 @@ ms.locfileid: "81457988"
 
 * 不应该允许在生产环境中运行包含漏洞的映像（即使是轻微的漏洞）。 最好是将生产环境中部署的所有映像保存在只有少数人可以访问的专用注册表中。 保存少量的生产映像，确保能够有效地对其进行管理。
 
-* 由于很难从公开可用的容器映像中确定软件的来源，因此从源生成映像以确保了解图层的来源。 自制容器映像中出现漏洞时，客户可以更快地找到解决途径。 使用公共映像时，客户需要找到公共映像的根才能修复漏洞，或者需要从发布者获取另一个安全映像。 
+* 由于很难从公开提供的容器映像中找出软件源，因此请从源构建映像，以确保了解层的来源。 自制容器映像中出现漏洞时，客户可以更快地找到解决途径。 使用公共映像时，客户需要找到公共映像的根才能修复漏洞，或者需要从发布者获取另一个安全映像。 
 
 * 在生产环境中部署的、经过全面扫描的映像并不能保证在应用程序的生存期内保持最新状态。 系统可能会针对映像的层报告以前并不知道的或者在生产部署后才引入的安全漏洞。 
 
@@ -84,7 +84,7 @@ ms.locfileid: "81457988"
 
 * 使用集成了安全扫描的持续集成 (CI) 管道生成安全映像并将其推送到专用注册表。 CI 解决方案中内置的漏洞扫描可确保将通过所有测试的映像推送到从中部署了生产工作负荷的专用注册表中。 
 
-  CI 管道故障可确保不会将易受攻击的映像推送到用于生产工作负载部署的专用注册表。 如果存在大量图像，它还可自动进行图像安全扫描。 相比之下，在映像中手动审核安全漏洞的过程可能相当繁琐且容易出错。 
+  CI 管道故障确保不会将易受攻击的映像推送到用于生产工作负荷部署的专用注册表。 如果有大量映像，它还会自动执行映像安全扫描。 相比之下，在映像中手动审核安全漏洞的过程可能相当繁琐且容易出错。 
 
 ### <a name="enforce-least-privileges-in-runtime"></a>在运行时中强制实施最低特权 
 
@@ -94,31 +94,31 @@ ms.locfileid: "81457988"
 
 还可以通过从容器运行时中删除任何不使用或不必要的进程或特权，来最大程度地减小潜在受攻击面。 特权容器以 root 身份运行。 如果恶意用户或工作负荷侵入某个特权容器，则该容器就会在该系统上以 root 身份运行。
 
-### <a name="preapprove-files-and-executables-that-the-container-is-allowed-to-access-or-run"></a>预先批准允许容器访问或运行的文件和可执行文件 
+### <a name="preapprove-files-and-executables-that-the-container-is-allowed-to-access-or-run"></a>允许容器访问或运行的 Preapprove 文件和可执行文件 
 
-减少可变因素或未知因素的数量有助于维持稳定可靠的环境。 限制容器，以便它们只能访问或运行预先批准或安全列出的文件和可执行文件，这是限制风险暴露的成熟方法。  
+减少可变因素或未知因素的数量有助于维持稳定可靠的环境。 限制容器以便只能访问或运行预先批准或 safelisted 文件和可执行文件，这是一种可限制风险暴露的经过验证的方法。  
 
-当安全列表从一开始就实现时，管理它要容易得多。 安全列表提供控制和可管理性的度量，因为您需要应用程序正常运行所需的文件和可执行文件。 
+从一开始就实现了一个安全的安全管理程序，这种方法很容易。 当你了解应用程序正常运行所需的文件和可执行文件时，可以使用安全安全措施提供控制和可管理性。 
 
-安全列表不仅减少了攻击面，而且还可以为异常提供基线，并防止"嘈杂邻居"和容器分组方案的用例。 
+安全安全不仅减少了攻击面，还可以为异常提供基线，并防止出现 "干扰邻居" 和容器专题讨论情况。 
 
 ### <a name="enforce-network-segmentation-on-running-containers"></a>在运行的容器中强制网络分段  
 
-为了防范一个子网中的容器在另一个子网中遇到安全风险，请在运行的容器之间保持网络分段（或 nano 分段）或隔离。 在满足合规性要求所需的行业中使用容器可能还需要维护网络分段。  
+为了防范一个子网中的容器在另一个子网中遇到安全风险，请在运行的容器之间保持网络分段（或 nano 分段）或隔离。 还需要维护网络分段，以便在需要满足合规性要求的行业中使用容器。  
 
-例如，合作伙伴工具[Aqua](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview)提供了一种用于纳米分割的自动化方法。 Aqua 在运行时监视容器网络活动。 它标识与其他容器、服务、IP 地址和公共 Internet 的所有入站和出站网络连接。 纳米分段根据监控流量自动创建。 
+例如，"合作伙伴" 工具[水绿色](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview)为 nano 分段提供自动化方法。 浅绿色监视运行时中的容器网络活动。 它标识与其他容器、服务、IP 地址和公共 internet 之间的所有入站和出站网络连接。 Nano-根据监视的流量自动创建分段。 
 
 ### <a name="monitor-container-activity-and-user-access"></a>监视容器活动和用户访问 
 
 与使用任何 IT 环境时一样，应始终如一地监视容器生态系统中的活动和用户访问，以快速识别任何可疑或恶意活动。 Azure 提供容器监视解决方案，包括：
 
-* [容器的 Azure 监视器](../azure-monitor/insights/container-insights-overview.md)监视部署到 Azure 库伯奈斯服务 （AKS） 上托管的库伯奈斯环境的工作负载的性能。 用于容器的 Azure Monitor 通过 Metrics API 从 Kubernetes 中提供的控制器、节点和容器收集内存和处理器指标，来提供性能可见性。 
+* [容器 Azure Monitor 用于](../azure-monitor/insights/container-insights-overview.md)监视部署到 Azure Kubernetes 服务（AKS）上托管的 Kubernetes 环境的工作负荷性能。 用于容器的 Azure Monitor 通过 Metrics API 从 Kubernetes 中提供的控制器、节点和容器收集内存和处理器指标，来提供性能可见性。 
 
 * [Azure 容器监视解决方案](../azure-monitor/insights/containers.md)可帮助你在单个位置查看和管理其他 Docker 与 Windows 容器主机。 例如：
 
   * 查看详细审核信息，其中显示了与容器一起使用的命令。 
   * 通过查看和搜索集中式日志来排查容器问题，而无需远程查看 Docker 或 Windows 主机。  
-  * 查找可能嘈杂的容器，并在主机上消耗多余的资源。
+  * 查找可能干扰并消耗主机上过量资源的容器。
   * 查看容器的集中式 CPU、内存、存储器、网络使用情况和性能信息。  
 
   该解决方案支持容器业务流程协调程序，包括 Docker Swarm、DC/OS、非托管 Kubernetes、Service Fabric 和 Red Hat OpenShift。 
@@ -127,20 +127,20 @@ ms.locfileid: "81457988"
 
 监视资源活动，例如，容器访问的文件、网络和其他资源。 监视资源活动和消耗量对于性能监视非常有用，可用作一种安全措施。 
 
-[Azure 监视器](../azure-monitor/overview.md)通过允许收集指标、活动日志和诊断日志，支持 Azure 服务的核心监视。 例如，可以通过活动日志了解新资源的创建或修改时间。 
+[Azure Monitor](../azure-monitor/overview.md)允许收集指标、活动日志和诊断日志，为 Azure 服务启用核心监视。 例如，可以通过活动日志了解新资源的创建或修改时间。 
 
   可通过指标获取不同资源（甚至包括虚拟机中的操作系统）的性能统计信息。 可以使用 Azure 门户中的某个资源管理器查看此数据，还可以基于这些指标创建警报。 Azure Monitor 提供最快的指标管道（5 分钟乃至 1 分钟），因此应将其用于时间关键型警报和通知。 
 
 ### <a name="log-all-container-administrative-user-access-for-auditing"></a>记录所有容器管理用户访问以用于审核 
 
-维护对容器生态系统的管理访问的准确审核跟踪，包括 Kubernetes 群集、容器注册表和容器映像。 这些日志在审核时可能需要用到，在发生任何安全事件后可用作法庭证据。 Azure 解决方案包括：
+维护对容器生态系统的管理访问权限的准确审核线索，包括 Kubernetes 群集、容器注册表和容器映像。 这些日志在审核时可能需要用到，在发生任何安全事件后可用作法庭证据。 Azure 解决方案包括：
 
-* [将 Azure 库伯奈斯服务与 Azure 安全中心集成](../security-center/azure-kubernetes-service-integration.md)，以监视群集环境的安全配置并生成安全建议
+* 将[Azure Kubernetes 服务与 Azure 安全中心集成](../security-center/azure-kubernetes-service-integration.md)，以监视群集环境的安全配置并生成安全建议
 * [Azure 容器监视解决方案](../azure-monitor/insights/containers.md)
-* [Azure 容器实例](container-instances-log-analytics.md)和 Azure[容器注册表](../container-registry/container-registry-diagnostics-audit-logs.md)的资源日志
+* [Azure 容器实例](container-instances-log-analytics.md)和[azure 容器注册表](../container-registry/container-registry-diagnostics-audit-logs.md)的资源日志
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解在容器化环境中使用[Azure 安全中心](../security-center/container-security.md)进行实时威胁检测。
+* 详细了解如何使用[Azure 安全中心](../security-center/container-security.md)在容器化环境中进行实时威胁检测。
 
 * 详细了解如何使用 [Twistlock](https://www.twistlock.com/solutions/microsoft-azure-container-security/) 和 [Aqua Security](https://www.aquasec.com/solutions/azure-container-security/) 提供的解决方案来管理容器漏洞。

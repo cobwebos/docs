@@ -13,10 +13,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: c568dddcbbf57ebd6ed5906bb83af01a84dafa41
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683832"
 ---
 # <a name="create-an-advanced-device-model"></a>创建高级设备模型
@@ -126,7 +126,7 @@ IoT 设备可以使用不同的协议进行连接。 模拟允许使用 **AMQP**
 生成状态的函数也会接收作为输入提供的以下值：
 
 * 设备 ID。
-* 设备模型。
+* 设备型号。
 * 当前时间。 使用此值可按设备和时间生成不同的数据。
 
 ### <a name="generating-telemetry-messages"></a>生成遥测消息
@@ -164,8 +164,8 @@ IoT 设备可以使用不同的协议进行连接。 模拟允许使用 **AMQP**
 
 * 对象 - 使用 JSON 序列化
 * 二进制 - 使用 base64 序列化
-* 文本
-* Boolean
+* Text
+* 布尔值
 * Integer
 * Double
 * DateTime
@@ -258,8 +258,8 @@ JavaScript 文件必须包含可接受以下两个参数的 **main** 函数：
 
 * 一个 **context** 对象，其中包含三个属性：
     * 字符串形式的 **currentTime**，格式为 **yyyy-MM-dd'T'HH:mm:sszzz**。
-    * **设备 Id**. 例如 **Simulated.Elevator.123**。
-    * **设备模型**. 例如 **Elevator**。
+    * **deviceId**。 例如 **Simulated.Elevator.123**。
+    * **deviceModel**。 例如 **Elevator**。
 * 一个 **state** 对象，它是函数在上次调用中返回的值。 此设备状态由模拟服务维护，用于生成遥测消息。
 
 **main** 函数返回新的设备状态。 例如：

@@ -1,5 +1,5 @@
 ---
-title: 自动 ML 中的可解释性
+title: 自动 ML 中的 Explainability
 titleSuffix: Azure Machine Learning
 description: 了解使用 Azure 机器学习 SDK 时如何获取解释，以了解自动化 ML 模型如何确定特征重要性并做出预测。
 services: machine-learning
@@ -10,17 +10,17 @@ ms.author: mesameki
 author: mesameki
 ms.date: 03/11/2020
 ms.openlocfilehash: e9155104905ae3e686a01b90cbcad2610b6f4c91
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086413"
 ---
-# <a name="interpretability-model-explanations-in-automated-machine-learning"></a>可解释性：自动化机器学习中的模型说明
+# <a name="interpretability-model-explanations-in-automated-machine-learning"></a>Interpretability：自动机器学习中的模型说明
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，您将了解如何在 Azure 机器学习中获取有关自动机器学习 （ML） 的说明。 自动化 ML 可帮助你了解工程特征重要性。 
+本文介绍如何在 Azure 机器学习中获取自动机器学习（ML）的说明。 自动化 ML 可帮助你了解工程特征重要性。 
 
 默认情况下，1.0.85 之后的所有 SDK 版本设置 `model_explainability=True`。 在 SDK 版本 1.0.85 及更早版本中，用户需要在 `model_explainability=True` 对象中设置 `AutoMLConfig`，才能使用模型可解释性。 
 

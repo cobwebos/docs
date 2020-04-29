@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: bdf69a9ff7b3260b47042f296a47826e3c52387b
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81460641"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple 虚拟阵列最佳实践
@@ -159,10 +159,10 @@ StorSimple 虚拟阵列可与单个存储帐户关联。 此存储帐户可以�
 
 在虚拟设备上预配共享或卷时，请记住以下最佳实践。
 
-* 相对于已预配分层共享大小的文件大小可能影响分层性能。 使用大型文件可能会导致层数变慢。使用大型文件时，我们建议最大文件小于共享大小的 3%。
+* 相对于已预配分层共享大小的文件大小可能影响分层性能。 处理大型文件可能会导致该层速度缓慢。处理大型文件时，建议将最大的文件小于共享大小的3%。
 * 虚拟阵列上最多可以创建 16 个卷/共享。 有关在本地固定和分层的卷/共享的大小限制，请始终参阅 [StorSimple 虚拟阵列限制](storsimple-ova-limits.md)。
-* 创建卷时，请将预期的数据使用量以及将来的增长量包含考虑。 以后无法展开卷或共享。
-* 创建卷/共享后，无法缩小 StorSimple 上的卷/共享大小。
+* 创建卷时，请将预期的数据使用量以及将来的增长量包含考虑。 以后无法扩展卷或共享。
+* 卷/共享一旦创建，就不能缩小 StorSimple 上的卷/共享的大小。
 * 在写入 StorSimple 上的分层卷时，如果卷数据达到特定的阈值（相对于保留给卷的本地空间），IO 将受到限制。 继续写入此卷会让 IO 明显变慢。 尽管可以写入已超过预配容量的分层卷（系统不会主动阻止用户写入超出预配容量的数据），但会看到警报通知，指出已超过订阅量。 在看到该警报后，请务必采取补救措施，例如删除卷数据（目前不支持扩展卷）。
 * 对于灾难恢复用例，可允许的共享/卷数为 16 个，可并行处理的共享/卷数上限也是 16 个，因此共享/卷数并不影响 RPO 和 RTO。
 
@@ -200,7 +200,7 @@ StorSimple 虚拟阵列可与单个存储帐户关联。 此存储帐户可以�
 StorSimple 虚拟阵列具有数据安全和加密功能，可确保数据的机密性和完整性。 使用这些功能时，建议遵循以下最佳实践： 
 
 * 先定义用于生成 AES-256 加密的云存储加密密钥，然后将数据从虚拟阵列发送到云。 如果数据一开始就已加密，则不需要此密钥。 使用密钥管理系统（例如 [Azure 密钥保管库](../key-vault/general/overview.md)）可以生成并妥善保存密钥。
-* 通过 StorSimple Manager 服务配置存储帐户时，请确保启用 TLS 模式，以便在 StorSimple 设备和云之间创建用于网络通信的安全通道。
+* 通过 StorSimple Manager 服务配置存储帐户时，请确保启用 TLS 模式，以便为 StorSimple 设备和云之间的网络通信创建一个安全通道。
 * 定期重新生成存储帐户的密钥（通过访问 Azure 存储服务），反映管理员列表更改造成的访问权限更改。
 * 虚拟阵列上的数据先压缩并进行重复数据删除，再发送到 Azure。 不建议在 Windows Server 主机上使用“重复数据删除”角色服务。
 
@@ -242,7 +242,7 @@ StorSimple 虚拟阵列具有数据安全和加密功能，可确保数据的机
   * 故障转移已完成，随后删除了源设备，但目标设备有问题，无法访问任何数据。 云中的数据仍保持安全，只要创建另一个虚拟阵列，然后将它用作 DR 的目标设备，即可轻松检索数据。
 
 ### <a name="deactivate"></a>停用
-停用 StorSimple 虚拟阵列时，会断开设备与相应 StorSimple Manager 服务之间的连接。 停用是一项**永久**操作，无法撤消。 停用的设备不再能够注册到 StorSimple Manager 服务。 有关详细信息，请转到 [deactivate and delete your StorSimple Virtual Array](storsimple-virtual-array-deactivate-and-delete-device.md)（停用和删除 StorSimple 虚拟阵列）。
+停用 StorSimple 虚拟阵列时，会断开设备与相应 StorSimple Manager 服务之间的连接。 停用是**永久性**操作，不能撤消。 停用的设备不再能够注册到 StorSimple Manager 服务。 有关详细信息，请转到 [deactivate and delete your StorSimple Virtual Array](storsimple-virtual-array-deactivate-and-delete-device.md)（停用和删除 StorSimple 虚拟阵列）。
 
 停用虚拟阵列时，请记住以下最佳实践：
 
@@ -287,6 +287,6 @@ StorSimple 虚拟阵列可以自动将数据从本地层分层到 Microsoft Azur
 * 从负载均衡的立场看，在部署多个虚拟阵列时，建议将这些阵列分布到不同的虚拟机监控程序主机。
 * 可以在一个分布式文件系统命名空间中部署多个虚拟阵列（如果配置为文件服务器或 iSCSI 服务器）。 有关详细步骤，请转到 [Distributed File System Namespace Solution with Hybrid Cloud Storage Deployment Guide](https://www.microsoft.com/download/details.aspx?id=45507)（使用混合云存储的分布式文件系统命名空间解决方案部署指南）。 目前不建议将分布式文件系统复制用于虚拟阵列。 
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 了解如何通过 StorSimple Manager 服务[管理 StorSimple 虚拟阵列](storsimple-virtual-array-manager-service-administration.md)。
 

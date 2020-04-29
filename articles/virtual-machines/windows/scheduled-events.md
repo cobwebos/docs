@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: mimckitt
 ms.openlocfilehash: 105279940546c8e5b40d1d8378b35f85af1ea98b
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82099540"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure 元数据服务：适用于 Windows VM 的计划事件
@@ -56,12 +56,12 @@ Azure 元数据服务使用可从 VM 内访问的 REST 终结点公开有关正�
 ### <a name="version-and-region-availability"></a>版本和区域可用性
 计划事件服务受版本控制。 版本是必需的，当前版本为 `2019-01-01`。
 
-| Version | 发布类型 | 区域 | 发行说明 | 
+| 版本 | 发布类型 | 区域 | 发行说明 | 
 | - | - | - | - |
-| 2019-01-01 | 正式版 | All | <li> 添加了对虚拟机规模集事件 \ "终止" 的支持 |
+| 2019-01-01 | 正式版 | 全部 | <li> 添加了对虚拟机规模集事件 \ "终止" 的支持 |
 | 2017-11-01 | 正式版 | 全部 | <li> 添加了对点 VM 逐出事件 \ "Preempt" 的支持<br> | 
-| 2017-08-01 | 正式版 | All | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
-| 2017-03-01 | 预览 | All |<li>初始版本 |
+| 2017-08-01 | 正式版 | 全部 | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
+| 2017-03-01 | 预览 | 全部 |<li>初始版本 |
 
 > [!NOTE] 
 > 支持的计划事件的早期预览版发布 {最新} 为 api-version。 此格式不再受支持，并且会在未来被弃用。
@@ -109,14 +109,14 @@ curl http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 -H @
 DocumentIncarnation 是一个 ETag，它提供了一种简单的方法来检查自上次查询以来事件有效负载是否已更改。
 
 ### <a name="event-properties"></a>事件属性
-|Property  |  描述 |
+|属性  |  说明 |
 | - | - |
-| EventId | 此事件的全局唯一标识符。 <br><br> 示例： <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
+| EventId | 此事件的全局唯一标识符。 <br><br> 例如： <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | EventType | 此事件造成的影响。 <br><br> 值： <br><ul><li> `Freeze`：虚拟机计划暂停几秒钟。 CPU 和网络连接可能会暂停，但对内存或打开的文件没有影响。 <li>`Reboot`：计划重启虚拟机（非永久性内存丢失）。 <li>`Redeploy`：计划将虚拟机移到另一节点（临时磁盘丢失）。 <li>`Preempt`：正在删除点虚拟机（临时磁盘将丢失）。 <li> `Terminate`：计划删除虚拟机。 |
 | ResourceType | 此事件影响的资源的类型。 <br><br> 值： <ul><li>`VirtualMachine`|
-| 资源| 此事件影响的资源的列表。 保证包含来自最多一个[更新域](manage-availability.md)的计算机，但可能不包含 UD 中的所有计算机。 <br><br> 示例： <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
+| 资源| 此事件影响的资源的列表。 保证包含来自最多一个[更新域](manage-availability.md)的计算机，但可能不包含 UD 中的所有计算机。 <br><br> 例如： <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | 事件状态 | 此事件的状态。 <br><br> 值： <ul><li>`Scheduled`：事件计划在 `NotBefore` 属性指定的时间之后启动。<li>`Started`：此事件已启动。</ul> 未提供 `Completed` 或相似状态；事件完成后，将不再返回。
-| NotBefore| 一个时间，此事件可能会在该时间之后启动。 <br><br> 示例： <br><ul><li> 2016 年 9 月 19 日星期一 18:29:47 GMT  |
+| NotBefore| 一个时间，此事件可能会在该时间之后启动。 <br><br> 例如： <br><ul><li> 2016 年 9 月 19 日星期一 18:29:47 GMT  |
 
 ### <a name="event-scheduling"></a>事件计划
 将根据事件类型为每个事件计划将来的最小量时间。 此时间将反映在事件的 `NotBefore` 属性中。 

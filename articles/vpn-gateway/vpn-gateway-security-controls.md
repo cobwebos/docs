@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 6fc5b4c901254decdb2d34281a10ababd4d79d45
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82127856"
 ---
 # <a name="security-controls-for-azure-vpn-gateway"></a>Azure VPN 网关的安全控制
@@ -49,7 +49,7 @@ ms.locfileid: "82127856"
 
 | 安全控制 | Yes/No | 注释 |
 |---|---|--|
-| 服务器端加密： Microsoft 托管密钥 | 不适用 | VPN 网关传输客户数据，不存储客户数据 |
+| 服务器端静态加密：Microsoft 管理的密钥 | 不适用 | VPN 网关传输客户数据，不存储客户数据 |
 | 传输中加密（例如 ExpressRoute 加密、VNet 中加密，以及 VNet-VNet 加密）| 是 | VPN 网关加密 Azure VPN 网关和客户本地 VPN 设备之间 (S2S) 或 VPN 客户端之间 (P2S) 的客户数据包。 VPN 网关还支持 VNet 到 VNet 加密。 |
 | 服务器端静态加密：客户管理的密钥 (BYOK) | 否 | 客户指定的预共享密钥进行静态加密，但尚未与 CMK 集成。 |
 | 列级加密（Azure 数据服务）| 不适用 | |

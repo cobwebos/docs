@@ -1,6 +1,6 @@
 ---
-title: 红帽企业 Linux 自带订阅 Azure 映像 |微软文档
-description: 了解在 Azure 上为红帽企业 Linux 带来您自己的订阅映像。
+title: Red Hat Enterprise Linux 自带订阅 Azure 映像 |Microsoft Docs
+description: 了解 Azure 上的 Red Hat Enterprise Linux 的自带订阅映像。
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
@@ -15,78 +15,78 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
 ms.openlocfilehash: 9ab578b4b688c02c9150dfb23fce53fbb82df405
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273165"
 ---
-# <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>红帽企业 Linux 在 Azure 中自带订阅的黄金映像
+# <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>在 Azure 中 Red Hat Enterprise Linux 自带订阅金牌映像
 
-红帽企业 Linux （RHEL） 映像通过即用即付或自带订阅 （BYOS） （红帽金像）模型在 Azure 中可用。 本文概述了 Azure 中的红帽金色图像。
+Red Hat Enterprise Linux （RHEL）映像可通过即用即付或自带订阅（BYOS）（Red Hat 黄金图）模型在 Azure 中使用。 本文概述了 Azure 中的 Red Hat 金牌映像。
 
 >[!NOTE]
-> RHEL BYOS 金像映像在 Azure 公共（商业）和 Azure 政府云中可用。 它们在 Azure 中国或 Azure 黑林云中不可用。
+> RHEL BYOS 金牌映像适用于 Azure 公共（商业）和 Azure 政府云。 它们在 Azure 中国或 Azure Blackforest 云中不可用。
 
 ## <a name="important-points-to-consider"></a>需要考虑的要点
 
-- 此程序中提供的红帽金像是生产就绪的 RHEL 映像，类似于 Azure 应用商店中的 RHEL 即用即付映像。
-- 这些映像遵循[Azure 上的红帽企业 Linux 映像中描述的](./redhat-images.md)当前策略。
-- 标准支持策略适用于从这些映像创建的 VM。
-- 红帽金像提供的 VM 不携带与 RHEL 即用即付图像相关的 RHEL 费用。
-- 图像是无权的。 您必须使用红帽订阅管理器注册和订阅 VM，以便直接从红帽获取更新。
-- 目前无法在 BYOS 和 Linux 映像的即用即付计费模型之间动态切换。 要切换计费模型，必须从相应的映像重新部署 VM。
+- 此程序中提供的 Red Hat 金牌映像与 Azure Marketplace 中的 RHEL 即用即付映像类似。
+- 映像遵循在[Azure 上 Red Hat Enterprise Linux 映像](./redhat-images.md)中描述的当前策略。
+- 标准支持策略适用于通过这些映像创建的 Vm。
+- 从 Red Hat 黄金映像预配的 Vm 不会携带 rhel 费用与 RHEL 即用即付映像关联。
+- 图像是未获授权。 必须使用 Red Hat 订阅管理器注册并订阅 Vm，才能直接从 Red Hat 获取更新。
+- 目前不能在 BYOS 和 Linux 即用即付计费模型之间动态切换。 若要切换计费模式，你必须从相应的映像重新部署 VM。
 
 >[!NOTE]
-> 第 2 代 RHEL BYOS 映像目前无法通过市场产品/市场提供。 如果需要第 2 代 RHEL BYOS 映像，请访问红帽订阅管理中的云访问仪表板。 有关详细信息，请参阅[红帽文档](https://access.redhat.com/articles/4847681)。
+> 第2代 RHEL BYOS 映像当前不可通过 marketplace 产品/服务使用。 如果需要第2代 RHEL BYOS 映像，请访问 Red Hat 订阅管理中的云访问控制板。 有关详细信息，请参阅[Red Hat 文档](https://access.redhat.com/articles/4847681)。
 
-## <a name="requirements-and-conditions-to-access-the-red-hat-gold-images"></a>访问红帽金像的要求和条件
+## <a name="requirements-and-conditions-to-access-the-red-hat-gold-images"></a>访问 Red Hat 黄金映像的要求和条件
 
-1. 熟悉[红帽云访问计划](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)条款。 在[红帽订阅管理器](https://access.redhat.com/management/cloud)启用云访问红帽订阅。 您需要拥有要注册为云访问的 Azure 订阅。
+1. 熟悉[Red Hat 云访问计划](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)条款。 为 red [Hat 订阅管理器](https://access.redhat.com/management/cloud)的云访问启用 red hat 订阅。 需要手动注册 Azure 订阅，才能进行云访问。
 
-1. 如果为云访问启用的红帽订阅满足资格要求，则将自动启用 Azure 订阅以进行金像访问。
+1. 如果为云访问启用的 Red Hat 订阅满足了资格要求，则将自动为你的 Azure 订阅启用金牌映像访问。
 
-### <a name="expected-time-for-image-access"></a>映像访问的预期时间
+### <a name="expected-time-for-image-access"></a>图像访问的预计时间
 
-完成云访问启用步骤后，红帽将验证您是否有资格使用红帽金像。 如果验证成功，您将在三小时内获得对黄金图像的访问权限。
+完成云访问启用步骤后，Red Hat 会验证 Red Hat 黄金映像的资格。 如果验证成功，你将在三个小时内收到黄金映像的访问权限。
 
-## <a name="use-the-red-hat-gold-images-from-the-azure-portal"></a>使用 Azure 门户中的红帽金色图像
+## <a name="use-the-red-hat-gold-images-from-the-azure-portal"></a>使用 Azure 门户中的 Red Hat 黄金映像
 
-1. Azure 订阅收到对红帽金像的访问权限后，可以在[Azure 门户](https://portal.azure.com)中找到它们。 转到**创建资源** > **，查看所有**。
+1. Azure 订阅收到对 Red Hat 黄金映像的访问权限后，可以在[Azure 门户](https://portal.azure.com)中找到它们。 请参阅**创建资源** > **See all**。
 
-1. 在页面顶部，您将看到您有私人优惠。
+1. 在页面顶部，你会看到你拥有专用产品/服务。
 
-    ![市场私人优惠](./media/rhel-byos-privateoffers.png)
+    ![Marketplace 专用产品/服务](./media/rhel-byos-privateoffers.png)
 
-1. 选择紫色链接，或向下滚动到页面底部以查看您的私人优惠。
+1. 选择紫色链接，或向下滚动到页面底部，查看你的专用产品/服务。
 
-1. UI 中的其他预配与任何其他现有的红帽映像没有什么不同。 选择 RHEL 版本，然后按照提示预配 VM。 此过程还允许您在最后一步接受图像的条款。
+1. UI 中的其余设置与任何其他现有的 Red Hat 图像没有什么不同。 选择 RHEL 版本，并按照提示预配 VM。 此过程还允许在最后一步接受映像的条款。
 
 >[!NOTE]
->到目前为止，这些步骤不会启用您的红帽金像用于编程部署。 如"附加信息"部分所述，需要执行其他步骤。
+>到目前为止，这些步骤不会启用适用于编程部署的 Red Hat 黄金映像。 需要额外的步骤，如 "其他信息" 一节中所述。
 
-本文档的其余部分重点介绍用于预配和接受图像上的术语的 CLI 方法。 就最终结果（预配的 RHEL 金像 VM）而言，UI 和 CLI 是完全可互换的。
+本文档的其余部分重点介绍用于预配和接受有关映像的术语的 CLI 方法。 由于最终的结果（预配的 RHEL 黄金映像 VM），UI 和 CLI 是完全可互换的。
 
-## <a name="use-the-red-hat-gold-images-from-the-azure-cli"></a>使用 Azure CLI 中的红帽金色图像
+## <a name="use-the-red-hat-gold-images-from-the-azure-cli"></a>使用 Azure CLI 中的 Red Hat 黄金映像
 
-以下说明使用 Azure CLI 引导您完成 RHEL VM 的初始部署过程。 这些说明假定已安装 Azure [CLI。](https://docs.microsoft.com/cli/azure/install-azure-cli)
+以下说明将指导你完成使用 Azure CLI 的 RHEL VM 的初始部署过程。 这些说明假定已[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 >[!IMPORTANT]
->请确保在发布者、优惠、计划和图像引用中使用以下所有命令中的所有小写字母。
+>请确保在发布者、产品/服务、计划和映像引用中为以下所有命令使用所有小写字母。
 
-1. 检查您是否在所需的订阅中。
+1. 检查你是否处于所需的订阅。
 
     ```azurecli
     az account show -o=json
     ```
 
-1. 为红帽金像 VM 创建资源组。
+1. 为 Red Hat 黄金映像 VM 创建资源组。
 
     ```azurecli
     az group create --name <name> --location <location>
     ```
 
-1. 接受图像术语。
+1. 接受映像术语。
 
     ```azurecli
     az vm image terms accept --publisher redhat --offer rhel-byos --plan <SKU value here> -o=jsonc
@@ -100,9 +100,9 @@ ms.locfileid: "81273165"
     ```
 
     >[!NOTE]
-    >*每个 Azure 订阅（每个映像 SKU*）需要接受一次这些条款。
+    >每*个 Azure 订阅（每个映像 SKU）需要接受一次*这些条款。
 
-1. （可选）使用以下命令验证 VM 部署：
+1. 可有可无通过以下命令验证 VM 部署：
 
     ```azurecli
     az vm create -n <VM name> -g <resource group name> --image <image urn> --validate
@@ -111,20 +111,20 @@ ms.locfileid: "81273165"
     az vm create -n rhel-byos-vm -g rhel-byos-group --image RedHat:rhel-byos:rhel-lvm75:7.5.20190620
     ```
 
-1. 通过运行与上一个示例中显示的相同命令（没有参数）`--validate`来预配 VM。
+1. 通过运行上一示例中所示的相同命令来预配 VM， `--validate`而无需参数。
 
     ```azurecli
     az vm create -n <VM name> -g <resource group name> --image <image urn> --validate
     ```
 
-1. SSH 进入您的 VM，并验证您拥有无权限映像。 要执行此步骤，运行`sudo yum repolist`。 对于 RHEL 8，请使用`sudo dnf repolist`。 输出要求您使用订阅管理器将 VM 注册到红帽。
+1. 通过 SSH 连接到 VM，并验证是否有未获授权映像。 若要执行此步骤， `sudo yum repolist`请运行。 对于 RHEL 8，请`sudo dnf repolist`使用。 输出要求你使用订阅管理器将 VM 注册到 Red Hat。
 
 >[!NOTE]
->在 RHEL `dnf` 8`yum`上，可互换。 有关详细信息，请参阅[RHEL 8 管理指南](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/packaging_and_distributing_software/index)。
+>在 RHEL 8 上`dnf` ， `yum`和是可互换的。 有关详细信息，请参阅[RHEL 8 管理员指南](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/packaging_and_distributing_software/index)。
 
-## <a name="use-the-red-hat-gold-images-from-powershell"></a>使用强力壳牌的红帽金像
+## <a name="use-the-red-hat-gold-images-from-powershell"></a>在 PowerShell 中使用 Red Hat 黄金映像
 
-以下脚本是一个示例。 将资源组、位置、VM 名称、登录信息和其他变量替换为您选择的配置。 发布者和计划信息必须小写。
+以下脚本是一个示例。 将资源组、位置、VM 名称、登录信息和其他变量替换为所选的配置。 发布服务器和计划信息必须为小写。
 
 ```powershell-interactive
     # Variables for common values
@@ -179,25 +179,25 @@ ms.locfileid: "81273165"
     New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
-## <a name="encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images"></a>加密红帽企业 Linux 带来您自己的订阅黄金映像
+## <a name="encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images"></a>加密 Red Hat Enterprise Linux 自带订阅金牌映像
 
-红帽企业Linux BYOS黄金映像可以通过[使用 Azure 磁盘加密](../../linux/disk-encryption-overview.md)进行保护。 *必须先*注册订阅，然后才能启用加密。 有关如何注册 RHEL BYOS 金像的详细信息，请参阅[如何使用红帽订阅管理器注册和订阅系统到红帽客户门户](https://access.redhat.com/solutions/253273)。 如果您有有效的红帽订阅，还可以阅读[创建红帽客户门户激活密钥](https://access.redhat.com/articles/1378093)。
+可以通过使用[Azure 磁盘加密](../../linux/disk-encryption-overview.md)来保护 Red Hat Enterprise Linux BYOS 金牌映像。 *必须*先注册订阅，然后才能启用加密。 有关如何注册 RHEL BYOS 黄金映像的详细信息，请参阅[如何使用 Red Hat 订阅管理器将系统注册并订阅 Red Hat 客户门户](https://access.redhat.com/solutions/253273)。 如果有活动的 Red Hat 订阅，还可以阅读[创建 Red Hat 客户门户激活密钥](https://access.redhat.com/articles/1378093)。
 
-[红帽自定义映像](../../linux/redhat-create-upload-vhd.md)不支持 Azure 磁盘加密。 其他 Azure 磁盘加密要求和先决条件记录[在 Linux VM 的 Azure 磁盘加密](../../linux/disk-encryption-overview.md#additional-vm-requirements)中。
+[Red Hat 自定义映像](../../linux/redhat-create-upload-vhd.md)不支持 Azure 磁盘加密。 [适用于 Linux vm 的 Azure 磁盘加密](../../linux/disk-encryption-overview.md#additional-vm-requirements)中介绍了其他 Azure 磁盘加密要求和先决条件。
 
-有关应用 Azure 磁盘加密的步骤，请参阅 Linux VM 和相关文章[上的 Azure 磁盘加密方案](../../linux/disk-encryption-linux.md)。
+有关应用 Azure 磁盘加密的步骤，请参阅[Linux vm 上的 Azure 磁盘加密方案](../../linux/disk-encryption-linux.md)和相关文章。
 
 ## <a name="additional-information"></a>其他信息
 
-- 如果尝试在未为此产品/服务启用的订阅上预配 VM，则会收到以下消息：
+- 如果尝试在未针对此产品/服务启用的订阅上预配 VM，会收到以下消息：
 
     ```
     "Offer with PublisherId: redhat, OfferId: rhel-byos, PlanId: rhel-lvm75 is private and can not be purchased by subscriptionId: GUID"
     ```
 
-    在这种情况下，请与 Microsoft 或红帽联系以启用您的订阅。
+    在这种情况下，请与 Microsoft 或 Red Hat 联系以启用你的订阅。
 
-- 如果从 RHEL BYOS 映像修改快照并尝试将该自定义映像发布到[共享映像库](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries)，则必须提供与快照原始源匹配的计划信息。 例如，该命令可能如下所示：
+- 如果从 RHEL BYOS 映像修改快照并尝试将该自定义映像发布到[共享映像库](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries)，则必须提供与快照原始源相匹配的计划信息。 例如，命令可能如下所示：
 
     ```azurecli
     az vm create –image \
@@ -206,17 +206,17 @@ ms.locfileid: "81273165"
     --plan-publisher redhat --plan-product rhel-byos --plan-name rhel-lvm75
     ```
 
-    请注意最终行中的计划参数。
+    请注意最后一行中的计划参数。
 
     自定义映像不支持[Azure 磁盘加密](#encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images)。
 
-- 如果使用自动化从 RHEL BYOS 映像预配 VM，则必须提供与示例命令中显示的计划参数类似。 例如，如果使用 Terraform，则在[计划块](https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html#plan)中提供计划信息。
+- 如果使用自动化从 RHEL BYOS 映像预配 Vm，则必须提供与示例命令中所示内容类似的计划参数。 例如，如果使用 Terraform，则在[计划块](https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html#plan)中提供计划信息。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关红帽云访问的更多详细信息，请参阅[红帽公共云文档](https://access.redhat.com/public-cloud)
-- 有关云访问的分步指南和程序详细信息，请参阅[红帽云访问文档](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)。
-- 要了解有关红帽更新基础结构的详细信息，请参阅[Azure 红帽更新基础结构](./redhat-rhui.md)。
-- 要了解有关 Azure 中的所有红帽映像，请参阅[文档页](./redhat-images.md)。
-- 有关所有版本的 RHEL 的红帽支持策略的信息，请参阅[红帽企业 Linux 生命周期](https://access.redhat.com/support/policy/updates/errata)页面。
-- 有关 RHEL 黄金图像的其他文档，请参阅[红帽文档](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure)。
+- 有关 Red Hat 云访问的详细信息，请[参阅 Red hat 公有云文档](https://access.redhat.com/public-cloud)
+- 有关云访问的分步指南和程序详细信息，请参阅[Red Hat 云访问文档](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)。
+- 若要了解有关 Red Hat 更新基础结构的详细信息，请参阅[Azure Red Hat 更新基础结构](./redhat-rhui.md)。
+- 若要了解有关 Azure 中所有 Red Hat 映像的详细信息，请参阅[文档页](./redhat-images.md)。
+- 有关适用于所有 RHEL 版本的 Red Hat 支持策略的信息，请参阅[Red Hat Enterprise Linux 生命周期](https://access.redhat.com/support/policy/updates/errata)"页。
+- 有关 RHEL 黄金映像的其他文档，请参阅[Red Hat 文档](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure)。

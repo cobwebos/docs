@@ -10,18 +10,18 @@ ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
 ms.openlocfilehash: 100be6a4376883a4f2a91b1efd172242c1d19e19
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878385"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Azure 计划程序的概念、术语和实体
 
 > [!IMPORTANT]
-> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)正在替换[正在停用](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 计划程序。 要继续处理在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)将替代[即将停用](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
 >
-> 计划程序在 Azure 门户中不再可用，但[REST API](/rest/api/scheduler)和[Azure 计划程序 PowerShell cmdlet](scheduler-powershell-reference.md)此时仍然可用，以便您可以管理作业和作业集合。
+> 计划程序在 Azure 门户中不再可用，但 [REST API](/rest/api/scheduler) 和 [Azure 计划程序 PowerShell cmdlet](scheduler-powershell-reference.md) 目前仍可用，以便你可以管理作业和作业集合。
 
 ## <a name="entity-hierarchy"></a>实体层次结构
 
@@ -31,7 +31,7 @@ Azure 计划程序 REST API 公开并使用以下主要实体或资源：
 |--------|-------------|
 | **作业** | 通过用于执行的简单或复杂策略定义单个定期操作。 操作可以包括 HTTP、存储队列、服务总线队列或服务总线主题请求。 | 
 | **作业集合** | 包含一组作业，并且维护集合内各作业共享的设置、配额和限制。 作为 Azure 订阅所有者，你可以创建作业集合，并根据使用情况或应用程序边界将作业分组。 作业集合具有以下特性： <p>- 限制在一个区域。 <br>- 可以强制执行配额，以便限制集合中所有作业的使用。 <br>- 配额包括 MaxJobs 和 MaxRecurrence. | 
-| **工作历史记录** | 描述作业执行的详细信息，例如状态和任何响应详细信息。 |
+| **作业历史记录** | 描述作业执行的详细信息，例如状态和任何响应详细信息。 |
 ||| 
 
 ## <a name="entity-management"></a>实体管理
@@ -66,7 +66,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 Azure 计划程序支持多个作业类型： 
 
-* HTTP 作业（包括支持 TLS 的 HTTPS 作业），用于现有服务或工作负载的终结点
+* HTTP 作业（包括支持 TLS 的 HTTPS 作业），适用于现有服务或工作负荷的终结点
 * 针对使用存储队列的工作负载的存储队列作业，例如将消息发布到存储队列
 * 针对使用服务总线队列的工作负载的服务总线队列作业
 * 针对使用服务总线主题的工作负载的服务总线主题作业
@@ -84,13 +84,13 @@ Azure 计划程序支持多个作业类型：
 
 | 元素 | 必选 | 说明 | 
 |---------|----------|-------------| 
-| [**开始时间**](#start-time) | 否 | 作业的开始时间，时区偏移量为 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601) | 
-| [**行动**](#action) | 是 | 主操作的详细信息，可以包含 errorAction**** 对象 | 
+| [**startTime**](#start-time) | 否 | 作业的开始时间，时区偏移量为 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601) | 
+| [**action**](#action) | 是 | 主操作的详细信息，可以包含 errorAction  对象 | 
 | [**errorAction**](#error-action) | 否 | 主操作失败时运行的辅助操作的详细信息 |
-| [**复发**](#recurrence) | 否 | 定期作业的频率和间隔等详细信息 | 
-| [**重试策略**](#retry-policy) | 否 | 有关重试操作的频率的详细信息 | 
-| [**状态**](#state) | 是 | 作业当前状态的详细信息 |
-| [**地位**](#status) | 是 | 作业当前状态的详细信息，由服务控制 |
+| [**recurrence**](#recurrence) | 否 | 定期作业的频率和间隔等详细信息 | 
+| [**retryPolicy**](#retry-policy) | 否 | 有关重试操作的频率的详细信息 | 
+| [**state**](#state) | 是 | 作业当前状态的详细信息 |
+| [status  ](#status) | 是 | 作业当前状态的详细信息，由服务控制 |
 ||||
 
 下面的示例显示了 HTTP 操作的综合作业定义，后面的部分中描述了更全面的元素详细信息： 
@@ -144,17 +144,17 @@ Azure 计划程序支持多个作业类型：
 
 ## <a name="starttime"></a>startTime
 
-在 startTime**** 对象中，可以指定 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)的开始时间和时区偏移量。
+在 startTime  对象中，可以指定 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)的开始时间和时区偏移量。
 
 <a name="action"></a>
 
 ## <a name="action"></a>action
 
-计划程序作业基于指定的计划运行主操作****。 计划程序支持 HTTP、存储队列、服务总线队列和服务总线主题操作。 如果主操作**** 失败，计划程序可以运行辅助 [**errorAction**](#erroraction) 处理该错误。 **** 操作对象描述了以下元素：
+计划程序作业基于指定的计划运行主操作  。 计划程序支持 HTTP、存储队列、服务总线队列和服务总线主题操作。 如果主操作  失败，计划程序可以运行辅助 [**errorAction**](#erroraction) 处理该错误。  操作对象描述了以下元素：
 
 * 操作的服务类型
 * 操作的详细信息
-* 替代的 errorAction****
+* 替代的 errorAction 
 
 上一个示例介绍了 HTTP 操作。 下面是存储队列操作的示例：
 
@@ -220,17 +220,17 @@ Azure 计划程序支持多个作业类型：
 
 ## <a name="erroraction"></a>errorAction
 
-如果作业的主操作**** 失败，计划程序可以运行 errorAction**** 处理该错误。 在主操作**** 中，可以指定 errorAction**** 对象，使计划程序可以调用错误处理的终结点或发送用户通知。 
+如果作业的主操作  失败，计划程序可以运行 errorAction  处理该错误。 在主操作  中，可以指定 errorAction  对象，使计划程序可以调用错误处理的终结点或发送用户通知。 
 
-例如，如果主终结点发生灾难，可以使用 errorAction**** 调用辅助终结点，或者通知错误处理终结点。 
+例如，如果主终结点发生灾难，可以使用 errorAction  调用辅助终结点，或者通知错误处理终结点。 
 
-与主操作**** 类似，可以使用基于其他操作的简单或复合逻辑来执行错误操作。 
+与主操作  类似，可以使用基于其他操作的简单或复合逻辑来执行错误操作。 
 
 <a name="recurrence"></a>
 
 ## <a name="recurrence"></a>recurrence
 
-如果作业的 JSON 定义包含 recurrence**** 对象，则作业定期发生，例如：
+如果作业的 JSON 定义包含 recurrence  对象，则作业定期发生，例如：
 
 ```json
 "recurrence": {
@@ -246,18 +246,18 @@ Azure 计划程序支持多个作业类型：
 },
 ```
 
-| properties | 必选 | “值” | 说明 | 
+| properties | 必选 | 值 | 说明 | 
 |----------|----------|-------|-------------| 
-| **频率** | 是，使用 recurrence**** 时 | Minute、Hour、Day、Week、Month、Year | 两次作业之间的时间单位 | 
-| **区间** | 否 | 1 - 1000（包含） | 一个正整数，根据频率**** 确定两次作业之间的时间单位数 | 
-| **附表** | 否 | 不定 | 更复杂和更高级计划的详细信息。 请参阅 hours****、minutes****、weekDays****、months**** 和 monthDays**** | 
-| **小时** | 否 | 1 - 24 | 一个带有小时标记的数组，用于指示何时运行作业 | 
-| **分钟** | 否 | 0 到 59 | 一个带有分钟标记的数组，用于指示何时运行作业 | 
+| **frequency** | 是，使用 recurrence  时 | Minute、Hour、Day、Week、Month、Year | 两次作业之间的时间单位 | 
+| **interval** | 否 | 1 - 1000（包含） | 一个正整数，根据频率  确定两次作业之间的时间单位数 | 
+| **schedule** | 否 | 不定 | 更复杂和更高级计划的详细信息。 请参阅 hours  、minutes  、weekDays  、months  和 monthDays  | 
+| **小时数** | 否 | 1 - 24 | 一个带有小时标记的数组，用于指示何时运行作业 | 
+| **分钟数** | 否 | 0 到 59 | 一个带有分钟标记的数组，用于指示何时运行作业 | 
 | **months** | 否 | 1 - 12 | 一个带有月份标记的数组，用于指示何时运行作业 | 
 | **monthDays** | 否 | 不定 | 一个带有月份天数标记的数组，用于指示何时运行作业 | 
-| **平日** | 否 | Monday、Tuesday、Wednesday、Thursday、Friday、Saturday、Sunday | 一个带有星期的天数标记的数组，用于指示何时运行作业 | 
-| **count** | 否 | <*没有*> | 重复周期的次数。 默认为无限重复。 不能同时使用 count**** 和 endTime****，但首先完成的规则优先。 | 
-| **结束时间** | 否 | <*没有*> | 停止重复周期的日期和时间。 默认为无限重复。 不能同时使用 count**** 和 endTime****，但首先完成的规则优先。 | 
+| **工作日** | 否 | Monday、Tuesday、Wednesday、Thursday、Friday、Saturday、Sunday | 一个带有星期的天数标记的数组，用于指示何时运行作业 | 
+| **计数** | 否 | <无  > | 重复周期的次数。 默认为无限重复。 不能同时使用 count  和 endTime  ，但首先完成的规则优先。 | 
+| **endTime** | 否 | <无  > | 停止重复周期的日期和时间。 默认为无限重复。 不能同时使用 count  和 endTime  ，但首先完成的规则优先。 | 
 ||||
 
 有关这些元素的详细信息，请参阅[生成复杂的计划和高级重复周期](../scheduler/scheduler-advanced-complexity.md)。
@@ -276,9 +276,9 @@ Azure 计划程序支持多个作业类型：
 },
 ```
 
-| properties | 必选 | “值” | 说明 | 
+| properties | 必选 | 值 | 说明 | 
 |----------|----------|-------|-------------| 
-| **retryType** | 是 | **Fixed****None** | 确定是否指定重试策略（固定****）或（无****）。 | 
+| **retryType** | 是 | **Fixed** **None** | 确定是否指定重试策略（固定  ）或（无  ）。 | 
 | **retryInterval** | 否 | PT30S | 指定每次重试尝试之间的间隔和频率（[ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)）。 最小值为 15 秒，最大值为 18 个月。 | 
 | **retryCount** | 否 | 4 | 指定重试尝试的次数。 最大值为 20。 | 
 ||||
@@ -289,18 +289,18 @@ Azure 计划程序支持多个作业类型：
 
 ## <a name="state"></a>state
 
-作业的状态为“已启用”****、“已禁用”****、“已完成”**** 或“已出错”****，例如： 
+作业的状态为“已启用”  、“已禁用”  、“已完成”  或“已出错”  ，例如： 
 
 `"state": "Disabled"`
 
-若要将作业更改为“已启用”**** 或“已禁用”**** 状态，可以使用这些作业上的 PUT 或 PATCH 操作。
-尽管可以对作业执行 DELETE 操作，但是，如果作业为“已完成”**** 或“已出错”**** 状态，则无法更新状态。 计划程序在 60 天后删除已完成的作业和已出错的作业。 
+若要将作业更改为“已启用”  或“已禁用”  状态，可以使用这些作业上的 PUT 或 PATCH 操作。
+尽管可以对作业执行 DELETE 操作，但是，如果作业为“已完成”  或“已出错”  状态，则无法更新状态。 计划程序在 60 天后删除已完成的作业和已出错的作业。 
 
 <a name="status"></a>
 
 ## <a name="status"></a>status
 
-作业启动后，计划程序通过 status**** 对象返回作业状态的相关信息，它仅由计划程序控制。 不过，可以在 job**** 对象内找到 status**** 对象。 下面是作业的状态包含的信息：
+作业启动后，计划程序通过 status  对象返回作业状态的相关信息，它仅由计划程序控制。 不过，可以在 job  对象内找到 status  对象。 下面是作业的状态包含的信息：
 
 * 上一次执行的时间（如果有）
 * 正在进行的作业的下一次计划执行时间

@@ -9,24 +9,24 @@ ms.topic: article
 ms.date: 05/17/2019
 ms.author: guybo
 ms.openlocfilehash: 4140f9f07a0fd653c8e0370d017cbae7effd0a07
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82084305"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>为 Azure 准备基于 Red Hat 的虚拟机
-在本文中，将了解如何准备 Red Hat Enterprise Linux (RHEL) 虚拟机，以供在 Azure 中使用。 本文介绍的 RHEL 版本为 6.7+ 和 7.1+。 本文所述的用于准备工作的虚拟机监控程序为 Hyper-V、基于内核的虚拟机 (KVM) 和 VMware。 有关参与 Red Hat 云访问计划的资格要求的详细信息，请参阅 [Red Hat 的云访问网站](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)和[在 Azure 上运行 RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)。 有关自动生成 RHEL 映像的方法，请参阅[Azure 映像生成器](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)。
+在本文中，将了解如何准备 Red Hat Enterprise Linux (RHEL) 虚拟机，以供在 Azure 中使用。 本文介绍的 RHEL 版本为 6.7+ 和 7.1+。 本文所述的用于准备工作的虚拟机监控程序为 Hyper-V、基于内核的虚拟机 (KVM) 和 VMware。 有关参与 Red Hat 云访问计划的资格要求的详细信息，请参阅 [Red Hat 的云访问网站](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)和[在 Azure 上运行 RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)。 有关自动构建 RHEL 映像的方法，请参阅[Azure 映像生成器](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)。
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>从 Hyper-V 管理器准备基于 Red Hat 的虚拟机
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 本部分假定已经从 Red Hat 网站获取 ISO 文件并将 RHEL 映像安装到虚拟硬盘 (VHD)。 有关如何使用 Hyper-V 管理器来安装操作系统映像的更多详细信息，请参阅[安装 Hyper-V 角色和配置虚拟机](https://technet.microsoft.com/library/hh846766.aspx)。
 
 **RHEL 安装说明**
 
 * Azure 不支持 VHDX 格式。 Azure 仅支持固定 VHD。 可使用 Hyper-V 管理器将磁盘转换为 VHD 格式，也可以使用 convert-vhd cmdlet。 如果使用 VirtualBox，则选择“固定大小”****，而不是在创建磁盘时默认动态分配选项。
-* Azure 支持第 1 代（BIOS 启动）&第 2 代 （UEFI 启动） 虚拟机。
+* Azure 支持 Gen1 （BIOS 启动） & Gen2 （UEFI boot）虚拟机。
 * VHD 允许的最大大小为 1,023 GB。
 * 支持逻辑卷管理器 (LVM)，该管理器可以在 Azure 虚拟机中的 OS 磁盘或数据磁盘上使用。 但是，通常建议在 OS 磁盘上使用标准分区而不是 LVM。 这种做法可以避免 LVM 名称与克隆的虚拟机冲突，尤其是当需要将操作系统磁盘附加到另一台相同的虚拟机进行故障排除时。 另请参阅 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 和 [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 文档。
 * 需要装载通用磁盘格式 (UDF) 文件系统的内核支持。 在 Azure 上首次启动时，附加到来宾的 UDF 格式媒体会将预配配置传递到 Linux 虚拟机。 Azure Linux 代理必须能够装载 UDF 文件系统才能读取其配置和预配虚拟机。
@@ -125,7 +125,7 @@ ms.locfileid: "82084305"
 
         # logout
 
-1. 单击"在超 V 管理器中**关闭****操作** > "。 Linux VHD 现已准备好上传到 Azure。
+1. 单击 "hyper-v 管理器" 中的 "**操作** > **关闭**"。 Linux VHD 现已准备好上传到 Azure。
 
 
 ### <a name="prepare-a-rhel-7-virtual-machine-from-hyper-v-manager"></a>从 Hyper-V 管理器准备 RHEL 7 虚拟机
@@ -148,7 +148,7 @@ ms.locfileid: "82084305"
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-    PERSISTENT_DHCLIENT=是的NM_CONTROLLED=是的
+    PERSISTENT_DHCLIENT = yes NM_CONTROLLED = yes
 
 1. 通过运行以下命令，确保网络服务会在引导时启动：
 
@@ -210,7 +210,7 @@ ms.locfileid: "82084305"
 
         # logout
 
-1. 单击"在超 V 管理器中**关闭****操作** > "。 Linux VHD 现已准备好上传到 Azure。
+1. 单击 "hyper-v 管理器" 中的 "**操作** > **关闭**"。 Linux VHD 现已准备好上传到 Azure。
 
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-kvm"></a>从 KVM 准备基于 Red Hat 的虚拟机
@@ -312,7 +312,7 @@ ms.locfileid: "82084305"
 
         # chkconfig waagent on
 
-1. Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，可能在取消预配虚拟机后被清空。 在上一步骤中安装 Azure Linux 代理后，请相应地修改 **/etc/waagent.conf**中的以下参数：
+1. Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，可能在取消预配虚拟机后被清空。 在上一步中安装 Azure Linux 代理后，相应地在 **/etc/waagent.conf**中修改以下参数：
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -402,7 +402,7 @@ ms.locfileid: "82084305"
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-    PERSISTENT_DHCLIENT=是的NM_CONTROLLED=是的
+    PERSISTENT_DHCLIENT = yes NM_CONTROLLED = yes
 
 1. 通过运行以下命令，确保网络服务会在引导时启动：
 
@@ -517,7 +517,7 @@ ms.locfileid: "82084305"
 
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a>从 VMware 准备基于 Red Hat 的虚拟机
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 本部分假设已在 VMware 中安装了 RHEL 虚拟机。 有关如何在 VMware 中安装操作系统的详细信息，请参阅 [VMware 来宾操作系统安装指南](https://partnerweb.vmware.com/GOSIG/home.html)。
 
 * 在安装 Linux 操作系统时，建议使用标准分区而不是 LVM，这通常是许多安装的默认设置。 这种做法可以避免 LVM 名称与克隆的虚拟机名称冲突，尤其是在需要将操作系统磁盘附加到另一台虚拟机进行故障排除时。 如果需要，可以在数据磁盘上使用 LVM 或 RAID。
@@ -660,7 +660,7 @@ ms.locfileid: "82084305"
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-    PERSISTENT_DHCLIENT=是的NM_CONTROLLED=是的
+    PERSISTENT_DHCLIENT = yes NM_CONTROLLED = yes
 
 1. 通过运行以下命令，确保网络服务会在引导时启动：
 
@@ -877,7 +877,7 @@ ms.locfileid: "82084305"
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-    PERSISTENT_DHCLIENT_是NM_CONTROLLED=是 EOF
+    PERSISTENT_DHCLIENT = yes NM_CONTROLLED = yes EOF
 
         # Deprovision and prepare for Azure if you are creating a generalized image
         waagent -force -deprovision
@@ -907,7 +907,7 @@ ms.locfileid: "82084305"
 
 在某些情况下，Linux 安装程序可能无法在初始 RAM 磁盘（initrd 或 initramfs）中包含 Hyper-V 驱动程序，除非 Linux 检测到它正在 Hyper-V 环境中运行。
 
-当您使用不同的虚拟化系统（即 VirtualBox、Xen 等）来准备 Linux 映像时，您可能需要重新生成 initrd，以确保初始 RAM 磁盘上至少hv_vmbus和hv_storvsc内核模块可用。 至少在基于上游 Red Hat 分发的系统上这是一个已知问题。
+当你使用其他虚拟化系统（即 VirtualBox、Xen 等）来准备 Linux 映像时，可能需要重新生成 initrd 以确保至少在初始 RAM 磁盘上提供 hv_vmbus 和 hv_storvsc 内核模块。 至少在基于上游 Red Hat 分发的系统上这是一个已知问题。
 
 要解决此问题，请将 Hyper-V 模块添加到 initramfs 并进行重新生成：
 
@@ -924,4 +924,4 @@ ms.locfileid: "82084305"
 ## <a name="next-steps"></a>后续步骤
 * 现在，可以使用 Red Hat Enterprise Linux 虚拟硬盘在 Azure 中创建新的虚拟机。 如果是首次将 .vhd 文件上传到 Azure，请参阅[从自定义磁盘创建 Linux VM](upload-vhd.md#option-1-upload-a-vhd)。
 * 有关已通过认证可运行 Red Hat Enterprise Linux 的虚拟机监控程序的更多详细信息，请参阅 [Red Hat 网站](https://access.redhat.com/certified-hypervisors)。
-* 要了解有关使用生产就绪 RHEL BYOS 映像的更多详细信息，请访问[BYOS](../workloads/redhat/byos.md)的文档页。
+* 若要了解有关使用生产就绪 RHEL BYOS 映像的详细信息，请参阅[BYOS](../workloads/redhat/byos.md)的文档页。

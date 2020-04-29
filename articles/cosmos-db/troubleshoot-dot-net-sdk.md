@@ -8,18 +8,18 @@ ms.author: jawilley
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 5f92d98630c6fb875babeb907f92732b0c24bb52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e015c1ee335cbdfed7964d63b1f4600bc6a4cb77
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "79137948"
+ms.locfileid: "82208731"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>诊断和排查使用 Azure Cosmos DB .NET SDK 时遇到的问题
 本文介绍了将 [.NET SDK](sql-api-sdk-dotnet.md) 与 Azure Cosmos DB SQL API 帐户配合使用时的常见问题、解决方法、诊断步骤和工具。
 .NET SDK 提供客户端逻辑表示用于访问 Azure Cosmos DB SQL API。 本文介绍了在遇到任何问题时可以提供帮助的工具和方法。
 
-## <a name="checklist-for-troubleshooting-issues"></a>问题排查清单：
+## <a name="checklist-for-troubleshooting-issues"></a>解决问题的清单
 在将应用程序投放生产之前，请查看以下清单。 使用该清单有助于防止出现多个常见问题。 出现问题时可以快速诊断：
 
 *    使用最新的 [SDK](sql-api-sdk-dotnet-standard.md)。 不应该将预览版 SDK 用于生产。 这可以防止出现已予以修复的已知问题。
@@ -101,6 +101,30 @@ ResponseTime: 2020-03-09T22:44:49.9279906Z, StoreResult: StorePhysicalAddress: r
 * 如果后端查询的返回速度较快，并将大量的时间花费在客户端上，请检查计算机上的负载。 可能的原因是资源不足，SDK 正在等待提供可用的资源来处理响应。
 * 如果后端查询速度较慢，请尝试[优化查询](optimize-cost-queries.md)，并查看当前的[索引策略](index-overview.md) 
 
+### <a name="http-401-the-mac-signature-found-in-the-http-request-is-not-the-same-as-the-computed-signature"></a>HTTP 401：在 HTTP 请求中找到的 MAC 签名与计算所得的签名不同
+如果收到以下401错误消息： "HTTP 请求中找到的 MAC 签名与计算所得的签名不同。" 这可能是由以下情况引起的。
+
+1. 密钥已轮换，未遵循[最佳做法](secure-access-to-data.md#key-rotation)。 这通常是这种情况。 Cosmos DB 帐户密钥轮替可能需要几秒钟到几秒钟的时间，具体取决于 Cosmos DB 帐户大小。
+   1. 401在密钥轮换之后不久就会出现 MAC 签名，并最终停止而不进行任何更改。 
+2. 应用程序上的密钥配置错误，因此密钥与帐户不匹配。
+   1. 401 MAC 签名问题将保持一致，并对所有调用发生
+3. 创建容器时出现争用情况。 在创建容器之前，应用程序实例正在尝试访问容器。 如果应用程序正在运行，则最常见的情况是在应用程序运行时删除并重新创建具有相同名称的容器。 SDK 将尝试使用新容器，但仍在进行容器创建，因此它没有密钥。
+   1. 401在创建容器后不久会出现 MAC 签名问题，且只有在创建容器后才会出现。
+ 
+ ### <a name="http-error-400-the-size-of-the-request-headers-is-too-long"></a>HTTP 错误400。 请求标头的大小太长。
+ 标头的大小已增加到大，超过了允许的最大大小。 始终建议使用最新的 SDK。 请确保至少[使用版本 1.x](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md) [或 2.x](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/changelog.md)，这会向异常消息添加标头大小跟踪。
+
+导致
+ 1. 会话令牌增长太大。 会话令牌随容器中的分区数量的增加而增长。
+ 2. 继续标记已增长到大。 不同的查询将具有不同的继续标记大小。
+ 3. 这是由会话令牌和继续标记的组合引起的。
+
+解决方案：
+   1. 按照[性能提示](performance-tips.md)进行操作，并将应用程序转换为直接 TCP 连接模式。 Direct + TCP 没有标头大小限制，如 HTTP 这样可以避免此问题。
+   2. 如果会话令牌是原因，则暂时的缓解措施是重新启动应用程序。 重新启动应用程序实例将重置会话令牌。 如果在重新启动后异常停止，则会确认会话令牌是原因。 它最终会增大到将导致异常的大小。
+   3. 如果无法将应用程序转换为直接 + TCP，而会话令牌是原因，则可以通过更改客户端[一致性级别](consistency-levels.md)来完成缓解。 会话令牌仅用于会话一致性，这是 Cosmos DB 的默认值。 任何其他一致性级别都不会使用会话令牌。 
+   4. 如果无法将应用程序转换为 Direct + TCP 并且继续标记是原因，则尝试设置 ResponseContinuationTokenLimitInKb 选项。 可在 FeedOptions for v2 或 v3 中的 QueryRequestOptions 中找到该选项。
+
  <!--Anchors-->
 [Common issues and workarounds]: #common-issues-workarounds
 [Enable client SDK logging]: #logging
@@ -108,5 +132,3 @@ ResponseTime: 2020-03-09T22:44:49.9279906Z, StoreResult: StorePhysicalAddress: r
 [Request Timeouts]: #request-timeouts
 [Azure SNAT (PAT) port exhaustion]: #snat
 [Production check list]: #production-check-list
-
-

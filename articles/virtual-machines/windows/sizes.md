@@ -8,15 +8,15 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
 ms.openlocfilehash: e37fea471bea91f2ac5219b5c423db38b369b692
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82100662"
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Azure 中 Windows 虚拟机的大小
 
-本文介绍可用于运行 Windows 应用和工作负荷的 Azure 虚拟机的可用大小和选项。 此外，还提供了你在计划使用这些资源时要考虑的部署注意事项。  本文适用于 Windows 和 Linux Vm。
+本文介绍可用于运行 Windows 应用和工作负荷的 Azure 虚拟机的可用大小和选项。 此外，还提供在计划使用这些资源时要考虑的部署注意事项。  本文适用于 Windows 和 Linux Vm。
 
 | 类型 | 大小 | 说明 |
 |------|-------|-------------|
@@ -30,19 +30,19 @@ ms.locfileid: "82100662"
 - 有关不同大小的定价信息，请参阅[虚拟机定价](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)。
 - 若要查看 Azure VM 的一般限制，请参阅 [Azure 订阅和服务限制、配额与约束](../../azure-subscription-service-limits.md)。
 - 存储成本根据存储帐户中的已使用页数进行单独计算。 有关详细信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)。
-- 了解有关 [Azure 计算单元 (ACU)](../acu.md) 如何帮助你跨 Azure SKU 比较计算性能的详细信息。
+- 了解有关 [Azure 计算单元 (ACU)](../acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。
 
 ## <a name="rest-api"></a>REST API
 
-若要了解如何使用 REST API 查询 VM 大小，请参阅以下文章：
+有关使用 REST API 来查询 VM 大小的信息，请参阅以下文章：
 
-- [List available virtual machine sizes for resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes)（列出可用虚拟机大小以重设大小）
-- [List available virtual machine sizes for a subscription](https://docs.microsoft.com/rest/api/compute/resourceskus/list)（列出某个订阅的可用虚拟机大小）
+- [List available virtual machine sizes for resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes)（列出可用的虚拟机大小以便调整大小）
+- [List available virtual machine sizes for a subscription](https://docs.microsoft.com/rest/api/compute/resourceskus/list)（列出订阅的可用虚拟机大小）
 - [List available virtual machine sizes in an availability set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)（列出可用性集中的可用虚拟机大小）
 
 ## <a name="acu"></a>ACU
 
-了解有关 [Azure 计算单元 (ACU)](../acu.md) 如何帮助你跨 Azure SKU 比较计算性能的详细信息。
+了解有关 [Azure 计算单元 (ACU)](../acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。
 
 ## <a name="benchmark-scores"></a>基准评分
 

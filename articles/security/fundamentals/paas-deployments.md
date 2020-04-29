@@ -1,6 +1,6 @@
 ---
-title: 安全 PaaS 部署的最佳做法 - 微软 Azure
-description: 了解在 Azure 上设计、构建和管理安全云应用程序的最佳做法，并了解 PaaS 与其他云服务模型的安全优势。
+title: 安全 PaaS 部署的最佳实践-Microsoft Azure
+description: 了解有关在 Azure 上设计、构建和管理安全云应用程序的最佳实践，并了解 PaaS 与其他云服务模型的安全优势。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
 ms.openlocfilehash: 9adbe7b03283a00f78222ffdc77dca7aaadcbda0
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461695"
 ---
 # <a name="securing-paas-deployments"></a>保护 PaaS 部署
@@ -31,17 +31,17 @@ ms.locfileid: "81461695"
 - 将安全重心从以网络为中心的方案转换为以标识为中心的外围安全方案
 - 实施一般的 PaaS 安全最佳实践建议
 
-[在 Azure 上开发安全应用程序](abstract-develop-secure-apps.md)是开发云应用程序时在软件开发生命周期的每个阶段应考虑的安全问题和控制的一般指南。
+[开发适用](abstract-develop-secure-apps.md)于云的应用程序时，在软件开发生命周期的每个阶段应考虑的安全问题和控制措施是一般的指导。
 
 ## <a name="cloud-security-advantages"></a>云的安全优势
-了解您和 Microsoft 之间的[责任划分](shared-responsibility.md)非常重要。 在本地，拥有整个堆栈，但迁移到云后，某些责任将转移到 Microsoft。
+务必了解你和 Microsoft 之间的[责任划分](shared-responsibility.md)。 在本地，拥有整个堆栈，但迁移到云后，某些责任将转移到 Microsoft。
 
-[在云中有安全优势](shared-responsibility.md#cloud-security-advantages)。 在本地环境中，组织的可用资源可能有限，无法尽责在安全措施上投资，使得攻击者能够利用所有层中的漏洞。
+云中存在[安全优势](shared-responsibility.md#cloud-security-advantages)。 在本地环境中，组织的可用资源可能有限，无法尽责在安全措施上投资，使得攻击者能够利用所有层中的漏洞。
 
 组织可以使用提供商的基于云的安全功能和云智能来改善其威胁检测和响应时间。  通过将责任转移到云提供商，组织可以扩大安全覆盖范围，为其他优先业务重新调配安全资源与预算。
 
 ## <a name="security-advantages-of-a-paas-cloud-service-model"></a>PaaS 云服务模型的安全优势
-让我们来看看 Azure PaaS 部署与本地部署的安全优势。
+让我们看看 Azure PaaS 部署与本地的安全优势。
 
 ![PaaS 的安全优势](./media/paas-deployments/advantages-of-paas.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "81461695"
 
 在堆栈的中间，PaaS 部署与本地之间没有差别。 在应用程序层和帐户与访问管理层，面临的风险是类似的。 本文的后续步骤部分将提供有关消除或尽量避免这些风险的最佳实践指导。
 
-堆栈的顶层（即数据监管和权限管理）存在一种风险，不过可以使用密钥管理来缓解。 （最佳实践涵盖了密钥管理。虽然密钥管理是一项额外的责任，但 PaaS 部署中不再需要管理的区域，以便您可以将资源转移到密钥管理。
+堆栈的顶层（即数据监管和权限管理）存在一种风险，不过可以使用密钥管理来缓解。 （最佳做法中涵盖了密钥管理。）尽管密钥管理是一个额外的责任，但你在 PaaS 部署中拥有的区域不再需要管理，因此你可以将资源转移到密钥管理。
 
 Azure 平台还使用各种基于网络的技术提供强大的 DDoS 保护。 但是，根据链路和数据中心的不同，所有类型的基于网络的 DDoS 保护方法都有自身的限制。 为了帮助避免大规模 DDoS 攻击造成的影响，可以利用 Azure 的核心云功能快速自动扩展，以防御 DDoS 攻击。 在建议的实践文章中，我们将更详细地介绍如何采取这种措施。
 
@@ -74,7 +74,7 @@ PaaS 与传统本地部署之间的另一个重大差别在于，前者为主要
 下面是管理标识边界的最佳做法。
 
 最佳做法****：保护密钥和凭据以保护 PaaS 部署。   
-详细信息****：丢失密钥和凭据是一个常见问题。 您可以使用集中式解决方案，其中密钥和机密可以存储在硬件安全模块 （HSM） 中。 [Azure 密钥保管库](../../key-vault/general/overview.md)通过使用受 HSM 保护的密钥加密身份验证密钥、存储帐户密钥、数据加密密钥、.pfx 文件和密码来保护密钥和机密。
+详细信息****：丢失密钥和凭据是一个常见问题。 可以使用集中式解决方案，其中的密钥和机密可以存储在硬件安全模块（Hsm）中。 [Azure Key Vault](../../key-vault/general/overview.md)通过使用受 hsm 保护的密钥加密身份验证密钥、存储帐户密钥、数据加密密钥、.pfx 文件和密码来保护密钥和机密。
 
 最佳做法****：不要将凭据和其他机密放入源代码或 GitHub。   
 详细信息****：比丢失密钥和凭据更遭糕的唯一问题就是让未经授权的人员获取这些密钥和凭据的访问权限。 攻击者可以利用 bot 技术来查找 GitHub 等代码存储库中存储的密钥和机密。 请不要将密钥和机密放入这些公共代码存储库。
@@ -125,7 +125,7 @@ Microsoft [安全开发生命周期](https://www.microsoft.com/en-us/sdl)指定�
 详细信息****：[应用服务环境](/azure/app-service/environment/intro)提供虚拟网络集成功能，可帮助你通过网络安全组限制传入的源 IP 地址。 使用虚拟网络可将 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 若要了解详细信息，请参阅[将应用与 Azure 虚拟网络集成](/azure/app-service/web-sites-integrate-with-vnet)。
 
 最佳做法****：监视应用服务环境的安全状态。   
-详细信息****：使用 Azure 安全中心监视应用服务环境。 当安全中心识别潜在的安全漏洞时，它会创建[建议](../../security-center/security-center-virtual-machine-protection.md)，指导您完成配置所需控件的过程。
+详细信息****：使用 Azure 安全中心监视应用服务环境。 当安全中心识别到潜在的安全漏洞时，它会创建[建议](../../security-center/security-center-virtual-machine-protection.md)，指导你完成配置所需控件的过程。
 
 > [!NOTE]
 > 监视应用服务的功能以预览版提供，仅适用于安全中心的[标准层](/azure/security-center/security-center-pricing)。
@@ -135,19 +135,19 @@ Microsoft [安全开发生命周期](https://www.microsoft.com/en-us/sdl)指定�
 ## <a name="install-a-web-application-firewall"></a>安装 Web 应用程序防火墙
 Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标。 这些攻击中最常见的攻击包括 SQL 注入攻击、跨站点脚本攻击等。 防止应用程序代码中的此类攻击颇具挑战性，可能需要在应用程序拓扑的多个层进行严格的维护、修补和监视。 集中式 Web 应用程序防火墙有助于大幅简化安全管理，为抵卸威胁或入侵的应用程序管理员提供更好的保障。 相较保护每个单独的 Web 应用程序，WAF 解决方案还可通过在中央位置修补已知漏洞，更快地响应安全威胁。 可将现有应用程序网关轻松转换为支持 Web 应用程序防火墙的应用程序网关。
 
-[Web 应用程序防火墙 （WAF）](/azure/frontdoor/waf-overview)是应用程序网关的一项功能，它为您的 Web 应用程序提供集中保护，防止常见的漏洞和漏洞。 WAF 基于 [开放 Web 应用程序安全项目 (OWASP) 核心规则集](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 或 2.2.9 中的规则。
+[Web 应用程序防火墙（WAF）](/azure/frontdoor/waf-overview)是应用程序网关的一项功能，它提供对 Web 应用程序的集中保护，并防范常见的漏洞。 WAF 基于 [开放 Web 应用程序安全项目 (OWASP) 核心规则集](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 或 2.2.9 中的规则。
 
 ## <a name="monitor-the-performance-of-your-applications"></a>监视应用程序的性能
 监视是一种数据收集和分析操作，用于确定应用程序的性能、运行状况及可用性。 有效的监视策略有助于了解应用程序组件的详细运行状况， 它有助于向你发送关键情况的通知，让你在这些情况成为问题之前解决它们，从而提高运行时间。 它还有助于检测可能与安全相关的异常。
 
 使用 [Azure Application Insights](https://azure.microsoft.com/documentation/services/application-insights) 监视应用程序的可用性、性能和使用情况，不管其是托管在云中还是在本地。 通过使用 Application Insights，可以快速确定并诊断应用程序中的错误，而无需等待用户报告这些错误。 利用所收集的信息，可作出有关应用程序维护和优化的明智抉择。
 
-Application Insights 提供各种可以与所收集的数据交互的工具。 Application Insights 在公用存储库中存储其数据。 它可以利用使用 Kusto 查询语言的共享功能（如警报、仪表板和深度分析）。
+Application Insights 提供各种可以与所收集的数据交互的工具。 Application Insights 在公用存储库中存储其数据。 它可以利用使用 Kusto 查询语言的共享功能，如警报、仪表板和深入分析。
 
 ## <a name="perform-security-penetration-testing"></a>执行安全渗透测试
-验证安全防御与测试任何其他功能一样重要。 使[渗透测试](pen-testing.md)成为生成和部署过程的标准部分。 安排对已部署的应用程序进行定期安全测试和漏洞扫描，并监视打开的端口、端点和攻击。
+验证安全防御与测试任何其他功能一样重要。 在生成和部署过程的标准部分进行[渗透测试](pen-testing.md)。 在部署的应用程序上计划定期安全测试和漏洞扫描，并监视开放端口、终结点和攻击。
 
-模糊测试是一种通过将格式错误的输入数据提供用于分析和使用此数据的程序接口（入口点）来查找程序故障（代码错误）的方法。 [Microsoft 安全风险检测](https://www.microsoft.com/en-us/security-risk-detection/)是一种基于云的工具，可用于在将软件部署到 Azure 之前查找软件中的 Bug 和其他安全漏洞。 该工具旨在在部署软件之前捕获漏洞，因此在软件发布后，您不必修补 Bug、处理崩溃或响应攻击。
+模糊测试是一个方法，通过向分析和使用此数据的程序接口（入口点）提供格式不正确的输入数据来查找程序故障（代码错误）。 [Microsoft 安全风险检测](https://www.microsoft.com/en-us/security-risk-detection/)是一种基于云的工具，可以在将其部署到 Azure 之前，使用该工具查找软件中的 bug 和其他安全漏洞。 该工具设计为在部署软件之前捕获漏洞，因此您无需修补 bug、处理崩溃或在软件发布后响应攻击。
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -160,10 +160,10 @@ Application Insights 提供各种可以与所收集的数据交互的工具。 A
 - Azure 服务总线
 - Web 应用程序防火墙
 
-有关开发云应用程序时在软件开发生命周期的每个阶段应考虑的安全问题和控件，请参阅[在 Azure 上开发安全应用程序](abstract-develop-secure-apps.md)。
+请参阅在[Azure 上开发安全应用程序](abstract-develop-secure-apps.md)，以在开发云应用程序时，在软件开发生命周期的每个阶段应考虑安全问题和控制措施。
 
 有关通过 Azure 设计、部署和管理云解决方案时可以使用的更多安全最佳做法，请参阅 [Azure 安全最佳做法和模式](best-practices-and-patterns.md)。
 
 以下资源提供了有关 Azure 安全性及相关 Microsoft 服务的更多常规信息：
 * [Azure 安全团队博客](https://blogs.msdn.microsoft.com/azuresecurity/) - 随时掌握 Azure 安全性的最新信息
-* [Microsoft 安全响应中心](https://technet.microsoft.com/library/dn440717.aspx)- 可向其报告或通过电子邮件向secure@microsoft.com
+* [Microsoft 安全响应中心](https://technet.microsoft.com/library/dn440717.aspx)-可报告 microsoft 安全漏洞（包括 Azure 问题）或通过电子邮件发送到secure@microsoft.com

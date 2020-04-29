@@ -1,5 +1,5 @@
 ---
-title: Azure 电源外壳示例 - 网络
+title: Azure PowerShell 示例-网络
 description: Azure PowerShell 示例
 services: virtual-network
 documentationcenter: virtual-network
@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 05/24/2017
 ms.author: gwallace
 ms.openlocfilehash: ca6ac145db0536d3cf7e5bcc72a58d72101ab12a
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81459111"
 ---
 # <a name="azure-powershell-samples-for-networking"></a>适用于网络的 Azure PowerShell 示例
@@ -32,7 +32,7 @@ ms.locfileid: "81459111"
 | [两个对等虚拟网络](./scripts/virtual-network-powershell-sample-peer-two-virtual-networks.md?toc=%2fazure%2fnetworking%2ftoc.json) | 在同一区域中创建并连接两个虚拟网络。 |
 | [通过网络虚拟设备的路由流量](./scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetworking%2ftoc.json) | 创建包含前端和后端子网的虚拟网络，以及可在这两个子网之间路由流量的 VM。 |
 | [筛选入站和出站 VM 网络流量](./scripts/virtual-network-powershell-filter-network-traffic.md?toc=%2fazure%2fnetworking%2ftoc.json) | 创建包含前端和后端子网的虚拟网络。 前端子网的入站网络流量仅限于 HTTP、HTTPS。 从后端子网到 Internet 的出站流量不受限制。 |
-|**负载平衡和流量方向**||
+|**负载均衡和流量方向**||
 | [对传入 VM 的流量进行负载均衡以实现高可用性](./scripts/load-balancer-windows-powershell-sample-nlb.md?toc=%2fazure%2fnetworking%2ftoc.json) | 使用高度可用且负载均衡的配置创建多个虚拟机。 |
 | [跨多个区域定向流量，以实现应用程序的高可用性](./scripts/traffic-manager-powershell-websites-high-availability.md?toc=%2fazure%2fnetworking%2ftoc.json) |  创建两个应用服务计划、两个 Web 应用、一个流量管理器配置文件和两个流量管理器终结点。 |
 | | |

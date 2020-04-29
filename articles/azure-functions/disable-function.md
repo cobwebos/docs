@@ -4,10 +4,10 @@ description: 了解如何在 Azure Functions 中禁用与启用函数。
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.openlocfilehash: 11585e92e7d239731b02d06c5093f979cd65cfba
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81686889"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>如何在 Azure Functions 中禁用函数
@@ -44,7 +44,7 @@ az functionapp config appsettings set --name <myFunctionApp> \
 ![函数状态开关](media/disable-function/function-state-switch.png)
 
 > [!NOTE]  
-> 门户集成的测试功能忽略该`Disabled`设置。 这意味着，从门户中的 **"测试"** 窗口启动时，禁用的函数仍运行。 
+> 门户集成的测试功能将忽略该`Disabled`设置。 这意味着，在门户中的 "**测试**" 窗口启动时，禁用的函数仍将运行。 
 
 ## <a name="other-methods"></a>其他方法
 
@@ -122,7 +122,7 @@ public static class QueueFunctions
 
 在第二个示例中，当存在名为 IS_DISABLED 的应用设置且其值设置为 `true` 或 1 时，将禁用相应的函数。
 
-您可以在 Azure 门户中编辑文件，或使用函数的 **"管理"** 选项卡上的 **"功能状态**"开关。门户交换机的工作原理是更改*函数.json*文件。
+可以在 Azure 门户中编辑文件，或在函数的 "**管理**" 选项卡上使用 "**函数状态**" 开关。门户切换通过更改*函数 json*文件来工作。
 
 ![函数状态开关](media/disable-function/function-state-switch.png)
 

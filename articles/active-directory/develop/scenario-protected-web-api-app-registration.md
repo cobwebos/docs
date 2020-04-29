@@ -13,10 +13,10 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 214d379525f2ee534415d713aa298ec858a84c92
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81868845"
 ---
 # <a name="protected-web-api-app-registration"></a>受保护的 Web API：应用注册
@@ -29,10 +29,10 @@ ms.locfileid: "81868845"
 
 Microsoft 标识平台终结点可以发出 v1.0 令牌和 v2.0 令牌。 有关这些令牌的详细信息，请参阅[访问令牌](access-tokens.md)。
 
-接受的令牌版本取决于您在创建应用程序时选择的**受支持帐户类型**值。
+接受的令牌版本取决于创建应用程序时所选择的**受支持的帐户类型**值。
 
-- 如果**受支持的帐户类型**的值是**任何组织目录中的帐户和个人 Microsoft 帐户（例如 Skype、Xbox、Outlook.com），** 则接受的令牌版本为 v2.0。
-- 否则，接受的令牌版本为 v1.0。
+- 如果**支持的帐户类型**的值是**任何组织目录中的帐户和个人 Microsoft 帐户（例如 Skype、Xbox、Outlook.com）**，则接受的令牌版本为 v2.0。
+- 否则，接受的令牌版本为1.0。
 
 创建应用程序后，可以按以下步骤确定或更改接受的令牌版本：
 
@@ -64,7 +64,7 @@ Web API 不需注册重定向 URI，因为没有任何用户以交互方式登�
 - 一个或多个范围
 - 一个或多个应用角色
 
-默认情况下，应用程序注册门户建议您使用资源 URI `api://{clientId}`。 此 URI 是唯一的，但用户无法识别它。 如果更改 URI，请确保新值是唯一的。
+默认情况下，应用程序注册门户建议使用资源 URI `api://{clientId}`。 此 URI 是唯一的，但用户无法识别它。 如果更改 URI，请确保新值是唯一的。
 
 对于客户端应用程序，范围将显示为委托的权限，应用角色将显示为 Web API 的应用程序权限。****
 
@@ -76,17 +76,17 @@ Web API 不需注册重定向 URI，因为没有任何用户以交互方式登�
 ### <a name="exposing-delegated-permissions-scopes"></a>公开委托的权限（范围）
 
 1. 在应用程序注册中选择“公开 API”。****
-1. 选择 **"添加范围**"。
+1. 选择 "**添加作用域**"。
 1. 出现提示时，请选择“保存并继续”，接受建议的应用程序 ID URI (`api://{clientId}`)。****
 1. 指定以下值：
     - 选择“范围名称”并输入 **access_as_user**。****
     - 选择“谁能许可”，并确保选择“管理员和用户”。********
     - 选择“管理员许可显示名称”，并输入“以用户身份访问 TodoListService”。********
-    - 选择**管理员同意说明**，并输入**访问 TodoList 服务 Web API 作为用户**。
+    - 选择**管理员同意说明**，并**按用户身份访问 TodoListService web API**。
     - 选择“用户许可显示名称”，并输入“以用户身份访问 TodoListService”。********
-    - 选择**用户同意说明**，然后**输入"访问 TodoList 服务 Web API"作为用户**。
+    - 选择**用户同意说明**，并**按用户身份访问 TodoListService web API**。
     - 将“状态”值保留设置为“已启用”。********
- 1. 选择 **"添加范围**"。
+ 1. 选择 "**添加作用域**"。
 
 ### <a name="if-your-web-api-is-called-by-a-daemon-app"></a>如果 Web API 由守护程序应用调用
 
@@ -141,13 +141,13 @@ Web API 将检查应用角色。 此角色是软件开发人员公开应用程�
 
    > [!IMPORTANT]
    >
-   > 如果将“需要用户分配?”设置为“是”，当客户端请求 Web API 访问令牌时，Azure AD 会检查这些客户端的应用角色分配。******** 如果客户端未分配给任何应用角色，Azure AD 将返回错误消息"invalid_client：AADSTS501051：\<应用程序名称\>未分配给\<Web API\>的角色"。
+   > 如果将“需要用户分配?”设置为“是”，当客户端请求 Web API 访问令牌时，Azure AD 会检查这些客户端的应用角色分配。******** 如果客户\<端未分配到任何应用角色，Azure AD 将返回错误消息 "INVALID_CLIENT： AADSTS501051：应用程序应用程序\>名称未分配给\<web API\>的角色"。
    >
    > 如果将“需要用户分配?”设置为“否”，当客户端请求 Web API 的访问令牌时，Azure AD 不会检查应用角色分配。******** 任何守护程序客户端（即，任何使用客户端凭据流的客户端）只需指定其受众，即可获取 API 的访问令牌。 任何应用程序都可以访问 API，而无需请求其权限。
    >
-   > 但是，如上一节所述，Web API 始终可以验证应用程序是否具有正确的角色，该角色由租户管理员授权。API 通过验证访问令牌具有角色声明以及此声明的值是否正确来执行此验证。 在上述 JSON 示例中，值为 `access_as_application`。
+   > 但如前一部分中所述，你的 web API 始终可以验证应用程序是否具有适当的角色，该角色由租户管理员授权。该 API 通过验证访问令牌是否具有角色声明以及此声明的值是否正确来执行此验证。 在上述 JSON 示例中，值为 `access_as_application`。
 
-1. 选择“保存”。 
+1. 选择“保存”  。
 
 ## <a name="next-steps"></a>后续步骤
 

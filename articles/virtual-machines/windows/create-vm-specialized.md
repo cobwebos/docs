@@ -1,5 +1,5 @@
 ---
-title: 从 Azure 中的专用 VHD 创建 Windows VM
+title: 使用 Azure 中的专用 VHD 创建 Windows VM
 description: 使用资源管理器部署模型，通过将专用托管磁盘附加为 OS 磁盘来创建新的 Windows VM。
 author: cynthn
 ms.service: virtual-machines-windows
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
 ms.openlocfilehash: 2939726898abc2abc0e62d0e36feedbfe7ba3645
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086396"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>使用 PowerShell 从专用磁盘创建 Windows VM

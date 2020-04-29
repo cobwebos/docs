@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/29/2019
 ms.author: allensu
 ms.openlocfilehash: 76924705ff801ce3be6a5c76f7ae276bdbf93def
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82147884"
 ---
 # <a name="move-azure-public-ip-to-another-region-using-azure-powershell"></a>使用 Azure PowerShell 将 Azure 公共 IP 移到另一个区域
@@ -21,7 +21,7 @@ ms.locfileid: "82147884"
 Azure 公共 IP 特定于区域，不能从一个区域移到另一个区域。 但是，可以使用 Azure 资源管理器模板来导出公共 IP 的现有配置。  然后，可以将资源暂存在另一区域，方法是：将公共 IP 导出到模板，根据目标区域的情况修改参数，然后将模板部署到新区域。  有关资源管理器和模板的详细信息，请参阅[将资源组导出到模板](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates)
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 请确保 Azure 公共 IP 位于要从中移动的 Azure 区域中。
 
@@ -118,7 +118,7 @@ Azure 公共 IP 特定于区域，不能从一个区域移到另一个区域。 
     ```
 8. 也可选择更改模板中的其他参数，这些参数是可选的，具体取决于你的要求：
 
-    * **Sku** - 可以在配置中将公共 IP 的 sku 从“标准”更改为“基本”或从“基本”更改为“标准”，只需在  resource-group-name>.json >  文件中更改 **sku** **\<name** 属性即可：
+    * **Sku** - 可以在配置中将公共 IP 的 sku 从“标准”更改为“基本”或从“基本”更改为“标准”，只需在 **\<resource-group-name>.json** 文件中更改 **sku** > **name** 属性即可：
 
          ```json
             "resources": [
@@ -133,7 +133,7 @@ Azure 公共 IP 特定于区域，不能从一个区域移到另一个区域。 
                     },
          ```
 
-         若要详细了解基本的和标准的 sku 公共 IP 的区别，请参阅[创建、更改或删除公共 IP 地址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)。
+         有关基本和标准 sku 公共 ip 之间的差异的详细信息，请参阅[创建、更改或删除公共 IP 地址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)。
 
     * **公共 IP 分配方法**和**空闲超时** - 可以在模板中更改这两个选项，只需将 **publicIPAllocationMethod** 属性从 **Dynamic** 更改为 **Static** 或从 **Static** 更改为 **Dynamic** 即可。 若要更改空闲超时，可以将 **idleTimeoutInMinutes** 属性更改为所需时间。  默认为 **4**：
 
@@ -170,7 +170,7 @@ Azure 公共 IP 特定于区域，不能从一个区域移到另一个区域。 
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. 使用 **New-AzResourceGroupDeployment\< 将编辑的** [resource-group-name>.json](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) 文件部署到在上一步创建的资源组：
+11. 使用 [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) 将编辑的 **\<resource-group-name>.json** 文件部署到在上一步创建的资源组：
 
     ```azurepowershell-interactive
 
@@ -201,7 +201,7 @@ Remove-AzResourceGroup -Name <target-resource-group-name>
 
 ```
 
-## <a name="clean-up"></a>清除
+## <a name="clean-up"></a>清理
 
 若要提交所做的更改并完成虚拟网络的移动，以及删除源虚拟网络或资源组，请使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) 或 [Remove-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/remove-azpublicipaddress?view=azps-2.6.0)：
 

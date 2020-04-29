@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/20/2020
 ms.author: juliako
 ms.openlocfilehash: b4849b4fbfdbaece46f5669f4c242e864b1ca533
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81769754"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
@@ -38,46 +38,46 @@ ms.locfileid: "81769754"
 
 ## <a name="april-2020"></a>2020 年 4 月
 
-### <a name="improvements-in-documentation"></a>文档的改进
+### <a name="improvements-in-documentation"></a>文档改进
 
-Azure 媒体播放器文档已迁移到[Azure 文档](../azure-media-player/azure-media-player-overview.md)。
+Azure Media Player 文档已迁移到[Azure 文档](../azure-media-player/azure-media-player-overview.md)。
 
 ## <a name="january-2020"></a>2020 年 1 月
 
 ### <a name="improvements-in-media-processors"></a>媒体处理器的改进
 
-- 改进了视频分析中对隔行扫描源的支持 - 此类内容现在在发送到推理引擎之前已正确取消隔行扫描。
-- 使用"最佳"模式生成缩略图时，编码器现在搜索超过 30 秒以选择非单色的帧。
+- 改进对视频分析中的隔行扫描的支持–在将其发送到推理引擎之前，此类内容现在已正确取消隔行扫描。
+- 使用 "最佳" 模式生成缩略图时，编码器现在会搜索超过30秒，以选择不单色的帧。
 
-### <a name="azure-government-cloud-updates"></a>Azure 政府云更新
+### <a name="azure-government-cloud-updates"></a>Azure 政府版云更新
 
-媒体服务 GA'ed 在以下 Azure 政府区域： *USGov 亚利桑那州*和美国*得克萨斯州 USGov*.
+媒体服务在以下 Azure 政府版区域 GA'ed： *USGov 亚利桑那*和*USGov 德克萨斯州*。
 
 ## <a name="december-2019"></a>2019 年 12 月
 
-添加了对*源-辅助预取*标头的 CDN 支持，用于实时和视频点播流;适用于与 Akamai CDN 有直接合同的客户。 源-辅助 CDN-预获取功能涉及 Akamai CDN 和 Azure 媒体服务源之间的以下 HTTP 标头交换：
+为*源*和视频点播流式处理添加了 CDN 支持，并提供了支持。适用于与 Akamai CDN 直接签订合同的客户。 源-协助 CDN 预提取功能涉及 Akamai CDN 与 Azure 媒体服务源之间的以下 HTTP 标头交换：
 
 |HTTP 标头|值|发送方|接收方|目的|
 | ---- | ---- | ---- | ---- | ----- |
-|CDN-原点-辅助-预取启用 | 1（默认）或 0 |CDN|源|指示 CDN 已启用预取|
-|CDN-原点-辅助-预取路径| 示例： <br/>片段（视频=1400000000，格式=mpd-time-cmaf）|源|CDN|提供 CDN 的预取路径|
-|CDN-原点-辅助-预取-请求|1（预取请求）或 0（常规请求）|CDN|源|指示来自 CDN 的请求是预取|
+|CDN-源助手-已启用 | 1（默认值）或0 |CDN|源|指示 CDN 已启用预提取|
+|CDN-源助手-预提取-路径| 例如： <br/>片段（视频 = 1400000000，格式 = mpd-cmaf）|源|CDN|提供 CDN 的预提取路径|
+|CDN-源-辅助-请求|1（预提取请求）或0（常规请求）|CDN|源|指示 CDN 的请求是预提取|
 
-要查看标头交换的一部分，可以尝试以下步骤：
+若要查看标头交换的一部分，可以尝试执行以下步骤：
 
-1. 使用 Postman 或卷曲向媒体服务源发出音频或视频片段或片段的请求。 请确保在请求中添加标头 CDN-原源-辅助-预取启用：1。
-2. 在响应中，您应该看到以相对路径为值的标头 CDN-原源-辅助-预取路径。
+1. 使用 Postman 或卷向 Media Services 源发送音频或视频段或片段的请求。 请确保在请求中添加标头 "CDN-支持预提取： 1"。
+2. 在响应中，应会看到标头 "CDN-源-辅助-预提取-路径"，其中包含相对路径作为其值。
 
 ## <a name="november-2019"></a>2019 年 11 月
 
 ### <a name="live-transcription-preview"></a>实时听录预览版
 
-实时转录现已公开预览，可在美国西部 2 区域使用。
+Live 脚本现提供公共预览版，可在美国西部2地区使用。
 
-实时转录设计为与实时事件结合使用，作为附加功能。  在传递和标准编码或高级编码实时事件上都支持它。  启用此功能后，该服务将使用认知服务的["语音到文本](../../cognitive-services/speech-service/speech-to-text.md)"功能将传入音频中的口语转录为文本。 然后，在 MPEG-DASH 和 HLS 协议中，此文本与视频和音频一起提供。 计费基于新的附加仪表，该表是实时事件处于"运行"状态时的额外费用。  有关实时转录和计费的详细信息，请参阅[实时转录](live-transcription.md)
+Live 脚本旨在作为附加功能与实时事件结合使用。  它在传递和标准或高级编码实时事件上都受支持。  启用此功能后，服务将使用认知服务的[语音到文本](../../cognitive-services/speech-service/speech-to-text.md)功能将传入音频中的朗读字词转录为文本。 然后，可以在 MPEG-短线和 HLS 协议中将此文本连同视频和音频一起送达。 计费基于新的外接程序计量器，在实时事件处于 "正在运行" 状态时，它会产生额外的成本。  有关实时脚本和计费的详细信息，请参阅[实时](live-transcription.md)脚本
 
 > [!NOTE]
-> 目前，实时转录仅在美国西部 2 区域作为预览功能提供。 它支持在这个时候以英语转录口语（ en-us）。
+> 目前，只能在美国西部2区域中使用预览功能。 它目前只支持英语（en-us）的口头字词。
 
 ### <a name="content-protection"></a>内容保护
 
@@ -95,13 +95,13 @@ Azure 媒体播放器文档已迁移到[Azure 文档](../azure-media-player/azur
 ### <a name="file-encoding-enhancements"></a>文件编码增强功能
 
 - 现在可以使用新的内容感知编码预设。 它使用内容感知编码生成一组符合 GOP 标准的 MP4。 不管输入内容是什么，该服务都会对输入内容执行初始的轻型分析。 它使用这些结果来确定最佳层数，以及适当的比特率和分辨率设置，方便通过自适应流式处理进行传递。 此预设特别适用于低复杂性和中复杂性的视频，其中的输出文件比特率较低，但其质量仍会为观众提供良好的体验。 输出将包含带有交错式视频和音频的 MP4 文件。 有关详细信息，请参阅[开放式 API 规范](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json)。
-- 标准编码器中重新分型器的性能和多线程性改进。 在特定情况下，客户会看到 5-40% 的 VOD 编码性能提升。 编码成多比特率的低复杂性内容会显示最高的性能提升。 
+- 改善了标准编码器中 sizer 的性能和多线程处理。 在特定情况下，客户会看到 5-40% 的 VOD 编码性能提升。 编码成多比特率的低复杂性内容会显示最高的性能提升。 
 - 现在，在使用基于时间的 GOP 设置时，标准编码会在 VOD 编码期间针对可变帧速率 (VFR) 内容维持常规 GOP 节奏。  这意味着，如果提交的混合帧速率内容存在差异（例如 15-30 fps），客户现在会看到常规的 GOP 距离，此类距离根据自适应比特率流式处理 MP4 文件的输出进行计算。 这会提高通过 HLS 或 DASH 进行交付时在跟踪之间无缝切换的功能。 
 -  改善了可变帧速率 (VFR) 源内容的 AV 同步
 
 ### <a name="video-indexer-video-analytics"></a>视频索引器，视频分析
 
-- 使用 VideoAnalyzer 预设提取的关键帧现在采用视频的原始分辨率，而不是调整大小。 高分辨率关键帧提取可为您提供原始质量图像，并允许您利用 Microsoft 计算机视觉和自定义视觉服务提供的基于图像的人工智能模型，从视频中获得更多见解。
+- 使用 VideoAnalyzer 预设提取的关键帧现在采用视频的原始分辨率，而不是调整大小。 高分辨率关键帧提取提供原始质量的图像，并使你能够利用 Microsoft 计算机视觉和自定义视觉服务提供的基于映像的人工智能模型，从视频获得更多见解。
 
 ## <a name="september-2019"></a>2019 年 9 月
 
@@ -115,25 +115,25 @@ Azure 媒体播放器文档已迁移到[Azure 文档](../azure-media-player/azur
 
 #### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
 
-我们宣布弃用 Azure*媒体索引器*和*Azure 媒体索引器 2 预览*。 有关停用日期，请参阅[旧组件](../previous/legacy-components.md)主题。 [Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)将替换这些旧媒体处理器。
+我们将宣布弃用*Azure Media Indexer*和*Azure Media Indexer 2 预览版*。 有关停用日期，请参阅[旧组件](../previous/legacy-components.md)主题。 [Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)替代了这些旧媒体处理器。
 
-有关详细信息，请参阅从[Azure 媒体索引器和 Azure 媒体索引器 2 迁移到 Azure 媒体服务视频索引器](../previous/migrate-indexer-v1-v2.md)。
+有关详细信息，请参阅[从 Azure Media Indexer 迁移和 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](../previous/migrate-indexer-v1-v2.md)。
 
 ## <a name="august-2019"></a>2019 年 8 月
 
 ###  <a name="media-services-v3"></a>媒体服务 v3  
 
-#### <a name="south-africa-regional-pair-is-open-for-media-services"></a>南非区域对对媒体服务开放 
+#### <a name="south-africa-regional-pair-is-open-for-media-services"></a>已为 Media Services 打开了南非区域对 
 
-媒体服务现已在南非北部和南非西部地区提供。
+媒体服务现已在南部北部和南非非洲地区推出。
 
-有关详细信息，请参阅[媒体服务 v3 存在的云和区域](azure-clouds-regions.md)。
+有关详细信息，请参阅[媒体服务 v3 所在的云和区域](azure-clouds-regions.md)。
 
 ###  <a name="media-services-v2"></a>媒体服务 v2  
 
 #### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
 
-我们宣布弃用正在停用的*Windows Azure 媒体编码器*（WAME） 和*Azure 媒体编码器*（AME） 媒体处理器。 有关停用日期，请参阅此[遗留组件](../previous/legacy-components.md)主题。
+我们宣布不推荐要停用的*Windows Azure 媒体编码器*（WAME）和*Azure 媒体编码器*（AME）媒体处理器。 有关停用日期，请参阅此[旧版组件](../previous/legacy-components.md)主题。
 
 有关详细信息，请参阅[将 WAME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) 和[将 AME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335)。
  
@@ -141,9 +141,9 @@ Azure 媒体播放器文档已迁移到[Azure 文档](../azure-media-player/azur
 
 ### <a name="content-protection"></a>内容保护
 
-当流式传输受令牌限制保护的内容时，最终用户需要获取作为密钥传递请求的一部分发送的令牌。 *令牌重放防护*功能允许媒体服务客户对同一令牌可用于请求密钥或许可证的次数设置限制。 有关详细信息，请参阅[令牌重放防护](content-protection-overview.md#token-replay-prevention)。
+当流式处理使用令牌限制保护的内容时，最终用户需要获取作为密钥传递请求的一部分发送的令牌。 *令牌重放防护*功能允许媒体服务客户对同一令牌可用于请求密钥或许可证的次数设置限制。 有关详细信息，请参阅[令牌重放防护](content-protection-overview.md#token-replay-prevention)。
 
-截至 7 月，预览功能仅在美国中部和美国中西部提供。
+截止到7月，预览版功能仅在美国中部和美国西部提供。
 
 ## <a name="june-2019"></a>2019 年 6 月
 
@@ -160,12 +160,12 @@ Azure 媒体播放器文档已迁移到[Azure 文档](../azure-media-player/azur
 
 ## <a name="may-2019"></a>2019 年 5 月
 
-### <a name="azure-monitor-support-for-media-services-diagnostic-logs-and-metrics"></a>Azure 监视器支持媒体服务诊断日志和指标
+### <a name="azure-monitor-support-for-media-services-diagnostic-logs-and-metrics"></a>媒体服务诊断日志和指标 Azure Monitor 支持
 
-现在可以使用 Azure 监视器查看媒体服务发出的遥测数据。
+你现在可以使用 Azure Monitor 查看 Media Services 发出的遥测数据。
 
-* 使用 Azure 监视器诊断日志监视媒体服务密钥传递终结点发送的请求。 
-* 监视媒体服务[流终结点发出的指标](streaming-endpoint-concept.md)。   
+* 使用 Azure Monitor 诊断日志来监视 Media Services 密钥传送终结点发送的请求。 
+* 监视媒体服务[流式处理终结点](streaming-endpoint-concept.md)发出的指标。   
 
 有关详细信息，请参阅[监视媒体服务指标和诊断日志](media-services-metrics-diagnostic-logs.md)。
 
@@ -173,17 +173,17 @@ Azure 媒体播放器文档已迁移到[Azure 文档](../azure-media-player/azur
 
 使用多种编解码器和语言流式处理具有多个音频轨道的资产时，[动态打包](dynamic-packaging-overview.md)现在支持 HLS 输出（版本 4 或更高版本）的多个音频轨道。
 
-### <a name="korea-regional-pair-is-open-for-media-services"></a>韩国区域对对媒体服务开放 
+### <a name="korea-regional-pair-is-open-for-media-services"></a>韩国区域对为 Media Services 开放 
 
-媒体服务现已在韩国中部和韩国南部地区提供。 
+媒体服务现已在韩国中部和韩国南部区域推出。 
 
-有关详细信息，请参阅[媒体服务 v3 存在的云和区域](azure-clouds-regions.md)。
+有关详细信息，请参阅[媒体服务 v3 所在的云和区域](azure-clouds-regions.md)。
 
 ### <a name="performance-improvements"></a>性能改进
 
 添加了包括媒体服务性能改进的更新。
 
-* 更新了处理所支持的最大文件大小。 请参阅，[配额和限制](limits-quotas-constraints.md)。
+* 更新了处理所支持的最大文件大小。 请参阅、[配额和限制](limits-quotas-constraints.md)。
 * [编码速度提高](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types)。
 
 ## <a name="april-2019"></a>2019 年 4 月
@@ -238,7 +238,7 @@ CLI 2.0 模块现在可用于 [Azure 媒体服务 v3 正式版](https://docs.mic
 - [az ams live-output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
 - [az ams streaming-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
 - [az ams streaming-locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
-- [az ams 帐户 mru](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) - 使您能够管理媒体保留单位。 有关详细信息，请参阅[缩放媒体预留单位](media-reserved-units-cli-how-to.md)。
+- [az ams 帐户 mru](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) -用于管理媒体保留单位。 有关详细信息，请参阅[缩放媒体预留单位](media-reserved-units-cli-how-to.md)。
 
 ### <a name="new-features-and-breaking-changes"></a>新功能和重大更改
 

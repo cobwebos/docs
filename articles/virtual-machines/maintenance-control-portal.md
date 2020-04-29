@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
 ms.openlocfilehash: c0cb4800bdabe5eb500422fca55b3060b6422e8e
-ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82139233"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-portal"></a>控制包含维护控制的更新和 Azure 门户
@@ -26,19 +26,19 @@ ms.locfileid: "82139233"
 
    ![显示如何打开维护配置的屏幕截图](media/virtual-machines-maintenance-control-portal/maintenance-configurations-search.png)
 
-1. 单击 **“添加”** 。
+1. 单击“添加”  。
 
    ![显示如何添加维护配置的屏幕截图](media/virtual-machines-maintenance-control-portal/maintenance-configurations-add.png)
 
-1. 选择 "订阅" 和 "资源组"，提供配置的名称，然后选择区域。 单击 **下一步**。
+1. 选择 "订阅" 和 "资源组"，提供配置的名称，然后选择区域。 单击“下一步”。 
 
    ![显示维护配置基础知识的屏幕截图](media/virtual-machines-maintenance-control-portal/maintenance-configurations-basics.png)
 
-1. 添加标记和值。 单击 **下一步**。
+1. 添加标记和值。 单击“下一步”。 
 
    ![显示如何向维护配置添加标记的屏幕截图](media/virtual-machines-maintenance-control-portal/maintenance-configurations-tags.png)
 
-1. 查看摘要。 单击“**创建**”。
+1. 查看摘要。 单击 **“创建”** 。
 
    ![显示如何创建维护配置的屏幕截图](media/virtual-machines-maintenance-control-portal/maintenance-configurations-create.png)
 

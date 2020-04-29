@@ -4,10 +4,10 @@ description: 本文提供在保护 Azure 文件共享时所发生的问题的故
 ms.date: 02/10/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: a6ce613b8c0fe8a7a5df6397ba2f1eb508d61aae
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82100050"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>在备份 Azure 文件共享时排查问题

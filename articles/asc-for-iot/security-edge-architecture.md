@@ -1,6 +1,6 @@
 ---
-title: IoT 边缘的安全模块
-description: 了解 IoT 边缘 IoT 安全模块的 Azure 安全中心的体系结构和功能。
+title: IoT Edge 的安全模块
+description: 了解 Azure 安全中心 Azure 安全中心的体系结构和功能，以便 IoT Edge。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,52 +16,52 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 0eb68f517c4c5b04dd4f92dd1a804dcf5ad24362
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81310626"
 ---
-# <a name="azure-iot-edge-security-module"></a>Azure IoT 边缘安全模块
+# <a name="azure-iot-edge-security-module"></a>Azure IoT Edge 安全模块
 
-[Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/)提供了强大的功能，可在边缘管理和执行业务工作流。
-IoT Edge 在 IoT 环境中扮演的关键角色使其对恶意参与者特别有吸引力。
+[Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/)提供了强大的功能来管理和执行边缘的业务工作流。
+IoT Edge 在 IoT 环境中发挥作用的关键部分使其对于恶意执行组件尤其有吸引力。
 
-面向 IoT 安全的 Azure 安全中心模块为您的 IoT 边缘设备提供了全面的安全解决方案。
-IoT 模块的 Azure 安全中心会收集、聚合和分析来自操作系统和容器系统的原始安全数据，并将其转化为可操作的安全建议和警报。
+Azure 安全中心 IoT 安全模块为 IoT Edge 设备提供了一个全面的安全解决方案。
+用于 IoT 模块的 Azure 安全中心收集、聚合和分析来自你的操作系统和容器系统的原始安全数据到可操作的安全建议和警报。
 
-与适用于 IoT 设备的 IoT 安全代理的 Azure 安全中心类似，IoT 边缘 Azure 安全中心模块通过其模块孪生高度可自定义。
-请参阅[配置代理](how-to-agent-configuration.md)以了解更多信息。
+与用于 IoT 设备的 IoT 安全代理的 Azure 安全中心类似，IoT Edge 模块的 Azure 安全中心通过其模块克隆可高度自定义。
+有关详细信息，请参阅[配置代理](how-to-agent-configuration.md)。
 
-适用于 IoT 边缘的 IoT 安全模块的 Azure 安全中心提供以下功能：
+适用于 IoT 的 Azure 安全中心安全模块 IoT Edge 提供以下功能：
 
-- 从基础操作系统 （Linux） 和 IoT 边缘容器系统收集原始安全事件。
+- 从基础操作系统（Linux）和 IoT Edge 容器系统收集原始安全事件。
 
-  请参阅[Azure 安全中心进行 IoT 代理配置](how-to-agent-configuration.md)，了解有关可用安全数据收集器的更多信息。
+  请参阅[Azure 安全中心以获取 IoT 代理配置](how-to-agent-configuration.md)，详细了解可用的安全数据收集器。
 
-- IoT 边缘部署清单的分析。
+- 分析 IoT Edge 部署清单。
 
-- 将原始安全事件聚合到通过[IoT 边缘中心](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)发送的消息中。
+- 将原始安全事件聚合到通过[IoT Edge 集线器](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)发送的消息中。
 
-- 使用安全模块孪生来删除配置。
+- 通过使用安全模块克隆来删除配置。
 
-  请参阅[为 IoT 代理配置 Azure 安全中心](how-to-agent-configuration.md)以了解更多信息。
+  有关详细信息，请参阅[配置 Azure 安全中心的 IoT 代理](how-to-agent-configuration.md)。
 
-IoT 边缘 IoT 安全模块的 Azure 安全中心在 IoT 边缘下的特权模式下运行。
-需要特权模式才能允许模块监视操作系统和其他 IoT 边缘模块。
+适用于 IoT 的 Azure 安全中心安全模块 IoT Edge 在 IoT Edge 下的特权模式下运行。
+要使模块能够监视操作系统和其他 IoT Edge 模块，特权模式是必需的。
 
 ## <a name="module-supported-platforms"></a>模块支持的平台
 
-IoT 边缘 IoT 安全模块的 Azure 安全中心目前仅适用于 Linux。
+适用于 IoT Edge 的用于 IoT 安全模块的 Azure 安全中心目前仅适用于 Linux。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，您了解了 IoT 边缘 IoT 安全模块的 Azure 安全中心的体系结构和功能。
+本文介绍了 Azure 安全中心 Azure 安全中心的体系结构和功能，用于 IoT Edge 的 IoT 安全模块。
 
-要继续使用用于 IoT 部署的 Azure 安全中心，请使用以下文章：
+若要继续开始使用 Azure 安全中心进行 IoT 部署，请使用以下文章：
 
-- [为 IoT 边缘部署安全模块](how-to-deploy-edge.md)
+- 部署[IoT Edge 的安全模块](how-to-deploy-edge.md)
 - 了解如何[配置安全模块](how-to-agent-configuration.md)
-- 查看 Azure 安全中心，查看 IoT[服务先决条件](service-prerequisites.md)
-- 了解如何在[IoT 中心启用 IoT 服务的 Azure 安全中心](quickstart-onboard-iot-hub.md)
-- 从[IoT 常见问题解答的 Azure 安全中心](resources-frequently-asked-questions.md)了解有关该服务
+- 查看 Azure 安全中心以了解 IoT[服务先决条件](service-prerequisites.md)
+- 了解如何[在 Iot 中心为 iot 服务启用 Azure 安全中心](quickstart-onboard-iot-hub.md)
+- 详细了解[Azure 安全中心提供的 IOT 常见问题解答](resources-frequently-asked-questions.md)

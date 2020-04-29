@@ -4,10 +4,10 @@ description: 本文介绍有关如何使用 Azure 备份服务保护 Azure 文�
 ms.date: 04/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: d7b19fd11e6784a188a18f6a613eef5ff4f77764
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82105635"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>有关如何备份 Azure 文件的问题
@@ -44,7 +44,7 @@ ms.locfileid: "82105635"
 
 ### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>是否可以在不同的保管库中对同一存储帐户中的两个不同的文件共享进行保护？
 
-不是。 只能由同一保管库对某个存储帐户中的所有文件共享进行保护。
+不能。 只能由同一保管库对某个存储帐户中的所有文件共享进行保护。
 
 ## <a name="backup"></a>备份
 

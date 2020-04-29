@@ -4,10 +4,10 @@ description: 本文介绍如何使用 Azure Service Fabric 中的中心机密存
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.openlocfilehash: 4087e7ccdcb2281c4a08af155d35a10c66147a85
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770415"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Azure Service Fabric 中的中心机密存储 
@@ -49,9 +49,9 @@ ms.locfileid: "81770415"
 ## <a name="declare-a-secret-resource"></a>声明机密资源
 您可以使用 REST API 创建机密资源。
   > [!NOTE] 
-  > 如果群集使用窗口身份验证，则 REST 请求通过不安全的 HTTP 通道发送。 建议使用基于 X509 的群集，该群集具有安全终结点。
+  > 如果群集使用 windows 身份验证，则会通过不安全的 HTTP 通道发送 REST 请求。 建议使用具有安全终结点的基于 X509 的群集。
 
-要使用`supersecret`REST API 创建机密资源，请对`https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`发出 PUT 请求。 您需要群集证书或管理客户端证书来创建机密资源。
+若要使用`supersecret` REST API 创建机密资源，请向`https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`发出 PUT 请求。 需要使用群集证书或管理员客户端证书来创建密钥资源。
 
 ```powershell
 $json = '{"properties": {"kind": "inlinedValue", "contentType": "text/plain", "description": "supersecret"}}'
@@ -60,7 +60,7 @@ Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecre
 
 ## <a name="set-the-secret-value"></a>设置机密值
 
-使用以下脚本使用 REST API 设置机密值。
+使用以下脚本来使用 REST API 设置机密值。
 ```powershell
 $Params = '{"properties": {"value": "mysecretpassword"}}'
 Invoke-WebRequest -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret/values/ver1?api-version=6.4-preview -Method PUT -Body $Params -CertificateThumbprint <ClusterCertThumbprint>
@@ -69,11 +69,11 @@ Invoke-WebRequest -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret
 ```powershell
 Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -Uri "https:<clusterfqdn>/Resources/Secrets/supersecret/values/ver1/list_value?api-version=6.4-preview"
 ```
-## <a name="use-the-secret-in-your-application"></a>使用应用程序中的机密
+## <a name="use-the-secret-in-your-application"></a>在应用程序中使用机密
 
-按照以下步骤在 Service Fabric 应用程序中使用机密。
+请按照以下步骤在 Service Fabric 应用程序中使用该机密。
 
-1. 在**设置.xml**文件中添加包含以下代码段的部分。 请注意，该值采用格式 =`secretname:version`。
+1. 使用以下代码片段在**settings .xml**文件中添加一个节。 请注意，此处的值为 {`secretname:version`} 格式。
 
    ```xml
      <Section Name="testsecrets">
@@ -81,7 +81,7 @@ Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -U
      </Section>
    ```
 
-1. 导入**应用程序清单.xml**中的部分。
+1. 导入**applicationmanifest.xml**中的部分。
    ```xml
      <ServiceManifestImport>
        <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
@@ -94,12 +94,12 @@ Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -U
      </ServiceManifestImport>
    ```
 
-   环境变量`SecretPath`将指向存储所有机密的目录。 `testsecrets`节下列出的每个参数都存储在单独的文件中。 应用程序现在可以使用机密，如下所示：
+   环境变量`SecretPath`将指向存储所有机密的目录。 节下面列出的`testsecrets`每个参数都存储在单独的文件中。 应用程序现在可以使用机密，如下所示：
    ```C#
    secretValue = IO.ReadFile(Path.Join(Environment.GetEnvironmentVariable("SecretPath"),  "TopSecret"))
    ```
-1. 将机密安装到容器中。 使机密在容器内可用所需的唯一更改是 到`specify`中的`<ConfigPackage>`装载点。
-以下代码段是修改后的**应用程序清单.xml**。  
+1. 将机密装载到容器中。 使密钥在容器内可用所需的唯一更改是中`specify` `<ConfigPackage>`的装入点。
+以下代码片段是修改后的**applicationmanifest.xml**。  
 
    ```xml
    <ServiceManifestImport>
@@ -115,9 +115,9 @@ Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -U
        </Policies>
      </ServiceManifestImport>
    ```
-   机密可在容器内的装载点下使用。
+   密码在容器中的装入点下可用。
 
-1. 可以通过指定`Type='SecretsStoreRef`将机密绑定到进程环境变量。 以下代码段是如何在**ServiceManifest.xml**`supersecret`中`ver1`将版本绑定到`MySuperSecret`环境变量的示例。
+1. 可以通过指定`Type='SecretsStoreRef`将机密绑定到进程环境变量。 以下代码片段举例说明了如何`supersecret`将版本`ver1`绑定到**servicemanifest.xml**中的环境变量`MySuperSecret` 。
 
    ```xml
    <EnvironmentVariables>
@@ -126,4 +126,4 @@ Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -U
    ```
 
 ## <a name="next-steps"></a>后续步骤
-了解有关[应用程序和服务安全性](service-fabric-application-and-service-security.md)的更多。
+详细了解[应用程序和服务安全性](service-fabric-application-and-service-security.md)。

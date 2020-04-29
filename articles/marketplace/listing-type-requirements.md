@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: dsindona
 ms.openlocfilehash: c9936e9c406e262c06d9016b88f8999e46dcb917
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81684357"
 ---
 # <a name="requirements-by-listing-type"></a>按商品信息类型列出的要求  
 技术和营销内容要求因店面、产品/服务类型和商品信息类型而异。 请查看以下规范，以确认是否合规。  
 1. 店面要求：  
-    *   [应用程序来源](#storefront-requirements-appsource)  
+    *   [AppSource](#storefront-requirements-appsource)  
     *   [Azure 市场](#storefront-requirements-azure-marketplace)  
 2. 商品类型和产品/服务类型要求：  
     *   有关商品类型和产品/服务类型的详细信息，请访问“确定解决方案的商品类型”页：[docs.microsoft.com/azure/marketplace/determine-your-listing-type](./determine-your-listing-type.md)。  
@@ -29,12 +29,12 @@ ms.locfileid: "81684357"
 |:--- |:--- |:--- |  
 | ***Azure Active Directory (Azure AD)*** | 在已启用许可的情况下，应用须允许使用 Azure Active Directory 联合单一登录（Azure AD 联合 SSO）。<ul> <li>有关启用 Azure AD 联合 SSO 的详细信息，请访问“针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录”页：[docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps)。</li> </ul> | 必选 |   
 | ***与 Microsoft 云服务集成*** | 应用应该与其他 Microsoft 云服务（例如 Microsoft Power BI、Cortana Intelligence）或 Microsoft Azure 服务集成。<ul> <li>物联网就是 Microsoft 云服务的一个示例。</li> </ul> | 建议 |  
-| ***观众*** | 应用必须适用于业务线用户和业务所有者。 | 必选 | 
+| ***受众*** | 应用必须适用于业务线用户和业务所有者。 | 必选 | 
 | ***适合企业的软件即服务 (SaaS) 应用*** | 应用必须满足以下要求。<ul> <li>是业务线 SaaS 应用</li> <li>专注于业务流程</li> <li>以企业客户为目标</li> <li>允许用户使用其工作凭据（用户名和密码）登录</li> </ul> | 必选 |  
 | ***免费试用期和试用体验*** | 应用必须包含以下选项之一，使客户能够在有限的时间内免费使用你的应用。<ul> <li>提供 `try` 选项，使客户能够在 AppSource 中开始试用应用</li> <li>在 AppSource 中提供 `request trial` 选项，使客户能够请求应用的试用版</li> </ul>提供的免费试用版必须为客户提供一段预先规定的时间让他们试用应用，且不收取额外的费用。 | 必选 |  
 | ***可轻松配置、随时可用的解决方案*** | 应用的配置和设置必须便捷，不需要自定义。 | 必选 |  
 | ***潜在顾客管理*** | 在从店面收获商机之前，请启用 CRM 来接收潜在顾客数据。<ul> <li>CRM 的例子包括 Marketo、Microsoft Dynamics 或 Salesforce</li> </ul> | 必选 |  
-| ***隐私政策和使用条款*** | 应用必须使用公共 URL 提供隐私政策页面的链接。 发布期间必须以文本形式提供使用条款。 | 必选 |  
+| ***隐私策略和使用条款*** | 应用必须使用公共 URL 提供隐私政策页面的链接。 发布期间必须以文本形式提供使用条款。 | 必选 |  
 | ***支持*** | 应用必须使用公共 URL 提供客户支持页面的链接。 如果应用是试用版，则必须在试用期间提供支持，且不收取额外的费用。 | 必选 |  
 
 ## <a name="storefront-requirements-azure-marketplace"></a>店面要求：Azure 市场  
@@ -44,9 +44,9 @@ ms.locfileid: "81684357"
 |:--- |:--- |:--- |  
 | ***参与策略*** | 应用必须遵循 Azure 市场参与政策。<ul> <li>有关参与政策的详细信息，请访问“Azure 市场参与政策”页：[azure.microsoft.com/support/legal/marketplace/participation-policies](https://azure.microsoft.com/support/legal/marketplace/participation-policies)。</li></ul> | list<br />事务处理<br />试用 |  
 | ***与 Microsoft 集成*** | 产品/服务应利用或扩展 Microsoft Azure 服务（例如计算、网络或存储）。 产品/服务应按现有 Azure 市场类别进行分类（例如数据库、安全性或网络等）。<ul> <li>有关市场产品/服务的详细信息，请访问“市场应用”页：[azuremarketplace.microsoft.com/marketplace/apps](https://azuremarketplace.microsoft.com/marketplace/apps)。</li> </ul> | list<br />事务处理<br />试用 |  
-| ***观众*** | 产品/服务必须面向 IT 专业人员、云开发人员或其他技术型客户角色。 | list<br />事务处理<br />试用 |  
+| ***受众*** | 产品/服务必须面向 IT 专业人员、云开发人员或其他技术型客户角色。 | list<br />事务处理<br />试用 |  
 | ***潜在顾客管理*** | 在从店面收获商机之前，请启用 CRM（Marketo、Microsoft Dynamics 或 Salesforce）来接收潜在顾客数据。 | list<br />事务处理<br />试用 |  
-| ***隐私政策和使用条款*** | 应用必须使用公共 URL 提供隐私政策页面的链接。 发布期间必须以文本形式提供使用条款。 | list<br />事务处理<br />试用 |  
+| ***隐私策略和使用条款*** | 应用必须使用公共 URL 提供隐私政策页面的链接。 发布期间必须以文本形式提供使用条款。 | list<br />事务处理<br />试用 |  
 | ***支持*** | 产品/服务必须使用公共 URL 提供客户支持页面的链接。 如果产品/服务是试用版，则必须在试用期间提供支持，且不收取额外的费用。 | 事务处理<br />试用 |    
 
 ## <a name="non-transact-listings"></a>非事务处理商品  
@@ -67,7 +67,7 @@ ms.locfileid: "81684357"
 | 要求 | 详细信息 |  
 |:--- |:--- |  
 | 服务产品/服务特点 | 咨询服务必须满足以下条件。<ul> <li>按固定范围、固定有效期和固定价格（或免费）提供。</li> <li>主要面向售前。</li> <li>限于单个客户。</li> <li>在现场执行。</li> </ul> |  
-| 咨询服务的合作伙伴要求 | 符合服务相关领域的条件。<table><tr><th>解决方案领域</th><th>条件</th></tr><tr><td>Dynamics 365 for Customer Engagement</td><td>具有银级或金级云客户关系管理资格。</td></tr><tr><td>Dynamics 365 for Finance and Operations Enterprise Edition</td><td>具有银级或金级企业资源规划资格，后续 12 个月的云运营收入达到 25,000 美元或以上。</td></tr><tr><td>Dynamics 365 for Finance and Operations Business Edition</td><td>充当一个或多个客户的云服务提供商 (CSP) 或数字记录合作伙伴 (DPOR)。</td></tr><tr><td>Power BI</td><td>满足解决方案合作伙伴的条件。</td></tr><tr><td>PowerApps</td><td>具有合作伙伴展示解决方案。</td></tr></table><ul> <li>有关客户关系管理的详细信息，请访问云客户关系管理页 [partner.microsoft.com/membership/cloud-customer-relationship-management-competency](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency)。</li> <li>有关资源规划的详细信息，请访问企业资源规划页 [partner.microsoft.com/membership/enterprise-resource-planning-competency](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)。</li> <li>有关 CSP 的详细信息，请访问云服务提供商页 [partner.microsoft.com/cloud-solution-provider](https://partner.microsoft.com/cloud-solution-provider)。</li> <li>有关 DPOR 的详细信息，请访问“数字记录合作伙伴和合作伙伴联盟”页 [partner.microsoft.com/membership/digital-partner-of-record](https://partner.microsoft.com/membership/digital-partner-of-record)。</li> <li>有关解决方案合作伙伴条件的详细信息，请访问 位于[https://partner.microsoft.com/en-us/membership/partner-incentives](https://partner.microsoft.com/en-us/membership/partner-incentives)的解决方案合作伙伴概述和奖励文档。</li> <li>有关伙伴展示的详细信息，请访问合作伙伴展示页 [powerapps.microsoft.com/partner-showcase](https://powerapps.microsoft.com/partner-showcase)。</li> </ul> |  
+| 咨询服务的合作伙伴要求 | 符合服务相关领域的条件。<table><tr><th>解决方案领域</th><th>条件</th></tr><tr><td>Dynamics 365 for Customer Engagement</td><td>具有银级或金级云客户关系管理资格。</td></tr><tr><td>Dynamics 365 for Finance and Operations Enterprise Edition</td><td>具有银级或金级企业资源规划资格，后续 12 个月的云运营收入达到 25,000 美元或以上。</td></tr><tr><td>Dynamics 365 for Finance and Operations Business Edition</td><td>充当一个或多个客户的云服务提供商 (CSP) 或数字记录合作伙伴 (DPOR)。</td></tr><tr><td>Power BI</td><td>满足解决方案合作伙伴的条件。</td></tr><tr><td>PowerApps</td><td>具有合作伙伴展示解决方案。</td></tr></table><ul> <li>有关客户关系管理的详细信息，请访问云客户关系管理页 [partner.microsoft.com/membership/cloud-customer-relationship-management-competency](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency)。</li> <li>有关资源规划的详细信息，请访问企业资源规划页 [partner.microsoft.com/membership/enterprise-resource-planning-competency](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)。</li> <li>有关 CSP 的详细信息，请访问云服务提供商页 [partner.microsoft.com/cloud-solution-provider](https://partner.microsoft.com/cloud-solution-provider)。</li> <li>有关 DPOR 的详细信息，请访问“数字记录合作伙伴和合作伙伴联盟”页 [partner.microsoft.com/membership/digital-partner-of-record](https://partner.microsoft.com/membership/digital-partner-of-record)。</li> <li>有关解决方案合作伙伴标准的详细信息，请访问中的解决方案伙伴概述和激励文档[https://partner.microsoft.com/en-us/membership/partner-incentives](https://partner.microsoft.com/en-us/membership/partner-incentives)。</li> <li>有关伙伴展示的详细信息，请访问合作伙伴展示页 [powerapps.microsoft.com/partner-showcase](https://powerapps.microsoft.com/partner-showcase)。</li> </ul> |  
 
 #### <a name="requirements-azure-marketplace-list-consulting-service"></a>要求：Azure 市场：列表：咨询服务  
 
@@ -95,7 +95,7 @@ ms.locfileid: "81684357"
 
 | 要求 | 详细信息 |  
 |:--- |:--- |  
-| 免费试用期和试用体验 | 客户可以在有限时间内免费使用你的应用。<br /><br />客户不需要支付产品/服务或应用的任何许可证或订阅费用。 客户不需要支付基础 Microsoft 第一方产品或服务的费用。 所有试用选项部署到 Azure 订阅。 你可以独自控制成本优化和管理功能的试用版。<br /><br />可以选择免费试用、互动演示或体验版。 不管选择哪种，都必须向客户提供规定时间的免费应用试用。<ul> <li>要开始创建试驾的过程，请发送电子邮件到[amp-testdrive@microsoft.com](mailto:amp-testdrive@microsoft.com)。</li> </ul>请注意：Azure 市场 SaaS 试用体验必须允许用户使用工作凭据登录。<ul> <li>有关详细信息，请访问 [docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences) 上的 AppSource 试用体验部分。</li> </ul> |  
+| 免费试用期和试用体验 | 客户可以在有限时间内免费使用你的应用。<br /><br />客户不需要支付产品/服务或应用的任何许可证或订阅费用。 客户不需要支付基础 Microsoft 第一方产品或服务的费用。 所有试用选项部署到 Azure 订阅。 你可以独自控制成本优化和管理功能的试用版。<br /><br />可以选择免费试用、互动演示或体验版。 不管选择哪种，都必须向客户提供规定时间的免费应用试用。<ul> <li>若要开始创建测试驱动器的过程，请向发送电子邮件[amp-testdrive@microsoft.com](mailto:amp-testdrive@microsoft.com)。</li> </ul>请注意：Azure 市场 SaaS 试用体验必须允许用户使用工作凭据登录。<ul> <li>有关详细信息，请访问 [docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences) 上的 AppSource 试用体验部分。</li> </ul> |  
 | 可轻松配置、随时可用的解决方案 | 应用的配置和设置须便捷。 |  
 | 可用性/运行时间 | SaaS 应用或平台的运行时间须不低于 99.9%。 |  
 | Azure Active Directory | 在已启用许可的情况下，产品/服务须允许使用 Azure Active Directory (Azure AD) 联合单一登录 (SSO)（Azure AD 联合 SSO）。 |  

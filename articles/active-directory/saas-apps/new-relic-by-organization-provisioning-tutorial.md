@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 04/14/2020
 ms.author: Zhchia
 ms.openlocfilehash: 3197ac3033c6550b72bdfdf39fd23c55dda20d90
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82134229"
 ---
 # <a name="tutorial-configure-new-relic-by-organization-for-automatic-user-provisioning"></a>教程：按组织为自动用户预配配置新的 Relic
@@ -64,11 +64,11 @@ ms.locfileid: "82134229"
 
 SCIM 持有者令牌允许在新 Relic 上预配用户，因此请保持此值的安全性。 你的帐户代表会以安全的方式将 SCIM 持有者令牌传输给你。
 
-## <a name="step-3-add-new-relic-by-organization-from-the-azure-ad-application-gallery"></a>步骤 3。 通过 Azure AD 应用程序库中的组织添加新的 Relic
+## <a name="step-3-add-new-relic-by-organization-from-the-azure-ad-application-gallery"></a>步骤 3. 通过 Azure AD 应用程序库中的组织添加新的 Relic
 
 通过 Azure AD 应用程序库中的 "组织" 添加新的 Relic，以开始按组织管理预配到新 Relic。 如果以前已通过组织为 SSO 设置了新的 Relic，则可以使用相同的应用程序。 但建议您在最初测试集成时创建一个单独的应用程序。 在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)了解有关从库中添加应用程序的详细信息。 
 
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4。 定义将在设置范围内的人员 
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4. 定义将在设置范围内的人员 
 
 Azure AD 预配服务允许你确定将根据分配给应用程序的人员，或基于用户/组属性进行预配的用户的范围。 如果选择将根据分配预配到你的应用的用户的范围，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 如果选择仅根据用户或组的属性设置的作用域，则可以使用[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的范围筛选器。 
 
@@ -107,7 +107,7 @@ Azure AD 预配服务允许你确定将根据分配给应用程序的人员，�
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 选择“保存”。 
+7. 选择“保存”  。
 
 8. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到组织的新 Relic**"。
 
@@ -117,7 +117,7 @@ Azure AD 预配服务允许你确定将根据分配给应用程序的人员，�
    |---|---|
    |userName|字符串|
    |externalId|字符串|
-   |活动|布尔|
+   |活动|布尔值|
    |emails[type eq "work"].value|字符串|
    |name.givenName|字符串|
    |名称。已设置格式|字符串|

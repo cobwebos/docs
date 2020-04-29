@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 02/23/2020
 ms.author: irenehua
 ms.openlocfilehash: 239dc0f3133a5adf59a23d333131c91d3a655597
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770390"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>升级 Azure 内部负载均衡器 - 不需出站连接
 [Azure 标准负载均衡器](load-balancer-overview.md)通过区域冗余提供丰富的功能和高可用性。 有关负载均衡器 SKU 的详细信息，请参阅[比较表](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)。
 
-本文介绍了一个 PowerShell 脚本，该脚本创建与基本负载均衡器配置相同的标准负载均衡器，同时将流量从基本负载均衡器迁移到标准负载均衡器。
+本文介绍了一个 PowerShell 脚本，该脚本使用与基本负载均衡器相同的配置来创建标准负载均衡器，并将流量从基本负载均衡器迁移到标准负载均衡器。
 
 ## <a name="upgrade-overview"></a>升级概述
 
@@ -25,14 +25,14 @@ ms.locfileid: "81770390"
 
 * 在指定的位置创建标准内部 SKU 负载均衡器。 请注意，标准内部负载均衡器不会提供[出站连接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)。
 * 将基本 SKU 负载均衡器的配置无缝复制到新创建的标准负载均衡器。
-* 无缝地将专用 IP 从基本负载均衡器移动到新创建的标准负载均衡器。
-* 将 VM 从基本负载均衡器的后端池无缝移动到标准负载均衡器的后端池
+* 将专用 Ip 从基本负载均衡器无缝移动到新创建的标准负载均衡器。
+* 将 Vm 从基本负载均衡器的后端池无缝移动到标准负载均衡器的后端池
 
 ### <a name="caveatslimitations"></a>注意事项/限制
 
-* 脚本仅支持不需要出站连接的内部负载均衡器升级。 如果您需要某些 VM 的[出站连接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)，请参阅[此页面](upgrade-InternalBasic-To-PublicStandard.md)获得说明。 
-* 如果标准负载均衡器是在不同区域中创建的，您将无法将旧区域中现有的 VM 与新创建的标准负载均衡器相关联。 要解决此限制，请确保在新区域中创建新的 VM。
-* 如果您的负载均衡器没有任何前端 IP 配置或后端池，则运行脚本时可能会遇到错误。 确保它们不为空。
+* 脚本仅支持内部负载均衡器升级，无需任何出站连接。 如果需要某些 Vm 的[出站连接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)，请参阅此[页面](upgrade-InternalBasic-To-PublicStandard.md)了解相关说明。 
+* 如果在不同的区域中创建标准负载均衡器，则无法将旧区域中的 Vm 关联到新创建的标准负载均衡器。 若要解决此限制，请确保在新区域中创建新的 VM。
+* 如果你的负载均衡器没有任何前端 IP 配置或后端池，你可能会遇到运行脚本时遇到的错误。 请确保它们不为空。
 
 ## <a name="download-the-script"></a>下载脚本
 
@@ -68,10 +68,10 @@ ms.locfileid: "81770390"
 
 1. 检查所需的参数：
 
-   * **rgName： [字符串]： 必需**– 这是现有基本负载均衡器和新的标准负载均衡器的资源组。 要查找此字符串值，请导航到 Azure 门户，选择基本负载均衡器源，然后单击负载均衡器的 **"概述**"。 资源组位于该页上。
-   * **旧 LB 名称： [字符串]： 必需**– 这是要升级的现有基本平衡器的名称。 
-   * **新定位： [String]： 必需**– 这是将创建标准负载均衡器的位置。 建议将所选基本负载均衡器的相同位置继承到标准负载平衡器，以便更好地与其他现有资源关联。
-   * **新 LB 名称： [字符串]： 必需**– 这是要创建的标准负载均衡器的名称。
+   * **rgName： [String]： Required** –这是现有基本负载均衡器和新标准负载均衡器的资源组。 若要查找此字符串值，请导航到 Azure 门户，选择你的基本负载均衡器源，并单击负载均衡器的**概述**。 资源组位于该页面上。
+   * **oldLBName： [String]： Required** –这是要升级的现有基本均衡器的名称。 
+   * **newlocation： [String]： Required** –这是将在其中创建标准负载均衡器的位置。 建议将所选基本负载均衡器的同一位置继承到标准负载均衡器，以便更好地与其他现有资源关联。
+   * **newLBName： [String]： Required** –这是要创建的标准负载均衡器的名称。
 1. 使用相应的参数运行脚本。 完成该脚本可能需要 5 到 7 分钟时间。
 
     **示例**
@@ -86,9 +86,9 @@ ms.locfileid: "81770390"
 
 是的。 请参阅[注意事项/限制](#caveatslimitations)。
 
-### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Azure PowerShell 脚本是否还会将流量从基本负载均衡器切换到新创建的标准负载均衡器？
+### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Azure PowerShell 脚本还会将我的基本负载均衡器中的流量切换到新创建的标准负载均衡器？
 
-是的，它迁移流量。 如果要亲自迁移流量，请使用[此脚本](https://www.powershellgallery.com/packages/AzureILBUpgrade/1.0)，该脚本不会为您移动 VM。
+是，它会迁移流量。 如果你想要单独迁移流量，请使用[此脚本](https://www.powershellgallery.com/packages/AzureILBUpgrade/1.0)，这不会为你移动 vm。
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>使用此脚本时我遇到了一些问题。 如何求助？
   

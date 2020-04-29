@@ -10,10 +10,10 @@ ms.subservice: common
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: 96fde15eb5071e157fedcff6154e6b0635a34721
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82128023"
 ---
 # <a name="security-controls-for-azure-storage"></a>Azure 存储的安全控制
@@ -38,13 +38,13 @@ ms.locfileid: "82128023"
 |---|---|--|
 | 服务终结点支持| 是 |  |
 | 服务标记支持| 是 | 有关 Azure 存储支持的服务标记的详细信息，请参阅[azure 服务标记概述](../../virtual-network/service-tags-overview.md)。 |
-| VNet 注入支持| N/A |  |
+| VNet 注入支持| 空值 |  |
 | 网络隔离和防火墙支持| 是 | |
-| 强制隧道支持| N/A |  |
+| 强制隧道支持| 空值 |  |
 
 ## <a name="monitoring--logging"></a>监视和日志记录
 
-| 安全控制 | Yes/No | 说明|
+| 安全控制 | Yes/No | 注释|
 |---|---|--|
 | Azure 监视支持（Log Analytics、App Insights 等）| 是 | Azure Monitor 指标|
 | 控制和管理平面日志记录和审核 | 是 | Azure 活动日志 |
@@ -52,14 +52,14 @@ ms.locfileid: "82128023"
 
 ## <a name="identity"></a>标识
 
-| 安全控制 | Yes/No | 说明|
+| 安全控制 | Yes/No | 注释|
 |---|---|--|
 | 身份验证| 是 | Azure Active Directory、共享密钥、共享访问令牌。 |
 | 授权| 是 | 支持通过 RBAC、POSIX ACL 和 SAS 令牌进行授权 |
 
 ## <a name="configuration-management"></a>配置管理
 
-| 安全控制 | Yes/No | 说明|
+| 安全控制 | Yes/No | 注释|
 |---|---|--|
 | 配置管理支持（配置的版本控制等）| 是 | 支持通过 Azure 资源管理器 API 进行资源提供程序版本控制 |
 

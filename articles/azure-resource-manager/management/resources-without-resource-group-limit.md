@@ -4,10 +4,10 @@ description: 列出可以在一个资源组中有 800 多个实例的 Azure 资�
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: 8644bec1a68acebff18cf83d17acb014784dc964
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80804769"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>没有每个资源组 800 个实例限制的资源
@@ -29,7 +29,7 @@ ms.locfileid: "80804769"
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
-* 机器人服务 - 默认情况下，限制为 800 个实例。 可以通过联系支持人员来提高该限制。
+* botServices-默认情况下，限于800实例。 可以通过联系支持人员来提高该限制。
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
@@ -69,13 +69,13 @@ ms.locfileid: "80804769"
 * serverGroups
 * servers
 * serversv2
-* 单服务器
+* singleServers
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
-* 计划 - 默认情况下，限制为 800 个实例。 可以通过联系支持人员来提高该限制。
+* 计划-默认情况下限制为800实例。 可以通过联系支持人员来提高该限制。
 
-## <a name="microsoftenterpriseknowledgegraph"></a>微软.企业知识图
+## <a name="microsoftenterpriseknowledgegraph"></a>EnterpriseKnowledgeGraph
 
 * services
 
@@ -84,9 +84,9 @@ ms.locfileid: "80804769"
 * clusters
 * namespaces
 
-## <a name="microsoftexperimentation"></a>微软.实验
+## <a name="microsoftexperimentation"></a>Microsoft 试验
 
-* 实验工作
+* experimentWorkspaces
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
@@ -108,11 +108,11 @@ ms.locfileid: "80804769"
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
-* 净应用账户
-* 净应用账户/容量池
-* 净应用账户/容量池/卷
-* 净应用帐户/容量池/卷/装载目标
-* 净应用帐户/容量池/卷/快照
+* netAppAccounts
+* netAppAccounts/capacityPools
+* netAppAccounts/capacityPools/卷
+* netAppAccounts/capacityPools/卷集/mountTargets
+* netAppAccounts/capacityPools/卷/快照
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 

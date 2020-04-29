@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
 ms.openlocfilehash: b9158f7b2e3fc73a2fe2a9b20ead2558b7467f6f
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82131057"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>为 Dynamics 365 客户参与配置潜在客户管理
@@ -76,7 +76,7 @@ ms.locfileid: "82131057"
 
 1. 从 Azure Active Directory 左窗格中选择 "**应用注册**"，然后在该页上选择 "**新建注册**"。
 1. 为应用程序名称输入有意义的名称。
-1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户”。********
+1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户”。  
 1. 在 "**重定向 URI （可选）**" 下，选择 " **Web** " 并`https://contosoapp1/auth`输入 URI，例如。 
 1. 选择“注册”  。
 
@@ -124,7 +124,7 @@ ms.locfileid: "82131057"
 
     ![Microsoft 365 管理中心添加用户选项](./media/commercial-marketplace-lead-management-instructions-dynamics/ms-365-add-user.png)
 
-1. 创建潜在客户编写器服务的新用户。 配置以下设置：
+1. 创建潜在客户编写器服务的新用户。 配置下列设置：
 
     * 输入用户名。
     * 输入密码，并清除 "**使此用户在首次登录时更改其密码**" 选项。

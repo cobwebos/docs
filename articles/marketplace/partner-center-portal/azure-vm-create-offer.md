@@ -1,6 +1,6 @@
 ---
-title: 创建 Azure 虚拟机产品 /服务 - Azure 应用商店
-description: 了解如何在商业市场中创建虚拟机产品/服务。
+title: 创建 Azure 虚拟机产品/服务-Azure Marketplace
+description: 了解如何在商业应用商店中创建虚拟机产品/服务。
 author: emuench
 ms.author: mingshen
 ms.service: marketplace
@@ -8,51 +8,51 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.openlocfilehash: d598f741c5add58a89aa2b7aa01802a7e35f9a19
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869059"
 ---
 # <a name="create-an-azure-virtual-machine-offer"></a>创建 Azure 虚拟机产品/服务
 
 > [!IMPORTANT]
-> 我们将 Azure VM 产品的管理从云合作伙伴门户迁移到合作伙伴中心。 在迁移产品/服务之前，请继续按照云合作伙伴门户中的["创建虚拟机"产品/服务](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-offer)中的说明来管理您的产品/服务。
+> 我们正在将 Azure VM 产品/服务的管理从云合作伙伴门户迁移到合作伙伴中心。 在迁移你的产品/服务之前，请继续按照云合作伙伴门户中 "[创建虚拟机产品/服务](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-offer)" 中的说明来管理你的产品/服务。
 
-本文介绍如何创建 Azure 虚拟机产品/服务并将其发布到[Azure 应用商店](https://azuremarketplace.microsoft.com/)。 它面向包含操作系统、虚拟硬盘 （VHD） 和多达 16 个数据磁盘的基于 Windows 和 Linux 的虚拟机。
+本文介绍如何创建 Azure 虚拟机产品/服务并将其发布到[Azure Marketplace](https://azuremarketplace.microsoft.com/)。 它介绍了基于 Windows 和 Linux 的虚拟机，这些虚拟机包含一个操作系统、一个虚拟硬盘（VHD）和多达16个数据磁盘。
 
 ## <a name="introduction"></a>简介
 
 ### <a name="publishing-benefits"></a>发布的好处
 
-发布到 Azure 应用商店具有以下优点：
+发布到 Azure Marketplace 具有以下优势：
 
-- 使用 Microsoft 品牌推广您的公司
-- 通过 Azure 应用商店覆盖超过 1 亿台 Office 365 和 Dynamics 365 用户和 200，000 多个组织
-- 从这些市场获得高质量的潜在客户
-- 获得 Microsoft 现场和电话销售团队推广的服务
+- 使用 Microsoft 品牌推广公司
+- 通过 Azure Marketplace 跨100000000个 Office 365 和 Dynamics 365 用户和超过200000个组织
+- 从这些市场获取高质量的潜在顾客
+- 获取由 Microsoft 现场和电话销售团队升级的服务
 
-### <a name="before-you-begin"></a>开始之前
+### <a name="before-you-begin"></a>在开始之前
 
-如果尚未这样做，请查看[虚拟机提供发布指南](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines)和此 Azure 虚拟机材料：
+如果尚未这样做，请查看[虚拟机产品/服务发布指南](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines)和此 Azure 虚拟机材料：
 
 - 快速入门指南
   - [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/)
   - [GitHub Azure 快速入门模板](https://github.com/azure/azure-quickstart-templates)
 - 教程
-  - [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
-  - [视窗 VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
+  - [Linux Vm](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
+  - [Windows Vm](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
 - 示例
-  - [Linux VM 的 Azure CLI 示例](https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples)
-  - [适用于 Linux VM 的 Azure 电源外壳](https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples)
-  - [适用于 Windows VM 的 Azure CLI 示例](https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples)
-  - [适用于 Windows VM 的 Azure 电源外壳](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-quick)
+  - [适用于 Linux Vm 的 Azure CLI 示例](https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples)
+  - [适用于 Linux Vm 的 Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples)
+  - [适用于 Windows Vm 的 Azure CLI 示例](https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples)
+  - [适用于 Windows Vm 的 Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-quick)
 
-### <a name="fundamentals-in-technical-knowledge"></a>技术知识基础知识
+### <a name="fundamentals-in-technical-knowledge"></a>技术知识中的基础知识
 
-设计、构建和测试这些资产需要时间，需要对 Azure 平台和用于构建产品/服务的技术进行技术知识。
+设计、构建和测试这些资产需要一定的时间，并需要 Azure 平台和用于构建产品/服务的技术的技术知识。
 
-您的工程团队应了解以下 Microsoft 技术：
+工程团队应了解以下 Microsoft 技术：
 
 - 基本了解 [Azure 服务](https://azure.microsoft.com/services/)
 - 如何[设计和架构 Azure 应用程序](https://azure.microsoft.com/solutions/architecture/)
@@ -60,184 +60,184 @@ ms.locfileid: "81869059"
 
 ## <a name="create-an-azure-virtual-machine-offer"></a>创建 Azure 虚拟机产品/服务
 
-在创建 Azure 虚拟机产品/服务之前，必须在合作伙伴中心中具有商业市场帐户。 如果您尚未创建一个帐户，请参阅[在合作伙伴中心创建商业市场帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。
+在创建 Azure 虚拟机产品/服务之前，必须在合作伙伴中心创建一个商用 marketplace 帐户。 如果尚未创建，请参阅[在合作伙伴中心创建商业 marketplace 帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。
 
-1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/home)，然后从顶部菜单中选择**仪表板**。
-2. 在左导航栏中，选择**商业市场**，然后 **"概述**"。
-3. 在 **"概述"** 页上，选择 **+新产品/服务**，然后选择**Azure 虚拟机**。 将显示 **"新建产品/服务**"对话框。
+1. 登录到 "[合作伙伴中心](https://partner.microsoft.com/dashboard/home)"，然后在顶部菜单中选择 "**仪表板**"。
+2. 在左侧导航栏中，选择 "**商业 Marketplace**"，然后选择 "**概述**"。
+3. 在 "**概述**" 页上，依次选择 " **+ 新产品/服务**"、" **Azure 虚拟机**"。 此时将显示 "**新建产品/服务**" 对话框。
 
-    ![使用"新建产品/服务"按钮和 Azure 虚拟机产品/服务（已选择）在合作伙伴中心中演示"概述"页面。](media/avm-create7.png)
+    ![说明合作伙伴中心中的 "概述" 页面，其中包含 "新产品/服务" 按钮和 "Azure 虚拟机产品/服务"](media/avm-create7.png)
 
-## <a name="offer-id-and-alias"></a>优惠 ID 和别名
+## <a name="offer-id-and-alias"></a>产品/服务 ID 和别名
 
-输入**优惠 ID**。 这是您帐户中每个产品/服务的唯一标识符。
+输入**产品/服务 ID**。 这是你的帐户中每个产品/服务的唯一标识符。
 
-- 此 ID 在市场产品/服务的 Web 地址以及 Azure PowerShell 和 Azure CLI（如果适用）中可见。
-- 只使用小写字母和数字。 它可以包括连字符和下划线，但没有空格，并且限制为 50 个字符。 例如，如果您在此处输入**测试报价 1，** 则产品/服务 Web 地址将为`https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`。
-- 选择 "**创建**"后，无法更改优惠 ID。
+- 在 marketplace 产品/服务的网络地址中，以及在 Azure PowerShell 和 Azure CLI （如果适用）中，客户可看到此 ID。
+- 只使用小写字母和数字。 它可以包括连字符和下划线，但不能包含空格，并且限制为50个字符。 例如，如果在此处输入了 "**测试/服务-1** "，则 "产品/ `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`服务" 网址为。
+- 选择 "**创建**" 后，无法更改产品/服务 ID。
 
-输入**产品/服务别名**。 这是合作伙伴中心中用于产品/服务的名称。 此名称不在市场上使用，并且不同于向客户显示的要约名称和其他值。
+输入**提议别名**。 这是在合作伙伴中心中用于产品/服务的名称。 此名称不能在 marketplace 中使用，它与向客户显示的产品/服务名称和其他值不同。
 
-选择 **"创建**"以生成产品/服务并继续。
+选择 "**创建**" 以生成产品/服务并继续。
 
-## <a name="offer-setup"></a>优惠设置
+## <a name="offer-setup"></a>产品/服务设置
 
 ### <a name="test-drive"></a>体验版
 
-设置演示（测试驱动器），让客户在购买之前试用您的产品/服务。 要创建一个演示环境，让客户在固定的时间内试用您的产品/服务，请参阅[在商业市场试用您的产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive)。
+设置演示（测试驱动器），让客户在购买前试用产品/服务。 若要创建允许客户在固定时间段内试用你的产品/服务的演示环境，请参阅[在商业应用商店中试用你的产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive)。
 
-要启用试驾，请选择"**启用试驾**"复选框。 要从产品/服务中删除试驾，请清除此复选框。
+若要启用某个测试驱动器，请选中 "**启用测试驱动器**" 复选框。 若要从产品/服务中删除测试驱动器，请清除此复选框。
 
-其他试驾资源：
+其他测试驱动器资源：
 
-- [技术最佳实践](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [技术最佳做法](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [市场营销最佳做法](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
-- [测试驱动器概述](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)PDF（确保弹出窗口阻止程序已关闭）。
+- [测试驱动器概述](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)PDF （请确保弹出窗口阻止程序处于关闭状态）。
 
 ### <a name="lead-management"></a>潜在顾客管理
 
-使用合作伙伴中心将产品/服务发布到商业市场时，请将其连接到您的客户关系管理 （CRM） 系统。 这样，一旦有人对您的产品表示兴趣或使用，您就可以立即接收客户联系信息。 如果要启用 **"测试驱动器**"（请参阅上一节），则需要连接到 CRM，否则它是可选的。
+向合作伙伴中心发布产品/服务时，请将其连接到客户关系管理（CRM）系统。 这使你可以在有人向你的产品表达兴趣或使用你的产品时立即收到客户联系信息。 如果你将启用 "**测试驱动器**" （请参阅前面的部分），则需要连接到 CRM，否则为可选。
 
 1. 选择希望我们向其发送潜在客户的潜在客户目标。 合作伙伴中心支持以下 CRM 系统：
-    - [动态 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics)用于客户互动
+    - 适用于客户参与的[Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics)
     - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
     - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
 
     > [!NOTE]
-    > 如果上面未列出 CRM 系统，请使用[Azure 表](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table)或[Https 终结点](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https)来存储客户潜在顾客数据。 然后将数据导出到 CRM 系统。
+    > 如果上面未列出你的 CRM 系统，请使用[Azure 表](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table)或[Https 终结点](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https)来存储客户的潜在客户数据。 然后将数据导出到 CRM 系统。
 
-2. 在合作伙伴中心发布时，请将您的产品/服务连接到潜在顾客目标。
-3. 确认与潜在顾客目标的连接配置正确。 在合作伙伴中心发布后，我们将验证连接并向您发送测试线索。 在产品/服务上线之前预览产品/服务时，还可以尝试在预览环境中自行部署产品/服务，以测试潜在顾客连接。
-4. 确保与潜在顾客目标的连接保持更新状态，这样您就不会丢失任何潜在顾客。
+2. 在合作伙伴中心发布产品/服务后，将产品/服务连接到潜在客户。
+3. 确认正确配置了与潜在客户目标的连接。 在合作伙伴中心发布后，我们将验证连接并向你发送测试线索。 当你在推出产品/服务前预览产品/服务时，你还可以通过尝试在预览环境中自行部署产品/服务来测试你的潜在客户连接。
+4. 确保与潜在客户目标的连接保持更新，以便不会丢失任何潜在顾客。
 
-选择 **"保存"草稿**，然后再继续。
+选择 "**保存草稿**"，然后继续。
 
 ## <a name="properties"></a>属性
 
-此页面允许您定义用于在市场对产品/服务进行分组的类别和行业、应用版本和支持您的产品/服务的法律合同。
+此页面允许你定义用于在 marketplace 上对产品/服务进行分组的类别和行业、应用版本以及支持产品/服务的法律合同。
 
 ### <a name="categories"></a>类别
 
-选择至少 1 个类别，最多选择五个类别。 这些类别用于将产品/服务放置在相应的市场搜索区域。 在产品/服务说明中，说明您的优惠如何支持这些类别。 虚拟机产品/服务显示在 Azure 应用商店中的 **"计算**"类别下。
+选择最小值，最多五个类别。 这些类别用于将产品/服务置于适当的 marketplace 搜索区域。 在产品/服务说明中，说明产品/服务对这些类别的支持。 虚拟机产品/服务显示在 Azure Marketplace 中的 "**计算**" 类别下。
 
 ### <a name="legal"></a>合法
 
-您必须为优惠提供条款和条件。 可以使用两个选项：
+必须提供产品/服务的条款和条件。 可以使用两个选项：
 
-- 使用您自己的条款和条件
-- 使用微软商业市场的标准合约
+- 使用你自己的条款和条件
+- 使用 Microsoft 商业应用商店的标准协定
 
-#### <a name="use-your-own-terms-and-conditions"></a>使用您自己的条款和条件
+#### <a name="use-your-own-terms-and-conditions"></a>使用你自己的条款和条件
 
-要提供您自己的自定义条款和条件，请在 **"条款和条件"** 框中输入最多 10，000 个字符的文本。 如果您需要较长的说明，请输入指向您的条款和条件的单个网址。 它将作为活动链接向客户显示。
+若要提供自己的自定义条款和条件，请在 "**条款和条件**" 框中输入最多10000个字符的文本。 如果需要较长的说明，请输入指向你的条款和条件所在位置的单个 web 地址。 它将向客户显示为活动链接。
 
-客户必须先接受这些条款，然后才能试用您的优惠。
+客户必须接受这些条款，然后才能试用你的产品/服务。
 
-#### <a name="use-the-standard-contract-for-the-microsoft-commercial-marketplace"></a>使用微软商业市场的标准合约
+#### <a name="use-the-standard-contract-for-the-microsoft-commercial-marketplace"></a>使用 Microsoft 商业应用商店的标准协定
 
-为了简化客户的采购流程并降低软件供应商的法律复杂性，Microsoft 为商业市场提供了标准合同。 当您根据标准合同提供软件时，客户只需阅读并接受一次软件，您就无需创建自定义条款和条件。
+为了简化客户的采购过程并降低软件供应商的法律复杂性，Microsoft 为商业市场提供标准合同。 当你在标准合同下提供软件时，客户只需阅读并接受一次，你就不必创建自定义条款和条件。
 
-使用标准合约，选择"**使用 Microsoft 商业市场的标准合约**"复选框，然后在弹出窗口上 **"接受**"（您可能需要向上滚动才能查看）。
+通过选中 "**使用 Microsoft 商业应用的标准合同**" 复选框，然后在弹出窗口中**接受**（可能需要向上滚动才能看到），使用标准协定。
 
-![使用"新产品/服务"按钮和咨询服务产品/服务产品，在合作伙伴中心中演示"概述"页面。](media/use-standard-contract.png)
-
-> [!NOTE]
-> 使用商业市场的标准合同发布产品/服务后，不能使用您自己的自定义条款和条件。 在标准合同下**或**根据您自己的条款和条件提供您的解决方案。
-
-要了解有关标准合同的更多信息，请参阅 Microsoft[商业市场](https://docs.microsoft.com/azure/marketplace/standard-contract)的标准合约。 您可以将[标准合约](https://go.microsoft.com/fwlink/?linkid=2041178)下载为 PDF（确保弹出窗口阻止程序已关闭）。
-
-##### <a name="standard-contract-amendments"></a>标准合同修订
-
-标准合同修订允许您选择标准合同条款，以便简化，并为您的产品或业务创建条款。 客户只需审核并接受 Microsoft 标准合同，才需要查看合同的修订。 有两种修正案可供选择：通用和习俗。
-
-**通用修订**– 这些修订适用于所有客户的标准合同。 在采购流程中，它们向产品/服务的每个客户显示。 客户必须接受标准合同的条款和修改，然后才能使用您的优惠。 您可以提供每个报价的单一通用修订。 您可以在此框中输入无限数量的字符。 在发现和购买流期间，这些术语在 AppSource、Azure 应用商店和/或 Azure 门户中向客户显示。
-
-**自定义修订**– 这些是标准合同的特殊修订，通过 Azure 租户 ID 面向特定客户。 您可以选择要定位的租户。 只有租户的客户才会在优惠的采购流程中收到自定义修改条款。 客户必须接受标准合同的条款和修改，然后才能使用您的优惠。
-
-首先选择**添加自定义修改条款 （最多 10 个）。** 每个优惠最多可以提供 10 个自定义修订条款。
-
-- **自定义修订条款**– 在自定义修订条款框中输入您自己的修订条款。 您可以输入无限数量的字符。 只有您为这些自定义条款指定的租户 ID 的客户才能在 Azure 门户中的产品/服务采购流中看到这些内容。
-- **租户 ID（** 必需） – 每个自定义修订的目标可高达 20 个租户 ID。 如果添加自定义修改，则必须至少提供一个租户 ID，该 ID 标识 Azure 中的客户。 您的客户可以在 Azure 下找到，然后是属性。 目录 ID 值是租户 ID（例如，50c464d3-4930-494c-963c-1e951d15360e）。 您还可以使用我的[Microsoft Azure 和 Office 365 租户 ID](https://www.whatismytenantid.com/)上的域名 Web 地址查找组织的客户的租户 ID。
-- **说明**（可选） – 为租户 ID 提供友好的说明，帮助您通过修订确定目标客户的身份。
+![说明合作伙伴中心中的 "概述" 页，其中选择了 "新产品/服务" 按钮和 "咨询服务" 产品。](media/use-standard-contract.png)
 
 > [!NOTE]
-> 这两种类型的修正相互叠加。 以定制修订为目标的客户在购买过程中还将获得标准合同的普遍修订。
+> 使用商业应用商店的标准合同发布产品/服务后，不能使用自己的自定义条款和条件。 根据标准合同**或**您自己的条款和条件提供您的解决方案。
 
-选择 **"保存"草稿**，然后再继续。
+若要了解有关标准协定的详细信息，请参阅 Microsoft[商用 marketplace](https://docs.microsoft.com/azure/marketplace/standard-contract)的标准约定。 可以将[标准合同](https://go.microsoft.com/fwlink/?linkid=2041178)下载为 PDF （确保弹出窗口阻止程序处于关闭状态）。
 
-## <a name="offer-listing"></a>优惠列表
+##### <a name="standard-contract-amendments"></a>标准协定改正
 
-此页面允许您定义产品/服务详细信息，如产品/服务名称、说明、链接和联系人。
+标准协定修正案使你可以为简单起见选择标准协定术语，并为你的产品或企业创建条款。 如果客户已查看并接受 Microsoft 标准合同，则他们只需查看合同的修正案条款。 可使用两种类型的修正案：通用和自定义。
+
+**通用修正**–它们广泛应用于所有客户的标准协定。 它们显示在购买流程中的产品/服务的每个客户上。 客户必须接受标准合同条款和修正条款，然后才能使用产品/服务。 可以为每个产品/服务提供单个通用修订。 您可以在此框中输入不限数量的字符。 在发现和购买流程期间，会向 AppSource、Azure Marketplace 和/或 Azure 门户中的客户显示这些条款。
+
+**自定义修正**–这些是通过 Azure 租户 id 面向特定客户的标准协定的特殊修正。 你可以选择要作为目标的租户。 只有租户中的客户会看到产品/服务购买流程中的自定义修订条款。 客户必须接受标准合同条款和修正条款，然后才能使用产品/服务。
+
+首先选择 "**添加自定义修订条款（最多10个）**"。 最多可为每个产品提供10个自定义修订条款。
+
+- **自定义修订条款**–在自定义修订条款框中输入你自己的修订条款。 您可以输入不限数量的字符。 只有你为这些自定义术语指定的租户 Id 的客户才能在产品/服务的 Azure 门户中看到这些内容。
+- **租户 id** （必需）–每个自定义修正最多可针对20个租户 id。 如果添加自定义修正，则必须至少提供一个租户 ID，以便在 Azure 中标识您的客户。 你的客户可以在 Azure 中的下找到，然后在 "属性" 中找到。 目录 ID 值是租户 ID （例如，50c464d3-4930-494c-963c-1e951d15360e）。 你还可以在 "[我的 Microsoft Azure 和 Office 365 租户 id 是什么？](https://www.whatismytenantid.com/)" 中使用其域名 web 地址查找你的客户的组织的租户 id。
+- **描述**（可选）–提供租户 ID 的友好说明，可帮助您识别修正的目标客户。
 
 > [!NOTE]
-> 报价列表内容（如说明、文档、屏幕截图和使用条款）不需要以英文表示，只要产品/服务说明以短语开头，"此应用程序仅以 [非英语语言]提供。 您还可以提供_有用的链接网址_，以"产品/服务"列表内容中使用的语言以外的语言提供内容。
+> 这两种类型的改正堆栈彼此之上。 以自定义修正为目标的客户也会在购买过程中获得标准合同的通用修正。
 
-### <a name="marketplace-details"></a>市场详细信息
+选择 "**保存草稿**"，然后继续。
+
+## <a name="offer-listing"></a>产品/服务列表
+
+此页可用于定义产品/服务的详细信息，例如产品名称、说明、链接和联系人。
+
+> [!NOTE]
+> 产品/服务列表内容（如描述、文档、屏幕截图和使用条款）不要求使用英语，只要产品/服务说明以短语开头，"此应用程序仅在 [非英语语言] 中可用"。 你还可以提供_有用的链接 web 地址_，以使用产品/服务列表内容中所用的语言以外的其他语言提供内容。
+
+### <a name="marketplace-details"></a>Marketplace 详细信息
 
 #### <a name="name"></a>名称
 
-您在此处输入的名称将作为产品/服务列表的标题显示给客户。 此字段预先填充您在创建产品/服务时在 **"产品/服务"别名**框中输入的文本。 可以稍后更改此名称。
+你在此处输入的名称将作为你的产品/服务列表的标题向客户显示。 此字段预先填充了你在创建产品/服务时在 "**产品/服务**" 框中输入的文本。 可以稍后更改此名称。
 
 名称：
 
-- 可注册商标（您可以包括商标和版权符号）
-- 不能超过50个字符长
-- 不能包括表情符号。
+- 可以是商标字的（可以包括商标和版权符号）
+- 长度不能超过50个字符
+- 不能包含表情符号。
 
 #### <a name="search-results-summary"></a>搜索结果摘要
 
-您的报价的简短说明。 这最多可达 100 个字符，并且用于市场搜索结果。
+产品/服务的简短说明。 此值最多可包含100个字符，并在 marketplace 搜索结果中使用。
 
 #### <a name="long-summary"></a>长摘要
 
-提供更久的报价说明。 这最多可达 256 个字符，并且用于市场搜索结果。
+提供产品/服务的更长说明。 此值最多可包含256个字符，并在 marketplace 搜索结果中使用。
 
 #### <a name="description"></a>说明
 
-提供您的优惠的详细描述，最多 3，000 个字符。 这在商业市场列表概述中向客户显示。
+提供产品/服务的详细说明，最多3000个字符。 这会显示给商业市场列表概述中的客户。
 
-在描述中包括以下一项或多项：
+在说明中包括以下一项或多项：
 
-- 您的报价的价值和主要优势
-- 类别或行业协会，或两者
+- 产品/服务的价值和主要优势
+- 类别或行业关联
 - 应用内购买机会
-- 任何必需的披露
+- 任何所需的公开
 
-以下是编写说明的一些提示：
+下面是有关编写说明的一些提示：
 
-- 在前几句描述中清晰描述产品/服务的价值主张。 包括以下项目：
-  - 您的优惠说明。
-  - 受益于您的产品/服务的用户类型。
-  - 客户需要或产品/服务解决的问题。
-- 请记住，前几个句子可能显示在搜索引擎结果中。
-- 不要依赖特性和功能来销售您的产品/服务。 相反，关注您的产品/服务提供的价值。
-- 使用特定于行业或基于利益的词语。
+- 在前几句描述中清晰描述产品/服务的价值主张。 包括以下项：
+  - 产品/服务的说明。
+  - 受益于你的产品/服务的用户类型。
+  - 产品/服务的客户需要或问题。
+- 请记住，前几个句子可能会显示在搜索引擎结果中。
+- 不要依赖特性和功能来出售产品/服务。 而是专注于你的产品/服务提供的价值。
+- 使用行业特定的或基于收益的字词。
 
-为了使您的报价描述更具吸引力，请使用丰富的文本编辑器来设置您的说明格式。 富文本编辑器允许您添加数字、项目符号、粗体、斜体和缩进，以使描述更具可读性。
+若要使您的产品/服务说明更具吸引力，请使用富文本编辑器来设置说明格式。 利用富文本编辑器，您可以添加数字、项目符号、粗体、斜体和缩进，使说明更具可读性。
 
-![使用"新产品/服务"按钮和咨询服务产品/服务产品，在合作伙伴中心中演示"概述"页面。](media/power-bi-rich-text-editor.png)
+![说明合作伙伴中心中的 "概述" 页，其中选择了 "新产品/服务" 按钮和 "咨询服务" 产品。](media/power-bi-rich-text-editor.png)
 
-#### <a name="privacy-policy-link"></a>隐私政策链接
+#### <a name="privacy-policy-link"></a>隐私策略链接
 
-将网址 （URL） 输入到组织的隐私政策中。 确保您的优惠符合隐私法律和法规。 您还必须在您的网站上发布有效的隐私政策。
+输入组织的隐私策略的 web 地址（URL）。 确保你的产品/服务符合隐私法律和法规。 你还必须在网站上发布有效的隐私策略。
 
 ### <a name="useful-links"></a>有用链接
 
-提供有关您的优惠的补充在线文档。 要添加链接，请选择 **" 添加链接"，** 然后完成以下字段：
+提供有关你的产品/服务的补充联机文档。 若要添加链接，请选择 " **+ 添加链接**"，然后完成以下字段：
 
-- **名称**– 客户将在详细信息页面上看到该名称。
-- **链接 （URL）** – 输入客户查看联机文档的链接。
+- **名称**-客户会在详细信息页上看到该名称。
+- **链接（URL）** –输入客户的链接以查看你的联机文档。
 
 ### <a name="customer-support-links"></a>客户支持链接
 
-提供支持网站，客户可以在该网站联系您的支持团队。
+提供支持网站，客户可以在其中联系支持团队。
 
 - Azure 全球支持网站
-- Azure 政府支持网站
+- Azure 政府版支持网站
 
 ### <a name="partner-support-contact"></a>合作伙伴支持联系人
 
-为 Microsoft 合作伙伴提供联系信息，供客户打开支持票证时使用。 这将不会在市场上列出。
+提供客户在客户打开支持票证时要使用的 Microsoft 合作伙伴联系信息。 这不会在 marketplace 中列出。
 
 - 名称
 - 电子邮件
@@ -245,307 +245,307 @@ ms.locfileid: "81869059"
 
 ### <a name="engineering-contact"></a>工程联系人
 
-在您的产品/服务出现问题（包括认证问题）时，为 Microsoft 提供要使用的联系信息。 这将不会在市场上列出。
+向 Microsoft 提供联系信息，以便在你的产品/服务出现问题时使用，包括认证问题。 这不会在 marketplace 中列出。
 
 - 名称
 - 电子邮件
 - 电话
 
-### <a name="marketplace-media"></a>市场媒体
+### <a name="marketplace-media"></a>Marketplace 媒体
 
-提供徽标和图像，以便与您的产品配合使用。 所有图像必须采用 PNG 格式。 模糊的图像将导致您的提交被拒绝。
+提供要用于产品/服务的徽标和图像。 所有图像必须为 PNG 格式。 模糊图像将导致提交遭到拒绝。
 
 >[!Note]
->如果上传文件出现问题，请确保本地网络不会阻止合作伙伴中心使用https://upload.xboxlive.com的服务。
+>如果上传文件时遇到问题，请确保你的本地网络不会阻止https://upload.xboxlive.com合作伙伴中心使用的服务。
 
-#### <a name="marketplace-logos"></a>市场徽标
+#### <a name="marketplace-logos"></a>Marketplace 徽标
 
-以以下四个像素大小提供产品徽标的 PNG 文件：
+提供产品/服务徽标的 PNG 文件，大小为以下四个像素：
 
-- **小**（48 x 48）
-- **中等**（90 x 90）
+- **小型**（48 x 48）
+- **中**（90 x 90）
 - **大**（216 x 216）
 - **宽**（255 x 115）
 
-所有四个徽标都是必需的，并且在市场列表中的不同位置使用。
+所有这四种徽标都是必需的，并用于 marketplace 列表中的不同位置。
 
 #### <a name="screenshots"></a>屏幕截图
 
-最多添加五个屏幕截图，显示您的优惠如何工作。 每个屏幕截图的大小和 PNG 格式必须为 1280 x 720 像素。 您还必须添加一个标题来描述您的屏幕截图。
+最多可添加五个屏幕截图，其中显示了产品/服务的工作方式。 每个屏幕截图的大小必须为 1280 x 720 像素，格式为 PNG。 还必须添加描述屏幕截图的标题。
 
 #### <a name="videos"></a>视频
 
-最多添加五个视频，演示您的优惠。 这些视频应托管在外部视频服务上。 输入每个视频的名称、网址和视频的缩略图 PNG 图像，大小为 1280 x 720 像素。
+添加最多5个视频来演示产品/服务。 这些应托管在外部视频服务上。 输入每个视频的名称、web 地址以及以 1280 x 720 像素大小显示的视频缩略图 PNG 图像。
 
-有关其他市场列表资源，请参阅[市场产品/服务列表的最佳做法](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)。
+有关更多应用商店列出资源，请参阅[marketplace 产品/服务列表的最佳实践](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)。
 
-选择 **"保存"草稿**，然后再继续。
+选择 "**保存草稿**"，然后继续。
 
 ## <a name="preview"></a>预览
 
-在"预览"选项卡上，选择有限的**预览受众**以验证您的优惠，然后再将其实时发布到更广泛的市场受众。
+在将产品/服务发布到更广泛的 marketplace 受众之前，在 "预览" 选项卡上，选择用于验证产品/服务的受限**预览版观众**。
 
 > [!IMPORTANT]
-> 在预览版中检查您的优惠后，选择 **"上线"** 以向商业市场公众受众发布您的优惠。
+> 在预览版中检查产品/服务后，**请选择 "上线"** 将产品/服务发布到商业市场公共受众。
 
-预览受众由 Azure 订阅 ID GUID 以及每个选项的可选说明标识。 客户看不到这两个字段。 您可以在 Azure 门户中的 **"订阅"** 页上找到 Azure 订阅 ID。
+预览受众由 Azure 订阅 ID Guid 标识，以及每个用户的可选说明。 这些字段均不能由客户查看。 你可以在 "**订阅**" 页上的 Azure 门户中找到你的 AZURE 订阅 ID。
 
-添加至少一个 Azure 订阅 ID，分别（最多 10 个）或通过上传 CSV 文件（最多 100 个）。 通过添加这些订阅 IT，您可以定义谁可以在产品/服务实时发布之前预览产品/服务。 如果您的优惠已是实时的，您仍然可以定义预览受众，以测试产品/服务的变化或更新。
+至少添加一个 Azure 订阅 ID （最多10个）或上传一个 CSV 文件（最大为100）。 通过添加这些订阅 Id，你可以定义在 live 发布之前可以预览你的产品/服务的人员。 如果你的产品/服务已处于活动阶段，你仍可以定义一个预览版观众来测试产品/服务的更改或更新。
 
 > [!NOTE]
-> 预览观众与私人观众不同。 预览受众可以在产品/服务在市场现场发布_之前_访问它。 他们可以查看和验证所有计划，包括仅在您的优惠完全发布到市场后才提供给私人受众的计划。 私人访问群体（在计划**定价和可用性**选项卡中定义）具有对特定计划的独占访问权限。
+> 预览受众不同于专用用户。 预览观众可以在将其发布到市场_之前_，访问你的产品/服务。 他们可以查看和验证所有计划，包括那些在将产品/服务完全发布到 marketplace 后仅对专用用户可用的计划。 专用用户（在 "计划**定价和可用性**" 选项卡中定义）具有特定计划的独占访问权限。
 
-在继续下一节"计划概述"之前选择 **"保存草稿**"。
+在转到下一节 "计划概述" 之前，请选择 "**保存草稿**"。
 
 ## <a name="plan-overview"></a>计划概述
 
-您可以在合作伙伴中心的同一优惠中提供不同的计划选项。 这些计划以前称为 SKU。 产品/服务至少需要一个计划，在货币化受众、Azure 区域、功能或 VM 映像方面可能有所不同。
+您可以在合作伙伴中心提供不同的计划选项。 这些计划以前称为 Sku。 产品/服务需要至少一个计划，该计划可能不同于盈利受众、Azure 区域、功能或 VM 映像。
 
-创建计划后，"**计划概览**"选项卡显示：
+创建计划后，"**计划概述**" 选项卡将显示：
 
 - 计划名称
 - 许可证模型
-- 受众（公共或私人）
+- 受众（公共或私有）
 - 当前发布状态
 - 可用操作
 
-计划概述中可用的操作因计划的当前状态而异。 其中包括：
+计划概述中的可用操作取决于计划的当前状态。 其中包括：
 
-- **删除草稿**= 如果计划状态为草稿
-- **停止销售计划**或**同步私人受众**– 如果计划状态实时发布
+- **删除草稿**–如果计划状态为草稿
+- **停止销售计划**或**同步专用受众**–如果计划状态为 "实时"
 
 ### <a name="create-new-plan"></a>创建新计划
 
-选择 **= 在顶部创建新计划**。 将显示"**新建计划**"对话框。
+选择顶部的 " **+ 创建新计划**"。 此时将显示 "**新建计划**" 对话框。
 
-在 **"计划 ID"** 框中，为此产品/服务中的每个计划创建唯一的计划 ID。 此 ID 将在产品 Web 地址中对客户可见。 仅使用小写字母和数字、破折号或下划线，最多 50 个字符。
+在 "**计划 id** " 框中，为此产品/服务中的每个计划创建唯一的计划 id。 此 ID 将对产品 web 地址中的客户可见。 仅使用小写字母和数字、短划线或下划线，最多使用50个字符。
 
 > [!NOTE]
-> 选择 "**创建**"后，无法更改计划 ID。
+> 选择 "**创建**" 后，不能更改计划 ID。
 
-在 **"计划名称**"框中，输入此计划的名称。 客户在决定在您的产品/服务中选择哪个计划时，会看到此名称。 创建一个唯一的名称，清楚地指出每个计划的差异。 例如，您可以将 Windows**服务器**用于计划即**用即付****、BYOL、****高级****和企业**。
+在 "**计划名称**" 框中，输入此计划的名称。 客户在确定要在产品中选择的计划时，将看到此名称。 创建明确指出每个计划差异的唯一名称。 例如，你可以将**Windows Server**与 "即用即**付**"、" **BYOL**"、"**高级**" 和 "**企业**" 结合使用。
 
-选择“创建”  。
+选择“创建”。 
 
 ### <a name="plan-setup"></a>计划设置
 
-设置计划类型的高级配置，它是否重用其他计划的技术配置，以及计划应在哪些区域可用。 此处的选择确定同一计划的其他选项卡上显示哪些字段。
+设置计划类型的高级配置，它是否重复使用其他计划中的技术配置，以及计划应在哪个 Azure 区域中可用。 此处所做的选择将确定在同一计划的其他选项卡上显示的字段。
 
-#### <a name="reuse-technical-configuration"></a>重用技术配置
+#### <a name="reuse-technical-configuration"></a>重复使用技术配置
 
-如果您有多个相同类型的计划，并且它们之间的包相同，则可以选择**此计划重用其他计划的技术配置**。 此选项允许您为此产品/服务选择相同类型的其他计划之一，并重复使用其技术配置。
+如果有多个相同类型的计划，并且这些包在它们之间完全相同，则可以选择此计划，重新使用**其他计划中的技术配置**。 使用此选项，你可以为此服务选择同一类型的其他计划之一，并重复使用其技术配置。
 
 > [!NOTE]
-> 当您从另一个计划重用技术配置时，整个**技术配置**选项卡将从这个计划中消失。 其他计划中的技术配置详细信息（包括您将来进行的任何更新）也将用于此计划。 此计划发布后，无法更改此设置。
+> 当你重复使用其他计划中的技术配置时，将从此计划中消失整个**技术配置**选项卡。 其他计划中的技术配置详细信息（包括将来所做的任何更新）也将用于此计划。 此计划发布后无法更改此设置。
 
 #### <a name="azure-regions"></a>Azure 区域
 
-您的计划必须至少在一个 Azure 区域中可用。
+你的计划必须至少在一个 Azure 区域中提供。
 
-选择**Azure 全局**选项，使计划可供具有商业市场集成的所有公共 Azure 区域的客户使用。 有关详细信息，请参阅[地理可用性和货币支持](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)。
+选择**Azure 全局**选项，以使你的计划对所有具有商业市场集成的公共 Azure 区域中的客户可用。 有关详细信息，请参阅[地理可用性和货币支持](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)。
 
-选择**Azure 政府**选项以使计划在 Azure[政府](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)区域中可用。 此区域为美国联邦、州、地方或部落实体的客户以及有资格为其提供服务的合作伙伴提供受控访问。 作为发布者，您负责任何合规性控制、安全措施和最佳实践。 Azure 政府使用物理隔离的数据中心和网络（仅适用于美国）。
+选择**Azure 政府**版选项，使你的计划在[Azure 政府](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)版区域中可用。 此区域为美国联邦、州、地方或部落实体的客户以及有资格提供服务的合作伙伴提供控制访问权限。 作为发布者，你将负责任何符合性控制、安全措施和最佳实践。 Azure 政府版使用物理上隔离的数据中心和网络（仅限美国）。
 
-在发布到[Azure 政府](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)之前，在环境中测试和验证计划，因为某些终结点可能有所不同。 要设置和测试计划，请从 Microsoft Azure[政府试用版](https://azure.microsoft.com/global-infrastructure/government/request/)请求试用帐户。
+在发布到[Azure 政府](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)版之前，请在环境中测试和验证计划，因为某些终结点可能会有所不同。 若要设置和测试计划，请从[Microsoft Azure 政府试用](https://azure.microsoft.com/global-infrastructure/government/request/)版请求试用帐户。
 
 > [!NOTE]
-> 计划发布并在特定 Azure 区域中可用后，无法删除该区域。
+> 计划发布并在特定 Azure 区域中可用后，将无法删除该区域。
 
 #### <a name="azure-government-certifications"></a>Azure 政府认证
 
-仅当在**Azure 区域**下选择**Azure 政府**时，此选项才可见。
+仅当你在 " **azure 区域**" 下选择 " **azure 政府**" 时，此选项才可见。
 
-Azure 政府服务处理受某些政府法规和要求约束的数据。 例如，FedRAMP、NIST 800.171 （DIB）、ITAR、IRS 1075、DoD L4 和 CJIS。 为了提高您对这些计划的认证的认识，您最多可以提供 100 个描述它们的链接。 这些可以是直接指向您在程序上列表的链接，也可以是指向您自己网站上遵守这些列表的链接。 这些链接仅对 Azure 政府客户可见。
+Azure 政府服务处理受特定政府法规和要求约束的数据。 例如，FedRAMP、NIST 800.171 （DIB）、ITAR、IRS 1075、DoD L4 和 CJIS。 若要对这些程序进行了解，可以提供多达100的链接。 这些链接可以是直接链接到您的程序上的列表，也可以是您自己的网站上的符合性说明。 这些链接仅对 Azure 政府客户可见。
 
-选择 **"保存"草稿**，然后再继续。
+选择 "**保存草稿**"，然后继续。
 
 ### <a name="plan-listing"></a>计划列表
 
-这是配置计划列表详细信息的位置。 此选项卡显示同一产品/服务中计划之间可能有所不同的特定信息。
+你可以在此处配置列出计划的详细信息。 此选项卡显示同一个产品/服务中的计划可能有所不同的特定信息。
 
 #### <a name="plan-name"></a>计划名称
 
-这预先填写了您在创建计划时给出的名称。 此名称作为此计划的标题出现在市场中，限制为 100 个字符。
+该名称预先填充了你在创建计划时为其提供的名称。 此名称在 marketplace 中显示为此计划的标题，并限制为100个字符。
 
 #### <a name="plan-summary"></a>计划摘要
 
-提供您的计划（而不是报价）的简短摘要。 此摘要限制为 100 个字符。
+提供计划的简短摘要（而不是产品/服务）。 此摘要限制为100个字符。
 
 #### <a name="plan-description"></a>计划描述
 
-描述是什么让此软件计划独一无二，以及您产品/服务中计划之间的差异。 不要描述这个提议，只是计划。 计划描述最多可以包含 2，000 个字符。
+介绍如何使此软件计划独一无二，并提供产品内计划之间的差异。 不要描述该产品/服务，而只是计划。 计划说明最多可包含2000个字符。
 
-选择 **"保存"草稿**，然后再继续。
+选择 "**保存草稿**"，然后继续。
 
 ### <a name="pricing-and-availability"></a>定价和可用性
 
-在此选项卡上，您将配置以下内容：
+在此选项卡上，你将配置以下内容：
 
-- 此计划将在
+- 这项计划将在
 - 每小时价格
-- 是使计划对所有人可见，还是只对特定客户（私人受众） 可见
+- 是使计划对每个人都可见，还是仅对特定客户可见（专用受众）
 
 #### <a name="markets"></a>市场
 
-每个计划必须至少在一个市场可用。 选择此计划可供购买的每个市场位置的复选框（这些市场中的用户仍然可以将产品/服务部署到**[计划设置](#plan-setup)** 中选择的所有 Azure 区域）。 **"税务汇入**"按钮显示 Microsoft 代表您汇入销售和使用税款的国家/地区。 发布到中国仅限于**免费**或**自带许可证**（BYOL） 的计划。
+每个计划都必须至少在一个市场中可用。 对于应可购买此计划的每个市场位置，选中该复选框（这些市场中的用户仍可将产品/服务部署到**[计划设置](#plan-setup)** 中选择的所有 Azure 区域）。 **税汇款**按钮显示了 Microsoft 汇寄销售和使用的国家/地区。 发布到中国的计划仅限**免费**计划或**自带许可**（BYOL）。
 
-如果您已为计划设定价格（美元），并添加其他市场位置，则新市场的价格将根据当前汇率计算。 在出版之前，务必查看每个市场的价格。 保存更改后，使用 **"导出价格 （xlsx）"** 链接查看价格。
+如果已将计划的价格设置为美国美元（USD）并添加另一个市场位置，则将根据当前汇率计算新市场的价格。 请始终在发布前查看每个市场的价格。 保存更改后，使用 "**导出价格（.xlsx）** " 链接查看价格。
 
-删除市场时，使用活动部署的客户将无法创建新部署或扩展其现有部署。 现有部署不会受到影响。
+当你删除市场时，使用活动部署的市场客户将无法创建新部署或扩展其现有部署。 现有部署将不会受到影响。
 
 #### <a name="pricing"></a>定价
 
-**许可证模型**– 选择**基于使用情况的每月计费计划**，以配置此计划的定价，或**自带许可证**，让客户使用此计划及其现有许可证。
+**许可证模型**–选择 "**基于使用情况的按月计费计划**" 可配置此计划的定价，或**自带许可证**，让客户将此计划用于现有许可证。
 
-对于基于使用情况的每月计费计划，请使用以下三种定价输入选项之一：
+对于基于使用情况的月度计费计划，请使用以下三个定价条目选项之一：
 
-- **每个核心**– 以美元 （USD） 提供每个核心的价格。 我们将计算每个核心大小的定价，并使用当前汇率转换为当地货币。
-- **每个核心尺寸**– 提供每个核心尺寸的价格（美元）。 我们将使用当前汇率将价格转换为当地货币。
-- **每个市场和核心尺寸**– 为所有市场提供每个核心尺寸的价格。 您可以从电子表格导入价格。
+- **每个核心**–以美国美元（USD）为单位提供每个核心的价格。 我们将计算每个核心大小的定价，并使用当前汇率转换为本地货币。
+- **每个核心大小**–提供每个核心大小的价格（美元）。 我们使用当前汇率将价格转换为本地货币。
+- **每个市场和核心大小**–为所有市场提供每个核心大小的价格。 您可以从电子表格中导入价格。
 
 > [!NOTE]
-> 保存定价更改以启用定价数据导出。 在计划中市场的价格公布后，以后无法更改。 通过导出定价电子表格并查看每个市场的价格，确保这些价格在发布之前是正确的。
+> 保存定价更改以启用定价数据的导出。 发布计划中市场的价格后，以后无法更改它。 在发布之前，请先通过导出定价电子表格并查看每个市场的价格，确保这些价格是正确的。
 
 #### <a name="free-trial"></a>免费试用
 
-您可以为客户提供一个月或三个月的免费试用。
+你可以向客户提供一个月或三个月的免费试用版。
 
 #### <a name="visibility"></a>可见性
 
-您可以将每个计划设计为对所有人可见，也可以仅对预选的受众可见。 使用 Azure 订阅标识分配此受限访问群体中的成员身份。
+您可以设计每个计划，使其对每个人可见，或仅对预选用户可见。 使用 Azure 订阅 Id 向此受限受众分配成员身份。
 
-**公开**– 您的计划可以被所有人看到。
+**公开**–所有人都可以查看你的计划。
 
-**私人受众**– 使您的计划仅对预选的受众可见。 在以私人计划身份发布后，您可以更新受众或将其更改为公共。 将计划公之于众后，必须保持公开;你不能把它改回私人。
+**专用受众**–使你的计划仅对预选用户可见。 将其发布为私有计划后，你可以更新受众或将其更改为 "公共"。 公开计划后，该计划必须保持公共;不能将其更改回私有。
 
-**受限访问群体（Azure 订阅标识）** – 使用 Azure 订阅标识分配将有权访问此私有计划的受众。 或者，包括您分配的每个 Azure 订阅 ID 的说明。 如果导入 CSV 电子表格，则手动添加最多 10 个订阅 I 或 20，000 个订阅。 Azure 订阅标识表示为 GUID，字母必须小写。
+**受限受众（azure 订阅 id）** –使用 Azure 订阅 id 分配将有权访问此私有计划的受众。 （可选）包含分配的每个 Azure 订阅 ID 的说明。 如果导入 CSV 电子表格，请手动添加最多10个订阅 Id 或20000。 Azure 订阅 Id 表示为 Guid，字母必须为小写。
 
 > [!NOTE]
-> 私人或受限受众不同于您在 **"预览"** 选项卡上定义的预览受众。预览受众可以在产品/服务发布_于_市场直播之前访问您的产品/服务。 虽然私人受众选择仅适用于特定计划，但预览受众可以出于验证目的查看所有计划（私有计划或计划）。
+> 专用或受限制的受众不同于你在 "**预览**" 选项卡上定义的预览观众。预览版观众在 marketplace 发布_之前_，可以访问产品/服务。 尽管专用受众选项仅适用于特定计划，但预览受众可以查看所有计划（private）以用于验证目的。
 
 #### <a name="hide-plan"></a>隐藏计划
 
-如果虚拟机仅打算通过其他解决方案模板或托管应用程序间接使用，请选择此框以发布虚拟机，但直接从客户搜索和浏览虚拟机时将其隐藏。
+如果你的虚拟机仅在通过另一个解决方案模板或托管应用程序引用时才间接使用，则选择此框以发布你的虚拟机，但会直接从客户搜索和浏览它。
 
 > [!NOTE]
-> 隐藏计划不支持预览链接。
+> 隐藏的计划不支持预览链接。
 
-选择 **"保存"草稿**，然后再继续。
+选择 "**保存草稿**"，然后继续。
 
 ### <a name="technical-configuration"></a>技术配置
 
-提供与此计划关联的图像和其他技术属性。 有关详细信息，请参阅[创建 Azure VM 技术资产](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets)。
+提供与此计划关联的映像和其他技术属性。 有关详细信息，请参阅[创建 AZURE VM 技术资产](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets)。
 
 > [!NOTE]
-> 如果您使用此计划重用 **"计划设置**"选项卡上其他计划的包，则不显示此选项卡。
+> 如果已将此计划配置为在 "**计划设置**" 选项卡上重复使用其他计划中的包，则不会显示此选项卡。
 
 #### <a name="operating-system"></a>操作系统
 
-- **操作系统系列**– 从**Windows**或**Linux**操作系统中选择
-- **发布**或**供应商**- 选择 Windows 版本或 Linux 供应商
-- **操作系统友好名称**– 选择友好的操作系统名称。 此名称对客户可见
+- **操作系统系列**–从**Windows**或**Linux**操作系统中选择
+- **版本**或**供应商**–选择 Windows 版本或 Linux 供应商
+- **OS 友好名称**–选择一个友好的操作系统名称。 此名称对客户可见
 
 #### <a name="recommended-vm-sizes"></a>建议的 VM 大小
 
-选择最多六个建议的虚拟机大小，以显示在 Azure 应用商店中。
+选择最多六个建议的虚拟机大小，以显示在 Azure Marketplace 中。
 
 #### <a name="open-ports"></a>打开端口
 
-在已部署的虚拟机上打开公共或专用端口。
+在部署的虚拟机上打开公共或专用端口。
 
 #### <a name="storage-option-for-deployment"></a>部署的存储选项
 
-**磁盘部署选项**- 选择用户在使用虚拟机时可以使用的磁盘部署类型。 Microsoft 建议将部署仅限制为托管磁盘部署。
+**磁盘部署选项**-选择用户在使用虚拟机时可以使用的磁盘部署类型。 Microsoft 建议仅将部署限制为托管磁盘部署。
 
 #### <a name="properties"></a>属性
 
-**支持加速网络**– 选择 VM 是否支持[加速网络](https://go.microsoft.com/fwlink/?linkid=2124513)。
+**支持加速网络**–选择 VM 是否支持[加速网络](https://go.microsoft.com/fwlink/?linkid=2124513)。
 
 #### <a name="vm-images"></a>VM 映像
 
-为虚拟机映像提供磁盘版本和 SAS URI。 为每个 VM 映像添加最多 16 个数据磁盘。 在给定提交中，每个计划仅提供一个新映像版本。 发布图像后，无法对其进行编辑，但可以将其删除。 删除版本将阻止新用户和现有用户部署已删除版本的新实例。
+为虚拟机映像提供磁盘版本和 SAS URI。 为每个 VM 映像添加最多16个数据磁盘。 在给定提交中，每个计划仅提供一个新的映像版本。 映像发布后，无法对其进行编辑，但可以将其删除。 删除版本将阻止新用户和现有用户部署已删除版本的新实例。
 
-- **光盘版本**是您提供的图像的版本。
+- **光盘版本**是所提供的映像的版本。
 - **SAS URI**是 Azure 存储中存储操作系统 VHD 的位置。
-- 数据磁盘映像也是存储在其 Azure 存储中的 VHD SAS URI。
-- 在计划中每个提交只添加一个图像。
+- 数据磁盘映像也是存储在其 Azure 存储中的 VHD SAS Uri。
+- 在计划中，每次提交只添加一个映像。
 
-无论您使用哪种操作系统，都只添加解决方案所需的最小数据磁盘数。 客户无法在部署时删除属于映像的磁盘，但始终可以在部署期间或部署后添加磁盘。
+不管使用哪种操作系统，只需添加解决方案所需的最小数据磁盘数。 客户无法在部署时删除作为映像一部分的磁盘，但它们始终可以在部署期间或之后添加磁盘。
 
-选择 **"保存"草稿**，然后再继续并返回到**计划概述**。
+选择 "**保存草稿**"，然后继续并返回到**计划概述**。
 
-## <a name="resell-through-csps"></a>通过 CSP 转售
+## <a name="resell-through-csps"></a>通过 Csp 转售
 
-通过向[云解决方案提供商](https://azure.microsoft.com/offers/ms-azr-0145p/)（CSP） 计划中的合作伙伴提供产品/服务，从而扩大产品/服务范围。 所有自带许可证 （BYOL） 计划均自动选择;您可以选择加入您的非 BYOL 计划。
+通过向[云解决方案提供商](https://azure.microsoft.com/offers/ms-azr-0145p/)（CSP）计划中的合作伙伴提供产品/服务来扩展产品/服务的覆盖范围。 将自动选择 "自带许可证" （BYOL）计划;可以选择选择不 BYOL 的计划。
 
-选择 **"保存"草稿**，然后再继续。
+选择 "**保存草稿**"，然后继续。
 
 ## <a name="test-drive"></a>体验版
 
-设置演示（测试驱动器），让客户在购买之前试用您的产品/服务。 要创建一个演示环境，让客户在固定的时间内试用您的产品/服务，请参阅[在商业市场试用您的产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive)。
+设置演示（测试驱动器），让客户在购买前试用产品/服务。 若要创建允许客户在固定时间段内试用你的产品/服务的演示环境，请参阅[在商业应用商店中试用你的产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive)。
 
-要启用试驾，请在"[产品/服务设置"](#test-drive)选项卡上选中"启用试驾"复选框。要从产品/服务中删除试驾，请清除此复选框。
+若要启用某个测试驱动器，请选中 "[产品/服务设置](#test-drive)" 选项卡上的 "启用测试驱动器" 复选框。若要从产品/服务中删除测试驱动器，请清除此复选框。
 
-其他试驾资源：
+其他测试驱动器资源：
 
-- 技术最佳实践
+- 技术最佳做法
 - 市场营销最佳做法
-- 测试驱动器概述（PDF;请确保您的弹出窗口阻止程序已关闭）。
+- 测试驱动器概述（PDF; 请确保弹出窗口阻止程序处于关闭状态）。
 
-选择 **"保存"草稿**，然后再继续。
+选择 "**保存草稿**"，然后继续。
 
-## <a name="review-and-publish"></a>审核和发布
+## <a name="review-and-publish"></a>查看和发布
 
-完成产品/服务所需的所有部分后，可以将其提交以供审核和发布。
+完成该产品/服务的所有必需部分后，可以提交它来查看和发布。
 
-在门户的右上角，选择 **"审阅"并发布**。
+在门户的右上角，选择 "**查看并发布**"。
 
-在此页面上，您可以：
+在此页上，您可以：
 
 - 请参阅产品/服务的每个部分的完成状态。
-  - **未启动**- 部分尚未启动，需要完成。
-  - **不完整**- 该部分有必须修复或要求您提供详细信息的错误。 有关如何更新本节的指导，请参阅本文档前面的部分。
-  - **完成**– 部分已完成，没有错误。 优惠的所有部分必须完成，然后才能提交报价。
-- **认证注意事项**– 向认证团队提供测试说明，以确保应用测试正确。 提供有助于了解应用的任何补充说明。
+  - **未启动**–此部分尚未启动，需要完成。
+  - **不完整**–此部分包含错误，必须修复这些错误，或者要求你提供详细信息。 请参阅本文档前面的部分，了解有关如何更新此部分的指南。
+  - **Complete** –此部分已完成，并且没有任何错误。 必须先完成产品/服务的所有部分，然后才能提交产品/服务。
+- **认证说明**–为认证团队提供测试说明，确保正确测试您的应用程序。 提供任何有助于了解应用的补充说明。
 
-要提交发布要约，请选择 **"审阅"并发布**。
+若要提交产品/服务进行发布，请选择 "**查看并发布**"。
 
-我们将向您发送一封电子邮件，告知您产品/服务预览版本何时可供审核和批准。 要向公众发布您的优惠（或者如果私人优惠，则向私人受众），请转到合作伙伴中心，找到优惠的 **"概述"** 页面，然后选择 **"上线**"。 发布时，您的产品/服务状态将显示在页面顶部。
+我们将向你发送一封电子邮件，告知你该产品/服务的预览版本可供查看和批准。 若要将产品/服务发布到公共产品/服务（如果是专用用户），请访问合作伙伴中心，找到产品/服务的 "**概述**" 页，然后选择 "**上线**"。 当发布正在进行时，产品/服务的状态将显示在页面顶部。
 
 ### <a name="errors-and-review-feedback"></a>错误和评审反馈
 
-发布过程中的**手动验证**步骤是对您的产品/服务及其相关技术资产的广泛审查。 如果此过程发现您的产品/服务出现错误，您将收到一份详细说明问题的认证报告。 只需进行必要的更正并重新发布您的报价。
+发布过程中的**手动验证**步骤代表了对您的产品/服务及其关联技术资产的广泛回顾。 如果此过程发现你的产品/服务出现错误，你将收到详细说明问题的认证报告。 只需进行所需的更正并重新发布产品。
 
 ## <a name="offer-overview"></a>产品/服务概述
 
-**"产品/服务概述"** 页显示发布此产品/服务所需的步骤（已完成和正在进行的）以及每个步骤应完成多长时间的可视化表示形式。
+"**产品概述**" 页显示了发布此产品/服务所需步骤的直观表示形式（已完成和正在进行）以及每个步骤的完成时间。
 
-此页包含基于您做出的选择对此产品/服务执行操作的链接。 例如：
+此页包含基于你所做的选择对此服务执行操作的链接。 例如：
 
-- 如果要约是草稿 -[删除草稿要约](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
-- 如果优惠是实时的 -[停止销售优惠](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
-- 如果优惠处于预览版 -[上线](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval)
-- 如果您尚未完成发布者签核 -[取消发布](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing)
+- 如果产品/服务是草稿版/草稿版[产品](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)/服务
+- 如果产品/服务是实时的，则[停止销售产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
+- 如果[产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval)为预览版-上线
+- 如果尚未完成发布服务器注销-[取消发布](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing)
 
-## <a name="marketplace-examples"></a>市场示例
+## <a name="marketplace-examples"></a>Marketplace 示例
 
-这些示例显示了产品/服务在 Azure 应用商店中的显示方式。
+这些示例显示了产品/服务在 Azure Marketplace 中的显示方式。
 
-### <a name="azure-marketplace-offer-details"></a>Azure 应用商店提供详细信息
+### <a name="azure-marketplace-offer-details"></a>Azure Marketplace 产品/服务详细信息
 
-![Azure 应用商店提供详细信息屏幕示例](media/avm-create1.png)
+![Azure Marketplace 产品/服务详细信息屏幕示例](media/avm-create1.png)
 
-### <a name="azure-marketplace-search-results"></a>Azure 应用商店搜索结果
+### <a name="azure-marketplace-search-results"></a>Azure Marketplace 搜索结果
 
-![Azure 应用商店搜索详细信息屏幕示例](media/avm-create2.png)
+![Azure Marketplace 搜索详细信息屏幕示例](media/avm-create2.png)
 
-### <a name="azure-marketplace-plan-details"></a>Azure 应用商店计划详细信息
+### <a name="azure-marketplace-plan-details"></a>Azure Marketplace 计划详细信息
 
-![Azure 应用商店计划详细信息屏幕示例](media/avm-create3.png)
+![Azure Marketplace 计划详细信息屏幕示例](media/avm-create3.png)
 
-### <a name="azure-portal-offer-details"></a>Azure 门户提供详细信息
+### <a name="azure-portal-offer-details"></a>Azure 门户产品/服务详细信息
 
-![Azure 门户提供详细信息屏幕示例](media/avm-create4.png)
+![Azure 门户产品/服务详细信息屏幕示例](media/avm-create4.png)
 
 ### <a name="azure-portal-search-results"></a>Azure 门户搜索结果
 
@@ -555,6 +555,6 @@ Azure 政府服务处理受某些政府法规和要求约束的数据。 例如�
 
 ![Azure 门户计划详细信息屏幕示例](media/avm-create6.png)
 
-## <a name="next-step"></a>后续步骤
+## <a name="next-step"></a>下一步
 
-- [更新商业市场中的现有产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
+- [更新商业应用商店中的现有产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)

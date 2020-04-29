@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c7598aafea85e91f28233645d3d71bf85bf45425
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82130980"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects"></a>使用 Azure DevOps Projects 为 IoT Edge 创建 CI/CD 管道
@@ -32,7 +32,7 @@ DevOps Projects 在 Azure DevOps 中创建 CI/CD 管道。 可以创建新的 Az
 
 ## <a name="create-a-new-application-pipeline"></a>新建应用程序管道
 
-1. 可以用 [C#](tutorial-csharp-module.md)、[Node.js](tutorial-node-module.md)、[Python](tutorial-python-module.md)、[C](tutorial-c-module.md) 和 [Java](tutorial-java-module.md) 编写 Azure IoT Edge 模块。 选择用于启动新应用程序的首选语言：.NET、Node.js、Python、C 或 Java********************。 选择“下一步”**** 继续。
+1. 可以用 [C#](tutorial-csharp-module.md)、[Node.js](tutorial-node-module.md)、[Python](tutorial-python-module.md)、[C](tutorial-c-module.md) 和 [Java](tutorial-java-module.md) 编写 Azure IoT Edge 模块。 选择用于启动新应用程序的首选语言：.NET、Node.js、Python、C 或 Java********************。 选择“下一步”继续操作  。
 
    ![选择用于创建新应用程序的语言](./media/how-to-devops-project/select-language.png)
 

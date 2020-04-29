@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 5b50906fac613a4e7470b0e13d6f068c3872f625
-ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82136900"
 ---
 # <a name="ingest-historical-telemetry-data"></a>引入历史遥测数据
@@ -32,7 +32,7 @@ ms.locfileid: "82136900"
 - 客户端机密
 - EventHub 连接字符串
 
-请执行下列步骤：
+执行以下步骤:
 
 > [!NOTE]
 > 您必须是管理员才能执行以下步骤。

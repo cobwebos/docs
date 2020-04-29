@@ -14,10 +14,10 @@ ms.reviewer: vanto
 ms.date: 02/06/2020
 tags: azure-synapse
 ms.openlocfilehash: 137e1919f460d2f5631810edbc09b6e213bfe651
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82133194"
 ---
 # <a name="using-multi-factor-aad-authentication-with-azure-sql-database-and-azure-synapse-analytics-ssms-support-for-mfa"></a>在 Azure SQL 数据库和 Azure Synapse Analytics 中使用多重 AAD 身份验证（SSMS 支持 MFA）
@@ -74,12 +74,12 @@ Azure AD 作为来宾用户的 Azure AD B2B 方案支持的用户（请参阅[�
 ## <a name="next-steps"></a>后续步骤
 
 - 有关配置步骤，请参阅[配置 SQL Server Management Studio 的 Azure SQL 数据库多重身份验证](sql-database-ssms-mfa-authentication-configure.md)。
-- 向其他人员授予数据库访问权限：[SQL 数据库身份验证和授权：授予访问权限](sql-database-manage-logins.md)  
-- 确保其他人员可以通过防火墙进行连接：[使用 Azure 门户配置 Azure SQL 数据库服务器级防火墙规则](sql-database-configure-firewall-settings.md)  
+- 授予其他人对数据库的访问权限：[SQL 数据库身份验证和授权：授予访问权限](sql-database-manage-logins.md)  
+- 确保其他人可以通过防火墙进行连接：[使用 Azure 门户配置 Azure SQL 数据库服务器级防火墙规则](sql-database-configure-firewall-settings.md)  
 - [配置和管理 Azure Active Directory 身份验证与 SQL 数据库或 Azure Synapse](sql-database-aad-authentication-configure.md)  
 - [Microsoft SQL Server Data-Tier Application Framework (17.0.0 GA)](https://www.microsoft.com/download/details.aspx?id=55088)  
 - [SQLPackage](https://docs.microsoft.com/sql/tools/sqlpackage)  
 - [将 BACPAC 文件导入到新的 Azure SQL 数据库](../sql-database/sql-database-import.md)  
 - [将 Azure SQL 数据库导出到 BACPAC 文件](../sql-database/sql-database-export.md)  
 - C# 接口 [IUniversalAuthProvider 接口](https://msdn.microsoft.com/library/microsoft.sqlserver.dac.iuniversalauthprovider.aspx)  
-- 使用 **Active Directory - 通用且具有 MFA** 进行身份验证时，可以使用以 [SSMS 17.3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 开头的 ADAL 跟踪。 在默认关闭的情况下，可在“ADAL 输出窗口跟踪级别”**中，** 使用“Azure 云”**** 的“Azure 服务”**** 下方“选项”**** 菜单中的“工具”****，打开 ADAL 跟踪，然后在“视图”**** 菜单中启用“输出”****。 选择“Azure Active Directory 选项”**** 时，可在输出窗口中使用跟踪。  
+- 使用 **Active Directory - 通用且具有 MFA** 进行身份验证时，可以使用以 [SSMS 17.3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 开头的 ADAL 跟踪。 在默认关闭的情况下，可在“ADAL 输出窗口跟踪级别”**中，** 使用“Azure 云”  的“Azure 服务”  下方“选项”  菜单中的“工具”  ，打开 ADAL 跟踪，然后在“视图”  菜单中启用“输出”  。 选择“Azure Active Directory 选项”  时，可在输出窗口中使用跟踪。  

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.openlocfilehash: 258bddec85e4ab182ff0b07c49cdc93f92264f95
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82084458"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>在 Azure 中创建通用 VM 的托管映像
@@ -212,7 +212,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 
 ## <a name="create-an-image-from-a-vm-that-uses-a-storage-account"></a>从使用存储帐户的 VM 创建映像
 
-要从不使用托管磁盘的 VM 创建托管映像，您需要存储帐户中的 OS VHD URI，其格式如下：https://*我的存储帐户*.blob.core.windows.net/*vhd 容器*/*vhdfilename.vhd*. 在本示例中，VHD 位于名为 vhdcontainer** 的容器中的 mystorageaccount** 中，且 VHD 文件名为 vhdfilename.vhd**。
+若要从不使用托管磁盘的 VM 创建托管映像，需要使用存储帐户中 OS VHD 的 URI，格式如下： https://*mystorageaccount*. blob.core.windows.net/*vhdcontainer*/*vhdfilename*。 在本示例中，VHD 位于名为 vhdcontainer** 的容器中的 mystorageaccount** 中，且 VHD 文件名为 vhdfilename.vhd**。
 
 
 1.  创建若干变量。
@@ -245,5 +245,5 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 
     
 ## <a name="next-steps"></a>后续步骤
-- [从托管映像创建 VM。](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)    
+- [从托管映像创建 VM](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。    
 

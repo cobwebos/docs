@@ -1,5 +1,5 @@
 ---
-title: 有关 Azure 中的 Windows VM 的常见问题解答
+title: 有关 Azure 中 Windows Vm 的常见问题解答
 description: 回答了通过 Resource Manager 模型创建的 Windows 虚拟机的一些常见问题。
 author: cynthn
 ms.service: virtual-machines-windows
@@ -8,31 +8,31 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: cynthn
 ms.openlocfilehash: 33d530181f4cc389f81ea83dc42b774ccfc8fd85
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869619"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>有关 Windows 虚拟机的常见问题
 本文讨论了在 Azure 中使用 Resource Manager 部署模型创建的 Windows 虚拟机的一些常见问题。 有关本主题的 Linux 版本，请参阅[有关 Linux 虚拟机的常见问题](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 ## <a name="what-can-i-run-on-an-azure-vm"></a>我可以在 Azure VM 上运行什么程序？
-所有订户都可以在 Azure 虚拟机上运行服务器软件。 有关在 Azure 中运行 Microsoft 服务器软件的支持策略的信息，请参阅[Azure 虚拟机的 Microsoft 服务器软件支持](https://support.microsoft.com/kb/2721672)。
+所有订户都可以在 Azure 虚拟机上运行服务器软件。 有关在 Azure 中运行 Microsoft 服务器软件的支持策略的信息，请参阅[Azure 虚拟机的 microsoft 服务器软件支持](https://support.microsoft.com/kb/2721672)。
 
 MSDN Azure 权益订户以及 MSDN 开发和测试即用即付订户可使用某些版本的 Windows 7、Windows 8.1 和 Windows 10 执行开发和测试任务。 有关详细信息（包括说明和限制），请参阅[适用于 MSDN 订户的 Windows 客户端映像](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/)。 
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>使用虚拟机时，我可以使用多少存储？
-每个数据磁盘的容量高达 32,767 GiB。 可以使用的数据磁盘的数目取决于虚拟机的大小。 有关详细信息，请参阅[虚拟机的大小](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+每个数据磁盘的容量高达 32,767 GiB。 可以使用的数据磁盘数取决于虚拟机大小。 有关详细信息，请参阅[虚拟机大小](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-Azure 托管磁盘是推荐用于 Azure 虚拟机的磁盘存储产品，方便永久存储数据。 可对每个虚拟机使用多个托管磁盘。 托管磁盘提供两种类型的持久存储选项：高级托管磁盘和标准托管磁盘。 有关定价信息，请参阅[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks)。
+Azure 托管磁盘是推荐用于 Azure 虚拟机的磁盘存储产品，方便永久存储数据。 可对每个虚拟机使用多个托管磁盘。 托管磁盘提供两种类型的持久存储选项：高级和标准托管磁盘。 有关定价信息，请参阅[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks)。
 
-Azure 存储帐户还可提供用于操作系统磁盘和任意数据磁盘的存储空间。 每个磁盘都是一个 .vhd 文件，以页 blob 形式存储。 有关定价详细信息，请参阅 [Storage Pricing Details](https://azure.microsoft.com/pricing/details/storage/)（存储定价详细信息）。
+Azure 存储帐户还可为操作系统磁盘和任何数据磁盘提供存储空间。 每个磁盘都是一个 .vhd 文件，以页 blob 形式存储。 有关定价详细信息，请参阅 [Storage Pricing Details](https://azure.microsoft.com/pricing/details/storage/)（存储定价详细信息）。
 
 ## <a name="how-can-i-access-my-virtual-machine"></a>如何访问我的虚拟机？
 使用适用于 Windows VM 的远程桌面连接 (RDP) 建立远程连接。 有关说明，请参阅[如何连接并登录到运行 Windows 的 Azure 虚拟机](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 除非将服务器配置为远程桌面服务会话主机，否则最多支持两个并发连接。  
 
-如果远程桌面出现问题，请参阅[排除与基于 Windows 的 Azure 虚拟机的远程桌面连接的疑难解答](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
+如果在使用远程桌面时遇到问题，请参阅对[与基于 Windows 的 Azure 虚拟机的远程桌面连接进行故障排除](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
 
 如果熟悉 Hyper-V，可以查找与 VMConnect 类似的工具。 Azure 不提供类似工具，因为不支持通过控制台访问虚拟机。
 
@@ -46,7 +46,7 @@ Azure 存储帐户还可提供用于操作系统磁盘和任意数据磁盘的�
 可以通过移动页面文件和重新分配驱动器号来更改驱动器号，但需确保按特定顺序执行这些步骤。 有关说明，请参阅[更改 Windows 临时磁盘的驱动器号](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 ## <a name="can-i-add-an-existing-vm-to-an-availability-set"></a>我是否可以将现有 VM 添加到可用性集？
-不是。 不可以。如果希望 VM 成为可用性集的一部分，需要在该集内创建 VM。 目前不支持在创建 VM 之后再将其添加到可用性集。
+不能。 不可以。如果希望 VM 成为可用性集的一部分，需要在该集内创建 VM。 目前不支持在创建 VM 之后再将其添加到可用性集。
 
 ## <a name="can-i-upload-a-virtual-machine-to-azure"></a>我是否可以将虚拟机上传到 Azure？
 是的。 相关说明，请参阅[将本地 VM 迁移到Azure](on-prem-to-azure.md)。

@@ -17,10 +17,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b9b3857a5ae845f5cc48464152bb6ca600444c1b
-ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82136696"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理安装
@@ -140,7 +140,7 @@ ms.locfileid: "82136696"
 7. 在“操作”**** 窗格中，单击“编辑联合身份验证服务属性”****。
 8. 在 **“联合身份验证服务属性”** 对话框中，单击 **“事件”** 选项卡。
 9. 选中 **“成功审核”** 和 **“失败审核”** 复选框。
-10. 单击“确定”  。
+10. 单击" **确定**"。
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2012-r2"></a>在 Windows Server 2012 R2 上启用 AD FS 审核的步骤
 

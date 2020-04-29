@@ -1,26 +1,26 @@
 ---
-title: 用于身份验证的 Azure 前端 API
-description: 说明如何使用 C# 前端 API 进行身份验证
+title: 用于身份验证的 Azure 前端 Api
+description: '介绍如何使用 c # 前端 API 进行身份验证'
 author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
 ms.openlocfilehash: 04296a3dab61fdb569126abc1bc1f975d69e226d
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681345"
 ---
 # <a name="use-the-azure-frontend-apis-for-authentication"></a>使用 Azure 前端 API 进行身份验证
 
-在本节中，我们将介绍如何使用 C# API 进行身份验证。
+在本部分中，我们将介绍如何使用 c # API 进行身份验证。
 
-## <a name="azurefrontendaccountinfo"></a>Azure 前端帐户信息
+## <a name="azurefrontendaccountinfo"></a>AzureFrontendAccountInfo
 
-Azure Frontend 帐户信息用于设置 SDK 中```AzureFrontend```实例的身份验证信息。
+AzureFrontendAccountInfo 用于设置 SDK 中```AzureFrontend```实例的身份验证信息。
 
-重要领域包括：
+重要字段包括：
 
 ```cs
 
@@ -41,25 +41,25 @@ Azure Frontend 帐户信息用于设置 SDK 中```AzureFrontend```实例的身�
 
 ```
 
-对于域中的_区域_部分，请使用[您附近的区域](../reference/regions.md)。
+对于域中的_区域_部分，请使用[你附近的区域](../reference/regions.md)。
 
-帐户信息可以从门户获取，如[检索帐户信息](create-an-account.md#retrieve-the-account-information)段落中所述。
+可以从门户获取帐户信息，如[检索帐户信息](create-an-account.md#retrieve-the-account-information)段落中所述。
 
 ## <a name="azure-frontend"></a>Azure 前端
 
-相关类是```AzureFrontend```和```AzureSession```。 ```AzureFrontend```用于帐户管理和帐户级别功能，包括：资产转换和呈现会话创建。 ```AzureSession```用于会话级功能，包括：会话更新、查询、续订和停用。
+相关的类是```AzureFrontend```和```AzureSession```。 ```AzureFrontend```用于帐户管理和帐户级别功能，其中包括：资产转换和呈现会话创建。 ```AzureSession```用于会话级别的功能，其中包括：会话更新、查询、续订和解除授权。
 
-每个打开/创建的```AzureSession```都将保留对创建它的前端的引用。 要干净地关闭，所有会话都必须在前端处理之前进行处理。
+每个打开/ ```AzureSession```创建的都将保留对所创建的前端的引用。 若要完全关闭，必须释放所有会话后，才会释放前端。
 
-取消分配会话不会停止 Azure 上的 VM，`AzureSession.StopAsync`必须显式调用。
+解除分配会话不会停止 Azure 上的 VM， `AzureSession.StopAsync`必须显式调用。
 
-创建会话并将其状态标记为就绪后，它可以使用 连接到远程呈现运行时`AzureSession.ConnectToRuntime`。
+一旦创建了会话并且其状态被标记为 "就绪"，它就可以使用`AzureSession.ConnectToRuntime`连接到远程呈现运行时。
 
 ### <a name="threading"></a>线程
 
-所有 AzureSession 和 Azure Frontend 异步调用都在后台线程中完成，而不是主应用程序线程。
+所有 AzureSession 和 AzureFrontend 异步调用都在后台线程中完成，而不是在主应用程序线程中完成。
 
-### <a name="conversion-apis"></a>转换 API
+### <a name="conversion-apis"></a>转换 Api
 
 有关转换服务的详细信息，请参阅[模型转换 REST API](conversion/conversion-rest-api.md)。
 
@@ -89,7 +89,7 @@ void StartAssetConversion(AzureFrontend frontend, string modelName, string model
 }
 ```
 
-#### <a name="get-conversion-status"></a>获取转化状态
+#### <a name="get-conversion-status"></a>获取转换状态
 
 ``` cs
 private ConversionStatusAsync _pendingAsync = null
@@ -113,13 +113,13 @@ void GetConversionStatus(AzureFrontend frontend, string assetId)
 }
 ```
 
-### <a name="rendering-apis"></a>渲染 API
+### <a name="rendering-apis"></a>呈现 Api
 
-有关[会话管理的详细信息，请参阅会话管理 REST API。](session-rest-api.md)
+有关会话管理的详细信息，请参阅[会话管理 REST API](session-rest-api.md) 。
 
-渲染会话可以在服务上动态创建，也可以将已有的会话 ID"打开"到 AzureSession 对象中。
+可以在服务上动态创建呈现会话，也可以将现有的会话 ID "打开" 到 AzureSession 对象中。
 
-#### <a name="create-rendering-session"></a>创建渲染会话
+#### <a name="create-rendering-session"></a>创建呈现会话
 
 ``` cs
 private CreateSessionAsync _pendingAsync = null;
@@ -146,7 +146,7 @@ void CreateRenderingSession(AzureFrontend frontend, RenderingSessionVmSize vmSiz
 
 #### <a name="open-an-existing-rendering-session"></a>打开现有呈现会话
 
-打开现有会话是同步调用。
+打开现有会话是一种同步调用。
 
 ``` cs
 void CreateRenderingSession(AzureFrontend frontend, string sessionId)
@@ -179,7 +179,7 @@ void GetCurrentRenderingSessions(AzureFrontend frontend)
 }
 ```
 
-### <a name="session-apis"></a>会话 API
+### <a name="session-apis"></a>会话 Api
 
 #### <a name="get-rendering-session-properties"></a>获取呈现会话属性
 
@@ -228,7 +228,7 @@ void UpdateRenderingSession(AzureSession session, ARRTimeSpan updatedLease)
 }
 ```
 
-#### <a name="stop-rendering-session"></a>停止渲染会话
+#### <a name="stop-rendering-session"></a>停止呈现会话
 
 ``` cs
 private SessionAsync _pendingAsync;
@@ -289,4 +289,4 @@ void ConnectToArrInspector(AzureSession session, string hostname)
 ## <a name="next-steps"></a>后续步骤
 
 * [创建帐户](create-an-account.md)
-* [电源外壳脚本示例](../samples/powershell-example-scripts.md)
+* [PowerShell 脚本示例](../samples/powershell-example-scripts.md)

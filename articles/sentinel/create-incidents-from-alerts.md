@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: 1593b96ae8412632120e8977635a4193996ca88d
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82025112"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>自动根据 Microsoft 安全警报创建事件

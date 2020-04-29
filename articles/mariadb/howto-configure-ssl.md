@@ -1,5 +1,5 @@
 ---
-title: 配置 SSL - MariaDB 的 Azure 数据库
+title: 配置 SSL-Azure Database for MariaDB
 description: 介绍了如何正确配置 Azure Database for MariaDB 和关联的应用程序，以正确使用 SSL 连接
 author: ajlam
 ms.author: andrela
@@ -7,17 +7,17 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 4/21/2020
 ms.openlocfilehash: 0af94d04f4e50fd039f01c5746b3a5d47a3698b3
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81769943"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>配置应用程序的 SSL 连接性以安全连接到 Azure Database for MariaDB
 Azure Database for MariaDB 支持使用安全套接字层 (SSL) 将 Azure Database for MariaDB 服务器连接到客户端应用程序。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。
 
 ## <a name="obtain-ssl-certificate"></a>获取 SSL 证书
-下载通过 SSL 与 MariaDB 服务器的 Azure 数据库进行[https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)通信所需的证书，并将证书文件保存到本地驱动器（例如，本教程使用 c：\ssl）。
+下载通过 SSL 与 Azure Database for MariaDB 服务器进行通信所需的证书[https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) ，并将证书文件保存到本地驱动器（例如，本教程使用 c:\ssl 作为）。
 **对于 Microsoft Internet Explorer 和 Microsoft Edge：** 下载完成之后，将证书重命名为 BaltimoreCyberTrustRoot.crt.pem。
 
 ## <a name="bind-ssl"></a>绑定 SSL
@@ -63,7 +63,7 @@ status
 ```
 通过查看输出来确认连接是否已加密，如果已加密，输出应显示为：“SSL: 使用中的密码为 AES256-SHA”**** 
 
-## <a name="sample-code"></a>示例代码
+## <a name="sample-code"></a>代码示例
 若要从应用程序通过 SSL 与 Azure Database for MariaDB 建立安全连接，请参阅以下代码示例：
 
 ### <a name="php"></a>PHP

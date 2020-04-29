@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 03/04/2019
 ms.openlocfilehash: 9c2966215d07c4ddf052d30a5757a2deee2e0b5c
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81392779"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>使用包含 Azure Kubernetes 服务 (AKS) 的内部负载均衡器
@@ -17,7 +17,7 @@ ms.locfileid: "81392779"
 若要限制访问 Azure Kubernetes 服务 (AKS) 中的应用程序，可以创建和使用内部负载均衡器。 内部负载均衡使得仅 Kubernetes 群集所在的同一虚拟网络中运行的应用程序能够访问 Kubernetes 服务。 本文介绍如何通过 Azure Kubernetes 服务 (AKS) 创建和使用内部负载均衡器。
 
 > [!NOTE]
-> Azure 负载均衡器以两种 SKU 提供：“基本”和“标准”****。 默认情况下，创建 AKS 群集时使用标准 SKU。  创建类型为 LoadBalancer 的服务时，你将获得与预配群集时相同的 LB 类型。 有关详细信息，请参阅 [Azure 负载均衡器 SKU 比较][azure-lb-comparison]。
+> Azure 负载均衡器以两种 SKU 提供：“基本”和“标准”   。 默认情况下，创建 AKS 群集时使用标准 SKU。  创建类型为 LoadBalancer 的服务时，你将获得与预配群集时相同的 LB 类型。 有关详细信息，请参阅 [Azure 负载均衡器 SKU 比较][azure-lb-comparison]。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -25,7 +25,7 @@ ms.locfileid: "81392779"
 
 还需安装并配置 Azure CLI 2.0.59 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
-如果使用现有子网或资源组，则 AKS 群集服务主体需要管理网络资源的权限。 通常，将“网络参与者”** 角色分配给委派资源上的服务主体。 您可以使用分配给托管标识的系统来访问权限，而不是服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。 有关权限的详细信息，请参阅[委派 AKS 访问其他 Azure 资源][aks-sp]。
+如果使用现有子网或资源组，则 AKS 群集服务主体需要管理网络资源的权限。 通常，将“网络参与者”  角色分配给委派资源上的服务主体。 您可以使用系统分配的托管标识作为权限，而不是使用服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。 有关权限的详细信息，请参阅[委派 AKS 访问其他 Azure 资源][aks-sp]。
 
 ## <a name="create-an-internal-load-balancer"></a>创建内部负载均衡器
 
@@ -54,7 +54,7 @@ kubectl apply -f internal-lb.yaml
 
 Azure 负载均衡器在节点资源组中创建，并连接到 AKS 群集所在的虚拟网络。
 
-查看服务详细信息时，内部负载均衡器的 IP 地址显示在“EXTERNAL-IP”列中**。 在此上下文中，*External* 是指负载均衡器的外部接口，不是指收到公共的外部 IP 地址。 IP 地址可能需要一两分钟才能从*\<挂起\>* 更改为实际的内部 IP 地址，如下例所示：
+查看服务详细信息时，内部负载均衡器的 IP 地址显示在“EXTERNAL-IP”列中**。 在此上下文中，*External* 是指负载均衡器的外部接口，不是指收到公共的外部 IP 地址。 IP 地址可能需要一到两分钟的时间才能从* \<"挂起\> * " 更改为实际的内部 IP 地址，如以下示例中所示：
 
 ```
 $ kubectl get service internal-app

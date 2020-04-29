@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 52d817d1029e75837e55c1b942525661ace33f87
-ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82136934"
 ---
 # <a name="imagery-partner-integration"></a>图像合作伙伴集成
@@ -92,7 +92,7 @@ access_token = token_response.get('access_token')
 --- | ---
 Content-Type  | 请求格式（Content-type： application/<format>）。 对于 FarmBeats Datahub Api，格式为 JSON。 Content-Type: application/json
 授权 | 指定进行 API 调用所需的访问令牌。 授权：持有者 <访问令牌>
-接受  | 响应格式。 对于 FarmBeats Datahub Api，格式为 JSON。 接受： application/json
+Accept  | 响应格式。 对于 FarmBeats Datahub Api，格式为 JSON。 接受： application/json
 
 
 ## <a name="api-requests"></a>API 请求

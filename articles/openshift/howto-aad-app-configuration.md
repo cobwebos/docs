@@ -1,126 +1,126 @@
 ---
-title: Azure 红帽开放移位的 Azure 活动目录集成
-description: 了解如何创建 Azure AD 安全组和用户以在 Microsoft Azure 红帽 OpenShift 群集上测试应用。
+title: Azure Active Directory Azure Red Hat OpenShift 集成
+description: 了解如何创建 Azure AD 安全组和用户，以便在 Microsoft Azure Red Hat OpenShift 群集上测试应用。
 author: jimzim
 ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: f6c4fb5caf746650f95872d50afe31e5693422be
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81382917"
 ---
-# <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure 红帽开放移位的 Azure 活动目录集成
+# <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory Azure Red Hat OpenShift 集成
 
-如果尚未创建 Azure 活动目录 （Azure AD） 租户，请按照[Azure 红帽 OpenShift 创建 Azure AD 租户](howto-create-tenant.md)的说明操作，然后再继续这些说明。
+如果尚未创建 Azure Active Directory （Azure AD）租户，请按照[创建 Azure Red Hat OpenShift 的 Azure AD 租户](howto-create-tenant.md)中的说明操作，然后继续执行这些说明。
 
-Microsoft Azure 红帽 OpenShift 需要代表群集执行任务的权限。 如果您的组织还没有 Azure AD 用户、Azure AD 安全组或 Azure AD 应用注册用作服务主体，请按照这些说明创建它们。
+Microsoft Azure Red Hat OpenShift 需要权限来代表群集执行任务。 如果你的组织还没有 Azure AD 用户、Azure AD 安全组或 Azure AD 应用注册以用作服务主体，请按照以下说明进行创建。
 
 ## <a name="create-a-new-azure-active-directory-user"></a>创建新的 Azure Active Directory 用户
 
-在[Azure 门户](https://portal.azure.com)中，确保租户显示在门户右上角的用户名下：
+在[Azure 门户](https://portal.azure.com)中，确保你的租户显示在门户右上方的用户名下：
 
-![右上角列出租户的门户屏幕截图](./media/howto-create-tenant/tenant-callout.png)如果显示了错误的租户，请单击右上角的用户名，然后单击 **"切换目录**"，然后从 **"所有目录"** 列表中选择正确的租户。
+![如果显示了错误的租户，请在](./media/howto-create-tenant/tenant-callout.png)右上方列出了租户的门户屏幕截图，单击右上方的用户名，然后单击 "**切换目录**"，然后从 "**所有目录**" 列表中选择正确的租户。
 
-创建新的 Azure 活动目录"所有者"用户以登录到 Azure 红帽 OpenShift 群集。
+创建新的 Azure Active Directory "所有者" 用户登录到 Azure Red Hat OpenShift 群集。
 
-1. 转到["用户-所有用户"](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)边栏选项卡。
-2. 单击 **"新建用户**"以打开 **"用户"** 窗格。
-3. 输入此用户**的名称**。
-4. 基于您创建的租户的名称创建**用户名**，并在末尾`.onmicrosoft.com`追加。 例如，`yourUserName@yourTenantName.onmicrosoft.com` 。 记下此用户名。 您需要它才能登录到群集。
-5. 单击 **"目录"角色**以打开目录角色窗格，然后选择 **"所有者"，** 然后单击窗格底部的 **"确定**"。
-6. 在 **"用户"** 窗格中，单击"**显示密码"** 并记录临时密码。 首次登录后，系统将提示您重置它。
-7. 在窗格的底部，单击"**创建**"以创建用户。
+1. 请参阅 "[用户-所有用户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)" 边栏选项卡。
+2. 单击 " **+ 新建用户**" 以打开 "**用户**" 窗格。
+3. 输入此用户的**名称**。
+4. 基于创建的租户的名称创建**用户名**，并`.onmicrosoft.com`将其追加到末尾。 例如，`yourUserName@yourTenantName.onmicrosoft.com` 。 记下此用户名。 需要用它登录到群集。
+5. 单击 "**目录角色**" 以打开 "目录角色" 窗格，选择 "**所有者**"，然后单击窗格底部的 **"确定"** 。
+6. 在 "**用户**" 窗格中，单击 "**显示密码**" 并记录临时密码。 首次登录后，系统将提示你重置它。
+7. 在窗格底部，单击 "**创建**" 创建用户。
 
 ## <a name="create-an-azure-ad-security-group"></a>创建 Azure AD 安全组
 
-要授予群集管理员访问权限，Azure AD 安全组中的成员身份将同步到 OpenShift 组"osa-客户管理员"。 如果未指定，将不会授予群集管理员访问权限。
+若要授予群集管理员访问权限，Azure AD 安全组中的成员身份将同步到 OpenShift 组 "osa-客户管理员"。 如果未指定，将不授予群集管理员访问权限。
 
-1. 打开[Azure 活动目录组边](https://portal.azure.com/#blade/Microsoft_AAD_IAM/GroupsManagementMenuBlade/AllGroups)栏选项卡。
-2. 单击 **"新建组**"。
-3. 提供组名称和说明。
-4. 将**组类型**设置为 **"安全**"。
-5. 将**成员资格类型**设置为**已分配**。
+1. 打开 " [Azure Active Directory 组](https://portal.azure.com/#blade/Microsoft_AAD_IAM/GroupsManagementMenuBlade/AllGroups)" 边栏选项卡。
+2. 单击 " **+ 新建组**"。
+3. 提供组名称和描述。
+4. 将**组类型**设置为**安全**。
+5. 设置要**分配**的**成员身份类型**。
 
-    将在前面的步骤中创建的 Azure AD 用户添加到此安全组。
+    将你在之前步骤中创建的 Azure AD 用户添加到此安全组。
 
-6. 单击 **"成员**"以打开 **"选择成员**"窗格。
-7. 在成员列表中，选择上面创建的 Azure AD 用户。
-8. 在门户底部，单击"**选择"** 然后**创建**以创建安全组。
+6. 单击 "**成员**"，打开 "**选择成员**" 窗格。
+7. 在 "成员" 列表中，选择上面创建的 Azure AD 用户。
+8. 在门户底部，单击 "**选择**"，然后单击 "**创建**" 来创建安全组。
 
-    记下组 ID 值。
+    记下 "组 ID" 值。
 
-9. 创建组时，您将在所有组列表中看到它。 单击新组。
-10. 在显示的页面上，向下复制对象**ID**。 我们将引用此值，如`GROUPID`创建 Azure[红帽 OpenShift 群集](tutorial-create-cluster.md)教程。
+9. 创建组后，会在所有组的列表中看到它。 单击新组。
+10. 在出现的页面上，复制**对象 ID**。 `GROUPID`在[创建 Azure Red Hat OpenShift 群集](tutorial-create-cluster.md)教程中，我们将引用此值。
 
 > [!IMPORTANT]
-> 要将此组与 osa-客户管理员 OpenShift 组同步，请使用 Azure CLI 创建群集。 Azure 门户当前缺少一个字段来设置此组。
+> 若要将此组与 OpenShift 组进行同步，请使用 Azure CLI 创建群集。 Azure 门户当前缺少用于设置此组的字段。
 
 ## <a name="create-an-azure-ad-app-registration"></a>创建 Azure AD 应用注册
 
-通过将标志省略到命令，`--aad-client-app-id`可以自动创建 Azure 活动目录 （Azure AD） 应用注册客户端，作为创建群集`az openshift create`的一部分。 本教程演示如何创建 Azure AD 应用注册以获得完整性。
+可以通过省略`--aad-client-app-id` `az openshift create`命令的标志，在创建群集的过程中自动创建 Azure Active Directory （Azure AD）应用注册客户端。 本教程介绍了如何创建 Azure AD 应用注册以实现完整性。
 
-如果您的组织尚未注册 Azure 活动目录 （Azure AD） 应用注册用作服务主体，请按照这些说明创建一个。
+如果你的组织尚不具有用作服务主体的 Azure Active Directory （Azure AD）应用注册，请按照以下说明创建一个。
 
-1. 打开[应用注册边栏选项卡](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)，然后单击 **"新建注册**"。
-2. 在 **"注册应用程序**"窗格中，输入应用程序注册的名称。
-3. 确保根据 **"支持"科目类型**，**仅选中此组织目录中的帐户**。 这是最安全的选择。
-4. 稍后，我们将在知道群集 URI 后添加重定向 URI。 单击 **"注册"** 按钮可创建 Azure AD 应用程序注册。
-5. 在显示的页面上，向下复制**应用程序（客户端）ID**。 我们将引用此值，如`APPID`创建 Azure[红帽 OpenShift 群集](tutorial-create-cluster.md)教程。
+1. 打开 "[应用注册" 边栏选项卡](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)，然后单击 " **+ 新注册**"。
+2. 在 "**注册应用程序**" 窗格中，输入应用程序注册的名称。
+3. 确保在 "**受支持的帐户类型**" 下，选中 "**仅限此组织目录中的帐户**"。 这是最安全的选择。
+4. 我们会在以后知道群集的 URI 后再添加一个重定向 URI。 单击 "**注册**" 按钮，创建 Azure AD 应用程序注册。
+5. 在出现的页上，向下复制**应用程序（客户端） ID**。 `APPID`在[创建 Azure Red Hat OpenShift 群集](tutorial-create-cluster.md)教程中，我们将引用此值。
 
-![应用对象页面的屏幕截图](./media/howto-create-tenant/get-app-id.png)
+![应用对象页的屏幕截图](./media/howto-create-tenant/get-app-id.png)
 
 ### <a name="create-a-client-secret"></a>创建客户端机密
 
-生成客户端密钥，用于将应用验证为 Azure 活动目录。
+生成用于对应用进行身份验证的客户端机密，以便 Azure Active Directory。
 
-1. 在应用注册页的 **"管理**"部分中，单击 **"证书&机密**"。
-2. 在 **"证书&机密**"窗格中，单击 **"新客户端机密**"。  将显示 **"添加客户端机密**"窗格。
+1. 在 "应用注册" 页的 "**管理**" 部分中，单击 "**证书" & 机密**"。
+2. 在 "**证书 & 机密**" 窗格上，单击 " **+ 新建客户端密钥**"。  此时将显示 "**添加客户端密码**" 窗格。
 3. 提供**说明**。
-4. 设置为**您**喜欢的持续时间，例如 **，在 2 年内**。
-5. 单击"**添加**"，键值将显示在页面的 **"客户端机密**"部分中。
-6. 向下复制键值。 我们将引用此值，如`SECRET`创建 Azure[红帽 OpenShift 群集](tutorial-create-cluster.md)教程。
+4. 将**过期**时间设置为所需的持续时间（例如，**在2年内**）。
+5. 单击 "**添加**"，密钥值将显示在页面的 "**客户端密钥**" 部分中。
+6. 复制密钥值。 `SECRET`在[创建 Azure Red Hat OpenShift 群集](tutorial-create-cluster.md)教程中，我们将引用此值。
 
-![证书和机密窗格的屏幕截图](./media/howto-create-tenant/create-key.png)
+!["证书和机密" 窗格的屏幕截图](./media/howto-create-tenant/create-key.png)
 
-有关 Azure 应用程序对象的详细信息，请参阅[Azure 活动目录中的应用程序和服务主体对象](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)。
+有关 Azure 应用程序对象的详细信息，请参阅[Azure Active Directory 中的应用程序对象和服务主体对象](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)。
 
-有关创建新 Azure AD 应用程序的详细信息，请参阅[使用 Azure 活动目录 v1.0 终结点注册应用](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)。
+有关创建新的 Azure AD 应用程序的详细信息，请参阅[使用 Azure Active Directory 1.0 版终结点注册应用](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)。
 
 ## <a name="add-api-permissions"></a>添加 API 权限
 
-[//]: # (不要更改为微软图形。它不适用于微软图形。)
-1. 在 **"管理**"部分中单击**API 权限**
-2. 单击 **"添加权限**"并选择**Azure 活动目录图**，然后**委派权限**。
+[//]: # (不要更改为 Microsoft Graph。它不适用于 Microsoft Graph。)
+1. 在 "**管理**" 部分单击 " **API 权限**"
+2. 单击 "**添加权限**"，然后选择 " **Azure Active Directory 关系图**，然后**委派权限**"。
 > [!NOTE]
-> 请确保选择了"Azure 活动目录图"，而不是"Microsoft 图形"磁贴。
+> 请确保已选择 "Azure Active Directory 图形"，而不是 "Microsoft Graph" 磁贴。
 
-3. 展开下面的列表中**的用户**并启用**用户.阅读**权限。 如果默认情况下启用**了 User.Read，** 请确保它是 Azure**活动目录图形**权限 **"用户"。**
-4. 向上滚动并选择**应用程序权限**。
-5. 展开下面列表中的**目录**并启用**目录。阅读全部**。
-6. 单击"**添加权限**"以接受更改。
-7. API 权限面板现在应同时显示*User.Read*和*目录。ReadAll*。 请注意*目录*旁边的 **"管理员同意"** 列中的警告。
-8. 如果您是 Azure*订阅管理员*，请单击下面的 **"授予管理员同意*订阅名称***"。 如果您不是 Azure*订阅管理员*，请请求管理员的同意。
+3. 在下面的列表中展开 "**用户**"，并启用 "**用户读取**" 权限。 如果在默认情况下启用了**User. read** ，请确保它是**Azure Active Directory Graph**权限**用户。读取**。
+4. 向上滚动并选择 "**应用程序权限**"。
+5. 在下面的列表中展开 "**目录**"，然后启用**ReadAll**。
+6. 单击 "**添加权限**" 以接受更改。
+7. API 权限面板现在应显示 "ReadAll *" 和 "* *目录*"。 请注意 " *ReadAll*" 旁边的 "**管理员同意要求**" 列中的警告。
+8. 如果你是*Azure 订阅管理员*，请单击下面的 "**授予*订阅名称*管理员许可**"。 如果你不是*Azure 订阅管理员*，请向管理员请求同意。
 
-![API 权限面板的屏幕截图。 用户.阅读和目录.阅读添加的所有权限，管理员同意目录.阅读所有](./media/howto-aad-app-configuration/permissions-required.png)
+![API 权限面板的屏幕截图。 添加了 ReadAll 权限，ReadAll 需要管理员许可。](./media/howto-aad-app-configuration/permissions-required.png)
 
 > [!IMPORTANT]
-> 群集管理员组的同步仅在获得同意后才起作用。 在 *"管理员同意"要求*列中，您将看到一个绿色圆圈，其中带有复选标记和消息"订阅*名称*授予"。
+> 只有在授予同意后，才可以同步群集管理员组。 你将看到一个绿色圆圈，其中包含一个复选标记和一条 "*需要管理员同意* *" 列*中的消息。
 
 有关管理管理员和其他角色的详细信息，请参阅[添加或更改 Azure 订阅管理员](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator)。
 
 ## <a name="resources"></a>资源
 
-* [Azure 活动目录中的应用程序和服务主体对象](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
+* [Azure Active Directory 中的应用程序和服务主体对象](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
 * [快速入门：向 Azure Active Directory v1.0 终结点注册应用](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
 
 ## <a name="next-steps"></a>后续步骤
 
-如果您满足所有[Azure 红帽 OpenShift 先决条件](howto-setup-environment.md)，则可以创建第一个群集！
+如果已满足所有[Azure Red Hat OpenShift 先决条件](howto-setup-environment.md)，则可以创建第一个群集！
 
-请尝试本教程：
+尝试教程：
 > [!div class="nextstepaction"]
 > [创建 Azure Red Hat OpenShift 群集](tutorial-create-cluster.md)

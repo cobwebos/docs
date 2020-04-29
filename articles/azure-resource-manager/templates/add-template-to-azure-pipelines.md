@@ -4,15 +4,15 @@ description: 介绍如何在 Visual Studio 中使用 Azure 资源组部署项目
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.openlocfilehash: d8eff1c7efae319106eb8a85af7823a820a0da39
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82084645"
 ---
-# <a name="integrate-arm-templates-with-azure-pipelines"></a>将 ARM 模板与 Azure 管道集成
+# <a name="integrate-arm-templates-with-azure-pipelines"></a>将 ARM 模板与 Azure Pipelines 集成
 
-Visual Studio 提供 Azure 资源组项目，用于创建 Azure 资源管理器 （ARM） 模板并将其部署到 Azure 订阅。 可将此项目与 Azure Pipelines 集成，以实现持续集成和持续部署 (CI/CD)。
+Visual Studio 提供 Azure 资源组项目，用于创建 Azure 资源管理器（ARM）模板并将其部署到 Azure 订阅。 可将此项目与 Azure Pipelines 集成，以实现持续集成和持续部署 (CI/CD)。
 
 可通过两种方式在 Azure Pipelines 中部署模板：
 
@@ -261,4 +261,4 @@ ContainerName: '<container-name>'
 
 ## <a name="next-steps"></a>后续步骤
 
-有关将 Azure 管道与 ARM 模板一起使用的分步过程，请参阅[教程：Azure 资源管理器模板与 Azure 管道的持续集成](deployment-tutorial-pipeline.md)。
+有关将 Azure Pipelines 与 ARM 模板结合使用的分步过程，请参阅[教程：使用 Azure Pipelines 持续集成 Azure 资源管理器模板](deployment-tutorial-pipeline.md)。

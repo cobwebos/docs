@@ -1,5 +1,5 @@
 ---
-title: 日志分析工作区的 Azure 资源管理器模板
+title: Log Analytics 工作区的 Azure 资源管理器模板
 description: 可以使用 Azure 资源管理器模板创建和配置 Log Analytics 工作区。
 ms.subservice: logs
 ms.topic: conceptual
@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
 ms.openlocfilehash: dbeaa58da109c5afceb03a560e69e0c8bf63ad42
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81768129"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics 工作区
@@ -49,19 +49,19 @@ ms.locfileid: "81768129"
 以下示例将使用本地计算机上的模板创建一个工作区。 JSON 模板配置为仅需要新工作区的名称和位置。 它使用为其他工作区参数指定的值，例如[访问控制模式](design-logs-deployment.md#access-control-mode)、定价层、保留期和产能预留级别。
 
 > [!WARNING]
-> 以下模板创建日志分析工作区并配置数据收集。 这可能会更改您的计费设置。 使用[Azure 监视器日志查看管理使用情况和成本](manage-cost-storage.md)，以了解日志分析工作区中收集的数据的计费，然后再将其应用于 Azure 环境。
+> 以下模板将创建一个 Log Analytics 的工作区，并配置数据收集。 这可能会更改你的计费设置。 查看使用[Azure Monitor 日志管理使用情况和成本](manage-cost-storage.md)，以了解在 Azure 环境中应用之前在 Log Analytics 工作区中收集的数据的计费。
 
-对于容量预留，通过指定属性`CapacityReservation``capacityReservationLevel`的 SKU 和 GB 的值来定义用于引入数据的选定容量预留。 以下列表详细介绍了配置受支持的值和行为。
+对于容量预留，可以通过指定 SKU `CapacityReservation` ，并为属性`capacityReservationLevel`的值（GB）定义引入数据的选定容量预留。 以下列表详细介绍了在配置时支持的值和行为。
 
-- 设置预订限制后，您不能在 31 天内更改为其他 SKU。
+- 设置保留限制后，在31天内不能更改为其他 SKU。
 
-- 设置预留值后，只能在 31 天内增加预订值。
+- 设置保留值后，只能在31天内增加。
 
-- 只能以 100`capacityReservationLevel`的倍数设置 的值，最大值为 50000。
+- 只能将的值`capacityReservationLevel`设置为100的倍数，最大值为50000。
 
-- 如果增加预留级别，计时器将重置，并且在此更新后 31 天内无法更改计时器。  
+- 如果增加预留级别，则会重置计时器，并且不能将其更改为自此更新后的31天。  
 
-- 如果修改工作区的任何其他属性，但保留限制保留到同一级别，则计时器不会重置。 
+- 如果修改工作区的任何其他属性，但将保留限制保留到相同级别，则不会重置计时器。 
 
 ### <a name="create-and-deploy-template"></a>创建和部署模板
 
@@ -149,9 +149,9 @@ ms.locfileid: "81768129"
     ```
 
    >[!NOTE]
-   >对于容量预留设置，请使用"sKU"下的这些属性：
-   >* "名称"："容量保留"，
-   >* "容量保留级别"： 100
+   >对于容量保留设置，请在 "sku" 下使用这些属性：
+   >* "name"： "CapacityReservation"，
+   >* "capacityReservationLevel"：100
 
 2. 按要求编辑模板。 请考虑创建[资源管理器参数文件](../../azure-resource-manager/templates/parameter-files.md)，而不是将参数作为内联值传递。 查看 [Microsoft.OperationalInsights/workspaces 模板](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces)参考，了解支持的属性和值。 
 
@@ -179,8 +179,8 @@ ms.locfileid: "81768129"
 以下模板示例演示了如何：
 
 1. 向工作区添加解决方案
-2. 创建保存的搜索。 为了确保部署不会意外覆盖已保存的搜索，应在"已保存的搜索"资源中添加 eTag 属性，以覆盖和维护已保存搜索的阳萎性。
-3. 创建保存的函数。 应添加 eTag 以覆盖功能并保持效力。
+2. 创建保存的搜索。 若要确保部署不会意外地替代保存的搜索，应在 "savedSearches" 资源中添加 eTag 属性，以替代和维护已保存搜索的幂等性。
+3. 创建保存的函数。 应将 eTag 添加到 override 函数并维护幂等性。
 4. 创建计算机组
 5. 从装有 Windows 代理的计算机启用 IIS 日志收集
 6. 从 Linux 计算机中收集逻辑磁盘性能计数器 (% Used Inodes; Free Megabytes; % Used Space; Disk Transfers/sec; Disk Reads/sec; Disk Writes/sec)

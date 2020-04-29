@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
 ms.openlocfilehash: 42d3360b7defaab2ff0a62dc125a213860b13a6a
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82133624"
 ---
 # <a name="azure-networking-services-overview"></a>Azure 网络服务概述
@@ -144,7 +144,7 @@ Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚�
 |[内容分发网络](#cdn)|向用户提供高带宽内容。 Cdn 将缓存的内容存储在靠近最终用户的存在点（POP）位置中的边缘服务器上，以最大程度地减少延迟|<p>[向 web 应用添加 CDN](../cdn/cdn-add-to-web-app.md)</p> <p>[-通过 HTTPS 使用 Azure CDN 自定义域访问存储 blob](..//cdn/cdn-storage-custom-domain-https.md)</p> <p>[将自定义域添加到 Azure CDN 终结点](../cdn/cdn-map-content-to-custom-domain.md)</p> <p>[在 Azure CDN 自定义域上配置 HTTPS](../cdn/cdn-custom-ssl.md?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate)</p>|
 |[Azure Front Door 服务](#frontdoor)|使你能够通过优化以实现最佳性能和用于实现高可用性的即时全局故障转移来定义、管理和监视你的 web 流量的全局路由。|<p>[将自定义域添加到 Azure Front Door 服务](../frontdoor/front-door-custom-domain.md)</p> <p>[在 Front Door 自定义域中配置 HTTPS](../frontdoor/front-door-custom-domain-https.md)</p><p>[设置异地筛选 Web 应用程序防火墙策略](../frontdoor/front-door-tutorial-geo-filtering.md)|
 |[流量管理器](#trafficmanager)|基于 DNS 将流量分发到全球 Azure 区域中的服务，同时提供高可用性和响应度。|<p> [路由流量以降低延迟](../traffic-manager/tutorial-traffic-manager-improve-website-response.md)</p><p>[将流量路由到优先终结点](../traffic-manager/traffic-manager-configure-priority-routing-method.md)</p><p> [使用加权的终结点控制流量](../traffic-manager/tutorial-traffic-manager-weighted-endpoint-routing.md)</p><p>[基于终结点的地理位置路由流量](../traffic-manager/traffic-manager-configure-geographic-routing-method.md)</p> <p> [根据用户的子网路由流量](../traffic-manager/tutorial-traffic-manager-subnet-routing.md)</p>|
-|[负载平衡器](#loadbalancer)|通过将流量路由到不同的可用性区域和你的 VNet 来提供区域负载均衡。 通过在资源中和资源之间路由流量来提供内部负载均衡，以构建区域性应用程序。|<p> [对传入 VM 的 Internet 流量进行负载均衡](../load-balancer/tutorial-load-balancer-standard-manage-portal.md)</p> <p>[对虚拟网络中 Vm 之间的流量进行负载均衡](../load-balancer/tutorial-load-balancer-basic-internal-portal.md)<p>[通过端口转发将流量发送到特定 VM 上的特定端口](../load-balancer/tutorial-load-balancer-port-forwarding-portal.md)</p><p> [配置负载均衡和出站规则](../load-balancer/configure-load-balancer-outbound-cli.md)</p>|
+|[负载均衡器](#loadbalancer)|通过将流量路由到不同的可用性区域和你的 VNet 来提供区域负载均衡。 通过在资源中和资源之间路由流量来提供内部负载均衡，以构建区域性应用程序。|<p> [对传入 VM 的 Internet 流量进行负载均衡](../load-balancer/tutorial-load-balancer-standard-manage-portal.md)</p> <p>[对虚拟网络中 Vm 之间的流量进行负载均衡](../load-balancer/tutorial-load-balancer-basic-internal-portal.md)<p>[通过端口转发将流量发送到特定 VM 上的特定端口](../load-balancer/tutorial-load-balancer-port-forwarding-portal.md)</p><p> [配置负载均衡和出站规则](../load-balancer/configure-load-balancer-outbound-cli.md)</p>|
 |[应用程序网关](#applicationgateway)|Azure 应用程序网关是一种 Web 流量负载均衡器，可用于管理 Web 应用程序的流量。|<p>[使用 Azure 应用程序网关引导 Web 流量](../application-gateway/quick-create-portal.md)</p><p>[教程：使用 Azure 门户配置带有 TLS 终止的应用程序网关](../application-gateway/create-ssl-portal.md)</p><p>[创建支持基于 URL 路径进行重定向的应用程序网关](../application-gateway/create-url-route-portal.md) </p>|
 |
 
@@ -167,7 +167,7 @@ Azure 流量管理器是一种基于 DNS 的流量负载均衡器，可以在全
 
 有关流量管理器的详细信息，请参阅[什么是 Azure 流量管理器？](../traffic-manager/traffic-manager-overview.md)
 
-### <a name="load-balancer"></a><a name="loadbalancer"></a>负载平衡器
+### <a name="load-balancer"></a><a name="loadbalancer"></a>负载均衡器
 Azure 负载均衡器为所有 UDP 和 TCP 协议提供高性能、低延迟的第 4 层负载均衡。 它管理入站和出站连接。 可以配置公共和内部负载均衡终结点。 可以定义规则，以便将入站连接映射到后端池目标，并在其中包含 TCP 和 HTTP 运行状况探测选项来管理服务的可用性。 若要了解有关负载均衡器的详细信息，请参阅[负载均衡器概述](../load-balancer/load-balancer-overview.md)一文。
 
 下图显示了利用外部和内部负载均衡器的面向 Internet 的多层应用程序：

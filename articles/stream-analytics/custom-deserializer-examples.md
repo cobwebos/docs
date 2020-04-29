@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.openlocfilehash: 4f4cc5cefe8090e9e95f80b8b74bf15591cb7887
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82133073"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>使用 .NET 自定义反序列化程序读取任何格式的输入
@@ -234,7 +234,7 @@ namespace ExampleCustomCode.Serialization
 
 其他区域的用户可以[请求支持](https://aka.ms/ccodereqregion)。
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 
 ### <a name="when-will-this-feature-be-available-in-all-azure-regions"></a>此功能何时在所有 Azure 区域中推出？
 

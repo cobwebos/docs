@@ -1,6 +1,6 @@
 ---
 title: Azure IoT 中心的设备配置最佳做法 | Microsoft Docs
-description: 了解使用自动设备管理以尽量减少大规模管理 IoT 设备所涉及的重复和复杂任务的最佳做法。
+description: 了解有关使用自动设备管理来最大程度地减少管理 IoT 设备时所涉及的重复任务和复杂任务的最佳实践。
 author: robinsh
 ms.author: robinsh
 ms.date: 06/28/2019
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
 ms.openlocfilehash: 67f0d9eb1fdac603ee82d568644e8ad8550d1c80
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82024772"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>IoT 解决方案中设备配置的最佳做法
@@ -26,7 +26,7 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 
 ## <a name="understand-automatic-device-management-for-configuring-iot-devices-at-scale"></a>了解大规模配置 IoT 设备时的自动设备管理
 
-自动设备管理包括[设备孪生](iot-hub-devguide-device-twins.md)和[模块孪生](iot-hub-devguide-module-twins.md)提供的、在云与设备之间同步所需状态和报告状态的诸多好处。 [自动设备配置](iot-hub-auto-device-config.md)会自动更新大组孪生，并汇总进度和合规性。 以下概要步骤描述如何开发和使用自动设备管理：
+自动设备管理包括[设备孪生](iot-hub-devguide-device-twins.md)和[模块孪生](iot-hub-devguide-module-twins.md)提供的、在云与设备之间同步所需状态和报告状态的诸多好处。 [自动设备配置](iot-hub-auto-device-config.md)会自动更新大型孪生集，并汇总进度和符合性。 以下概要步骤描述如何开发和使用自动设备管理：
 
 * **IoT 硬件制造商/系统集成商**使用[设备孪生](iot-hub-devguide-device-twins.md)在嵌入式应用程序中实施设备管理功能。 这些功能可能包括固件更新、软件安装和更新，以及设置管理。
 
@@ -66,7 +66,7 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 
 * **实施[自动设备配置](iot-hub-auto-device-config.md)：** 自动设备配置通过设备孪生在大型 IoT 设备集上部署和监视配置更改。
 
-   自动设备配置通过**目标条件**（针对设备孪生标记或报告属性执行的查询）将设备孪生集指定为目标。 **目标内容**是要在目标设备孪生内部设置的所需属性集。 目标内容应与 IoT 硬件制造商/系统集成商定义的设备孪生结构相符。 **指标**是设备孪生报告属性的查询，还应与 IoT 硬件制造商/集成器定义的设备孪生结构保持一致。
+   自动设备配置通过**目标条件**（针对设备孪生标记或报告属性执行的查询）将设备孪生集指定为目标。 **目标内容**是要在目标设备孪生内部设置的所需属性集。 目标内容应与 IoT 硬件制造商/系统集成商定义的设备孪生结构相符。 **指标**是对设备克隆报告属性的查询，还应与 IoT 硬件制造商/集成商定义的设备克隆结构一致。
 
    自动设备配置首次在配置创建后不久运行，然后每隔五分钟运行一次。 这些配置还受益于 IoT 中心。IoT 中心以绝不会超过设备孪生读取和更新[限制](iot-hub-devguide-quotas-throttling.md)的速率执行设备孪生操作。
 

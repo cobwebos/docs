@@ -1,6 +1,6 @@
 ---
-title: 为云服务配置 TLS |微软文档
-description: 了解如何为 Web 角色指定 HTTPS 终结点，以及如何上载 TLS/SSL 证书来保护应用程序。 这些示例使用 Azure 门户。
+title: 为云服务配置 TLS |Microsoft Docs
+description: 了解如何为 web 角色指定 HTTPS 终结点以及如何上传 TLS/SSL 证书来保护你的应用程序。 这些示例使用 Azure 门户。
 services: cloud-services
 documentationcenter: .net
 author: tgore03
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
 ms.openlocfilehash: c69b74cf91d8e097f8ad8a9ba2a16f3375f483ae
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82024840"
 ---
-# <a name="configuring-tls-for-an-application-in-azure"></a>为 Azure 中的应用程序配置 TLS
+# <a name="configuring-tls-for-an-application-in-azure"></a>在 Azure 中为应用程序配置 TLS
 
-传输层安全 （TLS） 以前称为安全套接字层 （SSL） 加密，是保护通过互联网发送的数据最常用的方法。 此常见任务讨论如何为 Web 角色指定 HTTPS 终结点以及如何上载 TLS/SSL 证书来保护应用程序。
+传输层安全性（TLS）以前称为安全套接字层（SSL）加密，是保护通过 internet 发送的数据的最常用方法。 此常见任务讨论了如何为 web 角色指定 HTTPS 终结点以及如何上传 TLS/SSL 证书来保护你的应用程序。
 
 > [!NOTE]
 > 本任务中的过程适用于 Azure 云服务；对于应用服务，请参阅[此文章](../app-service/configure-ssl-bindings.md)。
@@ -27,14 +27,14 @@ ms.locfileid: "82024840"
 
 如果尚未创建云服务，请首先阅读[本信息](cloud-services-how-to-create-deploy-portal.md)。
 
-## <a name="step-1-get-a-tlsssl-certificate"></a>第 1 步：获取 TLS/SSL 证书
-要为应用程序配置 TLS，首先需要获得由证书颁发机构 （CA） 签名的 TLS/SSL 证书，证书颁发证书的可信第三方会为此颁发证书。 如果您还没有，则需要从销售 TLS/SSL 证书的公司获得一个证书。
+## <a name="step-1-get-a-tlsssl-certificate"></a>步骤1：获取 TLS/SSL 证书
+若要为应用程序配置 TLS，你首先需要获取已由证书颁发机构（CA）签名的 TLS/SSL 证书，该证书是出于此目的颁发证书的受信任的第三方。 如果还没有帐户，则需要从销售 TLS/SSL 证书的公司获取一个证书。
 
-证书必须满足 Azure 中 TLS/SSL 证书的以下要求：
+证书必须满足 Azure 中的 TLS/SSL 证书的以下要求：
 
 * 证书必须包含公钥。
 * 必须为密钥交换创建证书，并且该证书可导出到个人信息交换 (.pfx) 文件。
-* 证书的使用者名称必须与用于访问云服务的域匹配。 您不能从cloudapp.net域的证书颁发机构 （CA） 获取 TLS/SSL 证书。 必须获取在访问服务时要使用的自定义域名。 在从 CA 请求证书时，该证书的使用者名称必须与用于访问应用程序的自定义域名匹配。 例如，如果您的自定义域名**contoso.com，** 您将从 CA 请求用于 ***.contoso.com**或**\.www contoso.com**的证书。
+* 证书的使用者名称必须与用于访问云服务的域匹配。 无法从证书颁发机构（CA）获取 cloudapp.net 域的 TLS/SSL 证书。 必须获取在访问服务时要使用的自定义域名。 在从 CA 请求证书时，该证书的使用者名称必须与用于访问应用程序的自定义域名匹配。 例如，如果自定义域名为**contoso.com** ，则需要从 CA 申请一个证书用于 ***. contoso.com**或**www\.contoso.com**。
 * 该证书必须使用至少 2048 位加密。
 
 出于测试目的，可以[创建](cloud-services-certs-create.md)并使用自签名证书。 自签名证书不通过 CA 进行身份验证并可使用 cloudapp.net 域作为网站 URL。 例如，以下任务使用其公用名 (CN) 为 **sslexample.cloudapp.net** 的自签名证书。
@@ -166,7 +166,7 @@ ms.locfileid: "82024840"
    ![站点预览](media/cloud-services-configure-ssl-certificate-portal/show-site.png)
 
    > [!TIP]
-   > 如果要将 TLS 用于临时部署而不是生产部署，则首先需要确定用于暂存部署的 URL。 一旦部署了云服务，则过渡环境的 URL 由**部署 ID** GUID 决定，其格式为：`https://deployment-id.cloudapp.net/`  
+   > 如果要对过渡部署而非生产部署使用 TLS，首先需要确定用于过渡部署的 URL。 一旦部署了云服务，则过渡环境的 URL 由**部署 ID** GUID 决定，其格式为：`https://deployment-id.cloudapp.net/`  
    >
    > 使用与基于 GUID 的 URL（例如 **328187776e774ceda8fc57609d404462.cloudapp.net**）等同的公用名 (CN) 创建证书。 使用门户将证书添加到过渡云服务。 然后，将证书信息添加到 CSDEF 和 CSCFG 文件，重新打包应用程序，并更新过渡部署以使用新的程序包。
    >

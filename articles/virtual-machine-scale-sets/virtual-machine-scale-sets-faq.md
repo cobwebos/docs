@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: mimckitt
 ms.openlocfilehash: c2db0cca120d08b85229618547a2aaabbba437ad
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870221"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虚拟机规模集常见问题解答
@@ -61,7 +61,7 @@ ms.locfileid: "81870221"
 
 ### <a name="do-scale-sets-work-with-azure-availability-zones"></a>规模集是否可以与 Azure 可用性区域配合使用？
 
-能！ 有关详细信息，请参阅[规模集区域文档](./virtual-machine-scale-sets-use-availability-zones.md)。
+可以！ 有关详细信息，请参阅[规模集区域文档](./virtual-machine-scale-sets-use-availability-zones.md)。
 
 
 ## <a name="autoscale"></a>自动缩放
@@ -126,7 +126,7 @@ ms.locfileid: "81870221"
 
 ### <a name="if-i-have-stopped-deallocated-a-vm-is-that-vm-started-as-part-of-an-autoscale-operation"></a>如果我已停止（解除分配）VM，该 VM 是否作为自动缩放操作的一部分启动？
 
-不是。 如果自动缩放规则要求将其他 VM 实例作为规模集的一部分，则会创建新的 VM 实例。 停止（解除分配）的 VM 实例不会作为自动缩放事件的一部分启动。 但是，那些已停止（解除分配）的 VM 可能会作为可缩小实例数的自动缩放事件的一部分删除，这与基于 VM 实例 ID 的顺序可以删除任何 VM 实例的方式相同。
+不能。 如果自动缩放规则要求将其他 VM 实例作为规模集的一部分，则会创建新的 VM 实例。 停止（解除分配）的 VM 实例不会作为自动缩放事件的一部分启动。 但是，那些已停止（解除分配）的 VM 可能会作为可缩小实例数的自动缩放事件的一部分删除，这与基于 VM 实例 ID 的顺序可以删除任何 VM 实例的方式相同。
 
 
 
@@ -231,7 +231,7 @@ keyData | 是 | 字符串 | 指定 base64 编码的 SSH 公钥
 
 ### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>添加同一个密钥保管库中的多个证书后，运行 `Update-AzVmss` 时看到以下消息：
 
->更新-AzVms：列表机密包含重复的 /订阅/\<我的订阅 id>/资源组/内部 rg-dev/提供程序/Microsoft.KeyVault/vault/内部密钥保管库-dev，这是不允许的。
+>AzVmss： List secret 包含重复的/subscriptions/\<我的订阅 id>/resourcegroups/internal-rg-dev/providers/microsoft.keyvault/vaults/internal-keyvault-dev，这是不允许的。
 
 如果尝试重新添加同一保管库，而不是对现有源保管库使用新保管库证书，可能会看到此消息。 如果要添加其他机密，`Add-AzVmssSecret` 命令将无法正常运行。
 
@@ -445,7 +445,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
     直接更新规模集模型中的管理员凭据（例如，使用 Azure 资源浏览器、PowerShell 或 CLI）。 规模集完成更新后，所有新的 VM 将获得全新凭据。 现有 VM 只有被重置映像时才获得新凭据。
 
-- 使用 VM 访问扩展重置密码。 请务必按照[此处](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm)所述的密码要求。
+- 使用 VM 访问扩展重置密码。 请确保遵循[此处](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm)所述的密码要求。
 
     使用以下 PowerShell 示例：
 
@@ -466,7 +466,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
 ### <a name="is-it-possible-to-assign-a-network-security-group-nsg-to-a-scale-set-so-that-it-applies-to-all-the-vm-nics-in-the-set"></a>是否可以将网络安全组 (NSG) 分配给规模集，以便将其应用于集中的所有 VM NIC？
 
-是的。 可通过在网络配置文件的 networkInterfaceConfigurations 部分中引用网络安全组，将其直接应用于规模集。 示例：
+是的。 可通过在网络配置文件的 networkInterfaceConfigurations 部分中引用网络安全组，将其直接应用于规模集。 例如：
 
 ```json
 "networkProfile": {
@@ -520,7 +520,7 @@ IP 地址是从指定的子网中选择的。
 
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>能否将规模集与加速网络结合使用？
 
-是的。 若要使用加速网络，请在规模集的 networkInterfaceConfigurations 设置中将 enableAcceleratedNetworking 设置为 true。 例如：
+是的。 若要使用加速网络，请在规模集的 networkInterfaceConfigurations 设置中将 enableAcceleratedNetworking 设置为 true。 例如
 
 ```json
 "networkProfile": {
@@ -540,7 +540,7 @@ IP 地址是从指定的子网中选择的。
 
 ### <a name="how-can-i-configure-the-dns-servers-used-by-a-scale-set"></a>如何才能配置规模集使用的 DNS 服务器？
 
-若要创建具有自定义 DNS 配置的虚拟机规模集，请将 dnsSettings JSON 数据包添加到规模集的 networkInterfaceConfigurations 部分中。 示例：
+若要创建具有自定义 DNS 配置的虚拟机规模集，请将 dnsSettings JSON 数据包添加到规模集的 networkInterfaceConfigurations 部分中。 例如：
 
 ```json
     "dnsSettings":{
@@ -550,7 +550,7 @@ IP 地址是从指定的子网中选择的。
 
 ### <a name="how-can-i-configure-a-scale-set-to-assign-a-public-ip-address-to-each-vm"></a>如何才能将规模集配置为向每个 VM 分配公共 IP 地址？
 
-要创建将公共 IP 地址分配给每个 VM 的虚拟机规模集，请确保 Microsoft.Compute/VirtualScaleSet 资源的 API 版本为 2017-03-30，并将_公共ip地址配置_JSON 数据包添加到规模集 ip 配置部分。 示例：
+若要创建向每个 VM 分配公共 IP 地址的虚拟机规模集，请确保 virtualMachineScaleSets 资源的 API 版本为2017-03-30，并将_publicipaddressconfiguration_ JSON 数据包添加到规模集 ipconfiguration 部分。 例如：
 
 ```json
     "publicipaddressconfiguration": {
@@ -563,7 +563,7 @@ IP 地址是从指定的子网中选择的。
 
 ### <a name="can-i-configure-a-scale-set-to-work-with-multiple-application-gateways"></a>能否配置与多个应用程序网关配合使用的规模集？
 
-是的。 您可以将多个应用程序网关后端地址池的资源指示添加到规模集网络配置文件的_ip 配置_部分_中的应用程序 GatewayBackend 地址池_列表中。
+是的。 可以将多个应用程序网关后端地址池的资源 Id 添加到规模集网络配置文件的 " _ipconfiguration_ " 部分的_applicationGatewayBackendAddressPools_列表中。
 
 ## <a name="scale"></a>缩放
 
@@ -649,7 +649,7 @@ az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.Ente
 可在 Azure 门户的 Log Analytics 工作区中查找所需的 workspaceId 和 workspaceKey。 在“概述”页面上，单击“设置”磁贴。 单击顶部的“相连的源”选项卡。
 
 > [!NOTE]
-> 如果规模集 _upgradePolicy_ 设置为“手动”，则需要通过对 VM 调用升级将扩展应用到集中的所有 VM。 在 CLI 中，这将是_az vms 更新实例_。
+> 如果规模集 _upgradePolicy_ 设置为“手动”，则需要通过对 VM 调用升级将扩展应用到集中的所有 VM。 在 CLI 中，这会是_az vmss update-实例_。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

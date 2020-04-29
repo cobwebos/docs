@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: babanisa
 ms.openlocfilehash: e4ebae9597d750cea6f292655e9f03dd65ccc3f5
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82133721"
 ---
 # <a name="azure-event-grid-event-schema-for-signalr-service"></a>SignalR 服务的 Azure 事件网格事件架构
@@ -24,7 +24,7 @@ ms.locfileid: "82133721"
 
 SignalR 服务发出以下事件类型：
 
-| 事件类型 | 说明 |
+| 事件类型 | 描述 |
 | ---------- | ----------- |
 | Microsoft.SignalRService.ClientConnectionConnected | 当连接客户端连接时引发。 |
 | Microsoft.SignalRService.ClientConnectionDisconnected | 当客户端连接断开连接时引发。 |
@@ -83,7 +83,7 @@ SignalR 服务发出以下事件类型：
 | eventType | 字符串 | 此事件源的一个注册事件类型。 |
 | EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
 | ID | 字符串 | 事件的唯一标识符。 |
-| data | 对象 | SignalR 服务事件数据。 |
+| data | 对象 (object) | SignalR 服务事件数据。 |
 | dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
 | metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 

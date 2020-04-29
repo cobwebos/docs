@@ -1,5 +1,5 @@
 ---
-title: Azure 服务交换矩阵安全性的最佳做法
+title: 适用于 Azure Service Fabric 安全性的最佳做法
 description: 本文提供有关 Azure Service Fabric 安全性的一套最佳做法。
 author: unifycloud
 ms.author: tomsh
@@ -8,10 +8,10 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: 4548bf77c01194802c2e6203bcbf9fbd240370a2
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461644"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric 安全性最佳做法
@@ -32,7 +32,7 @@ Azure Service Fabric 是一种分布式系统平台，适用于打包、部署�
 -   使用 X.509 证书。
 -   配置安全策略。
 -   实现 Reliable Actors 安全配置。
--   为 Azure 服务结构配置 TLS。
+-   为 Azure Service Fabric 配置 TLS。
 -   将 Azure Service Fabric 与网络隔离和安全功能结合使用。
 -   出于安全考虑，配置 Azure Key Vault。
 -   将用户分配到角色。
@@ -115,16 +115,16 @@ Service Fabric Reliable Actors 是执行组件设计模式的实现。 与所有
 
 每个执行组件都定义为执行组件类型的一个实例，类似于 .NET 对象是 .NET 类型的一个实例。 例如，用于实现计算器功能的执行组件类型**** 可能包含此类型的多个执行组件，这些执行组件跨群集中的各个节点进行分布。 分布的每个执行组件都通过执行组件标识符进行唯一标识。
 
-[复制器安全配置](../../service-fabric/service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)用于保护复制期间使用的通信通道。 此配置可阻止服务相互窥探复制流量，并确保可用性很高的数据安全。 默认情况下，空的安全配置节会影响复制安全。
+复制器[安全配置](../../service-fabric/service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)用于保护在复制过程中使用的信道。 此配置可阻止服务相互窥探复制流量，并确保可用性很高的数据安全。 默认情况下，空的安全配置节会影响复制安全。
 复制器配置用于配置负责使执行组件状态提供程序状态高度可靠的复制器。
 
-## <a name="configure-tls-for-azure-service-fabric"></a>为 Azure 服务交换矩阵配置 TLS
-服务器身份验证流程向管理客户端[验证](../../service-fabric/service-fabric-cluster-creation-via-arm.md)群集管理终结点。 然后，管理客户端确定它在与真正的群集通信。 此证书还为 HTTPS 管理 API 和 HTTPS 中的服务结构资源管理器提供[TLS。](../../service-fabric/service-fabric-cluster-creation-via-arm.md)
+## <a name="configure-tls-for-azure-service-fabric"></a>为 Azure Service Fabric 配置 TLS
+服务器身份验证流程向管理客户端[验证](../../service-fabric/service-fabric-cluster-creation-via-arm.md)群集管理终结点。 然后，管理客户端确定它在与真正的群集通信。 此证书还通过 HTTPS 为 HTTPS 管理 API 和 Service Fabric Explorer 提供[TLS](../../service-fabric/service-fabric-cluster-creation-via-arm.md) 。
 必须获取群集的自定义域名。 从证书颁发机构请求获取证书时，证书的使用者名称必须与用于群集的自定义域名匹配。
 
-要为应用程序配置 TLS，首先需要获取由 CA 签名的 SSL/TLS 证书。 CA 是受信任的第三方，为 TLS 安全目的颁发证书。 如果您还没有 SSL/TLS 证书，则需要从销售 SSL/TLS 证书的公司获得证书。
+若要为应用程序配置 TLS，你首先需要获取已由 CA 签名的 SSL/TLS 证书。 CA 是为 TLS 安全目的颁发证书的受信任的第三方。 如果还没有 SSL/TLS 证书，则需要从销售 SSL/TLS 证书的公司获取一个证书。
 
-证书必须满足 Azure 中 SSL/TLS 证书的以下要求：
+证书必须满足 Azure 中的以下 SSL/TLS 证书要求：
 -   证书必须包含私钥。
 
 -   必须创建适用于密钥交换的证书，并且证书必须可导出到个人信息交换 (.pfx) 文件中。
@@ -135,13 +135,13 @@ Service Fabric Reliable Actors 是执行组件设计模式的实现。 与所有
     - 请求从 CA 获取证书，其中使用者名称与服务的自定义域名匹配。 例如，如果自定义域名为 __contoso__.com****，CA 颁发的证书应包含使用者名称 .contoso.com**** 或 __www__.contoso.com****。
 
     >[!NOTE]
-    >您不能从__CLOUDapp__**.net**域的 CA 获取 SSL/TLS 证书。
+    >不能从 CA 获取用于__p p.__**.NET**域的 SSL/TLS 证书。
 
 -   证书至少必须使用 2,048 位加密。
 
 HTTP 协议不安全，容易受到窥探攻击威胁。 通过 HTTP 传输的数据在 Web 浏览器到 Web 服务器之间或其他终结点之间作为纯文本发送。 攻击者可以拦截和查看通过 HTTP 发送的敏感数据，如信用卡详细信息和帐户登录凭据。 如果数据使用 HTTPS 通过浏览器进行发送或发布，SSL 可确保加密和保护敏感信息，防止其被拦截。
 
-要了解有关使用 SSL/TLS 证书的更多信息，请参阅[在 Azure 中为应用程序配置 TLS。](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md)
+若要了解有关使用 SSL/TLS 证书的详细信息，请参阅[在 Azure 中为应用程序配置 TLS](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md)。
 
 ## <a name="use-network-isolation-and-security-with-azure-service-fabric"></a>将 Azure Service Fabric 与网络隔离和安全功能结合使用
 将 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)用作示例，设置 nodetype 属性值为 3 的安全群集。 使用此模板和网络安全组控制入站和出站网络流量。
@@ -169,7 +169,7 @@ Service Fabric 使用 X.509 证书保护群集，并提供应用程序安全功�
 若要详细了解如何设置密钥保管库，请参阅[什么是 Azure 密钥保管库？](../../key-vault/general/overview.md)。
 
 ## <a name="assign-users-to-roles"></a>将用户分配到角色
-创建表示群集的应用程序后，将用户分配给 Service Fabric 支持的角色：只读和管理员。可以使用 Azure 门户分配这些角色。
+创建用于表示群集的应用程序后，请将用户分配到 Service Fabric 支持的角色：只读和管理员。您可以使用 Azure 门户分配这些角色。
 
 >[!NOTE]
 > 若要详细了解如何在 Service Fabric 使用角色，请参阅[适用于 Service Fabric 客户端的基于角色的访问控制](../../service-fabric/service-fabric-cluster-security-roles.md)。

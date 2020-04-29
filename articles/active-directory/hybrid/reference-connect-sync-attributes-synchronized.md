@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ab51030ad39e1360cabc7d63390af7c1654d2891
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82082112"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect 同步：与 Azure Active Directory 同步的属性
@@ -375,9 +375,9 @@ ms.locfileid: "82082112"
 * Yammer（只使用 User）
 * [SharePoint 等资源提供的混合企业到企业 (B2B) 跨组织协作方案](https://go.microsoft.com/fwlink/?LinkId=747036)
 
-如果不使用 Azure AD 目录来支持 Office 365、Dynamics 或 Intune，则可以使用这一组属性。 它包含一小部分核心属性。 请注意，单一登录或预配到某些第三方应用程序需要配置属性的同步，以及此处描述的属性。 每个应用程序的[SaaS 应用教程](../saas-apps/tutorial-list.md)中介绍了应用程序要求。
+如果不使用 Azure AD 目录来支持 Office 365、Dynamics 或 Intune，则可以使用这一组属性。 它包含一小部分核心属性。 请注意，对于某些第三方应用程序的单一登录或预配，还需要配置属性的同步，而不是此处所述的属性。 每个应用程序的[SaaS 应用教程](../saas-apps/tutorial-list.md)介绍了应用程序要求。
 
-| 属性名称 | 用户 | 联系人 | 组 | 注释 |
+| 属性名称 | User | 联系人 | 组 | 注释 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |如果启用了帐户，则进行定义。 |
 | cn |X | |X | |
@@ -413,7 +413,7 @@ ms.locfileid: "82082112"
 
 **用户**的这些属性是所选其他应用的补充。  
 
-| 属性名称 | 用户 | 注释 |
+| 属性名称 | User | 注释 |
 | --- |:---:| --- |
 | domainFQDN |X |也称为 dnsDomainName。 例如 contoso.com。 |
 | domainNetBios |X |也称为 netBiosName。 例如 CONTOSO。 |
@@ -422,7 +422,7 @@ ms.locfileid: "82082112"
 ## <a name="exchange-hybrid-writeback"></a>Exchange 混合写回
 选择启用 **Exchange 混合**部署时，这些属性将从 Azure AD 写回到本地 Active Directory。 根据 Exchange 版本，可能会同步更少的属性。
 
-| 属性名称（本地 AD） | 属性名称（连接 UI） | 用户 | 联系人 | 组 | 注释 |
+| 属性名称（本地 AD） | 属性名称（连接 UI） | User | 联系人 | 组 | 注释 |
 | --- |:---:|:---:|:---:| --- |---|
 | msDS-ExternalDirectoryObjectID| ms-DS-External-Directory-Object-Id |X | | |派生自 Azure AD 中的 cloudAnchor。 此属性是 Exchange 2016 和 Windows Server 2016 AD 中的新增属性。 |
 | msExchArchiveStatus| ms-Exch-ArchiveStatus |X | | |联机存档：使客户能够存档邮件。 |
@@ -466,11 +466,11 @@ ms.locfileid: "82082112"
 | msDS-IsManaged |X | |
 | msDS-RegisteredOwner |X | |
 
-## <a name="notes"></a>说明
+## <a name="notes"></a>注意
 * 使用替代 ID 时，本地属性 userPrincipalName 将与 Azure AD 属性 onPremisesUserPrincipalName 同步。 替代 ID 属性（例如 mail）将与 Azure AD 属性 userPrincipalName 同步。
 * 在上述列表中，对象类型 **User** 也适用于对象类型 **iNetOrgPerson**。
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [Azure AD Connect 同步](how-to-connect-sync-whatis.md)配置的详细信息。
 
-详细了解[将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

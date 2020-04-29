@@ -8,22 +8,22 @@ ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 944a84405bd7e03b72b2610278f9f0e4d3cfaf38
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81454231"
 ---
 # <a name="manage-server-administrators"></a>管理服务器管理员
 
-服务器管理员必须是 Azure Active Directory (Azure AD) 中服务器所在租户的有效用户或安全组。 可以对 Azure 门户中的服务器使用“Analysis Services 管理员”****，或使用 SSMS、PowerShell 或 REST API 中的“服务器属性”来管理服务器管理员。 
+服务器管理员必须是 Azure Active Directory (Azure AD) 中服务器所在租户的有效用户或安全组。 可以对 Azure 门户中的服务器使用“Analysis Services 管理员”  ，或使用 SSMS、PowerShell 或 REST API 中的“服务器属性”来管理服务器管理员。 
 
 添加**安全组**时，请使用`obj:groupid@tenantid`。
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>使用 Azure 门户添加服务器管理员
 
 1. 在门户中，对于服务器，单击“Analysis Services 管理员”****。
-2. 在**\<服务器名称> - 分析服务管理员**中，单击"**添加**"。
+2. 在** \<servername>-Analysis Services 管理员**"中，单击"**添加**"。
 3. 在“添加服务器管理员”**** 中，从 Azure AD 选择用户帐户，或使用电子邮件地址邀请外部用户。
 
     ![Azure 门户中的服务器管理员](./media/analysis-services-server-admins/aas-manage-users-admins.png)

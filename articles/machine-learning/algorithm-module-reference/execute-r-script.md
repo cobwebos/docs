@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
 ms.openlocfilehash: eb778c8d24639320b60927438de76a29de724ac2
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81684713"
 ---
 # <a name="execute-r-script"></a>执行 R 脚本
@@ -47,7 +47,7 @@ azureml_main <- function(dataframe1, dataframe2){
 若要安装其他 R 包，请使用 `install.packages()` 方法。 为每个“执行 R 脚本”模块安装包，但不在其他“执行 R 脚本”模块之间共享包********。
 
 > [!NOTE]
-> 安装软件包时请指定 CRAN 存储库，例如`install.packages("zoo",repos = "http://cran.us.r-project.org")`
+> 请在安装包（如）时指定 CRAN 存储库`install.packages("zoo",repos = "http://cran.us.r-project.org")`
 
 此示例演示如何安装 Zoo：
 ```R
@@ -112,7 +112,7 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-管道运行完成后，您可以在模块的右侧面板中预览图像
+管道运行完成后，可以在模块的右窗格中预览图像
 
 > [!div class="mx-imgBorder"]
 > ![已上传 - 映像](media/module/upload-image-in-r-script.png)
@@ -140,10 +140,10 @@ azureml_main <- function(dataframe1, dataframe2){
 1. 在“R 脚本”文本框中，键入或粘贴有效的 R 脚本  。
 
     > [!NOTE]
-    > 编写脚本时请非常小心，并确保没有语法错误，例如使用未声明的变量或未导入的模块或函数。 此外，请注意本文档末尾的预安装包列表。 要使用未列出的包，请在脚本中安装它们，例如`install.packages("zoo",repos = "http://cran.us.r-project.org")`
+    > 编写脚本时请务必小心，并确保没有语法错误，如使用未声明的变量或未导入的模块或函数。 在本文档末尾，还需支付额外的发出关注信号。 若要使用未列出的包，请将它们安装在你的脚本中，如`install.packages("zoo",repos = "http://cran.us.r-project.org")`
     
     > [!NOTE]
-    > 不支持依赖于 X11 库的功能（如"视图"），因为未预安装 X11 库。
+    > 不支持依赖于 X11 库的函数（例如 "视图"），因为未预安装 X11 库。
     
     为了帮助你入门，“R 脚本”文本框中预填充了可以编辑或替换的示例代码****。
     
@@ -175,10 +175,10 @@ azureml_main <- function(dataframe1, dataframe2){
 
  * 脚本必须包含名为 `azureml_main` 的函数，这是此模块的入口点。
 
- * 入口点函数必须具有两个输入参数：`Param<dataframe1>`和`Param<dataframe2>`，即使函数中未使用这两个参数也是如此。
+ * 入口点函数必须有两个输入参数： `Param<dataframe1>`和`Param<dataframe2>`，即使在函数中未使用这两个参数时也是如此。
 
    > [!NOTE]
-    > 传递给执行 R**脚本**模块的数据被引用为`dataframe1`和`dataframe2`，这与 Azure 机器学习设计器（设计器引用为`dataset1` `dataset2`） 不同。 请检查以确保在脚本中正确引用输入数据。  
+    > 传递给 "**执行 R 脚本**" 模块的数据被引用`dataframe1`为`dataframe2`和，这不同于 Azure 机器学习设计器（设计器引用`dataset1`为`dataset2`，）。 请检查以确保在脚本中正确引用输入数据。  
  
     > [!NOTE]
     >  现有 R 代码可能需要稍作更改才能在设计器管道中运行。 例如，以 CSV 格式提供的输入数据应显式转换为数据集，然后才能在代码中使用。 R 语言中使用的数据和列类型与在设计器中使用的数据和列类型在某些方面也有所不同。
@@ -193,7 +193,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 来自 R 的标准消息和错误将返回到模块的日志中。
 
-如果需要在 R 脚本中打印结果，可以在模块右侧面板的 **"输出_logs"** 选项卡下的 **"70_driver_log**中找到打印的结果。
+如果你需要在 R 脚本中打印结果，你可以在模块的右面板中的 "**输出 + 日志**" 选项卡下的**70_driver_log**中找到打印结果。
 
 ## <a name="sample-scripts"></a>示例脚本
 
@@ -204,9 +204,9 @@ azureml_main <- function(dataframe1, dataframe2){
 
 “执行 R 脚本”模块支持任意 R 脚本文件作为输入****。 为此，必须将这些文件作为 ZIP 文件的一部分上传到你的工作区。
 
-1. 要将包含 R 代码的 ZIP 文件上载到工作区，请转到**数据集**资产页，单击"**创建数据集**"，然后选择 **"从本地文件和****文件**数据集类型"选项。  
+1. 若要将包含 R 代码的 ZIP 文件上传到工作区，请单击 "**数据集**资产" 页，单击 "**创建数据集**"，然后选择 "**从本地文件**" 和 "**文件**数据集类型" 选项。  
 
-1. 验证压缩文件在左侧模块树中的 **"数据集**"类别下的"**我的数据集"** 列表中是否可用。
+1. 验证左侧模块树中 "**数据集**" 类别下的 "**我的数据集**" 列表中是否有该压缩文件。
 
 1.  将数据集连接到“脚本包”输入端口****。
 
@@ -256,7 +256,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 此示例演示如何使用 ZIP 文件中的数据集作为“执行 R 脚本”模块的输入****。
 
-1. 以 CSV 格式创建数据文件，并将其命名为"mydatafile.csv"。
+1. 创建 CSV 格式的数据文件，并将其命名为 "mydatafile"。
 1. 创建一个 ZIP 文件，并将 CSV 文件添加到存档。
 1. 将压缩文件上载到 Azure 机器学习工作区。 
 1. 将结果数据集连接到“执行 R 脚本”模块的“ScriptBundle”输入********。
@@ -292,7 +292,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 可以使用内部序列化机制在 **“执行 R 脚本”** 模块的实例之间传递 R 对象。 此示例假设你想要在两个“执行 R 脚本”模块之间移动名为 `A` 的 R 对象****。
 
-1. 将第一个**执行 R 脚本**模块添加到管道中，并在 R **Script**文本框中键入以下代码，以在`A`模块的输出数据表中创建序列化对象作为列：  
+1. 将第一个 "**执行 R 脚本**" 模块添加到管道，然后在 " **R 脚本**" 文本框中键入以下代码，以将`A`序列化的对象创建为模块输出数据表中的列：  
   
     ```R
     azureml_main <- function(dataframe1, dataframe2){
@@ -327,7 +327,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 |              |            | 
 |--------------|------------| 
-| 程序包      | 版本    | 
+| 包      | 版本    | 
 | askpass      | 1.1        | 
 | assertthat   | 0.2.1      | 
 | backports    | 1.1.4      | 

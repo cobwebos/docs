@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 02/12/2020
 ms.openlocfilehash: 6bba71ab35920027cc7296e774936c3d1deb8f92
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770317"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他组件在 HDInsight 中设置群集
@@ -39,7 +39,7 @@ Hadoop 群集由用于对任务进行分布式处理的多个虚拟机（节点�
 | [cURL](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
 | [Azure Resource Manager 模板](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 
-本文将引导您在[Azure 门户](https://portal.azure.com)中完成设置，您可以在其中创建 HDInsight 群集。
+本文逐步讲解[Azure 门户](https://portal.azure.com)中的设置，您可以在其中创建 HDInsight 群集。
 
 ## <a name="basics"></a>基础知识
 
@@ -90,25 +90,25 @@ Azure HDInsight 目前提供以下群集类型，每种类型都具有一组用�
 
 使用 HDInsight 群集时，可以在群集创建期间配置两个用户帐户：
 
-* 群集登录用户名：默认用户名为*管理员*。它使用 Azure 门户上的基本配置。 有时它被称为"群集用户"或"HTTP 用户"。
-* 安全外壳 （SSH） 用户名：用于通过 SSH 连接到群集。 有关详细信息，请参阅将[SSH 与 HDInsight 一起使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
+* 群集登录用户名：默认用户名为*admin*。它使用 Azure 门户上的基本配置。 有时，它称为 "群集用户" 或 "HTTP 用户"。
+* 安全外壳（SSH）用户名：用于通过 SSH 连接到群集。 有关详细信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 HTTP 用户名具有以下限制：
 
-* 允许的特殊字符：`_`和`@`
+* 允许的特殊字符`_` ：和`@`
 * 不允许的字符：#;."',\/:`!*?$(){}[]<>|&--=+%~^空格
 * 最大长度：20
 
 SSH 用户名具有以下限制：
 
-* 允许的特殊字符：`_`和`@`
+* 允许的特殊字符`_` ：和`@`
 * 不允许的字符：#;."',\/:`!*?$(){}[]<>|&--=+%~^空格
 * 最大长度：64
 * 保留的名称：hadoop、users、oozie、hive、mapred、ambari-qa、zookeeper、tez、hdfs、sqoop、yarn、hcat、ams、hbase、storm、administrator、admin、user、user1、test、user2、test1、user3、admin1、1、123、a、actuser、adm、admin2、aspnet、backup、console、david、guest、john、owner、root、server、sql、support、support_388945a0、sys、test2、test3、user4、user5、spark
 
 ## <a name="storage"></a>存储
 
-![群集存储设置：与 HDFS 兼容的终结点](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-storage.png)
+![群集存储设置： HDFS 兼容的终结点](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-storage.png)
 
 虽然 Hadoop 的本地安装使用 Hadoop 分布式文件系统 (HDFS) 作为群集上的存储，但在云中，会使用连接到群集的存储终结点。 使用云存储空间意味着可以安全删除用于计算的 HDInsight 群集，同时仍可保留数据。
 
@@ -116,11 +116,11 @@ HDInsight 群集可以使用以下存储选项：
 
 * Azure Data Lake Storage Gen2
 * Azure Data Lake Storage Gen1
-* Azure 存储通用 v2
-* Azure 存储通用 v1
-* Azure 存储块 blob （**仅作为辅助存储受支持**）
+* Azure 存储常规用途 v2
+* Azure 存储常规用途 v1
+* Azure 存储块 blob （**仅支持作为辅助存储**）
 
-有关使用 HDInsight 的存储选项的详细信息，请参阅[比较与 Azure HDInsight 群集一起使用的存储选项](hdinsight-hadoop-compare-storage-options.md)。
+有关 HDInsight 存储选项的详细信息，请参阅[比较用于 Azure hdinsight 群集的存储选项](hdinsight-hadoop-compare-storage-options.md)。
 
 > [!WARNING]  
 > 不支持在 HDInsight 群集之外的其他位置使用其他存储帐户。
@@ -138,19 +138,19 @@ HDInsight 群集可以使用以下存储选项：
 > [!IMPORTANT]  
 > 创建自定义元存储时，请勿在数据库名称中使用短划线、连字符或空格。 否则可能导致群集创建过程失败。
 
-#### <a name="sql-database-for-hive"></a>蜂巢的 SQL 数据库
+#### <a name="sql-database-for-hive"></a>Hive 的 SQL 数据库
 
 如果想要在删除 HDInsight 群集后保留 Hive 表，请使用自定义元存储。 然后，可以将元存储附加到另一个 HDInsight 群集。
 
-为一个 HDInsight 群集版本创建的 HDInsight 元存储不能在不同的 HDInsight 群集版本之间共享。 有关 HDInsight 版本的列表，请参阅[支持的 HDInsight 版本](hdinsight-component-versioning.md#supported-hdinsight-versions)。
+为一个 HDInsight 群集版本创建 An HDInsight 元存储不能在不同的 HDInsight 群集版本之间共享。 有关 HDInsight 版本的列表，请参阅[支持的 HDInsight 版本](hdinsight-component-versioning.md#supported-hdinsight-versions)。
 
-#### <a name="sql-database-for-oozie"></a>Oozie 的 SQL 数据库
+#### <a name="sql-database-for-oozie"></a>适用于 Oozie 的 SQL 数据库
 
 若要提高使用 Oozie 时的性能，请使用自定义元存储。 元存储还可以在用户删除群集后提供对 Oozie 作业数据的访问。
 
-#### <a name="sql-database-for-ambari"></a>Ambari 的 SQL 数据库
+#### <a name="sql-database-for-ambari"></a>适用于 Ambari 的 SQL 数据库
 
-Ambari 用于监视 HDInsight 群集、进行配置更改以及存储群集管理信息以及作业历史记录。 自定义 Ambari 数据库功能允许您部署新群集，并在您管理的外部数据库中设置 Ambari。 有关详细信息，请参阅自定义[Ambari DB](./hdinsight-custom-ambari-db.md)。
+Ambari 用于监视 HDInsight 群集、进行配置更改，以及存储群集管理信息以及作业历史记录。 使用自定义 Ambari DB 功能，你可以部署新的群集，并在你管理的外部数据库中设置 Ambari。 有关详细信息，请参阅[Custom AMBARI DB](./hdinsight-custom-ambari-db.md)。
 
 > [!IMPORTANT]  
 > 无法重用自定义 Oozie 元存储。 若要使用自定义 Oozie 元存储，必须在创建 HDInsight 群集时提供一个空的 Azure SQL 数据库。
@@ -181,27 +181,27 @@ Ambari 用于监视 HDInsight 群集、进行配置更改以及存储群集管�
 
 ### <a name="disk-encryption-setting"></a>磁盘加密设置
 
-有关详细信息，请参阅[客户管理密钥磁盘加密](./disk-encryption.md)。
+有关详细信息，请参阅[客户管理的密钥磁盘加密](./disk-encryption.md)。
 
 ### <a name="kafka-rest-proxy"></a>Kafka REST 代理
 
-此设置仅适用于群集类型 Kafka。 有关详细信息，请参阅使用[REST 代理](./kafka/rest-proxy.md)。
+此设置仅适用于群集类型 Kafka。 有关详细信息，请参阅[使用 REST 代理](./kafka/rest-proxy.md)。
 
 ### <a name="identity"></a>标识
 
-有关详细信息，请参阅[Azure HDInsight 中的托管标识](./hdinsight-managed-identities.md)。
+有关详细信息，请参阅 [Azure HDInsight 中的托管标识](./hdinsight-managed-identities.md)。
 
 ## <a name="configuration--pricing"></a>配置 + 定价
 
 ![HDInsight 选择节点大小](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration.png)
 
-只要群集存在，系统都会为节点使用情况付费。 创建群集后便开始计费，删除群集后停止计费。 无法取消分配群集或将其置于暂停状态。
+只要群集存在，就会向你计费节点的使用情况。 创建群集后便开始计费，删除群集后停止计费。 无法取消分配群集或将其置于暂停状态。
 
 ### <a name="node-configuration"></a>节点配置
 
 每种群集类型都有自身的节点数、节点术语和默认的 VM 大小。 下表中的括号内列出了每个节点类型的节点数目。
 
-| 类型 | Nodes | 图表 |
+| 类型 | 节点 | 图表 |
 | --- | --- | --- |
 | Hadoop |头节点 (2)、工作器节点 (1+) |![HDInsight Hadoop 群集节点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
 | HBase |头服务器 (2)，区域服务器 (1+)，主控/ZooKeeper 节点 (3) |![HDInsight HBase 群集类型设置](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
@@ -215,18 +215,18 @@ HDInsight 群集的成本取决于节点数和节点的虚拟机大小。
 不同群集类型具有不同的节点类型、节点数和节点大小：
 * Hadoop 群集类型默认具有：
     * 两个*头节点*  
-    * 四*个辅助节点*
+    * 四个*辅助角色节点*
 * Storm 群集类型默认具有：
     * 两个 *Nimbus 节点*
     * 三个 *ZooKeeper 节点*
     * 四个*监督器节点*
 
-如果您只是尝试 HDInsight，我们建议您使用一个辅助角色节点。 有关 HDInsight 定价的详细信息，请参阅 [HDInsight 定价](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)。
+如果刚尝试使用 HDInsight，我们建议使用一个辅助角色节点。 有关 HDInsight 定价的详细信息，请参阅 [HDInsight 定价](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)。
 
 > [!NOTE]  
 > 群集大小限制因 Azure 订阅而异。 若要提高限制的大小，请联系 [Azure 计费支持人员](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
 
-使用 Azure 门户配置群集时，节点大小可通过 **"配置 + 定价**"选项卡提供。在门户中，您还可以看到与不同节点大小关联的成本。
+使用 Azure 门户配置群集时，可通过 "**配置 + 定价**" 选项卡使用节点大小。在门户中，你还可以查看不同节点大小的相关成本。
 
 ### <a name="virtual-machine-sizes"></a>虚拟机大小
 
@@ -238,9 +238,9 @@ HDInsight 群集的成本取决于节点数和节点的虚拟机大小。
 若要了解在使用各种 SDK 创建群集或使用 Azure PowerShell 时，应使用什么值指定 VM 大小，请参阅[用于 HDInsight 群集的 VM 大小](../cloud-services/cloud-services-sizes-specs.md#size-tables)。 从此链接文章中，使用表“大小”**** 列中的值。
 
 > [!IMPORTANT]  
-> 如果群集中需要超过 32 个辅助节点，则必须选择具有至少 8 个内核和 14 GB RAM 的头节点大小。
+> 如果群集中需要32个以上的辅助角色节点，则必须选择至少具有8个核心和 14 GB RAM 的头节点大小。
 
-有关详细信息，请参阅[虚拟机的大小](../virtual-machines/windows/sizes.md)。 有关各种尺寸定价的信息，请参阅[HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight)。
+有关详细信息，请参阅[虚拟机的大小](../virtual-machines/windows/sizes.md)。 有关不同大小的定价信息，请参阅[HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight)。
 
 ### <a name="add-application"></a>添加应用程序
 

@@ -8,22 +8,22 @@ ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
 ms.openlocfilehash: e3eca498e5716ae7c0a03e5e624d618899da8dc8
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770402"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>升级 Azure 内部负载均衡器 - 需要出站连接
-[Azure 标准负载均衡器](load-balancer-overview.md)通过区域冗余提供了丰富的功能集和高可用性。 有关负载均衡器 SKU 的详细信息，请参阅[比较表](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)。 由于标准内部负载均衡器不提供出站连接，因此我们提供了一个解决方案，改为创建标准公共负载均衡器。
+[Azure 标准负载均衡器](load-balancer-overview.md)通过区域冗余提供丰富的功能集和高可用性。 有关负载均衡器 SKU 的详细信息，请参阅[比较表](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)。 由于标准内部负载均衡器不提供出站连接，因此我们提供了一个解决方案，改为创建标准公共负载均衡器。
 
 升级分为四个阶段：
 
 1. 将配置迁移到标准公共负载均衡器
 2. 将 VM 添加到标准公共负载均衡器的后端池
-3. 为应避免从互联网到互联网的子网/VM 设置 NSG 规则
+3. 为应从/向 Internet 迄今为止的子网/Vm 设置 NSG 规则
 
-本文介绍配置迁移。 将 VM 添加到后端池可能因特定环境而异。 不过，本文提供了一些概要性的普通[建议](#add-vms-to-backend-pools-of-standard-load-balancer)。
+本文介绍配置迁移。 根据特定环境，将 Vm 添加到后端池可能会有所不同。 不过，本文提供了一些概要性的普通[建议](#add-vms-to-backend-pools-of-standard-load-balancer)。
 
 ## <a name="upgrade-overview"></a>升级概述
 
@@ -31,13 +31,13 @@ ms.locfileid: "81770402"
 
 * 在指定的资源组和位置中创建标准 SKU 公共负载均衡器。
 * 将基本 SKU 内部负载均衡器的配置无缝复制到新创建的标准公共负载均衡器。
-* 创建一个实现出口连接的出站规则。
+* 创建启用传出连接的出站规则。
 
 ### <a name="caveatslimitations"></a>注意事项/限制
 
 * 脚本支持需要出站连接的内部负载均衡器升级。 如果任何 VM 都不需要出站连接，请参阅[此页](upgrade-basicInternal-standard.md)以获得最佳做法。
-* 标准负载均衡器使用新的公共地址。 不可能将与现有基本内部负载平衡器关联的 IP 地址无缝移动到标准公共负载均衡器，因为它们具有不同的 SKU。
-* 如果标准负载均衡器是在不同区域中创建的，您将无法将旧区域中现有的 VM 与新创建的标准负载均衡器相关联。 若要克服此限制，请确保在新区域中创建新的 VM。
+* 标准负载均衡器使用新的公共地址。 不能将与现有基本内部负载均衡器关联的 IP 地址无缝移动到标准的公共负载均衡器，因为它们具有不同的 Sku。
+* 如果在不同的区域中创建标准负载均衡器，则无法将旧区域中的 Vm 关联到新创建的标准负载均衡器。 若要克服此限制，请确保在新区域中创建新的 VM。
 * 如果负载均衡器没有任何前端 IP 配置或后端池，则运行脚本时可能会遇到错误。  确保负载均衡器不是空的。
 
 ## <a name="download-the-script"></a>下载脚本
