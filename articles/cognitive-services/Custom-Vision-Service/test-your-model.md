@@ -1,7 +1,7 @@
 ---
 title: 测试和重新训练模型 - 自定义影像服务
 titleSuffix: Azure Cognitive Services
-description: 本文将向您展示如何测试图像，然后使用它在自定义视觉服务中重新训练模型。
+description: 本文将演示如何测试映像，然后使用它来重新训练自定义视觉服务中的模型。
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: anroth
 ms.openlocfilehash: c6ed8869f6d33609381a42fd22d728e9e5542802
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73721198"
 ---
 # <a name="test-and-retrain-a-model-with-custom-vision-service"></a>使用自定义影像服务测试和重新训练模型
@@ -35,7 +35,7 @@ ms.locfileid: "73721198"
 
 现可将此测试图像添加到模型，然后重新训练模型。
 
-## <a name="use-the-predicted-image-for-training"></a>使用预测图像进行培训
+## <a name="use-the-predicted-image-for-training"></a>使用预测图像进行定型
 
 要使用之前提交的图像进行训练，请执行以下步骤：
 

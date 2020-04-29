@@ -1,5 +1,5 @@
 ---
-title: 检测图像中的人脸 - 人脸
+title: 检测图像中的人脸
 titleSuffix: Azure Cognitive Services
 description: 本指南演示如何使用人脸检测功能从给定的图像中提取性别、年龄或姿势等特性。
 services: cognitive-services
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
 ms.openlocfilehash: 7070cb3bcd1b519828a750cf4ba6caf7ecb34bbb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76169877"
 ---
 # <a name="get-face-detection-data"></a>获取人脸检测数据
 
-本指南演示如何使用人脸检测功能从给定的图像中提取性别、年龄或姿势等特性。 本指南中的代码段通过使用 Azure 认知服务面客户端库以 C# 形式编写。 同样的功能通过 [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) 提供。
+本指南演示如何使用人脸检测功能从给定的图像中提取性别、年龄或姿势等特性。 本指南中的代码片段使用 Azure 认知服务面部客户端库以 c # 编写。 同样的功能通过 [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) 提供。
 
 本指南介绍以下操作：
 
@@ -29,7 +29,7 @@ ms.locfileid: "76169877"
 
 ## <a name="setup"></a>设置
 
-本指南假设你已使用人脸订阅密钥和终结点 URL 构造了名为 `faceClient` 的 [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) 对象。 在此处，可以通过调用 [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet)（本指南中使用）或 [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet) 来使用人脸检测功能。 有关如何设置此功能的说明，请按照其中一个快速启动。
+本指南假设你已使用人脸订阅密钥和终结点 URL 构造了名为 `faceClient` 的 [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) 对象。 在此处，可以通过调用 [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet)（本指南中使用）或 [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet) 来使用人脸检测功能。 有关如何设置此功能的说明，请单击其中一个快速入门。
 
 本指南重点介绍有关检测调用的具体信息，例如，可以传递哪些参数，以及可对返回的数据执行哪些操作。 建议仅查询所需功能。 每项操作都需要额外的时间来完成。
 
@@ -55,7 +55,7 @@ foreach (var face in faces)
 
 ## <a name="get-face-landmarks"></a>获取人脸特征点
 
-[面部地标](../concepts/face-detection.md#face-landmarks)是一组容易找到的面部点，如学生或鼻尖。 若要获取人脸特征点数据，请将 _returnFaceLandmarks_ 参数设置为 **true**。
+[人脸特征点](../concepts/face-detection.md#face-landmarks)是人脸上的一组易于查找的点，例如瞳孔或鼻尖。 若要获取人脸特征点数据，请将 _returnFaceLandmarks_ 参数设置为 **true**。
 
 ```csharp
 IList<DetectedFace> faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, null);
@@ -150,4 +150,4 @@ foreach (var face in faces)
 ## <a name="related-topics"></a>相关主题
 
 - [参考文档 (REST)](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
-- [参考文档 （.NET SDK）](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)
+- [参考文档（.NET SDK）](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)

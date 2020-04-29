@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.openlocfilehash: 9add5b063b67ddcc4cd5bf93e7f5b570b004e5ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74815592"
 ---
-# <a name="device-roobo-smart-audio-dev-kit"></a>设备：罗博智能音频开发套件
+# <a name="device-roobo-smart-audio-dev-kit"></a>设备：Roobo 智能音频开发工具包
 
 本文提供 Roobo 智能音频开发工具包的设备特定信息。
 
@@ -59,17 +59,17 @@ ms.locfileid: "74815592"
     > [!TIP]
     > 将电脑的麦克风和扬声器调为静音，以确保使用开发工具包的麦克风。 这可以避免电脑中的音频意外触发设备。
 
-1. 如果要将扬声器连接到开发套件，可以将其连接到音频线路。您应该选择带有 3.5mm 模拟插头的高质量扬声器。
+1. 如果希望将扬声器连接到开发工具包，可将其连接到音频线路输出。应选择带有 3.5 mm 模拟插头的高品质扬声器。
 
     ![Vysor 音频](media/speech-devices-sdk/qsg-14.png)
 
 ## <a name="development-information"></a>开发信息
 
-有关详细信息，请参阅[Roobo 开发指南](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf)。
+有关更多开发信息，请参阅 [Roobo 开发指南](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf)。
 
 ## <a name="audio"></a>音频
 
-Roobo 提供一个工具用于将所有音频捕获到闪存。 它可能有助于排查音频问题。 已针对每个开发工具包配置提供该工具的一个版本。 在[Roobo 网站上](https://ddk.roobo.com/)，选择您的设备，然后选择页面底部的**Roobo 工具**链接。
+Roobo 提供一个工具用于将所有音频捕获到闪存。 它可能有助于排查音频问题。 已针对每个开发工具包配置提供该工具的一个版本。 在 [Roobo 站点](https://ddk.roobo.com/)上选择设备，然后选择页面底部的“Roobo 工具”链接。 
 
 ## <a name="next-steps"></a>后续步骤
 

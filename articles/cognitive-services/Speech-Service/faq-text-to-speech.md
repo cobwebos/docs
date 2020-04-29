@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
 ms.openlocfilehash: 19b8be83a3678164197ec0650b07091e941a04d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74110504"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>文本转语音常见问题
@@ -51,17 +51,17 @@ ms.locfileid: "74110504"
 
 问：如果所需并发高于默认值或门户中提供的值，应该怎么办？****
 
-答****：以 20 个并发请求为增量纵向扩展模型。 有关更高缩放的咨询，请联系[自定义语音客户支持人员](mailto:customvoice@microsoft.com?subject=Inquiries%20about%20scripts%20generation%20for%20Custom%20Voice%20creation)。
+**答**：以 20 个并发请求为增量纵向扩展模型。 有关更高缩放的咨询，请联系[自定义语音客户支持人员](mailto:customvoice@microsoft.com?subject=Inquiries%20about%20scripts%20generation%20for%20Custom%20Voice%20creation)。
 
-问：是否可以下载模型并在本地运行？****
+**问：能否下载模型并在本地运行？**
 
-答****：无法下载模型并在本地执行。
+**答**：无法下载模型并在本地执行。
 
-问：我的请求是否受到请求？****
+**问：我的请求是否受到限制？**
 
-答****：REST API 将请求限制为每 5 秒 25 个。 可以在我们的[文本转语音](text-to-speech.md)页面中找到详细信息。
+**答**：REST API 将请求限制为每 5 秒 25 个。 可以在我们的[文本转语音](text-to-speech.md)页面中找到详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [疑难解答](troubleshooting.md)
+- [故障排除](troubleshooting.md)
 - [发行说明](releasenotes.md)

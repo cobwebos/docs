@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: e9ad7c52af20762633c710b39a64fbebf0cf6213
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79220046"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>对 LUIS 门户中的 1000 个话语执行批处理测试
@@ -28,7 +28,7 @@ ms.locfileid: "79220046"
 
 ## <a name="a-data-set-of-utterances"></a>话语数据集
 
-提交话语批处理文件（称为数据集**），以用于批处理测试。 该数据集是一个 JSON 格式的文件，包含最多 1,000 个标记为非重复**** 的话语。 可以在一个应用中测试最多 10 个数据集。 如果需要测试更多数据集，请删除数据集，然后添加新数据集。
+提交话语批处理文件（称为数据集  ），以用于批处理测试。 该数据集是一个 JSON 格式的文件，包含最多 1,000 个标记为非重复  的话语。 可以在一个应用中测试最多 10 个数据集。 如果需要测试更多数据集，请删除数据集，然后添加新数据集。
 
 |**规则**|
 |--|
@@ -74,7 +74,7 @@ ms.locfileid: "79220046"
 ]
 ```
 
-批处理文件使用 startPos 和 endPos 属性来记录实体的开始和结束********。 值从零开始，不得以空格开始或结束。 这与使用 startIndex 和 endIndex 属性的查询日志不同。 
+批处理文件使用 startPos 和 endPos 属性来记录实体的开始和结束   。 值从零开始，不得以空格开始或结束。 这与使用 startIndex 和 endIndex 属性的查询日志不同。 
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
@@ -114,7 +114,7 @@ LUIS 跟踪每个数据集的最后一次测试的状态。 这包括大小（�
 
 批处理测试结果是散点图，称为错误矩阵。 此图表对批处理文件中的话语和当前模型的预测意向和实体进行四个方面的比较。 
 
-“假正”**** 和“假负”**** 部分上的数据点指示错误，应对其进行调查。 如果所有数据点都在“真正”**** 和“真负”**** 部分上，则你的应用在此数据集上的准确性很好。
+“假正”  和“假负”  部分上的数据点指示错误，应对其进行调查。 如果所有数据点都在“真正”  和“真负”  部分上，则你的应用在此数据集上的准确性很好。
 
 ![图表的四个部分](./media/luis-concept-batch-test/chart-sections.png)
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: d721ceb25b3ce2408563a0bed16457d05affe7b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79219991"
 ---
 # <a name="design-with-intent-and-entity-models"></a>使用意向和实体模型进行设计 
@@ -28,11 +28,11 @@ LUIS 可让用户轻松地向机器传授概念。 然后，机器可以生成�
 
 ## <a name="v3-authoring-model-decomposition"></a>V3 Authoring 模型分解
 
-LUIS 支持使用 V3 创作 API 的模型分解，以便将模型分解成较小组成部分。__ 这样，你便可以生成自己的模型，并有把握地构造和预测各个组成部分。
+LUIS 支持使用 V3 创作 API 的模型分解，以便将模型分解成较小组成部分。  这样，你便可以生成自己的模型，并有把握地构造和预测各个组成部分。
 
 模型分解包括以下组成部分：
 
-* [意图](#intents-classify-utterances)
+* [意向](#intents-classify-utterances)
     * 特征提供的[描述符](#descriptors-are-features)
 * [机器学习实体](#machine-learned-entities)
     * [子组件](#entity-subcomponents-help-extract-data)（也是机器学习实体）
@@ -49,7 +49,7 @@ LUIS 支持使用 V2 创作 API 的复合实体。 此功能提供类似的模�
 
 假设某个应用需要确定用户的预订意向，另一个应用需要客户的交货地址。 此应用具有两个意向：`OrderBook` 和 `ShippingLocation`。
 
-以下言语是 `OrderBook` 意向的**积极示例**，以及 `ShippingLocation` 和 `None` 意向的**消极示例**： 
+以下言语是  **意向的**积极示例`OrderBook`，以及 **和** 意向的`ShippingLocation`消极示例`None`： 
 
 `Buy the top-rated book on bot architecture.`
 
@@ -112,7 +112,7 @@ LUIS 支持使用 V2 创作 API 的复合实体。 此功能提供类似的模�
 
 * [正则表达式](reference-entity-regular-expression.md)实体
 * [列表](reference-entity-list.md)实体 
-* [预构建](luis-reference-prebuilt-entities.md)实体
+* [预生成](luis-reference-prebuilt-entities.md)实体
 
 沿用机票预订的示例，机场代码可能在列表实体中，需要对其进行精确文本匹配。 
 
@@ -130,9 +130,9 @@ LUIS 支持使用 V2 创作 API 的复合实体。 此功能提供类似的模�
 
 ## <a name="intents-versus-entities"></a>意向与实体
 
-意向是整个言语的所需结果，而实体是从言语中提取的数据片段。__ 通常，意向与客户端应用程序应执行的操作相关联，而实体是执行此操作所需的信息。 从编程的角度讲，意向会触发方法调用，而实体将用作该方法调用的参数。
+意向是整个言语的所需结果，而实体是从言语中提取的数据片段。  通常，意向与客户端应用程序应执行的操作相关联，而实体是执行此操作所需的信息。 从编程的角度讲，意向会触发方法调用，而实体将用作该方法调用的参数。
 
-以下言语肯定包含意向，同时可能包含实体：____
+以下言语肯定包含意向，同时可能包含实体：  
 
 `Buy an airline ticket from Seattle to Cairo`
 
@@ -140,7 +140,7 @@ LUIS 支持使用 V2 创作 API 的复合实体。 此功能提供类似的模�
 
 * 购买机票
 
-以下言语可能包含多个实体：__
+以下言语可能包含多个实体： 
 
 * Seattle（出发地）和 Cairo（目的地）的地点
 * 数量为一张机票

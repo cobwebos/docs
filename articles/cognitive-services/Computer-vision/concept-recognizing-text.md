@@ -1,5 +1,5 @@
 ---
-title: 打印，手写文本识别 - 计算机视觉
+title: 打印的手写文本识别-计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 与使用计算机视觉 API 识别图像中的印刷文本和手写文本相关的概念。
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: a4c90ed12c8023e0b9ebc509b20d8d9224b49f1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79220156"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>识别打印文本和手写文本
@@ -26,10 +26,10 @@ ms.locfileid: "79220156"
 
 读取 API 使用我们最新的识别模型检测图像中的文本内容，并将已识别的文本转换为机器可读的字符流。 该 API 已针对包含大量文本的图像（例如，数码扫描的文档）以及包含大量视觉噪点的图像进行优化。 它将确定用于每行文本的识别模型，并支持包含印刷文本和手写文本的图像。 读取 API 以异步方式执行，因为处理较大文档时，可能需要花费好几分钟才能返回结果。
 
-“读取”操作会在其输出中保留已识别字的原始行分组。 每一行附带边框坐标，行中的每个字也有其自身的坐标。 如果某个字的识别置信度较低，该结果中也会反映该信息。 有关详细信息，请参阅[读取 API 参考文档](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)和[读取 API 预览参考文档](https://go.microsoft.com/fwlink/?linkid=2118322)。
+“读取”操作会在其输出中保留已识别字的原始行分组。 每一行附带边框坐标，行中的每个字也有其自身的坐标。 如果某个字的识别置信度较低，该结果中也会反映该信息。 有关详细信息，请参阅[读取 api 参考文档](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)和[读取 api 预览参考文档](https://go.microsoft.com/fwlink/?linkid=2118322)。
 
 > [!NOTE]
-> 此功能仅适用于英语和西班牙语（预览）文本。
+> 此功能仅适用于英语和西班牙语（预览版）文本。
 
 ### <a name="image-requirements"></a>图像要求
 
@@ -94,4 +94,4 @@ OCR API 可以处理符合以下要求的图像：
 
 ## <a name="next-steps"></a>后续步骤
 
-按照["提取文本（阅读）](./QuickStarts/CSharp-hand-text.md)快速入门"在简单的 C# 应用中实现文本识别。
+按照[提取文本（阅读）](./QuickStarts/CSharp-hand-text.md)快速入门，在简单的 c # 应用程序中实现文本识别。

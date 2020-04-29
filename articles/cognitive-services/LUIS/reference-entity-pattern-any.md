@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
 ms.openlocfilehash: 5164bf55ef8233cf34a470524da3bc852678d79a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75979166"
 ---
 # <a name="patternany-entity"></a>Pattern.any 实体
@@ -23,7 +23,7 @@ Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中�
 
 需要在[模式](luis-how-to-model-intent-pattern.md)模板示例而不是意向用户示例中标记 Pattern.any 实体。
 
-**在以下情况下，非常适合使用该实体：**
+**在以下情况下，非常适合使用此实体：**
 
 * 实体的末尾可能与话语的其余文本相混淆。
 
@@ -35,10 +35,10 @@ Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中�
 
 |以粗体显示带实体的话语|
 |--|
-|`Was The Man Who Mistook His Wife for a Hat and Other Clinical Tales written by an American this year?`<br><br>《错把太太当成帽子的男人与其他医疗故事》是某位美国人在今年撰写的吗？****|
-|`Was Half Asleep in Frog Pajamas written by an American this year?`<br><br>今年一位美国人写的**青蛙睡衣中半睡半睡**吗？|
-|`Was The Particular Sadness of Lemon Cake: A Novel written by an American this year?`<br><br>**柠檬蛋糕的特殊悲伤：** 一个美国人今年写的小说吗？|
-|`Was There's A Wocket In My Pocket! written by an American this year?`<br><br>**我的口袋里有个沃克吗？** 是某位美国人在今年撰写的吗？|
+|`Was The Man Who Mistook His Wife for a Hat and Other Clinical Tales written by an American this year?`<br><br>《错把太太当成帽子的男人与其他医疗故事》是某位美国人在今年撰写的吗？ |
+|`Was Half Asleep in Frog Pajamas written by an American this year?`<br><br>《在宽大睡衣中半梦半睡》是某位美国人在今年撰写的吗？ |
+|`Was The Particular Sadness of Lemon Cake: A Novel written by an American this year?`<br><br>《小说：柠檬蛋糕的特种忧伤》  是某位美国人在今年撰写的吗？|
+|`Was There's A Wocket In My Pocket! written by an American this year?`<br><br>《口袋里的毛怪！》  是某位美国人在今年撰写的吗？|
 ||
 
 
@@ -108,4 +108,4 @@ Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中�
 
 ## <a name="next-steps"></a>后续步骤
 
-在[本教程](luis-tutorial-pattern.md)中，使用**Pattern.任何**实体从陈述格式良好的、数据末尾可能很容易与话语的剩余字词混淆的话语中提取数据。
+在本[教程](luis-tutorial-pattern.md)中，请使用**模式。任何**实体从最谈话中提取数据，其中最谈话的格式正确，并且数据的结尾可能会与查询文本中的其余单词轻松混淆。

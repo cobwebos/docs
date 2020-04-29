@@ -1,7 +1,7 @@
 ---
 title: 迁移到 V3 - 文本翻译 API
 titleSuffix: Azure Cognitive Services
-description: 本文提供了帮助您从 Azure 认知服务转换器文本 API 的 V2 迁移到 V3 的步骤。
+description: 本文提供了一些步骤，可帮助你从 V2 迁移到 Azure 认知服务文本翻译 API。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: eb43d549d3e0cd449c865d533fc8701c4c3912fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73837313"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>将文本翻译 API V2 迁移到 V3
 
 > [!NOTE]
-> V2 于 2018 年 4 月 30 日弃用。 请将应用程序迁移到 V3，以便利用 V3 中独有功能。
+> V2 已于2018年4月30日弃用。 请将你的应用程序迁移到 V3，以便充分利用 V3 中专门提供的新功能。
 > 
-> 微软翻译中心将于2019年5月17日停用。 [查看重要的迁移信息和日期](https://www.microsoft.com/translator/business/hub/)。  
+> Microsoft Translator 中心将在 2019 5 月17日停用。 [查看重要的迁移信息和日期](https://www.microsoft.com/translator/business/hub/)。  
 
 Microsoft Translator 团队已发布文本翻译 API 版本 3 (V3)。 此版本包括新的功能、弃用了一些方法，并提供与 Microsoft Translator 服务相互发送和接收数据时所用的新格式。 本文档提供有关将应用程序更改为使用 V3 的信息。 
 
@@ -43,17 +43,17 @@ Microsoft Translator 团队已发布文本翻译 API 版本 3 (V3)。 此版本�
 
 | V2 API 方法   | V3 API 兼容性 |
 |:----------- |:-------------|
-| `Translate`     | [Translate](reference/v3-0-translate.md)          |
-| `TranslateArray`      | [Translate](reference/v3-0-translate.md)        |
+| `Translate`     | [翻译](reference/v3-0-translate.md)          |
+| `TranslateArray`      | [翻译](reference/v3-0-translate.md)        |
 | `GetLanguageNames`      | [语言](reference/v3-0-languages.md)         |
 | `GetLanguagesForTranslate`     | [语言](reference/v3-0-languages.md)       |
 | `GetLanguagesForSpeak`      | [Microsoft 语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
 | `Speak`     | [Microsoft 语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
-| `Detect`     | [检测](reference/v3-0-detect.md)         |
-| `DetectArray`     | [检测](reference/v3-0-detect.md)         |
+| `Detect`     | [Detect](reference/v3-0-detect.md)         |
+| `DetectArray`     | [Detect](reference/v3-0-detect.md)         |
 | `AddTranslation`     | 不再支持的功能       |
 | `AddTranslationArray`    | 不再支持的功能          |
-| `BreakSentences`      | [断点](reference/v3-0-break-sentence.md)       |
+| `BreakSentences`      | [BreakSentence](reference/v3-0-break-sentence.md)       |
 | `GetTranslations`      | 不再支持的功能         |
 | `GetTranslationsArray`      | 不再支持的功能         |
 
@@ -65,7 +65,7 @@ Microsoft Translator 文本翻译 V2 接受 XML 格式的数据，并以此格�
 
 languages 方法不需要身份验证；单击以下链接可以看到 V3 的 JSON 格式的所有语言信息：
 
-[https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation，字典，音译](https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation,dictionary,transliteration)
+[https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation，dictionary，音译](https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation,dictionary,transliteration)
 
 ## <a name="authentication-key"></a>身份验证密钥
 
@@ -110,7 +110,7 @@ Global
 
 > [!NOTE]
 > 
-> 微软翻译中心将于2019年5月17日停用。 [查看重要的迁移信息和日期](https://www.microsoft.com/translator/business/hub/)。   
+> Microsoft Translator 中心将在 2019 5 月17日停用。 [查看重要的迁移信息和日期](https://www.microsoft.com/translator/business/hub/)。   
 
 Microsoft Translator V3 默认使用神经机器翻译。 因此，它不能与 Microsoft Translator Hub 一起使用。 Translator Hub 仅支持传统的统计机器翻译。 现在，可以使用 Custom Translator 对神经翻译进行自定义。 [详细了解如何自定义神经机器翻译](custom-translator/overview.md)
 

@@ -1,7 +1,7 @@
 ---
 title: 语言支持 - 计算机视觉
 titleSuffix: Azure Cognitive Services
-description: 本文提供了计算机视觉功能支持的自然语言列表;OCR，识别文本和读取。
+description: 本文提供计算机视觉功能支持的自然语言列表;OCR、识别文本和读取。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.openlocfilehash: a834c68119340d796f87971912a07fc0524a6d21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79220134"
 ---
 # <a name="language-support-for-computer-vision"></a>计算机视觉的语言支持
@@ -60,7 +60,7 @@ OCR 会自动检测输入材料的语言，因此无需在 API 调用中指定�
 
 [分析 - 图像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 的某些操作可以返回其他语言（使用 `language` 查询参数指定）的结果。 某些操作会返回英语结果而不管你指定何种语言，另外一些操作会针对不支持的语言引发异常。 操作是通过 `visualFeatures` 和 `details` 查询参数指定的；请参阅[概述](home.md)以获取能够通过图像分析完成的所有操作的列表。
 
-|语言 | 语言代码 | 类别 | Tags | 描述 | 成人 | 品牌 | Color | 面 | ImageType | 对象 | 名人 | 特征点 |
+|语言 | 语言代码 | 类别 | Tags | 说明 | 成人 | 品牌 | 颜色 | 面 | ImageType | 对象 | 名人 | 特征点 |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |中文 | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |英语 | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|

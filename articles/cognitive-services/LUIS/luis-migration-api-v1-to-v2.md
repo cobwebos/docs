@@ -12,26 +12,26 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: diberry
 ms.openlocfilehash: 2f67bf0951ef8928297c71e8fc9f924cf05c63f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68932695"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>LUIS 应用的 API v1 到 v2 迁移指南
-版本 1[终结点](https://aka.ms/v1-endpoint-api-docs)和[创作](https://aka.ms/v1-authoring-api-docs)API 将被弃用。 使用本指南了解如何迁移到版本 2[终结点](https://go.microsoft.com/fwlink/?linkid=2092356)并[创作](https://go.microsoft.com/fwlink/?linkid=2092087)API。 
+第 1 版[终结点](https://aka.ms/v1-endpoint-api-docs)和[创作](https://aka.ms/v1-authoring-api-docs) API 已弃用。 使用此指南学习如何迁移至第 2 版[终结点](https://go.microsoft.com/fwlink/?linkid=2092356)和[创作](https://go.microsoft.com/fwlink/?linkid=2092087) API。 
 
 ## <a name="new-azure-regions"></a>新的 Azure 区域
 LUIS 为 LUIS API 提供新的[区域](https://aka.ms/LUIS-regions)。 LUIS 为区域组提供另一个门户。 必须在要用于查询的区域中编写应用程序。 应用程序不会自动迁移区域。 若要在新区域中使用应用，请从一个区域中将其导出，再将其导入到另一个区域。
 
 ## <a name="authoring-route-changes"></a>创作路由的更改
-创作 API 路由从使用 prog 路由改为使用 api 路由********。
+创作 API 路由从使用 prog 路由改为使用 api 路由   。
 
 
 | 版本 | 路由 |
 |--|--|
-|1|/luis/v1.0/prog/apps****|
-|2|/luis/api/v2.0/apps****|
+|1|/luis/v1.0/prog/apps |
+|2|/luis/api/v2.0/apps |
 
 
 ## <a name="endpoint-route-changes"></a>终结点路由的更改
@@ -112,15 +112,15 @@ v2 终结点成功响应：
 |1|/luis/v1.0/prog/subscriptions|
 |1|/luis/v1.0/prog/subscriptions/{subscriptionKey}|
 
-在 Azure 门户中生成了 Azure [终结点密钥](luis-how-to-azure-subscription.md)。 可在[发布](luis-how-to-azure-subscription.md)页上将密钥分配至 LUIS 应用****。 不需要知道实际的密钥值。 LUIS 使用订阅名称来进行分配。 
+在 Azure 门户中生成了 Azure [终结点密钥](luis-how-to-azure-subscription.md)。 可在**发布[页上将密钥分配至 LUIS 应用](luis-how-to-azure-subscription.md)** 。 不需要知道实际的密钥值。 LUIS 使用订阅名称来进行分配。 
 
 ## <a name="new-versioning-route"></a>新的版本控制路由
 [版本](luis-how-to-manage-versions.md)中现包含 v2 模型。 版本名称是路由中的 10 个字符。 默认版本为“0.1”。
 
 | 版本 | 路由 |
 |--|--|
-|1|/luis/v1.0/prog/apps/{appId}/entities****|
-|2|/luis/api/v2.0/apps/{appId}/versions/{versionId}/entities********|
+|1|/luis/v1.0/prog/apps/{appId}/entities |
+|2|/luis/api/v2.0/apps/{appId}/versions/{versionId}/entities  |
 
 ## <a name="metadata-renamed"></a>重命名元数据
 一些返回 LUIS 元数据的 API 具有新名称。
@@ -134,14 +134,14 @@ v2 终结点成功响应：
 
 
 ## <a name="sample-renamed-to-suggest"></a>“示例”已重命名为“建议”
-LUIS 会从现有[终结点话语](luis-how-to-review-endpoint-utterances.md)中推荐能增强模型的话语。 在前一版本中，此功能名为“样本”****。 在新版本中，其名称从“样本”改为“建议”****。 在 LUIS 网站上名为[查看终结点话语](luis-how-to-review-endpoint-utterances.md)****。
+LUIS 会从现有[终结点话语](luis-how-to-review-endpoint-utterances.md)中推荐能增强模型的话语。 在前一版本中，此功能名为“样本”  。 在新版本中，其名称从“样本”改为“建议”  。 在 LUIS 网站上名为[查看终结点话语](luis-how-to-review-endpoint-utterances.md)****。
 
 | 版本 | 路由 |
 |--|--|
-|1|/luis/v1.0/prog/apps/{appId}/entities/{entityId}/sample********|
-|1|/luis/v1.0/prog/apps/{appId}/intents/{intentId}/sample********|
-|2|/luis/api/v2.0/apps/{appId}/versions/{versionId}/entities/{entityId}/suggest************|
-|2|/luis/api/v2.0/apps/{appId}/versions/{versionId}/intents/{intentId}/suggest************|
+|1|/luis/v1.0/prog/apps/{appId}/entities/{entityId}/sample  |
+|1|/luis/v1.0/prog/apps/{appId}/intents/{intentId}/sample  |
+|2|/luis/api/v2.0/apps/{appId}/versions/{versionId}/entities/{entityId}/suggest   |
+|2|/luis/api/v2.0/apps/{appId}/versions/{versionId}/intents/{intentId}/suggest   |
 
 
 ## <a name="create-app-from-prebuilt-domains"></a>从预生成的域创建应用

@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: aahi
 ms.openlocfilehash: 81a2cb7ece775bfaffaf1b1932feb12b2da5f08f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74012026"
 ---
 # <a name="featured-user-generated-content-for-the-anomaly-detector-api"></a>异常检测器 API 的用户生成特色内容
 
-使用本文了解其他客户如何看待和使用异常检测器 API。 以下资源由异常检测器用户社区创建。 它们包括开源项目，以及 Microsoft 和第三方用户创建的其他贡献。 以下一些链接托管在 Microsoft 外部的网站上，Microsoft 不对其中的内容负责。 在参考这些资源时，请谨慎使用。
+使用本文了解其他客户如何看待和使用异常检测器 API。 以下资源由异常检测器用户社区创建。 它们包括开源项目，以及由 Microsoft 和第三方用户创建的其他贡献。 以下一些链接托管在 Microsoft 外部的网站上，Microsoft 不对其中的内容负责。 在参考这些资源时，请谨慎使用。
 
 ## <a name="technical-blogs"></a>技术博客
 
-* [尝试认知服务：异常检测器 API（日语）](https://azure-recipe.kc-cloud.jp/2019/04/cognitive-service-anomaly-detector-api/)
+* [尝试认知服务：异常检测 API （日语）](https://azure-recipe.kc-cloud.jp/2019/04/cognitive-service-anomaly-detector-api/)
 
 ## <a name="open-source-projects"></a>开放源代码项目
 

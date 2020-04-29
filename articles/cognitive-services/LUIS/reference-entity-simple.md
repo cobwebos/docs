@@ -11,17 +11,17 @@ ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
 ms.openlocfilehash: 8b92aa6057c81ec9442372c5b85918cb92196d61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74894763"
 ---
 # <a name="simple-entity"></a>简单实体
 
 简单实体是描述单个概念的泛型实体，通过机器学习的上下文习得。 由于简单实体采用概括性的名称，例如公司名称、产品名称或其他类别的名称，因此，在使用简单实体时，请添加一个[短语列表](luis-concept-feature.md)，以提升所用名称的信号。
 
-**在以下情况下，非常适合使用该实体：**
+**在以下情况下，非常适合使用此实体：**
 
 * 数据格式不一致，但指示相同的事物。
 
@@ -88,11 +88,11 @@ This is the JSON if `verbose=true` is set in the query string:
 
 * * *
 
-|数据对象|实体名称|“值”|
+|数据对象|实体名称|值|
 |--|--|--|
 |简单实体|`Customer`|`bob jones`|
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [学习模式语法](reference-pattern-syntax.md)
+> [了解模式语法](reference-pattern-syntax.md)

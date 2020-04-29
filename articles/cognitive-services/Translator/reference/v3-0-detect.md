@@ -1,7 +1,7 @@
 ---
 title: 文本翻译 API 检测方法
 titleSuffix: Azure Cognitive Services
-description: 使用 Azure 认知服务转换器文本 API 检测方法标识文本文本的语言。
+description: 使用 Azure 认知服务文本翻译 API 检测方法识别一段文本的语言。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: 370f3b14c12fc05f181d6497b7069bbf1cf3c9cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73837300"
 ---
 # <a name="translator-text-api-30-detect"></a>文本翻译 API 3.0：检测
@@ -35,10 +35,10 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
 <table width="100%">
   <th width="20%">查询参数</th>
-  <th>描述</th>
+  <th>说明</th>
   <tr>
     <td>api-version</td>
-    <td>必需参数**。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。</td>
+    <td>必需参数。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。</td>
   </tr>
 </table> 
 
@@ -46,18 +46,18 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>描述</th>
+  <th>说明</th>
   <tr>
     <td>身份验证标头</td>
-    <td><em>所需的请求标头</em>。<br/>请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。</td>
+    <td>必需的请求标头。<br/>请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。</td>
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>*所需的请求标头*。<br/>指定有效负载的内容类型。 可能的值为：`application/json`</td>
+    <td>必需的请求标头。<br/>指定有效负载的内容类型。 可能的值为：`application/json`</td>
   </tr>
   <tr>
     <td>Content-Length</td>
-    <td>*所需的请求标头*。<br/>请求正文的长度。</td>
+    <td>必需的请求标头。<br/>请求正文的长度。</td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
@@ -126,7 +126,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>描述</th>
+  <th>说明</th>
   <tr>
     <td>X-RequestId</td>
     <td>服务生成的用于标识请求的值。 它用于故障排除目的。</td>
@@ -139,7 +139,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
 <table width="100%">
   <th width="20%">状态代码</th>
-  <th>描述</th>
+  <th>说明</th>
   <tr>
     <td>200</td>
     <td>成功。</td>

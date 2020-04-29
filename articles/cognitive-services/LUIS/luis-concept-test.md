@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
 ms.openlocfilehash: 25b360f90a0920aad2ea5e68cda31a68be5d37a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73486690"
 ---
 # <a name="testing-example-utterances-in-luis"></a>在 LUIS 中测试示例话语
@@ -32,13 +32,13 @@ ms.locfileid: "73486690"
 请参阅[预测分数](luis-concept-prediction-score.md)概念，详细了解预测分数。
 
 ## <a name="interactive-testing"></a>交互式测试
-交互式测试在 LUIS 门户的“测试”**** 面板中完成。 可输入话语，了解意向和实体的识别和打分方式。 在测试面板中，如果 LUIS 根据话语预测的意向和实体不符合预期，则将其作为新话语复制到“意向”页****。 然后为实体标记该话语的各个部分，并训练 LUIS。 
+交互式测试在 LUIS 门户的“测试”  面板中完成。 可输入话语，了解意向和实体的识别和打分方式。 在测试面板中，如果 LUIS 根据话语预测的意向和实体不符合预期，则将其作为新话语复制到“意向”页  。 然后为实体标记该话语的各个部分，并训练 LUIS。 
 
 ## <a name="batch-testing"></a>批处理测试
 若要同时测试多条话语，请参阅[批处理测试](luis-concept-batch-test.md)。
 
 ## <a name="endpoint-testing"></a>终结点测试
-可使用[终结点](luis-glossary.md#endpoint)进行测试，最多可使用两个版本的应用。 将主要或实时版本的应用设置为“生产”终结点，将另一版本添加到“暂存”终结点********。 通过此方法可获得三个版本的话语：[LUIS](luis-reference-regions.md) 网站“测试”窗格中的当前模型，以及两个不同终结点上的两个版本。 
+可使用[终结点](luis-glossary.md#endpoint)进行测试，最多可使用两个版本的应用。 将主要或实时版本的应用设置为“生产”终结点，将另一版本添加到“暂存”终结点   。 通过此方法可获得三个版本的话语：[LUIS](luis-reference-regions.md) 网站“测试”窗格中的当前模型，以及两个不同终结点上的两个版本。 
 
 所有终结点测试均计入使用配额。 
 
@@ -53,7 +53,7 @@ LUIS 将记录的所有话语存储在查询日志中，可从 LUIS 门户上的
 ## <a name="remember-to-train"></a>请记住进行训练
 请记住在更改模型后[训练](luis-how-to-train.md) LUIS。 在训练应用前在测试中看不到对 LUIS 应用的更改。 
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 了解[最佳实践](luis-concept-best-practices.md)。
 
 ## <a name="next-steps"></a>后续步骤

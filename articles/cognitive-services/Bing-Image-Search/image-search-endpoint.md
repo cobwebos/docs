@@ -1,7 +1,7 @@
 ---
 title: 必应图像搜索 API 的终结点
 titleSuffix: Azure Cognitive Services
-description: 图像搜索 API 包括三个终结点。 终结点 1 返回来自 Web 的图像。 终结点 2 返回 ImageInsights。 终结点 3 返回热门图像。
+description: 图像搜索 API 包括三个终结点。 终结点1从 web 返回图像。 终结点 2 返回 ImageInsights。 终结点 3 返回热门图像。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 38416f6a580d270aefc287de0c198bd418a44db9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74072630"
 ---
 # <a name="endpoints-for-the-bing-image-search-api"></a>必应图像搜索 API 的终结点

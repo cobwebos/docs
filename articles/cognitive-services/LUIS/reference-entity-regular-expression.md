@@ -11,19 +11,19 @@ ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
 ms.openlocfilehash: b9da76a80183f353a74d43e667bf6c9219eb6c05
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74841211"
 ---
 # <a name="regular-expression-entity"></a>正则表达式实体
 
 正则表达式实体基于所提供的正则表达式模式提取实体。
 
-正则表达式最适合用于原始话语文本。 不区分大小写，并忽略区域性变体。  完成字符级别而不是令牌级别的拼写检查更改后，会应用正则表达式匹配。 如果正则表达式过于复杂，例如使用了许多括号，则不能将表达式添加到模型。 使用部分但不是所有[.NET Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions)库。
+正则表达式最适合用于原始话语文本。 不区分大小写，并忽略区域性变体。  完成字符级别而不是令牌级别的拼写检查更改后，会应用正则表达式匹配。 如果正则表达式过于复杂，例如使用了许多括号，则不能将表达式添加到模型。 使用部分但并非全部 [.NET Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) 库。
 
-**在以下情况下，非常适合使用该实体：**
+**在以下情况下，非常适合使用此实体：**
 
 * 数据的格式一致，并且其任何变体也是一致的。
 * 正则表达式不需要 2 个级别以上的嵌套。
@@ -48,7 +48,7 @@ ms.locfileid: "74841211"
 
 如果将 `kb[0-9]{6}` 用作正则表达式实体定义，则下面的 JSON 响应就是一个示例话语，其中包含查询返回的正则表达式实体：
 
-`When was kb123456 published?`:
+`When was kb123456 published?`设置用户帐户 ：
 
 #### <a name="v2-prediction-endpoint-response"></a>[V2 预测终结点响应](#tab/V2)
 
@@ -106,4 +106,4 @@ ms.locfileid: "74841211"
 
 ## <a name="next-steps"></a>后续步骤
 
-在[本教程中](tutorial-regex-entity.md)，创建一个应用，以便使用**正则表达式**实体从陈述中提取一致格式的数据。
+在本[教程](tutorial-regex-entity.md)中，使用**正则表达式**实体创建应用，以便从查询文本中提取一致格式的数据。

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
 ms.openlocfilehash: e3028a9f046edb4013d8a2d6ec88d8c3cb2ca489
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79220013"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>语言理解 (LUIS) 认知服务中的数据存储和删除
@@ -41,9 +41,9 @@ LUIS 将加密的数据存储在与密钥指定的区域对应的 Azure 数据�
 
 ### <a name="delete-utterances-in-review-from-active-learning"></a>从主动学习中删除审核中的话语
 
-你可以从 LUIS 在**["审阅终结点陈述"页](luis-how-to-review-endpoint-utterances.md)** 中建议的用户陈述列表中删除陈述。 从此列表中删除表述可以防止系统再将其作为建议提出来，但不会将其从日志中删除。
+可以从 LUIS**[建议的用户](luis-how-to-review-endpoint-utterances.md)** 最谈话列表中删除最谈话。 从此列表中删除表述可以防止系统再将其作为建议提出来，但不会将其从日志中删除。
 
-如果您不希望主动学习话语，可以[禁用活动学习](luis-how-to-review-endpoint-utterances.md#disable-active-learning)。 禁用主动学习也会禁止记录。
+如果不需要主动学习最谈话，可以[禁用活动学习](luis-how-to-review-endpoint-utterances.md#disable-active-learning)。 禁用主动学习也会禁止记录。
 
 ### <a name="disable-logging-utterances"></a>禁止记录话语
 [禁用活动学习](luis-how-to-review-endpoint-utterances.md#disable-active-learning)将禁用日志记录。

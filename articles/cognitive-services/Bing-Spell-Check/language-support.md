@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
 ms.openlocfilehash: 5ffd9f05bb429ba611a08d7985dbc9d509a9df0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "66390167"
 ---
 # <a name="language-and-region-support-for-bing-spell-check-api"></a>必应拼写检查 API 的语言和区域支持
@@ -52,7 +52,7 @@ ms.locfileid: "66390167"
 | 德语（瑞士）      | `de-CH`          |
 | 意大利语     | `it`          |
 | 日语    | `ja`          |
-| 韩语      | `ko`          |
+| 朝鲜语      | `ko`          |
 | 挪威语   | `no`          |
 | 波兰语      | `pl`          |
 | 葡萄牙语（巴西）   | `pt-BR`|

@@ -1,5 +1,5 @@
 ---
-title: 特定于域的内容 - 计算机视觉
+title: 特定于域的内容-计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 了解如何指定图像分类域以返回有关图像的更多详细信息。
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 8d6dc91ae7bb0f6d7a24064749d9295558a7d39c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68946329"
 ---
 # <a name="detect-domain-specific-content"></a>检测特定于域的内容
@@ -57,7 +57,7 @@ ms.locfileid: "68946329"
 
 ### <a name="enhanced-categorization-analysis"></a>增强版分类分析
 
-特定于域的模型还可用于对常规图像分析进行补充。 可通过在 [Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 调用的 *details* 参数中指定特定于域的模型，作为[高级分类](concept-categorizing-images.md)的一部分执行此操作。
+特定于域的模型还可用于对常规图像分析进行补充。 可通过在 [Analyze](concept-categorizing-images.md) API 调用的 *details* 参数中指定特定于域的模型，作为[高级分类](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)的一部分执行此操作。
 
 在这种情况下，首先会调用 86 类别分类分类器。 如果检测到的任何类别具有匹配的特定于域的模型，图像也会通过该模型并会添加结果。
 
@@ -100,7 +100,7 @@ ms.locfileid: "68946329"
 
 目前，计算机视觉支持以下特定于域的模型：
 
-| “属性” | 描述 |
+| 名称 | 说明 |
 |------|-------------|
 | 名人 | 名人识别，支持属于 `people_` 类别的图像 |
 | 地标 | 地标识别，支持属于 `outdoor_` 或 `building_` 类别的图像 |

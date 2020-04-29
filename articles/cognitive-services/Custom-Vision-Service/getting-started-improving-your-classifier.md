@@ -1,7 +1,7 @@
 ---
 title: 改进分类器 - 自定义影像服务
 titleSuffix: Azure Cognitive Services
-description: 在本文中，您将了解数据的数量、质量和多样性如何提高自定义视觉服务中的分类器的质量。
+description: 在本文中，你将了解如何在自定义视觉服务中提高分类分类的质量、质量和各种数据。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
 ms.openlocfilehash: c2858d5f9bca662cbbcd48b2345a7dc2c7ae48b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73718544"
 ---
 # <a name="how-to-improve-your-classifier"></a>如何改进分类器
@@ -29,7 +29,7 @@ ms.locfileid: "73718544"
 1. 使用新图像来测试预测
 1. 根据预测结果修改现有的训练数据
 
-## <a name="prevent-overfitting"></a>防止过度拟合
+## <a name="prevent-overfitting"></a>阻止过度拟合
 
 有时，分类器将会根据图像中共有的任意特征来学习预测。 例如，创建苹果与柑橘的分类器时，如果使用了手中的苹果和白盘中的柑橘的图像，则分类器可能会过分注重于手与白盘，而不是苹果与柑橘。
 
@@ -39,7 +39,7 @@ ms.locfileid: "73718544"
 
 ## <a name="data-quantity"></a>数据数量
 
-训练图像的数目是最重要的因素。 我们建议每个标签至少使用 50 个图像作为起点。 使用更少的图像时，过度拟合的风险会提高，同时，性能数字可能会指出质量良好，但模型可能很难处理实际数据。 
+训练图像的数目是最重要的因素。 建议为每个标签使用至少50映像作为起点。 使用更少的图像时，过度拟合的风险会提高，同时，性能数字可能会指出质量良好，但模型可能很难处理实际数据。 
 
 ## <a name="data-balance"></a>数据平衡
 
@@ -53,15 +53,15 @@ ms.locfileid: "73718544"
 
 若要更正此问题，请包含多样化的图像，以确保分类器能够适当通用化。 以下是可使定型集更加多样化的一些方法：
 
-* __背景：__ 在不同背景前提供对象的图像。 自然场景中的照片比中性背景前的照片更好，因为前者为分类器提供了更多信息。
+* __背景：__ 在不同背景的前面提供对象图像。 自然场景中的照片比中性背景前的照片更好，因为前者为分类器提供了更多信息。
 
     ![背景图像示例](./media/getting-started-improving-your-classifier/background.png)
 
-* __照明：__ 提供具有不同照明（即闪光灯拍摄、高曝光等）的图像，特别是如果用于预测的图像具有不同的光照。 使用不同饱和度、色调和亮度的图像也很有帮助。
+* __照明：__ 提供具有各种光源的图像（即，使用 flash、高曝光度，等等），尤其是用于预测的图像具有不同的光源。 使用不同饱和度、色调和亮度的图像也很有帮助。
 
     ![光照图像示例](./media/getting-started-improving-your-classifier/lighting.png)
 
-* __对象大小：__ 提供物体大小和数量不同的图像（例如，一束香蕉的照片和一个香蕉的特写）。 不同的大小有助于分类器涵盖所有方面。
+* __对象大小：__ 提供的图像的大小和数量各不相同（例如，部分 of bananas 的照片和单个香蕉的特写）。 不同的大小有助于分类器涵盖所有方面。
 
     ![大小图像示例](./media/getting-started-improving-your-classifier/size.png)
 
@@ -69,11 +69,11 @@ ms.locfileid: "73718544"
 
     ![角度图像示例](./media/getting-started-improving-your-classifier/angle.png)
 
-* __风格：__ 提供同一类不同样式的图像（例如，同一水果的不同品种）。 但是，如果对象的样式有很大的差异（例如，“米老鼠”与现实的老鼠），我们建议将它们标记为单独的类，以更好地表示其独特特征。
+* __样式：__ 提供相同类的不同样式的图像（例如，相同水果的不同形式）。 但是，如果对象的样式有很大的差异（例如，“米老鼠”与现实的老鼠），我们建议将它们标记为单独的类，以更好地表示其独特特征。
 
     ![样式图像示例](./media/getting-started-improving-your-classifier/style.png)
 
-## <a name="negative-images"></a>负面图像
+## <a name="negative-images"></a>负片图像
 
 在项目中，有时可能需要添加负示例来使分类器更准确__。 负示例是与任何其他标记不匹配的示例。 上传这些图像时，请向其添加特殊的负标签****。
 
@@ -86,7 +86,7 @@ ms.locfileid: "73718544"
 
 通过将图像提交到预测终结点来使用或测试图像分类器时，自定义视觉服务会存储这些图像。 然后，你可以使用这些图像来改进模型。
 
-1. 要查看提交到分类器的图像，请打开[自定义视觉网页](https://customvision.ai)，转到项目，然后选择 __"预测"__ 选项卡。默认视图显示当前迭代中的图像。 可使用“迭代”下拉菜单查看先前迭代期间提交的图像____。
+1. 若要查看提交到分类器的图像，请打开[自定义视觉](https://customvision.ai)网页，前往你的项目，然后选择 "__预测__" 选项卡。默认视图显示当前迭代中的图像。 可使用“迭代”下拉菜单查看先前迭代期间提交的图像____。
 
     ![预测选项卡的屏幕截图，视图中包含图像](./media/getting-started-improving-your-classifier/predictions.png)
 

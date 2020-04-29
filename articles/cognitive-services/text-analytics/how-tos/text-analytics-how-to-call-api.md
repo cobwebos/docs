@@ -1,7 +1,7 @@
 ---
 title: 调用文本分析 API
 titleSuffix: Azure Cognitive Services
-description: 本文介绍如何调用 Azure 认知服务文本分析 REST API 和 Postman。
+description: 本文说明如何调用 Azure 认知服务文本分析 REST API 和 Postman。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
 ms.openlocfilehash: afb576c265ccdd4a014ed678331f030a0442a197
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79219298"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>如何调用文本分析 REST API
 
-对文本分析 API**** 的调用为 HTTP POST/GET 调用，可以用任何语言表示。 在本文中，我们将使用 REST 和 [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) 来演示这些关键概念。
+对文本分析 API  的调用为 HTTP POST/GET 调用，可以用任何语言表示。 在本文中，我们将使用 REST 和 [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) 来演示这些关键概念。
 
 每个请求必须包括访问密钥和 HTTP 终结点。 终结点指定你在注册期间选择的区域、服务 URL 和在请求上使用的资源：`sentiment`、`keyphrases`、`languages` 和 `entities`。 
 
@@ -27,7 +27,7 @@ ms.locfileid: "79219298"
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
@@ -43,7 +43,7 @@ ms.locfileid: "79219298"
 |---------|--------------|-----------|-------|
 |`id` |数据类型为字符串，但实际上文档 ID 往往是整数。 | 必选 | 系统使用你提供的 ID 来构建输出。 为请求中的每个 ID 生成语言代码、关键短语和情绪分数。|
 |`text` | 非结构化原始文本，最多 5,120 个字符。 | 必选 | 对于语言检测，可以使用任何语言来表示文本。 对于情绪分析、关键短语提取和实体标识，此文本必须使用[支持的语言](../text-analytics-supported-languages.md)。 |
-|`language` | [支持语言](../text-analytics-supported-languages.md)的 2 字符 [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) 代码 | 不定 | 需要情绪分析、关键短语提取、实体链接；语言检测为可选。 排除语言检测不会有任何错误，但没有它会削弱分析。 语言代码应对应你提供的 `text`。 |
+|`language` | [支持语言](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)的 2 字符 [ISO 639-1](../text-analytics-supported-languages.md) 代码 | 不定 | 需要情绪分析、关键短语提取、实体链接；语言检测为可选。 排除语言检测不会有任何错误，但没有它会削弱分析。 语言代码应对应你提供的 `text`。 |
 
 有关限制的详细信息，请参阅[文本分析概述 > 数据限制](../overview.md#data-limits)。 
 
@@ -53,7 +53,7 @@ ms.locfileid: "79219298"
 
 1. 在 Postman 中：
 
-   + 选择“Post”**** 作为请求类型。
+   + 选择“Post”  作为请求类型。
    + 粘贴从门户页中复制的终结点。
    + 附加资源。
 
@@ -70,11 +70,11 @@ ms.locfileid: "79219298"
    + `Content-Type`：application/json。
    + `Accept`：application/json。
 
-   请求应类似于以下屏幕截图，假设 /keyPhrases**** 资源。
+   请求应类似于以下屏幕截图，假设 /keyPhrases  资源。
 
    ![请求带终结点和标头的屏幕截图](../media/postman-request-keyphrase-1.png)
 
-4. 单击“正文”****，然后选择“原始”**** 格式。
+4. 单击“正文”  ，然后选择“原始”  格式。
 
    ![请求具有正文设置的屏幕截图](../media/postman-request-body-raw.png)
 
@@ -86,14 +86,14 @@ ms.locfileid: "79219298"
   + [实体识别](text-analytics-how-to-entity-linking.md)  
 
 
-6. 单击“发送”**** 以提交请求。 有关每分钟和每秒可以发送的请求数的信息，请参阅概述中的[数据限制](../overview.md#data-limits)部分。
+6. 单击“发送”  以提交请求。 有关每分钟和每秒可以发送的请求数的信息，请参阅概述中的[数据限制](../overview.md#data-limits)部分。
 
    在 Postman 中，响应会在下一个窗口中显示为单个 JSON 文档，请求中提供的每个文档 ID 对应一个条目。
 
-## <a name="see-also"></a>请参阅 
+## <a name="see-also"></a>另请参阅 
 
  [文本分析概述](../overview.md)  
- [常见问题 （FAQ）](../text-analytics-resource-faq.md)
+ [常见问题解答 (FAQ)](../text-analytics-resource-faq.md)
 
 ## <a name="next-steps"></a>后续步骤
 

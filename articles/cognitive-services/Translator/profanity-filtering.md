@@ -1,7 +1,7 @@
 ---
 title: 不雅内容筛选 - 翻译文本 API
 titleSuffix: Azure Cognitive Services
-description: 使用亵渎筛选来确定在 Azure 认知服务翻译器文本 API 中翻译的文本中的亵渎程度。
+description: 在 Azure 认知服务文本翻译 API 中，使用不雅内容筛选来确定在你的文本中翻译的不雅内容级别。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
 ms.openlocfilehash: e7e2097e0d3daf360f1fa0f30bf3fd2c62c07163
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73836227"
 ---
 # <a name="add-profanity-filtering-with-the-translator-text-api"></a>使用翻译文本 API 添加不雅内容筛选

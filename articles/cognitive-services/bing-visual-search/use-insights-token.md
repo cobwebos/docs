@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
 ms.openlocfilehash: 251197c456ece4fe2dbbe264219d52f3502b7492
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67341727"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>使用见解令牌获取图像的见解
 
-必应视觉搜索 API 将返回有关所提供的图像的信息。 可以通过使用图像的 URL、见解标记或通过上传图像来提供图像。 有关这些选项的信息，请参阅[什么是必应视觉搜索 API？](overview.md)。 本文演示了如何使用见解标记。 有关演示如何上传图像以获得见解的示例，请参阅快速入门 （[C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)）。
+必应视觉搜索 API 将返回有关所提供的图像的信息。 可以通过使用图像的 URL、见解标记或通过上传图像来提供图像。 有关这些选项的信息，请参阅[什么是必应视觉搜索 API？](overview.md)。 本文演示了如何使用见解标记。 有关演示如何上传图像以获取见解的示例，请参阅快速入门（[c #](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)）。
 
-如果向必应视觉搜索发送图像令牌或 URL，则下面将显示您必须包含在 POST 正文中的表单数据。 表单数据必须包含`Content-Disposition`标头，并且必须将其`name`参数设置为"知识请求"。 有关对象的详细信息，`imageInfo`请参阅请求：
+如果发送必应视觉搜索图像令牌或 URL，则以下内容将显示您必须包含在帖子正文中的表单数据。 窗体数据必须包含`Content-Disposition`标头，并且必须将其`name`参数设置为 "knowledgeRequest"。 有关`imageInfo`对象的详细信息，请参阅请求：
 
 ```json
 {
@@ -43,7 +43,7 @@ ms.locfileid: "67341727"
 }
 ```
 
-本文中的示例展示了如何使用见解标记。 从 /image/搜索`Image`API 响应中的对象获取见解令牌。 有关获取见解令牌的信息，请参阅[什么是必应图像搜索 API？](../Bing-Image-Search/overview.md)
+本文中的示例展示了如何使用见解标记。 可以从/images/search API 响应中的`Image`对象获取见解令牌。 有关获取 insights 令牌的信息，请参阅[什么是必应图像搜索 API？](../Bing-Image-Search/overview.md)。
 
 ```
 --boundary_1234-abcd
@@ -58,21 +58,21 @@ Content-Disposition: form-data; name="knowledgeRequest"
 --boundary_1234-abcd--
 ```
 
-有关使用见解令牌的示例，请参阅[C#](#use-with-c) | [Java](#use-with-java) | [Node.js](#use-with-nodejs) | [Python](#use-with-python)。
+有关使用 insights 令牌的示例，请参阅[c #](#use-with-c) | [Java](#use-with-java) | [Node.js](#use-with-nodejs) | node.js[Python](#use-with-python)。
 
 ## <a name="use-with-c"></a>与 C 一起使用#
 
-### <a name="c-prerequisites"></a>C# 先决条件
+### <a name="c-prerequisites"></a>C # 必备组件
 
-- 任何版本的[Visual Studio 2019，](https://www.visualstudio.com/downloads/)以在 Windows 上运行此代码。
-- Azure 订阅。 对于此快速入门，您可以使用[免费试用](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)订阅密钥或付费订阅密钥。
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/)的任意版本，使此代码在 Windows 上运行。
+- Azure 订阅。 对于本快速入门，可以使用[免费试用](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)订阅密钥或付费订阅密钥。
 
 ## <a name="run-the-application"></a>运行应用程序
 
 若要运行此应用程序，请执行以下步骤：
 
-1. 在可视化工作室中创建控制台解决方案。
-2. 将Program.cs的内容替换为此快速入门中显示的代码。
+1. 在 Visual Studio 中创建控制台解决方案。
+2. 将 Program.cs 的内容替换为本快速入门中所示的代码。
 3. 将 `accessKey` 值替换为你的订阅密钥。
 4. 将 `insightsToken` 值替换为 /图像/搜索响应中的见解标记。
 5. 运行该程序。
@@ -235,16 +235,16 @@ namespace VisualSearchInsightsToken
 
 ## <a name="use-with-java"></a>与 Java 一起使用
 
-### <a name="java-prerequisites"></a>Java 先决条件
+### <a name="java-prerequisites"></a>Java 必备组件
 
-- 您必须使用[JDK 7 或 8](https://aka.ms/azure-jdks)来编译和运行此代码。 如果您有收藏夹，则可以使用 Java IDE，但文本编辑器就足够了。
-- 对于此快速入门，您可以使用[免费试用](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)订阅密钥或付费订阅密钥。
+- 必须使用[JDK 7 或 8](https://aka.ms/azure-jdks)来编译并运行此代码。 如果你喜欢，可以使用 Java IDE，但文本编辑器可以满足要求。
+- 对于本快速入门，可以使用[免费试用](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)订阅密钥或付费订阅密钥。
 
 ## <a name="run-the-java-application"></a>运行 Java 应用程序
 
 若要运行此应用程序，请执行以下步骤：
 
-1. 下载或安装[GsonJava库](https://github.com/google/gson)。 您也可以通过马文获得格森。
+1. 下载或安装[Gson Java 库](https://github.com/google/gson)。 还可以通过 Maven 获取 Gson。
 2. 在最喜爱的 IDE 或编辑器中新建一个 Java 项目。
 3. 将提供的代码添加到一个名为 `VisualSearch.java` 的文件中。
 4. 将 `subscriptionKey` 值替换为你的订阅密钥。
@@ -347,12 +347,12 @@ public class InsightsToken {
 }
 ```
 
-## <a name="use-with-nodejs"></a>与 Node.js 一起使用
+## <a name="use-with-nodejs"></a>与 node.js 一起使用
 
 ### <a name="nodejs-prerequisites"></a>Node.js 先决条件
 
-- 您必须具有[Node.js 6](https://nodejs.org/en/download/)才能运行此代码。
-- 对于此快速入门，您可以使用[免费试用](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)订阅密钥或付费订阅密钥。
+- 若要运行此代码，必须具有 node.js [6](https://nodejs.org/en/download/) 。
+- 对于本快速入门，可以使用[免费试用](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)订阅密钥或付费订阅密钥。
 
 ## <a name="run-the-javascript-application"></a>运行 JavaScript 应用程序
 
@@ -413,9 +413,9 @@ function requestCallback(err, res, body) {
 
 ## <a name="use-with-python"></a>与 Python 一起使用
 
-### <a name="python-prerequisites"></a>Python 先决条件
+### <a name="python-prerequisites"></a>Python 必备组件
 
-- 您必须具有[Python 3](https://www.python.org/)才能运行此代码。
+- 若要运行此代码，必须具有[Python 3](https://www.python.org/) 。
 - 对于此快速入门，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)订阅密钥或付费订阅密钥。
 
 ## <a name="run-the-python-application"></a>运行 Python 应用程序
@@ -477,7 +477,7 @@ if __name__ == '__main__':
 ## <a name="next-steps"></a>后续步骤
 
 [创建视觉搜索单页 Web 应用](tutorial-bing-visual-search-single-page-app.md)  
-[什么是必应可视化搜索 API？](overview.md)  
+[什么是必应视觉搜索 API？](overview.md)  
 [试用认知服务](https://aka.ms/bingvisualsearchtryforfree)  
 [获取免费试用访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
-[图片 - 视觉搜索](https://aka.ms/bingvisualsearchreferencedoc)
+[映像-视觉搜索](https://aka.ms/bingvisualsearchreferencedoc)

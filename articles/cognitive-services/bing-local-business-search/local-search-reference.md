@@ -1,7 +1,7 @@
 ---
-title: 必应本地业务搜索 API v7 参考
+title: 必应本地业务搜索 API v7 引用
 titleSuffix: Azure Cognitive Services
-description: 本文提供有关响应对象以及影响搜索结果的查询参数和标头的技术详细信息。
+description: 本文提供了有关响应对象的技术详细信息，以及影响搜索结果的查询参数和标头。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
 ms.openlocfilehash: db764a73aa1bb18ef2fc0f8f6e5ffe8fd60d388c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74075702"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>必应当地企业搜索 API v7 参考
 
-当地企业搜索 API 向必应发送搜索查询，以获取包含餐厅、酒店或其他当地企业的结果。 对于地点，查询可以指定当地企业名称或类别（例如，我附近的餐厅）。 实体结果包括人员、位置或事物。 在此上下文中放置的是业务实体、州、国家/地区等。  
+当地企业搜索 API 向必应发送搜索查询，以获取包含餐厅、酒店或其他当地企业的结果。 对于地点，查询可以指定当地企业名称或类别（例如，我附近的餐厅）。 实体结果包括人员、位置或事物。 此环境中的位置是业务实体、省/市/自治区、国家/地区等。  
 
 本部分提供有关影响搜索结果的响应对象、查询参数和标头的技术详细信息。 有关演示如何发出请求的示例，请参阅[当地企业搜索 C# 快速入门](quickstarts/local-quickstart.md)或[当地企业搜索 Java 快速入门](quickstarts/local-search-java-quickstart.md)。 
   
@@ -47,10 +47,10 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 > 最大 URL 长度为 2,048 个字符。 为了确保 URL 长度不超出限制，查询参数的最大长度应不到 1,500 个字符。 如果 URL 超出 2,048 个字符，服务器会返回“404 未找到”。  
   
   
-## <a name="headers"></a>标头  
+## <a name="headers"></a>头文件  
 下面是请求和响应可能包含的标头。  
   
-|标头|描述|  
+|Header|说明|  
 |------------|-----------------|  
 |Accept|可选请求标头。<br /><br /> 默认的媒体类型为“application/json”。 若要指定响应使用 [JSON-LD](https://json-ld.org/)，请将 Accept 标头设置为“application/ld+json”。|  
 |<a name="acceptlanguage" />Accept-Language|可选请求标头。<br /><br /> 以逗号分隔的语言列表，用于用户界面字符串。 此列表以降序方式显示首选项。 有关详细信息，包括预期格式，请参阅 [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)。<br /><br /> 此标头和 [setLang](#setlang) 查询参数相互排斥&mdash;不可同时指定两者。<br /><br /> 如果设置此标头，则还必须指定 cc 查询参数。 为了确定针对哪个市场返回结果，必应使用从列表中找到的第一个受支持语言并将其与 `cc` 参数值相结合。 如果列表不包括支持的语言，必应会查找最接近的语言和支持请求的市场，或将聚合或默认市场用于结果。 若要确定必应使用的市场，请查看 BingAPIs-Market 标头。<br /><br /> 仅当指定多个语言时，才可使用此标头和 `cc` 查询参数。 否则，请使用 [mkt](#mkt) 和 [setLang](#setlang) 查询参数。<br /><br /> 用户界面字符串是用作用户界面中标签的字符串。 JSON 响应对象中有几个用户界面字符串。 响应对象中 Bing.com 属性的任何链接均将应用指定的语言。|  
@@ -71,11 +71,11 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 请求可以包含以下查询参数。 请查看所需参数的“必需”列。 必须对查询参数进行 URL 编码。  
   
   
-|“属性”|“值”|类型|必选|  
+|“属性”|值|类型|必需|  
 |----------|-----------|----------|--------------|
 |<a name="count" />count|要返回的结果数，从`offset`参数指定的索引开始。|String|否|   
 |<a name="localCategories" />localCategories|按企业类别定义搜索的选项列表。  请参阅[当地企业类别搜索](local-categories.md)|String|否|  
-|<a name="mkt" />mkt|产生结果的市场。 <br /><br />如需获取可能的市场值列表，请参阅“市场代码”。<br /><br /> **注意：** 当地企业搜索 API 目前仅支持 en-us（美国英语）市场和语言。<br /><br />|String|是|
+|<a name="mkt" />mkt|产生结果的市场。 <br /><br />如需获取可能的市场值列表，请参阅“市场代码”。<br /><br /> **注意：** 当地企业搜索 API 目前仅支持 en-us（美国英语）市场和语言。<br /><br />|字符串|是|
 |<a name="offset"/>offset|开始返回结果的索引位置，由 `count` 参数指定。|Integer|否|  
 |<a name="query" />q|用户的搜索词。|String|否|  
 |<a name="responseformat" />responseFormat|可用于响应的媒体类型。 下面是可能的不区分大小写的值。<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> 默认值为 JSON。 若要了解响应应包含的 JSON 对象，请参阅[响应对象](#response-objects)。<br /><br />  如果指定 JsonLd，则响应正文会包含 JSON-LD 对象，后者包含搜索结果。 有关 JSON-LD 的信息，请参阅 [JSON-LD](https://json-ld.org/)。|String|否|  
@@ -87,15 +87,15 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 以下是响应中可以包含的 JSON 响应对象。 如果请求成功，则响应中的顶级对象是 [SearchResponse](#searchresponse) 对象。 如果请求失败，则顶级对象为 [ErrorResponse](#errorresponse) 对象。
 
 
-|Object|描述|  
+|对象|说明|  
 |------------|-----------------|  
-|[地方](#place)|定义有关餐厅或酒店等当地企业的信息。|  
+|[Place](#place)|定义有关餐厅或酒店等当地企业的信息。|  
 
   
 ### <a name="error"></a>错误  
 定义已发生的错误。  
   
-|元素|描述|类型|  
+|元素|说明|类型|  
 |-------------|-----------------|----------|  
 |<a name="error-code" />code|用于标识错误类别的错误代码。 如需可能的代码的列表，请参阅[错误代码](#error-codes)。|String|  
 |<a name="error-message" />message|对错误的说明。|String|  
@@ -108,17 +108,17 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="errorresponse"></a>ErrorResponse  
 请求失败时响应包含的顶级对象。  
   
-|“属性”|“值”|类型|  
+|“属性”|值|类型|  
 |----------|-----------|----------|  
 |_type|类型提示。|String|  
-|<a name="errors" />errors|错误的列表，用于说明请求失败原因。|[错误](#error)||  
+|<a name="errors" />errors|错误的列表，用于说明请求失败原因。|[错误](#error)[]|  
 
   
   
 ### <a name="license"></a>许可  
 定义文本或照片的使用许可证。  
   
-|“属性”|“值”|类型|  
+|“属性”|值|类型|  
 |----------|-----------|----------|  
 |name|许可证的名称。|String|  
 |url|为用户提供许可证详细信息的网站的 URL。<br /><br /> 使用名称和 URL 创建超链接。|String|  
@@ -127,7 +127,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="link"></a>链接  
 定义超链接的组件。  
   
-|“属性”|“值”|类型|  
+|“属性”|值|类型|  
 |----------|-----------|----------|  
 |_type|类型提示。|String|  
 |text|显示文本。|String|  
@@ -141,7 +141,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 注意，发布者可能提供其名称和/或网站。  
   
-|“属性”|“值”|类型|  
+|“属性”|值|类型|  
 |----------|-----------|----------|  
 |name|发布者名称。|String|  
 |url|发布者网站的 URL。<br /><br /> 请注意，发布者可能未提供网站。|String|  
@@ -151,7 +151,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="place"></a>位置  
 定义有关餐厅或酒店等当地企业的信息。  
   
-|“属性”|“值”|类型|  
+|“属性”|值|类型|  
 |----------|-----------|----------|  
 |_type|类型提示，可设置为以下值之一：<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>餐厅</ul><li>|String|  
 |address|实体所在位置的邮政地址。|PostalAddress|  
@@ -165,7 +165,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="querycontext"></a>QueryContext  
 定义必应用于请求的查询上下文。  
   
-|元素|描述|类型|  
+|元素|说明|类型|  
 |-------------|-----------------|----------|  
 |adultIntent|一个布尔值，表示指定的查询是否有成人意向。 如果查询有成人意向，则此值为 **true**，否则为 **false**。|Boolean|  
 |alterationOverrideQuery|一个查询字符串，用于强制必应使用原始字符串。 例如，如果查询字符串为 *saling downwind*，则替代查询字符串为 *+saling downwind*。 记住将查询字符串编码，编码后的字符串为 *%2Bsaling+downwind*。<br /><br /> 只有在原始查询字符串包含拼写错误的情况下，才会包含此字段。|String|  
@@ -175,21 +175,21 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 
 ### <a name="identifiable"></a>Identifiable
 
-|“属性”|“值”|类型|  
+|“属性”|值|类型|  
 |-------------|-----------------|----------|
 |id|一个资源标识符|String|
  
 ### <a name="rankinggroup"></a>RankingGroup
 定义搜索结果组，例如 mainline。
 
-|“属性”|“值”|类型|  
+|“属性”|值|类型|  
 |-------------|-----------------|----------|
 |items|要显示在组中的搜索结果的列表。|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 定义要显示的搜索结果项。
 
-|“属性”|“值”|类型|  
+|“属性”|值|类型|  
 |-------------|-----------------|----------|
 |resultIndex|要显示答案中的项的从零开始的索引。 如果项不包含此字段，则显示答案中的所有项。 例如，显示“新闻”答案中的所有新闻文章。|Integer|
 |answerType|一个答案，包含要显示的项。 例如，新闻。<br /><br />使用此类型查找 SearchResponse 对象中的答案。 此类型是 SearchResponse 字段的名称。<br /><br /> 不过，只有在此对象包含值字段的情况下，才使用答案类型；否则，请忽略它。|String|
@@ -210,7 +210,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 请注意，如果该服务怀疑存在拒绝服务攻击，则请求会成功（HTTP 状态代码为“200 正常”），但响应正文将为空。  
   
-|“属性”|“值”|类型|  
+|“属性”|值|类型|  
 |----------|-----------|----------|  
 |_type|一种类型提示，设置为 SearchResponse。|String|  
 |places|与搜索查询相关的实体列表。|JSON 对象|  
@@ -221,7 +221,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 
 下面是请求可能返回的 HTTP 状态代码。  
   
-|状态代码|描述|  
+|状态代码|说明|  
 |-----------------|-----------------|  
 |200|成功。|  
 |400|查询参数之一缺失或无效。|  
@@ -261,7 +261,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 
 下面是可能的错误代码和子错误代码值。
 
-|代码|SubCode|描述
+|代码|SubCode|说明
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|HTTP 状态代码为 500。
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>已阻止|只要请求的任何部分无效，必应就会返回 InvalidRequest。 例如，缺少必需参数或参数值无效。<br/><br/>如果错误是 ParameterMissing 或 ParameterInvalidValue，HTTP 状态代码为 400。<br/><br/>如果使用 HTTP 协议而不是 HTTPS 协议，则必应会返回 HttpNotAllowed，且 HTTP 状态代码为 410。
@@ -271,6 +271,6 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 
 ## <a name="next-steps"></a>后续步骤
 - [当地企业搜索快速入门](quickstarts/local-quickstart.md)
-- [本地业务搜索 Java 快速入门](quickstarts/local-search-java-quickstart.md)
-- [本地业务搜索节点快速启动](quickstarts/local-search-node-quickstart.md)
+- [当地企业搜索 Java 快速入门](quickstarts/local-search-java-quickstart.md)
+- [当地企业搜索 Node 快速入门](quickstarts/local-search-node-quickstart.md)
 - [当地企业搜索 Python 快速入门](quickstarts/local-search-python-quickstart.md)

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
 ms.openlocfilehash: c5a413a4fe8d9ac9b7aac59ca78cedc6d5a7a313
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79219276"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>文本分析 API 的语言和区域支持
@@ -45,7 +45,7 @@ ms.locfileid: "79219276"
 语言支持最初在预览版中推广，渐变到正式版 (GA) 状态，且各种语言彼此独立并且总体上独立于文本分析服务。 即使文本分析 API 转变为正式版时，有些语言也可能保持在预览版。
 
 > [!NOTE]
-> 有关命名实体识别 （NER） v3 公共预览的详细语言支持，请参阅[命名实体类型](named-entity-types.md)。
+> 有关命名实体识别（NER） v3 公共预览版的详细语言支持，请参阅[命名实体类型](named-entity-types.md)。
 
 | 语言              | 语言代码 | 情绪 | 关键短语 | 命名实体识别 | 实体链接 |       说明        |
 |:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
@@ -75,9 +75,9 @@ ms.locfileid: "79219276"
 
 \* 语言支持为预览版
 
-\*• 在[情绪分析 v3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-versions-and-features)和/或[命名实体识别 v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)公共预览中也提供。
+\** 还在[情绪分析 v3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-versions-and-features)和/或[命名实体识别 v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)公共预览版中提供。
 
 ## <a name="see-also"></a>请参阅
 
-[认知服务文档页面](https://docs.microsoft.com/azure/cognitive-services/)   
+[认知服务文档页](https://docs.microsoft.com/azure/cognitive-services/)   
 [认知服务产品页](https://azure.microsoft.com/services/cognitive-services/)

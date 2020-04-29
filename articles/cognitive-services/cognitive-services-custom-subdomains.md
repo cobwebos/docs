@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
 ms.openlocfilehash: 108e5ebfa34db711af4ff33cbf4fbba897b8947d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73647693"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>认知服务的自定义子域名
 
-Azure 认知服务对通过[Azure 门户](https://portal.azure.com)[、Azure 云外壳](https://azure.microsoft.com/features/cloud-shell/)或[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)创建的每个资源使用自定义子域名。 不同于特定 Azure 区域中所有客户经常使用的区域终结点，自定义子域名对于资源是唯一的。 需要使用自定义子域名来启用 Azure Active Directory (Azure AD) 等功能进行身份验证。
+Azure 认知服务对通过[Azure 门户](https://portal.azure.com)、 [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)或[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)创建的每个资源使用自定义子域名称。 不同于特定 Azure 区域中所有客户经常使用的区域终结点，自定义子域名对于资源是唯一的。 需要使用自定义子域名来启用 Azure Active Directory (Azure AD) 等功能进行身份验证。
 
 ## <a name="how-does-this-impact-existing-resources"></a>这会对现有资源造成怎样的影响？
 
@@ -27,14 +27,14 @@ Azure 认知服务对通过[Azure 门户](https://portal.azure.com)[、Azure 云
 若要迁移现有资源来利用自定义子域名，以便能够启用 Azure AD 等功能，请按以下说明操作：
 
 1. 登录到 Azure 门户，找到要将自定义子域名添加到的认知服务资源。
-2. 在“概述”边栏选项卡中，找到并选择“生成自定义域名”。********
+2. 在“概述”边栏选项卡中，找到并选择“生成自定义域名”。  
 3. 此时会打开一个面板，其中包含有关为资源创建唯一自定义子域的说明。
    > [!WARNING]
    > 创建自定义子域名后，**无法**对其进行更改。
 
 ## <a name="do-i-need-to-update-my-existing-resources"></a>是否需要更新现有的资源？
 
-不是。 区域终结点仍旧适用于新的和现有的认知服务，而自定义子域名是可选的。 即使添加了自定义子域名，区域终结点也仍适用于该资源。
+否。 区域终结点仍旧适用于新的和现有的认知服务，而自定义子域名是可选的。 即使添加了自定义子域名，区域终结点也仍适用于该资源。
 
 ## <a name="what-if-an-sdk-asks-me-for-the-region-for-a-resource"></a>如果 SDK 要求提供资源的区域，该怎么办？
 
@@ -43,7 +43,7 @@ Azure 认知服务对通过[Azure 门户](https://portal.azure.com)[、Azure 云
 
 区域终结点和自定义子域名均受支持，且可换用。 但是，必须提供完整的终结点。
 
-[Azure 门户](https://portal.azure.com)中资源的“概述”边栏选项卡内提供了区域信息。**** 有关区域终结点的完整列表，请参阅[是否有区域终结点的列表？](#is-there-a-list-of-regional-endpoints)
+[Azure 门户](https://portal.azure.com)中资源的“概述”边栏选项卡内提供了区域信息。  有关区域终结点的完整列表，请参阅[是否有区域终结点的列表？](#is-there-a-list-of-regional-endpoints)
 
 ## <a name="are-custom-subdomain-names-regional"></a>自定义子域名是否是区域性的？
 
@@ -55,7 +55,7 @@ Azure 认知服务对通过[Azure 门户](https://portal.azure.com)[、Azure 云
 
 ## <a name="can-i-change-a-custom-domain-name"></a>是否可以更改自定义域名？
 
-不是。 创建自定义子域名称并将其关联到资源后，无法对其进行更改。
+否。 创建自定义子域名称并将其关联到资源后，无法对其进行更改。
 
 ## <a name="can-i-reuse-a-custom-domain-name"></a>是否可以重复使用某个自定义域名？
 
@@ -66,11 +66,11 @@ Azure 认知服务对通过[Azure 门户](https://portal.azure.com)[、Azure 云
 是的。 下面提供了可用于 Azure 认知服务资源的区域终结点列表。
 
 > [!NOTE]
-> 翻译文本 API 和必应搜索 API 使用全局终结点。
+> 文本翻译 API 和必应搜索 API 使用全局终结点。
 
 | 终结点类型 | 区域 | 终结点 |
 |---------------|--------|----------|
-| Public | 全局（译者&必应） | `https://api.cognitive.microsoft.com` |
+| 公共 | Global （文本翻译 & 必应） | `https://api.cognitive.microsoft.com` |
 | | 澳大利亚东部 | `https://australiaeast.api.cognitive.microsoft.com` |
 | | 巴西南部 | `https://brazilsouth.api.cognitive.microsoft.com` |
 | | 加拿大中部 | `https://canadacentral.api.cognitive.microsoft.com` |

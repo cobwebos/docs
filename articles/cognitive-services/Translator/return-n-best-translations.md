@@ -1,7 +1,7 @@
 ---
-title: 返回 N- 最佳翻译 - 翻译文本
+title: 返回 N-最佳翻译-文本翻译
 titleSuffix: Azure Cognitive Services
-description: 使用翻译人员文本 API 返回 N- 最佳翻译。
+description: 使用文本翻译 API 返回 N-最佳翻译。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -12,10 +12,10 @@ ms.date: 12/14/2017
 ms.author: swmachan
 ROBOTS: NOINDEX
 ms.openlocfilehash: eff25877165ac365e0af77651147fcdd1eebe294
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73837245"
 ---
 # <a name="how-to-return-n-best-translations"></a>如何返回 N 个最佳翻译
@@ -34,9 +34,9 @@ Microsoft Translator API 的 GetTranslations() 和 GetTranslationsArray() 方法
 |:---|
 | GetTranslationsResponse Microsoft.Translator.GetTranslations(appId, text, from, to, maxTranslations, options); |
 
-**参数**
+**Parameters**
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 |:---|:---|
 | appId | **必需**：如果使用授权标头，请将 appid 字段留空，否则请指定包含 "Bearer" + " " + access token 的字符串。|
 | text | **必需** 一个字符串，表示要翻译的文本。 文本大小不得超过 10000 个字符。|

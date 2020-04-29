@@ -1,7 +1,7 @@
 ---
-title: 披露设计模式
+title: 泄露设计模式
 titleSuffix: Azure Cognitive Services
-description: 公开设计模式和最佳实践。
+description: 公开的设计模式和最佳实践。
 services: cognitive-services
 author: sharonlo101
 manager: nitinme
@@ -11,102 +11,102 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: angle
 ms.openlocfilehash: 3e7d8ee2b156a30b11cda79798a8af8a8ecf4f64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74776616"
 ---
 # <a name="disclosure-design-patterns"></a>披露设计模式
-现在，您&#39;为您的合成语音体验确定了正确的[披露级别](concepts-disclosure-guidelines.md#disclosure-assessment)，&#39;探索潜在设计模式的好时机。
+现在，你已&#39;ve 确定了适合你的综合语音体验的正确[级别](concepts-disclosure-guidelines.md#disclosure-assessment)，就&#39;了探索潜在的设计模式。
 ## <a name="overview"></a>概述
-有一系列披露设计模式，您可以应用于您的合成语音体验。 如果您的披露评估结果是"高度披露"，我们建议[**明确披露**](#explicit-disclosure)，这意味着直接传达合成声音的起源。 [**隐式披露**](#implicit-disclosure)包括提示和交互模式，无论所需的披露级别是高还是低，都有利于语音体验。
-![披露模式的范围](media/responsible-ai/disclosure-patterns/affordances.png)
+你可以将各种公开的设计模式应用于综合语音体验。 如果披露评估的结果是 "高泄漏"，我们建议[**显式公开**](#explicit-disclosure)，这意味着完全传达合成语音的起源。 [**隐式泄漏**](#implicit-disclosure)包括一些提示和交互模式，这些模式可受益于语音体验，无论所需的公开级别是高还是低。
+![泄露模式种类](media/responsible-ai/disclosure-patterns/affordances.png)
 
 
 
 
 
 
-| 显式披露模式                                                                                                                                                                                    | 隐式披露模式                                                                 |
+| 显式泄露模式                                                                                                                                                                                    | 隐式泄漏模式                                                                 |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
-|[透明介绍](#transparent-introduction)<br> [口头透明介绍](#verbal-transparent-introduction)<br>  [显式分行](#explicit-byline)<br>  [定制和校准](#customization-and-calibration)<br> [家长披露](#parental-disclosure)<br> [提供更多了解语音制作方式的机会](#providing-opportunities-to-learn-more-about-how-the-voice-was-made) | [能力披露](#capability-disclosure)<br>[隐式提示和反馈](#implicit-cues--feedback)<br> [对话透明度](#conversational-transparency) |
+|[透明介绍](#transparent-introduction)<br> [语言透明介绍](#verbal-transparent-introduction)<br>  [显式 Byline](#explicit-byline)<br>  [自定义和校准](#customization-and-calibration)<br> [家长泄露](#parental-disclosure)<br> [提供机会来了解有关如何进行语音的详细信息](#providing-opportunities-to-learn-more-about-how-the-voice-was-made) | [功能公开](#capability-disclosure)<br>[隐式提示和反馈](#implicit-cues--feedback)<br> [对话透明度](#conversational-transparency) |
 
 
 
-使用下图直接引用适用于合成语音的模式。 此图表中的其他一些条件也可能适用于您的方案：<br/>
+使用下图直接引用适用于综合语音的模式。 此图表中的其他一些情况还适用于你的方案：<br/>
 
 
 
-| 如果你的合成语音体验... | 建议 | 设计模式 |
+| 如果你的综合语音体验 .。。 | 建议 | 设计模式 |
 | --- | --- | --- |
-| 要求高度披露  | 在前面至少使用一个显式模式和隐式提示，以帮助用户构建关联。 |[明确披露](#explicit-disclosure)<br>[隐式披露](#implicit-disclosure)  |
-| 要求低披露 | 披露可能很少或没有必要，但可能会受益于一些隐含的模式。 | [能力披露](#capability-disclosure)<br>[对话透明度](#conversational-transparency)  |
-| 具有高度的参与性 | 长期构建，并提供多个入口点，以便用户旅程中披露。 强烈建议您有入职体验。 | [透明介绍](#transparent-introduction)<br>[定制和校准](#customization-and-calibration)<br>[能力披露](#capability-disclosure) |
-| 将儿童作为主要目标受众 | 将家长作为主要披露受众，并确保他们能够有效地向儿童传达信息公开。  | [家长披露](#parental-disclosure)<br>[口头透明介绍](#verbal-transparent-introduction)<br> [隐式披露](#implicit-disclosure)<br> [对话透明度](#conversational-transparency)  |
-| 包括盲人用户或视力低下的人作为主要目标受众  | 包容所有用户，并确保任何形式的视觉披露具有相关的替代文本或声音效果。 遵守对比度和显示尺寸的辅助功能标准。 使用听觉提示传达披露信息。  | [口头透明介绍](#verbal-transparent-introduction) <br>[听觉提示](#implicit-cues--feedback)<br>[触觉提示](#implicit-cues--feedback)<br>[对话透明度](#conversational-transparency)<br>[辅助功能标准](https://www.microsoft.com/accessibility) |
-| 是无屏幕、无设备还是使用语音作为主要或唯一的交互模式 | 使用听觉提示传达披露信息。 | [口头透明介绍](#verbal-transparent-introduction) <br> [听觉提示](#implicit-cues--feedback)  |
-| 可能包括多个用户/倾听者（例如，多个家庭的个人助理）  | 注意各种用户背景和理解水平，并提供多种机会在用户旅程中披露。  | [透明介绍（返回用户）](#transparent-introduction)<br> [提供更多了解语音制作方式的机会](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)<br> [对话透明度](#conversational-transparency)  |
+| 需要高度泄露  | 至少使用一个显式模式和隐式提示，以帮助用户生成关联。 |[显式公开](#explicit-disclosure)<br>[隐式公开](#implicit-disclosure)  |
+| 需要低披露 | 泄露可能很小，也可能不必要，但可以从某些隐式模式中受益。 | [功能公开](#capability-disclosure)<br>[对话透明度](#conversational-transparency)  |
+| 具有很高的参与度 | 长期构建并提供多个入口点以在用户旅程中进行披露。 强烈建议使用载入体验。 | [透明介绍](#transparent-introduction)<br>[自定义和校准](#customization-and-calibration)<br>[功能公开](#capability-disclosure) |
+| 包括作为主要目标受众的子项 | 将家长作为主要的披露受众，并确保他们能够有效地将披露传达给孩子。  | [家长泄露](#parental-disclosure)<br>[语言透明介绍](#verbal-transparent-introduction)<br> [隐式公开](#implicit-disclosure)<br> [对话透明度](#conversational-transparency)  |
+| 包括盲人用户或具有弱视目标的用户  | 包含所有用户，并确保任何形式的视觉对象披露都具有关联的可选文本或声音效果。 遵循对比度和显示大小的辅助功能标准。 使用听觉提示传达公开。  | [语言透明介绍](#verbal-transparent-introduction) <br>[听觉提示](#implicit-cues--feedback)<br>[Haptic 提示](#implicit-cues--feedback)<br>[对话透明度](#conversational-transparency)<br>[辅助功能标准](https://www.microsoft.com/accessibility) |
+| 无屏幕，无设备，或使用语音作为主要或仅交互模式 | 使用听觉提示传达公开。 | [语言透明介绍](#verbal-transparent-introduction) <br> [听觉提示](#implicit-cues--feedback)  |
+| 可能包括多个用户/侦听器（例如，多家家庭的个人助手）  | 注意各种用户上下文和理解级别，并为用户旅程提供多种机会。  | [透明简介（返回用户）](#transparent-introduction)<br> [提供机会来了解有关如何进行语音的详细信息](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)<br> [对话透明度](#conversational-transparency)  |
 
 
 
-## <a name="explicit-disclosure"></a>明确披露
-如果您的合成语音体验需要高度公开，最好使用以下至少一种显式模式来清楚地说明合成特性。
+## <a name="explicit-disclosure"></a>显式公开
+如果你的综合语音体验需要较高的披露，则最好使用以下显式模式中的至少一种来清楚地声明综合性质。
 ### <a name="transparent-introduction"></a>透明介绍
 
-在语音体验开始之前，通过完全透明地介绍数字助手的语音来源及其功能。 使用此模式的最佳时刻是加入新用户或向返回的用户引入新功能时。 在介绍期间实现隐式提示可帮助用户形成有关数字代理合成性质的心理模型。
+在语音体验开始之前，请通过完全透明地介绍数字助理的语音及其功能。 使用此模式的最佳时间是在加入新用户或向返回的用户引入新功能时使用。 在简介期间实现隐式提示有助于用户形成有关数字代理的综合性质的心理模型。
 
 #### <a name="first-time-user-experience"></a>首次用户体验
 
-![首次运行体验期间的透明介绍](media/responsible-ai/disclosure-patterns/transparent-intro-first.png) <br>
-*在输入新用户时引入了合成语音。*
+![首次运行体验过程中的透明简介](media/responsible-ai/disclosure-patterns/transparent-intro-first.png) <br>
+*当加入新用户时，会引入综合语音。*
 
 建议
-- 描述声音是人造的（例如&quot;数字）&quot;
-- 描述代理能够执行的操作
-- 显式说明语音&#39;其来源
-- 提供一个入口点，了解有关合成语音的更多
+- 说明语音为人工（例如&quot;数字）&quot;
+- 描述代理可以执行的操作
+- 明确陈述语音&#39;的来源
+- 提供一个入口点来了解有关综合语音的详细信息
 
 #### <a name="returning-user-experience"></a>返回用户体验
 
-如果用户跳过载入体验，请继续提供透明介绍体验的入口点，直到用户首次触发语音。
+如果用户跳过载入体验，请继续提供透明引入体验的入口点，直到用户第一次触发声音。
 <br/>
 
-![返回用户体验期间的透明介绍](media/responsible-ai/disclosure-patterns/transparent-intro-return.png)<br/>
-*为合成语音体验提供一致的切入点。允许用户在用户旅程中的任何时刻首次触发语音时返回到载入体验。*
+![返回用户体验过程中的透明简介](media/responsible-ai/disclosure-patterns/transparent-intro-return.png)<br/>
+*为综合语音体验提供一致的入口点。允许用户在用户旅程中的任何时间点首次触发语音时返回载入体验。*
 
 
-### <a name="verbal-transparent-introduction"></a>口头透明介绍
+### <a name="verbal-transparent-introduction"></a>语言透明介绍
 
-说明数字助理&#39;声音起源的语音语音的语音语音本身非常明确，足以实现披露。 此模式最适合在语音是唯一可用的交互模式的高披露方案中。
+指示数字助理的起源的口头提示&#39;s 语音完全可以完全完全地公开以实现泄露。 此模式最适用于高泄漏方案，其中语音是唯一可用的交互模式。
 <br/>
 
-![口头发言的透明介绍](media/responsible-ai/disclosure-patterns/spoken-prompt-1.png)
-<br/>*在用户体验中可能已介绍或属性某人&#39;语音时，请使用透明介绍。*
+![口头方式传达口头透明简介](media/responsible-ai/disclosure-patterns/spoken-prompt-1.png)
+<br/>*如果用户体验中有可能有人&#39;语音的用户体验，请使用透明简介。*
 
 
-![第一人称口头透明介绍](media/responsible-ai/disclosure-patterns/spoken-prompt-2.png)<br/>
-*为了增加透明度，语音执行者可以在第一人称中披露合成语音的来源。*
+![第一人称中口头方式传达的透明介绍](media/responsible-ai/disclosure-patterns/spoken-prompt-2.png)<br/>
+*对于其他透明度，语音参与者可以在第一个用户公开合成语音的来源。*
 
-### <a name="explicit-byline"></a>显式分行
+### <a name="explicit-byline"></a>显式 Byline
 
-如果用户将与音频播放器或交互式组件交互以触发语音，则使用此模式。
+如果用户将与音频播放器或交互式组件进行交互以触发声音，请使用此模式。
 
 
-![新闻媒体场景中的显式分线](media/responsible-ai/disclosure-patterns/explicit-byline.png) <br/>
-*一个明确的旁线是声音来自何处的归属。*
+![新闻媒体方案中的明确 byline](media/responsible-ai/disclosure-patterns/explicit-byline.png) <br/>
+*明确的 byline 是指语音来源的归属。*
 
 建议
 
-- 提供入口点，了解有关合成语音的更多信息
+- 提供入门点来了解有关合成语音的详细信息
 
-### <a name="customization-and-calibration"></a>定制和校准
+### <a name="customization-and-calibration"></a>自定义和校准
 
-为用户提供数字助理如何响应他们（即语音声音）。  当用户按照自己的术语和特定目标与系统交互时，根据定义，他们已经明白&#39;它不是真人。
+为用户提供对数字助理如何响应的方式（即语音声音的方式）的控制。  如果用户在自己的条件下与系统交互，并考虑到特定目标，则根据定义，他们已经了解到&#39;不是真实的人。
 
 #### <a name="user-control"></a>用户控件
 
-提供对合成语音体验有有意义和显著影响的选择。
+提供有意义且明显影响综合语音体验的选择。
 
 ![用户首选项](media/responsible-ai/disclosure-patterns/customization-user-control.png)<br/>
 *用户首选项允许用户自定义和改进其体验。*
@@ -114,144 +114,144 @@ ms.locfileid: "74776616"
 建议
 
 - 允许用户自定义语音（例如，选择语言和语音类型）
-- 为用户提供一种教系统响应他/她独特声音（例如语音校准、自定义命令）的方法
-- 优化用户生成的或上下文交互（例如提醒）
+- 向用户提供一种方法来使系统响应其唯一语音（例如，语音校准、自定义命令）
+- 优化用户生成或上下文交互（例如提醒）
 
 #### <a name="persona-customization"></a>角色自定义
 
-提供自定义数字助理&#39;语音的方法。 如果语音基于名人或广为人知的人，请考虑在用户预览语音时同时使用视觉和语音介绍。
+提供自定义数字助理&#39;语音的方式。 如果语音基于名人或广泛识别的用户，请考虑在用户预览语音时使用视觉和讲述的简介。
 
 ![语音自定义](media/responsible-ai/disclosure-patterns/customization-voice-type.png)<br/>
-*提供从一组声音中选择的能力有助于传达人工性质。*
+*提供从一组声音中进行选择的功能有助于表达人工性质。*
 
 建议
-- 允许用户预览每个声音的声音
-- 为每个语音使用真实的介绍
-- 提供入口点，了解有关合成语音的更多信息
+- 允许用户预览每个语音的声音
+- 为每个语音使用可信简介
+- 提供入口点以了解有关合成语音的详细信息
 
-### <a name="parental-disclosure"></a>家长披露
+### <a name="parental-disclosure"></a>家长泄露
 
-除了遵守 COPPA 法规外，如果您的主要受众是幼儿，且您的曝光率较高，请向家长提供披露信息。 对于敏感用途，请考虑在成人确认使用合成语音之前对体验进行门控。 鼓励家长向孩子传达信息。
+除了遵守 COPPA 法规之外，如果您的主要目标受众是年轻人，并且您的暴露程度很高，则可以向家长提供公开。 对于敏感用途，请考虑在成人确认使用综合语音之前对体验进行了概述。 鼓励父级向其子级传达消息。
 
-![家长披露](media/responsible-ai/disclosure-patterns/parental-disclosure.png)<br/>
-*针对父母的透明介绍可确保成人在孩子与声音互动之前了解声音的合成性。*
-
-建议
-
-- 将父母作为披露的主要受众
-- 鼓励家长向子女传达信息
-- 提供入口点，了解有关合成语音的更多信息
-- 通过向家长提出一个简单的&quot;保障&quot;问题来证明他们已经阅读了披露，从而将体验蒙上大门
-
-### <a name="providing-opportunities-to-learn-more-about-how-the-voice-was-made"></a>提供更多了解语音制作方式的机会
-
-向页面、弹出窗口或外部网站提供上下文相关的入口点，这些网站提供有关合成语音技术的详细信息。 例如，您可以在载入过程中或当用户在对话过程中提示详细信息时显示一个链接以了解更多信息。
-
-![入门点以了解更多信息](media/responsible-ai/disclosure-patterns/learn-more-entry-point.png)<br/>
-*入口点的示例，以提供了解有关合成语音的更多信息的机会。*
-
-一旦用户要求有关合成语音的更多信息，主要目标是教育他们有关合成语音的起源，并透明地了解该技术。
-
-![为用户提供有关合成语音的更多信息](media/responsible-ai/disclosure-patterns/learn-more.png)<br/>
-*可以在外部站点帮助站点中提供更多信息。*
+![父项的公开](media/responsible-ai/disclosure-patterns/parental-disclosure.png)<br/>
+*针对父项进行了优化的透明简介，可确保成人在与孩子交互之前，了解语音的综合性质。*
 
 建议
 
-- 简化复杂概念，避免使用法律术语和技术术语
-- 不要将此内容埋在隐私和使用条款声明中
-- 保持内容简洁，并在可用时使用影像
+- 作为主要用户进行公开的目标父级
+- 鼓励家长向其孩子传达披露
+- 提供入口点以了解有关合成语音的详细信息
+- 通过向家长询问一个简单&quot;的安全&quot;问题，让他们了解他们是否阅读了公开
 
-## <a name="implicit-disclosure"></a>隐式披露
+### <a name="providing-opportunities-to-learn-more-about-how-the-voice-was-made"></a>提供机会来了解有关如何进行语音的详细信息
 
-一致性是在整个用户旅程中隐式实现披露的关键。 跨设备和交互模式一致地使用视觉和听觉提示有助于在隐式模式和显式披露之间建立关联。
+为提供有关综合语音技术的详细信息的页面、弹出窗口或外部站点提供上下文相关的入口点。 例如，你可以在载入过程中或在用户在会话期间提示输入详细信息时，介绍一个链接以了解详细信息。
+
+![了解详细信息的入口点](media/responsible-ai/disclosure-patterns/learn-more-entry-point.png)<br/>
+*输入点的示例，提供详细了解合成语音的机会。*
+
+用户请求有关综合语音的详细信息后，主要目标是向他们讲解综合语音的起源，并对该技术进行透明处理。
+
+![向用户提供有关综合语音的详细信息](media/responsible-ai/disclosure-patterns/learn-more.png)<br/>
+*可在外部站点帮助站点中提供详细信息。*
+
+建议
+
+- 简化复杂概念，避免使用 legalese 和技术术语
+- 请勿在隐私和使用条款声明中埋葬此内容
+- 使内容简洁，并在可用时使用图像
+
+## <a name="implicit-disclosure"></a>隐式公开
+
+一致性是在整个用户旅程内隐式实现泄露的关键。 跨设备和交互模式一致地使用视觉对象和听觉提示有助于生成隐式模式和显式公开之间的关联。
 
 ![隐式提示的一致性](media/responsible-ai/disclosure-patterns/consistency.png)
 
-### <a name="implicit-cues--feedback"></a>隐含提示&反馈
+### <a name="implicit-cues--feedback"></a>& 反馈的隐式提示
 
-拟人化可以以不同的方式表现出来，从代理的实际视觉表现，到声音、声音、光模式、弹跳形状，甚至设备的振动。 定义角色时，利用隐含的提示和反馈模式，而不是瞄准一个非常人性化的化身。 这是尽量减少更明确披露需求的一种方式。
+Anthropomorphism 可以采用不同的方式，从代理的实际视觉对象表示形式到声音、声音、光模式、弹跳形状甚至设备振动。 定义角色时，请利用隐式提示和反馈模式，而不是瞄准非常类似的头像。 这是最大程度地减少对更显式泄露的需求的一种方法。
 
 ![视觉提示和反馈](media/responsible-ai/disclosure-patterns/visual-affordances.png)<br/>
-*这些线索有助于将代理拟化，而不会过于像人一样。随着时间的推移，当使用一致时，它们也可以自行成为有效的披露机制。*
+*这些提示可帮助 anthropomorphize 代理，而无需太人赞。随着时间的推移，它们也可能会成为有效的公开机制。*
 
-在合并以下类型提示时，请考虑体验的不同交互模式：
+结合以下类型的提示时，请考虑体验的不同交互模式：
 
-| 视觉提示                                                                                                                                                               | 听觉提示                                                      | 触觉提示 |
+| 视觉提示                                                                                                                                                               | 听觉提示                                                      | Haptic 提示 |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------|-------------|
-|  Avatar <br>响应式实时提示（例如动画）<br> 非屏幕提示（例如，设备上的灯光和图案）<br>  | 声波（例如，一个简短的独特声音，一系列音符） | 振动   |
+|  Avatar <br>响应实时提示（例如，动画）<br> 非屏幕提示（例如设备上的灯和图案）<br>  | Sonicon （例如，一种简短的独特声音，一系列音乐笔记） | 振动   |
 
-### <a name="capability-disclosure"></a>能力披露
+### <a name="capability-disclosure"></a>功能公开
 
-通过对数字助理的能力设定准确的期望，可以隐式地实现披露。 提供示例命令，以便用户可以了解如何与数字助理交互，并提供上下文帮助，以便在体验的早期阶段了解有关合成语音的更多内容。
+可以通过为数字助理的功能设置准确的期望值来隐式地获取泄露。 提供示例命令，以便用户可以了解如何与数字助理交互，并提供上下文帮助，以便在体验的早期阶段详细了解综合声音。
 
 ![视觉提示和反馈](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
 
 ### <a name="conversational-transparency"></a>对话透明度
 
-当对话处于意外路径时，请考虑制定默认响应，以帮助重置期望值、增强透明度并引导用户走向成功路径。 在谈话中也有机会使用显式披露。
+当会话处于意外路径时，请考虑手工构建默认响应，以帮助重置预期、强化透明度，并使用户能够成功完成路径。 也有机会在会话中使用显式公开。
 
 ![处理意外路径](media/responsible-ai/disclosure-patterns/conversational-transparency-1.png)<br/>
 
 <br/>
-向座席提出的&quot;非&quot;任务或个人问题是提醒用户代理的合成性并引导他们适当地参与或将他们重定向到真实人物的好时机。
+将任务或&quot;个人&quot;问题定向到代理是提醒用户了解代理的综合性质，并使他们能够适当地进行沟通或将其重定向给真实人员的好时机。
 
 ![处理任务问题](media/responsible-ai/disclosure-patterns/conversational-transparency-2.png)<br/>
 
-## <a name="when-to-disclose"></a>何时披露
+## <a name="when-to-disclose"></a>何时泄露
 
-在整个用户旅程中，有许多机会可供披露。 首次使用、第二次使用、第 n 次使用的设计...，但也包含&quot;未能&quot;突出显示透明度的时刻，例如当系统出错或用户发现代理&#39;功能的限制时。
+在整个用户旅程中，有很多机会要公开。 设计为第一次使用、第二次使用、第 n 次使用 ...，但也&quot;可以&quot;使用失败的时间来突出显示透明度，如系统出错或用户发现代理&#39;功能的限制。
 
-![在整个用户旅程中披露机会](media/responsible-ai/disclosure-patterns/touchpoints.png)<br/>
+![整个用户旅程中的公开机会](media/responsible-ai/disclosure-patterns/touchpoints.png)<br/>
 
-标准数字助理用户旅程示例，突出各种披露机会。
+标准数字助理用户旅程的示例突出显示了各种泄露机会。
 
 ### <a name="up-front"></a>前期
 
-披露的最佳时机是一个人第一次与合成的声音互动。在个人语音助理方案中，这将是在载入期间，或用户第一次几乎取消包装体验。 在其他方案中，可能是合成语音第一次读取网站上的内容，或者用户第一次与虚拟角色交互。
+最佳的泄露时间是用户第一次与综合语音交互。在个人语音助手场景中，这会在载入过程中或用户第一次取消装箱体验。 在其他情况下，这可能是首次在网站上或用户第一次与虚拟字符交互时，合成语音读取内容。
 
 - [透明介绍](#transparent-introduction)
-- [能力披露](#capability-disclosure)
-- [定制和校准](#customization-and-calibration)
+- [功能公开](#capability-disclosure)
+- [自定义和校准](#customization-and-calibration)
 - [隐式提示](#implicit-cues--feedback)
 
-### <a name="upon-request"></a>应要求
+### <a name="upon-request"></a>根据请求
 
-用户应该能够在需要时轻松访问其他信息、控制首选项和在用户旅程中的任何时间接收透明通信。
+用户在用户旅程期间，用户应该能够轻松地访问附加信息、控制首选项，并在用户旅程期间接收透明通信。
 
-- [提供更多了解语音制作方式的机会](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)
-- [定制和校准](#customization-and-calibration)
+- [提供机会来了解有关如何进行语音的详细信息](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)
+- [自定义和校准](#customization-and-calibration)
 - [对话透明度](#conversational-transparency)
 
-### <a name="continuously"></a>不断
+### <a name="continuously"></a>播放
 
-使用隐式设计模式，持续增强用户体验。
+使用隐式设计模式，以持续增强用户体验。
 
-- [能力披露](#capability-disclosure)
+- [功能公开](#capability-disclosure)
 - [隐式提示](#implicit-cues--feedback)
 
-### <a name="when-the-system-fails"></a>当系统出现故障时
+### <a name="when-the-system-fails"></a>当系统失败时
 
-以披露为契机，优雅地失败。
+使用披露作为合理的故障发生机会。
 
 - [对话透明度](#conversational-transparency)
-- [提供更多了解语音制作方式的机会](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)
+- [提供机会来了解有关如何进行语音的详细信息](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)
 - [提交给人](#conversational-transparency)
 
 
 
 ## <a name="additional-resources"></a>其他资源
-- [微软机器人指南](https://www.microsoft.com/research/uploads/prod/2018/11/Bot_Guidelines_Nov_2018.pdf)
-- [Cortana 设计指南](https://docs.microsoft.com/cortana/voice-commands/voicecommand-design-guidelines)
-- [微软视窗UWP语音设计指南](https://docs.microsoft.com/windows/uwp/design/input/speech-interactions)
-- [微软视窗混合现实语音指挥指南](https://docs.microsoft.com/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
+- [Microsoft 机器人指导原则](https://www.microsoft.com/research/uploads/prod/2018/11/Bot_Guidelines_Nov_2018.pdf)
+- [Cortana 设计准则](https://docs.microsoft.com/cortana/voice-commands/voicecommand-design-guidelines)
+- [Microsoft Windows UWP 语音设计指南](https://docs.microsoft.com/windows/uwp/design/input/speech-interactions)
+- [Microsoft Windows Mixed Reality 语音命令准则](https://docs.microsoft.com/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
 
 ## <a name="reference-docs"></a>参考文档
 
-* [语音人才披露](https://aka.ms/disclosure-voice-talent)
-* [负责部署合成语音技术的指导方针](concepts-guidelines-responsible-deployment-synthetic.md)
-* [门控概述](concepts-gating-overview.md)
-* [如何披露](concepts-disclosure-guidelines.md)
+* [为语音人才公开](https://aka.ms/disclosure-voice-talent)
+* [综合语音技术的责任部署指南](concepts-guidelines-responsible-deployment-synthetic.md)
+* [概述概述](concepts-gating-overview.md)
+* [如何公开](concepts-disclosure-guidelines.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [语音人才披露](https://aka.ms/disclosure-voice-talent)
+* [为语音人才公开](https://aka.ms/disclosure-voice-talent)

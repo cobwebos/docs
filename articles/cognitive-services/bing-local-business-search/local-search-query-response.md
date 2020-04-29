@@ -1,5 +1,5 @@
 ---
-title: 发送和使用 API 查询和响应 - 必应本地业务搜索
+title: 发送和使用 API 查询和响应-必应本地业务搜索
 titleSuffix: Azure Cognitive Services
 description: 在本文中了解如何通过必应当地企业搜索 API 发送和使用搜索查询。
 services: cognitive-services
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: rosh
 ms.openlocfilehash: 25bcdb89002fec4f9b67b091996d7bf80bcf21c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74326719"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>发送和使用必应当地企业搜索 API 查询和响应
@@ -148,6 +148,6 @@ Expires: Tue, 16 Oct 2018 16:25:15 GMT
 
 ## <a name="next-steps"></a>后续步骤
 - [当地企业搜索快速入门](quickstarts/local-quickstart.md)
-- [本地业务搜索 Java 快速入门](quickstarts/local-search-java-quickstart.md)
-- [本地业务搜索节点快速启动](quickstarts/local-search-node-quickstart.md)
+- [当地企业搜索 Java 快速入门](quickstarts/local-search-java-quickstart.md)
+- [当地企业搜索 Node 快速入门](quickstarts/local-search-node-quickstart.md)
 - [当地企业搜索 Python 快速入门](quickstarts/local-search-python-quickstart.md)

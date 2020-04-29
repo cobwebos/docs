@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: a875cc8f5e69be8b940f9d177d3b915bfaa2c973
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68595681"
 ---
 # <a name="train-a-model"></a>训练模型
@@ -53,7 +53,7 @@ ms.locfileid: "68595681"
     ![“训练模型”页面](media/how-to/how-to-train-model-3.png)
 
 >[!Note]
->自定义转换器支持工作区内任意时间点的 10 个并发训练。
+>自定义转换器在某个时间点在工作区中支持10个并发培训。
 
 
 ## <a name="edit-a-model"></a>编辑模型

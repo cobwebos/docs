@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
 ms.openlocfilehash: 5b2b8871d868e827532f23c7ef4f14fb00afb5bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74072807"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>配置自定义自动建议体验
@@ -36,7 +36,7 @@ ms.locfileid: "74072807"
 
 ## <a name="add-your-own-suggestions"></a>添加自己的建议
 
-若要添加自己的查询字符串建议，请将它们添加到“用户定义的建议”**** 下的列表中。 在列表中添加建议后，按输入键或单击**+** 该图标。 可采用任何语言来指定建议。 可以添加最多 5,000 条查询字符串建议。
+若要添加自己的查询字符串建议，请将它们添加到“用户定义的建议”**** 下的列表中。 在列表中添加建议后，按 enter 键或单击**+** 图标。 可采用任何语言来指定建议。 可以添加最多 5,000 条查询字符串建议。
 
 ## <a name="upload-suggestions"></a>上传建议
 
@@ -48,7 +48,7 @@ ms.locfileid: "74072807"
 
 ## <a name="block-suggestions"></a>阻止建议
 
-如果包括了必应建议，可以添加不想必应返回的搜索查询字符串列表。 要添加阻止的查询字符串，请单击“显示阻止的建议”****。 将查询字符串添加到列表中，然后按输入键或单击**+** 该图标。 可以添加最多 50 条阻止的查询字符串。
+如果包括了必应建议，可以添加不想必应返回的搜索查询字符串列表。 要添加阻止的查询字符串，请单击“显示阻止的建议”****。 向列表中添加查询字符串，然后按 enter 键或单击**+** 图标。 可以添加最多 50 条阻止的查询字符串。
 
 
 

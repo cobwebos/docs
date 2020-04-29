@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: 2fa90a8099778bf37ce8534e968a2b1b4345c2d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75446786"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>将 Hub 工作区和项目迁移到自定义翻译
@@ -27,7 +27,7 @@ ms.locfileid: "75446786"
 * 随时可以“MT Hub 中的 Bleu 分数”的标题在模型的 TrainingDetails 页面查看从 Hub 训练迁移的 BLEU 分数。
 
 > [!Note] 
-> 要成功培训，自定义翻译器至少需要 10，000 个唯一提取的句子。 自定义翻译人员不能以低于[建议的最小值](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences)进行培训。
+> 若要成功完成培训，自定义翻译人员需要至少10000个唯一的提取句子。 自定义转换程序不能执行比建议的[最小值](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences)更少的培训。
 
 ## <a name="find-custom-translator-workspace-id"></a>查找自定义翻译器工作区 ID
 
@@ -80,9 +80,9 @@ Microsoft Translator Hub 允许有选择性地迁移项目。
 
 4. 在下一页上，选择以下两个选项之一：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 仅部署的训练：如果选择此选项，则只会已部署的系统和相关文档。
+    a. 仅部署的训练：如果选择此选项，则只会已部署的系统和相关文档。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 所有成功的训练：如果选择此选项，则会迁移所有已成功的训练和相关文档。
+    b. 所有成功的训练：如果选择此选项，则会迁移所有已成功的训练和相关文档。
 
     c. 在自定义翻译中输入目标工作区 ID。
 
@@ -119,10 +119,10 @@ Microsoft Translator Hub 允许有选择性地迁移项目。
 如需有关项目、训练和文档的更详细迁移报告，可以选择以 CSV 格式导出详细信息。
 
 ## <a name="implementation-notes"></a>实现说明
-* 具有"自定义翻译器"中尚未提供的语言对的系统只能通过自定义转换器访问数据或取消部署。 这些项目将在"项目"页上标记为"不可用"。 当我们使用自定义转换器启用新的语言对时，项目将变得活跃以培训和部署。 
+* 在自定义转换程序中尚不可用的语言对的系统将仅可用于访问数据或通过自定义转换器取消部署。 这些项目将在 "项目" 页上标记为 "不可用"。 由于我们通过自定义转换器启用了新的语言对，因此这些项目将变为活动状态以进行定型和部署。 
 * 将项目从 Hub 迁移到自定义翻译器不会对 Hub 训练或项目产生任何影响。 迁移期间，我们不会从 Hub 删除项目或文档，并且不会取消部署模型。
 * 每个项目只可迁移一次。 如需重复执行对某个项目的迁移，请与我们联系。
-* 自定义翻译器支持与英语的 NMT 语言对。 [查看支持语言的完整列表](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization)。 Hub 无需基准模型，因此它支持数千种语言。 可以迁移不受支持的语言对，但我们将仅执行对文档和项目定义的迁移。 我们无法训练新模型。 此外，这些文档和项目将显示为非活动状态，以指示它们当前不可用。 若添加了对这些项目和/或文档的支持，它们将变为活动且可训练状态。
+* 自定义转换器支持 NMT 语言对和英语。 [查看支持的语言的完整列表](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization)。 Hub 无需基准模型，因此它支持数千种语言。 可以迁移不受支持的语言对，但我们将仅执行对文档和项目定义的迁移。 我们无法训练新模型。 此外，这些文档和项目将显示为非活动状态，以指示它们当前不可用。 若添加了对这些项目和/或文档的支持，它们将变为活动且可训练状态。
 * 自定义翻译器当前不支持单语训练数据。 与不受支持的语言对一样，可以迁移单语文档，但在支持单语数据前，它们将显示为非活动状态。
 * 自定义翻译器需要具备 1 万个并行句子，才能执行训练。 Microsoft Hub 可以针对小型数据集执行训练。 若要迁移的训练不符合此要求，则不会对它执行训练。
 
@@ -141,9 +141,9 @@ Microsoft Translator Hub 允许有选择性地迁移项目。
 
 ## <a name="new-languages"></a>新语言
 
-如果您是致力于为 Microsoft 翻译创建新语言系统的社区或组织，则联系以[custommt@microsoft.com](mailto:custommt@microsoft.com)了解更多信息。
+如果你是致力于创建 Microsoft Translator 的新语言系统的社区或组织，请访问以[custommt@microsoft.com](mailto:custommt@microsoft.com)获取详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [训练模型](how-to-train-model.md)。
+- [为模型定型](how-to-train-model.md)。
 - 通过 [Microsoft 文本翻译 API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) 开始使用已部署的自定义翻译模型。

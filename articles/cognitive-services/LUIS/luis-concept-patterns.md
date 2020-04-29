@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: diberry
 ms.openlocfilehash: 6c1b548de25369c162b4a08dfa20fce62c17f99f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75890292"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>模式可提高预测的准确性
@@ -73,7 +73,7 @@ ms.locfileid: "75890292"
 详细了解模式：
 
 * [如何添加模式](luis-how-to-model-intent-pattern.md)
-* [如何添加模式. 任何实体](luis-how-to-add-entities.md#add-a-patternany-entity)
+* [如何添加模式。任何实体](luis-how-to-add-entities.md#add-a-patternany-entity)
 * [模式语法](reference-pattern-syntax.md)
 
 > [!div class="nextstepaction"]

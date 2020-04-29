@@ -1,7 +1,7 @@
 ---
-title: 跨订阅迁移面部数据 - 人脸
+title: 跨订阅迁移你的面部数据-人脸
 titleSuffix: Azure Cognitive Services
-description: 本指南演示如何将存储的面数据从一个面容订阅迁移到另一个面容订阅。
+description: 本指南说明如何将存储的人脸数据从一个面部订阅迁移到另一个。
 services: cognitive-services
 author: lewlu
 manager: nitinme
@@ -11,37 +11,37 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: lewlu
 ms.openlocfilehash: e5ca51da7322e4eab4ea364ec5da086a1068fa9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76169808"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>将人脸数据迁移到其他人脸订阅
 
-本指南演示如何将面数据（如已保存的具有面的 PersonGroup 对象）移动到其他 Azure 认知服务面订阅。 若要移动数据，可以使用快照功能。 这样，在转移或扩展操作时就无需反复生成并训练 PersonGroup 或 FaceList 对象。 例如，您可能使用免费试用订阅创建了 PersonGroup 对象，现在想要将其迁移到付费订阅。 或者，对于大型企业操作，您可能需要跨不同区域的订阅同步人脸数据。
+本指南说明如何将人脸数据（如保存的 Person group 对象）转移到不同的 Azure 认知服务人脸订阅。 若要移动数据，可以使用快照功能。 这样，在转移或扩展操作时就无需反复生成并训练 PersonGroup 或 FaceList 对象。 例如，你可能会使用免费试用版订阅创建一个 Person group 对象，现在想要将其迁移到付费订阅。 或者，可能需要在不同区域中的不同订阅之间同步人脸数据，以进行大规模企业操作。
 
-此迁移策略同样适用于 LargePersonGroup 和 LargeFaceList 对象。 如果你不熟悉本指南中的概念，请查看[人脸识别概念](../concepts/face-recognition.md)指南中的相关定义。 本指南使用带有 C# 的面 .NET 客户端库。
+此迁移策略同样适用于 LargePersonGroup 和 LargeFaceList 对象。 如果你不熟悉本指南中的概念，请查看[人脸识别概念](../concepts/face-recognition.md)指南中的相关定义。 本指南使用带有 c # 的面部 .NET 客户端库。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 需要准备好以下各项：
 
-- 两个面容订阅密钥，一个带有现有数据，一个要迁移到。 要订阅 Face 服务并获得密钥，请按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明操作。
-- 与目标订阅对应的面容订阅 ID 字符串。 在 Azure 门户中选择“概述”可以找到该字符串。**** 
-- 任何版本的[视觉工作室2015或2017](https://www.visualstudio.com/downloads/)年。
+- 两个面部订阅密钥，一个用于现有数据，另一个用于迁移到。 若要订阅面部服务并获取你的密钥，请按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明进行操作。
+- 与目标订阅相对应的人脸订阅 ID 字符串。 在 Azure 门户中选择“概述”可以找到该字符串。  
+- 任何版本的 [Visual Studio 2015 或 2017](https://www.visualstudio.com/downloads/)。
 
 ## <a name="create-the-visual-studio-project"></a>创建 Visual Studio 项目
 
-本指南使用一个简单的控制台应用来运行人脸数据迁移。 有关完整实现，请参阅 GitHub 上的["人脸"快照示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)。
+本指南使用一个简单的控制台应用来运行人脸数据迁移。 有关完整实现，请参阅 GitHub 上的[面部快照示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)。
 
 1. 在 Visual Studio 中创建新的控制台应用 .NET Framework 项目。 将其命名为 **FaceApiSnapshotSample**。
-1. 获取所需的 NuGet 包。 在解决方案资源管理器中，右键单击该项目并选择“管理 NuGet 包”****。 选择“浏览”选项卡，然后选择“包括预发行版”********。 找到并安装以下包：
+1. 获取所需的 NuGet 包。 在解决方案资源管理器中，右键单击该项目并选择“管理 NuGet 包”  。 选择“浏览”选项卡，然后选择“包括预发行版”   。 找到并安装以下包：
     - [Microsoft.Azure.CognitiveServices.Vision.Face 2.3.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
 
 ## <a name="create-face-clients"></a>创建人脸客户端
 
-在 Program.cs** 的 Main**** 方法中，创建两个 [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) 实例，分别对应于来源订阅和目标订阅。 本示例使用东亚区域的 Face 订阅作为源，将西美国订阅作为目标。 此示例演示如何将数据从一个 Azure 区域迁移到另一个 Azure 区域。 
+在 **Program.cs** 的 *Main* 方法中，创建两个 [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) 实例，分别对应于源订阅和目标订阅。 此示例使用东亚区域中的人脸订阅作为源，将美国西部订阅用作目标。 此示例演示如何将数据从一个 Azure 区域迁移到另一个 Azure 区域。 
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -233,7 +233,7 @@ await FaceClientEastAsia.Snapshot.DeleteAsync(snapshotId);
 接下来，请参阅相关的 API 参考文档、浏览使用快照功能的示例应用，或遵循下面所述的操作指南开始使用其他 API 操作：
 
 - [快照参考文档 (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations?view=azure-dotnet)
-- [人脸快照示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)
+- [面部快照示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)
 - [添加人脸](how-to-add-faces.md)
 - [检测图像中的人脸](HowtoDetectFacesinImage.md)
 - [识别图像中的人脸](HowtoIdentifyFacesinImage.md)

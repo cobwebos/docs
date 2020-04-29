@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
 ms.openlocfilehash: 533f09b09b7f5899833669b5f0ad4ffa5efa3a43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68594905"
 ---
 # <a name="how-to-use-the-transformtext-method"></a>如何使用 TransformText 方法
@@ -28,7 +28,7 @@ TransformText 方法是用于社交媒体的文本规范化函数，它返回输
 
 ## <a name="parameters"></a>参数
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 |:---|:---|
 | 授权标头 | **必需**：用于标识应用程序的 HTTP 标头。 使用键：“Authorization”和值："Bearer" + " " + access token。 有关详细信息，请转到此处。|
 | 语言 | **必需**：一个表示语言代码的字符串。 此参数仅支持以 **en** 作为语言名称的英语。|

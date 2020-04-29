@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 81b4ffc8f77673e52bb78f891e3de618b67e0d1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74806056"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>如何创建人为标记的听录
@@ -29,9 +29,9 @@ ms.locfileid: "74806056"
 
 以下是一些示例：
 
-| 要避免的字符 | Substitution | 说明 |
+| 要避免的字符 | Substitution | 注释 |
 | ------------------- | ------------ | ----- |
-| “Hello world” | “Hello world” | 左引号和右引号都已替换为相应的 ASCII 字符。 |
+| “Hello world” | "Hello world" | 左引号和右引号都已替换为相应的 ASCII 字符。 |
 | John’s day | John's day | 撇号已替换为相应的 ASCII 字符。 |
 | it was good—no, it was great! | it was good--no, it was great! | 长划线已替换为两个连字符。 |
 
@@ -49,7 +49,7 @@ ms.locfileid: "74806056"
 
 | 原始文本               | 规范化后的文本              |
 | --------------------------- | ------------------------------------- |
-| 布鲁斯·班纳博士            | Doctor Bruce Banner                   |
+| Dr.Bruce Banner            | Doctor Bruce Banner                   |
 | James Bond, 007             | James Bond, double oh seven           |
 | Ke$ha                       | Kesha                                 |
 | How long is the 2x4         | How long is the two by four           |
@@ -84,7 +84,7 @@ ms.locfileid: "74806056"
 
 以下是一些示例：
 
-| 要避免的字符 | Substitution   | 说明 |
+| 要避免的字符 | Substitution   | 注释 |
 | ------------------- | -------------- | ----- |
 | "你好" | "你好" | 左引号和右引号都已替换为相应的字符。 |
 | 需要什么帮助? | 需要什么帮助？| 问号已替换为相应的字符。 |
@@ -131,7 +131,7 @@ ms.locfileid: "74806056"
 文本规范化是指将字词转换为在训练模型时使用的一致格式。 某些规范化规则会自动应用到文本，但我们建议你在准备人为标记的听录数据时遵循以下准则：
 
 - 将小数点写为“,”，而不是“.”。
-- 将时间分隔符写成"："而不是"。（例如：12：00 Uhr）。
+- 将时间分隔符写为“:”，而不是“.”（例如：12:00 Uhr）。
 - 不替换“ca.” 等缩写。 我们建议使用完整的口语形式。
 - 删除四个主要的数学运算符（+、-、\* 和 /）。 我们建议将其替换为文字形式：“plus”、“minus”、“mal”、“geteilt”。
 - 删除比较运算符（=、< 和 >）。 我们建议其替换为“gleich”、“kleiner als”和“grösser als”。

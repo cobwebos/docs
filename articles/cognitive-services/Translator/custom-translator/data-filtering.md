@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: 1028443eaaf6c483cd7cd57289b0dcf2a9f11902
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68595903"
 ---
 # <a name="data-filtering"></a>数据筛选
@@ -23,7 +23,7 @@ ms.locfileid: "68595903"
 ## <a name="sentence-alignment"></a>句子对齐
 如果文档不是 XLIFF、TMX 或 ALIGN 格式，则自定义翻译器会将源文档和目标文档的句子一句句地互相对齐。 翻译器并不执行文档对齐操作，而是根据文档的命名找出另一语言的匹配文档。 在文档中，自定义翻译器会尝试找出另一语言的相应句子。 它使用类似于嵌入式 HTML 标记的文档标记来帮助进行对齐。  
 
-如果源端文档中的句子数与目标端文档中的句子数之间存在较大差异，则文档可能最初没有平行，或者由于其他原因无法对齐。 如果文档配对时每侧的句子存在大的差异 (>10%)，则必须再次进行查看，确保这些句子确实已对齐。 如果句子计数差异令人怀疑，自定义翻译器会在文档旁边显示一个警告。  
+如果在源和目标端文档中的句子数与目标端文档中的句子数之间存在较大的差异，可能是因为你的文档可能没有在第一位置并行，或者无法对齐其他原因。 如果文档配对时每侧的句子存在大的差异 (>10%)，则必须再次进行查看，确保这些句子确实已对齐。 如果句子计数差异令人怀疑，自定义翻译器会在文档旁边显示一个警告。  
 
 
 ## <a name="deduplication"></a>重复数据删除
@@ -45,7 +45,7 @@ ms.locfileid: "68595903"
 将多个句末标点字符替换为单个实例。  
 
 ## <a name="japanese-character-normalization"></a>日语字符规范化
-将全宽字母和数字转换为半宽度字符。
+将全角字母和数字转换为半角字符。
 
 ## <a name="unescaped-xml-tags"></a>非转义的 XML 标记
 筛选会将非转义的标记转换为转义的标记：

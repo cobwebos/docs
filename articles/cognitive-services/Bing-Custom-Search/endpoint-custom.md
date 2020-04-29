@@ -1,7 +1,7 @@
 ---
 title: 必应自定义搜索终结点
 titleSuffix: Azure Cognitive Services
-description: 为您关注的主题创建量身定制的搜索体验。 用户会看到根据他们关心的内容量身定制的搜索结果。
+description: 为您关注的主题创建定制的搜索体验。 用户会看到针对他们关心的内容量身定制的搜索结果。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 03ec22caedd4e317b9e1fe781dc3d983febc7a6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74072785"
 ---
 # <a name="custom-search"></a>自定义搜索

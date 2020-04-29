@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: 9432ac390b7677b3dea5aebc84cf23ef6e45db92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68595713"
 ---
 # <a name="search-edit-and-delete-projects"></a>搜索、编辑和删除项目
@@ -39,7 +39,7 @@ ms.locfileid: "68595713"
 
 ## <a name="edit-a-project"></a>编辑项目
 
-自定义翻译器使您能够编辑项目的名称和说明。 其他项目元数据（如类别、源语言和目标语言）不可用于编辑。 以下步骤描述了如何编辑项目。
+自定义转换器使你能够编辑项目的名称和描述。 其他项目元数据（如类别、源语言和目标语言）不可用于编辑。 下面的步骤介绍如何编辑项目。
 
 1.  单击将鼠标指针悬停在项目上时出现的铅笔图标。
 

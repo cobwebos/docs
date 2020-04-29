@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/30/2019
 ms.author: wolfma
 ms.openlocfilehash: c7332177795a45331749225e0f3dc3856e28a6a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "71327063"
 ---
 若要创建 Visual Studio 项目用于 Windows 开发，需要创建项目，安装用于 .NET 桌面开发的 Visual Studio，安装语音 SDK，然后选择目标体系结构。
@@ -25,7 +25,7 @@ ms.locfileid: "71327063"
 
 1. 在“配置新项目”窗口中的“项目名称”内输入 *helloworld*，在“位置”中选择或创建目录路径，然后选择“创建”。****************
 
-1. 在"视觉工作室"菜单栏中，选择 **"工具** > **获取工具和功能**"，该选项将打开可视化工作室安装程序并显示 **"修改"** 对话框。
+1. 从 Visual Studio 菜单栏中选择 "**工具** > " "**获取工具和功能**"，这将打开 Visual Studio 安装程序并显示 "**修改**" 对话框。
 
 1. 检查“.NET 桌面开发”工作负荷是否可用。**** 如果尚未安装该工作负荷，请选中它旁边的复选框，然后选择“修改”以启动安装。**** 下载和安装过程可能需要几分钟。
 
@@ -39,13 +39,13 @@ ms.locfileid: "71327063"
 
 下一步是安装[语音 SDK NuGet 包](https://aka.ms/csspeech/nuget)，以便可以在代码中引用它。
 
-1. 在解决方案资源管理器中右键单击“helloworld”项目，然后选择“管理 NuGet 包”显示 NuGet 包管理器。********
+1. 在解决方案资源管理器中右键单击“helloworld”项目，然后选择“管理 NuGet 包”显示 NuGet 包管理器。  
 
    ![NuGet 包管理器](../articles/cognitive-services/speech-service/media/sdk/vs-nuget-package-manager.png)
 
 1. 在右上角找到“包源”**** 下拉框，并确保选择了 **nuget.org**。
 
-1. 在左上角，选择“浏览”****。
+1. 在左上角，选择“浏览”  。
 
 1. 在搜索框中，键入 *Microsoft.CognitiveServices.Speech* 并按 **Enter**。
 
@@ -55,13 +55,13 @@ ms.locfileid: "71327063"
 
 1. 接受所有协议和许可证，开始安装。
 
-   安装此包后，“包管理器控制台”**** 窗口中将显示一条确认消息。
+   安装此包后，“包管理器控制台”  窗口中将显示一条确认消息。
 
 ### <a name="choose-the-target-architecture"></a>选择目标体系结构
 
 现在，若要生成并运行控制台应用程序，请创建与计算机体系结构匹配的平台配置。
 
-1. 在菜单栏中，选择 **"生成** > **配置管理器**"。 此时将显示“配置管理器”**** 对话框。
+1. 从菜单栏中，选择 "**生成** > **Configuration Manager**"。 此时将显示“配置管理器”**** 对话框。
 
    ![“配置管理器”对话框](../articles/cognitive-services/speech-service/media/sdk/vs-configuration-manager-dialog-box.png)
 

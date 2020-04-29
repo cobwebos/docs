@@ -1,7 +1,7 @@
 ---
 title: 什么是工作区和项目？ - 自定义翻译
 titleSuffix: Azure Cognitive Services
-description: 本文将解释工作区和项目之间的差异，以及自定义翻译服务的项目类别和标签。
+description: 本文介绍了工作区和项目之间的差异，以及自定义转换器服务的项目类别和标签。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,10 +11,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: d2f7903fa85c645357e46a753d1cb043e0893254
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79219430"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>什么是自定义翻译工作区？

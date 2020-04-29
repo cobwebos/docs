@@ -1,7 +1,7 @@
 ---
-title: 对墨迹识别器 API 的语言和地区支持
+title: 手写识别器 API 的语言和区域支持
 titleSuffix: Azure Cognitive Services
-description: 墨迹识别器 API 支持的自然语言列表。
+description: 手写识别器 API 支持的自然语言列表。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: aahi
 ms.openlocfilehash: 36f2fa65f47f824ccc3544f5c13b5f5ee9afd21a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67721739"
 ---
-# <a name="language-and-region-support-for-the-ink-recognizer-api"></a>对墨迹识别器 API 的语言和地区支持
+# <a name="language-and-region-support-for-the-ink-recognizer-api"></a>手写识别器 API 的语言和区域支持
 
-本文介绍墨迹识别器 API 支持哪些语言。 使用以下语言编写的数字墨迹内容可以由 API 解释和处理。
+本文介绍了 Ink 识别器 API 支持的语言。 可以通过 API 解释和处理用以下语言编写的数字墨迹内容。
 
 ## <a name="supported-languages"></a>支持的语言
 
@@ -71,10 +71,10 @@ ms.locfileid: "67721739"
 | 苏格兰盖尔语                            |     `gd-GB`     |
 | 北索托语                           |    `nso-ZA`     |
 | 塞尔维亚语(西里尔文，波斯尼亚和黑塞哥维那) |  `sr-Cyrl-BA`   |
-| 塞尔维亚语（西里尔语，黑山）             |  `sr-Cyrl-ME`   |
+| 塞尔维亚语（西里尔文，黑山）             |  `sr-Cyrl-ME`   |
 | 塞尔维亚语(西里尔文，塞尔维亚)                 |  `sr-Cyrl-RS`   |
-| 塞尔维亚语（拉丁语、波斯尼亚和黑塞哥维那）    |  `sr-Latn-BA`   |
-| 塞尔维亚语（拉丁语、黑山语）                |  `sr-Latn-ME`   |
+| 塞尔维亚语（拉丁语系，波斯尼亚和黑塞哥维那）    |  `sr-Latn-BA`   |
+| 塞尔维亚语（拉丁语，黑山）                |  `sr-Latn-ME`   |
 | 塞尔维亚语(拉丁语，塞尔维亚)                    |  `sr-Latn-RS`   |
 | 茨瓦纳语(南非)                    |     `tn-ZA`     |
 | 斯洛伐克语                                     |     `sk-SK`     |
@@ -92,4 +92,4 @@ ms.locfileid: "67721739"
 ## <a name="see-also"></a>请参阅
 
 * [什么是墨迹识别器 API？](overview.md)
-* [将数字墨迹描边发送到墨迹识别器 API](concepts/send-ink-data.md)
+* [将数字墨迹笔划发送到手写识别器 API](concepts/send-ink-data.md)

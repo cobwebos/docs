@@ -1,7 +1,7 @@
 ---
 title: 文本翻译 API Transliterate 方法
 titleSuffix: Azure Cognitive Services
-description: 使用翻译文本 API 转译方法将一种语言的文本从一个脚本转换为另一个脚本。
+description: 使用文本翻译 API Transliterate 方法将一种语言的文本从一个脚本转换为另一个脚本。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: e6bb1541b2b668796b352bebc68d59b4ade143e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73837276"
 ---
 # <a name="translator-text-api-30-transliterate"></a>文本翻译 API 3.0：Transliterate
@@ -35,22 +35,22 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 
 <table width="100%">
   <th width="20%">查询参数</th>
-  <th>描述</th>
+  <th>说明</th>
   <tr>
     <td>api-version</td>
-    <td>必需参数**。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。</td>
+    <td>必需参数  。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。</td>
   </tr>
   <tr>
     <td>语言</td>
-    <td>必需参数**。<br/>指定要从一个脚本转换为另一个脚本的文本的语言。 通过查询服务的[支持的语言](./v3-0-languages.md)获得的 `transliteration` 范围中列出了可能的语言。</td>
+    <td>必需参数  。<br/>指定要从一个脚本转换为另一个脚本的文本的语言。 通过查询服务的`transliteration`支持的语言[获得的 ](./v3-0-languages.md) 范围中列出了可能的语言。</td>
   </tr>
   <tr>
     <td>fromScript</td>
-    <td>必需参数**。<br/>指定输入文本所使用的脚本。 使用 `transliteration` 范围查找[支持的语言](./v3-0-languages.md)，以找到可用于选定语言的输入脚本。</td>
+    <td>必需参数  。<br/>指定输入文本所使用的脚本。 使用 [ 范围查找](./v3-0-languages.md)支持的语言`transliteration`，以找到可用于选定语言的输入脚本。</td>
   </tr>
   <tr>
     <td>toScript</td>
-    <td>必需参数**。<br/>指定输出脚本。 使用 `transliteration` 范围查找[支持的语言](./v3-0-languages.md)，以找到可用于选定输入语言和输入脚本组合的输出脚本。</td>
+    <td>必需参数  。<br/>指定输出脚本。 使用 [ 范围查找](./v3-0-languages.md)支持的语言`transliteration`，以找到可用于选定输入语言和输入脚本组合的输出脚本。</td>
   </tr>
 </table> 
 
@@ -58,18 +58,18 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>描述</th>
+  <th>说明</th>
   <tr>
     <td>身份验证标头</td>
-    <td><em>所需的请求标头</em>。<br/>请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。</td>
+    <td>必需的请求标头。<br/>请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。</td>
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>*所需的请求标头*。<br/>指定有效负载的内容类型。 可能的值为：`application/json`</td>
+    <td>必需的请求标头  。<br/>指定有效负载的内容类型。 可能的值为：`application/json`</td>
   </tr>
   <tr>
     <td>Content-Length</td>
-    <td>*所需的请求标头*。<br/>请求正文的长度。</td>
+    <td>必需的请求标头  。<br/>请求正文的长度。</td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
@@ -115,7 +115,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>描述</th>
+  <th>说明</th>
   <tr>
     <td>X-RequestId</td>
     <td>服务生成的用于标识请求的值。 它用于故障排除目的。</td>
@@ -128,7 +128,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 
 <table width="100%">
   <th width="20%">状态代码</th>
-  <th>描述</th>
+  <th>说明</th>
   <tr>
     <td>200</td>
     <td>成功。</td>

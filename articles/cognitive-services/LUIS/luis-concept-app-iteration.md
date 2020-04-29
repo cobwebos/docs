@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: diberry
 ms.openlocfilehash: c1c1b2df301634a435b610c395a1a58aa5573da3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74422603"
 ---
 # <a name="iterative-app-design-for-luis"></a>LUIS 的迭代应用设计
@@ -35,13 +35,13 @@ ms.locfileid: "74422603"
 
 ## <a name="building-a-luis-schema"></a>生成 LUIS 架构
 
-应用的架构定义用户的需求是什么（意图或意向），以及意向的哪些部分提供有助于确定答案的详细信息（称为实体）。______ 
+应用的架构定义用户的需求是什么（意图或意向），以及意向的哪些部分提供有助于确定答案的详细信息（称为实体）。    
 
 应用架构必须特定于应用域，以此确定相关的单词和短语，并确定典型的单词顺序。 
 
 示例言语表示应用在运行时所需的用户输入，例如识别的语音或文本。 
 
-架构需要意向，并且应该包含实体。__ 
+架构需要意向，并且应该包含实体。  
 
 ### <a name="example-schema-of-intents"></a>意向的示例架构
 
@@ -51,7 +51,7 @@ ms.locfileid: "74422603"
 
 ### <a name="example-schema-of-entities"></a>实体的示例架构
 
-实体架构侧重于实体，是从用户言语中提取的数据。 例如，如果用户说“我想要订三份披萨”。 将会提取两个实体：“三份”和“披萨”。____ 这些实体有助于实现意图，即订餐。 
+实体架构侧重于实体，是从用户言语中提取的数据。 例如，如果用户说“我想要订三份披萨”。 将会提取两个实体：“三份”和“披萨”。   这些实体有助于实现意图，即订餐。 
 
 在实体架构方面，言语的意图对于客户端应用程序而言不太重要。 
 
@@ -87,7 +87,7 @@ LUIS 需要在每个**意向**中添加几个示例言语。 示例言语需要�
 
 ## <a name="test-your-published-app"></a>测试已发布的应用
 
-可以从 HTTPS 预测终结点测试已发布的 LUIS 应用。 从预测终结点进行测试允许 LUIS 选择任何低可信度的表述进行[审核](luis-how-to-review-endpoint-utterances.md)。  
+可以从 HTTPS 预测终结点测试已发布的 LUIS 应用。 通过预测终结点进行测试，LUIS 可以选择具有低置信度的任何[最谈话。](luis-how-to-review-endpoint-utterances.md)  
 
 ## <a name="create-a-new-version-for-each-cycle"></a>为每个周期创建新版本
 
@@ -105,7 +105,7 @@ LUIS 需要在每个**意向**中添加几个示例言语。 示例言语需要�
 
 可以发布到过渡槽和/或生产槽。 每个槽可以具有不同的版本或相同的版本。 这样，在将更改发布到可供机器人或其他 LUIS 调用应用使用的生产槽之前，可以方便地验证这些更改。 
 
-训练的版本在 LUIS 应用的[终结点](luis-glossary.md#endpoint)中不会自动可用。 您必须[发布](luis-how-to-publish-app.md)或重新发布版本，以便在 LUIS 应用终结点上提供版本。 可以发布到“过渡”和“生产”槽，从而提供两个在终结点中可用的应用版本。******** 如果需要更多应用版本在终结点上可用，应导出版本并将其重新导入到新的应用。 新的应用具有不同的应用 ID。
+训练的版本在 LUIS 应用的[终结点](luis-glossary.md#endpoint)中不会自动可用。 要使其在 LUIS 应用终结点上可用，必须[发布](luis-how-to-publish-app.md)或重新发布版本。 可以发布到“过渡”和“生产”槽，从而提供两个在终结点中可用的应用版本。******** 如果需要更多应用版本在终结点上可用，应导出版本并将其重新导入到新的应用。 新的应用具有不同的应用 ID。
 
 ### <a name="import-and-export-a-version"></a>导入和导出版本
 
@@ -128,7 +128,7 @@ LUIS 通过提供 Azure 资源级权限来使用应用参与者的概念。 将�
 
 ### <a name="manage-multiple-versions-inside-the-same-app"></a>在同一应用中管理多个版本
 
-首先从每个作者的基版本[进行克隆](luis-how-to-manage-versions.md#clone-a-version)。 
+从每个作者的基本版本中开始[克隆](luis-how-to-manage-versions.md#clone-a-version)。 
 
 每个创建者对自己的应用版本进行更改。 创建者对模型感到满意后，将新版本导出到 JSON 文件中。  
 
@@ -146,7 +146,7 @@ LUIS 通过提供 Azure 资源级权限来使用应用参与者的概念。 将�
 
 ## <a name="review-endpoint-utterances-to-begin-the-new-iterative-cycle"></a>评审终结点言语以开始新的迭代周期
 
-完成一个迭代循环后，可以重复该过程。 首先查看以低置度标记[的 LUIS 预测终结点话语](luis-how-to-review-endpoint-utterances.md)。 检查这些言语中预测的意向是否正确，以及提取的实体是否正确且完整。 评审并接受更改后，评审列表应是空的。  
+完成一个迭代循环后，可以重复该过程。 开始[审阅预测终结点最谈话](luis-how-to-review-endpoint-utterances.md)LUIS 标记为低置信度。 检查这些言语中预测的意向是否正确，以及提取的实体是否正确且完整。 评审并接受更改后，评审列表应是空的。  
 
 ## <a name="next-steps"></a>后续步骤
 

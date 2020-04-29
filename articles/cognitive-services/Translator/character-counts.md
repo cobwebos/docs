@@ -1,7 +1,7 @@
 ---
 title: 字符计数 - 文本翻译 API
 titleSuffix: Azure Cognitive Services
-description: 本文介绍 Azure 认知服务翻译文本 API 如何计算字符，以便您可以了解它如何引入内容。
+description: 本文介绍 Azure 认知服务文本翻译 API 如何对字符进行计数，以便了解它如何引入内容。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
 ms.openlocfilehash: cb70b8624ac0d909511032622948f14f8764b153
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73888160"
 ---
 # <a name="how-the-translator-text-api-counts-characters"></a>文本翻译 API 如何计算字符数
@@ -26,14 +26,14 @@ ms.locfileid: "73888160"
 * 在请求正文中传递到文本翻译 API 的文本
    * `Text`（如果使用 Translate、Transliterate 和 Dictionary Lookup 方法）
    * `Text` 和 `Translation`（如果使用 Dictionary Examples 方法）
-* 所有标记：请求正文的文本字段中的 HTML、XML 标记等。 用于生成请求的 JSON 表示法（例如，“Text:”）不计入。
+* 所有标记：请求正文文本字段内的 HTML、XML 标记等。 用于生成请求的 JSON 表示法（例如，“Text:”）不计入。
 * 单个字母
 * 标点
 * 空格、制表符、标记和任何类型的空格字符
 * Unicode 中定义的每个码位
 * 重复的翻译（即使之前已翻译相同的文本）
 
-对于基于表意文字（例如中文汉字和日文汉字）的脚本，文本翻译 API 仍会对 Unicode 码位的数量计数，每个表意文字计为一个字符。 例外情况：Unicode 代理项计为两个字符。
+对于基于表意文字（例如中文汉字和日文汉字）的脚本，文本翻译 API 仍会对 Unicode 码位的数量计数，每个表意文字计为一个字符。 异常：Unicode 代理项计为两个字符。
 
 请求、单词、字节或句子的数量在字符计数中不相关。
 

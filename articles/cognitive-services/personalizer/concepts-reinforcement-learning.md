@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
 ms.openlocfilehash: 36071cdee25cfa99fc54b0e5c0c0aa822cb5fe2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68662836"
 ---
 # <a name="what-is-reinforcement-learning"></a>什么是强化学习？
@@ -64,7 +64,7 @@ John 还曾经编写了几篇教程来阐述联合预测 (ICML 2015)、上下文
 * [Making Contextual Decisions with Low Technical Debt](https://arxiv.org/abs/1606.03966)（做出上下文决策并降低技术债务）
 * [A Reductions Approach to Fair Classification](https://arxiv.org/abs/1803.02453)（公平分类的化简方法）
 * [Efficient Contextual Bandits in Non-stationary Worlds](https://arxiv.org/abs/1708.01799)（非固定世界中的有效上下文赌博机）
-* [剩余损失预测：强化：无增量反馈的学习](https://openreview.net/pdf?id=HJNMYceCW)
+* [残留损失预测：强化：无增量反馈的学习](https://openreview.net/pdf?id=HJNMYceCW)
 * [Mapping Instructions and Visual Observations to Actions with Reinforcement Learning](https://arxiv.org/abs/1704.08795)（使用强化学习将指令和可视观测结果映射到操作）
 * [Learning to Search Better Than Your Teacher](https://arxiv.org/abs/1502.02206)（学会如何比老师更好地进行搜索）
 

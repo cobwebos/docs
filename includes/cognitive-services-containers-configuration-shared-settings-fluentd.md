@@ -5,17 +5,17 @@ ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: b08516b35a864eae6d15c4c5c928f0550c64c239
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67712447"
 ---
 Fluentd 是一个用于统一日志记录的开放源代码数据收集器。 `Fluentd` 设置管理容器到 [Fluentd](https://www.fluentd.org) 服务器的连接。 容器包含一个 Fluentd 日志记录提供程序，使容器可以向 Fluentd 服务器写入日志和（可选）指标数据。
 
 下表描述了 `Fluentd` 节支持的配置设置。
 
-| “属性” | 数据类型 | 描述 |
+| 名称 | 数据类型 | 说明 |
 |------|-----------|-------------|
 | `Host` | String | Fluentd 服务器的 IP 地址或 DNS 主机名。 |
 | `Port` | Integer | Fluentd 服务器的端口。<br/> 默认值为 24224。 |

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: aahi
 ms.openlocfilehash: 72b00d78d19ed0e963b4dad01b82033c659e1efd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79219606"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>使用 Azure 命令行接口 (CLI) 创建认知服务资源
@@ -25,20 +25,20 @@ ms.locfileid: "79219606"
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* 有效的 Azure 订阅 - 免费[创建订阅](https://azure.microsoft.com/free/)。
+* 有效的 Azure 订阅-免费[创建一个](https://azure.microsoft.com/free/)。
 * [Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 
 ## <a name="install-the-azure-cli-and-sign-in"></a>安装 Azure CLI 并登录 
 
-安装[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 若要登录到本地安装的 CLI，请运行 [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) 命令：
+安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 若要登录到本地安装的 CLI，请运行 [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) 命令：
 
 ```azurecli-interactive
 az login
 ```
 
-也可以使用绿色的“尝试”按钮在浏览器中运行这些命令。****
+也可以使用绿色的“尝试”按钮在浏览器中运行这些命令。 
  
 ## <a name="create-a-new-azure-cognitive-services-resource-group"></a>创建新的 Azure 认知服务资源组
 
@@ -78,7 +78,7 @@ az group create \
 
 | 服务                    | 种类                      |
 |----------------------------|---------------------------|
-| 多个服务。 有关详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/cognitive-services/)页面。            | `CognitiveServices`     |
+| 多个服务。 有关更多详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/cognitive-services/)页。            | `CognitiveServices`     |
 
 
 > [!NOTE]
@@ -89,8 +89,8 @@ az group create \
 | 服务                    | 种类                      |
 |----------------------------|---------------------------|
 | 计算机视觉            | `ComputerVision`          |
-| 自定义视觉 - 预测 | `CustomVision.Prediction` |
-| 自定义视觉 - 培训   | `CustomVision.Training`   |
+| 自定义视觉-预测 | `CustomVision.Prediction` |
+| 自定义视觉-定型   | `CustomVision.Training`   |
 | 人脸                       | `Face`                    |
 | 表单识别器            | `FormRecognizer`          |
 | 墨迹识别器             | `InkRecognizer`           |
@@ -116,7 +116,7 @@ az group create \
 
 | 服务            | 种类                |
 |--------------------|---------------------|
-| 表单理解 | `FormUnderstanding` |
+| 窗体理解 | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
 | QnA Maker          | `QnAMaker`          |
 | 文本分析     | `TextAnalytics`     |

@@ -12,10 +12,10 @@ ms.date: 04/17/2019
 ms.author: kefre
 ms.custom: seodec18
 ms.openlocfilehash: e8ab205a43e5cb1e8e2b96dbd9600e1fceb29403
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68564597"
 ---
 # <a name="computer-vision-api-frequently-asked-questions"></a>计算机视觉 API 常见问题解答
@@ -25,7 +25,7 @@ ms.locfileid: "68564597"
 
 ---
 
-**问题**：*我能否训练计算机视觉 API 使用自定义标记？ 例如，我想在猫品种的图片中喂食以"训练"AI，然后在AI请求上接收品种价值。*
+**问**：*我是否能训练计算机视觉 API 使用自定义标记？ 例如，我想要将 cat 猫的图片送进 AI AI，然后接收 AI 请求上的知名值。*
 
 **答**：此功能暂不可用。 不过，我们的工程师正在努力将此功能引入计算机视觉。
 
