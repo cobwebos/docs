@@ -1,6 +1,6 @@
 ---
 title: Azure 云服务角色架构 | Microsoft Docs
-description: 服务配置文件的角色元素指定要为每个角色、配置值和证书指纹部署多少个角色实例。
+description: 服务配置文件的 Role 元素指定要为每个角色、配置值和证书指纹部署多少个角色实例。
 ms.custom: ''
 ms.date: 12/07/2016
 services: cloud-services
@@ -10,10 +10,10 @@ caps.latest.revision: 12
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: b64f9d27e382a39b132593502fed32c565af473a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79528415"
 ---
 # <a name="azure-cloud-services-config-role-schema"></a>Azure 云服务配置角色架构
@@ -22,7 +22,7 @@ ms.locfileid: "79528415"
 
 有关 Azure 服务配置架构的详细信息，请参阅[云服务（经典）配置架构](schema-cscfg-file.md)。 有关 Azure 服务定义架构的详细信息，请参阅[云服务（经典）定义架构](schema-csdef-file.md)。
 
-##  <a name="role-element"></a><a name="Role"></a>角色元素
+##  <a name="role-element"></a><a name="Role"></a>Role 元素
 下面的示例显示了 `Role` 元素及其子元素。
 
 ```xml 
@@ -41,14 +41,14 @@ ms.locfileid: "79528415"
 
 下表介绍了 `Role` 元素的属性。
 
-| 特性 | 描述 |
+| 特性 | 说明 |
 | --------- | ----------- |
 | name   | 必需。 指定角色的名称。 该名称必须与在服务定义文件中为角色提供的名称匹配。|
 | vmName | 可选。 指定虚拟机的 DNS 名称。 该名称不能超过 10 个字符。|
 
 下表介绍了 `Role` 元素的子元素。
 
-| 元素 | 描述 |
+| 元素 | 说明 |
 | ------- | ----------- |
 | 实例数 | 必需。 指定要为角色部署的实例数。 实例数是由用于 `count` 属性的整数定义的。|
 | 设置   | 可选。 在角色的设置集合中指定设置名称和值。 设置名称是由用于 `name` 属性的字符串定义的，设置值是由用于 `value` 属性的字符串定义的。|

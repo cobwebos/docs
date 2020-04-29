@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/17/2020
 ms.author: cherylmc
 ms.openlocfilehash: b78d32dbb7b4e0d9a3b13ff741e6e38c12be0e62
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79528500"
 ---
 # <a name="about-p2s-vpn-client-profiles"></a>关于 P2S VPN 客户端配置文件
@@ -20,7 +20,7 @@ ms.locfileid: "79528500"
 
 [!INCLUDE [client profiles](../../includes/vpn-gateway-vwan-vpn-profile-download.md)]
 
-* **OpenVPN 文件夹**包含需要修改以包括密钥和证书的 *ovpn* 配置文件。 有关详细信息，请参阅[为 Azure VPN 网关配置 OpenVPN 客户端](vpn-gateway-howto-openvpn-clients.md#windows)。 如果在 VPN 网关上选择了 Azure AD 身份验证，则 zip 文件中将不存在此文件夹。 相反，azurevpnconfig.xml 将位于 AzureVPN 文件夹中。
+* **OpenVPN 文件夹**包含需要修改以包括密钥和证书的 *ovpn* 配置文件。 有关详细信息，请参阅[为 Azure VPN 网关配置 OpenVPN 客户端](vpn-gateway-howto-openvpn-clients.md#windows)。 如果在 VPN 网关上选择了 Azure AD 身份验证，则此文件夹不会出现在 zip 文件中。 但是，azurevpnconfig.xml 将位于 AzureVPN 文件夹中。
 
 ## <a name="next-steps"></a>后续步骤
 
