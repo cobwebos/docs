@@ -12,36 +12,36 @@ ms.date: 11/04/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: a9a14056e6be62fc1c1b5e542c1a3acceb738eac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79220706"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>向知识库添加聊天内容
 
 向机器人中添加聊天内容可使其更健谈而有趣。 使用 QnA Maker 中的聊天功能，可以轻松地将预填充的一组最常用的聊天内容添加到知识库 (KB) 中。 这可以用作你的机器人的个性化内容的起点，并节省从头开始编写它们的时间和成本。  
 
-此数据集具有大约 100 种以多个角色的声音（如专业、友好和威蒂）的语音聊天场景。 选择与机器人的语音最接近的角色。 对于给定的用户查询，QnA Maker 会尝试将其与最接近的已知聊天内容 QnA 匹配。  
+此数据集具有大约100的 chit 方案-在多个角色（如专业、友好和 Witty）的语音中聊天。 选择与机器人的语音最接近的角色。 对于给定的用户查询，QnA Maker 会尝试将其与最接近的已知聊天内容 QnA 匹配。  
 
-下面列出了不同个性的一些例子。 您可以看到所有个性[数据集](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets)以及个性的详细信息。
+下面是一些不同个性的示例。 你可以看到所有的个性[数据集](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets)以及个性的详细信息。
 
-对于 的用户查询，`When is your birthday?`每个个性都有一个样式的响应：
+对于的用户查询`When is your birthday?`，每个用户都有一个有样式的响应：
 
 <!-- added quotes so acrolinx doesn't score these sentences -->
-|人格|示例|
+|个性化|示例|
 |--|--|
-|专业版|年龄并不真正适用于我。|
-|友好|我真的没有年龄。|
-|机智|我没有年龄。|
+|Professional|年龄并不真正适用于我。|
+|友好|我真的没有时间了。|
+|Witty|我是免费的。|
 |关心|我没有年龄。|
-|热情|我是个机器人，所以我没有年龄。|
+|热情|我是 bot，所以没有时间。|
 ||
 
 
 ## <a name="language-support"></a>语言支持
 
-Chit-chat 数据集支持以下语言：
+Chit-支持以下语言的聊天数据集：
 
 |语言|
 |--|
@@ -51,7 +51,7 @@ Chit-chat 数据集支持以下语言：
 |德国|
 |意大利语|
 |日语|
-|韩语|
+|朝鲜语|
 |葡萄牙语|
 |西班牙语|
 
@@ -69,12 +69,12 @@ Chit-chat 数据集支持以下语言：
 
 ![编辑聊天内容 QnA](../media/qnamaker-how-to-chit-chat/edit-chit-chat.png)
 
-要查看元数据，请在工具栏中选择 **"查看选项**"，然后选择 **"显示元数据**"。
+若要查看元数据，请在工具栏中选择 "**查看选项**"，然后选择 "**显示元数据**"。
 
 ## <a name="add-additional-chit-chat-questions-and-answers"></a>添加其他的聊天内容问题和解答
-可以添加新的不在预定义集中的聊天内容 QnA。 确保不复制聊天内容集中已涵盖的 QnA 对。 添加任何新的聊天内容 QnA 时，它会添加到“编辑”源。**** 为了确保记者了解这是 chit-chat，添加元数据键/值对"编辑：chitchat"，如下图所示：
+可以添加新的不在预定义集中的聊天内容 QnA。 确保不复制聊天内容集中已涵盖的 QnA 对。 添加任何新的聊天内容 QnA 时，它会添加到“编辑”源。**** 若要确保 ranker 了解这是 chit 聊天，请添加元数据键/值对 "社论： chitchat"，如下图所示：
    
-![![添加聊天问答](../媒体/qnamaker-如何聊天/添加新-聊天.png）](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
+![![Add chit-chat Qna](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png)](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
 
 ## <a name="delete-chit-chat-from-an-existing-kb"></a>从现有 KB 中删除聊天内容
 选择 KB，导航到“设置”页。**** 特定的聊天内容源作为文件列出，使用所选的个性名称。 可以将其作为源文件删除。

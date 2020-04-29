@@ -12,19 +12,19 @@ ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
 ms.openlocfilehash: 560575ca7f51218e472abecb4319f4a3db69b1ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79220464"
 ---
 # <a name="speech-service-supported-regions"></a>语音服务支持的区域
 
 通过语音服务，应用程序可将音频转换为文本、执行语音翻译以及将文本转换为语音。 多个区域中均提供该服务，这些区域为语音 SDK 和 REST API 使用唯一终结点。
 
-此处提供了"语音门户"，用于对所有区域的语音体验执行自定义配置：https://speech.microsoft.com
+此处提供了对所有区域的语音体验执行自定义配置的语音门户： https://speech.microsoft.com
 
-对于语音服务的调用，请确保呼叫与订阅的区域匹配。
+对于语音服务的调用，请确保调用与订阅的区域匹配。
 
 ## <a name="speech-sdk"></a>语音 SDK
 
@@ -32,13 +32,13 @@ ms.locfileid: "79220464"
 
 ### <a name="speech-to-text-text-to-speech-and-translation"></a>语音转文本、文本转语音和翻译
 
-语音自定义门户可在此处找到：https://speech.microsoft.com
+语音自定义门户在此处提供： https://speech.microsoft.com
 
-语音服务可在这些区域提供**语音识别**、**文本到语音**和**翻译**：
+可以在以下区域使用语音服务，以进行**语音识别**、**文本转语音**和**翻译**：
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
-如果使用[语音 SDK，](speech-sdk.md)区域由**区域标识符**指定（例如，作为 的`SpeechConfig.FromSubscription`参数。 确保区域与订阅区域匹配。
+如果使用[语音 SDK](speech-sdk.md)，则区域由**区域标识符**指定（例如，作为 `SpeechConfig.FromSubscription` 的参数）。 请确保该区域与订阅的区域匹配。
 
 ### <a name="intent-recognition"></a>意向识别
 
@@ -63,7 +63,7 @@ ms.locfileid: "79220464"
 
 ### <a name="voice-assistants"></a>语音助手
 
-[语音 SDK](speech-sdk.md)支持以下区域的**语音助理**功能：
+[语音 SDK](speech-sdk.md)支持以下区域中的**语音助手**功能：
 
 | 区域         | 区域标识符 |
 | -------------- | -------------------- |
@@ -89,7 +89,7 @@ REST API 的终结点具有以下格式：
 https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
 ```
 
-替换`<REGION_IDENTIFIER>`与匹配此表中订阅区域的标识符：
+将 `<REGION_IDENTIFIER>` 替换为与下表中的订阅区域匹配的标识符：
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 

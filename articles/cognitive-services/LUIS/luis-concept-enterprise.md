@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
 ms.openlocfilehash: efef3faf3cc4ff04235254f0ff6538d92a831196
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79221058"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>LUIS 应用的企业策略
@@ -39,7 +39,7 @@ LUIS 基于 Azure 资源的定价层，具有每月配额和每秒配额。
 
 将单个应用指定为主应用。 建议查看的任何陈述都应添加到主应用，然后移回所有其他应用。 这是应用的一次完整导出，或是将主应用中已标记的陈述加载到子级。 可从 [LUIS](luis-reference-regions.md) 网站或者[单个话语](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08)或[批量话语](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09)的创作 API 完成加载。 
 
-计划定期审核（如每两周一次）的[终结点话语](luis-how-to-review-endpoint-utterances.md)以进行主动学习，然后重新训练和重新发布。 
+计划定期检查（例如每两周），将[终结点最谈话](luis-how-to-review-endpoint-utterances.md)用于活动学习，然后重新训练并重新发布。 
 
 ### <a name="assign-multiple-luis-keys-to-same-app"></a>将多个 LUIS 密钥分配到相同的应用
 如果 LUIS 应用接收到的终结点命中数超过了单个密钥的配额，请创建更多密钥并将它们分配到该 LUIS 应用。 创建流量管理器或负载均衡器，管理这些终结点密钥间的终结点查询。 
@@ -69,7 +69,7 @@ LUIS 基于 Azure 资源的定价层，具有每月配额和每秒配额。
 ### <a name="intent-limits-in-dispatch-model"></a>调度模型中的意向限制
 一个调度应用程序最多可包含 500 个调度资源，相当于 500 个意向。 
 
-## <a name="more-information"></a>详细信息
+## <a name="more-information"></a>更多信息
 
 * [机器人框架 SDK](https://github.com/Microsoft/botframework)
 * [调度模型教程](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs)

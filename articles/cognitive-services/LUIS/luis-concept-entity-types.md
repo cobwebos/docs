@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: diberry
 ms.openlocfilehash: 6ee156efb5512c92d86ba05513b6a2b91df4eae8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79221025"
 ---
 # <a name="entities-and-their-purpose-in-luis"></a>实体及其在 LUIS 中的用途
 
-实体的主要用途是使客户端应用程序能够以可预测的方式提取数据。 一个可选的辅助用途是通过描述符促进意向或其他实体的预测。__
+实体的主要用途是使客户端应用程序能够以可预测的方式提取数据。 一个可选的辅助用途是通过描述符促进意向或其他实体的预测。 
 
 有两种类型的实体：
 
@@ -31,13 +31,13 @@ ms.locfileid: "79221025"
 
 ## <a name="entities-represent-data"></a>实体表示数据
 
-实体是要从言语中提取的数据，例如姓名、日期、产品名称或任何有意义的单词组。 话语可包括多个实体，也可不包含任何实体。 客户端应用程序可能需要数据来执行其任务。__
+实体是要从言语中提取的数据，例如姓名、日期、产品名称或任何有意义的单词组。 话语可包括多个实体，也可不包含任何实体。 客户端应用程序可能需要数据来执行其任务。 
 
 对于模型中的每个意向，需要在所有训练言语中一致性地标记实体。
 
  你可以定义自己的实体，也可以使用预生成实体来节省处理 [datetimeV2](luis-reference-prebuilt-datetimev2.md)、[序号](luis-reference-prebuilt-ordinal.md)、[电子邮件](luis-reference-prebuilt-email.md)和[电话号码](luis-reference-prebuilt-phonenumber.md)等为常见概念的时间。
 
-|话语|实体|数据|
+|话语|实体|data|
 |--|--|--|
 |购买 3 张到纽约的机票|预生成的数字<br>Location.Destination|3<br>纽约|
 |购买 3 月 5 日从纽约到伦敦的机票|Location.Origin<br>Location.Destination<br>预生成的 datetimeV2|纽约<br>London<br>2018 年 3 月 5 日|
@@ -52,7 +52,7 @@ ms.locfileid: "79221025"
 
 实体表示要提取的言语中的数据概念。
 
-言语可以选择性地包含实体。 相比之下，言语意向的预测是必需的，表示整个言语。__ LUIS 要求在意向中包含示例言语。
+言语可以选择性地包含实体。 相比之下，言语意向的预测是必需的，表示整个言语。  LUIS 要求在意向中包含示例言语。
 
 考虑以下4 段言语：
 
@@ -60,8 +60,8 @@ ms.locfileid: "79221025"
 |--|--|--|--|
 |帮助|help|-|没有要提取的内容。|
 |Send something|sendSomething|-|没有要提取的内容。 模型尚未训练，不会在此上下文中提取 `something`，并且没有任何接收方。|
-|Send Bob a present|sendSomething|`Bob`, `present`|已使用提取了名字 `Bob` 的 [personName](luis-reference-prebuilt-person.md) 预生成实体训练模型。 已使用机器学习实体提取 `present`。|
-|Send Bob a box of chocolates|sendSomething|`Bob`, `box of chocolates`|实体已提取两个重要数据片段 `Bob` 和 `box of chocolates`。|
+|Send Bob a present|sendSomething|`Bob`、`present`|已使用提取了名字 [ 的 ](luis-reference-prebuilt-person.md)personName`Bob` 预生成实体训练模型。 已使用机器学习实体提取 `present`。|
+|Send Bob a box of chocolates|sendSomething|`Bob`、`box of chocolates`|实体已提取两个重要数据片段 `Bob` 和 `box of chocolates`。|
 
 ## <a name="design-entities-for-decomposition"></a>设计分解实体
 
@@ -71,11 +71,11 @@ ms.locfileid: "79221025"
 
 ### <a name="machine-learned-entities-are-primary-data-collections"></a>机器学习实体是主要数据集合
 
-[**机器学习的实体**](tutorial-machine-learned-entity.md)是顶级数据单元。 子组件是机器学习实体的子实体。
+[**计算机学习的实体**](tutorial-machine-learned-entity.md)是顶级数据单元。 子组件是机器学习实体的子实体。
 
-机器学习实体根据通过训练言语习得的上下文触发。 **约束**是应用于机器学习实体的可选规则，这些规则根据 [List](reference-entity-list.md) 或 [Regex](reference-entity-regular-expression.md) 等非机器学习实体的精确文本匹配定义进一步约束触发。 例如，`size` 机器学习实体可以包含 `sizeList` 列表实体的约束，用于将 `sizeList` 实体约束为仅当遇到包含在 `size` 实体中的值时才触发。
+机器学习实体根据通过训练言语习得的上下文触发。 **约束**是应用于机器学习实体的可选规则，这些规则根据 [List](reference-entity-list.md) 或 [Regex](reference-entity-regular-expression.md) 等非机器学习实体的精确文本匹配定义进一步约束触发。 例如，`size` 机器学习实体可以包含 `sizeList` 列表实体的约束，用于将 `size` 实体约束为仅当遇到包含在 `sizeList` 实体中的值时才触发。
 
-[**描述符**](luis-concept-feature.md)是应用这些功能来提高预测词或短语的相关性。 它们称为*描述符，* 因为它们用于*描述*意图或实体。 描述符描述数据的特征或属性，例如 LUIS 观察和学习的重要单词或短语。
+[**描述符**](luis-concept-feature.md)是应用的功能，用于提高预测的单词或短语的相关性。 它们被称为*描述符*，因为它们用于*描述*意向或实体。 描述符描述了数据的特征或特性，例如 LUIS 观察和学习的重要字词或短语。
 
 在 LUIS 应用中创建短语列表特征时，默认会全局启用该特征，并均匀地在所有意向和实体之间应用该特征。 但是，如果将短语列表作为机器学习实体（或模型）的描述符（特征）应用，则其应用范围将缩减为仅限该模型，而不再用于其他所有模型。** 使用短语列表作为模型的描述符有助于分解，因为这对它应用到的模型的准确度有帮助。
 
@@ -92,11 +92,11 @@ ms.locfileid: "79221025"
 
 |实体类型|目的|
 |--|--|
-|[**机器学习**](tutorial-machine-learned-entity.md)|机器学习实体从话语的上下文学习。 实体的父分组，不考虑实体类型。 这使得示例话语中的位置差异变得显著。 |
-|[**列表**](reference-entity-list.md)|项目列表及其同义词提取与**确切的文本匹配**。|
-|[**模式.任何**](reference-entity-pattern-any.md)|难以确定末尾部分的实体。 |
+|[**计算机学习**](tutorial-machine-learned-entity.md)|机器学习实体从话语的上下文学习。 实体的父分组，不考虑实体类型。 这使得示例话语中的位置差异变得显著。 |
+|[**列出**](reference-entity-list.md)|用**精确文本匹配**提取的项及其同义词的列表。|
+|[**Pattern。 any**](reference-entity-pattern-any.md)|难以确定末尾部分的实体。 |
 |[**预生成**](luis-reference-prebuilt-entities.md)|已经过训练，可以提取特定类型的数据，例如 URL 或电子邮件。 其中一些预生成实体是在开源[识别器 - 文本](https://github.com/Microsoft/Recognizers-Text)项目中定义的。 如果你的特定区域性或实体当前不受支持，请通过为项目做贡献来获得支持。|
-|[**正则表达式**](reference-entity-regular-expression.md)|使用正则表达式进行**精确文本匹配**。|
+|[**Regular Expression**](reference-entity-regular-expression.md)|使用正则表达式进行**精确文本匹配**。|
 
 ## <a name="extracting-contextually-related-data"></a>提取上下文相关的数据
 
@@ -115,7 +115,7 @@ ms.locfileid: "79221025"
 
 ### <a name="using-subcomponent-entities-of-a-machine-learned-entity-to-define-context"></a>使用机器学习实体的子组件实体来定义上下文
 
-您可以使用[**机器学习的实体**](tutorial-machine-learned-entity.md)提取描述预订航班操作的数据，然后将顶级实体分解为客户端应用程序所需的单独部分。
+您可以使用[**机器学习的实体**](tutorial-machine-learned-entity.md)提取描述预订航班操作的数据，然后将顶级实体分解为客户端应用程序所需的单独部件。
 
 在此示例中，顶级实体 `Book a flight from Seattle to Cairo` 可以是 `travelAction`，标记为提取 `flight from Seattle to Cairo`。 然后，创建名为 `origin` 和 `destination` 的两个子组件实体，两者已应用 `geographyV2` 预生成实体的约束。 在训练言语中，相应地对 `origin` 和 `destination` 进行标记。
 
@@ -140,5 +140,5 @@ ms.locfileid: "79221025"
 
 请参阅[添加实体](luis-how-to-add-entities.md)，详细了解如何将实体添加到 LUIS 应用。
 
-请参阅[教程：在语言理解 （LUIS） 中使用机器学习实体从用户陈述中提取结构化数据，](tutorial-machine-learned-entity.md)了解如何使用机器学习实体从陈述中提取结构化数据。
+请参阅[教程：从用户查询文本中提取结构化数据和语言理解（LUIS）中的机器学习的实体](tutorial-machine-learned-entity.md)，了解如何使用机器学习的实体从查询文本提取结构化数据。
  

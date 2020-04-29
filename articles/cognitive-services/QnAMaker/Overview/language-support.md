@@ -11,19 +11,19 @@ ms.topic: reference
 ms.date: 09/24/2019
 ms.author: diberry
 ms.openlocfilehash: 96440bf0e9c26e6f222f3bc94c8fabb0bc8f488d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79220552"
 ---
-# <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>QnA 制造商资源和知识库的语言支持
+# <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>QnA Maker 资源和知识库的语言支持
 
-在创建资源中的第一个知识库时，将选择服务的语言。 资源中的所有附加知识库必须使用同一语言。 
+在资源中创建第一个知识库时，将选择服务语言。 资源中的所有其他知识库必须采用相同的语言。 
 
-语言确定 QnA Maker 为响应用户查询而提供的结果的相关性。
+该语言确定 QnA Maker 提供的结果与用户查询的相关关系。
 
-详细了解[语言选择的影响](../how-to/language-knowledge-base.md)。
+了解有关[语言选择的影响的](../how-to/language-knowledge-base.md)详细信息。
 
 ## <a name="languages-supported"></a>支持的语言
 
