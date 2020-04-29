@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/13/2020
 tags: connectors
 ms.openlocfilehash: d7fafdd5830ec2825771d4d611a5f4bd5d87260a
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393633"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>使用 SSH 和 Azure 逻辑应用监视、创建和管理 SFTP 文件
@@ -31,16 +31,16 @@ ms.locfileid: "81393633"
 
 ## <a name="limits"></a>限制
 
-* 支持[分块](../logic-apps/logic-apps-handle-large-messages.md)的 SFTP-SSH 操作可以处理最多 1 GB 的文件，而不支持分块的 SFTP-SSH 操作可以处理高达 50 MB 的文件。 尽管默认块大小为 15 MB，但根据网络延迟、服务器响应时间等因素，此大小可以动态更改，从 5 MB 开始，逐渐增加到 50 MB 最大值。
+* 支持[分块](../logic-apps/logic-apps-handle-large-messages.md)的 SFTP-SSH 操作最多可以处理 1 GB 的文件，而不支持分块的 SFTP-SSH 操作最多可以处理 50 MB 的文件。 尽管默认的区块大小为 15 MB，但此大小可以根据网络延迟、服务器响应时间等因素动态变化，从 5 MB 开始逐渐增加到最大值 50 MB。
 
   > [!NOTE]
-  > 对于[集成服务环境 （ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ISE 标记版本使用[ISE 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
+  > 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ise 标记版本会改用[ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
-  当您[指定要使用的常量块大小时，](#change-chunk-size)可以重写此自适应行为。 此大小的范围可以从 5 MB 到 50 MB。 例如，假设您有一个 45 MB 的文件和网络，可以支持该文件大小，而不会延迟。 自适应分块会导致多个调用，而不是一个调用。 要减少调用数，可以尝试设置 50 MB 区块大小。 在不同的方案中，如果逻辑应用超时，例如，当使用 15 MB 块时，可以尝试将大小减小到 5 MB。
+  当你指定要改用[的常量块大小](#change-chunk-size)时，可以重写此自适应行为。 此大小的范围为 5 MB 到 50 MB。 例如，假设您有一个 45 MB 的文件和一个可以支持该文件的大小不受延迟的网络。 自适应块会导致多次调用，而不是调用。 若要减少调用次数，可以尝试设置 50 MB 的区块大小。 在不同的情况下，如果逻辑应用超时（例如，使用 15 MB 的区块），可以尝试将大小减小到 5 MB。
 
-  块大小与连接相关联，这意味着您可以将同一连接用于支持分块的操作，然后对不支持分块的操作使用相同的连接。 在这种情况下，不支持分块操作的区块大小范围从 5 MB 到 50 MB。 下表显示了哪些 SFTP-SSH 操作支持分块：
+  块区大小与连接相关联，这意味着，可以对支持分块的操作使用相同的连接，并对不支持分块的操作使用同一个连接。 在这种情况下，不支持分块的操作的区块大小范围从 5 MB 到 50 MB。 下表显示了哪些 SFTP SSH 操作支持分块：
 
-  | 操作 | 块状支持 | 覆盖块大小支持 |
+  | 操作 | 分块支持 | 覆盖区块大小支持 |
   |--------|------------------|-----------------------------|
   | **复制文件** | 否 | 不适用 |
   | **创建文件** | 是 | 是 |
@@ -56,9 +56,9 @@ ms.locfileid: "81393633"
   | **更新文件** | 否 | 不适用 |
   ||||
 
-* SFTP-SSH 触发器不支持消息分块。 请求文件内容时，触发器仅选择 15 MB 或更小的文件。 若要获取大于 15 MB 的文件，请改为遵循以下模式：
+* SFTP SSH 触发器不支持消息块。 请求文件内容时，触发器仅选择 15 MB 或更小的文件。 若要获取大于 15 MB 的文件，请改为遵循以下模式：
 
-  1. 使用仅返回文件属性的 SFTP-SSH 触发器，例如**添加或修改文件时（仅限属性）。**
+  1. 使用仅返回文件属性的 SFTP SSH 触发器，如**添加或修改文件时（仅属性）**。
 
   1. 跟随触发器执行 SFTP-SSH 的“获取文件内容”**** 操作，该操作读取完整文件并隐式使用消息分块。
 
@@ -68,7 +68,7 @@ ms.locfileid: "81393633"
 
 下面是 SFTP-SSH 连接器与 SFTP 连接器（SFTP-SSH 连接器具有其功能）之间的其他重要差异：
 
-* 使用[SSH.NET库](https://github.com/sshnet/SSH.NET)，它是支持 .NET 的开源安全外壳 （SSH） 库。
+* 使用[SSH.NET 库](https://github.com/sshnet/SSH.NET)，它是支持 .net 的开源安全外壳（SSH）库。
 
 * 提供****“创建文件夹”操作，用于在 SFTP 服务器上的指定路径中创建文件夹。
 
@@ -80,13 +80,13 @@ ms.locfileid: "81393633"
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* SFTP 服务器地址和帐户凭据，可让逻辑应用访问 SFTP 帐户。 还需要有权访问 SSH 私钥和 SSH 私钥密码。 要在上载大型文件时使用分块，需要在 SFTP 服务器上的根文件夹同时使用读取和写入权限。 否则，您会收到"401 未授权"错误。
+* SFTP 服务器地址和帐户凭据，可让逻辑应用访问 SFTP 帐户。 还需要有权访问 SSH 私钥和 SSH 私钥密码。 若要在上载大型文件时使用分块，你需要对 SFTP 服务器上的根文件夹具有读取和写入权限。 否则，会收到 "401 未授权" 错误。
 
   > [!IMPORTANT]
   >
   > SFTP-SSH 连接器仅支持以下私钥、格式、算法和指纹：**
   >
-  > * **私钥格式**： RSA （Rivest Shamir Adleman） 和 DSA （数字签名算法） 键在 OpenSSH 和ssh.com格式。 如果私钥为 PuTTY (.ppk) 文件格式，请先[将密钥转换为 OpenSSH (.pem) 文件格式](#convert-to-openssh)。
+  > * **私钥格式**： RSA （Rivest rivest-shamir-adleman rivest-shamir-adleman）和 DSA （数字签名算法）密钥，采用 OpenSSH 和 ssh.com 格式。 如果私钥为 PuTTY (.ppk) 文件格式，请先[将密钥转换为 OpenSSH (.pem) 文件格式](#convert-to-openssh)。
   >
   > * **加密算法**：DES-EDE3-CBC、DES-EDE3-CFB、DES-CBC、AES-128-CBC、AES-192-CBC 和 AES-256-CBC
   >
@@ -95,7 +95,7 @@ ms.locfileid: "81393633"
   > 在向逻辑应用添加所需的 SFTP-SSH 触发器或操作之后，必须提供 SFTP 服务器的连接信息。 为此连接提供 SSH 密钥时，***请勿手动输入或编辑密钥***，否则可能导致连接失败。 请确保从 SSH 私钥文件中复制密钥，并将该密钥粘贴到连接详细信息中。************ 
   > 有关详细信息，请参阅本文后面的[使用 SSH 连接到 SFTP](#connect) 部分。
 
-* [有关如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
+* 有关[如何创建逻辑应用的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知识
 
 * 要在其中访问 SFTP 帐户的逻辑应用。 若要从 SFTP-SSH 触发器开始，请[创建一个空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 SFTP-SSH 操作，请使用另一个触发器（例如“重复”触发器）启动逻辑应用。****
 
@@ -105,8 +105,8 @@ SFTP-SSH 触发器的工作原理是轮询 SFTP 文件系统并查找自上次�
 
 | SFTP 客户端 | 操作 |
 |-------------|--------|
-| Winscp | 转到**选项** > **首选项** > **传输** > **Edit** > **Disable**编辑**保留时间戳**禁用 >  |
-| FileZilla | 转到**传输** > **保留已传输文件** > 的时间戳**禁用** |
+| Winscp | 转到**选项** > **首选项** > **传输** > **编辑** > **保留时间戳** > **禁用** |
+| FileZilla | 转到**传输** >  > **保留传输的文件的时间戳****禁用** |
 |||
 
 当触发器找到新文件时，会检查该新文件是否完整，以及是否未部分写入。 例如，当触发器检查文件服务器时，可能正在更改某个文件。 为了避免返回部分写入的文件，该触发器会记录具有最近更改的文件的时间戳，但不会立即返回该文件。 仅当再次轮询服务器时，触发器才会返回该文件。 有时，此行为可能会导致延迟，长达触发器轮询间隔的两倍。
@@ -149,13 +149,13 @@ SFTP-SSH 触发器的工作原理是轮询 SFTP 文件系统并查找自上次�
 
 ## <a name="considerations"></a>注意事项
 
-本节介绍查看此连接器触发器和操作的注意事项。
+本部分介绍了查看此连接器的触发器和操作的注意事项。
 
 <a name="create-file"></a>
 
 ### <a name="create-file"></a>创建文件
 
-要在 SFTP 服务器上创建文件，可以使用 SFTP-SSH**创建文件**操作。 此操作创建文件时，逻辑应用服务还会自动调用 SFTP 服务器来获取文件的元数据。 但是，如果在逻辑应用服务可以调用获取元数据之前移动新创建的文件，则会收到一`404`条错误消息。 `'A reference was made to a file or folder which does not exist'` 要跳过文件创建后读取文件的元数据，请按照步骤[添加并设置 **"获取所有文件元数据**属性 **"为"否**](#file-does-not-exist)"。
+若要在 SFTP 服务器上创建文件，可以使用 SFTP SSH**创建文件**操作。 此操作创建文件时，逻辑应用服务还会自动调用 SFTP 服务器以获取文件的元数据。 但是，如果在逻辑应用服务可以调用以获取元数据之前移动新创建的文件，则会收到`404`错误消息。 `'A reference was made to a file or folder which does not exist'` 若要在创建文件后跳过读取文件的元数据，请执行[添加和将 "**获取所有文件元数据**" 属性设置为 "**否**](#file-does-not-exist)" 的步骤。
 
 <a name="connect"></a>
 
@@ -165,13 +165,13 @@ SFTP-SSH 触发器的工作原理是轮询 SFTP 文件系统并查找自上次�
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
 
-1. 对于空白逻辑应用，在搜索框中，输入`sftp ssh`作为筛选器。 在触发器列表下，选择所需的触发器。
+1. 对于空白逻辑应用，请在 "搜索" 框`sftp ssh`中输入作为筛选器。 在触发器列表下，选择所需的触发器。
 
-   -或-
+   \- 或 -
 
-   对于现有逻辑应用，在要添加操作的最后一步下，选择 **"新建步骤**"。 在搜索框中，输入 `sftp ssh` 作为筛选器。 在操作列表下，选择所需的操作。
+   对于现有的逻辑应用，在要添加操作的最后一个步骤下，选择 "**新建步骤**"。 在搜索框中，输入 `sftp ssh` 作为筛选器。 在操作列表下，选择所需的操作。
 
-   若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 选择显示的加号**+**（），然后选择 **"添加操作**"。
+   若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 选择出现的加号（**+**），然后选择 "**添加操作**"。
 
 1. 为连接提供所需的详细信息。
 
@@ -185,27 +185,27 @@ SFTP-SSH 触发器的工作原理是轮询 SFTP 文件系统并查找自上次�
 
    1. 在记事本的“编辑”菜单中，选择“全选”。********
 
-   1. 选择**编辑** > **副本**。
+   1. 选择 "**编辑** > **副本**"。
 
    1. 在添加的 SFTP-SSH 触发器或操作中，粘贴已复制到“SSH 私钥”属性中的完整密钥，支持换行。******  请务必粘贴该密钥，****** 而不要手动输入或编辑密钥。******
 
-1. 输入连接详细信息后，选择 **"创建**"。
+1. 输入完连接详细信息后，选择 "**创建**"。
 
 1. 现在，为所选触发器或操作提供所需的详细信息，然后继续生成逻辑应用的工作流。
 
 <a name="change-chunk-size"></a>
 
-## <a name="override-chunk-size"></a>覆盖块大小
+## <a name="override-chunk-size"></a>覆盖区块大小
 
-要覆盖分块使用的默认自适应行为，可以指定从 5 MB 到 50 MB 的常量块大小。
+若要覆盖分块使用的默认自适应行为，可以指定从 5 MB 到 50 MB 的固定块区大小。
 
-1. 在操作的右上角，选择椭圆按钮 **（...），** 然后选择 **"设置**"。
+1. 在操作的右上角，选择省略号按钮（**...**），然后选择 "**设置**"。
 
-   ![打开 SFTP-SSH 设置](./media/connectors-sftp-ssh/sftp-ssh-connector-setttings.png)
+   ![打开 SFTP SSH 设置](./media/connectors-sftp-ssh/sftp-ssh-connector-setttings.png)
 
-1. 在 **"内容传输**"下，在 **"块大小**"属性中，输入`5`从`50`到 的整数值，例如： 
+1. 在 "**内容传输**" 下的 "**区块大小**" 属性中，输入`5`一个`50`从到的整数值，例如： 
 
-   ![指定要改用的区块大小](./media/connectors-sftp-ssh/specify-chunk-size-override-default.png)
+   ![指定要改用的块区大小](./media/connectors-sftp-ssh/specify-chunk-size-override-default.png)
 
 1. 完成后，选择“完成”  。
 
@@ -221,34 +221,34 @@ SFTP-SSH 触发器的工作原理是轮询 SFTP 文件系统并查找自上次�
 
 <a name="get-content"></a>
 
-### <a name="sftp---ssh-action-get-file-content-using-path"></a>SFTP - SSH 操作：使用路径获取文件内容
+### <a name="sftp---ssh-action-get-file-content-using-path"></a>SFTP-SSH 操作：使用路径获取文件内容
 
-此操作通过指定文件路径从 SFTP 服务器上的文件获取内容。 例如，可以在前面的示例中添加触发器，并添加文件内容必须符合的条件。 如果条件为 true，则可以运行获取内容的操作。
+此操作通过指定文件路径从 SFTP 服务器上的文件中获取内容。 例如，可以在前面的示例中添加触发器，并添加文件内容必须符合的条件。 如果条件为 true，则可以运行获取内容的操作。
 
 <a name="troubleshooting-errors"></a>
 
 ## <a name="troubleshoot-errors"></a>排查错误
 
-本节介绍常见错误或问题的可能解决方案。
+本部分介绍常见错误或问题的可能解决方法。
 
 <a name="file-does-not-exist"></a>
 
-### <a name="404-error-a-reference-was-made-to-a-file-or-folder-which-does-not-exist"></a>404 错误："对不存在的文件或文件夹进行了引用"
+### <a name="404-error-a-reference-was-made-to-a-file-or-folder-which-does-not-exist"></a>404错误： "引用了不存在的文件或文件夹"
 
-当逻辑应用通过 SFTP-SSH**创建文件**操作在 SFTP 服务器上创建新文件时，可能会发生此错误，但随后在逻辑应用服务获取文件的元数据之前立即移动新创建的文件。 当逻辑应用运行 **"创建文件操作"** 时，逻辑应用服务也会自动调用 SFTP 服务器来获取文件的元数据。 但是，如果文件被移动，逻辑应用服务无法再找到该文件，`404`因此您会收到错误消息。
+如果逻辑应用通过 SFTP SSH 的 "**创建文件**" 操作在 sftp 服务器上创建一个新文件，则会发生此错误，但新创建的文件随后会立即移动，然后逻辑应用服务才能获取该文件的元数据。 逻辑应用运行 "**创建文件**" 操作时，逻辑应用服务还会自动调用 SFTP 服务器以获取文件的元数据。 但是，如果移动了该文件，则逻辑应用服务无法再找到该文件，因此你会收到`404`错误消息。
 
-如果无法避免或延迟移动文件，则可以在文件创建后跳过读取文件的元数据，而是按照以下步骤操作：
+如果无法避免或延迟移动文件，则可以在创建文件后跳过读取文件的元数据，方法是执行以下步骤：
 
-1. 在 **"创建文件**"操作中，**打开"添加新参数**列表"，选择 **"获取所有文件元数据**属性"，并将该值设置为 **"否**"。
+1. 在 "**创建文件**" 操作中，打开 "**添加新参数**" 列表，选择 "**获取所有文件元数据**" 属性，并将值设置为 "**否**"。
 
-1. 如果以后需要此文件元数据，可以使用**Get 文件元数据**操作。
+1. 如果以后需要此文件元数据，可以使用**获取文件元数据**操作。
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关此连接器的更多技术详细信息，例如连接器的 Swagger 文件所述的触发器、操作和限制，请参阅[连接器的参考页](https://docs.microsoft.com/connectors/sftpwithssh/)。
+有关此连接器的更多技术详细信息，如连接器的 Swagger 文件所述的触发器、操作和限制，请参阅[连接器的参考页](https://docs.microsoft.com/connectors/sftpwithssh/)。
 
 > [!NOTE]
-> 对于[集成服务环境 （ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ISE 标记版本使用[ISE 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
+> 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ise 标记版本会改用[ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -2,7 +2,7 @@
 title: 文本转语音文档
 summary: 语音服务中的文本转语音可让应用程序、工具或设备将文本转换为类似于人类的合成语音。
 metadata:
-  title: 文本到语音文档 - 教程，API 参考 - Azure 认知服务 |微软文档
+  title: 文本转语音文档 - 教程和 API 参考 - Azure 认知服务 | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -12,13 +12,13 @@ metadata:
   ms.date: 03/10/2020
   ms.author: trbye
   ms.openlocfilehash: 83bf5f9e623d1d777834e5efdd26fa4cdbc42819
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: MT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/16/2020
+  ms.lasthandoff: 04/29/2020
   ms.locfileid: "81401456"
 landingContent:
-- title: 关于文本到语音
+- title: 关于文本转语音
   linkLists:
   - linkListType: overview
     links:
@@ -34,7 +34,7 @@ landingContent:
       url: quickstarts/text-to-speech-audio-file.md
     - text: 将语音合成为长格式音频
       url: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
-- title: 使用文本到语音进行开发
+- title: 使用文本转语音进行开发
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -62,5 +62,5 @@ landingContent:
       url: language-support.md#neural-voices
     - text: SSML 语音集
       url: speech-ssml-phonetic-sets.md
-    - text: 文本到语音转换定价
+    - text: 文本转语音定价
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services

@@ -6,10 +6,10 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
 ms.openlocfilehash: 7a3d2234a140d1fb2eede50e3fe2eef5575da648
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81391694"
 ---
 # <a name="view-definition-artifact-in-azure-managed-applications"></a>查看 Azure 托管应用程序中的定义项目
@@ -24,7 +24,7 @@ ms.locfileid: "81391694"
 
 ## <a name="view-definition-schema"></a>视图定义架构
 
-**viewDefinition.json** 文件只有一个顶级 `views` 属性（视图数组）。 每个视图作为目录中的独立菜单项显示在托管应用程序用户界面中。 每个视图有一个用于设置视图类型的 `kind` 属性。 它必须设置为以下值之一：[概述](#overview)、[指标](#metrics)、[自定义资源](#custom-resources)、[关联](#associations)。 有关详细信息，请参阅最新的 [viewDefinition.json 的 JSON 架构](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)。
+**viewDefinition.json** 文件只有一个顶级 `views` 属性（视图数组）。 每个视图作为目录中的独立菜单项显示在托管应用程序用户界面中。 每个视图有一个用于设置视图类型的 `kind` 属性。 该属性必须设置为以下值之一：[Overview](#overview)、[Metrics](#metrics)、[CustomResources](#custom-resources)、[Associations](#associations)。 有关详细信息，请参阅最新的 [viewDefinition.json 的 JSON 架构](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)。
 
 视图定义的示例 JSON：
 
@@ -125,7 +125,7 @@ ms.locfileid: "81391694"
 }
 ```
 
-|properties|必选|说明|
+|属性|必须|说明|
 |---------|---------|---------|
 |标头的值开始缓存响应|否|概述页的标题。|
 |description|否|托管应用程序的说明。|
@@ -164,7 +164,7 @@ ms.locfileid: "81391694"
 }
 ```
 
-|properties|必选|说明|
+|属性|必须|说明|
 |---------|---------|---------|
 |displayName|否|视图的显示标题。|
 |版本|否|用于呈现视图的平台版本。|
@@ -172,7 +172,7 @@ ms.locfileid: "81391694"
 
 ### <a name="chart"></a>图表
 
-|properties|必选|说明|
+|属性|必须|说明|
 |---------|---------|---------|
 |displayName|是|图表的显示标题。|
 |chartType|否|用于此图表的可视化效果。 默认使用折线图。 支持的图表类型：`Bar, Line, Area, Scatter`。|
@@ -180,11 +180,11 @@ ms.locfileid: "81391694"
 
 ### <a name="metric"></a>指标
 
-|properties|必选|说明|
+|属性|必须|说明|
 |---------|---------|---------|
 |name|是|指标的名称。|
 |aggregationType|是|用于此指标的聚合类型。 支持的聚合类型：`none, sum, min, max, avg, unique, percentile, count`|
-|namespace|否|确定正确的指标提供程序时要使用的其他信息。|
+|命名空间|否|确定正确的指标提供程序时要使用的其他信息。|
 |resourceTagFilter|否|要显示其指标的资源标记数组（使用单词 `or` 分隔）。 在资源类型筛选器的顶部应用。|
 |resourceType|是|要显示其指标的资源类型。|
 
@@ -224,13 +224,13 @@ ms.locfileid: "81391694"
 }
 ```
 
-|properties|必选|说明|
+|属性|必须|说明|
 |---------|---------|---------|
 |displayName|是|视图的显示标题。 标题对于 **viewDefinition.json** 中的每个 CustomResources 视图应该**唯一**。|
 |版本|否|用于呈现视图的平台版本。|
 |resourceType|是|自定义资源类型。 必须是自定义提供程序的**唯一**自定义资源类型。|
 |icon|否|视图的图标。 示例图标列表在 [JSON 架构](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)中定义。|
-|createUIDefinition|否|为“创建自定义资源”命令创建 UI 定义架构。 有关创建 UI 定义的简介，请参阅[开始创建 Ui 定义](create-uidefinition-overview.md)|
+|createUIDefinition|否|为“创建自定义资源”命令创建 UI 定义架构。 有关创建 UI 定义的简介，请参阅 [CreateUiDefinition 入门](create-uidefinition-overview.md)|
 |命令|否|CustomResources 视图的其他工具栏按钮数组，请参阅[命令](#commands)。|
 |列|否|自定义资源的列数组。 如果未定义，则默认会显示 `name` 列。 该列必须具有 `"key"` 和 `"displayName"`。 对于键，请提供要在视图中显示的属性的键。 如果嵌套键，请使用句点作为分隔符，例如 `"key": "name"` 或 `"key": "properties.property1"`。 对于显示名称，请提供要在视图中显示的属性的显示名称。 还可以提供 `"optional"` 属性。 设置为 true 时，该列默认会在视图中隐藏。|
 
@@ -253,7 +253,7 @@ ms.locfileid: "81391694"
 }
 ```
 
-|properties|必选|说明|
+|属性|必须|说明|
 |---------|---------|---------|
 |displayName|是|命令按钮的显示名称。|
 |path|是|自定义提供程序操作名称。 该操作必须在 **mainTemplate.json** 中定义。|
@@ -280,12 +280,12 @@ ms.locfileid: "81391694"
 }
 ```
 
-|properties|必选|说明|
+|属性|必须|说明|
 |---------|---------|---------|
 |displayName|是|视图的显示标题。 标题对于 **viewDefinition.json** 中的每个 Associations 视图应该**唯一**。|
 |版本|否|用于呈现视图的平台版本。|
 |targetResourceType|是|目标资源类型。 这是要为资源加入显示的资源类型。|
-|createUIDefinition|否|为“创建关联资源”命令创建 UI 定义架构。 有关创建 UI 定义的简介，请参阅[开始创建 Ui 定义](create-uidefinition-overview.md)|
+|createUIDefinition|否|为“创建关联资源”命令创建 UI 定义架构。 有关创建 UI 定义的简介，请参阅 [CreateUiDefinition 入门](create-uidefinition-overview.md)|
 
 ## <a name="looking-for-help"></a>寻求帮助
 
@@ -295,4 +295,4 @@ ms.locfileid: "81391694"
 
 - 有关托管应用程序的简介，请参阅 [Azure 托管应用程序概述](overview.md)。
 - 有关自定义提供程序的简介，请参阅 [Azure 自定义提供程序概述](../custom-providers/overview.md)。
-- 有关使用 Azure 自定义提供程序创建 Azure 托管应用程序，请参阅[教程：使用自定义提供程序操作和资源类型创建托管应用程序](tutorial-create-managed-app-with-custom-provider.md)
+- 有关使用 Azure 自定义提供程序创建 Azure 托管应用程序的详细说明，请参阅[教程：使用自定义提供程序操作和资源类型创建托管应用程序](tutorial-create-managed-app-with-custom-provider.md)

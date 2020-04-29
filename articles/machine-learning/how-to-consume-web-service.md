@@ -1,7 +1,7 @@
 ---
 title: 为部署为 Web 服务的模型创建客户端
 titleSuffix: Azure Machine Learning
-description: 了解如何调用从 Azure 机器学习部署模型时生成的 Web 服务终结点。 终结点公开 REST API，您可以调用该 API 以使用模型执行推理。 使用所选的编程语言为此 API 创建客户端。
+description: 了解如何调用从 Azure 机器学习部署模型时生成的 web 服务终结点。 终结点公开了一个 REST API，你可以调用它来通过模型执行推理。 使用所选的编程语言为此 API 创建客户端。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,18 +12,18 @@ ms.reviewer: larryfr
 ms.date: 04/14/2020
 ms.custom: seodec18
 ms.openlocfilehash: 0222b63323c4e546628d790fabb881eba006494e
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81383397"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署为 Web 服务的 Azure 机器学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-将 Azure 机器学习模型部署为 Web 服务将创建 REST API 终结点。 您可以将数据发送到此终结点，并接收模型返回的预测。 本文档介绍了如何使用 C#、Go、Java 和 Python 为 Web 服务创建客户端。
+将 Azure 机器学习模型部署为 web 服务将创建一个 REST API 终结点。 您可以将数据发送到此终结点，并接收模型返回的预测。 本文档介绍了如何使用 C#、Go、Java 和 Python 为 Web 服务创建客户端。
 
-将模型部署到本地环境、Azure 容器实例、Azure 库伯奈斯服务或现场可编程门阵列 （FPGA） 时，可以创建 Web 服务。 使用[Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)检索用于访问 Web 服务的 URI。 如果启用了身份验证，则还可以使用该 SDK 来获取身份验证密钥或令牌。
+在将模型部署到本地环境、Azure 容器实例、Azure Kubernetes 服务或现场可编程入口阵列（FPGA）时，可以创建 web 服务。 使用[AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)检索用于访问 web 服务的 URI。 如果启用了身份验证，则还可以使用该 SDK 来获取身份验证密钥或令牌。
 
 用于创建使用机器学习 Web 服务的客户端的常规工作流为：
 
@@ -73,14 +73,14 @@ ms.locfileid: "81383397"
     print(service.swagger_uri)
     ```
 
-### <a name="secured-web-service"></a>安全 Web 服务
+### <a name="secured-web-service"></a>受保护的 web 服务
 
-如果使用 TLS/SSL 证书保护已部署的 Web 服务，则可以使用[HTTPS](https://en.wikipedia.org/wiki/HTTPS)使用评分或挥霍 URI 连接到服务。 HTTPS 对客户端和 Web 服务之间的通信进行加密来帮助保护两者之间的通信。 加密使用[传输层安全性 (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security)。 TLS 有时仍称为安全套接字层 (SSL)，这是 TLS 的前身**。
+如果使用 TLS/SSL 证书保护已部署的 web 服务，则可以使用[HTTPS](https://en.wikipedia.org/wiki/HTTPS)或 swagger URI 连接到服务。 HTTPS 对客户端和 Web 服务之间的通信进行加密来帮助保护两者之间的通信。 加密使用[传输层安全性 (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security)。 TLS 有时仍称为安全套接字层 (SSL)，这是 TLS 的前身**。
 
 > [!IMPORTANT]
-> Azure 机器学习部署的 Web 服务仅支持 TLS 版本 1.2。 创建客户端应用程序时，请确保它支持此版本。
+> Azure 机器学习部署的 Web services 仅支持 TLS 版本1.2。 创建客户端应用程序时，请确保它支持此版本。
 
-有关详细信息，请参阅使用[TLS 通过 Azure 机器学习来保护 Web 服务](how-to-secure-web-service.md)。
+有关详细信息，请参阅[使用 TLS 通过 Azure 机器学习保护 web 服务](how-to-secure-web-service.md)。
 
 ### <a name="authentication-for-services"></a>服务的身份验证
 
@@ -88,8 +88,8 @@ Azure 机器学习提供了两种方法来控制对 Web 服务的访问。
 
 |身份验证方法|ACI|AKS|
 |---|---|---|
-|密钥|默认已禁用| 默认已启用|
-|标记| 不可用| 默认已禁用 |
+|密钥|默认已禁用| 默认情况下启用|
+|Token| 不可用| 默认已禁用 |
 
 将请求发送到由密钥或令牌保护的服务时，请使用 __Authorization__ 标头来传递密钥或令牌。 密钥或令牌的格式必须为 `Bearer <key-or-token>`，其中 `<key-or-token>` 为密钥或令牌值。
 
@@ -176,7 +176,7 @@ Web 服务可以接受一个请求中的多个数据集。 它会返回包含响
 有关如何在服务中启用对二进制数据的支持的信息，请参阅[二进制数据](how-to-deploy-and-where.md#binary)。
 
 > [!TIP]
-> 启用对二进制数据的支持发生在部署的模型使用的score.py文件中。 从客户端，使用编程语言的 HTTP 功能。 例如，以下代码段将 JPG 文件的内容发送到 Web 服务：
+> 启用对二进制数据的支持发生在已部署的模型所使用的 score.py 文件中。 在客户端中，使用编程语言的 HTTP 功能。 例如，以下代码片段将 JPG 文件的内容发送到 web 服务：
 >
 > ```python
 > import requests

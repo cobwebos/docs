@@ -1,5 +1,5 @@
 ---
-title: Azure 事件中心作为事件网格源
+title: 作为事件网格源的 Azure 事件中心
 description: 介绍为 Azure 事件网格中的事件中心事件提供的属性
 services: event-grid
 author: spelluru
@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: fd65c20f07a091fa1fc8a6cbf003986e1096ebe3
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393339"
 ---
-# <a name="azure-event-hubs-as-an-event-grid-source"></a>Azure 事件中心作为事件网格源
+# <a name="azure-event-hubs-as-an-event-grid-source"></a>作为事件网格源的 Azure 事件中心
 
-本文提供事件中心事件的属性和架构。有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
+本文提供事件中心事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
 ## <a name="event-grid-event-schema"></a>事件网格事件架构
 
@@ -57,32 +57,32 @@ ms.locfileid: "81393339"
 
 事件具有以下顶级数据：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
-| subject | 字符串 | 事件主题的发布者定义路径。 |
-| eventType | 字符串 | 此事件源的一个注册事件类型。 |
-| EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
-| id | 字符串 | 事件的唯一标识符。 |
-| data | 对象 (object) | 事件中心事件数据。 |
-| dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
-| metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+| 主题 | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| subject | string | 事件主题的发布者定义路径。 |
+| eventType | string | 此事件源的一个注册事件类型。 |
+| EventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
+| id | string | 事件的唯一标识符。 |
+| 数据 | object | 事件中心事件数据。 |
+| dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
+| metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| fileUrl | 字符串 | 捕获文件的路径。 |
-| fileType | 字符串 | 捕获文件的文件类型。 |
-| partitionId | 字符串 | 分片 ID。 |
+| fileUrl | string | 捕获文件的路径。 |
+| fileType | string | 捕获文件的文件类型。 |
+| partitionId | string | 分片 ID。 |
 | sizeInBytes | integer | 文件大小。 |
 | eventCount | integer | 文件中的事件数。 |
 | firstSequenceNumber | integer | 队列中的最小序列号。 |
 | lastSequenceNumber | integer | 队列中的最后一个序列号。 |
-| firstEnqueueTime | 字符串 | 队列中的第一个时间。 |
-| lastEnqueueTime | 字符串 | 队列中的最后一个时间。 |
+| firstEnqueueTime | string | 队列中的第一个时间。 |
+| lastEnqueueTime | string | 队列中的最后一个时间。 |
 
-## <a name="tutorials-and-how-tos"></a>教程和如何
+## <a name="tutorials-and-how-tos"></a>教程和操作指南
 
 |标题  |说明  |
 |---------|---------|

@@ -1,6 +1,6 @@
 ---
-title: 使用 CLI - Azure 应用程序网关终止 TLS
-description: 了解如何使用 Azure CLI 创建应用程序网关和添加 TLS 终止证书。
+title: 使用 CLI Azure 应用程序网关的 TLS 终止
+description: 了解如何创建应用程序网关，并使用 Azure CLI 添加 TLS 终止证书。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,15 +9,15 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 6cd8cca65762de3da6a0e69e93c8d79bbe498dde
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311974"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>使用 Azure CLI 创建具有 TLS 终止的应用程序网关
 
-可以使用 Azure CLI 创建具有[TLS 终止](ssl-overview.md)证书[的应用程序网关](overview.md)。 对于后端服务器，可以使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。 在此示例中，规模集包含两个添加到应用程序网关的默认后端池的虚拟机实例。
+可以使用 Azure CLI 创建具有[TLS 终止](ssl-overview.md)证书的[应用程序网关](overview.md)。 对于后端服务器，可以使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。 在此示例中，规模集包含两个添加到应用程序网关的默认后端池的虚拟机实例。
 
 在本文中，学习如何：
 
@@ -63,7 +63,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>创建网络资源
 
-使用 [az network vnet create](/cli/azure/network/vnet) 创建名为 *myVNet* 的虚拟网络和名为 *myAGSubnet* 的子网。 然后，可以使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet) 添加后端服务器所需的名为 *myBackendSubnet* 的子网。 使用 [az network public-ip create](/cli/azure/network/public-ip) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。
+使用 *az network vnet create* 创建名为 *myVNet* 的虚拟网络和名为 [myAGSubnet](/cli/azure/network/vnet) 的子网。 然后，可以使用 *az network vnet subnet create* 添加后端服务器所需的名为 [myBackendSubnet](/cli/azure/network/vnet/subnet) 的子网。 使用 *az network public-ip create* 创建名为 [myAGPublicIPAddress](/cli/azure/network/public-ip) 的公共 IP 地址。
 
 ```azurecli-interactive
 az network vnet create \
@@ -165,11 +165,11 @@ az network public-ip show \
   --output tsv
 ```
 
-复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 在此示例中，URL 为： **https://52.170.203.149**。
+复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 就此示例来说，URL 为 **https://52.170.203.149** 。
 
 ![安全警告](./media/tutorial-ssl-cli/application-gateway-secure.png)
 
-若要接受有关使用自签名证书的安全警告，请依次选择“详细信息”和“继续转到网页”。******** 随即显示受保护的 NGINX 站点，如下例所示：
+若要接受有关使用自签名证书的安全警告，请依次选择“详细信息”和“继续转到网页”。   随即显示受保护的 NGINX 站点，如下例所示：
 
 ![在应用程序网关中测试基 URL](./media/tutorial-ssl-cli/application-gateway-nginx.png)
 

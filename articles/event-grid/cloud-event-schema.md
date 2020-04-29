@@ -1,6 +1,6 @@
 ---
 title: 在 CloudEvents 架构中将 Azure 事件网格与事件配合使用
-description: 介绍如何使用云事件架构执行 Azure 事件网格中的事件。 该服务支持云事件的 JSON 实现中的事件。
+description: 介绍如何将 CloudEvents 架构用于 Azure 事件网格中的事件。 服务支持云事件的 JSON 实现中的事件。
 services: event-grid
 author: banisadr
 ms.service: event-grid
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: babanisa
 ms.openlocfilehash: 127095bef2c67a93097bf90bea54ca1b44b16c58
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81394379"
 ---
-# <a name="cloudevents-v10-schema-with-event-grid"></a>云事件 v1.0 架构与事件网格
+# <a name="cloudevents-v10-schema-with-event-grid"></a>CloudEvents v1.0 包含事件网格的架构
 
 除了采用[默认事件架构](event-schema.md)的事件，Azure 事件网格本身还支持采用 [CloudEvents v1.0 的 JSON 实现](https://github.com/cloudevents/spec/blob/v1.0/json-format.md)和 [HTTP 协议绑定](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)的事件。 [CloudEvents](https://cloudevents.io/) 是一种用于描述事件数据的[开放规范](https://github.com/cloudevents/spec/blob/v1.0/spec.md)。
 
@@ -22,9 +22,9 @@ CloudEvents 提供的常用事件架构适合发布和使用基于云的事件�
 
 CloudEvents 是由包括 Microsoft 在内的多个[协作者](https://github.com/cloudevents/spec/blob/master/community/contributors.md)通过 [Cloud Native Computing Foundation](https://www.cncf.io/) 构建的。 它目前的发布版本为 1.0。
 
-本文介绍事件网格的云事件架构。
+本文介绍带有事件网格的 CloudEvents 架构。
 
-## <a name="sample-event-using-cloudevents-schema"></a>使用云事件架构的示例事件
+## <a name="sample-event-using-cloudevents-schema"></a>使用 CloudEvents 架构的示例事件
 
 下面以示例方式说明了 CloudEvents 格式的 Azure Blob 存储事件：
 
@@ -58,7 +58,7 @@ CloudEvents 是由包括 Microsoft 在内的多个[协作者](https://github.com
 
 在 CloudEvents 架构和事件网格架构中传递的事件的标头值是相同的，但 `content-type` 除外。 对于 CloudEvents 架构，该标头值为 `"content-type":"application/cloudevents+json; charset=utf-8"`。 对于事件网格架构，该标头值为 `"content-type":"application/json; charset=utf-8"`。
 
-## <a name="event-grid-for-cloudevents"></a>云事件事件网格
+## <a name="event-grid-for-cloudevents"></a>CloudEvents 的事件网格
 
 可以将事件网格用于 CloudEvents 架构的事件的输入和输出。 可以将 CloudEvents 用于系统事件（例如 Blob 存储事件和 IoT 中心事件）和自定义事件。 它还可以将网络上的这些事件来回转换。
 
@@ -72,4 +72,4 @@ CloudEvents 是由包括 Microsoft 在内的多个[协作者](https://github.com
 对于所有事件架构，事件网格都要求在发布到事件网格主题时以及在创建事件订阅时进行验证。 有关详细信息，请参阅[事件网格安全性和身份验证](security-authentication.md)。
 
 ## <a name="next-steps"></a>后续步骤
-请参阅[如何使用云事件 v1.0 架构与事件网格](cloudevents-schema.md)。  
+请参阅 how [to Use CloudEvents 1.0 schema With Event Grid](cloudevents-schema.md)。  

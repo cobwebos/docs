@@ -5,10 +5,10 @@ ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
 ms.openlocfilehash: b6af3d7ab1fdd35391c9a189162c57dfb259f2d4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81405352"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions 开发人员指南
@@ -17,7 +17,7 @@ ms.locfileid: "81405352"
 本文假定你已阅读 [Azure Functions 概述](functions-overview.md)。
 
 ## <a name="function-code"></a>函数代码
-函数** 是 Azure Functions 的基本概念。 函数包含两个重要部分，即可以用各种语言编写的代码，以及一些配置，function.json 文件。 对于编译语言，此配置文件是从代码中的注释自动生成的。 对于脚本语言，必须自己提供配置文件。
+函数  是 Azure Functions 的基本概念。 函数包含两个重要部分，即可以用各种语言编写的代码，以及一些配置，function.json 文件。 对于编译语言，此配置文件是从代码中的注释自动生成的。 对于脚本语言，必须自己提供配置文件。
 
 Function.json 文件定义函数触发器、绑定和其他配置设置。 每个函数有且只有一个触发器。 运行时使用此配置文件确定要监视的事件，以及如何将数据传入函数执行和从函数执行返回数据。 下面是一个示例 function.json 文件。
 
@@ -36,7 +36,7 @@ Function.json 文件定义函数触发器、绑定和其他配置设置。 每�
 }
 ```
 
-有关详细信息，请参阅[Azure 函数触发器和绑定概念](functions-triggers-bindings.md)。
+有关详细信息，请参阅 [Azure Functions 触发器和绑定概念](functions-triggers-bindings.md)。
 
 在 `bindings` 属性配置两个触发器和绑定。 每个绑定共享一些通用设置和一些特定于个别类型的绑定的设置。 每个绑定都需要以下设置：
 
@@ -55,7 +55,7 @@ Function.json 文件定义函数触发器、绑定和其他配置设置。 每�
 ## <a name="folder-structure"></a>文件夹结构
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-以上是 Function app 的默认（和推荐）文件夹结构。 如果要更改函数代码的文件位置，请修改 function.json 文件的 `scriptFile` 部分__。 我们还建议使用[包部署](deployment-zip-push.md)将项目部署到 Azure 中的函数应用。 也可以使用现有工具，比如[持续集成和部署](functions-continuous-deployment.md)以及 Azure DevOps。
+以上是 Function app 的默认（和推荐）文件夹结构。 如果要更改函数代码的文件位置，请修改 function.json 文件的 `scriptFile` 部分  。 我们还建议使用[包部署](deployment-zip-push.md)将项目部署到 Azure 中的函数应用。 也可以使用现有工具，比如[持续集成和部署](functions-continuous-deployment.md)以及 Azure DevOps。
 
 > [!NOTE]
 > 如果手动部署包，请确保将 host.json 文件和函数文件夹直接部署到 `wwwroot` 文件夹__。 请勿在部署中包含 `wwwroot` 文件夹。 否则，最后将得到 `wwwroot\wwwroot` 文件夹。
@@ -79,7 +79,7 @@ Function.json 文件定义函数触发器、绑定和其他配置设置。 每�
 Azure Functions 代码为开放源，位于 GitHub 存储库：
 
 * [Azure Functions](https://github.com/Azure/Azure-Functions)
-* [Azure 函数主机](https://github.com/Azure/azure-functions-host/)
+* [Azure Functions 主机](https://github.com/Azure/azure-functions-host/)
 * [Azure Functions 门户](https://github.com/azure/azure-functions-ux)
 * [Azure Functions 模板](https://github.com/azure/azure-functions-templates)
 * [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/)
@@ -100,6 +100,6 @@ Azure Functions 代码为开放源，位于 GitHub 存储库：
 
 * [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
 * [在本地对 Azure Functions 进行编码和测试](./functions-develop-local.md)
-* [Azure 函数的最佳做法](functions-best-practices.md)
+* [Azure Functions 的最佳实践](functions-best-practices.md)
 * [Azure Functions C# 开发人员参考](functions-dotnet-class-library.md)
-* [Azure 函数 Node.js 开发人员参考](functions-reference-node.md)
+* [Azure Functions node.js 开发人员参考](functions-reference-node.md)

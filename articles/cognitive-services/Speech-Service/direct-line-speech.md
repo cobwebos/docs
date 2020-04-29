@@ -1,7 +1,7 @@
 ---
-title: 直线语音 - 语音服务
+title: 直拨语音语音服务
 titleSuffix: Azure Cognitive Services
-description: 使用语音软件开发工具包 （SDK） 使用"直线语音"的语音助理的功能、功能和限制概述。
+description: 概述了语音助手使用语音软件开发工具包（SDK）的直接线路语音功能、功能和限制。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,29 +11,29 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
 ms.openlocfilehash: 6dc125b68af8f9a07731aaae9d858c19c51f934f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81402395"
 ---
 # <a name="what-is-direct-line-speech"></a>什么是 Direct Line 语音？
 
-**直接在线语音**是一个强大的端到端解决方案，用于创建灵活、可扩展的语音助手。 它由机器人框架及其直线语音通道提供支持，该通道针对与机器人的语音转换、语音交互进行了优化。
+**直接线路语音**是一种可靠的端到端解决方案，可用于创建灵活、可扩展的语音助手。 它由机器人框架和其直接线路语音通道提供支持，该通道经过优化，可用于与机器人的语音语音交互。
 
-[语音助理](voice-assistants.md)会倾听用户并采取行动进行响应，通常还会回话。 他们使用[语音到文本](speech-to-text.md)来转录用户的演讲，然后对文本的自然语言理解采取行动。 此操作通常包括使用[文本到语音](text-to-speech.md)生成的助手的语音输出。
+[语音助手](voice-assistants.md)会倾听用户的响应，并在响应时执行操作，这通常是一回谈话。 他们使用[语音到文本](speech-to-text.md)转录用户的语音，然后对文本的自然语言理解采取措施。 此操作通常包含用[文本到语音功能](text-to-speech.md)生成的助手的语音输出。
 
-直接在线语音为语音助理提供了最高级别的自定义和复杂。 它专为具有任务完成或命令和控制使用的开放式、自然或混合的会话方案而设计。 这种高度的灵活性具有更大的复杂性，使用自然语言输入将范围限定为定义良好的任务的方案可能需要考虑[自定义命令（预览），](custom-commands.md)以简化解决方案体验。
+直接连线语音提供语音助手的最高级别的自定义和复杂程度。 它适用于使用任务完成或命令和控制使用的开放、自然或混合两种会话方案。 这种高度的灵活性带来了更大的复杂性，并且通过自然语言输入以定义完善的任务为作用域的方案，可能需要考虑使用[自定义命令（预览版）](custom-commands.md)来简化解决方案的体验。
 
-## <a name="getting-started-with-direct-line-speech"></a>开始使用直线语音
+## <a name="getting-started-with-direct-line-speech"></a>直接行语音入门
 
-使用"直线语音"创建语音助手的第一个步骤是[获取语音订阅密钥](get-started.md)、创建与该订阅关联的新自动程序以及将自动程序连接到"直线语音"通道。
+使用 "直接线路语音" 创建语音助手的第一步是[获取语音订阅密钥](get-started.md)，创建与该订阅关联的新机器人，并将机器人连接到直接线路语音通道。
 
-   ![直线语音编排服务流的概念图](media/voice-assistants/overview-directlinespeech.png "语音通道流")
+   ![直接连线语音业务流程服务流的概念图](media/voice-assistants/overview-directlinespeech.png "语音通道流")
 
-有关使用"直线语音"创建简单语音助手的完整分步指南，请参阅[使用语音 SDK 和直线语音通道启用语音的机器人教程](tutorial-voice-enable-your-bot-speech-sdk.md)。
+有关使用直行语音创建简单语音助手的完整循序渐进指南，请参阅[使用语音 SDK 和直接线路语音通道启用机器人的语音教程](tutorial-voice-enable-your-bot-speech-sdk.md)。
 
-我们还提供快速入门，旨在让您快速运行代码和学习 API。 此表包括按语言和平台组织的语音助理快速入门的列表。
+我们还提供了快速入门，旨在让你快速运行代码和学习 Api。 此表包含按语言和平台组织的语音助手快速入门列表。
 
 | 快速入门 | 平台 | API 参考 |
 |------------|----------|---------------|
@@ -43,19 +43,19 @@ ms.locfileid: "81402395"
 
 ## <a name="sample-code"></a>示例代码
 
-在 GitHub 上提供了用于创建语音助理的示例代码。 这些示例涵盖客户端应用程序，用于以几种流行的编程语言连接到您的助手。
+GitHub 上提供了用于创建语音助手的示例代码。 这些示例涵盖了用几种常用编程语言连接到助手的客户端应用程序。
 
 * [语音助手示例 (SDK)](https://aka.ms/csspeech/samples)
-* [教程：语音启用您的助手与语音 SDK， C#](tutorial-voice-enable-your-bot-speech-sdk.md)
+* [教程：通过语音 SDK 使用语音启用助手，C#](tutorial-voice-enable-your-bot-speech-sdk.md)
 
 ## <a name="customization"></a>自定义
 
-使用语音服务构建的语音助手可以使用用于[语音到文本](speech-to-text.md)、[文本到语音](text-to-speech.md)和[自定义关键字选择](speech-devices-sdk-create-kws.md)的完整自定义选项。
+使用语音服务构建的语音助手可以使用各种自定义选项，这些选项可用于[语音到文本](speech-to-text.md)、[文本到语音](text-to-speech.md)和[自定义关键字选择](speech-devices-sdk-create-kws.md)。
 
 > [!NOTE]
 > 自定义选项因语言/区域设置而异（请参阅[支持的语言](supported-languages.md)）。
 
-直接线路语音及其语音助理的相关功能是[虚拟助理解决方案和企业模板](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview)的理想补充。 尽管 Direct Line 语音可以与任何兼容的机器人配合使用，但这些资源为高质量的对话体验提供了可重用的基线，以及快速入门的常见支持技能和模型。
+"语音助手" 的 "直接行语音" 及其相关功能是 "[虚拟助手解决方案和企业模板](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview)" 的理想补充。 尽管直接行语音可以与任何兼容机器人配合使用，但这些资源为高质量的对话体验提供了可重用的基线，并为快速入门提供了常见的支持技能和模型。
 
 ## <a name="reference-docs"></a>参考文档
 
@@ -67,4 +67,4 @@ ms.locfileid: "81402395"
 * [免费获取语音服务订阅密钥](get-started.md)
 * [获取语音 SDK](speech-sdk.md)
 * [创建和部署基本机器人](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
-* [获取虚拟助理解决方案和企业模板](https://github.com/Microsoft/AI)
+* [获取虚拟助手解决方案和企业模板](https://github.com/Microsoft/AI)

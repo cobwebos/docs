@@ -1,7 +1,7 @@
 ---
 title: 文本审查 - 内容审查器
 titleSuffix: Azure Cognitive Services
-description: 对可能不需要的文本、个人数据和自定义术语列表使用文本审核。
+description: 对于可能不需要的文本、个人数据和自定义的字词列表，请使用文本审核。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 41e88dd5a08de485f770559959843ba3b54e590f
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81274004"
 ---
 # <a name="learn-text-moderation-concepts"></a>了解文本审查概念
 
-使用内容审阅者的计算机辅助文本审阅和[人工审阅](Review-Tool-User-Guide/human-in-the-loop.md)功能来调节文本内容。
+使用内容审查器计算机辅助的文本审核和[人工审阅](Review-Tool-User-Guide/human-in-the-loop.md)功能来适中文本内容。
 
 可根据策略和阈值阻止、批准或审核内容。 用它来增强对合作伙伴、员工和消费者生成文本内容的环境的人工审核。 这些环境包括聊天室、讨论区、聊天机器人、电子商务目录和文档。 
 
@@ -47,11 +47,11 @@ ms.locfileid: "81274004"
 > [!NOTE]
 > 对于 **language** 参数，请分配 `eng` 或将其留空以查看机器辅助的**分类**响应（预览功能）。 **此功能仅支持英语**。
 >
-> 对于不雅用语**** 检测，请使用本文所列的支持语言的 [ISO 639-3 代码](http://www-01.sil.org/iso639-3/codes.asp)或留空。
+> 对于不雅用语  检测，请使用本文所列的支持语言的 [ISO 639-3 代码](http://www-01.sil.org/iso639-3/codes.asp)或留空。
 
 ## <a name="classification"></a>分类
 
-内容审阅者的计算机辅助**文本分类功能****仅支持英语**，有助于检测可能不需要的内容。 根据上下文，可能会将标记的内容评估为不合适。 它传达了每个类别的可能性，并可能建议进行人工审核。 该功能使用训练的模型来识别可能的辱骂、贬损或歧视性语言。 要评审的内容包括俚语、缩写词、冒犯性言语，以及有意拼错的单词。 
+内容审查器的计算机辅助**文本分类功能**仅支持**英语**，有助于检测可能不需要的内容。 根据上下文，可能会将标记的内容评估为不合适。 它传达了每个类别的可能性，并可能建议进行人工审核。 该功能使用训练的模型来识别可能的辱骂、贬损或歧视性语言。 要评审的内容包括俚语、缩写词、冒犯性言语，以及有意拼错的单词。 
 
 以下 JSON 摘录内容显示了示例输出：
 
@@ -78,7 +78,7 @@ ms.locfileid: "81274004"
 
 ## <a name="personal-data"></a>个人数据
 
-个人数据功能可检测此信息的潜在存在：
+个人数据功能检测到此信息的潜在状态：
 
 - 电子邮件地址
 - 美国邮寄地址
@@ -125,7 +125,7 @@ ms.locfileid: "81274004"
 
 ## <a name="auto-correction"></a>自动更正
 
-假设输入文本为（"lzay"和"f0x"是有意的）：
+假设输入文本为（故意为 "lzay" 和 "f0x"）：
 
     The qu!ck brown f0x jumps over the lzay dog.
 
@@ -155,4 +155,4 @@ ms.locfileid: "81274004"
 
 ## <a name="next-steps"></a>后续步骤
 
-体验[文本审查 API 控制台](try-text-api.md)并使用 REST API 代码示例。 如果您熟悉 Visual Studio 和 C#，请查看[.NET SDK 快速入门](dotnet-sdk-quickstart.md)的文本审核部分。
+体验[文本审查 API 控制台](try-text-api.md)并使用 REST API 代码示例。 如果熟悉 Visual Studio 和 c #，请参阅[.NET SDK 快速入门](dotnet-sdk-quickstart.md)的 "文本审核" 部分。

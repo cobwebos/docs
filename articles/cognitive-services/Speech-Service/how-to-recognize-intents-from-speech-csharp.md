@@ -1,7 +1,7 @@
 ---
-title: 如何使用语音 SDK C 识别语音中的意图#
+title: 如何使用语音 SDK C 从语音识别意向#
 titleSuffix: Azure Cognitive Services
-description: 在本指南中，您将了解如何使用 C# 的语音 SDK 识别语音中的意图。
+description: '本指南介绍如何使用适用于 c # 的语音 SDK 从语音识别意向。'
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: trbye
 ms.openlocfilehash: 41ebcb7b44ea88af06a30a611960fd8bb0ceddee
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81402221"
 ---
-# <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>如何使用 C 语音 SDK 识别语音中的意图#
+# <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>如何使用适用于 C 语言的语音 SDK 从语音识别意向#
 
 认知服务[语音 SDK](speech-sdk.md) 与[语言理解服务 (LUIS)](https://www.luis.ai/home) 相集成，以提供**意向识别**。 意向是用户想要做的某件事：预订航班、查看天气预报或拨打电话。 用户可以使用任何普通字词。 LUIS 使用机器学习将用户请求映射到定义的意向。
 
 > [!NOTE]
 > LUIS 应用程序定义所要识别的意向和实体。 它与使用语音服务的 C# 应用程序不同。 在本文中，“应用”是指 LUIS 应用，“应用程序”是指 C# 代码。
 
-在本指南中，您可以使用语音 SDK 开发 C# 控制台应用程序，该应用程序通过设备的麦克风从用户话语中派生意图。 将了解如何执行以下操作：
+在本指南中，你将使用 Speech SDK 开发一个 c # 控制台应用程序，该应用程序通过设备的麦克风从用户最谈话派生意向。 将了解如何执行以下操作：
 
 > [!div class="checklist"]
 >
@@ -37,10 +37,10 @@ ms.locfileid: "81402221"
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始本指南之前，请确保您有以下项目：
+在开始本指南之前，请确保你具有以下各项：
 
 - 一个 LUIS 帐户。 可以通过 [LUIS 门户](https://www.luis.ai/home)免费创建一个帐户。
-- [视觉工作室 2019](https://visualstudio.microsoft.com/downloads/) （任何版本）.
+- [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) （任何版本）。
 
 ## <a name="luis-and-speech"></a>LUIS 和语音
 
@@ -48,28 +48,28 @@ LUIS 与语音服务集成，可从语音中识别意向。 不需要语音服�
 
 LUIS 使用三种密钥：
 
-| 密钥类型  | 目标                                               |
+| 密钥类型  | 目的                                               |
 | --------- | ----------------------------------------------------- |
 | 创作 | 用于以编程方式创建和修改 LUIS 应用 |
 | 入门   | 仅允许使用纯文本测试 LUIS 应用程序   |
 | 终结点  | 授权访问特定的 LUIS 应用            |
 
-对于本指南，您需要终结点密钥类型。 本指南使用示例家庭自动化 LUIS 应用，您可以按照[使用预构建的家庭自动化应用](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app)快速入门来创建该应用。 如果你已创建自己的 LUIS 应用，可以改用该应用。
+对于本指南，需要终结点密钥类型。 本指南使用示例 Home Automation LUIS 应用，该应用可以按照[使用预构建的 Home automation 应用](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app)快速入门教程创建。 如果你已创建自己的 LUIS 应用，可以改用该应用。
 
-当你创建 LUIS 应用时，LUIS 会自动生成一个初学者密钥，让你使用文本查询测试该应用。 此密钥无法启用语音服务集成，并且无法与本指南配合使用。 在 Azure 仪表板中创建 LUIS 资源并将其分配给 LUIS 应用。 您可以为本指南使用免费订阅层。
+当你创建 LUIS 应用时，LUIS 会自动生成一个初学者密钥，让你使用文本查询测试该应用。 此密钥不启用语音服务集成，也不能与本指南一起使用。 在 Azure 仪表板中创建 LUIS 资源并将其分配给 LUIS 应用。 你可以使用本指南的免费订阅层。
 
 在 Azure 仪表板中创建 LUIS 资源之后，请登录到 [LUIS 门户](https://www.luis.ai/home)，在“我的应用”页上选择自己的应用程序，然后切换到应用的“管理”页。******** 最后，在侧栏中选择“密钥和终结点”。****
 
 ![LUIS 门户密钥和终结点设置](media/sdk/luis-keys-endpoints-page.png)
 
-在 **"键和终结点设置"** 页上：
+在 "**密钥和终结点设置**" 页上：
 
 1. 向下滚动到“资源和密钥”部分，选择“分配资源”。********
 1. 在“将密钥分配到应用”对话框中进行以下更改：****
 
    - 在“租户”下选择“Microsoft”。********
-   - 在 **"订阅名称"** 下，选择包含要使用的 LUIS 资源的 Azure 订阅。
-   - 在 **"密钥**"下，选择要与应用一起使用的 LUIS 资源。
+   - 在 "**订阅名称**" 下，选择包含要使用的 LUIS 资源的 Azure 订阅。
+   - 在 "**密钥**" 下，选择要与应用一起使用的 LUIS 资源。
 
    片刻之后，新订阅将显示在页面底部的表格中。
 
@@ -91,7 +91,7 @@ LUIS 使用三种密钥：
 
    [!code-csharp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#toplevel)]
 
-1. 将提供`Main()`的方法替换为以下异步等效项：
+1. 将所提供`Main()`的方法替换为以下异步等效项：
 
    ```csharp
    public static async Task Main()
@@ -122,7 +122,7 @@ LUIS 使用三种密钥：
    | `YourLanguageUnderstandingServiceRegion` | LUIS 订阅所在区域的短标识符，例如 `westus` 表示“美国西部”。 请参阅[区域](regions.md)。 |
    | `YourLanguageUnderstandingAppId` | LUIS 应用 ID。 可以在 [LUIS 门户](https://www.luis.ai/home)中应用的“设置”页上找到此 ID。**** |
 
-进行这些更改后，可以生成 （**控件_Shift_B**） 并运行 （**F5**） 应用程序. 出现提示时，请尝试对着电脑麦克风说出“关灯”。 应用程序会在控制台窗口中显示结果。
+进行这些更改后，可以生成（**ctrl + Shift + B**）并运行应用程序（**F5**）。 出现提示时，请尝试对着电脑麦克风说出“关灯”。 应用程序会在控制台窗口中显示结果。
 
 以下部分包含代码的讨论。
 
@@ -131,7 +131,7 @@ LUIS 使用三种密钥：
 首先，需要基于 LUIS 终结点密钥和区域创建语音配置。 可以使用语音配置来创建语音 SDK 的各种功能的识别器。 语音配置提供多种方式用于指定所要使用的订阅；此处我们使用了采用订阅密钥和区域的 `FromSubscription`。
 
 > [!NOTE]
-> 使用 LUIS 订阅的键和区域，而不是语音服务订阅。
+> 使用 LUIS 订阅的密钥和区域，而不是语音服务订阅。
 
 接下来，使用 `new IntentRecognizer(config)` 创建意向识别器。 由于配置已知道要使用哪个订阅，因此，在创建识别器时无需再次指定订阅密钥和终结点。
 
@@ -141,7 +141,7 @@ LUIS 使用三种密钥：
 
 若要添加意向，必须提供三个参数：LUIS 模型（已创建并命名为 `model`）、意向名称和意向 ID。 ID 与名称之间的差别如下。
 
-| `AddIntent()`&nbsp;参数 | 目标 |
+| `AddIntent()`&nbsp;参数 | 目的 |
 | --------------------------- | ------- |
 | `intentName` | LUIS 应用中定义的意向的名称。 此值必须与 LUIS 意向名称完全匹配。 |
 | `intentID` | 语音 SDK 分配给已识别的意向的 ID。 此值可以是任何内容；不需要对应于 LUIS 应用中定义的意向名称。 例如，如果多个意向由相同的代码处理，则可以对这些意向使用相同的 ID。 |
@@ -164,19 +164,19 @@ recognizer.AddIntent(model, "HomeAutomation.TurnOn", "on");
 | 单次 | `RecognizeOnceAsync()` | 返回在一个话语后面识别的意向（如果有）。 |
 | 连续 | `StartContinuousRecognitionAsync()`<br>`StopContinuousRecognitionAsync()` | 识别多个言语。有可用结果时发出事件（例如 `IntermediateResultReceived`）。 |
 
-应用程序使用单拍模式，因此调用`RecognizeOnceAsync()`开始识别。 结果是包含有关已识别的意向的信息的 `IntentRecognitionResult` 对象。 使用以下表达式提取 LUIS JSON 响应：
+应用程序使用单步模式，因此调用`RecognizeOnceAsync()`开始识别。 结果是包含有关已识别的意向的信息的 `IntentRecognitionResult` 对象。 使用以下表达式提取 LUIS JSON 响应：
 
 ```csharp
 result.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_JsonResult)
 ```
 
-应用程序不分析 JSON 结果。 它只在控制台窗口中显示 JSON 文本。
+应用程序不会分析 JSON 结果。 它只在控制台窗口中显示 JSON 文本。
 
 ![单一 LUIS 识别结果](media/sdk/luis-results.png)
 
 ## <a name="specify-recognition-language"></a>指定识别语言
 
-默认情况下，LUIS 可以识别美国英语中的意向 (`en-us`)。 将区域设置代码分配到语音配置的 `SpeechRecognitionLanguage` 属性可以识别其他语言的意向。 例如，在创建`config.SpeechRecognitionLanguage = "de-de";`识别器以识别德语的意图之前，先在我们的应用程序中添加。 有关详细信息，请参阅[LUIS 语言支持](../LUIS/luis-language-support.md#languages-supported)。
+默认情况下，LUIS 可以识别美国英语中的意向 (`en-us`)。 将区域设置代码分配到语音配置的 `SpeechRecognitionLanguage` 属性可以识别其他语言的意向。 例如，在创建`config.SpeechRecognitionLanguage = "de-de";`识别器之前，请在应用程序中添加以识别德语中的意向。 有关详细信息，请参阅[LUIS language support](../LUIS/luis-language-support.md#languages-supported)。
 
 ## <a name="continuous-recognition-from-a-file"></a>从文件中连续识别
 

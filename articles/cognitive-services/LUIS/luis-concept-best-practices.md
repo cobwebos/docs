@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: diberry
 ms.openlocfilehash: 525d450084723a53ae090319d9ebf3f68d63beee
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81382394"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>有关生成语言理解 (LUIS) 应用的最佳做法
@@ -19,7 +19,7 @@ ms.locfileid: "81382394"
 * 发布到终结点
 * 从终结点进行测试
 
-[发布](luis-how-to-publish-app.md)应用后，请使用开发生命周期从终结点添加功能、发布和测试。 下一个创作周期不要从添加更多示例言语开始，否则 LUIS 无法根据实际用户言语学习你的模型。
+[发布](luis-how-to-publish-app.md)应用后，使用开发生命周期从终结点添加功能、发布和测试。 下一个创作周期不要从添加更多示例言语开始，否则 LUIS 无法根据实际用户言语学习你的模型。
 
 在当前的示例言语与终结点言语集返回可信的较高预测评分之前，请不要展开言语。 使用[主动学习](luis-concept-review-endpoint-utterances.md)提高评分。
 
@@ -31,13 +31,13 @@ ms.locfileid: "81382394"
 
 |要求事项|禁止事项|
 |--|--|
-|[应定义不同的意向](#do-define-distinct-intents)<br>[向意图添加描述符](#do-add-descriptors-to-intents) |[将许多话语示例添加到意向](#dont-add-many-example-utterances-to-intents)<br>[使用很少或简单的实体](#dont-use-few-or-simple-entities) |
+|[应定义不同的意向](#do-define-distinct-intents)<br>[将描述符添加到意向](#do-add-descriptors-to-intents) |[将许多话语示例添加到意向](#dont-add-many-example-utterances-to-intents)<br>[使用少量或简单实体](#dont-use-few-or-simple-entities) |
 |[每个意向需采用合适的详细程度](#do-find-sweet-spot-for-intents)|[将 LUIS 用作培训平台](#dont-use-luis-as-a-training-platform)|
-|[使用版本迭代构建应用](#do-build-your-app-iteratively-with-versions)<br>[生成实体进行模型分解](#do-build-for-model-decomposition)|[添加许多相同格式的话语示例，忽略其他格式](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
-|[在以后的迭代中添加模式](#do-add-patterns-in-later-iterations)|[混淆意向和实体的定义](#dont-mix-the-definition-of-intents-and-entities)|
-|[跨所有意向来平衡话语](#balance-your-utterances-across-all-intents)，None 意向除外。<br>[将示例言语添加到 None 意向](#do-add-example-utterances-to-none-intent)|[创建具有所有可能值的描述符](#dont-create-descriptors-with-all-the-possible-values)|
+|[使用版本以迭代方式生成应用](#do-build-your-app-iteratively-with-versions)<br>[为模型分解生成实体](#do-build-for-model-decomposition)|[添加许多相同格式的话语示例，忽略其他格式](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
+|[在后续迭代中添加模式](#do-add-patterns-in-later-iterations)|[混淆意向和实体的定义](#dont-mix-the-definition-of-intents-and-entities)|
+|[跨所有意向来平衡话语](#balance-your-utterances-across-all-intents)，None 意向除外。<br>[将话语示例添加到“None”意向](#do-add-example-utterances-to-none-intent)|[使用所有可能的值创建描述符](#dont-create-descriptors-with-all-the-possible-values)|
 |[利用主动学习的建议功能](#do-leverage-the-suggest-feature-for-active-learning)|[添加的模式过多](#dont-add-many-patterns)|
-|[通过批处理测试监控应用的性能](#do-monitor-the-performance-of-your-app)|[使用添加的每个话语示例进行训练和发布](#dont-train-and-publish-with-every-single-example-utterance)|
+|[通过批处理测试来监视应用的性能](#do-monitor-the-performance-of-your-app)|[使用添加的每个话语示例进行训练和发布](#dont-train-and-publish-with-every-single-example-utterance)|
 
 ## <a name="do-define-distinct-intents"></a>应定义不同的意向
 确保每个意向的词汇特定于该意向，而不会与其他意向的词汇重叠。 例如，如果要创建一款处理行程安排（例如航班和酒店）的应用，可以选择将这些主题领域视作彼此独立的意向或视为同一意向，其中包含话语中特定数据的实体。
@@ -143,11 +143,11 @@ LUIS 会预期一个意向的话语会存在变体。 在总体意思相同的�
 
 为聊天机器人将执行的任何操作创建一个意向。 将实体用作实现操作的参数。
 
-为预订航班的机器人创建一个“BookFlight”意向****。 请勿为每条航线或每个目的地都创建一个意向。 将这些数据用作[实体](luis-concept-entity-types.md)，并在话语示例中进行标记。
+为预订航班的机器人创建一个“BookFlight”意向  。 请勿为每条航线或每个目的地都创建一个意向。 将这些数据用作[实体](luis-concept-entity-types.md)，并在话语示例中进行标记。
 
 ## <a name="dont-create-descriptors-with-all-the-possible-values"></a>不要创建具有所有可能值的描述符
 
-在描述符[短语列表中](luis-concept-feature.md)提供几个示例，但并不是每个单词。 LUIS 会对上下文进行一般化并将其纳入考虑。
+提供描述符[短语列表](luis-concept-feature.md)中的几个示例，而不是每个单词。 LUIS 会对上下文进行一般化并将其纳入考虑。
 
 ## <a name="dont-add-many-patterns"></a>请勿添加许多模式
 

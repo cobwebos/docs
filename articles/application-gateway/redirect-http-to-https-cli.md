@@ -1,7 +1,7 @@
 ---
 title: 使用 CLI 进行 HTTP 到 HTTPS 重定向
 titleSuffix: Azure Application Gateway
-description: 了解如何使用 Azure CLI 创建应用程序网关和添加 TLS 终止证书。
+description: 了解如何创建应用程序网关，并使用 Azure CLI 添加 TLS 终止证书。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: victorh
 ms.openlocfilehash: 6bf8f3b7bfb446db78f0c97a246977fec6cd54cb
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81312145"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>使用 Azure CLI 创建支持 HTTP 到 HTTPS 重定向的应用程序网关
 
-可以使用 Azure CLI 创建具有 TLS/SSL 终止证书[的应用程序网关](overview.md)。 路由规则用于将 HTTP 流量重定向到应用程序网关中的 HTTPS 端口。 在此示例中，还会为包含两个虚拟机实例的应用程序网关的后端池创建一个[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。
+可以使用 Azure CLI 创建具有 TLS/SSL 终止证书的[应用程序网关](overview.md)。 路由规则用于将 HTTP 流量重定向到应用程序网关中的 HTTPS 端口。 在此示例中，还会为包含两个虚拟机实例的应用程序网关的后端池创建一个[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。
 
 在本文中，学习如何：
 
@@ -62,7 +62,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>创建网络资源
 
-使用 [az network vnet create](/cli/azure/network/vnet) 创建名为 *myVNet* 的虚拟网络和名为 *myAGSubnet* 的子网。 然后，可以使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet) 添加后端服务器所需的名为 *myBackendSubnet* 的子网。 使用 [az network public-ip create](/cli/azure/network/public-ip) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。
+使用 *az network vnet create* 创建名为 *myVNet* 的虚拟网络和名为 [myAGSubnet](/cli/azure/network/vnet) 的子网。 然后，可以使用 *az network vnet subnet create* 添加后端服务器所需的名为 [myBackendSubnet](/cli/azure/network/vnet/subnet) 的子网。 使用 *az network public-ip create* 创建名为 [myAGPublicIPAddress](/cli/azure/network/public-ip) 的公共 IP 地址。
 
 ```azurecli-interactive
 az network vnet create \
@@ -159,7 +159,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-the-routing-rule"></a>添加路由规则
 
-使用 [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create) 将具有重定向配置的名为 *rule2* 的路由规则添加到应用程序网关。
+使用 *az network application-gateway rule create* 将具有重定向配置的名为 [rule2](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create) 的路由规则添加到应用程序网关。
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -218,7 +218,7 @@ az network public-ip show \
 
 ![安全警告](./media/redirect-http-to-https-cli/application-gateway-secure.png)
 
-若要接受有关使用自签名证书的安全警告，请依次选择“详细信息”和“继续转到网页”。******** 随即显示受保护的 NGINX 站点，如下例所示：
+若要接受有关使用自签名证书的安全警告，请依次选择“详细信息”和“继续转到网页”。   随即显示受保护的 NGINX 站点，如下例所示：
 
 ![在应用程序网关中测试基 URL](./media/redirect-http-to-https-cli/application-gateway-nginxtest.png)
 

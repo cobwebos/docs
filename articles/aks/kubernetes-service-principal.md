@@ -5,15 +5,15 @@ services: container-service
 ms.topic: conceptual
 ms.date: 04/02/2020
 ms.openlocfilehash: 2c792eb4dc060e3f5d7fa2d8f2176bdd51538c43
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81392726"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 的服务主体
 
-要与 Azure API 交互，AKS 群集需要[Azure 活动目录 （AD） 服务主体][aad-service-principal]或[托管标识](use-managed-identity.md)。 需要服务主体或托管标识来动态创建和管理其他 Azure 资源，如 Azure 负载均衡器或容器注册表 （ACR）。
+要与 Azure Api 交互，AKS 群集需要[Azure Active Directory （AD）服务主体][aad-service-principal]或[托管标识](use-managed-identity.md)。 动态创建和管理其他 Azure 资源（例如 Azure 负载均衡器或容器注册表（ACR））需要服务主体或托管标识。
 
 本文介绍如何创建和使用适用于 AKS 群集的服务主体。
 
@@ -57,7 +57,7 @@ az ad sp create-for-rbac --skip-assignment --name myAKSClusterServicePrincipal
 
 ## <a name="specify-a-service-principal-for-an-aks-cluster"></a>指定适用于 AKS 群集的服务主体
 
-若要在通过 [az aks create][az-aks-create] 命令创建 AKS 群集时使用现有的服务主体，请使用 [az ad sp create-for-rbac][az-ad-sp-create] 命令的输出中的 `--service-principal` 和 `--client-secret` 参数来指定 `appId` 和 `password`：
+若要在通过 [az aks create][az-aks-create] 命令创建 AKS 群集时使用现有的服务主体，请使用 `--service-principal`az ad sp create-for-rbac`--client-secret` 命令的输出中的 `appId` 和 `password` 参数来指定 [ 和 ][az-ad-sp-create]：
 
 ```azurecli-interactive
 az aks create \
@@ -68,12 +68,12 @@ az aks create \
 ```
 
 > [!NOTE]
-> 如果使用具有自定义机密的现有服务主体，请确保机密不超过 190 字节。
+> 如果使用的是具有自定义机密的现有服务主体，请确保该机密不超过 190 字节。
 
-如果使用 Azure 门户来部署 AKS 群集，请在“创建 Kubernetes 群集”对话框的“身份验证”页上选择“配置服务主体”。********** 选择“使用现有”并指定以下值：****
+如果使用 Azure 门户来部署 AKS 群集，请在“创建 Kubernetes 群集”对话框的“身份验证”页上选择“配置服务主体”。    选择“使用现有”并指定以下值： 
 
 - **服务主体客户端 ID** 是你的 *appId*
-- **服务主体客户端机密**是** 密码值
+- **服务主体客户端机密**是  密码值
 
 ![浏览到 Azure Vote 的图像](media/kubernetes-service-principal/portal-configure-service-principal.png)
 
@@ -119,7 +119,7 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 
 ### <a name="azure-container-instances"></a>Azure 容器实例
 
-如果使用虚拟 Kubelet 与 AKS 集成并选择在与 AKS 群集分开的资源组中运行 Azure 容器实例 (ACI)，则必须在 ACI 资源组上授予 AKS 服务主体“参与者”** 权限。
+如果使用虚拟 Kubelet 与 AKS 集成并选择在与 AKS 群集分开的资源组中运行 Azure 容器实例 (ACI)，则必须在 ACI 资源组上授予 AKS 服务主体“参与者”  权限。
 
 ## <a name="additional-considerations"></a>其他注意事项
 
@@ -127,7 +127,7 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 
 - Kubernetes 的服务主体是群集配置的一部分。 但是，请勿使用标识来部署群集。
 - 默认情况下，服务主体凭据的有效期为一年。 可以随时[更新或轮换服务主体凭据][update-credentials]。
-- 每个服务主体都与一个 Azure AD 应用程序相关联。 Kubernetes 群集的服务主体可以与任何有效的 Azure AD 应用程序名称相关联（例如： *https://www.contoso.org/example*。 应用程序的 URL 不一定是实际的终结点。
+- 每个服务主体都与一个 Azure AD 应用程序相关联。 Kubernetes 群集的服务主体可以与任何有效的 Azure AD 应用程序名称（例如 *https://www.contoso.org/example* ）相关联。 应用程序的 URL 不一定是实际的终结点。
 - 指定服务主体**客户端 ID** 时，请使用 `appId` 的值。
 - 在 Kubernetes 群集的代理节点 VM 中，服务主体凭据存储在 `/etc/kubernetes/azure.json` 文件中
 - 使用 [az aks create][az-aks-create] 命令自动生成服务主体时，会将服务主体凭据写入用于运行命令的计算机上的 `~/.azure/aksServicePrincipal.json` 文件中。
@@ -140,7 +140,7 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
         az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)
         ```
 
-## <a name="troubleshoot"></a>疑难解答
+## <a name="troubleshoot"></a>故障排除
 
 AKS 群集的服务主体凭据由 Azure CLI 缓存。 如果这些凭据已过期，则会在部署 AKS 群集时遇到错误。 运行 [az aks create][az-aks-create] 时，如果出现以下错误消息，则可能表示缓存的服务主体凭据出现问题：
 
@@ -160,7 +160,7 @@ ls -la $HOME/.azure/aksServicePrincipal.json
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure 活动目录服务主体的详细信息，请参阅[应用程序和服务主体对象][service-principal]。
+若要详细了解 Azure Active Directory 服务主体，请参阅[应用程序和服务主体对象][service-principal]。
 
 有关如何更新凭据的信息，请参阅[为 AKS 中的服务主体更新或轮换凭据][update-credentials]。
 

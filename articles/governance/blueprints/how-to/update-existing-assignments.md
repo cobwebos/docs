@@ -1,13 +1,13 @@
 ---
 title: 从门户更新现有分配
-description: 了解从 Azure 蓝图中的门户更新现有蓝图分配的机制。
+description: 了解在 Azure 蓝图中通过门户更新现有蓝图分配的机制。
 ms.date: 04/15/2020
 ms.topic: how-to
 ms.openlocfilehash: a00a8bcc10b37af576777e3816a794225a3832f7
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81381791"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>如何更新现有蓝图分配
@@ -24,20 +24,20 @@ ms.locfileid: "81381791"
 
 1. 从左侧页面选择“分配的蓝图”  。
 
-1. 在蓝图列表中，左键单击蓝图分配。 然后单击 **"更新分配"** 按钮或右键单击蓝图分配并选择 **"更新分配**"。
+1. 在蓝图列表中，左键单击蓝图分配。 然后单击 "**更新分配**" 按钮，或右键单击蓝图分配，然后选择 "**更新分配**"。
 
    :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="更新现有蓝图分配" border="false":::
 
-1. "**分配蓝图"** 页将预先加载原始分配中的所有值。
+1. "**分配蓝图**" 页将加载原始赋值中的所有值。
    可以更改“蓝图定义版本”****、“锁定分配”**** 状态，以及蓝图定义上存在的任何动态参数。 完成更改时，单击“分配”****。
 
 1. 在更新后的分配详细信息页上，查看新状态。 在此示例中，我们向分配添加了“锁定”****。
 
-   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="更新了现有蓝图分配 - 锁定模式已更改" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="更新了现有蓝图分配锁模式" border="false":::
 
-1. 使用下拉列表浏览有关其他**分配操作**的详细信息。 **托管资源**表按选定的分配操作更新。
+1. 使用下拉菜单浏览有关其他**分配操作**的详细信息。 **托管资源**的表由所选的分配操作更新。
 
-   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="蓝图分配的分配操作" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="蓝图赋值的赋值运算" border="false":::
 
 ## <a name="rules-for-updating-assignments"></a>更新分配规则
 
@@ -67,6 +67,6 @@ ms.locfileid: "81381791"
 
 - 了解[蓝图生命周期](../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../concepts/parameters.md)。
-- 学习自定义[蓝图排序顺序](../concepts/sequencing-order.md)。
+- 了解如何自定义[蓝图排序顺序](../concepts/sequencing-order.md)。
 - 了解如何利用[蓝图资源锁定](../concepts/resource-locking.md)。
-- 在分配蓝图期间使用[常规故障排除时](../troubleshoot/general.md)解决问题。
+- 使用[一般故障排除](../troubleshoot/general.md)在蓝图的分配期间解决问题。

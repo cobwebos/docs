@@ -1,23 +1,23 @@
 ---
 title: 如何手动修复 ServiceNow 同步问题
-description: 重置与 ServiceNow 的连接，以便 Microsoft Azure 中的警报可以再次调用 ServiceNow
+description: 重置到 ServiceNow 的连接，以便 Microsoft Azure 中的警报可以再次调用 ServiceNow
 ms.subservice: alerts
 ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
 ms.openlocfilehash: f09f5010c18f5ea064b02f0fbbae107bf473e1f8
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81313670"
 ---
 # <a name="how-to-manually-fix-servicenow-sync-problems"></a>如何手动修复 ServiceNow 同步问题
 
-Azure 监视器可以连接到第三方 IT 服务管理 （ITSM） 提供程序。 ServiceNow 是这些提供商之一。
+Azure Monitor 可以连接到第三方 IT 服务管理（ITSM）提供商。 ServiceNow 是这些提供商之一。
 
-出于安全原因，您可能需要刷新用于与 ServiceNow 连接的身份验证令牌。
+出于安全原因，可能需要刷新用于与 ServiceNow 连接的身份验证令牌。
 使用以下同步过程重新激活连接并刷新令牌：
 
 
@@ -25,12 +25,12 @@ Azure 监视器可以连接到第三方 IT 服务管理 （ITSM） 提供程序�
 
     ![新建连接](media/itsmc-resync-servicenow/solution-search-8bit.png)
 
-1. 在解决方案屏幕中，在订阅筛选器中选择"全部"，然后按"服务台"进行筛选
+1. 在 "解决方案" 屏幕中，依次选择 "订阅" 筛选器中的 "全选" 和 "ServiceDesk"
 
     ![新建连接](media/itsmc-resync-servicenow/solutions-list-8bit.png)
 
 1. 选择 ITSM 连接的解决方案。
-1. 在左侧横幅中选择 ITSM 连接。
+1. 在左侧的横幅中选择 "ITSM 连接"。
 
     ![新建连接](media/itsmc-resync-servicenow/itsm-connector-8bit.png)
 
@@ -38,18 +38,18 @@ Azure 监视器可以连接到第三方 IT 服务管理 （ITSM） 提供程序�
     1. 单击连接器名称以对其进行配置
     1. 删除不再使用的任何连接器
 
-    1. 根据合作伙伴类型根据[这些定义](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-connections)更新字段
+    1. 根据你的合作伙伴类型根据[这些定义](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-connections)更新字段
 
-    1. 单击同步
+    1. 单击 "同步"
 
        ![新建连接](media/itsmc-resync-servicenow/resync-8bit2.png)
 
-    1. 单击"保存"
+    1. 单击 "保存"
 
         ![新建连接](media/itsmc-resync-servicenow/save-8bit.png)
 
-f.    查看通知以查看流程是否成功 
+f.    查看通知，查看过程是否成功完成 
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关[IT 服务管理连接](itsmc-connections.md)的更多
+了解有关[IT 服务管理连接](itsmc-connections.md)的详细信息

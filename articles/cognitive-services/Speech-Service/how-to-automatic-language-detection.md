@@ -12,10 +12,10 @@ ms.date: 03/16/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: fefbe793fa4a6b90ba9bf8d468d42dcbd315759c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81402210"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>语音转文本的自动语言检测
@@ -25,7 +25,7 @@ ms.locfileid: "81402210"
 本文介绍如何使用 `AutoDetectSourceLanguageConfig` 来构造 `SpeechRecognizer` 对象并检索检测到的语言。
 
 > [!IMPORTANT]
-> 此功能仅适用于 C#、C++、Java 和 Python 的语音 SDK。
+> 此功能仅适用于适用于 c #、c + +、Java 和 Python 的语音 SDK。
 
 ## <a name="automatic-language-detection-with-the-speech-sdk"></a>使用语言 SDK 进行自动语言检测
 

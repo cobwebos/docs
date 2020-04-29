@@ -4,10 +4,10 @@ description: 了解如何使用门户、Azure PowerShell 和 Azure CLI 创建 Az
 ms.date: 04/15/2020
 ms.topic: conceptual
 ms.openlocfilehash: 34815089367512c4aa54f148c118a669625d0ea3
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81381586"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>创建用来组织和管理资源的管理组
@@ -18,18 +18,18 @@ ms.locfileid: "81381586"
 
 ## <a name="create-a-management-group"></a>创建管理组
 
-租户中的任何 Azure AD 用户可以创建管理组，而无需分配给该用户的管理组写入权限。 此新管理组将是根管理组的子组，创建者将获得"所有者"角色分配。 管理组服务允许此功能，因此在根级别不需要角色分配。 创建根管理组时，没有用户有权访问该组。 为了避免找到 Azure AD 全局管理员开始使用管理组的障碍，我们允许在根目录创建初始管理组  
-水平。
+租户中的任何 Azure AD 用户都可以在没有分配给该用户的管理组写入权限的情况下创建管理组。 此新管理组将是根管理组的子组，并且创建者将获得 "所有者" 角色分配。 管理组服务允许此功能，以便在根级别不需要角色分配。 创建根管理组时，用户没有访问权限。 为了避免发现 Azure AD 全局管理员开始使用管理组的障碍，我们允许在根目录中创建初始管理组  
+调配.
 
 可以使用门户、[资源管理器模板](../../azure-resource-manager/templates/deploy-to-tenant.md#create-management-group)、PowerShell 或 Azure CLI 创建管理组。
 
 ### <a name="create-in-portal"></a>在门户中创建
 
-1. 登录到[Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 选择 **"所有服务** > **管理 + 治理**"。
+1. 选择 "**所有服务** > **管理**" 和 "调控"。
 
-1. 选择**成本管理和计费**
+1. 选择**成本管理 + 计费**
 
 1. 在“成本管理 + 计费 - 管理组”页上，选择“管理组”****
 
@@ -40,12 +40,12 @@ ms.locfileid: "81381586"
 1. 填写管理组 ID 字段。
 
    - ****“管理组 ID”是用来在此管理组上提交命令的目录唯一标识符。 此标识符一旦创建便无法再编辑，因为它用来在整个 Azure 系统中标识这个组。 [根管理组](overview.md#root-management-group-for-each-directory)是自动创建的，其 ID 为 Azure Active Directory ID。 对于所有其他管理组，请分配唯一的 ID。
-   - 显示名称字段是在 Azure 门户中显示的名称。 创建管理组时，单独的显示名称是可选字段，可在任何  
+   - 显示名称字段是在 Azure 门户中显示的名称。 创建管理组时，单独的显示名称是一个可选字段，可以在任何  
      。
 
    :::image type="content" source="./media/create_context_menu.png" alt-text="用于创建新管理组的“选项”窗格" border="false":::
 
-1. 选择“保存”。 
+1. 选择“保存”  。
 
 ### <a name="create-in-powershell"></a>在 PowerShell 中创建
 
@@ -57,7 +57,7 @@ New-AzManagementGroup -GroupName 'Contoso'
 
 **GroupName** 是要创建的唯一标识符。 此 ID 由其他命令用来引用此组，并且以后无法更改。
 
-如果希望管理组在 Azure 门户中显示其他名称，则添加 **"显示名称"** 参数。 例如，若要创建 GroupName 为 Contoso 且显示名称为“Contoso Group”的管理组，请使用以下 cmdlet：
+如果希望管理组在 Azure 门户中显示不同的名称，请添加**DisplayName**参数。 例如，若要创建 GroupName 为 Contoso 且显示名称为“Contoso Group”的管理组，请使用以下 cmdlet：
 
 ```azurepowershell-interactive
 New-AzManagementGroup -GroupName 'Contoso' -DisplayName 'Contoso Group'
@@ -96,7 +96,7 @@ az account management-group create --name ContosoSubGroup --parent Contoso
 
 若要了解有关管理组的详细信息，请参阅：
 
-- [创建用于整理 Azure 资源的管理组](./create.md)
+- [创建管理组来组织 Azure 资源](./create.md)
 - [如何更改、删除或管理管理组](./manage.md)
 - [在 Azure PowerShell 资源模块中查看管理组](/powershell/module/az.resources#resources)
 - [在 REST API 中查看管理组](/rest/api/resources/managementgroups)

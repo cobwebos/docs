@@ -1,6 +1,6 @@
 ---
 title: 在 CloudEvents 架构中将 Azure 事件网格与事件配合使用
-description: 介绍如何使用云事件架构执行 Azure 事件网格中的事件。 该服务支持云事件的 JSON 实现中的事件。
+description: 说明如何将 CloudEvents 架构用于 Azure 事件网格中的事件。 该服务支持 Cloud Events 的 JSON 实现中的事件。
 services: event-grid
 author: banisadr
 ms.service: event-grid
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: babanisa
 ms.openlocfilehash: 404052984cb99e37f7404a47f3ac374088d32d6c
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393473"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>将 CloudEvents v1.0 架构与事件网格配合使用
@@ -139,7 +139,7 @@ New-AzureRmEventGridSubscription `
 
  ## <a name="endpoint-validation-with-cloudevents-v10"></a>使用 CloudEvents v1.0 进行终结点验证
 
-如果熟悉事件网格，你可能会了解事件网格的用于防止滥用的终结点验证握手。 CloudEvents v1.0 使用 HTTP OPTIONS 方法来实现自己的[滥用保护语义](security-authentication.md#webhook-event-delivery)。 你可以[在这里](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)阅读更多关于它。 使用 CloudEvents 架构进行输出时，事件网格可与 CloudEvents v1.0 滥用保护配合使用，取代事件网格验证事件机制。
+如果熟悉事件网格，你可能会了解事件网格的用于防止滥用的终结点验证握手。 CloudEvents v1.0 使用 HTTP OPTIONS 方法来实现自己的[滥用保护语义](security-authentication.md#webhook-event-delivery)。 可以在 [此处](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)阅读详细内容。 使用 CloudEvents 架构进行输出时，事件网格可与 CloudEvents v1.0 滥用保护配合使用，取代事件网格验证事件机制。
 
 <a name="azure-functions"></a>
 

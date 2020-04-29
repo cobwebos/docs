@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 12/06/2019
 ms.author: trbye
 ms.openlocfilehash: 50dd7ddb636658ec6d29c2669d02320c73167fde
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399692"
 ---
 ## <a name="reference-docs"></a>参考文档
@@ -24,9 +24,9 @@ ms.locfileid: "81399692"
 
 请使用以下列表来查找相应的语音 SDK 参考文档：
 
-- <a href="https://aka.ms/csspeech/csharpref" target="_blank" rel="noopener">C# SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/csspeech/cppref" target="_blank" rel="noopener">C++ SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/csspeech/javaref" target="_blank" rel="noopener">Java SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/csspeech/csharpref" target="_blank" rel="noopener">C# SDK <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/csspeech/cppref" target="_blank" rel="noopener">C++ SDK <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/csspeech/javaref" target="_blank" rel="noopener">Java SDK <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="https://aka.ms/csspeech/pythonref" target="_blank" rel="noopener">Python SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="https://aka.ms/csspeech/javascriptref" target="_blank" rel="noopener">JavaScript SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="https://aka.ms/csspeech/objectivecref" target="_blank" rel="noopener">Objective-C SDK <span class="docon docon-navigate-external x-hidden-focus"></span></a>
@@ -44,4 +44,4 @@ ms.locfileid: "81399692"
 
 - [REST API：语音转文本](../rest-speech-to-text.md)
 - [REST API：文本转语音](../rest-text-to-speech.md)
-- <a href="https://cris.ai/swagger/ui/index" target="_blank" rel="noopener">REST API：批处理转录和自定义<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://cris.ai/swagger/ui/index" target="_blank" rel="noopener">REST API：批量听录和自定义 <span class="docon docon-navigate-external x-hidden-focus"></span></a>

@@ -1,6 +1,6 @@
 ---
-title: 安装&部署 Linux C# 代理
-description: 了解如何在 32 位和 64 位 Linux 上安装 IoT 代理的 Azure 安全中心。
+title: '安装 & 部署 Linux c # 代理'
+description: 了解如何在32位和64位 Linux 上安装适用于 IoT 代理的 Azure 安全中心。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,15 +16,15 @@ ms.workload: na
 ms.date: 07/27/2019
 ms.author: mlottner
 ms.openlocfilehash: 40c6ea91fd84a0f088ed770cd7c4c3ea7b8b1c91
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311148"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>为 Linux 部署适用于 IoT 的 Azure 安全中心基于 C# 的安全代理
 
-本指南介绍了如何在 Linux 上安装和部署基于 IoT C# 的安全代理的 Azure 安全中心。
+本指南介绍了如何在 Linux 上安装和部署基于 IoT c # 的安全代理的 Azure 安全中心。
 
 本指南介绍如何：
 
@@ -34,7 +34,7 @@ ms.locfileid: "81311148"
 > * 卸载代理
 > * 疑难解答
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 有关其他平台和代理风格，请参阅[选择正确的安全代理](how-to-deploy-agent.md)。
 
@@ -44,15 +44,15 @@ ms.locfileid: "81311148"
 
 ## <a name="installation"></a>安装
 
-要部署安全代理，请使用以下步骤：
+若要部署安全代理，请使用以下步骤：
 
-1. 从[GitHub](https://aka.ms/iot-security-github-cs)将最新版本下载到您的计算机。
+1. 从[GitHub](https://aka.ms/iot-security-github-cs)下载最新版本到您的计算机。
 
-1. 提取包的内容并导航到 _/安装_文件夹。
+1. 提取包的内容，然后导航到 _/Install_文件夹。
 
 1. 运行 `chmod +x InstallSecurityAgent.sh`，将运行权限添加到 **InstallSecurityAgent 脚本**
 
-1. 接下来，使用**根权限**运行以下命令 ：
+1. 接下来，请在**根权限**下运行以下命令：
 
    ```
    ./InstallSecurityAgent.sh -i -aui <authentication identity>  -aum <authentication method> -f <file path> -hn <host name>  -di <device id> -cl <certificate location kind>
@@ -66,9 +66,9 @@ ms.locfileid: "81311148"
 
 - 添加服务用户（禁用交互式登录）。
 
-- 将代理安装为**守护进程**- 假定设备使用**系统**用于经典部署模型。
+- 将代理安装为**后台**程序-假定设备使用**systemd**进行经典部署模型。
 
-- 配置**sudoers**以允许代理作为根执行某些任务。
+- 将**sudoers**配置为允许代理以 root 身份执行特定任务。
 
 - 使用提供的身份验证参数配置代理。
 
@@ -122,8 +122,8 @@ ms.locfileid: "81311148"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 阅读 Azure 安全中心，了解 IoT 服务[概述](overview.md)
-- 了解有关 IoT[体系结构](architecture.md)的 Azure 安全中心
+- 阅读 Azure 安全中心以获取 IoT 服务[概述](overview.md)
+- 详细了解用于 IoT[体系结构](architecture.md)的 Azure 安全中心
 - 启用该[服务](quickstart-onboard-iot-hub.md)
 - 阅读[常见问题解答](resources-frequently-asked-questions.md)
 - 了解[警报](concept-security-alerts.md)

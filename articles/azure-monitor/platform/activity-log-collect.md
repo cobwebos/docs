@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 监视器中收集和分析 Azure 活动日志
+title: 收集和分析中的 Azure 活动日志 Azure Monitor
 description: 收集 Azure Monitor 日志中的 Azure 活动日志，同时使用监视解决方案分析并搜索所有 Azure 订阅的 Azure 活动日志。
 ms.subservice: logs
 ms.topic: conceptual
@@ -7,41 +7,41 @@ author: bwren
 ms.author: bwren
 ms.date: 04/14/2020
 ms.openlocfilehash: 098aeaa06a26c57744402722aa3eacc51ea85fb7
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81382860"
 ---
-# <a name="collect-and-analyze-azure-activity-log-in-azure-monitor"></a>在 Azure 监视器中收集和分析 Azure 活动日志
-[Azure 活动日志](platform-logs-overview.md)是一种方便用户深入了解 Azure 中发生的订阅级别事件的[平台日志](platform-logs-overview.md)。 虽然可以在 Azure 门户中查看活动日志，但应将其配置为发送到日志分析工作区以启用 Azure 监视器的其他功能。 本文介绍如何执行此配置以及如何将活动日志发送到 Azure 存储和事件中心。
+# <a name="collect-and-analyze-azure-activity-log-in-azure-monitor"></a>收集和分析中的 Azure 活动日志 Azure Monitor
+[Azure 活动日志](platform-logs-overview.md)是一种方便用户深入了解 Azure 中发生的订阅级别事件的[平台日志](platform-logs-overview.md)。 虽然你可以查看 Azure 门户中的活动日志，但你应将其配置为发送到 Log Analytics 工作区，以启用 Azure Monitor 的其他功能。 本文介绍如何执行此配置以及如何将活动日志发送到 Azure 存储和事件中心。
 
-在日志分析工作区中收集活动日志具有以下优点：
+在 Log Analytics 工作区中收集活动日志具有以下优势：
 
-- 日志分析工作区中存储的活动日志数据无需数据引入或数据保留费用。
-- 将活动日志数据与 Azure 监视器收集的其他监视数据相关联。
+- Log Analytics 工作区中存储的活动日志数据不收取数据引入或数据保留费用。
+- 将活动日志数据与 Azure Monitor 收集的其他监视数据相关联。
 - 使用日志查询进行复杂的分析，深入了解活动日志条目的情况。
-- 将日志警报与活动条目一起使用，允许更复杂的警报逻辑。
-- 存储活动日志条目超过 90 天。
-- 将多个 Azure 订阅和租户的日志条目合并到一个位置，以便一起分析。
+- 将日志警报与活动条目一起使用，允许使用更复杂的警报逻辑。
+- 将活动日志条目存储超过90天。
+- 将多个 Azure 订阅和租户中的日志条目合并到一个位置以便一起分析。
 
 > [!IMPORTANT]
-> 跨租户收集日志需要[Azure 灯塔](/azure/lighthouse)。
+> 跨租户收集日志需要[Azure Lighthouse](/azure/lighthouse)。
 
 ## <a name="collecting-activity-log"></a>收集活动日志
-活动日志将自动收集，以便[在 Azure 门户中查看](activity-log-view.md)。 要在日志分析工作区中收集它或将其发送 Azure 存储或事件中心，请创建[一个诊断设置](diagnostic-settings.md)。 这是资源日志使用的方法，使其对所有[平台日志](platform-logs-overview.md)保持一致。  
+将自动收集活动日志以便[在 Azure 门户中查看](activity-log-view.md)。 若要在 Log Analytics 工作区中收集它，或将其发送到 Azure 存储或事件中心，请创建[诊断设置](diagnostic-settings.md)。 这是资源日志使用的与所有[平台日志](platform-logs-overview.md)一致的方法。  
 
-要为活动日志创建诊断设置，请从 Azure 监视器中的 **"活动日志**"菜单中选择 **"诊断"设置**。 有关创建设置的详细信息，请参阅[创建诊断设置以在 Azure 中收集平台日志和指标](diagnostic-settings.md)。 有关可以筛选的类别的说明，请参阅[活动日志中的类别](activity-log-view.md#categories-in-the-activity-log)。 如果您有任何旧版设置，请确保在创建诊断设置之前禁用它们。 同时启用两者可能会导致数据重复。
+若要为活动日志创建诊断设置，请从 Azure Monitor 中的 "**活动日志**" 菜单中选择 "**诊断设置**"。 有关创建设置的详细信息，请参阅[创建诊断设置以在 Azure 中收集平台日志和指标](diagnostic-settings.md)。 有关可以筛选的类别的说明，请参阅[活动日志中的类别](activity-log-view.md#categories-in-the-activity-log)。 如果有任何旧设置，请确保在创建诊断设置之前禁用这些设置。 同时启用两者可能会导致数据重复。
 
 ![诊断设置](media/diagnostic-settings-subscription/diagnostic-settings.png)
 
 
 > [!NOTE]
-> 目前，您只能使用 Azure 门户和资源管理器模板创建订阅级诊断设置。 
+> 目前，只能使用 "Azure 门户" 和 "资源管理器" 模板来创建订阅级别的诊断设置。 
 
 
-## <a name="legacy-settings"></a>旧版设置 
-虽然诊断设置是将活动日志发送到不同目标的首选方法，但如果不选择替换为诊断设置，旧方法将继续工作。 与旧方法不同，诊断设置具有以下优势，建议您更新配置：
+## <a name="legacy-settings"></a>旧设置 
+尽管诊断设置是将活动日志发送到不同目标的首选方法，但如果不选择使用诊断设置替换，旧方法将继续工作。 与旧方法相比，诊断设置具有以下优势，建议你更新配置：
 
 - 用于收集所有平台日志的一致方法。
 - 跨多个订阅和租户收集活动日志。
@@ -52,10 +52,10 @@ ms.locfileid: "81382860"
 
 
 ### <a name="log-profiles"></a>日志配置文件
-日志配置文件是将活动日志发送到 Azure 存储或事件中心的传统方法。 使用以下过程继续使用日志配置文件或禁用它，以便迁移到诊断设置。
+日志配置文件是将活动日志发送到 Azure 存储或事件中心的传统方法。 使用以下过程来继续使用日志配置文件，或者将其禁用以准备迁移到诊断设置。
 
 1. 从 Azure 门户上的 Azure Monitor 菜单中，选择“活动日志”********。
-3. 单击 **"诊断设置**"。
+3. 单击 "**诊断设置**"。
 
    ![诊断设置](media/diagnostic-settings-subscription/diagnostic-settings.png)
 
@@ -64,7 +64,7 @@ ms.locfileid: "81382860"
     ![旧版体验](media/diagnostic-settings-subscription/legacy-experience.png)
 
 ### <a name="log-analytics-workspace"></a>Log Analytics 工作区
-将活动日志收集到日志分析工作区的传统方法是在工作区配置中连接日志。 
+用于将活动日志收集到 Log Analytics 工作区的传统方法是在工作区配置中连接日志。 
 
 1. 在 Azure 门户的“Log Analytics 工作区”菜单中，**** 选择要收集活动日志的工作区。
 1. 在工作区的菜单的“工作区数据源”部分，选择“Azure 活动日志”。********
@@ -77,29 +77,29 @@ ms.locfileid: "81382860"
     ![连接工作区](media/activity-log-collect/connect-workspace.png)
 
 
-要禁用该设置，请执行相同的过程，然后单击 **"断开连接**"以从工作区中删除订阅。
+若要禁用此设置，请执行相同的过程，并单击 "**断开**" 以从工作区中删除订阅。
 
 
-## <a name="analyze-activity-log-in-log-analytics-workspace"></a>在日志分析工作区中分析活动日志
-将活动日志连接到 Log Analytics 工作区时，条目会写入到工作区的名为 *AzureActivity* 的表中，该表可以使用[日志查询](../log-query/log-query-overview.md)进行检索。 此表的结构因[日志条目的类别](activity-log-view.md#categories-in-the-activity-log)而异。 有关每个类别的说明，请参阅 [Azure 活动日志事件架构](activity-log-schema.md)。
+## <a name="analyze-activity-log-in-log-analytics-workspace"></a>分析 Log Analytics 工作区中的活动日志
+将活动日志连接到 Log Analytics 工作区时，条目会写入到工作区的名为 *AzureActivity* 的表中，该表可以使用[日志查询](../log-query/log-query-overview.md)进行检索。 此表的结构因[日志项的类别](activity-log-view.md#categories-in-the-activity-log)而异。 有关每个类别的说明，请参阅 [Azure 活动日志事件架构](activity-log-schema.md)。
 
 
 ### <a name="data-structure-changes"></a>数据结构更改
-诊断设置收集的数据与用于收集活动日志的旧方法相同的数据，对*AzureActivity*表的结构进行了一些更改。
+诊断设置收集的数据与用来收集活动日志的旧方法相同，但对*AzureActivity*表的结构进行了一些更改。
 
-下表中的列已弃用更新的架构。 它们仍然存在于*AzureActivity 中，* 但它们将没有数据。 这些列的替换不是新的，但它们包含的数据与弃用列相同。 它们采用不同的格式，因此您可能需要修改使用它们的日志查询。 
+下表中的列已在更新后的架构中弃用。 它们仍然存在于*AzureActivity*中，但不包含任何数据。 这些列的替换不是新的，但它们包含的数据与不推荐使用的列相同。 它们采用不同的格式，因此您可能需要修改使用它们的日志查询。 
 
-| 已弃用列 | 替换列 |
+| 弃用的列 | 替换列 |
 |:---|:---|
 | ActivityStatus    | ActivityStatusValue    |
-| ActivitySubstatus | 活动子状态值 |
-| OperationName     | 操作名称值     |
-| ResourceProvider  | 资源提供者价值  |
+| ActivitySubstatus | ActivitySubstatusValue |
+| OperationName     | OperationNameValue     |
+| ResourceProvider  | ResourceProviderValue  |
 
 > [!IMPORTANT]
-> 在某些情况下，这些列中的值可能在所有大写中。 如果查询包含这些列，则应使用[* 运算符](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators)执行不区分大小写的比较。
+> 在某些情况下，这些列中的值可能全部大写。 如果有包含这些列的查询，则应使用[= ~ 运算符](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators)来执行不区分大小写的比较。
 
-以下列已添加到更新的架构中的*AzureActivity：*
+以下列已添加到更新后的架构中的*AzureActivity* ：
 
 - Authorization_d
 - Claims_d
@@ -107,7 +107,7 @@ ms.locfileid: "81382860"
 
 
 ## <a name="activity-logs-analytics-monitoring-solution"></a>Activity Logs Analytics 监视解决方案
-Azure 日志分析监视解决方案将很快弃用，并使用日志分析工作区中更新的架构替换为工作簿。 如果已启用该解决方案，您仍可以使用该解决方案，但只能使用旧版设置收集活动日志时才能使用它。 
+Azure Log Analytics 监视解决方案即将弃用，并将在 Log Analytics 工作区中使用更新后的架构替换为工作簿。 如果已启用该解决方案，则仍可使用该解决方案，但仅当使用旧设置收集活动日志时，才能使用该解决方案。 
 
 
 
@@ -122,10 +122,10 @@ Azure 日志分析监视解决方案将很快弃用，并使用日志分析工�
 ![Azure 活动日志仪表板](media/collect-activity-logs/activity-log-dash.png)
 
 
-### <a name="enable-the-solution-for-new-subscriptions"></a>启用新订阅的解决方案
-您将很快不再能够使用 Azure 门户将活动日志分析解决方案添加到订阅中。 您可以使用以下过程与资源管理器模板一起添加它。 
+### <a name="enable-the-solution-for-new-subscriptions"></a>为新订阅启用解决方案
+稍后，你将不再能够使用 Azure 门户将活动日志分析解决方案添加到你的订阅。 可以通过 resource manager 模板使用以下过程添加它。 
 
-1. 将以下 json 复制到名为*活动日志模板*.json 的文件。
+1. 将以下 json 复制到名为*ActivityLogTemplate*的文件中。
 
     ```json
     {
@@ -214,6 +214,6 @@ Azure 日志分析监视解决方案将很快弃用，并使用日志分析工�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解有关[活动日志](platform-logs-overview.md)的更多内容。
+- 详细了解[活动日志](platform-logs-overview.md)。
 - 详细了解 [Azure Monitor 数据平台](data-platform.md)。
 - 使用[日志查询](../log-query/log-query-overview.md)查看活动日志中的详细信息。

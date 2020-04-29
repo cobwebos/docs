@@ -4,10 +4,10 @@ description: 预测分数表示 LUIS API 服务基于用户话语对于预测结
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: 709a34f0a278d8a17267c7544583798d54167dad
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81382366"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>预测评分指示意向和实体的预测准确性
@@ -48,7 +48,7 @@ ms.locfileid: "81382366"
 
 分数太接近的两个意向可能会由于**非确定性训练**而反转。 最高分可能会变为第二高分，第二高分可能会变为最高分。 为了防止此情况，请向该话语的前两个意向添加示例话语，并在示例话语中包含单词选择和用于区分两个意向的上下文。 这两个意图应该具有相同数量的示例话语。 防止由于训练而造成反转的一个间隔经验法则是，让分数有 15% 的差值。
 
-可以通过[使用所有数据进行训练](luis-how-to-train.md#train-with-all-data)来关闭**非确定性训练**。
+可以通过**使用所有数据进行训练**来关闭[非确定性训练](luis-how-to-train.md#train-with-all-data)。
 
 ## <a name="differences-with-predictions-between-different-training-sessions"></a>不同训练会话之间的预测差异
 
@@ -56,11 +56,11 @@ ms.locfileid: "81382366"
 
 如果聊天机器人需要一个特定的 LUIS 分数来指示意向的置信度，则应使用前两个意向之间的分差。 这种情况可更灵活地应对训练过程中的变化。
 
-可以通过[使用所有数据进行训练](luis-how-to-train.md#train-with-all-data)来关闭**非确定性训练**。
+可以通过**使用所有数据进行训练**来关闭[非确定性训练](luis-how-to-train.md#train-with-all-data)。
 
 ## <a name="e-exponent-notation"></a>E（指数）表示法
 
-预测分数可采用指数表示法，显示超过 0 到 1 这个范围的值，例如 `9.910309E-07`__。 此分数指示的是非常小的数****。
+预测分数可采用指数表示法，显示超过 0 到 1 这个范围的值，例如  `9.910309E-07`。 此分数指示的是非常小的数  。
 
 |E 表示法分数 |实际分数|
 |--|--|
@@ -70,7 +70,7 @@ ms.locfileid: "81382366"
 
 ## <a name="application-settings"></a>应用程序设置
 
-使用[应用程序设置](luis-reference-application-settings.md)控制音调符号和标点符号如何影响预测分数。
+使用[应用程序设置](luis-reference-application-settings.md)来控制音调符号和标点如何影响预测分数。
 
 ## <a name="next-steps"></a>后续步骤
 

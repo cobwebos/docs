@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: spelluru
 ms.openlocfilehash: 348d82f704b89b97e11a09b8f88e92831901b3bf
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393462"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure 事件网格中的概念
@@ -80,12 +80,12 @@ ms.locfileid: "81393462"
 
 ## <a name="batching"></a>批处理
 
-使用自定义主题时，必须始终在数组中发布事件。 对于低吞吐量方案，可采用单批；但对于大容量用例，建议在每次发布时对多个事件进行批处理，以实现更高的效率。 批的大小最大可达 1 MB。 每个事件仍不应大于 64 KB（常规可用性）或 1 MB（预览）。
+使用自定义主题时，必须始终在数组中发布事件。 对于低吞吐量方案，可采用单批；但对于大容量用例，建议在每次发布时对多个事件进行批处理，以实现更高的效率。 批的大小最大可达 1 MB。 每个事件不应大于 64 KB （公开上市）或 1 MB （预览）。
 
 > [!NOTE]
-> 正式版服务级别协议 (GA) 涵盖了大小高达 64 KB 的事件。 预览版中目前支持最大为 1 MB 的事件。 超过 64 KB 的事件以 64 KB 的增量收费。 
+> 正式版服务级别协议 (GA) 涵盖了大小高达 64 KB 的事件。 预览版中目前支持最大为 1 MB 的事件。 超过 64 KB 的事件以 64 KB 为增量收费。 
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关事件网格的简介，请参阅[有关事件网格](overview.md)。
+* 有关事件网格的介绍，请参阅[关于事件网格](overview.md)。
 * 若要快速开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。

@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 04/13/2020
 ms.author: trbye
 ms.openlocfilehash: 171fdb033cba422d8ba580da3ab54db88ca20872
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81400831"
 ---
 # <a name="convert-text-to-speech-using-python"></a>使用 Python 将文本转换为语音
@@ -23,10 +23,10 @@ ms.locfileid: "81400831"
 
 在本文中，需要使用一个包含语音服务资源的 [Azure 认知服务](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)帐户。 如果没有帐户，可以使用[免费试用版](get-started.md)获取订阅密钥。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Python 2.7.x 或 3.x
-* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">视觉工作室<span class="docon docon-navigate-external x-hidden-focus"></span></a>，<a href="https://code.visualstudio.com/download" target="_blank">视觉工作室<span class="docon docon-navigate-external x-hidden-focus"></span>代码</a>， 或您最喜爱的文本编辑器
+* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio<span class="docon docon-navigate-external x-hidden-focus"></span></a>、<a href="https://code.visualstudio.com/download" target="_blank">Visual Studio Code<span class="docon docon-navigate-external x-hidden-focus"></span></a> 或你喜欢用的文本编辑器
 * 语音服务的 Azure 订阅密钥
 
 ## <a name="create-a-project-and-import-required-modules"></a>创建一个项目并导入必需的模块

@@ -1,6 +1,6 @@
 ---
-title: 没有安全代理的服务
-description: 开始使用适用于 IoT 服务的 Azure 安全中心的内置工作流。
+title: 无安全代理的服务
+description: 用于 IoT 服务的 Azure 安全中心内置工作流入门。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,25 +16,25 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 175ed3b06e9d2b0293dd6c72e9a0713ca01be4a3
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81310911"
 ---
-# <a name="get-started-with-built-in-iot-hub-integration"></a>开始内置 IoT 中心集成
+# <a name="get-started-with-built-in-iot-hub-integration"></a>内置的 IoT 中心集成入门
 
-此选项使您能够不使用 Azure 安全中心进行 IoT 安全代理使用服务。
+使用此选项，无需将 Azure 安全中心用于 IoT 安全代理即可使用该服务。
 
-## <a name="enable-built-in-iot-hub-integration"></a>实现内置 IoT 中心集成
+## <a name="enable-built-in-iot-hub-integration"></a>启用内置的 IoT 中心集成
 
-要启用监视设备标识管理、设备到云和云到设备通信模式，请执行以下操作以启动服务：
+若要启用对设备标识管理、设备到云和云到设备通信模式的监视，请执行以下操作来启动该服务：
 
 1. 打开**IoT 中心**。
-1. 选择 **"安全概述"** 菜单。
-1. 单击 **"保护您的 IoT 解决方案**并填写入职表单"。
+1. 选择 "**安全概述**" 菜单。
+1. 单击 "**保护 IoT 解决方案**" 并完成载入窗体。
 
-祝贺你！ 您已完成在 IoT 中心启用 IoT 服务的 Azure 安全中心。
+祝贺你！ 已在 IoT 中心为 IoT 服务启用 Azure 安全中心。
 
 ## <a name="next-steps"></a>后续步骤
 

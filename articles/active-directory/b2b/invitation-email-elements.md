@@ -1,5 +1,5 @@
 ---
-title: B2B 邀请电子邮件的元素 - Azure 活动目录 |微软文档
+title: B2B 邀请电子邮件的元素-Azure Active Directory |Microsoft Docs
 description: Azure Active Directory B2B 协作邀请电子邮件模板
 services: active-directory
 ms.service: active-directory
@@ -13,34 +13,34 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0429cfb62c319675806d76b4759b776a7b32dbcb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81407224"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B 协作邀请电子邮件的元素 - Azure Active Directory
 
-邀请电子邮件是将合作伙伴登记为 Azure AD 中的 B2B 协作用户的关键组件。 虽然[不需要您发送电子邮件来邀请使用 B2B 协作的用户](add-user-without-invite.md)，但这样做为用户提供了决定是否接受您的邀请所需的所有信息。 它还为他们提供了一个链接，当他们需要返回到您的资源时，他们将来可以随时参考。
+邀请电子邮件是将合作伙伴登记为 Azure AD 中的 B2B 协作用户的关键组件。 尽管[不需要你发送电子邮件来邀请使用 B2B 协作的人员](add-user-without-invite.md)，但这样做会为用户提供他们做出决定是否接受邀请所需的所有信息。 它还提供了一个链接，在未来需要返回到你的资源时，他们始终可以引用它。
 
 ![显示企业间邀请电子邮件的屏幕截图](media/invitation-email-elements/invitation-email.png)
 
 > [!NOTE]
-> 此新电子邮件模板仍在向所有租户推出，因此某些租户仍在使用较旧的设计。 到 2020 年 5 月底，来自所有租户的邀请都将使用此模板。
+> 这一新的电子邮件模板仍被推出给所有租户，因此某些租户仍在使用较旧的设计。 在5月2020日结束时，来自所有租户的邀请将使用此模板。
 
 ## <a name="explaining-the-email"></a>电子邮件说明
 
 让我们看看电子邮件的几个元素，以便了解如何充分利用其功能。
 
-### <a name="subject"></a>主题
+### <a name="subject"></a>Subject
 
-电子邮件的主题遵循以下模式：
+电子邮件的主题遵循此模式：
 
-&lt;用户名&gt;邀请您访问其组织内的应用程序。
+&lt;用户名&gt;邀请你访问其组织中的应用程序。
 
 ### <a name="from-address"></a>发件人地址
 
-对“发件人地址”使用类似于 LinkedIn 的模式。 此模式应明确说明，虽然电子邮件来自invites@microsoft.com，但邀请来自另一个组织。 格式是：微软 <invites@microsoft.com>邀请或代表租户名称&lt;&gt; <invites@microsoft.com>的微软邀请。 
+对“发件人地址”使用类似于 LinkedIn 的模式。 这种模式应该清楚地说，虽然电子邮件来自invites@microsoft.com于其他组织，但邀请也是如此。 格式 <invites@microsoft.com>为：代表&lt;tenantname&gt; <invites@microsoft.com>的 microsoft 邀请或 microsoft 邀请。 
 
 ### <a name="reply-to"></a>回复
 
@@ -48,33 +48,33 @@ ms.locfileid: "81407224"
 
 ### <a name="phishing-warning"></a>网络钓鱼警告
 
-电子邮件首先向用户发出有关网络钓鱼的简短警告，提醒用户他们只接受他们期望的邀请。 最好能确保您邀请的合作伙伴不会因为您的邀请而感到惊讶，提前向他们提及邀请。
+电子邮件首先会向用户发送有关仿冒网站的简短警告，通知他们应该只接受他们期待的邀请。 最好的做法是确保邀请的合作伙伴不会因你的邀请而感到吃惊，因为你可以提前提到。
 
-![电子邮件中网络钓鱼警告的图像](media/invitation-email-elements/phishing-warning.png)
+![电子邮件中的网络钓鱼警告的图像](media/invitation-email-elements/phishing-warning.png)
 
 ### <a name="inviters-information"></a>邀请方的信息
 
-电子邮件包括有关邀请者及其发送邀请的组织的信息。 这包括发件人的姓名和电子邮件地址，以及与组织关联的名称和主要域。 所有这些信息都应帮助被邀请者就接受邀请做出明智的决定。
+该电子邮件包含有关邀请者及其发送邀请的组织的信息。 这包括发送者的姓名和电子邮件地址，以及与组织关联的名称和主域。 所有这些信息都应有助于被邀请者做出有关接受邀请的明智决策。
 
-![邀请者信息在电子邮件中的图像](media/invitation-email-elements/inviters-information.png)
+![电子邮件中邀请者信息的图像](media/invitation-email-elements/inviters-information.png)
 
 ### <a name="invitation-message"></a>邀请消息
 
-如果邀请者在[邀请来宾用户访问目录、组或应用](add-users-administrator.md)或使用[邀请 API](customize-invitation-api.md)时，将邮件作为邀请的一部分，则该邮件将突出显示到电子邮件的主部分。 还包括被邀请者的姓名和个人资料图像（如果他们设置了一个）。 邮件本身是一个文本区域，因此出于安全原因，它不处理 HTML 标记。
+如果邀请者在邀请[来宾用户加入目录、组或应用](add-users-administrator.md)或[使用邀请 API](customize-invitation-api.md)时，在其邀请中包含一条消息，则该消息将突出显示在电子邮件的主要部分。 如果已设置，还包含邀请者的名称和配置文件映像。 消息本身是一个文本区域，因此出于安全原因，它不会处理 HTML 标记。
 
 ![电子邮件中邀请邮件的图像](media/invitation-email-elements/invitation-message.png)
 
 ### <a name="accept-button-and-redirect-url"></a>接受按钮和重定向 URL
 
-电子邮件的下一部分包含有关被邀请者接受邀请后将采取哪些内容的信息，以及执行此操作的按钮。  将来，被邀请者始终可以使用此链接直接返回到您的资源。
+电子邮件的下一部分包含有关邀请在接受邀请后将在何处拍摄的信息，以及用于执行此操作的按钮。  将来，被邀请者始终可以使用此链接返回到你的资源。
 
-![接受按钮的图像和电子邮件中的重定向 URL](media/invitation-email-elements/accept-button.png)
+![电子邮件中的 "接受" 按钮和重定向 URL 的图像](media/invitation-email-elements/accept-button.png)
 
 ### <a name="footer-section"></a>页脚部分
 
-页脚包含有关要发送的邀请的详细信息。 邀请者始终可以选择阻止将来的邀请。 如果组织[设置了隐私声明](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-properties-area)，则指向该语句的链接将在此处显示。  否则，注释指示组织未设置隐私声明。
+页脚包含有关所发送邀请的详细信息。 被邀请者始终有一个选项来阻止将来的邀请。 如果组织已[设置了隐私声明](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-properties-area)，则会在此处显示该语句的链接。  否则，说明表明组织尚未设置隐私声明。
 
-![电子邮件中页脚部分的图像](media/invitation-email-elements/footer-section.png)
+![电子邮件中的页脚部分的图像](media/invitation-email-elements/footer-section.png)
  
 ## <a name="how-the-language-is-determined"></a>语言是如何确定的
 

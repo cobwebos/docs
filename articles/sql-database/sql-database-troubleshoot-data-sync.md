@@ -12,36 +12,36 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
 ms.openlocfilehash: d6ea604446cb9d56bb699685d24c81992bcac3a2
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81382892"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>排查 SQL 数据同步的问题
 
-本文介绍如何解决 Azure SQL 数据同步的已知问题。如果有问题的解决方案，它在此处提供。
+本文介绍如何排查 Azure SQL 数据同步的已知问题。如果某个问题有了解决方法，会在本文中提供。
 
 有关 SQL 数据同步的概述，请参阅[使用 Azure SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)。
 
 > [!IMPORTANT]
-> Azure SQL 数据同步此时**不支持**Azure SQL 数据库托管实例。
+> 目前，Azure SQL 数据同步不支持 Azure SQL 数据库托管实例  。
 
 ## <a name="sync-issues"></a>同步问题
 
-- [与客户端代理关联的本地数据库的门户 UI 中的同步失败](#sync-fails)
+- [门户 UI 中针对与客户端代理关联的本地数据库执行同步失败](#sync-fails)
 
-- [同步组已卡在处理状态](#sync-stuck)
+- [我的同步组停留在正在处理状态](#sync-stuck)
 
-- [我在表中看到错误的数据](#sync-baddata)
+- [在表中发现错误数据](#sync-baddata)
 
 - [同步成功后发现主键数据不一致](#sync-pkdata)
 
-- [我看到性能显著下降](#sync-perf)
+- [发现性能显著降低](#sync-perf)
 
-- [我看到此消息："无法将值 NULL 插入列\<列>。列不允许 null。这意味着什么，我怎样才能修复它？](#sync-nulls)
+- [我看到以下消息：“无法在列 \<column> 中插入 NULL 值。此列不允许 null 值。”这是什么意思，如何解决该错误？](#sync-nulls)
 
-- [数据同步如何处理循环引用？也就是说，当同一数据在多个同步组中同步，并因此不断更改时？](#sync-circ)
+- [数据同步如何处理循环引用？也就是说，如果在多个同步组中同步相同的数据，这些数据是否不断更改？](#sync-circ)
 
 ### <a name="sync-fails-in-the-portal-ui-for-on-premises-databases-that-are-associated-with-the-client-agent"></a><a name="sync-fails"></a>门户 UI 中针对与客户端代理关联的本地数据库执行同步失败
 
@@ -72,10 +72,10 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
 
 - **解决方法**。 重启 SQL 数据同步服务。
 
-    1. 在 **"开始"** 菜单中，搜索**服务**。
-    1. 在搜索结果中，选择“服务”。****
-    1. 查找**SQL 数据同步**服务。
-    1. 如果服务状态为“已停止”****，请右键单击服务名称，选择“启动”****。
+    1. 在“开始”菜单中，搜索“服务”。  
+    1. 在搜索结果中，选择“服务”。 
+    1. 找到“SQL 数据同步”  服务。
+    1. 如果服务状态为“已停止”  ，请右键单击服务名称，选择“启动”  。
 
 > [!NOTE]
 > 如果上述信息无法使同步组摆脱“正在处理”状态，可让 Microsoft 支持部门重置该同步组的状态。 若要重置同步组状态，请在 [Azure SQL 数据库论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=ssdsgetstarted)中发帖。 在贴子中，请包含自己的订阅 ID，以及需要重置的组的同步组 ID。 Microsoft 支持工程师将会回复帖子，并在重置状态后予以通知。
@@ -88,7 +88,7 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
 
 - **解决方法**。 确保同步中涉及的表名称不同，即使这些表属于数据库中不同的架构。
 
-### <a name="i-see-inconsistent-primary-key-data-after-a-successful-sync"></a><a name="sync-pkdata"></a>成功同步后，我看到不一致的主键数据
+### <a name="i-see-inconsistent-primary-key-data-after-a-successful-sync"></a><a name="sync-pkdata"></a>同步成功后发现主键数据不一致
 
 系统报告同步成功，且日志中未显示失败或跳过的行，但是，发现同步组中数据库间的主键数据不一致。
 
@@ -104,7 +104,7 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
 
 - **解决方法**。 最佳解决方案就是预防。 确保同步组中没有循环引用。 由一个同步组同步的任何行都不能由其他同步组同步。
 
-### <a name="i-see-this-message-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-it"></a><a name="sync-nulls"></a>我看到此消息："无法将值 NULL 插入列\<列>。 此列不允许 null 值。” 这是什么意思，如何解决该错误？ 
+### <a name="i-see-this-message-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-it"></a><a name="sync-nulls"></a> 我看到以下消息：“无法在列 \<column> 中插入 NULL 值。 此列不允许 null 值。” 这是什么意思，如何解决该错误？ 
 此错误消息表示发生了两个以下问题之一：
 -  某个表没有主键。 若要解决此问题，请将主键添加到要同步的所有表。
 -  CREATE INDEX 语句中可能存在 WHERE 子句。 数据同步不会处理这种情况。 若要解决此问题，请删除 WHERE 子句，或手动对所有数据库进行更改。 
@@ -122,19 +122,19 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
 
 - [无法删除同步组](#setup-delete)
 
-- [无法取消注册本地 SQL Server 数据库](#setup-unreg)
+- [无法注销本地 SQL Server 数据库](#setup-unreg)
 
 - [没有足够的特权启动系统服务](#setup-perms)
 
 - [数据库具有“过期”状态](#setup-date)
 
-- [同步组具有"过期"状态](#setup-date2)
+- [同步组具有“过期”状态](#setup-date2)
 
 - [在卸载或停止代理后的三分钟内无法删除同步组](#setup-delete2)
 
-- [还原丢失或损坏的数据库时会发生什么情况？](#setup-restore)
+- [还原丢失或损坏的数据库时，会发生什么情况？](#setup-restore)
 
-### <a name="i-get-a-disk-out-of-space-message"></a><a name="setup-space"></a>我收到一条"磁盘空间不足"消息
+### <a name="i-get-a-disk-out-of-space-message"></a><a name="setup-space"></a>有消息指出“磁盘空间不足”
 
 - **原因**。 需要删除残留的文件时，可能会显示“磁盘空间不足”消息。 出现此消息的原因可能是使用了防病毒软件，或者在尝试执行删除操作时文件处于打开状态。
 
@@ -169,23 +169,23 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
 
 - **原因**。 很可能是因为正在尝试注销一个已被删除的数据库。
 
-- **解决方法**。 若要注销某个本地 SQL Server 数据库，请选择该数据库，再选择“强制删除”****。
+- **解决方法**。 若要注销某个本地 SQL Server 数据库，请选择该数据库，再选择“强制删除”  。
 
   如果此操作无法从同步组中删除数据库：
 
   1. 请停止再重启客户端代理主机服务。  
-    a. 选择“开始”菜单。****  
+    a. 选择“开始”菜单。   
     b. 在搜索框中输入 **services.msc**。  
-    c. 在搜索结果窗格的“程序”部分，双击“服务”。********  
-    d. 右键单击“SQL 数据同步”**** 服务。  
+    c. 在搜索结果窗格的“程序”部分，双击“服务”。    
+    d. 右键单击“SQL 数据同步”  服务。  
     e. 如果该服务正在运行，请将其停止。  
-    f. 右键单击该服务，并选择“启动”****。  
+    f. 右键单击该服务，并选择“启动”  。  
     g. 检查数据库是否仍已注册。 如果已不再注册数据库，则操作完成。 否则，请继续执行下一步。
   1. 打开客户端代理应用 (SqlAzureDataSyncAgent)。
-  1. 选择“编辑凭据”，输入数据库的凭据。****
+  1. 选择“编辑凭据”，输入数据库的凭据。 
   1. 继续执行注销。
 
-### <a name="i-dont-have-sufficient-privileges-to-start-system-services"></a><a name="setup-perms"></a>我没有足够的权限启动系统服务
+### <a name="i-dont-have-sufficient-privileges-to-start-system-services"></a><a name="setup-perms"></a>没有足够的特权启动系统服务
 
 - **原因**。 在两种情况下会发生此错误：
   -   用户名和/或密码不正确。
@@ -193,21 +193,21 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
 
 - **解决方法**。 向用户帐户授予“作为服务登录”凭据：
 
-  1. 转到**启动** > **控制面板** > **管理工具** > **本地安全策略** > **本地策略** > **用户权限管理**。
-  1. 选择“作为服务登录”。****
-  1. 在“属性”对话框中添加用户帐户。****
-  1. 依次选择“应用”、“确定”********。
+  1. 转到“开始” > “控制面板” > “管理工具” > “本地安全策略” > “本地策略” > “用户权限管理”。      
+  1. 选择“作为服务登录”。 
+  1. 在“属性”对话框中添加用户帐户。 
+  1. 依次选择“应用”、“确定”   。
   1. 关闭所有窗口。
 
-### <a name="a-database-has-an-out-of-date-status"></a><a name="setup-date"></a>数据库具有"过期"状态
+### <a name="a-database-has-an-out-of-date-status"></a><a name="setup-date"></a>数据库具有“过期”状态
 
-- **原因**。 SQL 数据同步会从服务中删除已脱机达 45 天或更长时间的数据库（从数据库脱机时算起）。 如果数据库已脱机达 45 天或更长时间，然后重新联机，则其状态会变为“过期”。****
+- **原因**。 SQL 数据同步会从服务中删除已脱机达 45 天或更长时间的数据库（从数据库脱机时算起）。 如果数据库已脱机达 45 天或更长时间，然后重新联机，则其状态会变为“过期”。 
 
-- **解决方法**。 确保所有数据库都不会脱机达 45 天或更长时间，即可避免“过期”状态。****
+- **解决方法**。 确保所有数据库都不会脱机达 45 天或更长时间，即可避免“过期”状态。 
 
-  如果数据库的状态为“过期”：****
+  如果数据库的状态为“过期”： 
 
-  1. 从同步组中删除处于“过期”状态的数据库。****
+  1. 从同步组中删除处于“过期”状态的数据库。 
   1. 将数据库添加回同步组。
 
   > [!WARNING]
@@ -217,9 +217,9 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
 
 - **原因**。 如果在 45 天的整个保留期内未能应用一个或多个更改，则同步组可能会过期。
 
-- **解决方法**。 若要避免“过期”状态，请定期在历史记录查看器中检查同步作业的结果。**** 调查并解决未能应用的任何更改。
+- **解决方法**。 若要避免“过期”状态，请定期在历史记录查看器中检查同步作业的结果。  调查并解决未能应用的任何更改。
 
-  如果同步组的状态为“过期”，请删除同步组并重新创建。****
+  如果同步组的状态为“过期”，请删除同步组并重新创建。 
 
 ### <a name="a-sync-group-cant-be-deleted-within-three-minutes-of-uninstalling-or-stopping-the-agent"></a><a name="setup-delete2"></a>在卸载或停止代理后的三分钟内无法删除同步组
 
@@ -228,7 +228,7 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
 - **解决方法**。
 
   1. 在关联的同步代理处于联机状态时删除同步组（推荐）。
-  1. 如果代理处于脱机状态但已安装，请在本地计算机上将其联机。 等待代理状态在 SQL 数据同步门户中显示为“联机”。**** 然后删除同步组。
+  1. 如果代理处于脱机状态但已安装，请在本地计算机上将其联机。 等待代理状态在 SQL 数据同步门户中显示为“联机”。  然后删除同步组。
   1. 如果代理因为被卸载而处于脱机状态：  
     a.  将代理 XML 文件（如果存在）从 SQL 数据同步安装文件夹中删除。  
     b.  在某台本地计算机（可以是相同或不同的计算机）上安装代理。 然后，提交门户中针对显示为脱机的代理生成的代理密钥。  

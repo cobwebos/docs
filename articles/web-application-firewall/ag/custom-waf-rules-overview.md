@@ -8,25 +8,25 @@ ms.service: web-application-firewall
 ms.date: 04/14/2020
 ms.author: victorh
 ms.openlocfilehash: c0f802f5113e38e811c110ee913099e76fa7be0b
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81383818"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Azure 应用程序网关上 Web 应用程序防火墙 v2 的自定义规则
 
-Azure 应用程序网关 Web 应用程序防火墙 (WAF) v2 附带了一个预配置的、由平台管理的规则集，用于防范多种不同类型的攻击。 这些攻击包括跨站点脚本、SQL 注入，等等。 如果您是 WAF 管理员，则可能需要编写自己的规则来增强核心规则集 （CRS） 规则。 你的规则可以根据匹配条件阻止或允许请求的流量。
+Azure 应用程序网关 Web 应用程序防火墙 (WAF) v2 附带了一个预配置的、由平台管理的规则集，用于防范多种不同类型的攻击。 这些攻击包括跨站点脚本、SQL 注入，等等。 如果你是 WAF 管理员，则可能想要编写自己的规则来补充核心规则集 (CRS) 规则。 你的规则可以根据匹配条件阻止或允许请求的流量。
 
 自定义规则允许你创建自己的规则，用于对通过 WAF 的每个请求进行评估。 这些规则的优先级高于托管规则集中的其余规则。 自定义规则包含规则名称、规则优先级和一系列匹配条件。 如果满足这些条件，则执行相应的操作（允许或阻止）。
 
-例如，可以阻止来自 192.168.5.4/24 范围内的某个 IP 地址的所有请求。 在此规则中，运算符是 *IPMatch*，matchValues 是 IP 地址范围 (192.168.5.4/24)，操作是阻止流量。 您还可以设置规则的名称和优先级。
+例如，可以阻止来自 192.168.5.4/24 范围内的某个 IP 地址的所有请求。 在此规则中，运算符是 *IPMatch*，matchValues 是 IP 地址范围 (192.168.5.4/24)，操作是阻止流量。 还可以设置规则的名称和优先级。
 
 自定义规则支持使用复合逻辑创建更高级的规则来解决安全需求。 例如，（条件 1 **and** 条件 2，**or** 条件 3）。 这意味着，如果满足条件 1 **和**条件 2，**或者**满足条件 3，则 WAF 应执行自定义规则中指定的操作。
 
-同一规则中的不同匹配条件始终使用 **and** 来组合。 例如，阻止来自特定 IP 地址的流量，并且仅当流量使用特定浏览器时才阻止流量。
+同一规则中的不同匹配条件始终使用 **and** 来组合。 例如，阻止来自特定 IP 地址的流量，并且仅当它们使用特定的浏览器时才阻止。
 
-若要对两个不同的条件使用 **or** 运算符，这两个条件必须在不同的规则中。 例如，阻止来自特定 IP 地址的流量，或者如果流量使用特定的浏览器，则阻止流量。
+若要对两个不同的条件使用 **or** 运算符，这两个条件必须在不同的规则中。 例如，阻止来自特定 IP 地址的流量，或者阻止流量（如果它们使用特定的浏览器）。
 
 > [!NOTE]
 > WAF 自定义规则的最大数目为 100。 有关应用程序网关限制的详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](../../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits)。
@@ -107,25 +107,25 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
 
 必须是以下变量之一：
 
-- 远程添加器 = 远程计算机连接的 IP 地址/主机名
-- 请求方法 = HTTP 请求方法（获取、POST、PUT、删除等）。
-- 查询字符串 = URI 中的变量
-- PostArgs = 在 POST 正文中发送的参数。 仅当“Content-Type”标头设置为“application/x-www-form-urlencoded”和“multipart/form-data”时，才会应用使用此匹配变量的自定义规则。
-- 请求库 = 请求的 URI
-- 请求标题 = 请求的标题
-- 请求正文 – 它包含整个请求正文。 仅当“Content-Type”标头设置为“application/x-www-form-urlencoded”时，才会应用使用此匹配变量的自定义规则。 
-- 请求 Cookie = 请求的 Cookie
+- RemoteAddr –远程计算机连接的 IP 地址/主机名
+- RequestMethod – HTTP 请求方法（GET、POST、PUT、DELETE 等。）
+- QueryString – URI 中的变量
+- PostArgs –在 POST 正文中发送的参数。 仅当“Content-Type”标头设置为“application/x-www-form-urlencoded”和“multipart/form-data”时，才会应用使用此匹配变量的自定义规则。
+- RequestUri –请求的 URI
+- RequestHeaders –请求的标头
+- RequestBody –其中包含整个请求正文。 仅当“Content-Type”标头设置为“application/x-www-form-urlencoded”时，才会应用使用此匹配变量的自定义规则。 
+- RequestCookies –请求的 Cookie
 
 ### <a name="selector-optional"></a>Selector [可选]
 
-描述 matchVariable 集合的字段。 例如，如果匹配变量为"请求标题"，则选择器可以位于*用户代理*标头上。
+描述 matchVariable 集合的字段。 例如，如果 matchVariable 为 RequestHeaders，则选择器可以位于 *User-Agent* 标头中。
 
 ### <a name="operator-required"></a>Operator [必需]
 
 必须是以下运算符之一：
 
 - IPMatch - 仅当匹配变量为 *RemoteAddr* 时才使用
-- 相等 = 输入与匹配值相同
+- 等于–输入与 MatchValue 相同
 - 包含
 - LessThan
 - GreaterThan
@@ -157,13 +157,13 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
 
 ### <a name="action-required"></a>Action [必需]
 
-- 允许 = 授权事务，跳过所有其他规则。 指定的请求将添加到允许列表，并且一旦匹配，该请求将停止进一步的评估，并会被发送到后端池。 不会根据允许列表中的规则评估任何其他自定义规则或托管规则。
-- 块 = 基于*SecDefaultAction（* 检测/预防模式）阻止事务。 与 Allow 操作一样，对请求进行评估并将其添加到阻止列表后，评估将会停止，请求将被阻止。 然后，将不会评估满足相同条件的任何请求，而只会将其阻止。 
-- 日志 = 允许规则写入日志，但允许规则的其余部分运行以进行评估。 其他自定义规则按优先顺序进行评估，后跟托管规则。
+- Allow –授权事务，并跳过所有其他规则。 指定的请求将添加到允许列表，并且一旦匹配，该请求将停止进一步的评估，并会被发送到后端池。 不会根据允许列表中的规则评估任何其他自定义规则或托管规则。
+- Block –阻止基于*SecDefaultAction* （检测/阻止模式）的事务。 与 Allow 操作一样，对请求进行评估并将其添加到阻止列表后，评估将会停止，请求将被阻止。 然后，将不会评估满足相同条件的任何请求，而只会将其阻止。 
+- Log –允许规则写入日志，但允许其余规则运行以进行评估。 其他自定义规则按优先顺序进行评估，后跟托管规则。
 
 ## <a name="geomatch-custom-rules-preview"></a>Geomatch 自定义规则（预览版）
 
-自定义规则允许创建定制的规则，以满足应用程序和安全策略的确切需要。 可以按国家/地区限制对 Web 应用程序的访问。 有关详细信息，请参阅[地理匹配自定义规则（预览）。](geomatch-custom-rules.md)
+自定义规则允许创建定制的规则，以满足应用程序和安全策略的确切需要。 可以按国家/地区限制对 Web 应用程序的访问。 有关详细信息，请参阅[Geomatch 自定义规则（预览版）](geomatch-custom-rules.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

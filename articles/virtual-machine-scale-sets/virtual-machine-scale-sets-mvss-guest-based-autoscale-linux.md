@@ -1,5 +1,5 @@
 ---
-title: 在 Linux 比例集模板中使用 Azure 自动缩放和来宾指标
+title: 将 Azure 自动缩放与 Linux 规模集模板中的来宾指标配合使用
 description: 了解如何使用 Linux 虚拟机规模集模板中的来宾指标执行自动缩放
 author: mimckitt
 tags: azure-resource-manager
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: mimckitt
 ms.openlocfilehash: 8021b7b8feb6dc06fb2e48bc4e825200a1baad33
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273641"
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>使用 Linux 规模集模板中的来宾指标执行自动缩放
 
-Azure 中有两种广泛的指标类型是从 VM 和缩放集收集的：主机指标和来宾指标。 粗略地讲，若要使用标准 CPU、磁盘和网络指标，则主机指标非常适合。 不过，如果需要更多指标，则应考虑使用来宾指标。
+在 Azure 中，会从 VM 和规模集收集两类广泛的指标：主机指标和来宾指标。 粗略地讲，若要使用标准 CPU、磁盘和网络指标，则主机指标非常适合。 不过，如果需要更多指标，则应考虑使用来宾指标。
 
-主机指标不需要其他设置，因为它们由主机 VM 收集，而来宾指标要求您在来宾 VM 中安装[Windows Azure 诊断扩展](../virtual-machines/windows/extensions-diagnostics-template.md)或[Linux Azure 诊断扩展](../virtual-machines/linux/diagnostic-extension.md)。 使用来宾指标而不是主机指标的一个常见原因是，与主机指标相比，来宾指标提供更大的指标选择范围。 内存消耗指标就是这样一个例子，它们只会通过来宾指标提供。 [此处](../azure-monitor/platform/metrics-supported.md)列出了支持的主机指标，[此处](../azure-monitor/platform/autoscale-common-metrics.md)列出了常用的来宾指标。 本文介绍如何修改[基本可行规模集模板](virtual-machine-scale-sets-mvss-start.md)，以根据 Linux 规模集的来宾指标使用自动缩放规则。
+主机指标不需要其他设置，因为它们是由主机 VM 收集的，而来宾度量要求您在来宾 VM 中安装[Windows Azure 诊断扩展](../virtual-machines/windows/extensions-diagnostics-template.md)或[Linux Azure 诊断扩展](../virtual-machines/linux/diagnostic-extension.md)。 使用来宾指标而不是主机指标的一个常见原因是，与主机指标相比，来宾指标提供更大的指标选择范围。 内存消耗指标就是这样一个例子，它们只会通过来宾指标提供。 [此处](../azure-monitor/platform/metrics-supported.md)列出了支持的主机指标，[此处](../azure-monitor/platform/autoscale-common-metrics.md)列出了常用的来宾指标。 本文介绍如何修改[基本可行规模集模板](virtual-machine-scale-sets-mvss-start.md)，以根据 Linux 规模集的来宾指标使用自动缩放规则。
 
 ## <a name="change-the-template-definition"></a>更改模板定义
 

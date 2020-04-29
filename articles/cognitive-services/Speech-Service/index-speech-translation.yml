@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: 语音翻译文档
-summary: 语音服务的语音翻译支持音频流的实时、多语言语音语音和语音到文本的翻译
+summary: 使用语音服务提供的语音翻译，可以对音频流进行实时多语言语音转语音和语音转文本翻译
 metadata:
-  title: 语音翻译文档 - 教程，API 参考 - Azure 认知服务 |微软文档
+  title: 语音翻译文档 - 教程和 API 参考 - Azure 认知服务 | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -12,10 +12,10 @@ metadata:
   ms.date: 04/13/2020
   ms.author: trbye
   ms.openlocfilehash: 5d5c1cdae695b68f45d55b51b76d88c2f93c50d1
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: MT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/16/2020
+  ms.lasthandoff: 04/29/2020
   ms.locfileid: "81401415"
 landingContent:
 - title: 关于语音翻译
@@ -34,7 +34,7 @@ landingContent:
       url: quickstarts/translate-speech-to-text-multiple-languages.md
     - text: 将语音翻译为语音
       url: quickstarts/translate-speech-to-speech.md
-- title: 通过语音翻译进行开发
+- title: 使用语音翻译进行开发
   linkLists:
   - linkListType: learn
     links:

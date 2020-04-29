@@ -4,10 +4,10 @@ description: 为 SDK 编写遥测处理器和遥测初始值设定项，以在�
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.openlocfilehash: 8b81849726ad546a24ce1bb56a139b384eb54c42
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81405362"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK 中的筛选和预处理遥测 | Microsoft Azure
@@ -21,7 +21,7 @@ ms.locfileid: "81405362"
 
 开始之前：
 
-* 为应用程序安装适当的[SDK：ASP.NET、ASP.NET](asp-net.md)[核心](asp-net-core.md)、非[HTTP/辅助 .NET/.NET 核心](worker-service.md)或[JavaScript](javascript.md)
+* 为应用程序安装适当的 SDK： [ASP.NET](asp-net.md)、 [ASP.NET CORE](asp-net-core.md)、[非 HTTP/Worker for .Net/.net Core](worker-service.md)或[JavaScript](javascript.md)
 
 <a name="filtering"></a>
 
@@ -110,7 +110,7 @@ builder.Build();
 
 在此点后创建的 TelemetryClients 将使用处理器。
 
-**ASP.NET核心/辅助服务应用**
+**ASP.NET Core/辅助角色服务应用**
 
 > [!NOTE]
 > 使用 `ApplicationInsights.config` 或 `TelemetryConfiguration.Active` 添加处理器对于 ASP.NET Core 应用程序无效，或者你在使用 Microsoft.ApplicationInsights.WorkerService SDK。
@@ -216,7 +216,7 @@ public void Process(ITelemetry item)
    appInsights.addTelemetryInitializer(filteringFunction);
    ```
 
-## <a name="addmodify-properties-itelemetryinitializer"></a>添加/修改属性：I遥测初始化器
+## <a name="addmodify-properties-itelemetryinitializer"></a>添加/修改属性：ITelemetryInitializer
 
 
 通过遥测初始值设定项使用其他信息来扩充遥测，以及/或者重写通过标准遥测模块设置的遥测属性。
@@ -266,7 +266,7 @@ namespace MvcWebRole.Telemetry
 }
 ```
 
-**ASP.NET应用：加载初始化程序**
+**ASP.NET 应用：加载初始值设定项**
 
 在 ApplicationInsights.config 中：
 
@@ -292,7 +292,7 @@ protected void Application_Start()
 
 [查看此示例的详细信息。](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole)
 
-**ASP.NET核心/辅助服务应用：加载初始化程序**
+**ASP.NET Core/辅助角色服务应用：加载初始值设定项**
 
 > [!NOTE]
 > 使用 `ApplicationInsights.config` 或 `TelemetryConfiguration.Active` 添加初始值设定项对于 ASP.NET Core 应用程序无效，或者你在使用 Microsoft.ApplicationInsights.WorkerService SDK。
@@ -355,12 +355,12 @@ protected void Application_Start()
 
 可添加任意数量的初始值设定项，并按添加顺序调用它们。
 
-### <a name="opencensus-python-telemetry-processors"></a>打开Census Python 遥测处理器
+### <a name="opencensus-python-telemetry-processors"></a>OpenCensus Python 遥测处理器
 
-OpenCensus Python 中的遥测处理器只是调用回拨函数，用于在导出遥测数据之前处理遥测。 回调函数必须接受[信封](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/protocol.py#L86)数据类型作为其参数。 要筛选出导出的遥测数据，请确保回调函数返回`False`。 您可以在[此处](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/protocol.py)的信封中查看 Azure 监视器数据类型的架构。
+OpenCensus Python 中的遥测处理器是在导出遥测之前调用的回调函数。 回调函数必须接受[信封](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/protocol.py#L86)数据类型作为其参数。 若要筛选出要导出的遥测，请确保回调函数返回`False`。 可在[此处](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/protocol.py)查看信封中 Azure Monitor 数据类型的架构。
 
 > [!NOTE]
-> `cloud_RoleName`您可以通过更改`ai.cloud.role``tags`字段中的属性来修改 。
+> 您可以`cloud_RoleName`通过更改`ai.cloud.role` `tags`字段中的属性修改。
 
 ```python
 def callback_function(envelope):
@@ -462,7 +462,7 @@ def main():
 if __name__ == "__main__":
     main()
 ```
-您可以根据需要添加尽可能多的处理器，并且按添加顺序调用处理器。 如果一个处理器应引发异常，则不会影响以下处理器。
+你可以根据需要添加任意多个处理器，并按添加它们的顺序调用它们。 如果一个处理器应引发异常，则它不会影响以下处理器。
 
 ### <a name="example-telemetryinitializers"></a>示例 TelemetryInitializer
 
@@ -497,7 +497,7 @@ public void Initialize(ITelemetry telemetry)
 
 #### <a name="add-information-from-httpcontext"></a>从 HttpContext 添加信息
 
-以下示例初始化程序从 读取数据[`HttpContext`](https://docs.microsoft.com/aspnet/core/fundamentals/http-context?view=aspnetcore-3.1)并将其追加到`RequestTelemetry`实例。 `IHttpContextAccessor`通过构造函数依赖项注入自动提供 。
+下面的示例初始值设定项从读取[`HttpContext`](https://docs.microsoft.com/aspnet/core/fundamentals/http-context?view=aspnetcore-3.1)数据并将其追加`RequestTelemetry`到实例。 `IHttpContextAccessor`通过构造函数依赖关系注入自动提供。
 
 ```csharp
 public class HttpContextRequestTelemetryInitializer : ITelemetryInitializer
@@ -553,4 +553,4 @@ public class HttpContextRequestTelemetryInitializer : ITelemetryInitializer
 ## <a name="next-steps"></a><a name="next"></a>后续步骤
 * [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)
 * [采样](../../azure-monitor/app/sampling.md)
-* [疑难解答](../../azure-monitor/app/troubleshoot-faq.md)
+* [故障排除](../../azure-monitor/app/troubleshoot-faq.md)

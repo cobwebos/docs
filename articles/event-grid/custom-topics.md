@@ -1,6 +1,6 @@
 ---
 title: Azure 事件网格中的自定义主题
-description: 在 Azure 事件网格中描述自定义主题。
+description: 介绍 Azure 事件网格中的自定义主题。
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 166a48d74d32c8b0a3a59310e693ea96ada29116
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81394353"
 ---
 # <a name="custom-topics-in-azure-event-grid"></a>Azure 事件网格中的自定义主题
@@ -19,7 +19,7 @@ ms.locfileid: "81394353"
 
 **自定义主题**是应用程序和第三方主题。 在创建或分配了对自定义主题的访问权限后，就会在订阅中看到该自定义主题。 
 
-设计应用程序时，可以灵活地决定要创建多少个主题。 对于大型解决方案，请为每个**相关事件类别**创建**自定义主题**。 例如，假设有一个应用程序发送与修改用户帐户和处理订单相关的事件。 任何事件处理程序都不太可能同时需要这两个类别的事件。 请创建两个自定义主题，让事件处理程序订阅其感兴趣的主题。 对于小型解决方案，可能希望将所有事件发送到单个主题。 事件订阅者可以筛选他们所需的事件类型。
+设计应用程序时，可以灵活地决定要创建多少个主题。 对于大型解决方案，请为**每个相关事件类别**创建一个**自定义主题**。 例如，假设有一个应用程序发送与修改用户帐户和处理订单相关的事件。 任何事件处理程序都不太可能同时需要这两个类别的事件。 请创建两个自定义主题，让事件处理程序订阅其感兴趣的主题。 对于小型解决方案，可能希望将所有事件发送到单个主题。 事件订阅者可以筛选他们所需的事件类型。
 
 ## <a name="event-schema"></a>事件架构
 有关事件架构的详细概述，请参阅[Azure 事件网格事件架构](event-schema.md)。 对于自定义主题，事件发布者确定**数据**对象。 顶级数据应具有与标准资源所定义事件相同的字段。
@@ -41,7 +41,7 @@ ms.locfileid: "81394353"
 ]
 ```
 
-以下各节提供了指向教程的链接，用于使用 Azure 门户、CLI、PowerShell 和 Azure 资源管理器 （ARM） 模板创建自定义主题。 
+以下部分提供了一些链接，这些链接指向有关使用 Azure 门户、CLI、PowerShell 和 Azure 资源管理器（ARM）模板创建自定义主题的教程。 
 
 
 ## <a name="azure-portal-tutorials"></a>Azure 门户教程

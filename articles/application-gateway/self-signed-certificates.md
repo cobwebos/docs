@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
 ms.openlocfilehash: 5ceefb076b63df942cfff202946f6b82050bbab9
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311940"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>使用自定义根 CA 生成 Azure 应用程序网关自签名证书
 
-应用程序网关 v2 SKU 引入了允许后端服务器的受信任根证书。 这样，就无需像在 v1 SKU 中那样使用身份验证证书。 该根证书是来自后端证书服务器的 Base-64 编码的 X.509(.CER) 格式根证书。** 它标识颁发服务器证书的根证书颁发机构 （CA），然后服务器证书用于 TLS/SSL 通信。
+应用程序网关 v2 SKU 引入了允许后端服务器的受信任根证书。 这样，就无需像在 v1 SKU 中那样使用身份验证证书。 该根证书是来自后端证书服务器的 Base-64 编码的 X.509(.CER) 格式根证书。  它标识颁发服务器证书的根证书颁发机构（CA），然后将服务器证书用于 TLS/SSL 通信。
 
-如果网站由知名 CA（例如 GoDaddy 或 DigiCert）签名，则应用程序网关默认信任网站的证书。 在这种情况下，您不需要显式上载根证书。 有关详细信息，请参阅[使用应用程序网关 的 TLS 终止和端到端 TLS 概述](ssl-overview.md)。 但是，如果你有一个开发/测试环境，但不想要购买由已验证的 CA 签名的证书，可以创建自己的自定义 CA，然后使用该 CA 创建自签名证书。 
+如果网站的证书由众所周知的 CA（例如 GoDaddy 或 DigiCert）签名，则默认情况下应用程序网关会信任该证书。 在这种情况下，无需显式上传根证书。 有关详细信息，请参阅[tls 终止概述和应用程序网关的端到端 tls](ssl-overview.md)。 但是，如果你有一个开发/测试环境，但不想要购买由已验证的 CA 签名的证书，可以创建自己的自定义 CA，然后使用该 CA 创建自签名证书。 
 
 > [!NOTE]
 > 自签名证书默认不受信任，并且可能难以维护。 另外，它们可能使用过时的哈希，以及不够可靠的加密套件。 为了提高安全性，请购买由知名证书颁发机构签名的证书。
@@ -41,7 +41,7 @@ ms.locfileid: "81311940"
 
 - **一个应用程序网关 v2 SKU**
    
-  如果没有现有的应用程序网关，请参阅[快速入门：使用 Azure 应用程序网关 - Azure 门户直接进行 Web 流量](quick-create-portal.md)。
+  如果没有现有的应用程序网关，请参阅[快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure 门户](quick-create-portal.md)。
 
 ## <a name="create-a-root-ca-certificate"></a>创建根 CA 证书
 
@@ -88,7 +88,7 @@ ms.locfileid: "81311940"
 CSR 是请求证书时向 CA 提供的公钥。 CA 将针对此特定请求颁发证书。
 
 > [!NOTE]
-> 服务器证书的 CN（通用名称）必须与颁发者域不同。 例如，在这种情况下，颁发机构的 CN 是`www.contoso.com`，服务器证书的 CN 为`www.fabrikam.com`。
+> 服务器证书的 CN（公用名）必须与颁发者的域不同。 例如，在本例中，颁发者的 CN 是 `www.contoso.com`，服务器证书的 CN 是 `www.fabrikam.com`。
 
 
 1. 使用以下命令生成 CSR：
@@ -97,11 +97,11 @@ CSR 是请求证书时向 CA 提供的公钥。 CA 将针对此特定请求颁�
    openssl req -new -sha256 -key fabrikam.key -out fabrikam.csr
    ```
 
-1. 出现提示时，键入根键的密码以及自定义 CA 的组织信息：国家/地区、州、组织、OU 和完全限定的域名。 这是网站的域，它应该不同于颁发者。
+1. 出现提示时，请键入根密钥的密码，以及自定义 CA 的组织信息：国家/地区、省/市/自治区、组织、组织单位和完全限定的域名。 这是网站的域，它应该不同于颁发者。
 
    ![服务器证书](media/self-signed-certificates/server-cert.png)
 
-### <a name="generate-the-certificate-with-the-csr-and-the-key-and-sign-it-with-the-cas-root-key"></a>使用 CSR 和密钥生成证书，然后使用 CA 的根密钥进行签名
+### <a name="generate-the-certificate-with-the-csr-and-the-key-and-sign-it-with-the-cas-root-key"></a>使用 CSR 和密钥生成证书，并使用 CA 的根密钥为该证书签名
 
 1. 使用以下命令以创建证书：
 
@@ -125,15 +125,15 @@ CSR 是请求证书时向 CA 提供的公钥。 CA 将针对此特定请求颁�
    - fabrikam.crt
    - fabrikam.key
 
-## <a name="configure-the-certificate-in-your-web-servers-tls-settings"></a>在 Web 服务器的 TLS 设置中配置证书
+## <a name="configure-the-certificate-in-your-web-servers-tls-settings"></a>在 web 服务器的 TLS 设置中配置证书
 
-在 Web 服务器中，使用 fabrikam.crt 和 fabrikam.key 文件配置 TLS。 如果 Web 服务器无法获取两个文件，则可以使用 OpenSSL 命令将它们合并到单个 .pem 或 .pfx 文件中。
+在 web 服务器中，使用 fabrikam 和 fabrikam 文件配置 TLS。 如果 Web 服务器无法接收两个文件，你可以使用 OpenSSL 命令将其合并成单个 .pem 或 .pfx 文件。
 
 ### <a name="iis"></a>IIS
 
-有关如何在 IIS 上导入证书并将其上载为服务器证书的说明，请参阅[操作操作：在 Windows Server 2003 中的 Web 服务器上安装导入的证书](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server)。
+有关如何导入证书并将其上传为 IIS 上的服务器证书的说明，请参阅[如何：在 Windows Server 2003 中的 Web 服务器上安装导入的证书](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server)。
 
-有关 TLS 绑定说明，请参阅[如何在 IIS 7 上设置 SSL。](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)
+有关 TLS 绑定说明，请参阅[如何在 IIS 7 上设置 SSL](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)。
 
 ### <a name="apache"></a>Apache
 
@@ -151,13 +151,13 @@ CSR 是请求证书时向 CA 提供的公钥。 CA 将针对此特定请求颁�
 
 ### <a name="nginx"></a>NGINX
 
-以下配置是具有 TLS 配置的[NGINX 服务器块](https://nginx.org/docs/http/configuring_https_servers.html)的示例：
+以下配置是[NGINX server block](https://nginx.org/docs/http/configuring_https_servers.html) with TLS 配置的示例：
 
-![带 TLS 的 NGINX](media/self-signed-certificates/nginx-ssl.png)
+![NGINX 与 TLS](media/self-signed-certificates/nginx-ssl.png)
 
 ## <a name="access-the-server-to-verify-the-configuration"></a>访问服务器以验证配置
 
-1. 将根证书添加到计算机的受信任根存储。 访问网站时，请确保浏览器中显示整个证书链。
+1. 将根证书添加到计算机的受信任根存储中。 访问网站时，请确保浏览器中显示整个证书链。
 
    ![受信任的根证书](media/self-signed-certificates/trusted-root-cert.png)
 
@@ -175,13 +175,13 @@ openssl s_client -connect localhost:443 -servername www.fabrikam.com -showcerts
 
 ![OpenSSL 证书验证](media/self-signed-certificates/openssl-verify.png)
 
-## <a name="upload-the-root-certificate-to-application-gateways-http-settings"></a>将根证书上载到应用程序网关的 HTTP 设置
+## <a name="upload-the-root-certificate-to-application-gateways-http-settings"></a>将根证书上传到应用程序网关的 HTTP 设置
 
 若要在应用程序网关中上传证书，必须将 .crt 证书导出为 Base-64 编码的 .cer 格式。 由于 .crt 已包含 Base-64 编码格式的公钥，因此，只需将文件扩展名从 .crt 重命名为 .cer 即可。 
 
 ### <a name="azure-portal"></a>Azure 门户
 
-若要从门户上传受信任的根证书，请选择“HTTP 设置”，然后选择“HTTPS”协议。********
+若要从门户上传受信任的根证书，请选择“HTTP 设置”，然后选择“HTTPS”协议。  
 
 ![使用门户添加证书](media/self-signed-certificates/portal-cert.png)
 
@@ -265,12 +265,12 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ### <a name="verify-the-application-gateway-backend-health"></a>验证应用程序网关后端运行状况
 
-1. 单击应用程序网关的“后端运行状况”视图，检查探测是否正常。****
-1. 应会看到，HTTPS 探测的状态为“正常”。****
+1. 单击应用程序网关的“后端运行状况”视图，检查探测是否正常。 
+1. 应会看到，HTTPS 探测的状态为“正常”。 
 
 ![HTTPS 探测](media/self-signed-certificates/https-probe.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-要了解有关应用程序网关中的 SSL_TLS 的详细信息，请参阅[TLS 终止概述以及使用应用程序网关端到端 TLS](ssl-overview.md)的 TLS 概述。
+若要了解有关应用程序网关上的 SSL\TLS 的详细信息，请参阅[tls 终止概述和应用程序网关的端到端 tls](ssl-overview.md)。
 

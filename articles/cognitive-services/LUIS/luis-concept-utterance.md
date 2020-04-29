@@ -4,10 +4,10 @@ description: 话语是应用需要解释的用户输入。 收集你认为用户
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: d851082a4ec4a003619826eeffd4f4b856a67824
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81382290"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>了解哪些良好的话语适用于你的 LUIS 应用
@@ -23,7 +23,7 @@ ms.locfileid: "81382290"
 * 复数形式
 * 词干
 * 名词和动词选择
-* [标点](luis-reference-application-settings.md#punctuation-normalization)符号 - 使用正确、不正确且没有语法的良好品种
+* [标点符号](luis-reference-application-settings.md#punctuation-normalization)-使用正确、不正确且无语法的理想
 
 ## <a name="how-to-choose-varied-utterances"></a>如何选择不同的陈述
 
@@ -68,7 +68,7 @@ LUIS 使用由 LUIS 模型作者精心挑选的话语构建有效的模型。 �
 
 ## <a name="utterance-normalization"></a>话语规范化
 
-话语规范化是指在训练和预测期间忽略标点和音调符号的影响这一过程。 使用[应用程序设置](luis-reference-application-settings.md)控制话语规范化如何影响陈述预测。
+话语规范化是指在训练和预测期间忽略标点和音调符号的影响这一过程。 使用[应用程序设置](luis-reference-application-settings.md)来控制查询文本规范化对查询文本预测的影响。
 
 ## <a name="utterance-normalization-for-diacritics-and-punctuation"></a>音调符号和标点的话语规范化
 
@@ -95,7 +95,7 @@ LUIS 使用由 LUIS 模型作者精心挑选的话语构建有效的模型。 �
 
 规范化**音调符号**是指将话语中带音调符号的字符替换为常规字符。 例如：`Je parle français` 变成了 `Je parle francais`。
 
-规范化并不意味着你不会在示例陈述或预测响应中看到标点符号和音调符号，而只是表示在训练和预测过程中会忽略它们。
+规范化并不意味着在示例最谈话或预测响应中看不到标点符号和音调符号，只是在训练和预测期间将忽略它们。
 
 ### <a name="punctuation-marks"></a>标点符号
 

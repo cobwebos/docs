@@ -1,5 +1,5 @@
 ---
-title: 将应用程序运行状况扩展与 Azure 虚拟机缩放集一起使用
+title: 使用 Azure 虚拟机规模集的应用程序运行状况扩展
 description: 了解如何使用应用程序运行状况扩展监视部署在虚拟机规模集上的应用程序的运行状况。
 author: mimckitt
 tags: azure-resource-manager
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: mimckitt
 ms.openlocfilehash: cb5f1d48bb1a95db004d9da553e19a35071c73b0
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273726"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>配合使用虚拟机规模集和应用程序运行状况扩展
@@ -19,7 +19,7 @@ ms.locfileid: "81273726"
 
 本文介绍如何使用应用程序运行状况扩展监控部署在虚拟机规模集上的应用程序的运行状况。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 本文假定你熟悉以下内容：
 -   Azure 虚拟机[扩展](../virtual-machines/extensions/overview.md)
 -   [修改](virtual-machine-scale-sets-upgrade-scale-set.md)虚拟机规模集
@@ -163,7 +163,7 @@ extension.json 文件内容。
 ```
 
 
-## <a name="troubleshoot"></a>疑难解答
+## <a name="troubleshoot"></a>故障排除
 扩展执行输出将记录到在以下目录中发现的文件：
 
 ```Windows

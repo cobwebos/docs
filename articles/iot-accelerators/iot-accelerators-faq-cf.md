@@ -1,6 +1,6 @@
 ---
 title: 连接的工厂解决方案常见问题解答 - Azure | Microsoft Docs
-description: 本文回答了连接工厂解决方案加速器的常见问题。 它包括指向 GitHub 存储库的链接。
+description: 本文解答了连接工厂解决方案加速器的常见问题。 它包括指向 GitHub 存储库的链接。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: f2f8c08176f80436a339924adb4b2a09338a548a
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81313587"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>连接的工厂解决方案加速器的常见问题解答
@@ -148,7 +148,7 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 
 此外，还可以在部署后向解决方案加速器添加 Azure Maps 帐户密钥。 导航到 Azure 门户并访问连接的工厂部署中的应用服务资源。 导航到“应用程序设置”，在此处可以找到“应用程序设置”部分********。 将 MapApiQueryKey 设置为 [Azure Maps 帐户的密钥](../azure-maps/how-to-manage-account-keys.md)****。 保存设置，然后导航到“概述”**** 并重新启动应用服务。
 
-### <a name="how-do-i-create-an-azure-maps-account"></a>如何创建 Azure 地图帐户？
+### <a name="how-do-i-create-an-azure-maps-account"></a>如何实现创建 Azure Maps 帐户？
 
 请参阅[如何管理 Azure Maps 帐户和密钥](../azure-maps/how-to-manage-account-keys.md)。
 

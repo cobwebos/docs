@@ -1,7 +1,7 @@
 ---
 title: 语音转文本 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 使用语音转文本功能，可将音频流实时听录为文本。 应用程序、工具或设备可以使用、显示和处理此文本输入。 此服务可与文本到语音（语音合成）和语音翻译功能无缝配合。
+description: 使用语音转文本功能，可将音频流实时听录为文本。 应用程序、工具或设备可以使用、显示和处理此文本输入。 此服务可与文本转语音（语音合成）和语音翻译功能无缝协作。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/12/2020
 ms.author: trbye
 ms.openlocfilehash: e0aea7e55381e9571b156701699f5f45315bb384
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399709"
 ---
 # <a name="what-is-speech-to-text"></a>什么是语音转文本？
@@ -26,7 +26,7 @@ ms.locfileid: "81399709"
 语音转文本服务默认使用通用语言模型。 此模型已使用 Microsoft 自有的数据训练，部署在云中。 它非常适合用于对话和听写方案。 使用语音转文本在独特的环境中进行识别和听录时，可以创建并训练自定义的声学、语言和发音模型。 自定义有助于解决环境干扰或特定于行业的词汇的问题。
 
 > [!NOTE]
-> 必应演讲于2019年10月15日退役。 如果您的应用程序、工具或产品正在使用必应语音 API，我们创建了指南以帮助您迁移到语音服务。
+> 必应语音于2019年10月15日停用。 如果你的应用程序、工具或产品正在使用必应语音 Api，我们已创建了可帮助你迁移到语音服务的指南。
 > - [从必应语音迁移到语音服务](how-to-migrate-from-bing-speech.md)
 
 ## <a name="get-started-with-speech-to-text"></a>语音转文本入门
@@ -34,7 +34,7 @@ ms.locfileid: "81399709"
 语音转文本服务通过[语音 SDK](speech-sdk.md) 提供。 有几种常见方案可作为快速入门，以各种语言和平台提供：
 
  - [快速入门：通过麦克风输入识别语音](quickstarts/speech-to-text-from-microphone.md)
- - [快速入门：从文件中识别语音](quickstarts/speech-to-text-from-file.md)
+ - [快速入门：从文件识别语音](quickstarts/speech-to-text-from-file.md)
  - [快速入门：识别存储在 blob 存储中的语音](quickstarts/from-blob.md)
 
 如果你偏向于使用语音转文本 REST 服务，请参阅 [REST API](rest-speech-to-text.md)。
@@ -43,7 +43,7 @@ ms.locfileid: "81399709"
 
 有机会使用语音服务后，请尝试学习有关如何使用语音 SDK 和 LUIS 从语音中识别意向的教程。
 
-- [教程：使用 C 使用语音 SDK 和 LUIS 识别语音意图#](how-to-recognize-intents-from-speech-csharp.md)
+- [教程：使用 C 通过语音识别语音 SDK 和 LUIS#](how-to-recognize-intents-from-speech-csharp.md)
 
 GitHub 上提供了语音 SDK 的示例代码。 这些示例涵盖了常见方案，例如，从文件或流中读取音频、连续和单次识别，以及使用自定义模型。
 

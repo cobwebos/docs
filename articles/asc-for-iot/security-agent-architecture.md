@@ -1,6 +1,6 @@
 ---
 title: 安全代理体系结构
-description: 了解 Azure 安全中心中用于 IoT 服务的代理的安全代理体系结构。
+description: 了解用于 IoT 服务的 Azure 安全中心中所使用的代理的安全代理体系结构。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,51 +16,51 @@ ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 9029ece923b7cda09c7a57d07736791e241c9e70
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81310686"
 ---
-# <a name="security-agent-reference-architecture"></a>安全代理引用体系结构
+# <a name="security-agent-reference-architecture"></a>安全代理参考体系结构
 
-IoT 的 Azure 安全中心为通过 IoT 中心记录、处理、聚合和发送安全数据的安全代理提供了参考体系结构。
+用于 IoT 的 Azure 安全中心为通过 IoT 中心记录、处理、聚合和发送安全数据的安全代理提供了参考体系结构。
 
-安全代理设计为在受约束的 IoT 环境中工作，并且与它们使用的资源相比，它们提供的值是高度可定制的。
+安全代理设计为在受约束的 IoT 环境中工作，并且与它们所使用的资源相比，它们可在其提供的值方面实现高度自定义。
 
 安全代理支持以下功能：
 
-- 从基础操作系统（Linux、Windows）收集原始安全事件。 要了解有关可用安全数据收集器的更多信息，请参阅[Azure 安全中心进行 IoT 代理配置](how-to-agent-configuration.md)。
+- 收集基础操作系统（Linux、Windows）中的原始安全事件。 若要了解有关可用安全数据收集器的详细信息，请参阅[用于 IoT 代理配置的 Azure 安全中心](how-to-agent-configuration.md)。
 
 - 将原始安全事件聚合到通过 IoT 中心发送的消息中。
 
-- 使用现有设备标识或专用模块标识进行身份验证。 有关详细信息，请参阅[安全代理身份验证方法](concept-security-agent-authentication-methods.md)。
+- 使用现有的设备标识或专用模块标识进行身份验证。 有关详细信息，请参阅[安全代理身份验证方法](concept-security-agent-authentication-methods.md)。
 
-- 使用**Azureiot 安全**模块孪生进行远程配置。 要了解更多信息，请参阅[为 IoT 代理配置 Azure 安全中心](how-to-agent-configuration.md)。
+- 通过使用**azureiotsecurity**模块克隆进行远程配置。 若要了解详细信息，请参阅[为 IoT 代理配置 Azure 安全中心](how-to-agent-configuration.md)。
 
-IoT 安全代理的 Azure 安全中心开发为开源项目，可从 GitHub 获得：
+用于 IoT 安全代理的 Azure 安全中心作为开放源代码项目开发，可从 GitHub 获得：
 
 - [基于 IoT C 的代理的 Azure 安全中心](https://github.com/Azure/Azure-IoT-Security-Agent-C)
-- [基于 IoT C# 的代理的 Azure 安全中心](https://github.com/Azure/Azure-IoT-Security-Agent-CS)
+- [基于 IoT c # 的代理的 Azure 安全中心](https://github.com/Azure/Azure-IoT-Security-Agent-CS)
 
 ## <a name="agent-supported-platforms"></a>代理支持的平台
 
-IoT 的 Azure 安全中心为 32 位和 64 位 Windows 提供了不同的安装程序代理，32 位和 64 位 Linux 也提供了相同的安装程序代理。 确保根据下表为每个设备具有正确的代理安装程序：
+用于 IoT 的 Azure 安全中心为32位和64位 Windows 提供不同的安装程序代理，适用于32位和64位 Linux。 请确保按照下表为每个设备设置正确的代理安装程序：
 
 | 体系结构 | Linux | Windows |    详细信息|
 |----------|----------------------------------------------|-------------|-------------------------------------------|
-| 32 位  | C  | C#  ||
-| 64 位  | C# 或 C           | C#      | 我们建议对设备资源受限或最少的设备使用 C 代理。|
+| 32位  | C  | C#  ||
+| 64 位  | C # 或 C           | C#      | 建议为设备使用具有更大限制或最小设备资源的 C 代理。|
 |
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，您了解了适用于 IoT 安全代理体系结构的 Azure 安全中心以及可用的安装程序。
+本文介绍了适用于 IoT 安全代理体系结构和可用安装程序的 Azure 安全中心。
 
-要继续使用用于 IoT 部署的 Azure 安全中心，请使用以下文章：
+若要继续开始使用 Azure 安全中心进行 IoT 部署，请使用以下文章：
 
 - 了解[安全代理身份验证方法](concept-security-agent-authentication-methods.md)
 - 选择并部署[安全代理](how-to-deploy-agent.md)
-- 查看 Azure 安全中心，查看 IoT[服务先决条件](service-prerequisites.md)
-- 了解如何在[IoT 中心启用 IoT 服务的 Azure 安全中心](quickstart-onboard-iot-hub.md)
-- 从[IoT 常见问题解答的 Azure 安全中心](resources-frequently-asked-questions.md)了解有关该服务
+- 查看 Azure 安全中心以了解 IoT[服务先决条件](service-prerequisites.md)
+- 了解如何[在 Iot 中心为 iot 服务启用 Azure 安全中心](quickstart-onboard-iot-hub.md)
+- 详细了解[Azure 安全中心提供的 IOT 常见问题解答](resources-frequently-asked-questions.md)

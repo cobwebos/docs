@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
 ms.openlocfilehash: c0e3dc2a93393982341414399e318de0d983b918
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399965"
 ---
 :::row:::
     :::column span="3":::
-        Python 语音 SDK 可作为 Python 包索引 （PyPI） 模块提供，有关详细信息，请参阅<a href="https://pypi.org/project/azure-cognitiveservices-speech/" target="_blank">azure<span class="docon docon-navigate-external x-hidden-focus"></span>认知服务语音</a>。 Python 语音 SDK 与 Windows、Linux 和 macOS 兼容。
+        Python 语音 SDK 作为 Python 包索引（PyPI）模块提供，有关详细信息，请参阅<a href="https://pypi.org/project/azure-cognitiveservices-speech/" target="_blank">cognitiveservices account <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>。 Python 语音 SDK 与 Windows、Linux 和 macOS 兼容。
     :::column-end:::
     :::column:::
         <br>
@@ -28,7 +28,7 @@ pip install azure-cognitiveservices-speech
 ```
 
 > [!TIP]
-> 如果您在 macOS 上，则可能需要运行以下命令，以便上面的 pip 命令正常工作：
+> 如果你使用的是 macOS，则可能需要运行以下命令来使此 pip 命令正常运行：
 > ```Bash
 > python3 -m pip install --upgrade pip
 > ```

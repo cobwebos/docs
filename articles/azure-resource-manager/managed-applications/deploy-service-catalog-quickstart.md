@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: tomfitz
 ms.openlocfilehash: ce58fc69496f54c078b0a0a55a8a3c7cad82a051
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81391715"
 ---
 # <a name="quickstart-deploy-service-catalog-app-through-azure-portal"></a>快速入门：通过 Azure 门户部署服务目录应用
@@ -24,7 +24,7 @@ ms.locfileid: "81391715"
 
    ![创建资源](./media/deploy-service-catalog-quickstart/create-new.png)
 
-1. 搜索“服务目录托管应用程序”**** 并从可用选项中选择它。
+1. 搜索“服务目录托管应用程序”  并从可用选项中选择它。
 
    ![搜索服务目录应用程序](./media/deploy-service-catalog-quickstart/select-service-catalog.png)
 
@@ -32,19 +32,19 @@ ms.locfileid: "81391715"
 
    ![选择“创建”](./media/deploy-service-catalog-quickstart/create-service-catalog.png)
 
-1. 门户中将显示你有权访问的托管应用程序定义。 从可用的定义中，选择你要部署的一个定义。 在本快速入门中，使用你在前面的快速入门中创建的“托管存储帐户”**** 定义。 选择“创建”  。
+1. 门户中将显示你有权访问的托管应用程序定义。 从可用的定义中，选择你要部署的一个定义。 在本快速入门中，使用你在前面的快速入门中创建的“托管存储帐户”  定义。 选择“创建”  。
 
    ![选择要部署的定义](./media/deploy-service-catalog-quickstart/select-definition.png)
 
-1. 为 **"基本"** 选项卡提供值。选择 Azure 订阅以将服务目录应用部署到 。 创建一个名为 **applicationGroup** 的新资源组。 为你的应用选择一个位置。 完成后，选择“确定”****。
+1. 为“基本信息”  选项卡提供值。选择要将服务目录应用部署到的 Azure 订阅。 创建一个名为 **applicationGroup** 的新资源组。 为你的应用选择一个位置。 完成后，选择“确定”  。
 
    ![为基本信息提供值](./media/deploy-service-catalog-quickstart/provide-basics.png)
 
-1. 为存储帐户名称提供一个前缀。 选择要创建的存储帐户的类型。 完成后，选择“确定”****。
+1. 为存储帐户名称提供一个前缀。 选择要创建的存储帐户的类型。 完成后，选择“确定”  。
 
    ![为存储提供值](./media/deploy-service-catalog-quickstart/provide-storage.png)
 
-1. 查看摘要。 在验证成功后，选择“确定”以开始部署。****
+1. 查看摘要。 在验证成功后，选择“确定”以开始部署。 
 
    ![查看摘要](./media/deploy-service-catalog-quickstart/view-summary.png)
 

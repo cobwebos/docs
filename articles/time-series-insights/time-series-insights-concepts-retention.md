@@ -1,5 +1,5 @@
 ---
-title: 了解环境中的数据保留 - Azure 时间序列洞察 |微软文档
+title: 了解环境中的数据保留-Azure 时序见解 |Microsoft Docs
 description: 本文介绍控制 Azure 时序见解环境中的数据保留的两项设置。
 ms.service: time-series-insights
 services: time-series-insights
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
 ms.openlocfilehash: fd34595d5ea942602efc920904ff326fc203c088
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81380696"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>了解 Azure 时序见解中的数据保留
@@ -24,7 +24,7 @@ ms.locfileid: "81380696"
 
 ## <a name="video"></a>视频
 
-### <a name="the-following-video-summarizes-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>以下视频总结了时间序列见解数据保留以及如何规划。</br>
+### <a name="the-following-video-summarizes-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>以下视频汇总了时序见解数据保留和如何对其进行规划。</br>
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
@@ -45,7 +45,7 @@ ms.locfileid: "81380696"
 
 - **清除旧数据**是 Azure 时序见解环境的默认设置。  
 - 如果用户希望在其时序见解环境中始终显示其最近数据**，则“清除旧数据”**** 是首选项。
-- 一旦达到环境的限制（保留时间、大小或计数，以先到者为准），**清除旧数据**设置*将清除*数据。 默认情况下，保留时间设置为 30 天。
+- "**清除旧数据**" 设置在达到环境限制（保留时间、大小或计数，第一个为准）后会*清除*数据。 默认情况下，保留时间设置为 30 天。
 - 最旧的引入数据最先清除（“先入先出”方法）。
 
 ### <a name="example-one"></a>示例一
@@ -60,23 +60,23 @@ ms.locfileid: "81380696"
 
 假设某个环境的保留行为也配置为“继续传入和清除旧数据”。**** 在此示例中，“数据保留时间”设置为一个较小值：180 天。**** “容量”设置为 S1 单位，包含 30 GB 总容量。**** 若要存储 180 天的数据，每天的传入量不能超过 0.166 GB (166 MB)。  
 
-每当此环境的每日入侵率超过每天 0.166 GB 时，数据将无法存储 180 天，因为某些数据将被清除。 在繁忙的时段，可以考虑使用这种环境。 假设环境的入口率可能增加到平均每天 0.189 GB。 在繁忙时段，将会保留大约 158 天的数据（30 GB/0.189 = 保留期 158.73 天）。 此时间小于所需的数据保留时间范围。
+每当此环境的每日入口速率超过 0.166 GB 时，数据将无法存储180天，因为某些数据会被清除。 在繁忙的时段，可以考虑使用这种环境。 假定环境的入口速率可能会增加到每天平均 0.189 GB。 在繁忙时段，将会保留大约 158 天的数据（30 GB/0.189 = 保留期 158.73 天）。 此时间小于所需的数据保留时间范围。
 
 ## <a name="pause-ingress"></a>暂停传入
 
 - “暂停流入”设置旨在确保在达到数据保留期之前达到大小和计数限制时，不会清除这些数据。****  
-- **暂停入口**为用户提供了额外的时间，在数据被清除之前，由于违反保留期，增加其环境的容量。
+- **暂停入口**为用户提供了额外的时间，以便用户在由于破坏保留期而清除数据之前增加其环境的容量。
 - 此行为有助于防止数据丢失，但如果暂停数据流入的持续时间超过事件源的保留期，则有可能会丢失最近的数据。
-- 但是，一旦达到环境的最大容量，环境就会暂停数据入口，直到发生以下其他操作：
+- 但是，一旦达到了环境的最大容量，环境就会暂停数据进入，直到发生以下附加操作：
 
-   - 您可以增加环境的最大容量，以添加更多缩放单位，如["如何缩放时间序列见解"环境](time-series-insights-how-to-scale-your-environment.md)中所述。
+   - 根据[如何缩放时序见解环境](time-series-insights-how-to-scale-your-environment.md)中所述，增加环境的最大容量以添加更多的扩展单元。
    - 达到了数据保留期并清除了数据，使环境低于其最大容量。
 
 ### <a name="example-three"></a>示例三
 
 假设某个环境的保留行为配置为“暂停传入”。**** 在此示例中，“数据保留期”配置为 60 天。**** “容量”设置为三 (3) 个 S1 单位。**** 假设此环境的每日数据传入量为 2-GB。 在此环境中，一旦达到最大容量，传入就会暂停。
 
-此时，环境显示相同的数据集，直到入口恢复或**启用继续进入**（这将清除较旧的数据，为新数据腾出空间）。
+此时，环境会显示相同的数据集，直到进入 "正在运行" 或 "**继续**进入" 状态（这会清除旧数据以便为新数据腾出空间）。
 
 当传入恢复时：
 

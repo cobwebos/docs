@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 缩放集模板中引用自定义映像
+title: 引用 Azure 规模集模板中的自定义映像
 description: 了解如何向现有 Azure 虚拟机规模集模板添加自定义映像
 author: mimckitt
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: mimckitt
 ms.openlocfilehash: 3965090239949b5e1116ceebe427728e49ffafe4
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273683"
 ---
 # <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>向 Azure 规模集模板添加自定义映像
@@ -88,7 +88,7 @@ ms.locfileid: "81273683"
 
 ### <a name="changing-scale-set-properties-to-use-the-managed-disk-image"></a>更改规模集属性以使用托管磁盘映像
 
-在规模集 `storageProfile` 的 `imageReference` 中，请勿指定平台映像的发布者、产品/服务、SKU 和版本，而是指定 `Microsoft.Compute/images` 资源的 `id`：
+在规模集 `imageReference` 的 `storageProfile` 中，请勿指定平台映像的发布者、产品/服务、SKU 和版本，而是指定 `id` 资源的 `Microsoft.Compute/images`：
 
 ```json
          "virtualMachineProfile": {

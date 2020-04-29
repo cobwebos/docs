@@ -1,6 +1,6 @@
 ---
-title: Azure 虚拟机缩放集的设计注意事项
-description: 了解 Azure 虚拟机缩放集的设计注意事项。 将比例集功能与 VM 功能进行比较。
+title: Azure 虚拟机规模集的设计注意事项
+description: 了解 Azure 虚拟机规模集的设计注意事项。 将规模集功能与 VM 功能进行比较。
 keywords: linux 虚拟机, 虚拟机规模集
 author: mimckitt
 tags: azure-resource-manager
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/01/2017
 ms.author: mimckitt
 ms.openlocfilehash: 20f6cb08781c7c6aca7a4022e75a7be8640ef18a
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273760"
 ---
 # <a name="design-considerations-for-scale-sets"></a>规模集的设计注意事项

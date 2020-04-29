@@ -1,24 +1,24 @@
 ---
-title: 使用网络策略保护 Pod 流量
+title: 通过网络策略保护 pod 流量
 titleSuffix: Azure Kubernetes Service
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Kubernetes 网络策略保护流入和流出 Pod 的流量
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.openlocfilehash: a2794f53407be3ce3d7e69caa8039c13217a0356
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81392617"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用网络策略保护 Pod 之间的流量
 
-在 Kubernetes 中运行最新的基于微服务的应用程序时，通常想要控制哪些组件可以相互通信。 对于在 Azure Kubernetes 服务 (AKS) 群集中的 Pod 之间流量的流动方式，应该应用最低特权原则。 假设你要阻止流量直接流入后端应用程序。 在 Kubernetes 中，使用“网络策略”可在群集中定义用于 Pod 之间的入口和出口流量的规则**。
+在 Kubernetes 中运行最新的基于微服务的应用程序时，通常想要控制哪些组件可以相互通信。 对于在 Azure Kubernetes 服务 (AKS) 群集中的 Pod 之间流量的流动方式，应该应用最低特权原则。 假设你要阻止流量直接流入后端应用程序。 在 Kubernetes 中，使用“网络策略”可在群集中定义用于 Pod 之间的入口和出口流量的规则  。
 
 本文介绍如何安装网络策略引擎，并创建 Kubernetes 网络策略来控制 AKS 中 Pod 之间的流量流动方式。 应该只对 AKS 中基于 Linux 的节点和 Pod 使用网络策略。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 需要安装并配置 Azure CLI 2.0.61 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
@@ -43,8 +43,8 @@ ms.locfileid: "81392617"
 
 Azure 提供两种方式来实现网络策略。 可以在创建 AKS 群集时选择一个网络策略选项。 创建群集后无法更改策略选项：
 
-* Azure 自身的实现，称为“Azure 网络策略”。**
-* Calico 网络策略 - 由 [Tigera][tigera] 建立的开源网络和网络安全解决方案。**
+* Azure 自身的实现，称为“Azure 网络策略”。 
+* Calico 网络策略 - 由 [Tigera][tigera] 建立的开源网络和网络安全解决方案。 
 
 这两个实现都使用 Linux *IPTables* 来实施指定的策略。 策略将转换为一系列允许和禁止的 IP 对。 然后，这些对将编程为 IPTable 筛选规则。
 
@@ -73,17 +73,17 @@ Azure 提供两种方式来实现网络策略。 可以在创建 AKS 群集时�
 >
 > 只能在创建群集时启用网络策略功能。 无法在现有 AKS 群集上启用网络策略。
 
-若要使用 Azure 网络策略，必须使用 [Azure CNI 插件][azure-cni]并定义自己的虚拟网络和子网。 如需详细了解如何规划所需的子网范围，请参阅[配置高级网络][use-advanced-networking]。 Calico 网络策略可与此 Azure CNI 插件配合使用，也可与 Kubenet CNI 插件配合使用。
+若要使用 Azure 网络策略，必须使用 [Azure CNI 插件][azure-cni]并定义自己的虚拟网络和子网。 有关如何规划所需子网范围的更多详细信息，请参阅[配置高级网络][use-advanced-networking]。 Calico 网络策略可与此 Azure CNI 插件配合使用，也可与 Kubenet CNI 插件配合使用。
 
 以下示例脚本：
 
 * 创建虚拟网络和子网。
 * 创建用于 AKS 群集的 Azure Active Directory (Azure AD) 服务主体。
-* 对虚拟网络的 AKS 服务主体授予“参与者”权限**。
+* 对虚拟网络的 AKS 服务主体授予“参与者”权限  。
 * 在定义的虚拟网络中创建 AKS 群集并启用网络策略。
-    * 将使用 *azure* 网络策略选项。 若要改用 Calico 作为网络策略选项，请使用 `--network-policy calico` 参数。 注意：Calico 可以与 或`--network-plugin azure``--network-plugin kubenet`一起使用。
+    * 将使用 *azure* 网络策略选项。 若要改用 Calico 作为网络策略选项，请使用 `--network-policy calico` 参数。 注意：可以结合 `--network-plugin azure` 或 `--network-plugin kubenet` 使用 Calico。
 
-请注意，可以使用托管标识的权限，而不是使用服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
+请注意，你可以使用托管标识作为权限，而不是使用服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
 
 提供自己的安全 SP_PASSWORD**。 可以替换 *RESOURCE_GROUP_NAME* 和 *CLUSTER_NAME* 变量：
 
@@ -207,7 +207,7 @@ spec:
   ingress: []
 ```
 
-转到[https://shell.azure.com](https://shell.azure.com)在浏览器中打开 Azure 云外壳。
+请在[https://shell.azure.com](https://shell.azure.com)浏览器中转到打开 Azure Cloud Shell。
 
 使用 [kubectl apply][kubectl-apply] 命令应用网络策略，并指定 YAML 清单的名称：
 

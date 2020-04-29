@@ -1,6 +1,6 @@
 ---
 title: 使用 Ambari REST API 监视和管理 Hadoop - Azure HDInsight
-description: 了解如何使用 Ambari 监视和管理 Azure HDInsight 中的 Hadoop 群集。 在本文档中，您将学习如何使用 HDInsight 群集附带的 Ambari REST API。
+description: 了解如何使用 Ambari 监视和管理 Azure HDInsight 中的 Hadoop 群集。 在本文档中，你将了解如何使用 HDInsight 群集随附的 Ambari REST API。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
 ms.openlocfilehash: 317d12f6d5dee92d998266d4e9b6d52e6ef9c7a5
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81381384"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>使用 Apache Ambari REST API 管理 HDInsight 群集
@@ -21,7 +21,7 @@ ms.locfileid: "81381384"
 
 了解如何使用 Apache Ambari REST API 管理和监视 Azure HDInsight 中的 Apache Hadoop 群集。
 
-## <a name="what-is-apache-ambari"></a>什么是阿帕奇·安巴里
+## <a name="what-is-apache-ambari"></a>什么是 Apache Ambari
 
 [Apache Ambari](https://ambari.apache.org) 提供基于 [REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md) 的简单易用型 Web UI 来简化 Hadoop 群集的管理和监视。  基于 Linux 的 HDInsight 群集已按默认提供 Ambari。
 
@@ -29,13 +29,13 @@ ms.locfileid: "81381384"
 
 * HDInsight 上的 Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 
-* 在 Windows 10 上对 Ubuntu 进行击击。  本文中的示例使用 Windows 10 上的 Bash shell。 有关安装步骤，请参阅[适用于 Linux 的 Windows 子系统 (Windows 10) 安装指南](https://docs.microsoft.com/windows/wsl/install-win10)。  其他 [Unix shell](https://www.gnu.org/software/bash/) 也将适用。  这些示例在经过轻微的修改后，可在 Windows 命令提示符下运行。  或者您可以使用 Windows PowerShell。
+* Windows 10 上的 Bash on Ubuntu。  本文中的示例使用 Windows 10 上的 Bash shell。 有关安装步骤，请参阅[适用于 Linux 的 Windows 子系统安装指南 - Windows 10](https://docs.microsoft.com/windows/wsl/install-win10)。  也可以使用其他 [Unix shell](https://www.gnu.org/software/bash/)。  这些示例在经过轻微的修改后，可在 Windows 命令提示符下运行。  或者，你可以使用 Windows PowerShell。
 
-* jq，一个命令行 JSON 处理程序。  请参阅[https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
+* jq，一个命令行 JSON 处理程序。  请参阅 [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
 
-* Windows PowerShell。  或者您可以使用[Bash](https://www.gnu.org/software/bash/)。
+* Windows PowerShell。  或者，可以使用[Bash](https://www.gnu.org/software/bash/)。
 
-## <a name="base-uniform-resource-identifier-for-ambari-rest-api"></a>安巴里休息 API 的基础统一资源标识符
+## <a name="base-uniform-resource-identifier-for-ambari-rest-api"></a>Ambari Rest API 的基本统一资源标识符
 
  HDInsight 上 Ambari REST API 的基本统一资源标识符 (URI) 为 `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`，其中 `CLUSTERNAME` 是群集的名称。  URI 中的群集名称**区分大小写**。  虽然 URI (`CLUSTERNAME.azurehdinsight.net`) 的完全限定域名 (FQDN) 部分中的群集名称不区分大小写，但 URI 中的其他部分是区分大小写的。
 
@@ -43,7 +43,7 @@ ms.locfileid: "81381384"
 
 连接到 HDInsight 上的 Ambari 需要 HTTPS。 使用在群集创建过程中提供的管理员帐户名称（默认值是 **admin**）和密码。
 
-对于企业安全包群集，而不是`admin`使用 完全限定的用户名，`username@domain.onmicrosoft.com`如 。
+对于企业安全性套餐群集（而不`admin`是），请使用完全限定`username@domain.onmicrosoft.com`的用户名（例如）。
 
 ## <a name="examples"></a>示例
 
@@ -51,14 +51,14 @@ ms.locfileid: "81381384"
 
 请保留凭据，以免在每个示例中重复输入。  群集名称将在单独的步骤中保留。
 
-**A. 巴什**  
+**答： Bash**  
 编辑以下脚本，将 `PASSWORD` 替换为实际密码。  然后输入该命令。
 
 ```bash
 export password='PASSWORD'
 ```  
 
-**B. 电源外壳**  
+**B. PowerShell**  
 
 ```powershell
 $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
@@ -66,9 +66,9 @@ $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 
 ### <a name="identify-correctly-cased-cluster-name"></a>识别大小写正确的群集名称
 
-群集名称的实际大小写可能与您预期的不同。  此处的步骤将显示实际大小写，然后将其存储在变量中，以便以后的所有示例。
+群集名称的实际大小写可能与预期的不同。  此处的步骤将显示实际的大小写，并将其存储在一个变量中以供以后使用。
 
-编辑以下脚本，将 `CLUSTERNAME` 替换为群集名称。 然后输入该命令。 （FQDN 的群集名称不区分大小写。
+编辑以下脚本，将 `CLUSTERNAME` 替换为群集名称。 然后输入该命令。 （FQDN 的群集名称不区分大小写。）
 
 ```bash
 export clusterName=$(curl -u admin:$password -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
@@ -103,7 +103,7 @@ $respObj.Clusters.health_report
 
 ### <a name="get-the-fqdn-of-cluster-nodes"></a>获取群集节点的 FQDN
 
-您可能需要了解群集节点的完全限定域名 （FQDN）。 可以使用以下示例轻松检索群集中各个节点的 FQDN：
+可能需要知道群集节点的完全限定的域名（FQDN）。 可以使用以下示例轻松检索群集中各个节点的 FQDN：
 
 **所有节点**  
 
@@ -163,11 +163,11 @@ $respObj.host_components.HostRoles.host_name
 
 ### <a name="get-the-internal-ip-address-of-cluster-nodes"></a>获取群集节点的内部 IP 地址
 
-本节中的示例返回的 IP 地址不能直接通过互联网访问。 它们只能在包含 HDInsight 群集的 Azure 虚拟网络中访问。
+本部分中的示例返回的 IP 地址不能通过 internet 直接访问。 只能在包含 HDInsight 群集的 Azure 虚拟网络中访问它们。
 
 有关使用 HDInsight 和虚拟网络的详细信息，请参阅[为 HDInsight 规划虚拟网络](hdinsight-plan-virtual-network-deployment.md)。
 
-要查找 IP 地址，必须知道群集节点的内部完全限定的域名 (FQDN)。 在知悉 FQDN 后，可以获取主机的 IP 地址。 以下示例首先查询所有主机节点的 FQDN 的 Ambari。 然后查询 Ambari 的每个主机的 IP 地址。
+要查找 IP 地址，必须知道群集节点的内部完全限定的域名 (FQDN)。 在知悉 FQDN 后，可以获取主机的 IP 地址。 下面的示例首先查询 Ambari 中所有主机节点的 FQDN。 然后查询每个主机的 IP 地址 Ambari。
 
 ```bash
 for HOSTNAME in $(curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/hosts" | jq -r '.items[].Hosts.host_name')
@@ -193,7 +193,7 @@ foreach($item in $respObj.items) {
 
 ### <a name="get-the-default-storage"></a>获取默认存储
 
-HDInsight 群集必须使用 Azure 存储帐户或数据湖存储作为默认存储。 创建群集后，可以使用 Ambari 来检索此信息。 例如，当希望从 HDInsight 外部的容器中读取数据或者将数据写入到其中时。
+HDInsight 群集必须使用 Azure 存储帐户或 Data Lake Storage 作为默认存储。 创建群集后，可以使用 Ambari 来检索此信息。 例如，当希望从 HDInsight 外部的容器中读取数据或者将数据写入到其中时。
 
 以下示例检索群集的默认存储配置：
 
@@ -269,7 +269,7 @@ $respObj = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v
 $respObj.Content
 ```
 
-此示例返回一个 JSON 文档，其中包含已安装组件的当前配置。 请参阅*标记*值。 以下示例是从 Spark 群集类型返回的数据摘录。
+此示例将返回一个 JSON 文档，其中包含已安装组件的当前配置。 请参阅*标记*值。 以下示例是从 Spark 群集类型返回的数据摘录。
 
 ```json
 "jupyter-site" : {
@@ -288,7 +288,7 @@ $respObj.Content
 
 ### <a name="get-configuration-for-specific-component"></a>获取特定组件的配置
 
-获取您感兴趣的组件的配置。 在以下示例中，将 `INITIAL` 替换为从上一请求返回的标记值。
+获取你感兴趣的组件的配置。 在以下示例中，将 `INITIAL` 替换为从上一请求返回的标记值。
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=livy2-conf&tag=INITIAL"
@@ -307,17 +307,17 @@ $resp.Content
 1. 创建 `newconfig.json`。  
    进行修改，然后输入以下命令：
 
-   * 替换为`livy2-conf`新组件。
+   * 替换`livy2-conf`为新的组件。
    * 请将 `INITIAL` 替换为在[获取所有配置](#get-all-configurations)中检索到的 `tag` 实际值。
 
-     **A. 巴什**
+     **答： Bash**
 
      ```bash
      curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=livy2-conf&tag=INITIAL" \
      | jq --arg newtag $(echo version$(date +%s%N)) '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
      ```
 
-     **B. 电源外壳**  
+     **B. PowerShell**  
      PowerShell 脚本使用 [jq](https://stedolan.github.io/jq/)。  编辑以下 `C:\HD\jq\jq-win64`，以反映 [jq](https://stedolan.github.io/jq/) 的实际路径和版本。
 
      ```powershell
@@ -329,7 +329,7 @@ $resp.Content
      $resp.Content | C:\HD\jq\jq-win64 --arg newtag "version$unixTimeStamp" '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
      ```
 
-     Jq 用来将从 HDInsight 检索到的数据转变为新的配置模板。 具体而言，这些示例执行以下操作：
+     Jq 用来将从 HDInsight 检索到的数据转变为新的配置模板。 具体而言，这些示例将执行以下操作：
 
    * 创建包含字符串“version”和日期并存储在 `newtag` 中的唯一值。
 
@@ -366,7 +366,7 @@ $resp.Content
 
         "livy.server.csrf_protection.enabled": "false",
 
-    完成修改后保存文件。
+    完成修改后，保存该文件。
 
 3. 提交 `newconfig.json`。  
    使用以下命令将更新的配置提交到 Ambari。
@@ -389,7 +389,7 @@ $resp.Content
 
 ### <a name="restart-a-service-component"></a>重启服务组件
 
-此时，Ambari Web UI 指示需要重新启动 Spark 服务，然后才能使新配置生效。 使用以下步骤重新启动该服务。
+此时，Ambari web UI 指出需要重新启动 Spark 服务，新配置才能生效。 使用以下步骤重新启动该服务。
 
 1. 使用以下命令启用 Spark2 服务的维护模式：
 
@@ -456,7 +456,7 @@ $resp.Content
     ```
 
     > [!IMPORTANT]  
-    > 此 URI 返回的 `href` 值正在使用群集节点的内部 IP 地址。 要从群集外部使用它，请将`10.0.0.18:8080`该部分替换为群集的 FQDN。  
+    > 此 URI 返回的 `href` 值正在使用群集节点的内部 IP 地址。 若要从群集外部使用它，请将`10.0.0.18:8080`部分替换为群集的 FQDN。  
 
 4. 验证请求。  
     编辑以下命令，将 `29` 替换为上一步骤返回的 `id` 实际值。  以下命令检索请求状态：
@@ -513,4 +513,4 @@ $resp.Content
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 REST API 的完整参考，请参阅 [Apache Ambari API 参考 V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)。  另请参阅，[授权用户查看 Apache Ambari 视图](./hdinsight-authorize-users-to-ambari.md)
+有关 REST API 的完整参考，请参阅 [Apache Ambari API 参考 V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)。  另请参阅[为 Apache Ambari 视图授权用户](./hdinsight-authorize-users-to-ambari.md)

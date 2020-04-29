@@ -11,17 +11,17 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: e556e21238db5de7dddce13ea912dae30723fe8c
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81383684"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>使用 Azure 门户访问 Blob 或队列数据
 
 使用 [Azure 门户](https://portal.azure.com)访问 Blob 或队列数据时，门户会在后台对 Azure 存储发出请求。 可以使用 Azure AD 帐户或存储帐户访问密钥对 Azure 存储请求进行授权。 门户会指示使用的是哪种方法，如果你有相应的权限，则门户还允许在这两种方法之间切换。  
 
-还可以指定如何在 Azure 门户中授权单个 Blob 上载操作。 默认情况下，门户使用已使用的方法来授权 Blob 上载操作，但您可以选择在上载 Blob 时更改此设置。
+还可以指定如何在 Azure 门户中授权单个 blob 上传操作。 默认情况下，门户使用您已用于授权 blob 上载操作的任何方法，但您可以选择在上载 blob 时更改此设置。
 
 ## <a name="permissions-needed-to-access-blob-or-queue-data"></a>访问 Blob 或队列数据所需的权限
 
@@ -51,9 +51,9 @@ ms.locfileid: "81383684"
 
 支持访问 Blob 或队列数据的内置角色包括：
 
-- [存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)：用于 Azure 数据湖存储第 2 代的 POSIX 访问控制。
-- [存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)：Blob 的读取/写入/删除权限。
-- [存储 Blob 数据读取器](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader)：Blob 的只读权限。
+- [存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)：对于 AZURE DATA LAKE STORAGE GEN2 的 POSIX 访问控制。
+- [存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)：对 blob 的读取/写入/删除权限。
+- [存储 Blob 数据读取器](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader)：对 blob 的只读权限。
 - [存储队列数据参与者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)：队列的读取/写入/删除权限。
 - [存储队列数据读取器](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader)：队列的只读权限。
 
@@ -62,7 +62,7 @@ ms.locfileid: "81383684"
 不支持使用经典订阅管理员角色列出队列。 若要列出队列，用户必须拥有 Azure 资源管理器“读取者”角色、“存储队列数据读取者”角色或“存储队列数据参与者”角色。************
 
 > [!IMPORTANT]
-> Azure 门户中的存储资源管理器预览版本不支持使用 Azure AD 凭据查看和修改 Blob 或队列数据。 Azure 门户中的存储资源管理器始终使用帐户密钥访问数据。 要在 Azure 门户中使用存储资源管理器，必须为角色分配包括**Microsoft.存储/存储帐户/列表键/操作**。
+> Azure 门户中存储资源管理器的预览版本不支持使用 Azure AD 凭据来查看和修改 blob 或队列数据。 Azure 门户中的存储资源管理器始终使用帐户密钥来访问数据。 若要在 Azure 门户中使用存储资源管理器，必须为用户分配包含 storageAccounts/ **/listkeys/action**的角色。
 
 ## <a name="navigate-to-blobs-or-queues-in-the-portal"></a>在门户中导航到 Blob 或队列
 
@@ -88,7 +88,7 @@ ms.locfileid: "81383684"
 
 请注意，如果你的 Azure AD 帐户缺少 Blob 查看权限，则列表中不会显示任何 Blob。 单击“切换为访问密钥”链接，以再次使用访问密钥进行身份验证。****
 
-### <a name="authenticate-with-your-azure-ad-account"></a>使用 Azure AD 帐户进行身份验证
+### <a name="authenticate-with-your-azure-ad-account"></a>用 Azure AD 帐户进行身份验证
 
 如果使用 Azure AD 帐户进行身份验证，则会在门户中看到“Azure AD 用户帐户”已指定为身份验证方法：****
 
@@ -100,18 +100,18 @@ ms.locfileid: "81383684"
 
 请注意，如果你无权访问帐户密钥，则列表中不会显示任何 Blob。 单击“切换为 Azure AD 用户帐户”链接，以再次使用 Azure AD 帐户进行身份验证。****
 
-## <a name="specify-how-to-authorize-a-blob-upload-operation"></a>指定如何授权 Blob 上载操作
+## <a name="specify-how-to-authorize-a-blob-upload-operation"></a>指定如何授权 blob 上传操作
 
-从 Azure 门户上载 Blob 时，可以指定是使用帐户访问密钥还是使用 Azure AD 凭据对此操作进行身份验证和授权。 默认情况下，门户使用当前身份验证方法，如[确定当前身份验证方法](#determine-the-current-authentication-method)所示。
+从 Azure 门户上传 blob 时，可以指定是使用帐户访问密钥还是使用 Azure AD 凭据对该操作进行身份验证和授权。 默认情况下，门户使用当前身份验证方法，如[确定当前身份验证方法](#determine-the-current-authentication-method)中所示。
 
-要指定如何授权 Blob 上载操作，请按照以下步骤操作：
+若要指定如何授权 blob 上传操作，请执行以下步骤：
 
-1. 在 Azure 门户中，导航到要上载 Blob 的容器。
+1. 在 Azure 门户中，导航到要在其中上传 blob 的容器。
 1. 选择“上载”**** 按钮。
-1. 展开 **"高级"** 部分以显示 blob 的高级属性。
-1. 在 **"身份验证类型"** 字段中，指示是使用 Azure AD 帐户还是使用帐户访问密钥授权上载操作，如下图所示：
+1. 展开 "**高级**" 部分以显示 blob 的高级属性。
+1. 在 "**身份验证类型**" 字段中，指示是要使用 Azure AD 帐户还是使用帐户访问密钥授权上传操作，如下图所示：
 
-    :::image type="content" source="media/storage-access-blobs-queues-portal/auth-blob-upload.png" alt-text="显示如何在 Blob 上载时更改授权方法的屏幕截图":::
+    :::image type="content" source="media/storage-access-blobs-queues-portal/auth-blob-upload.png" alt-text="显示如何更改 blob 上传授权方法的屏幕截图":::
 
 ## <a name="next-steps"></a>后续步骤
 

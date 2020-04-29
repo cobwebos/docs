@@ -4,17 +4,17 @@ description: Azure 认知服务语言理解应用的应用程序设置存储在�
 ms.topic: reference
 ms.date: 04/14/2020
 ms.openlocfilehash: 9e17736cd6ff5074a6eab76a6cf5bdb8acedc185
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81382201"
 ---
 # <a name="application-settings"></a>应用程序设置
 
 这些应用程序设置存储在[导出的](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)应用中，并使用 REST API 进行[更新](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings)。 更改应用版本设置会将应用训练状态重置为“未训练”。
 
-学习音调符号和标点符号[的概念](luis-concept-utterance.md#utterance-normalization-for-diacritics-and-punctuation)。
+了解音调符号和标点的[概念](luis-concept-utterance.md#utterance-normalization-for-diacritics-and-punctuation)。
 
 |设置|默认值|说明|
 |--|--|--|
@@ -180,4 +180,4 @@ ms.locfileid: "81382201"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 学习音调符号和标点符号[的概念](luis-concept-utterance.md#utterance-normalization-for-diacritics-and-punctuation)。
+* 了解音调符号和标点的[概念](luis-concept-utterance.md#utterance-normalization-for-diacritics-and-punctuation)。

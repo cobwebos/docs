@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
 ms.openlocfilehash: 754d1b80236d138693987cccee7a218ccd96b16b
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81383887"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>使用 C# 查询 Azure 时序见解正式版环境中的数据
@@ -23,7 +23,7 @@ ms.locfileid: "81383887"
 本 C# 示例演示如何使用[正式版 Query API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) 查询 Azure 时序见解正式版环境中的数据。
 
 > [!TIP]
-> 在 上[https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)查看 GA C# 代码示例。
+> 查看 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) 上的正式版 C# 代码示例。
 
 ## <a name="summary"></a>总结
 
@@ -66,9 +66,9 @@ ms.locfileid: "81383887"
 * [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) -  3.13.9 包。
 * [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json) - 9.0.1 包。
 
-通过选择 **"生成生成** > **解决方案**"选项，下载 Visual Studio 2019 中的软件包。
+在 Visual Studio 2019 中，通过选择“生成”   > “生成解决方案”  选项来下载包。
 
-或者，使用[NuGet 2.12+](https://www.nuget.org/)添加包 ：
+或者，使用 [NuGet 2.12+](https://www.nuget.org/) 添加这些包：
 
 * `dotnet add package Newtonsoft.Json --version 9.0.1`
 * `dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory --version 3.13.9`

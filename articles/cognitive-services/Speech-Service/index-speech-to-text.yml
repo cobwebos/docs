@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: 语音转文本文档
-summary: 语音服务中的语音到文本（也称为语音识别）可实时批量将音频流转录到文本中。
+summary: 来自语音服务的语音到文本（也称为语音识别）启用实时和批处理音频流到文本中。
 metadata:
-  title: 语音到文本文档 - 教程，API 参考 - Azure 认知服务 |微软文档
+  title: 语音转文本文档 - 教程和 API 参考 - Azure 认知服务 | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -12,13 +12,13 @@ metadata:
   ms.date: 03/19/2020
   ms.author: trbye
   ms.openlocfilehash: 717c4e0322b48eca0acfacd20ed527a629bd1ff0
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: MT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/16/2020
+  ms.lasthandoff: 04/29/2020
   ms.locfileid: "81401409"
 landingContent:
-- title: 关于语音到文本
+- title: 关于语音转文本
   linkLists:
   - linkListType: overview
     links:
@@ -36,7 +36,7 @@ landingContent:
       url: quickstarts/speech-to-text-from-file.md
     - text: 识别存储在 Blob 存储中的语音
       url: quickstarts/from-blob.md
-- title: 使用语音到文本进行开发
+- title: 通过语音到文本进行开发
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -60,7 +60,7 @@ landingContent:
       url: how-to-custom-speech-train-model.md
     - text: 创建用户标记的听录内容
       url: how-to-custom-speech-human-labeled-transcriptions.md
-- title: reference
+- title: 参考
   linkLists:
   - linkListType: reference
     links:

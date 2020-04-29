@@ -1,5 +1,5 @@
 ---
-title: Azure 映射作为事件网格源
+title: 作为事件网格源 Azure Maps
 description: 介绍针对 Azure 事件网格中的 Azure Maps 事件提供的属性和架构
 services: event-grid
 author: banisadr
@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: babanisa
 ms.openlocfilehash: e879ec3442f2e7912acb450a97079d80d7d95a01
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393405"
 ---
-# <a name="azure-maps-as-an-event-grid-source"></a>Azure 映射作为事件网格源
+# <a name="azure-maps-as-an-event-grid-source"></a>作为事件网格源 Azure Maps
 
-本文提供 Azure Maps 事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](https://docs.microsoft.com/azure/event-grid/event-schema)。 它还为您提供了使用 Azure 映射作为事件源的快速开始和教程的列表。
+本文提供 Azure Maps 事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](https://docs.microsoft.com/azure/event-grid/event-schema)。 它还提供了一个快速入门和教程列表，以将 Azure Maps 用作事件源。
 
 ## <a name="event-grid-event-schema"></a>事件网格事件架构
 
@@ -24,7 +24,7 @@ ms.locfileid: "81393405"
 
 Azure Maps 帐户发出以下事件类型：
 
-| 事件类型 | 说明 |
+| 事件类型 | 描述 |
 | ---------- | ----------- |
 | Microsoft.Maps.GeofenceEntered | 当接收的坐标从给定地理围栏的外部进入内部时引发 |
 | Microsoft.Maps.GeofenceExited | 当接收的坐标从给定地理围栏的内部移到外部时引发 |
@@ -104,20 +104,20 @@ Azure Maps 帐户发出以下事件类型：
 
 事件具有以下顶级数据：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | 字符串 | 事件主题的发布者定义路径。 |
 | eventType | 字符串 | 此事件源的一个注册事件类型。 |
 | EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
-| id | 字符串 | 事件的唯一标识符。 |
+| ID | 字符串 | 事件的唯一标识符。 |
 | data | 对象 (object) | 地理围栏事件数据。 |
 | dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
 | metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | apiCategory | 字符串 | 事件的 API 类别。 |
 | apiName | 字符串 | 事件的 API 名称。 |
@@ -127,27 +127,27 @@ Azure Maps 帐户发出以下事件类型：
 
 当 Maps API 中发生错误时，将返回 error 对象。 error 对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | error | ErrorDetails |当 Maps API 中发生错误时，将返回此对象  |
 
 当 Maps API 中发生错误时，将返回 ErrorDetails 对象。 ErrorDetails 对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| 代码 | 字符串 | HTTP 状态代码。 |
-| message | 字符串 | 在适用的情况下，将提供该错误的用户可读说明。 |
+| code | 字符串 | HTTP 状态代码。 |
+| 消息 | 字符串 | 在适用的情况下，将提供该错误的用户可读说明。 |
 | innererror | InnerError | 在适用的情况下，将提供一个包含有关该错误的特定于服务的信息的对象。 |
 
 InnerError 是包含有关该错误的特定于服务的信息的对象。 InnerError 对象具有以下属性： 
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| 代码 | 字符串 | 错误消息。 |
+| code | 字符串 | 错误消息。 |
 
 几何图形对象，其中列出了相对于请求中用户时间已过期的地理围栏的几何图形 ID。 geometries 对象包含具有以下属性的几何图形项： 
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 |:-------- |:---- |:----------- |
 | deviceid | 字符串 | 设备的 ID。 |
 | distance | 字符串 | <p>从坐标到最近的地理围栏边界的距离。 正值表示坐标在地理围栏的外部。 如果坐标在地理围栏外部，但大于 searchBuffer 与最近地理围栏边界之间的距离值，则该值为 999。 负值表示坐标在地理围栏的内部。 如果坐标在多边形的内部，但大于 searchBuffer 与最近地理围栏边界之间的距离值，则该值为 -999。 值 999 表示坐标位于地理围栏外部的置信度很高。 值 -999 表示坐标位于地理围栏内部的置信度很高。<p> |
@@ -158,18 +158,18 @@ InnerError 是包含有关该错误的特定于服务的信息的对象。 Inner
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | expiredGeofenceGeometryId | string[] | 相对于请求中用户时间已过期的地理围栏的几何图形 ID 列表。 |
 | geometries | geometries[] |列出围栏几何图形，这些几何图形包含坐标位置，或者覆盖该位置周围的 searchBuffer。 |
 | invalidPeriodGeofenceGeometryId | string[]  | 相对于请求中用户时间处于失效期的地理围栏的几何图形 ID 列表。 |
 | isEventPublished | boolean | 如果至少已将一个事件发布到 Azure Maps 事件订阅服务器，则为 true；如果未将任何事件发布到 Azure Maps 事件订阅服务器，则为 false。 |
 
-## <a name="tutorials-and-how-tos"></a>教程和如何
+## <a name="tutorials-and-how-tos"></a>教程和操作指南
 |标题  |说明  |
 |---------|---------|
 | [使用事件网格对 Azure Maps 事件做出响应](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 概述了 Azure Maps 与事件网格的集成。 |
-| [教程：设置地理围栏](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 本教程将引导你完成使用 Azure Maps 设置地理围栏的基本步骤。 你将使用 Azure 事件网格来流式传输地理围栏结果，并根据地理围栏结果设置通知。 |
+| [教程：设置地域隔离区内](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 本教程将引导你完成使用 Azure Maps 设置地理围栏的基本步骤。 你将使用 Azure 事件网格来流式传输地理围栏结果，并根据地理围栏结果设置通知。 |
 
 ## <a name="next-steps"></a>后续步骤
 

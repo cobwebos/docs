@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
 ms.openlocfilehash: e8ddcaf6a5c9ab51147e540e2426ef8c4a1fdd3a
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81392373"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>使用警报触发 Azure 自动化 Runbook
@@ -17,7 +17,7 @@ ms.locfileid: "81392373"
 可以使用 [Azure Monitor](../azure-monitor/overview.md?toc=%2fazure%2fautomation%2ftoc.json) 来监视 Azure 中大多数服务的基本级别指标和日志。 可以使用[操作组](../azure-monitor/platform/action-groups.md?toc=%2fazure%2fautomation%2ftoc.json)或经典警报调用 Azure 自动化 Runbook，以便基于警报自动执行任务。 本文介绍如何使用警报来配置和运行 Runbook。
 
 >[!NOTE]
->本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az 模块安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于自动化帐户，可以使用["如何更新 Azure 自动化 中的 Azure PowerShell"模块](automation-update-azure-modules.md)将模块更新到最新版本。
+>本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az 模块安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于自动化帐户，可参阅[如何更新 Azure 自动化中的 Azure PowerShell 模块](automation-update-azure-modules.md)，将模块更新到最新版本。
 
 ## <a name="alert-types"></a>警报类型
 
@@ -28,7 +28,7 @@ ms.locfileid: "81392373"
 * 准实时指标警报
 
 > [!NOTE]
-> 通用警报架构将目前 Azure 中的警报通知的使用体验进行了标准化。 从历史上看，Azure 中的三种警报类型（指标、日志和活动日志）都有自己的电子邮件模板、Webhook 架构等。要了解更多信息，请参阅[通用警报架构](../azure-monitor/platform/alerts-common-schema.md)
+> 通用警报架构将目前 Azure 中的警报通知的使用体验进行了标准化。 如今，Azure 中的三种警报类型（指标、日志和活动日志）都有自己的电子邮件模板、webhook 架构等。若要了解详细信息，请参阅[常见警报架构](../azure-monitor/platform/alerts-common-schema.md)
 
 当警报调用 Runbook 时，实际调用是对 Webhook 的 HTTP POST 请求。 该 POST 请求的正文包含一个 JSON 格式的对象，该对象包含与警报相关的有用属性。 下表列出了每种警报类型的有效负载架构的相应链接：
 
@@ -36,7 +36,7 @@ ms.locfileid: "81392373"
 |---------|---------|---------|
 |[常见警报](../azure-monitor/platform/alerts-common-schema.md?toc=%2fazure%2fautomation%2ftoc.json)|通用警报架构将目前 Azure 中的警报通知的使用体验进行了标准化。|通用警报有效负载架构|
 |[活动日志警报](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |当 Azure 活动日志中的任何新事件符合特定条件时，就会发送通知。 例如，当 **myProductionResourceGroup** 中出现 `Delete VM` 操作或出现状态为 Active 的新 Azure 服务运行状况事件时。| [活动日志警报有效负载架构](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
-|[准实时指标警报](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |当一个或多个平台级指标满足指定条件时，就会以快于指标警报的速度发送通知。 例如，当 VM 上的**CPU %** 值大于 90，并且过去 5 分钟**网络登录**的值大于 500 MB 时。| [准实时指标警报有效负载架构](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
+|[准实时指标警报](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |当一个或多个平台级指标满足指定条件时，就会以快于指标警报的速度发送通知。 例如，当 VM 上的**CPU%** 的值大于90，并且过去5分钟内的 "**网络**" 的值大于 500 MB 时。| [准实时指标警报有效负载架构](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
 
 由于每种警报提供的数据不同，因此需要以不同的方式处理每种警报。 下一部分将介绍如何创建 Runbook 来处理不同类型的警报。
 
@@ -44,19 +44,19 @@ ms.locfileid: "81392373"
 
 若要对警报使用自动化，需要有一个 Runbook，其中包含用于管理传递到 Runbook 的警报 JSON 有效负载的逻辑。 下面的示例 Runbook 必须从 Azure 警报调用。
 
-如前面部分所述，每种警报类型都有不同的架构。 脚本从`WebhookData`Runbook 输入参数中的警报获取 Webhook 数据。 然后，脚本评估 JSON 负载以确定正在使用的警报类型。
+如前面部分所述，每种警报类型都有不同的架构。 此脚本从`WebhookData` runbook input 参数中的警报中获取 webhook 数据。 然后，该脚本将评估 JSON 有效负载以确定正在使用的警报类型。
 
-此示例使用来自 VM 的警报。 它从有效负载中检索 VM 数据，然后使用该信息停止运行 VM。 必须在运行该 Runbook 的自动化帐户中建立连接。 使用警报触发 Runbook 时，请务必检查触发的 Runbook 中的警报状态。 每次警报更改状态时，Runbook 都会触发。 警报具有多个状态，其中两个最常见的状态是激活和已解决。 检查 Runbook 逻辑中的状态，以确保 Runbook 不会运行多次。 本文中的示例演示如何查找状态仅激活的警报。
+此示例使用来自 VM 的警报。 它从有效负载中检索 VM 数据，然后使用该信息停止运行 VM。 必须在运行该 Runbook 的自动化帐户中建立连接。 使用警报触发 runbook 时，请务必检查触发的 runbook 中的警报状态。 每次警报更改状态时，runbook 都会触发。 警报具有多个状态，其中两个最常见的状态为 "已激活并已解决"。 检查 runbook 逻辑中的状态，以确保 runbook 未运行多次。 本文中的示例演示如何查找状态为 "已激活" 的警报。
 
-Runbook 使用连接资产`AzureRunAsConnection`["作为"帐户](automation-create-runas-account.md)进行身份验证，以便对 VM 执行管理操作。
+Runbook 使用连接资产`AzureRunAsConnection` [运行方式帐户](automation-create-runas-account.md)通过 Azure 进行身份验证，以便对 VM 执行管理操作。
 
 使用此示例可以创建名为 **Stop-AzureVmInResponsetoVMAlert** 的 Runbook。 可以修改此 PowerShell 脚本，并将其用于许多不同的资源。
 
 1. 转到 Azure 自动化帐户。
-2. 在“过程自动化”下，选择“Runbook”。********
-3. 在 Runbook 列表的顶部选择“+ 创建 Runbook”。****
-4. 在“添加 Runbook”页上，**** 输入 **Stop-AzureVmInResponsetoVMAlert** 作为 Runbook 名称。 对于 runbook 类型，选择“PowerShell”****。 然后，选择 **"创建**"。  
-5. 将以下 PowerShell 示例复制到“编辑”页中。****
+2. 在“过程自动化”下，选择“Runbook”。  
+3. 在 Runbook 列表的顶部选择“+ 创建 Runbook”。 
+4. 在“添加 Runbook”页上，**** 输入 **Stop-AzureVmInResponsetoVMAlert** 作为 Runbook 名称。 对于 runbook 类型，选择“PowerShell”  。 然后选择“创建”  。  
+5. 将以下 PowerShell 示例复制到“编辑”页中。 
 
     ```powershell-interactive
     [OutputType("PSAzureOperationResponse")]
@@ -167,13 +167,13 @@ Runbook 使用连接资产`AzureRunAsConnection`["作为"帐户](automation-crea
     }
     ```
 
-6. 选择“发布”**** 以保存并发布 Runbook。
+6. 选择“发布”  以保存并发布 Runbook。
 
 ## <a name="create-the-alert"></a>创建警报
 
 警报使用操作组，后者是警报触发的操作的集合。 Runbook 只是操作组包含的诸多操作之一。
 
-1. 在自动化帐户中，选择 **"监视**下的**警报**"。
+1. 在自动化帐户中，选择 "**监视**" 下的**警报**。
 1. 选择“+ 新建警报规则”。****
 1. 在“资源”下单击“选择”********。 在“选择资源”**** 页上选择要对其发出警报的 VM，然后单击“完成”。****
 1. 在“条件”下单击“添加条件”。******** 选择要使用的信号（例如“CPU 百分比”），然后单击“完成”。********
@@ -196,7 +196,7 @@ Runbook 使用连接资产`AzureRunAsConnection`["作为"帐户](automation-crea
 
 * 有关使用 Webhook 启动自动化 Runbook 的详细信息，请参阅[从 Webhook 启动 Runbook](automation-webhooks.md)。
 * 有关以不同方式启动 Runbook 的详细信息，请参阅[启动 Runbook](automation-starting-a-runbook.md)。
-* 要了解如何创建活动日志警报，请参阅[创建活动日志警报](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)。
+* 若要了解如何创建活动日志警报，请参阅[创建活动日志警报](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)。
 * 若要了解如何创建准实时警报，请参阅[在 Azure 门户中创建警报规则](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json)。
-* 有关 PowerShell cmdlet 引用，请参阅[Az.自动化](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+* 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
 )。

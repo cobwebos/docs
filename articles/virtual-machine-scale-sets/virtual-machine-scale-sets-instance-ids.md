@@ -1,6 +1,6 @@
 ---
 title: 了解 Azure VM 规模集 VM 的实例 ID
-description: 了解 Azure VM 规模设置虚拟机的实例标识及其显示的各种方式。
+description: 了解 Azure VM 规模集虚拟机的实例 ID 以及它们出现的各种方式。
 author: mimckitt
 tags: azure-resource-manager
 ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: mimckitt
 ms.openlocfilehash: aa8b88bde4b6f8f02f6c9c81d0742d0dede761ac
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273675"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>了解 Azure VM 规模集 VM 的实例 ID
@@ -26,7 +26,7 @@ REST API：`POST https://management.azure.com/subscriptions/{subscriptionId}/res
 
 PowerShell：`Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage`（有关详细信息，请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm)）
 
-CLI：（`az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}`有关详细信息，请参阅[CLI 文档](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)）。
+CLI：`az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}`（有关详细信息，请参阅 [CLI 文档](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)）。
 
 可以通过列出规模集中的所有实例来获取实例 ID 的列表：
 
@@ -34,7 +34,7 @@ REST API：`GET https://management.azure.com/subscriptions/{subscriptionId}/reso
 
 PowerShell：`Get-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}`（有关详细信息，请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm)）
 
-CLI：（`az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}`有关详细信息，请参阅[CLI 文档](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)）。
+CLI：`az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}`（有关详细信息，请参阅 [CLI 文档](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)）。
 
 也可以使用 [resources.azure.com](https://resources.azure.com) 或 [Azure SDK](https://azure.microsoft.com/downloads/) 列出规模集中的 VM。
 

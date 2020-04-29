@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
 ms.openlocfilehash: 49a38c06e3a6105ad12133268b83ea73bcea2fc4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399877"
 ---
 :::row:::
     :::column span="3":::
-        .NET 语音 SDK 可作为 NuGet 包提供，并实现 .NET 标准 2.0，有关详细信息，请参阅<a href="https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech" target="_blank">Microsoft.CognitiveServices.语音<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+        .NET Speech SDK 以 NuGet 包的形式提供并实现 .NET Standard 2.0。有关详细信息，请参阅<a href="https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech" target="_blank">cognitiveservices account <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>。
     :::column-end:::
     :::column:::
         <br>
@@ -23,15 +23,15 @@ ms.locfileid: "81399877"
     :::column-end:::
 :::row-end:::
 
-#### <a name="c-nuget-package"></a>C# NuGet 包装
+#### <a name="c-nuget-package"></a>C # NuGet 包
 
-.NET 语音 SDK 可以从 **.NET 核心 CLI**安装`dotnet add`，并具有以下命令。
+可以通过以下`dotnet add`命令从 **.NET Core CLI**安装 .net Speech SDK。
 
 ```dotnetcli
 dotnet add package Microsoft.CognitiveServices.Speech
 ```
 
-.NET 语音 SDK 可以从**包管理器**安装，并具有以下`Install-Package`命令。
+可以通过以下`Install-Package`命令从**包管理器**安装 .net Speech SDK。
 
 ```powershell
 Install-Package Microsoft.CognitiveServices.Speech
@@ -39,4 +39,4 @@ Install-Package Microsoft.CognitiveServices.Speech
 
 #### <a name="additional-resources"></a>其他资源
 
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp" target="_blank">.NET 核心、.NET 框架、统一、UWP 和 Xamarin 快速入门 C# 源代码<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp" target="_blank">.NET Core、.NET Framework、Unity、UWP 和 Xamarin 快速入门 c # 源代码<span class="docon docon-navigate-external x-hidden-focus"></span></a>

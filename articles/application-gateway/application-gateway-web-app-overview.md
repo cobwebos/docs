@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: a171dc795e685655b5a3c73d088d3963c2aaa4ae
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81312317"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>应用程序网关对多租户后端（例如应用服务）的支持
@@ -30,9 +30,9 @@ ms.locfileid: "81312317"
 
 指定主机替代的功能在 [HTTP 设置](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings)中定义，可以在创建规则过程中应用到任何后端池。 多租户后端支持通过以下两种方式来替代主机标头和 SNI 扩展：
 
-- 在 HTTP 设置中显式输入将主机名设置为固定值的功能。 此功能可确保将主机标头替代为该值，前提是在流量流向的后端池中应用了特定的 HTTP 设置。 使用端到端 TLS 时，此重写主机名在 SNI 扩展中使用。 有了此功能，后端池场收到的主机标头就可以不同于传入的客户主机标头。
+- 在 HTTP 设置中显式输入将主机名设置为固定值的功能。 此功能可确保将主机标头替代为该值，前提是在流量流向的后端池中应用了特定的 HTTP 设置。 使用端对端 TLS 时，将在 SNI 扩展中使用此重写的主机名。 有了此功能，后端池场收到的主机标头就可以不同于传入的客户主机标头。
 
-- 从后端池成员的 IP 或 FQDN 派生主机名的功能。 HTTP 设置还提供了一个选项，用于从后端池成员的 FQDN 动态选取主机名，前提是配置了从单个后端池成员派生主机名的选项。 使用端到端 TLS 时，此主机名派生自 FQDN，并在 SNI 扩展中使用。 有了此功能，后端池就可以有两个或两个以上的多租户 PaaS 服务（例如 Azure Web 应用），而针对每个成员的请求的主机标头就可以包含从该成员的 FQDN 派生的主机名。 为了实现此方案，我们在 HTTP 设置中使用了名为[从后端地址中选取主机名](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)的开关，此开关会将原始请求中的主机标头动态替代为后端池中指定的标头。  例如，如果后端池 FQDN 包含"contoso11.azurewebsites.net"和"contoso22.azurewebsites.net"，则将覆盖contoso.com的原始请求的主机标头，以contoso11.azurewebsites.net或contoso22.azurewebsites.net时将请求发送到相应的后端服务器。 
+- 从后端池成员的 IP 或 FQDN 派生主机名的功能。 HTTP 设置还提供了一个选项，用于从后端池成员的 FQDN 动态选取主机名，前提是配置了从单个后端池成员派生主机名的选项。 使用端对端 TLS 时，此主机名派生自 FQDN，并用于 SNI 扩展。 有了此功能，后端池就可以有两个或两个以上的多租户 PaaS 服务（例如 Azure Web 应用），而针对每个成员的请求的主机标头就可以包含从该成员的 FQDN 派生的主机名。 为了实现此方案，我们在 HTTP 设置中使用了名为[从后端地址中选取主机名](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)的开关，此开关会将原始请求中的主机标头动态替代为后端池中指定的标头。  例如，如果后端池 FQDN 包含 "contoso11.azurewebsites.net" 和 "contoso22.azurewebsites.net"，则在将请求发送到相应的后端服务器时，会将 contoso.com 的原始请求的主机标头重写为 contoso11.azurewebsites.net 或 contoso22.azurewebsites.net。 
 
   ![Web 应用方案](./media/application-gateway-web-app-overview/scenario.png)
 
@@ -42,7 +42,7 @@ ms.locfileid: "81312317"
 
 ### <a name="tls-termination-and-end-to-end-tls-with-multi-tenant-services"></a>TLS 终止和端到端 TLS 与多租户服务
 
-多租户服务支持 TLS 终止和端到端 TLS 加密。 对于应用程序网关的 TLS 终止，仍需要将 TLS 证书添加到应用程序网关侦听器中。 但是，在端到端 TLS 的情况下，受信任的 Azure 服务（如 Azure App 服务 Web 应用）不需要将后端列入应用程序网关中的白名单。 因此，无需添加任何身份验证证书。 
+多租户服务支持 TLS 终止和端到端 TLS 加密。 对于应用程序网关的 TLS 终止，会继续将 TLS 证书添加到应用程序网关侦听器。 但是，如果是端到端 TLS，则受信任的 Azure 服务（例如 Azure 应用 service web apps）不需要在应用程序网关上后端允许列表。 因此，无需添加任何身份验证证书。 
 
 ![端到端 TLS](./media/application-gateway-web-app-overview/end-to-end-ssl.png)
 
@@ -54,7 +54,7 @@ ms.locfileid: "81312317"
 
 ### <a name="redirection-to-app-services-url-scenario"></a>重定向到应用服务 URL 的情况
 
-在某些情况下，应用服务响应中的主机名可能会将最终用户浏览器定向到 *.azurewebsites.net 主机名，而不是与应用程序网关关联的域。 在以下情况下可能会发生此问题：
+在某些情况下，应用服务的响应中的主机名可能会将最终用户浏览器定向到 *. azurewebsites.net 主机名，而不是与应用程序网关关联的域。 在以下情况下可能会发生此问题：
 
 - 在应用服务中配置了重定向。 只需在请求中添加一个尾随的斜杠即可配置重定向。
 - Azure AD 身份验证导致重定向。

@@ -1,7 +1,7 @@
 ---
 title: 使用视频索引器 API
 titleSuffix: Azure Media Services
-description: 本文介绍如何开始使用 Azure 媒体服务视频索引器 API。
+description: 本文介绍如何开始处理 Azure 媒体服务视频索引器 API。
 services: media-services
 author: Juliako
 manager: femila
@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 04/13/2020
 ms.author: juliako
 ms.openlocfilehash: 82bdb177cf4d9c400d1b13ba7178658089950557
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81314336"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>教程：使用视频索引器 API
 
-视频索引器将 Microsoft 提供的各种音频和视频人工智能 （AI） 技术整合为一个集成服务，使开发更简单。 API 旨在使开发人员能够专注于使用媒体 AI 技术，而不必担心云平台的规模、全球覆盖范围、可用性和可靠性。 您可以使用 API 上传文件、获取详细的视频见解、获取可嵌入的见解和播放器小部件的 URL 等。
+视频索引器将 Microsoft 提供的各种音频和视频人工智能（AI）技术整合到一个集成的服务中，使开发更加简单。 Api 旨在使开发人员能够专注于使用 Media AI 技术，无需担心云平台的规模、全球覆盖、可用性和可靠性。 你可以使用 API 上传文件、获取详细的视频见解、获取可嵌入见解和播放器小组件的 Url 等。
 
-创建视频索引器帐户时，您可以选择免费试用帐户（在其中获得一定数量的免费索引分钟数）或付费选项（不受配额限制）。 通过免费试用，视频索引器为网站用户提供长达 600 分钟的免费索引，为 API 用户提供长达 2400 分钟的免费索引。 使用付费选项，可以创建[连接到 Azure 订阅的视频索引器帐户和 Azure 媒体服务帐户](connect-to-azure.md)。 你需要为编制索引的分钟数付费，此外还需要支付 Azure 媒体服务帐户相关的费用。
+创建视频索引器帐户时，可以选择一个免费试用帐户（在其中获得特定数量的可用索引分钟数）或付费选项（不受配额限制）。 使用免费试用版，视频索引器可向网站用户提供最多600分钟的免费索引，最多可向 API 用户提供2400分钟的免费索引。 使用付费选项，可以创建[连接到 azure 订阅和 Azure 媒体服务帐户](connect-to-azure.md)的视频索引器帐户。 你需要为编制索引的分钟数付费，此外还需要支付 Azure 媒体服务帐户相关的费用。
 
 本文介绍开发人员可以如何利用[视频索引器 API](https://api-portal.videoindexer.ai/)。
 
@@ -33,19 +33,19 @@ ms.locfileid: "81314336"
 
    > [!Important]
    > * 必须使用注册视频索引器时所用的同一提供程序。
-   > * 个人 Google 和 Microsoft（Outlook/实时）帐户只能用于试用帐户。 连接到 Azure 的帐户需要 Azure AD。
-   > * 每封电子邮件只能有一个活动帐户。 如果用户尝试登录user@gmail.comLinkedIn，稍后使用user@gmail.comGoogle 登录，则后者将显示一个错误页面，表示用户已存在。
+   > * 个人 Google 和 Microsoft （Outlook/Live）帐户只能用于试用帐户。 连接到 Azure 的帐户需要 Azure AD。
+   > * 每个电子邮件只能有一个活动帐户。 如果用户尝试使用的 LinkedIn 和更user@gmail.com高版本user@gmail.com登录到 Google，则后者将显示一个错误页面，指出用户已存在。
 
 2. 订阅。
 
-    选择"[产品](https://api-portal.videoindexer.ai/products)"选项卡。然后，选择"授权"并订阅。
+    选择 "[产品](https://api-portal.videoindexer.ai/products)" 选项卡。然后选择 "授权" 和 "订阅"。
     
-    ![视频索引器开发人员门户中的产品选项卡](./media/video-indexer-use-apis/video-indexer-api02.png)
+    ![视频索引器开发人员门户中的 "产品" 选项卡](./media/video-indexer-use-apis/video-indexer-api02.png)
 
     > [!NOTE]
     > 新用户已自动订阅“授权”。
     
-    订阅后，可以看到订阅以及主密钥和辅助密钥。 密钥应受保护。 密钥应仅供服务器代码使用。 它们不应在客户端（.js、.html 等）上可用。
+    订阅后，你可以查看你的订阅和主密钥和辅助密钥。 密钥应受保护。 密钥应仅供服务器代码使用。 它们不应在客户端（.js、.html 等）上可用。
 
     ![视频索引器开发人员门户中的订阅和密钥](./media/video-indexer-use-apis/video-indexer-api03.png)
 
@@ -54,23 +54,23 @@ ms.locfileid: "81314336"
 
 ## <a name="obtain-access-token-using-the-authorization-api"></a>使用授权 API 获取访问令牌
 
-订阅授权 API 后，即可获取访问令牌。 这些访问令牌用于对操作 API 进行身份验证。
+订阅授权 API 后，可以获取访问令牌。 这些访问令牌用于对操作 API 进行身份验证。
 
 对操作 API 的每个调用应该与匹配调用授权范围的访问令牌相关联。
 
-- 用户级别：用户级访问令牌允许您在**用户**级别执行操作。 例如，获取关联的帐户。
-- 帐户级别：帐户级别访问令牌允许您在**帐户**级别或**视频**级别执行操作。 例如，上传视频、列出所有视频、获取视频见解等。
-- 视频级别：视频级访问令牌允许您对特定**视频**执行操作。 例如，获取视频见解、下载字幕、获取小部件等。
+- 用户级别：用户级别访问令牌使你可以在**用户**级别上执行操作。 例如，获取关联的帐户。
+- 帐户级别：帐户级别访问令牌使你可以在**帐户**级别或**视频**级别上执行操作。 例如，上传视频、列出所有视频、获取视频见解等。
+- 视频级别：视频级别访问令牌可用于对特定**视频**执行操作。 例如，获取视频见解，下载标题，获取小组件等。
 
-您可以通过指定**allowEdit_true/false**来控制这些令牌是只读的，还是允许编辑。
+您可以通过指定**allowEdit = true/false**来控制这些标记是否为只读或是否允许编辑。
 
-对于大多数服务器到服务器方案，您可能使用相同的**帐户**令牌，因为它同时涵盖**帐户**操作和**视频**操作。 但是，如果您计划对视频索引器（例如，从 JavaScript）进行客户端调用，则需要使用**视频**访问令牌来阻止客户端访问整个帐户。 这也是在客户端中嵌入视频索引器客户端代码（例如，使用**获取见解小工具**或**获取播放器小部件**）时必须提供**视频**访问令牌的原因。
+对于大多数服务器到服务器方案，你可能会使用相同的**帐户**令牌，因为它涵盖了**帐户**操作和**视频**操作。 但是，如果你计划对视频索引器（例如，JavaScript）进行客户端调用，则需要使用**视频**访问令牌来阻止客户端访问整个帐户。 这也是在客户端中嵌入视频索引器客户端代码（例如，使用 "**获取 Insights 小组件**" 或 "**获取播放机小组件**"）的原因，你必须提供**视频**访问令牌。
 
 为简化操作，可以使用**授权** API > **GetAccounts** 来获取帐户，而不是先获取用户令牌。 还可以请求获取具有有效令牌的帐户，以便跳过附加的调用即可获取帐户令牌。
 
-访问令牌在 1 小时后过期。 在使用操作 API 之前，请确保访问令牌有效。 如果过期，请再次调用授权 API 以获取新的访问令牌。
+访问令牌在 1 小时后过期。 在使用操作 API 之前，请确保访问令牌有效。 如果已过期，请再次调用授权 API 以获取新的访问令牌。
 
-您已准备好开始与 API 集成。 查找[每个视频索引器 REST API 的详细说明](https://api-portal.videoindexer.ai/)。
+你已准备好开始与 API 集成。 查找[每个视频索引器 REST API 的详细说明](https://api-portal.videoindexer.ai/)。
 
 ## <a name="account-id"></a>帐户 ID
 
@@ -103,9 +103,9 @@ ms.locfileid: "81314336"
 
 本部分列出了有关使用视频索引器 API 的一些建议。
 
-- 如果您计划上传视频，建议将文件放在某些公共网络位置（例如 OneDrive）。 获取视频的链接，并提供 URL 作为上传文件参数。
+- 如果打算上传视频，建议将该文件放在某个公用网络位置（例如 OneDrive）中。 获取视频的链接，并提供 URL 作为上传文件参数。
 
-    提供给视频索引器的 URL 必须指向某个媒体（音频或视频）文件。 OneDrive 生成的某些链接适用于包含该文件的 HTML 页。 对 URL 的一个简单验证是将其粘贴到浏览器中 — 如果文件开始下载，则可能是一个不错的 URL。 如果浏览器正在呈现一些可视化效果，则它可能不是指向文件的链接，而是指向 HTML 页面的链接。
+    提供给视频索引器的 URL 必须指向某个媒体（音频或视频）文件。 OneDrive 生成的某些链接适用于包含该文件的 HTML 页。 此 URL 的简单验证是将它粘贴到浏览器中-如果文件开始下载，则很可能是一个不错的 URL。 如果浏览器呈现一些可视化效果，则很可能不是指向文件的链接，而是指向 HTML 页面的链接。
 
 - 调用获取指定视频的视频见解的 API 时，会获取详细的 JSON 输出（响应内容）。 [在此主题中查看有关返回的 JSON 的详细信息](video-indexer-output-json-v2.md)。
 
@@ -207,7 +207,7 @@ Debug.WriteLine(playerWidgetLink);
 
 ```
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [视频索引器概述](video-indexer-overview.md)
 - [区域](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
@@ -215,5 +215,5 @@ Debug.WriteLine(playerWidgetLink);
 ## <a name="next-steps"></a>后续步骤
 
 - [检查输出 JSON 的详细信息](video-indexer-output-json-v2.md)
-- 查看演示视频上传和索引的重要方面[的示例代码](https://github.com/Azure-Samples/media-services-video-indexer)。 遵循代码将让您了解如何将我们的 API 用于基本功能。 请务必阅读内联评论，并注意我们的最佳实践建议。
+- 查看演示上传视频和为视频编制索引的重要方面的[示例代码](https://github.com/Azure-Samples/media-services-video-indexer)。 按照代码结尾，你可以更好地了解如何将 API 用于基本功能。 请确保阅读内联注释并注意我们的最佳实践建议。
 

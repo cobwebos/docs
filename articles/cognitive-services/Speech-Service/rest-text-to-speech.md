@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.openlocfilehash: 77bba9433052c00df671caf73198ff75356b1c9a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81400168"
 ---
 # <a name="text-to-speech-rest-api"></a>文本转语音 REST API
@@ -41,7 +41,7 @@ ms.locfileid: "81400168"
 
 ### <a name="regions-and-endpoints"></a>区域和终结点
 
-| 区域 | 终结点 |
+| 区域 | 端点 |
 |--------|----------|
 | 澳大利亚东部 | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 巴西南部 | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -67,7 +67,7 @@ ms.locfileid: "81400168"
 
 下表列出了文本转语音请求的必需和可选标头。
 
-| 标头 | 说明 | 必需/可选 |
+| Header | 说明 | 必需/可选 |
 |--------|-------------|---------------------|
 | `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必选 |
 
@@ -167,7 +167,7 @@ Authorization: Bearer [Base64 access_token]
 
 下表列出了文本转语音请求的必需和可选标头。
 
-| 标头 | 说明 | 必需/可选 |
+| Header | 说明 | 必需/可选 |
 |--------|-------------|---------------------|
 | `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必选 |
 | `Content-Type` | 指定所提供的文本的内容类型。 接受的值：`application/ssml+xml`。 | 必选 |
@@ -200,7 +200,7 @@ Authorization: Bearer [Base64 access_token]
 
 ### <a name="sample-request"></a>示例请求
 
-此 HTTP 请求使用 SSML 指定语音和语言。 如果正文长度很长，并且生成的音频超过 10 分钟 - 则将其截断为 10 分钟。 换句话说，音频长度不能超过 10 分钟。
+此 HTTP 请求使用 SSML 指定语音和语言。 如果正文长度较长，并且生成的音频超过10分钟，则将其截断为10分钟。 换句话说，音频长度不能超过10分钟。
 
 ```http
 POST /cognitiveservices/v1 HTTP/1.1
@@ -242,5 +242,5 @@ Authorization: Bearer [Base64 access_token]
 ## <a name="next-steps"></a>后续步骤
 
 - [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services)
-- [长形音频的异步合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+- [用于长时间音频的异步合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
 - [自定义语音入门](how-to-custom-voice.md)

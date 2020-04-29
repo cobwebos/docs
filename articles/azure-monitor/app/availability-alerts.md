@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 应用程序见解设置可用性警报 |微软文档
+title: 使用 Azure Application Insights 设置可用性警报 | Microsoft Docs
 description: 在 Application Insights 中设置 Web 测试。 当网站不可用或响应速度缓慢时接收警报。
 ms.topic: conceptual
 author: lgayhardt
@@ -7,10 +7,10 @@ ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
 ms.openlocfilehash: 5af6aec2267384c37f664522d075bf26c632e7e9
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81382886"
 ---
 # <a name="availability-alerts"></a>可用性警报
@@ -24,7 +24,7 @@ ms.locfileid: "81382886"
 ![创建体验](./media/availability-alerts/create-test.png)
 
 > [!NOTE]
->  使用[新的统一警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)时，必须在警报体验中配置预警规则严重性和[操作组的通知首选项](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) ****。 如果不执行以下步骤，则只会收到门户内通知。
+>  使用[新的统一警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)时，必须在警报体验中配置预警规则严重性和[操作组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)的通知首选项  。 如果不执行以下步骤，则只会收到门户内通知。
 
 1. 保存可用性测试后，在详细信息选项卡上单击你刚才所做的测试旁边的省略号。 单击“编辑警报”。
 
@@ -35,7 +35,7 @@ ms.locfileid: "81382886"
    ![保存后编辑](./media/availability-alerts/set-action-group.png)
 
 > [!NOTE]
-> 通过此体验创建的可用性警报基于状态。 这意味着，当满足警报条件时，当检测到站点不可用时，将生成单个警报。 如果下次评估警报条件时站点仍然关闭，这不会生成新的警报。 因此，如果您的网站关闭了一个小时，并且您设置了电子邮件警报，则只有在网站关闭时才会收到一封电子邮件，并在网站备份时收到后续电子邮件。 您不会收到连续警报，提醒您该网站仍然不可用。
+> 通过这种体验创建的可用性警报是基于状态的。 这意味着，当满足警报条件时，如果将站点检测为不可用，则会生成一个警报。 如果在下一次评估警报条件时站点仍处于关闭状态，则不会生成新的警报。 如果你的站点已关闭一小时，并且你已设置电子邮件通知，则在站点关闭时将只收到一封电子邮件，而当站点备份时，会收到后续电子邮件。 你不会收到持续警报，提醒你该站点仍不可用。
 
 ### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>当 Y 个位置中有 X 个报告失败时发出警报
 
@@ -57,15 +57,15 @@ ms.locfileid: "81382886"
 
 ### <a name="alert-on-custom-analytics-queries"></a>根据自定义分析查询发出警报
 
-使用[新的统一警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)时，可以根据[自定义日志查询](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log)发出警报。 借助自定义查询，可以在有助于获得最可靠的可用性问题信号的任意条件下发出警报。 如果您使用 Track 可用性 SDK 发送自定义可用性结果，这同样适用。
+使用[新的统一警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)时，可以根据[自定义日志查询](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log)发出警报。 借助自定义查询，可以在有助于获得最可靠的可用性问题信号的任意条件下发出警报。 如果使用 TrackAvailability SDK 发送自定义可用性结果，这同样适用。
 
 > [!Tip]
 > 可用性数据的指标包括可能通过调用我们的 TrackAvailability SDK 提交的任何自定义可用性结果。 可以使用“根据指标发出警报”支持根据自定义可用性结果发出警报。
 >
 
-## <a name="automate-alerts"></a>自动警报
+## <a name="automate-alerts"></a>自动执行警报
 
-要使用 Azure 资源管理器模板自动执行此过程，请参阅[使用资源管理器模板文档创建指标警报](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert)。
+若要使用 Azure 资源管理器模板自动执行此过程，请参阅[使用资源管理器模板创建指标警报](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert)文档。
 
 ## <a name="troubleshooting"></a>疑难解答
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: 0ba3e9ae7b5075d1f5457cb2960423ad1c737e94
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81312554"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>使用 PowerShell 创建 Azure 应用程序网关（经典）的自定义探测
@@ -19,12 +19,12 @@ ms.locfileid: "81312554"
 > [!div class="op_single_selector"]
 > * [Azure 门户](application-gateway-create-probe-portal.md)
 > * [Azure 资源管理器 PowerShell](application-gateway-create-probe-ps.md)
-> * [Azure 经典电源外壳](application-gateway-create-probe-classic-ps.md)
+> * [Azure 经典 PowerShell](application-gateway-create-probe-classic-ps.md)
 
 在本文中，将使用 PowerShell 向现有应用程序网关添加自定义探测。 如果应用程序包含特定运行状况检查页面。或者未在默认 Web 应用程序上提供成功的响应，那么它们非常适合使用自定义探测。
 
 > [!IMPORTANT]
-> Azure 有两种不同的部署模型来创建和使用资源：[资源管理器和经典](../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 了解如何[使用 Resource Manager 模型执行这些步骤](application-gateway-create-probe-ps.md)。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 了解如何[使用 Resource Manager 模型执行这些步骤](application-gateway-create-probe-ps.md)。
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
@@ -53,7 +53,7 @@ Get-AzureApplicationGateway AppGwTest
 ```
 
 > [!NOTE]
-> *实例计数*的默认值为 2，最大值为 10。 *GatewaySize* 的默认值为 Medium。 可以选择 Small、Medium 或 Large。
+> *InstanceCount* 的默认值为 2，最大值为 10。 *GatewaySize* 的默认值为 Medium。 可以选择 Small、Medium 或 Large。
 > 
 > 
 
@@ -144,10 +144,10 @@ Get-AzureApplicationGateway AppGwTest
 |---|---|
 |**名称** |自定义探测的引用名称。 |
 | 协议  | 使用的协议（可能的值为 HTTP 或 HTTPS）。|
-| Host**** 和 Path**** | 应用程序网关为了确定实例运行状况而调用的完整 URL 路径。 例如，如果网站为 http:\//contoso.com/，则可以为“http:\//contoso.com/path/custompath.htm”配置自定义探测，使探测检查能够获得成功的 HTTP 响应。|
-| **区间** | 配置探测检查间隔，以秒为单位。|
+| Host  和 Path  | 应用程序网关为了确定实例运行状况而调用的完整 URL 路径。 例如，如果网站为 http:\//contoso.com/，则可以为“http:\//contoso.com/path/custompath.htm”配置自定义探测，使探测检查能够获得成功的 HTTP 响应。|
+| 间隔  | 配置探测检查间隔，以秒为单位。|
 | **超时** | 定义 HTTP 响应检查的探测超时。|
-| UnhealthyThreshold**** | 将后端实例标记为不正常** 所需的失败 HTTP 响应数目。|
+| UnhealthyThreshold  | 将后端实例标记为不正常  所需的失败 HTTP 响应数目。|
 
 \<BackendHttpSettings\> 配置中会引用探测名称，以分配使用自定义探测设置的后端池。
 
@@ -200,7 +200,7 @@ Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile
 
 ## <a name="next-steps"></a>后续步骤
 
-如果要配置传输层安全 （TLS），以前称为安全套接字层 （SSL） 卸载，请参阅[为 TLS 卸载配置应用程序网关](application-gateway-ssl.md)。
+如果要配置传输层安全性（TLS），之前称为安全套接字层（SSL）卸载，请参阅[配置应用程序网关以进行 TLS 卸载](application-gateway-ssl.md)。
 
 如果想要将应用程序网关配置为与内部负载均衡器配合使用，请参阅 [Create an application gateway with an internal Load Balancer (ILB)](application-gateway-ilb.md)（创建具有内部负载均衡器 (ILB) 的应用程序网关）。
 

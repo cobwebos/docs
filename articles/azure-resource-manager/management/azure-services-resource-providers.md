@@ -4,10 +4,10 @@ description: 列出 Azure 资源管理器的所有资源提供程序命名空间
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.openlocfilehash: 55fbe4ae383e5275d185e2a03224e77660a01ef5
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81382513"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure 服务的资源提供程序
@@ -26,12 +26,12 @@ ms.locfileid: "81382513"
 | Microsoft.AnalysisServices | [Azure Analysis Services](/azure/analysis-services/) |
 | Microsoft.ApiManagement | [API 管理](../../api-management/index.yml) |
 | Microsoft.AppConfiguration | core |
-| 微软.AppPlatform | [Azure Spring Cloud](../../spring-cloud/spring-cloud-overview.md) |
+| AppPlatform | [Azure Spring Cloud](../../spring-cloud/spring-cloud-overview.md) |
 | Microsoft.Attestation | Azure 证明服务 |
 | Microsoft.Authorization | [Azure 资源管理器](../index.yml) |
 | Microsoft.Automation | [自动化](../../automation/index.yml) |
 | Microsoft.AzureActiveDirectory | [Azure Active Directory B2C](../../active-directory-b2c/index.yml) |
-| 微软.Azure数据 | SQL 服务器注册表 |
+| AzureData | SQL Server 注册表 |
 | Microsoft.AzureStack | core |
 | Microsoft.Batch | [Batch](../../batch/index.yml) |
 | Microsoft.Billing | [成本管理和计费](/azure/billing/) |
@@ -43,7 +43,7 @@ ms.locfileid: "81382513"
 | Microsoft.Capacity | core |
 | Microsoft.Cdn | [内容分发网络](../../cdn/index.yml) |
 | Microsoft.CertificateRegistration | [应用服务证书](../../app-service/configure-ssl-certificate.md#import-an-app-service-certificate) |
-| 微软.更改分析 | [Azure Monitor](../../azure-monitor/index.yml) |
+| ChangeAnalysis | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft.ClassicCompute | 经典部署模型虚拟机 |
 | Microsoft.ClassicInfrastructureMigrate | 经典部署模型迁移 |
 | Microsoft.ClassicNetwork | 经典部署模型虚拟网络 |
@@ -57,9 +57,9 @@ ms.locfileid: "81382513"
 | Microsoft.ContainerRegistry | [容器注册表](/azure/container-registry/) |
 | Microsoft.ContainerService | [Azure Kubernetes 服务 (AKS)](/azure/aks/) |
 | Microsoft.CostManagement | [成本管理](/azure/cost-management/) |
-| 微软.成本管理出口 | [成本管理](/azure/cost-management/) |
-| 微软.客户锁定箱 | 适用于 Microsoft Azure 的客户密码箱 |
-| 微软.自定义提供程序 | [Azure Custom Providers](../custom-providers/overview.md) |
+| CostManagementExports | [成本管理](/azure/cost-management/) |
+| CustomerLockbox | Microsoft Azure 的客户密码箱 |
+| CustomProviders | [Azure Custom Providers](../custom-providers/overview.md) |
 | Microsoft.DataBox | [Azure Data Box](/azure/databox-family/) |
 | Microsoft.DataBoxEdge | [Azure Stack Edge](../../databox-online/data-box-edge-overview.md) |
 | Microsoft.Databricks | [Azure Databricks](/azure/azure-databricks/) |
@@ -68,20 +68,20 @@ ms.locfileid: "81382513"
 | Microsoft.DataLakeAnalytics | [Data Lake Analytics](/azure/data-lake-analytics/) |
 | Microsoft.DataLakeStore | [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md) |
 | Microsoft.DataMigration | [Azure 数据库迁移服务](/azure/dms/) |
-| 微软.数据共享 | [Azure Data Share](/azure/data-share/) |
+| DataShare | [Azure Data Share](/azure/data-share/) |
 | Microsoft.DBforMariaDB | [Azure Database for MariaDB](/azure/mariadb/) |
 | Microsoft.DBforMySQL | [Azure Database for MySQL](/azure/mysql/) |
 | Microsoft.DBforPostgreSQL | [Azure Database for PostgreSQL](/azure/postgresql/) |
-| 微软.桌面虚拟化 | [Windows 虚拟桌面](/azure/virtual-desktop/) |
+| DesktopVirtualization | [Windows 虚拟桌面](/azure/virtual-desktop/) |
 | Microsoft.DeploymentManager | [Azure 部署管理器](../templates/deployment-manager-overview.md) |
 | Microsoft.Devices | [Azure IoT 中心](/azure/iot-hub/)<br />[Azure IoT 中心设备预配服务](/azure/iot-dps/) |
-| 微软.DevOps | [Azure DevOps](/azure/devops/) |
+| DevOps | [Azure DevOps](/azure/devops/) |
 | Microsoft.DevSpaces | [Azure Dev Spaces](/azure/dev-spaces/) |
 | Microsoft.DevTestLab | [Azure 实验室服务](../../lab-services/index.yml) |
-| 微软.数字双胞胎 | [Azure 数字孪生](../../digital-twins/about-digital-twins.md) |
+| DigitalTwins | [Azure 数字孪生](../../digital-twins/about-digital-twins.md) |
 | Microsoft.DocumentDB | [Azure Cosmos DB](../../cosmos-db/index.yml) |
 | Microsoft.DomainRegistration | [应用服务](/azure/app-service/) |
-| 微软.企业知识图 | 企业知识图 |
+| EnterpriseKnowledgeGraph | 企业知识图 |
 | Microsoft.EventGrid | [事件网格](/azure/event-grid/) |
 | Microsoft.EventHub | [事件中心](../../event-hubs/index.yml) |
 | Microsoft.Features | [Azure 资源管理器](../index.yml) |
@@ -89,7 +89,7 @@ ms.locfileid: "81382513"
 | Microsoft.HanaOnAzure | [Azure SAP HANA 大型实例](../../virtual-machines/workloads/sap/hana-overview-architecture.md) |
 | Microsoft.HardwareSecurityModules | [Azure 专用 HSM](../../dedicated-hsm/index.yml) |
 | Microsoft.HDInsight | [HDInsight](../../hdinsight/index.yml) |
-| 微软.医疗保健Apis | [适用于 FHIR 的 Azure API](../../healthcare-apis/index.yml) |
+| HealthcareApis | [适用于 FHIR 的 Azure API](../../healthcare-apis/index.yml) |
 | Microsoft.HybridCompute | [Azure Arc](../../azure-arc/index.yml) |
 | Microsoft.HybridData | [StorSimple](/azure/storsimple/) |
 | Microsoft.ImportExport | [Azure 导入/导出](../../storage/common/storage-import-export-service.md) |
@@ -97,13 +97,13 @@ ms.locfileid: "81382513"
 | Microsoft.IoTCentral | [Azure IoT Central](/azure/iot-central/) |
 | Microsoft.IoTSpaces | [Azure 数字孪生](../../digital-twins/index.yml) |
 | Microsoft.KeyVault | [Key Vault](../../key-vault/index.yml) |
-| 微软.库伯内斯 | [Azure Kubernetes 服务 (AKS)](/azure/aks/) |
+| Kubernetes | [Azure Kubernetes 服务 (AKS)](/azure/aks/) |
 | Microsoft.Kusto | [Azure 数据资源管理器](/azure/data-explorer/) |
 | Microsoft.LabServices | [Azure 实验室服务](../../lab-services/index.yml) |
 | Microsoft.Logic | [逻辑应用](../../logic-apps/index.yml) |
 | Microsoft.MachineLearning | [机器学习工作室](../../machine-learning/studio/index.yml) |
 | Microsoft.MachineLearningServices | [Azure 机器学习](../../machine-learning/index.yml) |
-| 微软.维护 | [Azure 维护](../../virtual-machines/maintenance-control-cli.md) |
+| Microsoft. 维护 | [Azure 维护](../../virtual-machines/maintenance-control-cli.md) |
 | Microsoft.ManagedIdentity | [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/index.yml) |
 | Microsoft.ManagedServices | [Azure Lighthouse](/azure/lighthouse/) |
 | Microsoft.Management | [管理组](/azure/governance/management-groups/) |
@@ -120,13 +120,13 @@ ms.locfileid: "81382513"
 | Microsoft.OffAzure | [Azure Migrate](../../migrate/migrate-overview.md) |
 | Microsoft.OperationalInsights | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft.OperationsManagement | [Azure Monitor](../../azure-monitor/index.yml) |
-| 微软.对等 | [Azure 对等服务](../../peering-service/index.yml) |
+| Microsoft。对等互连 | [Azure 对等互连服务](../../peering-service/index.yml) |
 | Microsoft.PolicyInsights | [Azure Policy](../../governance/policy/index.yml) |
 | Microsoft.Portal | [Azure 门户](/azure/azure-portal/) |
 | Microsoft.PowerBI | [Power BI](/power-bi/power-bi-overview) |
 | Microsoft.PowerBIDedicated | [Power BI Embedded](/azure/power-bi-embedded/) |
 | Microsoft.RecoveryServices | [Azure Site Recovery](../../site-recovery/index.yml) |
-| 微软.红帽开放移位 | [Azure Red Hat OpenShift](../../virtual-machines/linux/openshift-get-started.md) |
+| RedHatOpenShift | [Azure Red Hat OpenShift](../../virtual-machines/linux/openshift-get-started.md) |
 | Microsoft.Relay | [Azure 中继](../../service-bus-relay/relay-what-is-it.md) |
 | Microsoft.ResourceGraph | [Azure Resource Graph](/azure/governance/resource-graph/) |
 | Microsoft.ResourceHealth | [Azure 服务运行状况](../../service-health/index.yml)|
@@ -136,27 +136,27 @@ ms.locfileid: "81382513"
 | Microsoft.Search | [Azure 认知搜索](../../search/index.yml) |
 | Microsoft.Security | [安全中心](../../security-center/index.yml) |
 | Microsoft.SecurityInsights | [Azure Sentinel](/azure/sentinel/) |
-| 微软.串行控制台 | [适用于 Windows 的 Azure 串行控制台](../../virtual-machines/troubleshooting/serial-console-windows.md) |
+| SerialConsole | [适用于 Windows 的 Azure 串行控制台](../../virtual-machines/troubleshooting/serial-console-windows.md) |
 | Microsoft.ServiceBus | [服务总线](/azure/service-bus/) |
 | Microsoft.ServiceFabric | [Service Fabric](../../service-fabric/index.yml) |
 | Microsoft.ServiceFabricMesh | [Service Fabric 网格](../../service-fabric-mesh/index.yml) |
 | Microsoft.SignalRService | [Azure SignalR 服务](../../azure-signalr/index.yml) |
-| 微软.软件计划 | 许可 |
+| SoftwarePlan | 许可 |
 | Microsoft.Solutions | [Azure 托管应用程序](../managed-applications/index.yml) |
 | Microsoft.Sql | [Azure SQL 数据库](../../sql-database/index.yml)<br />[Azure Synapse Analytics](/azure/sql-data-warehouse/) |
-| Microsoft.SqlVirtualMachine | [Azure 虚拟机上的 SQL 服务器](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md) |
+| Microsoft.SqlVirtualMachine | [Azure 虚拟机上的 SQL Server](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md) |
 | Microsoft.Storage | [存储](../../storage/index.yml) |
-| 微软.存储缓存 | [Azure HPC 缓存](/azure/hpc-cache/) |
+| StorageCache | [Azure HPC 缓存](/azure/hpc-cache/) |
 | Microsoft.StorageSync | [存储](../../storage/index.yml) |
 | Microsoft.StorSimple | [StorSimple](/azure/storsimple/) |
 | Microsoft.StreamAnalytics | [Azure 流分析](../../stream-analytics/index.yml) |
 | Microsoft.Subscription | core |
 | microsoft.support | core |
-| 微软.Synapse | [Azure Synapse Analytics](/azure/sql-data-warehouse/) |
+| Synapse | [Azure Synapse Analytics](/azure/sql-data-warehouse/) |
 | Microsoft.TimeSeriesInsights | [Azure Time Series Insights](../../time-series-insights/index.yml) |
 | Microsoft.VirtualMachineImages | [Azure 映像生成器](../../virtual-machines/linux/image-builder-overview.md) |
 | microsoft.visualstudio | [Azure DevOps](/azure/devops/?view=azure-devops) |
-| 微软.VMware云简单 | [Azure VMware Solution by CloudSimple](/azure/vmware-cloudsimple/) |
+| VMwareCloudSimple | [Azure VMware Solution by CloudSimple](/azure/vmware-cloudsimple/) |
 | Microsoft.Web | [应用服务](../../app-service/index.yml)<br />[Azure Functions](../../azure-functions/index.yml) |
 | Microsoft.WindowsIoT | [Windows 10 IoT Core Services](https://docs.microsoft.com/windows-hardware/manufacture/iot/iotcoreservicesoverview) |
 | Microsoft.WorkloadMonitor | [Azure Monitor](../../azure-monitor/index.yml) |

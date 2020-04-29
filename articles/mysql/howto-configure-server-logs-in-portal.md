@@ -1,5 +1,5 @@
 ---
-title: 访问慢速查询日志 - Azure 门户 - MySQL 的 Azure 数据库
+title: 访问慢查询日志-Azure 门户-Azure Database for MySQL
 description: 本文介绍如何从 Azure 门户配置和访问 Azure Database for MySQL 中的慢查询日志。
 author: ajlam
 ms.author: andrela
@@ -7,17 +7,17 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/13/2020
 ms.openlocfilehash: 59faf63312bd7cc657f8b96ca3110707ea997c02
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273592"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>从 Azure 门户配置和访问慢查询日志
 
 可以从 Azure 门户配置、列出并下载 [Azure Database for MySQL 慢查询日志](concepts-server-logs.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 本文中的步骤要求具备 [Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)。
 
 ## <a name="configure-logging"></a>配置日志记录
@@ -27,20 +27,20 @@ ms.locfileid: "81273592"
 
 2. 选择 Azure Database for MySQL 服务器。
 
-3. 在侧边栏中的 **"监视**"部分下，选择 **"服务器日志**"。 
+3. 在边栏中的“监视”部分下，选择“服务器日志”   。 
    ![“服务器日志”选项的屏幕截图](./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png)
 
-4. 若要查看服务器参数，请选择“单击此处以启用日志并配置日志参数”****。
+4. 若要查看服务器参数，请选择“单击此处以启用日志并配置日志参数”  。
 
-5. 将**slow_query_log**转向**ON**。
+5. 将**slow_query_log**打开**ON**。
 
-6. 选择将日志输出到使用**log_output**的位置。 要将日志发送到本地存储和 Azure 监视器诊断日志，请选择"**文件**"。 
+6. 选择将日志输出到何处，使用**log_output**。 若要将日志发送到本地存储并 Azure Monitor 诊断日志，请选择 "**文件**"。 
 
 7. 更改所需的任何其他参数。 
 
-8. 选择“保存”。  
+8. 选择“保存”  。 
 
-   :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="慢速查询日志参数的屏幕截图和保存。":::
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="慢速查询日志参数的屏幕截图，并保存。":::
 
 在“服务器参数”**** 页上，可以通过关闭该页来返回到日志列表。
 
@@ -51,7 +51,7 @@ ms.locfileid: "81273592"
 
 2. 选择 Azure Database for MySQL 服务器。
 
-3. 在侧边栏中的 **"监视**"部分下，选择 **"服务器日志**"。 此页将显示日志文件列表。
+3. 在边栏中的 "**监视**" 部分下，选择 "**服务器日志**"。 此页将显示日志文件列表。
 
    ![“服务器日志”页的屏幕截图，其中突出显示了日志列表](./media/howto-configure-server-logs-in-portal/4-server-logs-list.png)
 
@@ -85,4 +85,4 @@ ms.locfileid: "81273592"
 ## <a name="next-steps"></a>后续步骤
 - 若要了解如何以编程方式下载慢查询日志，请参阅[在 CLI 中访问慢查询日志](howto-configure-server-logs-in-cli.md)。
 - 详细了解 Azure Database for MySQL 中的[慢查询日志](concepts-server-logs.md)。
-- 有关参数定义和 MySQL 日志记录的详细信息，请参阅[日志](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)上的 MySQL 文档。
+- 有关参数定义和 MySQL 日志记录的详细信息，请参阅有关[日志](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)的 mysql 文档。
