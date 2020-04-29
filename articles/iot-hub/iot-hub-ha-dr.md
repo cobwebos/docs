@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
 ms.openlocfilehash: 615dc1b7bd1a31069a542ebb7ea44693c404cb40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79499110"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT 中心高可用性和灾难恢复
@@ -41,7 +41,7 @@ IoT 中心服务通过在几乎所有服务层中实现冗余来提供区域内�
 
 在极少见的情况下，电源故障或其他涉及到实物资产的故障会导致数据中心遇到长时间的服务中断。 此类事件非常罕见，在此期间，上述区域内部 HA 不一定总能发挥作用。 IoT 中心提供多种解决方案，用于在发生此类长时间服务中断后进行恢复。 
 
-在这种情况下，客户可以使用的恢复选项是 Microsoft[启动的故障转移](#microsoft-initiated-failover)和[手动故障转移](#manual-failover)。 两者之间的根本差别在于，前者由 Microsoft 发起，后者由用户发起。 此外，与 Microsoft 发起的故障转移选项相比，手动故障转移提供更低的恢复时间目标 (RTO)。 以下部分讨论了每个选项提供的具体 RTO。 执行上述任一选项从主要区域故障转移 IoT 中心时，中心将在对应的 [Azure 异地配对区域](../best-practices-availability-paired-regions.md)完全正常运行。
+在这种情况下，客户可以使用的恢复选项是[Microsoft 启动的故障转移](#microsoft-initiated-failover)和[手动故障转移](#manual-failover)。 两者之间的根本差别在于，前者由 Microsoft 发起，后者由用户发起。 此外，与 Microsoft 发起的故障转移选项相比，手动故障转移提供更低的恢复时间目标 (RTO)。 以下部分讨论了每个选项提供的具体 RTO。 执行上述任一选项从主要区域故障转移 IoT 中心时，中心将在对应的 [Azure 异地配对区域](../best-practices-availability-paired-regions.md)完全正常运行。
 
 这两个故障转移选项提供以下恢复点目标 (RPO)：
 
@@ -60,7 +60,7 @@ IoT 中心服务通过在几乎所有服务层中实现冗余来提供区域内�
 完成 IoT 中心的故障转移操作后，来自设备和后端应用程序的所有操作预期可继续进行，无需人工干预。 这意味着，设备到云的消息应会继续正常工作，并且整个设备注册表会保持不变。 可以借助前面配置的相同订阅来使用通过事件网格发出的事件，前提是这些事件网格订阅仍然可用。
 
 > [!CAUTION]
-> - IoT 中心内置事件终结点的事件中心兼容的名称和终结点在故障转移后更改，并删除已配置的使用者组（这是将在 2020 年 5 月之前修复的 Bug）。 使用事件中心客户端或事件处理器主机从内置终结点接收遥测消息时，应[使用 IoT 中心连接字符串](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)建立连接。 这可以确保在故障转移后，后端应用程序可继续工作，而无需人工干预。 如果直接在应用程序中使用事件中心兼容的名称和终结点，则需要[重新配置他们使用的使用者组，并在故障转移后获取新的事件中心兼容终结点](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)以继续操作。 如果使用 Azure 函数或 Azure 流分析来连接内置终结点，则可能需要执行**重新启动**。
+> - 在故障转移后，IoT 中心的 "内置事件" 终结点的事件中心兼容的名称和终结点将发生更改，并且将删除配置的使用者组（这是一个在5月2020之前修复的 bug）。 使用事件中心客户端或事件处理器主机从内置终结点接收遥测消息时，应[使用 IoT 中心连接字符串](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)建立连接。 这可以确保在故障转移后，后端应用程序可继续工作，而无需人工干预。 如果直接在应用程序中使用与事件中心兼容的名称和终结点，则需要[重新配置它们使用的使用者组，并在故障转移后获取新的与事件中心兼容的终结点](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)，以便继续操作。 如果使用 Azure Functions 或 Azure 流分析来连接内置终结点，可能需要执行**重启**。
 >
 > - 路由到存储时，我们建议列出 blob 或文件，然后循环访问它们，以确保在不进行分区的情况下读取所有 blob 或文件。 在 Microsoft 发起的故障转移或手动故障转移期间，分区范围可能发生变化。 可以使用 [List Blobs API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 枚举 blob 列表，或使用 [List ADLS Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) 枚举文件列表。 
 
@@ -78,13 +78,13 @@ RTO 较高的原因是，Microsoft 必须代表该区域中所有受影响的客
 
 有关分步说明，请参阅[教程：为 IoT 中心执行手动故障转移](tutorial-manual-failover.md)
 
-### <a name="running-test-drills"></a>正在运行测试钻
+### <a name="running-test-drills"></a>运行测试训练
 
 不应针对生产环境中使用的 IoT 中心执行测试演练。
 
-### <a name="dont-use-manual-failover-to-migrate-iot-hub-to-a-different-region"></a>不要使用手动故障转移将 IoT 中心迁移到其他区域
+### <a name="dont-use-manual-failover-to-migrate-iot-hub-to-a-different-region"></a>不要使用手动故障转移将 IoT 中心迁移到另一个区域
 
-手动故障转移*不应*用作在 Azure 地理配对区域之间永久迁移中心的机制。 这样做会增加从旧主区域中居于的设备对 IoT 中心执行的操作的延迟。
+手动故障转移*不*应作为一种机制，用于在 Azure 地域配对区域之间永久迁移中心。 这样做会增加从旧主要区域中的设备对 IoT 中心执行的操作的延迟。
 
 ## <a name="failback"></a>故障回复
 
@@ -136,6 +136,6 @@ IoT 解决方案中对部署拓扑的完整处理不在本文的介绍范围内�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [什么是 Azure IoT 中心？](about-iot-hub.md)
+* [Azure IoT 中心是什么？](about-iot-hub.md)
 * [IoT 中心入门（快速入门）](quickstart-send-telemetry-dotnet.md)
-* [教程：对 IoT 中心执行手动故障转移](tutorial-manual-failover.md)
+* [教程：为 IoT 中心执行手动故障转移](tutorial-manual-failover.md)

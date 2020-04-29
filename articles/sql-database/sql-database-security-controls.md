@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: ce7f3eafa57cbd993be98f4a2da3d89cb312f9b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77190697"
 ---
 # <a name="security-controls-for-azure-sql-database"></a>Azure SQL 数据库的安全控制
@@ -25,7 +25,7 @@ SQL 数据库同时包含[单一数据库](sql-database-single-index.yml)和[托
 
 ## <a name="network"></a>网络
 
-| 安全控制 | Yes/No | 说明 |
+| 安全控制 | Yes/No | 注释 |
 |---|---|--|
 | 服务终结点支持| 是 | 仅适用于[单一数据库](sql-database-single-index.yml)。 |
 | Azure 虚拟网络注入支持| 是 | 仅适用于[托管实例](sql-database-managed-instance.md)。 |
@@ -34,7 +34,7 @@ SQL 数据库同时包含[单一数据库](sql-database-single-index.yml)和[托
 
 ## <a name="monitoring--logging"></a>监视和日志记录
 
-| 安全控制 | Yes/No | 说明|
+| 安全控制 | Yes/No | 注释|
 |---|---|--|
 | Azure 监视支持，如 Log Analytics 或 Application Insights| 是 | SecureSphere 是 Imperva 的 SIEM 解决方案，也通过 [Azure 事件中心](../event-hubs/index.yml)集成（通过 [SQL 审核](sql-database-auditing.md)）获得支持。 |
 | 控制平面和管理平面日志记录和审核| 是 | 仅对某些事件为“是” |
@@ -42,16 +42,16 @@ SQL 数据库同时包含[单一数据库](sql-database-single-index.yml)和[托
 
 ## <a name="identity"></a>标识
 
-| 安全控制 | Yes/No | 说明|
+| 安全控制 | Yes/No | 注释|
 |---|---|--|
 | 身份验证| 是 | Azure Active Directory (Azure AD) |
 | 授权| 是 | 无 |
 
 ## <a name="data-protection"></a>数据保护
 
-| 安全控制 | Yes/No | 说明 |
+| 安全控制 | Yes/No | 注释 |
 |---|---|--|
-| 服务器端静态加密：微软管理的密钥 | 是 | 称为“使用中加密”，详见 [Always Encrypted](sql-database-always-encrypted.md) 一文中的说明。 服务端加密使用[透明数据加密](transparent-data-encryption-azure-sql.md)。|
+| 服务器端静态加密：Microsoft 管理的密钥 | 是 | 称为“使用中加密”，详见 [Always Encrypted](sql-database-always-encrypted.md) 一文中的说明。 服务端加密使用[透明数据加密](transparent-data-encryption-azure-sql.md)。|
 | 传输中加密：<ul><li>Azure ExpressRoute 加密</li><li>虚拟网络中的加密</li><li>虚拟网络之间的加密</ul>| 是 | 使用 HTTPS。 |
 | 加密密钥处理，如 CMK 或 BYOK| 是 | 提供服务托管和客户托管密钥处理。 后者通过 [Azure Key Vault](../key-vault/index.yml) 提供。 |
 | Azure 数据服务提供的列级加密| 是 | 通过 [Always Encrypted](sql-database-always-encrypted.md) 进行。 |
@@ -59,13 +59,13 @@ SQL 数据库同时包含[单一数据库](sql-database-single-index.yml)和[托
 
 ## <a name="configuration-management"></a>配置管理
 
-| 安全控制 | Yes/No | 说明|
+| 安全控制 | Yes/No | 注释|
 |---|---|--|
 | 配置管理支持（例如，配置的版本控制）| 否  | 无 |
 
 ## <a name="additional-security-controls-for-sql-database"></a>SQL 数据库的其他安全控制
 
-| 安全控制 | Yes/No | 说明|
+| 安全控制 | Yes/No | 注释|
 |---|---|--|
 | 预防：漏洞评估 | 是 | 请参阅 [SQL 漏洞评估服务可帮助你识别数据库漏洞](sql-vulnerability-assessment.md)。 |
 | 预防：数据发现和分类  | 是 | 请参阅 [Azure SQL 数据库和 SQL 数据仓库数据发现和分类](sql-database-data-discovery-and-classification.md)。 |
@@ -73,4 +73,4 @@ SQL 数据库同时包含[单一数据库](sql-database-single-index.yml)和[托
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 Azure[服务中的内置安全控件](../security/fundamentals/security-controls.md)。
+- 详细了解[Azure 服务中的内置安全控件](../security/fundamentals/security-controls.md)。

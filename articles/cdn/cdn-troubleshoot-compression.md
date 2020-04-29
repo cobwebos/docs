@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: aff2dadee365fcdc7e14070714aa1d2cbba901ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79476417"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>排查 CDN 文件压缩问题
@@ -42,7 +42,7 @@ ms.locfileid: "79476417"
 * 所请求的内容不适合压缩。
 * 请求的文件类型未启用压缩。
 * HTTP 请求没有包含请求有效压缩类型的标头。
-* 源发送块状内容。
+* 源正在发送分块内容。
 
 ## <a name="troubleshooting-steps"></a>疑难解答步骤
 > [!TIP]

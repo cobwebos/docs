@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: c5e02e791185db3713c67b8ff97b8f7eebe9da77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76310724"
 ---
 # <a name="azure-portal-overview"></a>Azure 门户概述
@@ -40,11 +40,11 @@ Azure 门户旨在实现复原能力和持续可用性。 每个 Azure 数据中
 
 ## <a name="azure-home"></a>Azure 主页
 
-作为 Azure 服务的新订阅者，[登录到门户](https://portal.azure.com)后，看到的第一个画面就是“Azure 主页”。**** 在此页面中，可以编译资源来帮助你充分利用 Azure 订阅。 其中包含了免费在线课程、文档、核心服务和有用站点的链接，使你随时掌握和应对组织发生的变化。 为了方便你快速访问正在处理的工作，该页面还会显示最近访问的资源列表。 无法自定义此页面，但可以选择是要将“Azure 主页”还是“Azure 仪表板”用作默认视图。******** 首次登录时，该页面的顶部会提示你要在哪个位置保存首选项。
+作为 Azure 服务的新订阅者，[登录到门户](https://portal.azure.com)后，看到的第一个画面就是“Azure 主页”。  在此页面中，可以编译资源来帮助你充分利用 Azure 订阅。 其中包含了免费在线课程、文档、核心服务和有用站点的链接，使你随时掌握和应对组织发生的变化。 为了方便你快速访问正在处理的工作，该页面还会显示最近访问的资源列表。 无法自定义此页面，但可以选择是要将“Azure 主页”还是“Azure 仪表板”用作默认视图。   首次登录时，该页面的顶部会提示你要在哪个位置保存首选项。
 
 ![显示默认视图选择器的屏幕截图](./media/azure-portal-overview/azure-portal-default-view.png)
 
-可以在“门户设置”中更改 Azure 门户菜单和 Azure 默认视图。**** 如果更改所做的选择，会立即应用更改。
+可以在“门户设置”中更改 Azure 门户菜单和 Azure 默认视图。  如果更改所做的选择，会立即应用更改。
 
 ![显示默认视图选择器的屏幕截图](./media/azure-portal-overview/azure-portal-overview-portal-settings-menu-home.png)
 
@@ -54,7 +54,7 @@ Azure 门户旨在实现复原能力和持续可用性。 每个 Azure 数据中
 
 ## <a name="getting-around-the-portal"></a>门户的布局
 
-最好是了解门户的基本布局以及如何与之交互。 本文将会介绍用户界面的组件，以及说明中使用的一些术语。 有关门户的更详细的教程，请参阅课程课程[导航门户](https://docs.microsoft.com/learn/modules/tour-azure-portal/3-navigate-the-portal)。
+最好是了解门户的基本布局以及如何与之交互。 本文将会介绍用户界面的组件，以及说明中使用的一些术语。 有关门户的更详细教程，请参阅课程课程[导航门户](https://docs.microsoft.com/learn/modules/tour-azure-portal/3-navigate-the-portal)。
 
 Azure 门户菜单和页头是始终都会显示的全局元素。 这些持久性功能是用户界面中与每个服务或功能关联的“外壳”，在页头中可以访问全局控件。 资源的配置页面（有时称为“边栏选项卡”）还可能会提供一个资源菜单，以帮助你在功能之间切换。
 
@@ -64,11 +64,11 @@ Azure 门户菜单和页头是始终都会显示的全局元素。 这些持久�
 
 ![显示扩展门户菜单的屏幕截图](./media/azure-portal-overview/azure-portal-overview-portal-menu-callouts.png)
 
-|键|描述
+|密钥|说明
 |:---:|---|
 |1|页头。 显示在每个门户页面的顶部，包含全局元素。|
 |2| 全局搜索。 使用搜索栏可以快速查找特定的资源、服务或文档。|
-|3|全局控件。 与所有全局元素一样，这些功能会在整个门户中持续存在，包括：云外壳、订阅筛选器、通知、门户设置、帮助和支持，以及向我们发送反馈。|
+|3|全局控件。 与所有全局元素一样，这些功能在门户中保持不变，包括： Cloud Shell、订阅筛选器、通知、门户设置、帮助和支持，并向我们发送反馈。|
 |4|你的帐户。 查看有关帐户的信息、切换目录、注销，或使用其他帐户登录。|
 |5|门户菜单。 门户菜单是一个全局元素，可帮助你在服务之间导航。 门户菜单有时也称为侧栏，可在“门户设置”中更改其模式。****|
 |6|资源菜单。 许多服务都提供一个资源菜单用于帮助管理服务。 此元素有时称为左窗格。|
@@ -87,7 +87,7 @@ Azure 门户菜单和页头是始终都会显示的全局元素。 这些持久�
 > [!TIP]
 > 使用全局页头中的“搜索”可以最快地找到资源、服务或文档。** 使用痕迹导航链接可以回到前面的页面。
 >
-观看此视频，了解如何在 Azure 门户中使用全局搜索。
+观看此视频，了解如何使用 Azure 门户中的全局搜索。
 
 
 > [!VIDEO https://www.youtube.com/embed/nZ7WwTZcQbo]
@@ -98,4 +98,4 @@ Azure 门户菜单和页头是始终都会显示的全局元素。 这些持久�
 
 * 在[支持的浏览器和设备](../azure-portal/azure-portal-supported-browsers-devices.md)中详细了解可在哪些位置运行 Azure 门户
 * 使用 [Azure 移动应用](https://azure.microsoft.com/features/azure-portal/mobile-app/)随时随地保持连接
-* 使用[Azure 快速启动中心](../azure-portal/azure-portal-quickstart-center.md)进行板载并设置云环境
+* 通过[Azure 快速入门中心](../azure-portal/azure-portal-quickstart-center.md)加入并设置云环境

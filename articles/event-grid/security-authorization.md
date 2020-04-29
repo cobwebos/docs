@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
 ms.openlocfilehash: 03bc2f9de6f50f08c9f62f86a3d1791a067cecd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78899277"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>授权访问事件网格资源
@@ -33,7 +33,7 @@ ms.locfileid: "78899277"
 
 ## <a name="built-in-roles"></a>内置角色
 
-事件网格提供了用于管理事件订阅的两个内置角色。 它们在实现[事件域](event-domains.md)时非常重要，因为它们为用户提供了订阅事件域中主题所需的权限。 这些角色专注于事件订阅，不授予对创建主题等操作的访问权限。
+事件网格提供了用于管理事件订阅的两个内置角色。 它们对于实现[事件域](event-domains.md)很重要，因为它们向用户授予了订阅事件域中的主题所需的权限。 这些角色专注于事件订阅，不授予对创建主题等操作的访问权限。
 
 你可以[将这些角色分配给用户或组](../role-based-access-control/quickstart-assign-role-user-portal.md)。
 
@@ -181,7 +181,7 @@ EventGridContributorRole.json****：允许所有事件网格操作。
 
 ### <a name="encryption-at-rest"></a>静态加密
 
-事件网格服务写入磁盘的所有事件或数据都由 Microsoft 管理的密钥加密，确保它在静态时加密。 此外，事件或数据保留的最长时间段为 24 小时，符合[事件网格重试策略](delivery-and-retry.md)。 事件网格将在 24 小时或事件生存时间（以两者中较小者为准）过后自动删除所有事件或数据。
+事件网格服务写入到磁盘的所有事件或数据都通过 Microsoft 托管的密钥进行加密，确保静态加密。 此外，事件或数据保留的最长时间为24小时，并遵循[事件网格重试策略](delivery-and-retry.md)。 事件网格将在 24 小时或事件生存时间（以两者中较小者为准）过后自动删除所有事件或数据。
 
 ## <a name="next-steps"></a>后续步骤
 

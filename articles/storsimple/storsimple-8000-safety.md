@@ -1,5 +1,5 @@
 ---
-title: 安全安装&操作 StorSimple 8000 系列设备
+title: 安全安装 & 操作 StorSimple 8000 系列设备
 description: 描述安全约定、指南和注意事项，并解释如何安全地安装和运行 StorSimple 设备。
 services: storsimple
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
 ms.openlocfilehash: 3c880cd18e7227a728d7e276e72a5ea8c1e421de
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80396631"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>安全地安装和运行 StorSimple 设备
@@ -67,7 +67,7 @@ ms.locfileid: "80396631"
 若要降低电气连接温度过高或着火的可能性：
 
 * 使用带电气过载保护的合适电源，以满足技术规格中详述的要求。
-* 请勿使用分叉电源线（"Y"引线）。
+* 请勿使用分叉型电源线（"Y" 导引）。
 * 为了符合适用的安全、发射和热要求，不应移除任意盖子，并且所有托架中必须填充插件模块或驱动器挡板。
 * 确保以制造商指定的方式使用设备。 如果未以制造商指定的方式使用本设备，则该设备提供的保护可能会减弱。
 
@@ -96,7 +96,7 @@ ms.locfileid: "80396631"
 
 * 机架应具有安全的配电系统。 它必须为机箱提供过流保护，并且决不能过载安装机箱总数。 应遵循名牌上显示的额定功耗。
 * 配电系统必须在机架中为每个机箱提供可靠的接地。
-* 配电系统的设计必须考虑所有机箱中所有电源的总接地泄漏电流。 请注意，每个机箱中的每个电源在 264 伏，60 Hz 的情况下最大接地泄漏电流为 1.0 mA。 机架可能需要标有"高泄漏电流"的标签。 在连接电源之前，接地（接地）连接至关重要。
+* 配电系统的设计必须考虑所有机箱中所有电源的总接地泄漏电流。 请注意，每个机箱中的每个电源在 264 伏，60 Hz 的情况下最大接地泄漏电流为 1.0 mA。 机架可能需要标有 "高泄漏电流"。 连接用品之前，地面（地球）连接至关重要。
 * 当为机架配置机箱时，必须满足 UL 60950-1 和 IEC 60950-1/EN 60950-1 的安全要求。
 
 ![注意图标](./media/storsimple-safety/IC740881.png) **NOTICE:**
@@ -145,7 +145,7 @@ ms.locfileid: "80396631"
 
 ![注意图标](./media/storsimple-safety/IC740881.png) **NOTICE:**
 
-通过空运或以其他方式运输电池时，请按照 IATA 锂电池指南文档操作：：[https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
+当发运或以其他方式通过无线传输电池时，请遵循 IATA 锂电池指南文档，网址为：[https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
 
 查看完这些安全注意事项之后，后续步骤是对设备进行解包、安装机架并连接电缆。
 

@@ -1,6 +1,6 @@
 ---
-title: 管理 Azure 站点恢复中 VMware VM/物理服务器灾难恢复的进程服务器
-description: 本文介绍了使用 Azure 站点恢复管理用于 VMware VM/物理服务器灾难恢复的过程服务器。
+title: 在 Azure Site Recovery 中管理 VMware Vm/物理服务器灾难恢复的进程服务器
+description: 本文介绍如何使用 Azure Site Recovery 管理用于 VMware Vm/物理服务器的灾难恢复的进程服务器。
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
 ms.openlocfilehash: ef16e3b75ca8e051b1b7abb1a92843279884c697
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79257246"
 ---
 # <a name="manage-process-servers"></a>管理进程服务器
@@ -37,18 +37,18 @@ ms.locfileid: "79257246"
 
 在两个进程服务器之间移动 VM，对负载进行均衡，如下所述：
 
-1. 在保管库的“管理”下，单击“Site Recovery 基础结构”。******** 在“针对 VMware 和物理计算机”下，单击“配置服务器”。********
+1. 在保管库的“管理”下，单击“Site Recovery 基础结构”。   在“针对 VMware 和物理计算机”下，单击“配置服务器”。  
 2. 单击进程服务器注册到的配置服务器。
 3. 单击要对其流量进行负载均衡的进程服务器。
 
     ![LoadBalance](media/vmware-azure-manage-process-server/LoadBalance.png)
 
-4. 单击“负载均衡”，选择要将计算机移动到其中的目标进程服务器。**** 然后单击 **"确定"**
+4. 单击“负载均衡”，选择要将计算机移动到其中的目标进程服务器。  然后单击“确定” 
 
     ![LoadPS](media/vmware-azure-manage-process-server/LoadPS.PNG)
 
-2. 单击“选择计算机”，选择要从当前进程服务器移动到目标进程服务器的计算机****。 针对每个虚拟机显示平均数据更改的详细信息。 然后单击“确定”****。 
-3. 在保管库中，监视**监视** > **站点恢复作业**下的作业进度。
+2. 单击“选择计算机”，选择要从当前进程服务器移动到目标进程服务器的计算机  。 针对每个虚拟机显示平均数据更改的详细信息。  。 
+3. 在保管库的“监视” > “Site Recovery 作业”下监视作业进程。  
 
 所做的更改反映在门户中需要大约 15 分钟。 若要更快地显示效果，请[刷新配置服务器](vmware-azure-manage-configuration-server.md#refresh-configuration-server)。
 
@@ -56,20 +56,20 @@ ms.locfileid: "79257246"
 
 将某个进程服务器处理的整个工作负荷移到另一进程服务器，如下所示：
 
-1. 在保管库的“管理”下，单击“Site Recovery 基础结构”。******** 在“针对 VMware 和物理计算机”下，单击“配置服务器”。********
+1. 在保管库的“管理”下，单击“Site Recovery 基础结构”。   在“针对 VMware 和物理计算机”下，单击“配置服务器”。  
 2. 单击进程服务器注册到的配置服务器。
 3. 单击要在其中切换工作负荷的进程服务器。
-4. 单击“切换”，选择要将工作负荷移动到其中的目标进程服务器。**** 然后单击 **"确定"**
+4. 单击“切换”，选择要将工作负荷移动到其中的目标进程服务器。  然后单击“确定” 
 
-    ![开关](media/vmware-azure-manage-process-server/Switch.PNG)
+    ![Switch](media/vmware-azure-manage-process-server/Switch.PNG)
 
-5. 在保管库中，监视**监视** > **站点恢复作业**下的作业进度。
+5. 在保管库的“监视” > “Site Recovery 作业”下监视作业进程。  
 
 所做的更改反映在门户中需要大约 15 分钟。 若要更快地显示效果，请[刷新配置服务器](vmware-azure-manage-configuration-server.md#refresh-configuration-server)。
 
 ## <a name="register-a-master-target-server"></a>注册主目标服务器
 
-主目标服务器驻留在配置服务器和横向扩展进程服务器上。 它必须在配置服务器中注册。 如果此注册失败，可能会影响受保护项的运行状况。 要将主目标服务器注册为配置服务器，请登录到需要注册的特定配置服务器/横向扩展进程服务器。 导航到文件夹 **%PROGRAMDATA%\ASR\代理**，并在管理员命令提示符上运行以下内容。
+主目标服务器驻留在配置服务器和横向扩展进程服务器上。 它必须向配置服务器注册。 如果此注册中出现故障，则可能会影响受保护项的运行状况。 若要将主目标服务器注册到配置服务器，请登录到需要注册的特定配置服务器/横向扩展进程服务器。 导航到 " **%PROGRAMDATA%\ASR\Agent**" 文件夹，并在管理员命令提示符下运行以下命令。
 
    ```
    cmd
@@ -138,4 +138,4 @@ ms.locfileid: "79257246"
 - C:\ProgramData\ASRSetupLogs
 - C:\ProgramData\LogUploadServiceLogs
 - C:\ProgramData\Microsoft Azure Site Recovery
-- 进程服务器安装目录。 例如：C：\程序文件 （x86）\微软 Azure 站点恢复
+- 进程服务器安装目录。 例如： C:\Program Files （x86） \Microsoft Azure Site Recovery

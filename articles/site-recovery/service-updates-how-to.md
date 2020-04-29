@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
 ms.openlocfilehash: 3489f7f812798504d0c57a265a04e57344105419
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79257818"
 ---
 # <a name="service-updates-in-site-recovery"></a>Site Recovery 中的服务更新
@@ -43,7 +43,7 @@ Site Recovery 定期发布服务更新。 更新包括新功能、支持改进�
 
 组件已过期（或即将到期）时，Site Recovery 将通过电子邮件（如果你已订阅电子邮件通知）或门户中的保管库仪表板向你发出通知。
 
-- 此外，有可用的更新时，门户中方案基础结构视图中的相应组件旁边会显示“有可用的更新”按钮。**** 单击此按钮会重定向到某个链接，可通过该链接下载最新组件版本。
+- 此外，有可用的更新时，门户中方案基础结构视图中的相应组件旁边会显示“有可用的更新”按钮。  单击此按钮会重定向到某个链接，可通过该链接下载最新组件版本。
 -  如果复制 Hyper-V VM，则不会显示保管库仪表板通知， 
 
 而是发送电子邮件通知，如下所示。
@@ -85,7 +85,7 @@ Site Recovery 定期发布服务更新。 更新包括新功能、支持改进�
 
 ## <a name="azure-vm-disaster-recovery-to-azure"></a>Azure VM 灾难恢复到 Azure
 
-在这种情况下，我们强烈建议您[启用自动更新](azure-to-azure-autoupdate.md)。 您可以允许站点恢复管理更新，如下所示：
+在此方案中，我们强烈建议你[启用自动更新](azure-to-azure-autoupdate.md)。 你可以允许 Site Recovery 管理更新，如下所示：
 
 - 在启用复制过程期间。
 - 在保管库中指定扩展更新设置。
@@ -94,7 +94,7 @@ Site Recovery 定期发布服务更新。 更新包括新功能、支持改进�
 
 1. 在保管库 >“复制的项”中，单击屏幕顶部的此通知：**** 
     
-    **新的站点恢复复制代理更新可用。单击以安装 ->**
+    **新 Site Recovery 复制代理更新可用。单击以安装->**
 
 4. 选择要将更新应用到的 VM，然后单击“确定”。****
 
@@ -124,18 +124,18 @@ Site Recovery 定期发布服务更新。 更新包括新功能、支持改进�
 
 ### <a name="between-a-hyper-v-site-and-azure"></a>在 Hyper-V 站点与 Azure 之间
 
-1. 下载 Microsoft Azure 站点恢复提供程序的更新。
+1. 下载 Microsoft Azure Site Recovery 提供程序的更新。
 2. 在 Site Recovery 中注册的每个 Hyper-V 服务器上安装该提供程序。 如果你正在运行群集，请在所有群集节点上升级。
 
 
 ## <a name="between-an-on-premises-vmm-site-and-azure"></a>在本地 VMM 站点与 Azure 之间
-1. 下载 Microsoft Azure 站点恢复提供程序的更新。
+1. 下载 Microsoft Azure Site Recovery 提供程序的更新。
 2. 在 VMM 服务器上安装该提供程序。 如果 VMM 部署在群集中，请在所有群集节点上安装该提供程序。
-3. 在所有 Hyper-V 主机或群集节点上安装最新的 Microsoft Azure 恢复服务代理。
+3. 在所有 Hyper-v 主机或群集节点上安装最新的 Microsoft Azure 恢复服务代理。
 
 
 ## <a name="between-two-on-premises-vmm-sites"></a>在两个本地 VMM 站点之间
-1. 下载 Microsoft Azure 站点恢复提供程序的最新更新。
+1. 下载 Microsoft Azure Site Recovery 提供程序的最新更新。
 2. 在管理辅助恢复站点的 VMM 服务器上安装最新的提供程序。 如果 VMM 部署在群集中，请在所有群集节点上安装该提供程序。
 3. 更新恢复站点后，在管理主站点的 VMM 服务器上安装该提供程序。
 

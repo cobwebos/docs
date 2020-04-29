@@ -7,28 +7,28 @@ ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 12/05/2019
 ms.openlocfilehash: f2f8b9f207993c49201d03d3d1fed3c5800e8780
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80673820"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>为 Azure 逻辑应用安装本地数据网关
 
-在可以从[Azure 逻辑应用连接到本地数据源](../logic-apps/logic-apps-gateway-connection.md)之前，请在本地计算机上下载并安装[本地数据网关](https://aka.ms/on-premises-data-gateway-installer)。 该网关充当一个桥梁，在本地数据源和逻辑应用之间进行快速的数据传输和加密。 您可以将同一网关安装与其他云服务（如 Power BI、电源自动、电源应用和 Azure 分析服务）一起使用。 有关如何将网关用于这些服务的信息，请参阅以下文章：
+在[从 Azure 逻辑应用连接到本地数据源](../logic-apps/logic-apps-gateway-connection.md)之前，请在本地计算机上下载并安装本地[数据网关](https://aka.ms/on-premises-data-gateway-installer)。 该网关充当一个桥梁，在本地数据源和逻辑应用之间进行快速的数据传输和加密。 可以将相同的网关安装与其他云服务配合使用，例如 Power BI、电源自动、电源应用和 Azure Analysis Services。 有关如何将网关用于这些服务的信息，请参阅以下文章：
 
-* [微软电源自动本地数据网关](/power-automate/gateway-reference)
+* [Microsoft Power 自动执行本地数据网关](/power-automate/gateway-reference)
 * [Microsoft Power BI 本地数据网关](/power-bi/service-gateway-onprem)
-* [微软电源应用本地数据网关](/powerapps/maker/canvas-apps/gateway-reference)
+* [Microsoft Power Apps 本地数据网关](/powerapps/maker/canvas-apps/gateway-reference)
 * [Azure Analysis Services 本地数据网关](../analysis-services/analysis-services-gateway.md)
 
-本文介绍如何下载、安装和设置本地数据网关，以便可以从 Azure 逻辑应用访问本地数据源。 也可以在本主题稍后的[数据网关的工作原理](#gateway-cloud-service)中了解更多信息。 有关网关的详细信息，请参阅[什么是本地网关](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)？ 要自动执行网关安装和管理任务，请访问 PowerShell 库，查看[DataGateway PowerShell cmdlet](https://www.powershellgallery.com/packages/DataGateway/3000.15.15)。
+本文介绍如何下载、安装和设置本地数据网关，以便可以从 Azure 逻辑应用访问本地数据源。 也可以在本主题稍后的[数据网关的工作原理](#gateway-cloud-service)中了解更多信息。 有关网关的详细信息，请参阅[什么是本地网关](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)？ 若要自动执行网关安装和管理任务，请访问 PowerShell 库中的[DataGateway powershell cmdlet](https://www.powershellgallery.com/packages/DataGateway/3000.15.15)。
 
 <a name="requirements"></a>
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* Azure 帐户和订阅。 如果没有具有订阅的 Azure 帐户，[请注册免费 Azure 帐户](https://azure.microsoft.com/free/)。
+* Azure 帐户和订阅。 如果没有包含订阅的 Azure 帐户，请[注册免费 azure 帐户](https://azure.microsoft.com/free/)。
 
   * Azure 帐户必须属于单个 [Azure Active Directory (Azure AD) 租户或目录](../active-directory/fundamentals/active-directory-whatis.md#terminology)。 必须使用同一 Azure 帐户在本地计算机上安装和管理网关。
 
@@ -78,7 +78,7 @@ ms.locfileid: "80673820"
 
   * 网关有两种模式：标准模式，以及仅适用于 Power BI 的个人模式。 在同一台计算机上，不能有多个网关以同一模式运行。
 
-  * Azure 逻辑应用支持通过网关执行读取和写入操作。 但是，这些操作存在[有效负载大小限制](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)。
+  * Azure 逻辑应用支持通过网关进行的读取和写入操作。 但是，这些操作存在[有效负载大小限制](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)。
 
 <a name="install-gateway"></a>
 
@@ -86,17 +86,17 @@ ms.locfileid: "80673820"
 
 1. [在本地计算机上下载并运行网关安装程序](https://aka.ms/on-premises-data-gateway-installer)。
 
-1. 查看最低要求，保留默认安装路径，接受使用条款，然后选择“安装”。****
+1. 查看最低要求，保留默认安装路径，接受使用条款，然后选择“安装”。 
 
    ![查看要求并接受使用条款](./media/logic-apps-gateway-install/review-and-accept-terms-of-use.png)
 
-1. 成功安装网关后，提供 Azure 帐户的电子邮件地址，然后选择“登录”，例如：****
+1. 成功安装网关后，提供 Azure 帐户的电子邮件地址，然后选择“登录”，例如： 
 
    ![使用工作或学校帐户登录](./media/logic-apps-gateway-install/sign-in-gateway-install.png)
 
    网关安装只能链接到一个 Azure 帐户。
 
-1.  > 选择**在此计算机上注册新网关****"下一步**"。 此步骤会将网关安装注册到[网关云服务](#gateway-cloud-service)。
+1. 选择“在此计算机上注册新网关” > “下一步”。   此步骤会将网关安装注册到[网关云服务](#gateway-cloud-service)。
 
    ![在本地计算机上注册网关](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
@@ -111,27 +111,27 @@ ms.locfileid: "80673820"
    > [!IMPORTANT]
    > 请将恢复密钥保存在安全位置。 更改位置以及移动、恢复或接管网关安装时，都需要用到此密钥。
 
-   请注意选项“添加到现有网关群集”。在为[高可用性方案](#high-availability)安装其他网关时，需选择此选项。****
+   请注意选项“添加到现有网关群集”。在为[高可用性方案](#high-availability)安装其他网关时，需选择此选项。 
 
 1. 检查网关安装使用的网关云服务和 [Azure 服务总线](https://azure.microsoft.com/services/service-bus/)的区域。 默认情况下，此区域是 Azure 帐户的 Azure AD 租户所在的同一位置。
 
    ![确认网关服务和服务总线的区域](./media/logic-apps-gateway-install/confirm-gateway-region.png)
 
-1. 若要接受默认区域，请选择“配置”。**** 但是，如果默认区域不是最靠近你的区域，你可以更改区域。
+1. 若要接受默认区域，请选择“配置”。  但是，如果默认区域不是最靠近你的区域，你可以更改区域。
 
    *为何要更改网关安装的区域？*
 
    例如，为了降低延迟，可将网关的区域更改为逻辑应用所在的同一区域。 或者，可以选择最靠近本地数据源的区域。 *Azure 中的网关资源*和逻辑应用可以有不同的位置。
 
-   1. 在当前区域的旁边，选择“更改区域”。****
+   1. 在当前区域的旁边，选择“更改区域”。 
 
       ![更改当前网关区域](./media/logic-apps-gateway-install/change-gateway-service-region.png)
 
-   1. 在下一页上打开“选择区域”列表，选择所需的区域，然后选择“完成”。********
+   1. 在下一页上打开“选择区域”列表，选择所需的区域，然后选择“完成”。  
 
-      ![为网关服务选择其他区域](./media/logic-apps-gateway-install/select-region-gateway-install.png)
+      ![为网关服务选择另一个区域](./media/logic-apps-gateway-install/select-region-gateway-install.png)
 
-1. 查看最终确认窗口中的信息。 此示例对逻辑应用、Power BI、PowerApps 和 Power Automate 使用同一帐户，因此该网关适用于所有这些服务。 准备就绪后，选择“关闭”。****
+1. 查看最终确认窗口中的信息。 此示例对逻辑应用、Power BI、PowerApps 和 Power Automate 使用同一帐户，因此该网关适用于所有这些服务。 准备就绪后，选择“关闭”。 
 
    ![确认数据网关信息](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
 
@@ -154,7 +154,7 @@ ms.locfileid: "80673820"
 
 * 主网关必须运行网关 2017 年 11 月更新版或更高版本。
 
-设置主网关后，开始安装另一个网关时，请选择“添加到现有网关群集”，选择主网关（安装的第一个网关），然后为该网关提供恢复密钥。**** 有关详细信息，请参阅[本地数据网关的高可用性群集](https://docs.microsoft.com/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster)。
+设置主网关后，开始安装另一个网关时，请选择“添加到现有网关群集”，选择主网关（安装的第一个网关），然后为该网关提供恢复密钥。  有关详细信息，请参阅[本地数据网关的高可用性群集](https://docs.microsoft.com/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster)。
 
 <a name="update-gateway-installation"></a>
 
@@ -170,21 +170,21 @@ ms.locfileid: "80673820"
 
 1. 安装程序打开后，使用之前用于安装网关的同一 Azure 帐户登录。
 
-1. 选择 **"迁移、还原或接管现有网关** > **下一步**"，例如：
+1. 选择“迁移、还原或接管现有网关” > “下一步”，例如：  
 
    ![选择“迁移、还原或接管现有网关”](./media/logic-apps-gateway-install/migrate-recover-take-over-gateway.png)
 
 1. 从可用群集和网关中进行选择，并输入所选网关的恢复密钥，例如：
 
-   ![选择网关并提供恢复密钥](./media/logic-apps-gateway-install/select-existing-gateway.png)
+   ![选择 "网关" 并提供恢复密钥](./media/logic-apps-gateway-install/select-existing-gateway.png)
 
-1. 若要更改区域，请选择“更改区域”，然后选择新区域。****
+1. 若要更改区域，请选择“更改区域”，然后选择新区域。 
 
-1. 准备就绪后，选择“配置”以完成任务。****
+1. 准备就绪后，选择“配置”以完成任务。 
 
 ## <a name="tenant-level-administration"></a>租户级管理
 
-若要洞察 Azure AD 租户中的所有本地数据网关，该租户中的全局管理员可以租户管理员的身份登录到 [Power Platform 管理中心](https://powerplatform.microsoft.com)，并选择“数据网关”选项。**** 有关详细信息，请参阅[本地数据网关的租户级管理](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin)。
+若要洞察 Azure AD 租户中的所有本地数据网关，该租户中的全局管理员可以租户管理员的身份登录到 [Power Platform 管理中心](https://powerplatform.microsoft.com)，并选择“数据网关”选项。  有关详细信息，请参阅[本地数据网关的租户级管理](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin)。
 
 <a name="restart-gateway"></a>
 
@@ -203,9 +203,9 @@ ms.locfileid: "80673820"
 
 在已获授权的情况下，组织中的用户可以访问本地数据。 但是，只有在你安装并设置本地数据网关之后，这些用户才能连接到你的本地数据源。 通常，网关由管理员安装和设置。 可能需要拥有“服务器管理员”权限或者本地服务器方面的专业知识才能执行这些操作。
 
-网关有助于促进更快、更安全的幕后通信。 这种通信在云中用户、网关云服务和本地数据源之间流动。 网关云服务可加密和存储数据源凭据与网关详细信息。 该服务还会在用户、网关与本地数据源之间路由查询及其结果。
+网关有助于在幕后进行更快速、更安全的通信。 这种通信在云中用户、网关云服务和本地数据源之间流动。 网关云服务可加密和存储数据源凭据与网关详细信息。 该服务还会在用户、网关与本地数据源之间路由查询及其结果。
 
-网关可与防火墙配合使用，只使用出站连接。 所有流量都作为安全出站流量源自网关代理。 网关通过 [Azure 服务总线](../service-bus-messaging/service-bus-messaging-overview.md)中继来自加密频道上的本地源的数据。 此服务总线在网关与调用方服务之间创建通道，但不存储任何数据。 通过网关的所有数据经过加密。
+网关可与防火墙配合使用，只使用出站连接。 所有流量均源自网关代理的安全出站流量。 网关通过 [Azure 服务总线](../service-bus-messaging/service-bus-messaging-overview.md)中继来自加密频道上的本地源的数据。 此服务总线在网关与调用方服务之间创建通道，但不存储任何数据。 通过网关的所有数据经过加密。
 
 ![本地数据网关的体系结构](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
 
@@ -261,8 +261,8 @@ Microsoft 云服务使用 [Azure AD](../active-directory/fundamentals/active-dir
 
 有关详细信息，请参阅以下主题：
 
-* [本地数据网关常见问题解答](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
-* [对本地数据网关进行故障排除](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
+* [本地数据网关常见问题](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
+* [本地数据网关故障排除](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
 * [监视和优化网关性能](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>后续步骤

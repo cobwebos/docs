@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: tisande
 ms.openlocfilehash: 24acd1e9c13320244ff4c27abd13abeda6f70b2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79464455"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Azure Cosmos DB 中的聚合函数
@@ -61,9 +61,9 @@ ms.locfileid: "79464455"
 
 ## <a name="types-of-aggregate-functions"></a>聚合函数的类型
 
-SQL API 支持以下聚合函数。 `SUM`并`AVG`操作数值，和`COUNT`，`MIN`以及`MAX`处理数字、字符串、布尔和空。
+SQL API 支持以下聚合函数。 `SUM`和`AVG`对数字值进行操作， `COUNT`以及`MIN`、和`MAX`处理数值、字符串、布尔值和 null 值。
 
-| 函数 | 描述 |
+| 函数 | 说明 |
 |-------|-------------|
 | COUNT | 在表达式中返回项的数目。 |
 | SUM   | 在表达式中返回所有值的总和。 |
@@ -78,10 +78,10 @@ SQL API 支持以下聚合函数。 `SUM`并`AVG`操作数值，和`COUNT`，`MI
 
 ## <a name="remarks"></a>备注
 
-这些聚合系统函数将受益于[范围索引](index-policy.md#includeexclude-strategy)。 如果希望在`COUNT`属性`SUM``MIN``MAX``AVG`上执行 、、、或属性，则应[在索引策略中包括相关路径](index-policy.md#includeexclude-strategy)。
+这些聚合系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中受益。 如果希望在属性中执行`COUNT`、 `SUM`、 `MIN`、 `MAX`或`AVG` ，应在[索引策略中包含相关路径](index-policy.md#includeexclude-strategy)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure 宇宙 DB 简介](introduction.md)
-- [系统功能](sql-query-system-functions.md)
-- [用户定义的函数](sql-query-udfs.md)
+- [Azure Cosmos DB 简介](introduction.md)
+- [系统函数](sql-query-system-functions.md)
+- [用户定义函数](sql-query-udfs.md)

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 7bcfdeec832b14eb53c0dab6cb2f53970d85c804
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76310673"
 ---
 # <a name="set-your-azure-portal-preferences"></a>设置 Azure 门户首选项
@@ -29,8 +29,8 @@ ms.locfileid: "76310673"
 
 ## <a name="change-general-portal-settings"></a>更改常规门户设置
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
-2. 在全局页头中选择“设置”。****
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在全局页头中选择“设置”。 
 
     ![显示全局页头图标的屏幕截图，其中突出显示了“设置”](./media/set-preferences/header-settings.png)
 
@@ -38,7 +38,7 @@ ms.locfileid: "76310673"
 
 如果你忘记了保护工作站，非活动超时设置可帮助防范资源受到未经授权的访问。 空闲一段时间后，将自动注销你的 Azure 门户会话。
 
-选择“不活动时将我注销”下面的下拉列表。**** 选择在空闲多长时间后注销你的 Azure 门户会话。
+选择“不活动时将我注销”下面的下拉列表。  选择在空闲多长时间后注销你的 Azure 门户会话。
 
    ![显示门户设置的屏幕截图，其中突出显示了非活动超时设置](./media/set-preferences/inactive-signout-user.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "76310673"
 
 管理员还可以在目录级别指定此设置，以强制实施最长空闲时间。 如果管理员指定了目录级别的超时设置，你仍可以设置自己的非活动注销持续时间。 选择小于目录级设置值的时间设置。
 
-如果管理员启用了非活动超时策略，请选中“替代目录非活动超时策略”复选框。**** 设置小于策略设置的时间间隔。
+如果管理员启用了非活动超时策略，请选中“替代目录非活动超时策略”复选框。  设置小于策略设置的时间间隔。
 
    ![显示门户设置的屏幕截图，其中突出显示了“替代目录非活动超时策略”设置](./media/set-preferences/inactive-signout-override.png)
 
@@ -64,7 +64,7 @@ ms.locfileid: "76310673"
 默认视图设置控制登录时显示的 Azure 门户视图。 可以选择默认打开 Azure 主页或仪表板视图。
 
 * 无法自定义**主页**。  主页中显示了热门 Azure 服务的快捷方式，并列出了最近用过的资源。 我们还会提供 Microsoft Learn 和 Azure 路线图等资源的有用链接。
-* 可以自定义仪表板，以创建专为你设计的工作区。 例如，可以生成一个以项目、任务或角色为中心的仪表板。 如果选择“仪表板”，则默认视图将切换到最近使用的仪表板。****
+* 可以自定义仪表板，以创建专为你设计的工作区。 例如，可以生成一个以项目、任务或角色为中心的仪表板。 如果选择“仪表板”，则默认视图将切换到最近使用的仪表板。 
 
 ### <a name="choose-a-portal-menu-mode"></a>选择门户菜单模式
 
@@ -85,11 +85,11 @@ ms.locfileid: "76310673"
 
 通知是与当前会话相关的系统消息。 例如，它们提供如下所述的信息：当前的信用余额、刚刚创建的资源何时可用，或者请求确认上一个操作。 启用弹出式通知后，消息会短暂地显示在屏幕的右上角。 
 
-若要启用或禁用弹出式通知，请选中或取消选中“启用弹出式通知”复选框。****
+若要启用或禁用弹出式通知，请选中或取消选中“启用弹出式通知”复选框。 
 
    ![显示 Azure 门户设置的屏幕截图，其中突出显示了弹出式通知](./media/set-preferences/popup-notifications.png)
 
-若要阅读在当前会话中收到的所有通知，请从全局页头中选择“通知”。****
+若要阅读在当前会话中收到的所有通知，请从全局页头中选择“通知”。 
 
    ![显示 Azure 门户全局页头的屏幕截图，其中显示突出了“通知”](./media/set-preferences/read-notifications.png)
 
@@ -99,11 +99,11 @@ ms.locfileid: "76310673"
 
 如果你对 Azure 门户设置做了更改，但想要放弃这些更改，请选择“还原默认设置”。**** 对门户设置所做的所有更改将会丢失。 此选项不影响仪表板自定义。
 
-有关“导出所有设置”或“删除所有设置和专用仪表板”的详细信息，请参阅[导出或删除用户设置](azure-portal-export-delete-settings.md)。********
+有关“导出所有设置”或“删除所有设置和专用仪表板”的详细信息，请参阅[导出或删除用户设置](azure-portal-export-delete-settings.md)。  
 
 ## <a name="change-language-and-regional-settings"></a>更改语言和区域设置
 
-有两项设置用于控制文本在 Azure 门户中的显示方式。 “语言”设置控制文本在 Azure 门户中的显示语言。**** “区域格式”控制日期、时间、数字和货币的显示方式。****
+有两项设置用于控制文本在 Azure 门户中的显示方式。 “语言”设置控制文本在 Azure 门户中的显示语言。  “区域格式”控制日期、时间、数字和货币的显示方式。 
 
 若要更改 Azure 门户中使用的语言，请使用下拉列表从可用语言列表中进行选择。
 
@@ -111,7 +111,7 @@ ms.locfileid: "76310673"
 
 例如，如果选择“英语”作为语言，然后选择“美国”作为区域格式，将以美元显示货币。 如果选择“英语”作为语言，然后选择“欧洲”作为区域格式，则以欧元显示货币。
 
-选择“应用”以更新语言和区域格式设置。****
+选择“应用”以更新语言和区域格式设置。 
 
    ![显示语言和区域格式设置的屏幕截图](./media/set-preferences/language.png)
 
@@ -121,5 +121,5 @@ ms.locfileid: "76310673"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [创建并共享自定义仪表板](azure-portal-dashboards.md)
+* [创建和共享自定义仪表板](azure-portal-dashboards.md)
 * [Azure 门户“操作说明”视频系列](azure-portal-video-series.md)

@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 云壳的 Terraform 部署 |微软文档
-description: 使用 Azure 云外壳使用 Terraform 进行部署
+title: 从 Azure Cloud Shell 部署 with Terraform |Microsoft Docs
+description: 从 Azure Cloud Shell 部署 with Terraform
 services: Azure
 documentationcenter: ''
 author: tomarchermsft
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: tarcher
 ms.openlocfilehash: 8bacadd8941131f608411e61cc15c120c1b2bc60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79458148"
 ---
 # <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>通过 Terraform 和 Azure Cloud Shell 中的 Bash 进行部署
@@ -189,4 +189,4 @@ Destroy complete! Resources: 1 destroyed.
 
 ## <a name="next-steps"></a>后续步骤
 [了解 Terraform Azure 提供程序](https://www.terraform.io/docs/providers/azurerm/#)<br>
-[云壳中的 Bash 快速启动](quickstart.md)
+[Cloud Shell 快速入门中的 Bash](quickstart.md)

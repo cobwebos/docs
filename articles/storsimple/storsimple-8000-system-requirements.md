@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 3032585c6f0a5cc6143eee06b12b6def50cd7cd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80297711"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 系列软件、高可用性和网络要求
@@ -63,7 +63,7 @@ ms.locfileid: "80297711"
 
 StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口以允许传输 iSCSI、云和管理流量。 下表列出了需要在防火墙中打开的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 *出*或*出站*表示 StorSimple 设备从外部（超出部署范围）发送数据的方向：例如，到 Internet 的出站。
 
-| 端口号 <sup>1、2</sup> | 入或出 | 端口范围 | 必选 | 说明 |
+| 端口号 <sup>1、2</sup> | 入或出 | 端口范围 | 必选 | 注意 |
 | --- | --- | --- | --- | --- |
 | TCP 80 (HTTP)<sup>3</sup> |出 |WAN |否 |<ul><li>出站端口用于 Internet 访问以检索更新。</li><li>出站 Web 代理可由用户配置。</li><li>若要允许系统更新，还必须为控制器的固定 IP 打开此端口。</li></ul> |
 | TCP 443 (HTTPS)<sup>3</sup> |出 |WAN |是 |<ul><li>出站端口用于访问云中的数据。</li><li>出站 Web 代理可由用户配置。</li><li>若要允许系统更新，还必须为控制器的固定 IP 打开此端口。</li><li>此端口还在两个控制器中用于垃圾回收。</li></ul> |
@@ -81,7 +81,7 @@ StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口�
 <sup>3</sup> StorSimple 设备上控制器的固定 IP 必须可路由，并能直接连接到 Internet 或通过配置 Web 代理连接到 Internet。 固定 IP 地址用于为设备提供更新以及垃圾回收。 如果设备控制器无法通过固定 IP 连接到 Internet，用户将不能更新 StorSimple 设备，且垃圾回收将无法正常工作。
 
 > [!IMPORTANT]
-> 确保防火墙不会修改或解密 StorSimple 设备和 Azure 之间的任何 TLS 流量。
+> 请确保防火墙不会修改或解密 StorSimple 设备和 Azure 之间的任何 TLS 通信。
 
 
 ### <a name="url-patterns-for-firewall-rules"></a>防火墙规则的 URL 模式
@@ -233,7 +233,7 @@ StorSimple 设备包括使用镜像空间进行保护的固态硬盘 (SSD) 和�
 * 请确保始终都安装有两个 EBOD 机箱控制器模块、两个 SAS 电缆以及所有的硬盘驱动器。
 * 如果 EBOD 机箱控制器模块发生故障，立即请求更换。
 * 如果 EBOD 机箱控制器模块发生故障，请确保在更换发生故障的模块之前另一个控制器模块处于主动状态。 若要验证控制器是否处于主动状态，请转到 [Identify the active controller on your device](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)（识别设备上的主动控制器）。
-* 在 EBOD 控制器模块更换期间，通过访问**监视器** > **硬件运行状况**，持续监视 StorSimple 设备管理器服务中组件的状态。
+* 在 EBOD 控制器模块更换过程中，会通过访问 "**监视** > **硬件运行状况**" 持续监视 StorSimple 设备管理器服务中组件的状态。
 * 如果 SAS 电缆发生故障或需要更换（应让 Microsoft 支持部门参与，一起做出决定），请确保仅移除需要更换的 SAS 电缆。
 * 不要同时从系统中移除两个 SAS 电缆。
 

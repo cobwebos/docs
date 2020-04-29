@@ -1,5 +1,5 @@
 ---
-title: 在 StorSimple 设备管理器服务中使用设备摘要
+title: 使用 StorSimple 设备管理器 service 中的设备摘要
 description: 介绍 StorSimple 设备管理器服务设备摘要、如何用其查看存储指标和连接的发起程序，以及如何查找序列号和 IQN。
 services: storsimple
 documentationcenter: NA
@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 7801cdc6573799330e5173db82dead8d4f2cd83f
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80398250"
 ---
 # <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>使用 StorSimple 设备管理器服务中的设备摘要
@@ -78,7 +78,7 @@ StorSimple 设备摘要边栏选项卡提供特定 StorSimple 设备的概要信
 
      在此图表中，用户可以查看设备在一段时间内使用的总主存储（由主机写入设备的数据量）和总云存储的指标。
   
-     在此语境中，“主存储”是指由主机写入的总数据量，可以按卷类型细分：“主分层存储”包括本地存储数据以及分层到云中的数据。**** “主本地固定存储”只包括本地存储数据。** 另一方面，*云存储*是存储在云中的总数据量的度量值。 此存储包括分层数据和备份。 存储在云中的数据是删除了重复数据且经过压缩的，而存储在主存储中的数据则是未删除重复数据且未经过压缩的。 （您可以比较这两个数字，以获得压缩速率的概念。对于主存储和云存储，显示的金额取决于您配置的跟踪频率。 例如，如果选择的频率为一周一次，该图表会显示上周每一天的数据。
+     在此语境中，“主存储”是指由主机写入的总数据量，可以按卷类型细分：“主分层存储”包括本地存储数据以及分层到云中的数据。**** “主本地固定存储”只包括本地存储数据。** 另一方面，*云存储*是存储在云中的总数据量的度量值。 此存储包括分层数据和备份。 存储在云中的数据是删除了重复数据且经过压缩的，而存储在主存储中的数据则是未删除重复数据且未经过压缩的。 （您可以对这两个数字进行比较，以了解压缩率。）对于主存储和云存储，显示的数量取决于你配置的跟踪频率。 例如，如果选择的频率为一周一次，该图表会显示上周每一天的数据。
 
      若要查看某段时间内使用的云存储量，请选择“使用的云存储”**** 选项。 若要查看由主机写入的总存储，请选择“已使用的主分层存储”和“已使用的主本地固定存储”选项。******** 
      有关详细信息，请参阅[使用 StorSimple 设备管理器服务监视 StorSimple 设备](storsimple-monitor-device.md)。

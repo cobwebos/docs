@@ -1,15 +1,15 @@
 ---
-title: 在 Azure 监视器中使用应用程序更改分析查找 Web 应用问题 |微软文档
+title: 使用 Azure Monitor 中的应用程序更改分析查找 web 应用问题 |Microsoft Docs
 description: 使用 Azure Monitor 中的应用程序更改分析排查 Azure 应用服务中的实时站点应用程序问题。
 ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/07/2019
 ms.openlocfilehash: 036b8c084bdfdc11c02274758c550c76bdc7b1e7
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80348736"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>使用 Azure Monitor 中的应用程序更改分析（预览版）
@@ -19,7 +19,7 @@ ms.locfileid: "80348736"
 更改分析构建在 [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview) 的强大功能基础之上，可让你洞察 Azure 应用程序的更改，以提高可观察性并减少 MTTR（平均修复时间）。
 
 > [!IMPORTANT]
-> 更改分析目前以预览版提供。 此预览版不附带服务级别协议。 不建议对生产工作负荷使用此版本。 某些功能可能不受支持或者受限。 有关详细信息，请参阅[Microsoft Azure 预览的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 更改分析目前以预览版提供。 此预览版不附带服务级别协议。 不建议对生产工作负荷使用此版本。 某些功能可能不受支持或者受限。 有关详细信息，请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="overview"></a>概述
 
@@ -29,15 +29,15 @@ ms.locfileid: "80348736"
 
 ![演示更改分析如何获取更改数据并将其提供给客户端工具的体系结构示意图](./media/change-analysis/overview.png)
 
-目前，更改分析已集成到应用服务 Web 应用中的**诊断和解决问题**中，并在 Azure 门户中作为独立选项卡提供。
+当前的更改分析集成到应用服务 web 应用中的**诊断和解决问题**体验，并在 Azure 门户中作为独立选项卡提供。
 请参阅本文后面的“在 Azure 中查看所有资源的更改”部分以访问“更改分析”边栏选项卡，参阅“适用于 Web 应用的更改分析功能”部分以了解如何在 Web 应用门户中使用它。****
 
 ### <a name="azure-resource-manager-tracked-properties-changes"></a>Azure 资源管理器跟踪的属性更改
 
-更改分析使用 [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview) 提供托管应用程序的 Azure 资源在不同时间的更改历史记录。 可以检测到已跟踪的设置，如托管标识、平台操作系统升级和主机名。
+更改分析使用 [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview) 提供托管应用程序的 Azure 资源在不同时间的更改历史记录。 可以检测到管理的设置，例如托管标识、平台操作系统升级和主机名。
 
 ### <a name="azure-resource-manager-proxied-setting-changes"></a>Azure 资源管理器代理设置更改
-ARG 中尚不可用的 IP 配置规则、TLS 设置和扩展版本等设置尚不可用，因此更改分析查询并安全地计算这些更改，以便在应用中更改的内容中提供更多详细信息。 此信息在 Azure 资源图中尚不可用，但将很快可用。
+设置（例如 IP 配置规则、TLS 设置和扩展版本）在 ARG 中尚不可用，因此更改分析查询并安全地计算这些更改，以提供有关应用中所更改内容的更多详细信息。 此信息在 Azure 资源关系图中不可用，但即将推出。
 
 ### <a name="changes-in-web-app-deployment-and-configuration-in-guest-changes"></a>Web 应用部署和配置的更改（来宾中的更改）
 
@@ -54,8 +54,8 @@ ARG 中尚不可用的 IP 配置规则、TLS 设置和扩展版本等设置尚�
 - Azure SQL
 
 ### <a name="enablement"></a>支持
-需将“Microsoft.ChangeAnalysis”资源提供程序注册到某个订阅，然后才可使用 Azure 资源管理器的跟踪属性和代理设置更改数据。 当您输入 Web 应用诊断和解决问题工具或启动"更改分析独立"选项卡时，此资源提供程序将自动注册。 它没有任何针对订阅的性能和成本实现。 当您为 Web 应用启用更改分析（或在诊断和解决问题工具中启用）时，它将对 Web 应用的性能影响忽略不计，并且没有计费成本。
-对于 Web 应用的来宾中更改，需要单独的支持才能在 Web 应用中扫描代码文件。 有关详细信息，请参阅本文后面的["诊断和解决问题"工具部分中的启用更改分析](https://docs.microsoft.com/azure/azure-monitor/app/change-analysis#enable-change-analysis-in-the-diagnose-and-solve-problems-tool)，了解更多详细信息。
+需将“Microsoft.ChangeAnalysis”资源提供程序注册到某个订阅，然后才可使用 Azure 资源管理器的跟踪属性和代理设置更改数据。 当你输入 Web 应用 "诊断和解决问题" 工具或显示 "更改分析独立" 选项卡时，将自动注册此资源提供程序。 它没有任何针对订阅的性能和成本实现。 当你为 web 应用启用更改分析（或在 "诊断和解决问题" 工具中启用）时，它将对 web 应用造成性能影响，无需支付费用。
+对于 Web 应用的来宾中更改，需要单独的支持才能在 Web 应用中扫描代码文件。 有关详细信息，请参阅本文后面[的 "诊断和解决问题" 工具一节中的 "启用更改分析"](https://docs.microsoft.com/azure/azure-monitor/app/change-analysis#enable-change-analysis-in-the-diagnose-and-solve-problems-tool) 。
 
 
 ## <a name="viewing-changes-for-all-resources-in-azure"></a>在 Azure 中查看所有资源的更改
@@ -77,7 +77,7 @@ ARG 中尚不可用的 IP 配置规则、TLS 设置和扩展版本等设置尚�
 - Azure 网络资源
 - 包含来宾中文件跟踪和环境变量更改的 Web 应用
 
-对于任何反馈，请使用边栏选项卡或电子邮件中changeanalysisteam@microsoft.com的发送反馈按钮。
+有关任何反馈，请使用边栏选项卡或电子邮件changeanalysisteam@microsoft.com中的 "发送反馈" 按钮。
 
 ![“更改分析”边栏选项卡中反馈按钮的屏幕截图](./media/change-analysis/change-analysis-feedback.png)
 
@@ -101,12 +101,12 @@ ARG 中尚不可用的 IP 配置规则、TLS 设置和扩展版本等设置尚�
 
    ![“应用程序崩溃”选项的屏幕截图](./media/change-analysis/enable-changeanalysis.png)
 
-1. 启用“更改分析”并选择“保存”。******** 该工具在应用服务计划下显示所有 Web 应用。 可以使用计划级别开关，为某个计划下的所有 Web 应用启用更改分析。
+1. 启用“更改分析”并选择“保存”。******** 该工具显示应用服务计划下的所有 web 应用。 可以使用计划级别开关，为某个计划下的所有 Web 应用启用更改分析。
 
     ![“启用更改分析”用户界面的屏幕截图](./media/change-analysis/change-analysis-on.png)
 
 
-1. 要访问更改分析，请选择 **"诊断并解决问题** > **可用性和性能** > **应用程序崩溃**"。 此时会显示一个图形，其中汇总了在不同时间发生的更改类型，以及有关这些更改的详细信息。 默认情况下会显示过去 24 小时的更改，方便你解决即时问题。
+1. 若要访问更改分析，请选择 "**诊断和解决问题** > **可用性和性能** > **应用程序崩溃**"。 此时会显示一个图形，其中汇总了在不同时间发生的更改类型，以及有关这些更改的详细信息。 默认情况下会显示过去 24 小时的更改，方便你解决即时问题。
 
      ![更改差异视图的屏幕截图](./media/change-analysis/change-view.png)
 

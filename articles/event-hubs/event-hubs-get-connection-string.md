@@ -11,10 +11,10 @@ ms.custom: seodec18
 ms.date: 02/19/2019
 ms.author: spelluru
 ms.openlocfilehash: 77a768f907ad989a457ee498f26ad0f6e004f786
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79264929"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>获取事件中心连接字符串
@@ -37,17 +37,17 @@ Endpoint=sb://<FQDN>/;SharedAccessKeyName=<KeyName>;SharedAccessKey=<KeyValue>
 本文逐步讲解获取连接字符串的各种方法。
 
 ## <a name="get-connection-string-from-the-portal"></a>从门户中获取连接字符串
-1. 登录到[Azure 门户](https://portal.azure.com)。 
-2. 在左侧导航菜单中，选择“所有服务”****。 
-3. 选择“分析”部分中的“事件中心”********。 
+1. 登录到 [Azure 门户](https://portal.azure.com)。 
+2. 在左侧导航菜单中，选择“所有服务”  。 
+3. 选择“分析”部分中的“事件中心”   。 
 4. 在事件中心列表中，选择事件中心。
-6. 在“事件中心命名空间”页中的左侧菜单上选择“共享访问策略”********。
+6. 在“事件中心命名空间”页中的左侧菜单上选择“共享访问策略”   。
 
     ![共享访问策略菜单项](./media/event-hubs-get-connection-string/event-hubs-get-connection-string1.png)
-7. 在策略列表中选择“共享访问策略”****。 默认值为：**根管理共享访问策略**。 可以添加具有适当权限（读取、写入）的策略，并使用该策略。 
+7. 在策略列表中选择“共享访问策略”  。 默认值命名为：RootManageSharedAccessPolicy  。 可以添加具有适当权限（读取、写入）的策略，并使用该策略。 
 
     ![事件中心共享访问策略](./media/event-hubs-get-connection-string/event-hubs-get-connection-string2.png)
-8. 选择“连接字符串 - 主密钥”字段旁边的“复制”按钮********。 
+8. 选择“连接字符串 - 主密钥”字段旁边的“复制”按钮   。 
 
     ![事件中心 - 获取连接字符串](./media/event-hubs-get-connection-string/event-hubs-get-connection-string3.png)
 
@@ -55,7 +55,7 @@ Endpoint=sb://<FQDN>/;SharedAccessKeyName=<KeyName>;SharedAccessKey=<KeyValue>
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-您可以使用[Get-AzEventHubKey](/powershell/module/az.eventhub/get-azeventhubkey)获取特定策略/规则名称的连接字符串，如下所示：
+可以使用 [Get-AzEventHubKey](/powershell/module/az.eventhub/get-azeventhubkey) 获取特定策略/规则名称的连接字符串，如下所示：
 
 ```azurepowershell-interactive
 Get-AzEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummynamespace -AuthorizationRuleName RootManageSharedAccessKey
@@ -68,7 +68,7 @@ Get-AzEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummyname
 az eventhubs namespace authorization-rule keys list --resource-group dummyresourcegroup --namespace-name dummynamespace --name RootManageSharedAccessKey
 ```
 
-或者，您可以使用以下内容获取 EventHub 实体的连接字符串：
+或者可以使用以下命令获取 EventHub 实体的连接字符串：
 
 ```azurecli-interactive
 az eventhubs eventhub authorization-rule keys list --resource-group dummyresourcegroup --namespace-name dummynamespace --eventhub-name dummyeventhub --name RootManageSharedAccessKey

@@ -1,5 +1,5 @@
 ---
-title: 斯托简单 8000 系列设备的故障转移和灾难恢复
+title: StorSimple 8000 系列设备的故障转移和灾难恢复
 description: 了解如何将 StorSimple 设备故障转移到其自身、另一个物理设备或云设备。
 services: storsimple
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 179bc5cdf982792f41e0dec209341f346959a31a
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80397523"
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>StorSimple 8000 系列设备的故障转移和灾难恢复
@@ -104,7 +104,7 @@ ms.locfileid: "80397523"
 
 如果在规划测试故障转移或测试故障回复，我们建议对数据较少（Gb 量级）的卷容器进行测试。 通常，可以在故障转移完成 24 小时后开始故障回复。
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 
 Q. **如果灾难恢复失败或部分成功，会发生什么情况？**
 

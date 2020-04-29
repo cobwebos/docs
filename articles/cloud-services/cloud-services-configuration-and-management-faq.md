@@ -16,30 +16,30 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
 ms.openlocfilehash: 5821c72ae1be4759cf5aa76ff1f5af43337749c0
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80668580"
 ---
-# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务配置和管理问题：常见问题解答 (FAQ)
+# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务配置和管理问题：常见问题 (FAQ)
 
 本文包括一些关于 [Microsoft Azure 云服务](https://azure.microsoft.com/services/cloud-services)配置和管理的常见问题解答。 还可以参阅[云服务 VM 大小页面](cloud-services-sizes-specs.md)，了解大小信息。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-**证书**
+**Certificates**
 
-- [为什么我的云服务 TLS/SSL 证书的证书链不完整？](#why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete)
+- [为什么云服务的 TLS/SSL 证书的证书链不完整？](#why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete)
 - [“用于扩展的 Windows Azure 工具加密证书”有何用途？](#what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions)
 - [如何在未“通过 RDP 连接”到实例的情况下生成证书签名请求 (CSR)？](#how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance)
-- [我的云服务管理证书即将过期。如何续订？](#my-cloud-service-management-certificate-is-expiring-how-to-renew-it)
-- [如何自动安装主 TLS/SSL 证书 （.pfx） 和中间证书 （.p7b）？](#how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b)
+- [我的云服务管理证书即将到期。如何续订？](#my-cloud-service-management-certificate-is-expiring-how-to-renew-it)
+- [如何自动安装主要的 TLS/SSL 证书（.pfx）和中间证书（p7b）？](#how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b)
 - [“用于 MachineKey 的 Microsoft Azure 服务管理”证书的用途是什么？](#what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate)
 
 **监视和日志记录**
 
-- [Azure 门户中即将推出的云服务功能有哪些，可帮助管理和监视应用程序？](#what-are-the-upcoming-cloud-service-capabilities-in-the-azure-portal-which-can-help-manage-and-monitor-applications)
+- [Azure 门户中即将推出的可帮助管理和监视应用程序的云服务功能是什么？](#what-are-the-upcoming-cloud-service-capabilities-in-the-azure-portal-which-can-help-manage-and-monitor-applications)
 - [IIS 为何停止写入日志目录？](#why-does-iis-stop-writing-to-the-log-directory)
 - [如何为云服务启用 WAD 日志记录？](#how-do-i-enable-wad-logging-for-cloud-services)
 
@@ -53,47 +53,47 @@ ms.locfileid: "80668580"
 **权限**
 
 - [没有权限的 Microsoft 内部工程师能否通过远程桌面连接到云服务实例？](#can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission)
-- [无法使用 RDP 文件将桌面远程到云服务 VM。我得到以下错误：发生了身份验证错误（代码：0x80004005）](#i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005)
+- [无法使用 RDP 文件通过远程桌面连接到云服务 VM。收到以下错误：发生身份验证错误（代码：0x80004005）](#i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005)
 
-**扩展**
+**缩放**
 
 - [无法扩展到 X 个实例以上](#i-cannot-scale-beyond-x-instances)
 - [如何基于内存指标配置自动缩放？](#how-can-i-configure-auto-scale-based-on-memory-metrics)
 
-**泛型**
+**常规**
 
 - [如何将“nosniff”添加到网站？](#how-do-i-add-nosniff-to-my-website)
 - [如何为 Web 角色自定义 IIS？](#how-do-i-customize-iis-for-a-web-role)
-- [我的云服务的配额限制是什么？](#what-is-the-quota-limit-for-my-cloud-service)
-- [为什么我的云服务 VM 上的驱动器显示的可用磁盘空间很少？](#why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space)
+- [什么是云服务配额限制？](#what-is-the-quota-limit-for-my-cloud-service)
+- [云服务 VM 上的驱动器为何显示可用磁盘空间不足？](#why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space)
 - [如何以自动化方法为云服务添加反恶意软件扩展？](#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
 - [如何为云服务启用服务器名称指示 (SNI)？](#how-to-enable-server-name-indication-sni-for-cloud-services)
 - [如何将标记添加到 Azure 云服务？](#how-can-i-add-tags-to-my-azure-cloud-service)
-- [Azure 门户不显示云服务的 SDK 版本。我怎样才能得到？](#the-azure-portal-doesnt-display-the-sdk-version-of-my-cloud-service-how-can-i-get-that)
-- [我想关闭云服务几个月。如何在不丢失 IP 地址的情况下降低云服务的计费成本？](#i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address)
+- [Azure 门户不显示云服务的 SDK 版本。如何获取版本信息？](#the-azure-portal-doesnt-display-the-sdk-version-of-my-cloud-service-how-can-i-get-that)
+- [我想将云服务关闭几个月。如何降低云服务的计费成本，而不丢失 IP 地址？](#i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address)
 
 
 ## <a name="certificates"></a>证书
 
-### <a name="why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete"></a>为什么我的云服务 TLS/SSL 证书的证书链不完整？
+### <a name="why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete"></a>为什么云服务的 TLS/SSL 证书的证书链不完整？
     
-建议客户安装完整的证书链（叶证书、中间证书和根证书），而不是仅安装叶证书。 如果仅安装叶证书，将依赖 Windows 通过遍历 CTL 生成证书链。 如果在 Windows 尝试验证证书时，Azure 或 Windows 更新中出现间歇性网络或 DNS 问题，证书可能会被视为无效。 通过安装完整的证书链可避免此问题。 博客[如何安装链接的 SSL 证书](https://blogs.msdn.microsoft.com/azuredevsupport/2010/02/24/how-to-install-a-chained-ssl-certificate/)演示了如何执行此操作。
+我们建议客户安装完整的证书链（叶证书、中间证书和根证书），而不要只安装叶证书。 如果只是安装叶证书，则要依赖 Windows 通过遍历 CTL 来构建证书链。 当 Windows 尝试验证证书时，如果 Azure 或 Windows 更新中发生间歇性网络问题或 DNS 问题，可能会将该证书视为无效。 如果安装完整的证书链，则可避免此问题。 博客 [How to install a chained SSL certificate](https://blogs.msdn.microsoft.com/azuredevsupport/2010/02/24/how-to-install-a-chained-ssl-certificate/)（如何安装链接的 SSL 证书）中介绍了操作方法。
 
 ### <a name="what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions"></a>“用于扩展的 Windows Azure 工具加密证书”有何用途？
 
-每次将扩展添加到云服务中时，就会自动创建这些证书。 通常是 WAD 扩展或 RDP 扩展，但也可能是其他扩展，例如反恶意软件或日志收集器扩展。 这些证书仅用于加密和解密扩展的专用配置。 从不检查过期日期，因此证书是否过期无关紧要。 
+每次将扩展添加到云服务中时，就会自动创建这些证书。 在大多数情况下，这是 WAD 扩展或 RDP 扩展，但也可能是其他扩展，例如反恶意软件或日志收集器扩展。 这些证书仅用于加密和解密扩展的专用配置。 系统永远不会检查过期日期，因此，证书是否已过期并不重要。 
 
-可以忽略这些证书。 如果想要清理这些证书，可以尝试将他们全部删除。 如果尝试删除正在使用的证书，Azure 会引发错误。
+可以忽略这些证书。 如果想要清理证书，可以尝试删除所有证书。 如果你尝试删除正在使用的证书，Azure 将引发错误。
 
-### <a name="how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance"></a>如何在未“通过 RDP 连接”到实例的情况下生成证书签名请求 (CSR)？
+### <a name="how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance"></a>如何在不通过 RDP 连接到实例的情况下生成证书签名请求 (CSR)？
 
-请参阅以下指南文档：
+请参阅以下指导文档：
 
 [获取证书以用于 Windows Azure 网站 (WAWS)](https://azure.microsoft.com/blog/obtaining-a-certificate-for-use-with-windows-azure-web-sites-waws/)
 
-CSR 只是一个文本文件。 无需从最终使用此证书的计算机中创建它。此文档针对应用服务编写，但是 CSR 创建是通用的，它也适用于云服务。
+CSR 只是一个文本文件。 无需从最终使用此证书的计算机中创建它。 尽管本文档是针对应用服务编写的，但 CSR 创建过程是通用的，同样适用于云服务。
 
-### <a name="my-cloud-service-management-certificate-is-expiring-how-to-renew-it"></a>我的云服务管理证书即将到期。 如何续订？
+### <a name="my-cloud-service-management-certificate-is-expiring-how-to-renew-it"></a>我的云服务管理证书即将过期。 如何续订？
 
 可使用以下 PowerShell 命令续订管理证书：
 
@@ -101,15 +101,15 @@ CSR 只是一个文本文件。 无需从最终使用此证书的计算机中创
     Select-AzureSubscription -Current -SubscriptionName <your subscription name>
     Get-AzurePublishSettingsFile
 
-**Get-AzurePublishSettingsFile** 将在 Azure 门户的“订阅”**** > “管理证书”**** 中创建新的管理证书。 新证书的名称类似于“YourSubscriptionNam]-[CurrentDate]-credentials”。
+**AzurePublishSettingsFile** 将在 Azure 门户上的“订阅” > “管理证书”中创建新的管理证书。   新证书的名称类似于“[订阅名称]-[当前日期]-credentials”。
 
-### <a name="how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b"></a>如何自动安装主 TLS/SSL 证书 （.pfx） 和中间证书 （.p7b）？
+### <a name="how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b"></a>如何自动安装主要的 TLS/SSL 证书（.pfx）和中间证书（p7b）？
 
-可以使用启动脚本 (batch/cmd/PowerShell) 自动执行此任务，并在服务定义文件中注册该启动脚本。 将启动脚本和证书（.p7b 文件）添加到启动脚本同一目录的项目文件夹中。
+可以使用启动脚本 (batch/cmd/PowerShell) 自动完成此任务，并将该启动脚本注册到服务定义文件中。 将启动脚本和证书（.p7b 文件）添加到启动脚本所在的同一目录中的项目文件夹。
 
 ### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>“用于 MachineKey 的 Microsoft Azure 服务管理”证书的用途是什么？
 
-此证书用于加密 Azure Web 角色的计算机密钥。 要了解更多信息，请查看[此咨询](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731)。
+此证书用于加密 Azure Web 角色的计算机密钥。 若要了解详细信息，请查看[此公告](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731)。
 
 有关详细信息，请参阅以下文章：
 - [如何配置和运行云服务的启动任务](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
@@ -130,11 +130,11 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 
 能够监视实例级别的指标。 其他监视功能在[如何监视云服务](cloud-services-how-to-monitor.md)中提供。
 
-### <a name="why-does-iis-stop-writing-to-the-log-directory"></a>IIS 为何停止写入日志目录？
-你用于写入日志目录的本地存储配额已用完。若要修正此问题，可以执行以下三种操作之一：
-* 为 IIS 启用诊断功能并将诊断定期移动到 blob 存储。
-* 手动删除日志记录目录中的日志文件。
-* 增加本地资源的配额限制。
+### <a name="why-does-iis-stop-writing-to-the-log-directory"></a>IIS 为何阻止写入日志目录？
+与写入日志目录相关的本地存储配额已用完。 若要解决此问题，可采取以下三种措施之一：
+* 为 IIS 启用诊断，并定期将诊断信息移到 Blob 存储。
+* 从日志目录中手动删除日志文件。
+* 提高本地资源的配额限制。
 
 有关详细信息，请参阅以下文档：
 * [在 Azure 存储中存储和查看诊断数据](/azure/storage/common/storage-introduction)
@@ -152,7 +152,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 ## <a name="network-configuration"></a>网络配置
 
 ### <a name="how-do-i-set-the-idle-timeout-for-azure-load-balancer"></a>如何为 Azure 负载均衡器设置空闲超时？
-可以在服务定义 (csdef) 文件中按如下所示指定超时：
+可以在服务定义 (csdef) 文件中指定超时，如下所示：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -176,14 +176,14 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 若要设置静态 IP 地址，需要创建保留 IP。 该保留 IP 可以关联到新的云服务或现有部署。 请参阅以下文档了解详细信息：
 * [如何创建保留 IP 地址](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#manage-reserved-vips)
 * [保留现有云服务的 IP 地址](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#reserve-the-ip-address-of-an-existing-cloud-service)
-* [将保留的 IP 关联到新的云服务](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-new-cloud-service)
+* [将保留 IP 关联到新的云服务](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-new-cloud-service)
 * [将保留 IP 关联到正在运行的部署](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-running-deployment)
-* [使用服务配置文件将保留的 IP 与云服务关联](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
+* [使用服务配置文件将保留 IP 关联到云服务](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
-### <a name="what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides"></a>Azure 基本 IPS/IDS 和 DDOS 有哪些功能？
-Azure 的数据中心物理服务器中包含 IPS/IDS，可用于防御威胁。 此外，客户可以部署第三方安全解决方案，例如 Web 应用程序防火墙、网络防火墙、反恶意软件、入侵检测、防护系统 (IDS/IPS) 等。 有关详细信息，请参阅[保护数据和资产及遵守全局安全标准](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)。
+### <a name="what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides"></a>Azure 基本 IPS/IDS 和 DDOS 提供哪些特性和功能？
+Azure 在数据中心物理服务器上使用 IPS/IDS 来抵御威胁。 此外，客户可以部署第三方安全解决方案，例如 Web 应用程序防火墙、网络防火墙、反恶意软件、入侵检测、防护系统 (IDS/IPS)，等等。 有关详细信息，请参阅[保护数据和资产并遵守全局安全标准](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)。
 
-Microsoft 持续监测服务器、网络和应用程序，以检测威胁。 Azure 的多元威胁管理方法使用入侵检测、分布式拒绝服务 (DDoS) 攻击防护、渗透测试、行为分析、异常检测和机器学习来不断加强其防护并降低风险。 适用于 Azure 的 Microsoft 反恶意软件可以保护 Azure 云服务和虚拟机。 你还可以选择部署第三方安全解决方案，例如 Web 应用程序防火墙、网络防火墙、反恶意软件、入侵检测和防护系统 (IDS/IPS) 等。
+Microsoft 会持续监视服务器、网络和应用程序以检测威胁。 Azure 的全方位威胁管理方法使用入侵检测、分布式拒绝服务 (DDoS) 攻击防护、渗透测试、行为分析、异常检测和机器学习来不断增强其防御能力并降低风险。 适用于 Azure 的 Microsoft 反恶意软件可以保护 Azure 云服务和虚拟机。 此外，你可以选择部署第三方安全解决方案，例如 Web 应用程序防火墙、网络防火墙、反恶意软件、入侵检测和防护系统 (IDS/IPS)，等等。
 
 ### <a name="how-to-enable-http2-on-cloud-services-vm"></a>如何在云服务 VM 上启用 HTTP/2？
 
@@ -194,9 +194,9 @@ Windows 10 和 Windows Server 2016 随附了对客户端和服务器端上的 HT
 3. 创建名为 **DuoEnabled** 的新 DWORD 值。
 4. 将其值设置为 1。
 5. 重启服务器。
-6. 转到“默认网站”，在“绑定”下，使用刚刚创建的自签名证书创建新的 TLS 绑定。******** 
+6. 转到“默认网站”，在“绑定”下，使用刚刚创建的自签名证书创建新的 TLS 绑定。   
 
-有关详细信息，请参见:
+有关详细信息，请参阅：
 
 - [IIS 上的 HTTP/2](https://blogs.iis.net/davidso/http2)
 - [视频：Windows 10 中的 HTTP/2：浏览器、应用和 Web 服务器](https://channel9.msdn.com/Events/Build/2015/3-88)
@@ -305,7 +305,7 @@ Azure 不会将任何内容写入 %approot% 驱动器。 从 .cspkg 创建 VHD �
 
 **方法 1：使用 PowerShell**
 
-SNI 绑定可以使用 PowerShell cmdlet**新 Web 绑定**在云服务角色实例的启动任务中进行配置，如下所示：
+可以在云服务角色实例的启动任务中使用 PowerShell cmdlet **new-webbinding**配置 SNI 绑定，如下所示：
     
     New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags 
     

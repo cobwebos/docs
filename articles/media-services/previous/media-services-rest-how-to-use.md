@@ -1,6 +1,6 @@
 ---
 title: 媒体服务操作 REST API 概述 | Microsoft 文档
-description: "\"媒体服务操作 REST\"API 用于在媒体服务帐户中创建作业、资产、实时通道和其他资源。 本文提供 Azure 媒体服务 v2 REST API 概述。"
+description: 媒体服务操作 REST API 用于在媒体服务帐户中创建作业、资产、直播频道和其他资源。 本文提供了 Azure 媒体服务 v2 REST API 概述。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -16,18 +16,18 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
 ms.openlocfilehash: 597839f633ed2b925b86c5f859a0fb2d3b64dd59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76773665"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>媒体服务操作 REST API 概述 
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本，[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
-媒体服务操作 REST API 用于在媒体服务帐户中创建作业、资产、实时频道和其他资源****。 有关详细信息，请参阅 [Media Services Operations REST API reference](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)（媒体服务操作 REST API 参考）。
+媒体服务操作 REST API 用于在媒体服务帐户中创建作业、资产、实时频道和其他资源  。 有关详细信息，请参阅 [Media Services Operations REST API reference](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)（媒体服务操作 REST API 参考）。
 
 媒体服务提供了接受 JSON 或 atom+pub XML 格式的 REST API。 媒体服务 REST API 需要每个客户端连接到媒体服务时必须发送的特定 HTTP 标头，以及一组可选标头。 以下部分介绍你在创建请求和接收来自媒体服务的响应时可以使用的标头和 HTTP 谓词。
 
@@ -37,7 +37,7 @@ ms.locfileid: "76773665"
 
 使用 REST 时需考虑下列事项：
 
-* 查询实体时，一次返回的实体数限制为 1000 个，因为公共 REST v2 将查询结果数限制为 1000 个。 需要使用[此 .NET 示例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)和[此 REST API 示例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)中所述的 **Skip** 和 **Take** (.NET)/ **top** (REST)。 
+* 查询实体时，一次返回的实体数限制为 1000 个，因为公共 REST v2 将查询结果数限制为 1000 个。 需要使用**此 .NET 示例**和**此 REST API 示例**中所述的 **Skip** 和 [Take](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) (.NET)/ [top](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities) (REST)。 
 * 使用 JSON 并指定在请求中使用 **__metadata** 关键字（例如，为了引用某个链接对象）时，必须将 **Accept** 标头设置为 [JSON 详细格式](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/)（参阅以下示例）。 Odata 并不了解请求中的 **__metadata** 属性，除非将其设置为 verbose。  
   
         POST https://media.windows.net/API/Jobs HTTP/1.1
@@ -58,7 +58,7 @@ ms.locfileid: "76773665"
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>媒体服务支持的标准 HTTP 请求标头
 每次调用媒体服务时，必须在请求中包括一组必需标头，还可以根据需要包括一组可选标头。 下表列出了必需的标头：
 
-| 标头 | 类型 | “值” |
+| 标头 | 类型 | 值 |
 | --- | --- | --- |
 | 授权 |持有者 |持有者是唯一接受的授权机制。 该值还必须包括由 Azure Active Directory 提供的访问令牌。 |
 | x-ms-version |Decimal |2.17（或最新版本）|
@@ -72,7 +72,7 @@ ms.locfileid: "76773665"
 
 以下是一组可选标头：
 
-| 标头 | 类型 | “值” |
+| 标头 | 类型 | 值 |
 | --- | --- | --- |
 | Date |RFC 1123 日期 |请求的时间戳 |
 | Accept |内容类型 |响应的请求内容类型，例如：<p> -application/json;odata=verbose<p> - application/atom+xml<p> 响应可能具有不同的内容类型，如 BLOB 提取，在该类型中成功的响应包含 BLOB 流作为负载。 |
@@ -86,7 +86,7 @@ ms.locfileid: "76773665"
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>媒体服务支持的标准 HTTP 响应标头
 下面是可以根据你请求的资源以及要执行的操作返回给一组标头。
 
-| 标头 | 类型 | “值” |
+| 标头 | 类型 | 值 |
 | --- | --- | --- |
 | request-id |String |当前操作的唯一标识符，由服务生成。 |
 | client-request-id |String |调用方在原始请求（如果存在）中指定的标识符。 |
@@ -97,7 +97,7 @@ ms.locfileid: "76773665"
 ## <a name="standard-http-verbs-supported-by-media-services"></a>媒体服务支持的标准 HTTP 谓词
 下面是在提出 HTTP 请求时可以使用的 HTTP 谓词的完整列表：
 
-| 谓词 | 描述 |
+| 谓词 | 说明 |
 | --- | --- |
 | GET |返回对象的当前值。 |
 | POST |根据提供的数据创建对象，或提交命令。 |

@@ -6,10 +6,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: 00643dc1699d1cbd47efd271738015ea05e895e2
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80668341"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的群集隔离的最佳做法
@@ -24,13 +24,13 @@ ms.locfileid: "80668341"
 
 ## <a name="design-clusters-for-multi-tenancy"></a>设计多租户群集
 
-Kubernetes 提供所需的功能让你在同一个群集中逻辑隔离团队和工作负荷。 目标应该是提供最少量的特权，特权范围限定为每个团队所需的资源。 Kubernetes 中的[命名空间][k8s-namespaces]创建逻辑隔离边界。 隔离和多租户的其他 Kubernetes 功能和注意事项包括以下方面：
+Kubernetes 提供所需的功能让你在同一个群集中逻辑隔离团队和工作负荷。 目标应该是提供最少量的特权，特权范围限定为每个团队所需的资源。 Kubernetes 中的[命名空间][k8s-namespaces]创建逻辑隔离边界。 其他 Kubernetes 功能以及有关隔离和多租户的注意事项包括以下几个方面：
 
-* “计划”包括资源配额和 pod 中断预算等基本功能的用法。**** 有关这些功能的详细信息，请参阅[有关 AKS 中基本计划程序功能的最佳做法][aks-best-practices-scheduler]。
+* “计划”包括资源配额和 pod 中断预算等基本功能的用法。  有关这些功能的详细信息，请参阅[有关 AKS 中基本计划程序功能的最佳做法][aks-best-practices-scheduler]。
   * 更高级的计划程序功能包括排斥 (taint) 和容许 (toleration)、节点选择器，以及节点和 pod 关联与反关联。 有关这些功能的详细信息，请参阅[有关 AKS 中高级计划程序功能的最佳做法][aks-best-practices-advanced-scheduler]。
-* “网络”包括用于控制传入和传出 pod 的流量流的网络策略的用法。****
-* “身份验证和授权”包括基于角色的访问控制 (RBAC) 和 Azure Active Directory (AD) 集成、pod 标识以及 Azure Key Vault 中的机密的用法。**** 有关这些功能的详细信息，请参阅[有关 AKS 中身份验证和授权的最佳做法][aks-best-practices-identity]。
-* “容器”包括 pod 安全策略、pod 安全上下文，以及扫描映像和运行时中的漏洞。**** 此外，还涉及到使用 App Armor 或 Seccomp（安全计算）来限制容器对基础节点的访问。
+* “网络”包括用于控制传入和传出 pod 的流量流的网络策略的用法。 
+* “身份验证和授权”包括基于角色的访问控制 (RBAC) 和 Azure Active Directory (AD) 集成、pod 标识以及 Azure Key Vault 中的机密的用法。  有关这些功能的详细信息，请参阅[有关 AKS 中身份验证和授权的最佳做法][aks-best-practices-identity]。
+* “容器”包括 pod 安全策略、pod 安全上下文，以及扫描映像和运行时中的漏洞。  此外，还涉及到使用 App Armor 或 Seccomp（安全计算）来限制容器对基础节点的访问。
 
 ## <a name="logically-isolate-clusters"></a>逻辑隔离群集
 
@@ -46,13 +46,13 @@ AKS 或其他位置中的 Kubernetes 环境并不完全安全，因为可能存�
 
 ## <a name="physically-isolate-clusters"></a>物理隔离群集
 
-**最佳做法指导** - 对于每个独立的团队或应用程序部署，尽量减少使用物理隔离。 应改用上一部分所述的逻辑隔离。**
+**最佳做法指导** - 对于每个独立的团队或应用程序部署，尽量减少使用物理隔离。 应改用上一部分所述的逻辑隔离。 
 
 群集隔离的常用方法是使用物理上独立的 AKS 群集。 在此隔离模型中，将为团队或工作负荷分配其自身的 AKS 群集。 通常，这种方法看上去是最简单的隔离工作负荷或团队的方法，但会带来额外的管理和财务开销。 现在必须维护多个群集，并且必须单独提供访问权限和分配权限。 此外，需要为每个节点付费。
 
 ![AKS 中各个 Kubernetes 群集的物理隔离](media/operator-best-practices-cluster-isolation/physical-isolation.png)
 
-物理上独立的群集的 pod 密度通常较低。 由于每个团队或工作负荷具有自身的 AKS 群集，因此往往会为群集过度预配计算资源。 通常，在这些节点上安排少量 pod。 节点上未使用的容量不可由其他团队用于开发中的应用程序或服务。 这些超额的资源会导致物理独立群集的成本增加。
+物理上独立的群集的 pod 密度通常较低。 由于每个团队或工作负荷具有自身的 AKS 群集，因此往往会为群集过度预配计算资源。 通常在这些节点上计划少量的 pod。 节点上未使用的容量不可由其他团队用于开发中的应用程序或服务。 这些超额的资源会导致物理独立群集的成本增加。
 
 ## <a name="next-steps"></a>后续步骤
 

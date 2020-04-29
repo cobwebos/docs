@@ -1,5 +1,5 @@
 ---
-title: 创建和修改快速路由电路：Azure CLI
+title: 创建和修改 ExpressRoute 线路： Azure CLI
 description: 本文介绍如何使用 CLI 创建、预配、验证、更新、删除和取消预配 ExpressRoute 线路。
 services: expressroute
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: cherylmc
 ms.openlocfilehash: b967e1d8751a9c6a5214fef5241d57e954ad9f17
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79476145"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>使用 CLI 创建和修改 ExpressRoute 线路
@@ -21,14 +21,14 @@ ms.locfileid: "79476145"
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](expressroute-howto-circuit-portal-resource-manager.md)
-> * [电源外壳](expressroute-howto-circuit-arm.md)
+> * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
 > * [Azure Resource Manager 模板](expressroute-howto-circuit-resource-manager-template.md)
-> * [视频 - Azure 门户](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
-> * [电源外壳（经典）](expressroute-howto-circuit-classic.md)
+> * [视频-Azure 门户](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
+> * [PowerShell （经典）](expressroute-howto-circuit-classic.md)
 >
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 * 在开始之前，请安装最新版本的 CLI 命令（2.0 或更高版本）。 有关安装 CLI 命令的信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli) 和 [Azure CLI 入门](/cli/azure/get-started-with-azure-cli)。
 * 在开始配置之前，请查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。
@@ -55,9 +55,9 @@ az account list
 az account set --subscription "<subscription ID>"
 ```
 
-### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. 获取支持的提供程序、位置和带宽的列表
+### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. 获取支持的提供商、位置和带宽的列表
 
-在创建 ExpressRoute 线路之前，需要支持的连接服务提供商、位置和带宽选项的列表。 CLI 命令`az network express-route list-service-providers`返回此信息，您将在后面的步骤中使用这些信息：
+在创建 ExpressRoute 线路之前，需要支持的连接服务提供商、位置和带宽选项的列表。 CLI 命令`az network express-route list-service-providers`返回此信息，你将在后面的步骤中使用该信息：
 
 ```azurecli-interactive
 az network express-route list-service-providers
@@ -118,13 +118,13 @@ az network express-route list-service-providers
 
 查看此响应以检查你的连接服务提供商是否已在此处列出。 请记下以下信息，稍后在创建线路时需要用到：
 
-* “属性”
+* 名称
 * PeeringLocations
 * BandwidthsOffered
 
 现在，已准备好创建 ExpressRoute 线路。
 
-### <a name="3-create-an-expressroute-circuit"></a>3. 创建快速路由电路
+### <a name="3-create-an-expressroute-circuit"></a>3. 创建 ExpressRoute 线路
 
 > [!IMPORTANT]
 > 从发布服务密钥的那一刻起，将对 ExpressRoute 线路进行计费。 在连接服务提供商准备好预配线路后，请执行此操作。
@@ -153,7 +153,7 @@ az network express-route create --bandwidth 200 -n MyCircuit --peering-location 
 
 响应将包含服务密钥。
 
-### <a name="4-list-all-expressroute-circuits"></a>4. 列出所有快速路由电路
+### <a name="4-list-all-expressroute-circuits"></a>4. 列出所有 ExpressRoute 线路
 
 要获取已创建的所有 ExpressRoute 线路的列表，请运行 `az network express-route list` 命令。 可以随时使用此命令检索此信息。 若要列出所有线路，请进行不带任何参数的调用。
 
@@ -198,7 +198,7 @@ az network express-route list
 az network express-route list -h
 ```
 
-### <a name="5-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>5. 将服务密钥发送到连接提供商进行预配
+### <a name="5-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>5. 将服务密钥发送给连接服务提供商进行预配
 
 “ServiceProviderProvisioningState”提供有关服务提供商端当前预配状态的信息。 此状态提供 Microsoft 端的状态。 有关详细信息，请参阅[工作流文章](expressroute-workflows.md#expressroute-circuit-provisioning-states)。
 
@@ -223,7 +223,7 @@ az network express-route list -h
 "circuitProvisioningState": "Enabled
 ```
 
-### <a name="6-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>6. 定期检查电路键的状态和状态
+### <a name="6-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>6. 定期检查线路密钥的状态和状态
 
 检查线路密钥的状态，可以通过此状态了解提供商何时启用了线路。 配置线路后，“ServiceProviderProvisioningState” 会显示为“Provisioned”，如以下示例所示：
 
@@ -271,7 +271,7 @@ az network express-route show --resource-group ExpressRouteResourceGroup --name 
 >
 >
 
-### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8. 将虚拟网络链接到 ExpressRoute 电路
+### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8. 将虚拟网络链接到 ExpressRoute 线路
 
 接下来，将虚拟网络链接到 ExpressRoute 线路。 按照[将虚拟网络链接到 ExpressRoute 线路](howto-linkvnet-cli.md)文章中的内容进行操作。
 
@@ -350,7 +350,7 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 若要取消预配并删除 ExpressRoute 线路，请确保已了解以下条件：
 
 * 必须取消所有虚拟网络与 ExpressRoute 线路的链接。 如果此操作失败，请查看是否有虚拟网络链接到了该线路。
-* 如果 ExpressRoute 电路服务提供商预配状态为**预配**或**预配**，则必须与服务提供商合作，取消在其端的电路预配。 在服务提供商完成取消设置线路并通知我们之前，我们会继续保留资源并向你收费。
+* 如果 ExpressRoute 线路服务提供商预配状态为 "正在**预配**" 或 "已**设置**"，则必须与服务提供商合作，以便在其端取消对线路的预配。 在服务提供商完成取消设置线路并通知我们之前，我们会继续保留资源并向你收费。
 * 如果服务提供商已取消预配线路，则可以删除此线路。 取消预配线路后，服务提供商预配状态将被设置为“未预配”****。 这样就会停止对线路的计费。
 
 可以通过运行以下命令来删除 ExpressRoute 线路：

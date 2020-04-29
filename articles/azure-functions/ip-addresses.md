@@ -4,10 +4,10 @@ description: 了解如何查找函数应用的入站和出站 IP 地址，以及
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.openlocfilehash: bfd2d573e0a1c78d0ef4c68be224f92e8f689f62
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80656769"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions 中的 IP 地址
@@ -25,10 +25,10 @@ IP 地址与函数应用而不是单个函数相关联。 传入的 HTTP 请求�
 
 每个函数应用具有单个入站 IP 地址。 查找该 IP 地址：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 导航到函数应用。
-3. 选择“平台功能”。****
-4. 选择“属性”，然后选择“虚拟 IP 地址”下面显示的入站 IP 地址。********
+3. 选择“平台功能”。 
+4. 选择“属性”，然后选择“虚拟 IP 地址”下面显示的入站 IP 地址。  
 
 ## <a name="function-app-outbound-ip-addresses"></a><a name="find-outbound-ip-addresses"></a>函数应用的出站 IP 地址
 
@@ -86,7 +86,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 - 删除函数应用，然后在不同的资源组中重新创建它。
 - 删除资源组和区域组合中的最后一个函数应用，然后重新创建它。
-- 删除 TLS 绑定，例如[在证书续订](../app-service/configure-ssl-certificate.md#renew-certificate)期间。
+- 删除 TLS 绑定，如[证书续订](../app-service/configure-ssl-certificate.md#renew-certificate)期间。
 
 当函数应用在[消耗计划](functions-scale.md#consumption-plan)中运行时，即使你未执行任何操作（如[上面列出](#inbound-ip-address-changes)的操作），入站 IP 地址也可能会更改。
 
@@ -117,7 +117,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 导航到函数应用。
-3. 选择“概述”选项卡。****
+3. 单击“概述”  选项卡。
 4. 应用服务计划层显示在“应用服务计划/定价层”下面。**** 应用服务环境定价层为“隔离”。****
  
 或者，可以使用 [Cloud Shell](../cloud-shell/quickstart.md)：

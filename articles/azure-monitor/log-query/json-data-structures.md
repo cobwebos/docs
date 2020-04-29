@@ -7,16 +7,16 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: f792820b7b0dff20e647031410ba87ac26c2495a
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80672973"
 ---
 # <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用 JSON 和数据结构
 
 > [!NOTE]
-> 在完成本课程之前，应完成[Azure 监视器日志分析](get-started-portal.md)入门以及[Azure 监视器日志查询入门](get-started-queries.md)。
+> 在完成本课之前，应当先完成 [Azure Monitor 日志分析入门](get-started-portal.md)和 [Azure Monitor 日志查询入门](get-started-queries.md)。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -25,7 +25,7 @@ ms.locfileid: "80672973"
 ## <a name="working-with-json-strings"></a>结合使用 JSON 字符串
 使用 `extractjson` 访问已知路径中的特定 JSON 元素。 此函数需要使用以下约定的路径表达式。
 
-- _$_ 引用根文件夹
+- _$_ 指的是根文件夹
 - 使用括号/圆点表示法来表示索引和元素，如下例所示。
 
 
@@ -127,7 +127,7 @@ print hosts_object
 参阅有关在 Azure Monitor 中使用日志查询的其他课：
 
 - [字符串操作](string-operations.md)
-- [日期和时间操作](datetime-operations.md)
+- [时间和日期操作](datetime-operations.md)
 - [聚合函数](aggregations.md)
 - [高级聚合](advanced-aggregations.md)
 - [高级查询编写](advanced-query-writing.md)

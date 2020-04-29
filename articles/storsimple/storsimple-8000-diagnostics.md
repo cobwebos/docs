@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 48bd909eefbaea15cf6ca2427e106ad9bc0ffbb4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80298749"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>使用 StorSimple 诊断工具排查 8000 系列设备的问题
@@ -323,7 +323,7 @@ hcs_startup                                   Stopped hcs_startup
 
 ### <a name="network-test"></a>网络测试
 
-此测试验证网络接口、端口、DNS 和 NTP 服务器连接、TLS/SSL 证书、存储帐户凭据、与更新服务器的连接以及 StorSimple 设备上的 Web 代理连接的状态。
+此测试验证网络接口的状态、端口、DNS 和 NTP 服务器连接、TLS/SSL 证书、存储帐户凭据、与更新服务器的连接以及 StorSimple 设备上的 web 代理连接。
 
 #### <a name="sample-output-of-network-test-when-only-data0-is-enabled"></a>仅启用 DATA0 时的网络测试示例输出
 
@@ -333,7 +333,7 @@ hcs_startup                                   Stopped hcs_startup
 * DNS 服务器配置有效，设备可通过 DNS 服务器建立连接。
 * NTP 服务器连接也正常。
 * 已打开端口 80 和 443。 但是，端口 9354 被阻止。 根据[系统网络要求](storsimple-system-requirements.md)，需要打开此端口才能进行服务总线通信。
-* TLS/SSL 认证有效。
+* TLS/SSL 证书有效。
 * 设备可连接到存储帐户：_myss8000storageacct_。
 * 与更新服务器的连接有效。
 * 未在此设备上配置 Web 代理。
@@ -414,11 +414,11 @@ Controller0>
 
 下表描述了系统信息中 Windows PowerShell 参数的含义。 
 
-| PowerShell 参数    | 描述  |
+| PowerShell 参数    | 说明  |
 |-------------------------|------------------|
 | 实例 ID             | 每个控制器都有一个关联的唯一标识符或 GUID。|
-| “属性”                    | 在部署设备期间通过 Azure 门户配置的设备友好名称。 默认的友好名称为设备序列号。 |
-| “模型”                   | StorSimple 8000 系列设备的型号。 型号可能是 8100 或 8600。|
+| 名称                    | 在部署设备期间通过 Azure 门户配置的设备友好名称。 默认的友好名称为设备序列号。 |
+| 型号                   | StorSimple 8000 系列设备的型号。 型号可能是 8100 或 8600。|
 | SerialNumber            | 设备序列号是出厂分配的，长度为 15 个字符。 例如，8600-SHX0991003G44HT 表示：<br> 8600 – 设备型号。<br>SHX – 制造地。<br> 0991003 – 具体的产品。 <br> G44HT – 最后 5 位是递增的，确保构成唯一的序列号。 这组编号不一定是按顺序递增的。|
 | TimeZone                | 部署设备期间在 Azure 门户中配置的设备时区。|
 | CurrentController       | 通过 StorSimple 设备的 Windows PowerShell 界面连接到的控制器。|

@@ -14,26 +14,26 @@ ms.topic: article
 ms.date: 10/12/2019
 ms.author: spelluru
 ms.openlocfilehash: 4887b4359451ca5ce85042b4de42d5376bf4a730
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80667767"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>在 Azure 实验室服务中创建和管理课堂实验室日程安排 
 借助日程安排，可以配置课堂实验室，这样实验室中的 VM 就能在指定时间自动启动和关闭。 可以定义一次性日程安排，也可以定义定期日程安排。 下面的过程逐步介绍了如何创建和管理课堂实验室日程安排： 
 
 > [!IMPORTANT]
-> VM 的计划运行时间不计入[分配给用户的配额](how-to-configure-student-usage.md#set-quotas-for-users)。 配额是指学生在 VM 上花费的计划外时间。 
+> Vm 的计划运行时间不会计[为分配给用户的配额](how-to-configure-student-usage.md#set-quotas-for-users)。 配额是指学生在 VM 上花费的计划外时间。 
 
 ## <a name="set-a-schedule-for-the-lab"></a>为实验室设置计划
 为实验室创建计划事件，这样实验室中的 VM 就会在特定时间自动启动/停止。 此前指定的用户配额是在此计划时间之外为每个用户分配的额外时间。 
 
 > [!NOTE]
-> 在开始之前，以下是计划如何影响实验室虚拟机： 
->- 模板虚拟机不包括在计划中。 
->- 仅启动分配的虚拟机。 这意味着，如果最终用户（学生）不声明计算机，则机器将不会在预定时间启动。 
->- 所有虚拟机（无论是否由用户声明）都根据实验室计划停止。 
+> 在开始之前，计划如何影响实验室虚拟机： 
+>- 计划中未包含模板虚拟机。 
+>- 仅启动已分配的虚拟机。 这意味着，如果某个计算机未由最终用户（student）声明，则该计算机将不会在计划的时间启动。 
+>- 将根据实验室计划停止所有虚拟机（无论是否由用户声称）。 
 
 1. 切换到“日程安排”**** 页，再选择工具栏上的“添加计划事件”****。 
 
@@ -49,7 +49,7 @@ ms.locfileid: "80667767"
     5. 指定“停止时间”****，这是 VM 将要关闭的时间。 
     6. 指定“时区”****，该时区适用于已指定的启动时间和停止时间。 
     2. 选择希望计划生效的日期。 在下面的示例中，选中的是“星期一到星期四”。 
-    8. 选择“保存”。  
+    8. 选择“保存”  。 
 
         ![设置重复计划](../media/how-to-create-schedules/set-repeat-schedule.png)
 
@@ -66,18 +66,18 @@ ms.locfileid: "80667767"
 选择右上角的“今天”**** 按钮可以在日历中切换到当前日期。 选择向左箭头**** 和向右箭头**** 可以在日历中分别切换到上周和下周。 
 
 ## <a name="edit-a-schedule"></a>编辑日程安排
-当您在日历中选择突出显示的计划时，您将看到用于**编辑****或删除计划**按钮。 
+当你在日历中选择突出显示的计划时，将看到用于**编辑**或**删除**计划的按钮。 
 
 ![“编辑日程安排”页](../media/how-to-create-schedules/schedule-edit-button.png)
 
-在 **"编辑计划事件**"页上，您可以更新计划，然后选择 **"保存**"。 
+在 "**编辑计划事件**" 页上，可以更新计划，并选择 "**保存**"。 
 
 ## <a name="delete-a-schedule"></a>删除计划
 
-1. 要删除计划，请在日历中选择突出显示的计划，然后选择垃圾图标（删除）按钮：
+1. 若要删除计划，请在日历中选择突出显示的计划，并选择垃圾桶图标（删除）按钮：
 
     ![工具栏上的删除按钮](../media/how-to-create-schedules/schedule-delete-button.png)
-2. 在"**删除计划事件**"对话框中，选择 **"是**"以确认删除。 
+2. 在 "**删除计划事件**" 对话框中，选择 **"是"** 以确认删除。 
 
 
 

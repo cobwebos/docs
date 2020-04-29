@@ -1,22 +1,22 @@
 ---
-title: 使用 Azure 站点恢复对 Azure VM 的复制进行故障排除
-description: 使用 Azure 站点恢复在 Azure VM 灾难恢复中排除复制故障
+title: 排查使用 Azure Site Recovery 复制 Azure VM 时出现的问题
+description: 排查使用 Azure Site Recovery 进行 Azure VM 灾难恢复时出现的复制问题
 author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
 ms.openlocfilehash: 8cba02d3c7d1e649853570b199b646b1c4dcce2d
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80667416"
 ---
-# <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>在 Azure VM 灾难恢复中排除复制故障
+# <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>排查 Azure VM 灾难恢复中的复制问题
 
-本文介绍 Azure 站点恢复中的常见问题，即将 Azure 虚拟机 （VM） 从一个区域复制到另一个区域。 它还解释了如何排除常见问题。 有关受支持的配置的详细信息，请参阅[复制 Azure VM 支持矩阵](site-recovery-support-matrix-azure-to-azure.md)。
+本文介绍将 Azure 虚拟机（VM）从一个区域复制和恢复到另一个区域时 Azure Site Recovery 的常见问题。 另外还介绍了如何排查常见问题。 有关支持的配置的详细信息，请参阅 [support matrix for replicating Azure VMs](site-recovery-support-matrix-azure-to-azure.md)（复制 Azure VM 的支持矩阵）。
 
-Azure 站点恢复始终将数据从源区域复制到灾难恢复区域。 它还每 5 分钟创建一个崩溃一致的恢复点。 如果 Site Recovery 在 60 分钟内无法创建恢复点，它会通过以下信息向你发出警报：
+Azure Site Recovery 以一致的方式将数据从源区域复制到灾难恢复区域。 它还每隔 5 分钟创建崩溃一致性恢复点。 如果 Site Recovery 在 60 分钟内无法创建恢复点，它会通过以下信息向你发出警报：
 
 ```plaintext
 Error message: "No crash consistent recovery point available for the VM in the last 60 minutes."
@@ -28,10 +28,10 @@ Error ID: 153007
 
 ## <a name="high-data-change-rate-on-the-source-virtual-machine"></a>源虚拟机上的数据更改率较高
 
-如果源虚拟机上的数据更改速率高于支持的限制，Azure 站点恢复将创建事件。 要查看问题是否由于高改动，转到**复制项** > **VM** > **事件 - 持续 72 小时**。
-您应该会看到超出**支持限制的事件数据更改率**：
+如果源虚拟机上的数据更改率高于支持的限制，Azure Site Recovery 将创建一个事件。 若要查看问题是否是由于较高的变动造成的，请访问**复制的项** > **VM** > **事件-过去72小时**。
+你应看到事件**数据更改率超出支持的限制**：
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/data_change_event.png" alt-text="Azure 站点恢复页，显示过高的数据更改率。":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/data_change_event.png" alt-text="显示高的数据更改率的 Azure Site Recovery 页面。":::
 
 如果选择该事件，应会看到确切的磁盘信息：
 
@@ -39,9 +39,9 @@ Error ID: 153007
 
 ### <a name="azure-site-recovery-limits"></a>Azure Site Recovery 限制
 
-下表提供了 Azure Site Recovery 限制。 这些限制基于我们的测试，但它们不能涵盖所有可能的应用程序输入输出 （I/O） 组合。 实际结果可能因应用程序 I/O 组合而异。
+下表提供了 Azure Site Recovery 限制。 这些限制基于我们的测试，但无法涵盖所有可能的应用程序输入-输出（i/o）组合。 实际结果可能因应用程序 I/O 组合而异。
 
-需要考虑两个限制：每个磁盘的数据改动和每个虚拟机的数据改动。 让我们看下表中的高级 P20 磁盘的示例。 对于单个 VM，站点恢复可以处理每个磁盘 5 MB/s 的改动，最多只能处理 5 个此类磁盘。 站点恢复每个 VM 的总改动量限制为 25 MB/s。
+需要考虑以下两个限制：每个磁盘的数据变动和每个虚拟机的数据变动。 让我们看一下下表中的高级 P20 磁盘，以获取示例。 对于单个 VM，Site Recovery 可以处理每个磁盘的 5 MB/秒的变动，最多可以处理 5 MB 的磁盘空间。 Site Recovery 的限制为每个 VM 的总流失数为 25 MB。
 
 **复制存储目标** | **平均源磁盘 I/O 大小** |**平均源磁盘数据变动率** | **每天的总源数据磁盘数据变动率**
 ---|---|---|---
@@ -54,91 +54,91 @@ Error ID: 153007
 
 ### <a name="solution"></a>解决方案
 
-Azure 站点恢复对数据更改速率有限制，具体取决于磁盘类型。 要查看此问题是重复的还是临时的，查找受影响的虚拟机的数据更改率。 请转到源虚拟机，在“监视”下找到指标，然后添加以下屏幕截图所示的指标：****
+Azure Site Recovery 对数据更改率有限制，这取决于磁盘的类型。 若要查看此问题是重复出现还是临时出现，请找到受影响的虚拟机的数据更改率。 请转到源虚拟机，在“监视”下找到指标，然后添加以下屏幕截图所示的指标：****
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/churn.png" alt-text="显示查找数据更改速率的三步过程的页面。":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/churn.png" alt-text="页面，其中显示了用于查找数据更改率的三步过程。":::
 
 1. 选择“添加指标”，并添加“OS 磁盘写入字节数/秒”和“数据磁盘写入字节数/秒”。************
 1. 监视屏幕截图中所示的峰值。
 1. 查看 OS 磁盘和所有数据磁盘中总共发生的写入操作次数。 这些指标可能无法提供磁盘级别的信息，但能够反映数据变动率总模式。
 
-数据更改速率的峰值可能来自偶尔的数据突发。 如果数据更改速率大于 10 MB/s（对于高级版）或 2 MB/s（标准版）并停机，则复制将迎头赶上。 如果改动始终超出支持的限制，请考虑以下选项之一：
+数据更改率的高峰可能源自偶尔的数据突发。 如果数据更改率超过 10 MB/秒（适用于高级版）或 2 MB/秒（适用于标准），则复制将会保持不变。 如果改动量始终超过支持的限制，请考虑以下选项之一：
 
-- 排除导致高数据更改速率的磁盘：首先，禁用复制。 然后，您可以使用[PowerShell](azure-to-azure-exclude-disks.md)排除磁盘。
-- 更改灾难恢复存储磁盘的层：仅当磁盘数据改动小于 20 MB/s 时，才可以使用此选项。 例如，具有 P10 磁盘的 VM 的数据改动量大于 8 MB/s，但小于 10 MB/s。 如果客户在保护期间可以使用 P30 磁盘作为目标存储，则可以解决此问题。 此解决方案仅适用于使用高级管理磁盘的计算机。 执行以下步骤:
+- 排除导致数据更改率较高的磁盘：首先，禁用复制。 然后，可以使用[PowerShell](azure-to-azure-exclude-disks.md)排除该磁盘。
+- 更改灾难恢复存储磁盘的层：仅当磁盘数据改动小于 20 MB/秒时，此选项才可用。 例如，具有 P10 磁盘的 VM 的数据变动大于 8 MB/秒，但小于 10 MB/s。 如果客户在保护期间可以使用 P30 磁盘作为目标存储，则可以解决此问题。 此解决方案仅适用于使用高级托管磁盘的计算机。 执行以下步骤:
 
-  1. 转到受影响的复制计算机的**磁盘**并复制副本磁盘名称。
-  1. 转到托管磁盘的此副本。
-  1. 您可能会在 **"概述"** 中看到一个横幅，该横幅显示已生成 SAS URL。 选择此横幅并取消导出。 如果看不到横幅，请忽略此步骤。
-  1. 一旦 SAS URL 被吊销，转到托管磁盘的**配置**。 增加大小，以便站点恢复支持源磁盘上的观察到的改动率。
+  1. 中转到受影响的复制计算机的**磁盘**，并复制副本磁盘名称。
+  1. 请参阅托管磁盘的此副本。
+  1. 你可能会看到一个横幅，其中显示了已生成 SAS URL 的**概述**。 选择此标语并取消导出。 如果看不到横幅，请忽略此步骤。
+  1. 一旦将 SAS URL 吊销，请在托管磁盘中转到 "**配置**"。 增加大小，以便 Site Recovery 支持在源磁盘上观察到的变动率。
 
 ## <a name="network-connectivity-problems"></a>网络连接问题
 
 ### <a name="network-latency-to-a-cache-storage-account"></a>缓存存储帐户的网络延迟
 
-Site Recovery 会将已复制数据发送到缓存存储帐户。 如果将数据从虚拟机上载到缓存存储帐户在 3 秒内低于 4 MB，则可能会遇到网络延迟。
+Site Recovery 会将已复制数据发送到缓存存储帐户。 如果将虚拟机中的数据上传到缓存存储帐户的速度低于 4 MB，则可能会遇到网络延迟。
 
-要检查与延迟相关的问题，请使用[AzCopy](/azure/storage/common/storage-use-azcopy)。 您可以使用此命令行实用程序将数据从虚拟机上载到缓存存储帐户。 如果延迟较高，请检查您是否使用网络虚拟设备 （NVA） 来控制来自 VM 的出站网络流量。 如果所有复制流量都通过 NVA，设备可能会受到限制。
+若要检查与延迟有关的问题，请使用[AzCopy](/azure/storage/common/storage-use-azcopy)。 你可以使用此命令行实用工具将数据从虚拟机上传到缓存存储帐户。 如果延迟较高，请检查是否正在使用网络虚拟设备（NVA）来控制 Vm 的出站网络流量。 如果所有复制流量都通过 NVA，设备可能会受到限制。
 
 建议在虚拟网络中为“存储”创建一个网络服务终结点，这样复制流量就不会经过 NVA。 有关详细信息，请参阅[网络虚拟设备配置](azure-to-azure-about-networking.md#network-virtual-appliance-configuration)。
 
 ### <a name="network-connectivity"></a>网络连接
 
-要使站点恢复复制正常工作，需要 VM 提供与特定 URL 或 IP 范围的出站连接。 您可能将 VM 放在防火墙后面，或者使用网络安全组 （NSG） 规则来控制出站连接。 如果是这样，您可能会遇到问题。 要确保所有 URL 都已连接，请参阅[URL 的出站连接](azure-to-azure-about-networking.md#outbound-connectivity-for-urls)。
+要使 Site Recovery 的复制正常工作，需要 VM 提供到特定 Url 或 IP 范围的出站连接。 你的 VM 可能位于防火墙之后，或者使用网络安全组（NSG）规则来控制出站连接。 如果是这样，您可能会遇到问题。 若要确保所有 Url 都已连接，请参阅[url 的出站连接](azure-to-azure-about-networking.md#outbound-connectivity-for-urls)。
 
-## <a name="error-id-153006---no-app-consistent-recovery-point-available-for-the-vm-in-the-past-x-minutes"></a>错误 ID 153006 - 过去"X"分钟中没有可用于 VM 的应用一致性恢复点
+## <a name="error-id-153006---no-app-consistent-recovery-point-available-for-the-vm-in-the-past-x-minutes"></a>错误 ID 153006-过去 "X" 分钟内没有适用于 VM 的应用一致恢复点
 
-以下是一些最常见的问题。
+下面是一些最常见的问题。
 
 ### <a name="known-issue-in-sql-server-20082008-r2"></a>SQL Server 2008/2008 R2 中的已知问题
 
-**如何修复：** SQL 服务器 2008/2008 R2 存在已知问题。 请参阅文章[Azure 站点恢复代理或其他非组件 VSS 备份失败，对于托管 SQL Server 2008 R2](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)的服务器。
+**如何修复：** SQL server 2008/2008 R2 存在一个已知问题。 [有关托管 SQL Server 2008 R2 的服务器，请参阅 Azure Site Recovery 代理或其他非组件 VSS 备份](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)的项目失败。
 
 ### <a name="azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>在使用 AUTO_CLOSE DB 托管任何版本的 SQL Server 实例的服务器上，Azure Site Recovery 作业失败
 
-**如何修复：** 请参阅文章[非组件 VSS 备份，如 Azure 站点恢复作业在承载具有AUTO_CLOSE GB 的 SQL Server 实例的服务器上失败](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser)。
+**如何修复：** 请参阅[非组件 VSS 备份一文，如在托管 SQL Server 实例 AUTO_CLOSE 数据库的服务器上 Azure Site Recovery 作业失败](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser)。
 
 ### <a name="known-issue-in-sql-server-2016-and-2017"></a>SQL Server 2016 和 2017 中的已知问题
 
-**如何修复**：请参阅 SQL [Server 2017 的累积更新 16。](https://support.microsoft.com/help/4508218/cumulative-update-16-for-sql-server-2017)
+**如何修复**：有关 SQL Server 2017，请参阅[累积更新 16](https://support.microsoft.com/help/4508218/cumulative-update-16-for-sql-server-2017)一文。
 
-### <a name="youre-using-azure-storage-spaces-direct-configuration"></a>您正在使用 Azure 存储空间直接配置
+### <a name="youre-using-azure-storage-spaces-direct-configuration"></a>正在使用 Azure 存储空间直通配置
 
-**如何修复**：Azure 站点恢复无法为存储空间直接配置创建应用程序一致的恢复点。 [配置复制策略](azure-to-azure-how-to-enable-replication-s2d-vms.md)。
+**如何修复**： Azure Site Recovery 无法为存储空间直通配置创建应用程序一致的恢复点。 [配置复制策略](azure-to-azure-how-to-enable-replication-s2d-vms.md)。
 
-### <a name="more-causes-because-of-vss-related-issues"></a>更多原因由于 VSS 相关问题：
+### <a name="more-causes-because-of-vss-related-issues"></a>由于与 VSS 相关的问题导致的原因更多：
 
-要进一步排除故障，请检查源计算机上的文件以获取有关故障的确切错误代码：
+若要进一步进行故障排除，请检查源计算机上的文件以获取错误的确切错误代码：
 
 `C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log`
 
-要查找错误，请在文本编辑器中打开_vacp.log_文件，搜索字符串**vacpError**。
+若要查找错误，请在文本编辑器中打开_vacp.exe_文件，并搜索字符串**vacpError**。
 
 ```plaintext
 Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|
 ```
 
-在前面的示例中 **，2147754994**是错误代码，用于告诉您此句子之后的故障。
+在前面的示例中， **2147754994**是指出此句子后的失败的错误代码。
 
 #### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS 编写器未安装 - 错误 2147221164
 
-**如何修复**：要生成应用程序一致性标记，Azure 站点恢复使用卷卷卷影副本服务 （VSS）。 站点恢复安装 VSS 提供程序的操作以拍摄应用一致性快照。 Azure 站点恢复将此 VSS 提供程序安装为服务。 如果未安装 VSS 提供程序，则应用程序一致性快照创建将失败。 它显示**未注册的错误 ID 0x80040154 类**。 请参阅[VSS 编写器安装故障排除](vmware-azure-troubleshoot-push-install.md#vss-installation-failures)的文章。
+**如何修复**：若要生成应用程序一致性标记，Azure Site Recovery 使用卷影复制服务（VSS）。 Site Recovery 安装 VSS 提供程序，使其执行应用一致性快照操作。 Azure Site Recovery 将此 VSS 提供程序安装为服务。 如果未安装 VSS 提供程序，则无法创建应用程序一致性快照。 其中显示**错误 ID 0X80040154 类未注册**。 请参阅[VSS 编写器安装故障排除](vmware-azure-troubleshoot-push-install.md#vss-installation-failures)一文。
 
 #### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS 编写器已禁用 - 错误 2147943458
 
-**如何修复**：要生成应用程序一致性标记，Azure 站点恢复使用 VSS。 站点恢复安装 VSS 提供程序的操作以拍摄应用一致性快照。 此 VSS 提供程序作为服务安装。 如果未启用 VSS 提供程序服务，则应用程序一致性快照创建将失败。 它显示错误：**指定的服务已禁用，无法启动 （0x80070422）。**
+**如何修复**：若要生成应用程序一致性标记，AZURE SITE RECOVERY 使用 VSS。 Site Recovery 安装 VSS 提供程序，使其执行应用一致性快照操作。 此 VSS 提供程序作为服务安装。 如果尚未启用 VSS 提供程序服务，则无法创建应用程序一致性快照。 其中显示错误：**指定的服务已禁用，无法启动（0x80070422）**。
 
 如果禁用 VSS：
 
 - 确认 VSS 提供程序服务的启动类型是否设置为“自动”。****
 - 重启以下服务：
   - VSS 服务。
-  - Azure 站点恢复 VSS 提供程序。
+  - Azure Site Recovery VSS 提供程序。
   - VDS 服务。
 
 #### <a name="vss-provider-not_registered---error-2147754756"></a>VSS 提供程序未注册 - 错误 2147754756
 
-**如何修复**：要生成应用程序一致性标记，Azure 站点恢复使用 VSS。 检查是否安装了 Azure 站点恢复 VSS 提供程序服务。
+**如何修复**：若要生成应用程序一致性标记，AZURE SITE RECOVERY 使用 VSS。 检查是否安装了 Azure Site Recovery VSS 提供程序服务。
 
 使用以下命令重新安装 VSS 提供程序：
 
@@ -155,5 +155,5 @@ Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRI
 重启以下服务：
 
 - VSS 服务。
-- Azure 站点恢复 VSS 提供程序。
+- Azure Site Recovery VSS 提供程序。
 - VDS 服务。

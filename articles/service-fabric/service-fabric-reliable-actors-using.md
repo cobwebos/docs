@@ -5,11 +5,11 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 55ee4c7498dcda3060d4e4221711793b80132bdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f5f9e00c374b16026f22d4efdee51ec94d2902a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79502282"
 ---
 # <a name="implement-service-level-features-in-your-actor-service"></a>在执行组件服务中实现服务级功能
@@ -143,7 +143,7 @@ public class Program
 
 ## <a name="implement-actor-backup-and-restore"></a>实现执行组件备份和还原
 
-自定义执行组件服务可通过利用于 `ActorService` 中已存在的远程侦听器公开备份执行组件数据的方法。 有关示例，请参阅[备份和还原执行组件](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)。
+自定义执行组件服务可通过利用于 `ActorService` 中已存在的远程侦听器公开备份执行组件数据的方法。 有关示例，请参阅[备份和还原执行组件](service-fabric-reliable-actors-backup-and-restore.md)。
 
 ## <a name="actor-that-uses-a-remoting-v2-interface-compatible-stack"></a>使用远程处理 V2（与接口兼容）堆栈的执行组件
 
@@ -216,8 +216,8 @@ public class Program
 * [执行组件状态管理](service-fabric-reliable-actors-state-management.md)
 * [执行组件生命周期和垃圾回收](service-fabric-reliable-actors-lifecycle.md)
 * [执行组件 API 参考文档](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [.NET 示例代码](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Java 示例代码](https://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [.NET 代码示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Java 代码示例](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png

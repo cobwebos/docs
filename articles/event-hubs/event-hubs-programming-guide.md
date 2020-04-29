@@ -1,5 +1,5 @@
 ---
-title: .NET 编程指南 - Azure 事件中心（旧版） |微软文档
+title: .NET 编程指南-Azure 事件中心（旧版） |Microsoft Docs
 description: 本文介绍如何使用 Azure .NET SDK 为 Azure 事件中心编写代码。
 services: event-hubs
 documentationcenter: na
@@ -10,24 +10,24 @@ ms.topic: article
 ms.date: 01/15/2020
 ms.author: shvija
 ms.openlocfilehash: d958c2d32c16874676f46bb216067fe2d7bbe784
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79280971"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Azure 事件中心的 .NET 编程指南（旧版 Microsoft.Azure.EventHubs 包）
 本文介绍使用 Azure 事件中心编写代码时的一些常见情况。 它假设你对事件中心已有初步的了解。 有关事件中心的概念概述，请参阅 [事件中心概述](event-hubs-what-is-event-hubs.md)。
 
 > [!WARNING]
-> 本指南适用于旧 **Microsoft.Azure.EventHubs** 包。 我们建议您[迁移](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)代码以使用最新的[Azure.消息.事件中心](get-started-dotnet-standard-send-v2.md)包。  
+> 本指南适用于旧 **Microsoft.Azure.EventHubs** 包。 建议[迁移](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)代码以使用最新 [Azure.Messaging.EventHubs](get-started-dotnet-standard-send-v2.md) 包。  
 
 
 ## <a name="event-publishers"></a>事件发布者
 
 使用 HTTP POST 或通过 AMQP 1.0 连接将事件发送到事件中心。 何时使用哪种方式的选择取决于要解决的特定方案。 AMQP 1.0 连接计量为服务总线中的中转连接计量，对于经常要以较高的消息量和较低的延迟传送消息的方案，适合选择此方式，因为它们提供持久的消息传递通道。
 
-使用 .NET 托管 API 时，用于将数据发布到事件中心的主要构造是 [EventHubClient][] 和 [EventData][] 类。 [EventHubClient][] 提供 AMQP 信道，事件将通过该信道发送到事件中心。 [EventData][]类表示事件，用于将消息发布到事件中心。 此类包括有关事件的正文、一些元数据（属性）和标头信息 (SystemProperties)。 其他属性会在通过事件中心传递时添加到 [EventData][] 对象。
+使用 .NET 托管 API 时，用于将数据发布到事件中心的主要构造是 [EventHubClient][] 和 [EventData][] 类。 [EventHubClient][] 提供 AMQP 信道，事件将通过该信道发送到事件中心。 [EventData][] 类表示一个事件，用于将消息发布到事件中心。 此类包括有关事件的正文、一些元数据（属性）和标头信息 (SystemProperties)。 其他属性会在通过事件中心传递时添加到 [EventData][] 对象。
 
 ## <a name="get-started"></a>入门
 支持事件中心的 .NET 类在 [Microsoft.Azure.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) NuGet 包中提供。 可以通过 Visual Studio 解决方案资源管理器进行安装，也可以使用 Visual Studio 中的[包管理器控制台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)来进行。 为此，请在 [“Package Manager Console”](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) 窗口中发出以下命令：
@@ -98,7 +98,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 
 分批发送事件可有助于提高吞吐量。 可以使用 [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) API 来创建一个批，以便稍后向其添加数据对象进行 [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) 调用。
 
-单个批不能超过事件的 1 MB 限制。 此外，批中的每个消息都要使用相同的发布者标识。 发送者负责确保批不超过最大事件大小。 如果超过该限制，将会生成客户端 **Send** 错误。 可以使用帮助器方法 [EventHubClient.CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) 来确保批不超过 1 MB。 从 [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) API 获取空的 [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch)，然后使用 [TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd) 添加事件来构造批。 
+单个批不能超过事件的 1 MB 限制。 此外，批中的每个消息都要使用相同的发布者标识。 发送者负责确保批不超过最大事件大小。 如果超过该限制，会生成客户端 **Send** 错误。 可以使用帮助器方法 [EventHubClient.CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) 来确保批不超过 1 MB。 从 [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch) API 获取空的 [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch)，然后使用 [TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd) 添加事件来构造批。 
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>异步发送和按比例发送
 
@@ -128,7 +128,7 @@ var eventProcessorHost = new EventProcessorHost(
         StorageContainerName);
 ```
 
-然后，调用[RegisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync)将[IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor)实现注册到运行时：
+然后，调用 [RegisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync)，将 [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) 实现注册到运行时：
 
 ```csharp
 await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
@@ -158,11 +158,11 @@ await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
 * [事件中心 API 概述](event-hubs-api-overview.md)
 * [什么是事件中心](event-hubs-what-is-event-hubs.md)
 * [事件中心中的可用性和一致性](event-hubs-availability-and-consistency.md)
-* [事件处理器主机 API 引用](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost)
+* [事件处理程序主机 API 参考](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost)
 
 [NamespaceManager]: /dotnet/api/microsoft.servicebus.namespacemanager
 [EventHubClient]: /dotnet/api/microsoft.azure.eventhubs.eventhubclient
-[事件数据]: /dotnet/api/microsoft.azure.eventhubs.eventdata
+[EventData]: /dotnet/api/microsoft.azure.eventhubs.eventdata
 [CreateEventHubIfNotExists]: /dotnet/api/microsoft.servicebus.namespacemanager.createeventhubifnotexists
 [PartitionKey]: /dotnet/api/microsoft.servicebus.messaging.eventdata#Microsoft_ServiceBus_Messaging_EventData_PartitionKey
 [EventProcessorHost]: /dotnet/api/microsoft.azure.eventhubs.processor

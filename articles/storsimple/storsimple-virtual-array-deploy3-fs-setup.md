@@ -16,16 +16,16 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 16a5e0bb3e50e3a90951572e8d2847d379c1b114
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80297646"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>部署 StorSimple 虚拟阵列 - 通过 Azure 门户设置为文件服务器
 ![](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
@@ -72,11 +72,11 @@ ms.locfileid: "80297646"
    1. 为设备指定唯一“名称”。**** 该名称长度为 1-15 个字符，并可包含字母、数字和连字符。
    2. 选择要创建的设备的“类型”时，请单击“文件服务器”图标 ![](./media/storsimple-virtual-array-deploy3-fs-setup/image6.png)。******** 文件服务器可用于创建共享文件夹。
    3. 由于设备是文件服务器，因此需将其加入域。 输入**域名**。
-   4. 单击 **“应用”**。
-7. 此时会显示一个对话框。 按指定格式输入域凭据。 单击选中图标。 此时会验证域凭据。 如果凭据不正确，则会显示错误消息。
+   4. 单击“应用”  。
+7. 随即将显示一个对话框。 按指定格式输入域凭据。 单击选中图标。 此时会验证域凭据。 如果凭据不正确，则会显示错误消息。
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image7.png)
-8. 单击 **“应用”**。 此时会应用和验证设备设置。
+8. 单击“应用”  。 此时会应用和验证设备设置。
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image8.png)
    
@@ -93,24 +93,24 @@ ms.locfileid: "80297646"
    1. 以下述格式提供“Web 代理 URL”：http://&lt;主机 IP 地址或 FQDN&gt;:端口号******。 请注意，不支持 HTTPS URL。
    2. 将“身份验证”指定为“基本”或“无”。************
    3. 如果使用身份验证，则还需提供“用户名”和“密码”。********
-   4. 单击 **“应用”**。 此时会验证并应用配置的 Web 代理设置。
+   4. 单击“应用”  。 此时会验证并应用配置的 Web 代理设置。
 10. （可选）配置设备的时间设置，例如时区以及主 NTP 服务器和辅助 NTP 服务器。 NTP 服务器是必需的，因为设备必须同步时间，才能通过云服务提供程序进行身份验证。
     
     ![](./media/storsimple-virtual-array-deploy3-fs-setup/image10.png)
     
     在“时间设置”页中：****
     
-    1. 从下拉列表中，根据部署设备的地理位置选择**时区**。 设备的默认时区为太平洋标准时间。 设备将此时区用于所有计划操作。
+    1. 从下拉列表中，选择要在其中部署**设备的地理位置的时区**。 设备的默认时区为太平洋标准时间。 设备将此时区用于所有计划操作。
     2. 为设备指定“主 NTP 服务器”，或者接受默认值：time.windows.com。**** 确保网络允许 NTP 流量从数据中心传递到 Internet。
     3. （可选）为设备指定“辅助 NTP 服务器”。****
-    4. 单击 **“应用”**。 此时会验证并应用配置的时间设置。
+    4. 单击“应用”  。 此时会验证并应用配置的时间设置。
 11. 配置设备的云设置。 此步骤需完成本地设备配置，然后将设备注册到 StorSimple Device Manager 服务。
     
     1. 输入在[步骤 2：获取服务注册密钥](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)（适用于 StorSimple 虚拟阵列）中获得的“服务注册密钥”。****
     2. 如果这是注册到此服务的第一个设备，则会向你提供服务数据加密密钥****。 复制此密钥并将其保存到一个安全位置。 向 StorSimple Device Manager 服务注册其他设备时，需要此密钥以及该服务注册密钥。 
        
-       如果这不是注册到此服务的第一个设备，则需提供服务数据加密密钥。 有关详细信息，请参阅获取本地 Web UI 上的[服务数据加密密钥](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)。
-    3. 单击“注册”****。 此时会重新启动设备。 可能需要等待 2-3 分钟才能成功注册设备。 重新启动设备后，会转到登录页。
+       如果这不是注册到此服务的第一个设备，则需提供服务数据加密密钥。 有关详细信息，请参阅在本地 web UI 上获取[服务数据加密密钥](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)。
+    3. 单击“注册”  。 此时会重新启动设备。 可能需要等待 2-3 分钟才能成功注册设备。 重新启动设备后，会转到登录页。
        
        ![](./media/storsimple-virtual-array-deploy3-fs-setup/image13.png)
 12. 返回到 Azure 门户。 转到“所有资源”****，搜索 StorSimple Device Manager 服务。
@@ -138,7 +138,7 @@ ms.locfileid: "80297646"
     
    3. 将使用 256 位 AES 密钥与用户定义密钥进行加密。 指定 32 个字符的密钥，并再次输入该密钥以进行确认。 在密钥管理应用中记录密钥以供将来参考。
     
-   4. 单击“配置所需设置”****，指定要用于设备的存储帐户凭据。 如果未配置任何存储帐户凭据，请单击“新增”****。 **确保您使用的存储帐户支持块 Blob。不支持页面 Blob。** 请查阅[有关块 blob 和页 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 的更多信息。
+   4. 单击“配置所需设置”****，指定要用于设备的存储帐户凭据。 如果未配置任何存储帐户凭据，请单击“新增”****。 **确保你使用的存储帐户支持块 blob。不支持页 blob。** 请查阅[有关块 blob 和页 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 的更多信息。
    
       ![配置文件服务器](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
 4. 在“添加存储帐户凭据”**** 边栏选项卡中，执行以下操作： 
@@ -149,7 +149,7 @@ ms.locfileid: "80297646"
     
     3. 将根据指定的存储帐户自动填充位置。 
     
-    4. 启用 TLS 可确保设备和云之间有一个安全的网络通信通道。
+    4. 启用 TLS 以确保设备和云之间的安全网络信道。
     
     5. 单击“添加”**** 添加此存储帐户凭据。 
    
@@ -203,7 +203,7 @@ ms.locfileid: "80297646"
 现在需连接到上一步所创建的一个或多个共享。 已连接到 StorSimple 虚拟阵列的 Windows Server 主机上执行这些步骤。
 
 #### <a name="to-connect-to-the-share"></a>连接到共享
-1. 按 ![](./media/storsimple-virtual-array-deploy3-fs-setup/image22.png) + R。在“运行”窗口中，指定“&#92;&#92;&lt;文件服务器名称&gt;”** 作为路径，将“文件服务器名称”** 替换为分配给文件服务器的设备名称。 单击“确定”。
+1. 按 ![](./media/storsimple-virtual-array-deploy3-fs-setup/image22.png) + R。在“运行”窗口中，指定“&#92;&#92;&lt;文件服务器名称&gt;”** 作为路径，将“文件服务器名称”** 替换为分配给文件服务器的设备名称。 单击" **确定**"。
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image23.png)
 2. 这会打开文件资源管理器。 此时应能看到作为文件夹创建的共享。 选择并双击要查看其内容的共享（文件夹）。

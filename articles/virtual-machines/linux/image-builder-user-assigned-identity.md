@@ -1,6 +1,6 @@
 ---
-title: 创建虚拟机映像并使用用户分配的托管标识访问 Azure 存储中的文件（预览）
-description: 使用 Azure 映像生成器创建虚拟机映像，该映像可以使用用户分配的托管标识访问存储在 Azure 存储中的文件。
+title: 创建虚拟机映像，并使用用户分配的托管标识访问 Azure 存储中的文件（预览）
+description: 使用 Azure 映像生成器创建虚拟机映像，该映像可使用用户分配的托管标识访问存储在 Azure 存储中的文件。
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
@@ -9,27 +9,27 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 manager: gwallace
 ms.openlocfilehash: 27f4073efc8647d331faa14afbda0e15f92b8d50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80060750"
 ---
-# <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>创建映像并使用用户分配的托管标识访问 Azure 存储中的文件 
+# <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>创建映像，并使用用户分配的托管标识访问 Azure 存储中的文件 
 
-Azure 映像生成器支持使用脚本，或从多个位置（如 GitHub 和 Azure 存储等）复制文件。要使用这些功能，Azure 映像生成器必须在外部访问它们，但可以使用 SAS 令牌保护 Azure 存储 Blob。
+Azure 映像生成器支持使用脚本，或从多个位置（例如 GitHub 和 Azure 存储等）复制文件。若要使用这些功能，必须对 Azure 映像生成器进行外部访问，但可以使用 SAS 令牌保护 Azure 存储 blob。
 
-本文演示如何使用 Azure VM 映像生成器创建自定义映像，该服务将使用[用户分配的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)访问 Azure 存储中的文件进行映像自定义，而无需使文件公开访问，或设置 SAS 令牌。
+本文介绍如何使用 Azure VM 映像生成器创建自定义映像，在此示例中，服务将使用[用户分配的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)来访问 Azure 存储中的文件以进行映像自定义，而无需使文件公开访问，也无需设置 SAS 令牌。
 
-在下面的示例中，您将创建两个资源组，一个将用于自定义映像，另一个将承载包含脚本文件的 Azure 存储帐户。 这将模拟真实场景，其中您可能具有生成工件，或图像文件在不同的存储帐户中，在映像生成器之外。 您将创建用户分配的标识，然后授予脚本文件的读取权限，但不会设置对该文件的任何公共访问权限。 然后，您将使用 Shell 自定义程序从存储帐户下载并运行该脚本。
+在下面的示例中，你将创建两个资源组，一个用于自定义映像，另一个将托管包含脚本文件的 Azure 存储帐户。 这会模拟现实生活方案，在此方案中，可能会在映像生成器之外的不同存储帐户中有生成项目或图像文件。 你将创建一个用户分配的标识，然后授予该脚本文件的读取权限，但你不会设置对该文件的任何公共访问权限。 然后，你将使用 Shell 定制器从存储帐户下载并运行该脚本。
 
 
 > [!IMPORTANT]
-> Azure 映像生成器当前处于公共预览版中。
+> Azure 映像生成器目前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="register-the-features"></a>注册功能
-要在预览期间使用 Azure 映像生成器，需要注册新功能。
+若要在预览期间使用 Azure 映像生成器，需要注册新功能。
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
@@ -41,7 +41,7 @@ az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMac
 az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
 ```
 
-检查您的注册。
+检查你的注册。
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
@@ -49,7 +49,7 @@ az provider show -n Microsoft.VirtualMachineImages | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
-如果他们不说已注册，则运行以下内容：
+如果未注册，请运行以下内容：
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
@@ -60,7 +60,7 @@ az provider register -n Microsoft.Storage
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-我们将反复使用一些信息片段，因此我们将创建一些变量来存储该信息。
+我们将重复使用某些信息，因此我们将创建一些变量来存储该信息。
 
 
 ```console
@@ -76,7 +76,7 @@ imageName=aibCustLinuxImgMsi01
 runOutputName=u1804ManImgMsiro
 ```
 
-为订阅 ID 创建变量。 您可以使用 获取此`az account show | grep id`功能。
+为订阅 ID 创建一个变量。 你可以使用`az account show | grep id`获取此。
 
 ```console
 subscriptionID=<Your subscription ID>
@@ -92,7 +92,7 @@ az group create -n $strResourceGroup -l $location
 ```
 
 
-创建存储并从 GitHub 将示例脚本复制到其中。
+创建存储并将示例脚本从 GitHub 复制到其中。
 
 ```azurecli-interactive
 # script storage account
@@ -119,7 +119,7 @@ az storage blob copy start \
 
 
 
-授予映像生成器在图像资源组中创建资源的权限。 该`--assignee`值是映像生成器服务的应用注册 ID。 
+为映像生成器授予在映像资源组中创建资源的权限。 `--assignee`该值是映像生成器服务的应用注册 ID。 
 
 ```azurecli-interactive
 az role assignment create \
@@ -131,7 +131,7 @@ az role assignment create \
 
 ## <a name="create-user-assigned-managed-identity"></a>创建用户分配的托管标识
 
-创建脚本存储帐户的标识并分配权限。 有关详细信息，请参阅[用户分配的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)。
+为脚本存储帐户创建标识并分配权限。 有关详细信息，请参阅[用户分配的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)。
 
 ```azurecli-interactive
 # Create the user assigned identity 
@@ -150,7 +150,7 @@ imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/p
 
 ## <a name="modify-the-example"></a>修改示例
 
-下载示例 .json 文件，然后使用您创建的变量对其进行配置。
+下载示例 json 文件，并将其配置为创建的变量。
 
 ```console
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage/helloImageTemplateMsi.json -o helloImageTemplateMsi.json
@@ -186,7 +186,7 @@ az resource invoke-action \
      --action Run 
 ```
 
-等待生成完成。 这可能需要大约 15 分钟。
+等待生成完成。 这可能需要大约15分钟。
 
 ## <a name="create-a-vm"></a>创建 VM
 
@@ -208,7 +208,7 @@ az vm create \
 ssh aibuser@<publicIp>
 ```
 
-一旦建立 SSH 连接，您应该会看到图像是使用当天消息自定义的！
+一旦建立 SSH 连接，就会看到该映像已自定义一天的消息！
 
 ```output
 
@@ -221,7 +221,7 @@ ssh aibuser@<publicIp>
 
 ## <a name="clean-up"></a>清除
 
-完成后，如果不再需要资源，则可以删除这些资源。
+完成后，可以删除不再需要的资源。
 
 ```azurecli-interactive
 az identity delete --ids $imgBuilderId
@@ -235,4 +235,4 @@ az group delete -n $strResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-如果使用 Azure 映像生成器时遇到任何问题，请参阅[故障排除](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json)。
+如果在使用 Azure 映像生成器时遇到任何问题，请参阅[故障排除](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json)。

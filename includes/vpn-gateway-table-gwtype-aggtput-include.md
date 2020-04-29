@@ -9,13 +9,13 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1643b20c6c157c43e93967cef364e703dbf4478e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74828923"
 ---
-|VPN**网关<br><br>代系** |**SKU**   | S2S/VNet 到 VNet**隧道<br>** | **P2S<br> SSTP 连接** | **P2S<br> IKEv2/OpenVPN 连接** | **<br>聚合**吞吐量基准 | **BGP** | **区域冗余** |
+|VPN<br>网关 **<br>代系** |**SKU**   | S2S/VNet 到 VNet<br>隧道  | **P2S<br> SSTP 连接** | **P2S<br> IKEv2/OpenVPN 连接** |  聚合<br>吞吐量基准 | **BGP** | **区域冗余** |
 |---            |---         | ---        | ---       | ---            | ---       | ---       | ---|
 |**第 1 代**|**基本**   | 最大 10    | 最大 128  | 不支持  | 100 Mbps  | 不支持| 否 |
 |**第 1 代**|VpnGw1   | 最大 30*   | 最大 128  | 最大 250       | 650 Mbps  | 支持 | 否 |
