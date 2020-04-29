@@ -1,6 +1,6 @@
 ---
-title: HB 系列 VM 大小性能 - Azure 虚拟机 |微软文档
-description: 了解 Azure 中 HB 系列 VM 大小的性能测试结果。
+title: HB-ACCT-WC 系列 VM 大小性能-Azure 虚拟机 |Microsoft Docs
+description: 了解 Azure 中 HB-ACCT-WC 系列 VM 大小的性能测试结果。
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -13,36 +13,36 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
 ms.openlocfilehash: e064db5f67e6f8a7e82093bdae9fac7eaa4b6a55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79534195"
 ---
-# <a name="hb-series-virtual-machine-sizes"></a>HB 系列虚拟机尺寸
+# <a name="hb-series-virtual-machine-sizes"></a>HB-ACCT-WC 系列虚拟机大小
 
-已对 HB 系列尺寸运行了多个性能测试。 以下是此性能测试的一些结果。
+已对 HB-ACCT-WC 系列大小运行多个性能测试。 下面是此性能测试的部分结果。
 
 
-| 工作负荷                                        | HB                    |
+| 工作负载                                        | HB                    |
 |-------------------------------------------------|-----------------------|
-| STREAM 三合会                                    | ±260 GB/s （每 CCX 32-33 GB/s）  |
-| 高性能林包 （HPL）                  | ±1，000 千兆克（Rpeak），+860 千兆（Rmax） |
-| RDMA 延迟&带宽                        | 2.35usec， 96.5 Gb/s   |
-| 本地 NVMe SSD 上的 FIO                           | ±1.7 GB/s 读取，±1.0 GB/s 写入      |  
-| IOR 上 4 = Azure 高级 SSD（P30 托管磁盘，RAID0）*  | ±725 MB/s 读取，+780 MB/写入   |
+| STREAM Triad                                    | 约 260 GB/秒（每个 CCX 32-33 GB/秒）  |
+| 高性能 Linpack （HPL.DAT）                  | ~ 1000 GigaFLOPS （Rpeak），~ 860 GigaFLOPS （Rmax） |
+| RDMA 延迟 & 带宽                        | 2.35 usec，96.5 Gb/秒   |
+| 本地 NVMe SSD 上的 FIO                           | 约 1.7 GB/秒读取，约 1.0 GB/秒写入      |  
+| IOR on 4 * Azure 高级 SSD （P30 托管磁盘，RAID0） * *  | 约 725 MB/秒读取，约 780 MB/写入   |
 
 
 
-## <a name="infiniband-send-latency"></a>英菲尼班发送延迟
-梅拉诺克斯·佩弗斯特
+## <a name="infiniband-send-latency"></a>无限发送延迟
+Mellanox Perftest。
 
 ```console
 numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 ```
 
 
-|  #bytes         | #iterations     | t_min[微秒]     | t_max[微秒]     | t_typical [微秒] | t_avg[微秒]     | t_stdev[微秒]   |
+|  #bytes         | #iterations     | t_min [微秒]     | t_max [微秒]     | t_typical [微秒] | t_avg [微秒]     | t_stdev [微秒]   |
 |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
 | 2               | 1000            | 2.35            | 12.63           | 2.38            | 2.42            | 0.33            |
 | 4               | 1000            | 2.35            | 18.53           | 2.38            | 2.4             | 0.21            |
@@ -60,14 +60,14 @@ numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 
 ## <a name="osu-mpi-latency-test"></a>OSU MPI 延迟测试
 
-OSU MPI 延迟测试 v5.4.3。
+OSU MPI 延迟测试 v 5.4.3。
 
 ```azure-cli
 ./bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./osu_latency 
 ```
 
 
-| #bytes  | 延迟 [微秒] （MPICH 3.3 + CH4） | 延迟 [微秒] （OpenMPI 4.0.0） | 延迟 [微秒] （MVAPICH2 2.3） | 延迟 [微秒] （英特尔 MPI 2019） |
+| #bytes  | 滞后时间 [微秒] （MPICH 3.3 + CH4） | 滞后时间 [微秒] （OpenMPI 4.0.0） | 延迟 [微秒] （MVAPICH2 2.3） | 延迟 [微秒] （Intel MPI 2019） |
 |------|----------|----------|----------|----------|
 | 2    | 2.44     | 2.52     | 2.84     | 2.76     |
 | 4    | 2.44     | 2.53     | 2.84     | 2.76     |
@@ -85,13 +85,13 @@ OSU MPI 延迟测试 v5.4.3。
 
 ## <a name="mpi-bandwidth"></a>MPI 带宽
 
-OSU MPI 带宽测试 v5.4.3。
+OSU MPI 带宽测试 v 5.4.3。
 
 ```azure-cli
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
 ```
 
-| #Size            | 带宽（MB/s） | 带宽（Gb/s） |
+| #Size            | 带宽（MB/s） | 带宽（Gb/秒） |
 |------------------|------------------|------------------|
 | 2                | 4.03             | 0.03             |
 | 4                | 8.2              | 0.07             |
@@ -119,7 +119,7 @@ OSU MPI 带宽测试 v5.4.3。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 Azure[中高性能计算](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)的更多详细信息。
+详细了解 Azure 中的[高性能计算](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)。
 
 
 

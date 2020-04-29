@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.openlocfilehash: 725876594a7e7c5f3b3a02802f487dc5fdfb64dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79535929"
 ---
 # <a name="optimize-reads-and-writes-cost-in-azure-cosmos-db"></a>优化 Azure Cosmos DB 中的读取和写入成本
@@ -23,7 +23,7 @@ Azure Cosmos DB 通过使用预配置吞吐量模型，在吞吐量和延迟方�
 
 无需考虑在读取和写入之间区分请求单位。 请求单位使用统一的货币模型，可交替使用相同的吞吐量容量进行读取和写入，提高了工作效率。 下表以 RU/秒表示 1 KB 和 100 KB 大小项的读取和写入成本。
 
-|**项目大小**  |**一次读取成本** |**一次写入成本**|
+|**项大小**  |**一次读取成本** |**一次写入成本**|
 |---------|---------|---------|
 |1 KB |1 RU |5 RU |
 |100 KB |10 RU |50 RU |

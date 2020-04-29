@@ -1,5 +1,5 @@
 ---
-title: 疑难解答查询性能 - MariaDB 的 Azure 数据库
+title: 查询性能故障排除-Azure Database for MariaDB
 description: 了解如何使用 EXPLAIN 对 Azure Database for MariaDB 中的查询性能问题进行故障排除。
 author: ajlam
 ms.author: andrela
@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: troubleshooting
 ms.date: 3/18/2020
 ms.openlocfilehash: b06fe37b63494eb4ee0ca680733a801c26415d67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79530047"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>如何使用 EXPLAIN 分析 Azure Database for MariaDB 中的查询性能
@@ -120,7 +120,7 @@ possible_keys: covered
 如上面的 EXPLAIN 所表明，MariaDB 现在使用涵盖索引并避免了创建临时表。 
 
 ## <a name="combined-index"></a>组合索引
-组合索引由来自多个列的值组成，并且可以包含行数组，其中的行按已编制索引的列的串联值排序。可以在 **GROUP BY** 语句中使用此方法。
+组合索引由来自多个列的值组成，并且可以包含行数组，其中的行按已编制索引的列的串联值排序。 可以在 **GROUP BY** 语句中使用此方法。
 
 ```sql
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
@@ -139,7 +139,7 @@ possible_keys: NULL
         Extra: Using where; Using filesort
 ```
 
-MariaDB 执行“文件排序”操作时非常缓慢，尤其是必须对大量行进行排序时。** 若要优化此查询，可以基于要排序的两个列创建一个组合索引。
+MariaDB 执行“文件排序”操作时非常缓慢，尤其是必须对大量行进行排序时。  若要优化此查询，可以基于要排序的两个列创建一个组合索引。
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY my_sort2 (c1, c2);
@@ -161,7 +161,7 @@ possible_keys: NULL
 
 EXPLAIN 现在表明，MariaDB 能够使用组合索引避免额外的排序，因为该索引已排序。
  
-## <a name="conclusion"></a>结束语
+## <a name="conclusion"></a>结论
  
 使用 EXPLAIN 和各种类型的索引可以显著提高性能。 表上有索引并不一定意味着 MariaDB 能够将其用于查询。 请始终使用 EXPLAIN 来验证假设并使用索引优化查询。
 

@@ -1,5 +1,5 @@
 ---
-title: 数据内复制 - MySQL 的 Azure 数据库
+title: 数据传入复制 - Azure Database for MySQL
 description: 了解如何使用数据传入复制从外部服务器同步到 Azure Database for MySQL 服务。
 author: ajlam
 ms.author: andrela
@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 20be34191355e6ade40e0f3b218818bfa5345a28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79533226"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>将数据复制到 Azure Database for MySQL
@@ -46,6 +46,6 @@ ms.locfileid: "79533226"
 - 不支持全局事务标识符 (GTID)。
 
 ## <a name="next-steps"></a>后续步骤
-- 了解如何[设置数据内复制](howto-data-in-replication.md)
+- 了解如何[设置数据复制](howto-data-in-replication.md)
 - 了解[使用只读副本在 Azure 中进行复制](concepts-read-replicas.md)
 - 了解如何[使用 DMS 在最短的停机时间内迁移数据](howto-migrate-online.md)

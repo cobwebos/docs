@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/18/2020
 ms.author: juliako
 ms.openlocfilehash: e2c4e5b6c10b06d82a1933962cb2d97e031876a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80068025"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒体服务 v3 实时传送视频流
@@ -27,13 +27,13 @@ ms.locfileid: "80068025"
 - 一个相机，用于捕获直播活动。<br/>有关设置建议，请查看[简单且可移植的事件视频设备设置]( https://link.medium.com/KNTtiN6IeT)。
 
     如果你无法访问摄像机，则可以使用 [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) 等工具从视频文件生成实时源。
-- 一个实时视频编码器，用于将相机（或其他设备，例如便携式计算机）的信号转换为可发送到媒体服务的贡献源。 贡献源可包括与广告相关的信号，例如 SCTE-35 标记。<br/>有关推荐的实时传送视频流编码器的列表，请参阅[实时传送视频流编码器](recommended-on-premises-live-encoders.md)。 此外，看看这个博客：[使用OBS进行实时流式处理](https://link.medium.com/ttuwHpaJeT)。
+- 一个实时视频编码器，用于将相机（或其他设备，例如便携式计算机）的信号转换为可发送到媒体服务的贡献源。 贡献源可包括与广告相关的信号，例如 SCTE-35 标记。<br/>有关推荐的实时传送视频流编码器的列表，请参阅[实时传送视频流编码器](recommended-on-premises-live-encoders.md)。 此外，请查看此博客：[包含 OBS 的实时流式处理生产](https://link.medium.com/ttuwHpaJeT)。
 - 媒体服务中的组件，用于引入、预览、打包、记录、加密直播活动并将其广播给客户，或者广播给 CDN 进行进一步分发。
 
 本文提供有关使用媒体服务实时传送视频流的概述和指导，并提供其他相关文章的链接。
  
 > [!NOTE]
-> 您可以使用 Azure[门户](https://portal.azure.com/)管理 v3[实时事件](live-events-outputs-concept.md)、查看 v3[资产](assets-concept.md)、获取有关访问 API 的信息。 对于所有其他管理任务（例如，转换和作业），请使用[REST API](https://docs.microsoft.com/rest/api/media/) [、CLI](https://aka.ms/ams-v3-cli-ref)或受支持的[SDK](media-services-apis-overview.md#sdks)之一。
+> 可以使用 [Azure 门户](https://portal.azure.com/)执行以下操作：管理 v3 [直播活动](live-events-outputs-concept.md)、查看 v3 [资产](assets-concept.md)、获取有关访问 API 的信息。 对于其他所有管理任务（例如，转换和作业），请使用 [REST API](https://docs.microsoft.com/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
 
 ## <a name="dynamic-packaging"></a>动态打包
 
@@ -41,7 +41,7 @@ ms.locfileid: "80068025"
 
 ## <a name="dynamic-encryption"></a>动态加密
 
-动态加密使您能够使用 AES-128 或三大数字版权管理 （DRM） 系统中的任何一个动态加密您的实时或点播内容：微软 PlayReady、Google Widevine 和 Apple FairPlay。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 DRM（PlayReady、Widevine 和 FairPlay）许可证的服务。 有关详细信息，请参阅[动态加密](content-protection-overview.md)。
+动态加密可让你通过 AES-128 或三个主要数字版权管理（DRM）系统（Microsoft PlayReady、Google Widevine 和 Apple FairPlay）中的任何一个来动态加密你的实时或点播内容。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 DRM（PlayReady、Widevine 和 FairPlay）许可证的服务。 有关详细信息，请参阅[动态加密](content-protection-overview.md)。
 
 > [!NOTE]
 > Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
@@ -52,7 +52,7 @@ ms.locfileid: "80068025"
 
 ## <a name="live-event-types"></a>实时事件类型
 
-[直播活动](https://docs.microsoft.com/rest/api/media/liveevents)负责引入和处理实时视频源。 实时事件可以设置为*传递*（本地实时编码器发送多个比特率流）或*实时编码*（本地实时编码器发送单个比特率流）。 有关媒体服务 v3 中的实时传送视频流的详细信息，请参阅[实时事件和实时输出](live-events-outputs-concept.md)。
+[直播活动](https://docs.microsoft.com/rest/api/media/liveevents)负责引入和处理实时视频源。 直播活动可以设置为“直通”  （本地实时编码器发送多比特率流）或“实时编码”  （本地实时编码器发送单比特率流）。 有关媒体服务 v3 中的实时传送视频流的详细信息，请参阅[实时事件和实时输出](live-events-outputs-concept.md)。
 
 ### <a name="pass-through"></a>直通
 
@@ -66,12 +66,12 @@ ms.locfileid: "80068025"
 
 将云编码与媒体服务配合使用时，需配置本地实时编码器，以便将单比特率视频作为贡献源（最大聚合比特率为 32Mbps）发送到实时事件（使用 RTMP 或分段 MP4 输入协议）。 实时事件会将传入的单比特率流转码为不同分辨率的[多比特率视频流](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)，以改善传输性能，并使其可通过 MPEG-DASH、Apple HTTP Live Streaming (HLS) 和 Microsoft 平滑流式处理等行业标准协议传送到播放设备。 
 
-### <a name="live-transcription-preview"></a>实时转录（预览）
+### <a name="live-transcription-preview"></a>实时脚本（预览）
 
-实时转录是一种功能，可用于传递或实时编码的实时事件。 有关详细信息，请参阅[实时转录](live-transcription.md)。 启用此功能后，该服务将使用认知服务的["语音到文本](../../cognitive-services/speech-service/speech-to-text.md)"功能将传入音频中的口语转录为文本。 然后，在 MPEG-DASH 和 HLS 协议中，此文本与视频和音频一起提供。
+Live 脚本是一项功能，可将其用于传递或实时编码的实时事件。 有关详细信息，请参阅[实时](live-transcription.md)脚本。 启用此功能后，服务将使用认知服务的[语音到文本](../../cognitive-services/speech-service/speech-to-text.md)功能将传入音频中的朗读字词转录为文本。 然后，可以在 MPEG-短线和 HLS 协议中将此文本连同视频和音频一起送达。
 
 > [!NOTE]
-> 目前，实时转录作为预览功能在美国西部 2 中提供。
+> 目前，可以在美国西部2中将实时脚本作为预览功能提供。
 
 ## <a name="live-streaming-workflow"></a>实时传送视频流工作流
 
@@ -93,7 +93,7 @@ ms.locfileid: "80068025"
 6. 创建**实时输出**并使用创建的资产名称，使流能够存档到资产中。
 
     实时输出在创建时启动，在删除后停止。 删除实时输出不会删除基础资产和该资产中的内容。
-7. 使用[内置流式处理策略类型](streaming-policy-concept.md)创建**流式处理器**。
+7. 使用[内置流式处理策略类型](streaming-policy-concept.md)创建**流式处理定位符**。
 
     若要发布实时输出，必须为关联的资产创建流定位符。 
 8. 列出流式处理定位器的路径，以取回要使用的 URL（这些是确定性的）****。
@@ -106,7 +106,7 @@ ms.locfileid: "80068025"
     * 停止直播活动。 直播活动在停止后，不会产生任何费用。 当需要重新启动它时，它会采用相同的引入 URL，因此，无需重新配置编码器。
     * 除非想要继续以点播流形式提供直播活动的存档，否则可以停止流式处理终结点。 如果直播活动处于停止状态，则不会产生任何费用。
 
-实时输出要存档到的资产，在删除实时输出时，会自动成为点播资产。 必须先删除所有实时输出，然后才能停止实时事件。 您可以使用可选标志[删除输出OnStop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body)以自动删除停止时的实时输出。 
+实时输出要存档到的资产，在删除实时输出时，会自动成为点播资产。 必须先删除所有实时输出，然后才能停止实时事件。 可以使用可选的标志[removeOutputsOnStop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body)自动删除停止时的实时输出。 
 
 > [!TIP]
 > 请参阅[实时传送视频流教程](stream-live-tutorial-with-api.md)，其中介绍了实现上述步骤的代码。
@@ -119,9 +119,9 @@ ms.locfileid: "80068025"
 - [状态和计费](live-event-states-billing.md)
 - [延迟](live-event-latency.md)
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 
-请参阅[常见问题](frequently-asked-questions.md#live-streaming)文章。
+请参阅[常见问题解答](frequently-asked-questions.md#live-streaming)一文。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 
@@ -129,6 +129,6 @@ ms.locfileid: "80068025"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [实时流式处理快速入门]（live-events-wirecast-quickstart.md）
+* [实时流式处理快速入门]（live-events-wirecast-quickstart.md （
 * [实时传送视频流教程](stream-live-tutorial-with-api.md)
 * [有关从媒体服务 v2 迁移到 v3 的指导](migrate-from-v2-to-v3.md)

@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 0c619224201d6225d5e5c127b342f71f2f7fced9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79535346"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>启动存储帐户故障转移（预览版）
@@ -27,7 +27,7 @@ ms.locfileid: "79535346"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在存储帐户上执行帐户故障转移之前，请确保已执行以下步骤：
 
@@ -59,14 +59,14 @@ ms.locfileid: "79535346"
 
     ![显示帐户故障转移确认对话框的屏幕截图](media/storage-initiate-account-failover/portal-failover-confirm.png)
 
-## <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 必须先安装 6.0.1 预览版模块，才能使用 PowerShell 启动帐户故障转移。 若要安装此模块，请按照以下步骤操作：
 
 1. 卸载以前安装的所有 Azure PowerShell：
 
     - 使用“设置”**** 下的“应用和功能”**** 设置从 Windows 中删除以前安装的所有 Azure PowerShell。
-    - 从`%Program Files%\WindowsPowerShell\Modules`中删除所有**Azure**模块。
+    - 从中**Azure** `%Program Files%\WindowsPowerShell\Modules`删除所有 Azure 模块。
 
 1. 确保已安装 PowerShellGet 最新版本。 打开 Windows PowerShell 窗口，然后运行以下命令以安装最新版本：
 
@@ -110,5 +110,5 @@ az storage account failover \ --name accountName
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure 存储中的灾难恢复和帐户故障转移（预览版）](storage-disaster-recovery-guidance.md)
-- [使用 RA-GRS 设计高可用应用程序](storage-designing-ha-apps-with-ragrs.md)
-- [教程：使用 Blob 存储构建高可用应用程序](../blobs/storage-create-geo-redundant-storage.md) 
+- [使用 GRS 设计高度可用的应用程序](storage-designing-ha-apps-with-ragrs.md)
+- [教程：使用 Blob 存储构建高度可用的应用程序](../blobs/storage-create-geo-redundant-storage.md) 

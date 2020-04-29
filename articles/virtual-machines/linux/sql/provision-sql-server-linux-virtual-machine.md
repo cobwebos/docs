@@ -12,10 +12,10 @@ ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 43ba4eed4dcfd6d8e86c21f1ee5214108c44a8c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80060230"
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>在 Azure 门户中预配 Linux SQL Server 虚拟机
@@ -26,41 +26,41 @@ ms.locfileid: "80060230"
 
 在本快速入门教程中，你将使用 Azure 门户创建装有 SQL Server 2017 的 Linux 虚拟机。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 * [从库创建 Linux SQL VM](#create)
 * [使用 ssh 连接到新的 VM](#connect)
 * [更改 SA 密码](#password)
-* [配置远程连接](#remote)
+* [针对远程连接进行配置](#remote)
 
 ## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
 
-## <a name="create-a-linux-vm-with-sql-server-installed"></a><a id="create"></a> 创建安装了 SQL Server 的 Linux VM
+## <a name="create-a-linux-vm-with-sql-server-installed"></a><a id="create"></a>创建安装了 SQL Server 的 Linux VM
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 在左窗格中，选择“创建资源”****。
+1. 在左窗格中，选择“创建资源”  。
 
 1. 在“创建资源”**** 窗格中选择“计算”****。
 
-1. 选择“特色”标题旁边的“全部查看”。********
+1. 选择“特色”标题旁边的“全部查看”。  
 
    ![查看所有 VM 映像](./media/provision-sql-server-linux-virtual-machine/azure-compute-blade.png)
 
-1. 在搜索框中键入 **SQL Server 2019**，然后按 Enter 开始搜索。****
+1. 在搜索框中键入 **SQL Server 2019**，然后按 Enter 开始搜索。 
 
-1. 通过选择**操作系统** > **Redhat**来限制搜索结果。
+1. 通过选择 "**操作系统** > **Redhat**" 限制搜索结果。
 
     ![针对 SQL Server 2019 VM 映像的搜索筛选器](./media/provision-sql-server-linux-virtual-machine/searchfilter.png)
 
-1. 从搜索结果中选择 SQL Server 2019 Linux 映像。 本教程使用**SQL Server 2019 在 RHEL74**上。
+1. 从搜索结果中选择 SQL Server 2019 Linux 映像。 本教程使用**RHEL74 上的 SQL Server 2019**。
 
    > [!TIP]
    > Developer 版允许使用 Enterprise 版的功能进行测试或开发，但没有 SQL Server 许可费用。 只需支付运行 Linux VM 的费用。
 
-1. 选择 **“创建”**。 
+1. 选择“创建”  。 
 
 
 ### <a name="set-up-your-linux-vm"></a>设置 Linux VM
@@ -71,39 +71,39 @@ ms.locfileid: "80060230"
 
 1. 在“虚拟机名称”中，输入新 Linux VM 的名称****。
 1. 然后键入或选择以下值：
-   * **区域**：选择适合您的 Azure 区域。
-   * **可用性选项**：选择最适合您的应用和数据的可用性和冗余选项。
-   * **更改大小**：选择此选项以选择机器大小，完成后，**选择。"** 有关 VM 计算机大小的详细信息，请参阅 [Linux VM 大小](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes)。
+   * **区域**：选择适合你的 Azure 区域。
+   * **可用性选项**：选择最适合你的应用和数据的可用性和冗余选项。
+   * **更改大小**：选择此选项以选择计算机大小，完成后，选择 "**选择**"。 有关 VM 计算机大小的详细信息，请参阅 [Linux VM 大小](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes)。
 
      ![选择 VM 大小](./media/provision-sql-server-linux-virtual-machine/vmsizes.png)
 
    > [!TIP]
-   > 对于开发和功能测试，请使用 **DS2** 或更大的 VM 大小。 若要进行性能测试，则至少使用“DS13”。****
+   > 对于开发和功能测试，请使用 **DS2** 或更大的 VM 大小。 若要进行性能测试，则至少使用“DS13”。 
 
-   * **身份验证类型**：选择**SSH 公钥**。
+   * **身份验证类型**：选择“SSH 公钥”。 
 
      > [!Note]
      > 可以选择使用“SSH 公钥”或“密码”进行身份验证。 SSH 更安全。 有关如何生成 SSH 密钥的说明，请参阅[在 Linux 和 Mac 上为 Azure 中的 Linux VM 创建 SSH 密钥](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys)。
 
    * **用户名**：输入 VM 的管理员名称。
-   * **SSH 公钥**：输入您的 RSA 公钥。
-   * **公共入站端口**：选择 **"允许选定的端口**"，并在 **"选择公共入站端口**"列表中选择**SSH （22）** 端口。 在本快速入门中，必须执行此步骤才能建立连接并完成 SQL Server 配置。 如果要远程连接到 SQL Server，则需要手动允许流量到 Microsoft SQL Server 使用的默认端口 （1433） 在创建虚拟机后通过 Internet 进行连接。
+   * **SSH 公钥**：输入 RSA 公钥。
+   * **公用入站端口**：选择 "允许选择的**端口**"，然后在 "**选择公共入站端口**" 列表中选择**SSH （22）** 端口。 在本快速入门中，必须执行此步骤才能建立连接并完成 SQL Server 配置。 如果要远程连接到 SQL Server，则需要在创建虚拟机后，手动允许通过 Internet 连接 Microsoft SQL Server 使用的默认端口（1433）的流量。
 
      ![入站端口](./media/provision-sql-server-linux-virtual-machine/port-settings.png)
 
 1. 在后面的其他选项卡中对设置进行任何所需的更改，或保留默认设置。
     * **磁盘**
-    * **网络连接**
-    * **管理**
+    * **联网**
+    * **Management**
     * **来宾配置**
     * **标记**
 
-1. 选择“查看 + 创建”****。
+1. 选择“查看 + 创建”  。
 1. 在“查看 + 创建”窗格中，选择“创建”。********
 
-## <a name="connect-to-the-linux-vm"></a><a id="connect"></a> 连接到 Linux VM
+## <a name="connect-to-the-linux-vm"></a><a id="connect"></a>连接到 Linux VM
 
-如果已使用 BASH shell，请通过 ssh 命令连接到 Azure VM。**** 在以下命令中，替换连接到 Linux VM 所需的 VM 用户名和 IP 地址。
+如果已使用 BASH shell，请通过 ssh 命令连接到 Azure VM。  在以下命令中，替换连接到 Linux VM 所需的 VM 用户名和 IP 地址。
 
 ```bash
 ssh azureadmin@40.55.55.555
@@ -121,12 +121,12 @@ ssh azureadmin@40.55.55.555
 
 1. 在 PuTTY 配置屏幕上，输入 VM 的公共 IP 地址。
 
-1. 选择“打开”，并根据提示输入用户名和密码。****
+1. 选择“打开”，并根据提示输入用户名和密码。 
 
 若要详细了解如何连接到 Linux VM，请参阅[使用门户在 Azure 上创建 Linux VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal)。
 
 > [!Note]
-> 如果出现有关不会在注册表中缓存服务器主机密钥的 PuTTY 安全警报，请从以下选项中进行选择。 如果你信任此主机，请选择“是”将密钥添加到 PuTTy 缓存并继续进行连接。**** 如果你只想建立连接一次，而无需将密钥添加到缓存，请选择“否”。**** 如果你不信任此主机，请选择“取消”以放弃连接。****
+> 如果出现有关不会在注册表中缓存服务器主机密钥的 PuTTY 安全警报，请从以下选项中进行选择。 如果你信任此主机，请选择“是”将密钥添加到 PuTTy 缓存并继续进行连接。  如果你只想建立连接一次，而无需将密钥添加到缓存，请选择“否”。  如果你不信任此主机，请选择“取消”以放弃连接。 
 
 ## <a name="change-the-sa-password"></a><a id="password"></a>更改 SA 密码
 
@@ -143,7 +143,7 @@ ssh azureadmin@40.55.55.555
 
    出现提示时，输入新的 SA 密码和密码确认。
 
-1. 重启 SQL Server 服务。
+1. 重新启动 SQL Server 服务。
 
    ```bash
    sudo systemctl start mssql-server
@@ -151,9 +151,9 @@ ssh azureadmin@40.55.55.555
 
 ## <a name="add-the-tools-to-your-path-optional"></a>将工具添加到路径（可选）
 
-默认安装了多个 SQL Server [包](sql-server-linux-virtual-machines-overview.md#packages)，包括 SQL Server 命令行工具包。 工具包包含 **** sqlcmd 和 **** bcp 工具。 为了方便，可以选择将工具路径 `/opt/mssql-tools/bin/` 添加到 **** PATH 环境变量。
+默认安装了多个 SQL Server [包](sql-server-linux-virtual-machines-overview.md#packages)，包括 SQL Server 命令行工具包。 工具包包含  sqlcmd 和  bcp 工具。 为了方便，可以选择将工具路径 `/opt/mssql-tools/bin/` 添加到  PATH 环境变量。
 
-1. 运行以下命令以修改登录会话和交互式/非登录会话的**PATH：**
+1. 运行以下命令以修改登录会话和交互式/非登录会话的路径  ：
 
    ```bash
    echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile
@@ -161,24 +161,24 @@ ssh azureadmin@40.55.55.555
    source ~/.bashrc
    ```
 
-## <a name="configure-for-remote-connections"></a><a id="remote"></a> 针对远程连接进行配置
+## <a name="configure-for-remote-connections"></a><a id="remote"></a>为远程连接配置
 
 如果需要远程连接到 Azure VM 上的 SQL Server，必须在网络安全组上配置入站规则。 该规则允许 SQL Server 所侦听的端口（默认为 1433）上的流量。 以下步骤演示如何使用此步骤所对应的 Azure 门户。
 
 > [!TIP]
-> 如果在预配过程中已在设置中选择了入站端口“MS SQL (1433)”****，则已进行这些更改。 有关如何配置防火墙，可以转到下一部分。
+> 如果在预配过程中已在设置中选择了入站端口“MS SQL (1433)”  ，则已进行这些更改。 有关如何配置防火墙，可以转到下一部分。
 
-1. 在门户中选择“虚拟机”，并选择 SQL Server VM。****
-1. 在左侧窗格中的“设置”**** 下，选择“网络”****。
-1. 在“网络”窗口中，选择“入站端口规则”下的“添加入站端口”。********
+1. 在门户中选择“虚拟机”，然后选择 SQL Server VM  。
+1. 在左侧窗格中的“设置”  下，选择“网络”  。
+1. 在“网络”窗口中，选择“入站端口规则”下的“添加入站端口”。  
 
    ![入站端口规则](./media/provision-sql-server-linux-virtual-machine/networking.png)
 
-1. 在“服务”**** 列表中，选择“MS SQL”****。
+1. 在“服务”  列表中，选择“MS SQL”  。
 
     ![MS SQL 安全组规则](./media/provision-sql-server-linux-virtual-machine/sqlnsgrule.png)
 
-1. 单击“确定”保存 VM 的规则。****
+1. 单击“确定”保存 VM 的规则  。
 
 ### <a name="open-the-firewall-on-rhel"></a>打开 RHEL 上的防火墙
 

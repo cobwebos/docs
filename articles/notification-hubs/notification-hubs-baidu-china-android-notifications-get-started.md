@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
 ms.openlocfilehash: b9ca241b5deebc4d23e0ff648eddee0782617e0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79536983"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>通过百度开始使用通知中心
@@ -29,7 +29,7 @@ ms.locfileid: "79536983"
 
 由于 Google Play 和 FCM (Firebase Cloud Messaging) 在中国不可用，必须使用其他的应用商店和推送服务。 百度就是其中的一个，也是通知中心目前所使用的。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本教程需要：
 
@@ -68,7 +68,7 @@ ms.locfileid: "79536983"
 
 2. 输入应用程序名称，并确保将要求的最低 SDK 版本设为“API 16: Android 4.1”。 **另请确保应用包名与百度云推送门户中的相同**
 
-    ![Azure 通知中心 - 百](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png)![度最小 SDK1 Azure 通知中心 - 百度最小 SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
+    ![Azure 通知中心-百度 min SDK1](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![azure 通知中心-百度 min SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
 
 3. 单击“下一步”，并继续执行向导，直到显示“创建活动”窗口。 确保选中了“空活动”，最后选择“完成”以创建新的 Android 应用程序。
 
@@ -425,7 +425,7 @@ ms.locfileid: "79536983"
 下面是用于发送通知的不同方法：
 
 * **REST 接口**：可以使用 [REST 接口](https://msdn.microsoft.com/library/windowsazure/dn223264.aspx)在任何后端平台上支持通知。
-* **微软 Azure 通知中心 .NET SDK**： 在可视化工作室的 Nuget 包管理器中，运行[安装包 Microsoft.Azure.通知中心](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
+* **Microsoft Azure 通知中心 .NET SDK**：在适用于 Visual Studio 的 Nuget 包管理器中，运行[NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
 * **Node.js**：[如何通过 Node.js 使用通知中心](notification-hubs-nodejs-push-notification-tutorial.md)。
 * **移动应用**：有关如何从通知中心集成的 Azure 应用服务移动应用后端发送通知的示例，请参阅[将推送通知添加到移动应用](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md)。
 * **Java/PHP**：有关如何使用 REST API 发送通知的示例，请参阅“如何通过 Java/PHP 使用通知中心”([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md))。

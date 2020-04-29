@@ -1,6 +1,6 @@
 ---
 title: 如何使用 SendGrid 电子邮件服务 (.NET) | Microsoft Docs
-description: 了解如何使用 Azure 上的 SendGrid 电子邮件服务发送电子邮件。 代码示例用 C# 编写且使用 .NET API。
+description: 了解如何在 Azure 上通过 SendGrid 电子邮件服务发送电子邮件。 代码示例用 C# 编写且使用 .NET API。
 services: ''
 documentationcenter: .net
 author: georgewallace
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.reviewer: dx@sendgrid.com
 ms.openlocfilehash: 33df6b5c8c5c16a6eb896944de05068affc2b407
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80062205"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>如何在 Azure 中使用 SendGrid 发送电子邮件
@@ -34,7 +34,7 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
 * 转发客户查询。
 * 处理传入的电子邮件。
 
-有关详细信息，请访问[https://sendgrid.com](https://sendgrid.com)或发送 Grid 的[C# 库][sendgrid-csharp]GitHub 存储库。
+有关详细信息，请[https://sendgrid.com](https://sendgrid.com)访问或 SendGrid 的[c # 库 GitHub 存储库][sendgrid-csharp]。
 
 ## <a name="create-a-sendgrid-account"></a>创建 SendGrid 帐户
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
@@ -43,7 +43,7 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
 [SendGrid NuGet 包](https://www.nuget.org/packages/Sendgrid)是获取 SendGrid API 和使用所有依赖项配置应用程序的最简单方法。 NuGet 是 Microsoft Visual Studio 2015 及更高版本随附的一个 Visual Studio 扩展，可让用户轻松安装和更新库与工具。
 
 > [!NOTE]
-> 如果要安装 NuGet，如果运行的视觉工作室版本早于 Visual Studio 2015，请访问[https://www.nuget.org](https://www.nuget.org)，然后单击 **"安装 NuGet"** 按钮。
+> 若要在运行 Visual studio 2015 以前版本的 Visual Studio 时安装 NuGet，请访问[https://www.nuget.org](https://www.nuget.org)，并单击 "**安装 nuget** " 按钮。
 >
 >
 
@@ -63,7 +63,7 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
 
 SendGrid 的 .NET 类库名为 **SendGrid**。 其中包含以下命名空间：
 
-* 用于与 SendGrid API 通信的**发送网格**。
+* **SendGrid**用于与 SENDGRID 的 API 进行通信。
 * **SendGrid.Helpers.Mail**，适用于帮助器方法，可以轻松地创建 SendGridMessage 对象，以便指定如何发送电子邮件。
 
 在希望以编程方式访问 SendGrid 电子邮件服务的任何 C# 文件中，将以下代码命名空间声明添加到文件的顶部。
@@ -100,7 +100,7 @@ SendGrid 的 .NET 类库名为 **SendGrid**。 其中包含以下命名空间：
 
 发送电子邮件需要用户提供 SendGrid API 密钥。 如需有关如何配置 API 密钥的详细信息，请访问 SendGrid 的 API 密钥[文档][documentation]。
 
-您可以通过单击"应用程序设置"并在应用设置下添加键/值对来通过 Azure 门户存储这些凭据。
+可以通过单击 "应用程序设置" 并在 "应用设置" 下添加键/值对，通过 Azure 门户存储这些凭据。
 
  ![Azure 应用设置][azure_app_settings]
 

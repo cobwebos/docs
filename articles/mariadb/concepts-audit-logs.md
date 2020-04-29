@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/19/2020
 ms.openlocfilehash: e8d5abd81feb86ba48fc442ee95615cb52230a24
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80063819"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的审核日志
@@ -27,10 +27,10 @@ ms.locfileid: "80063819"
 可以调整的其他参数包括：
 
 - `audit_log_events`：控制要记录的事件。 请查看下表以了解具体的审核事件。
-- `audit_log_include_users`：要包括用于日志记录的 MariaDB 用户。 此参数的默认值为空，这将包括所有用户进行日志记录。 此参数的优先级高于 `audit_log_exclude_users`。 此参数的最大长度为 512 个字符。
+- `audit_log_include_users`：要包含在日志记录中的 MariaDB 用户。 此参数的默认值为空，这将包括所有用户进行日志记录。 此参数的优先级高于 `audit_log_exclude_users`。 此参数的最大长度为 512 个字符。
 > [!Note]
 > `audit_log_include_users` 的优先级高于 `audit_log_exclude_users`。 例如，如果 `audit_log_include_users` = `demouser` 并且 `audit_log_exclude_users` = `demouser`，则会将该用户包括在审核日志中，因为 `audit_log_include_users` 的优先级更高。
-- `audit_log_exclude_users`：MariaDB 用户将从日志记录中排除。 最多允许对四个用户这样做。 参数的最大长度为 256 个字符。
+- `audit_log_exclude_users`：要从日志记录中排除的 MariaDB 用户。 最多允许对四个用户这样做。 参数的最大长度为 256 个字符。
 
 | **事件** | **说明** |
 |---|---|
@@ -49,7 +49,7 @@ ms.locfileid: "80063819"
 
 ## <a name="diagnostic-logs-schemas"></a>诊断日志架构
 
-以下部分介绍了 MariaDB 审核日志基于事件类型输出的内容。 包括的字段以及它们的出现顺序可能有所不同，具体取决于输出方法。
+以下部分介绍了 MariaDB 审核日志基于事件类型输出的内容。 根据输出方法，包含的字段以及这些字段出现的顺序可能会有所不同。
 
 ### <a name="connection"></a>连接
 
@@ -58,7 +58,7 @@ ms.locfileid: "80063819"
 | `TenantId` | 租户 ID |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | 记录日志时的时间戳 (UTC) |
-| `Type` | 日志类型。 始终是 `AzureDiagnostics` |
+| `Type` | 日志的类型。 始终是 `AzureDiagnostics` |
 | `SubscriptionId` | 服务器所属的订阅的 GUID |
 | `ResourceGroup` | 服务器所属的资源组的名称 |
 | `ResourceProvider` | 资源提供程序的名称。 始终是 `MICROSOFT.DBFORMARIADB` |
@@ -85,7 +85,7 @@ ms.locfileid: "80063819"
 | `TenantId` | 租户 ID |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | 记录日志时的时间戳 (UTC) |
-| `Type` | 日志类型。 始终是 `AzureDiagnostics` |
+| `Type` | 日志的类型。 始终是 `AzureDiagnostics` |
 | `SubscriptionId` | 服务器所属的订阅的 GUID |
 | `ResourceGroup` | 服务器所属的资源组的名称 |
 | `ResourceProvider` | 资源提供程序的名称。 始终是 `MICROSOFT.DBFORMARIADB` |
@@ -96,7 +96,7 @@ ms.locfileid: "80063819"
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | 服务器的名称 |
 | `event_class_s` | `general_log` |
-| `event_subclass_s` | `LOG`, `ERROR`, `RESULT` |
+| `event_subclass_s` | `LOG`、`ERROR`、`RESULT` |
 | `event_time` | 以 UNIX 时间戳表示的查询开始时的秒数 |
 | `error_code_d` | 查询失败时的错误代码。 `0` 意味着无错误 |
 | `thread_id_d` | 执行了查询的线程的 ID |
@@ -108,9 +108,9 @@ ms.locfileid: "80063819"
 
 ## <a name="analyze-logs-in-azure-monitor-logs"></a>分析 Azure Monitor 日志中的日志
 
-审核日志通过诊断日志传送到 Azure 监视器日志后，可以对审核的事件执行进一步分析。 下面是一些可帮助你入门的示例查询。 请确保使用你的服务器名称更新下面的内容。
+通过诊断日志将审核日志输送到 Azure Monitor 日志后，可以进一步分析已审核的事件。 下面是一些可帮助你入门的示例查询。 请确保使用你的服务器名称更新下面的内容。
 
-- 列出特定服务器上的 GENERAL 事件
+- 列出特定服务器上的常规事件
 
     ```kusto
     AzureDiagnostics
@@ -140,7 +140,7 @@ ms.locfileid: "80063819"
     | summarize count() by event_class_s, event_subclass_s, user_s, ip_s
     ```
 
-- 绘制特定服务器上的审核事件类型分布图
+- 在特定服务器上关系图审核事件类型分布
 
     ```kusto
     AzureDiagnostics
@@ -151,7 +151,7 @@ ms.locfileid: "80063819"
     | render timechart 
     ```
 
-- 列出所有 MariaDB 服务器上的审核事件，并启用诊断日志以进行审核日志
+- 列出针对审核日志启用了诊断日志的所有 MariaDB 服务器上的审核事件
 
     ```kusto
     AzureDiagnostics

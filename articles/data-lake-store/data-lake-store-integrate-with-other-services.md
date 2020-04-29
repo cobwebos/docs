@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 43024b63a355646f607adbb6623cc6c349374ea8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79535589"
 ---
 # <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>将 Azure Data Lake Storage Gen1 和其他 Azure 服务集成
@@ -65,8 +65,8 @@ Azure Data Lake Storage Gen1 提供命令行工具 AdlCopy，可从 Azure 存储
 ## <a name="use-data-lake-storage-gen1-with-azure-event-hubs"></a>配合使用 Data Lake Storage Gen1 和 Azure 事件中心
 可以使用 Azure Data Lake Storage Gen1 存档和捕获 Azure 事件中心收到的数据。 有关详细信息，请参阅[配合使用 Data Lake Storage Gen1 和 Azure 事件中心](data-lake-store-archive-eventhub-capture.md)。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)
 * [通过门户实现 Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
-* [使用 PowerShell 开始使用数据存储第 1 代](data-lake-store-get-started-powershell.md)  
+* [使用 PowerShell 开始使用 Data Lake Storage Gen1](data-lake-store-get-started-powershell.md)  
 

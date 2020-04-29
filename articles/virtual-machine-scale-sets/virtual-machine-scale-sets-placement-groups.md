@@ -1,6 +1,6 @@
 ---
-title: 使用大型 Azure 虚拟机缩放集
-description: 您需要了解的大型 Azure 虚拟机缩放集，以便在应用程序中使用它们。
+title: 使用大型 Azure 虚拟机规模集
+description: 为了在应用程序中使用大型 Azure 虚拟机规模集，需要了解的内容。
 author: cynthn
 ms.author: cynthn
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 11/9/2017
 ms.openlocfilehash: 6a872e749bae6bd29dbf73d4946e631af1660a39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79531033"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>使用大型虚拟机规模集
@@ -56,7 +56,7 @@ _vmss create_ 命令会对某些配置值进行默认设置（如果用户未指
 az vmss create --help
 ```
 
-若要通过编写 Azure 资源管理器模板来创建大型规模集，请确保该模板基于 Azure 托管磁盘创建规模集。 您可以在_Microsoft.Compute/VirtualMachineScaleSet_资源_的属性_部分将_单个放置组_属性设置为_false。_ 以下 JSON 片段显示了规模集模板的开头，包括 1,000 VM 容量和 _"singlePlacementGroup" : false_ 设置：
+若要通过编写 Azure 资源管理器模板来创建大型规模集，请确保该模板基于 Azure 托管磁盘创建规模集。 可以在_virtualMachineScaleSets_资源的_properties_节中将_singlePlacementGroup_属性设置为_false_ 。 以下 JSON 片段显示了规模集模板的开头，包括 1,000 VM 容量和 _"singlePlacementGroup" : false_ 设置：
 
 ```json
 {

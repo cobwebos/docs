@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 创建&配置日志分析
+title: 创建 & 通过 PowerShell 配置 Log Analytics
 description: Azure Monitor 中的 Log Analytics 工作区存储来自本地或云基础结构中的服务器的数据。 当由 Azure 诊断生成时，可从 Azure 存储收集计算机数据。
 ms.subservice: logs
 ms.topic: conceptual
@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/19/2019
 ms.openlocfilehash: 2584cedceab1386cbab9c72bb4b510eebe2122bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80054694"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>使用 PowerShell 管理 Azure Monitor 中的 Log Analytics 工作区
@@ -36,7 +36,7 @@ ms.locfileid: "80054694"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 这些示例适用于 Az.OperationalInsights 模块 1.0.0 或更高版本。
 
 
@@ -178,7 +178,7 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 ```
 
 > [!NOTE]
-> **自定义 LogRawJson**参数定义自定义日志配置的格式可能很复杂。 使用[Get-Az操作见解数据源](https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0)检索现有自定义日志的配置。 **属性**是**自定义日志 RawJson**参数所需的配置。
+> 用于定义自定义日志配置的**CustomLogRawJson**参数的格式可能很复杂。 使用[AzOperationalInsightsDataSource](https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0)检索现有自定义日志的配置。 **Properties**属性是**CustomLogRawJson**参数所需的配置。
 
 在上面的示例中，regexDelimiter 定义为“\\n”表示换行符。 日志分隔符也可能是时间戳。  以下是支持的格式：
 

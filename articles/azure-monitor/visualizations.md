@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
 ms.openlocfilehash: 877616f6fd31bdfbe193bd8f03efb3f79317ad42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79535363"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>可视化 Azure Monitor 中的数据
@@ -111,7 +111,7 @@ ms.locfileid: "79535363"
 ## <a name="azure-monitor-views"></a>Azure Monitor 视图
 
 > [!IMPORTANT]
-> 视图正在被弃用。 有关将视图转换为工作簿的指导，请参阅[Azure 监视器视图设计器到工作簿过渡指南](platform/view-designer-conversion-overview.md)。
+> 视图正在被弃用。 有关将视图转换为工作簿的指南，请参阅[Azure Monitor 查看设计器到工作簿转换指南](platform/view-designer-conversion-overview.md)"。
 
 借助 [Azure Monitor 中的视图](platform/view-designer.md)，可以使用日志数据创建自定义可视化效果。 它们由[监视解决方案](insights/solutions.md)用于呈现所收集的数据。
 

@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 门户、Azure 电源外壳、Azure CLI 或 REST API 在 Azure RBAC 中列出角色定义 |微软文档
-description: 了解如何使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 在 Azure RBAC 中列出内置和自定义角色。
+title: 使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 列出 Azure RBAC 中的角色定义 | Microsoft Docs
+description: 了解如何使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 列出 Azure RBAC 中的内置角色和自定义角色。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,10 +15,10 @@ ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: aa888eedc81ceb3188f801e273c70722207bf512
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80062984"
 ---
 # <a name="list-role-definitions-in-azure-rbac"></a>列出 Azure RBAC 中的角色定义
@@ -33,13 +33,13 @@ ms.locfileid: "80062984"
 
 按照以下步骤在 Azure 门户中列出所有角色。
 
-1. 在 Azure 门户中单击“所有服务”，然后选择任意范围****。 例如，可以选择“管理组”、“订阅”、“资源组”或某个资源************。
+1. 在 Azure 门户中单击“所有服务”，然后选择任意范围  。 例如，可以选择“管理组”、“订阅”、“资源组”或某个资源    。
 
 1. 单击特定的资源。
 
-1. 单击**访问控制 （IAM）。**
+1. 单击“访问控制(IAM)”  。
 
-1. 单击“角色”选项卡以查看包含所有内置角色和自定义角色的列表****。
+1. 单击“角色”选项卡以查看包含所有内置角色和自定义角色的列表  。
 
    可以看到在当前范围分配到每个角色的用户和组的数目。
 
@@ -229,7 +229,7 @@ az role definition list --custom-role-only false --output json | jq '.[] | {"rol
 az role definition list --name <role_name>
 ```
 
-下面的示例列出了“参与者”** 角色定义：
+下面的示例列出了“参与者”  角色定义：
 
 ```azurecli
 az role definition list --name "Contributor"
@@ -269,7 +269,7 @@ az role definition list --name "Contributor"
 
 ### <a name="list-permissions-of-a-role-definition"></a>列出角色定义的特权
 
-以下示例仅列出“参与者”角色的“actions”和“notActions”******。
+以下示例仅列出“参与者”角色的“actions”和“notActions”    。
 
 ```azurecli
 az role definition list --name "Contributor" --output json | jq '.[] | {"actions":.permissions[0].actions, "notActions":.permissions[0].notActions}'
@@ -288,7 +288,7 @@ az role definition list --name "Contributor" --output json | jq '.[] | {"actions
 }
 ```
 
-以下示例仅列出了“虚拟机参与者”角色的“actions”**。
+以下示例仅列出了“虚拟机参与者”角色的“actions”  。
 
 ```azurecli
 az role definition list --name "Virtual Machine Contributor" --output json | jq '.[] | .permissions[0].actions'
@@ -316,7 +316,7 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
 
 ### <a name="list-role-definitions"></a>列出角色定义
 
-要列出角色定义，请使用[角色定义 - 列出](/rest/api/authorization/roledefinitions/list)REST API。 若要优化结果，请指定一个范围和可选的筛选器。
+若要列出角色定义，请使用[角色定义 - 列出](/rest/api/authorization/roledefinitions/list) REST API。 若要优化结果，请指定一个范围和可选的筛选器。
 
 1. 从下面的请求开始：
 
@@ -324,7 +324,7 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?$filter={$filter}&api-version=2015-07-01
     ```
 
-1. 在 URI 中，将 *[作用域]* 替换为要列出角色定义的范围。
+1. 在 URI 中，将“{scope}”  替换为要列出角色定义的范围。
 
     > [!div class="mx-tableFixed"]
     > | 范围 | 类型 |
@@ -336,17 +336,17 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
 
     在前面的示例中，microsoft.web 是引用应用服务实例的资源提供程序。 同样，可以使用任何其他资源提供程序并指定范围。 有关详细信息，请参阅 [Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md)和支持的 [Azure 资源管理器资源提供程序操作](resource-provider-operations.md)。  
      
-1. 将 *[筛选器]* 替换为要应用于筛选角色定义列表的条件。
+1. 将 *{filter}* 替换为筛选角色定义列表时要应用的条件。
 
     > [!div class="mx-tableFixed"]
-    > | “筛选器” | 描述 |
+    > | “筛选器” | 说明 |
     > | --- | --- |
-    > | `$filter=atScopeAndBelow()` | 列出指定作用域和任何子作用域的角色定义。 |
-    > | `$filter=type+eq+'{type}'` | 列出指定类型的角色定义。 角色类型可以是`CustomRole`或`BuiltInRole`。 |
+    > | `$filter=atScopeAndBelow()` | 列出指定范围和任何子范围的角色定义。 |
+    > | `$filter=type+eq+'{type}'` | 列出指定类型的角色定义。 角色的类型可以是 `CustomRole` 或 `BuiltInRole`。 |
 
 ### <a name="list-a-role-definition"></a>列出角色定义
 
-要列出特定角色的详细信息，请使用[角色定义 - 获取](/rest/api/authorization/roledefinitions/get)或[角色定义 - 获取 ID](/rest/api/authorization/roledefinitions/getbyid) REST API。
+若要列出特定角色的详细信息，请使用[角色定义 - 获取](/rest/api/authorization/roledefinitions/get)或[角色定义 - 按 ID 获取](/rest/api/authorization/roledefinitions/getbyid) REST API。
 
 1. 从下面的请求开始：
 
@@ -354,13 +354,13 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
     ```
 
-    对于目录级角色定义，可以使用此请求：
+    对于目录级别的角色定义，可以使用以下请求：
 
     ```http
     GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
     ```
 
-1. 在 URI 中，将 *[作用域]* 替换为要列出角色定义的范围。
+1. 在 URI 中，将“{scope}”  替换为要列出角色定义的范围。
 
     > [!div class="mx-tableFixed"]
     > | 范围 | 类型 |
@@ -370,7 +370,7 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 资源组 |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | 资源 |
      
-1. 将“{roleDefinitionId}”** 替换为角色定义标识符。
+1. 将“{roleDefinitionId}”  替换为角色定义标识符。
 
 ## <a name="next-steps"></a>后续步骤
 

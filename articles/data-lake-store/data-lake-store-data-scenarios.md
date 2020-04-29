@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: a8f9b66bf9a301888f2371fb1c58a4845c2232b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79536150"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>使用 Azure Data Lake Storage Gen1 满足大数据要求
@@ -38,13 +38,13 @@ ms.locfileid: "79536150"
 ### <a name="ad-hoc-data"></a>临时数据
 这表示可用于形成大数据应用程序原型的较小数据集。 存在数种不同的引入临时数据的方式，具体取决于数据源。
 
-| 数据源 | 引入方式 |
+| “数据源” | 引入方式 |
 | --- | --- |
-| 本地计算机 |<ul> <li>[Azure 门户](data-lake-store-get-started-portal.md)</li> <li>[Azure 电源外壳](data-lake-store-get-started-powershell.md)</li> <li>[Azure CLI](data-lake-store-get-started-cli-2.0.md)</li> <li>[使用适用于 Visual Studio 的 Data Lake 工具](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
+| 本地计算机 |<ul> <li>[Azure 门户](data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure CLI](data-lake-store-get-started-cli-2.0.md)</li> <li>[使用适用于 Visual Studio 的 Data Lake 工具](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
 | Azure 存储 Blob |<ul> <li>[Azure 数据工厂](../data-factory/connector-azure-data-lake-store.md)</li> <li>[AdlCopy 工具](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[HDInsight 群集上运行的 DistCp](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
 
 ### <a name="streamed-data"></a>流数据
-这表示可通过各种来源（如应用程序、设备、传感器等）生成的数据。此数据可以通过各种工具引入到数据存储存储 Gen1 中。 这些工具通常实时逐事件捕获和处理数据，并随后批量将事件写入 Data Lake Storage Gen1，以便这些事件可以得到进一步处理。
+这表示可由各种源（如应用程序、设备、传感器等）生成的数据。此数据可通过各种工具引入到 Data Lake Storage Gen1 中。 这些工具通常实时逐事件捕获和处理数据，并随后批量将事件写入 Data Lake Storage Gen1，以便这些事件可以得到进一步处理。
 
 可用工具如下：
 
@@ -62,7 +62,7 @@ ms.locfileid: "79536150"
 由于分析 Web 服务器日志数据是大数据应用程序的常见用途，且需要上载大量日志文件到 Data Lake Storage Gen1，将明确调用此类数据集。 可使用以下任何工具编写自己的脚本或应用程序来上传此类数据。
 
 * [Azure CLI](data-lake-store-get-started-cli-2.0.md)
-* [Azure 电源外壳](data-lake-store-get-started-powershell.md)
+* [Azure PowerShell](data-lake-store-get-started-powershell.md)
 * [Azure Data Lake Storage Gen1 .NET SDK](data-lake-store-get-started-net-sdk.md)
 * [Azure 数据工厂](../data-factory/copy-activity-overview.md)
 
@@ -88,7 +88,7 @@ ms.locfileid: "79536150"
 对于上传兆兆字节范围内的数据集，使用上述方法可能有时速度慢且成本高。 这种情况下，可使用以下选项。
 
 * **使用 Azure ExpressRoute**。 Azure ExpressRoute 可允许在 Azure 数据中心与本地中的基础结构之间创建专有连接。 这对传输大量数据提供了可靠的选项。 有关详细信息，请参阅[ Azure ExpressRoute 文档](../expressroute/expressroute-introduction.md)。
-* **"离线"上传数据**。 如果由于任何原因而导致使用 Azure ExpressRoute 不可行，可使用 [Azure 导入/导出服务](../storage/common/storage-import-export-service.md)将包含数据的硬盘驱动器发送到 Azure 数据中心。 数据会首先上传到 Azure 存储 Blob。 然后可使用 [Azure 数据工厂](../data-factory/connector-azure-data-lake-store.md)或 [AdlCopy 工具](data-lake-store-copy-data-azure-storage-blob.md)将数据从 Azure 存储 Blob 复制到 Data Lake Storage Gen1。
+* **"脱机" 上传数据**。 如果由于任何原因而导致使用 Azure ExpressRoute 不可行，可使用 [Azure 导入/导出服务](../storage/common/storage-import-export-service.md)将包含数据的硬盘驱动器发送到 Azure 数据中心。 数据会首先上传到 Azure 存储 Blob。 然后可使用 [Azure 数据工厂](../data-factory/connector-azure-data-lake-store.md)或 [AdlCopy 工具](data-lake-store-copy-data-azure-storage-blob.md)将数据从 Azure 存储 Blob 复制到 Data Lake Storage Gen1。
 
   > [!NOTE]
   > 使用此导入/导出服务时，发送到 Azure 数据中心的磁盘上的文件大小不可大于 195 GB。
@@ -111,7 +111,7 @@ ms.locfileid: "79536150"
 * 将数据移动到其他存储库以便连接现有数据处理管道。 例如，用户可能希望从 Data Lake Storage Gen1 将数据移动到 Azure SQL 数据库或本地 SQL 服务器。
 * 构建应用程序原型时，下载数据到本地计算机以在 IDE 中进行处理。
 
-![数据湖存储第 1 代的出入口数据](./media/data-lake-store-data-scenarios/egress-data.png "数据湖存储第 1 代的出入口数据")
+![Data Lake Storage Gen1 传出数据](./media/data-lake-store-data-scenarios/egress-data.png "Data Lake Storage Gen1 传出数据")
 
 这种情况下，可使用以下任何选项：
 
@@ -122,7 +122,7 @@ ms.locfileid: "79536150"
 也可使用以下方法自己编写脚本/应用程序来从 Data Lake Storage Gen1 下载数据。
 
 * [Azure CLI](data-lake-store-get-started-cli-2.0.md)
-* [Azure 电源外壳](data-lake-store-get-started-powershell.md)
+* [Azure PowerShell](data-lake-store-get-started-powershell.md)
 * [Azure Data Lake Storage Gen1 .NET SDK](data-lake-store-get-started-net-sdk.md)
 
 ## <a name="visualize-data-in-data-lake-storage-gen1"></a>可视化 Data Lake Storage Gen1 中的数据

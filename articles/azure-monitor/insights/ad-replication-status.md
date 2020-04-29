@@ -1,5 +1,5 @@
 ---
-title: 监视活动目录复制状态
+title: 监视 Active Directory 复制状态
 description: Active Directory 复制状态解决方案包定期监视 Active Directory 环境中是否有任何复制失败。
 ms.subservice: logs
 ms.topic: conceptual
@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
 ms.openlocfilehash: 30b0c7c87f6d55586b931be1445b175ce58565d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80055905"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>使用 Azure Monitor 监视 Active Directory 复制状态
@@ -44,7 +44,7 @@ AD 复制状态解决方案定期监视 Active Directory 环境中是否有任�
 3. 在该计算机上，设置以下注册表项：<br>关键值：**HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication**<br>值：**IsTarget**<br>值数据：**true**
 
    > [!NOTE]
-   > 在重新启动 Microsoft 监视代理服务 （HealthService.exe） 之前，这些更改不会生效。
+   > 在重新启动 Microsoft Monitoring Agent 服务（运行状况服务）之前，这些更改不会生效。
    > ### <a name="install-solution"></a>安装解决方案
    > 按照[安装监视解决方案](solutions.md#install-a-monitoring-solution)中描述的过程，将 **Active Directory 复制状态**解决方案添加到 Log Analytics 工作区。 无需进一步的配置。
 
@@ -123,12 +123,12 @@ AD 复制状态解决方案定期监视 Active Directory 环境中是否有任�
 答：信息每 5 天更新一次。
 
 **问：是否有方法来配置此数据的更新频率？**
-答：目前没有。
+答：暂时没有。
 
 **问：是否需要将所有域控制器添加到我的 Log Analytics 工作区中以查看复制状态？**
 答：不需要，只需要添加一个域控制器。 如果 Log Analytics 工作区中有多个域控制器，则所有域控制器的数据发送到 Azure Monitor。
 
-**问：我不想向日志分析工作区添加任何域控制器。我仍可以使用 AD 复制状态解决方案吗？**
+**问：我不想将任何域控制器添加到我的 Log Analytics 工作区。我是否仍然可以使用 AD 复制状态的解决方案？**
 
 答：是的。 可以设置注册表项的值来实现此目的。 请参阅[启用非域控制器](#enable-non-domain-controller)。
 
@@ -142,7 +142,7 @@ AD 复制状态解决方案定期监视 Active Directory 环境中是否有任�
 答：通过 LDAP 收集复制信息。
 
 **问：是否有方法来配置何时收集数据？**
-答：目前没有。
+答：暂时没有。
 
 **问：需要哪些权限才能收集数据？**
 答：针对 Active Directory 的普通用户权限就足够了。

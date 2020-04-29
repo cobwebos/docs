@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中的 Linux VM 上运行自定义脚本
+title: 在 Azure 中的 Linux Vm 上运行自定义脚本
 description: 使用自定义脚本扩展 v1 自动化 Linux VM 配置任务
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
 ms.openlocfilehash: a3eae08510e57227b91deeeb7a7a608a6652cb4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79535402"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>在 Linux 虚拟机上使用 Azure 自定义脚本扩展版本 1
@@ -69,11 +69,11 @@ ms.locfileid: "79535402"
 * 确保这些脚本在运行时不需要用户输入。
 * 脚本可以运行 90 分钟，若运行时间超过 90 分钟，将导致扩展的预配失败。
 * 请勿将 reboot 置于脚本中，这会导致正在安装的其他扩展出现问题，并且在重启后，该扩展将不会继续。 
-* 如果您有一个脚本会导致重新启动，则安装应用程序并运行脚本等。您应该使用 Cron 作业或使用 DSC 或 Chef、Puppet 扩展等工具计划重新启动。
+* 如果你的脚本将导致重新启动，则安装应用程序并运行脚本等。你应使用 Cron 作业或使用 DSC、Chef、Puppet 扩展等工具来计划重启。
 * 该扩展只会运行一个脚本一次，如果想要在每次启动时运行一个脚本，则可以使用 [cloud-init 映像](../linux/using-cloud-init.md)和 [Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) 模块。 或者，可以使用脚本创建 Systemd 服务单元。
 * 如果想要计划脚本何时运行，应使用扩展创建一个 Cron 作业。
 * 脚本运行时，Azure 门户或 CLI 中只会显示“正在转换”扩展状态。 如果希望更频繁地更新正在运行的脚本的状态，需要创建自己的解决方案。
-* 自定义脚本扩展名不支持代理服务器，但您可以使用支持脚本中的代理服务器的文件传输工具，如*Curl*。
+* 自定义脚本扩展不能以本机方式支持代理服务器，但您可以使用支持您的脚本中的代理服务器的文件传输工具（如 "*卷*"）。
 * 请注意脚本或命令可能依赖的非默认目录位置，按逻辑对其进行处理。
 
 ## <a name="extension-schema"></a>扩展架构
@@ -118,13 +118,13 @@ ms.locfileid: "79535402"
 
 ### <a name="property-values"></a>属性值
 
-| “属性” | 值/示例 | 数据类型 |
+| 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| 发布者 | Microsoft.OSTCExtensions | 字符串 |
+| publisher | Microsoft.OSTCExtensions | 字符串 |
 | type | CustomScriptForLinux | 字符串 |
 | typeHandlerVersion | 1.5 | int |
-| fileUris（例如） | https://github.com/MyProject/Archive/MyPythonScript.py | array |
+| fileUris（例如） | https://github.com/MyProject/Archive/MyPythonScript.py | 数组 |
 | commandToExecute（例如） | python MyPythonScript.py \<my-param1\> | 字符串 |
 | enableInternalDNSCheck | true | boolean |
 | storageAccountName（例如） | examplestorageacct | 字符串 |

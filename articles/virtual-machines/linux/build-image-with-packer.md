@@ -1,5 +1,5 @@
 ---
-title: 使用打包器创建 Linux Azure VM 映像
+title: 通过 Packer 创建 Linux Azure VM 映像
 description: 了解如何使用 Packer 在 Azure 中创建 Linux 虚拟机映像
 author: cynthn
 ms.service: virtual-machines-linux
@@ -8,23 +8,23 @@ ms.workload: infrastructure
 ms.date: 05/07/2019
 ms.author: cynthn
 ms.openlocfilehash: 3aec50b8c8f2033b7340bde15ea7670c1a0b6bb9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79534213"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>如何使用 Packer 在 Azure 中创建 Linux 虚拟机映像
 Azure 中的每个虚拟机 (VM) 都创建至定义 Linux 分发和 OS 版本的映像。 映像可包括预安装的应用程序和配置。 Azure 市场为最常见的分发和应用程序环境提供许多第一和第三方映像，或者也可创建满足自身需求的自定义映像。 本文详细介绍了如何使用开源工具 [Packer](https://www.packer.io/) 在 Azure 中定义和生成自定义映像。
 
 > [!NOTE]
-> Azure 现在有一个服务，Azure 映像生成器（预览），用于定义和创建您自己的自定义映像。 Azure 映像生成器是在打包器上构建的，因此您甚至可以将其现有打包器 shell 预配器脚本一起使用。 要开始使用 Azure 映像生成器，请参阅[使用 Azure 映像生成器创建 Linux VM。](image-builder.md)
+> Azure 现在有一个服务，即 Azure 映像生成器（预览版），用于定义和创建自己的自定义映像。 Azure 映像生成器建立在 Packer 的基础之上，因此你甚至可以使用现有的 Packer shell 配置程序脚本。 若要开始使用 Azure 映像生成器，请参阅[使用 Azure 映像生成器创建 LINUX VM](image-builder.md)。
 
 
 ## <a name="create-azure-resource-group"></a>创建 Azure 资源组
 在生成过程中，Packer 会在生成源 VM 时创建临时 Azure 资源。 要捕获该源 VM 用作映像，必须定义资源组。 Packer 生成过程的输出存储在此资源组中。
 
-使用 [az group create](/cli/azure/group) 创建资源组。 下面的示例在*东部*位置创建名为*myResourceGroup*的资源组：
+使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
 
 ```azurecli
 az group create -n myResourceGroup -l eastus
@@ -211,7 +211,7 @@ az vm create \
 
 创建 VM 需要几分钟时间。 创建 VM 后，请记下 Azure CLI 显示的 `publicIpAddress`。 此地址将用于通过 Web 浏览器访问 NGINX 站点。
 
-若要使 VM 能使用 Web 流量，请通过 [az vm open-port](/cli/azure/vm) 从 Internet 中打开端口 80：
+若要使 VM 能使用 Web 流量，请通过 [az vm open-port](/cli/azure/vm) 从 Internet 打开端口 80：
 
 ```azurecli
 az vm open-port \
@@ -227,4 +227,4 @@ az vm open-port \
 
 
 ## <a name="next-steps"></a>后续步骤
-您还可以使用 Azure[映像生成器](image-builder.md)使用现有的打包器预配器脚本。
+还可以将现有的 Packer 配置程序脚本用于[Azure 映像生成器](image-builder.md)。

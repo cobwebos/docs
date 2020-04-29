@@ -1,5 +1,5 @@
 ---
-title: Azure 虚拟 WAN 合作伙伴和位置 |微软文档
+title: Azure 虚拟 WAN 合作伙伴和位置 |Microsoft Docs
 description: 本文包含 Azure 虚拟 WAN 的合作伙伴和中心位置的列表。
 services: virtual-wan
 author: cherylmc
@@ -9,10 +9,10 @@ ms.date: 02/12/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
 ms.openlocfilehash: 3976f4114df6222d34f19e2bb44fd05d53057321
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80123262"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>虚拟 WAN 合作伙伴和虚拟中心位置
@@ -34,13 +34,13 @@ Azure Virtual WAN 是一种网络服务，它通过 Azure 提供经优化、自�
 * 自动下载 Azure 连接信息
 * 本地分支设备的配置 
 
-某些连接合作伙伴可以扩展自动化，包括创建 Azure 虚拟中心 VNet 和 VPN 网关。 如果您想了解有关自动化的更多信息，请参阅[虚拟 WAN 合作伙伴的自动化指南](virtual-wan-configure-automation-providers.md)。
+某些连接合作伙伴可以扩展自动化，包括创建 Azure 虚拟中心 VNet 和 VPN 网关。 若要了解有关自动化的详细信息，请参阅[适用于虚拟 WAN 合作伙伴的自动化指南](virtual-wan-configure-automation-providers.md)。
 
 ## <a name="connectivity-through-partners"></a><a name="partners"></a>通过合作伙伴建立连接
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-我们近期的路线图将安排以下合作伙伴：128 技术、阿里斯塔、阿鲁巴 HPE、思科系统、F5 网络、开放系统、Oracle SD-WAN、夏普链接和 VMWare Velocloud。
+以下合作伙伴计划在我们的未来发展路线图：128技术、Arista、Aruba HPE、Cisco 系统、F5 网络、开放系统、Oracle SD-WAN、SharpLink 和 VMWare Velocloud。
 
 ## <a name="locations"></a><a name="locations"></a>位置
 
@@ -50,4 +50,4 @@ Azure Virtual WAN 是一种网络服务，它通过 Azure 提供经优化、自�
 
 * 有关虚拟 WAN 的详细信息，请参阅[虚拟 WAN 常见问题解答](virtual-wan-faq.md)。
 
-* 有关如何自动连接到 Azure 虚拟 WAN 的详细信息，请参阅[虚拟 WAN 合作伙伴的自动化指南](virtual-wan-configure-automation-providers.md)。
+* 有关如何自动连接到 Azure 虚拟 WAN 的详细信息，请参阅[适用于虚拟 WAN 合作伙伴的自动化指南](virtual-wan-configure-automation-providers.md)。

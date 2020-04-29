@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 197b3100190711a51cfe125fe1214a59c18e1491
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79536966"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>支持的 Azure Database for MySQL 服务器版本
@@ -26,19 +26,19 @@ Azure Database for MySQL 目前支持以下版本：
 
 ## <a name="mysql-version-56"></a>MySQL 版本 5.6
 
-错误修复版本： 5.6.45
+Bug 修复版本：5.6.45
 
 要详细了解此版本中的改进和修复，请参阅 MySQL [发行说明](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-45.html)。
 
 ## <a name="mysql-version-57"></a>MySQL 版本 5.7
 
-错误修复版本： 5.7.27
+Bug 修复版本：5.7.27
 
 要详细了解此版本中的改进和修复，请参阅 MySQL [发行说明](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-27.html)。
 
 ## <a name="mysql-version-80"></a>MySQL 版本 8.0
 
-错误修复版本： 8.0.15
+Bug 修复版本：8.0.15
 
 要详细了解此版本中的改进和修复，请参阅 MySQL [发行说明](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html)。
 

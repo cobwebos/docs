@@ -1,6 +1,6 @@
 ---
 title: Azure 云服务定义架构（.cscfg 文件）| Microsoft Docs
-description: 服务配置 （.cscfg） 文件指定要为每个角色部署多少个角色实例、配置值和角色的证书指纹。
+description: 服务配置（.cscfg）文件指定为每个角色部署的角色实例数、配置值和角色的证书指纹。
 services: cloud-services
 ms.custom: ''
 ms.date: 12/07/2016
@@ -10,10 +10,10 @@ caps.latest.revision: 35
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: cb77181e00c97b7f426429793f17af3cb5e84ebe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79534739"
 ---
 # <a name="azure-cloud-services-config-schema-cscfg-file"></a>Azure 云服务配置架构（.cscfg 文件）

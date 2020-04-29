@@ -1,5 +1,5 @@
 ---
-title: 重新启动服务器 - Azure CLI - MySQL 的 Azure 数据库
+title: 重新启动服务器-Azure CLI-Azure Database for MySQL
 description: 本文介绍了如何使用 Azure CLI 重启 Azure Database for MySQL 服务器。
 author: ajlam
 ms.author: andrela
@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: c1fd688fbfd892e3d0dfc3ebb1712dd931e0ed39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80063500"
 ---
 # <a name="restart-azure-database-for-mysql-server-using-the-azure-cli"></a>使用 Azure CLI 重启 Azure Database for MySQL 服务器
@@ -20,9 +20,9 @@ ms.locfileid: "80063500"
 
 完成重启所需的时间取决于 MySQL 恢复过程。 若要减少重启时间，建议在重启之前尽量减少服务器上发生的活动量。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要完成本操作指南，需要：
-- [MySQL 服务器的 Azure 数据库](quickstart-create-server-up-azure-cli.md)
+- [Azure Database for MySQL 服务器](quickstart-create-server-up-azure-cli.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

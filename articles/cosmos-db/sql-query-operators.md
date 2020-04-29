@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: tisande
 ms.openlocfilehash: 8ef41edb687a5df39243880c897d12e83c008ec9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80063576"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Azure Cosmos DB 中的运算符
@@ -21,15 +21,15 @@ ms.locfileid: "80063576"
 
 下表显示了 SQL API 中任意两个 JSON 类型之间等式比较的结果。
 
-| **操作** | **定义** | **空** | **布尔** | **数量** | **字符串** | **对象** | 数组**** |
+| **Op** | 未定义  | **Null** | **布尔值** | **数字** | **字符串** | **Object** | 数组  |
 |---|---|---|---|---|---|---|---|
-| **定义** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined |
-| **空** | Undefined | **还行** | Undefined | Undefined | Undefined | Undefined | Undefined |
-| **布尔** | Undefined | Undefined | **还行** | Undefined | Undefined | Undefined | Undefined |
-| **数量** | Undefined | Undefined | Undefined | **还行** | Undefined | Undefined | Undefined |
-| **字符串** | Undefined | Undefined | Undefined | Undefined | **还行** | Undefined | Undefined |
-| **对象** | Undefined | Undefined | Undefined | Undefined | Undefined | **还行** | Undefined |
-| 数组**** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **还行** |
+| 未定义  | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined |
+| **Null** | Undefined | **正常** | Undefined | Undefined | Undefined | Undefined | Undefined |
+| **布尔值** | Undefined | Undefined | **正常** | Undefined | Undefined | Undefined | Undefined |
+| **数字** | Undefined | Undefined | Undefined | **正常** | Undefined | Undefined | Undefined |
+| **字符串** | Undefined | Undefined | Undefined | Undefined | **正常** | Undefined | Undefined |
+| **Object** | Undefined | Undefined | Undefined | Undefined | Undefined | **正常** | Undefined |
+| 数组  | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **正常** |
 
 对于 `>`、`>=`、`!=`、`<` 和 `<=` 等比较运算符，跨类型的比较或者两个对象或数组之间的比较会生成 `Undefined`。  
 
@@ -41,42 +41,42 @@ ms.locfileid: "80063576"
 
 **OR 运算符**
 
-当`true`任一条件为`true`时返回 。
+当`true`任何一个条件为`true`时返回。
 
-|  | **True** | **False** | **定义** |
+|  | **True** | **False** | **Undefined** |
 | --- | --- | --- | --- |
 | **True** |True |True |True |
 | **False** |True |False |Undefined |
-| **定义** |True |Undefined |Undefined |
+| **Undefined** |True |Undefined |Undefined |
 
-**和运算符**
+**AND 运算符**
 
-当`true`两个表达式都是`true`时返回。
+当`true`两个表达式都`true`为时返回。
 
-|  | **True** | **False** | **定义** |
+|  | **True** | **False** | **Undefined** |
 | --- | --- | --- | --- |
 | **True** |True |False |Undefined |
 | **False** |False |False |False |
-| **定义** |Undefined |False |Undefined |
+| **Undefined** |Undefined |False |Undefined |
 
-**不接线员**
+**NOT 运算符**
 
 反转任何布尔表达式的值。
 
-|  | **不** |
+|  | **NOT** |
 | --- | --- |
 | **True** |False |
 | **False** |True |
-| **定义** |Undefined |
+| **Undefined** |Undefined |
 
 **运算符优先级**
 
-逻辑运算符`OR`、`AND`和`NOT`具有以下优先级显示：
+逻辑运算符`OR`、 `AND`和`NOT`的优先级如下：
 
-| **运算符** | **优先** |
+| **操作员** | **Priority** |
 | --- | --- |
-| **不** |1 |
-| **和** |2 |
+| **NOT** |1 |
+| **与** |2 |
 | **或** |3 |
 
 ## <a name="-operator"></a>* 运算符
@@ -114,4 +114,4 @@ ms.locfileid: "80063576"
 
 - [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [关键字](sql-query-keywords.md)
-- [选择子句](sql-query-select.md)
+- [SELECT 子句](sql-query-select.md)

@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.openlocfilehash: 3b95863c1ae53bd0642aec356f55aba1faf8ef09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79535776"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure 流分析解决方案模式
@@ -172,7 +172,7 @@ ETL 引擎通常需要数据扩充。 Azure 流分析支持使用 SQL 数据库�
 |方案  |仅从现在重启  |从上次停止时间重启 |从现在重启，并使用存档的事件回填|
 |---------|---------|---------|---------|
 |**仪表板**   |产生间隙    |容许短时间的中断    |在长时间中断时使用 |
-|**提醒**   |可接受 |容许短时间的中断    |不必要 |
+|**警报**   |可接受 |容许短时间的中断    |不必要 |
 |**事件寻源应用** |可接受 |容许短时间的中断    |在长时间中断时使用 |
 |**数据仓库**   |数据丢失  |可接受 |不必要 |
 |**脱机分析**  |数据丢失  |可接受 |不必要|

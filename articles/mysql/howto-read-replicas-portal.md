@@ -1,5 +1,5 @@
 ---
-title: 管理读取副本 - Azure 门户 - MySQL 的 Azure 数据库
+title: 管理读取副本-Azure 门户-Azure Database for MySQL
 description: 了解如何使用 Azure 门户在 Azure Database for MySQL 中设置和管理只读副本。
 author: ajlam
 ms.author: andrela
@@ -7,17 +7,17 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: b7226e5ae8c468339e02dbe87e279266e4609da8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80063480"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MySQL 中创建和管理只读副本
 
 本文介绍如何使用 Azure 门户在 Azure Database for MySQL 服务中创建和管理只读副本。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 将用作主服务器的 [Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)。
 
@@ -28,13 +28,13 @@ ms.locfileid: "80063480"
 
 可以使用以下步骤创建只读副本服务器：
 
-1. 登录到[Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 选择要用作主服务器的现有 Azure Database for MySQL 服务器。 此操作将打开“概述”**** 页。
+2. 选择要用作主服务器的现有 Azure Database for MySQL 服务器。 此操作将打开“概述”  页。
 
-3. 从菜单中的“设置”**** 下，选择“复制”****。
+3. 从菜单中的“设置”  下，选择“复制”  。
 
-4. 选择“添加副本”****。
+4. 选择“添加副本”  。
 
    ![Azure Database for MySQL - 复制](./media/howto-read-replica-portal/add-replica.png)
 

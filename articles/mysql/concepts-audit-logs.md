@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/19/2020
 ms.openlocfilehash: b42f0d7a8146f7f2b313959273abd22303c89a60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80062542"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的审核日志
@@ -27,10 +27,10 @@ ms.locfileid: "80062542"
 可以调整的其他参数包括：
 
 - `audit_log_events`：控制要记录的事件。 请查看下表以了解具体的审核事件。
-- `audit_log_include_users`：要包括用于日志记录的 MySQL 用户。 此参数的默认值为空，这将包括所有用户进行日志记录。 此参数的优先级高于 `audit_log_exclude_users`。 此参数的最大长度为 512 个字符。
+- `audit_log_include_users`：要纳入日志记录的 MySQL 用户。 此参数的默认值为空，这将包括所有用户进行日志记录。 此参数的优先级高于 `audit_log_exclude_users`。 此参数的最大长度为 512 个字符。
 > [!Note]
 > `audit_log_include_users` 的优先级高于 `audit_log_exclude_users`。 例如，如果 `audit_log_include_users` = `demouser` 并且 `audit_log_exclude_users` = `demouser`，则会将该用户包括在审核日志中，因为 `audit_log_include_users` 的优先级更高。
-- `audit_log_exclude_users`：mySQL 用户将从日志记录中排除。 此参数的最大长度为 512 个字符。
+- `audit_log_exclude_users`：要从日志记录中排除的 MySQL 用户。 此参数的最大长度为 512 个字符。
 
 > [!Note]
 > 对于 `sql_text`，如果日志超过 2048 个字符，则会截断日志。
@@ -45,7 +45,7 @@ ms.locfileid: "80062542"
 | `DCL` | 类似“GRANT PERMISSION”的查询 |
 | `ADMIN` | 类似“SHOW STATUS”的查询 |
 | `GENERAL` | All in DML_SELECT, DML_NONSELECT, DML, DDL, DCL, and ADMIN |
-| `TABLE_ACCESS` | - 仅适用于 MySQL 5.7 <br> - 表读取语句，如选择或插入 ...选择 <br> - 表删除语句，例如 DELETE 或 TRUNCATE TABLE <br> - 表插入语句，例如 INSERT 或 REPLACE <br> - 表更新语句，例如 UPDATE |
+| `TABLE_ACCESS` | - 仅适用于 MySQL 5.7 <br> -表读取语句，如 SELECT 或 INSERT INTO .。。单击 <br> - 表删除语句，例如 DELETE 或 TRUNCATE TABLE <br> - 表插入语句，例如 INSERT 或 REPLACE <br> - 表更新语句，例如 UPDATE |
 
 ## <a name="access-audit-logs"></a>访问审核日志
 
@@ -114,7 +114,7 @@ ms.locfileid: "80062542"
 ### <a name="table-access"></a>表访问权限
 
 > [!NOTE]
-> 仅为 MySQL 5.7 输出表访问日志。
+> 只有 MySQL 5.7 输出表访问日志。
 
 | **属性** | **说明** |
 |---|---|
@@ -141,9 +141,9 @@ ms.locfileid: "80062542"
 
 ## <a name="analyze-logs-in-azure-monitor-logs"></a>分析 Azure Monitor 日志中的日志
 
-审核日志通过诊断日志传送到 Azure 监视器日志后，可以对审核的事件执行进一步分析。 下面是一些可帮助你入门的示例查询。 请确保使用你的服务器名称更新下面的内容。
+通过诊断日志将审核日志输送到 Azure Monitor 日志后，可以进一步分析已审核的事件。 下面是一些可帮助你入门的示例查询。 请确保使用你的服务器名称更新下面的内容。
 
-- 列出特定服务器上的 GENERAL 事件
+- 列出特定服务器上的常规事件
 
     ```kusto
     AzureDiagnostics
@@ -173,7 +173,7 @@ ms.locfileid: "80062542"
     | summarize count() by event_class_s, event_subclass_s, user_s, ip_s
     ```
 
-- 绘制特定服务器上的审核事件类型分布图
+- 在特定服务器上关系图审核事件类型分布
 
     ```kusto
     AzureDiagnostics
@@ -184,7 +184,7 @@ ms.locfileid: "80062542"
     | render timechart 
     ```
 
-- 列出所有 MySQL 服务器的审核事件，并启用诊断日志以进行审核日志
+- 列出为审核日志启用了诊断日志的所有 MySQL 服务器上的已审核事件
 
     ```kusto
     AzureDiagnostics

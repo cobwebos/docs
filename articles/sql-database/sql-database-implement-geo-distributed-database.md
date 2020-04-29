@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 58d5bd4a7f3087e11056354f7534c3c9dbebca3c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80067288"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database"></a>教程：实现地理分散的数据库
@@ -27,9 +27,9 @@ ms.locfileid: "80067288"
 > - 运行 Java 应用程序以查询 Azure SQL 数据库
 > - 测试故障转移
 
-如果没有 Azure 订阅，请先[创建一个免费帐户](https://azure.microsoft.com/free/)。"
+如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -38,27 +38,27 @@ ms.locfileid: "80067288"
 
 若要完成本教程，请确保已安装以下各项：
 
-- [Azure 电源外壳](/powershell/azureps-cmdlets-docs)
+- [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 - Azure SQL 数据库中的单一数据库。 若要创建一个，请使用以下各项：
   - [门户](sql-database-single-database-get-started.md)
-  - [Cli](sql-database-cli-samples.md)
-  - [电源外壳](sql-database-powershell-samples.md)
+  - [CLI](sql-database-cli-samples.md)
+  - [PowerShell](sql-database-powershell-samples.md)
 
   > [!NOTE]
-  > 本教程使用 AdventureWorksLT 示例数据库**。
+  > 本教程使用 AdventureWorksLT 示例数据库  。
 
-- Java 和 Maven，请参阅[使用 SQL Server 生成应用](https://www.microsoft.com/sql-server/developer-get-started/)，突出显示“Java”并选择环境，然后按步骤操作****。
+- Java 和 Maven，请参阅[使用 SQL Server 生成应用](https://www.microsoft.com/sql-server/developer-get-started/)，突出显示“Java”并选择环境，然后按步骤操作  。
 
 > [!IMPORTANT]
 > 请务必设置防火墙规则，以使用本教程中执行步骤的计算机的公共 IP 地址。 数据库级防火墙规则会自动复制到辅助服务器。
 >
-> 有关详细信息，请参阅[创建数据库级防火墙规则](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)或确定用于计算机服务器级防火墙规则的 IP 地址，请参阅[创建服务器级防火墙](sql-database-server-level-firewall-rule.md)。  
+> 有关详细信息，请参阅[创建数据库级防火墙规则](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)，或参阅[创建服务器级防火墙](sql-database-server-level-firewall-rule.md)，确定用于计算机的服务器级防火墙规则的 IP 地址。  
 
 ## <a name="create-a-failover-group"></a>创建故障转移组
 
 使用 Azure PowerShell，在现有 Azure SQL 服务器和另一个区域中的新 Azure SQL 服务器之间创建[故障转移组](sql-database-auto-failover-group.md)。 然后将示例数据库添加到故障转移组。
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
 > [!INCLUDE [sample-powershell-install](../../includes/sample-powershell-install-no-ssh.md)]
@@ -118,7 +118,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
 
 * * *
 
-还可以在 Azure 门户中更改异地复制设置，通过选择数据库，然后**选择"设置** > **异地复制**"。
+还可以通过选择数据库，然后选择“设置” **“异地复制”，在 Azure 门户中更改异地复制设置** >   。
 
 ![异地复制设置](./media/sql-database-implement-geo-distributed-database/geo-replication.png)
 
@@ -130,7 +130,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
    mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=SqlDbSample" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
    ```
 
-1. 键入“Y”，然后按 ENTER********。
+1. 键入“Y”，然后按 ENTER   。
 
 1. 将目录切换到新项目。
 
@@ -138,7 +138,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
    cd SqlDbSample
    ```
 
-1. 使用您最喜爱的编辑器，打开项目文件夹中的*pom.xml*文件。
+1. 使用喜爱的编辑器，打开项目文件夹中的 pom.xml 文件夹  。
 
 1. 通过添加以下 `dependency` 部分添加 Microsoft JDBC Driver for SQL Server。 依赖项必须粘贴在更大的 `dependencies` 部分中。
 
@@ -150,7 +150,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
    </dependency>
    ```
 
-1. 通过在 `dependencies` 部分后添加 `properties` 部分来指定 Java 版本：
+1. 通过在 `properties` 部分后添加 `dependencies` 部分来指定 Java 版本：
 
    ```xml
    <properties>
@@ -159,7 +159,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
    </properties>
    ```
 
-1. 通过在 `properties` 部分后添加 `build` 部分来支持清单文件：
+1. 通过在 `build` 部分后添加 `properties` 部分来支持清单文件：
 
    ```xml
    <build>
@@ -180,9 +180,9 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
    </build>
    ```
 
-1. 保存并关闭*pom.xml*文件。
+1. 保存并关闭 pom.xml 文件  。
 
-1. 打开 App.java 文件（位于 ..\SqlDbSample\src\main\java\com\sqldbsamples）并将内容替换为以下代码**：
+1. 打开 App.java 文件（位于 ..\SqlDbSample\src\main\java\com\sqldbsamples）并将内容替换为以下代码  ：
 
    ```java
    package com.sqldbsamples;
@@ -288,7 +288,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
    }
    ```
 
-1. 保存并关闭 App.java 文件**。
+1. 保存并关闭 App.java 文件  。
 
 1. 在命令控制台中运行以下命令：
 
@@ -317,7 +317,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
 
 运行下列脚本来模拟故障转移并观察应用程序结果。 请注意数据库迁移过程中某些插入和选择的失败方法。
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 可使用以下命令，检查灾难恢复服务器在测试过程中的角色：
 

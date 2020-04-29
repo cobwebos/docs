@@ -16,17 +16,17 @@ ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 9beda6589c03f1b14fc9756af86a9ce0711894c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80063014"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-rest-api"></a>使用 Azure RBAC 和 REST API 添加或删除角色分配
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] 本文介绍如何使用 REST API 分配角色。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要添加或删除角色分配，必须拥有以下权限：
 
@@ -55,7 +55,7 @@ ms.locfileid: "80063014"
     }
     ```
 
-1. 在 URI 内，将“{scope}”** 替换为角色分配的范围。
+1. 在 URI 内，将“{scope}”  替换为角色分配的范围。
 
     > [!div class="mx-tableFixed"]
     > | 范围 | 类型 |
@@ -67,7 +67,7 @@ ms.locfileid: "80063014"
 
     在前面的示例中，microsoft.web 是引用应用服务实例的资源提供程序。 同样，可以使用任何其他资源提供程序并指定范围。 有关详细信息，请参阅 [Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md)和支持的 [Azure 资源管理器资源提供程序操作](resource-provider-operations.md)。  
 
-1. 将“{roleAssignmentName}”** 替换为角色分配的 GUID 标识符。
+1. 将“{roleAssignmentName}”  替换为角色分配的 GUID 标识符。
 
 1. 在请求正文中，将 *{scope}* 替换为角色分配的范围。
 
@@ -79,9 +79,9 @@ ms.locfileid: "80063014"
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 资源组 |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/microsoft.web/sites/mysite1` | 资源 |
 
-1. 将“{roleDefinitionId}”** 替换为角色定义标识符。
+1. 将“{roleDefinitionId}”  替换为角色定义标识符。
 
-1. 将“{principalId}”** 替换为将分配有角色的用户、组或服务主体的对象标识符。
+1. 将“{principalId}”  替换为将分配有角色的用户、组或服务主体的对象标识符。
 
 ## <a name="remove-a-role-assignment"></a>删除角色分配
 
@@ -95,7 +95,7 @@ ms.locfileid: "80063014"
     DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}?api-version=2015-07-01
     ```
 
-1. 在 URI 内，将“{scope}”** 替换为删除角色分配的范围。
+1. 在 URI 内，将“{scope}”  替换为删除角色分配的范围。
 
     > [!div class="mx-tableFixed"]
     > | 范围 | 类型 |
@@ -105,7 +105,7 @@ ms.locfileid: "80063014"
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 资源组 |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/microsoft.web/sites/mysite1` | 资源 |
 
-1. 将“{roleAssignmentName}”** 替换为角色分配的 GUID 标识符。
+1. 将“{roleAssignmentName}”  替换为角色分配的 GUID 标识符。
 
 ## <a name="next-steps"></a>后续步骤
 

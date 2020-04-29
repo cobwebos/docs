@@ -7,42 +7,42 @@ ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 6ef0675e3ae3f7a5da38138177f3033051723411
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79537102"
 ---
-# <a name="set-up-azure-monitor-for-your-python-application"></a>为 Python 应用程序设置 Azure 监视器
+# <a name="set-up-azure-monitor-for-your-python-application"></a>设置 Python 应用程序的 Azure Monitor
 
 Azure Monitor 通过与 [OpenCensus](https://opencensus.io) 集成，来支持 Python 应用程序的分布式跟踪、指标收集和日志记录。 本文将逐步介绍设置 OpenCensus for Python 并将监视数据发送到 Azure Monitor 的过程。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 - Python 安装。 本文使用 [Python 3.7.0](https://www.python.org/downloads/)，不过更低的版本在经过轻微的更改后也可能适用。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 Azure[门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="create-an-application-insights-resource-in-azure-monitor"></a>在 Azure Monitor 中创建 Application Insights 资源
 
 首先需在 Azure Monitor 中创建一个 Application Insights 资源，该资源将生成检测密钥 (ikey)。 然后使用 ikey 配置 OpenCensus SDK，以将遥测数据发送到 Azure Monitor。
 
-1. 选择 **"创建资源** > **开发人员工具** > **应用程序见解**"。
+1. 选择“创建资源”   >   “开发人员工具” >   “Application Insights”。
 
    ![添加 Application Insights 资源](./media/opencensus-python/0001-create-resource.png)
 
 1. 此时会显示一个配置框。 参考下表填写输入字段。
 
-   | 设置        | “值”           | 描述  |
+   | 设置        | 值           | 说明  |
    | ------------- |:-------------|:-----|
    | **名称**      | 全局唯一值 | 标识所监视的应用的名称 |
    | **资源组**     | myResourceGroup      | 用于托管 Application Insights 数据的新资源组的名称 |
    | **位置** | 美国东部 | 离你较近的位置或离托管应用的位置较近的位置 |
 
-1. 选择 **“创建”**。
+1. 选择“创建”  。
 
 ## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>使用 OpenCensus Python SDK for Azure Monitor 进行检测
 
@@ -68,7 +68,7 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测数据发送�
 ### <a name="trace"></a>跟踪
 
 > [!NOTE]
-> `Trace`在 OpenCensus 中是指[分布式跟踪](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)。 向`AzureExporter` `requests` Azure`dependency`监视器发送和遥测。
+> `Trace`在 OpenCensus 中，是指[分布式跟踪](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)。 要`AzureExporter` Azure Monitor `requests`的`dependency`发送和遥测。
 
 1. 首先，让我们在本地生成一些跟踪数据。 在 Python IDLE 或所选编辑器中，输入以下代码。
 
@@ -105,7 +105,7 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测数据发送�
     [SpanData(name='test', context=SpanContext(trace_id=8aa41bc469f1a705aed1bdb20c342603, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='f3f9f9ee6db4740a', parent_span_id=None, attributes=BoundedDict({}, maxlen=32), start_time='2019-06-27T18:21:46.157732Z', end_time='2019-06-27T18:21:47.269583Z', child_span_count=0, stack_trace=None, annotations=BoundedList([], maxlen=32), message_events=BoundedList([], maxlen=128), links=BoundedList([], maxlen=32), status=None, same_process_as_parent_span=None, span_kind=0)]
     ```
 
-3. 虽然输入值有助于演示，但最终我们希望将 `SpanData` 发出到 Azure Monitor。 将连接字符串直接传递到导出器，也可以在环境变量`APPLICATIONINSIGHTS_CONNECTION_STRING`中指定它。 根据以下代码示例修改上一步中的代码：
+3. 虽然输入值有助于演示，但最终我们希望将 `SpanData` 发出到 Azure Monitor。 将连接字符串直接传递到导出程序，也可以在环境变量`APPLICATIONINSIGHTS_CONNECTION_STRING`中指定连接字符串。 根据以下代码示例修改上一步中的代码：
 
     ```python
     from opencensus.ext.azure.trace_exporter import AzureExporter
@@ -141,11 +141,11 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测数据发送�
 
 #### <a name="trace-correlation"></a>跟踪关联
 
-有关跟踪数据中的遥测相关性的详细信息，请查看 OpenCensus Python[遥测相关性](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)。
+有关跟踪数据中遥测关联的详细信息，请参阅 OpenCensus Python[遥测关联](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)。
 
 #### <a name="modify-telemetry"></a>修改遥测
 
-有关如何在将跟踪遥测发送到 Azure 监视器之前对其进行修改的详细信息，请参阅 OpenCensus Python[遥测处理器](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)。
+有关如何在将跟踪的遥测发送到 Azure Monitor 之前修改它们的详细信息，请参阅 OpenCensus Python[遥测处理器](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)。
 
 ### <a name="metrics"></a>指标
 
@@ -200,7 +200,7 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测数据发送�
     Point(value=ValueLong(7), timestamp=2019-10-09 20:58:07.138614)
     ```
 
-3. 虽然输入值有助于演示，但最终我们希望将指标数据发出到 Azure Monitor。 将连接字符串直接传递到导出器，也可以在环境变量`APPLICATIONINSIGHTS_CONNECTION_STRING`中指定它。 根据以下代码示例修改上一步中的代码：
+3. 虽然输入值有助于演示，但最终我们希望将指标数据发出到 Azure Monitor。 将连接字符串直接传递到导出程序，也可以在环境变量`APPLICATIONINSIGHTS_CONNECTION_STRING`中指定连接字符串。 根据以下代码示例修改上一步中的代码：
 
     ```python
     from datetime import datetime
@@ -252,7 +252,7 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测数据发送�
 
 #### <a name="standard-metrics"></a>标准指标
 
-默认情况下，指标导出器将向 Azure 监视器发送一组标准指标。 您可以通过在`enable_standard_metrics`指标导出器的构造函数中`False`设置标志来禁用此功能。
+默认情况下，度量值导出程序会将一组标准指标发送到 Azure Monitor。 可以通过在指标导出程序的`enable_standard_metrics`构造函数`False`中将标志设置为来禁用此设置。
 
     ```python
     ...
@@ -261,21 +261,21 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测数据发送�
       connection_string='InstrumentationKey=<your-instrumentation-key-here>')
     ...
     ```
-以下是当前发送的标准指标列表：
+下面列出了当前发送的标准指标：
 
 - 可用内存（字节）
 - CPU 处理器时间（百分比）
-- 传入请求率（每秒）
+- 传入请求速率（每秒）
 - 传入请求平均执行时间（毫秒）
-- 传出请求率（每秒）
+- 传出请求速率（每秒）
 - 进程 CPU 使用率（百分比）
-- 处理专用字节（字节）
+- 处理专用字节数（字节）
 
-您应该能够在 中`performanceCounters`看到这些指标。 传入请求率将低于`customMetrics`。 有关详细信息，请参阅[性能计数器](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters)。
+你应该能够在中`performanceCounters`看到这些指标。 传入请求速率将在下`customMetrics`。 有关详细信息，请参阅[性能计数器](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters)。
 
 #### <a name="modify-telemetry"></a>修改遥测
 
-有关如何在将跟踪遥测发送到 Azure 监视器之前对其进行修改的详细信息，请参阅 OpenCensus Python[遥测处理器](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)。
+有关如何在将跟踪的遥测发送到 Azure Monitor 之前修改它们的详细信息，请参阅 OpenCensus Python[遥测处理器](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)。
 
 ### <a name="logs"></a>日志
 
@@ -311,7 +311,7 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测数据发送�
     90
     ```
 
-3. 虽然输入值有助于演示，但最终我们希望将日志数据发出到 Azure Monitor。 将连接字符串直接传递到导出器，也可以在环境变量`APPLICATIONINSIGHTS_CONNECTION_STRING`中指定它。 根据以下代码示例修改上一步中的代码：
+3. 虽然输入值有助于演示，但最终我们希望将日志数据发出到 Azure Monitor。 将连接字符串直接传递到导出程序，也可以在环境变量`APPLICATIONINSIGHTS_CONNECTION_STRING`中指定连接字符串。 根据以下代码示例修改上一步中的代码：
 
     ```python
     import logging
@@ -370,9 +370,9 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测数据发送�
         main()
     ```
 
-6. 您还可以使用custom_dimensions字段将自定义属性添加到*额外*关键字参数中的日志消息。 它们会显示为 Azure Monitor 的 `customDimensions` 中的键值对。
+6. 你还可以使用 "custom_dimensions" 字段将自定义属性添加到*额外*关键字参数中的日志消息。 它们会显示为 Azure Monitor 的 `customDimensions` 中的键值对。
 > [!NOTE]
-> 要此功能正常工作，您需要将字典传递给custom_dimensions字段。 如果传递任何其他类型的参数，记录器将忽略它们。
+> 要使此功能正常工作，需要将字典传递到 custom_dimensions 字段。 如果传递任何其他类型的参数，则记录器将忽略它们。
 
     ```python
     import logging
@@ -393,7 +393,7 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测数据发送�
 
 #### <a name="sending-exceptions"></a>发送异常
 
-OpenCensus Python 不会自动跟踪和`exception`发送遥测数据。 它们`AzureLogHandler`通过使用 Python 日志记录库使用异常通过 发送。 您可以像使用普通日志记录一样添加自定义属性。
+OpenCensus Python 不会自动跟踪和发送`exception`遥测数据。 通过 Python 日志记录库`AzureLogHandler`通过使用异常来发送它们。 可以像普通日志记录一样添加自定义属性。
 
     ```python
     import logging
@@ -414,7 +414,7 @@ OpenCensus Python 不会自动跟踪和`exception`发送遥测数据。 它们`A
     except Exception:
         logger.exception('Captured an exception.', extra=properties)
     ```
-由于必须显式记录异常，因此用户应如何记录未处理的异常。 OpenCensus 不会限制用户想要执行此操作的方式，只要他们显式记录异常遥测数据。
+由于您必须明确地记录异常，因此用户要如何记录未经处理的异常。 OpenCensus 不会对用户希望执行此操作的方式施加限制，只要它们显式记录异常遥测。
 
 #### <a name="sampling"></a>采样
 
@@ -426,7 +426,7 @@ OpenCensus Python 不会自动跟踪和`exception`发送遥测数据。 它们`A
 
 #### <a name="modify-telemetry"></a>修改遥测
 
-有关如何在将跟踪遥测发送到 Azure 监视器之前对其进行修改的详细信息，请参阅 OpenCensus Python[遥测处理器](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)。
+有关如何在将跟踪的遥测发送到 Azure Monitor 之前修改它们的详细信息，请参阅 OpenCensus Python[遥测处理器](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)。
 
 ## <a name="view-your-data-with-queries"></a>使用查询查看数据
 
@@ -446,14 +446,14 @@ OpenCensus Python 不会自动跟踪和`exception`发送遥测数据。 它们`A
 
 * [GitHub 上的 OpenCensus Python](https://github.com/census-instrumentation/opencensus-python)
 * [自定义](https://github.com/census-instrumentation/opencensus-python/blob/master/README.rst#customization)
-* [GitHub 上的 Azure 监视器导出器](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
-* [开放普查集成](https://github.com/census-instrumentation/opencensus-python#extensions)
-* [Azure 监视器示例应用程序](https://github.com/Azure-Samples/azure-monitor-opencensus-python)
+* [GitHub 上的 Azure Monitor 导出程序](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
+* [OpenCensus 集成](https://github.com/census-instrumentation/opencensus-python#extensions)
+* [Azure Monitor 示例应用程序](https://github.com/Azure-Samples/azure-monitor-opencensus-python)
 
 ## <a name="next-steps"></a>后续步骤
 
 * [跟踪传入请求](./../../azure-monitor/app/opencensus-python-dependency.md)
-* [跟踪外出请求](./../../azure-monitor/app/opencensus-python-request.md)
+* [跟踪传出请求](./../../azure-monitor/app/opencensus-python-request.md)
 * [应用程序映射](./../../azure-monitor/app/app-map.md)
 * [端到端性能监视](./../../azure-monitor/learn/tutorial-performance.md)
 

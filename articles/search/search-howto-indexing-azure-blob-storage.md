@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 5df1198e6681431738f886eb7c3ad549936eab1a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80067649"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>如何使用 Azure 认知搜索为 Azure Blob 存储中的文档编制索引
@@ -32,7 +32,7 @@ Blob 索引器可从以下文档格式提取文本：
 可以使用以下方式设置 Azure Blob 存储索引器：
 
 * [Azure 门户](https://ms.portal.azure.com)
-* Azure 认知搜索[REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
+* Azure 认知搜索 [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * Azure 认知搜索 [.NET SDK](https://aka.ms/search-sdk)
 
 > [!NOTE]
@@ -71,9 +71,9 @@ Blob 索引器可从以下文档格式提取文本：
 
 可通过以下一种方式提供 blob 容器的凭据：
 
-- **完全访问存储帐户连接字符串** `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` ：您可以通过导航到存储帐户边栏选项卡>设置>密钥（对于经典存储帐户）或"设置>访问密钥（用于 Azure 资源管理器存储帐户）从 Azure 门户获取连接字符串。
-- **存储帐户共享访问签名** (SAS) 连接字符串：`BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl`SAS 应当对容器和对象（在本例中为 blob）具有列出和读取权限。
--  **容器共享访问签名** `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` ：SAS 应具有容器的列表和读取权限。
+- **完全访问存储帐户连接字符串**：`DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` 可通过导航到“存储帐户”边栏选项卡 >“设置”>“密钥”（对于经典存储帐户）或“设置”>“访问密钥”（对于 Azure 资源管理器存储帐户），从 Azure 门户获取连接字符串。
+- **存储帐户共享访问签名** (SAS) 连接字符串：`BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` SAS 应具有容器和对象（本例中为 blob）的列表和读取权限。
+-  **容器共享访问签名**：`ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` SAS 应具有容器的列表和读取权限。
 
 有关存储共享访问签名的详细信息，请参阅[使用共享访问签名](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
 
@@ -97,7 +97,7 @@ Blob 索引器可从以下文档格式提取文本：
           ]
     }
 
-有关创建索引的更多，请参阅[创建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)
+有关创建索引的详细信息，请参阅[创建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)
 
 ### <a name="step-3-create-an-indexer"></a>步骤 3：创建索引器
 索引器将数据源与目标搜索索引关联，并提供自动执行数据刷新的计划。
@@ -135,18 +135,18 @@ Blob 索引器可从以下文档格式提取文本：
 * 文档的文本内容将提取到名为 `content` 的字符串字段中。
 
 > [!NOTE]
-> Azure 认知搜索根据定价层限制其提取的文本量：免费层为 32，000 个字符，Basic 为 64，000 个字符，标准版为 400 万字符，标准 S2 为 800 万，标准 S3 为 1600 万字符。 已截断的文本会在索引器状态响应中出现一条警告。  
+> Azure 认知搜索会根据定价层限制提取的文本数量：免费层为 32,000 个字符，基本层为 64,000 个字符，标准层为 400 万个字符、标准 S2 层为 800 万个字符，标准 S3 层为 1600 万个字符。 已截断的文本会在索引器状态响应中出现一条警告。  
 
-* Blob 中用户指定的元数据属性（如果有）将逐字提取。 请注意，这需要在索引中定义与 blob 的元数据键同名的字段。 例如，`Sensitivity`如果 blob 的元数据键具有值`High`，则应定义搜索索引中命名的`Sensitivity`字段，并且它将使用 值 填充该字段。 `High`
+* Blob 中用户指定的元数据属性（如果有）将逐字提取。 请注意，这要求在索引中定义与 blob 的元数据密钥名称相同的字段。 例如，如果 blob 有值为 `High` 的元数据密钥 `Sensitivity`，则应在搜索索引中定义一个名为“`Sensitivity`”的字段，该字段将用值“`High`”填充。
 * 标准 Blob 元数据属性将提取到以下字段中：
 
   * **metadata\_storage\_name** (Edm.String) - Blob 的文件名。 例如，对于 Blob /my-container/my-folder/subfolder/resume.pdf 而言，此字段的值是 `resume.pdf`。
   * **metadata\_storage\_path** (Edm.String) - Blob 的完整 URI（包括存储帐户）。 例如： `https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf`
-  * **metadata\_storage\_content\_type** (Edm.String) - 用于上传 Blob 的代码指定的内容类型。 例如，`application/octet-stream` 。
+  * **metadata\_storage\_content\_type** (Edm.String) - 用于上传 Blob 的代码指定的内容类型。 例如，`application/octet-stream`。
   * **metadata\_storage\_last\_modified** (Edm.DateTimeOffset) - 上次修改 Blob 的时间戳。 Azure 认知搜索使用此时间戳来识别已更改的 Blob，避免在初次编制索引之后再次为所有内容编制索引。
   * **metadata\_storage\_size** (Edm.Int64) - Blob 大小，以字节为单位。
   * **metadata\_storage\_content\_md5** (Edm.String) - Blob 内容的 MD5 哈希（如果有）。
-  * **元数据\_存储\_sas\_令牌**（Edm.String） - 一个临时 SAS 令牌，可用于[自定义技能](cognitive-search-custom-skill-interface.md)访问 blob。 不应存储此令牌供以后使用，因为它可能会过期。
+  * **metadata\_storage\_sas\_token** (Edm.String) - 一个临时 SAS 令牌，可由[自定义技能](cognitive-search-custom-skill-interface.md)用来获取对 Blob 的访问权限。 不应存储此令牌供以后使用，因为它可能会过期。
 
 * 特定于每种文档格式的元数据属性将提取到[此处](#ContentSpecificMetadata)所列的字段。
 
@@ -297,22 +297,22 @@ Azure 认知搜索会限制进行了索引编制的 blob 的大小。 这些限�
 
 若要支持删除文档，请使用“软删除”方法。 如果彻底删除 Blob，相应的文档不会从搜索索引中删除。
 
-实现软删除方法的方法有两种。 下面将介绍这两个。
+可以通过两种方法实现软删除方法。 下面描述了这两种方法。
 
-### <a name="native-blob-soft-delete-preview"></a>本机 Blob 软删除（预览）
+### <a name="native-blob-soft-delete-preview"></a>本机 blob 软删除（预览版）
 
 > [!IMPORTANT]
-> 支持本机 Blob 软删除处于预览状态。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](https://docs.microsoft.com/azure/search/search-api-preview) 提供了此功能。 目前不支持门户或 .NET SDK。
+> 在预览版中支持本机 blob 软删除。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](https://docs.microsoft.com/azure/search/search-api-preview) 提供了此功能。 目前不支持门户或 .NET SDK。
 
 > [!NOTE]
-> 使用本机 Blob 软删除策略时，索引中文档的文档键必须是 blob 属性或 blob 元数据。
+> 使用本机 blob 软删除策略时，索引中的文档的文档键必须为 blob 属性或 blob 元数据。
 
-在此方法中，您将使用 Azure Blob 存储提供的[本机 Blob 软删除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)功能。 如果在存储帐户上启用本机 Blob 软删除，则数据源具有本机软删除策略集，并且索引器发现已转换为软删除状态的 Blob，则索引器将从索引中删除该文档。 从 Azure 数据存储库 Gen2 索引 Blob 时，不支持本机 Blob 软删除策略。
+在此方法中，你将使用 Azure Blob 存储提供的[本机 blob 软删除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)功能。 如果在存储帐户上启用了本机 blob 软删除功能，则数据源将设置一个本地软删除策略，并且索引器将查找已转换为软删除状态的 blob，该索引器将从索引中删除该文档。 Azure Data Lake Storage Gen2 中的索引 blob 时，不支持本机 blob 软删除策略。
 
 请使用以下步骤：
-1. [为 Azure Blob 存储启用本机软删除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)。 我们建议将保留策略设置为远高于索引器间隔计划的值。 这样，如果运行索引器出现问题，或者索引器有大量文档要索引，则索引器有足够的时间最终处理软删除的 Blob。 Azure 认知搜索索引器仅在处于软删除状态时处理 Blob 时从索引中删除文档。
-1. 在数据源上配置本机 Blob 软删除检测策略。 下面显示了一个示例。 由于此功能处于预览状态，因此必须使用预览 REST API。
-1. 运行索引器或将索引器设置为按计划运行。 当索引器运行和处理 blob 时，文档将从索引中删除。
+1. [为 Azure Blob 存储启用本机软删除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)。 建议将保留策略设置为比索引器间隔计划大得多的值。 这样，如果在运行索引器时出现问题，或者如果有大量的文档要建立索引，则索引器最终处理软删除的 blob 会有很多时间。 如果 Azure 认知搜索索引器在其处于软删除状态时处理 blob，则将仅从索引中删除该文档。
+1. 在数据源上配置本机 blob 软删除检测策略。 下面显示了一个示例。 由于此功能处于预览阶段，因此必须使用预览版 REST API。
+1. 运行索引器或将索引器设置为按计划运行。 当索引器运行并处理 blob 时，将从索引中删除该文档。
 
     ```
     PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2019-05-06-Preview
@@ -329,19 +329,19 @@ Azure 认知搜索会限制进行了索引编制的 blob 的大小。 这些限�
     }
     ```
 
-#### <a name="reindexing-undeleted-blobs"></a>重新索引未删除的 Blob
+#### <a name="reindexing-undeleted-blobs"></a>重新索引删除的 blob
 
-如果从 Azure Blob 存储中删除 Blob，并在存储帐户上启用了本机软删除，则 Blob 将转换为软删除状态，从而在保留期内取消删除该 Blob 的选项。 当 Azure 认知搜索数据源具有本机 Blob 软删除策略，索引器处理软删除 Blob 时，它将从索引中删除该文档。 如果该 Blob 稍后未删除，则索引器不会始终重新索引该 Blob。 这是因为索引器根据 blob 的时间戳确定要索引的`LastModified`Blob。 当软删除的 Blob 未删除时，`LastModified`其时间戳不会更新，因此，如果索引器已经处理了时间`LastModified`戳比未删除的 Blob更新的时间戳，则它不会重新索引未删除的 Blob。 为了确保重新编制未删除的 Blob，您需要更新 Blob`LastModified`的时间戳。 执行此操作的一种方法是重新保存该 Blob 的元数据。 您无需更改元数据，但重新保存元数据将更新 Blob`LastModified`的时间戳，以便索引器知道需要重新索引此 Blob。
+如果在存储帐户上删除了启用了本机软删除的 Azure Blob 存储中的 blob，则 blob 会转换为软删除状态，从而使你能够在保持期内删除该 blob。 当 Azure 认知搜索数据源具有本机 blob 软删除策略并且索引器处理软删除的 blob 时，它会从索引中删除该文档。 如果稍后删除该 blob，则索引器不会始终重新索引该 blob。 这是因为索引器根据 blob 的`LastModified`时间戳确定要建立索引的 blob。 如果删除了软删除的 blob， `LastModified`则不会更新其时间戳，因此，如果索引器已经处理`LastModified`了时间戳比未删除的 blob 更晚的 blob，则不会重新索引未删除的 blob。 若要确保未删除的 blob 是重新编制索引的，需要更新 blob 的`LastModified`时间戳。 实现此目的的一种方法是将该 blob 的元数据重新保存。 无需更改元数据，但是重新保存元数据将更新 blob 的`LastModified`时间戳，以便索引器知道它需要对此 blob 重新索引。
 
-### <a name="soft-delete-using-custom-metadata"></a>使用自定义元数据进行软删除
+### <a name="soft-delete-using-custom-metadata"></a>使用自定义元数据的软删除
 
-在此方法中，您将使用 Blob 的元数据来指示何时应从搜索索引中删除文档。
+在此方法中，您将使用 blob 的元数据来指示应从搜索索引中删除文档的时间。
 
 请使用以下步骤：
 
-1. 向 Blob 添加自定义元数据键值对，以指示 Azure 认知搜索在逻辑上已被删除。
+1. 将自定义元数据键值对添加到 blob，以指示 Azure 认知搜索逻辑删除。
 1. 在数据源上配置软删除列检测策略。 下面显示了一个示例。
-1. 索引器处理 Blob 并从索引中删除文档后，可以删除 Azure Blob 存储的 Blob。
+1. 在索引器处理 blob 并从索引中删除文档后，可以删除 Azure Blob 存储的 blob。
 
 例如，如果某个 Blob 具有值为 `true` 的元数据属性 `IsDeleted`，以下策略会将该 Blob 视为已删除：
 
@@ -361,9 +361,9 @@ Azure 认知搜索会限制进行了索引编制的 blob 的大小。 这些限�
         }
     }
 
-#### <a name="reindexing-undeleted-blobs"></a>重新索引未删除的 Blob
+#### <a name="reindexing-undeleted-blobs"></a>重新索引删除的 blob
 
-如果在数据源上设置了软删除列检测策略，然后将自定义元数据添加到具有标记值的 Blob，然后运行索引器，索引器将从索引中删除该文档。 如果要重新索引该文档，只需更改该 Blob 的软删除元数据值，然后重新运行索引器。
+如果对数据源设置软删除列检测策略，则将自定义元数据添加到具有标记值的 blob，然后运行索引器，该索引器将从索引中删除该文档。 如果要将该文档重新编制索引，只需更改该 blob 的软删除元数据值，然后重新运行该索引器。
 
 ## <a name="indexing-large-datasets"></a>为大型数据集编制索引
 
@@ -389,7 +389,7 @@ Blob 编制索引可能是一个耗时的过程。 如果有几百万个 Blob �
 
 你可能希望从索引中的多个源“组装”文档。 例如，你可能希望将 blob 中的文本与 Cosmos DB 中存储的其他元数据进行合并。 甚至可以将推送索引 API 与各种索引器一起使用来基于多个部件搭建搜索文档。 
 
-若要使此方式可行，所有索引器和其他组件需要针对文档键达成一致。 有关本主题的更多详细信息，请参阅[为多个 Azure 数据源编制索引](https://docs.microsoft.com/azure/search/tutorial-multiple-data-sources)。 有关详细演练，请参阅此外部文章：[在 Azure 认知搜索 中将文档与其他数据合并](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)。
+若要使此方式可行，所有索引器和其他组件需要针对文档键达成一致。 有关本主题的更多详细信息，请参阅[为多个 Azure 数据源编制索引](https://docs.microsoft.com/azure/search/tutorial-multiple-data-sources)。 有关详细演练，请参阅外部文章：将[文档与 Azure 中的其他数据合并认知搜索中](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)。
 
 <a name="IndexingPlainText"></a>
 ## <a name="indexing-plain-text"></a>为纯文本编制索引 
@@ -432,7 +432,7 @@ Blob 编制索引可能是一个耗时的过程。 如果有几百万个 Blob �
 | PPTX (application/vnd.openxmlformats-officedocument.presentationml.presentation) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |提取文本，包括嵌入的文档 |
 | PPT (application/vnd.ms-powerpoint) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |提取文本，包括嵌入的文档 |
 | PPTM（应用程序/vnd.ms-powerpoint.presentation.macroenabled.12） |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |提取文本，包括嵌入的文档 |
-| MSG (application/vnd.ms-outlook) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_from_email`<br/>`metadata_message_to`<br/>`metadata_message_to_email`<br/>`metadata_message_cc`<br/>`metadata_message_cc_email`<br/>`metadata_message_bcc`<br/>`metadata_message_bcc_email`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` |提取文本，包括附件。 `metadata_message_to_email`，`metadata_message_cc_email`并且`metadata_message_bcc_email`是字符串集合，其余字段是字符串。|
+| MSG (application/vnd.ms-outlook) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_from_email`<br/>`metadata_message_to`<br/>`metadata_message_to_email`<br/>`metadata_message_cc`<br/>`metadata_message_cc_email`<br/>`metadata_message_bcc`<br/>`metadata_message_bcc_email`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` |提取文本，包括附件。 `metadata_message_to_email``metadata_message_cc_email`和`metadata_message_bcc_email`是字符串集合，其余字段是字符串。|
 | ODT（应用程序/vnd.oasis.opendocument.text） |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |提取文本，包括嵌入的文档 |
 | ODS（应用程序/vnd.oasis.opendocument.spreadsheet） |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |提取文本，包括嵌入的文档 |
 | ODP（应用程序/vnd.oasis.opendocument.presentation） |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`title` |提取文本，包括嵌入的文档 |
@@ -446,5 +446,5 @@ Blob 编制索引可能是一个耗时的过程。 如果有几百万个 Blob �
 | 纯文本 (text/plain) |`metadata_content_type`<br/>`metadata_content_encoding`<br/> | 提取文本|
 
 
-## <a name="help-us-make-azure-cognitive-search-better"></a>帮助我们改进 Azure 认知搜索
+## <a name="help-us-make-azure-cognitive-search-better"></a>帮助我们提高 Azure 认知搜索
 如果想要请求新功能或者在改进方面有什么看法，敬请通过 [UserVoice 站点](https://feedback.azure.com/forums/263029-azure-search/)告诉我们。

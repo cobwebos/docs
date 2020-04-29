@@ -1,5 +1,5 @@
 ---
-title: 管理防火墙规则 - Azure CLI - MySQL 的 Azure 数据库
+title: 管理防火墙规则-Azure CLI-Azure Database for MySQL
 description: 本文介绍如何使用 Azure CLI 命令行创建和管理 Azure Database for MySQL 防火墙规则。
 author: ajlam
 ms.author: andrela
@@ -8,18 +8,18 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 11aa4a80deba4df14c239e69910ea38bac1b9c55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80063512"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>使用 Azure CLI 创建和管理 Azure Database for MySQL 防火墙规则
-可以使用服务器级防火墙规则，管理从特定 IP 地址或某个范围的 IP 地址对 Azure Database for MySQL 服务器的访问。 使用便捷的 Azure CLI 命令，可创建、更新、删除、列出和显示防火墙规则，用于管理服务器。 有关 MySQL 防火墙的 Azure 数据库概述，请参阅[MySQL 服务器防火墙规则的 Azure 数据库](./concepts-firewall-rules.md)。
+可以使用服务器级防火墙规则，管理从特定 IP 地址或某个范围的 IP 地址对 Azure Database for MySQL 服务器的访问。 使用便捷的 Azure CLI 命令，可创建、更新、删除、列出和显示防火墙规则，用于管理服务器。 有关 Azure Database for MySQL 防火墙的概述，请参阅[Azure Database for MySQL 服务器防火墙规则](./concepts-firewall-rules.md)。
 
 也可使用虚拟网络 (VNet) 规则来保护对服务器进行的访问。 详细了解如何[使用 Azure CLI 创建和管理虚拟网络服务终结点和规则](howto-manage-vnet-using-cli.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 * [Azure Database for MySQL 服务器和数据库](quickstart-create-mysql-server-database-using-azure-cli.md)。
 
@@ -29,8 +29,8 @@ ms.locfileid: "80063512"
 命令：
 - create：创建 Azure MySQL 服务器防火墙规则。****
 - delete：删除 Azure MySQL 服务器防火墙规则。****
-- **列表**：列出 Azure MySQL 服务器防火墙规则。
-- **显示**：显示 Azure MySQL 服务器防火墙规则的详细信息。
+- **list**：列出 Azure MySQL 服务器防火墙规则。
+- **show**：显示 Azure MySQL 服务器防火墙规则的详细信息。
 - update：更新 Azure MySQL 服务器防火墙规则。****
 
 ## <a name="sign-in-to-azure-and-list-your-azure-database-for-mysql-servers"></a>登录到 Azure，并列出 Azure Database for MySQL 服务器
@@ -42,7 +42,7 @@ ms.locfileid: "80063512"
     ```
    此命令将输出要在下一步骤中使用的代码。
 
-2. 使用 Web 浏览器打开页面[https://aka.ms/devicelogin](https://aka.ms/devicelogin)，然后输入代码。
+2. 使用 web 浏览器打开页面[https://aka.ms/devicelogin](https://aka.ms/devicelogin)，然后输入代码。
 
 3. 出现提示时，请使用 Azure 凭据登录。
 
@@ -119,6 +119,6 @@ az mysql server firewall-rule delete --resource-group myresourcegroup --server-n
 成功后没有任何输出。 如果失败，会显示错误消息文本。
 
 ## <a name="next-steps"></a>后续步骤
-- 了解有关[MySQL 服务器防火墙规则的 Azure 数据库的详细信息](./concepts-firewall-rules.md)。
+- 详细了解[Azure Database for MySQL 服务器防火墙规则](./concepts-firewall-rules.md)。
 - [使用 Azure 门户创建和管理 Azure Database for MySQL 防火墙规则](./howto-manage-firewall-using-portal.md)。
 - 通过[使用 Azure CLI 创建和管理虚拟网络服务终结点和规则](howto-manage-vnet-using-cli.md)，进一步保护对服务器的访问。

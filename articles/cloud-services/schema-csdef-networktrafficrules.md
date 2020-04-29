@@ -1,6 +1,6 @@
 ---
-title: Azure 云服务定义网络流量规则架构 |微软文档
-description: 了解网络流量规则，它限制可以访问角色内部终结点的角色。 它与服务定义文件中的角色结合。
+title: Azure 云服务定义NetworkTrafficRules 架构 | Microsoft Docs
+description: 了解 NetworkTrafficRules，它限制了可访问某个角色的内部终结点的角色。 它与服务定义文件中的角色相结合。
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
@@ -14,10 +14,10 @@ caps.latest.revision: 17
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: e53c10395ec3168e656633cc43fb2d01902209fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79534722"
 ---
 # <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>Azure 云服务定义 NetworkTrafficRules 架构
@@ -52,7 +52,7 @@ ms.locfileid: "79534722"
 
 [NetworkTrafficRules 元素](#NetworkTrafficRules)
 
-[仅允许流量到元素](#OnlyAllowTrafficTo)
+[OnlyAllowTrafficTo 元素](#OnlyAllowTrafficTo)
 
 [Destinations 元素](#Destinations)
 
@@ -64,7 +64,7 @@ AllowAllTraffic 元素
 
 [FromRole 元素](#FromRole)
 
-##  <a name="networktrafficrules-element"></a><a name="NetworkTrafficRules"></a>网络流量规则元素
+##  <a name="networktrafficrules-element"></a><a name="NetworkTrafficRules"></a>NetworkTrafficRules 元素
 `NetworkTrafficRules` 元素指定哪些角色可以与另一角色上的哪个终结点进行通信。 服务可以包含一个 `NetworkTrafficRules` 定义。
 
 ##  <a name="onlyallowtrafficto-element"></a><a name="OnlyAllowTrafficTo"></a> OnlyAllowTrafficTo 元素
@@ -73,10 +73,10 @@ AllowAllTraffic 元素
 ##  <a name="destinations-element"></a><a name="Destinations"></a>目标元素
 `Destinations` 元素描述可以与之进行通信的 RoleEndpoint 的集合。
 
-##  <a name="roleendpoint-element"></a><a name="RoleEndpoint"></a>角色端点元素
+##  <a name="roleendpoint-element"></a><a name="RoleEndpoint"></a>RoleEndpoint 元素
 `RoleEndpoint` 元素描述角色上允许与之进行通信的终结点。 如果角色上有多个终结点，可以指定多个 `RoleEndpoint` 元素。
 
-| 特性      | 类型     | 说明 |
+| Attribute      | 类型     | 说明 |
 | -------------- | -------- | ----------- |
 | `endpointName` | `string` | 必需。 允许将流量发送到的终结点的名称。|
 | `roleName`     | `string` | 必需。 允许与之进行通信的 web 角色的名称。|
@@ -84,17 +84,17 @@ AllowAllTraffic 元素
 ## <a name="allowalltraffic-element"></a>AllowAllTraffic 元素
 `AllowAllTraffic` 元素是一个规则，它允许所有角色与 `Destinations` 节点中定义的终结点进行通信。
 
-##  <a name="whensource-element"></a><a name="WhenSource"></a>当源元素
+##  <a name="whensource-element"></a><a name="WhenSource"></a>WhenSource 元素
 `WhenSource` 元素描述可以与 `Destinations` 节点中定义的终结点进行通信的角色的集合。
 
-| 特性 | 类型     | 说明 |
+| Attribute | 类型     | 说明 |
 | --------- | -------- | ----------- |
 | `matches` | `string` | 必需。 指定允许通信时要应用的规则。 目前唯一有效的值是 `AnyRule`。|
   
-##  <a name="fromrole-element"></a><a name="FromRole"></a>从角色元素
+##  <a name="fromrole-element"></a><a name="FromRole"></a>FromRole 元素
 `FromRole` 元素指定可以与 `Destinations` 节点中定义的终结点进行通信的角色。 如果有多个可以与终结点进行通信的角色，可以指定多个 `FromRole` 元素。
 
-| 特性  | 类型     | 说明 |
+| Attribute  | 类型     | 说明 |
 | ---------- | -------- | ----------- |
 | `roleName` | `string` | 必需。 允许从中进行通信的角色的名称。|
 

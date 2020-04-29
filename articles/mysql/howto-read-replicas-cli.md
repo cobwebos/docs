@@ -1,5 +1,5 @@
 ---
-title: 管理读取副本 - Azure CLI，REST API - MySQL 的 Azure 数据库
+title: 管理读取副本-Azure CLI、REST API-Azure Database for MySQL
 description: 了解如何使用 Azure CLI 或 REST API 在 Azure Database for MySQL 中设置和管理只读副本。
 author: ajlam
 ms.author: andrela
@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: ed57003c7a9a5a1a9d87aa2e8934af8c48b1d819
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80063329"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>如何使用 Azure CLI 和 REST API 在 Azure Database for MySQL 中创建和管理只读副本
@@ -38,7 +38,7 @@ az mysql server replica create --name mydemoreplicaserver --source-server mydemo
 
 `az mysql server replica create` 命令需要以下参数：
 
-| 设置 | 示例值 | 描述  |
+| 设置 | 示例值 | 说明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  要在其中创建副本服务器的资源组。  |
 | name | mydemoreplicaserver | 所创建的新副本服务器的名称。 |
@@ -67,7 +67,7 @@ az mysql server replica list --server-name mydemoserver --resource-group myresou
 
 `az mysql server replica list` 命令需要以下参数：
 
-| 设置 | 示例值 | 描述  |
+| 设置 | 示例值 | 说明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  要在其中创建副本服务器的资源组。  |
 | server-name | mydemoserver | 主服务器的名称或 ID。 |
@@ -85,7 +85,7 @@ az mysql server replica stop --name mydemoreplicaserver --resource-group myresou
 
 `az mysql server replica stop` 命令需要以下参数：
 
-| 设置 | 示例值 | 描述  |
+| 设置 | 示例值 | 说明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  副本服务器所在的资源组。  |
 | name | mydemoreplicaserver | 要停止在其上进行复制的副本服务器的名称。 |
