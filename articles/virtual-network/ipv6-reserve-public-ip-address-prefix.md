@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: 9a0dd56842174d89688c862397c373326ef50d1f
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80420545"
 ---
 # <a name="reserve-public-ipv6-address-prefix"></a>保留公共 IPv6 地址前缀
@@ -87,7 +87,7 @@ az network public-ip prefix create \
 
 ### <a name="using-azure-powershell"></a>使用 Azure PowerShell
 
- 使用 Azure PowerShell 创建公共 IP 时，可以通过添加 `-PublicIpPrefix` 参数，从保留的前缀创建静态 IPv6 公共 IP。 以下示例假设已创建一个前缀并将其存储在名称如下的 PowerShell 变量中：*$myOwnIPv6Prefix*。
+ 使用 Azure PowerShell 创建公共 IP 时，可以通过添加 `-PublicIpPrefix` 参数，从保留的前缀创建静态 IPv6 公共 IP。 以下示例假设已创建一个前缀并将其存储在名称如下的 PowerShell 变量中： *$myOwnIPv6Prefix*。
 
 ```azurepowershell:  
  $MyIPv6PublicIPFromMyReservedPrefix = New-AzPublicIpAddress \
@@ -102,7 +102,7 @@ az network public-ip prefix create \
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
  
-下面的示例假定前缀已创建并存储在名为 *：IPv6PrefixWestUS*的 CLI 变量中。
+下面的示例假定已创建前缀，并将其存储在名为的 CLI 变量中： *IPv6PrefixWestUS*。
 
 ```azurecli 
 az network public-ip create \

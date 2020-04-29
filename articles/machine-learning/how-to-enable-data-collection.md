@@ -12,10 +12,10 @@ author: lostmygithubaccount
 ms.date: 11/12/2019
 ms.custom: seodec18
 ms.openlocfilehash: 44acc81df9eb6dc6a6af28b5b0f4730aa93adffc
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80475429"
 ---
 # <a name="collect-data-for-models-in-production"></a>为生产环境中的模型收集数据
@@ -29,7 +29,7 @@ ms.locfileid: "80475429"
 
 启用收集后，收集的数据可帮助你：
 
-* 当生产数据进入模型时[，监控数据漂移](how-to-monitor-data-drift.md)。
+* 在生产数据进入模型时[监视数据偏移](how-to-monitor-data-drift.md)。
 
 * 更好地决定何时重新训练或优化模型。
 
@@ -39,7 +39,7 @@ ms.locfileid: "80475429"
 
 可以收集以下数据：
 
-* 从部署在 AKS 群集中的 Web 服务收集模型输入数据。 不收集语音、音频、图像和视频数据。**
+* 从部署在 AKS 群集中的 Web 服务收集模型输入数据。 不收集语音、音频、图像和视频数据。 
   
 * 使用生产输入数据进行模型预测。
 
@@ -58,9 +58,9 @@ Blob 中输出数据的路径遵循以下语法：
 >[!NOTE]
 > 在低于 0.1.0a16 的适用于 Python 的 Azure 机器学习 SDK 版本中，`designation` 参数命名为 `identifier`。 如果使用早期版本开发代码，则需要相应地更新此名称。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-- 如果没有 Azure 订阅，请先创建[一个免费帐户](https://aka.ms/AMLFree)。"
+- 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://aka.ms/AMLFree)。
 
 - 必须安装一个 Azure 机器学习工作区、一个包含脚本的本地目录以及适用于 Python 的 Azure 机器学习 SDK。 若要了解如何安装，请参阅[如何配置开发环境](how-to-configure-environment.md)。
 
@@ -78,7 +78,7 @@ Blob 中输出数据的路径遵循以下语法：
 
 1. 打开评分文件。
 
-1. 在文件顶部添加[以下代码](https://aka.ms/aml-monitoring-sdk)：
+1. 在该文件的顶部添加[以下代码](https://aka.ms/aml-monitoring-sdk)：
 
    ```python 
    from azureml.monitoring import ModelDataCollector
@@ -105,7 +105,7 @@ Blob 中输出数据的路径遵循以下语法：
     prediction_dc.collect(result) #this call is saving our input data into Azure Blob
     ```
 
-1. 在 AKS 中部署服务时，数据收集不会自动设置为 **true**。** 如以下示例所示更新配置文件：
+1. 在 AKS 中部署服务时，数据收集不会自动设置为 *true*。  如以下示例所示更新配置文件：
 
     ```python
     aks_config = AksWebservice.deploy_configuration(collect_model_data=True)
@@ -125,11 +125,11 @@ Blob 中输出数据的路径遵循以下语法：
 
 1. 打开你的工作区。
 
-1. 选择**部署** > **选择服务** > **编辑**。
+1. 选择“部署”   > “选择服务”   > “编辑”  。
 
    ![编辑服务](././media/how-to-enable-data-collection/EditService.PNG)
 
-1. 在 **"高级设置"** 中，选择**启用应用程序见解诊断和数据收集**。
+1. 在 "**高级设置**" 中，选择 "**启用 Application Insights 诊断和数据收集**"。
 
 1. 选择“更新”**** 以应用更改。
 
@@ -145,9 +145,9 @@ Blob 中输出数据的路径遵循以下语法：
 
 1. 选择**部署** > **选择服务** > **编辑**。
 
-   [![选择"编辑"选项](././media/how-to-enable-data-collection/EditService.PNG)](./././media/how-to-enable-data-collection/EditService.PNG#lightbox)
+   [![选择 "编辑" 选项](././media/how-to-enable-data-collection/EditService.PNG)](./././media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
-1. 在**高级设置中**，清除**启用应用程序见解诊断和数据收集**。
+1. 在 "**高级设置**" 中，清除 "**启用 Application Insights 诊断和数据收集**"。
 
 1. 选择“更新”**** 以应用更改。
 
@@ -172,7 +172,7 @@ Blob 中输出数据的路径遵循以下语法：
 
 1. 选择 **“存储”**。
 
-    [![选择"存储"选项](./media/how-to-enable-data-collection/StorageLocation.png)](././media/how-to-enable-data-collection/StorageLocation.png#lightbox)
+    [![选择存储选项](./media/how-to-enable-data-collection/StorageLocation.png)](././media/how-to-enable-data-collection/StorageLocation.png#lightbox)
 
 1. Blob 输出数据的路径遵循以下语法：
 
@@ -187,13 +187,13 @@ Blob 中输出数据的路径遵循以下语法：
 
 1. 选择“获取数据”，然后选择“[Azure Blob 存储](https://docs.microsoft.com/power-bi/desktop-data-sources)”。********
 
-    [![电源 BI Blob 设置](./media/how-to-enable-data-collection/PBIBlob.png)](././media/how-to-enable-data-collection/PBIBlob.png#lightbox)
+    [![Power BI blob 设置](./media/how-to-enable-data-collection/PBIBlob.png)](././media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
-1. 添加存储帐户名称并输入存储密钥。 您可以通过在 Blob 中选择 **"设置** > **访问"键**来查找此信息。
+1. 添加存储帐户名称并输入存储密钥。 可以通过在 blob 中选择 "**设置** > " "**访问密钥**" 来找到此信息。
 
 1. 选择“模型数据”容器，然后选择“编辑”。********
 
-    [![电源 BI 导航器](./media/how-to-enable-data-collection/pbiNavigator.png)](././media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
+    [![Power BI 导航器](./media/how-to-enable-data-collection/pbiNavigator.png)](././media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
 
 1. 在查询编辑器中，单击“名称”列的下面，并添加存储帐户。****
 
@@ -205,11 +205,11 @@ Blob 中输出数据的路径遵循以下语法：
 
 1. 选择“内容”列标题旁边的向下双箭头，将文件合并在一起。****
 
-    [![电源 BI 内容](./media/how-to-enable-data-collection/pbiContent.png)](././media/how-to-enable-data-collection/pbiContent.png#lightbox)
+    [![Power BI 内容](./media/how-to-enable-data-collection/pbiContent.png)](././media/how-to-enable-data-collection/pbiContent.png#lightbox)
 
 1. 选择“确定”  。 数据将预先加载。
 
-    [![电源 BI 合并文件](./media/how-to-enable-data-collection/pbiCombine.png)](././media/how-to-enable-data-collection/pbiCombine.png#lightbox)
+    [![Power BI 合并文件](./media/how-to-enable-data-collection/pbiCombine.png)](././media/how-to-enable-data-collection/pbiCombine.png#lightbox)
 
 1. 选择“关闭并应用”。****
 
@@ -219,17 +219,17 @@ Blob 中输出数据的路径遵循以下语法：
 
 ### <a name="analyze-model-data-using-azure-databricks"></a>使用 Azure Databricks 分析模型数据
 
-1. 创建[Azure 数据块工作区](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)。
+1. 创建[Azure Databricks 工作区](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)。
 
 1. 转到该 Databricks 工作区。
 
-1. 在数据砖块工作区中，选择 **"上传数据**"。
+1. 在 Databricks 工作区中，选择 "**上传数据**"。
 
-    [![选择数据砖块上传数据选项](./media/how-to-enable-data-collection/dbupload.png)](././media/how-to-enable-data-collection/dbupload.png#lightbox)
+    [![选择 Databricks 上传数据选项](./media/how-to-enable-data-collection/dbupload.png)](././media/how-to-enable-data-collection/dbupload.png#lightbox)
 
 1. 选择“创建新表”，然后选择“其他数据源” > “Azure Blob 存储” > “在笔记本中创建表”。****************
 
-    [![数据砖表创建](./media/how-to-enable-data-collection/dbtable.PNG)](././media/how-to-enable-data-collection/dbtable.PNG#lightbox)
+    [![Databricks 表创建](./media/how-to-enable-data-collection/dbtable.PNG)](././media/how-to-enable-data-collection/dbtable.PNG#lightbox)
 
 1. 更新数据的位置。 以下是示例：
 
@@ -238,6 +238,6 @@ Blob 中输出数据的路径遵循以下语法：
     file_type = "csv"
     ```
 
-    [![数据砖设置](./media/how-to-enable-data-collection/dbsetup.png)](././media/how-to-enable-data-collection/dbsetup.png#lightbox)
+    [![Databricks 安装程序](./media/how-to-enable-data-collection/dbsetup.png)](././media/how-to-enable-data-collection/dbsetup.png#lightbox)
 
 1. 遵循模板中的步骤查看和分析数据。

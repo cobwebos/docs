@@ -11,10 +11,10 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 11/04/2019
 ms.openlocfilehash: fef3f0347d963b8a7d5fe2f1ca771293e9c3d2a9
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80475495"
 ---
 # <a name="how-to-define-a-machine-learning-task"></a>如何定义机器学习任务 
@@ -29,9 +29,9 @@ ms.locfileid: "80475495"
 
 任务类型| 说明| 示例
 ----|----|----
-分类 | 用于预测数据集中特定行的类别的任务。 | 在信用卡上进行的欺诈检测。 目标列将是“检测到的欺诈”****，其类别为 *True* 或 *False*。 在这种情况下，我们将数据中的每一行分类为 true 或 false。
-回归 | 预测连续数量输出的任务。 | 汽车费用基于其功能，目标列将为“价格”****。
-预测 |用于在确定未来趋势的方向时做出明智估计的任务。| 未来 48 小时预测能源需求。 目标列将为“需求”****，预测的值将用于显示能源需求中的模式。
+分类 | 用于预测数据集中特定行的类别的任务。 | 在信用卡上进行的欺诈检测。 目标列将是“检测到的欺诈”  ，其类别为 *True* 或 *False*。 在这种情况下，我们将数据中的每一行分类为 true 或 false。
+回归 | 预测连续数量输出的任务。 | 汽车费用基于其功能，目标列将为“价格”  。
+预测 |用于在确定未来趋势的方向时做出明智估计的任务。| 未来 48 小时预测能源需求。 目标列将为“需求”  ，预测的值将用于显示能源需求中的模式。
 
 在自动化和优化过程中，自动化机器学习支持以下算法。 用户不需要指定算法。
 
@@ -56,7 +56,7 @@ ms.locfileid: "80475495"
 ### <a name="set-the-task-type"></a>设置任务类型
 可以通过 SDK 或 Azure 机器学习工作室为自动化 ML 试验设置任务类型。
 
-使用 `AutoMLConfig` 构造函数中的 `task` 参数来指定试验类型。
+使用 `task` 构造函数中的 `AutoMLConfig` 参数来指定试验类型。
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -75,7 +75,7 @@ automl_config = AutoMLConfig(task="classification")
 ## <a name="next-steps"></a>后续步骤
 
 + 详细了解 Azure 机器学习中的[自动化机器学习](concept-automated-ml.md)。
-+ 了解有关在 Azure 机器学习中[自动训练时间序列预测模型](how-to-auto-train-forecast.md)的更多
++ 详细了解如何在 Azure 机器学习中[自动训练时序预测模型](how-to-auto-train-forecast.md)
 + 尝试[自动化机器学习分类](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)教程。
 + 尝试[自动化机器学习回归](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-hardware-performance-explanation-and-featurization/auto-ml-regression-hardware-performance-explanation-and-featurization.ipynb)示例笔记本。
 

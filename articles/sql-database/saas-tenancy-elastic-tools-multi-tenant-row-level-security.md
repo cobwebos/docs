@@ -1,5 +1,5 @@
 ---
-title: 使用 RLS 和弹性数据库工具的多租户应用程序
+title: 具有 RLS 和弹性数据库工具的多租户应用
 description: 使用弹性数据库工具以及行级安全性构建具有高可伸缩性数据层的应用程序。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 4cf260620d4e907fdb9190a052155fa22f1c7985
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80398327"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>具有弹性数据库工具和行级安全性的多租户应用程序
@@ -36,7 +36,7 @@ ms.locfileid: "80398327"
 
 ## <a name="download-the-sample-project"></a>下载示例项目
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 - 使用 Visual Studio（2012 或更高版本）
 - 创建三个 Azure SQL 数据库
@@ -56,13 +56,13 @@ ms.locfileid: "80398327"
 1. **应用程序层**：打开连接后，将应用程序代码修改为始终设置 SESSION\_CONTEXT 中的当前 TenantId。 示例项目已通过这种方式设置 TenantId。
 2. **数据层**：在每个分片数据库中创建一个 RLS 安全策略，以根据 SESSION\_CONTEXT 中存储的 TenantId 筛选行。 针对每个分片数据库创建一个 策略，否则不会筛选多租户分片中的行。
 
-## <a name="1-application-tier-set-tenantid-in-the-session_context"></a>1. 应用程序层：在会话\_上下文中设置租户 Id
+## <a name="1-application-tier-set-tenantid-in-the-session_context"></a>1. 应用程序层：在会话\_上下文中设置 TenantId
 
 首先，使用弹性数据库客户端库的数据依赖路由 API 连接到分片数据库。 应用程序仍需告知数据库，哪个 TenantId 在使用连接。 TenantId 告知 RLS 安全策略，必须筛选掉哪些属于其他租户的行。 将当前 TenantId 存储在连接的 [SESSION\_CONTEXT](https://docs.microsoft.com/sql/t-sql/functions/session-context-transact-sql) 中。
 
 可以使用 [CONTEXT\_INFO](https://docs.microsoft.com/sql/t-sql/functions/context-info-transact-sql) 来替代 SESSION\_CONTEXT。 不过，SESSION\_CONTEXT 是较好的选择。 SESSION\_CONTEXT 更易于使用，默认情况下返回 NULL，并支持键值对。
 
-### <a name="entity-framework"></a>实体框架
+### <a name="entity-framework"></a>Entity Framework
 
 对于使用实体框架的应用程序，最简单的方法是根据[使用 EF DbContext 进行数据相关的路由](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md#data-dependent-routing-using-ef-dbcontext)中所述，在 ElasticScaleContext 重写中设置 SESSION\_CONTEXT。 创建和执行 SqlCommand，将 SESSION\_CONTEXT 中的 TenantId 设置为为连接指定的 shardingKey。 然后，返回通过数据依赖路由进行中转的连接。 这样，只需编写代码一次就能设置 SESSION\_CONTEXT。
 
@@ -343,7 +343,7 @@ GO
 - **添加新分片**：对所有新分片执行 T-SQL 脚本以启用 RLS，否则，不会筛选针对这些分片的查询。
 - **添加新表**：每当创建新表时，将 FILTER 和 BLOCK 谓词添加到所有分片上的安全策略， 否则不会筛选对新表的查询。 根据 [Apply Row-Level Security automatically to newly created tables](https://blogs.msdn.com/b/sqlsecurity/archive/20../../apply-row-level-security-automatically-to-newly-created-tables.aspx)（自动向新建的表应用行级安全性）（博客）中所述，此添加操作可以使用 DDL 触发器来自动完成。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>“摘要”
 
 可将弹性数据库工具和行级安全性一起使用，以扩大支持多租户和单租户分片的应用程序的数据层。 可以使用多租户分片来提高数据存储效率。 如果大量的租户只有几行数据，则此效率提升很显著。 单租户分片可以支持其性能和隔离要求更严格的高级租户。 有关详细信息，请参阅[行级安全性参考][rls]。
 
@@ -351,7 +351,7 @@ GO
 
 - [什么是 Azure 弹性池？](sql-database-elastic-pool.md)
 - [Scaling out with Azure SQL Database（使用 Azure SQL 数据库进行扩展）](sql-database-elastic-scale-introduction.md)
-- [使用 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](saas-tenancy-app-design-patterns.md)
+- [具有 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](saas-tenancy-app-design-patterns.md)
 - [使用 Azure AD 和 OpenID Connect 的多租户应用身份验证](../guidance/guidance-multitenant-identity-authenticate.md)
 - [Tailspin Surveys 应用程序](../guidance/guidance-multitenant-identity-tailspin.md)
 

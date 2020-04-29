@@ -8,19 +8,19 @@ ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: 12c750f96b8852cdd6a6039ebfa750c2ee792a6b
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80396722"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>将 Azure 活动日志导出到存储或 Azure 事件中心
 
 > [!IMPORTANT]
-> 将 Azure 活动日志发送到 Azure 存储和 Azure 事件中心的方法已更改为[诊断设置](diagnostic-settings.md)。 本文介绍了正在被弃用的遗留方法。 请参阅"更新以[收集和分析 Azure 监视器中的 Azure 活动日志"](activity-log-collect.md)以进行比较。
+> 将 Azure 活动日志发送到 Azure 存储和 Azure 事件中心的方法已更改为[诊断设置](diagnostic-settings.md)。 本文介绍正处于弃用过程中的旧方法。 若要进行比较，请参阅更新以[收集和分析 Azure 活动日志 Azure Monitor](activity-log-collect.md) 。
 
 
-[Azure 活动日志](platform-logs-overview.md)提供 Azure 订阅中发生的订阅级事件的见解。 除了在 Azure 门户中查看活动日志或者将其复制到 Log Analytics 工作区（在其中可以结合 Azure Monitor 收集的其他数据一起分析这些日志）以外，还可以创建一个日志配置文件，以将活动日志存档到 Azure 存储帐户或流式传输到事件中心。
+[Azure 活动日志](platform-logs-overview.md)方便用户深入了解 Azure 订阅中发生的订阅级别事件。 除了在 Azure 门户中查看活动日志或者将其复制到 Log Analytics 工作区（在其中可以结合 Azure Monitor 收集的其他数据一起分析这些日志）以外，还可以创建一个日志配置文件，以将活动日志存档到 Azure 存储帐户或流式传输到事件中心。
 
 ## <a name="archive-activity-log"></a>存档活动日志
 若要将日志数据保留 90 天以上（可以全面控制保留策略）以进行审核、静态分析或备份，则将活动日志存档到存储帐户的做法非常有效。 如果只需将事件保留 90 天或更短的时间，则无需设置为存档到存储帐户，因为活动日志事件保留在 Azure 平台中的时间是 90 天。
@@ -30,15 +30,15 @@ ms.locfileid: "80396722"
 * **流式传输到第三方日志记录和遥测系统**：一段时间后，Azure 事件中心的流式传输就会成为一种机制，用于将活动日志通过管道传输到第三方 SIEM 和 Log Analytics 解决方案。
 * **生成自定义遥测和日志记录平台**：如果已经有一个自定义生成的遥测平台，或者正想生成一个，则可利用事件中心高度可缩放的发布-订阅功能，灵活地引入活动日志。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="storage-account"></a>存储帐户
-如果存档活动日志，需要[创建一个存储帐户](../../storage/common/storage-account-create.md)（如果尚未创建）。 不应使用其中存储了其他非监视数据的现有存储帐户，以便更好地控制监视数据所需的访问权限。 但是，如果您还要将日志和指标存档到存储帐户，则可以选择使用相同的存储帐户将所有监视数据保存在中心位置。
+如果存档活动日志，需要[创建一个存储帐户](../../storage/common/storage-account-create.md)（如果尚未创建）。 不应使用其中存储了其他非监视数据的现有存储帐户，以便更好地控制监视数据所需的访问权限。 但是，如果还将日志和指标存档到存储帐户，则可以选择使用该同一存储帐户将所有监视数据保存在中心位置。
 
 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，存储帐户就不必位于发出日志的的订阅中。 
 
 > [!TIP]
-> 请参阅[配置 Azure 存储防火墙和虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)，以便对安全虚拟网络后面的存储帐户进行访问。
+> 请参阅[配置 Azure 存储防火墙和虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)，以提供对受保护虚拟网络后面的存储帐户的访问权限。
 
 ### <a name="event-hubs"></a>事件中心
 如果要将活动日志发送到事件中心，则需要[创建一个事件中心](../../event-hubs/event-hubs-create.md)（如果尚未创建）。 如果先前已将活动日志事件流式传输到此事件中心命名空间，则会重用该事件中心。
@@ -50,17 +50,17 @@ ms.locfileid: "80396722"
 通过[创建日志配置文件](#create-a-log-profile)将活动日志流式传输到事件中心。
 
 ## <a name="create-a-log-profile"></a>创建日志配置文件
-使用**日志配置文件**定义如何导出 Azure 活动日志。 每个 Azure 订阅只能有一个日志配置文件。 这些设置可以通过门户中的"活动日志"边栏选项卡中的 **"导出**"选项进行配置。 也可以[使用 Azure 监视器 REST API](https://msdn.microsoft.com/library/azure/dn931927.aspx)、PowerShell cmdlet 或 CLI 以编程方式对其进行配置。
+使用**日志配置文件**定义如何导出 Azure 活动日志。 每个 Azure 订阅只能有一个日志配置文件。 可通过门户中“活动日志”边栏选项卡的“导出”选项配置这些设置  。 也可以[使用 Azure 监视器 REST API](https://msdn.microsoft.com/library/azure/dn931927.aspx)、PowerShell cmdlet 或 CLI 以编程方式对其进行配置。
 
 日志配置文件定义以下设置。
 
 **要将活动日志发送到哪个位置。** 目前，可用选项为“存储帐户”或“事件中心”。
 
-**要发送哪些事件类别。** 日志配置文件和活动日志事件中*的类别*含义不同。 在日志配置文件中，*类别*表示操作类型（写入、删除、操作）。 在活动日志事件中，“类别”属性表示事件的来源或类型（例如，管理、服务运行状况和警报）**。
+**要发送哪些事件类别。** 日志配置文件中“类别”的含义与活动日志事件中不同  。 在日志配置文件中，“类别”表示操作类型（写入、删除、操作）  。 在活动日志事件中，“类别”属性表示事件的来源或类型（例如，管理、服务运行状况和警报）  。
 
-**应导出哪些区域（位置）。** 应包含所有位置，因为活动日志中的许多事件是全局事件。
+**要导出哪些区域（位置）。** 应包含所有位置，因为活动日志中的许多事件是全局事件。
 
-**活动日志应当在存储帐户中保留多长时间。** 保留期为 0 天表示永久保留日志。 如果不需永久保留，则可将该值设置为 1 到 365 之间的任意天数。
+**活动日志应在存储帐户中保留多长时间。** 保留期为 0 天表示永久保留日志。 如果不需永久保留，则可将该值设置为 1 到 365 之间的任意天数。
 
 如果设置了保留策略，但禁止将日志存储在存储帐户中，则保留策略无效。 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。 删除过程从午夜 (UTC) 开始，但请注意，可能最多需要 24 小时才能将日志从存储帐户中删除。
 
@@ -71,10 +71,10 @@ ms.locfileid: "80396722"
 
 ### <a name="create-log-profile-using-the-azure-portal"></a>使用 Azure 门户创建日志配置文件
 
-使用 Azure 门户中的“导出到事件中心”选项创建或编辑日志配置文件****。
+使用 Azure 门户中的“导出到事件中心”选项创建或编辑日志配置文件  。
 
-1. 从 Azure 门户上的 Azure Monitor 菜单中，选择“活动日志”********。
-3. 单击 **"诊断设置**"。
+1. 从 Azure 门户上的 Azure Monitor 菜单中，选择“活动日志”   。
+3. 单击“诊断设置”。 
 
    ![诊断设置](media/diagnostic-settings-subscription/diagnostic-settings.png)
 
@@ -93,7 +93,7 @@ ms.locfileid: "80396722"
      ![“导出活动日志”边栏选项卡](./media/activity-logs-overview/activity-logs-portal-export-blade.png)
 
 
-4. 单击“保存”**** 保存这些设置。 这些设置会即时应用到订阅。
+4. 单击“保存”  保存这些设置。 这些设置会即时应用到订阅。
 
 
 ### <a name="configure-log-profile-using-powershell"></a>使用 PowerShell 配置日志配置文件
@@ -124,7 +124,7 @@ ms.locfileid: "80396722"
     | serviceBusRuleId |否 |服务总线命名空间（需在其中创建事件中心）的服务总线规则 ID。 这是采用以下格式的字符串：`{service bus resource ID}/authorizationrules/{key name}`。 |
     | 位置 |是 |要为其收集活动日志事件的逗号分隔区域的列表。 |
     | RetentionInDays |是 |事件应在存储帐户中保留的天数，介于 1 和 365 之间。 值为零时，将无限期存储日志。 |
-    | 类别 |否 |应收集的事件类别的逗号分隔列表。 可能的值是 _"写入_"、_删除_和_操作_。 |
+    | 类别 |否 |应收集的事件类别的逗号分隔列表。 可能的值为 _Write_、_Delete_ 和 _Action_。 |
 
 ### <a name="example-script"></a>示例脚本
 以下示例 PowerShell 脚本创建一个日志配置文件，用于将活动日志写入到存储帐户和事件中心。
@@ -165,7 +165,7 @@ ms.locfileid: "80396722"
     | name |是 |日志配置文件的名称。 |
     | storage-account-id |是 |活动日志应保存到的存储帐户的资源 ID。 |
     | 位置 |是 |要为其收集活动日志事件的空格分隔区域列表。 可以使用 `az account list-locations --query [].name` 查看订阅的所有区域列表。 |
-    |  days |是 |活动的保留天数，介于 1 到 365 之间。 值为零时，将无限期（永久）存储日志。  如果为零，则启用的参数应设置为 false。 |
+    | days |是 |活动的保留天数，介于 1 到 365 之间。 值为零时，将无限期（永久）存储日志。  如果为零，则启用的参数应设置为 false。 |
     |已启用 | 是 |True 或 False。  用于启用或禁用保留策略。  如果为 True，则 days 参数必须为大于 0 的值。
     | categories |是 |应收集的事件类别的空格分隔列表。 可能值包括：Write、Delete 和 Action。 |
 
@@ -173,5 +173,5 @@ ms.locfileid: "80396722"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解有关活动日志的更多内容](../../azure-resource-manager/management/view-activity-logs.md)
+* [了解有关活动日志的更多信息](../../azure-resource-manager/management/view-activity-logs.md)
 * [将活动日志收集到 Azure Monitor 中](activity-log-collect.md)

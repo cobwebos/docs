@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: c733538a4e730a95008a8ec1e4d50c20d6ce24ec
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80420760"
 ---
 # <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell"></a>在 Azure 虚拟网络中将 IPv4 应用程序升级到 IPv6 - PowerShell
@@ -26,17 +26,17 @@ ms.locfileid: "80420760"
 - 虚拟网络和子网的 IPv6 地址空间
 - 采用 IPv4 和 IPV6 前端配置的标准负载均衡器
 - 包含采用 IPv4 + IPv6 配置的 NIC 的 VM
-- IPv6 公共 IP 使负载均衡器具有面向 Internet 的 IPv6 连接
+- IPv6 公共 IP，因此负载均衡器具有面向 Internet 的 IPv6 连接
 
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果你选择在本地安装和使用 PowerShell，本文要求使用 Azure PowerShell 模块 6.9.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+如果你选择在本地安装和使用 PowerShell，本文要求使用 Azure PowerShell 模块 6.9.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 ## <a name="prerequisites"></a>先决条件
 
-本文假定部署了标准负载均衡器，如[快速入门：创建标准负载均衡器 - Azure PowerShell](../load-balancer/quickstart-create-standard-load-balancer-powershell.md)。
+本文假设你按[快速入门：创建标准负载均衡器-Azure PowerShell](../load-balancer/quickstart-create-standard-load-balancer-powershell.md)中所述部署了标准负载均衡器。
 
 ## <a name="retrieve-the-resource-group"></a>检索资源组
 

@@ -1,6 +1,6 @@
 ---
 title: 在 Azure VM 中禁用来宾 OS 防火墙 | Microsoft Docs
-description: 了解一种解决方法，用于排除来宾操作系统防火墙筛选部分或全部 VM 流量的情况。
+description: 了解解决方法的解决方法，即来宾操作系统防火墙正在筛选部分或全部到 VM 的流量。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: e4cd1595d963330bd5decb366310bf5e97f59bc8
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80422369"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>在 Azure VM 中禁用来宾 OS 防火墙
@@ -27,7 +27,7 @@ ms.locfileid: "80422369"
 
 ## <a name="solution"></a>解决方案
 
-本文所述的过程（即，如何正确设置防火墙规则）旨在作为一种解决方法，让你能够集中精力解决实际问题。 启用 Windows 防火墙组件是 Microsoft 最佳实践。 如何配置防火墙规则取决于对 VM 所需的访问级别。
+本文所述的过程（即，如何正确设置防火墙规则）旨在作为一种解决方法，让你能够集中精力解决实际问题。 Microsoft 最佳做法是启用 Windows 防火墙组件。 配置防火墙规则的方式取决于对所需 VM 的访问级别。
 
 ### <a name="online-solutions"></a>联机解决方案 
 
@@ -90,7 +90,7 @@ ms.locfileid: "80422369"
 
 按以下步骤来使用[远程注册表](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)。
 
-1.  在故障排除 VM 上，启动注册表编辑器，然后转到**文件** > **连接网络注册表**。
+1.  在故障排除 VM 上，启动注册表编辑器，然后中转到 "**文件** > " "**连接网络注册表**"。
 
 2.  打开 TARGET MACHINE** \SYSTEM 分支，指定以下值：
 
@@ -100,7 +100,7 @@ ms.locfileid: "80422369"
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\EnableFirewall         -->        0
     ```
 
-3.  重启服务。 由于无法使用远程注册表执行此操作，因此必须使用远程服务控制台。
+3.  重启服务。 由于不能通过使用远程注册表来执行此操作，因此必须使用远程服务控制台。
 
 4.  打开 **Services.msc** 的实例。
 
@@ -116,7 +116,7 @@ ms.locfileid: "80422369"
 
 ### <a name="offline-solutions"></a>脱机解决方案 
 
-如果遇到无法通过任何方法访问该 VM 的情况，则自定义脚本扩展将失败，你必须直接通过系统磁盘在脱机模式下工作。 为此，请执行以下步骤：
+如果遇到无法通过任何方法访问该 VM 的情况，则自定义脚本扩展将失败，你必须直接通过系统磁盘在脱机模式下工作。 要完成该操作，请执行以下步骤：
 
 1.  [将系统磁盘附加到恢复 VM](troubleshoot-recovery-disks-portal-windows.md)。
 

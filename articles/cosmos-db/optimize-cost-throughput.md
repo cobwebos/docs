@@ -6,11 +6,11 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: c80ab4acd745717e2e68ae7d9dc818594ad1ce9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c6c3e9462b26b44857eea6b53092baeeb5034364
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79501468"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中优化预配的吞吐量成本
@@ -123,7 +123,7 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 
 ## <a name="scale-your-throughput-elastically-and-on-demand"></a>按需弹性缩放吞吐量 
 
-由于你需要为预配的吞吐量付费，因此，使预配的吞吐量符合需要有助于避免未使用的吞吐量产生费用。 随时可以按需扩展或缩减预配的吞吐量。 如果吞吐量需求非常可预测，则可以使用 Azure 函数并使用计时器触发器[在计划上增加或减少吞吐量](scale-on-schedule.md)。 
+由于你需要为预配的吞吐量付费，因此，使预配的吞吐量符合需要有助于避免未使用的吞吐量产生费用。 随时可以按需扩展或缩减预配的吞吐量。 如果吞吐量需求非常可预测，则可以使用 Azure Functions，并使用计时器触发器按[计划增加或减少吞吐量](scale-on-schedule.md)。 
 
 * 监视 RU 消耗量以及受速率限制的请求比率可以发现，在整个一天或一周中，并不需要保持恒定的预配吞吐量。 在晚上或周末，收到的流量可能更少。 使用 Azure 门户或者 Azure Cosmos DB 本机 SDK 或 REST API 可以随时缩放预配的吞吐量。 Azure Cosmos DB REST API 提供终结点用于以编程方式更新容器的性能级别，以及根据日期时间或者星期日期直接在代码中调整吞吐量。 执行此操作不会造成任何停机，通常在一分钟内就能产生效果。 
 
@@ -155,7 +155,7 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 
 1. 如果容器和数据库明显超过预配的吞吐量，应该检查预配的 RU 和消耗的 RU，并微调工作负荷。  
 
-2. 有一种方法可以估算应用程序所需的预留吞吐量：在针对应用程序所用的代表性 Azure Cosmos 容器或数据库运行典型操作时，记录与之相关的请求单位 (RU) 费用，然后估算预计每秒会执行的操作数目。 同时请务必测量并包含典型查询及其用量。 若要了解如何以编程方式或使用门户估算查询的 RU 成本，请参阅[优化查询成本](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)。 
+2. 有一种方法可以估算应用程序所需的预留吞吐量：在针对应用程序所用的代表性 Azure Cosmos 容器或数据库运行典型操作时，记录与之相关的请求单位 (RU) 费用，然后估算预计每秒会执行的操作数目。 同时请务必测量并包含典型查询及其用量。 若要了解如何以编程方式或使用门户估算查询的 RU 成本，请参阅[优化查询成本](online-backup-and-restore.md)。 
 
 3. 获取操作及其 RU 成本的另一种方法是启用 Azure Monitor 日志，它会提供操作/持续时间的细目以及请求费用。 Azure Cosmos DB 提供每个操作的请求费用，因此，可以存储响应中的每笔操作费用，然后将其用于分析。 
 

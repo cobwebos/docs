@@ -4,10 +4,10 @@ description: Azure Policy 定义具有各种效果，可确定管理和报告合
 ms.date: 03/23/2020
 ms.topic: conceptual
 ms.openlocfilehash: 0330cb5c732921efda3627dec92e486657097d82
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80422458"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
@@ -18,12 +18,12 @@ Azure Policy 中的每个策略定义都有单一效果。 该效果确定了在
 
 - [Append](#append)
 - [审核](#audit)
-- [审核不存在](#auditifnotexists)
-- [否认](#deny)
-- [部署不存在](#deployifnotexists)
-- [禁用](#disabled)
-- [强制实施 OPA 约束](#enforceopaconstraint)（预览）
-- [执行重新策略](#enforceregopolicy)（预览）
+- [AuditIfNotExists](#auditifnotexists)
+- [Deny](#deny)
+- [DeployIfNotExists](#deployifnotexists)
+- [已禁用](#disabled)
+- [EnforceOPAConstraint](#enforceopaconstraint) （预览版）
+- [EnforceRegoPolicy](#enforceregopolicy) （预览版）
 - [修改](#modify)
 
 ## <a name="order-of-evaluation"></a>计算顺序
@@ -39,7 +39,7 @@ Azure Policy 首先评估通过 Azure 资源管理器创建或更新资源的请
 
 对于 **EnforceOPAConstraint** 或 **EnforceRegoPolicy** 效果，目前没有任何评估顺序。
 
-## <a name="disabled"></a>已禁用
+## <a name="disabled"></a>禁用
 
 对于测试情况以及在策略定义已参数化效果时，此效果很有用。 借助这种灵活性可以禁用单个分配，而无需禁用该策略的所有分配。
 
@@ -55,7 +55,7 @@ Disabled 效果的替代效果是针对策略分配设置的 **enforcementMode**
 
 ### <a name="append-evaluation"></a>“附加”评估
 
-在创建或更新资源期间，会在资源提供程序处理请求之前进行“附加”评估。 当满足策略规则的 **if** 条件时，“附加”会向资源添加字段。 如果“附加”效果使用其他值替代原始请求中的值，则它会充当拒绝效果并拒绝该请求。 要将新值追加到现有数组，请使用别名的 ***\*** 版本。
+在创建或更新资源期间，会在资源提供程序处理请求之前进行“附加”评估。 当满足策略规则的 **if** 条件时，“附加”会向资源添加字段。 如果“附加”效果使用其他值替代原始请求中的值，则它会充当拒绝效果并拒绝该请求。 若要将新值追加到现有数组，请使用该别名的 **[\*]** 版本。
 
 当使用附加效果的策略定义作为评估周期的一部分运行时，它不会更改已存在的资源。 相反，它会将符合 **** if 条件的任意资源标记为不符合。
 
@@ -65,7 +65,7 @@ Disabled 效果的替代效果是针对策略分配设置的 **enforcementMode**
 
 ### <a name="append-examples"></a>“附加”示例
 
-示例 1：[使用具有数组](definition-structure.md#aliases)**值**的非**字段\*****/值**对在存储帐户上设置 IP 规则。 当非 **+\*别名**是数组时，效果将**值**追加为整个数组。 如果数组已存在，该冲突会导致拒绝事件发生。
+示例1：使用非 **[\*]** [别名](definition-structure.md#aliases)和数组**值**的单**字段/值**对，以便在存储帐户上设置 IP 规则。 当非**\*[]** 别名为数组时，效果将**值**作为整个数组追加。 如果数组已存在，该冲突会导致拒绝事件发生。
 
 ```json
 "then": {
@@ -80,7 +80,7 @@ Disabled 效果的替代效果是针对策略分配设置的 **enforcementMode**
 }
 ```
 
-示例 2：使用具有数组**值**的 **+\*** [别名](definition-structure.md#aliases)的单个**字段/值**对在存储帐户上设置 IP 规则。 通过使用 ***\*别名**，效果将**该值**追加到可能预先存在的数组。 如果该数组尚不存在，系统会创建该数组。
+示例2：将 **[\*]** [别名](definition-structure.md#aliases)与数组**值**结合使用的单个**字段/值**对，用于设置存储帐户上的 IP 规则。 通过使用**\*[]** 别名，效果将**值**追加到可能预先存在的数组中。 如果该数组尚不存在，系统会创建该数组。
 
 ```json
 "then": {
@@ -117,7 +117,7 @@ Modify 效果 **details** 属性包含用于定义修正任务所需的权限的
   - 定义的角色必须包含授予[参与者](../../../role-based-access-control/built-in-roles.md#contributor)角色的所有操作。
 - **operations** [必需]
   - 要对匹配的资源完成的所有标记操作的数组。
-  - 属性：
+  - 属性:
     - **operation** [必需]
       - 定义要对匹配的资源执行的操作。 选项为：_addOrReplace_、_Add_、_Remove_。 _Add_ 的行为类似于 [Append](#append) 效果。
     - **field** [必需]
@@ -166,7 +166,7 @@ Modify 效果 **details** 属性包含用于定义修正任务所需的权限的
 
 ### <a name="modify-examples"></a>Modify 示例
 
-示例 1：添加`environment`标记并将现有`environment`标记替换为"测试"：
+示例1：添加`environment`标记并将现有`environment`标记替换为 "Test"：
 
 ```json
 "then": {
@@ -186,7 +186,7 @@ Modify 效果 **details** 属性包含用于定义修正任务所需的权限的
 }
 ```
 
-示例 2：删除`env`标记并添加`environment`标记或将现有`environment`标记替换为参数化值：
+示例2：删除`env`标记并添加`environment`标记，或将现有`environment`标记替换为参数化值：
 
 ```json
 "then": {
@@ -331,8 +331,8 @@ AuditIfNotExists 效果的****“details”属性具有定义要匹配的相关�
 
 ### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists 评估
 
-部署IfNotExists在资源提供程序处理创建或更新资源请求并返回成功状态代码后大约 15 分钟运行。 如果没有相关资源或如果由 **ExistenceCondition** 定义的资源未评估为 true，则会发生模板部署。
-部署的持续时间取决于模板中包含的资源的复杂性。
+在资源提供程序处理创建或更新资源请求并返回成功状态代码后，DeployIfNotExists 大约运行15分钟。 如果没有相关资源或如果由 **ExistenceCondition** 定义的资源未评估为 true，则会发生模板部署。
+部署持续时间取决于模板中包含的资源的复杂性。
 
 在评估周期中，具有与资源匹配的 DeployIfNotExists 效果的策略定义被标记为不合规，但不对该资源执行任何操作。 可以使用[修正任务](../how-to/remediate-resources.md)来修正现有的不合规资源。
 
@@ -430,32 +430,32 @@ DeployIfNotExists 效果的 **details** 属性包含用于定义要匹配的相�
 }
 ```
 
-## <a name="enforceopaconstraint"></a>强制实施 OPA 约束
+## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
 
-此效果与`Microsoft.Kubernetes.Data`的策略定义*模式*一起使用。 它用于将使用[OPA 约束框架](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework)定义的 Gatekeeper v3 准入控制规则传递给[Azure](https://www.openpolicyagent.org/)上的自管理的 Kubernetes 群集。
+此效果与的策略定义*模式*一起使用`Microsoft.Kubernetes.Data`。 它用于传递使用[OPA 约束框架](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework)定义的网关守卫 v3 许可控制规则，以将[策略代理](https://www.openpolicyagent.org/)（OPA）打开 Azure 上的自托管 Kubernetes 群集。
 
 > [!NOTE]
-> [AKS 引擎的 Azure 策略](aks-engine.md)处于公共预览版，仅支持内置策略定义。
+> [适用于 AKS 引擎的 Azure 策略](aks-engine.md)处于公共预览中，仅支持内置策略定义。
 
-### <a name="enforceopaconstraint-evaluation"></a>强制OPA约束评估
+### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint 评估
 
-开放策略代理准入控制器实时评估群集上的任何新请求。
-每隔 5 分钟完成群集的完整扫描，并将结果报告给 Azure 策略。
+开放策略代理许可控制器会实时评估群集上的任何新请求。
+每5分钟一次，完成群集的完全扫描，并报告给 Azure 策略的结果。
 
-### <a name="enforceopaconstraint-properties"></a>强制OPA约束属性
+### <a name="enforceopaconstraint-properties"></a>EnforceOPAConstraint 属性
 
-强制OPA约束效果**的详细信息**属性具有描述门卫 v3 准入控制规则的子属性。
+EnforceOPAConstraint 效果的 "**详细信息**" 属性具有描述 "看门程序 v3 许可控制规则" 的子属性。
 
-- **约束模板**[必需]
-  - 定义新约束的约束模板自定义资源定义 （CRD）。 模板定义通过 Azure 策略**的值**传递的 Rego 逻辑、约束架构和约束参数。
+- **constraintTemplate** [必需]
+  - 定义新约束的约束模板 CustomResourceDefinition （.CRD）。 该模板定义 Rego 逻辑、约束架构和通过 Azure 策略中的**值**传递的约束参数。
 - **约束**[必需]
-  - 约束模板的 CRD 实现。 使用通过**值**传递的参数作为`{{ .Values.<valuename> }}`。 在下面的示例中，这将是`{{ .Values.cpuLimit }}`和`{{ .Values.memoryLimit }}`。
+  - 约束模板的 .CRD 实现。 使用通过**值**传递的参数`{{ .Values.<valuename> }}`作为。 在下面的示例中，这是`{{ .Values.cpuLimit }}`和`{{ .Values.memoryLimit }}`。
 - **值**[可选]
-  - 定义要传递给约束的任何参数和值。 约束模板 CRD 中必须存在每个值。
+  - 定义要传递给约束的任何参数和值。 每个值都必须存在于 Constraint 模板 .CRD 中。
 
-### <a name="enforceopaconstraint-example"></a>强制 OPA 约束示例
+### <a name="enforceopaconstraint-example"></a>EnforceOPAConstraint 示例
 
-示例：网守 v3 准入控制规则，用于在 AKS 引擎中设置容器 CPU 和内存资源限制。
+示例：守卫 v3 许可控制规则，用于设置 AKS 引擎中的容器 CPU 和内存资源限制。
 
 ```json
 "if": {
@@ -486,32 +486,32 @@ DeployIfNotExists 效果的 **details** 属性包含用于定义要匹配的相�
 }
 ```
 
-## <a name="enforceregopolicy"></a>执行重戈政策
+## <a name="enforceregopolicy"></a>EnforceRegoPolicy
 
-此效果与`Microsoft.ContainerService.Data`的策略定义*模式*一起使用。 它用于传递在[Azure Kubernetes 服务](../../../aks/intro-kubernetes.md)上使用[Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego)到[打开策略代理](https://www.openpolicyagent.org/)（OPA） 定义的门卫 v2 准入控制规则。
+此效果与的策略定义*模式*一起使用`Microsoft.ContainerService.Data`。 它用于传递使用[Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego)定义的网关 v2 的许可控制规则，以打开[Azure Kubernetes 服务](../../../aks/intro-kubernetes.md)上的[策略代理](https://www.openpolicyagent.org/)（OPA）。
 
 > [!NOTE]
-> [AKS 的 Azure 策略](rego-for-aks.md)处于"有限预览"状态，仅支持内置策略定义
+> 适用于[AKS 的 Azure 策略](rego-for-aks.md)处于有限预览版中，仅支持内置策略定义
 
-### <a name="enforceregopolicy-evaluation"></a>执行重新策略评估
+### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy 评估
 
-开放策略代理准入控制器实时评估群集上的任何新请求。
-每隔 5 分钟完成群集的完整扫描，并将结果报告给 Azure 策略。
+开放策略代理许可控制器会实时评估群集上的任何新请求。
+每5分钟一次，完成群集的完全扫描，并报告给 Azure 策略的结果。
 
-### <a name="enforceregopolicy-properties"></a>强制执行"重新戈策略"属性
+### <a name="enforceregopolicy-properties"></a>EnforceRegoPolicy 属性
 
-强制重新策略效果**的详细信息**属性具有描述门卫 v2 准入控制规则的子属性。
+EnforceRegoPolicy 效果的**详细信息**属性具有描述 "看门程序 v2" 许可控制规则的子属性。
 
-- **策略 Id** [必需]
-  - 作为参数传递给 Rego 准入控制规则的唯一名称。
+- **policyId** [必需]
+  - 作为参数传递给 Rego 许可控制规则的唯一名称。
 - **策略**[必需]
-  - 指定"Rego 准入控制"规则的 URI。
-- **策略参数**[可选]
+  - 指定 Rego 许可控制规则的 URI。
+- **policyParameters** [可选]
   - 定义要传递给 rego 策略的任何参数和值。
 
-### <a name="enforceregopolicy-example"></a>执行重新策略示例
+### <a name="enforceregopolicy-example"></a>EnforceRegoPolicy 示例
 
-示例：网守 v2 准入控制规则，以仅允许在 AKS 中指定容器映像。
+示例：网关 v2 "许可控制" 规则，只允许在 AKS 中指定的容器映像。
 
 ```json
 "if": {
@@ -571,7 +571,7 @@ DeployIfNotExists 效果的 **details** 属性包含用于定义要匹配的相�
 
 - 查看[Azure 策略示例](../samples/index.md)中的示例。
 - 查看 [Azure Policy 定义结构](definition-structure.md)。
-- 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
-- 了解如何[获取合规性数据](../how-to/get-compliance-data.md)。
-- 了解如何[修复不合规资源](../how-to/remediate-resources.md)。
+- 了解如何以[编程方式创建策略](../how-to/programmatically-create.md)。
+- 了解如何[获取相容性数据](../how-to/get-compliance-data.md)。
+- 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
 ms.openlocfilehash: 0383a512dfb7c2bb1ae2422b9ade1e3c7387a70c
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80478304"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>排查配置服务器问题
@@ -22,7 +22,7 @@ ms.locfileid: "80478304"
 
 安装移动代理时，源计算机将注册到配置服务器。 可遵循以下指导原则调试执行此步骤期间发生的任何失败：
 
-1. 打开 C:\ProgramData\ASR\home\svsystems\var\configurator_register_host_static_info.log 文件。 （ProgramData 文件夹可能已隐藏。 如果在"文件资源管理器"中"查看/隐藏"部分的 **"** 显示 **/隐藏**"部分中看不到"程序数据"文件夹，请选择"**隐藏项目**"复选框。故障可能是由多个问题引起的。
+1. 打开 C:\ProgramData\ASR\home\svsystems\var\configurator_register_host_static_info.log 文件。 （ProgramData 文件夹可能已隐藏。 如果未看到 ProgramData 文件夹，请在文件资源管理器的“查看”选项卡上的“显示/隐藏”部分，选中“隐藏的项目”复选框）。    失败可能是多个问题造成的。
 
 2. 搜索字符串 **No Valid IP Address found**。 如果找到了该字符串：
    1. 验证请求的主机 ID 是否与源计算机的主机 ID 相同。
@@ -34,15 +34,15 @@ ms.locfileid: "80478304"
 3. 如果找不到字符串 **No Valid IP Address found**，请搜索字符串 **Reason=>NULL**。 如果源计算机使用空主机注册到配置服务器，则会发生此错误。 如果找到了该字符串：
     - 解决问题后，遵照[将源计算机注册到配置服务器](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server)中的指导原则重试手动注册。
 
-4. 如果找不到字符串 **Reason=>NULL**，请在源计算机上打开 C:\ProgramData\ASRSetupLogs\UploadedLogs\ASRUnifiedAgentInstaller.log 文件。 （ProgramData 文件夹可能已隐藏。 如果在"文件资源管理器"中"查看/隐藏"部分的 **"** 显示 **/隐藏**"部分中看不到"程序数据"文件夹，请选择"**隐藏项目**"复选框。故障可能是由多个问题引起的。 
+4. 如果找不到字符串 **Reason=>NULL**，请在源计算机上打开 C:\ProgramData\ASRSetupLogs\UploadedLogs\ASRUnifiedAgentInstaller.log 文件。 （ProgramData 文件夹可能已隐藏。 如果未看到 ProgramData 文件夹，请在文件资源管理器的“查看”选项卡上的“显示/隐藏”部分，选中“隐藏的项目”复选框）。    失败可能是多个问题造成的。 
 
-5. 搜索字符串**后请求： （7） - 无法连接到服务器**。 如果找到了该字符串：
+5. 搜索字符串 **post request:(7) - Couldn't connect to server**。 如果找到了该字符串：
     1. 解决源计算机与配置服务器之间的网络问题。 验证是否可以使用 ping、traceroute 或 Web 浏览器等网络工具从源计算机访问配置服务器。 确保源计算机可以通过端口 443 访问配置服务器。
     2. 检查源计算机上是否有任何防火墙规则正在阻止源计算机与配置服务器之间的连接。 咨询网络管理员来消除任何连接问题。
     3. 确保从防病毒软件中排除[要从防病毒程序中排除的 Site Recovery 文件夹](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)中列出的文件夹。
     4. 解决网络问题后，遵照[将源计算机注册到配置服务器](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server)中的指导原则重试注册。
 
-6. 如果字符串**发布请求： （7） - 找不到无法连接到服务器**，则在同一日志文件中查找字符串**请求：（60） - 无法使用给定的 CA 证书对等证书进行身份验证**。 出现此错误的原因是配置服务器证书已过期或源计算机不支持 TLS 1.0 或更高版本的协议。 如果防火墙阻止源计算机和配置服务器之间的 TLS 通信，也可能发生此情况。 如果找到了该字符串： 
+6. 如果未找到字符串 **post request:(7) - Couldn't connect to server**，请在同一日志文件中查找字符串 **request:(60) - Peer certificate cannot be authenticated with given CA certificates**。 发生此错误的原因可能是配置服务器证书已过期或源计算机不支持 TLS 1.0 或更高版本的协议。 如果防火墙阻止源计算机与配置服务器之间的 TLS 通信，则也可能会发生这种情况。 如果找到了该字符串： 
     1. 若要解决此问题，请在源计算机上使用 Web 浏览器连接到配置服务器 IP 地址。 请使用 URI https:\/\/<配置服务器 IP 地址\>:443/。 确保源计算机可以通过端口 443 访问配置服务器。
     2. 检查是否需要在源计算机上添加或删除任何防火墙规则，使源计算机能够与配置服务器通信。 由于使用的防火墙软件多种多样，我们无法列出全部所需的防火墙配置。 咨询网络管理员来消除任何连接问题。
     3. 确保从防病毒软件中排除[要从防病毒程序中排除的 Site Recovery 文件夹](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)中列出的文件夹。  
@@ -51,9 +51,9 @@ ms.locfileid: "80478304"
 7. 在 Linux 上，如果 <INSTALLATION_DIR\>/etc/drscout.conf 中的平台值已损坏，则注册将会失败。 若要识别此问题，请打开 /var/log/ua_install.log 文件。 搜索字符串 **Aborting configuration as VM_PLATFORM value is either null or it is not VmWare/Azure**。 平台应设置为 **VmWare** 或 **Azure**。 如果 drscout.conf 文件已损坏，我们建议[卸载移动代理](vmware-physical-manage-mobility-service.md#uninstall-mobility-service)，然后重新安装移动代理。 如果卸载失败，请完成以下步骤：a. 打开 Installation_Directory/uninstall.sh 文件，并注释掉对 **StopServices** 函数的调用。
     b. 打开 Installation_Directory/Vx/bin/uninstall.sh 文件，并注释掉对 **stop_services** 函数的调用。
     c. 打开 Installation_Directory/Fx/uninstall.sh 文件，并注释掉尝试停止 Fx 服务的整个节。
-    d. [卸载](vmware-physical-manage-mobility-service.md#uninstall-mobility-service)移动代理。 成功卸载后，重新启动系统，然后尝试安装移动代理。
+    d. [卸载](vmware-physical-manage-mobility-service.md#uninstall-mobility-service)移动服务。 成功卸载后，重新启动系统，然后尝试安装移动代理。
 
-## <a name="installation-failure-failed-to-load-accounts"></a>安装失败：加载帐户失败
+## <a name="installation-failure-failed-to-load-accounts"></a>安装失败：无法加载帐户
 
 如果服务在安装移动代理和注册到配置服务器时无法通过传输连接读取数据，则会发生此错误。 若要解决此问题，请确保在源计算机上启用 TLS 1.0。
 
@@ -71,9 +71,9 @@ ms.locfileid: "80478304"
 
 我们强烈建议不要更改配置服务器的 IP 地址。 确保分配给配置服务器的所有 IP 是静态 IP 地址。 不要使用 DHCP IP 地址。
 
-## <a name="acs50008-saml-token-is-invalid"></a>ACS50008：SAML 令牌无效
+## <a name="acs50008-saml-token-is-invalid"></a>ACS50008:SAML 令牌无效
 
-若要避免此错误，请确保系统时钟上的时间与本地时间之间的偏差不超过 15 分钟。 重新运行安装程序完成注册。
+若要避免此错误，请确保系统时钟上的时间与本地时间之间的偏差不超过 15 分钟。 重新运行安装程序以完成注册。
 
 ## <a name="failed-to-create-a-certificate"></a>无法创建证书
 
@@ -100,7 +100,7 @@ ms.locfileid: "80478304"
 使用情况 | UnifiedAgentConfigurator.exe  /CSEndPoint <配置服务器 IP 地址\> /PassphraseFilePath <通行短语文件路径\>
 代理配置日志 | 位于 %ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log 下。
 /CSEndPoint | 必需的参数。 指定配置服务器的 IP 地址。 使用任何有效的 IP 地址。
-/PassphraseFilePath |  Mandatory。 通行短语的位置。 使用任何有效的 UNC 或本地文件路径。
+/PassphraseFilePath |  必需。 通行短语的位置。 使用任何有效的 UNC 或本地文件路径。
 
 ### <a name="if-the-source-machine-runs-linux"></a>如果源计算机运行 Linux
 
@@ -113,8 +113,8 @@ ms.locfileid: "80478304"
 设置 | 详细信息
 --- | ---
 使用情况 | cd /usr/local/ASR/Vx/bin<br /><br /> UnifiedAgentConfigurator.sh -i <配置服务器 IP 地址\> -P <通行短语文件路径\>
--o | 必需的参数。 指定配置服务器的 IP 地址。 使用任何有效的 IP 地址。
--P |  Mandatory。 通行短语所保存到的文件的完整文件路径。 使用任何有效文件夹。
+-i | 必需的参数。 指定配置服务器的 IP 地址。 使用任何有效的 IP 地址。
+-p |  必需。 通行短语所保存到的文件的完整文件路径。 使用任何有效文件夹。
 
 ## <a name="unable-to-configure-the-configuration-server"></a>无法配置配置服务器
 
@@ -145,7 +145,7 @@ ms.locfileid: "80478304"
    
     `Syntax: Unregister-ASRComponent.pl -IPAddress <IP_ADDRESS_OF_MACHINE_TO_UNREGISTER> -Component <Source/ PS / MT>`
  
-    如果您的源服务器条目为"OnPrem-VM01"，ip地址为 10.0.0.4，则改用以下命令。
+    如果源服务器条目为 "OnPrem-VM01"，ip 地址为10.0.0.4，则使用以下命令。
  
     `perl Unregister-ASRComponent.pl -IPAddress 10.0.0.4 -Component Source`
  
@@ -191,7 +191,7 @@ ms.locfileid: "80478304"
 若要解决问题，请登录 Azure 门户并执行以下操作之一：
 
 - 在 AAD 中请求应用程序开发人员角色。 有关应用程序开发人员角色的详细信息，请参阅 [Azure Active Directory 中的管理员角色权限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
-- 验证并确保 AAD 中的“用户可以创建应用程序”标志设置为“true”******。 有关详细信息，请参阅[：使用门户创建可以访问资源的 Azure AD 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)。
+- 验证并确保 AAD 中的“用户可以创建应用程序”标志设置为“true”   。 有关更多信息，请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)。
 
 ## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>进程服务器/主目标无法与配置服务器通信 
 

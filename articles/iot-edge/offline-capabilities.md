@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 55512491121aee28404ab5f85b4223c67a2f0e1e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80236058"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>了解有关 IoT Edge 设备、模块和子设备的扩展脱机功能
@@ -36,9 +36,9 @@ Azure IoT Edge 支持 IoT Edge 设备上的扩展脱机操作，同时在非 IoT
 
    从 IoT 中心断开连接时，IoT Edge 设备及其部署模块和任何 IoT 子设备都可以无限期运行。 模块和子设备可以在脱机状态下通过在 IoT Edge 中心进行身份验证来启动和重新启动。 上游绑定到 IoT 中心的遥测存储在本地。 模块之间或 loT 子设备之间的通信通过直接方法或消息来维护。
 
-4. **重新连接 IoT 中心并重新同步**
+4. **与 IoT 中心重新连接和重新同步**
 
-   一旦还原与 IoT 中心的连接，IoT Edge 设备会再次同步。 本地存储的消息会直接传递到 IoT 中心，但取决于连接速度、IoT 中心延迟和相关因素。 这些消息会按照存储它们的相同顺序传递。
+   一旦还原与 IoT 中心的连接，IoT Edge 设备会再次同步。 本地存储的消息会立即传递到 IoT 中心，但取决于连接速度、IoT 中心延迟和相关因素。 这些消息会按照存储它们的相同顺序传递。
 
    模块和设备的所需属性和报告属性之间的差异已得到协调。 IoT Edge 设备更新对其分配的 IoT 子设备集所做的任何更改。
 
@@ -48,7 +48,7 @@ Azure IoT Edge 支持 IoT Edge 设备上的扩展脱机操作，同时在非 IoT
 
 只能添加非 IoT Edge 设备作为子设备。
 
-IoT Edge 设备及其分配的子设备可以在初始一次性同步后无限期脱机运行。但是，消息的存储取决于生存时间 （TTL） 设置和存储消息的可用磁盘空间。
+IoT Edge 设备及其分配的子设备可以在初始一次性同步之后无限期脱机运行。但是，消息存储取决于生存时间 (TTL) 设置和存储消息的可用磁盘空间。
 
 ## <a name="set-up-parent-and-child-devices"></a>设置父设备和子设备
 
@@ -66,7 +66,7 @@ IoT Edge 设备及其分配的子设备可以在初始一次性同步后无限�
 
    ![从 IoT Edge 设备的详细信息页管理子设备](./media/offline-capabilities/manage-child-devices.png)
 
-#### <a name="option-2-use-the-az-command-line-tool"></a>选项 2：使用`az`命令行工具
+#### <a name="option-2-use-the-az-command-line-tool"></a>选项 2：使用 `az` 命令行工具
 
 将 [Azure 命令行接口](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)与 [IoT 扩展](https://github.com/azure/azure-iot-cli-extension)（v0.7.0 或更高版本）配合使用时，可以通过 [device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) 子命令管理父子关系。 以下示例使用一个查询将中心内的所有非 IoT Edge 设备分配为 IoT Edge 设备的子设备。
 
@@ -103,7 +103,7 @@ az iot hub device-identity add-children \
 
 以下文章详细介绍了建立这种信任关系的一种方法：
 
-* [将 IoT Edge 设备配置为充当透明网关](how-to-create-transparent-gateway.md)
+* [配置 IoT Edge 设备以充当透明网关](how-to-create-transparent-gateway.md)
 * [将下游（子）设备连接到 Azure IoT Edge 网关](how-to-connect-downstream-device.md)
 
 ## <a name="specify-dns-servers"></a>指定 DNS 服务器
@@ -142,6 +142,6 @@ az iot hub device-identity add-children \
 
 详细了解如何为父/子设备连接设置透明网关：
 
-* [将 IoT Edge 设备配置为充当透明网关](how-to-create-transparent-gateway.md)
-* [通过 Azure IoT 中心对下游设备进行身份验证](how-to-authenticate-downstream-device.md)
+* [配置 IoT Edge 设备以充当透明网关](how-to-create-transparent-gateway.md)
+* [在 Azure IoT 中心对下游设备进行身份验证](how-to-authenticate-downstream-device.md)
 * [将下游设备连接到 Azure IoT Edge 网关](how-to-connect-downstream-device.md)

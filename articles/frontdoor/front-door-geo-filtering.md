@@ -1,6 +1,6 @@
 ---
-title: Azure 前门域上的地理筛选 |微软文档
-description: 在本文中，您将了解 Azure 前门的地理筛选策略
+title: Azure 前门的域中的异地筛选 |Microsoft Docs
+description: 本文介绍 Azure 前门的地域筛选策略
 services: frontdoor
 documentationcenter: ''
 author: KumudD
@@ -14,15 +14,15 @@ ms.date: 03/21/2019
 ms.author: kumud
 ms.reviewer: tyao
 ms.openlocfilehash: 2cdde705d0e9f0905d4c33648b5415758d838b06
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80411179"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>什么是 Azure Front Door 的域中的地区筛选？
 
-默认情况下，Azure 前门响应用户请求，而不考虑发出请求的用户的位置。 但是，在某些情况下，可能需要按国家/地区限制对 Web 应用程序的访问。 Front Door 上的 Web 应用程序防火墙 (WAF) 服务使你可以使用终结点上特定路径的自定义访问规则来定义策略，以允许或阻止来自指定国家/地区的访问。 
+默认情况下，Azure 前门会响应用户请求，而不考虑发出请求的用户的位置。 但是，在某些情况下，可能需要按国家/地区限制对 Web 应用程序的访问。 Front Door 上的 Web 应用程序防火墙 (WAF) 服务使你可以使用终结点上特定路径的自定义访问规则来定义策略，以允许或阻止来自指定国家/地区的访问。 
 
 WAF 策略通常包括一组自定义规则。 规则由匹配条件、操作和优先级组成。 在匹配条件中，请定义匹配变量、运算符和匹配值。  就地区筛选规则来说，匹配变量为 REMOTE_ADDR，运算符为 GeoMatch，值为感兴趣的双字母国家/地区代码。 可以将 GeoMatch 条件与 REQUEST_URI 字符串匹配条件组合在一起，创建一个基于路径的地区筛选规则。
 
@@ -53,7 +53,7 @@ WAF 策略通常包括一组自定义规则。 规则由匹配条件、操作和
 | BH | 巴林|
 | BI | 布隆迪|
 | BJ | 贝宁|
-| BL | 圣巴泰勒米|
+| BL | 圣巴泰勒米岛|
 | BN | 文莱|
 | BO | 玻利维亚|
 | BR | 巴西|
@@ -136,14 +136,14 @@ WAF 策略通常包括一组自定义规则。 规则由匹配条件、操作和
 | LY | 利比亚 |
 | MA | 摩洛哥|
 | MD | 摩尔多瓦共和国|
-| MG | 马达加斯加岛|
+| MG | 马达加斯加|
 | MK | 北马其顿|
 | ML | 马里|
 | MM | 缅甸|
 | MN | 蒙古|
 | MO | 澳门特别行政区|
-| MQ | 马提尼克岛|
-| MR | 毛利塔尼亚|
+| MQ | 马提尼克|
+| MR | 毛里塔尼亚|
 | MT | 马耳他|
 | MV | 马尔代夫|
 | MW | 马拉维|
@@ -167,7 +167,7 @@ WAF 策略通常包括一组自定义规则。 规则由匹配条件、操作和
 | PL | 波兰|
 | PR | 波多黎各|
 | PT | 葡萄牙|
-| PW | 帕劳群岛|
+| PW | 帕劳|
 | PY | 巴拉圭|
 | QA | 卡塔尔|
 | RE | 留尼汪|

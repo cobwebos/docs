@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: e93dbd085ce99b8d555d6b9bb04e7eb6f60de0ee
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80422897"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>在 Azure VM 来宾 OS 中启用或禁用防火墙规则
@@ -97,7 +97,7 @@ ms.locfileid: "80422897"
 
 如果 VM 处于联机状态且可以在同一虚拟网络中的另一个 VM 上对其进行访问，则可以在另一个 VM 上使用[远程注册表](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)。
 
-1.  在故障排除 VM 上，启动注册表编辑器 （regedit.exe），然后选择**文件** > **连接网络注册表**。
+1.  在故障排除 VM 上，启动注册表编辑器（regedit.exe），然后选择 "**文件** > " "**连接网络注册表**"。
 
 2.  打开 *TARGET MACHINE*\SYSTEM 分支，然后指定以下值：
 
@@ -142,7 +142,7 @@ ms.locfileid: "80422897"
 7.  找到并打开 \windows\system32\config\SYSTEM 文件。 
 
     > [!Note]
-    > 系统会提示输入名称。 输入 **BROKENSYSTEM**，然后展开 **HKEY_LOCAL_MACHINE**。 现在您将看到一个名为 **"BROKENSYSTEM"** 的附加密钥。 为了进行故障排除，我们将这些有问题的配置单元装载为 **BROKENSYSTEM**。
+    > 系统会提示输入名称。 输入 **BROKENSYSTEM**，然后展开 **HKEY_LOCAL_MACHINE**。 现在会看到一个名为 " **BROKENSYSTEM**" 的附加密钥。 为了进行故障排除，我们将这些有问题的配置单元装载为 **BROKENSYSTEM**。
 
 8.  对 BROKENSYSTEM 分支进行以下更改：
 

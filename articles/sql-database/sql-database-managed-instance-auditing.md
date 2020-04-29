@@ -14,10 +14,10 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/27/2020
 ms.openlocfilehash: 405ac27fad3c24d3064f11476f452ad00abb9b02
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80387761"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>开始使用 Azure SQL 数据库托管实例审核
@@ -31,7 +31,7 @@ ms.locfileid: "80387761"
 
 以下部分介绍了托管实例上的审核配置。
 
-1. 转到[Azure 门户](https://portal.azure.com)。
+1. 转到 [Azure 门户](https://portal.azure.com)。
 2. 创建一个用于存储审核日志的 Azure 存储**容器**。
 
    1. 导航到要在其中存储审核日志的 Azure 存储。
@@ -39,19 +39,19 @@ ms.locfileid: "80387761"
       > [!IMPORTANT]
       > 请使用与托管实例位于同一区域中的存储帐户，以避免跨区域读取/写入。
 
-   1. 在存储帐户中，转到“概述”，然后单击“Blob”。********
+   1. 在存储帐户中，转到“概述”，然后单击“Blob”。  
 
       ![Azure Blob 小组件](./media/sql-managed-instance-auditing/1_blobs_widget.png)
 
-   1. 在顶部菜单中，单击“+ 容器”**** 以创建新容器。
+   1. 在顶部菜单中，单击“+ 容器”  以创建新容器。
 
       ![创建 Blob 容器图标](./media/sql-managed-instance-auditing/2_create_container_button.png)
 
-   1. 提供一个容器**名称**，将公共访问级别设置为“专用”，然后单击“确定”。********
+   1. 提供一个容器**名称**，将公共访问级别设置为“专用”，然后单击“确定”。  
 
       ![创建 Blob 容器配置](./media/sql-managed-instance-auditing/3_create_container_config.png)
   > [!IMPORTANT]
-  > 希望为其服务器或数据库级审核事件配置不可变日志存储的客户应遵循[Azure 存储提供的说明](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage#enabling-allow-protected-append-blobs-writes)（请确保在配置不可变 blob 存储时已选择 **"允许其他追加"**
+  > 如果客户希望为服务器或数据库级别的审核事件配置不可变的日志存储区，则应遵循[Azure 存储提供的说明](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage#enabling-allow-protected-append-blobs-writes)（请确保在配置不可变 blob 存储时选择 "**允许额外追加**"）
   
 3. 为审核日志创建容器后，可通过两种方式将其配置为审核日志的目标：[使用 T-SQL](#blobtsql)，或[使用 SQL Server Management Studio (SSMS) UI](#blobssms)：
 
@@ -65,7 +65,7 @@ ms.locfileid: "80387761"
 
         ![Blob 容器复制 URL](./media/sql-managed-instance-auditing/5_container_copy_name.png)
 
-     1. 生成 Azure 存储**SAS 令牌**以授予托管实例审核存储帐户的访问权限：
+     1. 生成 Azure 存储**SAS 令牌**，以授予对存储帐户的托管实例审核访问权限：
 
         - 导航到在前面的步骤中你在其中创建了容器的 Azure 存储帐户。
 
@@ -145,7 +145,7 @@ ms.locfileid: "80387761"
    - [创建服务器审核规范 T-SQL 指南](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
    - [创建数据库审核规范 T-SQL 指南](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
 
-5. 启用您在步骤 3 中创建的服务器审核：
+5. 启用你在步骤3：
 
     ```SQL
     ALTER SERVER AUDIT [<your_audit_name>]
@@ -155,7 +155,7 @@ ms.locfileid: "80387761"
 
 了解更多信息：
 
-- [审核 Azure SQL 数据库中的单个数据库、弹性池和托管实例之间的差异以及 SQL Server 中的数据库](#auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server)
+- [在 Azure SQL 数据库和 SQL Server 中的数据库中审核单一数据库、弹性池和托管实例之间的差异](#auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server)
 - [CREATE SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
 - [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
@@ -173,7 +173,7 @@ ms.locfileid: "80387761"
 
 5. 选择审核事件的目标 - 事件中心和/或 Azure Monitor 日志。 为每个目标配置所需的参数（例如，Log Analytics 工作区）。
 
-6. 单击“保存”。****
+6. 单击 **“保存”** 。
 
     ![配置诊断设置](./media/sql-managed-instance-auditing/9_mi_configure_diagnostics.png)
 
@@ -186,7 +186,7 @@ ms.locfileid: "80387761"
     GO
     ```
 
-9. 创建并启用服务器审核规范或数据库审核规范，就像 SQL Server 一样：
+9. 创建和启用服务器审核规范或数据库审核规范，就像对 SQL Server 操作一样：
 
    - [创建服务器审核规范 T-SQL 指南](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
    - [创建数据库审核规范 T-SQL 指南](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
@@ -207,7 +207,7 @@ ms.locfileid: "80387761"
 
 - 使用系统函数 `sys.fn_get_audit_file` (T-SQL) 以表格格式返回审核日志数据。 有关使用此函数的详细信息，请参阅 [sys.fn_get_audit_file 文档](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)。
 
-- 可以使用[Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)等工具浏览审核日志。 在 Azure 存储中，审核日志作为 Blob 文件的集合保存在定义为存储审核日志的容器中。 有关存储文件夹层次、命名约定和日志格式的详细信息，请参阅 [Blob 审核日志格式参考](https://go.microsoft.com/fwlink/?linkid=829599)。
+- 您可以使用诸如[Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)的工具来浏览审核日志。 在 Azure 存储中，审核日志作为 Blob 文件的集合保存在定义为存储审核日志的容器中。 有关存储文件夹层次、命名约定和日志格式的详细信息，请参阅 [Blob 审核日志格式参考](https://go.microsoft.com/fwlink/?linkid=829599)。
 
 - 有关审核日志使用方法的完整列表，请参阅 [SQL 数据库审核入门](sql-database-auditing.md)。
 

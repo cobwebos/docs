@@ -1,22 +1,22 @@
 ---
 title: Azure Service Fabric 安全性最佳做法
-description: 用于保护 Azure 服务结构群集和应用程序安全的最佳做法和设计注意事项。
+description: 确保 Azure Service Fabric 群集和应用程序安全的最佳做法和设计注意事项。
 author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: fa8bb41684271c7d4ebe90e31ce8019994fc1f41
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80478756"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric 安全 
 
 有关 [Azure 安全性最佳做法](https://docs.microsoft.com/azure/security/)的详细信息，请参阅 [Azure Service Fabric 安全性最佳做法](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices)
 
-## <a name="key-vault"></a>Key Vault
+## <a name="key-vault"></a>密钥保管库
 
 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) 是建议用于 Azure Service Fabric 应用程序和群集的机密管理服务。
 > [!NOTE]
@@ -191,7 +191,7 @@ principalid=$(az resource show --id /subscriptions/<YOUR SUBSCRIPTON>/resourceGr
 az role assignment create --assignee $principalid --role 'Contributor' --scope "/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/<PROVIDER NAME>/<RESOURCE TYPE>/<RESOURCE NAME>"
 ```
 
-在 Service Fabric 应用程序代码中，通过使 REST 与以下内容类似，获取 Azure 资源管理器[的访问令牌](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http)：
+在 Service Fabric 应用程序代码中，通过进行如下所示的 REST 调用[获取 Azure 资源管理器的访问令牌](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http)：
 
 ```bash
 access_token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true | python -c "import sys, json; print json.load(sys.stdin)['access_token']")
@@ -205,10 +205,10 @@ access_token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-v
 cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/Microsoft.DocumentDB/databaseAccounts/<YOUR ACCOUNT>/listKeys?api-version=2016-03-31' -X POST -d "" -H "Authorization: Bearer $access_token" | python -c "import sys, json; print(json.load(sys.stdin)['primaryMasterKey'])")
 ```
 ## <a name="windows-security-baselines"></a>Windows 安全基线
-[我们建议您实现众所周知且经过良好测试的行业标准配置，例如 Microsoft 安全基线，而不是自己创建基线](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines);在虚拟机缩放集中预配这些配置的选项是使用 Azure 所需状态配置 （DSC） 扩展处理程序，在 VM 联机时配置 VM，以便它们运行生产软件。
+[我们建议你实现一个行业标准的配置，该配置被广泛已知并且经过良好测试，如 Microsoft 安全基线，而不是自己创建基线](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines);在虚拟机规模集上预配这些虚拟机的选项是使用 Azure Desired State Configuration （DSC）扩展处理程序，在虚拟机处于联机状态时对其进行配置，使其运行生产软件。
 
 ## <a name="azure-firewall"></a>Azure 防火墙
-[Azure 防火墙是一种托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。它是一个完全有状态的防火墙，作为一种具有内置高可用性和无限制的云可扩展性的服务。](https://docs.microsoft.com/azure/firewall/overview)这使您能够将出站 HTTP/S 流量限制为指定的完整限定域名 （FQDN） 列表（包括通配符）。 此功能不需要 TLS/SSL 终止。 建议利用 Windows 更新的 [Azure 防火墙 FQDN 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)，并允许到 Microsoft Windows 更新终结点的网络流量流经防火墙。 [使用模板部署 Azure 防火墙](https://docs.microsoft.com/azure/firewall/deploy-template)为 Microsoft.网络/azure 防火墙资源模板定义提供了一个示例。 常用于 Service Fabric 应用程序的防火墙规则是为群集虚拟网络启用以下站点：
+[Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。它是一个服务形式的完全有状态防火墙，具有内置的高可用性和不受限制的云可伸缩性。](https://docs.microsoft.com/azure/firewall/overview)；这样就可以将出站 HTTP/S 流量限制为指定的完全限定域名 (FQDN) 列表，包括通配符域名。 此功能不需要 TLS/SSL 终止。 建议利用 Windows 更新的 [Azure 防火墙 FQDN 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)，并允许到 Microsoft Windows 更新终结点的网络流量流经防火墙。 [使用模板部署 Azure 防火墙](https://docs.microsoft.com/azure/firewall/deploy-template)提供了一个有关 azureFirewalls 资源模板定义的示例。 常用于 Service Fabric 应用程序的防火墙规则是为群集虚拟网络启用以下站点：
 
 - *download.microsoft.com
 - *servicefabric.azure.com
@@ -267,8 +267,8 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 
 ## <a name="next-steps"></a>后续步骤
 
-* 在 VM 或计算机上创建群集，运行 Windows 服务器：[为 Windows 服务器创建服务结构群集](service-fabric-cluster-creation-for-windows-server.md)。
-* 在运行 Linux 的 VM 或计算机上创建群集：[创建 Linux 群集](service-fabric-cluster-creation-via-portal.md)。
+* 在运行 Windows Server 的 Vm 或计算机上创建群集：[为 Windows server Service Fabric 群集创建](service-fabric-cluster-creation-for-windows-server.md)。
+* 在运行 Linux 的 Vm 或计算机上创建群集：[创建 linux 群集](service-fabric-cluster-creation-via-portal.md)。
 * 了解 [Service Fabric 支持选项](service-fabric-support.md)。
 
 [Image1]: ./media/service-fabric-best-practices/generate-common-name-cert-portal.png

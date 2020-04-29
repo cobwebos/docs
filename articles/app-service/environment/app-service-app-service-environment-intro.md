@@ -1,6 +1,6 @@
 ---
 title: ASE v1 简介
-description: 了解应用服务环境 v1 功能。 此文档仅提供给使用旧版 v1 ASE 的客户。
+description: 了解应用服务环境 v1 功能。 此文档仅为使用旧版 v1 ASE 的客户提供。
 author: stefsch
 ms.assetid: 78e6d4f5-da46-4eb5-a632-b5fdc17d2394
 ms.topic: article
@@ -8,16 +8,16 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: cd3881617227430488f8dd3f2f3d24072b24b8ce
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80478726"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>应用服务环境 v1 简介
 
 > [!NOTE]
-> 本文介绍应用服务环境 v1。  应用服务环境有一个较新版本，此版本更易于使用并在更强大的基础结构上运行。 要了解有关新版本的更多，从[应用服务环境简介](intro.md)开始。
+> 本文介绍应用服务环境 v1。  应用服务环境有一个较新版本，此版本更易于使用并在更强大的基础结构上运行。 若要了解有关新版本的详细信息，请从[应用服务环境简介](intro.md)开始。
 
 ## <a name="overview"></a>概述
 
@@ -32,7 +32,7 @@ ms.locfileid: "80478726"
 
 应用服务环境可在隔离后只运行单个客户的应用程序，并可始终部署到虚拟网络中。  客户对于入站和出站的应用网络流量都有更细微的控制，且应用程序可以通过虚拟网络创建与本地公司资源的高速安全连接。
 
-有关应用服务环境如何实现大规模和安全网络访问的概述，请参阅有关应用服务环境的[AzureCon 深度俯冲][AzureConDeepDive]！
+有关应用服务环境如何启用大规模和安全网络访问的概述，请参阅应用服务环境中的[AzureCon 深入探讨][AzureConDeepDive]！
 
 有关使用多个应用服务环境横向调整规模的深入探讨，请参阅有关如何设置[按地理位置分布的应用的数量][GeodistributedAppFootprint]的文章。
 
@@ -48,7 +48,7 @@ ms.locfileid: "80478726"
 
 应用服务环境由前端计算资源池，以及一到三个工作线程计算资源池组成。
 
-前端池包含负责 TLS 终止以及应用服务环境中应用请求自动负载平衡的计算资源。
+前端池包含负责 TLS 终止的计算资源，以及应用服务环境内的应用请求的自动负载均衡。
 
 每个工作线程池包含分配给[应用服务计划][AppServicePlan]的计算资源，而这些资源又包含一个或多个 Azure 应用服务应用。  由于应用服务环境中可能有多达三个不同的工作线程池，因此可以灵活地为每个工作线程池选择不同的计算资源。  
 

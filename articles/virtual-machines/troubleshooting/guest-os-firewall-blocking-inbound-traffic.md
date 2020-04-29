@@ -1,6 +1,6 @@
 ---
 title: Azure VM 来宾 OS 防火墙阻止入站流量 | Microsoft Docs
-description: 了解如何修复远程桌面门户 （RDP） 连接问题，即来宾操作系统防火墙阻塞了入站流量。
+description: 了解如何修复来宾操作系统防火墙阻止入站流量的远程桌面门户（RDP）连接问题。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: 1b80fc997a4b3d2b472717b1ec2f379a4e958d8c
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80422562"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Azure VM 来宾 OS 防火墙阻止入站流量
@@ -53,7 +53,7 @@ ms.locfileid: "80422562"
 
 #### <a name="mitigation-1"></a>缓解措施 1
 
-1.  如果 Azure 代理已安装并在 VM 上正常工作，则可以使用"仅重置配置"选项，在 VM 菜单上使用 **"支持 + 故障排除** > **重置密码"选项**。
+1.  如果 Azure 代理已安装并在 vm 上正常工作，则可以在 "vm" 菜单上的 "**支持和故障排除** > **重置密码**" 下面使用 "仅重置配置" 选项。
 
 2.  运行此恢复选项将执行以下操作：
 
@@ -102,7 +102,7 @@ ms.locfileid: "80422562"
 
 #### <a name="mitigation-2"></a>缓解措施 2
 
-1.  查询防火墙配置文件，以确定入站防火墙策略是否设置为 *"阻止入站始终*"：
+1.  查询防火墙配置文件，以确定是否已将入站防火墙策略设置为*BlockInboundAlways*：
 
     ```cmd
     netsh advfirewall show allprofiles | more
@@ -115,7 +115,7 @@ ms.locfileid: "80422562"
     >    * *BlockInbound*：除非存在有效规则允许该流量，否则将阻止所有入站流量。
     >    * *BlockInboundAlways*：忽略所有防火墙规则，并阻止所有流量。
 
-2.  编辑*默认入行操作*以将这些配置文件设置为 **"允许**流量"。 为此，请运行以下命令：
+2.  编辑*DefaultInboundAction*以将这些配置文件设置为**允许**流量。 为此，请运行以下命令：
 
     ```cmd
     netsh advfirewall set allprofiles firewallpolicy allowinbound,allowoutbound

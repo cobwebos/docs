@@ -1,6 +1,6 @@
 ---
-title: 传递和重试 - Azure 事件网格 IoT 边缘 |微软文档
-description: 在 IoT 边缘的事件网格中传递和重试。
+title: 传递和重试-Azure 事件网格 IoT Edge |Microsoft Docs
+description: IoT Edge 上的事件网格中的传递和重试。
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,63 +10,63 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 7df283b12a0d04d2b785c13a2f12b03115581e79
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76841706"
 ---
 # <a name="delivery-and-retry"></a>传递和重试
 
-事件网格提供持久传送。 它尝试立即为每个匹配的订阅至少传递一次每条消息。 如果订户的终结点不承认收到事件或失败，事件网格会基于固定**重试计划和****重试策略**重试传递。  默认情况下，事件网格模块一次向订阅者提供一个事件。 但是，有效负载是具有单个事件的数组。 通过启用输出批处理功能，可以使模块一次提供多个事件。 有关此功能的详细信息，请参阅[输出批处理](delivery-output-batching.md)。  
+事件网格提供持久传送。 对于每个匹配的订阅，它会尝试至少为每个消息传递一次。 如果订阅服务器的终结点没有确认收到事件或发生故障，事件网格会根据固定**重试计划**和**重试策略**重试传递。  默认情况下，事件网格模块一次传递一个事件到订阅服务器。 但负载为具有单个事件的数组。 可以通过启用输出批处理功能，使模块一次传递多个事件。 有关此功能的详细信息，请参阅[输出批处理](delivery-output-batching.md)。  
 
 > [!IMPORTANT]
->事件数据没有持久性支持。 这意味着重新部署或重新启动事件网格模块将导致您丢失尚未传递的任何事件。
+>对于事件数据不存在持久性支持。 这意味着重新部署或重新启动事件网格模块将导致丢失尚未传递的任何事件。
 
 ## <a name="retry-schedule"></a>重试计划
 
-事件网格在发送消息后最多等待 60 秒以等待响应。 如果订阅者的终结点不确认响应，则消息将排队在我们的一个 backoff 队列中进行后续重试。
+传递消息后，事件网格会等待长达60秒的响应。 如果订阅服务器的终结点不能确认响应，则该消息将在某个后端队列中排队等待以后重试。
 
-有两个预配置的退退队列，确定将尝试重试的计划。 它们分别是：
+有两个预配置的后端队列，它们确定将尝试重试的计划。 它们是：
 
-| 计划 | 描述 |
+| 计划 | 说明 |
 | ---------| ------------ |
-| 1 分钟 | 最终在这里的消息每分钟都会尝试。
-| 10 分钟 | 结束在这里的消息每隔 10 分钟尝试一次。
+| 1 分钟 | 每隔一分钟就会尝试发送到此处的消息。
+| 10 分钟 | 每隔10分钟就会尝试在此处结束的消息。
 
 ### <a name="how-it-works"></a>工作原理
 
-1. 消息到达事件网格模块。 尝试立即交付它。
-1. 如果传递失败，则消息将排队到 1 分钟的队列中，并在一分钟后重试。
-1. 如果传递继续失败，则消息将排队到 10 分钟的队列中，每 10 分钟重试一次。
-1. 在成功或重试策略限制之前，将尝试交付。
+1. 消息到达事件网格模块。 尝试立即交付。
+1. 如果传递失败，则消息将排队进入1分钟队列，并在一分钟后重试。
+1. 如果传递继续失败，则消息将排队进入10分钟队列，并每10分钟重试一次。
+1. 在达到成功或重试策略限制之前，会尝试传递。
 
 ## <a name="retry-policy-limits"></a>重试策略限制
 
-有两种配置决定了重试策略。 它们分别是：
+可以通过两种配置来确定重试策略。 它们是：
 
 * 最大尝试次数
-* 活动生存时间 （TTL）
+* 事件生存时间（TTL）
 
-如果达到重试策略的任一限制，将删除事件。 重试计划本身在"重试计划"部分中介绍。 可以对所有订阅者或基于订阅执行这些限制的配置。 以下部分将介绍每个部分的进一步详细信息。
+如果达到重试策略的任一限制，则会删除事件。 重试计划本身在重试计划部分中进行了介绍。 对于所有订阅服务器或订阅，可以配置这些限制。 以下部分详细介绍了每一种情况。
 
-## <a name="configuring-defaults-for-all-subscribers"></a>配置所有订阅者的默认值
+## <a name="configuring-defaults-for-all-subscribers"></a>为所有订阅服务器配置默认值
 
-有两个属性：`brokers__defaultMaxDeliveryAttempts``broker__defaultEventTimeToLiveInSeconds`可以配置为事件网格部署的一部分，该部署控制所有订阅者的重试策略默认值。
+有两个属性： `brokers__defaultMaxDeliveryAttempts`和`broker__defaultEventTimeToLiveInSeconds`均可配置为事件网格部署的一部分，该部署控制所有订阅服务器的重试策略默认值。
 
-| 属性名称 | 描述 |
+| 属性名称 | 说明 |
 | ---------------- | ------------ |
-| `broker__defaultMaxDeliveryAttempts` | 传递事件的最大尝试次数。 默认值：30。
-| `broker__defaultEventTimeToLiveInSeconds` | 事件 TTL，在几秒钟内，如果未传递事件，将丢弃事件。 默认值： **7200**秒
+| `broker__defaultMaxDeliveryAttempts` | 尝试传递事件的最大次数。 默认值：30。
+| `broker__defaultEventTimeToLiveInSeconds` | 事件 TTL （秒），在此时间之后，如果未传递事件，事件将被丢弃。 默认值： **7200**秒
 
-## <a name="configuring-defaults-per-subscriber"></a>配置每个订阅者的默认值
+## <a name="configuring-defaults-per-subscriber"></a>为每个订阅服务器配置默认值
 
-您还可以根据每个订阅指定重试策略限制。
-有关如何为每个订阅者配置默认值的信息，请参阅我们的[API 文档](api.md)。 订阅级默认值覆盖模块级别配置。
+你还可以基于每个订阅指定重试策略限制。
+有关如何配置每个订阅服务器的默认值的信息，请参阅[API 文档](api.md)。 订阅级别默认值覆盖模块级别配置。
 
 ## <a name="examples"></a>示例
 
-以下示例在事件网格模块中设置重试策略，最大尝试次数 = 3 和事件 TTL 为 30 分钟
+下面的示例在事件网格模块中设置重试策略，其中 maxNumberOfAttempts = 3，事件 TTL 为30分钟
 
 ```json
 {
@@ -86,7 +86,7 @@ ms.locfileid: "76841706"
 }
 ```
 
-以下示例设置最大尝试次数 = 3 和事件 TTL 30 分钟的 Web 挂钩订阅
+下面的示例使用 maxNumberOfAttempts = 3 设置 Web 挂钩订阅，并使用30分钟的事件 TTL 设置
 
 ```json
 {

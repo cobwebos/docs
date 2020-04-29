@@ -1,6 +1,6 @@
 ---
-title: 将边缘事件转发到事件网格云 - Azure 事件网格 IoT 边缘 |微软文档
-description: 将边缘事件转发到事件网格云
+title: 将边缘事件转发到事件网格云-Azure 事件网格 IoT Edge |Microsoft Docs
+description: 向事件网格云转发边缘事件
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,41 +10,41 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 7184fb5c45ce41de2bd63b55fb67cbd9ba6361e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76844711"
 ---
-# <a name="tutorial-forward-events-to-event-grid-cloud"></a>教程：将事件转发到事件网格云
+# <a name="tutorial-forward-events-to-event-grid-cloud"></a>教程：向事件网格云转发事件
 
-本文介绍将边缘事件转发到 Azure 云中的事件网格所需的所有步骤。 您可能需要这样做的原因如下：
+本文逐步讲解将边缘事件转发到 Azure 云中的事件网格所需的所有步骤。 出于以下原因，你可能需要执行此操作：
 
 * 响应云中的边缘事件。
-* 将事件转发到云中的事件网格，并使用 Azure 事件中心或 Azure 存储队列在云中处理事件之前缓冲事件。
+* 将事件转发到云中的事件网格，并使用 Azure 事件中心或 Azure 存储队列来缓冲事件，然后在云中处理事件。
 
- 要完成本教程，您需要了解[边缘](concepts.md)和[Azure](../concepts.md)上的事件网格概念。 有关其他目标类型，请参阅[事件处理程序](event-handlers.md)。 
+ 若要完成本教程，你需要了解有关[边缘](concepts.md)和[Azure](../concepts.md)的事件网格概念。 有关其他目标类型，请参阅[事件处理程序](event-handlers.md)。 
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 若要完成本教程，您需要：
 
-* **Azure 订阅**- 如果尚未创建[免费帐户](https://azure.microsoft.com/free)，则创建免费帐户。 
-* **Azure IoT 中心和 IoT 边缘设备**- 如果尚未启动[Linux](../../iot-edge/quickstart-linux.md)或[Windows 设备](../../iot-edge/quickstart.md)，请按照快速入门中的步骤操作。
+* **Azure 订阅**-如果你还没有帐户，请创建一个[免费帐户](https://azure.microsoft.com/free)。 
+* **Azure IoT 中心和 IoT Edge 设备**-按照[Linux](../../iot-edge/quickstart-linux.md)或[Windows 设备](../../iot-edge/quickstart.md)快速入门中的步骤进行操作（如果尚未安装）。
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-deploy-iot-edge.md)] 
 ## <a name="create-event-grid-topic-and-subscription-in-cloud"></a>在云中创建事件网格主题和订阅
 
-通过按照[本教程](../custom-event-quickstart-portal.md)创建事件网格主题和在云中的订阅。 记下`topicURL`，`sasKey`以及`topicName`本教程稍后将使用的新创建主题。
+按照[本教程](../custom-event-quickstart-portal.md)的说明，在云中创建事件网格主题和订阅。 记下`topicURL` `sasKey`在本教程`topicName`稍后将使用的新创建主题的、和。
 
-例如，如果您创建了在美国西部命名的`testegcloudtopic`主题，则这些值将如下所示：
+例如，如果你创建了一个名为`testegcloudtopic` "美国西部" 的主题，则这些值将如下所示：
 
-* **主题Url**：`https://testegcloudtopic.westus2-1.eventgrid.azure.net/api/events`
-* **主题名称**：`testegcloudtopic`
-* **SasKey**： 可在主题**的访问键**下提供。 使用**键1**。
+* **TopicUrl**：`https://testegcloudtopic.westus2-1.eventgrid.azure.net/api/events`
+* **TopicName**：`testegcloudtopic`
+* **SasKey**：在主题的**AccessKey**下提供。 使用**key1**。
 
 ## <a name="create-event-grid-topic-at-the-edge"></a>在边缘创建事件网格主题
 
-1. 使用以下内容创建主题3.json。 有关有效负载的详细信息，请参阅我们的[API 文档](api.md)。
+1. 创建具有以下内容的 topic3。 有关有效负载的详细信息，请参阅[API 文档](api.md)。
 
     ```json
         {
@@ -54,12 +54,12 @@ ms.locfileid: "76844711"
           }
         }
     ```
-1. 运行以下命令以创建主题。 应返回 200 OK 的 HTTP 状态代码。
+1. 运行以下命令以创建主题。 应返回 HTTP 状态代码 200 OK。
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @topic3.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3?api-version=2019-01-01-preview
     ```
-1. 运行以下命令以验证主题已成功创建。 应返回 200 OK 的 HTTP 状态代码。
+1. 运行以下命令以验证主题是否已成功创建。 应返回 HTTP 状态代码 200 OK。
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3?api-version=2019-01-01-preview
@@ -85,7 +85,7 @@ ms.locfileid: "76844711"
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. 使用以下内容创建订阅3.json。 有关有效负载的详细信息，请参阅我们的[API 文档](api.md)。
+1. 创建具有以下内容的 subscription3。 有关有效负载的详细信息，请参阅[API 文档](api.md)。
 
    ```json
         {
@@ -103,7 +103,7 @@ ms.locfileid: "76844711"
    ```
 
    >[!NOTE]
-   > **终结点 Url**指定云中的事件网格主题 URL。 **sasKey**是指事件网格云主题的键。 **主题名称**中的值将用于将所有传出事件标记到事件网格。 这在发布到事件网格域主题时非常有用。 有关事件网格域主题的详细信息，请参阅[事件域](../event-domains.md)
+   > **EndpointUrl**指定云中的事件网格主题 URL。 **SasKey**是指事件网格云主题的键。 **TopicName**中的值将用于将所有传出事件标记到事件网格。 在发布到事件网格域主题时，这可能很有用。 有关事件网格域主题的详细信息，请参阅[事件域](../event-domains.md)
 
     例如，
   
@@ -122,13 +122,13 @@ ms.locfileid: "76844711"
         }
     ```
 
-2. 运行以下命令以创建订阅。 应返回 200 OK 的 HTTP 状态代码。
+2. 运行以下命令以创建订阅。 应返回 HTTP 状态代码 200 OK。
 
      ```sh
      curl -k -H "Content-Type: application/json" -X PUT -g -d @subscription3.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3/eventSubscriptions/sampleSubscription3?api-version=2019-01-01-preview
      ```
 
-3. 运行以下命令以验证已成功创建订阅。 应返回 200 OK 的 HTTP 状态代码。
+3. 运行以下命令以验证是否已成功创建订阅。 应返回 HTTP 状态代码 200 OK。
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3/eventSubscriptions/sampleSubscription3?api-version=2019-01-01-preview
@@ -157,7 +157,7 @@ ms.locfileid: "76844711"
 
 ## <a name="publish-an-event-at-the-edge"></a>在边缘发布事件
 
-1. 使用以下内容创建 event3.json。 有关有效负载的详细信息，请参阅[API 文档](api.md)。
+1. 创建具有以下内容的 event3。 有关有效负载的详细信息，请参阅[API 文档](api.md)。
 
     ```json
         [
@@ -181,9 +181,9 @@ ms.locfileid: "76844711"
     curl -k -H "Content-Type: application/json" -X POST -g -d @event3.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3/events?api-version=2019-01-01-preview
     ```
 
-## <a name="verify-edge-event-in-cloud"></a>在云中验证边缘事件
+## <a name="verify-edge-event-in-cloud"></a>验证云中的边缘事件
 
-有关查看云主题传递的事件的信息，请参阅[教程](../custom-event-quickstart-portal.md)。
+有关查看由云提供的事件的信息，请参阅[教程](../custom-event-quickstart-portal.md)。
 
 ## <a name="cleanup-resources"></a>清理资源
 
@@ -197,9 +197,9 @@ ms.locfileid: "76844711"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，您将在边缘上发布一个事件，并转发到 Azure 云中的事件网格。 现在您已经了解了在云中转发到事件网格的基本步骤：
+在本教程中，已在边缘上发布事件，并将其转发到 Azure 云中的事件网格。 现在，你已经了解了要前进到云中的事件网格的基本步骤：
 
-* 要解决在 IoT 边缘上使用 Azure 事件网格的问题，请参阅[故障排除指南](troubleshoot.md)。
-* 按照[本教程](forward-events-iothub.md)将事件转发到 IoTHub
-* 按照[本教程](pub-sub-events-webhook-cloud.md)将事件转发到云中的 Webhook
-* [监视边缘的主题和订阅](monitor-topics-subscriptions.md)
+* 若要解决在 IoT Edge 上使用 Azure 事件网格时遇到的问题，请参阅[故障排除指南](troubleshoot.md)。
+* 遵循本[教程](forward-events-iothub.md)将事件转发到 IoTHub
+* 遵循本[教程](pub-sub-events-webhook-cloud.md)将事件转发到云中的 Webhook
+* [监视边缘上的主题和订阅](monitor-topics-subscriptions.md)

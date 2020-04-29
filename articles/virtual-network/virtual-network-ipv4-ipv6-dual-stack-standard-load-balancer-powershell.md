@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2020
 ms.author: kumud
 ms.openlocfilehash: d6b61e27324220fc78ace3e964aed98f9ba114d3
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80420928"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure---powershell"></a>在 Azure 中部署 IPv6 双堆栈应用程序 - PowerShell
@@ -99,7 +99,7 @@ $frontendIPv6 = New-AzLoadBalancerFrontendIpConfig `
 
 ### <a name="configure-back-end-address-pool"></a>配置后端地址池
 
-使用[New-AzLoad平衡器Backend地址池配置创建](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig)后端地址池。 在剩余步骤中，VM 将连接到此后端池。 以下示例创建名为 *dsLbBackEndPool_v4* 和 *dsLbBackEndPool_v6* 的后端地址池，以包含采用 IPv4 和 IPv6 NIC 配置的 VM：
+使用[AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig)创建后端地址池。 在剩余步骤中，VM 将连接到此后端池。 以下示例创建名为 *dsLbBackEndPool_v4* 和 *dsLbBackEndPool_v6* 的后端地址池，以包含采用 IPv4 和 IPv6 NIC 配置的 VM：
 
 ```azurepowershell-interactive
 $backendPoolv4 = New-AzLoadBalancerBackendAddressPoolConfig `
@@ -160,7 +160,7 @@ $lb = New-AzLoadBalancer `
 ### <a name="create-an-availability-set"></a>创建可用性集
 要提高应用的高可用性，请将 VM 放置在可用性集中。
 
-使用 [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) 创建一个可用性集。 以下示例创建名为“myAvailabilitySet”** 的可用性集：
+使用 [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) 创建一个可用性集。 以下示例创建名为“myAvailabilitySet”  的可用性集：
 
 ```azurepowershell-interactive
 $avset = New-AzAvailabilitySet `

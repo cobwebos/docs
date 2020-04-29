@@ -1,6 +1,6 @@
 ---
-title: 管理设备证书 - Azure IoT 边缘 |微软文档
-description: 在 Azure IoT Edge 设备上创建测试证书、安装和管理这些证书，以便为生产部署做好准备。
+title: 管理设备证书 - Azure IoT Edge | Microsoft Docs
+description: 创建测试证书，并在 Azure IoT Edge 设备上安装和管理证书，以准备生产部署。
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c18c3d560adb3c3cae54bda808ee5842c260fd6b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79539203"
 ---
-# <a name="manage-certificates-on-an-iot-edge-device"></a>在 IoT 边缘设备上管理证书
+# <a name="manage-certificates-on-an-iot-edge-device"></a>管理 IoT Edge 设备上的证书
 
 所有 IoT Edge 设备使用证书在运行时与设备上运行的任何模块之间创建安全连接。 充当网关的 IoT Edge 设备也使用相同的证书连接到其下游设备。
 
@@ -46,7 +46,7 @@ ms.locfileid: "79539203"
 * 设备 CA 证书
 * 设备 CA 私钥
 
-本文中所谓的“根 CA”并非组织的最顶层证书颁发机构。** 它是 IoT Edge 方案的最顶层证书颁发机构，IoT Edge 中心模块、用户模块和任何下游设备使用该颁发机构来建立彼此之间的信任。
+本文中所谓的“根 CA”并非组织的最顶层证书颁发机构。  它是 IoT Edge 方案的最顶层证书颁发机构，IoT Edge 中心模块、用户模块和任何下游设备使用该颁发机构来建立彼此之间的信任。
 
 若要查看这些证书的示例，请查看[管理用于示例和教程的测试 CA 证书](https://github.com/Azure/iotedge/tree/master/tools/CACertificates)中用于创建演示证书的脚本。
 
@@ -54,7 +54,7 @@ ms.locfileid: "79539203"
 
 在 IoT Edge 设备上安装证书链，并将 IoT Edge 运行时配置为引用新证书。
 
-例如，如果您使用示例脚本[创建演示证书](how-to-create-test-certificates.md)，请将以下文件复制到 IoT 边缘设备上：
+例如，如果使用示例脚本[创建了演示证书](how-to-create-test-certificates.md)，请将以下文件复制到 IoT-Edge 设备：
 
 * 设备 CA 证书：`<WRKDIR>\certs\iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
 * 设备 CA 私钥：`<WRKDIR>\private\iot-edge-device-MyEdgeDeviceCA.key.pem`
@@ -66,12 +66,12 @@ ms.locfileid: "79539203"
 
 1. 打开 IoT Edge 安全守护程序配置文件。
 
-   * Windows：`C:\ProgramData\iotedge\config.yaml`
+   * Windows： `C:\ProgramData\iotedge\config.yaml`
    * Linux：`/etc/iotedge/config.yaml`
 
-1. 将 config.yaml 文件中的 **certificate** 属性设置为 IoT Edge 设备上的证书和密钥文件的完整路径。 删除 certificate 属性前面的 `#` 字符，以取消注释四个代码行。 确保**证书：** 行没有前面的空格，并且嵌套项由两个空格缩进。 例如：
+1. 将 config.yaml 文件中的 **certificate** 属性设置为 IoT Edge 设备上的证书和密钥文件的完整路径。 删除 certificate 属性前面的 `#` 字符，以取消注释四个代码行。 请确保 **certificates:** 行前面没有空格，并且嵌套项缩进了两个空格。 例如：
 
-   * Windows：
+   * Windows:
 
       ```yaml
       certificates:
@@ -91,27 +91,27 @@ ms.locfileid: "79539203"
 
 1. 在 Linux 设备上，确保用户 **iotedge** 对保存证书的目录拥有读取权限。
 
-1. 如果您以前在设备上使用了 IoT Edge 的任何其他证书，请在启动或重新启动 IoT Edge 之前删除以下两个目录中的文件：
+1. 如果以前在设备上使用过 IoT Edge 的任何其他证书，请在启动或重启 IoT Edge 之前删除以下两个目录中的文件：
 
-   * 窗口：`C:\ProgramData\iotedge\hsm\certs`和`C:\ProgramData\iotedge\hsm\cert_keys`
+   * Windows：`C:\ProgramData\iotedge\hsm\certs` 和 `C:\ProgramData\iotedge\hsm\cert_keys`
 
-   * Linux：`/var/lib/iotedge/hsm/certs`和`/var/lib/iotedge/hsm/cert_keys`
+   * Linux：`/var/lib/iotedge/hsm/certs` 和 `/var/lib/iotedge/hsm/cert_keys`
 
 ## <a name="customize-certificate-lifetime"></a>自定义证书生存期
 
-IoT Edge 在若干种情况下自动在设备上生成证书，包括：
+在多种情况下，IoT Edge 会在设备上自动生成证书，这些情况包括：
 
-* 如果在安装和预配 IoT Edge 时未提供自己的生产证书，IoT Edge 安全管理器将自动生成设备**CA 证书**。 此自签名证书仅用于开发和测试方案，而不是用于生产。 此证书将在 90 天后过期。
-* IoT Edge 安全管理器还生成由设备 CA 证书签名**的工作负载 CA 证书**
+* 如果你在安装和预配 IoT Edge 时未提供自己的生产证书，则 IoT Edge 安全管理器会自动生成一个设备 CA 证书。  这个自签名证书仅用于开发和测试方案，而不可用于生产。 此证书在 90 天后过期。
+* IoT Edge 安全管理器还会生成由设备 CA 证书签名的工作负荷 CA 证书 
 
-有关 IoT Edge 设备上不同证书的功能的详细信息，请参阅了解 Azure [IoT 边缘如何使用证书](iot-edge-certs.md)。
+有关 IoT Edge 设备上不同证书的功能的详细信息，请参阅[了解 Azure IoT Edge 如何使用证书](iot-edge-certs.md)。
 
-对于这两个自动生成的证书，您可以选择在 config.yaml 中设置**auto_generated_ca_lifetime_days**标志，以配置证书生存期的天数。
+对于这两个自动生成的证书，可以选择在 config.yaml 中设置 auto_generated_ca_lifetime_days 标志，以配置证书生存期的天数。 
 
 >[!NOTE]
->IoT Edge 安全管理器创建了第三个自动生成的证书，**即 IoT Edge 中心服务器证书**。 此证书始终有 90 天，但在过期之前会自动续订。 **auto_generated_ca_lifetime_days**值不会影响此证书。
+>IoT Edge 安全管理器还会创建第三个自动生成的证书：IoT Edge 中心服务器证书。  此证书始终在 90 天后过期，但过期之前会自动续订。 auto_generated_ca_lifetime_days 值不会影响此证书。 
 
-要将证书过期配置为默认 90 天以外的内容，请将该值以天形式添加到 config.yaml 文件的**证书**部分。
+若要将证书过期时间配置为超过默认 90 天，请在 config.yaml 文件的 certificates 节中添加所需值（以天为单位）。 
 
 ```yaml
 certificates:
@@ -121,17 +121,17 @@ certificates:
   auto_generated_ca_lifetime_days: <value>
 ```
 
-如果您提供了自己的设备 CA 证书，则此值仍适用于工作负载 CA 证书，前提是您设置的生存期值短于设备 CA 证书的生存期。
+如果提供了自己的设备 CA 证书，则此值仍会应用到工作负荷 CA 证书，前提是设置的生存期值短于设备 CA 证书的生存期。
 
 在 config.yaml 文件中指定标志后，请执行以下步骤：
 
-1. 删除`hsm`文件夹的内容。
+1. 删除 `hsm` 文件夹的内容。
 
-   视窗`C:\ProgramData\iotedge\hsm\certs and C:\ProgramData\iotedge\hsm\cert_keys`： Linux：`/var/lib/iotedge/hsm/certs and /var/lib/iotedge/hsm/cert_keys`
+   Windows:`C:\ProgramData\iotedge\hsm\certs and C:\ProgramData\iotedge\hsm\cert_keys` Linux：`/var/lib/iotedge/hsm/certs and /var/lib/iotedge/hsm/cert_keys`
 
-1. 重新启动 IoT 边缘服务。
+1. 重启 IoT Edge 服务。
 
-   Windows：
+   Windows:
 
    ```powershell
    Restart-Service iotedge
@@ -145,7 +145,7 @@ certificates:
 
 1. 确认生存期设置。
 
-   Windows：
+   Windows:
 
    ```powershell
    iotedge check --verbose
@@ -157,7 +157,7 @@ certificates:
    sudo iotedge check --verbose
    ```
 
-   检查生产就绪状态的输出 **：证书**检查，其中列出自动生成的设备 CA 证书过期之前的天数。
+   查看“生产就绪状态: 证书”检查的输出，其中列出了自动生成的设备 CA 证书在过期前的天数。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 01/16/2020
 ms.author: shvija
 ms.openlocfilehash: bf90120157bf64bd62a3b5ec9d8a6b2c6260e024
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80398303"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>跨应用程序的多个实例均衡分区负载
@@ -39,8 +39,8 @@ ms.locfileid: "80398303"
 
 1. **缩放：** 创建多个使用者，每个使用者获取若干事件中心分区的读取所有权。
 2. **负载均衡：** 动态增加或减少使用者。 例如，将新的传感器类型（例如一氧化碳检测器）添加到每个家庭后，事件数会增多。 在这种情况下，操作员（人类）会增加使用者实例的数目。 然后，使用者池可以重新均衡它们拥有的分区数，以便与新添加的使用者分担负载。
-3. **故障时无缝恢复：** 如果使用者 （**使用者 A**） 发生故障 （例如，托管使用者的虚拟机突然崩溃）， 则其他使用者可以选取使用者**A**拥有的分区并继续。 此外，称作“检查点”或“偏移量”的延续点应该位于**使用者 A** 发生故障时的确切位置，或者略微在该位置的前面。****
-4. **使用事件：** 虽然前三点涉及使用者的管理，但必须有代码来使用事件并对其进行一些有用的操作。 例如，聚合事件并将其上传到 Blob 存储。
+3. **故障时无缝恢复：** 如果某个使用者（**使用者 A**）发生故障（例如，托管使用者的虚拟机突然崩溃），其他使用者能够拾取**使用者 A** 拥有的分区并继续。 此外，称作“检查点”或“偏移量”的延续点应该位于**使用者 A** 发生故障时的确切位置，或者略微在该位置的前面。  
+4. **使用事件：** 尽管前面三个要点能够应对使用者的管理，但还必须提供代码来使用事件并对其执行有用的操作。 例如，聚合事件并将其上传到 Blob 存储。
 
 ## <a name="event-processor-or-consumer-client"></a>事件处理器或使用者客户端
 
@@ -58,13 +58,13 @@ ms.locfileid: "80398303"
 
 
 
-| 事件中心命名空间               | 事件中心名称 | **使用者组** | “所有者”                                | Partition ID | 上次修改时间  |
+| 事件中心命名空间               | 事件中心名称 | **使用者组** | 所有者                                | 分区 ID | 上次修改时间  |
 | ---------------------------------- | -------------- | :----------------- | :----------------------------------- | :----------- | :------------------ |
 | mynamespace.servicebus.windows.net | myeventhub     | myconsumergroup    | 3be3f9d3-9d9e-4c50-9491-85ece8334ff6 | 0            | 2020-01-15T01:22:15 |
 | mynamespace.servicebus.windows.net | myeventhub     | myconsumergroup    | f5cc5176-ce96-4bb4-bbaa-a0e3a9054ecf | 1            | 2020-01-15T01:22:17 |
 | mynamespace.servicebus.windows.net | myeventhub     | myconsumergroup    | 72b980e9-2efc-4ca7-ab1b-ffd7bece8472 | 2            | 2020-01-15T01:22:10 |
-|                                    |                | :                  |                                      |              |                     |
-|                                    |                | :                  |                                      |              |                     |
+|                                    |                | 解码的字符：                  |                                      |              |                     |
+|                                    |                | 解码的字符：                  |                                      |              |                     |
 | mynamespace.servicebus.windows.net | myeventhub     | myconsumergroup    | 844bd8fb-1f3a-4580-984d-6324f9e208af | 15           | 2020-01-15T01:22:00 |
 
 每个事件处理器实例获取分区的所有权，并从上一个已知的[检查点](# Checkpointing)开始处理分区。 如果某个处理器出现故障（VM 关闭），其他实例将通过查看上次修改时间来检测此情况。 其他实例尝试获取之前由非活动实例所拥有的分区所有权，检查点存储保证只有一个实例能够成功声明分区所有权。 因此，在任意给定时间点，最多只有一个处理器从分区接收事件。
@@ -77,17 +77,17 @@ ms.locfileid: "80398303"
 
 ## <a name="checkpointing"></a>检查点
 
-检查点是事件处理器标记或提交上次在分区中成功处理的事件位置的过程。** 标记检查点通常在处理事件的函数内部执行，并在使用者组中按分区进行。 
+检查点是事件处理器标记或提交上次在分区中成功处理的事件位置的过程。  标记检查点通常在处理事件的函数内部执行，并在使用者组中按分区进行。 
 
 如果事件处理器从分区断开连接，另一个实例可以在检查点位置继续处理该分区，该检查点是以前由该使用者组中该分区的最后一个处理器提交的。 当处理器建立连接时，它会将此偏移量传递给事件中心，以指定要从其开始读取数据的位置。 这样，你便可以使用检查点将事件标记为已由下游应用程序“完成”，并在事件处理器出现故障时提供复原能力。 若要返回到较旧的数据，可以在此检查点过程中指定较低的偏移量。 
 
 执行检查点将事件标记为已处理时，将会根据事件偏移量和序列号在检查点存储中添加或更新某个条目。 用户应确定检查点的更新频率。 每次成功处理事件之后进行更新可能会影响性能和成本，因为这会对底层检查点存储触发写入操作。 另外，为每个事件设置检查点意味着对排队消息传递模式使用服务总线队列可能比使用事件中心更好。 事件中心背后的理念是大规模实现“至少一次”传递。 将下游系统指定为幂等，即可方便地在发生故障或重启（导致多次收到相同的事件）后恢复。
 
 > [!NOTE]
-> 如果在支持与 Azure 上通常可用的版本的存储 Blob SDK 不同的环境中使用 Azure Blob 存储作为检查点存储，则需要使用代码将存储服务 API 版本更改为该环境支持的特定版本。 例如，如果您在[Azure 堆栈中心版本 2002 上运行事件中心](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)，则存储服务的最高可用版本是版本 2017-11-09。 在这种情况下，您需要使用代码将存储服务 API 版本定位到 2017-11-09。 有关如何定位特定存储 API 版本的示例，请参阅 GitHub 上的以下示例： 
-> - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
+> 如果使用 Azure Blob 存储作为支持不同版本的存储 Blob SDK 的环境中的检查点存储，则需要使用代码将存储服务 API 版本更改为该环境支持的特定版本。 例如，如果在[Azure Stack 集线器版本2002上运行事件中心](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)，则存储服务的最高可用版本为2017-11-09 版。 在这种情况下，需要使用代码将存储服务 API 版本设定为2017-11-09。 有关如何以特定存储 API 版本为目标的示例，请参阅 GitHub 上的以下示例： 
+> - [.Net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)。 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithOlderStorageVersion.java)
-> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.js)或[类型脚本](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.ts)
+> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.js)或[TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.ts)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/event_processor_blob_storage_example_with_storage_api_version.py)
 
 ## <a name="thread-safety-and-processor-instances"></a>线程安全性和处理程序实例

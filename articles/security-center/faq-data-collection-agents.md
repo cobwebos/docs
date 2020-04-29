@@ -1,6 +1,6 @@
 ---
-title: Azure 安全中心常见问题 - 数据收集和代理
-description: 有关 Azure 安全中心的数据收集、代理和工作区的常见问题，该产品可帮助您预防、检测和响应威胁
+title: Azure 安全中心常见问题解答-数据收集和代理
+description: 有关 Azure 安全中心的数据收集、代理和工作区的常见问题，一种有助于防止、检测和响应威胁的产品
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,20 +14,20 @@ ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: 0dbad1a94479430426dae47df7ca3a3ecd9dc980
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80436200"
 ---
-# <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>常见问题解答 - 有关数据收集、代理和工作区的问题
+# <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>常见问题解答-有关数据收集、代理和工作区的问题
 
-安全中心从 Azure 虚拟机 （VM）、虚拟机规模集、IaaS 容器和非 Azure 计算机（包括本地计算机）收集数据，以监视安全漏洞和威胁。 数据使用 Log Analytics 代理进行收集，该代理从计算机读取各种与安全相关的配置和事件日志，并将数据复制到工作区进行分析。
+安全中心从 Azure 虚拟机（Vm）、虚拟机规模集、IaaS 容器和非 Azure 计算机（包括本地计算机）收集数据以监视安全漏洞和威胁。 数据是使用 Log Analytics 代理收集的，该代理从计算机中读取各种与安全相关的配置和事件日志，然后将数据复制到工作区进行分析。
 
 
 ## <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>安全中心创建的工作区中的 Azure Monitor 日志是否会产生费用？
 
-不是。 安全中心创建的工作区（虽然为每个节点计费为 Azure 监视器日志配置）不产生 Azure 监视器日志费用。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案：
+不能。 安全中心创建的工作区，配置为按节点计费 Azure Monitor 日志，不会产生 Azure Monitor 日志收费。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案：
 
 - **免费层** – 安全中心在默认工作区中启用“SecurityCenterFree”解决方案。 免费层不会产生费用。
 
@@ -41,13 +41,13 @@ ms.locfileid: "80436200"
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 
-## <a name="what-qualifies-a-vm-for-automatic-provisioning-of-the-log-analytics-agent-installation"></a>哪些 VM 适合自动预配日志分析代理安装？
+## <a name="what-qualifies-a-vm-for-automatic-provisioning-of-the-log-analytics-agent-installation"></a>哪些虚拟机有资格自动预配 Log Analytics 代理安装？
 
 Windows 或 Linux IaaS VM 的合格条件如下：
 
-- 日志分析代理扩展当前未安装在 VM 上。
+- 虚拟机上当前未安装 Log Analytics 代理扩展。
 - 该 VM 处于正在运行状态。
-- 安装了 Windows 或 Linux [Azure 虚拟机代理](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)。
+- 已安装 Windows 或 Linux [Azure 虚拟机代理](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)。
 - 该 VM 未用作应用程序，例如 Web 防火墙或下一代防火墙。
 
 
@@ -55,7 +55,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 建议不要删除默认工作区****。 安全中心使用默认工作区存储 VM 的安全数据。 删除工作区后，安全中心无法收集此数据，因此无法提供某些安全建议和提示。
 
-要恢复，请删除连接到已删除工作区的 VM 上的日志分析代理。 安全中心会重新安装代理并创建新的默认工作区。
+若要恢复，请删除连接到已删除工作区的 Vm 上的 Log Analytics 代理。 安全中心会重新安装代理并创建新的默认工作区。
 
 ## <a name="how-can-i-use-my-existing-log-analytics-workspace"></a>我如何使用现有的 Log Analytics 工作区？
 
@@ -75,41 +75,41 @@ Windows 或 Linux IaaS VM 的合格条件如下：
     > [!NOTE]
     > 下拉菜单中只显示用户有权访问且 Azure 订阅包含的工作区。
 
-1. 选择“保存”。  系统将询问您是否要重新配置受监视的 VM。
+1. 选择“保存”  。 系统会询问你是否要重新配置受监视的 Vm。
 
-    - 如果只希望在新 VM 上应用**** 新的工作区设置，请选择“否”****。 新的工作区设置仅适用于新的代理安装;新发现的 VM 未安装日志分析代理。
-    - 如果要在所有**VM 上应用**新的工作区设置，请选择"**是**"。 此外，所有连接到安全中心创建的工作区的 VM 也都会重新连接到新的目标工作区。
+    - 如果只希望在新 VM 上应用**** 新的工作区设置，请选择“否”****。 新的工作区设置仅适用于新的代理安装;未安装 Log Analytics 代理的新发现的虚拟机。
+    - 如果希望在**所有 vm 上应用**新的工作区设置，请选择 **"是"** 。 此外，所有连接到安全中心创建的工作区的 VM 也都会重新连接到新的目标工作区。
 
     > [!NOTE]
-    > 如果选择 **"是**"，则在所有 VM 都重新连接到新目标工作区之前，不要删除安全中心创建的任何工作区。 如果过早删除工作区，此操作将会失败。
+    > 如果选择 **"是"**，请不要删除安全中心创建的任何工作区，直到所有 vm 均已重新连接到新的目标工作区。 如果过早删除工作区，此操作将会失败。
 
-    - 要取消操作，请选择 **"取消**"。
+    - 若要取消操作，请选择 "**取消**"。
 
-## <a name="what-if-the-log-analytics-agent-was-already-installed-as-an-extension-on-the-vm"></a>如果日志分析代理已作为扩展安装在 VM 上，该怎么办？<a name="mmaextensioninstalled"></a>
+## <a name="what-if-the-log-analytics-agent-was-already-installed-as-an-extension-on-the-vm"></a>如果已将 Log Analytics 代理作为扩展安装到 VM 上，该怎么办？<a name="mmaextensioninstalled"></a>
 
 将 Monitoring Agent 作为扩展安装时，扩展配置仅允许向单个工作区报告。 安全中心不会覆盖用户工作区的现有连接。 安全中心将来自 VM 的安全数据存储在已连接的工作区中，前提是已在该工作区中安装“Security”或“SecurityCenterFree”解决方案。 在此过程中，安全中心可将扩展版本升级到最新版本。
 
-有关详细信息，请参阅[预先存在的代理安装情况下的自动预配](security-center-enable-data-collection.md#preexisting)。
+有关详细信息，请参阅[在预先存在的代理安装的情况下自动预配](security-center-enable-data-collection.md#preexisting)。
 
 
 
-## <a name="what-if-a-log-analytics-agent-is-directly-installed-on-the-machine-but-not-as-an-extension-direct-agent"></a>如果日志分析代理直接安装在计算机上，而不是作为扩展（直接代理）安装，该怎么办？<a name="directagentinstalled"></a>
+## <a name="what-if-a-log-analytics-agent-is-directly-installed-on-the-machine-but-not-as-an-extension-direct-agent"></a>如果 Log Analytics 代理直接安装在计算机上，而不是作为扩展（直接代理），该怎么办？<a name="directagentinstalled"></a>
 
-如果日志分析代理直接安装在 VM 上（不作为 Azure 扩展），安全中心将安装日志分析代理扩展，并可能将日志分析代理升级到最新版本。
+如果 Log Analytics 代理直接安装在 VM 上（而不是 Azure 扩展），则安全中心将安装 Log Analytics 代理扩展，并可能将 Log Analytics 代理升级到最新版本。
 
-已安装的代理将继续报告其已配置的工作区，此外，还会向安全中心配置的工作区报告（Windows 计算机上支持多宿主）。
+安装的代理将继续向其已配置的工作区报告，此外，还会向安全中心（在 Windows 计算机上支持多主页）上配置的工作区报告。
 
-如果配置的工作区是用户工作区（不是安全中心的默认工作区），则需要在它上安装"安全/安全中心"解决方案，以便安全中心从 VM 和报告到该工作区的计算机开始处理事件。
+如果配置的工作区是一个用户工作区（而不是安全中心的默认工作区），则需要在该工作区上安装 "Security/" SecurityCenterFree "解决方案，以便安全中心开始处理向该工作区报告的 Vm 和计算机的事件。
 
-对于 Linux 计算机，尚未支持代理多宿主 - 因此，如果检测到现有代理安装，则不会发生自动预配，并且不会更改计算机的配置。
+对于 Linux 计算机，尚不支持代理多宿主，因此，如果检测到现有的代理安装，则不会发生自动预配，并且不会更改计算机的配置。
 
-对于在 2019 年 3 月 17 日之前连接到安全中心订阅的现有计算机，当检测到现有代理时，将不会安装日志分析代理扩展，也不会影响计算机。 对于这些计算机，请参阅“解决计算机上的监视代理运行状况问题”中的建议来解决这些计算机上的代理安装问题
+对于在 17 2019 年3月之前，订阅上的现有计算机载入到安全中心，当检测到现有代理时，将不会安装 Log Analytics 代理扩展，并且计算机将不会受到影响。 对于这些计算机，请参阅“解决计算机上的监视代理运行状况问题”中的建议来解决这些计算机上的代理安装问题
 
 有关详细信息，请参阅下一部分[如果已在 VM 上安装 System Center Operations Manager 或 OMS 直接代理，会发生什么情况？](#scomomsinstalled)
 
-## <a name="what-if-a-system-center-operations-manager-agent-is-already-installed-on-my-vm"></a>如果我的 VM 上已安装系统中心操作管理器代理，该怎么办？<a name="scomomsinstalled"></a>
+## <a name="what-if-a-system-center-operations-manager-agent-is-already-installed-on-my-vm"></a>如果 System Center Operations Manager 代理已安装在我的 VM 上，该怎么办？<a name="scomomsinstalled"></a>
 
-安全中心将并行安装日志分析代理扩展到现有的系统中心操作管理器代理。 现有代理将继续正常向系统中心操作管理器服务器报告。 请注意，操作管理器代理和日志分析代理共享公共运行时库，这些库将在此过程中更新为最新版本。 注意 - 如果安装了操作管理器代理的版本 2012，请不要打开自动预配（当操作管理器服务器也是版本 2012 时，可管理性功能可能会丢失）。
+安全中心会将 Log Analytics 代理扩展并行安装到现有 System Center Operations Manager 代理。 现有代理将继续正常向 System Center Operations Manager 服务器报告。 请注意，Operations Manager 代理和 Log Analytics 代理共享公共运行库，在此过程中将更新为最新版本。 注意-如果安装了 Operations Manager 代理2012版，请不要启用自动预配（当 Operations Manager 服务器也是版本2012时，可管理性功能可能会丢失）。
 
 
 ## <a name="what-is-the-impact-of-removing-these-extensions"></a>删除这些扩展会有什么影响？
@@ -136,26 +136,26 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 如果存在以下情况，可以选择禁用自动预配：
 
-- 安全中心执行的自动代理安装应用到整个订阅。 无法将自动安装应用到一部分 VM。 如果日志分析代理无法安装关键 VM，则应选择退出自动预配。
-- 日志分析代理扩展的安装将更新代理的版本。 这适用于直接代理和系统中心操作管理器代理（在后者中，操作管理器和日志分析代理共享公共运行时库 - 将在此过程中更新）。 如果已安装的操作管理器代理版本为 2012 版本并升级，则当操作管理器服务器也是版本 2012 时，可管理性功能可能会丢失。 如果已安装的操作管理器代理是版本 2012，请考虑选择退出自动预配。
-- 如果订阅外部有自定义工作区（集中式工作区），则应选择退出自动预配。 您可以手动安装日志分析代理扩展，并在没有安全中心覆盖连接的情况下将其连接到工作区。
+- 安全中心执行的自动代理安装应用到整个订阅。 无法将自动安装应用到一部分 VM。 如果存在无法与 Log Analytics 代理一起安装的关键 Vm，则应选择禁用自动预配。
+- 安装 Log Analytics 代理扩展会更新代理的版本。 这适用于直接代理和 System Center Operations Manager 代理（在后一种情况下，Operations Manager 和 Log Analytics 代理共享公共运行时库（将在该过程中更新）。 如果安装的 Operations Manager 代理版本为2012，并且升级，则当 Operations Manager 服务器也是版本2012时，可管理性功能可能会丢失。 如果安装的 Operations Manager 代理是版本2012，请考虑选择退出自动预配。
+- 如果订阅具有外部自定义工作区（集中工作区），则应选择不使用自动设置。 你可以手动安装 Log Analytics 代理扩展，并将其连接到你的工作区，而无需安全中心替代连接。
 - 如果想要避免为每个订阅创建多个工作区，并且订阅中包含自己的自定义工作区，则可以采取以下两种做法：
 
    1. 可以选择禁用自动预配。 迁移后，根据[如何使用现有的 Log Analytics 工作区](#how-can-i-use-my-existing-log-analytics-workspace)中所述指定默认工作区设置。
 
-   1. 或者，您可以允许完成迁移、在 VM 上安装日志分析代理以及连接到创建的工作区的 VM。 然后，在选择启用重新配置已安装代理的情况下，通过指定默认工作区设置来选择自己的自定义工作区。 有关详细信息，请参阅[如何使用现有的 Log Analytics 工作区？](#how-can-i-use-my-existing-log-analytics-workspace)
+   1. 或者，你可以允许迁移完成，Log Analytics 代理安装在 Vm 上，并将 Vm 连接到创建的工作区。 然后，在选择启用重新配置已安装代理的情况下，通过指定默认工作区设置来选择自己的自定义工作区。 有关详细信息，请参阅[如何使用现有的 Log Analytics 工作区？](#how-can-i-use-my-existing-log-analytics-workspace)
 
 
 ## <a name="what-are-the-implications-of-opting-out-of-automatic-provisioning"></a>选择禁用自动预配有何影响？
 
-迁移完成后，安全中心将无法从 VM 收集安全数据，因此无法提供某些安全建议和提示。 如果选择退出，请手动安装日志分析代理。 请参阅[选择禁用时的建议步骤](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning)。
+迁移完成后，安全中心将无法从 VM 收集安全数据，因此无法提供某些安全建议和提示。 如果选择退出，请手动安装 Log Analytics 代理。 请参阅[选择禁用时的建议步骤](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning)。
 
 
 ## <a name="what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning"></a>选择禁用自动预配时的建议步骤是什么？
 
-手动安装日志分析代理扩展，以便安全中心可以从 VM 收集安全数据并提供建议和警报。 有关安装的指导，请参阅 [Windows VM 的代理安装](../virtual-machines/extensions/oms-windows.md)或 [Linux VM 的代理安装](../virtual-machines/extensions/oms-linux.md)。
+手动安装 Log Analytics 代理扩展，以便安全中心可以从 Vm 收集安全数据，并提供建议和警报。 有关安装的指导，请参阅 [Windows VM 的代理安装](../virtual-machines/extensions/oms-windows.md)或 [Linux VM 的代理安装](../virtual-machines/extensions/oms-linux.md)。
 
-可将代理连接到任何现有的自定义工作区或安全中心创建的工作区。 如果自定义工作区未启用"安全"或"安全中心免费"解决方案，则需要应用解决方案。 要应用，请选择自定义工作区或订阅，并通过 **"安全策略和定价层**"页面应用定价层。
+可将代理连接到任何现有的自定义工作区或安全中心创建的工作区。 如果自定义工作区未启用 "安全" 或 "SecurityCenterFree" 解决方案，则需要应用解决方案。 若要应用，请选择自定义工作区或订阅，并通过 "**安全策略-定价层**" 页应用定价层。
 
    ![定价层][1]
 
@@ -164,7 +164,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 ## <a name="how-do-i-remove-oms-extensions-installed-by-security-center"></a>如何删除由安全中心安装的 OMS 扩展？<a name="remove-oms"></a>
 
-您可以手动删除日志分析代理。 不建议这样操作，因为这会限制安全中心的建议和提示。
+您可以手动删除 Log Analytics 代理。 不建议这样操作，因为这会限制安全中心的建议和提示。
 
 > [!NOTE]
 > 启用数据收集后，安全中心会删除代理，然后重新安装。  需要禁用数据收集，然后再手动删除代理。 请参阅“如何停止自动代理安装和工作区创建？”，查看有关禁用数据收集的说明。
@@ -175,12 +175,12 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 1.    在“Log Analytics”页上，选择工作区：
 
-1.    选择您不想监视的 VM，然后选择 **"断开连接**"。
+1.    选择不想监视的 Vm，并选择 "**断开连接**"。
 
    ![删除代理][3]
 
 > [!NOTE]
-> 如果 Linux VM 已具有非扩展 OMS 代理，则删除扩展程序也会删除代理，您必须重新安装它。
+> 如果 Linux VM 已有非扩展 OMS 代理，则删除该扩展也会删除该代理，你必须重新安装它。
 
 
 ## <a name="how-do-i-disable-data-collection"></a>如何禁用数据收集？
@@ -197,19 +197,19 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 ## <a name="what-happens-when-data-collection-is-enabled"></a>启用数据收集之后会发生什么？
 
-启用自动预配后，安全中心会在所有支持的 Azure VM 和创建的任何新 VM 上预配日志分析代理。 建议自动预配，但也提供手动代理安装。 [了解如何安装日志分析代理扩展](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)。 
+启用自动预配后，安全中心将在所有受支持的 Azure Vm 和创建的任何新 Vm 上预配 Log Analytics 代理。 建议使用自动设置，但也可以使用手动代理安装。 [了解如何安装 Log Analytics 代理扩展](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)。 
 
-该代理可启用进程创建事件 4688 和事件 4688 内的 *CommandLine* 字段。 在 VM 上创建的新进程由 EventLog 记录，并由安全中心的检测服务进行监视。 有关每个新流程记录的详细信息，请参阅[4688 中的描述字段](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields)。 该代理还收集 VM 上创建的 4688 事件，并将这些事件存储在搜索中。
+该代理可启用进程创建事件 4688 和事件 4688 内的 *CommandLine* 字段。 虚拟机上创建的新进程由 EventLog 记录，并由安全中心的检测服务监视。 有关为每个新进程记录的详细信息的详细信息，请参阅[4688 中的说明字段](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields)。 该代理还收集 VM 上创建的 4688 事件，并将这些事件存储在搜索中。
 
-该代理还为[自适应应用程序控件](security-center-adaptive-application.md)启用数据收集，安全中心会在审核模式下配置本地 AppLocker 策略以允许所有应用程序。 此策略将导致 AppLocker 生成事件，然后由安全中心收集和利用这些事件。 请务必注意，不会在已配置 AppLocker 策略的任何计算机上配置此策略。 
+该代理还为[自适应应用程序控件](security-center-adaptive-application.md)启用数据收集，安全中心会在审核模式下配置本地 AppLocker 策略以允许所有应用程序。 此策略将导致 AppLocker 生成事件，并由安全中心收集和使用。 请务必注意，不会在已配置 AppLocker 策略的任何计算机上配置此策略。 
 
-当安全中心检测到 VM 上的可疑活动时，如果已提供[安全联系信息](security-center-provide-security-contact-details.md)，将通过电子邮件通知客户。 警报在安全中心的安全警报仪表板中也可见。
+当安全中心检测到 VM 上的可疑活动时，如果已提供[安全联系信息](security-center-provide-security-contact-details.md)，将通过电子邮件通知客户。 安全中心的 "安全警报" 仪表板中也会显示警报。
 
 
-## <a name="will-security-center-work-using-an-oms-gateway"></a>安全中心是否会使用 OMS 网关工作？
+## <a name="will-security-center-work-using-an-oms-gateway"></a>安全中心将使用 OMS 网关吗？
 
-是的。 Azure 安全中心利用 Azure 监视器使用日志分析代理从 Azure VM 和服务器收集数据。
-要收集数据，每个 VM 和服务器都必须使用 HTTPS 连接到 Internet。 连接可以是直接的，使用代理，或通过[OMS 网关](../azure-monitor/platform/gateway.md)。
+是的。 Azure 安全中心利用 Azure Monitor 从 Azure Vm 和服务器使用 Log Analytics 代理收集数据。
+若要收集数据，每个 VM 和服务器都必须使用 HTTPS 连接到 Internet。 可以直接连接，也可以使用代理，也可以通过[OMS 网关](../azure-monitor/platform/gateway.md)连接。
 
 
 ## <a name="does-the-monitoring-agent-impact-the-performance-of-my-servers"></a>Monitoring Agent 会影响服务器性能吗？

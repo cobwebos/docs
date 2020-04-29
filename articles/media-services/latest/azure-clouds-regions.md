@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 01/21/2020
 ms.author: juliako
 ms.openlocfilehash: 1257bf4dfb0d5b2c4995cac760290f97293a0c0f
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80382964"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>存在 Azure 媒体服务 v3 的云和区域
@@ -24,7 +24,7 @@ Azure 媒体服务 v3 可通过 Azure资源管理器清单在全球 Azure、Azur
 
 ## <a name="feature-availability-in-azure-clouds"></a>Azure 云中的功能可用性
 
-| Feature|全球 Azure 区域 | Azure Government |Azure 德国|Azure 中国世纪互联|
+| Feature|全球 Azure 区域 | Azure Government|Azure 德国|Azure 中国世纪互联|
 | --- | --- | --- | --- | --- |
 | [Azure EventGrid](reacting-to-media-services-events.md) | 可用 | 不可用 | 不可用 | 不可用 |
 | [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  可用 | 不可用 | 不可用 | 不可用 |
@@ -72,7 +72,7 @@ az account list-locations
 | 身份验证 | `https://login.microsoftonline.com/` |
 | 令牌受众 | `https://management.core.windows.net/` |
 
-### <a name="azure-government"></a>Azure Government 
+### <a name="azure-government"></a>Azure Government
 
 |终结点||
 | --- | --- |
@@ -96,7 +96,7 @@ az account list-locations
 | 身份验证 | `https://login.chinacloudapi.cn/` |
 | 令牌受众 |  `https://management.core.chinacloudapi.cn/` |
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)
 * [Azure 地域](https://azure.microsoft.com/global-infrastructure/geographies/)

@@ -1,6 +1,6 @@
 ---
 title: 适用于 Windows 的 Azure 自定义脚本扩展
-description: 使用自定义脚本扩展自动执行 Windows VM 配置任务
+description: 使用自定义脚本扩展自动化 Windows VM 配置任务
 services: virtual-machines-windows
 manager: carmonm
 author: bobbytreed
@@ -11,17 +11,17 @@ ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
 ms.openlocfilehash: 2c7cad2dfdcd55073a1cf09d79e5223b666ced5f
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80478148"
 ---
 # <a name="custom-script-extension-for-windows"></a>适用于 Windows 的自定义脚本扩展
 
-自定义脚本扩展在 Azure 虚拟机上下载并执行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置或管理任务。 可以从 Azure 存储或 GitHub 下载脚本，或者在扩展运行时会脚本提供给 Azure 门户。 自定义脚本扩展与 Azure 资源管理器模板集成，可以使用 Azure CLI、PowerShell、Azure 门户或 Azure 虚拟机 REST API 运行它。
+自定义脚本扩展在 Azure 虚拟机上下载并执行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置或管理任务。 可以从 Azure 存储或 GitHub 下载脚本，或者在扩展运行时将脚本提供给 Azure 门户。 自定义脚本扩展与 Azure 资源管理器模板集成，可以使用 Azure CLI、PowerShell、Azure 门户或 Azure 虚拟机 REST API 运行它。
 
-本文档详细说明如何通过 Azure PowerShell 模块、Azure 资源管理器模板使用自定义脚本扩展，同时详细说明 Windows 系统上的故障排除步骤。
+本文档详细说明了如何通过 Azure PowerShell 模块和 Azure Resource Manager 模板使用自定义脚本扩展，同时详细说明了 Windows 系统上的故障排除步骤。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -38,7 +38,7 @@ ms.locfileid: "80478148"
 
 ### <a name="internet-connectivity"></a>Internet 连接
 
-如果需要从外部（例如 GitHub 或 Azure 存储）下载脚本，则需要打开其他防火墙和网络安全组端口。 例如，如果脚本位于 Azure 存储中，则可以使用 Azure NSG 服务标记进行[存储](../../virtual-network/security-overview.md#service-tags)。
+如果需要从外部（例如 GitHub 或 Azure 存储）下载脚本，则需要打开其他防火墙和网络安全组端口。 例如，如果脚本位于 Azure 存储中，可以使用[存储](../../virtual-network/security-overview.md#service-tags)的 Azure NSG 服务标记来允许访问。
 
 如果脚本位于本地服务器上，则可能仍需要打开其他防火墙和网络安全组端口。
 
@@ -53,7 +53,7 @@ ms.locfileid: "80478148"
 * 扩展将只运行脚本一次，如果想要在每次启动时运行脚本，则需要使用扩展创建 Windows 计划任务。
 * 如果想要计划脚本何时运行，应使用扩展创建 Windows 计划任务。
 * 脚本运行时，Azure 门户或 CLI 中只会显示“正在转换”扩展状态。 如果希望更频繁地更新正在运行的脚本的状态，需要创建自己的解决方案。
-* 自定义脚本扩展本身不支持代理服务器，但可以在脚本中使用支持代理服务器的文件传输工具，如 Curl**
+* 自定义脚本扩展本身不支持代理服务器，但可以在脚本中使用支持代理服务器的文件传输工具，如 Curl 
 * 请注意脚本或命令可能依赖的非默认目录位置，按逻辑对这种情况进行处理。
 * 自定义脚本扩展将在 LocalSystem 帐户下运行
 
@@ -63,7 +63,7 @@ ms.locfileid: "80478148"
 
 可将敏感数据存储在受保护的配置中，此配置经过加密，只能在虚拟机内部解密。 当执行命令包含机密（例如密码）时，受保护的配置相当有用。
 
-这些项应视为敏感数据，并且应在扩展保护的设置配置中指定。 Azure VM 扩展保护的设置数据已加密，并且只能在目标虚拟机上解密。
+这些项目应视为敏感数据，并在扩展的受保护设置配置中指定。 Azure VM 扩展的受保护设置数据已加密，并且只能在目标虚拟机上解密。
 
 ```json
 {
@@ -100,7 +100,7 @@ ms.locfileid: "80478148"
 ```
 
 > [!NOTE]
-> 托管标识属性**不得**与存储帐户名称或存储帐户密钥属性结合使用
+> managedIdentity 属性**不能**与 storageAccountName 或 storageAccountKey 属性结合使用
 
 > [!NOTE]
 > 在某个时间点，只能在 VM 上安装一个扩展版本，在同一资源管理器模板中为同一 VM 指定两次自定义脚本将会失败。
@@ -113,15 +113,15 @@ ms.locfileid: "80478148"
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| 发布者 | Microsoft.Compute | 字符串 |
-| type | CustomScriptExtension | 字符串 |
+| publisher | Microsoft.Compute | string |
+| type | CustomScriptExtension | string |
 | typeHandlerVersion | 1.10 | int |
 | fileUris（例如） | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
 | timestamp（示例） | 123456789 | 32-bit integer |
-| commandToExecute（例如） | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | 字符串 |
-| storageAccountName（例如） | examplestorageacct | 字符串 |
-| storageAccountKey（例如） | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | 字符串 |
-| 托管身份（例如） | [ ] 或 " 客户端 Id"：" 31b403a-c364-4240-a7ff-d85fb6cd7232" * 或 { "objectId"：" 12dd289c-0583-46e3-b9b4-115d5c19ef4b" | | json 对象 |
+| commandToExecute（例如） | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | string |
+| storageAccountName（例如） | examplestorageacct | string |
+| storageAccountKey（例如） | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| managedIdentity（例如） | { } 或 { "clientId":"31b403aa-c364-4240-a7ff-d85fb6cd7232" } 或 { "objectId":"12dd289c-0583-46e5-b9b4-115d5c19ef4b" } | json 对象 |
 
 >[!NOTE]
 >这些属性名称区分大小写。 要避免部署问题，请使用如下所示的名称。
@@ -145,17 +145,17 @@ ms.locfileid: "80478148"
 
 公共设置会以明文形式发送到将执行脚本的 VM。  受保护设置使用只有 Azure 和 VM 知道的密钥进行加密。 这些设置会在发送时保存到 VM 中，也就是说，如果设置已加密，则会在 VM 上加密保存。 用于对已加密值解密的证书存储在 VM 上，该证书用于在运行时对设置解密（如必要）。
 
-####  <a name="property-managedidentity"></a>属性：托管标识
+####  <a name="property-managedidentity"></a>属性：managedIdentity
 > [!NOTE]
-> 此属性**必须**仅在受保护设置中指定。
+> 只能在受保护的设置中指定**此属性。**
 
-CustomScript（版本 1.10 以后）支持从"fileUris"设置中提供的 URL 下载文件的[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。 它允许 CustomScript 访问 Azure 存储专用 Blob 或容器，而无需用户传递 SAS 令牌或存储帐户密钥等机密。
+CustomScript （版本1.10 以上版本）支持用于从 "fileUris" 设置中提供的 Url 下载文件的[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。 它允许 CustomScript 访问 Azure 存储专用 blob 或容器，而用户无需传递机密（如 SAS 令牌或存储帐户密钥）。
 
-要使用此功能，用户必须向预期运行 CustomScript 的 VM 或 VMSS 添加[系统分配](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)或[用户分配的](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity)标识，并[授予对 Azure 存储容器或 blob 的托管标识访问权限](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)。
+若要使用此功能，用户必须将[系统分配](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)的或[用户分配](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity)的标识添加到要在其中运行 CUSTOMSCRIPT 的 VM 或 VMSS，并向[托管标识授予对 Azure 存储容器或 blob 的访问权限](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)。
 
-要在目标 VM/VMSS 上使用系统分配的标识，将"托管标识"字段设置为空 json 对象。 
+若要在目标 VM/VMSS 上使用系统分配的标识，请将 "对 microsoft.managedidentity" 字段设置为空的 json 对象。 
 
-> 示例：
+> 例如：
 >
 > ```json
 > {
@@ -165,7 +165,7 @@ CustomScript（版本 1.10 以后）支持从"fileUris"设置中提供的 URL �
 > }
 > ```
 
-要在目标 VM/VMSS 上使用用户分配的标识，请使用客户端 ID 或托管标识的对象 ID 配置"托管标识"字段。
+若要在目标 VM/VMSS 上使用用户分配的标识，请将 "对 microsoft.managedidentity" 字段配置为具有托管标识的客户端 ID 或对象 ID。
 
 > 示例：
 >
@@ -185,7 +185,7 @@ CustomScript（版本 1.10 以后）支持从"fileUris"设置中提供的 URL �
 > ```
 
 > [!NOTE]
-> 托管标识属性**不得**与存储帐户名称或存储帐户密钥属性结合使用
+> 对 microsoft.managedidentity 属性**不**能与 StorageAccountName 或 storageAccountKey 属性一起使用
 
 ## <a name="template-deployment"></a>模板部署
 
@@ -258,7 +258,7 @@ Set-AzVMExtension -ResourceGroupName <resourceGroupName> `
 
 如果想要多次运行自定义脚本扩展，则只能在以下条件下执行此操作：
 
-* 扩展**名称**参数与扩展的上一个部署相同。
+* Extension **Name**参数与扩展的以前部署相同。
 * 更新配置，否则不会重新执行命令。 可以将动态属性添加到命令中，如时间戳。
 
 或者，可以将 [ForceUpdateTag](/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension.forceupdatetag) 属性设置为 **true**。
@@ -272,7 +272,7 @@ The response content cannot be parsed because the Internet Explorer engine is no
 ```
 ## <a name="virtual-machine-scale-sets"></a>虚拟机规模集
 
-要在规模集中部署自定义脚本扩展，请参阅添加[AzVms 扩展](https://docs.microsoft.com/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0)
+若要在规模集上部署自定义脚本扩展，请参阅[AzVmssExtension](https://docs.microsoft.com/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0)
 
 ## <a name="classic-vms"></a>经典 VM
 
@@ -351,4 +351,4 @@ C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 
 ### <a name="support"></a>支持
 
-如果本文中的任何一点都需要更多帮助，则可以在[MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上联系 Azure 专家。 还可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择"获取支持"。 有关使用 Azure 支持的信息，请阅读[Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果在本文的任何位置需要更多帮助，可以联系 MSDN Azure 上的 Azure 专家[并 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)。 还可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 "获取支持"。 有关使用 Azure 支持的信息，请阅读[Microsoft Azure 支持常见问题](https://azure.microsoft.com/support/faq/)。

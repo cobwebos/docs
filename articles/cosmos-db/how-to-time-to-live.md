@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: anfeldma
 ms.openlocfilehash: 72653a3b28181316a2bf7dd7e73f2685c3afcf73
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80384256"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中配置生存时间
@@ -21,18 +21,18 @@ ms.locfileid: "80384256"
 
 通过以下步骤在没有到期时间的容器上启用生存时间。 启用此项即可在项级别重写 TTL。 也可通过输入非零值（代表秒）来设置 TTL。
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 2. 创建新的 Azure Cosmos 帐户或选择现有的帐户。
 
-3. 打开“数据资源管理器”窗格****。
+3. 打开“数据资源管理器”窗格  。
 
 4. 选择一个现有的容器，将其展开并修改以下值：
 
-   * 打开“规模和设置”窗口。****
-   * 在“设置”下找到“生存时间”。********
-   * 选择“启用(无默认值)”或选择“启用”，然后设置一个 TTL 值********
-   * 单击 **“确定”**，保存这些更改。
+   * 打开“规模和设置”窗口。 
+   * 在“设置”下找到“生存时间”。  
+   * 选择“启用(无默认值)”或选择“启用”，然后设置一个 TTL 值  
+   * 单击“保存”  以保存更改。
 
    ![在 Azure 门户中配置生存时间](./media/how-to-time-to-live/how-to-time-to-live-portal.png)
 
@@ -45,7 +45,7 @@ ms.locfileid: "80384256"
 若要在容器上创建或启用 TTL，请参阅
 
 * [使用 Azure CLI 创建具有 TTL 的容器](manage-with-cli.md#create-a-container-with-ttl)
-* [使用 PowerShell 使用 TTL 创建容器](manage-with-powershell.md#create-container-unique-key-ttl)
+* [使用 PowerShell 创建具有 TTL 的容器](manage-with-powershell.md#create-container-unique-key-ttl)
 
 ## <a name="enable-time-to-live-on-a-container-using-sdk"></a>使用 SDK 在容器上启用生存时间
 
@@ -75,7 +75,7 @@ await client.GetDatabase("database").CreateContainerAsync(new ContainerPropertie
 });
 ```
 
-### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-noexpiry"></a>Java SDK V4（Maven com.azure：：azure-宇宙）
+### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-noexpiry"></a>Java SDK V4 （Maven：： azure-cosmos）
 
 ```java
 CosmosAsyncContainer container;
@@ -86,7 +86,7 @@ containerProperties.setDefaultTimeToLiveInSeconds(-1);
 container = database.createContainerIfNotExists(containerProperties, 400).block().getContainer();
 ```
 
-### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-noexpiry"></a>Java SDK V3（Maven com.microsoft.azure：：azure-宇宙）
+### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-noexpiry"></a>Java SDK V3 （Maven：： azure-cosmos）
 
 ```java
 CosmosContainer container;
@@ -141,7 +141,7 @@ async function createcontainerWithTTL(db: Database, containerDefinition: Contain
 }
 ```
 
-### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-defaultexpiry"></a>Java SDK V4（Maven com.azure：：azure-宇宙）
+### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-defaultexpiry"></a>Java SDK V4 （Maven：： azure-cosmos）
 
 ```java
 CosmosAsyncContainer container;
@@ -152,7 +152,7 @@ containerProperties.setDefaultTimeToLiveInSeconds(90 * 60 * 60 * 24);
 container = database.createContainerIfNotExists(containerProperties, 400).block().getContainer();
 ```
 
-### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-defaultexpiry"></a>Java SDK V3（Maven com.microsoft.azure：：azure-宇宙）
+### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-defaultexpiry"></a>Java SDK V3 （Maven：： azure-cosmos）
 
 ```java
 CosmosContainer container;
@@ -177,7 +177,7 @@ container = database.createContainerIfNotExists(containerProperties, 400).block(
 
 使用以下步骤在项上启用生存时间：
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 2. 创建新的 Azure Cosmos 帐户或选择现有的帐户。
 
@@ -187,7 +187,7 @@ container = database.createContainerIfNotExists(containerProperties, 400).block(
 
    * 打开“规模和设置”窗口。****
    * 在“设置”下找到“生存时间”。********
-   * 选择 **"打开"（无默认值）** 或选择 **"打开"** 并设置 TTL 值。 
+   * 选择 **"开" （无默认值）** 或选择 **"** 开" 并设置 TTL 值。 
    * 单击 **“确定”**，保存这些更改。
 
 5. 接下来，导航到要为其设置生存时间的项，添加 `ttl` 属性并选择“更新”****。 
@@ -240,7 +240,7 @@ const itemDefinition = {
         };
 ```
 
-### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-itemexpiry"></a>Java SDK V4（Maven com.azure：：azure-宇宙）
+### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-itemexpiry"></a>Java SDK V4 （Maven：： azure-cosmos）
 
 ```java
 // Include a property that serializes to "ttl" in JSON
@@ -275,7 +275,7 @@ SalesOrder salesOrder = new SalesOrder(
 
 ```
 
-### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-itemexpiry"></a>Java SDK V3（Maven com.microsoft.azure：：azure-宇宙）
+### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-itemexpiry"></a>Java SDK V3 （Maven：： azure-cosmos）
 
 ```java
 // Include a property that serializes to "ttl" in JSON
@@ -339,7 +339,7 @@ itemResponse.Resource.ttl = 60 * 30 * 30; // update time to live
 await client.GetContainer("database", "container").ReplaceItemAsync(itemResponse.Resource, "SO05");
 ```
 
-### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-modifyitemexpiry"></a>Java SDK V4（Maven com.azure：：azure-宇宙）
+### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-modifyitemexpiry"></a>Java SDK V4 （Maven：： azure-cosmos）
 
 ```java
 // This examples leverages the Sales Order class above.
@@ -352,7 +352,7 @@ CosmosAsyncItemResponse<SalesOrder> itemResponse = container.readItem("SO05", ne
 }).block();
 ```
 
-### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-modifyitemexpiry"></a>Java SDK V3（Maven com.microsoft.azure：：azure-宇宙）
+### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-modifyitemexpiry"></a>Java SDK V3 （Maven：： azure-cosmos）
 
 ```java
 // This examples leverages the Sales Order class above.
@@ -400,7 +400,7 @@ itemResponse.Resource.ttl = null; // inherit the default TTL of the container
 await client.GetContainer("database", "container").ReplaceItemAsync(itemResponse.Resource, "SO05");
 ```
 
-### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-itemdefaultexpiry"></a>Java SDK V4（Maven com.azure：：azure-宇宙）
+### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-itemdefaultexpiry"></a>Java SDK V4 （Maven：： azure-cosmos）
 
 ```java
 // This examples leverages the Sales Order class above.
@@ -413,7 +413,7 @@ CosmosAsyncItemResponse<SalesOrder> itemResponse = container.readItem("SO05", ne
 }).block();
 ```
 
-### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-itemdefaultexpiry"></a>Java SDK V3（Maven com.microsoft.azure：：azure-宇宙）
+### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-itemdefaultexpiry"></a>Java SDK V3 （Maven：： azure-cosmos）
 
 ```java
 // This examples leverages the Sales Order class above.
@@ -455,7 +455,7 @@ containerResponse.Resource.DefaultTimeToLive = null;
 await client.GetContainer("database", "container").ReplaceContainerAsync(containerResponse.Resource);
 ```
 
-### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-disableexpiry"></a>Java SDK V4（Maven com.azure：：azure-宇宙）
+### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-disableexpiry"></a>Java SDK V4 （Maven：： azure-cosmos）
 
 ```java
 CosmosContainerProperties containerProperties = new CosmosContainerProperties("myContainer", "/myPartitionKey");
@@ -465,7 +465,7 @@ containerProperties.setDefaultTimeToLiveInSeconds(null);
 container.replace(containerProperties).block();
 ```
 
-### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-disableexpiry"></a>Java SDK V3（Maven com.microsoft.azure：：azure-宇宙）
+### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-disableexpiry"></a>Java SDK V3 （Maven：： azure-cosmos）
 
 ```java
 CosmosContainer container;

@@ -10,10 +10,10 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 6fb776b4c1ff537401a23eb272526b3043fdb1e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80235721"
 ---
 # <a name="register-an-azure-iot-edge-device"></a>注册 Azure IoT Edge 设备
@@ -38,11 +38,11 @@ Azure 订阅中的免费或标准 [IoT 中心](../iot-hub/iot-hub-create-through
 
 在 Azure 门户的 IoT 中心，IoT Edge 设备的创建和管理独立于不支持 Edge 的 IoT 设备。
 
-1. 登录到 Azure[门户](https://portal.azure.com)并导航到 IoT 中心。
-2. 在左窗格的菜单中，选择“IoT Edge”****。
-3. 选择“添加 IoT Edge 设备”****。
+1. 登录 [Azure 门户](https://portal.azure.com)，导航到 IoT 中心。
+2. 在左窗格的菜单中，选择“IoT Edge”  。
+3. 选择“添加 IoT Edge 设备”  。
 4. 提供一个描述性的设备 ID。 使用默认设置自动生成身份验证密钥并将新设备连接到中心。
-5. 选择“保存”。****
+5. 选择“保存”。 
 
 ### <a name="view-iot-edge-devices-in-the-azure-portal"></a>在 Azure 门户中查看 IoT Edge 设备
 
@@ -55,7 +55,7 @@ Azure 订阅中的免费或标准 [IoT 中心](../iot-hub/iot-hub-create-through
 如果已准备好设置设备，则需要连接字符串，该字符串使用物理设备在 IoT 中心内的标识链接该设备。
 
 1. 在门户的 **IoT Edge** 页中，单击 IoT Edge 设备列表中的设备 ID。
-2. 复制“主连接字符串”或“辅助连接字符串”的值********。
+2. 复制“主连接字符串”或“辅助连接字符串”的值   。
 
 ## <a name="register-with-visual-studio-code"></a>注册到 Visual Studio Code
 
@@ -63,39 +63,39 @@ Azure 订阅中的免费或标准 [IoT 中心](../iot-hub/iot-hub-create-through
 
 ### <a name="prerequisites-for-visual-studio-code"></a>Visual Studio Code 的必备组件
 
-* Azure 订阅中的[IoT 中心](../iot-hub/iot-hub-create-through-portal.md)
-* [视觉工作室代码](https://code.visualstudio.com/)
-* 用于可视化工作室代码的[Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
+* Azure 订阅中的 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)
+* [Visual Studio Code](https://code.visualstudio.com/)
+* 适用于 Visual Studio Code 的 [Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 
 ### <a name="sign-in-to-access-your-iot-hub"></a>登录以访问 IoT 中心
 
 可使用适用于 Visual Studio Code 的 Azure IoT 扩展来执行与 IoT 中心相关的操作。 为了使这些操作顺利执行，你需要登录到 Azure 帐户并选择 IoT 中心。
 
-1. 在 Visual Studio Code 中打开“资源管理器”视图****。
-1. 在资源管理器底部，展开“Azure IoT 中心”部分****。
+1. 在 Visual Studio Code 中打开“资源管理器”视图  。
+1. 在资源管理器底部，展开“Azure IoT 中心”部分  。
 
    ![展开“Azure IoT 中心设备”部分](./media/how-to-register-device/azure-iot-hub-devices.png)
 
-1. 单击“Azure IoT 中心”部分标题中的“...”********。 如果没有看到省略号，请单击标题或将鼠标指针悬停在标题上。
-1. 选择“选择 IoT 中心”****。
+1. 单击“Azure IoT 中心”部分标题中的“...”   。 如果没有看到省略号，请单击标题或将鼠标指针悬停在标题上。
+1. 选择“选择 IoT 中心”  。
 1. 如果尚未登录到 Azure 帐户，请按照相关提示执行此操作。
 1. 选择 Azure 订阅。
 1. 选择 IoT 中心。
 
 ### <a name="create-an-iot-edge-device-with-visual-studio-code"></a>使用 Visual Studio Code 创建 IoT Edge 设备
 
-1. 在 VS 代码资源管理器中，展开**Azure IoT 中心设备**部分。
-1. 单击“Azure IoT 中心设备”部分标题中的“...”********。 如果没有看到省略号，请单击标题或将鼠标指针悬停在标题上。
-1. 选择“创建 IoT Edge 设备”****。
+1. 在 VS Code 资源管理器中，展开“Azure IoT 中心设备”部分  。
+1. 单击“Azure IoT 中心设备”部分标题中的“...”   。 如果没有看到省略号，请单击标题或将鼠标指针悬停在标题上。
+1. 选择“创建 IoT Edge 设备”  。
 1. 在打开的文本框中提供设备 ID。
 
-在输出屏幕中，可以看到命令的结果。 其中显示有设备信息，包括所提供的“deviceId”以及可用于将物理设备连接到 IoT 中心的“connectionString”********。
+在输出屏幕中，可以看到命令的结果。 其中显示有设备信息，包括所提供的“deviceId”以及可用于将物理设备连接到 IoT 中心的“connectionString”   。
 
-在输出屏幕中，可以看到命令的结果。 其中显示有设备信息，包括所提供的“deviceId”以及可用于将物理设备连接到 IoT 中心的“connectionString”********。
+在输出屏幕中，可以看到命令的结果。 其中显示有设备信息，包括所提供的“deviceId”以及可用于将物理设备连接到 IoT 中心的“connectionString”   。
 
 ### <a name="view-iot-edge-devices-with-visual-studio-code"></a>使用 Visual Studio Code 查看 IoT Edge 设备
 
-Visual Studio Code 资源管理器的“Azure IoT 中心”部分中列出了连接到 IoT 中心的所有设备****。 IoT Edge 设备和非 Edge 设备可通过不同的图标加以区别。事实上，**$edgeAgent** 和 **$edgeHub** 模块会部署到每个 IoT Edge 设备。
+Visual Studio Code 资源管理器的“Azure IoT 中心”部分中列出了连接到 IoT 中心的所有设备  。 IoT Edge 设备和非 Edge 设备可通过不同的图标加以区别。事实上， **$edgeAgent** 和 **$edgeHub** 模块会部署到每个 IoT Edge 设备。
 
 ![查看 IoT 中心中所有的 IoT Edge 设备](./media/how-to-register-device/view-devices.png)
 
@@ -103,12 +103,12 @@ Visual Studio Code 资源管理器的“Azure IoT 中心”部分中列出了连
 
 如果已准备好设置设备，则需要连接字符串，该字符串使用物理设备在 IoT 中心内的标识链接该设备。
 
-1. 右键单击“Azure IoT 中心”部分中的设备 ID****。
-1. 选择“复制设备连接字符串”****。
+1. 右键单击“Azure IoT 中心”部分中的设备 ID  。
+1. 选择“复制设备连接字符串”  。
 
    连接字符串会复制到剪贴板。
 
-还可从右键菜单中选择“获取设备信息”，在输出窗口中查看包括连接字符串在内的所有设备信息****。
+还可从右键菜单中选择“获取设备信息”，在输出窗口中查看包括连接字符串在内的所有设备信息  。
 
 ## <a name="register-with-the-azure-cli"></a>注册到 Azure CLI
 
@@ -117,8 +117,8 @@ Visual Studio Code 资源管理器的“Azure IoT 中心”部分中列出了连
 ### <a name="prerequisites-for-the-azure-cli"></a>Azure CLI 的必备组件
 
 * Azure 订阅中的 [IoT 中心](../iot-hub/iot-hub-create-using-cli.md)。
-* 环境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 至少，Azure CLI 版本必须为 2.0.70 或以上。 请使用 `az --version` 验证版本。 此版本支持 az 扩展命令，并引入了 Knack 命令框架。
-* [Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)。
+* 环境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI 版本必须至少是 2.0.70 或更高版本。 请使用 `az --version` 验证版本。 此版本支持 az 扩展命令，并引入了 Knack 命令框架。
+* [适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)。
 
 ### <a name="create-an-iot-edge-device-with-the-azure-cli"></a>通过 Azure CLI 创建 IoT Edge 设备
 

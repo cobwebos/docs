@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 42c0a5d0c590f8c395c2afe366a00fcb9c83ce46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79536932"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge 支持的系统
@@ -25,7 +25,7 @@ ms.locfileid: "79536932"
 
 **Microsoft 客户支持团队** – 拥有[支持计划](https://azure.microsoft.com/support/plans/)的用户可以通过直接从 [Azure 门户](https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac)创建支持票证来与 Microsoft 客户支持团队进行沟通。
 
-**功能请求**– Azure IoT 边缘产品通过产品的["用户语音"页](https://feedback.azure.com/forums/907045-azure-iot-edge)跟踪功能请求。
+**功能请求**– Azure IoT Edge 产品通过产品的[用户语音页面](https://feedback.azure.com/forums/907045-azure-iot-edge)跟踪功能请求。
 
 ## <a name="container-engines"></a>容器引擎
 
@@ -34,21 +34,21 @@ Azure IoT Edge 模块是以容器形式实现的，因此 IoT Edge 需要容器�
 <br>
 <center>
 
-![作为容器运行时的 Moby 引擎](./media/support/only-moby-for-production.png)
+![作为容器运行时的小鲸鱼引擎](./media/support/only-moby-for-production.png)
 </center>
 
 ## <a name="operating-systems"></a>操作系统
 
-Azure IoT Edge 在大多数可以运行容器的操作系统上运行;但是，并非所有这些系统都得到平等支持。 操作系统分组为各个层级，这些层级表示用户可以预期的支持级别。
+在可运行容器的大多数操作系统上运行 Azure IoT Edge;但是，并非所有这些系统都同样受支持。 操作系统分组为各个层级，这些层级表示用户可以预期的支持级别。
 
 * 支持第 1 层系统。 对于第 1 层系统，Microsoft 会采取以下措施：
   * 将此操作系统包括在自动化测试中
   * 为它们提供安装程序包
 * 第 2 层系统与 Azure IoT Edge 兼容并且可以相对容易地使用。 对于第 2 层系统：
-  * Microsoft 已在平台上执行非正式测试，或者知道合作伙伴在平台上成功运行 Azure IoT Edge
+  * Microsoft 在平台上进行了非正式测试，或了解到在平台上成功运行 Azure IoT Edge 的合作伙伴
   * 适用于其他平台的安装程序包在这些平台上可能会正常工作
 
-主机 OS 系列必须始终与模块容器内部使用的来宾 OS 系列相匹配。 换言之，在 Linux 上只能使用 Linux 容器，在 Windows 上只能使用 Windows 容器。 使用 Windows 时，仅支持处理隔离容器，不支持 Hyper-V 隔离容器。  
+主机 OS 系列必须始终与模块容器内部使用的来宾 OS 系列相匹配。 换言之，在 Linux 上只能使用 Linux 容器，在 Windows 上只能使用 Windows 容器。 使用 Windows 时，仅支持处理独立容器，而不支持 Hyper-v 隔离容器。  
 
 <br>
 <center>
@@ -63,11 +63,11 @@ Azure IoT Edge 在大多数可以运行容器的操作系统上运行;但是，�
 | 操作系统 | AMD64 | ARM32v7 | ARM64 |
 | ---------------- | ----- | ------- | ----- |
 | Raspbian Stretch |  | ![Raspbian Stretch + ARM32v7](./media/tutorial-c-module/green-check.png) |  |
-| [乌本图服务器 16.04](https://wiki.ubuntu.com/XenialXerus/ReleaseNotes) | ![Ubuntu Server 16.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | 公共预览版  |
+| [Ubuntu Server 16.04](https://wiki.ubuntu.com/XenialXerus/ReleaseNotes) | ![Ubuntu Server 16.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | 公共预览版  |
 | [Ubuntu Server 18.04](https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes) | ![Ubuntu Server 18.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | 公共预览版 |
-| [Windows 10 IoT 核心](https://docs.microsoft.com/windows/iot-core/windows-iot-core)， 生成 17763 | ![Windows IoT Core + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
-| [Windows 10 物联网企业企业](https://docs.microsoft.com/windows/iot-core/windows-iot-enterprise)， 生成 17763 | ![Windows 10 IoT 企业版 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
-| [Windows 服务器 2019](https://docs.microsoft.com/windows-server/get-started-19/rel-notes-19)， 版本 17763 | ![Windows Server 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
+| [Windows 10 IoT Core](https://docs.microsoft.com/windows/iot-core/windows-iot-core)，版本17763 | ![Windows IoT Core + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
+| [Windows 10 IoT 企业版](https://docs.microsoft.com/windows/iot-core/windows-iot-enterprise)，版本17763 | ![Windows 10 IoT 企业版 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
+| [Windows Server 2019](https://docs.microsoft.com/windows-server/get-started-19/rel-notes-19)，版本17763 | ![Windows Server 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | [Windows Server IoT 2019](https://docs.microsoft.com/windows/iot-core/windows-server) 内部版本 17763 | ![Windows Server IoT 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 
 在 Windows 上运行 Windows 容器的设备必须使用上面列出的 Windows 操作系统，这时候唯一支持的适用于生产的配置。 适用于 Windows 的 Azure IoT Edge 安装包允许在 Windows 上使用 Linux 容器；但是，只能将此配置用于开发和测试。 有关详细信息，请参阅[使用 Windows 上的 IoT Edge 运行 Linux 容器](how-to-install-iot-edge-windows-with-linux.md)。
@@ -86,7 +86,7 @@ Azure IoT Edge 在大多数可以运行容器的操作系统上运行;但是，�
 | [Mentor Embedded Linux Omni OS](https://www.mentor.com/embedded-software/linux/mel-omni-os/) | ![Mentor Embedded Linux Omni OS + AMD64](./media/tutorial-c-module/green-check.png) |  | ![Mentor Embedded Linux Omni OS + ARM64](./media/tutorial-c-module/green-check.png) |
 | [RHEL 7.5](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/7.5_release_notes/index) | ![RHEL 7.5 + AMD64](./media/tutorial-c-module/green-check.png) | ![RHEL 7.5 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![RHEL 7.5 + ARM64](./media/tutorial-c-module/green-check.png) |
 | [Ubuntu 16.04](https://wiki.ubuntu.com/XenialXerus/ReleaseNotes) | ![Ubuntu 16.04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 16.04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 16.04 + ARM64](./media/tutorial-c-module/green-check.png) |
-| [乌本图 18.04](https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes) | ![Ubuntu 18.04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 18.04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 18.04 + ARM64](./media/tutorial-c-module/green-check.png) |
+| [Ubuntu 18.04](https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes) | ![Ubuntu 18.04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 18.04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 18.04 + ARM64](./media/tutorial-c-module/green-check.png) |
 | [Wind River 8](https://docs.windriver.com/category/os-wind_river_linux) | ![Wind River 8 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | [Yocto](https://www.yoctoproject.org/) | ![Yocto + AMD64](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM64](./media/tutorial-c-module/green-check.png) |
 | Raspbian Buster <sup>1</sup> |  | ![Raspbian Buster + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Raspbian Buster + ARM64](./media/tutorial-c-module/green-check.png) |
@@ -99,25 +99,25 @@ sudo apt-get install libssl1.0.2
 
 ## <a name="releases"></a>发行版本
 
-IoT Edge 发布资产和发行说明可在[azure iotedge 发布](https://github.com/Azure/azure-iotedge/releases)页面上提供。 本节反映来自这些发行说明的信息，以帮助您更轻松地可视化每个版本的组件。
+[Azure iotedge 版本](https://github.com/Azure/azure-iotedge/releases)页面上提供了 IoT Edge 发行版资产和发行说明。 本部分将介绍这些发行说明中的信息，以帮助你更轻松地直观显示每个版本的组件。
 
-IoT Edge 组件可以单独安装或更新，并且向后兼容旧版本的组件。 下表列出了每个版本中包含的组件：
+可以单独安装或更新 IoT Edge 组件，并与旧版本中的组件向后兼容。 下表列出了每个版本中包含的组件：
 
-| 发布   | 安全守护进程  | 边缘中心<br>边缘代理 | 利比奥斯姆 | 莫比  |
+| Release   | 安全守护程序  | Edge 中心<br>Edge 代理 | Libiothsm | 小鲸鱼  |
 | --------- | ---------------- | ---------------------- | --------- | ----- |
 | **1.0.9** | 1.0.9            | 1.0.9                  | 1.0.9     |       |
 | **1.0.8** | 1.0.8            | 1.0.8.5<br>1.0.8.4<br>1.0.8.3<br>1.0.8.2<br>1.0.8.1<br>1.0.8 | 1.0.8 | 3.0.6 |
-| **1.0.7** | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7       | 1.0.7.1<br>1.0.7 | 3.0.5<br>3.0.4 （ARMv7hl， CentOS） |
+| **1.0.7** | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7       | 1.0.7.1<br>1.0.7 | 3.0.5<br>3.0.4 （ARMv7hl，CentOS） |
 | **1.0.6** | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6       | 1.0.6.1<br>1.0.6 |  |
 | **1.0.5** | 1.0.5            | 1.0.5                  | 1.0.5     | 3.0.2 |
 
-IoT 边缘使用 Microsoft.Azure.Device.客户端 SDK。 有关详细信息，请参阅 Azure [IoT C++ SDK GitHub 存储库](https://github.com/Azure/azure-iot-sdk-csharp)或[Azure SDK 中的 .NET 参考内容](https://docs.microsoft.com/dotnet/api/overview/azure/iot/client?view=azure-dotnet)。 下面的列表显示了每个版本的客户端 SDK 版本，该版本都针对以下版本进行测试：
+IoT Edge 使用了 Microsoft. Client SDK。 有关详细信息，请参阅[Azure IoT c # SDK GitHub](https://github.com/Azure/azure-iot-sdk-csharp)存储库或[azure SDK for .net 参考内容](https://docs.microsoft.com/dotnet/api/overview/azure/iot/client?view=azure-dotnet)。 以下列表显示了测试每个版本的客户端 SDK 版本：
 
-* **IoT 边缘 1.0.9**： 客户端 SDK 1.21.1
-* **IoT 边缘 1.0.8**： 客户端 SDK 1.20.3
-* **IoT 边缘 1.0.7**： 客户端 SDK 1.20.1
-* **IoT 边缘 1.0.6**： 客户端 SDK 1.17.1
-* **IoT 边缘 1.0.5**： 客户端 SDK 1.17.1
+* **IoT Edge 1.0.9**： Client SDK 1.21。1
+* **IoT Edge 1.0.8**： Client SDK 1.20。3
+* **IoT Edge 1.0.7**： Client SDK 1.20。1
+* **IoT Edge 1.0.6**： Client SDK 1.17。1
+* **IoT Edge 1.0.5**： Client SDK 1.17。1
 
 ## <a name="virtual-machines"></a>虚拟机
 
@@ -136,7 +136,7 @@ Azure IoT Edge 可在虚拟机中运行。 当客户想要利用边缘智能增�
 在设计原型期间获得的经验可以帮助你在设备方面做出最终的选择。 应考虑的问题包括：
 
 * 工作负荷中有多少模块？
-* 模块的容器共享多少层？
+* 模块容器共享了多少层？
 * 模块以什么语言编写？
 * 模块将处理多少数据？
 * 模块是否需要使用任何专用硬件来加速其工作负荷？

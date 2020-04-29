@@ -8,25 +8,25 @@ ms.date: 09/11/2019
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: b7552fc083c5ed340dc54c2a31160b0c8b4bd076
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80420907"
 ---
-# <a name="security-hardening-for-aks-agent-node-host-os"></a>AKS 代理节点主机操作系统的安全强化
+# <a name="security-hardening-for-aks-agent-node-host-os"></a>AKS 代理节点主机 OS 的安全性强化
 
 Azure Kubernetes 服务 (AKS) 是符合 SOC、ISO、PCI DSS 和 HIPAA 标准的安全服务。 本文介绍适用于 AKS 虚拟主机的安全强化。 有关 AKS 安全性的详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 中应用程序和群集的安全性概念](https://docs.microsoft.com/azure/aks/concepts-security)。
 
 > [!Note]
-> 本文档仅限定在 AKS 中的 Linux 代理。
+> 此文档的作用域仅限于 AKS 中的 Linux 代理。
 
-AKS 群集部署在主机虚拟机上，这些虚拟机运行安全优化的操作系统，用于在 AKS 上运行的容器。 此主机操作系统基于**Ubuntu 16.04.LTS**映像，并应用了额外的安全强化和优化（请参阅安全强化详细信息）。
+AKS 群集部署在主机虚拟机上，后者运行在 AKS 上运行的容器使用的安全优化操作系统。 此主机操作系统基于包含附加安全性强化和优化的**Ubuntu 16.04 LTS**映像（请参阅安全强化详细信息）。
 
-安全强化主机操作系统的目标是减少攻击的表面区域，并优化以安全的方式部署容器。
+安全强化主机操作系统的目标是减少攻击面，并以安全的方式为容器部署提供优化。
 
 > [!Important]
-> 安全强化 OS 未进行 CIS 基准测试。 虽然存在与 CIS 基准重叠的情况，但此目标不需符合 CIS 标准。 主机操作系统强化的目标是与 Microsoft 自己的内部主机安全标准一致的安全级别相融合。
+> 安全强化 OS 未进行 CIS 基准测试。 虽然存在与 CIS 基准重叠的情况，但此目标不需符合 CIS 标准。 主机操作系统强化的目标是在与 Microsoft 自己的内部主机安全标准一致的安全级别上聚合。
 
 ## <a name="security-hardening-features"></a>安全强化功能
 
@@ -34,7 +34,7 @@ AKS 群集部署在主机虚拟机上，这些虚拟机运行安全优化的操�
 
 * Azure 会将每日修补程序（包括安全修补程序）应用到 AKS 虚拟主机。 这些修补程序中，部分需要重启，部分不需要。 你负责根据需要计划 AKS VM 主机重启。 有关如何自动进行 AKS 修补的指南，请参阅[修补 AKS 节点](https://docs.microsoft.com/azure/aks/node-updates-kured)。
 
-## <a name="what-is-configured"></a>配置的内容
+## <a name="what-is-configured"></a>配置内容
 
 | CIS  | 审核说明|
 |---|---|
@@ -79,7 +79,7 @@ AKS 群集部署在主机虚拟机上，这些虚拟机运行安全优化的操�
  
 * 为了进一步减少受攻击面，我们在 OS 中禁用了一些不必要的内核模块驱动程序。
 
-* 安全强化操作系统专为 AKS 构建和维护，不支持 AKS 平台之外。
+* 安全强化的操作系统是专门为 AKS 构建和维护的，在 AKS 平台之外不受支持。
 
 ## <a name="next-steps"></a>后续步骤  
 

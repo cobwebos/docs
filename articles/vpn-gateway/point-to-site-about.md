@@ -1,5 +1,5 @@
 ---
-title: 关于 Azure 点对点 VPN 连接 |VPN 网关
+title: 关于 Azure 点到站点 VPN 连接 | VPN 连接
 description: 可以借助本文了解点到站点连接，并确定要使用的 P2S VPN 网关身份验证类型。
 services: vpn-gateway
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: cherylmc
 ms.openlocfilehash: 381aad5d0a56362d9966ed54b931a8478f2f6bf2
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80410502"
 ---
 # <a name="about-point-to-site-vpn"></a>关于点到站点 VPN
@@ -22,9 +22,9 @@ ms.locfileid: "80410502"
 
 点到站点 VPN 可使用以下协议之一：
 
-* **OpenVPN® 协议**，一种基于 SSL/TLS 的 VPN 协议。 TLS VPN 解决方案可以穿透防火墙，因为大多数防火墙都打开 TLS 使用的 TCP 端口 443 出站。 OpenVPN 可用于从 Android、iOS（11.0 及更高版本）、Windows、Linux 和 Mac 设备（OSX 10.13 及更高版本）进行连接。
+* **OpenVPN® 协议**，一种基于 SSL/TLS 的 VPN 协议。 TLS VPN 解决方案可以穿透防火墙，因为大多数防火墙都打开 TLS 使用的 TCP 端口443出站。 OpenVPN 可用于从 Android、iOS（11.0 及更高版本）、Windows、Linux 和 Mac 设备（OSX 10.13 及更高版本）进行连接。
 
-* 安全套接字隧道协议 （SSTP），一种基于 TLS 的专有 VPN 协议。 TLS VPN 解决方案可以穿透防火墙，因为大多数防火墙都打开 TLS 使用的 TCP 端口 443 出站。 只有 Windows 设备支持 SSTP。 Azure 支持所有采用 SSTP 的 Windows 版本（Windows 7 和更高版本）。
+* 安全套接字隧道协议（SSTP）（一种基于 TLS 的专有 VPN 协议）。 TLS VPN 解决方案可以穿透防火墙，因为大多数防火墙都打开 TLS 使用的 TCP 端口443出站。 只有 Windows 设备支持 SSTP。 Azure 支持所有采用 SSTP 的 Windows 版本（Windows 7 和更高版本）。
 
 * IKEv2 VPN，这是一种基于标准的 IPsec VPN 解决方案。 IKEv2 VPN 可用于从 Mac 设备进行连接（OSX 10.11 和更高版本）。
 
@@ -45,7 +45,7 @@ ms.locfileid: "80410502"
 
 ### <a name="authenticate-using-native-azure-active-directory-authentication"></a>使用本机 Azure Active Directory 身份验证进行身份验证
 
-Azure AD 身份验证允许用户使用其 Azure Active Directory 凭据连接到 Azure。 本机 Azure AD 身份验证仅支持 OpenVPN 协议和 Windows 10，并且需要使用[Azure VPN 客户端](https://go.microsoft.com/fwlink/?linkid=2117554)。
+Azure AD 身份验证允许用户使用其 Azure Active Directory 凭据连接到 Azure。 本机 Azure VPN 身份验证只有 OpenVPN 协议和 Windows 10 支持，并且需要使用 [Azure VPN Client](https://go.microsoft.com/fwlink/?linkid=2117554)。
 
 有了本机 Azure AD 身份验证，就可以利用 Azure AD 的条件访问和针对 VPN 的多重身份验证 (MFA) 功能。
 
@@ -55,20 +55,20 @@ Azure AD 身份验证允许用户使用其 Azure Active Directory 凭据连接�
 
 2. [在网关上启用 Azure AD 身份验证](openvpn-azure-ad-tenant.md#enable-authentication)
 
-3. [下载并配置 Azure VPN 客户端](https://go.microsoft.com/fwlink/?linkid=2117554)
+3. [下载并配置 Azure VPN Client](https://go.microsoft.com/fwlink/?linkid=2117554)
 
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>使用 Active Directory (AD) 域服务器进行身份验证
 
 AD 域身份验证可让用户使用其组织域凭据连接到 Azure。 它需要一台与 AD 服务器集成的 RADIUS 服务器。 组织也可以利用其现有的 RADIUS 部署。
   
-RADIUS 服务器可以部署在本地或 Azure VNet 中。 在身份验证期间，Azure VPN 网关充当传递设备，在 RADIUS 服务器与连接方设备之间来回转发身份验证消息。 因此，RADIUS 服务器必须能够访问网关。 如果 RADIUS 服务器位于本地，需要建立从 Azure 到本地站点的 VPN S2S 连接，才能实现这种访问。  
+可将 RADIUS 服务器部署到本地或 Azure VNet 中。 在身份验证期间，Azure VPN 网关充当传递设备，在 RADIUS 服务器与连接方设备之间来回转发身份验证消息。 因此，RADIUS 服务器必须能够访问网关。 如果 RADIUS 服务器位于本地，需要建立从 Azure 到本地站点的 VPN S2S 连接，才能实现这种访问。  
   
 RADIUS 服务器还能与 AD 证书服务集成。 这样，便可以使用 RADIUS 服务器以及用于 P2S 证书身份验证的企业证书部署，作为 Azure 证书身份验证的替代方法。 此方法的优点是不需要将根证书和吊销的证书上传到 Azure。
 
 RADIUS 服务器还能与其他外部标识系统集成。 这样就为 P2S VPN 提供了大量的身份验证选项，包括多重身份验证选项。
 
-![点对点](./media/point-to-site-about/p2s.png "点到站点")
+![点到站点](./media/point-to-site-about/p2s.png "点到站点")
 
 ## <a name="what-are-the-client-configuration-requirements"></a>客户端配置要求是什么？
 
@@ -87,7 +87,7 @@ RADIUS 服务器还能与其他外部标识系统集成。 这样就为 P2S VPN 
 >[!INCLUDE [TLS version changes](../../includes/vpn-gateway-tls-change.md)]
 >
 
-## <a name="which-gateway-skus-support-p2s-vpn"></a><a name="gwsku"></a>哪个网关 SKU 支持 P2S VPN？
+## <a name="which-gateway-skus-support-p2s-vpn"></a><a name="gwsku"></a>哪些网关 SKU 支持 P2S VPN？
 
 [!INCLUDE [aggregate throughput sku](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
@@ -122,7 +122,7 @@ RADIUS 服务器还能与其他外部标识系统集成。 这样就为 P2S VPN 
 |AES256     |   SHA256      | SHA256    | GROUP_ECP256 |
 |AES256     |   SHA256      | SHA256    | GROUP_2 |
 
-**Ipsec**
+**IPsec**
 
 |**Cipher** | **完整性** | **PFS 组** |
 |---        | ---           | ---       |

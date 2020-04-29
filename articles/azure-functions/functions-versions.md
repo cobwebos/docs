@@ -4,10 +4,10 @@ description: Azure Functions 支持多个版本的运行时。 了解这些版�
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.openlocfilehash: e90752e89be7e381b06f8a87f76f123f0e4a8e3a
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80422482"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 运行时版本概述
@@ -18,7 +18,7 @@ Azure Functions 运行时的主版本与运行时所基于的 .NET 版本相关�
 | --------------- | ------------- | ------------ |
 | 3.x | GA | .NET Core 3.1 | 
 | 2.x | GA | .NET Core 2.2 |
-| 1.x | 正式版<sup>2</sup> | .NET 框架 4.7.2<sup>3</sup> |
+| 1.x | 正式版<sup>2</sup> | .NET Framework 4.7.2<sup>3</sup> |
 
 <sup>1</sup> 生产方案支持正式版。   
 <sup>2</sup> 版本 1.x 处于维护模式。 仅在更高版本中提供增强功能。   
@@ -38,7 +38,7 @@ Azure Functions 1.x 试验性语言不能使用新模型，因此它们在 2.x �
 
 ## <a name="run-on-a-specific-version"></a><a name="creating-1x-apps"></a>在特定版本上运行
 
-默认情况下，在 Azure 门户和 Azure CLI 中创建的函数应用设置为版本 3.x。 你可以根据需要修改此版本。 只能在创建函数应用之后、添加任何函数之前将运行时版本更改为 1.x。  即使应用具有函数，也允许在 2.x 和 3.x 之间迁移，但仍建议先在新应用中进行测试。
+默认情况下，在 Azure 门户中和通过 Azure CLI 创建的函数应用将设置为版本 3.x。 你可以根据需要修改此版本。 只能在创建函数应用之后、添加任何函数之前将运行时版本更改为 1.x。  即使应用具有函数，也允许在 2.x 和 3.x 之间迁移，但仍建议先在新应用中进行测试。
 
 ## <a name="migrating-from-1x-to-later-versions"></a>从 1.x 迁移到更高版本
 
@@ -46,33 +46,33 @@ Azure Functions 1.x 试验性语言不能使用新模型，因此它们在 2.x �
 
 尽管可以通过手动更新应用配置来执行“就地”升级，但从 1.x 转变到更高版本包括了一些中断性变更。 例如，在 C# 中，调试对象从 `TraceWriter` 更改为 `ILogger`。 创建新的 3.x 版项目后，可以基于最新的 3.x 版模板，从更新的函数着手进行开发。
 
-### <a name="changes-in-triggers-and-bindings-after-version-1x"></a>1.x 之后版本中触发器和绑定的更改
+### <a name="changes-in-triggers-and-bindings-after-version-1x"></a>1\.x 之后版本中触发器和绑定的更改
 
 从版本 2.x 开始，必须为应用中的函数所用的特定触发器和绑定安装扩展。 唯一的例外是 HTTP 和计时器触发器，它们不需要扩展。  有关详细信息，请参阅[注册和安装绑定扩展](./functions-bindings-register.md)。
 
 此外，在不同的版本中，函数的 *function.json* 或属性存在几处更改。 例如，事件中心的 `path` 属性现在为 `eventHubName`。 请参阅[现有绑定表](#bindings)，以获取每个绑定的文档链接。
 
-### <a name="changes-in-features-and-functionality-after-version-1x"></a>1.x 之后版本中特性和功能的更改
+### <a name="changes-in-features-and-functionality-after-version-1x"></a>1\.x 之后版本中特性和功能的更改
 
 在版本 1.x 后删除、更新或替换了几个特性。 本部分详细介绍了在使用版本 1.x 后，更高版本中会出现的更改。
 
 在版本 2.x 中做出了以下更改：
 
-* 用于调用 HTTP 终结点的密钥始终以加密方式存储在 Azure Blob 存储中。 在版本 1.x 中，默认情况下密钥存储在 Azure 文件存储中。 将应用从版本 1.x 升级到版本 2.x 时，将重置文件存储中的现有机密。
+* 用于调用 HTTP 终结点的密钥始终以加密方式存储在 Azure Blob 存储中。 在版本 1.x 中，密钥将默认存储在 Azure 文件存储中。 将应用从版本 1.x 升级到版本 2.x 时，将重置文件存储中的现有机密。
 
-* 2.x 版运行时不包含对 Webhook 提供程序的内置支持。 做出此项更改的目的是提高性能。 仍可以使用 HTTP 触发器作为 Webhook 的终结点。
+* 2\.x 版运行时不包含对 Webhook 提供程序的内置支持。 做出此项更改的目的是提高性能。 仍可以使用 HTTP 触发器作为 Webhook 的终结点。
 
 * 主机配置文件 (host.json) 应该为空或包含字符串 `"version": "2.0"`。
 
-* 为了改进监视，门户中的 Web 作业仪表板（使用该[`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard)设置）替换为使用该设置的[`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsights_instrumentationkey)Azure 应用程序见解。 有关详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
+* 若要改善监视，门户中的 Web 作业仪表板（使用[`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard)该设置）将替换为 Azure 应用程序 Insights，使用[`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsights_instrumentationkey)设置。 有关详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
 
-* 函数应用中的所有函数必须共享相同的语言。 创建函数应用时，必须选择该应用的运行时堆栈。 运行时堆栈由应用程序设置中[`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime)的值指定。 增加此项要求的目的是减少占用空间和启动时间。 进行本地开发时，还必须在 [local.settings.json 文件](functions-run-local.md#local-settings-file)中包含此设置。
+* 函数应用中的所有函数必须共享相同的语言。 创建函数应用时，必须选择该应用的运行时堆栈。 运行时堆栈由应用程序设置[`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime)中的值指定。 增加此项要求的目的是减少占用空间和启动时间。 进行本地开发时，还必须在 [local.settings.json 文件](functions-run-local.md#local-settings-file)中包含此设置。
 
 * 应用服务计划中函数的默认超时已更改为 30 分钟。 可以使用 host.json 中的 [functionTimeout](functions-host-json.md#functiontimeout) 设置，将超时手动改回到 unlimited（无限）。
 
-* 默认情况下，使用计划函数的 HTTP 并发限制实现，每个实例默认为 100 个并发请求。 您可以在 host.json[`maxConcurrentRequests`](functions-host-json.md#http)文件中的设置中更改此设置。
+* 默认情况下，为消耗计划函数实现 HTTP 并发限制，默认为每个实例100个并发请求。 可以在主机 json 文件的[`maxConcurrentRequests`](functions-host-json.md#http)设置中更改此设置。
 
-* 由于[.NET Core 的限制](https://github.com/Azure/azure-functions-host/issues/3414)，已删除对 F# 脚本 （.fsx） 函数的支持。 编译的 F# 函数 (.fs) 仍受支持。
+* 由于[.Net Core 的限制](https://github.com/Azure/azure-functions-host/issues/3414)，已删除对 F # 脚本（. .fsx）函数的支持。 编译的 F# 函数 (.fs) 仍受支持。
 
 * 事件网格触发器 Webhook 的 URL 格式已更改为 `https://{app}/runtime/webhooks/{triggerName}`。
 
@@ -102,7 +102,7 @@ Azure Functions 版本 3.x 向后高度兼容版本 2.x。  许多应用应该�
 
 ### <a name="changing-version-of-apps-in-azure"></a>在 Azure 中更改应用版本
 
-Azure 中已发布应用使用的函数运行时版本由[`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version)应用程序设置决定。 支持以下主要运行时版本值：
+Azure 中发布的应用使用的函数运行时版本由[`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version)应用程序设置决定。 支持以下主要运行时版本值：
 
 | 值 | 运行时目标 |
 | ------ | -------- |

@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: b-juche
 ms.openlocfilehash: b83f530549ffa43789963fd0c95b4982f5289356
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80054464"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>将子网委派给 Azure NetApp 文件 
@@ -28,10 +28,10 @@ ms.locfileid: "80054464"
 ## <a name="considerations"></a>注意事项
 * 用于创建新子网的向导默认设置 /24 网络掩码，这将提供 251 个可用 IP 地址。 对于此服务，使用 /28 网络掩码就足够了，这将提供 16 个可用 IP 地址。
 * 在每个 Azure 虚拟网络 (VNet) 中，只能将一个子网委派给 Azure NetApp 文件。   
-   Azure 使您能够在 VNet 中创建多个委派子网。  但是，如果使用多个委派子网，则创建新卷的任何尝试都将失败。
+   Azure 使你能够在 VNet 中创建多个委托子网。  但是，如果使用多个委托子网，则任何创建新卷的尝试都将失败。
 * 不能在委派的子网中指定网络安全组或服务终结点。 这样做会导致子网委派失败。
-* 当前不支持从全局对等虚拟网络访问卷。
-* 不支持在 VM 子网上使用地址前缀（目标）创建[用户定义的自定义路由](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes)到委派给 Azure NetApp 文件的子网。 这样做将影响 VM 连接。
+* 当前不支持从全局对等互连虚拟网络访问卷。
+* 不支持在将地址前缀（目标）到委托给 Azure NetApp 文件的子网的 VM 子网上创建[用户定义的自定义路由](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes)。 这样做会影响 VM 连接。
 
 ## <a name="steps"></a>步骤 
 1.  在 Azure 门户中，转到“虚拟网络”**** 边栏选项卡，选择要用于 Azure NetApp 文件的虚拟网络。    
@@ -41,7 +41,7 @@ ms.locfileid: "80054464"
 1. 在“添加子网”页面中完成以下必需字段来新建要用于 Azure NetApp 文件的子网：
     * **名称**：指定子网名称。
     * **地址范围**：指定 IP 地址范围。
-    * **子网委派**：选择**微软.NetApp/卷**。 
+    * **子网委托**：选择 " **Microsoft"。** 
 
       ![子网委派](../media/azure-netapp-files/azure-netapp-files-subnet-delegation.png)
     

@@ -1,20 +1,20 @@
 ---
-title: Azure 备份合规性产品
-description: Azure 备份的合规性产品摘要
+title: Azure 备份符合性产品/服务
+description: Azure 备份的符合性产品摘要
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.openlocfilehash: da25c6b9b8206ebd2e7ca1a3d90ec88a6efe04b8
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80423114"
 ---
-# <a name="azure-backup-compliance-offerings"></a>Azure 备份合规性产品
+# <a name="azure-backup-compliance-offerings"></a>Azure 备份符合性产品/服务
 
-为了帮助组织遵守有关收集和使用个人数据的国家、区域和行业特定要求，Microsoft Azure & Azure 备份提供了一套全面的认证和证明。
+为了帮助组织遵守管理个人数据收集和使用的国家、地区和行业特定要求，Microsoft Azure & Azure 备份提供了一套全面的认证和证明。
 
-您可以找到 Azure 备份的以下合规性产品，以确保在使用 Azure 备份服务时对服务进行监管。
+可在下面找到 Azure 备份的符合性产品/服务，确保你的服务在使用 Azure 备份服务时受管控。
 
 ## <a name="global"></a>Global
 
@@ -27,7 +27,7 @@ ms.locfileid: "80423114"
 * [ISO 27017](https://docs.microsoft.com/microsoft-365/compliance/offering-iso-27017)
 * [ISO 27018](https://docs.microsoft.com/microsoft-365/compliance/offering-iso-27018)
 * [ISO 9001](https://docs.microsoft.com/microsoft-365/compliance/offering-iso-9001)
-* [SOC 1，2，3](https://docs.microsoft.com/microsoft-365/compliance/offering-soc)
+* [SOC 1、2、3](https://docs.microsoft.com/microsoft-365/compliance/offering-soc)
 
 ## <a name="us-government"></a>美国政府
 
@@ -48,4 +48,4 @@ ms.locfileid: "80423114"
 
 ## <a name="next-steps"></a>后续步骤
 
-在[Microsoft 信任中心](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)查找最新的覆盖范围和合规性详细信息。
+查找最新的覆盖范围以及有关[Microsoft TrustCenter](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)中的符合性的详细信息。

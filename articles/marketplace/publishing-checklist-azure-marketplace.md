@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: dsindona
 ms.openlocfilehash: 0409933a3cd4bb535427cf61bd06207d53d5a96e
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80387710"
 ---
 # <a name="publishing-checklist-for-azure-marketplace"></a>Azure 市场的发布清单    
@@ -23,11 +23,11 @@ ms.locfileid: "80387710"
 
 | 商品类型 | 产品/服务类型 | 发布项目 |   
 |:--- |:--- |:--- |  
-| All | All | <table> <tr><th>店面详细信息</th></tr> <tr><td>产品/服务名称（200 个字符）</td></tr> <tr><td>说明（2,000 个字符）</td></tr> <tr><td>MPN ID</td></tr> <tr><td>国家/区域可用性</td></tr> <tr><td>适用的行业、类别和搜索关键字</td></tr> <tr><td>屏幕截图（1280x720；最多 5 个）</td></tr> <tr><td>市场营销文档（最多 3 个）</td></tr> <tr><td>潜在客户目标</td></tr> <tr><td>产品概述视频（可选）</td></tr> </table> <table> <tr><th>联系人</th></tr> <tr><td>联系信息（支持、工程、商务）</td></tr> </table> <table> <tr><th>技术信息</th></tr> <tr><td>使用条款和隐私策略 URL</td></tr> </table> <table> <tr><th>体验版</th></tr> <tr><td>Azure 资源组名称</td></tr> </table> |  
+| All | All | <table> <tr><th>店面详细信息</th></tr> <tr><td>产品/服务名称（200 个字符）</td></tr> <tr><td>说明（2,000 个字符）</td></tr> <tr><td>MPN ID</td></tr> <tr><td>上市国家/地区</td></tr> <tr><td>适用的行业、类别和搜索关键字</td></tr> <tr><td>屏幕截图（1280x720；最多 5 个）</td></tr> <tr><td>市场营销文档（最多 3 个）</td></tr> <tr><td>潜在客户目标</td></tr> <tr><td>产品概述视频（可选）</td></tr> </table> <table> <tr><th>联系人</th></tr> <tr><td>联系信息（支持、工程、商务）</td></tr> </table> <table> <tr><th>技术信息</th></tr> <tr><td>使用条款和隐私策略 URL</td></tr> </table> <table> <tr><th>体验版</th></tr> <tr><td>Azure 资源组名称</td></tr> </table> |  
 | All | 虚拟机 | <table> <tr><th>技术信息</th></tr> <tr><td>支持 URL</td></tr> </table> |
 | 列出 | 咨询服务 | <table> <tr><th>店面详细信息</th></tr> <tr><td>参与持续时间</td></tr> <tr><td>公司徽标（48x48，216x216）</td></tr> </table> |  
 | 试用 | All | <table> <tr><th>技术信息</th></tr> <tr><td>试用 URL</td></tr> <tr><td>支持的语言</td></tr> <tr><td>应用版本号</td></tr> <tr><td>应用发行日期</td></tr> <tr><td>支持 URL</td></tr> </table> |  
-| 试用 | 体验版 | <table> <tr><th>体验版</th></tr> <tr><td>描述</td></tr> <tr><td>Duration</td></tr> <tr><td>用户手册</td></tr> <tr><td>体验版视频（最多 1 个）</td></tr> <tr><td>体验版国家/区域可用性</td></tr> <tr><td>Azure 订阅 ID</td></tr> <tr><td>Azure AD 租户 ID</td></tr> <tr><td>Azure AD 应用 ID</td></tr> <tr><td>Azure AD 应用密钥</td></tr> </table> |  
+| 试用 | 体验版 | <table> <tr><th>体验版</th></tr> <tr><td>说明</td></tr> <tr><td>Duration</td></tr> <tr><td>用户手册</td></tr> <tr><td>体验版视频（最多 1 个）</td></tr> <tr><td>体验版国家/区域可用性</td></tr> <tr><td>Azure 订阅 ID</td></tr> <tr><td>Azure AD 租户 ID</td></tr> <tr><td>Azure AD 应用 ID</td></tr> <tr><td>Azure AD 应用密钥</td></tr> </table> |  
 | 事务处理 | 虚拟机 | <table> <tr><th>店面</th></tr> <tr><td>标题（50 个字符）</td></tr> <tr><td>摘要（200 个字符）</td></tr> <tr><td>长摘要（256 个字符）</td></tr> <tr><td>基于 HTML 的说明（3,000 个字符）</td></tr> <tr><td>公司徽标（40x40、90x90、115x115、255x115、815x290）</td></tr> </table> <table> <tr><th>SKU</th></tr> <tr><td>操作系统详细信息</td></tr> <tr><td>正在使用的端口</td></tr> <tr><td>正在使用协议</td></tr> <tr><td>每个使用中的 VHD 的磁盘版本</td></tr> <tr><td>每个使用中的 VHD 的 SAS URL</td></tr> </table> |  
 | 事务处理 | Azure 应用：解决方案模板 | <table> <tr><th>店面</th></tr> <tr><td>标题（50 个字符）</td></tr> <tr><td>摘要（200 个字符）</td></tr> <tr><td>长摘要（256 个字符）</td></tr> <tr><td>基于 HTML 的说明（3,000 个字符）</td></tr> <tr><td>公司徽标（40x40、90x90、115x115、255x115、815x290）</td></tr> </table> <table> <tr><th>SKU</th></tr> <tr><td>版本号</td></tr> <tr><td>包含的包文件<ul> <li>所有模板文件</li> <li>createUIDefinition 文件</li> </ul> </td></tr> </table> |  
 | 事务处理 | Azure 应用：托管应用 | <table> <tr><th>店面</th></tr> <tr><td>标题（50 个字符）</td></tr> <tr><td>摘要（200 个字符）</td></tr> <tr><td>长摘要（256 个字符）</td></tr> <tr><td>基于 HTML 的说明（3,000 个字符）</td></tr> <tr><td>公司徽标（40x40、90x90、115x115、255x115、815x290）</td></tr> </table> <table> <tr><th>SKU</th></tr> <tr><td>版本号</td></tr> <tr><td>包含的包文件<ul> <li>所有模板文件</li> <li>createUIDefinition 文件</li> </ul> </td></tr> </table> |  

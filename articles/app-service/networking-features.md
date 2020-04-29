@@ -8,10 +8,10 @@ ms.date: 03/16/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 79f85261115dbddcb0b04cd2863a90912de2ab87
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80474907"
 ---
 # <a name="app-service-networking-features"></a>应用服务网络功能
@@ -36,28 +36,28 @@ Azure 应用服务是一种分布式系统。 处理传入 HTTP/HTTPS 请求的�
 
 对于任何给定的用例，可通过多种方法来解决问题。  有时，哪种功能合适并不仅仅是由用例本身决定的。 以下入站用例演示了如何使用应用服务网络功能来解决有关控制传入应用的流量的问题。 
  
-| 入站用例 | Feature |
+| 入站用例 | 功能 |
 |---------------------|-------------------|
 | 支持应用的基于 IP 的 SSL 需求 | 应用分配的地址 |
 | 应用的非共享专用入站地址 | 应用分配的地址 |
 | 从一组妥善定义的地址限制对应用的访问 | 访问限制 |
 | 限制从 VNet 中的资源访问应用 | 服务终结点 </br> ILB ASE </br> 专用终结点（预览） |
-| 在 VNet 中的专用 IP 上公开我的应用 | ILB ASE </br> 包含服务终结点的应用程序网关上用于入站通信的专用 IP </br> 服务端点（预览） |
+| 在 VNet 中的专用 IP 上公开我的应用 | ILB ASE </br> 包含服务终结点的应用程序网关上用于入站通信的专用 IP </br> 服务终结点（预览） |
 | 使用 WAF 保护我的应用 | 应用程序网关 + ILB ASE </br> 包含服务终结点的应用程序网关 </br> 提供访问限制的 Azure Front Door |
 | 对发往不同区域中的应用的流量进行负载均衡 | 提供访问限制的 Azure Front Door | 
 | 对同一区域中的流量进行负载均衡 | [包含服务终结点的应用程序网关][appgwserviceendpoints] | 
 
 以下出站用例演示如何使用应用服务网络功能来解决应用的出站访问需求。 
 
-| 出站用例 | Feature |
+| 出站用例 | 功能 |
 |---------------------|-------------------|
 | 访问位于同一区域的 Azure 虚拟网络中的资源 | VNet 集成 </br> ASE |
 | 访问位于不同区域的 Azure 虚拟网络中的资源 | 需要网关的 VNet 集成 </br> ASE 和 VNet 对等互连 |
 | 访问通过服务终结点保护的资源 | VNet 集成 </br> ASE |
 | 访问未连接到 Azure 的专用网络中的资源 | 混合连接 |
 | 跨 ExpressRoute 线路访问资源 | VNet 集成 </br> ASE | 
-| 从 Web 应用保护出站流量 | VNet 集成和网络安全组 </br> ASE | 
-| 从 Web 应用路由出站流量 | VNet 集成和路由表 </br> ASE | 
+| 保护来自 Web 应用的出站流量 | VNet 集成和网络安全组 </br> ASE | 
+| 路由来自 Web 应用的出站流量 | VNet 集成和路由表 </br> ASE | 
 
 
 ### <a name="default-networking-behavior"></a>默认网络行为
@@ -81,7 +81,7 @@ Azure 应用服务缩放单元为每个部署中的多个客户提供支持。 �
 * 支持应用的基于 IP 的 SSL 需求
 * 为应用设置一个不与其他任何组件共享的专用地址
 
-通过 Azure[应用服务 中添加 TLS/SSL 证书][appassignedaddress]的教程，可以了解如何在应用上设置地址。 
+可以通过在[Azure App Service 中添加 TLS/SSL 证书][appassignedaddress]教程来了解如何在应用程序上设置一个地址。 
 
 ### <a name="access-restrictions"></a>访问限制 
 
@@ -113,8 +113,8 @@ Azure 应用服务缩放单元为每个部署中的多个客户提供支持。 �
 
 ### <a name="private-endpoint-preview"></a>专用终结点（预览）
 
-专用终结点是一个网络接口，通过 Azure 专用链接将您私下安全地连接到 Web 应用。 专用终结点使用来自 VNet 的专用 IP 地址，有效地将 Web 应用引入 VNet。 此功能仅适用于 Web 应用**的入站**流。
-[为 Azure Web 应用使用专用终结点（预览）][privateendpoints]
+专用终结点是一个网络接口，可通过 Azure 专用链接将你私下安全地连接到你的 Web 应用。 专用终结点使用 VNet 中的专用 IP 地址，从而有效地将 Web 应用引入 VNet。 此功能仅适用于**入站**流到 Web 应用。
+[使用 Azure Web 应用的专用终结点（预览）][privateendpoints]
  
 ### <a name="hybrid-connections"></a>混合连接
 

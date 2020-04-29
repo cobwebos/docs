@@ -9,15 +9,15 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: b94725d4d3eb9fd6f13a39d00486b4ab085b9ef9
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80473934"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Blob 存储的性能与可伸缩性查检表
 
-Microsoft 开发了许多经过验证的实践，用于使用 Blob 存储开发高性能应用程序。 此查检表列出了开发人员在优化性能时可以遵循的关键做法。 在设计应用程序时以及在整个流程中，请牢记这些做法。
+Microsoft 已开发了许多经验证的做法，用于使用 Blob 存储开发高性能的应用程序。 此查检表列出了开发人员在优化性能时可以遵循的关键做法。 在设计应用程序时以及在整个流程中，请牢记这些做法。
 
 Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能目标。 有关 Azure 存储可伸缩性目标的详细信息，请参阅[标准存储帐户的可伸缩性和性能目标](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)和 [Blob 存储的可伸缩性和性能目标](scalability-targets.md)。
 
@@ -25,7 +25,7 @@ Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能�
 
 本文以查检表的形式组织了在开发 Blob 存储应用程序时在性能方面可以遵循的经过证实的做法。
 
-| 完成 | 类别 | 设计注意事项 |
+| 完成 | Category | 设计注意事项 |
 | --- | --- | --- |
 | &nbsp; |可伸缩性目标 |[是否可将应用程序设计为避免使用的存储帐户数超过最大数目？](#maximum-number-of-storage-accounts) |
 | &nbsp; |可伸缩性目标 |[是否要避免接近容量和事务限制？](#capacity-and-transaction-targets) |
@@ -47,7 +47,7 @@ Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能�
 | &nbsp; |重试 |[对于不可重试的错误，应用程序是否会避免重试？](#non-retryable-errors) |
 | &nbsp; |复制 Blob |[是否以最高效的方式复制 Blob？](#blob-copy-apis) |
 | &nbsp; |复制 Blob |[是否使用最新版本的 AzCopy 执行批量复制操作？](#use-azcopy) |
-| &nbsp; |复制 Blob |[您是否使用 Azure 数据框系列导入大量数据？](#use-azure-data-box) |
+| &nbsp; |复制 Blob |[是否在使用 Azure Data Box 系列来导入大量数据？](#use-azure-data-box) |
 | &nbsp; |内容分发 |[是否要使用 CDN 进行内容分发？](#content-distribution) |
 | &nbsp; |使用元数据 |[是否会将频繁使用的有关 Blob 的元数据存储在其元数据中？](#use-metadata) |
 | &nbsp; |快速上传 |[尝试快速上传一个 Blob 时，是否会以并行方式上传块？](#upload-one-large-blob-quickly) |
@@ -65,7 +65,7 @@ Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能�
 如果即将达到特定订阅/区域组合允许的最大存储帐户数，请评估你的方案并确定是否符合以下任何条件：
 
 - 是否使用存储帐户作为非托管磁盘，并将这些磁盘添加到虚拟机 (VM)？ 对于此方案，Microsoft 建议使用托管磁盘。 托管磁盘可自动缩放，你无需创建和管理单个存储帐户。 有关详细信息，请参阅 [Azure 托管磁盘简介](../../virtual-machines/windows/managed-disks-overview.md)
-- 是否对每个客户使用一个存储帐户，以实现数据隔离？ 对于此方案，Microsoft 建议为每个客户使用 Blob 容器，而不是整个存储帐户。 Azure 存储现在允许按容器分配基于角色的访问控制 (RBAC)。 有关详细信息，请参阅[在 Azure 门户中使用 RBAC 授予对 Azure Blob 和队列数据的访问权限](../common/storage-auth-aad-rbac-portal.md)。
+- 是否对每个客户使用一个存储帐户，以实现数据隔离？ 对于此方案，Microsoft 建议为每个客户使用 blob 容器，而不是使用整个存储帐户。 Azure 存储现在允许按容器分配基于角色的访问控制 (RBAC)。 有关详细信息，请参阅[在 Azure 门户中使用 RBAC 授予对 Azure Blob 和队列数据的访问权限](../common/storage-auth-aad-rbac-portal.md)。
 - 是否使用多个存储帐户进行分片，以增加流入量、流出量、每秒 I/O 操作次数 (IOPS) 或容量？ 对于这种情况，Microsoft 建议在可能的情况下，利用存储帐户的更高限制来减少工作负荷所需的存储帐户数。 若要请求提高存储帐户的限制，请联系 [Azure 支持部门](https://azure.microsoft.com/support/options/)。 有关详细信息，请参阅[宣布推出更大容量和规模的存储帐户](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)。
 
 ### <a name="capacity-and-transaction-targets"></a>容量和事务目标
@@ -83,7 +83,7 @@ Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能�
 
 如果有大量的客户端并发访问单个 Blob，则需要要考虑每个 Blob 和每个存储帐户的可伸缩性目标。 可以访问单个 Blob 的客户端的具体数量根据各种因素（例如，同时请求 Blob 的客户端数、Blob 的大小和网络状况）而有所不同。
 
-如果 Blob 可以通过 CDN（如从网站提供的图像或视频）进行分发，则可以使用 CDN。 有关详细信息，请参阅标题为["内容分发"的部分](#content-distribution)。
+如果可以通过 CDN （如来自网站的图像或视频）分发该 blob，则可以使用 CDN。 有关详细信息，请参阅标题为[内容分发](#content-distribution)的部分。
 
 在其他情况下，例如在数据保密的科学模拟下，有两个选项。 第一个选项是错开工作负荷的访问，以确保在某个时间段内访问 Blob，而不是同时访问 Blob。 另一个选项是暂时将 Blob 复制到多个存储帐户，以增加每个 Blob 和存储帐户内的 IOPS 总数。 结果将根据应用程序的行为而异，因此，请务必在设计期间测试并发模式。
 
@@ -91,7 +91,7 @@ Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能�
 
 单个 Blob 每秒最多可支持 500 个请求。 如果多个客户端需要读取同一 Blob，而你可能会超过此限制，请考虑使用块 Blob 存储帐户。 块 Blob 存储帐户提供更高的请求速率或每秒 I/O 操作次数 (IOPS)。
 
-您还可以使用内容传递网络 （CDN）（如 Azure CDN）在 Blob 上分发操作。 有关 Azure CDN 的详细信息，请参阅[Azure CDN 概述](../../cdn/cdn-overview.md)。  
+你还可以使用内容交付网络（CDN）（如 Azure CDN）在 blob 上分发操作。 有关 Azure CDN 的详细信息，请参阅[Azure CDN 概述](../../cdn/cdn-overview.md)。  
 
 ## <a name="partitioning"></a>分区
 
@@ -113,7 +113,7 @@ Blob 存储使用基于范围的分区方案来进行缩放和负载均衡。 �
 
     例如，如果日常操作使用有时间戳的 Blob，如 *yyyymmdd*，则该日常操作的所有流量都定向到由单个分区服务器服务的单个 Blob。 考虑每个 Blob 的限制和每个分区的限制是否符合需求，并考虑是否需要将此操作拆分成多个 Blob。 同样，如果在表中存储时序数据，则所有流量都可能定向到键命名空间的最后一个部分。 如果使用数字 ID，请使用三位数哈希作为 ID 的前缀。 如果使用时间戳，请使用秒值作为时间戳的前缀，例如 *ssyyyymmdd*。 如果应用程序定期执行列出和查询操作，请选择限制查询次数的哈希函数。 在某些情况下，使用随机前缀便已足够。
   
-- 有关 Azure 存储中使用的分区方案的详细信息，请参阅 Azure[存储：具有强一致性的高度可用云存储服务](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)。
+- 有关 Azure 存储中使用的分区方案的详细信息，请参阅[Azure 存储：具有高度一致性的高可用性云存储服务](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)。
 
 ## <a name="networking"></a>网络
 
@@ -137,7 +137,7 @@ Blob 存储使用基于范围的分区方案来进行缩放和负载均衡。 �
 
 如果客户端应用程序要访问 Azure 存储但不是托管在 Azure 中（例如移动设备应用或本地企业服务），则将存储帐户放在靠近这些客户端的区域可降低延迟。 如果客户端广泛分布在各地（例如，有些客户端分布在北美，有些则在欧洲），请考虑在每个区域使用一个存储帐户。 如果应用程序存储的数据是特定于各个用户的，不需要在存储帐户之间复制数据，则此方法更容易实施。
 
-要广泛分发 Blob 内容，请使用内容传递网络（如 Azure CDN）。 关于 Azure CDN 的详细信息，请参阅 [Azure CDN](../../cdn/cdn-overview.md)。  
+若要广泛地分发 blob 内容，请使用内容交付网络，如 Azure CDN。 关于 Azure CDN 的详细信息，请参阅 [Azure CDN](../../cdn/cdn-overview.md)。  
 
 ## <a name="sas-and-cors"></a>SAS 和 CORS
 
@@ -244,13 +244,13 @@ Azure 存储提供多种解决方案用于在存储帐户内部、在存储帐�
 
 AzCopy 命令行实用工具是向/从以及跨存储帐户批量传输 Blob 的简单高效选项。 AzCopy 已针对此方案进行优化，可以实现较高的传输速率。 AzCopy 版本 10 使用 `Put Block From URL` 操作跨存储帐户复制 Blob 数据。 有关详细信息，请参阅[使用 AzCopy v10 将数据复制或移到 Azure 存储](/azure/storage/common/storage-use-azcopy-v10)。  
 
-### <a name="use-azure-data-box"></a>使用 Azure 数据框
+### <a name="use-azure-data-box"></a>使用 Azure Data Box
 
-要将大量数据导入 Blob 存储，请考虑使用 Azure 数据框系列进行脱机传输。 当您受到时间、网络可用性或成本的限制时，Microsoft 提供的数据盒设备是将数据移动到 Azure 的一个不错的选择。 有关详细信息，请参阅 Azure[数据盒文档](/azure/databox/)。
+若要在 Blob 存储中导入大量数据，请考虑使用 Azure Data Box 系列进行脱机传输。 当你按时间、网络可用性或成本进行限制时，Microsoft 提供的 Data Box 设备可用于将大量数据移到 Azure。 有关详细信息，请参阅[Azure DataBox 文档](/azure/databox/)。
 
 ## <a name="content-distribution"></a>内容分发
 
-有时，应用程序需要为位于相同或多个区域的许多用户（例如，网站主页中使用的产品演示视频）提供相同的内容。 在这种情况下，使用内容传递网络 （CDN）（如 Azure CDN）在地理位置分发 Blob 内容。 与存在于一个区域且无法以低延迟向其他区域交付内容的 Azure 存储帐户不同，Azure CDN 使用位于全世界多个数据中心的服务器。 此外，与单个存储帐户相比，CDN 通常可以支持更高的出口限制。  
+有时，应用程序需要向位于同一区域或多个区域的许多用户提供相同的内容（例如网站主页中使用的产品演示视频）。 在这种情况下，请使用内容交付网络（CDN）（如 Azure CDN）在地理上分发 blob 内容。 与存在于一个区域且无法以低延迟向其他区域交付内容的 Azure 存储帐户不同，Azure CDN 使用位于全世界多个数据中心的服务器。 此外，与单个存储帐户相比，CDN 通常可以支持更高的出口限制。  
 
 关于 Azure CDN 的详细信息，请参阅 [Azure CDN](../../cdn/cdn-overview.md)。
 
@@ -281,7 +281,7 @@ Azure 存储支持块 Blob、追加 Blob 和页 Blob。 在给定的使用方案
 
 追加 Blob 与块 Blob 的类似之处在于，它们都由块构成。 修改追加 Blob 时，块只会添加到 Blob 的末尾。 在日志记录等方案中，如果应用程序需要将数据添加到现有的 Blob 时，则追加 Blob 会很有用。
 
-如果应用程序需要对数据执行随机写入，则适合使用页 Blob。 例如，Azure 虚拟机磁盘将存储为页 Blob。 有关详细信息，请参阅[了解块 blob、追加 blob 和页面 blob。](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)  
+如果应用程序需要对数据执行随机写入，则适合使用页 Blob。 例如，Azure 虚拟机磁盘将存储为页 Blob。 有关详细信息，请参阅[了解块 blob、追加 blob 和页 blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)。  
 
 ## <a name="next-steps"></a>后续步骤
 

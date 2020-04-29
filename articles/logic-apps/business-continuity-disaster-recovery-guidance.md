@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.openlocfilehash: 7bf71ce7c44229ccf19022e9cfb0162f9d77cd97
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80437702"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>适用于 Azure 逻辑应用的业务连续性和灾难恢复

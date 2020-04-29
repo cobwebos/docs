@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: f7de3c28463a86852cba03713ca4c500e7ca0339
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80437512"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>为 Hyper-V VM 设置到辅助本地站点的灾难恢复
@@ -90,7 +90,7 @@ ms.locfileid: "80437512"
     -  在活动节点上安装提供程序，并完成安装以在保管库中注册 VMM 服务器。
     - 然后在其他节点上安装提供程序。 所有群集节点应运行相同版本的提供程序。
 2. 安装程序将运行几项先决条件检查，并请求停止 VMM 服务的权限。 VMM 服务会在安装程序完成时自动重启。 如果在 VMM 群集上进行安装，系统会提示停止群集角色。
-3. 在“Microsoft 更新”  中，可选择指定根据 Microsoft 更新策略安装提供程序更新。
+3. 在“Microsoft 更新”**** 中，可选择指定根据 Microsoft 更新策略安装提供程序更新。
 4. 在“安装”  中接受或修改默认安装位置，并单击“安装”  。
 5. 安装完成后，单击“注册”，以便在保管库中注册服务器。 
 

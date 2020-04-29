@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.openlocfilehash: 0a31c6cf32222277e033aacf7d04622c54aef9ea
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80437018"
 ---
 # <a name="migrate-apache-kafka-workloads-to-azure-hdinsight-40"></a>将 Apache Kafka 工作负荷迁移到 Azure HDInsight 4.0
@@ -20,12 +20,12 @@ Azure HDInsight 4.0 提供最新的开源组件，并在性能、连接和安全
 
 ## <a name="hdinsight-36-kafka-migration-paths"></a>HDInsight 3.6 Kafka 迁移路径
 
-HDInsight 3.6 支持卡夫卡的两个版本：1.0.0 和 1.1.0。 HDInsight 4.0 支持版本 1.1.0 和 2.1.0。 根据要运行的 Kafka 版本和 HDInsight 版本，有多种受支持的迁移路径。 下文将介绍这些路径，下图也演示了这些路径。
+HDInsight 3.6 支持两个版本的 Kafka：1.0.0 和 1.1.0。 HDInsight 4.0 支持版本 1.1.0 和 2.1.0。 根据要运行的 Kafka 版本和 HDInsight 版本，有多种受支持的迁移路径。 下文将介绍这些路径，下图也演示了这些路径。
 
-* **在最新版本（推荐）上运行 Kafka 和 HDInsight：** 将 HDInsight 3.6 和 Kafka 1.0 或 1.1.0 应用程序迁移到 HDInsight 4.0，卡夫卡 2.1.0（路径 D 和 E 如下）。
-* **在最新版本上运行 HDInsight，但卡夫卡仅在较新版本上运行 HDInsight：** 将 HDInsight 3.6 和卡夫卡 1.0.0 应用程序迁移到 HDInsight 4.0，卡夫卡 1.1.0（下面的路径 B）。
-* **在最新版本上运行 HDInsight，保留卡夫卡版本**：将 HDInsight 3.6 和卡夫卡 1.1.0 应用程序迁移到 HDInsight 4.0，卡夫卡 1.1.0（路径 C 如下）。
-* **在较新版本上运行卡夫卡，保留 HDInsight 版本**：将 Kafka 1.0.0 应用程序迁移到 1.1.0，并保留 HDInsight 3.6（下面的路径 A）。 请注意，此选项仍需部署新群集。 不支持升级现有群集上的 Kafka 版本。 使用所需的版本创建群集后，迁移 Kafka 客户端以使用新群集。
+* **在最新的版本上运行 Kafka 和 HDInsight（推荐）** ：将 HDInsight 3.6 和 Kafka 1.0.0 或 1.1.0 应用程序迁移到包含 Kafka 2.1.0 的 HDInsight 4.0（下面的路径 D 和 E）。
+* **在最新的版本上运行 HDInsight，但在较新的版本上运行 Kafka：** 将 HDInsight 3.6 和 Kafka 1.0.0 应用程序迁移到包含 Kafka 1.1.0 的 HDInsight 4.0（下面的路径 B）。
+* **在最新的版本上运行 HDInsight，保留 Kafka 版本**：将 HDInsight 3.6 和 Kafka 1.1.0 应用程序迁移到包含 Kafka 1.1.0 的 HDInsight 4.0（下面的路径 C）。
+* **在较新的版本上运行 Kafka，保留 HDInsight 版本**：将 Kafka 1.0.0 应用程序迁移到 1.1.0，并保留 HDInsight 3.6（下面的路径 A）。 请注意，此选项仍需部署新群集。 不支持升级现有群集上的 Kafka 版本。 使用所需的版本创建群集后，迁移 Kafka 客户端以使用新群集。
 
 ![HDInsight 3.6 上的 Apache Kafka 的升级路径](./media/upgrade-threesix-to-four/apache-kafka-upgrade-path.png)
 
@@ -54,7 +54,7 @@ HDInsight 3.6 支持卡夫卡的两个版本：1.0.0 和 1.1.0。 HDInsight 4.0 
 
 ## <a name="kafka-client-compatibility"></a>Kafka 客户端兼容性
 
-新的 Kafka 中介支持旧版客户端。 [KIP-35 - 检索协议版本](https://cwiki.apache.org/confluence/display/KAFKA/KIP-35+-+Retrieving+protocol+version)引入了一种动态确定 Kafka 代理和[KIP-97 功能的机制：改进的 Kafka 客户端 RPC 兼容性策略](https://cwiki.apache.org/confluence/display/KAFKA/KIP-97%3A+Improved+Kafka+Client+RPC+Compatibility+Policy)引入了新的兼容性策略和 Java 客户端的保证。 以前，Kafka 客户端必须与相同或更高版本的中介交互。 现在，更高版本的 Java 客户端以及支持 KIP-35 的其他客户端（例如 `librdkafka`）可以回退到较旧的请求类型，或者在功能不可用时引发相应的错误。
+新的 Kafka 中介支持旧版客户端。 [KIP-35 - 检索协议版本](https://cwiki.apache.org/confluence/display/KAFKA/KIP-35+-+Retrieving+protocol+version)介绍了一种动态确定 Kafka 中介功能的机制，[KIP-97：改进了 Kafka 客户端 RPC 兼容性策略](https://cwiki.apache.org/confluence/display/KAFKA/KIP-97%3A+Improved+Kafka+Client+RPC+Compatibility+Policy)介绍了 Java 客户端的新兼容性策略和保证。 以前，Kafka 客户端必须与相同或更高版本的中介交互。 现在，更高版本的 Java 客户端以及支持 KIP-35 的其他客户端（例如 `librdkafka`）可以回退到较旧的请求类型，或者在功能不可用时引发相应的错误。
 
 ![升级 Kafka 客户端兼容性](./media/upgrade-threesix-to-four/apache-kafka-client-compatibility.png)
 
@@ -68,7 +68,7 @@ HDInsight 3.6 支持卡夫卡的两个版本：1.0.0 和 1.1.0。 HDInsight 4.0 
 
 若要完成迁移，请执行以下步骤：
 
-1. **部署新的 HDInsight 4.0 群集和客户端用于测试。** 部署新的 HDInsight 4.0 Kafka 群集。 如果可以选择多个 Kafka 群集版本，建议选择最新版本。 部署后，根据需要设置一些参数，并创建与现有环境同名的主题。 此外，根据需要设置 TLS 并自带密钥 （BYOK） 加密。 然后，检查此设置是否可在新群集上正常工作。
+1. **部署新的 HDInsight 4.0 群集和客户端用于测试。** 部署新的 HDInsight 4.0 Kafka 群集。 如果可以选择多个 Kafka 群集版本，建议选择最新版本。 部署之后，根据需要设置一些参数，并创建与现有环境同名的主题。 此外，根据需要设置 TLS 并自带密钥（BYOK）加密。 然后，检查此设置是否可在新群集上正常工作。
 
     ![部署新的 HDInsight 4.0 群集](./media/upgrade-threesix-to-four/deploy-new-hdinsight-clusters.png)
 

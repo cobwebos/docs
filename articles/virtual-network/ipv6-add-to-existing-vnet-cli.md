@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: f3f9b32ea55f0ceebf08b22ccc7e2ceec0b6227e
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80420803"
 ---
 # <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli"></a>将 IPv6 添加到 Azure 虚拟网络中的 IPv4 应用程序 - Azure CLI
@@ -31,7 +31,7 @@ ms.locfileid: "80420803"
 
 ## <a name="prerequisites"></a>先决条件
 
-本文假定部署了标准负载均衡器，如[快速入门：创建标准负载均衡器 - Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md)。
+本文假设你按[快速入门：创建标准负载均衡器-Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md)中所述部署了标准负载均衡器。
 
 ## <a name="create-ipv6-addresses"></a>创建 IPv6 地址
 
@@ -159,4 +159,4 @@ Remove-AzResourceGroup -Name MyAzureResourceGroupSLB
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你已将采用 IPv4 前端 IP 配置的现有标准负载均衡器更新为双堆栈（IPv4 和 IPv6）配置。 你还将 IPv6 配置添加到了后端池中 VM 的 NIC。 要了解有关 Azure 虚拟网络中 IPv6 支持的更多信息，请参阅[什么是 Azure 虚拟网络的 IPv6？](ipv6-overview.md)
+在本文中，你已将采用 IPv4 前端 IP 配置的现有标准负载均衡器更新为双堆栈（IPv4 和 IPv6）配置。 你还将 IPv6 配置添加到了后端池中 VM 的 NIC。 若要了解有关 Azure 虚拟网络中 IPv6 支持的详细信息，请参阅[什么是适用于 Azure 虚拟网络的 ipv6？](ipv6-overview.md)

@@ -1,5 +1,5 @@
 ---
-title: 利用sys_schema - MySQL 的 Azure 数据库
+title: 利用 sys_schema Azure Database for MySQL
 description: 了解如何在 Azure Database for MySQL 中使用 sys_schema 发现性能问题和维护数据库。
 author: ajlam
 ms.author: andrela
@@ -7,15 +7,15 @@ ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/30/2020
 ms.openlocfilehash: 59b8753007c3b9130c397dda30c571580cbb5326
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80411091"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>如何在 Azure Database for MySQL 中使用 sys_schema 进行性能优化和数据库维护
 
-MySQL performance_schema在 MySQL 5.5 中首次提供，它为许多重要的服务器资源（如内存分配、存储程序、元数据锁定等）提供检测。但是，performance_schema包含 80 多个表，获取必要的信息通常需要performance_schema联接表以及information_schema表。 sys_schema 在 performance_schema 和 information_schema 的基础上构建，在一个只读的数据库中提供[用户友好视图](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html)的强大集合，并且完全在 Azure Database for MySQL 版本 5.7 中启用。
+Mysql 5.5 中第一次提供的 MySQL performance_schema 为许多重要的服务器资源（如内存分配、存储程序、元数据锁定等）提供检测。但 performance_schema 包含80个以上的表，并且获取所需的信息通常需要联接 performance_schema 内的表以及 information_schema 中的表。 sys_schema 在 performance_schema 和 information_schema 的基础上构建，在一个只读的数据库中提供[用户友好视图](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html)的强大集合，并且完全在 Azure Database for MySQL 版本 5.7 中启用。
 
 ![sys_schema 的视图](./media/howto-troubleshoot-sys-schema/sys-schema-views.png)
 
@@ -29,7 +29,7 @@ sys_schema 中有 52 个视图，每个视图具有以下前缀之一：
 - User：按用户分组的消耗资源。 示例包括文件 I/O、连接和内存。
 - Wait：等待按主机或用户分组的事件。
 
-现在，让我们来了解 sys_schema 的一些常见使用模式。 首先，我们将使用模式分为两类：**性能调整**和**数据库维护**。
+现在，让我们来了解 sys_schema 的一些常见使用模式。 首先，我们将使用模式分为两类：**性能优化**和**数据库维护**。
 
 ## <a name="performance-tuning"></a>性能调优
 
@@ -62,7 +62,7 @@ IO 是数据库中开销最高的操作。 我们可以通过查询 *sys.user_su
 ### <a name="sysinnodb_buffer_stats_by_table"></a>*sys.innodb_buffer_stats_by_table*
 
 [!IMPORTANT]
-> 查询此视图可能会影响性能。 建议在非高峰工作时间执行此故障排除。
+> 查询此视图可能会影响性能。 建议在非高峰时段执行此故障排除。
 
 InnoDB 缓冲池驻留在内存中，是 DBMS 与存储之间的主要缓存机制。 InnoDB 缓冲池大小与性能层密切相关，除非选择不同的产品 SKU，否则不能更改。 与操作系统中的内存一样，旧页面将被换出，以便为较新数据留出空间。 若要了解哪些表占用了大部分 InnoDB 缓冲池内存，可以查询 *sys.innodb_buffer_stats_by_table* 视图。
 
@@ -70,7 +70,7 @@ InnoDB 缓冲池驻留在内存中，是 DBMS 与存储之间的主要缓存机�
 
 在上图中，很明显，除系统表和视图以外，mysqldatabase033 数据库中的每个表（托管某个 WordPress 站点）占用了 16 KB 或 1 个页面的内存中数据。
 
-### <a name="sysschema_unused_indexes--sysschema_redundant_indexes"></a>*Sys.schema_unused_indexes* & *sys.schema_redundant_indexes*
+### <a name="sysschema_unused_indexes--sysschema_redundant_indexes"></a>Sys.schema_unused_indexes 和 sys.schema_redundant_indexes  
 
 索引是提高读取性能的极佳工具，但它们确实会产生额外的插入和存储开销。 *Sys.schema_unused_indexes* 和 *sys.schema_redundant_indexes* 提供未使用或重复索引的洞察信息。
 
@@ -78,7 +78,7 @@ InnoDB 缓冲池驻留在内存中，是 DBMS 与存储之间的主要缓存机�
 
 ![冗余的索引](./media/howto-troubleshoot-sys-schema/redundant-indexes.png)
 
-## <a name="conclusion"></a>结束语
+## <a name="conclusion"></a>结论
 
 总而言之，sys_schema 是用于优化性能和维护数据库的极佳工具。 请务必在 Azure Database for MySQL 中利用此功能。 
 

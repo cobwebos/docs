@@ -1,6 +1,6 @@
 ---
-title: 将 VHD 上载到 Azure 或跨区域复制磁盘 - Azure CLI
-description: 了解如何通过直接上载将 VHD 上载到 Azure 托管磁盘，并使用 Azure CLI 跨区域复制托管磁盘。
+title: 将 VHD 上传到 Azure 或跨区域复制磁盘-Azure CLI
+description: 了解如何使用 Azure CLI 通过直接上传将 VHD 上传到 Azure 托管磁盘并跨区域复制托管磁盘。
 services: virtual-machines,storage
 author: roygara
 ms.author: rogarana
@@ -9,28 +9,28 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: disks
 ms.openlocfilehash: 6813206aebe67e4e6d2afd0d9c78d03f0c20c952
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80420970"
 ---
-# <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>将 VHD 上载到 Azure 或将托管磁盘复制到其他区域 - Azure CLI
+# <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>将 VHD 上传到 Azure，或将托管磁盘复制到其他区域-Azure CLI
 
 [!INCLUDE [disks-upload-vhd-to-disk-intro](../../../includes/disks-upload-vhd-to-disk-intro.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 下载最新版本 [AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy)。
 - [安装 Azure CLI](/cli/azure/install-azure-cli)。
-- 如果要从本地上载 VHD：[已为 Azure 准备的](../windows/prepare-for-upload-vhd-image.md)固定大小 VHD，存储在本地。
+- 如果要从本地上载 VHD：已[为 Azure 准备](../windows/prepare-for-upload-vhd-image.md)的固定大小 VHD，本地存储。
 - 若要执行复制操作，请使用 Azure 中的托管磁盘。
 
 ## <a name="getting-started"></a>入门
 
-如果希望通过 GUI 上载磁盘，可以使用 Azure 存储资源管理器执行此操作。 有关详细信息，请参阅：[使用 Azure 存储资源管理器管理 Azure 托管磁盘](disks-use-storage-explorer-managed-disks.md)
+如果希望通过 GUI 上传磁盘，可以使用 Azure 存储资源管理器。 有关详细信息，请参阅：[使用 Azure 存储资源管理器管理 Azure 托管磁盘](disks-use-storage-explorer-managed-disks.md)
 
-要将 VHD 上载到 Azure，您需要创建为此上载过程配置的空托管磁盘。 在创建托管磁盘之前，应了解有关这些磁盘的一些附加信息。
+若要将 VHD 上传到 Azure，需要创建一个为此上传过程配置的空托管磁盘。 在创建托管磁盘之前，应了解有关这些磁盘的一些附加信息。
 
 这种托管磁盘有两种独特的状态：
 
@@ -42,21 +42,21 @@ ms.locfileid: "80420970"
 
 ## <a name="create-an-empty-managed-disk"></a>创建空托管磁盘
 
-在创建用于上载的空标准 HDD 之前，您需要要上载的 VHD 的文件大小（以字节为单位）。 为此，可以使用 `wc -c <yourFileName>.vhd` 或 `ls -al <yourFileName>.vhd`。 指定 **--upload-size-bytes** 参数时将使用此值。
+你需要上载 VHD 的文件大小（以字节为单位），然后才能创建用于上传的空标准 HDD。 为此，可以使用 `wc -c <yourFileName>.vhd` 或 `ls -al <yourFileName>.vhd`。 指定 **--upload-size-bytes** 参数时将使用此值。
 
-通过在磁盘中指定 **--for 上传**参数和 **--upload 大小字节**参数创建用于上载的空标准 HDD[创建](/cli/azure/disk#az-disk-create)cmdlet：
+通过在[disk create](/cli/azure/disk#az-disk-create) cmdlet 中指定 **--for 上传**参数和 **--上传大小-字节**参数，创建一个空的标准 HDD 以进行上传：
 
-用`<yourdiskname>`您选择的`<yourresourcegroupname>`值`<yourregion>`替换 。。 参数`--upload-size-bytes`包含`34359738880`的示例值 ， 将其替换为适合您的值。
+将`<yourdiskname>`、 `<yourresourcegroupname>`和`<yourregion>`的值替换为你选择的值。 `--upload-size-bytes`参数包含的`34359738880`示例值，请将其替换为适合你的值。
 
 ```azurecli
 az disk create -n <yourdiskname> -g <yourresourcegroupname> -l <yourregion> --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
 ```
 
-如果要上传高级 SSD 或标准 SSD，请将**standard_lrs**替换为**premium_LRS**或**standardssd_lrs**。 目前不支持超磁盘。
+如果要上传高级 SSD 或标准 SSD，请将**standard_lrs**替换为**premium_LRS**或**standardssd_lrs**。 目前不支持 Ultra 磁盘。
 
-现在，您已经创建了为上载过程配置的空托管磁盘，您可以将 VHD 上载到该磁盘。 要将 VHD 上载到磁盘，您需要一个可写入的 SAS，以便您可以将其作为上载的目标。
+现在，你已创建了一个为上传过程配置的空托管磁盘，可以将 VHD 上传到该磁盘。 若要将 VHD 上传到磁盘，则需要一个可写 SAS，以便将其作为上传的目标进行引用。
 
-要生成空托管磁盘的可写 SAS，请替换`<yourdiskname>`和`<yourresourcegroupname>`，然后使用以下命令：
+若要生成空托管磁盘的可写 SAS，请`<yourdiskname>`替换`<yourresourcegroupname>`和，然后使用以下命令：
 
 ```azurecli
 az disk grant-access -n <yourdiskname> -g <yourresourcegroupname> --access-level Write --duration-in-seconds 86400
@@ -84,7 +84,7 @@ AzCopy.exe copy "c:\somewhere\mydisk.vhd" "sas-URI" --blob-type PageBlob
 
 上传完成后，如果你不再需要将更多数据写入磁盘，请吊销 SAS。 吊销 SAS 会更改托管磁盘的状态，使你可以将磁盘附加到 VM。
 
-替换`<yourdiskname>``<yourresourcegroupname>`和 ，然后使用以下命令使磁盘可用：
+替换`<yourdiskname>`和`<yourresourcegroupname>`，然后使用以下命令使磁盘可用：
 
 ```azurecli
 az disk revoke-access -n <yourdiskname> -g <yourresourcegroupname>
@@ -99,7 +99,7 @@ az disk revoke-access -n <yourdiskname> -g <yourresourcegroupname>
 > [!IMPORTANT]
 > 提供 Azure 中托管磁盘的磁盘大小（以字节为单位）时，需要添加 512 偏移量。 这是因为，Azure 在返回磁盘大小时会省略脚注。 如果不添加此偏移量，复制将会失败。 以下脚本中已添加此偏移量。
 
-将`<sourceResourceGroupHere>`、 `<sourceDiskNameHere>` `<targetDiskNameHere>`、 `<targetResourceGroupHere>`、`<yourTargetLocationHere>`和 （位置值的示例将为 uswest2） 替换为值，然后运行以下脚本以复制托管磁盘。
+将`<sourceResourceGroupHere>` `<sourceDiskNameHere>`、 `<targetDiskNameHere>` `<yourTargetLocationHere>` 、、和（位置值的示例为 uswest2）替换为你的值，然后运行以下脚本，以便复制托管磁盘。 `<targetResourceGroupHere>`
 
 ```azurecli
 sourceDiskName = <sourceDiskNameHere>
@@ -125,5 +125,5 @@ az disk revoke-access -n $targetDiskName -g $targetRG
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，您已成功将 VHD 上载到托管磁盘，您可以将磁盘作为[数据磁盘附加到现有 VM，](add-disk.md)或[将磁盘作为 OS 磁盘附加到 VM，](upload-vhd.md#create-the-vm)以创建新的 VM。 
+现在已成功将 VHD 上传到托管磁盘，可以将该磁盘作为[数据磁盘附加到现有 VM](add-disk.md) ，或者[将磁盘作为 OS 磁盘附加到 VM](upload-vhd.md#create-the-vm)，以创建新的 vm。 
 

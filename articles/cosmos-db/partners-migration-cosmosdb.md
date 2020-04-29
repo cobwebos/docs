@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.openlocfilehash: 3e400f62ed4afcb40d5d68aeb357d47083445802
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76988169"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL 迁移和应用程序开发合作伙伴
@@ -19,13 +19,13 @@ ms.locfileid: "76988169"
 
 ## <a name="migration-tools"></a>迁移工具
 
-|**Partner**  |**功能和体验**  |**支持的国家/地区**  |**联系人**  |
+|**合作伙伴**  |**功能和体验**  |**支持的国家/地区**  |**联系人**  |
 |---------|---------|---------|---------|
-|![Striim][2]    |  从各种数据源[将实时数据移至 Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/)。 <br/> Striim 简化了从各种本地源（包括企业文档和关系数据库、传感器和日志文件）到 Azure Cosmos DB 中实时收集和移动数据的过程。 |   USA   |  [网站](https://www.striim.com/)       |
+|![Striim][2]    |  从各种数据源[将实时数据移至 Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/)。 <br/> Striim 简化了将数据从各种本地源（包括企业文档和关系数据库、传感器和日志文件）实时收集和移动到 Azure Cosmos DB。 |   USA   |  [网站](https://www.striim.com/)       |
 
 ## <a name="systems-integrator-partners"></a>系统集成商合作伙伴
 
-|**Partner**  |**功能和体验**  |**支持的国家/地区**  |**联系人**  |
+|**合作伙伴**  |**功能和体验**  |**支持的国家/地区**  |**联系人**  |
 |---------|---------|---------|---------|
 | ![10thMagnitude][13] | NoSQL 迁移；新应用开发 | USA | [网站](https://www.10thmagnitude.com/)|
 |![Altoros Development LLC][3]    |  NoSQL 迁移、 <br/> 应用创新（现有应用）、 <br/> 新应用开发 |   美国、挪威、芬兰、白俄罗斯、阿根廷 |  [网站](https://www.altoros.com/)     |

@@ -12,35 +12,35 @@ manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 957aa77e18ea8f910f258d1dc59de0d093b0eab6
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80476644"
 ---
-# <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>如何：使用条件访问阻止对 Azure AD 的旧身份验证   
+# <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>如何：使用条件访问阻止向 Azure AD 进行旧身份验证   
 
-为了让用户轻松访问云应用程序，Azure Active Directory (Azure AD) 支持各种身份验证协议，包括旧身份验证。 但是，旧协议不支持多重身份验证 （MFA）。 许多环境通常都会要求使用 MFA，以解决身份盗用的情况。 
+为了让用户轻松访问云应用程序，Azure Active Directory (Azure AD) 支持各种身份验证协议，包括旧身份验证。 但是，旧协议不支持多重身份验证 (MFA)。 许多环境通常都会要求使用 MFA，以解决身份盗用的情况。 
 
-Microsoft 身份安全总监 Alex Weinert 在 2020 年 3 月 12 日博客文章"[阻止组织中的旧版身份验证的新工具](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/new-tools-to-block-legacy-authentication-in-your-organization/ba-p/1225302#)"中强调为什么组织应阻止旧版身份验证以及 Microsoft 为完成此任务提供了哪些其他工具：
+Microsoft 在2020年3月12日在 Microsoft 的 Alex Weinert 的身份安全主管文章在[你的组织中阻止旧身份验证的新工具将](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/new-tools-to-block-legacy-authentication-in-your-organization/ba-p/1225302#)重点介绍组织应阻止旧身份验证以及 Microsoft 提供的其他哪些工具来完成此任务：
 
-> 要使 MFA 有效，还需要阻止旧版身份验证。 这是因为 POP、SMTP、IMAP 和 MAPI 等遗留身份验证协议无法强制实施 MFA，使它们成为攻击组织的对手的首选入口点...
+> 要使 MFA 有效，你还需要阻止旧身份验证。 这是因为旧的身份验证协议（如 POP、SMTP、IMAP 和 MAPI）不能强制实施 MFA，这使其成为攻击者攻击组织的首选入口点
 > 
->...从 Azure 活动目录 （Azure AD） 流量分析中遗留下来的身份验证数字是明显的：
+>...Azure Active Directory （Azure AD）流量分析中的旧身份验证的数目是 stark：
 > 
-> - 超过 99% 的密码喷雾攻击使用旧版身份验证协议
-> - 超过 97% 的凭据填充攻击使用旧版身份验证
-> - 禁用旧版身份验证的组织中的 Azure AD 帐户比启用旧版身份验证的帐户的危害减少 67%
+> - 超过99% 的密码喷涂攻击使用旧的身份验证协议
+> - 超过97% 的凭据堆砌攻击使用旧身份验证
+> - 如果组织中已禁用旧版身份验证体验67%，则组织中的帐户 Azure AD
 >
 
 如果环境已准备好阻止旧身份验证以提高对租户的保护，则可以使用条件访问来实现此目标。 本文介绍如何配置条件访问策略来阻止对租户的旧身份验证。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本文假定你熟悉以下内容： 
 
-- Azure AD 条件访问[的基本概念](overview.md) 
-- 在 Azure 门户中配置条件访问策略的[最佳做法](best-practices.md)
+- Azure AD 条件性访问的[基本概念](overview.md) 
+- 在 Azure 门户中配置条件性访问策略的[最佳实践](best-practices.md)
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -63,28 +63,28 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 
 以下选项被视为旧身份验证协议
 
-- 经过身份验证的 SMTP - POP 和 IMAP 客户端用于发送电子邮件。
-- 自动发现 - Outlook 和 EAS 客户端用于在"在线交换"中查找和连接到邮箱。
-- 交换在线电源外壳 - 用于与远程 PowerShell 连接到在线交换。 如果阻止 Exchange 在线 PowerShell 的基本身份验证，则需要使用 Exchange 在线 PowerShell 模块进行连接。 有关说明，请参阅[使用多重身份验证连接到交换在线 PowerShell。](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)
-- 交换 Web 服务 （EWS） - Outlook、Mac Outlook 和第三方应用使用的编程界面。
-- IMAP4 - IMAP 电子邮件客户端使用。
-- 通过 HTTP（MAPI/HTTP） 的 MAPI - 由 Outlook 2010 及更高版本使用。
-- 脱机通讯簿 （OAB） - Outlook 下载和使用的地址列表集合的副本。
-- 随时随地的 Outlook（HTTP 的 RPC） - 由 Outlook 2016 及更早版本使用。
-- Outlook 服务 - 由 Windows 10 的邮件和日历应用使用。
-- POP3 - 由 POP 电子邮件客户端使用。
-- 报告 Web 服务 - 用于在"联机交换"中检索报表数据。
-- 其他客户端 - 标识为使用旧版身份验证的其他协议。
+- 经过身份验证的 SMTP-POP 和 IMAP 客户端使用它来发送电子邮件。
+- 自动发现-由 Outlook 和 EAS 客户端用于查找和连接到 Exchange Online 中的邮箱。
+- Exchange Online PowerShell-用于通过远程 PowerShell 连接到 Exchange Online。 如果阻止 Exchange Online PowerShell 的基本身份验证，则需要使用 Exchange Online PowerShell 模块进行连接。 有关说明，请参阅[使用多重身份验证连接到 Exchange Online PowerShell](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。
+- Exchange Web 服务（EWS）-Outlook、Outlook for Mac 和第三方应用程序使用的编程接口。
+- IMAP4-由 IMAP 电子邮件客户端使用。
+- MAPI over HTTP （MAPI/HTTP）-由 Outlook 2010 及更高版本使用。
+- 脱机通讯簿（OAB）-Outlook 下载并使用的地址列表集合的副本。
+- Outlook Anywhere （RPC over HTTP）-由 Outlook 2016 及更早版本使用。
+- Outlook 服务-适用于 Windows 10 的邮件和日历应用程序使用。
+- POP3-由 POP 电子邮件客户端使用。
+- 报表 Web 服务-用于在 Exchange Online 中检索报表数据。
+- 其他客户端-标识为使用旧身份验证的其他协议。
 
-有关这些身份验证协议和服务的详细信息，请参阅[Azure 活动目录门户中的登录活动报告](../reports-monitoring/concept-sign-ins.md#filter-sign-in-activities)。
+有关这些身份验证协议和服务的详细信息，请参阅[Azure Active Directory 门户中的登录活动报告](../reports-monitoring/concept-sign-ins.md#filter-sign-in-activities)。
 
 ### <a name="identify-legacy-authentication-use"></a>识别旧式身份验证的用法
 
-需要先了解用户是否有使用旧式身份验证的应用，以及它如何影响整个目录，然后才能在目录中阻止旧式身份验证。 Azure AD 登录日志可用于了解是否使用旧版身份验证。
+需要先了解用户是否有使用旧式身份验证的应用，以及它如何影响整个目录，然后才能在目录中阻止旧式身份验证。 Azure AD 登录日志可用于了解你是否正在使用旧身份验证。
 
-1. 导航到**Azure 门户** > **Azure 活动目录** > **登录**。
-1. 如果未通过单击 **"客户端应用列"** > 显示客户端应用列，则添加该**列**。
-1. **添加筛选器** > **客户端应用**>选择所有旧身份验证协议，然后单击"**应用**"。
+1. 导航到**Azure 门户** > **Azure Active Directory** > **登录**。
+1. 如果未通过单击 **"客户端**应用"**列** > 来显示 "客户端应用" 列，则添加它。
+1. **添加筛选器** > **客户端应用**> 选择所有旧身份验证协议，并单击 "**应用**"。
 
 筛选将仅显示旧式身份验证协议进行的登录尝试。 单击每个单独的登录尝试将显示其他详细信息。 “基本信息”**** 选项卡下的“客户端应用”**** 字段将指示使用了哪个旧式身份验证协议。
 
@@ -92,7 +92,7 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 
 ### <a name="block-legacy-authentication"></a>阻止传统身份验证 
 
-在条件访问策略中，可设置与用于访问资源的客户端应用程序绑定的条件。 客户端应用条件使您能够通过在**移动应用和桌面客户端**下选择**Exchange ActiveSync 客户端****和其他客户端**，使用旧版身份验证将范围缩小到应用范围。
+在条件访问策略中，可设置与用于访问资源的客户端应用程序绑定的条件。 使用客户端应用条件，可以通过选择 "**移动应用和桌面客户端**" 下的 " **Exchange ActiveSync 客户端**和**其他客户端**"，将范围缩小到使用旧身份验证的应用。
 
 ![其他客户端](./media/block-legacy-authentication/01.png)
 
@@ -110,7 +110,7 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 
 ![分配](./media/block-legacy-authentication/03.png)
 
-Azure 具有一个安全功能，可阻止您创建这样的策略，因为此配置违反了条件访问策略的[最佳做法](best-practices.md)。
+Azure 具有一项安全功能，可阻止你创建这样的策略，因为此配置违反了条件性访问策略的[最佳实践](best-practices.md)。
  
 ![不支持策略配置](./media/block-legacy-authentication/04.png)
 
@@ -120,7 +120,7 @@ Azure 具有一个安全功能，可阻止您创建这样的策略，因为此�
 
 可通过将一个用户排除在策略之外来满足此安全功能。 理想情况下，应定义几个[在 Azure AD 中紧急访问管理帐户](../users-groups-roles/directory-emergency-access.md)，并将其从策略中排除。
 
-启用策略阻止旧版身份验证时，使用[仅报告模式](concept-conditional-access-report-only.md)为您的组织提供了一个监视策略影响的机会。
+如果启用策略来阻止旧身份验证，则使用[仅报告模式](concept-conditional-access-report-only.md)可为组织提供监视策略的影响的机会。
 
 ## <a name="policy-deployment"></a>策略部署
 
@@ -131,7 +131,7 @@ Azure 具有一个安全功能，可阻止您创建这样的策略，因为此�
  
 有关详细信息，请参阅[应如何部署新策略？](best-practices.md#how-should-you-deploy-a-new-policy)。
 
-## <a name="what-you-should-know"></a>要点
+## <a name="what-you-should-know"></a>应了解的内容
 
 阻止使用其他客户端的访问也会阻止使用基本身份验证的 Exchange Online PowerShell 和 Dynamics 365****。
 
@@ -139,9 +139,9 @@ Azure 具有一个安全功能，可阻止您创建这样的策略，因为此�
 
 策略生效可能需要长达 24 小时的时间。
 
-可以为其他客户端条件选择所有可用的授予控件;但是，您可以选择**其他客户端**条件。但是， 最终用户体验始终相同 - 阻止访问。
+您可以选择**其他客户端**条件的所有可用授权控件;但是，最终用户体验始终是相同的被阻止访问。
 
-如果使用**其他客户端**条件阻止旧版身份验证，也可以设置设备平台和位置条件。 例如，如果只想阻止移动设备的旧式身份验证，请通过选择以下项来设置**设备平台**条件：
+如果使用**其他客户端**条件阻止旧身份验证，则还可以设置设备平台和位置条件。 例如，如果只想阻止移动设备的旧式身份验证，请通过选择以下项来设置**设备平台**条件：
 
 - Android
 - iOS
@@ -151,6 +151,6 @@ Azure 具有一个安全功能，可阻止您创建这样的策略，因为此�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用仅条件访问报告模式确定影响](howto-conditional-access-report-only.md)
-- 如果您还不熟悉配置条件访问策略，请参阅[使用 Azure 活动目录条件访问的特定应用需要 MFA](app-based-mfa.md)作为示例。
+- [使用条件性访问仅报告模式来确定影响](howto-conditional-access-report-only.md)
+- 如果你尚不熟悉配置条件访问策略，请参阅[需要对特定应用的 MFA，其中 Azure Active Directory 条件性访问](app-based-mfa.md)。
 - 有关新式身份验证支持的详细信息，请参阅[如何对 Office 2013 和 Office 2016 客户端应用使用新式身份验证](/office365/enterprise/modern-auth-for-office-2013-and-2016) 

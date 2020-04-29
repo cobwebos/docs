@@ -4,10 +4,10 @@ description: 恢复服务保管库和 Azure 备份保管库的概述和比较。
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.openlocfilehash: e6a359287533c9ffdd688b5285b24b9c70fa7b7f
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80436964"
 ---
 # <a name="recovery-services-vaults-overview"></a>恢复服务保管库概述
@@ -18,7 +18,7 @@ ms.locfileid: "80436964"
 
 ## <a name="comparing-recovery-services-vaults-and-backup-vaults"></a>比较恢复服务保管库和备份保管库
 
-如果仍有备份保管库，则它们正在自动升级到恢复服务保管库。 在 2017 年 11 月 之前，所有备份保管库均已升级到恢复服务保管库。
+如果仍有备份保管库，它们会自动升级到恢复服务保管库。 在 2017 年 11 月 之前，所有备份保管库均已升级到恢复服务保管库。
 
 恢复服务保管库基于 Azure 的 Azure 资源管理器模型，而备份保管库则基于 Azure Service Manager 模型。 将备份保管库升级到恢复服务保管库时，备份数据在升级过程中和升级后均会保持不变。 恢复服务保管库提供不适用于备份保管库的功能，例如：
 
@@ -26,7 +26,7 @@ ms.locfileid: "80436964"
 
 - **针对混合 IT 环境进行集中监视**：使用恢复服务保管库时，可以通过中心门户监视 [Azure IaaS VM](backup-azure-manage-vms.md) 和[本地资产](backup-azure-manage-windows-server.md#manage-backup-items)。 [了解详细信息](https://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
 
-- **基于角色的访问控制 (RBAC)**：RBAC 在 Azure 中提供精细的访问管理控制。 [Azure 提供各种内置角色](../role-based-access-control/built-in-roles.md)，而 Azure 备份包含三个[用于管理恢复点的内置角色](backup-rbac-rs-vault.md)。 恢复服务保管库兼容 RBAC，后者会限制对已定义用户角色集的备份和还原访问权限。 [了解详细信息](backup-rbac-rs-vault.md)
+- **基于角色的访问控制 (RBAC)** ：RBAC 在 Azure 中提供精细的访问管理控制。 [Azure 提供各种内置角色](../role-based-access-control/built-in-roles.md)，而 Azure 备份包含三个[用于管理恢复点的内置角色](backup-rbac-rs-vault.md)。 恢复服务保管库兼容 RBAC，后者会限制对已定义用户角色集的备份和还原访问权限。 [了解详细信息](backup-rbac-rs-vault.md)
 
 - **保护 Azure 虚拟机的所有配置**：恢复服务保管库保护基于 Resource Manager 的 VM，其中包括高级磁盘、托管磁盘和加密 VM。 将备份保管库升级到恢复服务保管库以后，即可将基于 Service Manager 的 VM 升级到基于 Resource Manager 的 VM。 在升级保管库的同时，可以保留基于 Service Manager 的 VM 恢复点，并为已升级（已启用 Resource Manager）的 VM 配置保护。 [了解详细信息](https://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 
@@ -36,9 +36,9 @@ ms.locfileid: "80436964"
 
 恢复服务保管库是用于存储在不同时间创建的备份和恢复点的实体。 恢复服务保管库还包含与受保护虚拟机关联的备份策略。
 
-Azure 备份会自动处理保管库的存储。 了解如何[更改存储设置](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)。
+Azure 备份会自动处理保管库的存储。 请参阅如何[更改存储设置](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)。
 
-要了解有关存储冗余的更多详细信息，请参阅有关[地理](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)和[本地](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)冗余的这些文章。
+若要了解有关存储冗余的详细信息，请参阅有关[异地](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)和[本地](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)冗余的文章。
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>在门户中管理恢复服务保管库
 

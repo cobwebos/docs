@@ -15,10 +15,10 @@ ms.date: 01/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 5716e7bb89d017866bd1575256e2d119bb7acbe5
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80385055"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-azure-cli"></a>使用 Azure RBAC 和 Azure CLI 列出角色分配
@@ -26,11 +26,11 @@ ms.locfileid: "80385055"
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] 本文介绍如何使用 Azure CLI 列出角色分配。
 
 > [!NOTE]
-> 如果您的组织将管理功能外包给使用[Azure 委派资源的](../lighthouse/concepts/azure-delegated-resource-management.md)服务提供商，则该服务提供商授权的角色分配将不会在此处显示。
+> 如果你的组织对使用[Azure 委托资源管理](../lighthouse/concepts/azure-delegated-resource-management.md)的服务提供商具有外包管理功能，则此处将不会显示该服务提供商授权的角色分配。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-- [在 Azure 云外壳](/azure/cloud-shell/overview)或[Azure CLI 中](/cli/azure)打舍
+- [Bash Azure Cloud Shell](/azure/cloud-shell/overview)或[Azure CLI](/cli/azure)
 
 ## <a name="list-role-assignments-for-a-user"></a>为用户列出角色分配
 
@@ -98,7 +98,7 @@ az role assignment list --resource-group pharma-sales --output json | jq '.[] | 
 az role assignment list --subscription <subscription_name_or_id>
 ```
 
-示例：
+例如：
 
 ```azurecli-interactive
 az role assignment list --subscription 00000000-0000-0000-0000-000000000000 --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
@@ -112,7 +112,7 @@ az role assignment list --subscription 00000000-0000-0000-0000-000000000000 --ou
 az role assignment list --scope /providers/Microsoft.Management/managementGroups/<group_id>
 ```
 
-示例：
+例如：
 
 ```azurecli-interactive
 az role assignment list --scope /providers/Microsoft.Management/managementGroups/marketing-group --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
@@ -120,7 +120,7 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
 
 ## <a name="list-role-assignments-for-a-managed-identity"></a>列出托管标识的角色分配
 
-1. 获取系统分配或用户分配的托管标识的对象 ID。
+1. 获取系统分配的或用户分配的托管标识的对象 ID。
 
     若要获取用户分配的托管标识的对象 ID，可以使用 [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) 或 [az identity list](/cli/azure/identity#az-identity-list)。
 

@@ -8,10 +8,10 @@ ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
 ms.openlocfilehash: c1c5bdd1d210a1933699cad52dbf123b50048e01
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80421331"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>从虚拟网络 (VNet) 访问 Azure Cosmos DB
@@ -50,10 +50,10 @@ ms.locfileid: "80421331"
 只有已添加到 Azure Cosmos 帐户的虚拟网络及其子网才拥有此访问权限。 将对等互连的虚拟网络中的子网添加到帐户之后，对等互连的 VNet 才可以访问该帐户。
 
 ### <a name="what-is-the-maximum-number-of-subnets-allowed-to-access-a-single-cosmos-account"></a>最多允许多少个子网访问单个 Cosmos 帐户？ 
-目前，Azure Cosmos 帐户最多只能有 256 个子网。
+目前，Azure Cosmos 帐户最多可以有256个子网。
 
 ### <a name="can-i-enable-access-from-vpn-and-express-route"></a>是否可以启用从 VPN 和 Express Route 进行访问？ 
-要从内部通过快速路由访问 Azure Cosmos 帐户，需要启用 Microsoft 对等互连。 创建 IP 防火墙或虚拟网络访问规则后，可以在 Azure Cosmos 帐户 IP 防火墙中添加用于 Microsoft 对等互连的公共 IP 地址，以允许本地服务访问 Azure Cosmos 帐户。 
+若要从本地快速路由访问 Azure Cosmos 帐户，需要启用 Microsoft 对等互连。 创建 IP 防火墙或虚拟网络访问规则后，可以在 Azure Cosmos 帐户 IP 防火墙中添加用于 Microsoft 对等互连的公共 IP 地址，以允许本地服务访问 Azure Cosmos 帐户。 
 
 ### <a name="do-i-need-to-update-the-network-security-groups-nsg-rules"></a>是否需要更新网络安全组 (NSG) 规则？ 
 NSG 规则用于限制与虚拟网络中子网之间的连接。 将 Azure Cosmos DB 的服务终结点添加到子网时，无需在 NSG 中为 Azure Cosmos 帐户打开出站连接。 

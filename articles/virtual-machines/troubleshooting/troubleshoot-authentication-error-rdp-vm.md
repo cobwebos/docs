@@ -1,6 +1,6 @@
 ---
 title: 使用 RDP 连接到 Azure VM 时排查身份验证错误 | Microsoft Docs
-description: 了解如何排除使用远程桌面协议 （RDP） 连接到 Azure 虚拟机 （VM） 时发生的身份验证错误。
+description: 了解如何解决在使用远程桌面协议（RDP）连接到 Azure 虚拟机（VM）时所发生的身份验证错误。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: 03356c0b4a93f4befdbc529523e58642137a8887
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80420815"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>使用 RDP 连接到 Azure VM 时排查身份验证错误
@@ -31,15 +31,15 @@ ms.locfileid: "80420815"
 
 ### <a name="error-message-1"></a>错误消息 1
 
-**发生了身份验证错误。无法联系当地安全机构。**
+**出现身份验证错误。无法联系本地安全机构。**
 
 ### <a name="error-message-2"></a>错误消息 2
 
-**您尝试连接到的远程计算机需要网络级身份验证 （NLA），但无法联系 Windows 域控制器以执行 NLA。如果您是远程计算机上的管理员，则可以使用"系统属性"对话框的"远程"选项卡上的选项禁用 NLA。**
+**你尝试连接到的远程计算机需要网络级别身份验证（NLA），但无法联系你的 Windows 域控制器来执行 NLA。如果你是远程计算机上的管理员，则可以使用 "系统属性" 对话框的 "远程" 选项卡上的选项来禁用 NLA。**
 
 ### <a name="error-message-3-generic-connection-error"></a>错误消息 3（泛型连接错误）
 
-**此计算机无法连接到远程计算机。如果问题仍然存在，请尝试再次连接，请与远程计算机的所有者或网络管理员联系。**
+**此计算机无法连接到远程计算机。再次尝试连接，如果问题仍然存在，请与远程计算机的所有者或网络管理员联系。**
 
 ## <a name="cause"></a>原因
 
@@ -161,7 +161,7 @@ Reset-ComputerMachinePassword -Server "<COMPUTERNAME>" -Credential <DOMAIN CREDE
 
 如果 DC 和 VM 之间的通信良好，但 DC 的运行状况不佳而无法打开 RDP 会话，则可以尝试重启 DC。
 
-如果上述命令未能修复到域的通信问题，则可以将此 VM 重新加入域。 为此，请按照下列步骤进行操作：
+如果上述命令未能修复到域的通信问题，则可以将此 VM 重新加入域。 为此，请执行以下步骤：
 
 1. 使用以下内容创建名为 Unjoin.ps1 的脚本，然后将该脚本部署为 Azure 门户上的自定义脚本扩展：
 

@@ -1,6 +1,6 @@
 ---
-title: 使用媒体服务 v3 Azure CLI 对自定义转换进行编码 |微软文档
-description: 本主题演示如何使用 Azure 媒体服务 v3 使用 Azure CLI 对自定义转换进行编码。
+title: 使用媒体服务 v3 对自定义转换进行编码 - Azure CLI | Microsoft Docs
+description: 本主题介绍如何使用 Azure CLI 通过 Azure 媒体服务 v3 对自定义转换进行编码。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,13 +13,13 @@ ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
 ms.openlocfilehash: 7c1b446ccf04199449f012e738f6a03660735f50
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80382947"
 ---
-# <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>如何使用自定义转换进行编码 - Azure CLI
+# <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>如何对自定义转换进行编码 - Azure CLI
 
 使用 Azure 媒体服务进行编码时，可以根据[流式传输文件](stream-files-cli-quickstart.md#create-a-transform-for-adaptive-bitrate-encoding)快速入门中演示的行业最佳做法，使用推荐的内置预设之一快速入门。 也可以构建自定义预设以针对特定方案或设备要求。
 
@@ -132,14 +132,14 @@ ms.locfileid: "80382947"
 az ams transform show -a amsaccount -g amsResourceGroup -n customTransformName
 ```
 
-以下 Azure CLI 命令基于自定义预设（定义于前面）创建转换。
+以下 Azure CLI 命令根据自定义预设（先前已定义）创建转换。
 
 ```azurecli-interactive
 az ams transform create -a amsaccount -g amsResourceGroup -n customTransformName --description "Basic Transform using a custom encoding preset" --preset customPreset.json
 ```
 
-要使媒体服务将转换应用于指定的视频或音频，需要在该转换下提交作业。 有关演示如何在转换下提交作业的完整示例，请参阅[快速入门：流视频文件 - Azure CLI](stream-files-cli-quickstart.md)。
+要使媒体服务将转换应用于指定的视频或音频，需要在该转换下提交作业。 有关演示如何在转换下提交作业的完整示例，请参阅[快速入门：对视频文件进行流式处理 - Azure CLI](stream-files-cli-quickstart.md)。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 [Azure CLI](/cli/azure/ams)

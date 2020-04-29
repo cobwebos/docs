@@ -12,10 +12,10 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.custom: ''
 ms.openlocfilehash: 5bd4436fc63fb570f052606ab557dbcf243cf5e7
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80476856"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>在试验中对数据集进行版本控制和跟踪
@@ -28,7 +28,7 @@ ms.locfileid: "80476856"
 * 当新数据可用于重新训练时
 * 应用不同的数据准备或特征工程方法时
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 对于本教程的内容，你需要：
 
@@ -52,7 +52,7 @@ ms.locfileid: "80476856"
 
 ### <a name="register-a-dataset-version"></a>注册数据集版本
 
-下面的代码通过将 `create_new_version` 参数设置为 `True` 来注册 `titanic_ds` 数据集的新版本。 如果没有向工作区注册现有 `titanic_ds` 数据集，则代码会创建一个名为 `titanic_ds` 的新数据集，并将其版本设置为 1。
+下面的代码通过将 `titanic_ds` 参数设置为 `create_new_version` 来注册 `True` 数据集的新版本。 如果没有向工作区注册现有 `titanic_ds` 数据集，则代码会创建一个名为 `titanic_ds` 的新数据集，并将其版本设置为 1。
 
 ```Python
 titanic_ds = titanic_ds.register(workspace = workspace,
@@ -63,7 +63,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ### <a name="retrieve-a-dataset-by-name"></a>按名称检索数据集
 
-默认情况下，`Dataset` 类中的 [get_by_name()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) 方法返回已注册到工作区的数据集的最新版本。 
+默认情况下，[ 类中的 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--)get_by_name()`Dataset` 方法返回已注册到工作区的数据集的最新版本。 
 
 下面的代码获取 `titanic_ds` 数据集的版本 1。
 
@@ -79,10 +79,10 @@ titanic_ds = Dataset.get_by_name(workspace = workspace,
 
 ## <a name="versioning-best-practice"></a>版本控制最佳做法
 
-创建数据集版本时，** 不会使用工作区创建额外的数据副本。 由于数据集是对存储服务中数据的引用，因此，你有单个由存储服务管理的事实来源。
+创建数据集版本时，  不会使用工作区创建额外的数据副本。 由于数据集是对存储服务中数据的引用，因此，你有单个由存储服务管理的事实来源。
 
 >[!IMPORTANT]
-> 如果数据集引用的数据被覆盖或删除，则调用特定版本的数据集不会** 还原更改。
+> 如果数据集引用的数据被覆盖或删除，则调用特定版本的数据集不会  还原更改。
 
 从数据集加载数据时，始终会加载数据集引用的当前数据内容。 如果要确保每个数据集版本都是可再现的，建议你不要修改数据集版本引用的数据内容。 当新数据进入时，将新数据文件保存到单独的数据文件夹中，然后创建新的数据集版本以包含该新文件夹中的数据。
 
@@ -120,7 +120,7 @@ dataset2.register(workspace = workspace,
 
 可以使用数据集作为每个机器学习管道步骤的输入和输出。 重新运行管道时，每个管道步骤的输出将注册为一个新的数据集版本。
 
-因为机器学习管道每次重新运行时，管道都会将每个步骤的输出填充到一个新文件夹中，所以带版本的输出数据集是可再现的。 了解有关[管道中的数据集的更多详细信息](how-to-create-your-first-pipeline.md#steps)。
+因为机器学习管道每次重新运行时，管道都会将每个步骤的输出填充到一个新文件夹中，所以带版本的输出数据集是可再现的。 详细了解 [管道中的数据集](how-to-create-your-first-pipeline.md#steps)。
 
 ```Python
 from azureml.core import Dataset
@@ -158,7 +158,7 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 对于每个机器学习试验，可以通过试验 `Run` 对象轻松跟踪用作输入的数据集。
 
-以下代码使用 方法[`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--)跟踪在实验运行中使用了哪些输入数据集：
+下面的代码使用 [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) 方法跟踪试验运行时使用哪些输入数据集：
 
 ```Python
 # get input datasets
@@ -169,9 +169,9 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-您还可以使用 从`input_datasets`实验中查找https://ml.azure.com/。 
+还可以使用 `input_datasets` 从试验中查找 https://ml.azure.com/ 。 
 
-下图显示了在 Azure 机器学习工作室上查找实验的输入数据集的位置。 对于此示例，请转到“试验”**** 窗格，并打开试验 `keras-mnist` 的特定运行的“属性”**** 选项卡。
+下图展示了在 Azure 机器学习工作室中从何处查找试验的输入数据集。 对于此示例，请转到“试验”  窗格，并打开试验  **的特定运行的“属性”** `keras-mnist`选项卡。
 
 ![输入数据集](./media/how-to-version-track-datasets/input-datasets.png)
 
@@ -183,9 +183,9 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-注册后，您可以使用 Python 或转到https://ml.azure.com/查看在数据集中注册的模型列表。
+注册后，可以使用 Python 或转到 https://ml.azure.com/ 查看已注册到数据集中的模型列表。
 
-以下视图来自“资产”下的“数据集”******** 窗格。 选择数据集，然后选择“模型”**** 选项卡以获取向数据集注册的模型的列表。 
+以下视图来自“资产”下的“数据集”   窗格。 选择数据集，然后选择“模型”  选项卡以获取向数据集注册的模型的列表。 
 
 ![输入数据集模型](./media/how-to-version-track-datasets/dataset-models.png)
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: dsindona
 ms.openlocfilehash: 0952c1d4b6955ff20f06afc6eaded18fbd105708
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80387795"
 ---
 # <a name="build-your-landing-page"></a>生成登陆页
@@ -45,7 +45,7 @@ ms.locfileid: "80387795"
 | **将行动号召设置在顶部或非常显眼的位置** | 将链接嵌入至市场商品信息中的一段文本中。 |
 | **研究最佳关键字并对页面进行搜索优化** | 想当然地认为产品名称可以获得更高的搜索排名。 |
 | **使用广告推广活动中的关键字** | 在 Web 属性中使用许多不同的关键字会削弱广告投资的效果。 |
-| **将相关产品名称和关键字"放在折叠上方"** | 使用户需要滚动才能看到所展示的产品或解决方案。 |
+| **将相关的产品名称和关键字置于折叠上方** | 使用户需要滚动才能看到所展示的产品或解决方案。 |
 | **使用品牌图像来验证解决方案，同时遵循 Microsoft 品牌准则，例如 Azure 认证** | 使用未获批准的 Microsoft 品牌图像。 |
 
 ## <a name="next-steps"></a>后续步骤

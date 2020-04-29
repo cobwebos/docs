@@ -1,5 +1,5 @@
 ---
-title: 配置数据内复制 - MySQL 的 Azure 数据库
+title: 配置数据复制-Azure Database for MySQL
 description: 本文介绍如何为 Azure Database for MySQL 设置复制中数据。
 author: ajlam
 ms.author: andrela
@@ -7,19 +7,19 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.openlocfilehash: 18c1d8b42dc73951901ec4ae9b79715ddbd47617
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80474042"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>如何配置 Azure Database for MySQL 的复制中数据
 
-本文介绍如何通过配置主服务器和副本服务器在 MySQL 的 Azure 数据库中设置数据内复制。 本文假定您以前对 MySQL 服务器和数据库有一些经验。
+本文介绍如何通过配置主服务器和副本服务器在 Azure Database for MySQL 中设置数据传入复制。 本文假定你事先熟悉 MySQL 服务器和数据库。
 
-要在 MySQL 服务的 Azure 数据库中创建副本，数据内复制将同步来自本地主 MySQL 服务器、虚拟机 （VM） 或云数据库服务中的数据。
+若要在 Azure Database for MySQL 服务中创建副本，数据传入复制在本地、虚拟机（Vm）或云数据库服务中同步主 MySQL server 中的数据。
 
-在执行本文中的步骤之前，请查看数据内复制[的限制和要求](concepts-data-in-replication.md#limitations-and-considerations)。
+在执行本文中的步骤之前，请查看数据复制的[限制和要求](concepts-data-in-replication.md#limitations-and-considerations)。
 
 ## <a name="create-a-mysql-server-to-be-used-as-replica"></a>创建用作副本的 MySQL 服务器
 
@@ -35,7 +35,7 @@ ms.locfileid: "80474042"
 
    用户帐户不会从主服务器复制到副本服务器。 如果打算为用户提供副本服务器的访问权限，需要在此新建的 Azure Database for MySQL 服务器上创建所有帐户和对应的特权。
 
-3. 将主服务器的 IP 地址添加到副本的防火墙规则中。 
+3. 将主服务器的 IP 地址添加到副本的防火墙规则。 
 
    使用 [Azure 门户](howto-manage-firewall-using-portal.md)或 [Azure CLI](howto-manage-firewall-using-cli.md) 更新防火墙规则。
 
@@ -43,11 +43,11 @@ ms.locfileid: "80474042"
 以下步骤准备并配置本地或虚拟机中托管的 MySQL 服务器或其他云提供程序托管的数据库服务，以便向内复制数据。 此服务器是“数据传入复制”中的“主”服务器。
 
 
-1. 在继续操作之前，请查看[主服务器要求](concepts-data-in-replication.md#requirements)。 
+1. 继续之前，请查看[主服务器要求](concepts-data-in-replication.md#requirements)。 
 
-   例如，确保主服务器允许端口 3306 上的入站和出站流量，并且主服务器具有公共**IP 地址**、DNS 是可公开访问的，或者具有完全限定的域名 （FQDN）。 
+   例如，确保主服务器允许端口3306上的入站和出站流量，并且主服务器具有**公共 IP 地址**、DNS 可公开访问，或者具有完全限定的域名（FQDN）。 
    
-   通过尝试从工具（如在另一台计算机上托管的 MySQL 命令行或 Azure 门户中可用的[Azure 云外壳](https://docs.microsoft.com/azure/cloud-shell/overview)）进行连接，测试与主服务器的连接。
+   通过尝试从其他计算机上托管的 MySQL 命令行或 Azure 门户中提供的[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)来连接到主服务器的连接。
 
 2. 启用二进制日志记录
 
@@ -57,9 +57,9 @@ ms.locfileid: "80474042"
    SHOW VARIABLES LIKE 'log_bin';
    ```
 
-   如果变量[`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin)返回的值"ON"，则在服务器上启用二进制日志记录。 
+   如果变量[`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin)返回值为 "ON"，则在服务器上启用二进制日志记录。 
 
-   如果`log_bin`返回的值"OFF"，请通过编辑 my.cnf 文件打开二进制日志记录，`log_bin=ON`以便重新启动服务器，使更改生效。
+   如果`log_bin`返回值为 "OFF" 的，则通过编辑 .cnf 文件来打开二进制日志记录，以便`log_bin=ON`和重新启动服务器以使更改生效。
 
 3. 主服务器设置
 
@@ -121,7 +121,7 @@ ms.locfileid: "80474042"
 
 6. 获取二进制日志文件名和偏移量
 
-   运行该[`show master status`](https://dev.mysql.com/doc/refman/5.7/en/show-master-status.html)命令以确定当前二进制日志文件名称和偏移量。
+   运行[`show master status`](https://dev.mysql.com/doc/refman/5.7/en/show-master-status.html)命令以确定当前的二进制日志文件名称和偏移量。
     
    ```sql
    show master status;
@@ -166,7 +166,7 @@ ms.locfileid: "80474042"
    - master_password：主服务器的密码
    - master_log_file：正在运行的 `show master status` 中的二进制日志文件名
    - master_log_pos：正在运行的 `show master status` 中的二进制日志位置
-   - master_ssl_ca：CA 证书的上下文。 如果不使用 SSL，请传入空字符串。
+   - master_ssl_ca： CA 证书的上下文。 如果不使用 SSL，请传入空字符串。
        - 建议以变量形式传入此参数。 有关详细信息，请参阅以下示例。
 
 > [!NOTE]
@@ -184,14 +184,14 @@ ms.locfileid: "80474042"
    -----END CERTIFICATE-----'
    ```
 
-   使用 SSL 进行复制是在托管在域"companya.com"的主服务器和 MySQL Azure 数据库中托管的副本服务器之间设置的。 将在副本上运行此存储过程。 
+   使用 SSL 进行的复制是在域 "companya.com" 中托管的主服务器和 Azure Database for MySQL 中托管的副本服务器之间设置的。 将在副本上运行此存储过程。 
 
    ```sql
    CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, @cert);
    ```
    *不使用 SSL 复制*
 
-   在没有 SSL 的复制在托管在域"companya.com"的主服务器和 MySQL Azure 数据库中托管的副本服务器之间设置。 将在副本上运行此存储过程。
+   在域 "companya.com" 中托管的主服务器与 Azure Database for MySQL 中托管的副本服务器之间设置不带 SSL 的复制。 将在副本上运行此存储过程。
 
    ```sql
    CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
@@ -207,13 +207,13 @@ ms.locfileid: "80474042"
 
 1. 检查复制状态
 
-   调用[`show slave status`](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html)副本服务器上的命令以查看复制状态。
+   在副本[`show slave status`](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html)服务器上调用命令以查看复制状态。
     
    ```sql
    show slave status;
    ```
 
-   如果 和`Slave_IO_Running``Slave_SQL_Running`的状态为"是"，值`Seconds_Behind_Master`为"0"，则复制工作良好。 `Seconds_Behind_Master` 指示副本的陈旧状态。 如果其值不为“0”，则表示副本正在处理更新。 
+   如果`Slave_IO_Running`和`Slave_SQL_Running`的状态是 "是"，并且的值`Seconds_Behind_Master`为 "0"，则复制很好地运行。 `Seconds_Behind_Master` 指示副本的陈旧状态。 如果其值不为“0”，则表示副本正在处理更新。 
 
 ## <a name="other-stored-procedures"></a>其他存储过程
 

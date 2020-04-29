@@ -1,5 +1,5 @@
 ---
-title: 配置 Webhook 订阅者身份验证 - Azure 事件网格 IoT 边缘 |微软文档
+title: 配置 webhook 订户身份验证-Azure 事件网格 IoT Edge |Microsoft Docs
 description: 配置 webhook 订阅服务器身份验证
 author: VidyaKukke
 manager: rajarv
@@ -10,17 +10,17 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 101dcae5870322878cec48098f2efae32cc68c14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76841724"
 ---
 # <a name="configure-webhook-subscriber-authentication"></a>配置 webhook 订阅服务器身份验证
 
-本指南提供了事件网格模块的可能 Webhook 订阅者配置的示例。 默认情况下，Webhook 订阅者仅接受 HTTPS 终结点。 如果订阅者提供自签名证书，事件网格模块将拒绝。
+本指南提供事件网格模块的可能的 webhook 订户配置示例。 默认情况下，webhook 订阅服务器仅接受 HTTPS 终结点。 如果订阅服务器提供了自签名证书，则事件网格模块将被拒绝。
 
-## <a name="allow-only-https-subscriber"></a>仅允许 HTTPS 订户
+## <a name="allow-only-https-subscriber"></a>仅允许 HTTPS 订阅服务器
 
 ```json
  {
@@ -32,7 +32,7 @@ ms.locfileid: "76841724"
 }
  ```
 
-## <a name="allow-https-subscriber-with-self-signed-certificate"></a>允许具有自签名证书的 HTTPS 订阅者
+## <a name="allow-https-subscriber-with-self-signed-certificate"></a>允许带有自签名证书的 HTTPS 订阅服务器
 
 ```json
  {
@@ -45,9 +45,9 @@ ms.locfileid: "76841724"
  ```
 
 >[!NOTE]
->将属性`outbound__webhook__allowUnknownCA`设置为`true`仅在测试环境中，因为通常可以使用自签名证书。 对于生产工作负载，我们建议将它们设置为**false**。
+>只能在测试`outbound__webhook__allowUnknownCA`环境`true`中将属性设置为，因为通常可以使用自签名证书。 对于生产工作负荷，我们建议将其设置为**false**。
 
-## <a name="allow-https-subscriber-but-skip-certificate-validation"></a>允许 HTTPS 订阅者，但跳过证书验证
+## <a name="allow-https-subscriber-but-skip-certificate-validation"></a>允许 HTTPS 订阅服务器，但跳过证书验证
 
 ```json
  {
@@ -60,9 +60,9 @@ ms.locfileid: "76841724"
  ```
 
 >[!NOTE]
->将属性`outbound__webhook__skipServerCertValidation`设置为`true`仅在测试环境中，因为您可能没有提供需要身份验证的证书。 对于生产工作负载，我们建议将它们设置为**false**
+>仅在测试`outbound__webhook__skipServerCertValidation`环境`true`中将属性设置为，因为你可能无法提供需要进行身份验证的证书。 对于生产工作负荷，我们建议将其设置为**false**
 
-## <a name="allow-both-http-and-https-with-self-signed-certificates"></a>允许使用自签名证书的 HTTP 和 HTTPS
+## <a name="allow-both-http-and-https-with-self-signed-certificates"></a>允许 HTTP 和 HTTPS 与自签名证书
 
 ```json
  {
@@ -75,4 +75,4 @@ ms.locfileid: "76841724"
  ```
 
 >[!NOTE]
->将属性`outbound__webhook__httpsOnly`设置为`false`仅在测试环境中，因为您可能想要首先启动 HTTP 订阅服务器。 对于生产工作负载，我们建议将它们设置为**true**
+>仅在测试`outbound__webhook__httpsOnly`环境`false`中将属性设置为，因为可能需要首先打开 HTTP 订阅服务器。 对于生产工作负荷，我们建议将其设置为**true**

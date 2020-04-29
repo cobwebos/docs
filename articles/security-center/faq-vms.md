@@ -1,6 +1,6 @@
 ---
-title: Azure 安全中心常见问题 - 有关虚拟机的问题
-description: Azure 安全中心中有关虚拟机的常见问题，该产品可帮助您预防、检测和响应威胁
+title: Azure 安全中心常见问题解答-关于虚拟机的问题
+description: 有关 Azure 安全中心中的虚拟机的常见问题，一种可帮助防止、检测和响应威胁的产品
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,13 +14,13 @@ ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: 0b7817539a26b7ebfa24efd086edf8b0ef82eae3
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80436010"
 ---
-# <a name="faq---questions-about-virtual-machines"></a>常见问题解答 - 有关虚拟机的问题
+# <a name="faq---questions-about-virtual-machines"></a>常见问题解答-关于虚拟机的问题
 
 
 ## <a name="what-types-of-virtual-machines-are-supported"></a>支持哪些类型的虚拟机？
@@ -51,7 +51,7 @@ Azure 安全中心可识别出通过 Azure 扩展安装的反恶意软件。 例
 安全中心通常每小时扫描一次新数据，并相应地刷新建议。 
 
 > [!NOTE]
-> 安全中心使用日志分析代理收集和存储数据。 若要了解详细信息，请参阅 [Azure 安全中心平台迁移](security-center-platform-migration.md)。
+> 安全中心使用 Log Analytics 代理来收集和存储数据。 若要了解详细信息，请参阅 [Azure 安全中心平台迁移](security-center-platform-migration.md)。
 
 
 ## <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>为什么会显示消息称“VM 代理缺失”？

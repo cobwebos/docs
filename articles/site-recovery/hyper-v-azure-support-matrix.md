@@ -1,5 +1,5 @@
 ---
-title: 支持通过 Azure 站点恢复将超 VM 灾难恢复到 Azure
+title: 通过 Azure Site Recovery 支持将 Hyper-V VM 灾难恢复到 Azure
 description: 汇总了使用 Azure Site Recovery 执行 Hyper-V VM 到 Azure 的灾难恢复时支持的组件和相关要求
 author: rayne-wiselman
 manager: carmonm
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 1/27/2020
 ms.author: raynew
 ms.openlocfilehash: fd10468e823201bfa67aaf7c570071bd075ec4ac
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80420828"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>将本地 Hyper-V VM 灾难恢复到 Azure 时的支持矩阵
@@ -33,7 +33,7 @@ ms.locfileid: "80420828"
 **Server** | **要求** | **详细信息**
 --- | --- | ---
 Hyper-V（不使用 Virtual Machine Manager 运行） |  Windows Server 2019、Windows Server 2016 （包括服务器核心安装）、包含最新更新的 Windows Server 2012 R2 | 如果已使用 Azure Site Recovery 配置 Windows Server 2012 R2 和/或 SCVMM 2012 R2 并计划升级 OS，请遵循指南[文档](upgrade-2012R2-to-2016.md)。 
-Hyper-V（使用 Virtual Machine Manager 运行） | Virtual Machine Manager 2019、Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 | 如果使用 Virtual Machine Manager，Windows Server 2019 主机应在 Virtual Machine Manager 2019 中托管。 同样，Windows Server 2016 主机应在 Virtual Machine Manager 2016 中托管。<br/><br/> 注意：Windows Server 2019 主机不支持故障回备用位置。
+Hyper-V（使用 Virtual Machine Manager 运行） | Virtual Machine Manager 2019、Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 | 如果使用 Virtual Machine Manager，Windows Server 2019 主机应在 Virtual Machine Manager 2019 中托管。 同样，Windows Server 2016 主机应在 Virtual Machine Manager 2016 中托管。<br/><br/> 注意：Windows Server 2019 主机不支持故障回复到备用位置。
 
 
 ## <a name="replicated-vms"></a>复制的 VM
@@ -43,7 +43,7 @@ Hyper-V（使用 Virtual Machine Manager 运行） | Virtual Machine Manager 201
 
  **组件** | **详细信息**
 --- | ---
-VM 配置 | 复制到 Azure 的 VM 必须满足[Azure 要求](#azure-vm-requirements)。
+VM 配置 | 复制到 Azure 的 VM 必须满足 [Azure 要求](#azure-vm-requirements)。
 来宾操作系统 | [Azure 支持](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases)的任何来宾 OS。<br/><br/> 不支持 Windows Server 2016 Nano Server。
 
 
@@ -51,12 +51,12 @@ VM 配置 | 复制到 Azure 的 VM 必须满足[Azure 要求](#azure-vm-requirem
 
 **操作** | **详细信息**
 --- | ---
-调整复制的 Hyper-V VM 上的磁盘大小 | 不支持。 禁用复制，进行更改，然后重新启用 VM 的复制。
-在复制的 Hyper-V VM 上添加磁盘 | 不支持。 禁用复制，进行更改，然后重新启用 VM 的复制。
+调整复制的 Hyper-V VM 上的磁盘大小 | 不支持。 为 VM 禁用复制，进行更改，然后重新启用复制。
+在复制的 Hyper-V VM 上添加磁盘 | 不支持。 为 VM 禁用复制，进行更改，然后重新启用复制。
 
 ## <a name="hyper-v-network-configuration"></a>Hyper-V 网络配置
 
-**组件** | **虚拟机管理器的 Hyper-V** | **没有虚拟机管理器的超 V**
+**组件** | **使用 Virtual Machine Manager 的 Hyper-V** | **不使用 Virtual Machine Manager 的 Hyper-V**
 --- | --- | ---
 主机网络：NIC 组合 | 是 | 是
 主机网络：VLAN | 是 | 是
@@ -74,7 +74,7 @@ Https 代理 | 否 | 否
 
 ## <a name="azure-vm-network-configuration-after-failover"></a>Azure VM 网络配置（故障转移后）
 
-**组件** | **虚拟机管理器的 Hyper-V** | **没有虚拟机管理器的超 V**
+组件  | **带有 Virtual Machine Manager 的 hyper-v** | **无 Virtual Machine Manager 的 hyper-v**
 --- | --- | ---
 Azure ExpressRoute | 是 | 是
 ILB | 是 | 是
@@ -90,21 +90,21 @@ Azure 虚拟网络服务终结点<br/> （不带 Azure 存储防火墙） | 是 
 
 ## <a name="hyper-v-host-storage"></a>Hyper-V 主机存储
 
-**存储** | **虚拟机管理器的 Hyper-V** | **没有虚拟机管理器的超 V**
+**存储** | **带有 Virtual Machine Manager 的 hyper-v** | **无 Virtual Machine Manager 的 hyper-v**
 --- | --- | --- 
 NFS | NA | NA
 SMB 3.0 | 是 | 是
 SAN (ISCSI) | 是 | 是
-多路径 (MPIO)。 测试使用对象：<br></br> 微软 DSM， EMC 电源路径 5.7 SP4， EMC 电源路径 DSM 用于 CLARiiON | 是 | 是
+多路径 (MPIO)。 测试使用对象：<br></br> Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON | 是 | 是
 
 ## <a name="hyper-v-vm-guest-storage"></a>Hyper-V VM 来宾存储
 
-**存储** | **虚拟机管理器的 Hyper-V** | **没有虚拟机管理器的超 V**
+**存储** | **带有 Virtual Machine Manager 的 hyper-v** | **无 Virtual Machine Manager 的 hyper-v**
 --- | --- | ---
 VMDK | NA | NA
 VHD/VHDX | 是 | 是
 第 2 代 VM | 是 | 是
-EFI/UEFI<br></br>Azure 中迁移的 VM 将自动转换为 BIOS 引导 VM。 VM 应仅运行 Windows Server 2012 及更高版本。 OS 磁盘应最多具有五个或更少的分区，并且 OS 磁盘的大小应小于 300 GB。| 是 | 是
+EFI/UEFI<br></br>Azure 中迁移的 VM 将自动转换为 BIOS 启动 VM。 VM 应仅运行 Windows Server 2012 和更高版本。 OS 磁盘最多可以有5个分区或更少，操作系统磁盘的大小应小于 300 GB。| 是 | 是
 共享群集磁盘 | 否 | 否
 加密磁盘 | 否 | 否
 NFS | NA | NA
@@ -112,7 +112,7 @@ SMB 3.0 | 否 | 否
 RDM | NA | NA
 磁盘 > 1 TB | 是，最大 4,095 GB | 是，最大 4,095 GB
 磁盘：4K 逻辑和物理扇区 | 不支持：第 1 代/第 2 代 | 不支持：第 1 代/第 2 代
-磁盘：4K 逻辑和 512 字节物理扇区 | 是 |  是
+磁盘：4K 逻辑和 512-字节物理扇区 | 是 |  是
 逻辑卷管理 (LVM)。 仅数据磁盘支持 LVM。 Azure 仅提供单个 OS 磁盘。 | 是 | 是
 包含条带化磁盘的卷 > 1 TB | 是 | 是
 存储空间 | 否 | 否
@@ -122,7 +122,7 @@ RDM | NA | NA
 
 ## <a name="azure-storage"></a>Azure 存储
 
-**组件** | **虚拟机管理器的 Hyper-V** | **没有虚拟机管理器的超 V**
+组件  | **带有 Virtual Machine Manager 的 hyper-v** | **无 Virtual Machine Manager 的 hyper-v**
 --- | --- | ---
 本地冗余存储 | 是 | 是
 异地冗余存储 | 是 | 是
@@ -131,16 +131,16 @@ RDM | NA | NA
 热存储| 否 | 否
 块 Blob | 否 | 否
 静态加密 (SSE)| 是 | 是
-静态加密 (CMK) <br></br> （仅适用于故障转移到托管磁盘）| 是（通过 PowerShell Az 3.3.0 模块开始） | 是（通过 PowerShell Az 3.3.0 模块开始）
+静态加密 (CMK) <br></br> （仅限故障转移到托管磁盘）| 是（通过 PowerShell Az 3.3.0 module） | 是（通过 PowerShell Az 3.3.0 module）
 高级存储 | 是 | 是
-进出口服务 | 否 | 否
-启用防火墙的 Azure 存储帐户 | 是的。 适用于目标存储和缓存。 | 是的。 适用于目标存储和缓存。
-修改存储帐户 | 不是。 启用复制后无法修改目标 Azure 存储帐户。 要修改、禁用，然后重新启用灾难恢复。 | 否
+导入/导出服务 | 否 | 否
+启用了防火墙的 Azure 存储帐户 | 是的。 适用于目标存储和缓存。 | 是的。 适用于目标存储和缓存。
+修改存储帐户 | 不能。 启用复制后，无法修改目标 Azure 存储帐户。 修改、禁用和重新启用灾难恢复。 | 否
 
 
 ## <a name="azure-compute-features"></a>Azure 计算功能
 
-**功能** | **虚拟机管理器的 Hyper-V** | **没有虚拟机管理器的超 V**
+**功能** | **带有 Virtual Machine Manager 的 hyper-v** | **无 Virtual Machine Manager 的 hyper-v**
 --- | --- | ---
 可用性集 | 是 | 是
 HUB | 是 | 是  
@@ -150,9 +150,9 @@ HUB | 是 | 是
 
 复制到 Azure 的本地 VM 必须满足此表中汇总的 Azure VM 要求。
 
-**组件** | **要求** | **详细信息**
+组件  | **惠?** | **详细信息**
 --- | --- | ---
-来宾操作系统 | 站点恢复支持[Azure 支持](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)的所有操作系统。  | 如果不支持，先决条件检查会失败。
+来宾操作系统 | Site Recovery 支持[Azure 支持](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)的所有操作系统。  | 如果不支持，先决条件检查会失败。
 来宾操作系统体系结构 | 32 位 (Windows Server 2008)/64 位 | 如果不支持，先决条件检查会失败。
 操作系统磁盘大小 | 第 1 代 VM 最大 2,048 GB。<br/><br/> 第 2 代 VM 最大 300 GB。  | 如果不支持，先决条件检查会失败。
 操作系统磁盘计数 | 1 | 如果不支持，先决条件检查会失败。
@@ -181,7 +181,7 @@ VM 类型 | 第 1 代<br/><br/> 第 2 代 - Windows | OS 磁盘类型为“基�
 
 要确保部署与本文的设置兼容，请确保正在运行最新的提供程序和代理版本。
 
-**名称** | **说明** | **详细信息**
+**名称** | **描述** | **详细信息**
 --- | --- | --- 
 Azure Site Recovery 提供程序 | 协调本地服务器与 Azure 之间的通信 <br/><br/> 使用 Virtual Machine Manager 的 Hyper-V：在 Virtual Machine Manager 服务器上安装<br/><br/> 不使用 Virtual Machine Manager 的 Hyper-V：在 Hyper-V 主机上安装| 最新版本：5.1.2700.1（可从 Azure 门户获取）<br/><br/> [最新功能和修复](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
 Microsoft Azure 恢复服务代理 | 协调 Hyper-V VM 与 Azure 之间的复制<br/><br/> 在本地 Hyper-V 服务器（使用或不使用 Virtual Machine Manager）上安装 | 可从门户获取最新代理

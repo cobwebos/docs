@@ -1,6 +1,6 @@
 ---
-title: Azure 快速路由：配置对等互连：电源外壳
-description: 本文指导完成创建和预配 ExpressRoute 线路的专用、公共和 Microsoft 对等互连的步骤。 本文还介绍了如何检查状态，以及如何更新或删除线路的对等互连。
+title: Azure ExpressRoute：配置对等互连： PowerShell
+description: 本文指导完成创建和预配 ExpressRoute 线路的专用、公共和 Microsoft 对等互连的步骤。 本文还介绍如何检查状态，以及如何更新或删除线路的对等互连。
 services: expressroute
 author: jaredr80
 ms.service: expressroute
@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
 ms.openlocfilehash: 2c28df35eec862afb5b0078ca7693898e9b58533
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79264838"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>使用 PowerShell 创建和修改 ExpressRoute 线路的对等互连
 
-本文帮助你使用 PowerShell 在资源管理器部署模型中创建和管理 ExpressRoute 线路的路由配置。 还可以检查状态，以及更新、删除和取消预配 ExpressRoute 线路的对等互连。 如果想使用不同的方法处理线路，请从以下列表中选择一篇文章进行参阅：
+本文可帮助使用 PowerShell 在资源管理器部署模型中创建和管理 ExpressRoute 线路的路由配置。 还可以检查 ExpressRoute 线路的状态，更新、删除和取消预配其对等互连。 如果想使用不同的方法处理线路，请从以下列表中选择一篇文章进行参阅：
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](expressroute-howto-routing-portal-resource-manager.md)
-> * [电源外壳](expressroute-howto-routing-arm.md)
+> * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
 > * [公共对等互连](about-public-peering.md)
 > * [视频 - 专用对等互连](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
 > * [视频 - Microsoft 对等互连](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
-> * [电源外壳（经典）](expressroute-howto-routing-classic.md)
+> * [PowerShell （经典）](expressroute-howto-routing-classic.md)
 > 
 
 
@@ -36,12 +36,12 @@ ms.locfileid: "79264838"
 > 
 > 
 
-您可以为 ExpressRoute 电路配置专用对等互连和 Microsoft 对等互连（新电路将弃用 Azure 公共对等互连）。 可以按您选择的任何顺序配置对等互连。 但是，必须确保一次只完成一个对等互连的配置。 有关路由域和对等互连的详细信息，请参阅 [ExpressRoute 路由域](expressroute-circuit-peerings.md)。 有关公共对等互连的信息，请参阅[ExpressRoute 公共对等互连](about-public-peering.md)。
+可以为 ExpressRoute 线路配置专用对等互连和 Microsoft 对等互连（新线路不推荐使用 Azure 公共对等互连）。 可以按所选的任意顺序配置对等互连。 但是，必须确保一次只完成一个对等互连的配置。 有关路由域和对等互连的详细信息，请参阅 [ExpressRoute 路由域](expressroute-circuit-peerings.md)。 有关公共对等互连的信息，请参阅[ExpressRoute 公共对等互连](about-public-peering.md)。
 
 ## <a name="configuration-prerequisites"></a>配置先决条件
 
 * 在开始配置之前，请务必查看[先决条件](expressroute-prerequisites.md)页、[路由要求](expressroute-routing.md)页和[工作流](expressroute-workflows.md)页。
-* 必须有一个活动的 ExpressRoute 线路。 按照说明[创建 ExpressRoute 电路](expressroute-howto-circuit-arm.md)，并在继续操作之前由连接提供商启用该电路。 ExpressRoute 线路必须处于已预配和已启用状态，才能运行本文中的 cmdlet。
+* 必须有一个活动的 ExpressRoute 线路。 继续之前，请按照说明[创建 ExpressRoute 线路](expressroute-howto-circuit-arm.md)，并让连接提供商启用该线路。 ExpressRoute 线路必须处于已预配和已启用状态，才能运行本文中的 cmdlet。
 
 ### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
 
@@ -49,7 +49,7 @@ ms.locfileid: "79264838"
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-## <a name="microsoft-peering"></a><a name="msft"></a>微软对等互连
+## <a name="microsoft-peering"></a><a name="msft"></a>Microsoft 对等互连
 
 本文介绍如何为 ExpressRoute 线路创建、获取、更新和删除 Microsoft 对等互连配置。
 

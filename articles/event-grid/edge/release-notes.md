@@ -1,6 +1,6 @@
 ---
-title: 发行说明 - Azure 事件网格 IoT 边缘 |微软文档
-description: IoT 边缘发行说明上的 Azure 事件网格
+title: 发行说明-Azure 事件网格 IoT Edge |Microsoft Docs
+description: IoT Edge 发行说明中的 Azure 事件网格
 author: banisadr
 ms.author: babanisa
 ms.reviewer: spelluru
@@ -9,42 +9,42 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 18a4fb9a979841bbf6cd0090fc67a77327c61596
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76849703"
 ---
-# <a name="release-notes-azure-event-grid-on-iot-edge"></a>发行说明：IoT 边缘的 Azure 事件网格
+# <a name="release-notes-azure-event-grid-on-iot-edge"></a>发行说明： IoT Edge 上的 Azure 事件网格
 
-## <a name="100-preview1"></a>1.0.0-预览1
+## <a name="100-preview1"></a>1.0.0-预览版1
 
-在 IoT 边缘上首次发布 Azure 事件网格。 包括的功能：
+IoT Edge 上的 Azure 事件网格的初始版本。 包含的功能：
 
 * 主题创建
-* 事件订阅创建
+* 创建事件订阅
 * Advanced Filters（中转消息传送：高级筛选器）
 * 输出批处理
 * 重试策略
 * 模块到模块发布
 * 作为目标发布到 WebHook
-* 作为目标发布到 IoT 边缘中心
+* 作为目标发布到 IoT Edge 集线器
 * 作为目标发布到 Azure 事件网格云服务
-* 元数据的持久状态
+* 元数据的持久化状态
 * Blob 存储模块集成
 
-标签：`1.0.0-preview1`
+Tags`1.0.0-preview1`
 
-## <a name="100-preview2"></a>1.0.0-预览2
+## <a name="100-preview2"></a>1.0.0-preview2
 
-在 IoT 边缘上添加的 Azure 事件网格预览 2：
+添加 IoT Edge 上的 Azure 事件网格预览2：
 
-* 可配置到磁盘的持久化事件
+* 可配置的将事件保留到磁盘
 * 主题指标
 * 事件订阅指标
 * 作为目标发布到事件中心
-* 将总线队列发布到服务总线队列作为目标
-* 将服务总线主题发布为目标
+* 作为目标发布到服务总线队列
+* 作为目标发布到服务总线主题
 * 作为目标发布到存储队列
 
-标签： `1.0.0-preview2` `1.0`， ，`latest`
+标记： `1.0.0-preview2`、 `1.0`、`latest`

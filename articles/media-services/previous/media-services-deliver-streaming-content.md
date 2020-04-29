@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 615a6afb0f7a3e133603db10e7c79add3322070c
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80476708"
 ---
 # <a name="publish-media-services-content-using-net"></a>使用 .NET 发布媒体服务内容  
@@ -53,7 +53,7 @@ ms.locfileid: "80476708"
 
 
 >[!NOTE]
->不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的天数/访问权限，则使用相同的策略 ID。 例如，适用于需要长期保留使用的定位符的策略（非上传策略）。 有关详细信息，请参阅[本](media-services-dotnet-manage-entities.md#limit-access-policies)主题。
+>不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的天数/访问权限，则使用相同的策略 ID。 例如，适用于需要长期保留使用的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)主题。
 
 ### <a name="use-media-services-net-sdk"></a>使用媒体服务 .NET SDK
 生成流 URL 
@@ -108,7 +108,7 @@ ms.locfileid: "80476708"
 
 
 > [!NOTE]
-> 您还可以通过 TLS 连接流式传输内容。 若要执行此方法，请确保流 URL 以 HTTPS 开头。 目前，AMS 不支持具有自定义域的 TLS。
+> 还可以通过 TLS 连接流式传输内容。 若要执行此方法，请确保流 URL 以 HTTPS 开头。 目前，AMS 对自定义域不支持 TLS。
 > 
 > 
 

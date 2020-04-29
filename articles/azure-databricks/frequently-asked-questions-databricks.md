@@ -10,10 +10,10 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.openlocfilehash: 8d7aab43641c6c594ff60368ccb3810e0c060dd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78671562"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>有关 Azure Databricks 的常见问题解答
@@ -27,28 +27,28 @@ ms.locfileid: "78671562"
 ## <a name="can-i-use-azure-virtual-networks-with-databricks"></a>是否可以将 Azure 虚拟网络与 Databricks 配合使用？
 是的。 可以将 Azure 虚拟网络 (VNET) 与 Databricks 配合使用。 有关详细信息，请参阅[在 Azure 虚拟网络中部署 Azure Databricks](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)。
 
-## <a name="how-do-i-access-azure-data-lake-storage-from-a-notebook"></a>如何从笔记本访问 Azure 数据湖存储？ 
+## <a name="how-do-i-access-azure-data-lake-storage-from-a-notebook"></a>从笔记本如何实现访问 Azure Data Lake Storage？ 
 
 执行以下步骤:
 1. 在 Azure Active Directory (Azure AD) 中预配服务主体并记录其密钥。
-1. 在数据湖存储中为服务主体分配必要的权限。
-1. 要访问"数据存储库"中的文件，请使用笔记本中的服务主体凭据。
+1. 在 Data Lake Storage 中，将所需的权限分配给服务主体。
+1. 若要在 Data Lake Storage 中访问文件，请使用笔记本中的服务主体凭据。
 
-有关详细信息，请参阅使用[Azure 数据块使用 Azure 数据湖存储](/azure/databricks/data/data-sources/azure/azure-datalake)。
+有关详细信息，请参阅[将 Azure Data Lake Storage 与 Azure Databricks 配合使用](/azure/databricks/data/data-sources/azure/azure-datalake)。
 
 ## <a name="fix-common-problems"></a>解决常见问题
 
 以下是使用 Databricks 时可能会遇到的一些问题。
 
-### <a name="issue-this-subscription-is-not-registered-to-use-the-namespace-microsoftdatabricks"></a>问题：此订阅未注册使用命名空间"Microsoft.Databricks"
+### <a name="issue-this-subscription-is-not-registered-to-use-the-namespace-microsoftdatabricks"></a>问题：此订阅未注册为使用命名空间 "Databricks"
 
 #### <a name="error-message"></a>错误消息
 
-此订阅未注册使用命名空间 "Microsoft.Databricks"。 有关如何注册订阅，请参阅 https://aka.ms/rps-not-found。 （代码：MissingSubscriptionRegistration）”
+"此订阅未注册为使用命名空间" Databricks "。 有关如何注册订阅，请参阅 https://aka.ms/rps-not-found。 （代码：MissingSubscriptionRegistration）”
 
 #### <a name="solution"></a>解决方案
 
-1. 转到[Azure 门户](https://portal.azure.com)。
+1. 转到 [Azure 门户](https://portal.azure.com)。
 1. 依次选择“订阅”****、正在使用的订阅，然后单击“资源提供程序”****。 
 1. 在资源提供程序列表中，针对“Microsoft.Databricks”**** 选择“注册”****。 必须具有订阅的参与者或所有者角色才能注册资源提供程序。
 
@@ -67,15 +67,15 @@ ms.locfileid: "78671562"
 
 * 如果电子邮件域名在 Azure AD 中被分配给多个目录，也可能会发生此错误。 若要解决此问题，可在包含订阅和 Databricks 工作区的目录中创建新用户。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在 Azure 门户中，转到 Azure AD。 选择 **"用户和组** > **添加用户**"。
+    a. 在 Azure 门户中，转到 Azure AD。 选择 "**用户和组** > " "**添加用户**"。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 使用 `@<tenant_name>.onmicrosoft.com` 电子邮件而非 `@<your_domain>` 电子邮件添加用户。 可在 Azure 门户中 Azure AD 下的“自定义域”中找到此选项****。
+    b. 使用 `@<tenant_name>.onmicrosoft.com` 电子邮件而非 `@<your_domain>` 电子邮件添加用户。 可在 Azure 门户中 Azure AD 下的“自定义域”中找到此选项****。
     
     c. 授予新用户 Databricks 工作区资源的“参与者”角色****。
     
-    d.单击“下一步”。 使用新用户登录到 Azure 门户，并找到 Databricks 工作区。
+    d. 使用新用户登录到 Azure 门户，并找到 Databricks 工作区。
     
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 以此用户的身份启动 Databricks 工作区。
+    e. 以此用户的身份启动 Databricks 工作区。
 
 
 ### <a name="issue-your-account-email-has-not-been-registered-in-databricks"></a>问题：你的帐户 {电子邮件} 未在 Databricks 中注册 
@@ -88,19 +88,19 @@ ms.locfileid: "78671562"
 
 #### <a name="error-message"></a>错误消息
 
-“云提供程序启动故障: 在设置群集时遇到云提供程序错误。 有关详细信息，请参阅“Databricks 指南”。 Azure 错误代码：PublicIPCountLimitReached。 Azure 错误消息：在此区域中无法为此订阅创建超过 10 个公共 IP 地址。
+“云提供程序启动故障: 在设置群集时遇到云提供程序错误。 有关详细信息，请参阅“Databricks 指南”。 Azure 错误代码：PublicIPCountLimitReached。 Azure 错误消息：无法在此区域为此订阅创建10个以上的公共 IP 地址。 "
 
 #### <a name="background"></a>背景
 
-数据砖块群集每个节点（包括驱动程序节点）使用一个公共 IP 地址。 Azure 订阅具有每个区域[的公共 IP 地址限制](/azure/azure-resource-manager/management/azure-subscription-service-limits#publicip-address)。 因此，如果群集创建和扩展操作将导致分配给该区域中该订阅的公共 IP 地址数超过限制，则它们可能会失败。 此限制还包括为非数据砖块使用（如自定义用户定义的 VM）分配的公共 IP 地址。
+Databricks 群集为每个节点使用一个公共 IP 地址（包括驱动程序节点）。 Azure 订阅的每个区域都有[公共 IP 地址限制](/azure/azure-resource-manager/management/azure-subscription-service-limits#publicip-address)。 因此，如果群集创建和扩展操作导致在该区域中分配给该订阅的公共 IP 地址数目超过限制，则群集创建和扩展操作可能会失败。 此限制还包括为非 Databricks 使用分配的公共 IP 地址，如自定义用户定义的 Vm。
 
-通常，群集仅在它们处于活动状态时使用公共 IP 地址。 但是，`PublicIPCountLimitReached`即使其他群集终止，错误也可能在短时间内继续发生。 这是因为数据砖在群集终止时临时缓存 Azure 资源。 资源缓存是设计，因为它可显著减少群集启动和自动缩放在许多常见方案中的延迟。
+通常，当群集处于活动状态时，群集只使用公共 IP 地址。 但是， `PublicIPCountLimitReached`即使在终止其他群集后，也会在短时间内继续发生错误。 这是因为在群集终止时，Databricks 会临时缓存 Azure 资源。 资源缓存是设计使然，因为在许多常见情况下，它可以显著减少群集启动和自动缩放的延迟。
 
 #### <a name="solution"></a>解决方案
 
-如果您的订阅已达到给定区域的公共 IP 地址限制，则应执行以下一项或另一项操作。
+如果你的订阅已达到给定区域的公共 IP 地址限制，则应执行以下一项或多项操作。
 
-- 在不同的 Databricks 工作区中创建新群集。 另一个工作区必须位于尚未达到订阅的公共 IP 地址限制的区域。
+- 在不同的 Databricks 工作区中创建新群集。 其他工作区必须位于尚未到达订阅的公共 IP 地址限制的区域中。
 - [请求增加公共 IP 地址限制](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)。 选择“配额”作为“问题类型”、选择“网络: ARM”作为“配额类型”****************。 在“详细信息”中，请求增加公共 IP 地址配额****。 例如，如果限制当前为 60，但希望创建具有 100 个节点的群集，则请求将限制增加至 160。
 
 ### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>问题：设置群集时，第二种类型的云提供程序启动失败 (MissingSubscriptionRegistration)
@@ -112,7 +112,7 @@ Azure 错误代码：MissingSubscriptionRegistration；Azure 错误消息：订�
 
 #### <a name="solution"></a>解决方案
 
-1. 转到[Azure 门户](https://portal.azure.com)。
+1. 转到 [Azure 门户](https://portal.azure.com)。
 1. 依次选择“订阅”****、正在使用的订阅，然后单击“资源提供程序”****。 
 1. 在资源提供程序列表中，针对“Microsoft.Compute”**** 选择“注册”****。 必须具有订阅的参与者或所有者角色才能注册资源提供程序。
 

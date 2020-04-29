@@ -1,6 +1,6 @@
 ---
 title: 创建 ASE v1
-description: 为应用服务环境 v1 创建流描述。 此文档仅提供给使用旧版 v1 ASE 的客户。
+description: 应用服务环境 v1 的创建流描述。 此文档仅为使用旧版 v1 ASE 的客户提供。
 author: ccompy
 ms.assetid: 81bd32cf-7ae5-454b-a0d2-23b57b51af47
 ms.topic: article
@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 89dc96370f65ff20d7f8be38ff78d6c1664305d3
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80477797"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>如何创建应用服务环境 v1 
@@ -45,7 +45,7 @@ ms.locfileid: "80477797"
 3. 选择或指定新的资源组。 用于 ASE 的资源组必须与用于 VNet 的资源组相同。 如果选择预先存在的 VNet，则 ASE 的资源组选择会更新，以反映 VNet 的资源组。
    
     ![][2]
-4. 选择虚拟网络和位置。 可以选择创建新的 VNet，也可以选择预先存在的 VNet。 如果选择新的 VNet，则可以指定名称和位置。 新 VNet 的地址范围为 192.168.250.0/23，并拥有定义为 192.168.250.0/24 的名称为 **default** 的子网。 还可以直接选择预先存在的经典或 Resource Manager VNet。 选择的 VIP 类型确定是否可以从 Internet（外部）直接访问 ASE，或 ASE 是否使用内部负载均衡器 (ILB)。 若要了解更多详细信息，请参阅[在应用服务环境中使用内部负载均衡器][ILBASE]。 如果选择外部的 VIP 类型，则可以选择为 IP SSL 目的创建系统的外部 IP 地址数。 如果选择内部，则需要指定 ASE 要使用的子域。 可以将 ASE 部署到使用** 公用地址范围*或* RFC1918 地址空间（即，专用地址）的虚拟网络。 若要使用具有公用地址范围的虚拟网络，需要提前创建 VNet。 如果选择预先存在的 VNet，需要在 ASE 创建期间创建新的子网。 **不能在门户中使用预先创建的子网。如果使用资源管理器模板创建 ASE，则可以使用预先存在的子网创建 ASE。** 若要从模板创建 ASE，请使用此处的信息：[从模板创建应用服务环境][ILBAseTemplate]和[从模板创建 ILB 应用服务环境][ASEfromTemplate]。
+4. 选择虚拟网络和位置。 可以选择创建新的 VNet，也可以选择预先存在的 VNet。 如果选择新的 VNet，则可以指定名称和位置。 新 VNet 的地址范围为 192.168.250.0/23，并拥有定义为 192.168.250.0/24 的名称为 **default** 的子网。 还可以直接选择预先存在的经典或 Resource Manager VNet。 选择的 VIP 类型确定是否可以从 Internet（外部）直接访问 ASE，或 ASE 是否使用内部负载均衡器 (ILB)。 若要了解更多详细信息，请参阅[在应用服务环境中使用内部负载均衡器][ILBASE]。 如果选择 "外部" VIP 类型，则可以选择创建系统时所用的外部 IP 地址数，以便 IP SSL 目的。 如果选择内部，则需要指定 ASE 要使用的子域。 可以将 ASE 部署到使用** 公用地址范围*或* RFC1918 地址空间（即，专用地址）的虚拟网络。 若要使用具有公用地址范围的虚拟网络，需要提前创建 VNet。 如果选择预先存在的 VNet，需要在 ASE 创建期间创建新的子网。 **不能在门户中使用预先创建的子网。如果使用 resource manager 模板创建 ASE，则可以创建具有预先存在的子网的 ASE。** 若要从模板创建 ASE，请使用此处的信息：[从模板创建应用服务环境][ILBAseTemplate]和[从模板创建 ILB 应用服务环境][ASEfromTemplate]。
 
 ### <a name="details"></a>详细信息
 创建的 ASE 具有 2 个前端和 2 个辅助角色。 前端充当 HTTP/HTTPS 终结点，并将流量发送到作为托管应用程序的角色的工作程序。 可以在创建 ASE 后调整数量，甚至可以设置这些资源池的自动缩放规则。 有关手动缩放、管理和监视应用服务环境的更多详细信息，请参阅此文：[如何配置应用服务环境][ASEConfig] 

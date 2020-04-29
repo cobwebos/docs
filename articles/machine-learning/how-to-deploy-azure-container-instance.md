@@ -11,10 +11,10 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.openlocfilehash: d460112394d7c7b7d2da4e8af41c0085b67226ec
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80475471"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>将模型部署到 Azure 容器实例
@@ -27,7 +27,7 @@ ms.locfileid: "80475471"
 
 有关 ACI 的配额和区域可用性的信息，请参阅 [Azure 容器实例的配额和区域可用性](https://docs.microsoft.com/azure/container-instances/container-instances-quotas)文章。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
@@ -35,7 +35,7 @@ ms.locfileid: "80475471"
 
 - [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[Azure 机器学习 Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 或 [Azure 机器学习 Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)。
 
-- 本文中的 Python 代码片段假设设置了以下变量____：
+- 本文中的 Python 代码片段假设设置了以下变量  ：
 
     * `ws` - 设置为工作区。
     * `model` - 设置为注册的模型。
@@ -43,11 +43,11 @@ ms.locfileid: "80475471"
 
     有关如何设置这些变量的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
-- 本文中的 CLI 片段假设已创建 `inferenceconfig.json` 文档____。 有关如何创建此文档的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
+- 本文中的 CLI 片段假设已创建  __文档__`inferenceconfig.json`。 有关如何创建此文档的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
 ## <a name="deploy-to-aci"></a>部署到 ACI
 
-要将模型部署到 Azure 容器实例，请创建一个描述所需计算资源的部署配置____。 例如，核心数和内存。 此外，还需要一个推理配置，描述托管模型和 Web 服务所需的环境____。 有关如何创建推理配置的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
+要将模型部署到 Azure 容器实例，请创建一个描述所需计算资源的部署配置  。 例如，核心和内存的数量。 此外，还需要一个推理配置，描述托管模型和 Web 服务所需的环境  。 有关如何创建推理配置的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
 ### <a name="using-the-sdk"></a>使用 SDK
 
@@ -94,7 +94,7 @@ az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploy
 
 * [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
 * [部署疑难解答](how-to-troubleshoot-deployment.md)
-* [使用 TLS 通过 Azure 机器学习保护 Web 服务](how-to-secure-web-service.md)
+* [使用 TLS 通过 Azure 机器学习来保护 web 服务](how-to-secure-web-service.md)
 * [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)
-* [使用应用程序见解监视 Azure 机器学习模型](how-to-enable-app-insights.md)
+* [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)
 * [为生产环境中的模型收集数据](how-to-enable-data-collection.md)

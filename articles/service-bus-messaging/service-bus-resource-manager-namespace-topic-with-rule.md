@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/27/2019
 ms.author: spelluru
 ms.openlocfilehash: 6cbaf447dfcf06ae11f2282d7d847978297af8b8
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80384885"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建包含主题、订阅和规则的服务总线命名空间

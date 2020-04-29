@@ -1,6 +1,6 @@
 ---
-title: 从 SSTP 过渡到 OpenVPN 或 IKEv2 |Azure VPN 网关
-description: 本文可帮助您了解克服 SSTP 的 128 并发连接限制的方法。
+title: 从 SSTP 过渡到 OpenVPN 或 IKEv2 | Azure VPN 网关
+description: 本文帮助你了解如何克服 SSTP 的 128 个并发连接的限制。
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
@@ -8,59 +8,59 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: alzam
 ms.openlocfilehash: 5500d993a4bf3c664f14182d983f9abed8ebb08a
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80398360"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>从 SSTP 过渡到 OpenVPN 协议或 IKEv2
 
-点到站点 (P2S) VPN 网关连接用于创建从单个客户端计算机到虚拟网络的安全连接。 可通过从客户端计算机启动连接来建立 P2S 连接。 本文适用于资源管理器部署模型，并讨论如何通过过渡到 OpenVPN 协议或 IKEv2 来克服 SSTP 的 128 个并发连接限制。
+点到站点 (P2S) VPN 网关连接用于创建从单个客户端计算机到虚拟网络的安全连接。 可通过从客户端计算机启动连接来建立 P2S 连接。 本文适用于资源管理器部署模型，介绍如何通过过渡到 OpenVPN 协议或 IKEv2，来克服 SSTP 的 128 个并发连接的限制。
 
 ## <a name="what-protocol-does-p2s-use"></a><a name="protocol"></a>P2S 使用哪种协议？
 
 点到站点 VPN 可使用以下协议之一：
 
-* **OpenVPN&reg;协议**，基于 SSL/TLS 的 VPN 协议。 由于大多数防火墙都会打开 SSL 所用的出站 TCP 端口 443，因此 SSL VPN 解决方案可以穿透防火墙。 OpenVPN 可用于从 Android、iOS（11.0 及更高版本）、Windows、Linux 和 Mac 设备（OSX 10.13 及更高版本）进行连接。
+* OpenVPN&reg; 协议，一个基于 SSL/TLS 的 VPN 协议。  由于大多数防火墙都会打开 SSL 所用的出站 TCP 端口 443，因此 SSL VPN 解决方案可以穿透防火墙。 OpenVPN 可用于从 Android、iOS（11.0 及更高版本）、Windows、Linux 和 Mac 设备（OSX 10.13 及更高版本）进行连接。
 
-* **安全套接字隧道协议 （SSTP），** 一种基于 SSL 的专有 VPN 协议. 由于大多数防火墙都会打开 SSL 所用的出站 TCP 端口 443，因此 SSL VPN 解决方案可以穿透防火墙。 只有 Windows 设备支持 SSTP。 Azure 支持所有采用 SSTP 的 Windows 版本（Windows 7 和更高版本）。 **SSTP 仅支持多达 128 个并发连接，而不考虑网关 SKU**。
+* 安全套接字隧道协议 (SSTP)，一个基于 SSL 的专属 VPN 协议。  由于大多数防火墙都会打开 SSL 所用的出站 TCP 端口 443，因此 SSL VPN 解决方案可以穿透防火墙。 只有 Windows 设备支持 SSTP。 Azure 支持所有采用 SSTP 的 Windows 版本（Windows 7 和更高版本）。 无论网关 SKU 是什么，SSTP 最多仅支持 128 个并发连接。 
 
 * IKEv2 VPN，这是一种基于标准的 IPsec VPN 解决方案。 IKEv2 VPN 可用于从 Mac 设备进行连接（OSX 10.11 和更高版本）。
 
 
 >[!NOTE]
->P2S 的 IKEv2 和 OpenVPN 仅可用于资源管理器部署模型。 它们不可用于经典部署模型。 基本网关 SKU 不支持 IKEv2 或 OpenVPN 协议。 如果使用基本 SKU，则必须删除并重新创建生产 SKU 虚拟网络网关。
+>P2S 的 IKEv2 和 OpenVPN 仅可用于资源管理器部署模型。 它们不可用于经典部署模型。 基本网关 SKU 不支持 IKEv2 或 OpenVPN 协议。 如果使用的是基本 SKU，则必须删除再重新创建生产 SKU 虚拟网络网关。
 >
 
 ## <a name="migrating-from-sstp-to-ikev2-or-openvpn"></a>从 SSTP 迁移到 IKEv2 或 OpenVPN
 
-在某些情况下，您可能希望支持到 VPN 网关的 128 个并发 P2S 连接，但使用 SSTP。 在这种情况下，您需要迁移到 IKEv2 或 OpenVPN 协议。
+在某些情况下，你可能想要支持与 VPN 网关建立 128 个以上的并发 P2S 连接，但此时使用的是 SSTP。 对于此类情况，需要迁移到 IKEv2 或 OpenVPN 协议。
 
-### <a name="option-1---add-ikev2-in-addition-to-sstp-on-the-gateway"></a>选项 1 - 除了网关上的 SSTP 外添加 IKEv2
+### <a name="option-1---add-ikev2-in-addition-to-sstp-on-the-gateway"></a>选项 1 - 在网关上除了使用 SSTP 以外，还添加 IKEv2
 
-这是最简单的选项。 SSTP 和 IKEv2 可以共存于同一网关上，并为您提供数量较多的并发连接。 只需在现有网关上启用 IKEv2 并重新下载客户端即可。
+这是最简单的做法。 SSTP 和 IKEv2 可以在同一网关上共存，它们能够支持更多的并发连接。 只需在现有网关上启用 IKEv2，并重新下载客户端即可。
 
-将 IKEv2 添加到现有 SSTP VPN 网关不会影响现有客户端，您可以将其配置为小批量使用 IKEv2，或者仅将新客户端配置为使用 IKEv2。 如果为 SSTP 和 IKEv2 配置了 Windows 客户端，它将尝试首先使用 IKEV2 进行连接，如果失败，它将回落到 SSTP。
+将 IKEv2 添加到现有 SSTP VPN 网关不会影响现有的客户端，可将这些客户端配置为在较小的批中使用 IKEv2，或者只是将新客户端配置为使用 IKEv2。 如果同时为 SSTP 和 IKEv2 配置了某个 Windows 客户端，该客户端首先会尝试使用 IKEV2 进行连接，如果失败，将回退到 SSTP。
 
-**IKEv2 使用非标准 UDP 端口，因此您需要确保这些端口不会在用户的防火墙上被阻止。正在使用的端口是 UDP 500 和 4500。**
+IKEv2 使用非标准 UDP 端口，因此，你需要确保这些端口未在用户的防火墙中遭到阻止。  使用的端口是 UDP 500 和 4500。
 
-要将 IKEv2 添加到现有网关，只需转到门户中虚拟网络网关下的"点对点配置"选项卡，然后从下拉框中选择**IKEv2 和 SSTP （SSL）。**
+若要将 IKEv2 添加到现有网关，只需在门户中转到虚拟网络网关下的“点到站点配置”选项卡，然后从下拉框中选择“IKEv2 和 SSTP (SSL)”。 
 
-![点对点](./media/ikev2-openvpn-from-sstp/sstptoikev2.png "IKEv2")
+![点到站点](./media/ikev2-openvpn-from-sstp/sstptoikev2.png "IKEv2")
 
 
 ### <a name="option-2---remove-sstp-and-enable-openvpn-on-the-gateway"></a>选项 2 - 删除 SSTP 并在网关上启用 OpenVPN
 
-由于 SSTP 和 OpenVPN 都是基于 TLS 的协议，因此它们不能共存于同一网关上。 如果您决定从 SSTP 迁移到 OpenVPN，您必须禁用 SSTP 并在网关上启用 OpenVPN。 此操作将导致现有客户端失去与 VPN 网关的连接，直到客户端上配置了新配置文件。
+由于 SSTP 和 OpenVPN 都是基于 TLS 的协议，它们不能在同一个网关上共存。 如果你决定从 SSTP 迁移到 OpenVPN，则必须禁用 SSTP，并在网关上启用 OpenVPN。 此操作会导致现有客户端断开与 VPN 网关的连接，直到在客户端上配置了新的配置文件。
 
-如果需要，您可以与 IKEv2 一起启用 OpenVPN。 OpenVPN 基于 TLS，使用标准 TCP 443 端口。 要切换到 OpenVPN，请转到门户中虚拟网络网关下的"点对点配置"选项卡，然后从下拉框中选择**OpenVPN （SSL）** 或**IKEv2 和 OpenVPN （SSL）。**
+如果需要，可以同时启用 OpenVPN 和 IKEv2。 OpenVPN 基于 TLS，使用标准的 TCP 443 端口。 若要切换到 OpenVPN，请在门户中转到虚拟网络网关下的“点到站点配置”选项卡，然后从下拉框中选择“OpenVPN (SSL)”或“IKEv2 和 OpenVPN (SSL)”。  
 
-![点对点](./media/ikev2-openvpn-from-sstp/sstptoopenvpn.png "OpenVPN")
+![点到站点](./media/ikev2-openvpn-from-sstp/sstptoopenvpn.png "OpenVPN")
 
-配置网关后，在[部署和配置 OpenVPN 客户端](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-openvpn-clients)之前，现有客户端将无法连接。
+配置网关后，在[部署并配置 OpenVPN 客户端](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-openvpn-clients)之前，现有客户端将无法进行连接。
 
-如果使用 Windows 10，也可以对 Windows 使用[Azure VPN 客户端](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-client#to-download-the-azure-vpn-client)
+如果使用的是 Windows 10，则还可以使用[适用于 Windows 的 Azure VPN 客户端](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-client#to-download-the-azure-vpn-client)
 
 
 ## <a name="frequently-asked-questions"></a>常见问题
@@ -81,7 +81,7 @@ ms.locfileid: "80398360"
 >[!INCLUDE [TLS version changes](../../includes/vpn-gateway-tls-change.md)]
 >
 
-### <a name="which-gateway-skus-support-p2s-vpn"></a><a name="gwsku"></a>哪个网关 SKU 支持 P2S VPN？
+### <a name="which-gateway-skus-support-p2s-vpn"></a><a name="gwsku"></a>哪些网关 SKU 支持 P2S VPN？
 
 [!INCLUDE [aggregate throughput sku](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
@@ -116,7 +116,7 @@ ms.locfileid: "80398360"
 |AES256     |   SHA256        | SHA256    | GROUP_ECP256 |
 |AES256     |   SHA256        | SHA256    | GROUP_2 |
 
-**Ipsec**
+**IPsec**
 
 |**Cipher** | **完整性** | **PFS 组** |
 |---        | ---            | ---        |

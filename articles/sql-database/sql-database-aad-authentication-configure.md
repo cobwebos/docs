@@ -1,6 +1,6 @@
 ---
 title: 配置 Azure Active Directory 身份验证
-description: 了解如何在配置 Azure AD 后，使用 Azure 活动目录身份验证连接到 SQL 数据库、托管实例和 Azure 同步分析。
+description: 了解如何使用 Azure Active Directory Authentication 连接到 SQL 数据库、托管实例和 Azure Synapse Analytics-配置 Azure AD 后。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,18 +12,18 @@ ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 03/27/2020
 ms.openlocfilehash: 0e244ea185011bbb7d9f0facad399bb9b577bbc2
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80419889"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>使用 SQL 配置和管理 Azure Active Directory 身份验证
 
-本文介绍如何创建和填充 Azure AD，然后将 Azure AD 与 Azure [SQL 数据库 （SQL DB）](sql-database-technical-overview.md)、[托管实例 （MI）](sql-database-managed-instance.md)和[Azure 突触分析（以前的 Azure SQL 数据仓库）](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)一起使用。 有关概述，请参阅 [Azure Active Directory 身份验证](sql-database-aad-authentication.md)。
+本文介绍如何创建和填充 Azure AD，并将 Azure AD 用于 Azure [SQL Database （SQL DB）](sql-database-technical-overview.md)、[托管实例（MI）](sql-database-managed-instance.md)和[azure Synapse ANALYTICS （以前称为 azure sql 数据仓库）](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)。 有关概述，请参阅 [Azure Active Directory 身份验证](sql-database-aad-authentication.md)。
 
 > [!NOTE]
-> 本文适用于 Azure SQL 服务器以及 SQL 数据库和 Azure 突触。 为简单起见，SQL 数据库在引用 SQL 数据库和 Azure 突触时使用。
+> 本文适用于 Azure SQL server，以及 SQL 数据库和 Azure Synapse。 为简单起见，在提到 SQL 数据库和 Azure Synapse 时，本文统称 SQL 数据库。
 
 > [!IMPORTANT]  
 > 不支持使用 Azure Active Directory 帐户连接到 Azure VM 上运行的 SQL Server。 请改用域 Active Directory 帐户。
@@ -32,23 +32,23 @@ ms.locfileid: "80419889"
 
 Azure AD 身份验证支持以下身份验证方法：
 
-- Azure AD 仅云标识
-- 支持的 Azure AD 混合标识：
-  - 云身份验证，具有两个选项以及无缝的单登录 （SSO）
+- Azure AD 仅限云的标识
+- Azure AD 支持的混合标识：
+  - 具有两个选项的云身份验证与无缝单一登录（SSO）结合
     - Azure AD 密码哈希身份验证
-    - Azure AD 直通身份验证
+    - Azure AD 传递身份验证
   - 联合身份验证
 
-有关 Azure AD 身份验证方法的详细信息，以及选择哪种方法，本文包括：
+有关 Azure AD 身份验证方法以及要选择哪种方法的详细信息，请参阅以下文章：
 - [为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法](../active-directory/hybrid/choose-ad-authn.md)
 
 有关 Azure AD 混合标识、设置和同步的详细信息，请参阅以下文章：
 
-- 密码哈希身份验证 -[实现与 Azure AD 连接同步的密码哈希同步](../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)
-- 直通身份验证 - [Azure 活动目录传递身份验证](../active-directory/hybrid/how-to-connect-pta-quick-start.md)
-- 联合身份验证 - 在 Azure 和 Azure [AD 连接和联合](../active-directory/hybrid/how-to-connect-fed-whatis.md)[中部署活动目录联合服务](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)
+- 密码哈希身份验证-[通过 Azure AD Connect 同步实现密码哈希同步](../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)
+- 传递身份验证- [Azure Active Directory 传递身份验证](../active-directory/hybrid/how-to-connect-pta-quick-start.md)
+- 联合身份验证-[在 Azure 中部署 Active Directory 联合身份验证服务](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)和[Azure AD Connect 与联合](../active-directory/hybrid/how-to-connect-fed-whatis.md)
 
-SQL DB（单个数据库和数据库池）、托管实例和 Azure Synapse 都支持上述所有身份验证方法。
+SQL DB （单数据库和数据库池）、托管实例和 Azure Synapse 支持上述所有身份验证方法。
 
 ## <a name="create-and-populate-an-azure-ad"></a>创建并填充 Azure AD
 
@@ -67,7 +67,7 @@ SQL DB（单个数据库和数据库池）、托管实例和 Azure Synapse 都�
 
 ## <a name="create-an-azure-ad-administrator-for-azure-sql-server"></a>为 Azure SQL Server 创建 Azure AD 管理员
 
-每个 Azure SQL 服务器（承载 SQL 数据库或 Azure 突触）从单个服务器管理员帐户开始，该帐户是整个 Azure SQL 服务器的管理员。 必须创建第二个 SQL Server 管理员，这是一个 Azure AD 帐户。 此主体在 master 数据库中作为包含的数据库用户创建。 作为管理员，服务器管理员帐户是每个用户数据库中 **db_owner** 角色的成员，并且以 **dbo** 用户身份输入每个用户数据库。 有关服务器管理员帐户的详细信息，请参阅[在 Azure SQL 数据库中管理数据库和登录名](sql-database-manage-logins.md)。
+每个 Azure SQL server （托管 SQL 数据库或 Azure Synapse）都以单一服务器管理员帐户启动，该帐户是整个 Azure SQL server 的管理员。 必须创建第二个 SQL Server 管理员，这是一个 Azure AD 帐户。 此主体在 master 数据库中作为包含的数据库用户创建。 作为管理员，服务器管理员帐户是每个用户数据库中 **db_owner** 角色的成员，并且以 **dbo** 用户身份输入每个用户数据库。 有关服务器管理员帐户的详细信息，请参阅[在 Azure SQL 数据库中管理数据库和登录名](sql-database-manage-logins.md)。
 
 将 Azure Active Directory 与异地复制结合使用时，必须为主服务器和辅助服务器配置 Azure Active Directory 管理员。 如果服务器没有 Azure Active Directory 管理员，则 Azure Active Directory 登录名和用户会收到“无法连接到服务器”错误。
 
@@ -181,7 +181,7 @@ SQL DB（单个数据库和数据库池）、托管实例和 Azure Synapse 都�
 | --- | ---|
 | 行为类似于 SQL 数据库的 Azure AD 管理员，可实现 Azure AD 身份验证，但 Azure AD 管理员无法在 MI 的 master 数据库中创建 Azure AD 或 SQL 登录名。 | Azure AD 管理员拥有 sysadmin 权限，可以在 MI 的 master 数据库中创建 AAD 和 SQL 登录名。 |
 | 在 sys.server_principals 视图中不存在 | 在 sys.server_principals 视图中存在 |
-| 允许将单个 Azure AD 来宾用户设置为 MI 的 Azure AD 管理员。 有关详细信息，请参阅在[Azure 门户中添加 Azure 活动目录 B2B 协作用户](../active-directory/b2b/add-users-administrator.md)。 | 需要创建一个 Azure AD 组，其中来宾用户为成员，才能将此组设置为 MI 的 Azure AD 管理员。 有关详细信息，请参阅[Azure AD 业务到业务支持](sql-database-ssms-mfa-authentication.md#azure-ad-business-to-business-support)。 |
+| 允许将单个 Azure AD 来宾用户设置为 MI Azure AD 管理员。 有关详细信息，请参阅[在 Azure 门户中添加 AZURE ACTIVE DIRECTORY B2B 协作用户](../active-directory/b2b/add-users-administrator.md)。 | 需要创建包含来宾用户作为成员的 Azure AD 组，以将此组设置为对 MI Azure AD 管理员。 有关详细信息，请参阅[Azure AD 业务到业务支持](sql-database-ssms-mfa-authentication.md#azure-ad-business-to-business-support)。 |
 
 对于在正式版推出之前创建的、但正式版推出之后仍在运行的 MI 的 Azure AD 管理员而言，最佳做法是使用 Azure 门户中的“删除管理员”和“设置管理员”选项，为相同的 Azure AD 用户或组重置 Azure AD 管理员。
 
@@ -193,7 +193,7 @@ SQL DB（单个数据库和数据库池）、托管实例和 Azure Synapse 都�
   - 如果无法设置 Azure AD 管理员帐户，请检查托管实例的 master 数据库中的登录名。 使用以下命令：`SELECT * FROM sys.server_principals`
   - 设置 MI 的 Azure AD 管理员会自动在此帐户的 master 数据库中创建登录名。 删除 Azure AD 管理员会自动删除 master 数据库中的登录名。
 
-- 不支持将单个 Azure AD 来宾用户设置为 MI 的 Azure AD 管理员。 来宾用户必须是 Azure AD 组的一部分，才能设置为 Azure AD 管理员。目前，Azure 门户边栏选项卡不会灰显另一个 Azure AD 的来宾用户，允许用户继续管理设置。 将来宾用户保存为 Azure AD 管理员会导致设置失败。
+- 不支持将单个 Azure AD 来宾用户设置为 MI 的 Azure AD 管理员。 来宾用户必须是要设置为 Azure AD 管理员的 Azure AD 组的一部分。目前，Azure 门户边栏选项卡不会对其他 Azure AD 的来宾用户提供灰显，使用户能够继续进行管理员设置。 将来宾用户保存为 Azure AD 管理员会导致设置失败。
   - 若要将某个来宾用户设置为 MI 的 Azure AD 管理员，请将该来宾用户包含在 Azure AD 组中，然后将此组设置为 Azure AD 管理员。
 
 ### <a name="powershell-for-sql-managed-instance"></a>用于 SQL 的 PowerShell 托管实例
@@ -254,13 +254,13 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 ## <a name="provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server"></a>为 Azure SQL 数据库服务器预配 Azure Active Directory 管理员
 
 > [!IMPORTANT]
-> 仅当预配 Azure SQL 数据库服务器或 Azure 同步分析时，才执行这些步骤。
+> 仅在预配 Azure SQL 数据库服务器或 Azure Synapse Analytics 时，才执行以下步骤。
 
 以下两个过程演示如何使用 PowerShell 在 Azure 门户中为 Azure SQL Server 预配 Azure Active Directory 管理员。
 
 ### <a name="azure-portal"></a>Azure 门户
 
-1. 在 [Azure 门户](https://portal.azure.com/)右上角，选择你的连接，以下拉可能的 Active Directory 列表。 选择正确的 Active Directory 作为默认的 Azure AD。 此步骤将与订阅关联的 Active Directory 链接到 Azure SQL Server，确保为 Azure AD 和 SQL Server 使用相同的订阅。 （Azure SQL 服务器可以托管 Azure SQL 数据库或 Azure 突触。
+1. 在 [Azure 门户](https://portal.azure.com/)右上角，选择你的连接，以下拉可能的 Active Directory 列表。 选择正确的 Active Directory 作为默认的 Azure AD。 此步骤将与订阅关联的 Active Directory 链接到 Azure SQL Server，确保为 Azure AD 和 SQL Server 使用相同的订阅。 （Azure SQL server 托管的可能是 Azure SQL 数据库或 Azure Synapse。）
 
     ![选择-AD][8]
 
@@ -277,22 +277,22 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
     ![SQL Server 的“设置 Active Directory 管理员”](./media/sql-database-aad-authentication/sql-servers-set-active-directory-admin.png)  
 
-5. 在"**添加管理员"** 页中，搜索用户，选择用户或组作为管理员，然后选择 **。** （“Active Directory 管理员”页会显示 Active Directory 的所有成员和组。 若用户或组为灰显，则无法选择，因为不支持它们作为 Azure AD 管理员。 （请参阅 Azure **AD 功能和限制**部分中的受支持管理员列表，[这些部分"使用 Azure 活动目录身份验证"进行 SQL 数据库或 Azure 突触](sql-database-aad-authentication.md)身份验证 。基于角色的访问控制 （RBAC） 仅适用于门户，不会传播到 SQL Server。
+5. 在 "**添加管理员**" 页中，搜索用户，选择要成为管理员的用户或组，然后选择 "**选择**"。 （“Active Directory 管理员”页会显示 Active Directory 的所有成员和组。 若用户或组为灰显，则无法选择，因为不支持它们作为 Azure AD 管理员。 （请参阅在[使用 SQL 数据库或 Azure Synapse 进行身份验证时使用 Azure Active Directory 身份验证](sql-database-aad-authentication.md)的**Azure AD 功能和限制**部分中受支持的管理员列表。）基于角色的访问控制（RBAC）仅适用于该门户，不会传播到 SQL Server。
 
     ![选择 Azure Active Directory 管理员](./media/sql-database-aad-authentication/select-azure-active-directory-admin.png)  
 
-6. 在**活动目录管理**页的顶部，选择 **"保存**"。
+6. 在**Active Directory 管理**"页的顶部，选择"**保存**"。
 
     ![保存管理员](./media/sql-database-aad-authentication/save-admin.png)
 
-更改管理员的过程可能需要几分钟时间。 然后，新管理员将显示在 **"活动目录"管理**框中。
+更改管理员的过程可能需要几分钟时间。 然后，新管理员将出现在**Active Directory 管理**"框中。
 
    > [!NOTE]
    > 设置 Azure AD 管理员时，此新的管理员名称（用户或组）不能已作为 SQL Server 身份验证用户存在于虚拟 master 数据库中。 如果存在，Azure AD 管理员设置会失败；将回滚其创建，并指示此管理员（名称）已存在。 由于这种 SQL Server 身份验证用户不是 Azure AD 的一部分，因此使用 Azure AD 身份验证连接到服务器的任何尝试都会失败。
 
-要稍后删除"**活动目录"管理**页的顶部的管理员，请选择 **"删除管理员**"，然后选择"**保存**"。
+以后若要删除管理员，请在**Active Directory 管理**"页的顶部，选择"**删除管理员**"，然后选择"**保存**"。
 
-### <a name="powershell-for-azure-sql-database-and-azure-synapse"></a>用于 Azure SQL 数据库和 Azure 突触的电源外壳
+### <a name="powershell-for-azure-sql-database-and-azure-synapse"></a>适用于 Azure SQL 数据库和 Azure Synapse 的 PowerShell
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -301,17 +301,17 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 - Connect-AzAccount
 - Select-AzSubscription
 
-用于为 Azure SQL 数据库和 Azure 突触预配和管理 Azure AD 管理员的 Cmdlet：
+用于预配和管理 Azure SQL 数据库和 Azure Synapse Azure AD 管理员的 cmdlet：
 
 | Cmdlet 名称 | 说明 |
 | --- | --- |
-| [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |为 Azure SQL 服务器或 Azure 突触提供 Azure 活动目录管理员。 （必须来自当前订阅） |
-| [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |删除 Azure SQL 服务器或 Azure 突触的 Azure 活动目录管理员。 |
-| [Get-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator) |返回有关当前为 Azure SQL 服务器或 Azure 突触配置的 Azure 活动目录管理员的信息。 |
+| [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |为 Azure SQL server 或 Azure Synapse 预配 Azure Active Directory 管理员。 （必须来自当前订阅） |
+| [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |为 Azure SQL server 或 Azure Synapse 删除 Azure Active Directory 管理员。 |
+| [Get-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator) |返回有关当前为 Azure SQL server 或 Azure Synapse 配置的 Azure Active Directory 管理员的信息。 |
 
 使用 PowerShell 命令 get-help 查看其中每个命令的详细信息。 例如，`get-help Set-AzSqlServerActiveDirectoryAdministrator` 。
 
-以下脚本为名为**Group-23**的资源组中**的demo_server**服务器提供了名为**DBA_Group（** 对象 ID `40b79501-b343-44ed-9ce7-da4c8cc7353f`） 的 Azure AD 管理员组：
+以下脚本将在名为**group-23**的资源组中`40b79501-b343-44ed-9ce7-da4c8cc7353f`为**demo_server**服务器设置一个名为**DBA_Group** （对象 ID） Azure AD 管理员组。
 
 ```powershell
 Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server" -DisplayName "DBA_Group"
@@ -350,10 +350,10 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 | Command | 说明 |
 | --- | --- |
-|[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | 为 Azure SQL 服务器或 Azure 突触提供 Azure 活动目录管理员。 （必须来自当前订阅） |
-|[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | 删除 Azure SQL 服务器或 Azure 突触的 Azure 活动目录管理员。 |
-|[az sql server ad-admin list](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) | 返回有关当前为 Azure SQL 服务器或 Azure 突触配置的 Azure 活动目录管理员的信息。 |
-|[az sql server ad-admin update](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-update) | 更新 Azure SQL 服务器或 Azure 突触的活动目录管理员。 |
+|[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | 为 Azure SQL server 或 Azure Synapse 预配 Azure Active Directory 管理员。 （必须来自当前订阅） |
+|[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | 为 Azure SQL server 或 Azure Synapse 删除 Azure Active Directory 管理员。 |
+|[az sql server ad-admin list](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) | 返回有关当前为 Azure SQL server 或 Azure Synapse 配置的 Azure Active Directory 管理员的信息。 |
+|[az sql server ad-admin update](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-update) | 更新 Azure SQL server 或 Azure Synapse 的 Active Directory 管理员。 |
 
 有关 CLI 命令的详细信息，请参阅 [az sql server](/cli/azure/sql/server)。
 
@@ -364,9 +364,9 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 ## <a name="configure-your-client-computers"></a>配置客户端计算机
 
-在所有客户端计算机上，应用程序或用户使用 Azure AD 标识连接到 Azure SQL 数据库或 Azure 同步程序，必须安装以下软件：
+在所有客户端计算机上，如果应用程序或用户使用 Azure AD 标识连接到 Azure SQL 数据库或 Azure Synapse，则必须安装以下软件：
 
-- .NET 框架 4.6[https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx)或更高版本来自 。
+- .NET Framework 4.6 或更高[https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx)版本。
 - 适用于 SQL Server 的 Azure Active Directory 身份验证库 (*ADAL.DLL*)。 下面是下载链接，用于安装包含 *ADAL.DLL* 库的最新 SSMS、ODBC 和 OLE DB 驱动程序。
     1. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
     1. [适用于 SQL Server 的 ODBC 驱动程序 17](https://www.microsoft.com/download/details.aspx?id=56567)
@@ -387,7 +387,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 Azure Active Directory 身份验证要求以包含的数据库用户的身份创建数据库用户。 基于 Azure AD 标识的包含的数据库用户是在 master 数据库中不具有登录名的数据库用户，它映射到与数据库相关联的 Azure AD 目录中的标识。 Azure AD 标识可以是单独的用户帐户，也可以是组。 有关包含的数据库用户的详细信息，请参阅[包含的数据库用户 - 使数据库可移植](https://msdn.microsoft.com/library/ff929188.aspx)。
 
 > [!NOTE]
-> 不能使用 Azure 门户创建数据库用户（管理员除外）。 RBAC 角色不会传播到 SQL 服务器、SQL 数据库或 Azure 突触。 Azure RBAC 角色用于管理 Azure 资源，不会应用于数据库权限。 例如 **，SQL 服务器参与者**角色不授予连接到 SQL 数据库或 Azure 突触的权限。 必须使用 Transact-SQL 语句直接在数据库中授予访问权限。
+> 不能使用 Azure 门户创建数据库用户（管理员除外）。 RBAC 角色不会传播到 SQL Server、SQL 数据库或 Azure Synapse。 Azure RBAC 角色用于管理 Azure 资源，不会应用于数据库权限。 例如， **SQL Server 参与者**角色不会授予连接到 SQL 数据库或 Azure Synapse 的权限。 必须使用 Transact-SQL 语句直接在数据库中授予访问权限。
 
 > [!WARNING]
 > 不支持在 T-SQL CREATE LOGIN 和 CREATE USER 语句中将特殊字符（例如冒号 `:` 或与号 `&`）用作用户名。
@@ -431,7 +431,7 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 > 删除 Azure SQL Server 的 Azure Active Directory 管理员会阻止所有 Azure AD 身份验证用户连接到服务器。 必要时，SQL 数据库管理员可以手动删除无法使用的 Azure AD 用户。
 
 > [!NOTE]
-> 如果收到 **Connection Timeout Expired** 消息，则可能需要将连接字符串的 `TransparentNetworkIPResolution` 参数设置为 false。 有关详细信息，请参阅[.NET 框架 4.6.1 的连接超时问题 - 透明网络IP解析](https://blogs.msdn.microsoft.com/dataaccesstechnologies/20../../connection-timeout-issue-with-net-framework-4-6-1-transparentnetworkipresolution/)。
+> 如果收到 **Connection Timeout Expired** 消息，则可能需要将连接字符串的 `TransparentNetworkIPResolution` 参数设置为 false。 有关详细信息，请参阅[.NET Framework 4.6.1-TransparentNetworkIPResolution 的连接超时问题](https://blogs.msdn.microsoft.com/dataaccesstechnologies/20../../connection-timeout-issue-with-net-framework-4-6-1-transparentnetworkipresolution/)。
 
 创建数据库用户时，该用户会收到 **CONNECT** 权限，并能够以 **PUBLIC** 角色的成员身份连接到该数据库。 最初，仅供用户使用的权限是授予 PUBLIC 角色的任何权限，或者授予其所属任何 Azure AD 组的任何权限****。 预配基于 Azure AD 的包含的数据库用户后，可以授予用户其他权限，方法与向任何其他类型的用户授予权限相同。 通常，将权限授予数据库角色，并将用户添加到角色。 有关详细信息，请参阅[数据库引擎权限基础知识](https://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx)。 有关特殊 SQL 数据库角色的详细信息，请参阅[在 Azure SQL 数据库中管理数据库和登录名](sql-database-manage-logins.md)。
 如果将联合域用户帐户作为外部用户导入到托管域，则此用户必须使用托管域标识。
@@ -439,7 +439,7 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 > [!NOTE]
 > Azure AD 用户在数据库元数据中均标记为类型 E (EXTERNAL_USER)，而组则标记为类型 X (EXTERNAL_GROUPS)。 有关详细信息，请参阅 [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx)。
 
-## <a name="connect-to-the-user-database-or-azure-synapse-by-using-ssms-or-ssdt"></a>使用 SSMS 或 SSDT 连接到用户数据库或 Azure 突触  
+## <a name="connect-to-the-user-database-or-azure-synapse-by-using-ssms-or-ssdt"></a>使用 SSMS 或 SSDT 连接到用户数据库或 Azure Synapse  
 
 若要确认 Azure AD 管理员已正确设置，请使用 Azure AD 管理员帐户连接到 **master** 数据库。
 若要预配基于 Azure AD 的包含的数据库用户（而不是拥有数据库的服务器管理员），请使用具有数据库访问权限的 Azure AD 标识连接到数据库。
@@ -453,37 +453,37 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 
 ### <a name="active-directory-integrated-authentication"></a>Active Directory 集成身份验证
 
-如果使用来自联合域的 Azure 活动目录凭据登录到 Windows，或者为传递和密码哈希身份验证配置为无缝单一登录的托管域，请使用此方法。 有关详细信息，请参阅[Azure 活动目录无缝单一登录](../active-directory/hybrid/how-to-connect-sso.md)。
+如果你使用来自联合域的 Azure Active Directory 凭据登录到 Windows，或者使用为传递和密码哈希身份验证配置无缝单一登录的托管域，请使用此方法。 有关详细信息，请参阅[Azure Active Directory 无缝单一登录](../active-directory/hybrid/how-to-connect-sso.md)。
 
-1. 启动管理工作室或数据工具，并在"**连接到服务器**（或**连接到数据库引擎**））"对话框中，在 **"身份验证**"框中选择**Azure 活动目录 - 集成**。 由于会为连接提供现有凭据，因此无需密码，也无法输入密码。
+1. 启动 Management Studio 或数据工具，在 "**连接到服务器**" 对话框（或 "**连接到数据库引擎**）" 对话框的 "**身份验证**" 框中，选择 " **Azure Active Directory 集成**"。 由于会为连接提供现有凭据，因此无需密码，也无法输入密码。
 
     ![选择 AD 集成身份验证][11]
 
-2. 选择“选项”**** 按钮，在“连接属性”**** 页上的“连接到数据库”**** 框中，键入所要连接的用户数据库的名称。 有关详细信息，请参阅有关 SSMS 17.x 和 18.x 连接属性之间的差异的[多因素 AAD 身份验证](sql-database-ssms-mfa-authentication.md#azure-ad-domain-name-or-tenant-id-parameter)。 
+2. 选择“选项”**** 按钮，在“连接属性”**** 页上的“连接到数据库”**** 框中，键入所要连接的用户数据库的名称。 有关详细信息，请参阅有关 SSMS 17. x 和 18. x 的连接属性之间的差异的[多因素 AAD 身份验证](sql-database-ssms-mfa-authentication.md#azure-ad-domain-name-or-tenant-id-parameter)一文。 
 
     ![选择数据库名称][13]
 
 ### <a name="active-directory-password-authentication"></a>Active Directory 密码身份验证
 
-在使用 Azure AD 托管域与 Azure AD 主体名称连接时使用此方法。 您还可以将其用于联合帐户，而无需访问域，例如，远程工作时。
+在使用 Azure AD 托管域与 Azure AD 主体名称连接时使用此方法。 你还可以将其用于无需访问该域的联合帐户，例如远程工作时。
 
-使用此方法对 SQL DB 或 MI 进行仅 Azure AD 云标识用户或使用 Azure AD 混合标识的用户进行身份验证。 此方法支持希望使用其 Windows 凭据的用户，但他们的本地计算机未与域联接（例如，使用远程访问）。 在这种情况下，Windows 用户可以指示其域帐户和密码，并可以对 SQL DB、MI 或 Azure 突触进行身份验证。
+使用此方法可以向 SQL DB 或与 Azure AD 仅限云的标识用户或使用 Azure AD 混合标识的用户进行身份验证。 此方法支持要使用其 Windows 凭据的用户，但其本地计算机未加入域（例如，使用远程访问）。 在这种情况下，Windows 用户可以指示其域帐户和密码，并可以对 SQL DB、MI 或 Azure Synapse 进行身份验证。
 
-1. 启动管理工作室或数据工具，并在"**连接到服务器**（或**连接到数据库引擎**））"对话框中，在 **"身份验证**"框中选择**Azure 活动目录 - 密码**。
+1. 启动 Management Studio 或数据工具，然后在 "**连接到服务器**（或**连接到数据库引擎**）" 对话框的 "**身份验证**" 框中，选择 " **Azure Active Directory-密码**"。
 
-2. 在“用户名”框中，以 **username\@domain.com** 格式键入 Azure Active Directory 用户名。**** 用户名必须是 Azure 活动目录的帐户，或者来自具有 Azure 活动目录的托管或联合域的帐户。
+2. 在“用户名”框中，以 **username\@domain.com** 格式键入 Azure Active Directory 用户名。**** 用户名必须是来自 Azure Active Directory 的帐户，或者是来自托管域或联合域的帐户 Azure Active Directory。
 
-3. 在 **"密码"** 框中，键入 Azure 活动目录帐户或托管/联合域帐户的用户密码。
+3. 在 "**密码**" 框中，为 Azure Active Directory 帐户或托管/联合域帐户键入你的用户密码。
 
     ![选择 AD 密码身份验证][12]
 
 4. 选择“选项”**** 按钮，在“连接属性”**** 页上的“连接到数据库”**** 框中，键入所要连接的用户数据库的名称。 （请参阅前一选项的图。）
 
-### <a name="active-directory-interactive-authentication"></a>活动目录交互式身份验证
+### <a name="active-directory-interactive-authentication"></a>Active Directory 交互式身份验证
 
-使用此方法进行具有或不带多重身份验证 （MFA） 的交互式身份验证，并交互请求密码。 此方法可用于对仅 Azure AD 云标识用户或使用 Azure AD 混合标识的用户的 SQL DB、MI 和 Azure 突触进行身份验证。
+使用此方法进行交互式身份验证（使用或不使用多重身份验证（MFA）），并以交互方式请求密码。 此方法可用于向 SQL DB、MI 和 Azure Synapse 进行身份验证，以便 Azure AD 仅限云的标识用户或使用 Azure AD 混合标识的用户。
 
-有关详细信息，请参阅[将多重 AAD 身份验证与 Azure SQL 数据库和 Azure 突触分析（对 MFA 的 SSMS 支持）结合](sql-database-ssms-mfa-authentication.md)使用。
+有关详细信息，请参阅[在 AZURE SQL 数据库中使用多重 AAD 身份验证和 Azure Synapse Analytics （对 MFA 的 SSMS 支持）](sql-database-ssms-mfa-authentication.md)。
 
 ## <a name="using-an-azure-ad-identity-to-connect-from-a-client-application"></a>使用 Azure AD 标识从客户端应用程序进行连接
 
@@ -491,14 +491,14 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 
 ### <a name="active-directory-integrated-authentication"></a>Active Directory 集成身份验证
 
-要使用集成的 Windows 身份验证，域的活动目录必须与 Azure 活动目录联合，或者应该是为无缝单一登录配置为传递或密码哈希身份验证的托管域。 有关详细信息，请参阅[Azure 活动目录无缝单一登录](../active-directory/hybrid/how-to-connect-sso.md)。
+若要使用集成的 Windows 身份验证，你的域的 Active Directory 必须与 Azure Active Directory 联合，或者应该是为传递或密码哈希身份验证配置为无缝单一登录的托管域。 有关详细信息，请参阅[Azure Active Directory 无缝单一登录](../active-directory/hybrid/how-to-connect-sso.md)。
 
 > [!NOTE]
-> 集成 Windows 身份验证[的MSAL.NET（Microsoft.Identity.Client）](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap)不支持用于传递和密码哈希身份验证的无缝单一登录。
+> 对于直通和密码哈希身份验证，不支持集成 Windows 身份验证的[MSAL.NET （客户端）](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap)进行无缝单一登录。
 
 连接到数据库的客户端应用程序（或服务）必须运行在已使用用户的域凭据加入域的计算机上。
 
-要使用集成身份验证和 Azure AD 标识连接到数据库，必须将数据库连接字符串中的身份验证关键字设置为`Active Directory Integrated`。 下面的 C# 代码示例使用 ADO.NET。
+若要使用集成身份验证和 Azure AD 标识连接到数据库，数据库连接字符串中的 Authentication 关键字必须设置为`Active Directory Integrated`。 下面的 C# 代码示例使用 ADO.NET。
 
 ```csharp
 string ConnectionString = @"Data Source=n9lxnyuzhv.database.windows.net; Authentication=Active Directory Integrated; Initial Catalog=testdb;";
@@ -510,7 +510,7 @@ conn.Open();
 
 ### <a name="active-directory-password-authentication"></a>Active Directory 密码身份验证
 
-要使用 Azure AD 仅云标识用户帐户或使用 Azure AD 混合标识帐户连接到数据库，必须将身份验证关键字设置为`Active Directory Password`。 连接字符串必须包含“User ID/UID”和“Password/PWD”关键字和值。 下面的 C# 代码示例使用 ADO.NET。
+若要使用 Azure AD 仅限云的标识用户帐户或使用 Azure AD 混合标识的用户连接到数据库，Authentication 关键字必须设置为`Active Directory Password`。 连接字符串必须包含“User ID/UID”和“Password/PWD”关键字和值。 下面的 C# 代码示例使用 ADO.NET。
 
 ```csharp
 string ConnectionString =
@@ -523,7 +523,7 @@ conn.Open();
 
 ## <a name="azure-ad-token"></a>Azure AD 令牌
 
-此身份验证方法允许中间层服务通过从 Azure 活动目录 （AAD） 获取令牌来获取[JSON Web 令牌 （JWT）](../active-directory/develop/id-tokens.md)连接到 Azure SQL 数据库或 Azure 突触。 此方法支持各种应用程序方案，包括服务标识、服务主体和使用基于证书的身份验证的应用程序。 必须完成四个基本步骤才能使用 Azure AD 令牌身份验证：
+此身份验证方法允许中间层服务获取[JSON Web 令牌（JWT）](../active-directory/develop/id-tokens.md) ，以便通过从 AZURE ACTIVE DIRECTORY （AAD）获取令牌来连接到 Azure SQL 数据库或 azure Synapse。 此方法使用基于证书的身份验证来启用各种应用程序方案，包括服务标识、服务主体和应用程序。 必须完成四个基本步骤才能使用 Azure AD 令牌身份验证：
 
 1. 在 Azure Active Directory 中注册应用程序，并获取代码的客户端 ID。
 2. 创建代表应用程序的数据库用户。 （前面在步骤 6 中已完成。）
@@ -553,13 +553,13 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -G
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyAADPassword -G -l 30
 ```
 
-## <a name="troubleshooting-azure-ad-authentication"></a>排除 Azure AD 身份验证的故障
+## <a name="troubleshooting-azure-ad-authentication"></a>疑难解答 Azure AD 身份验证
 
-有关使用 Azure AD 身份验证的故障排除问题的指导，请参阅以下博客：<https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
+有关解决 Azure AD 身份验证问题的指南，请参阅以下博客：<https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 SQL 数据库中登录名、用户、数据库角色和权限的概述，请参阅[登录名、用户、数据库角色和用户帐户](sql-database-manage-logins.md)。
+- 有关 SQL 数据库中的登录名、用户、数据库角色和权限的概述，请参阅[登录名、用户、数据库角色和用户帐户](sql-database-manage-logins.md)。
 - 有关数据库主体的详细信息，请参阅[主体](https://msdn.microsoft.com/library/ms181127.aspx)。
 - 有关数据库角色的详细信息，请参阅[数据库角色](https://msdn.microsoft.com/library/ms189121.aspx)。
 - 有关 SQL 数据库中的防火墙规则的详细信息，请参阅 [SQL 数据库防火墙规则](sql-database-firewall-configure.md)。

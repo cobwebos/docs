@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: bb90858f7e87e31b8b6028a30a6000bbed4d3e4b
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80421091"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli"></a>在 Azure 虚拟网络中部署 IPv6 双堆栈应用程序 - CLI
@@ -32,7 +32,7 @@ ms.locfileid: "80421091"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-在创建双堆栈虚拟网络之前，必须先使用 [az group create](/cli/azure/group) 创建一个资源组。 下面的示例*在东部*位置创建名为*DsResourceGroup01*的资源组：
+在创建双堆栈虚拟网络之前，必须先使用 [az group create](/cli/azure/group) 创建一个资源组。 以下示例在 " *eastus* " 位置创建名为 " *DsResourceGroup01* " 的资源组：
 
 ```azurecli
 az group create \
@@ -120,7 +120,7 @@ az network lb frontend-ip create \
 
 ### <a name="configure-ipv6-back-end-address-pool"></a>配置 IPv6 后端地址池
 
-使用 [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create) 创建 IPv6 后端地址池。 以下示例创建名为*dsLbBackEndPool_v6*的后端地址池，以包括具有 IPv6 NIC 配置的 VM：
+使用 [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create) 创建 IPv6 后端地址池。 以下示例创建名为*dsLbBackEndPool_v6*的后端地址池，以包含具有 IPv6 NIC 配置的 vm：
 
 ```azurecli
 az network lb address-pool create \
@@ -130,7 +130,7 @@ az network lb address-pool create \
 ```
 
 ### <a name="create-a-health-probe"></a>创建运行状况探测器
-创建使用 az[网络 lb 探测器创建的](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest)运行状况探测，以监视虚拟机的运行状况。 
+使用[az network lb create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest)创建运行状况探测，以监视虚拟机的运行状况。 
 
 ```azurecli
 az network lb probe create -g DsResourceGroup01  --lb-name dsLB -n dsProbe --protocol tcp --port 3389
@@ -173,7 +173,7 @@ az network lb rule create \
 ### <a name="create-an-availability-set"></a>创建可用性集
 若要提高应用的可用性，请将 VM 放到可用性集中。
 
-使用[az vm 可用性集创建](https://docs.microsoft.com/cli/azure/vm/availability-set?view=azure-cli-latest)可用性集。 以下示例创建名为 *dsAVset* 的可用性集：
+使用 [az vm availability-set create](https://docs.microsoft.com/cli/azure/vm/availability-set?view=azure-cli-latest) 创建可用性集。 以下示例创建名为 *dsAVset* 的可用性集：
 
 ```azurecli
 az vm availability-set create \
@@ -190,7 +190,7 @@ az vm availability-set create \
 
 #### <a name="create-a-network-security-group"></a>创建网络安全组
 
-创建具有[az 网络 nsg 创建的](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create)网络安全组
+使用[az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create)创建网络安全组
 
 
 ```azurecli
@@ -256,7 +256,7 @@ az network nsg rule create \
 
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
 
-创建具有 az[网络 vnet 创建的](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create)虚拟网络。 以下示例创建名为 *dsVNET* 的虚拟网络，其中包含子网 *dsSubNET_v4* 和 *dsSubNET_v6*：
+使用 [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create) 创建虚拟网络。 以下示例创建名为 *dsVNET* 的虚拟网络，其中包含子网 *dsSubNET_v4* 和 *dsSubNET_v6*：
 
 ```azurecli
 # Create the virtual network
@@ -372,4 +372,4 @@ az vm create \
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你已使用双重前端 IP 配置（IPv4 和 IPv6）创建了一个标准负载均衡器。 你还创建了两个虚拟机，它们包含采用双重 IP 配置（IPV4 + IPv6）的 NIC，并已添加到负载均衡器的后端池。 要了解有关 Azure 虚拟网络中 IPv6 支持的更多信息，请参阅[什么是 Azure 虚拟网络的 IPv6？](ipv6-overview.md)
+在本文中，你已使用双重前端 IP 配置（IPv4 和 IPv6）创建了一个标准负载均衡器。 你还创建了两个虚拟机，它们包含采用双重 IP 配置（IPV4 + IPv6）的 NIC，并已添加到负载均衡器的后端池。 若要了解有关 Azure 虚拟网络中 IPv6 支持的详细信息，请参阅[什么是适用于 Azure 虚拟网络的 ipv6？](ipv6-overview.md)

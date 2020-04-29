@@ -14,37 +14,37 @@ ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
 ms.openlocfilehash: 93dde2e873a00303dcb8563caed4d56dbf11cc12
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80435632"
 ---
 # <a name="protect-your-machines-and-applications"></a>保护计算机和应用程序
 在 Azure 安全中心识别出潜在的安全漏洞时，它会创建建议，指导你完成配置所需控件以强化和保护资源的过程。
 
-本文介绍安全中心的资源安全部分的“计算和应用”页。****
+本文介绍安全中心的资源安全部分的“计算和应用”页。 
 
-有关您可能在此页上看到的建议的完整列表，请参阅[计算和应用建议](recommendations-reference.md#recs-computeapp)。
+有关此页上可能会看到的建议的完整列表，请参阅[计算和应用建议](recommendations-reference.md#recs-computeapp)。
 
 
 ## <a name="view-the-security-of-your-compute-and-apps-resources"></a>查看计算和应用资源的安全性
 
 [![安全中心仪表板](./media/security-center-virtual-machine-recommendations/compute-and-apps-recs-overview.png)](./media/security-center-virtual-machine-recommendations/compute-and-apps-recs-overview.png#lightbox)
 
-要查看计算和应用资源的状态，请在安全中心的左侧窗格中选择 **"计算&应用**"。 以下选项卡可用：
+若要查看计算和应用资源的状态，请从安全中心的左窗格中选择 "**计算 & 应用**"。 以下选项卡可用：
 
 * **概览**：列出所有计算和应用资源及其当前安全状态的建议 
 
-* [**VM 和服务器**](#vms-and-computers)：列出对 VM、计算机和每个服务器的当前安全状态的建议
+* [**Vm 和服务器**](#vms-and-computers)：列出 vm、计算机和每个 vm 的当前安全状态的建议
 
 * [**VM 规模集**](#vmscale-sets)：列出规模集的建议， 
 
-* [**云服务**](#cloud-services)：列出安全中心监视的 Web 和辅助角色的建议
+* [**云服务**](#cloud-services)：列出安全中心监视的 web 角色和辅助角色的建议
 
 * [**应用服务**](#app-services)：列出应用服务环境及其当前安全状态的建议
 
-* [**容器**](#containers)：列出容器的建议及其配置的安全评估
+* [**容器**](#containers)：列出容器的建议和对其配置的安全评估
 
 * **计算资源**：列出针对计算资源（例如 Service Fabric 群集和事件中心）的建议
 
@@ -63,7 +63,7 @@ ms.locfileid: "80435632"
 
 
 
-### <a name="vms-and-servers"></a><a name="vms-and-computers"></a>VM 和服务器
+### <a name="vms-and-servers"></a><a name="vms-and-computers"></a>Vm 和服务器
 “VM 和计算机”部分概述了有关 VM 和计算机的所有安全建议。 包括四种类型的计算机：
 
 ![非 Azure 计算机](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon1.png) 非 Azure 计算机。
@@ -85,17 +85,17 @@ ms.locfileid: "80435632"
 
 
 ### <a name="virtual-machine-scale-sets"></a><a name="vmscale-sets"></a>虚拟机规模集
-安全中心会自动发现您是否具有缩放集，并建议您在其中安装日志分析代理。
+安全中心会自动发现你是否具有规模集，并建议你在其上安装 Log Analytics 代理。
 
-要安装日志分析代理： 
+安装 Log Analytics 代理： 
 
 1. 选择建议“在虚拟机规模集上安装监视代理”。**** 你会获得未收监视的规模集的列表。
 
-1. 选择不正常的规模集。 按照说明操作，使用现有的已填充工作区或新建的工作区安装监视代理。 如果未设置工作区[定价层](security-center-pricing.md)，请确保设置该层。
+1. 选择不正常的规模集。 按照说明操作，使用现有的已填充工作区或新建的工作区安装监视代理。 如果未设置，请确保设置工作区[定价层](security-center-pricing.md)。
 
    ![安装 MMS](./media/security-center-virtual-machine-recommendations/install-mms.png)
 
-要设置新的规模集以自动安装日志分析代理，请执行以下规定：
+若要设置新的规模集以自动安装 Log Analytics 代理：
 1. 转到 Azure Policy，单击“定义”。****
 
 1. 搜索策略“为 Windows 虚拟机规模集部署 Log Analytics 代理”，然后单击它。****
@@ -104,7 +104,7 @@ ms.locfileid: "80435632"
 
 1. 设置“范围”和“Log Analytics 工作区”，然后单击“分配”。************
 
-如果要将所有现有规模集设置为安装日志分析代理，请在 Azure 策略中转到 **"修正"** 并将现有策略应用于现有规模集。
+如果要将所有现有规模集设置为安装 Log Analytics 代理，请在 Azure 策略中，切换到 "**修正**" 并将现有策略应用到现有规模集。
 
 
 
@@ -139,7 +139,7 @@ ms.locfileid: "80435632"
 
 如果选择 Web 应用程序，则会打开摘要视图，其中包含三个选项卡：
 
-   - **建议**：基于安全中心执行的失败的评估。
+   - **建议**：基于失败的安全中心执行的评估。
    - **已通过的评估**：安全中心执行的、已通过的评估列表。
    - **不可用的评估**：由于出错或者建议与特定的应用服务不相关，而未能运行的评估列表。
 
@@ -159,36 +159,36 @@ ms.locfileid: "80435632"
 
 ### <a name="containers"></a><a name="containers"></a>容器
 
-打开 **"容器"** 选项卡时，根据您的环境，您可能会看到三种类型的资源中的任何一种：
+当你打开 "**容器**" 选项卡时，根据你的环境，你可能会看到以下三种类型的资源中的任何一种：
 
-![容器主机](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png) 容器主机 - 运行 Docker 的 VM 
+![容器主机](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png) 容器主机-运行 docker 的 Vm 
 
-![Kubernetes 服务](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png) Azure 库伯奈斯服务 （AKS） 群集
+![Kubernetes 服务](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png) Azure Kubernetes 服务（AKS）群集
 
-![容器注册表](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png) Azure 容器注册表 （ACR） 注册表 - 仅在您处于标准定价层和启用 Azure 容器注册表包时显示。
+![容器注册表](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png) Azure 容器注册表（ACR）注册表项-仅当你在标准定价层和启用了 Azure 容器注册表捆绑包时才显示。
 
 有关如何使用容器安全功能的说明，请参阅[监视容器的安全性](monitor-container-security.md)。
 
-[此处](azure-container-registry-integration.md)介绍了 Azure 容器注册表捆绑包的优点
+[此处](azure-container-registry-integration.md)介绍了 Azure 容器注册表捆绑的优点
 
-库伯内斯服务捆绑包的好处[在这里](azure-kubernetes-service-integration.md)解释
+[此处](azure-kubernetes-service-integration.md)解释了 Kubernetes Services 捆绑的优点
 
 [![容器选项卡](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png)](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png#lightbox)
 
-要查看列表中特定资源的建议，请单击该资源。
+若要查看列表中特定资源的建议，请单击该资源。
 
-#### <a name="visibility-into-container-registries"></a>容器注册表的可见性
+#### <a name="visibility-into-container-registries"></a>查看容器注册表
 
-例如，从上图中显示的列表中单击 asc-demo ACR 注册表，将引至此详细信息页面：
+例如，在上图所示的列表中单击 asc-演示程序注册表会出现以下详细信息页：
 
 [![针对特定 ACR 注册表的建议](./media/security-center-virtual-machine-recommendations/acr-registry-recs-list.png)](./media/security-center-virtual-machine-recommendations/acr-registry-recs-list.png#lightbox)
 
 
 #### <a name="visibility-into-containers-hosted-on-iaas-linux-machines"></a>洞察 IaaS Linux 计算机上托管的容器
 
-单击运行 Docker 的 VM 之一时，您将看到详细信息页，其中包含与计算机上的容器相关的信息，例如 Docker 版本和主机上运行的图像数。
+单击其中一个运行 docker 的 Vm 时，会看到详细信息页，其中包含与计算机上的容器相关的信息，如 Docker 版本和主机上运行的映像数。
 
-![运行 Docker 的 VM 建议](./media/security-center-virtual-machine-recommendations/docker-recommendation.png)
+![有关运行 docker 的 VM 的建议](./media/security-center-virtual-machine-recommendations/docker-recommendation.png)
 
 
 #### <a name="security-recommendations-based-on-cis-benchmark-for-docker"></a>基于 Docker CIS 基准的安全建议

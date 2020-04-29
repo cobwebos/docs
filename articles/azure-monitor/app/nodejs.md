@@ -4,19 +4,19 @@ description: 使用 Application Insights 监视 Node.js 服务的性能并诊断
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 38336e3faf3764233dd94bffbfb24421e054496a
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80411584"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>使用 Application Insights 监视 Node.js 服务和应用
 
-[Azure 应用程序见解](../../azure-monitor/app/app-insights-overview.md)在部署后监视后端服务和组件，以帮助您发现并快速诊断性能和其他问题。 可以将 Application Insights 用于 Node.js 服务，不管这些服务是托管在数据中心、Azure VM 和 Web 应用中，还是在其他公有云中。
+[Azure 应用程序 Insights](../../azure-monitor/app/app-insights-overview.md)会在部署后监视后端服务和组件，帮助你发现并快速诊断性能问题和其他问题。 可以将 Application Insights 用于 Node.js 服务，不管这些服务是托管在数据中心、Azure VM 和 Web 应用中，还是在其他公有云中。
 
 若要接收、存储和探索监视数据，请将 SDK 包括到代码中，然后在 Azure 中设置相应的 Application Insights 资源。 SDK 会将数据发送到该资源进行进一步的分析和探索。
 
-Node.js SDK 可以自动监视传入和传出的 HTTP 请求、异常和某些系统指标。 从版本 0.20 开始，SDK 还可以监视一些常见的[第三方包](https://github.com/microsoft/node-diagnostic-channel/tree/master/src/diagnostic-channel-publishers#currently-supported-modules)，如 MongoDB、MySQL 和 Redis。 所有与传入 HTTP 请求相关的事件都会进行关联，以加快故障排除速度。
+Node.js SDK 可以自动监视传入和传出的 HTTP 请求、异常和某些系统指标。 从版本0.20 开始，SDK 还可以监视一些常见的[第三方包](https://github.com/microsoft/node-diagnostic-channel/tree/master/src/diagnostic-channel-publishers#currently-supported-modules)，如 MongoDB、MySQL 和 Redis。 所有与传入 HTTP 请求相关的事件都会进行关联，以加快故障排除速度。
 
 可以使用 TelemetryClient API 手动检测和监视应用和系统的其他方面。 本文后面会更详细地介绍 TelemetryClient API。
 
@@ -24,7 +24,7 @@ Node.js SDK 可以自动监视传入和传出的 HTTP 请求、异常和某些�
 
 请完成以下任务，为应用或服务设置监视。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 开始之前，请确保拥有 Azure 订阅，否则请[免费获取一个新的][azure-free-offer]。 如果组织已经拥有 Azure 订阅，管理员可以按照[这些说明][add-aad-user]你将添加到该订阅。
 
@@ -36,7 +36,7 @@ Node.js SDK 可以自动监视传入和传出的 HTTP 请求、异常和某些�
 
 
 1. 登录 [Azure 门户][portal]。
-2. 选择 **"创建资源** > **开发人员工具** > **应用程序见解**"。 该资源包括用于接收遥测数据的终结点、用于该数据的存储、保存的报告和仪表板、规则和警报配置等。
+2. 选择 "**创建资源** > **开发人员工具** > "**Application Insights**。 该资源包括用于接收遥测数据的终结点、用于该数据的存储、保存的报告和仪表板、规则和警报配置等。
 
 3. 在资源创建页的“应用程序类型”框中选择“Node.js 应用程序”。******** 应用类型决定了创建的默认仪表板和报告。 （任何 Application Insights 资源都可以收集任何语言和平台的数据。）
 

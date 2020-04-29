@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/27/2018
 ms.author: labattul
 ms.openlocfilehash: c79c1fd687e329b97a854a3ff66a3cf95076b5d6
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80384222"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>在 Linux 虚拟机中设置 DPDK
@@ -33,30 +33,30 @@ DPDK 可以在支持多个操作系统分发版的 Azure 虚拟机中运行。 D
 
 ## <a name="benefit"></a>优势
 
-**提高每秒包数 (PPS)**：绕过内核并控制用户空间中的包可消除上下文切换，从而减少周期计数。 同时，这还会提高 Azure Linux 虚拟机中每秒处理的包比率。
+**提高每秒包数 (PPS)** ：绕过内核并控制用户空间中的包可消除上下文切换，从而减少周期计数。 同时，这还会提高 Azure Linux 虚拟机中每秒处理的包比率。
 
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
-支持 Azure 应用商店中的以下分发：
+支持 Azure Marketplace 中的以下分发版：
 
 | Linux OS     | 内核版本               | 
 |--------------|---------------------------   |
-| Ubuntu 16.04 | 4.15.0-1014-azure*           | 
-| Ubuntu 18.04 | 4.15.0-1014-azure*           |
-| SLES 15 SP1  | 4.12.14-8.27-azure*          | 
-| RHEL 7.5     | 3.10.0-862.11.6.el7.x86_64*  | 
-| CentOS 7.5   | 3.10.0-862.11.6.el7.x86_64*  | 
+| Ubuntu 16.04 | 4.15.0-1014-azure +           | 
+| Ubuntu 18.04 | 4.15.0-1014-azure +           |
+| SLES 15 SP1  | 4.12.14-宽 8.27-azure +          | 
+| RHEL 7.5     | 3.10.0-862.11.6. x86_64 +  | 
+| CentOS 7.5   | 3.10.0-862.11.6. x86_64 +  | 
 
 **自定义内核支持**
 
-对于未列出的任何 Linux 内核版本，请参阅[用于生成 Azure 优化 Linux 内核的修补程序](https://github.com/microsoft/azure-linux-kernel)。 有关详细信息，您还可以联系[azuredpdk@microsoft.com](mailto:azuredpdk@microsoft.com)。 
+对于未列出的任何 Linux 内核版本，请参阅[用于生成 Azure 优化 Linux 内核的修补程序](https://github.com/microsoft/azure-linux-kernel)。 有关详细信息，还可以联系[azuredpdk@microsoft.com](mailto:azuredpdk@microsoft.com)。 
 
 ## <a name="region-support"></a>区域支持
 
 所有 Azure 区域都支持 DPDK。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 必须在 Linux 虚拟机上启用加速网络。 虚拟机应至少有两个网络接口，其中一个接口用于管理。 了解如何[创建启用加速网络的 Linux 虚拟机](create-vm-accelerated-networking-cli.md)。
 
@@ -108,7 +108,7 @@ zypper \
 
 ## <a name="set-up-the-virtual-machine-environment-once"></a>设置虚拟机环境（一次性操作）
 
-1. [下载最新的 DPDK](https://core.dpdk.org/download)。 Azure 需要版本 18.11 LTS 或 19.11 LTS。
+1. [下载最新的 DPDK](https://core.dpdk.org/download)。 Azure 需要18.11 版 LTS 或 19.11 LTS。
 2. 运行 `make config T=x86_64-native-linuxapp-gcc` 生成默认配置。
 3. 使用 `sed -ri 's,(MLX._PMD=)n,\1y,' build/.config` 在生成的配置中启用 Mellanox PMDs。
 4. 使用 `make` 进行编译。
@@ -120,7 +120,7 @@ zypper \
 
 1. 巨页
 
-   * 通过运行以下命令配置大页，每个 numa 节点一次：
+   * 通过运行以下命令来配置 hugepage，并对每个 numa 节点运行一次：
 
      ```bash
      echo 1024 | sudo tee /sys/devices/system/node/node*/hugepages/hugepages-2048kB/nr_hugepages
@@ -130,20 +130,20 @@ zypper \
    * 使用 `mount -t hugetlbfs nodev /mnt/huge` 装载巨页。
    * 运行 `grep Huge /proc/meminfo` 检查巨页是否已保留。
 
-     > [注意]有一种方法来修改 grub 文件，以便按照 DPDK[的说明](https://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment)在引导时保留大量页面。 页面底部提供了这些说明。 如果使用的是 Azure Linux 虚拟机，请改为将 /etc/config/grub.d**** 下的文件修改为跨重启保留巨页。
+     > 纪录有一种方法可以修改 grub 文件，以便在启动时保留 hugepages，并按照 DPDK 的[说明进行操作](https://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment)。 页面底部提供了这些说明。 如果使用的是 Azure Linux 虚拟机，请改为将 /etc/config/grub.d**** 下的文件修改为跨重启保留巨页。
 
-2. MAC 和 IP 地址：使用 `ifconfig –a` 查看网络接口的 MAC 和 IP 地址。 *VF* 网络接口和 *NETVSC* 网络接口具有相同的 MAC 地址，但只有 *NETVSC* 网络接口具有 IP 地址。 *VF*接口作为*NETVSC*接口的从属接口运行。
+2. MAC 和 IP 地址：使用 `ifconfig –a` 查看网络接口的 MAC 和 IP 地址。 *VF* 网络接口和 *NETVSC* 网络接口具有相同的 MAC 地址，但只有 *NETVSC* 网络接口具有 IP 地址。 *VF*接口以*netvsc.sys*接口的从属接口的形式运行。
 
 3. PCI 地址
 
    * 运行 `ethtool -i <vf interface name>` 确定对 VF** 使用哪个 PCI 地址。
-   * 如果*eth0*已启用加速网络，请确保 testpmd 不会意外接管*eth0*的*VF* pci 设备。 如果 DPDK 应用程序意外接管管理网络接口，并导致 SSH 连接断开，请使用串行控制台来停止 DPDK 应用程序。 串行控制台还可用于停止或启动虚拟机。
+   * 如果*eth0*启用了加速网络，请确保 testpmd 不会意外地接管*VF* pci 设备 for *eth0*。 如果 DPDK 应用程序意外接管管理网络接口，并导致 SSH 连接断开，请使用串行控制台来停止 DPDK 应用程序。 串行控制台还可用于停止或启动虚拟机。
 
 4. 每次重新启动后，使用 `modprobe -a ib_uverbs` 加载 *ibuverbs*。 （仅适用于 SLES 15）另外，使用 `modprobe -a mlx4_ib` 加载 *mlx4_ib*。
 
 ## <a name="failsafe-pmd"></a>防故障 PMD
 
-DPDK 应用程序必须通过 Azure 中公开的防故障 PMD 运行。 如果应用程序直接通过*VF* PMD 运行，则**它不会接收所有**发往 VM 的数据包，因为某些数据包显示在合成接口上。 
+DPDK 应用程序必须通过 Azure 中公开的防故障 PMD 运行。 如果应用程序直接通过*VF* PMD 运行，则不会收到发往 VM 的**所有**数据包，因为某些数据包会通过合成接口显示。 
 
 通过防故障 PMD 运行 DPDK 应用程序，可保证应用程序收到发往 VM 的所有包。 此外，还能确保应用程序继续以 DPDK 模式运行，即使在为主机提供服务时撤销了 VF，也不例外。 若要详细了解防故障 PMD，请参阅[防故障轮询模式驱动程序库](https://doc.dpdk.org/guides/nics/fail_safe.html)。
 

@@ -9,10 +9,10 @@ ms.date: 09/06/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 9bf5eea55002814f461d375b3db43a37fe4f7aa9
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80474096"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>在 .NET 中创建和管理 blob 快照
@@ -130,7 +130,7 @@ Console.WriteLine(blobSnapshot.SnapshotQualifiedStorageUri.PrimaryUri);
 
 - 不管唯一的块或页是在 Blob 还是快照中，存储帐户都会产生费用。 在更新快照所基于的 Blob 之前，帐户将不会就与 Blob 关联的快照产生额外费用。 更新基本 Blob 后，它与其快照分离。 发生这种情况时，需要支付每个 Blob 或快照中唯一块或页的费用。
 - 在替换块 Blob 中的某个块后，会将该块作为唯一块进行收费。 即使该块具有的块 ID 和数据与它在快照中所具有的 ID 和数据相同也是如此。 重新提交块后，它将偏离它在任何快照中的对应部分，并且要为数据支付费用。 对于使用相同的数据更新的页 Blob 中的页面，也是如此。
-- 通过调用 [UploadFromFile][dotnet_UploadFromFile]、[UploadText][dotnet_UploadText]、[UploadFromStream][dotnet_UploadFromStream] 或 [UploadFromByteArray][dotnet_UploadFromByteArray] 方法替换块 Blob 可替换该 Blob 中的所有块。 如果有与该 Blob 关联的快照，则基本 Blob 和快照中的所有块现在将发生偏离，并且你需为这两个 Blob 中的所有块支付费用。 即使基本 Blob 和快照中的数据保持相同也是如此。
+- 通过调用 [UploadFromFile][dotnet_UploadFromFile]、[UploadText][dotnet_UploadText]、[UploadFromStream][dotnet_UploadFromStream] 或 [UploadFromByteArray][dotnet_UploadFromByteArray] 方法替换块 blob 可替换该 blob 中的所有块。 如果有与该 Blob 关联的快照，则基本 Blob 和快照中的所有块现在将发生偏离，并且你需为这两个 Blob 中的所有块支付费用。 即使基本 Blob 和快照中的数据保持相同也是如此。
 - Azure BLOB 服务无法确定这两个块是否包含相同的数据。 每个上传和提交的块均被视为唯一的快，即使它具有相同的数据和块 ID 也是如此。 由于唯一的块会产生费用，因此请务必考虑到更新具有快照的 Blob 将导致产生其他唯一块和额外费用。
 
 ### <a name="minimize-cost-with-snapshot-management"></a>使用快照管理最大限度地降低成本
@@ -138,7 +138,7 @@ Console.WriteLine(blobSnapshot.SnapshotQualifiedStorageUri.PrimaryUri);
 建议细致管理快照以避免产生额外费用。 可遵循这些最佳做法来帮助最大限度地减少快照存储成本：
 
 - 除非应用程序设计需要保留与 Blob 关联的快照，否则请在更新 Blob 时删除并重新创建这些快照，即使你使用相同的数据进行更新也是如此。 通过删除并重新创建 Blob 的快照，可以确保 Blob 和快照不会发生偏离。
-- 如果要保留 Blob 的快照，请避免调用 [UploadFromFile][dotnet_UploadFromFile]、[UploadText][dotnet_UploadText]、[UploadFromStream][dotnet_UploadFromStream] 或 [UploadFromByteArray][dotnet_UploadFromByteArray] 来更新 Blob。 这些方法将替换 Blob 中的所有块，导致基本 Blob 及其快照发生明显偏离。 相反，请使用 [PutBlock][dotnet_PutBlock] 和 [PutBlockList][dotnet_PutBlockList] 方法更新尽可能少的块。
+- 如果要保留 Blob 的快照，请避免调用 [UploadFromFile][dotnet_UploadFromFile]、[UploadText][dotnet_UploadText]、[UploadFromStream][dotnet_UploadFromStream] 或 [UploadFromByteArray][dotnet_UploadFromByteArray] 来更新该 Blob。 这些方法将替换 Blob 中的所有块，导致基本 Blob 及其快照发生明显偏离。 相反，请使用 [PutBlock][dotnet_PutBlock] 和 [PutBlockList][dotnet_PutBlockList] 方法更新尽可能少的块。
 
 ### <a name="snapshot-billing-scenarios"></a>快照计费方案
 
@@ -164,7 +164,7 @@ Console.WriteLine(blobSnapshot.SnapshotQualifiedStorageUri.PrimaryUri);
 
 #### <a name="scenario-4"></a>方案 4
 
-在方案 4 中，已完全更新基本 Blob，并且其中不包含任何原始块。 因此，帐户需要为所有八个唯一块支付费用。 如果使用如 [UploadFromFile][dotnet_UploadFromFile]、[UploadText][dotnet_UploadText]、[UploadFromStream][dotnet_UploadFromStream] 或 [UploadFromByteArray][dotnet_UploadFromByteArray] 之类的更新方法，则会出现此情况，因为这些方法将替换 Blob 的所有内容。
+在方案 4 中，已完全更新基本 Blob，并且其中不包含任何原始块。 因此，帐户需要为所有八个唯一块支付费用。 如果使用 [UploadFromFile][dotnet_UploadFromFile]、[UploadText][dotnet_UploadText]、[UploadFromStream][dotnet_UploadFromStream] 或 [UploadFromByteArray][dotnet_UploadFromByteArray] 等更新方法，则会出现此情况，因为这些方法将替换 Blob 的所有内容。
 
 ![Azure 存储资源](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-4.png)
 
