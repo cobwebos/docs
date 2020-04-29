@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 或模板为 VM 启用 Azure 监视器
+title: 使用 PowerShell 或模板启用用于 VM 的 Azure Monitor
 description: 本文介绍如何使用 Azure PowerShell 或 Azure 资源管理器模板为一个或多个 Azure 虚拟机或虚拟机规模集启用用于 VM 的 Azure Monitor。
 ms.subservice: ''
 ms.topic: conceptual
@@ -7,17 +7,17 @@ author: bwren
 ms.author: bwren
 ms.date: 10/14/2019
 ms.openlocfilehash: 75d5203e7c475a44b6a00dbf9286f43114b7b54f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79480838"
 ---
-# <a name="enable-azure-monitor-for-vms-using-azure-powershell-or-resource-manager-templates"></a>使用 Azure PowerShell 或资源管理器模板为 VM 启用 Azure 监视器
+# <a name="enable-azure-monitor-for-vms-using-azure-powershell-or-resource-manager-templates"></a>使用 Azure PowerShell 或资源管理器模板启用用于 VM 的 Azure Monitor
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本文介绍如何使用 Azure PowerShell 或 Azure 资源管理器模板为 Azure 虚拟机或虚拟机缩放集启用 Azure 监视器。 在此过程结束时，你将开始成功监视所有虚拟机，并了解是否有虚拟机遇到性能或可用性问题。
+本文介绍如何通过使用 Azure PowerShell 或 Azure 资源管理器模板为 Azure 虚拟机或虚拟机规模集启用用于 VM 的 Azure Monitor。 在此过程结束时，你将开始成功监视所有虚拟机，并了解是否有虚拟机遇到性能或可用性问题。
 
 ## <a name="set-up-a-log-analytics-workspace"></a>设置 Log Analytics 工作区
 
@@ -176,9 +176,9 @@ provisioningState       : Succeeded
 - 通过 *ResourceGroup* 指定的具有作用域的资源组。
 - 通过 *Name* 指定的单个 VM 或虚拟机规模集。
 
-对于每个 VM 或虚拟机规模集，该脚本将验证是否已安装 VM 扩展。 如果安装了 VM 扩展，脚本将尝试重新安装它。 如果未安装 VM 扩展，脚本将安装日志分析和依赖项代理 VM 扩展。
+对于每个 VM 或虚拟机规模集，该脚本将验证是否已安装 VM 扩展。 如果安装了 VM 扩展，该脚本会尝试重新安装它。 如果未安装 VM 扩展，该脚本将安装 Log Analytics 和依赖关系代理 VM 扩展。
 
-验证是否使用的是启用了 `Enable-AzureRM` 兼容性别名的 Azure PowerShell 模块 Az 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+验证是否使用的是启用了 `Enable-AzureRM` 兼容性别名的 Azure PowerShell 模块 Az 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
 若要获取脚本的参数详细信息和示例用法的列表，请运行 `Get-Help`。
 
@@ -337,4 +337,4 @@ Failed: (0)
 
 - 若要查看已发现的应用程序依赖项，请参阅[查看用于 VM 的 Azure Monitor 映射](vminsights-maps.md)。
 
-- 要根据 VM 的性能识别瓶颈和总体利用率，请参阅查看[Azure VM 性能](vminsights-performance.md)。
+- 若要确定虚拟机的性能瓶颈和总体利用率，请参阅[查看 AZURE Vm 性能](vminsights-performance.md)。

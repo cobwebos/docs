@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
 ms.openlocfilehash: c91a3ca73d70dd5fd2848bed0f43f14a817087d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80053439"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>将活动的已训练应用发布到过渡或生产终结点
 
-完成活动 LUIS 应用的构建、培训和测试后，通过将应用发布到终结点，使其可供客户端应用程序使用。 
+完成活动 LUIS 应用的构建、定型和测试后，通过将其发布到终结点，使其可供客户端应用程序使用。 
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
@@ -38,19 +38,19 @@ ms.locfileid: "80053439"
 
 当显示弹出窗口时选择正确的槽： 
 
-* 过渡
+* 分步
 * 生产 
 
 使用两个发布槽，可以对已发布的终结点使用两个不同版本的应用，或者在两个不同的终结点上使用同一版本。 
 
 ### <a name="publishing-regions"></a>发布区域
 
-应用将发布到与从 **"管理** -> **[Azure 资源](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)**"页添加到 LUIS 门户中的 LUIS 预测终结点资源关联的所有区域。 
+该应用程序将发布到 "**管理** -> **[Azure 资源](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)**" 页中添加的 LUIS 预测终结点资源关联的所有区域。 
 
-例如，对于在[www.luis.ai](https://www.luis.ai)上创建的应用，如果在两个区域（Westus 和**Eastus）** 中创建 LUIS 资源，并将这些资源作为资源添加到应用，则应用将同时发布在这两个区域。 **eastus** 有关 LUIS 区域的详细信息，请参阅[区域](luis-reference-regions.md)。
+例如，对于在[www.luis.ai](https://www.luis.ai)上创建的应用，如果在两个区域**westus**和**eastus**中创建 luis 资源，并将它们作为资源添加到该应用，则会在这两个区域发布该应用。 有关 LUIS 区域的详细信息，请参阅[区域](luis-reference-regions.md)。
 
 > [!TIP]
-> 有 3 个创作区域。 您必须在要发布到的区域创作。 如果需要发布到所有区域，则需要管理所有 3 个创作区域中的创作过程和生成的训练模型。 
+> 有3种创作区域。 您必须在要发布到的区域中创建。 如果需要发布到所有区域，需要在所有3个创作区域中管理创作过程和生成的定型模型。 
 
 
 ## <a name="configuring-publish-settings"></a>配置发布设置
@@ -58,14 +58,14 @@ ms.locfileid: "80053439"
 在选择槽后，为以下项配置发布设置：
 
 * 情绪分析
-* 拼写校正 - 仅 v2 预测终结点
+* 拼写更正-仅限 v2 预测终结点
 * 语音启动 
 
 发布以后，即可在“发布设置”页的“管理”部分查看这些设置。******** 可以在每次发布时更改设置。 如果取消发布，则在发布过程中所做的任何更改也会被取消。 
 
 ### <a name="when-your-app-is-published"></a>当应用发布后
 
-成功发布应用后，浏览器顶部将显示一条成功通知。 通知还包括指向终结点的链接。 
+成功发布应用后，浏览器的顶部会显示成功通知。 通知还包括指向终结点的链接。 
 
 如果需要终结点 URL，请选择该链接。 还可以通过在顶部菜单中选择“管理”****，然后在左侧菜单中选择“Azure 资源”来访问终结点 URL****。 
 

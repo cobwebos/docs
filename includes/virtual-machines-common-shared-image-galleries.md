@@ -9,17 +9,17 @@ ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
 ms.openlocfilehash: a477114bda7d138a6860d21f2fad75e27d968833
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80116939"
 ---
 共享映像库是一种可以帮助你围绕托管映像构建结构和组织的服务。 共享映像库提供以下功能：
 
 - 对映像进行托管式全局复制。
 - 对映像进行版本控制和分组，以便于管理。
-- 支持可用性区域的区域具有区域冗余存储 （ZRS） 帐户的高可用性映像。 ZRS 提供更好的复原能力来应对区域性的故障。
+- 具有区域冗余存储（ZRS）帐户的高度可用映像，位于支持可用性区域的区域中。 ZRS 提供更好的复原能力来应对区域性的故障。
 - 使用 RBAC 跨订阅以及甚至在 Active Directory (AD) 租户之间共享。
 - 使用每个区域中的映像副本缩放部署。
 
@@ -31,9 +31,9 @@ ms.locfileid: "80116939"
 
 共享映像库功能具有多种资源类型：
 
-| 资源 | 描述|
+| 资源 | 说明|
 |----------|------------|
-| **托管映像** | 一个基本映像，可以单独使用，也可用于在映像库中创建**映像版本**。 托管映像是从[通用](#generalized-and-specialized-images)VM 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
+| **托管映像** | 一个基本映像，可以单独使用，也可用于在映像库中创建**映像版本**。 托管映像是从[通用化](#generalized-and-specialized-images)vm 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
 | **快照** | 可用于创建**映像版本**的 VHD 副本。 可以从[专用化](#generalized-and-specialized-images) VM（一个尚未通用化的 VM）创建快照，然后单独使用该快照，或者将其与数据磁盘的快照配合使用，以创建专用化的映像版本。
 | **映像库** | 与 Azure 市场一样，**映像库**是用于管理和共享映像的存储库，但你可以控制谁有权访问这些映像。 |
 | **映像定义** | 映像在库中定义，携带有关该映像及其在组织内部使用的要求的信息。 可以包含映像是通用化还是专用化映像、操作系统、最小和最大内存要求以及发行说明等信息。 它是某种映像类型的定义。 |
@@ -53,7 +53,7 @@ ms.locfileid: "80116939"
 |---|---|---|---|
 |myImage1|Contoso|财务|后端|
 |myImage2|Contoso|财务|前端|
-|myImage3|正在测试|财务|前端|
+|myImage3|测试|财务|前端|
 
 所有这三个映像都有唯一的一组值。 格式类似于当前在 Azure PowerShell 中为 [Azure 市场映像](../articles/virtual-machines/windows/cli-ps-findimage.md)指定发布者、套餐和 SKU，以获取最新市场映像版本的方式。 每个映像定义需要包含一组唯一的这些值。
 
@@ -88,7 +88,7 @@ ms.locfileid: "80116939"
 
 ## <a name="regional-support"></a>区域支持
 
-源区域列在下表中。 所有公共区域都可以是目标区域，但要复制到澳大利亚中部和澳大利亚中部 2，您需要将订阅列入白名单。 要请求允许列表，请转到：https://azure.microsoft.com/global-infrastructure/australia/contact/
+下表列出了源区域。 所有公共区域都可以是目标区域，但是若要复制到澳大利亚中部和澳大利亚中部2，需要订阅白名单。 要请求允许列表，请转到：https://azure.microsoft.com/global-infrastructure/australia/contact/
 
 
 | 源区域        |                   |                    |                    |
@@ -113,14 +113,14 @@ ms.locfileid: "80116939"
 - 每个区域的每个订阅限制为 100 个共享映像库
 - 每个区域的每个订阅限制为 1,000 个映像定义
 - 每个区域的每个订阅限制为 10,000 个映像版本
-- 连接到映像的任何磁盘的大小必须小于或等于 1TB
+- 附加到映像的任何磁盘的大小必须小于或等于 1 TB
 
 有关详细信息，请参阅[根据限制检查资源用量](https://docs.microsoft.com/azure/networking/check-usage-against-limits)，其中提供了有关如何检查当前用量的示例。
  
 ## <a name="scaling"></a>扩展
 使用共享映像库可以指定要让 Azure 保留的映像副本数。 这有助于实现多 VM 部署方案，因为可将 VM 部署分散到不同的副本，减少单个副本过载导致实例创建过程受到限制的可能性。
 
-现在，使用共享映像库，最多可在虚拟机规模集中部署 1,000 个 VM 实例（相比使用托管映像部署 600 个有所增加）。 映像副本可用于提高部署性能、可靠性和一致性。 可以在每个目标区域中设置不同的副本计数，具体视该区域的缩放需求而定。 由于每个副本是映像的深层复制，因此，这有助于使用每个额外的副本线性地缩放部署。 虽然我们知道没有两个图像或区域是相同的，但我们关于如何在区域中使用副本的一般准则如下：
+现在，使用共享映像库，最多可在虚拟机规模集中部署 1,000 个 VM 实例（相比使用托管映像部署 600 个有所增加）。 映像副本可用于提高部署性能、可靠性和一致性。 可以在每个目标区域中设置不同的副本计数，具体视该区域的缩放需求而定。 由于每个副本是映像的深层复制，因此，这有助于使用每个额外的副本线性地缩放部署。 虽然我们不了解两个映像或区域是相同的，但以下是有关如何在区域中使用副本的一般指导：
 
 - 对于非虚拟机规模集 (VMSS) 部署 - 对于同时创建的每 20 个 VM，我们建议保留一个副本。 例如，如果要在区域中使用相同映像并行创建 120 个 VM，我们建议至少保留映像的 6 个副本。 
 - 对于虚拟机规模集 (VMSS) 部署 - 对于包含多达 600 个实例的每个规模集部署，我们建议至少保留一个副本。 例如，如果要创建 5 个规模集，而每个规模集都包含在单个区域中使用相同映像创建的 600 个 VM 实例，我们建议至少保留映像的 5 个副本。 
@@ -129,11 +129,11 @@ ms.locfileid: "80116939"
 
 ![演示如何缩放映像的示意图](./media/shared-image-galleries/scaling.png)
 
-## <a name="make-your-images-highly-available"></a>使图像高度可用
+## <a name="make-your-images-highly-available"></a>使映像高度可用
 
-[Azure 区域冗余存储 （ZRS）](https://azure.microsoft.com/blog/azure-zone-redundant-storage-in-public-preview/)提供针对该区域可用性区域故障的恢复能力。 使用共享映像库的一般可用性，您可以选择将图像存储在具有可用区域的区域的 ZRS 帐户中。 
+[Azure 区域冗余存储（ZRS）](https://azure.microsoft.com/blog/azure-zone-redundant-storage-in-public-preview/)可针对区域中的可用性区域故障提供复原能力。 利用共享映像库的公开上市，你可以选择将映像存储在可用性区域区域中的 ZRS 帐户中。 
 
-您还可以为每个目标区域选择帐户类型。 默认存储帐户类型为 Standard_LRS，但您可以选择具有可用区域的区域Standard_ZRS。 [在此处](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)查看 ZRS 的区域可用性。
+你还可以为每个目标区域选择 "帐户类型"。 默认存储帐户类型为 Standard_LRS，但你可以为具有可用性区域的区域选择 Standard_ZRS。 在[此处](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)查看 ZRS 的区域可用性。
 
 ![显示 ZRS 的图形](./media/shared-image-galleries/zrs.png)
 
@@ -159,7 +159,7 @@ ms.locfileid: "80116939"
 
 ## <a name="billing"></a>计费
 使用共享映像库服务不会产生额外的费用。 以下资源会产生费用：
-- 存储共享映像版本的存储费用。 具体费用取决于映像版本的副本数，以及版本要复制到的区域数。 例如，如果您有 2 个映像，并且两个映像都复制到 3 个区域，则将根据 6 个托管磁盘的大小向您收费。 有关详细信息，请参阅[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/)。
+- 存储共享映像版本的存储费用。 具体费用取决于映像版本的副本数，以及版本要复制到的区域数。 例如，如果有2个映像，并且两个都复制到3个区域，则将根据6个托管磁盘的大小向你收费。 有关详细信息，请参阅[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/)。
 - 将第一个映像版本从源区域复制到目标区域的网络传出费用。 后续副本将在区域中处理，因此不会产生额外的费用。 
 
 ## <a name="updating-resources"></a>正在更新资源
@@ -167,12 +167,12 @@ ms.locfileid: "80116939"
 创建后，可对映像库资源进行一些更改。 限制如下：
  
 共享映像库：
-- 描述
+- 说明
 
 映像定义：
 - 建议的 vCPU 数
 - 建议的内存
-- 描述
+- 说明
 - 生命周期终结日期
 
 映像版本：
@@ -189,7 +189,7 @@ ms.locfileid: "80116939"
 - [Java](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
 - [Node.js](https://docs.microsoft.com/javascript/api/@azure/arm-compute)
 - [Python](https://docs.microsoft.com/python/api/overview/azure/virtualmachines?view=azure-python)
-- [开始](https://docs.microsoft.com/azure/go/)
+- [Go](https://docs.microsoft.com/azure/go/)
 
 ## <a name="templates"></a>模板
 
@@ -200,7 +200,7 @@ ms.locfileid: "80116939"
 - [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 - [根据映像版本创建 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
-## <a name="frequently-asked-questions"></a>常见问题 
+## <a name="frequently-asked-questions"></a>常见问题解答 
 
 * [如何列出不同订阅中的所有共享映像库资源？](#how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions) 
 * [是否可将现有的映像移到共享映像库？](#can-i-move-my-existing-image-to-the-shared-image-gallery)
@@ -222,8 +222,8 @@ ms.locfileid: "80116939"
 
 若要在 Azure 门户上列出不同订阅中你有权访问的所有共享映像库资源，请执行以下步骤：
 
-1. 打开[Azure 门户](https://portal.azure.com)。
-1. 转到**所有资源**。
+1. 打开 [Azure 门户](https://portal.azure.com)。
+1. 中转到 "**所有资源**"。
 1. 选择要列出其中的所有资源的所有订阅。
 1. 查找类型为“专用库”的资源。****
  
@@ -239,11 +239,11 @@ ms.locfileid: "80116939"
  
 是的。 根据映像的类型，可能存在 3 种场景。
 
- 方案 1：如果托管映像与 SIG 处于同一订阅中，则可以从该映像定义和映像版本创建映像定义和映像版本。
+ 方案1：如果你的托管映像与 SIG 在同一订阅中，则可以创建映像定义和映像版本。
 
- 方案 2：如果与 SIG 的订阅中具有非托管映像，则可以从该映像创建托管映像，然后从该映像定义和映像版本创建映像。 
+ 方案2：如果你的非托管映像与 SIG 在同一订阅中，你可以从该映像创建一个托管映像，然后从该映像创建映像定义和映像版本。 
 
- 方案 3：如果本地文件系统中具有 VHD，则需要将 VHD 上载到托管映像，则可以从该映像定义和映像版本创建。
+ 方案3：如果本地文件系统中有 VHD，则需要将 VHD 上传到托管映像，然后可以从其创建映像定义和映像版本。
 
 - 如果 VHD 适用于 Windows VM，请参阅[上传 VHD](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)。
 - 如果 VHD 适用于 Linux VM，请参阅[上传 VHD](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)
@@ -287,7 +287,7 @@ ms.locfileid: "80116939"
 1. 区域副本计数：指定要在每个区域创建的副本数。 
 2. 通用副本计数：未指定区域副本计数时每个区域的默认计数。 
 
-要指定区域副本计数，请传递位置以及要在该地区创建的副本数："中南部 US=2"。 
+若要指定区域副本计数，请在该区域中传递该位置以及要创建的副本数： "美国中南部 = 2"。 
 
 如果未为每个位置指定区域副本计数，则默认副本数将是指定的通用副本计数。 
 

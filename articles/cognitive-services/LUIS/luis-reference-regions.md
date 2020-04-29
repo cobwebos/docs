@@ -4,10 +4,10 @@ description: Azure 门户中指定的区域就是你将在其中发布 LUIS 应�
 ms.topic: reference
 ms.date: 11/19/2019
 ms.openlocfilehash: a7709d15a51637772d7a4775cd71c307dc21c52b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80292087"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>创作和发布区域及关联的密钥
@@ -45,9 +45,9 @@ https://www.luis.ai 上创建的 LUIS 应用可以发布到除[欧洲](#publishi
 
 ## <a name="publishing-to-europe"></a>发布到欧洲
 
-若要发布到欧洲区域，请仅在 https://eu.luis.ai 创建 LUIS 应用。 如果尝试使用欧洲区域中的密钥将应用发布到其他区域，LUIS 会显示警告消息。 请改用 https://eu.luis.ai。 在 创建时[https://eu.luis.ai][eu.luis.ai]创建的 LUIS 应用不会自动迁移到其他区域。 要实现迁移，请导出然后再导入 LUIS 应用。
+若要发布到欧洲区域，请仅在 https://eu.luis.ai 创建 LUIS 应用。 如果尝试使用欧洲区域中的密钥将应用发布到其他区域，LUIS 会显示警告消息。 请改用 https://eu.luis.ai。 创建的[https://eu.luis.ai][eu.luis.ai] LUIS 应用不会自动迁移到其他区域。 要实现迁移，请导出然后再导入 LUIS 应用。
 
-## <a name="europe-publishing-regions"></a>欧洲出版地区
+## <a name="europe-publishing-regions"></a>欧洲发布区域
 
  全球区域 | 创作 API 区域和创作网站| 发布和查询区域<br>`API region name`   |  终结点 URL 格式   |
 |-----|------|------|------|
@@ -58,9 +58,9 @@ https://www.luis.ai 上创建的 LUIS 应用可以发布到除[欧洲](#publishi
 
 ## <a name="publishing-to-australia"></a>发布到澳大利亚
 
-若要发布到澳大利亚区域，请仅在 https://au.luis.ai 创建 LUIS 应用。 如果尝试使用澳大利亚区域中的密钥将应用发布到其他区域，LUIS 会显示警告消息。 请改用 https://au.luis.ai。 在 创建时[https://au.luis.ai][au.luis.ai]创建的 LUIS 应用不会自动迁移到其他区域。 要实现迁移，请导出然后再导入 LUIS 应用。
+若要发布到澳大利亚区域，请仅在 https://au.luis.ai 创建 LUIS 应用。 如果尝试使用澳大利亚区域中的密钥将应用发布到其他区域，LUIS 会显示警告消息。 请改用 https://au.luis.ai。 创建的[https://au.luis.ai][au.luis.ai] LUIS 应用不会自动迁移到其他区域。 要实现迁移，请导出然后再导入 LUIS 应用。
 
-## <a name="australia-publishing-regions"></a>澳大利亚出版地区
+## <a name="australia-publishing-regions"></a>澳大利亚发布区域
 
  全球区域 | 创作 API 区域和创作网站| 发布和查询区域<br>`API region name`   |  终结点 URL 格式   |
 |-----|------|------|------|
@@ -68,7 +68,7 @@ https://www.luis.ai 上创建的 LUIS 应用可以发布到除[欧洲](#publishi
 
 ## <a name="publishing-to-other-regions"></a>发布到其他区域
 
-要发布到其他区域，请仅创建[https://www.luis.ai](https://www.luis.ai)LUIS 应用。
+若要发布到其他区域， [https://www.luis.ai](https://www.luis.ai)只需要创建 LUIS 应用。
 
 ## <a name="other-publishing-regions"></a>其他发布区域
 
@@ -94,11 +94,11 @@ https://www.luis.ai 上创建的 LUIS 应用可以发布到除[欧洲](#publishi
 
 ## <a name="endpoints"></a>终结点
 
-详细了解[创作和预测终结点](developer-reference-resource.md)。
+了解有关[创作和预测终结点](developer-reference-resource.md)的详细信息。
 
 ## <a name="failover-regions"></a>故障转移区域
 
-每个区域都有一个要故障转移到的次要区域。 欧洲在欧洲内部失败，澳大利亚在澳大利亚境内失败。
+每个区域都有一个要故障转移到的次要区域。 欧洲内的进行故障转移，并且澳大利亚在澳大利亚内发生故障。
 
 创作区域具有[配对故障转移区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
 

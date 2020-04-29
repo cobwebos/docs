@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.openlocfilehash: 31ac43ec796d305b8a8f4b62ea09481e262b6b3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80256974"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>利用 Azure 流分析中的查询并行化
@@ -58,9 +58,9 @@ Power BI 不支持分区。 但仍可对输入进行分区，如[本节](#multi-
 
 1. 如果查询逻辑取决于同一个查询实例正在处理的相同键，则必须确保事件转到输入的同一个分区。 对于事件中心或 IoT 中心，这意味着事件数据必须已设置 **PartitionKey** 值。 或者，可以使用已分区的发件人。 对于 Blob 存储，这意味着事件将发送到相同的分区文件夹。 如果查询逻辑不需要由同一个查询实例处理相同的键，则可忽略此要求。 举例来说，简单的选择项目筛选器查询就体现了此逻辑。  
 
-2. 在输入端布置数据后，务必确保查询已进行分区。 这需要在所有步骤中使用 PARTITION BY****。 允许采用多个步骤，但必须使用相同的键对其进行分区。 在兼容性级别 1.0 和 1.1 中，必须将分区键设置为 **PartitionId** 才能实现完全并行作业。 对于兼容性级别为 1.2 和更高的作业，可以在输入设置中指定自定义列作为分区键，即使没有分区 BY 子句，该作业也将自动被抛对。 对于事件中心输出，必须将属性“分区键列”设置为使用“PartitionId”。
+2. 在输入端布置数据后，务必确保查询已进行分区。 这需要在所有步骤中使用 PARTITION BY****。 允许采用多个步骤，但必须使用相同的键对其进行分区。 在兼容性级别 1.0 和 1.1 中，必须将分区键设置为 **PartitionId** 才能实现完全并行作业。 对于兼容性级别为1.2 和更高的作业，可以在输入设置中将自定义列指定为分区键，并且即使没有 PARTITION BY 子句也会自动 paralellized 作业。 对于事件中心输出，必须将属性“分区键列”设置为使用“PartitionId”。
 
-3. 大多数输出都可以利用分区，但如果使用不支持分区的输出类型，作业将不会实现完全并行。 对于事件中心输出，请确保**分区键列**设置为与查询分区键相同。 有关详细信息，请参阅[输出部分](#outputs)。
+3. 大多数输出都可以利用分区，但如果使用不支持分区的输出类型，作业将不会实现完全并行。 对于事件中心输出，请确保将**分区键列**设置为与查询分区键相同。 有关详细信息，请参阅[输出部分](#outputs)。
 
 4. 输入分区数必须等于输出分区数。 Blob 存储输出可支持分区，并继承上游查询的分区方案。 指定 Blob 存储的分区键时，数据将按每个输入分区进行分区，因此结果仍然是并行的。 下面是允许完全并行作业的分区值示例：
 
@@ -75,7 +75,7 @@ Power BI 不支持分区。 但仍可对输入进行分区，如[本节](#multi-
 ### <a name="simple-query"></a>简单查询
 
 * 输入：具有 8 个分区的事件中心
-* 输出：具有 8 个分区的事件中心（必须将"分区键列"设置为使用"分区 Id"）
+* 输出：具有8个分区的事件中心（"分区键列" 必须设置为使用 "PartitionId"）
 
 查询：
 
@@ -114,7 +114,7 @@ Power BI 不支持分区。 但仍可对输入进行分区，如[本节](#multi-
 
 ### <a name="query-using-non-partitioned-output"></a>使用非分区输出进行查询
 * 输入：具有 8 个分区的事件中心
-* 输出：功率 BI
+* 输出： Power BI
 
 Power BI 输出当前不支持分区。 因此，此方案不易并行。
 
@@ -142,7 +142,7 @@ Power BI 输出当前不支持分区。 因此，此方案不易并行。
 
 ### <a name="compatibility-level-12---multi-step-query-with-different-partition-by-values"></a>兼容性级别 1.2 - 使用不同 PARTITION BY 值的多步骤查询 
 * 输入：具有 8 个分区的事件中心
-* 输出：具有 8 个分区的事件中心（必须将"分区键列"设置为使用"TollBoothId"）
+* 输出：具有8个分区的事件中心（"分区键列" 必须设置为使用 "TollBoothId"）
 
 查询：
 
@@ -158,7 +158,7 @@ Power BI 输出当前不支持分区。 因此，此方案不易并行。
     GROUP BY TumblingWindow(minute, 3), TollBoothId
 ```
 
-默认情况下，兼容性级别 1.2 会启用并行查询执行。 例如，只要将"TollBoothId"列设置为输入分区键，上一节中的查询就会分区。 分区 BY 分区 Id 子句不是必需的。
+默认情况下，兼容性级别 1.2 会启用并行查询执行。 例如，只要将 "TollBoothId" 列设置为输入分区键，就会对上一节中的查询进行分区。 不需要 PARTITION BY PartitionId 子句。
 
 ## <a name="calculate-the-maximum-streaming-units-of-a-job"></a>计算作业的最大流式处理单位数
 流分析作业所能使用的流式处理单位总数取决于为作业定义的查询中的步骤数，以及每一步的分区数。
@@ -203,7 +203,7 @@ Power BI 输出当前不支持分区。 因此，此方案不易并行。
 | <ul><li>该查询包含一个步骤。</li><li>该步骤未分区。</li></ul> | 6 |
 | <ul><li>输入数据流被分为 16 个分区。</li><li>该查询包含一个步骤。</li><li>该步骤已分区。</li></ul> | 96（6 * 16 个分区） |
 | <ul><li>该查询包含两个步骤。</li><li>这两个步骤都未分区。</li></ul> | 6 |
-| <ul><li>输入数据流被分为 3 个分区。</li><li>该查询包含两个步骤。 输入步骤进行了分区，第二个步骤未分区。</li><li><strong>SELECT</strong>语句从分区输入读取。</li></ul> | 24（18 个用于已分区步骤 + 6 个用于未分区步骤） |
+| <ul><li>输入数据流被分为 3 个分区。</li><li>该查询包含两个步骤。 输入步骤进行了分区，第二个步骤未分区。</li><li><strong>SELECT</strong>语句从已分区输入中读取。</li></ul> | 24（18 个用于已分区步骤 + 6 个用于未分区步骤） |
 
 ### <a name="examples-of-scaling"></a>缩放示例
 
@@ -305,11 +305,11 @@ Power BI 输出当前不支持分区。 因此，此方案不易并行。
 
 ## <a name="get-help"></a>获取帮助
 
-有关进一步帮助，请尝试我们的[Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)
-* [使用 Azure 流分析开始](stream-analytics-real-time-fraud-detection.md)
+* [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

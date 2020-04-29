@@ -1,5 +1,5 @@
 ---
-title: 为混合环境启用 Azure 监视器 |微软文档
+title: 为混合环境启用 Azure Monitor |Microsoft Docs
 description: 本文介绍如何为包含一个或多个虚拟机的混合云环境启用用于 VM 的 Azure Monitor。
 ms.subservice: ''
 ms.topic: conceptual
@@ -7,17 +7,17 @@ author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
 ms.openlocfilehash: 734f61c2e96002516e9e15af88d2c6b0fce00e98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79480736"
 ---
-# <a name="enable-azure-monitor-for-vms-for-a-hybrid-environment"></a>为混合环境启用 VM 的 Azure 监视器
+# <a name="enable-azure-monitor-for-vms-for-a-hybrid-environment"></a>为混合环境启用用于 VM 的 Azure Monitor
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本文介绍如何为虚拟机或数据中心或其他云环境中托管的物理计算机启用虚拟机或物理计算机的 Azure 监视器。 在此过程结束时，你将已成功地开始监视环境中的虚拟机，并了解这些虚拟机是否会遇到任何性能或可用性问题。
+本文介绍如何为你的数据中心或其他云环境中托管的虚拟机或物理计算机启用用于 VM 的 Azure Monitor。 在此过程结束时，你将已成功地开始监视环境中的虚拟机，并了解这些虚拟机是否会遇到任何性能或可用性问题。
 
 在开始之前，请务必查看[先决条件](vminsights-enable-overview.md)，并验证你的订阅和资源是否符合要求。 查看 [Log Analytics Linux 和 Windows 代理](../../log-analytics/log-analytics-agent-overview.md)的要求与部署方法。
 
@@ -37,7 +37,7 @@ ms.locfileid: "79480736"
 4. 部署用于 VM 的 Azure Monitor。
 
 >[!NOTE]
->本文中描述的用于部署依赖项代理的信息也适用于[服务映射解决方案](service-map.md)。  
+>本文中介绍的用于部署依赖关系代理的信息也适用于[服务映射解决方案](service-map.md)。  
 
 ## <a name="install-the-dependency-agent-on-windows"></a>在 Windows 上安装依赖项代理
 
@@ -48,7 +48,7 @@ ms.locfileid: "79480736"
 
 下表突出显示了通过命令行安装代理时支持的参数。
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 |:--|:--|
 | /? | 返回命令行选项的列表。 |
 | /S | 执行无需用户交互的无提示安装。 |
@@ -65,7 +65,7 @@ ms.locfileid: "79480736"
 > 需要根目录访问才能安装或配置代理。
 >
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 |:--|:--|
 | -help | 获取命令行选项列表。 |
 | -S | 执行无提示安装，无用户提示。 |
@@ -75,7 +75,7 @@ ms.locfileid: "79480736"
 
 通过运行命令 `sh InstallDependencyAgent-Linux64.bin` 来以 root 用户身份安装 Linux 依赖项代理。
 
-如果 Dependency Agent 无法启动，请检查日志以获取详细的错误信息。 在 Linux 代理上，日志目录是 */var/opt/microsoft/依赖代理/日志*。
+如果 Dependency Agent 无法启动，请检查日志以获取详细的错误信息。 在 Linux 代理上，日志目录是 */var/opt/microsoft/dependency-agent/log*。
 
 Dependency Agent 的文件放置在以下目录中：
 
@@ -231,7 +231,7 @@ configuration VMInsights {
 
 1. Dependency Agent 是否已安装成功？ 可通过检查是否已安装并运行服务来验证这一点。
 
-    **Windows**： 查找名为"Microsoft 依赖项代理"的服务。
+    **Windows**：查找名为 "Microsoft 依赖关系代理" 的服务。
 
     **Linux**：查找正在运行的进程“microsoft-dependency-agent”
 

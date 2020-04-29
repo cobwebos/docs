@@ -1,7 +1,7 @@
 ---
 title: 配置 Always-On VPN 用户隧道
 titleSuffix: Azure Virtual WAN
-description: 本文介绍如何为虚拟 WAN 配置始终处于 VPN 的用户隧道
+description: 本文介绍如何为虚拟 WAN 配置 Always On VPN 用户隧道
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: cherylmc
 ms.openlocfilehash: dd5b215b143fbaf487325744a158bb8b05707951
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79502862"
 ---
-# <a name="configure-an-always-on-vpn-user-tunnel-for-virtual-wan"></a>为虚拟 WAN 配置始终处于 VPN 用户通道
+# <a name="configure-an-always-on-vpn-user-tunnel-for-virtual-wan"></a>为虚拟 WAN 配置 Always On VPN 用户隧道
 
 [!INCLUDE [intro](../../includes/vpn-gateway-vwan-always-on-intro.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-您必须创建点对点配置并编辑虚拟中心分配。 有关说明，请参阅以下部分：
+必须创建点到站点配置，并编辑虚拟中心分配。 有关说明，请参阅以下各节：
 
 * [创建 P2S 配置](virtual-wan-point-to-site-portal.md#p2sconfig)
 * [编辑中心分配](virtual-wan-point-to-site-portal.md#edit)
@@ -32,7 +32,7 @@ ms.locfileid: "79502862"
 
 ## <a name="to-remove-a-profile"></a>删除配置文件
 
-要删除配置文件，请使用以下步骤：
+若要删除配置文件，请执行以下步骤：
 
 1. 运行以下命令：
 

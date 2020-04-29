@@ -1,7 +1,7 @@
 ---
 title: 品牌检测 - 计算机视觉
 titleSuffix: Azure Cognitive Services
-description: 本文讨论了一种专门的对象检测模式;使用计算机视觉 API 进行品牌和/或徽标检测。
+description: 本文介绍对象检测的专用模式;使用计算机视觉 API 的品牌和/或徽标检测。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: pafarley
 ms.openlocfilehash: 50e4fe1e2573c8566bbdf5697bb81b025a00935c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80131740"
 ---
-# <a name="detect-popular-brands-in-images"></a>在图像中检测流行品牌
+# <a name="detect-popular-brands-in-images"></a>检测图像中的常用品牌
 
 品牌检测是[对象检测](concept-object-detection.md)的一种专用模式，使用包含全球数千个徽标的数据库来标识图像或视频中的商业品牌。 可以使用此功能来执行特定的操作，例如，发现哪些品牌在社交媒体上最受欢迎，或者哪些品牌在社交产品排名上最靠前。
 

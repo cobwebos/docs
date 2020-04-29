@@ -4,23 +4,23 @@ description: 了解如何在语言理解 (LUIS) 得出预测之前更改数据
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: b3b36351a64a4e1a0bd13d5785a4e0609a80901d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80292050"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>在预测之前或预测期间更改话语数据
-LUIS 提供在预测之前或预测期间操作陈述的方法。 其中包括[修复拼写](luis-tutorial-bing-spellcheck.md)，以及修复预构建[日期时间V2](luis-reference-prebuilt-datetimev2.md)的时区问题。
+LUIS 提供在预测之前或预测期间操作陈述的方法。 其中包括[修复拼写](luis-tutorial-bing-spellcheck.md)和修复预生成的[datetimeV2](luis-reference-prebuilt-datetimev2.md)的时区问题。
 
 ## <a name="correct-spelling-errors-in-utterance"></a>更正陈述中的拼写错误
 
 
 ### <a name="v3-runtime"></a>V3 运行时
 
-在将陈述发送给 LUIS 之前，先处理拼写更正的文本。 使用具有正确拼写的示例陈述，以确保获得正确的预测。
+在将查询文本发送到 LUIS 之前，预处理文本的拼写更正。 使用带有正确拼写的示例最谈话，以确保获得正确的预测。
 
-在将文本发送到 LUIS 之前，请使用[必应拼写检查](../bing-spell-check/overview.md)更正文本。
+将文本发送到 LUIS 之前，请使用[必应拼写检查](../bing-spell-check/overview.md)更正文本。
 
 ### <a name="prior-to-v3-runtime"></a>在 V3 运行时之前
 
@@ -73,7 +73,7 @@ LUIS 使用[必应拼写检查 API V7](../Bing-Spell-Check/overview.md) 来更�
 LUIS 中使用的必应拼写检查 API 不支持在拼写检查更改期间要忽略的单词列表。 如果需要允许字词或首字母缩写词的列表，请在将话语发送到 LUIS 进行意向预测之前在客户端应用程序中处理话语。
 
 ## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>更改预生成 datetimeV2 实体的时区
-当 LUIS 应用使用预构建[的日期时间V2](luis-reference-prebuilt-datetimev2.md)实体时，可以在预测响应中返回日期时间值。 请求的时区用于确定要返回的正确日期/时间。 如果请求在到达 LUIS 之前来自机器人或另一个集中式应用程序，则更正 LUIS 使用的时区。
+当 LUIS 应用使用预生成的[datetimeV2](luis-reference-prebuilt-datetimev2.md)实体时，可在预测响应中返回 datetime 值。 请求的时区用于确定要返回的正确日期/时间。 如果请求在到达 LUIS 之前来自机器人或另一个集中式应用程序，则更正 LUIS 使用的时区。
 
 ### <a name="endpoint-querystring-parameter"></a>终结点 querystring 参数
 通过使用 `timezoneOffset` 参数将用户的时区添加到[终结点](https://go.microsoft.com/fwlink/?linkid=2092356)来更正时区。 要更改时间，则 `timezoneOffset` 的值应为正数或负数（以分钟为单位）。

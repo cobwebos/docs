@@ -1,5 +1,5 @@
 ---
-title: 配色方案检测 - 计算机视觉
+title: 配色方案检测-计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 使用计算机视觉 API 检测图像中的配色方案的相关概念。
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: af0c39ed8211ac2041d143112437ad5d6b384259
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80244726"
 ---
 # <a name="detect-color-schemes-in-images"></a>检测图像中的配色方案
@@ -54,7 +54,7 @@ ms.locfileid: "80244726"
 
 下表显示了针对每个示例图像返回的前景、背景和图像颜色。
 
-| 图像 | 主色 |
+| 映像 | 主色 |
 |-------|-----------------|
 |![具有绿色背景的白色花卉](./Images/flower.png)| 前景色：黑色<br/>背景色：白色<br/>颜色：黑色、白色、绿色|
 ![穿过车站的火车](./Images/train_station.png) | 前景色：黑色<br/>背景色：黑色<br/>颜色：黑色 |
@@ -63,7 +63,7 @@ ms.locfileid: "80244726"
 
  下表显示返回的十六进制 HTML 值形式的每个示例图像的主题色。
 
-| 图像 | 主题色 |
+| 映像 | 主题色 |
 |-------|--------------|
 |![日落时站在山岩上的人](./Images/mountain_vista.png) | #BB6D10 |
 |![具有绿色背景的白色花卉](./Images/flower.png) | #C6A205 |
@@ -73,14 +73,14 @@ ms.locfileid: "80244726"
 
 下表显示示例图像中的计算机视觉的黑色和白色计算。
 
-| 图像 | 黑色还是白色？ |
+| 映像 | 黑色还是白色？ |
 |-------|----------------|
 |![曼哈顿建筑的黑白照片](./Images/bw_buildings.png) | true |
 |![一座蓝色的房子和前院](./Images/house_yard.png) | false |
 
 ## <a name="use-the-api"></a>使用 API
 
-配色方案检测功能是[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API 的一部分。 可以通过本机 SDK 或 REST 调用来调用此 API。 将 `Color` 包括在 **visualFeatures** 查询参数中。 然后，在获取完整 JSON 响应时，就只需分析 `"color"` 部分内容的字符串。
+"配色方案检测" 功能是 "[分析映像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API" 的一部分。 可以通过本机 SDK 或 REST 调用来调用此 API。 将 `Color` 包括在 **visualFeatures** 查询参数中。 然后，在获取完整 JSON 响应时，就只需分析 `"color"` 部分内容的字符串。
 
 * [快速入门：计算机视觉 .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
 * [快速入门：分析图像（REST API）](./quickstarts/csharp-analyze.md)

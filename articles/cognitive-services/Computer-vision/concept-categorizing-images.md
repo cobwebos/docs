@@ -1,5 +1,5 @@
 ---
-title: 图像分类 - 计算机视觉
+title: 图像分类-计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 了解与计算机视觉 API 的图像分类功能相关的概念。
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 477349f1addf71a30e8ecb179266d8eac5510887
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80244744"
 ---
 # <a name="categorize-images-by-subject-matter"></a>按主题对图像进行分类
@@ -53,7 +53,7 @@ ms.locfileid: "80244744"
 
 下表说明了典型的图像集以及计算机视觉为每个图像返回的类别。
 
-| 图像 | 类别 |
+| 映像 | 类别 |
 |-------|----------|
 | ![四个人一起摆出一家人的姿势](./Images/family_photo.png) | people_group |
 | ![一只小狗坐在草地上](./Images/cute_dog.png) | animal_dog |
@@ -62,7 +62,7 @@ ms.locfileid: "80244744"
 
 ## <a name="use-the-api"></a>使用 API
 
-分类功能是[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API 的一部分。 可以通过本机 SDK 或 REST 调用来调用此 API。 将 `Categories` 包括在 **visualFeatures** 查询参数中。 然后，在获取完整 JSON 响应时，就只需分析 `"categories"` 部分内容的字符串。
+分类功能是[分析映像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API 的一部分。 可以通过本机 SDK 或 REST 调用来调用此 API。 将 `Categories` 包括在 **visualFeatures** 查询参数中。 然后，在获取完整 JSON 响应时，就只需分析 `"categories"` 部分内容的字符串。
 
 * [快速入门：计算机视觉 .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
 * [快速入门：分析图像（REST API）](./quickstarts/csharp-analyze.md)

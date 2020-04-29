@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/11/2020
 ms.openlocfilehash: 38d44f5a2ce22de15cb14ea5aa7a9ca1ea7c03cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79481059"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>使用 vCore 购买模型的单一数据库的资源限制
@@ -27,7 +27,7 @@ ms.locfileid: "79481059"
 可通过 [Azure 门户](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server)、[Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-sql-database-servers-and-single-databases)、[PowerShell](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases)、[Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases) 或 [REST API](sql-database-single-databases-manage.md#rest-api-manage-sql-database-servers-and-single-databases) 为单一数据库设置服务层级、计算大小和存储量。
 
 > [!IMPORTANT]
-> 有关缩放指南和注意事项，请参阅[缩放单个数据库](sql-database-single-database-scale.md)。
+> 有关缩放指南和注意事项，请参阅[缩放单一数据库](sql-database-single-database-scale.md)。
 
 ## <a name="general-purpose---serverless-compute---gen5"></a>常规用途 - 无服务器计算 - Gen5
 
@@ -42,7 +42,7 @@ ms.locfileid: "79481059"
 |最小-最大内存 (GB)|2.02-3|2.05-6|2.10-12|2.25-18|3.00-24|
 |最小自动暂停延迟（分钟）|60|60|60|60|60|
 |列存储支持|是|是|是|是|是|
-|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|空值|
+|内存中 OLTP 存储 (GB)|空值|空值|空值|不适用|不适用|
 |最大数据大小 (GB)|512|1024|1024|1024|1536|
 |最大日志大小 (GB)|154|307|307|307|461|
 |TempDB 最大数据大小 (GB)|32|64|128|192|256|
@@ -53,11 +53,11 @@ ms.locfileid: "79481059"
 |最大并发工作线程数（请求数）|75|150|300|450|600|
 |最大并发会话数|30,000|30,000|30,000|30,000|30,000|
 |副本数|1|1|1|1|1|
-|Multi-AZ|空值|空值|空值|空值|空值|
+|Multi-AZ|空值|不适用|空值|空值|空值|
 |读取横向扩展|空值|空值|空值|空值|空值|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 治理](sql-database-resource-limits-database-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](sql-database-resource-limits-database-server.md#resource-governance)。
 
 ### <a name="gen5-compute-generation-part-2"></a>第 5 代计算（第 2 部分）
 
@@ -68,7 +68,7 @@ ms.locfileid: "79481059"
 |最小-最大内存 (GB)|3.75-30|4.50-36|5.25-42|6.00-48|
 |最小自动暂停延迟（分钟）|60|60|60|60|
 |列存储支持|是|是|是|是|
-|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|
+|内存中 OLTP 存储 (GB)|不适用|空值|不适用|空值|
 |最大数据大小 (GB)|1536|3072|3072|3072|
 |最大日志大小 (GB)|461|461|461|922|
 |TempDB 最大数据大小 (GB)|320|384|448|512|
@@ -79,11 +79,11 @@ ms.locfileid: "79481059"
 |最大并发工作线程数（请求数）|750|900|1050|1200|
 |最大并发会话数|30,000|30,000|30,000|30,000|
 |副本数|1|1|1|1|
-|Multi-AZ|空值|空值|空值|空值|
-|读取横向扩展|空值|空值|空值|空值|
+|Multi-AZ|不适用|空值|不适用|空值|
+|读取横向扩展|空值|空值|不适用|不适用|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 治理](sql-database-resource-limits-database-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](sql-database-resource-limits-database-server.md#resource-governance)。
 
 ## <a name="hyperscale---provisioned-compute---gen4"></a>超大规模 - 预配的计算 - Gen4
 
@@ -96,18 +96,18 @@ ms.locfileid: "79481059"
 |内存 (GB)|7|14|21|28|35|42|
 |[RBPEX](sql-database-service-tier-hyperscale.md#compute) 大小|3 倍内存|3 倍内存|3 倍内存|3 倍内存|3 倍内存|3 倍内存|
 |列存储支持|是|是|是|是|是|是|
-|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|空值|空值|
+|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|N/A|空值|
 |最大数据大小 (TB)|100 |100 |100 |100 |100 |100|
 |最大日志大小 (TB)|1 |1 |1 |1 |1 |1 |
 |TempDB 最大数据大小 (GB)|32|64|96|128|160|192|
-|存储类型| [附注1](#notes) |[附注1](#notes)|[附注1](#notes) |[附注1](#notes) |[附注1](#notes) |[附注1](#notes) |
-|最大数据 IOPS *|[附注2](#notes)|[附注2](#notes)|[附注2](#notes)|[附注2](#notes)|[附注2](#notes)|[附注2](#notes)|
+|存储类型| [注释 1](#notes) |[注释 1](#notes)|[注释 1](#notes) |[注释 1](#notes) |[注释 1](#notes) |[注释 1](#notes) |
+|最大数据 IOPS *|[注释 2](#notes)|[注释 2](#notes)|[注释 2](#notes)|[注释 2](#notes)|[注释 2](#notes)|[注释 2](#notes)|
 |最大日志速率 (MBps)|100 |100 |100 |100 |100 |100 |
-|IO 延迟（近似）|[附注3](#notes)|[附注3](#notes)|[附注3](#notes)|[附注3](#notes)|[附注3](#notes)|[附注3](#notes)|
+|IO 延迟（近似）|[注释 3](#notes)|[注释 3](#notes)|[注释 3](#notes)|[注释 3](#notes)|[注释 3](#notes)|[注释 3](#notes)|
 |最大并发工作线程数（请求数）|200|400|600|800|1000|1200|
 |最大并发会话数|30,000|30,000|30,000|30,000|30,000|30,000|
 |次要副本|0-4|0-4|0-4|0-4|0-4|0-4|
-|Multi-AZ|空值|空值|空值|空值|空值|空值|
+|Multi-AZ|空值|空值|空值|空值|N/A|空值|
 |读取横向扩展|是|是|是|是|是|是|
 |备份存储保留期|7 天|7 天|7 天|7 天|7 天|7 天|
 |||
@@ -121,23 +121,23 @@ ms.locfileid: "79481059"
 |内存 (GB)|49|56|63|70|112|159.5|
 |[RBPEX](sql-database-service-tier-hyperscale.md#compute) 大小|3 倍内存|3 倍内存|3 倍内存|3 倍内存|3 倍内存|3 倍内存|
 |列存储支持|是|是|是|是|是|是|
-|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|空值|空值|
+|内存中 OLTP 存储 (GB)|空值|空值|不适用|不适用|N/A|空值|
 |最大数据大小 (TB)|100 |100 |100 |100 |100 |100 |
 |最大日志大小 (TB)|1 |1 |1 |1 |1 |1 |
 |TempDB 最大数据大小 (GB)|224|256|288|320|512|768|
-|存储类型| [附注1](#notes) |[附注1](#notes) |[附注1](#notes) |[附注1](#notes) |[附注1](#notes) |[附注1](#notes) |
-|最大数据 IOPS *|[附注2](#notes)|[附注2](#notes)|[附注2](#notes)|[附注2](#notes)|[附注2](#notes)|[附注2](#notes)|
+|存储类型| [注释 1](#notes) |[注释 1](#notes) |[注释 1](#notes) |[注释 1](#notes) |[注释 1](#notes) |[注释 1](#notes) |
+|最大数据 IOPS *|[注释 2](#notes)|[注释 2](#notes)|[注释 2](#notes)|[注释 2](#notes)|[注释 2](#notes)|[注释 2](#notes)|
 |最大日志速率 (MBps)|100 |100 |100 |100 |100 |100 |
-|IO 延迟（近似）|[附注3](#notes)|[附注3](#notes)|[附注3](#notes)|[附注3](#notes)|[附注3](#notes)|[附注3](#notes)|
+|IO 延迟（近似）|[注释 3](#notes)|[注释 3](#notes)|[注释 3](#notes)|[注释 3](#notes)|[注释 3](#notes)|[注释 3](#notes)|
 |最大并发工作线程数（请求数）|1400|1600|1800|2000|3200|4800|
 |最大并发会话数|30,000|30,000|30,000|30,000|30,000|30,000|
 |次要副本|0-4|0-4|0-4|0-4|0-4|0-4|
-|Multi-AZ|空值|空值|空值|空值|空值|空值|
+|Multi-AZ|空值|空值|空值|不适用|N/A|空值|
 |读取横向扩展|是|是|是|是|是|是|
 |备份存储保留期|7 天|7 天|7 天|7 天|7 天|7 天|
 |||
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 治理](sql-database-resource-limits-database-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](sql-database-resource-limits-database-server.md#resource-governance)。
 
 ## <a name="hyperscale---provisioned-compute---gen5"></a>超大规模 - 预配的计算 - Gen5
 
@@ -150,23 +150,23 @@ ms.locfileid: "79481059"
 |内存 (GB)|10.4|20.8|31.1|41.5|51.9|62.3|72.7|
 |[RBPEX](sql-database-service-tier-hyperscale.md#compute) 大小|3 倍内存|3 倍内存|3 倍内存|3 倍内存|3 倍内存|3 倍内存|3 倍内存|
 |列存储支持|是|是|是|是|是|是|是|
-|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|空值|空值|空值|
+|内存中 OLTP 存储 (GB)|空值|不适用|空值|空值|N/A|N/A|空值|
 |最大数据大小 (TB)|100 |100 |100 |100 |100 |100 |100|
 |最大日志大小 (TB)|1 |1 |1 |1 |1 |1 |1 |
 |TempDB 最大数据大小 (GB)|64|128|192|256|320|384|448|
-|存储类型| [附注1](#notes) |[附注1](#notes)|[附注1](#notes) |[附注1](#notes) |[附注1](#notes) |[附注1](#notes) |[附注1](#notes) |
-|最大数据 IOPS *|[附注2](#notes)|[附注2](#notes)|[附注2](#notes)|[附注2](#notes)|[附注2](#notes)|[附注2](#notes)|[附注2](#notes)|
+|存储类型| [注释 1](#notes) |[注释 1](#notes)|[注释 1](#notes) |[注释 1](#notes) |[注释 1](#notes) |[注释 1](#notes) |[注释 1](#notes) |
+|最大数据 IOPS *|[注释 2](#notes)|[注释 2](#notes)|[注释 2](#notes)|[注释 2](#notes)|[注释 2](#notes)|[注释 2](#notes)|[注释 2](#notes)|
 |最大日志速率 (MBps)|100 |100 |100 |100 |100 |100 |100 |
-|IO 延迟（近似）|[附注3](#notes)|[附注3](#notes)|[附注3](#notes)|[附注3](#notes)|[附注3](#notes)|[附注3](#notes)|[附注3](#notes)|
+|IO 延迟（近似）|[注释 3](#notes)|[注释 3](#notes)|[注释 3](#notes)|[注释 3](#notes)|[注释 3](#notes)|[注释 3](#notes)|[注释 3](#notes)|
 |最大并发工作线程数（请求数）|200|400|600|800|1000|1200|1400|
 |最大并发会话数|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |次要副本|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
-|Multi-AZ|空值|空值|空值|空值|空值|空值|空值|
+|Multi-AZ|空值|不适用|空值|空值|N/A|N/A|空值|
 |读取横向扩展|是|是|是|是|是|是|是|
 |备份存储保留期|7 天|7 天|7 天|7 天|7 天|7 天|7 天|
 |||
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 治理](sql-database-resource-limits-database-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](sql-database-resource-limits-database-server.md#resource-governance)。
 
 ### <a name="gen5-compute-generation-part-2"></a>第 5 代计算（第 2 部分）
 
@@ -177,36 +177,36 @@ ms.locfileid: "79481059"
 |内存 (GB)|83|93.4|103.8|124.6|166.1|207.6|415.2|
 |[RBPEX](sql-database-service-tier-hyperscale.md#compute) 大小|3 倍内存|3 倍内存|3 倍内存|3 倍内存|3 倍内存|3 倍内存|3 倍内存|
 |列存储支持|是|是|是|是|是|是|是|
-|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|空值|空值|空值|
+|内存中 OLTP 存储 (GB)|空值|不适用|空值|N/A|N/A|N/A|空值|
 |最大数据大小 (TB)|100 |100 |100 |100 |100 |100 |100 |
 |最大日志大小 (TB)|1 |1 |1 |1 |1 |1 |1 |
 |TempDB 最大数据大小 (GB)|512|576|640|768|1024|1280|2560|
-|存储类型| [附注1](#notes) |[附注1](#notes)|[附注1](#notes)|[附注1](#notes) |[附注1](#notes) |[附注1](#notes) |[附注1](#notes) |
-|最大数据 IOPS *|[附注2](#notes)|[附注2](#notes)|[附注2](#notes)|[附注2](#notes)|[附注2](#notes)|[附注2](#notes)|[附注2](#notes)|
+|存储类型| [注释 1](#notes) |[注释 1](#notes)|[注释 1](#notes)|[注释 1](#notes) |[注释 1](#notes) |[注释 1](#notes) |[注释 1](#notes) |
+|最大数据 IOPS *|[注释 2](#notes)|[注释 2](#notes)|[注释 2](#notes)|[注释 2](#notes)|[注释 2](#notes)|[注释 2](#notes)|[注释 2](#notes)|
 |最大日志速率 (MBps)|100 |100 |100 |100 |100 |100 |100 |
-|IO 延迟（近似）|[附注3](#notes)|[附注3](#notes)|[附注3](#notes)|[附注3](#notes)|[附注3](#notes)|[附注3](#notes)|[附注3](#notes)|
+|IO 延迟（近似）|[注释 3](#notes)|[注释 3](#notes)|[注释 3](#notes)|[注释 3](#notes)|[注释 3](#notes)|[注释 3](#notes)|[注释 3](#notes)|
 |最大并发工作线程数（请求数）|1600|1800|2000|2400|3200|4000|8000|
 |最大并发会话数|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |次要副本|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
-|Multi-AZ|空值|空值|空值|空值|空值|空值|空值|
+|Multi-AZ|空值|空值|空值|N/A|N/A|N/A|空值|
 |读取横向扩展|是|是|是|是|是|是|是|
 |备份存储保留期|7 天|7 天|7 天|7 天|7 天|7 天|7 天|
 |||
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 治理](sql-database-resource-limits-database-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](sql-database-resource-limits-database-server.md#resource-governance)。
 
-#### <a name="notes"></a>说明
+#### <a name="notes"></a>注释
 
-**注 1：** 超大规模是一个多层体系结构，具有单独的计算和存储组件：[超大规模服务层体系结构](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)
+**注释 1**：超大规模是具有单独计算和存储组件的多层体系结构：[“超大规模”服务层级体系结构](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)
 
-**注2：** 超大规模多层架构具有多个级别的缓存。 有效 IOPS 将取决于工作负荷。
+**注释 2**：超大规模多层体系结构具有多个级别的缓存。 有效 IOPS 将取决于工作负荷。
 
-**注意 3**： 对于基于 RBPEX SSD 的基于 RBPEX SSD 的缓存中基于计算副本的数据，延迟为 1-2 毫秒，该副本缓存最常用的数据页。 从页面服务器检索数据的延迟更长。
+**注释 3**：对于计算副本上基于 RBPEX SSD 的缓存中的数据，延迟为 1-2 毫秒，该缓存可缓存最常用的数据页。 从页面服务器检索数据的延迟更长。
 
 ## <a name="general-purpose---provisioned-compute---gen4"></a>常规用途 - 预配的计算 - Gen4
 
 > [!IMPORTANT]
-> 澳大利亚东部或巴西南部地区不再支持新的 Gen4 数据库。
+> 澳大利亚东部或巴西南部区域不再支持新的 Gen4 数据库。
 
 ### <a name="gen4-compute-generation-part-1"></a>第 4 代计算（第 1 部分）
 
@@ -216,7 +216,7 @@ ms.locfileid: "79481059"
 |vCore 数|1|2|3|4|5|6|
 |内存 (GB)|7|14|21|28|35|42|
 |列存储支持|是|是|是|是|是|是|
-|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|空值|空值|
+|内存中 OLTP 存储 (GB)|N/A|N/A|N/A|N/A|N/A|空值|
 |最大数据大小 (GB)|1024|1024|1536|1536|1536|3072|
 |最大日志大小 (GB)|307|307|461|461|461|922|
 |TempDB 最大数据大小 (GB)|32|64|96|128|160|192|
@@ -227,11 +227,11 @@ ms.locfileid: "79481059"
 |最大并发工作线程数（请求数）|200|400|600|800|1000|1200|
 |最大并发会话数|30,000|30,000|30,000|30,000|30,000|30,000|
 |副本数|1|1|1|1|1|1|
-|Multi-AZ|空值|空值|空值|空值|空值|空值|
-|读取横向扩展|空值|空值|空值|空值|空值|空值|
+|Multi-AZ|不适用|不适用|不适用|空值|空值|空值|
+|读取横向扩展|空值|N/A|N/A|N/A|N/A|不适用|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 治理](sql-database-resource-limits-database-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](sql-database-resource-limits-database-server.md#resource-governance)。
 
 ### <a name="gen4-compute-generation-part-2"></a>第 4 代计算（第 2 部分）
 
@@ -241,7 +241,7 @@ ms.locfileid: "79481059"
 |vCore 数|7|8|9|10|16|24|
 |内存 (GB)|49|56|63|70|112|159.5|
 |列存储支持|是|是|是|是|是|是|
-|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|空值|空值|
+|内存中 OLTP 存储 (GB)|空值|N/A|N/A|N/A|N/A|空值|
 |最大数据大小 (GB)|3072|3072|3072|3072|4096|4096|
 |最大日志大小 (GB)|922|922|922|922|1229|1229|
 |TempDB 最大数据大小 (GB)|224|256|288|320|512|768|
@@ -252,11 +252,11 @@ ms.locfileid: "79481059"
 |最大并发工作线程数（请求数）|1400|1600|1800|2000|3200|4800|
 |最大并发会话数|30,000|30,000|30,000|30,000|30,000|30,000|
 |副本数|1|1|1|1|1|1|
-|Multi-AZ|空值|空值|空值|空值|空值|空值|
-|读取横向扩展|空值|空值|空值|空值|空值|空值|
+|Multi-AZ|空值|空值|不适用|空值|不适用|空值|
+|读取横向扩展|空值|N/A|N/A|N/A|N/A|不适用|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 治理](sql-database-resource-limits-database-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](sql-database-resource-limits-database-server.md#resource-governance)。
 
 ## <a name="general-purpose---provisioned-compute---gen5"></a>常规用途 - 预配的计算 - Gen5
 
@@ -268,7 +268,7 @@ ms.locfileid: "79481059"
 |vCore 数|2|4|6|8|10|12|14|
 |内存 (GB)|10.4|20.8|31.1|41.5|51.9|62.3|72.7|
 |列存储支持|是|是|是|是|是|是|是|
-|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|空值|空值|空值|
+|内存中 OLTP 存储 (GB)|不适用|N/A|N/A|N/A|N/A|N/A|空值|
 |最大数据大小 (GB)|1024|1024|1536|1536|1536|3072|3072|
 |最大日志大小 (GB)|307|307|461|461|461|922|922|
 |TempDB 最大数据大小 (GB)|64|128|192|256|320|384|384|
@@ -279,11 +279,11 @@ ms.locfileid: "79481059"
 |最大并发工作线程数（请求数）|200|400|600|800|1000|1200|1400|
 |最大并发会话数|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |副本数|1|1|1|1|1|1|1|
-|Multi-AZ|空值|空值|空值|空值|空值|空值|空值|
-|读取横向扩展|空值|空值|空值|空值|空值|空值|空值|
+|Multi-AZ|不适用|空值|不适用|空值|空值|空值|空值|
+|读取横向扩展|空值|N/A|N/A|N/A|N/A|N/A|空值|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 治理](sql-database-resource-limits-database-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](sql-database-resource-limits-database-server.md#resource-governance)。
 
 ### <a name="gen5-compute-generation-part-2"></a>第 5 代计算（第 2 部分）
 
@@ -293,7 +293,7 @@ ms.locfileid: "79481059"
 |vCore 数|16|18|20|24|32|40|80|
 |内存 (GB)|83|93.4|103.8|124.6|166.1|207.6|415.2|
 |列存储支持|是|是|是|是|是|是|是|
-|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|空值|空值|空值|
+|内存中 OLTP 存储 (GB)|空值|N/A|N/A|N/A|N/A|N/A|空值|
 |最大数据大小 (GB)|3072|3072|3072|4096|4096|4096|4096|
 |最大日志大小 (GB)|922|922|922|1229|1229|1229|1229|
 |TempDB 最大数据大小 (GB)|512|576|640|768|1024|1280|2560|
@@ -304,13 +304,13 @@ ms.locfileid: "79481059"
 |最大并发工作线程数（请求数）|1600|1800|2000|2400|3200|4000|8000|
 |最大并发会话数|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |副本数|1|1|1|1|1|1|1|
-|Multi-AZ|空值|空值|空值|空值|空值|空值|空值|
-|读取横向扩展|空值|空值|空值|空值|空值|空值|空值|
+|Multi-AZ|不适用|空值|空值|空值|空值|空值|N/A|
+|读取横向扩展|空值|N/A|N/A|N/A|N/A|N/A|不适用|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 治理](sql-database-resource-limits-database-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](sql-database-resource-limits-database-server.md#resource-governance)。
 
-## <a name="general-purpose---provisioned-compute---fsv2-series"></a>通用 - 预配计算 - Fsv2 系列
+## <a name="general-purpose---provisioned-compute---fsv2-series"></a>常规用途预配的 Fsv2 系列
 
 ### <a name="fsv2-series-compute-generation-preview"></a>Fsv2 系列计算生成（预览）
 
@@ -332,16 +332,16 @@ ms.locfileid: "79481059"
 |最大并发登录数|3600|
 |最大并发会话数|30,000|
 |副本数|1|
-|Multi-AZ|空值|
+|Multi-AZ|不适用|
 |读取横向扩展|空值|
 |随附的备份存储|1 倍数据库大小|
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 治理](sql-database-resource-limits-database-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](sql-database-resource-limits-database-server.md#resource-governance)。
 
 ## <a name="business-critical---provisioned-compute---gen4"></a>业务关键 - 预配的计算 - Gen4
 
 > [!IMPORTANT]
-> 澳大利亚东部或巴西南部地区不再支持新的 Gen4 数据库。
+> 澳大利亚东部或巴西南部区域不再支持新的 Gen4 数据库。
 
 ### <a name="gen4-compute-generation-part-1"></a>第 4 代计算（第 1 部分）
 
@@ -367,7 +367,7 @@ ms.locfileid: "79481059"
 |读取横向扩展|是|是|是|是|是|是|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 治理](sql-database-resource-limits-database-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](sql-database-resource-limits-database-server.md#resource-governance)。
 
 ### <a name="gen4-compute-generation-part-2"></a>第 4 代计算（第 2 部分）
 
@@ -393,7 +393,7 @@ ms.locfileid: "79481059"
 |读取横向扩展|是|是|是|是|是|是|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 治理](sql-database-resource-limits-database-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](sql-database-resource-limits-database-server.md#resource-governance)。
 
 ## <a name="business-critical---provisioned-compute---gen5"></a>业务关键 - 预配的计算 - Gen5
 
@@ -421,7 +421,7 @@ ms.locfileid: "79481059"
 |读取横向扩展|是|是|是|是|是|是|是|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 治理](sql-database-resource-limits-database-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](sql-database-resource-limits-database-server.md#resource-governance)。
 
 ### <a name="gen5-compute-generation-part-2"></a>第 5 代计算（第 2 部分）
 
@@ -447,9 +447,9 @@ ms.locfileid: "79481059"
 |读取横向扩展|是|是|是|是|是|是|是|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 治理](sql-database-resource-limits-database-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](sql-database-resource-limits-database-server.md#resource-governance)。
 
-## <a name="business-critical---provisioned-compute---m-series"></a>业务关键 - 预配计算 - M 系列
+## <a name="business-critical---provisioned-compute---m-series"></a>关键业务预配的计算-M 系列
 
 ### <a name="m-series-compute-generation-preview"></a>M 系列计算生成（预览）
 
@@ -475,10 +475,10 @@ ms.locfileid: "79481059"
 |读取横向扩展|是|
 |随附的备份存储|1 倍数据库大小|
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 治理](sql-database-resource-limits-database-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](sql-database-resource-limits-database-server.md#resource-governance)。
 
 > [!IMPORTANT]
-> 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅在[Azure SQL 数据库中管理文件空间](sql-database-file-space-management.md)。
+> 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

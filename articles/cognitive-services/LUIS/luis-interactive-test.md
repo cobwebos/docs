@@ -4,10 +4,10 @@ description: 使用语言理解 (LUIS) 持续优化应用程序并改进其语�
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.openlocfilehash: ba7e23a72cd308dd4393bf9a581571e2bc9f5fa0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79219815"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>在 LUIS 门户中测试 LUIS 应用
@@ -22,20 +22,20 @@ ms.locfileid: "79219815"
 <a name="access-the-test-page"></a>
 <a name="luis-interactive-testing"></a>
 
-## <a name="train-before-testing"></a>测试前培训
+## <a name="train-before-testing"></a>测试前训练
 
-要针对活动应用的最新版本进行测试，请在测试前从顶部菜单中选择 **"训练**"。
+若要针对活动应用的最新版本进行测试，请在测试前从顶部菜单中选择 "**训练**"。
 
 ## <a name="test-an-utterance"></a>测试陈述
 
-测试陈述不应与应用中的任何示例陈述完全相同。 测试陈述应包括您希望用户的单词选择、短语长度和实体用法。
+测试查询文本不应与应用中的任何示例最谈话完全相同。 测试查询文本应包括用户预期的 word 选择、短语长度和实体使用情况。
 
 1. 在“我的应用”页面上选择应用名称以访问应用****。
 
-1. 要访问 **"测试**滑出"面板，请在应用程序的顶部面板中选择 **"测试**"。
+1. 若要访问**测试**滑出面板，请在应用程序的顶部面板中选择 "**测试**"。
 
     > [!div class="mx-imgBorder"]
-    > ![训练&测试应用程序页面](./media/luis-how-to-interactive-test/test.png)
+    > ![训练 & 测试应用程序页](./media/luis-how-to-interactive-test/test.png)
 
 1. 在文本框中输入陈述，然后按 Enter。 虽然在“测试”中可键入任意数量的测试陈述，但一次只能键入一个****。
 
@@ -45,13 +45,13 @@ ms.locfileid: "79219815"
 
 ## <a name="inspect-score"></a>检查分数
 
-在 **"检查"** 面板中检查测试结果的详细信息。
+在 "**检查**" 面板中检查测试结果的详细信息。
 
 1. 打开“测试”滑出面板后，对想要比对的陈述选择“检查”********。
 
     ![选择“检查”按钮可查看有关测试结果的更多详细信息](./media/luis-how-to-interactive-test/inspect.png)
 
-1. 将显示 **"检查**"面板。 此面板包括评分最高的意向以及任何已识别的实体。 此面板显示所选陈述的结果。
+1. 此时将显示 "**检查**" 面板。 此面板包括评分最高的意向以及任何已识别的实体。 此面板显示所选陈述的结果。
 
     ![此面板包括评分最高的意向以及任何已识别的实体。 此面板显示所选陈述的结果。](./media/luis-how-to-interactive-test/inspect-panel.png)
 

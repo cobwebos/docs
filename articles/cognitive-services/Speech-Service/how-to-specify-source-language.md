@@ -12,15 +12,15 @@ ms.date: 01/07/2020
 ms.author: qiohu
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: f0723534d9d2187593cb73f058ffea62473b80a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80235977"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>指定语音转文本的源语言
 
-本文介绍如何指定某个传递给语音 SDK 进行语音识别的音频输入的源语言。 另外还提供示例代码，用于指定自定义语音模型以改进识别。
+本文介绍如何指定某个传递给语音 SDK 进行语音识别的音频输入的源语言。 另外还提供示例代码，用于指定自定义语音识别模型以改进识别。
 
 ::: zone pivot="programming-language-csharp"
 
@@ -62,14 +62,14 @@ var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioC
 auto recognizer = SpeechRecognizer::FromConfig(speechConfig, "de-DE", audioConfig);
 ```
 
-在此示例中，源语言是使用 `SourceLanguageConfig` 提供的。 然后，在创建 `recognizer` 时，`sourceLanguageConfig` 会作为参数传递给 `FromConfig`。
+在此示例中，源语言是使用 `SourceLanguageConfig` 提供的。 然后，在创建 `sourceLanguageConfig` 时，`FromConfig` 会作为参数传递给 `recognizer`。
 
 ```C++
 auto sourceLanguageConfig = SourceLanguageConfig::FromLanguage("de-DE");
 auto recognizer = SpeechRecognizer::FromConfig(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-在此示例中，源语言和自定义终结点是使用 `SourceLanguageConfig` 提供的。 在创建 `recognizer` 时，`sourceLanguageConfig` 作为参数传递给 `FromConfig`。
+在此示例中，源语言和自定义终结点是使用 `SourceLanguageConfig` 提供的。 在创建 `sourceLanguageConfig` 时，`FromConfig` 作为参数传递给 `recognizer`。
 
 ```C++
 auto sourceLanguageConfig = SourceLanguageConfig::FromLanguage("de-DE", "The Endpoint ID for your custom model.");
@@ -91,14 +91,14 @@ auto recognizer = SpeechRecognizer::FromConfig(speechConfig, sourceLanguageConfi
 SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, "de-DE", audioConfig);
 ```
 
-在此示例中，源语言是使用 `SourceLanguageConfig` 提供的。 然后，在创建新的 `SpeechRecognizer` 时，`sourceLanguageConfig` 会作为参数传递。
+在此示例中，源语言是使用 `SourceLanguageConfig` 提供的。 然后，在创建新的 `sourceLanguageConfig` 时，`SpeechRecognizer` 会作为参数传递。
 
 ```Java
 SourceLanguageConfig sourceLanguageConfig = SourceLanguageConfig.fromLanguage("de-DE");
 SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-在此示例中，源语言和自定义终结点是使用 `SourceLanguageConfig` 提供的。 然后，在创建新的 `SpeechRecognizer` 时，`sourceLanguageConfig` 会作为参数传递。
+在此示例中，源语言和自定义终结点是使用 `SourceLanguageConfig` 提供的。 然后，在创建新的 `sourceLanguageConfig` 时，`SpeechRecognizer` 会作为参数传递。
 
 ```Java
 SourceLanguageConfig sourceLanguageConfig = SourceLanguageConfig.fromLanguage("de-DE", "The Endpoint ID for your custom model.");
@@ -138,7 +138,7 @@ speech_recognizer = speechsdk.SpeechRecognizer(
 ```
 
 >[!Note]
-> `speech_recognition_language`属性`endpoint_id`从 Python 中的`SpeechConfig`类中弃用。 不鼓励使用这些属性，并且不应在构造 时`SpeechRecognizer`使用 。
+> `speech_recognition_language`在`endpoint_id` Python 中， `SpeechConfig`类不推荐使用和属性。 不建议使用这些属性，构造时不应使用这些属性`SpeechRecognizer`。
 
 ::: zone-end
 

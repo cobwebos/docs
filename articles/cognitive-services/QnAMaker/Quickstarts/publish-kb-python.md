@@ -1,15 +1,15 @@
 ---
-title: 快速入门：发布知识库、REST、Python - QnA 制造商
+title: 快速入门：发布知识库、REST、Python QnA Maker
 description: 此基于 Python REST 的快速入门发布你的知识库，并创建可在应用程序或聊天机器人中调用的终结点。
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: conceptual
 ms.openlocfilehash: 6f053ecbd58d3c2527c1b904437dcc4715c76af1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78851648"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-python"></a>快速入门：在 QnA Maker 中通过 Python 发布知识库
@@ -21,8 +21,8 @@ ms.locfileid: "78851648"
 
 ## <a name="prerequisites"></a>先决条件
 
-* [Python 3.7](https://www.python.org/downloads/)
-* 您必须具有[QnA 制造商服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥和终结点（包括资源名称），请在 Azure 门户中为资源选择“快速入门”****。
+* [Python 3。7](https://www.python.org/downloads/)
+* 您必须具有[QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥和终结点（包括资源名称），请在 Azure 门户中为资源选择“快速入门”****。
 * 在 `kbid` 查询字符串参数的 URL 中找到的 QnA Maker 知识库 (KB) ID，如下所示。
 
     ![QnA Maker 知识库 ID](../media/qnamaker-quickstart-kb/qna-maker-id.png)
@@ -30,7 +30,7 @@ ms.locfileid: "78851648"
     如果还没有知识库，可以创建一个用于此快速入门的示例知识库：[创建新的知识库](../how-to/create-knowledge-base.md)。
 
 > [!NOTE]
-> 完整的解决方案文件可从[**Azure 示例/认知服务-qnamaker-python** GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/tree/master/documentation-samples/quickstarts/publish-knowledge-base)中获取。
+> 完整的解决方案文件可从[ **Azure 示例/认知-qnamaker** GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/tree/master/documentation-samples/quickstarts/publish-knowledge-base)获取。
 
 ## <a name="create-a-knowledge-base-python-file"></a>创建知识库 Python 文件
 

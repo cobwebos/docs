@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
 ms.openlocfilehash: f2f3e84462307f43ffe432fe878476d979f489f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79480906"
 ---
 # <a name="using-service-map-solution-in-azure"></a>使用 Azure 中的服务映射解决方案
@@ -30,7 +30,7 @@ ms.locfileid: "79480906"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 中的[https://portal.azure.com](https://portal.azure.com)Azure 门户。
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="enable-service-map"></a>启用服务映射
 
@@ -55,7 +55,7 @@ ms.locfileid: "79480906"
 
 ### <a name="business-continuity"></a>业务连续性
 
-如果使用 Azure Site Recovery 并需要帮助定义应用程序环境的恢复顺序，服务映射可自动显示系统互相依赖的方式，以便确保恢复计划可靠。 通过选择关键服务器或组并查看其客户端，可以标识要在该服务器还原并可用后恢复的前端系统。 相反，通过查看关键服务器的后端依赖关系，您可以确定在恢复焦点系统之前要恢复哪些系统。
+如果使用 Azure Site Recovery 并需要帮助定义应用程序环境的恢复顺序，服务映射可自动显示系统互相依赖的方式，以便确保恢复计划可靠。 通过选择关键服务器或组并查看其客户端，可以标识要在该服务器还原并可用后恢复的前端系统。 相反，通过查看关键服务器的后端依赖关系，可以确定在恢复焦点系统之前要恢复的系统。
 
 ### <a name="patch-management"></a>修补程序管理
 
@@ -63,7 +63,7 @@ ms.locfileid: "79480906"
 
 ## <a name="mapping-overview"></a>映射概述
 
-服务映射代理收集有关安装这些进程所在的服务器上的所有 TCP 连接进程的信息，以及有关每个进程的入站和出站连接的详细信息。
+服务映射代理收集有关安装了它们的服务器上所有 TCP 连接的进程的信息，以及每个进程的入站和出站连接的详细信息。
 
 从左侧窗格的列表中，可选择具有服务映射代理的计算机或组，在指定时间范围内使其依赖关系可视化。 计算机依赖关系映射侧重于特定计算机，并显示属于该计算机的直接 TCP 客户端或服务器的所有计算机。  计算机组映射显示多组服务器及其依赖关系。
 
@@ -108,7 +108,7 @@ ms.locfileid: "79480906"
 
 ### <a name="viewing-a-group"></a>查看组
 
-创建某些组后，可以通过选择"组"选项卡来查看它们。
+创建一些组后，可以通过选择 "组" 选项卡来查看它们。
 
 ![“组”选项卡](media/service-map/machine-groups-tab.png)
 
@@ -154,7 +154,7 @@ ms.locfileid: "79480906"
 
 某些进程在计算机上充当特定角色：Web 服务器、应用程序服务器、数据库等。 “服务映射”可批注进程和计算机设备，包含的角色图标有助于以显眼的方式标识进程或服务器扮演的角色。
 
-| 角色图标 | 描述 |
+| 角色图标 | 说明 |
 |:--|:--|
 | ![Web 服务器](media/service-map/role-web-server.png) | Web 服务器 |
 | ![应用服务器](media/service-map/role-application-server.png) | 应用程序服务器 |
@@ -219,7 +219,7 @@ ms.locfileid: "79480906"
 
 ![“进程属性”窗格](media/service-map/process-properties.png)
 
-**"进程摘要"** 窗格提供有关进程连接的其他信息，包括其绑定端口、入站和出站连接以及失败连接。
+"**进程摘要**" 窗格提供有关该进程的连接的附加信息，包括其绑定端口、入站和出站连接以及失败的连接。
 
 ![“进程摘要”窗格](media/service-map/process-summary.png)
 
@@ -314,19 +314,19 @@ Linux：
 包含内部生成的可用于标识唯一进程和计算机的属性：
 
 - 计算机：使用 *ResourceId* 或 *ResourceName_s* 唯一标识 Log Analytics 工作区中的计算机。
-- 进程：使用 *ResourceId* 唯一标识 Log Analytics 工作区中的进程。 *ResourceName_s*在运行进程的机器的上下文中是唯一的（MachineResourceName_s） 
+- 进程：使用 *ResourceId* 唯一标识 Log Analytics 工作区中的进程。 *ResourceName_s*在运行进程的计算机的上下文中是唯一的（MachineResourceName_s） 
 
 由于在指定的时间范围内，指定的进程和计算机可能存在多条记录，因此针对同一个计算机或进程的查询可能返回多条记录。 若要仅添加最新记录，请在查询中添加“| dedup ResourceId”。
 
 ### <a name="connections"></a>连接
 
-连接指标将写入到 Log Analytics 的新表 VMConnection 中。 此表提供有关计算机的连接（入站和出站）的信息。 还可以通过 API 公开连接指标。使用这些 API 可以获取某个时间范围内的特定指标。  侦听套接字上接受产生的 TCP 连接是入站连接，而通过连接到给定 IP 和端口创建的 TCP 连接是出站连接。 连接方向由 Direction 属性表示，可将其设置为 **inbound** 或 **outbound**。 
+连接指标将写入到 Log Analytics 的新表 VMConnection 中。 此表提供有关计算机的连接（入站和出站）的信息。 还可以通过 API 公开连接指标。使用这些 API 可以获取某个时间范围内的特定指标。  由于侦听套接字上的接受导致的 TCP 连接是入站的，而通过连接到给定的 IP 和端口创建的连接是出站的。 连接方向由 Direction 属性表示，可将其设置为 **inbound** 或 **outbound**。 
 
 这些表中的记录是基于依赖项代理报告的数据生成的。 每条记录表示一分钟时间间隔内观测到的结果。 TimeGenerated 属性表示时间间隔的开始时间。 每条记录包含用于识别相应实体（即连接或端口）以及与该实体关联的指标的信息。 目前，只会报告使用“基于 IPv4 的 TCP”发生的网络活动。
 
 为了控制成本和复杂性，连接记录不会显示单个物理网络连接。 多个物理网络连接分组到一个逻辑连接中，然后在相应的表中反映该逻辑连接。  这意味着，*VMConnection* 表中的记录表示逻辑分组，而不是观测到的单个物理连接。 在给定的一分钟时间间隔内共享以下属性相同值的物理网络连接将聚合到 *VMConnection* 中的单个逻辑记录内。 
 
-| properties | 描述 |
+| properties | 说明 |
 |:--|:--|
 | `Direction` |连接方向，值为 *inbound* 或 *outbound* |
 | `Machine` |计算机 FQDN |
@@ -338,7 +338,7 @@ Linux：
 
 为了帮助你权衡分组造成的影响，以下记录属性中提供了有关分组的物理连接数的信息：
 
-| properties | 描述 |
+| properties | 说明 |
 |:--|:--|
 | `LinksEstablished` |在报告时间范围内建立的物理网络连接数 |
 | `LinksTerminated` |在报告时间范围内终止的物理网络连接数 |
@@ -349,7 +349,7 @@ Linux：
 
 除了连接计数指标以外，以下记录属性中还包含了有关在给定逻辑连接或网络端口上发送和接收的数据量的信息：
 
-| properties | 描述 |
+| properties | 说明 |
 |:--|:--|
 | `BytesSent` |在报告时间范围内发送的字节总数 |
 | `BytesReceived` |在报告时间范围内接收的字节总数 |
@@ -377,7 +377,7 @@ Linux：
 
 *VMConnection* 还包含以下记录属性中每个连接记录的远程端的地理位置信息： 
 
-| properties | 描述 |
+| properties | 说明 |
 |:--|:--|
 | `RemoteCountry` |托管 RemoteIp 的国家/地区的名称。  例如，*美国* |
 | `RemoteLatitude` |地理位置的纬度。  例如 *47.68* |
@@ -387,7 +387,7 @@ Linux：
 
 将会根据一组 IP 检查 *VMConnection* 表中的每个 RemoteIp 属性，以识别已知的恶意活动。 如果 RemoteIp 识别为恶意，则会在以下记录属性中填充以下属性（如果未将该 IP 视为恶意，则这些属性为空）：
 
-| properties | 描述 |
+| properties | 说明 |
 |:--|:--|
 | `MaliciousIp` |RemoteIp 地址 |
 | `IndicatorThreadType` |检测到的威胁标志是以下值之一：Botnet**、C2**、CryptoMining**、Darknet**、DDos**、MaliciousUrl**、Malware**、Phishing**、Proxy**、PUA** 和 Watchlist**。   |
@@ -405,7 +405,7 @@ Linux：
 
 类型为 *ServiceMapComputer_CL* 的记录包含具有服务映射代理的服务器的清单数据。 这些记录的属性在下表中列出：
 
-| properties | 描述 |
+| properties | 说明 |
 |:--|:--|
 | `Type` | *ServiceMapComputer_CL* |
 | `SourceSystem` | *OpsManager* |
@@ -421,7 +421,7 @@ Linux：
 | `PhysicalMemory_d` | 物理内存（以 MB 为单位） |
 | `Cpus_d` | CPU 数 |
 | `CpuSpeed_d` | CPU 速度（以 MHz 为单位）|
-| `VirtualizationState_s` | *未知*，*物理*，*虚拟*，*虚拟机管理程序* |
+| `VirtualizationState_s` | *未知*、*物理*、*虚拟、虚拟**机监控程序* |
 | `VirtualMachineType_s` | *hyperv*、*vmware* 等等 |
 | `VirtualMachineNativeMachineId_g` | 由虚拟机监控程序分配的 VM ID |
 | `VirtualMachineName_s` | VM 的名称 |
@@ -431,7 +431,7 @@ Linux：
 
 类型为 *ServiceMapProcess_CL* 的记录包含具有服务映射代理的服务器上 TCP 连接进程的清单数据。 这些记录的属性在下表中列出：
 
-| properties | 描述 |
+| properties | 说明 |
 |:--|:--|
 | `Type` | *ServiceMapProcess_CL* |
 | `SourceSystem` | *OpsManager* |
@@ -571,7 +571,7 @@ Microsoft Dependency Agent 基于 Microsoft Visual Studio 运行时库。 如果
 
 下表列出了代码号和建议的解决方法。
 
-| 代码 | 描述 | 解决方法 |
+| 代码 | 说明 | 解决方法 |
 |:--|:--|:--|
 | 0x17 | 库安装程序需要尚未安装的 Windows 更新。 | 查看最新的库安装程序日志。<br><br>如果对 `Windows8.1-KB2999226-x64.msu` 的引用后跟行 `Error 0x80240017: Failed to execute MSU package,`，则不具备安装 KB2999226 的先决条件。 请按照 [Windows 中的通用 C 运行时](https://support.microsoft.com/kb/2999226)一文中必备组件部分的说明进行操作。 可能需要运行 Windows 更新并重新启动多次，才能安装好必备组件。<br><br>再次运行 Microsoft Dependency Agent 安装程序。 |
 
@@ -581,24 +581,24 @@ Microsoft Dependency Agent 基于 Microsoft Visual Studio 运行时库。 如果
 
 如果已成功安装 Dependency Agent，但在服务映射解决方案中看不到计算机：
 * Dependency Agent 是否已安装成功？ 可通过检查是否已安装并运行服务来验证这一点。<br><br>
-**视窗**：查找名为**微软依赖项代理**的服务。
-**Linux**：寻找运行过程**微软依赖代理**。
+**Windows**：查找名为 " **Microsoft 依赖关系代理**" 的服务。
+**Linux**：查找正在运行的进程**microsoft 依赖关系代理**。
 
-* 您是否在[日志分析免费层](https://azure.microsoft.com/pricing/details/monitor/)？ 免费计划允许最多五台唯一的服务地图计算机。 任何后续计算机将不会显示在服务映射中，即使前五台计算机不再发送数据。
+* 你是否处于[Log Analytics 免费层](https://azure.microsoft.com/pricing/details/monitor/)？ 免费计划最多允许五个独特的服务映射机。 任何后续计算机不会出现在服务映射中，即使之前的五个不再发送数据。
 
-* 您的服务器是否向 Azure 监视器日志发送日志和 perf 数据？ 转到 Azure 监视器\日志并运行计算机的以下查询： 
+* 服务器是否发送日志和性能数据来 Azure Monitor 日志？ 请参阅 Azure Monitor\Logs 并为你的计算机运行以下查询： 
 
     ```kusto
     Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
     ```
 
-结果中是否有多种不同的事件？ 是否为最新数据？ 如果是这样，日志分析代理操作正常并与工作区通信。 如果没有，请检查计算机上的代理：[日志分析代理的 Windows 故障排除](../platform/agent-windows-troubleshoot.md)或[日志分析代理的 Linux 故障排除](../platform/agent-linux-troubleshoot.md)。
+结果中是否有多种不同的事件？ 是否为最新数据？ 如果是这样，则 Log Analytics 代理正在正常运行，并且与工作区通信。 如果没有，请检查计算机上的代理：[用于 Windows 的 Log Analytics 代理故障排除](../platform/agent-windows-troubleshoot.md)或[用于 Linux 的 Log Analytics 代理故障排除](../platform/agent-linux-troubleshoot.md)。
 
 #### <a name="server-appears-in-service-map-but-has-no-processes"></a>服务器会在服务映射中显示，但没有任何进程
 
-如果在 Service Map 中看到计算机，但它没有进程或连接数据，则表示已安装并运行依赖项代理，但内核驱动程序未加载。 
+如果你在服务映射中看到你的计算机，但它没有进程或连接数据，则表明依赖关系代理已安装并正在运行，但内核驱动程序未加载。 
 
-检查`C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file`（Windows）或`/var/opt/microsoft/dependency-agent/log/service.log file`（Linux）。 文件的最后几行应指出为何未加载内核。 例如，如果更新内核，则内核在 Linux 上可能不受支持。
+检查`C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` （Windows）或`/var/opt/microsoft/dependency-agent/log/service.log file` （Linux）。 文件的最后几行应指出为何未加载内核。 例如，如果更新内核，则内核在 Linux 上可能不受支持。
 
 ## <a name="feedback"></a>反馈
 

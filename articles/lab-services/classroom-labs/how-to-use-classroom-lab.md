@@ -15,10 +15,10 @@ ms.custom: mvc
 ms.date: 03/17/2020
 ms.author: spelluru
 ms.openlocfilehash: db1e60ccd7e05cb8b6923d6b2ec008cdfb76eaa1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79501930"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>如何访问 Azure 实验室服务中的课堂实验室
@@ -26,7 +26,7 @@ ms.locfileid: "79501930"
 
 ## <a name="register-to-the-lab"></a>注册到实验室
 
-1. 导航到从教授/教师处收到的注册 URL****。 完成注册后，不需使用注册 URL。 而是使用 URL： [https://labs.azure.com](https://labs.azure.com)。 目前尚不支持 Internet Explorer 11。 
+1. 导航到从教授/教师处收到的注册 URL****。 完成注册后，不需使用注册 URL。 请改用 URL： [https://labs.azure.com](https://labs.azure.com)。 目前尚不支持 Internet Explorer 11。 
 1. 使用学校帐户登录服务以完成注册。 
 
     > [!NOTE]
@@ -80,7 +80,7 @@ ms.locfileid: "79501930"
 ## <a name="view-all-the-classroom-labs"></a>查看所有课堂实验室
 在注册到实验室以后，可以通过下述步骤查看所有的教室实验室： 
 
-1. 导航到[https://labs.azure.com](https://labs.azure.com)。 目前尚不支持 Internet Explorer 11。 
+1. 导航到 [https://labs.azure.com](https://labs.azure.com)。 目前尚不支持 Internet Explorer 11。 
 2. 使用注册到实验室时使用过的用户帐户登录到服务。 
 3. 确认看到可以访问的所有实验室。 
 

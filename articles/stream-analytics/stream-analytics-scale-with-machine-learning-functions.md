@@ -8,16 +8,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.openlocfilehash: 5b08625d055063b3804a35a3344ff01c7edb79de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80067002"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>使用 Azure 机器学习工作室（经典）函数缩放流分析作业
 
 > [!TIP]
-> 强烈建议使用[Azure 机器学习 UDF](machine-learning-udf.md)而不是 Azure 机器学习工作室（经典）UDF，以提高性能和可靠性。
+> 强烈建议使用[Azure 机器学习 udf](machine-learning-udf.md)而不是 Azure 机器学习 Studio （经典） udf 来提高性能和可靠性。
 
 本文介绍如何有效缩放使用 Azure 机器学习函数的 Azure 流分析作业。 有关在一般情况下如何缩放流分析作业的信息，请参阅文章[缩放作业](stream-analytics-scale-jobs.md)。
 
@@ -25,7 +25,7 @@ ms.locfileid: "80067002"
 
 流分析中的机器学习函数可像流分析查询语言中的常规函数调用那样使用。 但在幕后，函数调用实际上是 Azure 机器学习 Web 服务请求。
 
-可以通过在同一个 Web 服务 API 调用中“批处理”多个行来提高机器学习 Web 服务请求的吞吐量。 这种分组称为微型批。 有关详细信息，请参阅[Azure 机器学习工作室（经典）Web 服务](../machine-learning/studio/consume-web-services.md)。 预览版中对流分析中的 Azure 机器学习工作室（经典）的支持。
+可以通过在同一个 Web 服务 API 调用中“批处理”多个行来提高机器学习 Web 服务请求的吞吐量。 这种分组称为微型批。 有关详细信息，请参阅[Azure 机器学习 Studio （经典） Web 服务](../machine-learning/studio/consume-web-services.md)。 流分析中对 Azure 机器学习 Studio （经典）的支持处于预览阶段。
 
 ## <a name="configure-a-stream-analytics-job-with-machine-learning-functions"></a>使用机器学习函数配置流分析作业
 
@@ -36,7 +36,7 @@ ms.locfileid: "80067002"
 
 若要确定适当的 SU 值，请决定是要优化流分析作业的延迟，还是优化每个 SU 的吞吐量。 可能会始终将 SU 添加到某个作业，以提高适当分区的流分析查询的吞吐量。 增加 SU 会增大运行作业的成本。
 
-确定流分析作业的延迟*容限*。 增加批处理大小将增加 Azure 机器学习请求的延迟和流分析作业的延迟。
+确定流分析作业的延迟*容限*。 增加批大小会增加 Azure 机器学习请求的延迟和流分析作业的延迟。
 
 增加批大小可让流分析作业使用**相同数量**的机器学习 Web 服务请求来处理**更多的事件**。 机器学习 Web 服务延迟增大与批大小增大之间通常呈亚线性关系。 
 
@@ -56,7 +56,7 @@ ms.locfileid: "80067002"
 
 ![使用机器学习函数公式缩放流分析](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-02.png "使用机器学习函数公式缩放流分析")
 
-还可以在机器学习 Web 服务中配置“最大并发调用数”。 建议将此参数设置为最大值（当前为 200）。
+还可以在机器学习 Web 服务中配置“最大并发调用数”。 建议将此参数设置为最大值（目前为200）。
 
 有关此设置的详细信息，请参阅[机器学习 Web 服务的缩放文章](../machine-learning/studio/scaling-webservice.md)。
 
@@ -79,7 +79,7 @@ ms.locfileid: "80067002"
 
 此流分析作业使用 1 个 SU 是否能够处理这种流量？ 使用默认批大小 1000，该作业应该能够跟上输入速度。 使用情绪分析机器学习 Web 服务（默认批大小为 1000）的默认延迟时，延迟不超过 1 秒。
 
-流分析作业**的总体**或端到端延迟通常为几秒钟。 请仔细了解此流分析作业，*特别是*机器学习函数调用数。 如果批大小为 1000，则 10,000 个事件的吞吐量将向 Web 服务发送大约 10 个请求。 即使使用一个 SU，也有足够的并发连接可以容纳此输入流量。
+流分析作业的**整体**或端到端延迟通常是几秒钟。 请仔细了解此流分析作业，*特别是*机器学习函数调用数。 如果批大小为 1000，则 10,000 个事件的吞吐量将向 Web 服务发送大约 10 个请求。 即使使用一个 SU，也有足够的并发连接可以容纳此输入流量。
 
 如果输入事件率增加 100 倍，而流分析作业需要每秒处理 1000000 条推文。 有两个选项来完成增加的规模：
 
@@ -120,7 +120,7 @@ ms.locfileid: "80067002"
 通常情况下，我们为机器学习函数设置的批大小不会被每个流分析作业“拉取”返回的事件数整除。 如果发生这种情况，机器学习 Web 服务将通过“部分”批处理调用。 使用部分批可避免在合并拉取间的事件时造成其他作业延迟开销。
 
 ## <a name="new-function-related-monitoring-metrics"></a>与函数相关的新监视指标
-在流分析作业的“监视”区域，新增了三个与函数相关的指标。 它们是**功能请求**、**功能事件**和**失败功能请求**，如下图所示。
+在流分析作业的“监视”区域，新增了三个与函数相关的指标。 它们是**函数请求**、**函数事件**和**失败的函数请求**，如下图所示。
 
 ![使用机器学习函数指标缩放流分析](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-01.png "使用机器学习函数指标缩放流分析")
 
@@ -132,7 +132,7 @@ ms.locfileid: "80067002"
 
 **失败的函数请求数**：失败的函数请求数量。
 
-## <a name="key-takeaways"></a>要点
+## <a name="key-takeaways"></a>关键结论
 
 若要使用机器学习函数缩放流分析作业，请考虑以下因素：
 
@@ -145,7 +145,7 @@ ms.locfileid: "80067002"
 ## <a name="next-steps"></a>后续步骤
 若要了解流分析的更多内容，请参阅：
 
-* [使用 Azure 流分析开始](stream-analytics-real-time-fraud-detection.md)
+* [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
 * [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
 ms.openlocfilehash: dc5e251fee00ee22edb2261c1abd8404714834ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78668650"
 ---
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 每个请求都需要一个授权标头。 下表列出了每个服务支持的标头：
 
@@ -30,15 +30,15 @@ ms.locfileid: "78668650"
 
 ### <a name="how-to-get-an-access-token"></a>如何获取访问令牌
 
-若要获取访问令牌，需使用 `Ocp-Apim-Subscription-Key` 和订阅密钥向 `issueToken` 终结点发出请求。
+若要获取访问令牌，需使用 `issueToken` 和订阅密钥向 `Ocp-Apim-Subscription-Key` 终结点发出请求。
 
-终结点`issueToken`具有以下格式：
+`issueToken` 终结点具有以下格式：
 
 ```http
 https://<REGION_IDENTIFIER>.api.cognitive.microsoft.com/sts/v1.0/issueToken
 ```
 
-替换`<REGION_IDENTIFIER>`与匹配此表中订阅区域的标识符：
+将 `<REGION_IDENTIFIER>` 替换为与下表中的订阅区域匹配的标识符：
 
 [!INCLUDE [](cognitive-services-speech-service-region-identifier.md)]
 

@@ -1,7 +1,7 @@
 ---
-title: 如何指定识别模型 - 面
+title: 如何指定识别模型-人脸
 titleSuffix: Azure Cognitive Services
-description: 本文将介绍如何选择与 Azure 面应用程序一起使用的识别模型。
+description: 本文介绍如何选择要用于 Azure 面部应用程序的识别模式。
 services: cognitive-services
 author: longli0
 manager: nitinme
@@ -11,21 +11,21 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: longl
 ms.openlocfilehash: da9ad5576d146c007e45124668875e9681860ce6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76938828"
 ---
 # <a name="specify-a-face-recognition-model"></a>指定人脸识别模型
 
-本指南演示如何使用 Azure 人脸服务为人脸检测、识别和相似性搜索指定人脸识别模型。
+本指南演示如何使用 Azure 人脸服务为人脸检测、标识和相似性搜索指定人脸识别模型。
 
-人脸服务使用机器学习模型在图像中对人脸执行操作。 我们将会根据客户反馈以及研究成果不断改进模型的准确度，并作为模型更新交付改进结果。 开发人员可以选择指定想要使用的人脸识别模型版本；他们可以选择最适合其用例的模型。
+人脸服务使用机器学习模型对图像中的人脸执行操作。 我们将会根据客户反馈以及研究成果不断改进模型的准确度，并作为模型更新交付改进结果。 开发人员可以选择指定想要使用的人脸识别模型版本；他们可以选择最适合其用例的模型。
 
 对于新用户，我们建议使用最新的模型。 请继续阅读，了解如何在不同的人脸操作中指定模型，同时避免模型冲突。 如果高级用户不确定是否要切换到最新的模型，可以转到[评估不同的模型](#evaluate-different-models)部分来评估新模型，并使用当前数据集比较结果。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 读者应该熟悉 AI 人脸检测和识别的概念。 否则请先阅读以下操作指南：
 
@@ -57,7 +57,7 @@ var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recog
 
 ## <a name="identify-faces-with-specified-model"></a>使用指定的模型识别人脸
 
-人脸服务可以从图像中提取人脸数据并将其与**Person**对象关联（例如，通过[添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)API 调用），并且多个**Person**对象可以一起存储在**PersonGroup**中。 然后，可以根据 **PersonGroup** 比较新的人脸（使用 [Face - Identify] 调用），该组中匹配的人员将被识别。
+人脸服务可以提取图像中的人脸数据，并将其与**Person**对象关联（例如，通过添加人[脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)API 调用），多个**person**对象可以一起存储在**person group**中。 然后，可以根据 **PersonGroup** 比较新的人脸（使用 [Face - Identify] 调用），该组中匹配的人员将被识别。
 
 **PersonGroup** 中的所有 **Person** 应有一个唯一的识别模型，在创建该组（使用 [PersonGroup - Create] 或 [LargePersonGroup - Create]）时，可以使用 `recognitionModel` 参数指定此模型。 如果不指定此参数，则会使用原始的 `recognition_01` 模型。 某个组始终使用创建它时所用的识别模型，将新的人脸添加到该组时，它们将与此模型相关联；创建组后无法更改此行为。 若要查看 **PersonGroup** 是使用哪个模型配置的，请结合设置为 **true** 的 _returnRecognitionModel_ 参数使用 [PersonGroup - Get] API。
 
@@ -107,9 +107,9 @@ await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognit
 
 本文已介绍如何指定要与不同人脸服务 API 配合使用的识别模型。 接下来，请遵循相应的快速入门开始使用人脸识别。
 
-* [面 .NET SDK](../Quickstarts/csharp-sdk.md)
-* [人脸 Python SDK](../Quickstarts/python-sdk.md)
-* [人脸去 SDK](../Quickstarts/go-sdk.md)
+* [面部 .NET SDK](../Quickstarts/csharp-sdk.md)
+* [面部 Python SDK](../Quickstarts/python-sdk.md)
+* [面部转向 SDK](../Quickstarts/go-sdk.md)
 
 [人脸 - 检测]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
 [人脸 - 查找相似人脸]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237

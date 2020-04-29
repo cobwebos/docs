@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: a6ab126c3a5b0d2a82b17fac42dcc9e20f6aba3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79480447"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>使用工作簿创建用于 VM 的 Azure Monitor 的交互式报表
@@ -19,14 +19,14 @@ ms.locfileid: "79480447"
 
 在如下所述的场景中，工作簿非常有用：
 
-* 当您事先不知道感兴趣的指标时，探索虚拟机的使用：CPU 利用率、磁盘空间、内存、网络依赖关系等。与其他使用情况分析工具不同，工作簿允许您组合多种可视化和分析，使其成为这种自由形式的探索的绝佳去。
+* 如果事先不知道感兴趣的指标，请浏览虚拟机的使用情况： CPU 使用率、磁盘空间、内存、网络依赖项等。与其他使用情况分析工具不同，工作簿允许您组合多种类型的可视化和分析，使其适合这种自由格式浏览。
 * 通过显示关键计数器的指标和其他日志事件，向团队解释最近预配的 VM 的性能如何。
 * 与团队的其他成员分享调整 VM 试验规模的结果。 可以用文本解释试验的目标，然后展示用于评估试验的每个使用情况指标和 Analytics 查询，以及说明每个指标是否高于或低于目标的标注。
 * 结合数据、文本说明和后续步骤讨论，报告故障对 VM 使用的影响，从而防止未来发生故障。
 
-下表总结了 Azure 监视器为 VM 提供的工作簿，以便开始。
+下表总结了用于 VM 的 Azure Monitor 包括的工作簿的工作簿。
 
-| 工作簿 | 描述 | 范围 |
+| 工作簿 | 说明 | 范围 |
 |----------|-------------|-------|
 | 性能 | 在单个工作簿中提供“前 N 项列表”和“图表”视图的可自定义版本，利用所有已启用的 Log Analytics 性能计数器。| 大规模 |
 | 性能计数器 | 基于众多性能计数器的“前 N 项”图表视图。 | 大规模 |
@@ -40,25 +40,25 @@ ms.locfileid: "79480447"
 | 性能 | 提供性能视图的可自定义版本，利用所有已启用的 Log Analytics 性能计数器。 | 单个 VM | 
 | 连接 | “连接”提供 VM 建立的入站和出站连接的深入视图。 | 单个 VM |
  
-## <a name="creating-a-new-workbook"></a>创建新工作簿
+## <a name="creating-a-new-workbook"></a>创建新的工作簿
 
 工作簿由可单独编辑的图表、表格、文本和输入控件构成的各部分组成。 为了更好地理解工作簿，首先让我们打开一个模板，并逐步创建一个自定义工作簿。 
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 2. 选择“虚拟机”。****
 
 3. 从列表中选择一个虚拟机。
 
-4. 在 VM 页上，在 **"监视**"部分中，选择 **"见解**"。
+4. 在 "VM" 页上的 "**监视**" 部分中，选择 " **Insights**"。
 
-5. 在 VM 见解页面上选择“性能”或“映射”选项卡，然后通过页面上的链接选择“查看工作簿”。************ 从下拉列表中，选择 **"转到库**"。
+5. 在 VM 见解页面上选择“性能”或“映射”选项卡，然后通过页面上的链接选择“查看工作簿”。************ 从下拉列表中，选择 "**前往库**"。
 
     ![工作簿下拉列表屏幕截图](media/vminsights-workbooks/workbook-dropdown-gallery-01.png)
 
-    这将启动工作簿库与一些预构建的工作簿，以帮助您入门。
+    这会启动工作簿库，其中包含许多预生成的工作簿以帮助你入门。
 
-7. 通过选择 **"新建**"创建新工作簿。
+7. 通过选择 "**新建**" 创建新的工作簿。
 
     ![工作簿库的屏幕截图](media/vminsights-workbooks/workbook-gallery-01.png)
 
@@ -96,7 +96,7 @@ ms.locfileid: "79480447"
 
 此外，不仅限于在通过工作簿启动的虚拟机的上下文中进行查询。 可以跨多个虚拟机以及 Log Analytics 工作区查询，前提是你对这些资源拥有访问权限。
 
-使用**工作区**标识符包含其他 Log Analytics 工作区或特定 Application Insights 应用中的数据。 要了解有关跨资源查询的详细信息，请参阅[官方指南](../log-query/cross-workspace-query.md)。
+使用**工作区**标识符包含其他 Log Analytics 工作区或特定 Application Insights 应用中的数据。 若要了解有关跨资源查询的详细信息，请参阅[官方指导](../log-query/cross-workspace-query.md)。
 
 ### <a name="advanced-analytic-query-settings"></a>高级分析查询设置
 
@@ -164,7 +164,7 @@ VMConnection
 
 用户在文本框中输入的值将直接在查询中替换，不带任何转义或引号。 如果所需值为字符串，则查询应该在参数周围采用引号（如 '{parameter}'）****。
 
-文本参数允许在任意位置使用文本框中的值。 它可以是表名、列名、函数名称、运算符等。 文本参数类型具有一个设置 **"从分析查询获取默认值**"，它允许工作簿作者使用查询填充该文本框的默认值。
+文本参数允许在任意位置使用文本框中的值。 它可以是表名称、列名称、函数名称、运算符等。 Text 参数类型有一个 "**通过 analytics 查询获取默认值**" 选项，该选项允许工作簿作者使用查询来填充该文本框的默认值。
 
 使用日志查询中的默认值时，仅第一行的第一个值（行 0，列 0）用作默认值。 因此建议限制查询，以仅返回一行和一列。 忽略由查询返回的其他任何数据。 
 
@@ -182,7 +182,7 @@ VMConnection
 
 ![用于 VM 的 Azure Monitor 工作簿部分编辑控件](media/vminsights-workbooks/011-workbook-using-dropdown.png)
 
-这将启动 **"编辑参数"** 菜单项。
+这将启动**编辑参数**菜单项。
 
 ![用于 VM 的 Azure Monitor 工作簿部分编辑控件](media/vminsights-workbooks/012-workbook-edit-parameter.png)
 

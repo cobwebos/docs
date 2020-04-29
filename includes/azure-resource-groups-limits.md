@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 02/24/2020
 ms.author: tomfitz
 ms.openlocfilehash: c883383d3c870689bb95f808f6f60c5185c165c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80334947"
 ---
 | 资源 | 限制 |
 | --- | --- |
-| 每个[资源组的资源](../articles/azure-resource-manager/management/overview.md#resource-groups) | 资源不受资源组的限制。 相反，它们受资源组中的资源类型的限制。 请参阅下一行。 |
-| 每个资源组的资源，每个资源类型 |800 - 某些资源类型可能超过 800 限制。 请参阅[不限于每个资源组 800 个实例的资源](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md)。 |
+| 每个[资源组](../articles/azure-resource-manager/management/overview.md#resource-groups)的资源 | 资源不受资源组限制。 相反，它们受资源组中的资源类型的限制。 请参阅下一行。 |
+| 每个资源组的资源数（按资源类型） |800-某些资源类型可能超过800限制。 请参阅[不限于每个资源组 800 个实例的资源](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md)。 |
 | 部署历史记录中每个资源组的部署数 |800<sup>1</sup> |
 | 每个部署的资源数 |800 |
 | 管理锁数（按唯一的作用域） |20 |
@@ -26,7 +26,7 @@ ms.locfileid: "80334947"
 
 #### <a name="template-limits"></a>模板限制
 
-| “值” | 限制 |
+| 值 | 限制 |
 | --- | --- |
 | 参数 |256 |
 | 变量 |256 |

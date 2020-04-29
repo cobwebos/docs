@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: erhopf
 ms.openlocfilehash: f51288da6af3580ba7592950cde4f17d7adad529
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80052625"
 ---
 # <a name="what-is-speech-translation"></a>什么是语音翻译？
@@ -31,7 +31,7 @@ Microsoft 翻译引擎有两种不同的支持方法：统计机器翻译 (SMT) 
 
 下面是可以通过语音 SDK 和 REST API 获得的功能：
 
-| 用例 | SDK 中 IsInRole 中的声明 | REST |
+| 使用案例 | SDK | REST |
 |----------|-----|------|
 | 包含识别结果的语音转文本翻译。 | 是 | 否 |
 | 语音转语音翻译。 | 是 | 否 |
@@ -41,15 +41,15 @@ Microsoft 翻译引擎有两种不同的支持方法：统计机器翻译 (SMT) 
 
 我们专门提供了快速入门来帮助你在 10 分钟内运行代码。 下表按语言列出了语音翻译快速入门。
 
-| 快速入门 | Platform | API 参考 |
+| 快速入门 | 平台 | API 参考 |
 |------------|----------|---------------|
-| [C#，.NET 核心](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore) | Windows | [浏览](https://aka.ms/csspeech/csharpref) |
-| [C#、.NET Framework](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [浏览](https://aka.ms/csspeech/csharpref) |
-| [C#，UWP](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=uwp) | Windows | [浏览](https://aka.ms/csspeech/csharpref) |
-| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-cpp&tabs=windows) | Windows | [浏览](https://aka.ms/csspeech/cppref)|
-| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-java&tabs=jre) | Windows、Linux、macOS | [浏览](https://aka.ms/csspeech/javaref) |
+| [C#、.NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore) | Windows | [“浏览”](https://aka.ms/csspeech/csharpref) |
+| [C#、.NET Framework](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [“浏览”](https://aka.ms/csspeech/csharpref) |
+| [C#、UWP](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=uwp) | Windows | [“浏览”](https://aka.ms/csspeech/csharpref) |
+| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-cpp&tabs=windows) | Windows | [“浏览”](https://aka.ms/csspeech/cppref)|
+| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-java&tabs=jre) | Windows、Linux、macOS | [“浏览”](https://aka.ms/csspeech/javaref) |
 
-## <a name="sample-code"></a>示例代码
+## <a name="sample-code"></a>代码示例
 
 GitHub 上提供了语音 SDK 的示例代码。 这些示例涵盖了常见方案，例如，从文件或流中读取音频、连续和单次识别/翻译，以及使用自定义模型。
 
@@ -57,17 +57,17 @@ GitHub 上提供了语音 SDK 的示例代码。 这些示例涵盖了常见方�
 
 ## <a name="migration-guides"></a>迁移指南
 
-如果您的应用程序、工具或产品正在使用[翻译语音 API，](https://docs.microsoft.com/azure/cognitive-services/translator-speech/overview)我们创建了指南以帮助您迁移到语音服务。
+如果你的应用程序、工具或产品正在使用[语音翻译 API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/overview)，我们已创建了可帮助你迁移到语音服务的指南。
 
-* [从翻译语音 API 迁移到语音服务](how-to-migrate-from-translator-speech-api.md)
+* [从语音翻译 API 迁移到语音服务](how-to-migrate-from-translator-speech-api.md)
 
 ## <a name="reference-docs"></a>参考文档
 
 * [语音 SDK](speech-sdk-reference.md)
 * [语音设备 SDK](speech-devices-sdk.md)
-* [REST API：语音到文本](rest-speech-to-text.md)
-* [REST API：文本到语音](rest-text-to-speech.md)
-* [REST API：批处理转录和自定义](https://westus.cris.ai/swagger/ui/index)
+* [REST API：语音转文本](rest-speech-to-text.md)
+* [REST API：文本转语音](rest-text-to-speech.md)
+* [REST API：批量听录和自定义](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: 排除 Linux VM 启动问题，由于 fstab 错误 |微软文档
+title: 排查由于 fstab 错误而导致的 Linux VM 启动问题 |Microsoft Docs
 description: 解释 Linux VM 为何无法启动，以及如何解决此问题。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
 ms.openlocfilehash: 7e16eabc4f9572591eabd37b93258fcd783cce7e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80351149"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>排查 fstab 错误导致的 Linux VM 启动问题
@@ -29,7 +29,7 @@ ms.locfileid: "80351149"
 
 下面是可能的错误示例。
 
-### <a name="example-1-a-disk-is-mounted-by-the-scsi-id-instead-of-the-universally-unique-identifier-uuid"></a>示例 1：磁盘由 SCSI ID 而不是通用唯一标识符 （UUID） 装载
+### <a name="example-1-a-disk-is-mounted-by-the-scsi-id-instead-of-the-universally-unique-identifier-uuid"></a>示例 1：磁盘是按 SCSI ID 而不是全局唯一标识符 (UUID) 装载的
 
 ```
 [K[[1;31m TIME [0m] Timed out waiting for device dev-incorrect.device.
@@ -41,7 +41,7 @@ Give root password for maintenance
 (or type Control-D to continue)
 ```
 
-### <a name="example-2-an-unattached-device-is-missing-on-centos"></a>示例 2：CentOS 上缺少未连接的设备
+### <a name="example-2-an-unattached-device-is-missing-on-centos"></a>示例 2：CentOS 上缺少某个未附加的设备
 
 ```
 Checking file systems…
@@ -67,14 +67,14 @@ e2fsck -b 8193 <device>
 [/sbin/fsck.ext3 (1) — /DATATEMP] fsck.ext3 -a /dev/sde1 fsck.ext3: No such file or directory while trying to open /dev/sde1
 ```
 
-### <a name="example-3-a-vm-cannot-start-because-of-an-fstab-misconfiguration-or-because-the-disk-is-no-longer-attached"></a>示例 3：由于 fstab 配置错误或磁盘不再连接，VM 无法启动
+### <a name="example-3-a-vm-cannot-start-because-of-an-fstab-misconfiguration-or-because-the-disk-is-no-longer-attached"></a>示例 3：由于 fstab 配置不当或磁盘不再处于附加状态，VM 无法启动
 
 ```
 The disk drive for /var/lib/mysql is not ready yet or not present.
 Continue to wait, or Press S to skip mounting or M for manual recovery
 ```
 
-### <a name="example-4-a-serial-log-entry-shows-an-incorrect-uuid"></a>示例 4：串行日志条目显示不正确的 UUID
+### <a name="example-4-a-serial-log-entry-shows-an-incorrect-uuid"></a>示例 4：串行日志条目显示错误的 UUID
 
 ```
 Checking filesystems
@@ -100,15 +100,15 @@ Give root password for maintenance
 
 ## <a name="resolution"></a>解决方法
 
-要解决此问题，请使用 Azure 虚拟机的串行控制台启动紧急模式的 VM。 然后使用该工具修复文件系统。 如果您的 VM 上未启用串行控制台，请转到["修复 VM 脱机](#repair-the-vm-offline)"部分。
+若要解决此问题，请使用 Azure 虚拟机的串行控制台在紧急模式下启动 VM。 然后使用该工具修复文件系统。 如果虚拟机上未启用串行控制台，请参阅[修复 vm 脱机](#repair-the-vm-offline)部分。
 
 ## <a name="use-the-serial-console"></a>使用串行控制台
 
-### <a name="using-single-user-mode"></a>使用单一用户模式
+### <a name="using-single-user-mode"></a>使用单用户模式
 
 1. 连接到[串行控制台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)。
-2. 使用串行控制台采用单用户模式[单用户模式](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)
-3. 一旦 vm 引导到单一用户模式。 使用偏好的文本编辑器打开 fstab 文件。 
+2. 使用串行控制台获取单用户模式[单一用户](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)模式
+3. Vm 启动到单用户模式后。 使用偏好的文本编辑器打开 fstab 文件。 
 
    ```
    # nano /etc/fstab
@@ -133,7 +133,7 @@ Give root password for maintenance
    # reboot -f
    ```
 > [!Note]
-   > 您还可以使用"ctrl_x"命令，该命令也会重新启动 vm。
+   > 还可以使用 "ctrl + x" 命令，该命令还将重新启动 vm。
 
 
 8. 如果条目已成功做出注释或修复，系统应会在门户中显示 bash 提示符。 检查是否可以连接到 VM。
@@ -141,12 +141,12 @@ Give root password for maintenance
 ### <a name="using-root-password"></a>使用根密码
 
 1. 连接到[串行控制台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)。
-2. 使用本地用户和密码登录系统。
+2. 使用本地用户和密码登录到系统。
 
    > [!Note]
-   > 不能使用 SSH 密钥在串行控制台中登录到系统。
+   > 不能使用 SSH 密钥登录到串行控制台中的系统。
 
-3. 查找指示磁盘未装载的错误。 在以下示例中，系统尝试附加一个不再存在的磁盘：
+3. 查找指示磁盘未装入的错误。 在以下示例中，系统尝试附加一个不再存在的磁盘：
 
    ```
    [DEPEND] Dependency failed for /datadisk1.
@@ -161,7 +161,7 @@ Give root password for maintenance
 
 4. 使用 root 密码连接到 VM（基于 Red Hat 的 VM）。
 
-5. 使用偏好的文本编辑器打开 fstab 文件。 安装磁盘后，运行 Nano 的以下命令：
+5. 使用偏好的文本编辑器打开 fstab 文件。 装载磁盘后，为 Nano 运行以下命令：
 
    ```
    $ nano /mnt/troubleshootingdisk/etc/fstab
@@ -180,11 +180,11 @@ Give root password for maintenance
 
 8. 保存对 fstab 文件所做的更改。
 
-9. 重启虚拟机。
+9. 重新启动虚拟机。
 
 10. 如果条目已成功做出注释或修复，系统应会在门户中显示 bash 提示符。 检查是否可以连接到 VM。
 
-11. 通过运行装载 +命令来测试任何 fstab 更改时，请检查您的装载点。 如果未出错，则装入点应是正常的。
+11. 通过运行 mount – a 命令来测试任何 fstab 更改时检查装入点。 如果未出错，则装入点应是正常的。
 
 ## <a name="repair-the-vm-offline"></a>修复 VM 脱机
 
@@ -228,7 +228,7 @@ Give root password for maintenance
 
 10. 如果条目已成功做出注释或修复，系统应会在门户中显示 bash 提示符。 检查是否可以连接到 VM。
 
-11. 通过运行装载 +命令来测试任何 fstab 更改时，请检查您的装载点。 如果未出错，则装入点应是正常的。
+11. 通过运行 mount – a 命令来测试任何 fstab 更改时检查装入点。 如果未出错，则装入点应是正常的。
 
 12. 卸载并分离原始虚拟硬盘，然后从原始系统磁盘创建 VM。 为此，可以使用 [CLI 命令](troubleshoot-recovery-disks-linux.md)或 [VM 修复命令](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)（如果使用这些命令创建了恢复 VM）。
 

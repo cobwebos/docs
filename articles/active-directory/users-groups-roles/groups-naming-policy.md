@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 活动目录中强制实施组命名策略 |微软文档
-description: 如何在 Azure 活动目录中为 Office 365 组设置命名策略
+title: 在 Azure Active Directory 中强制执行组命名策略 |Microsoft Docs
+description: 如何在 Azure Active Directory 中为 Office 365 组设置命名策略
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,26 +15,26 @@ ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 141e83e21db18f21468113fd9927c2bdd2ed176d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79497879"
 ---
-# <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>在 Azure 活动目录中的 Office 365 组强制实施命名策略
+# <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>在 Azure Active Directory 中的 Office 365 组上强制实施命名策略
 
 要为用户创建或编辑的 Office 365 组实施一致的命名约定，请为 Azure Active Directory (Azure AD) 中的租户设置组命名策略。 例如，可以使用命名策略传达组的功能、成员身份、地理区域或创建组的人员。 使用命名策略还可帮助对通讯簿中的组分类。 可以使用策略来阻止组名称和别名中使用特定字词。
 
 > [!IMPORTANT]
-> 对 Office 365 组使用 Azure AD 命名策略需要您拥有但不一定为属于一个或多个 Office 365 组的每个唯一用户分配 Azure 活动目录高级 P1 许可证或 Azure AD 基本 EDU 许可证。
+> 如果对 Office 365 组使用 Azure AD 命名策略，则需要拥有但不一定要为一个或多个 Office 365 组的成员的每个唯一用户分配 Azure Active Directory Premium P1 许可证或 Azure AD Basic EDU 许可证。
 
-命名策略应用于创建组或编辑跨工作负荷（例如 Outlook、Microsoft Teams、SharePoint、Exchange 或 Planner）创建的组。 它应用于组名和组别名。 如果在 Azure AD 中设置命名策略，并且具有现有的 Exchange 组命名策略，则 Azure AD 命名策略将在组织中强制执行。
+命名策略应用于创建组或编辑跨工作负荷（例如 Outlook、Microsoft Teams、SharePoint、Exchange 或 Planner）创建的组。 它应用于组名和组别名。 如果在 Azure AD 中设置命名策略，并且具有现有的 Exchange 组命名策略，则会在你的组织中强制实施 Azure AD 命名策略。
 
-配置组命名策略后，该策略将应用于最终用户创建的新 Office 365 组。 命名策略不适用于某些目录角色，如全局管理员或用户管理员（请参阅下文，了解从组命名策略中免除的角色的完整列表）。 对于现有的 Office 365 组，策略在配置时不会立即应用。 组所有者编辑这些组的组名称后，将强制执行命名策略。
+配置组命名策略时，策略将应用于最终用户创建的新 Office 365 组。 命名策略不适用于某些目录角色，如全局管理员或用户管理员（有关从组命名策略中免除的角色的完整列表，请参阅下文）。 对于现有的 Office 365 组，在配置时，该策略不会立即应用。 组所有者编辑这些组的组名称后，将强制实施命名策略。
 
 ## <a name="naming-policy-features"></a>命名策略功能
 
-您可以通过两种不同的方式强制组命名策略：
+你可以通过两种不同的方式对组实施命名策略：
 
 - **前后缀命名策略** 可以定义前缀或后缀，稍后会自动添加这些前缀或后缀，以对组实施命名约定（例如，在组名称“GRP\_JAPAN\_My Group\_Engineering”中，GRP\_JAPAN\_ 是前缀，\_Engineering 是后缀）。 
 
@@ -69,7 +69,7 @@ ms.locfileid: "79497879"
 
 ### <a name="roles-and-permissions"></a>角色和权限
 
-要配置命名策略，需要其中一个命名角色：
+若要配置命名策略，需要以下角色之一：
 - 全局管理员
 - 组管理员
 - 用户管理员
@@ -89,14 +89,14 @@ ms.locfileid: "79497879"
 
     ![在管理中心打开“命名策略”页](./media/groups-naming-policy/policy.png)
 
-### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>查看或编辑前缀后缀命名策略
+### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>查看或编辑前缀-后缀命名策略
 
 1. 在“命名策略”页上，选择“组命名策略”。********
 1. 可以单独查看或编辑当前的前缀或后缀命名策略，只需选择需要在命名策略中强制实施的属性或字符串即可。
 1. 若要从列表中删除某个前缀或后缀，请选择该前缀或后缀，然后选择“删除”。**** 可以同时删除多个项。
-1. 通过选择 **"保存**"，保存更改以便新策略生效。
+1. 通过选择 "**保存**"，保存新策略的更改，使其生效。
 
-### <a name="edit-custom-blocked-words"></a>编辑自定义阻止的单词
+### <a name="edit-custom-blocked-words"></a>编辑自定义阻止字词
 
 1. 在“命名策略”页上，选择“阻止字词”。********
 
@@ -104,7 +104,7 @@ ms.locfileid: "79497879"
 
 1. 查看或编辑自定义阻止字词的当前列表，方法是选择“下载”。****
 1. 上传自定义阻止字词的新列表，方法是选择文件图标。
-1. 通过选择 **"保存**"，保存更改以便新策略生效。
+1. 通过选择 "**保存**"，保存新策略的更改，使其生效。
 
 ## <a name="install-powershell-cmdlets"></a>安装 PowerShell cmdlet
 
@@ -123,7 +123,7 @@ ms.locfileid: "79497879"
    Install-Module AzureADPreview
    ```
 
-   如果系统提示您访问不受信任的存储库，请输入**Y**。安装新模块可能需要几分钟时间。
+   如果系统提示你访问不受信任的存储库，请输入**Y**。新模块安装可能需要几分钟时间。
 
 ## <a name="configure-naming-policy-in-powershell"></a>在 PowerShell 中配置命名策略
 
@@ -168,7 +168,7 @@ ms.locfileid: "79497879"
    $Setting["CustomBlockedWordsList"]=“Payroll,CEO,HR"
    ```
   
-1. 保存新策略的设置以生效，如以下示例所示。
+1. 保存新策略的设置，使其生效，如以下示例中所示。
   
    ``` PowerShell
    Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
@@ -176,9 +176,9 @@ ms.locfileid: "79497879"
   
 就这么简单。 现已设置了命名策略，并添加了阻止字词。
 
-## <a name="export-or-import-custom-blocked-words"></a>导出或导入自定义阻止的单词
+## <a name="export-or-import-custom-blocked-words"></a>导出或导入自定义阻止字词
 
-有关详细信息，请参阅[有关配置组设置的 Azure 活动目录 cmdlet](groups-settings-cmdlets.md)一文。
+有关详细信息，请参阅文章[Azure Active Directory 用于配置组设置的 cmdlet](groups-settings-cmdlets.md)。
 
 下面的 PowerShell 脚本示例可导出多个阻止字词：
 
@@ -229,14 +229,14 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
    Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
    ```
 
-## <a name="experience-across-office-365-apps"></a>跨 Office 365 应用体验
+## <a name="experience-across-office-365-apps"></a>跨 Office 365 应用的体验
 
 在 Azure AD 中设置组命名策略后，用户在 Office 365 应用中创建组时会看到：
 
 - 在用户键入组名后立即看到随命名策略而定的名称预览（包括前缀和后缀）
 - 如果用户输入阻止字词，可看到一条错误消息，因此可删除阻止字词。
 
-工作负荷 | 合规性
+工作负载 | 合规性
 ----------- | -------------------------------
 Azure Active Directory 门户 | 如果用户在创建或编辑组时键入组名，Azure AD 门户和访问面板门户会显示命名策略强制使用的名称。 当用户输入自定义阻止字词时，会显示一错误消息以及阻止字词，以便用户删除它。
 Outlook Web Access (OWA) | 当用户键入组名或组别名时，Outlook Web Access 显示命名策略强制使用的名称。 当用户输入自定义阻止字词时，UI 中会显示一条错误消息以及阻止字词，以便用户删除它。
@@ -257,7 +257,7 @@ StaffHub  | StaffHub 团队不遵循命名策略，但基础 Office 365 组遵�
 Exchange PowerShell | Exchange PowerShell cmdlet 遵循命名策略。 如果用户不遵循组名和组别名 (mailNickname) 的命名策略，则会收到相应的错误消息，以及建议的前后缀和自定义阻止字词。
 Azure Active Directory PowerShell cmdlet | Azure Active Directory PowerShell cmdlet 遵循命名策略。 如果用户不遵循组名和组别名的命名约定，则会收到相应的错误消息，以及建议的前后缀和自定义阻止字词。
 Exchange 管理中心 | Exchange 管理中心遵循命名策略。 如果用户不遵循组名和组别名的命名约定，则会收到相应的错误消息，以及建议的前后缀和自定义阻止字词。
-Microsoft 365 管理中心 | Microsoft 365 管理中心符合命名策略。 当用户创建或编辑组名时，会自动应用命名策略，并且用户会在输入自定义阻止字词时收到相应的错误消息。 Microsoft 365 管理中心尚未显示命名策略的预览，也不会在用户输入组名称时返回自定义阻止的单词错误。
+Microsoft 365 管理中心 | Microsoft 365 管理中心符合命名策略。 当用户创建或编辑组名时，会自动应用命名策略，并且用户会在输入自定义阻止字词时收到相应的错误消息。 Microsoft 365 管理中心尚未显示命名策略的预览，用户输入组名时，不会返回自定义阻止字词错误。
 
 ## <a name="next-steps"></a>后续步骤
 
