@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: db2104020e9478b1fedf68e1c9467f75e16044e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67172987"
 ---
 #### <a name="to-cable-for-power"></a>进行电源布线
@@ -25,7 +25,7 @@ ms.locfileid: "67172987"
    
     **8100 设备上的电源布线**
    
-   | Label | 描述 |
+   | Label | 说明 |
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |控制器 1 |

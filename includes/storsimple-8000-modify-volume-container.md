@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 4cffbb1aaa438bac08ec77f576b32a901abacabd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67172996"
 ---
 > [!NOTE] 
@@ -30,7 +30,7 @@ ms.locfileid: "67172996"
       
        ![更改带宽设置](./media/storsimple-8000-modify-volume-container/modify-vol-container2.png)
 
-   2.  单击“确定”。
+   2.  单击" **确定**"。
 4. 在“修改卷容器”**** 对话框的下一页中：
    
    1. 从下拉列表中选择现有的带宽模板。

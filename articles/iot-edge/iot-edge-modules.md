@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 1c625e628f53d156ad56a1c69df1c23aec9120ac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76548707"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>了解 Azure IoT Edge 模块
 
-通过 Azure IoT Edge，可让你以模块** 的形式来部署和管理 Edge 上的业务逻辑。 Azure IoT Edge 模块是由 IoT Edge 托管的最小计算单位，可以包含 Azure 服务（如 Azure 流分析）或你自己特定于解决方案的代码。 要了解如何开发、部署和维护模块，请考虑模块的四个概念元素：
+通过 Azure IoT Edge，可让你以模块  的形式来部署和管理 Edge 上的业务逻辑。 Azure IoT Edge 模块是由 IoT Edge 托管的最小计算单位，可以包含 Azure 服务（如 Azure 流分析）或你自己特定于解决方案的代码。 若要了解如何开发、部署和维护模块，请考虑模块的四个概念元素：
 
-* 模块映像**** 是包含定义模块的程序包。
-* 模块实例**** 是在 IoT Edge 设备上运行模块映像的特定计算单位。 该模块实例由 IoT Edge 运行时启动。
-* 模块标识**** 是存储在 IoT 中心的一段信息（包括安全凭据），与每个模块实例相关联。
-* 模块孪生**** 是存储在 IoT 中心的 JSON 文档，包含模块实例的状态信息，其中包括元数据、配置和条件。
+* 模块映像  是包含定义模块的程序包。
+* 模块实例  是在 IoT Edge 设备上运行模块映像的特定计算单位。 该模块实例由 IoT Edge 运行时启动。
+* 模块标识  是存储在 IoT 中心的一段信息（包括安全凭据），与每个模块实例相关联。
+* 模块孪生  是存储在 IoT 中心的 JSON 文档，包含模块实例的状态信息，其中包括元数据、配置和条件。
 
 ## <a name="module-images-and-instances"></a>模块映像和实例
 
@@ -41,7 +41,7 @@ As use cases for Azure IoT Edge grow, new types of module images and instances w
 
 ## <a name="module-identities"></a>模块标识
 
-当 IoT Edge 运行时创建新的模块实例时，它将获得相应的模块标识。 模块标识存储在 IoT 中心中，并用作该模块实例的所有本地和云通信的寻址和安全范围。
+当 IoT Edge 运行时创建新的模块实例时，它将获得相应的模块标识。 模块标识将存储在 IoT 中心，并用作该模块实例的所有本地和云通信的寻址和安全范围。
 
 与模块实例相关联的标识将取决于在其上运行实例的设备的标识，以及在解决方案中为该模块提供的名称。 例如，如果调用使用 Azure 流分析的 `insight` 模块，并将其部署到一个名为 `Hannover01` 的设备上，那么 IoT Edge 运行时将创建一个相应的称为 `/devices/Hannover01/modules/insight` 的模块标识。
 

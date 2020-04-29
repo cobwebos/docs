@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 02274bacb66a33ef54e07bc8113d7db46d4d5296
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67173140"
 ---
 #### <a name="to-add-a-storsimple-backup-policy"></a>添加 StorSimple 备份策略
@@ -35,7 +35,7 @@ ms.locfileid: "67173140"
 
        1. 从“快照类型”中，选择“云”或“本地”。************
 
-       2. 指示备份频率（指定数字，然后从下拉列表中选择 **"天"** 或 **"周**"。
+       2. 指示备份频率（指定一个数字，然后从下拉列表中选择 "**天**" 或 "**周**"。
 
        3. 输入保留计划。
 

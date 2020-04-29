@@ -9,10 +9,10 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 08cca67455df4b2d28bba0a7410fccc11446fcdc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76748928"
 ---
 本文提供保护基于 Azure IoT 的物联网 (IoT) 基础结构的进一步详细信息。 它链接到配置和部署每个组件的实现级别详细信息。 还提供多种竞争方式间的比较和选择。
@@ -77,13 +77,13 @@ IoT 中心标识注册表可用于配置每个设备的安全凭据和访问控�
 
 ## <a name="securing-the-connection"></a>保护连接安全
 
-使用传输层安全性 (TLS) 标准来保护 IoT 设备和 IoT 中心之间的 Internet 连接安全。 Azure IoT 支持[TLS 1.2](https://tools.ietf.org/html/rfc5246)、TLS 1.1 和 TLS 1.0，按此顺序排列。 对 TLS 1.0 的支持仅为向后兼容性提供。 检查[IoT 中心中的 TLS 支持](../articles/iot-hub/iot-hub-tls-support.md)，了解如何将集线器配置为使用 TLS 1.2，因为它提供了最大的安全性。
+使用传输层安全性 (TLS) 标准来保护 IoT 设备和 IoT 中心之间的 Internet 连接安全。 Azure IoT 按此顺序支持[tls 1.2](https://tools.ietf.org/html/rfc5246)、tls 1.1 和 tls 1.0。 对 TLS 1.0 的支持仅为向后兼容性提供。 请[在 IoT 中心内检查 TLS 支持](../articles/iot-hub/iot-hub-tls-support.md)，了解如何将集线器配置为使用 TLS 1.2，因为它提供了最高的安全性。
 
 ## <a name="securing-the-cloud"></a>保护云的安全
 
 Azure IoT 中心允许为每个安全密钥定义[访问控制策略](../articles/iot-hub/iot-hub-devguide-security.md)。 它使用以下一组权限向每个 IoT 中心的终结点授予访问权限。 权限可根据功能限制对 IoT 中心的访问。
 
-* **注册表读取**。 授予对标识注册表的读取访问权限。 有关详细信息，请参阅[标识注册表](../articles/iot-hub/iot-hub-devguide-identity-registry.md)。
+* **RegistryRead**。 授予对标识注册表的读取访问权限。 有关详细信息，请参阅[标识注册表](../articles/iot-hub/iot-hub-devguide-identity-registry.md)。
 
 * **RegistryReadWrite**。 授予对标识注册表的读取和写入访问权限。 有关详细信息，请参阅[标识注册表](../articles/iot-hub/iot-hub-devguide-identity-registry.md)。
 
@@ -107,7 +107,7 @@ Azure IoT 中心引入的数据可供多种服务（例如 Azure 流分析、Azu
 
 * [Logic Apps](https://azure.microsoft.com/services/app-service/logic/)：Azure 应用服务的逻辑应用功能可帮助用户将 IoT 解决方案集成到现有业务线系统并自动执行工作流程。 逻辑应用可让开发人员设计从触发过程开始，并运行一系列步骤的工作流 — 使用功能强大的连接器来与业务过程集成的规则和操作。 Logic Apps 提供与 SaaS、基于云和本地应用程序的广泛生态系统的实时连接。
 
-* [Azure Blob 存储](https://azure.microsoft.com/services/storage/)：设备发送到云的数据的可靠、经济的云存储。
+* [Azure Blob 存储](https://azure.microsoft.com/services/storage/)：可靠且经济实惠的云存储，适用于设备发送到云的数据。
 
 ## <a name="conclusion"></a>结束语
 

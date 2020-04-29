@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 1cf5bbdad555c50c418851904f36a578522843b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67173012"
 ---
 #### <a name="to-create-public-endpoints-on-the-cloud-appliance"></a>在云设备上创建公共终结点
 
-1. 登录到 Azure 门户。  
+1. 登录到 Azure 门户。
 2. 转到“虚拟机”****，并选择并单击正用作云设备的虚拟机。
     
 3. 需要创建一个网络安全组 (NSG) 规则来控制虚拟机内部和外部的通信流。 执行以下步骤来创建 NSG 规则。
@@ -31,7 +31,7 @@ ms.locfileid: "67173012"
 
         在“添加入站安全规则”边栏选项卡中：
 
-        1. 对于**名称**，键入终结点的以下名称：WinRMHttps。
+        1. 对于 "**名称**"，请为终结点键入以下名称： WinRMHttps。
         
         2. 对于“优先级”，选择一个小于 1000（这是默认规则的优先级）的数字。**** 数字越大，优先级越低。
 
@@ -39,7 +39,7 @@ ms.locfileid: "67173012"
 
         4. 对于“服务”，选择“WinRM”。******** “协议”自动设置为“TCP”，“端口范围”设置为“5986”。****************
 
-        5. 单击 **"确定"** 以创建规则。
+        5. 单击 **"确定"** 创建规则。
 
             ![](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt5.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "67173012"
         ![](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt7.png)
 
     3. 选择虚拟网络，并选择相应的子网。
-    4. 单击 **"确定"** 以创建规则。
+    4. 单击 **"确定"** 创建规则。
 
         ![](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt11.png)
 

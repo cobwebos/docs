@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 2ab3b089ce65c9f27457fd1cfb360d6776ed6244
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67173139"
 ---
 #### <a name="to-add-or-modify-a-storsimple-backup-schedule"></a>添加或修改 StorSimple 备份计划
@@ -19,7 +19,7 @@ ms.locfileid: "67173139"
 
     ![管理计划](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule1.png)
 
-3. 在“添加计划”边栏选项卡中，修改快照类型、备份频率、保留期，以及开始日期和时间。**** 单击 **“添加”**。
+3. 在“添加计划”边栏选项卡中，修改快照类型、备份频率、保留期，以及开始日期和时间。**** 单击“添加”  。
 
     ![管理计划](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule5.png)
 

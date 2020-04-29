@@ -9,10 +9,10 @@ ms.date: 08/16/2016
 ms.author: deli
 ms.custom: include file
 ms.openlocfilehash: eb13d889cb72911e2268b7538a74336befe3320b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75392348"
 ---
 下表描述 Azure 计划程序中各主要的配额、限制、默认值和中止值。
@@ -30,7 +30,7 @@ ms.locfileid: "75392348"
 | **标头计数** | 最大标头计数为 50 个标头。 | 
 | **聚合标头大小** | 最大聚合标头大小为 4,096 个字符。 |
 | **超时** | 请求超时为静态值，即不可配置。 对于 HTTP 操作，为 60 秒。 对于运行时间较长的操作，请遵循 HTTP 异步协议。 例如，立即返回 202 但继续在后台工作。 | 
-| **工作历史记录** | 作业历史记录中存储的最大响应正文为 2,048 个字节。 |
+| **作业历史记录** | 作业历史记录中存储的最大响应正文为 2,048 个字节。 |
 | **作业历史记录保留期** | 作业历史记录最多保留两个月，或最多保留最后 1,000 次执行。 | 
 | **已完成和出错作业的保留期** | 完成的作业和出错的作业保留 60 天。 |
 ||| 

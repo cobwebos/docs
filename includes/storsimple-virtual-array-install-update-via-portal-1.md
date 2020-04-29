@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: b4c3fcb86fb098263840accc561785a40b767952
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67173138"
 ---
 #### <a name="to-install-updates-via-the-azure-portal"></a>通过 Azure 门户安装更新
@@ -33,7 +33,7 @@ ms.locfileid: "67173138"
 
     ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate6m.png)
 
-5. 在“新更新”边栏选项卡中，查看发行说明****。 另请注意，在下载更新之后，需确认安装。 单击“确定”。
+5. 在“新更新”边栏选项卡中，查看发行说明****。 另请注意，在下载更新之后，需确认安装。 单击" **确定**"。
 
     ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate7m.png)
 

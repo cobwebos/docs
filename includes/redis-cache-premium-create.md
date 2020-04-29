@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: wesmc
 ms.openlocfilehash: 2627554647c6c20cbdedfec53c1028b3edfa9c9c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67172762"
 ---
-若要创建高级缓存，请登录到 [Azure 门户](https://portal.azure.com)，并单击“创建资源”**** > “数据库”**** > “Azure Redis 缓存”****。
+若要创建高级缓存，请登录到 [Azure 门户](https://portal.azure.com)，并单击“创建资源”   > “数据库”   > “Azure Redis 缓存”  。
 
 ![创建缓存](media/redis-cache-premium-create/redis-cache-new-cache-menu.png)
 
@@ -20,7 +20,7 @@ ms.locfileid: "67172762"
 > 
 > 
 
-若要配置高级功能，请先在“定价层”下拉列表中选择一个高级定价层****。 若要详细了解每个定价层，请单击“查看全部定价详细信息”****，并从“选择你的定价层”**** 边栏选项卡中选择一个定价层。
+若要配置高级功能，请先在“定价层”下拉列表中选择一个高级定价层  。 若要详细了解每个定价层，请单击“查看全部定价详细信息”  ，并从“选择你的定价层”  边栏选项卡中选择一个定价层。
 
 ![选择定价层](media/redis-cache-premium-create/redis-cache-premium-pricing-tier.png)
 

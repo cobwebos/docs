@@ -9,17 +9,17 @@ ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 2aca4f2c236112b80e9fc985cf80ccad6d82bde3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75901974"
 ---
 下表提供了特定于 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)的配额和限制。 有关事件中心定价的信息，请参阅[事件中心定价](https://azure.microsoft.com/pricing/details/event-hubs/)。
 
 以下限制是基本层、标准层和专用层之间的通用限制。 
 
-| 限制 | 范围 | 说明 | “值” |
+| 限制 | 范围 | 说明 | 值 |
 | --- | --- | --- | --- |
 | 每个订阅的事件中心命名空间数 |订阅 |- |100 |
 | 每个命名空间的事件中心数 |命名空间 |创建新事件中心的后续请求会被拒绝。 |10 |
@@ -32,7 +32,7 @@ ms.locfileid: "75901974"
 | 虚拟网络 (VNet) 和 IP 配置规则的数量 | 实体 | - | 128 | 
 
 ### <a name="event-hubs-basic-and-standard---quotas-and-limits"></a>事件中心基本层和标准层 - 配额和限制
-| 限制 | 范围 | 说明 | Basic | Standard |
+| 限制 | 范围 | 说明 | 基本 | Standard |
 | --- | --- | --- | -- | --- |
 | 事件中心事件的最大大小|实体 | &nbsp; | 256 KB | 1 MB |
 | 每个事件中心的使用者组数 |实体 | &nbsp; |1 |20 |

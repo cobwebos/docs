@@ -1,6 +1,6 @@
 ---
-title: 诊断 Azure 开发人员测试实验室虚拟机中的项目故障
-description: DevTest Labs 提供的信息可用于诊断项目故障。 本文介绍如何排除项目故障。
+title: 诊断 Azure 开发测试实验室虚拟机中的项目失败
+description: 开发测试实验室提供了可用于诊断项目失败的信息。 本文介绍了如何对项目故障进行故障排除。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 7229f1ee4061eb38b7c6da09df21102ab302ab42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76760311"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>对实验室中的项目失败进行诊断 
@@ -52,7 +52,7 @@ ms.locfileid: "76760311"
 
 3. 打开状态文件****。
 
-有关在**Linux** VM 上查找日志文件的说明，请参阅以下文章：将[Azure 自定义脚本扩展版本 2 与 Linux 虚拟机一起使用](../virtual-machines/extensions/custom-script-linux.md#troubleshooting)
+有关在**linux** VM 上查找日志文件的说明，请参阅以下文章：[将 Azure 自定义脚本扩展版本2用于 linux 虚拟机](../virtual-machines/extensions/custom-script-linux.md#troubleshooting)
 
 
 ## <a name="related-blog-posts"></a>相关的博客文章

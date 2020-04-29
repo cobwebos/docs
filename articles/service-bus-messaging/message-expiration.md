@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: e86c92fa1cfb13929d5617502224f479709efdd3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76756328"
 ---
 # <a name="message-expiration-time-to-live"></a>消息过期时间（生存时间）
@@ -37,9 +37,9 @@ ms.locfileid: "76756328"
 发送到队列或主题中的所有消息附带一个默认的过期时间，该时间是使用 [defaultMessageTimeToLive](/azure/templates/microsoft.servicebus/namespaces/queues) 属性在实体级别设置的，或者也可以在创建期间在门户中设置，并且以后可以调整。 默认过期时间是针对发送到未显式设置 [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) 的实体的所有消息使用的。 默认过期时间还充当 **TimeToLive** 值的上限。 **TimeToLive** 过期时间长于默认值的消息在排队之前，会以无提示方式调整为 **defaultMessageTimeToLive** 值。
 
 > [!NOTE]
-> 中转邮件的默认[TimetoLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive)值是[TimeSpan.Max，](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue)如果未另行指定。
+> 如果没有另外指定，则中转消息的默认[TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive)值为 " [Max](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue) "。
 >
-> 对于消息传递实体（队列和主题），默认过期时间也是[TimeSpan.Max](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue)服务总线标准和高级层。  对于基本层，默认过期时间是 14 天。
+> 对于消息传递实体（队列和主题），默认的过期时间也是[最大](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue)为服务总线标准级别和高级层。  对于基本层，默认的过期时间为14天。
 
 可以选择性地通过设置 [EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enabledeadletteringonmessageexpiration#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) 属性或者在门户中选中相应的框，将已过期的消息移到[死信队列](service-bus-dead-letter-queues.md)。 如果保持禁用该选项，将会丢弃已过期的消息。 可以通过评估由中转站存储在用户属性部分中的 [DeadletterReason](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) 属性（在本例中，该值为 [TTLExpiredException](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq)），将已移到死信队列的已过期消息与其他死信消息区分开来。
 
@@ -74,7 +74,7 @@ ms.locfileid: "76756328"
     - 无发送  
     - 无主题更新  
     - 无计划的消息 
-- Subscriptions
+- 订阅
     - 无接收  
     - 无订阅更新  
     - 无添加到订阅的新规则  

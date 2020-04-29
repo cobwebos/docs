@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: wesmc
 ms.openlocfilehash: 1ab6243be39bf30bc060ed5745fbf600924743a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "71839226"
 ---
 | 资源 | 限制 |
@@ -19,7 +19,7 @@ ms.locfileid: "71839226"
 | Azure Redis 缓存副本，用于高可用性 |1 |
 | 启用群集的高级缓存中的分片数 |10 |
 
-每个定价层的 Azure Redis 缓存限制和大小都不相同。 要查看定价层及其关联大小，请参阅[Redis 定价的 Azure 缓存](https://azure.microsoft.com/pricing/details/cache/)。
+每个定价层的 Azure Redis 缓存限制和大小都不相同。 若要查看定价层及其关联的大小，请参阅 [Azure Redis 缓存定价](https://azure.microsoft.com/pricing/details/cache/)。
 
 有关 Azure Redis 缓存配置限制的详细信息，请参阅[默认 Redis 服务器配置](../articles/azure-cache-for-redis/cache-configure.md#default-redis-server-configuration)。
 

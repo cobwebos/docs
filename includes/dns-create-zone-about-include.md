@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: victorh
 ms.openlocfilehash: 74031a8dbc9b64d6a09533789eed1296ff334d47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67173611"
 ---
 DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS 中托管域，需要为该域名创建 DNS 区域。 随后会在此 DNS 区域内为每个 DNS 记录创建域。
@@ -24,4 +24,4 @@ DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS
 > [!NOTE]
 > 不必拥有域名即可在 Azure DNS 中以该域名创建 DNS 区域。 但是，需要拥有域才能通过域名注册机构将 Azure DNS 名称服务器配置为域名的正确名称服务器。
 > 
-> 有关详细信息，请参阅[将域委派给 Azure DNS](../articles/dns/dns-domain-delegation.md)。
+> 有关详细信息，请参阅 [向 Azure DNS 委派域](../articles/dns/dns-domain-delegation.md)。

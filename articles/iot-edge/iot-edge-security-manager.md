@@ -1,5 +1,5 @@
 ---
-title: Azure IoT 边缘安全管理器 - Azure IoT 边缘
+title: Azure IoT Edge 安全管理器 - Azure IoT Edge
 description: 管理 IoT Edge 设备安全性情况和安全服务的完整性。
 services: iot-edge
 keywords: 安全性, 安全元素, enclave, TEE, IoT Edge
@@ -10,15 +10,15 @@ ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
 ms.openlocfilehash: d5cfa16196a8815b711fd5277a80f6eb67d3a388
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76548690"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge 安全管理器
 
-Azure IoT Edge 安全管理器是一种界限明确的安全内核，用于通过抽象化安全硅硬件来保护 IoT Edge 设备及其所有组件。 安全管理器是安全强化的协调中心，为原始设备制造商 （OEM） 提供技术集成点。
+Azure IoT Edge 安全管理器是一种界限明确的安全内核，用于通过抽象化安全硅硬件来保护 IoT Edge 设备及其所有组件。 安全管理器是增强安全性的重点，并为原始设备制造商 (OEM) 提供技术集成点。
 
 ![Azure IoT Edge 安全管理器](media/edge-security-manager/iot-edge-security-manager.png)
 
@@ -79,11 +79,11 @@ IoT Edge 安全守护程序可充分利用任何可用硬件信任根技术来�
 
 #### <a name="management-api"></a>管理 API
 
-IoT Edge 安全守护程序提供了管理 API，在创建/启动/停止/删除 IoT Edge 模块时，IoT Edge 代理会调用该 API。 安全守护程序存储所有活动模块的“注册”。 这些注册将模块的标识映射到该模块的某些属性。 例如，这些模块属性包括在容器中运行的进程的进程标识符 （pid） 和 docker 容器内容的哈希。
+IoT Edge 安全守护程序提供了管理 API，在创建/启动/停止/删除 IoT Edge 模块时，IoT Edge 代理会调用该 API。 安全守护程序存储所有活动模块的“注册”。 这些注册将模块的标识映射到该模块的某些属性。 例如，这些模块属性包括在容器中运行的进程的进程标识符 (pid) 和 docker 容器内容的哈希值。
 
-这些属性由工作负载 API（如下所述）用于验证调用方是否授权执行操作。
+这些属性由工作负荷 API（如下所述）使用，以验证调用方是否有权执行操作。
 
-管理 API 是一个特权 API，仅可从 IoT Edge 代理进行调用。  由于 IoT Edge 安全守护进程启动并启动 IoT Edge 代理，因此它验证 IoT Edge 代理未被篡改，因此可以为 IoT Edge 代理创建隐式注册。 工作负载 API 使用的相同证明过程也会将管理 API 的访问权限限制为仅供 IoT Edge 代理使用。
+管理 API 是一个特权 API，仅可从 IoT Edge 代理进行调用。  由于 IoT Edge 安全守护程序会引导并启动 IoT Edge 代理，因此它将验证 IoT Edge 代理是否未被篡改，然后可以为 IoT Edge 代理创建隐式注册。 工作负载 API 使用的相同证明过程也会将管理 API 的访问权限限制为仅供 IoT Edge 代理使用。
 
 #### <a name="container-api"></a>容器 API
 
@@ -103,9 +103,9 @@ Microsoft 维护 [GitHub 上的 IoT Edge 安全守护程序](https://github.com/
 
 IoT Edge 安全守护程序的安装和更新通过操作系统的程序包管理系统进行管理。 具有硬件信任根的 IoT Edge 设备应通过安全启动和更新管理系统来管理守护程序的生命周期，从而进一步增强其完整性。 设备制造商应该根据各自的设备功能来探索这些方法。
 
-#### <a name="versioning"></a>版本管理
+#### <a name="versioning"></a>版本控制
 
-IoT Edge 运行时可跟踪和报告 IoT Edge 安全守护程序的版本。 该版本报告为 IoT Edge 代理模块报告的属性的 runtime.platform.version 特性**。
+IoT Edge 运行时可跟踪和报告 IoT Edge 安全守护程序的版本。 该版本报告为 IoT Edge 代理模块报告的属性的 runtime.platform.version 特性  。
 
 ### <a name="hardware-security-module-platform-abstraction-layer-hsm-pal"></a>硬件安全模块平台抽象层 (HSM PAL)
 

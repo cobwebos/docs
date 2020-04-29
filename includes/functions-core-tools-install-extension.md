@@ -9,10 +9,10 @@ ms.date: 05/25/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 94cac0932da5880e5e7b8a8fac3870b5bc464af9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75564672"
 ---
 ## <a name="register-extensions"></a>注册扩展
@@ -34,10 +34,10 @@ ms.locfileid: "75564672"
 > [!NOTE]
 > 若要使用 `func extensions install` 手动注册扩展，必须安装 .NET Core 2.x SDK。
 
-更新 function.json 文件以包含函数所需的所有绑定后，请在项目文件夹中运行以下命令**。
+更新 function.json 文件以包含函数所需的所有绑定后，请在项目文件夹中运行以下命令  。
 
 ```bash
 func extensions install
 ```
 
-该命令读取 function.json** 文件以了解所需的程序包，安装这些包并重新生成扩展项目。 它在当前版本中添加任何新绑定，但不更新现有绑定。 使用 `--force` 选项可在安装新版本时将现有绑定更新为最新版本。
+该命令读取 function.json  文件以了解所需的程序包，安装这些包并重新生成扩展项目。 它在当前版本中添加任何新绑定，但不更新现有绑定。 使用 `--force` 选项可在安装新版本时将现有绑定更新为最新版本。

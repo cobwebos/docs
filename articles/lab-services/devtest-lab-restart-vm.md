@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 开发测试实验室的实验室中重启 VM | Microsoft Docs
-description: 本文提供了在 Azure DevTest 实验室中快速轻松地重新启动虚拟机 （VM） 的步骤。
+description: 本文介绍了在 Azure 开发测试实验室中快速轻松地重新启动虚拟机（VM）的步骤。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 52d3b92909483a99eb82c86b727261bbeb5f8d46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76759988"
 ---
 # <a name="restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室的实验室中重启 VM
@@ -37,7 +37,7 @@ ms.locfileid: "76759988"
    >
 
 ## <a name="steps-to-restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室的实验室中重启 VM 的步骤
-1. 登录到 Azure[门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 选择“所有服务”****，并从列表中选择“开发测试实验室”****。
 1. 从实验室列表中，选择包含要重启 VM 的实验室。
 1. 在左面板中，选择“我的虚拟机”****。
@@ -56,4 +56,4 @@ ms.locfileid: "76759988"
 
 ## <a name="next-steps"></a>后续步骤
 * 重启 VM 后，即可在其管理窗格中选择“连接”重新连接到 VM****。
-* 浏览[开发人员测试实验室 Azure 资源管理器快速入门模板库](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)
+* 探索[开发测试 Labs Azure 资源管理器快速入门模板库](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)

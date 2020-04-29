@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 07/11/2019
 ms.author: alkohli
 ms.openlocfilehash: 4a3925752d1af5e43d5984b06c0a68aa9faa214b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67839770"
 ---
 | 端口号。| 入或出 | 端口范围| 必选| 说明 |   |

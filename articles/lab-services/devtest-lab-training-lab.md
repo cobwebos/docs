@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 开发测试实验室培训 | Microsoft Docs
-description: 本文提供了为在 Azure DevTest 实验室中设置培训实验室可以遵循的详细步骤。
+description: 本文详细介绍了如何在 Azure 开发测试实验室中设置实验室进行培训。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 8f0a930d6e3c04548ade71f6d4e3294114eb60a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76759971"
 ---
 # <a name="use-azure-devtest-labs-for-training"></a>使用 Azure 开发测试实验室培训

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 554260f403104d815b9b63c576c7ba0a2f3cf1e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76761026"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>异步消息传送模式和高可用性
@@ -45,13 +45,13 @@ ms.locfileid: "76761026"
 * Azure 数据中心内的服务总线故障。 这是“灾难性故障”，无论故障时间是数分钟还是几小时，在此期间都无法访问系统。
 
 > [!NOTE]
-> **存储**一词可表示 Azure 存储空间和 SQL Azure。
+> “存储”  这一术语既能表示 Azure 存储又能表示 SQL Azure。
 > 
 > 
 
 服务总线包含了针对这些问题的许多缓解措施。 以下各节介绍了每个问题及其相应的缓解措施。
 
-### <a name="throttling"></a>遏制
+### <a name="throttling"></a>限制
 通过服务总线，设置限制可以实现协作消息速率管理。 每个单独的服务总线节点包含许多实体。 其中每个实体都需要在 CPU、内存、存储和其他方面占用系统。 当上述任一方面检测到超出定义阈值的使用情况时，服务总线可以拒绝给定的请求。 调用方会接收到 [ServerBusyException][ServerBusyException]，并在 10 秒后重试。
 
 作为一种缓解措施，该代码必须读取错误并停止该消息的任何重试至少 10 秒。 由于此错误可能发生在多个客户应用程序之间，所以最好使每个应用程序独立执行重试逻辑。 该代码可以通过对队列或主题启用分区来减少受限概率。
@@ -62,7 +62,7 @@ Azure 中的其他组件可能偶尔会发生服务问题。 例如，当服务�
 ### <a name="service-bus-failure-on-a-single-subsystem"></a>单个子系统上的服务总线故障
 使用任何应用程序时，环境都可能导致服务总线的内部组件出现不一致。 当服务总线检测到这种不一致时，它将从该应用程序收集数据以辅助诊断问题。 收集到数据后，将重新启动该应用程序以尝试使其返回一致状态。 此过程发生得相当迅速，并且会导致实体长达数分钟不可用，而典型的停机时间则要短得多。
 
-在这些情况下，客户端应用程序将生成 [System.TimeoutException][System.TimeoutException] 或 [MessagingException][MessagingException] 异常。 服务总线通过自动客户端重试逻辑来缓解该问题。 如果重试周期用尽而未能传递消息，可以尝试使用关于[处理中断和灾难问题][handling outages and disasters]的文章中描述的其他功能进行研究。
+在这些情况下，客户端应用程序将生成 [System.TimeoutException][System.TimeoutException] 或 [MessagingException][MessagingException] 异常。 服务总线通过自动客户端重试逻辑来缓解该问题。 如果重试周期用尽而未能传递消息，可以尝试使用关于[处理中断和灾难问题][handling outages and disasters]的文章中所述的其他功能进行研究。
 
 ## <a name="next-steps"></a>后续步骤
 了解服务总线中的异步消息传送的基础知识后，可阅读有关[处理中断和灾难问题][handling outages and disasters]的详细信息。

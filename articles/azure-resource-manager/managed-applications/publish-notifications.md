@@ -6,10 +6,10 @@ ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
 ms.openlocfilehash: ff058d7b51bd2e5efd80db69e5928d58fc5a7725
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76715667"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>提供通知的 Azure 托管应用程序
@@ -24,8 +24,8 @@ Azure 托管应用程序通知可让发布者根据托管应用程序实例的�
 2. 如本文稍后所述，将该终结点添加到服务目录应用程序定义或 Azure 市场套餐。
 3. 创建一个引用应用程序定义或 Azure 市场套餐的托管应用程序实例。
 4. 验证是否正在接收通知。
-5. 根据本文的“终结点身份验证”部分所述启用授权。****
-6. 按照本文的“通知架构”部分中的说明分析通知请求，并根据通知实现业务逻辑。****
+5. 根据本文的“终结点身份验证”部分所述启用授权。 
+6. 按照本文的“通知架构”部分中的说明分析通知请求，并根据通知实现业务逻辑。 
 
 ## <a name="add-service-catalog-application-definition-notifications"></a>添加服务目录应用程序定义通知
 #### <a name="azure-portal"></a>Azure 门户
@@ -70,12 +70,12 @@ Azure 托管应用程序通知可让发布者根据托管应用程序实例的�
 EventType | ProvisioningState | 通知的触发器
 ---|---|---
 PUT | 已接受 | 在应用程序 PUT 之后（启动托管资源组中的部署之前）已成功创建并投影托管资源组。
-PUT | 已成功 | PUT 之后完全预配托管应用程序成功。
-PUT | 失败 | 在任意时间点 PUT 应用程序实例预配失败。
-PATCH | 已成功 | 在托管应用程序实例上成功执行 PATCH 以更新标记、JIT 访问策略或托管标识之后发生。
+PUT | 成功 | PUT 之后完全预配托管应用程序成功。
+PUT | Failed | 在任意时间点 PUT 应用程序实例预配失败。
+修补程序 | 成功 | 在托管应用程序实例上成功执行 PATCH 以更新标记、JIT 访问策略或托管标识之后发生。
 DELETE | 正在删除 | 在用户启动托管应用程序实例的 DELETE 后立即发生。
 DELETE | Deleted | 在完全成功删除托管应用程序之后发生。
-DELETE | 失败 | 在取消预配过程中出现任何阻止删除的错误之后发生。
+DELETE | Failed | 在取消预配过程中出现任何阻止删除的错误之后发生。
 ## <a name="notification-schema"></a>通知架构
 在启动 Webhook 终结点来处理通知时，需要分析有效负载，以获取重要属性，然后再处理通知。 服务目录和 Azure 市场托管应用程序通知提供许多相同的属性。 示例后面的表格中概述了两个细微的差异。
 
@@ -176,7 +176,7 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 
 ```
 
-参数 | 描述
+参数 | 说明
 ---|---
 eventType | 触发通知的事件类型。 （例如 PUT、PATCH、DELETE。）
 applicationId | 对其触发了通知的托管应用程序的完全限定资源标识符。
@@ -185,11 +185,11 @@ provisioningState | 托管应用程序实例的预配状态。 （例如 Succeed
 error | 仅当 provisioningState 为 Failed 时指定。** 包含导致失败的问题的错误代码、消息和详细信息。
 applicationDefinitionId | 仅为服务目录托管应用程序指定。** 表示为其预配了托管应用程序实例的应用程序定义的完全限定资源标识符。
 计划 | 仅为 Azure 市场托管应用程序指定。** 表示托管应用程序实例的发布者、套餐、SKU 和版本。
-billingDetails | *仅为 Azure 应用商店托管应用程序指定。* 托管应用程序实例的计费详细信息。 包含可用于在 Azure 市场中查询使用情况详细信息的 resourceUsageId。
+billingDetails | *仅适用于 Azure Marketplace 托管应用程序。* 托管应用程序实例的计费详细信息。 包含可用于在 Azure 市场中查询使用情况详细信息的 resourceUsageId。
 
 ## <a name="endpoint-authentication"></a>终结点身份验证
 若要保护 Webhook 终结点并确保通知的真实性：
-1. 在 Webhook URI 顶部提供查询参数，如下所示：https\://您的终结点.com？sig_Guid。 对于每个通知，请检查查询参数 `sig` 是否包含预期值 `Guid`。
+1. 在 webhook URI 的顶层提供一个查询参数，如下所示： https\://your-endpoint.com？ Sig = Guid。 对于每个通知，请检查查询参数 `sig` 是否包含预期值 `Guid`。
 2. 使用 applicationId 对托管应用程序实例发出 GET。 验证 provisioningState 是否与通知的 provisioningState 相匹配，以确保一致性。
 
 ## <a name="notification-retries"></a>通知重试

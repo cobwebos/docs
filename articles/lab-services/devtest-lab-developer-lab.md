@@ -1,6 +1,6 @@
 ---
 title: 使用面向开发人员的 Azure 开发测试实验室 | Microsoft Docs
-description: 了解可用于满足开发人员要求的 Azure DevTest Labs 功能，以及设置实验室时可以遵循的详细步骤。
+description: 了解 Azure 开发测试实验室的功能，这些功能可用于满足开发人员的要求以及可用于设置实验室的详细步骤。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: ae44696f62a085bf1e798f0915e2bd1e27c3a78f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76760141"
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>使用面向开发人员的 Azure 开发测试实验室

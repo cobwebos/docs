@@ -8,15 +8,15 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/24/2020
 ms.openlocfilehash: 7165bab96d037f6782bc9aa6767cadd9b35f058c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76764578"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Azure HDInsight 的 Apache HBase 加速写入
 
-本文提供有关 Azure HDInsight 中 Apache HBase 的**加速写入**功能的背景信息，以及如何使用它来有效提高写入性能。 **加速写入**使用[Azure 高级 SSD 托管磁盘](../../virtual-machines/linux/disks-types.md#premium-ssd)来提高 Apache HBase 提前写入日志 （WAL） 的性能。 有关 Apache HBase 的详细信息，请参阅 [HDInsight 中的 Apache HBase 是什么](apache-hbase-overview.md)。
+本文提供有关 Azure HDInsight 中 Apache HBase 的**加速写入**功能的背景信息，以及如何使用它来有效提高写入性能。 **加速写入**使用 [Azure 高级 SSD 托管磁盘](../../virtual-machines/linux/disks-types.md#premium-ssd)来提高 Apache HBase 预写日志 (WAL) 的性能。 有关 Apache HBase 的详细信息，请参阅 [HDInsight 中的 Apache HBase 是什么](apache-hbase-overview.md)。
 
 ## <a name="overview-of-hbase-architecture"></a>HBase 体系结构概述
 
@@ -32,11 +32,11 @@ HBase 最初会将数据更新写入到一种名为“预写日志”(WAL) 的�
 
 ## <a name="accelerated-writes-feature-in-azure-hdinsight-for-apache-hbase"></a>Azure HDInsight 中 Apache HBase 的加速写入功能
 
-加速写入功能解决了使用云存储中的预写日志导致写入延迟增大的问题。  HDInsight Apache HBase 群集的加速写入功能将高级 SSD 托管磁盘附加到每个区域服务器（工作器节点）。 然后，预写日志将写入到这些高级托管磁盘中装载的 Hadoop 文件系统 (HDFS)，而不是写入到云存储。  高级托管磁盘使用固态硬盘 (SSD)，提供卓越的 I/O 性能和容错能力。  与非托管磁盘不同，如果一个存储单元出现故障，则不会影响同一可用性集中的其他存储单元。  因此，托管磁盘可为应用程序提供较低的写入延迟和更好的复原能力。 有关 Azure 托管磁盘的详细信息，请参阅 [Azure 托管磁盘简介](../../virtual-machines/windows/managed-disks-overview.md)。
+加速写入功能解决了使用云存储中的预写日志导致写入延迟增大的问题。  HDInsight Apache HBase 群集的加速写入功能将高级 SSD 托管磁盘附加到每个区域服务器（工作器节点）。 然后，预写日志将写入到这些高级托管磁盘中装载的 Hadoop 文件系统 (HDFS)，而不是写入到云存储。  高级托管磁盘使用固态硬盘 (SSD)，提供卓越的 I/O 性能和容错能力。  与非托管磁盘不同，如果一个存储单元出现故障，则它不会影响同一可用性集中的其他存储单元。  因此，托管磁盘可为应用程序提供较低的写入延迟和更好的复原能力。 有关 Azure 托管磁盘的详细信息，请参阅 [Azure 托管磁盘简介](../../virtual-machines/windows/managed-disks-overview.md)。
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>如何启用 HDInsight 中 HBase 的加速写入
 
-若要使用加速写入功能创建新的 HBase 群集，请执行[在 HDInsight 中设置群集](../hdinsight-hadoop-provision-linux-clusters.md)中的步骤，直到“步骤 3：存储”。**** 在**Metastore 设置**下，选择启用**HBase 加速写入**旁边的复选框。 然后，继续执行剩余的步骤创建群集。
+若要使用加速写入功能创建新的 HBase 群集，请执行[在 HDInsight 中设置群集](../hdinsight-hadoop-provision-linux-clusters.md)中的步骤，直到“步骤 3：存储”。  在“元存储设置”下，选中“启用 HBase 加速写入”旁边的复选框。   然后，继续执行剩余的步骤创建群集。
 
 ![启用 HDInsight Apache HBase 的加速写入选项](./media/apache-hbase-accelerated-writes/azure-portal-cluster-storage-hbase.png)
 
@@ -54,7 +54,7 @@ flush 'mytable'
 disable 'mytable'
 ```
 
-缩减群集时按照类似的步骤操作：刷新表并禁用表以停止传入数据。 不能将群集缩减到少于三个节点。
+缩减群集时按照类似的步骤操作：刷新表并禁用表以停止传入数据。 不能将群集缩减为少于三个节点。
 
 按照这些步骤操作将确保成功缩小规模，并避免由于复制不足或临时文件而导致 namenode 进入安全模式的可能性。
 

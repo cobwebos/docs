@@ -4,17 +4,17 @@ description: 本文介绍如何使用应用程序机密的 Service Fabric KeyVau
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: f7d8a083ea5ec4b66c29d392ee98927915465875
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76545477"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric 应用程序的 KeyVaultReference 支持（预览版）
 
 构建云应用程序时，一个常见的难题是如何安全存储应用程序所需的机密。 例如，你可能想要将容器存储库凭据存储在 keyvault 中，并在应用程序清单中引用它。 Service Fabric KeyVaultReference 使用 Service Fabric 托管标识，并为引用 keyvault 机密提供方便。 本文的余下内容将详细介绍如何使用 Service Fabric KeyVaultReference，并提供一些典型用法。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 应用程序的托管标识 (MIT)
     
@@ -22,7 +22,7 @@ ms.locfileid: "76545477"
 
 - 中心机密存储 (CSS)。
 
-    中央机密存储 （CSS） 是服务结构加密的本地机密缓存。 CSS 是本地机密存储缓存，用于在内存中加密敏感数据（如密码、令牌和密钥）。 密钥库引用（一旦提取）将缓存在 CSS 中。
+    中心机密存储 (CSS) 是 Service Fabric 的已加密本地机密缓存。 CSS 是一个本地机密存储缓存，用于保存敏感数据，例如，已在内存中加密的密码、令牌和密钥。 KeyVaultReference 在提取后会缓存在 CSS 中。
 
     将以下内容添加到群集配置中的 `fabricSettings` 下，即可为 KeyVaultReference 支持启用所需的所有功能。
 
@@ -69,7 +69,7 @@ ms.locfileid: "76545477"
             "value": "<EncryptionCertificateThumbprint for CSS>"
         }
     ```
-若要让更改生效，还需更改升级策略，指定在升级进展到群集时，在每个节点上以强制方式重启 Service Fabric 运行时。 此重启确保新启用的系统服务在每个节点上启动并运行。 在下面的代码段中，力重新启动是基本设置;将现有值用于其余设置。
+若要让更改生效，还需更改升级策略，指定在升级进展到群集时，在每个节点上以强制方式重启 Service Fabric 运行时。 此重启确保新启用的系统服务在每个节点上启动并运行。 在下面的代码片段中，forceRestart 是基本设置；请对其余设置使用你的现有值。
 ```json
 "upgradeDescription": {
     "forceRestart": true,
@@ -90,7 +90,7 @@ ms.locfileid: "76545477"
 
 - 将一个节添加到 settings.xml
 
-    定义类型为 `KeyVaultReference`、值为 `<KeyVaultURL>` 的 `DBPassword` 参数
+    定义类型为 `DBPassword`、值为 `KeyVaultReference` 的 `<KeyVaultURL>` 参数
 
     ```xml
     <Section Name="dbsecrets">
@@ -149,7 +149,7 @@ KeyVaultReference 是容器 RepositoryCredentials 支持的类型。以下示例
         <RepositoryCredentials AccountName="user1" Type="KeyVaultReference" Password="https://ttkvault.vault.azure.net/secrets/containerpwd/e225bd97e203430d809740b47736b9b8"/>
       </ContainerHostPolicies>
 ```
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题解答
 - 需要为 KeyVaultReference 支持启用托管标识，如果在未启用托管标识的情况下使用 KeyVaultReference，应用程序激活将会失败。
 
 - 如果使用系统分配的标识，则只会在部署应用程序之后才创建该标识，而这会造成循环依赖关系。 部署应用程序后，可向系统分配的标识授予对 keyvault 的访问权限。 可按名称 {cluster}/{application name}/{servicename} 查找系统分配的标识。
