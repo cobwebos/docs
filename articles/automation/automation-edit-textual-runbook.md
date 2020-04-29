@@ -10,68 +10,68 @@ ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 2ef7db244057bc8b3b2e4d938b9f3bdd11c7940a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81406024"
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>在 Azure 自动化中编辑文本 Runbook
 
-Azure 自动化中的文本编辑器可以用来编辑 [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) 和 [PowerShell 工作流 Runbook](automation-runbook-types.md#powershell-workflow-runbooks)。 此编辑器具有其他代码编辑器的典型功能，如 IntelliSense。 它还具有带有其他特殊功能的颜色编码，可帮助您访问 Runbook 常见的资源。 
+Azure 自动化中的文本编辑器可以用来编辑 [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) 和 [PowerShell 工作流 Runbook](automation-runbook-types.md#powershell-workflow-runbooks)。 该编辑器具有其他代码编辑器的典型功能（例如 IntelliSense）。 它还具有颜色编码功能，并提供其他特殊功能来帮助你访问 Runbook 的常用资源。 
 
-该文本编辑器包含的一项功能是将 cmdlet、资产和子 Runbook 的代码插入 Runbook 中。 您可以从可用资源列表中选择，编辑器将适当的代码插入 Runbook，而不是自己键入代码。
+该文本编辑器包含的一项功能是将 cmdlet、资产和子 Runbook 的代码插入 Runbook 中。 用户不需亲自键入代码，只需从可用资源列表中进行选择，由编辑器将相应代码插入 Runbook 中。
 
 Azure 自动化中的每个 Runbook 都有两个版本：草稿版和已发布版。 先对 Runbook 的草稿版进行编辑，然后将其发布，这样便可以执行了。 无法编辑已发布版本。 有关详细信息，请参阅 [发布 runbook](manage-runbooks.md#publishing-a-runbook)。
 
-本文提供了使用该编辑器执行不同功能的详细步骤。 这些不适用于[图形运行簿](automation-runbook-types.md#graphical-runbooks)。 要使用这些 Runbook，请参阅[Azure 自动化 中的图形创作](automation-graphical-authoring-intro.md)。
+本文提供了使用该编辑器执行不同功能的详细步骤。 这些步骤不适用于[图 Runbook](automation-runbook-types.md#graphical-runbooks)。 若要使用这些 Runbook，请参阅 [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md)。
 
 >[!NOTE]
->本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az 模块安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于自动化帐户，可以使用["如何更新 Azure 自动化 中的 Azure PowerShell"模块](automation-update-azure-modules.md)将模块更新到最新版本。
+>本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关适用于混合 Runbook 辅助角色的 Az 模块安装说明，请参阅安装 [Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于自动化帐户，可参阅[如何更新 Azure 自动化中的 Azure PowerShell 模块](automation-update-azure-modules.md)，将模块更新到最新版本。
 
-## <a name="editing-a-runbook-with-the-azure-portal"></a>使用 Azure 门户编辑 Runbook
+## <a name="editing-a-runbook-with-the-azure-portal"></a>使用 Azure 门户编辑 runbook
 
 通过以下过程打开 Runbook 即可在文本编辑器中进行编辑。
 
 1. 在 Azure 门户中，选择自动化帐户。
-2. 在 **"进程自动化"** 下，选择**Runbook**以打开 Runbook 列表。
-3. 选择要编辑的 Runbook，然后单击"**编辑**"。
+2. 在 "**流程自动化**" 下，选择 " **runbook** " 以打开 runbook 的列表。
+3. 选择要编辑的 runbook，然后单击 "**编辑**"。
 4. 编辑 runbook。
 5. 完成编辑后，单击“保存”****。
-6. 如果要发布 Runbook 的最新草稿版本，请单击 **"发布**"。
+6. 如果要发布 runbook 的最新草稿版本，请单击 "**发布**"。
 
-### <a name="insert-a-cmdlet-into-a-runbook"></a>将 cmdlet 插入到 Runbook 中
+### <a name="insert-a-cmdlet-into-a-runbook"></a>将 cmdlet 插入 runbook
 
-1. 在文本编辑器的画布中，将光标放置在要放置 cmdlet 的位置。
+1. 在文本编辑器的 "画布" 中，将光标置于要放置该 cmdlet 的位置。
 2. 展开“库”控件中的“Cmdlet”**** 节点。
 3. 展开包含要使用的 cmdlet 的模块。
-4. 右键单击 cmdlet 名称以插入并选择"**添加到画布**"。 如果 cmdlet 具有多个参数集，则编辑器将添加默认集。 还可以展开 cmdlet 来选择不同的参数集。
-5. 请注意，cmdlet 的代码将插入其整个参数列表。
-6. 为任何必需的参数提供适当的值，以代替由角括号（<>）括起来的值。 删除不需要的任何参数。
+4. 右键单击要插入的 cmdlet 名称，然后选择 "**添加到画布**"。 如果该 cmdlet 具有多个参数集，则编辑器将添加默认集。 还可以展开 cmdlet 来选择不同的参数集。
+5. 请注意，将插入 cmdlet 的代码及其整个参数列表。
+6. 提供适当的值以代替尖括号（<>）括起的任何必需参数的值。 删除不需要的所有参数。
 
-### <a name="insert-code-for-a-child-runbook-into-a-runbook"></a>将子运行簿的代码插入到 Runbook 中
+### <a name="insert-code-for-a-child-runbook-into-a-runbook"></a>将子 runbook 的代码插入到 runbook 中
 
-1. 在文本编辑器的画布中，将光标定位到要放置[子 Runbook](automation-child-runbooks.md)的代码的位置。
+1. 在文本编辑器的 "画布" 中，将光标置于要放置[子 runbook](automation-child-runbooks.md)代码的位置。
 2. 展开“库”控件中的“Runbook”**** 节点。
 3. 右键单击要插入的 runbook，并选择“添加到画布”****。
 4. 此时会插入带 Runbook 参数占位符的子 Runbook 的代码。
 5. 将占位符替换为每个参数的相应值。
 
-### <a name="insert-an-asset-into-a-runbook"></a>将资产插入到 Runbook 中
+### <a name="insert-an-asset-into-a-runbook"></a>将资产插入 runbook
 
-1. 在文本编辑器的 Canvas 控件中，将光标定位到要放置子 Runbook 的代码的位置。
+1. 在文本编辑器的 "画布" 控件中，将光标置于要放置子 runbook 代码的位置。
 2. 展开“库”控件中的“资产”**** 节点。
 3. 展开所需资产类型的节点。
-4. 右键单击要插入的资产名称，然后选择 **"添加到画布**"。 对于[变量资产](automation-variables.md)，选择 **"获取变量"以画布**或**添加"设置变量"以画布**，具体取决于您是想要获取还是设置变量。
-5. 请注意，资产的代码将插入到 Runbook 中。
+4. 右键单击要插入的资产名称，然后选择 "**添加到画布**"。 对于[变量资产](automation-variables.md)，请选择 **"将 ' 获取变量 ' 添加到画布**" 或 **"将 ' 设置变量 ' 添加到画布**"，具体取决于是要获取变量还是要设置变量。
+5. 请注意，会将资产的代码插入到 runbook 中。
 
-## <a name="editing-an-azure-automation-runbook-using-windows-powershell"></a>使用 Windows PowerShell 编辑 Azure 自动化运行簿
+## <a name="editing-an-azure-automation-runbook-using-windows-powershell"></a>使用 Windows PowerShell 编辑 Azure 自动化 runbook
 
-要使用 Windows PowerShell 编辑 Runbook，请使用您选择的编辑器并将 Runbook 保存到 **.ps1**文件。 您可以使用[导出-AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) cmdlet 检索 Runbook 的内容。 您可以使用[导入-AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) cmdlet 将现有的草稿运行簿替换为修改后的计划运行簿。
+若要使用 Windows PowerShell 编辑 runbook，请使用所选的编辑器，并将 runbook 保存到**ps1**文件。 你可以使用[AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) cmdlet 来检索 runbook 的内容。 可以使用[AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) cmdlet 将现有的草稿 runbook 替换为已修改的 runbook。
 
-### <a name="retrieve-the-contents-of-a-runbook-using-windows-powershell"></a>使用 Windows PowerShell 检索 Runbook 的内容
+### <a name="retrieve-the-contents-of-a-runbook-using-windows-powershell"></a>使用 Windows PowerShell 检索 runbook 的内容
 
-以下示例命令演示了如何检索 Runbook 的脚本并将其保存到脚本文件。 在此示例中，检索的是草稿版本。 也可以检索 Runbook 的已发布版本，尽管无法更改此版本。
+以下示例命令演示了如何检索 Runbook 的脚本并将其保存到脚本文件。 在此示例中，检索的是草稿版本。 还可以检索 runbook 的已发布版本，不过无法更改此版本。
 
 ```powershell-interactive
 $resourceGroupName = "MyResourceGroup"
@@ -82,7 +82,7 @@ $scriptFolder = "c:\runbooks"
 Export-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automationAccountName -ResourceGroupName $resourceGroupName -OutputFolder $scriptFolder -Slot Draft
 ```
 
-### <a name="change-the-contents-of-a-runbook-using-windows-powershell"></a>使用 Windows PowerShell 更改 Runbook 的内容
+### <a name="change-the-contents-of-a-runbook-using-windows-powershell"></a>使用 Windows PowerShell 更改 runbook 的内容
 
 以下示例命令演示了如何使用脚本文件的内容替换 Runbook 的现有内容。 此示例过程与[使用 Windows PowerShell 从脚本文件中导入 runbook](manage-runbooks.md#importing-a-runbook) 中的相同。
 
@@ -99,7 +99,7 @@ Publish-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automatio
 ## <a name="related-articles"></a>相关文章
 
 * [在 Azure 自动化中管理 runbook](manage-runbooks.md)
-* [学习 PowerShell 工作流](automation-powershell-workflow.md)
+* [了解 PowerShell 工作流](automation-powershell-workflow.md)
 * [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md)
 * [证书](automation-certificates.md)
 * [连接](automation-connections.md)

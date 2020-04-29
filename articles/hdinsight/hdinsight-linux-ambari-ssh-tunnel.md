@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
 ms.openlocfilehash: 9bdf7360ce00637b0eed3de7a3349da8656a3ed0
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81314164"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>使用 SSH 隧道访问 Apache Ambari Web UI、JobHistory、NameNode、Apache Oozie 和其他 UI
 
-HDInsight 群集提供通过互联网访问 Apache Ambari Web UI。 某些功能需要 SSH 隧道。 例如，没有 SSH 隧道，Apache Oozie Web UI 无法通过互联网访问。
+HDInsight 群集通过 Internet 提供对 Apache Ambari web UI 的访问。 某些功能需要 SSH 隧道。 例如，在没有 SSH 隧道的情况下，无法通过 internet 访问 Apache Oozie web UI。
 
 ## <a name="why-use-an-ssh-tunnel"></a>为何使用 SSH 隧道
 
@@ -31,7 +31,7 @@ Ambari 中的多个菜单仅通过 SSH 隧道工作。 这些菜单依赖于辅�
 * Oozie Web UI
 * HBase Master 和日志 UI
 
-使用显示 Web 服务的脚本操作安装的服务将需要 SSH 隧道。 使用脚本操作安装的 Hue 需要 SSH 隧道才能访问 Web UI。
+使用公开 web 服务的脚本操作安装的服务将需要 SSH 隧道。 使用脚本操作安装的色调要求使用 SSH 隧道来访问 web UI。
 
 > [!IMPORTANT]  
 > 如果可以通过虚拟网络直接访问 HDInsight，则不需要使用 SSH 隧道。 有关通过虚拟网络直接访问 HDInsight 的示例，请参阅[将 HDInsight 连接到本地网络](connect-on-premises-network.md)一文。
@@ -64,30 +64,30 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
 此命令会创建一个通过 SSH 将流量路由到群集本地端口 9876 的连接。 选项包括：
 
-    |选项 |描述 |
+    |选项 |说明 |
     |---|---|
     |D 9876|通过隧道路由流量的本地端口。|
-    |C|压缩所有数据，因为 Web 流量主要是文本。|
-    |2|强制 SSH 仅尝试协议版本 2。|
+    |C|压缩所有数据，因为 web 流量大多为文本。|
+    |2|强制 SSH 仅尝试协议版本2。|
     |q|静默模式。|
-    |T|禁用伪 tty 分配，因为您只是转发端口。|
-    |n|防止读取 STDIN，因为您只是转发端口。|
-    |N|不要执行远程命令，因为您只是转发端口。|
+    |T|禁用伪 tty 分配，因为你只是转发端口。|
+    |n|阻止读取 STDIN，因为你只是转发端口。|
+    |N|不要执行远程命令，因为你只是转发端口。|
     |f|在后台运行。|
 
 命令完成后，发送到本地计算机上端口 9876 的流量将路由到群集头节点。
 
 ## <a name="create-a-tunnel-using-putty"></a><a name="useputty"></a>使用 PuTTY 创建隧道
 
-[PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty) 是适用于 Windows 的图形 SSH 客户端。 如果您不熟悉 PuTTY，请参阅[PuTTY 文档](https://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)。 执行以下步骤，使用 PuTTY 创建 SSH 隧道：
+[PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty) 是适用于 Windows 的图形 SSH 客户端。 如果你不熟悉 PuTTY，请参阅[PuTTY 文档](https://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)。 执行以下步骤，使用 PuTTY 创建 SSH 隧道：
 
 ### <a name="create-or-load-a-session"></a>创建或加载会话
 
-1. 打开 PuTTY，并确保在左侧菜单中选择“会话”****。 如果已保存会话，请从 **"已保存会话"** 列表中选择会话名称，然后选择 **"加载**"。
+1. 打开 PuTTY，并确保在左侧菜单中选择“会话”****。 如果已保存会话，请从 "**保存的会话**" 列表中选择会话名称，然后选择 "**加载**"。
 
 1. 如果你没有已保存的会话，请输入你的连接信息：
 
-    |Property |“值” |
+    |属性 |值 |
     |---|---|
     |主机名（或 IP 地址）|HDInsight 群集的 SSH 地址。 例如， **mycluster-ssh.azurehdinsight.net**。|
     |端口|22|
@@ -95,19 +95,19 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
 1. 选择“保存” 
 
-    ![HDInsight 创建腻分会话](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
+    ![HDInsight 创建 putty 会话](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
 
 1. 在对话框左侧的“类别****”部分中，依次展开“连接”**** 和“SSH”****，并选择“隧道”****。
 
-1. 提供有关**控制 SSH 端口转发窗体的选项**的以下信息：
+1. 在**控制 SSH 端口转发**窗体的选项中提供以下信息：
 
-    |Property |“值” |
+    |属性 |值 |
     |---|---|
-    |Source Port|要转发的客户端上的端口。 例如，**9876**。|
+    |Source Port|客户端上要转发的端口。 例如，**9876**。|
     |目标|HDInsight 群集的 SSH 地址。 例如， **mycluster-ssh.azurehdinsight.net**。|
     |动态|启用动态 SOCKS 代理路由。|
 
-    ![普蒂配置隧道选项](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-putty-tunnel.png)
+    ![PuTTY 配置隧道选项](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-putty-tunnel.png)
 
 1. 选择“添加”**** 以添加设置，然后选择“打开”**** 以打开 SSH 连接。
 
@@ -125,7 +125,7 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
    > [!NOTE]  
    > 通过选择“远程 DNS”****，可使用 HDInsight 群集解析域名系统 (DNS) 请求。 此设置使用群集的头节点解析 DNS。
 
-2. 通过访问站点（如[https://www.whatismyip.com/](https://www.whatismyip.com/)） 验证隧道是否有效。 返回的 IP 应是 Microsoft Azure 数据中心使用的 IP。
+2. 通过访问站点（例如） [https://www.whatismyip.com/](https://www.whatismyip.com/)来验证隧道是否正常工作。 返回的 IP 应是 Microsoft Azure 数据中心使用的 IP。
 
 ## <a name="verify-with-ambari-web-ui"></a>Ambari Web UI 访问验证
 
@@ -138,7 +138,7 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
 2. 在 Ambari Web UI 中，请选择页面左侧列表中的“HDFS”。
 
-    ![阿帕奇安巴里高清服务选择](./media/hdinsight-linux-ambari-ssh-tunnel/hdfs-service-selected.png)
+    ![已选择 Apache Ambari hdfs 服务](./media/hdinsight-linux-ambari-ssh-tunnel/hdfs-service-selected.png)
 
 3. 显示 HDFS 服务信息时，请选择“快速链接”****。 将显示群集头节点列表。 选择其中一个头节点，并选择“NameNode UI”****。
 
@@ -151,13 +151,13 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
 4. 会显示类似于下图的页面：
 
-    ![Hadoop 名称节点 UI 的图像](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-namenode-ui.png)
+    ![Hadoop NameNode UI 的图像](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-namenode-ui.png)
 
     > [!NOTE]  
     > 请注意此页的 URL；它应类似于 `http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster`。 此 URL 使用了节点的内部完全限定的域名 (FQDN)，仅在使用 SSH 隧道时可以访问。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，您已经了解如何创建和使用 SSH 隧道，请参阅以下文档，了解使用 Ambari 的其他方法：
+现在，你已了解如何创建和使用 SSH 隧道，请参阅以下文档，了解使用 Ambari 的其他方法：
 
 * [使用 Apache Ambari 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)

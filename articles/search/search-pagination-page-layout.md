@@ -9,23 +9,23 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 0f815003449f0600bce1cb8927b92b85b51b09a1
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641624"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中使用搜索结果
 
-本文介绍如何获取查询响应，该响应附带了匹配文档、分页结果、排序结果和点击突出显示的术语的总数。
+本文介绍如何获取返回的查询响应，其中包含匹配文档的总数、分页结果、排序结果和突出显示的字词。
 
-响应的结构由查询中的参数确定：REST API 中的[搜索文档](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)，或 .NET SDK 中的[DocumentSearchResult 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)。
+响应的结构由查询中的参数确定：在 REST API 中[搜索文档](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)，或在 .net SDK 中的[DocumentSearchResult 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)中搜索。
 
 ## <a name="result-composition"></a>结果组合
 
-虽然搜索文档可能由大量字段组成，但通常只需要几个字段来表示结果集中的每个文档。 在查询请求上，追加以`$select=<field list>`指定响应中显示的字段。 字段必须归为要包含在结果中的索引中的**可检索**字段。 
+尽管搜索文档可能包含大量字段，但通常只需要少数几个字段来表示结果集中的每个文档。 在查询请求中，追加`$select=<field list>`以指定在响应中显示哪些字段。 在要包含在结果中的索引中，字段必须属性化为可**检索**。 
 
-最起作用的字段包括那些对文档进行对比和区分的字段，这些字段提供了足够的信息来邀请用户进行点击式响应。 在电子商务网站上，它可能是产品名称、描述、品牌、颜色、大小、价格和评级。 对于酒店示例索引内置示例，可能是以下示例中的字段：
+最合适的字段包括对比和区分文档的字段，提供足够的信息来邀请用户部分的单击响应。 在电子商务网站上，它可能是产品名称、说明、品牌、颜色、大小、价格和评级。 对于酒店索引内置示例，它可能是以下示例中的字段：
 
 ```http
 POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 
@@ -37,64 +37,64 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
 ```
 
 > [!NOTE]
-> 如果要在结果中包含图像文件（如产品照片或徽标），请将它们存储在 Azure 认知搜索之外，但在索引中包含一个字段以引用搜索文档中的图像 URL。 支持结果中图像的示例索引包括**房地产样本-us**演示，在此[快速入门](search-create-app-portal.md)中介绍，以及[纽约市就业演示应用程序](https://aka.ms/azjobsdemo)。
+> 如果希望在结果中包括图像文件（如产品照片或徽标），请将其存储在 Azure 认知搜索之外，但在索引中包含一个字段，用于引用搜索文档中的图像 URL。 支持结果中的图像的示例索引包括**realestate-us**演示程序、本[快速入门](search-create-app-portal.md)和纽约的 "[作业演示应用](https://aka.ms/azjobsdemo)"。
 
 ## <a name="paging-results"></a>分页结果
 
-默认情况下，如果查询为全文搜索，或者按任意顺序返回前 50 个匹配项，由搜索分数确定。
+默认情况下，搜索引擎最多返回前50个匹配项，如果查询为全文搜索，则按搜索评分确定，或按任意顺序返回完全匹配查询。
 
-要返回不同数量的匹配文档，请向查询`$top`请求`$skip`添加 和 参数。 下面的列表解释了逻辑。
+若要返回不同数量的匹配文档，请`$top`将`$skip`和参数添加到查询请求。 下面的列表介绍了逻辑。
 
 + 添加`$count=true`以获取索引中匹配文档总数的计数。
 
-+ 返回第一组 15 个匹配文档以及总匹配计数：`GET /indexes/<INDEX-NAME>/docs?search=<QUERY STRING>&$top=15&$skip=0&$count=true`
++ 返回第一组15个匹配文档以及总计匹配项的计数：`GET /indexes/<INDEX-NAME>/docs?search=<QUERY STRING>&$top=15&$skip=0&$count=true`
 
-+ 返回第二盘，跳过前15，得到下一个15： `$top=15&$skip=15`。 对于第三组 15 执行相同的操作：`$top=15&$skip=30`
++ 返回第二个集，跳过前15个，获取下 15 `$top=15&$skip=15`个：。 对第三组15执行相同操作：`$top=15&$skip=30`
 
-如果基础索引正在更改，则分页查询的结果不能保证是稳定的。 分页会更改每个页面`$skip`的值，但每个查询都是独立的，并且对查询时在索引中存在的数据的当前视图进行操作（换句话说，没有缓存或快照的结果，例如在通用数据库中找到的结果）。
+如果基础索引正在更改，则不保证分页查询的结果是稳定的。 分页将`$skip`为每个页面更改的值，但每个查询都是独立的，并且在查询中数据存在时，在数据的当前视图上进行操作（换言之，没有结果的缓存或快照，如在常规用途数据库中找到的结果）。
  
-下面是如何获取重复项的示例。 假设索引有四个文档：
+下面举例说明了如何获取重复项。 假设有四个文档的索引：
 
     { "id": "1", "rating": 5 }
     { "id": "2", "rating": 3 }
     { "id": "3", "rating": 2 }
     { "id": "4", "rating": 1 }
  
-现在假设您希望结果一次返回两个，按评级排序。 您将执行此查询以获取结果的第一页： `$top=2&$skip=0&$orderby=rating desc`，生成以下结果：
+现在假设您希望每次返回两个结果，并按评级排序。 您将执行此查询以获取结果的第一页： `$top=2&$skip=0&$orderby=rating desc`，生成以下结果：
 
     { "id": "1", "rating": 5 }
     { "id": "2", "rating": 3 }
  
-在服务上，假设查询调用之间的索引中添加了第五个文档： `{ "id": "5", "rating": 4 }`。  不久之后，您将执行查询以获取第二页：`$top=2&$skip=2&$orderby=rating desc`获取这些结果：
+在服务上，假定在查询调用之间向索引添加了第五个文档： `{ "id": "5", "rating": 4 }`。  稍后，您将执行查询来提取第二页： `$top=2&$skip=2&$orderby=rating desc`，并获取以下结果：
 
     { "id": "2", "rating": 3 }
     { "id": "3", "rating": 2 }
  
-请注意，文档 2 被提取两次。 这是因为新文档 5 具有更大的评级值，因此它在文档 2 之前排序并落在第一页上。 虽然这种行为可能出乎意料，但它是搜索引擎行为的典型表现。
+请注意，文档2被提取了两次。 这是因为，新文档5的评级值较大，因此在第一页上的文档2和页面间排序。 虽然这种行为可能是意外的，但它通常是搜索引擎的行为方式。
 
 ## <a name="ordering-results"></a>对结果排序
 
-对于全文搜索查询，结果根据文档中的术语频率和邻近程度计算，结果自动按搜索分数排序，较高的分数将到搜索词上匹配更多或更强的文档。 
+对于全文搜索查询，结果将根据搜索评分自动排名，搜索分数根据文档中的字词频率和邻近度计算，较高的分数表示搜索词的匹配程度更高或更强。 
 
-搜索分数传达一般的相关性，反映匹配强度与同一结果集中的其他文档相比。 分数在一个查询和下一个查询并不总是一致的，因此当您处理查询时，您可能会注意到搜索文档的排序方式存在小差异。 有几个解释来解释为什么会发生这种情况。
+搜索评分传达了一般的相关性，反映了与同一结果集中的其他文档相比的匹配程度。 从一个查询到下一个查询，分数并非总是一致的，因此，在处理查询时，你可能会注意到搜索文档的排序方式的细微差异。 对于这种情况的原因，有几个解释。
 
 | 原因 | 说明 |
 |-----------|-------------|
-| 数据波动性 | 当您添加、修改或删除文档时，索引内容会有所不同。 随着索引更新的处理时间的变化，期限频率将发生变化，从而影响匹配文档的搜索分数。 |
-| 多个副本 | 对于使用多个副本的服务，将并行针对每个副本发出查询。 用于计算搜索分数的索引统计信息按副本计算，结果在查询响应中合并并排序。 副本大多是彼此的镜像，但由于状态差异小，统计信息可能不同。 例如，一个副本可能删除了导致其统计信息的文档，这些文档从其他副本中合并。 通常，每个副本统计信息的差异在较小的索引中更为明显。 |
-| 相同分数 | 如果多个文档具有相同的分数，则其中任何文档可能首先出现。  |
+| 数据变动率 | 添加、修改或删除文档时，索引内容会有所不同。 随着时间的推移处理索引更新，术语频率将会改变，从而影响匹配文档的搜索分数。 |
+| 多个副本 | 对于使用多个副本的服务，将并行对每个副本发出查询。 用于计算搜索评分的索引统计信息根据每个副本计算，并在查询响应中合并和排序结果。 副本基本上是彼此的镜像，但由于状态的细微差异，统计信息可能会有所不同。 例如，一个副本可能已删除了其统计信息的相关文档，这些文档已合并到其他副本。 通常，每个副本的统计信息中的差异在小型索引中更为明显。 |
+| 相同分数 | 如果多个文档具有相同分数，则其中的任何一个文档可能会首先出现。  |
 
-### <a name="consistent-ordering"></a>一致的订购
+### <a name="consistent-ordering"></a>一致性排序
 
-给定结果排序的灵活性，如果一致性是应用程序要求，则可能需要探索其他选项。 最简单的方法是按字段值（如评级或日期）进行排序。 对于要按特定字段排序的方案（如评级或日期），可以显式定义[`$orderby`表达式](query-odata-filter-orderby-syntax.md)，该表达式可以应用于索引为**可排序**的任何字段。
+考虑到弹性的结果顺序，如果一致性是应用程序要求，你可能需要浏览其他选项。 最简单的方法是按字段值（如评分或 date）进行排序。 对于想要按特定字段（例如，评级或日期）进行排序的情况，您可以显式定义一个[ `$orderby`表达式](query-odata-filter-orderby-syntax.md)，该表达式可应用于索引为可**排序**的任何字段。
 
-另一个选项是使用[自定义评分配置文件](index-add-scoring-profiles.md)。 评分配置文件使您能够对搜索结果中的项目排名进行更多控制，并能够提升特定字段中的匹配项。 附加评分逻辑可帮助覆盖副本之间的细微差异，因为每个文档的搜索分数相距较远。 我们建议此方法的排名[算法](index-ranking-similarity.md)。
+另一种方法是使用[自定义计分配置文件](index-add-scoring-profiles.md)。 通过评分配置文件，可以更好地控制搜索结果中的项目排名，并能够提高特定字段中找到的匹配项。 额外的评分逻辑有助于覆盖副本间的细微差别，因为每个文档的搜索分数都在相隔。 对于此方法，我们建议[排名算法](index-ranking-similarity.md)。
 
 ## <a name="hit-highlighting"></a>突出显示
 
-点击突出显示是指应用于结果匹配术语的文本格式（如粗体或黄色突出显示），便于发现匹配项。 [查询请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)上提供了命中突出显示说明。 The search engine encloses the matching term in tags, `highlightPreTag` and `highlightPostTag`, and your code handles the response (for example, applying a bold font).
+命中突出显示指的是在结果中应用于匹配字词的文本格式（例如粗体或黄色突出显示），这样就可以轻松地找到匹配项。 [查询请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)上提供了命中突出显示说明。 搜索引擎将匹配项包含在标记中， `highlightPreTag`并`highlightPostTag`在代码中处理响应（例如，应用粗体字体）。
 
-格式应用于整个术语查询。 在下面的示例中，在"描述"字段中找到的术语"沙"，"沙子"，"海滩"，"海滩"被标记为突出显示。 触发引擎中查询扩展的查询（如模糊搜索和通配符搜索）对命中突出显示的支持有限。
+格式设置将应用于整个术语查询。 在下面的示例中，在 "说明" 字段中找到的术语 "sandy"、"沙滩"、"海滩"、"浮水" 标记为突出显示。 在引擎中触发查询扩展的查询（如模糊和通配符搜索）对命中突出显示功能的支持有限。
 
 ```http
 GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2019-05-06 
@@ -108,28 +108,28 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
     }
 ```
 
-### <a name="new-behavior-starting-july-15"></a>新行为（从 7 月 15 日开始）
+### <a name="new-behavior-starting-july-15"></a>新行为（从7月15日起）
 
-2020 年 7 月 15 日之后创建的服务将提供不同的突出显示体验。 该日期之前创建的服务在突出显示行为中不会改变。 
+2020年7月15日之后创建的服务将提供不同的突出显示体验。 在该日期之前创建的服务不会在其突出显示行为中发生更改。 
 
-使用新行为：
+新行为：
 
-* 将仅返回与完整短语查询匹配的短语。 查询"超级碗"将返回如下所示的亮点：
+* 仅返回与完整短语查询匹配的短语。 查询 "超级杯" 将返回如下所示的突出显示：
 
     ```html
     '<em>super bowl</em> is super awesome with a bowl of chips'
     ```
-  请注意，芯片术语*碗*没有任何突出显示，因为它与完整短语不匹配。
+  请注意，*芯片*的 "字词" 字样没有任何突出显示，因为它与完整短语不匹配。
   
-* 可以指定为高光返回的片段大小。 片段大小指定为字符数（最大为 1000 个字符）。
+* 可以指定为突出显示返回的片段大小。 片段大小指定为字符数（最大为1000个字符）。
 
-编写实现命中突出显示的客户端代码时，请注意此更改。 请注意，除非您创建全新的搜索服务，否则这不会影响您。
+编写实现命中突出显示的客户端代码时，请注意此更改。 请注意，这不会对你产生影响，除非你创建全新的搜索服务。
 
 ## <a name="next-steps"></a>后续步骤
 
-要快速生成客户端的搜索页，请考虑以下选项：
+若要快速为客户端生成搜索页面，请考虑以下选项：
 
-+ [应用程序生成器](search-create-app-portal.md)在门户中创建一个 HTML 页面，其中包含搜索栏、分面导航和包含图像的结果区域。
-+ [在 C# 中创建第一个应用](tutorial-csharp-create-first-app.md)是构建功能客户端的教程。 示例代码演示分页查询、点击突出显示和排序。
++ [应用程序生成器](search-create-app-portal.md)，在门户中创建一个 HTML 页面，其中包含一个搜索栏、多面导航和包括图像的结果区域。
++ 使用[c # 创建第一个应用程序](tutorial-csharp-create-first-app.md)是一个生成功能客户端的教程。 示例代码演示分页查询、命中突出显示和排序。
 
-几个代码示例包括一个 Web 前端界面，您可以在这里找到：[纽约市工作演示应用程序](https://aka.ms/azjobsdemo)[，JavaScript 示例代码与实时演示网站](https://github.com/liamca/azure-search-javascript-samples)， 和[认知搜索FrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)。
+几个代码示例包含一个 web 前端接口，可在此处找到：纽约的 "[城市作业" 演示应用](https://aka.ms/azjobsdemo)、[使用实时演示网站的 JavaScript 示例代码](https://github.com/liamca/azure-search-javascript-samples)和[CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)。

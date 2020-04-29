@@ -16,10 +16,10 @@ ms.date: 04/17/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: be5defb85547e8750dea9ceaa481217aa40a004e
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81639765"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>使用 Azure CLI 创建、列出或删除用户分配的托管标识
@@ -31,7 +31,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-the-managed-identities-for-azure-resources-work)****。
+- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-the-managed-identities-for-azure-resources-work)  。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
 - 若要运行 CLI 脚本示例，可以使用下列三种方法：
     - 在 Azure 门户中使用 [Azure Cloud Shell](../../cloud-shell/overview.md)（见下一部分）。
@@ -40,7 +40,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 
 > [!NOTE]
-> 为了在使用 CLI 使用应用 servivce 主体时修改用户权限，您必须在 Azure AD 图形 API 中提供服务主体附加权限，因为 CLI 的一部分对图形 API 执行 GET 请求。 否则，您可能会最终收到"完成操作的权限不足"消息。 为此，您需要进入 Azure 活动目录中的应用注册，选择应用、单击 API 权限、向下滚动并选择 Azure 活动目录图。 在此处选择应用程序权限，然后添加相应的权限。 
+> 若要在使用 CLI 时修改用户权限，则必须在 Azure AD 图形 API 中提供服务主体附加权限，因为 CLI 的某些部分对图形 API 执行 GET 请求。 否则，可能会收到 "权限不足，无法完成操作" 消息。 要执行此操作，需要进入应用注册 Azure Active Directory 中，选择应用，单击 "API 权限"，向下滚动并选择 "Azure Active Directory 关系图"。 在其中选择 "应用程序" 权限，然后添加适当的权限。 
 
 
 

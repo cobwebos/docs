@@ -4,15 +4,15 @@ description: 为新的实时应用程序手动设置 Application Insights 监视
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: 0c8b9ccaa70a2fd1bf46c6f4537f54d702ecc48f
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537570"
 ---
 # <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 
-Azure 应用程序见解在 Microsoft Azure*资源*中显示有关应用程序的数据。 因此创建新资源属于[设置 Application Insights 来监视新应用程序][start]的一个环节。 创建新资源后，可以获取其检测密钥并使用它来配置 Application Insights SDK。 检测密钥会将遥测链接到资源。
+Azure Application Insights 在 Microsoft Azure *资源*中显示有关应用程序的数据。 因此，创建新资源是[设置 Application Insights 以监视新应用程序][start]中的一个环节。 创建新资源后，可以获取其检测密钥并使用它来配置 Application Insights SDK。 检测密钥会将遥测链接到资源。
 
 ## <a name="sign-in-to-microsoft-azure"></a>登录 Microsoft Azure
 
@@ -31,7 +31,7 @@ Azure 应用程序见解在 Microsoft Azure*资源*中显示有关应用程序�
    | **位置** | 美国东部 | 选择离你近的位置或离托管应用的位置近的位置。 |
 
 > [!NOTE]
-> 虽然您可以在不同的资源组中使用相同的资源名称，但使用全局唯一名称可能是有益的。 如果您计划[执行跨资源查询](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query#identifying-an-application)，因为它简化了所需的语法，则此功能非常有用。
+> 虽然你可以在不同的资源组中使用相同的资源名称，但使用全局唯一名称可能会很有用。 如果你计划[执行跨资源查询](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query#identifying-an-application)，因为它可以简化所需的语法，这会很有用。
 
 在必填字段中输入适当的值，然后选择“查看 + 创建”****。
 
@@ -41,7 +41,7 @@ Azure 应用程序见解在 Microsoft Azure*资源*中显示有关应用程序�
 
 ## <a name="copy-the-instrumentation-key"></a>复制检测密钥
 
-检测密钥标识要将遥测数据与之关联的资源。 您需要复制检测密钥并将其添加到应用程序的代码。
+检测密钥标识要将遥测数据与之关联的资源。 你将需要复制检测密钥并将其添加到你的应用程序的代码中。
 
 ![单击并复制检测密钥](./media/create-new-resource/instrumentation-key.png)
 

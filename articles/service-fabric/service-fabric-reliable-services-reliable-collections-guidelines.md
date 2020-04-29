@@ -1,13 +1,13 @@
 ---
-title: 可靠收集指南
-description: 在 Azure 服务结构应用程序中使用服务结构可靠集合的指南和建议。
+title: 有关可靠集合的指导原则
+description: 在 Azure Service Fabric 应用程序中使用 Service Fabric 可靠集合的相关指导原则和建议。
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: db37067069b2a9eb08009eb6bb373f6fce1cafa9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81398528"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Azure Service Fabric 中 Reliable Collections 的相关指导原则和建议
@@ -41,17 +41,17 @@ ms.locfileid: "81398528"
   从主副本读取的数据始终是可靠的，绝不会被错误处理。
 * 应用程序在可靠集合中保留的数据的安全性/隐私性是用户决定，并受到存储管理的保护；即 操作系统磁盘加密可用于保护静态数据。  
 
-## <a name="volatile-reliable-collections"></a>易失性可靠集合
-在决定使用易失性可靠集合时，请考虑以下事项：
+## <a name="volatile-reliable-collections"></a>可变可靠集合
+决定使用可变可靠集合时，请考虑以下事项：
 
-* ```ReliableDictionary```确实有不稳定的支持
-* ```ReliableQueue```确实有不稳定的支持
-* ```ReliableConcurrentQueue```没有不稳定的支持
-* 持久化服务不能变得不稳定。 更改标志```HasPersistedState```需要```false```从头开始重新创建整个服务
-* 无法持久化可变服务。 更改标志```HasPersistedState```需要```true```从头开始重新创建整个服务
-* ```HasPersistedState```是服务级别配置。这意味着**所有**集合都将持久或不稳定。 不能混合易失性和持久化集合
-* 可变分区的仲裁丢失导致完全数据丢失
-* 备份和还原不适用于易失性服务
+* ```ReliableDictionary```确实支持 volatile
+* ```ReliableQueue```确实支持 volatile
+* ```ReliableConcurrentQueue```没有易失性支持
+* 持久化服务无法进行可变。 更改```HasPersistedState```标志以```false```要求从头开始重新创建整个服务
+* 不能保留可变服务。 更改```HasPersistedState```标志以```true```要求从头开始重新创建整个服务
+* ```HasPersistedState```为服务级别配置。这意味着**所有**集合都将保留或可变。 不能混合使用可变和持久集合
+* 可变分区的仲裁丢失会导致数据完全丢失
+* 备份和还原不可用于可变服务
 
 ## <a name="next-steps"></a>后续步骤
 * [使用可靠集合](service-fabric-work-with-reliable-collections.md)
@@ -60,7 +60,7 @@ ms.locfileid: "81398528"
   * [备份和还原](service-fabric-reliable-services-backup-restore.md)
   * [通知](service-fabric-reliable-services-notifications.md)
   * [序列化和升级](service-fabric-application-upgrade-data-serialization.md)
-  * [可靠的状态管理器配置](service-fabric-reliable-services-configuration.md)
+  * [可靠状态管理器配置](service-fabric-reliable-services-configuration.md)
 * 其他
   * [Reliable Services 快速启动](service-fabric-reliable-services-quick-start.md)
   * [可靠集合的开发人员参考](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

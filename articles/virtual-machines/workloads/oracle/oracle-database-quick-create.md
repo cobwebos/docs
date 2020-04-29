@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: 77a374a83c178639052e8db6fc85c31e366ac0e6
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683646"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>在 Azure VM 上创建 Oracle 数据库
@@ -150,7 +150,7 @@ ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 ORACLE_SID=cdb1; export ORACLE_SID
 ```
 
-还可以将 ORACLE_HOME 和 ORACLE_SID 变量添加到 .bashrc 文件。 这将保存环境变量以供将来登录。 确认以下语句已使用您选择的编辑器添加到`~/.bashrc`文件中。
+还可以将 ORACLE_HOME 和 ORACLE_SID 变量添加到 .bashrc 文件。 这会保存环境变量供将来登录时使用。请确认已使用所选编辑器将以下语句`~/.bashrc`添加到文件。
 
 ```bash
 # Add ORACLE_HOME. 

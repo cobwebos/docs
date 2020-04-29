@@ -4,10 +4,10 @@ description: 本文介绍如何管理和监视 Azure VM 上运行的 SQL Server 
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 14e3a4797fe60a3d1857f1e6d947fa0c669bdcfe
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537298"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>管理和监视已备份的 SQL Server 数据库
@@ -18,12 +18,12 @@ ms.locfileid: "81537298"
 
 ## <a name="monitor-manual-backup-jobs-in-the-portal"></a>在门户中监视手动备份作业
 
-Azure 备份在“备份作业”门户中显示所有手动触发的作业。**** 此门户中显示的作业包括数据库发现和注册，以及备份和还原操作。
+Azure 备份在“备份作业”门户中显示所有手动触发的作业。  此门户中显示的作业包括数据库发现和注册，以及备份和还原操作。
 
 ![“备份作业”门户](./media/backup-azure-sql-database/jobs-list.png)
 
 > [!NOTE]
-> “备份作业”门户不显示计划的备份作业。**** 可按下一部分所述，使用 SQL Server Management Studio 来监视计划的备份作业。
+> “备份作业”门户不显示计划的备份作业。  可按下一部分所述，使用 SQL Server Management Studio 来监视计划的备份作业。
 >
 
 有关监视方案的详细信息，请参阅[在 Azure 门户中进行监视](backup-azure-monitoring-built-in-monitor.md)和[使用 Azure Monitor 进行监视](backup-azure-monitoring-use-azuremonitor.md)。  
@@ -40,11 +40,11 @@ Azure 备份在“备份作业”门户中显示所有手动触发的作业。**
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 在保管库仪表板中，选择“警报和事件”。****
+2. 在保管库仪表板中，选择“警报和事件”。 
 
    ![选择“警报和事件”](./media/backup-azure-sql-database/vault-menu-alerts-events.png)
 
-3. 在“警报和事件”**** 中，选择“备份警报”****。
+3. 在“警报和事件”  中，选择“备份警报”  。
 
    ![选择“备份警报”](./media/backup-azure-sql-database/backup-alerts-dashboard.png)
 
@@ -81,7 +81,7 @@ Azure 备份在“备份作业”门户中显示所有手动触发的作业。**
 
     ![在“停止备份”菜单中保留或删除数据](./media/backup-azure-sql-database/stop-backup-button.png)
 
-6. 选择 **"停止备份**"。
+6. 选择 "**停止备份**"。
 
 > [!NOTE]
 >
@@ -121,7 +121,7 @@ Azure 备份在“备份作业”门户中显示所有手动触发的作业。**
 
 在禁用保护之后但删除保管库之前取消注册 SQL Server 实例：
 
-1. 在保管库仪表板上，在 **"管理**"下，选择 **"备份基础结构**"。  
+1. 在保管库仪表板上的 "**管理**" 下，选择 "**备份基础结构**"。  
 
    ![选择“备份基础结构”。](./media/backup-azure-sql-database/backup-infrastructure-button.png)
 
@@ -142,7 +142,7 @@ Azure 备份在“备份作业”门户中显示所有手动触发的作业。**
 > [!NOTE]
 > 在保留期内进行的任何更改将应用到新恢复点，并以追溯方式应用到所有旧恢复点。
 
-在保管库仪表板中，转到**管理** > **备份策略**并选择要编辑的策略。
+在保管库仪表板中，单击 "**管理** > **备份策略**"，然后选择要编辑的策略。
 
   ![管理备份策略](./media/backup-azure-sql-database/modify-backup-policy.png)
 

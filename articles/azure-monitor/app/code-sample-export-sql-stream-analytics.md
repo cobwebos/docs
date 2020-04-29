@@ -4,10 +4,10 @@ description: 使用流分析将 Application Insights 数据连续导出到 SQL�
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.openlocfilehash: e67365038b9a481bc0cacf079e5d197cc3139a5f
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81536907"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>演练：使用流分析从 Application Insights 导出到 SQL
@@ -64,7 +64,7 @@ ms.locfileid: "81536907"
 1. 让我们累积一些数据。 请休息一下，让其他人先使用该应用程序一段时间。 应用程序中会逐渐传入遥测数据，[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)中会显示统计图表，[诊断搜索](../../azure-monitor/app/diagnostic-search.md)中会显示各个事件。 
    
     此外，数据将导出到存储。 
-2. 在门户中检查导出的数据 - 选择“浏览”，选择存储帐户，然后选择“容器”；也可以在 Visual Studio 中检查。******** 在 Visual Studio 中，请选择“查看”>“Cloud Explorer”，并打开“Azure”>“存储”。**** （如果未看到此菜单选项，则需要安装 Azure SDK：打开“新建项目”对话框，并打开“Visual C#”>“云”>“获取用于 .NET 的 Microsoft Azure SDK”。）
+2. 在门户中检查导出的数据 - 选择“浏览”，选择存储帐户，然后选择“容器”；也可以在 Visual Studio 中检查。   在 Visual Studio 中，请选择“查看”>“Cloud Explorer”，并打开“Azure”>“存储”。  （如果未看到此菜单选项，则需要安装 Azure SDK：打开“新建项目”对话框，并打开“Visual C#”>“云”>“获取用于 .NET 的 Microsoft Azure SDK”。）
    
     ![在 Visual Studio 中，依次打开“Server Browser”、“Azure”、“存储”](./media/code-sample-export-sql-stream-analytics/087-explorer.png)
    
@@ -73,7 +73,7 @@ ms.locfileid: "81536907"
 事件以 JSON 格式写入 Blob 文件。 每个文件可能包含一个或多个事件。 因此我们想要读取事件数据，并筛选出所需的字段。 可以针对数据执行各种操作，但我们目前的计划是使用流分析将数据移到 SQL 数据库。 这样做可以轻松运行许多微妙的查询。
 
 ## <a name="create-an-azure-sql-database"></a>创建 Azure SQL 数据库
-再次在 [Azure 门户][portal]中打开订阅，创建要在其中写入数据的数据库（除非已有新服务器，否则还要创建新服务器）。
+再次从 [Azure 门户][portal]中的订阅开始，创建要向其写入数据的数据库以及一个新服务器（除非已有一个）。
 
 ![依次选择“新建”、“数据”、“SQL”](./media/code-sample-export-sql-stream-analytics/090-sql.png)
 
@@ -137,7 +137,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ![](./media/code-sample-export-sql-stream-analytics/SA002.png)
 
-创建新作业后，选择“转到资源”****。
+创建新作业后，选择“转到资源”  。
 
 ![流分析设置](./media/code-sample-export-sql-stream-analytics/SA003.png)
 

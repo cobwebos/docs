@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: 7459c6afc775aa0df43d6f9285191c4c7e1b8cb8
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81602360"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>在 Azure 门户中创建新的时序见解环境
@@ -30,13 +30,13 @@ ms.locfileid: "81602360"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-1. 选择“+ 创建资源”**** 按钮。
+1. 选择“+ 创建资源”  按钮。
 
-1. 选择“物联网”类别，再选择“时序见解”。********
+1. 选择“物联网”类别，再选择“时序见解”。  
 
    [![创建时序见解环境](media/time-series-insights-get-started/tsi-create-new-environment.png)](media/time-series-insights-get-started/tsi-create-new-environment.png#lightbox)
 
-1. 在“时序见解”页上，选择“创建”。********
+1. 在“时序见解”页上，选择“创建”。  
 
 1. 填写必需的参数。 下表解释了每个参数：
 
@@ -51,17 +51,17 @@ ms.locfileid: "81602360"
    定价层 | S1 | 选择所需的吞吐量。 若要尽量降低费用并获得入门容量，请选择 S1。
    容量 | 1 | 容量是应用于入口速率、存储容量和所选 SKU 相关成本的乘数。  可以在创建环境后更改其容量。 若要尽量降低费用，请选择 1 个单位的容量。
   
-1. 选择“创建”开始执行预配过程。**** 这可能需要几分钟时间才能完成。
+1. 选择“创建”开始执行预配过程。  这可能需要几分钟时间才能完成。
 
-1. 若要监视部署过程，请选择“通知”符号（钟形图标）。****
+1. 若要监视部署过程，请选择“通知”符号（钟形图标）。 
 
    [![监视通知](media/time-series-insights-get-started/tsi-deploy-notifications.png)](media/time-series-insights-get-started/tsi-deploy-notifications.png#lightbox)
 
-1. 在资源概述**** 中，验证部署配置设置。
+1. 在资源概述  中，验证部署配置设置。
 
-   [![创建时序见解 固定到仪表板](media/time-series-insights-get-started/tsi-verify-deployment.png)](media/time-series-insights-get-started/tsi-verify-deployment.png#lightbox)
+   [![创建时序见解（固定到仪表板）](media/time-series-insights-get-started/tsi-verify-deployment.png)](media/time-series-insights-get-started/tsi-verify-deployment.png#lightbox)
 
-1. （可选）**** 选择右上角的“固定”**** 图标，以方便将来访问“时序见解”环境。
+1. （可选）  选择右上角的“固定”  图标，以方便将来访问“时序见解”环境。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -71,4 +71,4 @@ ms.locfileid: "81602360"
 
 * [发送事件](time-series-insights-send-events.md)到事件源。
 
-* 在[时间序列见解资源管理器](https://insights.timeseries.azure.com)中查看您的环境。
+* 在[时序见解资源管理器](https://insights.timeseries.azure.com)中查看环境。

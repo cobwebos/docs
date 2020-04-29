@@ -12,10 +12,10 @@ author: jpe316
 ms.date: 03/05/2020
 ms.custom: seodec18
 ms.openlocfilehash: 16f9080487af95e7de5c5f8c91fd5c8d356b7bde
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81618074"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>使用 Azure 机器学习的 CLI 扩展
@@ -31,13 +31,13 @@ Azure 机器学习 CLI 是 [Azure CLI](https://docs.microsoft.com/cli/azure/?vie
 
 CLI 不能取代 Azure 机器学习 SDK。 它是一个经过优化的补充工具，可以处理高度参数化的、非常适合自动化的任务。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 若要使用 CLI，必须拥有 Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
 * 若要在**本地环境**中使用本文档所述的 CLI 命令，需要安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-    如果使用 Azure[云外壳](https://azure.microsoft.com//features/cloud-shell/)，则 CLI 将通过浏览器访问并生活在云中。
+    如果使用[Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/)，则可以通过浏览器访问 CLI，并将其驻留在云中。
 
 ## <a name="full-reference-docs"></a>完整参考文档
 
@@ -46,7 +46,7 @@ CLI 不能取代 Azure 机器学习 SDK。 它是一个经过优化的补充工�
 ## <a name="connect-the-cli-to-your-azure-subscription"></a>将 CLI 连接到 Azure 订阅
 
 > [!IMPORTANT]
-> 如果使用 Azure 云外壳，则可以跳过此部分。 云外壳使用登录到 Azure 订阅的帐户自动对您进行身份验证。
+> 如果使用 Azure Cloud Shell，则可以跳过此部分。 Cloud shell 使用登录到 Azure 订阅的帐户自动对你进行身份验证。
 
 可通过多种方法从 CLI 对 Azure 订阅进行身份验证。 最基本的方法是使用浏览器进行交互式身份验证。 若要以交互方式进行身份验证，请打开命令行或终端，然后使用以下命令：
 
@@ -54,7 +54,7 @@ CLI 不能取代 Azure 机器学习 SDK。 它是一个经过优化的补充工�
 az login
 ```
 
-如果 CLI 可以打开默认的浏览器，则它会打开该浏览器并加载登录页。 否则，需要打开浏览器并按照命令行中的说明操作。 这些说明涉及浏览[https://aka.ms/devicelogin](https://aka.ms/devicelogin)和输入授权代码。
+如果 CLI 可以打开默认的浏览器，则它会打开该浏览器并加载登录页。 否则，需要打开浏览器并按照命令行中的说明操作。 这些说明涉及到[https://aka.ms/devicelogin](https://aka.ms/devicelogin)浏览和输入授权代码。
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
 
@@ -172,7 +172,7 @@ az extension remove -n azure-cli-ml
     >
     > 如果你的某个 Python 脚本以编程方式创建运行配置对象，则你可以使用 [RunConfig.save()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) 将此对象另存为 runconfig 文件。
     >
-    > 可在此 [JSON 文件](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)中找到完整的 runconfig 架构。 架构通过每个对象的`description`键进行自我记录。 此外，还有可能值的枚举，以及末尾的模板代码段。
+    > 可在此 [JSON 文件](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)中找到完整的 runconfig 架构。 该架构通过每个对象的`description`键自行记录。 此外，还有一些可能值的枚举，以及末尾的模板代码段。
 
     有关详细信息，请参阅 [az ml run submit-script](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script)。
 
@@ -284,7 +284,7 @@ az extension remove -n azure-cli-ml
 
 ### <a name="environment-configuration-schema"></a>环境配置架构
 
-如果使用 该`az ml environment scaffold`命令，它将生成一个模板`azureml_environment.json`文件，该文件可以修改并用于使用 CLI 创建自定义环境配置。 顶级对象松散地映射到 Python SDK[`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py)中的类。 
+如果使用了`az ml environment scaffold`命令，则会生成一个模板`azureml_environment.json`文件，该文件可通过 CLI 进行修改并用于创建自定义环境配置。 顶层对象松散映射到 Python SDK 中[`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py)的类。 
 
 ```json
 {
@@ -328,18 +328,18 @@ az extension remove -n azure-cli-ml
 }
 ```
 
-下表详细介绍了 JSON 文件中的每个顶级字段、类型和说明。 如果对象类型链接到 Python SDK 中的类，则每个 JSON 字段与 Python 类中的公共变量名称之间有一个松散的 1：1 匹配。 在某些情况下，该字段可能映射到构造函数参数，而不是类变量。 例如，`environmentVariables`字段映射到类中的`environment_variables`[`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py)变量。
+下表详细说明了 JSON 文件中的每个顶级字段、类型和说明。 如果对象类型已链接到 Python SDK 中的类，则在 Python 类中的每个 JSON 字段与公共变量名称之间存在松1:1 匹配。 在某些情况下，字段可能会映射到构造函数参数，而不是类变量。 例如， `environmentVariables`字段映射到`environment_variables` [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py)类中的变量。
 
 | JSON 字段 | 类型 | 说明 |
 |---|---|---|
-| `name` | `string` | 环境的名称。 不要使用**微软**或**AzureML**开始名称。 |
+| `name` | `string` | 环境的名称。 不要以**Microsoft**或**AzureML**开头。 |
 | `version` | `string` | 环境的版本。 |
 | `environmentVariables` | `{string: string}` | 环境变量名称和值的哈希映射。 |
 | `python` | [`PythonSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.pythonsection?view=azure-ml-py) | 定义要在目标计算资源上使用的 Python 环境和解释器的对象。 |
-| `docker` | [`DockerSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py) | 定义设置以自定义根据环境规范构建的 Docker 映像。 |
-| `spark` | [`SparkSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.sparksection?view=azure-ml-py) | 该部分配置 Spark 设置。 仅当框架设置为 PySpark 时，才使用它。 |
-| `databricks` | [`DatabricksSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.databricks.databrickssection?view=azure-ml-py) | 配置数据砖库依赖项。 |
-| `inferencingStackVersion` | `string` | 指定添加到映像的推断堆栈版本。 为了避免添加推断堆栈，请保留此字段`null`。 有效值："最新"。 |
+| `docker` | [`DockerSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py) | 定义用于自定义构建于环境规范的 Docker 映像的设置。 |
+| `spark` | [`SparkSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.sparksection?view=azure-ml-py) | 节配置 Spark 设置。 仅当 framework 设置为 PySpark 时才使用它。 |
+| `databricks` | [`DatabricksSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.databricks.databrickssection?view=azure-ml-py) | 配置 Databricks 库依赖项。 |
+| `inferencingStackVersion` | `string` | 指定添加到映像的推断堆栈版本。 若要避免添加推断堆栈，请将此`null`字段留空。 有效值： "最新"。 |
 
 ## <a name="ml-pipeline-management"></a>ML 管道管理
 

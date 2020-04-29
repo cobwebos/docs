@@ -1,5 +1,5 @@
 ---
-title: Azure 应用商店 IoT 边缘模块
+title: Azure Marketplace IoT Edge 模块
 description: Azure 市场中的 IoT Edge 模块套餐适用于应用和服务发布者。
 author: qianw211
 ms.service: marketplace
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
 ms.openlocfilehash: 762d9947046f159e992f09211bfcd76ff8d6712e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81684336"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge 模块
@@ -75,15 +75,15 @@ Microsoft Azure 市场协议和策略的所有条款都适用于 IoT Edge 模块
 
 ## <a name="documentation-and-resources"></a>文档和资源
 
-[创建 IoT 边缘模块产品 /](./partner-center-portal/azure-iot-edge-module-creation.md)在合作伙伴中心发布新的 IoT Edge 模块产品的步骤。
+[创建 IoT Edge 模块产品/服务](./partner-center-portal/azure-iot-edge-module-creation.md)-在合作伙伴中心发布新的 IoT Edge 模块服务的步骤。
 
 ## <a name="next-steps"></a>后续步骤
 
 如果尚未注册，
 
-- [了解](https://azuremarketplace.microsoft.com/sell)市场。
+- [了解](https://azuremarketplace.microsoft.com/sell)marketplace。
 
-要在合作伙伴中心注册，并开始创建新产品/服务或处理现有产品/服务，
+若要在合作伙伴中心注册，并开始创建新产品/服务或使用现有产品/服务，
 
-- 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)创建或完成您的优惠。
-- 有关如何发布 IoT Edge 模块产品/服务的信息，请参阅[创建 IoT Edge 模块产品/服务](./partner-center-portal/azure-iot-edge-module-creation.md)。
+- 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)，创建或完成产品/服务。
+- 有关如何发布 IoT Edge 模块产品/服务的信息，请参阅[创建 IoT Edge 模块提供](./partner-center-portal/azure-iot-edge-module-creation.md)。

@@ -6,10 +6,10 @@ ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
 ms.openlocfilehash: f5f18e9365b09f06c1bd4f25a8efe909cc308dad
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537009"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>在多台 VM 上启用更新管理、更改跟踪和清单解决方案
@@ -24,7 +24,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 在 Azure 门户中，导航到“虚拟机”****。
 
-使用复选框，选择要载入“更改跟踪”和“清单”或“更新管理”功能的虚拟机。 载入一次最多可用于三个不同的资源组。 无论自动化帐户的位置如何，Azure VM 都可以存在于任何区域中。
+使用复选框，选择要载入“更改跟踪”和“清单”或“更新管理”功能的虚拟机。 载入一次最多可用于三个不同的资源组。 无论自动化帐户的位置如何，Azure Vm 都可以存在于任何区域中。
 
 ![VM 列表](media/automation-onboard-solutions-from-browse/vmlist.png)
 > [!TIP]
@@ -33,23 +33,23 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 从命令栏中，单击“服务”****，然后选择“更改跟踪”****、“清单”**** 或“更新管理”****。
 
 > [!NOTE]
-> 更改跟踪和库存使用相同的解决方案。 启用一个时，另一个也启用。
+> 更改跟踪和清单使用相同的解决方案。 启用后，也会启用另一个。
 
-下图是关于“更新管理”的。 更改跟踪和清单具有相同的布局和行为。
+下图是关于“更新管理”的。 更改跟踪和库存具有相同的布局和行为。
 
 虚拟机的列表已经过筛选，仅显示了位于相同订阅和位置的虚拟机。 如果你的虚拟机位于三个以上资源组中，则会选择前三个资源组。
 
 ### <a name="onboarding-limitations"></a><a name="resource-group-limit"></a> 载入限制
 
-你可以用于载入的资源组的数量受限于[资源管理器部署限制](../azure-resource-manager/templates/cross-resource-group-deployment.md)。 资源管理器部署（不要与更新部署混淆）仅限于每个部署 5 个资源组。 为确保载入的完整性，这些资源组中有 2 个保留用来配置 Log Analytics 工作区、自动化帐户和相关资源。 剩下的 3 个资源组供你选择用于部署。 此限制仅适用于同时载入，不适用于由自动化解决方案管理的资源组数。
+你可以用于载入的资源组的数量受限于[资源管理器部署限制](../azure-resource-manager/templates/cross-resource-group-deployment.md)。 资源管理器部署，不会与更新部署混淆，每个部署只能有5个资源组。 为确保载入的完整性，这些资源组中有 2 个保留用来配置 Log Analytics 工作区、自动化帐户和相关资源。 剩下的 3 个资源组供你选择用于部署。 此限制仅适用于同时加入，而不适用于自动化解决方案可以管理的资源组数。
 
-您还可以使用 Runbook 进行载入，有关详细信息，请参阅[板载更新并将跟踪解决方案更改为 Azure 自动化](automation-onboard-solutions.md)。
+你还可以使用用于载入的 runbook，有关详细信息，请参阅[Azure 自动化的内置更新和更改跟踪解决方案](automation-onboard-solutions.md)。
 
 使用筛选器控件从不同的订阅、位置和资源组中选择虚拟机。
 
 ![载入更新管理解决方案](media/automation-onboard-solutions-from-browse/onboardsolutions.png)
 
-查看日志分析工作区和自动化帐户的选项。 默认情况下会选择一个现有的工作区和自动化帐户。 如果希望使用不同的 Log Analytics 工作区和自动化帐户，请单击“自定义”**** 来从“自定义配置”页面选择它们。**** 当你选择 Log Analytics 工作区时，将会进行检查来确定它是否与某个自动化帐户相链接。 如果找到了链接的自动化帐户，则会看到以下屏幕。 完成后单击“确定”****。
+查看 Log Analytics 工作区和自动化帐户的选项。 默认情况下会选择一个现有的工作区和自动化帐户。 如果希望使用不同的 Log Analytics 工作区和自动化帐户，请单击“自定义”**** 来从“自定义配置”页面选择它们。**** 当你选择 Log Analytics 工作区时，将会进行检查来确定它是否与某个自动化帐户相链接。 如果找到了链接的自动化帐户，则会看到以下屏幕。 完成后单击“确定”****。
 
 ![选择工作区和帐户](media/automation-onboard-solutions-from-browse/selectworkspaceandaccount.png)
 
@@ -60,7 +60,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 > [!NOTE]
 > 在启用解决方案时，只有某些区域支持链接 Log Analytics 工作区和自动化帐户。
 >
-> 有关支持的映射对的列表，请参阅[自动化帐户和日志分析工作区的区域映射](how-to/region-mappings.md)。
+> 有关支持的映射对的列表，请参阅[自动化帐户和 Log Analytics 工作区的区域映射](how-to/region-mappings.md)。
 
 取消选择不想启用的任何虚拟机旁边的复选框。 无法启用的虚拟机已被取消选择。
 
@@ -72,9 +72,9 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 * [更新管理](automation-update-management.md)
 * [更改跟踪](automation-change-tracking.md)
-* [非工作时间启动/停止 VM](automation-solution-vm-management.md)
+* [在非工作时间启动/停止 VM](automation-solution-vm-management.md)
 
-如果您决定不再希望将自动化帐户与日志分析工作区集成，则可以直接从 Azure 门户取消链接帐户。 在继续之前，首先需要删除前面所述的解决方案，否则此过程将无法继续。 查看已导入的特定解决方案的主题，了解删除该解决方案所需的步骤。
+如果你决定不再想要将自动化帐户与 Log Analytics 工作区集成，则可以直接从 Azure 门户取消链接你的帐户。 在继续之前，首先需要删除前面所述的解决方案，否则此过程将无法继续。 查看已导入的特定解决方案的主题，了解删除该解决方案所需的步骤。
 
 删除这些解决方案后，可以执行以下步骤取消链接自动化帐户。
 
@@ -103,17 +103,17 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 * 启动和停止 VM Runbook
 * 变量
 
-或者，您也可以从日志分析工作区取消将工作区从自动化帐户中取消链接。 在工作区上，选择 **"相关资源**"下的 **"自动化帐户**"。 在"自动化帐户"页上，选择 **"取消链接帐户**"。
+此外，还可以从 "Log Analytics" 工作区中取消工作区与自动化帐户的链接。 在工作区中，选择 "**相关资源**" 下的 "**自动化帐户**"。 在 "自动化帐户" 页上，选择 "**取消链接帐户**"。
 
 ## <a name="troubleshooting"></a>疑难解答
 
-在多台机器上时，可能有一些机器显示为`Cannot enable`。 有各种原因会导致某些计算机无法启用。 以下各节显示在尝试板载`Cannot enable`时 VM 上的状态的可能原因。
+当载入多台计算机时，可能会有显示为`Cannot enable`的计算机。 有各种原因会导致某些计算机无法启用。 以下部分说明了尝试载入 VM 时`Cannot enable`该虚拟机的状态的可能原因。
 
 ### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>VM 向一个不同的工作区进行报告：“\<workspaceName\>”。  请更改配置以将其用于启用
 
 **原因**：此错误表明你尝试载入的 VM 向另一个工作区进行报告。
 
-**解决方案**： 单击 **"使用作为配置**"以更改目标自动化帐户和日志分析工作区。
+**解决方案**：单击 "用作**配置**" 以更改目标自动化帐户并 Log Analytics "工作区"。
 
 ### <a name="vm-reports-to-a-workspace-that-is-not-available-in-this-subscription"></a>VM 向此订阅中不可用的工作区进行报告
 
@@ -147,19 +147,19 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 从更新管理中删除 VM：
 
-* 在 Log Analytics 工作区中，从范围配置 `MicrosoftDefaultScopeConfig-Updates` 的已保存的搜索中删除 VM。 已保存的搜索位于工作区的“常规”下****。
-* 删除[Windows 的日志分析代理](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources)或[Linux 的日志分析代理](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)。
+* 在 Log Analytics 工作区中，从范围配置 `MicrosoftDefaultScopeConfig-Updates` 的已保存的搜索中删除 VM。 已保存的搜索位于工作区的“常规”下  。
+* 删除[适用于 Windows 的 Log Analytics 代理](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources)或[适用于 Linux 的 Log Analytics 代理](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，已为虚拟机启用了该解决方案，请访问更新管理概述一文，了解如何为计算机创建**更新部署**。
+现在已为虚拟机启用了解决方案，请访问更新管理概述一文，了解如何为计算机创建**更新部署**。
 
 > [!div class="nextstepaction"]
-> [更新管理 - 管理 Azure VM 的更新和修补程序](./automation-tutorial-update-management.md)
+> [更新管理-管理 Azure Vm 的更新和修补程序](./automation-tutorial-update-management.md)
 
 关于解决方案以及如何使用它们的其他教程：
 
-* [教程 - 管理 VM 的更新](automation-tutorial-update-management.md)
+* [教程-管理 VM 的更新](automation-tutorial-update-management.md)
 
 * [教程 - 识别 VM 上的软件](automation-tutorial-installed-software.md)
 

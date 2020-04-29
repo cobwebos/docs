@@ -1,6 +1,6 @@
 ---
-title: 映射数据流的筛选器转换
-description: 使用 Azure 数据工厂映射数据流的筛选器转换筛选出行
+title: 映射数据流中的筛选转换
+description: 使用 Azure 数据工厂映射数据流中的筛选器转换筛选出行
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/16/2019
 ms.openlocfilehash: 32a40f3d4da93318c6d2ec25295c89a7b53141e4
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606428"
 ---
-# <a name="filter-transformation-in-mapping-data-flow"></a>映射数据流的筛选器转换
+# <a name="filter-transformation-in-mapping-data-flow"></a>映射数据流中的筛选转换
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -23,9 +23,9 @@ ms.locfileid: "81606428"
 
 ## <a name="configuration"></a>配置
 
-使用数据流表达式生成器为筛选器条件输入表达式。 要打开表达式生成器，请单击蓝色框。 过滤器条件必须为布尔类型。 有关如何创建表达式的详细信息，请参阅[表达式生成器](concepts-data-flow-expression-builder.md)文档。
+使用 "数据流表达式生成器" 输入筛选条件的表达式。 若要打开 "表达式生成器"，请单击蓝色框。 筛选条件的类型必须为布尔值。 有关如何创建表达式的详细信息，请参阅[表达式生成器](concepts-data-flow-expression-builder.md)文档。
 
-![过滤器转换](media/data-flow/filter1.png "过滤器转换")
+![筛选转换](media/data-flow/filter1.png "筛选转换")
 
 ## <a name="data-flow-script"></a>数据流脚本
 
@@ -40,13 +40,13 @@ ms.locfileid: "81606428"
 
 ### <a name="example"></a>示例
 
-下面的示例是一个筛选器转换，`FilterBefore1960`该转换名为，用于`CleanData`传入流。 筛选器条件是表达式`year <= 1960`。
+下面的示例是一个名为`FilterBefore1960`的筛选器转换，它`CleanData`采用传入流。 筛选条件是表达式`year <= 1960`。
 
-在数据工厂 UX 中，此转换类似于下图：
+在数据工厂 UX 中，此转换如下图所示：
 
-![过滤器转换](media/data-flow/filter1.png "过滤器转换")
+![筛选转换](media/data-flow/filter1.png "筛选转换")
 
-此转换的数据流脚本位于下面的代码段中：
+此转换的数据流脚本位于下面的代码片段中：
 
 ```
 CleanData
@@ -58,4 +58,4 @@ CleanData
 
 ## <a name="next-steps"></a>后续步骤
 
-使用[选择变换](data-flow-select.md)筛选出列
+用[select 转换](data-flow-select.md)筛选出列

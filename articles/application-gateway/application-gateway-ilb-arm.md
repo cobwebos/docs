@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: 406dcdb419dba2e8044a173f4c05028abbaba3da
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81312423"
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>创建具有内部负载均衡器 (ILB) 的应用程序网关
 
-可以配置使用面向 Internet 的 VIP 或不向 Internet 公开的内部终结点（也称为内部负载均衡器 (ILB) 终结点）的 Azure 应用程序网关。 配置使用 ILB 的网关适用于不向 Internet 公开的内部业务线应用程序。 它还适用于多层应用程序中的服务和层，这些应用程序位于未向 Internet 公开但仍需要循环负载分发、会话粘性或传输层安全 （TLS）（以前称为安全套接字层 （SSL））终止的安全边界中。
+可以配置使用面向 Internet 的 VIP 或不向 Internet 公开的内部终结点（也称为内部负载均衡器 (ILB) 终结点）的 Azure 应用程序网关。 配置使用 ILB 的网关适用于不向 Internet 公开的内部业务线应用程序。 对于位于不向 Internet 公开的安全边界内的多层应用程序中的服务和层也很有用，但仍需要轮循机制负载分发、会话粘性或传输层安全性（TLS），以前称为安全套接字层（SSL）终止。
 
 本文介绍了配置具有 ILB 的应用程序网关的步骤。
 
@@ -31,7 +31,7 @@ ms.locfileid: "81312423"
 ## <a name="what-is-required-to-create-an-application-gateway"></a>创建应用程序网关需要什么？
 
 * **后端服务器池：** 后端服务器的 IP 地址列表。 列出的 IP 地址应属于虚拟网络子网但位于应用程序网关的不同子网中，或者是公共 IP/VIP。
-* **后端服务器池设置：** 每个池都有端口、协议和基于 Cookie 的关联等设置。 这些设置绑定到池，并会应用到池中的所有服务器。
+* **后端服务器池设置：** 每个池都有一些设置，例如端口、协议和基于 Cookie 的关联性。 这些设置绑定到池，并会应用到池中的所有服务器。
 * **前端端口：** 此端口是应用程序网关上打开的公共端口。 流量将抵达此端口，并重定向到后端服务器之一。
 * **侦听器：** 侦听器具有前端端口、协议（Http 或 Https，区分大小写）和 SSL 证书名称（如果要配置 SSL 卸载）。
 * **规则：** 规则会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时应定向到的后端服务器池。 目前仅支持 *基本* 规则。 *基本* 规则是一种轮循负载分发模式。

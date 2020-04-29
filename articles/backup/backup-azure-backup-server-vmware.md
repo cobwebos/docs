@@ -4,10 +4,10 @@ description: 本文介绍如何使用 Azure 备份服务器备份 VMware vCenter
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.openlocfilehash: 92846f9bb9259e55a2c957716676ff42c032b2b5
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537400"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 备份服务器备份 VMware VM
@@ -24,14 +24,14 @@ ms.locfileid: "81537400"
 
 ## <a name="before-you-start"></a>开始之前
 
-- 验证您是否正在运行支持备份的 vCenter/ESXi 版本。 请参阅[此处](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)的支持矩阵。
+- 验证是否正在运行支持备份的 vCenter/ESXi 版本。 请参阅[此处](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)的支持矩阵。
 - 确保已设置 Azure 备份服务器。 如果没有，请在开始之前进行[设置](backup-azure-microsoft-azure-backup.md)。 应运行装有最新更新的 Azure 备份服务器。
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>与 vCenter 服务器建立安全连接
 
 默认情况下，Azure 备份服务器通过 HTTPS 来与 VMware 服务器通信。 若要设置 HTTPS 连接，请下载 VMware 证书颁发机构 (CA) 证书，并将其导入到 Azure 备份服务器。
 
-### <a name="before-you-begin"></a>开始之前
+### <a name="before-you-begin"></a>在开始之前
 
 - 如果不想使用 HTTPS，可以[对所有 VMware 服务器禁用 HTTPS 证书验证](backup-azure-backup-server-vmware.md#disable-https-certificate-validation)。
 - 通常，你会使用 vSphere Web 客户端从 Azure 备份服务器计算机上的浏览器连接到 vCenter/ESXi 服务器。 首次执行此操作时，连接并不安全，会显示以下消息。
@@ -58,7 +58,7 @@ ms.locfileid: "81537400"
 
 4. 以 .zip 扩展名将该文件保存在 Azure 备份服务器计算机上。
 
-5. 右键单击**下载.zip** > **提取全部**。 .zip 文件的内容将解压缩到 **certs** 文件夹，其中包含：
+5. 右键单击 "**下载 .zip** > **全部提取**"。 .zip 文件的内容将解压缩到 **certs** 文件夹，其中包含：
    - 根证书文件的扩展名以类似 .0 和 .1 的编号顺序开头。
    - CRL 文件的扩展名以类似 .r0 或 .r1 的序列开头。 CRL 文件与证书关联。
 
@@ -115,11 +115,11 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
     ![管理](./media/backup-azure-backup-server-vmware/vmware-navigator-panel.png)
 
-3. 在 **"管理** > **角色**"中，单击添加角色图标（+符号）。
+3. 在 "**管理** > **角色**" 中，单击 "添加角色" 图标（加号）。
 
     ![添加角色](./media/backup-azure-backup-server-vmware/vmware-define-new-role.png)
 
-4. 在 **"创建角色** > **角色名称**"中，输入 *"备份管理员角色*"。 角色名称可以是所需的任何内容，但它应该能够帮助识别该角色。
+4. 在 "**创建角色** > **角色名称**" 中，输入*BackupAdminRole*。 角色名称可以是所需的任何内容，但它应该能够帮助识别该角色。
 
 5. 选择下表中汇总的特权，然后单击“确定”。****  新角色随即显示在“角色”窗格中的列表内。****
    - 单击父标签旁的图标展开父级，并查看子级特权。
@@ -130,9 +130,9 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
 ### <a name="role-permissions"></a>角色权限
 
-| vCenter 6.7 用户帐户的权限                     | vCenter 6.5 用户帐户的权限                     |
+| VCenter 6.7 用户帐户的特权                     | VCenter 6.5 用户帐户的特权                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 数据存储群集。配置数据存储群集            | 数据存储群集。配置数据存储群集            |
+| 数据存储群集。配置 datatstore 群集            | 数据存储群集。配置 datatstore 群集            |
 | Datastore.AllocateSpace                                      | Datastore.AllocateSpace                                      |
 | Datastore.Browse datastore                                   | Datastore.Browse datastore                                   |
 | Datastore.Low-level file operations                          | Datastore.Low-level file operations                          |
@@ -142,58 +142,58 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 | Global.Log event                                             | Global.Log event                                             |
 | Global.Manage custom attributes                              | Global.Manage custom attributes                              |
 | Global.Set custom attribute                                  | Global.Set custom attribute                                  |
-| 主机.本地操作。创建虚拟机                | 主机.本地操作。创建虚拟机                |
+| 承载本地操作。创建虚拟机                | 承载本地操作。创建虚拟机                |
 | Network.Assign network                                       | Network.Assign network                                       |
-| Resource. 将虚拟机分配给资源池           | Resource. 将虚拟机分配给资源池           |
+| Resource. 将虚拟机分配到资源池           | Resource. 将虚拟机分配到资源池           |
 | vApp.Add virtual machine                                     | vApp.Add virtual machine                                     |
 | vApp.Assign resource pool                                    | vApp.Assign resource pool                                    |
 | vApp.Unregister                                              | vApp.Unregister                                              |
-| 虚拟机.配置。 添加或删除设备          | 虚拟机.配置。 添加或删除设备          |
-| 虚拟机。配置.获取磁盘租约            | Virtual machine.Configuration.Disk lease                     |
+| VirtualMachine。 添加或删除设备          | VirtualMachine。 添加或删除设备          |
+| 虚拟机。配置。获取磁盘租约            | Virtual machine.Configuration.Disk lease                     |
 | Virtual machine.Configuration.Add new disk                   | Virtual machine.Configuration.Add new disk                   |
-| 虚拟机。配置.高级配置        | Virtual machine.Configuration.Advanced                       |
-| 虚拟机。配置.切换磁盘更改跟踪   | 虚拟机。配置.磁盘更改跟踪          |
-| 虚拟机。配置.配置主机 USB 设备     | 虚拟机。配置.主机 USB 设备               |
-| 虚拟机。配置.扩展虚拟磁盘           | 虚拟机。配置.扩展虚拟磁盘           |
-| 虚拟机。配置.查询未拥有的文件           | 虚拟机。配置.查询未拥有的文件           |
-| 虚拟机。配置.更改交换文件放置位置     | 虚拟机。配置.交换文件放置位置            |
-| 虚拟机。来宾操作.来宾操作计划执行 | 虚拟机。来宾操作.来宾操作计划执行 |
-| 虚拟机。来宾操作.来宾操作修改 | 虚拟机。来宾操作.来宾操作修改 |
-| 虚拟机。来宾操作.来宾操作查询    | 虚拟机。来宾操作.来宾操作查询    |
-| 虚拟机 。互动。设备连接             | 虚拟机 。互动。设备连接             |
-| 虚拟机 。互动。VIX API 的访客操作系统管理 | 虚拟机 。互动。VIX API 的访客操作系统管理 |
-| 虚拟机 。互动。关机                      | 虚拟机 。互动。关机                      |
-| 虚拟机 。库存.创建新                        | 虚拟机 。库存.创建新                        |
+| 虚拟机。配置高级配置        | Virtual machine.Configuration.Advanced                       |
+| 虚拟机。配置：切换磁盘更改跟踪   | 虚拟机。配置磁盘更改跟踪          |
+| 虚拟机。配置。配置主机 USB 设备     | 虚拟机。配置。主机 USB 设备               |
+| 虚拟机。配置扩展虚拟磁盘           | 虚拟机。配置扩展虚拟磁盘           |
+| 虚拟机。配置。查询无主文件           | 虚拟机。配置。查询无主文件           |
+| 虚拟机。配置。更改交换文件位置     | 虚拟机。交换文件放置            |
+| 虚拟机。来宾操作程序执行 | 虚拟机。来宾操作程序执行 |
+| 虚拟机。来宾操作修改来宾操作 | 虚拟机。来宾操作修改来宾操作 |
+| 虚拟机。来宾操作查询    | 虚拟机。来宾操作查询    |
+| 虚拟机。交换.设备连接             | 虚拟机。交换.设备连接             |
+| 虚拟机。交换.通过 VIX API 进行来宾操作系统管理 | 虚拟机。交换.通过 VIX API 进行来宾操作系统管理 |
+| 虚拟机。交换.关机                      | 虚拟机。交换.关机                      |
+| 虚拟机。清单。新建                        | 虚拟机。清单。新建                        |
 | Virtual machine .Inventory.Remove                            | Virtual machine .Inventory.Remove                            |
 | Virtual machine .Inventory.Register                          | Virtual machine .Inventory.Register                          |
-| 虚拟机 。预配.允许磁盘访问             | 虚拟机 。预配.允许磁盘访问             |
-| 虚拟机 。预配.允许文件访问             | 虚拟机 。预配.允许文件访问             |
-| 虚拟机 。预配.允许只读磁盘访问   | 虚拟机 。预配.允许只读磁盘访问   |
-| 虚拟机 。预配.允许虚拟机下载 | 虚拟机 。预配.允许虚拟机下载 |
+| 虚拟机。预配。允许磁盘访问             | 虚拟机。预配。允许磁盘访问             |
+| 虚拟机。设置。允许文件访问             | 虚拟机。设置。允许文件访问             |
+| 虚拟机。预配。允许只读磁盘访问   | 虚拟机。预配。允许只读磁盘访问   |
+| 虚拟机。正在预配。允许虚拟机下载 | 虚拟机。正在预配。允许虚拟机下载 |
 | Virtual machine .Snapshot management.  创建快照       | Virtual machine .Snapshot management.  创建快照       |
-| 虚拟机 。快照管理。删除快照        | 虚拟机 。快照管理。删除快照        |
-| 虚拟机 。快照管理。还原为快照     | 虚拟机 。快照管理。还原为快照     |
+| 虚拟机。快照管理。删除快照        | 虚拟机。快照管理。删除快照        |
+| 虚拟机。快照管理。还原到快照     | 虚拟机。快照管理。还原到快照     |
 
 <br>
 
 | **vCenter 6.0 用户帐户的特权**                | **vCenter 5.5 用户帐户的特权** |
 | ---------------------------------------------------------- | ------------------------------------------- |
 | Datastore.AllocateSpace                                    | Network.Assign                              |
-| 全局管理自定义属性                           | Datastore.AllocateSpace                     |
-| 全局设置自定义属性                               | VirtualMachine.Config.ChangeTracking        |
-| 主机.本地操作。创建虚拟机              | VirtualMachine.State.RemoveSnapshot         |
+| Global. 管理自定义属性                           | Datastore.AllocateSpace                     |
+| Global. 设置自定义属性                               | VirtualMachine.Config.ChangeTracking        |
+| 承载本地操作。创建虚拟机              | VirtualMachine.State.RemoveSnapshot         |
 | Network.  Assign network                                   | VirtualMachine.State.CreateSnapshot         |
 | Resource.  Assign virtual machine to resource pool         | VirtualMachine.Provisioning.DiskRandomRead  |
-| 虚拟机。配置.添加新磁盘                | VirtualMachine.Interact.PowerOff            |
-| 虚拟机。配置.高级                    | VirtualMachine.Inventory.Create             |
-| 虚拟机。配置.磁盘更改跟踪        | VirtualMachine.Config.AddNewDisk            |
-| 虚拟机。配置.主机 USB 设备             | VirtualMachine.Config.HostUSBDevice         |
-| 虚拟机。配置.查询未拥有的文件         | VirtualMachine.Config.AdvancedConfig        |
-| 虚拟机。配置.交换文件放置位置          | VirtualMachine.Config.SwapPlacement         |
-| 虚拟机。交互.关闭电源                     | Global.ManageCustomFields                   |
-| 虚拟机。库存。 新建                     |                                             |
-| 虚拟机。预配.允许磁盘访问            |                                             |
-| 虚拟机。供应。 Allow read-only disk access |                                             |
+| 虚拟机。配置。添加新磁盘                | VirtualMachine.Interact.PowerOff            |
+| 虚拟机。配置高级                    | VirtualMachine.Inventory.Create             |
+| 虚拟机。配置磁盘更改跟踪        | VirtualMachine.Config.AddNewDisk            |
+| 虚拟机。配置。主机 USB 设备             | VirtualMachine.Config.HostUSBDevice         |
+| 虚拟机。配置。查询无主文件         | VirtualMachine.Config.AdvancedConfig        |
+| 虚拟机。交换文件放置          | VirtualMachine.Config.SwapPlacement         |
+| 虚拟机。交互。关闭电源                     | Global.ManageCustomFields                   |
+| 虚拟机。清单. 新建                     |                                             |
+| 虚拟机。预配。允许磁盘访问            |                                             |
+| 虚拟机。配备. Allow read-only disk access |                                             |
 | 虚拟机。快照管理。创建快照       |                                             |
 | 虚拟机。快照管理。删除快照       |                                             |
 
@@ -221,7 +221,7 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
     ![选择用户或组](./media/backup-azure-backup-server-vmware/vmware-add-new-global-perm.png)
 
-6. 在“选择用户/组”中，选择“BackupAdmin” > “添加”。************ 在“用户”中，用户帐户采用“域\用户名”格式。****** 如果要使用其他域，请从 **"域"** 列表中选择它。 单击“确定”，将选定的用户添加到“添加权限”对话框中。********
+6. 在“选择用户/组”中，选择“BackupAdmin” > “添加”。************ 在“用户”中，用户帐户采用“域\用户名”格式。****** 如果要使用其他域，请从**域**列表中选择它。 单击“确定”，将选定的用户添加到“添加权限”对话框中。********
 
     ![添加 BackupAdmin 用户](./media/backup-azure-backup-server-vmware/vmware-assign-account-to-role.png)
 
@@ -237,7 +237,7 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
     ![Azure 备份服务器图标](./media/backup-azure-backup-server-vmware/mabs-icon.png)
 
-2. 在 Azure 备份服务器控制台中，单击 **"管理** >  **生产服务器** > **管理 VMware**"。
+2. 在 Azure 备份服务器控制台中，单击 "**管理** >  **生产服务器** > " "**管理 VMware**"。
 
     ![Azure 备份服务器控制台](./media/backup-azure-backup-server-vmware/add-vmware-credentials.png)
 
@@ -257,11 +257,11 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
 将 vCenter 服务器添加到 Azure 备份服务器。
 
-1. 在 Azure 备份服务器控制台中，单击 **"管理** > **生产服务器** > **添加**"。
+1. 在 Azure 备份服务器控制台中，单击 "**管理** > **生产服务器** > **添加**"。
 
     ![打开生产服务器添加向导](./media/backup-azure-backup-server-vmware/add-vcenter-to-mabs.png)
 
-2. 在**生产服务器添加向导** > **选择生产服务器类型**页中，选择**VMware 服务器**，然后单击"**下一步**"。
+2. 在**生产服务器添加向导** > 中，**选择 "生产服务器类型**" 页，选择 " **VMware 服务器**"，然后单击 "**下一步**"。
 
     ![生产服务器添加向导](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
 
@@ -329,7 +329,7 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
    - **数据大小：** 保护组中数据的大小。
    - **磁盘空间：** 为保护组建议的磁盘空间量。 若要修改此设置，所分配的总空间应比每个数据源预计增长量略大。
    - **归置数据：** 如果启用归置，受保护的多个数据源可以映射到单个副本和恢复点卷。 并非所有工作负荷都支持归置。
-   - **自动增长：** 如果打开此设置，如果受保护组中的数据超过初始分配，Azure 备份服务器将尝试将磁盘大小增加 25%。
+   - **自动增长：** 如果启用此设置，则在受保护组中的数据超过初始分配时，Azure 备份服务器会尝试将磁盘大小增加25%。
    - **存储池详细信息：** 显示存储池的状态，包括总磁盘大小和剩余磁盘大小。
 
     ![查看磁盘分配](./media/backup-azure-backup-server-vmware/review-disk-allocation.png)
@@ -356,7 +356,7 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
     ![指定联机备份计划](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
 
-1. 在“指定联机保留策略”页中，指明要在 Azure 中将通过每天/每周/每月/每年备份创建的恢复点保留多长时间。**** 然后单击 **"下一步**"。
+1. 在“指定联机保留策略”页中，指明要在 Azure 中将通过每天/每周/每月/每年备份创建的恢复点保留多长时间。**** 然后单击 "**下一步**"。
 
     - 在 Azure 中保留数据的时间长短没有限制。
     - 唯一的限制是每个受保护实例的恢复点不可超过 9999 个。 在本示例中，受保护的实例是 VMware 服务器。

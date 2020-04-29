@@ -4,10 +4,10 @@ description: 介绍在 JSON 中通过连续导出导出的、用作筛选器的�
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.openlocfilehash: 9891bea1d52c61197fa32fa5c0764df5450b563c
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81536839"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights 导出数据模型
@@ -128,15 +128,15 @@ ms.locfileid: "81536839"
 | context.device.screenResolution |字符串 | |
 | context.device.type |字符串 |电脑、浏览器... |
 | context.location |对象 (object) |从 `clientip`派生。 |
-| context.location.city |字符串 |派生自`clientip`，如果已知 |
+| context.location.city |字符串 |派生自`clientip`（如果已知） |
 | context.location.clientip |字符串 |最后一个八边形匿名化为 0。 |
 | context.location.continent |字符串 | |
 | context.location.country |字符串 | |
 | context.location.province |字符串 |州或省 |
-| context.operation.id |字符串 |具有相同`operation id`项的项目与门户中的"相关项目"一样显示。 通常为`request id`。 |
+| context.operation.id |字符串 |具有相同`operation id`的项在门户中显示为相关项。 通常为`request id`。 |
 | context.operation.name |字符串 |URL 或请求名称 |
 | context.operation.parentId |字符串 |允许嵌套的相关项。 |
-| context.session.id |字符串 |`Id`来自同一源的一组操作。 如果在 30 分钟期限内没有操作，则表示会话结束。 |
+| context.session.id |字符串 |`Id`来自同一源的一组操作的。 如果在 30 分钟期限内没有操作，则表示会话结束。 |
 | context.session.isFirst |boolean | |
 | context.user.accountAcquisitionDate |字符串 | |
 | context.user.accountId |字符串 | |
@@ -147,14 +147,14 @@ ms.locfileid: "81536839"
 | context.user.isAuthenticated |boolean | |
 | context.user.storeRegion |字符串 | |
 | internal.data.documentVersion |字符串 | |
-| internal.data.id |字符串 | `Unique id`当将项目引入到应用程序见解时分配 |
+| internal.data.id |字符串 | `Unique id`当项被引入到 Application Insights |
 
 ## <a name="events"></a>事件
 [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) 生成的自定义事件。
 
 | 路径 | 类型 | 说明 |
 | --- | --- | --- |
-| event [0] count |integer |100/（[采样](../../azure-monitor/app/sampling.md)率）。 例如 4 =&gt; 25%。 |
+| event [0] count |integer |100/([采样](../../azure-monitor/app/sampling.md)率)。 例如 4 =&gt; 25%。 |
 | event [0] name |字符串 |事件名称。  最大长度为 250。 |
 | event [0] url |字符串 | |
 | event [0] urlData.base |字符串 | |
@@ -166,14 +166,14 @@ ms.locfileid: "81536839"
 | 路径 | 类型 | 说明 |
 | --- | --- | --- |
 | basicException [0] assembly |字符串 | |
-| basicException [0] count |integer |100/（[采样](../../azure-monitor/app/sampling.md)率）。 例如 4 =&gt; 25%。 |
+| basicException [0] count |integer |100/([采样](../../azure-monitor/app/sampling.md)率)。 例如 4 =&gt; 25%。 |
 | basicException [0] exceptionGroup |字符串 | |
 | basicException [0] exceptionType |字符串 | |
 | basicException [0] failedUserCodeMethod |字符串 | |
 | basicException [0] failedUserCodeAssembly |字符串 | |
 | basicException [0] handledAt |字符串 | |
 | basicException [0] hasFullStack |boolean | |
-| 基本例外 [0]`id` |字符串 | |
+| basicException [0]`id` |字符串 | |
 | basicException [0] method |字符串 | |
 | basicException [0] message |字符串 |异常消息。 最大长度为 10k。 |
 | basicException [0] outerExceptionMessage |字符串 | |
@@ -207,10 +207,10 @@ ms.locfileid: "81536839"
 | remoteDependency [0] async |boolean | |
 | remoteDependency [0] baseName |字符串 | |
 | remoteDependency [0] commandName |字符串 |例如“home/index” |
-| remoteDependency [0] count |integer |100/（[采样](../../azure-monitor/app/sampling.md)率）。 例如 4 =&gt; 25%。 |
+| remoteDependency [0] count |integer |100/([采样](../../azure-monitor/app/sampling.md)率)。 例如 4 =&gt; 25%。 |
 | remoteDependency [0] dependencyTypeName |字符串 |HTTP、SQL... |
 | remoteDependency [0] durationMetric.value |数字 |从依赖项调用到完成响应花费的时间 |
-| 远程依赖 [0]`id` |字符串 | |
+| remoteDependency [0]`id` |字符串 | |
 | remoteDependency [0] name |字符串 |URL。 最大长度为 250。 |
 | remoteDependency [0] resultCode |字符串 |源 HTTP 依赖项 |
 | remoteDependency [0] success |boolean | |
@@ -225,11 +225,11 @@ ms.locfileid: "81536839"
 
 | 路径 | 类型 | 说明 |
 | --- | --- | --- |
-| request [0] count |integer |100/（[采样](../../azure-monitor/app/sampling.md)率）。 例如：4 =&gt; 25%。 |
+| request [0] count |integer |100/([采样](../../azure-monitor/app/sampling.md)率)。 例如：4 =&gt; 25%。 |
 | request [0] durationMetric.value |数字 |从请求到响应花费的时间。 1e7 == 1s |
-| 请求 {0}`id` |字符串 |`Operation id` |
+| request [0]`id` |字符串 |`Operation id` |
 | request [0] name |字符串 |GET/POST + URL 基。  最大长度为 250 |
-| request [0] responseCode |integer |发送到客户端的 HTTP 响应 |
+| request [0] responseCode |整数 |发送到客户端的 HTTP 响应 |
 | request [0] success |boolean |默认值 == (responseCode &lt; 400) |
 | request [0] url |字符串 |不包括主机 |
 | request [0] urlData.base |字符串 | |
@@ -243,12 +243,12 @@ ms.locfileid: "81536839"
 
 | 路径 | 类型 | 说明 |
 | --- | --- | --- |
-| clientPerformance [0] clientProcess.value |integer |从接收 HTML 完成到显示页面花费的时间。 |
+| clientPerformance [0] clientProcess.value |整数 |从接收 HTML 完成到显示页面花费的时间。 |
 | clientPerformance [0] name |字符串 | |
-| clientPerformance [0] networkConnection.value |integer |建立网络连接花费的时间。 |
-| clientPerformance [0] receiveRequest.value |integer |从发送请求结束到在回复中接收 HTML 所花费的时间。 |
-| clientPerformance [0] sendRequest.value |integer |发送 HTTP 请求花费的时间。 |
-| clientPerformance [0] total.value |integer |从开始发送请求到显示页面花费的时间。 |
+| clientPerformance [0] networkConnection.value |整数 |建立网络连接花费的时间。 |
+| clientPerformance [0] receiveRequest.value |整数 |从发送请求结束到在回复中接收 HTML 所花费的时间。 |
+| clientPerformance [0] sendRequest.value |整数 |发送 HTTP 请求花费的时间。 |
+| clientPerformance [0] total.value |整数 |从开始发送请求到显示页面花费的时间。 |
 | clientPerformance [0] url |字符串 |此请求的 URL |
 | clientPerformance [0] urlData.base |字符串 | |
 | clientPerformance [0] urlData.hashTag |字符串 | |
@@ -260,8 +260,8 @@ ms.locfileid: "81536839"
 
 | 路径 | 类型 | 说明 |
 | --- | --- | --- |
-| view [0] count |integer |100/（[采样](../../azure-monitor/app/sampling.md)率）。 例如 4 =&gt; 25%。 |
-| view [0] durationMetric.value |integer |在 trackPageView() 中设置的，或者由 startTrackPage() - stopTrackPage() 设置的可选值。 与 clientPerformance 值不同。 |
+| view [0] count |整数 |100/（[采样](../../azure-monitor/app/sampling.md)率）。 例如 4 =&gt; 25%。 |
+| view [0] durationMetric.value |整数 |在 trackPageView() 中设置的，或者由 startTrackPage() - stopTrackPage() 设置的可选值。 与 clientPerformance 值不同。 |
 | view [0] name |字符串 |页面标题。  最大长度为 250 |
 | view [0] url |字符串 | |
 | view [0] urlData.base |字符串 | |
@@ -275,9 +275,9 @@ ms.locfileid: "81536839"
 | --- | --- | --- |
 | availability [0] availabilityMetric.name |字符串 |availability |
 | availability [0] availabilityMetric.value |数字 |1.0 或 0.0 |
-| availability [0] count |integer |100/（[采样](../../azure-monitor/app/sampling.md)率）。 例如 4 =&gt; 25%。 |
+| availability [0] count |整数 |100/（[采样](../../azure-monitor/app/sampling.md)率）。 例如 4 =&gt; 25%。 |
 | availability [0] dataSizeMetric.name |字符串 | |
-| availability [0] dataSizeMetric.value |integer | |
+| availability [0] dataSizeMetric.value |整数 | |
 | availability [0] durationMetric.name |字符串 | |
 | availability [0] durationMetric.value |数字 |测试持续时间。 1e7==1s |
 | availability [0] message |字符串 |故障诊断 |
@@ -342,7 +342,7 @@ ms.locfileid: "81536839"
 ### <a name="durations"></a>持续时间
 除非另有规定，否则持续时间以十分之一微秒表示，因此 10000000.0 表示 1 秒。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 * [Application Insights](../../azure-monitor/app/app-insights-overview.md)
-* [连续出口](export-telemetry.md)
+* [连续导出](export-telemetry.md)
 * [示例代码](export-telemetry.md#code-samples)
